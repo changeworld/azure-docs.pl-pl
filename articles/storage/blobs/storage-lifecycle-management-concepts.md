@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 77ed643afaf5e69f41224af68f5e9f8a93fcace5
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: ea896697c8f6986c4c77f3ce86a62947d9a3327e
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722095"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861411"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Zarządzanie cyklem życia usługi Azure Blob Storage
 
@@ -54,7 +54,7 @@ Można dodawać, edytować lub usuwać zasady przy użyciu dowolnej z następuj�
 W tym artykule pokazano, jak zarządzać zasadami przy użyciu portalu i metod programu PowerShell.  
 
 > [!NOTE]
-> Jeśli włączysz reguły zapory dla konta magazynu, żądania zarządzania cyklem życia mogą zostać zablokowane. Można odblokować te żądania, dostarczając wyjątki. Wymagane obejście to: `Logging,  Metrics,  AzureServices`. Aby uzyskać więcej informacji, zobacz sekcję wyjątki w artykule [Konfigurowanie zapór i sieci wirtualnych](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
+> Jeśli włączysz reguły zapory dla konta magazynu, żądania zarządzania cyklem życia mogą zostać zablokowane. Można odblokować te żądania, dostarczając wyjątki. Wymagane obejście to: `AzureServices`. Aby uzyskać więcej informacji, zobacz sekcję wyjątki w artykule [Konfigurowanie zapór i sieci wirtualnych](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -284,7 +284,7 @@ Filtry obejmują:
 
 | Nazwa filtru | Typ filtru | Uwagi | Wymagany |
 |-------------|-------------|-------|-------------|
-| blobTypes   | Tablica wstępnie zdefiniowanych wartości wyliczeniowych. | Bieżąca wersja obsługuje `blockBlob`. | Yes |
+| blobTypes   | Tablica wstępnie zdefiniowanych wartości wyliczeniowych. | Bieżąca wersja obsługuje `blockBlob`. | Tak |
 | prefixMatch | Tablica ciągów dla prefiksów, które mają być zgodne. Każda reguła może definiować do 10 prefiksów. Ciąg prefiksu musi rozpoczynać się od nazwy kontenera. Na przykład jeśli chcesz dopasować wszystkie obiekty blob w ramach `https://myaccount.blob.core.windows.net/container1/foo/...` reguły, prefixMatch jest. `container1/foo` | Jeśli nie zdefiniujesz prefixMatch, reguła będzie stosowana do wszystkich obiektów BLOB w ramach konta magazynu.  | Nie |
 
 ### <a name="rule-actions"></a>Akcje reguły
@@ -435,4 +435,4 @@ Gdy obiekt BLOB jest przenoszony z jednej warstwy dostępu do innej, jego Ostatn
 
 Dowiedz się, jak odzyskiwać dane po przypadkowym usunięciu:
 
-- [Usuwanie nietrwałe dla obiektów BLOB usługi Azure Storage](../blobs/storage-blob-soft-delete.md)
+- [Soft delete for Azure Storage blobs](../blobs/storage-blob-soft-delete.md) (Usuwanie nietrwałe dla obiektów blob usługi Azure Storage)

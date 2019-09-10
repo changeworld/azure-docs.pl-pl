@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/9/2019
+ms.date: 09/09/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: ff267a524001802f8bcd0903fcb7119bab16ef11
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
-ms.translationtype: HT
+ms.openlocfilehash: afa6c5e40918906eb9fe0e40ed633715e3f2741d
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813334"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844805"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>Granice modelu i kluczy LUIS
 Usługa LUIS ma kilka obszarów granic. Pierwsza to [granic modelu](#model-boundaries), która kontroluje intencji, jednostek i funkcji usługi LUIS. Drugi ma [limitów przydziału](#key-limits) na podstawie typu klucza. Trzecie pole granice wynosi [klawiatury kombinacji](#keyboard-controls) do kontrolowania witryny sieci Web usługi LUIS. Czwarty obszar jest [mapowanie regionów świata](luis-reference-regions.md) między LUIS tworzenia witryny sieci Web i LUIS [punktu końcowego](luis-glossary.md#endpoint) interfejsów API. 
@@ -29,7 +29,7 @@ Jeśli aplikacja przekracza limity i granice modelu LUIS, należy rozważyć uż
 |Obszar|Limit|
 |--|:--|
 | [Nazwa aplikacji][luis-get-started-create-app] | \* Znak Domyślna maksymalna |
-| Aplikacje| 500 aplikacji na zasób platformy Azure |
+| Aplikacje| 500 aplikacji na zasób tworzenia na platformie Azure |
 | [Testy wsadowe][batch-testing]| 10 zestawów danych, 1000 wypowiedzi dla zestawu danych|
 | Lista jawnego | 50 na aplikację|
 | Jednostki zewnętrzne | Brak limitów |
@@ -65,21 +65,24 @@ Nie należy używać następujących znaków w następujących nazwach.
 
 Zrozumienie języka ma oddzielne klucze, jeden typ do tworzenia i jeden typ do wykonywania zapytań dotyczących punktu końcowego przewidywania. Aby dowiedzieć się więcej o różnicach między typami kluczy, zobacz [Tworzenie kluczy punktu końcowego prognozowanie i wykonywanie zapytań w Luis](luis-concept-keys.md).
 
-## <a name="key-limits"></a>Ograniczenia klucza
+<a name="key-limits"></a>
 
-Tworzenia klucza ma różne limity dotyczące tworzenia i punktu końcowego. Klucz punktu końcowego usługi LUIS jest prawidłowy tylko dla punktu końcowego zapytań.
+## <a name="resource-key-limits"></a>Limity kluczy zasobów
 
-* 500 aplikacji na zasób platformy Azure 
-* 100 wersji na aplikację
+Klucze zasobów mają różne limity dla tworzenia i punktu końcowego. Klucz punktu końcowego zapytania predykcyjnego LUIS jest prawidłowy tylko dla zapytań punktów końcowych. 
+
+* 500 aplikacji na zasób tworzenia na platformie Azure 
 
 |Klucz|Tworzenie|Endpoint|Cel|
 |--|--|--|--|
-|Language Understanding tworzenie/Starter|1 mln/miesiąc, 5/s|tysiące 1/miesiąc, 5/s|Tworzenie aplikacji usługi LUIS|
-|Language Understanding [Subscription][pricing] — F0 — warstwa Bezpłatna |nieprawidłowy|10 tysięcy/miesiąc, 5/s|Wykonywanie zapytań punktu końcowego usługi LUIS|
-|Language Understanding [Subscription][pricing] — S0 — warstwa podstawowa|nieprawidłowy|50/sekundę|Wykonywanie zapytań punktu końcowego usługi LUIS|
-|[Usługa poznawcze — S0 — warstwa][pricing] standardowa|nieprawidłowy|50/sekundę|Wykonywanie zapytań punktu końcowego usługi LUIS|
-|[Integracja analizy tonacji](luis-how-to-publish-app.md#enable-sentiment-analysis)|nieprawidłowy|Brak opłat|Dodawanie informacji opinii, w tym kluczowe frazy |
-|[Integracja mowy](../speech-service/how-to-recognize-intents-from-speech-csharp.md)|nieprawidłowy|Żądania punktu końcowego 5.50 USD/1 tysięcy|Konwertowanie mowy wypowiedź tekstowe wypowiedź i LUIS zwracają.|
+|Starter (początkowy)|1 mln/miesiąc, 5/s|tysiące 1/miesiąc, 5/s|Tworzenie aplikacji usługi LUIS|
+|F0 — warstwa Bezpłatna |1 mln/miesiąc, 5/s|10 tysięcy/miesiąc, 5/s|Wykonywanie zapytań punktu końcowego usługi LUIS|
+|S0 — warstwa podstawowa|-|50/sekundę|Wykonywanie zapytań punktu końcowego usługi LUIS|
+|S0 — warstwa standardowa|-|50/sekundę|Wykonywanie zapytań punktu końcowego usługi LUIS|
+|[Integracja analizy tonacji](luis-how-to-publish-app.md#enable-sentiment-analysis)|-|-|Dodawanie informacji tonacji z uwzględnieniem wyodrębniania danych o kluczowym postanowień, które nie wymagają innego zasobu platformy Azure. |
+|[Integracja mowy](../speech-service/how-to-recognize-intents-from-speech-csharp.md)|-|1000 żądań punktów końcowych według kosztu jednostki|Konwertowanie mowy wypowiedź tekstowe wypowiedź i LUIS zwracają.|
+
+[Dowiedz się więcej o cenach.][pricing]
 
 ## <a name="keyboard-controls"></a>Klawiatury
 

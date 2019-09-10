@@ -1,6 +1,6 @@
 ---
-title: Aplikacja klasyczna wywołuje interfejsy API (Rejestrowanie aplikacji) — sieci web platforma tożsamości firmy Microsoft
-description: Naucz się tworzyć aplikację klasyczną wywołuje interfejsy API (Rejestrowanie aplikacji) sieci web
+title: Aplikacja klasyczna, która wywołuje interfejsy API sieci Web (Rejestracja aplikacji) — Microsoft Identity platform
+description: Dowiedz się, jak utworzyć aplikację klasyczną wywołującą interfejsy API sieci Web (Rejestracja aplikacji)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -13,54 +13,54 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/18/2019
+ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ab2701a82da0b8f7bc4e23a3d947be905593e85
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b996b2387e324c7e318536c2a13bdc9de39a7a5e
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057213"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860879"
 ---
-# <a name="desktop-app-that-calls-web-apis---app-registration"></a>Aplikacja klasyczna, że wywołania sieci web interfejsy API — rejestrowanie aplikacji
+# <a name="desktop-app-that-calls-web-apis---app-registration"></a>Aplikacja klasyczna, która wywołuje interfejsy API sieci Web — Rejestracja aplikacji
 
-Ten artykuł zawiera specyfikę rejestracji aplikacji dla aplikacji klasycznych.
+Ten artykuł zawiera informacje o rejestracji aplikacji dla aplikacji klasycznej.
 
-## <a name="supported-accounts-types"></a>Typy obsługiwanych kont
+## <a name="supported-accounts-types"></a>Obsługiwane typy kont
 
-Typy kont, są obsługiwane w aplikacji klasycznej zależą od środowiska, aby światła w górę, a zatem w przepływach chcesz użyć.
+Typy kont obsługiwane w aplikacji klasycznej zależą od środowiska, które chcesz wyrównać. Z powodu tej relacji obsługiwane typy kont zależą od przepływów, które mają być używane.
 
-### <a name="audience-for-interactive-token-acquisition"></a>Odbiorców interaktywne uzyskanie tokenu
+### <a name="audience-for-interactive-token-acquisition"></a>Odbiorcy na potrzeby pozyskiwania tokenów interaktywnych
 
-Jeśli uwierzytelnianie interakcyjne korzysta z aplikacji pulpitu, możesz zalogować się użytkowników z żadnej [typ konta](quickstart-register-app.md#register-a-new-application-using-the-azure-portal)
+Jeśli aplikacja klasyczna korzysta z uwierzytelniania interakcyjnego, użytkownicy mogą logować się z dowolnego [typu konta](quickstart-register-app.md#register-a-new-application-using-the-azure-portal).
 
-### <a name="audience-for-desktop-app-silent-flows"></a>Grupy odbiorców dla aplikacji klasycznej dyskretnej przepływów
+### <a name="audience-for-desktop-app-silent-flows"></a>Odbiorcy dla przepływów dyskretnych aplikacji klasycznych
 
-- Jeśli zamierzasz używać uwierzytelniania zintegrowanego Windows lub nazwy użytkownika/hasła, aplikacja wymaga logowania użytkowników w własnej dzierżawy (LOB Deweloper) lub w usłudze Azure Active directory organizacji (scenariusz niezależnego dostawcy oprogramowania). Te przepływy uwierzytelniania nie są obsługiwane w przypadku osobistych kont Microsoft
-- Jeśli chcesz korzystać z tego przepływu kodu urządzenia, nie możesz zalogować użytkowników z ich osobistych kont Microsoft jeszcze
-- Jeśli użytkownicy logują się wraz z tożsamościami społecznościowymi, przekazując urząd B2C i zasad, można używać tylko uwierzytelnianie interakcyjne i nazwy użytkownika i hasła.
+- Aby można było używać zintegrowanego uwierzytelniania systemu Windows lub nazwy użytkownika/hasła, aplikacja musi zalogować użytkowników w Twojej dzierżawie (deweloper LOB) lub w organizacji usługi Azure Active Directory (scenariusz ISV). Te przepływy uwierzytelniania nie są obsługiwane w przypadku kont osobistych firmy Microsoft.
+- Jeśli chcesz użyć przepływu kodu urządzenia, nie możesz jeszcze zalogować użytkowników przy użyciu kont osobistych firmy Microsoft.
+- Jeśli logujesz się do użytkowników przy użyciu tożsamości społecznościowych przekazujących B2C Urząd i zasady, możesz korzystać tylko z uwierzytelniania interaktywnego i nazwy użytkownika.
 
 ## <a name="redirect-uris"></a>Identyfikatory URI przekierowania
 
-Ponownie identyfikatory URI przekierowania do użycia w aplikacji klasycznej zależy przepływ, którego chcesz użyć.
+Identyfikatory URI przekierowania używane w aplikacji klasycznej będą zależeć od przepływu, którego chcesz użyć.
 
-- Jeśli używasz **przeprowadzić uwierzytelnianie interakcyjne** lub **przepływu kodu urządzenia**, będziesz chciał użyć `https://login.microsoftonline.com/common/oauth2/nativeclient`. Ta konfiguracja będzie osiągnięcie, klikając odpowiedni adres URL w **uwierzytelniania** sekcji dla aplikacji
+- Jeśli używasz **interaktywnego uwierzytelniania** lub **przepływu kodu urządzenia**, możesz użyć polecenia `https://login.microsoftonline.com/common/oauth2/nativeclient`. Tę konfigurację można osiągnąć, klikając odpowiedni adres URL w sekcji **uwierzytelnianie** dla aplikacji.
   
   > [!IMPORTANT]
-  > Już dziś platformy MSAL.NET domyślnie aplikacje pulpitu w systemie Windows korzysta inny identyfikator URI przekierowania (`urn:ietf:wg:oauth:2.0:oob`). W przyszłości będzie chcemy zmienić to ustawienie domyślne, a w związku z tym firma Microsoft zaleca użycie `https://login.microsoftonline.com/common/oauth2/nativeclient`
+  > Dzisiaj MSAL.NET domyślnie używa innego identyfikatora URI przekierowania w aplikacjach klasycznych działających w`urn:ietf:wg:oauth:2.0:oob`systemie Windows (). W przyszłości będziemy chcieć zmienić to ustawienie domyślne i dlatego zalecamy użycie`https://login.microsoftonline.com/common/oauth2/nativeclient`
 
-- Aplikacji tylko za pomocą uwierzytelniania zintegrowanego Windows, nazwy użytkownika/hasła, nie trzeba zarejestrować identyfikator URI przekierowania dla aplikacji. W rzeczywistości te przepływy są rund do punktu końcowego v2.0 platforma tożsamości firmy Microsoft i aplikacja nie będzie wywołanie zwrotne w dowolnym określonym identyfikatorze URI. 
-- W celu odróżnienia przepływ kodu urządzenia, zintegrowane uwierzytelnianie Windows i nazwy użytkownika/hasła z przepływ aplikacji zawierających poufne dane klienta, który nie ma identyfikatory URI przekierowania albo (klient poświadczeń przepływ używany w aplikacjach demon), musisz express czy aplikacja jest aplikacją kliencką publicznych. Ta konfiguracja jest osiągane, przechodząc do **uwierzytelniania** sekcji dla aplikacji, a w **Zaawansowane ustawienia** podsekcję, wybierz polecenie **tak**, użytkownik **Traktować aplikacji w publicznych klienta** (w **domyślny typ klienta** akapitu)
+- Jeśli aplikacja używa tylko zintegrowanego uwierzytelniania systemu Windows lub nazwy użytkownika/hasła, nie trzeba rejestrować identyfikatora URI przekierowania dla aplikacji. Te przepływy wykonują rundy w punkcie końcowym Microsoft Identity platform v 2.0, a aplikacja nie zostanie wywołana ponownie na żadnym konkretnym identyfikatorze URI.
+- Aby rozróżnić przepływ kodu urządzenia, zintegrowane uwierzytelnianie systemu Windows i nazwę użytkownika/hasło z poufnego przepływu aplikacji klienta, który nie ma identyfikatorów URI przekierowania (przepływ poświadczeń klienta używany w aplikacjach demonów), należy wyrazić, że Aplikacja jest publiczną aplikacją kliencką. Aby osiągnąć tę konfigurację, przejdź do sekcji **uwierzytelnianie** dla swojej aplikacji. Następnie w podsekcji **Ustawienia zaawansowane** w obszarze **domyślny typ klienta** wybierz pozycję **tak** dla pytania **Traktuj aplikację jako klienta publicznego**.
 
-  ![Zezwalaj na publicznych klienta](media/scenarios/default-client-type.png)
+  ![Zezwalaj na klienta publicznego](media/scenarios/default-client-type.png)
 
-## <a name="api-permissions"></a>Uprawnienia do interfejsu API
+## <a name="api-permissions"></a>Uprawnienia interfejsu API
 
-Aplikacje klasyczne wywoływania interfejsów API w imieniu zalogowanego użytkownika. Muszą zażądać uprawnień delegowanych. Nie można ich zażądać uprawnień aplikacji (tylko obsługę w [aplikacje demona](scenario-daemon-overview.md))
+Aplikacje klasyczne wywoływanie interfejsów API dla zalogowanego użytkownika. Muszą oni zażądać uprawnień delegowanych. Nie mogą jednak żądać uprawnień aplikacji, które są obsługiwane tylko w [aplikacjach demona](scenario-daemon-overview.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Aplikacja klasyczna — Konfiguracja aplikacji](scenario-desktop-app-configuration.md)
+> [Aplikacja klasyczna — konfiguracja aplikacji](scenario-desktop-app-configuration.md)

@@ -6,12 +6,12 @@ ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: joanpo
-ms.openlocfilehash: 01025acfa2fd939db8134a1e61c7902034a1d2c3
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: b78a1b250f46c2ddd2b36e19590c4a94ca3ab3fb
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424215"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844704"
 ---
 # <a name="azure-data-share-preview-concepts"></a>Pojęcia dotyczące usługi Azure Data Share w wersji zapoznawczej 
 
@@ -53,13 +53,15 @@ Odbiorca danych ma możliwość wyboru tego harmonogramu migawki w celu otrzymyw
 
 Dostawca danych może zaprosić wielu odbiorców do swojego udziału danych. Można to zrobić, dodając odbiorców do udziału danych. Zaproszenia można także dodawać po utworzeniu udziału danych. 
 
-Dostawca danych może usunąć zaproszenie po jego wysłaniu. Należy pamiętać, że jeśli dostawca danych usunie zaproszenie po jego zaakceptowaniu, odbiorca danych może nadal mieć aktywną subskrypcję udziałów. Jeśli dostawca danych usunie zaproszenie i nie zostało jeszcze zaakceptowane, konsument danych nie będzie mógł go zaakceptować. 
+Dostawca danych może usunąć zaproszenie po jego wysłaniu, jeśli nie zostało ono zaakceptowane. Jeśli dostawca danych usunie zaproszenie i nie zostało jeszcze zaakceptowane, konsument danych nie będzie mógł go zaakceptować. 
+
+Zaproszenia można wysyłać do 5 razy dziennie. 
 
 ## <a name="recipient"></a>Adresat
 
 Odbiorca to osoba, która otrzymuje zaproszenie do udziału danych. Zazwyczaj dostawca danych doda odbiorców do udziału danych, który tworzy. Gdy odbiorca zaproszenia zaakceptuje zaproszenie, staje się konsumentem danych.  
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się, jak zacząć udostępniać dane, przejdź do samouczka [udostępnianie danych](share-your-data.md) .
 

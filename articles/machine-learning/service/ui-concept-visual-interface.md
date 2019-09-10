@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/15/2019
-ms.openlocfilehash: 1cb56386f52d1c7b1ec357b912c648c1961b4c1d
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 70141e3ad438ff7ff6d4486e6c27ff4163416e95
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677984"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860398"
 ---
 # <a name="what-is-the-visual-interface-for-azure-machine-learning-service"></a>Co to jest interfejs wizualny usługi Azure Machine Learning Service? 
 
@@ -81,7 +81,7 @@ Użyj zasobów obliczeniowych z obszaru roboczego, aby uruchomić eksperyment lu
 | Obliczeniowe platformy Azure Machine Learning | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
-Elementy docelowe obliczeń są dołączone do [obszaru roboczego](concept-workspace.md)Machine Learning. Obiektami docelowymi obliczeń można zarządzać w obszarze roboczym w [Azure Portal](https://portal.azure.com).
+Elementy docelowe obliczeń są dołączone do [obszaru roboczego](concept-workspace.md)Machine Learning. Obiektami docelowymi obliczeń można zarządzać w obszarze roboczym w [Azure Portal](https://portal.azure.com) lub na [stronie docelowej obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com).
 
 ## <a name="deployment"></a>Wdrożenie
 

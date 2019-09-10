@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2ea124ecf6786142ac1703dab1e267b225751079
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 14962b936d1c09a6c50daa7bec460ce11dbefe5d
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035945"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860379"
 ---
 # <a name="explore-azure-machine-learning-service-with-jupyter-notebooks"></a>Eksplorowanie usługi Azure Machine Learning przy użyciu notesów Jupyter
 
@@ -27,10 +27,9 @@ W tym artykule pokazano, jak uzyskać dostęp do repozytorium z następujących 
 - [Maszyna wirtualna w Azure Machine Learning notesu](#notebookvm)
 - [Przenoszenie własnego serwera notesu](#byo)
 - [Data Science Virtual Machine](#dsvm)
-- [Azure Notebooks](#aznb)
 
 > [!NOTE]
-> Po sklonowaniu repozytorium znajdziesz notesy samouczków w folderze samouczków i w notesach specyficznych dla funkcji w folderze **How to-use-Azure** .
+> Po sklonowaniu repozytorium znajdziesz notesy samouczków w folderze **samouczków** i w notesach specyficznych dla funkcji w folderze **How to-use-Azure** .
 
 <a name="notebookvm"></a>
 ## <a name="get-samples-on-azure-machine-learning-notebook-vm"></a>Pobierz przykłady na Azure Machine Learning notesu maszyn wirtualnych
@@ -54,16 +53,9 @@ Data Science Virtual Machine (DSVM) to dostosowany obraz maszyny wirtualnej zbud
 
 [!INCLUDE [aml-dsvm-server](../../../includes/aml-dsvm-server.md)]
 
-<a name="aznb"></a>
-## <a name="get-samples-on-azure-notebooks"></a>Pobierz przykłady na Azure Notebooks
-
-Na [Azure Notebooks](https://notebooks.azure.com/)zestaw SDK i serwer notesu są zainstalowane i skonfigurowane. Azure Notebooks udostępnia w pełni zarządzane, uproszczone środowisko dla notesu do eksplorowania.
-
-Aby uzyskać dostęp do przykładowego repozytorium na Azure Notebooks, przejdź do obszaru roboczego Azure Machine Learning za pomocą [Azure Portal](https://portal.azure.com). W sekcji **Przegląd** wybierz pozycję wprowadzenie **w Azure Notebooks**.
-
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj [](https://aka.ms/aml-notebooks) się z przykładowymi notesami, aby dowiedzieć się, co może zrobić usługa Azure Machine Learning lub wypróbuj te samouczki:
+Zapoznaj się z [przykładowymi notesami](https://aka.ms/aml-notebooks) , aby dowiedzieć się, co może zrobić usługa Azure Machine Learning lub wypróbuj te samouczki:
 
 - [Szkolenie i wdrażanie modelu klasyfikacji obrazów przy użyciu zestawu danych MNIST](tutorial-train-models-with-aml.md)
 

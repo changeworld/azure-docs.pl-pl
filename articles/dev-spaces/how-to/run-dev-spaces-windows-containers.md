@@ -9,12 +9,12 @@ ms.date: 07/25/2019
 ms.topic: conceptual
 description: Dowiedz się, jak uruchamiać Azure Dev Spaces w istniejącym klastrze przy użyciu kontenerów systemu Windows
 keywords: Azure Dev Spaces, Spaces dev, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, kontenery systemu Windows
-ms.openlocfilehash: 2110636b331f0cf4e74c77f41726ead5bf80a64f
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 6c15534d5d47ba384a0f368f5d212fb1350e5229
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501522"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858609"
 ---
 # <a name="use-azure-dev-spaces-to-interact-with-windows-containers"></a>Używanie Azure Dev Spaces do współpracy z kontenerami systemu Windows
 
@@ -49,6 +49,9 @@ Zastosuj [przybarwienie][using-taints] do węzłów systemu Windows. W przypadku
 ```azurecli-interactive
 kubectl taint node aksnpwin987654 sku=win-node:NoSchedule
 ```
+
+> [!IMPORTANT]
+> Po zastosowaniu zmiany czasu do węzła należy skonfigurować dopasowanie tolerowania w szablonie wdrożenia usługi, aby uruchomić usługę w tym węźle. Aplikacja Przykładowa jest już skonfigurowana z [dopasowaniem][sample-application-toleration-example] do celu, który został skonfigurowany w poprzednim poleceniu.
 
 ## <a name="run-your-windows-service"></a>Uruchamianie usługi systemu Windows
 
@@ -180,8 +183,8 @@ Dowiedz się, jak Azure Dev Spaces ułatwiają tworzenie bardziej złożonych ap
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [helm-installed]: https://github.com/helm/helm/blob/master/docs/install.md
 [sample-application]: https://github.com/Azure/dev-spaces/tree/master/samples/existingWindowsBackend
+[sample-application-toleration-example]: https://github.com/Azure/dev-spaces/blob/master/samples/existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml#L24-L27
 [team-development-qs]: ../quickstart-team-development.md
-
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [team-development]: ../team-development-netcore.md
 [using-taints]: ../../aks/use-multiple-node-pools.md#schedule-pods-using-taints-and-tolerations

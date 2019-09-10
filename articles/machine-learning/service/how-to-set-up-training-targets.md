@@ -11,18 +11,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 27361017241ba6529b93c24ce7fb95b2c1b22a62
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 0a34ccf5201b81a2c74c2eccd0ec3f311a1158ab
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389909"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860543"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Skonfiguruj cele obliczeń i używaj ich do szkolenia modelu 
 
 Dzięki usłudze Azure Machine Learning można nauczyć model na różnych zasobach lub środowiskach, zbiorczo nazywanymi [__obiektami docelowymi obliczeń__](concept-azure-machine-learning-architecture.md#compute-targets). Obiekt docelowy obliczeń może być maszyną lokalną lub zasobem w chmurze, takim jak Azure Machine Learning COMPUTE, Azure HDInsight lub zdalną maszynę wirtualną.  Możesz również utworzyć cele obliczeniowe dla wdrożenia modelu, zgodnie z opisem w artykule ["gdzie i jak wdrażać modele"](how-to-deploy-and-where.md).
 
-Można utworzyć obiekt docelowy obliczeń i zarządzać nim przy użyciu zestawu SDK Azure Machine Learning, Azure Portal, interfejsu wiersza polecenia platformy Azure lub rozszerzenia Azure Machine Learning VS Code. Jeśli masz obliczeniowych elementów docelowych, które zostały utworzone za pomocą innej usługi (na przykład klastra usługi HDInsight), możesz ich używać, dołączanie ich do obszaru roboczego usługi Azure Machine Learning.
+Można utworzyć obiekt docelowy obliczeń i zarządzać nim przy użyciu zestawu SDK Azure Machine Learning, Azure Portal, strony docelowej obszaru roboczego (wersja zapoznawcza), interfejsu wiersza polecenia platformy Azure lub rozszerzenia VS Code Azure Machine Learning. Jeśli masz obliczeniowych elementów docelowych, które zostały utworzone za pomocą innej usługi (na przykład klastra usługi HDInsight), możesz ich używać, dołączanie ich do obszaru roboczego usługi Azure Machine Learning.
  
 W tym artykule dowiesz się, jak używać różnych obiektów docelowych obliczeń do uczenia modelu.  Kroki dla wszystkich obiektów docelowych obliczeń są zgodne z tym samym przepływem pracy:
 1. __Utwórz__ obiekt docelowy obliczeń, jeśli jeszcze go nie masz.
@@ -45,9 +45,9 @@ Usługa Azure Machine Learning ma różne wsparcie dla różnych obiektów docel
 
 ## <a name="whats-a-run-configuration"></a>Co to jest Konfiguracja przebiegu?
 
-Podczas szkolenia często rozpoczyna się na komputerze lokalnym, a następnie uruchamia ten skrypt szkoleniowy na innym miejscu docelowym obliczeń. Za pomocą usługi Azure Machine Learning można uruchomić skrypt na różnych obiektach docelowych obliczeń bez konieczności zmiany skryptu. 
+Podczas szkolenia często rozpoczyna się na komputerze lokalnym, a następnie uruchamia ten skrypt szkoleniowy na innym miejscu docelowym obliczeń. Za pomocą usługi Azure Machine Learning można uruchomić skrypt na różnych obiektach docelowych obliczeń bez konieczności zmiany skryptu.
 
-Wystarczy zdefiniować środowisko dla każdego obiektu docelowego obliczeń w ramach **konfiguracji przebiegu**.  Następnie, gdy chcesz uruchomić eksperyment szkoleniowy w innym miejscu docelowym obliczeń, określ konfigurację uruchamiania dla tego obliczenia. Aby uzyskać szczegółowe informacje na temat określania środowiska i powiązania go w celu uruchomienia konfiguracji, zobacz [Tworzenie środowisk i zarządzanie nimi na potrzeby szkolenia i wdrażania](how-to-use-environments.md)
+Wystarczy zdefiniować środowisko dla każdego obiektu docelowego obliczeń w ramach **konfiguracji przebiegu**.  Następnie, gdy chcesz uruchomić eksperyment szkoleniowy w innym miejscu docelowym obliczeń, określ konfigurację uruchamiania dla tego obliczenia. Aby uzyskać szczegółowe informacje dotyczące określania środowiska i powiązania go z konfiguracją, zobacz [Tworzenie środowisk i zarządzanie nimi w celu szkolenia i wdrażania](how-to-use-environments.md).
 
 Dowiedz się więcej o [przesyłaniu eksperymentów](#submit) na końcu tego artykułu.
 
@@ -278,6 +278,7 @@ Możesz uzyskać dostęp do obiektów docelowych obliczeń skojarzonych z obszar
 * [Tworzenie obiektu docelowego obliczeń](#portal-create) w obszarze roboczym
 * [Dołącz obiekt docelowy obliczeń](#portal-reuse) , który został utworzony poza obszarem roboczym
 
+
 Po utworzeniu elementu docelowego i dołączeniu go do obszaru roboczego będzie on używany w konfiguracji przebiegu z `ComputeTarget` obiektem: 
 
 ```python
@@ -290,7 +291,8 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 Aby zobaczyć cele obliczeń dla obszaru roboczego, wykonaj następujące czynności:
 
-1. Przejdź do [Azure Portal](https://portal.azure.com) i Otwórz obszar roboczy. 
+1. Przejdź do [Azure Portal](https://portal.azure.com) i Otwórz obszar roboczy. Możesz również uzyskać dostęp do tych samych kroków na [stronie docelowej obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com), ale poniższe obrazy pokazują Azure Portal.
+ 
 1. W obszarze __aplikacje__wybierz pozycję __obliczenia__.
 
     [![Wyświetl kartę obliczenia](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)

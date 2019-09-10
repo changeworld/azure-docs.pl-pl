@@ -1,7 +1,7 @@
 ---
 title: Konfigurowanie środowiska deweloperskiego języka Python
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak skonfigurować środowisko programistyczne podczas pracy z usługą Azure Machine Learning. W tym artykule dowiesz się, jak używać środowisk Conda, tworzyć pliki konfiguracyjne i konfigurować własny serwer notesu oparty na chmurze, notesy Jupyter, Azure Databricks, Azure Notebooks, środowisk IDE, edytory kodu i Data Science Virtual Machine.
+description: Dowiedz się, jak skonfigurować środowisko programistyczne podczas pracy z usługą Azure Machine Learning. W tym artykule dowiesz się, jak używać środowisk Conda, tworzyć pliki konfiguracji i konfigurować własny serwer notesu oparty na chmurze, notesy Jupyter, Azure Databricks, środowisk IDE, edytory kodu i Data Science Virtual Machine.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8bf83f483bb7680b71bf928430858240deb3d603
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 39daff8be5ac072479463dc10c9041cda6b7b628
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278826"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860577"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning
 
@@ -30,7 +30,7 @@ W poniższej tabeli przedstawiono wszystkie środowiska deweloperskie omówione 
 | [Środowisko lokalne](#local) | Pełna kontrola nad środowiskiem deweloperskim i zależnościami. Uruchamiaj przy użyciu dowolnego narzędzia kompilacji, środowiska lub IDE. | Rozpoczęcie pracy trwa dłużej. Wymagane pakiety SDK muszą być zainstalowane, a także należy zainstalować środowisko, jeśli jeszcze go nie masz. |
 | [Azure Databricks](#aml-databricks) | Idealne rozwiązanie do uruchamiania przepływów pracy uczenia maszynowego dużej skali na skalowalnej platformie Apache Spark. | Zbyt obszerne eksperymentalne Uczenie maszynowe, a także na mniejsze eksperymenty i przepływy pracy. Dodatkowe koszty poniesione przez Azure Databricks. Zobacz [szczegóły cennika](https://azure.microsoft.com/pricing/details/databricks/). |
 | [Data Science Virtual Machine (DSVM)](#dsvm) | Podobnie jak w przypadku maszyn wirtualnych opartych na chmurze (Python i SDK są wstępnie zainstalowane), ale przy użyciu dodatkowych popularnych narzędzi do nauki o danych i uczenia maszynowego. Łatwe skalowanie i łączenie z innymi niestandardowymi narzędziami i przepływami pracy. | Wolniejsze środowisko uruchamiania w porównaniu z maszyną wirtualną w notesie opartym na chmurze. |
-| [Azure Notebooks](#aznotebooks) | Bezpłatne i uproszczone środowisko do uruchamiania, w języku Python i wstępnie zainstalowanym zestawie SDK. | Mniej zaawansowane maszyny wirtualne dostępne w porównaniu z maszyną wirtualną notesu w chmurze. Izolowany od obszaru roboczego i innych zasobów. |
+
 
 Ten artykuł zawiera również dodatkowe wskazówki dotyczące użycia następujących narzędzi:
 
@@ -40,7 +40,7 @@ Ten artykuł zawiera również dodatkowe wskazówki dotyczące użycia następuj
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Obszar roboczy usługi Azure Machine Learning. Aby utworzyć obszar roboczy, zobacz [Tworzenie obszaru roboczego usługi Azure Machine Learning](how-to-manage-workspace.md). Obszar roboczy to wszystko, co jest potrzebne, aby rozpocząć pracę z własnym [serwerem notesu opartym na chmurze](#notebookvm), [DSVM](#dsvm), [Azure Databricks](#aml-databricks)lub [Azure Notebooks](#aznotebooks).
+Obszar roboczy usługi Azure Machine Learning. Aby utworzyć obszar roboczy, zobacz [Tworzenie obszaru roboczego usługi Azure Machine Learning](how-to-manage-workspace.md). Obszar roboczy to wszystko, co jest potrzebne, aby rozpocząć pracę z własnym [serwerem notesu opartym na chmurze](#notebookvm), [DSVM](#dsvm)lub [Azure Databricks](#aml-databricks).
 
 Aby zainstalować środowisko zestawu SDK dla [komputera lokalnego](#local), [Jupyter Notebook serwerze](#jupyter) lub [Visual Studio Code](#vscode) , potrzebne są również następujące elementy:
 
@@ -290,7 +290,7 @@ Azure Databricks jest środowiskiem opartym na Apache Spark w chmurze platformy 
 Jak Azure Databricks współpracuje z usługą Azure Machine Learning:
 + Możesz nauczyć model przy użyciu platformy Spark MLlib i wdrożyć model do ACI/AKS z poziomu Azure Databricks.
 + Możesz również użyć funkcji [automatycznego uczenia maszynowego](concept-automated-ml.md) w specjalnym zestawie SDK usługi Azure ML z Azure Databricks.
-+ Azure Databricks jako obiekt docelowy obliczeń można użyć z [potoku Azure Machine Learning](concept-ml-pipelines.md).
++ Azure Databricks jako obiekt docelowy obliczeń można użyć z potoku [Azure Machine Learning](concept-ml-pipelines.md).
 
 ### <a name="set-up-your-databricks-cluster"></a>Konfigurowanie klastra datakostks
 
@@ -352,17 +352,6 @@ Wypróbuj:
   Chociaż dostępnych jest wiele przykładowych notesów, **tylko [te przykładowe notesy](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) współpracują z Azure Databricks.**
 
 + Dowiedz się [, jak tworzyć potoki z kostkami w ramach obliczeń szkoleniowych](how-to-create-your-first-pipeline.md).
-
-## <a id="aznotebooks"></a>Notesy platformy Azure
-
-[Notesy platformy Azure](https://notebooks.azure.com) (wersja zapoznawcza) to opracowywanie interakcyjne środowisko w chmurze platformy Azure. Jest to prosty sposób, aby rozpocząć pracę z programowaniem Azure Machine Learning.
-
-* Zestaw Azure Machine Learning SDK jest już zainstalowany.
-* Po utworzeniu obszaru roboczego usługi Azure Machine Learning w Azure Portal można kliknąć przycisk, aby automatycznie skonfigurować środowisko Azure Notes do pracy z obszarem roboczym.
-
-Użyj [Azure Portal](https://portal.azure.com) , aby rozpocząć pracę z Azure Notebooks.  Otwórz obszar roboczy i w sekcji **Przegląd** wybierz pozycję **Rozpocznij w Azure Notebooks**.
-
-Domyślnie Azure Notebooks korzysta z bezpłatnej warstwy usług, która jest ograniczona do 4 GB pamięci i 1 GB danych. Można jednak usunąć te limity przez dołączenie wystąpienia Data Science Virtual Machine do projektu Azure Notebooks. Aby uzyskać więcej informacji, zobacz [Zarządzanie i Konfigurowanie projektów Azure Notebooks — warstwa obliczeniowa](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
 
 ## <a id="workspace"></a>Utwórz plik konfiguracji obszaru roboczego
 

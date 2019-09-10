@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 7af6abefd132df7980bdc6e485734a996761653b
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 151058f23bed674883da57e0b728dc1df4b698d9
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972795"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70846153"
 ---
 # <a name="set-up-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>Skonfiguruj chmurę prywatną jako miejsce docelowe odzyskiwania po awarii za pomocą programu VMware Site Recovery Manager
 
@@ -33,6 +33,8 @@ Rozwiązanie CloudSimple wymaga wykonania następujących czynności:
 * Udostępnianie własnych licencji dla usługi SRM, gdy Chmura prywatna jest chroniona. Nie są potrzebne żadne dodatkowe licencje SRM dla witryny CloudSimple, gdy jest ona używana jako lokacja odzyskiwania.
 
 Dzięki temu rozwiązaniu masz pełną kontrolę nad replikacją vSphere i SRM. Znane interfejs użytkownika, interfejs API i interfejsy interfejsu wiersza polecenia umożliwiają korzystanie z istniejących skryptów i narzędzi.
+
+![Wdrożenie programu Site Recovery Manager](media/srm-deployment.png)
 
 Możesz użyć dowolnej wersji vRA i SRM, które są zgodne z chmurą prywatną i środowiskami lokalnymi. W przykładach w tym przewodniku użyto vRA 6,5 i SRM 6,5. Te wersje są zgodne z vSphere 6,5, który jest obsługiwany przez CloudSimple.
 
@@ -196,7 +198,7 @@ W [tym artykule z bazy wiedzy VMware](https://kb.vmware.com/s/article/2087769) z
 
 #### <a name="vcenter-ui-configure-srm"></a>Interfejs użytkownika vCenter: Konfigurowanie SRM
 
-Po zainstalowaniu usługi SRM w chmurze prywatnej wykonaj następujące zadania zgodnie z opisem w sekcji podręcznika instalacji i konfiguracji programu VMware Site Recovery Manager. W przypadku SRM 6,5 instrukcje są dostępne w dokumencie programu VMware instalującym program [Site Recovery Manager](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-437E1B65-A17B-4B4B-BA5B-C667C90FA418.html).
+Po zainstalowaniu usługi SRM w chmurze prywatnej wykonaj następujące zadania zgodnie z opisem w sekcji podręcznika instalacji i konfiguracji programu VMware Site Recovery Manager. W przypadku SRM 6,5 instrukcje są dostępne w dokumencie programu VMware [instalującym program Site Recovery Manager](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-437E1B65-A17B-4B4B-BA5B-C667C90FA418.html).
 
 1. Połącz wystąpienia serwera programu Site Recovery Manager w witrynach chronionych i odzyskiwania.
 2. Nawiąż połączenie z klientem z wystąpieniem serwera zdalnego Site Recovery Manager.
@@ -215,7 +217,7 @@ Masz pełną kontrolę nad replikacją vSphere i oprogramowaniem SRM w środowis
 
 ## <a name="multiple-replication-configuration"></a>Konfiguracja wielu replikacji
 
- W tym samym czasie [można jednocześnie używać zarówno technologii replikacji opartej na tablicy, jak i vSphere](https://blogs.vmware.com/virtualblocks/2017/06/22/srm-array-based-replication-vs-vsphere-replication) . Jednak muszą być stosowane do oddzielnych zestawów maszyn wirtualnych (dana maszyna wirtualna może być chroniona przez replikację opartą na tablicy lub replikację vSphere, ale nie oba te elementy). Ponadto lokację CloudSimple można skonfigurować jako lokację odzyskiwania dla wielu chronionych witryn. Zobacz [SRM opcje](https://blogs.vmware.com/virtualblocks/2016/07/28/srm-multisite/) wielolokacjowe, aby uzyskać informacje na temat konfiguracji z konfiguracją wiele lokacji.
+ W tym samym czasie [można jednocześnie używać zarówno technologii replikacji opartej na tablicy, jak i vSphere](https://blogs.vmware.com/virtualblocks/2017/06/22/srm-array-based-replication-vs-vsphere-replication) . Jednak muszą być stosowane do oddzielnych zestawów maszyn wirtualnych (dana maszyna wirtualna może być chroniona przez replikację opartą na tablicy lub replikację vSphere, ale nie oba te elementy). Ponadto lokację CloudSimple można skonfigurować jako lokację odzyskiwania dla wielu chronionych witryn. Zobacz [SRM opcje Wielolokacjowe](https://blogs.vmware.com/virtualblocks/2016/07/28/srm-multisite/) , aby uzyskać informacje na temat konfiguracji z konfiguracją wiele lokacji.
 
 ## <a name="references"></a>Odwołania
 

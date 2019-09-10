@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: d7c538bd98b3924b422a93bc67cac405a6e4b7af
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 818285e089ab01c2c603f2b0181fbd6d9179eba1
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383126"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873456"
 ---
 # <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>Jako dostawca usług kryptograficznych Utwórz aplikację IoT Central platformy Azure i zarządzaj nią w imieniu klienta
 
@@ -71,14 +71,14 @@ Aby dowiedzieć się więcej, zobacz [subskrypcje platformy Azure](https://docs.
 
 ## <a name="region"></a>Region
 
-Wybierz region, w którym chcesz utworzyć aplikację IoT Central platformy Azure. Zazwyczaj należy wybrać region znajdujący się najbliżej urządzeń, aby uzyskać optymalną wydajność.
+Wybierz [region lub lokalizację geograficzną, w](https://azure.microsoft.com/global-infrastructure/geographies/) której chcesz utworzyć aplikację IoT Central platformy Azure. Zazwyczaj należy wybrać region znajdujący się najbliżej Twoich urządzeń, aby uzyskać optymalną wydajność.
 
 > [!NOTE]
 > Szablon **aplikacji w wersji zapoznawczej** jest obecnie dostępny tylko w regionach **Europy Północnej** i **środkowe stany USA** .
 
-Aby dowiedzieć się więcej, zobacz [regiony platformy Azure](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#azure-regions).
+Aby dowiedzieć się więcej, zobacz [regiony platformy Azure](https://azure.microsoft.com/global-infrastructure/regions/) i [usługa Azure lokalizacje geograficzne](https://azure.microsoft.com/global-infrastructure/geographies/).
 
-Możesz zobaczyć regiony, w których usługa Azure IoT Central jest dostępna na stronie [dostępne produkty według regionów](https://azure.microsoft.com/regions/services/) .
+Możesz zobaczyć regiony, w których usługa Azure IoT Central jest dostępna na stronie [dostępne produkty według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=iot-central) .
 
 > [!Note]
 > Po wybraniu regionu nie można później przenieść aplikacji do innego regionu.

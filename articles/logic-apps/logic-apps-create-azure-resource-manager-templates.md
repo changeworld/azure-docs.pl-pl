@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: 9e62dd25c3ff16e280eda1ad11053ef520a85e4d
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 57e9cec16326068cc7de74b8f7266fbe47808fed
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706522"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845451"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Tworzenie Azure Resource Manager szablonów w celu zautomatyzowania wdrożenia Azure Logic Apps
 
@@ -46,7 +46,7 @@ Pobierając aplikację logiki, uzyskasz szablon zawierający definicje aplikacji
 
 ## <a name="create-templates-with-azure-powershell"></a>Tworzenie szablonów przy użyciu Azure PowerShell
 
-Szablony Menedżer zasobów można tworzyć za pomocą Azure PowerShell z modułem [LogicAppTemplate](https://github.com/jeffhollan/LogicAppTemplateCreator). Ten moduł open source najpierw szacuje aplikację logiki i wszystkie połączenia używane przez aplikację logiki. Następnie moduł generuje zasoby szablonu z wymaganymi parametrami dla wdrożenia.
+Szablony Menedżer zasobów można tworzyć za pomocą Azure PowerShell z [modułem LogicAppTemplate](https://github.com/jeffhollan/LogicAppTemplateCreator). Ten moduł open source najpierw szacuje aplikację logiki i wszystkie połączenia używane przez aplikację logiki. Następnie moduł generuje zasoby szablonu z wymaganymi parametrami dla wdrożenia.
 
 Załóżmy na przykład, że masz aplikację logiki, która odbiera komunikat z kolejki Azure Service Bus i przekazuje dane do bazy danych SQL Azure. Moduł zachowuje wszystkie logiky aranżacji i parameterizes parametry połączenia SQL i Service Bus, aby można było podać i zmienić te wartości w zależności od potrzeb wdrożenia.
 
@@ -83,10 +83,10 @@ Po uruchomieniu `Get-LogicAppTemplate` polecenia za pomocą tego narzędzia, pol
 
 ### <a name="generate-template-with-powershell"></a>Generowanie szablonu przy użyciu programu PowerShell
 
-Aby wygenerować szablon po zainstalowaniu modułu LogicAppTemplate, uruchom następujące polecenie programu PowerShell:
+Aby wygenerować szablon po zainstalowaniu modułu LogicAppTemplate i [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), Uruchom to polecenie programu PowerShell:
 
 ```text
-PS> Get-LogicAppTemplate
+PS> Get-LogicAppTemplate -Token (az account get-access-token | ConvertFrom-Json).accessToken -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json
 ```
 
 Aby postępować zgodnie z zaleceniami dotyczącymi instalacji rurowej w tokenie przy użyciu [narzędzia klienta Azure Resource Manager](https://github.com/projectkudu/ARMClient), należy uruchomić to polecenie zamiast `$SubscriptionId` identyfikatora subskrypcji platformy Azure:

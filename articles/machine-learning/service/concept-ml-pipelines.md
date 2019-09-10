@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7d7333a9316e4d39fd550872c3df04024a75d21d
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: c40fd4f776e0372d7368d182d30cfb2e01a4b0e2
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128327"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858821"
 ---
 # <a name="what-are-ml-pipelines-in-azure-machine-learning-service"></a>Co to są potoki ML w usłudze Azure Machine Learning?
 
@@ -54,7 +54,7 @@ Po zaprojektowaniu potoku jest często bardziej precyzyjne dostosowywanie pętli
 
 Za pomocą Azure Machine Learning można używać różnych zestawów narzędzi i platform, takich jak PyTorch lub TensorFlow, dla każdego etapu w potoku. Platforma Azure koordynuje między różnymi używanymi [obiektami docelowymi obliczeniowymi](concept-azure-machine-learning-architecture.md) , aby można było łatwo udostępniać dane pośrednie z podrzędnymi obiektami docelowymi obliczeniowymi.
 
-Możesz [śledzić metryki dla eksperymentów potoku](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments) bezpośrednio w witrynie Azure portal. Po opublikowaniu potoku można skonfigurować punkt końcowy REST, który umożliwia ponowne uruchomienie potoku z poziomu dowolnej platformy lub stosu.
+[Metryki dla eksperymentów potoku można śledzić](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments) bezpośrednio w Azure Portal lub na [stronie docelowej obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com). Po opublikowaniu potoku można skonfigurować punkt końcowy REST, który umożliwia ponowne uruchomienie potoku z poziomu dowolnej platformy lub stosu.
 
 ## <a name="key-advantages"></a>Najważniejsze zalety
 

@@ -1,8 +1,8 @@
 ---
-title: Skonfiguruj swoje konto w trybie offline do przesyłania strumieniowego zawartości PlayReady chronionych - Azure
-description: W tym artykule przedstawiono sposób konfigurowania konta usługi Azure Media Services do przesyłania strumieniowego PlayReady dla systemu Windows 10 w trybie offline.
+title: Skonfiguruj konto do przesyłania strumieniowego zawartości chronionej przez usługę PlayReady w trybie offline — Azure
+description: W tym artykule pokazano, jak skonfigurować konto Azure Media Services do przesyłania strumieniowego PlayReady dla systemu Windows 10 w trybie offline.
 services: media-services
-keywords: Android trybu Offline, ExoPlayer, Widevine DRM, myślnik
+keywords: ŁĄCZNIK, DRM, Widevine tryb offline, ExoPlayer, Android
 documentationcenter: ''
 author: willzhan
 manager: steveng
@@ -14,61 +14,61 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/01/2019
 ms.author: willzhan
-ms.openlocfilehash: ae5fdd51d9bc1a3e7e2521c6ca1ff64d884c96f8
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 25559c7a6f66a1092007054c72f601b428fa4e7b
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341778"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845517"
 ---
-# <a name="offline-playready-streaming-for-windows-10"></a>PlayReady w trybie offline, przesyłania strumieniowego dla systemu Windows 10
+# <a name="offline-playready-streaming-for-windows-10"></a>Tryb offline oprogramowania PlayReady Streaming dla systemu Windows 10
 
-Usługa Azure Media Services obsługuje pobieranie/odtwarzania w trybie offline dzięki ochronie DRM. W tym artykule omówiono obsługę trybu offline usługi Azure Media Services dla systemu Windows 10/PlayReady klientów. Temat pomocy technicznej w trybie offline dla systemu iOS/FairPlay i urządzeń Android/Widevine w następujących artykułach:
+Azure Media Services obsługiwać pobieranie/odtwarzanie w trybie offline przy użyciu ochrony DRM. W tym artykule omówiono obsługę Azure Media Services w przypadku klientów z systemem Windows 10/PlayReady w trybie offline. W następujących artykułach można zapoznać się z obsługą trybu offline dla urządzeń z systemami iOS/FairPlay i Android/Widevine:
 
 - [Przesyłanie strumieniowe w trybie offline przy użyciu technologii FairPlay na potrzeby systemu iOS](offline-fairplay-for-ios.md)
-- [Widevine w trybie offline, przesyłania strumieniowego dla systemu Android](offline-widevine-for-android.md)
+- [Widevine przesyłania strumieniowego w trybie offline dla systemu Android](offline-widevine-for-android.md)
 
 > [!NOTE]
-> DRM w trybie offline jest rozliczane tylko składania pojedyncze żądanie licencji, podczas pobierania zawartości. Wszelkie błędy nie są już naliczane.
+> W przypadku funkcji DRM w trybie offline jest naliczana tylko jedna prośba o licencję podczas pobierania zawartości. Nie są naliczane opłaty za żadne błędy.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
-W tej sekcji zawiera podstawowe informacje dotyczące odtwarzania w trybie offline, szczególnie Dlaczego:
+W tej sekcji przedstawiono niektóre w tle odtwarzania w trybie offline, szczególnie dlatego:
 
-* W niektórych krajach/regionach jest nadal ograniczona dostępność internetowych i/lub przepustowości. Użytkownicy mogą zdecydować się na pobieranie najpierw, aby móc obejrzeć zawartość w tyle wysokiej rozdzielczości dla środowiska oglądania zadowalające. W tym przypadku częściej, problem nie jest dostępność sieci, lecz jest ograniczona przepustowość sieci. Dostawców OTT/OVP prośbę o pomocy technicznej w trybie offline.
-* Ujawnione podczas konferencji akcjonariuszy Netflix 2016 K3, pobierania zawartości jest "strony Żądana funkcja" i "się otwarty do niego" powiedział przez Reed Hastings, Dyrektor Generalny firmy Netflix.
-* Niektórzy dostawcy zawartości może nie zezwalaj na dostarczanie licencji DRM poza krawędź kraj/region. Jeśli użytkownik musi przyjechać zagranicy i nadal chce obejrzeć zawartość, jest konieczne pobierania w trybie offline.
+* W niektórych krajach/regionach dostępność i/lub przepustowość Internetu są nadal ograniczone. Użytkownicy mogą wybrać opcję wcześniejszego pobrania, aby móc oglądać zawartość w wysokiej rozdzielczości, aby zapewnić zadowalające środowisko wyświetlania. W takim przypadku problem nie jest dostępny w sieci, a jego przepustowość jest ograniczona. Dostawcy OTT/OVP żądają obsługi trybu offline.
+* Jak przedstawiono na konferencji udziałowców Netflix 2016 Q3, pobieranie zawartości to "funkcja" z prośbą o "oft" i "jest ona otwarta" zgodnie z opisem w Reed Hastings, dyrektor generalny Netflix.
+* Niektórzy dostawcy zawartości mogą nie zezwalać na dostarczanie licencji DRM poza granicami kraju/regionu. Jeśli użytkownik musi podróżować za granicą i nadal chce obserwować zawartość, wymagane jest pobranie do trybu offline.
  
-Wyzwaniem, któremu możemy twarzy we wdrażaniu w trybie offline jest następująca:
+Wyzwanie, z którego korzystamy w implementacji trybu offline, jest następujące:
 
-* MP4 jest obsługiwany przez wiele odtwarzaczy, narzędzia kodera, ale istnieje żadne wiązanie między kontenerów w formacie MP4 i technologii DRM;
-* W dłuższej perspektywie CFF z CENC jest Zdajemy sobie. Obecnie ekosystem obsługę narzędzia/player nie jest jednak istnieje jeszcze. To rozwiązanie, musimy już dziś.
+* Plik MP4 jest obsługiwany przez wielu graczy, narzędzi koderów, ale nie ma powiązania między kontenerem MP4 i DRM.
+* W długim czasie CFF z CENC jest sposobem na to, aby to zrobić. Jednak obecnie ekosystem pomocy technicznej Tools/Player nie jest jeszcze dostępny. Potrzebujemy już rozwiązania.
  
-Chodzi o to: smooth streaming ([PIFF](https://go.microsoft.com/?linkid=9682897)) format pliku przy użyciu H264/AAC ma powiązanie o technologii PlayReady (AES-128 kont.). Poszczególne smooth przesyłania strumieniowego ismv plik (przy założeniu, że audio jest multipleksowego w filmie wideo) jest fMP4 i może służyć do odtwarzania. Bezproblemowe zawartości transmisji strumieniowej odbywa się przez szyfrowanie PlayReady, każdy plik ismv staje się PlayReady, chronione pofragmentowany plik MP4. Możemy wybrać plik ismv z preferowanych szybkości transmisji bitów i zmień jego nazwę jako MP4 do pobrania.
+Pomysłem jest: Format pliku o płynnej transmisji strumieniowej ([PIFF](https://docs.microsoft.com/iis/media/smooth-streaming/protected-interoperable-file-format)) z wielokrotna H264/AAC ma powiązanie z usługą PLAYREADY (AES-128). Indywidualny, płynny plik. ISMV (przy założeniu, że dźwięk jest muxed w filmie wideo) to fMP4 i może służyć do odtwarzania. Jeśli płynna zawartość przesyłana strumieniowo odbywa się za pomocą szyfrowania PlayReady, każdy plik. ISMV jest chronionym MP4. Możemy wybrać plik. ISMV z preferowaną szybkością transmisji bitów i zmienić jego nazwę na. mp4 do pobrania.
 
-Dla hostingu PlayReady chronione pobierania progresywnego plików MP4, dostępne są dwie opcje:
+Dostępne są dwie opcje hostingu plików MP4 chronionych przy użyciu usługi PlayReady do pobrania progresywnego:
 
-* Jeden jest umieszczenie tego MP4 w ten sam zasób usługi kontenera/media i korzystać z usługi Azure Media Services, punkt końcowy do pobierania progresywnego; przesyłania strumieniowego
-* Jeden lokalizatora SAS następuje służy do pobierania progresywnego bezpośrednio z usługi Azure Storage, z pominięciem usługi Azure Media Services.
+* Jeden z tych plików można umieścić w tym samym elemencie zawartości kontenera/nośnika i wykorzystać Azure Media Services punkt końcowy przesyłania strumieniowego na potrzeby pobierania progresywnego.
+* Jeden z nich może korzystać z usługi SAS Locator do pobierania progresywnego bezpośrednio z magazynu Azure, pomijając Azure Media Services.
  
-Można używać dwóch typów dostarczaniem licencji PlayReady:
+Można użyć dwóch typów dostarczania licencji PlayReady:
 
-* Usługi dostarczania licencji PlayReady w usłudze Azure Media Services.
-* Serwery licencji PlayReady hostowanych w dowolnym miejscu.
+* Usługa dostarczania licencji PlayReady w Azure Media Services;
+* Serwery licencji PlayReady hostowane w dowolnym miejscu.
 
-Poniżej przedstawiono dwa zestawy zasobów testowych, pierwszy z nich przy użyciu dostarczaniem licencji PlayReady w AMS podczas drugiej za pomocą Mój serwer licencji PlayReady hostowanych na Maszynie wirtualnej platformy Azure:
+Poniżej znajdują się dwa zestawy zasobów testowych, pierwszej z nich przy użyciu dostarczania licencji PlayReady w AMS, a drugi przy użyciu mojego serwera licencji PlayReady hostowanego na maszynie wirtualnej platformy Azure:
 
-Zasób #1:
+#1 zasobów:
 
-* Adres URL pobierania progresywnego: [https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4")
-* PlayReady LA_URL (AMS): [https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/](https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/)
+* Adres URL pobierania progresywnego:[https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4")
+* PlayReady LA_URL (AMS):[https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/](https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/)
 
-Zasób #2:
+#2 zasobów:
 
-* Adres URL pobierania progresywnego: [https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
-* PlayReady LA_URL (lokalnie): [https://willzhan12.cloudapp.net/playready/rightsmanager.asmx](https://willzhan12.cloudapp.net/playready/rightsmanager.asmx)
+* Adres URL pobierania progresywnego:[https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
+* PlayReady LA_URL (lokalnie):[https://willzhan12.cloudapp.net/playready/rightsmanager.asmx](https://willzhan12.cloudapp.net/playready/rightsmanager.asmx)
 
-W przypadku testowania odtwarzania użyliśmy uniwersalnej aplikacji Windows w systemie Windows 10. W [przykłady aplikacji uniwersalnych systemu Windows 10](https://github.com/Microsoft/Windows-universal-samples), znajduje się przykład podstawowego odtwarzacza o nazwie [adaptacyjnego przesyłania strumieniowego przykładowe](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/AdaptiveStreaming). Wszystko, czego musimy to zrobić, jest dodanie kodu w firmie Microsoft w celu pobrania pobrany wideo i używać go jako źródła, zamiast adaptacyjnego przesyłania strumieniowego źródła. Zmiany są przycisku program obsługi zdarzeń kliknięcia:
+Do testowania odtwarzania użyto uniwersalnej aplikacji systemu Windows w systemie Windows 10. W przypadku [uniwersalnych przykładów systemu Windows 10](https://github.com/Microsoft/Windows-universal-samples)istnieje przykład podstawowego odtwarzacza o nazwie [adaptacyjnego przesyłania strumieniowego](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/AdaptiveStreaming). Wystarczy dodać kod, aby wybrać pobrany film wideo i użyć go jako źródła zamiast adaptacyjnego źródła przesyłania strumieniowego. Zmiany są po kliknięciu przycisku programu obsługi zdarzeń:
 
 ```csharp
 private async void LoadUri_Click(object sender, RoutedEventArgs e)
@@ -111,18 +111,18 @@ private async void LoadUri_Click(object sender, RoutedEventArgs e)
 }
 ```
 
-![Odtwarzanie PlayReady w trybie offline chronione fMP4](./media/offline-playready-for-windows/offline-playready1.jpg)
+![Odtwarzanie w trybie offline fMP4 chronionych technologii PlayReady](./media/offline-playready-for-windows/offline-playready1.jpg)
 
 
-Ponieważ wideo jest objęte ochroną PlayReady, zrzut ekranu nie będzie uwzględnienie filmu wideo.
+Ponieważ film wideo jest objęty ochroną oprogramowania PlayReady, zrzut ekranu nie będzie w stanie dołączyć wideo.
 
-Podsumowując firma Microsoft otrzymano trybu offline w usłudze Azure Media Services:
+Podsumowując, osiągnięto tryb offline na Azure Media Services:
 
-* Transkodowanie zawartości i szyfrowanie PlayReady, możesz to zrobić w usłudze Azure Media Services lub innych narzędzi;
-* Zawartość może być hostowana w usłudze Azure Media Services lub usługi Azure Storage do pobierania progresywnego;
-* Może być dostarczaniem licencji PlayReady, usługi Azure Media Services lub w innym miejscu;
-* Przygotowanej zawartości transmisji strumieniowej smooth nadal można używać do przesyłania strumieniowego online za pośrednictwem DASH lub smooth za pomocą usług PlayReady jako DRM.
+* Transkodowanie zawartości i szyfrowanie PlayReady można wykonać w Azure Media Services lub innych narzędziach.
+* Zawartość może być hostowana w usłudze Azure Media Services lub Azure Storage na potrzeby pobierania progresywnego.
+* Dostawy licencji PlayReady mogą znajdować się w Azure Media Services lub w innym miejscu;
+* Przygotowanej płynnej zawartości strumieniowej można nadal używać do przesyłania strumieniowego online za pośrednictwem ŁĄCZNIKa lub Wygładź przy użyciu oprogramowania PlayReady jako technologii DRM.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Projektowanie systemu ochrony zawartości przy użyciu technologii multi-DRM z kontrolą dostępu](design-multi-drm-system-with-access-control.md)

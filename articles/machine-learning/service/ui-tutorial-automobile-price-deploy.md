@@ -9,16 +9,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/11/2019
-ms.openlocfilehash: 1e30650f932d15d23d7ffe7bd9b9fe07e9872511
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 64062aeab9a807d2aee7f4bca05d4019a3d9b736
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891614"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858632"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Samouczek: Wdrażanie modelu uczenia maszynowego za pomocą interfejsu wizualnego
 
-Aby umożliwić innym użytkownikom korzystanie z modelu predykcyjnego opracowanego w [pierwszej](ui-tutorial-automobile-price-train-score.md)części tego samouczka, możesz go wdrożyć jako usługę sieci Web platformy Azure. Do tej pory udało Ci się eksperymentować z uczeniem modelu. Teraz można generować nowe prognozy na podstawie danych wejściowych użytkownika. W tej części samouczka:
+Aby umożliwić innym użytkownikom korzystanie z modelu predykcyjnego opracowanego w pierwszej części tego [samouczka](ui-tutorial-automobile-price-train-score.md), możesz go wdrożyć jako usługę sieci Web platformy Azure. Do tej pory udało Ci się eksperymentować z uczeniem modelu. Teraz można generować nowe prognozy na podstawie danych wejściowych użytkownika. W tej części samouczka:
 
 > [!div class="checklist"]
 > * Przygotuj model do wdrożenia
@@ -33,7 +33,7 @@ Wykonaj [jedną z części samouczka](ui-tutorial-automobile-price-train-score.m
 
 ## <a name="prepare-for-deployment"></a>Przygotowanie do wdrożenia
 
-Przed wdrożeniem eksperymentu jako usługi sieci Web należy najpierw skonwertować *eksperyment szkoleniowy* do eksperymentu predykcyjnego.
+Przed wdrożeniem eksperymentu jako usługi sieci Web należy najpierw skonwertować *eksperyment szkoleniowy* do *eksperymentu predykcyjnego*.
 
 1. Wybierz pozycję **Utwórz eksperyment predykcyjny*** w dolnej części kanwy eksperymentu.
 
@@ -41,7 +41,7 @@ Przed wdrożeniem eksperymentu jako usługi sieci Web należy najpierw skonwerto
 
     Po wybraniu opcji **Utwórz eksperyment predykcyjny należy wykonać**kilka czynności:
     
-    * Szkolony model jest przechowywany jako moduł przeszkolonych **modeli** w palecie modułów. Można go znaleźć w obszarze **modele przeszkolone**.
+    * Szkolony model jest przechowywany jako moduł **przeszkolonych modeli** w palecie modułów. Można go znaleźć w obszarze **modele przeszkolone**.
     * Moduły, które zostały użyte do trenowania zostaną usunięte; w szczególności:
       * Trenowanie modelu
       * Dzielenie danych
@@ -77,7 +77,7 @@ Eksperyment powinien teraz wyglądać następująco:
 
 Możesz przetestować usługi sieci Web interfejsu wizualnego i zarządzać nimi, przechodząc do karty **usługi sieci Web** .
 
-1. Przejdź do sekcji usługa sieci Web. Zostanie wyświetlona usługa sieci Web, którą wdrożono przy użyciu samouczka z nazwą **— przewidywanie ceny samochodów [predykcyjne]** .
+1. Przejdź do sekcji usługa sieci Web. Zostanie wyświetlona usługa sieci Web, którą wdrożono przy użyciu **samouczka z nazwą — przewidywanie ceny samochodów [predykcyjne]** .
 
      ![Zrzut ekranu przedstawiający kartę usługa sieci Web z ostatnio utworzoną usługą sieci Web](./media/ui-tutorial-automobile-price-deploy/web-services.png)
 
@@ -118,6 +118,8 @@ Modele i wdrożenia usługi sieci Web utworzone w interfejsie wizualizacji możn
 1. Wybierz pozycję **wdrożenia**, aby wyświetlić listę usług sieci Web, które korzystają z modelu. Wybierz nazwę usługi sieci Web, która zostanie przestawiona na stronę szczegółów usługi sieci Web. Na tej stronie można uzyskać bardziej szczegółowe informacje o usłudze sieci Web.
 
     [![Raport szczegółowy przebiegu zrzutu ekranu](./media/ui-tutorial-automobile-price-deploy/deployment-details.png)](./media/ui-tutorial-automobile-price-deploy/deployment-details.png#lightbox)
+
+Te modele i wdrożenia można również znaleźć w sekcjach **modele** i **punkty końcowe** na [stronie docelowej obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com).
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

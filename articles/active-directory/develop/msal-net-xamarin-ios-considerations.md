@@ -17,12 +17,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 906f2fc8cdac31922e6e93526f65577fe76c4b9c
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 054033c0fc9f1138ef9ecf7eaceca626f6f53423
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532374"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70872845"
 ---
 # <a name="xamarin-ios-specific-considerations-with-msalnet"></a>Uwagi dotyczące platformy Xamarin dla systemu iOS z usługą MSAL.NET
 W oprogramowaniu Xamarin iOS istnieje kilka kwestii, które należy wziąć pod uwagę podczas korzystania z usługi MSAL.NET
@@ -104,13 +104,23 @@ Aby włączyć udostępnianie pamięci podręcznej, należy ustawić metodę Uż
 
 Wcześniej stwierdzono, że MSAL dodaliśmy $ (AppIdentifierPrefix) za każdym razem, gdy korzystasz z `WithIosKeychainSecurityGroup()` interfejsu API. Wynika to z faktu, że AppIdentifierPrefix lub "Identyfikator zespołu" służy do zapewnienia, że tylko aplikacje wykonane przez tego samego wydawcę mogą udostępniać dostęp do łańcucha kluczy.
 
-#### <a name="note-keychainsecuritygroup-property-deprecated"></a>Uwaga: Właściwość KeychainSecurityGroup jest przestarzała
+> [!NOTE]
+> **`KeychainSecurityGroup` Właściwość jest przestarzała.**
+> 
+> Wcześniej, od MSAL 2. x, deweloperzy byli zmuszeni do uwzględnienia prefiksu użytkownika przy użyciu `KeychainSecurityGroup` właściwości.
+>
+>  W MSAL 2.7. x, gdy jest używana nowa `iOSKeychainSecurityGroup` właściwość, MSAL rozwiąże prefiks użytkownika w czasie wykonywania. W przypadku używania tej właściwości wartość nie powinna zawierać prefiksu użytkownika.
+>  Użyj nowej `iOSKeychainSecurityGroup` właściwości, która nie wymaga podania użytkownika, ponieważ Poprzednia `KeychainSecurityGroup` właściwość jest już przestarzała.
 
-Wcześniej, od MSAL 2. x, deweloperzy byli zmuszeni do uwzględnienia prefiksu użytkownika przy użyciu `KeychainSecurityGroup` właściwości
+### <a name="use-microsoft-authenticator"></a>Użyj Microsoft Authenticator
 
-W MSAL 2.7. x, gdy jest używana nowa `iOSKeychainSecurityGroup` właściwość, MSAL rozwiąże prefiks użytkownika w czasie wykonywania. W przypadku używania tej właściwości wartość nie powinna zawierać prefiksu użytkownika.
+Aplikacja może używać Microsoft Authenticator (Broker) do włączania:
 
-Użyj nowej `iOSKeychainSecurityGroup` właściwości, która nie wymaga od deweloperów podania użytkownika, ponieważ Poprzednia `KeychainSecurityGroup` właściwość jest już przestarzała.
+- Logowanie jednokrotne (SSO). Użytkownicy nie muszą logować się do poszczególnych aplikacji.
+- Identyfikacja urządzenia. Przez uzyskanie dostępu do certyfikatu urządzenia, który został utworzony na urządzeniu, gdy było dołączone do miejsca pracy. Aplikacja będzie gotowa, jeśli Administratorzy dzierżawy będą mogli korzystać z dostępu warunkowego do urządzeń.
+- Weryfikacja identyfikacji aplikacji. Gdy aplikacja wywołuje brokera, przekazuje jego adres URL przekierowania i weryfikuje go.
+
+Aby uzyskać szczegółowe informacje na temat włączania brokera, zobacz [używanie Microsoft Authenticator lub Microsoft Intune portal firmy w aplikacjach Xamarin iOS i Android](msal-net-use-brokers-with-xamarin-apps.md).
 
 ### <a name="sample-illustrating-xamarin-ios-specific-properties"></a>Przykład ilustrujący specyficzne właściwości platformy Xamarin dla systemu iOS
 

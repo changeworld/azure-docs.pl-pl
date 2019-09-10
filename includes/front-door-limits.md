@@ -9,48 +9,48 @@ ms.date: 05/09/2019
 ms.author: sharadag
 ms.custom: include file
 ms.openlocfilehash: deca0034996f6c8ddcac71cd4f191c1a0659b655
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67333386"
 ---
-| Resource | Domyślne/maksymalny limit |
+| Resource | Domyślny/maksymalny limit |
 | --- | --- |
-| Zasoby platformy Azure usługa drzwiami frontowymi na subskrypcję | 100 |
-| Hosty frontonu, które obejmują domeny niestandardowe dla każdego zasobu | 100 |
-| Reguły routingu dla każdego zasobu | 100 |
-| Pule zaplecza dla każdego zasobu | 50 |
+| Zasoby usług frontonu platformy Azure na subskrypcję | 100 |
+| Hosty frontonu, w tym domeny niestandardowe na zasób | 100 |
+| Reguły routingu na zasób | 100 |
+| Pule zaplecza na zasób | 50 |
 | Zaplecza na pulę zaplecza | 100 |
-| Wzorców ścieżki odpowiadający regule routingu | 25 |
-| Reguł zapory aplikacji sieci web niestandardowego zgodnie z zasadami | 10 |
-| Zasady zapory aplikacji sieci Web dla każdego zasobu | 100 |
-| Warunki dopasowań zapory aplikacji sieci Web na niestandardową regułę | 10 |
-| Zakresy adresów IP zapory aplikacji sieci Web na dopasować stan | 600 |
-| Wartości dopasowania ciągu zapory aplikacji sieci Web na warunek dopasowania | 10 |
-| Długość wartości dopasowanie ciągu zapory aplikacji sieci Web | 256 |
-| Zapora aplikacji sieci Web długość nazwy parametru treści wpisu | 256 |
-| Zapora aplikacji sieci Web długość nazwy nagłówka HTTP | 256 |
+| Wzorce ścieżek zgodne z regułą routingu | 25 |
+| Niestandardowe reguły zapory aplikacji sieci Web według zasad | 10 |
+| Zasady zapory aplikacji sieci Web dla zasobu | 100 |
+| Warunki dopasowania zapory aplikacji sieci Web na regułę niestandardową | 10 |
+| Zakresy adresów IP zapory aplikacji sieci Web na warunek dopasowania | 600 |
+| Wartości parametrów zapory aplikacji sieci Web na warunek dopasowania | 10 |
+| Długość wartości ciągu zapory aplikacji sieci Web | 256 |
+| Długość nazwy parametru treści wpisu zapory aplikacji sieci Web | 256 |
+| Długość nazwy nagłówka HTTP zapory aplikacji sieci Web | 256 |
 | Długość nazwy pliku cookie zapory aplikacji sieci Web | 256 |
-| Aplikacja zapory HTTP żądania rozmiar treści inspekcji w sieci Web | 128 KB |
-| Długość ciała niestandardową odpowiedź zapory aplikacji sieci Web | 2 KB |
+| Inspekcja rozmiaru treści żądania HTTP zapory aplikacji sieci Web | 128 KB |
+| Długość treści niestandardowej odpowiedzi zapory aplikacji sieci Web | 2 KB |
 
 ### <a name="timeout-values"></a>Wartości limitu czasu
-#### <a name="client-to-front-door"></a>Klient drzwi
-- Drzwiami frontowymi jest bezczynny limitu czasu połączenia TCP 61 sekund.
+#### <a name="client-to-front-door"></a>Klient do przednich drzwi
+- Drzwi z przodu mają limit czasu bezczynności połączenia TCP wynoszący 61 sekund.
 
-#### <a name="front-door-to-application-back-end"></a>Drzwi do zaplecza aplikacji
-- Jeśli odpowiedź jest podzielony odpowiedzi, zwracany jest 200, jeśli lub po odebraniu pierwszego fragmentu.
-- Po żądania HTTP są przekazywane do zaplecza, drzwiami frontowymi czeka na 30 sekund w przypadku pierwszego pakietu z zaplecza. Następnie zwraca błąd 503 do klienta.
-- Po odebraniu pierwszego pakietu z zaplecza drzwiami frontowymi czeka na 30 sekund przed upływem limitu czasu bezczynności. Następnie zwraca błąd 503 do klienta.
-- Drzwiami frontowymi sesji TCP zaplecza przekroczenie limitu czasu wynosi 30 minut.
+#### <a name="front-door-to-application-back-end"></a>Tylne drzwi do zaplecza aplikacji
+- Jeśli odpowiedź jest rozsegmentową odpowiedzią, zwracany jest 200, jeśli lub kiedy zostanie odebrany pierwszy fragment.
+- Gdy żądanie HTTP zostanie przekazane do zaplecza, przód czeka przez 30 sekund na pierwszy pakiet od zaplecza. Następnie zwraca błąd 503 do klienta.
+- Po odebraniu pierwszego pakietu od zaplecza drzwi z przodu czekają na 30 sekund w przekroczeniu limitu czasu bezczynności. Następnie zwraca błąd 503 do klienta.
+- Przód do końca sesji protokołu TCP zaplecza to 30 minut.
 
-### <a name="upload-and-download-data-limit"></a>Przekazywanie i pobieranie limitu danych
+### <a name="upload-and-download-data-limit"></a>Limit przekazywania i pobierania danych
 
-|  | Za pomocą (CTE) Kodowanie fragmentaryczne transferu | Bez segmentu HTTP |
+|  | Z kodowaniem transferu fragmentarycznego (CTE) | Bez fragmentacji HTTP |
 | ---- | ------- | ------- |
-| **Pobieranie** | Nie ma żadnego limitu na rozmiar pobieranych elementów. | Nie ma żadnego limitu na rozmiar pobieranych elementów. |
-| **Przekazywanie** |  Nie ma żadnego limitu, tak długo, jak każde przekazanie CTE jest mniejszy niż 2 GB. | Rozmiar nie może być większa niż 2 GB. |
+| **Pobieranie** | Nie ma żadnego limitu rozmiaru pobierania. | Nie ma żadnego limitu rozmiaru pobierania. |
+| **Przesyłane** |  Nie ma żadnego limitu, o ile każde przesłanie CTE jest mniejsze niż 2 GB. | Rozmiar nie może być większy niż 2 GB. |
 
 ### <a name="other-limits"></a>Inne limity
-- Maksymalny rozmiar adresu URL — 8192 bajtów - określa maksymalną długość pierwotnym adresem URL (schemat + nazwy hosta i portu + ścieżki + ciągu adresu URL zapytania) — rozmiar maksymalny ciąg zapytania — 4096 bajtów - określa maksymalną długość ciągu zapytania w bajtach.
+- Maksymalny rozmiar adresu URL — 8 192 bajtów — określa maksymalną długość nieprzetworzonego adresu URL (schemat + nazwa hosta + port + ścieżka + ciąg zapytania w adresie URL) — maksymalny rozmiar ciągu zapytania — 4 096 bajtów — określa maksymalną długość ciągu zapytania w bajtach.

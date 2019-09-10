@@ -1,244 +1,244 @@
 ---
-title: Blokada Smart kontraktu wzorców integracji w aplikacji Azure Blockchain Workbench
-description: Omówienie inteligentne kontraktu wzorców integracji w aplikacji Azure Blockchain Workbench.
+title: Wzorce integracji kontraktu inteligentnego w usłudze Azure łańcucha bloków Workbench w wersji zapoznawczej
+description: Omówienie wzorców integracji kontraktu inteligentnego w usłudze Azure łańcucha bloków Workbench Preview.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/09/2019
+ms.date: 09/05/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: bd53ae3346882cf20ae7464548fa9ef2c0329f05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80c4f2683efacf575be853b6268ee958f1567440
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65957012"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845176"
 ---
-# <a name="smart-contract-integration-patterns"></a>Wzorce integracji inteligentne kontraktu
+# <a name="smart-contract-integration-patterns"></a>Wzorce integracji kontraktów inteligentnych
 
-Kontrakty inteligentne często reprezentują biznesowego przepływu pracy wymagającej integrację z zewnętrznymi systemami i urządzeń.
+Inteligentne kontrakty często przedstawiają biznesowe przepływy pracy, które muszą zostać zintegrowane z systemami zewnętrznymi i urządzeniami.
 
-Wymagania te przepływy pracy obejmują konieczność inicjowania transakcji na rejestru rozproszonego, które zawierają dane z systemu zewnętrznego, usługi lub urządzenia. Muszą również mieć systemy zewnętrzne, reagowanie na zdarzenia pochodzące z kontraktów inteligentnych na rejestru rozproszonego.
+Wymagania tych przepływów pracy obejmują konieczność inicjowania transakcji w księdze rozproszonej, która obejmuje dane z systemu zewnętrznego, usługi lub urządzenia. Muszą również mieć system zewnętrzny reagowanie na zdarzenia pochodzące z inteligentnych kontraktów w księdze rozproszonej.
 
-Interfejs API REST i integracja obsługi komunikatów wysyła transakcji z systemami zewnętrznymi, do kontraktów inteligentnych zawartych w aplikacji Azure Blockchain Workbench. Wysyła również powiadomienia o zdarzeniach z systemami zewnętrznymi, w oparciu o zmiany, które odbywają się w obrębie aplikacji.
+Integracja z interfejsem API REST i obsługą komunikatów wysyła transakcje z systemów zewnętrznych do inteligentnych kontraktów zawartych w aplikacji Azure łańcucha bloków Workbench. Wysyła również powiadomienia o zdarzeniach do systemów zewnętrznych w oparciu o zmiany, które mają miejsce w aplikacji.
 
-W przypadku scenariuszy integracji danych aplikacji Azure Blockchain Workbench obejmuje zestaw widoków bazy danych, które łączą się z kombinacją dane transakcyjne z łańcucha bloków i metadane dotyczące aplikacji i narzędzi smart Contract.
+W przypadku scenariuszy integracji danych usługa Azure łańcucha bloków Workbench obejmuje zestaw widoków bazy danych, które scalają kombinację danych transakcyjnych z łańcucha bloków i meta-danych dotyczących aplikacji i inteligentnych kontraktów.
 
-Ponadto niektóre scenariusze, takie jak te związane z łańcucha lub nośników, może również wymagać integracji dokumentów. Gdy w aplikacji Azure Blockchain Workbench nie zapewnia, że wywołania interfejsu API do obsługi dokumentów bezpośrednio, dokumenty można zintegrować aplikacji łańcucha bloków. Ta sekcja zawiera również tego wzorca.
+Ponadto niektóre scenariusze, takie jak te powiązane z łańcuchem dostaw lub nośnikiem, mogą również wymagać integracji dokumentów. Chociaż usługa Azure łańcucha bloków Workbench nie zapewnia wywołań interfejsu API do bezpośredniej obsługi dokumentów, dokumenty mogą być zawarte w aplikacji łańcucha bloków. Ta sekcja zawiera również ten wzorzec.
 
-Ta sekcja zawiera wzorce określone dla wdrażania każdego z tych typów integracji w rozwiązaniach typu end to end.
+Ta sekcja zawiera wzorce identyfikowane w celu zaimplementowania każdego z tych typów integracji w kompleksowych rozwiązaniach.
 
-## <a name="rest-api-based-integration"></a>Integracja z interfejsu API REST
+## <a name="rest-api-based-integration"></a>Integracja oparta na interfejsie API REST
 
-Możliwości w ramach aplikacji Azure Blockchain Workbench generowane aplikację sieci web są udostępniane za pośrednictwem interfejsu API REST. Funkcje obejmują przekazywanie aplikacji Azure Blockchain Workbench, konfiguracji i administracji aplikacjami, wysyłanie transakcji do rejestru rozproszonego i wysyłania zapytań do metadanych i rejestr danych aplikacji.
+Możliwości w ramach aplikacji sieci Web wygenerowanej przez usługę Azure łańcucha bloków Workbench są udostępniane za pośrednictwem interfejsu API REST. Funkcje obejmują usługę Azure łańcucha bloków Workbench, która umożliwia przekazywanie, Konfigurowanie i administrowanie aplikacjami, wysyłanie transakcji do księgi rozproszonej oraz wykonywanie zapytań dotyczących metadanych aplikacji i danych księgi.
 
-Interfejs API REST jest używany głównie dla klientów interaktywnych, takich jak sieci web, mobilnych i bot aplikacji.
+Interfejs API REST jest używany głównie dla klientów interaktywnych, takich jak aplikacje internetowe, mobilne i bot.
 
-W tej sekcji omówiono wzorce koncentruje się na aspektach interfejsu API REST, wysyłających transakcji do rejestru rozproszonego i wzorców tego zapytania o dane dotyczące transakcji z platformy Azure Blockchain Workbench *wyłączone łańcucha* bazy danych SQL.
+Ta sekcja analizuje wzorce ukierunkowane na aspekty interfejsu API REST, które wysyłają transakcje do rozproszonej księgi i wzorców, które wykonują zapytania dotyczące danych o transakcjach z usługi Azure łańcucha bloków Workbench *off* Database.
 
-### <a name="sending-transactions-to-a-distributed-ledger-from-an-external-system"></a>Wysyłanie transakcje rozproszone rejestr z systemu zewnętrznego
+### <a name="sending-transactions-to-a-distributed-ledger-from-an-external-system"></a>Wysyłanie transakcji do księgi rozproszonej z systemu zewnętrznego
 
-Interfejs API REST Azure Blockchain Workbench wysyła uwierzytelnionego żądania do wykonania transakcji na rejestru rozproszonego.
+Interfejs API REST usługi Azure łańcucha bloków Workbench wysyła uwierzytelnione żądania do wykonywania transakcji w księdze rozproszonej.
 
-![Wysyłanie transakcji do rejestru rozproszonego](./media/integration-patterns/send-transactions-ledger.png)
+![Wysyłanie transakcji do księgi rozproszonej](./media/integration-patterns/send-transactions-ledger.png)
 
-Wykonywanie transakcji występuje, przy użyciu procesu przedstawiony wcześniej, gdzie:
+Wykonywanie transakcji odbywa się przy użyciu przedstawionego wcześniej procesu, gdzie:
 
--   Zewnętrzna aplikacja uwierzytelnia się z usługą Azure Active Directory aprowizowany w ramach wdrażania aplikacji Azure Blockchain Workbench.
--   Autoryzowani użytkownicy otrzymują tokenu elementu nośnego, który można wysłać żądań do interfejsu API.
--   Aplikacjami zewnętrznymi wywołań interfejsu API REST przy użyciu tokenu elementu nośnego.
--   Interfejs API REST żądanie, jak jeden komunikat i wysyła je do usługi Service Bus. W tym miejscu jest pobierana, podpisane i wysyłane do odpowiedniego rejestru rozproszonego.
--   Interfejs API REST kieruje żądanie do Blockchain Workbench bazy danych SQL Azure do zapisywania żądania i ustanowić bieżący stan inicjowania obsługi administracyjnej.
--   Bazy danych SQL zwraca stan inicjowania obsługi administracyjnej i wywołania interfejsu API zwraca identyfikator aplikacji zewnętrznej, która nazwała go.
+-   Aplikacja zewnętrzna jest uwierzytelniana do Azure Active Directory obsługiwanego w ramach wdrożenia usługi Azure łańcucha bloków Workbench.
+-   Autoryzowani użytkownicy otrzymują token okaziciela, który można wysłać z żądaniami do interfejsu API.
+-   Aplikacje zewnętrzne umożliwiają wywoływanie interfejsu API REST przy użyciu tokenu okaziciela.
+-   Interfejs API REST pakuje żądanie jako komunikat i wysyła go do Service Bus. Z tego miejsca są pobierane, podpisane i wysyłane do odpowiedniej księgi rozproszonej.
+-   Interfejs API REST wysyła żądanie do usługi Azure łańcucha bloków Workbench SQL DB, aby zarejestrować żądanie i ustalić bieżący stan aprowizacji.
+-   Baza danych SQL zwraca stan aprowizacji, a wywołanie interfejsu API zwraca identyfikator do zewnętrznej aplikacji, która go wywołała.
 
-### <a name="querying-blockchain-workbench-metadata-and-distributed-ledger-transactions"></a>Wysyłanie zapytań dotyczących metadanych aplikacji Blockchain Workbench i transakcje rozproszone finansowe
+### <a name="querying-blockchain-workbench-metadata-and-distributed-ledger-transactions"></a>Wykonywanie zapytania dotyczącego metadanych łańcucha bloków Workbench i transakcji księgi rozproszonej
 
-Interfejs API REST Azure Blockchain Workbench wysyła uwierzytelnionego żądania do Szczegóły zapytania związane z wykonaniem inteligentne kontraktu na rejestru rozproszonego.
+Interfejs API REST usługi Azure łańcucha bloków Workbench wysyła uwierzytelnione żądania do szczegółów zapytania związanych z wykonywaniem inteligentnego kontraktu w księdze rozproszonej.
 
-![Tworzenie zapytań metadanych](./media/integration-patterns/querying-metadata.png)
+![Wykonywanie zapytania dotyczącego metadanych](./media/integration-patterns/querying-metadata.png)
 
-Wykonywanie zapytań występuje, przy użyciu procesu przedstawiony wcześniej, gdzie:
+Wykonywanie zapytań odbywa się przy użyciu przedstawionych wcześniej procesów, gdzie:
 
-1. Zewnętrzna aplikacja uwierzytelnia się z usługą Azure Active Directory aprowizowany w ramach wdrażania aplikacji Azure Blockchain Workbench.
-2. Autoryzowani użytkownicy otrzymują tokenu elementu nośnego, który można wysłać żądań do interfejsu API.
-3. Aplikacjami zewnętrznymi wywołań interfejsu API REST przy użyciu tokenu elementu nośnego.
-4. Interfejs API REST wykonuje zapytania o dane na żądanie z bazy danych SQL i zwraca go do klienta.
+1. Aplikacja zewnętrzna jest uwierzytelniana do Azure Active Directory obsługiwanego w ramach wdrożenia usługi Azure łańcucha bloków Workbench.
+2. Autoryzowani użytkownicy otrzymują token okaziciela, który można wysłać z żądaniami do interfejsu API.
+3. Aplikacje zewnętrzne umożliwiają wywoływanie interfejsu API REST przy użyciu tokenu okaziciela.
+4. Interfejs API REST wysyła zapytanie o dane żądania z bazy danych SQL i zwraca go do klienta.
 
-## <a name="messaging-integration"></a>Integracja obsługi komunikatów
+## <a name="messaging-integration"></a>Integracja z obsługą wiadomości
 
-Wiadomości integracji umożliwia interakcję z systemów, usług i urządzeń, w którym interakcyjnego logowania nie jest niemożliwe lub niepożądane. Integracja obsługi komunikatów, który koncentruje się na dwa typy komunikatów: komunikaty żądania transakcji można wykonać względem rejestru rozproszonego i zdarzenia udostępniane przez ten rejestr, gdy transakcji miały miejsce.
+Integracja z obsługą wiadomości ułatwia interakcję z systemami, usługami i urządzeniami, w których logowanie interakcyjne nie jest możliwe ani pożądane. Integracja z obsługą wiadomości koncentruje się na dwóch typach komunikatów: komunikaty żądające transakcji są wykonywane w księdze rozproszonej oraz zdarzenia udostępniane przez ten księgę w przypadku zrealizowania transakcji.
 
-Integracja obsługi komunikatów, który koncentruje się na wykonywanie i monitorowanie transakcji związanych z tworzenia użytkownika, kontrakt tworzenia i wykonywanie transakcji w kontraktach i jest używany głównie *bezobsługowego* systemów zaplecza.
+Integracja z obsługą komunikatów koncentruje się na wykonywaniu i monitorowaniu transakcji związanych z tworzeniem, tworzeniem kontraktu i wykonywaniem transakcji w ramach kontraktów . jest ona głównie używana przez bezobsługowe systemy zaplecza.
 
-W tej sekcji omówiono wzorce koncentruje się na aspektach oparta na komunikatach interfejsu API, który Wyślij transakcje rozproszone księdze i wzorców, które reprezentują udostępnianych przez bazowego rejestru rozproszonego komunikaty o zdarzeniach.
+Ta sekcja analizuje wzorce ukierunkowane na aspekty interfejsu API opartego na komunikatach, które wysyłają transakcje do rozproszonej księgi i wzorców, które reprezentują komunikaty o zdarzeniach udostępniane przez podstawową księgę rozproszoną.
 
-### <a name="one-way-event-delivery-from-a-smart-contract-to-an-event-consumer"></a>Dostarczanie zdarzeń jednokierunkowe z inteligentnych umowy do odbiorcy zdarzeń 
+### <a name="one-way-event-delivery-from-a-smart-contract-to-an-event-consumer"></a>Jednokierunkowe dostarczanie zdarzeń od kontraktu inteligentnego do odbiorcy zdarzeń 
 
-W tym scenariuszu występuje zdarzenie w ramach inteligentnych umowy, na przykład zmiany stanu lub wykonania określonego typu transakcji. To zdarzenie jest emitowany za pośrednictwem usługi Event Grid do klientów transmisji i tych konsumentów, a następnie podjąć odpowiednie działania.
+W tym scenariuszu zdarzenie występuje w ramach kontraktu inteligentnego, na przykład zmiany stanu lub wykonania określonego typu transakcji. To zdarzenie jest emitowane za pośrednictwem Event Grid do odbiorców podrzędnych, a Ci klienci podejmują odpowiednie działania.
 
-Przykładem tego scenariusza jest, że w przypadku transakcji odbiorcy będą otrzymywać alerty i może podejmować działań, takich jak rejestrowanie informacji w bazie danych SQL lub usługi Common Data Service. Ten scenariusz jest tym samym wzorcem, występującego w aplikacji Workbench do wypełnienia jego *wyłączone łańcucha* bazy danych SQL.
+Przykładowy scenariusz polega na tym, że gdy wystąpi transakcja, odbiorca będzie otrzymywać alerty i może podejmować działania, takie jak rejestrowanie informacji w bazie danych SQL lub Common Data Service. Ten scenariusz jest tym samym wzorcem, który Workbench, aby wypełnić bazę danych SQL w *łańcuchu off* .
 
-Będzie inny, jeśli kontrakt inteligentne przechodzi do określonego stanu, na przykład gdy kontrakt przechodzi w *OutOfCompliance*. W przypadku tej zmiany stanu wyzwalać alert zostanie wysłane na telefon komórkowy przez administratora.
+Kolejną może być to, że inteligentne przejście kontraktu do określonego stanu, na przykład gdy kontrakt przejdzie do *OutOfCompliance*. Po zmianie tego stanu może zostać wyzwolony alert wysyłany do telefonu komórkowego administratora.
 
-![Dostarczanie zdarzeń jednokierunkowe](./media/integration-patterns/one-way-event-delivery.png)
+![Dostarczanie zdarzeń jednokierunkowych](./media/integration-patterns/one-way-event-delivery.png)
 
-W tym scenariuszu występuje przy użyciu procesu przedstawiony wcześniej, gdzie:
+Ten scenariusz odbywa się przy użyciu przedstawionego wcześniej procesu, gdzie:
 
--   Inteligentne kontraktu przechodzi do stanu nowych i wysyła zdarzenie do rejestru.
--   Księgi odbiera i dostarcza zdarzenia do aplikacji Azure Blockchain Workbench.
--   Azure Blockchain Workbench subskrybuje zdarzenia z księgi i odbiera zdarzenia.
--   Azure Blockchain Workbench publikuje zdarzenie subskrybentom w usługi Event Grid.
--   Systemy zewnętrzne mają subskrypcję usługi Event Grid, używanie wiadomości i podjąć odpowiednie działania.
+-   Inteligentne przejście kontraktu do nowego stanu i wysłanie zdarzenia do księgi.
+-   Księga otrzymuje i dostarcza zdarzenie do usługi Azure łańcucha bloków Workbench.
+-   Usługa Azure łańcucha bloków Workbench subskrybuje zdarzenia z księgi i odbiera zdarzenie.
+-   Usługa Azure łańcucha bloków Workbench publikuje zdarzenie dla subskrybentów na Event Grid.
+-   Systemy zewnętrzne są subskrybowane Event Grid, zużywają komunikat i podejmują odpowiednie działania.
 
-## <a name="one-way-event-delivery-of-a-message-from-an-external-system-to-a-smart-contract"></a>Dostarczanie zdarzeń jednokierunkowe wiadomości z zewnętrznego systemu do inteligentnego kontraktu
+## <a name="one-way-event-delivery-of-a-message-from-an-external-system-to-a-smart-contract"></a>Jednokierunkowe dostarczanie komunikatów z systemu zewnętrznego do kontraktu inteligentnego
 
-Istnieje również scenariusz, który przepływa w odwrotnym kierunku. W tym przypadku zdarzenie jest generowane przez czujnik lub zewnętrznego systemu i dane z tego zdarzenia, które mają być wysyłane do inteligentnego kontraktu.
+Istnieje również scenariusz, który przepływa od przeciwnego kierunku. W takim przypadku zdarzenie jest generowane przez czujnik lub system zewnętrzny, a dane z tego zdarzenia powinny być wysyłane do kontraktu inteligentnego.
 
-Typowym przykładem jest dostarczanie danych z rynków finansowych, z na przykład ceny towarów, akcji i zobowiązania, inteligentne kontraktu.
+Typowym przykładem jest dostarczanie danych z rynków finansowych, na przykład cen towarów, giełd lub obligacji, do kontraktu inteligentnego.
 
-### <a name="direct-delivery-of-an-azure-blockchain-workbench-in-the-expected-format"></a>Bezpośrednie dostarczanie aplikacji Azure Blockchain Workbench w oczekiwanym formacie
+### <a name="direct-delivery-of-an-azure-blockchain-workbench-in-the-expected-format"></a>Bezpośrednie dostarczanie Workbench usługi Azure łańcucha bloków w oczekiwanym formacie
 
-Niektóre aplikacje są kompilowane do integracji z aplikacji Azure Blockchain Workbench bezpośrednio generuje i wysyłanie komunikatów w oczekiwanym formacie.
+Niektóre aplikacje są kompilowane do integracji z usługą Azure łańcucha bloków Workbench i bezpośrednio generują i wysyłają komunikaty w oczekiwanych formatach.
 
 ![Bezpośrednie dostarczanie](./media/integration-patterns/direct-delivery.png)
 
-Ta dostarczania wiadomości, że przy użyciu procesu przedstawiony wcześniej, gdzie:
+To dostarczanie odbywa się przy użyciu przedstawionego wcześniej procesu, gdzie:
 
--   Zdarzenie występuje w systemie zewnętrznym, wyzwalającego tworzenia wiadomości dla aplikacji Azure Blockchain Workbench.
--   System zewnętrzny ma kodu napisanego w celu tworzenia tego komunikatu w znanym formacie i wysyła je bezpośrednio z usługą Service Bus.
--   Azure Blockchain Workbench subskrybuje zdarzenia z usługi Service Bus i pobiera komunikat.
--   Azure Blockchain Workbench inicjuje wywołanie w księdze wysyłanie danych z systemu zewnętrznego do określonej umowy.
--   Po otrzymaniu komunikatu kontrakt przechodzi w stan nowego.
+-   Zdarzenie występuje w systemie zewnętrznym, który wyzwala Tworzenie komunikatu dla usługi Azure łańcucha bloków Workbench.
+-   System zewnętrzny ma kod zapisany w celu utworzenia tego komunikatu w znanym formacie i wysyła go bezpośrednio do Service Bus.
+-   Usługa Azure łańcucha bloków Workbench subskrybuje zdarzenia z Service Bus i pobiera komunikat.
+-   Usługa Azure łańcucha bloków Workbench inicjuje wywołanie do księgi, wysyłając dane z systemu zewnętrznego do określonego kontraktu.
+-   Po otrzymaniu wiadomości kontrakt przechodzi do nowego stanu.
 
-### <a name="delivery-of-a-message-in-a-format-unknown-to-azure-blockchain-workbench"></a>Dostarczanie komunikatów w formacie nieznany do aplikacji Azure Blockchain Workbench
+### <a name="delivery-of-a-message-in-a-format-unknown-to-azure-blockchain-workbench"></a>Dostarczanie komunikatu w formacie nieznanego do usługi Azure łańcucha bloków Workbench
 
-Niektóre systemy nie można zmodyfikować w celu dostarczenia komunikatu w standardowych formatów używanych przez aplikacji Azure Blockchain Workbench. W tych przypadkach istniejących mechanizmów i komunikat można często używane w formacie tych systemów. W szczególności typy natywne wiadomości te systemy mogą zostać przekształcone przy użyciu Logic Apps, Azure Functions lub inny kod niestandardowy do mapowania do jednej ze standardowych komunikatów oczekiwane formaty.
+Niektórych systemów nie można modyfikować w celu dostarczania komunikatów w standardowym formacie używanym przez usługę Azure łańcucha bloków Workbench. W takich przypadkach często można używać istniejących mechanizmów i formatów komunikatów z tych systemów. W tym celu typy komunikatów natywnych tych systemów można przekształcać przy użyciu Logic Apps, Azure Functions lub innego kodu niestandardowego do zamapowania na jeden z oczekiwanych standardowych formatów obsługi komunikatów.
 
-![Format nieznany komunikat](./media/integration-patterns/unknown-message-format.png)
+![Nieznany format wiadomości](./media/integration-patterns/unknown-message-format.png)
 
-Dzieje się tak, że przy użyciu procesu przedstawiony wcześniej, gdzie:
+Odbywa się to przy użyciu wcześniej utworzonego procesu, gdzie:
 
--   W systemie zewnętrznym, wyzwalającego tworzenia komunikat o wystąpieniu zdarzenia.
--   Aplikacji logiki lub kod niestandardowy jest używany do odbierania tego komunikatu i przekształcić je do standardowych aplikacji Azure Blockchain Workbench sformatowany komunikat.
--   Aplikacja logiki wysyła przekształcony komunikat bezpośrednio z usługą Service Bus.
--   Azure Blockchain Workbench subskrybuje zdarzenia z usługi Service Bus i pobiera komunikat.
--   Azure Blockchain Workbench inicjuje wywołanie w księdze wysyłanie danych z systemu zewnętrznego do konkretną funkcję w umowie.
--   Funkcja wykonuje i zazwyczaj zmienia stan. Zmiana stanu przenosi do przodu biznesowego przepływu pracy zostaną uwzględnione w umowie inteligentne, umożliwiające innych funkcji, aby teraz wykonywane zgodnie z potrzebami.
+-   Zdarzenie występuje w systemie zewnętrznym, który wyzwala Tworzenie komunikatu.
+-   Aplikacja logiki lub kod niestandardowy jest używany do otrzymywania wiadomości i przekształcania go w standardowy komunikat o formacie Workbench usługi Azure łańcucha bloków.
+-   Aplikacja logiki wysyła przekształcony komunikat bezpośrednio do Service Bus.
+-   Usługa Azure łańcucha bloków Workbench subskrybuje zdarzenia z Service Bus i pobiera komunikat.
+-   Usługa Azure łańcucha bloków Workbench inicjuje wywołanie do księgi, wysyłając dane z systemu zewnętrznego do określonej funkcji na umowie.
+-   Funkcja wykonuje i zwykle modyfikuje stan. Zmiana stanu przenosi do przodu przepływ pracy biznesowej odzwierciedlony w ramach kontraktu inteligentnego, co umożliwia wykonywanie innych funkcji w miarę potrzeb.
 
-### <a name="transitioning-control-to-an-external-process-and-await-completion"></a>Przeniesienie kontrolki zewnętrznej przetwarzania i poczekać na ukończenie
+### <a name="transitioning-control-to-an-external-process-and-await-completion"></a>Przejście kontroli do procesu zewnętrznego i oczekiwanie na ukończenie
 
-Istnieją scenariusze, w którym inteligentne kontraktu należy zatrzymać wykonywanie wewnętrzne i dostarcz procesu zewnętrznego. Czy Proces zewnętrzny, następnie należy wykonać, Wyślij wiadomość do inteligentnego kontraktu i wykonywanie następnie będzie nadal w ramach inteligentnych kontraktu.
+Istnieją scenariusze, w których kontrakt inteligentny musi zatrzymać wykonywanie wewnętrzne i przełączać się do procesu zewnętrznego. Następnie proces zewnętrzny zostanie ukończony, wyśle komunikat do kontraktu inteligentnego, a wykonywanie będzie kontynuowane w ramach kontraktu inteligentnego.
 
-#### <a name="transition-to-the-external-process"></a>Przejście w procesie zewnętrznym
+#### <a name="transition-to-the-external-process"></a>Przejście do procesu zewnętrznego
 
-Ten wzorzec jest zwykle implementowany przy użyciu następujących podejść:
+Ten wzorzec jest zwykle implementowany przy użyciu następujących metod:
 
--   Inteligentne kontraktu przejść do określonego stanu. W tym stanie, albo nie lub ograniczoną liczbę funkcji mogą być wykonywane, dopóki systemu zewnętrznego ma odpowiednią akcję.
--   Zmiany stanu jest udostępniane jako zdarzenie z klientem podrzędnymi.
--   Podrzędny odbiorcy odbiera zdarzenia i wyzwala wykonanie kodu zewnętrznego.
+-   Inteligentne przejścia kontraktu do określonego stanu. W tym stanie do momentu podjęcia odpowiedniej akcji w systemie zewnętrznym można wykonać dowolną lub ograniczoną liczbę funkcji.
+-   Zmiana stanu jest określana jako zdarzenie dla użytkownika podrzędnego.
+-   Odbiorca podrzędny odbiera zdarzenie i wyzwala wykonywanie kodu zewnętrznego.
 
-![Kontrolki przejście procesu zewnętrznego](./media/integration-patterns/transition-external-process.png)
+![Kontrolka przejścia do procesu zewnętrznego](./media/integration-patterns/transition-external-process.png)
 
-#### <a name="return-of-control-from-the-smart-contract"></a>Powrót sterowania z inteligentnych kontraktu
+#### <a name="return-of-control-from-the-smart-contract"></a>Powrót kontroli z kontraktu inteligentnego
 
-W zależności od możliwości dostosowywania systemu zewnętrznego może lub nie można dostarczać komunikatów w jednym z formatów standardowych, których oczekuje aplikacji Azure Blockchain Workbench. Oparta na możliwości systemów zewnętrznych do generowania jednego z tych komunikatów ustalić, które z następujących dwóch zwracają ścieżki jest zajęta.
+W zależności od możliwości dostosowania systemu zewnętrznego może być możliwe lub nie można dostarczać komunikatów w jednym z standardowych formatów, których oczekuje usługa Azure łańcucha bloków Workbench. W oparciu o możliwość generowania jednego z tych komunikatów przez system zewnętrzny można określić, które z poniższych dwóch ścieżek zwracanych są pobierane.
 
-##### <a name="direct-delivery-of-an-azure-blockchain-workbench-in-the-expected-format"></a>Bezpośrednie dostarczanie aplikacji Azure Blockchain Workbench w oczekiwanym formacie
+##### <a name="direct-delivery-of-an-azure-blockchain-workbench-in-the-expected-format"></a>Bezpośrednie dostarczanie Workbench usługi Azure łańcucha bloków w oczekiwanym formacie
 
 ![](./media/integration-patterns/direct-delivery.png)
 
-W tym modelu komunikatu kontraktu i zmianę stanu kolejnych występuje po poprzedniego procesu gdzie -
+W tym modelu komunikacja z umową i późniejsza zmiana stanu odbywa się po poprzednim procesie, gdzie-
 
--   Gdy wykorzystasz zakończenia lub punktu kontrolnego określonej podczas wykonywania kodu zewnętrznego, zdarzenia są wysyłane do usługi Service Bus, nawiązanie połączenia aplikacji Azure Blockchain Workbench.
+-   Po osiągnięciu ukończenia lub określonego punktu kontrolnego w zewnętrznym wykonaniu kodu zdarzenie jest wysyłane do Service Bus połączonej z usługą Azure łańcucha bloków Workbench.
 
--   Dla systemów, które nie mogą być bezpośrednio dostosowane do zapisu komunikatu, który odpowiada oczekiwaniom interfejsu API jest on przekształcany.
+-   W przypadku systemów, które nie mogą być bezpośrednio dostosowywane w celu zapisania komunikatu, który jest zgodny z oczekiwaniami interfejsu API, zostanie on przekształcony.
 
--   Zawartość komunikatu jest spakowany i wysłany na konkretną funkcję w kontrakcie inteligentne. To dostarczanie odbywa się w imieniu użytkownika skojarzonego z systemu zewnętrznego.
+-   Zawartość komunikatu jest pakowana i wysyłana do określonej funkcji w ramach kontraktu inteligentnego. To dostarczanie jest wykonywane w imieniu użytkownika skojarzonego z systemem zewnętrznym.
 
--   Funkcja wykonuje i zazwyczaj zmienia stan. Zmiana stanu przenosi do przodu biznesowego przepływu pracy zostaną uwzględnione w umowie inteligentne, umożliwiające innych funkcji, aby teraz wykonywane zgodnie z potrzebami.
+-   Funkcja wykonuje i zwykle modyfikuje stan. Zmiana stanu przenosi do przodu przepływ pracy biznesowej odzwierciedlony w ramach kontraktu inteligentnego, co umożliwia wykonywanie innych funkcji w miarę potrzeb.
 
 ### 
 
-### <a name="delivery-of-a-message-in-a-format-unknown-to-azure-blockchain-workbench"></a>Dostarczanie komunikatów w formacie nieznany do aplikacji Azure Blockchain Workbench
+### <a name="delivery-of-a-message-in-a-format-unknown-to-azure-blockchain-workbench"></a>Dostarczanie komunikatu w formacie nieznanego do usługi Azure łańcucha bloków Workbench
 
-![Format nieznany komunikat](./media/integration-patterns/unknown-message-format.png)
+![Nieznany format wiadomości](./media/integration-patterns/unknown-message-format.png)
 
-W tym modelu, gdzie w standardowym formacie nie można wysłać wiadomości bezpośrednio, komunikację z usługą kontrakt i nastąpi zmiana stanu kolejnych po poprzednim przetwarzania where:
+W tym modelu, w którym nie można bezpośrednio wysłać wiadomości w formacie standardowym, komunikacja z umową i późniejsza zmiana stanu odbywa się po poprzednim procesie, w którym:
 
-1.  Gdy wykorzystasz zakończenia lub punktu kontrolnego określonej podczas wykonywania kodu zewnętrznego, zdarzenia są wysyłane do usługi Service Bus, nawiązanie połączenia aplikacji Azure Blockchain Workbench.
-2.  Aplikacji logiki lub kod niestandardowy jest używany do odbierania tego komunikatu i przekształcić je do standardowych aplikacji Azure Blockchain Workbench sformatowany komunikat.
-3.  Aplikacja logiki wysyła przekształcony komunikat bezpośrednio z usługą Service Bus.
-4.  Azure Blockchain Workbench subskrybuje zdarzenia z usługi Service Bus i pobiera komunikat.
-5.  Azure Blockchain Workbench inicjuje wywołanie w księdze wysyłanie danych z systemu zewnętrznego do określonej umowy.
-6. Zawartość komunikatu jest spakowany i wysłany na konkretną funkcję w kontrakcie inteligentne. To dostarczanie odbywa się w imieniu użytkownika skojarzonego z systemu zewnętrznego.
-7.  Funkcja wykonuje i zazwyczaj zmienia stan. Zmiana stanu przenosi do przodu biznesowego przepływu pracy zostaną uwzględnione w umowie inteligentne, umożliwiające innych funkcji, aby teraz wykonywane zgodnie z potrzebami.
+1.  Po osiągnięciu ukończenia lub określonego punktu kontrolnego w zewnętrznym wykonaniu kodu zdarzenie jest wysyłane do Service Bus połączonej z usługą Azure łańcucha bloków Workbench.
+2.  Aplikacja logiki lub kod niestandardowy jest używany do otrzymywania wiadomości i przekształcania go w standardowy komunikat o formacie Workbench usługi Azure łańcucha bloków.
+3.  Aplikacja logiki wysyła przekształcony komunikat bezpośrednio do Service Bus.
+4.  Usługa Azure łańcucha bloków Workbench subskrybuje zdarzenia z Service Bus i pobiera komunikat.
+5.  Usługa Azure łańcucha bloków Workbench inicjuje wywołanie do księgi, wysyłając dane z systemu zewnętrznego do określonego kontraktu.
+6. Zawartość komunikatu jest pakowana i wysyłana do określonej funkcji w ramach kontraktu inteligentnego. To dostarczanie jest wykonywane w imieniu użytkownika skojarzonego z systemem zewnętrznym.
+7.  Funkcja wykonuje i zwykle modyfikuje stan. Zmiana stanu przenosi do przodu przepływ pracy biznesowej odzwierciedlony w ramach kontraktu inteligentnego, co umożliwia wykonywanie innych funkcji w miarę potrzeb.
 
-## <a name="iot-integration"></a>Integracja z IoT
+## <a name="iot-integration"></a>Integracja IoT
 
-Typowy scenariusz integracji jest uwzględnienie pobranych z czujników w inteligentne kontraktu danych telemetrii. Na podstawie danych dostarczanych przez czujniki, kontraktów inteligentnych może podjąć świadomej działania i zmienić stan zamówienia.
+Typowy scenariusz integracji polega na dołączeniu danych telemetrycznych pobranych z czujników w ramach kontraktu inteligentnego. W oparciu o dane dostarczane przez czujniki, inteligentne kontrakty mogą podejmować świadome działania i zmieniać stan kontraktu.
 
-Na przykład jeśli ciężarówki dostarczanie medycyna temperatury wzrastać do 110 stopni, go może mieć wpływ na efektywność lekarstwa i może spowodować, że problem bezpieczeństwa publicznego w przeciwnym razie Wykryto i usunięto z łańcucha dostaw. Jeśli sterownik accelerated jego samochodu do 100 mil na godzinę, wynikowy informacji z czujnika może wywołać anulowania ubezpieczenia przez ich dostawcę ubezpieczenia. Jeśli samochodu samochodu wypożyczeń, GPS danych może wskazywać, kiedy poszło sterownika poza lokalizację geograficzną objętych umową ich dzierżawa i karę jest opłata w wysokości.
+Na przykład jeśli ciężarówka dostarczająca lekarstwa miała temperaturę o do 110 stopni, może to mieć wpływ na efektywność medycyny i może spowodować publiczny problem z bezpieczeństwem, jeśli nie zostanie wykryta i usunięta z łańcucha dostaw. Jeśli sterownik skrócił samochód do 100 kilometrów na godzinę, otrzymane informacje o czujniku mogły spowodować anulowanie ubezpieczenia przez dostawcę ubezpieczeń. Jeśli samochód był samochodem wynajmu, dane GPS mogą wskazywać, kiedy kierowca przeszedł poza geografię objętą umową najmu, i naliczać kary.
 
-Żądania jest czujniki te można dostarczania danych na stałym poziomie i nie jest właściwe wysłać wszystkie te dane do inteligentnego kontraktu. Typowym podejściem jest, aby ograniczyć liczbę komunikatów wysłanych do łańcucha bloków, dostarczając wszystkie komunikaty do magazynu pomocniczego. Na przykład dostarczanie komunikatów odebranych przy tylko stałych interwałów, na przykład raz na godzinę, a gdy zawartej wartość mieści się poza uzgodnionych od zakresu dla inteligentnych kontraktu. Sprawdzanie wartości wykraczające poza tolerancji, gwarantuje, że do danych odpowiednich dla kontraktów logiki biznesowej jest odbierane i wykonywane. Sprawdzenie wartości z interwałem potwierdza nadal przeprowadza raportowanie czujnika. Wszystkie dane są wysyłane do magazynu pomocniczego raportowania umożliwiające szersze raportowania, analizy i uczenia maszynowego. Na przykład wprowadzenie odczyty czujników z GPS może nie być wymagane co minutę dla inteligentnych kontraktu, można dostarczyć interesujące dane, które ma być używany w raportach lub mapowania tras.
+Wyzwanie polega na tym, że czujniki te mogą dostarczać dane w stałym zakresie i nie jest konieczne wysyłanie wszystkich tych danych do kontraktu inteligentnego. Typowym podejściem jest ograniczenie liczby komunikatów wysyłanych do łańcucha bloków podczas dostarczania wszystkich komunikatów do magazynu pomocniczego. Na przykład dostarczanie komunikatów odebranych tylko przez stały interwał, na przykład raz na godzinę, i gdy zawarte wartości wykraczają poza uzgodniony zakres dla kontraktu inteligentnego. Sprawdzanie wartości, które wykraczają poza tolerancje, zapewnia, że dane dotyczące kontraktów biznesowej są odbierane i wykonywane. Sprawdzenie wartości w interwale potwierdza, że czujnik nadal jest zgłaszany. Wszystkie dane są wysyłane do pomocniczego magazynu raportowania, aby umożliwić szersze raportowanie, analizowanie i uczenie maszynowe. Na przykład podczas uzyskiwania odczytów czujników dla GPS mogą nie być wymagane co minutę dla kontraktu inteligentnego, mogą one dostarczać interesujące dane do użycia w raportach lub mapowaniu tras.
 
-Na platformie Azure integracji z urządzeniami odbywa się zwykle z usługą IoT Hub. Usługi IoT Hub umożliwia routing komunikatów na podstawie zawartości i włącza typ tworzonego funkcji opisanych powyżej.
+Na platformie Azure integracja z urządzeniami zwykle odbywa się przy użyciu IoT Hub. IoT Hub zapewnia Routing komunikatów na podstawie zawartości i umożliwia wcześniejsze opisywanie funkcji.
 
-![Komunikatów Internetu rzeczy](./media/integration-patterns/iot.png)
+![Wiadomości IoT](./media/integration-patterns/iot.png)
 
-Proces przedstawiono wzorzec:
+Proces przedstawia wzorzec:
 
--   Urządzenia komunikuje się bezpośrednio lub za pośrednictwem bramy w terenie do usługi IoT Hub.
--   Usługa IoT Hub odbiera komunikaty, a wartość komunikatów dla trasy ustanowione, sprawdź zawartość wiadomości, na przykład. *Czujnik bada temperatury większą niż 50 stopni?*
--   Usługa IoT Hub wysyła komunikaty, które spełniają kryteria zdefiniowane usługi Service Bus dla danej trasy.
--   Aplikację logiki lub inny kod nasłuchuje do usługi Service Bus, która ustanowiona usługi IoT Hub dla danej trasy.
--   Aplikacja logiki lub inny kod pobiera i przekształcenia komunikatu do znanego formatu.
--   Przekształcony komunikat teraz w standardowym formacie, są wysyłane do usługi Service Bus dla aplikacji Azure Blockchain Workbench.
--   Azure Blockchain Workbench subskrybuje zdarzenia z usługi Service Bus i pobiera komunikat.
--   Azure Blockchain Workbench inicjuje wywołanie w księdze wysyłanie danych z systemu zewnętrznego do określonej umowy.
--   Po otrzymaniu komunikatu, kontrakt oblicza dane i może zmiany stanu, w oparciu o wyniki tej oceny, na przykład dla temperatura, zmienić stan na *zgodności z*.
+-   Urządzenie komunikuje się bezpośrednio lub za pośrednictwem bramy pola, aby IoT Hub.
+-   IoT Hub odbiera komunikaty i szacuje komunikaty przed ustanowionymi trasami, które sprawdzają zawartość komunikatu, na przykład. *Czy czujnik raportuje temperaturę większą niż 50 stopni?*
+-   IoT Hub wysyła komunikaty, które spełniają kryteria zdefiniowane Service Bus dla trasy.
+-   Aplikacja logiki lub inny kod nasłuchuje Service Bus, które IoT Hub ustalone dla trasy.
+-   Aplikacja logiki lub inny kod pobiera i przekształca komunikat w znany Format.
+-   Przekształcony komunikat, teraz w formacie standardowym, jest wysyłany do Service Bus usługi Azure łańcucha bloków Workbench.
+-   Usługa Azure łańcucha bloków Workbench subskrybuje zdarzenia z Service Bus i pobiera komunikat.
+-   Usługa Azure łańcucha bloków Workbench inicjuje wywołanie do księgi, wysyłając dane z systemu zewnętrznego do określonego kontraktu.
+-   Po otrzymaniu komunikatu kontrakt ocenia dane i może zmienić stan w oparciu o wynik tej oceny, na przykład w przypadku wysokiej temperatury, zmienić stan na *niezgodny*.
 
 ## <a name="data-integration"></a>Integracja danych
 
-Oprócz REST i interfejs API oparty na komunikat aplikacji Azure Blockchain Workbench umożliwia również dostęp do bazy danych SQL wypełniane przy użyciu aplikacji i kontrakt metadane, a także dane transakcyjne z rejestrów rozproszonych.
+Oprócz interfejsu API REST i opartego na komunikatach usługa Azure łańcucha bloków Workbench zapewnia również dostęp do bazy danych SQL z uwzględnieniem metadanych aplikacji i umowy oraz danych transakcyjnych z rozproszonych ksiąg.
 
 ![Integracja danych](./media/integration-patterns/data-integration.png)
 
-Integracja danych jest dobrze znany:
+Integracja danych jest dobrze znana:
 
--   Azure Blockchain Workbench są przechowywane metadane dotyczące aplikacji, przepływów pracy, kontrakty i transakcji jako część normalnego zachowania operacyjne.
--   Systemy zewnętrzne lub narzędzi należy podać jeden lub więcej okien dialogowych ułatwiające zbieranie informacji o bazie danych, takie jak nazwa serwera bazy danych, nazwę bazy danych, typ uwierzytelniania, poświadczenia logowania i bazę danych, która wyświetla korzystanie z.
--   Zapytania są zapisywane względem widoki bazy danych SQL, ułatwiające podrzędnego użycie przez systemy zewnętrzne, usługi, raportowanie, narzędzi deweloperskich i narzędzi zwiększających produktywność w przedsiębiorstwie.
+-   Usługa Azure łańcucha bloków Workbench przechowuje metadane dotyczące aplikacji, przepływów pracy, kontraktów i transakcji w ramach normalnego działania operacyjnego.
+-   Systemy zewnętrzne lub narzędzia udostępniają co najmniej jedno okno dialogowe, które ułatwia zbieranie informacji o bazie danych, takich jak nazwa serwera bazy danych, nazwa bazy danych, typ uwierzytelniania, poświadczenia logowania i widoki bazy danych do użycia.
+-   Zapytania są zapisywane w widokach usługi SQL Database w celu ułatwienia użycia przez systemy zewnętrzne, usług, raportowania, narzędzi programistycznych i narzędzi do tworzenia wydajności w przedsiębiorstwie.
 
-## <a name="storage-integration"></a>Integracja magazynu
+## <a name="storage-integration"></a>Integracja z magazynem
 
-Wiele scenariuszy może wymagać trzeba zastosować attestable plików. Kilka przyczyn nie jest umieścić pliki w łańcuch bloków. Zamiast tego typowym podejściem jest, aby wykonać skrót kryptograficzny (na przykład SHA-256) dla pliku i udostępnić ten skrót rejestru rozproszonego. Wykonywanie skrót ponownie w dowolnym momencie w przyszłości powinna zwracać ten sam wynik. Jeśli plik zostanie zmodyfikowany, nawet jeśli modyfikowany jest tylko jeden piksel obrazu skrót zwraca inną wartość.
+Wiele scenariuszy może wymagać zadawania plików z zaświadczeniem. Z wielu powodów nieodpowiednie jest umieszczenie plików na łańcucha bloków. Zamiast tego typowe podejście polega na wykonaniu skrótu kryptograficznego (na przykład SHA-256) względem pliku i udostępnieniu tego skrótu w księdze rozproszonej. Ponowne wykonanie skrótu w dowolnym momencie powinien zwrócić ten sam wynik. Jeśli plik jest modyfikowany, nawet jeśli tylko jeden piksel jest modyfikowany w obrazie, skrót zwraca inną wartość.
 
-![Integracja magazynu](./media/integration-patterns/storage-integration.png)
+![Integracja z magazynem](./media/integration-patterns/storage-integration.png)
 
-Wzorzec można zaimplementować gdzie:
+Wzorzec można zaimplementować, gdzie:
 
--   System zewnętrzny będzie nadal występować pliku w mechanizm magazynu, takich jak Azure Storage.
--   Skrót jest generowany przy użyciu pliku lub pliku oraz skojarzone metadane takie jak identyfikator właściciela, adres URL, w którym znajduje się plik, itp.
--   Skrót, a wszystkie metadane są wysyłane do funkcji w kontrakcie inteligentne, takie jak *FileAdded*
--   W przyszłości plików i metadanych może być mieszany ponownie i porównana z wartościami przechowywanymi w księdze.
+-   System zewnętrzny utrwala plik w mechanizmie magazynu, takim jak Azure Storage.
+-   Skrót jest generowany przy użyciu pliku lub pliku oraz skojarzonych metadanych, takich jak identyfikator właściciela, adres URL, pod którym znajduje się plik itp.
+-   Skrót i wszelkie metadane są wysyłane do funkcji w ramach kontraktu inteligentnego, takiego jak *FileAdded*
+-   W przyszłości plik i metadane mogą być ponownie zmieszane i porównywane z wartościami przechowywanymi w księdze.
 
-## <a name="prerequisites-for-implementing-integration-patterns-using-the-rest-and-message-apis"></a>Wymagania wstępne dotyczące wdrażania wzorce integracji przy użyciu protokołu REST i interfejsów API wiadomości
+## <a name="prerequisites-for-implementing-integration-patterns-using-the-rest-and-message-apis"></a>Wymagania wstępne dotyczące implementowania wzorców integracji przy użyciu protokołu REST i interfejsów API komunikatów
 
-W celu ułatwienia możliwość interakcji z kontraktem inteligentnych przy użyciu REST lub komunikat interfejsu API dla systemu zewnętrznego lub urządzenia, że musi wystąpić-
+Aby ułatwić użytkownikom zewnętrznym lub urządzeniu współpracę z inteligentnym kontraktem przy użyciu interfejsu API REST lub wiadomości, należy wykonać następujące czynności:
 
-1. W usłudze Azure Active Directory przez konsorcjum zostanie utworzone konto reprezentujący zewnętrzne systemowej lub urządzenia.
-2. Co najmniej jeden odpowiednich kontraktów inteligentnych aplikacji Azure Blockchain Workbench ma funkcje zdefiniowane w celu akceptowania zdarzeń z systemu zewnętrznego lub urządzenia.
-3. Plik konfiguracji aplikacji dla Twojej umowy inteligentnych zawiera roli, co system lub urządzenie przypisane.
-4. Plik konfiguracji aplikacji dla Twojej umowy inteligentne identyfikuje w której z informacją, że ta funkcja jest wywoływana przez zdefiniowanej roli.
-5. Plik konfiguracji aplikacji i jej kontraktów inteligentnych są przekazywane do aplikacji Azure Blockchain Workbench.
+1. W Azure Active Directory dla konsorcjum tworzone jest konto, które reprezentuje system zewnętrzny lub urządzenie.
+2. Co najmniej jedna z odpowiednich inteligentnych kontraktów dla aplikacji Azure łańcucha bloków Workbench ma funkcje zdefiniowane do akceptowania zdarzeń z systemu zewnętrznego lub urządzenia.
+3. Plik konfiguracyjny aplikacji dla kontraktu inteligentnego zawiera rolę, do której przypisano system lub urządzenie.
+4. Plik konfiguracji aplikacji dla kontraktu inteligentnego określa, w jaki sposób ta funkcja jest wywoływana przez określoną rolę.
+5. Plik konfiguracji aplikacji i jego inteligentne kontrakty są przekazywane do usługi Azure łańcucha bloków Workbench.
 
-Po przekazaniu aplikacji, konto usługi Azure Active Directory do systemu zewnętrznego jest przypisany do Umowy i skojarzonych ról.
+Po przekazaniu aplikacji konto Azure Active Directory dla systemu zewnętrznego zostanie przypisane do kontraktu i skojarzonej roli.
 
-## <a name="testing-external-system-integration-flows-prior-to-writing-integration-code"></a>Testowanie przepływów integracji systemu zewnętrznego przed pisania kodu integracji 
+## <a name="testing-external-system-integration-flows-prior-to-writing-integration-code"></a>Testowanie przepływów integracji systemu zewnętrznego przed pisaniem kodu integracji 
 
-Integracja z systemami zewnętrznymi to decydujące znaczenie dla wielu scenariuszy. Jest to pożądane, aby można było zweryfikować inteligentne kontraktu projekt wcześniejsze lub równolegle w celu opracowywania kodu integracji z zewnętrznymi systemami.
+Integracja z systemami zewnętrznymi jest kluczem wymaganym przez wiele scenariuszy. Pożądane jest, aby można było zweryfikować projekt inteligentny z umową przed lub równolegle z programowaniem kodu w celu integracji z systemami zewnętrznymi.
 
-Korzystanie z usługi Azure Active Directory (Azure AD) można znacznie przyspieszyć deweloperskiej i godziny na wartość. W szczególności integracji kodu za pomocą zewnętrznego systemu może potrwać nietrywialnymi ilość czasu. Za pomocą usługi Azure AD i Autogenerowanie środowiska użytkownika w aplikacji Azure Blockchain Workbench, można umożliwić programistom Zaloguj się do aplikacji Blockchain Workbench jako systemu zewnętrznego i wypełnić wartości z systemu zewnętrznego za pośrednictwem najlepsze środowisko użytkownika. Można szybko twórz i weryfikowania pomysłów środowiska weryfikacji koncepcji, przed kodem integracji jest przeznaczony dla systemów zewnętrznych.
+Korzystanie z Azure Active Directory (Azure AD) może znacznie przyspieszyć produktywność deweloperów i czas na wartość. W celu integracji kodu z systemem zewnętrznym może trwać nieuproszczony czas. Korzystając z usługi Azure AD i automatycznej generacji środowiska użytkownika przez usługę Azure łańcucha bloków Workbench, można zezwolić deweloperom na logowanie się do łańcucha bloków Workbench jako system zewnętrzny i wypełnianie wartości z systemu zewnętrznego za pośrednictwem środowiska użytkownika. Możesz szybko opracowywać i weryfikować pomysły w celu sprawdzenia środowiska koncepcji przed zapisaniem kodu integracji dla systemów zewnętrznych.

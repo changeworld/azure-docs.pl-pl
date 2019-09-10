@@ -1,5 +1,5 @@
 ---
-title: Tworzenie obszaru roboczego za pomocą interfejsu wiersza polecenia platformy Azure
+title: Tworzenie obszarów roboczych przy użyciu interfejsu wiersza polecenia platformy Azure
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak utworzyć nowy obszar roboczy usługi Azure Machine Learning za pomocą interfejsu wiersza polecenia platformy Azure.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
 ms.date: 08/30/2019
-ms.openlocfilehash: 1213e9bc3b27b8d5f6f6ef93b6eefa5a8c32be57
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: f398eb8124f45562ebc3c4238c641a6638811394
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70392677"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873498"
 ---
-# <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning-service"></a>Tworzenie obszaru roboczego dla usługi Azure Machine Learning przy użyciu szablonu Azure Resource Manager
+# <a name="create-a-workspace-for-azure-machine-learning-service-with-azure-cli"></a>Tworzenie obszaru roboczego dla usługi Azure Machine Learning przy użyciu interfejsu wiersza polecenia platformy Azure
 
 W tym artykule dowiesz się, jak utworzyć obszar roboczy usługi Azure Machine Learning przy użyciu interfejsu wiersza polecenia platformy Azure. Interfejs wiersza polecenia platformy Azure umożliwia zarządzanie zasobami platformy Azure. Rozszerzenie uczenia maszynowego do interfejsu wiersza polecenia dostarcza poleceń do pracy z zasobami usługi Azure Machine Learning.
 

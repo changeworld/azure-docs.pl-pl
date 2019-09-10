@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 09/10/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b562ccf81a80219caa9f80bec82f64f7d2510626
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 4b5f85aa99876ef6c3c9193612051085f3e0ffc0
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194596"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70872189"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Reguły członkostwa dynamicznego dla grup w Azure Active Directory
 
@@ -178,7 +178,7 @@ Wartości używane w wyrażeniu mogą składać się z kilku typów, w tym:
 
 * Ciągi
 * Wartość logiczna — prawda, FAŁSZ
-* Numery
+* numery
 * Tablice — tablica liczbowa, tablica ciągów
 
 Podczas określania wartości w wyrażeniu ważne jest używanie poprawnej składni w celu uniknięcia błędów. Niektóre wskazówki dotyczące składni:
@@ -358,6 +358,11 @@ Nazwę właściwości niestandardowej można znaleźć w katalogu, wykonując za
 ## <a name="rules-for-devices"></a>Reguły dla urządzeń
 
 Możesz również utworzyć regułę, która wybiera obiekty urządzeń dla członkostwa w grupie. Użytkownicy i urządzenia nie mogą być członkami grupy. Atrybut **OrganizationalUnit** nie jest już wyświetlany i nie powinien być używany. Ten ciąg jest ustawiany przez usługę Intune w określonych przypadkach, ale nie jest rozpoznawany przez usługę Azure AD, więc żadne urządzenia nie są dodawane do grup na podstawie tego atrybutu.
+
+> [!NOTE]
+> systemlabels to atrybut tylko do odczytu, którego nie można ustawić za pomocą usługi Intune.
+>
+> W przypadku systemu Windows 10 prawidłowy format atrybutu deviceOSVersion jest następujący: (Device. deviceOSVersion-EQ "10,0 (17763)"). Formatowanie można sprawdzić za pomocą polecenia cmdlet Get-MsolDevice programu PowerShell.
 
 Można użyć następujących atrybutów urządzeń.
 

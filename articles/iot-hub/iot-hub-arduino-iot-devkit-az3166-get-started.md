@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: d23d1881bb2d07d6287d648bb8ceb3e7930d547e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: e4379c38d90f444102a9bbddbae64a8018defcf8
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074474"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844577"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>Łączenie usługi IoT DevKit AZ3166 z platformą Azure IoT Hub
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-Możesz użyć [zestawu deweloperskiego IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/) do tworzenia i prototypowania rozwiązań Internet rzeczy (IoT), które wykorzystują usługi Microsoft Azure Services. Zawiera tablicę zgodną z Arduinoą z rozbudowanymi urządzeniami peryferyjnymi i czujników, pakietem tablicy typu open source [](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/)i bogatyą galerią przykładową.
+Możesz użyć [zestawu deweloperskiego IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/) do tworzenia i prototypowania rozwiązań Internet rzeczy (IoT), które wykorzystują usługi Microsoft Azure Services. Zawiera tablicę zgodną z Arduinoą z rozbudowanymi urządzeniami peryferyjnymi i czujników, pakietem tablicy typu open source i bogatyą [galerią przykładową](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/).
 
 ## <a name="what-you-learn"></a>Omawiane zagadnienia
 
@@ -103,7 +103,7 @@ Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw za
 
 DevKit nawiązuje połączenie z punktem końcowym specyficznym dla urządzenia w centrum IoT Hub i wysyła dane telemetryczne dotyczące temperatury i wilgotności.
 
-1. Pobierz najnowszą wersję getstartowego [oprogramowania układowego](https://aka.ms/devkit/prod/getstarted/latest) dla usługi IoT DevKit.
+1. Pobierz najnowszą wersję [Getstartowego oprogramowania układowego](https://aka.ms/devkit/prod/getstarted/latest) dla usługi IoT DevKit.
 
 1. Upewnij się, że IoT DevKit nawiązuje połączenie z komputerem za pośrednictwem portu USB. Otwórz Eksploratora plików istnieje urządzenie pamięci masowej USB o nazwie **AZ3166**.
 
@@ -179,7 +179,7 @@ Wykonaj następujące kroki, aby przygotować środowisko programistyczne dla De
 
 5. Skonfiguruj VS Code przy użyciu ustawień Arduino.
 
-    W Visual Studio Code kliknij pozycję **plik > preferencji ustawienia >** . Następnie kliknij plik **...** i **Otwórz plik Settings. JSON**.
+    W Visual Studio Code kliknij kolejno pozycje **plik > preferencje > ustawienia** (w MacOS, **kod > Preferencje > Ustawienia**). Następnie kliknij ikonę **Otwórz ustawienia (JSON)** w prawym górnym rogu strony *ustawień* .
 
     ![Instalowanie narzędzi Azure IoT Tools](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/user-settings-arduino.png)
 
@@ -331,7 +331,7 @@ Za pomocą [narzędzi Azure IoT Tools](https://marketplace.visualstudio.com/item
 
     ![Azure Portal](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-iot-hub-portal.png)
 
-1. W okienku **zasady dostępu** współdzielonego kliknij **zasady iothubowner**i Zapisz parametry połączenia Centrum IoT.
+1. W okienku **zasady dostępu współdzielonego** kliknij **zasady iothubowner**i Zapisz parametry połączenia Centrum IoT.
 
     ![Parametry połączenia usługi Azure IoT Hub](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-portal-conn-string.png)
 

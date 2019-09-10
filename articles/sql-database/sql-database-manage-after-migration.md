@@ -11,12 +11,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 2edd12435643f88a0923abf0927149993d49e424
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: dead041845c123672d881a8538644b56c34a58a2
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567806"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845606"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Nowa usługa DBA w chmurze — zarządzanie bazami danych z jednym i pulą w puli w Azure SQL Database
 
@@ -29,7 +29,7 @@ Przechodzenie od tradycyjnego samodzielnego środowiska z własnym zarządzaniem
 W tym artykule omówiono niektóre podstawowe cechy Azure SQL Database jako platformę, z której można łatwo korzystać podczas pracy z pojedynczymi bazami danych i bazami danych w puli w pulach elastycznym. Są one następujące:
 
 - Monitorowanie bazy danych przy użyciu Azure Portal
-- Ciągłość działania i odzyskiwanie po awarii (BCDR)
+- Ciągłość biznesowa i odzyskiwanie po awarii (BCDR)
 - Zabezpieczenia i zgodność z przepisami
 - Inteligentne monitorowanie i konserwacja bazy danych
 - Przenoszenie danych
@@ -56,7 +56,7 @@ Jeśli na przykład spodziewasz się, że obciążenie bazy danych wzrośnie, mo
 
 Metryki wydajności mogą również pomóc w ustaleniu, czy można obniżyć poziom obniżenia rozmiaru. Załóżmy, że używasz bazy danych, której warstwa i poziom to Standardowa S2, a wszystkie metryki wydajności pokazują, że baza danych wykorzystuje średnio nie więcej niż 10% w określonym czasie. Istnieje prawdopodobieństwo, że baza danych będzie działać równie dobrze na poziomie Standardowa S1. Należy jednak pamiętać o obciążeniach, które zwiększają lub zmieniają się przed podjęciem decyzji o konieczności przejścia do mniejszego rozmiaru.
 
-## <a name="business-continuity-and-disaster-recovery-bcdr"></a>Ciągłość działania i odzyskiwanie po awarii (BCDR)
+## <a name="business-continuity-and-disaster-recovery-bcdr"></a>Ciągłość biznesowa i odzyskiwanie po awarii (BCDR)
 
 Ciągłość działania i możliwości odzyskiwania po awarii umożliwiają kontynuowanie prowadzenia działalności firmy, jak zwykle w przypadku awarii. Awaria może być zdarzeniem na poziomie bazy danych (na przykład ktoś niesprawnie odrzuca kluczową tabelę) lub zdarzenie na poziomie centrum danych (katastrofami regionalny, na przykład tsunami).
 
@@ -71,7 +71,7 @@ Nie można tworzyć kopii zapasowych w usłudze Azure SQL DB, ponieważ nie jest
 |Premium|35|
 |||
 
-Ponadto funkcja długoterminowego [przechowywania (LTR)](sql-database-long-term-retention.md) umożliwia przechowywanie plików kopii zapasowych przez dłuższy czas, przez maksymalnie 10 lat, a także przywracanie danych z tych kopii zapasowych w dowolnym momencie w tym okresie. Ponadto kopie zapasowe bazy danych są przechowywane w magazynie replikowanym geograficznie w celu zapewnienia odporności z katastrofami regionalnego. Możesz również przywrócić te kopie zapasowe w dowolnym regionie świadczenia usługi Azure w dowolnym momencie w okresie przechowywania. Zobacz temat ciągłość działania [— Omówienie](sql-database-business-continuity.md).
+Ponadto funkcja [długoterminowego przechowywania (LTR)](sql-database-long-term-retention.md) umożliwia przechowywanie plików kopii zapasowych przez dłuższy czas, przez maksymalnie 10 lat, a także przywracanie danych z tych kopii zapasowych w dowolnym momencie w tym okresie. Ponadto kopie zapasowe bazy danych są przechowywane w magazynie replikowanym geograficznie w celu zapewnienia odporności z katastrofami regionalnego. Możesz również przywrócić te kopie zapasowe w dowolnym regionie świadczenia usługi Azure w dowolnym momencie w okresie przechowywania. Zobacz temat [ciągłość działania — Omówienie](sql-database-business-continuity.md).
 
 ### <a name="how-do-i-ensure-business-continuity-in-the-event-of-a-datacenter-level-disaster-or-regional-catastrophe"></a>Jak mogę zapewnić ciągłość działania w przypadku awarii na poziomie centrum danych lub regionalnej katastrofami
 
@@ -96,7 +96,7 @@ SQL Database bardzo poważnie zapewnia bezpieczeństwo i ochronę prywatności. 
 - Ochrona rzeczywistych danych ([transparent Data Encryption [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) i [Always Encrypted [AE]](/sql/relational-databases/security/encryption/always-encrypted-database-engine)).
 - Kontrolowanie dostępu do danych poufnych i uprzywilejowanych ([zabezpieczenia na poziomie wiersza](/sql/relational-databases/security/row-level-security) i [Dynamiczne maskowanie danych](/sql/relational-databases/security/dynamic-data-masking)).
 
-[Azure Security Center](https://azure.microsoft.com/services/security-center/) oferuje scentralizowane zarządzanie zabezpieczeniami w ramach obciążeń uruchomionych na platformie Azure, lokalnie i w innych chmurach. Możesz sprawdzić, czy podstawowa ochrona SQL Database, taka [](sql-database-auditing.md) jak Inspekcja i [transparent Data Encryption [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) są skonfigurowane dla wszystkich zasobów i utworzyć zasady na podstawie własnych wymagań.
+[Azure Security Center](https://azure.microsoft.com/services/security-center/) oferuje scentralizowane zarządzanie zabezpieczeniami w ramach obciążeń uruchomionych na platformie Azure, lokalnie i w innych chmurach. Możesz sprawdzić, czy podstawowa ochrona SQL Database, taka jak [Inspekcja](sql-database-auditing.md) i [transparent Data Encryption [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) są skonfigurowane dla wszystkich zasobów i utworzyć zasady na podstawie własnych wymagań.
 
 ### <a name="what-user-authentication-methods-are-offered-in-sql-database"></a>Jakie metody uwierzytelniania użytkowników są oferowane w SQL Database
 
@@ -111,7 +111,7 @@ Tradycyjne uwierzytelnianie systemu Windows nie jest obsługiwane. Azure Active 
 |---|---|
 |Preferuj, aby nie używać Azure Active Directory (AD) na platformie Azure|Użyj [uwierzytelniania SQL](sql-database-security-overview.md)|
 |Używanie usługi AD na SQL Server lokalnie|[Sfederować usługi AD z usługą Azure AD](../active-directory/hybrid/whatis-hybrid-identity.md)i korzystaj z uwierzytelniania usługi Azure AD. Dzięki temu można korzystać z logowania jednokrotnego.|
-|Należy wymusić uwierzytelnianie wieloskładnikowe (MFA)|Wymagaj uwierzytelniania wieloskładnikowego jako zasady za pomocą [dostępu warunkowego firmy Microsoft](sql-database-conditional-access.md)i używania [usługi Azure AD Universal Authentication z obsługą uwierzytelniania](sql-database-ssms-mfa-authentication.md)wieloskładnikowego.|
+|Należy wymusić uwierzytelnianie wieloskładnikowe (MFA)|Wymagaj uwierzytelniania wieloskładnikowego jako zasady za pomocą [dostępu warunkowego firmy Microsoft](sql-database-conditional-access.md)i używania [usługi Azure AD Universal Authentication z obsługą uwierzytelniania wieloskładnikowego](sql-database-ssms-mfa-authentication.md).|
 |Posiadanie kont Gościa z kont Microsoft (live.com, outlook.com) lub innych domen (gmail.com)|Użyj [uwierzytelniania uniwersalnego usługi Azure AD](sql-database-ssms-mfa-authentication.md) w usłudze SQL Database/magazyn danych, która korzysta z [funkcji współpracy B2B usługi Azure AD](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md).|
 |Są zalogowane do systemu Windows przy użyciu poświadczeń usługi Azure AD z domeny federacyjnej|Użyj [uwierzytelniania zintegrowanego usługi Azure AD](sql-database-aad-authentication-configure.md).|
 |Są zalogowane w systemie Windows przy użyciu poświadczeń z domeny niefederacyjnego z platformą Azure|Użyj [uwierzytelniania zintegrowanego usługi Azure AD](sql-database-aad-authentication-configure.md).|
@@ -142,7 +142,7 @@ Punkty końcowe usługi (SE) umożliwiają uwidocznienie krytycznych zasobów pl
 
 #### <a name="reserved-ips"></a>Zastrzeżone adresy IP
 
-Inną opcją jest udostępnienie [zarezerwowanych](../virtual-network/virtual-networks-reserved-public-ip.md) adresów IP dla maszyn wirtualnych, a następnie dozwolonych te adresy w ustawieniach zapory serwera. Przypisanie zarezerwowanych adresów IP pozwala zaoszczędzić problemy związane z aktualizowaniem reguł zapory przy użyciu zmieniających się adresów IP.
+Inną opcją jest udostępnienie [zarezerwowanych](../virtual-network/virtual-networks-reserved-public-ip.md) adresów IP dla maszyn wirtualnych, a następnie dodanie tych określonych wirtualnych nazw w ustawieniach zapory serwera. Przypisanie zarezerwowanych adresów IP pozwala zaoszczędzić problemy związane z aktualizowaniem reguł zapory przy użyciu zmieniających się adresów IP.
 
 ### <a name="what-port-do-i-connect-to-sql-database-on"></a>Z którym portem nawiązuje połączenie SQL Database
 
@@ -200,7 +200,7 @@ Domyślnie klucz główny dla Transparent Data Encryption jest zarządzany przez
 
 #### <a name="always-encrypted"></a>Zawsze szyfrowane
 
-Istnieje również dwukluczowa [Hierarchia](/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted) w Always Encrypted — kolumna danych poufnych jest szyfrowana za pomocą klucza szyfrowania AES 256-kolumnowego (CEK), który z kolei jest szyfrowany przy użyciu klucza głównego kolumny (CMK). Sterowniki klienta podane dla Always Encrypted nie mają ograniczeń dotyczących długości CMKs. Zaszyfrowana wartość CEK jest przechowywana w bazie danych, a CMK jest przechowywana w zaufanym magazynie kluczy, takim jak magazyn certyfikatów systemu Windows, Azure Key Vault lub sprzętowy moduł zabezpieczeń.
+Istnieje również [dwukluczowa hierarchia](/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted) w Always Encrypted — kolumna danych poufnych jest szyfrowana za pomocą klucza szyfrowania AES 256-kolumnowego (CEK), który z kolei jest szyfrowany przy użyciu klucza głównego kolumny (CMK). Sterowniki klienta podane dla Always Encrypted nie mają ograniczeń dotyczących długości CMKs. Zaszyfrowana wartość CEK jest przechowywana w bazie danych, a CMK jest przechowywana w zaufanym magazynie kluczy, takim jak magazyn certyfikatów systemu Windows, Azure Key Vault lub sprzętowy moduł zabezpieczeń.
 
 - Można obrócić zarówno [CEK, jak i CMK](/sql/relational-databases/security/encryption/rotate-always-encrypted-keys-using-powershell) .
 - Obrót CEK jest rozmiarem operacji na danych i może być czasochłonny w zależności od rozmiaru tabel zawierających zaszyfrowane kolumny. W związku z tym rozsądne jest zaplanowanie rotacji CEK.
@@ -242,7 +242,7 @@ Dzięki szczegółowej analizie wydajności zapytań można uzyskać dopasowane 
 
 ### <a name="security-optimization"></a>Optymalizacja zabezpieczeń
 
-SQL Database udostępnia zalecenia dotyczące zabezpieczeń, które ułatwiają Zabezpieczanie danych i wykrywanie zagrożeń w celu identyfikowania i badania podejrzanych działań bazy danych, które mogą stanowić potencjalny wątek w bazie danych. [Ocena luk](sql-vulnerability-assessment.md) w zabezpieczeniach to usługa służąca do skanowania baz danych i raportowania, która pozwala monitorować stan zabezpieczeń baz danych na dużą skalę i identyfikować zagrożenia bezpieczeństwa i dryfować od linii bazowej zabezpieczeń zdefiniowanej przez użytkownika. Po każdym skanowaniu dostępna jest dostosowana lista kroków akcji i skryptów korygowania, a także raport oceny, którego można użyć w celu spełnienia wymagań dotyczących zgodności.
+SQL Database udostępnia zalecenia dotyczące zabezpieczeń, które ułatwiają Zabezpieczanie danych i wykrywanie zagrożeń w celu identyfikowania i badania podejrzanych działań bazy danych, które mogą stanowić potencjalny wątek w bazie danych. [Ocena luk w zabezpieczeniach](sql-vulnerability-assessment.md) to usługa służąca do skanowania baz danych i raportowania, która pozwala monitorować stan zabezpieczeń baz danych na dużą skalę i identyfikować zagrożenia bezpieczeństwa i dryfować od linii bazowej zabezpieczeń zdefiniowanej przez użytkownika. Po każdym skanowaniu dostępna jest dostosowana lista kroków akcji i skryptów korygowania, a także raport oceny, którego można użyć w celu spełnienia wymagań dotyczących zgodności.
 
 Za pomocą Azure Security Center można zidentyfikować zalecenia dotyczące zabezpieczeń na tablicy i zastosować je za pomocą jednego kliknięcia.
 
@@ -321,7 +321,7 @@ SQL Database używa niektórych inteligentnych technik, które umożliwiają obs
 
 - **Eksportuj**: Bazę danych Azure SQL Database można wyeksportować jako plik BACPAC z Azure Portal
 
-   ![eksport bazy danych](./media/sql-database-export/database-export1.png)
+   ![Eksport bazy danych](./media/sql-database-export/database-export1.png)
 
 - **Importuj**: Możesz również zaimportować dane jako plik BACPAC do bazy danych przy użyciu Azure Portal.
 
@@ -334,6 +334,6 @@ Możesz to osiągnąć na kilka sposobów:
 - **[Synchronizacja danych](sql-database-sync-data.md)** — ta funkcja ułatwia synchronizowanie danych dwukierunkowych między wieloma lokalnymi bazami danych SQL Server i SQL Database. Aby zsynchronizować z lokalnymi bazami danych SQL Server, należy zainstalować i skonfigurować agenta synchronizacji na komputerze lokalnym i otworzyć wychodzący port TCP 1433.
 - **[Replikacja transakcji](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** — z replikacją transakcji można synchronizować dane z lokalnego do usługi Azure SQL dB przy użyciu lokalnego wydawcy i usługi Azure SQL DB. Na razie tylko ta konfiguracja jest obsługiwana. Aby uzyskać więcej informacji na temat sposobu migrowania danych z lokalnego do platformy Azure SQL z minimalnym czasem przestoju, zobacz: [Korzystanie z replikacji transakcji](sql-database-single-database-migrate.md#method-2-use-transactional-replication)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej na temat [SQL Database](sql-database-technical-overview.md).

@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 08/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a2320af36a8d590869ba6245c0dc730139839153
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a3260a9915fdbf39171a5eaee9961db986dd668e
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850116"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873227"
 ---
 # <a name="what-are-availability-zones-in-azure"></a>Co to są Strefy dostępności na platformie Azure?
 Strefy dostępności to oferta wysokiej dostępności, która chroni Twoje aplikacje i dane przed awariami centrów danych. Strefy dostępności to unikatowe fizycznie lokalizacje w regionie platformy Azure. Każda strefa składa się z co najmniej jeden centrów danych, wyposażone w niezależne zasilanie, chłodzenie i usługi sieciowe. W celu zapewnienia odporności istnieją co najmniej trzy osobne strefy we wszystkich włączonych regionach. Fizyczna separacja stref dostępności w ramach regionu chroni aplikacje i dane przed awariami centrum danych. Usługi strefowo nadmiarowe replikujeją aplikacje i dane między Strefy dostępności, aby chronić je przed awariami jednego punktu. Dzięki strefom dostępności platforma Azure oferuje najlepszą w branży umowę dotycząca poziomu usług (SLA) gwarantującą czas działania na poziomie 99,99%. Pełna treść [umowy SLA dotyczącej usługi Azure](https://azure.microsoft.com/support/legal/sla/virtual-machines/) wyjaśnia w całości kwestię gwarantowanej dostępności platformy Azure.
@@ -31,7 +31,7 @@ Strefa dostępności w regionie świadczenia usługi Azure jest kombinacją dome
 Twórz wysoką dostępność w architekturze aplikacji dzięki umieszczeniu na niej zasobów obliczeniowych, magazynu, sieci i danych w ramach strefy i replikacji w innych strefach. Usługi platformy Azure, które obsługują Strefy dostępności, należą do dwóch kategorii:
 
 - **Usługi strefowe** — przypinasz zasób do określonej strefy (na przykład maszyny wirtualne, dyski zarządzane, standardowe adresy IP) lub
-- **Usługi strefowo** nadmiarowe — platforma replikuje automatycznie między strefami (na przykład magazyn strefowo nadmiarowy SQL Database).
+- **Usługi strefowo nadmiarowe** — platforma replikuje automatycznie między strefami (na przykład magazyn strefowo nadmiarowy SQL Database).
 
 Aby zapewnić kompleksową ciągłość biznesową na platformie Azure, skompiluj architekturę aplikacji przy użyciu kombinacji Strefy dostępności z parami regionów platformy Azure. Można synchronicznie replikować aplikacje i dane za pomocą Strefy dostępności w regionie świadczenia usługi Azure, aby zapewnić wysoką dostępność i asynchroniczną replikację w regionach platformy Azure w celu ochrony przed odzyskiwaniem po awarii.
  
@@ -65,7 +65,7 @@ Kombinacje usług i regionów platformy Azure, które obsługują Strefy dostęp
 | Azure Cache for Redis           | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    |  &#10003;       | &#10003;       |
 | Azure Cosmos DB                    | &#10003;   |  &#10003;  |  &#10003; | &#10003; |       |     | &#10003; |  &#10003;   |            | &#10003;       |
 | **Analiza**                       |            |              |           |           |                |              |          |             |            |                |
-| Event Hubs                      | &#10003;   |              | &#10003;  | &#10003;  | &#10003;       | &#10003;     |          | &#10003;    |            | &#10003;       |
+| Event Hubs                      | &#10003;   |   &#10003; | &#10003;  | &#10003;  | &#10003; | &#10003; | &#10003; | &#10003; | &#10003; | &#10003;       |
 | **Integration**                     |            |              |           |           |                |              |          |             |            |                |
 | Service Bus (tylko warstwa Premium) | &#10003;   |              | &#10003;  | &#10003;  | &#10003;       | &#10003;     |          | &#10003;    |            | &#10003;       |
 
@@ -92,5 +92,5 @@ Nie ma dodatkowych opłat za maszyny wirtualne wdrożone w strefie dostępności
 - [Dodaj region nadmiarowy strefy dla Azure Cosmos DB](../cosmos-db/high-availability.md#availability-zone-support)
 - [Wprowadzenie usługi Azure cache for Redis Strefy dostępności](https://aka.ms/redis/az/getstarted)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - [Quickstart templates (Szablony szybkiego startu)](https://aka.ms/azqs)

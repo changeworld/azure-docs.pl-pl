@@ -1,5 +1,5 @@
 ---
-title: Jak utworzyć obiekt BLOB w usłudze Azure Storage przy użyciu biblioteki klienckiej środowiska Node. js v2
+title: Tworzenie obiektu BLOB w usłudze Azure Storage dla środowiska Node. js
 description: Utwórz konto magazynu i kontener w magazynie obiektów (blob). Następnie użyj biblioteki klienta usługi Azure Storage dla środowiska Node. js v2, aby przekazać obiekt BLOB do usługi Azure Storage, pobrać obiekt BLOB i wyświetlić listę obiektów BLOB w kontenerze.
 author: mhopkins-msft
 ms.author: mhopkins
@@ -7,12 +7,13 @@ ms.date: 02/04/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 89dbd6cc9a03398427b157fa207adb898d3bfc56
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.custom: seo-javascript-september2019
+ms.openlocfilehash: 8fada27f82fea557d7d078f06b5c05e7d1db906d
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721969"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861238"
 ---
 # <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-nodejs-v2"></a>Przekazywanie, pobieranie i wyświetlanie listy obiektów BLOB przy użyciu biblioteki klienckiej środowiska Node. js v2
 
@@ -355,7 +356,7 @@ Zobacz dodatkowe zasoby używane podczas tworzenia aplikacji Node.js z magazynem
 - Aby uzyskać więcej informacji na temat biblioteki klienta Node.js, zobacz [dokumentację interfejsu API platformy Node.js](https://docs.microsoft.com/javascript/api/overview/azure/storage).
 - Zapoznaj się z [przykładami użycia usługi Blob Storage](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=nodejs&term=blob) napisanymi przy użyciu biblioteki klienta Node.js.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym artykule przedstawiono sposób przekazywania pliku między dyskiem lokalnym i usługą Azure Blob Storage przy użyciu środowiska Node. js. Aby dowiedzieć się więcej na temat pracy z usługą Blob Storage, przejdź do repozytorium GitHub.
 

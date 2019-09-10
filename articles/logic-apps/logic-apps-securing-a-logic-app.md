@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 06/28/2019
-ms.openlocfilehash: 15ec46511f1269606e0b0416c7c4a25f93012bec
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 6c16b38cce31c45158a5871c10dbd01339da9203
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736898"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845435"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Zabezpieczanie dostępu i danych w Azure Logic Apps
 
@@ -440,7 +440,7 @@ Ten przykładowy szablon, który ma wiele zabezpieczonych definicji parametrów,
 | Nazwa parametru | Opis |
 |----------------|-------------|
 | `TemplatePasswordParam` | Parametr szablonu, który akceptuje hasło, które jest następnie przekazanie do `basicAuthPasswordParam` parametru definicji przepływu pracy |
-| `TemplatePasswordParam` | Parametr szablonu, który akceptuje nazwę użytkownika, która jest następnie przenoszona do `basicAuthUserNameParam` parametru definicji przepływu pracy |
+| `TemplateUsernameParam` | Parametr szablonu, który akceptuje nazwę użytkownika, która jest następnie przenoszona do `basicAuthUserNameParam` parametru definicji przepływu pracy |
 | `basicAuthPasswordParam` | Parametr definicji przepływu pracy, który akceptuje hasło uwierzytelniania podstawowego w akcji HTTP |
 | `basicAuthUserNameParam` | Parametr definicji przepływu pracy, który akceptuje nazwę użytkownika uwierzytelniania podstawowego w akcji HTTP |
 |||
@@ -584,7 +584,7 @@ Oto kilka sposobów zabezpieczania punktów końcowych, w których aplikacja log
 
   Azure Logic Apps zapewnia integrację z tymi usługami w celu bezpiecznej i niezawodnej komunikacji lokalnej.
 
-  * Lokalna brama danych
+  * Brama danych lokalnych
 
     Wiele zarządzanych łączników w Azure Logic Apps zapewnia bezpieczne połączenia z systemami lokalnymi, takimi jak system plików, SQL, SharePoint i DB2. Brama wysyła dane ze źródeł lokalnych w zaszyfrowanej kanale za pośrednictwem Azure Service Bus. Cały ruch pochodzący z agenta bramy jest zabezpieczonym ruchem wychodzącym. Dowiedz się [, jak działa lokalna Brama danych](logic-apps-gateway-install.md#gateway-cloud-service).
 
@@ -592,7 +592,7 @@ Oto kilka sposobów zabezpieczania punktów końcowych, w których aplikacja log
 
     [Usługa Azure API Management](../api-management/api-management-key-concepts.md) udostępnia opcje połączenia lokalnego, takie jak wirtualna sieć prywatna typu lokacja-lokacja i integracja ExpressRoute dla zabezpieczonego serwera proxy i komunikacji z systemami lokalnymi. W przepływie pracy aplikacji logiki w Projektancie aplikacji logiki można wybrać interfejs API, który jest udostępniany przez API Management, który zapewnia szybki dostęp do systemów lokalnych.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Tworzenie szablonów wdrożenia](logic-apps-create-deploy-template.md)  
 * [Monitorowanie aplikacji logiki](logic-apps-monitor-your-logic-apps.md)  

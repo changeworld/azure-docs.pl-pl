@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 09/09/2019
 ms.author: apimpm
-ms.openlocfilehash: b89f4d2264924983aac93fb266efd71e46bea6bf
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 44fd3f0381c25f2fe0a3e9dc4cf5b8c685486ae0
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70305227"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861158"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak używać usługi Azure API Management z sieciami wirtualnymi
 Usługi Azure Virtual Networks (sieci wirtualnych) umożliwiają umieszczanie dowolnego z zasobów platformy Azure w sieci niezwiązanej z obsługą Internetu, do której można kontrolować dostęp. Te sieci mogą następnie być połączone z sieciami lokalnymi przy użyciu różnych technologii sieci VPN. Aby dowiedzieć się więcej na temat sieci wirtualnych platformy Azure, Zacznij od informacji poniżej: [Omówienie usługi Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -79,7 +79,7 @@ Aby wykonać kroki opisane w tym artykule, musisz dysponować:
 >
 
 > [!IMPORTANT]
-> Jeśli usuniesz API Management z sieci wirtualnej lub zmienisz ją wdrożoną w programie, wcześniej użyta Sieć wirtualna może pozostać zablokowana przez maksymalnie dwie godziny. W tym czasie nie będzie można usunąć sieci wirtualnej ani wdrożyć w niej nowego zasobu.
+> Jeśli usuniesz API Management z sieci wirtualnej lub zmienisz ją wdrożoną w programie, wcześniej użyta Sieć wirtualna może pozostać zablokowana przez maksymalnie sześć godzin. W tym czasie nie będzie można usunąć sieci wirtualnej ani wdrożyć w niej nowego zasobu. To zachowanie jest prawdziwe w przypadku klientów korzystających z interfejsu API w wersji 2018-01-01 lub starszej. Klienci korzystający z interfejsu API w wersji 2019-01-01 lub nowszej sieci wirtualnej są zwalniane od razu po usunięciu skojarzonej usługi API Management.
 
 ## <a name="enable-vnet-powershell"> </a>Włączanie połączenia sieci wirtualnej przy użyciu poleceń cmdlet programu PowerShell
 Połączenie sieci wirtualnej można również włączyć za pomocą poleceń cmdlet programu PowerShell
@@ -123,7 +123,7 @@ Poniżej znajduje się lista typowych problemów z błędami konfiguracji, któr
 | * / *                        | Przychodzący            | TCP                | AZURE_LOAD_BALANCER / VIRTUAL_NETWORK | Load Balancer infrastruktury platformy Azure                          | Wewnętrzna & zewnętrzna  |
 
 >[!IMPORTANT]
-> Porty, dla których *przeznaczenie* jest **pogrubienie** , są wymagane do pomyślnego wdrożenia usługi API Management. Zablokowanie innych portów spowoduje jednak obniżenie wydajności i monitorowanie uruchomionej usługi.
+> Porty, dla których *przeznaczenie* jest pogrubienie, są wymagane do pomyślnego wdrożenia usługi API Management. Zablokowanie innych portów spowoduje jednak obniżenie wydajności i monitorowanie uruchomionej usługi.
 
 + **Funkcja SSL**: Aby włączyć tworzenie i sprawdzanie poprawności łańcucha certyfikatu SSL, usługa API Management wymaga łączności sieciowej wychodzącej z ocsp.msocsp.com, mscrl.microsoft.com i crl.microsoft.com. Ta zależność nie jest wymagana, jeśli dowolny certyfikat przekazywany do API Management zawiera pełny łańcuch do katalogu głównego urzędu certyfikacji.
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 04/29/2019
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: d479a568ddeac29be88d0709b7544ba645274afa
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: cd1c6cf0ff5a963720df7420a5d983d24e7b4d3e
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875657"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861392"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Często zadawane pytania: odzyskiwanie po awarii z platformy Azure do platformy Azure
 
@@ -41,7 +41,15 @@ Zespół Site Recovery współpracuje z zespołem zarządzania pojemnością pla
 ## <a name="replication"></a>Replikacja
 
 ### <a name="can-i-replicate-vms-enabled-through-azure-disk-encryption"></a>Czy można replikować maszyny wirtualne z włączoną funkcją szyfrowania dysków Azure?
-Tak, można je replikować. Zapoznaj się z artykułem [replikowanie maszyn wirtualnych z obsługą usługi Azure Disk Encryption do innego regionu platformy Azure](azure-to-azure-how-to-enable-replication-ade-vms.md). Obecnie Azure Site Recovery obsługuje tylko maszyny wirtualne platformy Azure, na których działa system operacyjny Windows i które obsługują szyfrowanie za pomocą aplikacji Azure Active Directory (Azure AD).
+
+Tak, Site Recovery obsługuje odzyskiwanie po awarii maszyn wirtualnych z włączonym usługą Azure Disk Encryption (ADE). Po włączeniu replikacji wszystkie wymagane klucze szyfrowania dysków i wpisy tajne są kopiowane z regionu źródłowego do regionu docelowego w kontekście użytkownika. Jeśli nie masz odpowiednich uprawnień, gotowy do użycia skrypt może być przekazywany do administratora zabezpieczeń, aby skopiować klucze i wpisy tajne.
+
+- Site Recovery obsługuje ADE dla maszyn wirtualnych platformy Azure z systemem Windows.
+- W ramach usługi Site Recovery jest dostępna wersja 0,1 ze schematem korzystającym z Azure Active Directory (AAD), a wersja 1,1, bez usługi AAD. [Dowiedz się więcej](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schemata).
+- W wersji 1,1, maszyny wirtualne z systemem Windows muszą używać dysków zarządzanych.
+- [Dowiedz się więcej](azure-to-azure-how-to-enable-replication-ade-vms.md) na temat włączania replikacji szyfrowanych maszyn wirtualnych.
+
+
 
 ### <a name="can-i-replicate-vms-to-another-subscription"></a>Czy można replikować maszyny wirtualne do innej subskrypcji?
 Tak. maszyny wirtualne platformy Azure można replikować do innej subskrypcji w ramach tej samej dzierżawy usługi Azure AD.

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0630ca28652b48b3632dbae94c5e16d6adb462c4
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 0f295bf3a76d89e811fe9a022a3ccb68fbe7556a
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812288"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858725"
 ---
 # <a name="track-machine-learning-training-metrics-with-azure-machine-learning"></a>Śledzenie metryk szkolenia uczenia maszynowego za pomocą Azure Machine Learning
 
@@ -273,7 +273,7 @@ Model uczenia i monitorowania wystąpić w tle, aby uruchomić inne zadania podc
 Możesz wyświetlić metryki uczonego modelu przy użyciu ```run.get_metrics()```. Teraz można uzyskać wszystkie metryki, które zostały zarejestrowane w przykładzie powyżej, aby określić najlepszy model.
 
 <a name="view-the-experiment-in-the-web-portal"></a>
-## <a name="view-the-experiment-in-the-azure-portal"></a>Wyświetl eksperymentu w witrynie Azure portal
+## <a name="view-the-experiment-in-the-azure-portal-or-your-workspace-landing-page-previewhttpsmlazurecom"></a>Obejrzyj eksperyment w Azure Portal lub na [stronie docelowej obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com)
 
 Po zakończeniu eksperymentu, możesz przejść do zarejestrowanych uruchomienie rekordu eksperymentu. Dostęp do historii można uzyskać na dwa sposoby:
 

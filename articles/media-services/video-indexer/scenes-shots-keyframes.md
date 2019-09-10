@@ -1,6 +1,6 @@
 ---
-title: Video Indexer scen, zrzutów i klatek kluczowych — platforma Azure
-titlesuffix: Azure Media Services
+title: Video Indexer scen, zrzutów i klatek kluczowych
+titleSuffix: Azure Media Services
 description: Ten temat zawiera omówienie Video Indexer scen, zrzutów i klatek kluczowych.
 services: media-services
 author: Juliako
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: cdabc1b6bfed519098f656710ef49a946e676cf2
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: b24778434596f583be44572612c856fa4e0cecde
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815656"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860230"
 ---
 # <a name="scenes-shots-and-keyframes"></a>Sceny, ujęcia i klatki kluczowe
 
@@ -39,6 +39,30 @@ Video Indexer określa, kiedy zrzut zmienia się w filmie wideo na podstawie pod
 Wybiera ramki, które najlepiej reprezentują zrzut. Klatki kluczowe to reprezentatywne ramki wybrane z całego wideo w oparciu o właściwości estetyczne (na przykład kontrast i trwałość). Video Indexer pobiera listę identyfikatorów klatek kluczowych jako część metadanych zrzutu, na podstawie których klienci mogą wyodrębnić miniaturę klatki kluczowej. 
 
 Ramki kluczowe są skojarzone ze zrzutami w wyjściowym kodzie JSON. 
+
+## <a name="editorial-shot-type-detection"></a>Wykrywanie typu zrzutu redakcyjnego
+
+Typ zrzutu skojarzony z pojedynczym zdjęciem w formacie JSON usługi Insights reprezentuje jego typ redakcyjny. Te cechy typów zastrzelonych mogą być przydatne podczas edytowania wideo do klipów, przyczep lub podczas wyszukiwania określonego stylu klatki kluczowej dla celów artystycznych. Różne typy są określane na podstawie analizy pierwszej klatki kluczowej każdego z nich. Zrzuty są identyfikowane przez skalę, rozmiar i lokalizację powierzchni występujących w pierwszej klatce kluczowej. 
+
+Rozmiar i skala zrzutu są ustalane na podstawie odległości między kamerą i powierzchnią występującą w ramce. Korzystając z tych właściwości, Video Indexer wykrywa następujące typy zrzutów:
+
+* Szeroki: pokazuje treść całej osoby.
+* Średni: pokazuje górną treść osoby i jej głowę.
+* Zamknij: głównie pokazuje głowę osoby.
+* Skrajne Zamknięcie: pokazuje głowę osoby wypełniającej ekran. 
+
+Typy zrzutów można także określić według lokalizacji znaków tematu w odniesieniu do środka ramki. Ta właściwość definiuje następujące typy zrzutów w Video Indexer:
+
+* Lewa strona: osoba pojawia się w lewej części ramki.
+* Wyśrodkuj na środku: osoba pojawia się w centralnym regionie ramki.
+* Prawa strona: osoba pojawia się po prawej stronie ramki.
+* Na zewnątrz: osoba zostanie wyświetlona w ustawieniu na zewnątrz.
+* Pozostała: osoba zostanie wyświetlona w ustawieniu pomieszczeń.
+
+Dodatkowe cechy:
+
+* Dwa zrzuty: pokazuje powierzchnie dwóch osób o średnim rozmiarze.
+* Wiele twarzy: więcej niż dwie osoby.
 
 ## <a name="next-steps"></a>Następne kroki
 

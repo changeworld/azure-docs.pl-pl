@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: 3fa97c5738128907b0edad40cedf582e80c33443
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: fd4eef9771ae89e330c99b398ad6d473356213f5
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194472"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858528"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Często zadawane pytania dotyczące Application Gateway
 
@@ -120,7 +120,7 @@ Użyj Traffic Manager do dystrybuowania ruchu między wieloma bramami aplikacji 
 
 ### <a name="does-application-gateway-support-autoscaling"></a>Czy Application Gateway obsługuje skalowanie automatyczne?
 
-Tak, jednostka SKU Application Gateway v2 obsługuje skalowanie automatyczne. Aby uzyskać więcej informacji, zobacz Skalowanie automatyczne [i strefowo nadmiarowe Application Gateway](application-gateway-autoscaling-zone-redundant.md).
+Tak, jednostka SKU Application Gateway v2 obsługuje skalowanie automatyczne. Aby uzyskać więcej informacji, zobacz [Skalowanie automatyczne i strefowo nadmiarowe Application Gateway](application-gateway-autoscaling-zone-redundant.md).
 
 ### <a name="does-manual-scale-up-or-scale-down-cause-downtime"></a>Czy ręczne skalowanie w górę lub w dół powoduje przestoje?
 
@@ -353,7 +353,7 @@ W portalu w bloku menu bramy aplikacji wybierz pozycję **Dziennik aktywności**
 
 ### <a name="can-i-set-alerts-with-application-gateway"></a>Czy mogę ustawić alerty z Application Gateway?
 
-Tak. W Application Gateway alerty są konfigurowane na metrykach. Aby uzyskać więcej informacji, zobacz [Application Gateway metryki](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#metrics) i [Odbieranie powiadomień o alertach](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
+Tak. W Application Gateway alerty są konfigurowane na metrykach. Aby uzyskać więcej informacji, zobacz [Application Gateway metryki](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics) i [Odbieranie powiadomień o alertach](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
 
 ### <a name="how-do-i-analyze-traffic-statistics-for-application-gateway"></a>Jak mogę analizować statystyki ruchu dla Application Gateway?
 

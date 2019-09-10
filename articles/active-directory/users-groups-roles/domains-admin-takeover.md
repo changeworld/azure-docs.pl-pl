@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 553118486d1148f63e79ca25c32ed7dd8a3b7414
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: a756f0d9fe3669ab9d0f2b4576a35be5d2112a87
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736796"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70872199"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Przejmowanie niezarządzanego katalogu jako administrator w Azure Active Directory
 
@@ -102,33 +102,37 @@ Obsługiwane plany usługi obejmują:
 - Microsoft Stream
 - Dynamics 365 — bezpłatna wersja próbna
 
-Przejęcie zewnętrznych administratorów nie jest obsługiwane dla żadnej usługi, która ma plany usług, w tym SharePoint, OneDrive lub Skype dla firm; na przykład za poorednictwem bezpłatnej subskrypcji pakietu Office. Opcjonalnie można użyć [opcji **ForceTakeover** ](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option) , aby usunąć nazwę domeny z niezarządzanej dzierżawy i sprawdzić ją w żądanej dzierżawie. Ta opcja ForceTakeover nie będzie przenoszona przez użytkowników ani nie zachowuje dostępu do subskrypcji. Zamiast tego ta opcja powoduje przeniesienie tylko nazwy domeny. 
+Przejęcie zewnętrznych administratorów nie jest obsługiwane dla żadnej usługi, która ma plany usług, w tym SharePoint, OneDrive lub Skype dla firm; na przykład za poorednictwem bezpłatnej subskrypcji pakietu Office. 
+
+Opcjonalnie można użyć [opcji **ForceTakeover** ](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option) , aby usunąć nazwę domeny z niezarządzanej dzierżawy i sprawdzić ją w żądanej dzierżawie. **Opcja ForceTakeover nie jest przenoszona przez użytkowników ani nie zachowuje dostępu do subskrypcji. Ta opcja przenosi tylko nazwę domeny.**
 
 #### <a name="more-information-about-rms-for-individuals"></a>Więcej informacji na temat usługi RMS dla użytkowników indywidualnych
 
-W przypadku usługi [RMS dla użytkowników indywidualnych](/azure/information-protection/rms-for-individuals), gdy niezarządzana dzierżawa znajduje się w tym samym regionie co posiadana dzierżawa, automatycznie utworzona [Azure Information Protection klucz dzierżawy](/azure/information-protection/plan-implement-tenant-key) i [domyślne szablony ochrony](/azure/information-protection/configure-usage-rights#rights-included-in-the-default-templates) są również przenoszone za pomocą Nazwa domeny. 
+W przypadku usługi [RMS dla użytkowników indywidualnych](/azure/information-protection/rms-for-individuals), gdy niezarządzana dzierżawa znajduje się w tym samym regionie co posiadana dzierżawa, automatycznie utworzona [Azure Information Protection klucz dzierżawy](/azure/information-protection/plan-implement-tenant-key) i [domyślne szablony ochrony](/azure/information-protection/configure-usage-rights#rights-included-in-the-default-templates) są również przenoszone za pomocą Nazwa domeny.
 
-Klucza i szablonów nie są przenoszone, gdy niezarządzana dzierżawa znajduje się w innym regionie. Na przykład niezarządzana dzierżawa znajduje się w Europie, a dzierżawca jest w Ameryce Północnej. 
+Klucza i szablonów nie są przenoszone, gdy niezarządzana dzierżawa znajduje się w innym regionie. Jeśli na przykład niezarządzana dzierżawa znajduje się w Europie, a posiadana organizacja jest w Ameryka Północna.
 
-Mimo że usługi RMS dla użytkowników indywidualnych są przeznaczone do obsługi uwierzytelniania usługi Azure AD w celu otwierania chronionej zawartości, nie uniemożliwiają one również ochrony zawartości. Jeśli użytkownicy przeprowadzili ochronę zawartości za pomocą subskrypcji usługi RMS dla użytkowników indywidualnych, a klucze i szablony nie zostały przeniesione przez program, zawartość nie będzie dostępna po przejęciu domeny.
+Mimo że usługi RMS dla użytkowników indywidualnych są przeznaczone do obsługi uwierzytelniania usługi Azure AD w celu otwierania chronionej zawartości, nie uniemożliwiają one również ochrony zawartości. Jeśli użytkownicy przeprowadzili ochronę zawartości za pomocą subskrypcji usługi RMS dla użytkowników indywidualnych, a klucze i szablony nie zostały przeniesione przez program, zawartość nie jest dostępna po przejęciu domeny.
 
 #### <a name="more-information-about-power-bi"></a>Więcej informacji na temat Power BI
 
 Podczas przeprowadzania przejęcia zewnętrznego Power BI zawartość, która została utworzona przed przejęciem, zostanie umieszczona w [Power BI zarchiwizowanego obszaru roboczego](/power-bi/service-admin-power-bi-archived-workspace). Należy ręcznie migrować dowolną zawartość, która ma być używana w nowej dzierżawie.
 
 ### <a name="azure-ad-powershell-cmdlets-for-the-forcetakeover-option"></a>Polecenia cmdlet programu PowerShell dla usługi Azure AD dla opcji ForceTakeover
-Można wyświetlić te polecenia cmdlet używane w przykładowym programie [PowerShell](#powershell-example).
+Można wyświetlić te polecenia cmdlet używane w [przykładowym programie PowerShell](#powershell-example).
 
-
-parametr | Użycie 
+Parametr | Użycie
 ------- | -------
 `connect-msolservice` | Po wyświetleniu monitu zaloguj się do zarządzanej dzierżawy.
 `get-msoldomain` | Wyświetla nazwy domen skojarzone z bieżącą dzierżawą.
 `new-msoldomain –name <domainname>` | Dodaje nazwę domeny do dzierżawy jako niezweryfikowane (nie przeprowadzono jeszcze weryfikacji usługi DNS).
-`get-msoldomain` | Nazwa domeny jest teraz uwzględniona na liście nazw domen skojarzonych z zarządzaną dzierżawą, ale jest wymieniona jakoniezweryfikowana.
+`get-msoldomain` | Nazwa domeny jest teraz uwzględniona na liście nazw domen skojarzonych z zarządzaną dzierżawą, ale jest wymieniona jako **niezweryfikowana**.
 `get-msoldomainverificationdns –Domainname <domainname> –Mode DnsTxtRecord` | Zawiera informacje, które mają zostać umieszczone w nowym rekordzie TXT systemu DNS dla domeny (MS = XXXXX). Weryfikacja może nie nastąpić natychmiast, ponieważ trwa pewien czas na propagację rekordu TXT, więc poczekaj kilka minut przed rozważeniem opcji **-ForceTakeover** . 
 `confirm-msoldomain –Domainname <domainname> –ForceTakeover Force` | <li>Jeśli nazwa domeny nie jest jeszcze zweryfikowana, możesz kontynuować z opcją **-ForceTakeover** . Sprawdza, czy rekord TXT został utworzony i rozpoczyna proces przejęcia.<li>Opcja **-ForceTakeover** należy dodać do polecenia cmdlet tylko w przypadku wymuszenia przejęcia przez administratora zewnętrznego, na przykład gdy niezarządzana dzierżawa ma zablokowanie przejęcia przez usługę Office 365.
-`get-msoldomain` | Na liście domen jest teraz wyświetlana nazwa domeny,która została zweryfikowana.
+`get-msoldomain` | Na liście domen jest teraz wyświetlana nazwa domeny, która została **zweryfikowana**.
+
+> [!NOTE]
+> Niezarządzana organizacja usługi Azure AD jest usuwana 10 dni po skorzystaniu z opcji zewnętrznego wymuszenia przejęcia.
 
 ### <a name="powershell-example"></a>Przykład programu PowerShell
 
@@ -164,7 +168,7 @@ parametr | Użycie
     Confirm-MsolEmailVerifiedDomain -DomainName *your_domain_name*
    ```
   
-   Przykład:
+   Na przykład:
   
    ```powershell
     Confirm-MsolEmailVerifiedDomain -DomainName contoso.com

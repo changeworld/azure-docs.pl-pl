@@ -5,23 +5,23 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/04/2019
+ms.date: 09/09/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 183030a063faa212d7d5788792aa525f530d18ef
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 59ae3b587751bd4af2c9e5ab0abefb8a5c3bf8e6
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308390"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70843939"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Samouczek: Tworzenie budżetów platformy Azure i zarządzanie nimi
 
 Budżety w usłudze Cost Management ułatwiają planowanie poprawy odpowiedzialności organizacji. Za pomocą budżetów możesz obserwować koszt wykorzystywanych lub subskrybowanych usług platformy Azure w określonym czasie. Ułatwiają one poinformować inne osoby o ich wydatków, aby aktywnie zarządzać kosztami i monitorować, jak wydatków w miarę wraz z upływem czasu. Po przekroczeniu progów budżetu, który został utworzony, są wyzwalane tylko powiadomienia. Wpływają na żaden z zasobów i nie zostanie ono zatrzymane swoje użycie. Budżetów służy do porównywania i śledzić wydatki jako analizując koszty.
 
-Miesięczne budżety są oceniane w odniesieniu do wydatków co cztery godziny. Jednak dane dla używanych zasobów są dostępne w ciągu ośmiu godzin. Po spełnieniu próg budżetu powiadomienia e-mail są zwykle odbierane w mniej niż osiem godzin. 
+Miesięczne budżety są oceniane w odniesieniu do wydatków co cztery godziny. Jednak dane dla używanych zasobów są dostępne w ciągu ośmiu godzin. Po spełnieniu progu budżetowego powiadomienia e-mail są zwykle odbierane w czasie krótszym niż 12 godzin. 
 
 Budżetów automatycznie resetować na końcu okresu (co miesiąc, co kwartał lub rocznie) na tym samym kwotę budżetu po wybraniu przyszłą datę wygaśnięcia. Ponieważ są one resetowane sama kwota budżetu, musisz utworzyć oddzielne budżety, gdy budżet kwot różnią się w przyszłych okresach.
 

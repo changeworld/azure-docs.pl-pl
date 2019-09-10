@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 08/27/2019
-ms.openlocfilehash: c0bfbbd8b85f0b3eadf468cdd1261f52bff26abe
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
-ms.translationtype: HT
+ms.openlocfilehash: 33e21b54927280e2692a58c311e2de23e257f923
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813388"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845387"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Przegląd Azure SQL Database limitów zasobów wystąpienia zarządzanego
 
@@ -65,9 +65,9 @@ Wystąpienie zarządzane ma dwie warstwy usług: Ogólnego przeznaczenia i Kryty
 | Maksymalny rozmiar bazy danych tempDB | 192 – 1 920 GB (24 GB na rdzeń wirtualny)<br/>Dodaj więcej rdzeni wirtualnych, aby uzyskać więcej przestrzeni TempDB. | Ograniczone przez maksymalny rozmiar magazynu wystąpienia. Rozmiar pliku dziennika bazy danych TempDB jest obecnie ograniczony do 24GB/rdzeń wirtualny. |
 | Przetwarzanie OLTP danych w pamięci | Nieobsługiwane | Dostępne |
 | Maksymalna liczba sesji | 30000 | 30000 |
-| Możliwe do odczytu repliki | 0 | 1 (wliczone w cenę) |
-| Cennik/rozliczenia | Rdzeń wirtualny, zarezerwowany magazyn  <br/> Nie naliczono żadnych operacji we/wy, magazyn kopii zapasowych nie jest jeszcze naliczany. | Rdzeń wirtualny, zarezerwowany magazyn  <br/> Nie naliczono żadnych operacji we/wy, magazyn kopii zapasowych nie jest jeszcze naliczany. | 
-| Modele rabatów | [Wystąpienia zarezerwowane](sql-database-reserved-capacity.md)<br/>[Korzyść użycia hybrydowego platformy Azure](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (niedostępne w subskrypcjach tworzenia i testowania) | [Wystąpienia zarezerwowane](sql-database-reserved-capacity.md)<br/>[Korzyść użycia hybrydowego platformy Azure](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (niedostępne w subskrypcjach tworzenia i testowania)|
+| [Repliki tylko do odczytu](sql-database-read-scale-out.md) | 0 | 1 (wliczone w cenę) |
+| Cennik/rozliczenia | [rdzeń wirtualny i zarezerwowany magazyn](https://azure.microsoft.com/pricing/details/sql-database/managed/) są rozliczone. <br/>Liczba operacji we/wy nie jest naliczana.<br/>Magazyn kopii zapasowych nie jest jeszcze naliczany. | [rdzeń wirtualny i zarezerwowany magazyn](https://azure.microsoft.com/pricing/details/sql-database/managed/) są rozliczone. <br/>Liczba operacji we/wy nie jest naliczana.<br/>Magazyn kopii zapasowych nie jest jeszcze naliczany. | 
+| Modele rabatów | [Wystąpienia zarezerwowane](sql-database-reserved-capacity.md)<br/>[Korzyść użycia hybrydowego platformy Azure](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (niedostępne w subskrypcjach tworzenia i testowania)<br/>Subskrypcje dla [przedsiębiorstw](https://azure.microsoft.com/offers/ms-azr-0148p/) i [płatność zgodnie z rzeczywistym](https://azure.microsoft.com/offers/ms-azr-0023p/) użyciem — tworzenie i testowanie| [Wystąpienia zarezerwowane](sql-database-reserved-capacity.md)<br/>[Korzyść użycia hybrydowego platformy Azure](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (niedostępne w subskrypcjach tworzenia i testowania)<br/>Subskrypcje dla [przedsiębiorstw](https://azure.microsoft.com/offers/ms-azr-0148p/) i [płatność zgodnie z rzeczywistym](https://azure.microsoft.com/offers/ms-azr-0023p/) użyciem — tworzenie i testowanie|
 
 > [!NOTE]
 > - Rozmiar pliku danych i dziennika w bazach danych użytkownika i systemu jest uwzględniany w rozmiarze magazynu wystąpienia, który jest porównywany z maksymalnym limitem rozmiaru magazynu. Użyj widoku system <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys. master_files</a> , aby określić łączną ilość miejsca używanego przez bazy danych. Dzienniki błędów nie są utrwalane i nie zostały uwzględnione w rozmiarze. Kopie zapasowe nie są uwzględniane w rozmiarze magazynu.
@@ -134,7 +134,7 @@ Aby zainicjować proces uzyskiwania większego przydziału:
 3. Kliknij przycisk **Dalej**.
 4. Na **karcie problem** dla nowego żądania obsługi:
    - W polu **ważność**wybierz poziom ważności problemu.
-   - Aby **uzyskać więcej informacji**, podaj dodatkowe informacje o problemie, w tym komunikaty o błędach.
+   - Abyuzyskać więcej informacji, podaj dodatkowe informacje o problemie, w tym komunikaty o błędach.
    - W przypadku **przekazywania plików**Dołącz plik z więcej informacji (do 4 MB).
 
      ![Szczegóły problemu](media/sql-database-managed-instance-resource-limits/problem-details.png)

@@ -1,7 +1,7 @@
 ---
-title: 'Celów obliczeń: gdzie uczenie i wdrażanie modeli'
+title: 'Cele obliczeniowe: gdzie można wyszkolić i wdrożyć modele'
 titleSuffix: Azure Machine Learning service
-description: Zdefiniuj, które chcesz uczenia lub wdrażania modelu za pomocą usługi Azure Machine Learning.
+description: Zdefiniuj, gdzie chcesz nauczyć lub wdrożyć model za pomocą usługi Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,60 +9,60 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/10/2019
-ms.openlocfilehash: a7944b284a9c1c0424af54874554d05d49ad4b20
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: b2e4c9160ccad66b04dd30979f0568da68836d76
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806047"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860593"
 ---
-#  <a name="what-are-compute-targets-in-azure-machine-learning-service"></a>Jakie są cele obliczeniowych w usłudze Azure Machine Learning? 
+#  <a name="what-are-compute-targets-in-azure-machine-learning-service"></a>Co to są cele obliczeniowe w usłudze Azure Machine Learning? 
 
-A **obliczeniowego elementu docelowego** to zasobów/środowisko obliczeniowe wyznaczonym, w której uruchomiono skrypt szkolenia lub host wdrożenia swojej usługi. Ta lokalizacja może być komputer lokalny lub zasób mocą obliczeniową opartą na chmurze. Przy użyciu obliczeniowych elementów docelowych ułatwiają można później zmienić środowisko obliczeniowe bez konieczności zmian w kodzie.  
+**Obiekt docelowy obliczeń** to wyznaczono zasób obliczeniowy/środowisko, w którym jest uruchamiany skrypt szkoleniowy lub hostowanie wdrożenia usługi. Ta lokalizacja może być maszyną lokalną lub zasobem obliczeniowym opartym na chmurze. Użycie obiektów docelowych obliczeń ułatwia późniejsze zmiany środowiska obliczeniowego bez konieczności zmiany kodu.  
 
-W cykl życia typowego modelu rozwoju można:
-1. Rozpocznij od tworzenia i eksperymentowania na niewielką ilość danych. Na tym etapie firma Microsoft zaleca lokalnym środowisku (komputer lokalny lub maszyny Wirtualnej w chmurze) co obliczeniowego elementu docelowego. 
-2. Skalowanie w górę do większej danych lub rozproszonego szkolenia przy użyciu jednej z tych [celów obliczeń szkolenia](#train).  
-3. Gdy model jest gotowy, wdrożyć ją na hosta środowiska lub urządzeń IoT za pomocą jednego z tych sieci web [celów obliczeń wdrożenia](#deploy).
+W typowym cyklu projektowania modelu można:
+1. Zacznij od tworzenia i eksperymentowania w niewielkiej ilości danych. Na tym etapie zalecamy środowisko lokalne (komputer lokalny lub maszyna wirtualna oparta na chmurze) jako obiekt docelowy obliczeń. 
+2. Skaluj w górę do większej ilości danych lub przekształcenie rozproszone przy użyciu jednego z tych [obiektów docelowych obliczeń szkoleniowych](#train).  
+3. Gdy model będzie gotowy, wdróż go w środowisku hostingu internetowego lub na urządzeniu IoT przy użyciu jednego z tych [celów obliczeniowych wdrożenia](#deploy).
 
-Zasoby obliczeniowe używane dla obliczeniowych elementów docelowych są dołączone do [obszaru roboczego](concept-workspace.md). Obliczeniowe zasobów innych niż komputer lokalny są udostępniane przez użytkowników obszaru roboczego.
+Zasoby obliczeniowe używane dla obiektów docelowych obliczeń są dołączone do [obszaru roboczego](concept-workspace.md). Zasoby obliczeniowe inne niż maszyna lokalna są współużytkowane przez użytkowników obszaru roboczego.
 
-## <a name="train"></a> Szkolenie obliczeniowych elementów docelowych
+## <a name="train"></a>Szkoleniowe cele obliczeniowe
 
-Usługa Azure Machine Learning obsługuje różne w różnych zasobów obliczeniowych.  Można również dołączyć własnych zasobów obliczeniowych, mimo że obsługa mogą się różnić w różnych scenariuszach.
+Usługa Azure Machine Learning ma różne wsparcie dla różnych zasobów obliczeniowych.  Możesz również dołączyć własny zasób obliczeniowy, chociaż obsługa różnych scenariuszy może się różnić.
 
 [!INCLUDE [aml-compute-target-train](../../../includes/aml-compute-target-train.md)]
 
-Dowiedz się więcej o [Konfigurowanie i używanie obliczeniowego elementu docelowego do trenowania modelu](how-to-set-up-training-targets.md).
+Dowiedz się więcej o [konfigurowaniu elementu docelowego obliczeń i korzystaniu z niego do uczenia modelu](how-to-set-up-training-targets.md).
 
 ## <a name="deploy"></a>Cele wdrożenia
 
-Następujące zasoby obliczeniowe może służyć do obsługi wdrożenia modelu.
+Następujące zasoby obliczeniowe mogą służyć do hostowania wdrożenia modelu.
 
 [!INCLUDE [aml-compute-target-deploy](../../../includes/aml-compute-target-deploy.md)]
 
-Dowiedz się, [gdzie i jak wdrożyć model do obliczeniowego elementu docelowego](how-to-deploy-and-where.md).
+Dowiedz się [, gdzie i jak wdrożyć model w miejscu docelowym obliczeń](how-to-deploy-and-where.md).
 
 <a name="amlcompute"></a>
-## <a name="azure-machine-learning-compute-managed"></a>Obliczeniowe platformy Azure Machine Learning (zarządzana)
+## <a name="azure-machine-learning-compute-managed"></a>Azure Machine Learning COMPUTE (zarządzane)
 
-Zasób obliczeniowy zarządzanych jest tworzony i zarządzany przez usługę Azure Machine Learning. Ta obliczeń jest zoptymalizowany pod kątem obciążeń learning maszyny. Usługa Azure obliczeniowego usługi Machine Learning jest tylko zarządzane zasoby obliczeniowe od 30 maja 2019 r. Dodatkowe zarządzane zasoby obliczeniowe mogą być dodawane w przyszłości.
+Zarządzany zasób obliczeniowy jest tworzony i zarządzany przez usługę Azure Machine Learning. To obliczenie jest zoptymalizowane pod kątem obciążeń uczenia maszynowego. Obliczenia Azure Machine Learning są jedynymi zarządzanymi obliczeniami od 30 maja 2019. W przyszłości mogą zostać dodane dodatkowe zarządzane zasoby obliczeniowe.
 
-Szkolenia oraz wnioskowania usługi batch (wersja zapoznawcza) można użyć obliczeniowego usługi Azure Machine Learning.  Z tego zasobu obliczeniowego masz:
+Azure Machine Learning obliczeń można użyć do szkolenia i usługi Batch inferencing (wersja zapoznawcza).  Ten zasób obliczeniowy posiada następujące:
 
-* Klaster z jednym lub wielu node
-* Skalowania każdej próbie przesłania przebiegu 
-* Zarządzanie klastrem automatyczne i planowania zadań 
+* Klaster z jednym lub wiele węzłów
+* Skalowanie automatyczne przy każdym przesyłaniu przebiegu 
+* Automatyczne zarządzanie klastrami i planowanie zadań 
 * Obsługa zasobów procesora CPU i procesora GPU
 
-Można utworzyć wystąpienia obliczeniowego usługi Azure Machine Learning w witrynie Azure portal, za pomocą zestawu SDK lub przy użyciu interfejsu wiersza polecenia. Podczas tworzenia go automatycznie jest częścią obszaru roboczego w odróżnieniu od innych rodzajów obliczeniowych elementów docelowych.
+Wystąpienia obliczeniowe Azure Machine Learning można tworzyć w Azure Portal lub na [stronie docelowej obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com)przy użyciu zestawu SDK lub interfejsu wiersza polecenia. Gdy jest tworzony, jest automatycznie częścią obszaru roboczego w przeciwieństwie do innych rodzajów obiektów docelowych obliczeń.
 
-## <a name="unmanaged-compute"></a>Niezarządzane obliczeń
+## <a name="unmanaged-compute"></a>Obliczenia niezarządzane
 
-Niezarządzane obliczeniowego elementu docelowego jest *nie* zarządzane przez usługę Azure Machine Learning. Można utworzyć tego rodzaju obliczeniowego elementu docelowego spoza usługi Azure Machine Learning, a następnie dołączyć go do obszaru roboczego. Zasoby obliczeniowe niezarządzanych może wymagać dodatkowych kroków służących do obsługi lub w celu poprawy wydajności dla obciążeń learning maszyn.
+Niezarządzany cel obliczeń *nie* jest zarządzany przez usługę Azure Machine Learning. Ten typ elementu docelowego obliczeń można utworzyć poza Azure Machine Learning, a następnie dołączyć go do obszaru roboczego. Niezarządzane zasoby obliczeniowe mogą wymagać dodatkowych czynności, aby zachować lub zwiększyć wydajność obciążeń uczenia maszynowego.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Instrukcje:
-* [Skonfiguruj cel obliczenia na podstawie uczyć modele](how-to-set-up-training-targets.md)
-* [Model jest wdrażany obliczeniowego elementu docelowego](how-to-deploy-and-where.md)
+* [Skonfiguruj cel obliczeń do uczenia modelu](how-to-set-up-training-targets.md)
+* [Wdrażanie modelu w obiekcie docelowym obliczeń](how-to-deploy-and-where.md)

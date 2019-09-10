@@ -1,6 +1,6 @@
 ---
-title: Limity usługi Site Recovery tabeli
-description: W tym artykule opisano system limity usługi Site Recovery.
+title: Tabela limitów Site Recovery
+description: Opisuje limity systemowe dla Site Recovery.
 services: site recovery
 documentationcenter: NA
 author: csilauraa
@@ -14,20 +14,20 @@ ms.workload: TBD
 ms.date: 07/06/2015
 ms.author: lauraa
 ms.openlocfilehash: 4d4e68d99585522e773e71430b4e4f37ad7b1580
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67183633"
 ---
-Poniższe limity mają zastosowanie do usługi Azure Site Recovery.
+Poniższe limity mają zastosowanie do Azure Site Recovery.
 
 | Identyfikator limitu | Limit domyślny |
 | --- | --- |
 | Liczba magazynów na subskrypcję |500 |     
-| Liczba serwerów w magazynie platformy Azure |250 |
-| Liczba grup ochrony w jednym magazynie platformy Azure |Bez ograniczeń |
-| Vault liczba planów odzyskiwania na platformie Azure |Bez ograniczeń |
-| Liczba serwerów w każdej grupie ochrony |Bez ograniczeń |
+| Liczba serwerów na Magazyn Azure |250 |
+| Liczba grup ochrony na Magazyn Azure |Bez limitu |
+| Liczba planów odzyskiwania na Magazyn Azure |Bez limitu |
+| Liczba serwerów na grupę ochrony |Bez limitu |
 | Liczba serwerów na plan odzyskiwania |50 |
 

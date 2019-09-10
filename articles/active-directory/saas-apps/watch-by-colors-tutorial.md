@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/20/2019
+ms.date: 09/09/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce0882be0419cbbbc7d94cb8d517e27bdb06a780
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: e7d0810c393cf9b6060f456c5ff01d03673b62a9
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70014139"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861302"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-watch-by-colors"></a>Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z oglądaniem przez kolory
 
@@ -57,7 +57,6 @@ Aby skonfigurować integrację oglądania przez kolory z usługą Azure AD, musi
 1. W sekcji **Dodaj z galerii** wpisz **Watch według kolorów** w polu wyszukiwania.
 1. Wybierz pozycję **Obejrzyj według kolorów** z panelu wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-watch-by-colors"></a>Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD na potrzeby oglądania przez kolory
 
 Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD przy użyciu funkcji oglądania przez kolory za pomocą użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD a powiązanym użytkownikiem w obszarze Obejrzyj według kolorów.
@@ -67,7 +66,7 @@ Aby skonfigurować i przetestować Logowanie jednokrotne w usłudze Azure AD za 
 1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
     1. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
     1. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
-1. **[Skonfiguruj kontrolowanie według kolorów logowanie](#configure-watch-by-colors-sso)** jednokrotne — aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+1. **[Skonfiguruj kontrolowanie według kolorów Logowanie jednokrotne](#configure-watch-by-colors-sso)** — aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
     1. **[Utwórz użytkownika testowego czujki według kolorów](#create-watch-by-colors-test-user)** , aby uzyskać odpowiednika B. Simon w Obejrzyj według kolorów, które są połączone z reprezentacją użytkownika w usłudze Azure AD.
 1. **[Przetestuj logowanie](#test-sso)** jednokrotne — aby sprawdzić, czy konfiguracja działa.
 
@@ -75,8 +74,8 @@ Aby skonfigurować i przetestować Logowanie jednokrotne w usłudze Azure AD za 
 
 Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
 
-1. Na [Azure Portal](https://portal.azure.com/)na stronie " **Obejrzyj według kolorów** " integracji aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie**jednokrotne.
-1. Na stronie **Wybierz metodę logowania** jednokrotnego wybierz pozycję **SAML**.
+1. Na [Azure Portal](https://portal.azure.com/)na stronie " **Obejrzyj według kolorów** " integracji aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie jednokrotne**.
+1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
@@ -123,13 +122,21 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
 ## <a name="configure-watch-by-colors-sso"></a>Konfigurowanie czujki według kolorów Logowanie jednokrotne
 
-1. Otwórz nowe okno przeglądarki sieci Web i zaloguj się w witrynie firmy Watch przez kolory jako administrator i wykonaj następujące czynności:
+1. Aby zautomatyzować konfigurację w obszarze czujki według kolorów, należy zainstalować **Moje aplikacje bezpieczne logowanie do przeglądarki** , klikając pozycję **Zainstaluj rozszerzenie**.
 
-1. W prawym górnym rogu strony kliknij pozycję **profil** > **Ustawienia** > konta**Logowanie jednokrotne (logowanie**jednokrotne).
+    ![Rozszerzenie moje aplikacje](common/install-myappssecure-extension.png)
+
+2. Po dodaniu rozszerzenia do przeglądarki kliknij pozycję Obejrzyj, aby **zobaczyć** , że aplikacja będzie kierować do aplikacji czujka przez kolory. W tym miejscu podaj poświadczenia administratora, aby zalogować się do czujki przez kolory. Rozszerzenie przeglądarki automatycznie skonfiguruje aplikację i automatyzuje kroki 3-5.
+
+    ![Konfiguracja konfiguracji](common/setup-sso.png)
+
+3. Jeśli chcesz ręcznie skonfigurować kontrolki przez kolory, Otwórz nowe okno przeglądarki sieci Web i zaloguj się w witrynie firmy Watch przez kolory jako administrator i wykonaj następujące czynności:
+
+4. W prawym górnym rogu strony kliknij pozycję **profil** > **Ustawienia** > konta**Logowanie jednokrotne (logowanie**jednokrotne).
 
     ![Konfiguracja czujki według kolorów](./media/watch-by-colors-tutorial/config01.png)
 
-1. Na stronie Logowanie jednokrotne **(logowanie** jednokrotne) wykonaj następujące czynności:
+5. Na stronie Logowanie **jednokrotne (logowanie** jednokrotne) wykonaj następujące czynności:
 
     ![Konfiguracja czujki według kolorów](./media/watch-by-colors-tutorial/config02.png)
 
@@ -183,5 +190,5 @@ Po kliknięciu kafelka Obejrzyj według kolorów w panelu dostępu należy autom
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Wypróbuj usługę Azure AD](https://aad.portal.azure.com/)
+- [Wypróbuj czujkę według kolorów w usłudze Azure AD](https://aad.portal.azure.com/)
 

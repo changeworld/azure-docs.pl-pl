@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 09/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 349ae3450b5817b5cfe9c95c41d159e3daca7a39
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: f7e1507289d3c21d51a0ec8529598e5eeb089d37
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603387"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859012"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>Szybki start: Wykrywanie twarzy na obrazie przy użyciu interfejsu API REST rozpoznawania twarzy i języka C#
 
@@ -51,8 +51,9 @@ using System.Text;
 
 ### <a name="add-essential-fields"></a>Dodawanie podstawowych pól
 
-Dodaj **Program** klasa zawierająca następujące pola. Te dane służą do określania sposobu nawiązywania połączenia z usługą rozpoznawania twarzy i lokalizacji, z której można pobrać dane wejściowe. Należy zaktualizować pole `subscriptionKey` wartością klucza subskrypcji. Konieczna może być również zmiana ciągu `uriBase` w taki sposób, aby zawierał on poprawny identyfikator regionu (zobacz [dokumentację interfejsu API rozpoznawania twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), aby zapoznać się z listą wszystkich punktów końcowych regionów).
+Dodaj klasę **programu** zawierającą następujące pola. Te dane służą do określania sposobu nawiązywania połączenia z usługą rozpoznawania twarzy i lokalizacji, z której można pobrać dane wejściowe. Musisz zaktualizować `subscriptionKey` pole przy użyciu wartości klucza subskrypcji i może zajść potrzeba `uriBase` zmiany ciągu tak, aby zawierał ciąg punktu końcowego zasobu.
 
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ```csharp
 namespace DetectFace
@@ -62,22 +63,15 @@ namespace DetectFace
 
         // Replace <Subscription Key> with your valid subscription key.
         const string subscriptionKey = "<Subscription Key>";
-
-        // NOTE: You must use the same region in your REST call as you used to
-        // obtain your subscription keys. For example, if you obtained your
-        // subscription keys from westus, replace "westcentralus" in the URL
-        // below with "westus".
-        //
-        // Free trial subscription keys are generated in the "westus" region.
-        // If you use a free trial subscription key, you shouldn't need to change
-        // this region.
+        
+        // replace <myresourcename> with the string found in your endpoint URL
         const string uriBase =
-            "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
+            "https://<myresourcename>.cognitive.microsoft.com/face/v1.0/detect";
 ```
 
 ### <a name="receive-image-input"></a>Odbieranie danych wejściowych obrazu
 
-Dodaj poniższy kod do metody **Main** w klasie **Program**. Ten kod zapisuje monit konsoli pytaniem do użytkownika, wprowadź adres URL obrazu. Następnie wywołuje inną metodę, **MakeAnalysisRequest**, aby przetworzyć obraz w tej lokalizacji.
+Dodaj poniższy kod do metody **Main** w klasie **Program**. Ten kod zapisuje monit do konsoli programu z prośbą o wprowadzenie adresu URL obrazu. Następnie wywołuje inną metodę, **MakeAnalysisRequest**, aby przetworzyć obraz w tej lokalizacji.
 
 ```csharp
         static void Main(string[] args)
@@ -162,7 +156,7 @@ Metody pomocnicze zostaną zdefiniowanie w poniższych krokach.
 
 ### <a name="process-the-input-image-data"></a>Przetwarzanie danych obrazu wejściowego
 
-Dodaj następującą metodę do klasy **Program**. Ta metoda konwertuje obraz na określony adres URL do tablicy typu byte.
+Dodaj następującą metodę do klasy **Program**. Ta metoda konwertuje obraz pod określonym adresem URL na tablicę bajtów.
 
 ```csharp
         // Returns the contents of the specified file as a byte array.
@@ -179,7 +173,7 @@ Dodaj następującą metodę do klasy **Program**. Ta metoda konwertuje obraz na
 
 ### <a name="parse-the-json-response"></a>Analizowanie odpowiedzi w formacie JSON
 
-Dodaj następującą metodę do klasy **Program**. Ta metoda formatów danych wejściowych, aby można było łatwiej odczytać JSON. Aplikacja zapisze te dane ciągu do konsoli. Następnie można zamknąć klas i przestrzeni nazw.
+Dodaj następującą metodę do klasy **Program**. Ta metoda umożliwia łatwiejsze odczytywanie danych wejściowych JSON. Aplikacja zapisze te dane ciągu do konsoli. Następnie można zamknąć klasę i przestrzeń nazw.
 
 ```csharp
         // Formats the given JSON string by adding line breaks and indents.
@@ -346,7 +340,7 @@ Odpowiedź oznaczająca powodzenie będzie zawierać dane dotyczące rozpoznawan
 ]
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start utworzono prostą aplikację konsolową .NET, która korzysta z wywołań REST wraz z interfejsem API rozpoznawania twarzy platformy Azure do wykrywania twarzy na obrazie i zwrócenia ich atrybutów. Następnie zapoznaj się z dokumentacją referencyjną interfejsu API rozpoznawania twarzy, aby dowiedzieć się więcej na temat obsługiwanych scenariuszy.
 

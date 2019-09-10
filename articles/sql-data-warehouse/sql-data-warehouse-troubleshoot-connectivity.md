@@ -10,12 +10,12 @@ ms.subservice: supportability
 ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 290753b866f15e09a52572fdd7a43a60fc2812d6
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: ebdeaf21253e89a9a14e3a56ca7be0f6e8adceb0
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575546"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859234"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>Rozwiązywanie problemów z łącznością
 
@@ -57,7 +57,7 @@ W przeciwnym razie skontaktuj się z administratorem IT, aby sprawdzić, czy ta 
 
 ## <a name="check-your-firewall-settings"></a>Sprawdź ustawienia zapory
 
-Usługa SQL Data Warehouse komunikuje się przez port 1433.   Jeśli próbujesz nawiązać połączenie z sieci firmowej, ruch wychodzący na porcie 1433 może być blokowany przez zaporę sieciową. W takim przypadku nie można nawiązać połączenia z serwerem Azure SQL Database, chyba że dział IT otworzy port 1433. Dodatkowe informacje na temat konfiguracji zapory można znaleźć [tutaj](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#manage-server-level-ip-firewall-rules-using-the-azure-portal).
+Usługa SQL Data Warehouse komunikuje się przez port 1433.   Jeśli próbujesz nawiązać połączenie z sieci firmowej, ruch wychodzący na porcie 1433 może być blokowany przez zaporę sieciową. W takim przypadku nie można nawiązać połączenia z serwerem Azure SQL Database, chyba że dział IT otworzy port 1433. Dodatkowe informacje na temat konfiguracji zapory można znaleźć [tutaj](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules).
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>Sprawdź ustawienia sieci wirtualnej/punktu końcowego usługi
 

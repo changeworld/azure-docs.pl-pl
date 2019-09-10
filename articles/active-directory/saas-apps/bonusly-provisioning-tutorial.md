@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Konfigurowanie Bonusly dla automatycznej aprowizacji użytkowników z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować usługi Azure Active Directory do automatycznego aprowizowania lub cofania aprowizacji kont użytkowników do Bonusly.
+title: 'Samouczek: Skonfiguruj bezpłatnie automatyczne Inicjowanie obsługi administracyjnej przy użyciu Azure Active Directory | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Azure Active Directory, aby automatycznie udostępniać i cofać obsługę administracyjną kont użytkowników.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,36 +16,36 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8368fc5369ee6cd93bbf472d4904cd647d66058d
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 692eff26dbbc2289ec589a327dbe58958b414a56
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673035"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70842730"
 ---
-# <a name="tutorial-configure-bonusly-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Bonusly dla automatycznej aprowizacji użytkowników
+# <a name="tutorial-configure-bonusly-for-automatic-user-provisioning"></a>Samouczek: Skonfiguruj bezpłatnie dla automatycznej aprowizacji użytkowników
 
-Celem tego samouczka jest pokazują kroki do wykonania w Bonusly i usługi Azure Active Directory (Azure AD), aby skonfigurować usługę Azure AD automatycznie aprowizacji i cofania aprowizacji użytkowników i/lub grup w celu Bonusly.
+Celem tego samouczka jest zademonstrowanie kroków, które należy wykonać w celu uzyskania dodatkowych Azure Active Directory (Azure AD) w celu skonfigurowania usługi Azure AD w celu automatycznego aprowizacji i cofania aprowizacji użytkowników i/lub grup.
 
 > [!NOTE]
-> W tym samouczku opisano łącznika, który został zbudowany na podstawie usługi aprowizacji użytkownika usługi Azure AD. Ważne szczegółowe informacje na temat tej usługi nie, jak działa i często zadawane pytania, [Automatyzowanie aprowizacji użytkowników i anulowania obsługi do aplikacji SaaS w usłudze Azure Active Directory](../manage-apps/user-provisioning.md).
+> Ten samouczek zawiera opis łącznika utworzonego na podstawie usługi Azure AD User Provisioning. Aby uzyskać ważne informacje o tym, jak działa ta usługa, jak ona dotyczy, i często zadawanych pytań, zobacz [Automatyzowanie aprowizacji użytkowników i Anulowanie udostępniania aplikacji SaaS przy użyciu programu Azure Active Directory](../manage-apps/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Scenariusz opisany w tym samouczku przyjęto założenie, że masz już następujące czynności:
+Scenariusz opisany w tym samouczku założono, że masz już następujące elementy:
 
 * Dzierżawa usługi Azure AD
-* A [Bonusly dzierżawy](https://bonus.ly/pricing)
-* Konto użytkownika Bonusly z uprawnieniami administratora
+* [Dzierżawa](https://bonus.ly/pricing)
+* Konto użytkownika w niekorzyść z uprawnieniami administratora
 
 > [!NOTE]
-> Inicjowanie obsługi administracyjnej integracji usługi Azure AD opiera się na [Bonusly interfejsu API Rest](https://bonusly.gelato.io/reference), który jest dostępny dla deweloperów Bonusly.
+> Integracja z obsługą administracyjną usługi Azure AD opiera się na [dodatkowym interfejsie API REST](https://konghq.com/solutions/gateway/), który jest dostępny w celu uzyskania dodatkowych deweloperów.
 
-## <a name="adding-bonusly-from-the-gallery"></a>Dodawanie Bonusly z galerii
+## <a name="adding-bonusly-from-the-gallery"></a>Dodatkowe Dodawanie z galerii
 
-Przed skonfigurowaniem Bonusly dla automatycznej aprowizacji użytkowników z usługą Azure AD, musisz dodać Bonusly z galerii aplikacji usługi Azure AD z listą zarządzanych aplikacji SaaS.
+Przed przystąpieniem do samoobsługowego konfigurowania funkcji automatycznego aprowizacji użytkowników w usłudze Azure AD należy dodać ją z galerii aplikacji usługi Azure AD do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać Bonusly z galerii aplikacji usługi Azure AD, wykonaj następujące czynności:**
+**Aby dodać dodatkowe elementy z galerii aplikacji usługi Azure AD, wykonaj następujące czynności:**
 
 1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
@@ -59,111 +59,111 @@ Przed skonfigurowaniem Bonusly dla automatycznej aprowizacji użytkowników z us
 
     ![Nowy przycisk aplikacji](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **Bonusly**, wybierz opcję **Bonusly** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **premię** **, wybierz pozycję** z panelu wyników, a następnie kliknij przycisk **Dodaj** , aby dodać aplikację.
 
-    ![Bonusly na liście wyników](common/search-new-app.png)
+    ![Dodatkowa lista wyników](common/search-new-app.png)
 
-## <a name="assigning-users-to-bonusly"></a>Przypisywanie użytkowników do Bonusly
+## <a name="assigning-users-to-bonusly"></a>Przypisywanie użytkowników do dodatkowych
 
-Usługa Azure Active Directory używa koncepcji o nazwie "przypisania", aby określić, użytkowników, którzy otrzymają dostęp do wybranych aplikacji. W kontekście automatyczna aprowizacja użytkowników są synchronizowane tylko użytkowników i/lub grup, które "przypisano" do aplikacji w usłudze Azure AD. 
+Azure Active Directory używa koncepcji o nazwie "przydziały", aby określić, którzy użytkownicy powinni otrzymywać dostęp do wybranych aplikacji. W kontekście automatycznej aprowizacji użytkowników są synchronizowane tylko użytkownicy i/lub grupy, które zostały przypisane do aplikacji w usłudze Azure AD. 
 
-Przed Skonfiguruj i Włącz automatyczne aprowizowanie użytkowników, należy zdecydować, użytkowników i/lub grup w usłudze Azure AD muszą mieć dostęp do Bonusly. Po decyzję, możesz przypisać użytkownikom i/lub grup Bonusly zgodnie z instrukcjami w tym miejscu:
+Przed skonfigurowaniem i włączeniem automatycznej aprowizacji użytkowników należy zdecydować, którzy użytkownicy i/lub grupy w usłudze Azure AD muszą mieć dostęp do dodatkowych potrzeb. Po ustaleniu tych użytkowników i/lub grup można przypisywać je do dodatkowych, postępując zgodnie z poniższymi instrukcjami:
 
-* [Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+* [Przypisywanie użytkownika lub grupy do aplikacji dla przedsiębiorstw](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-bonusly"></a>Ważne wskazówki dotyczące przypisywania użytkowników do Bonusly
+### <a name="important-tips-for-assigning-users-to-bonusly"></a>Ważne porady dotyczące przypisywania użytkowników do dodatkowych
 
-* Zalecane jest jeden użytkownik usługi Azure AD jest przypisane do Bonusly do testowania automatyczne aprowizowanie konfiguracji użytkowników. Później można przypisać dodatkowych użytkowników i/lub grup.
+* Zaleca się, aby jeden użytkownik usługi Azure AD został przypisany do przetestowania automatycznej konfiguracji inicjowania obsługi użytkowników. Dodatkowych użytkowników i/lub grupy można przypisywać później.
 
-* Podczas przypisywania użytkowników do Bonusly, należy wybrać prawidłową rolą specyficzne dla aplikacji (jeśli jest dostępny) w oknie dialogowym przydział. Użytkownicy z **domyślnego dostępu** roli są wyłączone, od zainicjowania obsługi administracyjnej.
+* W przypadku przypisywania użytkownika do dodatkowych opcji, należy wybrać dowolną prawidłową rolę specyficzną dla aplikacji (jeśli jest dostępna) w oknie dialogowym przypisania. Użytkownicy z **domyślną rolą dostępu** są wykluczeni z aprowizacji.
 
-## <a name="configuring-automatic-user-provisioning-to-bonusly"></a>Konfigurowanie automatycznej aprowizacji użytkowników do Bonusly
+## <a name="configuring-automatic-user-provisioning-to-bonusly"></a>Konfigurowanie automatycznej aprowizacji użytkowników w celu uzyskania premii
 
-Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD inicjowania obsługi usługi do tworzenia, aktualizacji i wyłączanie użytkowników i/lub grup w Bonusly oparciu o przypisania użytkownika i/lub grupy w usłudze Azure AD.
+Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisioning w celu utworzenia, zaktualizowania i wyłączenia użytkowników i/lub grup w sposób niezależny od przypisań użytkowników i/lub grup w usłudze Azure AD.
 
 > [!TIP]
-> Można też włączyć opartej na SAML logowania jednokrotnego dla Bonusly, wykonując instrukcje podane w [Bonusly pojedynczego logowania jednokrotnego samouczek](bonus-tutorial.md). Logowanie jednokrotne można skonfigurować niezależnie od automatyczna aprowizacja użytkowników, że te dwie funkcje uzupełnienie siebie nawzajem.
+> Możesz również włączyć funkcję jednokrotnego logowania opartego na protokole SAML, postępując zgodnie z instrukcjami podanymi w [samouczku logowanie](bonus-tutorial.md)jednokrotne. Logowanie jednokrotne można skonfigurować niezależnie od automatycznej aprowizacji użytkowników, chociaż te dwie funkcje napadają nawzajem.
 
-### <a name="to-configure-automatic-user-provisioning-for-bonusly-in-azure-ad"></a>Aby skonfigurować automatyczna aprowizacja użytkowników dla Bonusly w usłudze Azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-bonusly-in-azure-ad"></a>Aby skonfigurować automatyczne Inicjowanie obsługi administracyjnej dla użytkowników w usłudze Azure AD:
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) i wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **Bonusly**.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com) i wybierz pozycję **aplikacje dla przedsiębiorstw**, wybierz pozycję **wszystkie aplikacje**, a następnie wybierz pozycję **dodatkowe**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **Bonusly**.
+2. Na liście Aplikacje wybierz opcję **dodatkowe**.
 
-    ![Bonusly łącze na liście aplikacji](common/all-applications.png)
+    ![Link dodatkowy na liście aplikacji](common/all-applications.png)
 
-3. Wybierz **aprowizacji** kartę.
+3. Wybierz kartę **aprowizacji** .
 
-    ![Inicjowanie obsługi administracyjnej bonusly](./media/bonusly-provisioning-tutorial/ProvisioningTab.png)
+    ![Dodatkowa obsługa administracyjna](./media/bonusly-provisioning-tutorial/ProvisioningTab.png)
 
-4. Ustaw **tryb obsługi administracyjnej** do **automatyczne**.
+4. Ustaw **tryb aprowizacji** na **automatyczny**.
 
-    ![Inicjowanie obsługi administracyjnej bonusly](./media/bonusly-provisioning-tutorial/ProvisioningCredentials.png)
+    ![Dodatkowa obsługa administracyjna](./media/bonusly-provisioning-tutorial/ProvisioningCredentials.png)
 
-5. W obszarze **poświadczeń administratora** sekcji danych wejściowych **klucz tajny tokenu** z Bonusly swoje konto zgodnie z opisem w kroku 6.
+5. W sekcji **poświadczenia administratora** wprowadź **klucz tajny** konta z premią, zgodnie z opisem w kroku 6.
 
-    ![Inicjowanie obsługi administracyjnej bonusly](./media/bonusly-provisioning-tutorial/secrettoken.png)
+    ![Dodatkowa obsługa administracyjna](./media/bonusly-provisioning-tutorial/secrettoken.png)
 
-6. **Klucz tajny tokenu** dla Bonusly Twoje konto znajduje się w **Administrator > firmy > integracje**. W **aby kod** sekcji, kliknij pozycję **interfejs API > Utwórz nowy interfejs API Access Token** Aby utworzyć nowy klucz tajny tokenu.
+6. **Token tajny** dla konta z premią znajduje się w obszarze **administrator > integracji > firmy**. W sekcji **Jeśli chcesz wykonać kod** , kliknij pozycję **interfejs API > Utwórz nowy token dostępu interfejsu API** , aby utworzyć nowy token klucza tajnego.
 
-    ![Inicjowanie obsługi administracyjnej bonusly](./media/bonusly-provisioning-tutorial/BonuslyIntegrations.png)
+    ![Dodatkowa obsługa administracyjna](./media/bonusly-provisioning-tutorial/BonuslyIntegrations.png)
 
-    ![Inicjowanie obsługi administracyjnej bonusly](./media/bonusly-provisioning-tutorial/BonsulyRestApi.png)
+    ![Dodatkowa obsługa administracyjna](./media/bonusly-provisioning-tutorial/BonsulyRestApi.png)
 
-    ![Inicjowanie obsługi administracyjnej bonusly](./media/bonusly-provisioning-tutorial/CreateToken.png)
+    ![Dodatkowa obsługa administracyjna](./media/bonusly-provisioning-tutorial/CreateToken.png)
 
-7. Na poniższym ekranie, wpisz nazwę dla tokenu dostępu, w polu tekstowym podana naciśnij **Utwórz klucz interfejsu Api**. Nowy token dostępu pojawi się na kilka sekund w oknie podręcznym.
+7. Na poniższym ekranie wpisz nazwę tokenu dostępu w podanym polu tekstowym, a następnie naciśnij pozycję **Utwórz klucz interfejsu API**. Nowy token dostępu zostanie wyświetlony przez kilka sekund w wyskakującym okienku.
 
-    ![Inicjowanie obsługi administracyjnej bonusly](./media/bonusly-provisioning-tutorial/Token01.png)
+    ![Dodatkowa obsługa administracyjna](./media/bonusly-provisioning-tutorial/Token01.png)
 
-    ![Inicjowanie obsługi administracyjnej bonusly](./media/bonusly-provisioning-tutorial/Token02.png)
+    ![Dodatkowa obsługa administracyjna](./media/bonusly-provisioning-tutorial/Token02.png)
 
-8. Podczas wypełniania pola wyświetlane w kroku 5, kliknij przycisk **Testuj połączenie** aby zapewnić usłudze Azure AD można połączyć się z Bonusly. Jeśli połączenie nie powiedzie się, upewnij się, że Bonusly konto ma uprawnienia administratora i spróbuj ponownie.
+8. Po wypełnieniu pól przedstawionych w kroku 5 kliknij pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może nawiązać dodatkowe połączenie. Jeśli połączenie nie powiedzie się, upewnij się, że konto z dodatkowymi uprawnieniami administratora i spróbuj ponownie.
 
-    ![Inicjowanie obsługi administracyjnej bonusly](./media/bonusly-provisioning-tutorial/TestConnection.png)
+    ![Dodatkowa obsługa administracyjna](./media/bonusly-provisioning-tutorial/TestConnection.png)
 
-9. W **wiadomość E-mail z powiadomieniem** wprowadź adres e-mail osoby lub grupy, który powinien otrzymywać powiadomienia błąd inicjowania obsługi administracyjnej i zaznacz pole wyboru **Wyślij wiadomość e-mail z powiadomieniem, gdy wystąpi awaria**.
+9. W polu **adres E-mail powiadomienia** wprowadź adres e-mail osoby lub grupy, które powinny otrzymywać powiadomienia o błędach aprowizacji, i zaznacz pole wyboru **Wyślij powiadomienie e-mail, gdy wystąpi awaria**.
 
-    ![Inicjowanie obsługi administracyjnej bonusly](./media/bonusly-provisioning-tutorial/EmailNotification.png)
+    ![Dodatkowa obsługa administracyjna](./media/bonusly-provisioning-tutorial/EmailNotification.png)
 
 10. Kliknij polecenie **Zapisz**.
 
-11. W obszarze **mapowania** zaznacz **synchronizacji Azure użytkownicy usługi Active Directory do Bonusly**.
+11. W sekcji **mapowania** wybierz kolejno pozycje **Synchronizuj Azure Active Directory użytkownicy, aby uzyskać premię**.
 
-    ![Inicjowanie obsługi administracyjnej bonusly](./media/bonusly-provisioning-tutorial/UserMappings.png)
+    ![Dodatkowa obsługa administracyjna](./media/bonusly-provisioning-tutorial/UserMappings.png)
 
-12. Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD Bonusly w **mapowanie atrybutu** sekcji. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania kont użytkowników w Bonusly operacji aktualizacji. Wybierz **Zapisz** przycisk, aby zatwierdzić zmiany.
+12. Przejrzyj atrybuty użytkownika, które są synchronizowane z usługą Azure AD, aby uzyskać dodatkową wartość w sekcji **Mapowanie atrybutów** . Atrybuty wybrane jako **pasujące** właściwości są używane w celu uzyskania dodatkowych odpowiedników kont użytkowników w przypadku operacji aktualizacji. Wybierz przycisk **Zapisz** , aby zatwierdzić zmiany.
 
-    ![Inicjowanie obsługi administracyjnej bonusly](./media/bonusly-provisioning-tutorial/UserAttributeMapping.png)
+    ![Dodatkowa obsługa administracyjna](./media/bonusly-provisioning-tutorial/UserAttributeMapping.png)
 
-13. Aby skonfigurować filtrów określania zakresu, można znaleźć w następujących instrukcjach podanych w [samouczek filtru Scoping](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+13. Aby skonfigurować filtry określania zakresu, zapoznaj się z poniższymi instrukcjami w samouczku dotyczącym [filtru określania zakresu](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
-14. Aby włączyć usługi Azure AD, usługi dla Bonusly inicjowania obsługi administracyjnej, zmień **stanie aprowizacji** do **na** w **ustawienia** sekcji.
+14. Aby włączyć usługę Azure AD Provisioning w celu zapewnienia premii, Zmień **stan aprowizacji** na **włączone** w sekcji **Ustawienia** .
 
-    ![Inicjowanie obsługi administracyjnej bonusly](./media/bonusly-provisioning-tutorial/ProvisioningStatus.png)
+    ![Dodatkowa obsługa administracyjna](./media/bonusly-provisioning-tutorial/ProvisioningStatus.png)
 
-15. Definiowanie użytkowników i/lub grup, które chcesz, aby obsługiwać je na Bonusly, wybierając odpowiednie wartości w **zakres** w **ustawienia** sekcji.
+15. Zdefiniuj użytkowników i/lub grupy, które chcesz udostępnić, wybierając odpowiednie wartości w **zakresie** w sekcji **Ustawienia** .
 
-    ![Inicjowanie obsługi administracyjnej bonusly](./media/bonusly-provisioning-tutorial/ScopeSync.png)
+    ![Dodatkowa obsługa administracyjna](./media/bonusly-provisioning-tutorial/ScopeSync.png)
 
-16. Gdy wszystko jest gotowe do aprowizowania, kliknij przycisk **Zapisz**.
+16. Gdy wszystko będzie gotowe do udostępnienia, kliknij przycisk **Zapisz**.
 
-    ![Inicjowanie obsługi administracyjnej bonusly](./media/bonusly-provisioning-tutorial/SaveProvisioning.png)
+    ![Dodatkowa obsługa administracyjna](./media/bonusly-provisioning-tutorial/SaveProvisioning.png)
 
-Ta operacja uruchamia początkowa synchronizacja wszystkich użytkowników i/lub grup zdefiniowanych w **zakres** w **ustawienia** sekcji. Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które występują co około 40 minut, tak długo, jak działa usługa aprowizacji usługi Azure AD. Możesz użyć **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków do raportu działań w tym artykule opisano wszystkie akcje wykonywane przez usługę Azure AD, inicjowania obsługi usługi na Bonusly aprowizacji.
+Ta operacja uruchamia początkową synchronizację wszystkich użytkowników i/lub grup zdefiniowanych w **zakresie** w sekcji **Ustawienia** . Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które wystąpiły co około 40 minut, o ile usługa Azure AD Provisioning jest uruchomiona. Za pomocą sekcji **szczegóły synchronizacji** można monitorować postęp i postępować zgodnie z raportem o aktywności aprowizacji, który opisuje wszystkie akcje wykonywane w ramach usługi Azure AD Provisioning.
 
 Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Dowiedz się, jak przeglądać dzienniki i Uzyskaj raporty dotyczące inicjowania obsługi administracyjnej działania](../manage-apps/check-status-user-account-provisioning.md)
+* [Dowiedz się, jak przeglądać dzienniki i uzyskiwać raporty dotyczące aktywności aprowizacji](../manage-apps/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/bonusly-provisioning-tutorial/tutorial_general_01.png

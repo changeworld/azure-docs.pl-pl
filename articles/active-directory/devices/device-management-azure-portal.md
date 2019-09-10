@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03c9f0908d8b5290dc4585a330a7ea78a6577ab9
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 60f38b60b5fbf0166f25c423663d157cf8f13ee2
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68942943"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860891"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Zarządzanie tożsamościami urządzeń przy użyciu Azure Portal
 
@@ -63,16 +63,16 @@ Strona Ustawienia urządzenia umożliwia konfigurowanie:
 > **Użytkownicy mogą dołączać urządzenia do ustawienia usługi Azure AD** mają zastosowanie tylko do usługi Azure AD JOIN w systemie Windows 10.
 
 - **Dodatkowi Administratorzy lokalni na urządzeniach dołączonych do usługi Azure AD** — możesz wybrać użytkowników, którym udzielono uprawnień administratora lokalnego na urządzeniu. Użytkownicy dodani w tym miejscu zostaną dodani do roli *Administratorzy urządzenia* w usłudze Azure AD. Administratorzy globalni w usłudze Azure AD i właściciele urządzeń mają domyślnie przyznane prawa administratora lokalnego. Ta opcja to funkcja wersji Premium dostępna za pomocą produktów, takich jak Azure AD — wersja Premium lub pakiet Enterprise Mobility Suite (EMS).
-- **Użytkownicy mogą zarejestrować swoje urządzenia w usłudze Azure AD** — należy skonfigurować to ustawienie, aby zezwolić na rejestrację urządzeń z systemem Windows 10 Personal, iOS, Android i macOs w usłudze Azure AD. W przypadku wybrania opcji **Brak**urządzenia nie mogą zarejestrować się w usłudze Azure AD. Rejestracja przy użyciu Microsoft Intune lub zarządzania urządzeniami przenośnymi (MDM) dla pakietu Office 365 wymaga rejestracji. W przypadku skonfigurowania jednej z tych usług jest zaznaczona opcja **wszystkie** nie jest dostępna.
+- **Użytkownicy mogą zarejestrować swoje urządzenia w usłudze Azure AD** — należy skonfigurować to ustawienie, aby zezwolić na rejestrację urządzeń z systemem Windows 10 Personal, iOS, Android i macOs w usłudze Azure AD. W przypadku wybrania opcji **Brak**urządzenia nie mogą zarejestrować się w usłudze Azure AD. Rejestracja przy użyciu Microsoft Intune lub zarządzania urządzeniami przenośnymi (MDM) dla pakietu Office 365 wymaga rejestracji. W przypadku skonfigurowania jednej z tych usług jest zaznaczona opcja **wszystkie** nie **jest dostępna** .
 - **Wymagaj uwierzytelniania wieloskładnikowego do dołączania urządzeń** — możesz określić, czy użytkownicy muszą podać dodatkowy czynnik uwierzytelniania, aby przyłączyć urządzenie do usługi Azure AD. Wartość domyślna to **nie**. Zalecamy wymaganie uwierzytelniania wieloskładnikowego podczas rejestrowania urządzenia. Przed włączeniem uwierzytelniania wieloskładnikowego dla tej usługi należy się upewnić, że uwierzytelnianie wieloskładnikowe jest skonfigurowane dla użytkowników, którzy rejestrują swoje urządzenia. Aby uzyskać więcej informacji na temat różnych usług Azure wieloskładnikowe Authentication, zobacz [wprowadzenie do usługi Azure](../authentication/concept-mfa-whichversion.md)MFA. 
 
 > [!NOTE]
-> Ustawienie **Wymagaj uwierzytelniania wieloskładnikowego do dołączania urządzeń** nie ma zastosowania do urządzeń przyłączonych do hybrydowej usługi Azure AD.
+> Ustawienie **Wymagaj uwierzytelniania wieloskładnikowego do dołączania urządzeń** ma zastosowanie do urządzeń, które są dołączone do usługi Azure AD lub zarejestrowane w usłudze Azure AD. To ustawienie nie dotyczy urządzeń przyłączonych do hybrydowej usługi Azure AD.
 
-- **Maksymalna liczba urządzeń** — to ustawienie pozwala wybrać maksymalną liczbę urządzeń, które użytkownik może mieć w usłudze Azure AD. Jeśli użytkownik osiągnie ten limit przydziału, nie będzie mógł dodać dodatkowych urządzeń, dopóki nie zostaną usunięte co najmniej jedno z istniejących urządzeń. Przydział urządzenia jest liczony dla wszystkich urządzeń, które są przyłączone do usługi Azure AD lub zarejestrowane w usłudze Azure AD już dzisiaj. Wartość domyślna to **20**.
+- **Maksymalna liczba urządzeń** — to ustawienie pozwala wybrać maksymalną liczbę przyłączonych do usługi Azure AD lub zarejestrowanych urządzeń usługi Azure AD, które użytkownik może mieć w usłudze Azure AD. Jeśli użytkownik osiągnie ten limit przydziału, nie będzie mógł dodać dodatkowych urządzeń, dopóki nie zostaną usunięte co najmniej jedno z istniejących urządzeń. Wartość domyślna to **20**.
 
 > [!NOTE]
-> Ustawienie **maksymalnej liczby urządzeń** nie ma zastosowania do urządzeń przyłączonych do hybrydowej usługi Azure AD.
+> Ustawienie **Maksymalna liczba urządzeń** ma zastosowanie do urządzeń, które są przyłączone do usługi Azure AD lub zarejestrowane w usłudze Azure AD. To ustawienie nie dotyczy urządzeń przyłączonych do hybrydowej usługi Azure AD.
 
 - **Użytkownicy mogą synchronizować ustawienia i dane aplikacji między urządzeniami** — domyślnie to ustawienie ma wartość **Brak**. Wybranie określonych użytkowników lub grup lub wszystkie zezwala na synchronizację ustawień i danych aplikacji na urządzeniach z systemem Windows 10. Dowiedz się więcej o tym, jak działa synchronizacja w systemie Windows 10.
 Ta opcja to funkcja Premium dostępna za pomocą produktów, takich jak Azure AD — wersja Premium lub pakiet Enterprise Mobility Suite (EMS).
@@ -99,7 +99,7 @@ W przypadku obu opcji można przejść do widoku, który:
 
 >[!TIP]
 >
->* Jeśli zostanie wyświetlone urządzenie z informacją o stanie "oczekujące" w ramach zarejestrowanej kolumny, oznacza to, że urządzenie zostało zsynchronizowane z programu Azure AD Connect i oczekuje na ukończenie rejestracji z poziomu klienta. Przeczytaj więcej na temat [planowania implementacji hybrydowego](hybrid-azuread-join-plan.md)dołączania do usługi Azure AD. Dodatkowe informacje znajdują się w artykule [często zadawane pytania dotyczące urządzeń](faq.md).
+>* Jeśli zostanie wyświetlone urządzenie z informacją o stanie "oczekujące" w ramach zarejestrowanej kolumny, oznacza to, że urządzenie zostało zsynchronizowane z programu Azure AD Connect i oczekuje na ukończenie rejestracji z poziomu klienta. Przeczytaj więcej na temat [planowania implementacji hybrydowego dołączania do usługi Azure AD](hybrid-azuread-join-plan.md). Dodatkowe informacje znajdują się w artykule [często zadawane pytania dotyczące urządzeń](faq.md).
 >
 >   ![Urządzenia oczekujące](./media/device-management-azure-portal/75.png)
 >

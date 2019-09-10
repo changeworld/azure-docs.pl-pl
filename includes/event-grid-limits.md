@@ -9,28 +9,28 @@ ms.date: 05/22/2019
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: 3f94481e6a8550479788d92c744327e1dc3b58c4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "66376918"
 ---
-Poniższe limity mają zastosowanie do usługi Azure Event Grid system tematów i tematy niestandardowe *nie* domen zdarzeń.
+Poniższe limity mają zastosowanie do tematów systemu Azure Event Grid i tematów niestandardowych, a *nie* domen zdarzeń.
 
 | Resource | Limit |
 | --- | --- |
 | Tematy niestandardowe na subskrypcję platformy Azure | 100 |
-| Subskrypcje zdarzeń przypadających na temat | 500 |
-| Publikowanie współczynnik dla tematu niestandardowego (ruch przychodzący) | 5000 zdarzeń na sekundę na temat |
-| Publikowanie żądań | 250 na sekundę |
-| Rozmiar zdarzenia | Obsługa 64 KB ogólnie rzecz biorąc dostępność (GA). Obsługa 1 MB jest obecnie w wersji zapoznawczej. |
+| Subskrypcje zdarzeń na temat | 500 |
+| Wskaźnik publikowania dla tematu niestandardowego (ruch przychodzący) | 5 000 zdarzeń na sekundę na temat |
+| Publikuj żądania | 250 na sekundę |
+| Rozmiar zdarzenia | Obsługa 64 KB ogólnie dostępna (GA). Obsługa 1 MB jest obecnie dostępna w wersji zapoznawczej. |
 
-Następujące limity dotyczą tylko domeny zdarzeń.
+Poniższe limity mają zastosowanie tylko do domen zdarzeń.
 
 | Resource | Limit |
 | --- | --- |
-| Tematy dla zdarzeń domeny | 1000 połączeń w publicznej wersji zapoznawczej |
-| Subskrypcje zdarzeń dla tematu w domenie | 50 publicznej wersji zapoznawczej |
-| Subskrypcje zdarzeń zakres domeny | 50 publicznej wersji zapoznawczej |
-| Publikowanie stawki dla zdarzeń domeny (ruch przychodzący) | 5000 zdarzeń na sekundę w okresie publicznej wersji zapoznawczej |
-| Publikowanie żądań | 250 na sekundę |
+| Tematy na domenę zdarzeń | 1 000 w publicznej wersji zapoznawczej |
+| Subskrypcje zdarzeń na temat w domenie | 50 w publicznej wersji zapoznawczej |
+| Subskrypcje zdarzeń zakresu domeny | 50 w publicznej wersji zapoznawczej |
+| Częstotliwość publikowania dla domeny zdarzeń (ruch przychodzący) | 5 000 zdarzeń na sekundę w publicznej wersji zapoznawczej |
+| Publikuj żądania | 250 na sekundę |

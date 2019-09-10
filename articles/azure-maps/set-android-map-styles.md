@@ -1,6 +1,6 @@
 ---
-title: Mapowanie funkcji usługi Azure Maps stylu | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat usługi Azure Maps stylu związane z nim funkcje zestawu SDK systemu Android.
+title: Funkcje stylu mapy w Azure Maps | Microsoft Docs
+description: Dowiedz się więcej na temat Azure Maps funkcji związanych z stylem Android SDK.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/26/2019
@@ -8,26 +8,26 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 3c8c5d4bae16d8e15c8f2c5b1cc8e00eb14e4ce3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5bcc73c63e7c9d804d01df98551aa51b81d98d07
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64870975"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844852"
 ---
-# <a name="set-map-style-using-azure-maps-android-sdk"></a>Ustaw styl mapy za pomocą usługi Azure Maps Android SDK
+# <a name="set-map-style-using-azure-maps-android-sdk"></a>Ustawianie stylu mapy przy użyciu Azure Maps Android SDK
 
-W tym artykule przedstawiono dwa sposoby ustawiania stylów mapy za pomocą usługi Azure Maps SDK dla systemu Android. Usługi Azure Maps zawiera sześć style różnych mapowań do wyboru. Aby uzyskać więcej informacji na temat obsługiwanych mapy style zobacz [obsługiwane style mapy w usługi Azure Maps](./supported-map-styles.md).
+W tym artykule przedstawiono dwa sposoby ustawiania stylów mapy przy użyciu Android SDK Azure Maps. Azure Maps ma sześć różnych stylów map do wyboru. Aby uzyskać więcej informacji na temat obsługiwanych stylów mapy, zobacz [obsługiwane style mapy w Azure Maps](./supported-map-styles.md).
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć proces, w tym artykule, musisz zainstalować [zestawu SDK usługi Azure Maps Android](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) można załadować mapy.
+Aby ukończyć proces w tym artykule, należy zainstalować [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) w celu załadowania mapy.
 
 
-## <a name="set-map-style-in-the-layout"></a>Ustaw styl mapy w układzie
+## <a name="set-map-style-in-the-layout"></a>Ustawianie stylu mapy w układzie
 
-Styl mapę można ustawić w pliku układu dla swojej klasy działania. Edytuj **res > Układ > activity_main.xml**, więc wygląda na to podobne do pokazanego poniżej:
+Styl mapy można ustawić w pliku układu dla klasy Activity. Edytuj **układ > res > activity_main. XML**, tak aby wyglądał następująco:
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -51,18 +51,18 @@ Styl mapę można ustawić w pliku układu dla swojej klasy działania. Edytuj *
 </FrameLayout>
 ```
 
-`mapcontrol_style` Atrybut powyżej ustawia styl mapy **grayscale_dark**. 
+Powyższy atrybut ustawia styl mapy na **grayscale_dark.** `mapcontrol_style` 
 
 <center>
 
-![Styl grayscale_dark](./media/set-android-map-styles/grayscale-dark.png)</center>
+![styl — grayscale_dark](./media/set-android-map-styles/grayscale-dark.png)</center>
 
-## <a name="set-map-style-in-the-activity-class"></a>Ustaw styl mapy w klasie działania
+## <a name="set-map-style-in-the-activity-class"></a>Ustaw styl mapy w klasie Activity
 
-Style mapy można ustawić w klasie działania. Skopiuj poniższy fragment kodu do **onCreate()** metody usługi `MainActivity.java` klasy. Spowoduje to ustawienie style mapy na **satellite_road_labels**.
+Styl mapy można ustawić w klasie Activity. Skopiuj poniższy fragment kodu do metody `MainActivity.java` **OnCreate ()** klasy. Spowoduje to ustawienie stylu mapy na **satellite_road_labels**.
 
 ```Java
-    mapControl.onReady(map -> {
+mapControl.onReady(map -> {
     //Set the camera of the map.
     map.setCamera(center(47.64, -122.33), zoom(14));
 

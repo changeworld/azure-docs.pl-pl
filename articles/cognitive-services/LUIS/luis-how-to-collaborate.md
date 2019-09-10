@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: e69fea4d57aaf2a0b7d3615b1eecbf99a6b13ab8
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 004da6c84e6226c4de3114d32cde826cd167e1ab
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70256862"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844842"
 ---
 # <a name="add-contributors-to-your-app"></a>Dodawanie współautorów do aplikacji
 
@@ -99,6 +99,6 @@ Dowiedz się więcej na temat użytkowników i zgody usługi Azure Active Direct
 ## <a name="next-steps"></a>Następne kroki
 
 * Dowiedz się, [jak za pomocą wersji](luis-how-to-manage-versions.md) sterować cyklem życia aplikacji.
-* Zapoznaj się z pojęciami dotyczącymi [zasobów tworzenia](/luis-concept-keys.md#authoring-key) i [współautorów](luis-concept-keys.md#contributions-from-other-authors) tego zasobu.
+* Zapoznaj się z pojęciami dotyczącymi [zasobów tworzenia](luis-concept-keys.md#authoring-key) i [współautorów](luis-concept-keys.md#contributions-from-other-authors) tego zasobu.
 * Dowiedz się [, jak tworzyć zasoby dotyczące](luis-how-to-azure-subscription.md) tworzenia i wykonywania
 * Migrowanie do nowego [zasobu tworzenia](luis-migration-authoring.md) 

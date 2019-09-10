@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
 ms.openlocfilehash: 7c4c80950e43f374b40085cb4e1c3e026e5f3abd
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "68698283"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity subskrypcji i usługi Azure, przydziały i ograniczenia
@@ -31,7 +31,7 @@ Aby dowiedzieć się więcej na temat cen platformy Azure, zobacz [Omówienie ce
 ## <a name="limits-and-azure-resource-manager"></a>Limity i Azure Resource Manager
 Teraz można połączyć wiele zasobów platformy Azure w jedną grupę zasobów platformy Azure. W przypadku korzystania z grup zasobów limity, które były globalne, są zarządzane na poziomie regionalnym z Azure Resource Manager. Aby uzyskać więcej informacji na temat grup zasobów platformy Azure, zobacz [omówienie Azure Resource Manager](azure-resource-manager/resource-group-overview.md).
 
-Na poniższej liście limitów Nowa tabela odzwierciedla wszelkie różnice w limitach w przypadku używania Azure Resource Manager. Na przykład istnieje tabela limitów **subskrypcji** i **limity subskrypcji — Azure Resource Manager** tabeli. Gdy limit dotyczy obu scenariuszy, jest wyświetlany tylko w pierwszej tabeli. O ile nie wskazano inaczej, limity są globalne dla wszystkich regionów.
+Na poniższej liście limitów Nowa tabela odzwierciedla wszelkie różnice w limitach w przypadku używania Azure Resource Manager. Na przykład istnieje tabela **limitów subskrypcji** i **limity subskrypcji — Azure Resource Manager** tabeli. Gdy limit dotyczy obu scenariuszy, jest wyświetlany tylko w pierwszej tabeli. O ile nie wskazano inaczej, limity są globalne dla wszystkich regionów.
 
 > [!NOTE]
 > Przydziały zasobów w grupach zasobów platformy Azure są dostępne dla poszczególnych regionów, a nie dla subskrypcji, w ramach których są przydziały zarządzania usługami. Użyjmy przydziałów vCPU jako przykładu. Aby zażądać zwiększenia limitu przydziału z obsługą procesorów wirtualnych vCPU, należy określić liczbę procesorów wirtualnych vCPU, które mają być używane w regionach. Następnie należy wykonać określone żądanie dla grupy zasobów platformy Azure vCPU przydziały dla żądanych ilości i regionów. Jeśli konieczne jest użycie 30 procesorów wirtualnych vCPU w Europie Zachodniej, aby uruchomić aplikację, należy zażądać 30 procesorów wirtualnych vCPU w Europie Zachodniej. Limit przydziału vCPU nie został zwiększony w żadnym innym regionie — tylko Europa Zachodnia ma przydział 30-vCPU.
@@ -53,7 +53,7 @@ Na poniższej liście limitów Nowa tabela odzwierciedla wszelkie różnice w li
 * [Azure Database for MySQL](#azure-database-for-mysql)
 * [Azure Database for PostgreSQL](#azure-database-for-postgresql)
 * [System DNS platformy Azure](#azure-dns-limits)
-* [Zapora platformy Azure](#azure-firewall-limits)
+* [Azure Firewall](#azure-firewall-limits)
 * [Azure Functions](#functions-limits)
 * [Azure Kubernetes Service](#azure-kubernetes-service-limits)
 * [Usługa Azure Machine Learning](#azure-machine-learning-service-limits)
@@ -71,7 +71,7 @@ Na poniższej liście limitów Nowa tabela odzwierciedla wszelkie różnice w li
 * [Fabryka danych](#data-factory-limits)
 * [Data Lake Analytics](#data-lake-analytics-limits)
 * [Data Lake Store](#data-lake-store-limits)
-* [Database Migration Service](#database-migration-service-limits)
+* [Usługa Database Migration Service](#database-migration-service-limits)
 * [Event Grid](#event-grid-limits)
 * [Event Hubs](#event-hubs-limits)
 * [Usługa front-drzwi](#azure-front-door-service-limits)
@@ -85,8 +85,8 @@ Na poniższej liście limitów Nowa tabela odzwierciedla wszelkie różnice w li
 * [Sieć](#networking-limits)
   * [Application Gateway](#application-gateway-limits)
   * [System DNS platformy Azure](#azure-dns-limits)
-  * [Usługa frontonu platformy Azure](#azure-front-door-service-limits)
-  * [Zapora platformy Azure](#azure-firewall-limits)
+  * [Azure Front Door Service](#azure-front-door-service-limits)
+  * [Azure Firewall](#azure-firewall-limits)
   * [ExpressRoute](#expressroute-limits)
   * [Load Balancer](#load-balancer)
   * [Publiczny adres IP](#publicip-address)
@@ -372,7 +372,7 @@ Aby dowiedzieć się więcej na temat limitów na bardziej szczegółowym poziom
 ### <a name="key-vault-limits"></a>Limity Key Vault
 [!INCLUDE [key-vault-limits](../includes/key-vault-limits.md)]
 
-### <a name="multi-factor-authentication-limits"></a>Limity uwierzytelniania wieloskładnikowego
+### <a name="multi-factor-authentication-limits"></a>Limity Multi-Factor Authentication
 [!INCLUDE [azure-mfa-service-limits](../includes/azure-mfa-service-limits.md)]
 
 ### <a name="automation-limits"></a>Limity automatyzacji

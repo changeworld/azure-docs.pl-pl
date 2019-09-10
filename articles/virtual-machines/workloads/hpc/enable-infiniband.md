@@ -1,6 +1,6 @@
 ---
-title: Włącz InifinBand za pomocą funkcji SR-IOV — usługa Azure Virtual Machines | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak włączyć InfiniBand za pomocą funkcji SR-IOV.
+title: Włączanie InifinBand przy użyciu funkcji SR-IOV-Azure Virtual Machines | Microsoft Docs
+description: Dowiedz się, jak włączyć funkcję InfiniBand przy użyciu funkcji SR-IOV.
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
@@ -12,25 +12,25 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: 2e28627359f339a3bf818a15d6a5c8e456fb554a
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 7218fceae71969f204c6c25ba4793a7c94341693
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797523"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858489"
 ---
-# <a name="enable-infiniband-with-sr-iov"></a>Włącz InfiniBand za pomocą funkcji SR-IOV
+# <a name="enable-infiniband-with-sr-iov"></a>Włączanie funkcji InfiniBand przy użyciu funkcji SR-IOV
 
-Najprostszy i zalecany sposób konfigurowania niestandardowego obrazu maszyny Wirtualnej za pomocą InfiniBand (IB) jest dodanie rozszerzenia InfiniBandDriverLinux lub InfiniBandDriverWindows maszyn wirtualnych do wdrożenia.
-Dowiedz się, jak używać tych rozszerzeń maszyn wirtualnych za pomocą [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#rdma-capable-instances) i [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances)
+Najprostszym i zalecanym sposobem rozpoczęcia pracy z maszynami wirtualnymi IaaS dla HPC jest użycie obrazu systemu operacyjnego CentOS-HPC 7,6. W przypadku korzystania z niestandardowego obrazu maszyny wirtualnej Najprostszym sposobem skonfigurowania go przy użyciu funkcji InfiniBand (IB) jest dodanie rozszerzenia maszyny wirtualnej InfiniBandDriverLinux lub InfiniBandDriverWindows do wdrożenia.
+Dowiedz się, jak używać tych rozszerzeń maszyn wirtualnych z systemami [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#rdma-capable-instances) i [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances)
 
-Aby ręcznie skonfigurować InfiniBand na SR-IOV (obecnie serii HB i HC) maszyn wirtualnych z włączoną, wykonaj poniższe kroki. Te kroki są tylko RHEL/centos. Dla obrazów systemów Ubuntu (16.04 i 18.04) i w systemie SLES (12 z dodatkiem SP4 i 15) sterowniki wewnętrzne działać prawidłowo.
+Aby ręcznie skonfigurować InfiniBand na maszynach wirtualnych z obsługą wirtualizacji SR-IOV (obecnie HB i HC), wykonaj poniższe kroki. Te kroki dotyczą tylko RHEL/CentOS. W przypadku Ubuntu (16,04 i 18,04) oraz SLES (12 SP4 i 15) Sterowniki skrzynki odbiorczej działają prawidłowo.
 
-## <a name="manually-install-ofed"></a>Ręcznie zainstaluj OFED
+## <a name="manually-install-ofed"></a>Ręczne instalowanie OFED
 
-Zainstaluj najnowsze sterowniki MLNX_OFED ConnectX-5 z [Mellanox](https://www.mellanox.com/page/products_dyn?product_family=26).
+Zainstaluj najnowsze sterowniki MLNX_OFED dla systemu ConnectX-5 z [Mellanox](https://www.mellanox.com/page/products_dyn?product_family=26).
 
-RHEL/centos (przykład poniżej 7.6):
+Dla RHEL/CentOS (przykład poniżej dla 7,6):
 
 ```bash
 sudo yum install -y kernel-devel python-devel
@@ -41,9 +41,9 @@ tar zxvf MLNX_OFED_LINUX-4.5-1.0.1.0-rhel7.6-x86_64.tgz
 sudo ./MLNX_OFED_LINUX-4.5-1.0.1.0-rhel7.6-x86_64/mlnxofedinstall --add-kernel-support
 ```
 
-Dla Windows, należy pobrać i zainstalować sterowniki WinOF 2 ConnectX-5 z [Mellanox](https://www.mellanox.com/page/products_dyn?product_family=32&menu_section=34)
+W przypadku systemu Windows Pobierz i zainstaluj sterowniki WinOF-2 dla programu ConnectX-5 z [Mellanox](https://www.mellanox.com/page/products_dyn?product_family=32&menu_section=34)
 
-## <a name="enable-ipoib"></a>Włącz IPoIB
+## <a name="enable-ipoib"></a>Włącz program IPoIB
 
 ```bash
 sudo sed -i 's/LOAD_EIPOIB=no/LOAD_EIPOIB=yes/g' /etc/infiniband/openib.conf
@@ -55,11 +55,11 @@ then
 fi
 ```
 
-## <a name="assign-an-ip-address"></a>Przypisz adres IP
+## <a name="assign-an-ip-address"></a>Przypisywanie adresu IP
 
-Przypisz adres IP interfejsu ib0, za pomocą:
+Przypisz adres IP do interfejsu ib0 przy użyciu:
 
-- Ręcznie przypisać adres IP do interfejsu ib0 (jako element główny).
+- Ręcznie Przypisz adres IP do interfejsu ib0 (jako główny).
 
     ```bash
     ifconfig ib0 $(sed '/rdmaIPv4Address=/!d;s/.*rdmaIPv4Address="\([0-9.]*\)".*/\1/' /var/lib/waagent/SharedConfig.xml)/16
@@ -67,7 +67,7 @@ Przypisz adres IP interfejsu ib0, za pomocą:
 
 LUB
 
-- WALinuxAgent umożliwia przypisanie adresu IP i przypisz ją utrwalić.
+- Użyj WALinuxAgent, aby przypisać adres IP i zachować jego trwałość.
 
     ```bash
     yum install -y epel-release

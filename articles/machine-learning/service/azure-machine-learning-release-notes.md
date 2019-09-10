@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 78d16e8e6fc43644cdb318f8e402c2e8bbe0363e
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 6aca340994f10bd546a25e577258d90d7b7b1368
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772510"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860956"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Informacje o wersji usługi Azure Machine Learning
 
@@ -23,12 +23,42 @@ Ten artykuł zawiera informacje o wersji usługi Azure Machine Learning.  Aby uz
 
 Zobacz [listę znanych problemów](resource-known-issues.md) informacje na temat znanych błędów i rozwiązania problemu.
 
+## <a name="2019-09-09"></a>2019-09-09
+
+### <a name="new-web-experience-for-azure-machine-learning-workspaces-preview"></a>Nowe środowisko internetowe dla Azure Machine Learning obszarów roboczych (wersja zapoznawcza)
+Nowe środowisko internetowe umożliwia analitykom danych i inżynierom danych ukończenie kompleksowych cykli życia uczenia maszynowego z przygotowywanie i wizualizowania danych w celu uczenia i wdrażania modeli w jednej lokalizacji. 
+
+![Interfejs użytkownika obszaru roboczego Azure Machine Learning (wersja zapoznawcza)](./media/azure-machine-learning-release-notes/new-ui-for-workspaces.jpg)
+
+**Najważniejsze funkcje:**
+
+Korzystając z tego nowego interfejsu Azure Machine Learning, możesz teraz:
++ Zarządzanie notesami lub łączenie się z usługą Jupyter
++ Uruchamianie zautomatyzowanych eksperymentów ML
++ [Tworzenie zestawów danych z lokalnych plików, magazynów elementów, & plików sieci Web](how-to-create-register-datasets.md)
++ Eksplorowanie & Przygotowanie zestawów danych do tworzenia modelu
++ Monitoruj dryfowanie danych dla modeli 
++ Wyświetlanie ostatnich zasobów z pulpitu nawigacyjnego
+
+W czasie tej wersji obsługiwane są następujące przeglądarki: Chrome, Firefox, Safari i Microsoft Edge Preview.
+
+**Znane problemy:**
+
+1. Odśwież przeglądarkę, Jeśli zobaczysz komunikat "coś poszło źle! Wystąpił błąd podczas ładowania plików fragmentu, gdy wdrożenie jest w toku.  
+
+1. Nie można usunąć pliku ani zmienić jego nazwy w notesach i plikach. W publicznej wersji zapoznawczej można użyć interfejsu użytkownika Jupyter lub terminalu w maszynie wirtualnej notesu do wykonywania operacji aktualizacji plików. Ponieważ jest to zainstalowany system plików NFS, wszystkie zmiany wprowadzone na maszynie wirtualnej notesu są natychmiast odzwierciedlane w obszarze roboczym Notes. 
+
+1. Aby SSH do maszyny wirtualnej notesu:
+   1. Znajdź klucze SSH, które zostały utworzone podczas konfiguracji maszyny wirtualnej. Lub Znajdź klucze na platformie Azure ML Azure Portal > Otwórz kartę COMPUTE > Znajdź maszynę wirtualną Notes na liście > Otwórz jej właściwości: Skopiuj klucze z okna dialogowego.
+   1. Zaimportuj te publiczne i prywatne klucze SSH do komputera lokalnego.
+   1. Używaj ich do używania protokołu SSH w notesie maszyn wirtualnych. 
+
 ## <a name="2019-09-03"></a>2019-09-03
 ### <a name="azure-machine-learning-sdk-for-python-v1060"></a>Zestaw Azure Machine Learning SDK dla języka Python v 1.0.60
 
 + **Nowe funkcje**
   + Wprowadzono FileDataset, która odwołuje się do jednego lub wielu plików w magazynach danych lub publicznych adresach URL. Pliki mogą być w dowolnym formacie. FileDataset umożliwia pobieranie lub Instalowanie plików na potrzeby obliczeń. Aby dowiedzieć się więcej na temat https://aka.ms/file-dataset FileDataset, odwiedź stronę.
-  + Dodano obsługę YAML potoków dla kroku PythonScript, kroku adla, kroku datakostki, DataTransferStep i AzureBatch
+  + Dodano obsługę YAML potoku dla kroku PythonScript, krok adla, krok, etap, DataTransferStep i AzureBatch kroku
 
 + **Poprawki i ulepszenia błędów**
   + **Azure-automl-Core**
@@ -39,7 +69,7 @@ Zobacz [listę znanych problemów](resource-known-issues.md) informacje na temat
     + Modele AutoML teraz zwracają AutoMLExceptions
     + Ta wersja zwiększa wydajność wykonywania zautomatyzowanych uruchomień lokalnych w usłudze Machine Learning.
   + **azureml-core**
-    + Wprowadź `Dataset.get_all()` , która zwraca słownik elementów `TabularDataset` i `FileDataset` obiektów objętych nazwą rejestracji. 
+    + Wprowadź element dataset. Get _All (obszar roboczy), który zwraca słownik `TabularDataset` i `FileDataset` obiekty podkluczy na podstawie nazwy rejestracji. 
     
     ```py 
     workspace = Workspace.from_config() 
@@ -66,7 +96,7 @@ Zobacz [listę znanych problemów](resource-known-issues.md) informacje na temat
   + **azureml-pipeline-core**
     + Dodano obsługę tworzenia, aktualizowania i używania PipelineDrafts — może służyć do obsługi definicji potoku mutable i używania ich interaktywnie do uruchamiania
   + **azureml-train-automl**
-    + Utworzono funkcję umożliwiającą zainstalowanie określonych wersji procesora GPU pytorch v 1.1.0, cuda toolkit 9,0, pytorch-transformatorów, które są wymagane do włączenia BERT/XLNet w środowisku środowiska uruchomieniowego języka Python.
+    + Utworzono funkcję umożliwiającą zainstalowanie określonych wersji procesora GPU pytorch v 1.1.0, cuda toolkit 9,0, pytorch-transformators, które są wymagane do włączenia BERT/XLNet w środowisku uruchomieniowym języka Python.
   + **azureml-train-core**
     + Wczesna awaria niektórych z parametrów w zestawie SDK, a nie po stronie serwera.
 
@@ -87,7 +117,7 @@ Zobacz [listę znanych problemów](resource-known-issues.md) informacje na temat
   + **automl-Client-Core-nativeclient**
     + Naprawiono błąd, zgłoszony, gdy szkolenia i/lub etykiety sprawdzania poprawności (y i y_valid) są podane w formie ramki danych Pandas, ale nie jako tablicy numpy.
     + Zaktualizowany interfejs do utworzenia, `RawDataContext` aby wymagał tylko danych `AutoMLBaseSettings` i obiektu.
-    +  Zezwól użytkownikom AutoML na porzucanie serii szkoleniowych, które nie są wystarczająco długie podczas prognozowania. -Zezwalaj użytkownikom AutoML na upuszczanie ziaren z zestawu testów, który nie istnieje w zestawie szkoleniowym podczas prognozowania.
+    +  Zezwól użytkownikom AutoML na porzucanie serii szkoleniowych, które nie są wystarczająco długie podczas prognozowania. -Zezwól użytkownikom AutoML na porzucanie ziaren z zestawu testów, który nie istnieje w zestawie szkoleniowym podczas prognozowania.
   + **Azure — interfejs wiersza polecenia**
     + Teraz można zaktualizować certyfikat protokołu SSL dla punktu końcowego oceniania wdrożonego w klastrze AKS zarówno dla wygenerowanego przez firmę Microsoft, jak i dla certyfikatu klienta.
   + **Azure-automl-Core**
@@ -98,11 +128,11 @@ Zobacz [listę znanych problemów](resource-known-issues.md) informacje na temat
     + W przypadku korzystania z iteracji zestawu danych dla typu uczenia krzyżowego, jeśli zakończył się problemami z pobraniem modeli przeszkolonych na całym zestawie, wystąpił niespójność między modelami wag i modelami, które zostały wprowadzone do głosu Zestawy.
     + Naprawiono błąd, zgłoszony, gdy szkolenia i/lub etykiety sprawdzania poprawności (y i y_valid) są podane w formie ramki danych Pandas, ale nie jako tablicy numpy.
     + Rozwiązano problem z zadaniami prognozowania, gdy żaden z nich nie został napotkany w kolumnach logicznych tabel wejściowych.
-    + Zezwól użytkownikom AutoML na porzucanie serii szkoleniowych, które nie są wystarczająco długie podczas prognozowania. -Zezwalaj użytkownikom AutoML na upuszczanie ziaren z zestawu testów, który nie istnieje w zestawie szkoleniowym podczas prognozowania.
+    + Zezwól użytkownikom AutoML na porzucanie serii szkoleniowych, które nie są wystarczająco długie podczas prognozowania. -Zezwól użytkownikom AutoML na porzucanie ziaren z zestawu testów, który nie istnieje w zestawie szkoleniowym podczas prognozowania.
   + **azureml-core**
     + Rozwiązano problem z porządkowaniem parametrów blob_cache_timeout.
     + Dodano zewnętrzne Typy wyjątków dopasowania i transformacji do błędów systemowych.
-    + Dodano obsługę Key Vault wpisów tajnych dla zdalnych uruchomień. Dodaj magazyn usługi Azure. Core. classing, aby dodać, pobrać i wyświetlić wpisy tajne z magazynu kluczy skojarzonego z Twoim obszarem roboczym. Obsługiwane są następujące operacje:
+    + Dodano obsługę Key Vault wpisów tajnych dla zdalnych uruchomień. Dodaj magazyn usługi Azure. Core. kluczy, aby dodać, pobrać i wyświetlić wpisy tajne z magazynu kluczy skojarzonego z Twoim obszarem roboczym. Obsługiwane są następujące operacje:
       + Azure. Core. Workspace. Workspace. Get _default_keyvault ()
       + Azure. Core., Magazyn kluczy. _secret (nazwa, wartość)
       + Azure. Core. kluczy. Magazyn kluczy. Set _secrets (secrets_dict)
@@ -116,9 +146,9 @@ Zobacz [listę znanych problemów](resource-known-issues.md) informacje na temat
     + Dodano dodatkowe parametry przesłonięcia w celu przesłania polecenia CLI.
     + Zwiększ niezawodność wywołań interfejsu API, aby rozszerzać ponowną próbę na typowe wyjątki biblioteki żądań.
     + Dodano obsługę przesyłania przebiegów z przesłanego przebiegu.
-    + Rozwiązano problem związany z wygaśnięciem tokenu sygnatury dostępu współdzielonego w FileWatcher, który spowodował zatrzymanie przekazywania plików po wygaśnięciu tokenu początkowego.
+    + Rozwiązano problem związany z wygaśnięciem tokenu sygnatury dostępu współdzielonego w FileWatcher, co spowodowało zatrzymanie przekazywania plików po wygaśnięciu tokenu początkowego.
     + Obsługiwane Importowanie plików CSV/TSV protokołu HTTP w zestawie danych Python SDK.
-    + Zaniechano metody Workspace. Setup (). Komunikat z ostrzeżeniem pokazywany użytkownikom sugeruje użycie polecenia Create () lub Get ()/from_config ().
+    + Zaniechano metody Workspace. Setup (). Komunikat ostrzegawczy pokazywany użytkownikom sugeruje użycie polecenia Create () lub Get ()/from_config ().
     + Dodano środowisko. Add _private_pip_wheel (), które umożliwia przekazywanie prywatnych niestandardowych pakietów języka Python (. WHL) do obszaru roboczego i bezpieczne używanie ich do kompilowania/zmaterializowania środowiska.
     + Teraz można zaktualizować certyfikat protokołu SSL dla punktu końcowego oceniania wdrożonego w klastrze AKS zarówno dla wygenerowanego przez firmę Microsoft, jak i dla certyfikatu klienta.
   + **azureml-explain-model**
@@ -274,7 +304,7 @@ Zobacz [listę znanych problemów](resource-known-issues.md) informacje na temat
   + **azureml-explain-model**
     + Stałe przekształcenia — argument dla objaśniania WAPNa dla wagi nieprzetworzonej funkcji w usłudze Azure contrib-Wyjaśnij pakiet modelu
     + Dodaj obsługę rozrzedzenia scipy dla LimeExplainer
-    + dodano otokę z objaśnieniem liniowym kształtu, a także inny poziom do tabelarycznego objaśnienia w celu wyjaśnienia modeli liniowych
+    + dodano otokę objaśnienia liniowego kształtu, a także inny poziom do tabelarycznego objaśnienia w celu wyjaśnienia modeli liniowych
     + Aby uzyskać wyjaśnienie śladu w bibliotece modeli wyjaśnień, Naprawiono błąd podczas include_local = false dla rozrzedzonych danych wejściowych
     + Dodaj oczekiwane wartości do danych wyjściowych automl
     + stała ważność funkcji permutacji podczas dostarczania argumentu Transformations w celu uzyskania ważności funkcji surowej
@@ -411,7 +441,7 @@ Przywrócono zmianę, która zwiększyła wydajność, ponieważ powodowała to 
 + **Poprawki i ulepszenia błędów**
   + Usunięto zależność paramiko od rdzenia platformy Azure. Dodano ostrzeżenia o zaniechaniu dla starszych metod dołączania obiektów docelowych obliczeń.
   + Zwiększ wydajność działania Run. create_children
-  + W wyjaśnieniu z klasyfikatorem binarnym należy poprawić kolejność prawdopodobieństwa, gdy w celu skalowania wartości kształtu jest używane prawdopodobieństwo dla nauczycieli
+  + W wyjaśnieniu z klasyfikatorem binarnym należy poprawić kolejność prawdopodobieństwa, gdy w celu skalowania wartości kształtów jest używane prawdopodobieństwo dla nauczycieli.
   + Ulepszona obsługa błędów i komunikat dotyczący zautomatyzowanej uczenia maszynowego. 
   + Rozwiązano problem z limitem czasu iteracji dla automatycznego uczenia maszynowego.
   + Ulepszona wydajność transformacji szeregów czasowych na potrzeby automatycznego uczenia maszynowego.
@@ -442,7 +472,7 @@ Przywrócono zmianę, która zwiększyła wydajność, ponieważ powodowała to 
   + Automatyczne Uczenie maszynowe nowe funkcje:
     + STL featurized na potrzeby prognozowania
     + KMeans klastrowanie jest włączone do czyszczenia funkcji
-  + AmlCompute zatwierdzeń przydziałów stało się szybsze. Teraz zautomatyzowany proces zatwierdzania żądań limitu przydziału w ramach progu. Aby uzyskać więcej informacji o działaniu przydziałów, Dowiedz się, [jak zarządzać przydziałami](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-quotas).
+  + AmlCompute zatwierdzeń przydziałów stało się szybsze. Teraz zautomatyzowany proces zatwierdzania żądań limitu przydziału w ramach progu. Aby uzyskać więcej informacji o działaniu przydziałów, Dowiedz się, [jak zarządzać](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-quotas)przydziałami.
 
 + **Funkcje w wersji zapoznawczej**
     + Integracja z usługą [MLflow](https://mlflow.org) 1.0.0 Tracking za pomocą pakietu Azure-MLflow ([przykładowe notesy](https://aka.ms/azureml-mlflow-examples)).
@@ -560,7 +590,7 @@ Użyj maszyny wirtualnej z notesem jako bezpiecznego, gotowego do użycia w prze
     + Zarejestruj model przy użyciu usługi Zarządzanie modelami i konteneryzowanie model
     + Wdrażanie modelu na maszynie wirtualnej platformy Azure przy użyciu FPGA w klastrze usługi Azure Kubernetes Service (AKS)
   + Wdrażanie kontenera na urządzeniu z serwerem [Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview)
-  + Poprowadź ocenę danych za pomocą punktu końcowego gRPC z tym [przykładem](https://github.com/Azure-Samples/aml-hardware-accelerated-models)
+  + Poprowadź ocenę danych za pomocą punktu końcowego gRPC [](https://github.com/Azure-Samples/aml-hardware-accelerated-models) z tym przykładem
 
 ### <a name="automated-machine-learning"></a>Zautomatyzowane uczenie maszynowe
 
@@ -809,7 +839,7 @@ Uwaga: Zestaw SDK języka Python dla przygotowywania danych `numpy` nie `pandas`
 ### <a name="azure-machine-learning-data-prep-sdk-v107"></a>Azure Machine Learning zestawu SDK 1.0.7 przygotowywania danych
 
 + **Nowe funkcje**
-  + Udoskonalenia magazynu danych (udokumentowane w [przewodniku w usłudze Magazyn](https://aka.ms/aml-data-prep-datastore-nb)danych)
+  + Udoskonalenia magazynu danych (udokumentowane w przewodniku w [usłudze Magazyn](https://aka.ms/aml-data-prep-datastore-nb)danych)
     + Dodano możliwość odczytu i zapisu do udziału plików platformy Azure oraz ADLS magazynów danych w celu skalowania w górę.
     + W przypadku korzystania z magazynów danych program przygotowywania w ramach programu obsługuje teraz używanie uwierzytelniania nazwy głównej usługi zamiast interakcyjnego uwierzytelniania.
     + Dodano obsługę adresów URL wasb i wasbs.

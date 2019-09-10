@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: 5d0d276096441c780dee4f8b1e95442a1d7e7b25
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: d3c6395f7fd66e1b89fc49536e228249bc4ed2a9
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050913"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859252"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>Zarządzanie danymi w usłudze Excel Online za pomocą Azure Logic Apps
 
@@ -53,6 +53,9 @@ Jeśli jesteś nowym sposobem logiki aplikacji, zapoznaj [się z tematem Azure L
 1. W obszarze wyzwalacza wybierz pozycję **nowy krok**.
 
 1. W polu wyszukiwania wprowadź ciąg "Excel" jako filtr. Na liście Akcje wybierz żądaną akcję.
+
+   > [!NOTE]
+   > Projektant aplikacji logiki nie może załadować tabel, które mają 100 lub więcej kolumn. Jeśli to możliwe, zmniejsz liczbę kolumn w zaznaczonej tabeli, aby projektant mógł załadować tabelę.
 
 1. Jeśli zostanie wyświetlony monit, zaloguj się do konta Office 365.
 

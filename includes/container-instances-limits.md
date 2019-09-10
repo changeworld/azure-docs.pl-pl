@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 02/13/2019
 ms.author: danlep
 ms.openlocfilehash: f8821060b98ebfc954a6e59abad60350e6779b76
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67183596"
 ---
 | Resource | Limit domyślny |
@@ -18,14 +18,14 @@ ms.locfileid: "67183596"
 | Liczba woluminów na grupę kontenerów | 20 |
 | Porty na adres IP | 5 |
 | Rozmiar dziennika wystąpienia kontenera — uruchomione wystąpienie | 4 MB |
-| Rozmiar dziennika wystąpienia kontenera — zatrzymane wystąpienie | 16 KB lub 1000 wierszy |
+| Rozmiar dziennika wystąpienia kontenera — Zatrzymano wystąpienie | 16 KB lub 1 000 wierszy |
 | Utworzenia kontenera na godzinę |300<sup>1</sup> |
 | Utworzenia kontenera na 5 minut | 100<sup>1</sup> |
 | Usunięcia kontenera na godzinę | 300<sup>1</sup> |
 | Usunięcia kontenera na 5 minut | 100<sup>1</sup> |
 
 
-<sup>1</sup>Aby zażądać zwiększenia limitu, należy utworzyć [żądania pomocy technicznej systemu Azure][azure-support].<br />
+<sup>1</sup> Aby zażądać zwiększenia limitu, Utwórz [support Request platformy Azure][azure-support].<br />
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

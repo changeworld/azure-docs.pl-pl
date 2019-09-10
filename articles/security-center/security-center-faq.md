@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 6e41453a096f4812b9ba541a2693b9c9b975b7c9
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 33ce4c3c7f7cba8310ca75ffd0de3ecb24ad6d8d
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68779058"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873413"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Często zadawane pytania dotyczące usługi Azure Security Center
 Często zadawane pytania dotyczące usługi Azure Security Center, to usługa, która pomaga zapobiegać zagrożeniom, wykrywanie i odpowiadanie na nie dzięki lepszemu wglądowi w i kontroli nad ich zabezpieczeniami zasobami Microsoft Azure.
 
 > [!NOTE]
-> Począwszy od początku czerwca 2017 roku, usługa Security Center będzie używać programu Microsoft Monitoring Agent do gromadzenia i przechowywania danych. Aby dowiedzieć się więcej, zobacz [migracja platformy Centrum zabezpieczeń Azure](security-center-platform-migration.md). Informacje przedstawione w tym artykule reprezentują funkcję Security Center po przejściu do programu Microsoft Monitoring Agent.
+> Security Center używa Microsoft Monitoring Agent do zbierania i przechowywania danych. Aby dowiedzieć się więcej, zobacz [migracja platformy Centrum zabezpieczeń Azure](security-center-platform-migration.md).
 >
 >
 
@@ -45,7 +45,7 @@ Usługa Security Center jest oferowana w dwóch warstwach:
 **w warstwie standardowa** dodaje zaawansowanych zagrożeń możliwości wykrywania, w tym zagrożeń analizy, analizę behawioralną, wykrywanie anomalii, zdarzenia związane z bezpieczeństwem i zagrożeń: uznanie autorstwa raportów. Możesz rozpocząć korzystanie z bezpłatnej wersji próbnej warstwy Standardowa. Aby przeprowadzić uaktualnienie, wybierz [warstwy cenowej](https://docs.microsoft.com/azure/security-center/security-center-pricing) w zasadach zabezpieczeń. Aby dowiedzieć się więcej, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/security-center/).
 
 ### <a name="how-can-i-track-who-in-my-organization-performed-pricing-tier-changes-in-azure-security-center"></a>Jak mogę śledzić, kto w organizacji wykonał zmiany warstwy cenowej w Azure Security Center
-Ponieważ subskrypcja platformy Azure może mieć wielu administratorów z uprawnieniami do zmiany warstwy cenowej, użytkownik może chcieć wiedzieć, kto przeprowadził zmianę warstwy cenowej. Korzystanie z tego programu może wiązać się z dziennikiem aktywności platformy Azure. Więcej instrukcji znajdziesz [tutaj](https://techcommunity.microsoft.com/t5/Security-Identity/Tracking-Changes-in-the-Pricing-Tier-for-Azure-Security-Center/td-p/390832) .
+Ponieważ subskrypcja platformy Azure może mieć wielu administratorów z uprawnieniami do zmiany warstwy cenowej, użytkownik może chcieć wiedzieć, kto przeprowadził zmianę warstwy cenowej. Korzystanie z tego programu może wiązać się z dziennikiem aktywności platformy Azure. Więcej instrukcji można znaleźć [tutaj](https://techcommunity.microsoft.com/t5/Security-Identity/Tracking-Changes-in-the-Pricing-Tier-for-Azure-Security-Center/td-p/390832) .
 
 ## <a name="permissions"></a>Uprawnienia
 Centrum zabezpieczeń Azure używa [kontroli dostępu opartej na rolach (RBAC)](../role-based-access-control/role-assignments-portal.md), która zapewnia [wbudowane role](../role-based-access-control/built-in-roles.md), które można przypisać do użytkowników, grup i usług Azure.
@@ -63,7 +63,7 @@ Nie. Obszary robocze utworzone przez Security Center, podczas gdy skonfigurowano
 - **W warstwie bezpłatna** — usługa Security Center umożliwia rozwiązanie "SecurityCenterFree" na domyślnego obszaru roboczego. Nie są rozliczane w warstwie bezpłatna.
 - **W warstwie standardowa** — usługa Security Center umożliwia rozwiązanie "Zabezpieczenia" na domyślnego obszaru roboczego.
 
-Aby uzyskać więcej informacji na temat cen, zobacz [cennik usługi Security Center](https://azure.microsoft.com/pricing/details/security-center/). Strona cennika adresów zmiany w magazynowaniu danych zabezpieczeń i proporcjonalnie rozliczanie począwszy od czerwca 2017 r.
+Aby uzyskać więcej informacji na temat cen, zobacz [cennik usługi Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 
 > [!NOTE]
 > Warstwa cenowa usługi log Analytics dla obszarów roboczych utworzonych przez Security Center nie ma wpływu na Security Center rozliczanie.
@@ -136,7 +136,7 @@ W przypadku istniejących maszyn w ramach subskrypcji, do Security Center przed 
  Aby uzyskać więcej informacji, zobacz następną sekcję [co się stanie w przypadku pakietu OMS lub SCOM programu bezpośredni agent jest już zainstalowany na maszynie Wirtualnej?](#scomomsinstalled)
 
 ### Co się stanie, jeśli Agent System Center Operations Manager (SCOM) jest już zainstalowany na mojej maszynie wirtualnej?<a name="scomomsinstalled"></a>
-Firma Security Center zainstaluje rozszerzenie Microsoft Monitoring Agent obok istniejącego agenta System Center Operations Manager. Istniejący Agent programu SCOM będzie kontynuował raportowanie do serwera System Center Operations Manager w normalny sposób. Należy pamiętać, że Agent System Center Operations Manager i Microsoft Monitoring Agent współdzielą typowe biblioteki uruchomieniowe, które zostaną zaktualizowane do najnowszej wersji podczas tej przetworzyć. Uwaga: Jeśli jest zainstalowany agent System Center Operations Manager w wersji 2012, nie włączaj automatycznej aprowizacji w programie (możliwości zarządzania mogą być tracone, gdy serwer System Center Operations Manager jest również w wersji 2012).
+Firma Security Center zainstaluje rozszerzenie Microsoft Monitoring Agent obok istniejącego agenta System Center Operations Manager. Istniejący Agent programu SCOM będzie kontynuował raportowanie do serwera System Center Operations Manager w normalny sposób. Należy pamiętać, że Agent System Center Operations Manager i Microsoft Monitoring Agent współdzielą typowe biblioteki uruchomieniowe, które zostaną zaktualizowane do najnowszej wersji w trakcie tego procesu. Uwaga: Jeśli jest zainstalowany agent System Center Operations Manager w wersji 2012, nie włączaj automatycznej aprowizacji w programie (możliwości zarządzania mogą być tracone, gdy serwer System Center Operations Manager jest również w wersji 2012).
 
 ### <a name="what-is-the-impact-of-removing-these-extensions"></a>Jaki jest wpływ usunięcia tych rozszerzeń?
 Jeśli usuniesz rozszerzenie monitorowania firmy Microsoft, usługa Security Center nie jest w stanie do zbierania danych zabezpieczeń z maszyny Wirtualnej i niektóre zalecenia dotyczące zabezpieczeń i alerty są niedostępne. W ciągu 24 godzin usługa Security Center określa Brak rozszerzenia i spowoduje ponowne zainstalowanie rozszerzenia maszyny Wirtualnej.
@@ -161,7 +161,7 @@ Możesz wyłączyć automatycznej aprowizacji dla subskrypcji w ramach zasad zab
 Można zrezygnować z automatycznego inicjowania obsługi administracyjnej, jeśli stosuje się do Ciebie:
 
 - Automatyczną instalację agenta przez usługę Security Center ma zastosowanie do całej subskrypcji.  Nie można zastosować automatycznej instalacji dla podzbioru maszyn wirtualnych. W przypadku newralgicznych maszyn wirtualnych, których nie można zainstalować za pomocą programu Microsoft Monitoring Agent, należy zrezygnować z automatycznego inicjowania obsługi administracyjnej.
-- Instalacja rozszerzenia Microsoft Monitoring Agent (MMA) aktualizuje wersję agenta. Dotyczy to zarówno agenta bezpośredniego, jak i agenta SCOM (w tym drugim biblioteki środowiska uruchomieniowego SCOM i MMA, które zostaną zaktualizowane w procesie). Jeśli jest zainstalowany agent programu SCOM jest w wersji 2012 i zostanie uaktualniona, możliwości zarządzania mogą zostać utracone, gdy serwer SCOM jest również wersja 2012. Należy rozważyć rezygnacji z automatycznej aprowizacji, jeśli jest zainstalowany agent SCOM jest w wersji 2012.
+- Instalacja rozszerzenia Microsoft Monitoring Agent (MMA) aktualizuje wersję agenta. Dotyczy to zarówno agenta bezpośredniego, jak i agenta SCOM (w tym drugim biblioteki środowiska uruchomieniowego SCOM i MMA, które zostaną zaktualizowane w procesie). Jeśli jest zainstalowany agent programu SCOM jest w wersji 2012 i zostanie uaktualniona, możliwości zarządzania mogą zostać utracone, gdy serwer SCOM jest również wersja 2012. Rozważ rezygnację z automatycznej aprowizacji, jeśli zainstalowany agent programu SCOM jest w wersji 2012.
 - Jeśli masz niestandardowe zewnętrzne w stosunku do subskrypcji (scentralizowanych obszarów roboczych) obszar roboczy należy zrezygnować z automatycznego inicjowania obsługi administracyjnej. Można ręcznie zainstalować rozszerzenia Microsoft Monitoring Agent i połączyć go obszaru roboczego bez usługi Security Center zastępowanie połączenia.
 - Jeśli chcesz uniknąć tworzenia wielu obszarów roboczych na subskrypcję i masz własnego niestandardowego obszaru roboczego w ramach subskrypcji, masz dwie opcje:
 
@@ -220,7 +220,7 @@ Gdy usługa Security Center wykrywa podejrzane działania na maszynie Wirtualnej
 
 ### <a name="will-security-center-work-using-an-oms-gateway"></a>Czy Security Center będzie działała przy użyciu bramy pakietu OMS?
 Tak. Azure Security Center wykorzystuje Azure Monitor do zbierania danych z maszyn wirtualnych i serwerów platformy Azure przy użyciu Microsoft Monitoring Agent.
-Aby zebrać dane, każda maszyna wirtualna i serwer muszą łączyć się z Internetem przy użyciu protokołu HTTPS. Połączenie może być bezpośrednie, przy użyciu serwera proxy lub przez bramę pakietu [OMS](../azure-monitor/platform/gateway.md).
+Aby zebrać dane, każda maszyna wirtualna i serwer muszą łączyć się z Internetem przy użyciu protokołu HTTPS. Połączenie może być bezpośrednie, przy użyciu serwera proxy lub przez [bramę pakietu OMS](../azure-monitor/platform/gateway.md).
 
 ### <a name="does-the-monitoring-agent-impact-the-performance-of-my-servers"></a>Czy Monitoring Agent wpływ na wydajność moich serwerów?
 Agent korzysta nominalna ilość zasobów systemowych i powinno mieć większego wpływu na wydajność. Aby uzyskać więcej informacji na temat wpływu na wydajność i agent i rozszerzenia, zobacz [przewodnik planowania i obsługi](security-center-planning-and-operations-guide.md#data-collection-and-storage).
@@ -329,7 +329,7 @@ Czas oczekiwania w usłudze Security Center skanuje pod kątem luk w zabezpiecze
 Usługa Security Center zwykle skanowania pod kątem nowych danych co godzinę i odpowiednio odświeża zaleceń. 
 
 > [!NOTE]
-> Począwszy od początku czerwca 2017 roku, usługa Security Center będzie używać programu Microsoft Monitoring Agent do gromadzenia i przechowywania danych. Aby dowiedzieć się więcej, zobacz [migracja platformy Centrum zabezpieczeń Azure](security-center-platform-migration.md). Informacje przedstawione w tym artykule reprezentują funkcję Security Center po przejściu do programu Microsoft Monitoring Agent.
+> Security Center używa Microsoft Monitoring Agent do zbierania i przechowywania danych. Aby dowiedzieć się więcej, zobacz [migracja platformy Centrum zabezpieczeń Azure](security-center-platform-migration.md).
 >
 >
 

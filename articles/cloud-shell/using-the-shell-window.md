@@ -1,6 +1,6 @@
 ---
-title: W oknie usługi Azure Cloud Shell | Dokumentacja firmy Microsoft
-description: Omówienie sposobu użycia okna usługi Azure Cloud Shell.
+title: Korzystanie z okna Azure Cloud Shell | Microsoft Docs
+description: Omówienie korzystania z okna Azure Cloud Shell.
 services: azure
 documentationcenter: ''
 author: maertendMSFT
@@ -14,79 +14,79 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: damaerte
-ms.openlocfilehash: 2511f2c8fb706e232cde9ee4c02c7f8114bd3a2b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3435d958049012750e775e2a17f43f463a0cc358
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60200704"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860320"
 ---
-# <a name="using-the-azure-cloud-shell-window"></a>W oknie usługi Azure Cloud Shell
+# <a name="using-the-azure-cloud-shell-window"></a>Korzystanie z okna Azure Cloud Shell
 
-W tym dokumencie wyjaśniono, jak używać okno usługi Cloud Shell.
+W tym dokumencie wyjaśniono, jak używać okna Cloud Shell.
 
-## <a name="swap-between-bash-and-powershell-environments"></a>Przełączać się między środowiskami Bash i program PowerShell
+## <a name="swap-between-bash-and-powershell-environments"></a>Wymiana między środowiskami bash i PowerShell
 
-Użyj selektora środowiska na pasku narzędzi usługi Cloud Shell, przełączać się między środowiskami Bash, jak i programu PowerShell.  
+Użyj selektora środowiska na pasku narzędzi Cloud Shell, aby zamienić środowiska bash i PowerShell.  
 ![Wybierz środowisko](media/using-the-shell-window/env-selector.png)
 
-## <a name="restart-cloud-shell"></a>Uruchom ponownie usługę Cloud Shell
-Kliknij ikonę ponowne uruchomienie w pasku narzędzi usługi Cloud Shell, aby zresetować stan maszyny.  
-![Uruchom ponownie usługę Cloud Shell](media/using-the-shell-window/restart.png)
+## <a name="restart-cloud-shell"></a>Ponowne uruchamianie usługi Cloud Shell
+Kliknij ikonę ponownego uruchamiania na pasku narzędzi Cloud Shell, aby zresetować stan komputera.  
+![Ponowne uruchamianie usługi Cloud Shell](media/using-the-shell-window/restart.png)
 > [!WARNING]
-> Ponowne uruchomienie usługi Cloud Shell spowoduje zresetowanie stanu maszyny i wszelkie pliki nie utrwalone przez platformę Azure udział pliku zostaną utracone.
+> Ponowne uruchomienie Cloud Shell spowoduje zresetowanie stanu komputera, a wszystkie pliki, które nie są utrwalane przez udział plików platformy Azure, zostaną utracone.
 
 ## <a name="change-the-text-size"></a>Zmień rozmiar tekstu
-Kliknij ikonę ustawienia w górnym lewym rogu okna, a następnie umieść kursor nad opcją "Rozmiar tekstu" i wybierz rozmiar odpowiedni tekst. Wybór zostaną utrwalone między sesjami.
+Kliknij ikonę ustawienia w lewym górnym rogu okna, a następnie umieść kursor nad opcją "rozmiar tekstu" i wybierz żądany rozmiar tekstu. Wybór zostanie utrwalony między sesjami.
 ![Rozmiar tekstu](media/using-the-shell-window/text-size.png)
 
-## <a name="change-the-font"></a>Zmiana czcionki
-Kliknij ikonę ustawienia w górnym lewym rogu okna, a następnie Najedź kursorem opcji "Czcionki" i wybierz żądany czcionki.  Wybór zostaną utrwalone między sesjami.
+## <a name="change-the-font"></a>Zmień czcionkę
+Kliknij ikonę ustawienia w lewym górnym rogu okna, a następnie umieść kursor nad opcją "Font" (czcionka) i wybierz żądaną czcionkę.  Wybór zostanie utrwalony między sesjami.
 ![Czcionka](media/using-the-shell-window/text-font.png)
 
 ## <a name="upload-and-download-files"></a>Przekazywanie i pobieranie plików
-Kliknij ikonę pobierania/przekazywania plików u góry po lewej krawędzi okna, następnie wybierz przekazywania lub pobierania.  
+Kliknij ikonę Przekaż/Pobierz pliki w lewym górnym rogu okna, a następnie wybierz pozycję Przekaż lub Pobierz.  
 ![Przekazywanie/pobieranie plików](media/using-the-shell-window/uploaddownload.png)
-* Przekazywania plików, należy użyć oknie podręcznym, przejdź do pliku na komputerze lokalnym, wybierz żądany plik i kliknij przycisk "Otwarte".  Plik zostanie przekazany do `/home/user` katalogu.
-* Do pobierania plików, wprowadź w pełni kwalifikowaną ścieżkę w oknie podręcznym, a następnie wybierz przycisk "Pobierz".  
+* W przypadku przekazywania plików użyj okna podręcznego, aby przejść do pliku na komputerze lokalnym, wybierz odpowiedni plik, a następnie kliknij przycisk "Otwórz".  Plik zostanie przekazany do `/home/user` katalogu.
+* W przypadku pobierania pliku wprowadź w pełni kwalifikowaną ścieżkę pliku do okna podręcznego (tj. ścieżka w `/home/user` katalogu, która jest domyślnie wyświetlana), a następnie wybierz przycisk "Pobierz".  
 > [!NOTE] 
-> Pliki i ścieżki plików są z uwzględnieniem wielkości liter w usłudze Cloud Shell. Sprawdź swoje wielkość liter w wyrazie w ścieżce pliku.
+> W przypadku plików i ścieżek plików rozróżniana jest wielkość liter w Cloud Shell. Dokładnie sprawdź wielkość liter w ścieżce pliku.
 
-## <a name="open-another-cloud-shell-window"></a>Otwiera inne okno usługi Cloud Shell
-Usługa cloud Shell umożliwia wielu równoczesnych sesji między karty przeglądarki, umożliwiając każdej sesji istnieje w oddzielnym procesie.
-Kończenie sesji, należy wyjść z każdego okna sesji, ponieważ każdy proces działa niezależnie, chociaż są one uruchomione na tym samym komputerze.  
-Kliknij ikonę Otwórz nową sesję w górnym lewym rogu okna. Nowa karta zostanie otwarty z inną sesją podłączony do istniejącego kontenera.
+## <a name="open-another-cloud-shell-window"></a>Otwórz inne okno Cloud Shell
+Cloud Shell włącza wiele współbieżnych sesji na kartach przeglądarki, umożliwiając każdej sesji istnieje jako oddzielny proces.
+Jeśli kończysz sesję, pamiętaj, aby wyjść z każdego okna sesji, ponieważ każdy proces działa niezależnie, mimo że są uruchamiane na tym samym komputerze.  
+Kliknij ikonę Otwórz nową sesję w lewym górnym rogu okna. Zostanie otwarta nowa karta z inną sesją połączoną z istniejącym kontenerem.
 ![Otwórz nową sesję](media/using-the-shell-window/newsession.png)
 
-## <a name="cloud-shell-editor"></a>Cloud Shell edytora
-* Zapoznaj się [przy użyciu edytora usługi Azure Cloud Shell](using-cloud-shell-editor.md) strony.
+## <a name="cloud-shell-editor"></a>Edytor Cloud Shell
+* Zapoznaj się z tematem [Korzystanie z edytora Azure Cloud Shell](using-cloud-shell-editor.md) .
 
-## <a name="web-preview"></a>Podgląd w sieci Web
-Kliknij ikonę sieci web (wersja zapoznawcza) w górnym lewym rogu okna, wybierz pozycję "Konfiguruj", określ odpowiedni port, aby otworzyć.  Wybierz albo "otwartego portu" tylko do otwierania portu lub "Otwórz i Przeglądaj" Otwórz port i port na nowej karcie w wersji zapoznawczej.  
-![Podgląd w sieci Web](media/using-the-shell-window/preview.png)  
+## <a name="web-preview"></a>Podgląd internetowy
+Kliknij ikonę Web Preview w lewym górnym rogu okna, wybierz pozycję "Konfiguruj", określ żądany port do otwarcia.  Wybierz pozycję "Otwórz port", aby otworzyć tylko port, lub pozycję "Otwórz i Przeglądaj", aby otworzyć port i wyświetlić podgląd portu na nowej karcie.  
+![Podgląd sieci Web](media/using-the-shell-window/preview.png)  
 <br>
-![Konfigurowanie portów](media/using-the-shell-window/preview-configure.png)  
-Kliknij ikonę sieci web (wersja zapoznawcza) u góry po lewej krawędzi okna, wybierz pozycję "W wersji zapoznawczej portu..." Aby wyświetlić podgląd otwartego portu w nowej karcie. Kliknij ikonę sieci web (wersja zapoznawcza) u góry po lewej krawędzi okna, wybierz opcję "Zamknij port..." Aby zamknąć otwartego portu.  
-![Wersja zapoznawcza/Zamknij port](media/using-the-shell-window/preview-options.png)
+![Skonfiguruj port](media/using-the-shell-window/preview-configure.png)  
+Kliknij ikonę Web Preview w lewym górnym rogu okna, wybierz pozycję "Podgląd portu..." Aby wyświetlić podgląd otwartego portu na nowej karcie. Kliknij ikonę Web Preview w lewym górnym rogu okna, wybierz pozycję "Zamknij port..." , aby zamknąć otwarty port.  
+![Podgląd/zamknięcie portu](media/using-the-shell-window/preview-options.png)
 
-## <a name="minimize--maximize-cloud-shell-window"></a>Minimalizuj & zmaksymalizuj okno usługi Cloud Shell
-Kliknij ikonę Minimalizuj w górnym rogu okna, aby je ukryć. Kliknij ikonę usługi Cloud Shell ponownie, aby odkryć.
-Kliknij ikonę Maksymalizuj, aby ustawić maksymalną wysokość okna. Aby przywrócić pierwotny rozmiar okna, kliknij przycisk Przywróć.  
-![Minimalizowanie lub zmaksymalizuj okno](media/using-the-shell-window/minmax.png)
+## <a name="minimize--maximize-cloud-shell-window"></a>Minimalizuj & Maksymalizuj Cloud Shell okno
+Kliknij ikonę Minimalizuj w prawym górnym rogu okna, aby je ukryć. Kliknij ponownie ikonę Cloud Shell, aby odkryć.
+Kliknij ikonę Maksymalizuj, aby ustawić maksymalną wysokość okna. Aby przywrócić poprzedni rozmiar okna, kliknij przycisk Przywróć.  
+![Minimalizuj lub Maksymalizuj okno](media/using-the-shell-window/minmax.png)
 
 ## <a name="copy-and-paste"></a>Kopiowanie i wklejanie
 [!INCLUDE [copy-paste](../../includes/cloud-shell-copy-paste.md)]
 
-## <a name="resize-cloud-shell-window"></a>Zmień rozmiar okna usługi Cloud Shell
-Kliknij i przeciągnij górnej krawędzi paska narzędzi w górę lub w dół do zmiany rozmiaru okna usługi Cloud Shell.
+## <a name="resize-cloud-shell-window"></a>Zmień rozmiar okna Cloud Shell
+Kliknij i przeciągnij górną krawędź paska narzędzi w górę lub w dół, aby zmienić rozmiar okna Cloud Shell.
 
-## <a name="scrolling-text-display"></a>Przewijanie wyświetlania tekstu
-Przewiń przy użyciu myszy lub płytki dotykowej, aby przenieść terminalu tekst.
+## <a name="scrolling-text-display"></a>Przewijane wyświetlanie tekstu
+Przewiń myszą lub płytkę dotykową, aby przenieść tekst terminalu.
 
 ## <a name="exit-command"></a>Exit — polecenie
-Uruchamianie `exit` kończy aktywną sesję. To zachowanie domyślne po upływie 20 minut bez interakcji.
+Przerwanie działania `exit` aktywnej sesji. To zachowanie jest domyślnie wykonywane po 20 minutach bez interakcji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Powłoka bash w przewodniku Szybki Start Cloud Shell](quickstart.md) <br>
-[Program PowerShell w przewodniku Szybki Start Cloud Shell](quickstart-powershell.md)
+[Bash w Cloud Shell Szybki Start](quickstart.md) <br>
+[Program PowerShell w Cloud Shell Szybki Start](quickstart-powershell.md)

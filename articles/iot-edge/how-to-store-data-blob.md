@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 1a48088d0d7ef1e14614629340ee477833535861
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 7d504bae16b5b9b10debd916ef8888e90e79364e
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390394"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844171"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Przechowuj dane na krawędzi za pomocą usługi Azure Blob Storage na IoT Edge
 
@@ -77,20 +77,20 @@ Użyj odpowiednich właściwości modułu, aby ustawić **deviceToCloudUploadPro
 
 ### <a name="devicetoclouduploadproperties"></a>deviceToCloudUploadProperties
 
-Nazwa tego ustawienia to`deviceToCloudUploadProperties`
+Nazwa tego ustawienia `deviceToCloudUploadProperties`to. Jeśli używasz symulatora IoT Edge, ustaw wartości w powiązanych zmiennych środowiskowych dla tych właściwości, które można znaleźć w sekcji wyjaśnienie.
 
 | Właściwość | Możliwe wartości | Wyjaśnienie |
 | ----- | ----- | ---- |
 | uploadOn | true, false | `false` Domyślnie ustawiona wartość. Jeśli chcesz włączyć tę funkcję, ustaw to pole na `true`. <br><br> Zmienna środowiskowa:`deviceToCloudUploadProperties__uploadOn={false,true}` |
 | uploadOrder | NewestFirst, OldestFirst | Umożliwia wybranie kolejności, w której dane są kopiowane na platformę Azure. `OldestFirst` Domyślnie ustawiona wartość. Kolejność jest określana według czasu ostatniej modyfikacji obiektu BLOB. <br><br> Zmienna środowiskowa:`deviceToCloudUploadProperties__uploadOrder={NewestFirst,OldestFirst}` |
 | cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"`to parametry połączenia, które umożliwiają określenie konta magazynu, do którego chcesz przekazać dane. Określ `Azure Storage Account Name`, `Azure Storage Account Key`, .`End point suffix` Dodaj odpowiednie EndpointSuffix systemu Azure, w przypadku których dane zostaną przekazane, różnią się w zależności od globalnego platformy Azure, platformy Azure dla instytucji rządowych i Microsoft Azure Stack. <br><br> W tym miejscu możesz określić parametry połączenia SAS usługi Azure Storage. Ale należy zaktualizować tę właściwość po jej wygaśnięciu. <br><br> Zmienna środowiskowa:`deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
-| storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | Pozwala określić nazwy kontenerów, które mają zostać przekazane na platformę Azure. Ten moduł pozwala określić źródłową i docelową nazwę kontenera. Jeśli nie określisz nazwy kontenera docelowego, automatycznie przypiszesz nazwę kontenera jako `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>`. Można utworzyć ciągi szablonów dla docelowej nazwy kontenera, zapoznaj się z kolumną możliwe wartości. <br>*% h-> IoT Hub nazwy (3-50 znaków). <br>*% d-> IoT Edge identyfikator urządzenia (od 1 do 129 znaków). <br>*% m-> Nazwa modułu (od 1 do 64 znaków). <br>*% c-> nazwę kontenera źródłowego (od 3 do 63 znaków). <br><br>Maksymalny rozmiar nazwy kontenera to 63 znaków, podczas gdy automatyczne przypisanie nazwy kontenera docelowego, jeśli rozmiar kontenera przekracza 63 znaków, spowoduje to przycinanie każdej sekcji (IoTHubName, IotEdgeDeviceID, ModuleName, SourceContainerName) do 15 znaków. <br><br> Zmienna środowiskowa:`deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target: <targetName>` |
+| storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | Pozwala określić nazwy kontenerów, które mają zostać przekazane na platformę Azure. Ten moduł pozwala określić źródłową i docelową nazwę kontenera. Jeśli nie określisz nazwy kontenera docelowego, automatycznie przypiszesz nazwę kontenera jako `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>`. Można utworzyć ciągi szablonów dla docelowej nazwy kontenera, zapoznaj się z kolumną możliwe wartości. <br>*% h-> IoT Hub nazwy (3-50 znaków). <br>*% d-> IoT Edge identyfikator urządzenia (od 1 do 129 znaków). <br>*% m-> Nazwa modułu (od 1 do 64 znaków). <br>*% c-> nazwę kontenera źródłowego (od 3 do 63 znaków). <br><br>Maksymalny rozmiar nazwy kontenera to 63 znaków, podczas gdy automatyczne przypisanie nazwy kontenera docelowego, jeśli rozmiar kontenera przekracza 63 znaków, spowoduje to przycinanie każdej sekcji (IoTHubName, IotEdgeDeviceID, ModuleName, SourceContainerName) do 15 znaków. <br><br> Zmienna środowiskowa:`deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target=<targetName>` |
 | deleteAfterUpload | true, false | `false` Domyślnie ustawiona wartość. Po jego ustawieniu `true`usługa automatycznie usunie dane po zakończeniu przekazywania do magazynu w chmurze. <br><br> Zmienna środowiskowa:`deviceToCloudUploadProperties__deleteAfterUpload={false,true}` |
 
 
 ### <a name="deviceautodeleteproperties"></a>deviceAutoDeleteProperties
 
-Nazwa tego ustawienia to`deviceAutoDeleteProperties`
+Nazwa tego ustawienia `deviceAutoDeleteProperties`to. Jeśli używasz symulatora IoT Edge, ustaw wartości w powiązanych zmiennych środowiskowych dla tych właściwości, które można znaleźć w sekcji wyjaśnienie.
 
 | Właściwość | Możliwe wartości | Wyjaśnienie |
 | ----- | ----- | ---- |

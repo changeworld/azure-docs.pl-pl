@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2019
 ms.author: sedusch
 ms.openlocfilehash: 534a3e349faaa3a6ef5b6e01082564eda51936c1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "70101036"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Wysoka dostępność dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy Azure na SUSE Linux Enterprise Server dla aplikacji SAP
@@ -75,10 +75,10 @@ Najpierw przeczytaj następujące informacje i dokumenty SAP
 * [Planowanie i wdrażanie usługi Azure Virtual Machines dla oprogramowania SAP w systemie Linux][planning-guide]
 * [Wdrożenie Virtual Machines platformy Azure dla oprogramowania SAP w systemie Linux][deployment-guide]
 * [Wdrożenie systemu Azure Virtual Machines DBMS dla oprogramowania SAP w systemie Linux][dbms-guide]
-* Przewodniki dla systemu [SUSE SAP ha Best Practices][suse-ha-guide] Przewodniki zawierają wszystkie informacje wymagane do skonfigurowania NetWeaver HA i replikacji systemu SAP HANA w środowisku lokalnym. Użyj tych przewodników jako ogólnego planu bazowego. Zapewniają one wiele bardziej szczegółowych informacji.
+* [Przewodniki dla systemu SUSE SAP ha Best Practices][suse-ha-guide] Przewodniki zawierają wszystkie informacje wymagane do skonfigurowania NetWeaver HA i replikacji systemu SAP HANA w środowisku lokalnym. Użyj tych przewodników jako ogólnego planu bazowego. Zapewniają one wiele bardziej szczegółowych informacji.
 * [Informacje o wersji w programie SUSE High Availability Extension 12 SP3][suse-ha-12sp3-relnotes]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Aby zapewnić wysoką dostępność, rozwiązanie SAP NetWeaver wymaga serwera NFS. Serwer NFS jest skonfigurowany w osobnym klastrze i może być używany przez wiele systemów SAP.
 
@@ -137,7 +137,7 @@ Portal Azure Marketplace zawiera obraz dla SUSE Linux Enterprise Server dla apli
 Możesz użyć jednego z szablonów szybkiego startu w usłudze GitHub, aby wdrożyć wszystkie wymagane zasoby. Szablon wdraża maszyny wirtualne, moduł równoważenia obciążenia, zestaw dostępności itd. Wykonaj następujące kroki, aby wdrożyć szablon:
 
 1. Otwórz [szablon ASCS/SCS o wiele identyfikatorów SID][template-multisid-xscs] lub [szablon zbieżny][template-converged] w Azure Portal. 
-   Szablon ASCS/SCS tworzy tylko reguły równoważenia obciążenia dla wystąpień SAP NetWeaver ASCS/SCS i wykres WYWOŁUJĄCYCH (tylko Linux), podczas gdy zbieżny szablon tworzy również reguły równoważenia obciążenia dla bazy danych (na przykład Microsoft SQL Server lub SAP HANA). Jeśli planujesz zainstalować system oparty na oprogramowaniu SAP NetWeaver i chcesz również zainstalować bazę danych na tych samych komputerach, użyj zbieżnego [szablonu][template-converged].
+   Szablon ASCS/SCS tworzy tylko reguły równoważenia obciążenia dla wystąpień SAP NetWeaver ASCS/SCS i wykres WYWOŁUJĄCYCH (tylko Linux), podczas gdy zbieżny szablon tworzy również reguły równoważenia obciążenia dla bazy danych (na przykład Microsoft SQL Server lub SAP HANA). Jeśli planujesz zainstalować system oparty na oprogramowaniu SAP NetWeaver i chcesz również zainstalować bazę danych na tych samych komputerach, użyj [zbieżnego szablonu][template-converged].
 1. Wprowadź następujące parametry
    1. Prefiks zasobu (tylko szablon ASCS/SCS o wiele identyfikatorów SID)  
       Wprowadź prefiks, którego chcesz użyć. Wartość jest używana jako prefiks dla wdrożonych zasobów.

@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 04/12/2019
+ms.date: 09/09/2019
 ms.author: helohr
-ms.openlocfilehash: 3e9ee3f5dd04ef838f78b9731885b7ea48e6c99d
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
-ms.translationtype: HT
+ms.openlocfilehash: a9b5eecd97b078c9446e28d971f900c4cf65130f
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811327"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845537"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Samouczek: Tworzenie jednostek usługi i przypisań ról za pomocą programu PowerShell
 
@@ -38,9 +38,9 @@ Aby można było tworzyć jednostki usługi i przypisania ról, należy wykonać
     Install-Module AzureAD
     ```
 
-2. [Pobieranie i importowanie modułu programu PowerShell dla pulpitu wirtualnego systemu Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)
+2. [Pobierz i zaimportuj moduł programu PowerShell dla pulpitu wirtualnego systemu Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview).
 
-3. Wykonaj wszystkie instrukcje zawarte w tym artykule w tej samej sesji programu PowerShell. Może nie zadziałało, jeśli zamkniesz okno i wrócisz do niego później.
+3. Wykonaj wszystkie instrukcje zawarte w tym artykule w tej samej sesji programu PowerShell. Proces może nie zadziałać, jeśli sesja programu PowerShell zostanie przerwana przez zamknięcie okna i ponowne jego otwarcie.
 
 ## <a name="create-a-service-principal-in-azure-active-directory"></a>Tworzenie nazwy głównej usługi w usłudze Azure Active Directory
 
@@ -52,10 +52,9 @@ $aadContext = Connect-AzureAD
 $svcPrincipal = New-AzureADApplication -AvailableToOtherTenants $true -DisplayName "Windows Virtual Desktop Svc Principal"
 $svcPrincipalCreds = New-AzureADApplicationPasswordCredential -ObjectId $svcPrincipal.ObjectId
 ```
-
 ## <a name="view-your-credentials-in-powershell"></a>Wyświetlanie poświadczeń w programie PowerShell
 
-Przed zakończeniem sesji programu PowerShell Sprawdź swoje poświadczenia i Zapisz je w celu uwzględnienia w przyszłości. Hasło jest szczególnie ważne, ponieważ nie będzie można go pobrać po zamknięciu sesji programu PowerShell.
+Przed utworzeniem przypisania roli dla jednostki usługi, Wyświetl swoje poświadczenia i Zapisz je w celu uwzględnienia w przyszłości. Hasło jest szczególnie ważne, ponieważ nie będzie można go pobrać po zamknięciu sesji programu PowerShell.
 
 Poniżej przedstawiono trzy poświadczenia, które należy napisać, i polecenia cmdlet, które należy uruchomić, aby je pobrać:
 
@@ -79,19 +78,21 @@ Poniżej przedstawiono trzy poświadczenia, które należy napisać, i polecenia
 
 ## <a name="create-a-role-assignment-in-windows-virtual-desktop-preview"></a>Tworzenie przypisania roli w wersji zapoznawczej pulpitu wirtualnego systemu Windows
 
-Następnie utworzysz przypisanie roli RDS na pulpicie wirtualnym systemu Windows dla jednostki usługi, co umożliwi jednostce usługi Logowanie się do pulpitu wirtualnego systemu Windows. Upewnij się, że używasz konta z uprawnieniami do tworzenia przypisań ról RDS.
+Następnie należy utworzyć przypisanie roli, aby nazwa główna usługi mogła zalogować się do pulpitu wirtualnego systemu Windows. Upewnij się, że logujesz się przy użyciu konta z uprawnieniami do tworzenia przypisań ról.
 
-Uruchom następujące polecenia cmdlet programu PowerShell, aby połączyć się z pulpitem wirtualnym systemu Windows i wyświetlić dzierżawy usług pulpitu zdalnego.
+Najpierw [Pobierz i zaimportuj moduł programu PowerShell dla pulpitu wirtualnego systemu Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) , który ma być używany w sesji programu PowerShell, jeśli jeszcze tego nie zrobiono.
+
+Uruchom następujące polecenia cmdlet programu PowerShell, aby połączyć się z pulpitem wirtualnym systemu Windows i wyświetlić dzierżawców.
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-Get-RdsTenant | FL
+Get-RdsTenant
 ```
 
-Użyj nazwy dzierżawca dla poprawnej dzierżawy i uruchom następujące polecenia cmdlet programu PowerShell, aby utworzyć przypisanie roli dla jednostki usługi w określonej dzierżawie.
+Po znalezieniu nazwy dzierżawy dla dzierżawy, dla której chcesz utworzyć przypisanie roli, Użyj tej nazwy w następującym poleceniu cmdlet:
 
 ```powershell
-New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincipal.AppId -TenantName "<my-rds-tenantname>"
+New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincipal.AppId -TenantName $myTenantName
 ```
 
 ## <a name="sign-in-with-the-service-principal"></a>Zaloguj się przy użyciu nazwy głównej usługi

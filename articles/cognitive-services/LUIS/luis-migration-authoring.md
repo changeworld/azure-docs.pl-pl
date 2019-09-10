@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/08/2019
 ms.author: diberry
-ms.openlocfilehash: ee185ca5d2e2cdda89945f0fc1e7aae32030c1be
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
-ms.translationtype: HT
+ms.openlocfilehash: 5828d4f453afeccfaac206195f064e43a20d1ba0
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70803897"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844769"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrowanie do klucza tworzenia zasobów platformy Azure
 
@@ -43,7 +43,7 @@ Właściciel nie może wybrać podzestawu aplikacji do migracji, a proces nie je
 Migracja nie jest: 
 
 * Proces, który zbiera współpracowników i automatycznie przenosi lub dodaje do zasobu tworzenia platformy Azure. Jako właściciel aplikacji musisz wykonać ten krok. Ten krok wymaga uprawnień do odpowiedniego zasobu.
-* Proces tworzenia i przypisywania zasobu środowiska uruchomieniowego predykcyjnego. Jeśli potrzebujesz zasobu przewidywania środowiska uruchomieniowego, który jest [oddzielnym procesem](luis-how-to-azure-subscription.md##create-resources-in-the-azure-portal) i nie jest zmieniany. 
+* Proces tworzenia i przypisywania zasobu środowiska uruchomieniowego predykcyjnego. Jeśli potrzebujesz zasobu przewidywania środowiska uruchomieniowego, który jest [oddzielnym procesem](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) i nie jest zmieniany. 
 
 ## <a name="how-are-the-apps-migrating"></a>Jak są migrowane aplikacje?
 
@@ -62,7 +62,9 @@ Aby opóźnić proces migracji, Anuluj okno. Użytkownik jest okresowo monitowan
 
 * **Opcjonalnie możesz**utworzyć kopię zapasową aplikacji z listy aplikacji portalu Luis, eksportując każdą aplikację lub korzystając z [interfejsu API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)eksportowania.
 * **Opcjonalnie**Zapisz listę collaborator's każdej aplikacji. Ta lista poczty e-mail jest świadczona jako część procesu migracji.
-* **Wymagana**jest [subskrypcja platformy Azure](https://azure.microsoft.com/free/). Część procesu subskrypcji wymaga informacji dotyczących rozliczeń. Można jednak korzystać z bezpłatnych warstw cenowych (F0), gdy używasz LUIS. Może się okazać, że potrzebujesz warstwy płatnej w miarę wzrostu użycia. 
+* **Wymagana**jest [subskrypcja platformy Azure](https://azure.microsoft.com/free/). Część procesu subskrypcji wymaga informacji dotyczących rozliczeń. Można jednak użyć warstwy cenowej bezpłatna (`F0`), jeśli używasz Luis. 
+
+**Tworzenie aplikacji Luis jest bezpłatne**, wskazywane przez `F0` warstwę. Dowiedz się [więcej o warstwach cenowych](luis-boundaries.md#key-limits).
 
 Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się](https://azure.microsoft.com/free/). 
 

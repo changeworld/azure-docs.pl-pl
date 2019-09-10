@@ -5,20 +5,20 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
 ms.openlocfilehash: a8ee7cc28985d905a0d158745145ce7ffaa5ba6e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67183637"
 ---
 | Resource | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
 | Maksymalna liczba zaufanych adresów IP lub zakresów</a> na subskrypcję |0 |50 |
-| Pamiętanie urządzeń, liczba dni |14 |60 |
-| Maksymalna liczba haseł aplikacji |0 |Bez ograniczeń |
+| Zapamiętaj moje urządzenia, liczbę dni |14 |60 |
+| Maksymalna liczba haseł aplikacji |0 |Bez limitu |
 | Zezwalanie na **X** prób podczas wywołania usługi MFA |1 |99 |
-| Liczba sekund limitu czasu wiadomości SMS dwukierunkowe |60 |600 |
-| Domyślna liczba sekund jednorazowego obejścia |300 |1,800 |
-| Blokowanie konta użytkownika po **X** kolejnych odmowach ze strony usługi MFA |Nieustawiona |99 |
-| Resetowanie licznika blokady konta po **X** minutach |Nieustawiona |9,999 |
-| Odblokowanie konta po **X** minutach |Nieustawiona |9,999 |
+| Limit czasu dwukierunkowej wiadomości tekstowej w sekundach |60 |600 |
+| Domyślna liczba sekund jednorazowego obejścia |300 |1 800 |
+| Blokowanie konta użytkownika po **X** kolejnych odmowach ze strony usługi MFA |Nie ustawiono |99 |
+| Resetowanie licznika blokady konta po **X** minutach |Nie ustawiono |9 999 |
+| Odblokowanie konta po **X** minutach |Nie ustawiono |9 999 |

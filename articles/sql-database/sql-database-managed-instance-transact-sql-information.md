@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 8f12f07d22387e5625b10e564cd05109e5bc73fc
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: cad04df9ba76ce483a308411949e6f98bab23bf9
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744396"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858543"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Różnice w języku T-SQL wystąpienia zarządzanego, ograniczenia i znane problemy
 
@@ -27,7 +27,7 @@ Ten artykuł zawiera podsumowanie i wyjaśnienie różnic między składnią i z
 Istnieją pewne ograniczenia PaaS wprowadzone w wystąpieniu zarządzanym, a niektóre zmiany zachowań są porównywane z SQL Server. Różnice są podzielone na następujące kategorie:<a name="Differences"></a>
 
 - [Dostępność](#availability) obejmuje różnice w przypadku, gdy są [zawsze włączone](#always-on-availability) i [kopie zapasowe](#backup).
-- [Zabezpieczenia](#security) obejmują różnice między [inspekcjami](#auditing), [certyfikatami](#certificates), [poświadczeniami](#credential), [dostawcami usług kryptograficznych](#cryptographic-providers), [logowania i użytkownikami](#logins-and-users)oraz [kluczem usługi i kluczem głównym usługi](#service-key-and-service-master-key).
+- [Zabezpieczenia](#security) obejmują różnice między [inspekcjami](#auditing), [certyfikatami](#certificates), poświadczeniami, [dostawcami usług kryptograficznych](#cryptographic-providers), [logowania i użytkownikami](#logins-and-users)oraz [kluczem usługi i kluczem głównym usługi](#service-key-and-service-master-key). [](#credential)
 - [Konfiguracja](#configuration) obejmuje różnice w [rozszerzeniu puli buforów](#buffer-pool-extension), [Sortowanie](#collation), [poziomy zgodności](#compatibility-levels), [dublowanie bazy danych](#database-mirroring), [Opcje bazy danych](#database-options), [Agent SQL Server](#sql-server-agent)i [Opcje tabeli](#tables).
 - [Funkcje](#functionalities) obejmują [BULK INSERT/OPENROWSET](#bulk-insert--openrowset), [CLR](#clr), [DBCC](#dbcc), [transakcji rozproszonych](#distributed-transactions), [zdarzeń rozszerzonych](#extended-events), [bibliotek zewnętrznych](#external-libraries), [FILESTREAM i FileTable](#filestream-and-filetable), [pełnotekstowego Wyszukiwanie semantyczne](#full-text-semantic-search), [połączone serwery](#linked-servers), [baza](#polybase), [replikacja](#replication), [przywracanie](#restore-statement), [Service Broker](#service-broker), [procedury składowane, funkcje i wyzwalacze](#stored-procedures-functions-and-triggers).
 - [Ustawienia środowiska](#Environment) , takie jak sieci wirtualnych i konfiguracje podsieci.
@@ -201,7 +201,7 @@ Domyślne sortowanie wystąpień jest `SQL_Latin1_General_CP1_CI_AS` i może by�
 
 ### <a name="compatibility-levels"></a>Poziomy zgodności
 
-- Obsługiwane poziomy zgodności to 100, 110, 120, 130 i 140.
+- Obsługiwane poziomy zgodności to 100, 110, 120, 130, 140 i 150.
 - Poziomy zgodności poniżej 100 nie są obsługiwane.
 - Domyślny poziom zgodności dla nowych baz danych to 140. W przypadku przywróconych baz danych poziom zgodności pozostaje niezmieniony, jeśli jego wartość to 100 i nowsze.
 
@@ -334,7 +334,7 @@ Wystąpienie zarządzane nie może uzyskać dostępu do udziałów plików i fol
 
 Wystąpienie zarządzane nie może uzyskać dostępu do udziałów plików i folderów systemu Windows, więc obowiązują następujące ograniczenia:
 
-- Obsługiwane `CREATE ASSEMBLY FROM BINARY` są tylko. Zobacz [Tworzenie zestawu na podstawie danych binarnych](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql). 
+- Obsługiwane `CREATE ASSEMBLY FROM BINARY` są tylko. Zobacz [Tworzenie zestawu na podstawie](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql)danych binarnych. 
 - `CREATE ASSEMBLY FROM FILE`nie jest obsługiwana. Zobacz [Tworzenie zestawu z pliku](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).
 - `ALTER ASSEMBLY`nie można odwoływać się do plików. Zobacz [ALTER Assembly](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
 
@@ -657,7 +657,7 @@ using (var scope = new TransactionScope())
 
 Mimo że ten kod działa z danymi w tym samym wystąpieniu, wymagana jest usługa MSDTC.
 
-**Poprawkę** Użyj elementu [SqlConnection. ChangeDatabase (String)](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) , aby użyć innej bazy danych w kontekście połączenia zamiast korzystać z dwóch połączeń.
+**Poprawkę** Użyj elementu SqlConnection [. ChangeDatabase (String)](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) , aby użyć innej bazy danych w kontekście połączenia zamiast korzystać z dwóch połączeń.
 
 ### <a name="clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address"></a>Moduły CLR i połączone serwery czasami nie mogą odwoływać się do lokalnego adresu IP
 

@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 09/06/2019
 ms.author: lewlu
-ms.openlocfilehash: 886e0ff353ab270bb823629d2068508531c14fc2
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 49b92037fed6436d28f777761b18cf5f66e03025
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516860"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859159"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Migrowanie danych własnych do innej subskrypcji programu Marketo
 
-W tym przewodniku pokazano, jak przenieść dane twarzy, takie jak zapisany obiekt z obiektu, na inną subskrypcję usługi Azure Cognitive Services interfejs API rozpoznawania twarzy. Aby przenieść dane, użyj funkcji Snapshot. W ten sposób można uniknąć wielokrotnego kompilowania i uczenia obiektu osoby lub FaceList podczas przenoszenia lub rozszerzania operacji. Na przykład być może utworzono obiekt obiektu osoby za pomocą bezpłatnej subskrypcji próbnej i teraz chcesz przeprowadzić migrację go do subskrypcji płatnej. Lub może być konieczne zsynchronizowanie danych czołowych między regionami w ramach dużej operacji przedsiębiorstwa.
+W tym przewodniku pokazano, jak przenieść dane twarzy, takie jak zapisany obiekt z obiektu, na inną subskrypcję usługi Azure Cognitive Services interfejs API rozpoznawania twarzy. Aby przenieść dane, użyj funkcji Snapshot. W ten sposób można uniknąć wielokrotnego kompilowania i uczenia obiektu osoby lub FaceList podczas przenoszenia lub rozszerzania operacji. Na przykład być może utworzono obiekt obiektu osoby za pomocą bezpłatnej subskrypcji próbnej i teraz chcesz przeprowadzić migrację go do subskrypcji płatnej. Lub może być konieczne zsynchronizowanie danych czołowych w różnych regionach w ramach dużej operacji przedsiębiorstwa.
 
 Ta sama Strategia migracji dotyczy również obiektów LargePersonGroup i LargeFaceList. Jeśli nie znasz koncepcji z tego przewodnika, zobacz ich definicje w przewodniku dotyczą [pojęć dotyczących rozpoznawania](../concepts/face-recognition.md) . Ten przewodnik używa biblioteki klienta interfejs API rozpoznawania twarzy .NET z programem C#.
 
@@ -41,7 +41,9 @@ W tym przewodniku zastosowano prostą aplikację konsolową do uruchomienia migr
 
 ## <a name="create-face-clients"></a>Tworzenie klientów z czołową
 
-W metodzie **Main** w programie *program.cs*Utwórz dwa wystąpienia [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) dla subskrypcji źródłowej i docelowej. W tym przykładzie w regionie Azja Wschodnia jako źródło i zachodnie stany USA jako element docelowy jest stosowana subskrypcja czołowa. W tym przykładzie pokazano, jak migrować dane z jednego regionu świadczenia usługi Azure do innego. Jeśli subskrypcje znajdują się w różnych regionach, Zmień `Endpoint` ciągi.
+W metodzie **Main** w programie *program.cs*Utwórz dwa wystąpienia [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) dla subskrypcji źródłowej i docelowej. W tym przykładzie w regionie Azja Wschodnia jako źródło i zachodnie stany USA jako element docelowy jest stosowana subskrypcja czołowa. W tym przykładzie pokazano, jak migrować dane z jednego regionu świadczenia usługi Azure do innego. 
+
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ```csharp
 var FaceClientEastAsia = new FaceClient(new ApiKeyServiceClientCredentials("<East Asia Subscription Key>"))

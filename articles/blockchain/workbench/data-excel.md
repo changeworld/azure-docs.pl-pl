@@ -1,21 +1,21 @@
 ---
 title: Korzystanie z danych usługi Azure Blockchain Workbench w programie Microsoft Excel
-description: Dowiedz się, jak załadować i wyświetlać dane bazy danych SQL DB usługi Azure Blockchain Workbench w programie Microsoft Excel.
+description: Dowiedz się, jak ładować i wyświetlać dane SQL usługi Azure łańcucha bloków Workbench w wersji zapoznawczej w programie Microsoft Excel.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/09/2019
+ms.date: 09/05/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 215d8b8fbc49e9f38dc89655981edce37984163a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2a5170f95ebb1b25faea7eed74b08ae446b9499
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65510669"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845083"
 ---
 # <a name="view-azure-blockchain-workbench-data-with-microsoft-excel"></a>Wyświetlanie danych usługi Azure Blockchain Workbench za pomocą programu Microsoft Excel
 
@@ -66,7 +66,7 @@ W następnym przykładzie pokazano, jak załadować dane z widoku do skoroszytu 
 
 Teraz, po załadowaniu danych, możesz użyć funkcji programu Excel w celu utworzenia własnych raportów przy użyciu metadanych i danych transakcji z bazy danych usługi Azure Blockchain Workbench.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Widoki bazy danych w usłudze Azure Blockchain Workbench](database-views.md)

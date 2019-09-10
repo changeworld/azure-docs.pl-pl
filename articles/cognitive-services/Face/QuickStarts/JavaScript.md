@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 09/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 70c496aef0ff2f34c917fd594767d464cab3e625
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: bc8d20abcc7bc66d319874978e134c5c86c86e1c
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603425"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859045"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>Szybki start: Wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka JavaScript
 
@@ -41,7 +41,7 @@ Utwórz nowy plik HTML o nazwie *detectFaces.html* i dodaj poniższy kod.
 </html>
 ```
 
-Następnie dodaj poniższy kod wewnątrz elementu `body` dokumentu. Ten kod konfiguruje podstawowy interfejs użytkownika z polem adresu URL **analizowania powierzchni** przycisk, okienko odpowiedzi i okienku wyświetlania obrazu.
+Następnie dodaj poniższy kod wewnątrz elementu `body` dokumentu. Ten kod konfiguruje podstawowy interfejs użytkownika z polem adresu URL, przyciskiem **Analizuj** swoją aplikację, okienkiem odpowiedzi oraz okienkiem wyświetlania obrazu.
 
 ```html
 <h1>Detect Faces:</h1>
@@ -65,7 +65,7 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage"
 
 ## <a name="write-the-javascript-script"></a>Pisanie skryptu języka JavaScript
 
-Dodaj następujący kod bezpośrednio nad elementem `h1` w dokumencie. Ten kod konfiguruje kod JavaScript, która wywołuje interfejs API rozpoznawania twarzy.
+Dodaj następujący kod bezpośrednio nad elementem `h1` w dokumencie. Ten kod konfiguruje kod JavaScript, który wywołuje interfejs API rozpoznawania twarzy.
 
 ```html
 <script type="text/javascript">
@@ -73,16 +73,8 @@ Dodaj następujący kod bezpośrednio nad elementem `h1` w dokumencie. Ten kod k
         // Replace <Subscription Key> with your valid subscription key.
         var subscriptionKey = "<Subscription Key>";
     
-        // NOTE: You must use the same region in your REST call as you used to
-        // obtain your subscription keys. For example, if you obtained your
-        // subscription keys from westus, replace "westcentralus" in the URL
-        // below with "westus".
-        //
-        // Free trial subscription keys are generated in the "westus" region.
-        // If you use a free trial subscription key, you shouldn't need to change 
-        // this region.
         var uriBase =
-            "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
+            "https://<My Endpoint String>.com/face/v1.0/detect";
     
         // Request parameters.
         var params = {
@@ -132,7 +124,9 @@ Dodaj następujący kod bezpośrednio nad elementem `h1` w dokumencie. Ten kod k
 </script>
 ```
 
-Należy zaktualizować pole `subscriptionKey` wartością klucza subskrypcji. Konieczna może być również zmiana ciągu `uriBase` w taki sposób, aby zawierał on poprawny identyfikator regionu (zobacz [dokumentację interfejsu API rozpoznawania twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), aby zapoznać się z listą wszystkich punktów końcowych regionów). Pole `returnFaceAttributes` określa atrybuty twarzy do pobrania; możesz zmienić ten ciąg w zależności od planowanego użycia.
+Musisz zaktualizować `subscriptionKey` pole przy użyciu wartości klucza subskrypcji i należy `uriBase` zmienić ciąg tak, aby zawierał prawidłowy ciąg punktu końcowego. Pole `returnFaceAttributes` określa atrybuty twarzy do pobrania; możesz zmienić ten ciąg w zależności od planowanego użycia.
+
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="run-the-script"></a>Uruchamianie skryptu
 
@@ -140,7 +134,7 @@ Otwórz plik *detectFaces.html* w przeglądarce. Po kliknięciu przycisk **anali
 
 ![GettingStartCSharpScreenshot](../Images/face-detect-javascript.png)
 
-Następujący tekst jest przykładem pomyślnej odpowiedzi JSON.
+Poniższy tekst stanowi przykład pomyślnej odpowiedzi JSON.
 
 ```json
 [
@@ -234,7 +228,7 @@ Następujący tekst jest przykładem pomyślnej odpowiedzi JSON.
 ]
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start napisano skrypt w języku JavaScript służący do wywoływania interfejsu API rozpoznawania twarzy platformy Azure w celu wykrywania twarzy na obrazie i zwracania ich atrybutów. Następnie zapoznaj się z dokumentacją referencyjną interfejsu API rozpoznawania twarzy, aby dowiedzieć się więcej.
 

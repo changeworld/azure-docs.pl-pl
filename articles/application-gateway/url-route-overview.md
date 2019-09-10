@@ -1,35 +1,30 @@
 ---
 title: Omówienie routingu zawartości opartego na adresach URL w usłudze Azure Application Gateway
-description: Ten artykuł zawiera omówienie routingu zawartości opartego na adresach URL, konfiguracji UrlPathMap i reguły PathBasedRouting w usłudze Application Gateway.
-documentationcenter: na
+description: Ten artykuł zawiera Omówienie routingu zawartości opartego na adresach URL usługi Azure Application Gateway, konfiguracji UrlPathMap i reguły PathBasedRouting.
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 4/23/2018
+ms.date: 09/10/2019
 ms.author: victorh
-ms.openlocfilehash: ee0267146140d095487b293331a7de493ba151c6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: conceptual
+ms.openlocfilehash: 0dfeb6a80cbf227f20b24def7641882ad0444489
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61361968"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844594"
 ---
-# <a name="azure-application-gateway-url-path-based-routing-overview"></a>Omówienie routingu opartego na ścieżkach URL w usłudze Azure Application Gateway
+# <a name="url-path-based-routing-overview"></a>Routing oparty na ścieżkach URL — omówienie
 
 Routing oparty na ścieżkach URL umożliwia kierowanie ruchu do pul serwerów zaplecza na podstawie ścieżek URL żądania. 
 
 Jeden ze scenariuszy polega na kierowaniu żądań dla różnych typów zawartości do różnych pól serwerów zaplecza.
 
-W poniższym przykładzie Usługa Application Gateway obsługuje ruch dla domeny contoso.com z trzech pul serwerów zaplecza na przykład: Puli VideoServerPool, ImageServerPool i DefaultServerPool.
+W poniższym przykładzie Application Gateway obsługuje ruch dla contoso.com z trzech pul serwerów zaplecza na przykład: Puli videoserverpool, puli imageserverpool i DefaultServerPool.
 
-![imageURLroute](./media/url-route-overview/figure1.png)
+![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
-Żądania dotyczące <http://contoso.com/video/*> są kierowane do puli VideoServerPool, a <http://contoso.com/images/*> do puli ImageServerPool. Pula DefaultServerPool jest wybierana, jeśli żaden z wzorców ścieżki nie pasuje.
+Żądania HTTP\://contoso.com/video/* są kierowane do puli videoserverpool, a protokół http\://contoso.com/images/* są kierowane do puli imageserverpool. Pula DefaultServerPool jest wybierana, jeśli żaden z wzorców ścieżki nie pasuje.
 
 > [!IMPORTANT]
 > Reguły są przetwarzane w kolejności, w jakiej znajdują się na liście w portalu. Zdecydowanie zaleca się skonfigurowanie odbiorników obejmujących wiele lokacji przed skonfigurowaniem podstawowego odbiornika.  Zapewnia to skierowanie ruchu do odpowiedniego zaplecza. Jeśli podstawowy odbiornik znajduje się na początku listy i jest zgodny z żądaniem przychodzącym, jest ono przetwarzane przez ten odbiornik.
@@ -67,8 +62,37 @@ Element urlPathMap jest używany do określania wzorców ścieżki na potrzeby m
 }]
 ```
 
-> [!NOTE]
-> PathPattern: To ustawienie znajduje się lista wzorców ścieżki do dopasowania. Każdy wzorzec musi rozpoczynać się od znaku „/”, a znak gwiazdki „*” jest dozwolony jedynie na końcu po znaku „/”. Ciąg przekazywany do narzędzia dopasowywania ścieżki nie zawiera żadnego tekstu po pierwszym znaku „?” lub „#” i te znaki nie są tu dozwolone.
+### <a name="pathpattern"></a>Właściwości
+
+Właściwości to lista wzorców ścieżek do dopasowania. Każdy wzorzec musi rozpoczynać się od znaku „/”, a znak gwiazdki „*” jest dozwolony jedynie na końcu po znaku „/”. Ciąg podawany do dopasowania ścieżki nie zawiera żadnego tekstu po pierwszym? lub #, a te znaki nie są dozwolone w tym miejscu. W przeciwnym razie wszystkie znaki dozwolone w adresie URL są dozwolone w właściwości.
+
+Obsługiwane wzorce zależą od tego, czy wdrożono Application Gateway v1 lub v2:
+
+#### <a name="v1"></a>v1
+
+W regułach ścieżki jest rozróżniana wielkość liter.
+
+|Wersja 1 — wzorzec ścieżki  |Czy jest obsługiwana?  |
+|---------|---------|
+|`/images/*`     |tak|
+|`/images*`     |nie|
+|`/images/*.jpg`     |nie|
+|`/*.jpg`     |nie|
+|`/Repos/*/Comments/*`     |nie|
+|`/CurrentUser/Comments/*`     |tak|
+
+#### <a name="v2"></a>v2
+
+W regułach ścieżki jest rozróżniana wielkość liter.
+
+|2 — wzorzec ścieżki  |Czy jest obsługiwana?  |
+|---------|---------|
+|`/images/*`     |tak|
+|`/images*`     |tak|
+|`/images/*.jpg`     |nie|
+|`/*.jpg`     |nie|
+|`/Repos/*/Comments/*`     |nie|
+|`/CurrentUser/Comments/*`     |tak|
 
 Aby uzyskać więcej informacji, zobacz [Resource Manager template using URL-based routing](https://azure.microsoft.com/documentation/templates/201-application-gateway-url-path-based-routing) (Szablon usługi Resource Manager korzystający z routingu opartego na adresach URL).
 
@@ -97,6 +121,6 @@ Fragment reguły PathBasedRouting:
 ]
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Po zapoznaniu się z informacjami na temat routingu zawartości opartego na adresach URL skorzystaj z informacji dotyczących [tworzenia bramy aplikacji przy użyciu routingu opartego na adresach URL](tutorial-url-route-powershell.md), aby utworzyć bramę aplikacji za pomocą reguł routingu adresów URL.
+Po zapoznaniu się z informacjami na temat routingu zawartości opartego na adresach URL skorzystaj z informacji dotyczących [tworzenia bramy aplikacji przy użyciu routingu opartego na adresach URL](create-url-route-portal.md), aby utworzyć bramę aplikacji za pomocą reguł routingu adresów URL.

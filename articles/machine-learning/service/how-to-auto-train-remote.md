@@ -11,12 +11,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 7/12/2019
-ms.openlocfilehash: 3c3205b64803ac4ee67997ef546ffd64c89f23b4
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 5918cc3835d00536845a96ed81ef663867291e29
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624833"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858810"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Szkolenie modeli za pomocą automatycznych machine learning w chmurze
 
@@ -278,7 +278,7 @@ Drukowanie `best_run` wyjaśnienie zmienne podsumowania wyników w następujący
 
 ![Dane wyjściowe konsoli explainability modelu](./media/how-to-auto-train-remote/expl-print.png)
 
-Można również wizualizować znaczenie funkcji za pomocą widżetu interfejsu użytkownika, a także interfejs użytkownika sieci web w witrynie Azure portal w obszarze roboczym.
+Możesz również wizualizować ważność funkcji za pomocą interfejsu użytkownika widżetu, interfejsu użytkownika sieci Web na Azure Portal lub na [stronie docelowej obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com). 
 
 ![Model explainability interfejsu użytkownika](./media/how-to-auto-train-remote/model-exp.png)
 

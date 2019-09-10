@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 88d9ab0063b6cf2803332d7af50190c659b3e6fe
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 7922f07cfe08d0bd58827b59337b86387c624778
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207214"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844689"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Przewodnik dewelopera w języku Python Azure Functions
 
@@ -94,6 +94,7 @@ Struktura folderów dla projektu funkcji języka Python wygląda podobnie do pon
  | - MyFirstFunction
  | | - __init__.py
  | | - function.json
+ | | - example.py
  | - MySecondFunction
  | | - __init__.py
  | | - function.json
@@ -110,6 +111,12 @@ Kod udostępniony powinien być przechowywany w osobnym folderze. Aby odwoływa�
 
 ```
 from __app__.SharedCode import myFirstHelperFunction
+```
+
+Aby odwołać się do modułów lokalnych do funkcji, można użyć składni względnego importu w następujący sposób:
+
+```
+from . import example
 ```
 
 Podczas wdrażania projektu funkcji w aplikacji funkcji na platformie Azure cała zawartość folderu *FunctionApp* powinna być dołączona do pakietu, ale nie do samego folderu.

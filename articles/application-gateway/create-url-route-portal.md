@@ -5,20 +5,20 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 07/27/2019
+ms.date: 09/10/2019
 ms.author: victorh
-ms.openlocfilehash: 63a1faa79374e72eabfbee4ece454728c3b4cc05
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 2cb21eb98e698ab44d73ada195fdcb7d7aac8839
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597609"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844640"
 ---
 # <a name="tutorial-create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Samouczek: Tworzenie bramy aplikacji z regułami routingu opartymi na ścieżce przy użyciu Azure Portal
 
-Przy użyciu Azure Portal można skonfigurować [reguły routingu oparte na ścieżkach URL](url-route-overview.md) podczas tworzenia [bramy aplikacji](overview.md). W tym samouczku utworzysz pule zaplecza przy użyciu maszyn wirtualnych. Następnie utworzysz reguły routingu, aby zapewnić, że ruch internetowy dociera do odpowiednich serwerów w pulach.
+Przy użyciu Azure Portal można skonfigurować [reguły routingu oparte na ścieżkach URL](application-gateway-url-route-overview.md) podczas tworzenia [bramy aplikacji](application-gateway-introduction.md). W tym samouczku utworzysz pule zaplecza przy użyciu maszyn wirtualnych. Następnie utworzysz reguły routingu, aby zapewnić, że ruch internetowy dociera do odpowiednich serwerów w pulach.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
 > * Tworzenie bramy aplikacji
@@ -27,15 +27,71 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Tworzenie odbiornika zaplecza
 > * Tworzenie reguły routingu opartej na ścieżce
 
-![Przykład routingu adresów URL](./media/create-url-route-portal/scenario.png)
-
-Jeśli wolisz, możesz wykonać ten samouczek przy użyciu [interfejsu wiersza polecenia platformy Azure](tutorial-url-route-cli.md) lub [Azure PowerShell](tutorial-url-route-powershell.md).
+![Przykład routingu adresów URL](./media/application-gateway-create-url-route-portal/scenario.png)
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
+Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com)
+
+## <a name="create-virtual-machines"></a>Tworzenie maszyn wirtualnych
+
+W tym przykładzie utworzysz trzy maszyny wirtualne, które będą używane jako serwery zaplecza dla bramy aplikacji. Należy również zainstalować usługi IIS na maszynach wirtualnych, aby sprawdzić, czy Brama aplikacji działa zgodnie z oczekiwaniami.
+
+1. W witrynie Azure Portal wybierz pozycję **Utwórz zasób**.
+2. Wybierz pozycję **Windows Server 2016 Datacenter** na popularnej liście.
+3. Wprowadź poniższe wartości dla maszyny wirtualnej:
+
+    - W obszarze **Grupa zasobów**wybierz pozycję **Utwórz nową**, a następnie wpisz *myResourceGroupAG*.
+    - **Nazwa maszyny wirtualnej**: *myVM1*
+    - **Region**: *Prześlij Wschodnie stany USA*
+    - **Nazwa użytkownika**: *azureuser*
+    - **Hasło**: *Azure123456!*
+
+
+4. Wybierz pozycję **Dalej: Dyski**.
+5. Wybierz **Następny: sieć**
+6. W obszarze **Sieć wirtualna**wybierz pozycję **Utwórz nową** , a następnie wpisz następujące wartości dla sieci wirtualnej:
+
+   - *myVNet* — jako nazwę sieci wirtualnej.
+   - *10.0.0.0/16* — jako przestrzeń adresową sieci wirtualnej.
+   - *myBackendSubnet* dla pierwszej nazwy podsieci
+   - *10.0.1.0/24* — jako przestrzeni adresowej podsieci.
+   - *myAGSubnet* — dla drugiej nazwy podsieci.
+   - *10.0.0.0/24* — jako przestrzeń adresową podsieci.
+7. Kliknij przycisk **OK**.
+
+8. Upewnij się, że w obszarze **interfejs sieciowy**został wybrany **myBackendSubnet** dla podsieci, a następnie **wybierz pozycję Dalej: Zarządzanie**.
+9. Wybierz pozycję **wyłączone** , aby wyłączyć diagnostykę rozruchu.
+10. Kliknij przycisk **Przegląd + Utwórz**, przejrzyj ustawienia na stronie Podsumowanie, a następnie wybierz pozycję **Utwórz**.
+11. Utwórz dwie więcej maszyn wirtualnych, *myVM2* i *myVM3* , a następnie umieść je w sieci wirtualnej *MyVNet* i w podsieci *myBackendSubnet* .
+
+### <a name="install-iis"></a>Instalowanie usług IIS
+
+1. Otwórz powłokę interaktywną i upewnij się, że jest ustawiona na program **PowerShell**.
+
+    ![Instalowanie rozszerzenia niestandardowego](./media/application-gateway-create-url-route-portal/application-gateway-extension.png)
+
+2. Uruchom następujące polecenie, aby zainstalować usługi IIS na maszynie wirtualnej: 
+
+    ```azurepowershell
+         $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
+
+        Set-AzVMExtension `
+         -ResourceGroupName myResourceGroupAG `
+         -Location eastus `
+         -ExtensionName IIS `
+         -VMName myVM1 `
+         -Publisher Microsoft.Compute `
+         -ExtensionType CustomScriptExtension `
+         -TypeHandlerVersion 1.4 `
+         -Settings $publicSettings
+    ```
+
+3. Utwórz dwie więcej maszyn wirtualnych i zainstaluj usługi IIS przy użyciu właśnie ukończonych kroków. Wprowadź nazwy *myVM2* i *myVM3* dla nazw oraz wartości VMName w polu Set-AzVMExtension.
 
 ## <a name="create-an-application-gateway"></a>Tworzenie bramy aplikacji
 
@@ -47,221 +103,108 @@ Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](http
 
 1. Na karcie **podstawowe** wprowadź następujące wartości następujących ustawień bramy aplikacji:
 
-   - **Grupa zasobów**: wybierz **myResourceGroupAG** jako grupę zasobów. Jeśli ta grupa nie istnieje, wybierz pozycję **Utwórz nową** w celu jej utworzenia.
+   - **Grupa zasobów**: wybierz **myResourceGroupAG** jako grupę zasobów.
    - **Nazwa bramy aplikacji**: wprowadź *myAppGateway* jako nazwę bramy aplikacji.
+   - **Region** — wybierz pozycję **US (Stany Zjednoczone)** .
 
-     ![Utwórz nową bramę aplikacji: Ustawienia podstawowe](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
+        ![Utwórz nową bramę aplikacji: Ustawienia podstawowe](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
 
-2.  Do komunikacji między tworzonymi zasobami platforma Azure potrzebuje sieci wirtualnej. Można utworzyć nową sieć wirtualną lub użyć istniejącej. W tym przykładzie utworzysz nową sieć wirtualną w tym samym czasie, podczas tworzenia bramy aplikacji. Wystąpienia Application Gateway są tworzone w różnych podsieciach. W tym przykładzie tworzysz dwie podsieci: jedną dla bramy aplikacji i drugą dla serwerów zaplecza.
-
-    W obszarze **Konfigurowanie sieci wirtualnej**wybierz pozycję **Utwórz nową** , aby utworzyć nową sieć wirtualną. W otwartym oknie **Tworzenie sieci wirtualnej** wprowadź następujące wartości, aby utworzyć sieć wirtualną i dwie podsieci:
-
-    - **Nazwa**: wprowadź *myVNet* jako nazwę sieci wirtualnej.
-
-    - **Nazwa podsieci** (Podsieć Application Gateway): W siatce **podsieci** zostanie wyświetlona podsieć o nazwie *default*. Zmień nazwę tej podsieci na *myAGSubnet*.
-
-      Podsieć bramy aplikacji może zawierać tylko bramy aplikacji. Inne zasoby nie są dozwolone.
-
-    - **Nazwa podsieci** (podsieć serwera wewnętrznej bazy danych): W drugim wierszu siatki **podsieci** wprowadź *myBackendSubnet* w kolumnie **Nazwa podsieci** .
-
-    - **Zakres adresów** (podsieć serwera wewnętrznej bazy danych): W drugim wierszu siatki **podsieci** Wprowadź zakres adresów, który nie nakłada się na zakres adresów *myAGSubnet*. Na przykład jeśli zakres adresów *myAGSubnet* jest równy 10.0.0.0/24, wprowadź *10.0.1.0/24* dla zakresu adresów *myBackendSubnet*.
-
-    Wybierz **przycisk OK** , aby zamknąć okno **Tworzenie sieci wirtualnej** i zapisać ustawienia sieci wirtualnej.
-
-     ![Utwórz nową bramę aplikacji: Sieć wirtualna](./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png)
-    
-3. Na karcie **podstawy** zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **dalej: Frontony**.
+2.  W obszarze **Konfigurowanie sieci wirtualnej**wybierz pozycję **myVNet** , aby określić nazwę sieci wirtualnej.
+3. Wybierz pozycję **myAGSubnet** dla podsieci.
+3. Zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **dalej: Frontony**.
 
 ### <a name="frontends-tab"></a>Karta frontonów
 
-1. Na karcie **frontony** Sprawdź, czy **Typ adresu IP frontonu** jest ustawiony na wartość **Public**. <br>Adres IP frontonu można skonfigurować tak, aby był publiczny lub prywatny jak w przypadku użycia. W tym przykładzie wybrano publiczny adres IP frontonu.
+1. Na karcie **frontony** Sprawdź, czy **Typ adresu IP frontonu** jest ustawiony na wartość **Public**.
+
    > [!NOTE]
    > W przypadku jednostki SKU Application Gateway v2 można wybrać tylko **publiczną** konfigurację adresu IP frontonu. Konfiguracja prywatnego adresu IP frontonu nie jest obecnie włączona dla tej jednostki SKU w wersji 2.
 
 2. Wybierz opcję **Utwórz nowy** dla **publicznego adresu IP** i wprowadź *MYAGPUBLICIPADDRESS* dla nazwy publicznego adresu IP, a następnie wybierz przycisk **OK**. 
-
-     ![Utwórz nową bramę aplikacji: frontony](./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png)
-
 3. Wybierz opcję **Dalej: Zakończenie**.
 
 ### <a name="backends-tab"></a>Karta zakończyła się
 
-Pula zaplecza służy do kierowania żądań do serwerów zaplecza, które obsługują żądanie. Pule zaplecza mogą być kartami sieciowymi, zestawami skalowania maszyn wirtualnych, publicznymi adresami IP, wewnętrznymi adresami IP, w pełni kwalifikowanymi nazwami domen (FQDN) i wielodostępnymi zaplecami, jak Azure App Service W tym przykładzie utworzysz pustą pulę zaplecza z bramą aplikacji, a następnie dodasz cele zaplecza do puli zaplecza.
+Pula zaplecza służy do kierowania żądań do serwerów zaplecza, które obsługują żądanie. Pule zaplecza mogą składać się z kart sieciowych, zestawów skalowania maszyn wirtualnych, publicznych adresów IP, wewnętrznych adresów IP, w pełni kwalifikowanych nazw domen (FQDN) i wielodostępnych zapleczy, takich jak Azure App Service.
 
 1. Na karcie **nadkończenie** wybierz pozycję **+ Dodaj pulę zaplecza**.
 
 2. W otwartym oknie **Dodawanie puli zaplecza** wprowadź następujące wartości, aby utworzyć pustą pulę zaplecza:
 
-    - **Nazwa**: Wprowadź *appGatewayBackendPool* jako nazwę puli zaplecza.
-    - **Dodaj pulę zaplecza bez elementów docelowych**: Wybierz pozycję **tak** , aby utworzyć pulę zaplecza bez elementów docelowych. Po utworzeniu bramy aplikacji należy dodać cele zaplecza.
+    - **Nazwa**: Wprowadź *myBackendPool* jako nazwę puli zaplecza.
+3. W obszarze **obiekty docelowe zaplecza** **Wybierz**pozycję **maszyna wirtualna** z listy rozwijanej.
 
-3. W oknie **Dodawanie puli zaplecza** wybierz pozycję **Dodaj** , aby zapisać konfigurację puli zaplecza i powrócić **do karty zaplecze** .
-4. Teraz Dodaj dwie więcej pul zaplecza o nazwie *imagesBackendPool*i *videoBackendPool*.
-
-     ![Utwórz nową bramę aplikacji: zafrontony](./media/create-url-route-portal/backends.png)
+5. W obszarze **cel** wybierz interfejs sieciowy dla **myVM1**.
+6. Wybierz pozycję **Dodaj**.
+7. Powtórz to polecenie, aby dodać do zestawu *obrazów* pulę zaplecza z *myVM2* jako element docelowy oraz pulę zaplecza *wideo* z *myVM3* jako obiektem docelowym.
+8. Wybierz pozycję **Dodaj** , aby zapisać konfigurację puli zaplecza i powrócić **do karty** zaplecze.
 
 4. Na karcie **nadkończenie** wybierz pozycję **dalej: Konfiguracja**.
 
 ### <a name="configuration-tab"></a>Karta Konfiguracja
 
-Na karcie **Konfiguracja** zostanie nawiązane połączenie frontonu i pul zaplecza utworzonych przy użyciu reguł routingu.
-
-1. Wybierz pozycję **Dodaj regułę** w kolumnie **reguły routingu** .
-2. W otwartym oknie **Dodawanie reguły routingu** wpisz *Rule1* dla **nazwy reguły**.
-3. Reguła routingu wymaga odbiornika. Na karcie **odbiornik** w oknie **Dodawanie reguły routingu** wprowadź następujące wartości dla odbiornika:
-
-    - **Nazwa odbiornika**: Wprowadź *DefaultListener* dla nazwy odbiornika.
-    - **Adres IP frontonu**: Wybierz pozycję **Public (publiczny** ), aby wybrać publiczny adres IP utworzony dla frontonu.
-
-   Zaakceptuj wartości domyślne pozostałych ustawień na karcie **odbiornik** , a następnie wybierz kartę **cele zaplecza** , aby skonfigurować resztę reguły routingu.
-4. Na karcie **cele zaplecza** wybierz pozycję **appGatewayBackendPool** dla **elementu docelowego zaplecza**.
-
-5. Dla **Ustawienia http**wybierz pozycję **Utwórz nowy** , aby utworzyć nowe ustawienie http. Ustawienie HTTP określi zachowanie reguły routingu. W oknie **Dodawanie ustawienia protokołu HTTP** , które zostanie otwarte, wprowadź *myHTTPSetting* dla **nazwy ustawienia http**. Zaakceptuj wartości domyślne pozostałych ustawień w oknie **Dodawanie ustawienia protokołu HTTP** , a następnie wybierz pozycję **Dodaj** , aby powrócić do okna **Dodawanie reguły routingu** . 
-
-6. W oknie **Dodawanie reguły routingu** wybierz pozycję **Dodaj** , aby zapisać regułę routingu, i wróć do karty **Konfiguracja** .
-
-
+Na karcie **Konfiguracja** zostanie nawiązane połączenie frontonu i puli zaplecza utworzonej przy użyciu reguły routingu.
 
 1. Wybierz pozycję **Dodaj regułę** w kolumnie **reguły routingu** .
 
-2. W otwartym oknie **Dodawanie reguły routingu** wpisz *ograniczeniem zakresu wystąpień* dla **nazwy reguły**.
+2. W otwartym oknie **Dodawanie reguły routingu** wpisz *MyRoutingRule* dla **nazwy reguły**.
 
 3. Reguła routingu wymaga odbiornika. Na karcie **odbiornik** w oknie **Dodawanie reguły routingu** wprowadź następujące wartości dla odbiornika:
 
-    - **Nazwa odbiornika**: Wprowadź *myBackendListener* dla nazwy odbiornika.
+    - **Nazwa odbiornika**: Wprowadź *dla* nazwy odbiornika.
     - **Adres IP frontonu**: Wybierz pozycję **Public (publiczny** ), aby wybrać publiczny adres IP utworzony dla frontonu.
-    - **Port**: 8080
+    - **Port**: Typ *8080*
+  
+        Zaakceptuj wartości domyślne pozostałych ustawień na karcie **odbiornik** , a następnie wybierz kartę **cele zaplecza** , aby skonfigurować resztę reguły routingu.
 
-   W obszarze **Ustawienia dodatkowe**:
-   - **Typ odbiornika**: Podstawowa
+4. Na karcie **cele zaplecza** wybierz pozycję **myBackendPool** dla **elementu docelowego zaplecza**.
 
-   Zaakceptuj wartości domyślne pozostałych ustawień na karcie **odbiornik** , a następnie wybierz kartę **cele zaplecza** , aby skonfigurować resztę reguły routingu.
+5. Dla **Ustawienia http**wybierz pozycję **Utwórz nowy** , aby utworzyć nowe ustawienie http. Ustawienie HTTP określi zachowanie reguły routingu. 
 
-4. Na karcie **cele zaplecza** wybierz pozycję **appGatewayBackendPool** dla **elementu docelowego zaplecza**.
+6. W oknie **Dodawanie ustawienia protokołu HTTP** , które zostanie otwarte, wprowadź *myHTTPSetting* dla **nazwy ustawienia http**. Zaakceptuj wartości domyślne pozostałych ustawień w oknie **Dodawanie ustawienia protokołu HTTP** , a następnie wybierz pozycję **Dodaj** , aby powrócić do okna **Dodawanie reguły routingu** .
+7. W obszarze **routing oparty na ścieżce**wybierz opcję **Dodaj wiele obiektów docelowych, aby utworzyć regułę opartą na ścieżce**.
+8. W obszarze **ścieżka**wpisz */images/* \*.
+9. Dla **nazwy reguły ścieżki**wpisz *images*.
+10. W przypadku **Ustawienia protokołu HTTP**wybierz pozycję **myHTTPSetting**
+11. W obszarze **cel zaplecza**wybierz pozycję **obrazy**.
+12. Wybierz pozycję **Dodaj** , aby zapisać regułę ścieżki i wrócić do karty **Dodawanie reguły routingu** .
+13. Powtarzaj, aby dodać kolejną regułę dla filmu wideo.
+14. Wybierz pozycję **Dodaj** , aby dodać regułę routingu i powrócić do karty **Konfiguracja** .
+15. Wybierz opcję **Dalej: Tagi** , a **następnie następne: Przejrzyj i Utwórz**.
 
-5. Dla **Ustawienia http**wybierz pozycję *myHTTPSetting*. Zaakceptuj wartości domyślne pozostałych ustawień w oknie **Dodawanie ustawienia protokołu HTTP** , a następnie wybierz pozycję **Dodaj** , aby powrócić do okna **Dodawanie reguły routingu** . 
-
-1. W obszarze **routing oparty na ścieżce**wybierz opcję **Dodaj wiele obiektów docelowych, aby utworzyć regułę opartą na ścieżce**.
-2. W oknie **Dodawanie reguły ścieżki** wprowadź następujące wartości dla reguły ścieżki:
-
-   - **Ścieżka**: */images/\**
-   - **Nazwa reguły ścieżki**: *Obrazy*
-   - **Ustawienie http**: Wybierz *myHTTPSetting*
-   - **Cel zaplecza**: *imagesBackendPool*
-9. Wybierz pozycję **Dodaj**.
-10. Dodaj kolejną regułę ścieżki o nazwie *Video*, z ścieżką */Video/\**  i *videoBackendPool*.
-11. Wybierz pozycję **Zapisz zmiany i wróć do reguły routingu**.
-
-    ![Dodaj regułę routingu](media/create-url-route-portal/add-routing-rule.png)
-
-12. Wybierz pozycję **Dodaj**.
-
-7. Wybierz opcję **Dalej: Tagi** , a **następnie następne: Przejrzyj i Utwórz**.
+> [!NOTE]
+> Nie trzeba dodawać niestandardowej */* reguły ścieżki * do obsługi domyślnych przypadków. Jest to automatycznie obsługiwane przez domyślną pulę zaplecza.
 
 ### <a name="review--create-tab"></a>Przejrzyj i Utwórz kartę
 
-Przejrzyj ustawienia na karcie **Przegląd + tworzenie** , a następnie wybierz pozycję **Utwórz** , aby utworzyć sieć wirtualną, publiczny adres IP i bramę aplikacji. Tworzenie bramy aplikacji na platformie Azure może potrwać kilka minut.
+Przejrzyj ustawienia na karcie **Przegląd + tworzenie** , a następnie wybierz pozycję **Utwórz** , aby utworzyć sieć wirtualną, publiczny adres IP i bramę aplikacji. Tworzenie bramy aplikacji na platformie Azure może potrwać kilka minut. Zaczekaj na pomyślne zakończenie wdrożenia, zanim przejdziesz do kolejnej sekcji.
 
-Zaczekaj na pomyślne zakończenie wdrożenia, zanim przejdziesz do kolejnej sekcji.
-
-
-## <a name="create-virtual-machines"></a>Tworzenie maszyn wirtualnych
-
-W tym przykładzie utworzysz trzy maszyny wirtualne, które będą używane jako serwery zaplecza dla bramy aplikacji. Należy również zainstalować usługi IIS na maszynach wirtualnych, aby sprawdzić, czy Brama aplikacji została pomyślnie utworzona.
-
-1. W witrynie Azure Portal wybierz pozycję **Utwórz zasób**. Zostanie wyświetlone okno **Nowe**.
-2. Wybierz pozycję **obliczenia** , a następnie wybierz pozycję **Windows Server 2016 Datacenter** na **popularnej** liście. Zostanie wyświetlona strona **Tworzenie maszyny wirtualnej**.
-
-   Application Gateway może kierować ruch do dowolnego typu maszyny wirtualnej używanej w puli zaplecza. W tym przykładzie używane jest centrum danych systemu Windows Server 2016.
-1. Wprowadź następujące wartości na karcie **Podstawy** dla poniższych ustawień maszyny wirtualnej:
-
-    - **Grupa zasobów**: wybierz **myResourceGroupAG** jako grupę zasobów.
-    - **Nazwa maszyny wirtualnej**: Wprowadź *myVM1* dla nazwy maszyny wirtualnej.
-    - **Nazwa użytkownika**: wprowadź *azureuser* jako nazwę użytkownika administratora.
-    - **Hasło**: wprowadź *Azure123456!* jako hasło administratora.
-4. Zaakceptuj pozostałe wartości domyślne, a następnie wybierz pozycję **Dalej: Dyski**.  
-5. Zaakceptuj wartości domyślne na karcie **Dyski**, a następnie wybierz pozycję **Dalej: Sieć**.
-6. Na karcie **Sieć** sprawdź, czy wybrano pozycję **myVNet** w obszarze **Sieć wirtualna** oraz czy pozycja **Podsieć** została ustawiona na wartość **myBackendSubnet**. Zaakceptuj pozostałe wartości domyślne, a następnie wybierz pozycję **Dalej: Zarządzanie**.
-
-   Application Gateway może komunikować się z wystąpieniami poza siecią wirtualną, w której znajduje się, ale należy upewnić się, że połączenie IP jest nawiązywane.
-1. Na karcie **Zarządzanie** ustaw pozycję **Diagnostyka rozruchu** na **Wył.** Zaakceptuj pozostałe wartości domyślne, a następnie wybierz pozycję **Przeglądanie + tworzenie**.
-2. Na karcie **Przeglądanie + tworzenie** przejrzyj ustawienia, usuń wszystkie błędy walidacji, a następnie wybierz pozycję **Utwórz**.
-3. Poczekaj na ukończenie tworzenia maszyny wirtualnej, zanim przejdziesz dalej.
-
-### <a name="install-iis"></a>Instalowanie usług IIS
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-1. Otwórz powłokę interaktywną i upewnij się, że jest ona ustawiona na program **PowerShell**.
-
-    ![Instalowanie rozszerzenia niestandardowego](./media/create-url-route-portal/application-gateway-extension.png)
-
-2. Uruchom następujące polecenie, aby zainstalować usługi IIS na maszynie wirtualnej: 
-
-    ```azurepowershell-interactive
-    $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
-    Set-AzVMExtension `
-      -ResourceGroupName myResourceGroupAG `
-      -Location eastus `
-      -ExtensionName IIS `
-      -VMName myVM1 `
-      -Publisher Microsoft.Compute `
-      -ExtensionType CustomScriptExtension `
-      -TypeHandlerVersion 1.4 `
-      -Settings $publicSettings
-    ```
-
-3. Utwórz dwie więcej maszyn wirtualnych i zainstaluj usługi IIS, używając właśnie wykonanych kroków. Użyj *myVM2* i *myVM3* dla nazw maszyn wirtualnych i dla wartości **VMName** w opcji Set-AzVMExtension.
-
-## <a name="add-backend-servers-to-backend-pools"></a>Dodawanie serwerów zaplecza do pul zaplecza
-
-1. Wybierz pozycję **Wszystkie zasoby**, a następnie wybierz pozycję **myAppGateway**.
-
-2. Wybierz pozycję **Pule zaplecza** w menu po lewej stronie.
-
-3. Wybierz **appGatewayBackendPool**.
-
-4. W obszarze **Cele** wybierz pozycję **Maszyna wirtualna** z listy rozwijanej.
-
-5. W obszarze interfejsy **maszyn wirtualnych** i **sieciowych**wybierz maszynę wirtualną **myVM1** , a jej interfejs sieciowy jest skojarzony z list rozwijanych.
-
-    ![Dodawanie serwerów zaplecza](./media/create-url-route-portal/backend-pool.png)
-
-6. Wybierz pozycję **Zapisz**.
-7. Powtórz to polecenie, aby dodać *myVM2* i interfejs do *imagesBackendPool*, a następnie *myVM3* i interfejs *videoBackendPool*.
-
-Przed przejściem do następnego kroku poczekaj na zakończenie wdrożenia.
 
 ## <a name="test-the-application-gateway"></a>Testowanie bramy aplikacji
 
-1. Wybierz pozycję **wszystkie zasoby**, a następnie wybierz pozycję **myAGPublicIPAddress**.
+1. Wybierz pozycję **Wszystkie zasoby**, a następnie wybierz pozycję **myAppGateway**.
 
-    ![Rejestrowanie publicznego adresu IP bramy aplikacji](./media/create-url-route-portal/application-gateway-record-ag-address.png)
+    ![Rejestrowanie publicznego adresu IP bramy aplikacji](./media/application-gateway-create-url-route-portal/application-gateway-record-ag-address.png)
 
-2. Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki. Na przykład http://40.121.222.19.
+2. Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki. Na przykład http:\//52.188.72.175:8080.
 
-    ![Testowanie podstawowego adresu URL w bramie aplikacji](./media/create-url-route-portal/application-gateway-iistest.png)
+    ![Testowanie podstawowego adresu URL w bramie aplikacji](./media/application-gateway-create-url-route-portal/application-gateway-iistest.png)
 
-3. Zmień adres URL na http://&lt;IP-Address&gt;: 8080/images/test.htm, zastępując &lt;adres&gt; IP adresem IP, a powinien wyglądać podobnie do następującego przykładu:
+   Odbiornik na porcie 8080 kieruje to żądanie do domyślnej puli zaplecza.
 
-    ![Testowanie adresu URL obrazów w bramie aplikacji](./media/create-url-route-portal/application-gateway-iistest-images.png)
+3. Zmień adres URL na *http://&lt;IP-Address&gt;: 8080/images/test.htm*, zastępując &lt;adres&gt; IP adresem IP, a powinien wyglądać podobnie do następującego przykładu:
 
-4. Zmień adres URL na http://&lt;IP-Address&gt;: 8080/Video/test.htm, zastępując &lt;adres&gt; IP adresem IP, a powinien wyglądać podobnie do następującego przykładu:
+    ![Testowanie adresu URL obrazów w bramie aplikacji](./media/application-gateway-create-url-route-portal/application-gateway-iistest-images.png)
 
-    ![Testowanie adresu URL wideo w bramie aplikacji](./media/create-url-route-portal/application-gateway-iistest-video.png)
+   Odbiornik na porcie 8080 kieruje to żądanie do puli zaplecza *obrazów* .
 
-## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+4. Zmień adres URL na *http://&lt;IP-Address&gt;: 8080/Video/test.htm*, zastępując &lt;adres&gt; IP adresem IP, a powinien wyglądać podobnie do następującego przykładu:
 
-Jeśli nie potrzebujesz już zasobów utworzonych za pomocą bramy aplikacji, usuń grupę zasobów. Usuwając grupę zasobów, usuwasz również bramę aplikacji i wszystkie powiązane z nią zasoby. 
+    ![Testowanie adresu URL wideo w bramie aplikacji](./media/application-gateway-create-url-route-portal/application-gateway-iistest-video.png)
 
-Aby usunąć grupę zasobów:
+   Odbiornik na porcie 8080 kieruje to żądanie do puli zaplecza *wideo* .
 
-1. W menu po lewej stronie witryny Azure Portal wybierz pozycję **Grupy zasobów**.
-2. Na stronie **Grupy zasobów** wyszukaj pozycję **myResourceGroupAG** na liście i wybierz ją.
-3. Na **stronie grupy zasobów** wybierz pozycję **Usuń grupę zasobów**.
-4. Wprowadź *myResourceGroupAG* w **polu wpisz nazwę grupy zasobów** , a następnie wybierz pozycję **Usuń**.
 
 ## <a name="next-steps"></a>Następne kroki
 
-> [!div class="nextstepaction"]
-> [Dowiedz się więcej na temat tego, co możesz zrobić za pomocą usługi Azure Application Gateway](application-gateway-introduction.md)
+- [Włączanie kompleksowego protokołu SSL na platformie Azure Application Gateway](application-gateway-backend-ssl.md)

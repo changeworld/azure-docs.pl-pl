@@ -9,10 +9,10 @@ ms.date: 08/06/2019
 ms.author: mbullwin
 ms.custom: include file
 ms.openlocfilehash: 14e2bd4af2616e9dd33fe8267de132ab6c0f1cfe
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "69982600"
 ---
 Istnieją pewne ograniczenia dotyczące liczby metryk i zdarzeń dla aplikacji, czyli według klucza Instrumentacji. Ograniczenia zależą od wybranego [planu cenowego](https://azure.microsoft.com/pricing/details/application-insights/).

@@ -2,24 +2,19 @@
 title: Zarządzanie zdarzeniami zabezpieczeń w Azure Security Center | Microsoft Docs
 description: Ten dokument ułatwia używanie Azure Security Center do zarządzania zdarzeniami zabezpieczeń.
 services: security-center
-documentationcenter: na
-author: rkarlin
-manager: barbkess
+author: memildin
+manager: rkarlin
 editor: ''
-ms.assetid: e8feb669-8f30-49eb-ba38-046edf3f9656
 ms.service: security-center
 ms.topic: conceptual
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 8/27/2019
-ms.author: rkarlin
-ms.openlocfilehash: 9f757d5fb2c8d3a807e325068d386e16a7d6caa7
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.date: 09/09/2019
+ms.author: memildin
+ms.openlocfilehash: c492c4023df30eb51692aa4ae21fb938067c6ebb
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806569"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873369"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Zarządzanie zdarzeniami zabezpieczeń w Azure Security Center
 
@@ -29,7 +24,7 @@ W tym temacie wyjaśniono informacje o zdarzeniach w Security Center i sposobach
 
 ## <a name="what-is-a-security-incident"></a>Co to jest zdarzenie naruszenia zabezpieczeń?
 
-W usłudze Security Center zdarzenie naruszenia zabezpieczeń to agregacja wszystkich alertów zasobu, które są zgodne ze wzorcami [kill chain](https://blogs.technet.microsoft.com/office365security/addressing-your-cxos-top-five-cloud-security-concerns/), tzw. „zabójczego łańcucha”. Zdarzenia są wyświetlane na liście [alerty zabezpieczeń](security-center-managing-and-responding-alerts.md) . Kliknij pozycję instalacją systemu zdarzenie, aby wyświetlić powiązane alerty, co pozwala uzyskać więcej informacji na temat każdego wystąpienia.
+W usłudze Security Center zdarzenie naruszenia zabezpieczeń to agregacja wszystkich alertów zasobu, które są zgodne ze wzorcami [kill chain](https://blogs.technet.microsoft.com/office365security/addressing-your-cxos-top-five-cloud-security-concerns/), tzw. „zabójczego łańcucha”. Zdarzenia są wyświetlane na liście [alerty zabezpieczeń](security-center-managing-and-responding-alerts.md) . Kliknij zdarzenie, aby wyświetlić powiązane alerty, co pozwala uzyskać więcej informacji na temat każdego wystąpienia.
 
 ## <a name="managing-security-incidents"></a>Zarządzanie zdarzeniami naruszenia zabezpieczeń
 

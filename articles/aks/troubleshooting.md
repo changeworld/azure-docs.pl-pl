@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 00fadd8a98ec4f58783ed8b407e2621a7c107149
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 50bb26aa1a29dc8b1454fadec416aceea76405b2
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533523"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844261"
 ---
 # <a name="aks-troubleshooting"></a>Rozwiązywanie problemów z AKS
 
@@ -25,7 +25,7 @@ Istnieje również [Przewodnik rozwiązywania problemów](https://github.com/fei
 
 ## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>Otrzymuję błąd "Przekroczono limit przydziału" podczas tworzenia lub uaktualniania. Co mam zrobić? 
 
-Musisz zażądać [rdzeni](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
+Musisz [zażądać rdzeni](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
 ## <a name="what-is-the-maximum-pods-per-node-setting-for-aks"></a>Co to jest ustawienie maksymalnej liczby elementów w poszczególnych węzłach dla AKS?
 
@@ -78,8 +78,8 @@ Ten błąd może być spowodowany modyfikacją tagów w węzłach agenta wewnąt
 Ten błąd występuje, gdy klastry wchodzą w stan niepowodzenia z wielu powodów. Postępuj zgodnie z poniższymi instrukcjami, aby rozwiązać stan awarii klastra przed ponowną próbą wykonania poprzedniej operacji zakończonej niepowodzeniem:
 
 1. Dopóki klaster nie jest `failed` w stanie, `upgrade` a `scale` operacje nie powiodą się. Typowe problemy główne i rozwiązania obejmują:
-    * Skalowanie z niewystarczającym **limitem przydziału obliczeń (CRP)** . Aby rozwiązać ten problem, należy najpierw skalować klaster z powrotem do stanu stabilnego celu w ramach limitu przydziału. Następnie wykonaj następujące [kroki, aby zażądać zwiększenia przydziału obliczeń](../azure-supportability/resource-manager-core-quotas-request.md) przed ponowną próbą skalowania w górę poza początkowymi limitami przydziału.
-    * Skalowanie klastra przy użyciu zaawansowanej sieci i niewystarczającej liczby **zasobów podsieci (sieci)** . Aby rozwiązać ten problem, należy najpierw skalować klaster z powrotem do stanu stabilnego celu w ramach limitu przydziału. Następnie wykonaj [następujące kroki, aby zażądać zwiększenia przydziału zasobów](../azure-resource-manager/resource-manager-quota-errors.md#solution) przed ponowną próbą skalowania w górę poza początkowymi limitami przydziału.
+    * Skalowanie z **niewystarczającym limitem przydziału obliczeń (CRP)** . Aby rozwiązać ten problem, należy najpierw skalować klaster z powrotem do stanu stabilnego celu w ramach limitu przydziału. Następnie wykonaj następujące [kroki, aby zażądać zwiększenia przydziału obliczeń](../azure-supportability/resource-manager-core-quotas-request.md) przed ponowną próbą skalowania w górę poza początkowymi limitami przydziału.
+    * Skalowanie klastra przy użyciu zaawansowanej sieci i **niewystarczającej liczby zasobów podsieci (sieci)** . Aby rozwiązać ten problem, należy najpierw skalować klaster z powrotem do stanu stabilnego celu w ramach limitu przydziału. Następnie wykonaj [następujące kroki, aby zażądać zwiększenia przydziału zasobów](../azure-resource-manager/resource-manager-quota-errors.md#solution) przed ponowną próbą skalowania w górę poza początkowymi limitami przydziału.
 2. Po usunięciu podstawowej przyczyny niepowodzenia uaktualnienia klaster powinien działać w stanie sukces. Po zweryfikowaniu stanu, ponów próbę wykonania oryginalnej operacji.
 
 ## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade"></a>Otrzymuję błędy podczas próby uaktualnienia lub skalowania stanu, w którym mój klaster jest aktualnie uaktualniany lub nie przeprowadzono uaktualnienia
@@ -129,6 +129,15 @@ Operacje klastra są ograniczone, gdy Poprzednia operacja jest nadal w toku. Aby
 
 Na podstawie danych wyjściowych stanu klastra:
 
-* Jeśli klaster jest w stanie aprowizacji innym niż *powodzenie*lub nieudany , poczekaj na zakończenie operacji (uaktualnianie */Aktualizowanie/tworzenie/skalowanie/usuwanie/Migrowanie*). Po zakończeniu poprzedniej operacji ponów próbę wykonania ostatniej operacji klastra.
+* Jeśli klaster jest w stanie aprowizacji *innym niż* *powodzenie lub nieudany*, poczekaj na zakończenie operacji (*uaktualnianie/aktualizowanie/tworzenie/skalowanie/usuwanie/Migrowanie*). Po zakończeniu poprzedniej operacji ponów próbę wykonania ostatniej operacji klastra.
 
-* Jeśli uaktualnienie nie powiodło się, wykonaj kroki opisane w temacie jak pojawiają się [błędy, w których klaster jest w stanie niepowodzenia, a uaktualnienie lub skalowanie nie będzie działało do momentu jego](#im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed)naprawienia.
+* Jeśli uaktualnienie nie powiodło się, wykonaj kroki opisane w temacie jak pojawiają się [błędy, w których klaster jest w stanie niepowodzenia, a uaktualnienie lub skalowanie nie będzie działało do momentu jego naprawienia](#im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed).
+
+## <a name="im-receiving-errors-that-my-service-principal-was-not-found-when-i-try-to-create-a-new-cluster-without-passing-in-an-existing-one"></a>Otrzymuję błędy, których nazwa główna usługi nie została znaleziona podczas próby utworzenia nowego klastra bez przechodzenia w istniejącym klastrze.
+
+Podczas tworzenia klastra AKS wymaga jednostki usługi do tworzenia zasobów w Twoim imieniu. Usługa AKS oferuje możliwość utworzenia nowego elementu podczas tworzenia klastra, ale wymaga Azure Active Directory w pełni propagowanie nowej jednostki usługi w odpowiednim czasie w celu pomyślnego utworzenia klastra. Gdy Propagacja trwa zbyt długo, klaster nie będzie mógł wykonać walidacji, ponieważ nie może znaleźć dostępnej jednostki usługi. 
+
+Wykonaj następujące obejścia tego problemu:
+1. Użyj istniejącej jednostki usługi, która została już rozpropagowana w regionach i istnieje do przekazania do AKS podczas tworzenia klastra.
+2. W przypadku korzystania ze skryptów automatyzacji należy dodać opóźnienia czasu między utworzeniem jednostki usługi i tworzeniem klastra AKS.
+3. Jeśli używasz Azure Portal, Wróć do ustawień klastra podczas tworzenia i ponów próbę wykonania strony walidacji po kilku minutach.

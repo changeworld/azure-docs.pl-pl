@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 197df5c5467a9cea9a76c888569752ed2576d2d2
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: e6bb926aeab4f88f2d41c578ae3962737df7b2f3
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375759"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70872867"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>What's new in Azure Active Directory?
 
@@ -50,6 +50,23 @@ Ta strona jest aktualizowany co miesiąc, więc ponownie regularnie. Jeśli szuk
 Od 1 października 2019 Power BI rozpocznie się wycofanie wszystkich pakietów zawartości, w tym pakietu zawartości usługi Azure AD Power BI. Alternatywą dla tego pakietu zawartości jest użycie skoroszytów usługi Azure AD w celu uzyskania szczegółowych informacji dotyczących usług związanych z usługą Azure AD. Dostępne są dodatkowe skoroszyty, w tym skoroszyty dotyczące zasad dostępu warunkowego w trybie tylko raportowanie, informacje oparte na zgodzie aplikacji i inne.
 
 Aby uzyskać więcej informacji na temat skoroszytów, zobacz [jak używać skoroszytów Azure monitor dla Azure Active Directory raportów](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-use-azure-monitor-workbooks). Aby uzyskać więcej informacji na temat wycofania pakietów zawartości, zobacz wpis w blogu dotyczący [ogłaszania Power BI szablonów aplikacji ogólnie dostępna](https://powerbi.microsoft.com/blog/announcing-power-bi-template-apps-general-availability/) .
+
+---
+
+### <a name="enhanced-search-filtering-and-sorting-for-groups-is-available-in-the-azure-ad-portal-public-preview"></a>Ulepszone wyszukiwanie, filtrowanie i sortowanie dla grup jest dostępne w portalu usługi Azure AD (publiczna wersja zapoznawcza)
+
+**Wprowadź** Nowa funkcja  
+**Kategoria usługi:** Zarządzanie grupami  
+**Możliwość produktu:** Współpraca
+
+Z przyjemnością ogłaszamy publiczną wersję zapoznawczą rozszerzonych środowisk związanych z grupami w portalu usługi Azure AD. Te ulepszenia ułatwiają lepsze zarządzanie grupami i listami składowymi, zapewniając:
+
+- Zaawansowane możliwości wyszukiwania, takie jak wyszukiwanie podciągów na listach grup.
+- Zaawansowane opcje filtrowania i sortowania na listach elementów członkowskich i właścicieli.
+- Nowe możliwości wyszukiwania dla list elementów członkowskich i właścicieli.
+- Dokładniejsze liczby grup dla dużych grup.
+
+Aby uzyskać więcej informacji, zobacz [Zarządzanie grupami w Azure Portal](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-members-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context).
 
 ---
 
@@ -170,7 +187,7 @@ Dostępne są nowe aktualizacje modułów programu PowerShell AzureAD i AzureAD 
 
 ---
 
-### <a name="improvements-to-the-ui-of-the-dynamic-group-rule-builder-in-the-azure-portal"></a>Ulepszenia interfejsu użytkownika konstruktora reguł grupy dynamicznej w witrynie Azure Portal
+### <a name="improvements-to-the-ui-of-the-dynamic-group-rule-builder-in-the-azure-portal"></a>Ulepszenia interfejsu użytkownika konstruktora reguł grupy dynamicznej w Azure Portal
 
 **Wprowadź** Zmieniona funkcja  
 **Kategoria usługi:** Zarządzanie grupami  

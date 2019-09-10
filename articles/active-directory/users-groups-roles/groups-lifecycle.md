@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 074b9ec06818363a97253a587ac451a38999832f
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 56bfe92de24b9386252ee8719af66cc658948565
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68837924"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844300"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Konfigurowanie zasad wygasania dla grup pakietu Office 365
 
@@ -35,7 +35,7 @@ Po ustawieniu grupy do wygaśnięcia:
 Aktualnie można skonfigurować tylko jedną zasadę wygasania grup usługi Office 365 w dzierżawie.
 
 > [!NOTE]
-> Konfigurowanie zasad wygasania dla grup Office 365 i korzystanie z nich wymaga posiadania Azure AD — wersja Premium licencji dla członków wszystkich grup, do których zastosowano zasady wygasania.
+> Konfigurowanie zasad wygasania dla grup Office 365 i korzystanie z nich wymaga, aby nie przypisywać Azure AD — wersja Premium licencji dla członków wszystkich grup, do których zastosowano zasady wygasania.
 
 Aby uzyskać informacje na temat pobierania i instalowania poleceń cmdlet programu PowerShell usługi Azure AD, zobacz [Azure Active Directory PowerShell dla programu Graph 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137).
 
@@ -69,8 +69,11 @@ Aby uzyskać więcej informacji na temat uprawnień do przywracania usuniętej g
   - Zapisz ustawienia po zakończeniu, wybierając pozycję **Zapisz**.
 
 > [!NOTE]
-> Po pierwszym skonfigurowaniu wygaśnięcia wszystkie grupy, które są starsze niż interwał wygaśnięcia, są ustawiane na 30 dni do wygaśnięcia. Pierwsza wiadomość e-mail z powiadomieniem o odnowieniu jest wysyłana w ciągu dnia. Na przykład grupa A została utworzona 400 dni temu, a interwał wygaśnięcia jest ustawiony na 180 dni. Po zastosowaniu zasad wygasania Grupa A ma 30 dni, zanim zostanie usunięta.
+> Po pierwszym skonfigurowaniu wygaśnięcia wszystkie grupy, które są starsze niż interwał wygaśnięcia, są ustawiane na 30 dni do momentu wygaśnięcia, chyba że właściciel odbędzie się do niego wiadomość. Pierwsza wiadomość e-mail z powiadomieniem o odnowieniu jest wysyłana w ciągu dnia.
+>
 > Gdy grupa dynamiczna zostanie usunięta i przywrócona, jest ona traktowana jako nowa grupa i uzupełniana zgodnie z tą regułą. Ten proces może potrwać do 24 godzin.
+>
+> Powiadomienia o wygaśnięciu dotyczące grup używanych w zespołach są wyświetlane w kanale właściciele zespołów.
 
 ## <a name="email-notifications"></a>Powiadomienia e-mail
 

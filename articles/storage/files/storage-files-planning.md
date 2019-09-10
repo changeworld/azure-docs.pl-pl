@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: dc532ed33fca5120736dfb9503d012b2877e675e
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
-ms.translationtype: HT
+ms.openlocfilehash: 4dfcde96957bb8fce3731e38eee62554795d795f
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806616"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844878"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 
@@ -211,7 +211,8 @@ Standardowe udziały plików są dostępne we wszystkich regionach do 5 TiB. W n
 |Australia Wschodnia |LRS     |Nie    |Tak|
 |Australia Południowo-Wschodnia|LRS     |Nie    |Jeszcze nie|
 |Indie Środkowe  |LRS     |Nie    |Jeszcze nie|
-|Francja Środkowa  |LRS, ZRS|Nie    |LRS — tak, ZRS — jeszcze nie|
+|Francja Środkowa |LRS, ZRS|Nie    |LRS — tak, ZRS — jeszcze nie|
+|Francja Południowa   |LRS     |Nie    |Tak|
 |Indie Południowe    |LRS     |Nie    |Jeszcze nie|
 |Azja Południowo-Wschodnia |LRS, ZRS|Nie    |Tak|
 |Środkowo-zachodnie stany USA|LRS     |Nie    |Jeszcze nie|
@@ -247,7 +248,7 @@ Aby sprawdzić stan rejestracji, możesz uruchomić następujące polecenie:
 Get-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
 ```
 
-Zaktualizowanie stanu do **zarejestrowanego**może potrwać do 15 minut. Po **zarejestrowaniu**stanu powinno być możliwe korzystanie z tej funkcji.
+Zaktualizowanie stanu do zarejestrowanego może potrwać do 15minut. Po zarejestrowaniustanu powinno być możliwe korzystanie z tej funkcji.
 
 ### <a name="use-larger-file-shares"></a>Użyj większych udziałów plików
 

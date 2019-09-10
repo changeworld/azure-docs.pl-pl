@@ -5,15 +5,15 @@ author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 573c205cd2e208a1cb2b526d96fb08ca21331c80
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 8ee8c0c9d9724706f9b46013eba14e878832fd02
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "66129627"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844972"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Wysyłanie metryk systemu operacyjnego gościa do Azure Monitor magazynu metryk przy użyciu szablonu Azure Resource Manager dla zestawu skalowania maszyn wirtualnych z systemem Windows
 
@@ -31,6 +31,7 @@ Jeśli jesteś nowym szablonem Menedżer zasobów, Dowiedz się więcej na temat
 
 - Musisz mieć zainstalowaną [Azure PowerShell](/powershell/azure) lub można użyć [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview). 
 
+- Zasób maszyny wirtualnej musi znajdować się w [regionie, który obsługuje metryki niestandardowe](metrics-custom-overview.md#supported-regions).
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>Konfigurowanie Azure Monitor jako ujścia danych 
 Rozszerzenie Diagnostyka Azure używa funkcji o nazwie **ujścia danych** do kierowania metryk i dzienników do różnych lokalizacji. Poniższe kroki pokazują, jak za pomocą szablonu Menedżer zasobów i programu PowerShell wdrożyć maszynę wirtualną przy użyciu nowego ujścia danych Azure Monitor. 
@@ -51,7 +52,7 @@ Otwórz plik **azuredeploy. Parameters. JSON** :
 - Określ **windowsOSVersion** dla zestawu skalowania maszyn wirtualnych. Zalecamy 2016 — centrum danych. 
 - Nazwij zasób zestawu skalowania maszyn wirtualnych, który ma zostać wdrożony za pomocą właściwości **vmssName** . Przykładem jest **VMSS-funkcji wad-test**.    
 - Określ liczbę maszyn wirtualnych, które mają być uruchamiane w zestawie skalowania maszyn wirtualnych za pomocą właściwości **instanceCount** .
-- Wprowadź wartości dla **adminUsername** i **adminPassword** dla zestawu skalowania maszyn wirtualnych. Te parametry są używane na potrzeby dostępu zdalnego do maszyn wirtualnych w zestawie skalowania. Aby uniknąć przejęcia maszyny **wirtualnej, nie** należy używać tych elementów w tym szablonie. Botów Skanuj Internet pod kątem nazw użytkowników i haseł w publicznych repozytoriach usługi GitHub. Te wartości domyślne mogą testować maszyny wirtualne. 
+- Wprowadź wartości dla **adminUsername** i **adminPassword** dla zestawu skalowania maszyn wirtualnych. Te parametry są używane na potrzeby dostępu zdalnego do maszyn wirtualnych w zestawie skalowania. Aby uniknąć przejęcia maszyny wirtualnej, nie należy używać tych elementów w tym szablonie. Botów Skanuj Internet pod kątem nazw użytkowników i haseł w publicznych repozytoriach usługi GitHub. Te wartości domyślne mogą testować maszyny wirtualne. 
 
 
 ###  <a name="modify-azuredeployjson"></a>Modyfikuj plik azuredeploy. JSON

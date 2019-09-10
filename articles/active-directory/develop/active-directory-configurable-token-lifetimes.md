@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95c337501c46dd9b30ff20d71a9363ab03fdb608
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: f9244dfabef8b13105ef830f9f4543da9cb2cca9
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69980447"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70842638"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurowalne okresy istnienia tokenu w Azure Active Directory (wersja zapoznawcza)
 
@@ -106,7 +106,7 @@ Można utworzyć i przypisać zasady czasu istnienia tokenu do określonej aplik
 * Jeśli zasady są jawnie przypisane do nazwy głównej usługi, jest wymuszane.
 * Jeśli żadna zasada nie zostanie jawnie przypisana do jednostki usługi, wymuszana jest zasada jawnie przypisana do organizacji nadrzędnej jednostki usługi.
 * Jeśli żadna zasada nie zostanie jawnie przypisana do jednostki usługi lub do organizacji, zasady przypisane do aplikacji są wymuszane.
-* Jeśli żadne zasady nie zostały przypisane do nazwy głównej usługi, organizacji lub obiektu aplikacji, wymuszane są wartości domyślne. (Zobacz tabelę w obszarze [Właściwości konfigurowalnego okresu istnienia tokenu](#configurable-token-lifetime-properties)).
+* Jeśli żadna zasada nie została przypisana do jednostki usługi, organizacji lub obiektu aplikacji, wartości domyślne są wymuszane. (Zobacz tabelę w obszarze [Właściwości konfigurowalnego okresu istnienia tokenu](#configurable-token-lifetime-properties)).
 
 Aby uzyskać więcej informacji na temat relacji między obiektami aplikacji i obiektami głównej usługi, zobacz temat [obiekty główne aplikacji i usługi w Azure Active Directory](app-objects-and-service-principals.md).
 
@@ -310,7 +310,7 @@ W tym przykładzie utworzysz zasady, które wymagają, aby użytkownicy byli uwi
         Get-AzureADPolicy -Id $policy.Id
         ```
 
-2. Przypisz zasady do internetowego interfejsu API. Należy również uzyskać identyfikator **objectid** aplikacji. Użyj polecenia cmdlet [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) , aby znaleźć identyfikator obiektuaplikacji, lub Użyj [Azure Portal](https://portal.azure.com/).
+2. Przypisz zasady do internetowego interfejsu API. Należy również uzyskać identyfikator **objectid** aplikacji. Użyj polecenia cmdlet [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) , aby znaleźć **Identyfikator obiektu aplikacji**, lub Użyj [Azure Portal](https://portal.azure.com/).
 
     Pobierz identyfikator **objectid** aplikacji i przypisz zasady:
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: 84dff3c4948109654cf08fa1390ac4e6bf2717dc
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
-ms.translationtype: HT
+ms.openlocfilehash: f3bae365692b2165e4944becbe5081bb69bef98b
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812160"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70846113"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partnerzy i lokalizacje komunikacji równorzędnej usługi ExpressRoute
 
@@ -189,7 +189,7 @@ Jeśli dostawca połączenia nie został wymieniony w poprzednich sekcjach, moż
 Jeśli jesteś zdalny i nie masz łączności z włóknami lub chcesz poznać inne opcje łączności, możesz sprawdzić następujące operatory satelity. 
 
 * Intelsat
-* SES
+* [SES](https://www.ses.com/networks/signature-solutions/signature-cloud/ses-and-azure-expressroute)
 * Viasat
 
 ## <a name="c1partners"></a>Łączność za pośrednictwem dodatkowych dostawców usług

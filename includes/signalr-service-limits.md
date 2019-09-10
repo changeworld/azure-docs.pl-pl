@@ -1,6 +1,6 @@
 ---
-title: Usługi Azure SignalR Service ogranicza tabeli
-description: Opis ograniczeń systemowych dla usługi Azure SignalR Service.
+title: Tabela limitów usługi Azure Signal
+description: Opisuje limity systemowe usługi Azure Signal Service.
 services: signalr
 documentationcenter: signalr
 author: sffamily
@@ -14,21 +14,21 @@ ms.workload: TBD
 ms.date: 09/24/2018
 ms.author: zhshang
 ms.openlocfilehash: 1d87439b7afeb946fd37c468a0853adcb674ee5a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67183632"
 ---
 | Resource | Limit domyślny | Limit maksymalny | 
 | --- | --- | --- |
-| Jednostki usługi Azure SignalR Service dla każdego wystąpienia bezpłatnie warstwy. |1 |1 |
-| Jednostki usługi Azure SignalR Service każde wystąpienie w warstwie standardowa |100 |100 |
-| Jednostki usługi Azure SignalR Service na subskrypcję na region za darmo warstwy.|5 |5 |
-| Całkowita liczba jednostek usługi Azure SignalR Service Zlicza na subskrypcję na region |150 |Nieograniczona liczba |
-| Połączenia na jednostkę dziennie dla bezpłatnej warstwy |20 |20 |
-| Połączenia na jednostkę dziennie w przypadku warstwy standardowa |1000 |1000|
-| Uwzględnione wiadomości na jednostkę dziennie za darmo warstwy.|20,000 |20,000 |
-| Uwzględnione wiadomości na jednostkę dziennie w przypadku warstwy standardowa|1 000 000 |1 000 000 |
+| Jednostki usługi sygnałów platformy Azure na wystąpienie dla warstwy Bezpłatna |1 |1 |
+| Jednostki usługi sygnałów platformy Azure na wystąpienie dla warstwy Standardowa |100 |100 |
+| Jednostki usługi sygnałów platformy Azure na subskrypcję na region dla warstwy Bezpłatna|5 |5 |
+| Łączna liczba jednostek usługi sygnałów platformy Azure na subskrypcję na region |150 |Nieograniczona liczba |
+| Liczba połączeń na jednostkę dziennie dla warstwy Bezpłatna |20 |20 |
+| Liczba połączeń na jednostkę dziennie dla warstwy Standardowa |1000 |1000|
+| Liczba uwzględnionych komunikatów na jednostkę dziennie dla warstwy Bezpłatna|20,000 |20,000 |
+| Liczba uwzględnionych komunikatów na jednostkę dziennie dla warstwy Standardowa|1 000 000 |1 000 000 |
 
-Aby zażądać aktualizacji do Twojej subskrypcji domyślne limity, należy otworzyć bilet pomocy technicznej. 
+Aby zażądać aktualizacji domyślnych limitów subskrypcji, Otwórz bilet pomocy technicznej. 

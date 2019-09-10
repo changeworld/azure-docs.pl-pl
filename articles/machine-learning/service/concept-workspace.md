@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 08/06/2019
-ms.openlocfilehash: cb1fd8e98a5eba350774ff6ccb8f86dcd3e4d734
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: ef060c083109a7096b62ebb35f2b49bb37a371b8
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856212"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860499"
 ---
 # <a name="what-is-an-azure-machine-learning-service-workspace"></a>Co to jest obszar roboczy usługi Azure Machine Learning?
 
@@ -36,7 +36,7 @@ Na diagramie przedstawiono następujące składniki obszaru roboczego:
 + Podczas tworzenia obszaru roboczego są również tworzone [skojarzone zasoby](#resources) .
 + [Eksperymenty](concept-azure-machine-learning-architecture.md#experiments) to przebiegi szkoleniowe, które służą do kompilowania modeli.  Możesz tworzyć i uruchamiać eksperymenty za pomocą
     + [Zestaw Azure Machine Learning SDK dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
-    + Sekcja [zautomatyzowane eksperymenty w usłudze Machine Learning (wersja zapoznawcza)](how-to-create-portal-experiments.md) w Azure Portal.
+    + Sekcja [zautomatyzowane eksperymenty w usłudze Machine Learning (wersja zapoznawcza)](how-to-create-portal-experiments.md) w Azure Portal lub na stronie docelowej obszaru roboczego (wersja zapoznawcza).
     + [Interfejs wizualny (wersja zapoznawcza)](ui-concept-visual-interface.md).
 + [Potoki](concept-azure-machine-learning-architecture.md#ml-pipelines) to przepływy pracy wielokrotnego użytku na potrzeby szkoleń i ponownego uczenia modelu.
 + [Zestawy](concept-azure-machine-learning-architecture.md#datasets-and-datastores) danych ułatwiają zarządzanie danymi używanymi do szkolenia modelu i tworzenia potoku.
@@ -49,6 +49,7 @@ Z obszarem roboczym można korzystać w następujący sposób:
 
 + W sieci Web:
     + [Azure Portal](https://portal.azure.com)
+    + Strona docelowa [obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com)
     + [Interfejs wizualny (wersja zapoznawcza)](ui-concept-visual-interface.md)
 + W języku Python przy użyciu [zestawu Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
 + W wierszu polecenia przy użyciu [rozszerzenia CLI](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli) Azure Machine Learning

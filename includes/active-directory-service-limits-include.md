@@ -9,15 +9,15 @@ ms.date: 05/22/2019
 ms.author: curtand
 ms.custom: include file
 ms.openlocfilehash: e6e1014ac20ef70f21344ec6ece5627eccb7ba66
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67148447"
 ---
 Oto ograniczenia używania i inne limity usługi dotyczące usługi Azure Active Directory (Azure AD).
 
-| Category | Limity |
+| Kategoria | Limity |
 | --- | --- |
 | Katalogi | Jeden użytkownik może być członkiem lub gościem maksymalnie 500 katalogów usługi Azure AD.<br/>Jeden użytkownik może utworzyć maksymalnie 20 katalogów. |
 | Domeny | Możesz dodać maksymalnie 900 nazw domen zarządzanych. Jeśli konfigurujesz wszystkie domeny federacyjne w celu federacji lokalnej z usługą Active Directory, możesz dodać maksymalnie 450 nazw domeny w każdym katalogu. |
@@ -25,8 +25,8 @@ Oto ograniczenia używania i inne limity usługi dotyczące usługi Azure Active
 | Rozszerzenia schematu |<ul><li>Rozszerzenia typu string mogą mieć maksymalnie 256 znaków. </li><li>Rozmiar rozszerzeń typu binary jest ograniczony do 256 bajtów.</li><li>Do każdego pojedynczego obiektu można zapisać tylko 100 wartości rozszerzeń (we *wszystkich* typach i *wszystkich* aplikacjach).</li><li>Jednostki User, Group, TenantDetail, Device, Application i ServcicePrincipal można rozszerzyć za pomocą jednowartościowych atrybutów typu String lub Binary.</li><li>Rozszerzenia schematu są dostępne tylko w interfejsie API programu Graph w wersji 1.21 — wersja zapoznawcza. Aby zarejestrować rozszerzenie, należy przyznać aplikacji prawa dostępu do zapisu.</li></ul> |
 | Aplikacje |Właścicielami jednej aplikacji może być maksymalnie 100 użytkowników. |
 | Grupy |<ul><li>Właścicielami jednej grupy może być maksymalnie 100 użytkowników.</li><li>Członkami jednej grupy może być dowolna liczba obiektów.</li><li>Użytkownik może być członkiem dowolnej liczby grup.</li><li>Liczba członków w grupie, których można zsynchronizować z lokalnej usługi Active Directory do usługi Azure Active Directory przy użyciu programu Azure AD Connect, jest ograniczona do 50 000 członków.</li></ul> |
-| Serwer proxy aplikacji | <ul><li>Maksymalnie 500 transakcji na sekundę na aplikację serwera Proxy aplikacji</li><li>Maksymalnie 750 transakcji na sekundę dla dzierżawy</li></ul><br/>Transakcja jest definiowana jako żądanie http jednym i odpowiadać na unikatowy zasób. Gdy dławiona, klienci będą otrzymywać odpowiedzi 429 (zbyt wiele żądań). |
+| Serwer proxy aplikacji | <ul><li>Maksymalnie 500 transakcji na sekundę na aplikację serwera proxy aplikacji</li><li>Maksymalnie 750 transakcji na sekundę dla dzierżawy</li></ul><br/>Transakcja jest definiowana jako pojedyncze żądanie HTTP i odpowiedź na unikatowy zasób. W przypadku ograniczenia przepustowości klienci otrzymają odpowiedź 429 (za dużo żądań). |
 | Panel dostępu |<ul><li>Nie ma limitu liczby aplikacji na użytkownika, które są widoczne w panelu dostępu. Dotyczy to przypisanych do użytkowników licencji usługi Azure AD Premium lub pakietu Enterprise Mobility Suite.</li><li>Panel dostępu zawiera maksymalnie 10 kafelków aplikacji dla każdego użytkownika. Ten limit dotyczy użytkowników z przypisanymi licencjami usługi Azure AD — wersja Podstawowa w usłudze Azure Active Directory. Przykładowe kafelki aplikacji Box, Salesforce i Dropbox. Ten limit nie dotyczy kont administratorów.</li></ul> |
 | Raporty | W dowolnym raporcie można wyświetlić lub pobrać maksymalnie 1000 wierszy. Dodatkowe dane są obcinane. |
 | Jednostki administracyjne | Jeden obiekt może być członkiem maksymalnie 30 jednostek administracyjnych. |
-| Role i uprawnienia administratora | <ul><li>Nie można dodać grupy jako [właściciela](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#object-ownership).</li><li>Nie można przypisać grupę [roli](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles).</li><li>Użytkownikowi możliwość odczytywania informacji o katalogu inni użytkownicy nie może być ograniczony poza przełącznik obowiązujące w dzierżawie można wyłączyć dostępu wszystkich użytkowników bez uprawnień administratora do wszystkich informacji katalogowych (niezalecane). Więcej informacji na temat domyślnych uprawnień [tutaj](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#to-restrict-the-default-permissions-for-member-users).</li><li>Może upłynąć do 15 minut lub podpisywania poza/logowania przed administratora dodatki członkostwa roli i odwołania zaczęły obowiązywać.</li></ul> |
+| Role i uprawnienia administratora | <ul><li>Nie można dodać grupy jako [właściciela](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#object-ownership).</li><li>Nie można przypisać grupy do [roli](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles).</li><li>Możliwość odczytywania informacji o katalogu innych użytkowników nie może być ograniczona poza przełącznikiem obejmującym dzierżawcę, aby wyłączyć dostęp wszystkich użytkowników niebędących administratorami do wszystkich informacji katalogu (niezalecane). Więcej informacji o uprawnieniach domyślnych znajduje się w [tym miejscu](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#to-restrict-the-default-permissions-for-member-users).</li><li>Przed przystąpieniem do członkostwa w roli administratora może upłynąć do 15 minut lub wylogowanie/zalogowanie się.</li></ul> |

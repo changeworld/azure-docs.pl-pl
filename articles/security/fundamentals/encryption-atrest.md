@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/30/2019
+ms.date: 09/10/2019
 ms.author: barclayn
-ms.openlocfilehash: 9721f22eb73c68f729ced13480370f6593c58510
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: f3cacdad2986de257ae345f4baa9d14ea6c894b2
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182797"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873187"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Szyfrowanie danych platformy Azure — w spoczynku
 
@@ -127,7 +127,7 @@ Każde szyfrowanie po stronie serwera w modelach REST implikuje charakterystyczn
 
 Dla wielu klientów zasadniczy wymóg polega na zapewnieniu, że dane są szyfrowane w każdym miejscu. Szyfrowanie po stronie serwera przy użyciu kluczy zarządzanych przez usługę umożliwia klientom oznaczenie określonego zasobu (konta magazynu, bazy danych SQL itp.) w celu szyfrowania i pozostawienie wszystkich aspektów zarządzania kluczami, takich jak wystawianie kluczy, rotacja i wykonywanie kopii zapasowych w firmie Microsoft . Większość usług platformy Azure, które obsługują szyfrowanie w spoczynku, zazwyczaj obsługuje ten model odciążający zarządzanie kluczami szyfrowania na platformie Azure. Dostawca zasobów platformy Azure tworzy klucze, umieszcza je w bezpiecznym magazynie i pobiera je w razie konieczności. Oznacza to, że usługa ma pełny dostęp do kluczy, a usługa ma pełną kontrolę nad zarządzaniem cyklem życia poświadczeń.
 
-![zarządzanych](./media/encryption-atrest/azure-security-encryption-atrest-fig4.png)
+![Zarządzanych](./media/encryption-atrest/azure-security-encryption-atrest-fig4.png)
 
 Szyfrowanie po stronie serwera przy użyciu kluczy zarządzanych przez usługę w związku z tym szybko eliminuje konieczność szyfrowania przy niskim obciążeniu klienta. Gdy klient jest dostępny, zwykle otwiera Azure Portal dla docelowej subskrypcji i dostawcy zasobów i sprawdza pole wskazujące, że dane mają być szyfrowane. W przypadku niektórych menedżerów zasobów szyfrowanie po stronie serwera z kluczami zarządzanymi przez usługę jest domyślnie włączone.
 
@@ -266,7 +266,7 @@ Szyfrowanie po stronie klienta Azure SQL Database danych jest obsługiwane za po
 | Power BI                         | Tak                | Wersja zapoznawcza, RSA 2048-bit | -                  |
 | **Analiza**                    |                    |                    |                    |
 | Usługa Azure Stream Analytics           | Tak                | -                  | -                  |
-| Event Hubs                       | Tak                | -                  | -                  |
+| Event Hubs                       | Tak                | Wersja zapoznawcza, wszystkie długości RSA. | -                  |
 | Azure Analysis Services          | Tak                | -                  | -                  |
 | Azure Data Catalog               | Tak                | -                  | -                  |
 | Apache Kafka w usłudze Azure HDInsight  | Tak                | Wszystkie długości RSA.   | -                  |

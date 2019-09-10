@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ed20dd9068ccdea1fb9cd04801eb0096fed2c922
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 929c923fda8c1c2bddd96d0b4d4e4b6ce6d29de9
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972432"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845308"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>Konfigurowanie systemu DNS do rozpoznawania nazw dla prywatnego dostępu vCenter w chmurze z lokalnych stacji roboczych
 
@@ -56,18 +56,24 @@ zone “cloudsimple.io”
 
 ### <a name="create-a-zone-on-a-microsoft-windows-dns-server"></a>Tworzenie strefy na serwerze DNS systemu Microsoft Windows
 
-1. Kliknij prawym przyciskiem myszy serwer DNS i wybierz pozycję **Nowa strefa**.  
-![Nowa strefa](media/DNS01.png)
+1. Kliknij prawym przyciskiem myszy serwer DNS i wybierz pozycję **Nowa strefa**. 
+  
+    ![Nowa strefa](media/DNS01.png)
 2. Wybierz pozycję **strefa zastępcza** i kliknij przycisk **dalej**.
-![Nowa strefa](media/DNS02.png)
+
+    ![Nowa strefa](media/DNS02.png)
 3. Wybierz odpowiednią opcję w zależności od środowiska, a następnie kliknij przycisk **dalej**.
-![Nowa strefa](media/DNS03.png)
+
+    ![Nowa strefa](media/DNS03.png)
 4. Wybierz pozycję  **Strefa wyszukiwania do przodu**, a następnie kliknij przycisk **dalej**.
-![Nowa strefa](media/DNS01.png)
+
+    ![Nowa strefa](media/DNS01.png)
 5. Wprowadź nazwę strefy, a następnie kliknij przycisk **dalej**.
-![Nowa strefa](media/DNS05.png)
+
+    ![Nowa strefa](media/DNS05.png)
 6. Wprowadź adresy IP serwerów DNS dla chmury prywatnej uzyskanej z portalu CloudSimple.
-![Nowa strefa](media/DNS06.png)
+
+    ![Nowa strefa](media/DNS06.png)
 7. W razie potrzeby kliknij przycisk **dalej** , aby zakończyć pracę Instalatora kreatora.
 
 ## <a name="create-a-conditional-forwarder"></a>Tworzenie usługi przesyłania dalej warunkowego
@@ -91,5 +97,6 @@ zone “cloudsimple.io” {
 
 1. Otwórz Menedżera DNS na serwerze DNS.
 2. Kliknij prawym przyciskiem myszy pozycję **usługi przesyłania dalej warunkowe** i wybierz opcję dodania nowej usługi przesyłania dalej warunkowego.
-![Warunkowy serwer usługi przesyłania dalej 1 systemu Windows](media/DNS08.png)
+
+    ![Warunkowy serwer usługi przesyłania dalej 1 systemu Windows](media/DNS08.png)
 3. Wprowadź domenę DNS i adres IP serwerów DNS w chmurze prywatnej, a następnie kliknij przycisk **OK**.

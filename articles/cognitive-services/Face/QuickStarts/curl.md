@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 09/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 68cdd147977294954051735d70307305aa5dc0cb
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: da929744922f8653bc293b68dbbadb9347a447e9
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603326"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859139"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-curl"></a>Szybki start: Wykrywanie twarzy na obrazie przy użyciu interfejsu API REST rozpoznawania twarzy i biblioteki cURL
 
@@ -29,10 +29,10 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="write-the-command"></a>Pisanie polecenia
  
-Użyjesz polecenia podobnego do poniższego, aby wywołać interfejs API rozpoznawania twarzy i pobieraj dane atrybutów twarzy z obrazu. Najpierw skopiuj kod do edytora tekstów &mdash; konieczne będzie wprowadzenie zmian w niektórych częściach polecenia przed jego uruchomieniem.
+Użyjesz polecenia, takiego jak następujące, aby wywołać interfejs API rozpoznawania twarzy i pobrać dane atrybutów kroju z obrazu. Najpierw skopiuj kod do edytora tekstów &mdash; konieczne będzie wprowadzenie zmian w niektórych częściach polecenia przed jego uruchomieniem.
 
 ```shell
-curl -H "Ocp-Apim-Subscription-Key: <Subscription Key>" "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise" -H "Content-Type: application/json" --data-ascii "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg\"}"
+curl -H "Ocp-Apim-Subscription-Key: <Subscription Key>" "https://<My Endpoint String>.com/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise" -H "Content-Type: application/json" --data-ascii "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg\"}"
 ```
 
 ### <a name="subscription-key"></a>Klucz subskrypcji
@@ -40,7 +40,9 @@ Zastąp wartość `<Subscription Key>` prawidłowym kluczem subskrypcji interfej
 
 ### <a name="face-endpoint-url"></a>Adres URL punktu końcowego interfejsu API rozpoznawania twarzy
 
-Adres URL `https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect` wskazuje punkt końcowy interfejsu API rozpoznawania twarzy platformy Azure. Może być konieczna zmiana pierwszej części tego adresu URL, aby dopasować region, który odpowiada swój klucz subskrypcji. Zobacz [dokumentacja interfejsu API rozpoznawania twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) listę wszystkich punktów końcowych w regionie.
+Adres URL `https://<My Endpoint String>.com/face/v1.0/detect` wskazuje punkt końcowy interfejsu API rozpoznawania twarzy platformy Azure. Może zajść konieczność zmiany pierwszej części tego adresu URL w celu dopasowania do punktu końcowego, który odpowiada kluczowi subskrypcji.
+
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ### <a name="url-query-string"></a>Ciąg zapytania adresu URL
 
@@ -51,7 +53,7 @@ Ciąg zapytania adresu URL punktu końcowego interfejs API rozpoznawania twarzy 
 ```
 
 ### <a name="image-source-url"></a>Adres URL źródła obrazu
-Źródłowy adres URL wskazuje obraz, który zostanie użyty jako dane wejściowe. Można zmienić, to aby wskazywał dowolny obraz, który chcesz analizować.
+Źródłowy adres URL wskazuje obraz, który zostanie użyty jako dane wejściowe. Można to zmienić tak, aby wskazywał dowolny obraz, który ma zostać przeanalizowany.
 
 ```
 https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg
@@ -153,7 +155,7 @@ Po dokonaniu zmian otwórz wiersz polecenia i wprowadź nowe polecenie. Informac
 ]
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start zostało utworzone polecenie cURL służące do wywoływania interfejsu API rozpoznawania twarzy platformy Azure w celu wykrywania twarzy na obrazie i zwracania ich atrybutów. Następnie zapoznaj się z dokumentacją referencyjną interfejsu API rozpoznawania twarzy, aby dowiedzieć się więcej.
 

@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 07/08/2019
-ms.openlocfilehash: c6c4d1d4da3679eaefacb5aa0c91fcf64afc2a6b
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 7d47b74d4fef3676101f3f624dcacb832dcedc3a
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128273"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858706"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Wykrywaj dryfowanie danych (wersja zapoznawcza) dla modeli wdrożonych w usłudze Azure Kubernetes Service (AKS)
 
@@ -36,7 +36,7 @@ Za pomocą usługi Azure Machine Learning można monitorować dane wejściowe mo
 + Wysyłaj alerty do dryfowania danych za pośrednictwem poczty e-mail.
 
 > [!Note]
-> Ta usługa jest w wersji (wersja zapoznawcza) i jest ograniczona w opcjach konfiguracji. Szczegółowe informacje i aktualizacje można znaleźć w naszej [dokumentacji interfejsu API](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/?view=azure-ml-py) i informacjach o [wersji](azure-machine-learning-release-notes.md) . 
+> Ta usługa jest w wersji (wersja zapoznawcza) i jest ograniczona w opcjach konfiguracji. Szczegółowe informacje i aktualizacje można znaleźć w naszej [dokumentacji interfejsu API](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/?view=azure-ml-py) i [informacjach o wersji](azure-machine-learning-release-notes.md) . 
 
 ### <a name="how-data-drift-is-monitored-in-azure-machine-learning-service"></a>Jak jest monitorowane przedryfowanie danych w usłudze Azure Machine Learning
 
@@ -97,7 +97,7 @@ print('Details of Datadrift Object:\n{}'.format(datadrift))
 
 ## <a name="submit-a-datadriftdetector-run"></a>Prześlij DataDriftDetector uruchomienie
 
-Po skonfigurowaniu obiektu można przesłać dane dotyczące przebiegu danych w danym dniu dla modelu. [](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector%28class%29?view=azure-ml-py#run-target-date--services--compute-target-name-none--create-compute-target-false--feature-list-none--drift-threshold-none-) `DataDriftDetector` W ramach przebiegu należy włączyć alerty DataDriftDetector przez ustawienie `drift_threshold` parametru. Jeśli [datadrift_coefficient](#metrics) znajduje się powyżej podanej `drift_threshold`wiadomości e-mail, zostanie ona wysłana.
+Po skonfigurowaniu obiektu można przesłać [dane dotyczące przebiegu danych](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector%28class%29?view=azure-ml-py#run-target-date--services--compute-target-name-none--create-compute-target-false--feature-list-none--drift-threshold-none-) w danym dniu dla modelu. `DataDriftDetector` W ramach przebiegu należy włączyć alerty DataDriftDetector przez ustawienie `drift_threshold` parametru. Jeśli [datadrift_coefficient](#metrics) znajduje się powyżej podanej `drift_threshold`wiadomości e-mail, zostanie ona wysłana.
 
 ```python
 # adhoc run today
@@ -134,6 +134,7 @@ Istnieje wiele sposobów wyświetlania metryk dryfu:
 * Użyj widżetu [Jupyter.](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) `RunDetails`
 * Użyj funkcji na dowolnym `datadrift` obiekcie Run. [`get_metrics()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#get-metrics-name-none--recursive-false--run-type-none--populate-false-)
 * Wyświetl metryki w Azure Portal w modelu.
+* Wyświetl metryki z sekcji **modele** na [stronie docelowej obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com).
 
 W poniższym przykładzie w języku Python pokazano, jak wykreślić odpowiednie metryki dotyczące dryfowania danych. Możesz użyć zwróconych metryk do kompilowania wizualizacji niestandardowych:
 
@@ -158,7 +159,7 @@ datadrift.enable_schedule()
 datadrift.disable_schedule()
 ```
 
-Konfigurację wykrywania dryfu danych można zobaczyć na stronie Szczegóły modelu w Azure Portal.
+Konfigurację czujnika dryfowania danych można zobaczyć na stronie Szczegóły modelu w Azure Portal lub na stronie docelowej obszaru roboczego (wersja zapoznawcza).
 
 ![Konfiguracja dryfowania danych Azure Portal](media/how-to-monitor-data-drift/drift_config.png)
 
@@ -167,6 +168,8 @@ Konfigurację wykrywania dryfu danych można zobaczyć na stronie Szczegóły mo
 Aby wyświetlić wyniki w obszarze roboczym w [Azure Portal](https://portal.azure.com), przejdź do strony model. Na karcie Szczegóły w modelu jest wyświetlana konfiguracja dryfowania danych. Karta "dryf danych (wersja zapoznawcza)" jest teraz dostępna Wizualizacja metryk dryfowania danych. 
 
 ![Azure Portal dryfowanie danych](media/how-to-monitor-data-drift/drift_ui.png)
+
+Wyniki są również dostępne w szczegółach modelu na [stronie docelowej obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com).
 
 ## <a name="receiving-drift-alerts"></a>Otrzymywanie alertów o dryfach
 

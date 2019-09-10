@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: b716cbf3efb044da68d4dd1dcb724369855d1ed1
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 5aa2d694c2c74b493a7fd1a2a89d39866928d1d4
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173653"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70843859"
 ---
 # <a name="streaming-ingestion-preview"></a>Pozyskiwanie strumieniowe (wersja zapoznawcza)
 
@@ -34,22 +34,22 @@ Użyj operacji pozyskiwania klasycznego (zbiorczego) zamiast pozyskiwania strumi
 ## <a name="enable-streaming-ingestion-on-your-cluster"></a>Włącz pozyskiwanie strumieniowe w klastrze
 
 1. W Azure Portal przejdź do klastra usługi Azure Eksplorator danych. W obszarze **Ustawienia**wybierz pozycję **konfiguracje**. 
-1. W okienku **konfiguracje** wybierz pozycję **włączone** , aby włączyćpozyskiwanie strumieniowe.
+1. W okienku **konfiguracje** wybierz pozycję **włączone** , aby włączyć pozyskiwanie **strumieniowe**.
 1. Wybierz pozycję **Zapisz**.
  
     ![pozyskiwanie przesyłania strumieniowego](media/ingest-data-streaming/streaming-ingestion-on.png)
  
-1. W [interfejsie użytkownika sieci Web](https://dataexplorer.azure.com/)Zdefiniuj [zasady](/azure/kusto/concepts/streamingingestionpolicy) pozyskiwania strumieniowego dla tabel lub baz danych, które będą odbierać dane przesyłane strumieniowo. 
+1. W [interfejsie użytkownika sieci Web](https://dataexplorer.azure.com/)Zdefiniuj zasady pozyskiwania [strumieniowego](/azure/kusto/concepts/streamingingestionpolicy) dla tabel lub baz danych, które będą odbierać dane przesyłane strumieniowo. 
 
     > [!TIP]
     > Jeśli zasady są zdefiniowane na poziomie bazy danych, wszystkie tabele w bazie danych są włączone na potrzeby pozyskiwania strumieniowego.
 
-## <a name="supported-streaming-ingestion-types"></a>Obsługiwane typy pozyskiwania strumieniowego
+## <a name="use-streaming-ingestion-to-ingest-data-to-your-cluster"></a>Wykorzystywanie pozyskiwania strumieniowego do pozyskiwania danych do klastra
 
 Istnieją dwa obsługiwane typy pozyskiwania strumieniowego:
 
 * [Centrum zdarzeń](/azure/data-explorer/ingest-data-event-hub) używane jako źródło danych
-* Wprowadzanie niestandardowe wymaga napisania aplikacji korzystającej z jednej z bibliotek klienckich Eksplorator danych platformy Azure. Zobacz [przykład](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) pozyskiwania strumieniowego dla przykładowej aplikacji.
+* Wprowadzanie niestandardowe wymaga napisania aplikacji korzystającej z jednej z bibliotek klienckich Eksplorator danych platformy Azure. Zobacz [przykład pozyskiwania strumieniowego](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) dla przykładowej aplikacji.
 
 ### <a name="choose-the-appropriate-streaming-ingestion-type"></a>Wybierz odpowiedni typ pozyskiwania strumieniowego
 
@@ -63,16 +63,16 @@ Istnieją dwa obsługiwane typy pozyskiwania strumieniowego:
 > [!WARNING]
 > Wyłączenie pozyskiwania przesyłania strumieniowego może potrwać kilka godzin.
 
-1. Porzuć [zasady](/azure/kusto/concepts/streamingingestionpolicy) pozyskiwania strumieniowego ze wszystkich odpowiednich tabel i baz danych. Usunięcie zasad pozyskiwania strumieniowego spowoduje wyzwolenie przepływu danych pozyskiwania strumieniowego z magazynu początkowego do magazynu trwałego w magazynie kolumn (zakresy lub fragmentów). Przenoszenie danych może trwać od kilku sekund do kilku godzin, w zależności od ilości danych w magazynie początkowym oraz użycia procesora CPU i pamięci w klastrze.
+1. Porzuć zasady pozyskiwania [strumieniowego](/azure/kusto/concepts/streamingingestionpolicy) ze wszystkich odpowiednich tabel i baz danych. Usunięcie zasad pozyskiwania strumieniowego spowoduje wyzwolenie przepływu danych pozyskiwania strumieniowego z magazynu początkowego do magazynu trwałego w magazynie kolumn (zakresy lub fragmentów). Przenoszenie danych może trwać od kilku sekund do kilku godzin, w zależności od ilości danych w magazynie początkowym oraz użycia procesora CPU i pamięci w klastrze.
 1. W Azure Portal przejdź do klastra usługi Azure Eksplorator danych. W obszarze **Ustawienia**wybierz pozycję **konfiguracje**. 
-1. W okienku **konfiguracje** wybierz pozycję **wyłączone** , aby wyłączyćpozyskiwanie strumieniowe.
+1. W okienku **konfiguracje** wybierz pozycję **wyłączone** , aby wyłączyć pozyskiwanie **strumieniowe**.
 1. Wybierz pozycję **Zapisz**.
 
     ![Pozyskiwanie przesyłania strumieniowego](media/ingest-data-streaming/streaming-ingestion-off.png)
 
 ## <a name="limitations"></a>Ograniczenia
 
-* Skalowanie wydajności i pojemności pozyskiwania strumieniowego przy użyciu zwiększonych rozmiarów maszyn wirtualnych i klastrów. W przypadku jednego węzła D11 zalecanym obciążeniem jest maksymalnie 20 żądań na sekundę. W przypadku jednego węzła D14 zalecanym obciążeniem jest maksymalnie 150 żądań na sekundę.
+* Skalowanie wydajności i pojemności pozyskiwania strumieniowego przy użyciu zwiększonych rozmiarów maszyn wirtualnych i klastrów. W przypadku jednego węzła D14 zalecanym obciążeniem jest maksymalnie 150 żądań na sekundę.
 * Obecnie pomoc techniczna jest dostępna tylko dla 8 i 16 podstawowych jednostek SKU (D13, D14, P8 i L16).
 * Limit rozmiaru danych na żądanie pozyskiwania wynosi 4 MB.
 * Aktualizacje schematu, takie jak tworzenie i modyfikowanie tabel i mapowania pozyskiwania, mogą potrwać do 5 minut w przypadku usługi pozyskiwania strumieniowego.

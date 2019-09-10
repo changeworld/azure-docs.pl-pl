@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.openlocfilehash: d626a7768e7070360a6f0249486bfa83407fe998
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 60ecd71419bbf65cceab257cb97a96929d24ec08
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70192073"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860562"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Informacje o zautomatyzowanych wynikach uczenia maszynowego
 
@@ -30,10 +30,10 @@ Dowiedz się więcej o usługach:
 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
 
-* Utwórz automatyczny eksperyment uczenia maszynowego z zestawem SDK lub Azure Portal.
+* Utwórz automatyczny eksperyment uczenia maszynowego z zestawem SDK w Azure Portal lub na stronie docelowej obszaru roboczego (wersja zapoznawcza).
 
     * Użyj zestawu SDK, aby utworzyć [model klasyfikacji](how-to-auto-train-remote.md) lub [model regresji](tutorial-auto-train-models.md)
-    * Użyj [Azure Portal](how-to-create-portal-experiments.md) , aby utworzyć model klasyfikacji lub regresji przez przekazanie odpowiednich danych.
+    * Użyj [Azure Portal lub strony docelowej obszaru roboczego (wersja zapoznawcza)](how-to-create-portal-experiments.md) , aby utworzyć model klasyfikacji lub regresji przez przekazanie odpowiednich danych.
 
 ## <a name="view-the-run"></a>Wyświetlanie przebiegu
 
@@ -41,7 +41,7 @@ Po uruchomieniu zautomatyzowanego eksperymentu w usłudze Machine Learning histo
 
 1. Przejdź do swojego obszaru roboczego.
 
-1. W lewym panelu obszaru roboczego wybierz pozycję eksperymenty.
+1. W lewym panelu obszaru roboczego wybierz pozycję **eksperymenty**.
 
    ![Zrzut ekranu przedstawiający menu eksperymentu](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-menu.png)
 

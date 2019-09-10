@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/09/2019
 ms.author: diberry
-ms.openlocfilehash: 36d03e20c9a56d7b317b867f01c1c0b5767c802c
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 5c2e81cd11826a0325cd78384a22ec7eefb3a565
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70257001"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844866"
 ---
 # <a name="using-authoring-and-runtime-resource-keys"></a>Korzystanie z kluczy zasobów tworzenia i środowiska uruchomieniowego
 
@@ -72,6 +72,38 @@ Gdy wszystko będzie gotowe do opublikowania punktu końcowego przewidywania, Ut
     |Warstwa cenowa środowiska uruchomieniowego|Warstwa cenowa określa maksymalną liczbę transakcji na sekundę i miesiąc.|
 
     Po utworzeniu obu zasobów Przypisz zasoby w portalu LUIS.
+
+## <a name="create-resources-in-azure-cli"></a>Tworzenie zasobów w interfejsie wiersza polecenia platformy Azure
+
+Utwórz poszczególne zasoby przy użyciu [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) . 
+
+Zasób `kind`:
+
+* Projekt`LUIS.Authoring`
+* Przewidując`LUIS` 
+
+1. Zaloguj się do interfejsu wiersza polecenia platformy Azure:
+
+    ```console
+    az login
+    ```
+
+    Spowoduje to otwarcie przeglądarki w celu umożliwienia wybrania odpowiedniego konta i zapewnienia uwierzytelniania.
+
+1. Utwórz **zasób autorstwa Luis**, `LUIS.Authoring` `my-luis-authoring-resource` którego nazwa `my-resource-group` jest określona w _istniejącej_ grupie zasobów o nazwie dla regionu.`westus` 
+
+    ```console
+    az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
+    ```
+
+1. Utwórz `LUIS` **zasób punktu końcowego przewidywania Luis**o nazwie `my-luis-prediction-resource` w _istniejącej_ grupie zasobów o nazwie `my-resource-group` dla `westus` regionu. Jeśli potrzebujesz wyższej przepływności niż warstwa Bezpłatna, Zmień `F0` wartość na. `S0` Dowiedz się więcej o [warstwach cenowych i przepływności](luis-boundaries.md#key-limits).
+
+    ```console
+    az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes
+    ```
+
+    > [!Note] 
+    > Te klucze nie są używane przez portal LUIS, dopóki **nie** zostaną przypisane do portalu Luis w **zasobach platformy Azure Zarządzanie >** .
 
 ## <a name="assign-an-authoring-resource-in-the-luis-portal-for-all-apps"></a>Przypisywanie zasobów autorstwa w portalu LUIS dla wszystkich aplikacji
 
@@ -186,6 +218,6 @@ Dodaj alert dotyczący metryki dla **łączna liczba wywołań** metryk przez pe
 ## <a name="next-steps"></a>Następne kroki
 
 * Dowiedz się, [jak za pomocą wersji](luis-how-to-manage-versions.md) sterować cyklem życia aplikacji.
-* Zapoznaj się z pojęciami dotyczącymi [zasobów tworzenia](/luis-concept-keys.md#authoring-key) i [współautorów](luis-concept-keys.md#contributions-from-other-authors) tego zasobu.
+* Zapoznaj się z pojęciami dotyczącymi [zasobów tworzenia](luis-concept-keys.md#authoring-key) i [współautorów](luis-concept-keys.md#contributions-from-other-authors) tego zasobu.
 * Dowiedz się [, jak tworzyć zasoby dotyczące](luis-how-to-azure-subscription.md) tworzenia i wykonywania
 * Migrowanie do nowego [zasobu tworzenia](luis-migration-authoring.md) 

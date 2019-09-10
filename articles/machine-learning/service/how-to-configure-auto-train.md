@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: a73d048a66c70eaf22caf6b33c4a495df6d730dd
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 9a2b030185c821ec9bd577ecdabbc929766f2d14
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997914"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858886"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurowanie zautomatyzowanych eksperymentów ML w języku Python
 
@@ -34,7 +34,7 @@ Opcje konfiguracji dostępne w automatycznych machine learning:
 * Eksplorowanie metryk modelu
 * Zarejestruj i Wdróż model
 
-Jeśli wolisz nie używać kodu, możesz również [utworzyć automatyczne eksperymenty uczenia maszynowego w Azure Portal](how-to-create-portal-experiments.md).
+Jeśli wolisz, że nie masz doświadczenia w kodzie, możesz również [utworzyć automatyczne eksperymenty uczenia maszynowego w Azure Portal](how-to-create-portal-experiments.md).
 
 ## <a name="select-your-experiment-type"></a>Wybierz typ eksperymentu
 
@@ -553,13 +553,13 @@ Istnieją dwa sposoby generowania funkcji znaczenie.
     print(per_class_summary)
     ```
 
-Można wizualizować wykresu znaczenie funkcji w obszarze roboczym w witrynie Azure portal. Wyświetl adres URL przy użyciu obiektu Run:
+Wyświetl adres URL, aby wyświetlić ważność funkcji przy użyciu obiektu Run:
 
 ```
 automl_run.get_portal_url()
 ```
 
-Można wizualizować wykresu znaczenie funkcji w obszarze roboczym w witrynie Azure portal. Wykres jest również pokazywany przy użyciu `RunDetails` [widżetu Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) w notesie. Aby dowiedzieć się więcej na temat wykresów, zobacz [Opis zautomatyzowanych wyników uczenia maszynowego](how-to-understand-automated-ml.md).
+Możesz wizualizować wykres ważności funkcji w obszarze roboczym w Azure Portal lub ze [strony docelowej obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com). Wykres jest również pokazywany przy użyciu `RunDetails` [widżetu Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) w notesie. Aby dowiedzieć się więcej na temat wykresów, zobacz [Opis zautomatyzowanych wyników uczenia maszynowego](how-to-understand-automated-ml.md).
 
 ```Python
 from azureml.widgets import RunDetails

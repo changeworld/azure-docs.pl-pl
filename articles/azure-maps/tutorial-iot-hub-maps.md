@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 5345bbf2514c8b06ab80d4563227725a398f9407
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 7c3f72c3ce6acfb63e682b479519dba02a9900eb
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898340"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844899"
 ---
 # <a name="implement-iot-spatial-analytics-using-azure-maps"></a>Implementowanie analizy przestrzennej IoT przy użyciu Azure Maps
 
@@ -36,15 +36,15 @@ W tym samouczku wykonasz następujące instrukcje:
 
 Firma Microsoft exemplify rozwiązanie w scenariuszu, w którym firma wynajmu samochodu planuje monitorować i rejestrować zdarzenia dotyczące dzierżawionych samochodów. Często samochody wynajmujące są wynajęcie samochodów w określonym regionie geograficznym i muszą śledzić ich miejsce pobytu podczas dzierżawy. Każde wystąpienie, które obejmuje samochód opuszczający wskazany region geograficzny, musi zostać zarejestrowane, aby zasady, opłaty i inne aspekty biznesowe mogły być prawidłowo obsługiwane.
 
-W naszym przypadku użycia samochody najmu są wyposażone w urządzenia IoT, które regularnie wysyłają dane telemetryczne do usługi Azure IoT Hub. Dane telemetryczne obejmują bieżącą lokalizację i wskazuje, czy silnik samochodu jest uruchomiony. Schemat lokalizacji urządzenia jest zgodny ze [schematem Plug and Play IoT dla danych](https://github.com/Azure/IoTPlugandPlay/blob/master/Schemas/geospatial.md)geoprzestrzennych. Schemat telemetrii urządzenia dla samochodu wynajmu:
+W naszym przypadku użycia samochody najmu są wyposażone w urządzenia IoT, które regularnie wysyłają dane telemetryczne do usługi Azure IoT Hub. Dane telemetryczne obejmują bieżącą lokalizację i wskazuje, czy silnik samochodu jest uruchomiony. Schemat lokalizacji urządzenia jest zgodny ze [schematem Plug and Play IoT dla danych geoprzestrzennych](https://github.com/Azure/IoTPlugandPlay/blob/master/Schemas/geospatial.md). Schemat telemetrii urządzenia dla samochodu wynajmu:
 
 ```JSON
 {
     "data": {
-         "properties": {
+        "properties": {
             "Engine": "ON"
-         },
-         "systemProperties": {
+        },
+        "systemProperties": {
             "iothub-content-type": "application/json",
             "iothub-content-encoding": "utf-8",
             "iothub-connection-device-id": "ContosoRentalDevice",
@@ -52,13 +52,13 @@ W naszym przypadku użycia samochody najmu są wyposażone w urządzenia IoT, kt
             "iothub-connection-auth-generation-id": "636959817064335548",
             "iothub-enqueuedtime": "2019-06-18T00:17:20.608Z",
             "iothub-message-source": "Telemetry"
-         },
-         "body": { 
-                    "location": { 
-                        "type": "Point",
-                        "coordinates": [ -77.025988698005662, 38.9015330523316 ]
-                     } 
-                 } 
+        },
+        "body": { 
+            "location": { 
+                "type": "Point",
+                "coordinates": [ -77.025988698005662, 38.9015330523316 ]
+            } 
+        } 
     }
 }
 ```
@@ -151,7 +151,7 @@ Aby można było nawiązać połączenie z IoT Hub, urządzenie musi być zareje
 
 ## <a name="upload-geofence"></a>Przekaż geoogrodzenie
 
-Będziemy używać [aplikacji Poster](https://www.getpostman.com) do [przekazywania](https://docs.microsoft.com/azure/azure-maps/geofence-geojson) geoogrodzenia do usługi Azure Maps przy użyciu interfejsu API przekazywania danych Azure Maps. Każde zdarzenie, gdy kabina znajduje się poza tym geoogrodzeniem, zostanie zarejestrowane.
+Będziemy używać [aplikacji Poster](https://www.getpostman.com) do [przekazywania geoogrodzenia](https://docs.microsoft.com/azure/azure-maps/geofence-geojson) do usługi Azure Maps przy użyciu interfejsu API przekazywania danych Azure Maps. Każde zdarzenie, gdy kabina znajduje się poza tym geoogrodzeniem, zostanie zarejestrowane.
 
 Otwórz aplikację Poster i postępuj zgodnie z poniższymi instrukcjami, aby przekazać geoogrodzenie przy użyciu Azure Maps, interfejsu API przekazywania danych.  
 
@@ -171,7 +171,7 @@ Otwórz aplikację Poster i postępuj zgodnie z poniższymi instrukcjami, aby pr
    
     ![Parametry klucz-wartość narzędzia Postman](./media/tutorial-iot-hub-maps/postman-key-vals.png)
 
-4. Kliknij pozycję **treść** , a następnie wybierz pozycję nieprzetworzony Format wejściowy, a następnie wybierz pozycję **JSON (aplikacja/tekst)** jako format danych wejściowych z listy rozwijanej. Otwórz plik danych JSON w [tym miejscu](https://raw.githubusercontent.com/Azure-Samples/iothub-to-azure-maps-geofencing/master/src/Data/geofence.json?token=AKD25BYJYKDJBJ55PT62N4C5LRNN4)i skopiuj kod JSON do sekcji treść w ogłoszeniu jako dane do przekazania, a następnie kliknij pozycję **Wyślij**.
+4. Kliknij pozycję **treść** , a następnie wybierz pozycję **nieprzetworzony** Format wejściowy, a następnie wybierz pozycję **JSON (aplikacja/tekst)** jako format danych wejściowych z listy rozwijanej. Otwórz plik danych JSON w [tym miejscu](https://raw.githubusercontent.com/Azure-Samples/iothub-to-azure-maps-geofencing/master/src/Data/geofence.json?token=AKD25BYJYKDJBJ55PT62N4C5LRNN4)i skopiuj kod JSON do sekcji treść w ogłoszeniu jako dane do przekazania, a następnie kliknij pozycję **Wyślij**.
     
     ![Opublikuj dane](./media/tutorial-iot-hub-maps/post-json-data.png)
     
@@ -217,7 +217,7 @@ Azure Functions to bezserwerowa usługa obliczeniowa, która umożliwia uruchami
 
 4. Wybierz pozycję **więcej szablonów** , a następnie kliknij przycisk **Zakończ i Wyświetl szablony**. 
 
-5. Wybierz szablon z wyzwalaczem **Azure Event Grid**. Zainstaluj rozszerzenia, jeśli zostanie wyświetlony monit, nazwij funkcję i naciśnij przycisk **Utwórz**.
+5. Wybierz szablon z **wyzwalaczem Azure Event Grid**. Zainstaluj rozszerzenia, jeśli zostanie wyświetlony monit, nazwij funkcję i naciśnij przycisk **Utwórz**.
 
     ![Funkcja — szablon](./media/tutorial-iot-hub-maps/eventgrid-funct.png)
 
@@ -232,7 +232,7 @@ Azure Functions to bezserwerowa usługa obliczeniowa, która umożliwia uruchami
     
     ![Dodaj zdarzenie do siatki](./media/tutorial-iot-hub-maps/add-egs.png)
 
-11. Wypełnij szczegóły subskrypcji w obszarze **szczegóły subskrypcji zdarzeń** Twoja subskrypcja i schemat zdarzeń wybierz pozycję "Event Grid schemat". W obszarze **Szczegóły tematu** wybierz pozycję "konta usługi Azure IoT Hub" jako typ tematu, wybierz tę samą subskrypcję, która została użyta do utworzenia grupy zasobów, wybierz pozycję "ContosoRental" jako "grupę zasobów" i wybierz IoT Hub utworzone jako "zasób". Wybierz dane telemetryczne **urządzenia** jako typ zdarzenia. Po wybraniu tych opcji w polu "typ tematu" zostanie wyświetlona automatyczna zmiana "IoT Hub".
+11. Wypełnij szczegóły subskrypcji w obszarze **szczegóły subskrypcji zdarzeń** Twoja subskrypcja i schemat zdarzeń wybierz pozycję "Event Grid schemat". W obszarze **Szczegóły tematu** wybierz pozycję "konta usługi Azure IoT Hub" jako typ tematu, wybierz tę samą subskrypcję, która została użyta do utworzenia grupy zasobów, wybierz pozycję "ContosoRental" jako "grupę zasobów" i wybierz IoT Hub utworzone jako "zasób". Wybierz dane **telemetryczne urządzenia** jako typ zdarzenia. Po wybraniu tych opcji w polu "typ tematu" zostanie wyświetlona automatyczna zmiana "IoT Hub".
 
     ![zdarzenie — siatka — subskrypcja](./media/tutorial-iot-hub-maps/af-egs.png)
  

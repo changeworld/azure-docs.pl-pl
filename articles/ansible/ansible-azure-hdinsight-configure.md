@@ -1,6 +1,6 @@
 ---
-title: Samouczek — Konfigurowanie klastra w usłudze Azure HDInsight, za pomocą rozwiązania Ansible | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak za pomocą rozwiązania Ansible, można utworzyć i zmienić rozmiaru usługi Azure HDInsight
+title: Samouczek — Konfigurowanie klastra w usłudze Azure HDInsight przy użyciu usługi rozwiązania ansible | Microsoft Docs
+description: Dowiedz się, jak utworzyć usługę Azure HDInsight i zmienić jej rozmiar przy użyciu programu rozwiązania ansible
 keywords: ansible, azure, devops, bash, playbook, apache hadoop, hdinsight
 ms.topic: tutorial
 ms.service: ansible
@@ -8,26 +8,26 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: d6b6dd333d04457a68c3f2452d3cc538a32b61f6
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: ff135473443589650d90bfb7f3e5aa248f72e821
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230290"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861278"
 ---
-# <a name="tutorial-configure-a-cluster-in-azure-hdinsight-using-ansible"></a>Samouczek: Konfigurowanie klastra w usłudze Azure HDInsight, za pomocą rozwiązania Ansible
+# <a name="tutorial-configure-a-cluster-in-azure-hdinsight-using-ansible"></a>Samouczek: Konfigurowanie klastra w usłudze Azure HDInsight przy użyciu rozwiązania ansible
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
-[Usługa Azure HDInsight](/azure/hdinsight/) to usługa oparta na technologii Hadoop analizy do przetwarzania danych. HDInsight to narzędzie ETL (extract, transform, load) używany do pracy z danymi big data — ze strukturą lub bez. HDInsight obsługuje kilka [typy klastrów](/azure/hdinsight/hadoop/apache-hadoop-introduction#cluster-types-in-hdinsight) gdzie każdy typ obsługuje inny zestaw składników. 
+[Azure HDInsight](/azure/hdinsight/) to oparta na usłudze Hadoop Usługa analityczna służąca do przetwarzania danych. HDInsight to narzędzie ETL (wyodrębnianie, przekształcanie, ładowanie) używane do pracy z danymi Big Data — ze strukturą lub bez struktury. Usługa HDInsight obsługuje kilka [typów klastrów](/azure/hdinsight/hadoop/apache-hadoop-introduction) , w których każdy typ obsługuje inny zestaw składników. 
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
-> * Tworzenie konta magazynu dla HDInsight
-> * Konfigurowanie [klastra platformy HDInsight Spark](/azure/hdinsight/spark/apache-spark-overview).
-> * Zmień rozmiar klastra
+> * Tworzenie konta magazynu dla usługi HDInsight
+> * Skonfiguruj [klaster usługi HDInsight Spark](/azure/hdinsight/spark/apache-spark-overview).
+> * Zmiana rozmiaru klastra
 > * Usuwanie klastra
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -35,9 +35,9 @@ ms.locfileid: "65230290"
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)] 
 
-## <a name="create-a-random-postfix"></a>Tworzenie losowego przyrostka
+## <a name="create-a-random-postfix"></a>Tworzenie losowego przyrostku
 
-Kod elementu playbook w tej sekcji tworzy losowe przyrostkowe do użycia jako część nazwy klastra Azure HDInsight.
+Kod element PlayBook w tej sekcji tworzy losowy przyrostk do użycia w ramach nazwy klastra usługi Azure HDInsight.
 
 ```yml
 - hosts: localhost
@@ -52,9 +52,9 @@ Kod elementu playbook w tej sekcji tworzy losowe przyrostkowe do użycia jako cz
 
 ## <a name="create-resource-group"></a>Tworzenie grupy zasobów
 
-Grupę zasobów platformy Azure to logiczny kontener, w których Azure zasoby są wdrażane i zarządzane.
+Grupa zasobów platformy Azure to logiczny kontener, w którym są wdrażane i zarządzane zasoby platformy Azure.
 
-Kod elementu playbook w tej sekcji tworzy grupę zasobów.
+Kod element PlayBook w tej sekcji tworzy grupę zasobów.
 
 
 ```yml
@@ -65,11 +65,11 @@ Kod elementu playbook w tej sekcji tworzy grupę zasobów.
         location: "{{ location }}"
 ```
 
-## <a name="create-a-storage-account-and-retrieve-key"></a>Tworzenie konta magazynu i pobrać klucz
+## <a name="create-a-storage-account-and-retrieve-key"></a>Tworzenie konta magazynu i pobieranie klucza
 
-Konto usługi Azure storage jest używana jako magazyn domyślny dla klastra HDInsight. 
+Konto magazynu platformy Azure jest używane jako magazyn domyślny dla klastra usługi HDInsight. 
 
-Kod elementu playbook w tej sekcji pobiera klucz używany do uzyskania dostępu do konta magazynu.
+Kod element PlayBook w tej sekcji Pobiera klucz używany do uzyskiwania dostępu do konta magazynu.
 
 ```yml
 - name: Create storage account
@@ -97,7 +97,7 @@ Kod elementu playbook w tej sekcji pobiera klucz używany do uzyskania dostępu 
 
 ## <a name="create-an-hdinsight-spark-cluster"></a>Tworzenie klastra Spark w usłudze HDInsight
 
-Kod elementu playbook w tej sekcji tworzy klaster usługi Azure HDInsight.
+Kod element PlayBook w tej sekcji tworzy klaster usługi Azure HDInsight.
 
 ```yml
 - name: Create instance of Cluster
@@ -142,9 +142,9 @@ Tworzenie wystąpienia może potrwać kilka minut.
 
 ## <a name="resize-the-cluster"></a>Zmiana rozmiaru klastra
 
-Po utworzeniu klastra tylko ustawienie, które można zmienić jest liczba węzłów procesu roboczego. 
+Po utworzeniu klastra jedynym ustawieniem, które można zmienić, jest liczba węzłów procesu roboczego. 
 
-Kod elementu playbook w tej sekcji zwiększa liczbę węzłów procesu roboczego, aktualizując `target_instance_count` w ramach `workernode`.
+Kod element PlayBook w tej sekcji zwiększa liczbę węzłów procesu roboczego przez aktualizację `target_instance_count` w ramach `workernode`programu.
 
 ```yml
 - name: Resize cluster
@@ -188,11 +188,11 @@ Kod elementu playbook w tej sekcji zwiększa liczbę węzłów procesu roboczego
   register: output
 ```
 
-## <a name="delete-the-cluster-instance"></a>Usuń wystąpienie klastra
+## <a name="delete-the-cluster-instance"></a>Usuwanie wystąpienia klastra
 
-Rozliczenia dla klastrów HDInsight są naliczane proporcjonalnie za minutę. 
+Opłaty za klastry usługi HDInsight są naliczane proporcjonalnie za minutę. 
 
-Kod elementu playbook w tej sekcji spowoduje usunięcie klastra.
+Kod element PlayBook w tej sekcji usuwa klaster.
 
 ```yml
 - name: Delete instance of Cluster
@@ -202,11 +202,11 @@ Kod elementu playbook w tej sekcji spowoduje usunięcie klastra.
     state: absent
 ```
 
-## <a name="get-the-sample-playbook"></a>Pobierz Podręcznik próbki
+## <a name="get-the-sample-playbook"></a>Pobierz przykładową element PlayBook
 
-Istnieją dwa sposoby pobrania Podręcznik pełny przykład:
-- [Pobierz Podręcznik](https://github.com/Azure-Samples/ansible-playbooks/blob/master/hdinsight_create.yml) i zapisać go w celu `hdinsight_create.yml`.
-- Utwórz nowy plik o nazwie `hdinsight_create.yml` i skopiuj do niego następującą zawartość:
+Istnieją dwa sposoby uzyskania kompletnej przykładowej element PlayBook:
+- [Pobierz element PlayBook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/hdinsight_create.yml) i Zapisz go w `hdinsight_create.yml`.
+- Utwórz nowy plik o nazwie `hdinsight_create.yml` i skopiuj go do następującej zawartości:
 
 ```yml
 ---
@@ -348,14 +348,14 @@ Istnieją dwa sposoby pobrania Podręcznik pełny przykład:
         state: absent
 ```
 
-## <a name="run-the-sample-playbook"></a>Uruchamianie elementu playbook próbki
+## <a name="run-the-sample-playbook"></a>Uruchamianie przykładowej element PlayBook
 
-W tej sekcji Uruchamianie elementu playbook, aby przetestować różne funkcje przedstawione w tym artykule.
+W tej sekcji należy uruchomić element PlayBook w celu przetestowania różnych funkcji przedstawionych w tym artykule.
 
-Przed uruchomieniem elementu playbook, należy wprowadzić następujące zmiany:
-- W `vars` sekcji i Zastąp `{{ resource_group_name }}` nazwą grupy zasobów.
+Przed uruchomieniem element PlayBook wprowadź następujące zmiany:
+- W sekcji Zastąp `{{ resource_group_name }}`symbolzastępczy `vars` nazwą grupy zasobów.
 
-Uruchamianie elementu playbook, przy użyciu `ansible-playbook` polecenia:
+Uruchom element PlayBook przy użyciu `ansible-playbook` polecenia:
 
 ```bash
 ansible-playbook hdinsight.yml
@@ -363,9 +363,9 @@ ansible-playbook hdinsight.yml
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie są już potrzebne, Usuń zasoby utworzone w tym artykule. 
+Gdy nie jest już potrzebne, Usuń zasoby utworzone w tym artykule. 
 
-Zapisz poniższy kod jako `cleanup.yml`:
+Zapisz następujący kod jako `cleanup.yml`:
 
 ```yml
 - hosts: localhost
@@ -379,13 +379,13 @@ Zapisz poniższy kod jako `cleanup.yml`:
         state: absent
 ```
 
-Uruchamianie elementu playbook, przy użyciu `ansible-playbook` polecenia:
+Uruchom element PlayBook przy użyciu `ansible-playbook` polecenia:
 
 ```bash
 ansible-playbook cleanup.yml
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"] 
 > [Rozwiązanie Ansible na platformie Azure](/azure/ansible/)

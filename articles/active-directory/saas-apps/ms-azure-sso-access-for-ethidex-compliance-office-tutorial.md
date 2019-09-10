@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 09/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa0ec97683fe8597ced234fe4b7251a4daeed49f
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 00cbb5ff4b9354d0d1702161460b2646669f34c2
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173497"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844369"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ms-azure-sso-access-for-ethidex-compliance-office"></a>Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z usługą MS Azure SSO Access dla pakietu Office Ethidex zgodności™
 
@@ -66,7 +66,7 @@ Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD przy u
 1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
     1. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
     1. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
-1. **[Konfigurowanie dostępu SSO MS Azure dla usługi Ethidex zgodności](#configure-ms-azure-sso-access-for-ethidex-compliance-office-sso)** z logowaniem jednokrotnym Office — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+1. **[Konfigurowanie dostępu SSO MS Azure dla usługi Ethidex zgodności z logowaniem](#configure-ms-azure-sso-access-for-ethidex-compliance-office-sso)** jednokrotnym Office — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
     1. **[Utwórz dostęp do usługi MS Azure SSO dla użytkownika testowego Ethidex zgodności](#create-ms-azure-sso-access-for-ethidex-compliance-office-test-user)** , aby uzyskać odpowiedni odpowiednik B. Simon w usłudze MS Azure SSO Access for Ethidex Office™, która jest połączona z reprezentacją usługi Azure AD.
 1. **[Przetestuj logowanie](#test-sso)** jednokrotne — aby sprawdzić, czy konfiguracja działa.
 
@@ -74,14 +74,20 @@ Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD przy u
 
 Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
 
-1. W [Azure Portal](https://portal.azure.com/)na stronie integracja z **usługą MS Azure logowania jednokrotnego dla programu™ Ethidex** , Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie**jednokrotne.
-1. Na stronie **Wybierz metodę logowania** jednokrotnego wybierz pozycję **SAML**.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja z **usługą MS Azure logowania jednokrotnego dla programu™ Ethidex** , Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie jednokrotne**.
+1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-1. W sekcji **Podstawowa konfiguracja języka SAML** aplikacja została wstępnie skonfigurowana i wymagane adresy URL są już wstępnie wypełnione na platformie Azure. Użytkownik musi zapisać konfigurację, klikając przycisk **Zapisz** .
+1. W sekcji **Podstawowa konfiguracja języka SAML** wprowadź wartości dla następujących pól:
 
+    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `com.ethidex.prod.<CLIENTID>`
+
+    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://www.ethidex.com/saml2/sp/acs/<CLIENTID>`
+
+    > [!NOTE]
+    > Te wartości nie są prawdziwe. Zastąp te wartości rzeczywistymi wartościami identyfikatora i adresu URL odpowiedzi. Skontaktuj się z pomocą [techniczną usługi MS Azure logowania jednokrotnego dla programu™ Ethidex](mailto:support@ethidex.com) , aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 1. Aplikacja Microsoft Azure SSO Access dla programu Ethidex zgodność aplikacji pakietu™ Office oczekuje potwierdzeń SAML w określonym formacie, co wymaga dodania niestandardowych mapowań atrybutów do konfiguracji atrybutów tokenu SAML. Na poniższym zrzucie ekranu przedstawiono listę atrybutów domyślnych, gdzie atrybut **nameidentifier** jest mapowany na atrybut **user.userprincipalname**. Usługa MS Azure SSO Access for Ethidex — aplikacja pakietu™ Office oczekuje na zamapowanie **NameIdentifier** z **użytkownikiem. mail**, dlatego należy edytować Mapowanie atrybutów, klikając ikonę **Edytuj** i zmieniając mapowanie atrybutu.
 

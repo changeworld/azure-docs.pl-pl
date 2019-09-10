@@ -1,6 +1,6 @@
 ---
-title: Monitoruj łączność urządzeń przy użyciu usługi Azure IoT Central Explorer
-description: Monitorowanie komunikatów przesyłanych z urządzenia i obserwować zmiany bliźniaczej reprezentacji urządzenia przez IoT Central Eksplorator interfejsu wiersza polecenia.
+title: Monitorowanie łączności urządzeń za pomocą Eksploratora IoT Central platformy Azure
+description: Monitoruj komunikaty urządzeń i obserwuj zmiany dotyczące sznurka urządzenia za pomocą interfejsu wiersza polecenia IoT Central Explorer.
 author: viv-liu
 ms.author: viviali
 ms.date: 06/17/2019
@@ -8,70 +8,70 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 4d17f0e5273c7397bd9c6a71d14b7992d8652768
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 38cbe43e9038a47c4e222fd4744f0b844f9ddb4e
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165865"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845685"
 ---
-# <a name="monitor-device-connectivity-using-the-azure-iot-central-explorer"></a>Monitoruj łączność urządzeń przy użyciu usługi Azure IoT Central Explorer
+# <a name="monitor-device-connectivity-using-the-azure-iot-central-explorer"></a>Monitorowanie łączności urządzeń za pomocą Eksploratora IoT Central platformy Azure
 
 *Ten temat dotyczy konstruktorów i administratorów.*
 
-Użyj IoT Central Eksplorator interfejsu wiersza polecenia, aby wyświetlić komunikaty urządzenia jest wysyłany do IoT Central i obserwować zmiany w bliźniaczej reprezentacji usługi IoT Hub. Zyskaj lepszy wgląd w stan łączności między urządzeniami i diagnozować problemy komunikaty z urządzenia nie osiągnie chmury lub nie odpowiada na zmiany w bliźniaczej reprezentacji urządzenia, można użyć tego narzędzia typu open source.
+Użyj interfejsu wiersza polecenia Eksploratora IoT Central, aby wyświetlić komunikaty wysyłane przez urządzenia do IoT Central i obserwować zmiany w IoT Hubch sznurów. Za pomocą tego narzędzia typu "open source" można uzyskać dokładniejsze informacje o stanie łączności urządzeń i zdiagnozować problemy z komunikatami urządzeń, które nie docierają do chmury lub urządzeń, które nie odpowiadają na zmiany sznurka.
 
-[Odwiedź stronę repozytorium iotc Eksploratora w usłudze GitHub.](https://aka.ms/iotciotcexplorercligithub)
+[Odwiedź repozytorium IOTC-Explorer w serwisie GitHub.](https://aka.ms/iotciotcexplorercligithub)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-+ Środowisko node.js w wersji 8.x lub nowszej - https://nodejs.org
-+ Administrator aplikacji musi wygenerować token dostępu do użycia w Eksploratorze iotc
++ Node. js w wersji 8. x lub nowszej — https://nodejs.org
++ Administrator aplikacji musi wygenerować token dostępu, który będzie używany w programie IOTC-Explorer
 
-## <a name="install-iotc-explorer"></a>Instalowanie Eksploratora iotc
+## <a name="install-iotc-explorer"></a>Instalowanie IOTC-Explorer
 
-Uruchom następujące polecenie z wiersza polecenia do zainstalowania:
+Uruchom następujące polecenie w wierszu polecenia, aby zainstalować program:
 
 ```cmd/sh
 npm install -g iotc-explorer
 ```
 
 > [!NOTE]
-> Zazwyczaj należy uruchomić polecenie instalacji z `sudo` w środowiskach podobnymi do systemu Unix.
+> Zazwyczaj należy uruchomić polecenie `sudo` instalacji w środowiskach w systemie UNIX.
 
-## <a name="run-iotc-explorer"></a>Uruchom Eksploratora iotc
+## <a name="run-iotc-explorer"></a>Uruchamianie IOTC-Explorer
 
-W poniższych sekcjach opisano typowe polecenia i opcje używane po uruchomieniu `iotc-explorer`. Aby wyświetlić pełny zestaw poleceń i opcji, należy przekazać `--help` do `iotc-explorer` lub dowolny z jej podpoleceń polecenia.
+W poniższych sekcjach opisano typowe polecenia i opcje, których można użyć podczas uruchamiania `iotc-explorer`programu. Aby wyświetlić pełen zestaw poleceń i opcji, Przekaż `--help` do `iotc-explorer` lub dowolne z jego podpoleceń.
 
-### <a name="login"></a>Login
+### <a name="login"></a>Zaloguj
 
-Zanim można rozpocząć pracę, musisz mieć administrator aplikacji IoT Central w celu uzyskania tokenu dostępu do użycia. Administrator wykonuje następujące czynności:
+Przed rozpoczęciem należy mieć uprawnienia administratora aplikacji IoT Central, aby uzyskać token dostępu do użycia. Administrator wykonuje następujące czynności:
 
-1. Przejdź do **administracji** następnie **tokeny dostępu**.
-1. Wybierz **Wygeneruj Token**.
+1. Przejdź do obszarze **Administracja** , a następnie wybierz pozycję **tokeny dostępu**.
+1. Wybierz pozycję **Generuj token**.
     ![Zrzut ekranu strony tokenu dostępu](media/howto-use-iotc-explorer/accesstokenspage.png)
 
-1. Wprowadź nazwę tokenu, wybierz **dalej**, a następnie **kopiowania**.
+1. Wprowadź nazwę tokenu, wybierz pozycję **dalej**, a następnie polecenie **Kopiuj**.
     > [!NOTE]
-    > Wartość tokenu jest wyświetlane tylko raz, więc należy skopiować przed zamknięciem okna dialogowego. Po zamknięciu okna dialogowego, nigdy nie wyświetleniem ponownie.
+    > Wartość tokenu jest wyświetlana tylko raz, więc należy ją skopiować przed zamknięciem okna dialogowego. Po zamknięciu okna dialogowego nigdy nie będzie ono wyświetlane ponownie.
 
-    ![Kopiuj zrzut ekranu okna dialogowego tokenu dostępu](media/howto-use-iotc-explorer/copyaccesstoken.png)
+    ![Zrzut ekranu okna dialogowego do kopiowania tokenu dostępu](media/howto-use-iotc-explorer/copyaccesstoken.png)
 
-Ten token służy do logowania do interfejsu wiersza polecenia w następujący sposób:
+Możesz użyć tokenu, aby zalogować się do interfejsu wiersza polecenia w następujący sposób:
 
 ```cmd/sh
 iotc-explorer login "<Token value>"
 ```
 
-Jeśli wolisz nie mają tokenu utrwalone w historii powłoki, możesz pozostawić ten token wyjściowy, a zamiast tego podać go po wyświetleniu monitu:
+Jeśli wolisz nie mieć tokenu utrwalonego w historii powłoki, możesz opuścić token i zamiast tego podać go po wyświetleniu monitu:
 
 ```cmd/sh
 iotc-explorer login
 ```
 
-### <a name="monitor-device-messages"></a>Monitorowanie komunikatów przesyłanych z urządzenia
+### <a name="monitor-device-messages"></a>Monitorowanie komunikatów urządzenia
 
-Możesz obejrzeć komunikatów pochodzących z określonego urządzenia lub wszystkich urządzeń w swojej aplikacji za pomocą `monitor-messages` polecenia. To polecenie uruchamia obserwatora, który jest stale wysyła nowe wiadomości przychodzące:
+Komunikaty pochodzące z określonego urządzenia lub wszystkich urządzeń w aplikacji można obejrzeć przy użyciu `monitor-messages` polecenia. To polecenie uruchamia obserwatora, który ciągle wyprowadza nowe wiadomości w miarę ich nadejścia:
 
 Aby obejrzeć wszystkie urządzenia w aplikacji, uruchom następujące polecenie:
 
@@ -81,23 +81,23 @@ iotc-explorer monitor-messages
 
 Dane wyjściowe:
 
-![dane wyjściowe polecenia monitorowanie wiadomości](media/howto-use-iotc-explorer/monitormessages.png)
+![Monitor — dane wyjściowe polecenia](media/howto-use-iotc-explorer/monitormessages.png)
 
-Aby obejrzeć określonego urządzenia, Dodaj identyfikator urządzenia w celu polecenia:
+Aby obejrzeć określone urządzenie, po prostu Dodaj identyfikator urządzenia na końcu polecenia:
 
 ```cmd/sh
 iotc-explorer monitor-messages <your-device-id>
 ```
 
-Można również danych wyjściowych format bardziej przyjaznego dla maszyny, dodając `--raw` — opcja polecenia:
+Możesz również wypróbować większy format przyjazny dla maszyn, dodając `--raw` opcję do polecenia:
 
-```
+```cmd/sh
 iotc-explorer monitor-messages --raw
 ```
 
-### <a name="get-device-twin"></a>Pobierz bliźniaczej reprezentacji urządzenia
+### <a name="get-device-twin"></a>Pobierz sznurki urządzenia
 
-Możesz użyć `get-twin` polecenie, aby pobrać zawartość bliźniaczej reprezentacji urządzenia IoT Central. Aby to zrobić, uruchom następujące polecenie:
+Możesz użyć polecenia, `get-twin` Aby uzyskać zawartość sznurka dla IoT Central urządzenia. Aby to zrobić, uruchom następujące polecenie:
 
 ```cmd/sh
 iotc-explorer get-twin <your-device-id>
@@ -105,14 +105,14 @@ iotc-explorer get-twin <your-device-id>
 
 Dane wyjściowe:
 
-![dane wyjściowe polecenia GET-twin](media/howto-use-iotc-explorer/getdevicetwin.png)
+![dane wyjściowe polecenia Get-bliźniaczy](media/howto-use-iotc-explorer/getdevicetwin.png)
 
-Podobnie jak w przypadku `monitor-messages`, otrzymasz więcej maszyny przyjaznego dla danych wyjściowych, przekazując `--raw` opcji:
+Podobnie jak `monitor-messages`w przypadku programu, można uzyskać więcej przyjaznych dla maszyn danych wyjściowych, przechodząc do `--raw` opcji:
 
 ```cmd/sh
 iotc-explorer get-twin <your-device-id> --raw
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy wyjaśniono sposób za pomocą Eksploratora IoT Central, sugerowane następnym krokiem jest Eksplorowanie [zarządzanie urządzeniami IoT Central](howto-manage-devices.md).
+Teraz, gdy wiesz już, jak korzystać z Eksploratora IoT Central, sugerowanym następnym krokiem jest zapoznanie się z tematem [Zarządzanie urządzeniami IoT Central](howto-manage-devices.md).

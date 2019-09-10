@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c775f5352461dce6c63f5cc4a1c910c7f8df80ec
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 9d261acf80f51a09cc4daa9182a87b0354cf8a3d
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69564097"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845402"
 ---
 # <a name="view-the-list-of-cloudsimple-portal-users"></a>Wyświetlanie listy użytkowników portalu CloudSimple
 
-Użytkownicy są dodawani do listy użytkowników, gdy po raz pierwszy uzyskują dostęp do portalu CloudSimple. Aby wyświetlić listę użytkowników, którzy mają dostęp do portalu CloudSimple za pomocą platformy Azure, [uzyskaj dostęp do portalu CloudSimple](monitor-activity.md), wybierz pozycję **konto** w menu po stronie, a następnie wybierz pozycję **Użytkownicy** w portalu CloudSimple.
+Użytkownicy są dodawani do listy użytkowników, gdy po raz pierwszy uzyskują dostęp do portalu CloudSimple. Aby wyświetlić listę użytkowników, którzy mają dostęp do portalu CloudSimple za pomocą platformy Azure, [uzyskaj dostęp do portalu CloudSimple](access-cloudsimple-portal.md), wybierz pozycję **konto** w menu po stronie, a następnie wybierz pozycję **Użytkownicy** w portalu CloudSimple.
 
 * Aby wyświetlić szczegóły użytkownika, w tym subskrypcję platformy Azure, dzierżawę i identyfikatory użytkowników, kliknij wpis na stronie **Użytkownicy** .
 

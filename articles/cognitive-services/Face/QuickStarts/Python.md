@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 09/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 8e45c8924bbc5cf50877e6c7656dacd7971f59b2
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: a00ec77148433d64f2980b1bb47d753d70a5ec20
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606796"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859022"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>Szybki start: Wykrywanie twarzy na obrazie przy użyciu interfejsu API REST rozpoznawania twarzy i języka Python
 
@@ -38,12 +38,12 @@ Ten przewodnik Szybki start można uruchomić jako notes Jupyter w programie [My
 
 ## <a name="create-and-run-the-sample"></a>Tworzenie i uruchamianie przykładowego kodu
 
-Alternatywnie można uruchomić tego przewodnika Szybki Start z wiersza polecenia wykonując następujące kroki:
+Można też uruchomić ten przewodnik Szybki Start z poziomu wiersza polecenia, wykonując następujące czynności:
 
 1. Skopiuj następujący kod do edytora tekstów.
 1. W razie potrzeby wprowadź następujące zmiany w kodzie:
     1. Zastąp wartość `subscription_key` kluczem subskrypcji.
-    1. Zastąp wartość `face_api_url` przy użyciu adresu URL punktu końcowego dla zasobu interfejsu API rozpoznawania twarzy w regionie platformy Azure, gdzie uzyskać klucze subskrypcji, jeśli to konieczne.
+    1. Edytuj wartość `face_api_url` , aby uwzględnić adres URL punktu końcowego dla zasobu interfejs API rozpoznawania twarzy.
     1. Opcjonalnie zastąp wartość `image_url` adresem URL innego obrazu, który chcesz analizować.
 1. Zapisz kod jako plik z rozszerzeniem `.py`. Na przykład `detect-face.py`.
 1. Otwórz okno wiersza polecenia.
@@ -53,10 +53,12 @@ Alternatywnie można uruchomić tego przewodnika Szybki Start z wiersza poleceni
 import requests
 import json
 
+# set to your own subscription key value
 subscription_key = None
 assert subscription_key
 
-face_api_url = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect'
+# replace <My Endpoint String> with the string from your endpoint URL
+face_api_url = 'https://<My Endpoint String>.com/face/v1.0/detect'
 
 image_url = 'https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg'
 
@@ -256,7 +258,7 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 ]
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Następnie zapoznaj się z dokumentacją referencyjną interfejsu API rozpoznawania twarzy, aby dowiedzieć się więcej na temat obsługiwanych scenariuszy.
 

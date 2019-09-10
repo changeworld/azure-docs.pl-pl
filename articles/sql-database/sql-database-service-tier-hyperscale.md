@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/06/2019
-ms.openlocfilehash: d9d70444adee26eab77c0e3d256cd8f340a1b4c8
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 1d70c5d86221213ae3f9a2d31fdf40857cb516be
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981162"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845659"
 ---
 # <a name="hyperscale-service-tier-for-up-to-100-tb"></a>Skalowanie warstwy usług dla maksymalnie 100 TB
 
@@ -186,7 +186,7 @@ Aby poprosić o możliwość tworzenia baz danych w regionach, których nie ma n
 
 2. Kliknij [ **nowe żądanie obsługi**](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 
-    ![Blok pomocy i obsługi technicznej platformy Azure](media/sql-database-service-tier-hyperscale/whitelist-request-screen-1.png)
+    ![Blok pomocy i obsługi technicznej platformy Azure](media/sql-database-service-tier-hyperscale/request-screen-1.png)
 
 3. W obszarze **typ problemu**wybierz pozycję **usługi i limity subskrypcji (przydziały)**
 
@@ -198,13 +198,13 @@ Aby poprosić o możliwość tworzenia baz danych w regionach, których nie ma n
 
 1. Kliknij pozycję **Podaj szczegóły**
 
-    ![Szczegóły problemu](media/sql-database-service-tier-hyperscale/whitelist-request-screen-2.png)
+    ![Szczegóły problemu](media/sql-database-service-tier-hyperscale/request-screen-2.png)
 
 8. Wybierz **typ przydziału SQL Database**: **Inne żądanie limitu przydziału**
 
 9. Wypełnij następujący szablon:
 
-    ![Szczegóły limitu przydziału](media/sql-database-service-tier-hyperscale/whitelist-request-screen-3.png)
+    ![Szczegóły limitu przydziału](media/sql-database-service-tier-hyperscale/request-screen-3.png)
 
     Podaj następujące informacje w szablonie
 

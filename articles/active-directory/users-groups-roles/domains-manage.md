@@ -1,6 +1,6 @@
 ---
-title: Dodać i zweryfikować niestandardowe nazwy domen — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Zarządzanie pojęcia i kwestie dotyczące zarządzania nazwę domeny w usłudze Azure Active Directory
+title: Dodawanie i weryfikowanie niestandardowych nazw domen — Azure Active Directory | Microsoft Docs
+description: Koncepcje dotyczące zarządzania i porady dotyczące zarządzania nazwą domeny w Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -14,103 +14,103 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 908ae768ae471ab6f49452c99323c31d34772d45
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 750b49e149907f204b8b15f0b5728ab25f917743
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60472335"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844513"
 ---
-# <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Zarządzanie niestandardowymi nazwami domen w usłudze Azure Active Directory
+# <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Zarządzanie niestandardowymi nazwami domen w Azure Active Directory
 
-Nazwa domeny jest ważną częścią identyfikatora dla wielu zasobów katalogu: jest częścią użytkownika nazwy lub adresu e-mail użytkownika, część adresu w grupie i czasami część aplikacji, identyfikator URI dla aplikacji. Zasób w usłudze Azure Active Directory (Azure AD) mogą obejmować nazwę domeny, który jest własnością katalogu, który zawiera zasób. Tylko administratorzy globalni mogą zarządzać domen w usłudze Azure AD.
+Nazwa domeny jest ważną częścią identyfikatora dla wielu zasobów katalogu: jest częścią nazwy użytkownika lub adresu e-mail użytkownika, części adresu dla grupy, a czasami jest częścią identyfikatora URI aplikacji. Zasób w Azure Active Directory (Azure AD) może zawierać nazwę domeny, do której należy katalog zawierający zasób. Tylko administrator globalny może zarządzać domenami w usłudze Azure AD.
 
-## <a name="set-the-primary-domain-name-for-your-azure-ad-directory"></a>Ustaw nazwę domeny głównej dla katalogu usługi Azure AD
+## <a name="set-the-primary-domain-name-for-your-azure-ad-directory"></a>Ustawianie podstawowej nazwy domeny dla katalogu usługi Azure AD
 
-Po utworzeniu katalogu początkowa nazwa domeny, takich jak "contoso.onmicrosoft.com", jest również nazwa domeny głównej. Domena podstawowa jest domyślna nazwa domeny dla nowego użytkownika, po utworzeniu nowego użytkownika. Ustawianie nazwy domeny głównej usprawnia proces dla administratora do tworzenia nowych użytkowników w portalu. Aby zmienić nazwę głównej domeny:
+Po utworzeniu katalogu początkową nazwą domeny, taką jak "contoso.onmicrosoft.com", jest również podstawowa nazwa domeny. Domena podstawowa jest domyślną nazwą domeny dla nowego użytkownika podczas tworzenia nowego użytkownika. Ustawienie nazwy domeny podstawowej upraszcza proces tworzenia nowych użytkowników w portalu przez administratora. Aby zmienić podstawową nazwę domeny:
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta administratora globalnego dla katalogu.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com) przy użyciu konta, które jest administratorem globalnym katalogu.
 2. Wybierz pozycję **Azure Active Directory**.
 3. Wybierz pozycję **Niestandardowe nazwy domen**.
   
    ![Otwieranie strony zarządzania użytkownikami](./media/domains-manage/add-custom-domain.png)
-4. Wybierz nazwę domeny, która ma być podstawową domeną.
-5. Wybierz **Oznacz jako podstawową** polecenia. Potwierdź wybór po wyświetleniu monitu.
+4. Wybierz nazwę domeny, która ma być domeną podstawową.
+5. Wybierz polecenie **Utwórz podstawowe** . Potwierdź wybór po wyświetleniu monitu.
   
-   ![Wprowadź domenę nazwę podstawową](./media/domains-manage/make-primary-domain.png)
+   ![Ustaw nazwę domeny jako podstawową](./media/domains-manage/make-primary-domain.png)
 
-Można zmienić podstawowej nazwy domeny dla katalogu jako zweryfikowanej domenie niestandardowej, która nie jest federacyjna. Domena podstawowa dla katalogu nie będzie zmiana nazwy użytkownika dla wszystkich istniejących użytkowników.
+Nazwę domeny podstawowej dla katalogu można zmienić na dowolną zweryfikowaną domenę niestandardową, która nie jest federacyjny. Zmiana domeny podstawowej dla katalogu nie spowoduje zmiany nazwy użytkownika dla żadnych istniejących użytkowników.
 
 ## <a name="add-custom-domain-names-to-your-azure-ad-tenant"></a>Dodawanie niestandardowych nazw domen do dzierżawy usługi Azure AD
 
-Możesz dodać maksymalnie 900 nazw domen zarządzanych. Jeśli konfigurujesz wszystkie domeny dla federacji z usługą Active Directory w środowisku lokalnym, możesz dodać do 450 nazwy domeny w każdym katalogu.
+Można dodać maksymalnie 900 nazw domen zarządzanych. Jeśli konfigurujesz wszystkie domeny dla Federacji przy użyciu Active Directory lokalnych, możesz dodać do 450 nazw domen w każdym katalogu.
 
-## <a name="add-subdomains-of-a-custom-domain"></a>Dodać poddomeny domeny niestandardowej
+## <a name="add-subdomains-of-a-custom-domain"></a>Dodawanie poddomen domen niestandardowych
 
-Jeśli chcesz dodać nazwy domen trzeciego poziomu, takie jak "europe.contoso.com" do katalogu, należy najpierw dodać i weryfikowania domeny drugiego poziomu, np. contoso.com. Poddomeny jest automatycznie weryfikowana przez usługę Azure AD. Aby sprawdzić, czy poddomeny, którą dodałeś został zweryfikowany, Odśwież listę domen w przeglądarce.
+Aby dodać nazwę domeny trzeciego poziomu, taką jak "europe.contoso.com", należy najpierw dodać i zweryfikować domenę drugiego poziomu, taką jak contoso.com. Poddomena jest automatycznie weryfikowana przez usługę Azure AD. Aby sprawdzić, czy dododana poddomena została zweryfikowana, Odśwież listę domen w przeglądarce.
 
-## <a name="what-to-do-if-you-change-the-dns-registrar-for-your-custom-domain-name"></a>Co należy zrobić, jeśli zmienisz rejestratora DNS dla swojej niestandardowej nazwy domeny
+## <a name="what-to-do-if-you-change-the-dns-registrar-for-your-custom-domain-name"></a>Co zrobić, jeśli zmienisz Rejestrator DNS dla niestandardowej nazwy domeny
 
-Jeśli zmienisz rejestratorów DNS, nie ma żadnych zadań dodatkowej konfiguracji w usłudze Azure AD. Aby kontynuować, przy użyciu nazwy domeny w usłudze Azure AD z produktu bez przeszkód. Jeśli używasz niestandardowej nazwy domeny za pomocą usługi Office 365, Intune lub innych usług, które zależą od nazwy domeny niestandardowej w usłudze Azure AD, zobacz dokumentację dla tych usług.
+W przypadku zmiany rejestratorów DNS nie ma dodatkowych zadań konfiguracyjnych w usłudze Azure AD. Możesz nadal używać nazwy domeny z usługą Azure AD bez przeszkód. Jeśli używasz niestandardowej nazwy domeny z pakietem Office 365, Intune lub innymi usługami opartymi na niestandardowych nazwach domen w usłudze Azure AD, zapoznaj się z dokumentacją tych usług.
 
-## <a name="delete-a-custom-domain-name"></a>Usuwanie nazwy domeny niestandardowej
+## <a name="delete-a-custom-domain-name"></a>Usuń niestandardową nazwę domeny
 
-Jeśli Twoja organizacja już używa tej nazwy domeny, czy należy użyć tej nazwy domeny za pomocą innej usługi Azure AD, możesz usunąć nazwy domeny niestandardowej z usługi Azure AD.
+Możesz usunąć niestandardową nazwę domeny z usługi Azure AD, jeśli Twoja organizacja nie korzysta już z tej nazwy domeny lub jeśli musisz użyć tej nazwy domeny z inną usługą Azure AD.
 
-Aby usunąć niestandardową nazwę domeny, należy się najpierw upewnić, że żadne zasoby w Twoim katalogu zależeć od nazwy domeny. Nie można usunąć nazwy domeny z katalogu, jeśli:
+Aby usunąć niestandardową nazwę domeny, należy najpierw upewnić się, że żadne zasoby w katalogu nie są zależne od nazwy domeny. Nie można usunąć nazwy domeny z katalogu, jeśli:
 
 * Każdy użytkownik ma nazwę użytkownika, adres e-mail lub adres serwera proxy, który zawiera nazwę domeny.
 * Każda grupa ma adres e-mail lub adres serwera proxy, który zawiera nazwę domeny.
-* Każda aplikacja w usłudze Azure AD ma identyfikator URI, który zawiera nazwę domeny aplikacji.
+* Dowolna aplikacja w usłudze Azure AD ma identyfikator URI aplikacji, który zawiera nazwę domeny.
 
-Należy zmienić ani usunąć tych zasobów w katalogu usługi Azure AD, aby można było usunąć nazwy domeny niestandardowej.
+Aby można było usunąć niestandardową nazwę domeny, należy zmienić lub usunąć każdy taki zasób w katalogu usługi Azure AD.
 
-### <a name="forcedelete-option"></a>Opcja ForceDelete
+### <a name="forcedelete-option"></a>ForceDelete — opcja
 
-Możesz **ForceDelete** nazwę domeny w [Centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com) lub za pomocą [interfejsu API Microsoft Graph](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta). Te opcje, użyj operacji asynchronicznej i zaktualizuj wszystkie odwołania, na podstawie nazwy domeny niestandardowej, takich jak "user@contoso.com"Aby nazwa wstępnej domyślnej domeny takie jak"user@contoso.onmicrosoft.com." 
+Można **ForceDelete** nazwę domeny w [centrum administracyjnym usługi Azure AD](https://aad.portal.azure.com) lub przy użyciu [interfejsu API Microsoft Graph](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta). Te opcje używają operacji asynchronicznej i aktualizują wszystkie odwołania z niestandardowej nazwy domeny, takiejuser@contoso.comjak "", do początkowej domyślnej nazwy domeny,user@contoso.onmicrosoft.comtakiej jak "." 
 
-Aby wywołać **ForceDelete** w witrynie Azure portal, upewnij się, że istnieją mniej niż 1000 odwołania do nazwy domeny, a wszelkie odwołania, w przypadku inicjowania obsługi administracyjnej usługi Exchange musi zostać zaktualizowane lub usunięte w [ Centrum administracyjne Exchange](https://outlook.office365.com/ecp/). Obejmuje to Exchange Mail-Enabled grup zabezpieczeń i listy rozproszonych; Aby uzyskać więcej informacji, zobacz [usuwanie grup zabezpieczeń z włączoną obsługą poczty](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups). Ponadto **ForceDelete** operacja nie powiodła się, jeśli jest spełniony jeden z następujących czynności:
+Aby wywołać **ForceDelete** w Azure Portal, należy się upewnić, że istnieje mniej niż 1000 odwołań do nazwy domeny i wszystkie odwołania, w których program Exchange jest usługą aprowizacji, należy zaktualizować lub usunąć w [centrum administracyjnym programu Exchange](https://outlook.office365.com/ecp/). Obejmuje to grupy zabezpieczeń z włączoną obsługą poczty programu Exchange i listy rozproszone; Aby uzyskać więcej informacji, zobacz [usuwanie grup zabezpieczeń z włączoną obsługą poczty](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups). Ponadto operacja **ForceDelete** nie powiedzie się, jeśli jest spełniony jeden z następujących warunków:
 
-* Zakupić domenę za pośrednictwem usługi domenowe subskrypcji usługi Office 365
-* Jesteś partnerem, administrowanie w imieniu innego klienta dzierżawy
+* Użytkownik kupił domenę za pośrednictwem usług subskrypcji domeny pakietu Office 365
+* Jesteś partnerem administrowania w imieniu innej dzierżawy klienta
 
-Następujące akcje są wykonywane w ramach **ForceDelete** operacji:
+Następujące akcje są wykonywane w ramach operacji **ForceDelete** :
 
-* Zmienia nazwę UPN, EmailAddress i ProxyAddress użytkowników za pomocą odwołania do nazwy domeny niestandardowej na początkowej domyślnej nazwy domeny.
-* Zmienia nazwę EmailAddress grup zawierających odwołania do nazwy domeny niestandardowej na początkowej domyślnej nazwy domeny.
-* Zmienia nazwę identifierUris aplikacji za pomocą odwołania do nazwy domeny niestandardowej na początkowej domyślnej nazwy domeny.
+* Zmienia nazwę UPN, EmailAddress i ProxyAddress użytkowników z odwołaniami do niestandardowej nazwy domeny do początkowej domyślnej nazwy domeny.
+* Zmienia nazwę EmailAddress grup z odwołaniami do niestandardowej nazwy domeny do początkowej domyślnej nazwy domeny.
+* Zmienia nazwę identifierUris aplikacji z odwołaniami do niestandardowej nazwy domeny do początkowej domyślnej nazwy domeny.
 
-Zwracany jest błąd, gdy:
+Błąd jest zwracany w przypadku:
 
-* Liczba obiektów, których nazwa zostanie zmieniona, jest większa niż 1000
-* Jedna z aplikacji, których nazwa zostanie zmieniona jest aplikacji z wieloma dzierżawami
+* Liczba obiektów, których nazwa ma zostać zmieniona, jest większa niż 1000
+* Jedna z aplikacji, które mają zostać zmienione, jest aplikacją z wieloma dzierżawcami
 
 ### <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-**Pyt.: Dlaczego jest usunięcie domeny kończy się niepowodzeniem z powodu błędu informujący o tym, mają grupy programu Exchange zarządzanych na tę nazwę domeny?** <br>
-**Odp.:** Obecnie pewnych grup, takich jak grupy zabezpieczeń z włączoną obsługą poczty i rozproszonych listy aprowizowanych przez program Exchange i trzeba ręcznie wyczyszczone w [Centrum administracyjnego programu Exchange (EAC)](https://outlook.office365.com/ecp/). Może być lingering ProxyAddresses, które zależą od niestandardowej nazwy domeny, a musi być ręcznie aktualizowane na inną nazwę domeny. 
+**Pyt.: Dlaczego Usuwanie domeny kończy się niepowodzeniem z powodu błędu informującego, że w tej nazwie domeny są używane grupy programu Exchange Masters?** <br>
+**Odp.:** Obecnie niektóre grupy, takie jak grupy zabezpieczeń z włączoną obsługą poczty i listy rozproszone, są obsługiwane przez program Exchange i muszą zostać ręcznie oczyszczone w [centrum administracyjnym programu Exchange (SKK)](https://outlook.office365.com/ecp/). Może istnieć ProxyAddresses, które są zależne od niestandardowej nazwy domeny i należy je ręcznie zaktualizować do innej nazwy domeny. 
 
-**Pyt.: Jestem zalogować się jako administrator\@contoso.com, ale I nie można usunąć nazwy domeny "contoso.com"?**<br>
-**Odp.:** Nie można odwoływać się nazwy domeny niestandardowej, którą chcesz usunąć nazwę konta użytkownika. Upewnij się, że konto administratora globalnego przy użyciu początkowej domyślnej nazwy domeny (. onmicrosoft.com) takich jak admin@contoso.onmicrosoft.com. Zaloguj się przy użyciu innego administratora globalnego konta, takie jak admin@contoso.onmicrosoft.com lub inną nazwę domeny niestandardowej, takich jak "fabrikam.com" gdy konto jest admin@fabrikam.com.
+**Pyt.: Zaloguję się jako administrator\@contoso.com, ale nie mogę usunąć nazwy domeny "contoso.com"?**<br>
+**Odp.:** Nie można odwołać się do niestandardowej nazwy domeny, którą próbujesz usunąć, w nazwie konta użytkownika. Upewnij się, że konto administratora globalnego używa początkowej domyślnej nazwy domeny (. onmicrosoft.com), takiej jak admin@contoso.onmicrosoft.com. Zaloguj się przy użyciu innego konta administratora globalnego, takiego jak admin@contoso.onmicrosoft.com lub innej niestandardowej nazwy domeny, takiej jak "fabrikam.com", w admin@fabrikam.comktórej znajduje się konto.
 
-**Pyt.: Po kliknięciu przycisku domeny Usuń i zobacz `In Progress` stanu operacji usuwania. Jak długo trwa? Co się stanie, jeśli zakończy się niepowodzeniem?**<br>
-**Odp.:** Operacja usuwania domeny jest zadanie w tle asynchroniczną, która zmienia nazwę wszystkich odwołań do nazwy domeny. Powinno zająć minutę lub dwie. Jeśli usunięcie domeny zakończy się niepowodzeniem, upewnij się, że nie masz:
+**Pyt.: Po kliknięciu przycisku Usuń domenę i wyświetleniu `In Progress` stanu operacji usuwania. Jak długo trwa? Co się stanie w przypadku niepowodzenia?**<br>
+**Odp.:** Operacja Usuń domenę to asynchroniczne zadanie w tle, które zmienia nazwy wszystkich odwołań do nazwy domeny. Powinno to zakończyć się w ciągu minuty lub dwóch. Jeśli usunięcie domeny nie powiedzie się, upewnij się, że nie masz:
 
-* Aplikacje skonfigurowane na nazwy domeny w usłudze appIdentifierURI
-* Grupy obsługujące pocztę odwołuje się do nazwy domeny niestandardowej
-* Więcej niż 1000 odwołania do nazwy domeny
+* Aplikacje skonfigurowane dla nazwy domeny z appIdentifierURI
+* Dowolna Grupa z włączoną obsługą poczty odwołująca się do niestandardowej nazwy domeny
+* Więcej niż 1000 odwołań do nazwy domeny
 
-Jeśli okaże się, czy którykolwiek z warunków nie zostały spełnione, należy ręcznie wyczyścić odwołania i ponownie spróbuj usunąć domenę.
+Jeśli okaże się, że którykolwiek z warunków nie został spełniony, ręcznie Wyczyść odwołania i spróbuj ponownie usunąć domenę.
 
-## <a name="use-powershell-or-graph-api-to-manage-domain-names"></a>Użyj programu PowerShell lub interfejsu API programu Graph, zarządzanie nazwami domen
+## <a name="use-powershell-or-graph-api-to-manage-domain-names"></a>Zarządzanie nazwami domen przy użyciu programu PowerShell lub interfejs API programu Graph
 
-Większości zadań administracyjnych dla nazw domen w usłudze Azure Active Directory można również przeprowadzić za pomocą programu Microsoft PowerShell albo programowo z użyciem interfejsu API usługi Azure AD Graph.
+Większość zadań zarządzania dla nazw domen w Azure Active Directory można również ukończyć przy użyciu programu Microsoft PowerShell lub programowo przy użyciu interfejs API programu Graph usługi Azure AD.
 
-* [Zarządzanie nazwami domen w usłudze Azure AD przy użyciu programu PowerShell](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains)
-* [Zarządzanie nazwami domen w usłudze Azure AD przy użyciu interfejsu API programu Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations)
+* [Zarządzanie nazwami domen w usłudze Azure AD przy użyciu programu PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#domains)
+* [Zarządzanie nazwami domen w usłudze Azure AD przy użyciu interfejs API programu Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Dodawanie niestandardowych nazw domen](/azure/active-directory/fundamentals/add-custom-domain?context=azure/active-directory/users-groups-roles/context/ugr-context)
-* [Usuwanie grupy zabezpieczeń z włączoną obsługą poczty programu Exchange w Centrum administracyjnym programu Exchange na niestandardowej nazwy domeny w usłudze Azure AD](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups)
-* [ForceDelete niestandardowej nazwy domeny za pomocą interfejsu API Microsoft Graph](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta)
+* [Usuwanie grup zabezpieczeń z włączoną obsługą poczty programu Exchange w centrum administracyjnym programu Exchange w przypadku niestandardowej nazwy domeny w usłudze Azure AD](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups)
+* [ForceDelete niestandardową nazwę domeny za pomocą interfejsu API Microsoft Graph](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta)

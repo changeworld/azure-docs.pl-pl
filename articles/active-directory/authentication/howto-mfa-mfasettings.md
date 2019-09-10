@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie usługi Azure MFA Authentication — Azure Active Directory
-description: W tym artykule opisano sposób konfigurowania ustawień usługi Azure MFA w Azure Portal
+title: Konfigurowanie Multi-Factor Authentication platformy Azure — Azure Active Directory
+description: W tym artykule opisano sposób konfigurowania ustawień usługi Azure Multi-Factor Authentication w Azure Portal
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12fd08fa301cb22857470e3c81d7f4f7c1f04de9
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 9eab92f044f62a1ca32062753f824ea76a2726a8
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68948888"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860286"
 ---
-# <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurowanie ustawień usługi Azure MFA
+# <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurowanie ustawień usługi Azure Multi-Factor Authentication
 
-Ten artykuł ułatwia zarządzanie ustawieniami uwierzytelniania wieloskładnikowego w Azure Portal. Obejmuje on różne tematy, które ułatwiają maksymalne wykorzystanie uwierzytelniania wieloskładnikowego platformy Azure. Nie wszystkie funkcje są dostępne w każdej wersji usługi Azure MFA Authentication.
+Ten artykuł ułatwia zarządzanie ustawieniami Multi-Factor Authentication w Azure Portal. Obejmuje ona różne tematy, które ułatwiają maksymalne wykorzystanie Multi-Factor Authentication platformy Azure. Nie wszystkie funkcje są dostępne w każdej wersji platformy Azure Multi-Factor Authentication.
 
-Możesz uzyskać dostęp do ustawień związanych z uwierzytelnianiem wieloskładnikowe systemu Azure z Azure Portal, przechodząc do **Azure Active Directory** > **MFA**.
+Możesz uzyskać dostęp do ustawień związanych z usługą Azure Multi-Factor Authentication z poziomu Azure Portal, przechodząc do **Azure Active Directory** > **MFA**.
 
-![Azure Portal — ustawienia usługi Azure AD — uwierzytelnianie wieloskładnikowe](./media/howto-mfa-mfasettings/multi-factor-authentication-settings-portal.png)
+![Azure Portal — ustawienia Multi-Factor Authentication usługi Azure AD](./media/howto-mfa-mfasettings/multi-factor-authentication-settings-portal.png)
 
 ## <a name="settings"></a>Ustawienia
 
@@ -33,7 +33,7 @@ Niektóre z tych ustawień mają zastosowanie do serwera MFA, usługi Azure MFA 
 | Cecha | Opis |
 | ------- | ----------- |
 | Blokada konta | Tymczasowe blokowanie kont w usłudze wieloskładnikowe uwierzytelnianie, jeśli w wierszu występuje zbyt wiele nieudanych prób uwierzytelnienia. Ta funkcja ma zastosowanie tylko do użytkowników, którzy wprowadzają kod PIN do uwierzytelnienia. (Serwer MFA) |
-| [Blokuj/Odblokuj użytkowników](#block-and-unblock-users) | Służy do blokowania określonym użytkownikom możliwości otrzymywania żądań uwierzytelniania wieloskładnikowego. Wszystkie próby uwierzytelnienia dla zablokowanych użytkowników są automatycznie odrzucane. Użytkownicy pozostają Zablokowani przez 90 dni od momentu zablokowania. |
+| [Blokuj/Odblokuj użytkowników](#block-and-unblock-users) | Służy do blokowania, aby określeni użytkownicy mogli odbierać Multi-Factor Authentication żądania. Wszystkie próby uwierzytelnienia dla zablokowanych użytkowników są automatycznie odrzucane. Użytkownicy pozostają Zablokowani przez 90 dni od momentu zablokowania. |
 | [Alert o oszustwie](#fraud-alert) | Konfigurowanie ustawień związanych z możliwościami użytkowników w celu zgłaszania fałszywych żądań weryfikacji |
 | [Powiadomienia](#notifications) | Włącz powiadomienia zdarzeń z serwera MFA. |
 | [Tokeny OATH](concept-authentication-methods.md#oath-hardware-tokens-public-preview) | Używany w środowiskach Azure MFA opartych na chmurze do zarządzania tokenami OATH dla użytkowników. |
@@ -62,7 +62,7 @@ Użyj funkcji _Blokuj i Odblokuj użytkowników_ , aby uniemożliwić użytkowni
 ### <a name="block-a-user"></a>Zablokuj użytkownika
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator.
-2. Przejdź do **Azure Active Directory** > Zablokuj **/Odblokuj użytkowników**usługi**MFA** > .
+2. Przejdź do **Azure Active Directory** > **Zablokuj/Odblokuj użytkowników**usługi**MFA** > .
 3. Wybierz pozycję **Dodaj** , aby zablokować użytkownika.
 4. Wybierz **grupę replikacji**. Wprowadź nazwę użytkownika dla zablokowanego użytkownika jako **username\@Domain.com**. Wprowadź komentarz w polu **Przyczyna** .
 5. Wybierz pozycję **Dodaj** , aby zakończyć blokowanie użytkownika.
@@ -70,10 +70,10 @@ Użyj funkcji _Blokuj i Odblokuj użytkowników_ , aby uniemożliwić użytkowni
 ### <a name="unblock-a-user"></a>Odblokuj użytkownika
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator.
-2. Przejdź do **Azure Active Directory** > Zablokuj **/Odblokuj użytkowników**usługi**MFA** > .
-3. Wybierz opcję Odblokuj w kolumnie **Akcja** obok użytkownika, aby odblokować.
-4. Wprowadź komentarz w przyczynie odblokowania pola.
-5. Wybierz opcję Odblokuj, aby zakończyć Odblokowywanie użytkownika.
+2. Przejdź do **Azure Active Directory** > **Zablokuj/Odblokuj użytkowników**usługi**MFA** > .
+3. Wybierz opcję **Odblokuj** w kolumnie **Akcja** obok użytkownika, aby odblokować.
+4. Wprowadź komentarz w **przyczynie odblokowania** pola.
+5. Wybierz opcję **Odblokuj** , aby zakończyć Odblokowywanie użytkownika.
 
 ## <a name="fraud-alert"></a>Alert oszustwa
 
@@ -89,7 +89,7 @@ Skonfiguruj funkcję _alertu oszustwa_ , aby umożliwić użytkownikom zgłaszan
 ### <a name="configuration-options"></a>Opcje konfiguracji
 
 * **Zablokuj użytkownika w przypadku zgłoszenia oszustwa**: Jeśli użytkownik zgłasza oszustwo, jego konto jest zablokowane przez 90 dni lub do momentu odblokowania konta przez administratora. Administrator może przejrzeć logowania przy użyciu raportu logowania i podjąć odpowiednie działania, aby zapobiec przyszłym oszustwom. Administrator może następnie [odblokować](#unblock-a-user) konto użytkownika.
-* **Kod do zgłaszania oszustw podczas początkowego**powitania: Gdy użytkownicy otrzymają połączenie telefoniczne w celu przeprowadzenia weryfikacji dwuetapowej, **#** są zwykle naciskane w celu potwierdzenia ich zalogowania. Aby zgłosić oszustwo, użytkownik wprowadza kod przed naciśnięciem klawisza **#** . Ten kod jest domyślnie **0** , ale można go dostosować.
+* **Kod do zgłaszania oszustw podczas początkowego powitania**: Gdy użytkownicy otrzymają połączenie telefoniczne w celu przeprowadzenia weryfikacji dwuetapowej, **#** są zwykle naciskane w celu potwierdzenia ich zalogowania. Aby zgłosić oszustwo, użytkownik wprowadza kod przed naciśnięciem klawisza **#** . Ten kod jest domyślnie **0** , ale można go dostosować.
 
    >[!NOTE]
    >Domyślne powitanie głosu firmy Microsoft instruuje użytkowników, aby nacisnąć **0 #** w celu przesłania alertu oszustwa. Jeśli chcesz użyć kodu innego niż **0**, zarejestruj i przekaż własne niestandardowe pozdrowienia głosowe z odpowiednimi instrukcjami dla użytkowników.
@@ -113,7 +113,7 @@ Skonfiguruj tutaj adresy e-mail dla użytkowników, którzy będą otrzymywać w
 **Numer identyfikatora rozmówcy usługi MFA** — jest to liczba, którą użytkownicy zobaczą na telefonie. Dozwolone są tylko numery w Stanach Zjednoczonych.
 
 >[!NOTE]
->Gdy połączenia usługi uwierzytelnianie wieloskładnikowe są umieszczane za pośrednictwem publicznej sieci telefonicznej, czasami są kierowane przez operatora, który nie obsługuje identyfikatora rozmówcy. W związku z tym identyfikator wywołującego nie jest gwarantowany, mimo że system uwierzytelniania wieloskładnikowego zawsze go wysyła.
+>Gdy Multi-Factor Authentication wywołania są umieszczane za pośrednictwem publicznej sieci telefonicznej, czasami są kierowane przez operatora, który nie obsługuje identyfikatora rozmówcy. Z tego powodu identyfikator wywołującego nie jest gwarantowany, mimo że system Multi-Factor Authentication zawsze go wysyła.
 
 ### <a name="custom-voice-messages"></a>Niestandardowe wiadomości głosowe
 
@@ -144,7 +144,7 @@ Na przykład jeśli istnieje tylko jeden komunikat niestandardowy z językiem ni
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator.
 1. Przejdź do**ustawień połączenia telefonicznego**usługi**MFA** >  **Azure Active Directory** > .
-1. Wybierz pozycję **Dodaj**powitanie.
+1. Wybierz pozycję **Dodaj powitanie**.
 1. Wybierz typ pozdrowienia.
 1. Wybierz język.
 1. Wybierz plik dźwiękowy MP3 lub WAV, który ma zostać przekazany.
@@ -159,23 +159,23 @@ Przykładowe skrypty do tworzenia komunikatów niestandardowych.
 | Uwierzytelnienie pomyślne | Logowanie zostało pomyślnie zweryfikowane. Koniec. |
 | Monit numeru wewnętrznego | Dziękujemy za skorzystanie z systemu weryfikacji logowania firmy Microsoft. Naciśnij klawisz krzyżyk, aby kontynuować. |
 | Potwierdzenie oszustwa | Przesłano alert oszustwa. Aby odblokować konto, skontaktuj się z działem pomocy technicznej IT w Twojej firmie. |
-| Pozdrowienie oszustwa (metoda standardowa) | Dziękujemy za skorzystanie z systemu weryfikacji logowania firmy Microsoft. Naciśnij krzyżyk, aby zakończyć weryfikację. Jeśli weryfikacja nie została zainicjowana, ktoś może próbować uzyskać dostęp do Twojego konta. Naciśnij zero funta, aby przesłać alert oszustwa. Spowoduje to powiadomienie zespołu IT firmy i zablokowanie dalszych prób weryfikacji. |
+| Pozdrowienie oszustwa (standard) | Dziękujemy za skorzystanie z systemu weryfikacji logowania firmy Microsoft. Naciśnij krzyżyk, aby zakończyć weryfikację. Jeśli weryfikacja nie została zainicjowana, ktoś może próbować uzyskać dostęp do Twojego konta. Naciśnij zero funta, aby przesłać alert oszustwa. Spowoduje to powiadomienie zespołu IT firmy i zablokowanie dalszych prób weryfikacji. |
 | Zgłoszono oszustwo informujące o przesłaniu alertu oszustwa. | Aby odblokować konto, skontaktuj się z działem pomocy technicznej IT w Twojej firmie. |
 | Aktywacja | Dziękujemy za skorzystanie z systemu weryfikacji logowania firmy Microsoft. Naciśnij krzyżyk, aby zakończyć weryfikację. |
 | Ponowna próba po odmowie uwierzytelnienia | Odmowa weryfikacji. |
-| Ponów próbę (metoda standardowa) | Dziękujemy za skorzystanie z systemu weryfikacji logowania firmy Microsoft. Naciśnij krzyżyk, aby zakończyć weryfikację. |
-| Pozdrowienie (metoda standardowa) | Dziękujemy za skorzystanie z systemu weryfikacji logowania firmy Microsoft. Naciśnij krzyżyk, aby zakończyć weryfikację. |
+| Ponów próbę (standard) | Dziękujemy za skorzystanie z systemu weryfikacji logowania firmy Microsoft. Naciśnij krzyżyk, aby zakończyć weryfikację. |
+| Greetings (standard) | Dziękujemy za skorzystanie z systemu weryfikacji logowania firmy Microsoft. Naciśnij krzyżyk, aby zakończyć weryfikację. |
 | Pozdrowienie (PIN) | Dziękujemy za skorzystanie z systemu weryfikacji logowania firmy Microsoft. Wprowadź numer PIN, a następnie wybierz krzyżyk, aby zakończyć weryfikację. |
 | Pozdrowienie oszustwa (PIN) | Dziękujemy za skorzystanie z systemu weryfikacji logowania firmy Microsoft.  Wprowadź numer PIN, a następnie wybierz krzyżyk, aby zakończyć weryfikację. Jeśli weryfikacja nie została zainicjowana, ktoś może próbować uzyskać dostęp do Twojego konta. Naciśnij zero funta, aby przesłać alert oszustwa. Spowoduje to powiadomienie zespołu IT firmy i zablokowanie dalszych prób weryfikacji. |
 | Ponów próbę (PRZYPNIJ) | Dziękujemy za skorzystanie z systemu weryfikacji logowania firmy Microsoft. Wprowadź numer PIN, a następnie wybierz krzyżyk, aby zakończyć weryfikację. |
-| Monit numeru wewnętrznego po cyfrach | Jeśli masz już połączenie z tym numerem wewnętrznym, naciśnij krzyżyk, aby kontynuować. |
+| Monit numeru wewnętrznego po cyfrach | Jeśli jest już w tym rozszerzeniu, naciśnij krzyżyk, aby kontynuować. |
 | Odmowa uwierzytelnienia | Niestety, nie można teraz zalogować. Spróbuj ponownie później. |
-| Pozdrowienie aktywacji (metoda standardowa) | Dziękujemy za skorzystanie z systemu weryfikacji logowania firmy Microsoft. Naciśnij krzyżyk, aby zakończyć weryfikację. |
-| Ponowna próba aktywacji (metoda standardowa) | Dziękujemy za skorzystanie z systemu weryfikacji logowania firmy Microsoft. Naciśnij krzyżyk, aby zakończyć weryfikację. |
+| Pozdrowienie aktywacji (warstwa standardowa) | Dziękujemy za skorzystanie z systemu weryfikacji logowania firmy Microsoft. Naciśnij krzyżyk, aby zakończyć weryfikację. |
+| Ponowna próba aktywacji (standardowa) | Dziękujemy za skorzystanie z systemu weryfikacji logowania firmy Microsoft. Naciśnij krzyżyk, aby zakończyć weryfikację. |
 | Pozdrowienie aktywacji (PIN) | Dziękujemy za skorzystanie z systemu weryfikacji logowania firmy Microsoft. Wprowadź numer PIN, a następnie wybierz krzyżyk, aby zakończyć weryfikację. |
 | Monit numeru wewnętrznego przed cyframi | Dziękujemy za skorzystanie z systemu weryfikacji logowania firmy Microsoft. Prześlij to wywołanie do rozszerzenia... |
 
-## <a name="one-time-bypass"></a>Jednokrotne obejście
+## <a name="one-time-bypass"></a>Jednorazowe obejście
 
 Funkcja _jednorazowe obejście_ umożliwia użytkownikowi uwierzytelnianie pojedynczego czasu bez przeprowadzania weryfikacji dwuetapowej. Obejście jest tymczasowe i wygasa po określonej liczbie sekund. W sytuacjach, gdy aplikacja mobilna lub telefon nie otrzymuje powiadomienia lub połączenia telefonicznego, można zezwolić na jednorazowe obejście, aby użytkownik mógł uzyskać dostęp do żądanego zasobu.
 
@@ -205,15 +205,15 @@ Można ustawić okres, aby zezwolić na próby uwierzytelniania po uwierzytelnie
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator.
 2. Przejdź do **Azure Active Directory** > **reguł buforowania** **MFA** > .
 3. Wybierz pozycję **Dodaj**.
-4. Z listy rozwijanej wybierz **Typ pamięci** podręcznej. Wprowadź maksymalną liczbę sekund w **pamięci**podręcznej.
+4. Z listy rozwijanej wybierz **Typ pamięci podręcznej** . Wprowadź maksymalną liczbę sekund w **pamięci podręcznej**.
 5. W razie potrzeby wybierz typ uwierzytelniania i Określ aplikację.
 6. Wybierz pozycję **Dodaj**.
 
 ## <a name="mfa-service-settings"></a>Ustawienia usługi MFA
 
-Ustawienia dotyczące haseł aplikacji, zaufanych adresów IP, opcji weryfikacji i zapamiętania uwierzytelniania wieloskładnikowego na potrzeby uwierzytelniania wieloskładnikowego systemu Azure można znaleźć w temacie Ustawienia usługi. Dostęp do ustawień usługi można uzyskać z poziomu Azure Portal, przechodząc do **Azure Active Directory** > usługi**MFA** > —**wprowadzenie** > **Konfigurowanie** > **dodatkowej chmury Ustawienia usługi MFA**.
+Ustawienia dotyczące haseł aplikacji, zaufanych adresów IP, opcji weryfikacji i zapamiętania usługi uwierzytelniania wieloskładnikowego dla systemu Azure Multi-Factor Authentication można znaleźć w obszarze Ustawienia usług. Dostęp do ustawień usługi można uzyskać z poziomu Azure Portal, przechodząc do **Azure Active Directory** > usługi**MFA** > —**wprowadzenie** > **Konfigurowanie** > **dodatkowej chmury Ustawienia usługi MFA**.
 
-![Ustawienia usługi Azure wieloskładnikowe Authentication](./media/howto-mfa-mfasettings/multi-factor-authentication-settings-service-settings.png)
+![Ustawienia usługi Azure Multi-Factor Authentication](./media/howto-mfa-mfasettings/multi-factor-authentication-settings-service-settings.png)
 
 ## <a name="app-passwords"></a>Hasła aplikacji
 
@@ -232,7 +232,7 @@ W przypadku korzystania z haseł aplikacji należy wziąć pod uwagę następuj�
 * Rzeczywista wartość hasła jest generowana automatycznie i nie jest dostarczana przez użytkownika. Automatyczne generowanie hasła jest trudniejsze dla osoby atakującej w celu odgadnięcia i jest bezpieczniejsze.
 * Dla każdego użytkownika istnieje limit 40 haseł.
 * Aplikacje, które buforują hasła i używają ich w scenariuszach lokalnych, mogą zacząć kończyć się niepowodzeniem, ponieważ hasło aplikacji nie jest znane poza kontem służbowym. Przykładem tego scenariusza są wiadomości e-mail programu Exchange, które są lokalne, ale zarchiwizowana poczta znajduje się w chmurze. W tym scenariuszu to samo hasło nie działa.
-* Po włączeniu uwierzytelniania wieloskładnikowego na koncie użytkownika hasła aplikacji mogą być używane z większością klientów nie korzystających z przeglądarki, takich jak Outlook i Microsoft Skype dla firm. Akcje administracyjne nie mogą być wykonywane przy użyciu haseł aplikacji przez aplikacje nie korzystające z przeglądarki, takie jak Windows PowerShell. Akcje nie mogą być wykonywane nawet wtedy, gdy użytkownik ma konto administracyjne. Aby uruchamiać skrypty programu PowerShell, należy utworzyć konto usługi o silnym haśle i nie włączać konta na potrzeby weryfikacji dwuetapowej.
+* Po włączeniu Multi-Factor Authentication na koncie użytkownika hasła aplikacji mogą być używane z większością klientów nie korzystających z przeglądarki, takich jak Outlook i Microsoft Skype dla firm. Akcje administracyjne nie mogą być wykonywane przy użyciu haseł aplikacji przez aplikacje nie korzystające z przeglądarki, takie jak Windows PowerShell. Akcje nie mogą być wykonywane nawet wtedy, gdy użytkownik ma konto administracyjne. Aby uruchamiać skrypty programu PowerShell, należy utworzyć konto usługi o silnym haśle i nie włączać konta na potrzeby weryfikacji dwuetapowej.
 
 >[!WARNING]
 >Hasła aplikacji nie działają w środowiskach hybrydowych, w których klienci komunikują się z punktami końcowymi automatycznego odnajdywania lokalnego i w chmurze. Hasła domeny są wymagane do uwierzytelniania lokalnego. Do uwierzytelniania w chmurze wymagane są hasła aplikacji.
@@ -246,7 +246,7 @@ Nazwy haseł aplikacji powinny odzwierciedlać urządzenie, na którym są używ
 
 ### <a name="federated-or-single-sign-on-app-passwords"></a>Hasła aplikacji federacyjnych lub logowania jednokrotnego
 
-Usługa Azure AD obsługuje Federacji lub Logowanie jednokrotne (SSO) z lokalnym systemem Windows Server Active Directory Domain Services (AD DS). Jeśli Twoja organizacja jest federacyjnym usługą Azure AD i używasz uwierzytelniania wieloskładnikowego platformy Azure, weź pod uwagę następujące kwestie dotyczące haseł aplikacji.
+Usługa Azure AD obsługuje Federacji lub Logowanie jednokrotne (SSO) z lokalnym systemem Windows Server Active Directory Domain Services (AD DS). Jeśli Twoja organizacja jest federacyjnym usługą Azure AD i używasz usługi Azure Multi-Factor Authentication, weź pod uwagę następujące kwestie dotyczące haseł aplikacji.
 
 >[!NOTE]
 >Poniższe punkty dotyczą tylko klientów federacyjnych (SSO).
@@ -262,7 +262,7 @@ Usługa Azure AD obsługuje Federacji lub Logowanie jednokrotne (SSO) z lokalnym
   * Lokalne wystąpienie Active Directory jest federacyjne z usługą Azure AD.
   * Używasz usługi Exchange Online.
   * Korzystasz z lokalnego programu Skype dla firm.
-  * Używasz uwierzytelniania wieloskładnikowego systemu Azure.
+  * Używasz usługi Azure Multi-Factor Authentication.
 
   W tym scenariuszu używane są następujące poświadczenia:
 
@@ -274,20 +274,20 @@ Usługa Azure AD obsługuje Federacji lub Logowanie jednokrotne (SSO) z lokalnym
 Domyślnie użytkownicy nie mogą tworzyć haseł aplikacji. Funkcja haseł aplikacji musi być włączona. Aby umożliwić użytkownikom tworzenie haseł aplikacji, należy wykonać poniższą procedurę:
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Po lewej stronie wybierz pozycję **Azure Active Directory** > **Użytkownicy i grupy** > **Wszyscy użytkownicy**.
+2. Po lewej stronie wybierz pozycję **Azure Active Directory** > **Użytkownicy**.
 3. Wybierz pozycję **uwierzytelnianie wieloskładnikowe**.
-4. W obszarze Uwierzytelnianie wieloskładnikowe wybierz pozycję **Ustawienia usługi**.
+4. W obszarze Multi-Factor Authentication wybierz pozycję **Ustawienia usługi**.
 5. Na stronie **Ustawienia usługi** wybierz opcję **zezwól użytkownikom na tworzenie haseł aplikacji do logowania się do aplikacji niekorzystających z przeglądarki** .
 
 ### <a name="create-app-passwords"></a>Tworzenie haseł aplikacji
 
 Użytkownicy mogą tworzyć hasła aplikacji podczas ich wstępnej rejestracji. Użytkownik może utworzyć hasła aplikacji na końcu procesu rejestracji.
 
-Użytkownicy mogą również tworzyć hasła aplikacji po rejestracji. Aby uzyskać więcej informacji i szczegółowe instrukcje dla użytkowników, zobacz [co to są hasła aplikacji w usłudze Azure wieloskładnikowe Authentication?](../user-help/multi-factor-authentication-end-user-app-passwords.md)
+Użytkownicy mogą również tworzyć hasła aplikacji po rejestracji. Aby uzyskać więcej informacji i szczegółowe instrukcje dla użytkowników, zobacz [co to są hasła aplikacji w usłudze Azure Multi-Factor Authentication?](../user-help/multi-factor-authentication-end-user-app-passwords.md)
 
 ## <a name="trusted-ips"></a>Zaufane adresy IP
 
-Funkcja _Zaufane adresy IP_ w ramach uwierzytelniania wieloskładnikowego platformy Azure jest używana przez administratorów dzierżawy zarządzanej lub federacyjnej. Ta funkcja pomija weryfikację dwuetapową dla użytkowników logujących się z firmowej sieci intranet. Ta funkcja jest dostępna w pełnej wersji usługi Azure MFA, a nie w bezpłatnej wersji dla administratorów. Aby uzyskać szczegółowe informacje na temat sposobu uzyskania pełnej wersji usługi Azure MFA Authentication, zobacz [Azure MFA Authentication](multi-factor-authentication.md).
+Funkcja _Zaufane adresy IP_ w usłudze Azure Multi-Factor Authentication jest używana przez administratorów dzierżawy zarządzanej lub federacyjnej. Ta funkcja pomija weryfikację dwuetapową dla użytkowników logujących się z firmowej sieci intranet. Ta funkcja jest dostępna w pełnej wersji platformy Azure Multi-Factor Authentication, a nie w wersji bezpłatnej dla administratorów. Aby uzyskać szczegółowe informacje na temat sposobu uzyskania pełnej wersji usługi Azure Multi-Factor Authentication, zobacz [Azure Multi-Factor Authentication](multi-factor-authentication.md).
 
 > [!NOTE]
 > Zaufane adresy IP i dostęp warunkowy usługi MFA działają tylko z adresami IPV4.
@@ -314,7 +314,7 @@ Niezależnie od tego, czy funkcja zaufanych adresów IP jest włączona, dla prz
 ### <a name="enable-named-locations-by-using-conditional-access"></a>Włączanie nazwanych lokalizacji przy użyciu dostępu warunkowego
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Po lewej stronie wybierz pozycję **Azure Active Directory** > **dostępu** > warunkowego**o nazwie lokalizacje**.
+2. Po lewej stronie wybierz pozycję **Azure Active Directory** >  > dostęp > **warunkowy**zabezpieczenia**o nazwie lokalizacje**.
 3. Wybierz pozycję **Nowa lokalizacja**.
 4. Wprowadź nazwę lokalizacji.
 5. Wybierz pozycję **Oznacz jako zaufaną lokalizację**.
@@ -324,7 +324,7 @@ Niezależnie od tego, czy funkcja zaufanych adresów IP jest włączona, dla prz
 ### <a name="enable-the-trusted-ips-feature-by-using-conditional-access"></a>Włączanie funkcji Zaufane adresy IP przy użyciu dostępu warunkowego
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Po lewej stronie wybierz pozycję **Azure Active Directory** > **dostępu** > warunkowego**o nazwie lokalizacje**.
+2. Po lewej stronie wybierz pozycję **Azure Active Directory** >  >  dostęp > **warunkowy**zabezpieczenia**o nazwie lokalizacje**.
 3. Wybierz pozycję **Konfiguruj Zaufane adresy IP usługi MFA**.
 4. Na stronie **Ustawienia usługi** w obszarze **Zaufane adresy IP**wybierz jedną z następujących dwóch opcji:
 
@@ -344,7 +344,7 @@ Niezależnie od tego, czy funkcja zaufanych adresów IP jest włączona, dla prz
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Po lewej stronie wybierz pozycję **Azure Active Directory** > **Użytkownicy**.
 3. Wybierz pozycję **uwierzytelnianie wieloskładnikowe**.
-4. W obszarze Uwierzytelnianie wieloskładnikowe wybierz pozycję **Ustawienia usługi**.
+4. W obszarze Multi-Factor Authentication wybierz pozycję **Ustawienia usługi**.
 5. Na stronie **Ustawienia usługi** w obszarze **Zaufane adresy IP**wybierz jedną z następujących opcji:
 
    * **W przypadku żądań od użytkowników federacyjnych w moim intranecie**: Aby wybrać tę opcję, zaznacz pole wyboru. Wszyscy użytkownicy federacyjne, którzy logują się z sieci firmowej, pomijają weryfikację dwuetapową przy użyciu roszczeń wydawanych przez AD FS. Upewnij się, że AD FS ma regułę umożliwiającą dodanie do odpowiedniego ruchu w intranecie. Jeśli reguła nie istnieje, Utwórz następującą regułę w AD FS:
@@ -362,62 +362,62 @@ Niezależnie od tego, czy funkcja zaufanych adresów IP jest włączona, dla prz
 
 Możesz wybrać metody weryfikacji, które są dostępne dla użytkowników. Poniższa tabela zawiera krótkie omówienie metod.
 
-Gdy użytkownicy rejestrują swoje konta na potrzeby uwierzytelniania wieloskładnikowego systemu Azure, wybierają preferowaną metodę weryfikacji z opcji, które zostały włączone. Wskazówki dotyczące procesu rejestracji użytkownika znajdują się w [sekcji Konfigurowanie mojego konta na potrzeby weryfikacji](../user-help/multi-factor-authentication-end-user-first-time.md)dwuetapowej.
+Gdy użytkownicy rejestrują swoje konta dla usługi Azure Multi-Factor Authentication, wybierają ich preferowaną metodę weryfikacji z opcji, które zostały włączone. Wskazówki dotyczące procesu rejestracji użytkownika znajdują się w [sekcji Konfigurowanie mojego konta na potrzeby weryfikacji dwuetapowej](../user-help/multi-factor-authentication-end-user-first-time.md).
 
 | Metoda | Opis |
 |:--- |:--- |
 | Połączenie z telefonem |Umieszcza automatyczne połączenie głosowe. Użytkownik odbiera połączenie i naciska klawisz # na klawiaturze telefonu w celu uwierzytelnienia. Numer telefonu nie jest zsynchronizowany z Active Directoryami lokalnymi. |
-| SMS na telefon |Wysyła wiadomość tekstową zawierającą kod weryfikacyjny. Użytkownik otrzymuje monit o wprowadzenie kodu weryfikacyjnego w interfejsie logowania. Ten proces jest nazywany jednokierunkową wiadomością SMS. Dwukierunkowa wiadomość SMS oznacza, że użytkownik musi wykonać tekst ponownie w określonym kodzie. Dwukierunkowa wiadomość SMS jest przestarzała i nie jest obsługiwana po 14 listopada 2018. Użytkownicy skonfigurowani do dwukierunkowego SMS są automatycznie przełączani w taki sposób, aby wywoływać weryfikację _telefonu_ .|
+| SMS na telefon |Wysyła wiadomość tekstową zawierającą kod weryfikacyjny. Użytkownik otrzymuje monit o wprowadzenie kodu weryfikacyjnego w interfejsie logowania. Ten proces jest nazywany jednokierunkową wiadomością SMS. Dwukierunkowa wiadomość SMS oznacza, że użytkownik musi wykonać tekst ponownie w określonym kodzie. Dwukierunkowa wiadomość SMS jest przestarzała i nie jest obsługiwana po 14 listopada 2018. Użytkownicy skonfigurowani do dwukierunkowego SMS są automatycznie przełączani w taki sposób, aby _wywoływać_ weryfikację telefonu.|
 | Powiadomienie przez aplikację mobilną |Wysyła powiadomienie wypychane na telefon lub zarejestrowane urządzenie. Użytkownik wyświetli powiadomienie i wybierze opcję **Weryfikuj** , aby ukończyć weryfikację. Aplikacja Microsoft Authenticator jest dostępna dla [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071), [Android](https://go.microsoft.com/fwlink/?Linkid=825072)i [iOS](https://go.microsoft.com/fwlink/?Linkid=825073). |
 | Kod weryfikacyjny z aplikacji mobilnej lub tokenu sprzętowego |Aplikacja Microsoft Authenticator generuje nowy kod weryfikacyjny OATH co 30 sekund. Użytkownik wprowadza kod weryfikacyjny do interfejsu logowania. Aplikacja Microsoft Authenticator jest dostępna dla [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071), [Android](https://go.microsoft.com/fwlink/?Linkid=825072)i [iOS](https://go.microsoft.com/fwlink/?Linkid=825073). |
 
 ### <a name="enable-and-disable-verification-methods"></a>Włączanie i wyłączanie metod weryfikacji
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Po lewej stronie wybierz pozycję **Azure Active Directory** > **Użytkownicy i grupy** > **Wszyscy użytkownicy**.
+2. Po lewej stronie wybierz pozycję **Azure Active Directory** > **Użytkownicy**.
 3. Wybierz pozycję **uwierzytelnianie wieloskładnikowe**.
-4. W obszarze Uwierzytelnianie wieloskładnikowe wybierz pozycję **Ustawienia usługi**.
+4. W obszarze Multi-Factor Authentication wybierz pozycję **Ustawienia usługi**.
 5. Na stronie **Ustawienia usługi** w obszarze **Opcje weryfikacji**wybierz/Usuń zaznaczenie metod, które mają być dostępne dla użytkowników.
 6. Kliknij polecenie **Zapisz**.
 
 Dodatkowe szczegóły dotyczące korzystania z metod uwierzytelniania można znaleźć w artykule [co to są metody uwierzytelniania](concept-authentication-methods.md).
 
-## <a name="remember-multi-factor-authentication"></a>Pamiętaj dane usługi Multi-Factor Authentication
+## <a name="remember-multi-factor-authentication"></a>Pamiętaj Multi-Factor Authentication
 
-Funkcja _Zapamiętaj uwierzytelnianie wieloskładnikowe_ dla urządzeń i przeglądarek, które są zaufane przez użytkownika, to bezpłatna funkcja dla wszystkich użytkowników usługi uwierzytelniania wieloskładnikowego. Użytkownicy mogą ominąć kolejne weryfikacji przez określoną liczbę dni po pomyślnym zalogowaniu się na urządzeniu przy użyciu uwierzytelniania wieloskładnikowego. Ta funkcja zwiększa użyteczność przez zminimalizowanie liczby prób przeprowadzenia weryfikacji dwuetapowej na tym samym urządzeniu.
+Funkcja _pamiętaj Multi-Factor Authentication_ dla urządzeń i przeglądarek, które są zaufane przez użytkownika, to bezpłatna funkcja dla wszystkich Multi-Factor Authentication użytkowników. Użytkownicy mogą ominąć kolejne weryfikacji przez określoną liczbę dni po pomyślnym zalogowaniu się na urządzeniu przy użyciu Multi-Factor Authentication. Ta funkcja zwiększa użyteczność przez zminimalizowanie liczby prób przeprowadzenia weryfikacji dwuetapowej na tym samym urządzeniu.
 
 >[!IMPORTANT]
->W przypadku naruszenia zabezpieczeń konta lub urządzenia zapamiętanie uwierzytelniania wieloskładnikowego dla zaufanych urządzeń może wpłynąć na bezpieczeństwo. Jeśli konto firmowe zostanie złamane lub zostanie utracone lub skradzione, należy [przywrócić uwierzytelnianie wieloskładnikowe na wszystkich urządzeniach](howto-mfa-userdevicesettings.md#restore-mfa-on-all-remembered-devices-for-a-user).
+>W przypadku naruszenia zabezpieczeń konta lub urządzenia zapamiętanie Multi-Factor Authentication dla zaufanych urządzeń może wpłynąć na bezpieczeństwo. Jeśli konto firmowe zostanie złamane lub zostanie utracone lub skradzione, należy [przywrócić Multi-Factor Authentication na wszystkich urządzeniach](howto-mfa-userdevicesettings.md#restore-mfa-on-all-remembered-devices-for-a-user).
 >
->Akcja Przywróć odwołuje stan zaufany ze wszystkich urządzeń, a użytkownik musi wykonać weryfikację dwuetapową ponownie. Możesz również poinstruować użytkowników, aby przywracali uwierzytelnianie wieloskładnikowe na swoich urządzeniach, korzystając z instrukcji w sekcji [Zarządzanie ustawieniami weryfikacji](../user-help/multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device)dwuetapowej.
+>Akcja Przywróć odwołuje stan zaufany ze wszystkich urządzeń, a użytkownik musi wykonać weryfikację dwuetapową ponownie. Możesz również poinstruować użytkowników, aby mogli przywrócić Multi-Factor Authentication na swoich urządzeniach, korzystając z instrukcji w sekcji [Zarządzanie ustawieniami weryfikacji dwuetapowej](../user-help/multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device).
 
 ### <a name="how-the-feature-works"></a>Jak działa funkcja
 
-Funkcja Zapamiętaj uwierzytelnianie wieloskładnikowe ustawia trwały plik cookie w przeglądarce, gdy użytkownik wybierze opcję **nie Monituj ponownie dla X dni** podczas logowania. Użytkownik nie będzie ponownie monitowany o uwierzytelnianie wieloskładnikowe z tej samej przeglądarki, dopóki plik cookie nie wygaśnie. Jeśli użytkownik otworzy inną przeglądarkę na tym samym urządzeniu lub wyczyści pliki cookie, zostanie ponownie wyświetlony monit o zweryfikowanie.
+Funkcja Pamiętaj Multi-Factor Authentication ustawia trwały plik cookie w przeglądarce, gdy użytkownik wybierze opcję **nie Monituj ponownie dla X dni** podczas logowania. Użytkownik nie będzie ponownie monitowany o Multi-Factor Authentication z tej samej przeglądarki, dopóki plik cookie nie wygaśnie. Jeśli użytkownik otworzy inną przeglądarkę na tym samym urządzeniu lub wyczyści pliki cookie, zostanie ponownie wyświetlony monit o zweryfikowanie.
 
 Opcja **nie Monituj ponownie dla X dni** nie jest wyświetlana w aplikacjach bez przeglądarki, niezależnie od tego, czy aplikacja obsługuje nowoczesne uwierzytelnianie. Te aplikacje używają _tokenów odświeżania_ , które udostępniają nowe tokeny dostępu co godzinę. Po sprawdzeniu poprawności tokenu odświeżania usługa Azure AD sprawdza, czy Ostatnia weryfikacja dwuetapowa wystąpiła w ciągu określonej liczby dni.
 
 Funkcja zmniejsza liczbę uwierzytelnień w aplikacjach sieci Web, które zwykle monitują się za każdym razem. Ta funkcja zwiększa liczbę uwierzytelnień dla nowoczesnych klientów uwierzytelniania, które zwykle monitują co 90 dni. Może również zwiększyć liczbę uwierzytelnień w połączeniu z zasadami dostępu warunkowego.
 
 >[!IMPORTANT]
->Funkcja **Zapamiętaj uwierzytelnianie wieloskładnikowe** nie jest zgodna z funkcją nie wylogowuj **mnie** AD FS, gdy użytkownicy przeprowadzają weryfikację dwuetapową dla AD FS za pomocą serwera usługi Azure MFA lub wieloskładnikowego Rozwiązanie uwierzytelniania.
+>Funkcja **pamiętaj Multi-Factor Authentication** nie jest zgodna z funkcją nie wylogowuj **mnie w programie** AD FS, gdy użytkownicy wykonują weryfikację dwuetapową dla AD FS za pomocą usługi Azure serwer Multi-Factor Authentication lub wieloskładnikowego rozwiązania firmy Microsoft Rozwiązanie uwierzytelniania.
 >
->Jeśli użytkownik wybierze opcję Nie wylogowuj **mnie** na AD FS, a także oznaczy swoje urządzenie jako zaufane do uwierzytelniania wieloskładnikowego, użytkownik nie zostanie automatycznie zweryfikowany po upływie następującej liczby dni. Usługa Azure AD żąda nowej weryfikacji dwuetapowej, ale AD FS zwraca token z pierwotnym wnioskiem usługi MFA i datą usługi uwierzytelniania wieloskładnikowego, a nie ponownie wykonuje weryfikacji dwuetapowej. **Ta reakcja ustawia pętlę weryfikacji między usługą Azure AD a AD FS.**
+>Jeśli użytkownik wybierze opcję Nie wylogowuj **mnie** na AD FS, a także oznaczy urządzenie jako zaufane dla Multi-Factor Authentication, użytkownik nie zostanie automatycznie zweryfikowany po upływie następującej liczby dni dla opcji **Zapamiętaj uwierzytelnianie wieloskładnikowe** . Usługa Azure AD żąda nowej weryfikacji dwuetapowej, ale AD FS zwraca token z pierwotnym Multi-Factor Authenticationm i datą, a nie ponownie wykonuje weryfikacji dwuetapowej. **Ta reakcja ustawia pętlę weryfikacji między usługą Azure AD a AD FS.**
 >
 
-### <a name="enable-remember-multi-factor-authentication"></a>Włącz Zapamiętaj uwierzytelnianie wieloskładnikowe
+### <a name="enable-remember-multi-factor-authentication"></a>Włącz Multi-Factor Authentication Pamiętaj
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Po lewej stronie wybierz pozycję **Azure Active Directory** > **Użytkownicy i grupy** > **Wszyscy użytkownicy**.
+2. Po lewej stronie wybierz pozycję **Azure Active Directory** > **Użytkownicy**.
 3. Wybierz pozycję **uwierzytelnianie wieloskładnikowe**.
-4. W obszarze Uwierzytelnianie wieloskładnikowe wybierz pozycję **Ustawienia usługi**.
+4. W obszarze Multi-Factor Authentication wybierz pozycję **Ustawienia usługi**.
 5. Na stronie **Ustawienia usługi** **Zarządzaj Zapamiętaj uwierzytelnianie wieloskładnikowe**, wybierz opcję **Zezwalaj użytkownikom na zapamiętywanie uwierzytelniania wieloskładnikowego na urządzeniach, które ufają** .
 6. Ustaw liczbę dni, przez które zaufane urządzenia mogą pomijać weryfikację dwuetapową. Wartość domyślna to 14 dni.
 7. Wybierz pozycję **Zapisz**.
 
 ### <a name="mark-a-device-as-trusted"></a>Oznacz urządzenie jako zaufane
 
-Po włączeniu funkcji Zapamiętaj uwierzytelnianie wieloskładnikowe użytkownicy mogą oznaczyć urządzenie jako zaufane podczas logowania, wybierając pozycję **nie Monituj ponownie**.
+Po włączeniu funkcji Pamiętaj Multi-Factor Authentication użytkownicy mogą oznaczyć urządzenie jako zaufane podczas logowania, wybierając pozycję **nie Monituj ponownie**.
 
 ## <a name="next-steps"></a>Następne kroki
 

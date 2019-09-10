@@ -5,15 +5,15 @@ author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: 57212da1a8da7ee6c57faf2413b88a413df04817
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: cc0c7c4928fb03cb60bb51f74d74fdc1ab914348
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "66129553"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844927"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-data-store-for-a-windows-virtual-machine-classic"></a>Wysyłanie metryk systemu operacyjnego gościa do magazynu danych Azure Monitor dla maszyny wirtualnej z systemem Windows (wersja klasyczna)
 
@@ -29,11 +29,13 @@ Proces przedstawiony w tym artykule działa tylko w przypadku klasycznych maszyn
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Musisz być [administratorem usługi lub](../../billing/billing-add-change-azure-subscription-administrator.md) współadministratorem w ramach subskrypcji platformy Azure. 
+- Musisz być [administratorem usługi lub współadministratorem](../../billing/billing-add-change-azure-subscription-administrator.md) w ramach subskrypcji platformy Azure. 
 
 - Twoja subskrypcja musi być zarejestrowana w usłudze [Microsoft. Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services). 
 
 - Musisz mieć zainstalowaną [Azure PowerShell](/powershell/azure) lub [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) .
+
+- Zasób maszyny wirtualnej musi znajdować się w [regionie, który obsługuje metryki niestandardowe](metrics-custom-overview.md#supported-regions).
 
 ## <a name="create-a-classic-virtual-machine-and-storage-account"></a>Tworzenie klasycznej maszyny wirtualnej i konta magazynu
 
@@ -201,6 +203,6 @@ Nadaj tej aplikacji uprawnienia do monitorowania wydawcy metryk do zasobu, dla k
    ![Pomiary wykresów](./media/collect-custom-metrics-guestos-vm-classic/plot-metrics.png)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - Dowiedz się więcej o [metrykach niestandardowych](metrics-custom-overview.md).
 

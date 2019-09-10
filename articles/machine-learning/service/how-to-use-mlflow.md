@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: d819479c5e4bdbf8287dc7408c0f7813f5e32b13
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: c7bed307373289c6a6f76117fa07ee2ee3242bfc
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900178"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860463"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-service-preview"></a>Śledzenie metryk i wdrażanie modeli za pomocą usług MLflow i Azure Machine Learning (wersja zapoznawcza)
 
@@ -39,7 +39,7 @@ Na poniższym diagramie przedstawiono, że dzięki śledzeniu MLflow można dowo
  Śledzenie MLflow oferuje funkcje rejestrowania metryk i magazynu artefaktów, które są dostępne tylko w innym przypadku za pośrednictwem [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 
 
-| | MLflow śledzenie & | Azure Machine Learning Python SDK |  Interfejs wiersza polecenia Azure Machine Learning | Azure Portal|
+| | MLflow śledzenie & | Azure Machine Learning Python SDK |  Interfejs wiersza polecenia Azure Machine Learning | Strona docelowa Azure Portal lub obszaru roboczego (wersja zapoznawcza)|
 |---|---|---|---|---|
 | Zarządzanie obszarem roboczym |   | ✓ | ✓ | ✓ |
 | Korzystanie z magazynów danych  |   | ✓ | ✓ | |
@@ -203,7 +203,7 @@ mlflow.log_metric('epoch_loss', loss.item())
 
 ## <a name="view-metrics-and-artifacts-in-your-workspace"></a>Wyświetlanie metryk i artefaktów w obszarze roboczym
 
-Metryki i artefakty z rejestrowania MLflow są przechowywane w Twoim obszarze roboczym. Aby wyświetlić je w dowolnym momencie, przejdź do obszaru roboczego i Znajdź eksperyment według nazwy na [Azure Portal](https://portal.azure.com) lub przez uruchomienie poniższego kodu. 
+Metryki i artefakty z rejestrowania MLflow są przechowywane w Twoim obszarze roboczym. Aby wyświetlić je w dowolnym momencie, przejdź do obszaru roboczego i Znajdź eksperyment według nazwy na [Azure Portal](https://portal.azure.com) lub na [stronie docelowej obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com).  Lub uruchom poniższy kod. 
 
 ```python
 run.get_metrics()

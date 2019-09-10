@@ -9,19 +9,19 @@ ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
 ms.openlocfilehash: 2922a1fb92f3df07429d3463b8bf639f336776af
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67305313"
 ---
 | Resource | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
-| Wypychanie aplikacji platformy Azure | 10 działania aplikacji platformy azure dla każdej grupy akcji. | Z działem pomocy technicznej. |
-| Email | 1000 akcji poczty e-mail do grupy akcji.<br>Nie więcej niż 100 wiadomości e-mail w ciągu godziny.<br>Zobacz też [ograniczania informacje o szybkości](../articles/azure-monitor/platform/alerts-rate-limiting.md). | Z działem pomocy technicznej. |
-| ITSM | Akcje ITSM 10 grupy akcji. | Z działem pomocy technicznej. | 
-| Aplikacja logiki | 10 akcje aplikacji logic app do grupy akcji. | Z działem pomocy technicznej. |
-| Element Runbook | 10 działania elementu runbook w grupy akcji. | Z działem pomocy technicznej. |
-| SMS | 10 akcje programu SMS w grupy akcji.<br>Wiadomość SMS nie więcej niż 1 co 5 minut.<br>Zobacz też [ograniczania informacje o szybkości](../articles/azure-monitor/platform/alerts-rate-limiting.md). | Z działem pomocy technicznej. |
-| Połączenia głosowe | 10 akcje głosu w grupy akcji.<br>Połączenie głosowe nie więcej niż 1 co 5 minut.<br>Zobacz też [ograniczania informacje o szybkości](../articles/azure-monitor/platform/alerts-rate-limiting.md). | Z działem pomocy technicznej. |
-| Webhook | 10 Akcje elementu webhook w grupy akcji.  Maksymalna liczba wywołań elementu webhook jest 1500 na minutę na subskrypcję. Inne limity są dostępne pod adresem [informacje specyficzne dla działania](../articles/azure-monitor/platform/action-groups.md#action-specific-information).  | Z działem pomocy technicznej. |
+| Wypychanie aplikacji platformy Azure | 10 akcji aplikacji platformy Azure na grupę akcji. | Skontaktuj się z pomocą techniczną. |
+| Email | 1 000 akcji poczty e-mail w grupie akcji.<br>Nie więcej niż 100 wiadomości e-mail w ciągu godziny.<br>Zobacz również [informacje dotyczące ograniczania szybkości](../articles/azure-monitor/platform/alerts-rate-limiting.md). | Skontaktuj się z pomocą techniczną. |
+| ITSM | 10 akcji narzędzia ITSM w grupie akcji. | Skontaktuj się z pomocą techniczną. | 
+| Aplikacja logiki | 10 akcji aplikacji logiki w grupie akcji. | Skontaktuj się z pomocą techniczną. |
+| Runbook | 10 akcji elementu Runbook w grupie akcji. | Skontaktuj się z pomocą techniczną. |
+| SMS | 10 akcji programu SMS w grupie akcji.<br>Nie więcej niż 1 komunikat SMS co 5 minut.<br>Zobacz również [informacje dotyczące ograniczania szybkości](../articles/azure-monitor/platform/alerts-rate-limiting.md). | Skontaktuj się z pomocą techniczną. |
+| Głos | 10 akcji głosowych w grupie akcji.<br>Nie więcej niż 1 wywołanie głosowe co 5 minut.<br>Zobacz również [informacje dotyczące ograniczania szybkości](../articles/azure-monitor/platform/alerts-rate-limiting.md). | Skontaktuj się z pomocą techniczną. |
+| Element webhook | 10 akcji elementu webhook w grupie akcji.  Maksymalna liczba wywołań elementu webhook wynosi 1500 na minutę na subskrypcję. Inne limity są dostępne w [informacjach specyficznych dla akcji](../articles/azure-monitor/platform/action-groups.md#action-specific-information).  | Skontaktuj się z pomocą techniczną. |

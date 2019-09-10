@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 09/06/2019
 ms.author: pafarley
-ms.openlocfilehash: aade8552e7fd39a61334c1c6c7c9ca62085961be
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 7035689f3813a94c7e24e4c6138016b11c1a4ef3
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603273"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859131"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>Szybki start: Wykrywanie twarzy na obrazie przy użyciu interfejsu API REST rozpoznawania twarzy i środowiska Node.js
 
@@ -38,7 +38,9 @@ npm install request --save
 
 ## <a name="write-the-nodejs-script"></a>Pisanie skryptu środowiska Node.js
 
-Wklej następujący kod w pliku *facedetection.js*. Te pola służą do określania sposobu nawiązywania połączenia z usługą rozpoznawania twarzy i lokalizacji, z której można pobrać dane wejściowe. Należy zaktualizować pole `subscriptionKey` wartością klucza subskrypcji. Konieczna może być również zmiana ciągu `uriBase` w taki sposób, aby zawierał on poprawny identyfikator regionu (zobacz [dokumentację interfejsu API rozpoznawania twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), aby zapoznać się z listą wszystkich punktów końcowych regionów). Możesz zmienić pole `imageUrl`, aby wskazywało na Twój obraz wejściowy.
+Wklej następujący kod w pliku *facedetection.js*. Te pola służą do określania sposobu nawiązywania połączenia z usługą rozpoznawania twarzy i lokalizacji, z której można pobrać dane wejściowe. Musisz zaktualizować `subscriptionKey` pole przy użyciu wartości klucza subskrypcji i należy `uriBase` zmienić ciąg tak, aby zawierał prawidłowy ciąg punktu końcowego. Możesz zmienić pole `imageUrl`, aby wskazywało na Twój obraz wejściowy.
+
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ```javascript
 'use strict';
@@ -51,7 +53,7 @@ const subscriptionKey = '<Subscription Key>';
 // You must use the same location in your REST call as you used to get your
 // subscription keys. For example, if you got your subscription keys from
 // westus, replace "westcentralus" in the URL below with "westus".
-const uriBase = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect';
+const uriBase = 'https://<My Endpoint String>.com/face/v1.0/detect';
 
 const imageUrl =
     'https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg';
@@ -279,7 +281,7 @@ Informacje o twarzy powinny zostać wyświetlone jako dane JSON w oknie konsoli.
 ]
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start napisano skrypt w języku Node.js służący do wywoływania interfejsu API rozpoznawania twarzy platformy Azure w celu wykrywania twarzy na obrazie i zwracania ich atrybutów. Następnie zapoznaj się z dokumentacją referencyjną interfejsu API rozpoznawania twarzy, aby dowiedzieć się więcej.
 

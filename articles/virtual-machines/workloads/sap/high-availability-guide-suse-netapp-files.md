@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2019
 ms.author: radeltch
 ms.openlocfilehash: fbb87843462e7e830fc357e178b41f7262b80e70
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "70099583"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Wysoka dostępność dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy Azure na SUSE Linux Enterprise Server z Azure NetApp Files dla aplikacji SAP
@@ -82,7 +82,7 @@ Przeczytaj najpierw następujące informacje i dokumenty SAP:
 * [Planowanie i wdrażanie usługi Azure Virtual Machines dla oprogramowania SAP w systemie Linux][planning-guide]
 * [Wdrożenie Virtual Machines platformy Azure dla oprogramowania SAP w systemie Linux][deployment-guide]
 * [Wdrożenie systemu Azure Virtual Machines DBMS dla oprogramowania SAP w systemie Linux][dbms-guide]
-* Przewodniki dla systemu [SUSE SAP ha Best Practices][suse-ha-guide] Przewodniki zawierają wszystkie informacje wymagane do skonfigurowania NetWeaver HA i replikacji systemu SAP HANA w środowisku lokalnym. Użyj tych przewodników jako ogólnego planu bazowego. Zapewniają one wiele bardziej szczegółowych informacji.
+* [Przewodniki dla systemu SUSE SAP ha Best Practices][suse-ha-guide] Przewodniki zawierają wszystkie informacje wymagane do skonfigurowania NetWeaver HA i replikacji systemu SAP HANA w środowisku lokalnym. Użyj tych przewodników jako ogólnego planu bazowego. Zapewniają one wiele bardziej szczegółowych informacji.
 * [Informacje o wersji w programie SUSE High Availability Extension 12 SP3][suse-ha-12sp3-relnotes]
 * [NetApp aplikacje SAP na Microsoft Azure przy użyciu Azure NetApp Files][anf-sap-applications-azure]
 
@@ -152,7 +152,7 @@ Architektura SAP NetWeaver w tym artykule używa puli pojemności Azure NetApp F
 
 4. Delegowanie podsieci do plików NetApp platformy Azure zgodnie z opisem w [instrukcji delegowania podsieci do Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet).  
 
-5. Wdróż woluminy Azure NetApp Files, postępując zgodnie z [instrukcjami, aby utworzyć wolumin dla Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes). Wdróż woluminy w wyznaczeniej [podsieci](https://docs.microsoft.com/rest/api/virtualnetwork/subnets)Azure NetApp Files. Należy pamiętać, że zasoby Azure NetApp Files i maszyny wirtualne platformy Azure muszą znajdować się w tym samym Virtual Network platformy Azure lub w równorzędnych sieciach wirtualnych platformy Azure. Na przykład sapmnt<b>QAS</b>, usrsap<b>QAS</b>itp. są nazwami woluminów i sapmnt QAS<b></b>, usrsap<b>QAS</b>, itp. są ścieżkami do woluminów Azure NetApp Files.  
+5. Wdróż woluminy Azure NetApp Files, postępując zgodnie z [instrukcjami, aby utworzyć wolumin dla Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes). Wdróż woluminy w wyznaczeniej [podsieci](https://docs.microsoft.com/rest/api/virtualnetwork/subnets)Azure NetApp Files. Należy pamiętać, że zasoby Azure NetApp Files i maszyny wirtualne platformy Azure muszą znajdować się w tym samym Virtual Network platformy Azure lub w równorzędnych sieciach wirtualnych platformy Azure. Na przykład sapmnt<b>QAS</b>, usrsap<b>QAS</b>itp. są nazwami woluminów<b>i sapmnt QAS, usrsap</b><b>QAS</b>, itp. są ścieżkami do woluminów Azure NetApp Files.  
 
    1. Volume sapmnt<b>QAS</b> (NFS://10.1.0.4/sapmnt<b>QAS</b>)
    2. Volume usrsap<b>QAS</b> (NFS://10.1.0.4/usrsap<b>QAS</b>)
@@ -211,7 +211,7 @@ Najpierw należy utworzyć woluminy Azure NetApp Files. Wdróż maszyny wirtualn
    1. Utwórz adresy IP frontonu
       1. Adres IP 10.1.1.20 dla ASCS
          1. Otwórz moduł równoważenia obciążenia, wybierz pozycję Pula adresów IP frontonu, a następnie kliknij przycisk Dodaj.
-         1. Wprowadź nazwę nowej puli adresów IP frontonu (na przykład frontonu) **. QAS. ASCS**)
+         1. Wprowadź nazwę nowej puli adresów IP frontonu (na przykład **frontonu). QAS. ASCS**)
          1. Ustaw przypisanie na static i wprowadź adres IP (na przykład **10.1.1.20**)
          1. Kliknij przycisk OK.
       1. 10.1.1.21 adresu IP dla ASCS wykres WYWOŁUJĄCYCH
@@ -219,7 +219,7 @@ Najpierw należy utworzyć woluminy Azure NetApp Files. Wdróż maszyny wirtualn
    1. Tworzenie pul zaplecza
       1. Tworzenie puli zaplecza dla ASCS
          1. Otwórz moduł równoważenia obciążenia, wybierz pozycję Pule zaplecza, a następnie kliknij przycisk Dodaj.
-         1. Wprowadź nazwę nowej puli zaplecza (na przykład zaplecze **. QAS**)
+         1. Wprowadź nazwę nowej puli zaplecza (na przykład **zaplecze. QAS**)
          1. Kliknij pozycję Dodaj maszynę wirtualną.
          1. Wybierz zestaw dostępności utworzony wcześniej dla ASCS 
          1. Wybierz Maszyny wirtualne klastra SCS
@@ -231,12 +231,12 @@ Najpierw należy utworzyć woluminy Azure NetApp Files. Wdróż maszyny wirtualn
          1. Wybierz pozycję TCP jako protokół, port 620**00**, Zachowaj interwał 5 i próg złej kondycji 2
          1. Kliknij przycisk OK.
       1. Port 621**01** dla ASCS wykres wywołujących
-            * Powtórz powyższe kroki w sekcji "c", aby utworzyć sondę kondycji dla wykres WYWOŁUJĄCYCH (na przykład 621**01** i kondycja) **. QAS. Wykres WYWOŁUJĄCYCH**)
+            * Powtórz powyższe kroki w sekcji "c", aby utworzyć sondę kondycji dla wykres WYWOŁUJĄCYCH (na przykład 621**01** i **kondycja). QAS. Wykres WYWOŁUJĄCYCH**)
    1. Reguły równoważenia obciążenia
       1. 32**00** TCP dla ASCS
          1. Otwórz moduł równoważenia obciążenia, wybierz pozycję reguły równoważenia obciążenia i kliknij przycisk Dodaj.
          1. Wprowadź nazwę nowej reguły modułu równoważenia obciążenia (na przykład **LB. QAS. ASCS. 3200**)
-         1. Wybierz adres IP frontonu dla ASCS, puli zaplecza i sondy kondycji utworzonej wcześniej (na przykład frontonu) **. QAS. ASCS**)
+         1. Wybierz adres IP frontonu dla ASCS, puli zaplecza i sondy kondycji utworzonej wcześniej (na przykład **frontonu). QAS. ASCS**)
          1. Utrzymywanie protokołu **TCP**, wprowadź port **3200**
          1. Zwiększ limit czasu bezczynności do 30 minut
          1. **Upewnij się, że włączono zmiennoprzecinkowy adres IP**

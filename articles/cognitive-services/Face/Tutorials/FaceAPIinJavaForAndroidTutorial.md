@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 09/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 366c0c50cee521c5e70496403fd77211a875065f
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 740b3fae81521fec2cba31e3b8fd161f767c4380
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606762"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858970"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>Samouczek: Tworzenie aplikacji dla systemu Android wykrywającej i oznaczającej ramką twarze na obrazie
 
@@ -37,7 +37,8 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Klucz subskrypcji interfejsu API rozpoznawania twarzy. Klucz subskrypcji bezpłatnej wersji próbnej możesz uzyskać na stronie [Wypróbuj usługi Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Możesz też wykonać instrukcje z tematu [Create a Cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) (Tworzenie konta usług Cognitive Services), aby subskrybować usługę interfejsu API rozpoznawania twarzy i uzyskać klucz.
+- Klucz subskrypcji interfejsu API rozpoznawania twarzy. Klucz subskrypcji bezpłatnej wersji próbnej możesz uzyskać na stronie [Wypróbuj usługi Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Możesz też wykonać instrukcje z tematu [Create a Cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) (Tworzenie konta usług Cognitive Services), aby subskrybować usługę interfejsu API rozpoznawania twarzy i uzyskać klucz. Następnie [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla ciągu punktu końcowego klucza i usługi, odpowiednio `FACE_SUBSCRIPTION_KEY` nazwane `FACE_ENDPOINT`i.
+- Dowolna wersja programu [Visual Studio 2015 lub 2017](https://www.visualstudio.com/downloads/).
 - Program [Android Studio](https://developer.android.com/studio/) z poziomem interfejsu API 22 lub nowszym (wymagane przez bibliotekę klienta rozpoznawania twarzy).
 
 ## <a name="create-the-android-studio-project"></a>Tworzenie projektu programu Android Studio
@@ -56,17 +57,17 @@ Wykonaj następujące kroki, aby utworzyć nowy projekt aplikacji dla systemu An
 
 Otwórz plik *activity_main.xml*. W edytorze układu Layout Editor wybierz kartę **Text** (Tekst), a następnie zastąp zawartość następującym kodem.
 
-[!code-xml[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/res/layout/activity_main.xml?range=1-18)]
+[!code-xml[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/res/layout/activity_main.xml?name=snippet_activitymain)]
 
 ### <a name="create-the-main-class"></a>Tworzenie głównej klasy
 
 Otwórz plik *MainActivity.java* i zastąp istniejące instrukcje `import` następującym kodem.
 
-[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?range=3-11)]
+[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?name=snippet_imports)]
 
 Następnie zastąp zawartość klasy **MainActivity** następującym kodem. Utworzy on procedurę obsługi zdarzeń dla elementu **Button**, która uruchamia nowe działanie pozwalające użytkownikowi wybrać obraz. Wyświetla obraz w widoku **ImageView**.
 
-[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?range=29-68)]
+[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?name=snippet_mainactivity_methods)]
 
 ### <a name="try-the-app"></a>Testowanie aplikacji
 
@@ -86,33 +87,31 @@ W okienku **Project** (Projekt) wybierz za pomocą rozwijanego selektora pozycj�
 
 Wróć do pliku **MainActivity.java** i dodaj następujące instrukcje `import`:
 
-[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?range=13-14)]
+[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?name=snippet_face_imports)]
 
 Następnie wstaw następujący kod w klasie **MainActivity** powyżej metody **onCreate**:
 
-[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?range=17-27)]
-
-Konieczne będzie zastąpienie elementu `<Subscription Key>` kluczem subskrypcji. Należy także zastąpić element `<API endpoint>` punktem końcowym interfejsu API rozpoznawania twarzy, używając odpowiedniego identyfikatora regionu dla swojego klucza (zobacz [dokumentację interfejsu API rozpoznawania twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), aby zapoznać się z listą wszystkich punktów końcowych regionów). Klucze subskrypcji bezpłatnej wersji próbnej są generowane w regionie **westus**.
+[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?name=snippet_mainactivity_fields)]
 
 W okienku **Project** (Projekt) rozwiń pozycje **app** i **manifests**, a następnie otwórz plik *AndroidManifest.xml*. Wstaw następujący element jako bezpośredni element podrzędny elementu `manifest`:
 
-[!code-xml[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/AndroidManifest.xml?range=5)]
+[!code-xml[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/AndroidManifest.xml?name=snippet_manifest_entry)]
 
 ## <a name="upload-image-and-detect-faces"></a>Przekazywanie obrazu i wykrywanie twarzy
 
-Aplikacja będzie wykrywanie twarzy, wywołując **faceClient.Face.DetectWithStreamAsync** metody, która otacza [Wykryj](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) interfejsu API REST i zwraca listę **twarzy** wystąpień.
+Aplikacja będzie wykrywać twarze, wywołując metodę **faceClient. twarzy. DetectWithStreamAsync** , która otacza interfejs API [rest i](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) zwraca listę wystąpień **twarzy** .
 
 Każdy zwrócony element **Face** zawiera prostokąt wskazujący lokalizację twarzy wraz z serią opcjonalnych atrybutów twarzy. W tym przykładzie żądane są tylko prostokąty wskazujące lokalizację twarzy.
 
 Wstaw następujące dwie metody do klasy **MainActivity**. Należy pamiętać, że po zakończeniu procesu wykrywania twarzy aplikacja wywołuje metodę **drawFaceRectanglesOnBitmap**, aby zmodyfikować widok **ImageView**. Zdefiniujesz tę metodę w następnej kolejności.
 
-[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?range=70-150)]
+[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?name=snippet_detection_methods)]
 
 ## <a name="draw-face-rectangles"></a>Rysowanie prostokątów twarzy
 
 Wstaw następującą metodę pomocniczą do klasy **MainActivity**. Ta metoda rysuje prostokąt wokół każdej wykrytej twarzy przy użyciu współrzędnych prostokąta każdego wystąpienia elementu **Face**.
 
-[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?range=152-173)]
+[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?name=snippet_drawrectangles)]
 
 Na koniec usuń znaczniki komentarza z wywołania metody **detectAndFrame** w metodzie **onActivityResult**.
 
@@ -122,7 +121,7 @@ Uruchom aplikację i znajdź obraz z twarzą. Zaczekaj kilka sekund, aby umożli
 
 ![Zrzut ekranu systemu Android przedstawiający twarze z czerwonymi prostokątami narysowanymi wokół nich](../Images/android_getstarted2.1.PNG)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono podstawowy proces korzystania z zestawu SDK języka Java interfejsu API rozpoznawania twarzy dla usługi rozpoznawania twarzy oraz utworzono aplikację do wykrywania i oznaczania ramkami twarzy na obrazie. Teraz dowiedz się więcej o szczegółach wykrywania twarzy.
 

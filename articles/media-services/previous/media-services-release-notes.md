@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: juliako
-ms.openlocfilehash: ff85638a05855d0b755a7b1812ee7025274b559c
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 6fea7b7d3d3ef3b1a46aeeff0bab8fef2a9bf3ad
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019310"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860356"
 ---
 # <a name="azure-media-services-release-notes"></a>Informacje o wersji Azure Media Services
 
@@ -29,7 +29,7 @@ Te informacje o wersji Azure Media Services podsumowują zmiany z poprzednich we
 
 Chcemy poznać naszych klientów, aby móc skupić się na rozwiązywaniu problemów, które mają wpływ na Ciebie. Aby zgłosić problem lub zadawać pytania, Prześlij wpis na [forum MSDN Azure Media Services]. 
 
-## <a name="a-idissuescurrently-known-issues"></a><a id="issues"/>Aktualnie znane problemy
+## <a name="a-idissuesknown-issues"></a><a id="issues"/>Znane problemy
 ### <a name="a-idgeneral_issuesmedia-services-general-issues"></a><a id="general_issues"/>Problemy ogólne Media Services
 
 | Problem | Opis |
@@ -41,6 +41,7 @@ Chcemy poznać naszych klientów, aby móc skupić się na rozwiązywaniu proble
 | Gdy wykonujesz zapytania o jednostki, limit 1 000 jednostek jest zwracany jednocześnie, ponieważ publiczna wersja REST 2 ogranicza wyniki zapytania do 1 000 wyników. |Użyj funkcji Skip i Take (.NET)/Top (REST) zgodnie z opisem w [tym przykładzie platformy .NET](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) i [przykładowym interfejsem API REST](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities). |
 | Niektórzy klienci mogą przechodzić przez problem z tagiem REPEAT w manifeście Smooth Streaming. |Aby uzyskać więcej informacji, zobacz [tę sekcję](media-services-deliver-content-overview.md#known-issues). |
 | Nie można serializować Media Services obiektów zestawu SDK platformy .NET. w związku z tym wynik nie współpracuje z usługą Azure cache for Redis. |Jeśli próbujesz serializować obiekt elementu zawartości zestawu SDK w celu dodania go do usługi Azure cache for Redis, zostanie zgłoszony wyjątek. |
+|Interfejs API REST reaguje na komunikat o błędzie informujący o tym, że nie można uzyskać dostępu do filtru przy użyciu tej wersji interfejsu API REST "podczas próby pobrania filtru na poziomie zasobu lub konta.|Filtr został utworzony lub zmodyfikowany przy użyciu nowszej wersji interfejsu API, która jest używana do próby pobrania filtru. Taka sytuacja może wystąpić, jeśli dwie wersje interfejsu API są używane przez kod lub narzędzia używane przez klienta.  Najlepszym rozwiązaniem jest uaktualnienie kodu lub narzędzi w celu użycia nowszych lub dwóch wersji interfejsu API.|
 
 ## <a name="a-idrest_version_historyrest-api-version-history"></a><a id="rest_version_history"/>Historia wersji interfejsu API REST
 Informacje o historii wersji interfejsu API REST Media Services można znaleźć w [Dokumentacja interfejsu API REST Azure Media Services].
@@ -104,7 +105,7 @@ Od 12 maja 2018 kanały na żywo nie będą już obsługiwać protokołu pozyski
 #### <a name="media-analytics"></a>Media Analytics
 Ogólna dostępność Azure Media Redactor: Ten procesor multimedialny wykonuje zachowywanie anonimowości przez rozmycie twarzy wybranych osób i jest idealnym rozwiązaniem do użycia w scenariuszach bezpieczeństwa publicznego i multimediów. 
 
-Aby zapoznać się z omówieniem tego nowego procesora, zobacz [ten wpis w blogu](https://azure.microsoft.com/blog/azure-media-redactor/). Aby uzyskać informacje na temat dokumentacji i ustawień, zobacz redagowanie twarzy [przy użyciu Azure Media Analytics](media-services-face-redaction.md).
+Aby zapoznać się z omówieniem tego nowego procesora, zobacz [ten wpis w blogu](https://azure.microsoft.com/blog/azure-media-redactor/). Aby uzyskać informacje na temat dokumentacji i ustawień, zobacz [redagowanie twarzy przy użyciu Azure Media Analytics](media-services-face-redaction.md).
 
 
 
@@ -142,7 +143,7 @@ Aby uzyskać więcej informacji o tych właściwościach, zobacz [StreamingEndpo
 
 ## <a name="december-2016-release"></a>Wydanie z grudnia 2016
 
- Teraz można użyć Media Services, aby uzyskać dostęp do danych telemetrycznych/metryk dla swoich usług. Korzystając z bieżącej wersji Media Services, można zbierać dane telemetryczne dotyczące kanału na żywo, punktu końcowego przesyłania strumieniowego i obiektów archiwum. Aby uzyskać więcej informacji, zobacz [Media Services](media-services-telemetry-overview.md)telemetrii.
+ Teraz można użyć Media Services, aby uzyskać dostęp do danych telemetrycznych/metryk dla swoich usług. Korzystając z bieżącej wersji Media Services, można zbierać dane telemetryczne dotyczące kanału na żywo, punktu końcowego przesyłania strumieniowego i obiektów archiwum. Aby uzyskać więcej informacji, zobacz [Media Services telemetrii](media-services-telemetry-overview.md).
 
 ## <a name="a-idjuly_changes16july-2016-release"></a><a id="july_changes16"/>Wydanie 2016 lipca
 ### <a name="updates-to-the-manifest-file-ism-generated-by-encoding-tasks"></a>Aktualizacje pliku manifestu (*. ISM) generowane przez zadania kodowania
@@ -377,7 +378,7 @@ Zestaw Media Services SDK dla platformy .NET jest teraz w wersji 3.0.0.7
 * Usługa dostarczania licencji PlayReady. 
 * Szyfrowanie dynamiczne PlayReady. 
 * Media Services szablon licencji PlayReady. Aby uzyskać więcej informacji, zobacz [Omówienie szablonu licencji PlayReady usługi Media Services].
-* Strumieniowo zaszyfrowane zasoby zasobów magazynu. Aby uzyskać więcej informacji, zobacz [przesyłanie strumieniowe zawartości w pamięci](https://msdn.microsoft.com/library/azure/dn783451.aspx)podręcznej.
+* Strumieniowo zaszyfrowane zasoby zasobów magazynu. Aby uzyskać więcej informacji, zobacz [przesyłanie strumieniowe zawartości w pamięci podręcznej](https://msdn.microsoft.com/library/azure/dn783451.aspx).
 
 ## <a id="august_changes_14"></a>Wydanie 2014 sierpnia
 Po zakodowaniu elementu zawartości dane wyjściowe są generowane po zakończeniu zadania kodowania. Do tej wersji program Media Services Encoder wygenerował metadane dotyczące zasobów wyjściowych. Począwszy od tej wersji koder generuje również metadane dotyczące zasobów wejściowych. Aby uzyskać więcej informacji, zobacz [metadane wejściowe] i [metadane wyjściowe].

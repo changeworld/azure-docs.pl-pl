@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
 ms.openlocfilehash: 7f89dc33c105a82646c8f12422f88a06efdca18b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67183623"
 ---
-Usługa Azure Data Lake Analytics ułatwia wykonywanie zadań związanych z zarządzaniem rozproszoną infrastrukturą i skomplikowanym kodem. Dynamicznie aprowizuje zasoby i służy do analizowania eksabajtów danych. Po zakończeniu zadania, wyłączane zasoby automatycznie. Płacisz tylko za moc obliczeniową, który został użyty. Nawet w sytuacjach zwiększania lub zmniejszania rozmiaru przechowywanych danych lub ilości użytych zasobów obliczeniowych nie trzeba ponownie pisać kodu. Aby zwiększyć domyślne limity dla Twojej subskrypcji, skontaktuj się z działem pomocy technicznej.
+Azure Data Lake Analytics wykonuje złożone zadanie zarządzania rozproszoną infrastrukturą i skomplikowanym kodem. Dynamicznie udostępnia zasoby i umożliwia analizowanie eksabajtowej danych przy użyciu tej usługi. Po zakończeniu zadania automatycznie przewijane są zasoby. Płacisz tylko za użytą moc przetwarzania. Nawet w sytuacjach zwiększania lub zmniejszania rozmiaru przechowywanych danych lub ilości użytych zasobów obliczeniowych nie trzeba ponownie pisać kodu. Aby zgłosić domyślne limity dla subskrypcji, skontaktuj się z pomocą techniczną.
 
 | **Zasób** | **Limit domyślny** | **Komentarze** |
 | --- | --- | --- |
-| Maksymalna liczba równoczesnych zadań |20 | |
-| Maksymalna liczba jednostek analizy (Australia) dla każdego konta |250 | Użyć dowolnej kombinacji maksymalnie 250 jednostek alokacji w zadaniach 20. Aby zwiększyć ten limit, skontaktuj się z Microsoft Support. |
-| Rozmiar maksymalny skryptu do przesłania zadania | 3 MB | |
-| Maksymalna liczba kont usługi Data Lake Analytics na region na subskrypcję | 5 | Aby zwiększyć ten limit, skontaktuj się z Microsoft Support. |
+| Maksymalna liczba współbieżnych zadań |20 | |
+| Maksymalna liczba jednostek analizy (Australia) dla konta |250 | Użyj dowolnej kombinacji maksymalnie 250ych jednostek działania w ramach 20 zadań. Aby zwiększyć ten limit, skontaktuj się z pomoc techniczna firmy Microsoft. |
+| Maksymalny rozmiar skryptu do przesłania zadania | 3 MB | |
+| Maksymalna liczba kont Data Lake Analytics na region na subskrypcję | 5 | Aby zwiększyć ten limit, skontaktuj się z pomoc techniczna firmy Microsoft. |

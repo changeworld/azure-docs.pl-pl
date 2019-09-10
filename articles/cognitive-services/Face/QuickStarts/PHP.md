@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 09/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 2ed1a20bf47771d927c0d58730fa0eb4471572af
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: a0704f9e9a77eba2eb0d4f00bc1d880011e767de
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603367"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859218"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Szybki start: Wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka PHP
 
@@ -24,9 +24,9 @@ W tym przewodniku Szybki start użyjesz interfejsu API REST rozpoznawania twarzy
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Klucz subskrypcji interfejsu API rozpoznawania twarzy. Klucz subskrypcji bezpłatnej wersji próbnej możesz uzyskać na stronie [Wypróbuj usługi Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Możesz też wykonać instrukcje z tematu [Create a Cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) (Tworzenie konta usług Cognitive Services), aby subskrybować usługę interfejsu API rozpoznawania twarzy i uzyskać klucz.
-- Edytor kodu, takie jak [programu Visual Studio Code](https://code.visualstudio.com/download).
-- PHP [HTTP_Request2](https://pear.php.net/package/HTTP_Request2) pakietu.
-- Przeglądarka sieci web z włączonymi PHP. Jeśli nie zdefiniowano to, możesz to zrobić przez zainstalowanie i skonfigurowanie [XAMPP](https://www.apachefriends.org/) na swojej maszynie.
+- Edytor kodu, taki jak [Visual Studio Code](https://code.visualstudio.com/download).
+- Pakiet [HTTP_Request2](https://pear.php.net/package/HTTP_Request2) języka PHP.
+- Przeglądarka sieci Web obsługująca język PHP. Jeśli nie zostało to jeszcze zrobione, możesz to zrobić przez zainstalowanie i skonfigurowanie [XAMPP](https://www.apachefriends.org/) na komputerze.
 
 ## <a name="initialize-the-html-file"></a>Inicjowanie pliku HTML
 
@@ -43,17 +43,15 @@ Utwórz nowy plik HTML o nazwie *detectFaces.html* i dodaj poniższy kod.
 
 ## <a name="write-the-php-script"></a>Pisanie skryptu w języku PHP
 
-Dodaj następujący kod wewnątrz elementu `body` dokumentu. Ten kod konfiguruje podstawowy interfejs użytkownika z polem adresu URL **analizowania powierzchni** przycisk, okienko odpowiedzi i okienku wyświetlania obrazu.
+Dodaj następujący kod wewnątrz elementu `body` dokumentu. Ten kod konfiguruje podstawowy interfejs użytkownika z polem adresu URL, przyciskiem **Analizuj** swoją aplikację, okienkiem odpowiedzi oraz okienkiem wyświetlania obrazu.
 
 ```php
 <?php
 // Replace <Subscription Key> with a valid subscription key.
 $ocpApimSubscriptionKey = '<Subscription Key>';
 
-// You must use the same location in your REST call as you used to obtain
-// your subscription keys. For example, if you obtained your subscription keys
-// from westus, replace "westcentralus" in the URL below with "westus".
-$uriBase = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/';
+// Replace <My Endpoint String> with the string in your endpoint URL.
+$uriBase = 'https:/<My Endpoint String>.com/face/v1.0/';
 
 $imageUrl =
     'https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg';
@@ -101,7 +99,9 @@ catch (HttpException $ex)
 ?>
 ```
 
-Należy zaktualizować pole `subscriptionKey` wartością klucza subskrypcji. Konieczna może być również zmiana ciągu `uriBase` w taki sposób, aby zawierał on poprawny identyfikator regionu (zobacz [dokumentację interfejsu API rozpoznawania twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), aby zapoznać się z listą wszystkich punktów końcowych regionów). Pole `returnFaceAttributes` określa atrybuty twarzy do pobrania; możesz zmienić ten ciąg w zależności od planowanego użycia.
+Musisz zaktualizować `subscriptionKey` pole przy użyciu wartości klucza subskrypcji i należy `uriBase` zmienić ciąg tak, aby zawierał prawidłowy ciąg punktu końcowego. Pole `returnFaceAttributes` określa atrybuty twarzy do pobrania; możesz zmienić ten ciąg w zależności od planowanego użycia.
+
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="run-the-script"></a>Uruchamianie skryptu
 
@@ -286,7 +286,7 @@ Otwórz plik w przeglądarce internetowej z obsługą języka PHP. Powinien zost
 ]
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej na temat interfejsów API rozpoznawania twarzy używanych do wykrywania ludzkich twarzy na obrazach, rozpoznawania ich obrysów i zwracania atrybutów, takich jak wiek i płeć.
 

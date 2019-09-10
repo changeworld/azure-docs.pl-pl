@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2eff9c0edf6797c08d0ef9732c903a81a6c764a
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 54e0648ff9aab12ad6a579fc7f6e45b98a9d6d03
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70733409"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861161"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Uprawnienia roli administratora w Azure Active Directory
 
@@ -60,7 +60,7 @@ Użytkownicy w tej roli mogą tworzyć rejestracje aplikacji, gdy ustawienie "u�
 
 ### <a name="authentication-administratorauthentication-administrator-permissions"></a>[Administrator uwierzytelniania](#authentication-administrator-permissions)
 
-Użytkownicy z tą rolą mogą ustawiać lub resetować poświadczenia bez hasła oraz aktualizować hasła dla wszystkich użytkowników. Administratorzy uwierzytelniania mogą wymagać od użytkowników ponownego zarejestrowania istniejących poświadczeń niezwiązanych z hasłem (na przykład MFA lub FIDO) i odwołać się do **zapamiętania usługi MFA na urządzeniu**, które monituje o uwierzytelnianie wieloskładnikowe przy następnym logowaniu użytkowników, którzy nie są administratorami lub tylko przypisane następujące role:
+Użytkownicy z tą rolą mogą ustawiać lub resetować poświadczenia bez hasła oraz aktualizować hasła dla wszystkich użytkowników. Administratorzy uwierzytelniania mogą wymagać od użytkowników ponownego zarejestrowania istniejących poświadczeń niezwiązanych z hasłem (na przykład MFA lub FIDO) i odwołać się do zapamiętania usługi **MFA na urządzeniu**, które monituje o uwierzytelnianie wieloskładnikowe przy następnym logowaniu użytkowników, którzy nie są administratorami lub tylko przypisane następujące role:
 
 * Administrator uwierzytelniania
 * Odczytywanie katalogów
@@ -71,13 +71,19 @@ Użytkownicy z tą rolą mogą ustawiać lub resetować poświadczenia bez hasł
 Rola Administrator uwierzytelniania jest obecnie w publicznej wersji zapoznawczej. Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 > [!IMPORTANT]
-> Użytkownicy z tą rolą mogą zmieniać poświadczenia dla osób, które mogą mieć dostęp do poufnych lub prywatnych informacji lub konfiguracji krytycznej wewnątrz i na zewnątrz Azure Active Directory. Zmiana poświadczeń użytkownika może oznaczać, że założono, że tożsamość i uprawnienia tego użytkownika. Przykład:
+> Użytkownicy z tą rolą mogą zmieniać poświadczenia dla osób, które mogą mieć dostęp do poufnych lub prywatnych informacji lub konfiguracji krytycznej wewnątrz i na zewnątrz Azure Active Directory. Zmiana poświadczeń użytkownika może oznaczać, że założono, że tożsamość i uprawnienia tego użytkownika. Na przykład:
 
 * Rejestracja aplikacji i właściciele aplikacji przedsiębiorstwa, którzy mogą zarządzać poświadczeniami aplikacji, których są właścicielami. Te aplikacje mogą mieć uprawnienia uprzywilejowane w usłudze Azure AD, a w innym miejscu nie są przyznawane administratorom uwierzytelniania. Za pomocą tej ścieżki administrator uwierzytelniania może założyć tożsamość właściciela aplikacji, a następnie ponownie założyć tożsamość aplikacji uprzywilejowanej przez zaktualizowanie poświadczeń dla aplikacji.
 * Właściciele subskrypcji platformy Azure, którzy mogą mieć dostęp do poufnych lub prywatnych informacji lub konfiguracji krytycznej na platformie Azure.
 * Grupa zabezpieczeń i właściciele grupy Office 365, którzy mogą zarządzać członkostwem w grupie. Te grupy mogą udzielić dostępu do poufnych lub prywatnych informacji lub konfiguracji krytycznej w usłudze Azure AD i w innym miejscu.
 * Administratorzy w innych usługach poza usługą Azure AD, np. Exchange Online, Centrum zabezpieczeń i zgodności pakietu Office oraz systemy kadr.
 * Użytkownicy niebędący administratorami, w tym członkowie kierownictwa, prawnik prawny i pracownicy działu kadr, którzy mogą mieć dostęp do poufnych lub prywatnych informacji.
+
+### <a name="azure-devops-administratorazure-devops-administrator-permissions"></a>[Administrator usługi Azure DevOps](#azure-devops-administrator-permissions)
+
+Użytkownicy z tą rolą mogą zarządzać zasadami usługi Azure DevOps, aby ograniczyć tworzenie nowych organizacji usługi Azure DevOps do zestawu konfigurowalnych użytkowników/grup AAD. Użytkownicy w tej roli mogą zarządzać tymi zasadami za pomocą dowolnej organizacji usługi Azure DevOps, która jest poddana kopii zapasowej usługi Azure AD firmy.
+
+W przyszłości wszystkie zasady usługi Azure DevOps dla przedsiębiorstw będą zarządzane przez użytkowników w tej roli.
 
 ### <a name="azure-information-protection-administratorazure-information-protection-administrator-permissions"></a>[Azure Information Protection administrator](#azure-information-protection-administrator-permissions)
 
@@ -220,7 +226,7 @@ Użytkownicy z tą rolą mogą zmieniać hasła, unieważniać tokeny odświeża
 * Czytelnik raportów
 
 > [!IMPORTANT]
-> Użytkownicy z tą rolą mogą zmieniać hasła dla osób, które mogą mieć dostęp do poufnych lub prywatnych informacji lub konfiguracji krytycznej wewnątrz i na zewnątrz Azure Active Directory. Zmiana hasła użytkownika może oznaczać, że założono, że tożsamość i uprawnienia tego użytkownika. Przykład:
+> Użytkownicy z tą rolą mogą zmieniać hasła dla osób, które mogą mieć dostęp do poufnych lub prywatnych informacji lub konfiguracji krytycznej wewnątrz i na zewnątrz Azure Active Directory. Zmiana hasła użytkownika może oznaczać, że założono, że tożsamość i uprawnienia tego użytkownika. Na przykład:
 
 * Rejestracja aplikacji i właściciele aplikacji przedsiębiorstwa, którzy mogą zarządzać poświadczeniami aplikacji, których są właścicielami. Aplikacje te mogą mieć uprawnienia uprzywilejowane w usłudze Azure AD i nie są przyznawane administratorom pomocy technicznej. Za pomocą tej ścieżki Administrator pomocy technicznej może być w stanie założyć tożsamość właściciela aplikacji, a następnie ponownie założyć tożsamość aplikacji uprzywilejowanej przez zaktualizowanie poświadczeń dla aplikacji.
 * Właściciele subskrypcji platformy Azure, którzy mogą mieć dostęp do poufnych lub prywatnych informacji lub konfiguracji krytycznej na platformie Azure.
@@ -309,7 +315,7 @@ Użytkownicy z tą rolą mają uprawnienia do zarządzania funkcjami związanymi
 W | Można wykonać
 --- | ---
 [Microsoft 365 Security Center](https://protection.office.com) | Monitorowanie zasad związanych z zabezpieczeniami w ramach usług Microsoft 365 Services<br>Zarządzanie zagrożeniami i alertami zabezpieczeń<br>Wyświetlanie raportów
-Centrum ochrony tożsamości | Wszystkie uprawnienia roli czytelnik zabezpieczeń<br>Ponadto możliwość wykonywania wszystkich operacji usługi Identity Protection Center z wyjątkiem resetowania haseł
+Centrum usługi Identity Protection | Wszystkie uprawnienia roli czytelnik zabezpieczeń<br>Ponadto możliwość wykonywania wszystkich operacji usługi Identity Protection Center z wyjątkiem resetowania haseł
 [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | Wszystkie uprawnienia roli czytelnik zabezpieczeń<br>**Nie można** zarządzać przypisaniami ról lub ustawieniami usługi Azure AD
 [Centrum zabezpieczeń i zgodności pakietu Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Zarządzanie zasadami zabezpieczeń<br>Wyświetlanie, badanie i reagowanie na zagrożenia bezpieczeństwa<br>Wyświetlanie raportów
 Azure Advanced Threat Protection | Monitoruj podejrzane działania zabezpieczeń i odpowiadaj na nie
@@ -326,7 +332,7 @@ Użytkownicy z tą rolą mogą zarządzać alertami i mieć globalny dostęp tyl
 W | Można wykonać
 --- | ---
 [Microsoft 365 Security Center](https://protection.office.com) | Wszystkie uprawnienia roli czytelnik zabezpieczeń<br>Wyświetlanie alertów dotyczących zagrożeń zabezpieczeń, badanie ich i reagowanie na nie
-Centrum ochrony tożsamości | Wszystkie uprawnienia roli czytelnik zabezpieczeń<br>Ponadto możliwość wykonywania wszystkich operacji usługi Identity Protection Center z wyjątkiem resetowania haseł
+Centrum usługi Identity Protection | Wszystkie uprawnienia roli czytelnik zabezpieczeń<br>Ponadto możliwość wykonywania wszystkich operacji usługi Identity Protection Center z wyjątkiem resetowania haseł
 [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | Wszystkie uprawnienia roli czytelnik zabezpieczeń
 [Centrum zabezpieczeń i zgodności pakietu Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Wszystkie uprawnienia roli czytelnik zabezpieczeń<br>Wyświetlanie alertów zabezpieczeń, badanie ich i reagowanie na nie
 Windows Defender ATP i EDR | Wszystkie uprawnienia roli czytelnik zabezpieczeń<br>Wyświetlanie alertów zabezpieczeń, badanie ich i reagowanie na nie
@@ -341,7 +347,7 @@ Użytkownicy z tą rolą mają globalny dostęp tylko do odczytu w funkcji zwią
 W | Można wykonać
 --- | ---
 [Microsoft 365 Security Center](https://protection.office.com) | Wyświetlanie zasad związanych z zabezpieczeniami w ramach usług Microsoft 365 Services<br>Wyświetl zagrożenia i alerty zabezpieczeń<br>Wyświetlanie raportów
-Centrum ochrony tożsamości | Przeczytaj wszystkie raporty i ustawienia zabezpieczeń dotyczące funkcji zabezpieczeń<br><ul><li>Antyspam<li>Szyfrowanie<li>Ochrona przed utratą danych<li>Ochrona przed złośliwym oprogramowaniem<li>Zaawansowana ochrona przed zagrożeniami<li>Ochrona przed phishingiem<li>Reguły Mailflow
+Centrum usługi Identity Protection | Przeczytaj wszystkie raporty i ustawienia zabezpieczeń dotyczące funkcji zabezpieczeń<br><ul><li>Antyspam<li>Szyfrowanie<li>Ochrona przed utratą danych<li>Ochrona przed złośliwym oprogramowaniem<li>Zaawansowana ochrona przed zagrożeniami<li>Ochrona przed phishingiem<li>Reguły Mailflow
 [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | Ma dostęp tylko do odczytu do wszystkich informacji podanych w Azure AD Privileged Identity Management: Zasady i raporty dotyczące przypisań roli usługi Azure AD i przeglądów zabezpieczeń.<br>**Nie można** zarejestrować się w usłudze Azure AD Privileged Identity Management ani wprowadzać w niej żadnych zmian. W portalu Privileged Identity Management lub za pośrednictwem programu PowerShell ktoś w tej roli może aktywować dodatkowe role (na przykład administratorów globalnych lub administrator ról uprzywilejowanych), jeśli użytkownik jest uprawniony do korzystania z nich.
 [Centrum zabezpieczeń i zgodności pakietu Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Wyświetlanie zasad zabezpieczeń<br>Wyświetl i zbadaj zagrożenia bezpieczeństwa<br>Wyświetlanie raportów
 Windows Defender ATP i EDR | Wyświetlanie i badanie alertów. Po włączeniu kontroli dostępu opartej na rolach w usłudze Windows Defender ATP użytkownicy z uprawnieniami tylko do odczytu, takimi jak rola czytnika zabezpieczeń usługi Azure AD, tracą dostęp do momentu przypisania ich do roli usługi Windows Defender ATP.
@@ -400,7 +406,7 @@ Użytkownicy z tą rolą mogą tworzyć użytkowników i zarządzać wszystkimi 
 |Tylko dla użytkowników, którzy nie są administratorami ani w ramach jednej z następujących ograniczonych ról administratora:<ul><li>Odczytywanie katalogów<li>Osoba zapraszająca gościa<li>Administrator pomocy technicznej<li>Czytelnik Centrum wiadomości<li>Czytelnik raportów<li>Administrator użytkowników|<p>Usuń i Przywróć</p><p>Wyłącz i Włącz</p><p>Unieważnianie tokenów odświeżania</p><p>Zarządzanie wszystkimi właściwościami użytkowników, w tym główną nazwą użytkownika</p><p>Resetowanie hasła</p><p>Aktualizuj klucze urządzeń (FIDO)</p>
 
 > [!IMPORTANT]
-> Użytkownicy z tą rolą mogą zmieniać hasła dla osób, które mogą mieć dostęp do poufnych lub prywatnych informacji lub konfiguracji krytycznej wewnątrz i na zewnątrz Azure Active Directory. Zmiana hasła użytkownika może oznaczać, że założono, że tożsamość i uprawnienia tego użytkownika. Na przykład:
+> Użytkownicy z tą rolą mogą zmieniać hasła dla osób, które mogą mieć dostęp do poufnych lub prywatnych informacji lub konfiguracji krytycznej wewnątrz i na zewnątrz Azure Active Directory. Zmiana hasła użytkownika może oznaczać, że założono, że tożsamość i uprawnienia tego użytkownika. Przykład:
 
 * Rejestracja aplikacji i właściciele aplikacji przedsiębiorstwa, którzy mogą zarządzać poświadczeniami aplikacji, których są właścicielami. Aplikacje te mogą mieć uprawnienia uprzywilejowane w usłudze Azure AD, a w innym miejscu nie są przyznawane administratorom użytkowników. Za pomocą tej ścieżki administrator użytkownika może być w stanie założyć tożsamość właściciela aplikacji, a następnie ponownie założyć tożsamość aplikacji uprzywilejowanej przez zaktualizowanie poświadczeń dla aplikacji.
 * Właściciele subskrypcji platformy Azure, którzy mogą mieć dostęp do poufnych lub prywatnych informacji lub konfiguracji krytycznej na platformie Azure.
@@ -491,6 +497,19 @@ Zezwolenie na wyświetlanie, ustawianie i Resetowanie informacji o metodach uwie
 | microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
 | Microsoft. Directory/Users/hasło/aktualizacja | Aktualizowanie haseł dla wszystkich użytkowników w organizacji pakietu Office 365. Zobacz dokumentację online, aby uzyskać więcej szczegółów. |
+
+### <a name="azure-devops-administrator-permissions"></a>Uprawnienia administratora usługi Azure DevOps
+
+Może zarządzać zasadami i ustawieniami organizacji usługi Azure DevOps.
+
+> [!NOTE]
+> Ta rola ma dodatkowe uprawnienia poza Azure Active Directory. Aby uzyskać więcej informacji, zobacz [Opis roli](#azure-devops-administrator) powyżej.
+>
+>
+
+| **Akcje** | **Opis** |
+| --- | --- |
+| Microsoft. Azure. devOps/allEntities/allTasks | Odczytaj i skonfiguruj usługę Azure DevOps. |
 
 ### <a name="azure-information-protection-administrator-permissions"></a>Uprawnienia administratora Azure Information Protection
 
@@ -1496,6 +1515,7 @@ Nazwa wyświetlana wykresu | Nazwa wyświetlana Azure Portal | directoryRoleTemp
 Administrator aplikacji | Administrator aplikacji | 9B895D92-2CD3-44C7-9D02-A6AC2D5EA5C3
 Deweloper aplikacji | Deweloper aplikacji | CF1C38E5-3621-4004-A7CB-879624DCED7C
 Administrator uwierzytelniania | Administrator uwierzytelniania | c4e39bd9-1100-46d3-8c65-fb160da0071f
+Administrator usługi Azure DevOps | Administrator usługi Azure DevOps | e3973bdf-4987-49ae-837a-ba8e231c7286
 Azure Information Protection administrator | Azure Information Protection administrator | 7495fdc4-34c4-4d15-a289-98788ce399fd
 Administrator przepływu użytkownika B2C | Administrator przepływu użytkownika B2C | 6e591065-9bad-43ed-90f3-e9424366d2f0
 administrator atrybutów przepływów użytkownika B2C | administrator atrybutów przepływów użytkownika B2C | 0f971eea-41eb-4569-a71e-57bb8a3eff1e

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fdf1fc14eb4ab1458c25b484bae6cd84ecec6d7f
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: bbb5b90ffac4a89c14a4a6df51022bb61b10fbb0
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575492"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845497"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Szybki Start — Konfigurowanie środowiska chmury prywatnej
 
@@ -46,7 +46,7 @@ Chmurami prywatnymi zarządza się za pomocą portalu CloudSimple. Mają własny
 9. Kliknij pozycję **Next: Opcje**zaawansowane.
 10. Wprowadź zakres CIDR dla podsieci vSphere/sieci vSAN. Upewnij się, że zakres CIDR nie nakłada się na żadną z lokalizacji lokalnych lub innych podsieci platformy Azure (sieci wirtualnych) lub z podsiecią bramy.
 
-    **Opcje zakresu CIDR:** /24,/23,/22 lub/21. Zakres CIDR/24 obsługuje maksymalnie dziewięć węzłów, a/23 zakres CIDR obsługuje do 41 węzłów, a zakres CIDR/22 i/21 obsługuje maksymalnie 64 węzłów (maksymalną liczbę węzłów w chmurze prywatnej).
+    **Opcje zakresu CIDR:** /24,/23,/22 lub/21. Zakres CIDR/24 obsługuje maksymalnie 26 węzłów, a/23 zakres CIDR obsługuje do 58 węzłów, a zakres CIDR/22 i/21 obsługuje węzły 64 (maksymalną liczbę węzłów w chmurze prywatnej).  Aby dowiedzieć się więcej o sieciach VLAN i podsieciach, zobacz [sieci VLAN i podsieci — Omówienie](cloudsimple-vlans-subnets.md).
 
       > [!IMPORTANT]
       > Adresy IP w zakresie CIDR vSphere/sieci vSAN są zarezerwowane do użytku przez infrastrukturę chmury prywatnej.  Nie używaj adresu IP z tego zakresu na żadnej maszynie wirtualnej.
@@ -104,7 +104,7 @@ Połączenie sieci VPN typu punkt-lokacja jest najprostszym sposobem nawiązywan
 
 ### <a name="connect-to-cloudsimple-using-point-to-site-vpn"></a>Nawiązywanie połączenia z usługą CloudSimple przy użyciu sieci VPN typu punkt-lokacja
 
-Klient sieci VPN jest wymagany do nawiązywania połączenia z usługą CloudSimple z komputera.  Pobierz [klienta OpenVPN](https://openvpn.net/community-downloads/) dla systemu Windows [](https://www.sparklabs.com/viscosity/download/) lub lepkości dla macOS i OS X.
+Klient sieci VPN jest wymagany do nawiązywania połączenia z usługą CloudSimple z komputera.  Pobierz [klienta OpenVPN](https://openvpn.net/community-downloads/) dla systemu Windows lub [lepkości](https://www.sparklabs.com/viscosity/download/) dla macOS i OS X.
 
 1. Uruchom Portal CloudSimple i wybierz pozycję **Sieć**.
 2. Wybierz **VPN Gateway**.

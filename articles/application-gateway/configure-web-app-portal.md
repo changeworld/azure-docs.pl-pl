@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 3/11/2019
 ms.author: absha
 ms.openlocfilehash: dee4859c57172a703517848510a31b70ff1f24cd
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "68370417"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>Konfigurowanie App Service przy użyciu Application Gateway
@@ -42,7 +42,7 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 
 4. W obszarze **obiekty docelowe**kliknij listę rozwijaną, a następnie wybierz **App Services** jako opcję.
 
-5. Zostanie wyświetlona lista  rozwijana bezpośrednio poniżej listy rozwijanej targets, która będzie zawierać listę App Services. Z tej listy rozwijanej wybierz App Service, które chcesz dodać jako element członkowski puli zaplecza, a następnie kliknij przycisk Dodaj.
+5. Zostanie wyświetlona lista rozwijana bezpośrednio poniżej listy rozwijanej targets, która będzie zawierać listę App Services. Z tej listy rozwijanej wybierz App Service, które chcesz dodać jako element członkowski puli zaplecza, a następnie kliknij przycisk Dodaj.
 
    ![Zaplecze usługi App Service](./media/configure-web-app-portal/backendpool.png)
    

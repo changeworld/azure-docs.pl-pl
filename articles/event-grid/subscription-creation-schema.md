@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/02/2019
 ms.author: babanisa
-ms.openlocfilehash: 9464ab89e08f53f61cb6f5a4b1e91da35b785af0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6129c7f498ce6c52fce4266f693c6a304642f8c3
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60822788"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845457"
 ---
 # <a name="event-grid-subscription-schema"></a>Schemat subskrypcji siatki zdarzeń
 
@@ -33,21 +33,21 @@ Nazwa subskrypcji zdarzeń musi mieć długość 3 – 64 znaków i może zawier
  
 ## <a name="event-subscription-properties"></a>Właściwości subskrypcji zdarzeń
 
-| Właściwość | Typ | Opis |
+| Właściwość | Type | Opis |
 | -------- | ---- | ----------- |
 | destination | obiekt | Obiekt, który definiuje punkt końcowy. |
 | filter | obiekt | Opcjonalne pole do filtrowania typów zdarzeń. |
 
 ### <a name="destination-object"></a>obiekt docelowy
 
-| Właściwość | Typ | Opis |
+| Właściwość | Type | Opis |
 | -------- | ---- | ----------- |
 | endpointType | ciąg | Typ punktu końcowego dla subskrypcji (webhook/HTTP, Centrum zdarzeń lub kolejki). | 
 | endpointUrl | ciąg | Docelowy adres URL zdarzenia w tej subskrypcji zdarzeń. | 
 
 ### <a name="filter-object"></a>obiekt filtru
 
-| Właściwość | Typ | Opis |
+| Właściwość | Type | Opis |
 | -------- | ---- | ----------- |
 | includedEventTypes | tablica | Dopasowanie, gdy typ zdarzenia w komunikacie zdarzenia jest dokładne dopasowanie do jednego z tych nazw typu event. Zgłasza błąd, gdy nazwa zdarzenia jest niezgodny z nazwy typu zdarzenia zarejestrowane dla źródła zdarzenia. Domyślna jest zgodna wszystkich typów zdarzeń. |
 | subjectBeginsWith | ciąg | Dopasowanie prefiksu filtr zdarzeń do pola temat wiadomości. Domyślne lub pusty ciąg pasuje do wszystkich. | 
@@ -68,7 +68,7 @@ Nazwa subskrypcji zdarzeń musi mieć długość 3 – 64 znaków i może zawier
     },
     "filter": {
       "includedEventTypes": [ "Microsoft.Storage.BlobCreated", "Microsoft.Storage.BlobDeleted" ],
-      "subjectBeginsWith": "blobServices/default/containers/mycontainer/log",
+      "subjectBeginsWith": "/blobServices/default/containers/mycontainer/log",
       "subjectEndsWith": ".jpg",
       "isSubjectCaseSensitive ": "true"
     }

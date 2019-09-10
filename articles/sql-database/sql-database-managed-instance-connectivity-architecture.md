@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 04/16/2019
-ms.openlocfilehash: aac328806e2570bd124626e916c250d481a11311
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d539bd569eee613eb43947e5fd0e3b0614ca5d79
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567594"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858625"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Architektura łączności dla wystąpienia zarządzanego w Azure SQL Database
 
@@ -96,7 +96,7 @@ Wdróż wystąpienie zarządzane w dedykowanej podsieci w sieci wirtualnej. Pods
 
 ### <a name="mandatory-inbound-security-rules"></a>Obowiązkowe reguły zabezpieczeń dla ruchu przychodzącego
 
-| Name (Nazwa)       |Port                        |Protocol|Obiekt źródłowy           |Miejsce docelowe|Action|
+| Name       |Port                        |Protocol|Obiekt źródłowy           |Miejsce docelowe|Action|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |zarządzanie  |9000, 9003, 1438, 1440, 1452|TCP     |Any              |MI PODSIEĆ  |Allow |
 |mi_subnet   |Any                         |Any     |MI PODSIEĆ        |MI PODSIEĆ  |Allow |
@@ -104,7 +104,7 @@ Wdróż wystąpienie zarządzane w dedykowanej podsieci w sieci wirtualnej. Pods
 
 ### <a name="mandatory-outbound-security-rules"></a>Obowiązkowe reguły zabezpieczeń dla ruchu wychodzącego
 
-| Name (Nazwa)       |Port          |Protocol|Obiekt źródłowy           |Miejsce docelowe|Action|
+| Name       |Port          |Protocol|Obiekt źródłowy           |Miejsce docelowe|Action|
 |------------|--------------|--------|-----------------|-----------|------|
 |zarządzanie  |80, 443, 12000|TCP     |MI PODSIEĆ        |AzureCloud |Allow |
 |mi_subnet   |Any           |Any     |MI PODSIEĆ        |MI PODSIEĆ  |Allow |
@@ -121,7 +121,7 @@ Wdróż wystąpienie zarządzane w dedykowanej podsieci w sieci wirtualnej. Pods
 
 ### <a name="user-defined-routes"></a>Trasy zdefiniowane przez użytkownika
 
-|Name (Nazwa)|Prefiks adresu|Następny przeskok|
+|Name|Prefiks adresu|Następny przeskok|
 |----|--------------|-------|
 |subnet_to_vnetlocal|MI PODSIEĆ|Sieć wirtualna|
 |mi-13-64-11-skoku — Internet|13.64.0.0/11|Internet|
@@ -229,7 +229,7 @@ Ponadto można dodać pozycje do tabeli tras, aby skierować ruch, który ma lok
 
 Jeśli sieć wirtualna zawiera niestandardowy system DNS, niestandardowy serwer DNS musi być w stanie rozpoznać publiczne rekordy DNS. Korzystanie z dodatkowych funkcji, takich jak uwierzytelnianie w usłudze Azure AD, może wymagać rozpoznawania dodatkowych nazw FQDN. Aby uzyskać więcej informacji, zobacz [Konfigurowanie niestandardowego serwera DNS](sql-database-managed-instance-custom-dns.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby zapoznać się z omówieniem, zobacz [SQL Database Advanced Data Security](sql-database-managed-instance.md).
 - Dowiedz się, jak [skonfigurować nową sieć wirtualną platformy Azure](sql-database-managed-instance-create-vnet-subnet.md) lub [istniejącą sieć wirtualną platformy Azure](sql-database-managed-instance-configure-vnet-subnet.md) , w której można wdrażać wystąpienia zarządzane.
@@ -238,4 +238,4 @@ Jeśli sieć wirtualna zawiera niestandardowy system DNS, niestandardowy serwer 
   - Z [Azure Portal](sql-database-managed-instance-get-started.md).
   - Za pomocą [programu PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md).
   - Przy użyciu [szablonu Azure Resource Manager](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/).
-  - Przy użyciu [szablonu Azure Resource Manager (za pomocą serwera przesiadkowego, z uwzględnieniem programu SSMS)](https://portal.azure.com/). 
+  - Przy użyciu [szablonu Azure Resource Manager (za pomocą serwera przesiadkowego, z uwzględnieniem programu SSMS)](https://azure.microsoft.com/en-us/resources/templates/201-sqlmi-new-vnet-w-jumpbox/). 

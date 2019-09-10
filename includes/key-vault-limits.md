@@ -5,40 +5,40 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
 ms.openlocfilehash: 0b9d87fd7929607da8407ae5bbfb2f6dd6d69dab
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67183636"
 ---
-#### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>Klucz transakcji (maksymalna liczba transakcji w ciągu 10 sekund, dozwolone magazynu na region<sup>1</sup>):
+#### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>Najważniejsze transakcje (maksymalna liczba transakcji dozwolonych w ciągu 10 sekund, na magazyn na region<sup>1</sup>):
 
 |Typ klucza|Klucz HSM<br>Utwórz klucz|Klucz HSM<br>Wszystkie inne transakcje|Klucz programowy<br>Utwórz klucz|Klucz programowy<br>Wszystkie inne transakcje|
 |:---|---:|---:|---:|---:|
-|RSA 2048 bitowych|5|1000|10|2000|
-|3072 bitowe RSA|5|250|10|500|
-|RSA 4096 bitowe|5|125|10|250|
+|RSA 2 048-bit|5|1000|10|2000|
+|RSA 3 072-bit|5|250|10|500|
+|RSA 4 096-bit|5|125|10|250|
 |ECC P-256|5|1000|10|2000|
-|P-384 ECC|5|1000|10|2000|
+|ECC P-384|5|1000|10|2000|
 |ECC P-521|5|1000|10|2000|
 |ECC SECP256K1|5|1000|10|2000|
 
 > [!NOTE]
-> W poprzedniej tabeli widzimy, że RSA 2048-bitowych kluczy oprogramowania, 2000 transakcji GET na 10 sekund są dozwolone. Klucze RSA 2048-bitowych HSM są dozwolone 1000 transakcji GET na 10 sekund.
+> W poprzedniej tabeli widzimy, że dla 2 000 kluczy oprogramowania RSA 2 048-bitowe są dozwolone opłaty za 10 sekund. W przypadku RSA 2 048-bitowe klucze HSM, 1 000 pobieranie transakcji na 10 sekund jest dozwolone.
 >
-> Ważona są wartościach progowych ograniczania przepustowości i wymuszania znajduje się w ich suma. Na przykład jak pokazano w poprzedniej tabeli, podczas wykonywania operacji GET na klucze RSA przez moduł HSM, jest osiem godzin droższe do używania kluczy 4096 bitowe, w porównaniu z kluczami 2048 bitowych. To dlatego, że 1000/125 = 8.
+> Wartości progowe ograniczania przepustowości są ważone i wymuszanie jest w ich sumie. Na przykład, jak pokazano w poprzedniej tabeli, po wykonaniu operacji GET na kluczach HSM RSA — jest to osiem razy droższe do używania 4 096-bitowych kluczy w porównaniu z kluczami bitowymi 2 048. Dzieje się tak, ponieważ 1000/125 = 8.
 >
-> W danym interwale 10 sekund, przez klienta usługi Azure Key Vault można zrobić *tylko jeden* z następujących czynności przed napotka `429` ograniczania kod stanu HTTP:
-> - 2000 transakcji GET oprogramowania kluczy RSA 2048-bitowych
-> - 1000 transakcji GET klucza HSM RSA 2048-bitowych
-> - 125 transakcji RSA 4096-bitowego klucza HSM GET
-> - 124 transakcje GET klucza HSM RSA 4096-bitowe i 8 GET klucza HSM RSA 2048-bitowych
+> W danym przedziale 10 sekund klient Azure Key Vault może wykonać *tylko jedną* z następujących operacji przed wystąpieniem `429` kodu stanu HTTP ograniczenia przepustowości:
+> - 2 000 RSA 2 048-bitowe oprogramowanie — transakcje pobierania kluczy
+> - 1 000 RSA 2 048-bitowego modułu HSM — UZYSKIWANie transakcji klucza
+> - 125 RSA 4 096-bitowego modułu HSM — UZYSKIWANie transakcji klucza
+> - 124 RSA 4 096-bitowy moduł HSM-Key GET Transactions i 8 RSA 2 048-bitowego modułu HSM — transakcje pobierania kluczy
 
-#### <a name="secrets-managed-storage-account-keys-and-vault-transactions"></a>Wpisy tajne, kluczy zarządzanego konta magazynu i transakcje magazynu:
-| Typ transakcji | Maksymalna liczba transakcji w ciągu 10 sekund, dozwolone magazynu na region<sup>1</sup> |
+#### <a name="secrets-managed-storage-account-keys-and-vault-transactions"></a>Wpisy tajne, zarządzane klucze konta magazynu i transakcje magazynu:
+| Typ transakcji | Maksymalna dozwolona liczba transakcji w ciągu 10 sekund, na magazyn na region<sup>1</sup> |
 | --- | --- |
 | Wszystkie transakcje |2000 |
 
-Aby uzyskać informacje na temat sposobu obsługi ograniczania, gdy te limity zostaną przekroczone, zobacz [wskazówki dotyczące ograniczania usługi Azure Key Vault](../articles/key-vault/key-vault-ovw-throttling.md).
+Aby uzyskać informacje na temat sposobu obsługi ograniczania w przypadku przekroczenia limitów, zobacz [Azure Key Vault wskazówki dotyczące ograniczania przepustowości](../articles/key-vault/key-vault-ovw-throttling.md).
 
-<sup>1</sup> limit na poziomie subskrypcji dla wszystkich typów transakcji jest pięć razy na limit magazynu kluczy. Na przykład przez moduł HSM inne transakcje na subskrypcję są maksymalnie 5000 transakcji w ciągu 10 sekund na subskrypcję.
+<sup>1</sup> limit całej subskrypcji dla wszystkich typów transakcji wynosi pięć razy na limit magazynu kluczy. Na przykład usługi HSM — inne transakcje na subskrypcję są ograniczone do 5 000 transakcji w ciągu 10 sekund na subskrypcję.

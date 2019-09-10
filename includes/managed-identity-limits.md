@@ -10,13 +10,13 @@ ms.date: 05/31/2018
 ms.author: daveba
 ms.custom: include file
 ms.openlocfilehash: 887646c7e0ae87cd5e290a68ccc43b80dfbb109c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67183640"
 ---
-| Category | Limit |
+| Kategoria | Limit |
 | --- | --- |
-| Zarządzanych tożsamości przypisanych przez użytkownika | <ul><li>Po utworzeniu przypisanych do użytkowników zarządzanych tożsamości, tylko znaki alfanumeryczne (0-9, a do z i do A – Z) i myślnik (-) są obsługiwane. W celu przypisania do maszyny wirtualnej lub maszyny wirtualnej zestawu skalowania w celu działało poprawnie nazwa jest ograniczona do 24 znaków.</li><li>Jeśli używasz rozszerzenia tożsamości zarządzanej maszyny wirtualnej, obsługiwany limit jest 32 przypisanych do użytkowników zarządzanych tożsamości. Bez rozszerzenia tożsamości zarządzanej maszyny wirtualnej i obsługiwany limit to 512 tożsamości przypisanych przez użytkownika.</li>|
+| Tożsamości zarządzane przypisane przez użytkownika | <ul><li>Podczas tworzenia tożsamości zarządzanych przypisanych przez użytkownika, obsługiwane są tylko znaki alfanumeryczne (0-9, a-z i A-Z) i łącznik (-). Aby przypisanie do maszyny wirtualnej lub zestawu skalowania maszyn wirtualnych działało prawidłowo, nazwa jest ograniczona do 24 znaków.</li><li>Jeśli używasz rozszerzenia maszyny wirtualnej tożsamości zarządzanej, obsługiwany limit to 32 tożsamości zarządzane przypisane przez użytkownika. W przypadku braku rozszerzenia maszyny wirtualnej do obsługi tożsamości obsługiwanego limitu jest 512 tożsamości przypisane do użytkownika.</li>|
 

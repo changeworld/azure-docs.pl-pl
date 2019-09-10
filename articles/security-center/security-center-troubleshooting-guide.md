@@ -1,31 +1,25 @@
 ---
 title: Przewodnik rozwiązywania problemów z usługą Azure Security Center | Microsoft Docs
-description: Ten dokument pomaga rozwiązywać problemy w usłudze Azure Security Center.
+description: Ten dokument pomaga rozwiązywać problemy w Azure Security Center.
 services: security-center
-documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
-ms.assetid: 44462de6-2cc5-4672-b1d3-dbb4749a28cd
+author: memildin
+manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 3/20/2019
-ms.author: rkarlin
-ms.openlocfilehash: 93656578fac52e4ba5ff96e655ea51678f2292cd
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.date: 09/10/2019
+ms.author: memildin
+ms.openlocfilehash: 26615819dc407e51281254c73076a1d721e6059f
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609909"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873392"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Przewodnik rozwiązywania problemów z usługą Azure Security Center
 Ten przewodnik jest przeznaczony dla specjalistów IT, analityków zabezpieczeń informacji oraz administratorów chmury, których organizacje używają usługi Azure Security Center i muszą rozwiązywać problemy związane z usługą Azure Security Center.
 
 >[!NOTE]
->Począwszy od początku czerwca 2017 roku, usługa Security Center używa programu Microsoft Monitoring Agent do gromadzenia i przechowywania danych. Aby dowiedzieć się więcej, zobacz [Migracja platformy usługi Azure Security Center](security-center-platform-migration.md). Informacje przedstawione w tym artykule reprezentują funkcję Security Center po przejściu do programu Microsoft Monitoring Agent.
+>Security Center używa Microsoft Monitoring Agent do zbierania i przechowywania danych. Aby dowiedzieć się więcej, zobacz [Migracja platformy usługi Azure Security Center](security-center-platform-migration.md).
 >
 
 ## <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
@@ -58,7 +52,7 @@ Istnieją dwa scenariusze instalacji, które mogą wygenerować różne wyniki p
 
 * **Agent instalowany automatycznie za pomocą usługi Security Center**: w tym scenariuszu możliwe będzie wyświetlanie alertów w obu lokalizacjach — usłudze Security Center i funkcji przeszukiwania dzienników. Powiadomienia e-mail będą wysyłane na adres e-mail skonfigurowany w ramach zasad zabezpieczeń dla subskrypcji, do której należy zasób.
 .
-* **Agent zainstalowany ręcznie na maszynie wirtualnej znajdującej się na platformie Azure**: w tym scenariuszu w przypadku używania agentów pobranych i zainstalowanych ręcznie wcześniej niż w lutym 2017 roku wyświetlanie alertów w portalu usługi Security Center będzie możliwe tylko po odfiltrowaniu subskrypcji, do której należy obszar roboczy. W przypadku odfiltrowania subskrypcji, do której należy zasób, nie będzie możliwe wyświetlenie jakichkolwiek alertów. Powiadomienia e-mail będą wysyłane na adres e-mail skonfigurowany w ramach zasad zabezpieczeń dla subskrypcji, do której należy obszar roboczy.
+* **Agent został ręcznie zainstalowany na maszynie wirtualnej znajdującej się na platformie Azure**: w tym scenariuszu, jeśli używasz agentów pobranych i zainstalowanych ręcznie przed luty 2017, alerty można wyświetlić w portalu Security Center tylko w przypadku filtrowania subskrypcji obszaru roboczego należy do. Jeśli odfiltruje subskrypcję, do której należy zasób, nie zobaczysz żadnych alertów. Powiadomienia e-mail będą wysyłane na adres e-mail skonfigurowany w ramach zasad zabezpieczeń dla subskrypcji, do której należy obszar roboczy.
 
 >[!NOTE]
 > Aby uniknąć zachowania opisanego w drugim scenariuszu, upewnij się, że pobrano najnowszą wersję agenta.

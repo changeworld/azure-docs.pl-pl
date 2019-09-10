@@ -11,18 +11,19 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/02/2019
-ms.openlocfilehash: 0286c82c0b4378e24fa46d0327bd6a5b26037496
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 79632a2b5862538ef702cec01a60aada14d8dbce
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813647"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860493"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Twórz, eksploruj i wdrażaj automatyczne eksperymenty uczenia maszynowego w Azure Portal (wersja zapoznawcza)
 
  W tym artykule dowiesz się, jak tworzyć, eksplorować i wdrażać zautomatyzowane eksperymenty uczenia maszynowego w Azure Portal bez pojedynczego wiersza kodu. Funkcja automatycznego uczenia maszynowego automatyzuje proces wybierania najlepszego algorytmu dla określonych danych, dzięki czemu można szybko generować model uczenia maszynowego. [Dowiedz się więcej o automatycznym uczeniu maszynowym](concept-automated-ml.md).
 
  Jeśli wolisz skorzystać z większej ilości kodu, możesz również [skonfigurować automatyczne eksperymenty uczenia maszynowego w języku Python](how-to-configure-auto-train.md) za pomocą [zestawu SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
+
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -39,6 +40,8 @@ Przejdź do lewego okienka obszaru roboczego. Wybierz pozycję Automatyczne Mach
  Jeśli po raz pierwszy wykonujesz jakieś eksperymenty, zobaczysz ekran **Zapraszamy do automatycznego Machine Learning** . 
 
 W przeciwnym razie zobaczysz pulpit nawigacyjny **automatycznego uczenia maszynowego** z omówieniem wszystkich zautomatyzowanych eksperymentów dotyczących uczenia maszynowego, łącznie z tymi utworzonymi za pomocą zestawu SDK. Tutaj można filtrować i eksplorować uruchomienia według daty, nazwy eksperymentu i stanu uruchomienia.
+
+Dostęp do zautomatyzowanych Machine Learning można uzyskać również z poziomu [strony docelowej obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com).
 
 ## <a name="create-an-experiment"></a>Tworzenie eksperymentu
 

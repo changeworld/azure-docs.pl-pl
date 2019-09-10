@@ -11,12 +11,12 @@ ms.author: marthalc
 author: marthalc
 ms.date: 07/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 81ffe8618e07f2e49e4439ea57e254e5d37974f9
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 16fac492fe4c193ecd7ffa7eeff1e884acb742ae
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227944"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860523"
 ---
 # <a name="collect-data-for-models-in-production"></a>Zbieranie danych dla modeli w środowisku produkcyjnym
 
@@ -109,7 +109,7 @@ Aby ją włączyć, należy:
 
 Jeśli masz już usługę z zależnościami, zainstalowane w Twojej **plikiem środowiska** i **plik oceniania**, Włącz zbieranie danych przez:
 
-1. Przejdź do [witryny Azure Portal](https://portal.azure.com).
+1. Przejdź do [Azure Portal](https://portal.azure.com).
 
 1. Otwórz obszar roboczy.
 
@@ -144,6 +144,8 @@ Możesz zatrzymać zbieranie danych w dowolnym momencie. Użyj kodu w języku Py
 
   1. Wybierz **aktualizacji** do zastosowania zmiany.
 
+  Możesz również uzyskać dostęp do tych ustawień na [stronie docelowej obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com).
+
 + Opcja 2 — za pomocą języka Python wyłączyć zbieranie danych.
 
   ```python 
@@ -172,7 +174,7 @@ Aby szybko uzyskać dostęp do danych z obiektu blob:
 
 ### <a name="analyzing-model-data-through-power-bi"></a>Analizowanie danych modelu za pomocą usługi Power BI
 
-1. Pobierz i Otwórz [pulpit nawigacyjny usługi PowerBi](https://www.powerbi.com)
+1. Pobierz i Otwórz [Power BI Desktop](https://www.powerbi.com)
 
 1. Wybierz **Pobierz dane** i kliknij pozycję [ **usługi Azure Blob Storage**](https://docs.microsoft.com/power-bi/desktop-data-sources).
 

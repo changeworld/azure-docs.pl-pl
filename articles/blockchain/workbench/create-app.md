@@ -1,21 +1,21 @@
 ---
 title: Tworzenie aplikacji łańcucha bloków w usłudze Azure Blockchain Workbench
-description: Samouczek dotyczący sposobu tworzenia aplikacji łańcucha bloków w usłudze Azure Blockchain Workbench.
+description: Samouczek dotyczący sposobu tworzenia aplikacji łańcucha bloków na platformie Azure łańcucha bloków Workbench Preview.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/30/2019
+ms.date: 09/05/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: b444ad799eaa356d654952c32ac58188de8d7131
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: adc47ecb06c0e2dbfcae7b85aeec284027315e5b
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417375"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845157"
 ---
 # <a name="tutorial-create-a-blockchain-application-in-azure-blockchain-workbench"></a>Samouczek: Tworzenie aplikacji łańcucha bloków w usłudze Azure Blockchain Workbench
 
@@ -214,7 +214,7 @@ Na początku pliku konfiguracji znajdują się informacje o aplikacji, w tym naz
 
 W sekcji ról aplikacji są definiowane role użytkowników, którzy mogą działać lub uczestniczyć w ramach aplikacji łańcucha bloków. Definiowany jest zestaw odrębnych ról na podstawie funkcjonalności. W scenariuszu żądanie-odpowiedź występuje rozróżnienie między funkcjonalnością osoby żądającej jako jednostki tworzącej żądania oraz osoby odpowiadającej jako jednostki tworzącej odpowiedzi.
 
-### <a name="workflows"></a>Przepływy pracy
+### <a name="workflows"></a>Workflows
 
 Przepływy pracy definiują co najmniej jeden etap i co najmniej jedną akcję kontraktu. W scenariuszu żądanie-odpowiedź pierwszy etap (stan) przepływu pracy to wykonanie akcji (przejście) wysłania żądania (funkcja) przez osobę żądającą (rola). W kolejnym etapie (stan) osoba odpowiadająca (rola) wykonuje akcję (przejście) wysłania odpowiedzi (funkcja). Przepływ pracy aplikacji może obejmować właściwości, funkcje i stany wymagane do opisania przepływu kontraktu.
 
@@ -352,7 +352,7 @@ Dodaj do aplikacji członków, którzy będą inicjować kontrakty i wykonywać 
 
 Aby uzyskać więcej informacji na temat zarządzania użytkownikami w usłudze Blockchain Workbench, zobacz [Zarządzanie użytkownikami w usłudze Azure Blockchain Workbench](manage-users.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym artykule z instrukcjami utworzono podstawową aplikację żądań i odpowiedzi. Aby uzyskać informacje na temat korzystania z aplikacji, przejdź do następnego artykułu z instrukcjami.
 

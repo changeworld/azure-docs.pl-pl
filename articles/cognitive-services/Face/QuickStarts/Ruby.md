@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 09/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 6583db5b1403f70593d586a610f4d06be15c729b
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: e043d9bf0e87304868b2c573600578c911134856
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603354"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859175"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>Szybki start: Wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka Ruby
 
@@ -28,15 +28,13 @@ W tym przewodniku Szybki start użyjesz interfejsu API REST rozpoznawania twarzy
 
 ## <a name="write-the-script"></a>Pisanie skryptu
 
-Utwórz nowy plik o nazwie _faceDetection.rb_ i dodaj następujący kod. Ten kod wywołuje interfejs API rozpoznawania twarzy dla danego adresu URL danego obrazu.
+Utwórz nowy plik o nazwie _faceDetection.rb_ i dodaj następujący kod. Ten kod wywołuje interfejs API rozpoznawania twarzy dla danego adresu URL obrazu.
 
 ```ruby
 require 'net/http'
 
-# You must use the same location in your REST call as you used to get your
-# subscription keys. For example, if you got your subscription keys from  westus,
-# replace "westcentralus" in the URL below with "westus".
-uri = URI('https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect')
+# replace <My Endpoint String> in the URL below with the string from your endpoint.
+uri = URI('https://<My Endpoint String>.com/face/v1.0/detect')
 uri.query = URI.encode_www_form({
     # Request parameters
     'returnFaceId' => 'true',
@@ -62,9 +60,11 @@ end
 puts response.body
 ```
 
-Należy zaktualizować wartość `request['Ocp-Apim-Subscription-Key']` przy użyciu klucza subskrypcji. Konieczna może być również zmiana ciągu `uri` w taki sposób, aby zawierał on poprawny identyfikator regionu (zobacz [dokumentację interfejsu API rozpoznawania twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), aby zapoznać się z listą wszystkich punktów końcowych regionów). 
+Musisz zaktualizować `request['Ocp-Apim-Subscription-Key']` wartość przy użyciu klucza subskrypcji i `uri` zmienić ciąg tak, aby zawierał prawidłowy punkt końcowy.
 
-Możesz również zmienić pole `imageUri`, aby wskazywało na Twój obraz wejściowy. Istnieje również możliwość zmiany `returnFaceAttributes` pola, które określa, które twarzy atrybuty do pobrania.
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
+
+Możesz również zmienić pole `imageUri`, aby wskazywało na Twój obraz wejściowy. Możesz również zmienić `returnFaceAttributes` pole, które określa atrybuty kroju do pobrania.
 
 ## <a name="run-the-script"></a>Uruchamianie skryptu
 
@@ -74,7 +74,7 @@ Uruchom skrypt języka Ruby przy użyciu następującego polecenia:
 ruby faceDetection.rb
 ```
 
-W konsoli powinien zostać wyświetlony ciąg JSON danych wykrytej twarzy. Następujący tekst jest przykładem pomyślnej odpowiedzi JSON.
+W konsoli powinien zostać wyświetlony ciąg JSON danych wykrytej twarzy. Poniższy tekst stanowi przykład pomyślnej odpowiedzi JSON.
 
 ```json
 [
@@ -255,7 +255,7 @@ W konsoli powinien zostać wyświetlony ciąg JSON danych wykrytej twarzy. Nast�
 ]
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start napisano skrypt w języku Ruby służący do wywoływania interfejsu API rozpoznawania twarzy platformy Azure w celu wykrywania twarzy na obrazie i zwracania ich atrybutów. Następnie zapoznaj się z dokumentacją referencyjną interfejsu API rozpoznawania twarzy, aby dowiedzieć się więcej.
 

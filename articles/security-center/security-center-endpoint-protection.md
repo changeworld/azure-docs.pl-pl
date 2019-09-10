@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 4d3fc90a722b9f4043e891a14b542e6b90c94c55
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: a5cd0f88173abb65a120aa305206505af51d9f9e
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881031"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861372"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Ocena i zalecenia dotyczące programu Endpoint Protection w Azure Security Center
 
-Ocena i zalecenia dotyczące programu Endpoint Protection w Azure Security Center wykrywają i dostarczają oceny kondycji [obsługiwanych](https://docs.microsoft.com/azure/security-center/security-center-os-coverage#supported-platforms-for-windows-computers-and-vms) wersji rozwiązań programu Endpoint Protection. W tym temacie objaśniono scenariusze, które generują następujące dwa zalecenia dotyczące rozwiązań programu Endpoint Protection, Azure Security Center.
+Ocena i zalecenia dotyczące programu Endpoint Protection w Azure Security Center wykrywają i dostarczają oceny kondycji [obsługiwanych](https://docs.microsoft.com/azure/security-center/security-center-os-coverage) wersji rozwiązań programu Endpoint Protection. W tym temacie objaśniono scenariusze, które generują następujące dwa zalecenia dotyczące rozwiązań programu Endpoint Protection, Azure Security Center.
 
 * **Zainstaluj rozwiązania programu Endpoint Protection na maszynie wirtualnej**
 * **Rozwiązywanie problemów z kondycją programu Endpoint Protection na maszynach**
@@ -145,7 +145,7 @@ Zalecenia **dotyczące instalacji programu Endpoint Protection na maszynie wirtu
 
 - **"/opt/iSEC/ENS/threatprevention/bin/isecav--Version"** dane wyjściowe: **McAfee Name = McAfee Endpoint Security dla ochrony przed zagrożeniami w systemie Linux i wersji McAfee > = 10**
 
-Zalecenia dotyczące rozwiązywania problemów z kondycją programu **Endpoint Protection na komputerach** są generowane, jeśli co najmniej jeden z następujących testów nie zostanie spełniony:
+Zalecenia dotyczące **rozwiązywania problemów z kondycją programu Endpoint Protection na komputerach** są generowane, jeśli co najmniej jeden z następujących testów nie zostanie spełniony:
 
 - **"/opt/iSEC/ENS/threatprevention/bin/isecav--listtask"** zwraca **szybkie skanowanie, pełne skanowanie** i oba skanowania < = 7 dni
 
@@ -161,7 +161,7 @@ Zalecenia **dotyczące instalacji programu Endpoint Protection na maszynie wirtu
 
 - **"/opt/Sophos-AV/bin/savdstatus--Version"** zwraca Sophos Name = **Sophos Anti-Virus i sophos w wersji > = 9**
 
-Zalecenia dotyczące rozwiązywania problemów z kondycją programu **Endpoint Protection na komputerach** są generowane, jeśli co najmniej jeden z następujących testów nie zostanie spełniony:
+Zalecenia dotyczące **rozwiązywania problemów z kondycją programu Endpoint Protection na komputerach** są generowane, jeśli co najmniej jeden z następujących testów nie zostanie spełniony:
 
 - **"/opt/Sophos-AV/bin/savlog--maxAge = 7 | grep-i "zaplanowane skanowanie. ukończono\* "| ogon-1"** , zwraca wartość   
 

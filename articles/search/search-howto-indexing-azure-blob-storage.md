@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 902887c2a765fa50c7075cbdcb835f53e84f583f
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 03f828be603720871672b9b5d90eb87dd283c002
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208279"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70842542"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Indeksowanie dokumentów na platformie Azure Blob Storage przy użyciu Azure Search
 W tym artykule pokazano, jak używać Azure Search do indeksowania dokumentów (takich jak pliki PDF, dokumenty Microsoft Office i inne popularne formaty) przechowywane w usłudze Azure Blob Storage. Najpierw objaśnia podstawowe informacje na temat konfigurowania i konfigurowania indeksatora obiektów BLOB. Następnie oferuje dokładniejszą eksplorację zachowań i scenariuszy, które prawdopodobnie napotkasz.
@@ -72,7 +72,7 @@ Poświadczenia dla kontenera obiektów BLOB można podać w jeden z następując
 - **Sygnatura dostępu współdzielonego konta magazynu** (SAS) parametry połączenia: `BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl`Sygnatura dostępu współdzielonego powinna mieć uprawnienia do listy i odczytu w kontenerach i obiektach (w tym przypadku obiektów BLOB).
 -  **Sygnatura dostępu współdzielonego kontenera**: `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl`Sygnatura dostępu współdzielonego powinna mieć uprawnienia do listy i odczytu kontenera.
 
-Aby uzyskać więcej informacji na temat sygnatur dostępu współdzielonego magazynu, zobacz [Używanie sygnatur dostępu](../storage/common/storage-dotnet-shared-access-signature-part-1.md)współdzielonego.
+Aby uzyskać więcej informacji na temat sygnatur dostępu współdzielonego magazynu, zobacz [Używanie sygnatur dostępu współdzielonego](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
 > [!NOTE]
 > W przypadku używania poświadczeń SAS należy okresowo zaktualizować poświadczenia źródła danych za pomocą odnowionych podpisów, aby zapobiec ich wygaśnięciu. Jeśli poświadczenia sygnatury dostępu współdzielonego wygasną, indeksator zakończy się niepowodzeniem z `Credentials provided in the connection string are invalid or have expired.`komunikatem o błędzie podobnym do.  
@@ -276,7 +276,7 @@ Azure Search ogranicza rozmiar indeksowanych obiektów BLOB. Limity te są udoku
 
     "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }
 
-Możesz również kontynuować indeksowanie w przypadku wystąpienia błędów w dowolnym momencie przetwarzania, podczas analizowania obiektów blob lub dodawania dokumentów do indeksu. Aby zignorować określoną liczbę błędów, należy ustawić `maxFailedItems` wymagane wartości parametrów i `maxFailedItemsPerBatch` konfiguracji. Przykład:
+Możesz również kontynuować indeksowanie w przypadku wystąpienia błędów w dowolnym momencie przetwarzania, podczas analizowania obiektów blob lub dodawania dokumentów do indeksu. Aby zignorować określoną liczbę błędów, należy ustawić `maxFailedItems` wymagane wartości parametrów i `maxFailedItemsPerBatch` konfiguracji. Na przykład:
 
     {
       ... other parts of indexer definition
@@ -337,7 +337,7 @@ Indeksowanie obiektów BLOB może być czasochłonnym procesem. W przypadkach, g
 
 Możesz chcieć "złożyć" dokumenty z wielu źródeł w indeksie. Na przykład możesz chcieć scalić tekst z obiektów blob z innymi metadanymi przechowywanymi w Cosmos DB. Można nawet użyć interfejsu API indeksowania wypychania razem z różnymi indeksatorami w celu utworzenia dokumentów wyszukiwania z wielu części. 
 
-Aby to działało, wszystkie indeksatory i inne składniki muszą wyrazić zgodę na klucz dokumentu. Aby uzyskać szczegółowy przewodnik, zobacz ten artykuł zewnętrzny: [Połącz dokumenty z innymi danymi w Azure Search](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html).
+Aby to działało, wszystkie indeksatory i inne składniki muszą wyrazić zgodę na klucz dokumentu. Aby uzyskać dodatkowe informacje na temat tego tematu, zobacz [indeksowanie wielu źródeł danych platformy Azure](https://docs.microsoft.com/azure/search/tutorial-multiple-data-sources). Aby uzyskać szczegółowy przewodnik, zobacz ten artykuł zewnętrzny: [Połącz dokumenty z innymi danymi w Azure Search](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html).
 
 <a name="IndexingPlainText"></a>
 ## <a name="indexing-plain-text"></a>Indeksowanie zwykłego tekstu 
@@ -388,7 +388,7 @@ Poniższa tabela zawiera podsumowanie przetwarzania dla każdego formatu dokumen
 | GZ (aplikacja/gzip) |`metadata_content_type` |Wyodrębnij tekst ze wszystkich dokumentów w archiwum |
 | EPUB (Application/EPUB + zip) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_title`<br/>`metadata_description`<br/>`metadata_language`<br/>`metadata_keywords`<br/>`metadata_identifier`<br/>`metadata_publisher` |Wyodrębnij tekst ze wszystkich dokumentów w archiwum |
 | XML (aplikacja/XML) |`metadata_content_type`<br/>`metadata_content_encoding`<br/> |Przepakowywanie znacznika XML i wyodrębnienie tekstu |
-| JSON (Application/JSON) |`metadata_content_type`<br/>`metadata_content_encoding` |Wyodrębnij tekst<br/>UWAGA: Jeśli musisz wyodrębnić wiele pól dokumentu z obiektu BLOB JSON, zobacz Indeksowanie [obiektów BLOB JSON](search-howto-index-json-blobs.md) w celu uzyskania szczegółów |
+| JSON (Application/JSON) |`metadata_content_type`<br/>`metadata_content_encoding` |Wyodrębnij tekst<br/>UWAGA: Jeśli musisz wyodrębnić wiele pól dokumentu z obiektu BLOB JSON, zobacz [indeksowanie obiektów BLOB JSON](search-howto-index-json-blobs.md) w celu uzyskania szczegółów |
 | EML (Message/RFC822) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_creation_date`<br/>`metadata_subject` |Wyodrębnij tekst, w tym załączniki |
 | RTF (aplikacja/RTF) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_page_count`<br/>`metadata_word_count`<br/> | Wyodrębnij tekst|
 | Zwykły tekst (tekst/zwykły) |`metadata_content_type`<br/>`metadata_content_encoding`<br/> | Wyodrębnij tekst|

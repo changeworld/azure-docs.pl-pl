@@ -1,5 +1,5 @@
 ---
-title: 'Połącz komputer z siecią wirtualną platformy Azure przy użyciu połączenia typu punkt-lokacja i natywnego uwierzytelniania certyfikatu platformy Azure: Azure Portal| Microsoft Docs'
+title: 'Nawiąż połączenie z siecią wirtualną platformy Azure z komputera przy użyciu sieci VPN typu punkt-lokacja i natywnego uwierzytelniania certyfikatu platformy Azure: Azure Portal| Microsoft Docs'
 description: Bezpiecznie łącz klientów z systemami Windows, Mac OS X i Linux z siecią wirtualną platformy Azure przy użyciu P2S oraz certyfikatów wystawionych z podpisem własnym lub urzędu certyfikacji. W tym artykule jest używana witryna Azure Portal.
 services: vpn-gateway
 author: cherylmc
@@ -7,14 +7,14 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: cherylmc
-ms.openlocfilehash: e603eed34aaff4ad7303819a730fea09a332b7a8
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: fc8c2ff72da49d8542508443eb9423f028da0d39
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706768"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70843662"
 ---
-# <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Skonfiguruj połączenie typu punkt-lokacja z siecią wirtualną przy użyciu natywnego uwierzytelniania certyfikatu platformy Azure: Azure Portal
+# <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Skonfiguruj połączenie sieci VPN typu punkt-lokacja z siecią wirtualną przy użyciu natywnego uwierzytelniania certyfikatu platformy Azure: Azure Portal
 
 W tym artykule opisano sposób bezpiecznego łączenia poszczególnych klientów z systemem Windows, Linux lub Mac OS X w sieci wirtualnej platformy Azure. Połączenia sieci VPN typu punkt-lokacja przydają się w przypadku, gdy celem użytkownika jest połączenie się z siecią wirtualną z lokalizacji zdalnej, podczas pracy zdalnej z domu lub konferencji. Możesz również użyć połączenia typu punkt-lokacja zamiast połączenia sieci VPN typu lokacja-lokacja w przypadku niewielkiej liczby klientów, którzy muszą się łączyć z siecią wirtualną. Połączenia typu punkt-lokacja nie wymagają urządzenia sieci VPN ani publicznego adresu IP. Połączenie typu punkt-lokacja tworzy połączenie sieci VPN nawiązywane za pośrednictwem protokołu SSTP (Secure Socket Tunneling Protocol) lub IKEv2. Aby uzyskać więcej informacji na temat połączeń sieci VPN typu punkt-lokacja, zobacz [About Point-to-Site VPN (Informacje o sieci VPN typu punkt-lokacja)](point-to-site-about.md).
 
@@ -44,7 +44,7 @@ Następujących wartości możesz użyć do tworzenia środowiska testowego lub 
 * **Serwer DNS:** (opcjonalny) adres IP serwera DNS, który ma być używany do rozpoznawania nazw.
 * **Nazwa bramy sieci wirtualnej:** VNet1GW
 * **Typ bramy:** VPN
-* **Typ sieci VPN:** Oparte na trasie
+* **Typ sieci VPN:** Oparte na trasach
 * **Nazwa publicznego adresu IP:** VNet1GWpip
 * **Typ połączenia:** Punkt-lokacja
 * **Pula adresów klienta:** 172.16.201.0/24<br>Klienci sieci VPN połączeni z siecią wirtualną, którzy korzystają z tego połączenia punkt-lokacja, otrzymują adresy IP z puli adresów klientów.

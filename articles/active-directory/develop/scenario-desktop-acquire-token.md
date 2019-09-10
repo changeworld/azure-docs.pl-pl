@@ -15,12 +15,12 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e952b011eb760ebc9dcf5fe7250cf56ec67465f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a5409b5619f8be16ef92f517b4b598e2a8e5e2b7
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562334"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70872819"
 ---
 # <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>Aplikacja klasyczna, która wywołuje interfejsy API sieci Web — pozyskiwanie tokenu
 
@@ -136,6 +136,21 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
 
 #### <a name="withcustomwebui"></a>WithCustomWebUi
 
+Interfejs użytkownika sieci Web to mechanizm wywoływania przeglądarki. Mechanizm ten może być dedykowanym formantem WebBrowser interfejsu użytkownika lub sposobem delegowania otwierania przeglądarki.
+MSAL zapewnia implementacje interfejsu użytkownika sieci Web dla większości platform, ale nadal istnieją przypadki, w których może być konieczne samodzielne hostowanie przeglądarki: 
+
+- platformy niejawnie objęte usługą MSAL, na przykład Blazor, Unity, mono na pulpicie
+- chcesz przetestować interfejs użytkownika aplikacji i chcieć korzystać z zautomatyzowanej przeglądarki, która może być używana z użyciem selenu 
+- przeglądarka i aplikacja z systemem MSAL są w osobnych procesach
+
+##### <a name="at-a-glance"></a>Błyskawicznie
+
+Aby to osiągnąć, nadajesz MSAL a `start Url`, które muszą być wyświetlane w wybranej przeglądarce, aby użytkownik końcowy mógł wprowadzić swoją nazwę użytkownika itp. Po zakończeniu uwierzytelniania aplikacja będzie musiała zostać pomyślnie przekazana do MSAL `end Url`, która zawiera kod dostarczony przez usługę Azure AD.
+Host `end Url` jest`redirectUri`zawsze. Aby przechwycić `end Url` można: 
+
+- Monitoruj przekierowania przeglądarki do momentu `redirect Url` trafienia lub
+- Przekieruj przeglądarkę do adresu URL, który jest monitorowany
+
 ##### <a name="withcustomwebui-is-an-extensibility-point"></a>WithCustomWebUi jest punktem rozszerzalności
 
 `WithCustomWebUi`jest punktem rozszerzalności, który umożliwia udostępnienie własnego interfejsu użytkownika w publicznych aplikacjach klienckich oraz umożliwienie użytkownikowi przechodzenia przez punkt końcowy/Authorize dostawcy tożsamości i Zezwalanie na logowanie i wyrażanie zgody. MSAL.NET może, następnie wykorzystać kod uwierzytelniania i uzyskać token. Jest ono używane w programie Visual Studio do korzystania z aplikacji Electrons (na przykład do przesyłania opinii), które zapewniają interakcję sieci Web, ale pozostawiamy ją do MSAL.NET w celu wykonania większości zadań. Można go również użyć, jeśli chcesz zapewnić automatyzację interfejsu użytkownika. W publicznych aplikacjach klienckich MSAL.NET korzysta ze standardowego PKCE ([RFC 7636-testowego](https://tools.ietf.org/html/rfc7636)) w celu zagwarantowania, że zabezpieczenia są przestrzegane: Tylko MSAL.NET może zrealizować kod.
@@ -161,6 +176,32 @@ Aby można było korzystać `.WithCustomWebUI`z programu, należy wykonać nast�
 
 Zespół MSAL.NET zapisał testy interfejsu użytkownika w celu wykorzystania tego mechanizmu rozszerzalności. Jeśli jesteś zainteresowany, możesz mieć przyjrzeć do klasy [SeleniumWebUI](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/053a98d16596be7e9ca1ab916924e5736e341fe8/tests/Microsoft.Identity.Test.Integration/Infrastructure/SeleniumWebUI.cs#L15-L160) w kodzie źródłowym MSAL.NET
 
+##### <a name="providing-a-great-experience-with-systemwebviewoptions"></a>Zapewnianie doskonałego środowiska pracy z usługą SystemWebViewOptions
+
+Z MSAL.NET 4,1 [`SystemWebViewOptions`](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.systemwebviewoptions?view=azure-dotnet) umożliwia określenie:
+
+- Identyfikator URI, do którego można`BrowserRedirectError`przejść () lub fragment kodu HTML do wyświetlenia`HtmlMessageError`() w przypadku błędów logowania/wyrażania zgody w przeglądarce sieci Web systemu
+- Identyfikator URI do przechodzenia do`BrowserRedirectSuccess`() lub fragmentu kodu HTML do wyświetlenia`HtmlMessageSuccess`() w przypadku pomyślnego logowania/zgody.
+- Akcja do uruchomienia w celu uruchomienia przeglądarki systemowej. W tym celu możesz wprowadzić własną implementację, ustawiając `OpenBrowserAsync` delegata. Klasa udostępnia również domyślną implementację dwóch przeglądarek: `OpenWithEdgeBrowserAsync` i `OpenWithChromeEdgeBrowserAsync`, odpowiednio dla przeglądarki Microsoft Edge i [Microsoft Edge w przypadku chromu](https://www.windowscentral.com/faq-edge-chromium).
+
+Aby użyć tej struktury, można napisać coś w następujący sposób:
+
+```CSharp
+IPublicClientApplication app;
+...
+
+options = new SystemWebViewOptions
+{
+ HtmlMessageError = "<b>Sign-in failed. You can close this tab ...</b>",
+ BrowserRedirectSuccess = "https://contoso.com/help-for-my-awesome-commandline-tool.html"
+};
+
+var result = app.AcquireTokenInteractive(scopes)
+                .WithEmbeddedWebView(false)       // The default in .NET Core
+                .WithSystemWebViewOptions(options)
+                .Build();
+```
+
 #### <a name="other-optional-parameters"></a>Inne parametry opcjonalne
 
 Dowiedz się więcej o wszystkich innych opcjonalnych `AcquireTokenInteractive` parametrach z dokumentacji referencyjnej dla [AcquireTokenInteractiveParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods)
@@ -184,8 +225,7 @@ AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
 - Urząd przeszedł, `PublicClientApplicationBuilder` że musi być:
   - Dzierżawca — Ed (formularza `https://login.microsoftonline.com/{tenant}/` , który `tenant` jest identyfikatorem GUID reprezentującym identyfikator dzierżawy lub domenę skojarzoną z dzierżawcą).
   - dla dowolnego konta służbowego (`https://login.microsoftonline.com/organizations/`)
-
-  > Konta osobiste firmy Microsoft nie są obsługiwane (nie można używać dzierżawców/typowe lub/consumers)
+  - Konta osobiste firmy Microsoft nie są obsługiwane (nie można używać dzierżawców/typowe lub/consumers)
 
 - Ponieważ zintegrowane uwierzytelnianie systemu Windows jest dyskretnym przepływem:
   - użytkownik aplikacji musi być wcześniej wyraził zgodę na korzystanie z aplikacji
@@ -528,7 +568,7 @@ Aby uzyskać szczegółowe informacje na temat wszystkich modyfikatorów, które
 
 Jeśli piszesz narzędzie wiersza polecenia (które nie ma formantów sieci Web) i nie może lub nie chcesz używać poprzednich przepływów, musisz użyć polecenia `AcquireTokenWithDeviceCode`.
 
-Interaktywne uwierzytelnianie w usłudze Azure AD wymaga przeglądarki sieci Web (szczegółowe informacje znajdują się w temacie [Korzystanie z przeglądarek sieci Web](https://aka.ms/msal-net-uses-web-browser)). Jednak w celu uwierzytelniania użytkowników na urządzeniach lub w systemach operacyjnych, które nie zapewniają przeglądarki sieci Web, przepływ kodu urządzenia umożliwia użytkownikowi Używanie innego urządzenia (na przykład innego komputera lub telefonu komórkowego) do logowania się interaktywnie. Za pomocą przepływu kodu urządzenia aplikacja uzyskuje tokeny przez proces dwuetapowy przeznaczony specjalnie dla tych urządzeń/systemu operacyjnego. Przykładami takich aplikacji są aplikacje działające na iOT lub narzędzia wiersza polecenia (CLI). Pomysł polega na tym, że:
+Interaktywne uwierzytelnianie w usłudze Azure AD wymaga przeglądarki sieci Web (szczegółowe informacje znajdują się w temacie [Korzystanie z przeglądarek sieci Web](https://aka.ms/msal-net-uses-web-browser)). Jednak w celu uwierzytelniania użytkowników na urządzeniach lub w systemach operacyjnych, które nie zapewniają przeglądarki sieci Web, przepływ kodu urządzenia umożliwia użytkownikowi Używanie innego urządzenia (na przykład innego komputera lub telefonu komórkowego) do logowania się interaktywnie. Za pomocą przepływu kodu urządzenia aplikacja uzyskuje tokeny przez proces dwuetapowy przeznaczony specjalnie dla tych urządzeń/systemów operacyjnych. Przykładami takich aplikacji są aplikacje działające na iOT lub narzędzia wiersza polecenia (CLI). Pomysł polega na tym, że:
 
 1. Za każdym razem, gdy wymagane jest uwierzytelnienie użytkownika, aplikacja udostępnia kod i prosi użytkownika o użycie innego urządzenia (takiego jak smartfon połączony z Internetem) w celu przejścia do adresu URL (na `https://microsoft.com/devicelogin`przykład), w którym użytkownik zostanie poproszony o wprowadzenie kodu. Oznacza to, że strona sieci Web poprowadzi użytkownika przez normalne środowisko uwierzytelniania, w tym z uwzględnieniem w razie potrzeby wyświetleń i uwierzytelniania wieloskładnikowego.
 
@@ -553,83 +593,90 @@ Ta metoda przyjmuje jako parametry:
 Poniższy przykładowy kod przedstawia najbardziej aktualny przypadek, z objaśnieniami rodzaju wyjątków, jakie można uzyskać, oraz ich ograniczenia.
 
 ```CSharp
+private const string ClientId = "<client_guid>";
+private const string Authority = "https://login.microsoftonline.com/contoso.com";
+private readonly string[] Scopes = new string[] { "user.read" };
+
 static async Task<AuthenticationResult> GetATokenForGraph()
 {
- string authority = "https://login.microsoftonline.com/contoso.com";
- string[] scopes = new string[] { "user.read" };
- IPublicClientApplication pca = PublicClientApplicationBuilder
-      .Create(clientId)
-      .WithAuthority(authority)
-      .Build();
+    IPublicClientApplication pca = PublicClientApplicationBuilder
+            .Create(ClientId)
+            .WithAuthority(Authority)
+            .WithDefaultRedirectUri()
+            .Build();
+           
+    var accounts = await pca.GetAccountsAsync();
 
- AuthenticationResult result = null;
- var accounts = await app.GetAccountsAsync();
+    // All AcquireToken* methods store the tokens in the cache, so check the cache first
+    try
+    {
+        return await pca.AcquireTokenSilent(Scopes, accounts.FirstOrDefault())
+            .ExecuteAsync();
+    }
+    catch (MsalUiRequiredException ex)
+    {
+        // No token found in the cache or AAD insists that a form interactive auth is required (e.g. the tenant admin turned on MFA)
+        // If you want to provide a more complex user experience, check out ex.Classification 
 
- // All AcquireToken* methods store the tokens in the cache, so check the cache first
- try
- {
-  result = await app.AcquireTokenSilent(scopes, accounts.FirstOrDefault())
-       .ExecuteAsync();
- }
- catch (MsalUiRequiredException ex)
- {
-  // A MsalUiRequiredException happened on AcquireTokenSilent.
-  // This indicates you need to call AcquireTokenInteractive to acquire a token
-  System.Diagnostics.Debug.WriteLine($"MsalUiRequiredException: {ex.Message}");
- }
+        return await AcquireByDeviceCodeAsync(pca);
+    }         
+}
 
- try
- {
-  result = await app.AcquireTokenWithDeviceCode(scopes,
-      deviceCodeCallback =>
-  {
-       // This will print the message on the console which tells the user where to go sign-in using
-       // a separate browser and the code to enter once they sign in.
-       // The AcquireTokenWithDeviceCode() method will poll the server after firing this
-       // device code callback to look for the successful login of the user via that browser.
-       // This background polling (whose interval and timeout data is also provided as fields in the
-       // deviceCodeCallback class) will occur until:
-       // * The user has successfully logged in via browser and entered the proper code
-       // * The timeout specified by the server for the lifetime of this code (typically ~15 minutes) has been reached
-       // * The developing application calls the Cancel() method on a CancellationToken sent into the method.
-       //   If this occurs, an OperationCanceledException will be thrown (see catch below for more details).
-       Console.WriteLine(deviceCodeResult.Message);
-       return Task.FromResult(0);
-  }).ExecuteAsync();
+private async Task<AuthenticationResult> AcquireByDeviceCodeAsync(IPublicClientApplication pca)
+{
+    try
+    {
+        var result = await pca.AcquireTokenWithDeviceCode(scopes,
+            deviceCodeResult =>
+            {
+                    // This will print the message on the console which tells the user where to go sign-in using 
+                    // a separate browser and the code to enter once they sign in.
+                    // The AcquireTokenWithDeviceCode() method will poll the server after firing this
+                    // device code callback to look for the successful login of the user via that browser.
+                    // This background polling (whose interval and timeout data is also provided as fields in the 
+                    // deviceCodeCallback class) will occur until:
+                    // * The user has successfully logged in via browser and entered the proper code
+                    // * The timeout specified by the server for the lifetime of this code (typically ~15 minutes) has been reached
+                    // * The developing application calls the Cancel() method on a CancellationToken sent into the method.
+                    //   If this occurs, an OperationCanceledException will be thrown (see catch below for more details).
+                    Console.WriteLine(deviceCodeResult.Message);
+                return Task.FromResult(0);
+            }).ExecuteAsync();
 
-  Console.WriteLine(result.Account.Username);
-  return result;
- }
- catch (MsalServiceException ex)
- {
-  // Kind of errors you could have (in ex.Message)
+        Console.WriteLine(result.Account.Username);
+        return result;
+    }
+    // TODO: handle or throw all these exceptions depending on your app
+    catch (MsalServiceException ex)
+    {
+        // Kind of errors you could have (in ex.Message)
 
-  // AADSTS50059: No tenant-identifying information found in either the request or implied by any provided credentials.
-  // Mitigation: as explained in the message from Azure AD, the authoriy needs to be tenanted. you have probably created
-  // your public client application with the following authorities:
-  // https://login.microsoftonline.com/common or https://login.microsoftonline.com/organizations
+        // AADSTS50059: No tenant-identifying information found in either the request or implied by any provided credentials.
+        // Mitigation: as explained in the message from Azure AD, the authoriy needs to be tenanted. you have probably created
+        // your public client application with the following authorities:
+        // https://login.microsoftonline.com/common or https://login.microsoftonline.com/organizations
 
-  // AADSTS90133: Device Code flow is not supported under /common or /consumers endpoint.
-  // Mitigation: as explained in the message from Azure AD, the authority needs to be tenanted
+        // AADSTS90133: Device Code flow is not supported under /common or /consumers endpoint.
+        // Mitigation: as explained in the message from Azure AD, the authority needs to be tenanted
 
-  // AADSTS90002: Tenant <tenantId or domain you used in the authority> not found. This may happen if there are
-  // no active subscriptions for the tenant. Check with your subscription administrator.
-  // Mitigation: if you have an active subscription for the tenant this might be that you have a typo in the
-  // tenantId (GUID) or tenant domain name.
- }
- catch (OperationCanceledException ex)
- {
-  // If you use a CancellationToken, and call the Cancel() method on it, then this may be triggered
-  // to indicate that the operation was cancelled.
-  // See https://docs.microsoft.com/dotnet/standard/threading/cancellation-in-managed-threads
-  // for more detailed information on how C# supports cancellation in managed threads.
- }
- catch (MsalClientException ex)
- {
-  // Verification code expired before contacting the server
-  // This exception will occur if the user does not manage to sign-in before a time out (15 mins) and the
-  // call to `AcquireTokenWithDeviceCode` is not cancelled in between
- }
+        // AADSTS90002: Tenant <tenantId or domain you used in the authority> not found. This may happen if there are 
+        // no active subscriptions for the tenant. Check with your subscription administrator.
+        // Mitigation: if you have an active subscription for the tenant this might be that you have a typo in the 
+        // tenantId (GUID) or tenant domain name.
+    }
+    catch (OperationCanceledException ex)
+    {
+        // If you use a CancellationToken, and call the Cancel() method on it, then this *may* be triggered
+        // to indicate that the operation was cancelled. 
+        // See https://docs.microsoft.com/dotnet/standard/threading/cancellation-in-managed-threads 
+        // for more detailed information on how C# supports cancellation in managed threads.
+    }
+    catch (MsalClientException ex)
+    {
+        // Possible cause - verification code expired before contacting the server
+        // This exception will occur if the user does not manage to sign-in before a time out (15 mins) and the
+        // call to `AcquireTokenWithDeviceCode` is not cancelled in between
+    }
 }
 ```
 
@@ -644,7 +691,7 @@ W przypadku .NET Framework i .NET Core, jeśli nie wykonujesz żadnych dodatkowy
 Klasy i interfejsy wykorzystywane w serializacji pamięci podręcznej tokenu są następującymi typami:
 
 - ``ITokenCache``, który definiuje zdarzenia subskrybowania żądań serializacji pamięci podręcznej tokenów, a także metody serializacji lub deserializacji pamięci podręcznej w różnych formatach (ADAL v 3.0, MSAL 2. x i MSAL 3. x = ADAL v 5.0)
-- ``TokenCacheCallback``to wywołanie zwrotne przesłane do zdarzeń, aby można było obsłużyć serializacji. zostaną one wywołane z argumentami typu ``TokenCacheNotificationArgs``.
+- ``TokenCacheCallback``to wywołanie zwrotne przesłane do zdarzeń, aby można było obsłużyć serializacji. Zostaną one wywołane z argumentami typu ``TokenCacheNotificationArgs``.
 - ``TokenCacheNotificationArgs``udostępnia ``ClientId`` tylko aplikację i odwołanie do użytkownika, dla którego token jest dostępny
 
   ![image](https://user-images.githubusercontent.com/13203188/56027172-d58d1480-5d15-11e9-8ada-c0292f1800b3.png)

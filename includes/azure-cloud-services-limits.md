@@ -5,19 +5,19 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
 ms.openlocfilehash: 0b24688b502a40e722d2fcc4436ff1824862f489
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67183605"
 ---
 | Resource | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
-| [Ról sieć Web i proces roboczy na wdrożenie](../articles/cloud-services/cloud-services-choose-me.md)<sup>1</sup> |25 |25 |
-| [Wystąpienie danych wejściowych punktów końcowych](/previous-versions/azure/reference/gg557552(v=azure.100)#instanceinputendpoint) na wdrożenie |25 |25 |
+| [Role sieci Web i procesu roboczego na wdrożenie](../articles/cloud-services/cloud-services-choose-me.md) <sup>1</sup> |25 |25 |
+| [Wejściowe punkty końcowe wystąpienia](/previous-versions/azure/reference/gg557552(v=azure.100)#instanceinputendpoint) dla wdrożenia |25 |25 |
 | [Wejściowe punkty końcowe](/previous-versions/azure/reference/gg557552(v=azure.100)#inputendpoint) na wdrożenie |25 |25 |
-| [Wewnętrznych punktów końcowych](/previous-versions/azure/reference/gg557552(v=azure.100)#internalendpoint) na wdrożenie |25 |25 |
-| [Certyfikaty usług hostowanych](../articles/cloud-services/cloud-services-certs-create.md#what-are-service-certificates) na wdrożenie |199 |199 |
+| [Wewnętrzne punkty końcowe](/previous-versions/azure/reference/gg557552(v=azure.100)#internalendpoint) na wdrożenie |25 |25 |
+| [Certyfikaty usługi hostowanej](../articles/cloud-services/cloud-services-certs-create.md#what-are-service-certificates) na wdrożenie |199 |199 |
 
-<sup>1</sup>każdej usługi w chmurze platformy Azure przy użyciu ról sieć web i proces roboczy może mieć dwa wdrożenia, jeden dla środowiska produkcyjnego i jeden dla przemieszczania. Limit ten odnosi się do liczby różne role, czyli konfiguracji. Ten limit nie odwołuje się do liczby wystąpień każdej roli, oznacza to, że skalowanie.
+<sup>1</sup> Każda usługa w chmurze platformy Azure z rolami sieci Web lub procesu roboczego może mieć dwa wdrożenia — jeden dla środowiska produkcyjnego i jeden do przemieszczania. Ten limit odnosi się do liczby różnych ról, czyli konfiguracji. Ten limit nie odnosi się do liczby wystąpień na rolę, czyli skalowania.
 

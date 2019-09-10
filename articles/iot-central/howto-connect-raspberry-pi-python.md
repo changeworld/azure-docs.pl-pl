@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 3f91e09e35eec0685cb4333802b860fb08412cb6
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 5c6e99c62d199c36081113011845a3bf2607bcb3
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019742"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70842559"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Łączenie Raspberry Pi z aplikacją platformy Azure IoT Central (Python)
 
@@ -27,7 +27,7 @@ W tym artykule opisano sposób, w jaki deweloper urządzenia nawiązuje połącz
 
 Aby wykonać kroki opisane w tym artykule, potrzebne są następujące składniki:
 
-* Aplikacja IoT Central platformy Azure utworzona na podstawie przykładowego szablonu aplikacji **Devkits** . Aby uzyskać więcej informacji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](quick-deploy-iot-central.md).
+* Aplikacja IoT Central platformy Azure utworzona na podstawie **przykładowego** szablonu aplikacji Devkits. Aby uzyskać więcej informacji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](quick-deploy-iot-central.md).
 * Urządzenie Raspberry Pi działające w systemie operacyjnym raspbian. Raspberry Pi musi mieć możliwość nawiązania połączenia z Internetem. Aby uzyskać więcej informacji, zobacz [Konfigurowanie Raspberry Pi](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/3).
 
 > [!TIP]
@@ -35,7 +35,7 @@ Aby wykonać kroki opisane w tym artykule, potrzebne są następujące składnik
 
 ## <a name="sample-devkits-application"></a>**Przykładowa aplikacja Devkits**
 
-Aplikacja utworzona na podstawie przykładowego szablonu aplikacji **Devkits** zawiera szablon urządzenia **Raspberry Pi** o następujących cechach:
+Aplikacja utworzona na podstawie **przykładowego** szablonu aplikacji Devkits zawiera szablon urządzenia **Raspberry Pi** o następujących cechach:
 
 - Dane telemetryczne, które obejmują następujące pomiary zebrane przez urządzenie:
   - Wilgotność
@@ -70,13 +70,13 @@ W poniższych krokach opisano sposób pobierania i konfigurowania przykładowej 
 
 1. Uruchom następujące polecenie, aby zainstalować klienta programu IoT Central Python:
 
-    ```sh
+    ```bash
     pip install iotc
     ```
 
 1. Pobierz przykładowy kod w języku Python:
 
-    ```sh
+    ```bash
     curl -O https://raw.githubusercontent.com/Azure/iot-central-firmware/master/RaspberryPi/app.py
     ```
 
@@ -87,7 +87,7 @@ W poniższych krokach opisano sposób pobierania i konfigurowania przykładowej 
 
 1. Użyj następującego polecenia, aby uruchomić przykład:
 
-    ```sh
+    ```bash
     python app.py
     ```
 
@@ -101,7 +101,7 @@ W poniższych krokach opisano sposób pobierania i konfigurowania przykładowej 
 
 ## <a name="raspberry-pi-device-template-details"></a>Szczegóły szablonu urządzenia Raspberry Pi
 
-Aplikacja utworzona na podstawie przykładowego szablonu aplikacji **Devkits** zawiera szablon urządzenia **Raspberry Pi** o następujących cechach:
+Aplikacja utworzona na podstawie **przykładowego** szablonu aplikacji Devkits zawiera szablon urządzenia **Raspberry Pi** o następujących cechach:
 
 ### <a name="telemetry-measurements"></a>Pomiary telemetrii
 
@@ -140,7 +140,7 @@ Przełącz ustawienia
 
 | Type            | Nazwa wyświetlana | Nazwa pola | Typ danych |
 | --------------- | ------------ | ---------- | --------- |
-| Właściwość urządzenia | Numer struktury   | dieNumber  | numer    |
+| Właściwość urządzenia | Numer struktury   | dieNumber  | number    |
 | Text            | Location     | location   | ND       |
 
 ## <a name="next-steps"></a>Następne kroki

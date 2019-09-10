@@ -1,25 +1,25 @@
 ---
-title: Przechowywanie wersji aplikacji łańcucha bloków, w aplikacji Azure Blockchain Workbench
-description: Jak używać wersji aplikacji w aplikacji Azure Blockchain Workbench.
+title: Przechowywanie wersji aplikacji łańcucha bloków na platformie Azure łańcucha bloków Workbench Preview
+description: Jak korzystać z wersji aplikacji w usłudze Azure łańcucha bloków Workbench w wersji zapoznawczej.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 04/15/2019
+ms.date: 09/05/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 63f18e3ee316b9791bb62bfcd20c07a30cbebb5e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 33ecb6dea48117edd876b90eda54768785f25c20
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60896881"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70843884"
 ---
-# <a name="azure-blockchain-workbench-application-versioning"></a>Wersji aplikacji w usłudze Azure Blockchain Workbench
+# <a name="azure-blockchain-workbench-preview-application-versioning"></a>Wersja aplikacji Azure łańcucha bloków Workbench Preview
 
-Można tworzyć i używać wielu wersji aplikacji Azure Blockchain Workbench. Jeśli są przekazywane wielu wersji tej samej aplikacji, historii wersji jest dostępna i użytkownicy mogą wybrać wersję, która mają być użyte.
+Możesz tworzyć i używać wielu wersji aplikacji Azure łańcucha bloków Workbench Preview. Jeśli przekazano wiele wersji tej samej aplikacji, dostępna jest historia wersji, a użytkownicy mogą wybrać wersję, która ma być używana.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -28,38 +28,38 @@ Można tworzyć i używać wielu wersji aplikacji Azure Blockchain Workbench. Je
 * Wdrożenie usługi Blockchain Workbench. Aby uzyskać szczegółowe informacje na temat wdrożenia, zobacz [Wdrożenie usługi Azure Blockchain Workbench](deploy.md)
 * Wdrożona aplikacja łańcucha bloków w usłudze Blockchain Workbench. Zobacz [Tworzenie aplikacji łańcucha bloków w usłudze Azure Blockchain Workbench](create-app.md)
 
-## <a name="add-an-app-version"></a>Dodaj wersję aplikacji
+## <a name="add-an-app-version"></a>Dodawanie wersji aplikacji
 
-Aby dodać nową wersję, Przekaż nową konfigurację i pliki kontraktu inteligentnych do aplikacji Blockchain Workbench.
+Aby dodać nową wersję, Przekaż nową konfigurację i pliki kontraktów inteligentnych do łańcucha bloków Workbench.
 
-1. W przeglądarce internetowej przejdź na adres internetowy usługi Blockchain Workbench. Na przykład `https://{workbench URL}.azurewebsites.net/` uzyskać informacji na temat znajdowania Twojej aplikacji Blockchain Workbench adres sieci web, zobacz [Blockchain Workbench — adres URL sieci Web](deploy.md#blockchain-workbench-web-url)
+1. W przeglądarce internetowej przejdź na adres internetowy usługi Blockchain Workbench. Na przykład `https://{workbench URL}.azurewebsites.net/` Aby uzyskać informacje na temat sposobu wyszukiwania adresu sieci Web usługi łańcucha bloków Workbench, zobacz [adres URL sieci Web łańcucha bloków WORKBENCH](deploy.md#blockchain-workbench-web-url)
 2. Zaloguj się jako [administrator usługi Blockchain Workbench](manage-users.md#manage-blockchain-workbench-administrators).
-3. Wybierz aplikację łańcucha bloków, które chcesz zaktualizować przy użyciu innej wersji.
-4. Wybierz **wersji Dodaj**. **Wersji Dodaj** zostanie wyświetlone okienko.
-5. Wybierz nową konfigurację wersja umowy i umowy plików kodu do przekazania. Zostanie wykonana automatyczna walidacja pliku konfiguracji. Napraw wszystkie błędy weryfikacji przed wdrożeniem aplikacji.
-6. Wybierz **wersji Dodaj** można dodać nowej wersji aplikacji łańcucha bloków.
+3. Wybierz aplikację łańcucha bloków, którą chcesz zaktualizować przy użyciu innej wersji.
+4. Wybierz pozycję **Dodaj wersję**. Zostanie wyświetlone okienko **Dodawanie wersji** .
+5. Wybierz konfigurację kontraktu wersji i pliki kodu kontraktu do przekazania. Zostanie wykonana automatyczna walidacja pliku konfiguracji. Popraw błędy walidacji przed wdrożeniem aplikacji.
+6. Wybierz pozycję **Dodaj wersję** , aby dodać nową wersję aplikacji łańcucha bloków.
 
     ![Dodawanie nowej wersji](media/version-app/add-version.png)
 
-Wdrażanie aplikacji łańcucha bloków może potrwać kilka minut. Po zakończeniu wdrożenia Odśwież stronę aplikacji. Wybieranie aplikacji i wybierając polecenie **historię wersji** przycisk, wyświetla historię wersji aplikacji.
+Wdrożenie aplikacji łańcucha bloków może potrwać kilka minut. Po zakończeniu wdrażania Odśwież stronę aplikacji. Po wybraniu aplikacji i wybraniu przycisku **historia wersji** zostanie wyświetlona historia wersji aplikacji.
 
 > [!IMPORTANT]
-> Poprzednie wersje aplikacji są wyłączone. Oddzielnie można ponownie włączyć wcześniejszą wersję.
+> Poprzednie wersje aplikacji są wyłączone. Można indywidualnie ponownie włączyć poprzednią wersję.
 >
-> Konieczne może być ponownie dodać członków do ról aplikacji, jeśli wprowadzono zmiany do ról aplikacji w nowej wersji.
+> Może być konieczne ponowne dodanie członków do ról aplikacji, jeśli wprowadzono zmiany w rolach aplikacji w nowej wersji.
 
-## <a name="using-app-versions"></a>Za pomocą wersji aplikacji
+## <a name="using-app-versions"></a>Korzystanie z wersji aplikacji
 
-Domyślnie włączone najnowszej wersji aplikacji jest używany w aplikacji Blockchain Workbench. Jeśli chcesz użyć poprzedniej wersji aplikacji, musisz najpierw wybrać wersję ze strony aplikacji.
+Domyślnie Najnowsza włączona wersja aplikacji jest używana w programie łańcucha bloków Workbench. Jeśli chcesz użyć poprzedniej wersji aplikacji, musisz najpierw wybrać wersję ze strony aplikacji.
 
-1. W sekcji aplikacji Blockchain Workbench zaznacz pole wyboru aplikacji, który zawiera kontrakt, który chcesz użyć. Jeśli poprzednie wersje są włączone, przycisk Historia wersji jest dostępna.
-2. Wybierz **historię wersji** przycisku.
-3. W okienku historii wersji, wybierz wersję aplikacji, wybierając łącze w *Data modyfikacji* kolumny.
+1. W sekcji łańcucha bloków Workbench Application (aplikacje) zaznacz pole wyboru aplikacji zawierające kontrakt, którego chcesz użyć. Jeśli poprzednia wersja jest włączona, dostępny jest przycisk historia wersji.
+2. Wybierz przycisk **historia wersji** .
+3. W okienku historia wersji wybierz wersję aplikacji, wybierając łącze w kolumnie *Data modyfikacji* .
 
     ![Wybierz poprzednią wersję](media/version-app/use-version.png)
 
-    Można utworzyć nowych umów lub podjąć działania w poprzedniej wersji umów. Wersja aplikacji jest wyświetlany po nazwie aplikacji i zostanie wyświetlone ostrzeżenie dotyczące starszych wersji.
+    Możesz tworzyć nowe kontrakty lub podejmować działania związane z poprzednimi wersjami umów. Wersja aplikacji zostanie wyświetlona po wybraniu nazwy aplikacji, a wyświetlane jest ostrzeżenie o starszej wersji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Rozwiązywanie problemów z platformy Azure Blockchain Workbench](troubleshooting.md)
+* [Rozwiązywanie problemów z usługą Azure łańcucha bloków Workbench](troubleshooting.md)

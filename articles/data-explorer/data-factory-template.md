@@ -8,12 +8,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/08/2019
-ms.openlocfilehash: acfcee6e8308bc508bd709c40bd1794beab3130f
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 5a6aebd276ef8658da9ca763be7da5c38a9c772a
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804732"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873434"
 ---
 # <a name="use-azure-data-factory-template-for-bulk-copy-from-database-to-azure-data-explorer"></a>Użyj szablonu Azure Data Factory do kopiowania zbiorczego z bazy danych na platformę Azure Eksplorator danych
 
@@ -38,19 +38,19 @@ Azure Eksplorator danych to szybka i w pełni zarządzana usługa analizy danych
 
 Przykład formatu tabeli źródłowej SQL Server:
     
-    ```sql   
-    CREATE TABLE control_table (
-        PartitionId int,
-        SourceQuery varchar(255),
-        ADXTableName varchar(255)
-    );
-    ```
+```sql   
+CREATE TABLE control_table (
+PartitionId int,
+SourceQuery varchar(255),
+ADXTableName varchar(255)
+);
+```
     
-        |Właściwość  |Opis  | Przykład
-        |---------|---------| ---------|
-        |PartitionId   |   Kopiuj kolejność | 1  |  
-        |SourceQuery   |   zapytanie wskazujące, które dane zostaną skopiowane podczas wykonywania potoku | <br>`select * from table where lastmodifiedtime  LastModifytime >= ''2015-01-01 00:00:00''>` </br>    
-        |ADXTableName  |  Nazwa tabeli docelowej | MyAdxTable       |  
+|Właściwość  |Opis  | Przykład
+|---------|---------| ---------|
+|PartitionId   |   Kopiuj kolejność | 1  |  
+|SourceQuery   |   zapytanie wskazujące, które dane zostaną skopiowane podczas wykonywania potoku | <br>`select * from table where lastmodifiedtime  LastModifytime >= ''2015-01-01 00:00:00''>` </br>    
+|ADXTableName  |  Nazwa tabeli docelowej | MyAdxTable       |  
 
 Jeśli **ControlTableDataset** jest w innym formacie, Utwórz porównywalny **ControlTableDataset** dla formatu.
 

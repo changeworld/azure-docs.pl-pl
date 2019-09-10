@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: dacurwin
-ms.openlocfilehash: f053cc9bf6b08b9cf76b6e992c3d8cbdf5f759da
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 1b3d02d5cfdae2f196f2f35f075dd8c250b5ece1
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258982"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860330"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Rozwiązywanie problemów dotyczących błędów kopii zapasowych w usłudze Azure Virtual Machines
 
@@ -25,7 +25,7 @@ W tej sekcji omówiono niepowodzenie operacji tworzenia kopii zapasowej maszyny 
 
 ### <a name="basic-troubleshooting"></a>Podstawowe rozwiązywanie problemów
 
-* Upewnij się, że Agent maszyny wirtualnej (Agent) jest [najnowszą wersją](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent-on-the-virtual-machine).
+* Upewnij się, że Agent maszyny wirtualnej (Agent) jest [najnowszą wersją](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent).
 * Upewnij się, że wersja systemu operacyjnego Windows lub Linux jest obsługiwana, zapoznaj się z [matrycą obsługi kopii zapasowych IaaS maszyny wirtualnej](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas).
 * Sprawdź, czy inna usługa kopii zapasowej nie jest uruchomiona.
    * Aby upewnić się, że nie występują żadne problemy z rozszerzeniami migawek, [Odinstaluj rozszerzenia w celu wymuszenia ponownego załadowania](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-backup-extension-fails-to-update-or-load)
@@ -222,7 +222,7 @@ Dzięki temu migawki będą wykonywane za pośrednictwem hosta, a nie konta goś
 | Usługa kopii zapasowej nie ma autoryzacji umożliwiającej dostęp do zasobów w Twojej subskrypcji. |Aby rozwiązać ten problem, należy najpierw przywrócić dyski, wykonując kroki opisane w sekcji [przywracanie kopii zapasowej dysków](backup-azure-arm-restore-vms.md#restore-disks). Następnie użyj kroków programu PowerShell z sekcji [Tworzenie maszyny wirtualnej z przywróconych dysków](backup-azure-vms-automation.md#restore-an-azure-vm). |
 
 ## <a name="backup-or-restore-takes-time"></a>Czas wykonywania kopii zapasowej lub przywracania
-Jeśli kopia zapasowa trwa dłużej niż 12 godzin lub przywracanie trwa ponad 6 godzin, zapoznaj się z [najlepszymi rozwiązaniami](backup-azure-vms-introduction.md#best-practices) i [zagadnieniami](backup-azure-vms-introduction.md#backup-performance) dotyczącymi wydajności
+Jeśli kopia zapasowa trwa dłużej niż 12 godzin lub przywracanie trwa ponad 6 godzin, zapoznaj [](backup-azure-vms-introduction.md#best-practices) się z najlepszymi rozwiązaniami i zagadnieniami dotyczącymi [wydajności](backup-azure-vms-introduction.md#backup-performance)
 
 ## <a name="vm-agent"></a>Agent maszyny wirtualnej
 ### <a name="set-up-the-vm-agent"></a>Konfigurowanie agenta maszyny wirtualnej

@@ -9,54 +9,54 @@ ms.date: 12/13/2018
 ms.author: gwallace
 ms.custom: include file
 ms.openlocfilehash: 2823a33b25812a69ad463433bacd9710655c9176
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67183638"
 ---
 #### <a name="process-automation"></a>Automatyzacja procesów
 
 | Resource | Limit maksymalny |Uwagi|
 | --- | --- |---|
-| Maksymalna liczba nowych zadań, które mogą być przesyłane co 30 sekund na konto usługi Azure Automation (nonscheduled zadań) |100 |Po osiągnięciu tego limitu, kolejne żądania, aby utworzyć zadanie się nie powieść. Klient odbiera odpowiedź o błędzie.|
-| Maksymalna liczba równoczesnych zadań uruchomionych na tym samym wystąpieniu czas na konto usługi Automation (nonscheduled zadań) |200 |Po osiągnięciu tego limitu, kolejne żądania, aby utworzyć zadanie się nie powieść. Klient odbiera odpowiedź o błędzie.|
-| Maksymalny rozmiar magazynu metadanych zadania dla 30-dniowego okresu kroczącego | 10 GB (około 4 mln zadań)|Po osiągnięciu tego limitu, kolejne żądania, aby utworzyć zadanie się nie powieść. |
-| Osiągnięto limit maksymalny|1MB|Jeden strumień nie może być większa niż 1 MB.|
-| Maksymalna liczba modułów, które można importować co 30 sekund na konto usługi Automation |5 ||
+| Maksymalna liczba nowych zadań, które mogą być przesyłane co 30 sekund na konto Azure Automation (zadania niezaplanowane) |100 |Po osiągnięciu tego limitu kolejne żądania utworzenia zadania kończą się niepowodzeniem. Klient otrzymuje odpowiedź na błąd.|
+| Maksymalna liczba współbieżnych zadań uruchomionych w tym samym wystąpieniu czasu na konto usługi Automation (zadania niezaplanowane) |200 |Po osiągnięciu tego limitu kolejne żądania utworzenia zadania kończą się niepowodzeniem. Klient otrzymuje odpowiedź na błąd.|
+| Maksymalny rozmiar magazynu metadanych zadania dla 30-dniowego okresu kroczącego | 10 GB (około 4 000 000 zadań)|Po osiągnięciu tego limitu kolejne żądania utworzenia zadania kończą się niepowodzeniem. |
+| Maksymalny limit strumienia zadań|1 MB|Pojedynczy strumień nie może być większy niż 1 MB.|
+| Maksymalna liczba modułów, które mogą być importowane co 30 sekund na konto usługi Automation |5 ||
 | Maksymalny rozmiar modułu |100 MB ||
-| W warstwie bezpłatna czas uruchomienia zadania |500 minut na subskrypcję na miesiąc kalendarzowy ||
-| Maksymalna ilość miejsca na dysku, może istnieć piaskownicy<sup>1</sup> |1 GB |Dotyczy tylko piaskownic platformy Azure.|
-| Maksymalna ilość pamięci do piaskownicy<sup>1</sup> |400 MB |Dotyczy tylko piaskownic platformy Azure.|
-| Maksymalna liczba gniazd sieciowych może istnieć piaskownicy<sup>1</sup> |1000 |Dotyczy tylko piaskownic platformy Azure.|
-| Maksymalny czas wykonywania dozwolonych dla jednego elementu runbook<sup>1</sup> |3 godziny |Dotyczy tylko piaskownic platformy Azure.|
-| Maksymalna liczba kont usługi Automation w ramach subskrypcji |Bez ograniczeń ||
-| Maksymalna liczba grupy hybrydowych procesów roboczych na konto usługi Automation|4,000||
-|Maksymalna liczba równoczesnych zadań, które mogą być uruchamiane na jednym hybrydowego procesu roboczego elementu Runbook|50 ||
-| Rozmiar parametru zadania maksymalna elementu runbook   | wynosi 512 kilobitów||
-| Parametry maksymalna elementu runbook   | 50|W przypadku osiągnięcia limitu 50 parametrów można przekazywać ciąg JSON lub XML do parametru i go przeanalizować przy użyciu elementu runbook.|
-| Rozmiar ładunku maksymalna elementu webhook |  wynosi 512 kilobitów|
-| Maksymalna liczba dni, które są przechowywane dane zadania|30 dni|
-| Maksymalny rozmiar danych stanu przepływu pracy programu PowerShell |5 MB| Ma zastosowanie do elementów runbook przepływu pracy programu PowerShell podczas procesu tworzenia punktów kontrolnych w przepływie pracy.|
+| Czas wykonywania zadania, warstwa Bezpłatna |500 minut na subskrypcję na miesiąc kalendarzowy ||
+| Maksymalna ilość miejsca na dysku dozwolona na piaskownicę<sup>1</sup> |1 GB |Dotyczy tylko piaskownic platformy Azure.|
+| Maksymalna ilość pamięci podaną w piaskownicy<sup>1</sup> |400 MB |Dotyczy tylko piaskownic platformy Azure.|
+| Maksymalna liczba gniazd sieciowych dozwolona na piaskownicę<sup>1</sup> |1000 |Dotyczy tylko piaskownic platformy Azure.|
+| Maksymalne dozwolone środowisko uruchomieniowe na element Runbook<sup>1</sup> |3 godziny |Dotyczy tylko piaskownic platformy Azure.|
+| Maksymalna liczba kont usługi Automation w ramach subskrypcji |Bez limitu ||
+| Maksymalna liczba grup hybrydowych procesów roboczych na konto usługi Automation|4,000||
+|Maksymalna liczba współbieżnych zadań, które można uruchomić w jednym hybrydowym procesie roboczym elementu Runbook|50 ||
+| Maksymalny rozmiar parametru zadania elementu Runbook   | 512 kilobitów||
+| Maksymalna liczba parametrów elementu Runbook   | 50|W przypadku osiągnięcia limitu 50-parametru można przekazać kod JSON lub ciąg XML do parametru i przeanalizować go za pomocą elementu Runbook.|
+| Maksymalny rozmiar ładunku elementu webhook |  512 kilobitów|
+| Maksymalna liczba dni przechowywania danych zadania|30 dni|
+| Maksymalny rozmiar stanu przepływu pracy programu PowerShell |5 MB| Dotyczy elementów Runbook przepływu pracy programu PowerShell podczas tworzenia punktów kontrolnych przepływu pracy.|
 
-<sup>1</sup>piaskownicy jest udostępnionym środowiskiem, które mogą być używane przez wiele zadań. Ograniczenia zasobów piaskownicy związane są zadania korzystające z tego samego piaskownicy.
+<sup>1</sup> Piaskownica to środowisko udostępnione, które może być używane przez wiele zadań. Zadania korzystające z tej samej piaskownicy są powiązane z ograniczeniami zasobów piaskownicy.
 
 #### <a name="change-tracking-and-inventory"></a>Śledzenie zmian i spis
 
-W poniższej tabeli przedstawiono limity śledzonych elementów jednej maszyny na potrzeby śledzenia zmian.
+W poniższej tabeli przedstawiono limity śledzonych elementów na maszynę do śledzenia zmian.
 
 | **Zasób** | **Limit**| **Uwagi** |
 |---|---|---|
 |Plik|500||
 |Rejestr|250||
-|Oprogramowanie Windows|250|Nie zawiera aktualizacji oprogramowania.|
-|Pakiety systemu Linux|1,250||
+|Oprogramowanie systemu Windows|250|Nie obejmuje aktualizacji oprogramowania.|
+|Pakiety systemu Linux|1 250||
 |Usługi|250||
 |Demon|250||
 
 #### <a name="update-management"></a>Zarządzanie aktualizacjami
 
-W poniższej tabeli przedstawiono limity do zarządzania aktualizacjami.
+W poniższej tabeli przedstawiono limity Update Management.
 
 | **Zasób** | **Limit**| **Uwagi** |
 |---|---|---|

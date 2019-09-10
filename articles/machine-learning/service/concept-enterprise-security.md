@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/07/2019
-ms.openlocfilehash: 81e8601ac83d43bde0767e38eb387f489d76125b
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: e1029ad34a05d342e5aed5bb30407dee7c914f3c
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165242"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873558"
 ---
 # <a name="enterprise-security-for-the-azure-machine-learning-service"></a>Zabezpieczenia przedsiębiorstwa dla usługi Azure Machine Learning
 
@@ -132,7 +132,7 @@ Aby uzyskać więcej informacji o tożsamościach zarządzanych, zobacz [zarząd
 
 Nie zaleca się, aby administratorzy mogli odwołać dostęp do tożsamości zarządzanej do zasobów wymienionych w powyższej tabeli. Dostęp można przywrócić przy użyciu operacji ponowna synchronizacja kluczy.
 
-Usługa Azure Machine Learning tworzy dodatkową aplikację (nazwa rozpoczyna się od `aml-`) z dostępem na poziomie współautora w ramach subskrypcji dla każdego regionu obszaru roboczego. Jeśli na przykład masz jeden obszar roboczy w regionie Wschodnie stany USA i inny obszar roboczy w Europie Północnej w tej samej subskrypcji, zobaczysz dwie z tych aplikacji. Te aplikacje umożliwiają usłudze Azure Machine Learning, która ułatwia zarządzanie zasobami obliczeniowymi.
+Usługa Azure Machine Learning tworzy dodatkową aplikację (nazwa rozpoczyna się od `aml-` lub `Microsoft-AzureML-Support-App-`) z dostępem na poziomie współautora w ramach subskrypcji dla każdego regionu obszaru roboczego. Jeśli na przykład masz jeden obszar roboczy w regionie Wschodnie stany USA i inny obszar roboczy w Europie Północnej w tej samej subskrypcji, zobaczysz dwie z tych aplikacji. Te aplikacje umożliwiają usłudze Azure Machine Learning, która ułatwia zarządzanie zasobami obliczeniowymi.
 
 ## <a name="network-security"></a>Bezpieczeństwo sieci
 
@@ -191,7 +191,7 @@ Każdy obszar roboczy ma skojarzoną w systemie tożsamość zarządzaną, któr
 
 ### <a name="metrics"></a>Metryki
 
-Metryki Azure Monitor umożliwiają wyświetlanie i monitorowanie metryk dla obszaru roboczego usługi Azure Machine Learning. W [Azure Portal](https://portal.azure.com)wybierz swój obszar roboczy, a następnie wybierzpozycję metryki:
+Metryki Azure Monitor umożliwiają wyświetlanie i monitorowanie metryk dla obszaru roboczego usługi Azure Machine Learning. W [Azure Portal](https://portal.azure.com)wybierz swój obszar roboczy, a następnie wybierz pozycję **metryki**:
 
 [![Zrzut ekranu przedstawiający przykładowe metryki dla obszaru roboczego](./media/enterprise-readiness/workspace-metrics.png)](./media/enterprise-readiness/workspace-metrics-expanded.png)
 

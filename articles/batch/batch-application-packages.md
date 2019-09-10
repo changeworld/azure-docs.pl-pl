@@ -15,10 +15,10 @@ ms.date: 04/26/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9c9d6d13efaa07bff2a1eaabe05725a3257cf895
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "70095689"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Wdrażanie aplikacji w węzłach obliczeniowych za pomocą pakietów aplikacji wsadowych
@@ -260,7 +260,7 @@ Windows:
 AZ_BATCH_APP_PACKAGE_APPLICATIONID#version
 ```
 
-W węzłach systemu Linux format jest nieco inny. Kropki (.), łączniki (-) i znaki liczbowe (#) są spłaszczone do podkreślenia w zmiennej środowiskowej. Należy również pamiętać, że sprawa identyfikatora aplikacji jest zachowywana. Przykład:
+W węzłach systemu Linux format jest nieco inny. Kropki (.), łączniki (-) i znaki liczbowe (#) są spłaszczone do podkreślenia w zmiennej środowiskowej. Należy również pamiętać, że sprawa identyfikatora aplikacji jest zachowywana. Na przykład:
 
 ```
 Linux:

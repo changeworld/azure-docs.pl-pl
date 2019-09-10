@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: 7afa96c3c4d1a163e323aa0bb50ec361ff74aac3
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 302fad84a2f0443fb639e57d7bb0cfddef4c3443
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278693"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858730"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Wdrażanie modelu w klastrze usługi Azure Kubernetes Service
 
@@ -30,7 +30,7 @@ Dowiedz się, jak za pomocą usługi Azure Machine Learning wdrożyć model jako
 
 Podczas wdrażania w usłudze Azure Kubernetes należy wdrożyć klaster AKS, który jest __połączony z obszarem roboczym__. Istnieją dwa sposoby łączenia klastra AKS z obszarem roboczym:
 
-* Utwórz klaster AKS przy użyciu zestawu SDK usługi Azure Machine Learning, interfejsu wiersza polecenia Machine Learning lub Azure Portal. Ten proces automatycznie łączy klaster z obszarem roboczym.
+* Utwórz klaster AKS przy użyciu zestawu SDK usługi Azure Machine Learning, interfejsu wiersza polecenia Machine Learning, strony docelowej [Azure Portal](https://portal.azure.com) lub [obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com). Ten proces automatycznie łączy klaster z obszarem roboczym.
 * Dołącz istniejący klaster AKS do obszaru roboczego usługi Azure Machine Learning. Klaster może być dołączany przy użyciu zestawu SDK usługi Azure Machine Learning, Machine Learning interfejsu wiersza polecenia lub Azure Portal.
 
 > [!IMPORTANT]

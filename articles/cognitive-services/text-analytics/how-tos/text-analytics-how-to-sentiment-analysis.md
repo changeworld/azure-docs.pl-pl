@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: b37de45099362fda7288db52cf17749da6e44ea6
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 60ae2136c3fa934c178de95f51d490e570f45faa
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390230"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845344"
 ---
 # <a name="example-detect-sentiment-with-text-analytics"></a>Przykład: Wykryj tonacji z analiza tekstu
 
@@ -140,7 +140,7 @@ Poniższy przykład przedstawia odpowiedzi dla kolekcji dokumentów w tym artyku
 > * Format żądania analiza tonacji v3 i [limity danych](../overview.md#data-limits) są takie same jak w poprzedniej wersji.
 > * W tej chwili analiza tonacji v3:
 >    * Obecnie obsługuje języki angielski, chiński uproszczony i japoński.
->    * Jest dostępny w następujących regionach: `Central US`, `Central Canada`, i `East Asia`. 
+>    * Jest dostępny `Australia East`w następujących regionach: ,`Southeast Asia` `West Europe` `West US 2` ,,,,,,,,, i `Central Canada` `Central US` `East Asia` `East US` `East US 2` `North Europe` `South Central US` `UK South` .
 
 |Cecha |Opis  |
 |---------|---------|

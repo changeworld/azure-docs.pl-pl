@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 79b57a9c9f12c6014b9002b0688beae334af3587
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.openlocfilehash: 7b37912c58312644059f3990b4776514e081a4bb
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806518"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858833"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>Słownik terminów dotyczących usługi IoT Plug and Play w wersji zapoznawczej
 
@@ -46,9 +46,9 @@ Azure IoT Central to w pełni zarządzane rozwiązanie typu "oprogramowanie jako
 
 Usługa certyfikacji IoT Azure uruchamia zestaw testów certyfikacji podczas przesyłania [urządzenia Plug and Play IoT](#iot-plug-and-play-device) na potrzeby certyfikacji za pomocą [portalu certyfikatu platformy Azure dla IoT](#azure-certified-for-iot-portal). Aby można było dodać urządzenie do [wykazu urządzeń z certyfikatem Certified for IoT](#certified-for-iot-device-catalog), urządzenie musi być certyfikowane.
 
-## <a name="azure-iot-device-workbench-extension"></a>Rozszerzenie Workbench urządzenia Azure IoT
+## <a name="azure-iot-tools-extension"></a>Rozszerzenie narzędzi Azure IoT Tools
 
-Azure IoT Device Workbench to rozszerzenie [Visual Studio Code](#visual-studio-code) , które zapewnia zintegrowane środowisko do:
+Azure IoT Tools to kolekcja rozszerzeń w programie [Visual Studio Code](#visual-studio-code) , która pomaga w współpracy z IoT Hub i opracowywania urządzeń IoT. Do tworzenia urządzeń Plug and Play IoT można:
 
 - Tworzenie [modeli możliwości urządzeń](#device-capability-model) i [interfejsów](#interface).
 - Publikuj w [repozytoriach modeli](#model-repository).
@@ -200,4 +200,4 @@ Pola telemetrii zdefiniowane w [interfejsie](#interface) reprezentują pomiary. 
 
 ## <a name="visual-studio-code"></a>Visual Studio Code
 
-Program Visual Studio Code jest nowoczesnym edytorem kodu dostępnym dla wielu platform. Rozszerzenia, takie jak [rozszerzenie Workbench urządzenia Azure IoT](#azure-iot-device-workbench-extension) , umożliwiają dostosowanie go do obsługi szerokiego zakresu scenariuszy programistycznych.
+Program Visual Studio Code jest nowoczesnym edytorem kodu dostępnym dla wielu platform. Rozszerzenia, takie jak te w pakiecie [narzędzi Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) Pack, umożliwiają dostosowanie edytora do obsługi szerokiego zakresu scenariuszy programistycznych.

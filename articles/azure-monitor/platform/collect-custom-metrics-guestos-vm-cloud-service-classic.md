@@ -5,21 +5,21 @@ author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 90e841628d989a16f504d2efd7a2c7b18335ff48
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 56138277866d3b2bf02733a2c595a5a232faed8c
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "66129515"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844935"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Wysyłaj metryki systemu operacyjnego gościa do magazynu Azure Monitor metryk klasyczny Cloud Services 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Dzięki rozszerzeniu [diagnostyki](diagnostics-extension-overview.md)Azure monitor można zbierać metryki i dzienniki z systemu operacyjnego gościa (systemu operacyjnego gościa) działającego w ramach maszyny wirtualnej, usługi w chmurze lub klastra Service Fabric. Rozszerzenie może wysyłać dane telemetryczne do [wielu różnych lokalizacji.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
+Dzięki [rozszerzeniu diagnostyki](diagnostics-extension-overview.md)Azure monitor można zbierać metryki i dzienniki z systemu operacyjnego gościa (systemu operacyjnego gościa) działającego w ramach maszyny wirtualnej, usługi w chmurze lub klastra Service Fabric. Rozszerzenie może wysyłać dane telemetryczne do [wielu różnych lokalizacji.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
 
 W tym artykule opisano proces wysyłania metryk wydajności systemu operacyjnego gościa dla klasycznej Cloud Services platformy Azure do magazynu metryk Azure Monitor. Począwszy od wersji Diagnostics 1,11, można pisać metryki bezpośrednio do magazynu metryk Azure Monitor, w którym są już zbierane metryki platformy standardowej. 
 
@@ -29,11 +29,13 @@ Proces przedstawiony w tym artykule działa tylko w przypadku liczników wydajno
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Musisz być [administratorem usługi lub](~/articles/billing/billing-add-change-azure-subscription-administrator.md) współadministratorem w ramach subskrypcji platformy Azure. 
+- Musisz być [administratorem usługi lub współadministratorem](~/articles/billing/billing-add-change-azure-subscription-administrator.md) w ramach subskrypcji platformy Azure. 
 
 - Twoja subskrypcja musi być zarejestrowana w usłudze [Microsoft. Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services). 
 
 - Musisz mieć zainstalowaną [Azure PowerShell](/powershell/azure) lub [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) .
+
+- Usługa w chmurze musi znajdować się w [regionie, który obsługuje metryki niestandardowe](metrics-custom-overview.md#supported-regions).
 
 ## <a name="provision-a-cloud-service-and-storage-account"></a>Inicjowanie obsługi administracyjnej usługi w chmurze i konta magazynu 
 
@@ -188,7 +190,7 @@ Możesz użyć funkcji filtrowania wymiarów i dzielenia, aby wyświetlić łąc
 
  ![Metryki Azure Portal](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/metrics-graph.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się więcej o [metrykach niestandardowych](metrics-custom-overview.md).
 

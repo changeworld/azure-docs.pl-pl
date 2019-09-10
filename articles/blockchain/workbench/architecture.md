@@ -1,125 +1,125 @@
 ---
-title: Architektura usługi Azure Blockchain Workbench
-description: Przegląd architektury aplikacji Azure Blockchain Workbench i jego składników.
+title: Architektura usługi Azure łańcucha bloków Workbench w wersji zapoznawczej
+description: Omówienie architektury Azure łańcucha bloków Workbench w wersji zapoznawczej i jej składników.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/20/2019
+ms.date: 09/05/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 5333f02edd6a4ff888e28ed36c2b78f75309f4d4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d50ee0fa06f34167cd4be9e787f6e351d3ef7e3b
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67060907"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845211"
 ---
-# <a name="azure-blockchain-workbench-architecture"></a>Architektura usługi Azure Blockchain Workbench
+# <a name="azure-blockchain-workbench-preview-architecture"></a>Architektura usługi Azure łańcucha bloków Workbench w wersji zapoznawczej
 
-Azure Blockchain Workbench upraszcza tworzenie aplikacji łańcucha bloków, zapewniając rozwiązanie z użyciem kilka składników platformy Azure. Blockchain Workbench można wdrożyć przy użyciu szablonu rozwiązania w witrynie Azure Marketplace. Szablon pozwala wybrać, moduły i składniki do wdrożenia, łącznie z łańcucha bloków stosu, typ aplikacji klienckiej i obsługę integracji IoT. Po wdrożeniu aplikacji Blockchain Workbench zapewnia dostęp do aplikacji sieci web, aplikacji dla systemu iOS i aplikacji dla systemu Android.
+Usługa Azure łańcucha bloków Workbench Preview upraszcza tworzenie aplikacji łańcucha bloków, oferując rozwiązanie przy użyciu kilku składników platformy Azure. Łańcucha bloków Workbench można wdrożyć przy użyciu szablonu rozwiązania w portalu Azure Marketplace. Szablon umożliwia wybranie modułów i składników do wdrożenia, takich jak stos łańcucha bloków, typ aplikacji klienckiej i obsługa integracji IoT. Po wdrożeniu program łańcucha bloków Workbench zapewnia dostęp do aplikacji sieci Web, aplikacji dla systemu iOS i aplikacji systemu Android.
 
-![Architektura aplikacji Blockchain Workbench](./media/architecture/architecture.png)
+![Architektura łańcucha bloków Workbench](./media/architecture/architecture.png)
 
-## <a name="identity-and-authentication"></a>Uwierzytelnianie i tożsamość
+## <a name="identity-and-authentication"></a>Tożsamość i uwierzytelnianie
 
-Korzystając z aplikacji Blockchain Workbench, konsorcjum może tworzyć federacje ich tożsamościami w przedsiębiorstwie za pomocą usługi Azure Active Directory (Azure AD). Środowisko robocze generuje nowych kont użytkowników o łańcucha tożsamości za pomocą tożsamości organizacji przechowywanych w usłudze Azure AD. Mapowania tożsamości ułatwia uwierzytelnionego Zaloguj się do interfejsów API klienta i aplikacji oraz używa zasad uwierzytelniania w organizacji. Workbench umożliwia również skojarzyć tożsamościami w przedsiębiorstwie do określonych ról w ramach danego kontraktu inteligentne. Ponadto Workbench również zapewnia mechanizm do identyfikowania akcje te role można wykonać i w jakich czasie.
+Korzystając z łańcucha bloków Workbench, konsorcjum może sfederować swoją tożsamość przedsiębiorstwa przy użyciu Azure Active Directory (Azure AD). Workbench generuje nowe konta użytkowników dla tożsamości w łańcuchu z tożsamościami przedsiębiorstwa przechowywanymi w usłudze Azure AD. Mapowanie tożsamości ułatwia uwierzytelnione logowanie do interfejsów API i aplikacji klienta oraz korzysta z zasad uwierzytelniania organizacji. Workbench umożliwia również kojarzenie tożsamości przedsiębiorstwa z określonymi rolami w ramach danego inteligentnego kontraktu. Ponadto Workbench udostępnia mechanizm umożliwiający zidentyfikowanie działań, które mogą być wykonywane przez role i w jakim czasie.
 
-Po wdrożeniu aplikacji Blockchain Workbench użytkownikom korzystać z aplikacji Blockchain Workbench za pośrednictwem aplikacji klienckich, interfejsu API klienta opartego na protokole REST lub interfejs API komunikatów. We wszystkich przypadkach interakcje musi zostać uwierzytelniony, za pośrednictwem usługi Azure Active Directory (Azure AD) lub poświadczeń określonych urządzeń.
+Po wdrożeniu usługi łańcucha bloków Workbench użytkownicy będą korzystać z łańcucha bloków Workbench przez aplikacje klienckie, interfejs API klienta oparty na protokole REST lub interfejs API obsługi komunikatów. We wszystkich przypadkach interakcje muszą być uwierzytelniane za pośrednictwem Azure Active Directory (Azure AD) lub poświadczeń specyficznych dla urządzenia.
 
-Użytkownicy Federację tożsamości do konsorcjum usługi Azure AD, wysyłając wiadomość e-mail z zaproszeniem do uczestników ich adres e-mail. Podczas logowania, użytkownicy ci są uwierzytelniane przy użyciu nazwy, hasła i zasady. Na przykład uwierzytelniania dwuskładnikowego w organizacji.
+Użytkownicy sfederować swoją tożsamość do usługi Azure AD konsorcjum, wysyłając wiadomość e-mail z zaproszeniem do uczestników na adres e-mail. Podczas logowania użytkownicy są uwierzytelniani przy użyciu nazwy, hasła i zasad. Na przykład uwierzytelnianie dwuskładnikowe swojej organizacji.
 
-Usługa Azure AD jest używany do zarządzania wszystkimi użytkownikami, którzy mają dostęp do aplikacji Blockchain Workbench. Każde urządzenie łączące się inteligentne kontraktu jest również skojarzony z usługą Azure AD.
+Usługa Azure AD służy do zarządzania wszystkimi użytkownikami, którzy mają dostęp do usługi łańcucha bloków Workbench. Każde urządzenie łączące się z kontraktem inteligentnym jest również skojarzone z usługą Azure AD.
 
-Usługa Azure AD służy także do przypisywania użytkowników do grupy administratorów specjalne. Użytkownicy skojarzeni z grupy Administratorzy przyznano im dostęp do uprawnień i akcji w ramach aplikacji Blockchain Workbench w tym wdrażanie umów i przyznawanie uprawnień do użytkownika, kontrakt dostęp do. Użytkownicy spoza tej grupy mają dostęp do akcji administratora.
+Usługa Azure AD jest również używana do przypisywania użytkowników do specjalnej grupy administratorów. Użytkownicy skojarzeni z grupą administratorów uzyskują dostęp do praw i akcji w ramach łańcucha bloków Workbench, w tym wdrażania kontraktów i udzielania użytkownikowi uprawnień dostępu do kontraktu. Użytkownicy spoza tej grupy nie mają dostępu do akcji administratora.
 
 ## <a name="client-applications"></a>Aplikacje klienckie
 
-Środowisko robocze udostępnia aplikacje automatycznie wygenerowanego klienta dla sieci web i mobilnych (iOS lub Android), która może służyć do sprawdzania poprawności, testowania i wyświetlania aplikacji łańcucha bloków. Interfejs aplikacji jest generowana dynamicznie na podstawie metadanych inteligentne kontraktu i może obsłużyć wszystkie przypadek użycia. Aplikacje klienckie oferują frontonu przeznaczonych dla użytkowników aplikacje pełny łańcuch bloków, generowane przez Blockchain Workbench. Aplikacje klienckie uwierzytelniania użytkowników za pośrednictwem usługi Azure Active Directory (Azure AD), a następnie prezentować interfejs użytkownika dostosowane do kontekst biznesowy umowy inteligentne. Środowisko użytkownika umożliwia tworzenie nowych wystąpień inteligentne umowy przez autoryzowanych użytkowników indywidualnych, a następnie wyświetla możliwość wykonywania niektórych typów transakcji w odpowiednich miejscach w procesie biznesowym, inteligentne kontraktu reprezentowany przez.
+Program Workbench udostępnia automatycznie generowane aplikacje klienckie dla sieci Web i urządzeń przenośnych (iOS, Android), które mogą służyć do sprawdzania poprawności, testowania i wyświetlania aplikacji łańcucha bloków. Interfejs aplikacji jest dynamicznie generowany na podstawie metadanych inteligentnej kontraktu i może pomieścić dowolny przypadek użycia. Aplikacje klienckie dostarczają fronton skierowany do kompletnych aplikacji łańcucha bloków generowanych przez łańcucha bloków Workbench. Aplikacje klienckie uwierzytelniają użytkowników za pośrednictwem Azure Active Directory (Azure AD), a następnie zaprezentowania środowiska użytkownika dopasowanego do kontekstu biznesowego dla kontraktu inteligentnego. Środowisko użytkownika umożliwia tworzenie nowych wystąpień kontraktów inteligentnych przez autoryzowanych użytkowników, a następnie przedstawia możliwość wykonywania określonych typów transakcji w odpowiednich punktach w procesie biznesowym, który reprezentuje kontrakt inteligentny.
 
-W aplikacji sieci web autoryzowani użytkownicy mogą uzyskać dostęp do konsoli administratora. Konsola jest dostępna dla użytkowników w grupie administratorów w usłudze Azure AD i zapewnia dostęp do następujących funkcji:
+W aplikacji sieci Web autoryzowani użytkownicy mogą uzyskiwać dostęp do konsola administratora. Konsola programu jest dostępna dla użytkowników w grupie Administratorzy w usłudze Azure AD i zapewnia dostęp do następujących funkcji:
 
-* Wdrożenie firmy Microsoft, pod warunkiem kontrakty inteligentne w popularnych scenariuszach. Na przykład zasób transferu scenariusz.
-* Przekaż i wdróż swoje własne kontraktów inteligentnych.
-* Przypisywanie dostępu użytkownika do inteligentnego umowy w kontekście określonej roli.
+* Wdrażaj firmy Microsoft, które zapewniają inteligentne kontrakty dla popularnych scenariuszy. Na przykład scenariusz transferu zasobów.
+* Przekazuj i wdrażaj własne, inteligentne kontrakty.
+* Przypisanie użytkownikowi dostępu do inteligentnego kontraktu w kontekście określonej roli.
 
-Aby uzyskać więcej informacji, zobacz [aplikacje klienckie przykładowej aplikacji Azure Blockchain Workbench w witrynie GitHub](https://github.com/Azure-Samples/blockchain-devkit/tree/master/connect/mobile).
+Aby uzyskać więcej informacji, zobacz [przykładowe aplikacje klienckie usługi Azure łańcucha bloków Workbench w witrynie GitHub](https://github.com/Azure-Samples/blockchain-devkit/tree/master/connect/mobile).
 
 ## <a name="gateway-service-api"></a>Interfejs API usługi bramy
 
-Blockchain Workbench obejmuje interfejs API usługi bramy oparte na protokole REST. Podczas zapisywania w łańcuch bloków, interfejs API generuje i dostarcza komunikaty do brokera zdarzeń. Gdy dane są żądane przez interfejs API, zapytania są wysyłane do bazy danych SQL poza łańcuchem. Baza danych SQL zawiera repliki w łańcuchu danych i metadanych, który zawiera informacje o kontekście i konfiguracji dla obsługiwanych kontraktów inteligentnych. Zapytania zwracają wymaganych danych z repliki poza łańcuchem w formacie wspieranemu przez metadane w ramach umowy.
+Łańcucha bloków Workbench obejmuje interfejs API usługi bramy opartej na protokole REST. Podczas zapisywania do łańcucha bloków interfejs API generuje i dostarcza komunikaty do brokera zdarzeń. Gdy interfejs API żąda danych, zapytania są wysyłane do bazy danych SQL spoza łańcucha. Baza danych SQL zawiera replikę danych w łańcuchu i metadane, które zawierają informacje o kontekście i konfiguracji dla obsługiwanych kontraktów inteligentnych. Zapytania zwracają wymagane dane z repliki spoza łańcucha w formacie, który został poinformowany o metadanych kontraktu.
 
-Deweloperzy mają dostęp do interfejsu API usługi bramy można tworzyć ani integrować rozwiązań łańcucha bloków bez polegania na aplikacje klienckie Blockchain Workbench.
+Deweloperzy mogą uzyskać dostęp do interfejsu API usługi bramy w celu kompilowania lub integrowania rozwiązań łańcucha bloków bez polegania na aplikacjach klienckich łańcucha bloków Workbench.
 
 > [!NOTE]
-> Aby włączyć dostępu uwierzytelnionego do interfejsu API, dwie aplikacje klienckie są zarejestrowane w usłudze Azure Active Directory. Usługa Azure Active Directory wymaga rejestracje aplikacji distinct każdego typu aplikacji (natywne i sieci web). 
+> Aby włączyć dostęp uwierzytelniony do interfejsu API, dwie aplikacje klienckie są rejestrowane w Azure Active Directory. Azure Active Directory wymaga oddzielnych rejestracji aplikacji poszczególnych typów aplikacji (natywnych i sieci Web). 
 
-## <a name="message-broker-for-incoming-messages"></a>Brokera komunikatów dla komunikatów przychodzących
+## <a name="message-broker-for-incoming-messages"></a>Broker komunikatów dla wiadomości przychodzących
 
-Deweloperzy, którzy mają zostać wysłane wiadomości bezpośrednio z aplikacji Blockchain Workbench wiadomości można wysyłać bezpośrednio do usługi Service Bus. Na przykład wiadomości interfejsu API może służyć do integracji systemu do systemu lub urządzeń IoT.
+Deweloperzy, którzy chcą wysyłać wiadomości bezpośrednio do programu łańcucha bloków Workbench, mogą wysyłać wiadomości bezpośrednio do Service Bus. Na przykład interfejs API komunikatów może służyć do integracji systemu z systemem lub urządzeń IoT.
 
-## <a name="message-broker-for-downstream-consumers"></a>Brokera komunikatów dla klientów niższego rzędu
+## <a name="message-broker-for-downstream-consumers"></a>Broker komunikatów dla odbiorców podrzędnych
 
-Podczas cyklu życia aplikacji występują zdarzenia. Zdarzenia mogą być wywoływane przez interfejs API bramy lub w księdze. Powiadomienia o zdarzeniach można zainicjować podrzędnego kodu na podstawie zdarzeń.
+W trakcie cyklu życia aplikacji wystąpią zdarzenia. Zdarzenia mogą być wyzwalane przez interfejs API bramy lub w księdze. Powiadomienia o zdarzeniach mogą inicjować kod podrzędny na podstawie zdarzenia.
 
-Blockchain Workbench automatycznie wdraża dwa rodzaje odbiorcy zdarzeń. Jednego użytkownika jest wyzwalany przez zdarzenia łańcucha bloków do wypełniania magazynu SQL poza łańcuchem. Innych klientów jest Przechwytywanie metadanych dla zdarzeń generowanych przez interfejs API związane z przekazywanie i przechowywanie dokumentów.
+Łańcucha bloków Workbench automatycznie wdraża dwa typy odbiorców zdarzeń. Jeden odbiorca jest wyzwalany przez zdarzenia łańcucha bloków w celu wypełnienia sklepu SQL w łańcuchu. Innym konsumentem jest przechwytywanie metadanych dla zdarzeń generowanych przez interfejs API związanych z przekazywaniem i przechowywaniem dokumentów.
 
-## <a name="message-consumers"></a>Odbiorcami komunikatów
+## <a name="message-consumers"></a>Odbiorcy komunikatów
 
- Odbiorcami komunikatów umieść komunikaty z usługi Service Bus. Odpowiedni model obsługi zdarzeń dla odbiorcami komunikatów umożliwia rozszerzenia dodatkowych usług i systemów. Na przykład można dodać obsługę wypełniania bazy danych cosmos DB lub oceń komunikatów za pomocą usługi Azure Stream Analytics. W poniższych sekcjach opisano odbiorcami komunikatów uwzględnione w aplikacji Blockchain Workbench.
+ Odbiorcy wiadomości pobierają wiadomości z Service Bus. Źródłowy model zdarzeń dla odbiorców wiadomości umożliwia korzystanie z rozszerzeń dodatkowych usług i systemów. Można na przykład dodać obsługę, aby wypełnić CosmosDB lub oszacować komunikaty przy użyciu usługi Azure Streaming Analytics. W poniższych sekcjach opisano klientów komunikatów uwzględnionych w łańcucha bloków Workbench.
 
-### <a name="distributed-ledger-consumer"></a>Konsument rejestru rozproszonego
+### <a name="distributed-ledger-consumer"></a>Odbiorca w księdze rozproszonej
 
-Wiadomości technologii (DLT) rejestru rozproszonego zawierać metadane dla transakcji, które ma zostać zapisana łańcucha bloków. Konsument pobiera komunikaty i wypycha dane do konstruktora transakcji, osoby podpisującej i router.
+Komunikaty technologii Distributed Ledger (DLT) zawierają metadane dla transakcji, które mają być zapisywane w łańcucha bloków. Konsument pobiera komunikaty i wypycha dane do konstruktora transakcji, osoby podpisującej i routera.
 
-### <a name="database-consumer"></a>Konsument bazy danych
+### <a name="database-consumer"></a>Użytkownik bazy danych
 
-Użytkownik bazy danych przyjmuje komunikaty z usługi Service Bus i wypycha dane do dołączonej bazie danych, takich jak SQL database.
+Odbiorca bazy danych pobiera komunikaty z Service Bus i wypycha dane do dołączonej bazy danych, takiej jak SQL Database.
 
-### <a name="storage-consumer"></a>Konsument magazynu
+### <a name="storage-consumer"></a>Odbiorca magazynu
 
-Konsument magazynu przyjmuje komunikaty z usługi Service Bus i wypychanie danych do dołączonego magazynu. Na przykład przechowywanie skrótu dokumenty w usłudze Azure Storage.
+Odbiorca magazynu pobiera komunikaty z Service Bus i wypycha dane do dołączonego magazynu. Na przykład przechowywanie dokumentów z wynikami mieszania w usłudze Azure Storage.
 
-## <a name="transaction-builder-and-signer"></a>Konstruktor transakcji i osoby podpisującej
+## <a name="transaction-builder-and-signer"></a>Konstruktor transakcji i osoba podpisująca
 
-Jeśli komunikat na brokera komunikatów przychodzących wymaga zapisania łańcucha bloków, będą przetwarzane przez odbiorców DLT. Konsument DLT to usługa, która pobiera komunikat zawierający metadane dla żądanego transakcji do wykonania, a następnie wysyła informacje do *konstruktora transakcji i osoby podpisującej*. *Konstruktora transakcji i osoby podpisującej* składa transakcji łańcucha bloków na podstawie danych i docelowy żądanego łańcucha bloków. Po złożeniu transakcji jest podpisany. Klucze prywatne są przechowywane w usłudze Azure Key Vault.
+Jeśli komunikat na brokerze komunikatów przychodzących musi być zapisany w łańcucha bloków, zostanie on przetworzony przez klienta DLT. Odbiorca DLT to usługa, która pobiera komunikat zawierający metadane dla żądanej transakcji do wykonania, a następnie wysyła informacje do *konstruktora transakcji i osoby podpisującej*. *Konstruktor transakcji i osoba podpisująca* gromadzą transakcję łańcucha bloków na podstawie danych i żądanego miejsca docelowego łańcucha bloków. Po złożeniu transakcja jest podpisana. Klucze prywatne są przechowywane w Azure Key Vault.
 
- Blockchain Workbench umożliwia pobranie odpowiedniego klucza prywatnego z usługi Key Vault i podpisuje transakcji poza usługą Key Vault. Po podpisaniu transakcji są wysyłane do routerów transakcji i rejestrów.
+ Łańcucha bloków Workbench pobiera odpowiedni klucz prywatny z Key Vault i podpisuje transakcję poza Key Vault. Po podpisaniu transakcja jest wysyłana do routerów i ksiąg transakcji.
 
-## <a name="transaction-routers-and-ledgers"></a>Routery transakcji i rejestrów
+## <a name="transaction-routers-and-ledgers"></a>Routery transakcji i księgi
 
-Routery transakcji rejestrów zająć podpisem transakcji i przekazywać je do odpowiednich łańcucha bloków. Obecnie Blockchain Workbench obsługuje Ethereum jako jego łańcucha bloków docelowych.
+Routery transakcji i księgi uwzględniają podpisane transakcje i kierują je do odpowiednich łańcucha bloków. Obecnie łańcucha bloków Workbench obsługuje Ethereum jako element docelowy łańcucha bloków.
 
-## <a name="dlt-watcher"></a>DLT obserwatora
+## <a name="dlt-watcher"></a>Obserwator DLT
 
-Obserwator technologii (DLT) rejestru rozproszonego monitoruje zdarzenia występujące w bloku łańcuchów dołączony do aplikacji Blockchain Workbench.
-Zdarzenia odzwierciedlają informacje istotne dla użytkowników indywidualnych i systemów. Na przykład tworzenie nowych wystąpień kontraktu, wykonywanie transakcji, a zmiany stanu. Zdarzenia są przechwytywane i wysyłane do brokera komunikatów wychodzących, dzięki czemu mogą być używane przez konsumentów podrzędnego.
+Obserwator rozproszonej technologii księgi (DLT) monitoruje zdarzenia występujące na łańcuchach blokowych dołączonych do łańcucha bloków Workbench.
+Zdarzenia odzwierciedlają informacje istotne dla użytkowników indywidualnych i systemów. Na przykład tworzenie nowych wystąpień kontraktu, wykonywanie transakcji i zmiana stanu. Zdarzenia są przechwytywane i wysyłane do brokera komunikatów wychodzących, dzięki czemu mogą być używane przez użytkowników podrzędnych.
 
-Na przykład konsumenta SQL monitoruje zdarzenia, wykorzystuje je i wypełnia bazy danych SQL przy użyciu uwzględnionych wartościach. Kopia umożliwia odtwarzania repliki dane w magazynie poza łańcuchem.
+Na przykład klient SQL monitoruje zdarzenia, wykorzystuje je i wypełnia bazę danych SQL z dołączonymi wartościami. Kopia umożliwia ponowne tworzenie repliki danych w łańcuchu w magazynie spoza łańcucha.
 
 ## <a name="azure-sql-database"></a>Baza danych Azure SQL Database
 
-Azure SQL database, dołączony do aplikacji Blockchain Workbench przechowuje definicje kontraktu, metadanych konfiguracji i dostępny SQL repliki danych przechowywanych w łańcucha bloków. Te dane można łatwo być badane, wizualizowane lub analizowanych przez bezpośredni dostęp do bazy danych. Deweloperzy i inni użytkownicy mogą na użytek bazy danych raportowania i analizy lub innych opartych na danych integracji. Na przykład użytkownicy można wizualizować dane transakcji przy użyciu usługi Power BI.
+Usługa Azure SQL Database dołączona do łańcucha bloków Workbench przechowuje definicje kontraktu, metadane konfiguracji i replikę z dostępną przez program SQL do danych przechowywanych w łańcucha bloków. Te dane mogą być łatwo badane, wizualizowane lub analizowane przez bezpośrednie uzyskiwanie dostępu do bazy danych. Deweloperzy i inni użytkownicy mogą korzystać z bazy danych do raportowania, analizy lub innych integracji skoncentrowanych na danych. Na przykład użytkownicy mogą wizualizować dane transakcji przy użyciu Power BI.
 
-Ten magazyn poza łańcuchem umożliwia przedsiębiorstwami przesyłać zapytania dotyczące danych w języku SQL, a nie w księdze łańcucha bloków. Standaryzując standardowego schematu, który jest niezależny od stosy technologii łańcucha bloków magazynu poza łańcuchem umożliwia także ponowne użycie raportów i innych artefaktów we wszystkich projektach, scenariusze i organizacji.
+Ten magazyn poza łańcuchem zapewnia organizacjom korporacyjnym możliwość wykonywania zapytań dotyczących danych w języku SQL, a nie w księdze łańcucha bloków. Ponadto dzięki standaryzacji standardowego schematu niezależny od z stosów technologicznych łańcucha bloków, magazyn poza łańcuchem umożliwia ponowne użycie raportów i innych artefaktów między projektami, scenariuszami i organizacjami.
 
 ## <a name="azure-storage"></a>Azure Storage
 
-Usługa Azure Storage jest używane do przechowywania kontrakty i metadane skojarzone z umowy.
+Usługa Azure Storage służy do przechowywania kontraktów i metadanych skojarzonych z kontraktami.
 
-Zamówienia zakupu i listy przewozowe, aby obrazy używane w wiadomości i aplikacje medyczne, aby wideo pochodzących z kamer jednostki policji i głównych obrazów ruchu, począwszy dokumentów pełnić rolę w wielu scenariuszach skoncentrowane na łańcucha bloków. Dokumenty nie są odpowiednie do umieszczenia bezpośrednio na łańcucha bloków.
+W przypadku zamówień zakupu i weksli do obrazów używanych w wiadomościach i obrazach medycznych do wideo pochodzącego z składnika Continuum, w tym kamer związanych z treścią policyjną i głównych obrazów ruchu, dokumenty odgrywają rolę w wielu scenariuszach skoncentrowanych na łańcucha bloków. Dokumenty nie są odpowiednie do bezpośredniego umieszczania w łańcucha bloków.
 
-Blockchain Workbench obsługuje możliwość dodawania dokumentów lub innych zawartości multimedialnej z logiką biznesową łańcucha bloków. Skrót zawartości dokumentu lub nośników znajduje się w łańcucha bloków i rzeczywiste dokumentu lub zawartości multimedialnej jest przechowywany w usłudze Azure Storage. Informacje skojarzone transakcji jest dostarczane do brokera komunikatów przychodzących, spakowane w, podpisane i kierowane do łańcucha bloków. Ten proces wyzwala zdarzenia, które są udostępniane za pośrednictwem brokera komunikatów wychodzących. Bazy danych SQL wykorzystuje te informacje i wysyła je do bazy danych później podczas wykonywania zapytań. Systemy klienckie mogą również korzystać z tych zdarzeń, która będzie działać w odpowiednim.
+Łańcucha bloków Workbench obsługuje możliwość dodawania dokumentów lub innej zawartości multimedialnej przy użyciu logiki biznesowej łańcucha bloków. Skrót zawartości dokumentu lub nośnika jest przechowywany w łańcucha bloków, a rzeczywista zawartość dokumentu lub nośnika jest przechowywana w usłudze Azure Storage. Informacje o skojarzonych transakcjach są dostarczane do brokera komunikatów przychodzących, spakowane, podpisane i kierowane do łańcucha bloków. Ten proces wyzwala zdarzenia, które są udostępniane za pośrednictwem brokera komunikatów wychodzących. Baza danych SQL wykorzystuje te informacje i wysyła je do bazy danych w celu późniejszego wykonywania zapytań. Systemy podrzędne mogą również wykorzystać te zdarzenia do działania w razie potrzeby.
 
 ## <a name="monitoring"></a>Monitorowanie
 
-Workbench umożliwia rejestrowanie aplikacji za pomocą usługi Application Insights i Azure Monitor. Application Insights jest używany do przechowywania wszystkich zarejestrowanych informacji z aplikacji Blockchain Workbench i zawiera błędy, ostrzeżenia i operacje zakończone powodzeniem. Usługa Application Insights może służyć przez deweloperów do debugowania problemów z aplikacji Blockchain Workbench. 
+Workbench zapewnia rejestrowanie aplikacji przy użyciu Application Insights i Azure Monitor. Application Insights służy do przechowywania wszystkich zarejestrowanych informacji z łańcucha bloków Workbench i zawiera błędy, ostrzeżenia i operacje zakończone powodzeniem. Application Insights mogą być używane przez deweloperów do debugowania problemów z łańcucha bloków Workbench. 
 
-Usługa Azure Monitor zawiera informacje dotyczące kondycji sieć łańcucha bloków. 
+Azure Monitor zawiera informacje dotyczące kondycji sieci łańcucha bloków. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Wdrażanie usługi Azure Blockchain Workbench](../../blockchain-workbench/blockchain-workbench-deploy.md)

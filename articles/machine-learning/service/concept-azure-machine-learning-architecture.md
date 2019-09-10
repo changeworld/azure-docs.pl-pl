@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: b7cb4f1a106d8caa2c43f5f17c5efa16a3ee6df2
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 4e953ad732852f9ee99c7830997e2d1dc29b8f84
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011643"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845013"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Jak działa usługa Azure Machine Learning: Architektura i pojęcia
 
@@ -129,7 +129,7 @@ Aby uzyskać więcej informacji zobacz następujące artykuły:
 
 ### <a name="datasets-and-datastores"></a>Zestawy danych i magazyny datastores
 
-**Azure Machine Learning zestawy danych** (wersja zapoznawcza) ułatwia dostęp do danych i pracę z nimi. Zestawy danych zarządzają danymi w różnych scenariuszach, takich jak szkolenia modeli i tworzenie potoku. Za pomocą zestawu SDK Azure Machine Learning można uzyskać dostęp do magazynu bazowego, eksplorować i przygotowywać dane, zarządzać cyklem życia różnych definicji zestawu danych oraz porównywać zestawy danych używane w szkoleniu i w środowisku produkcyjnym.
+**Azure Machine Learning zestawy danych** (wersja zapoznawcza) ułatwia dostęp do danych i pracę z nimi. Zestawy danych zarządzają danymi w różnych scenariuszach, takich jak szkolenia modeli i tworzenie potoku. Za pomocą zestawu SDK Azure Machine Learning można uzyskać dostęp do magazynu bazowego, eksplorować dane i zarządzać cyklem życia różnych definicji zestawu danych.
 
 Zestawy danych udostępniają metody pracy z danymi w popularnych formatach, np. przy `from_delimited_files()` użyciu `to_pandas_dataframe()`lub.
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 15ce85385662ba186f8434285130099054e52c05
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 1f5f2dc6babbca219f0efbb1d7013d4e6e3270e6
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814446"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873306"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrowanie maszyn wirtualnych usług Amazon Web Services (AWS) na platformę Azure
 
@@ -95,11 +95,11 @@ Gdy po migracji (przejściu w tryb failover) zostaną utworzone maszyny wirtualn
 1. W witrynie [Azure Portal](https://portal.azure.com) wybierz kolejno pozycje **Utwórz zasób** > **Sieć** >
    **Sieć wirtualna**.
 3. W polu **Nazwa** wprowadź wartość **myMigrationNetwork**.
-4. W obszarze **Przestrzeń adresowa** pozostaw wartość domyślną.
+4. Pozostaw wartość domyślną **przestrzeni adresowej** (należy wprowadzić wartość).
 5. W polu **Subskrypcja** wybierz subskrypcję, która ma być używana.
 6. W obszarze **Grupa zasobów** wybierz pozycję **Użyj istniejącej**, a następnie wybierz pozycję **migrationRG**.
 7. W obszarze **Lokalizacja** wybierz pozycję **Europa Zachodnia**.
-8. W obszarze **Podsieć** pozostaw wartości domyślne dla pól **Nazwa** i **Zakres adresów IP**.
+8. W obszarze **podsieć**pozostaw wartości domyślne w polu **Nazwa** i **zakres adresów IP (należy wprowadzić wartość)** .
 9. Dodaj instrukcje dotyczące ustawień ochrony DDoS.
 10. Pozostaw wyłączoną opcję **Punkty końcowe usługi**.
 11. Dodaj instrukcje dotyczące ustawień zapory.

@@ -1,29 +1,26 @@
 ---
-title: Skonfiguruj replikację dla maszyn wirtualnych z włączoną funkcją Azure Disk Encryption w Azure Site Recovery | Microsoft Docs
+title: Konfigurowanie replikacji dla maszyn wirtualnych z włączoną funkcją Azure Disk Encryption w programie Azure Site Recovery
 description: W tym artykule opisano sposób konfigurowania replikacji dla maszyn wirtualnych z włączoną funkcją Azure Disk Encryption z jednego regionu świadczenia usługi Azure do innego przy użyciu Site Recovery.
-services: site-recovery
 author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 1bb94b70510be30d676ad707ab2fbfbbcbf50833
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: bf0ee89bb091a13560a7a7d8d9e77c74827d94a2
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884124"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861314"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Replikowanie maszyn wirtualnych z obsługą Azure Disk Encryption w innym regionie platformy Azure
 
-W tym artykule opisano, jak replikować maszyny wirtualne z obsługą Azure Disk Encryption z jednego regionu platformy Azure do innego.
+W tym artykule opisano sposób replikowania maszyn wirtualnych platformy Azure z włączonym Azure Disk Encryption (ADE) z jednego regionu świadczenia usługi Azure do innego.
 
 >[!NOTE]
->Azure Site Recovery obecnie obsługuje tylko maszyny wirtualne z włączoną obsługą Azure Disk Encryption, na których działa system operacyjny Windows. Maszyny wirtualne z obsługą Azure Disk Encryption bez aplikacji usługi Azure AD są obsługiwane tylko wtedy, gdy używają dysków zarządzanych. Maszyny wirtualne z dyskami niezarządzanymi nie są obsługiwane.
+> Site Recovery obecnie obsługuje ADE, z i bez Azure Active Directory (AAD) dla maszyn wirtualnych z systemem Windows.  W przypadku maszyn z uruchomionym programem ADE 1,1 (bez usługi AAD) maszyny wirtualne z systemem Windows muszą używać dysków zarządzanych. Maszyny wirtualne z dyskami niezarządzanymi nie są obsługiwane. Jeśli przełączysz się z programu ADE 0,1 (z usługą AAD) do 1,1, musisz wyłączyć replikację i włączyć replikację dla maszyny wirtualnej po włączeniu opcji 1,1.
 
->[!NOTE]
->Jeśli przełączysz się z ADE V1 (z aplikacją usługi Azure AD) do wersji ADE v2 (bez aplikacji usługi Azure AD), musisz wyłączyć replikację i włączyć replikację po włączeniu programu ADE v2.
 
 ## <a id="required-user-permissions"></a>Wymagane uprawnienia użytkownika
 Site Recovery wymaga, aby użytkownik miał uprawnienia do tworzenia magazynu kluczy w regionie docelowym i kopiowania kluczy z magazynu kluczy regionów źródłowych do magazynu kluczy regionu docelowego.
@@ -55,7 +52,7 @@ Aby zarządzać uprawnieniami, przejdź do zasobu magazynu kluczy w portalu. Dod
 
 Jeśli użytkownik, który włączył odzyskiwanie po awarii (DR) nie ma uprawnień do kopiowania kluczy, administrator zabezpieczeń, który ma odpowiednie uprawnienia, może użyć następującego skryptu w celu skopiowania kluczy tajnych szyfrowania i klucza do regionu docelowego.
 
-Rozwiązywanie problemów z uprawnieniami można [](#trusted-root-certificates-error-code-151066) znaleźć w dalszej części tego artykułu.
+Rozwiązywanie problemów z uprawnieniami można znaleźć [w dalszej](#trusted-root-certificates-error-code-151066) części tego artykułu.
 
 >[!NOTE]
 >Aby włączyć replikację maszyn wirtualnych z włączoną funkcją szyfrowania dysków z portalu, musisz mieć co najmniej uprawnienia "list" dotyczące magazynów kluczy, wpisów tajnych i kluczy.
@@ -70,7 +67,7 @@ Rozwiązywanie problemów z uprawnieniami można [](#trusted-root-certificates-e
 6. Wybierz **subskrypcję platformy Azure** dla maszyn wirtualnych.
 7. Zaczekaj na załadowanie grup zasobów, a następnie wybierz **grupę zasobów** maszyn wirtualnych.
 8. Wybierz Maszyny wirtualne z wyświetlonej listy. Na liście znajdują się tylko maszyny wirtualne, na których włączono szyfrowanie dysków.
-9. Wybierz **lokalizację**docelową.
+9. Wybierz **lokalizację docelową**.
 
     - **Magazyny kluczy szyfrowania dysków**
     - **Magazyny kluczy szyfrowania kluczy**
@@ -99,7 +96,7 @@ W tym przykładzie głównym regionem świadczenia usługi Azure jest Azja Wscho
     - **Docelowa sieć wirtualna**: Domyślnie Site Recovery tworzy nową sieć wirtualną w regionie docelowym. Nazwa pobiera sufiks "ASR". Jest on mapowany do sieci źródłowej i używany do ochrony w przyszłości. [Dowiedz się więcej](site-recovery-network-mapping-azure-to-azure.md) na temat mapowania sieci.
     - **Docelowe konta magazynu (jeśli źródłowa maszyna wirtualna nie używa dysków zarządzanych)** : Domyślnie Site Recovery tworzy nowe docelowe konto magazynu przez naśladując źródłową konfigurację magazynu maszyn wirtualnych. Jeśli konto magazynu już istnieje, jest ponownie używane.
     - **Dyski zarządzane repliki (jeśli źródłowa maszyna wirtualna korzysta z dysków zarządzanych)** : Site Recovery tworzy nowe dyski zarządzane repliki w regionie docelowym, aby dublować dyski zarządzane źródłowej maszyny wirtualnej tego samego typu magazynu (w warstwie Standardowa lub Premium) jako dyski zarządzane źródłowej maszyny wirtualnej.
-    - **Konta magazynu pamięci podręcznej**: Site Recovery potrzebuje dodatkowego konta magazynu o nazwie *Magazyn pamięci* podręcznej w regionie źródłowym. Wszystkie zmiany na źródłowych maszynach wirtualnych są śledzone i wysyłane do konta magazynu pamięci podręcznej. Są one następnie replikowane do lokalizacji docelowej.
+    - **Konta magazynu pamięci podręcznej**: Site Recovery potrzebuje dodatkowego konta magazynu o nazwie *Magazyn pamięci podręcznej* w regionie źródłowym. Wszystkie zmiany na źródłowych maszynach wirtualnych są śledzone i wysyłane do konta magazynu pamięci podręcznej. Są one następnie replikowane do lokalizacji docelowej.
     - **Zestaw dostępności**: Domyślnie Site Recovery tworzy nowy zestaw dostępności w regionie docelowym. Nazwa ma sufiks "ASR". Jeśli zestaw dostępności, który został utworzony przez Site Recovery już istnieje, jest ponownie używany.
     - **Magazyny kluczy szyfrowania dysków**: Domyślnie Site Recovery tworzy nowy magazyn kluczy w regionie docelowym. Ma sufiks "ASR" oparty na kluczach szyfrowania źródłowych dysków maszyny wirtualnej. Jeśli magazyn kluczy utworzony przez Azure Site Recovery już istnieje, jest ponownie używany.
     - **Magazyny kluczy szyfrowania kluczy**: Domyślnie Site Recovery tworzy nowy magazyn kluczy w regionie docelowym. Nazwa ma sufiks "ASR" oparty na kluczach szyfrowania źródłowych maszyn wirtualnych. Jeśli magazyn kluczy utworzony przez Azure Site Recovery już istnieje, jest ponownie używany.
@@ -113,7 +110,7 @@ Wykonaj następujące kroki, aby zmodyfikować domyślne ustawienia obiektu doce
 
 2. Wybierz pozycję **Dostosuj** obok pozycji "Grupa zasobów, Sieć, magazyn i zestawy dostępności", aby zmodyfikować następujące ustawienia domyślne:
     - Dla **docelowej grupy zasobów**wybierz grupę zasobów z listy grup zasobów w lokalizacji docelowej subskrypcji.
-    - W polu docelowa **Sieć wirtualna**wybierz sieć z listy sieci wirtualnych w lokalizacji docelowej.
+    - W polu **docelowa sieć wirtualna**wybierz sieć z listy sieci wirtualnych w lokalizacji docelowej.
     - W przypadku **zestawu dostępności**można dodać ustawienia zestawu dostępności do maszyny wirtualnej, jeśli są one częścią zestawu dostępności w regionie źródłowym.
     - W przypadku **docelowych kont magazynu**wybierz konto, które ma być używane.
 
@@ -132,7 +129,7 @@ W następujących scenariuszach wymagane jest zaktualizowanie ustawień szyfrowa
   - Włączono Site Recovery replikację na maszynie wirtualnej. Później można było włączyć szyfrowanie dysków na źródłowej maszynie wirtualnej.
   - Włączono Site Recovery replikację na maszynie wirtualnej. Później zmieniono klucz szyfrowania dysku lub klucz szyfrowania klucza na źródłowej maszynie wirtualnej.
 
-Możesz użyć [skryptu](#copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script) , aby skopiować klucze szyfrowania do regionu docelowego, a następnie zaktualizować docelowe ustawienia szyfrowania w obszarze**Właściwości**  >  *zreplikowanego elementu* >  **magazynu** > usług Recovery Services **Obliczenia i sieć**.
+Możesz użyć [skryptu](#copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script) , aby skopiować klucze szyfrowania do regionu docelowego, a następnie zaktualizować docelowe ustawienia szyfrowania w obszarze**Właściwości**  >  *zreplikowanego elementu* >  >  **magazynu usług Recovery Services** **Obliczenia i sieć**.
 
 ![Okno dialogowe Aktualizowanie ustawień ADE](./media/azure-to-azure-how-to-enable-replication-ade-vms/update-ade-settings.png)
 
@@ -158,6 +155,6 @@ Wymagane uprawnienie w [magazynie kluczy docelowych](#required-user-permissions)
 
 **Jak naprawić:** Przejdź do pozycji **Główne** > **magazyny** > kluczy**ContosotargetKeyvault** > **zasady dostępu** i Dodaj odpowiednie uprawnienia.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Dowiedz się więcej](site-recovery-test-failover-to-azure.md) o uruchamianiu testowej pracy w trybie failover.

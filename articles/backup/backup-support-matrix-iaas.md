@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: dacurwin
-ms.openlocfilehash: df9e60c8d517c35029e425d50dba81a18c2f1114
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: da987b5e841824dc62f3b740cae2961de9d7b293
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617360"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70872894"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Macierz obsługi dla kopii zapasowej maszyny wirtualnej platformy Azure
 Za pomocą [usługi Azure Backup](backup-overview.md) można tworzyć kopie zapasowe maszyn i obciążeń lokalnych oraz maszyn wirtualnych platformy Azure. Ten artykuł zawiera podsumowanie ustawień i ograniczeń pomocy technicznej podczas tworzenia kopii zapasowych maszyn wirtualnych platformy Azure przy użyciu Azure Backup.
@@ -103,7 +103,7 @@ Punkty odzyskiwania na dysku programu DPM/usługi MABS | 64 dla serwerów plikó
 
 **Restore — Metoda** | **Szczegóły**
 --- | ---
-Utwórz nową maszynę wirtualną | Podczas procesu przywracania można utworzyć maszynę wirtualną. <br/><br/> Ta opcja pobiera podstawową maszynę wirtualną w górę i w działaniu. Możesz określić nazwę maszyny wirtualnej, grupę zasobów, sieć wirtualną, podsieć i magazyn.  
+Utworzenie nowej maszyny wirtualnej. | Podczas procesu przywracania można utworzyć maszynę wirtualną. <br/><br/> Ta opcja pobiera podstawową maszynę wirtualną w górę i w działaniu. Możesz określić nazwę maszyny wirtualnej, grupę zasobów, sieć wirtualną, podsieć i magazyn.  
 Przywracanie dysku | Można przywrócić dysk i użyć go do utworzenia maszyny wirtualnej.<br/><br/> Po wybraniu tej opcji Azure Backup kopiuje dane z magazynu na wybrane konto magazynu. Zadanie przywracania generuje szablon. Możesz pobrać ten szablon, użyć go do określenia niestandardowych ustawień maszyny wirtualnej i utworzyć maszynę wirtualną.<br/><br/> Ta opcja pozwala określić więcej ustawień, które poprzednią opcję tworzenia maszyny wirtualnej.<br/><br/>
 Zastępowanie istniejącego dysku | Można przywrócić dysk, a następnie użyć przywróconego dysku, aby zastąpić dysk, który znajduje się obecnie na maszynie wirtualnej.
 Przywróć pliki | Można odzyskać pliki z wybranego punktu odzyskiwania. Pobierz skrypt, aby zainstalować dysk maszyny wirtualnej z punktu odzyskiwania. Następnie przejrzyj woluminy dysków, aby znaleźć pliki/foldery, które chcesz odzyskać, i Odinstaluj dysk po zakończeniu.
@@ -151,13 +151,14 @@ Tworzenie kopii zapasowych maszyn wirtualnych migrowanych do platformy Azure  | 
 Tworzenie kopii zapasowej spójności między MASZYNami wirtualnymi | Azure Backup nie zapewnia spójności danych i aplikacji na wielu maszynach wirtualnych.
 Tworzenie kopii zapasowej przy użyciu [ustawień diagnostycznych](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)  | Ich. <br/><br/> Jeśli przywracanie maszyny wirtualnej platformy Azure z ustawieniami diagnostycznymi jest wyzwalane przy użyciu opcji [Utwórz nową](backup-azure-arm-restore-vms.md#create-a-vm) , przywracanie nie powiedzie się.
 Przywracanie przypiętych do strefy maszyn wirtualnych | Obsługiwane (w przypadku maszyny wirtualnej, której kopia zapasowa jest wykonywana po 2019 Jan i [strefa dostępności](https://azure.microsoft.com/global-infrastructure/availability-zones/) jest dostępna).<br/><br/>Obecnie obsługujemy przywracanie do tej samej strefy, która jest przypięta do maszyn wirtualnych. Jeśli jednak strefa jest niedostępna, przywracanie nie powiedzie się.
+Maszyny wirtualne Gen2 | Obsługiwane <br> Azure Backup obsługuje tworzenie kopii zapasowych i przywracanie [maszyn wirtualnych Gen2](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/). Po przywróceniu tych maszyn wirtualnych z punktu odzyskiwania są one przywracane jako [maszyny wirtualne Gen2](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/).
 
 
 ## <a name="vm-storage-support"></a>Obsługa magazynu maszyn wirtualnych
 
 **Składnik** | **Pomoc techniczna**
 --- | ---
-Dyski z danymi maszyn wirtualnych platformy Azure | Utwórz kopię zapasową maszyny wirtualnej z 16 lub mniej dyskami danych. <br/><br/> Obsługuje rozmiary dysków do 4 TB.<br/><br/>Aby zarejestrować się w celu uzyskania ograniczonej publicznej wersji zapoznawczej Azure Backup dużych dyskach o rozmiarze większym niż 4 TB i maksymalnie 30 TB, zapoznaj [](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb)się z tym artykułem.
+Dyski z danymi maszyn wirtualnych platformy Azure | Utwórz kopię zapasową maszyny wirtualnej z 16 lub mniej dyskami danych. <br/><br/> Obsługuje rozmiary dysków do 4 TB.<br/><br/>Aby zarejestrować się w celu uzyskania ograniczonej publicznej wersji zapoznawczej Azure Backup dużych dyskach o rozmiarze większym niż 4 TB i maksymalnie 30 TB, zapoznaj się z tym [artykułem](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
 Rozmiar dysku danych | Każdy dysk może mieć rozmiar do 4095 GB.<br/><br/>Aby zarejestrować się w celu uzyskania ograniczonej publicznej wersji zapoznawczej Azure Backup dużych dyskach o rozmiarze większym niż 4 TB do 30TB, zapoznaj się z tym [artykułem](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
 Typ magazynu | HDD w warstwie Standardowa, SSD w warstwie Standardowa, SSD w warstwie Premium.
 Dyski zarządzane | Obsługiwane.

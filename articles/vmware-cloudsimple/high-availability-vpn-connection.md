@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ea8ad80d8d12ae9ecac88bd6a3d661ca895d67f4
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 0b40c15956dc03209dcab49641af66bc8ae24187
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972771"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845329"
 ---
 # <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>Konfigurowanie połączenia o wysokiej dostępności z poziomu lokalnego z bramą sieci VPN CloudSimple
 
@@ -50,7 +50,7 @@ Domyślnie bramy sieci VPN CloudSimple są konfigurowane w trybie protokołu IKE
 
 Przed skonfigurowaniem zapory lokalnej należy wykonać poniższe zadania.
 
-1. Należy sprawdzić, czy organizacja [](create-nodes.md) zakupiła wymagane węzły i utworzyła co najmniej jedną chmurę prywatną CloudSimple.
+1. Sprawdź, czy Twoja organizacja [zabrała](create-nodes.md) wymagane węzły i utworzyła co najmniej jedną chmurę prywatną CloudSimple.
 2. [Skonfiguruj bramę sieci VPN typu lokacja-lokacja](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) między siecią lokalną i chmurą prywatną CloudSimple.
 
 ## <a name="configure-on-premises-cisco-asa-firewall"></a>Konfigurowanie lokalnej zapory Cisco ASA
@@ -270,7 +270,7 @@ Wybierz pozycję **Sieć** > **rozwiń węzeł Profile** > sieci Dodaj, skonfigu
 
 ### <a name="7-set-up-primary-and-secondary-ipsec-tunnels"></a>7. Skonfiguruj podstawowe i pomocnicze tunele protokołu IPsec.
 
-Wybierz **opcję sieciowe** > **tunele** > IPSec**Dodaj**, skonfiguruj następujące pola i kliknij przycisk **OK**.
+Wybierz opcję **sieciowe** > **tunele** > IPSec**Dodaj**, skonfiguruj następujące pola i kliknij przycisk **OK**.
 
 Karta Ogólne:
 

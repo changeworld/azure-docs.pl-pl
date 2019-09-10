@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a61e789bb40d8263d293c70a67567ea61d5d2652
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: a8b7e238333196381524d189904871fe5933c906
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972600"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845365"
 ---
 # <a name="set-up-vpn-gateways-on-cloudsimple-network"></a>Konfigurowanie bram sieci VPN w sieci CloudSimple
 
@@ -56,7 +56,7 @@ Brama sieci VPN typu punkt-lokacja umożliwia zdefiniowanie zasad automatycznego
     > [!WARNING]
     > Włączenie wysokiej dostępności wymaga, aby lokalne urządzenie sieci VPN obsługiwało łączenie z dwoma adresami IP. Tej opcji nie można wyłączyć po wdrożeniu bramy sieci VPN.
 
-5. Utwórz pierwsze połączenie z sieci lokalnej i kliknij przycisk **dalej** .
+5. Utwórz pierwsze połączenie z sieci lokalnej i kliknij przycisk **dalej**.
 
     * Wprowadź nazwę identyfikującą połączenie.
     * Dla adresu IP elementu równorzędnego wprowadź publiczny adres IP lokalnej bramy sieci VPN.
@@ -122,4 +122,4 @@ W poniższej tabeli przedstawiono liczbę współbieżnych połączeń klienta d
 | Liczba współbieżnych połączeń TCP | 124 | 60 | 28 | 12 | 4 |
 | Liczba równoczesnych połączeń UDP | 124 | 60 | 28 | 12 | 4 |
 
-Aby nawiązać połączenie przy użyciu sieci VPN typu punkt-lokacja, zobacz Nawiązywanie połączenia z usługą [CloudSimple przy użyciu sieci VPN typu punkt-lokacja](set-up-vpn.md#connect-to-cloudsimple-using-point-to-site-vpn).
+Aby nawiązać połączenie przy użyciu sieci VPN typu punkt-lokacja, zobacz [nawiązywanie połączenia z usługą CloudSimple przy użyciu sieci VPN typu punkt-lokacja](set-up-vpn.md#connect-to-cloudsimple-using-point-to-site-vpn).
