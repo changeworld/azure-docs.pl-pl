@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: gwallace
-ms.openlocfilehash: 98cb6d8eb665121e5991508056aa2fd9edc0629d
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 28169bfb8dead65c543a3752a709f33487854e60
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376038"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844731"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>Tworzenie funkcji wyzwalanej przez protokół HTTP na platformie Azure
 
@@ -38,7 +38,13 @@ Przed rozpoczęciem należy wykonać następujące czynności:
 
 ## <a name="create-and-activate-a-virtual-environment-optional"></a>Tworzenie i aktywowanie środowiska wirtualnego (opcjonalnie)
 
-Aby lokalnie opracowywać i testować funkcje języka Python, zaleca się używanie środowiska Python 3,6. Uruchom następujące polecenia, aby utworzyć i aktywować środowisko wirtualne o nazwie `.venv`. Aby zainstalować venv, wykonaj polecenie: sudo apt-get install python3-venv
+Aby lokalnie opracowywać i testować funkcje języka Python, zaleca się używanie środowiska Python 3,6. Uruchom następujące polecenia, aby utworzyć i aktywować środowisko wirtualne o nazwie `.venv`. 
+
+> [!NOTE]
+> Jeśli język Python nie zainstalował venv w dystrybucji systemu Linux, można go zainstalować za pomocą następującego polecenia:
+> ```command
+> sudo apt-get install python3-venv
+>
 
 ### <a name="bash"></a>Bash
 

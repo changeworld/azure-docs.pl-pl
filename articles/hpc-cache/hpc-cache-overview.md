@@ -6,14 +6,14 @@ ms.service: hpc-cache
 ms.topic: overview
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: da853cd92797c6ec778043ddc39c7854d8f5e832
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: d772f66d14e0c0ab5ac73603e8faeb7e31e9891f
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70774721"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70843777"
 ---
-# <a name="what-is-azure-hpc-cache"></a>Co to jest pamięć podręczna platformy Azure HPC?
+# <a name="what-is-azure-hpc-cache"></a>Co to jest usługa Azure HPC Cache?
 
 Pamięć podręczna Azure HPC umożliwia przyspieszenie dostępu do danych na potrzeby zadań obliczeniowych o wysokiej wydajności (HPC). Buforowanie plików na platformie Azure sprawia, że skalowalność w chmurze jest dostępna nawet w przypadku przepływów pracy, w których dane są przechowywane przez linki sieci WAN, na przykład w lokalnym środowisku magazynu (NAS) podłączonym do sieci centrum danych.
 
@@ -56,10 +56,10 @@ Pamięć podręczna Azure HPC jest dostępna w następujących regionach platfor
 * Azja Południowo-Wschodnia
 * Zachodnie stany USA 2
 
-Aby uzyskać najnowsze informacje o dostępności, należy zapoznać się ze [stroną produktu Azure HPC cache](<https://azure.microsoft.com/services/hpc-cache>) .
+Aby uzyskać najnowsze informacje o dostępności, należy zapoznać się ze [stroną produktu Azure HPC cache](https://azure.microsoft.com/services/hpc-cache) .
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Przeczytaj [stronę produktu usługi Azure HPC cache](<https://azure.microsoft.com/services/hpc-cache>) , aby dowiedzieć się więcej o jej możliwościach
+* Przeczytaj [stronę produktu usługi Azure HPC cache](https://azure.microsoft.com/services/hpc-cache) , aby dowiedzieć się więcej o jej możliwościach
 * Informacje o [wymaganiach wstępnych](hpc-cache-prereqs.md) dotyczących produktu
 * [Tworzenie pamięci podręcznej platformy Azure HPC](hpc-cache-create.md) z poziomu Azure Portal

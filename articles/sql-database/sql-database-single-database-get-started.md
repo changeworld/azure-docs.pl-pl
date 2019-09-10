@@ -10,13 +10,13 @@ ms.topic: quickstart
 author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein
-ms.date: 07/29/2019
-ms.openlocfilehash: f9c2ed77075affdfdf464dbf8a468629fc2e610d
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.date: 09/09/2019
+ms.openlocfilehash: 831ebbd3f85ffa9b78ac3e97a6ec68a8c41bceb5
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640048"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845295"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>Szybki start: Tworzenie pojedynczej bazy danych w Azure SQL Database przy użyciu Azure Portal, programu PowerShell i interfejsu wiersza polecenia platformy Azure
 
@@ -30,8 +30,8 @@ W przypadku wszystkich kroków z tego przewodnika Szybki start musisz zalogować
 
 Pojedynczą bazę danych można utworzyć w warstwie obliczeniowej zainicjowana lub bezserwerowa (wersja zapoznawcza).
 
-- Pojedyncza baza danych w warstwie obliczeniowej zainicjowanej ma określoną ilość wstępnie przyznanych zasobów obliczeniowych oraz zestaw pamięci i zasobów magazynu przy użyciu jednego z dwóch [modeli zakupu](sql-database-purchase-models.md).
-- Pojedyncza baza danych w warstwie obliczeń bezserwerowej ma zakres zasobów obliczeniowych, które są automatycznie skalowane i określoną ilość pamięci na rdzeń, oraz określoną ilość zasobów magazynu i jest dostępna tylko w [modelach zakupów opartych na rdzeń wirtualny](sql-database-service-tiers-vcore.md).
+- Pojedyncza baza danych w warstwie obliczeniowej zainicjowanej ma wstępnie przydzieloną stałą ilość zasobów obliczeniowych, w tym użycie procesora i pamięci przy użyciu jednego z dwóch [modeli zakupu](sql-database-purchase-models.md).
+- Pojedyncza baza danych w warstwie obliczeń bezserwerowej ma zakres zasobów obliczeniowych, w tym procesor i pamięć, które są automatycznie skalowane i są dostępne tylko w [modelach zakupów opartych na rdzeń wirtualny](sql-database-service-tiers-vcore.md).
 
 Podczas tworzenia pojedynczej bazy danych definiowany jest również [serwer usługi SQL Database](sql-database-servers.md) służący do zarządzania tą bazą danych i umieszczania jej w ramach [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) w określonym regionie.
 
@@ -76,7 +76,7 @@ Po zakończeniu korzystania z tych zasobów możesz je usunąć w następujący 
 2. Na stronie grupy zasobów wybierz pozycję **Usuń grupę zasobów**.
 3. Wprowadź w polu ciąg *myResourceGroup*, a następnie wybierz opcję **Usuń**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Utwórz regułę zapory na poziomie serwera w celu nawiązania połączenia z pojedynczą bazą danych za pomocą narzędzi lokalnych lub zdalnych. Aby uzyskać więcej informacji, zobacz temat [Tworzenie reguły zapory na poziomie serwera](sql-database-server-level-firewall-rule.md).
 - Po utworzeniu reguły zapory na poziomie serwera [nawiąż połączenie z bazą danych i wykonaj zapytania](sql-database-connect-query.md) przy użyciu różnych narzędzi i języków.

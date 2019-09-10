@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Tworzenie zespołu Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: f4a0a4858c890c94e3983c3dc9b10d739dc1352d
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 0abfe655e30b62829a7d353b6da85bb51e378f6d
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772566"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70842592"
 ---
 # <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>Szybki start: Programowanie zespołowe na Kubernetes przy użyciu Azure Dev Spaces
 
@@ -146,12 +146,12 @@ Użyj polecenia, aby wyświetlić listę wszystkich miejsc dev i potwierdzić, �
 
 ```cmd
 $ azds space list
-Name            Selected
---------------  --------
-default         False
-dev             False
-dev/azureuser1  False
-dev/azureuser2  True
+   Name            DevSpacesEnabled
+-  --------------  ----------------
+   default         False
+   dev             True
+   dev/azureuser1  True
+*  dev/azureuser2  True
 ```
 
 Użyj, `azds list-uris` aby wyświetlić adresy URL dla przykładowej aplikacji w aktualnie wybranym miejscu, które jest *dev/azureuser2*.
@@ -201,6 +201,9 @@ To polecenie kompiluje i uruchamia usługę *bikesharingweb* w obszarze dewelope
 Przejdź do usługi *bikesharingweb* dla obszaru tworzenia */azureuser2* dev, otwierając publiczny adres URL wyświetlany w `azds up` danych wyjściowych polecenia. Wybierz pozycję *Aurelia Briggs (Customer)* jako użytkownik. Sprawdź, czy w prawym górnym rogu zobaczysz zaktualizowany tekst. Może być konieczne odświeżenie strony lub wyczyszczenie pamięci podręcznej przeglądarki, jeśli ta zmiana nie zostanie natychmiast widoczna.
 
 ![Zaktualizowana aplikacja Przykładowa udostępniania Azure Dev Spaces roweru](media/quickstart-team-development/bikeshare-update.png)
+
+> [!NOTE]
+> Gdy przejdziesz do usługi w trakcie `azds up`działania, w danych wyjściowych `azds up` polecenia są również wyświetlane dane śledzenia żądań HTTP. Te ślady mogą pomóc w rozwiązywaniu problemów i debugowaniu usługi. Te ślady można wyłączyć przy `--disable-http-traces` użyciu programu `azds up`podczas uruchamiania.
 
 ## <a name="verify-other-dev-spaces-are-unchanged"></a>Upewnij się, że inne miejsca deweloperskie nie zostały zmienione
 

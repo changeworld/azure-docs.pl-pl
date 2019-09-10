@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 08/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 822bbd004035d9745535942c508cae6702e5b99b
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 99514002f0a259b7e981c2db498e72865d4f1bd4
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278127"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858657"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Co to jest usługa Azure Machine Learning?
 
@@ -32,7 +32,7 @@ Usługa Azure Machine Learning zapewnia środowisko oparte na chmurze, które s�
 
 Eksplorowanie i przygotowywanie danych, uczenie i testowanie modeli oraz wdrażanie ich przy użyciu bogatych narzędzi, takich jak:
 + [Interfejs wizualizacji](ui-tutorial-automobile-price-train-score.md) , w którym można przeciągać i upuszczać moduły, aby kompilować eksperymenty, a następnie wdrażać modele
-+ [Jupyter notesy](https://jupyter.org) , w których używasz [zestawów SDK](https://docs.microsoft.com/azure/machine-learning/service/#reference) do pisania własnego kodu, takich jak [przykładowe notesy](https://aka.ms/aml-notebooks)
++ [Jupyter notesy](https://jupyter.org) , w których używasz [zestawów SDK](https://docs.microsoft.com/azure/machine-learning) do pisania własnego kodu, takich jak [przykładowe notesy](https://aka.ms/aml-notebooks)
 + [Visual Studio Code rozszerzenie](how-to-vscode-tools.md)
 
 
@@ -66,7 +66,7 @@ W przypadku szkoleń bez kodu wypróbuj następujące rozwiązania:
 
 Jeśli dysponujesz odpowiednim modelem, możesz go łatwo używać w usłudze sieci Web, na urządzeniu IoT lub z Power BI. Aby uzyskać więcej informacji, zobacz artykuł opisujący, [jak i gdzie wdrażać](how-to-deploy-and-where.md).
 
-Następnie możesz zarządzać wdrożonymi modelami przy użyciu [zestawu SDK usługi Azure Machine Learning dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) lub [witryny Azure Portal](https://portal.azure.com/).
+Następnie możesz zarządzać wdrożonymi modelami przy użyciu [zestawu SDK Azure Machine Learning dla języka Python](https://aka.ms/aml-sdk), [Azure Portal](https://portal.azure.com/) lub [strony docelowej obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com).
 
 Te modele mogą być używane i zwracać przewidywania w [czasie rzeczywistym](how-to-consume-web-service.md) lub [asynchronicznie](how-to-run-batch-predictions.md) w przypadku dużych ilości danych.
 
@@ -93,7 +93,7 @@ Oto krótkie porównanie.
 |Moduły dla interfejsu| Ilość | Początkowy zestaw popularnych modułów|
 |Szkoleniowe cele obliczeniowe| Własnościowy obiekt docelowy obliczeń, tylko obsługa procesora CPU| Obsługuje Azure Machine Learning obliczeń, procesora GPU i procesora CPU.<br/>(Inne obliczenia obsługiwane w zestawie SDK)|
 |Cele obliczeń wdrożenia| Własny format usługi sieci Web, niedostosowywalny | Opcje zabezpieczeń przedsiębiorstwa & usługi Azure Kubernetes. <br/>([Inne obliczenia](how-to-deploy-and-where.md) obsługiwane w zestawie SDK) |
-|Automatyczne szkolenie modelu i dostrajanie parametrów | Nie | Jeszcze nie w interfejsie wizualizacji. <br/> (Obsługiwane w zestawach SDK i Azure Portal). |
+|Automatyczne szkolenie modelu i dostrajanie parametrów | Nie | Jeszcze nie w interfejsie wizualizacji. <br/> (Obsługiwane w zestawie SDK i Azure Portal stronie docelowej/Workspace). |
 
 Wypróbuj interfejs wizualny (wersja zapoznawcza [) z samouczkiem: Przewidywanie ceny samochodów za pomocą interfejsu](ui-tutorial-automobile-price-train-score.md)wizualnego.
 

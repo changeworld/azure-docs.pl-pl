@@ -9,19 +9,19 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 56a73449c69010bc97122023f7dcbc9e3a9df154
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 27063702729d8a61ab8919c2685fcfc6f743ce09
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70048009"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858991"
 ---
 # <a name="what-is-iot-plug-and-play-preview"></a>Co to jest IoT Plug and Play w wersji zapoznawczej?
 
 Wersja zapoznawcza Plug and Play IoT umożliwia deweloperom rozwiązań integrację urządzeń z ich rozwiązaniami bez konieczności pisania kodu osadzonego. Podstawą Plug and Play IoT jest schemat _modelu możliwości urządzenia_ , który opisuje możliwości urządzeń. Ten schemat jest dokumentem JSON, który jest strukturalny jako zestaw interfejsów, które obejmują definicje:
 
 - _Właściwości_ reprezentujące stan tylko do odczytu i odczytu/zapisu urządzenia lub innej jednostki. Na przykład numer seryjny urządzenia może być właściwością tylko do odczytu, a docelowa temperatura w termostatie może być właściwością odczytu/zapisu.
-- Dane telemetryczne, które są emitowane przez urządzenie, niezależnie od tego, czy dane są regularnym strumieniem odczytów czujnika, okazjonalnym błędem czy komunikatem informacyjnym.
+- Dane _telemetryczne_ , które są emitowane przez urządzenie, niezależnie od tego, czy dane są regularnym strumieniem odczytów czujnika, okazjonalnym błędem czy komunikatem informacyjnym.
 - _Polecenia_ opisujące funkcję lub operację, którą można wykonać na urządzeniu. Na przykład polecenie może ponownie uruchomić bramę lub zrobić zdjęcie przy użyciu zdalnej kamery.
 
 Można ponownie użyć interfejsów między modelami możliwości urządzeń, aby ułatwić współpracę i przyspieszyć programowanie.
@@ -35,7 +35,7 @@ Ten artykuł zawiera opis:
 - Typowe role skojarzone z projektem, który używa Plug and Play IoT.
 - Jak korzystać z urządzeń Plug and Play IoT w aplikacji.
 - Jak opracowywać aplikację urządzenia IoT, która obsługuje Plug and Play IoT.
-- Jak zatwierdzić urządzenie Plug and Play IoT i opublikować je w [wykazie urządzeń](https://catalog.azureiotsolutions.com/)z certyfikatem usługi IoT.
+- Jak zatwierdzić urządzenie Plug and Play IoT i opublikować je w [wykazie urządzeń z certyfikatem usługi IoT](https://catalog.azureiotsolutions.com/).
 
 ## <a name="user-roles"></a>Role użytkownika
 
@@ -63,7 +63,7 @@ Jako deweloper urządzenia możesz opracować produkt sprzętu IoT, który obsł
 
 1. Utwórz oprogramowanie urządzenia lub oprogramowanie układowe, które implementuje możliwości zadeklarowane w modelu możliwości urządzenia i interfejsy. Zestaw SDK usługi Azure IoT zawiera interfejsy API służące do implementowania modeli możliwości urządzeń.
 
-Rozszerzenie [IoT Device Workbench for vs Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-iot-workbench) zawiera wiele funkcji, które ułatwią Ci. Na przykład jako deweloper urządzenia możesz użyć rozszerzenia do wygenerowania szkieletowego projektu C z modelu możliwości. Można jednak użyć dowolnego środowiska IDE do tworzenia i implementowania modeli możliwości urządzeń.
+Pakiet Microsoft [Azure IoT Tools for vs Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) Extension Pack udostępnia wiele funkcji, które ułatwią Ci pomoc. Na przykład jako deweloper urządzenia można użyć rozszerzenia do wygenerowania szkieletowego projektu C z modelu możliwości. Można jednak użyć dowolnego środowiska IDE do tworzenia i implementowania modeli możliwości urządzeń.
 
 ## <a name="certify-an-iot-plug-and-play-device"></a>Certyfikowanie urządzenia Plug and Play IoT
 
@@ -76,6 +76,7 @@ Jako deweloper urządzenia możesz przesłać produkty sprzętu IoT do certyfika
 - Publikowanie w katalogu certyfikowanych urządzeń IoT.
 
 ## <a name="regional-availability"></a>Dostępność regionalna
+
 W publicznej wersji zapoznawczej Plug and Play IoT jest dostępny w regionach Europa Północna, środkowe stany USA i Japonia Wschodnia. Upewnij się, że tworzysz centrum w jednym z tych regionów.
 
 ## <a name="message-quotas-in-iot-hub"></a>Limity przydziału komunikatów w IoT Hub

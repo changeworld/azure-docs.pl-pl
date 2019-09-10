@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/09/2018
 ms.author: mlearned
-ms.custom: mvc, seo-java-july2019, seo-java-august2019
+ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 monikerRange: vsts
-ms.openlocfilehash: 381af2989a7622501462e574d05b54eea8416518
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: a3b57fd7acba4d45b0bd519a21ae74f91291fd77
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543444"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873236"
 ---
 # <a name="quickstart-set-up-a-cicd-pipeline-for-a-java-app-with-azure-devops-projects"></a>Szybki start: Konfigurowanie potoku ciągłej integracji/ciągłego wdrażania dla aplikacji Java za pomocą Azure DevOps Projects
 
-Usługa Azure DevOps Projects oferuje prosty sposób na utworzenie zasobów platformy Azure i skonfigurowanie potoku ciągłej integracji/ciągłego wdrażania dla aplikacji w języku Java w usłudze Azure Pipelines.  
+W tym artykule z przewodnikiem Szybki Start użyjesz uproszczonego środowiska Azure DevOps Projects, aby skonfigurować potok ciągłej integracji (CI) i ciągłego dostarczania (CD) dla aplikacji Java w Azure Pipelines. Możesz również użyć Azure DevOps Projects, aby utworzyć inne zasoby platformy Azure.  
 
 Jeśli nie masz subskrypcji platformy Azure, możesz uzyskać ją bezpłatnie za pośrednictwem programu [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/).
 
