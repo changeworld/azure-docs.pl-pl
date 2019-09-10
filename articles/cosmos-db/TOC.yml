@@ -469,6 +469,8 @@
               href: bulk-executor-graph-dotnet.md
             - name: Optymalizacja zapytań języka Gremlin
               href: graph-execution-profile.md
+            - name: Używanie tokenów zasobów
+              href: how-to-use-resource-tokens-gremlin.md
             - name: Wizualizowanie danych grafu
               href: graph-visualization.md
             - name: Magazynowanie danych rozwiązania Spring Data i zarządzanie nimi
