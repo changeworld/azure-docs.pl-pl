@@ -1,6 +1,6 @@
 ---
-title: Samouczek przedstawiający kolejność Azure Data Box Heavy | Microsoft Docs
-description: Zapoznaj się z wymaganiami wstępnymi dotyczącymi wdrażania i kolejnością Azure Data Box Heavy
+title: Samouczek dotyczący zamawiania urządzenia Azure Data Box Heavy | Microsoft Docs
+description: Informacje o wymaganiach wstępnych dotyczących wdrażania oraz sposobie zamawiania urządzenia Azure Data Box Heavy
 services: databox
 author: alkohli
 ms.service: databox
@@ -10,22 +10,22 @@ ms.date: 07/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: dce3549bde4c62245e1d2b1f8ac0c88c0b70260c
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
-ms.translationtype: MT
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 09/05/2019
 ms.locfileid: "70241404"
 ---
-# <a name="tutorial-order-azure-data-box-heavy"></a>Samouczek: Azure Data Box Heavy kolejności
+# <a name="tutorial-order-azure-data-box-heavy"></a>Samouczek: Zamawianie urządzenia Azure Data Box Heavy
 
 
-Azure Data Box Heavy to rozwiązanie hybrydowe, które pozwala na szybkie i łatwe importowanie danych lokalnych do platformy Azure. Dane są przesyłane do urządzenia magazynującego dostarczonego przez firmę Microsoft o pojemności 770 TB (w przybliżeniu możliwego do użycia), a następnie do ponownego wysłania urządzenia. Te dane są następnie przekazywane na platformę Azure.
+Azure Data Box Heavy to hybrydowe rozwiązanie, które umożliwia szybkie, łatwe i bezproblemowe importowanie danych lokalnych na platformę Azure. Przesyłasz swoje dane na urządzenie magazynujące dostarczane przez firmę Microsoft, którego przybliżona pojemność do wykorzystania to 770 TB, a następnie odsyłasz urządzenie z powrotem do firmy Microsoft. Te dane są następnie przekazywane na platformę Azure.
 
-W tym samouczku opisano, jak można zamówić Azure Data Box Heavy. Ten samouczek zawiera informacje dotyczące:
+W tym samouczku opisano sposób zamawiania urządzenia Azure Data Box Heavy. Ten samouczek zawiera informacje dotyczące:
 
 > [!div class="checklist"]
-> * Wymagania wstępne dotyczące Data Box Heavy
-> * Zamówienie Data Box Heavy
+> * Wymagania wstępne dotyczące urządzenia Data Box Heavy
+> * Zamawianie urządzenia Data Box Heavy
 > * Śledzenie zamówienia
 > * Anulowanie zamówienia
 
@@ -33,13 +33,13 @@ W tym samouczku opisano, jak można zamówić Azure Data Box Heavy. Ten samoucze
 
 Przed wdrożeniem urządzenia należy spełnić następujące wymagania wstępne dotyczące konfiguracji związane z usługą i urządzeniem Data Box.
 
-### <a name="for-installation-site"></a>Lokacja instalacji
+### <a name="for-installation-site"></a>Miejsce instalacji
 
 Przed rozpoczęciem upewnij się, że:
 
-- Urządzenie jest zgodne ze standardami Doorways i entryways. Należy jednak upewnić się, że urządzenie może być zgodne ze wszystkimi entryways. Wymiary urządzenia: Szerokość: 26 "Długość: 48 "Wysokość: 28 ".
-- Jeśli jest zainstalowany w piętru innym niż piętro podłogowe, potrzebny jest dostęp do urządzenia za pośrednictwem windy lub rampy. Urządzenie odważy około 500 funtów.
-- Upewnij się, że w centrum danych istnieje płaska lokacja z bliskością dostępnego połączenia sieciowego, które może obsłużyć urządzenie z tym ustawieniem.
+- Urządzenie mieści się w standardowe otwory drzwiowe i przejścia. Upewnij się jednak, że urządzenie zmieści się we wszystkich otworach drzwiowych, przez które będzie transportowane. Wymiary urządzenia — szerokość: 66 cm (26 cali) długość: 122 cm (48 cali) wysokość: 71 cm (28 cali).
+- Jeśli urządzenie ma zostać zainstalowane na innym piętrze budynku niż parter, musisz mieć możliwość przetransportowania urządzenia za pomocą windy lub rampy. Urządzenie ma masę około 227 kg (500 funtów).
+- Upewnij się, że masz dostęp do płaskiej powierzchni w centrum danych znajdującej się blisko dostępnego połączenia sieciowego, gdzie umieścisz urządzenie.
 
 
 ### <a name="for-service"></a>Na potrzeby usługi
@@ -51,71 +51,71 @@ Przed rozpoczęciem upewnij się, że:
     - Cloud Solution Provider (CSP). Dowiedz się więcej o [programie Azure CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview).
     - Dostęp sponsorowany Microsoft Azure. Dowiedz się więcej o [programie dostępu sponsorowanego Azure](https://azure.microsoft.com/offers/ms-azr-0036p/).
 
-- Upewnij się, że masz właściciela lub dostęp współautora do subskrypcji, aby utworzyć zamówienie Data Box Heavy.
+- Sprawdź, czy masz dostęp na poziomie właściciela lub współautora do subskrypcji, aby móc utworzyć zamówienie urządzenia Data Box Heavy.
 
 ### <a name="for-device"></a>Na potrzeby urządzenia
 
 Przed rozpoczęciem upewnij się, że:
 - Urządzenie zostało rozpakowane.
-- Należy posiadać komputer hosta podłączony do sieci centrum danych. Data Box Heavy skopiuje dane z tego komputera. Na komputerze hosta musi być uruchomiony obsługiwany system operacyjny, zgodnie z opisem w temacie [wymagania systemowe Azure Data Box Heavy](data-box-system-requirements.md).
-- Aby połączyć się z lokalnym interfejsem użytkownika i skonfigurować urządzenie, należy mieć komputer przenośny z kablem RJ-45. Aby skonfigurować każdy węzeł urządzenia, użyj laptopa.
+- Należy posiadać komputer hosta podłączony do sieci centrum danych. Za pomocą urządzenia Data Box Heavy zostaną skopiowane dane z tego komputera. Na komputerze hosta musi działać obsługiwany system operacyjny, zgodnie z opisem w [wymaganiach dotyczących systemu Azure Data Box Heavy](data-box-system-requirements.md).
+- Aby połączyć się z lokalnym interfejsem użytkownika i skonfigurować urządzenie, potrzebny jest komputer przenośny i kabel RJ-45. Za pomocą komputera przenośnego skonfigurujesz jednorazowo poszczególne węzły na urządzeniu.
 - Twoje centrum danych musi mieć dostęp do szybkiej sieci. Zdecydowanie zaleca się posiadanie co najmniej jednego połączenia 10 GbE.
-- Potrzebny jest 1 40 GB/s lub kabel 10 GB/s dla każdego węzła urządzenia. Wybierz kable, które są zgodne z interfejsem sieciowym [MELLANOX MCX314A-BCCT](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html) :
+- Potrzebny jest jeden kabel o przepustowości 40 Gb/s lub po jednym kablu o przepustowości 10 Gb/s dla każdego węzła urządzenia. Wybierz kable, które są zgodne z interfejsem sieciowym [Mellanox MCX314A-BCCT](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html):
 
-    - W przypadku kabla 40 GB/s urządzenie musi mieć wartość QSFP +.
-    - W przypadku kabla 10 GB/s potrzebny jest kabel SFP +, który jest podłączany do 10 G przełącznika na jednym końcu, przy użyciu karty QSFP + do SFP + adapter (lub karty QSA) dla punktu końcowego, który jest podłączony do urządzenia.
+    - W przypadku kabla o przepustowości 40 Gb/s po stronie urządzenia musi być on zgodny ze standardem QSFP+.
+    - W przypadku kabla o przepustowości 10 Gb/s potrzebny jest kabel SFP+ zakończony z jednej strony wtyczką umożliwiającą podłączenie do przełącznika 10 G, a ze strony podłączanej do urządzenia zakończony adapterem QSFP+ do SFP+ (lub adapterem QSA).
     - Kable zasilające są dołączone do urządzenia.
 
-## <a name="order-data-box-heavy"></a>Data Box Heavy kolejności
+## <a name="order-data-box-heavy"></a>Zamawianie urządzenia Data Box Heavy
 
 Wykonaj poniższe czynności w witrynie Azure Portal, aby zamówić urządzenie.
 
 1. Użyj swoich poświadczeń platformy Microsoft Azure, aby zalogować się pod następującym adresem URL: [https://portal.azure.com](https://portal.azure.com).
-2. Wybierz pozycję **+ Utwórz zasób** i Wyszukaj *Azure Data Box*. Wybierz **Azure Data Box**.
+2. Wybierz pozycję **+ Utwórz zasób** i wyszukaj wartość *Azure Data Box*. Wybierz pozycję **Azure Data Box**.
     
    [![Wyszukiwanie pozycji Azure Data Box 1](media/data-box-deploy-ordered/search-azure-data-box1.png)](media/data-box-deploy-ordered/search-azure-data-box1.png#lightbox)
 
 3. Wybierz pozycję **Utwórz**.
 
-4. Sprawdź, czy usługa urządzenie Data Box jest dostępna w Twoim regionie. Wprowadź lub wybierz poniższe informacje i wybierz pozycję **Zastosuj**.
+4. Sprawdź, czy usługa Data Box jest dostępna w Twoim regionie. Wprowadź lub wybierz poniższe informacje, a następnie wybierz pozycję **Zastosuj**.
 
-    |Ustawienie  |Value  |
+    |Ustawienie  |Wartość  |
     |---------|---------|
-    |Subscription     | Wybierz subskrypcję EA, CSP lub dostęp sponsorowany Azure dla usługi Data Box. <br> Subskrypcja jest połączona z kontem rozliczeniowym.       |
+    |Subskrypcja     | Wybierz subskrypcję EA, CSP lub dostęp sponsorowany Azure dla usługi Data Box. <br> Subskrypcja jest połączona z kontem rozliczeniowym.       |
     |Typ transferu     | Wybierz pozycję **Importuj na platformę Azure**.        |
-    |Kraj źródłowy     | Wybierz kraj/region, w którym znajdują się obecnie dane.         |
+    |Kraj źródłowy     | Wybierz kraj/region, w którym aktualnie znajdują się dane.         |
     |Docelowy region platformy Azure     | Wybierz region platformy Azure, do którego chcesz przenieść dane.        |
 
-    [![Wybierz dostępność rodziny urządzenie Data Box](media/data-box-deploy-ordered/select-data-box-option1.png)](media/data-box-deploy-ordered/select-data-box-option1.png#lightbox)
+    [![Wybieranie dostępności rodziny produktów Data Box](media/data-box-deploy-ordered/select-data-box-option1.png)](media/data-box-deploy-ordered/select-data-box-option1.png#lightbox)
 
-5. Wybierz **Data Box Heavy**. Maksymalna użyteczna pojemność dla pojedynczej kolejności wynosi 770 TB.
+5. Wybierz pozycję **Data Box Heavy**. Maksymalna użyteczna pojemność dla pojedynczego zamówienia to 770 TB.
 
-    [![Wybierz Data Box Heavy](media/data-box-heavy-deploy-ordered/select-data-box-heavy.png)
+    [![Wybieranie urządzenia Data Box Heavy](media/data-box-heavy-deploy-ordered/select-data-box-heavy.png)
 
-6. W obszarze **Zamówienie** określ **szczegóły zamówienia**. Wprowadź lub wybierz poniższe informacje, a następnie wybierz pozycję **dalej**.
+6. W obszarze **Zamówienie** określ **szczegóły zamówienia**. Wprowadź lub wybierz poniższe informacje, a następnie wybierz przycisk **Dalej**.
     
     |Ustawienie  |Wartość  |
     |---------|---------|
-    |Name     | Podaj przyjazną nazwę, aby śledzić zamówienie. <br> Nazwa może zawierać od 3 do 24 znaków, które mogą być literami, cyframi i łącznikami. <br> Nazwa musi zaczynać i kończyć się literą lub cyfrą.      |
-    |Resource group     | Użyj istniejącej grupy lub utwórz nową. <br> Grupa zasobów to kontener logiczny zasobów, które mogą być zarządzane lub wdrażane razem.         |
+    |Name (Nazwa)     | Podaj przyjazną nazwę, aby śledzić zamówienie. <br> Nazwa może zawierać od 3 do 24 znaków, które mogą być literami, cyframi i łącznikami. <br> Nazwa musi zaczynać i kończyć się literą lub cyfrą.      |
+    |Grupa zasobów     | Użyj istniejącej grupy lub utwórz nową. <br> Grupa zasobów to kontener logiczny zasobów, które mogą być zarządzane lub wdrażane razem.         |
     |Docelowy region platformy Azure     | Wybierz region swojego konta magazynu. <br> Aby uzyskać więcej informacji, przejdź do sekcji [Dostępność regionalna](https://azure.microsoft.com/global-infrastructure/services/?products=databox).        |
-    |Magazyn docelowy     | Wybierz opcję z konta magazynu lub dysków zarządzanych lub obu. <br> W oparciu o wybrany region platformy Azure wybierz z listy filtrowanej istniejących kont magazynu co najmniej jedno z nich. <br>Data Box Heavy można łączyć z maksymalnie 10 kontami magazynu. <br> Możesz również utworzyć nowe konto **ogólnego przeznaczenia w wersji 1**, w **wersji 2**lub na potrzeby **magazynu obiektów BLOB**. <br> Azure Data Lake Storage konta generacji 2 nie są obsługiwane. Zobacz [konta magazynu obsługiwane z urządzeniem](data-box-heavy-system-requirements.md#supported-storage-accounts). <br>Konta magazynu z sieciami wirtualnymi są obsługiwane. Aby umożliwić usłudze urządzenie Data Box współpracują z bezpiecznymi kontami magazynu, należy włączyć usługi zaufane w ustawieniach zapory sieciowej dla konta magazynu. Aby uzyskać więcej informacji, zobacz jak [dodać usługę Azure Data Box jako zaufaną usługę](../storage/common/storage-network-security.md#exceptions).|
+    |Miejsce docelowe magazynu     | Wybierz konto magazynu, dyski zarządzane lub obie te opcje. <br> W oparciu o wybrany region platformy Azure wybierz z listy filtrowanej istniejących kont magazynu co najmniej jedno z nich. <br>Urządzenie Data Box Heavy można połączyć z maksymalnie 10 kontami magazynu. <br> Można również utworzyć nowe **konto ogólnego przeznaczenia w wersji 1**, **konto ogólnego przeznaczenia w wersji 2** lub **konto usługi Blob Storage**. <br> Konta usługi Azure Data Lake Storage Gen 2 nie są obsługiwane. Przejrzyj [konta magazynu obsługiwane z urządzeniem](data-box-heavy-system-requirements.md#supported-storage-accounts). <br>Konta magazynu z sieciami wirtualnymi są obsługiwane. Aby umożliwić usłudze Data Box współpracę z zabezpieczonymi kontami magazynu, włącz usługi zaufane w ustawieniach zapory sieciowej dla konta magazynu. Aby uzyskać więcej informacji, zobacz, jak [dodać usługę Azure Data Box jako usługę zaufaną](../storage/common/storage-network-security.md#exceptions).|
 
-    W przypadku używania konta magazynu jako miejsca docelowego magazynu zostanie wyświetlony następujący zrzut ekranu:
+    Jeśli korzystasz z konta magazynu jako miejsca docelowego magazynu, zobaczysz następujący ekran:
 
-    ![Zamówienie Data Box Heavy dla konta magazynu](media/data-box-heavy-deploy-ordered/order-storage-account.png)
+    ![Zamówienie urządzenia Data Box Heavy dla konta magazynu](media/data-box-heavy-deploy-ordered/order-storage-account.png)
 
-    Jeśli oprócz konta magazynu jako miejsca docelowego magazynu używa się również Data Box Heavy do tworzenia dysków zarządzanych na podstawie lokalnych dysków VHD, należy podać następujące informacje:
+    Jeśli oprócz używania konta magazynu jako miejsca docelowego magazynu korzystasz również z urządzenia Data Box Heavy do utworzenia dysków zarządzanych na podstawie lokalnych dysków VHD, musisz podać następujące informacje:
 
-    |Ustawienie  |Value  |
+    |Ustawienie  |Wartość  |
     |---------|---------|
-    |Grupy zasobów     | Utwórz nowe grupy zasobów, jeśli zamierzasz tworzyć dyski zarządzane na podstawie lokalnych dysków VHD. Istniejącej grupy zasobów można użyć tylko wtedy, gdy grupa zasobów została utworzona wcześniej podczas tworzenia kolejności Data Box Heavy dla dysku zarządzanego przez usługę urządzenie Data Box. <br> Określ wiele grup zasobów rozdzielonych średnikami. Obsługiwane są maksymalnie 10 grup zasobów.|
+    |Grupy zasobów     | Utwórz nowe grupy zasobów, jeśli zamierzasz tworzyć dyski zarządzane na podstawie lokalnych dysków VHD. Istniejącej grupy zasobów można użyć tylko wtedy, gdy ta grupa zasobów została utworzona wcześniej podczas tworzenia zamówienia urządzenia Data Box Heavy na potrzeby dysku zarządzanego za pośrednictwem usługi Data Box. <br> Nazwy poszczególnych grup zasobów rozdziel średnikami. Obsługiwanych jest maksymalnie 10 grup zasobów.|
 
-    ![Kolejność Data Box Heavy dla dysku zarządzanego](media/data-box-heavy-deploy-ordered/order-managed-disks.png)
+    ![Zamówienie urządzenia Data Box Heavy dla dysku zarządzanego](media/data-box-heavy-deploy-ordered/order-managed-disks.png)
 
-    Konto magazynu określone dla usługi Managed disks jest używane jako tymczasowe konto magazynu. Usługa urządzenie Data Box przekazuje wirtualne dyski twarde jako stronicowe obiekty blob do konta magazynu tymczasowego przed przekonwertowaniem go na dyski zarządzane i przenieść je do grup zasobów. Aby uzyskać więcej informacji, zobacz [Sprawdzanie przekazywania danych na platformę Azure](data-box-deploy-picked-up.md#verify-data-upload-to-azure).
+    Konto magazynu określone dla dysków zarządzanych jest używane jako przejściowe konto magazynu. Usługa Data Box przekazuje wirtualne dyski twarde jako stronicowe obiekty blob do przejściowego konta magazynu przed przekonwertowaniem ich na dyski zarządzane i przeniesieniem do grup zasobów. Aby uzyskać więcej informacji, zobacz [Weryfikowanie przekazania danych na platformę Azure](data-box-deploy-picked-up.md#verify-data-upload-to-azure).
 
-7. W obszarze **Adres wysyłkowy** podaj swoje imię i nazwisko, nazwę oraz adres pocztowy firmy i prawidłowy numer telefonu. Wybierz pozycję **Weryfikuj adres**. 
+7. W obszarze **Adres wysyłkowy** podaj swoje imię i nazwisko, nazwę oraz adres pocztowy firmy i prawidłowy numer telefonu. Wybierz pozycję **Zweryfikuj adres**. 
 
     Usługa zweryfikuje adres wysyłkowy pod kątem dostępności usługi. Jeśli ta usługa jest dostępna dla podanego adresu wysyłkowego, otrzymasz odpowiednie powiadomienie. Wybierz opcję **Dalej**.
 
@@ -125,27 +125,27 @@ Wykonaj poniższe czynności w witrynie Azure Portal, aby zamówić urządzenie.
 
 9. Zapoznaj się z informacjami z sekcji **Podsumowanie** związanymi z zamówieniem, kontaktami, powiadomieniami i postanowieniami dotyczącymi prywatności. Zaznacz pole oznaczające wyrażenie zgody na postanowienia dotyczące prywatności.
 
-10. Wybierz pozycję **Zamówienie**. Utworzenie zamówienia trwa kilka minut.
+10. Wybierz pozycję **Zamów**. Utworzenie zamówienia trwa kilka minut.
 
 
 ## <a name="track-the-order"></a>Śledzenie zamówienia
 
-Po złożeniu zamówienia możesz śledzić jego stan w witrynie Azure Portal. Przejdź do kolejności Data Box Heavy, a następnie przejdź do pozycji **Przegląd** , aby wyświetlić stan. Zamówienie wyświetlone w portalu ma stan **Zamówione**.
+Po złożeniu zamówienia możesz śledzić jego stan w witrynie Azure Portal. Przejdź do zamówienia urządzenia Data Box Heavy, a następnie przejdź do obszaru **Przegląd**, aby sprawdzić stan. Zamówienie wyświetlone w portalu ma stan **Zamówione**.
 
 Jeśli urządzenie nie jest niedostępne, otrzymasz powiadomienie. Jeśli urządzenie jest dostępne, firma Microsoft zidentyfikuje urządzenie do wysłania i przygotuje wysyłkę. Podczas przygotowywania urządzenia są wykonywane następujące akcje:
 
 - Dla każdego konta magazynu skojarzonego z urządzeniem tworzone są udziały SMB.
 - Dla każdego udziału generowane są poświadczenia dostępu, takie jak nazwa użytkownika i hasło.
 - Generowane jest również hasło urządzenia, które pomaga odblokować urządzenie.
-- Data Box Heavy jest zablokowany, aby zapobiec nieautoryzowanemu dostępowi do urządzenia w dowolnym momencie.
+- Urządzenie Data Box Heavy jest blokowane w celu uniemożliwienia nieupoważnionego dostępu do urządzenia w dowolnym momencie.
 
 Po zakończeniu przygotowywania urządzenia w portalu zostanie wyświetlone zamówienie w stanie **Przetworzone**.
 
-![Kolejność Data Box Heavy przetworzona](media/data-box-overview/data-box-order-status-processed.png)
+![Przetworzone zamówienie urządzenia Data Box Heavy](media/data-box-overview/data-box-order-status-processed.png)
 
 Firma Microsoft następnie przygotowuje i wysyła urządzenie za pośrednictwem przewoźnika regionalnego. Po wysłaniu dysków otrzymasz numer służący do jego śledzenia. W portalu zamówienie zostanie wysłane ze stanem **Wysłane**.
 
-![Zamówienie Data Box Heavy wysłane](media/data-box-overview/data-box-order-status-dispatched.png)
+![Wysłane zamówienie urządzenia Data Box Heavy](media/data-box-overview/data-box-order-status-dispatched.png)
 
 ## <a name="cancel-the-order"></a>Anulowanie zamówienia
 
@@ -157,15 +157,15 @@ Aby usunąć anulowane zamówienie, w obszarze **Omówienie** kliknij pozycję *
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono informacje dotyczące Azure Data Box Heavy tematów, takich jak:
+W tym samouczku przedstawiono zagadnienia dotyczące urządzenia Azure Data Box Heavy, takie jak:
 
 > [!div class="checklist"]
 > * Wymagania wstępne
-> * Data Box Heavy kolejności
+> * Zamawianie urządzenia Data Box Heavy
 > * Śledzenie zamówienia
 > * Anulowanie zamówienia
 
-Przejdź do następnego samouczka, aby dowiedzieć się, jak skonfigurować Data Box Heavy.
+Przejdź do następnego samouczka, aby dowiedzieć się, jak skonfigurować urządzenie Data Box Heavy.
 
 > [!div class="nextstepaction"]
-> [Skonfiguruj Azure Data Box Heavy](./data-box-heavy-deploy-set-up.md)
+> [Konfigurowanie urządzenia Azure Data Box Heavy](./data-box-heavy-deploy-set-up.md)

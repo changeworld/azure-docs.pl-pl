@@ -1,5 +1,5 @@
 ---
-title: Samouczek dotyczący konfigurowania Azure Data Box | Microsoft Docs
+title: Samouczek dotyczący konfigurowania urządzenia Azure Data Box | Microsoft Docs
 description: Dowiedz się, jak podłączyć kable do urządzenia Azure Data Box i nawiązać z nim połączenie
 services: databox
 author: alkohli
@@ -10,10 +10,10 @@ ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: 528be96f95523089c78562814c292fb0f40849e1
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
-ms.translationtype: MT
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 09/05/2019
 ms.locfileid: "70240239"
 ---
 ::: zone target="docs"
@@ -24,7 +24,7 @@ ms.locfileid: "70240239"
 
 ::: zone target="chromeless"
 
-# <a name="cable-and-connect-to-your-device"></a>Kabel i połączenie z urządzeniem
+# <a name="cable-and-connect-to-your-device"></a>Podłączanie kabli do urządzenia i nawiązywanie z nim połączenia
 
 ::: zone-end
 
@@ -53,7 +53,7 @@ Przed rozpoczęciem upewnij się, że:
     - Połączenie z siecią o dużej szybkości. Zdecydowanie zaleca się posiadanie co najmniej jednego połączenia 10 GbE. Jeśli połączenie 10 GbE nie jest dostępne, można użyć połączenia danych 1 GbE, ale będzie miało to wpływ na szybkość kopiowania. 
 6. Należy mieć dostęp do płaskiej powierzchni, na której można umieścić urządzenie Data Box. Jeśli chcesz umieścić urządzenie na standardowej półce na stojaku, na stojaku centrum danych potrzebne jest gniazdo 7U. Urządzenie możesz umieścić na stojaku płasko lub pionowo.
 7. Należy zapewnić następujące kable w celu podłączenia urządzenia Data Box do komputera hosta.
-    - Co najmniej jeden kabel miedziany SFP+ Twinax 10 GbE lub kable światłowodowe SFP+ (do użytku z interfejsami sieciowymi DATA 1 i DATA 2). Urządzenie Data Box jest wyposażone w karty Mellanox ConnectX®-3 Pro EN Dual-Port 10GBASE-T z interfejsem sieciowym PCI Express 3.0, więc kable, które są zgodne z tym interfejsem, powinny działać. Na przykład kabel CISCO SFP-H10GB-CU3M 10GBASE-CU TWINMAX SFP + 3M został użyty do testowania wewnętrznego. Aby uzyskać więcej informacji, zobacz [listę obsługiwanych kabli i przełączników z Mellanox](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf).
+    - Co najmniej jeden kabel miedziany SFP+ Twinax 10 GbE lub kable światłowodowe SFP+ (do użytku z interfejsami sieciowymi DATA 1 i DATA 2). Urządzenie Data Box jest wyposażone w karty Mellanox ConnectX®-3 Pro EN Dual-Port 10GBASE-T z interfejsem sieciowym PCI Express 3.0, więc kable, które są zgodne z tym interfejsem, powinny działać. Na przykład do testowania użyto kabla CISCO SFP-H10GB-CU3M 10GBASE-CU TWINMAX SFP +3M. Aby uzyskać więcej informacji, zobacz [listę obsługiwanych kabli i przełączników firmy Mellanox](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf).
     - Jeden kabel sieciowy RJ-45 CAT 6 (do użytku z interfejsem sieciowym MGMT)
     - Jeden kabel sieciowy RJ-45 CAT 6A lub RJ-45 CAT 6 (do użytku z interfejsem sieciowym DATA 3 skonfigurowanym odpowiednio dla przepływności 10 GB/s lub 1 GB/s)
 
@@ -81,7 +81,7 @@ Wykonaj poniższe kroki, aby podłączyć kable do urządzenia.
 
 ::: zone target="chromeless"
 
-Po odebraniu urządzenia należy podłączyć urządzenie do sieci i połączyć się z nim. 
+Po odebraniu urządzenia należy podłączyć do niego kable i połączyć się z nim. 
 
 ## <a name="cable-your-device"></a>Podłączanie kabli do urządzenia
 
@@ -141,7 +141,7 @@ Po zakończeniu konfiguracji urządzenia możesz połączyć się z udziałami n
 
 ::: zone target="chromeless"
 
-## <a name="connect-your-device"></a>Połącz urządzenie
+## <a name="connect-your-device"></a>Nawiązywanie połączenia z urządzeniem
 
 1. Aby uzyskać hasło urządzenia, przejdź do pozycji **Ogólne > Szczegóły urządzenia** w witrynie [Azure Portal](https://portal.azure.com).
 2. Przypisz statyczny adres IP 192.168.100.5 i podsieć 255.255.255.0 do karty Ethernet na komputerze używanym do nawiązania połączenia z urządzeniem Data Box. Uzyskaj dostęp do lokalnego internetowego interfejsu użytkownika urządzenia pod adresem `https://192.168.100.10`. Nawiązywanie połączenia może potrwać do 5 minut po włączeniu urządzenia. 

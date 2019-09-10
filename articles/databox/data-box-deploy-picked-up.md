@@ -1,5 +1,5 @@
 ---
-title: Samouczek do dostarczania Azure Data Box z powrotem | Microsoft Docs
+title: Samouczek dotyczący odsyłania z powrotem urządzenia Azure Data Box | Microsoft Docs
 description: Dowiedz się, jak wysłać urządzenie Azure Data Box Disk do firmy Microsoft
 services: databox
 author: alkohli
@@ -10,10 +10,10 @@ ms.date: 8/27/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: 5b78dc8b815802502cda5baf2bf5e9646922d671
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
-ms.translationtype: MT
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 09/05/2019
 ms.locfileid: "70241429"
 ---
 ::: zone target="docs"
@@ -24,7 +24,7 @@ ms.locfileid: "70241429"
 
 ::: zone target="chromeless"
 
-# <a name="return-data-box-and-verify-data-upload-to-azure"></a>Zwróć urządzenie Data Box i Zweryfikuj przekazywanie danych na platformę Azure
+# <a name="return-data-box-and-verify-data-upload-to-azure"></a>wysyłka zwrotna urządzenia Data Box i weryfikowanie przekazania danych na platformę Azure
 
 ::: zone-end
 
@@ -36,7 +36,7 @@ Ten samouczek zawiera informacje na następujące tematy:
 
 > [!div class="checklist"]
 > * Wymagania wstępne
-> * Przygotowywanie do wysłania
+> * Przygotowanie do wysłania
 > * Wysyłanie urządzenia Data Box do firmy Microsoft
 > * Weryfikowanie przekazania danych na platformę Azure
 > * Wymazywanie danych z urządzenia Data Box
@@ -48,7 +48,7 @@ Przed rozpoczęciem upewnij się, że spełniono następujące warunki:
 - Ukończenie tematu [Samouczek: kopiowanie danych na urządzenie Azure Data Box i ich weryfikacja](data-box-deploy-copy-data.md). 
 - Zadania kopiowania zostały wykonane. Przygotowanie do wysłania nie będzie działać, jeśli zadania kopiowania są w toku.
 
-## <a name="prepare-to-ship"></a>Przygotowywanie do wysłania
+## <a name="prepare-to-ship"></a>Przygotowanie do wysłania
 
 [!INCLUDE [data-box-prepare-to-ship](../../includes/data-box-prepare-to-ship.md)]
 
@@ -56,16 +56,16 @@ Przed rozpoczęciem upewnij się, że spełniono następujące warunki:
 
 ::: zone target="chromeless"
 
-Po zakończeniu kopiowania danych należy przygotować i dostarczyć urządzenie. Gdy urządzenie osiągnie platformę Azure centrum danych, dane są automatycznie przekazywane do platformy Azure.
+Po zakończeniu kopiowania danych należy przygotować i dostarczyć urządzenie. Gdy urządzenie dotrze do centrum danych platformy Azure, dane zostaną automatycznie przekazane na platformę Azure.
 
-## <a name="prepare-to-ship"></a>Przygotowywanie do wysłania
+## <a name="prepare-to-ship"></a>Przygotowanie do wysłania
 
 Przed przygotowaniem do wysłania upewnij się, że zadania kopiowania zostały ukończone.
 
 1. Przejdź do strony **Prepare to ship** (Przygotowanie do wysłania) w lokalnym internetowym interfejsie użytkownika i rozpocznij przygotowanie do wysłania. 
 2. Wyłącz urządzenie za pomocą lokalnego internetowego interfejsu użytkownika. Odłącz przewody od urządzenia. 
 
-Następne kroki są określane przez miejsce zwrócenia urządzenia.
+Następne czynności są zależne od lokalizacji, z której zwracasz urządzenie.
 
 ::: zone-end
 
@@ -73,37 +73,37 @@ Następne kroki są określane przez miejsce zwrócenia urządzenia.
 
 ## <a name="ship-data-box-back"></a>Wysyłka zwrotna urządzenia Data Box
 
-Upewnij się, że kopiowanie danych na urządzenie zostało ukończone, a **przygotowanie do wysłania** uruchomienie zakończyło się pomyślnie. W zależności od regionu, w którym jest wysyłany urządzenie, procedura jest inna.
+Upewnij się, że kopiowanie danych na urządzenie zostało ukończone, a **przygotowanie do wysłania** zakończyło się pomyślnie. W zależności od regionu, w którym jest wysyłane urządzenie, procedura jest inna.
 
 ::: zone-end
 
 ## <a name="ship-in-us-canada-europe"></a>Wysyłka w Stanach Zjednoczonych, Kanadzie, Europie
 
-W przypadku powrotu urządzenia do Stanów Zjednoczonych, Kanady lub Europa należy wykonać następujące czynności.
+W przypadku zwrotu urządzenia w Stanach Zjednoczonych, Kanadzie lub Europie wykonaj następujące czynności.
 
-1. Upewnij się, że urządzenie jest wyłączone, a kable są usuwane. 
+1. Upewnij się, że wyłączono zasilanie urządzenia, a kable zostały odłączone. 
 2. Zwiń przewód zasilający dostarczony wraz z urządzeniem i umieść go bezpiecznie z tyłu urządzenia.
-3. Upewnij się, że na wyświetlaczu E-ink jest widoczna etykieta wysyłkowa, i umów się na odbiór przesyłki z przewoźnikiem. Jeśli etykieta jest uszkodzona, nie ma jej lub nie jest widoczna na wyświetlaczu E-ink, skontaktuj się z pomocą techniczną firmy Microsoft. Jeśli zasugerujesz pomoc techniczną, możesz przejść do **omówienia > Pobierz etykietę wysyłkową** w Azure Portal. Pobierz etykietę wysyłkową i dołącz ją do urządzenia. 
-4. Jeśli zwracasz urządzenie, zamów odbiór paczki przez firmę UPS. Aby zaplanować odbiór:
+3. Upewnij się, że na wyświetlaczu E-ink jest widoczna etykieta wysyłkowa, i umów się na odbiór przesyłki z przewoźnikiem. Jeśli etykieta jest uszkodzona, nie ma jej lub nie jest widoczna na wyświetlaczu E-ink, skontaktuj się z pomocą techniczną firmy Microsoft. Jeśli otrzymasz takie instrukcje od pomocy technicznej, możesz przejść na stronę **Przegląd > Pobierz etykietę wysyłkową** w witrynie Azure Portal. Pobierz etykietę wysyłkową i dołącz ją do urządzenia. 
+4. Jeśli zwracasz urządzenie, zamów odbiór paczki przez firmę UPS. Aby zaplanować odbiór, wykonaj następujące czynności:
 
-    - Wywoływanie lokalnego zasilacza UPS (bezpłatny numer kierunkowy kraju/regionu).
-    - W wywołaniu Wywołaj numer śledzenia odwrotnego, jak pokazano na ekranie poczty E-mail lub w wydrukowanej etykiecie.
-    - Jeśli numer śledzenia nie jest ujęty w cudzysłów, UPS będzie wymagał dodatkowej opłaty za pobranie.
+    - Zadzwoń do lokalnego oddziału firmy UPS (numer bezpłatny dla danego kraju/regionu).
+    - Podczas rozmowy podaj numer śledzenia przesyłki zwrotnej widoczny na wyświetlaczu E-ink lub na wydrukowanej etykiecie.
+    - Jeśli nie podasz numeru śledzenia, firma UPS będzie wymagała uiszczenia dodatkowej opłaty podczas odbioru.
 
-    Zamiast planowania pobrania, można również wycofać urządzenie Data Box w najbliższej lokalizacji docelowej.
+    Zamiast planowania odbioru możesz także dostarczyć urządzenie Data Box do najbliższego punktu UPS.
 4. Po odebraniu urządzenia Data Box i zeskanowaniu go przez kuriera stan zamówienia w portalu zostanie zmieniony na **Pobrane**. Będzie też wyświetlany identyfikator śledzenia przesyłki.
 
 
 ## <a name="ship-in-australia"></a>Wysyłka w Australii
 
-Centra danych platformy Azure w Australii mają dodatkowe powiadomienie o zabezpieczeniach. Wszystkie wychodzące wysyłki muszą mieć zaawansowane powiadomienie. Wykonaj następujące kroki, aby dostarczyć w Australii.
+W przypadku centrów danych w Australii obowiązuje dodatkowe zabezpieczenie. Zabezpieczenie to polega na powiadamianiu z wyprzedzeniem o wszystkich przesyłkach przychodzących. Wykonaj poniższe kroki w przypadku wysyłki w Australii.
 
 
-1. Zachowaj oryginalne pole używane do wysłania urządzenia na potrzeby wysyłki zwrotnej.
-2. Upewnij się, że kopiowanie danych na urządzenie zostało ukończone, a **przygotowanie do wysłania uruchomienie** zakończyło się pomyślnie.
-3. Wyłącz urządzenie i Usuń kable.
-4. Buforowanie i bezpieczne umieszczanie przewodu zasilającego, który został dostarczony z urządzeniem z tyłu urządzenia.
-5. Quantium rozwiązania e-mail do żądania pobrania. Zapoznaj się z numerem referencyjnym usługi określonym w Azure Portal. Użyj następującego szablonu wiadomości e-mail:- *Request for Reverse etykieta dostawy z kodem Tau*. Upewnij się, że w wiadomości e-mail zostały uwzględnione następujące szczegóły: 
+1. Zachowaj oryginalne pudełko użyte do wysłania urządzenia na potrzeby wysyłki zwrotnej.
+2. Upewnij się, że kopiowanie danych na urządzenie zostało ukończone, a **przygotowanie do wysłania** zakończyło się pomyślnie.
+3. Wyłącz urządzenie i odłącz kable.
+4. Zwiń przewód zasilający dostarczony wraz z urządzeniem i umieść go bezpiecznie z tyłu urządzenia.
+5. Wyślij wiadomość e-mail do firmy Quantium Solutions, aby zlecić odbiór. Odwołaj się do numeru referencyjnego usługi określonego w witrynie Azure Portal. Użyj następującego szablonu wiadomości e-mail:- *Request for reverse shipping label with TAU code* (Żądanie zwrotnej etykiety wysyłkowej zwrotnej z kodem TAU). Upewnij się, że w wiadomości e-mail zostały uwzględnione następujące szczegóły: 
 
     ```
     To: Azure@quantiumsolutions.com
@@ -115,27 +115,27 @@ Centra danych platformy Azure w Australii mają dodatkowe powiadomienie o zabezp
     - Contact number:
     - Requested pickup date: mm/dd
     ```
-6. Australia Quantium Solutions zwróci wiadomość e-mail z etykietą wysyłki zwrotnej.
-7. Wydrukuj etykietę zwracaną i zamocować ją w polu wysyłka.
-8. Przekazanie pakietu do kuriera.
+6. Firma Quantium Solutions Australia wyśle Ci wiadomość e-mail ze zwrotną etykietą wysyłkową.
+7. Wydrukuj etykietę zwrotną i przyklej ją na opakowaniu wysyłkowym.
+8. Przekaż paczkę kurierowi.
 
-Jeśli to konieczne, możesz wysłać wiadomość e-mail z obsługą rozwiązania Quantium na Azure@quantiumsolutions.com numer telefonu.
+W razie potrzeby możesz skontaktować się z pomocą techniczną firmy Quantium Solution, wysyłając wiadomość e-mail na adres Azure@quantiumsolutions.com lub telefonicznie.
 
-Zapytanie dotyczące zamówienia za pośrednictwem telefonu:
+Aby zgłosić zapytanie dotyczące zamówienia przez telefon:
 
-- Wyślij wiadomość e-mail do odbioru jako pierwsza.
-- Podaj nazwę zamówienia na telefonie.
+- Wyślij najpierw wiadomość e-mail dotyczącą odbioru.
+- Podaj nazwę zamówienia za pomocą telefonu.
 
 ## <a name="ship-in-japan"></a>Wysyłka w Japonii 
 
-1. Zachowaj oryginalne pole używane do wysłania urządzenia na potrzeby wysyłki zwrotnej.
-2. Wyłącz urządzenie i Usuń kable.
-3. Buforowanie i bezpieczne umieszczanie przewodu zasilającego, który został dostarczony z urządzeniem z tyłu urządzenia.
-4. Zapisz nazwę firmy i informacje o adresie na liście wysyłkowej jako informacje o nadawcy.
-5. Quantium rozwiązanie e-mail przy użyciu następującego szablonu wiadomości e-mail.
+1. Zachowaj oryginalne pudełko użyte do wysłania urządzenia na potrzeby wysyłki zwrotnej.
+2. Wyłącz urządzenie i odłącz kable.
+3. Zwiń przewód zasilający dostarczony wraz z urządzeniem i umieść go bezpiecznie z tyłu urządzenia.
+4. Na liście przewozowym wpisz nazwę i adres swojej firmy jako dane nadawcy.
+5. Wyślij wiadomość e-mail do firmy Quantium Solutions, korzystając z następującego szablonu.
 
-    - Jeśli nie dołączono lub nie ma żadnej adnotacji w języku Japonia post Chakubarai, należy pamiętać, że w tej wiadomości e-mail. Rozwiązania Quantium w Japonii zażądają opublikowania przesyłki w języku Japonia.
-    - Jeśli masz wiele zamówień, Wyślij wiadomość e-mail, aby zapewnić indywidualne odbiór.
+    - Jeśli list przewozowy firmy Japan Post Chakubarai nie został dołączony lub został utracony, poinformuj o tym w wiadomości e-mail. Firma Quantium Solutions Japan zleci firmie Japan Post dostarczenie listu przewozowego po odebraniu przesyłki.
+    - Jeśli masz wiele zamówień, wyślij stosowną wiadomość e-mail, aby zapewnić indywidualny odbiór.
 
     ```
     To: Customerservice.JP@quantiumsolutions.com
@@ -149,12 +149,12 @@ Zapytanie dotyczące zamówienia za pośrednictwem telefonu:
     d. 17：00-19：00 
     ```
 
-3. Otrzymuj potwierdzenie e-mail z rozwiązań Quantium po zapisaniu odbioru. Potwierdzenie wiadomości e-mail obejmuje również informacje dotyczące Chakubarai wysyłki.
+3. Po zarezerwowaniu odbioru otrzymasz od firmy Quantium Solutions wiadomość e-mail z potwierdzeniem. Wiadomość e-mail z potwierdzeniem zawiera również informacje o liście przewozowym Chakubarai.
 
-W razie konieczności można skontaktować się z pomocą techniczną rozwiązania Quantium (język japoński), wykonując następujące informacje: 
+W razie konieczności możesz skontaktować się z pomocą techniczną firmy Quantium Solutions (język japoński), korzystając z poniższych informacji: 
 
-- Adres e-mail:Customerservice.JP@quantiumsolutions.com 
-- Telefon: 03-5755-0150 
+- Adres e-mail: Customerservice.JP@quantiumsolutions.com 
+- Numer telefonu：03-5755-0150 
 
 ::: zone target="docs"
 
@@ -166,7 +166,7 @@ Po zakończeniu tej weryfikacji urządzenie Data Box zostanie podłączone do si
 
 Po zakończeniu kopiowania danych stan zamówienia zmieni się na **Zakończone**.
 
-Przed usunięciem z źródła upewnij się, że dane są przekazywane na platformę Azure. Twoje dane mogą znajdować się w:
+Sprawdź, czy dane zostały przekazane na platformę Azure, zanim usuniesz je ze źródła. Twoje dane mogą się znajdować w następujących lokalizacjach:
 
 - Twoje konta usługi Azure Storage. Po skopiowaniu danych na urządzenie Data Box są one zależnie od typu przekazywane do jednej z poniższych ścieżek w ramach konta usługi Azure Storage.
 
@@ -175,17 +175,17 @@ Przed usunięciem z źródła upewnij się, że dane są przekazywane na platfor
 
     Możesz też przejść do swojego konta usługi Azure Storage w witrynie Azure Portal i nawigować z poziomu tej witryny.
 
-- Grupy zasobów dysku zarządzanego. Podczas tworzenia dysków zarządzanych wirtualne dyski twarde są przekazywane jako stronicowe obiekty blob, a następnie konwertowane na dyski zarządzane. Dyski zarządzane są dołączone do grup zasobów określonych w momencie tworzenia zamówienia. 
+- Twoje grupy zasobów dysku zarządzanego. Podczas tworzenia dysków zarządzanych wirtualne dyski twarde są przekazywane jako stronicowe obiekty blob, a następnie konwertowane na dyski zarządzane. Dyski zarządzane są dołączone do grup zasobów określonych w momencie tworzenia zamówienia. 
 
-    - Jeśli kopiowanie do dysków zarządzanych na platformie Azure zakończyło się pomyślnie, możesz przejść do **szczegółów zamówienia** w Azure Portal i zanotować grupy zasobów określone dla dysków zarządzanych.
+    - Jeśli operacja kopiowania na dyski zarządzane na platformie Azure zakończyła się pomyślnie, możesz przejść do strony **Szczegóły zamówienia** w witrynie Azure Portal i zanotować grupy zasobów określone dla dysków zarządzanych.
 
-        ![Identyfikowanie grup zasobów dysku zarządzanego](media/data-box-deploy-copy-data-from-vhds/order-details-managed-disk-resource-groups.png)
+        ![Identyfikowanie grup zasobów dysków zarządzanych](media/data-box-deploy-copy-data-from-vhds/order-details-managed-disk-resource-groups.png)
 
-        Przejdź do zanotowanej grupy zasobów i Znajdź dyski zarządzane.
+        Przejdź do zanotowanej grupy zasobów i znajdź swoje dyski zarządzane.
 
         ![Dysk zarządzany dołączony do grup zasobów](media/data-box-deploy-copy-data-from-vhds/managed-disks-resource-group.png)
 
-    - W przypadku skopiowania pliku VHDX lub dynamicznego/różnicowego dysku VHD dysk VHDX/VHD zostanie przekazany do konta magazynu tymczasowego jako stronicowe obiekty blob, ale konwersja dysku VHD na dysk zarządzany kończy się niepowodzeniem. Przejdź do swojego **konta magazynu tymczasowego > obiektów BLOB** , a następnie wybierz odpowiedni kontener — SSD w warstwie Standardowa, HDD w warstwie Standardowa lub SSD w warstwie Premium. Wirtualne dyski twarde są przekazywane jako stronicowe obiekty blob na koncie magazynu przemieszczania.
+    - Jeśli skopiowano plik VHDX lub dynamiczny/różnicowy dysk VHD, pliki VHDX/VHD zostaną przekazane do konta magazynu przejściowego jako stronicowe obiekty blob, ale konwersja dysku VHD na dysk zarządzany zakończy się niepowodzeniem. Przejdź do pozycji **Konto magazynu > Obiekty blob** w magazynie przejściowym, a następnie wybierz odpowiedni kontener — SSD w warstwie Standardowa, HDD w warstwie Standardowa lub SSD w warstwie Premium. Wirtualne dyski twarde są przekazywane do przejściowego konta magazynu jako stronicowe obiekty blob.
 
 ::: zone-end
 
@@ -209,7 +209,7 @@ W tym samouczku przedstawiono zagadnienia dotyczące usługi Azure Data Box, tak
 
 > [!div class="checklist"]
 > * Wymagania wstępne
-> * Przygotowywanie do wysłania
+> * Przygotowanie do wysłania
 > * Wysyłanie urządzenia Data Box do firmy Microsoft
 > * Weryfikowanie przekazania danych na platformę Azure
 > * Wymazywanie danych z urządzenia Data Box

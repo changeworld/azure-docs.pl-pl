@@ -1,6 +1,6 @@
 ---
-title: Samouczek do kopiowania danych za pośrednictwem protokołu SMB na Azure Data Box Heavy | Microsoft Docs
-description: Dowiedz się, jak kopiować dane do Azure Data Box Heavy za pośrednictwem protokołu SMB
+title: Samouczek dotyczący kopiowania danych za pośrednictwem protokołu SMB na urządzenie Azure Data Box Heavy | Microsoft Docs
+description: Dowiedz się, jak skopiować dane na urządzenie Azure Data Box Heavy za pośrednictwem protokołu SMB
 services: databox
 author: alkohli
 ms.service: databox
@@ -10,21 +10,21 @@ ms.date: 08/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: 4267b8299e13f1705b218e65b268c45bd5a658e2
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
-ms.translationtype: MT
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 09/05/2019
 ms.locfileid: "70240314"
 ---
 ::: zone target = "docs"
 
-# <a name="tutorial-copy-data-to-azure-data-box-heavy-via-smb"></a>Samouczek: Kopiuj dane do Azure Data Box Heavy za pośrednictwem protokołu SMB
+# <a name="tutorial-copy-data-to-azure-data-box-heavy-via-smb"></a>Samouczek: Kopiowanie danych na urządzenie Azure Data Box Heavy za pośrednictwem protokołu SMB
 
 ::: zone-end
 
 ::: zone target = "chromeless"
 
-## <a name="copy-data-to-azure-data-box-heavy"></a>Kopiuj dane do Azure Data Box Heavy
+## <a name="copy-data-to-azure-data-box-heavy"></a>Kopiowanie danych na urządzenie Azure Data Box Heavy
 
 ::: zone-end
 
@@ -35,16 +35,16 @@ W tym samouczku opisano sposób nawiązywania połączenia i kopiowania danych z
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Połącz z Data Box Heavy
-> * Kopiuj dane do Data Box Heavy
+> * Nawiązywanie połączenia z urządzeniem Data Box Heavy
+> * Kopiowanie danych na urządzenie Data Box Heavy
 
 ::: zone-end
 
 ::: zone target = "chromeless"
 
-Dane z serwera źródłowego można kopiować do urządzenie Data Box za pośrednictwem protokołu SMB, systemu plików NFS, REST, usługi kopiowania danych lub do dysków zarządzanych.
+Dane z serwera źródłowego można kopiować na urządzenie Data Box za pośrednictwem protokołu SMB, sieciowego systemu plików, interfejsu REST, usługi kopiowania danych lub na dyski zarządzane.
 
-W każdym przypadku upewnij się, że nazwy udziału i folderu oraz rozmiar danych są zgodne z wskazówkami opisanymi w [limitach usługi Azure Storage i Data Box Heavy](data-box-heavy-limits.md).
+Niezależnie od wybranej metody należy się upewnić, że nazwy udziałów i folderów oraz rozmiar danych są zgodne z instrukcjami przedstawionymi w temacie [Ograniczenia usług Azure Storage i Data Box Heavy](data-box-heavy-limits.md).
 
 ::: zone-end
 
@@ -54,31 +54,31 @@ W każdym przypadku upewnij się, że nazwy udziału i folderu oraz rozmiar dany
 
 Przed rozpoczęciem upewnij się, że:
 
-1. Ukończono [Samouczek: Skonfiguruj Azure Data Box Heavy](data-box-deploy-set-up.md).
-2. Otrzymano Data Box Heavy i stan zamówienia w portalu jest **dostarczany**.
-3. Dysponujesz komputerem hosta zawierającym dane, które chcesz skopiować do Data Box Heavy. Na komputerze hosta wymagane jest:
+1. Ukończono [Samouczek: Konfigurowanie urządzenia Azure Data Box Heavy](data-box-deploy-set-up.md).
+2. Urządzenie Data Box Heavy zostało do Ciebie dostarczone, a stan zamówienia w portalu to **Dostarczono**.
+3. Masz komputer-host zawierający dane, które mają zostać skopiowane na urządzenie Data Box Heavy. Na komputerze hosta wymagane jest:
     - Korzystanie z [obsługiwanego systemu operacyjnego](data-box-system-requirements.md).
-    - Połączenie z siecią o dużej szybkości. W przypadku najszybszych szybkości kopiowania połączenia 2 40-GbE (jeden na węzeł) mogą być używane równolegle. Jeśli nie masz dostępnego połączenia 40-GbE, zalecamy korzystanie z co najmniej 2 10-GbE połączeń (jeden na węzeł).
+    - Połączenie z siecią o dużej szybkości. Aby uzyskać największe szybkości kopiowania, można użyć dwóch równoległych połączeń 40-GbE (po jednym na węzeł). Jeśli nie masz dostępnego połączenia 40-GbE, zalecamy skorzystanie z co najmniej dwóch połączeń 10-GbE (po jednym na węzeł).
    
 
-## <a name="connect-to-data-box-heavy-shares"></a>Połącz z udziałami Data Box Heavy
+## <a name="connect-to-data-box-heavy-shares"></a>Nawiązywanie połączenia z udziałami plików urządzenia Data Box Heavy
 
-Na podstawie wybranego konta magazynu Data Box Heavy tworzy do:
+W zależności od wybranego konta magazynu dla urządzenia Data Box Heavy są tworzone następujące elementy:
 - Maksymalnie trzy udziały dla każdego skojarzonego konta magazynu (GPv1 i GPv2).
 - Jeden udział w usłudze Premium Storage.
-- Jeden udział dla konta usługi BLOB Storage.
+- Jeden udział dla konta magazynu obiektów blob.
 
-Te udziały są tworzone na obu węzłach urządzenia.
+Te udziały są tworzone w obu węzłach urządzenia.
 
-W obszarze blokowy obiekt BLOB i udziały stronicowych obiektów blob:
+W przypadku udziałów blokowych i stronicowych obiektów blob:
 - Jednostki pierwszego poziomu są kontenerami.
 - Jednostki drugiego poziomu to obiekty blob.
 
-W obszarze udziały dla Azure Files:
-- Jednostki pierwszego poziomu są udostępniane.
-- Jednostki drugiego poziomu są plikami.
+W przypadku udziałów usługi Azure Files:
+- Jednostki pierwszego poziomu są udziałami.
+- Jednostki drugiego poziomu to pliki.
 
-W poniższej tabeli przedstawiono ścieżkę UNC do udziałów na Data Box Heavy i adres URL ścieżki usługi Azure Storage, w przypadku których dane są przekazywane. Ostateczny adres URL w usłudze Azure Storage można uzyskać ze ścieżki udziału UNC.
+W poniższej tabeli przedstawiono ścieżkę UNC do udziałów na urządzeniu Data Box Heavy i adres URL ścieżki w usłudze Azure Storage, na który przekazywane są dane. Ostateczny adres URL w usłudze Azure Storage można uzyskać ze ścieżki udziału UNC.
  
 |                   |                                                            |
 |-------------------|--------------------------------------------------------------------------------|
@@ -86,14 +86,14 @@ W poniższej tabeli przedstawiono ścieżkę UNC do udziałów na Data Box Heavy
 | Stronicowe obiekty blob platformy Azure  | <li>Ścieżka UNC do udziałów: `\\<DeviceIPAddres>\<StorageAccountName_PageBlob>\<ContainerName>\files\a.txt`</li><li>Adres URL w usłudze Azure Storage: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
 | Azure Files       |<li>Ścieżka UNC do udziałów: `\\<DeviceIPAddres>\<StorageAccountName_AzFile>\<ShareName>\files\a.txt`</li><li>Adres URL w usłudze Azure Storage: `https://<StorageAccountName>.file.core.windows.net/<ShareName>/files/a.txt`</li>        |      
 
-Kroki umożliwiające nawiązywanie połączenia przy użyciu klienta systemu Windows lub Linux są inne.
+Czynności wymagane do nawiązania połączenia za pomocą klienta systemu Windows i Linux są różne.
 
 > [!NOTE]
-> Wykonaj te same czynności, aby jednocześnie nawiązać połączenie z obydwoma węzłami.
+> Wykonaj te same czynności, aby jednocześnie nawiązać połączenie z obydwoma węzłami urządzenia.
 
 ### <a name="connect-on-a-windows-system"></a>Łączenie w systemie Windows
 
-W przypadku korzystania z komputera hosta z systemem Windows Server wykonaj następujące kroki, aby nawiązać połączenie z Data Box Heavy.
+Jeśli używasz komputera-hosta z systemem Windows Server, wykonaj następujące kroki, aby nawiązać połączenie z urządzeniem Data Box Heavy.
 
 1. Pierwszym krokiem jest uwierzytelnienie i uruchomienie sesji. Przejdź do pozycji **Połącz i skopiuj**. Kliknij przycisk **Pobierz poświadczenia**, aby pobrać poświadczenia dostępu do udziałów skojarzonych z kontem magazynu.
 
@@ -103,7 +103,7 @@ W przypadku korzystania z komputera hosta z systemem Windows Server wykonaj nast
     
     ![Pobieranie poświadczeń udziału 1](media/data-box-heavy-deploy-copy-data/get-share-credentials-2.png)
 
-3. Aby uzyskać dostęp do udziałów skojarzonych z kontem magazynu (*databoxe2etest* w poniższym przykładzie) z komputera hosta, Otwórz okno wiersza polecenia. W wierszu polecenia wpisz polecenie:
+3. Aby uzyskać dostęp do udziałów skojarzonych z kontem magazynu (*databoxe2etest* w poniższym przykładzie) z komputera-hosta, otwórz okno polecenia. W wierszu polecenia wpisz polecenie:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
@@ -130,7 +130,7 @@ W przypadku korzystania z komputera hosta z systemem Windows Server wykonaj nast
 
     **Zawsze należy utworzyć w udziale folder na pliki, które chcesz skopiować, a następnie skopiować pliki do tego folderu**. Folder utworzony w ramach udziałów blokowych obiektów blob i stronicowych obiektów blob reprezentuje kontener, do którego dane są przekazywane w postaci obiektów blob. Plików nie można kopiować bezpośrednio do folderu *głównego* na koncie magazynu.
     
-### <a name="connect-on-a-linux-system"></a>Nawiązywanie połączenia z systemem Linux
+### <a name="connect-on-a-linux-system"></a>Łączenie w systemie Linux
 
 W przypadku korzystania z klienta systemu Linux użyj następującego polecenia, aby zainstalować udział SMB.
 
@@ -138,13 +138,13 @@ W przypadku korzystania z klienta systemu Linux użyj następującego polecenia,
 sudo mount -t nfs -o vers=2.1 10.126.76.172:/databoxe2etest_BlockBlob /home/databoxubuntuhost/databox
 ```
 
-`vers` Parametr jest wersją protokołu SMB obsługiwaną przez hosta z systemem Linux. Podłącz odpowiednią wersję w powyższym poleceniu.
+Parametr `vers` to wersja protokołu SMB obsługiwana przez Twój host z systemem Linux. Podłącz odpowiednią wersję w poleceniu powyżej.
 
-Wersje protokołu SMB obsługiwane przez Data Box Heavy można znaleźć w temacie [obsługiwane systemy plików dla klientów z systemem Linux](data-box-heavy-system-requirements.md#supported-file-systems-for-linux-clients).
+W przypadku wersji protokołu SMB obsługiwanych przez urządzenia Data Box Heavy zobacz [Obsługiwane systemy plików dla klientów systemu Linux](data-box-heavy-system-requirements.md#supported-file-systems-for-linux-clients).
 
-## <a name="copy-data-to-data-box-heavy"></a>Kopiuj dane do Data Box Heavy
+## <a name="copy-data-to-data-box-heavy"></a>Kopiowanie danych na urządzenie Data Box Heavy
 
-Po nawiązaniu połączenia z udziałami Data Box Heavy następnym krokiem jest skopiowanie danych.
+Po nawiązaniu połączenia z udziałami urządzenia Data Box Heavy następnym krokiem jest skopiowanie danych.
 
 ### <a name="copy-considerations"></a>Zagadnienia dotyczące kopiowania
 
@@ -153,8 +153,8 @@ Przed rozpoczęciem kopiowania danych należy uwzględnić następujące kwestie
 - Upewnij się, że dane są kopiowane do udziałów odpowiadających właściwym formatom danych. To znaczy na przykład, że dane blokowych obiektów blob są kopiowane do udziału dla blokowych obiektów blob. Skopiuj wirtualne dyski twarde do stronicowego obiektu blob.
 
     Jeśli format danych nie pasuje do odpowiedniego typu udziału, na późniejszym etapie przekazywanie danych na platformę Azure zakończy się niepowodzeniem.
--  Podczas kopiowania danych upewnij się, że rozmiar danych jest zgodny z limitami rozmiaru opisanymi w [limitach usługi Azure Storage i Data Box Heavy](data-box-heavy-limits.md).
-- Jeśli dane, które są przekazywane przez Data Box Heavy, są przesyłane współbieżnie przez inne aplikacje poza Data Box Heavy, co może skutkować błędami zadań przekazywania i uszkodzeniem danych.
+-  Podczas kopiowania danych upewnij się, że rozmiar danych jest zgodny z ograniczeniami rozmiaru opisanymi w temacie [Limity usługi Azure Storage i urządzenia Data Box Heavy](data-box-heavy-limits.md).
+- Jeśli dane przekazywane przy użyciu urządzenia Data Box Heavy będą jednocześnie przekazywane przez inne aplikacje, poza urządzeniem Data Box Heavy, skutkiem może być niepowodzenie zadania przekazywania oraz uszkodzenie danych.
 - Zalecenia:
     - Nie używaj protokołów SMB i NFS w tym samym czasie.
     - Kopiuj te same dane do tego samego miejsca docelowego na platformie Azure.
@@ -186,10 +186,10 @@ Po nawiązaniu połączenia z udziałem SMB rozpocznij kopiowanie danych.
     |/z      | Kopiuje pliki w trybie ponownego uruchomienia. Użyj tego atrybutu w przypadku niestabilnego środowiska. Ta opcja powoduje zmniejszenie przepływności ze względu na dodatkowe rejestrowanie.      |
     | /zb    | Używa trybu ponownego uruchomienia. W przypadku odmowy dostępu ta opcja używa trybu tworzenia kopii zapasowej. Ta opcja powoduje zmniejszenie przepływności ze względu na tworzenie punktów kontrolnych.         |
     |/efsraw | Kopiuje wszystkie zaszyfrowane pliki w surowym trybie EFS. Używaj tej opcji tylko względem zaszyfrowanych plików.         |
-    |log +:\<plik_dziennika >| Dołącza dane wyjściowe do istniejącego pliku dziennika.|
+    |log+:\<LogFile>| Dołącza dane wyjściowe do istniejącego pliku dziennika.|
     
  
-    Poniższy przykład przedstawia dane wyjściowe polecenia Robocopy, aby skopiować pliki do Data Box Heavy.
+    Poniższy przykład przedstawia dane wyjściowe polecenia kopiowania plików na urządzenie Data Box Heavy za pomocą narzędzia Robocopy.
 
     ```   
     C:\Users>Robocopy C:\Git\azure-docs-pr\contributor-guide \\10.100.10.100\devicemanagertest1_AzFile\templates /MT:24
@@ -229,40 +229,40 @@ Po nawiązaniu połączenia z udziałem SMB rozpocznij kopiowanie danych.
     C:\Users>
     ```       
 
-2. Aby zoptymalizować wydajność, użyj poniższych parametrów polecenia robocopy podczas kopiowania danych. (Poniższe numery reprezentują scenariusze najlepszego przypadku).
+2. Aby zoptymalizować wydajność, użyj poniższych parametrów polecenia robocopy podczas kopiowania danych. Zamieszczone poniżej liczby reprezentują najlepsze scenariusze przypadku.
 
-    | Platforma    | Przeważnie małe pliki < 512 KB    | Większość średnich plików 512 KB-1 MB  | Przeważnie duże pliki > 1 MB                             |
+    | Platforma    | Przeważnie małe pliki < 512 KB    | Przeważnie średnie pliki od 512 KB do 1 MB  | Przeważnie duże pliki > 1 MB                             |
     |-------------|--------------------------------|----------------------------|----------------------------|
-    | Data Box Heavy | 6 sesji Robocopy <br> 24 wątki na sesję | 6 sesji Robocopy <br> 16 wątków na sesję | 6 sesji Robocopy <br> 16 wątków na sesję |
+    | Data Box Heavy | 6 sesji narzędzia Robocopy <br> 24 wątki na sesję | 6 sesji narzędzia Robocopy <br> 16 wątków na sesję | 6 sesji narzędzia Robocopy <br> 16 wątków na sesję |
 
 
     Aby uzyskać więcej informacji na temat polecenia Robocopy, przejdź do artykułu [Robocopy and a few examples](https://social.technet.microsoft.com/wiki/contents/articles/1073.robocopy-and-a-few-examples.aspx) (Polecenie Robocopy i kilka przykładów).
 
 3. Otwórz folder docelowy, aby wyświetlić i zweryfikować skopiowane pliki.
 
-    ![Wyświetl skopiowane pliki](media/data-box-heavy-deploy-copy-data/view-copied-files-1.png)
+    ![Wyświetlanie skopiowanych plików](media/data-box-heavy-deploy-copy-data/view-copied-files-1.png)
 
 
-4. W miarę kopiowania danych:
+4. Podczas kopiowania danych wykonywane są następujące operacje:
 
-    - Nazwy, rozmiary i format plików są weryfikowane w celu upewnienia się, że spełniają one limity dotyczące obiektów i magazynów platformy Azure, a także Konwencje nazewnictwa plików i kontenerów platformy Azure.
-    - Aby zapewnić integralność danych, suma kontrolna jest również obliczana jako wbudowana.
+    - Nazwy, rozmiary i format plików są weryfikowane w celu upewnienia się, że spełniają one limity dotyczące obiektów i magazynów platformy Azure, a także że są zgodne z konwencjami nazewnictwa plików i kontenerów platformy Azure.
+    - W celu zapewnienia integralności danych obliczana jest również suma kontrolna.
 
-    Jeśli podczas procesu kopiowania wystąpiły jakiekolwiek błędy, pobierz pliki z błędami, które pomogą w rozwiązywaniu problemów. Wybierz ikonę strzałki, aby pobrać pliki błędów.
+    Jeśli podczas procesu kopiowania wystąpiły jakiekolwiek błędy, pobierz pliki z błędami, które pomogą w rozwiązywaniu problemów. Wybierz ikonę strzałki, aby pobrać pliki z błędami.
 
-    ![Pobierz pliki błędów](media/data-box-heavy-deploy-copy-data/download-error-files.png)
+    ![Pobieranie plików z błędami](media/data-box-heavy-deploy-copy-data/download-error-files.png)
 
-    Aby uzyskać więcej informacji, zobacz [Wyświetlanie dzienników błędów podczas kopiowania danych do Data Box Heavy](data-box-logs.md#view-error-log-during-data-copy). Aby uzyskać szczegółową listę błędów podczas kopiowania danych, zobacz [Rozwiązywanie problemów z Data Box Heavy](data-box-troubleshoot.md).
+    Aby uzyskać więcej informacji, zobacz [Wyświetlanie dzienników błędów podczas kopiowania danych na urządzenie Data Box Heavy](data-box-logs.md#view-error-log-during-data-copy). Aby uzyskać szczegółową listę błędów występujących podczas kopiowania danych, zobacz [Rozwiązywanie problemów z urządzeniem Data Box Heavy](data-box-troubleshoot.md).
 
 5. Otwórz plik błędu w Notatniku. Następujący plik błędu wskazuje, że dane nie są prawidłowo wyrównane.
 
-    ![Otwórz plik błędu](media/data-box-heavy-deploy-copy-data/open-error-file.png)
+    ![Otwieranie pliku błędu](media/data-box-heavy-deploy-copy-data/open-error-file.png)
     
-    W przypadku stronicowego obiektu BLOB dane muszą być wyrównane do 512 bajtów. Po usunięciu tych danych błąd zostanie rozwiązany, jak pokazano na poniższym zrzucie ekranu.
+    W przypadku stronicowego obiektu blob dane muszą być wyrównane do 512 bajtów. Po usunięciu tych danych błąd nie będzie już wyświetlany, jak pokazano na poniższym zrzucie ekranu.
 
-    ![Błąd rozwiązany](media/data-box-heavy-deploy-copy-data/error-resolved.png)
+    ![Błąd usunięty](media/data-box-heavy-deploy-copy-data/error-resolved.png)
 
-6. Po zakończeniu kopiowania przejdź do strony Wyświetl stronę **pulpitu nawigacyjnego** . Sprawdź zajęte miejsce i wolne miejsce na urządzeniu.
+6. Po zakończeniu kopiowania przejdź do strony **Wyświetl pulpit nawigacyjny**. Sprawdź ilość używanego i wolnego miejsca na urządzeniu.
     
     ![Sprawdzanie wolnego i używanego miejsca na pulpicie nawigacyjnym](media/data-box-heavy-deploy-copy-data/verify-used-space-dashboard.png)
 
@@ -270,17 +270,17 @@ Powtórz powyższe kroki, aby skopiować dane do drugiego węzła urządzenia.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono informacje dotyczące Azure Data Box Heavy tematów, takich jak:
+W tym samouczku przedstawiono zagadnienia dotyczące urządzenia Azure Data Box Heavy, takie jak:
 
 > [!div class="checklist"]
-> * Połącz z Data Box Heavy
-> * Kopiuj dane do Data Box Heavy
+> * Nawiązywanie połączenia z urządzeniem Data Box Heavy
+> * Kopiowanie danych na urządzenie Data Box Heavy
 
 
-Przejdź do następnego samouczka, aby dowiedzieć się, jak dostarczyć Data Box Heavy z powrotem do firmy Microsoft.
+Przejdź do następnego samouczka, aby dowiedzieć się, jak odesłać urządzenie Data Box Heavy do firmy Microsoft.
 
 > [!div class="nextstepaction"]
-> [Wyślij Azure Data Box Heavy do firmy Microsoft](./data-box-heavy-deploy-picked-up.md)
+> [Wysyłka urządzenia Azure Data Box Heavy do firmy Microsoft](./data-box-heavy-deploy-picked-up.md)
 
 ::: zone-end
 
@@ -288,52 +288,52 @@ Przejdź do następnego samouczka, aby dowiedzieć się, jak dostarczyć Data Bo
 
 ### <a name="copy-data-via-smb"></a>Kopiowanie danych za pośrednictwem protokołu SMB
 
-1. Jeśli używasz hosta z systemem Windows, użyj następującego polecenia, aby nawiązać połączenie z udziałami SMB:
+1. Jeśli korzystasz z hosta z systemem Windows, użyj następującego polecenia w celu nawiązania połączenia z udziałami SMB:
 
     `\\<IP address of your device>\ShareName`
 
 2. Aby uzyskać poświadczenia dostępu do udziału, przejdź do strony **Connect & copy** (Połączenie i kopiowanie) w lokalnym internetowym interfejsie użytkownika urządzenia Data Box.
 
-3. Użyj narzędzia do kopiowania plików zgodnego z protokołem SMB, takiego jak Robocopy, aby skopiować dane do udziałów.
+3. Do kopiowania danych do udziałów użyj dowolnego narzędzia kopiowania plików zgodnego z protokołem SMB, na przykład narzędzia Robocopy.
 
-Aby uzyskać instrukcje krok po kroku, przejdź do [samouczka: Skopiuj dane do Azure Data Box za pośrednictwem protokołu SMB](data-box-heavy-deploy-copy-data.md).
+Aby uzyskać instrukcje krok po kroku, zobacz [Samouczek: Kopiowanie danych na urządzenie Azure Data Box za pośrednictwem protokołu SMB](data-box-heavy-deploy-copy-data.md).
 
 ### <a name="copy-data-via-nfs"></a>Kopiowanie danych za pośrednictwem sieciowego systemu plików
 
-1. W przypadku korzystania z hosta NFS Użyj następującego polecenia, aby zainstalować udziały NFS:
+1. W przypadku korzystania z hosta sieciowego systemu plików (NFS) użyj następującego polecenia, aby zainstalować udziały NFS:
 
     `sudo mount <Data Box device IP>:/<NFS share on Data Box device> <Path to the folder on local Linux computer>`
 
-2. Aby uzyskać poświadczenia dostępu do udziału, przejdź do **strony połącz & Kopiuj** w lokalnym interfejsie użytkownika sieci Web Data Box Heavy.
-3. Użyj `cp` polecenia `rsync` lub, aby skopiować dane. 
-4. Powtórz te kroki, aby nawiązać połączenie i skopiować dane do drugiego węzła Data Box Heavy.
+2. Aby uzyskać poświadczenia dostępu do udziału, przejdź do strony **Connect & copy** (Połączenie i kopiowanie) w lokalnym internetowym interfejsie użytkownika urządzenia Data Box Heavy.
+3. Użyj polecenia `cp` lub `rsync`, aby skopiować dane. 
+4. Powtórz te kroki, aby nawiązać połączenie z drugim węzłem urządzenia Data Box Heavy i skopiować z niego dane.
 
-Aby uzyskać instrukcje krok po kroku, przejdź do [samouczka: Skopiuj dane do Azure Data Box za pośrednictwem systemu plików NFS](data-box-heavy-deploy-copy-data-via-nfs.md).
+Aby uzyskać instrukcje krok po kroku, zobacz [Samouczek: Kopiowanie danych na urządzenie Azure Data Box przy użyciu systemu plików NFS](data-box-heavy-deploy-copy-data-via-nfs.md).
 
-### <a name="copy-data-via-rest"></a>Kopiuj dane za pomocą REST
+### <a name="copy-data-via-rest"></a>Kopiowanie danych za pośrednictwem interfejsu REST
 
-1. Aby skopiować dane przy użyciu urządzenie Data Box usługi BLOB Storage za pośrednictwem interfejsów API REST, można nawiązać połączenie za pośrednictwem *protokołu HTTP* lub *https*.
-2. Aby skopiować dane do urządzenie Data Box magazynu obiektów blob, można użyć programu AzCopy.
-3. Powtórz te kroki, aby nawiązać połączenie i skopiować dane do drugiego węzła Data Box Heavy.
+1. Aby skopiować dane przy użyciu magazynu obiektów blob usługi Data Box za pośrednictwem interfejsów API REST, możesz nawiązać połączenie za pośrednictwem protokołu *HTTP* lub *HTTPS*.
+2. Do kopiowania danych do magazynu obiektów blob usługi Data Box można użyć programu AzCopy.
+3. Powtórz te kroki, aby nawiązać połączenie z drugim węzłem urządzenia Data Box Heavy i skopiować z niego dane.
 
-Aby uzyskać instrukcje krok po kroku, przejdź do [samouczka: Skopiuj dane do Azure Data Box magazynu obiektów BLOB za pośrednictwem interfejsów API](data-box-heavy-deploy-copy-data-via-rest.md)Rest.
+Aby uzyskać instrukcje krok po kroku, zobacz [Samouczek: Kopiowanie danych do magazynu obiektów blob usługi Azure Data Box za pośrednictwem interfejsów API REST](data-box-heavy-deploy-copy-data-via-rest.md).
 
-### <a name="copy-data-via-data-copy-service"></a>Kopiowanie danych za pośrednictwem usługi kopiowania danych
+### <a name="copy-data-via-data-copy-service"></a>Kopiowanie danych za pomocą usługi kopiowania danych
 
-1. Aby skopiować dane przy użyciu usługi kopiowania danych, należy utworzyć zadanie. W lokalnym interfejsie użytkownika sieci Web Data Box Heavy przejdź do pozycji **zarządzaj > Kopiuj dane > Utwórz**.
-2. Wypełnij parametry i Utwórz zadanie.
-3. Powtórz te kroki, aby nawiązać połączenie i skopiować dane do drugiego węzła Data Box Heavy.
+1. Aby skopiować dane za pomocą usługi kopiowania danych, należy utworzyć zadanie. W lokalnym internetowym interfejsie użytkownika urządzenia Data Box Heavy przejdź do pozycji **Manage > Copy data > Create** (Zarządzanie > Kopiowanie danych > Utwórz).
+2. Podaj parametry i utwórz zadanie.
+3. Powtórz te kroki, aby nawiązać połączenie z drugim węzłem urządzenia Data Box Heavy i skopiować z niego dane.
 
-Aby uzyskać instrukcje krok po kroku, przejdź do [samouczka: Użyj usługi kopiowania danych do kopiowania danych do Azure Data Box Heavy](data-box-heavy-deploy-copy-data-via-copy-service.md).
+Aby uzyskać instrukcje krok po kroku, zobacz [Samouczek: Korzystanie z usługi kopiowania danych w celu skopiowania danych na urządzenie Azure Data Box Heavy](data-box-heavy-deploy-copy-data-via-copy-service.md).
 
-### <a name="copy-data-to-managed-disks"></a>Kopiuj dane do dysków zarządzanych
+### <a name="copy-data-to-managed-disks"></a>Kopiowanie danych na dyski zarządzane
 
-1. Podczas zamawiania urządzenia Data Box Heavy należy wybrać opcję dyski zarządzane jako miejsce docelowe magazynu.
-2. Możesz połączyć się z Data Box Heavy za pośrednictwem udziałów SMB lub NFS.
+1. Podczas zamawiania urządzenia Data Box Heavy należy wybrać dyski zarządzane jako miejsce docelowe magazynu.
+2. Z urządzeniem Data Box Heavy możesz nawiązać połączenie za pośrednictwem udziałów SMB lub NFS.
 3. Następnie można skopiować dane za pomocą narzędzi SMB lub NFS.
-4. Powtórz te kroki, aby nawiązać połączenie i skopiować dane do drugiego węzła Data Box Heavy.
+4. Powtórz te kroki, aby nawiązać połączenie z drugim węzłem urządzenia Data Box Heavy i skopiować z niego dane.
 
-Aby uzyskać instrukcje krok po kroku, przejdź do [samouczka: Użyj urządzenie Data Box, aby mocno zaimportować dane jako dyski zarządzane na](data-box-heavy-deploy-copy-data-from-vhds.md)platformie Azure.
+Aby uzyskać instrukcje krok po kroku, zobacz [Samouczek: Korzystanie z urządzenia Data Box Heavy do importowania danych jako dysków zarządzanych na platformie Azure](data-box-heavy-deploy-copy-data-from-vhds.md).
 
 ::: zone-end
 

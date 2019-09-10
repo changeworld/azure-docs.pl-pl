@@ -10,10 +10,10 @@ ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: 47b8fdbe48514665f40114c9820fdc5def38c778
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
-ms.translationtype: MT
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 09/05/2019
 ms.locfileid: "70241365"
 ---
 ::: zone target="docs"
@@ -24,7 +24,7 @@ ms.locfileid: "70241365"
 
 ::: zone target="chromeless"
 
-# <a name="get-started-with-azure-data-box"></a>Wprowadzenie do Azure Data Box 
+# <a name="get-started-with-azure-data-box"></a>Rozpoczynanie pracy z usługą Azure Data Box 
 
 ::: zone-end
 
@@ -38,7 +38,7 @@ Aby zyskać szczegółowe instrukcje dotyczące wdrażania i śledzenia krok po 
 
 ::: zone target="chromeless"
 
-W tym przewodniku opisano sposób wdrażania Azure Data Box przy użyciu Azure Portal. Kroki obejmują przeglądanie wymagań wstępnych, kabli i połączenia urządzenia oraz kopiowanie danych do urządzenia w celu przekazywania ich do platformy Azure.
+W tym przewodniku opisano sposób wdrażania usługi Azure Data Box przy użyciu witryny Azure Portal. Opisane czynności obejmują przeglądanie wymagań wstępnych, podłączanie kabli do urządzenia i nawiązywanie z nim połączenia oraz kopiowanie danych do urządzenia w celu przekazania ich do platformy Azure.
 
 ::: zone-end
 
@@ -72,16 +72,16 @@ Przed rozpoczęciem:
 
 Przed rozpoczęciem upewnij się, że:
 
-1. [Ukończono samouczek: zamawianie urządzenia Azure Data Box](data-box-deploy-ordered.md).
-2. Otrzymano urządzenie Data Box i zostanie **dostarczony**stan zamówienia w portalu. 
-3. Przegląd [wytycznych dotyczących bezpieczeństwa urządzenie Data Box](data-box-safety.md).
-4. Odebrano jeden uziemiony przewód zasilający używany z urządzeniem magazynującym 100 TB.
-5. Dostęp do komputera-hosta zawierającego dane, które mają zostać skopiowane do urządzenie Data Box. Na komputerze hosta wymagane jest:
+1. Ukończono [Samouczek: zamawianie urządzenia Azure Data Box](data-box-deploy-ordered.md).
+2. Urządzenie Data Box zostało do Ciebie dostarczone, a stan zamówienia w portalu to **Dostarczono**. 
+3. Zapoznano się z [wytycznymi bezpieczeństwa dotyczącymi urządzenia Data Box](data-box-safety.md).
+4. Odebrano jeden kabel zasilający z uziemieniem do korzystania z urządzenia magazynującego o pojemności 100 TB.
+5. Masz dostęp do komputera-hosta zawierającego dane, które mają zostać skopiowane do urządzenia Data Box. Na komputerze hosta wymagane jest:
     - Korzystanie z [obsługiwanego systemu operacyjnego](data-box-system-requirements.md).
     - Połączenie z siecią o dużej szybkości. Zdecydowanie zaleca się posiadanie co najmniej jednego połączenia 10 GbE. Jeśli połączenie 10 GbE nie jest dostępne, można użyć połączenia danych 1 GbE, ale będzie miało to wpływ na szybkość kopiowania. 
-6. Dostęp do płaskiej powierzchni w celu umieszczenia urządzenie Data Box. Aby urządzenie było płaskie lub pionowe w standardowym półce stojaka, potrzebne jest gniazdo 7U w stojaku.
-7. Pozyskasz następujące kable, aby połączyć urządzenie Data Box z komputerem hosta.
-    - Co najmniej jeden kabel miedziany SFP+ Twinax 10 GbE lub kable światłowodowe SFP+ (do użytku z interfejsami sieciowymi DATA 1 i DATA 2). Aby uzyskać więcej informacji, zobacz [listę obsługiwanych kabli i przełączników z karty Mellanox](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf) , które są zgodne z kartami mellanox ConnectX®-3 Pro pl Dual-port 10GBase-T z interfejsem sieciowym PCI Express 3,0.
+6. Dostęp do płaskiej powierzchni w celu umieszczenia urządzenia Data Box. Jeśli chcesz położyć lub postawić urządzenie na standardowej półce na stojaku, na stojaku potrzebne jest gniazdo 7U.
+7. Należy zapewnić następujące kable w celu podłączenia urządzenia Data Box do komputera hosta.
+    - Co najmniej jeden kabel miedziany SFP+ Twinax 10 GbE lub kable światłowodowe SFP+ (do użytku z interfejsami sieciowymi DATA 1 i DATA 2). Aby uzyskać więcej informacji, zobacz opracowaną przez firmę Mellanox [listę obsługiwanych kabli i przełączników](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf), które są zgodne z kartami Mellanox ConnectX®-3 Pro EN Dual-Port 10GBASE-T z interfejsem sieciowym PCI Express 3.0.
     - Jeden kabel sieciowy RJ-45 CAT 6 (do użytku z interfejsem sieciowym MGMT)
     - Jeden kabel sieciowy RJ-45 CAT 6A lub RJ-45 CAT 6 (do użytku z interfejsem sieciowym DATA 3 skonfigurowanym odpowiednio dla przepływności 10 GB/s lub 1 GB/s)
 
@@ -132,7 +132,7 @@ Po otrzymaniu urządzenia Data Box wykonaj następujące czynności w celu podł
     4. Włącz urządzenie. Przycisk zasilania znajduje się na panelu przednim urządzenia.
 
 
-## <a name="connect"></a>Połącz
+## <a name="connect"></a>Połączenie
 
 Ten krok zajmuje około 5–7 minut.
 
@@ -141,7 +141,7 @@ Ten krok zajmuje około 5–7 minut.
 3. Zaloguj się przy użyciu hasła uzyskanego z witryny Azure Portal. Zostanie wyświetlony komunikat o błędzie, informujący o problemie z certyfikatem zabezpieczeń witryny internetowej. Postępuj zgodnie z instrukcjami dotyczącymi używanej przeglądarki, aby przejść do odpowiedniej strony internetowej.
 4. Domyślne ustawienie sieci dla interfejsu 10 Gb/s (lub 1 Gb/s) to DHCP. Jeśli jest taka potrzeba, można skonfigurować interfejs jako statyczny i podać adres IP. 
 
-## <a name="copy-data"></a>Kopiuj dane
+## <a name="copy-data"></a>Kopiowanie danych
 
 Czas wymagany do ukończenia tej operacji zależy od rozmiaru danych i prędkości połączenia sieciowego.
  

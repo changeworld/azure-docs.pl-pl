@@ -1,5 +1,5 @@
 ---
-title: Samouczek do kopiowania danych do Azure Data Box Disk | Microsoft Docs
+title: Samouczek dotyczący kopiowania danych na urządzenie Azure Data Box Disk | Microsoft Docs
 description: Z tego samouczka dowiesz się, jak skopiować dane na urządzenie Azure Data Box Disk
 services: databox
 author: alkohli
@@ -11,10 +11,10 @@ ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
 ms.openlocfilehash: c309a7cb18086526b23c875b41d9d4f4db4bc213
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
-ms.translationtype: MT
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
+ms.lasthandoff: 09/05/2019
 ms.locfileid: "70231379"
 ---
 ::: zone target="docs"
@@ -25,9 +25,9 @@ ms.locfileid: "70231379"
 
 ::: zone target="chromeless"
 
-## <a name="copy-data-to-azure-data-box-disk-and-validate"></a>Skopiuj dane do Azure Data Box Disk i sprawdź poprawność
+## <a name="copy-data-to-azure-data-box-disk-and-validate"></a>Kopiowanie danych na urządzenie Azure Data Box Disk i ich weryfikacja
 
-Po nawiązaniu połączenia i odblokowaniu dysków można skopiować dane ze źródłowego serwera danych na dyski. Po zakończeniu kopiowania danych należy sprawdzić poprawność danych, aby upewnić się, że zostanie pomyślnie przekazana na platformę Azure.
+Po podłączeniu i odblokowaniu dysków można na nie skopiować dane ze źródłowego serwera danych. Po zakończeniu kopiowania danych należy je zweryfikować, aby mieć pewność, że zostaną one pomyślnie przekazane na platformę Azure.
 
 ::: zone-end
 
@@ -48,7 +48,7 @@ Przed rozpoczęciem upewnij się, że:
 - Twoje dyski są odblokowane i podłączone do komputera klienckiego.
 - Na komputerze klienckim używanym do kopiowania danych na dyski musi być uruchomiony [obsługiwany system operacyjny](data-box-disk-system-requirements.md##supported-operating-systems-for-clients).
 - Upewnij się, że typ magazynu wybrany na potrzeby danych jest jednym z [obsługiwanych typów magazynu](data-box-disk-system-requirements.md#supported-storage-types-for-upload).
-- Zapoznaj [się z limitami dysku zarządzanego w obszarze limity rozmiaru obiektów platformy Azure](data-box-disk-limits.md#azure-object-size-limits).
+- Przejrzyj rozdział [Limity dotyczące dysków zarządzanych w ramach limitów rozmiarów obiektów na platformie Azure](data-box-disk-limits.md#azure-object-size-limits).
 
 
 ## <a name="copy-data-to-disks"></a>Kopiowanie danych na dyski
@@ -60,41 +60,41 @@ Przed skopiowaniem danych na dyski należy zapoznać się z następującymi kwes
 - Jeśli dane przekazywane przy użyciu usługi Data Box Disk będą jednocześnie przekazywane przez inne aplikacje, poza usługą Data Box Disk, skutkiem może być niepowodzenie zadania przekazywania oraz uszkodzenie danych.
 
    > [!IMPORTANT]
-   >  W przypadku określenia dysków zarządzanych jako jednego z lokalizacji docelowych magazynu podczas tworzenia kolejności, ma zastosowanie następująca sekcja.
+   >  Jeśli podczas tworzenia zamówienia określono dyski zarządzane jako jedną z lokalizacji docelowych magazynu, mają zastosowanie informacje znajdujące się w następnej sekcji.
 
-- Można mieć tylko jeden dysk zarządzany o danej nazwie w grupie zasobów we wszystkich pretworzonych folderach i we wszystkich Data Box Disk. Oznacza to, że wirtualne dyski twarde przekazane do folderów pretworzonych powinny mieć unikatowe nazwy. Upewnij się, że dana nazwa nie jest zgodna z już istniejącym dyskiem zarządzanym w grupie zasobów. Jeśli wirtualne dyski twarde mają takie same nazwy, tylko jeden dysk VHD jest konwertowany na dysk zarządzany o tej nazwie. Pozostałe wirtualne dyski twarde są przekazywane jako stronicowe obiekty blob do konta magazynu przemieszczania.
-- Zawsze Kopiuj wirtualne dyski twarde do jednego z utworzonych folderów. W przypadku kopiowania dysków VHD poza tymi folderami lub w utworzonym folderze wirtualne dyski twarde są przekazywane do konta usługi Azure Storage jako stronicowe obiekty blob i dyski niezarządzane.
-- Do tworzenia dysków zarządzanych można przekazać tylko stałe wirtualne dyski twarde. Dynamiczne dyski VHD, różnicowe dyski VHD lub pliki VHDX nie są obsługiwane.
+- Można mieć tylko jeden dysk zarządzany o danej nazwie w grupie zasobów we wszystkich wstępnie utworzonych folderach i na wszystkich urządzeniach Data Box Disk. Oznacza to, że wirtualne dyski twarde przekazane do wstępnie utworzonych folderów powinny mieć unikatowe nazwy. Upewnij się, że dana nazwa nie jest zgodna z nazwą już istniejącego dysku zarządzanego w grupie zasobów. Jeśli wirtualne dyski twarde mają takie same nazwy, tylko jeden z nich zostanie przekonwertowany na dysk zarządzany o tej nazwie. Pozostałe wirtualne dyski twarde zostaną przekazane do przejściowego konta magazynu jako stronicowe obiekty blob.
+- Zawsze kopiuj wirtualne dyski twarde do jednego ze wstępnie utworzonych folderów. Jeśli skopiujesz dyski VHD do lokalizacji innej niż te foldery lub do folderu utworzonego przez siebie, wirtualne dyski twarde zostaną przekazane do konta usługi Azure Storage jako stronicowe obiekty blob i dyski niezarządzane.
+- Na potrzeby tworzenia dysków zarządzanych można przekazywać tylko stałe wirtualne dyski twarde. Dynamiczne dyski VHD, różnicowe dyski VHD i pliki VHDX nie są obsługiwane.
 
 
 Aby podłączyć urządzenia Data Box Disk do komputera i skopiować na nie dane, wykonaj poniższe czynności.
 
-1. Wyświetl zawartość odblokowanego dysku. Lista pretworzonych folderów i podfolderów w stacji jest różna w zależności od opcji wybranych podczas umieszczania kolejności Data Box Disk.
+1. Wyświetl zawartość odblokowanego dysku. Lista wstępnie utworzonych folderów i podfolderów na dysku jest różna w zależności od opcji wybranych podczas zamawiania urządzenia Data Box Disk.
 
-    |Wybrane miejsce docelowe magazynu  |Typ konta magazynu|Typ konta magazynu przemieszczania |Foldery i podfoldery  |
+    |Wybrane miejsce docelowe magazynu  |Typ konta magazynu|Typ przejściowego konta magazynu |Foldery i podfoldery  |
     |---------|---------|---------|------------------|
     |Konto magazynu     |GPv1 lub GPv2                 | Nie dotyczy | BlockBlob <br> PageBlob <br> AzureFile        |
-    |Konto magazynu     |Konto magazynu obiektów BLOB         | Nie dotyczy | BlockBlob        |
+    |Konto magazynu     |Konto magazynu obiektów blob         | Nie dotyczy | BlockBlob        |
     |Dyski zarządzane     |Nie dotyczy | GPv1 lub GPv2         | ManagedDisk<ul> <li>PremiumSSD</li><li>StandardSSD</li><li>StandardHDD</li></ul>        |
     |Konto magazynu <br> Dyski zarządzane     |GPv1 lub GPv2 | GPv1 lub GPv2         |BlockBlob <br> PageBlob <br> AzureFile <br> ManagedDisk<ul> <li> PremiumSSD </li><li>StandardSSD</li><li>StandardHDD</li></ul>         |
-    |Konto magazynu <br> Dyski zarządzane    |Konto magazynu obiektów BLOB | GPv1 lub GPv2         |BlockBlob <br> ManagedDisk<ul> <li>PremiumSSD</li><li>StandardSSD</li><li>StandardHDD</li></ul>         |
+    |Konto magazynu <br> Dyski zarządzane    |Konto magazynu obiektów blob | GPv1 lub GPv2         |BlockBlob <br> ManagedDisk<ul> <li>PremiumSSD</li><li>StandardSSD</li><li>StandardHDD</li></ul>         |
 
-    Poniżej przedstawiono przykład zrzutu ekranu zamówienia, w którym określono konto magazynu GPv2:
+    Poniżej przedstawiono przykładowy zrzut ekranu zamówienia, w którym określono konto magazynu GPv2:
 
     ![Zawartość stacji dysków](media/data-box-disk-deploy-copy-data/data-box-disk-content.png)
  
-2. Skopiuj dane, które muszą zostać zaimportowane jako blokowe obiekty blob w folderze do *BlockBlob* . Podobnie skopiuj dane, takie jak VHD/VHDX, do folderu *PageBlob* i danych w folderze do *AzureFile* .
+2. Skopiuj dane, które mają zostać zaimportowane jako blokowe obiekty blob, do folderu *BlockBlob*. Analogicznie skopiuj dane w formatach takich jak VHD/VHDX do folderu *PageBlob*, a dane do folderu *AzureFile*.
 
     Dla każdego podfolderu w folderach BlockBlob i PageBlob zostanie utworzony kontener na koncie usługi Azure Storage. Wszystkie pliki w folderach BlockBlob i PageBlob zostaną skopiowane do domyślnego kontenera `$root` na koncie usługi Azure Storage. Pliki w kontenerze `$root` są zawsze przekazywane jako blokowe obiekty blob.
 
-   Skopiuj pliki do folderu w folderze *AzureFile* . Podfolder w folderze *AzureFile* tworzy element przestawny. Pliki skopiowane bezpośrednio do folderu *AzureFile* nie powiodą się i są przekazywane jako blokowe obiekty blob.
+   Skopiuj pliki do folderu w folderze *AzureFile*. Na podstawie podfolderów w folderze *AzureFile* są tworzone udziały plików. Przekazanie plików skopiowanych bezpośrednio do folderu *AzureFile* zakończy się niepowodzeniem i zostaną one przekazane jako blokowe obiekty blob.
 
     Jeśli w katalogu głównym istnieją jakiekolwiek pliki lub foldery, należy przenieść je do innego folderu przed rozpoczęciem kopiowania danych.
 
     > [!IMPORTANT]
-    > Wszystkie kontenery, obiekty blob i nazwy plików powinny być zgodne z [konwencjami nazewnictwa platformy Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions). W przypadku niezgodności z tymi regułami przekazywanie danych na platformę Azure zakończy się niepowodzeniem.
+    > Wszystkie kontenery, obiekty blob i pliki powinny mieć nazwy zgodne z [konwencją nazewnictwa platformy Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions). W przypadku niezgodności z tymi regułami przekazywanie danych na platformę Azure zakończy się niepowodzeniem.
 
-3. Podczas kopiowania plików upewnij się, że pliki nie przekraczają ~ 4,7 TiB dla blokowych obiektów blob, ~ 8 TiB dla stronicowych obiektów blob i ~ 1 TiB dla Azure Files. 
+3. Upewnij się, że rozmiar żadnego z kopiowanych plików nie przekracza ~4,7 TiB w przypadku blokowych obiektów blob, ~8 TiB w przypadku stronicowych obiektów blob i ~1 TiB w przypadku plików usługi Azure Files. 
 4. Możesz skopiować dane, przeciągając je i upuszczając w Eksploratorze plików. Możesz też skopiować dane za pomocą dowolnego narzędzia kopiowania danych zgodnego z SMB, na przykład narzędzia Robocopy. Aby rozpocząć wiele zadań kopiowania, użyj następującego polecenia narzędzia Robocopy:
 
     `Robocopy <source> <destination>  * /MT:64 /E /R:1 /W:1 /NFL /NDL /FFT /Log:c:\RobocopyLog.txt` 
@@ -103,16 +103,16 @@ Aby podłączyć urządzenia Data Box Disk do komputera i skopiować na nie dane
     
     |Parametry/opcje  |Opis |
     |--------------------|------------|
-    |Source            | Określa ścieżkę do katalogu źródłowego.        |
-    |Miejsce docelowe       | Określa ścieżkę do katalogu docelowego.        |
+    |Element źródłowy            | Określa ścieżkę do katalogu źródłowego.        |
+    |Element docelowy       | Określa ścieżkę do katalogu docelowego.        |
     |/E                  | Kopiuje podkatalogi, włącznie z pustymi katalogami. |
     |/MT[:N]             | Tworzy kopie wielowątkowe zawierające N wątków, gdzie N to liczba całkowita od 1 do 128. <br>Domyślna wartość N to 8.        |
-    |® \<N >             | Określa liczbę ponownych prób w przypadku niepowodzenia kopiowania. Domyślna wartość N to 1 000 000 (milion ponownych prób).        |
-    |/W: \<N >             | Określa czas oczekiwania pomiędzy ponownymi próbami w sekundach. Domyślna wartość N to 30 (30 sekund oczekiwania).        |
+    |/R: \<N>             | Określa liczbę ponownych prób w przypadku niepowodzenia kopiowania. Domyślna wartość N to 1 000 000 (milion ponownych prób).        |
+    |/W: \<N>             | Określa czas oczekiwania pomiędzy ponownymi próbami w sekundach. Domyślna wartość N to 30 (30 sekund oczekiwania).        |
     |/NFL                | Określa, że nazwy plików nie mają być rejestrowane w dzienniku.        |
     |/NDL                | Określa, że nazwy katalogów nie mają być rejestrowane w dzienniku.        |
     |/FFT                | Zakłada czas plików w formacie FAT (dokładność do dwóch sekund).        |
-    |/Log:\<plik dziennika >     | Zapisuje dane wyjściowe stanu w pliku dziennika (zastępuje istniejący plik dziennika).         |
+    |/Log:\<plik dziennika>     | Zapisuje dane wyjściowe stanu w pliku dziennika (zastępuje istniejący plik dziennika).         |
 
     Można użyć równolegle wielu dysków, uruchamiając wiele zadań na każdym z nich.
 
@@ -203,7 +203,7 @@ Ta opcjonalna procedura może być używana w przypadku korzystania z wielu dysk
 
 >[!IMPORTANT]
 > Narzędzie do dzielenia skopiowanych dysków Data Box przeprowadza również walidację danych. Jeśli używasz narzędzia do dzielenia skopiowanych dysków Data Box do kopiowania danych, możesz pominąć [krok walidacji](#validate-data).
-> Narzędzie Split Copy nie jest obsługiwane w przypadku dysków zarządzanych.
+> Narzędzie Split Copy nie jest obsługiwane z dyskami zarządzanymi.
 
 1. Upewnij się, że narzędzie do dzielenia skopiowanych dysków Data Box zostało pobrane i wyodrębnione w folderze lokalnym na komputerze z systemem Windows. To narzędzie zostało pobrane podczas pobierania zestawu narzędzi Data Box Disk dla systemu Windows.
 2. Otwórz Eksploratora plików. Zanotuj literę dysku źródła danych i litery dysków przypisane do usługi Data Box Disk. 
@@ -238,7 +238,7 @@ Ta opcjonalna procedura może być używana w przypadku korzystania z wielu dysk
  
 7. Otwórz okno wiersza polecenia. 
 
-8. Uruchom plik `DataBoxDiskSplitCopy.exe`. Type
+8. Uruchom plik `DataBoxDiskSplitCopy.exe`. Typ
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<Your-config-file-name.json>`
 
@@ -265,7 +265,7 @@ Ta opcjonalna procedura może być używana w przypadku korzystania z wielu dysk
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<configFile.json> /ResumeSession`
 
-Jeśli widzisz błędy za pomocą narzędzia Split Copy, przejdź do sekcji jak [rozwiązywać problemy](data-box-disk-troubleshoot-data-copy.md)z wydzielonymi narzędziami kopiowania.
+Jeśli podczas korzystania z narzędzia Split Copy występują błędy, zobacz [Rozwiązywanie problemów z narzędziem Split Copy](data-box-disk-troubleshoot-data-copy.md).
 
 Po zakończeniu kopiowania danych możesz przejść do walidowania danych. Jeśli użyto narzędzia do dzielenia skopiowanych plików, pomiń walidację (przeprowadza ją również narzędzie do dzielenia skopiowanych plików) i przejdź do następnego samouczka.
 
@@ -309,25 +309,25 @@ Przejdź do następnego samouczka, aby dowiedzieć się, jak odesłać urządzen
 
 ### <a name="copy-data-to-disks"></a>Kopiowanie danych na dyski
 
-Wykonaj następujące kroki, aby nawiązać połączenie i skopiować dane z komputera do Data Box Disk.
+Aby podłączyć urządzenia Data Box Disk do komputera i skopiować na nie dane, wykonaj poniższe czynności.
 
-1. Wyświetl zawartość odblokowanego dysku. Lista pretworzonych folderów i podfolderów w stacji jest różna w zależności od opcji wybranych podczas umieszczania kolejności Data Box Disk.
-2. Skopiuj dane do folderów, które odpowiadają odpowiedniemu formatowi danych. Na przykład skopiuj dane bez struktury do folderu *BlockBlob* folderu, VHD lub VHDX do folderu *PageBlob* i plików do *AzureFile*. Jeśli format danych nie jest zgodny z odpowiednim folderem (typ magazynu), to w późniejszym kroku dane zostaną przekazane do platformy Azure.
+1. Wyświetl zawartość odblokowanego dysku. Lista wstępnie utworzonych folderów i podfolderów na dysku jest różna w zależności od opcji wybranych podczas zamawiania urządzenia Data Box Disk.
+2. Skopiuj dane do folderów, które odpowiadają formatowi kopiowanych danych. Na przykład dane bez struktury skopiuj do folderu *BlockBlob*, dane VHD lub VHDX skopiuj do folderu *PageBlob*, a pliki do folderu *AzureFile*. Jeśli format danych nie pasuje do folderu (typu magazynu), na późniejszym etapie przekazywanie danych na platformę Azure zakończy się niepowodzeniem.
 
-    - Upewnij się, że wszystkie kontenery, obiekty blob i pliki są zgodne z [konwencjami nazewnictwa platformy Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions) i [limitami rozmiaru obiektów platformy Azure](data-box-disk-limits.md#azure-object-size-limits). Jeśli te reguły lub limity nie są przestrzegane, przekazywanie danych na platformę Azure zakończy się niepowodzeniem.     
-    - Jeśli zamówienie ma Managed Disks jako jeden z miejsc docelowych magazynu, zobacz Konwencje nazewnictwa dla [dysków zarządzanych](data-box-disk-limits.md#managed-disk-naming-conventions).
-    - Dla każdego podfolderu w folderach BlockBlob i PageBlob zostanie utworzony kontener na koncie usługi Azure Storage. Wszystkie pliki w folderach *BlockBlob* i *PageBlob* są kopiowane do domyślnego kontenera $root w ramach konta usługi Azure Storage. Wszystkie pliki w kontenerze $root są zawsze przekazywane jako blokowe obiekty blob.
-    - Utwórz podfolder w folderze *AzureFile* . Ten podfolder jest mapowany do udziału plików w chmurze. Kopiuj pliki do podfolderu. Pliki skopiowane bezpośrednio do folderu *AzureFile* nie powiodą się i są przekazywane jako blokowe obiekty blob.
+    - Upewnij się, że wszystkie kontenery, obiekty blob i pliki są zgodne z [konwencjami nazewnictwa platformy Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions), a ich rozmiary mieszczą się w [limitach rozmiaru obiektów platformy Azure](data-box-disk-limits.md#azure-object-size-limits). W przypadku niezgodności z tymi regułami lub limitami przekazywanie danych na platformę Azure zakończy się niepowodzeniem.     
+    - Jeśli w Twoim zamówieniu dyski zarządzane są wymienione jako jedne z miejsc docelowych magazynu, zapoznaj się z konwencjami nazewnictwa dla [dysków zarządzanych](data-box-disk-limits.md#managed-disk-naming-conventions).
+    - Dla każdego podfolderu w folderach BlockBlob i PageBlob zostanie utworzony kontener na koncie usługi Azure Storage. Wszystkie pliki z folderów *BlockBlob* i *PageBlob* zostaną skopiowane do domyślnego kontenera $root na koncie usługi Azure Storage. Pliki z kontenera $root są zawsze przekazywane jako blokowe obiekty blob.
+    - Utwórz podfolder w folderze *AzureFile*. Ten podfolder zostanie zamapowany na udział plików w chmurze. Skopiuj pliki do tego podfolderu. Przekazanie plików skopiowanych bezpośrednio do folderu *AzureFile* zakończy się niepowodzeniem i zostaną one przekazane jako blokowe obiekty blob.
     - Jeśli w katalogu głównym istnieją jakiekolwiek pliki lub foldery, należy przenieść je do innego folderu przed rozpoczęciem kopiowania danych.
 
-3. Użyj funkcji przeciągania i upuszczania za pomocą Eksploratora plików lub dowolnego narzędzia do kopiowania plików zgodnego z protokołem SMB, takiego jak Robocopy, aby skopiować dane. Można inicjować wiele zadań kopiowania przy użyciu następującego polecenia:
+3. Do kopiowania danych użyj metody przeciągania i upuszczania w Eksploratorze plików lub dowolnego narzędzia kopiowania plików zgodnego z protokołem SMB, na przykład narzędzia Robocopy. Aby rozpocząć wiele zadań kopiowania, użyj następującego polecenia:
 
     ```
     Robocopy <source> <destination>  * /MT:64 /E /R:1 /W:1 /NFL /NDL /FFT /Log:c:\RobocopyLog.txt
     ```
 4. Otwórz folder docelowy, aby wyświetlić i zweryfikować skopiowane pliki. Jeśli podczas procesu kopiowania wystąpiły jakiekolwiek błędy, pobierz pliki dziennika, które pomogą w rozwiązywaniu problemów. Pliki dziennika znajdują się w lokalizacji określonej w narzędziu Robocopy.
 
-Użyj opcjonalnej procedury [dzielenia i kopiowania](data-box-disk-deploy-copy-data.md#split-and-copy-data-to-disks) w przypadku korzystania z wielu dysków i posiadania dużego zestawu danych, który musi być podzielony i kopiowany na wszystkich dyskach.
+W przypadku korzystania z wielu dysków i dużego zestawu danych, który należy podzielić i skopiować na wszystkie dyski, użyj opcjonalnej procedury [dzielenia i kopiowania](data-box-disk-deploy-copy-data.md#split-and-copy-data-to-disks).
 
 ### <a name="validate-data"></a>Sprawdzanie poprawności danych
 
@@ -336,6 +336,6 @@ Aby sprawdzić dane, wykonaj następujące czynności.
 1. Uruchom polecenie `DataBoxDiskValidation.cmd` w celu zweryfikowania sumy kontrolnej w folderze *DataBoxDiskImport* na dysku.
 2. Użyj opcji 2, aby zweryfikować pliki i wygenerować sumy kontrolne. Czas wykonywania tej operacji zależy od rozmiaru danych. Jeśli podczas walidacji i generowania sumy kontrolnej wystąpi błąd, zostanie wyświetlone powiadomienie i podany link do dzienników błędów.
 
-    Aby uzyskać więcej informacji na temat walidacji danych, zobacz [Weryfikuj dane](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-copy-data#validate-data). Jeśli wystąpią błędy podczas walidacji, zobacz [Rozwiązywanie problemów z błędami walidacji](data-box-disk-troubleshoot.md).
+    Aby uzyskać więcej informacji na temat walidacji danych, zobacz [Walidowanie danych](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-copy-data#validate-data). Jeśli występują błędy podczas walidacji, zobacz [Rozwiązywanie problemów z błędami walidacji](data-box-disk-troubleshoot.md).
 
 ::: zone-end
