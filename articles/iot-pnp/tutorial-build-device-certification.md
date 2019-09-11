@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 151f6609375063a68a848f4c799af0b459124f23
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 019b2ba0fd87610195ca9e6c7cb749be9542bd72
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70047911"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858858"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>Utwórz urządzenie usługi IoT Plug and Play w wersji zapoznawczej, które jest gotowe do certyfikacji
 
@@ -33,7 +33,7 @@ Testy certyfikacji sprawdzają, czy:
 Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 - [Visual Studio Code](https://code.visualstudio.com/download)
-- [Rozszerzenie usługi Azure IoT Workbench dla VS Code](https://github.com/Azure/Azure-IoT-PnP-Preview/blob/master/VSCode/README.md#installation)
+- [Narzędzia Azure IoT Tools for vs Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) Extension Pack
 
 Potrzebne jest również urządzenie Plug and Play IoT tworzone w ramach [przewodnika Szybki Start: Użyj modelu możliwości urządzenia, aby utworzyć urządzenie](quickstart-create-pnp-device.md).
 

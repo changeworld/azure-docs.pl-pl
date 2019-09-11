@@ -5,24 +5,24 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
 ms.openlocfilehash: 9f259c3e403e933c847ac56000b1db2cd594caf5
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67449933"
 ---
-| Resource | Udziały plików standardowe | Udziały plików w warstwie Premium |
+| Resource | Standardowe udziały plików | Udziały plików w warstwie Premium |
 |----------|---------------|------------------------------------------|
-| Minimalny rozmiar udziału plików | Nie minimum; Płatność zgodnie z rzeczywistym użyciem | 100 giB; Zainicjowano obsługę administracyjną |
-| Maksymalny rozmiar udziału plików | Wynosi 5 TiB (GA), 100 TiB (wersja zapoznawcza) | 100 TiB |
+| Minimalny rozmiar udziału plików | Brak wartości minimalnej; płatność zgodnie z rzeczywistym użyciem | 100 GiB; aprowizowane |
+| Maksymalny rozmiar udziału plików | 5 TiB (GA), 100 TiB (wersja zapoznawcza) | 100 TiB |
 | Maksymalny rozmiar pliku w udziale plików | 1 TiB | 1 TiB |
-| Maksymalna liczba plików w udziale plików | Bez ograniczeń | Bez ograniczeń |
-| Maksymalna liczba IOPS na akcję | 1000 operacji We/Wy (GA), 10 000 operacji We/Wy (wersja zapoznawcza) | 100 000 OPERACJI WE/WY |
-| Maksymalna liczba przechowywanych zasad dostępu dla pliku udostępniania | 5 | 5 |
-| Docelowa przepustowość jeden udział pliku | Maksymalnie 60 MiB/s (GA), maksymalnie 300 MiB/s (wersja zapoznawcza) | Zobacz premium Udostępnij przychodzący i wychodzący wartości w pliku|
-| Maksymalnego wychodzącego jeden udział pliku | Zobacz standardowego pliku udziału docelowego przepływności | Maksymalnie 6,204 MiB/s |
-| Maksymalna ruch przychodzący na jeden udział pliku | Zobacz standardowego pliku udziału docelowego przepływności | Maksymalnie 4,136 MiB/s |
-| Maksymalna otwarte dojścia na plik | 2000 otwartych dojść | 2000 otwartych dojść |
-| Maksymalna liczba migawek udziałów | migawki udziałów 200 | migawki udziałów 200 |
-| Obiekt maksymalna długość nazwy (pliki i katalogi) | 2048 znaków | 2048 znaków |
-| Składnik pathname maksymalna (w ścieżce \A\B\C\D, każdej litery to składnik) | 255 znaków | 255 znaków |
+| Maksymalna liczba plików w udziale plików | Bez limitu | Bez limitu |
+| Maksymalna liczba operacji we/wy na udział | 1 000 IOPS (GA), 10 000 IOPS (wersja zapoznawcza) | LICZBA OPERACJI WE/WY 100 000 |
+| Maksymalna liczba przechowywanych zasad dostępu na udział plików | 5 | 5 |
+| Docelowa przepływność dla pojedynczego udziału plików | Do 60 MiB/s (GA), do 300 MiB/s (wersja zapoznawcza) | Zobacz wartości dotyczące transferu plików w warstwie Premium i ruchu wychodzącego|
+| Maksymalna liczba ruchu wychodzącego dla pojedynczego udziału plików | Zobacz standardową przepływność udziału plików | Do 6 204 MiB/s |
+| Maksymalna liczba danych wejściowych dla pojedynczego udziału plików | Zobacz standardową przepływność udziału plików | Do 4 136 MiB/s |
+| Maksymalna liczba otwartych dojść na plik | 2 000 otwartych dojść | 2 000 otwartych dojść |
+| Maksymalna liczba migawek udziałów | 200 migawek udziałów | 200 migawek udziałów |
+| Maksymalna długość nazwy obiektu (katalogów i plików) | 2 048 znaków | 2 048 znaków |
+| Maksymalna część ścieżki składnika (w ścieżce \A\B\C\D każda litera jest składnikiem) | 255 znaków | 255 znaków |
