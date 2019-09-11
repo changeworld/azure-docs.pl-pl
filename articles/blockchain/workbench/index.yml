@@ -1,21 +1,21 @@
 ### YamlMime:Landing
-title: Dokumentacja aplikacji Azure Blockchain Workbench
+title: Dokumentacja aplikacji Azure Blockchain Workbench w wersji zapoznawczej
 summary: Dowiedz się, jak tworzyć aplikacje łańcucha bloków. W samouczkach, dokumentacja interfejsu API i innych dokumentach przedstawiono sposób wdrażania aplikacji Azure Blockchain Workbench oraz tworzenia aplikacji łańcucha bloków na platformie Azure i zarządzania nimi.
 metadata:
-  title: Dokumentacja usługi Azure Blockchain Workbench — samouczki i dokumentacja interfejsu API
+  title: Dokumentacja usługi Azure Blockchain Workbench w wersji zapoznawczej — samouczki i dokumentacja interfejsu API
   description: Dowiedz się, jak tworzyć aplikacje łańcucha bloków. W samouczkach, dokumentacja interfejsu API i innych dokumentach przedstawiono sposób wdrażania aplikacji Azure Blockchain Workbench oraz tworzenia aplikacji łańcucha bloków na platformie Azure i zarządzania nimi.
   services: azure-blockchain
   ms.service: azure-blockchain
   ms.topic: landing-page
   author: PatAltimore
   ms.author: patricka
-  ms.date: 08/29/2019
-  ms.openlocfilehash: 515e269619f7efa5c00071794e41fff83b81ed60
-  ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+  ms.date: 09/05/2019
+  ms.openlocfilehash: cc493ae3813cc1c53670b8f6ea46f915d7f9efee
+  ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 09/04/2019
-  ms.locfileid: "70240814"
+  ms.lasthandoff: 09/10/2019
+  ms.locfileid: "70845023"
 landingContent:
 - title: Informacje o aplikacji Azure Blockchain Workbench
   linkLists:

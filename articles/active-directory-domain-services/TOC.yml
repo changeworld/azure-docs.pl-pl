@@ -21,7 +21,7 @@
       href: tutorial-configure-password-hash-sync.md
 - name: Przykłady
   items:
-    - name: Tworzenie wystąpienia usługi Azure AD DS za pomocą programu Azure PowerShell
+    - name: Tworzenie domeny zarządzanej za pomocą programu Azure PowerShell
       href: powershell-create-instance.md
 - name: Pojęcia
   items:

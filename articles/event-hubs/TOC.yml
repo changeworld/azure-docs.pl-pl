@@ -30,6 +30,18 @@
           href: event-hubs-dotnet-standard-getstarted-send.md
         - name: Java
           href: event-hubs-java-get-started-send.md
+        - name: Python
+          href: event-hubs-python-get-started-send.md
+        - name: Node.js
+          href: event-hubs-node-get-started-send.md
+        - name: Przejdź
+          href: event-hubs-go-get-started-send.md
+        - name: C (tylko wysyłanie)
+          href: event-hubs-c-getstarted-send.md
+        - name: Apache Storm (tylko odbieranie)
+          href: event-hubs-storm-getstarted-receive.md
+        - name: .NET Framework
+          href: event-hubs-dotnet-framework-getstarted-send.md
     - name: Przechwytywanie zdarzeń
       items:
         - name: Włączanie usługi Event Hubs Capture za pomocą witryny Azure Portal
@@ -104,46 +116,20 @@
           href: event-hubs-exchange-events-different-protocols.md
         - name: Przewodnik programowania
           href: event-hubs-programming-guide.md
+        - name: 'Wysyłanie, odbieranie i przechwytywanie zdarzeń przy użyciu języka Python'
+          href: event-hubs-python.md
     - name: Przetwarzanie danych
       items:
         - name: Przetwarzanie danych za pomocą usługi Azure Stream Analytics
           href: process-data-azure-stream-analytics.md
-    - name: Używanie bibliotek klienckich
+    - name: Integracja z platformą Spring
       items:
-        - name: .NET Framework
-          items:
-            - name: Wysyłanie i odbieranie zdarzeń za pomocą programu .NET Framework
-              href: event-hubs-dotnet-framework-getstarted-send.md
-        - name: Java
-          items:
-            - name: Tworzenie aplikacji integratora strumienia platformy Spring Cloud
-              href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-azure-event-hub
-              maintainContext: true
-            - name: Używanie programu Spring Boot Starter dla platformy Apache Kafka
-              href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub
-              maintainContext: true
-        - name: Python
-          items:
-            - name: Wysyłanie i odbieranie zdarzeń za pomocą języka Python
-              href: event-hubs-python-get-started-send.md
-            - name: 'Wysyłanie, odbieranie i przechwytywanie zdarzeń przy użyciu języka Python'
-              href: event-hubs-python.md
-        - name: Node.js
-          items:
-            - name: Wysyłanie i odbieranie zdarzeń za pomocą platformy Node.js
-              href: event-hubs-node-get-started-send.md
-        - name: Przejdź
-          items:
-            - name: Wysyłanie i odbieranie zdarzeń za pomocą języka Go
-              href: event-hubs-go-get-started-send.md
-        - name: C (tylko wysyłanie)
-          items:
-            - name: Wysyłanie zdarzeń za pomocą języka C
-              href: event-hubs-c-getstarted-send.md
-        - name: Apache Storm (tylko odbieranie)
-          items:
-            - name: Odbieranie zdarzeń za pomocą systemu Apache Storm
-              href: event-hubs-storm-getstarted-receive.md
+        - name: Tworzenie aplikacji integratora strumienia platformy Spring Cloud
+          href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-azure-event-hub
+          maintainContext: true
+        - name: Używanie programu Spring Boot Starter dla platformy Apache Kafka
+          href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub
+          maintainContext: true
     - name: Integracja z platformą Apache Kafka
       items:
         - name: Tworzenie centrów zdarzeń z obsługą platformy Apache Kafka
