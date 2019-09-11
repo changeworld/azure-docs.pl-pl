@@ -6,14 +6,14 @@ metadata:
   titleSuffix: Azure Cognitive Services
   description: 'Dowiedz się, jak utworzyć środowisko wyszukiwania niestandardowego za pomocą portalu i interfejsu API wyszukiwania niestandardowego Bing'
   services: cognitive-services
-  author: v-deken
+  author: aahill
   manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
   ms.subservice: bing-custom-search
   ms.topic: landing-page
   ms.date: 07/25/2019
-  ms.author: v-deken
+  ms.author: aahill
 abstract:
   description: 'Utwórz wystąpienie wyszukiwania dotyczące interesujących Cię tematów za pomocą interfejsu API wyszukiwania niestandardowego Bing. Określ domeny i strony internetowe do przeszukania oraz dopasuj rankingi wyszukiwania, aby w pełni dostosować swoje środowisko wyszukiwania.'
 sections:

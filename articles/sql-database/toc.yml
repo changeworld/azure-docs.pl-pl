@@ -333,7 +333,7 @@
             - name: Szyfrowanie TDE z użyciem usługi Bring Your Own Key
               href: transparent-data-encryption-byok-azure-sql.md
         - name: Atrybuty zabezpieczeń
-          href: sql-database-security-attributes.md
+          href: sql-database-security-controls.md
         - name: Ograniczenia funkcji
           href: sql-database-feature-restrictions.md
     - name: Skalowalność
@@ -512,6 +512,8 @@
           href: sql-database-managed-instance-migrate.md
         - name: Migrowanie certyfikatu TDE do wystąpienia zarządzanego
           href: sql-database-managed-instance-migrate-tde-certificate.md
+        - name: Przywracanie do punktu w czasie
+          href: sql-database-managed-instance-point-in-time-restore.md
         - name: Ustalanie rozmiaru podsieci wystąpienia zarządzanego
           href: sql-database-managed-instance-determine-size-vnet-subnet.md
         - name: Tworzenie nowej sieci wirtualnej i podsieci dla wystąpienia zarządzanego
@@ -534,8 +536,6 @@
           href: sql-database-managed-instance-connect-app.md
     - name: Ładowanie i przenoszenie danych
       items:
-        - name: Przywracanie do punktu w czasie
-          href: sql-database-managed-instance-point-in-time-restore.md
         - name: Przenoszenie zasobu do nowego regionu
           href: sql-database-move-resources-across-regions.md
         - name: Kopiowanie bazy danych w obrębie platformy Azure

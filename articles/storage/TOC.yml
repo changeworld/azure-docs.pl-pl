@@ -8,13 +8,13 @@
     - name: 'Wybieranie obiektów blob, plików lub dysków'
       href: ./common/storage-decide-blobs-files-disks.md
 - name: Obiekty blob
-  href: ./blobs/storage-blobs-overview.md
+  href: ./blobs/index.yml
 - name: Usługa Data Lake Storage 2. generacji
-  href: ./blobs/data-lake-storage-introduction.md
+  href: ./blobs/index.yml
 - name: Pliki
-  href: ./files/storage-files-introduction.md
+  href: ./files/index.yml
 - name: Kolejki
-  href: ./queues/storage-queues-introduction.md
+  href: ./queues/index.yml
 - name: Tabele
   href: ./tables/table-storage-overview.md
 - name: Dyski

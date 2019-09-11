@@ -6,6 +6,9 @@
     - name: Co to jest usługa Personalizacja?
       href: what-is-personalizer.md
       displayName: 'loop, context, feature, action, rank, reward, developer, use case'
+    - name: Co nowego
+      href: whats-new.md
+      displayName: 'release notes, service updates, videos'
 - name: Przewodniki Szybki start
   items:
     - name: 'Przy użyciu języka C#'

@@ -770,8 +770,6 @@
                   href: log-query/get-started-portal.md
                 - name: Samouczek dotyczący zapytań dzienników
                   href: log-query/get-started-queries.md
-                - name: Prosta obsługa dzienników
-                  href: log-query/simple-logs.md
             - name: Dane dziennika
               items:
                 - name: Struktura danych dziennika
@@ -1037,8 +1035,6 @@
               href: insights/solutions-resources-views.md
             - name: Najlepsze praktyki
               href: insights/solutions-best-practices.md
-            - name: Zbieranie danych monitorowania z elementu runbook
-              href: platform/runbook-datacollect.md
 - name: Dokumentacja
   items:
     - name: Limity usługi
