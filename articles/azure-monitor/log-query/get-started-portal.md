@@ -8,12 +8,12 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: bwren
-ms.openlocfilehash: cf2aee475f5d3933421de45fa5b2ade687bed62f
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 18e6e162764ce190a1953a4126e4f9ef2eb717f5
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348088"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899511"
 ---
 # <a name="get-started-with-log-analytics-in-azure-monitor"></a>Wprowadzenie do Log Analytics w Azure Monitor
 
@@ -104,7 +104,7 @@ Umieść kursor nad nazwą kolumny ikon "+" i "-", aby wyświetlić. Aby dodać 
 ### <a name="filter-through-the-table-elements"></a>Filtruj elementy tabeli
 Teraz skupmy się na zdarzeniach o ważności _błędu_. Ta wartość jest określona w kolumnie o nazwie _EventLevelName_. Musisz przewinąć w prawo, aby wyświetlić tę kolumnę.
 
-Kliknij ikonę filtru obok tytułu kolumny, a w oknie podręcznym wybierz wartości, które zaczynają się  od _błędu_tekstu:
+Kliknij ikonę filtru obok tytułu kolumny, a w oknie podręcznym wybierz wartości, które zaczynają się od _błędu_tekstu:
 
 ![Filtr](media/get-started-portal/filter.png)
 
@@ -162,7 +162,7 @@ W timechart, jeśli w danych wystąpi nagły skok lub krok, w wierszu może zost
 ![Inteligentna diagnostyka](media/get-started-portal/smart-diagnostics.png)
 
 ## <a name="pin-to-dashboard"></a>Przypnij do pulpitu nawigacyjnego
-Aby przypiąć diagram lub tabelę do jednego z udostępnionych pulpitów nawigacyjnych platformy Azure, kliknij ikonę pinezki.
+Aby przypiąć diagram lub tabelę do jednego z udostępnionych pulpitów nawigacyjnych platformy Azure, kliknij ikonę pinezki. Należy zauważyć, że ta ikona została przeniesiona na górę okna Log Analytics inną niż Poniższy zrzut ekranu.
 
 ![Przypnij do pulpitu nawigacyjnego](media/get-started-portal/pin-dashboard.png)
 
@@ -170,7 +170,7 @@ Niektóre uproszczenia są stosowane do wykresu po przypięciu do pulpitu nawiga
 
 - Kolumny i wiersze tabeli: Aby można było przypiąć tabelę do pulpitu nawigacyjnego, musi ona mieć co najmniej cztery kolumny. Wyświetlane są tylko pierwsze siedem wierszy.
 - Ograniczenie czasu: Zapytania są automatycznie ograniczone do ostatnich 14 dni.
-- Ograniczenie liczby bin: Jeśli zostanie wyświetlony wykres, który zawiera wiele dyskretnych pojemników, mniej wypełnione pojemniki są automatycznie pogrupowane w _jeden zasobnik._
+- Ograniczenie liczby bin: Jeśli zostanie wyświetlony wykres, który zawiera wiele dyskretnych pojemników, mniej wypełnione pojemniki są automatycznie pogrupowane w jeden zasobnik.
 
 ## <a name="save-queries"></a>Zapisywanie zapytań
 Po utworzeniu przydatnego zapytania warto je zapisać lub udostępnić innym osobom. Ikona **Zapisz** znajduje się na górnym pasku.

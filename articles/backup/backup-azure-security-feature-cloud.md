@@ -7,16 +7,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/04/2019
 ms.author: dacurwin
-ms.openlocfilehash: 938c65371b05807c774c9f2d73d4c27efe706c47
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 173e261266bffd042e12b327e26fda3a4e55ea4b
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70143572"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898987"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Funkcje zabezpieczeń pomagające w ochronie obciążeń w chmurze korzystających z Azure Backup
 
-Problemy dotyczące zabezpieczeń, takie jak złośliwe oprogramowanie, programy wymuszającego okup i wtargnięcie, zwiększają się. Te problemy z zabezpieczeniami mogą być kosztowne, w odniesieniu do pieniędzy i danych. Aby ochronić przed takimi atakami, Azure Backup teraz zapewnia funkcje zabezpieczeń, które ułatwiają ochronę danych kopii zapasowej nawet po usunięciu. Jedną z tych funkcji jest usuwanie nietrwałe. W przypadku usuwania nietrwałego, nawet jeśli złośliwy aktor usuwa kopię zapasową maszyny wirtualnej (lub dane kopii zapasowej są przypadkowo usuwane), dane kopii zapasowej są przechowywane przez 14 dodatkowych dni, co pozwala na odzyskanie tego elementu kopii zapasowej bez utraty danych. Te dodatkowe 14 dni przechowywania danych kopii zapasowej w stanie "usuwanie nietrwałe" nie wiążą się z kosztem dla klienta.
+Obawy dotyczące problemów z zabezpieczeniami takich jak złośliwe oprogramowanie, oprogramowanie wymuszające okup oraz włamania wciąż rosną. Te problemy z zabezpieczeniami mogą być kosztowne, zarówno pod względem finansowym, jak i w kwestii danych. Aby ochronić przed takimi atakami, Azure Backup teraz zapewnia funkcje zabezpieczeń, które ułatwiają ochronę danych kopii zapasowej nawet po usunięciu. Jedną z tych funkcji jest usuwanie nietrwałe. W przypadku usuwania nietrwałego, nawet jeśli złośliwy aktor usuwa kopię zapasową maszyny wirtualnej (lub dane kopii zapasowej są przypadkowo usuwane), dane kopii zapasowej są przechowywane przez 14 dodatkowych dni, co pozwala na odzyskanie tego elementu kopii zapasowej bez utraty danych. Te dodatkowe 14 dni przechowywania danych kopii zapasowej w stanie "usuwanie nietrwałe" nie wiążą się z kosztem dla klienta.
 
 > [!NOTE]
 > Usuwanie nietrwałe chroni tylko usunięte dane kopii zapasowej. Jeśli maszyna wirtualna zostanie usunięta bez kopii zapasowej, funkcja usuwania nietrwałego nie będzie zachować danych. Wszystkie zasoby powinny być chronione za pomocą Azure Backup, aby zapewnić pełną odporność.
@@ -26,7 +26,7 @@ Problemy dotyczące zabezpieczeń, takie jak złośliwe oprogramowanie, programy
 
 ### <a name="supported-regions"></a>Obsługiwane regiony
 
-Usuwanie nietrwałe jest obecnie obsługiwane w regionie zachodnie stany USA.
+Usuwanie nietrwałe jest obecnie obsługiwane w regionie zachodnie stany USA i Azja Wschodnia.
 
 ### <a name="soft-delete-for-vms"></a>Usuwanie nietrwałe dla maszyn wirtualnych
 
@@ -136,4 +136,4 @@ Nie. Obecnie usuwanie nietrwałe jest obsługiwane tylko dla maszyn wirtualnych 
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Przeczytaj o [atrybutach zabezpieczeń dla Azure Backup](https://docs.microsoft.com/en-us/azure/backup/backup-security-attributes).
+* Przeczytaj o [kontrolkach zabezpieczeń dla Azure Backup](backup-security-controls.md).

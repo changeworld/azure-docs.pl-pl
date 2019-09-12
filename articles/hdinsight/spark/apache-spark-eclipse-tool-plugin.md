@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.author: hrasheed
-ms.openlocfilehash: 87ac2283e96081297fdd54c1c131aa5b78a5973a
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 4f07772dd8489737c9ab3530de0bf2303fba5fb1
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814264"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900234"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Tworzenie aplikacji Apache Spark dla klastra usługi HDInsight za pomocą Azure Toolkit for Eclipse
 
@@ -87,7 +87,7 @@ Normalny klaster można połączyć za pomocą Ambari zarządzanej nazwy użytko
 
 1. Możesz również odłączyć klaster od programu **Azure Explorer**.
    
-   ![niepołączony klaster](./media/apache-spark-intellij-tool-plugin/unlink.png)
+   ![niepołączony klaster](./media/apache-spark-eclipse-tool-plugin/hdi-unlinked-cluster.png)
 
 
 ## <a name="set-up-a-spark-scala-project-for-an-hdinsight-spark-cluster"></a>Konfigurowanie projektu Spark Scala dla klastra usługi HDInsight Spark

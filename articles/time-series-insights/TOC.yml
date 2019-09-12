@@ -59,7 +59,7 @@
           href: time-series-insights-update-storage-ingress.md
         - name: Przypadki zastosowań
           href: time-series-insights-update-use-cases.md
-        - name: Modelowanie danych
+        - name: Model szeregów czasowych
           href: time-series-insights-update-tsm.md
         - name: Wykonywanie zapytań dotyczących danych
           href: time-series-insights-update-tsq.md

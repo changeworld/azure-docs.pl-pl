@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: 199fcdf2ebf10852906b842f09fe7beafd2acdb5
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: e52a32c1897a7add939880fbe27d6b4b7fbee0bd
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326621"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883577"
 ---
 # <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>Omówienie kończenia protokołu SSL i kompleksowej usługi SSL z usługą Application Gateway
 
@@ -95,7 +95,7 @@ Certyfikaty uwierzytelniania zostały wycofane i zastąpione przez zaufane certy
    
 > [!NOTE] 
 >
-> Aby certyfikat SSL był godny zaufania, certyfikat serwera wewnętrznej bazy danych musi zostać wystawiony przez urząd certyfikacji, który znajduje się w zaufanym magazynie bramy Applicatin. Jeśli certyfikat nie został wystawiony przez zaufany urząd certyfikacji, Application Gateway sprawdzi Sprawdź, czy certyfikat wystawiającego urzędu certyfikacji został wystawiony przez zaufany urząd certyfikacji i tak dalej, dopóki nie zostanie znaleziony zaufany urząd certyfikacji (w którym zostanie nawiązane zaufane, bezpieczne połączenie) lub nie zostanie znaleziony zaufany urząd certyfikacji (w którym momencie Brama Applicatin będzie oznaczać zaplecze unhe althy). W związku z tym zaleca się, aby certyfikat serwera wewnętrznej bazy danych zawierał zarówno główny, jak i intermidiate urzędy certyfikacji.
+> Aby certyfikat SSL był zaufany, certyfikat serwera wewnętrznej bazy danych musi zostać wystawiony przez urząd certyfikacji uwzględniony w zaufanym magazynie Application Gateway. Jeśli certyfikat nie został wystawiony przez zaufany urząd certyfikacji, Application Gateway sprawdzi Aby sprawdzić, czy certyfikat wystawiającego urzędu certyfikacji został wystawiony przez zaufany urząd certyfikacji i tak dalej, dopóki nie zostanie znaleziony zaufany urząd certyfikacji (w którym zostanie nawiązane zaufane, bezpieczne połączenie) lub nie zostanie znaleziony zaufany urząd certyfikacji (w tym momencie Application Gateway oznaczy zaplecza zła kondycja). W związku z tym zaleca się, aby certyfikat serwera wewnętrznej bazy danych zawierał zarówno główny, jak i intermidiate urzędy certyfikacji.
 
 - Jeśli certyfikat jest podpisany z podpisem własnym lub podpisany przez nieznane osoby pośredniczące, a następnie aby włączyć kompleksową obsługę protokołu SSL w wersji 2, należy zdefiniować zaufany certyfikat główny. Application Gateway komunikuje się tylko z zapleczem, którego certyfikat główny certyfikatu serwera jest zgodny z jedną z listy zaufanych certyfikatów głównych w ustawieniu protokołu HTTP zaplecza skojarzonym z pulą.
 

@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 07/22/2019
-ms.openlocfilehash: cd55e078e14ec34006df05096f161e7bdef39a03
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: ac478a7b75bbac0c5e7f59cbe565ec2bbcd643ce
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827229"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900323"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Uaktualnij magazyn danych do Gen2
 
@@ -63,7 +63,7 @@ Poniższa tabela podsumowuje według regionu, gdy dolna warstwa obliczeniowa Gen
 | Północne Zjednoczone Emiraty Arabskie |20 lipca 2019 |Ukończ |
 | Południowe Zjednoczone Królestwo |Dostępne |W toku |
 | Zachodnie Zjednoczone Królestwo |Dostępne |W toku |
-| Środkowo-zachodnie stany USA |1 września 2019 |1 października 2019|
+| Środkowo-zachodnie stany USA |1 listopada 2019 |1 grudnia 2019|
 | Europa Zachodnia |Dostępne |Ukończ |
 | Zachodnie stany USA |Dostępne |Ukończ |
 | Zachodnie stany USA 2 |Dostępne |Ukończ |

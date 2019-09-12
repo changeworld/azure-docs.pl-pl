@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbullwin
-ms.openlocfilehash: 9bedb74f4e882ac6e4206ee7fef676c94dc2422d
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: cdc16c2ea01d14edc236d0d6a0897e0dd9578924
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "68717452"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70909815"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API dla niestandardowych zdarzeń i metryk
 
@@ -584,14 +584,14 @@ Rejestruj zdarzenie diagnostyczne, takie jak wprowadzanie lub opuszczanie metody
 ---|---
 `message` | Dane diagnostyczne. Może być o wiele więcej niż nazwa.
 `properties` | Mapowanie ciągu na ciąg: Dodatkowe dane używane do [filtrowania wyjątków](https://azure.microsoft.com/documentation/articles/app-insights-api-custom-events-metrics/#properties) w portalu. Wartość domyślna to Empty.
-`severityLevel` | Obsługiwane wartości: [SeverityLevel. TS](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/JavaScript/JavaScriptSDK.Interfaces/Contracts/Generated/SeverityLevel.ts)
+`severityLevel` | Obsługiwane wartości: [SeverityLevel. TS](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/shared/AppInsightsCommon/src/Interfaces/Contracts/Generated/SeverityLevel.ts)
 
 Można wyszukiwać zawartość wiadomości, ale (w przeciwieństwie do wartości właściwości), nie można na niej filtrować.
 
 Limit `message` rozmiaru jest znacznie wyższy niż limit właściwości.
 Zaletą TrackTrace jest możliwość umieszczania stosunkowo długich danych w komunikacie. Na przykład możesz kodować dane POST w tym miejscu.  
 
-Ponadto do wiadomości można dodać poziom ważności. Podobnie jak w przypadku innych telemetrii, można dodać wartości właściwości, aby ułatwić filtrowanie lub wyszukiwanie różnych zestawów śladów. Na przykład:
+Ponadto do wiadomości można dodać poziom ważności. Podobnie jak w przypadku innych telemetrii, można dodać wartości właściwości, aby ułatwić filtrowanie lub wyszukiwanie różnych zestawów śladów. Przykład:
 
 *C#*
 
@@ -1154,7 +1154,7 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="telemetrycontext"></a>TelemetryContext
 
-TelemetryClient ma Właściwość kontekstu, która zawiera wartości, które są wysyłane wraz ze wszystkimi danymi telemetrii. Są one zazwyczaj ustawiane przez standardowe moduły telemetrii, ale można je również ustawić samodzielnie. Na przykład:
+TelemetryClient ma Właściwość kontekstu, która zawiera wartości, które są wysyłane wraz ze wszystkimi danymi telemetrii. Są one zazwyczaj ustawiane przez standardowe moduły telemetrii, ale można je również ustawić samodzielnie. Przykład:
 
 ```csharp
 telemetry.Context.Operation.Name = "MyOperationName";

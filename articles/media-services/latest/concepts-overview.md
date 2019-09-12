@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Media Services terminy i pojęcia — Azure | Dokumentacja firmy Microsoft
-description: Ten temat zawiera krótkie omówienie usługi Azure Media Services terminy i pojęcia i łącza, aby uzyskać więcej informacji.
+title: Azure Media Services terminologii i koncepcje — Azure | Microsoft Docs
+description: Ten temat zawiera krótkie omówienie Azure Media Services terminologii i koncepcji oraz linki do dalszych szczegółów.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,19 +9,19 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/13/2019
+ms.date: 09/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 1e76569c7f5157dce681d15ec8d499b90e080102
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 47c7e35f71fd33cc53d498867ef015364252d5ea
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65762305"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910319"
 ---
-# <a name="media-services-concepts"></a>Pojęcia dotyczące usługi Media Services
+# <a name="media-services-concepts"></a>Koncepcje Media Services
 
-Ten temat zawiera krótkie omówienie pojęcia i terminologia dotycząca usługi Azure Media Services. Artykuł zawiera również linki do artykułów zawierających szczegółowe informacje z usługi Media Services v3 pojęć i funkcji. 
+Ten temat zawiera krótkie omówienie Azure Media Services terminologii i koncepcji. Artykuł zawiera również linki do artykułów z szczegółowym wyjaśnieniem pojęć związanych z Media Services i funkcjonalnością programu v3. 
 
 Przed rozpoczęciem programowania należy zapoznać się z opisami podstawowych pojęć zawartymi w tych tematach.
 
@@ -30,67 +30,67 @@ Przed rozpoczęciem programowania należy zapoznać się z opisami podstawowych 
 
 ## <a name="terminology"></a>Terminologia
 
-W tej sekcji przedstawiono, jak niektóre typowe terminy branżowe mapują do interfejsu API usługi Media Services v3.
+W tej sekcji przedstawiono sposób, w jaki niektóre typowe warunki branżowe są mapowane do interfejsu API Media Services v3.
 
 ### <a name="live-event"></a>Wydarzenie na żywo
 
-A **wydarzenie na żywo** reprezentuje potok przyjęciem, transkodowanie (opcjonalnie) i pakowania strumieni na żywo metadanych wideo, audio i w czasie rzeczywistym.
+**Wydarzenie na żywo** reprezentuje potok do pozyskiwania, transkodowania (opcjonalnie) i tworzenia pakietów na żywo strumieni wideo, audio i metadanych w czasie rzeczywistym.
 
-Dla klientów migrację z interfejsów API usługi Media Services v2 **wydarzenie na żywo** zastępuje **kanału** jednostki w wersji 2. Aby uzyskać więcej informacji, zobacz [migracji od v2 do v3](migrate-from-v2-to-v3.md).
+W przypadku klientów migrowania z Media Services V2 API **zdarzenie na żywo** zastępuje jednostkę **kanału** w wersji 2. Aby uzyskać więcej informacji, zobacz [Migrowanie z wersji 2 do V3](migrate-from-v2-to-v3.md).
 
-### <a name="streaming-endpoint-packaging-and-origin"></a>Punkt końcowy przesyłania strumieniowego (Tworzenie pakietów i źródła)
+### <a name="streaming-endpoint-packaging-and-origin"></a>Punkt końcowy przesyłania strumieniowego (pakowanie i źródło)
 
-A **punkt końcowy przesyłania strumieniowego** reprezentuje dynamiczny (just-in-time) pakowania i pochodzenia usługę która umożliwia dostarczanie zawartości na żywo i na żądanie bezpośrednio do aplikacji odtwarzacza klienta, przy użyciu jednej z wspólnych protokołów przesyłania strumieniowego multimediów (HLS lub DASH). Ponadto **punkt końcowy przesyłania strumieniowego** zapewnia szyfrowania dynamicznego (just-in-time) do branży protokołów DRM.
+**Punkt końcowy przesyłania strumieniowego** reprezentuje dynamiczny (just-in-Time) pakiet i pierwotną usługę, która umożliwia dostarczanie zawartości na żywo i na żądanie bezpośrednio do aplikacji odtwarzacza klienta przy użyciu jednego z popularnych protokołów multimediów przesyłania strumieniowego (HLS lub kreski). Ponadto **punkt końcowy przesyłania strumieniowego** zapewnia dynamiczne (just-in-Time) szyfrowanie do wiodących w branży protokołów DRM.
 
-W przesyłania strumieniowego multimediów branży, ta usługa jest często nazywany **Packager** lub **pochodzenia**.  Inne typowe terminy w branży dla tej funkcji to JITP (Just w czas packager) lub JITE (Just w czas encryption). 
+W branży przesyłania strumieniowego multimediów ta usługa jest często określana jako **Pakowarka** lub **Źródło**.  Inne typowe warunki w branży dla tej możliwości obejmują JITP ("just-in-Time-deJITEd") lub (just-in-Time-Encryption). 
  
 ## <a name="cloud-upload-and-storage"></a>Przekazywanie do chmury i magazynowanie w niej
 
-Aby rozpocząć zarządzanie, szyfrowanie, kodowanie, analizowania i przesyłanie strumieniowe zawartości multimedialnej na platformie Azure, musisz utworzyć konto usługi Media Services i przekazać pliki cyfrowe do **zasoby**.
+Aby rozpocząć zarządzanie, szyfrowanie, kodowanie, analizowanie i przesyłanie strumieniowe zawartości multimedialnej na platformie Azure, musisz utworzyć konto Media Services i przekazać pliki cyfrowe do **zasobów**.
 
 - [Przekazywanie do chmury i magazynowanie w niej](storage-account-concept.md)
 - [Koncepcja zasobów](assets-concept.md)
 
 ## <a name="encoding"></a>Kodowanie
 
-Po przekazaniu plików multimediów cyfrowych wysokiej jakości do zasobów, zakodować je do formatów, które można odtwarzać na różnych przeglądarek i urządzeń. 
+Po przekazaniu plików multimediów cyfrowych o wysokiej jakości do zasobów można je zakodować do formatów, które mogą być odtwarzane w różnych przeglądarkach i urządzeniach. 
 
-Kodowanie za pomocą usługi Media Services v3, musisz utworzyć **przekształca** i **zadań**.
+Aby kodować z Media Services v3, należy utworzyć transformacje i **zadania**.
 
 ![Przekształcenia](./media/encoding/transforms-jobs.png)
 
 - [Transformacje i zadania](transforms-jobs-concept.md)
-- [Kodowanie za pomocą usługi Media Services](encoding-concept.md)
+- [Kodowanie przy użyciu Media Services](encoding-concept.md)
 
-## <a name="media-analytics"></a>Analiza multimediów
+## <a name="media-analytics"></a>Media Analytics
 
-Do analizowania plików audio i wideo, należy również utworzyć **przekształca** i **zadań**.
+Aby analizować pliki wideo i audio, należy również utworzyć transformacje i **zadania**.
 
-- [Analizowanie plików audio i wideo](analyzing-video-audio-files-concept.md)
+- [Analizowanie plików wideo i audio](analyzing-video-audio-files-concept.md)
 
 ## <a name="packaging-delivery-protection"></a>Tworzenie pakietów, dostarczanie, ochrona
 
-Gdy zawartość jest zakodowany, możesz korzystać z zalet **funkcję dynamicznego tworzenia pakietów**. W usłudze Media Services **punkt końcowy przesyłania strumieniowego**  /pochodzenia funkcję dynamicznego tworzenia pakietów usługa jest używana do dostarczania zawartości multimediów do klienta graczy. Aby udostępnić pliki wideo w zasobach wyjściowych klientów do odtwarzania, należy utworzyć **lokalizatora przesyłania strumieniowego** i późniejszego kompilowania adresów URL przesyłania strumieniowego. 
+Po zapisaniu zawartości można korzystać z funkcji **dynamicznego tworzenia pakietów**. W Media Services **punkt końcowy przesyłania strumieniowego**/Origin to dynamiczna usługa tworzenia pakietów służąca do dostarczania zawartości multimedialnej do graczy klientów. Aby umożliwić odtwarzanie filmów wideo w danych wyjściowych, należy utworzyć **lokalizator przesyłania strumieniowego** , a następnie skompilować adresy URL przesyłania strumieniowego. 
 
-Podczas tworzenia **lokalizatora przesyłania strumieniowego**, oprócz nazwy zasobu, należy określić **przesyłania strumieniowego zasad**. **Przesyłanie strumieniowe zasady** umożliwiają definiowanie protokołów przesyłania strumieniowego i szyfrowania opcje (jeśli istnieje) dla Twojego **Lokalizatory przesyłania strumieniowego**.
+Podczas tworzenia **lokalizatora przesyłania strumieniowego**oprócz nazwy zasobu należy określić **zasady przesyłania strumieniowego**. **Zasady przesyłania strumieniowego** umożliwiają definiowanie protokołów przesyłania strumieniowego i opcji szyfrowania (jeśli istnieją) dla **lokalizatorów przesyłania strumieniowego**.
 
-Funkcję dynamicznego tworzenia pakietów jest używany, czy strumieniowo zawartość na żywo lub na żądanie. Na poniższym diagramie przedstawiono przesyłania strumieniowego na żądanie za pomocą funkcji dynamicznego tworzenia pakietów przepływu pracy.
+Dynamiczne pakowanie służy do przesyłania strumieniowego zawartości na żywo lub na żądanie. Na poniższym diagramie przedstawiono strumień przesyłania strumieniowego na żądanie z dynamicznym przepływem pracy tworzenia pakietów.
 
-![Dynamiczne tworzenie pakietów](./media/dynamic-packaging-overview/media-services-dynamic-packaging.png)
+![Pakowanie dynamiczne](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
-Usługa Media Services umożliwia dostarczanie zawartości na żywo i na żądanie dynamicznie zaszyfrowany za pomocą Advanced Encryption Standard (AES-128) lub / i systemów zarządzania (prawami cyfrowymi DRM) trzech głównych prawami cyfrowymi: PlayReady firmy Microsoft, Google Widevine i FairPlay firmy Apple. Media Services udostępnia również usługę dostarczania kluczy AES i technologii DRM (PlayReady, Widevine i FairPlay) licencji do autoryzowanych klientów.
+Za pomocą Media Services można dostarczać zawartość na żywo i na żądanie zaszyfrowaną dynamicznie przy użyciu Advanced Encryption Standard (AES-128) lub/i dowolnego z trzech głównych systemów zarządzania prawami cyfrowymi (DRM): Microsoft PlayReady, Google Widevine i Apple FairPlay. Media Services udostępnia również usługę dostarczania kluczy AES i technologii DRM (PlayReady, Widevine i FairPlay) licencji do autoryzowanych klientów.
 
-W przypadku określenia opcji szyfrowania na strumień, należy utworzyć **zasad klucza zawartości** i powiąż ją z Twojej **lokalizatora przesyłania strumieniowego**. **Zasad klucza zawartości** można skonfigurować sposób dostarczania klucza zawartości dla klientów końcowych.
+W przypadku określania opcji szyfrowania w strumieniu Utwórz **zasady dotyczące kluczy zawartości** i skojarz je z **lokalizatorem przesyłania strumieniowego**. **Zasady klucza zawartości** umożliwiają skonfigurowanie sposobu dostarczania klucza zawartości do klientów końcowych.
 
 Na poniższym obrazie przedstawiono przepływ pracy usługi Media Services Ochrona zawartości: 
 
 ![Ochrona zawartości](./media/content-protection/content-protection.svg)
 
-&#42;szyfrowanie dynamiczne obsługuje klucza AES-128"Wyczyść", CBCS i CENC. 
+&#42;szyfrowanie dynamiczne obsługuje algorytm AES-128 "Wyczyść klucz", CBCS i CENC. 
 
-Można użyć usługi Media Services **manifestów dynamicznych** do przesyłania strumieniowego tylko określonej wersji lub subclips filmu wideo. W poniższym przykładzie koder użytego do kodowania zasobów mezzanine do siedmiu odwzorowaniami wideo każdego pliku MP4 z ISO (z 180p, aby 1080p). Zakodowanym elementem zawartości można dynamicznie spakowane do żadnego z następujących protokołów: HLS, MPEG DASH i Smooth.  W górnej części diagramu są wyświetlane manifest HLS dla zasobu bez filtrów (zawiera wszystkie wersje siedem).  W lewym dolnym rogu manifest HLS, do którego zastosowano filtr o nazwie "ott" jest wyświetlana. Filtr "ott" Określa, aby usunąć wszystkie różnych poniżej 1 MB/s, co spowodowało dolnej dwa poziomy jakości jest usunięta, a w odpowiedzi. W prawym dolnym rogu manifest HLS, do którego zastosowano filtr o nazwie "mobilnymi" jest wyświetlany. Filtr "przenośnych" Określa usunięcie wersji, gdy rozwiązanie jest większy niż 720p, co spowodowało dwóch wersji 1080p jest odłączony.
+Media Services **manifestów dynamicznych** można używać do przesyłania strumieniowego tylko określonych elementów lub podklipów wideo. W poniższym przykładzie koder został użyty do zakodowania zasobu Mezzanine do siedmiu plików ISO pliki MP4 (od 180p do 1080p). Zakodowany element zawartości może być dynamicznie spakowany w jednym z następujących protokołów przesyłania strumieniowego: HLS, PAUZa MPEG i gładki.  W górnej części diagramu zostanie wyświetlony manifest HLS dla elementu zawartości bez filtrów (zawiera on wszystkie siedem wersji).  W lewym dolnym rogu jest pokazywany manifest HLS, do którego zastosowano filtr o nazwie "OTT". Filtr "OTT" określa, aby usunąć wszystkie szybkości transmisji bitów poniżej 1 MB/s, co spowodowało odłączenie dwóch dolnych poziomów jakości w odpowiedzi. W prawym dolnym rogu jest pokazywany manifest HLS, do którego zastosowano filtr o nazwie "Mobile". Filtr "mobilny" określa, aby usunąć wersje, w których rozdzielczość jest większa niż 720, co spowodowało odłączenie dwóch oddzielonych wersji.
 
-![Filtrowania wyświetlania](./media/filters-dynamic-manifest-overview/media-services-rendition-filter.png)
+![Filtrowanie wersji](./media/filters-dynamic-manifest-overview/media-services-rendition-filter.png)
 
 - [dynamicznego tworzenia pakietów](dynamic-packaging-overview.md)
 - [Punkty końcowe przesyłania strumieniowego](streaming-endpoint-concept.md)
@@ -103,46 +103,46 @@ Można użyć usługi Media Services **manifestów dynamicznych** do przesyłani
 
 ## <a name="live-streaming"></a>Transmisja strumieniowa na żywo
 
-Usługa Azure Media Services umożliwia dostarczanie wydarzeń na żywo dla klientów w chmurze Azure. **Wydarzenia na żywo** odpowiadają za pozyskiwanie i przetwarzanie strumieni wideo na żywo. Po utworzeniu **wydarzenie na żywo**, wejściowy punkt końcowy jest tworzona, której można wysyłać sygnał na żywo z kodera zdalnego. Po przesłaniu strumienia do **wydarzenie na żywo**, można rozpocząć zdarzenie przesyłania strumieniowego, tworząc **zasobów**, **na żywo dane wyjściowe**, i **lokalizatora przesyłania strumieniowego** . **Dane wyjściowe na żywo** spowoduje zarchiwizowanie strumienia do **zasobów** i udostępnić go użytkownikom za pośrednictwem **punkt końcowy przesyłania strumieniowego**. A **wydarzenie na żywo** może być jednym z dwóch typów: **przekazywanego** i **kodowanie na żywo**.
+Azure Media Services pozwala na dostarczanie na żywo wydarzeń klientom w chmurze platformy Azure. **Wydarzenia na żywo** odpowiadają za pozyskiwanie i przetwarzanie strumieni wideo na żywo. Podczas tworzenia zdarzenia na **żywo**jest tworzony wejściowy punkt końcowy, za pomocą którego można wysyłać sygnały na żywo ze zdalnego kodera. Gdy strumień przepływa do **zdarzenia na żywo**, możesz rozpocząć zdarzenie przesyłania strumieniowego, tworząc element **zawartości**, **dane wyjściowe**i **lokalizator przesyłania strumieniowego**. Na **żywo dane wyjściowe** będą archiwizowane w strumieniu i udostępniane użytkownikom za pomocą **punktu końcowego przesyłania strumieniowego**. **Wydarzenie na żywo** może być jednym z dwóch typów: **przekazywaniem** i **kodowaniem na żywo**.
 
-Na poniższym obrazie przedstawiono przepływu pracy typu przekazywania:
+Na poniższej ilustracji przedstawiono przepływ pracy typu pass-through:
 
 ![Przekazywanie](./media/live-streaming/pass-through.svg)
 
-- [Omówienie transmisji strumieniowej na żywo](live-streaming-overview.md)
+- [Omówienie przesyłania strumieniowego na żywo](live-streaming-overview.md)
 - [Wydarzenia i dane wyjściowe na żywo](live-events-outputs-concept.md)
 
 ## <a name="monitoring"></a>Monitorowanie
 
 ### <a name="event-grid"></a>Event Grid
 
-Aby wyświetlić postęp zadania, należy użyć **usługi Event Grid**. Usługa Media Services emituje również typy zdarzeń na żywo. Dzięki usłudze Event Grid Twoje aplikacje mogą nasłuchiwać zdarzeń pochodzących z praktycznie wszystkich usług platformy Azure i ze źródeł niestandardowych oraz reagować na nie. 
+Aby wyświetlić postęp zadania, należy użyć **Event Grid**. Media Services również emituje typy zdarzeń na żywo. Dzięki usłudze Event Grid Twoje aplikacje mogą nasłuchiwać zdarzeń pochodzących z praktycznie wszystkich usług platformy Azure i ze źródeł niestandardowych oraz reagować na nie. 
 
-- [Obsługa zdarzeń usługi Event Grid](reacting-to-media-services-events.md)
-- [Schematy](media-services-event-schemas.md)
+- [Obsługa zdarzeń Event Grid](reacting-to-media-services-events.md)
+- [Punktu](media-services-event-schemas.md)
 
 ### <a name="azure-monitor"></a>Azure Monitor
 
-Monitorowanie metryk i dzienników diagnostycznych, które pomagają zrozumieć, jak Twoje aplikacje działają z usługą Azure Monitor.
+Monitoruj metryki i dzienniki diagnostyczne, które pomagają zrozumieć, jak aplikacje działają w Azure Monitor.
 
 - [Metryki i dzienniki diagnostyczne](media-services-metrics-diagnostic-logs.md)
-- [Schematy dla dzienników diagnostycznych](media-services-diagnostic-logs-schema.md)
+- [Schematy dzienników diagnostycznych](media-services-diagnostic-logs-schema.md)
 
 ## <a name="player-clients"></a>Odtwarzacze klienckie
 
-Usługa Azure Media Player umożliwia odtwarzanie multimediów udostępnianych przesyłane strumieniowo przez usługę Media Services na podstawie różnych przeglądarek i urządzeń. Usługa Azure Media Player używa standardów branżowych, takich jak HTML5, rozszerzenia źródło nośnika (MSE) i Encrypted Media Extensions (EME), aby zapewnić zaawansowane adaptacyjne środowisko przesyłania strumieniowego. 
+Azure Media Player umożliwia odtwarzanie zawartości multimedialnej przesyłanej przez Media Services na wielu różnych przeglądarkach i urządzeniach. Azure Media Player wykorzystuje standardy branżowe, takie jak HTML5, rozszerzenia źródła nośników (MSE) i rozszerzenia nośników zaszyfrowanych (EME), aby zapewnić wzbogacone, adaptacyjne środowisko przesyłania strumieniowego. 
 
 - [Omówienie usługi Azure Media Player](use-azure-media-player.md)
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Zadawaj pytania, Prześlij opinię i pobieranie aktualizacji
+## <a name="ask-questions-give-feedback-get-updates"></a>Zadawaj pytania, Przekaż opinię, uzyskaj aktualizacje
 
-Zapoznaj się z [społeczności usługi Azure Media Services](media-services-community.md) artykuł, aby wyświetlić różne sposoby zadawaj pytania, Prześlij opinię i pobrać aktualizacje o usłudze Media Services.
+Zapoznaj się z artykułem [community Azure Media Services](media-services-community.md) , aby zobaczyć różne sposoby zadawania pytań, przekazać Opinie i uzyskać aktualizacje dotyczące Media Services.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Kodowanie pliku zdalnego i przesyłanie strumieniowe wideo — REST](stream-files-tutorial-with-rest.md)
+* [Kodowanie zdalnego pliku i wideo strumieniowego — REST](stream-files-tutorial-with-rest.md)
 * [Kodowanie przekazanego pliku i strumienia wideo — .NET](stream-files-tutorial-with-api.md)
-* [Stream na żywo — .NET](stream-live-tutorial-with-api.md)
-* [Analizowanie filmu wideo — .NET](analyze-videos-tutorial-with-api.md)
-* [Szyfrowanie AES-128 - .NET](protect-with-aes128.md)
-* [Dynamiczne szyfrowanie przy użyciu technologii multi-DRM — .NET](protect-with-drm.md) 
+* [Przesyłanie strumieniowe na żywo — .NET](stream-live-tutorial-with-api.md)
+* [Analizowanie wideo — .NET](analyze-videos-tutorial-with-api.md)
+* [Szyfrowanie dynamiczne AES-128 — .NET](protect-with-aes128.md)
+* [Szyfrowanie dynamiczne za pomocą technologii wielowątkowości platformy .NET](protect-with-drm.md) 

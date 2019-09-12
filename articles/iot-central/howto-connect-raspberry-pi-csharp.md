@@ -3,17 +3,17 @@ title: Łączenie Raspberry Pi z aplikacją platformy Azure IoT Central (C#) | M
 description: Jako deweloper urządzenia dołączymy Raspberry Pi do aplikacji Azure IoT Central przy użyciu C#programu.
 author: viv-liu
 ms.author: viviali
-ms.date: 04/15/2019
+ms.date: 09/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 9395fa5ba5ae8dfa6ff03aabd1a27942ca4fa60a
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 7a66925dceee4bf90bc6a5cd155f99347bbd124e
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195175"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70886002"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Łączenie Raspberry Pi z aplikacją platformy Azure IoT Central (C#)
 
@@ -27,12 +27,12 @@ W tym artykule opisano sposób, w jaki deweloper urządzenia nawiązuje połącz
 
 Aby wykonać kroki opisane w tym artykule, potrzebne są następujące składniki:
 
-* Aplikacja IoT Central platformy Azure utworzona na podstawie przykładowego szablonu aplikacji **Devkits** . Aby uzyskać więcej informacji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](quick-deploy-iot-central.md).
+* Aplikacja IoT Central platformy Azure utworzona na podstawie **przykładowego** szablonu aplikacji Devkits. Aby uzyskać więcej informacji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](quick-deploy-iot-central.md).
 * Urządzenie Raspberry Pi działające w systemie operacyjnym raspbian. Raspberry Pi musi mieć możliwość nawiązania połączenia z Internetem. Aby uzyskać więcej informacji, zobacz [Konfigurowanie Raspberry Pi](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/3).
 
 ## <a name="sample-devkits-application"></a>**Przykładowa aplikacja Devkits**
 
-Aplikacja utworzona na podstawie przykładowego szablonu aplikacji **Devkits** zawiera szablon urządzenia **Raspberry Pi** o następujących cechach:
+Aplikacja utworzona na podstawie **przykładowego** szablonu aplikacji Devkits zawiera szablon urządzenia **Raspberry Pi** o następujących cechach:
 
 - Dane telemetryczne, które obejmują następujące pomiary zebrane przez urządzenie:
   - Wilgotność
@@ -319,7 +319,7 @@ Dodaj parametry połączenia specyficzne dla urządzenia do kodu na potrzeby uwi
 
 ## <a name="raspberry-pi-device-template-details"></a>Szczegóły szablonu urządzenia Raspberry Pi
 
-Aplikacja utworzona na podstawie przykładowego szablonu aplikacji **Devkits** zawiera szablon urządzenia **Raspberry Pi** o następujących cechach:
+Aplikacja utworzona na podstawie **przykładowego** szablonu aplikacji Devkits zawiera szablon urządzenia **Raspberry Pi** o następujących cechach:
 
 ### <a name="telemetry-measurements"></a>Pomiary telemetrii
 
@@ -358,7 +358,7 @@ Przełącz ustawienia
 
 | Type            | Nazwa wyświetlana | Nazwa pola | Typ danych                              |
 | --------------- | ------------ | ---------- | -------------------------------------- |
-| Właściwość urządzenia | Numer struktury   | dieNumber  | numer                                 |
+| Właściwość urządzenia | Numer struktury   | dieNumber  | number                                 |
 | Location        | Location     | location   | {Szerokość: float, Long: float, Alt?: float} |
 
 ## <a name="next-steps"></a>Następne kroki

@@ -1,5 +1,5 @@
 ---
-title: 'Przewodnik Szybki Start dla języka Java: Tworzenie, ładowanie i indeksowanie zapytań w języku Java'
+title: 'Szybki start: Tworzenie indeksu wyszukiwania w języku Java przy użyciu interfejsów API REST — Azure Search'
 description: Wyjaśnia, jak utworzyć indeks, załadować dane i uruchamiać zapytania przy użyciu języka Java i interfejsów API REST Azure Search.
 author: lisaleib
 manager: nitinme
@@ -10,15 +10,15 @@ ms.service: search
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 07/11/2019
-ms.openlocfilehash: eec22d14c2d71a94f21a2403463315d477032ede
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.date: 09/10/2019
+ms.openlocfilehash: 455f3dfdce93d0b39960f9ec87b0938060f87687
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186736"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881579"
 ---
-# <a name="quickstart-create-load-and-query-indexes-using-azure-search-rest-apis-with-java"></a>Szybki start: Tworzenie, ładowanie i wykonywanie zapytań względem indeksów przy użyciu Azure Search interfejsów API REST w języku Java
+# <a name="quickstart-create-an-azure-search-index-in-java-using-rest-apis"></a>Szybki start: Tworzenie indeksu Azure Search w języku Java przy użyciu interfejsów API REST
 > [!div class="op_single_selector"]
 > * [JavaScript](search-get-started-nodejs.md)
 > * [C#](search-get-started-dotnet.md)

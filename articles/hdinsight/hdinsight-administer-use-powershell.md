@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: tyfox
-ms.openlocfilehash: 2035f5c7666d93068fd8007555bfe1aadae58ff1
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 3f4ccd8de1f26ea898b0e7ec4bb57aa20b1be209
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67873932"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885343"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Zarządzanie klastrami Apache Hadoop w usłudze HDInsight przy użyciu Azure PowerShell
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
@@ -89,7 +89,7 @@ Wpływ zmiany liczby węzłów danych dla każdego typu klastra obsługiwanego p
 
     Interfejs użytkownika sieci Web burzy jest dostępny w klastrze usługi HDInsight:
 
-    ![Ponowne równoważenie skali burzy usługi HDInsight](./media/hdinsight-administer-use-powershell/hdinsight.portal.scale.cluster.png)
+    ![Ponowne równoważenie skali burzy usługi HDInsight](./media/hdinsight-administer-use-powershell/portal-scale-cluster.png)
 
     Oto przykład sposobu użycia interfejsu wiersza polecenia w celu ponownego zrównoważenia topologii burzy:
 
