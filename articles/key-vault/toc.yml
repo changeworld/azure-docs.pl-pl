@@ -62,8 +62,8 @@
       items:
         - name: Omówienie zabezpieczeń
           href: overview-security.md
-        - name: Wspólne atrybuty zabezpieczeń
-          href: key-vault-security-attributes.md
+        - name: Wbudowane mechanizmy zabezpieczeń
+          href: key-vault-security-controls.md
         - name: Środowiska zabezpieczeń
           href: key-vault-ovw-security-worlds.md
         - name: Zabezpieczanie własnego magazynu kluczy
@@ -90,8 +90,6 @@
           href: create-certificate.md
         - name: Monitorowanie tworzenia certyfikatów i zarządzanie tym procesem
           href: create-certificate-scenarios.md
-    - name: Wspólne atrybuty zabezpieczeń platformy Azure
-      href: key-vault-security-attributes.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Funkcja rejestrowania usługi Azure Key Vault

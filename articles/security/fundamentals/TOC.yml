@@ -321,8 +321,8 @@
   href: best-practices-and-patterns.md
 - name: Zasoby
   items:
-    - name: Wspólne atrybuty zabezpieczeń
-      href: common-security-attributes.md
+    - name: Wbudowane mechanizmy zabezpieczeń
+      href: security-controls.md
     - name: Program MVP dotyczący zabezpieczeń platformy Azure
       href: mvp.md
     - name: Doradztwo z zakresu cyberbezpieczeństwa

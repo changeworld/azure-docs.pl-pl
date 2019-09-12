@@ -80,8 +80,8 @@
       href: backup-azure-backup-server-import-export-.md
     - name: Zastępowanie biblioteki taśm
       href: backup-azure-backup-cloud-as-tape.md
-    - name: Wspólne atrybuty zabezpieczeń platformy Azure
-      href: backup-security-attributes.md
+    - name: Wbudowane mechanizmy zabezpieczeń
+      href: backup-security-controls.md
 - name: Instrukcje
   items:
     - name: Azure Backup Server

@@ -36,8 +36,8 @@
       href: relay-authentication-and-authorization.md
     - name: Protokół połączeń hybrydowych
       href: relay-hybrid-connections-protocol.md
-    - name: Wspólne atrybuty zabezpieczeń platformy Azure
-      href: service-bus-relay-security-attributes.md
+    - name: Wbudowane mechanizmy zabezpieczeń
+      href: service-bus-relay-security-controls.md
 - name: Instrukcje
   items:
     - name: Planowanie i projektowanie

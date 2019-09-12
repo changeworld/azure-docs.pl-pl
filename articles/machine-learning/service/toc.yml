@@ -152,18 +152,20 @@
         - name: Konfigurowanie środowisk szkoleniowych
           displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
           href: how-to-set-up-training-targets.md
-        - name: Tworzenie estymatorów na potrzeby trenowania
-          href: how-to-train-ml-models.md
-        - name: Korzystanie z biblioteki Scikit-learn
-          href: how-to-train-scikit-learn.md
-        - name: Korzystanie z biblioteki TensorFlow
-          href: how-to-train-tensorflow.md
-        - name: Używanie biblioteki Keras
-          href: how-to-train-keras.md
-        - name: Korzystanie z biblioteki PyTorch
-          href: how-to-train-pytorch.md
-        - name: Korzystanie z platformy Chainer
-          href: how-to-train-chainer.md
+        - name: Uczenie za pomocą narzędzi do szacowania
+          items:
+            - name: Tworzenie estymatorów na potrzeby trenowania
+              href: how-to-train-ml-models.md
+            - name: Korzystanie z biblioteki Scikit-learn
+              href: how-to-train-scikit-learn.md
+            - name: Korzystanie z biblioteki TensorFlow
+              href: how-to-train-tensorflow.md
+            - name: Używanie biblioteki Keras
+              href: how-to-train-keras.md
+            - name: Korzystanie z biblioteki PyTorch
+              href: how-to-train-pytorch.md
+            - name: Korzystanie z platformy Chainer
+              href: how-to-train-chainer.md
         - name: Dostrajanie hiperparametrów
           displayName: parameter
           href: how-to-tune-hyperparameters.md
@@ -189,7 +191,7 @@
         - name: Używanie automatycznego uczenia maszynowego (Python)
           displayName: SDK automl
           href: how-to-configure-auto-train.md
-        - name: Używanie automatycznego uczenia maszynowego (Azure Portal)
+        - name: Używanie zautomatyzowanego uczenia maszynowego (strona docelowa obszaru roboczego)
           href: how-to-create-portal-experiments.md
         - name: Używanie miejsc docelowych obliczania zdalnego
           displayName: automl automated auto ml

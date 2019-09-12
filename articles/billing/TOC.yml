@@ -123,8 +123,6 @@
       href: billing-how-to-change-azure-account-profile.md
     - name: Udzielanie dostępu do rozliczeń
       href: billing-manage-access.md
-    - name: Role umowy EA na platformie Azure
-      href: billing-understand-ea-roles.md
     - name: Role umów klienta firmy Microsoft na platformie Azure
       href: billing-understand-mca-roles.md
     - name: Identyfikator partnera linku
@@ -133,8 +131,26 @@
       href: billing-view-all-accounts.md
     - name: Organizowanie kosztów w sekcjach faktury
       href: billing-mca-section-invoice.md
-    - name: Zadania umowy EA w umowie klienta firmy Microsoft
-      href: billing-mca-enterprise-operations.md
+    - name: Zarządzanie umowami Enterprise Agreement
+      items:
+        - name: Rozpoczynanie pracy w portalu umowy Enterprise Agreement platformy Azure
+          href: billing-ea-portal-get-started.md
+        - name: Role umowy EA na platformie Azure
+          href: billing-understand-ea-roles.md
+        - name: Administracja przy użyciu portalu umowy Enterprise Agreement
+          href: billing-ea-portal-administration.md
+        - name: Umowy EA platformy Azure i poprawki
+          href: billing-ea-portal-agreements.md
+        - name: Faktury dotyczące rejestracji przedsiębiorstw
+          href: billing-ea-portal-enrollment-invoices.md
+        - name: Interfejs API REST usługi Azure Enterprise
+          href: billing-ea-portal-rest-apis.md
+        - name: Wystąpienia zarezerwowane maszyn wirtualnych z umowami EA platformy Azure
+          href: billing-ea-portal-vm-reservations.md
+        - name: Rozwiązywanie problemów z dostępem do portalu umowy Enterprise Agreement platformy Azure
+          href: billing-ea-portal-troubleshoot.md
+        - name: Zadania umowy EA w umowie klienta firmy Microsoft
+          href: billing-mca-enterprise-operations.md
     - name: Rozwiązywanie problemów dotyczących zaległego salda
       href: billing-azure-subscription-past-due-balance.md
     - name: Konfigurowanie konta rozliczeniowego dla umowy klienta firmy Microsoft

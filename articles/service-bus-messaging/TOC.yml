@@ -108,8 +108,8 @@
                   href: service-bus-managed-service-identity.md
                 - name: Uwierzytelnianie przy użyciu aplikacji
                   href: authenticate-application.md
-        - name: Wspólne atrybuty zabezpieczeń platformy Azure
-          href: service-bus-messaging-security-attributes.md
+        - name: Wbudowane mechanizmy zabezpieczeń
+          href: service-bus-messaging-security-controls.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Tworzenie przestrzeni nazw

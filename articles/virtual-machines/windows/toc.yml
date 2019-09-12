@@ -142,8 +142,8 @@
       href: backup-recovery.md
     - name: Przykład infrastruktury
       href: infrastructure-example.md
-    - name: Atrybuty zabezpieczeń
-      href: virtual-machines-windows-security-attributes.md
+    - name: Wbudowane mechanizmy zabezpieczeń
+      href: virtual-machines-windows-security-controls.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Tworzenie maszyn wirtualnych

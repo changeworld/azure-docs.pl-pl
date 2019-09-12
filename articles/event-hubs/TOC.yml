@@ -101,8 +101,8 @@
                   href: authenticate-application.md
             - name: Uwierzytelnianie za pomocą sygnatury dostępu współdzielonego
               href: authenticate-shared-access-signature.md
-        - name: Atrybuty zabezpieczeń
-          href: event-hubs-security-attributes.md
+        - name: Wbudowane mechanizmy zabezpieczeń
+          href: event-hubs-security-controls.md
     - name: Przewodnik dotyczący protokołu AMQP 1.0
       href: ../service-bus-messaging/service-bus-amqp-protocol-guide.md
       maintainContext: true
