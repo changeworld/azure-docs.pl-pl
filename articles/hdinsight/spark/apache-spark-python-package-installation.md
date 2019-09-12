@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.openlocfilehash: da871a1fed0663c5654ebcfd61f4189bf2267026
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: ce5dc7e17020e1e4564ebe1f531645f7329718dc
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814063"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900684"
 ---
 # <a name="script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-on-hdinsight"></a>Akcja skryptu służąca do instalowania zewnętrznych pakietów języka Python dla notesów Jupyter w Apache Spark w usłudze HDInsight
 
@@ -97,7 +97,7 @@ Istnieją dwa typy składników typu "open source", które są dostępne w usłu
 
     Wynik będzie wyglądać następująco:
     
-    ![TensorFlow wykonywanie kodu](./media/apache-spark-python-package-installation/execution.png "Wykonaj kod TensorFlow")
+    ![TensorFlow wykonywanie kodu](./media/apache-spark-python-package-installation/tensorflow-execution.png "Wykonaj kod TensorFlow")
 
 > [!NOTE]  
 > W klastrze są zainstalowane dwie instalacje języka Python. Platforma Spark użyje instalacji języka Python Anaconda znajdującej się w lokalizacji `/usr/bin/anaconda/bin` i domyślnie będzie środowiskiem Python 2,7. Aby użyć języka Python 3. x i zainstalować pakiety w jądrze PySpark3, należy użyć ścieżki do `conda` pliku wykonywalnego dla tego środowiska i `-n` użyć parametru w celu określenia środowiska. Na przykład polecenie `/usr/bin/anaconda/envs/py35/bin/conda install -c conda-forge ggplot -n py35` `ggplot` instaluje pakiet w środowisku `conda-forge` Python 3,5 przy użyciu kanału.

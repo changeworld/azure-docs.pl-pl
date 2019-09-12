@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 08/13/2019
+ms.date: 09/06/2019
 ms.author: diberry
-ms.openlocfilehash: fbd86698438e09a0c94c06e0e79800b8d38b57c1
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: a7c02c92ed61e4c8c8bd6a634cc9c6ad3538396e
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544845"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883696"
 ---
 # <a name="quickstart-personalize-client-library-for-nodejs"></a>Szybki start: Personalizowanie biblioteki klienckiej dla środowiska Node. js
 
@@ -46,6 +46,9 @@ Po otrzymaniu klucza z subskrypcji próbnej lub zasobu Utwórz dwie [zmienne śr
 
 * `PERSONALIZER_KEY`dla klucza zasobu.
 * `PERSONALIZER_ENDPOINT`dla punktu końcowego zasobu.
+
+W Azure Portal wartości klucza i punktu końcowego są dostępne na stronie **Szybki Start** .
+
 
 ### <a name="create-a-new-nodejs-application"></a>Tworzenie nowej aplikacji Node.js
 
@@ -133,7 +136,7 @@ Akcje reprezentują opcje zawartości, które chcesz spersonalizować. Dodaj nas
 
 ## <a name="create-the-learning-loop"></a>Tworzenie pętli uczenia
 
-Pętla szkoleniowa personalizacji jest cyklem [](#request-a-rank) wywołań rangi i [nagrody](#send-a-reward) . W tym przewodniku szybki start każdy wywołania rangi, aby spersonalizować zawartość, nastąpi wywołanie zarobkowe, aby poinformować program Personalizuj, jak dobrze zaklasyfikował zawartość usługi. 
+Pętla szkoleniowa personalizacji jest cyklem wywołań [rangi](#request-a-rank) i [nagrody](#send-a-reward) . W tym przewodniku szybki start każdy wywołania rangi, aby spersonalizować zawartość, nastąpi wywołanie zarobkowe, aby poinformować program Personalizuj, jak dobrze zaklasyfikował zawartość usługi. 
 
 Poniższy pętla kodu pętle za pośrednictwem cyklu z prośbą użytkownika o ich preferencje w wierszu polecenia, wysyłając te informacje do narzędzia Personalizacja w celu zaprezentowania na liście rangi, a następnie wysłania nagrody do Personalizowanie sygnalizujące, jak dobrze usługa przeszedł wybór.
 
@@ -153,7 +156,7 @@ Ten przewodnik Szybki Start zawiera proste funkcje kontekstu o porze dnia i pref
 
 Aby zakończyć żądanie pozyskania, program pobiera wybór użytkownika z wiersza polecenia, przypisuje wartość liczbową do każdego zaznaczenia, a następnie wysyła unikatowy identyfikator zdarzenia rangi i wartość liczbową do metody nagrody.
 
-Ten przewodnik Szybki Start przypisuje prostą liczbę jako wynagrodzenie, zero lub 1. W systemach produkcyjnych określenie, kiedy i co mają być wysyłane do [](concept-rewards.md) płatnego wywołania, może być nieuproszczone, w zależności od konkretnych potrzeb. 
+Ten przewodnik Szybki Start przypisuje prostą liczbę jako wynagrodzenie, zero lub 1. W systemach produkcyjnych określenie, kiedy i co mają być wysyłane do [płatnego wywołania,](concept-rewards.md) może być nieuproszczone, w zależności od konkretnych potrzeb. 
 
 [!code-javascript[The Personalizer learning loop sends a reward.](~/samples-personalizer/quickstarts/node/sample.js?name=reward)]
 

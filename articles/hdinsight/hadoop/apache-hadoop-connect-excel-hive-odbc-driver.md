@@ -1,7 +1,7 @@
 ---
-title: Łączenie programu Excel do platformy Apache Hadoop przy użyciu sterownika Hive ODBC — usługa Azure HDInsight
-description: Informacje o sposobie konfigurowania i używania sterownika Hive ODBC firmy Microsoft dla programu Excel, wykonywać zapytania względem danych w klastrach HDInsight z programu Microsoft Excel.
-keywords: hadoop programu excel, programu hive w programie excel, hive odbc
+title: Łączenie programu Excel z Apache Hadoop ze sterownikiem Hive ODBC — Azure HDInsight
+description: Dowiedz się, jak skonfigurować i używać sterownika Microsoft Hive ODBC dla programu Excel do wykonywania zapytań dotyczących danych w klastrach usługi HDInsight z programu Microsoft Excel.
+keywords: Program Hadoop Excel, Hive Excel, Hive ODBC
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,98 +9,98 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: hrasheed
-ms.openlocfilehash: 01e7ca184f2be755f23cd402e0694ea282e3b85e
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b1231a406ac20512e9ce92032379d697c3346af3
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441399"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882830"
 ---
-# <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Łączenie programu Excel do platformy Apache Hadoop w usłudze Azure HDInsight przy użyciu sterownika Hive ODBC firmy Microsoft
+# <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Łączenie programu Excel z Apache Hadoop w usłudze Azure HDInsight za pomocą sterownika Microsoft Hive ODBC
 
 [!INCLUDE [ODBC-JDBC-selector](../../../includes/hdinsight-selector-odbc-jdbc.md)]
 
-Rozwiązania danych Big Data firmy Microsoft integruje składniki Microsoft Business Intelligence (BI) z klastrami Apache Hadoop, które zostały wdrożone w usłudze Azure HDInsight. Przykładem takiej integracji jest możliwość łączenia z programu Excel w magazynie danych Hive w klastrze usługi Hadoop na platformie HDInsight za pomocą sterownika Microsoft Hive Open Database Connectivity (ODBC).
+Rozwiązanie firmy Microsoft do obsługi danych Big Data integruje składniki analizy biznesowej firmy Microsoft z klastrami Apache Hadoop, które zostały wdrożone w usłudze Azure HDInsight. Przykładem tej integracji jest możliwość łączenia programu Excel z magazynem danych Hive klastra Hadoop w usłudze HDInsight przy użyciu sterownika Microsoft Hive Open Database Connectivity (ODBC).
 
-Istnieje również możliwość łączenia danych skojarzonych z klastra usługi HDInsight i innymi źródłami danych, w tym inne klastry usługi Hadoop (inne niż HDInsight), z poziomu programu Excel przy użyciu dodatku Microsoft Power Query dla programu Excel. Aby uzyskać informacje na temat instalowania i za pomocą dodatku Power Query, zobacz [Connect Excel to HDInsight za pomocą dodatku Power Query](../hdinsight-connect-excel-power-query.md).
+Istnieje również możliwość łączenia danych skojarzonych z klastrem usługi HDInsight i innych źródeł danych, w tym innych klastrów usługi Hadoop (innych niż HDInsight), z programu Excel przy użyciu dodatku Microsoft Power Query dla programu Excel. Aby uzyskać informacje na temat instalowania i używania Power Query, zobacz [łączenie programu Excel z usługą HDInsight z Power Query](../hdinsight-connect-excel-power-query.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed przystąpieniem do wykonywania w tym artykule, musi mieć następujące elementy:
+Przed rozpoczęciem pracy z tym artykułem należy dysponować następującymi elementami:
 
-* Klaster usługi HDInsight Hadoop. Aby go utworzyć, zobacz [Rozpoczynanie pracy z usługą Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md).
-* Stacja robocza z pakietu Office 2010 Professional Plus lub nowszym lub programu Excel 2010 lub nowszej.
+* HDInsight An klastra Hadoop. Aby go utworzyć, zobacz [Rozpoczynanie pracy z usługą Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md).
+* Stacja robocza z pakietem Office 2010 Professional Plus lub nowszym albo programem Excel 2010 lub nowszym.
 
-## <a name="install-microsoft-hive-odbc-driver"></a>Zainstaluj sterownik Hive ODBC firmy Microsoft
-Pobierz i zainstaluj [sterownika Microsoft Hive ODBC](https://go.microsoft.com/fwlink/?LinkID=286698) wersję, która jest zgodna z wersją aplikacji, w której będą używać sterownika ODBC.  W tym artykule sterownik jest używany dla programu Office Excel.
+## <a name="install-microsoft-hive-odbc-driver"></a>Zainstaluj sterownik Microsoft Hive ODBC
+Pobierz i Zainstaluj wersję [Sterownik Microsoft Hive ODBC](https://go.microsoft.com/fwlink/?LinkID=286698) zgodną z wersją aplikacji, w której będziesz używać sterownika ODBC.  W tym artykule sterownik jest używany dla programu Office Excel.
 
-## <a name="create-apache-hive-odbc-data-source"></a>Utwórz źródło danych Apache Hive ODBC
-Poniższe kroki pokazują sposób tworzenia źródła danych ODBC programu Hive.
+## <a name="create-apache-hive-odbc-data-source"></a>Tworzenie źródła danych Apache Hive ODBC
+Poniższe kroki pokazują, jak utworzyć źródło danych ODBC Hive.
 
-1. W Windows, przejdź do menu Start > Narzędzia administracyjne Windows > źródła danych ODBC (32-bit)/(64-bit).  Spowoduje to otwarcie **Administrator źródła danych ODBC** okna.
+1. W systemie Windows przejdź do menu Start, aby rozpocząć > Narzędzia administracyjne systemu Windows > źródła danych ODBC (32-bitowe)/(64-bitowe).  Spowoduje to otwarcie okna **administratora źródła danych ODBC** .
 
-    ![Administrator źródła danych OBDC](./media/apache-hadoop-connect-excel-hive-odbc-driver/HDI.SimbaHiveOdbc.DataSourceAdmin1.png "skonfigurować przy użyciu Administratora źródła danych ODBC DSN")
+    ![Administrator źródła danych OBDC](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-datasourceadmin1.png "Konfigurowanie DSN przy użyciu administratora źródła danych ODBC")
 
-1. Z **DSN użytkownika** zaznacz **Dodaj** otworzyć **Utwórz nowe źródło danych** okna.
+1. Na karcie **DSN użytkownika** wybierz pozycję **Dodaj** , aby otworzyć okno **Utwórz nowe źródło danych** .
 
-1. Wybierz **sterownika Microsoft Hive ODBC**, a następnie wybierz pozycję **Zakończ** otworzyć **Hive ODBC Driver DSN Instalator programu Microsoft** okna.
+1. Wybierz pozycję **Sterownik Microsoft Hive ODBC**, a następnie wybierz pozycję **Zakończ** , aby otworzyć okno **instalacji sterownik Microsoft Hive ODBC DSN** .
 
 1. Wpisz lub wybierz poniższe wartości:
 
    | Właściwość | Opis |
    | --- | --- |
    |  Data Source Name (Nazwa źródła danych) |Nadaj nazwę źródła danych. |
-   |  Hostami |Wprowadź polecenie `HDInsightClusterName.azurehdinsight.net`. Na przykład: `myHDICluster.azurehdinsight.net` |
+   |  Hosty |Wprowadź polecenie `HDInsightClusterName.azurehdinsight.net`. Na przykład: `myHDICluster.azurehdinsight.net` |
    |  Port |Użyj portu **443**. (Ten port został zmieniony z 563 na 443). |
-   |  Database (Baza danych) |Użyj **domyślne**. |
-   |  Mechanism (Mechanizm) |Wybierz **Windows, usługa Azure HDInsight** |
-   |  Nazwa użytkownika |Wprowadź username użytkownika HTTP klastra HDInsight. Domyślna nazwa użytkownika to **admin**. |
-   |  Hasło |Wprowadź hasło użytkownika klastra HDInsight. Zaznacz pole wyboru **Zapisz hasła (zaszyfrowane)** .|
+   |  Database (Baza danych) |Użyj **domyślnego**. |
+   |  Mechanizm |Wybieranie **usługi HDInsight systemu Windows Azure** |
+   |  Nazwa użytkownika |Wprowadź nazwę użytkownika HTTP klastra usługi HDInsight. Domyślna nazwa użytkownika to **admin**. |
+   |  Hasło |Wprowadź hasło użytkownika klastra usługi HDInsight. Zaznacz pole wyboru **Zapisz hasło (zaszyfrowane)** .|
 
-1. Opcjonalnie: Wybierz **opcje zaawansowane...**  
+1. Opcjonalnie: Wybierz **Opcje zaawansowane...**  
 
    | Parametr | Opis |
    | --- | --- |
-   |  Użyj zapytania natywne |Jeśli wybrano, sterownik ODBC nie podejmuje próby konwertować TSQL HiveQL. Są służy tylko wtedy, gdy są się, że przesyłasz czystego instrukcje HiveQL w 100%. Podczas nawiązywania połączenia programu SQL Server lub usługi Azure SQL Database, należy pozostawić nie zaznaczone. |
-   |  Pobrano następującą liczbę na blok wierszy |Podczas pobierania dużą liczbę rekordów, dostrajanie ten parametr może być konieczne zapewnienia optymalnej wydajności. |
-   |  Domyślna długość kolumny ciąg, długość kolumny binarne, skala dziesiętną kolumny |Typ danych długości i opisie może mieć wpływ na sposób dane są zwracane. Spowodują niepoprawne informacje, które mają zostać zwrócone ze względu na utratę dokładności i/lub obcięcie. |
+   |  Użyj zapytania natywnego |Po wybraniu tego sterownika ODBC nie próbuje skonwertować TSQL na HiveQL. Należy jej używać tylko w przypadku 100% pewności, że przesyłane są czyste instrukcje HiveQL. W przypadku nawiązywania połączenia z usługą SQL Server lub Azure SQL Database należy pozostawić zaznaczenie pola wyboru. |
+   |  Liczba pobranych wierszy na blok |Podczas pobierania dużej liczby rekordów dostrajanie tego parametru może być wymagane w celu zapewnienia optymalnej wydajności. |
+   |  Domyślna długość kolumny ciągu, długość kolumny binarnej, skala kolumn dziesiętnych |Długości i precyzji typu danych mogą mieć wpływ na sposób zwracania danych. Powodują one zwrócenie nieprawidłowych informacji z powodu utraty dokładności i/lub obcięcia. |
 
-    ![Zaawansowane opcje](./media/apache-hadoop-connect-excel-hive-odbc-driver/HDI.HiveOdbc.DataSource.AdvancedOptions1.png "DSN zaawansowane opcje konfiguracji")
+    ![Opcje zaawansowane](./media/apache-hadoop-connect-excel-hive-odbc-driver/hiveodbc-datasource-advancedoptions1.png "Zaawansowane opcje konfiguracji DSN")
 
-1. Wybierz **Test** do testowania źródła danych. Gdy źródło danych jest skonfigurowany poprawnie, wynik testu pokazuje **sukces!** .  
+1. Wybierz **test** , aby przetestować źródło danych. Gdy źródło danych jest prawidłowo skonfigurowane, wynik testu pokazuje **sukces!** .  
 
-1. Wybierz **OK** zamknięcie okna testów.  
+1. Wybierz **przycisk OK** , aby zamknąć okno testowe.  
 
-1. Wybierz **OK** zamknąć **Hive ODBC Driver DSN Instalator programu Microsoft** okna.  
+1. Wybierz **przycisk OK** , aby zamknąć okno **instalacji sterownik Microsoft Hive ODBC DSN** .  
 
-1. Wybierz **OK** zamknąć **Administrator źródła danych ODBC** okna.  
+1. Wybierz **przycisk OK** , aby zamknąć okno **Administrator źródła danych ODBC** .  
 
 ## <a name="import-data-into-excel-from-hdinsight"></a>Importowanie danych do programu Excel z usługi HDInsight
 
-W poniższych krokach opisano sposób importowania danych z tabeli programu Hive do skoroszytu programu Excel przy użyciu źródła danych ODBC, który został utworzony w poprzedniej sekcji.
+Poniższe kroki opisują sposób importowania danych z tabeli Hive do skoroszytu programu Excel przy użyciu źródła danych ODBC utworzonego w poprzedniej sekcji.
 
 1. Otwórz nowy lub istniejący skoroszyt w programie Excel.
 
-2. Z **danych** kartę, przejdź do folderu **Pobierz dane** > **z innych źródeł** > **z ODBC** do uruchomienia **Z ODBC** okna.
+2. Na karcie **dane** przejdź do **pobierania danych** > **z innych źródeł** > **z ODBC** , aby uruchomić z okna **ODBC** .
 
-    ![Otwieranie Kreatora połączenia danych](./media/apache-hadoop-connect-excel-hive-odbc-driver/HDI.SimbaHiveOdbc.Excel.DataConnection1.png "otwieranie Kreatora połączenia danych")
+    ![Kreator otwierania połączenia danych](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-excel-dataconnection1.png "Kreator otwierania połączenia danych")
 
-3. Z listy rozwijanej wybierz nazwę źródła danych, który został utworzony w ostatniej sekcji, a następnie wybierz **OK**.
+3. Z listy rozwijanej wybierz nazwę źródła danych utworzoną w ostatniej sekcji, a następnie wybierz przycisk **OK**.
 
-4. Do pierwszego użycia **sterownika ODBC** spowoduje to otwarcie okna dialogowego. Wybierz **Windows** menu po lewej stronie. Następnie wybierz pozycję **Connect** otworzyć **Nawigator** okna.
+4. Do pierwszego użycia zostanie otwarte okno dialogowe **sterownika ODBC** . Z menu po lewej stronie wybierz pozycję **Windows** . Następnie wybierz pozycję **Połącz** , aby otworzyć okno **Nawigator** .
 
-5. Z **Nawigator**, przejdź do **HIVE** > **domyślne** > **hivesampletable**, a następnie wybierz pozycję  **Obciążenia**. Może potrwać kilka minut przed importowanie danych do programu Excel.
+5. Z **poziomu nawigatora**przejdź do**hivesampletable** **domyślnych** >  **gałęzi** > , a następnie wybierz pozycję **Załaduj**. Importowanie danych do programu Excel trwa kilka chwil.
 
-    ![Nawigator HDInsight Hive ODBC](./media/apache-hadoop-connect-excel-hive-odbc-driver/hdinsight.hive.odbc.navigator.png "otwieranie Kreatora połączenia danych")
+    ![Nawigator ODBC usługi HDInsight Hive](./media/apache-hadoop-connect-excel-hive-odbc-driver/hdinsight-hive-odbc-navigator.png "Kreator otwierania połączenia danych")
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym artykule przedstawiono sposób użyć sterownika Hive ODBC firmy Microsoft do pobierania danych z usługi HDInsight do programu Excel. Podobnie można pobierać dane z usługi HDInsight do bazy danych SQL. Istnieje również możliwość przekazywania danych do usługi HDInsight. Aby dowiedzieć się więcej, zobacz:
+W tym artykule przedstawiono sposób użycia sterownika Microsoft Hive ODBC do pobierania danych z usługi HDInsight do programu Excel. Podobnie można pobrać dane z usługi HDInsight do SQL Database. Możliwe jest również przekazywanie danych do usługi HDInsight. Aby dowiedzieć się więcej, zobacz:
 
-* [Wizualizuj dane Apache Hive z usługą Microsoft Power BI w usłudze Azure HDInsight](apache-hadoop-connect-hive-power-bi.md).
-* [Wizualizuj dane Interactive Query Hive z usługą Power BI w usłudze Azure HDInsight](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
-* [Uruchamianie zapytania usługi Apache Hive w usłudze Azure HDInsight za pomocą rozwiązania Zeppelin Apache](../interactive-query/hdinsight-connect-hive-zeppelin.md).
-* [Łączenie programu Excel do platformy Apache Hadoop za pomocą dodatku Power Query](apache-hadoop-connect-excel-power-query.md).
-* [Nawiązywanie połączenia usługi Azure HDInsight i uruchomić zapytania usługi Apache Hive przy użyciu narzędzi Data Lake Tools for Visual Studio](apache-hadoop-visual-studio-tools-get-started.md).
-* [Narzędzie Azure HDInsight dla programu Visual Studio Code](../hdinsight-for-vscode.md).
-* [Przekazywanie danych do HDInsight](./../hdinsight-upload-data.md).
+* [Wizualizuj Apache Hive dane za pomocą usługi Microsoft Power BI w usłudze Azure HDInsight](apache-hadoop-connect-hive-power-bi.md).
+* [Wizualizowanie interakcyjnych zapytań danych Hive za pomocą Power BI w usłudze Azure HDInsight](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
+* [Użyj programu Apache Zeppelin do uruchamiania zapytań Apache Hive w usłudze Azure HDInsight](../interactive-query/hdinsight-connect-hive-zeppelin.md).
+* [Łączenie programu Excel z Apache Hadoop przy użyciu Power Query](apache-hadoop-connect-excel-power-query.md).
+* [Nawiązywanie połączenia z usługą Azure HDInsight i uruchamianie zapytań Apache Hive przy użyciu narzędzi Data Lake Tools for Visual Studio](apache-hadoop-visual-studio-tools-get-started.md).
+* [Użyj narzędzia Azure HDInsight do Visual Studio Code](../hdinsight-for-vscode.md).
+* [Przekazywanie danych do usługi HDInsight](./../hdinsight-upload-data.md).

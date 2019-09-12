@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: be69f18f30b796e7401ef68aa5088153e07f14f5
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: cb0552612d95500e01edd91aff36406d4c2282bd
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127885"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70909979"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Obsługa języka i regionu dla interfejs API tłumaczenia tekstu w usłudze Translator
 
@@ -38,7 +38,7 @@ Interfejs API tłumaczenia tekstu w usłudze Translator obsługuje tłumaczenie 
 **Interfejs API usługi Translator v3** Interfejs API usługi Translator V3 jest neuronowych domyślnie, a systemy statystyczne są dostępne tylko wtedy, gdy nie istnieje system neuronowych.
 
 > [!NOTE]
-> Obecnie podzestaw języków neuronowych jest dostępny w usłudze translator niestandardowym i stopniowo dodajemy dodatkowe. [Języki widoku dostępne obecnie w usłudze translator](#customization)niestandardowym.
+> Obecnie podzestaw języków neuronowych jest dostępny w usłudze translator niestandardowym i stopniowo dodajemy dodatkowe. [Języki widoku dostępne obecnie w usłudze translator niestandardowym](#customization).
 
 |Język|  Kod języka|  INTERFEJS API V2| INTERFEJS API V3|
 |:-----|:-----:|:-----|:-----|
@@ -229,6 +229,7 @@ Następujące języki są dostępne do dostosowania do języka angielskiego lub 
 | Węgierski      | `hu`          |
 | Islandzki | `is` |
 | Indonezyjski|   `id`    |
+| Irlandzki | `ga`  |
 | Włoski      | `it`          |
 | Japoński      | `ja`          |
 |Suahili| `sw`    |

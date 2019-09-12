@@ -1,7 +1,7 @@
 ---
 title: Utwórz pierwszy zautomatyzowany eksperyment uczenia maszynowego
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak nauczyć i wdrożyć model klasyfikacji przy użyciu automatycznej uczenia maszynowego w Azure Portal.
+description: Dowiedz się, jak wyszkolić i wdrożyć model klasyfikacji przy użyciu automatycznego uczenia maszynowego na stronie docelowej obszaru roboczego Azure Machine Learning (wersja zapoznawcza).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,17 +9,17 @@ ms.topic: tutorial
 ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
-ms.date: 08/14/2019
-ms.openlocfilehash: 01228dc01b8006a0a2476ddbbd6fa8ff430e280a
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.date: 09/09/2019
+ms.openlocfilehash: 0dd4447736469644875dff914c6284b087be87d0
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982757"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910219"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Samouczek: Tworzenie pierwszego modelu klasyfikacji przy użyciu automatycznej uczenia maszynowego
 
-W tym samouczku dowiesz się, jak utworzyć pierwszy zautomatyzowany eksperyment uczenia maszynowego w Azure Portal (wersja zapoznawcza) bez konieczności pisania pojedynczego wiersza kodu. Ten przykład tworzy model klasyfikacji, aby przewidzieć, czy klient zasubskrybuje stały termin wpłaty z instytucją finansową.
+W tym samouczku dowiesz się, jak utworzyć pierwszy zautomatyzowany eksperyment uczenia maszynowego za pomocą strony docelowej obszaru roboczego (wersja zapoznawcza) bez konieczności pisania pojedynczego wiersza kodu. Ten przykład tworzy model klasyfikacji, aby przewidzieć, czy klient zasubskrybuje stały termin wpłaty z instytucją finansową.
 
 Dzięki zautomatyzowanej usłudze Machine Learning można zautomatyzować czasochłonne zadania. Automatyczne Uczenie maszynowe szybko iteruje wiele kombinacji algorytmów i parametrów, aby ułatwić znalezienie najlepszego modelu w oparciu o pomyślną metrykę wybrania.
 
@@ -39,48 +39,82 @@ W tym samouczku dowiesz się, jak wykonywać następujące zadania:
 
 ## <a name="create-a-workspace"></a>Tworzenie obszaru roboczego
 
+Obszar roboczy Azure Machine Learning to podstawowe zasoby w chmurze, za pomocą których można eksperymentować, uczeniować i wdrażać modele uczenia maszynowego. Łączy ona Twoją subskrypcję i grupę zasobów platformy Azure z łatwym w użyciu obiektem w usłudze. 
+
+Aby zarządzać zasobami platformy Azure, można utworzyć obszar roboczy za pośrednictwem Azure Portal konsoli internetowej. 
+
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
+
+>[!IMPORTANT] 
+> Zanotuj swój **obszar roboczy** i **subskrypcję**. Będą one potrzebne do utworzenia eksperymentu w odpowiednim miejscu. 
 
 ## <a name="create-and-run-the-experiment"></a>Tworzenie i uruchamianie eksperymentu
 
-Te kroki przeprowadzą Cię przez proces eksperymentowania skonfigurowany z wyboru danych, aby wybrać podstawową metrykę i typ modelu. 
+Wykonaj następujące kroki konfiguracji i uruchamiania na stronie docelowej obszaru roboczego, skonsolidowany interfejs, który obejmuje narzędzia uczenia maszynowego do wykonywania scenariuszy analizy danych dla lekarzy danych o wszystkich poziomach umiejętności.
 
-1. Przejdź do lewego okienka obszaru roboczego. Wybierz pozycję **Automatyczne Uczenie maszynowe** w sekcji **Tworzenie (wersja zapoznawcza)** .
-Zobaczysz ekran " **Witamy w Machine Learning zautomatyzowanym** ", ponieważ jest to pierwszy eksperyment z automatycznym Machine Learningem.
+1. Zaloguj się do [strony docelowej obszaru roboczego](https://ml.azure.com/workspaceportal/).
 
-    ![Azure Portal okienku nawigacji](media/tutorial-1st-experiment-automated-ml/nav-pane.png)
+1. Wybierz swoją subskrypcję i utworzony obszar roboczy.
 
-1. Wybierz pozycję **Utwórz eksperyment**. Następnie wprowadź **My-1-automl-eksperyment** jako nazwę eksperymentu.
+1. Wybierz pozycję **Rozpocznij**.
 
-1. Wybierz pozycję **Utwórz nowe obliczenie** i skonfiguruj kontekst obliczeniowy dla tego eksperymentu.
+1.  Wybierz pozycję **zautomatyzowany ml** w sekcji **Tworzenie** w okienku po lewej stronie.
+Zobaczysz ekran **wprowadzenie** , ponieważ jest to pierwszy eksperyment z automatycznym Machine Learningem.
 
-    Pole| Value
-    ---|---
-    Nazwa środowiska obliczeniowego| Wprowadź unikatową nazwę identyfikującą kontekst obliczeniowy. W tym przykładzie używamy **automl-COMPUTE**.
-    Rozmiar maszyny wirtualnej| Wybierz rozmiar maszyny wirtualnej dla obliczenia. Korzystamy z **Standard_DS12_V2**.
-    Ustawienia dodatkowe| *Minimalny węzeł*: 1. Aby włączyć Profilowanie danych, musisz mieć co najmniej jeden węzeł. <br> *Maksymalny węzeł*: 6. 
+    ![Studio uczenia maszynowego Azure](media/tutorial-1st-experiment-automated-ml/get-started.png)
 
-    Aby utworzyć nowe obliczenie, wybierz pozycję **Utwórz**. Trwa to kilka minut. 
+1. Wybierz pozycję **Utwórz eksperyment**. 
 
-    Po zakończeniu tworzenia wybierz nowe obliczenie z listy rozwijanej, a następnie wybierz przycisk **dalej**.
+1. Wprowadź **My-1-automl-eksperyment** jako nazwę eksperymentu.
+
+1. Wybierz pozycję **Utwórz nowe obliczenie**. 
+
+    1. Skonfiguruj kontekst obliczeniowy dla tego eksperymentu.
+        
+        Pole | Value
+        ----|---
+        Nazwa środowiska obliczeniowego |  Wprowadź unikatową nazwę identyfikującą kontekst obliczeniowy. W tym przykładzie należy użyć **automl-COMPUTE**.
+        Rozmiar maszyny wirtualnej| Wybierz rozmiar maszyny wirtualnej dla obliczenia. Użyj domyślnej **Standard_DS12_V2**.
+        Ustawienia dodatkowe| *Minimalny węzeł*: 1. Aby włączyć Profilowanie danych, musisz mieć co najmniej jeden węzeł. <br> *Maksymalny węzeł*: 6.
+ 
+    1. Aby utworzyć nowe obliczenie, wybierz pozycję **Utwórz**. Wykonanie tej czynności może zająć kilka minut. 
+
+    1. Po zakończeniu tworzenia wybierz nowe obliczenie z listy rozwijanej, a następnie wybierz przycisk **dalej**.
 
     >[!NOTE]
-    >W tym samouczku używamy domyślnego konta magazynu i kontenera utworzonego przy użyciu nowego obliczenia. Wypełniają one automatycznie w formularzu.
+    >W ramach tego samouczka będziesz używać domyślnego konta magazynu i kontenera utworzonego przy użyciu nowego obliczenia. Wypełniają one automatycznie w formularzu.
 
-1. Wybierz pozycję **Przekaż** i wybierz plik **bankmarketing_train. csv** z komputera lokalnego, aby przekazać go do domyślnego kontenera. Publiczna wersja zapoznawcza obsługuje tylko lokalne operacje przekazywania plików i konta usługi Azure Blob Storage. Po zakończeniu przekazywania wybierz plik z listy. 
+1. Wybierz pozycję **Przekaż z pliku lokalnego**. W tym miejscu utworzysz nowy zestaw danych z plikiem **bankmarketing_train. csv** , który został wcześniej pobrany dla tego samouczka. 
 
-1. Karta **Podgląd** pozwala na dalsze Konfigurowanie naszych danych dla tego eksperymentu.
+    1. Wybierz pozycję **Przeglądaj** , a następnie wybierz plik **bankmarketing_train. csv** na komputerze lokalnym. 
 
-    Na karcie **Podgląd** wskaż, że dane obejmują nagłówki. Usługa domyślnie zawiera wszystkie funkcje (kolumny) do szkoleń. Na potrzeby tego przykładu przewiń w prawo i **zignoruj** funkcję **day_of_week** .
+    1. Nadaj zestawowi danych unikatową nazwę i podaj opcjonalny opis. 
 
-    ![Konfiguracja karty podglądu](media/tutorial-1st-experiment-automated-ml/preview-tab-config.gif)
+    1. Wybierz pozycję **dalej** , aby przekazać ją do domyślnego kontenera, który został automatycznie skonfigurowany podczas tworzenia obszaru roboczego. Publiczna wersja zapoznawcza obsługuje tylko lokalne operacje przekazywania plików. 
 
-    >[!NOTE]
-    > Profilowanie danych nie jest dostępne w przypadku obliczeń z nieminimalnymi węzłami o wartości zero.
+    1. Po zakończeniu przekazywania **Ustawienia i formularz podglądu** są inteligentnie wypełniane na podstawie typu pliku. Upewnij się, że formularz jest wypełniony w następujący sposób.
+        
+        Pole|Value
+        ---|---
+        Format pliku| Lista
+        Ogranicznik| Przecinek
+        Kodowanie| UTF-8
+        Nagłówki kolumn| Wszystkie pliki mają te same nagłówki pomijają wiersze | Brak
 
+        >[!NOTE]
+        > W przypadku zaktualizowania dowolnego z ustawień w tym formularzu wersja zapoznawcza będzie odpowiednio aktualizowana.
+
+        Wybierz opcję **Dalej**.
+    
+
+    1. Formularz **schematu** umożliwia dalsze Konfigurowanie danych na potrzeby tego eksperymentu. Na potrzeby tego przykładu wybierz przełącznik przełącznika dla funkcji **day_of_week** , tak aby nie obejmował go dla tego eksperymentu. Wybierz pozycję **gotowe**, aby zakończyć przekazywanie plików i tworzenie zestawu danych dla eksperymentu.
+
+        ![Konfiguracja karty podglądu](media/tutorial-1st-experiment-automated-ml/schema-tab-config.gif)
+
+        
 1. Wybierz pozycję **Klasyfikacja** jako zadanie przewidywania.
 
-1. Wybierz pozycję **y** jako kolumnę docelową, w której chcemy przeanalizować. Ta kolumna wskazuje, czy klient subskrybuje termin depozytowy.
+1. Zaznacz opcję **y** jako kolumnę docelową, którą chcesz przewidzieć. Ta kolumna wskazuje, czy klient subskrybuje termin depozytowy.
 
 1. Rozwiń pozycję **Ustawienia zaawansowane** i wypełnij pola w następujący sposób.
 
@@ -93,30 +127,30 @@ Zobaczysz ekran " **Witamy w Machine Learning zautomatyzowanym** ", ponieważ je
     Współbieżność| Wybierz **5** dla liczby maksymalnych współbieżnych iteracji.
 
    >[!NOTE]
-   > Dla tego eksperymentu nie ustawimy metryki lub maksymalnej liczby rdzeni na wartość progową iteracji. Nie blokujemy również algorytmów do przetestowania.
+   > Dla tego eksperymentu nie ustawisz metryki lub maksymalna liczba rdzeni na wartość progową iteracji. Nie można też blokować przetestowanie algorytmów.
 
 1. Wybierz pozycję **Rozpocznij** , aby uruchomić eksperyment.
 
-   Po rozpoczęciu eksperymentu zobaczysz pusty ekran **szczegóły uruchamiania** z następującym stanem u góry.
-      
-Proces przygotowywania eksperymentu trwa kilka minut. Po zakończeniu procesu zostanie wyświetlony komunikat o stanie " **uruchomiony**".
+   Po rozpoczęciu eksperymentu na początku zobaczysz pusty ekran z komunikatem o stanie.
+
+Proces przygotowywania eksperymentu trwa kilka minut. Po zakończeniu tego procesu **zostanie uruchomiony**komunikat o stanie.
 
 ##  <a name="view-experiment-details"></a>Wyświetl szczegóły eksperymentu
 
-W miarę postępu eksperymentu ekran **szczegóły uruchamiania** aktualizuje wykres iteracji i listę przy użyciu różnych iteracji (modeli), które są uruchamiane. Lista iteracji jest uporządkowana według oceny metryki. Domyślnie model, który ocenia najwyższy poziom w oparciu o metrykę **AUC_weighted** , znajduje się w górnej części listy.
+W miarę postępu eksperymentu ekran aktualizuje **Wykres iteracji** i **listę iteracji** przy użyciu różnych iteracji (modeli), które są uruchamiane. Lista iteracji jest uporządkowana według oceny metryki. Domyślnie model, który ocenia najwyższy poziom w oparciu o metrykę **AUC_weighted** , znajduje się w górnej części listy.
 
->[!TIP]
+>[!WARNING]
 > Zadania szkoleniowe Poświęć kilka minut na zakończenie działania każdego potoku.
 
 [![Pulpit nawigacyjny szczegółów uruchamiania](media/tutorial-1st-experiment-automated-ml/run-details.png)](media/tutorial-1st-experiment-automated-ml/run-details-expanded.png#lightbox)
 
 ## <a name="deploy-the-model"></a>Wdrażanie modelu
 
-Dzięki funkcji automatycznego uczenia maszynowego w Azure Portal można wdrożyć najlepszy model jako usługę sieci Web, aby przewidzieć nowe dane i zidentyfikować potencjalne obszary szansy sprzedaży. W przypadku tego eksperymentu wdrożenie oznacza, że instytucja finansowa ma teraz iteracyjne i skalowalne rozwiązanie do identyfikowania potencjalnych klientów z krótkoterminowymi wpłatami.
+Za pomocą funkcji automatycznego uczenia maszynowego na stronie docelowej obszaru roboczego można wdrożyć najlepszy model jako usługę sieci Web, aby przewidzieć nowe dane i zidentyfikować potencjalne obszary szansy sprzedaży. W przypadku tego eksperymentu wdrożenie oznacza, że instytucja finansowa ma teraz iteracyjne i skalowalne rozwiązanie do identyfikowania potencjalnych klientów z krótkoterminowymi wpłatami.
 
 W tym kontekście eksperymentu **VotingEnsemble** jest uznawany za najlepszy model w oparciu o metrykę **AUC_weighted** .  Wdrażamy ten model, ale zaleca się wdrożenie trwa około 20 minut.
 
-1. Na stronie **szczegóły uruchamiania** wybierz przycisk **Wdróż najlepszy model** .
+1. Na stronie **szczegóły uruchamiania** wybierz przycisk **Wdróż najlepszy model** w prawym górnym rogu.
 
 1. Wypełnij okienko **Wdróż najlepszy model** w następujący sposób:
 
@@ -141,7 +175,7 @@ Pliki wdrożeń są większe niż pliki danych i eksperymenty, dzięki czemu są
 
 Usuń tylko wystąpienie wdrożenia z Azure Portal, jeśli chcesz zachować grupę zasobów i obszar roboczy dla innych samouczków i eksploracji. 
 
-1. Przejdź do okienka **zasoby** po lewej stronie i wybierz pozycję **wdrożenia**. 
+1. Przejdź do witryny [Azure Portal](https://portal.azure.com//). Przejdź do obszaru roboczego i po lewej stronie w okienku **zasoby** wybierz pozycję **wdrożenia**. 
 
 1. Wybierz wdrożenie, które chcesz usunąć, a następnie wybierz pozycję **Usuń**. 
 
@@ -153,15 +187,15 @@ Usuń tylko wystąpienie wdrożenia z Azure Portal, jeśli chcesz zachować grup
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku zautomatyzowanym uczenia maszynowego Azure Portal utworzyć i wdrożyć model klasyfikacji. Zobacz następujące artykuły, aby uzyskać więcej informacji i następnych kroków:
+W tym samouczku zautomatyzowanym uczenia maszynowego została użyta Strona docelowa obszaru roboczego do utworzenia i wdrożenia modelu klasyfikacji. Zobacz następujące artykuły, aby uzyskać więcej informacji i następnych kroków:
 
 > [!div class="nextstepaction"]
 > [Korzystanie z usługi sieci Web](how-to-consume-web-service.md)
 
 + Dowiedz się więcej na temat [przetwarzania wstępnego](how-to-create-portal-experiments.md#preprocess).
 + Dowiedz się więcej na temat [profilowania danych](how-to-create-portal-experiments.md#profile).
-+ Dowiedz się [](concept-automated-ml.md)więcej o automatycznym uczeniu maszynowym.
++ Dowiedz się więcej o [automatycznym uczeniu maszynowym](concept-automated-ml.md).
 
 >[!NOTE]
 > Ten zestaw danych marketingu dla [banku jest udostępniany w ramach Creative Commons Attribution (CCO: Domena publiczna)](https://creativecommons.org/publicdomain/zero/1.0/). Wszystkie prawa do poszczególnych treści bazy danych są licencjonowane w ramach [licencji na zawartość bazy danych](https://creativecommons.org/publicdomain/zero/1.0/) i dostępne w witrynie [Kaggle](https://www.kaggle.com/janiobachmann/bank-marketing-dataset). Ten zestaw danych był początkowo dostępny w [bazie danych Machine Learning UCI](https://archive.ics.uci.edu/ml/datasets/bank+marketing).<br><br>
-> Zapoznaj się z następującymi zadaniami: <br> [Moro et al., 2014] S. Moro, P. Cortez i P. Rita. Oparte na danych podejście do przewidywania sukcesu telemarketingu bankowego. Systemy pomocy technicznej, Elsevier, 62:22-31 czerwca 2014.
+> [Moro et al., 2014] S. Moro, P. Cortez i P. Rita. Oparte na danych podejście do przewidywania sukcesu telemarketingu bankowego. Systemy pomocy technicznej, Elsevier, 62:22-31 czerwca 2014.

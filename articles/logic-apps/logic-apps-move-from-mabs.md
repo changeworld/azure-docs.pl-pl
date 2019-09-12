@@ -94,7 +94,7 @@ BizTalk Services wykonuje decyzję routingu dotyczącą tego, który punkt końc
 
 ![](media/logic-apps-move-from-mabs/route-filter.png)
 
-W BizTalk Services, jeśli istnieją tylko dwie opcje, użycie warunku ** jest najlepszym sposobem na konwersję filtrów routingu w programie BizTalk Services. Jeśli jest więcej niż dwa, użyj **przełącznika**.
+W BizTalk Services, jeśli istnieją tylko dwie opcje, użycie warunku jest najlepszym sposobem na konwersję filtrów routingu w programie BizTalk Services. Jeśli jest więcej niż dwa, użyj **przełącznika**.
 
 Logic Apps zapewnia zaawansowane możliwości logiki oraz zaawansowany przepływ sterowania i Routing przy użyciu [instrukcji warunkowych](../logic-apps/logic-apps-control-flow-conditional-statement.md) i [instrukcji switch](../logic-apps/logic-apps-control-flow-switch-statement.md).
 

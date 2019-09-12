@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Tworzenie klastra Spark w HDInsight przy użyciu programu Azure PowerShell'
+title: 'Szybki start: Tworzenie klastra Spark w usłudze HDInsight przy użyciu Azure PowerShell'
 description: W tym przewodniku Szybki start pokazano, jak za pomocą programu Azure PowerShell utworzyć klaster Apache Spark w usłudze Azure HDInsight i uruchomić proste zapytanie Spark SQL.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 06/12/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 4a075a2c5a5da677ae8d56c918ecab3384209431
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 185d87bfaf909fdffaa56c2dd6ad29838ce635f7
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67066081"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885137"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-powershell"></a>Szybki start: Tworzenie klastra Apache Spark w usłudze Azure HDInsight przy użyciu programu PowerShell
 
@@ -28,7 +28,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisite"></a>Wymagania wstępne
 
-PowerShell [modułu Az](https://docs.microsoft.com/powershell/azure/overview) zainstalowane.
+Program PowerShell [AZ module](https://docs.microsoft.com/powershell/azure/overview) został zainstalowany.
 
 ## <a name="create-an-hdinsight-spark-cluster"></a>Tworzenie klastra Spark w usłudze HDInsight
 
@@ -49,7 +49,7 @@ Te zasoby zostaną utworzone za pomocą skryptu programu PowerShell.  Po uruchom
 |Poświadczenia logowania klastra | To konto służy do nawiązania połączenia z pulpitem nawigacyjnym klastra w dalszej części przewodnika Szybki start.|
 |Poświadczenia użytkownika protokołu SSH | Klienci protokołu SSH mogą służyć do tworzenia zdalnej sesji wiersza polecenia z klastrami usługi HDInsight.|
 
-1. Wybierz **wypróbuj** w prawym górnym rogu, aby uzyskać następujący blok kodu otworzyć [usługi Azure Cloud Shell](../../cloud-shell/overview.md), a następnie postępuj zgodnie z instrukcjami, aby łączenie z platformą Azure.
+1. Wybierz opcję **Wypróbuj** w prawym górnym rogu poniższego bloku kodu, aby otworzyć [Azure Cloud Shell](../../cloud-shell/overview.md), a następnie postępuj zgodnie z instrukcjami, aby nawiązać połączenie z platformą Azure.
 
 2. Skopiuj i wklej poniższy skrypt programu PowerShell w usłudze Cloud Shell.
 
@@ -156,7 +156,7 @@ SQL (Structured Query Language) to najczęściej używany język służący do d
 
 1. Sprawdź, czy jądro jest gotowe. Gotowość jądra jest sygnalizowana pustym okręgiem obok nazwy jądra w notesie. Pełne kółko oznacza, że jądro jest zajęte.
 
-    ![Zapytanie programu Hive na platformie HDInsight Spark](./media/apache-spark-jupyter-spark-sql/jupyter-spark-kernel-status.png "Zapytanie programu Hive na platformie HDInsight Spark")
+    ![stan jądra](./media/apache-spark-jupyter-spark-sql/jupyter-spark-kernel-status.png "stan jądra")
 
     Podczas pierwszego uruchamiania notesu jądro wykonuje pewne zadania w tle. Poczekaj, aż jądro będzie gotowe. 
 2. Wklej następujący kod do pustej komórki, a następnie naciśnij klawisze **SHIFT + ENTER**, aby go uruchomić. Polecenie wyświetla listę tabel Hive w klastrze:
@@ -193,7 +193,7 @@ Przejdź z powrotem do witryny Azure Portal, a następnie wybierz pozycję **Usu
 
 Dodatkowo możesz wybrać nazwę grupy zasobów, aby otworzyć stronę grupy zasobów, a następnie wybrać pozycję **Usuń grupę zasobów**. Usunięcie grupy zasobów powoduje usunięcie zarówno klastra Spark w usłudze HDInsight, jak i domyślnego konta magazynu.
 
-### <a name="piecemeal-clean-up-with-powershell-az-module"></a>Czyszczenie przyjąć przy użyciu modułu PowerShell Az
+### <a name="piecemeal-clean-up-with-powershell-az-module"></a>Oczyszczanie fragmentaryczne za pomocą programu PowerShell AZ module
 
 ```powershell
 # Removes the specified HDInsight cluster from the current subscription.
@@ -216,7 +216,7 @@ Remove-AzResourceGroup `
     -Name $resourceGroupName
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start omówiono sposób tworzenia klastra Spark w usłudze HDInsight i uruchamiania podstawowego zapytania Spark SQL. Przejdź do następnego samouczka, aby dowiedzieć się, jak uruchamiać interakcyjne zapytania dotyczące przykładowych danych za pomocą klastra Spark w usłudze HDInsight.
 

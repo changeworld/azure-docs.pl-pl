@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 3683550045699a24c27a3226fba2e90a671f80e1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 536e2e3732a0b196801e37c51dfb6c746e070441
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101026"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910457"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Ochrona zasobów sieciowych w Azure Security Center
 Azure Security Center stale analizuje stan zabezpieczeń zasobów platformy Azure pod kątem najlepszych rozwiązań z zakresu zabezpieczeń sieci. Gdy Security Center identyfikuje potencjalne luki w zabezpieczeniach, tworzy zalecenia, które przeprowadzą Cię przez proces konfigurowania wymaganych kontrolek do zabezpieczania i zabezpieczania zasobów.
@@ -128,7 +128,7 @@ Sekcja **topologia sieci** zawiera hierarchiczny widok zasobów.
 
 Ta tabela jest posortowana (maszyny wirtualne i podsieci) według ważności.
 
-W tym widoku topologii pierwszy poziom wyświetla sieci wirtualnych. Drugie wyświetlenie zawiera podsieci, a trzeci poziom wyświetla maszyny wirtualne należące do tych podsieci. W prawej kolumnie jest wyświetlany bieżący stan zaleceń sieciowych grup zabezpieczeń dla tych zasobów.
+W tym widoku topologii pierwszy poziom wyświetla sieci wirtualnych. Drugi wyświetla podsieci, a trzeci poziom przedstawia maszyny wirtualne, które należą do tych podsieci. W prawej kolumnie jest wyświetlany bieżący stan zaleceń sieciowych grup zabezpieczeń dla tych zasobów.
 
 Trzeci poziom przedstawia maszyny wirtualne, które są podobne do opisanych wcześniej. Możesz kliknąć dowolny zasób, aby dowiedzieć się więcej lub zastosować wymaganą kontrolę zabezpieczeń lub konfigurację.
 
@@ -143,7 +143,7 @@ Trzeci poziom przedstawia maszyny wirtualne, które są podobne do opisanych wcz
 |Dostęp do App Services powinien być ograniczony|Ogranicz dostęp do App Services, zmieniając konfigurację sieci, aby odmówić ruchu przychodzącego z zakresów, które są zbyt szerokie.|Wysoka|10|App Service|
 |Porty zarządzania powinny być zamknięte na maszynach wirtualnych|Ogranicz grupę zabezpieczeń sieci maszyn wirtualnych, aby ograniczyć dostęp do portów zarządzania.|Wysoka|10|Maszyna wirtualna|
 Należy włączyć Standard DDoS Protection|Ochrona sieci wirtualnych zawierających aplikacje z publicznymi adresami IP przez włączenie usługi DDoS Protection Standard. Ochrona DDoS umożliwia łagodzenie ataków między pomiarami i protokołami sieciowymi.|Wysoka|10|Sieć wirtualna|
-|Przekazywanie adresów IP na maszynie wirtualnej powinno być wyłączone|Wyłącz przekazywanie adresów IP. Po włączeniu przekazywania adresów IP na karcie sieciowej maszyny wirtualnej komputer może odbierać ruch skierowany do innych miejsc docelowych. Przekazywanie adresów IP jest rzadko wymagane (np. w przypadku używania maszyny wirtualnej jako sieciowego urządzenia wirtualnego), dlatego należy je sprawdzić przez zespół ds. zabezpieczeń sieci.|Średni|10|Maszyna wirtualna|
+|Przekazywanie adresów IP na maszynie wirtualnej powinno być wyłączone|Wyłącz przekazywanie adresów IP. Po włączeniu przekazywania adresów IP na karcie sieciowej maszyny wirtualnej komputer może odbierać ruch skierowany do innych miejsc docelowych. Przekazywanie adresów IP jest rzadko wymagane (na przykład w przypadku używania maszyny wirtualnej jako sieciowego urządzenia wirtualnego), dlatego powinno być przeglądane przez zespół ds. zabezpieczeń sieci.|Średni|10|Maszyna wirtualna|
 |Aplikacja sieci Web powinna być dostępna tylko za pośrednictwem protokołu HTTPS|Włącz dostęp tylko do protokołu HTTPS dla aplikacji sieci Web. Użycie protokołu HTTPS zapewnia uwierzytelnianie serwera/usługi i chroni dane podczas przesyłania przed atakami polegającymi na podsłuchu w warstwie sieciowej.|Średni|20|Aplikacja internetowa|
 |Kontrola dostępu do sieci just in Time powinna być stosowana na maszynach wirtualnych|Zastosuj kontrolę dostępu maszyny wirtualnej just-in-Time (JIT), aby trwale zablokować dostęp do wybranych portów i umożliwić autoryzowanym użytkownikom otwieranie ich za pośrednictwem JIT tylko przez ograniczoną ilość czasu.|Wysoka|20|Maszyna wirtualna|
 |Aplikacje funkcji powinny być dostępne tylko za pośrednictwem protokołu HTTPS|Włącz dostęp tylko do protokołu HTTPS dla aplikacji funkcji. Użycie protokołu HTTPS zapewnia uwierzytelnianie serwera/usługi i chroni dane podczas przesyłania przed atakami polegającymi na podsłuchu w warstwie sieciowej.|Średni|20|Aplikacja funkcji|

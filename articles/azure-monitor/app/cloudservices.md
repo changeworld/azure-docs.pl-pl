@@ -91,7 +91,7 @@ Jeśli postanowisz utworzyć oddzielny zasób dla każdej roli i być może jest
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>Konfigurowanie diagnostyki platformy Azure dla każdej roli
 Ustaw tę opcję, aby monitorować aplikację za pomocą usługi Application Insights. W przypadku ról sieci Web Ta opcja zapewnia monitorowanie wydajności, alerty, diagnostykę i analizę użycia. W przypadku innych ról można wyszukiwać i monitorować Diagnostyka Azure, takie jak ponowne uruchamianie, liczniki wydajności i wywołania do System. Diagnostics. Trace. 
 
-1. W programie Visual Studio Eksplorator rozwiązań w obszarze >   **\<role > YourCloudService**Otwórz właściwości każdej roli. ****
+1. W programie Visual Studio Eksplorator rozwiązań w obszarze >   **\<role > YourCloudService**Otwórz właściwości każdej roli.
 
 1. W obszarze **Konfiguracja**zaznacz pole wyboru **Wyślij dane diagnostyczne do Application Insights** , a następnie wybierz utworzony wcześniej zasób Application Insights.
 

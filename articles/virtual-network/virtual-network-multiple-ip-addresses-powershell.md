@@ -220,7 +220,7 @@ Możesz dodać prywatne i publiczne adresy IP do interfejsu sieciowego platformy
    $MyNIC = Get-AzNetworkInterface -Name $NicName -ResourceGroupName $RgName
    ```
 
-4. W poniższych poleceniach Zmień *MyVNet* i podsieć na nazwy sieci wirtualnej i podsieć, z którą jest połączona karta sieciowa. ** Wprowadź polecenia, aby pobrać obiekty sieci wirtualnej i podsieci, z którymi jest połączona karta sieciowa:
+4. W poniższych poleceniach Zmień *MyVNet* i podsieć na nazwy sieci wirtualnej i podsieć, z którą jest połączona karta sieciowa. Wprowadź polecenia, aby pobrać obiekty sieci wirtualnej i podsieci, z którymi jest połączona karta sieciowa:
 
    ```powershell
    $MyVNet = Get-AzVirtualnetwork -Name MyVNet -ResourceGroupName $RgName
@@ -239,7 +239,7 @@ Możesz dodać prywatne i publiczne adresy IP do interfejsu sieciowego platformy
    "Id": "/subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/MyVNet/subnets/MySubnet"
    ```
 
-    W tym wyjściu *MyVnet* to sieć wirtualna, ** a moja podsieć jest podsiecią, z którą jest połączona karta sieciowa.
+    W tym wyjściu *MyVnet* to sieć wirtualna, a moja podsieć jest podsiecią, z którą jest połączona karta sieciowa.
 
 5. Wykonaj kroki opisane w jednej z poniższych sekcji, zgodnie z wymaganiami:
 

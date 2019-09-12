@@ -1,5 +1,5 @@
 ---
-title: 'Przewodnik Szybki Start: Tworzenie, ładowanie i wykonywanie zapytań względem indeksów przy użyciu programu Poster-Azure Search'
+title: 'Szybki start: Tworzenie indeksu wyszukiwania w programie Poster przy użyciu interfejsów API REST — Azure Search'
 description: Dowiedz się, jak wywoływać interfejsy API REST Azure Search przy użyciu programu Poster oraz dane przykładowe i definicje.
 author: HeidiSteen
 manager: nitinme
@@ -7,14 +7,14 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 07/11/2019
+ms.date: 09/10/2019
 ms.author: heidist
-ms.openlocfilehash: b1fcca0b135852660890f9f7591ee115d2ef2b47
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 138fd3d50a5f462c6a0ad954043f107c3c250917
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656776"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881537"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-postman-using-rest-apis"></a>Szybki start: Tworzenie indeksu Azure Search w programie Poster przy użyciu interfejsów API REST
 > [!div class="op_single_selector"]

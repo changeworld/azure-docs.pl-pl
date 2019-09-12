@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: c05e72cd28c78b26b7c23a123b133d10147a4421
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 4e6825b40700fe3bd24631094a2a6060d94524cc
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810786"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882264"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>Korzystanie C# z funkcji zdefiniowanych przez użytkownika z usługami Apache Hive i Apache chlewnej na Apache Hadoop w usłudze HDInsight
 
@@ -161,7 +161,7 @@ Aby uzyskać więcej informacji na temat wersji programu .NET Framework i narzę
 
 4. Rozwiń klaster usługi HDInsight, do którego chcesz wdrożyć tę aplikację. Zostanie wyświetlona pozycja z tekstem __(domyślne konto magazynu)__ .
 
-    ![Eksplorator serwera wyświetlania konta magazynu dla klastra](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/storage.png)
+    ![Eksplorator serwera wyświetlania konta magazynu dla klastra](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-storage-account.png)
 
     * Jeśli ten wpis można rozszerzyć, używasz __konta usługi Azure Storage__ jako magazynu domyślnego dla klastra. Aby wyświetlić pliki w domyślnym magazynie klastra, rozwiń wpis, a następnie kliknij dwukrotnie __(kontener domyślny)__ .
 
@@ -171,7 +171,7 @@ Aby uzyskać więcej informacji na temat wersji programu .NET Framework i narzę
 
    * Jeśli używasz __konta usługi Azure Storage__, kliknij ikonę Przekaż, a następnie przejdź do folderu **Bin\debug** dla projektu **HiveCSharp** . Na koniec wybierz plik **HiveCSharp. exe** , a następnie kliknij przycisk **OK**.
 
-       ![ikona przekazywania](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/upload.png)
+       ![ikona przekazywania](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-upload-icon.png)
     
    * Jeśli używasz __Azure Data Lake Storage__, kliknij prawym przyciskiem myszy pusty obszar na liście plików, a następnie wybierz polecenie __Przekaż__. Na koniec wybierz plik **HiveCSharp. exe** , a następnie kliknij przycisk **Otwórz**.
 

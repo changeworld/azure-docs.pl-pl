@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: rajanaki
-ms.openlocfilehash: e06cd77a1d46208fe0f7aa166be3ccd3b9b7dbb4
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 3489f7f812798504d0c57a265a04e57344105419
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828600"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910476"
 ---
 # <a name="service-updates-in-site-recovery"></a>Aktualizacje usługi w Site Recovery
 
@@ -103,8 +103,7 @@ Jeśli chcesz ręcznie zarządzać aktualizacjami, wykonaj następujące czynno�
 
 1. W oparciu o bieżącą wersję i [instrukcję pomocy technicznej](#support-statement-for-azure-site-recovery)Zainstaluj najpierw aktualizację na lokalnym serwerze konfiguracji, korzystając z [tych instrukcji](vmware-azure-deploy-configuration-server.md#upgrade-the-configuration-server). 
 2. Jeśli masz skalowalne w poziomie serwery procesów, zaktualizuj je dalej, korzystając z [tych instrukcji](vmware-azure-manage-process-server.md#upgrade-a-process-server).
-3. Aby zaktualizować agenta mobilności na każdej chronionej maszynie, Otwórz element elementy **chronione** > **zreplikowane elementy**.
-4. Wybierz maszynę wirtualną, a następnie wybierz przycisk **Aktualizuj agenta** , który pojawia się w dolnej części strony dla każdej maszyny wirtualnej. Spowoduje to zaktualizowanie agenta usługi mobilności na wszystkich chronionych maszynach wirtualnych.
+3. Aby zaktualizować agenta mobilności na każdej chronionej maszynie, zapoznaj się z [tym](vmware-physical-manage-mobility-service.md#update-mobility-service-from-azure-portal) artykułem.
 
 ### <a name="reboot-after-mobility-service-upgrade"></a>Uruchom ponownie po uaktualnieniu usługi mobilności
 

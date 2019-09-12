@@ -45,7 +45,7 @@ Aby zademonstrować te opcje, użyjmy lokalnego klastra z pięcioma węzłami i 
 ## <a name="health-in-service-fabric-explorer"></a>Kondycja w Service Fabric Explorer
 Service Fabric Explorer udostępnia widok wizualizacji klastra. Na poniższej ilustracji widać, że:
 
-* **Sieć szkieletowa aplikacji:/WORDCOUNT** jest czerwona (w przypadku błędu), ponieważ zawiera zdarzenie błędu zgłoszone przez telealarmy dla **** **dostępności**właściwości.
+* **Sieć szkieletowa aplikacji:/WORDCOUNT** jest czerwona (w przypadku błędu), ponieważ zawiera zdarzenie błędu zgłoszone przez telealarmy dla **dostępności**właściwości.
 * Jedna z jej usług, **Sieć szkieletowa:/WORDCOUNT/usługi wordcountservice uległa** jest żółta (w ostrzeżeniu). Usługa jest skonfigurowana z siedmiu replik, a klaster ma pięć węzłów, więc nie można umieścić dwóch replik. Chociaż nie jest to tutaj widoczne, partycja usługi jest żółta ze względu na Raport `System.FM` systemowy `Partition is below target replica or instance count`informujący o tym, że. Żółta partycja wyzwala żółtą usługę.
 * Ten klaster jest czerwony ze względu na czerwoną aplikację.
 

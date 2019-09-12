@@ -58,8 +58,8 @@ Zakresy umożliwiają zarządzanie dostępem do chronionych zasobów. Zakresy s�
 
 1. Wybierz pozycję **aplikacje**, a następnie wybierz pozycję *webapi1* , aby otworzyć jej stronę właściwości, jeśli nie została jeszcze otwarta.
 1. Wybierz pozycję **Opublikowane zakresy**.
-1. W obszarze **zakres**wprowadź `Hello.Read`tekst i wpisz  `Read access to hello`polecenie.
-1. W obszarze **zakres**wprowadź `Hello.Write`tekst i wpisz  `Write access to hello`polecenie.
+1. W obszarze **zakres**wprowadź `Hello.Read`tekst i wpisz `Read access to hello`polecenie.
+1. W obszarze **zakres**wprowadź `Hello.Write`tekst i wpisz `Write access to hello`polecenie.
 1. Wybierz pozycję **Zapisz**.
 1. Zapisz **pełną wartość** zakresu dla zakresu, `Hello.Read` który ma być używany w późniejszym kroku podczas konfigurowania aplikacji jednostronicowej. Pełny zakres wartości jest podobny do `https://yourtenant.onmicrosoft.com/api/Hello.Read`.
 
@@ -136,7 +136,7 @@ Aby umożliwić aplikacji jednostronicowej wywoływanie ASP.NET Core internetowe
     ```
 
 1. (Tylko Visual Studio) W obszarze **Właściwości** w Eksplorator rozwiązań otwórz plik *profilu launchsettings. JSON* , `iisExpress` a następnie Znajdź blok.
-1. (Tylko Visual Studio) Zaktualizuj wartość przy użyciu numeru portu określonego podczas rejestrowania aplikacji webapi1 we wcześniejszym kroku.  `applicationURL` Przykład:
+1. (Tylko Visual Studio) Zaktualizuj wartość przy użyciu numeru portu określonego podczas rejestrowania aplikacji webapi1 we wcześniejszym kroku. `applicationURL` Przykład:
 
     ```json
     "iisExpress": {

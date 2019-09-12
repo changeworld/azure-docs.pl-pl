@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 7a243dd0eca179317309438c31c114c94f94bf00
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 706bcbed39ca2a3fe0a38eba864edb863c31b4ec
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736438"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70884045"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Używanie Data Lake narzędzi dla programu Visual Studio do nawiązywania połączenia z usługą Azure HDInsight i uruchamiania zapytań Apache Hive
 
@@ -46,7 +46,7 @@ Aby ukończyć ten artykuł i korzystać z narzędzi Data Lake Tools for Visual 
 
   W przypadku istniejących instalacji na pasku menu Przejdź do opcji **Narzędzia** > **Pobierz narzędzia i funkcje..** ., aby otworzyć Instalator programu Visual Studio.  Następnie wybierz co najmniej obciążenie **platformy Azure — programowanie** lub **przechowywanie i przetwarzanie danych**.
 
-  ![Zrzut ekranu przedstawiający Instalator programu Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/vs2017_installation.png)
+  ![Zrzut ekranu przedstawiający Instalator programu Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/vs-2017-installation.png)
 
 * Visual Studio 2013 i 2015  
   [Pobierz narzędzia Data Lake](https://www.microsoft.com/download/details.aspx?id=49504). Należy wybrać wersję narzędzi Data Lake Tools zgodną z używaną wersją programu Visual Studio.  
@@ -195,13 +195,13 @@ Aby utworzyć i uruchomić zapytania ad hoc:
 
       Upewnij się, że jest zaznaczona opcja **interaktywny** , a następnie wybierz pozycję **Wykonaj**.
 
-      ![Zrzut ekranu zapytania i wykonania](./media/apache-hadoop-visual-studio-tools-get-started/execute.png)  
+      ![Zrzut ekranu zapytania i wykonania](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-execute.png)  
 
     * **Batch**  
 
       Upewnij się, że została wybrana opcja **Partia zadań** , a następnie wybierz pozycję **Prześlij**.  W przypadku wybrania opcji przesyłania zaawansowanego Skonfiguruj **nazwę zadania**, **argumenty**, **dodatkowe konfiguracje**i **katalog stanu** dla skryptu.
 
-      ![Zrzut ekranu zapytania i partii](./media/apache-hadoop-visual-studio-tools-get-started/batch.png)  
+      ![Zrzut ekranu zapytania i partii](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-batch.png)  
 
       ![Zrzut ekranu zapytania programu Hive w usłudze HDInsight Hadoop](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-submit-jobs-advanced.png "Przesłanie zapytań")
 
@@ -224,7 +224,7 @@ Tworzenie i uruchamianie rozwiązania Hive:
 
 Podsumowanie zadania różni się **nieco w zależności od trybu** **wsadowego** .
 
-![Podsumowanie zadania](./media/apache-hadoop-visual-studio-tools-get-started/jobSummary.png "Podsumowanie zadania programu Hive")
+![Podsumowanie zadania](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-summary.png "Podsumowanie zadania programu Hive")
 
 Użyj przycisku **Odśwież** , aby zaktualizować stan do momentu, gdy stan zadania zmieni się na **zakończone**.  
 
@@ -232,7 +232,7 @@ Użyj przycisku **Odśwież** , aby zaktualizować stan do momentu, gdy stan zad
 
 * Aby uzyskać szczegółowe informacje o zadaniu w trybie **interaktywnym** , zobacz karty **dane wyjściowe** i **serwera hiveserver2 Output**.
 
-  ![szczegóły zadania](./media/apache-hadoop-visual-studio-tools-get-started/tabs.png "Szczegóły zadania programu Hive")
+  ![szczegóły zadania](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-details.png "Szczegóły zadania programu Hive")
 
 ### <a name="view-job-graph"></a>Wyświetl wykres zadania
 
