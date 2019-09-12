@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: c67b24d57117a248559424497939a04ce347658c
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
-ms.translationtype: MT
+ms.openlocfilehash: 8bc1e4d5eae76796e82195b4ef34ddefc54302b9
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308959"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910344"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net"></a>Szybki start: Azure Key Vault Biblioteka kliencka dla platformy .NET
 
@@ -156,7 +156,7 @@ Dodaj następujące dyrektywy na początku kodu:
 
 ### <a name="authenticate-to-your-key-vault"></a>Uwierzytelnianie w magazynie kluczy
 
-Ten przewodnik Szybki Start platformy .NET opiera się na zmiennych środowiskowych do przechowywania poświadczeń, które nie powinny być jednak umieszczane w kodzie. 
+Ten przewodnik Szybki Start platformy .NET opiera się na zmiennych środowiskowych do przechowywania poświadczeń, które nie powinny być umieszczane w kodzie. 
 
 `setx` Przed rozpoczęciem kompilowania i uruchamiania aplikacji użyj polecenia `akvClientId`, aby ustawić zmienne środowiskowe `akvTenantId`, `akvClientSecret`, `akvSubscriptionId` i na wartości zanotowane powyżej.
 

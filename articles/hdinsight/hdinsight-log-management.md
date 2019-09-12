@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: d4774dcc96e5f7639ca0b03bca992c9a3126230b
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 5264491220a4b0756a2a9f0a96aae4ed67809618
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623891"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879488"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Zarządzanie dziennikami klastra usługi HDInsight
 
@@ -93,7 +93,7 @@ Za pomocą interfejsu użytkownika Ambari można pobrać konfigurację dla dowol
 
 Następnym krokiem jest przejrzenie plików dziennika wykonywania zadań dla różnych usług.  Usługi mogą obejmować Apache HBase, Apache Spark i wiele innych. Klaster usługi Hadoop tworzy dużą liczbę pełnych dzienników, dzięki czemu można określić, które dzienniki są użyteczne (i które nie są).  Zrozumienie systemu rejestrowania jest ważne w przypadku kierowania zarządzania plikami dziennika.  Poniżej znajduje się przykładowy plik dziennika.
 
-![Przykład pliku dziennika usługi HDInsight](./media/hdinsight-log-management/logs.png)
+![Przykład pliku dziennika usługi HDInsight](./media/hdinsight-log-management/hdi-log-file-example.png)
 
 ### <a name="access-the-hadoop-log-files"></a>Dostęp do plików dziennika usługi Hadoop
 
@@ -148,7 +148,7 @@ Po określeniu, które pliki dzienników można usunąć, można dostosować par
 
 W przypadku niektórych plików dziennika można użyć metody archiwizowania plików dziennika o niższej cenie. W przypadku Azure Resource Manager dzienników aktywności można eksplorować takie podejście przy użyciu Azure Portal.  Skonfiguruj archiwizowanie dzienników ARM, wybierając łącze **Dziennik aktywności**w Azure Portal wystąpienia usługi HDInsight.  W górnej części strony Wyszukiwanie w dzienniku aktywności wybierz element menu **Eksportuj** , aby otworzyć okienko **Eksportuj dziennik aktywności** .  Wypełnij pola subskrypcja, region, czy chcesz eksportować do konta magazynu, a także liczbę dni przechowywania dzienników. W tym samym okienku można także wskazać, czy wyeksportować do centrum zdarzeń. 
 
-![Eksportuj pliki dziennika](./media/hdinsight-log-management/archive.png)
+![Eksportuj pliki dziennika](./media/hdinsight-log-management/hdi-export-log-files.png)
 
 Alternatywnie można archiwizowanie dzienników skryptów przy użyciu programu PowerShell.  Przykładowy skrypt programu PowerShell znajduje się w temacie [Archiwizowanie dzienników Azure Automation na platformie Azure Blob Storage](https://gallery.technet.microsoft.com/scriptcenter/Archive-Azure-Automation-898a1aa8).
 

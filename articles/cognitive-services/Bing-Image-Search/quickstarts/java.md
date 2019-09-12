@@ -11,17 +11,17 @@ ms.subservice: bing-image-search
 ms.topic: quickstart
 ms.date: 07/22/2019
 ms.author: aahi
-ms.custom: seodec2018, seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 3cd7af766b3881eb1abe054105423aaa3d0591de
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 415613d99b3a7b9f3845a458886e93e5655842c8
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70124069"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899710"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-api-an-azure-cognitive-service"></a>Szybki start: Wyszukaj obrazy z interfejs API wyszukiwania obrazów Bingą, usługą poznawczej platformy Azure 
 
-Użyj tego przewodnika Szybki start, aby rozpocząć wysyłanie żądań wyszukiwania do interfejsu API wyszukiwania obrazów Bing. Ta aplikacja języka Java wysyła zapytanie dotyczące wyszukiwania do interfejsu API i wyświetla adres URL pierwszego obrazu w wynikach. Chociaż ta aplikacja jest napisana w języku Java, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
+Ten przewodnik Szybki Start umożliwia wysyłanie żądań wyszukiwania do interfejs API wyszukiwania obrazów Bing na platformie Azure Cognitive Services. Ta aplikacja języka Java wysyła zapytanie dotyczące wyszukiwania do interfejsu API i wyświetla adres URL pierwszego obrazu w wynikach. Chociaż ta aplikacja jest napisana w języku Java, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
 
 Kod źródłowy dla tego przykładu jest dostępny w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingImageSearchv7Quickstart.java) wraz z dodatkową obsługą błędów i adnotacjami.
 

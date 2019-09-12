@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/18/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 4550532d36753d9b8ed472193bc833855ddd34c9
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: 1820c31053c13a0f3039812b31df415bc9fa4fdc
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314916"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910373"
 ---
 # <a name="working-with-security-policies"></a>Praca z zasadami zabezpieczeń
 
@@ -131,7 +131,7 @@ Ważne pojęcia dotyczące Azure Policy:
 
 - **Przypisanie** jest aplikacją inicjatywy lub zasadami do określonego zakresu (grupy zarządzania, subskrypcji itp.) 
 
-Security Center ma wbudowaną inicjatywę obejmującą wszystkie jej zasady zabezpieczeń. Aby ocenić zasady Security Center w swoich zasobach platformy Azure, należy utworzyć przypisanie do grupy zarządzania lub subskrypcję, którą chcesz ocenić.  
+Security Center ma wbudowaną inicjatywę obejmującą wszystkie jej zasady zabezpieczeń. Aby ocenić zasady Security Center w swoich zasobach platformy Azure, należy utworzyć przypisanie do grupy zarządzania lub subskrypcję, którą chcesz ocenić.
 
 Z wbudowaną inicjatywą są domyślnie włączone wszystkie zasady Security Center. Niektóre zasady można wyłączyć z inicjatywy wbudowanej, na przykład można zastosować wszystkie zasady Security Center z wyjątkiem **zapory aplikacji sieci Web**, zmieniając wartość parametru efektu zasad na **wyłączone**. 
 
@@ -223,15 +223,15 @@ Ten przykład pokazuje, jak usunąć przypisanie:
 
 |Nazwa zasad w Security Center|Nazwa zasad wyświetlana w Azure Policy |Nazwa parametru efektu zasad|
 |----|----|----|
-|Szyfrowanie SQL |Monitorowanie nieszyfrowanej bazy danych SQL w Azure Security Center |sqlEncryptionMonitoringEffect| 
+|Szyfrowanie danych SQL |Monitorowanie nieszyfrowanej bazy danych SQL w Azure Security Center |sqlEncryptionMonitoringEffect| 
 |Inspekcja SQL |Monitoruj niepoddaną inspekcję bazy danych SQL w Azure Security Center |sqlAuditingMonitoringEffect|
 |Aktualizacje systemu |Monitoruj brakujące aktualizacje systemu w Azure Security Center |systemUpdatesMonitoringEffect|
 |Szyfrowanie w usłudze Storage |Inspekcja braku szyfrowania obiektów BLOB dla kont magazynu |storageEncryptionMonitoringEffect|
 |Dostęp do sieci JIT |Monitoruj możliwy dostęp do sieci just in Time (JIT) w Azure Security Center |jitNetworkAccessMonitoringEffect |
-|Funkcje adaptacyjnego sterowania aplikacjami |Monitoruj możliwe listy dozwolonych aplikacji w Azure Security Center |adaptiveApplicationControlsMonitoringEffect|
+|Adaptacyjne kontrole aplikacji |Monitoruj możliwe listy dozwolonych aplikacji w Azure Security Center |adaptiveApplicationControlsMonitoringEffect|
 |Grupy zabezpieczeń sieci |Monitoruj dostęp do sieci w Azure Security Center |networkSecurityGroupsMonitoringEffect| 
 |Konfiguracje zabezpieczeń |Monitoruj luki w zabezpieczeniach systemu operacyjnego w Azure Security Center |systemConfigurationsMonitoringEffect| 
-|Ochrona punktów końcowych |Monitoruj brakujące Endpoint Protection w Azure Security Center |endpointProtectionMonitoringEffect |
+|Ochrona punktu końcowego |Monitoruj brakujące Endpoint Protection w Azure Security Center |endpointProtectionMonitoringEffect |
 |Szyfrowanie dysków |Monitoruj nieszyfrowane dyski maszyn wirtualnych w Azure Security Center |diskEncryptionMonitoringEffect|
 |Ocena luk w zabezpieczeniach |Monitoruj luki w zabezpieczeniach maszyn wirtualnych w Azure Security Center |vulnerabilityAssessmentMonitoringEffect|
 |Zapora aplikacji internetowej |Monitoruj niechronione aplikacje sieci Web w Azure Security Center |webApplicationFirewallMonitoringEffect |

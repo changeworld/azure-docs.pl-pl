@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 7a278196b2f4edc35ebc8c4dc77116363e9f7901
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 2e79f38fb6495d75e0438fa3622cc226886c0773
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811818"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885547"
 ---
-# <a name="scale-hdinsight-clusters"></a>Skalowanie klastrów usługi HDInsight
+# <a name="scale-azure-hdinsight-clusters"></a>Skalowanie klastrów usługi Azure HDInsight
 
 Usługa HDInsight zapewnia elastyczność, zapewniając możliwość skalowania w górę i w dół liczby węzłów procesu roboczego w klastrach. Elastyczność pozwala zmniejszyć klaster po godzinach lub w weekendach i rozwijać go podczas szczytowego zapotrzebowania na działalność biznesową.
 
@@ -126,7 +126,7 @@ Aby ręcznie skasować tę uruchomioną aplikację, wykonaj następujące polece
 yarn application -kill <application_id>
 ```
 
-Przykład:
+Na przykład:
 
 ```bash
 yarn application -kill "application_1499348398273_0003"

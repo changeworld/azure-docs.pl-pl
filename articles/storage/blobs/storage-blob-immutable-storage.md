@@ -9,12 +9,12 @@ ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 06e1d881a14367c579bd58ffae04dc0970eb041a
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: a3f9768043c9acef9640b8e286611de94e44a7ff
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68941955"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910486"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>Przechowywanie danych o krytycznym znaczeniu dla firmy w usłudze Azure Blob Storage
 
@@ -53,9 +53,9 @@ Usuwanie kontenerów i kont nie jest również dozwolone, jeśli istnieją obiek
 ### <a name="time-based-retention"></a>Przechowywanie na podstawie czasu
 
 > [!IMPORTANT]
-> Zasady przechowywania oparte na czasie muszą być *zablokowane* , aby obiekt BLOB był zgodny z niezmiennym (zapisem i usuwanie chronione) dla sek. 4 (f) i innych zgodności z przepisami. Zalecamy zablokowanie zasad w rozsądnym czasie, zwykle krótszym niż 24 godziny. Początkowy stan zastosowanych zasad przechowywania oparty na czasie jest *odblokowany*, co pozwala na testowanie funkcji i wprowadzanie zmian zasad przed ich zablokowaniem. Gdy *odblokowany* stan zapewnia ochronę niezmienności, nie zalecamy używania niezablokowanego stanu do celów innych niż krótkoterminowe wersje próbne funkcji. 
+> Zasady przechowywania oparte na czasie muszą być *zablokowane* , aby obiekt BLOB był zgodny z niezmiennym (zapisem i usuwanie chronione) dla sek. 4 (f) i innych zgodności z przepisami. Zalecamy zablokowanie zasad w rozsądnym czasie, zwykle krótszym niż 24 godziny. Początkowy stan zastosowanych zasad przechowywania oparty na czasie jest *odblokowany*, co pozwala na testowanie funkcji i wprowadzanie zmian zasad przed ich zablokowaniem. Gdy *odblokowany* stan zapewnia ochronę niezmienności, nie zalecamy używania *niezablokowanego* stanu do celów innych niż krótkoterminowe wersje próbne funkcji. 
 
-Gdy zasady przechowywania oparte na czasie są stosowane w kontenerze, wszystkie obiekty blob w kontenerze pozostaną w niezmiennym stanie przez okres obowiązywania *obowiązującego* okresu przechowywania. Obowiązujący okres przechowywania istniejących obiektów BLOB jest równy różnicy między czasem modyfikacji obiektu BLOB a interwałem przechowywania określonym przez użytkownika.
+Gdy zasady przechowywania oparte na czasie są stosowane w kontenerze, wszystkie obiekty blob w kontenerze pozostaną w niezmiennym stanie przez okres *obowiązywania obowiązującego* okresu przechowywania. Obowiązujący okres przechowywania istniejących obiektów BLOB jest równy różnicy między czasem modyfikacji obiektu BLOB a interwałem przechowywania określonym przez użytkownika.
 
 W przypadku nowych obiektów blob obowiązujący okres przechowywania jest równy okresowi przechowywania określonemu przez użytkownika. Ponieważ użytkownicy mogą zwiększyć Interwał przechowywania, niezmienny magazyn używa najnowszej wartości interwału przechowywania określonego przez użytkownika, aby obliczyć obowiązujący okres przechowywania.
 
@@ -112,7 +112,7 @@ Najnowsze wersje [Azure Portal](https://portal.azure.com), [interfejsu wiersza p
 
 1. Utwórz nowy kontener lub wybierz istniejący kontener, w którym będą przechowywane obiekty blob wymagające przechowywania w stanie niezmiennym.
  Kontener musi znajdować się na koncie GPv2 lub BLOB Storage.
-2. Wybierz pozycję **zasady dostępu** w ustawieniach kontenera. Następnie wybierz pozycję **+ Dodaj zasady** w obszarze niemodyfikowalny **Magazyn obiektów BLOB**.
+2. Wybierz pozycję **zasady dostępu** w ustawieniach kontenera. Następnie wybierz pozycję **+ Dodaj zasady** w obszarze **niemodyfikowalny magazyn obiektów BLOB**.
 
     ![Ustawienia kontenera w portalu](media/storage-blob-immutable-storage/portal-image-1.png)
 
@@ -156,7 +156,7 @@ Moduł AZ. Storage obsługuje niezmienny magazyn.  Aby włączyć tę funkcję, 
 2. Usuń poprzednią instalację Azure PowerShell.
 3. Zainstaluj Azure PowerShell: `Install-Module Az –Repository PSGallery –AllowClobber`.
 
-Przykładowa sekcja [kodu programu PowerShell](#sample-powershell-code) w dalszej części tego artykułu ilustruje użycie funkcji.
+[Przykładowa sekcja kodu programu PowerShell](#sample-powershell-code) w dalszej części tego artykułu ilustruje użycie funkcji.
 
 ## <a name="client-libraries"></a>Biblioteki klienckie
 
@@ -189,7 +189,7 @@ Tak. kontener może jednocześnie mieć zarówno dozwoloną blokadę, jak i zasa
 
 Nie, wstrzymanie prawne jest tylko ogólnym terminem używanym w odniesieniu do zasad przechowywania opartych na czasie. Nie musi być używany tylko w przypadku postępowań związanych z postępowaniem sądowym. Zasady wstrzymania prawnego są przydatne do wyłączania zastąpień i usunięć do ochrony ważnych danych ROBAKa przedsiębiorstwa, gdzie okres przechowywania jest nieznany. Możesz użyć go jako zasad przedsiębiorstwa do ochrony krytycznych obciążeń ROBAKów lub użyć go jako zasad przejściowych przed zastosowaniem przez wyzwalacz zdarzenia niestandardowego zasad przechowywania opartych na czasie. 
 
-**Czy mogę usunąć *zablokowane* zasady przechowywania oparte na czasie lub wstrzymać z przyczyn prawnych?**
+**Czy mogę usunąć _zablokowane_ zasady przechowywania oparte na czasie lub wstrzymać z przyczyn prawnych?**
 
 Z kontenera można usuwać tylko nieodblokowane zasady przechowywania oparte na czasie. Gdy zasady przechowywania oparte na czasie są zablokowane, nie można ich usunąć. dozwolone są tylko rozszerzenia okresu przechowywania. Można usunąć Tagi blokady dozwolone. Gdy wszystkie Tagi prawne zostaną usunięte, wstrzymanie prawne zostanie usunięte.
 
@@ -211,7 +211,7 @@ W przypadku braku płatności normalne zasady przechowywania danych będą stoso
 
 **Czy jest oferowany okres próbny, umożliwiający przetestowanie tej funkcji?**
 
-Tak. Po pierwszym utworzeniu zasad przechowywania na podstawie czasu jest ona w stanie odblokowanym. W tym stanie można wprowadzić dowolną żądaną zmianę interwału przechowywania, na przykład zwiększyć lub zmniejszyć, a nawet usunąć zasady. Po zablokowaniu zasad pozostaje ono zablokowane do momentu wygaśnięcia interwału przechowywania. Te zablokowane zasady uniemożliwiają usunięcie i modyfikację interwału przechowywania. Zdecydowanie zalecamy użycie niezablokowanego stanu tylko do celów próbnych i zablokowanie zasad w ciągu 24 godzin. Te praktyki pomagają zapewnić zgodność z SEKUNDą 17a-4 (f) i innymi przepisami.
+Tak. Po pierwszym utworzeniu zasad przechowywania na podstawie czasu jest ona w stanie *odblokowanym* . W tym stanie można wprowadzić dowolną żądaną zmianę interwału przechowywania, na przykład zwiększyć lub zmniejszyć, a nawet usunąć zasady. Po zablokowaniu zasad pozostaje ono zablokowane do momentu wygaśnięcia interwału przechowywania. Te zablokowane zasady uniemożliwiają usunięcie i modyfikację interwału przechowywania. Zdecydowanie zalecamy użycie niezablokowanego stanu tylko do celów próbnych i zablokowanie zasad w ciągu 24 godzin. Te praktyki pomagają zapewnić zgodność z SEKUNDą 17a-4 (f) i innymi przepisami.
 
 **Czy można używać nietrwałego usuwania wraz z niezmiennymi zasadami obiektów BLOB?**
 

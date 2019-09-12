@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2019
-ms.openlocfilehash: 60c725e084a18326cc4bc9cc05d02d103261f5a4
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: d545cd997b35cfa5e7fec58b17507ce63097fd20
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70809261"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898845"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Optymalizowanie Apache Hive zapytań w usłudze Azure HDInsight
 
@@ -29,11 +29,11 @@ Zwiększenie liczby węzłów procesu roboczego w klastrze usługi HDInsight poz
 
 * Podczas tworzenia klastra można określić liczbę węzłów procesu roboczego przy użyciu Azure Portal, Azure PowerShell lub interfejsu wiersza polecenia.  Więcej informacji można znaleźć w artykule [Create HDInsight clusters](hdinsight-hadoop-provision-linux-clusters.md) (Tworzenie klastrów usługi HDInsight). Poniższy zrzut ekranu przedstawia konfigurację węzła procesu roboczego na Azure Portal:
   
-    ![scaleout_1](./media/hdinsight-hadoop-optimize-hive-query/scaleout_1.png "scaleout_1")
+    ![scaleout_1](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-scaleout-1.png "scaleout_1")
     
 * Po utworzeniu można także edytować liczbę węzłów procesu roboczego, aby dodatkowo skalować klaster bez ponownego tworzenia:
 
-    ![scaleout_2](./media/hdinsight-hadoop-optimize-hive-query/scaleout_2.png "scaleout_2")
+    ![scaleout_2](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-scaleout-2.png "scaleout_2")
 
 Aby uzyskać więcej informacji na temat skalowania usługi HDInsight, zobacz [skalowanie klastrów usługi HDInsight](hdinsight-scaling-best-practices.md) .
 
@@ -41,7 +41,7 @@ Aby uzyskać więcej informacji na temat skalowania usługi HDInsight, zobacz [s
 
 [Apache tez](https://tez.apache.org/) to alternatywny aparat wykonywania dla aparatu MapReduce. Klastry HDInsight oparte na systemie Linux mają domyślnie włączone tez.
 
-![tez_1][image-hdi-optimize-hive-tez_1]
+![tez_1](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-tez-engine.png)
 
 Tez jest szybszy, ponieważ:
 
@@ -65,7 +65,7 @@ Operacje we/wy są głównymi wąskimi gardłami wydajności do uruchamiania zap
 
 Partycjonowanie Hive jest implementowane przez reorganizację danych pierwotnych do nowych katalogów. Każda partycja ma swój własny katalog plików. Partycjonowanie jest definiowane przez użytkownika. Na poniższym diagramie przedstawiono partycjonowanie tabeli programu Hive według kolumny *Year*. Nowy katalog jest tworzony dla każdego roku.
 
-![Partycjonowanie Hive][image-hdi-optimize-hive-partitioning_1]
+![Partycjonowanie Hive](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-partitioning.png)
 
 Niektóre zagadnienia dotyczące partycjonowania:
 
@@ -121,7 +121,7 @@ Po utworzeniu tabeli partycjonowanej można utworzyć partycjonowanie statyczne 
 Aby uzyskać więcej informacji, zobacz [partycjonowane tabele](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-PartitionedTables).
 
 ## <a name="use-the-orcfile-format"></a>Użyj formatu ORCFile
-Program Hive obsługuje różne formaty plików. Przykład:
+Program Hive obsługuje różne formaty plików. Na przykład:
 
 * **Tekst**: domyślny format pliku i działa z większością scenariuszy.
 * **Avro**: sprawdza się najlepiej w scenariuszach współdziałania.
@@ -147,7 +147,7 @@ Aby włączyć format ORC, należy najpierw utworzyć tabelę z klauzulą *przec
    STORED AS ORC;
    ```
    
-Następnie wstawiasz dane do tabeli ORC z tabeli przemieszczania. Przykład:
+Następnie wstawiasz dane do tabeli ORC z tabeli przemieszczania. Na przykład:
 
    ```hive
    INSERT INTO TABLE lineitem_orc
@@ -197,7 +197,3 @@ W tym artykule przedstawiono kilka typowych metod optymalizacji zapytań Hive. A
 * [Używanie Apache Hive w usłudze HDInsight](hadoop/hdinsight-use-hive.md)
 * [Analizowanie danych dotyczących opóźnień lotów przy użyciu interakcyjnych zapytań w usłudze HDInsight](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)
 * [Analizowanie danych usługi Twitter przy użyciu Apache Hive w usłudze HDInsight](hdinsight-analyze-twitter-data-linux.md)
-
-
-[image-hdi-optimize-hive-tez_1]: ./media/hdinsight-hadoop-optimize-hive-query/tez_1.png
-[image-hdi-optimize-hive-partitioning_1]: ./media/hdinsight-hadoop-optimize-hive-query/partitioning_1.png

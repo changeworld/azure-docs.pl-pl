@@ -6,14 +6,14 @@ services: key-vault
 ms.service: key-vault
 author: msmbaldwin
 ms.author: mbaldwin
-manager: barbkess
+manager: rkarlin
 ms.date: 03/01/2019
-ms.openlocfilehash: 251a7c21b671052a23f6ee18cb4278737464b25c
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 86ac58aea174ca05580da99b6bde0cc3823ab151
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744868"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883065"
 ---
 # <a name="manage-storage-account-keys-with-azure-key-vault-and-the-azure-cli"></a>Zarządzanie kluczami konta magazynu przy użyciu Azure Key Vault i interfejsu wiersza polecenia platformy Azure 
 
@@ -45,7 +45,7 @@ Dzierżawa usługi Azure AD udostępnia każdą zarejestrowaną aplikację z jed
 
 Key Vault to aplikacja firmy Microsoft, która jest wstępnie zarejestrowana we wszystkich dzierżawach usługi Azure AD. Key Vault jest zarejestrowany w ramach tego samego identyfikatora aplikacji i w każdej chmurze platformy Azure.
 
-| Dzierżaw | Chmura | Identyfikator aplikacji |
+| dzierżaw | Chmura | Identyfikator aplikacji |
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
 | Azure AD | Azure — publiczna | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |

@@ -1,287 +1,323 @@
 ---
-title: Analiza komercyjnych Marketplace Centrum partnerskiego
-description: Dowiedz się, jak uzyskiwać dostęp do raportów analitycznych do monitorowania sprzedaży, ocena wydajności i zoptymalizować oferty w witrynie marketplace.
-author: mattwojo
+title: Analiza komercyjnego portalu Marketplace w centrum partnerskim
+description: Dowiedz się, jak uzyskiwać dostęp do raportów analitycznych w celu monitorowania sprzedaży, oceny wydajności i optymalizowania ofert w portalu Marketplace.
+author: chjenk
 manager: evansma
 ms.author: shthota
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 05/31/2019
-ms.openlocfilehash: e467def33eb2980e58611d50c314a1206877e3b0
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.date: 09/09/2019
+ms.openlocfilehash: be1da90ef089da412545ac8af6fabb04198d821c
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67619685"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70880198"
 ---
-# <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Analiza komercyjnych Marketplace Centrum partnerskiego
+# <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Analiza komercyjnego portalu Marketplace w centrum partnerskim
 
-Dowiedz się, jak uzyskiwać dostęp do raportów analitycznych w programie Microsoft Partner Center do monitorowania sprzedaży, ocena wydajności i zoptymalizować swoje oferty w portalu marketplace. Jako partner programu można monitorować swoje ofert przy użyciu wizualizacji danych i wykresy szczegółowe informacje o obsługiwanych przez Centrum partnerskie i znaleźć sposoby, aby zmaksymalizować sprzedaż. Ulepszone analitycznymi umożliwiają zajmującym się wyniki dotyczące wydajności i obsługa poprawiaj relacje z klientami i odsprzedawców. 
+Dowiedz się, jak uzyskiwać dostęp do raportów analitycznych w centrum partnerskim firmy Microsoft w celu monitorowania sprzedaży, oceny wydajności i optymalizowania ofert w portalu Marketplace. Jako partner możesz monitorować swoje oferty za pomocą wizualizacji danych i grafów szczegółowych obsługiwanych przez centrum partnerskie oraz znaleźć sposoby maksymalizowania sprzedaży. Udoskonalone narzędzia analityczne umożliwiają wykonywanie działań na wynikach wydajności i obsługę lepszych relacji z klientami i odsprzedawcami. 
 
-Aby uzyskać dostęp do Centrum partnerskiego narzędzia analityczne, otwórz **[analizy](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** pulpit nawigacyjny w obszarze komercyjnych portalu Marketplace.
+Aby uzyskać dostęp do narzędzi do analiz Centrum partnerskiego, Otwórz pulpit nawigacyjny **[Analizuj](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** w obszarze komercyjny Portal Marketplace.
 
-|**Pulpit nawigacyjny**|**Wyświetlona zawartość**|
+|**Pulpit nawigacyjny**|**Wyświetlana zawartość**|
 |:---|:---|
-|[Podsumowanie](#summary-dashboard)|Wykresy trendów i wartości zagregowanych danych podsumowujących aktywność Twoich ofert w witrynie marketplace|
-|[Zamówienia](#orders-dashboard)|Informacje o zamówieniach w formacie graficznego i do pobrania|
-|[Klienci](#customer-dashboard)|Informacji na temat klientów, w tym trendy wzrostu, przedstawione w formacie graficznego i do pobrania|
-|[Pliki do pobrania](#downloads-dashboard)|Lista żądań pobierania z ostatnich 30 dni|
+|[Podsumowanie](#summary-dashboard)|Wykresy, trendy i wartości zagregowanych danych, które podsumowują aktywność witryny Marketplace dla ofert|
+|[Zamówienie](#orders-dashboard)|Informacje o zamówieniach w formacie graficznym i do pobrania|
+|[Klientów](#customer-dashboard)|Informacje o klientach, w tym trendy wzrostu, prezentowane w formacie graficznym i do pobrania|
+|[Proces](#downloads-dashboard)|Lista żądań pobierania w ciągu ostatnich 30 dni|
+|[Oceny i przeglądy](#ratings-and-reviews)| Informacje o ocenach i przeglądach sprzedanych przez klientów w przypadku ofert, które zostały nabyte.
 
 ## <a name="summary-dashboard"></a>Pulpit nawigacyjny podsumowania
 
-**Podsumowanie** pulpitu nawigacyjnego przedstawia omówienie na podstawie każdego typu oferty. **Szczegółowe informacje** Pokaż krytycznych informacji na pierwszy rzut oka i zapewniają szeroką widok działań dotyczących sprzedaży Twoich ofert. Można wizualizować te raporty za pomocą **Podsumowanie** pulpitu nawigacyjnego:
+Pulpit nawigacyjny **podsumowania** przedstawia przegląd w zależności od typu oferty. **Szczegółowe** informacje są wyświetlane w skrócie i zapewniają szeroką gamę działań sprzedaży oferowanych przez oferty. Możesz wizualizować te raporty przy użyciu pulpitu nawigacyjnego **Podsumowanie** :
 
 - [Łączna liczba zamówień](#totals)
 - [Łączna liczba klientów](#totals)
-- [Lokalizacja geograficzna klientów](#customers-by-geography)
-- [Pojawiających się trendów na podstawie klienta i zamówienia informacji](#growth-trend-chart)
-- [Liderzy klienta przy użyciu najwyższej zamówienia](#customer-leaderboard)
-- [Liczba zamówień, uporządkowane według Nazwa oferty](#offers-by-orders)
+- [Geograficzna lokalizacja klientów](#customers-by-geography)
+- [Trendy pojawiające się w oparciu o dane klienta i zamówienia](#growth-trend-chart)
+- [Klient rankingów z najwyższymi zamówieniami](#customer-leaderboard)
+- [Liczba zamówień zorganizowanych według nazwy oferty](#offers-by-orders)
 
 ### <a name="date-range"></a>Zakres dat
 
-Wybór zakresu dat można znaleźć w prawym górnym rogu każdej strony. Dane wyjściowe **Podsumowanie** wykresy strony można dostosować, wybierając zakres dat, w oparciu o ostatnich 3, 6 lub 12 miesięcy lub wybierając niestandardowy zakres dat na okres maksymalnie 12 miesięcy. Domyślny zakres dat wynosi sześć miesięcy.
+Wybór zakresu dat można znaleźć w prawym górnym rogu każdej strony. Dane wyjściowe wykresów stron **podsumowujących** można dostosować, wybierając zakres dat na podstawie ostatnich 3, 6 lub 12 miesięcy lub wybierając niestandardowy zakres dat o maksymalnym okresie wynoszącym 12 miesięcy. Domyślny zakres dat to sześć miesięcy.
 
 ![Pulpit nawigacyjny analizy Centrum partnerskiego](./media/analyze-dashboard.png)
 
-### <a name="totals"></a>Sum
+### <a name="totals"></a>Sumy
 
-**Sumy** sekcja Wyświetla liczbę wszystkich zamówień utworzonych lub klienci uzyskanych w trakcie wybranego zakresu dat. 
+Sekcja **sum** wyświetla liczbę utworzonych zamówień lub klientów nabytych w ciągu wybranego zakresu dat. 
 
-- Wartość procentowa obok **całkowitą liczbę zamówień** i **łączna liczba klientów** reprezentuje wielkość wzrostu w porównaniu do poprzedniego miesiąca. 
-- W górę wskazuje zielony trójkąt wskazuje trendu wzrostu dodatnią. Stawki rabatowe wskazuje czerwony trójkąt wskazuje trendu ujemna wzrostu względem poprzedniego miesiąca. 
-- Kolejność i trendy wzrostu klienta są reprezentowane przez wykresy słupkowe i zostanie wyświetlona wartość w każdym miesiącu, ustawiając kursor nad kolumn wykresu.
+- Wartość procentowa obok **sumy zamówień** i **łączna liczba klientów** reprezentuje stopień wzrostu w porównaniu do poprzedniego miesiąca. 
+- Zielony trójkąt skierowany w górę wskazuje na pozytywny trend wzrostu. Czerwony trójkąt skierowany w dół wskazuje negatywny trend wzrostu względem poprzedniego miesiąca. 
+- Trendy wzrostu kolejności i klientów są reprezentowane przez wykresy słupkowe i wyświetlają wartości dla każdego miesiąca przez umieszczenie kursora nad kolumnami wykresu.
 
-![Centrum partnerskie analizy sumy](./media/analyze-totals.png)
+![Analiza sum Centrum partnerskiego](./media/analyze-totals.png)
 
 ### <a name="customers-by-geography"></a>Klienci według lokalizacji geograficznej
 
-**Klientów według lokalizacji geograficznej** mapy cieplnej Wyświetla liczbę klientów na mapę świata. 
+Mapę cieplną **klienci według lokalizacji geograficznej** wyświetlają liczbę klientów na mapie światowej.
 
-- Można przenieść mapie, aby wyświetlić dokładną lokalizację. 
-- Możesz powiększyć do określonej lokalizacji. 
-- Cieplnej ma dodatkowy siatki, aby wyświetlić szczegóły dotyczące liczby klientów (lub [kolejność liczba](#orders-by-geography)) w określonej lokalizacji. 
-- Możesz wyszukiwać i wybierz kraj w siatce, aby powiększyć do lokalizacji na mapie. Przywróć do oryginalnego widoku, naciskając klawisz **Home** przycisku na mapie.
-- A **nowe** Klient kupił jeden z Twoich ofert w pierwszym miesiącu w ramach wybranego zakresu dat.
+- Możesz przenieść mapę, aby wyświetlić dokładną lokalizację.
+- Możesz powiększyć do określonej lokalizacji.
+- Mapę cieplną zawiera dodatkową siatkę do wyświetlania szczegółów liczby klientów (lub [liczby zamówień](#orders-by-geography)) w określonej lokalizacji.
+- Możesz wyszukać i wybrać kraj w siatce, aby powiększyć do lokalizacji na mapie. Przywróć widok oryginalny, naciskając przycisk Home ( **Strona główna** ) na mapie.
+- **Nowy** klient zakupił jedną z ofert po raz pierwszy w miesiącu w ramach wybranego zakresu dat.
 
-![Centrum partnerskie analizy klientów w lokalizacji geograficznej](./media/analyze-customer-geography.png)
+![Centrum partnerskie — analizowanie geograficznego klienta](./media/analyze-customer-geography.png)
 
 ### <a name="growth-trend-chart"></a>Wykres trendu wzrostu
 
-Możesz wyświetlić trendów oparte na rozwój Twojej **zamówienia utworzone** lub **klientów nabyte**, wyświetlane miesięcy zgodnie z wybranego zakresu dat. Może dalej analizować te trendy, wybierając linków poniżej wykresu, przejdź do odpowiedniej **kolejności** lub **klienta** stron.
+Trendy można wyświetlać w oparciu o rozwój **utworzonych** lub **uzyskanych klientów**, wyświetlany miesiąc według miesiąca zgodnie z wybranym zakresem dat. Można przeanalizować te trendy, wybierając linki poniżej wykresu, co umożliwia przejście do odpowiedniej **kolejności** lub stron **klienta** .
 
-![Trendy wzrostu analizy Centrum partnerskiego](./media/analyze-growth-trends.png)
+![Centrum partnerskie — analizowanie trendów wzrostu](./media/analyze-growth-trends.png)
 
-### <a name="customer-leaderboard"></a>Ranking aplikacji klienta
+### <a name="customer-leaderboard"></a>Rankingów klienta
 
-Klienci 50 pierwszych najwyższy numer zamówienia są wyświetlane na *liderów*, posortowanych według największą liczbę kolejności i procent zamówienia. 
+Najlepsi 50 klientów z największą liczbą zamówień są wyświetlane na *tablicy lidera*, posortowane według najwyższej liczby porządkowej i procentowej kolejności. 
 
-- Wybierz klienta, aby wyświetlić ich szczegóły profilu, zamówienia, uporządkowane według oferty lub zamówienia, uporządkowane według kanału typu i ceny licencja na usługę Azure. 
-- **Oferuje przez zamówienia** wykres pierścieniowy przedstawia informacje o najważniejszych oferuje cztery (według liczby zamówienia) i pozostałe oferuje zgrupowane w jako "Rest All".
+- Wybierz klienta, aby wyświetlić jego szczegóły profilu, zamówienia uporządkowane według oferty lub zamówienia uporządkowane według typu licencji platformy Azure i kanału cenowego. 
+- Wykres pierścieniowy **oferty wg zamówień** przedstawia cztery pierwsze oferty (według liczby porządkowej), a pozostałe oferty pogrupowane jako "REST All".
 
 > [!NOTE]
-> Dane osobowe klientów, zostanie wyświetlone tylko wtedy, gdy klient ma pod warunkiem zgody. Można wyświetlić te informacje, jeśli użytkownik zalogował się przy użyciu **właściciela** poziom uprawnień roli. Użytkownicy z **Współautor** roli nie będzie można wyświetlić te informacje. [Dowiedz się więcej na temat ról użytkownika i uprawnienia](./manage-account.md#define-user-roles-and-permissions).
+> Dane osobowe klienta będą prezentowane tylko wtedy, gdy klient udostępnił zgodę. Te informacje można wyświetlić, jeśli zalogowano się na poziomie uprawnień roli **właściciela** . Użytkownicy z rolą **współautor** nie będą mogli wyświetlić tych informacji. [Dowiedz się więcej o rolach i uprawnieniach użytkowników](./manage-account.md#define-user-roles-and-permissions).
 
-![Trendy wzrostu analizy Centrum partnerskiego](./media/analyze-growth-trends.png)
+![Centrum partnerskie — analizowanie trendów wzrostu](./media/analyze-growth-trends.png)
 
-### <a name="offers-by-orders"></a>Oferty przez zamówienia
+### <a name="offers-by-orders"></a>Oferty według zamówień
 
-**Oferuje przez zamówienia** wykresu organizuje active zamówienia według nazwy oferty. 
+Wykres **oferty według zamówień** organizuje aktywne zamówienia zgodnie z nazwą oferty. 
 
-- Można przeciągnąć za pośrednictwem wycinków z wykres pierścieniowy po lewej stronie na wykres pierścieniowy prawo, aby wyświetlić więcej szczegółów oferty, która ma być przeciągnięte. Na tych dwóch wykresach umożliwiają porównanie z daną ofertą, o wydajności wszystkich Twoich ofert ("Rest All"). 
+- Możesz przeciągać od wycinków z lewego wykresu pierścieniowego do prawego wykresu pierścieniowego, aby wyświetlić więcej szczegółów dla oferty, która została przeciągnięta. Te dwa wykresy umożliwiają porównanie konkretnej oferty z wydajnością wszystkich innych ofert ("REST All"). 
 
-![Centrum partnerskie analizy oferty przez zamówienia](./media/analyze-offer-by-order.png)
+![Centrum partnerskie — analizowanie ofert według zamówień](./media/analyze-offer-by-order.png)
 
-## <a name="orders-dashboard"></a>Pulpit nawigacyjny zamówienia
+## <a name="orders-dashboard"></a>Pulpit nawigacyjny zamówień
 
-**Zamówienia** pulpitu nawigacyjnego **analizy** menu wyświetla aktualnych zamówień dla wszystkich Twoich ofert w modelu SaaS. Możesz wyświetlić graficzna reprezentacja:
+Pulpit nawigacyjny **zamówienia** w menu **Analizuj** zawiera bieżące zamówienia dla wszystkich ofert SaaS. Można wyświetlić graficzne reprezentacje:
 
-- [Sumy zamówienia](#order-totals)
-- [Zamówienia według lokalizacji geograficznej](#orders-by-geography)
-- [Trendy w obsłudze zamówień aktywne i anulowane](#trends-for-active-and-canceled-orders)
-- [Zamówienia, uporządkowane według typu licencji w portalu marketplace](#orders-by-marketplace-license-type)
-- [Zamówienia, uporządkowane według nowymi i istniejącymi klientami](#orders-by-customer-type)
+- [Zamówienia sum](#order-totals)
+- [Zamówienia według położenia geograficznego](#orders-by-geography)
+- [Trendy dotyczące aktywnych i anulowanych zamówień](#trends-for-active-and-canceled-orders)
+- [Zamówienia uporządkowane według typu licencji witryny Marketplace](#orders-by-marketplace-license-type)
+- [Zamówienia zorganizowane przez nowych i istniejących klientów](#orders-by-customer-type)
 - [Tabela szczegółów zamówienia](#order-details-table)
 
 > [!NOTE]
-> Istnieją różnice między jak raporty analityczne, wyświetlana w portalu partnerów chmury (CPP) oraz nowy program komercyjnych portalu Marketplace w Centrum partnerskim. Jest to jeden określony sposób, że **Insights sprzedawcy** CPP ma **zamówień i użycie** kartę, która wyświetla dane dla oferty opartej na użyciu i systemem użycia ofert. W Centrum partnerskim **zamówienia** strona ma osobnej karcie do oferty SaaS.
+> Istnieją różnice między sposobami wyświetlania raportów analizy w portal Cloud Partner (CPP) i nowym komercyjnym programie Marketplace w centrum partnerskim. Jednym z nich jest to, że informacje dostępne dla **sprzedającego** w programie CPP mają kartę **użycie zamówienia &** , która wyświetla dane dla ofert opartych na użyciu i nieopartych na użyciu. W centrum partnerskim strona **zamówienia** ma osobną kartę dla ofert SaaS.
 
-### <a name="order-totals"></a>Sumy zamówienia
+### <a name="order-totals"></a>Zamówienia sum
 
-**Podsumowanie zamówienia** sekcja Wyświetla liczbę wszystkich zamówień utworzony, w tym **Active** i **anulowane** zamówień podczas wybranych [zakres dat ](#date-range). 
+Sekcja **sumy zamówień** przedstawia liczbę utworzonych zamówień, w tym zamówień **aktywnych** i **anulowanych** , w ramach wybranego [zakresu dat](#date-range). 
 
-- Wartość procentowa obok **całkowitą liczbę zamówień** reprezentuje wielkość wzrostu w porównaniu do poprzedniego miesiąca. 
-- W górę wskazuje zielony trójkąt wskazuje trendu wzrostu dodatnią. Stawki rabatowe wskazuje czerwony trójkąt wskazuje trendu ujemna wzrostu względem poprzedniego miesiąca. 
-- Trendy wzrostu są reprezentowane przez wykresy słupkowe i zostanie wyświetlona wartość w każdym miesiącu, ustawiając kursor nad kolumn wykresu.
+- Wartość procentowa obok **sumy zamówień** reprezentuje stopień wzrostu w porównaniu do poprzedniego miesiąca. 
+- Zielony trójkąt skierowany w górę wskazuje na pozytywny trend wzrostu. Czerwony trójkąt skierowany w dół wskazuje negatywny trend wzrostu względem poprzedniego miesiąca. 
+- Trendy wzrostu są reprezentowane przez wykresy słupkowe i wyświetlają wartości dla każdego miesiąca przez umieszczenie kursora nad kolumnami wykresu.
 
-### <a name="orders-by-geography"></a>Zamówienia według lokalizacji geograficznej
+### <a name="orders-by-geography"></a>Zamówienia według położenia geograficznego
 
-**Zamówienia według lokalizacji geograficznej** mapy cieplnej jest wyświetlana liczba zamówień na mapę świata i działa tak samo, jak  **[klientów według lokalizacji geograficznej mapy cieplnej](#customers-by-geography)** .
+Mapę cieplną **Orders by geography** wyświetla liczbę zamówień na mapie światowej i działa tak samo jak **[klienci według lokalizacji geograficznej mapę cieplną](#customers-by-geography)** .
 
-### <a name="trends-for-active-and-canceled-orders"></a>Trendy w obsłudze zamówień aktywne i anulowane
+### <a name="trends-for-active-and-canceled-orders"></a>Trendy dotyczące aktywnych i anulowanych zamówień
 
-**Aktywny porządkuje przez oferty** wykres pierścieniowy organizuje wszystkie aktywne zamówień zgodnie z ich nazw oferty.
+Wykres pierścieniowy **aktywnych zamówień przez oferty** organizuje wszystkie aktywne zamówienia zgodnie z ich nazwami ofert.
 
-- Najważniejsze 4 oferty są wyświetlane na wykresie, a pozostałe oferty są grupowane jako "Rest All".
-- Można wybrać określonych ofert w legendzie, aby wyświetlić tylko te oferty na wykresie. 
-- Kursor wycinka na wykresie będą wyświetlane, liczba zamówień i procent tę ofertę, w porównaniu do łączna liczba zamówień we wszystkich ofert.
-- **Porządkuje według trendu oferty** przedstawia trendy wzrostu w poszczególnych miesiącach. Kolumna miesiąc reprezentuje liczbę zamówień według nazwy oferty. Wykres liniowy przedstawia trend procent wzrostu wykreślania na osi z.
-- Suwak w górnej części wykresu umożliwia przewiń w prawo i w lewo wzdłuż osi x i skoncentrować się na konkretne punkty danych.
-- Wykres trendu można wyświetlić, wybierając określonego elementu w legendzie.
-- Możesz również wyświetlić trendy i dane dotyczące **anulowane zamówienia**. Wykres będą działać w taki sam sposób jak aktywne zamówienia.
+- Cztery pierwsze oferty są wyświetlane na wykresie, a pozostałe oferty są pogrupowane jako "REST All".
+- Możesz wybrać konkretne oferty w legendzie, aby wyświetlić tylko te oferty na grafie. 
+- Umieszczenie kursora na wycinku na wykresie spowoduje wyświetlenie liczby zamówień i procentu oferty w porównaniu do łącznej liczby zamówień w ramach wszystkich ofert.
+- **Trend zamówień według oferty** powoduje wyświetlenie trendów wzrostu miesięcznie. Kolumna month reprezentuje liczbę zamówień według nazwy oferty. Na wykresie liniowym jest wyświetlany trend procentu wzrostu wykreślony na osi z.
+- Możesz użyć suwaka w górnej części wykresu, aby przewinąć w prawo i w lewo wzdłuż osi x i skupić się na określonych punktach danych.
+- Możesz wyświetlić wykres trendu, wybierając konkretny element w legendzie.
+- Możesz również wybrać, aby wyświetlić trendy i dane dla **anulowanych zamówień**. Wykres będzie działać w taki sam sposób jak w przypadku aktywnych zamówień.
 
-![Centrum partnerskie analizy aktywne zamówienia](./media/analyze-active-orders.png)
+![Analizowanie aktywnych zamówień w centrum partnerskim](./media/analyze-active-orders.png)
 
-### <a name="orders-by-marketplace-license-type"></a>Zamówienia według typu licencji w portalu marketplace
+### <a name="orders-by-marketplace-license-type"></a>Zamówienia według typu licencji Marketplace
 <!-- Section needs review and clarification!  -->
-**Zamówienia według typu licencji w portalu marketplace** wykres przedstawia liczbę kolejnych miesięcy zamówienia na podstawie typu licencji i metody rozliczeń z oferty w portalu marketplace. Typy licencji:
+Na wykresie **Typ licencji w portalu Marketplace** jest wyświetlana liczba zamówień według miesięcy w oparciu o typ licencji i metodę rozliczania oferty portalu Marketplace. Typy licencji obejmują:
 
-- **Rozliczane za pośrednictwem platformy Azure**: Firma Microsoft rozlicza klientów w imieniu użytkownika, gdy użytkownik chce [sprzedaży oferty firmy Microsoft](./create-new-saas-offer.md#sell-through-microsoft) przy użyciu tego typu licencji. Typy płatności to płatności przy użyciu karty kredytowej lub faktury za system Enterprise.
-- **Model dostarczania własnej licencji**: Firma Microsoft rozlicza klientów do ich użycia tego typu oferty w portalu marketplace. Na liście jako **[Pobierz teraz (bezpłatne)](./create-new-saas-offer.md#get-it-now-free)** w portalu marketplace.
-- **Bezpłatne**: Firma Microsoft rozlicza klientów do ich użycia tego typu oferty w portalu marketplace. Na liście jako **[bezpłatna wersja próbna](./create-new-saas-offer.md##free-trial-listing)** w portalu marketplace.
-- **Firmy Microsoft jako odsprzedawcy**: Reprezentuje sprzedawane przez odprzedawcy produktów firmy Microsoft jako część oferty  **[programu Cloud Solution Provider (CSP)](./create-new-saas-offer.md#csp-program-opt-in)** .
+- **Rozliczenia za pomocą platformy Azure**: Firma Microsoft rozlicza klientów w Twoim imieniu w przypadku wybrania [sprzedaży oferty przez firmę Microsoft](./create-new-saas-offer.md#sell-through-microsoft) przy użyciu tego typu licencji. Typy płatności obejmują płatność zgodnie z rzeczywistym użyciem za pośrednictwem karty kredytowej lub fakturowania w przedsiębiorstwie.
+- **Bring Your Own License**: Firma Microsoft nie rozlicza klientów za korzystanie z tego typu oferty portalu Marketplace. Wymienione jako **[Pobierz teraz (bezpłatnie)](./create-new-saas-offer.md#get-it-now-free)** w portalu Marketplace.
+- **Bezpłatnie**: Firma Microsoft nie rozlicza klientów za korzystanie z tego typu oferty portalu Marketplace. Wymienione jako **[bezpłatna wersja próbna](./create-new-saas-offer.md##free-trial-listing)** w portalu Marketplace.
+- **Firma Microsoft jako odsprzedawca**: Reprezentuje oferty sprzedane przez odsprzedawcy firmy Microsoft jako część **[programu Cloud Solution Provider (CSP)](./create-new-saas-offer.md#csp-program-opt-in)** .
 
-![Centrum partnerskie analizy zamówienia według typu licencji](./media/analyze-license-type.png)
+![Centrum partnerskie — analizowanie zamówień według typu licencji](./media/analyze-license-type.png)
 
 ### <a name="orders-by-customer-type"></a>Zamówienia według typu klienta
 
-**Zamówienia według klientów typu** wykres słupkowy przedstawia liczbę zamówień podzielone między **nowi klienci** i **istniejący klienci**. 
+Wykres słupkowy **typu zamówienia według klientów** przedstawia liczbę zamówień podzielonych między **nowych klientów** i **istniejących klientów**. 
 
-- A **nowego klienta** uzyskał co najmniej jedną z Twoich ofert po raz pierwszy w tym samym miesiącu (oś y). **Klienta istniejące** wcześniej uzyskał ofertę otrzymaną po użytkownik przed miesiąca kalendarzowego zgłoszonych (na osi y). 
-- Dodatkowe wykresu kołowego reprezentuje wszystkie zamówienia utworzone przez nowego lub istniejącego klienta w zakresie dat. wybrana.
-- W obu wykresach można wyświetlić tylko nowe lub tylko istniejących klientów, wybierając odpowiednie legendy.
+- **Nowy klient** uzyskał co najmniej jedną ofertę po raz pierwszy w tym samym miesiącu kalendarzowym (oś y). **Istniejący klient** uzyskał wcześniej ofertę od Ciebie przed zaraportowanym miesiącem kalendarzowym (na osi y). 
+- Dodatkowy wykres kołowy reprezentuje wszystkie zamówienia utworzone przez nowego lub istniejącego klienta dla wybranego zakresu dat.
+- Na obu wykresach można wyświetlić tylko nowych lub tylko istniejących klientów, wybierając odpowiednią legendę.
 
-![Wpisz Centrum partnerskiego analizy zamówienia według klientów](./media/analyze-order-by-customer.png)
+![Centrum partnerskie — analizowanie zamówień według typu klienta](./media/analyze-order-by-customer.png)
 
 ### <a name="order-details-table"></a>Tabela szczegółów zamówienia
 
-**Tabeli Szczegóły zamówienia** Wyświetla listę numerowaną zamówienia najważniejsze 1000, posortowane według: Data nabycia.
+W **tabeli Order Details (szczegóły zamówienia** ) wyświetlana jest lista numerowana zamówień z 1000 góry posortowanych według daty nabycia.
 
-- Sortowanie jest każdej kolumny w siatce.
-- Dane można wyodrębnić pliku TSV Jeśli liczba rekordów jest mniejsza niż 1000.
-- Jeśli wyeksportowany rejestruje liczbę przez 1000, dane zostaną asynchronicznie umieszczone w strony plików do pobrania dla następnych 30 dni.
-- Filtry mogą być stosowane do **tabeli Szczegóły zamówienia** do wyświetlania danych, który Cię interesuje. Licencja na usługę Azure typ, typ licencji w portalu Marketplace, typ oferty, stan zamówienia, bezpłatne ślady, nazwa identyfikator klienta identyfikator, i firma subskrypcji portalu Marketplace, można filtrować dane według kraju.
+- Każda kolumna w siatce jest do sortowania.
+- Dane można wyodrębnić do pliku TSV, jeśli liczba rekordów jest mniejsza niż 1000.
+- Jeśli liczba rekordów przekracza 1000, eksportowane dane będą asynchroniczne umieszczane na stronie pobierania przez następne 30 dni.
+- Filtry można zastosować do **tabeli Order Details** , aby wyświetlić tylko te dane, które Cię interesują. Dane można filtrować według kraju, typu licencji platformy Azure, typu licencji Marketplace, typu oferty, stanu zamówienia, bezpłatnych identyfikatorów, identyfikatora subskrypcji witryny Marketplace, identyfikatora klienta i nazwy firmy.
 
-![Szczegóły zamówienia analizy Centrum partnerskiego](./media/analyze-order-details.png)
+![Szczegóły kolejności analizy Centrum partnerskiego](./media/analyze-order-details.png)
 
-## <a name="customer-dashboard"></a>Klient pulpitu nawigacyjnego
+## <a name="customer-dashboard"></a>Pulpit nawigacyjny klienta
 
-**Klienta** pulpitu nawigacyjnego **analizy** menu wyświetla dane dla klientów, którzy uzyskali swoje oferty. Możesz wyświetlić graficzna reprezentacja:
+Pulpit nawigacyjny **klienta** menu **Analizuj** zawiera dane dla klientów, którzy uzyskali oferty. Można wyświetlić graficzne reprezentacje:
 
-- [Sumy dla odbiorcy](#customer-totals)
+- [Sumy klientów](#customer-totals)
 - [Klienci według lokalizacji geograficznej](#customers-by-geography)
-- [Trendy klienta](#customer-trends)
-- [Klienci, zamówienia](#customers-by-orders)
+- [Trendy klientów](#customer-trends)
+- [Klienci według zamówień](#customers-by-orders)
 - [Tabela szczegółów klienta](#customer-details-table)
 
-### <a name="customer-totals"></a>Sumy dla odbiorcy
+### <a name="customer-totals"></a>Sumy klientów
 
-**Sumy dla odbiorcy** sekcja Wyświetla liczbę wszystkich klientów, w tym nowych, istniejących i modyfikowane, podczas wybranych [zakres dat](#date-range).
+W sekcji **sumy klienta** wyświetlana jest liczba wszystkich klientów, w tym nowych, istniejących i zmienionych, w ramach wybranego [zakresu dat](#date-range).
 
-- Klienci procent wzrostu w porównaniu do poprzedniego miesiąca jest wskazywany przez liczbę i górę wskaźnik we wskaźniku zielony lub w dół w kolorze czerwonym.
-- Trendy wzrostu są reprezentowane przez wykresy słupkowe i zostanie wyświetlona wartość w każdym miesiącu, ustawiając kursor nad kolumn wykresu.
+- Procent wzrostu w porównaniu z poprzednim miesiącem jest wskazywany przez liczbę i wskaźnik w górę w kolorze czerwonym lub w dół na czerwono.
+- Trendy wzrostu są reprezentowane przez wykresy słupkowe i wyświetlają wartości dla każdego miesiąca przez umieszczenie kursora nad kolumnami wykresu.
 
 #### <a name="customer-types"></a>Typy klientów
 
-Istnieją trzy typy klientów: nowych, istniejących i modyfikowane. 
+Istnieją trzy typy klientów: nowe, istniejące i zmienione. 
 
-- Nowy klient uzyskał co najmniej jedną z Twoich ofert po raz pierwszy w ramach wybranego miesiąca.
-- Istniejący klient uzyskał co najmniej jedną z Twoich ofert przed miesiąca wybrane.
-- Klient churned anulował wszystkich ofert z wcześniej kupił.
+- Nowy klient uzyskał co najmniej jedną ofertę po raz pierwszy w wybranym miesiącu.
+- Istniejący klient uzyskał jedną lub większą liczbę ofert przed wybranym miesiącem.
+- Zakupiony klient anulował wszystkie oferty.
 
-### <a name="customer-trends"></a>Trendy klienta
+### <a name="customer-trends"></a>Trendy klientów
 
-**Klientów trendy** wykres przedstawia liczbę wszystkich klientów, w tym nowych, istniejących i modyfikowane przy użyciu trendu wzrostu w poszczególnych miesiącach.
+Na wykresie **trendów dla klientów** jest wyświetlana liczba wszystkich klientów, w tym nowych, istniejących i zmienionych trendów wzrostu miesięcznie.
 
-- Wykres liniowy przedstawia ogólny procent wzrostu klienta. 
-- Kolumna miesiąc reprezentuje liczbę klientów skumulowany przez klientów do nowych, istniejących i modyfikowane.
-- Liczba klientów współczynnik jest wyświetlany na ujemna kierunek osi Y.
-- Możesz wybrać określone legendy elementy wyświetlane więcej szczegółowe widoki. Na przykład wybierz pozycję nowych klientów w legendzie, aby wyświetlić tylko nowych klientów.
-- Suwak w górnej części wykresu umożliwia przewiń w prawo i po lewej stronie na osi x i skoncentrować się na konkretne punkty danych Aby wyświetlić bardziej szczegółowo.
-- Kursor do kolumny wykresu są wyświetlane szczegóły tylko w tym miesiącu.
+- Wykres liniowy reprezentuje ogólne wartości procentowe wzrostu klientów. 
+- Kolumna month reprezentuje liczbę klientów ułożonych przez nowych, istniejących i zmienionych klientów.
+- Liczba zmienionych klientów jest wyświetlana w ujemnym kierunku osi Y.
+- Można wybrać konkretne elementy legendy, aby wyświetlić bardziej szczegółowe widoki. Na przykład wybierz pozycję nowi klienci w legendzie, aby wyświetlić tylko nowych klientów.
+- Możesz użyć suwaka w górnej części wykresu, aby przewinąć w prawo i w lewo na osi x i skupić się na określonych punktach danych, aby wyświetlić bardziej szczegółowe informacje.
+- Umieszczenie wskaźnika myszy nad kolumną wykresu spowoduje wyświetlenie szczegółów tylko dla tego miesiąca.
 
-![Centrum partnerskie analizy klientów trendy](./media/analyze-customer-trends.png)
+![Centrum partnerskie Analizuj trendy klientów](./media/analyze-customer-trends.png)
 
-### <a name="customers-by-orders"></a>Klienci, zamówienia
+### <a name="customers-by-orders"></a>Klienci według zamówień
 
-**Klientów według zamówienia** wykresu wyświetla **percentyl klienta pierwszych** wzdłuż osi x, zgodnie z ustaleniami numeru zamówienia. Oś y Wyświetla liczba zamówień klienta. Osi z (wykres liniowy) Wyświetla sumy wartości procentowych całkowitą liczbę zamówień. Możesz wyświetlić szczegółowe informacje, ustawiając kursor nad punkty wykres liniowy.
+Wykres **klienci według zamówień** wyświetla **najwyższego percentylu klienta** wzdłuż osi x, zgodnie z ich liczbą zamówień. Oś y Wyświetla liczbę zamówień klienta. Oś z (wykres liniowy) przedstawia skumulowaną wartość procentową łącznej liczby zamówień. Możesz wyświetlić szczegóły, umieszczając kursor nad punktami wzdłuż wykresu liniowego.
 
-Na przykład można znaleźć dane tego zamówienia klienta najważniejsze 30% klientów biorących udział w tworzeniu 83% zamówienia równa 2,130 zamówienia.
+Na przykład można dowiedzieć się od tego, jakie dane zamówienia klienta stanowią, że pierwsze 30% klientów wnosi do 83% zamówień, co oznacza zamówienia 2 130.
 
-![Centrum partnerskie analizy zamówienia](./media/analyze-customer-orders.png)
+![Centrum partnerskie Analizuj zamówienia klienta](./media/analyze-customer-orders.png)
 
 ### <a name="customer-details-table"></a>Tabela szczegółów klienta
 
-**Tabeli Szczegóły klienta** Wyświetla listę numerowaną pierwszego 1000 klientów, posortowane według daty najpierw nabycia jednej z Twoich ofert.
+W **tabeli Szczegóły klienta** zostanie wyświetlona lista numerowanych głównych klientów 1000 posortowanych według daty pierwszego nabycia jednej z ofert.
 
-- Dane osobowe klientów tylko będą dostępne, jeśli klient ma pod warunkiem zgody. Te informacje można przeglądać tylko, jeśli użytkownik zalogował się przy użyciu **właściciela** roli poziom uprawnień. [Dowiedz się więcej na temat ról użytkownika i uprawnienia](./manage-account.md#define-user-roles-and-permissions).
-- Sortowanie jest każdej kolumny w siatce.
-- Dane można wyodrębnić pliku TSV Jeśli liczba rekordów jest mniejsza niż 1000.
-- Jeśli wyeksportowany rejestruje liczbę przez 1000, dane zostaną asynchronicznie umieszczone w strony plików do pobrania dla następnych 30 dni.
-- Filtry można stosować do tabeli, aby wyświetlić tylko dane, który Cię interesuje. Dane mogą być filtrowane według nazwy firmy, a identyfikator klienta, identyfikator subskrypcji portalu Marketplace, typ licencji usługi Azure, Data nabyte, Data utraty, klienta poczty E-mail, klienta kraju/stan/miasta/Zip, języka klienta itd.
+- Informacje osobiste klienta będą dostępne tylko wtedy, gdy klient udostępnił zgodę. Te informacje można wyświetlić tylko wtedy, gdy użytkownik zalogował się przy użyciu poziomu uprawnień **właściciela** . [Dowiedz się więcej o rolach i uprawnieniach użytkowników](./manage-account.md#define-user-roles-and-permissions).
+- Każda kolumna w siatce jest do sortowania.
+- Dane można wyodrębnić do pliku TSV, jeśli liczba rekordów jest mniejsza niż 1000.
+- Jeśli liczba rekordów przekracza 1000, eksportowane dane będą asynchroniczne umieszczane na stronie pobierania przez następne 30 dni.
+- Filtry można zastosować do tabeli, aby wyświetlić tylko te dane, które Cię interesują. Dane można filtrować według nazwy firmy, identyfikatora klienta, identyfikatora subskrypcji w portalu Marketplace, typu licencji platformy Azure, daty pozyskania, utraty daty, adresu E-mail klienta, kraju/województwa/miejscowości/pliku zip, języka klienta itd.
 
-![Szczegóły klienta analizy Centrum partnerskiego](./media/analyze-customer-table.png)
+![Centrum partnerskie Analizuj szczegóły klienta](./media/analyze-customer-table.png)
 
-## <a name="downloads-dashboard"></a>Pobiera pulpitu nawigacyjnego
+## <a name="downloads-dashboard"></a>Pobierz pulpit nawigacyjny
 
-**Pliki do pobrania** pulpitu nawigacyjnego **analizy** menu wyświetla żądania żadnych plików do pobrania, zawierające ponad 1000 wierszy danych klienta i zamówienia.
+Na **pulpicie** nawigacyjnym menu **Analizuj** są wyświetlane żądania pobrania zawierające ponad 1000 wierszy danych klienta lub zamówienia.
 
-Otrzymasz wyskakujące powiadomienie i wiadomość e-mail zawierającą łącze do **pliki do pobrania** pulpitu nawigacyjnego, zawsze wtedy, gdy żądanie pobierania z ponad 1000 wierszy danych. Te pliki do pobrania danych będą dostępne przez 30 dni, a następnie usuwane.
+Otrzymasz powiadomienie wyskakujące i wiadomość e-mail zawierającą link **do pulpitu nawigacyjnego Pobierz za** każdym razem, gdy wyślesz żądanie pobrania z ponad 1000 wierszy danych. Te pliki do pobrania są dostępne przez 30-dniowy okres, a następnie usuwane.
 
-![Centrum partnerskie Analizuj pliki do pobrania](./media/analyze-downloads.png)
+![Centrum partnerskie — analizowanie pobrań](./media/analyze-downloads.png)
 
-### <a name="dictionary-of-data-terms"></a>Słownik terminów danych
+### <a name="dictionary-of-data-terms"></a>Słownik terminów dotyczących danych
 
 | Nazwa atrybutu | Raporty | Definicja|
 |---|---|---|
-| Typ licencji platformy Azure | Klient, zamówienie | Typ umowy licencyjnej, używany przez klientów do zakupienia usług Azure. Znany także jako kanał |
-| Typ licencji platformy Azure: Cloud Solution Provider | Klient, zamówienie | Odbiorcy końcowego pozyskuje platformy Azure i oferty w portalu Marketplace za pośrednictwem ich dostawcy rozwiązań w chmurze, który działa jako swojego odsprzedawcy.|
-| Typ licencji platformy Azure: Enterprise | Klient, zamówienie | Odbiorcy końcowego pozyskuje platformy Azure i oferty w portalu Marketplace za pośrednictwem umowy Enterprise Agreement podpisaną bezpośrednio od firmy Microsoft.|
-| Typ licencji platformy Azure: Przedsiębiorstwa za pośrednictwem odsprzedawcy  | Klient, zamówienie | Odbiorcy końcowego pozyskuje platformy Azure i oferty w portalu Marketplace za pośrednictwem odsprzedawcy, który ułatwia tworzenie umów Enterprise Agreement z firmą Microsoft.|  |
-| Typ licencji platformy Azure: Płatność zgodnie z rzeczywistym użyciem| Klient, zamówienie | Odbiorcy końcowego pozyskuje platformy Azure i oferty w portalu Marketplace za pośrednictwem "Płatność zgodnie z rzeczywistym użyciem" podpisanej bezpośrednio od firmy Microsoft.||
-| Nazwa wystąpienia chmury| Zamówienie| Microsoft Cloud wystąpił podczas wdrażania maszyny Wirtualnej.||
-| Nazwa wystąpienia chmury: Globalna platforma Azure| Zamówienie| Globalne Microsoft chmury publicznej.|| |
-| Nazwa wystąpienia chmury: Azure Government | Zamówienie| Chmury firmy Microsoft przeznaczonych dla instytucji rządowych dla jednego z następujących instytucje rządowe: Chiny (Niemcy) i Stanów Zjednoczonych.| |
-| Miasto klienta| Odbiorcy| Nazwa miasta, udostępniane przez klienta. Miasto może być inny niż miasta w subskrypcji platformy Azure klienta.||
+| Typ licencji platformy Azure | Klient, zamówienie | Typ umowy licencyjnej używanej przez klientów do kupowania platformy Azure. Znany również jako kanał |
+| Typ licencji platformy Azure: Cloud Solution Provider | Klient, zamówienie | Klient końcowy nabywa platformę Azure i ofertę portalu Marketplace za pomocą swojego dostawcy rozwiązań w chmurze, który działa jako odsprzedawca.|
+| Typ licencji platformy Azure: Enterprise | Klient, zamówienie | Klient końcowy nabywa platformę Azure i ofertę w portalu Marketplace za pomocą Umowa Enterprise podpisanej bezpośrednio w firmie Microsoft.|
+| Typ licencji platformy Azure: Przedsiębiorstwo przez odsprzedawcę  | Klient, zamówienie | Klient końcowy nabywa platformę Azure i ofertę portalu Marketplace przez odsprzedawcę, który ułatwia ich Umowa Enterprise firmie Microsoft.|  |
+| Typ licencji platformy Azure: Płatność zgodnie z rzeczywistym użyciem| Klient, zamówienie | Klient końcowy nabywa platformę Azure i ofertę Marketplace w ramach umowy "płatność zgodnie z rzeczywistym użyciem" podpisanej bezpośrednio z firmą Microsoft.||
+| Nazwa wystąpienia chmury| Zamówienie| Microsoft Cloud, w którym wystąpiło wdrożenie maszyny wirtualnej.||
+| Nazwa wystąpienia chmury: Globalne platformy Azure| Zamówienie| Publiczna globalna chmura firmy Microsoft.|| |
+| Nazwa wystąpienia chmury: Azure Government | Zamówienie| Specyficzne dla instytucji rządowe chmury firmy Microsoft dla jednego z następujących rządów: Chiny, Niemcy lub Stany Zjednoczone Ameryki.| |
+| Miasto klienta| Odbiorcy| Nazwa miasta podana przez klienta. Miasto może być inne niż miasto w subskrypcji platformy Azure klienta.||
 | Język komunikacji klienta  | Odbiorcy| Język preferowany przez klienta do komunikacji.||
-| Nazwa firmy klienta | Klient, zamówienie | Nazwa firmy, udostępniane przez klienta. Nazwa może być inny niż miasta w subskrypcji platformy Azure klienta.|  |
-| Kraju klienta | Klient, zamówienie | Nazwa kraju, udostępniane przez klienta. Kraj może różnić się od kraju, w przypadku subskrypcji Azure klienta.|  |
-| Klient poczty E-mail| Odbiorcy| Podany adres e-mail przez klienta końcowego. Wiadomość e-mail może być inny niż adres e-mail w przypadku subskrypcji Azure klienta.||
-| Imię klienta| Odbiorcy| Nazwa podana przez klienta. Nazwa może być inna niż nazwa podana w subskrypcji platformy Azure klienta.| |
-| Identyfikator klienta | Klient, zamówienie | Unikatowy identyfikator przypisany do klienta. Klient może mieć zero lub więcej subskrypcji portalu Marketplace platformy Azure.|  |
-| Kod pocztowy klienta  | Odbiorcy| Kod pocztowy, udostępniane przez klienta. Kod może być inny niż kod pocztowy w subskrypcji platformy Azure klienta.| |
-| Stan klienta| Odbiorcy| Stan (adres), udostępniane przez klienta. Stan może być inny niż ostatni nazwa podana w subskrypcji platformy Azure klienta.| |
-| Data przyjęcia| Odbiorcy| Data pierwszego klienta zakupić dowolnej oferty, które zostały opublikowane przez Ciebie.| |
-| Data utraty| Odbiorcy| Data ostatniego klienta anulowane ostatniego wszystkich ofert z wcześniej kupił.||
-| To nowy klient  | Zamówienie| Wartość będzie identyfikować nowego klienta pobierania co najmniej jedną z Twoich ofert po raz pierwszy (lub nie). Wartością będzie "Yes" Jeśli w tym samym miesiącu dla "Data nabyte". Wartością będzie "No", jeśli klient kupił znajdujących się w Twoich ofert przed miesiąca kalendarzowego zgłaszane. |
-| Jest jednostki SKU w wersji zapoznawczej| Zamówienie| Wartość zostanie wyświetlone powiadomienie, jeśli oznaczyła jednostkę SKU jako "wersja zapoznawcza". Wartość będzie równa "Yes", jeśli zostały odpowiednio oznakowane jednostki SKU, a tylko subskrypcje autoryzowanych przez użytkownika można wdrożyć i użyć tego obrazu. Wartość będzie równa "No", jeśli jednostka SKU nie została zidentyfikowana jako "wersja zapoznawcza".  |
-| Jest kontakt promocyjne zgodzić się na| Odbiorcy| Wartość zostanie wyświetlone powiadomienie, jeśli klient aktywnie zgoda promocyjne kontaktu z wydawcy. W tej chwili jest nie wyświetlana opcja dla klientów, więc wskazują "No", w tablicy. Po wdrożeniu tej funkcji, firma Microsoft rozpocznie się aktualizowanie odpowiednio.|
-| Typ licencji w portalu Marketplace| Zamówienie| Metoda rozliczeń oferty w portalu Marketplace.||
-| Typ licencji w portalu Marketplace: Rozliczane za pośrednictwem platformy Azure| Zamówienie| Firma Microsoft jest agenta dla tej oferty w portalu Marketplace oraz rozlicza klientów w Twoim imieniu. (PAYG karty kredytowej lub faktury Enterprise)||
-| Typ licencji w portalu Marketplace: Model dostarczania własnej licencji | Zamówienie| Maszyna wirtualna wymaga klucza licencji dostarczonych przez klienta do wdrożenia. Firma Microsoft rozlicza klientów do wyświetlania listy ofert w ten sposób w portalu Marketplace.||
-| Typ licencji w portalu Marketplace: Wolne| Zamówienie| Oferta jest skonfigurowane jako bezpłatna dla wszystkich użytkowników. Firma Microsoft rozlicza klientów do ich użycia tej oferty.||
-| Typ licencji w portalu Marketplace: Odsprzedawcy firmy Microsoft  | Zamówienie| Firma Microsoft jest odsprzedawcy dla tej oferty w portalu Marketplace.|  |
-| Identyfikator subskrypcji portalu Marketplace | Klient, zamówienie | Unikatowy identyfikator skojarzonego z subskrypcją Azure klienta wykorzystać na zakup oferty w portalu Marketplace. Identyfikator był wcześniej identyfikator GUID subskrypcji platformy Azure.||
-| Nazwa oferty  | Zamówienie| Nazwa oferty w portalu Marketplace.|| |
+| Nazwa firmy klienta | Klient, zamówienie | Nazwa firmy podana przez klienta. Nazwa może różnić się od miasta w subskrypcji platformy Azure klienta.|  |
+| Kraj klienta | Klient, zamówienie | Nazwa kraju podana przez klienta. Kraj może być inny niż kraj w subskrypcji platformy Azure klienta.|  |
+| Adres E-mail klienta| Odbiorcy| Adres e-mail dostarczony przez klienta końcowego. Adres e-mail może różnić się od adresu e-mail w subskrypcji platformy Azure klienta.||
+| Imię klienta| Odbiorcy| Nazwa podana przez klienta. Nazwa może różnić się od nazwy podanej w subskrypcji platformy Azure klienta.| |
+| Identyfikator klienta | Klient, zamówienie | Unikatowy identyfikator przypisany do klienta. Klient może mieć zero lub więcej subskrypcji portalu Azure Marketplace.|  |
+| Kod pocztowy klienta  | Odbiorcy| Kod pocztowy dostarczony przez klienta. Kod może być inny niż kod pocztowy podany w subskrypcji platformy Azure klienta.| |
+| Stan klienta| Odbiorcy| Stan (adres) dostarczony przez klienta. Stan może być inny niż nazwisko podane w subskrypcji platformy Azure klienta.| |
+| Data pozyskania| Odbiorcy| Pierwszy dzień zakupionej oferty przez klienta.| |
+| Data utraty| Odbiorcy| Ostatnia data anulowania ostatniego zakupionej oferty przez klienta.||
+| Jest nowym klientem  | Zamówienie| Wartość będzie identyfikować nowego klienta przejmującego jedną lub większą liczbę ofert po raz pierwszy (lub nie). Wartość będzie równa "yes", jeśli w ramach tego samego miesiąca kalendarzowego dla "Data pozyskania". Wartość będzie równa "No", jeśli klient kupił dowolne oferty przed zgłoszonym miesiącem kalendarzowym. |
+| Jest jednostką SKU wersji zapoznawczej| Zamówienie| Wartość będzie informować o tym, czy jest oznaczona jako wersja zapoznawcza. Wartość będzie równa "yes", jeśli jednostka SKU została odpowiednio oznaczona, a tylko subskrypcje platformy Azure autoryzowane przez użytkownika, można wdrożyć i korzystać z tego obrazu. Wartość będzie równa "No", jeśli jednostka SKU nie została zidentyfikowana jako "wersja zapoznawcza".  |
+| Czy kontakt promocyjny jest wybierany| Odbiorcy| Ta wartość informuje o tym, czy klient aktywnie zabrał w celu skontaktowania się z wydawcami. W tej chwili nie prezentujemy opcji klientom, dlatego w całej tablicy podano wartość "No". Po wdrożeniu tej funkcji rozpocznie się aktualizowanie.|
+| Typ licencji Marketplace| Zamówienie| Metoda rozliczeń oferty portalu Marketplace.||
+| Typ licencji Marketplace: Rozliczanie za pomocą platformy Azure| Zamówienie| Firma Microsoft jest Twoim agentem dla tej oferty w witrynie Marketplace i wekslom klientów w Twoim imieniu. (Karta kredytowa PAYG lub faktura w przedsiębiorstwie)||
+| Typ licencji Marketplace: Korzystanie z własnej licencji | Zamówienie| Maszyna wirtualna wymaga klucza licencji dostarczonego przez klienta do wdrożenia. Firma Microsoft nie rozliczy klientów za korzystanie z oferty w ten sposób w portalu Marketplace.||
+| Typ licencji Marketplace: Wolne| Zamówienie| Oferta jest konfigurowana bezpłatnie dla wszystkich użytkowników. Firma Microsoft nie rozliczy klientów za użycie tej oferty.||
+| Typ licencji Marketplace: Firma Microsoft jako odsprzedawca  | Zamówienie| Firma Microsoft jest odsprzedawcą dla tej oferty portalu Marketplace.|  |
+| Identyfikator subskrypcji witryny Marketplace | Klient, zamówienie | Unikatowy identyfikator skojarzony z subskrypcją platformy Azure używany przez klienta do zakupu oferty portalu Marketplace. Identyfikator był dawniej identyfikatorem GUID subskrypcji platformy Azure.||
+| Nazwa oferty  | Zamówienie| Nazwa oferty portalu Marketplace.|| |
 | Typ oferty  | Zamówienie| Typ oferty Microsoft Marketplace.|||
-| Typ oferty: Aplikacja zarządzana  | Kolejność, | Korzystanie z aplikacji platformy Azure: typ oferty aplikacji zarządzanych, gdy wymagane są następujące warunki: Możesz wdrożyć albo rozwiązanie oparte na subskrypcji dla klienta przy użyciu maszyny Wirtualnej lub całego rozwiązania opartego na usłudze IaaS. Użytkownik lub klient wymaga, że rozwiązanie jest zarządzana przez partnera. |
-| Typ oferty: Azure Application| Kolejność, | Typu oferty szablonu rozwiązania aplikacji na platformie Azure używać rozwiązanie wymaga dodatkowej automatyzacji wdrażania i konfiguracji poza prostą maszynę Wirtualną.||
-| Typ oferty: Usługa konsultingowa| Zamówienie| Usługi doradcze w witrynie Azure Marketplace ułatwiają łączenie klientów z usługami w celu obsługi i rozszerzać ich korzystanie z platformy Azure.| |
-| Typ oferty: Kontener | Zamówienie| Gdy Twoje rozwiązanie jest inicjowana jak dla usługi kontenera platformy Azure na podstawie Kubernetes obraz kontenera Docker, należy użyć kontenera typu oferty.||
-| Typ oferty: Dynamics 365 Business Central| Zamówienie| Użyj tego typu oferty, gdy rozwiązanie jest zintegrowana z usługą Dynamics 365 Finance and Operations| |
-| Typ oferty: Dynamics 365 for Customer Engagement | Zamówienie| Użyj tego typu oferty, gdy rozwiązanie jest zintegrowana z usługą Dynamics 365 Customer Engagement.||
-| Typ oferty: Moduł usługi IoT Edge | Zamówienie| Moduły platformy Azure IoT Edge to najmniejsza jednostki obliczeń zarządzane przez usługi IoT Edge i może zawierać usług firmy Microsoft (np. usługi Azure Stream Analytics), usługi innych firm 3 lub kodu specyficznego dla rozwiązania. |
-| Typ oferty: Aplikacja Power BI | Zamówienie| W przypadku wdrażania aplikacji zintegrowanych z usługą Power BI, należy użyć typu oferty aplikacja Power BI.|  |
-| Typ oferty: Aplikacja SaaS| Zamówienie| Użyj typu oferty aplikacji SaaS, aby włączyć klienta kupować rozwiązania SaaS, pomoc do subskrypcji.||
-| Typ oferty: Maszyna wirtualna | Zamówienie| Podczas wdrażania urządzenia wirtualnego subskrypcji skojarzonych z klientem, należy użyć typu oferty maszyny wirtualnej.||
-| Typ oferty: Visual Studio Marketplace Extension  | Zamówienie| Oferta typu były dostępne dla deweloperzy rozszerzenia DevOps platformy Azure. Przechodzenie do przodu DevOps platformy Azure deweloperzy rozszerzenia mogą sprzedawać swoje rozszerzenie bezpośrednio do klientów. Oferuje rozszerzenie można skonfigurować jako płatne lub łącznie z wersji próbnej. |
-| Data anulowania zamówienia| Zamówienie| Data zamówienia witryny Marketplace zostało anulowane.||
-| Identyfikator zamówienia| Zamówienie| Unikatowy identyfikator zamówienia klienta dla usługi witryny Marketplace. Oferty opartej na użyciu maszyny wirtualnej nie są skojarzone z zamówieniem.| |
-| Data zakupu zamówienia| Zamówienie| Data utworzenia zamówienie witryny Marketplace.|||
-| Stan zlecenia| Zamówienie| Stan zamówienia witryny Marketplace, w czasie ostatniego odświeżania danych.|     |
-| Stan zamówienia: Aktywne  | Zamówienie| Klient kupił zamówienie i nie zostało anulowane ich kolejność.|         |
-| ORDER Status: anulowane | Zamówienie| Klient wcześniej kupił zamówienie i następnie anulować ich kolejność.||
-| Dostawcy poczty E-mail| Odbiorcy| Adres e-mail dostawcy uczestniczących w relacji między firmami Microsoft i odbiorcy końcowego. Jeśli klient jest w przedsiębiorstwie za pośrednictwem odsprzedawcy, to odsprzedawcy. Jeśli chodzi o Cloud Solution Provider (CSP), będzie to dostawcy usług Kryptograficznych.|
-| Nazwa dostawcy| Odbiorcy| Nazwa dostawcy uczestniczących w relacji między klienta firmy Microsoft i zakończenia. Jeśli klient jest w przedsiębiorstwie za pośrednictwem odsprzedawcy, to odsprzedawcy. Jeśli chodzi o Cloud Solution Provider (CSP), będzie to dostawcy usług Kryptograficznych.|
-| SKU| Zamówienie| Nazwa jednostki SKU, zgodnie z definicją podczas publikowania. Oferta może mieć wiele jednostek SKU, ale jednostki SKU może być skojarzony tylko z jednej oferty.||
-| Data końcowa wersja próbna| Zamówienie| Data to zamówienie okres próbny zakończy się lub została zakończona.||
+| Typ oferty: Aplikacja zarządzana  | Porządek | Użyj usługi Azure App: Managed App — typ oferty, gdy wymagane są następujące warunki: Rozwiązanie oparte na subskrypcji można wdrożyć dla klienta przy użyciu maszyny wirtualnej lub całego rozwiązania opartego na IaaS. Ty lub Twój klient wymaga, aby rozwiązanie było zarządzane przez partnera. |
+| Typ oferty: Azure Application| Porządek | Użyj typu oferty szablonu rozwiązania aplikacji platformy Azure, gdy rozwiązanie wymaga dodatkowego wdrożenia i automatyzacji konfiguracji poza prostą maszyną wirtualną.||
+| Typ oferty: Usługa konsultingowa| Zamówienie| Usługi doradcze w witrynie Azure Marketplace umożliwiają łączenie klientów z usługami w celu wspierania i zwiększania użycia platformy Azure.| |
+| Typ oferty: Kontener | Zamówienie| Użyj typu oferty kontenera, gdy rozwiązanie jest obrazem kontenera Docker, który został zainicjowany jako usługa kontenera platformy Azure oparta na Kubernetes.||
+| Typ oferty: Dynamics 365 Business Central| Zamówienie| Użyj tego typu oferty, jeśli Twoje rozwiązanie jest zintegrowane z usługą Dynamics 365 dla finansów i operacji| |
+| Typ oferty: Dynamics 365 for Customer Engagement | Zamówienie| Użyj tego typu oferty, jeśli Twoje rozwiązanie jest zintegrowane z usługą Dynamics 365 na potrzeby zaangażowania klientów.||
+| Typ oferty: Moduł usługi IoT Edge | Zamówienie| Moduły Azure IoT Edge są najmniejszymi jednostkami obliczeniowymi zarządzanymi przez IoT Edge i mogą zawierać usługi firmy Microsoft (takie jak Azure Stream Analytics), usługi innych firm lub własny kod specyficzny dla rozwiązania. |
+| Typ oferty: Aplikacja Power BI | Zamówienie| Użyj typu oferty aplikacji Power BI podczas wdrażania aplikacji zintegrowanej z Power BI.|  |
+| Typ oferty: Aplikacja SaaS| Zamówienie| Użyj typu oferty aplikacji SaaS, aby umożliwić klientowi kupowanie rozwiązań technicznych opartych na SaaS, w ramach subskrypcji.||
+| Typ oferty: Maszyna wirtualna | Zamówienie| Podczas wdrażania urządzenia wirtualnego w ramach subskrypcji skojarzonej z klientem Użyj typu oferty maszyny wirtualnej.||
+| Typ oferty: Visual Studio Marketplace rozszerzenie  | Zamówienie| Typ oferty dostępny wcześniej dla deweloperów rozszerzenia usługi Azure DevOps. Przechodzenie do przodu deweloperów rozszerzeń platformy Azure DevOps może sprzedawać swoje rozszerzenia bezpośrednio klientom. Oferty rozszerzeń można skonfigurować jako płatne lub w tym okres próbny. |
+| Data anulowania zamówienia| Zamówienie| Data anulowania zamówienia witryny Marketplace.||
+| Identyfikator zamówienia| Zamówienie| Unikatowy identyfikator zamówienia klienta usługi portalu Marketplace. Oferty oparte na użyciu maszyny wirtualnej nie są skojarzone z kolejnością.| |
+| Zamówienie daty zakupu| Zamówienie| Data utworzenia zamówienia witryny Marketplace.|||
+| Stan zamówienia| Zamówienie| Stan zamówienia witryny Marketplace w momencie ostatniego odświeżenia danych.|     |
+| Stan zamówienia: Aktywne  | Zamówienie| Klient kupił zamówienie i nie anulował jego zamówienia.|         |
+| Stan zamówienia: anulowane | Zamówienie| Klient kupił wcześniej zamówienie, a następnie anulował jego zamówienie.||
+| Adres E-mail dostawcy| Odbiorcy| Adres e-mail dostawcy, który jest powiązany z relacją między firmą Microsoft a klientem końcowym. Jeśli klient jest przedsiębiorstwem do odsprzedawcy, będzie to odsprzedawca. Jeśli jest używany dostawca rozwiązań w chmurze (CSP), będzie to dostawca usług kryptograficznych.|
+| Nazwa dostawcy| Odbiorcy| Nazwa dostawcy występującego w relacji między firmą Microsoft a klientem końcowym. Jeśli klient jest przedsiębiorstwem do odsprzedawcy, będzie to odsprzedawca. Jeśli jest używany dostawca rozwiązań w chmurze (CSP), będzie to dostawca usług kryptograficznych.|
+| SKU| Zamówienie| Nazwa jednostki SKU zdefiniowana podczas publikowania. Oferta może mieć wiele jednostek SKU, ale jednostka SKU może być skojarzona tylko z jedną ofertą.||
+| Data zakończenia okresu próbnego| Zamówienie| Data zakończenia okresu próbnego dla tego zamówienia lub zostanie ona zakończona.||
+
+## <a name="ratings-and-reviews"></a>Oceny i przeglądy
+
+Gdy klienci przeglądają, szukają i kupują oferty w ramach obu rynków, mogą opuścić klasyfikacje i przeglądy dla ofert, które zostały nabyte. Mogą przesyłać nowe oceny lub przeglądy oraz aktualizować lub usuwać klasyfikacje lub przeglądy, które zostały już przesłane. Przeglądy są publikowane w witrynie Azure Marketplace lub AppSource na karcie przeglądy na stronie wyświetlania produktu oferty. Klienci mogą dołączać swoje nazwy do klasyfikacji lub przeglądów lub mogą publikować anonimowo.  
+
+> [!NOTE]
+> Klienci mogą wprowadzać zmiany tylko do ocen i przeglądów, których są właścicielami.
+
+**Pulpit nawigacyjny recenzja & przegląd** przedstawia trendy i szczegółowe informacje o działaniach klientów. Zawiera graficzną reprezentację:
+
+- Klasyfikacje & przeglądy  
+- Przejrzyj Komentarze
+
+### <a name="marketplace-storefront-tabs"></a>Karty witryny Marketplace
+
+Wydawcy mogą wyświetlać metryki oferty osobno na kartach AppSource & Azure Marketplace. Aby wyświetlić określone metryki oferty, wybierz pozycję **Oferta** z listy rozwijanej:
+
+![Lista rozwijana oferty Centrum partnerskiego](./media/analyze-offer-dropdown.png)
+
+### <a name="ratings-and-reviews-summary"></a>Podsumowanie klasyfikacji i przeglądów
+
+Sekcja podsumowania ocen & przeglądów zawiera poniższe metryki dla wybranego zakresu dat:
+
+- **Średnia ocena:** Średnia ważona średniej klasyfikacji wszystkich ocen przesłanych przez klientów dla wybranej oferty.
+- **Podział klasyfikacji:** Podział klasyfikacji gwiazdkowej według liczby klientów, którzy przesłały klasyfikacje. Wykres słupkowy jest układany z rzeczywistą i skorygowaną klasyfikacją (zaktualizowaną liczbę ocen).
+- **Łączna Klasyfikacja:** Łączna liczba przesłanych ocen. Ta liczba obejmuje również klasyfikacje z i bez przeglądów.
+- **Oceny z recenzjami:** Liczba przesłanych recenzji.
+
+![Podsumowanie klasyfikacji i przeglądów Centrum partnerskiego](./media/analyze-ratings-summary.png)
+
+### <a name="review-comments"></a>Przejrzyj Komentarze
+
+Przeglądy są wyświetlane w kolejności chronologicznej w przypadku ich opublikowania. Widok domyślny wyświetla wszystkie Recenzje. Możesz filtrować Recenzje według klasyfikacji gwiazdkowej przy użyciu **filtru** z menu rozwijanego. Możesz również wyszukać słowa kluczowe, które pojawiają się w przeglądzie.  
+
+![Analiza komentarzy dotyczących przeglądu Centrum partnerskiego](./media/analyze-reviews.png)

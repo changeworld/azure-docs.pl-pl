@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: c6f55b40b3ee077b81a3cdd6f3add7a2cad23f95
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: dca329ce598a9ecbc7da71cc1c24bf7731a4c994
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70809924"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885436"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Dostosowywanie klastrów usługi Azure HDInsight za pomocą akcji skryptu
 
@@ -356,11 +356,11 @@ Aby zapoznać się z przykładem użycia zestawu SDK platformy .NET do zastosowa
 
 6. Możesz również wybrać wielokropek, **...** , na prawo od wpisów w sekcji Akcje skryptu, aby wykonać akcje.
 
-    ![Akcje skryptu, wielokropek](./media/hdinsight-hadoop-customize-cluster-linux/deletepromoted.png)
+    ![Akcje skryptu, wielokropek](./media/hdinsight-hadoop-customize-cluster-linux/hdi-delete-promoted-sa.png)
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-| parametr | Funkcja |
+| Parametr | Funkcja |
 | --- | --- |
 | `Get-AzHDInsightPersistedScriptAction` |Pobierz informacje o akcjach utrwalonego skryptu. |
 | `Get-AzHDInsightScriptActionHistory` |Pobierz historię akcji skryptu zastosowanych do klastra lub szczegółowych informacji dotyczących określonego skryptu. |
@@ -376,7 +376,7 @@ Poniższy przykładowy skrypt demonstruje użycie poleceń cmdlet do podniesieni
 
 ### <a name="the-azure-classic-cli"></a>Klasyczny interfejs wiersza polecenia platformy Azure
 
-| parametr | Funkcja |
+| Parametr | Funkcja |
 | --- | --- |
 | `azure hdinsight script-action persisted list <clustername>` |Pobierz listę utrwalonych akcji skryptów. |
 | `azure hdinsight script-action persisted show <clustername> <scriptname>` |Pobierz informacje o określonej akcji utrwalonego skryptu. |
@@ -442,7 +442,7 @@ Za pomocą interfejsu użytkownika sieci Web Ambari można wyświetlać informac
 
 3. Znajdź w kolumnie **operacje** wpisy **z\_uruchomioną customscriptactioną** . Te wpisy są tworzone po uruchomieniu akcji skryptu.
 
-    ![Zrzut ekranu operacji](./media/hdinsight-hadoop-customize-cluster-linux/ambariscriptaction.png)
+    ![Zrzut ekranu operacji](./media/hdinsight-hadoop-customize-cluster-linux/ambari-script-action.png)
 
     Aby wyświetlić dane wyjściowe **stdout** i **stderr** , wybierz wpis **run\customscriptaction** i przejdź do szczegółów przez linki. Ta wartość wyjściowa jest generowana, gdy skrypt jest uruchamiany i może mieć przydatne informacje.
 
@@ -452,7 +452,7 @@ Jeśli utworzenie klastra zakończy się niepowodzeniem z powodu błędu skryptu
 
 * Dzienniki magazynu są dostępne pod adresem `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE`.
 
-    ![Dzienniki akcji skryptu](./media/hdinsight-hadoop-customize-cluster-linux/script_action_logs_in_storage.png)
+    ![Dzienniki akcji skryptu](./media/hdinsight-hadoop-customize-cluster-linux/script-action-logs-in-storage.png)
 
     W tym katalogu dzienniki są zorganizowane osobno dla węzła **węzła głównego**, **Node-Worker**i **dozorcy**. Zobacz poniższe przykłady:
 

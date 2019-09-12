@@ -1,6 +1,6 @@
 ---
-title: Użyj zestawu HBase .NET SDK — usługa Azure HDInsight
-description: Umożliwia zestawu HBase .NET SDK do tworzenia i usuwania tabel oraz odczytywanie i zapisywanie danych.
+title: Korzystanie z zestawu SDK HBase .NET — Azure HDInsight
+description: Użyj zestawu SDK platformy .NET HBase do tworzenia i usuwania tabel oraz do odczytu i zapisu danych.
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,43 +8,43 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/13/2017
 ms.author: ashishth
-ms.openlocfilehash: 707869880c5df619def2d707264b59e22e03c521
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f833d045f297679ae3629f8e0afe20b3ca834821
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64720302"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885577"
 ---
-# <a name="use-the-net-sdk-for-apache-hbase"></a>Używanie zestawu SDK .NET dla bazy danych Apache HBase
+# <a name="use-the-net-sdk-for-apache-hbase"></a>Korzystanie z zestawu .NET SDK dla Apache HBase
 
-[Apache HBase](apache-hbase-overview.md) oferuje dwie opcje podstawowego do pracy z danymi: [Zapytania usługi Apache Hive i wywołania interfejsu API RESTful bazy danych HBase w](apache-hbase-tutorial-get-started-linux.md). Można pracować bezpośrednio za pomocą interfejsu API REST `curl` polecenia lub podobnej użyteczności.
+[Apache HBase](apache-hbase-overview.md) udostępnia dwie podstawowe opcje pracy z danymi: [Apache Hive zapytania i wywołania interfejsu API RESTful HBase](apache-hbase-tutorial-get-started-linux.md). Możesz współpracować bezpośrednio z interfejsem API REST przy użyciu `curl` polecenia lub podobnego narzędzia.
 
-W przypadku aplikacji C# i .NET [biblioteki klienta REST HBase firmy Microsoft dla platformy .NET](https://www.nuget.org/packages/Microsoft.HBase.Client/) udostępnia bibliotekę klienta ponad interfejsem API REST HBase.
+W C# przypadku aplikacji programu i .NET [Biblioteka klienta REST programu Microsoft HBase dla platformy .NET](https://www.nuget.org/packages/Microsoft.HBase.Client/) udostępnia bibliotekę kliencką na interfejsie API REST HBase.
 
 ## <a name="install-the-sdk"></a>Instalacja zestawu SDK
 
-Zestawu HBase .NET SDK jest dostępna jako pakiet NuGet, które mogą być instalowane z Visual Studio **Konsola Menedżera pakietów NuGet** za pomocą następującego polecenia:
+Zestaw SDK HBase dla platformy .NET jest dostarczany jako pakiet NuGet, który można zainstalować z **konsoli Menedżera pakietów NuGet** programu Visual Studio za pomocą następującego polecenia:
 
     Install-Package Microsoft.HBase.Client
 
-## <a name="instantiate-a-new-hbaseclient-object"></a>Utwórz wystąpienie nowego obiektu HBaseClient
+## <a name="instantiate-a-new-hbaseclient-object"></a>Tworzenie wystąpienia nowego obiektu HBaseClient
 
-Aby korzystanie z zestawu SDK, utworzyć `HBaseClient` obiektu, przekazując `ClusterCredentials` składa się z `Uri` klastra, nazwę użytkownika Hadoop i hasło.
+Aby użyć zestawu SDK, Utwórz wystąpienie nowego `HBaseClient` obiektu, `ClusterCredentials` przekazując `Uri` je do klastra i nazwę użytkownika i hasło usługi Hadoop.
 
 ```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.net"), "USERNAME", "PASSWORD");
 client = new HBaseClient(credentials);
 ```
 
-Zamień CLUSTERNAME nazwy klastra HDInsight HBase i nazwy użytkownika i HASŁA przy użyciu poświadczeń usługi Apache Hadoop, określone w procesie tworzenia klastra. Domyślna nazwa użytkownika usługi Hadoop jest **administratora**.
+Zastąp wartość CLUSTERname nazwą klastra usługi HDInsight HBase oraz nazwę użytkownika i hasło przy użyciu poświadczeń Apache Hadoop określonych podczas tworzenia klastra. Domyślną nazwą użytkownika usługi Hadoop jest **administrator**.
 
 ## <a name="create-a-new-table"></a>Utwórz nową tabelę
 
-Baza danych HBase przechowuje dane w tabelach. Tabela składa się z *Rowkey*, klucz podstawowy i co najmniej jedną grupę kolumn o nazwie *rodziny kolumn*. Dane w każdej tabeli w poziomie są rozmieszczane w zakresie Rowkey do *regionów*. Każdy region ma klucz rozpoczęcia i zakończenia. Tabela może mieć co najmniej jeden region. Wraz z rozwojem dane w tabeli HBase dzieli dużych regionów na mniejsze regionów. Regiony są przechowywane w *serwery regionów*, gdy jeden serwer regionu można przechowywać wiele regionów.
+HBase przechowuje dane w tabelach. Tabela składa się z *Rowkey*, klucza podstawowego i co najmniej jednej grupy kolumn o nazwie *rodziny kolumn*. Dane w każdej tabeli są dystrybuowane w poziomie przez Rowkey zakres do *regionów*. Każdy region ma klucz początkowy i końcowy. Tabela może mieć jeden lub więcej regionów. Gdy dane w tabeli rośnie, HBase dzieli duże regiony na mniejsze regiony. Regiony są przechowywane na *serwerach regionów*, w których jeden z serwerów regionów może przechowywać wiele regionów.
 
-Dane fizycznie znajduje się w *HFiles*. Pojedynczy hFile — zawiera dane dla jednej tabeli, regionami i jednej rodziny kolumn. Wierszy w HFile przechowywane są sortowane według Rowkey. Została każda HFile *drzewie B* indeksu do szybkiego pobierania wierszy.
+Dane są fizycznie przechowywane w *HFiles*. Pojedynczy HFile zawiera dane dla jednej tabeli, jednego regionu i jednej rodziny kolumn. Wiersze w HFile są przechowywane posortowane na Rowkey. Każdy HFile ma indeks *drzewa B +* w celu przyspieszenia pobierania wierszy.
 
-Aby utworzyć nową tabelę, określ `TableSchema` i kolumn. Poniższy kod sprawdza, czy utworzono tabelę, którą "RestSDKTable" już istnieje — w przeciwnym razie tabeli.
+Aby utworzyć nową tabelę, określ `TableSchema` kolumny i. Poniższy kod sprawdza, czy tabela "RestSDKTable" już istnieje — Jeśli nie, tabela jest tworzona.
 
 ```csharp
 if (!client.ListTablesAsync().Result.name.Contains("RestSDKTable"))
@@ -58,9 +58,9 @@ if (!client.ListTablesAsync().Result.name.Contains("RestSDKTable"))
 }
 ```
 
-Ta nowa tabela ma dwie kolumny rodziny, t1 i t2. Ponieważ rodziny kolumn są oddzielnie przechowywane w różnych HFiles, dobrym pomysłem będzie mieć rodzina osobna kolumna danych często poszukiwanych. W następującym [wstawiania danych](#insert-data) przykład kolumny są dodawane do rodziny kolumn t1.
+Ta nowa tabela ma dwie rodziny kolumn, T1 i T2. Ponieważ rodziny kolumn są przechowywane oddzielnie w różnych HFilesach, warto mieć osobną rodzinę kolumn dla często używanych zapytań. W poniższym przykładzie [Wstaw dane](#insert-data) kolumny są dodawane do rodziny kolumn T1.
 
-## <a name="delete-a-table"></a>Usuwanie tabeli
+## <a name="delete-a-table"></a>Usuń tabelę
 
 Aby usunąć tabelę:
 
@@ -70,7 +70,7 @@ await client.DeleteTableAsync("RestSDKTable");
 
 ## <a name="insert-data"></a>Wstawianie danych
 
-Wstawianie danych, Ustaw klucz wiersza Unikatowy identyfikator wiersza. Wszystkie dane są przechowywane w `byte[]` tablicy. Poniższy kod definiuje i dodaje `title`, `director`, i `release_date` kolumny do rodziny kolumn t1, jak te kolumny są najczęściej używanych. `description` i `tagline` kolumny są dodawane do rodziny kolumn t2. Dane można podzielić na rodziny kolumn, zgodnie z potrzebami.
+Aby wstawić dane, należy określić unikatowy klucz wiersza jako identyfikator wiersza. Wszystkie dane są przechowywane w `byte[]` tablicy. Poniższy kod definiuje i dodaje `title`kolumny, `director`, i `release_date` do rodziny kolumn T1, jak te kolumny są najczęściej używane. Kolumny `description` i`tagline` są dodawane do rodziny kolumn T2. W razie konieczności można podzielić dane na rodziny kolumn.
 
 ```csharp
 var key = "fifth_element";
@@ -112,13 +112,13 @@ set.rows.Add(row);
 await client.StoreCellsAsync("RestSDKTable", set);
 ```
 
-Implementuje HBase [BigTable chmury](https://cloud.google.com/bigtable/), dlatego format danych wygląda podobnie do następującej:
+HBase implementuje [chmurę BigTable](https://cloud.google.com/bigtable/), więc format danych wygląda następująco:
 
-![Użytkownik mający rolę użytkownika klastra](./media/apache-hbase-rest-sdk/table.png)
+![Użytkownik z rolą użytkownika klastra](./media/apache-hbase-rest-sdk/hdinsight-table-roles.png)
 
 ## <a name="select-data"></a>Wybieranie danych
 
-Do odczytywania danych z tabeli bazy danych HBase, polega na przekazaniu klucza nazwy i wierszu tabeli do `GetCellsAsync` metodę, aby zwrócić `CellSet`.
+Aby odczytać dane z tabeli HBase, przekaż nazwę tabeli i klucz wiersza do `GetCellsAsync` metody w celu `CellSet`zwrócenia.
 
 ```csharp
 var key = "fifth_element";
@@ -132,7 +132,7 @@ Console.WriteLine(Encoding.UTF8.GetString(cells.rows[0].values
 // With the previous insert, it should yield: "The Fifth Element"
 ```
 
-W tym przypadku ten kod zwraca tylko pierwszy zgodnego wiersza, powinien istnieć tylko jeden wiersz dla Unikatowy klucz. Zwrócona wartość zostanie zmieniona na `string` formatowania z `byte[]` tablicy. Można również przeprowadzić konwersję wartości do innych typów, np. liczbę całkowitą dla filmu, Data wydania:
+W tym przypadku kod zwraca tylko pierwszy pasujący wiersz, ponieważ dla unikatowego klucza powinien istnieć tylko jeden wiersz. Zwrócona wartość jest zmieniana `string` na format `byte[]` z tablicy. Możesz również przekonwertować wartość na inne typy, na przykład liczbę całkowitą dla daty wydania filmu:
 
 ```csharp
 var releaseDateField = cells.rows[0].values
@@ -147,9 +147,9 @@ Console.WriteLine(releaseDate);
 // Should return 1997
 ```
 
-## <a name="scan-over-rows"></a>Skanowanie względem wierszy
+## <a name="scan-over-rows"></a>Skanuj nad wierszami
 
-Korzysta z bazy danych HBase `scan` do pobierania co najmniej jeden wiersz. W tym przykładzie żądania wiele wierszy w partii 10 i pobiera dane, których wartości klucza są od 25 do 35. Po pobraniu wszystkich wierszy, należy usunąć skanera, aby wyczyścić zasoby.
+HBase używa `scan` do pobierania co najmniej jednego wiersza. Ten przykład żąda wielu wierszy w partiach 10 i pobiera dane, których wartości klucza należą do zakresu od 25 do 35. Po pobraniu wszystkich wierszy Usuń skaner, aby wyczyścić zasoby.
 
 ```csharp
 var tableName = "mytablename";
@@ -185,7 +185,7 @@ finally
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Rozpoczynanie pracy z przykładem bazy danych Apache HBase w HDInsight](apache-hbase-tutorial-get-started-linux.md)
-* Tworzenie aplikacji end-to-end z [analizowanie opinii na Twitterze w czasie rzeczywistym z bazy danych Apache HBase](../hdinsight-hbase-analyze-twitter-sentiment.md)
+* [Wprowadzenie do przykładu Apache HBase w usłudze HDInsight](apache-hbase-tutorial-get-started-linux.md)
+* Tworzenie kompleksowej aplikacji z funkcją [analizowania tonacji w czasie rzeczywistym przy użyciu platformy Apache HBase](../hdinsight-hbase-analyze-twitter-sentiment.md)

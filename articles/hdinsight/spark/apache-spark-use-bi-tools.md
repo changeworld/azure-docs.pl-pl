@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: analizowanie danych platformy Apache Spark przy użyciu usługi Power BI w usłudze Azure HDInsight '
-description: Samouczek — usługa Microsoft Power BI do wizualizacji danych Apache Spark przechowywane klastry HDInsight
+description: Samouczek — używanie Power BI firmy Microsoft do wizualizacji Apache Spark przechowywanych klastrów usługi HDInsight danych
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/16/2019
-ms.openlocfilehash: d5296fe19cef9e8881d39bd9e59eb4c40d049959
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 319668ac81b390f9a8bf70da36dd3cf1508f5c37
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296184"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885178"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Samouczek: analizowanie danych platformy Apache Spark przy użyciu usługi Power BI w usłudze HDInsight
 
-W tym samouczku dowiesz się, jak używać [Microsoft Power BI](https://powerbi.microsoft.com/) do wizualizacji danych w klastrze Apache Spark na [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/).
+W tym samouczku dowiesz się, jak za pomocą [programu Microsoft Power BI](https://powerbi.microsoft.com/) wizualizować dane w klastrze Apache Spark w [usłudze Azure HDInsight](https://azure.microsoft.com/services/hdinsight/).
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
@@ -27,15 +27,15 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Ukończenie tego artykułu [samouczka: Załaduj dane i uruchamiać zapytania dotyczące klastra Apache Spark w usłudze Azure HDInsight](./apache-spark-load-data-run-query.md).
+* Wykonaj samouczek artykułu [: Ładowanie danych i uruchamianie zapytań w klastrze Apache Spark w usłudze Azure HDInsight](./apache-spark-load-data-run-query.md).
 
 * [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
-* Opcjonalnie: [Usługa Power BI subskrypcji wersji próbnej](https://app.powerbi.com/signupredirect?pbi_source=web).
+* Opcjonalnie: [Subskrypcja wersji próbnej Power BI](https://app.powerbi.com/signupredirect?pbi_source=web).
 
 ## <a name="verify-the-data"></a>Weryfikowanie danych
 
-[Notes Jupyter](https://jupyter.org/) utworzony w ramach [poprzedniego samouczka](apache-spark-load-data-run-query.md) zawiera kod do utworzenia tabeli `hvac`. Ta tabela jest oparty na pliku CSV dostępne w na wszystkie klastry HDInsight Spark, w `\HdiSamples\HdiSamples\SensorSampleData\hvac\hvac.csv`. Postępuj zgodnie z następującą procedurą, aby sprawdzić dane.
+[Notes Jupyter](https://jupyter.org/) utworzony w ramach [poprzedniego samouczka](apache-spark-load-data-run-query.md) zawiera kod do utworzenia tabeli `hvac`. Ta tabela jest oparta na pliku CSV, który jest dostępny we wszystkich klastrach `\HdiSamples\HdiSamples\SensorSampleData\hvac\hvac.csv`usługi HDInsight Spark pod adresem. Postępuj zgodnie z następującą procedurą, aby sprawdzić dane.
 
 1. Z notesu Jupyter wklej poniższy kod, a następnie naciśnij klawisze **SHIFT + ENTER**. Kod sprawdza obecność tabel.
 
@@ -74,25 +74,25 @@ Pierwsze kroki podczas pracy z platformą Spark obejmują połączenie się z kl
 > [!NOTE]  
 > Łącznik zaprezentowany w tym artykule jest obecnie w wersji zapoznawczej. Podziel się swoją opinią za pośrednictwem witryny [społeczności usługi Power BI](https://community.powerbi.com/) lub witryny [pomysłów dla usługi Power BI](https://ideas.powerbi.com/forums/265200-power-bi-ideas).
 
-1. Otwórz program Power BI Desktop. Zamknij ekran powitalny uruchamiania programu, jeśli zostanie on otwarty.
+1. Otwórz program Power BI Desktop. Zamknij ekran powitalny Start, jeśli zostanie otwarty.
 
-2. Z **Home** kartę, przejdź do folderu **Pobierz dane** > **więcej...** .
+2. Przejdź na kartę **Narzędzia główne** , aby **uzyskać więcej danych** >  **..** .
 
     ![Pobieranie danych do programu Power BI Desktop z usługi HDInsight Apache Spark](./media/apache-spark-use-bi-tools/hdinsight-spark-power-bi-desktop-get-data.png "Pobieranie danych do usługi Power BI z usługi HDInsight Apache Spark")
 
-3. Wprowadź `Spark` w polu wyszukiwania, wybierz **usługi Azure HDInsight Spark**, a następnie wybierz pozycję **Connect**.
+3. Wprowadź `Spark` w polu wyszukiwania, wybierz pozycję **Azure HDInsight Spark**, a następnie wybierz pozycję **Połącz**.
 
     ![Pobieranie danych do usługi Power BI z usługi Apache Spark BI](./media/apache-spark-use-bi-tools/apache-spark-bi-import-data-power-bi.png "Pobieranie danych do usługi Power BI z usługi Apache Spark BI")
 
-4. Wprowadź adres URL klastra (w postaci `mysparkcluster.azurehdinsight.net`) w **serwera** pola tekstowego.
+4. Wprowadź adres URL klastra (w formularzu `mysparkcluster.azurehdinsight.net`) w polu tekstowym **serwer** .
 
-5. W obszarze **tryb łączności danych**, wybierz opcję **zapytania bezpośredniego**. Następnie wybierz przycisk **OK**.
+5. W obszarze **tryb łączności danych**wybierz pozycję **zapytanie**bezpośrednie. Następnie wybierz przycisk **OK**.
 
     Platforma Spark umożliwia wykorzystanie dowolnego trybu łączności danych. Jeśli używasz zapytania bezpośredniego, zmiany są uwzględniane w raportach bez odświeżania całego zestawu danych. W przypadku importowania danych należy odświeżyć zestaw danych, aby zobaczyć zmiany. Aby uzyskać więcej informacji o tym, jak i kiedy korzystać z zapytania bezpośredniego, zobacz [Używanie zapytania bezpośredniego w usłudze Power BI](https://powerbi.microsoft.com/documentation/powerbi-desktop-directquery-about/).
 
-6. Wprowadź informacje o koncie logowania HDInsight, a następnie wybierz **Connect**. Domyślna nazwa konta to *admin*.
+6. Wprowadź informacje o koncie logowania usługi HDInsight, a następnie wybierz pozycję **Połącz**. Domyślna nazwa konta to *admin*.
 
-7. Wybierz `hvac` tabeli, poczekaj, aby wyświetlić podgląd danych, a następnie wybierz **obciążenia**.
+7. Wybierz tabelę, poczekaj na wyświetlenie podglądu danych, a następnie wybierz pozycję **Załaduj.** `hvac`
 
     ![Nazwa użytkownika i hasło klastra Spark](./media/apache-spark-use-bi-tools/apache-spark-bi-select-table.png "Nazwa użytkownika i hasło klastra Spark")
 
@@ -104,23 +104,23 @@ Pierwsze kroki podczas pracy z platformą Spark obejmują połączenie się z kl
 
     2. Przeciągnij pole **BuildingID** do obszaru **Oś** i przeciągnij pola **ActualTemp** i **TargetTemp** do obszaru **Wartość**.
 
-        ![Tworzenie wizualizacji danych platformy Spark przy użyciu usługi Apache Spark BI](./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png "Tworzenie wizualizacji danych platformy Spark przy użyciu usługi Apache Spark BI")
+        ![Dodaj kolumny wartości](./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png "Dodaj kolumny wartości")
 
         Diagram wygląda następująco:
 
-        ![Tworzenie wizualizacji danych platformy Spark przy użyciu usługi Apache Spark BI](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png "Tworzenie wizualizacji danych platformy Spark przy użyciu usługi Apache Spark BI")
+        ![Suma wykresu warstwowego](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png "Suma wykresu warstwowego")
 
-        Domyślnie wizualizacja pokazuję sumę wartości **ActualTemp** i **TargetTemp**. Wybierz strzałkę w dół obok pozycji **ActualTemp** i **TragetTemp** w okienku wizualizacje można zobaczyć **suma** jest zaznaczone.
+        Domyślnie wizualizacja pokazuję sumę wartości **ActualTemp** i **TargetTemp**. Wybierz strzałkę w dół obok pozycji **ActualTemp** i **TragetTemp** w okienku wizualizacje, aby zobaczyć pozycję **Suma** jest zaznaczona.
 
-    3. Wybierz strzałkę w dół obok pozycji **ActualTemp** i **TragetTemp** w okienku wizualizacje wybierz **średni** uzyskać średnio rzeczywisty i docelowy temperatury dla każdego kompilowanie.
+    3. Wybierz strzałkę w dół obok pozycji **ActualTemp** i **TragetTemp** w okienku wizualizacje, a następnie wybierz pozycję **średnia** , aby uzyskać średnią rzeczywistą i docelową temperaturę dla każdego budynku.
 
-        ![Tworzenie wizualizacji danych platformy Spark przy użyciu usługi Apache Spark BI](./media/apache-spark-use-bi-tools/apache-spark-bi-average-of-values.png "Tworzenie wizualizacji danych platformy Spark przy użyciu usługi Apache Spark BI")
+        ![średnia wartość](./media/apache-spark-use-bi-tools/apache-spark-bi-average-of-values.png "średnia wartość")
 
         Twoja wizualizacja danych będzie podobna do przedstawionej na zrzucie ekranu. Przesuń kursor nad wizualizację, aby wyświetlić etykietki narzędzi z odpowiednimi danymi.
 
-        ![Tworzenie wizualizacji danych platformy Spark przy użyciu usługi Apache Spark BI](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "Tworzenie wizualizacji danych platformy Spark przy użyciu usługi Apache Spark BI")
+        ![Wykres warstwowy](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "Wykres warstwowy")
 
-9. Przejdź do **pliku** > **Zapisz**, wprowadź nazwę `BuildingTemperature` dla pliku, następnie wybierz pozycję **Zapisz**.
+9. Przejdź do**zapisywania** `BuildingTemperature` **pliku** > , wprowadź nazwę pliku, a następnie wybierz pozycję **Zapisz**.
 
 ### <a name="publish-the-report-to-the-power-bi-service-optional"></a>Publikowanie raportu w usłudze Power BI (opcjonalnie)
 
@@ -175,11 +175,11 @@ Wizualizacja zostanie przypięta do pulpitu nawigacyjnego — możesz dodać inn
 
 Po ukończeniu korzystania z samouczka warto usunąć klaster. Dzięki usłudze HDInsight dane są przechowywane w usłudze Azure Storage, więc można bezpiecznie usunąć klaster, gdy nie jest używany. Opłaty za klaster usługi HDInsight są naliczane nawet wtedy, gdy nie jest używany. Ponieważ opłaty za klaster są wielokrotnie większe niż opłaty za magazyn, ze względów ekonomicznych warto usuwać klastry, gdy nie są używane.
 
-Aby usunąć klaster, zobacz [usunąć klaster usługi HDInsight przy użyciu przeglądarki, programu PowerShell lub interfejsu wiersza polecenia Azure](../hdinsight-delete-cluster.md).
+Aby usunąć klaster, zobacz [usuwanie klastra usługi HDInsight przy użyciu przeglądarki, programu PowerShell lub interfejsu wiersza polecenia platformy Azure](../hdinsight-delete-cluster.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób użycia [Microsoft Power BI](https://powerbi.microsoft.com/) do wizualizacji danych w klastrze Apache Spark na [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/). Przejdź do następnego artykułu, aby dowiedzieć się, w jaki sposób można ściągnąć dane zarejestrowane na platformie Spark do narzędzia analizy biznesowej, takiego jak usługa Power BI.
+W tym samouczku przedstawiono sposób korzystania z [Power BI firmy Microsoft](https://powerbi.microsoft.com/) w celu wizualizacji danych w klastrze Apache Spark w [usłudze Azure HDInsight](https://azure.microsoft.com/services/hdinsight/). Przejdź do następnego artykułu, aby dowiedzieć się, w jaki sposób można ściągnąć dane zarejestrowane na platformie Spark do narzędzia analizy biznesowej, takiego jak usługa Power BI.
 
 > [!div class="nextstepaction"]
 > [Uruchamianie zadania przesyłania strumieniowego na platformie Apache Spark](apache-spark-eventhub-streaming.md)

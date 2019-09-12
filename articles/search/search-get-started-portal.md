@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Tworzenie, ładowanie i wykonywanie zapytań względem indeksu przy użyciu Azure Portal-Azure Search'
+title: 'Szybki start: Tworzenie indeksu wyszukiwania przy użyciu Azure Portal-Azure Search'
 description: Użyj Kreatora importowania danych w Azure Portal, aby utworzyć, załadować i zbadać swój pierwszy indeks w programie Azure Search.
 author: lobrien
 manager: nitinme
@@ -7,14 +7,14 @@ tags: azure-portal
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 07/01/2019
+ms.date: 09/10/2019
 ms.author: laobri
-ms.openlocfilehash: c2950b35f207f772f1190a2f8f104098eeb43375
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 44f370829b972840ac4266a760fefb4aa317be30
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656346"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70884564"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-the-azure-portal"></a>Szybki start: Tworzenie indeksu Azure Search przy użyciu Azure Portal
 > [!div class="op_single_selector"]
@@ -78,7 +78,7 @@ Na razie pominiemy ten krok i przejdziemy bezpośrednio do kroku **Dostosowywani
    ![Pomijanie kroku Umiejętności poznawcze](media/search-get-started-portal/skip-cog-skill-step.png)
 
 > [!TIP]
-> Możesz przejść przez przykładową procedurę indeksowania AI w przewodniku [Szybki Start](cognitive-search-quickstart-blob.md) lub [samouczku](cognitive-search-tutorial-blob.md).
+> Możesz przejść przez przykładową procedurę indeksowania AI w [przewodniku szybki start](cognitive-search-quickstart-blob.md) lub [samouczku](cognitive-search-tutorial-blob.md).
 
 ### <a name="step-3---configure-index"></a>Krok 3 — Konfigurowanie indeksu
 

@@ -1,6 +1,6 @@
 ---
-title: Włączanie zrzutów sterty dla usługi Apache Hadoop w HDInsight — Azure
-description: Włączanie zrzutów sterty dla usługi Apache Hadoop z klastrów HDInsight opartych na systemie Linux do debugowania i analizy.
+title: Włączanie zrzutów sterty dla usług Apache Hadoop w usłudze HDInsight — Azure
+description: Włącz Zrzuty sterty dla usług Apache Hadoop z klastrów usługi HDInsight opartych na systemie Linux na potrzeby debugowania i analizy.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,117 +8,117 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 62c9dcc039c68b0b6c8b8bf29ed9f13f88936723
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 68be0d7d13785c9631044766a290eec93637ea64
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059539"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879966"
 ---
-# <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Włączanie zrzutów sterty dla usługi Apache Hadoop w HDInsight opartych na systemie Linux
+# <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Włączanie zrzutów sterty dla usług Apache Hadoop w usłudze HDInsight opartej na systemie Linux
 
 [!INCLUDE [heapdump-selector](../../includes/hdinsight-selector-heap-dump.md)]
 
-Zrzuty sterty zawierają migawkę pamięci aplikacji, w tym wartości zmiennych w czasie tworzenia zrzutu. Tak, aby były przydatne do diagnozowania problemów, które występują w czasie wykonywania.
+Zrzuty sterty zawierają migawkę pamięci aplikacji, w tym wartości zmiennych w momencie utworzenia zrzutu. Są one przydatne do diagnozowania problemów występujących w czasie wykonywania.
 
-## <a name="whichServices"></a>Usługi
+## <a name="whichServices"></a>Services
 
-Można włączyć zrzutów sterty dla następujących usług:
+Można włączyć Zrzuty sterty dla następujących usług:
 
-* **Apache hcatalog** -tempelton
-* **Apache hive** — serwera hiveserver2, Magazyn metadanych, derbyserver
-* **mapreduce** -jobhistoryserver
-* **Apache yarn** -resourcemanager nodemanager, timelineserver
-* **System plików hdfs Apache** -datanode secondarynamenode, namenode
+* **Apache hcatalog** — tempelton
+* **Apache Hive** — serwera hiveserver2, metadanych, derbyserver
+* **MapReduce** — jobhistoryserver
+* **Apache przędze** -ResourceManager, nodemanager, timelineserver
+* **Apache HDFS** — datanode, secondarynamenode, namenode
 
-Możesz również włączanie zrzutów sterty dla mapy i zmniejszyć procesów uruchomionych przez HDInsight.
+Można również włączyć Zrzuty sterty dla mapy i ograniczyć procesy uruchamiane przez HDInsight.
 
-## <a name="configuration"></a>Konfigurowanie zrzutu sterty opis
+## <a name="configuration"></a>Informacje o konfiguracji zrzutu sterty
 
-Zrzuty sterty jest włączane przez przeniesienie opcji (czasami określane jako zdecyduje, lub parametrów) do maszyny JVM podczas uruchamiania usługi. Dla większości [Apache Hadoop](https://hadoop.apache.org/) usług, możesz zmodyfikować skrypt powłoki, używane do uruchamiania usługi do przekazania tych opcji.
+Zrzuty sterty są włączane przez przekazanie opcji (czasami znanych jako opcje lub parametry) do JVM podczas uruchamiania usługi. W przypadku większości usług [Apache Hadoop](https://hadoop.apache.org/) można zmodyfikować skrypt powłoki używany do uruchomienia usługi, aby przekazać te opcje.
 
-W każdy skrypt ma Eksport  **\* \_OPTS**, który zawiera opcje przekazywane do maszyny wirtualnej Java. Na przykład w **hadoop env.sh** skryptu wiersza, który rozpoczyna się od `export HADOOP_NAMENODE_OPTS=` zawiera opcje usługi NameNode.
+W każdym skrypcie istnieje  **\*eksport dla \_opcji**, który zawiera opcje przesłane do JVM. Na przykład w skrypcie **Hadoop-ENV.sh** wiersz zaczynający `export HADOOP_NAMENODE_OPTS=` się od zawiera opcje dla usługi NameNode.
 
-Mapowania i redukcji procesy nieco się różnią, jak te operacje są Proces podrzędny usługi MapReduce. Każdy mapowania lub Zmniejsz proces jest uruchamiany w kontenerze, wiąże się z dwóch wpisów, które zawierają opcje maszyny JVM. Zarówno zawarte w **mapred-site.xml**:
+Procesy mapowania i zmniejszania są nieco inne, ponieważ te operacje są procesem podrzędnym usługi MapReduce. Każda mapa lub ograniczenie procesu są uruchamiane w kontenerze podrzędnym, a istnieją dwa wpisy, które zawierają opcje JVM. Oba zawarte w **mapred-site. XML**:
 
 * **mapreduce.admin.map.child.java.opts**
 * **mapreduce.admin.reduce.child.java.opts**
 
 > [!NOTE]  
-> Firma Microsoft zaleca używanie [Apache Ambari](https://ambari.apache.org/) do modyfikowania skryptów i ustawienia mapred-site.xml, jako Ambari obsługi replikacji zmian na węzłach w klastrze. Zobacz [przy użyciu Apache Ambari](#using-apache-ambari) sekcji, aby poznać konkretne kroki.
+> Zalecamy użycie platformy [Apache Ambari](https://ambari.apache.org/) w celu zmodyfikowania zarówno ustawień skryptów, jak i mapred-site. XML, jako obsługi Ambari Replikowanie zmian między węzłami w klastrze. Szczegółowe instrukcje znajdują się w sekcji Korzystanie z usługi [Apache Ambari](#using-apache-ambari) .
 
 ### <a name="enable-heap-dumps"></a>Włączanie zrzutów stosu
 
-Poniższa opcja umożliwia zrzutów stosu sytuacji OutOfMemoryError:
+Następująca opcja włącza Zrzuty sterty, gdy występuje OutOfMemoryError:
 
     -XX:+HeapDumpOnOutOfMemoryError
 
 **+** Wskazuje, że ta opcja jest włączona. Domyślne ustawienie to Wyłączony.
 
 > [!WARNING]  
-> Zrzuty sterty nie są włączone dla usługi Hadoop w HDInsight domyślnie jako pliki zrzutu mogą być duże. Po włączeniu ich do rozwiązywania problemów, pamiętaj, aby je wyłączyć, po problemu i zebrane pliki zrzutu.
+> Zrzuty sterty nie są domyślnie włączone dla usług Hadoop w usłudze HDInsight, ponieważ pliki zrzutu mogą być duże. Jeśli włączysz je do rozwiązywania problemów, pamiętaj, aby je wyłączyć po ponownym utworzeniu problemu i zebraniu plików zrzutu.
 
 ### <a name="dump-location"></a>Lokalizacja zrzutu
 
-Domyślna lokalizacja pliku zrzutu jest bieżący katalog roboczy. Możesz kontrolować, gdzie plik jest przechowywany przy użyciu następujących opcji:
+Domyślna lokalizacja pliku zrzutu jest bieżącym katalogiem roboczym. Możesz kontrolować miejsce przechowywania pliku przy użyciu następującej opcji:
 
     -XX:HeapDumpPath=/path
 
-Na przykład za pomocą `-XX:HeapDumpPath=/tmp` powoduje, że zrzuty mają być przechowywane w folderze/tmp katalogu.
+Na przykład użycie `-XX:HeapDumpPath=/tmp` powoduje, że zrzuty są przechowywane w katalogu/tmp.
 
 ### <a name="scripts"></a>Scripts
 
-Skrypt można również wyzwalać przy **OutOfMemoryError** występuje. Na przykład wyzwala powiadomienia, aby było wiadomo, że wystąpił błąd. Użyj opcji uruchomienie wyzwalacza skrypt __OutOfMemoryError__:
+Możesz również wyzwolić skrypt w przypadku wystąpienia **OutOfMemoryError** . Na przykład Wyzwól powiadomienie, aby wiedzieć, że wystąpił błąd. Użyj następującej opcji, aby wyzwolić skrypt na __OutOfMemoryError__:
 
     -XX:OnOutOfMemoryError=/path/to/script
 
 > [!NOTE]  
-> Ponieważ Apache Hadoop to Rozproszony system, dowolny skrypt używany muszą znajdować się we wszystkich węzłach w klastrze, w którym ta usługa działa na.
+> Ponieważ Apache Hadoop jest systemem rozproszonym, każdy używany skrypt musi być umieszczony na wszystkich węzłach w klastrze, na którym działa usługa.
 > 
-> Skrypt musi także być w lokalizacji, który jest dostępny dla konta, działa jako usługa i musisz podać uprawnienia do wykonywania. Na przykład możesz chcieć przechowywać skrypty w `/usr/local/bin` i użyj `chmod go+rx /usr/local/bin/filename.sh` umożliwia udzielenie odczytu i uprawnienia do wykonywania.
+> Skrypt musi znajdować się również w lokalizacji dostępnej dla konta, na którym jest uruchomiona usługa, i musi zapewnić uprawnienia do wykonywania. Można na przykład przechowywać skrypty w `/usr/local/bin` usłudze i używać `chmod go+rx /usr/local/bin/filename.sh` ich do przyznawania uprawnień odczytu i wykonania.
 
-## <a name="using-apache-ambari"></a>Przy użyciu narzędzia Apache Ambari
+## <a name="using-apache-ambari"></a>Korzystanie z usługi Apache Ambari
 
-Aby zmodyfikować konfigurację dla usługi, użyj następujących kroków:
+Aby zmodyfikować konfigurację usługi, wykonaj następujące czynności:
 
-1. Otwórz interfejs webowy Ambari dla klastra. Adres URL jest https://YOURCLUSTERNAME.azurehdinsight.net.
+1. Otwórz interfejs użytkownika sieci Web Ambari dla klastra. Adres URL to https://YOURCLUSTERNAME.azurehdinsight.net.
 
-    Po wyświetleniu monitu uwierzytelniania do witryny przy użyciu nazwy konta HTTP (domyślne: admin) i hasło dla klastra.
-
-   > [!NOTE]  
-   > Może pojawić się prośba drugi raz przez Ambari podanie nazwy użytkownika i hasło. Jeśli tak, wprowadź taką samą nazwę konta i hasło.
-
-2. Przy użyciu listy po lewej stronie, wybierz obszar usługi, który chcesz zmodyfikować. Na przykład **HDFS**. W obszarze Centrum, wybierz **Configs** kartę.
-
-    ![Obraz sieci web Ambari, z wybraną kartą konfiguracje systemu plików HDFS](./media/hdinsight-hadoop-heap-dump-linux/serviceconfig.png)
-
-3. Za pomocą **filtr...**  wpisu, wprowadź **zdecyduje**. Wyświetlane są tylko elementy zawierające tekst.
-
-    ![Filtrowana lista](./media/hdinsight-hadoop-heap-dump-linux/filter.png)
-
-4. Znajdź  **\* \_OPTS** wpisu dla usługi, którą chcesz Włączanie zrzutów sterty dla, a następnie dodania tych opcji, które ma zostać włączone. Na poniższej ilustracji zostały dodane `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` do **HADOOP\_NAMENODE\_OPTS** wpis:
-
-    ![HADOOP_NAMENODE_OPTS przy użyciu - XX: + HeapDumpOnOutOfMemoryError - XX: HeapDumpPath = / tmp /](./media/hdinsight-hadoop-heap-dump-linux/opts.png)
+    Po wyświetleniu monitu należy uwierzytelnić się w lokacji przy użyciu nazwy konta HTTP (domyślnie: admin) i hasła dla klastra.
 
    > [!NOTE]  
-   > Podczas włączania sterty zrzuty mapy lub Zmniejsz proces podrzędny, poszukaj dla pola o nazwie **mapreduce.admin.map.child.java.opts** i **mapreduce.admin.reduce.child.java.opts**.
+   > Monit o podanie nazwy użytkownika i hasła może zostać wyświetlony po raz drugi. Jeśli tak, wprowadź nazwę konta i hasło.
 
-    Użyj **Zapisz** przycisk, aby zapisać zmiany. Można wprowadzić krótkie notatki opisujący zmiany.
+2. Korzystając z listy po lewej stronie, wybierz obszar usługi, który chcesz zmodyfikować. Na przykład system plików **HDFS**. W środkowym obszarze **Wybierz kartę konfiguracje** .
 
-5. Po zastosowaniu zmiany **wymagane jest ponowne uruchomienie** ikona pojawia się obok co najmniej jednej usługi.
+    ![Obraz przedstawiający kartę Ambari Web with HDFS configs Selected](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-service-config-tab.png)
 
-    ![Uruchom ponownie ikonę wymagane i ponownie uruchomić przycisku](./media/hdinsight-hadoop-heap-dump-linux/restartrequiredicon.png)
+3. Korzystając z wpisu **Filter...** **, wpisz polecenie**. Wyświetlane są tylko elementy zawierające ten tekst.
 
-6. Wybierz każda usługa, która wymaga ponownego uruchomienia komputera, a następnie użyć **działania usługi** przycisk, aby **włączyć w trybie konserwacji**. Tryb konserwacji zapobiega alerty generowane z usługi po ponownym jej uruchomieniu.
+    ![Filtrowana lista](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdinsight-filter-list.png)
 
-    ![Włącz menu Tryb konserwacji](./media/hdinsight-hadoop-heap-dump-linux/maintenancemode.png)
+4. Znajdź wpis opcji dla usługi, dla której chcesz włączyć Zrzuty sterty, i Dodaj opcje, które chcesz włączyć.  **\* \_** Na poniższej ilustracji dodaliśmy `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` do wpisu NAMENODE **\_\_usługi HADOOP** :
 
-7. Po włączeniu trybu konserwacji, użyj **ponowne uruchomienie** przycisk usługi **ponowne uruchomienie wszystkich będzie to miało wpływu**
-
-    ![Uruchom ponownie wpływ na wszystkie wejścia](./media/hdinsight-hadoop-heap-dump-linux/restartbutton.png)
+    ![HADOOP_NAMENODE_OPTS with-XX: + HeapDumpOnOutOfMemoryError-XX: HeapDumpPath =/tmp/](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hadoop-namenode-opts.png)
 
    > [!NOTE]  
-   > wpisy dla **ponowne uruchomienie** przycisk mogą być różne dla innych usług.
+   > Podczas włączania zrzutów sterty dla mapy lub Zmniejsz proces podrzędny należy poszukać pól o nazwach **MapReduce. admin. map. Child. Java** .
 
-8. Po uruchomieniu usługi użyj **działania usługi** przycisk, aby **Włącz Wyłącz tryb konserwacji**. Tego Ambari w celu wznowienia monitorowania alertów dla usługi.
+    Użyj przycisku **Zapisz** , aby zapisać zmiany. Możesz wprowadzić krótką notatkę opisującą zmiany.
+
+5. Po zastosowaniu zmian ikona **wymagane ponowne uruchomienie** zostanie wyświetlona obok jednej lub kilku usług.
+
+    ![ikona wymagane ponowne uruchomienie i przycisk ponownego uruchomienia](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/restart-required-icon.png)
+
+6. Wybierz każdą usługę, która wymaga ponownego uruchomienia, a następnie użyj przycisku **Akcje usługi** , aby **włączyć tryb konserwacji**. Tryb konserwacji uniemożliwia generowanie alertów z usługi po jej ponownym uruchomieniu.
+
+    ![Włącz menu trybu konserwacji](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-maintenance-mode.png)
+
+7. Po włączeniu trybu konserwacji Użyj przycisku **Uruchom ponownie** , aby **ponownie uruchomić** usługę.
+
+    ![Uruchom ponownie wszystkie uwzględnione wpisy](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-restart-all-button.png)
+
+   > [!NOTE]  
+   > Wpisy dla przycisku **Uruchom ponownie** mogą się różnić w zależności od innych usług.
+
+8. Po ponownym uruchomieniu usług użyj przycisku **Akcje usługi** , aby wyłączyć **tryb konserwacji**. Ambari to wznowienie monitorowania alertów dla usługi.
 

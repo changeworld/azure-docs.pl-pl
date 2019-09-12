@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 754e967a1be0b00f7ce7448744ec90690fd9f0c3
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 2e286854b9a38c1189ff85307f3e29454be46fb9
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736428"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898713"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure Data Catalog często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Data Catalog.
@@ -52,6 +52,15 @@ Aby zapoznać się z listą obecnie obsługiwanych źródeł danych, zobacz [Dat
 
 ## <a name="how-do-i-request-support-for-another-data-source"></a>Jak mogę obsługi żądania dla innego źródła danych?
 Aby przesłać żądania funkcji i inne opinie, przejdź do [Data Catalog na forach opinii na platformie Azure](https://feedback.azure.com/forums/906052-data-catalog/category/320788-data-sources).
+
+## <a name="why-do-i-get-an-error-catalog-already-exists-when-i-try-to-create-a-new-catalog"></a>Dlaczego otrzymuję *wykaz błędów już istnieje* podczas próby utworzenia nowego katalogu?
+
+Gdy kupisz pakiet Office 365 E5 z licencją Power BI Pro, firma Microsoft automatycznie utworzy katalog domyślny w regionie subskrypcji. Ten katalog używa bezpłatnej jednostki SKU. Licencja użytkownika pakietu Office 365/Power BI jest zarządzana na stronie administrowania pakietem Office 365. 
+
+Jednak ten typ wykazu danych nie ma **opcji administrator** i nie jest widoczny w **Azure Portal**. Nie można usunąć tego typu wykazu danych. Podobnie nie można zmienić nazwy wykazu danych i nie można przenieść go do innego regionu. 
+
+Konta użytkowników, którym przypisano licencję Power BI Pro, automatycznie mają dostęp do usługi Data Catalog ze względu na umowę licencyjną, gdy zarejestrowano się w pakiecie Office 365 E5 z licencją Power BI Pro. Ten typ użytkownika ma pełny dostęp do zasobów wykazu danych bez uprawnień administracyjnych. Ten rodzaj użytkownika *nie* należy do roli **użytkownika katalogu** w Azure Data Catalog.
+
 
 ## <a name="how-do-i-get-started-with-data-catalog"></a>Jak mogę rozpocząć pracę z usługą Data Catalog?
 Najlepszym sposobem na rozpoczęcie pracy jest przechodzenie do [wprowadzenie z Data Catalog](data-catalog-get-started.md). Ten artykuł zawiera kompleksowy przegląd możliwości usługi.
@@ -116,7 +125,7 @@ Aktywnie pracujemy nad rozwinięciem możliwości Data Catalog. Jeśli chcesz mi
 Jeśli chcesz uwzględnić metadane kolumny/schematu, podglądy lub profile danych, w przypadku źródeł danych, w których te metadane nie są wyodrębniane przez Narzędzie rejestracji źródła danych, możesz dodać te metadane za pomocą interfejsu API Data Catalog. Aby uzyskać dodatkowe informacje, zobacz [Azure Data Catalog interfejsu API REST](https://docs.microsoft.com/rest/api/datacatalog/).
 
 ## <a name="how-do-i-restrict-the-visibility-of-registered-data-assets-so-that-only-certain-people-can-discover-them"></a>Jak mogę ograniczyć widoczność zarejestrowanych zasobów danych, tak aby tylko niektóre osoby mogły je wykryć?
-Wybierz zasoby danych w Data Catalog, a następnie kliknij przycisk Przejmij na **własność** . Właściciele zasobów danych w Data Catalog mogą zmienić ustawienia widoczności, aby zezwolić wszystkim użytkownikom na odnajdywanie posiadanych zasobów lub ograniczyć widoczność do określonych użytkowników. Aby uzyskać dodatkowe informacje, zobacz [Zarządzanie zasobami danych w Azure Data Catalog](data-catalog-how-to-manage.md).
+Wybierz zasoby danych w Data Catalog, a następnie kliknij przycisk **Przejmij na własność** . Właściciele zasobów danych w Data Catalog mogą zmienić ustawienia widoczności, aby zezwolić wszystkim użytkownikom na odnajdywanie posiadanych zasobów lub ograniczyć widoczność do określonych użytkowników. Aby uzyskać dodatkowe informacje, zobacz [Zarządzanie zasobami danych w Azure Data Catalog](data-catalog-how-to-manage.md).
 
 ## <a name="how-do-i-update-the-registration-for-a-data-asset-so-that-changes-in-the-data-source-are-reflected-in-the-catalog"></a>Jak mogę zaktualizować rejestrację zasobu danych, dzięki czemu zmiany w źródle danych zostaną odzwierciedlone w wykazie?
 Aby zaktualizować metadane dla zasobów danych, które są już zarejestrowane w wykazie, po prostu ponownie zarejestruj źródło danych, które zawiera zasoby. Wszelkie zmiany w źródle danych, takie jak kolumny dodawane lub usuwane z tabel lub widoków, są aktualizowane w wykazie, ale wszelkie adnotacje udostępniane przez użytkowników są zachowywane.

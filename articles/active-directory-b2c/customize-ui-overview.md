@@ -7,21 +7,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 09/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bbce41271914df4bb8a75804bc66ae538fe766fa
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 5ae12742c2ad50d5bf1caaf14ae2f6d34bd6d3a2
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716765"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70880784"
 ---
 # <a name="about-user-interface-customization-in-azure-active-directory-b2c"></a>Informacje o dostosowywaniu interfejsu użytkownika w programie Azure Active Directory B2C
 
-Możliwość oznaczania i dostosowywania interfejsu użytkownika (UI), który Azure Active Directory (Azure AD) B2C do aplikacji, jest ważna dla zapewnienia bezproblemowego środowiska dla klienta. Te doświadczenia obejmują rejestrowanie, logowanie, edytowanie profilów i resetowanie hasła. Ten artykuł zawiera informacje ułatwiające dostosowanie interfejsu użytkownika aplikacji.
+Możliwość oznaczania i dostosowywania interfejsu użytkownika (UI), który Azure Active Directory B2C (Azure AD B2C) służy do aplikacji, jest ważna dla zapewnienia bezproblemowego środowiska dla klienta. Te doświadczenia obejmują rejestrowanie, logowanie, edytowanie profilów i resetowanie hasła. Ten artykuł zawiera informacje ułatwiające dostosowanie interfejsu użytkownika aplikacji.
 
-W zależności od potrzeb, gdy chodzi o te środowiska, można dostosować interfejs użytkownika aplikacji na różne sposoby. Na przykład:
+W zależności od potrzeb, gdy chodzi o te środowiska, można dostosować interfejs użytkownika aplikacji na różne sposoby. Przykład:
 
 - Jeśli używasz przepływów [użytkowników](active-directory-b2c-reference-policies.md) , aby zapewnić obsługę tworzenia konta lub logowania, resetowania haseł lub edytowania profilu w aplikacji, użyj [Azure Portal, aby dostosować interfejs użytkownika](tutorial-customize-ui.md).
 - Jeśli używasz przepływu użytkownika w wersji 2, możesz użyć [szablonu układu strony](#page-layout-templates) , aby zmienić wygląd stron przepływu użytkownika bez dalszych dostosowań. Na przykład można zastosować motyw Ocean niebieski lub ciemnoszary do wszystkich stron w przepływie użytkownika.
@@ -134,6 +134,9 @@ Przykłady dostosowywania można pobrać i przejrzeć te [przykładowe pliki sza
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Jeśli używasz przepływów użytkowników, możesz rozpocząć Dostosowywanie interfejsu użytkownika przy użyciu samouczka: [Dostosuj interfejs użytkownika aplikacji w Azure Active Directory B2C](tutorial-customize-ui.md).
-- Jeśli używasz zasad niestandardowych, możesz rozpocząć Dostosowywanie interfejsu użytkownika przy użyciu artykułu: [Dostosuj interfejs użytkownika aplikacji przy użyciu zasad niestandardowych w Azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md).
+- Jeśli używasz **przepływów użytkowników**, możesz rozpocząć Dostosowywanie interfejsu użytkownika przy użyciu samouczka:
 
+    [Dostosuj interfejs użytkownika aplikacji w Azure Active Directory B2C](tutorial-customize-ui.md).
+- Jeśli używasz **zasad niestandardowych**, możesz rozpocząć Dostosowywanie interfejsu użytkownika przy użyciu artykułu:
+
+    [Dostosuj interfejs użytkownika aplikacji przy użyciu zasad niestandardowych w Azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md).

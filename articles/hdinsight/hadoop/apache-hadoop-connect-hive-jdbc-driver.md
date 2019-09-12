@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: hrasheed
-ms.openlocfilehash: 36233dc986752ded409389a0a8e267c92a40b5a5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 689926d0dbaebaaf56c8238e8fed7a691e8cacf4
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562596"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882507"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Wysyłanie zapytań do Apache Hive za pomocą sterownika JDBC w usłudze HDInsight
 
@@ -63,11 +63,11 @@ SQuirreL SQL to klient JDBC, za pomocą którego można zdalnie uruchamiać zapy
 
 3. Uruchom aplikację SQL SQuirreL. Z lewej strony okna wybierz pozycję **sterowniki**.
 
-    ![Karta Sterowniki po lewej stronie okna](./media/apache-hadoop-connect-hive-jdbc-driver/squirreldrivers.png)
+    ![Karta Sterowniki po lewej stronie okna](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-squirreldrivers.png)
 
 4. Z ikon w górnej części okna dialogowego **sterowniki** wybierz **+** ikonę, aby utworzyć sterownik.
 
-    ![Ikony sterowników](./media/apache-hadoop-connect-hive-jdbc-driver/driversicons.png)
+    ![Ikony sterowników](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-driversicons.png)
 
 5. W oknie dialogowym Dodawanie sterownika Dodaj następujące informacje:
 
@@ -76,13 +76,13 @@ SQuirreL SQL to klient JDBC, za pomocą którego można zdalnie uruchamiać zapy
     * **Dodatkowa ścieżka klasy**: Użyj przycisku **Dodaj** , aby dodać wszystkie pobrane wcześniej pliki jar
     * **Nazwa klasy**: org. Apache. Hive. JDBC. HiveDriver
 
-   ![okno dialogowe Dodawanie sterownika](./media/apache-hadoop-connect-hive-jdbc-driver/adddriver.png)
+   ![okno dialogowe Dodawanie sterownika](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-add-driver.png)
 
    Wybierz **przycisk OK** , aby zapisać te ustawienia.
 
-6. Po lewej stronie okna SQuirreL SQL Wybierz pozycję aliasy. Następnie wybierz ikonę **+** , aby utworzyć alias połączenia.
+6. Po lewej stronie okna SQuirreL SQL Wybierz pozycję **aliasy**. Następnie wybierz ikonę **+** , aby utworzyć alias połączenia.
 
-    ![Dodaj nowy alias](./media/apache-hadoop-connect-hive-jdbc-driver/aliases.png)
+    ![Dodaj nowy alias](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-new-aliases.png)
 
 7. W oknie dialogowym **Dodawanie aliasu** należy użyć następujących wartości.
 
@@ -98,7 +98,7 @@ SQuirreL SQL to klient JDBC, za pomocą którego można zdalnie uruchamiać zapy
 
     * **Hasło**: Hasło do konta logowania do klastra.
 
-   ![okno dialogowe Dodawanie aliasu](./media/apache-hadoop-connect-hive-jdbc-driver/addalias.png)
+   ![okno dialogowe Dodawanie aliasu](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-addalias-dialog.png)
 
     > [!IMPORTANT] 
     > Użyj przycisku **Testuj** , aby sprawdzić, czy połączenie działa. Po **nawiązaniu połączenia z: Zostanie wyświetlone okno** dialogowe Hive w usłudze HDInsight, a następnie wybierz pozycję **Połącz** , aby wykonać test. Jeśli test zakończy się pomyślnie, zostanie wyświetlone okno dialogowe **pomyślne połączenie** . Jeśli wystąpi błąd, zobacz [Rozwiązywanie problemów](#troubleshooting).
@@ -107,7 +107,7 @@ SQuirreL SQL to klient JDBC, za pomocą którego można zdalnie uruchamiać zapy
 
 8. Z listy rozwijanej **Połącz** z na początku SQuirreL SQL Wybierz pozycję **Hive w usłudze HDInsight**. Po wyświetleniu monitu wybierz **Connect**.
 
-    ![okno dialogowe połączenia](./media/apache-hadoop-connect-hive-jdbc-driver/connect.png)
+    ![okno dialogowe połączenia](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-connect-dialog.png)
 
 9. Po nawiązaniu połączenia wprowadź następujące zapytanie do okna dialogowego zapytania SQL, a następnie wybierz ikonę **Run** (uruchomiona osoba). Obszar wyników powinien zawierać wyniki zapytania.
 
@@ -115,7 +115,7 @@ SQuirreL SQL to klient JDBC, za pomocą którego można zdalnie uruchamiać zapy
     select * from hivesampletable limit 10;
     ```
 
-    ![okno dialogowe kwerendy SQL, w tym wyniki](./media/apache-hadoop-connect-hive-jdbc-driver/sqlquery.png)
+    ![okno dialogowe kwerendy SQL, w tym wyniki](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-sqlquery-dialog.png)
 
 ## <a name="connect-from-an-example-java-application"></a>Nawiązywanie połączenia z przykładową aplikacją Java
 

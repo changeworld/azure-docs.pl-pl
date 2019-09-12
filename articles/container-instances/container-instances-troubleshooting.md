@@ -87,7 +87,7 @@ Jeśli nie można ściągnąć obrazu, zdarzenia takie jak następujące są wy�
 
 ## <a name="container-continually-exits-and-restarts-no-long-running-process"></a>Kontener ciągle opuszcza i uruchamia ponownie (bez długotrwałego procesu)
 
-Grupy kontenerów domyślnie mają [zasady ponownego uruchamiania](container-instances-restart-policy.md) **zawsze**, dlatego kontenery w grupie kontenerów zawsze są ponownie uruchamiane po ich zakończeniu. Może być konieczne jej zmianę na **OnFailure** lub **nigdy** , jeśli zamierzasz uruchomić kontenery oparte na zadaniach. Jeśli określisz **** wartość OnFailure i nadal widzisz ciągłe ponowne uruchomienia, może wystąpić problem z aplikacją lub skryptem wykonywanym w kontenerze.
+Grupy kontenerów domyślnie mają [zasady ponownego uruchamiania](container-instances-restart-policy.md) **zawsze**, dlatego kontenery w grupie kontenerów zawsze są ponownie uruchamiane po ich zakończeniu. Może być konieczne jej zmianę na **OnFailure** lub **nigdy** , jeśli zamierzasz uruchomić kontenery oparte na zadaniach. Jeśli określisz wartość OnFailure i nadal widzisz ciągłe ponowne uruchomienia, może wystąpić problem z aplikacją lub skryptem wykonywanym w kontenerze.
 
 W przypadku uruchamiania grup kontenerów bez długotrwałych procesów mogą pojawić się powtórzone wyjścia i ponowne uruchomienia z obrazami, takimi jak Ubuntu lub Alpine. Łączenie za pośrednictwem programu [exec](container-instances-exec.md) nie będzie działało, ponieważ kontener nie ma żadnego procesu utrzymywania aktywności. Aby rozwiązać ten problem, należy dodać polecenie uruchomienia podobne do następującego w przypadku wdrożenia grupy kontenerów w celu zachowania uruchomionego kontenera.
 

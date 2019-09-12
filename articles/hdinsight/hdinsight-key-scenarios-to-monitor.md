@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 2caa96e0ad036bbb872de43a7d8736969cf33c42
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 706f0333f1cca984b44e0fc96a5b014d4157ce4c
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812040"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879697"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Monitorowanie wydajności klastra w usłudze Azure HDInsight
 
@@ -68,7 +68,7 @@ Aby zapoznać się z bardziej szczegółowymi informacjami o kolejkach, na pulpi
 
 W interfejsie użytkownika Menedżer zasobów wybierz pozycję **harmonogram** z menu po lewej stronie. Zostanie wyświetlona lista kolejek pod *kolejkami aplikacji*. W tym miejscu możesz zobaczyć pojemność użytą dla każdej z kolejek, jak również są dystrybuowane zadania między nimi oraz czy wszystkie zadania są ograniczone do zasobów.
 
-![Łącze menu interfejsu użytkownika Menedżer zasobów](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui.png)
+![Menedżer zasobów menu interfejsu użytkownika](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui.png)
 
 ## <a name="storage-throttling"></a>Ograniczanie magazynu
 

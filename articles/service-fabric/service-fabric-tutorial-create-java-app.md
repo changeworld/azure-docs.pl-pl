@@ -14,18 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/01/2018
 ms.author: suhuruli
-ms.custom: mvc, seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 56a68f852e9eee3303540d6ebd180608935c6135
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 57c9bd8caf6e8762ed07ac5e6f4ff16171569723
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172063"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900668"
 ---
 # <a name="tutorial-create-an-application-with-a-java-api-front-end-service-and-a-stateful-back-end-service-on-azure-service-fabric"></a>Samouczek: Tworzenie aplikacji przy użyciu usługi frontonu interfejsu API języka Java i stanowej usługi zaplecza na platformie Azure Service Fabric
 
-Niniejszy samouczek jest pierwszą częścią serii. Po zakończeniu pracy będziesz mieć aplikację do głosowania z frontonem internetowym w języku Java, która zapisuje wyniki głosowania w stanowej usłudze zaplecza w klastrze. Ta seria samouczków wymaga działającej maszyny dewelopera z systemem Mac OS X lub Linux. Jeśli nie chcesz ręcznie tworzyć aplikacji do głosowania, możesz [pobrać kod źródłowy](https://github.com/Azure-Samples/service-fabric-java-quickstart) ukończonej aplikacji i przejść od razu do sekcji [Szczegółowe omówienie przykładowej aplikacji do głosowania](service-fabric-tutorial-create-java-app.md#walk-through-the-voting-sample-application). Ponadto należy wziąć pod uwagę następujący [przewodnik Szybki start dotyczący niezawodnych usług języka Java.](service-fabric-quickstart-java-reliable-services.md)
-
+Niniejszy samouczek jest pierwszą częścią serii. Po zakończeniu będziesz mieć aplikację do głosowania z frontonem sieci Web w języku Java, która zapisuje wyniki głosowania w usłudze stanowej zaplecza na platformie Azure Service Fabric. Ta seria samouczków wymaga działającej maszyny dewelopera z systemem Mac OS X lub Linux. Jeśli nie chcesz ręcznie tworzyć aplikacji do głosowania, możesz [pobrać kod źródłowy](https://github.com/Azure-Samples/service-fabric-java-quickstart) ukończonej aplikacji i przejść od razu do sekcji [Szczegółowe omówienie przykładowej aplikacji do głosowania](service-fabric-tutorial-create-java-app.md#walk-through-the-voting-sample-application). Rozważ również skorzystanie z [przewodnika Szybki Start dla niezawodnych usług Java.](service-fabric-quickstart-java-reliable-services.md)
 
 ![Lokalna aplikacja do głosowania](./media/service-fabric-tutorial-create-java-app/votingjavalocal.png)
 
@@ -63,11 +62,11 @@ Najpierw utwórz fronton internetowy aplikacji do głosowania. Internetowy inter
 
     ![Okno dialogowe nowego projektu w środowisku Eclipse](./media/service-fabric-tutorial-create-java-app/create-sf-proj-wizard.png)
 
-3. W oknie dialogowym **Kreator projektu dla sieci szkieletowej** Nazwij projekt , a następnie wybierz przycisk **dalej**.
+3. W oknie dialogowym **Kreator projektu dla sieci szkieletowej** Nazwij projekt **, a** następnie wybierz przycisk **dalej**.
 
     ![Wybieranie usługi bezstanowej Java w oknie dialogowym nowej usługi](./media/service-fabric-tutorial-create-java-app/name-sf-proj-wizard.png) 
 
-4. Na stronie **Dodawanie usługi** wybierz pozycję **Usługa**bezstanowa i nadaj usłudze nazwę **VotingWeb**. Wybierz pozycję **Zakończ** , aby utworzyć projekt.
+4. Na stronie **Dodawanie usługi** wybierz pozycję **Usługa bezstanowa**i nadaj usłudze nazwę **VotingWeb**. Wybierz pozycję **Zakończ** , aby utworzyć projekt.
 
     ![Tworzenie usługi bezstanowej]( ./media/service-fabric-tutorial-create-java-app/createvotingweb.png)
 
