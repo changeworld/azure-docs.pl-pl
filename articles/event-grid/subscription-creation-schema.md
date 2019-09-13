@@ -50,9 +50,9 @@ Nazwa subskrypcji zdarzeń musi mieć długość 3 – 64 znaków i może zawier
 | Właściwość | Type | Opis |
 | -------- | ---- | ----------- |
 | includedEventTypes | tablica | Dopasowanie, gdy typ zdarzenia w komunikacie zdarzenia jest dokładne dopasowanie do jednego z tych nazw typu event. Zgłasza błąd, gdy nazwa zdarzenia jest niezgodny z nazwy typu zdarzenia zarejestrowane dla źródła zdarzenia. Domyślna jest zgodna wszystkich typów zdarzeń. |
-| subjectBeginsWith | ciąg | Dopasowanie prefiksu filtr zdarzeń do pola temat wiadomości. Domyślne lub pusty ciąg pasuje do wszystkich. | 
-| subjectEndsWith | ciąg | Sufiks match filtr zdarzeń do pola temat wiadomości. Domyślne lub pusty ciąg pasuje do wszystkich. |
-| isSubjectCaseSensitive | ciąg | Kontrolki jest rozróżniana wielkość liter, pasujące do filtrów. |
+| subjectBeginsWith | string | Dopasowanie prefiksu filtr zdarzeń do pola temat wiadomości. Domyślne lub pusty ciąg pasuje do wszystkich. | 
+| subjectEndsWith | string | Sufiks match filtr zdarzeń do pola temat wiadomości. Domyślne lub pusty ciąg pasuje do wszystkich. |
+| isSubjectCaseSensitive | string | Kontrolki jest rozróżniana wielkość liter, pasujące do filtrów. |
 
 
 ## <a name="example-subscription-schema"></a>Przykład schemat subskrypcji
