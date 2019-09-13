@@ -1,31 +1,75 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentacja usługi Azure Digital Twins (wersja zapoznawcza)
+summary: Dowiedz się, jak używać usługi Azure Digital Twins do łączenia osób, miejsc i rzeczy oraz tworzenia rozwiązań IoT za pomocą analizy przestrzennej. Wykonaj kroki opisane w przewodniku Szybki start i samouczkach, aby monitorować symulowany budynek inteligentny, poznać szczegółowe pojęcia i utworzyć rozwiązanie IoT następnej generacji, które modeluje środowisko fizyczne.
 metadata:
   title: Dokumentacja usługi Azure Digital Twins (wersja zapoznawcza) — samouczki i dokumentacja interfejsu API | Microsoft Docs
   description: Tworzenie inteligentnych rozwiązań przestrzennych za pomocą usługi Azure Digital Twins.
-  author: dsk-2015
-  manager: timlt
-  ms.service: digital-twins
   services: digital-twins
+  ms.service: digital-twins
+  ms.subservice: digital-twins
   ms.topic: landing-page
-  ms.date: 10/15/2018
-  ms.author: dkshir
-abstract:
-  description: 'Dowiedz się, jak używać usługi Azure Digital Twins do łączenia osób, miejsc i rzeczy oraz tworzenia rozwiązań IoT za pomocą analizy przestrzennej. Wykonaj kroki opisane w przewodniku Szybki start i samouczkach, aby monitorować symulowany budynek inteligentny, poznać szczegółowe pojęcia i utworzyć rozwiązanie IoT następnej generacji, które modeluje środowisko fizyczne.'
-sections:
-  - title: 5-minutowy przewodnik Szybki start
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak <a href="quickstart-view-occupancy-dotnet">znaleźć dostępne pomieszczenia z powietrzem dobrej jakości przy użyciu przykładów platformy .NET dla usługi Azure Digital Twins</a>.'
-  - title: Samouczki krok po kroku
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak dostosować rozwiązanie Azure Digital Twins i za jego pomocą monitorować swoje budynki.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/digital-twins/tutorial-facilities-setup">Provision a sample building (Aprowizowanie przykładowego budynku)</a>
-          - html: <a href="/azure/digital-twins/tutorial-facilities-udf">Monitor conditions in your building (Monitorowanie warunków w budynku)</a>
-          - html: <a href="/azure/digital-twins/tutorial-facilities-events">Receive notifications from your building (Odbieranie powiadomień z budynku)</a>
-          - html: <a href="/azure/digital-twins/tutorial-facilities-analyze">Analyze events from your building (Analizowanie zdarzeń z budynku)</a>
+  ms.collection: collection
+  author: KingdomOfEnds
+  ms.author: v-adgera
+  ms.date: 09/03/2019
+  ms.openlocfilehash: 090a18b77de3ca89ecd054ce28ec9e8b0a17dd1f
+  ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 09/12/2019
+  ms.locfileid: "70930704"
+landingContent:
+- title: Informacje o usłudze Azure Digital Twins
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest usługa Azure Digital Twins?
+      url: about-digital-twins.md
+  - linkListType: concept
+    links:
+    - text: Opis modelu obiektów i grafu analizy przestrzennej w usłudze Digital Twins
+      url: concepts-objectmodel-spatialgraph.md
+  - linkListType: video
+    links:
+    - text: Wprowadzenie do usługi Azure Digital Twins
+      url: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Digital-Twins-Introduction
+- title: Rozpoczęcie pracy
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Wyszukiwanie dostępnych pomieszczeń
+      url: quickstart-view-occupancy-dotnet.md
+  - linkListType: tutorial
+    links:
+    - text: Wdrażanie i konfigurowanie
+      url: tutorial-facilities-setup.md
+    - text: Aprowizowanie i monitorowanie warunków
+      url: tutorial-facilities-udf.md
+    - text: Powiadamianie za pomocą usługi Logic Apps
+      url: tutorial-facilities-events.md
+    - text: Wizualizowanie zdarzeń za pomocą usługi TSI
+      url: tutorial-facilities-analyze.md
+- title: Opracowywanie rozwiązań przy użyciu usługi Azure Digital Twins
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Ruch przychodzący danych telemetrycznych i łączność urządzeń
+      url: concepts-device-ingress.md
+    - text: Przetwarzanie danych i funkcje zdefiniowane przez użytkownika
+      url: concepts-user-defined-functions.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurowanie narzędzia Postman
+      url: how-to-configure-postman.md
+    - text: Tworzenie funkcji zdefiniowanych przez użytkownika
+      url: how-to-user-defined-functions.md
+- title: Dokumentacja interfejsu API
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Biblioteka kliencka funkcji zdefiniowanych przez użytkownika
+      url: reference-user-defined-functions-client-library.md
+  - linkListType: how-to-guide
+    links:
+    - text: Używanie struktury Swagger w usłudze Digital Twins
+      url: how-to-use-swagger.md

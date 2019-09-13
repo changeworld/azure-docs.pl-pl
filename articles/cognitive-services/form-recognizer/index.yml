@@ -1,78 +1,78 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentacja rozpoznawania formularzy
+### YamlMime:Landing
+title: Dokumentacja usługi Rozpoznawanie formularzy
+summary: Usługa rozpoznawania formularzy na platformie Azure to usługa poznawcza używająca technologii uczenia maszynowego do identyfikowania i wyodrębniania par klucz-wartość i danych tabeli z dokumentów formularzy. Następnie wyświetla ustrukturyzowane dane, które obejmują relacje w oryginalnym pliku. Uczenie nienadzorowane umożliwia modelowi poznać układ i relacje między polami oraz wpisy bez ręcznego dodawania etykiet danych lub intensywnego kodowania i konserwacji.
 metadata:
-  title: Dokumentacja interfejsu API — rozpoznawanie formularzy
-  titleSuffix: Azure Cognitive Services
-  description: 'Dowiedz się, jak za pomocą rozpoznawania formularzy inteligentnie wyodrębniać dane klucz-wartość z dokumentów formularzy.'
+  title: Dokumentacja usługi Rozpoznawanie formularzy
+  description: Usługa rozpoznawania formularzy na platformie Azure to usługa poznawcza używająca technologii uczenia maszynowego do identyfikowania i wyodrębniania par klucz-wartość i danych tabeli z dokumentów formularzy. Następnie wyświetla ustrukturyzowane dane, które obejmują relacje w oryginalnym pliku. Uczenie nienadzorowane umożliwia modelowi poznać układ i relacje między polami oraz wpisy bez ręcznego dodawania etykiet danych lub intensywnego kodowania i konserwacji.
   services: cognitive-services
-  author: PatrickFarley
-  manager: nitinme
   ms.service: cognitive-services
-  ms.subservice: forms-recognizer
+  ms.subservice: form-recognizer
   ms.topic: landing-page
-  ms.date: 04/16/2019
+  author: PatrickFarley
   ms.author: pafarley
-ms.custom: seodec18
-abstract:
-  description: 'Usługa rozpoznawania formularzy na platformie Azure to usługa poznawcza używająca technologii uczenia maszynowego do identyfikowania i wyodrębniania par klucz-wartość i danych tabeli z dokumentów formularzy. Następnie wyświetla ustrukturyzowane dane, które obejmują relacje w oryginalnym pliku. Uczenie nienadzorowane umożliwia modelowi poznać układ i relacje między polami oraz wpisy bez ręcznego dodawania etykiet danych lub intensywnego kodowania i konserwacji.'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ../media/index/form-recognizer-landing-page-video.png
-      width: 250
-    title: 'Automatyzacja procesów obsługiwana przez sztuczną inteligencję przy użyciu usługi Rozpoznawanie formularzy (2:15)'
-    href: 'https://channel9.msdn.com/Shows/AI-Show/Learn-about-AI-powered-robotic-process-automation-with-Form-Recognizer'
-    width: 250
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/form-recognizer/overview
-            html: <p>Uzyskaj informacje na temat rozpoznawania formularzy.</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Co to jest rozpoznawanie formularzy?
-          - href: /azure/cognitive-services/form-recognizer/form-recognizer-container-howto
-            html: '<p>Dowiedz się, jak analizować dane formularzy i tabel za pomocą kontenera rozpoznawania formularzy.</p>'
-            image:
-              src: ../media/index/i_get-started.svg
-            title: Instalowanie i uruchamianie kontenerów
-          - href: /azure/cognitive-services/form-recognizer/build-training-data-set
-            html: <p>Utwórz zestaw danych zoptymalizowany pod kątem trenowania modelu niestandardowego.</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Tworzenie zestawu danych szkoleniowych
-  - title: 5-minutowe przewodniki Szybki start
-    items:
-      - type: paragraph
-        text: 'Wytrenuj model rozpoznawania formularzy i wyodrębnij dane z formularzy przy użyciu:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/logos/logo-curl.svg
-            text: cURL
-            href: quickstarts/curl-train-extract.md
-          - image:
-              src: ./media/logos/logo-python.svg
-            text: Python
-            href: quickstarts/python-train-extract.md
-  - title: Dokumentacja
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Interfejsy API
-            html: '<p><a href="https://aka.ms/form-recognizer/api">Interfejs API rozpoznawania formularzy</a></p>'
-          - title: Zestawy SDK
-            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview">.NET</a></p>'
-          - title: PowerShell
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: Interfejs wiersza polecenia
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list">Interfejs wiersza polecenia platformy Azure</a></p>'
+  ms.date: 09/05/2019
+  ms.openlocfilehash: 0c450a79c0dbdd19732488af927c3c29df263a23
+  ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 09/12/2019
+  ms.locfileid: "70931823"
+landingContent:
+- title: Informacje o usłudze Rozpoznawanie formularzy
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest rozpoznawanie formularzy?
+      url: overview.md
+  - linkListType: video
+    links:
+    - text: Automatyzacja procesów obsługiwana przez sztuczną inteligencję przy użyciu usługi Rozpoznawanie formularzy
+      url: https://channel9.msdn.com/Shows/AI-Show/Learn-about-AI-powered-robotic-process-automation-with-Form-Recognizer
+- title: Trenowanie modelu niestandardowego i wyodrębnianie danych
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Korzystanie z zestawu .NET SDK
+      url: quickstarts/dotnet-sdk.md
+    - text: Korzystanie z interfejsu API REST (Python)
+      url: quickstarts/python-train-extract.md
+    - text: Korzystanie z interfejsu API REST (cURL)
+      url: quickstarts/curl-train-extract.md
+- title: Wyodrębnianie danych z rachunków
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Korzystanie z zestawu .NET SDK
+      url: quickstarts/dotnet-sdk.md
+- title: Tworzenie zestawu danych szkoleniowych
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Tworzenie zestawu danych szkoleniowych
+      url: build-training-data-set.md
+- title: Korzystanie z kontenerów
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Instalowanie i uruchamianie kontenerów
+      url: form-recognizer-container-howto.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurowanie kontenerów
+      url: form-recognizer-container-configuration.md
+  - linkListType: deploy
+    links:
+    - text: Korzystanie z wystąpień kontenerów
+      url: deploy-form-recognizer-on-container-instances.md
+- title: Dokumentacja
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Interfejs API rozpoznawania formularzy
+      url: https://aka.ms/form-recognizer/api
+    - text: Zestaw SDK .NET
+      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+    - text: Interfejs wiersza polecenia platformy Azure
+      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list

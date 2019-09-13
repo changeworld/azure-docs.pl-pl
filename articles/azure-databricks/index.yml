@@ -1,66 +1,116 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentacja usługi Azure Databricks
+summary: Poznaj usługę Azure Databricks — platformę analiz opartą na usłudze Apache Spark, która oferuje konfigurację jednym kliknięciem, usprawnione przepływy pracy oraz interakcyjny obszar roboczy do współpracy między analitykami danych, inżynierami i analitykami biznesowymi.
 metadata:
   title: Dokumentacja usługi Azure Databricks
-  description: 'Dowiedz się, jak używać usługi Azure Databricks, korzystając z przewodnika Szybki start i innych podanych tutaj linków. Usługa Azure Databricks to platforma analizy oparta na usłudze Apache Spark zoptymalizowana pod kątem platformy usług w chmurze Microsoft Azure.'
+  description: Poznaj usługę Azure Databricks — platformę analiz opartą na usłudze Apache Spark, która oferuje konfigurację jednym kliknięciem, usprawnione przepływy pracy oraz interakcyjny obszar roboczy do współpracy między analitykami danych, inżynierami i analitykami biznesowymi.
   services: azure-databricks
-  author: mamccrea
   ms.service: azure-databricks
   ms.topic: landing-page
-  ms.date: 05/07/2019
+  ms.collection: collection
+  author: mamccrea
   ms.author: mamccrea
-abstract:
-  description: 'Dowiedz się, jak używać usługi Azure Databricks (platformy analiz opartej na usłudze Apache Spark) z konfiguracją jednym kliknięciem, usprawnionymi przepływami pracy i interakcyjnym obszarem roboczym, który umożliwia współpracę między analitykami danych, inżynierami danych i analitykami biznesowymi. W przewodnikach Szybki start i samouczkach pokazano, jak rozpocząć pracę z usługą Azure Databricks i przeprowadzić integrację z innymi usługami platformy Azure.'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: media/index/video.png
-      width: 250
-    title: 'Wprowadzenie do usługi Azure Databricks (3:38)'
-    href: 'https://azure.microsoft.com/resources/videos/connect-2017-introduction-to-azure-databricks/'
-    width: 250
-sections:
-  - title: 5-minutowe przewodniki Szybki start
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak utworzyć obszar roboczy usługi Azure Databricks, klaster Spark, a następnie uruchamiać zadania, wykorzystując:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/azure-databricks/media/index/portal.svg
-            text: Azure Portal
-            href: /azure/azure-databricks/quickstart-create-databricks-workspace-portal
-          - image:
-              src: /azure/azure-databricks/media/index/logo_azure_resource_manager.svg
-            text: Szablon usługi Resource Manager
-            href: /azure/azure-databricks/quickstart-create-databricks-workspace-resource-manager-template
-          - image:
-              src: /azure/azure-databricks/media/index/virtualnetwork.svg
-            text: Sieć wirtualna
-            href: /azure/azure-databricks/quickstart-create-databricks-workspace-vnet-injection
-  - title: Samouczki krok po kroku
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak pracować z usługą Azure Databricks:'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/azure-databricks/vnet-injection-sql-server">Wykonywanie zapytań kierowanych do serwera SQL Server działającego w kontenerze platformy Docker</a>
-          - html: <a href="/azure/azure-databricks/service-endpoint-cosmosdb">Używanie punktu końcowego usługi Cosmos DB</a>
-          - html: '<a href="/azure/azure-databricks/databricks-extract-load-sql-data-warehouse">Wyodrębnianie, przekształcanie i ładowanie danych</a>'
-          - html: <a href="/azure/azure-databricks/databricks-stream-from-eventhubs">Przesyłanie strumieniowe danych z usługi Event Hubs</a>
-          - html: <a href="/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services">Analiza tonacji za pomocą usługi Cognitive Services</a>
-          - html: '<a href="https://docs.azuredatabricks.net/spark/latest/structured-streaming/kafka.html" target="_blank">Przesyłanie strumieniowe danych z usługi HDInsight Kafka</a>'
-  - title: Dokumentacja
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST
-            html: <p><a href="/rest/api/databricks">Interfejs API REST</a></p>
-          - title: Resource Manager
-            html: <p><a href="/azure/templates/microsoft.databricks/workspaces">Szablon</a></p>
+  ms.date: 09/11/2019
+  ms.openlocfilehash: 40a023ee9498f8d5c487ab7317bc020260b98cce
+  ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 09/12/2019
+  ms.locfileid: "70933525"
+landingContent:
+- title: Informacje o usłudze Azure Databricks
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest Azure Databricks?
+      url: what-is-azure-databricks.md
+  - linkListType: concept
+    links:
+    - text: Często zadawane pytania
+      url: frequently-asked-questions-databricks.md
+  - linkListType: reference
+    links:
+    - text: Informacje o wersji
+      url: https://docs.azuredatabricks.net/release-notes/index.html
+  - linkListType: learn
+    links:
+    - text: Wprowadzenie do usługi Azure Databricks
+      url: https://docs.microsoft.com/learn/modules/intro-to-azure-databricks
+- title: Rozpoczęcie pracy
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Tworzenie obszaru roboczego usługi Databricks za pomocą witryny Azure Portal
+      url: quickstart-create-databricks-workspace-portal.md
+    - text: Uruchamianie zadania platformy Apache Spark w usłudze Databricks przy użyciu szablonu usługi Resource Manager
+      url: quickstart-create-databricks-workspace-resource-manager-template.md
+  - linkListType: how-to-guide
+    links:
+    - text: Tworzenie klastra platformy Apache Spark
+      url: https://docs.azuredatabricks.net/user-guide/clusters/index.html
+    - text: Łączenie ze źródłami danych
+      url: databricks-connect-to-data-sources.md
+    - text: Używanie interfejsu wiersza polecenia Databricks z poziomu usługi Azure Cloud Shell
+      url: databricks-cli-from-azure-cloud-shell.md
+  - linkListType: reference
+    links:
+    - text: Szablon usługi Azure Resource Manager
+      url: /azure/templates/microsoft.databricks/workspaces
+- title: Projektowanie architektury rozwiązań na platformie Azure
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Uruchamianie notesu w usłudze Azure Data Factory
+      url: ../data-factory/transform-data-using-databricks-notebook.md
+    - text: Analizowanie tonacji za pomocą usługi Cognitive Services
+      url: databricks-sentiment-analysis-cognitive-services.md
+    - text: Korzystanie z punktu końcowego usługi Cosmos DB
+      url: service-endpoint-cosmosdb.md
+    - text: Uzyskiwanie dostępu do magazynu za pomocą usługi Azure Key Vault
+      url: store-secrets-azure-key-vault.md
+    - text: Wykonywanie operacji ETL za pomocą usług Azure Data Lake Storage Gen2 i SQL Data Warehouse
+      url: databricks-extract-load-sql-data-warehouse.md
+  - linkListType: how-to-guide
+    links:
+    - text: Łączenie z programem Excel oraz językami R i Python
+      url: connect-databricks-excel-python-r.md
+- title: Korzystanie z sieci wirtualnej
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Tworzenie obszaru roboczego usługi Databricks w sieci wirtualnej
+      url: quickstart-create-databricks-workspace-vnet-injection.md
+  - linkListType: deploy
+    links:
+    - text: Wdrażanie usługi Azure Databricks w sieci wirtualnej
+      url: vnet-injection.md
+  - linkListType: tutorial
+    links:
+    - text: Wysyłanie zapytań do kontenera platformy Docker w systemie Linux z programem SQL Server w sieci wirtualnej z notesu usługi Azure Databricks
+      url: vnet-injection-sql-server.md
+- title: Strumieniowe przesyłanie danych
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Praca z danymi przesyłanymi strumieniowo w usłudze Azure Databricks
+      url: https://docs.microsoft.com/learn/modules/streaming-in-azure-databricks/
+  - linkListType: tutorial
+    links:
+    - text: Przesyłanie strumieniowe danych za pomocą usługi Event Hubs
+      url: databricks-stream-from-eventhubs.md
+    - text: Przesyłanie strumieniowe danych z usługi HDInsight Kafka
+      url: https://docs.azuredatabricks.net/spark/latest/structured-streaming/kafka.html
+- title: Przewodniki dla deweloperów
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Uczenie głębokie przy użyciu usługi Azure Databricks
+      url: https://docs.microsoft.com/learn/modules/deep-learning-in-azure-databricks
+    - text: Analizowanie tekstu
+      url: https://docs.microsoft.com/learn/modules/perform-text-analytics-with-azure-databricks
+  - linkListType: reference
+    links:
+    - text: Interfejs API REST usługi Databricks
+      url: /rest/api/databricks
+    - text: Przewodnik dewelopera języka R
+      url: ../machine-learning/r-developers-guide.md

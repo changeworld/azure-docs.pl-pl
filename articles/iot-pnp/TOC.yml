@@ -37,10 +37,12 @@
       href: concepts-limits-quotas.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Korzystanie ze środowiska roboczego urządzenia IoT
-      href: howto-use-iot-device-workbench.md
+    - name: Opracowywanie rozwiązań przy użyciu programów Visual Studio i Visual Studio Code
+      href: howto-develop-with-vs-vscode.md
     - name: Instalowanie programu IoT Explorer
       href: howto-install-iot-explorer.md
+    - name: Instalowanie rozszerzenia interfejsu wiersza polecenia platformy Azure
+      href: howto-install-pnp-cli.md
     - name: Dołączanie do portalu IoT
       href: howto-onboard-portal.md
     - name: Zarządzanie modelami

@@ -19,7 +19,7 @@
           href: tutorial-facilities-udf.md
         - name: Powiadamianie za pomocą usługi Logic Apps
           href: tutorial-facilities-events.md
-        - name: Wizualizowanie zdarzeń za pomocą usługi TSI
+        - name: Wizualizowanie zdarzeń za pomocą usługi Time Series Insights
           href: tutorial-facilities-analyze.md
 - name: Pojęcia
   items:

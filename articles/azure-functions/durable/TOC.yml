@@ -21,6 +21,8 @@
       href: quickstart-js-vscode.md
 - name: Samouczki
   items:
+    - name: Łączenie funkcji w łańcuchy
+      href: durable-functions-sequence.md
     - name: Elementy wielokierunkowe (wejściowe/wyjściowe)
       href: durable-functions-cloud-backup.md
     - name: Monitory
@@ -37,46 +39,56 @@
       href: ../functions-cli-samples.md
 - name: Pojęcia
   items:
-    - name: Wzorce i pojęcia
-      href: durable-functions-concepts.md
-    - name: Typy i cechy funkcji
+    - name: Typy funkcji
       href: durable-functions-types-features-overview.md
-    - name: Powiązania
-      href: durable-functions-bindings.md
+    - name: Aranżacje
+      href: durable-functions-orchestrations.md
+    - name: Ograniczenia kodu orkiestratora
+      href: durable-functions-code-constraints.md
+    - name: Orkiestracje podrzędne
+      href: durable-functions-sub-orchestrations.md
+    - name: Stan niestandardowej aranżacji
+      href: durable-functions-custom-orchestration-status.md
     - name: Czasomierze
       href: durable-functions-timers.md
     - name: Zdarzenia zewnętrzne
       href: durable-functions-external-events.md
-    - name: Orkiestracje podrzędne
-      href: durable-functions-sub-orchestrations.md
+    - name: Obsługa błędów
+      href: durable-functions-error-handling.md
+    - name: Orkiestracje nieustanne
+      href: durable-functions-eternal-orchestrations.md
+    - name: Orkiestracje pojedyncze
+      href: durable-functions-singletons.md
+    - name: Funkcje HTTP
+      href: durable-functions-http-features.md
+    - name: Jednostki stanowe
+      href: durable-functions-entities.md
     - name: Koncentratory zadań
       href: durable-functions-task-hubs.md
-    - name: Niezawodne wykonywanie
-      href: durable-functions-checkpointing-and-replay.md
+    - name: Zarządzanie wystąpieniami
+      href: durable-functions-instance-management.md
     - name: Obsługa wersji
       href: durable-functions-versioning.md
+    - name: Wydajność i skalowanie
+      href: durable-functions-perf-and-scale.md
+    - name: Wysoka dostępność
+      href: durable-functions-disaster-recovery-geo-distribution.md
+- name: Dokumentacja
+  items:
+    - name: Ustawienia pliku host.json
+      href: 'durable-functions-bindings.md#host-json'
+    - name: Powiązania
+      href: durable-functions-bindings.md
+    - name: Interfejs API protokołu HTTP
+      href: durable-functions-http-api.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Planowanie i projektowanie
-      items:
-        - name: Łączenie funkcji w łańcuchy
-          href: durable-functions-sequence.md
-        - name: Orkiestracje nieustanne
-          href: durable-functions-eternal-orchestrations.md
-        - name: Orkiestracje pojedyncze
-          href: durable-functions-singletons.md
-        - name: Wydajność i skalowanie
-          href: durable-functions-perf-and-scale.md
-        - name: Wysoka dostępność
-          href: durable-functions-disaster-recovery-geo-distribution.md
     - name: Programowanie
       items:
         - name: Tworzenie w witrynie Azure Portal
           href: durable-functions-create-portal.md
         - name: Zarządzanie połączeniami
           href: ../manage-connections.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
-        - name: Obsługa błędów
-          href: durable-functions-error-handling.md
         - name: Testy jednostkowe
           href: durable-functions-unit-testing.md
         - name: Tworzenie jako zadań WebJob
@@ -89,24 +101,14 @@
           href: ../deployment-zip-push.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
         - name: Uruchamianie za pomocą pakietu
           href: ../run-functions-from-deployment-package.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
-    - name: Zarządzanie
-      items:
-        - name: Zarządzanie wystąpieniami
-          href: durable-functions-instance-management.md
     - name: Monitorowanie
-      items:
-        - name: Monitorowanie funkcji
-          href: ../functions-monitoring.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
-        - name: Stan niestandardowej aranżacji
-          href: durable-functions-custom-orchestration-status.md
-    - name: Rozwiązywanie problemów
       items:
         - name: Diagnostyka
           href: durable-functions-diagnostics.md
-- name: Dokumentacja
-  items:
-    - name: Interfejs API protokołu HTTP
-      href: durable-functions-http-api.md
+        - name: Monitorowanie
+          href: ../functions-monitoring.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+        - name: Cennik
+          href: durable-functions-billing.md
 - name: Zasoby
   items:
     - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
