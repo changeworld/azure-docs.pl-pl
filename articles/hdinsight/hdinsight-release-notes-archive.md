@@ -1371,11 +1371,11 @@ Rozwiązano problemy przedstawiające wybrane problemy, które zostały wcześni
     
   Jeśli użytkownik chce utworzyć zasady z niestandardowymi warunkami zasad, a wyrażenie lub tekst zawiera znaki specjalne, wymuszanie zasad nie będzie działało. Znaki specjalne są konwertowane na kod ASCII przed zapisaniem zasad w bazie danych.
     
-  **Znaki specjalne:**  &  &lt; ""&gt; \`
+  **Znaki specjalne:**  & &lt; ""&gt; \`
     
   Na przykład znaczniki warunku. atrybuty\["Type"\]= "ABC" zostałyby przekonwertowane na następujące po zapisaniu zasad.
     
-  Tagi. attds\[&x27;DSDS &\#x27;\] \# x27; cssdfs&\#x27; =& \#
+  Tagi. attds\[&\#x27;dsds&\#x27;\]=&\#x27;cssdfs&\#x27;
     
   Warunek zasad można sprawdzić za pomocą tych znaków, otwierając zasady w trybie edycji.
     
