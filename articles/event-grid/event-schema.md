@@ -85,14 +85,14 @@ Wszystkie zdarzenia mają te same dane następujących najwyższego poziomu:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| topic | ciąg | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
-| subject | ciąg | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
-| eventType | ciąg | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
-| eventTime | ciąg | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
-| id | ciąg | Unikatowy identyfikator zdarzenia. |
+| topic | string | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
+| subject | string | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
+| eventType | string | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
+| eventTime | string | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
+| id | string | Unikatowy identyfikator zdarzenia. |
 | data | object | Dane zdarzenia specyficzne dla dostawcy zasobów. |
-| dataVersion | ciąg | Wersja schematu obiektu danych. Wydawca Określa wersję schematu. |
-| metadataVersion | ciąg | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
+| dataVersion | string | Wersja schematu obiektu danych. Wydawca Określa wersję schematu. |
+| metadataVersion | string | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
 
 Aby dowiedzieć się więcej na temat właściwości w obiekcie danych, zobacz źródło zdarzenia:
 
