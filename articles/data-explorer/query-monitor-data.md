@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 8e61f52282bcbc62a3eb069272cd7c1f3e329d3b
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 43d91bff6b8b67e79a9549c1524f918166c9adc4
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172700"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934009"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Wykonywanie zapytań dotyczących danych w Azure Monitor przy użyciu usługi Azure Eksplorator danych (wersja zapoznawcza)
 
@@ -107,7 +107,7 @@ union <ADX table>, cluster(CL1).database(<workspace-name>).<table name>
 
 ![Krzyżowe zapytanie z serwera proxy usługi Azure Eksplorator danych](media/adx-proxy/cross-query-adx-proxy.png)
 
-Użycie operatora zamiast Union może wymagać wskazówki do uruchomienia jej w klastrze usługi Azure Eksplorator danych Native (a nie na serwerze proxy). [ `join` ](/azure/kusto/query/joinoperator) 
+Użycie operatora zamiast Union może wymagać [`hint`](/azure/kusto/query/joinoperator#join-hints) uruchomienia go w klastrze macierzystym platformy Azure Eksplorator danych (a nie na serwerze proxy). [ `join` ](/azure/kusto/query/joinoperator) 
 
 ## <a name="additional-syntax-examples"></a>Dodatkowe przykłady składni
 

@@ -8,12 +8,12 @@ ms.author: xshi
 ms.date: 08/07/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: b63b68b7721dd848e6a72b3b7d9cfa38bf031b23
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: b451e501b216b02ecb052ee159d0e26343af7901
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035081"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910230"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Użyj Visual Studio Code do tworzenia i debugowania modułów dla Azure IoT Edge
 
@@ -26,7 +26,7 @@ Jeśli nie znasz możliwości debugowania Visual Studio Code, przeczytaj informa
 Ten artykuł zawiera instrukcje dotyczące projektowania i debugowania modułów w wielu językach w przypadku wielu architektur. Obecnie Visual Studio Code zapewnia obsługę modułów pisanych w C#językach C, Python, Node. js i Java. Obsługiwane architektury urządzeń to x64 i ARM32. Aby uzyskać więcej informacji na temat obsługiwanych systemów operacyjnych, języków i architektur, zobacz temat [Obsługa języków i architektury](module-development.md#language-and-architecture-support).
 
 >[!NOTE]
->Obsługa programowania i debugowania dla urządzeń z systemem Linux ARM64 jest w [publicznej wersji](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)zapoznawczej. Aby uzyskać więcej informacji, zobacz [programowanie i debugowanie modułów IoT Edge arm64 w Visual Studio Code (wersja zapoznawcza)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview).
+>Obsługa programowania i debugowania dla urządzeń z systemem Linux ARM64 jest w [publicznej wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Aby uzyskać więcej informacji, zobacz [programowanie i debugowanie modułów IoT Edge arm64 w Visual Studio Code (wersja zapoznawcza)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -89,7 +89,7 @@ W poniższych krokach pokazano, jak utworzyć moduł IoT Edge w preferowanym ję
 
 1. Wprowadź nazwę modułu. Wybierz nazwę, która jest unikatowa w rejestrze kontenerów.
 
-1. Podaj nazwę repozytorium obrazu modułu. Visual Studio Code automatycznie wypełnia nazwę modułu nazwą **localhost: 5000/\>< nazwę modułu**. Zastąp go własną informacje rejestru. Jeśli do testowania używasz lokalnego rejestru platformy Docker, hosty **localhost** jest w prawidłowym zakresie. Jeśli korzystasz z usługi Azure Container Registry, Użyj serwera logowania z ustawień w rejestrze. Serwer logowania wygląda podobnie do * **\<nazwa\>rejestru *. azurecr.IO**. Zastąp tylko **część localhost: 5000** ciągu, aby wynik końcowy wyglądał jak *\<* *\<nazwa\> *\>rejestru. azurecr.IO/* nazwę modułu * * *.
+1. Podaj nazwę repozytorium obrazu modułu. Visual Studio Code automatycznie wypełnia nazwę modułu nazwą **localhost: 5000/\>< nazwę modułu**. Zastąp go własną informacje rejestru. Jeśli do testowania używasz lokalnego rejestru platformy Docker, hosty **localhost** jest w prawidłowym zakresie. Jeśli korzystasz z usługi Azure Container Registry, Użyj serwera logowania z ustawień w rejestrze. Serwer logowania wygląda jak   **_\<nazwa\>rejestru_. azurecr.IO**. Zastąp tylko część **localhost: 5000** ciągu, aby wynik końcowy wyglądał jak  **\< *Nazwa*\>rejestru. azurecr.IO/ _\<nazwę\>modułu_** .
 
    ![Udostępnianie repozytorium obrazów platformy Docker](./media/how-to-develop-csharp-module/repository.png)
 

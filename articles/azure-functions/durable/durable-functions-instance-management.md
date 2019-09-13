@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3db0cd3dd01e3f5f6af6b4b668d1ccac094624a2
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 0df6f5f9728a8e48a3257e56ddf8ad23906dc92c
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735174"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933317"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Zarządzanie wystąpieniami w Durable Functions na platformie Azure
 
@@ -31,9 +31,6 @@ Ważne jest, aby uruchomić wystąpienie aranżacji. Jest to często wykonywane,
 Metoda [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) w [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) (.NET) `startNew` `DurableOrchestrationClient` lub na (JavaScript) uruchamia nowe wystąpienie. Wystąpienia tej klasy uzyskuje się `orchestrationClient` za pomocą powiązania. Wewnętrznie metoda ta enqueues komunikat do kolejki sterującej, która następnie wyzwala początek funkcji o określonej nazwie, która używa `orchestrationTrigger` powiązania wyzwalacza.
 
 Ta operacja asynchroniczna kończy się po pomyślnym zaplanowaniu procesu aranżacji. Proces aranżacji powinien rozpoczynać się w ciągu 30 sekund. Jeśli trwa dłużej, `TimeoutException`zobaczysz.
-
-> [!WARNING]
-> Podczas programowania lokalnego w języku `WEBSITE_HOSTNAME` JavaScript Ustaw dla zmiennej `localhost:<port>` środowiskowej wartość (na przykład `localhost:7071`), aby użyć metod `DurableOrchestrationClient`w. Aby uzyskać więcej informacji na temat tego wymagania, zobacz artykuł [dotyczący usługi GitHub](https://github.com/Azure/azure-functions-durable-js/issues/28).
 
 ### <a name="net"></a>.NET
 
@@ -361,7 +358,7 @@ func durable terminate --id 0ab8c55a66644d68a3a8b220b12d209c --reason "It was ti
 
 ## <a name="send-events-to-instances"></a>Wysyłanie zdarzeń do wystąpień
 
-W niektórych scenariuszach ważne jest, aby funkcja programu Orchestrator mogła czekać i słuchać zdarzeń zewnętrznych. Obejmuje to [funkcje monitorowania](durable-functions-concepts.md#monitoring) i funkcje, które oczekują na [interakcję przez człowieka](durable-functions-concepts.md#human).
+W niektórych scenariuszach ważne jest, aby funkcja programu Orchestrator mogła czekać i słuchać zdarzeń zewnętrznych. Obejmuje to [funkcje monitorowania](durable-functions-overview.md#monitoring) i funkcje, które oczekują na [interakcję przez człowieka](durable-functions-overview.md#human).
 
 Wysyłać powiadomienia o zdarzeniach do uruchomionych wystąpień za pomocą metody [RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) klasy [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) (.NET `raiseEvent` ) lub metody `DurableOrchestrationClient` klasy (JavaScript). Wystąpienia, które mogą obsługiwać te zdarzenia, są te, które oczekują na wywołanie [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) (.NET) `waitForExternalEvent` lub (JavaScript).
 
@@ -534,14 +531,14 @@ modules.exports = async function(context, ctx) {
 
 ## <a name="rewind-instances-preview"></a>Przewiń do tyłu wystąpienia (wersja zapoznawcza)
 
-Jeśli masz błąd aranżacji z nieoczekiwanej przyczyny, możesz *przewinąć* wystąpienie do poprzedniego stanu w dobrej kondycji, korzystając z interfejsu API skompilowanego do tego celu.
+Jeśli masz błąd aranżacji z nieoczekiwanej przyczyny, możesz przewinąć wystąpienie do poprzedniego stanu w dobrej kondycji, korzystając z interfejsu API skompilowanego do tego celu.
 
 > [!NOTE]
 > Ten interfejs API nie jest przeznaczony do zastępowania w celu zapewnienia prawidłowej obsługi błędów i zasad ponawiania. Zamiast tego jest przeznaczona do użycia tylko w przypadkach, w których wystąpienia aranżacji kończą się niepowodzeniem z nieoczekiwanych przyczyn. Aby uzyskać więcej informacji na temat obsługi błędów i zasad ponawiania, zobacz temat [Obsługa błędów](durable-functions-error-handling.md) .
 
 Użyj interfejsu API [RewindAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RewindAsync_System_String_System_String_) (.NET) `rewindAsync` lub (JavaScript), aby przełączyć aranżację do stanu *uruchomienia* . Ponownie uruchom błędy wykonywania działania lub podaranżacji, które spowodowały błąd aranżacji.
 
-Załóżmy na przykład, że masz przepływ pracy obejmujący serię [zatwierdzeń ludzkich](durable-functions-concepts.md#human). Załóżmy, że istnieje szereg funkcji działania, które powiadamiają kogoś o konieczności zatwierdzenia i oczekują odpowiedzi w czasie rzeczywistym. Po odebraniu odpowiedzi przez wszystkie działania zatwierdzenia lub przekroczeniu limitu czasu inne działanie nie powiedzie się z powodu błędnej konfiguracji aplikacji, na przykład parametrów połączenia z bazą danych. Wynikiem jest niepowodzenie aranżacji w przepływie pracy. Za pomocą interfejsu API `rewindAsync` (.NET)lub(JavaScript),administratoraplikacjimożenaprawićbłądkonfiguracjiiprzewinąćniepowodzeniearanżacjidostanubezpośrednioprzedawarią.`RewindAsync` Żadna z kroków związanych z interakcją przez człowieka nie musi być ponownie zatwierdzana, a aranżacja może teraz zakończyć się pomyślnie.
+Załóżmy na przykład, że masz przepływ pracy obejmujący serię [zatwierdzeń ludzkich](durable-functions-overview.md#human). Załóżmy, że istnieje szereg funkcji działania, które powiadamiają kogoś o konieczności zatwierdzenia i oczekują odpowiedzi w czasie rzeczywistym. Po odebraniu odpowiedzi przez wszystkie działania zatwierdzenia lub przekroczeniu limitu czasu inne działanie nie powiedzie się z powodu błędnej konfiguracji aplikacji, na przykład parametrów połączenia z bazą danych. Wynikiem jest niepowodzenie aranżacji w przepływie pracy. Za pomocą interfejsu API `rewindAsync` (.NET)lub(JavaScript),administratoraplikacjimożenaprawićbłądkonfiguracjiiprzewinąćniepowodzeniearanżacjidostanubezpośrednioprzedawarią.`RewindAsync` Żadna z kroków związanych z interakcją przez człowieka nie musi być ponownie zatwierdzana, a aranżacja może teraz zakończyć się pomyślnie.
 
 > [!NOTE]
 > Funkcja *przewijania do tyłu* nie obsługuje zawijania wystąpień aranżacji korzystających z trwałych czasomierzy.
@@ -627,7 +624,7 @@ public static Task Run(
 ```
 
 > [!NOTE]
-> Aby proces funkcji wyzwolonej pomyślnie zakończył się **powodzeniem, stan**środowiska uruchomieniowego musi być zakończony, **zakończony**lub **Niepowodzenie**.
+> Aby proces funkcji wyzwolonej pomyślnie zakończył się powodzeniem, stan środowiska uruchomieniowego musi być zakończony, **zakończony**lubniepowodzenie.
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
@@ -661,4 +658,7 @@ func durable delete-task-hub --task-hub-name UserTest
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się, jak używać interfejsów API protokołu HTTP do zarządzania wystąpieniami](durable-functions-http-api.md)
+> [Dowiedz się, jak obsługiwać przechowywanie wersji](durable-functions-versioning.md)
+
+> [!div class="nextstepaction"]
+> [Wbudowana dokumentacja interfejsu API protokołu HTTP do zarządzania wystąpieniami](durable-functions-http-api.md)

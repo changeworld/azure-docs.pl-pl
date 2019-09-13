@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: 57e5eef8563bca0e27024d6ff5a46b983273df07
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: d34cb7b8bfae14c25950cc4d77c6625c675e813b
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810659"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934619"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Optymalizowanie konfiguracji klastra usługi HDInsight przy użyciu oprogramowania Apache Ambari
 
@@ -23,7 +23,7 @@ Aby zapoznać się z wprowadzeniem do korzystania z interfejsu użytkownika siec
 
 Zaloguj się do Ambari `https://CLUSTERNAME.azurehdidnsight.net` przy użyciu poświadczeń klastra. Na ekranie początkowym zostanie wyświetlony pulpit nawigacyjny przegląd.
 
-![Pulpit nawigacyjny Ambari](./media/hdinsight-changing-configs-via-ambari/ambari-dashboard.png)
+![Pulpit nawigacyjny Ambari](./media/hdinsight-changing-configs-via-ambari/apache-ambari-dashboard.png)
 
 Interfejs użytkownika sieci Web Ambari może służyć do zarządzania hostami, usługami, alertami, konfiguracjami i widokami. Ambari nie można użyć do utworzenia klastra usługi HDInsight, uaktualnienia usług, zarządzania stosów i wersji, likwidowania lub rewizji hostów lub dodawania usług do klastra.
 
@@ -31,7 +31,7 @@ Interfejs użytkownika sieci Web Ambari może służyć do zarządzania hostami,
 
 Ustawienia konfiguracji ułatwiają dostrajanie określonej usługi. Aby zmodyfikować ustawienia konfiguracji usługi, wybierz usługę z paska bocznego **usług** (po lewej stronie), a następnie przejdź **do karty konfiguracje** na stronie Szczegóły usługi.
 
-![Pasek boczny usług](./media/hdinsight-changing-configs-via-ambari/services-sidebar.png)
+![Pasek boczny usług](./media/hdinsight-changing-configs-via-ambari/ambari-services-sidebar.png)
 
 ### <a name="modify-namenode-java-heap-size"></a>Modyfikuj rozmiar sterty Java NameNode
 
@@ -41,15 +41,15 @@ Aby zmodyfikować rozmiar sterty języka Java NameNode:
 
 1. Na pasku bocznym usługi wybierz pozycję **HDFS** i przejdź **do karty konfiguracje** .
 
-    ![Konfiguracja systemu plików HDFS](./media/hdinsight-changing-configs-via-ambari/hdfs-config.png)
+    ![Konfiguracja systemu plików HDFS](./media/hdinsight-changing-configs-via-ambari/ambari-apache-hdfs-config.png)
 
 1. Znajdź ustawienie **NameNode rozmiar sterty Java**. Możesz również użyć pola tekstowego **Filtr** , aby wpisać i znaleźć określone ustawienie. Wybierz ikonę **pióra** obok nazwy ustawienia.
 
-    ![NameNode — rozmiar sterty Java](./media/hdinsight-changing-configs-via-ambari/java-heap-size.png)
+    ![NameNode — rozmiar sterty Java](./media/hdinsight-changing-configs-via-ambari/ambari-java-heap-size.png)
 
 1. Wpisz nową wartość w polu tekstowym, a następnie naciśnij klawisz **Enter** , aby zapisać zmiany.
 
-    ![Edytowanie sterty Java NameNode size1](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit.png)
+    ![Edytowanie sterty Java NameNode size1](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit1.png)
 
 1. Rozmiar sterty Java NameNode jest zmieniany na 1 GB z 2 GB.
 
@@ -57,7 +57,7 @@ Aby zmodyfikować rozmiar sterty języka Java NameNode:
 
 1. Zapisz zmiany, klikając zielony przycisk **Zapisz** znajdujący się u góry ekranu konfiguracja.
 
-    ![Zapisz zmiany](./media/hdinsight-changing-configs-via-ambari/save-changes.png)
+    ![Zapisz zmiany](./media/hdinsight-changing-configs-via-ambari/ambari-save-changes1.png)
 
 ## <a name="apache-hive-optimization"></a>Optymalizacja Apache Hive
 
@@ -72,11 +72,11 @@ Program Hive zawiera dwa aparaty wykonywania: [Apache Hadoop MapReduce](https://
 
 1. Na **karcie konfiguracje** programu Hive wpisz **aparat wykonywania** w polu Filtr.
 
-    ![Aparat wykonywania wyszukiwania](./media/hdinsight-changing-configs-via-ambari/search-execution.png)
+    ![Aparat wykonywania wyszukiwania](./media/hdinsight-changing-configs-via-ambari/ambari-search-execution.png)
 
 1. Wartość domyślna właściwości **optymalizacji** to **tez**.
 
-    ![Optymalizacja — tez](./media/hdinsight-changing-configs-via-ambari/optimization-tez.png)
+    ![Optymalizacja — tez](./media/hdinsight-changing-configs-via-ambari/optimization-apache-tez.png)
 
 ### <a name="tune-mappers"></a>Dostrajaj mapowania
 
@@ -93,7 +93,7 @@ Na przykład, aby ustawić cztery zadania mapowania dla rozmiaru danych 128 MB, 
 
 1. Ustaw oba parametry na **33 554 432** bajtów (32 MB).
 
-    ![Rozmiary grupowania tez](./media/hdinsight-changing-configs-via-ambari/tez-grouping-size.png)
+    ![Rozmiary grupowania tez](./media/hdinsight-changing-configs-via-ambari/apache-tez-grouping-size.png)
  
 Te zmiany wpływają na wszystkie zadania tez na serwerze. Aby uzyskać optymalny wynik, wybierz odpowiednie wartości parametrów.
 
@@ -109,7 +109,7 @@ W przypadku ustawień domyślnych ten przykład dotyczy 4 obniżyć.
 
 1. Aby zmodyfikować parametr, przejdź **do karty konfiguracje** programu Hive i Znajdź na stronie Ustawienia parametr **dane dla ograniczenia** .
 
-    ![Dane na zmniejszenie](./media/hdinsight-changing-configs-via-ambari/data-per-reducer.png)
+    ![Dane na zmniejszenie](./media/hdinsight-changing-configs-via-ambari/ambari-data-per-reducer.png)
  
 1. Wybierz pozycję **Edytuj** , aby zmodyfikować wartość na 128 MB (134 217 728 bajtów), a następnie naciśnij klawisz **Enter** , aby zapisać.
 
@@ -127,7 +127,7 @@ Zapytanie programu Hive jest wykonywane w jednym lub kilku etapach. Jeśli nieza
  
 1.  Aby ograniczyć liczbę zadań, które mają być uruchamiane równolegle, należy zmodyfikować `hive.exec.parallel.thread.number` właściwość. Wartość domyślna to 8.
 
-    ![Programu Hive exec Parallel](./media/hdinsight-changing-configs-via-ambari/hive-exec-parallel.png)
+    ![Programu Hive exec Parallel](./media/hdinsight-changing-configs-via-ambari/apache-hive-exec-parallel.png)
 
 
 ### <a name="enable-vectorization"></a>Włącz wektoryzacji
@@ -146,7 +146,7 @@ Domyślnie gałąź jest zgodna z zestawem reguł, aby znaleźć jeden optymalny
 
 Aby włączyć usługi CBO, przejdź **do karty konfiguracje** programu Hive i Wyszukaj `parameter hive.cbo.enable`, a następnie Przełącz przycisk przełączania na pozycję **włączone**.
 
-![Konfiguracja CBO](./media/hdinsight-changing-configs-via-ambari/cbo.png)
+![Konfiguracja CBO](./media/hdinsight-changing-configs-via-ambari/hdinsight-cbo-config.png)
 
 Następujące dodatkowe parametry konfiguracji zwiększają wydajność zapytań Hive, gdy jest włączony CBO:
 
@@ -373,7 +373,7 @@ Rozmiar sterty HBase określa maksymalną ilość sterty, która ma być używan
 
 1. Zmień wartość domyślną na 5 000 MB.
 
-    ![HBASE_HEAPSIZE](./media/hdinsight-changing-configs-via-ambari/hbase-heapsize.png)
+    ![HBASE_HEAPSIZE](./media/hdinsight-changing-configs-via-ambari/ambari-hbase-heapsize.png)
 
 
 ### <a name="optimize-read-heavy-workloads"></a>Optymalizowanie obciążeń z dużą ilością odczytu

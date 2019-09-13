@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: c42e70efc8543e1d255690070ffb51b865e1754f
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: b571ba8d259a5e3b3b049ad66d4718e9e85d488b
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608580"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931269"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Zagadnienia dotyczące zabezpieczeń dotyczące przenoszenia danych w Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -59,7 +59,7 @@ W tym artykule opisano zagadnienia dotyczące zabezpieczeń w następujących dw
 
 ### <a name="securing-data-store-credentials"></a>Zabezpieczanie poświadczeń magazynu danych
 
-- **Przechowuj poświadczenia zaszyfrowane w magazynie zarządzanym Azure Data Factory**. Data Factory pomaga chronić poświadczenia magazynu danych przez szyfrowanie ich certyfikatami zarządzanymi przez firmę Microsoft. Te certyfikaty są obracane co dwa lata (co obejmuje odnowienie certyfikatu i migrację poświadczeń). Szyfrowane poświadczenia są bezpiecznie przechowywane na koncie usługi Azure Storage zarządzanym przez usługi Azure Data Factory Management Services. Aby uzyskać więcej informacji o zabezpieczeniach usługi Azure Storage, zobacz [Omówienie zabezpieczeń usługi Azure Storage](../security/fundamentals/storage-overview.md).
+- **Przechowuj poświadczenia zaszyfrowane w magazynie zarządzanym Azure Data Factory**. Data Factory pomaga chronić poświadczenia magazynu danych przez szyfrowanie ich certyfikatami zarządzanymi przez firmę Microsoft. Te certyfikaty są obracane co dwa lata (co obejmuje odnowienie certyfikatu i migrację poświadczeń). Aby uzyskać więcej informacji o zabezpieczeniach usługi Azure Storage, zobacz [Omówienie zabezpieczeń usługi Azure Storage](../security/fundamentals/storage-overview.md).
 - **Przechowuj poświadczenia w Azure Key Vault**. Możesz również przechowywać poświadczenia magazynu danych w [Azure Key Vault](https://azure.microsoft.com/services/key-vault/). Data Factory Pobiera poświadczenia podczas wykonywania działania. Aby uzyskać więcej informacji, zobacz [przechowywanie poświadczeń w Azure Key Vault](store-credentials-in-key-vault.md).
 
 ### <a name="data-encryption-in-transit"></a>Szyfrowanie danych podczas przesyłania
@@ -108,14 +108,15 @@ Scenariusze hybrydowe wymagają, aby środowisko Integration Runtime było insta
 Kanał polecenia umożliwia komunikację między usługami przenoszenia danych w ramach Data Factory i samodzielnego środowiska Integration Runtime. Komunikacja zawiera informacje związane z działaniem. Kanał danych służy do przesyłania danych między lokalnymi magazynami danych i magazynami danych w chmurze.    
 
 ### <a name="on-premises-data-store-credentials"></a>Poświadczenia lokalnego magazynu danych
-Poświadczenia lokalnych magazynów danych są zawsze szyfrowane i przechowywane. Mogą być przechowywane lokalnie na własnym komputerze Integration Runtime lub przechowywane w Azure Data Factory zarządzanym magazynie (podobnie jak poświadczenia sklepu w chmurze). 
+Poświadczenia mogą być przechowywane w usłudze Fabryka danych lub [odwoływać się do nich przez fabrykę danych](store-credentials-in-key-vault.md) podczas środowiska uruchomieniowego z Azure Key Vault. W przypadku przechowywania poświadczeń w usłudze Fabryka danych są one zawsze przechowywane w postaci zaszyfrowanej w ramach własnego środowiska Integration Runtime. 
+ 
+- **Przechowuj poświadczenia lokalnie**. Jeśli bezpośrednio używasz polecenia cmdlet **Set-AzDataFactoryV2LinkedService** z parametrami połączenia i poświadczeniami wbudowanymi w kod JSON, połączona usługa jest zaszyfrowana i zapisywana w środowisku Integration Runtime.  W takim przypadku poświadczenia są przesyłane za pomocą usługi zaplecza platformy Azure, która jest ostatecznie zabezpieczona, do samodzielnej maszyny integracyjnej, w której jest na koniec Encrpted i przechowywana. Własne środowisko Integration runtime używa funkcji [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) systemu Windows do szyfrowania poufnych danych i informacji o poświadczeniach.
 
-- **Przechowuj poświadczenia lokalnie**. Jeśli chcesz zaszyfrować i przechowywać poświadczenia lokalnie w środowisku Integration Runtime (własne środowisko), wykonaj kroki opisane w temacie [szyfrowanie poświadczeń dla lokalnych magazynów danych w Azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md). Wszystkie łączniki obsługują tę opcję. Własne środowisko Integration runtime używa funkcji [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) systemu Windows do szyfrowania poufnych danych i informacji o poświadczeniach. 
+- **Przechowuj poświadczenia w Azure Key Vault**. Możesz również przechowywać poświadczenia magazynu danych w [Azure Key Vault](https://azure.microsoft.com/services/key-vault/). Data Factory Pobiera poświadczenia podczas wykonywania działania. Aby uzyskać więcej informacji, zobacz [przechowywanie poświadczeń w Azure Key Vault](store-credentials-in-key-vault.md).
+
+- **Przechowuj poświadczenia lokalnie bez przekazywania poświadczeń za pomocą zaplecza platformy Azure do własnego środowiska Integration Runtime**. Jeśli chcesz zaszyfrować i przechowywać poświadczenia lokalnie w środowisku środowiska Integration Runtime (samodzielne) bez konieczności przekazywania poświadczeń za pomocą zaplecza usługi Data Factory, wykonaj kroki opisane w temacie [szyfrowanie poświadczeń dla lokalnych magazynów danych w Azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md). Wszystkie łączniki obsługują tę opcję. Własne środowisko Integration runtime używa funkcji [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) systemu Windows do szyfrowania poufnych danych i informacji o poświadczeniach. 
 
    Użyj polecenia cmdlet **New-AzDataFactoryV2LinkedServiceEncryptedCredential** , aby zaszyfrować poświadczenia połączonej usługi i szczegółowe informacje poufne w połączonej usłudze. Następnie można użyć zwróconego JSON (z elementem **EncryptedCredential** w parametrach połączenia), aby utworzyć połączoną usługę za pomocą polecenia cmdlet **Set-AzDataFactoryV2LinkedService** .  
-
-- **Magazyn w magazynie zarządzanym Azure Data Factory**. Jeśli bezpośrednio używasz polecenia cmdlet **Set-AzDataFactoryV2LinkedService** z parametrami połączenia i poświadczeniami wbudowanymi w dane JSON, połączona usługa jest zaszyfrowana i przechowywana w Azure Data Factory zarządzanym magazynie. Informacje poufne są nadal szyfrowane przez certyfikat, a firma Microsoft zarządza tymi certyfikatami.
-
 
 
 #### <a name="ports-used-when-encrypting-linked-service-on-self-hosted-integration-runtime"></a>Porty używane podczas szyfrowania połączonej usługi w ramach własnego środowiska Integration Runtime
@@ -137,9 +138,9 @@ Poniższa tabela zawiera podsumowanie zaleceń dotyczących sieci i samodzielneg
 
 | Source      | Miejsce docelowe                              | Konfiguracja sieci                    | Instalacja środowiska Integration Runtime                |
 | ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Lokalne | Maszyny wirtualne i usługi w chmurze wdrożone w sieciach wirtualnych | IPSec sieci VPN (punkt-lokacja lub lokacja-lokacja) | Własne środowisko Integration Runtime należy zainstalować na maszynie wirtualnej platformy Azure w sieci wirtualnej.  |
-| Lokalne | Maszyny wirtualne i usługi w chmurze wdrożone w sieciach wirtualnych | ExpressRoute (prywatna Komunikacja równorzędna)           | Własne środowisko Integration Runtime należy zainstalować na maszynie wirtualnej platformy Azure w sieci wirtualnej.  |
-| Lokalne | Usługi oparte na platformie Azure, które mają publiczny punkt końcowy | ExpressRoute (Komunikacja równorzędna firmy Microsoft)            | Własne środowisko Integration runtime można zainstalować lokalnie lub na maszynie wirtualnej platformy Azure. |
+| Lokalnie | Maszyny wirtualne i usługi w chmurze wdrożone w sieciach wirtualnych | IPSec sieci VPN (punkt-lokacja lub lokacja-lokacja) | Własne środowisko Integration Runtime należy zainstalować na maszynie wirtualnej platformy Azure w sieci wirtualnej.  |
+| Lokalnie | Maszyny wirtualne i usługi w chmurze wdrożone w sieciach wirtualnych | ExpressRoute (prywatna Komunikacja równorzędna)           | Własne środowisko Integration Runtime należy zainstalować na maszynie wirtualnej platformy Azure w sieci wirtualnej.  |
+| Lokalnie | Usługi oparte na platformie Azure, które mają publiczny punkt końcowy | ExpressRoute (Komunikacja równorzędna firmy Microsoft)            | Własne środowisko Integration runtime można zainstalować lokalnie lub na maszynie wirtualnej platformy Azure. |
 
 Na poniższych ilustracjach przedstawiono użycie własnego środowiska Integration Runtime do przeniesienia danych między lokalną bazą danych i usługami platformy Azure przy użyciu ExpressRoute i sieci VPN IPSec (z usługą Azure Virtual Network):
 

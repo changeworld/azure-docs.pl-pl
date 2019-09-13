@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: ffc6ea447ae90649be0455abbed6245c078e518d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 18031400155b92f243877ae8c8d7a56e1d5295a0
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596346"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933645"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Wybieranie i wdrażanie agenta zabezpieczeń na urządzeniu IoT
 
@@ -52,9 +52,9 @@ Agent zabezpieczeń oparty na języku C ma mniejszą ilość pamięci i jest ide
 | Miejsce na dysku | 10,5 MB | 90 MB |
 | Rozmiar pamięci (średnio) | 5,5 MB | 33 MB |
 | [Uwierzytelnianie](concept-security-agent-authentication-methods.md) do IoT Hub | Tak | Tak |
-| [Zbieranie](how-to-agent-configuration.md#supported-security-events) danych zabezpieczeń | Tak | Yes |
+| [Zbieranie](how-to-agent-configuration.md#supported-security-events) danych zabezpieczeń | Tak | Tak |
 | Agregacja zdarzeń | Tak | Tak |
-| Konfiguracja zdalna za poorednictwem [sznurka modułu zabezpieczeń](concept-security-module.md) | Tak | Yes |
+| Konfiguracja zdalna za poorednictwem [sznurka modułu zabezpieczeń](concept-security-module.md) | Tak | Tak |
 |
 
 ## <a name="security-agent-installation-guidelines"></a>Wskazówki dotyczące instalacji agenta zabezpieczeń
@@ -78,7 +78,7 @@ Aby wybrać odpowiedniego agenta, Odpowiedz na następujące pytania dotyczące 
 
 - Czy używasz dystrybucji systemu Linux z architekturą x64?
 
-    Można użyć dowolnego z nich. <br>
+    Można używać obu rodzajów agentów. <br>
     [Wdróż agenta zabezpieczeń opartego na języku C dla systemu Linux](how-to-deploy-linux-c.md) i/lub [Wdróż C#agenta zabezpieczeń opartego](how-to-deploy-linux-cs.md)na systemie Linux.
 
 Oba typy agentów oferują ten sam zestaw funkcji i obsługują podobne opcje konfiguracji.
@@ -97,7 +97,7 @@ Poniższa lista zawiera wszystkie aktualnie obsługiwane platformy.
 |C#|Ubuntu 18.04    |x64|
 |C#|Debian 9    |x64|
 |C#|Windows Server 2016|    X64|
-|C#|Kompilacja systemu Windows 10 IoT Core 17763 |x64|
+|C#|Windows 10 IoT Core, kompilacja 17763    |x64|
 |
 
 ## <a name="next-steps"></a>Następne kroki

@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 12/04/2018
-ms.openlocfilehash: 48cde2f96083779bdeb13ba5f39b68c18b395045
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 9e398fd7d370d30fac87035b27a218834b4fab22
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515363"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899716"
 ---
 # <a name="business-critical-tier---azure-sql-database"></a>Warstwa Krytyczne dla działania firmy — Azure SQL Database
 
@@ -45,6 +45,17 @@ Ponadto klaster Krytyczne dla działania firmy ma wbudowaną funkcję [odczytu](
 ## <a name="when-to-choose-this-service-tier"></a>Kiedy należy wybrać tę warstwę usług?
 
 Krytyczne dla działania firmy warstwa usług została zaprojektowana dla aplikacji, które wymagają odpowiedzi o małym opóźnieniu z bazowego magazynu SSD (średnio 1-2 ms), szybkiego odzyskiwania w przypadku awarii infrastruktury podstawowej lub konieczności wyłączania raportów, analiz i tylko do odczytu. wykonuje zapytania dotyczące bezpłatnej repliki pomocniczej do odzyskania podstawowej bazy danych.
+
+Najważniejsze przyczyny wyboru Krytyczne dla działania firmy warstwy usług zamiast warstwy Ogólnego przeznaczenia są następujące:
+-   Niskie wymagania dotyczące opóźnień we/wy — obciążenie wymagające szybkiej odpowiedzi z warstwy magazynowania (średnia 1-2 milisekund) powinno korzystać z warstwy Krytyczne dla działania firmy. 
+-   Częsta komunikacja między aplikacjami i bazami danych. Aplikacja, która nie może korzystać z buforowania warstwy aplikacji lub [żądania wsadowego](sql-database-use-batching-to-improve-performance.md) i musi wysyłać wiele zapytań SQL, które muszą być szybko przetwarzane, są dobrym kandydatami do warstwy krytyczne dla działania firmy.
+-   Duża liczba aktualizacji — operacje INSERT, Update i DELETE modyfikują strony danych w pamięci (zanieczyszczoną stronę), które muszą zostać zapisane w plikach danych z `CHECKPOINT` operacją. Potencjalna awaria procesu aparatu bazy danych lub przełączenia w tryb failover bazy danych z dużą liczbą zanieczyszczonych stron może zwiększyć czas odzyskiwania w warstwie Ogólnego przeznaczenia. Użyj warstwy Krytyczne dla działania firmy, jeśli masz obciążenie, które powoduje wiele zmian w pamięci. 
+-   Długotrwałe transakcje, które modyfikują dane. Transakcje, które są otwierane przez dłuższy czas, uniemożliwiają Obcinanie pliku dziennika, co może spowodować zwiększenie rozmiaru dziennika i liczby [wirtualnych plików dziennika (VLF)](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide#physical_arch). Duża liczba VLF może spowolnić odzyskiwanie bazy danych po przejściu do trybu failover.
+-   Obciążenie przy użyciu zapytań i raportów analitycznych, które można przekierować do bezpłatnej repliki tylko do odczytu.
+- Wyższa odporność i szybsze odzyskiwanie po awarii. W przypadku awarii systemu baza danych w wystąpieniu podstawowym zostanie wyłączona, a jedna z replik pomocniczych stanie się natychmiast nową podstawową bazą danych do odczytu i zapisu, która jest gotowa do przetwarzania zapytań. Aparat bazy danych nie musi analizować i ponawiać transakcji z pliku dziennika i ładować wszystkich danych w buforze pamięci.
+- Zaawansowana ochrona przed uszkodzeniem danych — warstwa Krytyczne dla działania firmy korzysta z replik bazy danych w tle w celu zapewnienia ciągłości działania, a więc usługa korzysta z automatycznej naprawy strony, która jest tą samą technologią, jak w przypadku bazy danych SQL Server Database. [dublowanie i grupy dostępności](https://docs.microsoft.com/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring). W przypadku, gdy replika nie może odczytać strony z powodu problemu z integralnością danych, Nowa kopia strony zostanie pobrana z innej repliki, zastępując nieczytelną stronę bez utraty danych lub przestoju klienta. Ta funkcja ma zastosowanie w warstwie Ogólnego przeznaczenia, jeśli baza danych ma replikę geograficzną.
+- Wyższa dostępność — warstwa Krytyczne dla działania firmy w ramach konfiguracji z obsługą wiele-AZ — zapewnia dostępność na 99,995% w porównaniu do 99,99% warstwy Ogólnego przeznaczenia.
+- Szybka replikacja geograficzna — warstwa Krytyczne dla działania firmy skonfigurowana z replikacją geograficzną ma gwarantowany cel punktu odzyskiwania (RPO) wynoszący 5 sekund i cel czasu odzyskiwania (RTO) wynoszący 30 sekund przez 100% czasu wdrożenia.
 
 ## <a name="next-steps"></a>Następne kroki
 

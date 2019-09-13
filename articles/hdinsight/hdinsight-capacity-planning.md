@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: 608d097f1ebad9e4e1092c7ec54a573ccb58ad81
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 64de4078fb529140859f1d4ff2e973fd081a5400
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734664"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916560"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Planowanie pojemności klastrów usługi HDInsight
 
@@ -96,9 +96,6 @@ Opłata jest naliczana za okres istnienia klastra. W przypadku wystąpienia tylk
 
 Czasami mogą wystąpić błędy spowodowane równoległym wykonywaniem wielu map i zmniejszeniem składników w klastrze z wieloma węzłami. Aby ułatwić wyizolowanie problemu, spróbuj przeprowadzić przeprowadzenie testów rozproszonych, uruchamiając współbieżne wiele zadań w klastrze węzłów procesu roboczego, a następnie rozwiń to podejście, aby jednocześnie uruchamiać wiele zadań w klastrach zawierających więcej niż jeden węzeł. Aby utworzyć klaster HDInsight z jednym węzłem na platformie Azure, użyj opcji *niestandardowe (rozmiar, ustawienia, aplikacje)* i użyj wartości 1 dla *liczby węzłów procesu roboczego* w sekcji **rozmiar klastra** podczas aprowizacji nowego klastra w portalu.
 
-Możesz również zainstalować Jednowęzłowe środowisko programistyczne na komputerze lokalnym i przetestować rozwiązanie w tym miejscu. Usługa Hortonworks zapewnia lokalne środowisko programistyczne na jednym węźle dla rozwiązań opartych na usłudze Hadoop, które są przydatne do wstępnego tworzenia, sprawdzania koncepcji i testowania. Aby uzyskać więcej informacji, zobacz [piaskownica Hortonworks](https://hortonworks.com/products/hortonworks-sandbox/).
-
-Aby zidentyfikować problem w klastrze lokalnym z jednym węzłem, można ponownie uruchomić zadania zakończone niepowodzeniem i dostosować dane wejściowe lub użyć mniejszych zestawów danych. Sposób uruchamiania tych zadań zależy od platformy i typu aplikacji.
 
 ## <a name="quotas"></a>Przydziały
 

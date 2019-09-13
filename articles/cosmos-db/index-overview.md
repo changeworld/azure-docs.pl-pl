@@ -4,18 +4,18 @@ description: Dowiedz się, jak indeksowanie działa w Azure Cosmos DB.
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 09/10/2019
 ms.author: thweiss
-ms.openlocfilehash: c8e21ea89f3e23709d636ab8af4716bff76d7217
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 4d961f8635a52a09011543b793ce8a87eaa4ea9e
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479284"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914194"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indeksowanie w Azure Cosmos DB — Omówienie
 
-Azure Cosmos DB to baza danych niezależny od schematu, która pozwala na iterację aplikacji bez konieczności rozwiązywania problemów z zarządzaniem schematami i indeksami. Domyślnie Azure Cosmos DB automatycznie indeksuje każdą właściwość dla wszystkich elementów w kontenerze [](databases-containers-items.md#azure-cosmos-containers) bez konieczności definiowania schematu lub konfigurowania indeksów pomocniczych.
+Azure Cosmos DB to baza danych niezależny od schematu, która pozwala na iterację aplikacji bez konieczności rozwiązywania problemów z zarządzaniem schematami i indeksami. Domyślnie Azure Cosmos DB automatycznie indeksuje każdą właściwość dla wszystkich elementów w [kontenerze](databases-containers-items.md#azure-cosmos-containers) bez konieczności definiowania schematu lub konfigurowania indeksów pomocniczych.
 
 Celem tego artykułu jest wyjaśnienie, jak Azure Cosmos DB indeksów danych i jak używa indeksów w celu zwiększenia wydajności zapytań. Zaleca się przechodzenie przez tę sekcję przed rozpoczęciem dostosowywania [zasad indeksowania](index-policy.md).
 
@@ -25,6 +25,7 @@ Za każdym razem, gdy element jest przechowywany w kontenerze, jego zawartość 
 
 Rozważmy na przykład ten element:
 
+```json
     {
         "locations": [
             { "country": "Germany", "city": "Berlin" },
@@ -36,6 +37,7 @@ Rozważmy na przykład ten element:
             { "city": "Athens" }
         ]
     }
+```
 
 Powinna być reprezentowana przez następujące drzewo:
 
@@ -70,13 +72,13 @@ Rodzaj indeksu **zakresu** jest używany dla:
 
     ```sql
    SELECT * FROM container c WHERE c.property = 'value'
-    ```
+   ```
 
 - Zapytania zakresu:
 
    ```sql
    SELECT * FROM container c WHERE c.property > 'value'
-   ``` 
+   ```
   (działa dla `>`, `<`, `>=` `<=`,, )`!=`
 
 - `ORDER BY`wybiera
@@ -93,7 +95,7 @@ Rodzaj indeksu **zakresu** jest używany dla:
 
 Indeksów zakresu można używać w przypadku wartości skalarnych (String lub Number).
 
-Rodzaj  indeksu przestrzennego jest używany dla:
+Rodzaj indeksu **przestrzennego** jest używany dla:
 
 - Zapytania dotyczące odległości geograficznej: 
 
@@ -107,15 +109,27 @@ Rodzaj  indeksu przestrzennego jest używany dla:
    SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })
    ```
 
-Indeksów przestrzennych można używać w poprawnie sformatowanych obiektach [GEOJSON](geospatial.md) . Punkty, LineStrings i wielokąty są obecnie obsługiwane.
+Indeksów przestrzennych można używać w poprawnie sformatowanych obiektach [GEOJSON](geospatial.md) . Punkty, LineStrings, wielokąty i wielowielokąty są obecnie obsługiwane.
 
-Typ  indeksu złożonego jest używany dla:
+Typ indeksu **złożonego** jest używany dla:
 
-- `ORDER BY`zapytania dotyczące wielu właściwości: 
+- `ORDER BY`zapytania dotyczące wielu właściwości:
 
-   ```sql
-   SELECT * FROM container c ORDER BY c.firstName, c.lastName
-   ```
+```sql
+ SELECT * FROM container c ORDER BY c.property1, c.property2
+```
+
+- Wykonuje zapytania z filtrem `ORDER BY`i. Te zapytania mogą korzystać z indeksu złożonego, jeśli do `ORDER BY` klauzuli zostanie dodana Właściwość Filter.
+
+```sql
+ SELECT * FROM container c WHERE c.property1 = 'value' ORDER BY c.property1, c.property2
+```
+
+- Wykonuje zapytania z filtrem dla dwóch lub więcej właściwości, w których co najmniej jedna właściwość jest filtrem równości
+
+```sql
+ SELECT * FROM container c WHERE c.property1 = 'value' AND c.property2 > 'value'
+```
 
 ## <a name="querying-with-indexes"></a>Wykonywanie zapytań przy użyciu indeksów
 
@@ -126,9 +140,9 @@ Rozważmy na przykład następujące zapytanie: `SELECT location FROM location I
 ![Dopasowanie określonej ścieżki w drzewie](./media/index-overview/matching-path.png)
 
 > [!NOTE]
-> Klauzula, która porządkuje według pojedynczej właściwości, zawsze wymaga indeksu zakresu i zakończy się niepowodzeniem, jeśli ścieżka, do której się odwołuje, nie ma takiej wartości.  `ORDER BY` Analogicznie, wiele `ORDER BY` zapytań *zawsze* wymaga indeksu złożonego.
+> Klauzula, która porządkuje według pojedynczej właściwości, zawsze wymaga indeksu zakresu i zakończy się niepowodzeniem, jeśli ścieżka, do której się odwołuje, nie ma takiej wartości. `ORDER BY` Podobnie, `ORDER BY` zapytanie, które porządkuje wiele właściwości, *zawsze* wymaga indeksu złożonego.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Przeczytaj więcej na temat indeksowania w następujących artykułach:
 

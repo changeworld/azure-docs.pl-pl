@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 483adcccff9f49b3335a453f43fc667dd4f0e61b
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 615a4c055980381771d3b63eba878846fd583cc9
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70171327"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883614"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>Szybki start: Tworzenie aplikacji Java na Azure App Service w systemie Windows
 
@@ -71,10 +71,10 @@ Następnie dodaj następującą definicję wtyczki w elemencie `<build>` pliku `
             <!-- Specify v2 schema -->
             <schemaVersion>v2</schemaVersion>
             <!-- App information -->
-            <subscriptionId>${SUBSCRIPTION_ID}</subscriptionId>
-            <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
-            <appName>${WEBAPP_NAME}</appName>
-            <region>${REGION}</region>
+            <subscriptionId>SUBSCRIPTION_ID</subscriptionId>
+            <resourceGroup>RESOURCEGROUP_NAME</resourceGroup>
+            <appName>WEBAPP_NAME</appName>
+            <region>REGION</region>
             <!-- Java Runtime Stack for App Service on Windows-->
             <runtime>
                 <os>windows</os>

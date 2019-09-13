@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: overview
 ms.date: 08/15/2019
-ms.openlocfilehash: 16845e5891117cc01bef5fae28cf4b36c0508651
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
-ms.translationtype: HT
+ms.openlocfilehash: 859e830483ac959f6f55ba27b5657779ac16d2fb
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899556"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934130"
 ---
 # <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>Co to jest Apache Hadoop w usłudze Azure HDInsight?
 
@@ -30,6 +30,10 @@ Apache Hadoop MapReduce jest platformą oprogramowania do pisania zadań, które
 * **Maper**: Wykorzystuje dane wejściowe, analizuje je (zazwyczaj przy użyciu operacji filtrowania i sortowania) i emituje krotki (pary klucz-wartość)
 
 * **Zmniejszenie**: Wykorzystuje krotki emitowane przez mapowanie i wykonuje operację podsumowującą, która tworzy mniejszy wynik połączony z danych mapowania
+
+Przykład podstawowego zadania MapReduce zliczania wyrazów przedstawiono na poniższym diagramie:   
+
+ ![HDI.WordCountDiagram](./media/apache-hadoop-introduction/hdi-word-count-diagram.gif)
 
 Dane wyjściowe tego zadania to liczba, ile razy każdy wyraz pojawił się w tekście.
 
@@ -55,5 +59,3 @@ Przykłady korzystania z przesyłania strumieniowego Hadoop za pomocą usługi H
 ## <a name="next-steps"></a>Następne kroki
 
 * [Tworzenie klastra Apache Hadoop w usłudze HDInsight](apache-hadoop-linux-create-cluster-get-started-portal.md)
-
-[image-hdi-wordcountdiagram]: ./media/hdinsight-use-mapreduce/HDI.WordCountDiagram.gif

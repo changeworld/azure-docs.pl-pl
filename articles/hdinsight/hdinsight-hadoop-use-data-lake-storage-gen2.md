@@ -7,12 +7,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: hrasheed
-ms.openlocfilehash: e06d6473a47dcff3506843150375c70ed2bd8cea
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
-ms.translationtype: MT
+ms.openlocfilehash: 40caabc08b08e4c9268bf60d588819ce81717986
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061823"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900272"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Używanie Azure Data Lake Storage Gen2 z klastrami usługi Azure HDInsight
 
@@ -33,19 +33,42 @@ Aby utworzyć klaster usługi HDInsight, który używa Data Lake Storage Gen2 dl
 
 ### <a name="create-a-user-assigned-managed-identity"></a>Tworzenie tożsamości zarządzanej przypisanej przez użytkownika
 
-Utwórz tożsamość zarządzaną przypisaną przez użytkownika, jeśli jeszcze jej nie masz. Zobacz [Tworzenie, wyświetlanie, usuwanie i przypisywanie roli do tożsamości zarządzanej przypisanej przez użytkownika przy użyciu Azure Portal](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity). Aby uzyskać więcej informacji na temat działania tożsamości zarządzanych w usłudze Azure HDInsight, zobacz [zarządzane tożsamości w usłudze Azure HDInsight](hdinsight-managed-identities.md).
+Utwórz tożsamość zarządzaną przypisaną przez użytkownika, jeśli jeszcze jej nie masz. 
+
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. W lewym górnym rogu kliknij pozycję **Utwórz zasób**.
+1. W polu wyszukiwania wpisz przypisane przez **użytkownika** , a następnie kliknij pozycję **tożsamość zarządzana przypisana przez użytkownika**.
+1. Kliknij przycisk **Utwórz**.
+1. Wprowadź nazwę tożsamości zarządzanej, wybierz odpowiednią subskrypcję, grupę zasobów i lokalizację.
+1. Kliknij przycisk **Utwórz**.
+
+Aby uzyskać więcej informacji na temat działania tożsamości zarządzanych w usłudze Azure HDInsight, zobacz [zarządzane tożsamości w usłudze Azure HDInsight](hdinsight-managed-identities.md).
 
 ![Tworzenie tożsamości zarządzanej przypisanej przez użytkownika](./media/hdinsight-hadoop-use-data-lake-storage-gen2/create-user-assigned-managed-identity-portal.png)
 
 ### <a name="create-a-data-lake-storage-gen2-account"></a>Utwórz konto Data Lake Storage Gen2
 
-Utwórz konto usługi Azure Data Lake Storage Gen2. Upewnij się, że jest włączona opcja **hierarchicznej przestrzeni nazw** . Aby uzyskać więcej informacji, zobacz temat [Szybki start: Utwórz konto](../storage/blobs/data-lake-storage-quickstart-create-account.md)magazynu Azure Data Lake Storage Gen2.
+Utwórz konto usługi Azure Data Lake Storage Gen2. 
+
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. W lewym górnym rogu kliknij pozycję **Utwórz zasób**.
+1. W polu wyszukiwania wpisz **Storage** i kliknij pozycję **konto magazynu**.
+1. Kliknij przycisk **Utwórz**.
+1. Na ekranie **Tworzenie konta magazynu** :
+    1. Wybierz prawidłową subskrypcję i grupę zasobów.
+    1. Wprowadź nazwę konta Data Lake Storage Gen2. Aby uzyskać więcej informacji o nazewnictwie kont magazynu convetions, zobacz [konwencje nazewnictwa dla zasobów platformy Azure](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#storage).
+    1. Kliknij kartę **Zaawansowane** .
+    1. Kliknij pozycję **włączone** obok **hierarchicznej przestrzeni nazw** w obszarze **Data Lake Storage Gen2**.
+    1. Kliknij pozycję **Przegląd + utwórz**.
+    1. Kliknij przycisk **Utwórz**.
+
+Aby uzyskać więcej informacji na temat innych opcji podczas tworzenia konta magazynu [, zobacz Szybki Start: Utwórz konto](../storage/blobs/data-lake-storage-quickstart-create-account.md)magazynu Azure Data Lake Storage Gen2.
 
 ![Zrzut ekranu przedstawiający tworzenie konta magazynu w Azure Portal](./media/hdinsight-hadoop-data-lake-storage-gen2/azure-data-lake-storage-account-create-advanced.png)
 
 ### <a name="set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account"></a>Skonfiguruj uprawnienia dla tożsamości zarządzanej na koncie Data Lake Storage Gen2
 
-Przypisz zarządzaną tożsamość do roli **właściciela danych obiektów blob magazynu** na koncie magazynu. Aby uzyskać więcej informacji, zobacz [Zarządzaj praw dostępu do danych obiektów Blob platformy Azure i kolejek przy użyciu RBAC (wersja zapoznawcza)](../storage/common/storage-auth-aad-rbac.md).
+Przypisz zarządzaną tożsamość do roli **właściciela danych obiektów blob magazynu** na koncie magazynu.
 
 1. W [Azure Portal](https://portal.azure.com)przejdź do konta magazynu.
 1. Wybierz konto magazynu, a następnie wybierz pozycję **Kontrola dostępu (IAM)** , aby wyświetlić ustawienia kontroli dostępu dla konta. Wybierz kartę **przypisania ról** , aby wyświetlić listę przypisań ról.

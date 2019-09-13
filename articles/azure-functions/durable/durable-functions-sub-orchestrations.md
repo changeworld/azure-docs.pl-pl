@@ -7,14 +7,14 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/07/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 868efad58e14fd817729f0aa9ac785bc0f960867
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 74f33a1ce1026424a6cdb97699223aeb5ff8277f
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087033"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933143"
 ---
 # <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Organizowanie podrzędne w Durable Functions (Azure Functions)
 
@@ -118,7 +118,10 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+> [!NOTE]
+> Podaranżacje muszą być zdefiniowane w tej samej aplikacji funkcji co w przypadku aranżacji nadrzędnej. Jeśli konieczne jest wywołanie i oczekiwanie na aranżację w innej aplikacji funkcji, należy rozważyć użycie wbudowanej obsługi interfejsów API protokołu HTTP i wzorca klienta sondowania HTTP 202. Aby uzyskać więcej informacji, zobacz temat [funkcje protokołu HTTP](durable-functions-http-features.md) .
+
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się, jakie centra zadań są i jak je skonfigurować](durable-functions-task-hubs.md)
+> [Dowiedz się, jak ustawić niestandardowy stan aranżacji](durable-functions-custom-orchestration-status.md)

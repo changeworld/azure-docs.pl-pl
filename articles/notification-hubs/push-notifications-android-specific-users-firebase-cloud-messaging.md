@@ -13,20 +13,20 @@ ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 05/01/2019
+ms.date: 09/11/2019
 ms.author: jowargo
-ms.openlocfilehash: 67df6c84c5a88a3ffc82948898e356e0a913ba27
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: cdd43f6892f1932803bb965897d4af8c4cab481e
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227790"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934123"
 ---
 # <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs"></a>Samouczek: wysyłanie powiadomień push do konkretnych użytkowników aplikacji systemu Android przy użyciu usługi Azure Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
-W tym samouczku pokazano, jak wysyłać powiadomienia push do użytkownika konkretnej aplikacji na konkretnym urządzeniu za pomocą usługi Azure Notification Hubs. Zaplecze ASP.NET interfejsu WebAPI jest używane do uwierzytelniania klientów oraz generowania powiadomień, jak pokazano w artykule ze wskazówkami [Rejestrowanie z poziomu zaplecza aplikacji](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend). Ten samouczek jest oparty na centrum powiadomień utworzonym w ramach artykułu [Samouczek: Wypychanie powiadomień do urządzeń z systemem Android przy użyciu usługi Azure Notification Hubs i Firebase Cloud Messaging](notification-hubs-android-push-notification-google-fcm-get-started.md).
+W tym samouczku pokazano, jak wysyłać powiadomienia push do użytkownika konkretnej aplikacji na konkretnym urządzeniu za pomocą usługi Azure Notification Hubs. Zaplecze ASP.NET interfejsu WebAPI jest używane do uwierzytelniania klientów oraz generowania powiadomień, jak pokazano w artykule ze wskazówkami [Rejestrowanie z poziomu zaplecza aplikacji](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend). Ten samouczek jest oparty na centrum powiadomień utworzonym w ramach artykułu [Samouczek: Powiadomienia wypychane do urządzeń z systemem Android przy użyciu usługi Azure Notification Hubs](notification-hubs-android-push-notification-google-fcm-get-started.md)i obsługi komunikatów w chmurze Firebase.
 
 W tym samouczku wykonasz następujące kroki:
 
@@ -37,13 +37,13 @@ W tym samouczku wykonasz następujące kroki:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Wykonaj kroki z artykułu [Samouczek: Wypychanie powiadomień do urządzeń z systemem Android przy użyciu usługi Azure Notification Hubs i Firebase Cloud Messaging](notification-hubs-android-push-notification-google-fcm-get-started.md) przed wykonaniem tego samouczka.
+Wykonaj kroki z artykułu [Samouczek: Powiadomienia wypychane do urządzeń z systemem Android przy użyciu usługi Azure Notification Hubs](notification-hubs-android-push-notification-google-fcm-get-started.md) i obsługi komunikatów w chmurze Firebase przed wykonaniem tego samouczka.
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
 ## <a name="create-the-android-project"></a>Tworzenie projektu systemu Android
 
-Kolejnym krokiem jest zaktualizowanie aplikacji systemu Android utworzonej w ramach artykułu [Samouczek: Wypychanie powiadomień do urządzeń z systemem Android przy użyciu usługi Azure Notification Hubs i Firebase Cloud Messaging](notification-hubs-android-push-notification-google-fcm-get-started.md).
+Kolejnym krokiem jest zaktualizowanie aplikacji systemu Android utworzonej w ramach artykułu [Samouczek: Powiadomienia wypychane do urządzeń z systemem Android przy użyciu usługi Azure Notification Hubs](notification-hubs-android-push-notification-google-fcm-get-started.md)i obsługi komunikatów w chmurze Firebase.
 
 1. Otwórz plik `res/layout/activity_main.xml` i zastąp następujące definicje zawartości:
 
@@ -258,8 +258,8 @@ Kolejnym krokiem jest zaktualizowanie aplikacji systemu Android utworzonej w ram
     }
     ```
 
-    Ten składnik implementuje wywołania REST wymagane do kontaktowania się z zapleczem aplikacji do rejestracji powiadomień wypychanych. Ponadto zapisuje lokalnie identyfikatory *registrationId* utworzone przez centrum powiadomień zgodnie z opisem w sekcji [Rejestrowanie z poziomu zaplecza aplikacji](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend). Używa ona token autoryzacji przechowywanych w magazynie lokalnym, po kliknięciu **Zaloguj** przycisku.
-4. W swojej `MainActivity` klasy, a następnie dodaj pole dla `RegisterClient` klasy i parametry dla punktu końcowego zaplecza ASP.NET. Pamiętaj, aby zastąpić ciąg `<Enter Your Backend Endpoint>` wcześniej pozyskanym, faktycznym punktem końcowym zaplecza. Na przykład `http://mybackend.azurewebsites.net`.
+    Ten składnik implementuje wywołania REST wymagane do skontaktowania się z zapleczem aplikacji w celu zarejestrowania powiadomień wypychanych. Ponadto zapisuje lokalnie identyfikatory *registrationId* utworzone przez centrum powiadomień zgodnie z opisem w sekcji [Rejestrowanie z poziomu zaplecza aplikacji](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend). Używa tokenu autoryzacji przechowywanego w magazynie lokalnym po kliknięciu przycisku **Zaloguj** .
+4. W klasie i Dodaj pole `RegisterClient` dla klasy i ciąg dla punktu końcowego zaplecza usługi ASP.NET. `MainActivity` Pamiętaj, aby zastąpić ciąg `<Enter Your Backend Endpoint>` wcześniej pozyskanym, faktycznym punktem końcowym zaplecza. Na przykład `http://mybackend.azurewebsites.net`.
 
     ```java
     private RegisterClient registerClient;
@@ -320,7 +320,7 @@ Kolejnym krokiem jest zaktualizowanie aplikacji systemu Android utworzonej w ram
     Button sendPush = (Button) findViewById(R.id.sendbutton);
     sendPush.setEnabled(false);
     ```
-9. Następnie należy dodać następujące metody umożliwiające obsługę **Zaloguj** kliknięcia przycisku zdarzeń i wysyłania powiadomień wypychanych.
+9. Następnie Dodaj następujące metody, aby obsłużyć przycisk **Zaloguj się** i wysyłać powiadomienia wypychane.
 
     ```java
     public void login(View view) throws UnsupportedEncodingException {
@@ -410,7 +410,7 @@ Kolejnym krokiem jest zaktualizowanie aplikacji systemu Android utworzonej w ram
     }
     ```
 
-    `login` Obsługa **Zaloguj** przycisk generuje uwierzytelnienie podstawowe tokenu przy użyciu na wprowadzania nazwy użytkownika i hasło (reprezentuje dowolny token wykorzystuje schemat uwierzytelniania), a następnie używa `RegisterClient` do wywołania zaplecze dla rejestracji.
+    Program obsługi przycisku **logowania** generuje podstawowy token uwierzytelniania przy użyciu nazwy użytkownika i hasła wejściowego (reprezentuje dowolny token używany przez schemat uwierzytelniania), a następnie używa `RegisterClient` do wywoływania zaplecza na potrzeby rejestracji `login` .
 
     Metoda `sendPush` wywołuje zaplecze, aby wyzwolić bezpieczne powiadomienie do użytkownika w oparciu o tag użytkownika. Docelowa usługa powiadomień platformy dla metody `sendPush` zależy od przekazanego ciągu `pns`.
 
@@ -470,13 +470,20 @@ Kolejnym krokiem jest zaktualizowanie aplikacji systemu Android utworzonej w ram
     ```java
     useLibrary 'org.apache.http.legacy'
     ```
-13. Skompiluj projekt.
+13. Jeśli aplikacja jest ukierunkowana na poziom interfejsu API 28 (Android 9,0) lub nowszego, Dołącz następującą deklarację w `AndroidManifest.xml`obrębie `<application>` elementu.
+
+    ```xml
+    <uses-library
+        android:name="org.apache.http.legacy"
+        android:required="false" />
+    ```
+14. Skompiluj projekt.
 
 ## <a name="test-the-app"></a>Testowanie aplikacji
 
 1. Uruchom aplikację na urządzeniu lub emulatorze przy użyciu programu Android Studio.
 2. W aplikacji systemu Android wprowadź nazwę użytkownika i hasło. Oba muszą być taką samą wartością ciągu i nie mogą zawierać spacji ani znaków specjalnych.
-3. W aplikacji dla systemu Android, kliknij przycisk **Zaloguj**. Poczekaj, aż komunikat wyskakujące **podpisany, a następnie zarejestrowany**. Spowoduje to włączenie przycisku **Send Notification** (Wyślij powiadomienie).
+3. W aplikacji systemu Android kliknij przycisk **Zaloguj**. Poczekaj na wyskakujący komunikat informujący o zarejestrowaniu **i zarejestrowaniu**. Spowoduje to włączenie przycisku **Send Notification** (Wyślij powiadomienie).
 
     ![][A2]
 4. Kliknij przyciski przełączania, aby włączyć wszystkie platformy, na których uruchomiono aplikację i zarejestrowano użytkownika.

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c06cd53e408ebcae24de487fe1d4d25e14aae11b
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 0dd5ede110255b6e53bbc397e683e66b3beffc65
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240709"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910544"
 ---
 # <a name="connect-from-on-premises-to-cloudsimple-using-expressroute"></a>Nawiązywanie połączenia z poziomu lokalnego z CloudSimple za pomocą ExpressRoute
 
@@ -32,7 +32,7 @@ Do ustanowienia połączenia Global Reach z lokalnego programu jest wymagany blo
 
 ## <a name="scenarios"></a>Scenariusze
 
-Połączenie sieci lokalnej z siecią prywatną w chmurze umożliwia korzystanie z chmury prywatnej na różne sposoby, w tym następujące:
+Połączenie sieci lokalnej z siecią prywatną w chmurze umożliwia korzystanie z chmury prywatnej na różne sposoby, w tym w następujących scenariuszach:
 
 * Uzyskaj dostęp do sieci prywatnej chmury bez tworzenia połączenia sieci VPN typu lokacja-lokacja.
 * Użyj lokalnego Active Directory jako źródła tożsamości w chmurze prywatnej.
@@ -43,6 +43,7 @@ Połączenie sieci lokalnej z siecią prywatną w chmurze umożliwia korzystanie
 ## <a name="connecting-expressroute-circuits"></a>Łączenie obwodów usługi ExpressRoute
 
 Aby nawiązać połączenie z usługą ExpressRoute, należy utworzyć autoryzację w obwodzie usługi ExpressRoute i podać informacje o autoryzacji do CloudSimple.
+
 
 ### <a name="create-expressroute-authorization"></a>Utwórz autoryzację ExpressRoute
 
@@ -70,6 +71,11 @@ Aby nawiązać połączenie z usługą ExpressRoute, należy utworzyć autoryzac
     * Podtyp problemu: **Utwórz połączenie ExpressRoute z lokalną usługą**
     * Podaj identyfikator zasobu i klucz autoryzacji, które zostały skopiowane i zapisane w okienku szczegółów.
     * Podaj/29 przestrzeń adresową sieci dla sieci tranzytowej.
+    * Czy wysyłasz domyślną trasę za poorednictwem ExpressRoute?
+    * Czy ruch w chmurze prywatnej ma używać trasy domyślnej wysyłanej za pomocą usługi ExpressRoute?
+
+    > [!IMPORTANT]
+    > Wysyłanie trasy domyślnej pozwala wysyłać cały ruch internetowy z chmury prywatnej przy użyciu lokalnego połączenia internetowego.  Aby wyłączyć domyślną trasę skonfigurowaną w chmurze prywatnej i korzystać z domyślnej trasy połączenia lokalnego, podaj szczegóły w bilet pomocy technicznej.
 
 ## <a name="next-steps"></a>Następne kroki
 

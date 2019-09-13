@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: snehaa
-ms.openlocfilehash: 46c6ac52e1afb6c1619b814580a1059fd3dfedda
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: ec4cb58692cd98a799f1dc58f60b11a0552829c8
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279501"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934917"
 ---
 # <a name="azure-migrate-frequently-asked-questions-faq"></a>Azure Migrate: Często zadawane pytania
 
@@ -26,6 +26,37 @@ Zobacz [listę dla programu VMware](https://docs.microsoft.com/azure/migrate/mig
 ### <a name="whats-the-difference-between-azure-migrate-and-azure-site-recovery"></a>Jaka jest różnica między Azure Migrate i Azure Site Recovery?
 
 Azure Migrate udostępnia scentralizowane centrum umożliwiające rozpoczęcie migracji, wykonanie i śledzenie odnajdywania i oceny maszyn oraz obciążeń oraz wykonywanie i śledzenie migracji maszyn i obciążeń na platformę Azure. [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure) to rozwiązanie odzyskiwania po awarii. Migracja serwera Azure Migrate używa Azure Site Recovery w zapleczu, aby umożliwić migrację do migracji na maszynach lokalnych.
+
+### <a name="how-do-i-delete-an-azure-migrate-project"></a>Jak mogę usunąć projekt Azure Migrate
+
+Aby usunąć projekt Azure Migrate i powiązane z nim zasoby, w tym lokacje, magazyny usługi Recovery Services, Migruj magazyny, magazyny kluczy, projekty oceny itp., przejdź do strony "grupy zasobów" na Azure Portal, wybierz grupę zasobów, w której projekt migracji został utworzony i wybierz pozycję "Pokaż ukryte typy". Następnie wybierz pozycję Migruj projekt i skojarzone z nią zasoby wymienione poniżej i usuń je. Alternatywnie, jeśli grupa zasobów jest używana wyłącznie przez projekt migracji i skojarzone z nią zasoby, można usunąć całą grupę zasobów. Należy pamiętać, że ta lista jest wyczerpującą listą wszystkich typów zasobów utworzonych dla wszystkich scenariuszy (odnajdywania, oceny i migracji). Zasoby, które zostały utworzone dla danego scenariusza, będą znajdować się w grupie zasobów.
+
+#### <a name="resources-created-for-discovered-assessed-or-migrated-servers-on-vmware-or-physical-servers-resource-type"></a>Zasoby utworzone dla odnalezionych, ocenionych lub zmigrowanych serwerów w oprogramowaniu VMware lub serwerach fizycznych [zasób (typ)]:
+
+- "Urządzeniename" kV (Magazyn kluczy)
+- Lokacja "OffAzure" (Microsoft./VMwareSites)
+- "ProjectName" (Microsoft. zmigrować/migrateprojects)
+- Projekt "ProjectName" (Microsoft. zmigrować/assessmentProjects)
+- "ProjectName" rsvault (magazyn Recovery Services)
+- "ProjectName"-MigrateVault-* (magazyn Recovery Services)
+- migrateappligwsa * (konto magazynu)
+- migrateapplilsa * (konto magazynu)
+- migrateapplicsa * (konto magazynu)
+- migrateapplikv * (Magazyn kluczy)
+- migrateapplisbns16041 (Service Bus przestrzeń nazw)
+
+Uwaga: Usuń konta magazynu i magazyny kluczy z zachowaniem ostrożności, ponieważ mogą one zawierać odpowiednio dane aplikacji i klucze zabezpieczeń.
+
+#### <a name="resources-created-for-discovered-assessed-or-migrated-servers-on-hyper-v-resource-type"></a>Zasoby utworzone dla odnalezionych, ocenionych lub zmigrowanych serwerów w funkcji Hyper-V [zasób (typ)]:
+
+- "ProjectName" (Microsoft. zmigrować/migrateprojects)
+- Projekt "ProjectName" (Microsoft. zmigrować/assessmentProjects)
+- HyperV * kV (Magazyn kluczy)
+- Lokacja funkcji Hyper * (Microsoft. OffAzure/HyperVSites)
+- "ProjectName"-MigrateVault-* (magazyn Recovery Services) 
+
+Uwaga: Usuń Magazyn kluczy z zachowaniem ostrożności, ponieważ może on zawierać klucze zabezpieczeń.
+
 
 ## <a name="azure-migrate-appliance"></a>Urządzenie usługi Azure Migrate
 

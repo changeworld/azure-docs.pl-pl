@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: f7dce448b01c211441fd1e0fd530ff6ad062c303
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 08c1a8940bedb1093f618c8de53abc78f81c10dd
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114874"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918786"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Samouczek: Wdróż i skonfiguruj zaporę platformy Azure w sieci hybrydowej przy użyciu Azure Portal
 
@@ -86,7 +86,7 @@ Teraz Utwórz sieć wirtualną:
 
 1. Na stronie głównej Azure Portal wybierz pozycję **Utwórz zasób**.
 2. W obszarze **Sieć**wybierz pozycję **Sieć wirtualna**.
-4. W obszarze **Nazwa wpisz nazwę**koncentratora sieci **wirtualnej**.
+4. W obszarze **Nazwa wpisz nazwę** **koncentratora sieci wirtualnej**.
 5. W **polu przestrzeń adresowa**wpisz **10.5.0.0/16**.
 6. W polu **Subskrypcja** wybierz subskrypcję.
 7. W obszarze **Grupa zasobów**wybierz opcję **PD-hybrydowy-test**.
@@ -102,7 +102,7 @@ Teraz Utwórz sieć wirtualną:
 4. W obszarze **Nazwa**wpisz **VNET-szprych**.
 5. W **polu przestrzeń adresowa**wpisz **10.6.0.0/16**.
 6. W polu **Subskrypcja** wybierz subskrypcję.
-7. W obszarze **Grupa zasobów**wybierz pozycję **test-PD-RG**.
+7. W obszarze **Grupa zasobów**wybierz opcję **PD-hybrydowy-test**.
 8. W polu **Lokalizacja** wybierz tę samą lokalizację, która była używana poprzednio.
 9. W obszarze **Podsieć** w polu **Nazwa** wpisz **SN-Workload**.
 10. W obszarze **zakres adresów**wpisz **10.6.0.0/24**.
@@ -125,7 +125,7 @@ Teraz Utwórz drugą podsieć dla bramy.
 6. W polu **Subskrypcja** wybierz subskrypcję.
 7. W obszarze **Grupa zasobów**wybierz opcję **PD-hybrydowy-test**.
 8. W polu **Lokalizacja** wybierz tę samą lokalizację, która była używana poprzednio.
-9. Wobszarze podsieć w polu **Nazwa** wpisz **SN-Corp**.
+9. W obszarze **podsieć**w polu **Nazwa** wpisz **SN-Corp**.
 10. W polu **Zakres adresów** wpisz wartość **192.168.1.0/24**.
 11. Zaakceptuj inne ustawienia domyślne, a następnie wybierz pozycję **Utwórz**.
 
@@ -288,7 +288,7 @@ Teraz nawiąż komunikację równorzędną pomiędzy siecią wirtualną koncentr
 
 Należy włączyć **ruch przekierowany dalej** w komunikacji równorzędnej SpoketoHub.
 
-1. Otwórz grupę zasobów **PD-hybrydowy-test** i wybierz sieć wirtualną sieci wirtualnej.
+1. Otwórz grupę zasobów **PD-hybrydowy-test** i wybierz **sieć wirtualną sieci wirtualnej.**
 2. W lewej kolumnie Wybierz pozycję **Komunikacja równorzędna**.
 3. Wybierz komunikację równorzędną **SpoketoHub** .
 4. W obszarze **Zezwalaj na ruch przesłany z sieci wirtualnej do sieci wirtualnej — szprych**wybierz pozycję **włączone**.
@@ -369,7 +369,7 @@ Tworzenie maszyny wirtualnej w sieci wirtualnej szprych, uruchamianie usług IIS
 3. Wprowadź poniższe wartości dla maszyny wirtualnej:
     - **Grupa zasobów** — wybierz opcję **PD-hybrydowy-test**.
     - **Nazwa maszyny wirtualnej**: *VM-szprych-01*.
-    - Region — w tym samym regionie, który jest używany wcześniej.
+    - **Region — w** tym samym regionie, który jest używany wcześniej.
     - **Nazwa użytkownika**: *azureuser*.
     - **Hasło**: *Azure123456!*
 4. Wybierz pozycję **Dalej: Dyski**.
@@ -407,7 +407,7 @@ Jest to maszyna wirtualna, która jest używana do nawiązywania połączenia pr
 3. Wprowadź poniższe wartości dla maszyny wirtualnej:
     - **Grupa zasobów** — wybierz pozycję istniejące, a następnie wybierz pozycję **PD-hybrydowy-test**.
     - **Nazwa maszyny wirtualnej***VM-lokalnego.*  - 
-    - Region — w tym samym regionie, który jest używany wcześniej.
+    - **Region — w** tym samym regionie, który jest używany wcześniej.
     - **Nazwa użytkownika**: *azureuser*.
     - **Hasło**: *Azure123456!* .
 4. Wybierz pozycję **Dalej: Dyski**.

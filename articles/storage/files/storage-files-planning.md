@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4dfcde96957bb8fce3731e38eee62554795d795f
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 30842c787e2009b4919fef916f3c5e1f73a79bf2
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844878"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918815"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 
@@ -211,13 +211,16 @@ Standardowe udziały plików są dostępne we wszystkich regionach do 5 TiB. W n
 |Australia Wschodnia |LRS     |Nie    |Tak|
 |Australia Południowo-Wschodnia|LRS     |Nie    |Jeszcze nie|
 |Indie Środkowe  |LRS     |Nie    |Jeszcze nie|
+|East US        |LRS     |Nie    |Jeszcze nie|
 |Francja Środkowa |LRS, ZRS|Nie    |LRS — tak, ZRS — jeszcze nie|
 |Francja Południowa   |LRS     |Nie    |Tak|
 |Indie Południowe    |LRS     |Nie    |Jeszcze nie|
 |Azja Południowo-Wschodnia |LRS, ZRS|Nie    |Tak|
 |Środkowo-zachodnie stany USA|LRS     |Nie    |Jeszcze nie|
 |Europa Zachodnia    |LRS, ZRS|Nie    |Tak|
+|Zachodnie stany USA        |LRS     |Nie    |Jeszcze nie|
 |Zachodnie stany USA 2      |LRS, ZRS|Nie    |Tak|
+
 
 \* W przypadku regionów bez obsługi portalu można nadal używać programu PowerShell lub interfejsu wiersza polecenia platformy Azure do tworzenia większych udziałów TiB. Alternatywnie możesz utworzyć nowy udział za pośrednictwem portalu bez określania limitu przydziału. Spowoduje to utworzenie udziału o domyślnym rozmiarze 100 TiB, który można później zaktualizować za pomocą programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
 

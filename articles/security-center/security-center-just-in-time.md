@@ -2,31 +2,25 @@
 title: Dostęp do maszyny wirtualnej just in Time w Azure Security Center | Microsoft Docs
 description: W tym dokumencie pokazano, jak dostęp just in Time do maszyny wirtualnej w Azure Security Center pomaga kontrolować dostęp do maszyn wirtualnych platformy Azure.
 services: security-center
-documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
-ms.assetid: 671930b1-fc84-4ae2-bf7c-d34ea37ec5c7
+author: memildin
+manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 8/20/2019
-ms.author: v-mohabe
-ms.openlocfilehash: f3e6cc0464c8f395db7cac0ebf8a16230f5ebcbe
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.date: 09/10/2019
+ms.author: memildin
+ms.openlocfilehash: 9948f4d9e6287530004b073adf10bb723899e96d
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872928"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910606"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Zarządzanie dostępem do maszyny wirtualnej przy użyciu funkcji just in Time
 
 Dostęp do maszyn wirtualnych w czasie just-in-Time (JIT) może służyć do blokowania ruchu przychodzącego do maszyn wirtualnych platformy Azure, co pozwala ograniczyć narażenie na ataki, zapewniając łatwy dostęp do łączenia się z maszynami wirtualnymi w razie potrzeby.
 
 > [!NOTE]
-> Funkcja just in time jest dostępna w warstwie Standardowa Security Center.  Zobacz [cennik](security-center-pricing.md), aby dowiedzieć się więcej na temat warstw cenowych usługi Security Center.
+> Funkcja just in time jest dostępna w warstwie Standardowa Security Center. Zobacz [cennik](security-center-pricing.md), aby dowiedzieć się więcej na temat warstw cenowych usługi Security Center.
 
 
 > [!NOTE]
@@ -36,7 +30,7 @@ Dostęp do maszyn wirtualnych w czasie just-in-Time (JIT) może służyć do blo
 
 Bezprawne ataki są często docelowymi portami zarządzania jako środek do uzyskania dostępu do maszyny wirtualnej. Jeśli to się powiedzie, osoba atakująca może przejąć kontrolę nad maszyną wirtualną i ustanowić przyczółka w swoim środowisku.
 
-Jednym ze sposobów zmniejszenia narażenia na ataki z wykorzystaniem bezprawnego ataku jest ograniczenie czasu, przez który port jest otwarty. Porty zarządzania nie muszą być otwarte przez cały czas. Muszą być otwarte tylko wtedy, gdy nawiązano połączenie z maszyną wirtualną, np. aby wykonać zadania związane z zarządzaniem lub konserwacją. Gdy jest włączone just-in-Time, Security Center korzysta z zasad [sieciowych grup zabezpieczeń](../virtual-network/security-overview.md#security-rules) (sieciowej grupy zabezpieczeń) i zapory platformy Azure, które ograniczają dostęp do portów zarządzania, więc nie mogą być objęte przez osoby atakujące.
+Jednym ze sposobów zmniejszenia narażenia na ataki z wykorzystaniem bezprawnego ataku jest ograniczenie czasu, przez który port jest otwarty. Porty zarządzania nie muszą być otwarte przez cały czas. Muszą być otwarte tylko wtedy, gdy nastąpi połączenie z maszyną wirtualną, na przykład do wykonywania zadań zarządzania lub konserwacji. Gdy jest włączone just-in-Time, Security Center korzysta z zasad [sieciowych grup zabezpieczeń](../virtual-network/security-overview.md#security-rules) (sieciowej grupy zabezpieczeń) i zapory platformy Azure, które ograniczają dostęp do portów zarządzania, więc nie mogą być objęte przez osoby atakujące.
 
 ![Scenariusz just in Time](./media/security-center-just-in-time/just-in-time-scenario.png)
 
@@ -87,7 +81,7 @@ Z poziomu ASC można skonfigurować zasady JIT i zażądać dostępu do maszyny 
     **Dostęp just in Time do maszyny wirtualnej** zapewnia informacje o stanie maszyn wirtualnych:
 
     - **Skonfigurowane** — maszyny wirtualne, które zostały skonfigurowane do obsługi dostępu just in Time do maszyny wirtualnej. Przedstawione dane dotyczą ostatniego tygodnia i obejmują dla każdej maszyny wirtualnej liczbę zatwierdzonych żądań, datę ostatniego dostępu i godzinę ostatniego użytkownika.
-    - **Zalecane** — maszyny wirtualne, które mogą obsługiwać dostęp do maszyny wirtualnej just-in-Time, ale nie zostały skonfigurowane do programu. Zalecamy włączenie kontroli dostępu just in Time do maszyn wirtualnych. 
+    - **Zalecane** — maszyny wirtualne, które mogą obsługiwać dostęp do maszyny wirtualnej just-in-Time, ale nie zostały skonfigurowane do programu. Zalecamy włączenie kontroli dostępu just in Time do maszyn wirtualnych.
     - **Brak zaleceń** — powody, dla których maszyna wirtualna może nie mieć zaleceń:
       - Brak sieciowej grupy zabezpieczeń — rozwiązanie just in Time wymaga, aby sieciowej grupy zabezpieczeń.
       - Klasyczna maszyna wirtualna — Security Center dostęp do maszyny wirtualnej just in Time aktualnie obsługuje tylko maszyny wirtualne wdrożone za pośrednictwem Azure Resource Manager. Wdrożenie klasyczne nie jest obsługiwane przez rozwiązanie just-in-Time. 
@@ -131,7 +125,7 @@ Aby zażądać dostępu do maszyny wirtualnej za pomocą funkcji ASC:
 
     - Ikona w kolumnie **szczegóły połączenia** wskazuje, czy JIT jest włączona w sieciowej grupy zabezpieczeń czy PD. Jeśli ta opcja jest włączona, zostanie wyświetlona tylko ikona zapory.
 
-    - Kolumna **szczegóły połączenia** zawiera poprawne informacje wymagane do połączenia z maszyną wirtualną, a także wskazuje otwarte porty.
+    - Kolumna **szczegóły połączenia** zawiera informacje wymagane do nawiązania połączenia z maszyną wirtualną oraz otwarte porty.
 
       ![Żądanie dostępu just in time](./media/security-center-just-in-time/request-just-in-time-access.png)
 
@@ -191,11 +185,11 @@ Pozwala to na dostęp just in Time do maszyny wirtualnej przy użyciu następuj�
 
 - Serwery z systemem Windows:
     - Port RDP 3389
-    - 3 godziny maksymalnego dozwolonego dostępu
+    - Trzy godziny maksymalnego dozwolonego dostępu
     - Dozwolone źródłowe adresy IP są ustawione na wartość any
 - Serwery z systemem Linux:
     - Port SSH 22
-    - 3 godziny maksymalnego dozwolonego dostępu
+    - Trzy godziny maksymalnego dozwolonego dostępu
     - Dozwolone źródłowe adresy IP są ustawione na wartość any
      
 Jeśli maszyna wirtualna ma już włączoną funkcję just-in-Time, po przejściu na stronę konfiguracji będzie można zobaczyć, że jest włączona funkcja just in Time. można także użyć linku, aby otworzyć zasady w Azure Security Center, aby wyświetlić i zmienić ustawienia.
@@ -213,7 +207,7 @@ W Azure Portal podczas próby nawiązania połączenia z maszyną wirtualną pla
   Wymagany jest dostęp z następującymi domyślnymi parametrami:
 
   - **źródłowy adres IP**: "Any" (*) (nie można zmienić)
-  - **zakres czasu**: 3 godziny (nie można zmienić)  <!--Isn't this set in the policy-->
+  - **zakres czasu**: Trzy godziny (nie można zmienić) <!--Isn't this set in the policy-->
   - **numer portu** Port RDP 3389 dla Windows/port 22 dla systemu Linux (można go zmienić)
 
     > [!NOTE]

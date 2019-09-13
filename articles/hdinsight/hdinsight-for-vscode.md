@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 226862c51417e311bc39feefa9f5e860d55b7dc1
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 51f0e223abd7103663fddd8c06dcdf0be549c671
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034104"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70930794"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Użyj narzędzi Hive & platformy Spark dla Visual Studio Code
 
@@ -56,7 +56,7 @@ Aby otworzyć folder roboczy i utworzyć plik w Visual Studio Code, wykonaj nast
 
 2. W widoku **Eksploratora** wybierz folder **HDexample** , a następnie wybierz ikonę **nowy plik** obok folderu Work:
 
-   ![Nowy plik](./media/hdinsight-for-vscode/new-file.png)
+   ![Nowy plik](./media/hdinsight-for-vscode/visual-studio-code-new-file.png)
 
 3. Nazwij nowy plik przy użyciu programu `.hql` (zapytania Hive) `.py` lub rozszerzenia pliku (skrypt platformy Spark). W tym przykładzie zastosowano **HelloWorld. HQL**.
 
@@ -131,7 +131,7 @@ Można połączyć normalny klaster przy użyciu nazwy użytkownika zarządzanej
 
 3. Przejrzyj widok **danych wyjściowych** . Ten widok przedstawia połączony klaster (lub klastry) i wszystkie klastry w ramach subskrypcji platformy Azure:
 
-    ![Ustaw domyślną konfigurację klastra](./media/hdinsight-for-vscode/list-cluster-result.png)
+    ![Ustaw domyślną konfigurację klastra](./media/hdinsight-for-vscode/list-cluster-result1.png)
 
 ## <a name="set-the-default-cluster"></a>Ustaw domyślny klaster
 
@@ -280,7 +280,7 @@ Prześlij plik i zwróć uwagę, że folder. programu vscode jest automatycznie 
 
 + Ustawienia projektu:
 
-    ![Konfiguracja usługi Livy](./media/hdinsight-for-vscode/hdi-livyconfig.png)
+    ![Konfiguracja usługi Livy](./media/hdinsight-for-vscode/hdi-apache-livy-config.png)
 
     >[!NOTE]
     >Dla ustawień **driverMemory** i **executorMemory** ustaw wartość i jednostkę. Na przykład: 1g lub 1024m.
@@ -292,19 +292,19 @@ Prześlij plik i zwróć uwagę, że folder. programu vscode jest automatycznie 
 
     | name | description | type | 
     | :- | :- | :- | 
-    | file | Plik zawierający aplikację do wykonania | Ścieżka (wymagana) |
+    | file | Plik zawierający aplikację do wykonania | ścieżka (wymagana) |
     | proxyUser | Użytkownik do personifikacji podczas uruchamiania zadania | String |
     | className | Aplikacja Java/Spark klasy głównej | String |
-    | args | Argumenty wiersza polecenia dla aplikacji | Lista ciągów |
-    | jars | Jars do użycia w tej sesji | Lista ciągów | 
-    | pyFiles | Pliki języka Python, które mają być używane w tej sesji | Lista ciągów |
-    | — pliki | Pliki, które mają być używane w tej sesji | Lista ciągów |
+    | args | Argumenty wiersza polecenia dla aplikacji | lista ciągów |
+    | jars | Jars do użycia w tej sesji | lista ciągów | 
+    | pyFiles | Pliki języka Python, które mają być używane w tej sesji | lista ciągów |
+    | — pliki | pliki, które mają być używane w tej sesji | lista ciągów |
     | driverMemory | Ilość pamięci do użycia w procesie sterownika | String |
     | driverCores | Liczba rdzeni do użycia w procesie sterownika | Int |
     | executorMemory | Ilość pamięci do użycia na proces wykonawczy | String |
     | executorCores | Liczba rdzeni do użycia dla każdego wykonawcy | Int |
     | numExecutors | Liczba uruchomień do uruchomienia dla tej sesji | Int |
-    | archives | Archiwa, które mają być używane w tej sesji | Lista ciągów |
+    | archives | Archiwa, które mają być używane w tej sesji | lista ciągów |
     | queue | Nazwa kolejki PRZĘDZy do przesłania| String |
     | name | Nazwa tej sesji | String |
     | conf | Właściwości konfiguracji platformy Spark | Mapa klucza = Val |
@@ -317,7 +317,7 @@ Prześlij plik i zwróć uwagę, że folder. programu vscode jest automatycznie 
     | id | Identyfikator sesji | Int | 
     | appId | Identyfikator aplikacji dla tej sesji | String |
     | appInfo | Szczegółowe informacje o aplikacji | Mapa klucza = Val |
-    | dziennik | Wiersze dziennika | Lista ciągów |
+    | dziennik | Wiersze dziennika | lista ciągów |
     | state |Stan partii | String |
 
     >[!NOTE]
@@ -409,7 +409,7 @@ Podczas przesyłania zadania do klastra usługi HDInsight zostanie wyświetlony 
   >
   >Możesz użyć `Spark / Hive: List Cluster` , aby sprawdzić połączony klaster:
   >
-  >![Narzędzia programu Hive & platformy Spark dla połączonego czytnika Visual Studio Code](./media/hdinsight-for-vscode/list-cluster-result.png)
+  >![Narzędzia programu Hive & platformy Spark dla połączonego czytnika Visual Studio Code](./media/hdinsight-for-vscode/list-cluster-result1.png)
 
 ## <a name="azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2
 

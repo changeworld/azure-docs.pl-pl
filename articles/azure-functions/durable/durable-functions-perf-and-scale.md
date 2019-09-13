@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: azfuncdf
-ms.openlocfilehash: ed0fe22903412d4164fb3a85dbd9afafdc7023e6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 53f561283d4d07d58bd03b59a24a30d8010caaf0
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098000"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933290"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Wydajność i skalowanie w Durable Functions (Azure Functions)
 
@@ -36,7 +36,7 @@ Ta tabela służy do zaspokojenia żądań zapytań wystąpienia z interfejsów 
 
 ## <a name="internal-queue-triggers"></a>Wyzwalacze wewnętrznej kolejki
 
-Funkcje i funkcje programu Orchestrator są wyzwalane przez kolejki wewnętrzne w centrum zadań aplikacji funkcji. Użycie kolejek w ten sposób zapewnia niezawodne gwarancje dostarczania komunikatów "co najmniej raz". W Durable Functions istnieją dwa typy kolejek: kolejka **sterowania** i kolejka **elementów roboczych**.
+Funkcje i funkcje programu Orchestrator są wyzwalane przez kolejki wewnętrzne w centrum zadań aplikacji funkcji. Użycie kolejek w ten sposób zapewnia niezawodne gwarancje dostarczania komunikatów "co najmniej raz". W Durable Functions istnieją dwa typy kolejek: **Kolejka sterowania** i **Kolejka elementów roboczych**.
 
 ### <a name="the-work-item-queue"></a>Kolejka elementów roboczych
 
@@ -127,7 +127,7 @@ Ogólnie mówiąc, funkcje programu Orchestrator mają być lekkie i nie powinny
 
 ## <a name="auto-scale"></a>Automatyczne skalowanie
 
-Podobnie jak w przypadku wszystkich Azure Functions uruchomionych w ramach planu zużycia, Durable Functions obsługuje skalowanie automatyczne za pośrednictwem [kontrolera Azure Functions Scale](../functions-scale.md#runtime-scaling). Kontroler skalowania monitoruje opóźnienie wszystkich kolejek przez okresowe wydawanie poleceń wglądu. Na podstawie opóźnień wiadomości z wglądem, kontroler skalowania zdecyduje się, czy dodać lub usunąć maszyny wirtualne.
+Podobnie jak w przypadku wszystkich Azure Functions uruchomionych w ramach planu zużycia, Durable Functions obsługuje skalowanie automatyczne za pośrednictwem [kontrolera Azure Functions Scale](../functions-scale.md#runtime-scaling). Kontroler skalowania monitoruje opóźnienie wszystkich kolejek przez okresowe wydawanie poleceń _wglądu_ . Na podstawie opóźnień wiadomości z wglądem, kontroler skalowania zdecyduje się, czy dodać lub usunąć maszyny wirtualne.
 
 Jeśli kontroler skalowania ustali, że opóźnienia komunikatów w kolejce sterującej są zbyt wysokie, to spowoduje dodanie wystąpień maszyn wirtualnych do momentu zmniejszenia opóźnienia komunikatów do akceptowalnego poziomu lub osiągnie liczbę partycji kolejki kontroli. Podobnie kontroler skalowania ciągle dodaje wystąpienia maszyn wirtualnych, jeśli opóźnienia kolejki elementu pracy są wysokie, niezależnie od liczby partycji.
 
@@ -219,8 +219,8 @@ Przykładowo, jeśli `durableTask/extendedSessionIdleTimeoutInSeconds` jest usta
 Planując użycie Durable Functions dla aplikacji produkcyjnej, ważne jest, aby uwzględnić wymagania dotyczące wydajności wczesne w procesie planowania. W tej sekcji omówiono niektóre podstawowe scenariusze użycia i oczekiwane maksymalne numery przepływności.
 
 * **Wykonanie działania sekwencyjnego**: W tym scenariuszu opisano funkcję programu Orchestrator, która uruchamia serię funkcji działania jeden po drugim. Jest to najbardziej zbliżone do przykładu [łańcucha funkcji](durable-functions-sequence.md) .
-* **Równoległe wykonywanie działań**: W tym scenariuszu opisano funkcję programu Orchestrator, która wykonuje równolegle wiele funkcji działania [](durable-functions-cloud-backup.md) przy użyciu wzorca wentylatorów.
-* **Równoległe przetwarzanie odpowiedzi**: Ten scenariusz to druga połowa [wentylatoru i](durable-functions-cloud-backup.md) wzorca wentylatorów. Koncentruje się na wydajności wentylatorów. Należy pamiętać, że w przeciwieństwie do wentylatorów, wentylator jest wykonywane przez pojedyncze wystąpienie funkcji programu Orchestrator i w związku z tym może działać tylko na jednej maszynie wirtualnej.
+* **Równoległe wykonywanie działań**: W tym scenariuszu opisano funkcję programu [Orchestrator, która](durable-functions-cloud-backup.md) wykonuje równolegle wiele funkcji działania przy użyciu wzorca wentylatorów.
+* **Równoległe przetwarzanie odpowiedzi**: Ten scenariusz to druga połowa [wentylatoru i wzorca wentylatorów](durable-functions-cloud-backup.md) . Koncentruje się na wydajności wentylatorów. Należy pamiętać, że w przeciwieństwie do wentylatorów, wentylator jest wykonywane przez pojedyncze wystąpienie funkcji programu Orchestrator i w związku z tym może działać tylko na jednej maszynie wirtualnej.
 * **Przetwarzanie zdarzeń zewnętrznych**: Ten scenariusz reprezentuje pojedyncze wystąpienie funkcji programu Orchestrator, które czeka na [zdarzenia zewnętrzne](durable-functions-external-events.md), po jednym naraz.
 
 > [!TIP]
@@ -243,4 +243,4 @@ Jeśli nie widzisz oczekiwanych numerów przepływności, a użycie procesora i 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Tworzenie pierwszej funkcji trwałej w języku C#](durable-functions-create-first-csharp.md)
+> [Informacje o odzyskiwaniu po awarii i dystrybucji geograficznej](durable-functions-disaster-recovery-geo-distribution.md)

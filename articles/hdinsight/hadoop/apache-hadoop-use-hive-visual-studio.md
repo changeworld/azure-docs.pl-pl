@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: hrasheed
-ms.openlocfilehash: bded3ac97732a7cd18411cc9f4ef1707dbdf68e3
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 129f200bc9f61d70f4403b1154978d57e09fee26
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735813"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70917471"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Uruchamianie zapytań Apache Hive przy użyciu narzędzi Data Lake Tools for Visual Studio
 
@@ -59,7 +59,7 @@ Zapytania ad hoc mogą być wykonywane w trybie **wsadowym** lub **interaktywnym
 
 6. Aby uruchomić to samo zapytanie w trybie **wsadowym** , przełącz listę rozwijaną **interaktywnie** do **Batch**. Należy zauważyć, że przycisk wykonywania zmienia się z **Execute** na **Submit**.
 
-    ![Zrzut ekranu przedstawiający przesyłanie zapytania Hive](./media/apache-hadoop-use-hive-visual-studio/vs-batch-query.png)
+    ![Zrzut ekranu przedstawiający przesyłanie zapytania Hive](./media/apache-hadoop-use-hive-visual-studio/visual-studio-batch-query.png)
 
     Edytor Hive obsługuje funkcję IntelliSense. Narzędzia Data Lake Tools for Visual Studio obsługują ładowanie zdalnych metadanych podczas edycji skryptu Hive. Na przykład, jeśli wpiszesz `SELECT * FROM`, IntelliSense wyświetla wszystkie sugerowane nazwy tabel. Po określeniu nazwy tabeli funkcja IntelliSense wyświetla nazwy kolumn. Narzędzia obsługują większość instrukcji DML programu Hive, podzapytań i wbudowanych sterowników UDF. Funkcja IntelliSense zasugeruje tylko metadane klastra zaznaczonego na pasku narzędzi usługi HDInsight.
 
@@ -71,7 +71,7 @@ Zapytania ad hoc mogą być wykonywane w trybie **wsadowym** lub **interaktywnym
 
    W przypadku wybrania zaawansowanych opcji przesyłania należy skonfigurować dla skryptu wartości takie jak **Nazwa zadania**, **Argumenty**, **Dodatkowe konfiguracje** i **Katalog stanu**:
 
-    ![Zrzut ekranu zapytania programu Hive w usłudze HDInsight Hadoop](./media/apache-hadoop-use-hive-visual-studio/hdinsight.visual.studio.tools.submit.jobs.advanced.png "Przesłanie zapytań")
+    ![Zrzut ekranu zapytania programu Hive w usłudze HDInsight Hadoop](./media/apache-hadoop-use-hive-visual-studio/vs-tools-submit-jobs-advanced.png "Przesłanie zapytań")
 
 ### <a name="hive-application"></a>Aplikacja Hive
 
@@ -115,11 +115,11 @@ Zapytania ad hoc mogą być wykonywane w trybie **wsadowym** lub **interaktywnym
 
 6. Na pasku narzędzi wybierz klaster usługi **HDInsight** , który ma być używany dla tego zapytania. Wybierz pozycję **Prześlij** , aby uruchomić instrukcje jako zadanie Hive.
 
-   ![Pasek przesyłania](./media/apache-hadoop-use-hive-visual-studio/toolbar.png)
+   ![Pasek przesyłania](./media/apache-hadoop-use-hive-visual-studio/hdinsight-toolbar-submit.png)
 
 7. Zostanie wyświetlone **Podsumowanie zadania programu Hive** zawierające informacje o uruchomionym zadaniu. Użyj linku **Odśwież** , aby odświeżyć informacje o zadaniu do momentu, aż **stan zadania** zmieni się na **zakończone**.
 
-   ![Podsumowanie zadania zawierające ukończone zadanie](./media/apache-hadoop-use-hive-visual-studio/jobsummary.png)
+   ![Podsumowanie zadania zawierające ukończone zadanie](./media/apache-hadoop-use-hive-visual-studio/hdinsight-job-summary.png)
 
 8. Użyj linku **dane wyjściowe zadania** , aby wyświetlić dane wyjściowe tego zadania. Zostanie wyświetlona `[ERROR] 3`, która jest wartością zwracaną przez to zapytanie.
 

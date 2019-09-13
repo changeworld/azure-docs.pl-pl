@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: 2a037a495a1e1ed211bd9a535891ccf75fdb140b
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: e75de16d0e16bc639a0439220a1c9dfe53e1689b
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278176"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879059"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Autouczenie modelu prognozowania szeregów czasowych
 
@@ -138,8 +138,12 @@ local_run = experiment.submit(automl_config, show_output=True)
 best_run, fitted_model = local_run.get_output()
 ```
 
-> [!NOTE]
-> W przypadku procedury weryfikacji krzyżowej (CV) dane szeregów czasowych mogą naruszać podstawowe założenia statystyczne dla kanonicznej strategii międzyprocesowego sprawdzania poprawności, więc automatyczne Uczenie maszynowe implementuje procedurę walidacji źródła stopniowego, aby utworzyć wzajemne sprawdzanie poprawności jest składane dla danych szeregów czasowych. Aby użyć tej procedury, należy określić `n_cross_validations` parametr `AutoMLConfig` w obiekcie. Możesz pominąć walidację i użyć własnych zestawów walidacji z `X_valid` parametrami i. `y_valid`
+Aby zapoznać się ze szczegółowymi przykładami zaawansowanej konfiguracji prognozowania [, w tym](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb) :
+
+* Wykrywanie świąt i cechowania
+* krzyżowe sprawdzanie poprawności źródła
+* Konfigurowalne spowolnienia
+* funkcje agregujące okna stopniowego
 
 ### <a name="view-feature-engineering-summary"></a>Wyświetlanie podsumowania inżynierów funkcji
 

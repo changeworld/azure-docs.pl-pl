@@ -1,6 +1,6 @@
 ---
-title: Tworzenie zautomatyzowanych przepływów pracy z użyciem harmonogramu — Azure Logic Apps | Microsoft Docs
-description: 'Samouczek: jak utworzyć cykliczny, zautomatyzowany przepływ pracy z użyciem harmonogramu w usłudze Azure Logic Apps'
+title: Tworzenie zautomatyzowanych przepływów pracy opartych na harmonogramie — Azure Logic Apps
+description: Samouczek — Tworzenie cyklicznego, zautomatyzowanego przepływu pracy opartego na harmonogramie przy użyciu Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,39 +10,39 @@ ms.manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/12/2018
-ms.openlocfilehash: ec29eef7e733155b205d4feda844883bbc4496c9
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.date: 09/12/2019
+ms.openlocfilehash: 9392cfc9c789a757c3ad533a3dbd4719f5292be5
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051747"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931352"
 ---
-# <a name="check-traffic-on-a-schedule-with-azure-logic-apps"></a>Cykliczne sprawdzanie ruchu przy użyciu usługi Azure Logic Apps
+# <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>Samouczek: Tworzenie zautomatyzowanych, cyklicznych przepływów pracy opartych na harmonogramach przy użyciu Azure Logic Apps
 
-Usługa Azure Logic Apps umożliwia zautomatyzowanie przepływów pracy uruchamianych na podstawie harmonogramu. Ten samouczek pokazuje, jak utworzyć [aplikację logiki](../logic-apps/logic-apps-overview.md) z wyzwalaczem harmonogramu, który jest uruchamiany codziennie rano i sprawdza, ile czasu zajmie podróż pomiędzy dwoma miejscami, z uwzględnieniem natężenia ruchu. Jeśli ten czas przekracza określony limit, aplikacja logiki wysyła wiadomość e-mail z informacją, ile zajmie podróż z uwzględnieniem dodatkowego czasu.
+W tym samouczku pokazano, jak utworzyć [aplikację logiki](../logic-apps/logic-apps-overview.md) i zautomatyzować cykliczny przepływ pracy, który jest uruchamiany zgodnie z harmonogramem. W szczególności Ta przykładowa aplikacja logiki jest uruchamiana każdego dnia tygodnia rano i sprawdza czas podróży, w tym ruch, między dwoma miejscami. Jeśli ten czas przekracza określony limit, aplikacja logiki wysyła wiadomość e-mail z informacją, ile zajmie podróż z uwzględnieniem dodatkowego czasu.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Tworzenia pustej aplikacji logiki. 
-> * Dodawanie wyzwalacza harmonogramu dla aplikacji logiki.
-> * Dodawanie akcji, która pobiera czas podróży dla danej trasy.
-> * Dodawanie akcji, która tworzy zmienną, konwertuje czas podróży z sekund na minuty i zapisuje wynik w zmiennej.
+> * Tworzenia pustej aplikacji logiki.
+> * Dodaj wyzwalacz cykliczny określający harmonogram aplikacji logiki.
+> * Dodaj akcję mapy Bing, która pobiera czas podróży dla trasy.
+> * Dodaj akcję, która tworzy zmienną, konwertuje czas podróży z sekund na minuty i zapisuje wynik w zmiennej.
 > * Dodawanie warunku, który porównuje czas podróży z określonym limitem.
-> * Dodawanie akcji, która wysyła wiadomość e-mail, jeśli czas podróży przekracza limit.
+> * Dodaj akcję wysyłającą wiadomość e-mail, jeśli czas podróży przekracza limit.
 
 Po ukończeniu aplikacja logiki będzie ogólnie wyglądać jak ten przepływ pracy:
 
 ![Ogólna struktura aplikacji logiki](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-overview.png)
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
-
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Konto e-mail od dostawcy obsługiwanego przez usługę Logic Apps, na przykład Office 365 Outlook, Outlook.com lub Gmail. W przypadku innych dostawców [przejrzyj tę listę łączników](https://docs.microsoft.com/connectors/). W tym przewodniku Szybki start jest używane konto usługi Outlook.com. Jeśli korzystasz z innego konta e-mail, ogólne kroki pozostają takie same, ale Twój interfejs użytkownika może wyglądać trochę inaczej.
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem [Utwórz bezpłatne konto platformy Azure](https://azure.microsoft.com/free/) .
 
-* Aby pobrać czas podróży dla danej trasy, potrzebny jest klucz dostępu dla interfejsu API usługi Mapy Bing. Aby pobrać ten klucz, postępuj zgodnie z instrukcjami [uzyskiwania klucza usługi Mapy Bing](https://msdn.microsoft.com/library/ff428642.aspx). 
+* Konto e-mail od dostawcy poczty e-mail obsługiwanego przez Logic Apps, takie jak Office 365 Outlook, Outlook.com lub gmail. W przypadku innych dostawców [przejrzyj tę listę łączników](https://docs.microsoft.com/connectors/). Ten przewodnik Szybki Start używa konta programu Outlook w usłudze Office 365. Jeśli używasz innego konta e-mail, ogólne kroki pozostają takie same, ale interfejs użytkownika może się nieco różnić.
+
+* Aby pobrać czas podróży dla danej trasy, potrzebny jest klucz dostępu dla interfejsu API usługi Mapy Bing. Aby pobrać ten klucz, postępuj zgodnie z instrukcjami [uzyskiwania klucza usługi Mapy Bing](https://docs.microsoft.com/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
@@ -50,65 +50,81 @@ Zaloguj się do [witryny Azure Portal](https://portal.azure.com) przy użyciu po
 
 ## <a name="create-your-logic-app"></a>Tworzenie aplikacji logiki
 
-1. Z głównego menu platformy Azure wybierz pozycję **Utwórz zasób** > **Integracja dla przedsiębiorstw** > **Aplikacja logiki**.
+1. W głównym menu platformy Azure wybierz pozycję **Utwórz zasób** >  > **aplikacja logiki**.
 
    ![Tworzenie aplikacji logiki](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app.png)
 
-2. W obszarze **Tworzenie aplikacji logiki** wprowadź następujące informacje na temat aplikacji logiki. Gdy skończysz, wybierz pozycję **Przypnij do pulpitu nawigacyjnego** > **Utwórz**.
+1. W obszarze **Tworzenie aplikacji logiki** wprowadź następujące informacje na temat aplikacji logiki. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz**.
 
    ![Podawanie informacji na temat aplikacji logiki](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app-settings.png)
 
-   | Ustawienie | Wartość | Opis | 
-   | ------- | ----- | ----------- | 
-   | **Nazwa** | LA-TravelTime | Nazwa aplikacji logiki | 
-   | **Subskrypcja** | <*your-Azure-subscription-name*> | Nazwa subskrypcji platformy Azure | 
-   | **Grupa zasobów** | LA-TravelTime-RG | Nazwa [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) używanej do organizowania powiązanych zasobów | 
-   | **Location** | Wschodnie stany USA 2 | Region, w którym będą przechowywane informacje na temat aplikacji logiki | 
-   | **Log Analytics** | Wyłączone | Ustawienie **Wyłączone** umożliwia rejestrowanie w celach diagnostycznych. | 
-   |||| 
+   | Właściwość | Value | Opis |
+   |----------|-------|-------------|
+   | **Nazwa** | LA-TravelTime | Nazwa aplikacji logiki, która może zawierać tylko litery`-`, cyfry, łączniki (), podkreślenia (`_`), nawiasy (`(`, `)`) i kropki (`.`). W tym przykładzie zastosowano "LA-TravelTime". |
+   | **Subskrypcja** | <*your-Azure-subscription-name*> | Nazwa subskrypcji platformy Azure |
+   | **Grupa zasobów** | LA-TravelTime-RG | Nazwa [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md), która jest używana do organizowania powiązanych zasobów. W tym przykładzie zastosowano "LA-TravelTime-RG". |
+   | **Location** | Zachodnie stany USA | Region tnie, w którym mają być przechowywane informacje o aplikacji logiki. W tym przykładzie zastosowano "zachodnie stany USA". |
+   | **Log Analytics** | Wyłączone | Ustawienie **Wyłączone** umożliwia rejestrowanie w celach diagnostycznych. |
+   ||||
 
-3. Po wdrożeniu aplikacji na platformie Azure zostanie otwarty Projektant aplikacji usługi Logic Apps ze stroną zawierającą wprowadzający film wideo i szablony typowych wzorców aplikacji logiki. W obszarze **Szablony** wybierz pozycję **Pusta aplikacja logiki**.
+1. Po wdrożeniu aplikacji przez platformę Azure na pasku narzędzi platformy Azure wybierz pozycję **powiadomienia** > **Przejdź do pozycji zasób** dla wdrożonej aplikacji logiki.
 
-   ![Wybieranie szablonu pustej aplikacji logiki](./media/tutorial-build-scheduled-recurring-logic-app-workflow/choose-logic-app-template.png)
+   ![Przejdź do zasobu](./media/tutorial-build-scheduled-recurring-logic-app-workflow/go-to-logic-app.png)
 
-Następnie dodaj [wyzwalacz](../logic-apps/logic-apps-overview.md#logic-app-concepts) cykliczny, który będzie uruchamiany zgodnie z określonym harmonogramem. Każda aplikacja logiki musi rozpoczynać się od wyzwalacza, który jest aktywowany w momencie wystąpienia konkretnego zdarzenia lub spełnienia określonego warunku przez nowe dane. Aby uzyskać więcej informacji, zobacz [Tworzenie pierwszej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+   Możesz też znaleźć i wybrać aplikację logiki, wpisując nazwę w polu wyszukiwania.
 
-## <a name="add-scheduler-trigger"></a>Dodawanie wyzwalacza harmonogramu
+   Zostanie otwarty projektant Logic Apps i zostanie wyświetlona strona z wprowadzeniem wideo i często używanymi wyzwalaczami i wzorcami aplikacji logiki. W obszarze **Szablony** wybierz pozycję **Pusta aplikacja logiki**.
 
-1. W Projektancie wprowadź ciąg „cyklicznie” w polu wyszukiwania. Wybierz ten wyzwalacz: **Harmonogram — cykl**
+   ![Wybierz szablon pustej aplikacji logiki](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-logic-app-template.png)
 
-   ![Znajdywanie i dodawanie wyzwalacza „Harmonogram — cyklicznie”](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-schedule-recurrence-trigger.png)
+Następnie Dodaj [wyzwalacz](../logic-apps/logic-apps-overview.md#logic-app-concepts)cykliczny, który jest uruchamiany zgodnie z określonym harmonogramem. Każda aplikacja logiki musi rozpoczynać się od wyzwalacza, który jest aktywowany w momencie wystąpienia konkretnego zdarzenia lub spełnienia określonego warunku przez nowe dane. Aby uzyskać więcej informacji, zobacz [Tworzenie pierwszej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-2. Na kształcie **Cyklicznie** wybierz przycisk **wielokropka** ( **...** ), a następnie wybierz pozycję **Zmień nazwę**. Zmień nazwę wyzwalacza na następujący opis: ```Check travel time every weekday morning```
+## <a name="add-the-recurrence-trigger"></a>Dodaj wyzwalacz cykliczny
+
+1. W Projektancie aplikacji logiki w polu wyszukiwania wprowadź "cykl" jako filtr. Z listy **wyzwalacze** Wybierz wyzwalacz **cykliczny** .
+
+   ![Dodaj wyzwalacz "cykl"](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-schedule-recurrence-trigger.png)
+
+1. Na kształcie **cyklu** wybierz przycisk **wielokropka** ( **...** ), a następnie wybierz polecenie **Zmień nazwę**. Zmień nazwę wyzwalacza na następujący opis: `Check travel time every weekday morning`
 
    ![Zmiana nazwy wyzwalacza](./media/tutorial-build-scheduled-recurring-logic-app-workflow/rename-recurrence-schedule-trigger.png)
 
-3. Wewnątrz wyzwalacza wybierz pozycję **Pokaż opcje zaawansowane**.
+1. W wyzwalaczu Zmień te właściwości.
 
-4. Podaj następujące informacje dotyczące harmonogramu i cyklu wyzwalacza:
+   ![Zmień interwał i częstotliwość](./media/tutorial-build-scheduled-recurring-logic-app-workflow/change-interval-frequency.png)
 
-   ![Podawanie szczegółów harmonogramu i cyklu](./media/tutorial-build-scheduled-recurring-logic-app-workflow/schedule-recurrence-trigger-settings.png)
+   | Właściwość | Wymagany | Value | Opis |
+   |----------|----------|-------|-------------|
+   | **Interval** | Tak | 1 | Liczba interwałów do odczekania między sprawdzaniami |
+   | **Częstotliwość** | Tak | Tydzień | Jednostka czasu cyklu |
+   |||||
 
-   | Ustawienie | Wartość | Opis | 
-   | ------- | ----- | ----------- | 
-   | **Interval** | 1 | Liczba interwałów do odczekania między sprawdzaniami | 
-   | **Częstotliwość** | Tydzień | Jednostka czasu cyklu | 
-   | **Strefa czasowa** | Brak | Ma zastosowanie tylko, jeśli określisz godzinę rozpoczęcia. Umożliwia określenie innej strefy czasowej niż lokalna. | 
-   | **Godzina rozpoczęcia** | Brak | Umożliwia opóźnienie cyklu do określonej daty i godziny. Aby uzyskać więcej informacji, zobacz [Schedule tasks and workflows that run regularly (Planowanie regularnie uruchamianych zadań i przepływów pracy)](../connectors/connectors-native-recurrence.md). | 
-   | **W tych dniach** | poniedziałek,wtorek,środa,czwartek,piątek | Dostępne tylko wtedy, gdy w polu **Częstotliwość** wybrano pozycję Tydzień | 
-   | **W tych godzinach** | 7,8,9 | Dostępne tylko wtedy, gdy w polu **Częstotliwość** wybrano pozycję Tydzień lub Dzień. Wybierz, o jakich godzinach ma być uruchamiany cykl. W tym przykładzie jest uruchamiany o 7, 8 i 9. | 
-   | **W tych minutach** | 0,15,30,45 | Dostępne tylko wtedy, gdy w polu **Częstotliwość** wybrano pozycję Tydzień lub Dzień. Wybierz, w których minutach dnia ma być uruchamiany cykl. W tym przykładzie jest uruchamiany co 15 minut, rozpoczynając od pełnej godziny. | 
+1. W obszarze **Interwał** i **częstotliwość**Otwórz listę **Dodaj nowy parametr** i wybierz te właściwości, które mają zostać dodane do wyzwalacza.
+
+   * **W tych dniach**
+   * **W tych godzinach**
+   * **W tych minutach**
+
+   ![Dodawanie właściwości wyzwalacza](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-trigger-properties.png)
+
+1. Teraz ustaw wartości dla dodatkowych właściwości, jak pokazano i opisano tutaj.
+
+   ![Podawanie szczegółów harmonogramu i cyklu](./media/tutorial-build-scheduled-recurring-logic-app-workflow/recurrence-trigger-property-values.png)
+
+   | Właściwość | Value | Opis |
+   |----------|-------|-------------|
+   | **W tych dniach** | poniedziałek,wtorek,środa,czwartek,piątek | Dostępne tylko wtedy, gdy w polu **Częstotliwość** wybrano pozycję Tydzień |
+   | **W tych godzinach** | 7,8,9 | Dostępne tylko wtedy, gdy w polu **Częstotliwość** wybrano pozycję Tydzień lub Dzień. Wybierz, o jakich godzinach ma być uruchamiany cykl. W tym przykładzie jest uruchamiany o 7, 8 i 9. |
+   | **W tych minutach** | 0,15,30,45 | Dostępne tylko wtedy, gdy w polu **Częstotliwość** wybrano pozycję Tydzień lub Dzień. Wybierz, w których minutach dnia ma być uruchamiany cykl. W tym przykładzie jest uruchamiany co 15 minut, rozpoczynając od pełnej godziny. |
    ||||
 
-   Ten wyzwalacz jest uruchamiany codziennie, co 15 minut, po raz pierwszy o 7:00 i po raz ostatni o 9:45. 
-   W oknie **Podgląd** wyświetlany jest harmonogram cyklu. 
-   Aby uzyskać więcej informacji, zobacz [Schedule tasks and workflows that run regularly (Planowanie regularnie uruchamianych zadań i przepływów pracy)](../connectors/connectors-native-recurrence.md) i [Workflow actions and triggers (Akcje i wyzwalacze przepływu pracy)](../logic-apps/logic-apps-workflow-actions-triggers.md#recurrence-trigger).
+   Ten wyzwalacz jest uruchamiany codziennie, co 15 minut, po raz pierwszy o 7:00 i po raz ostatni o 9:45. W oknie **Podgląd** wyświetlany jest harmonogram cyklu. Aby uzyskać więcej informacji, zobacz [Schedule tasks and workflows that run regularly (Planowanie regularnie uruchamianych zadań i przepływów pracy)](../connectors/connectors-native-recurrence.md) i [Workflow actions and triggers (Akcje i wyzwalacze przepływu pracy)](../logic-apps/logic-apps-workflow-actions-triggers.md#recurrence-trigger).
 
-5. Aby na razie ukryć szczegóły wyzwalacza, kliknij pasek tytułu kształtu.
+1. Aby na razie ukryć szczegóły wyzwalacza, kliknij pasek tytułu kształtu.
 
    ![Zwinięty kształt w celu ukrycia szczegółów](./media/tutorial-build-scheduled-recurring-logic-app-workflow/collapse-trigger-shape.png)
 
-6. Zapisz aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**. 
+1. Zapisz aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
 
 Twoja aplikacja logiki jest już aktywna, ale nie wykonuje żadnych akcji — jest tylko cyklicznie uruchamiana. Dodaj więc akcję reagującą na aktywowanie wyzwalacza.
 
@@ -116,191 +132,201 @@ Twoja aplikacja logiki jest już aktywna, ale nie wykonuje żadnych akcji — je
 
 Po utworzeniu wyzwalacza możesz dodać [akcję](../logic-apps/logic-apps-overview.md#logic-app-concepts), która umożliwi pobranie czasu podróży pomiędzy dwoma miejscami. Usługa Logic Apps oferuje łącznik dla interfejsu API usługi Mapy Bing, dzięki czemu można łatwo uzyskać te informacje. Przed rozpoczęciem tego zadania upewnij się, że masz klucz interfejsu API usługi Mapy Bing, zgodnie z wymaganiami wstępnymi opisanymi w tym samouczku.
 
-1. W Projektancie aplikacji logiki w obszarze wyzwalacza wybierz kolejno pozycje **+ Nowy krok** > **Dodaj akcję**.
+1. W Projektancie aplikacji logiki w ramach wyzwalacza wybierz pozycję **nowy krok**.
 
-2. Wyszukaj ciąg "Maps" i wybierz tę akcję: **Mapy Bing — pobieranie trasy**
+1. W obszarze **Wybierz akcję**wybierz pozycję **standardowa**. W polu wyszukiwania wprowadź ciąg "mapy Bing" jako filtr, a następnie wybierz akcję **Pobierz trasę** .
 
-3. Jeśli nie masz połączenia z usługą Mapy Bing, zostanie wyświetlony monit o utworzenie połączenia. Podaj następujące szczegóły połączenia, a następnie wybierz pozycję **Utwórz**.
+   ![Wybierz akcję "Pobierz trasę"](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-get-route-action.png)
 
-   ![Wybieranie akcji „Mapy Bing — Pobierz trasę”](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-maps-connection.png)
+1. Jeśli nie masz połączenia z usługą Mapy Bing, zostanie wyświetlony monit o utworzenie połączenia. Podaj te szczegóły połączenia i wybierz pozycję **Utwórz**.
 
-   | Ustawienie | Wartość | Opis |
-   | ------- | ----- | ----------- |
-   | **Nazwa połączenia** | BingMapsConnection | Podaj nazwę połączenia. | 
-   | **Klucz interfejsu API** | <*your-Bing-Maps-key*> | Wprowadź uzyskany wcześniej klucz usługi Mapy Bing. Jeśli nie masz klucza usługi Mapy Bing, dowiedz się [jak uzyskać klucz](https://msdn.microsoft.com/library/ff428642.aspx). | 
-   | | | |  
+   ![Tworzenie połączenia z usługą mapy Bing](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-maps-connection.png)
 
-4. Zmień nazwę akcji na następujący opis: ```Get route and travel time with traffic```
+   | Właściwość | Wymagany | Value | Opis |
+   |----------|----------|-------|-------------|
+   | **Nazwa połączenia** | Tak | BingMapsConnection | Podaj nazwę połączenia. W tym przykładzie zastosowano "BingMapsConnection". |
+   | **Klucz interfejsu API** | Tak | <*your-Bing-Maps-key*> | Wprowadź uzyskany wcześniej klucz usługi Mapy Bing. Jeśli nie masz klucza usługi Mapy Bing, dowiedz się [jak uzyskać klucz](https://msdn.microsoft.com/library/ff428642.aspx). |
+   |||||
 
-5. Wprowadź szczegóły akcji **Pobierz trasę** zgodnie z poniższym opisem, na przykład:
+1. Zmień nazwę akcji na następujący opis: `Get route and travel time with traffic`
 
-   ![Wprowadzanie informacji dla akcji „Mapy Bing — Pobierz trasę”](./media/tutorial-build-scheduled-recurring-logic-app-workflow/get-route-action-settings.png) 
+1. Wewnątrz akcji Otwórz **listę Dodaj nowy parametr**i wybierz te właściwości, które mają zostać dodane do akcji.
 
-   | Ustawienie | Wartość | Opis |
-   | ------- | ----- | ----------- |
-   | **Punkt nawigacyjny 1** | <*lokalizacja_początkowa*> | Początek trasy | 
-   | **Punkt nawigacyjny 2** | <*lokalizacja_końcowa*> | Koniec trasy | 
-   | **Unikaj** | Brak | Wszelkie elementy trasy, których należy unikać, na przykład autostrady, drogi płatne i tym podobne | 
-   | **Optymalizacja** | timeWithTraffic | Parametr używany do optymalizowania trasy, na przykład odległość, czas podróży z uwzględnieniem aktualnego natężenia ruchu i tak dalej. Wybierz parametr: „timeWithTraffic” | 
-   | **Jednostka odległości** | <*według_preferencji*> | Jednostka odległości trasy. W tym artykule jest stosowana ta jednostka: Prywatnego  | 
-   | **Tryb podróży** | Jazda samochodem | Tryb podróży dla trasy. Wybierz ten tryb: Siłach | 
-   | **Transport publiczny — data i godzina** | Brak | Dotyczy tylko trybu „Transport publiczny” | 
-   | **Rodzaj daty i godziny** | Brak | Dotyczy tylko trybu „Transport publiczny” | 
-   |||| 
+   * **Optymalizacja**
+   * **Jednostka odległości**
+   * **Tryb podróży**
 
-   Aby uzyskać więcej informacji na temat tych parametrów, zobacz [Calculate route (Obliczanie trasy)](https://msdn.microsoft.com/library/ff701717.aspx).
+   ![Dodaj właściwości do akcji "Pobierz trasę"](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-bing-maps-action-properties.png) 
 
-6. Zapisz aplikację logiki.
+1. Teraz ustaw wartości właściwości akcji, jak pokazano i opisano tutaj.
+
+   ![Podaj szczegóły akcji "Pobierz trasę"](./media/tutorial-build-scheduled-recurring-logic-app-workflow/get-route-action-settings.png) 
+
+   | Właściwość | Wymagany | Value | Opis |
+   |----------|----------|-------|-------------|
+   | **Punkt nawigacyjny 1** | Tak | <*start-location*> | Początek trasy |
+   | **Punkt nawigacyjny 2** | Tak | <*end-location*> | Koniec trasy |
+   | **Optymalizacja** | Nie | timeWithTraffic | Parametr używany do optymalizowania trasy, na przykład odległość, czas podróży z uwzględnieniem aktualnego natężenia ruchu i tak dalej. Wybierz parametr "timeWithTraffic". |
+   | **Jednostka odległości** | Nie | <*według_preferencji*> | Jednostka odległości trasy. Ten przykład używa "milowej" jako jednostki. |
+   | **Tryb podróży** | Nie | Jazda samochodem | Tryb podróży dla trasy. Wybierz tryb "kierowanie". |
+   ||||
+
+   Aby uzyskać więcej informacji na temat tych parametrów, zobacz [Calculate route (Obliczanie trasy)](https://docs.microsoft.com/bingmaps/rest-services/routes/calculate-a-route).
+
+1. Zapisz aplikację logiki.
 
 Następnie należy utworzyć zmienną, która umożliwia przekonwertowanie aktualnego czasu podróży i zapisanie go w minutach, a nie sekundach. Dzięki temu można uniknąć powtarzania konwersji i łatwiej używać tej wartości w kolejnych krokach. 
 
-## <a name="create-variable-to-store-travel-time"></a>Tworzenie zmiennej do zapisania czasu podróży
+## <a name="create-a-variable-to-store-travel-time"></a>Utwórz zmienną do przechowywania czasu podróży
 
-Czasami przepływ pracy wymaga wykonania operacji na danych i użycia wyników w kolejnych akcjach. Aby zapisać te wyniki i łatwiej z nich później korzystać lub się do nich odwoływać, można utworzyć zmienne do przechowywania tych wyników po ich przetworzeniu. Zmienne można utworzyć tylko na najwyższym poziomie w aplikacji logiki.
+Czasami może być konieczne uruchomienie operacji na danych w przepływie pracy, a następnie użycie wyników w późniejszych akcjach. Aby zapisać te wyniki i łatwiej z nich później korzystać lub się do nich odwoływać, można utworzyć zmienne do przechowywania tych wyników po ich przetworzeniu. Zmienne można utworzyć tylko na najwyższym poziomie w aplikacji logiki.
 
-Domyślnie poprzednia akcja **Pobierz trasę** zwraca aktualny czas podróży z uwzględnieniem natężenia ruchu w sekundach w polu **Czas podróży —natężenie ruchu**. Dzięki przekonwertowaniu tej wartości i zapisaniu jej w minutach łatwiej jest użyć jej ponownie później bez konieczności ponownego konwertowania.
+Domyślnie Poprzednia Akcja **Pobierz trasę** zwraca bieżący czas podróży z ruchem w sekundach od właściwości **ruchu o czasie trwania podróży** . Dzięki przekonwertowaniu tej wartości i zapisaniu jej w minutach łatwiej jest użyć jej ponownie później bez konieczności ponownego konwertowania.
 
-1. W obszarze akcji **Pobierz trasę** akcji wybierz kolejno pozycje **+ Nowy krok** > **Dodaj akcję**.
+1. W obszarze Akcja **Pobierz trasę** wybierz pozycję **nowy krok**.
 
-2. Wyszukaj frazę "zmienne" i wybierz tę akcję: **Zmienne — inicjowanie zmiennej**
+1. W obszarze **Wybierz akcję**wybierz pozycję **wbudowane**. W polu wyszukiwania wprowadź ciąg "zmienne" i wybierz akcję **zainicjuj zmienną** .
 
-   ![Wybieranie akcji „Zmienne - inicjowane zmiennej”](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-initialize-variable-action.png)
+   ![Wybierz akcję "zainicjuj zmienną"](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-initialize-variable-action.png)
 
-3. Zmień nazwę akcji na następujący opis: ```Create variable to store travel time```
+1. Zmień nazwę akcji na następujący opis: `Create variable to store travel time`
 
-4. Wprowadź szczegóły zmiennej zgodnie z następującym opisem:
+1. Wprowadź szczegóły zmiennej zgodnie z następującym opisem:
 
-   | Ustawienie | Wartość | Opis | 
-   | ------- | ----- | ----------- | 
-   | **Nazwa** | travelTime | Nazwa zmiennej | 
-   | **Typ** | Integer | Typ danych dla zmiennej | 
-   | **Wartość** | Wyrażenie, które konwertuje aktualny czas podróży z sekund na minuty (zobacz instrukcje pod tą tabelą). | Początkowa wartość zmiennej | 
-   |||| 
+   | Właściwość | Wymagany | Value | Opis |
+   |----------|----------|-------|-------------|
+   | **Nazwa** | Tak | travelTime | Nazwa zmiennej. W tym przykładzie zastosowano "travelTime". |
+   | **Typ** | Tak | Integer | Typ danych dla zmiennej |
+   | **Wartość** | Nie| Wyrażenie, które konwertuje aktualny czas podróży z sekund na minuty (zobacz instrukcje pod tą tabelą). | Początkowa wartość zmiennej |
+   ||||
 
-   1. Aby utworzyć wyrażenie dla pola **Wartość**, kliknij wewnątrz pola, aby wyświetlić listę zawartości dynamicznej. 
-   W razie potrzeby poszerz okno przeglądarki, aż lista będzie widoczna. 
-   Na liście zawartości dynamicznej wybierz pozycję **Wyrażenie**. 
+   1. Aby utworzyć wyrażenie dla właściwości **Value** , kliknij wewnątrz pola, aby wyświetlić listę zawartości dynamicznej. W razie potrzeby poszerz okno przeglądarki, aż lista będzie widoczna. Z listy zawartość dynamiczna wybierz pozycję **wyrażenie**.
 
-      ![Wprowadzanie informacji o akcji „Zmienne — inicjowane zmiennej”](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings.png)
+      ![Podaj informacje dotyczące akcji inicjowania zmiennej](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings.png)
 
-      Po kliknięciu wewnątrz niektórych pól edycji zostanie wyświetlona lista zawartości dynamicznej lub śródwierszowa lista parametrów. Ta lista zawiera wszystkie parametry z poprzednich akcji, których można użyć jako danych wejściowych w przepływie pracy. 
-      Lista zawartości dynamicznej zawiera edytor wyrażeń, który umożliwia wybranie funkcji w celu wykonania operacji. 
-      Edytor wyrażeń jest wyświetlany tylko na liście zawartości dynamicznej.
+      Po kliknięciu wewnątrz niektórych pól edycji zostanie wyświetlona lista zawartość dynamiczna. Ta lista zawiera wszystkie właściwości z poprzednich akcji, których można użyć jako danych wejściowych w przepływie pracy. Lista zawartości dynamicznej zawiera Edytor wyrażeń, w którym można wybrać funkcje do uruchamiania operacji. Edytor wyrażeń jest wyświetlany tylko na liście zawartości dynamicznej.
 
-      Rodzaj wyświetlanej listy jest określany przez szerokość okna przeglądarki. 
-      Jeśli okno przeglądarki jest szerokie, zostanie wyświetlona lista zawartości dynamicznej. 
-      Jeśli okno przeglądarki jest wąskie, zostanie wyświetlona śródwierszowa lista parametrów pod polem edycji, na którym aktualnie jest ustawiony fokus.
-
-   2. W edytorze wyrażeń wprowadź wyrażenie: ```div(,60)```
+   1. W edytorze wyrażeń wprowadź wyrażenie: `div(,60)`
 
       ![Wprowadź wyrażenie: „div(,60)”](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-2.png)
 
-   3. Umieść kursor wewnątrz wyrażenia między lewym nawiasem ( **(** ) a przecinkiem ( **,** ). 
-   Wybierz pozycję **Zawartość dynamiczna**.
+   1. Umieść kursor wewnątrz wyrażenia między lewym nawiasem ( **(** ) a przecinkiem ( **,** ). 
+   Wybierz pozycję **zawartość dynamiczna**.
 
-      ![Umieszczanie kursora i wybieranie polecenia „Zawartość dynamiczna”](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-3.png)
+      ![Ustaw kursor, wybierz pozycję "zawartość dynamiczna"](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-3.png)
 
-   4. Na liście zawartości dynamicznej wybierz pole **Czas podróży —natężenie ruchu**.
+   1. Na liście zawartości dynamicznej wybierz pole **Czas podróży —natężenie ruchu**.
 
-      ![Wybieranie pola „Czas podróży — natężenie ruchu”](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-4.png)
+      ![Wybierz właściwość "ruch czasu podróży"](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-4.png)
 
-   5. Po umieszczeniu pola wewnątrz wyrażenia wybierz pozycję **OK**.
+   1. Po rozpoznaniu wartości właściwości wewnątrz wyrażenia wybierz **przycisk OK**.
 
-      ![Wybieranie pozycji „OK”](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-5.png)
+      ![Wybierz pozycję "OK"](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-5.png)
 
-      W polu **Wartość** będzie teraz widoczna następująca zawartość:
+      Teraz zostanie wyświetlona Właściwość **Value** , jak pokazano poniżej:
 
-      ![Pole „Wartość” z wyrażeniem](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-6.png)
+      ![Właściwość "value" z rozwiązanym wyrażeniem](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-6.png)
 
-5. Zapisz aplikację logiki.
+1. Zapisz aplikację logiki.
 
 Następnie dodaj warunek, który sprawdzi, czy aktualny czas podróży jest dłuży niż określony limit.
 
-## <a name="compare-travel-time-with-limit"></a>Porównywanie czasu podróży z limitem
+## <a name="compare-the-travel-time-with-limit"></a>Porównaj czas podróży z limitem
 
-1. W obszarze poprzedniej akcji wybierz kolejno pozycje **+ Nowy krok** > **Dodaj warunek**. 
+1. W obszarze Poprzednia Akcja wybierz pozycję **nowy krok**.
 
-2. Zmień nazwę warunku na następujący opis: ```If travel time exceeds limit```
+1. W obszarze **Wybierz akcję**wybierz pozycję **wbudowane**i wyszukaj ciąg "warunek", a następnie wybierz akcję **warunek** .
 
-3. Utwórz warunek, który sprawdzi, czy wartość **travelTime** przekracza określony limit, zgodnie z poniższym opisem:
+   ![Wybierz akcję "warunek"](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-condition-action.png)
 
-   1. Wewnątrz warunku kliknij w polu **Wybierz wartość** po lewej stronie (szerokie okno przeglądarki) lub na górze (wąskie okno przeglądarki).
+1. Zmień nazwę warunku na następujący opis: `If travel time exceeds limit`
 
-   2. Na liście zawartości dynamicznej lub liście parametrów wybierz pole **travelTime** w obszarze **Zmienne**.
+1. Kompiluj warunek, który sprawdza, czy wartość właściwości **travelTime** przekracza określony limit, zgodnie z opisem i pokazanym tutaj:
 
-   3. W polu porównania wybierz operator **większe niż**
+   1. Wewnątrz warunku kliknij wewnątrz pola **Wybierz wartość** po lewej stronie warunku.
 
-   4. W polu **Wybierz wartość** z prawej strony (szerokie okno) lub u dołu (wąskie okno) wprowadź limit: ```15```
+   1. Gdy zostanie wyświetlona lista zawartości dynamicznej, w obszarze **zmienne**wybierz właściwość **travelTime** .
 
-   Na przykład jeśli pracujesz w wąskim oknie, warunek jest tworzony następująco:
+      ![Po lewej stronie warunku kompilacji](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-left-side.png)
 
-   ![Tworzenie warunku w wąskim oknie](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-check-travel-time-narrow.png)
+   1. W polu porównania wybierz operator **większe niż**
 
-4. Zapisz aplikację logiki.
+   1. W polu **Wybierz wartość** z prawej strony warunku wprowadź następujący limit:`15`
 
-Następnie dodaj akcję, która zostanie wykonana, jeśli czas podróży przekracza limit.
+      Gdy wszystko będzie gotowe, warunek będzie wyglądać podobnie do tego przykładu:
+
+      ![Kompilowanie warunku](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-check-travel-time.png)
+
+1. Zapisz aplikację logiki.
+
+Następnie Dodaj akcję do uruchomienia, gdy czas podróży przekroczy limit.
 
 ## <a name="send-email-when-limit-exceeded"></a>Wysyłanie wiadomości e-mail po przekroczeniu limitu
 
-Teraz dodaj akcję, która wysyła do Ciebie wiadomość e-mail, jeśli czas podróży przekracza limit. Ta wiadomość e-mail zawiera aktualny czas podróży oraz dodatkowy czas niezbędny do pokonania określonej trasy. 
+Teraz dodaj akcję, która wysyła do Ciebie wiadomość e-mail, jeśli czas podróży przekracza limit. Ta wiadomość e-mail zawiera aktualny czas podróży oraz dodatkowy czas niezbędny do pokonania określonej trasy.
 
-1. W gałęzi warunku **W przypadku wartości true** wybierz opcję **Dodaj akcję**.
+1. W gałęzi warunku w **przypadku wartości true** wybierz pozycję **Dodaj akcję**.
 
-2. Wyszukaj opcję „Wyślij wiadomość e-mail” i wybierz łącznik poczty e-mail oraz akcję wysyłania wiadomości e-mail, której chcesz użyć.
+1. W obszarze **Wybierz akcję**wybierz pozycję **standardowa**. W polu wyszukiwania wprowadź ciąg "Wyślij wiadomość e-mail". Lista zwraca wiele wyników, więc najpierw wybierz odpowiedni łącznik poczty e-mail, na przykład:
 
-   ![Znajdowanie i wybieranie akcji „Wyślij wiadomość e-mail”](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-action-send-email.png)
+   ![Wybieranie łącznika poczty e-mail](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-action-send-email.png)
 
-   * W przypadku osobistych kont Microsoft wybierz pozycję **Outlook.com**. 
    * W przypadku kont służbowych platformy Azure wybierz pozycję **Office 365 Outlook**.
+   * W przypadku osobistych kont Microsoft wybierz pozycję **Outlook.com**.
 
-3. Jeśli nie masz jeszcze połączenia, pojawi się monit o zalogowanie się do swojego konta poczty e-mail.
+1. Po wyświetleniu akcji łącznika wybierz pozycję "Wyślij wiadomość e-mail", której chcesz użyć, na przykład:
+
+   ![Wybieranie akcji „Wyślij wiadomość e-mail”](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-send-email-action.png)
+
+1. Jeśli nie masz jeszcze połączenia, pojawi się monit o zalogowanie się do swojego konta poczty e-mail.
 
    Usługa Logic Apps utworzy połączenie z kontem e-mail.
 
-4. Zmień nazwę akcji na następujący opis: ```Send email with travel time```
+1. Zmień nazwę akcji na następujący opis: `Send email with travel time`
 
-5. W polu **Do** wprowadź adres e-mail adresata. Do celów testowych możesz użyć własnego adresu e-mail.
+1. W polu **Do** wprowadź adres e-mail adresata. Do celów testowych możesz użyć własnego adresu e-mail.
 
-6. W polu **Temat** określ temat wiadomości e-mail i dodaj zmienną **travelTime**.
+1. W polu **Temat** określ temat wiadomości e-mail i dodaj zmienną **travelTime**.
 
-   1. Wprowadź tekst ```Current travel time (minutes):``` ze spacją końcową. 
-   
-   2. Na liście zawartości dynamicznej lub liście parametrów wybierz zmienną **travelTime** w obszarze **Zmienne**. 
-   
-      Na przykład jeśli okno przeglądarki jest wąskie:
+   1. Wprowadź tekst `Current travel time (minutes):` ze spacją końcową. 
 
-      ![Wprowadzanie tekstu tematu i wyrażenia zwracającego czas podróży](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-subject-settings.png)
+   1. Z listy zawartość dynamiczna w obszarze **zmienne**wybierz pozycję **Zobacz więcej**.
 
-7. W polu **Treść** określ treść wiadomości e-mail. 
+      ![Znajdź zmienną "travelTime"](./media/tutorial-build-scheduled-recurring-logic-app-workflow/find-travelTime-variable.png)
 
-   1. Wprowadź tekst ```Add extra travel time (minutes):``` ze spacją końcową. 
-   
-   2. W razie potrzeby poszerz okno przeglądarki, aby wyświetlić listę zawartości dynamicznej. 
-   Na liście zawartości dynamicznej wybierz pozycję **Wyrażenie**.
+   1. Gdy **travelTime** pojawi się w obszarze **zmienne**, wybierz pozycję **travelTime**.
+
+      ![Wprowadzanie tekstu tematu i wyrażenia zwracającego czas podróży](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-travelTime-variable.png)
+
+1. W polu **Treść** określ treść wiadomości e-mail.
+
+   1. Wprowadź tekst `Add extra travel time (minutes):` ze spacją końcową.
+
+   1. Z listy zawartość dynamiczna wybierz pozycję **wyrażenie**.
 
       ![Tworzenie wyrażenia dla treści wiadomości e-mail](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings.png)
 
-   3. W edytorze wyrażeń wprowadź następujące wyrażenie, aby obliczyć, o ile minut przekroczony został limit: ```sub(,15)```
+   1. W edytorze wyrażeń wprowadź następujące wyrażenie, aby obliczyć, o ile minut przekroczony został limit: ```sub(,15)```
 
       ![Wprowadzanie wyrażenia w celu obliczenia dodatkowego czasu podróży w minutach](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-2.png)
 
-   4. Umieść kursor wewnątrz wyrażenia między lewym nawiasem ( **(** ) a przecinkiem ( **,** ). Wybierz pozycję **Zawartość dynamiczna**.
+   1. Umieść kursor wewnątrz wyrażenia między lewym nawiasem ( **(** ) a przecinkiem ( **,** ). Wybierz pozycję **zawartość dynamiczna**.
 
       ![Kontynuacja tworzenia wyrażenia do obliczania dodatkowego czasu podróży w minutach](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-3.png)
 
-   5. W obszarze **Zmienne** wybierz pozycję **travelTime**.
+   1. W obszarze **Zmienne** wybierz pozycję **travelTime**.
 
-      ![Wybieranie pola „travelTime” do użycia w wyrażeniu](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-4.png)
+      ![Wybierz właściwość "travelTime" do użycia w wyrażeniu](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-4.png)
 
-   6. Po umieszczeniu pola wewnątrz wyrażenia wybierz pozycję **OK**.
+   1. Po rozpoznaniu właściwości wewnątrz wyrażenia wybierz **przycisk OK**.
 
-      ![Pole „Treść” z wyrażeniem](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-5.png)
+      ![Właściwość "Body" z rozwiązanym wyrażeniem](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-5.png)
 
-      W polu **Treść** będzie teraz widoczna następująca zawartość:
+      Teraz zostanie wyświetlona Właściwość **Body** , jak pokazano poniżej:
 
-      ![Pole „Treść” z wyrażeniem](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-6.png)
+      ![Właściwość "Body" z rozwiązanym wyrażeniem](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-6.png)
 
-8. Zapisz aplikację logiki.
+1. Zapisz aplikację logiki.
 
 Następnie przetestuj aplikację logiki, która powinna wyglądać następująco:
 
@@ -308,8 +334,11 @@ Następnie przetestuj aplikację logiki, która powinna wyglądać następująco
 
 ## <a name="run-your-logic-app"></a>Uruchamianie aplikacji logiki
 
-Aby ręcznie uruchomić swoją aplikację logiki, na pasku narzędzi projektanta wybierz pozycję **Uruchom**. Jeśli aktualny czas podróży będzie się mieścił w limicie, aplikacja logiki nie zrobi nic i będzie czekać, aż upłynie ustawiony czas przed ponownym sprawdzeniem.
-Jeśli jednak aktualny czas podróży przekroczy limit, otrzymasz wiadomość e-mail z aktualnym czasem podróży i informacją, o ile przekracza on limit. Oto przykładowa wiadomość e-mail wysłana przez aplikację logiki:
+Aby ręcznie uruchomić aplikację logiki, na pasku narzędzi projektanta wybierz pozycję **Uruchom**.
+
+* Jeśli bieżący czas podróży pozostaje poniżej limitu, aplikacja logiki nie wykonuje żadnych innych czynności i czeka lub następnego interwału przed ponownym sprawdzeniem. 
+
+* Jeśli bieżący czas podróży przekracza limit, otrzymasz wiadomość e-mail z bieżącym czasem podróży i liczbą minut powyżej limitu. Oto przykładowa wiadomość e-mail wysłana przez aplikację logiki:
 
 ![Wiadomości e-mail z czasem podróży](./media/tutorial-build-scheduled-recurring-logic-app-workflow/email-notification.png)
 
@@ -317,7 +346,7 @@ Jeśli nie dostaniesz żadnych wiadomości e-mail, sprawdź folder wiadomości-�
 
 Gratulacje, udało Ci się utworzyć i uruchomić cykliczną aplikację logiki z użyciem harmonogramu. 
 
-Aby utworzyć inne aplikacje logiki, które używają wyzwalacza **Harmonogram — cyklicznie**, zapoznaj się z tymi szablonami, które będą dostępne po utworzeniu aplikacji logiki:
+Aby utworzyć inne aplikacje logiki, które używają wyzwalacza **cykl** , zapoznaj się z tymi szablonami, które są dostępne po utworzeniu aplikacji logiki:
 
 * Otrzymywanie codziennych przypomnień pocztą e-mail.
 * Usuwanie starszych obiektów blob na platformie Azure.
@@ -325,14 +354,15 @@ Aby utworzyć inne aplikacje logiki, które używają wyzwalacza **Harmonogram �
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy grupa zasobów zawierająca aplikację logiki i powiązane zasoby nie będzie już potrzebna, usuń ją. W menu głównym platformy Azure przejdź do pozycji **Grupy zasobów** i wybierz grupę zasobów aplikacji logiki. Wybierz pozycję **Usuń grupę zasobów**. Aby potwierdzić, wprowadź nazwę grupy zasobów, a następnie wybierz pozycję **Usuń**.
+Jeśli przykładowa aplikacja logiki nie jest już potrzebna, Usuń grupę zasobów zawierającą aplikację logiki i powiązane zasoby. 
 
-![„Omówienie” > „Usuń grupę zasobów”](./media/tutorial-build-scheduled-recurring-logic-app-workflow/delete-resource-group.png)
+1. W menu głównym platformy Azure przejdź do pozycji **Grupy zasobów** i wybierz grupę zasobów aplikacji logiki.
 
-## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
+1. W menu Grupa zasobów wybierz pozycję **Przegląd** > **Usuń grupę zasobów**. 
 
-* Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
+   ![„Omówienie” > „Usuń grupę zasobów”](./media/tutorial-build-scheduled-recurring-logic-app-workflow/delete-resource-group.png)
+
+1. Wprowadź nazwę grupy zasobów jako potwierdzenie, a następnie wybierz pozycję **Usuń**.
 
 ## <a name="next-steps"></a>Następne kroki
 

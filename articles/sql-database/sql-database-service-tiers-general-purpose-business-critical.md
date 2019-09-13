@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 02/23/2019
-ms.openlocfilehash: decb4428321d5083d6ba7af134e223eb2fa5a912
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8709d88c4d21a40ac8ebb27e5c1669d8f5fa3555
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566709"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934222"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Azure SQL Database warstw usług
 
@@ -26,10 +26,42 @@ Azure SQL Database jest oparta na architekturze SQL Server Database Engine, któ
 - [Krytyczne](sql-database-service-tier-business-critical.md)dla działania firmy, które jest przeznaczone do obsługi obciążeń o małym opóźnieniu z jedną repliką z możliwością odczytu.
 - [Skalowanie](sql-database-service-tier-hyperscale.md), które jest przeznaczone dla bardzo dużych baz danych (do 100 TB) z wieloma replikami z możliwością odczytu.
 
-W tym artykule omówiono zagadnienia związane z magazynowaniem i tworzeniem kopii zapasowych w ramach modeli zakupu opartych na rdzeń wirtualny.
+W tym artykule omówiono różnice między warstwami usług, zagadnieniami dotyczącymi magazynu i kopii zapasowych w przypadku warstw usług dla celów ogólnych i krytycznych w modelu zakupu opartego na rdzeń wirtualny.
+
+## <a name="service-tier-comparison"></a>Porównanie warstwy usług
+
+W poniższej tabeli opisano kluczowe różnice między warstwami usług dla najnowszej generacji (5 rdzeń). Należy zauważyć, że cechy warstwy usług mogą się różnić w pojedyncza baza danych i wystąpienia zarządzanego.
+
+| | Typ zasobu | Ogólne zastosowanie |  Hiperskala | Krytyczne dla działania firmy |
+|:---:|:---:|:---:|:---:|:---:|
+| **Najlepsze dla** | |  Większość obciążeń firmowych. Oferuje zorientowane na budżety Opcje obliczeniowe i magazynowe. | Aplikacje danych o dużych wymaganiach dotyczących pojemności danych umożliwiają automatyczne skalowanie magazynu o rozmiarze do 100 TB oraz płynne skalowanie obliczeniowe. | Aplikacje OLTP o dużej szybkości transakcji i najniższym opóźnieniu we/wy. Oferuje największą odporność na błędy przy użyciu kilku izolowanych replik.|
+|  **Dostępne w typie zasobu:** ||Pojedyncza baza danych/Pula elastyczna/wystąpienie zarządzane | Pojedyncza baza danych | Pojedyncza baza danych/Pula elastyczna/wystąpienie zarządzane |
+| **Rozmiar obliczeń**|Pojedyncza baza danych/Pula elastyczna | od 1 do 80 rdzeni wirtualnych | od 1 do 80 rdzeni wirtualnych | od 1 do 80 rdzeni wirtualnych |
+| | Wystąpienie zarządzane | 4, 8, 16, 24, 32, 40, 64, 80 rdzeni wirtualnych | ND | 4, 8, 16, 24, 32, 40, 64, 80 rdzeni wirtualnych |
+| | Zarządzane pule wystąpień | 2, 4, 8, 16, 24, 32, 40, 64, 80 rdzeni wirtualnych | ND | ND |
+| **Typ magazynu** | Wszyscy | Magazyn zdalny w warstwie Premium (na wystąpienie) | Niepołączony magazyn z lokalną pamięcią podręczną dysków SSD (na wystąpienie) | Lokalny magazyn SSD o wysokiej szybkości (na wystąpienie) |
+| **Rozmiar bazy danych** | Pojedyncza baza danych/Pula elastyczna | 5 GB – 4 TB | Do 100 TB | 5 GB – 4 TB |
+| | Wystąpienie zarządzane  | 32 GB – 8 TB | ND | 32 GB – 4 TB |
+| **Rozmiar magazynu** | Pojedyncza baza danych/Pula elastyczna | 5 GB – 4 TB | Do 100 TB | 5 GB – 4 TB |
+| | Wystąpienie zarządzane  | 32 GB – 8 TB | ND | 32 GB – 4 TB |
+| **Rozmiar bazy danych TempDB** | Pojedyncza baza danych/Pula elastyczna | [32 GB na rdzeń wirtualny](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-for-provisioned-compute) | [32 GB na rdzeń wirtualny](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier-for-provisioned-compute) | [32 GB na rdzeń wirtualny](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute) |
+| | Wystąpienie zarządzane  | [24 GB na rdzeń wirtualny](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | ND | Do 4 TB — [ograniczone przez rozmiar magazynu](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
+| **Przepływność we/wy** | Pojedyncza baza danych | [500 operacji we/wy na sekundę](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-for-provisioned-compute) | Efektywne operacje we/wy będą zależeć od obciążenia. | [4000 operacji we/wy na sekundę](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute)|
+| | Wystąpienie zarządzane | [100-250 MB/s i 500-7500 operacji we/wy na plik](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | ND | [1375 operacji we/wy na sekundę](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
+| **Przepływność zapisu dziennika** | Pojedyncza baza danych | [1,875 MB/s na rdzeń wirtualny (maksymalnie 30 MB/s)](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-for-provisioned-compute) | 100 MB/s | [6 MB/s na rdzeń wirtualny (maksymalnie 96 MB/s)](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute) |
+| | Wystąpienie zarządzane | [3 MB/s na rdzeń wirtualny (maksymalnie 22 MB/s)](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | ND | [4 MB/s na rdzeń wirtualny (maksymalnie 48 MB/s)](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
+|**Dostępność**|Wszyscy| 99,99% |  [99,95% z jedną repliką pomocniczą, 99,99% z więcej replik](sql-database-service-tier-hyperscale-faq.md#what-slas-are-provided-for-a-hyperscale-database) | 99,99% <br/> [99,995% ze strefą nadmiarową pojedynczą bazą danych](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
+|**Kopii zapasowych**|Wszyscy|RA-GRS, 7-35 dni (domyślnie 7 dni)| RA-GRS, 7 dni, stałe odzyskiwanie do czasu w czasie (kopie) | RA-GRS, 7-35 dni (domyślnie 7 dni) |
+|**Przetwarzanie OLTP w pamięci** | | ND | ND | Dostępne |
+|**Repliki tylko do odczytu**| | 0  | 0 - 4 | 1 (wbudowane, wliczone w cenę) |
+|**Cennik/rozliczenia** | Pojedyncza baza danych | [rdzeń wirtualny, zarezerwowany magazyn i magazyn kopii zapasowych](https://azure.microsoft.com/pricing/details/sql-database/single/) są rozliczone. <br/>Liczba operacji we/wy nie jest naliczana. | [rdzeń wirtualny dla każdej repliki i używanej pamięci masowej](https://azure.microsoft.com/pricing/details/sql-database/single/) . <br/>Liczba operacji we/wy nie jest naliczana.<br/>Magazyn kopii zapasowych nie jest jeszcze naliczany. | [rdzeń wirtualny, zarezerwowany magazyn i magazyn kopii zapasowych](https://azure.microsoft.com/pricing/details/sql-database/single/) są rozliczone. <br/>Liczba operacji we/wy nie jest naliczana. |
+|| Wystąpienie zarządzane | [rdzeń wirtualny i zarezerwowany magazyn](https://azure.microsoft.com/pricing/details/sql-database/managed/) są rozliczone. <br/>Liczba operacji we/wy nie jest naliczana.<br/>Magazyn kopii zapasowych nie jest jeszcze naliczany. | ND | [rdzeń wirtualny i zarezerwowany magazyn](https://azure.microsoft.com/pricing/details/sql-database/managed/) są rozliczone. <br/>Liczba operacji we/wy nie jest naliczana.<br/>Magazyn kopii zapasowych nie jest jeszcze naliczany. | 
+|**Modele rabatów**| | [Wystąpienia zarezerwowane](sql-database-reserved-capacity.md)<br/>[Korzyść użycia hybrydowego platformy Azure](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (niedostępne w subskrypcjach tworzenia i testowania)<br/>Subskrypcje dla [przedsiębiorstw](https://azure.microsoft.com/offers/ms-azr-0148p/) i [płatność zgodnie z rzeczywistym](https://azure.microsoft.com/offers/ms-azr-0023p/) użyciem — tworzenie i testowanie| [Korzyść użycia hybrydowego platformy Azure](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (niedostępne w subskrypcjach tworzenia i testowania)<br/>Subskrypcje dla [przedsiębiorstw](https://azure.microsoft.com/offers/ms-azr-0148p/) i [płatność zgodnie z rzeczywistym](https://azure.microsoft.com/offers/ms-azr-0023p/) użyciem — tworzenie i testowanie| [Wystąpienia zarezerwowane](sql-database-reserved-capacity.md)<br/>[Korzyść użycia hybrydowego platformy Azure](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (niedostępne w subskrypcjach tworzenia i testowania)<br/>Subskrypcje dla [przedsiębiorstw](https://azure.microsoft.com/offers/ms-azr-0148p/) i [płatność zgodnie z rzeczywistym](https://azure.microsoft.com/offers/ms-azr-0023p/) użyciem — tworzenie i testowanie|
+
+Aby uzyskać więcej informacji, Zobacz szczegółowe różnice między warstwami usług w [jednej bazie danych (rdzeń wirtualny)](sql-database-vcore-resource-limits-single-databases.md), [pojedynczej puli baz danych (rdzeń wirtualny)](sql-database-dtu-resource-limits-single-databases.md), [pojedynczej bazie danych (DTU)](sql-database-dtu-resource-limits-single-databases.md), [pulach pojedynczej bazy danych (DTU)](sql-database-dtu-resource-limits-single-databases.md)i [wystąpieniem zarządzanym](sql-database-managed-instance-resource-limits.md) Page.
 
 > [!NOTE]
-> Aby uzyskać informacje na temat warstwy usługi na potrzeby skalowania w modelu zakupu opartego na rdzeń wirtualny, zobacz podskalowanie [warstwy usług](sql-database-service-tier-hyperscale.md). Aby zapoznać się z porównaniem modelu zakupu opartego na rdzeń wirtualny z modelem zakupów opartym na jednostkach DTU, zobacz [Azure SQL Database kupowanie modeli i zasobów](sql-database-purchase-models.md).
+> Aby uzyskać informacje na temat warstwy usługi na potrzeby skalowania w modelu zakupu opartego na rdzeń wirtualny, zobacz [podskalowanie warstwy usług](sql-database-service-tier-hyperscale.md). Aby zapoznać się z porównaniem modelu zakupu opartego na rdzeń wirtualny z modelem zakupów opartym na jednostkach DTU, zobacz [Azure SQL Database kupowanie modeli i zasobów](sql-database-purchase-models.md).
 
 ## <a name="data-and-log-storage"></a>Magazyn danych i dzienników
 
@@ -57,7 +89,7 @@ Aby monitorować bieżący łączny rozmiar plików MDF i LDF, użyj [sp_spaceus
 
 Magazyn dla kopii zapasowych bazy danych jest przypisywany do obsługi funkcji przywracania do punktu w czasie (kopie) oraz [długoterminowego przechowywania (LTR)](sql-database-long-term-retention.md) SQL Database. Ten magazyn jest przypisywany osobno dla każdej bazy danych i rozliczany jako dwa oddzielne opłaty za bazę danych.
 
-- **KOPIE**: Kopie zapasowe poszczególnych baz danych są kopiowane do magazynu geograficznie nadmiarowego do [odczytu (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md) . Rozmiar magazynu jest zwiększany dynamicznie w miarę tworzenia nowych kopii zapasowych. Magazyn jest używany przez cotygodniowe pełne kopie zapasowe, codzienne różnicowe kopie zapasowe i kopie zapasowe dziennika transakcji, które są kopiowane co 5 minut. Użycie magazynu zależy od szybkości zmiany bazy danych i okresu przechowywania kopii zapasowych. Dla każdej bazy danych można skonfigurować oddzielny okres przechowywania od 7 do 35 dni. Minimalna wielkość magazynu równa 100% (1x) rozmiaru bazy danych jest zapewniana bez dodatkowych opłat. W przypadku większości baz danych ta kwota jest wystarczająca do przechowywania 7 dni wykonywania kopii zapasowych.
+- **KOPIE**: Kopie zapasowe poszczególnych baz danych są kopiowane do [magazynu geograficznie nadmiarowego do odczytu (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md) . Rozmiar magazynu jest zwiększany dynamicznie w miarę tworzenia nowych kopii zapasowych. Magazyn jest używany przez cotygodniowe pełne kopie zapasowe, codzienne różnicowe kopie zapasowe i kopie zapasowe dziennika transakcji, które są kopiowane co 5 minut. Użycie magazynu zależy od szybkości zmiany bazy danych i okresu przechowywania kopii zapasowych. Dla każdej bazy danych można skonfigurować oddzielny okres przechowywania od 7 do 35 dni. Minimalna wielkość magazynu równa 100% (1x) rozmiaru bazy danych jest zapewniana bez dodatkowych opłat. W przypadku większości baz danych ta kwota jest wystarczająca do przechowywania 7 dni wykonywania kopii zapasowych.
 - **LTR**: SQL Database oferuje możliwość skonfigurowania długoterminowego przechowywania pełnych kopii zapasowych przez maksymalnie 10 lat. W przypadku skonfigurowania zasad LTR te kopie zapasowe są przechowywane w magazynie RA-GRS automatycznie, ale można kontrolować, jak często są kopiowane kopie zapasowe. Aby spełnić inne wymagania dotyczące zgodności, można wybrać różne okresy przechowywania dla cotygodniowych, comiesięcznych i/lub corocznych kopii zapasowych. Wybrana konfiguracja określa, ile miejsca do magazynowania będzie używany do tworzenia kopii zapasowych. Aby oszacować koszt magazynu LTR, możesz użyć kalkulatora cen. Aby uzyskać więcej informacji, zobacz [SQL Database okres przechowywania długoterminowego](sql-database-long-term-retention.md).
 
 ## <a name="next-steps"></a>Następne kroki

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/26/2018
-ms.openlocfilehash: dcd9095a1e5010a3d0dd5ea7ad884e36e24c7c1d
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 9424ebbd4ed2e1536a10d77a88257bad948628e2
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814009"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915408"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>Tworzenie Apache Spark zadań przesyłania strumieniowego o wysokiej dostępności przy użyciu PRZĘDZy
 
@@ -29,7 +29,7 @@ Przesyłanie strumieniowe Spark reprezentuje ciągły strumień danych przy uży
 
 Rdzeń Spark używa *rozproszonych zestawów danych* (odporne). Odporne Dystrybuuj dane między wieloma węzłami w klastrze, gdzie każdy węzeł ogólnie przechowuje swoje dane w pamięci w celu uzyskania najlepszej wydajności. Każdy RDD reprezentuje zdarzenia zbierane w ramach interwału wsadowego. Gdy upłynie interwał wsadowy, przesyłanie strumieniowe w usłudze Spark generuje nowy RDD zawierający wszystkie dane z tego interwału. Ten ciągły zestaw odporne jest zbierany w DStream. Aplikacja do przesyłania strumieniowego Spark przetwarza dane przechowywane w RDD każdej partii.
 
-![DStream platformy Spark](./media/apache-spark-streaming-high-availability/DStream.png)
+![DStream platformy Spark](./media/apache-spark-streaming-high-availability/apache-spark-dstream.png)
 
 ## <a name="spark-structured-streaming-jobs"></a>Zadania przetwarzania strumieniowego platformy Spark
 

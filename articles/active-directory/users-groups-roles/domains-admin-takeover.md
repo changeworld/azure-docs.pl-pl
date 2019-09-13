@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a756f0d9fe3669ab9d0f2b4576a35be5d2112a87
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: c05e1dc720f49eb190ccdbe1826a1a347fba7fa1
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70872199"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914775"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Przejmowanie niezarządzanego katalogu jako administrator w Azure Active Directory
 
@@ -43,7 +43,7 @@ Niektóre produkty, które obejmują programy SharePoint i OneDrive, takie jak O
 
 3. W wiadomości e-mail z potwierdzeniem z Power BI wybierz pozycję **tak**.
 
-4. Zaloguj się do [Centrum administracyjnego Microsoft 365](https://admin.microsoft.com) przy użyciu konta użytkownika Power BI. Zostanie wyświetlony komunikat z instrukcjami, aby zostać **administratorem** nazwy domeny, która została już zweryfikowana w niezarządzanej dzierżawie. Wybierz pozycję **tak, chcę być administratorem**.
+4. Zaloguj się do [Centrum administracyjnego Microsoft 365](https://portal.office.com/admintakeover) przy użyciu konta użytkownika Power BI. Zostanie wyświetlony komunikat z instrukcjami, aby zostać **administratorem** nazwy domeny, która została już zweryfikowana w niezarządzanej dzierżawie. Wybierz pozycję **tak, chcę być administratorem**.
   
    ![pierwszy zrzut ekranu, który ma być administratorem](./media/domains-admin-takeover/become-admin-first.png)
   
@@ -168,7 +168,7 @@ Parametr | Użycie
     Confirm-MsolEmailVerifiedDomain -DomainName *your_domain_name*
    ```
   
-   Na przykład:
+   Przykład:
   
    ```powershell
     Confirm-MsolEmailVerifiedDomain -DomainName contoso.com

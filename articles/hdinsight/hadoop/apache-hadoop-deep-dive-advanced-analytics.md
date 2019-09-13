@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 973ac928900cc02f176931ffa3865c2997e552f2
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 4bec14cd3aa88d885f83142143c7a901ca82057b
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810850"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918255"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Głębokie szczegółowe — analiza zaawansowana
 
@@ -23,7 +23,7 @@ Usługa HDInsight umożliwia uzyskanie cennych informacji z dużych ilości dany
 
 ## <a name="advanced-analytics-process"></a>Proces zaawansowanej analizy
 
-![Proces](./media/apache-hadoop-deep-dive-advanced-analytics/process.png)
+![Proces](./media/apache-hadoop-deep-dive-advanced-analytics/hdinsight-analytic-process.png)
 
 Po zidentyfikowaniu problemu biznesowego i rozpoczęciu zbierania i przetwarzania danych należy utworzyć model, który reprezentuje pytanie, które ma zostać przewidywalna. Model będzie używać co najmniej jednego algorytmu uczenia maszynowego w celu zapewnienia typu przewidywania najlepiej dopasowanego do potrzeb Twojej firmy.  Większość danych powinna być używana do uczenia modelu przy użyciu reszty służącej do testowania lub szacowania. 
 
@@ -33,7 +33,7 @@ Po utworzeniu, załadowaniu, przetestowaniu i ocenie modelu, następnym krokiem 
 
 Zaawansowane rozwiązania analityczne zapewniają zestaw algorytmów uczenia maszynowego. Poniżej znajduje się podsumowanie kategorii algorytmów i skojarzonych typowych przypadków użycia biznesowego.
 
-![Machine Learning przypadków użycia](./media/apache-hadoop-deep-dive-advanced-analytics/ml-use-cases.png)
+![Machine Learning przypadków użycia](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-use-cases.png)
 
 Wraz z wybraniem algorytmów najlepszego dopasowania należy wziąć pod uwagę, czy należy podać dane do szkoleń. Algorytmy uczenia maszynowego są podzielone w następujący sposób:
 
@@ -98,7 +98,7 @@ W tym scenariuszu w ramach zaawansowanej analizy istnieją trzy kluczowe zadania
 
 W tym przykładzie zastosowano zestaw obrazu CIFAR-10 skompilowany i rozdystrybuowany przez polecenie Alex Krizhevsky, Vinod Nair i Geoffrey Hinton. Zestaw danych CIFAR-10 zawiera 60 000 32 x 32 kolorowych obrazów należących do 10 wzajemnie wyłącznych klas:
 
-![Obrazy](./media/apache-hadoop-deep-dive-advanced-analytics/ml-images.png)
+![Obrazy](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-images.png)
 
 Aby uzyskać więcej szczegółowych informacji na temat zestawu danych, zobacz Alex Krizhevsky — [uczenie wielu warstw funkcji z niewielkich obrazów](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf).
 
@@ -111,7 +111,7 @@ Zestaw danych został podzielony na partycje do zestawu szkoleniowego 50 000 obr
 
 Całe przetwarzanie i ocenianie obrazów 10 000 trwa krócej niż jedna minuta w klastrze z 4 węzłami procesu roboczego. Model dokładnie przewidywalnuje etykiety ~ 9 100 (91%) rastrow. Macierz niepomyle ilustruje najczęstsze błędy klasyfikacji. Na przykład macierz pokazuje, że nieoznakowanie psów jako koty i odwrotnie występuje częściej niż w przypadku innych par etykiet.
 
-![Wyniki](./media/apache-hadoop-deep-dive-advanced-analytics/ml-results.png)
+![Wyniki](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-results.png)
 
 ### <a name="try-it-out"></a>Wypróbuj!
 

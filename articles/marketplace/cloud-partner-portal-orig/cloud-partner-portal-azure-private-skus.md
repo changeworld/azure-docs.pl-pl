@@ -1,104 +1,180 @@
 ---
-title: Jednostki SKU w prywatnej i plany | Portal Azure Marketplace
-description: Jak zarządzać dostępność oferty przy użyciu prywatnego jednostki SKU.
+title: Prywatne jednostki SKU i plany | Portal Azure Marketplace
+description: Jak używać prywatnych jednostek SKU do zarządzania dostępnością oferty.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 08/15/2019
 ms.author: pabutler
-ms.openlocfilehash: 6efdb1c28777d9230727066fdba03d2850be62b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 940b50cf4a04abacd4d7be2104dd97fb8b3db736
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935921"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883116"
 ---
-<a name="private-skus-and-plans"></a>Jednostki SKU w prywatnej i plany
+<a name="private-skus-and-plans"></a>Prywatne jednostki SKU i plany
 ============
 
-Jednostki SKU w prywatnej pozwalają ograniczyć dostępności jednostki SKU dla specyficznych klientów. Gdy jednostka SKU jest oznaczony jako prywatny, nie jest dostępna w dowolnej publicznego katalogu, w tym na [portalu Azure Marketplace](https://azuremarketplace.microsoft.com) i [witryny Azure portal](https://portal.azure.com). W witrynie Azure portal tylko klientów z dostępem do jednostki SKU mogli je zobaczyć. Ponadto są również jest proszony mają dostęp do oferty prywatne.
+Prywatne jednostki SKU umożliwiają ograniczenie dostępności jednostek SKU do określonych klientów. Gdy jednostka SKU jest oznaczona jako prywatna, nie jest dostępna w żadnym katalogu publicznym, w tym w witrynie [Azure Marketplace](https://azuremarketplace.microsoft.com) i [Azure Portal](https://portal.azure.com). Na Azure Portal tylko klienci z dostępem do jednostki SKU mogą ją zobaczyć. Ponadto również zostanie wyświetlony monit z prośbą o dostęp do ofert prywatnych.
 
 >[!NOTE]
->Prywatne jednostki SKU musi mieć nowe unikatowe identyfikatory jednostka SKU/Plan w celu uniknięcia konfliktów z od publicznego jednostek SKU.
+>Prywatne jednostki SKU muszą mieć nowe unikatowe identyfikatory jednostki SKU/planu, aby uniknąć konfliktów z publicznymi jednostkami SKU.
 
-Jednostki SKU w prywatnej umożliwia obsługę następujących scenariuszy:
+Prywatnych jednostek SKU można używać do obsługi następujących scenariuszy:
 
-1.  Publikowanie oprogramowania, które mają tylko dostępne publicznie dla określonych klientów i nie jest dostępna publicznie.
-2.  Publikowanie zmian publicznego oprogramowania cenie dostosowane dla określonych odbiorców.
-3.  Publikowanie zmian publicznego oprogramowania za pomocą dostosowanych opis i warunki (przy użyciu nowej oferty).
+1.  Publikuj oprogramowanie, które ma być dostępne wyłącznie dla określonych klientów i nie jest publicznie dostępne.
+2.  Publikowanie odmian oprogramowania publicznego według dostosowanej ceny dla określonych klientów.
+3.  Publikowanie odmian oprogramowania publicznego przy użyciu dostosowanego opisu i warunków (za pośrednictwem nowej oferty).
 
-Jeśli chcesz zmienić cenę, można ponownie użyć dysków z inną jednostkę SKU w ramach tej samej oferty. Za pomocą prywatnej jednostek SKU nie trzeba ponownie przesłać dysków dla jednostek SKU.
+Jeśli chcesz tylko zmienić cenę, możesz ponownie użyć dysków z innej jednostki SKU w tej samej ofercie. W przypadku prywatnych jednostek SKU nie trzeba ponownie przesyłać dysków między jednostkami SKU.
 
-<a name="mark-a-sku-private"></a>Oznacz prywatnej jednostki SKU
+<a name="mark-a-sku-private"></a>Oznacz jednostkę SKU jako prywatną
 ---------------------
 
-Aby oznaczyć jednostkę SKU jako prywatny, przełącz opcję pytaniem, jeśli jednostka SKU jest prywatny:
+Aby oznaczyć jednostkę SKU jako prywatną, przełącz opcję z pytaniem, czy jednostka SKU jest prywatna:
 
-![Oznacz jednostkę SKU jako prywatne](./media/cloud-partner-portal-publish-virtual-machine/markingskuprivate.png)
+![Oznacz jednostkę SKU jako prywatną](./media/cloud-partner-portal-publish-virtual-machine/markingskuprivate.png)
 
-Można ponownie użyć dysków w inną jednostkę SKU i zmodyfikować ceny lub opisu. Aby ponownie użyć dysków, wybierz **tak** w odpowiedzi na "Ma jednostkę SKU ponownego użycia obrazy z publicznego jednostki SKU" monit.
+Można ponownie użyć dysków w innej jednostce SKU i zmodyfikować Cennik lub opis. Aby ponownie użyć dysków, wybierz pozycję **tak** jako odpowiedź na monit "czy ta jednostka SKU ponownie wykorzystuje obrazy z publicznej jednostki SKU".
 
-Jeśli oferta ma inne jednostki SKU z dyskami reuseable jednostki SKU jest oznaczony jako prywatny, jest wymagane, aby wskazać, że jednostka SKU ponownie używa dysków z inną jednostkę SKU. Jesteś także wymagana do określania docelowych odbiorców w ramach jednostki SKU prywatne.
+Jeśli jednostka SKU jest oznaczona jako prywatna, a oferta ma inne jednostki SKU z dyskami z możliwością ponownego użycia, wymagane jest wskazanie, że jednostka SKU ponownie używa dysków z innej jednostki SKU. Należy również określić docelowych odbiorców dla prywatnej jednostki SKU.
 
 >[!NOTE]
->Po jej opublikowania publicznego jednostki SKU nie można dokonać prywatnych.
+>Po opublikowaniu nie można przeprowadzić prywatnej jednostki SKU.
 
 <a name="select-an-image"></a>Wybierz obraz
 ------------------
 
-Można podać nowe dyski dla prywatnych jednostki SKU lub ponownie użyć tych samych dysków poprawiał w innej jednostki SKU i tylko modyfikowanie ceny lub opis. Aby ponownie użyć dysków, wybierz **tak** w odpowiedzi na monit "Does ten obraz ponownego użycia jednostki SKU z publicznych jednostki SKU".
+Możesz udostępnić nowe dyski dla prywatnej jednostki SKU lub użyć tych samych dysków już udostępnionych w innej jednostce SKU, modyfikując Cennik lub opis. Aby ponownie użyć dysków, wybierz pozycję **tak** jako odpowiedź na monit "czy ta jednostka SKU ponownie używa obrazu z publicznej jednostki SKU".
 
-![Wskazać obraz ponownego użycia.](./media/cloud-partner-portal-publish-virtual-machine/selectimage1.png)
+![Wskaż ponowne użycie obrazu](./media/cloud-partner-portal-publish-virtual-machine/selectimage1.png)
 
-Po upewnieniu się, że jednostka SKU ponownie używa obrazów z inną jednostkę SKU, należy zidentyfikować jednostkę SKU, który jest źródłem obrazów.
-
-Monity na następnym ekranie Przechwyć show sposób identyfikacji prywatnej jednostki SKU spowoduje ponowne użycie obrazów z wybrana jednostka SKU:
+Po potwierdzeniu, że jednostka SKU ponownie używa obrazów, wybierz źródłową lub *podstawową* jednostkę SKU dla obrazów:
 
 ![Wybierz obraz](./media/cloud-partner-portal-publish-virtual-machine/selectimage2.png)
 
-Po opublikowaniu oferty obrazów z wybrana jednostka SKU powinno być udostępniane w ramach prywatnej identyfikator jednostki SKU z niestandardowych stawki lub warunków. Prywatne jednostki SKU tylko będzie widoczny dla docelowej grupie odbiorców.
+Po opublikowaniu oferty obrazy z wybranej jednostki SKU byłyby udostępniane w ramach prywatnego identyfikatora jednostki SKU przy użyciu niestandardowych stawek/warunków. Prywatna jednostka SKU będzie widoczna tylko dla docelowych odbiorców.
 
-Aktualizowanie obrazu możesz tylko będzie potrzebować można zaktualizować obrazu podstawowej jednostki SKU. Za kulisami obrazu dla jednostki SKU w prywatnej zostaną również zaktualizowane automatycznie. Podobnie jeśli usuniesz obrazu z podstawowej jednostki SKU obrazu będzie również usunięte z prywatnego jednostki SKU.
+W przypadku aktualizacji obrazów wymagane jest tylko zaktualizowanie obrazu podstawowej jednostki SKU. W tle obraz prywatnej jednostki SKU zostanie również zaktualizowany automatycznie. Podobnie po usunięciu obrazu z podstawowej jednostki SKU obraz zostanie również usunięty z prywatnej jednostki SKU.
 
 <a name="restricting-the-audience"></a>Ograniczanie odbiorców
 ------------------------
 
-Oferty prywatne można znaleźć i wdrożona tylko przez wybranych użytkowników.
-Obecnie obsługujemy porę przy użyciu identyfikatory subskrypcji.
+Oferty prywatne można znaleźć i wdrożyć tylko dla użytkowników wybranych.
+Obecnie obsługujemy kierowanie użytkowników przy użyciu identyfikatorów subskrypcji.
 
-Te subskrypcje można wprowadzić za pomocą formularza ręcznego wprowadzania **dla subskrypcji w maksymalnie 10**, lub przez przekazanie pliku CSV, który umożliwia **dla subskrypcji w maksymalnie 20 000**.
+Te subskrypcje można wprowadzać za pośrednictwem formularza ręcznego wprowadzania do **10 subskrypcji**lub przez przekazanie pliku CSV, który umożliwia korzystanie **z maksymalnie 20 000 subskrypcji**.
 
-Ręczne wprowadzanie ograniczonych odbiorców dla:
+Wpis ręczny dla odbiorców z ograniczeniami:
 
-![Ręcznie ograniczyć odbiorców](./media/cloud-partner-portal-publish-virtual-machine/restrictaudience1.png)
+![Ręcznie Ogranicz odbiorców](./media/cloud-partner-portal-publish-virtual-machine/restrictaudience1.png)
 
-Przekaż CSV dla odbiorców ograniczeniami:
+Przekazywanie woluminów CSV dla odbiorców z ograniczeniami:
 
-![Użyj pliku CSV, aby ograniczyć odbiorców](./media/cloud-partner-portal-publish-virtual-machine/restrictaudience2.png)
+![Używanie CSV do ograniczania odbiorców](./media/cloud-partner-portal-publish-virtual-machine/restrictaudience2.png)
 
-Przykład zawartości pliku CSV:
+Zawartość pliku przykładowego CSV:
 
             Type,Id,Description
             SubscriptionId,7738d703-3135-4e8d-8b81-1e70379abd9d,Private Customer
 
-Po przełączeniu się z ręcznego wprowadzania do pliku CSV należy przekazać widoku lub z pliku CSV do ręcznego wprowadzania, stara lista identyfikatory subskrypcji z uprawnieniami do jednostki SKU nie są zachowywane. Zostanie wyświetlone ostrzeżenie, a listy tylko zostanie zastąpiony podczas zapisywania tej oferty.
+Po przełączeniu się z ręcznego wpisu do widoku przekazywania woluminów CSV lub z woluminu CSV do wpisu ręcznego stara lista identyfikatorów subskrypcji z dostępem do jednostki SKU nie jest zachowywana. Wyświetlane jest ostrzeżenie, a lista jest zastępowana tylko przy zapisywaniu oferty.
 
-<a name="sync-private-subscriptions"></a>Subskrypcje prywatne synchronizacji
+<a name="managing-private-audiences"></a>Zarządzanie prywatnymi odbiorcami
 -------------------------
 
-Podczas dodawania subskrypcji do opublikowane oferty prywatne jednostki SKU lub planu, nie musisz ponownie opublikować ofertę Dodaj informacje o odbiorców. Po prostu użyć Identyfikatora subskrypcji platformy Azure (planów i jednostki SKU) lub identyfikator dzierżawy (tylko w planach), aby dodać odbiorców.
+**Aby można było zaktualizować odbiorców bez ponownego publikowania całej oferty, należy wprowadzić zmiany wprowadzone przez odbiorców (przy użyciu interfejsu użytkownika lub interfejsu API), a następnie zainicjować akcję "Synchronizuj odbiorców prywatnych".**
 
-<a name="previewing-private-offers"></a>Wyświetlanie podglądu prywatne oferuje
+Jeśli odbiorca ma 10 lub mniej subskrypcji, można nim zarządzać całkowicie przy użyciu interfejsu użytkownika CPP.
+
+Jeśli odbiorcy są więcej niż 10 subskrypcji, możesz nimi zarządzać przy użyciu pliku CSV, który można przekazać do interfejsu użytkownika CPP lub przy użyciu interfejsu API.
+
+Jeśli używasz interfejsu API i nie chcesz zachować pliku CSV, możesz zarządzać odbiorcami bezpośrednio przy użyciu interfejsu API zgodnie z poniższymi instrukcjami.
+
+> [!NOTE]
+> Użyj identyfikatora subskrypcji platformy Azure (planów i jednostek SKU) lub identyfikatora dzierżawy (tylko plany), aby dodać odbiorców do swojej prywatnej oferty.
+
+###  <a name="managing-subscriptions-with-the-api"></a>Zarządzanie subskrypcjami przy użyciu interfejsu API
+
+Za pomocą interfejsu API można przekazać wolumin CSV lub zarządzać odbiorcami bezpośrednio (bez użycia woluminu CSV). Ogólnie rzecz biorąc wystarczy pobrać ofertę, zaktualizować `restrictedAudience` obiekt, a następnie przesłać te zmiany z powrotem do oferty w celu dodania lub usunięcia członków grupy odbiorców.
+
+Oto jak programowo zaktualizować listę odbiorców:
+
+1. [Pobierz dane oferty](cloud-partner-portal-api-retrieve-specific-offer.md) :
+
+    ```
+    GET https://cloudpartner.azure.com/api/publishers//offers/?api-version=2017-10-31&includeAllPricing=true
+    ```
+
+2. Znajdź obiekty dla odbiorców z ograniczeniami w poszczególnych jednostkach SKU oferty przy użyciu tego zapytania JPath:
+
+    ```
+    $.definition.plans[*].restrictedAudience
+    ```
+3. Aktualizowanie obiektów odbiorców z ograniczeniami dla oferty.
+
+    **Jeśli pierwotnie przekazano listę subskrypcji z pliku CSV do swojej prywatnej oferty:**
+
+    Obiekty *restrictedAudience* będą wyglądać następująco.
+    ```
+    "restrictedAudience": {
+                  "uploadedCsvUri": "{SasUrl}"
+    }
+    ```
+
+    Dla każdego obiektu odbiorcy z ograniczeniami:
+
+    a. Pobierz zawartość `restrictedAudience.uploadedCsvUri`. Zawartość jest po prostu plikiem CSV z nagłówkami. Na przykład:
+
+        type,id,description
+        subscriptionId,541a269f-3df2-486e-8fe3-c8f9dcf28205,sub1
+        subscriptionId,c0da499c-25ec-4e4b-a42a-6e75635253b9,sub2
+
+    b. W razie konieczności Dodaj lub Usuń subskrypcje w pobranym pliku CSV.
+
+    c. Przekaż zaktualizowany plik CSV do lokalizacji, takiej jak [Azure Blob Storage](../../storage/blobs/storage-blobs-overview.md) lub [OneDrive](https://onedrive.live.com), i Utwórz link tylko do odczytu do pliku. Będzie to Twój nowy *adresie sasurl*.
+
+    d. Zaktualizuj klucz przy użyciu nowego *adresie sasurl.* `restrictedAudience.uploadedCsvUri`
+
+    **Jeśli ręcznie wprowadzisz oryginalną listę subskrypcji dla swojej prywatnej oferty z portal Cloud Partner:**
+
+    Obiekty *restrictedAudience* będą wyglądać następująco:
+
+    ```
+    "restrictedAudience": {
+        "manualEntries": [{
+            "type": "subscriptionId",
+            "id": "541a269f-3df2-486e-8fe3-c8f9dcf28205",
+            "description": "sub1"
+            }, {
+            "type": "subscriptionId",
+            "id": "c0da499c-25ec-4e4b-a42a-6e75635253b9",
+            "description": "sub2"
+            }
+        ]}
+    ```
+
+    a. Dla każdego obiektu odbiorcy z ograniczeniami Dodaj lub Usuń wpisy na `restrictedAudience.manualEntries` liście zgodnie z wymaganiami.
+
+4. Po zakończeniu aktualizacji wszystkich obiektów *restrictedAudience* dla każdej jednostki SKU prywatnej oferty należy [zaktualizować ofertę](cloud-partner-portal-api-creating-offer.md):
+
+    ```
+    PUT https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>?api-version=2017-10-31
+    ```
+    Dzięki temu zaktualizowana lista odbiorców jest teraz aktywna.
+
+<a name="previewing-private-offers"></a>Wyświetlanie podglądu ofert prywatnych
 -------------------------
 
-Podczas (wersja zapoznawcza) / wdrażanie przejściowe krok tylko oferty subskrypcji poziomu (wersja zapoznawcza) będą mogli korzystać z jednostki SKU. Czy fazie testowania, w tym czasie możesz sprawdzić, jakie oferty będzie wyglądać docelowych klientów i jest standardem dla wszystkich typów publikowania.
+W trakcie kroku wersji zapoznawczej/przejściowej tylko subskrypcje wersji zapoznawczej na poziomie oferty będą mogły uzyskać dostęp do jednostki SKU. Na tym etapie testowania możesz wyświetlić podgląd oferty, która będzie widoczna dla klientów docelowych.
 
-Oferty subskrypcji (wersja zapoznawcza) poziom dostępu przygotowane oferty do:
+Subskrypcje wersji zapoznawczej poziomu oferty w celu uzyskania dostępu do przygotowanych ofert:
 
-![Identyfikatory subskrypcji (wersja zapoznawcza)](./media/cloud-partner-portal-publish-virtual-machine/previewoffer1.png)
+![Podgląd identyfikatorów subskrypcji](./media/cloud-partner-portal-publish-virtual-machine/previewoffer1.png)
 
-Po oferta jest dostępna na żywo, tylko subskrypcje ograniczeniami odbiorców (wprowadzone za pośrednictwem wpis ręczny lub CSV) będzie mogła wyświetlać i wdrażanie prywatnego jednostki SKU. Zaleca się, że możesz **zawsze zawierać własne subskrypcje w ograniczonym odbiorców** prywatnej jednostki SKU do celów sprawdzania poprawności.
+Po zakończeniu oferty tylko subskrypcje z ograniczeniami (wprowadzone za pośrednictwem wpisu ręcznego lub CSV) będą mogły wyświetlać i wdrażać prywatną jednostkę SKU. Firma Microsoft zaleca, aby w przypadku użytkowników z **ograniczeniami w celu weryfikacji zawsze uwzględnić własne subskrypcje w** odniesieniu do jednostki SKU.
 
 >[!NOTE]
->Na potrzeby debugowania, pomocy technicznej firmy Microsoft i zespoły inżynierów również mieć dostęp do tych oferty prywatne.
+>Na potrzeby debugowania, zespoły pomocy technicznej i inżynierów firmy Microsoft będą mieć dostęp do tych ofert prywatnych.

@@ -7,12 +7,12 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 77cb18a858ca87acbb8182bf708e403010251365
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: ec2a174c365e31520fe99ca0b505bbb62faad8c6
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191783"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883408"
 ---
 # <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>Sprawdź stan publikowania oferty komercyjnej witryny Marketplace
 
@@ -99,6 +99,9 @@ Ten raport zawiera opisy wszelkich zasad, które zakończyły się niepowodzenie
 
 W ramach kroku **tworzenia podglądu** tworzymy wersję oferty dostępną tylko dla odbiorców określonych w sekcji w wersji zapoznawczej oferty.
 
+>[!Note]
+> Nie należy używać tego kroku, aby zapewnić osobom spoza organizacji wgląd w ofertę. Zamiast tego użyj opcji **oferta prywatna** . W tym momencie Twoja oferta nie została w pełni przetestowana i zweryfikowana i nie jest gotowa do dystrybucji poza nią.
+
 ## <a name="publisher-approval"></a>Zatwierdzenie wydawcy
 
 W tym kroku zostanie wysłana wiadomość e-mail z prośbą o przejrzenie i zatwierdzenie wersji zapoznawczej oferty przed ostatnim krokiem publikacji.
@@ -115,7 +118,7 @@ Zaloguj się do Centrum partnerskiego i uzyskaj dostęp do oferty. Nastąpi prze
 
 ## <a name="publish"></a>Publikowanie
 
-Teraz, gdy zamierzasz korzystać z oferty, udostępniając ją w portalu Marketplace, istnieje szereg końcowych testów weryfikacyjnych, które zostaną przełączone w celu zapewnienia, że usługa Live Offer zostanie skonfigurowana tak jak wersja zapoznawcza oferty.
+Teraz, **gdy zamierzasz korzystać z oferty** , udostępniając ją w portalu Marketplace, istnieje szereg końcowych testów weryfikacyjnych, które zostaną przełączone w celu zapewnienia, że usługa Live Offer zostanie skonfigurowana tak jak wersja zapoznawcza oferty.
 
 - **Konfiguracja oferty zakupu (> 10 min)**
 

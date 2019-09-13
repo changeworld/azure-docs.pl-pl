@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
-ms.openlocfilehash: c1ecdb80263efda4cbbb43caaa4e27a04b261f81
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 288fa54a1a6dd4eb05f953a4490bf7736d6d7ff8
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989803"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931245"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Jak używać Azure Monitor skoroszytów dla raportów Azure Active Directory
 
@@ -48,6 +48,15 @@ Aby używać skoroszytów monitorowania, potrzebne są:
 - Dzierżawa Active Directory z licencją premium (P1 lub P2). Dowiedz się [, jak uzyskać licencję Premium](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium).
 
 - [Obszar roboczy log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
+
+## <a name="roles"></a>Role
+Aby zarządzać skoroszytami, musisz mieć jedną z następujących ról oraz mieć [dostęp do podstawowego](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) obszaru roboczego log Analytics:
+-   Administrator globalny
+-   Administrator zabezpieczeń
+-   Czytelnik zabezpieczeń
+-   Czytelnik raportu
+-   Administrator aplikacji
+
 
 ## <a name="workbook-access"></a>Dostęp do skoroszytu 
 

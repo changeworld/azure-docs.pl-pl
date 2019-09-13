@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: c7d8b946fc587d58f13e16c1d7d806390e712104
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 4e23a440f46b52633a88d0212e08c7b584f61a38
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69879554"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932476"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Instalowanie i korzystanie z programu Azure IoT Explorer
 
@@ -83,10 +83,10 @@ Kliknij dwukrotnie urządzenie na stronie Przegląd, aby wyświetlić następny 
 
 ### <a name="device"></a>Urządzenie
 
-Ta sekcja zawiera karty **tożsamość urządzenia**,dane telemetryczne i **sznurki urządzenia** .
+Ta sekcja zawiera karty **tożsamość urządzenia**, dane **telemetryczne**i **sznurki urządzenia** .
 
 - Informacje o tożsamości urządzenia można wyświetlić i zaktualizować na karcie **tożsamość urządzenia** .
-- Jeśli urządzenie jest połączone i aktywnie wysyła dane, można je wyświetlić na karcie telemetrii .
+- Jeśli urządzenie jest połączone i aktywnie wysyła dane, można je wyświetlić na karcie **telemetrii** .
 - Dostęp do informacji o bliźniaczych urządzeniach można uzyskać na karcie **sznurki urządzenia** .
 
 ### <a name="digital-twin"></a>Cyfrowe sznurki
@@ -116,8 +116,8 @@ Aby wysłać polecenie do urządzenia, przejdź do strony **poleceń** :
 
 #### <a name="telemetry"></a>Telemetria
 
-Aby wyświetlić dane telemetryczne dla wybranego interfejsu, przejdź do strony telemetrii.
+Aby wyświetlić dane telemetryczne dla wybranego interfejsu, przejdź do strony **telemetrii** .
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym artykule poznasz sposób instalowania i używania programu Azure IoT Explorer do współpracy z urządzeniami Plug and Play IoT. Sugerowany następny krok to Dowiedz się, jak [zarządzać modelami](./howto-manage-models.md).
+W tym artykule poznasz sposób instalowania i używania programu Azure IoT Explorer do współpracy z urządzeniami Plug and Play IoT. Sugerowanym następnym krokiem jest zapoznanie się z tematem [Instalowanie i używanie rozszerzenia interfejsu wiersza polecenia platformy Azure](./howto-install-pnp-cli.md).

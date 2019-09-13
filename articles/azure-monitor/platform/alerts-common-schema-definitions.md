@@ -1,6 +1,6 @@
 ---
-title: Definicje schematów typowych alertów dla elementów webhook/Logic Apps/Azure Functions/elementy Runbook usługi Automation
-description: Informacje o typowych definicjach schematu alertów dla elementów webhook/Logic Apps/Azure Functions/elementy Runbook usługi Automation
+title: Definicje schematów typowych alertów dla Azure Monitor
+description: Informacje o typowych definicjach schematu alertów dla Azure Monitor
 author: anantr
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,24 +8,22 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: anantr
 ms.subservice: alerts
-ms.openlocfilehash: 94938358bc4e4782e91401e24a01a3688c6a51ba
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 5f05b95085048515c5f8612f3029ffb2efa28091
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034798"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916030"
 ---
 # <a name="common-alert-schema-definitions"></a>Definicje typowych schematów alertów
 
-W tym artykule opisano [typowe definicje schematów alertów](https://aka.ms/commonAlertSchemaDocs) dla elementów webhook/Logic Apps/Azure Functions/Automation. 
+W tym artykule opisano [typowe definicje schematów alertów](https://aka.ms/commonAlertSchemaDocs) dla Azure monitor, w tym te dla elementów webhook, Azure Logic Apps, Azure Functions i Azure Automation Runbook. 
 
-## <a name="overview"></a>Przegląd
+Każde wystąpienie alertu opisuje zaatakowany zasób i przyczynę alertu. Te wystąpienia są opisane we wspólnym schemacie w następujących sekcjach:
+* **Podstawowe**informacje: Zestaw standardowych pól, wspólnych dla wszystkich typów alertów, opisujących zasób, w którym znajduje się alert, wraz z dodatkowymi typowymi metadanymi alertów (na przykład ważności lub opisu). 
+* **Kontekst alertu**: Zestaw pól, które opisują przyczynę alertu, z polami, które różnią się w zależności od typu alertu. Na przykład alert dotyczący metryki zawiera pola, takie jak nazwa metryki i wartość metryki w kontekście alertu, podczas gdy alert dziennika aktywności zawiera informacje o zdarzeniu, które wygenerowało alert. 
 
-Każde wystąpienie alertu opisuje **zasób, którego dotyczy problem** , i **przyczynę alertu**, a te wystąpienia są opisane w typowym schemacie w następujących sekcjach:
-* **Podstawowe**informacje: Zestaw **standardowych pól**, wspólnych dla wszystkich typów alertów, opisujących **zasób** , w którym znajduje się alert, wraz z dodatkowymi typowymi metadanymi alertów (na przykład ważności lub opisu). 
-* **Kontekst alertu**: Zestaw pól, które opisują **przyczynę alertu**, z polami, które różnią się **w zależności od typu alertu**. Na przykład alert dotyczący metryki będzie zawierał pola, takie jak nazwa metryki i wartość metryki w kontekście alertu, podczas gdy alert dziennika aktywności będzie zawierał informacje o zdarzeniu, które wygenerowało alert. 
-
-##### <a name="sample-alert-payload"></a>Przykładowy ładunek alertu
+**Przykładowy ładunek alertu**
 ```json
 {
   "schemaId": "azureMonitorCommonAlertSchema",
@@ -74,25 +72,25 @@ Każde wystąpienie alertu opisuje **zasób, którego dotyczy problem** , i **pr
 }
 ```
 
-## <a name="essentials-fields"></a>Pola "Essentials"
+## <a name="essentials"></a>Podstawowe elementy
 
 | Pole | Opis|
 |:---|:---|
-| alertId | Identyfikator GUID unikatowo identyfikujący wystąpienie alertu. |
+| alertId | Identyfikator GUID, który unikatowo identyfikuje wystąpienie alertu. |
 | alertRule | Nazwa reguły alertu, która wygenerowała wystąpienie alertu. |
-| severity | Ważność alertu. Możliwe wartości: Sev0, Sev1, Sev2, Sev3, Sev4 |
-| sygnałtype | Identyfikuje sygnał, na którym zdefiniowano regułę alertu. Możliwe wartości: Metryka, dziennik, dziennik aktywności |
-| monitorCondition | Po uruchomieniu alertu warunek monitora alertu jest ustawiony na wartość "Uruchomiłd". Gdy podstawowy warunek, który spowodował wyczyszczenie alertu, ma ustawiony stan "rozwiązany".   |
+| severity | Ważność alertu. Możliwe wartości: Sev0, Sev1, Sev2, Sev3 lub Sev4. |
+| sygnałtype | Identyfikuje sygnał, na którym zdefiniowano regułę alertu. Możliwe wartości: Metryka, dziennik lub Dziennik aktywności. |
+| monitorCondition | Po uruchomieniu alertu warunek monitora alertu jest ustawiany na wartość **wyzwolone**. Gdy podstawowy warunek, który spowodował wyczyszczenie alertu, zostanie ustawiony jako **rozwiązany**.   |
 | monitoringService | Usługa monitorowania lub rozwiązanie, które wygenerowało alert. Pola dla kontekstu alertu są podyktowane przez usługę monitorowania. |
-| alertTargetIds | Lista identyfikatorów ARM, dla których wszystkie cele dotyczą alertu. W przypadku alertu dziennika zdefiniowanego w obszarze roboczym Log Analytics lub w wystąpieniu Application Insights jest to odpowiedni obszar roboczy/aplikacja. |
-| originAlertId | Identyfikator wystąpienia alertu wygenerowanego przez usługę monitorowania generującą go. |
-| firedDateTime | Data i godzina uruchomienia wystąpienia alertu w formacie UTC |
-| resolvedDateTime | Data i godzina, o której warunek monitora dla wystąpienia alertu jest ustawiony na wartość "rozwiązany" w formacie UTC. Dotyczy tylko alertów dotyczących metryk.|
-| description | Opis określony w regule alertu |
+| alertTargetIds | Lista identyfikatorów Azure Resource Manager, których dotyczą cele alertu. W przypadku alertu dziennika zdefiniowanego w obszarze roboczym Log Analytics lub w wystąpieniu Application Insights jest to odpowiedni obszar roboczy lub aplikacja. |
+| originAlertId | Identyfikator wystąpienia alertu, zgodnie z wygenerowaniem przez usługę monitorowania. |
+| firedDateTime | Data i godzina uruchomienia wystąpienia alertu w uniwersalnym czasie koordynowanym (UTC). |
+| resolvedDateTime | Data i godzina, kiedy warunek monitora dla wystąpienia alertu jest ustawiony na **rozwiązany** w formacie UTC. Dotyczy tylko alertów dotyczących metryk.|
+| description | Opis, zgodnie z definicją w regule alertu. |
 |essentialsVersion| Numer wersji sekcji podstawy.|
-|alertContextVersion | Numer wersji sekcji alertContext |
+|alertContextVersion | Numer `alertContext` wersji sekcji. |
 
-##### <a name="sample-values"></a>Przykładowe wartości
+**Przykładowe wartości**
 ```json
 {
   "essentials": {
@@ -114,13 +112,13 @@ Każde wystąpienie alertu opisuje **zasób, którego dotyczy problem** , i **pr
 }
 ```
 
-## <a name="alert-context-fields"></a>Pola kontekstu alertu
+## <a name="alert-context"></a>Kontekst alertu
 
-### <a name="metric-alerts"></a>Alerty metryk
+### <a name="metric-alerts"></a>Alerty dotyczące metryk
 
-#### <a name="monitoringservice--platform"></a>monitoringService = "platform"
+#### <a name="monitoringservice--platform"></a>`monitoringService` = `Platform`
 
-##### <a name="sample-values"></a>Przykładowe wartości
+**Przykładowe wartości**
 ```json
 {
   "alertContext": {
@@ -151,15 +149,14 @@ Każde wystąpienie alertu opisuje **zasób, którego dotyczy problem** , i **pr
 }
 ```
 
-### <a name="log-alerts"></a>Alerty dziennika
+### <a name="log-alerts"></a>Alerty dotyczące dzienników
 
 > [!NOTE]
-> + W przypadku alertów dziennika, w których zdefiniowano niestandardowy ładunek JSON, włączenie wspólnego schematu spowoduje przywrócenie schematu ładunku do opisanego poniżej.
-> + Alerty z włączonym wspólnym schematem mają górny limit rozmiaru 256 KB na alert. **Wyniki wyszukiwania nie są osadzone w ładunku alertów dziennika, jeśli powodują, że rozmiar alertu przekracza ten próg.** Można to ustalić, sprawdzając flagę "IncludedSearchResults". W scenariuszach, w których wyniki wyszukiwania nie są uwzględniane, zaleca się użycie zapytania wyszukiwania w połączeniu z [interfejsem API log Analytics](https://docs.microsoft.com/rest/api/loganalytics/query/get). 
+> W przypadku alertów dziennika, dla których zdefiniowano niestandardowy ładunek JSON, włączenie wspólnego schematu powoduje przywrócenie schematu ładunku do określonego w następujący sposób. Alerty z włączonym wspólnym schematem mają górny limit rozmiaru wynoszący 256 KB na alert. Wyniki wyszukiwania nie są osadzane w ładunku alertów dziennika, jeśli powodują, że rozmiar alertu przekracza ten próg. Można to określić, sprawdzając flagę `IncludedSearchResults`. Gdy wyniki wyszukiwania nie zostaną uwzględnione, należy użyć zapytania wyszukiwania w połączeniu z [interfejsem API log Analytics](https://docs.microsoft.com/rest/api/loganalytics/query/get). 
 
-#### <a name="monitoringservice--log-analytics"></a>monitoringService = "Log Analytics"
+#### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 
-##### <a name="sample-values"></a>Przykładowe wartości
+**Przykładowe wartości**
 ```json
 {
   "alertContext": {
@@ -224,9 +221,9 @@ Każde wystąpienie alertu opisuje **zasób, którego dotyczy problem** , i **pr
 }
 ```
 
-#### <a name="monitoringservice--application-insights"></a>monitoringService = "Application Insights"
+#### <a name="monitoringservice--application-insights"></a>`monitoringService` = `Application Insights`
 
-##### <a name="sample-values"></a>Przykładowe wartości
+**Przykładowe wartości**
 ```json
 {
   "alertContext": {
@@ -289,9 +286,9 @@ Każde wystąpienie alertu opisuje **zasób, którego dotyczy problem** , i **pr
 
 ### <a name="activity-log-alerts"></a>Alerty dziennika aktywności
 
-#### <a name="monitoringservice--activity-log---administrative"></a>monitoringService = "Dziennik aktywności — Administracja"
+#### <a name="monitoringservice--activity-log---administrative"></a>`monitoringService` = `Activity Log - Administrative`
 
-##### <a name="sample-values"></a>Przykładowe wartości
+**Przykładowe wartości**
 ```json
 {
   "alertContext": {
@@ -316,9 +313,9 @@ Każde wystąpienie alertu opisuje **zasób, którego dotyczy problem** , i **pr
 }
 ```
 
-#### <a name="monitoringservice--activity-log---policy"></a>monitoringService = "Dziennik aktywności — zasady"
+#### <a name="monitoringservice--activity-log---policy"></a>`monitoringService` = `Activity Log - Policy`
 
-##### <a name="sample-values"></a>Przykładowe wartości
+**Przykładowe wartości**
 ```json
 {
   "alertContext": {
@@ -349,9 +346,9 @@ Każde wystąpienie alertu opisuje **zasób, którego dotyczy problem** , i **pr
 }
 ```
 
-#### <a name="monitoringservice--activity-log---autoscale"></a>monitoringService = "Dziennik aktywności — automatyczne skalowanie"
+#### <a name="monitoringservice--activity-log---autoscale"></a>`monitoringService` = `Activity Log - Autoscale`
 
-##### <a name="sample-values"></a>Przykładowe wartości
+**Przykładowe wartości**
 ```json
 {
   "alertContext": {
@@ -379,9 +376,9 @@ Każde wystąpienie alertu opisuje **zasób, którego dotyczy problem** , i **pr
 }
 ```
 
-#### <a name="monitoringservice--activity-log---security"></a>monitoringService = "Dziennik aktywności — zabezpieczenia"
+#### <a name="monitoringservice--activity-log---security"></a>`monitoringService` = `Activity Log - Security`
 
-##### <a name="sample-values"></a>Przykładowe wartości
+**Przykładowe wartości**
 ```json
 {
   "alertContext": {
@@ -412,9 +409,9 @@ Każde wystąpienie alertu opisuje **zasób, którego dotyczy problem** , i **pr
 }
 ```
 
-#### <a name="monitoringservice--servicehealth"></a>monitoringService = "servicehealth"
+#### <a name="monitoringservice--servicehealth"></a>`monitoringService` = `ServiceHealth`
 
-##### <a name="sample-values"></a>Przykładowe wartości
+**Przykładowe wartości**
 ```json
 {
   "alertContext": {
@@ -456,9 +453,9 @@ Każde wystąpienie alertu opisuje **zasób, którego dotyczy problem** , i **pr
   }
 }
 ```
-#### <a name="monitoringservice--resource-health"></a>monitoringService = "Resource Health"
+#### <a name="monitoringservice--resource-health"></a>`monitoringService` = `Resource Health`
 
-##### <a name="sample-values"></a>Przykładowe wartości
+**Przykładowe wartości**
 ```json
 {
   "alertContext": {
@@ -487,6 +484,6 @@ Każde wystąpienie alertu opisuje **zasób, którego dotyczy problem** , i **pr
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Dowiedz się więcej o typowym schemacie alertów](https://aka.ms/commonAlertSchemaDocs)
-- [Dowiedz się, jak utworzyć aplikację logiki, która wykorzystuje wspólny schemat alertów do obsługi wszystkich alertów.](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations) 
+- Dowiedz się więcej o [typowym schemacie alertów](https://aka.ms/commonAlertSchemaDocs).
+- Dowiedz się [, jak utworzyć aplikację logiki, która korzysta ze wspólnego schematu alertu do obsługi wszystkich alertów](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations). 
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: ced0655d2e8ff012b3043dd123a8483674b4c472
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 1ed722ad68280226387b98b3fefb77647f5cd825
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404544"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918526"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>Łączenie usługi HDInsight z siecią lokalną
 
@@ -24,7 +24,7 @@ Dowiedz się, jak połączyć usługę HDInsight z siecią lokalną przy użyciu
 * Konfigurowanie sieciowych grup zabezpieczeń w celu ograniczenia dostępu do Internetu do usługi HDInsight.
 * Porty udostępniane przez usługi HDInsight w sieci wirtualnej.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Aby umożliwić usłudze HDInsight i zasobom w połączonej sieci komunikowanie się według nazwy, należy wykonać następujące czynności:
 
@@ -67,7 +67,7 @@ Poniższe kroki służą do tworzenia maszyny wirtualnej platformy Azure przy u�
   
 2. W menu po lewej stronie przejdź do **+ Utwórz zasób** > **COMPUTE** > **Ubuntu Server 18,04 LTS**.
 
-    ![Tworzenie maszyny wirtualnej Ubuntu](./media/connect-on-premises-network/create-ubuntu-vm.png)
+    ![Tworzenie maszyny wirtualnej Ubuntu](./media/connect-on-premises-network/create-ubuntu-virtual-machine.png)
 
 3. Na karcie __podstawowe__ wprowadź następujące informacje:  
   
@@ -84,7 +84,7 @@ Poniższe kroki służą do tworzenia maszyny wirtualnej platformy Azure przy u�
     |Hasło lub klucz publiczny SSH | Dostępne pole jest określane przez wybór **typu uwierzytelniania**.  Wprowadź odpowiednią wartość.|
     |Publiczne porty wejściowe|Wybierz pozycję **Zezwalaj na wybrane porty**. Następnie wybierz pozycję **SSH (22)** z listy rozwijanej **Wybieranie portów przychodzących** .|
 
-    ![Podstawowa konfiguracja maszyny wirtualnej](./media/connect-on-premises-network/vm-basics.png)
+    ![Podstawowa konfiguracja maszyny wirtualnej](./media/connect-on-premises-network/virtual-machine-basics.png)
 
     Pozostaw inne wpisy z wartościami domyślnymi, a następnie wybierz kartę **Sieć** .
 
@@ -103,13 +103,13 @@ Poniższe kroki służą do tworzenia maszyny wirtualnej platformy Azure przy u�
 5. Na karcie **Recenzja i tworzenie** wybierz pozycję **Utwórz** , aby utworzyć maszynę wirtualną.
 
 ### <a name="review-ip-addresses"></a>Przejrzyj adresy IP
-Po utworzeniu maszyny wirtualnej otrzymasz powiadomienie o pomyślnym **wdrożeniu** za pomocą przycisku **Przejdź do zasobu** .  Wybierz pozycję **Przejdź do zasobu** , aby przejść do nowej maszyny wirtualnej.  Z widoku domyślnego dla nowej maszyny wirtualnej wykonaj następujące kroki, aby zidentyfikować skojarzone adresy IP:
+Po utworzeniu maszyny wirtualnej otrzymasz powiadomienie o **pomyślnym wdrożeniu** za pomocą przycisku **Przejdź do zasobu** .  Wybierz pozycję **Przejdź do zasobu** , aby przejść do nowej maszyny wirtualnej.  Z widoku domyślnego dla nowej maszyny wirtualnej wykonaj następujące kroki, aby zidentyfikować skojarzone adresy IP:
 
 1. W obszarze **Ustawienia**wybierz pozycję **Właściwości**.
 
 2. Zwróć uwagę na wartości dla **publicznego adresu IP/etykiety nazwy DNS** i **prywatnego adresu IP** do późniejszego użycia.
 
-   ![Publiczne i prywatne adresy IP](./media/connect-on-premises-network/vm-ip-addresses.png)
+   ![Publiczne i prywatne adresy IP](./media/connect-on-premises-network/virtual-machine-ip-addresses.png)
 
 ### <a name="install-and-configure-bind-dns-software"></a>Instalowanie i Konfigurowanie powiązania (oprogramowanie DNS)
 
@@ -177,7 +177,7 @@ Po utworzeniu maszyny wirtualnej otrzymasz powiadomienie o pomyślnym **wdrożen
     dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
     ```
 
-    Ten tekst jest sufiksem DNS dla tej sieci wirtualnej.  `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` Zapisz tę wartość, ponieważ jest używana później.
+    Ten tekst jest __sufiksem DNS__ dla tej sieci wirtualnej. `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` Zapisz tę wartość, ponieważ jest używana później.
 
 5. Aby skonfigurować powiązanie do rozpoznawania nazw DNS dla zasobów w sieci wirtualnej, użyj następującego tekstu jako zawartości `/etc/bind/named.conf.local` pliku:
 
@@ -275,12 +275,12 @@ Aby kontrolować ruch sieciowy, można użyć sieciowych grup zabezpieczeń (sie
 > [!WARNING]  
 > Usługa HDInsight wymaga dostępu przychodzącego z określonych adresów IP w chmurze Azure i nieograniczonego dostępu wychodzącego. W przypadku kontrolowania ruchu przy użyciu sieciowych grup zabezpieczeń lub UDR należy wykonać następujące czynności:
 
-1. Znajdź adresy IP dla lokalizacji zawierającej daną sieć wirtualną. Aby zapoznać się z listą wymaganych [adresów IP](./hdinsight-management-ip-addresses.md)według lokalizacji, zobacz Required addresss.
+1. Znajdź adresy IP dla lokalizacji zawierającej daną sieć wirtualną. Aby zapoznać się z listą wymaganych adresów IP według lokalizacji, zobacz [Required addresss](./hdinsight-management-ip-addresses.md).
 
 2. Adresy IP identyfikowane w kroku 1 zezwalają na ruch przychodzący z tych adresów IP.
 
-   * Jeśli używasz __sieciowej grupy zabezpieczeń__: Zezwalaj  na ruch przychodzący na porcie __443__ dla adresów IP.
-   * Jeśli używasz __UDR__: Ustaw typ __następnego__ przeskoku trasy na __Internet__ dla adresów IP.
+   * Jeśli używasz __sieciowej grupy zabezpieczeń__: Zezwalaj na ruch __przychodzący__ na porcie __443__ dla adresów IP.
+   * Jeśli używasz __UDR__: Ustaw typ __następnego przeskoku__ trasy na __Internet__ dla adresów IP.
 
 Przykład używania Azure PowerShell lub interfejsu wiersza polecenia platformy Azure do tworzenia sieciowych grup zabezpieczeń można znaleźć w dokumencie " [Rozszerzone usługi HDInsight z usługą Azure Virtual Networks](hdinsight-create-virtual-network.md#hdinsight-nsg) ".
 

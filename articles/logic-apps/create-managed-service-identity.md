@@ -1,20 +1,20 @@
 ---
-title: Uwierzytelnianie za pomocą tożsamości zarządzanych — Azure Logic Apps | Microsoft Docs
+title: Uwierzytelnianie za pomocą tożsamości zarządzanych — Azure Logic Apps
 description: Aby uwierzytelnić się bez logowania, możesz utworzyć zarządzaną tożsamość (nazywaną wcześniej tożsamość usługi zarządzanej lub MSI), aby Twoja aplikacja logiki mogła uzyskiwać dostęp do zasobów w innych dzierżawach Azure Active Directory (Azure AD) bez poświadczeń lub wpisów tajnych
-author: kevinlam1
-ms.author: klam
-ms.reviewer: estfan, LADocs
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 03/29/2019
-ms.openlocfilehash: b157db5032bd62ab443209f201b4ceded6e44cb5
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
-ms.translationtype: MT
+ms.openlocfilehash: bb1443afa14f2a23b807af52ab8fef6ac41ea200
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385569"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934032"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Uwierzytelnianie i dostęp do zasobów za pomocą tożsamości zarządzanych w Azure Logic Apps
 
@@ -27,7 +27,7 @@ Aby uzyskać dostęp do zasobów w innych dzierżawach usługi Azure Active Dire
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure lub jeśli nie masz subskrypcji, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się, aby skorzystać z bezpłatnego konta platformy Azure</a>.
+* Subskrypcja platformy Azure lub jeśli nie masz subskrypcji, [zarejestruj się, aby skorzystać z bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
 
 * Aplikacja logiki, w której ma zostać użyta tożsamość zarządzana przypisana przez system. Jeśli nie masz aplikacji logiki, zobacz [Tworzenie pierwszego przepływu pracy aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -49,7 +49,7 @@ Aby włączyć zarządzaną przez system tożsamość dla aplikacji logiki za po
 
 1. W [Azure Portal](https://portal.azure.com)Otwórz aplikację logiki w Projektancie aplikacji logiki.
 
-1. W menu aplikacji logiki w obszarze **Ustawienia**wybierz pozycję **tożsamość**. 
+1. W menu aplikacji logiki w obszarze **Ustawienia**wybierz pozycję **tożsamość**.
 
 1. W obszarze**stan** **przypisane** > do systemu wybierz pozycję **włączone**. Następnie wybierz pozycję **Zapisz** > **tak**.
 
@@ -59,10 +59,10 @@ Aby włączyć zarządzaną przez system tożsamość dla aplikacji logiki za po
 
    ![Identyfikatory GUID dla identyfikatora obiektu](./media/create-managed-service-identity/object-id.png)
 
-   | Właściwość | Value | Opis | 
-   |----------|-------|-------------| 
-   | **Identyfikator obiektu** | <*Identyfikator zasobu tożsamości*> | Unikatowy identyfikator globalny (GUID) reprezentujący tożsamość zarządzaną przez system dla aplikacji logiki w dzierżawie usługi Azure AD | 
-   ||| 
+   | Właściwość | Value | Opis |
+   |----------|-------|-------------|
+   | **Identyfikator obiektu** | <*Identyfikator zasobu tożsamości*> | Unikatowy identyfikator globalny (GUID) reprezentujący tożsamość zarządzaną przez system dla aplikacji logiki w dzierżawie usługi Azure AD |
+   ||||
 
 <a name="template"></a>
 
@@ -76,7 +76,7 @@ Aby zautomatyzować tworzenie i wdrażanie zasobów platformy Azure, takich jak 
 }
 ```
 
-Na przykład:
+Przykład:
 
 ```json
 {
@@ -111,11 +111,11 @@ Podczas tworzenia aplikacji logiki przez platformę Azure definicja przepływu p
 }
 ```
 
-| Właściwość | Value | Opis | 
+| Właściwość | Value | Opis |
 |----------|-------|-------------|
-| **principalId** | <*Identyfikator podmiotu zabezpieczeń*> | Unikatowy identyfikator globalny (GUID) reprezentujący aplikację logiki w dzierżawie usługi Azure AD i czasami pojawia się jako "Identyfikator obiektu" lub`objectID` | 
-| **tenantId** | <*Azure-AD-dzierżawca-ID*> | Unikatowy identyfikator globalny (GUID) reprezentujący dzierżawę usługi Azure AD, w której aplikacja logiki jest teraz członkiem. W ramach dzierżawy usługi Azure AD główna nazwa ma taką samą nazwę jak wystąpienie aplikacji logiki. | 
-||| 
+| **principalId** | <*Identyfikator podmiotu zabezpieczeń*> | Unikatowy identyfikator globalny (GUID) reprezentujący aplikację logiki w dzierżawie usługi Azure AD i czasami pojawia się jako "Identyfikator obiektu" lub`objectID` |
+| **tenantId** | <*Azure-AD-dzierżawca-ID*> | Unikatowy identyfikator globalny (GUID) reprezentujący dzierżawę usługi Azure AD, w której aplikacja logiki jest teraz członkiem. W ramach dzierżawy usługi Azure AD główna nazwa ma taką samą nazwę jak wystąpienie aplikacji logiki. |
+||||
 
 <a name="access-other-resources"></a>
 
@@ -130,13 +130,13 @@ Po utworzeniu zarządzanej tożsamości przypisanej przez system dla aplikacji l
 
 Aby udzielić dostępu do innego zasobu platformy Azure dla tożsamości zarządzanej przypisanej do systemu przez aplikację logiki, wykonaj następujące kroki:
 
-1. W Azure Portal przejdź do zasobu platformy Azure, do którego chcesz przypisać dostęp do tożsamości zarządzanej. 
+1. W Azure Portal przejdź do zasobu platformy Azure, do którego chcesz przypisać dostęp do tożsamości zarządzanej.
 
 1. Z menu zasób wybierz pozycję **Kontrola dostępu (IAM)** . Na pasku narzędzi wybierz pozycję **Dodaj** > **Dodaj przypisanie roli**.
 
    ![Dodaj przypisanie roli](./media/create-managed-service-identity/add-permissions-logic-app.png)
 
-1. W obszarze **Dodaj przypisanie roli**wybierz żądaną **rolę** dla tożsamości. 
+1. W obszarze **Dodaj przypisanie roli**wybierz żądaną **rolę** dla tożsamości.
 
 1. W polu **Przypisz dostęp do** wybierz pozycję **użytkownik, Grupa lub nazwa główna usługi Azure AD**, jeśli nie została jeszcze wybrana.
 
@@ -154,9 +154,7 @@ Po skonfigurowaniu aplikacji logiki za pomocą zarządzanej tożsamości przypis
 
 1. Podaj niezbędne szczegóły dotyczące tej akcji, takie jak **Metoda** żądania i lokalizacja **URI** dla zasobu, który chcesz wywołać.
 
-   Załóżmy na przykład, że używasz uwierzytelniania usługi Azure Active Directory (Azure AD) z [jedną z tych usług platformy Azure, które obsługują usługę Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). 
-   W polu **Identyfikator URI** wprowadź adres URL punktu końcowego dla tej usługi platformy Azure. 
-   Tak więc, jeśli używasz Azure Resource Manager, wprowadź tę wartość we właściwości **URI** :
+   Załóżmy na przykład, że używasz uwierzytelniania usługi Azure Active Directory (Azure AD) z [jedną z tych usług platformy Azure, które obsługują usługę Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). W polu **Identyfikator URI** wprowadź adres URL punktu końcowego dla tej usługi platformy Azure. Tak więc, jeśli używasz Azure Resource Manager, wprowadź tę wartość we właściwości **URI** :
 
    `https://management.azure.com/subscriptions/<Azure-subscription-ID>?api-version=2016-06-01`
 
@@ -188,7 +186,7 @@ Aby usunąć tożsamość zarządzaną przez system dla aplikacji logiki za pomo
 
 1. W [Azure Portal](https://portal.azure.com)Otwórz aplikację logiki w Projektancie aplikacji logiki.
 
-1. W menu aplikacji logiki w obszarze **Ustawienia**wybierz pozycję **tożsamość**. 
+1. W menu aplikacji logiki w obszarze **Ustawienia**wybierz pozycję **tożsamość**.
 
 1. W obszarze**stan** **przypisane** > do systemu wybierz pozycję **wyłączone**. Następnie wybierz pozycję **Zapisz** > **tak**.
 
@@ -204,7 +202,6 @@ W przypadku utworzenia tożsamości zarządzanej przypisanej przez system do apl
 }
 ```
 
-## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
+## <a name="next-steps"></a>Następne kroki
 
-* Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
+* [Zabezpieczanie dostępu i danych w Azure Logic Apps](../logic-apps/logic-apps-securing-a-logic-app.md)

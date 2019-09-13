@@ -4,16 +4,16 @@ description: Dowiedz się, jak zarządzać klastrami usługi Azure HDInsight za 
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
-ms.reviewer: mamccrea
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: acf11b8107855c6f087f63f592cdbbad3766795e
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: e5062ce27e1e9367a262d263070ab01f899dfc54
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811022"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918915"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>Zarządzanie klastrami usługi HDInsight przy użyciu pakiet Enterprise Security
 Informacje o użytkownikach i rolach w usłudze HDInsight pakiet Enterprise Security (ESP) i sposobach zarządzania klastrami ESP.
@@ -34,7 +34,7 @@ Można połączyć normalny klaster przy użyciu nazwy użytkownika zarządzaneg
    
 3. Można wyświetlić połączony klaster przy użyciu **listy poleceń klaster**. Teraz można przesłać skrypt do tego połączonego klastra.
 
-   ![połączony klaster](./media/apache-domain-joined-manage/linked-cluster.png "połączony klaster")
+   ![połączony klaster](./media/apache-domain-joined-manage/hdinsight-linked-cluster.png "połączony klaster")
 
 4. Możesz również odłączyć klaster przez umieszczenie **usługi HDInsight: Odłącz klaster** od palety poleceń.
 
@@ -60,7 +60,7 @@ Normalny klaster można połączyć przy użyciu nazwy użytkownika Ambari Manag
 
 4. Możesz również odłączyć klaster od programu **Azure Explorer**.
    
-   ![niepołączony klaster IntelliJ](./media/apache-domain-joined-manage/unlink.png)
+   ![niepołączony klaster IntelliJ](./media/apache-domain-joined-manage/hdinsight-unlink-cluster.png)
 
 ## <a name="use-eclipse-to-link-to-domain-joined-cluster"></a>Łączenie z klastrem przyłączonym do domeny za pomocą programu Eclipse
 
@@ -71,7 +71,7 @@ Normalny klaster można połączyć przy użyciu nazwy użytkownika Ambari Manag
 
 2. Wprowadź **nazwę klastra**, **nazwę użytkownika** i **hasło**, a następnie kliknij przycisk OK, aby połączyć klaster. Opcjonalnie wprowadź konto magazynu, klucz magazynu, a następnie wybierz pozycję kontener magazynu dla Eksploratora usługi Storage, aby rozpocząć działanie w widoku drzewa po lewej stronie
    
-   ![okno dialogowe łączenia klastra](./media/apache-domain-joined-manage/link-cluster-dialog.png)
+   ![okno dialogowe łączenia klastra](./media/apache-domain-joined-manage/link-cluster-dialog1.png)
    
    > [!NOTE]  
    > Jeśli klaster jest zarejestrowany w ramach subskrypcji platformy Azure i połączony z klastrem, użyjemy podanego klucza magazynu, nazwy użytkownika i hasła.
@@ -83,7 +83,7 @@ Normalny klaster można połączyć przy użyciu nazwy użytkownika Ambari Manag
 
 4. Możesz również odłączyć klaster od programu **Azure Explorer**.
    
-   ![niepołączony klaster — przezaćmienie](./media/apache-domain-joined-manage/unlink.png)
+   ![niepołączony klaster — przezaćmienie](./media/apache-domain-joined-manage/hdinsight-unlink-cluster.png)
 
 ## <a name="access-the-clusters-with-enterprise-security-package"></a>Uzyskaj dostęp do klastrów przy użyciu pakiet Enterprise Security.
 

@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie wystąpieniami alertów
+title: Zarządzanie wystąpieniami alertów w Azure Monitor
 description: Zarządzanie wystąpieniami alertów na platformie Azure
 author: anantr
 services: monitoring
@@ -8,42 +8,51 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: anantr
 ms.subservice: alerts
-ms.openlocfilehash: dbc7d37ce311d203ee051b5a23632d2bf401e27a
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: f97fa69926cd9c59a0617f409c72610336120333
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034842"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916009"
 ---
-# <a name="manage-alert-instances"></a>Zarządzanie wystąpieniami alertów
-Korzystając z [funkcji ujednoliconych alertów](https://aka.ms/azure-alerts-overview) w Azure monitor, można teraz zobaczyć wszystkie różne typy alertów na platformie Azure, obejmujących wiele subskrypcji w jednym z okien szklanych. W tym artykule przedstawiono sposób wyświetlania wystąpień alertów oraz sposób głębokiego szczegółowe w portalu w celu znalezienia określonych wystąpień alertów w celu rozwiązywania problemów.
+# <a name="manage-alert-instances-with-unified-alerts"></a>Zarządzanie wystąpieniami alertów za pomocą ujednoliconych alertów
+Korzystając z [funkcji ujednoliconych alertów](https://aka.ms/azure-alerts-overview) w Azure monitor, można zobaczyć wszystkie różne typy alertów na platformie Azure. Obejmuje to wiele subskrypcji w jednym okienku. W tym artykule pokazano, jak można wyświetlać wystąpienia alertów oraz jak znaleźć określone wystąpienia alertów w celu rozwiązywania problemów.
 
 > [!NOTE]
-   >  Tylko alerty wygenerowane w ciągu ostatnich 30 dni mogą być dostępne w środowisku użytkownika lub za pomocą interfejsów API REST.
+   >  Można uzyskać dostęp tylko do alertów wygenerowanych w ciągu ostatnich 30 dni.
 
-1. Istnieją trzy sposoby na stronie alertów.
+## <a name="go-to-the-alerts-page"></a>Przejdź do strony alerty
 
-   + W [portalu](https://portal.azure.com/)wybierz pozycję **monitorowanie** i w sekcji Monitor wybierz pozycję **alerty**.  
-     ![Monitorowanie](media/alerts-managing-alert-instances/monitoring-alerts-managing-alert-instances-toc.jpg)
+Można przejść do strony alerty w dowolny z następujących sposobów:
+
+   + W [Azure Portal](https://portal.azure.com/)wybierz pozycję **Monitoruj** > **alerty**.  
+     ![Zrzut ekranu przedstawiający alerty monitora](media/alerts-managing-alert-instances/monitoring-alerts-managing-alert-instances-toc.jpg)
   
-   + Możesz przejść do alertów z poziomu określonego **zasobu**. Po otwarciu zasobu przejdź do sekcji monitorowanie, a następnie wybierz pozycję **alerty**, a strona docelowa jest wstępnie filtrowana pod kątem alertów dotyczących tego konkretnego zasobu.
+   + Użyj kontekstu określonego zasobu. Otwórz zasób, przejdź do sekcji **monitorowanie** i wybierz pozycję **alerty**. Strona docelowa jest wstępnie filtrowana pod kątem alertów dotyczących tego konkretnego zasobu.
    
-     ![Monitorowanie](media/alerts-managing-alert-instances/alert-resource.JPG)
+     ![Zrzut ekranu alertów dotyczących monitorowania zasobów](media/alerts-managing-alert-instances/alert-resource.JPG)
     
-   + Możesz przejść do alertów z poziomu kontekstu określonej **grupy zasobów**. Po otwarciu grupy zasobów przejdź do sekcji monitorowanie, a następnie wybierz pozycję **alerty**, a strona docelowa jest wstępnie filtrowana dla alertów dla tej konkretnej grupy zasobów.    
+   + Użyj kontekstu określonej grupy zasobów. Otwórz grupę zasobów, przejdź do sekcji **monitorowanie** , a następnie wybierz pozycję **alerty**. Strona docelowa jest wstępnie filtrowana dla alertów w danej grupie zasobów.    
    
-     ![Monitorowanie](media/alerts-managing-alert-instances/alert-rg.JPG)
+     ![Zrzut ekranu alertów monitorowania grupy zasobów](media/alerts-managing-alert-instances/alert-rg.JPG)
 
-1. Zobaczysz na stronie **Podsumowanie alertów** , która zawiera przegląd wszystkich wystąpień alertów na platformie Azure. Widok podsumowania można zmodyfikować, wybierając opcję **wiele subskrypcji** (maksymalnie 5) lub przez filtrowanie między grupami **zasobów**, konkretnymi **zasobami**lub **zakresami czasu**. Kliknij pozycję wszystkie alerty lub wszystkie przedziały ważności, aby przejść do widoku listy alertów.     
-   ![Podsumowanie alertów](media/alerts-managing-alert-instances/alerts-summary.jpg)
+## <a name="find-alert-instances"></a>Znajdź wystąpienia alertów
+
+Strona **Podsumowanie alertów** zawiera przegląd wszystkich wystąpień alertów na platformie Azure. Widok podsumowania można zmodyfikować, wybierając **wiele subskrypcji** (maksymalnie 5) lub przez filtrowanie między **grupami zasobów**, określonymi **zasobami**lub **zakresami czasu**. Wybierz pozycję **całkowita liczba alertów**lub dowolny z poziomów ważności, aby przejść do widoku listy alertów.     
+   ![Zrzut ekranu przedstawiający stronę podsumowania alertów](media/alerts-managing-alert-instances/alerts-summary.jpg)
  
-1. Zostanie wyświetlona strona **wszystkie alerty** , na której zostaną wyświetlone wszystkie wystąpienia alertów na platformie Azure. W przypadku przełączenia się do portalu z poziomu powiadomienia o alercie można użyć dostępnych filtrów, aby zawęzić w tym konkretnym wystąpieniu alertu. (**Uwaga**: Jeśli przejdziesz do strony, klikając dowolny z poziomów ważności, lista zostanie wstępnie odfiltrowana pod kątem ważności, gdy zostanie użyta). Oprócz filtrów dostępnych na poprzedniej stronie można teraz filtrować według podstaw usługi monitorowania (na przykład Platform for Metrics), warunku monitorowania (wywoływane lub rozwiązane), ważności, stanu alertu (nowy/potwierdzony/zamknięty) lub identyfikatora grupy inteligentnej.
+Na stronie **wszystkie alerty** zostaną wyświetlone wszystkie wystąpienia alertów na platformie Azure. W przypadku przełączenia się do portalu z poziomu powiadomienia o alercie można użyć dostępnych filtrów, aby zawęzić w tym konkretnym wystąpieniu alertu.
 
-   ![Wszystkie alerty](media/alerts-managing-alert-instances/all-alerts.jpg)
+> [!NOTE]
+>  Jeśli strona została przełączona na stronę, wybierając dowolny z poziomów ważności, lista jest wstępnie filtrowana pod kątem ważności.
+
+Oprócz filtrów dostępnych na poprzedniej stronie można również filtrować według podstaw monitorowania usługi (na przykład Platform for Metrics), warunku monitorowania (wywoływanego lub rozwiązanego), ważności, stanu alertu (nowy/potwierdzony/zamknięty) lub identyfikatora grupy inteligentnej.
+
+   ![Zrzut ekranu przedstawiający stronę wszystkie alerty](media/alerts-managing-alert-instances/all-alerts.jpg)
 
    > [!NOTE]
-   >  Jeśli połączysz się ze stroną, klikając dowolny z poziomów ważności, lista zostanie wstępnie odfiltrowana pod kątem ważności, gdy zostanie użyta na tej stronie.
+   >  Jeśli strona została przełączona na stronę, wybierając dowolny z poziomów ważności, lista jest wstępnie filtrowana pod kątem ważności.
  
-1. Kliknięcie dowolnego wystąpienia alertu otwiera stronę **szczegóły alertu** , co pozwala na szczegółowe szczegółowe informacji o tym konkretnym wystąpieniu alertu.   
-   ![Szczegóły alertu](media/alerts-managing-alert-instances/alert-details.jpg)  
+Po wybraniu dowolnego wystąpienia alertu zostanie otwarta strona **szczegóły alertu** , która umożliwia wyświetlenie szczegółowych informacji o tym konkretnym wystąpieniu alertu.   
+   ![Zrzut ekranu przedstawiający stronę szczegółów alertu](media/alerts-managing-alert-instances/alert-details.jpg)  
 

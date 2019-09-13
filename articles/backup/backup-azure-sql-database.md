@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 23c10fbed751e05fea2a95030c720f622e195f40
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 875db0d34932dca1c7eae7e3650acf01856c6413
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534224"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934428"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informacje o kopii zapasowej programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -24,7 +24,7 @@ To rozwiązanie wykorzystuje natywne interfejsy API SQL do wykonywania kopii zap
 
 * Po określeniu maszyny wirtualnej SQL Server, która ma być chroniona, i zapytania dotyczącej baz danych, usługa Azure Backup Service zainstaluje rozszerzenie kopii zapasowej obciążenia na maszynie wirtualnej `AzureBackupWindowsWorkload` o rozszerzeniu nazwy.
 * To rozszerzenie składa się z koordynatora i wtyczki SQL. Chociaż koordynator jest odpowiedzialny za wyzwalanie przepływów pracy dla różnych operacji, takich jak konfigurowanie kopii zapasowej, tworzenie kopii zapasowej i przywracanie, wtyczka jest odpowiedzialna za rzeczywisty przepływ danych.
-* Aby móc odnajdywać bazy danych na tej maszynie wirtualnej, Azure Backup tworzy konto `NT SERVICE\AzureWLBackupPluginSvc`. To konto jest używane na potrzeby tworzenia kopii zapasowych i przywracania oraz wymaga uprawnień administratora systemu SQL. Azure Backup korzysta z `NT AUTHORITY\SYSTEM` konta do odnajdywania i wyszukiwania bazy danych, więc to konto musi być publicznym logowaniem na serwerze SQL. Jeśli nie utworzono maszyny wirtualnej programu SQL Server z witryny Azure Marketplace, może wystąpić błąd **UserErrorSQLNoSysadminMembership**. W takim przypadku [wykonaj te instrukcje](backup-azure-sql-database.md).
+* Aby móc odnajdywać bazy danych na tej maszynie wirtualnej, Azure Backup tworzy konto `NT SERVICE\AzureWLBackupPluginSvc`. To konto jest używane na potrzeby tworzenia kopii zapasowych i przywracania oraz wymaga uprawnień administratora systemu SQL. Azure Backup korzysta z `NT AUTHORITY\SYSTEM` konta do odnajdywania i wyszukiwania bazy danych, więc to konto musi być publicznym logowaniem na serwerze SQL. Jeśli nie utworzono maszyny wirtualnej programu SQL Server z witryny Azure Marketplace, może wystąpić błąd **UserErrorSQLNoSysadminMembership**. W takim przypadku [wykonaj te instrukcje](#set-vm-permissions).
 * Po zainicjowaniu konfigurowania ochrony dla wybranych baz danych usługa tworzenia kopii zapasowych konfiguruje koordynatora przy użyciu harmonogramów tworzenia kopii zapasowych i innych szczegółów zasad, które są buforowane lokalnie na maszynie wirtualnej.
 * W zaplanowanym czasie koordynator komunikuje się z wtyczką i zaczyna przesyłać strumieniowo dane kopii zapasowej z programu SQL Server przy użyciu infrastruktury VDI.  
 * Wtyczka wysyła dane bezpośrednio do magazynu usługi Recovery Services, co eliminuje konieczność lokalizacji tymczasowej. Dane są szyfrowane i przechowywane przez usługę Azure Backup na kontach magazynu.
@@ -37,7 +37,7 @@ To rozwiązanie wykorzystuje natywne interfejsy API SQL do wykonywania kopii zap
 Przed rozpoczęciem Sprawdź, czy:
 
 1. Upewnij się, że masz wystąpienie programu SQL Server uruchomione na platformie Azure. Możesz [szybko utworzyć wystąpienie programu SQL Server](../virtual-machines/windows/sql/quickstart-sql-vm-create-portal.md) w witrynie Marketplace.
-2. Zapoznaj się z zagadnieniami dotyczącymi [funkcji](#feature-consideration-and-limitations) i [scenariuszem](#scenario-support).
+2. Zapoznaj się z [zagadnieniami](#feature-consideration-and-limitations) [dotyczącymi funkcji i scenariuszem](#scenario-support).
 3. [Przejrzyj często zadawane pytania](faq-backup-sql-server.md) dotyczące tego scenariusza.
 
 ## <a name="scenario-support"></a>Obsługa scenariuszy
@@ -58,8 +58,7 @@ Azure Backup ostatnio ogłosiła wsparcie dla [EOS SQL Servers](https://docs.mic
 2. .NET Framework 4.5.2 i nowsze muszą być zainstalowane na maszynie wirtualnej
 3. Tworzenie kopii zapasowej dla FCI i dublowanych baz danych nie jest obsługiwane
 
-Użytkownicy nie będą obciążani opłatami za tę funkcję do momentu, gdy jest on ogólnie dostępny. Wszystkie inne zagadnienia [i ograniczenia dotyczące funkcji](#feature-consideration-and-limitations) są również stosowane do tych wersji. Należy zapoznać się z [wymaganiami wstępnymi](backup-sql-server-database-azure-vms.md#prerequisites) przed skonfigurowaniem ochrony na serwerach SQL 2008 i 2008 R2, które obejmują ustawienie [klucza rejestru](backup-sql-server-database-azure-vms.md#add-registry-key-to-enable-registration) (ten krok nie jest wymagany, gdy funkcja jest ogólnie dostępna).
-
+Użytkownicy nie będą obciążani opłatami za tę funkcję do momentu, gdy jest on ogólnie dostępny. Wszystkie inne [zagadnienia i ograniczenia dotyczące funkcji](#feature-consideration-and-limitations) są również stosowane do tych wersji. Należy zapoznać się z [wymaganiami wstępnymi](backup-sql-server-database-azure-vms.md#prerequisites) przed skonfigurowaniem ochrony na serwerach SQL 2008 i 2008 R2.
 
 ## <a name="feature-consideration-and-limitations"></a>Zagadnienia i ograniczenia dotyczące funkcji
 
@@ -180,7 +179,7 @@ Dodaj logowania **NT NT\SYSTEM** i **NT Service\AzureWLBackupPluginSvc** do wyst
 
     ![Nazwa logowania dla programu SSMS](media/backup-azure-sql-database/sql-2k8-nt-authority-ssms.png)
 
-5. Przejdź do *ról serwera* i wybierz role *publiczne* i sysadmin.
+5. Przejdź do *ról serwera* i wybierz role *publiczne* i *sysadmin* .
 
     ![Wybieranie ról w programie SSMS](media/backup-azure-sql-database/sql-2k8-server-roles-ssms.png)
 

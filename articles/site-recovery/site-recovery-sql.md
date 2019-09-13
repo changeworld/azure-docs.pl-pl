@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 14fbca6dea735ed1ee13fca20f19379cc2c4d0a9
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 79428520eed95e6e79f29e1676e2711e6ee24087
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742319"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934833"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>Skonfiguruj odzyskiwanie po awarii dla SQL Server
 
@@ -54,7 +54,7 @@ Site Recovery organizuje test pracy w trybie failover i przełączenie w tryb fa
 
 Istnieją pewne wymagania wstępne, aby zapewnić, że plan odzyskiwania jest w pełni dostosowany zgodnie z potrzebami. Każde wdrożenie SQL Server zwykle wymaga wdrożenia Active Directory. Wymaga także łączności dla warstwy aplikacji.
 
-### <a name="step-1-set-up-active-directory"></a>Krok 1: Skonfiguruj Active Directory
+### <a name="step-1-set-up-active-directory"></a>Krok 1: Konfigurowanie usługi Active Directory
 
 Skonfiguruj Active Directory w dodatkowej lokacji odzyskiwania, aby SQL Server działała prawidłowo.
 
@@ -111,7 +111,7 @@ Niektóre technologie BCDR, takie jak SQL Always On, nie obsługują natywnie te
 
     ![Zrzut ekranu okna z etykietą Content_AG przedstawiający nazwy i Stany serwera](./media/site-recovery-sql/bring-listener-online.png)
 
-1. Utwórz moduł równoważenia obciążenia. Dla każdego odbiornika grupy dostępności Utwórz jeden adres IP z puli adresów IP frontonu. Dodaj także maszynę wirtualną SQL Server do puli zaplecza.
+1. Upewnij się, że moduł równoważenia obciążenia w sieci trybu failover ma jeden adres IP z puli adresów IP frontonu odpowiadający każdemu odbiornikowi grupy dostępności oraz z maszyną wirtualną SQL Server w puli zaplecza.
 
      ![Zrzut ekranu przedstawiający okno "SQL-AlwaysOn-LB-fronton IP Pool](./media/site-recovery-sql/create-load-balancer1.png)
 
@@ -159,7 +159,7 @@ Site Recovery replikacja dla SQL Server jest objęta korzyścią odzyskiwania po
 
 Site Recovery jest aplikacją niezależny od. Site Recovery może pomóc w ochronie dowolnej wersji SQL Server wdrożonej w obsługiwanym systemie operacyjnym. Aby uzyskać więcej informacji, zobacz [Macierz obsługi na potrzeby odzyskiwania](vmware-physical-azure-support-matrix.md#replicated-machines) replikowanych maszyn.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Dowiedz się więcej o [architekturze Site Recovery](site-recovery-components.md).
 * Aby uzyskać SQL Server na platformie Azure, Dowiedz się więcej o rozwiązaniach o [wysokiej dostępności](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions) na potrzeby odzyskiwania w regionie pomocniczym platformy Azure.

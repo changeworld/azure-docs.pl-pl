@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Tworzenie indeksu wzbogaconego AI w Azure Portal-Azure Search'
+title: 'Szybki start: Poznaj ulepszoną wzbogacanie AI w programie Azure Portal — Azure Search'
 description: Pobieranie danych, umiejętność przetwarzania języka naturalnego i obrazów w Azure Search Portal indeksowania przy użyciu Azure Portal i przykładowych danych.
 manager: nitinme
 author: HeidiSteen
@@ -7,16 +7,16 @@ services: search
 ms.service: search
 ms.subservice: cognitive-search
 ms.topic: quickstart
-ms.date: 07/09/2019
+ms.date: 09/10/2019
 ms.author: heidist
-ms.openlocfilehash: 72546e6327fc3286455482943dcaedbd5a8e2943
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: ff32be5410876d1ba61b3bce2fd5f57868745e50
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744728"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881091"
 ---
-# <a name="quickstart-create-an-ai-indexing-pipeline-using-cognitive-skills-in-azure-search"></a>Szybki start: Tworzenie potoku indeksowania AI przy użyciu umiejętności poznawczych w Azure Search
+# <a name="quickstart-create-an-ai-enrichment-pipeline-using-cognitive-skills-in-azure-search"></a>Szybki start: Tworzenie potoku wzbogacania AI przy użyciu umiejętności poznawczych w Azure Search
 
 Azure Search integruje się z [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/), dodając wyodrębnianie zawartości, przetwarzanie języka naturalnego (NLP) oraz umiejętności przetwarzania obrazów do Azure Searchego potoku indeksowania, dzięki czemu zawartość nie może być wyszukiwana lub bez struktury. 
 

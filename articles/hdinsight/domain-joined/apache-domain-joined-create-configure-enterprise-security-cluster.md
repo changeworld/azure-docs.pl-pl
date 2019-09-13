@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/09/2019
-ms.openlocfilehash: f83fbda9f211b094a95e557a6b9d727d508927bd
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
-ms.translationtype: HT
+ms.openlocfilehash: 24c00d8d5db7c36746d68ad10edc4db4f76e0aac
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885771"
+ms.locfileid: "70918710"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Tworzenie i konfigurowanie klastrów pakiet Enterprise Security w usłudze Azure HDInsight
 
@@ -71,7 +71,7 @@ Omówienie: W tej sekcji utworzysz użytkowników, którzy będą mieli dostęp 
 
     1. Na ekranie **Active Directory Użytkownicy i komputery** kliknij pozycję **Akcja** > **Nowy** > **użytkownik**.
 
-        ![Utwórz nowego użytkownika Active Directory](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-new-user.png)
+        ![Utwórz nowego użytkownika Active Directory](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-active-directory-user.png)
 
     1. Na ekranie **nowy obiekt — użytkownik** wprowadź `HDIUser` **nazwę logowania użytkownika** , a następnie kliknij przycisk **dalej**.
 
@@ -85,7 +85,7 @@ Omówienie: W tej sekcji utworzysz użytkowników, którzy będą mieli dostęp 
 
 1. Na ekranie **Active Directory Użytkownicy i komputery** kliknij pozycję **Akcja** > **Nowa** > **Grupa**. Utwórz `HDIUserGroup` jako nową grupę.
 
-    ![Utwórz nową grupę Active Directory](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-new-group.png)
+    ![Utwórz nową grupę Active Directory](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-active-directory-group.png)
 
     ![Utwórz nowy group2](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0028.png)
 

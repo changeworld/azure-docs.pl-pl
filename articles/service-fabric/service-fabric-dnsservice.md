@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/20/2018
 ms.author: atsenthi
-ms.openlocfilehash: 94b2b807eb68d628165ca8fa4011b8f3e41d3c6d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 123e63fb79ba966e4e17b0c55440049a79add905
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599648"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931184"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Usługa DNS na platformie Azure Service Fabric
 Usługa DNS to opcjonalna usługa systemowa, którą można włączyć w klastrze w celu odnajdywania innych usług przy użyciu protokołu DNS. 
@@ -28,7 +28,7 @@ Wiele usług, szczególnie usługi kontenerowe, są adresowane za pomocą wstęp
 
 Usługa DNS mapuje nazwy DNS na nazwy usług, które z kolei są rozwiązywane przez Usługa nazewnictwa w celu zwrócenia punktu końcowego usługi. Nazwa DNS usługi jest udostępniana w momencie tworzenia. Na poniższym diagramie przedstawiono, w jaki sposób usługa DNS działa w przypadku usług bezstanowych.
 
-![punkty końcowe usługi](./media/service-fabric-dnsservice/stateless-dns.png)
+![Punkty końcowe usługi](./media/service-fabric-dnsservice/stateless-dns.png)
 
 Począwszy od Service Fabric w wersji 6,3, Service Fabric protokół DNS został rozszerzony w celu uwzględnienia schematu do adresowania podzielonych usług stanowych. Te rozszerzenia umożliwiają rozpoznawanie określonych adresów IP partycji przy użyciu kombinacji nazw DNS usługi stanowej i nazwy partycji. Obsługiwane są wszystkie trzy schematy partycjonowania:
 
@@ -133,7 +133,7 @@ Otwórz projekt w programie Visual Studio lub ulubionym edytorze, a następnie o
 ```
 Po wdrożeniu aplikacji wystąpienie usługi w Eksploratorze Service Fabric wyświetla nazwę DNS dla tego wystąpienia, jak pokazano na poniższym rysunku: 
 
-![punkty końcowe usługi](./media/service-fabric-dnsservice/service-fabric-explorer-dns.png)
+![Punkty końcowe usługi](./media/service-fabric-dnsservice/service-fabric-explorer-dns.png)
 
 Poniższy przykład ustawia nazwę DNS usługi stanowej na `statefulsvc.app`. Usługa używa nazwanego schematu partycjonowania. Zauważ, że nazwy partycji są małymi literami. Jest to wymagane w przypadku partycji, które będą przeznaczone dla kwerend DNS; Aby uzyskać więcej informacji, zobacz [Tworzenie zapytań DNS na partycji usługi stanowej](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#preview-making-dns-queries-on-a-stateful-service-partition).
 
@@ -179,7 +179,7 @@ Zapytania DNS, które są przeznaczone dla partycji, są sformatowane w następu
 Gdzie:
 
 - *Pierwsza etykieta-usługa-dnsname* jest pierwszą częścią nazwy usługi DNS.
-- *PartitionPrefix* jest wartością, którą można ustawić w sekcji DnsService manifestu klastra lub za pomocą szablonu Menedżer zasobów klastra. Wartość domyślna to "-". Aby dowiedzieć się więcej, zobacz [Ustawienia usługi DNS](./service-fabric-cluster-fabric-settings.md#dnsservice).
+- *PartitionPrefix* jest wartością, którą można ustawić w sekcji DnsService manifestu klastra lub za pomocą szablonu Menedżer zasobów klastra. Wartość domyślna to "--". Aby dowiedzieć się więcej, zobacz [Ustawienia usługi DNS](./service-fabric-cluster-fabric-settings.md#dnsservice).
 - Wartość *Target-Partition-Name* to nazwa partycji. 
 - *PartitionSuffix* jest wartością, którą można ustawić w sekcji DnsService manifestu klastra lub za pomocą szablonu Menedżer zasobów klastra. Wartość domyślna to pusty ciąg. Aby dowiedzieć się więcej, zobacz [Ustawienia usługi DNS](./service-fabric-cluster-fabric-settings.md#dnsservice).
 - *Pozostałe partycje-Service-dnsname* jest pozostałą częścią nazwy usługi DNS.
@@ -257,6 +257,6 @@ public class ValuesController : Controller
 
 * Usługa DNS dla usług Service Fabric Services nie jest jeszcze obsługiwana w systemie Linux. Usługa DNS jest obsługiwana w przypadku kontenerów w systemie Linux. Rozwiązaniem ręcznym przy użyciu programu Fabric Client/ServicePartitionResolver jest dostępna alternatywa.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Dowiedz się więcej o komunikacji usługi w ramach klastra przy użyciu [usługi Connect i Komunikuj się z usługami](service-fabric-connect-and-communicate-with-services.md)
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/28/2019
 ms.author: mlottner
-ms.openlocfilehash: 99ffa49a8e379f6c3a2139c082cd23f95c126e50
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 1ccf1c912dbf982fde1eb5cde4cde6556fc88bc1
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597251"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933909"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>Azure Security Center alertów zabezpieczeń IoT
 
@@ -34,7 +34,7 @@ Aby uzyskać więcej informacji, zobacz [tworzenie alertów niestandardowych](qu
 
 ## <a name="built-in-alerts-for-iot-devices"></a>Wbudowane alerty dla urządzeń IoT
 
-| severity | Name (Nazwa) | Źródło danych | Opis | Sugerowane kroki zaradcze|                  
+| severity | Name | Źródło danych | Opis | Sugerowane kroki zaradcze|                  
 |----------|---------------|-------------|-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Wysoka     | Pomyślne logowanie lokalne                                 | Agent       | Wykryto Pomyślne logowanie lokalne do urządzenia | Upewnij się, że zalogowany użytkownik jest autoryzowany.  |
 | Wysoka     | Pomyślna próba bruteforce  | Agent       | Zidentyfikowano wiele nieudanych prób logowania, po których następuje pomyślne zalogowanie. Próba ataku bruteforce może powieść się na urządzeniu. | Przejrzyj alert bruteforce SSH i aktywność na urządzeniach. <br>Jeśli działanie było złośliwe:<br> Wycofaj Resetowanie hasła dla kont z naruszeniem zabezpieczeń.<br> Zbadaj i skoryguj (jeśli znaleziono) urządzenia w poszukiwaniu złośliwego oprogramowania.  |
@@ -79,14 +79,14 @@ Aby uzyskać więcej informacji, zobacz [tworzenie alertów niestandardowych](qu
 
 ## <a name="built-in-alerts-for-iot-hub"></a>Wbudowane alerty dla IoT Hub
 
-| severity | Name (Nazwa)                                                                         | Opis | Sugerowane korygowanie|
+| severity | Name                                                                         | Opis | Sugerowane korygowanie|
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
 | Średni   | Dodano nowy certyfikat do IoT Hub                                    |Dodano certyfikat o \'nazwie% {DescCertificateName\' } do IoT Hub \'% {DescIoTHubName}\'. Jeśli ta akcja została wykonana przez nieautoryzowaną stronę, może to oznaczać złośliwe działanie.| 1. Upewnij się, że certyfikat został dodany przez autoryzowaną stronę. <br> 2. Jeśli nie został dodany przez autoryzowaną stronę, Usuń certyfikat i przeeskalacjj alertu do zespołu ds. zabezpieczeń.  |
 | Średni   | Certyfikat został usunięty z IoT Hub                                    | Certyfikat o nazwie \'% {DescCertificateName}\' został usunięty z IoT Hub \'% {DescIoTHubName}\'. Jeśli ta akcja została wykonana przez nieautoryzowaną stronę, może to oznaczać złośliwe działanie.| 1. Upewnij się, że certyfikat został usunięty przez autoryzowaną stronę. <br> 2. Jeśli certyfikat nie został usunięty przez autoryzowaną stronę, należy dodać certyfikat ponownie i eskalować alert do zespołu ds. zabezpieczeń. |
 | Średni   | Wykryto nieudaną próbę dodania certyfikatu do IoT Hub     | Wystąpił błąd podczas próby dodania \'certyfikatu% {DescCertificateName}\' do IoT Hub \'% {DescIoTHubName}\'. Jeśli ta akcja została wykonana przez nieautoryzowaną stronę, może to oznaczać złośliwe działanie.|   Upewnij się, że uprawnienia do zmiany certyfikatów są udzielane tylko autoryzowanym stronom.  |
 | Średni   | Próba usunięcia certyfikatu z IoT Hub nie powiodła się | Wystąpił błąd podczas próby usunięcia \'certyfikatu% {DescCertificateName}\' z IoT Hub \'% {DescIoTHubName}\'. Jeśli ta akcja została wykonana przez nieautoryzowaną stronę, może to oznaczać złośliwe działanie. |Upewnij się, że uprawnienia do zmiany certyfikatów są udzielane tylko autoryzowanym podmiotom.
-| Małe      | Podjęto próbę dodania lub edycji ustawienia diagnostycznego IoT Hub wykrytego    | Wykryto próbę dodania lub edytowania ustawień diagnostycznych IoT Hub. Ustawienia diagnostyczne umożliwiają ponowne utworzenie śladów aktywności w celach dochodzeniowych w przypadku wystąpienia zdarzenia zabezpieczeń lub zabezpieczenia sieci. Jeśli ta akcja nie została wykonana przez autoryzowaną stronę, może ona wskazywać na złośliwe działanie.  |
-| Małe      | Podjęto próbę usunięcia ustawienia diagnostycznego z wykrytym IoT Hub       | % {\' DescAttemptStatusMessage} podjęto próbę dodania lub edycji ustawienia \'diagnostycznego% {DescDiagnosticSettingName\' } dla \'IoT Hub% {DescIoTHubName\'}. Ustawienie diagnostyczne umożliwia ponowne utworzenie śladów aktywności w celach dochodzeniowych w przypadku wystąpienia zdarzenia związanego z bezpieczeństwem lub zabezpieczenia sieci. Jeśli ta akcja nie została wykonana przez autoryzowaną stronę, może to oznaczać złośliwe działanie. |1. Upewnij się, że certyfikat został usunięty przez autoryzowaną stronę.<br> 2. Jeśli certyfikat nie został usunięty przez autoryzowaną stronę, należy dodać certyfikat ponownie i eskalować alert do zespołu ds. zabezpieczeń informacji.
+| Małe      | Podjęto próbę dodania lub edycji ustawienia diagnostycznego IoT Hub wykrytego    | Wykryto próbę dodania lub edytowania ustawień diagnostycznych IoT Hub. Ustawienia diagnostyczne umożliwiają ponowne utworzenie śladów aktywności w celach dochodzeniowych w przypadku wystąpienia zdarzenia zabezpieczeń lub zabezpieczenia sieci. Jeśli ta akcja nie została wykonana przez autoryzowaną stronę, może ona wskazywać na złośliwe działanie.  |1. Upewnij się, że certyfikat został usunięty przez autoryzowaną stronę.<br> 2. Jeśli certyfikat nie został usunięty przez autoryzowaną stronę, należy dodać certyfikat ponownie i eskalować alert do zespołu ds. zabezpieczeń informacji.
+| Małe      | Podjęto próbę usunięcia ustawienia diagnostycznego z wykrytym IoT Hub       | % {\' DescAttemptStatusMessage} podjęto próbę dodania lub edycji ustawienia \'diagnostycznego% {DescDiagnosticSettingName\' } dla \'IoT Hub% {DescIoTHubName\'}. Ustawienie diagnostyczne umożliwia ponowne utworzenie śladów aktywności w celach dochodzeniowych w przypadku wystąpienia zdarzenia związanego z bezpieczeństwem lub zabezpieczenia sieci. Jeśli ta akcja nie została wykonana przez autoryzowaną stronę, może to oznaczać złośliwe działanie. |Upewnij się, że uprawnienia do zmiany ustawień diagnostycznych są udzielane tylko autoryzowanym podmiotom.
 |
 
 ## <a name="next-steps"></a>Następne kroki

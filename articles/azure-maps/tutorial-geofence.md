@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 112d0bd4b6802179692d0d177775027e552d1170
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a020ef91e52a5d801557399df827d3641bfb974e
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60795852"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934182"
 ---
 # <a name="set-up-a-geofence-by-using-azure-maps"></a>Konfigurowanie geofencingu przy użyciu usługi Azure Maps
 
@@ -36,7 +36,7 @@ Niniejszy samouczek zawiera informacje na temat wykonywania następujących czyn
 
 ### <a name="create-an-azure-maps-account"></a>Tworzenie konta usługi Azure Maps 
 
-W celu wykonania czynności opisanych w tym samouczku najpierw musisz zapoznać się z tematem [Zarządzanie kontem i kluczami](how-to-manage-account-keys.md), aby utworzyć subskrypcję konta w warstwie cenowej S1 i zarządzać nią.
+Aby wykonać kroki opisane w tym samouczku, postępuj zgodnie z instrukcjami podanymi w sekcji [Zarządzanie kontem](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) , aby utworzyć subskrypcję konta usługi Azure Maps za pomocą warstwy cenowej S1, a następnie wykonaj kroki opisane w sekcji [Uzyskiwanie klucza podstawowego](./tutorial-search-location.md#getkey) , aby uzyskać podstawowy klucz subskrypcji dla konta.
 
 ## <a name="upload-geofences"></a>Przekazywanie geofencingu
 
@@ -56,7 +56,7 @@ Otwórz aplikację Postman i wykonaj poniższe kroki, aby przekazać geofencing 
     
     Parametr GEOJSON w ścieżce adresu URL reprezentuje format przekazywanych danych.
 
-3. Kliknij pozycję **Params** (Parametry), a następnie wprowadź poniższą parę klucz-wartość, która będzie używana w przypadku adresu URL żądania POST. Zastąp wartość subscription-key swoim kluczem subskrypcji usługi Azure Maps.
+3. Kliknij pozycję **Params** (Parametry), a następnie wprowadź poniższą parę klucz-wartość, która będzie używana w przypadku adresu URL żądania POST. Zastąp wartość klucza subskrypcji kluczową subskrypcją Azure Maps.
    
     ![Parametry klucz-wartość narzędzia Postman](./media/tutorial-geofence/postman-key-vals.png)
 
@@ -256,7 +256,7 @@ Poniżej przedstawiono pięć żądań interfejsu API wirtualnego ogrodzenia GET
 
    Możesz zobaczyć, że sprzęt wyjechał poza wirtualne ogrodzenie głównego terenu budowy. Powoduje to opublikowanie zdarzenia (jest to poważne naruszenie), a do programu Operations Manager jest wysyłana wiadomość e-mail z alertem krytycznym.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W ramach tego samouczka nauczyliśmy się, jak skonfigurować geofencing przez przekazanie w usłudze Azure Maps — usłudze danych przy użyciu interfejsu API przekazywania danych. Nauczyliśmy się również, jak za pomocą usługi Azure Maps Events Grid subskrybować i obsługiwać zdarzenia geofencingu. 
 

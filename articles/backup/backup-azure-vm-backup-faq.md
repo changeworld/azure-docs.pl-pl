@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: dacurwin
-ms.openlocfilehash: 078c8763a08df339b9291807102e2d187d2a882f
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 26d07ac0b09655e170b53af91f890f21d15afb1b
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827573"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70909795"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Często zadawane pytania — tworzenie kopii zapasowych maszyn wirtualnych platformy Azure
 
@@ -120,6 +120,12 @@ W przypadku dysku zarządzanego maszyny wirtualnej platformy Azure przywracanie 
 
 ### <a name="how-do-we-get-faster-restore-performances"></a>Jak szybsze przywracanie wydajności?
 Funkcja [natychmiastowego przywracania](backup-instant-restore-capability.md) pomaga w szybszym wykonywaniu kopii zapasowych i natychmiast przywracaniu z migawek.
+
+### <a name="what-happens-when-we-change-the-key-vault-settings-for-the-encrypted-vm"></a>Co się stanie w przypadku zmiany ustawień magazynu kluczy dla zaszyfrowanej maszyny wirtualnej?
+
+Po zmianie ustawień magazynu kluczy dla zaszyfrowanej maszyny wirtualnej kopie zapasowe będą nadal współpracowały z nowym zestawem szczegółów, jednak po przywróceniu z punktu odzyskiwania przed zmianą należy przywrócić klucze tajne w magazynie kluczy, aby można było utworzyć maszynę wirtualną z  go. Aby uzyskać więcej informacji, zapoznaj się z tym [artykułem](https://docs.microsoft.com/azure/backup/backup-azure-restore-key-secret)
+
+Operacje, takie jak przechodzenie do trybu tajnego/klucza, nie wymagają tego kroku, a ten sam magazyn kluczy może być używany po przywróceniu.
 
 ## <a name="manage-vm-backups"></a>Zarządzanie kopiami zapasowymi maszyn wirtualnych
 

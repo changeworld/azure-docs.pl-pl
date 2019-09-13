@@ -1,7 +1,7 @@
 ---
-title: Jak monitorować dostępność klastra z dziennikami Ambari i usługi Azure Monitor
-description: Dowiedz się, jak używać narzędzia Ambari, i usługi Azure Monitor dzienniki do monitorowania kondycji klastra i dostępności.
-keywords: monitorowanie systemu ambari, monitorowanie, usługi log analytics, alert, dostępności, kondycji
+title: Jak monitorować dostępność klastra za pomocą Ambari i dzienników Azure Monitor
+description: Informacje na temat używania dzienników Ambari i Azure Monitor do monitorowania kondycji i dostępności klastra.
+keywords: monitorowanie, Ambari, monitor, log Analytics, alert, dostępność, kondycja
 ms.reviewer: jasonh
 author: tylerfox
 ms.service: hdinsight
@@ -9,188 +9,188 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: tyfox
-ms.openlocfilehash: 195999ba685828042fc958e8aed7e67bad694657
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 07b82f475074f5b55a2a5a93f7a59008476233c8
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786559"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934262"
 ---
-# <a name="how-to-monitor-cluster-availability-with-ambari-and-azure-monitor-logs"></a>Jak monitorować dostępność klastra z dziennikami Ambari i usługi Azure Monitor
+# <a name="how-to-monitor-cluster-availability-with-ambari-and-azure-monitor-logs"></a>Jak monitorować dostępność klastra za pomocą Ambari i dzienników Azure Monitor
 
-Klastry HDInsight zawierają zarówno Apache Ambari, który zawiera informacje o kondycji na pierwszy rzut oka i wstępnie zdefiniowane alerty, a także integracji dzienników usługi Azure Monitor, oferujący odpytywalny metryki i dzienniki, jak również konfigurowalnych alertów.
+Klastry usługi HDInsight obejmują zarówno platformę Apache Ambari, która udostępnia informacje o kondycji w skrócie i wstępnie zdefiniowane alerty, jak również integrację dzienników Azure Monitor, która udostępnia metryki i dzienniki queryable, a także konfigurowalne alerty.
 
-Ten dokument przedstawia sposób użycia tych narzędzi do monitorowania klastra i przedstawiono przykłady dotyczące konfigurowania alertu Ambari, monitorowanie stawki dla wersji dostępnej węzła i tworzenia alert usługi Azure Monitor, który jest uruchamiana, gdy nie odebrano pulsu z co najmniej jeden węzeł w ciągu pięciu godzin.
+Ten dokument pokazuje, jak używać tych narzędzi do monitorowania klastra i przeprowadzania kilku przykładów konfigurowania alertu Ambari, monitorowania częstotliwości dostępności węzłów oraz tworzenia alertu Azure Monitor, który jest uruchamiany, gdy puls nie został odebrany z co najmniej jednego węzła w ciągu pięciu godzin.
 
 ## <a name="ambari"></a>Ambari
 
 ### <a name="dashboard"></a>Pulpit nawigacyjny
 
-Pulpit nawigacyjny Ambari jest możliwy, klikając **Ambari macierzystego** łącze w **pulpity nawigacyjne klastra** części bloku przeglądu HDInsight w witrynie Azure portal, jak pokazano poniżej. Alternatywnie był on dostępny, wprowadzając następującego adresu URL w przeglądarce [https://\<clustername\>. azurehdinsight.net](https://clustername.azurehdinsight.net/)
+Dostęp do pulpitu nawigacyjnego Ambari można uzyskać przez kliknięcie linku **macierzystego Ambari** w sekcji **pulpity nawigacyjne klastra** w bloku przegląd usługi HDInsight w Azure Portal jak pokazano poniżej. Można też uzyskać do niego dostęp, wprowadzając następujący adres URL w przeglądarce [https://\<ClusterName\>. azurehdinsight.NET](https://clustername.azurehdinsight.net/)
 
-![Widok portalu HDInsight zasobów](media/hdinsight-cluster-availability/portal-overview.png)
+![Widok portalu zasobów usługi HDInsight](media/hdinsight-cluster-availability/portal-oms-overview1.png)
 
-Następnie zostanie monit o nazwę użytkownika logowania klastra i hasło. Wprowadź poświadczenia wybrane podczas tworzenia klastra.
+Następnie zostanie wyświetlony monit o podanie nazwy użytkownika i hasła logowania do klastra. Wprowadź poświadczenia wybrane podczas tworzenia klastra.
 
-Następnie nastąpi przekierowanie do pulpitu nawigacyjnego systemu Ambari, który zawiera elementy widget, które pokazują aspekty metryk, które pozwalają uzyskać szybki przegląd kondycji klastra usługi HDInsight. Tych widżetach Pokaż metryki, takie jak liczba na żywo DataNodes (węzły procesu roboczego) i JournalNodes (dozorcy węzeł), czasu NameNodes (węzłów głównych) jako dobrze metryki specyficzne dla niektórych typów klastra, np. czasu usługi YARN ResourceManager dla klastrów Spark i Hadoop.
+Następnie nastąpi przekierowanie do pulpitu nawigacyjnego Ambari, który zawiera elementy widget, które pokazują kilku metryk, aby szybko zapoznać się z kondycją klastra usługi HDInsight. Te widżety pokazują takie metryki jak liczba aktywnych węzłów danych (węzłów procesu roboczego) i JournalNodes (węzeł dozorcy), czas działania NameNodes (węzły główne), a także metryki charakterystyczne dla określonych typów klastrów, takie jak czas pracy zasobów związanych z ResourceManager dla klastrów Spark i Hadoop.
 
-![Pulpit nawigacyjny systemu Ambari](media/hdinsight-cluster-availability/ambari-dashboard.png)
+![Pulpit nawigacyjny Ambari](media/hdinsight-cluster-availability/apache-ambari-dashboard.png)
 
-### <a name="hosts--view-individual-node-status"></a>Hosty — Wyświetl stan poszczególnych węzłów
+### <a name="hosts--view-individual-node-status"></a>Hosty — Wyświetlanie stanu poszczególnych węzłów
 
-Można również wyświetlić informacje o stanie dla poszczególnych węzłów. Kliknij przycisk **hosty** kartę, aby wyświetlić listę wszystkich węzłów w klastrze i wyświetlić podstawowe informacje o każdym węźle. Zielony znacznik wyboru po lewej stronie nazwy każdego węzła wskazuje, że wszystkie składniki są włączone na węźle. Jeśli składnik nie działa w węźle, zobaczysz czerwony trójkąt alertu, a nie zielony znacznik wyboru.
+Możesz również wyświetlić informacje o stanie poszczególnych węzłów. Kliknij kartę **hosty** , aby wyświetlić listę wszystkich węzłów w klastrze i wyświetlić podstawowe informacje o każdym węźle. Zielona kontrola po lewej stronie każdej nazwy węzła wskazuje, że wszystkie składniki znajdują się w węźle. Jeśli składnik nie działa w węźle, zamiast zielonego sprawdzenia zobaczysz czerwony trójkąt ostrzegawczy.
 
-![Wyświetl hosty systemu Ambari](media/hdinsight-cluster-availability/ambari-hosts.png)
+![Widok hostów Ambari](media/hdinsight-cluster-availability/apache-ambari-hosts1.png)
 
-Możesz następnie kliknąć **nazwa** węzła, aby wyświetlić bardziej szczegółowe metryki hosta dla tego konkretnego węzła. Ten widok przedstawia stan/dostępności poszczególnych składników.
+Następnie możesz kliknąć **nazwę** węzła, aby wyświetlić bardziej szczegółowe metryki hosta dla danego węzła. Ten widok przedstawia stan/dostępność każdego pojedynczego składnika.
 
-![Hosty Ambari pojedynczy widok węzła](media/hdinsight-cluster-availability/ambari-hosts-node.png)
+![Widok pojedynczego węzła Ambari hosty](media/hdinsight-cluster-availability/apache-ambari-hosts-node.png)
 
-### <a name="ambari-alerts"></a>Alerty systemu Ambari
+### <a name="ambari-alerts"></a>Alerty Ambari
 
-Ambari oferuje także kilka konfigurowalnych alertów, zapewniających powiadomień określonych zdarzeń. Alerty są wyzwalane, są wyświetlane w lewym górnym rogu Ambari we wskaźniku czerwony, zawierające liczbę alertów. Klikając ten wskaźnik pokazuje listę bieżące alerty.
+Ambari oferuje również kilka konfigurowalnych alertów, które mogą udostępniać powiadomienia o określonych zdarzeniach. Gdy alerty są wyzwalane, są wyświetlane w lewym górnym rogu Ambari w czerwonym wskaźniku zawierającym liczbę alertów. Kliknięcie tego wskaźnika powoduje wyświetlenie listy bieżących alertów.
 
-![Liczba alertów systemu Ambari](media/hdinsight-cluster-availability/ambari-alerts.png)
+![Liczba alertów Ambari](media/hdinsight-cluster-availability/apache-ambari-alerts.png)
 
-Aby wyświetlić listę definicji alertów oraz ich stan, kliknij przycisk **alerty** karty, jak pokazano poniżej.
+Aby wyświetlić listę definicji alertów i ich Stanów, kliknij kartę **alerty** , jak pokazano poniżej.
 
-![Widok definicji alertów systemu Ambari](media/hdinsight-cluster-availability/ambari-alerts-definitions.png)
+![Widok definicji alertów Ambari](media/hdinsight-cluster-availability/ambari-alerts-definitions.png)
 
-Ambari udostępnia wiele wstępnie zdefiniowanych alertów związanych z dostępnością, w tym:
+Ambari oferuje wiele wstępnie zdefiniowanych alertów dotyczących dostępności, w tym:
 
 | Nazwa alertu                        | Opis                                                                                                                                                                           |
 |-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Podsumowanie kondycji DataNode           | Ten poziom usługi alert jest wyzwalany, jeśli istnieją DataNodes złej kondycji                                                                                                                |
-| NameNode o wysokiej dostępności kondycji | Ten alert poziom usług jest wyzwalany, jeśli nie są wykonywane Active NameNode lub NameNode w stanie wstrzymania.                                                                              |
-| Procent JournalNodes dostępne    | Ten alert jest wyzwalany, jeśli liczba szczegółów JournalNodes w klastrze jest większa niż skonfigurowany próg krytyczny. Agreguje wyniki JournalNode proces kontroli. |
-| Procent DataNodes dostępne       | Ten alert jest wyzwalany, jeśli liczba szczegółów DataNodes w klastrze jest większa niż skonfigurowany próg krytyczny. Agreguje wyniki DataNode proces kontroli.       |
+| Podsumowanie kondycji węzła datanode           | Ten alert na poziomie usługi jest wyzwalany, jeśli istnieją węzły datanodes o złej kondycji                                                                                                                |
+| Kondycja NameNode wysokiej dostępności | Ten alert na poziomie usługi jest wyzwalany, jeśli aktywne NameNode lub wstrzymanie NameNode nie jest uruchomione.                                                                              |
+| Procent dostępnych JournalNodes    | Ten alert jest wyzwalany, jeśli liczba w dół JournalNodes w klastrze jest większa niż skonfigurowany próg krytyczny. Agreguje wyniki testów procesu JournalNode. |
+| Dostępne węzły datanodes       | Ten alert jest wyzwalany, jeśli liczba węzłów danych w dół w klastrze jest większa niż skonfigurowany próg krytyczny. Agreguje wyniki kontroli procesu elementu datanode.       |
 
-Pełną listę Ambari alerty monitora pomocy dostępność klastra można znaleźć [tutaj](https://docs.microsoft.com/azure/hdinsight/hdinsight-high-availability-linux#ambari-web-ui),
+Pełna lista alertów Ambari, które ułatwiają monitorowanie dostępności klastra, można znaleźć [tutaj](https://docs.microsoft.com/azure/hdinsight/hdinsight-high-availability-linux#ambari-web-ui),
 
-Aby wyświetlić szczegóły alertu, lub zmodyfikuj kryteria, kliknij przycisk **nazwa** alertu. Wykonaj **podsumowanie kondycji DataNode** jako przykład. Można wyświetlić opis alertu, a także określone kryteria, które będą wyzwalać alert "ostrzeżenie" lub "critical" i interwał sprawdzania kryteriów. Aby edytować konfigurację, kliknij przycisk **Edytuj** przycisk w prawym górnym rogu okna konfiguracji.
+Aby wyświetlić szczegóły alertu lub zmodyfikować kryteria, kliknij **nazwę** alertu. Zapoznaj się z przykładem **Podsumowanie kondycji węzła** . Można wyświetlić opis alertu, a także określone kryteria, które będą wyzwalać alert "ostrzeżenie" lub "krytyczny" oraz interwał sprawdzania dla kryteriów. Aby edytować konfigurację, kliknij przycisk **Edytuj** w prawym górnym rogu pola konfiguracji.
 
-![Podczas konfigurowania alertu systemu Ambari](media/hdinsight-cluster-availability/ambari-alert-configuration.png)
+![Konfiguracja alertu Ambari](media/hdinsight-cluster-availability/ambari-alert-configuration.png)
 
-W tym miejscu można edytować opis i, co ważniejsze, sprawdzanie interwału i progi dla alertów ostrzegawczych lub krytycznych.
+Tutaj można edytować opis i, co ważniejsze, interwał sprawdzania i progi alertów ostrzegawczych lub krytycznych.
 
-![Widok edycji podczas konfigurowania alertu systemu Ambari](media/hdinsight-cluster-availability/ambari-alert-configuration-edit.png)
+![Widok edycji konfiguracji alertów Ambari](media/hdinsight-cluster-availability/ambari-alert-configuration-edit.png)
 
-W tym przykładzie można utworzyć 2 DataNodes złej kondycji, wyzwalać alert krytyczny i 1 złej kondycji DataNode tylko wyzwalacz ostrzeżenie. Kliknij przycisk **Zapisz** po zakończeniu edycji.
+W tym przykładzie można sprawić, że 2 węzły w złej kondycji wyzwalają alert krytyczny, a 1 element datanode w złej kondycji wyzwala ostrzeżenie. Po zakończeniu edycji kliknij przycisk **Zapisz** .
 
 ### <a name="email-notifications"></a>Powiadomienia e-mail
 
-Można również opcjonalnie skonfigurować powiadomienia e-mail o alertach Ambari. W tym celu w **alerty** kliknij pozycję **akcje** przycisku w lewym górnym rogu, następnie **Zarządzanie powiadomienia.**
+Opcjonalnie możesz również skonfigurować powiadomienia e-mail dotyczące alertów Ambari. Aby to zrobić, na karcie **alerty** kliknij przycisk **Akcje** w lewym górnym rogu, a następnie **Zarządzaj powiadomieniami.**
 
-![Ambari Zarządzanie akcji powiadomienia](media/hdinsight-cluster-availability/ambari-manage-notifications.png)
+![Akcja zarządzania Ambariami](media/hdinsight-cluster-availability/ambari-manage-notifications.png)
 
-Zostanie otwarte okno dialogowe powiadomień o alertach zarządzania. Kliknij przycisk **+** w dolnej części okna dialogowego i wypełnij wymagane pola, aby zapewnić Ambari za pomocą adresu e-mail szczegóły serwera, z którego można wysyłać wiadomości e-mail.
+Zostanie otwarte okno dialogowe umożliwiające zarządzanie powiadomieniami o alertach. **+** Kliknij w dolnej części okna dialogowego i wypełnij pola wymagane, aby podać Ambari z serwerem poczty e-mail, z którego mają być wysyłane wiadomości e-mail.
 
 > [!TIP]
-> Konfigurowanie narzędzia Ambari powiadomienia e-mail może być dobrym sposobem, aby otrzymywać alerty w jednym miejscu, związane z zarządzaniem wielu klastrów HDInsight.
+> Konfigurowanie powiadomień e-mail Ambari może być dobrym sposobem na otrzymywanie alertów w jednym miejscu podczas zarządzania wieloma klastrami usługi HDInsight.
 
-## <a name="azure-monitor-logs-integration"></a>Usługa Azure Monitor rejestruje integracji
+## <a name="azure-monitor-logs-integration"></a>Integracja dzienników Azure Monitor
 
-Usługa Azure Monitor dzienniki danych umożliwia generowanych przez wiele zasobów, takich jak klastry HDInsight, mają być zbierane i zagregowane w jednym miejscu, aby osiągnąć ujednoliconego środowiska monitorowania.
+Dzienniki Azure Monitor umożliwiają gromadzenie i agregowanie danych generowanych przez wiele zasobów, takich jak klastry usługi HDInsight, w celu zapewnienia ujednoliconego środowiska monitorowania.
 
-Jako warunek wstępny należy obszar roboczy usługi Log Analytics do zapisywania zebranych danych. Jeśli nie utworzono już jeden, możesz wykonać instrukcje w tym miejscu: [Utwórz obszar roboczy usługi Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
+Zgodnie z wymaganiami wstępnymi do przechowywania zebranych danych potrzebny jest obszar roboczy Log Analytics. Jeśli jeszcze tego nie zrobiono, możesz wykonać poniższe instrukcje: [Utwórz obszar roboczy log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
 
-### <a name="enable-hdinsight-azure-monitor-logs-integration"></a>Włączanie integracji dzienników HDInsight Azure Monitor
+### <a name="enable-hdinsight-azure-monitor-logs-integration"></a>Włącz integrację dzienników Azure Monitor usługi HDInsight
 
-Na stronie zasobów klastra HDInsight w portalu, kliknij **pakietu Operations Management Suite** bloku. Następnie kliknij przycisk **Włącz** i wybierz swój obszar roboczy usługi Log Analytics z listy rozwijanej.
+Na stronie zasobów klastra usługi HDInsight w portalu Kliknij blok **Operations Management Suite** . Następnie kliknij pozycję **Włącz** , a następnie wybierz obszar roboczy log Analytics z listy rozwijanej.
 
-![Blok HDInsight Operations Management Suite](media/hdinsight-cluster-availability/portal-enable-oms.png)
+![Blok pakietu Operations Management Suite](media/hdinsight-cluster-availability/hdi-portal-oms-enable.png)
 
-### <a name="query-metrics-and-logs-tables-in-the-logs-blade"></a>Metryki i dzienniki tabele kwerendy w bloku dzienników
+### <a name="query-metrics-and-logs-tables-in-the-logs-blade"></a>Zapytanie dotyczące metryk i tabel dzienników w bloku dzienniki
 
-Po włączeniu integracji dzienników usługi Azure Monitor (może to potrwać kilka minut,) przejdź do usługi **obszar roboczy usługi Log Analytics** zasobów i kliknięcie **dzienniki** bloku
+Po włączeniu integracji dzienników Azure Monitor (może to potrwać kilka minut) przejdź do zasobów **obszaru roboczego log Analytics** i kliknij blok **dzienniki** .
 
-![Blok dzienników obszaru roboczego analizy dzienników](media/hdinsight-cluster-availability/portal-logs.png)
+![Blok dzienników obszaru roboczego Log Analytics](media/hdinsight-cluster-availability/hdinsight-portal-logs.png)
 
-**Dzienniki** blok zawiera szereg przykładowych zapytań, takich jak:
+Blok **dzienniki** zawiera kilka przykładowych zapytań, takich jak:
 
 | Nazwa zapytania                      | Opis                                                               |
 |---------------------------------|---------------------------------------------------------------------------|
-| Już dziś dostępności komputerów    | Wykres z liczbą komputerów przesyłania dzienników, co godzinę                     |
-| Lista interwałów pulsu                 | Lista wszystkich pulsu komputera z ostatniej godziny                           |
-| Ostatni Puls z każdego komputera | Pokaż ostatni Puls wysyłanych przez każdy komputer                             |
-| Niedostępnymi komputerami           | Lista wszystkich znanych komputerów, które nie wysyłają pulsu w ciągu ostatnich 5 godzin |
-| Stawki dla wersji dostępnej               | Oblicz współczynnik Dostępność poszczególnych połączonych komputerów                |
+| Dostępność komputerów dzisiaj    | Wykres przedstawiający liczbę komputerów, które wysyłają dzienniki, co godzinę                     |
+| Wyświetl pulsy                 | Wyświetl listę wszystkich pulsów komputerów z ostatniej godziny                           |
+| Ostatni puls każdego komputera | Pokaż ostatni puls Wysłany przez każdy komputer                             |
+| Niedostępne komputery           | Wyświetl listę wszystkich znanych komputerów, które nie wysłały pulsu w ostatnich 5 godzinach |
+| Szybkość dostępności               | Oblicz szybkość dostępności każdego połączonego komputera                |
 
-Na przykład uruchom **stawki dla wersji dostępnej** przykładowe zapytanie, klikając **Uruchom** na tym zapytaniu, jak pokazano na powyższym zrzucie ekranu. Spowoduje to wyświetlenie współczynnik dostępności każdego węzła w klastrze jako wartość procentowa. Po włączeniu wielu klastrów HDInsight wysłać metryki do tego samego obszaru roboczego usługi Log Analytics, zobaczysz stawki dla wersji dostępnej dla wszystkich węzłów w tych klastrach wyświetlane.
+Przykładowo Uruchom przykładowe zapytanie o **szybkości dostępności** , klikając polecenie **Uruchom** w zapytaniu, jak pokazano na poniższym zrzucie ekranu. Spowoduje to wyświetlenie wartości procentowej częstotliwości dostępności każdego węzła w klastrze. Jeśli włączono wiele klastrów usługi HDInsight do wysyłania metryk do tego samego obszaru roboczego Log Analytics, zostanie wyświetlona szybkość dostępności dla wszystkich węzłów w tych klastrach.
 
-![Analiza obszaru roboczego dzienniki bloku "dostępności kurs" Przykładowe zapytanie dziennika](media/hdinsight-cluster-availability/portal-availability-rate.png)
+![Przykładowe zapytanie Log Analytics "szybkość dostępności" bloku dzienników obszaru roboczego](media/hdinsight-cluster-availability/portal-availability-rate.png)
 
 > [!NOTE] 
-> Stawki dla wersji dostępnej jest mierzony w okresie 24-godzinnego, co klaster będzie musiał ją uruchomić co najmniej 24 godzin zanim zobaczysz stawek dokładne dostępności.
+> Częstotliwość dostępności jest mierzona w okresie 24-godzinnym, więc klaster będzie musiał działać przez co najmniej 24 godziny, zanim zobaczysz dokładne stawki dostępności.
 
-W tej tabeli do udostępnionego pulpitu nawigacyjnego można przypiąć, klikając **numeru Pin** w prawym górnym rogu. Jeśli nie masz zapisywalny udostępnionych pulpitów nawigacyjnych, możesz dowiedzieć się, jak ją utworzyć w tym miejscu: [Tworzenie i udostępnianie pulpitów nawigacyjnych w witrynie Azure portal](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards#publish-and-share-a-dashboard).
+Możesz przypiąć tę tabelę do udostępnionego pulpitu nawigacyjnego, klikając pozycję **Przypnij** w prawym górnym rogu. Jeśli nie masz żadnych zapisywalnych udostępnionych pulpitów nawigacyjnych, możesz zobaczyć, jak utworzyć jedną z nich: [Tworzenie i udostępnianie pulpitów nawigacyjnych w Azure Portal](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards#publish-and-share-a-dashboard).
 
-### <a name="azure-monitor-alerts"></a>Alerty usługi Azure Monitor
+### <a name="azure-monitor-alerts"></a>Alerty Azure Monitor
 
-Można również ustawić alerty usługi Azure Monitor, które będą wyzwalać podczas wartość metryki lub wyniki kwerendy spełnia określone warunki. Na przykład Utwórz alert, aby wysłać wiadomość e-mail, gdy co najmniej jeden węzeł nie wysłał pulsu w ciągu 5 godzin (czyli jest uznawana za niedostępne).
+Można również skonfigurować alerty Azure Monitor, które będą wyzwalane, gdy wartość metryki lub wyniki zapytania spełniają określone warunki. Na przykład utwórz alert, aby wysłać wiadomość e-mail, gdy co najmniej jeden węzeł nie wysłał pulsu w ciągu 5 godzin (tj. jest to prawdopodobnie niedostępne).
 
-Z **dzienniki** bloku Uruchom **niedostępnymi komputerami** przykładowe zapytanie, klikając **Uruchom** na tym zapytaniu, jak pokazano poniżej.
+W bloku **dzienniki** Uruchom przykładowe zapytanie **niedostępne komputery** , klikając polecenie **Uruchom** dla tego zapytania, jak pokazano poniżej.
 
-![Analiza obszaru roboczego dzienniki bloku "niedostępnymi komputerami" Przykładowe zapytanie dziennika](media/hdinsight-cluster-availability/portal-unavailable-computers.png)
+![Przykładowa kwerenda Log Analytics bloku dzienników obszaru roboczego "niedostępne komputery"](media/hdinsight-cluster-availability/portal-unavailable-computers.png)
 
-Jeśli wszystkie węzły są dostępne, to zapytanie powinno zwrócić wyników: 0 teraz. Kliknij przycisk **Nowa reguła alertu** aby rozpocząć konfigurowanie alertu dla tego zapytania.
+Jeśli wszystkie węzły są dostępne, ta kwerenda powinna zwrócić 0 wyników teraz. Kliknij pozycję **Nowa reguła alertu** , aby rozpocząć konfigurowanie alertu dla tego zapytania.
 
-![Nowa reguła alertu log Analytics obszaru roboczego](media/hdinsight-cluster-availability/portal-logs-new-alert-rule.png)
+![Log Analytics nowej regule alertu obszaru roboczego](media/hdinsight-cluster-availability/portal-logs-new-alert-rule.png)
 
-Istnieją trzy składniki do alertu: *zasobów* dla której ma zostać utworzona reguła (roboczym usługi Log Analytics w tym przypadku), *warunek* do wyzwalania alertu, a *grupy akcji*  które określają, co się stanie, gdy zostanie wyzwolony alert.
+Alert zawiera trzy składniki: *zasób* , dla którego ma zostać utworzona reguła (log Analytics w tym przypadku obszar roboczy), *warunek* wyzwalania alertu oraz *grupy akcji* , które określają, co się stanie w przypadku alertu wyzwalane.
 
-Kliknij przycisk **warunku tytuł**, jak pokazano poniżej, aby ukończyć konfigurowanie logiki sygnału.
+Kliknij **tytuł warunku**, jak pokazano poniżej, aby zakończyć konfigurowanie logiki sygnałów.
 
 ![Warunek reguły alertu](media/hdinsight-cluster-availability/portal-condition-title.png)
 
-Spowoduje to otwarcie **konfigurowanie logiki sygnału** bloku.
+Spowoduje to otwarcie bloku **Konfiguruj logikę sygnału** .
 
-Ustaw **Alert logic** sekcji w następujący sposób:
+Skonfiguruj sekcję **logika alertów** w następujący sposób:
 
-*Na podstawie: Liczba wyników, warunek: Przekracza wartość progową: 0.*
+*Na podstawie: Liczba wyników, warunek: Większe niż, próg: 2,0.*
 
-Ponieważ ta kwerenda zwraca tylko węzły niedostępny jako wyniki, jeśli liczba wyników jest coraz większa niż 0, powinny wyzwalać alert.
+Ponieważ to zapytanie zwraca tylko niedostępne węzły jako wyniki, jeśli liczba wyników jest większa niż 0, alert powinien zostać wywołany.
 
-W **Evaluated na podstawie** sekcji, ustaw **okres** i **częstotliwość** oparte na jak często ma pod kątem niedostępny węzłów.
+W sekcji **oceniane na podstawie** Określ **okres** i **częstotliwość** w zależności od tego, jak często chcesz sprawdzać dostępność niedostępnych węzłów.
 
-Uwaga na potrzeby tego alertu chcesz upewnić się, że **okres = częstotliwości.** Więcej informacji na temat okres, częstotliwość i inne parametry alertu można znaleźć [tutaj](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log#log-search-alert-rule---definition-and-types).
+Należy pamiętać, że na potrzeby tego alertu należy upewnić się, że **okres = częstotliwość.** Więcej informacji na temat okresu, częstotliwości i innych parametrów alertu można znaleźć [tutaj](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log#log-search-alert-rule---definition-and-types).
 
-Kliknij przycisk **gotowe** po zakończeniu, konfigurowanie logiki sygnału.
+Po zakończeniu konfigurowania logiki sygnałów kliknij przycisk **gotowe** .
 
-![Reguła alertu konfigurowanie logiki sygnału](media/hdinsight-cluster-availability/portal-configure-signal-logic.png)
+![Reguła alertu Konfigurowanie logiki sygnału](media/hdinsight-cluster-availability/portal-configure-signal-logic.png)
 
-Jeśli nie masz już istniejącą grupę działań, kliknij przycisk **Utwórz nowy** w obszarze **grup akcji** sekcji.
+Jeśli nie masz jeszcze istniejącej grupy akcji, kliknij pozycję **Utwórz nową** w sekcji **grupy akcji** .
 
-![Nowa grupa akcji reguły alertu](media/hdinsight-cluster-availability/portal-create-new-action-group.png)
+![Nowa grupa akcji dla reguły alertu](media/hdinsight-cluster-availability/portal-create-new-action-group.png)
 
-Spowoduje to otwarcie **Dodaj grupę akcji** bloku. Wybierz **Nazwa grupy akcji**, **krótką nazwę**, **subskrypcji**, i **grupy zasobów.** W obszarze **akcje** wybierz pozycję **nazwy akcji** i wybierz **poczty E-mail/SMS/wypychania/rejestr** jako **typ akcji.**
+Spowoduje to otwarcie bloku **Dodaj grupę akcji** . Wybierz **nazwę grupy akcji**, **krótką nazwę**, **subskrypcję**i **grupę zasobów.** W sekcji **Akcje** wybierz **nazwę akcji** i wybierz pozycję **email/SMS/push/Voice** jako **Typ akcji.**
 
 > [!NOTE]
-> Istnieje kilka akcji, które mogą wyzwalać alert, oprócz poczty E-mail/SMS/wypychania/głosowych, takich jak funkcja platformy Azure, programu LogicApp, element Webhook, ITSM i elementu Runbook usługi Automation. [Dowiedz się więcej.](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#action-specific-information)
+> Istnieje kilka innych akcji, które mogą być wyzwalane przez alert oprócz wiadomości E-mail/SMS/wypychania/głosu, takich jak usługa Azure Functions, LogicApp, webhook, narzędzia ITSM i Automatyzacja. [Dowiedz się więcej.](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#action-specific-information)
 
-Spowoduje to otwarcie **poczty E-mail/SMS/wypychania/rejestr** bloku. Wybierz **nazwa** adresata, **Sprawdź** **E-mail** polu, a następnie wpisz adres e-mail, do której ma być wysyłany alert. Kliknij przycisk **OK** w **poczty E-mail/SMS/wypychania/rejestr** bloku, a następnie w obszarze **Dodaj grupę akcji** bloku, aby ukończyć konfigurowanie grupy akcji.
+Spowoduje to otwarcie bloku **poczty e-mail/wiadomości SMS/wypychania/głosu** . Wybierz **nazwę** odbiorcy, **zaznacz** pole adres **e-mail** , a następnie wpisz adres e-mail, na który ma być wysyłany alert. Kliknij przycisk **OK** w bloku **wiadomości e-mail/SMS/wypychanie/głos** , a następnie w bloku **Dodaj grupę akcji** , aby zakończyć konfigurowanie grupy akcji.
 
-![Reguła alertu Dodaj grupę akcji](media/hdinsight-cluster-availability/portal-add-action-group.png)
+![Dodaj grupę akcji dla reguły alertu](media/hdinsight-cluster-availability/portal-add-action-group.png)
 
-Po zamknąć te bloki, powinien zostać wyświetlony na liście grupy akcji **grup akcji** sekcji. Na koniec Ukończ **szczegóły alertu** sekcji, wpisując **Nazwa reguły alertu** i **opis** i wybierając pozycję **ważność**.
-Kliknij przycisk **Tworzenie reguły alertu** na zakończenie.
+Po zamknięciu tych zamków powinna zostać wyświetlona grupa akcji wymieniona w sekcji **grupy akcji** . Na koniec Wypełnij sekcję **szczegóły alertu** , wpisując nazwę i **Opis** **reguły alertu** i wybierając **ważność**.
+Kliknij przycisk **Utwórz regułę alertu** , aby zakończyć.
 
-![Tworzenie reguły alertu zakończenia](media/hdinsight-cluster-availability/portal-create-alert-rule-finish.png)
+![Zakończenie tworzenia reguły alertu](media/hdinsight-cluster-availability/portal-create-alert-rule-finish.png)
 
 > [!TIP]
-> Możliwość określenia **ważność** jest zaawansowanym narzędziem, które mogą być używane podczas tworzenia wielu alertów. Na przykład można utworzyć jeden alert, aby zgłosić ostrzegawczy (ważność 1), jeśli jeden węzeł główny w dół, a kolejny alert, który wywołuje krytyczny (ważność 0), w razie mało prawdopodobnej zarówno węzłami głównymi przestaną działać.
+> Możliwość określania **ważności** jest zaawansowanym narzędziem, które może być używane podczas tworzenia wielu alertów. Na przykład można utworzyć jeden alert, aby zgłosić ostrzeżenie (ważność 1), jeśli jeden węzeł główny ulegnie awarii i inny alert, który podnosi krytyczne (ważność 0) w prawdopodobnym zdarzeniu, że oba węzły główne przechodzą.
 
-Po spełnieniu warunku dla tego alertu, alert zostanie uruchomiony, a otrzymasz wiadomość e-mail ze szczegółami alertu w następujący sposób:
+Po spełnieniu warunku tego alertu alert zostanie uruchomiony i otrzymasz wiadomość e-mail z informacjami o alercie, takimi jak:
 
-![Usługa Azure Monitor wiadomość e-mail z alertem](media/hdinsight-cluster-availability/alert-email.png)
+![Wiadomość e-mail z alertem Azure Monitor](media/hdinsight-cluster-availability/portal-oms-alert-email.png)
 
-Można również wyświetlić wszystkie alerty, które zostały wyzwolone pogrupowane według ważności, przechodząc do **alerty** bloku w swojej **obszar roboczy usługi Log Analytics**.
+Możesz również wyświetlić wszystkie alerty, które zostały wywołane, pogrupowane według ważności, przechodząc do bloku **alerty** w **obszarze roboczym log Analytics**.
 
-![Alerty usługi log Analytics obszaru roboczego](media/hdinsight-cluster-availability/portal-alerts.png)
+![Log Analytics alertów obszaru roboczego](media/hdinsight-cluster-availability/hdi-portal-oms-alerts.png)
 
-Kliknięcie na grupowanie ważności (czyli **ważność 1,** jak podkreślono powyżej) pokaże rekordy dla wszystkich alertów o ważności, że mają wywołanego podobnie jak poniżej:
+Kliknięcie grupowania ważności (tj. **ważność 1,** jak zostało wyróżnione powyżej) spowoduje wyświetlenie rekordów dla wszystkich alertów o ważności, które zostały wywołane jak poniżej:
 
-![Alerty usługi log Analytics obszaru roboczego ważność 1](media/hdinsight-cluster-availability/portal-alerts-sev-1.png)
+![Log Analyticsnie alertów ważność 1](media/hdinsight-cluster-availability/portal-oms-alerts-sev1.png)
 
 ## <a name="next-steps"></a>Następne kroki
-- [Dostępność i niezawodność klastrów Apache Hadoop w HDInsight](hdinsight-high-availability-linux.md)
+- [Dostępność i niezawodność klastrów Apache Hadoop w usłudze HDInsight](hdinsight-high-availability-linux.md)

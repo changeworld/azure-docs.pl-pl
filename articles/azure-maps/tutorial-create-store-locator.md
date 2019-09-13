@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 4cc21a4dbab7d5114eed8414c6530eab5f42bb00
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: bf30e805a06222bf8c74429df54565073d7d919b
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478858"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933064"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>Tworzenie lokalizatora sklepów przy użyciu usługi Azure Maps
 
@@ -35,7 +35,7 @@ Przejdź dalej do [przykładu lokalizatora sklepów na żywo](https://azuremapsc
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby wykonać kroki w tym samouczku, najpierw trzeba [utworzyć konto usługi Azure Maps](./tutorial-search-location.md#createaccount), a następnie [uzyskać klucz subskrypcji dla swojego konta](./tutorial-search-location.md#getkey).
+Aby wykonać kroki opisane w tym samouczku, musisz najpierw [utworzyć konto Azure Maps](./tutorial-search-location.md#createaccount) i postępować zgodnie z instrukcjami zawartymi w sekcji [Pobieranie klucza podstawowego](./tutorial-search-location.md#getkey) w celu pobrania podstawowego klucza subskrypcji dla konta.
 
 ## <a name="design"></a>Projektuj
 
@@ -417,7 +417,7 @@ Na tym etapie w interfejsie użytkownika wszystko jest skonfigurowane. Teraz mus
             center: [-90, 40],
             zoom: 2,
 
-            //Add your Azure Maps subscription key to the map SDK.
+            //Add your Azure Maps primary subscription key to the map SDK.
             authOptions: {
                 authType: 'subscriptionKey',
                 subscriptionKey: '<Your Azure Maps Key>'

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: db8147717e825d9cc48b7f0704dc5eea0be223a9
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 3f910a3d0466153bd60fe23ef2f9f656cac292ee
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510321"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70919721"
 ---
 # <a name="using-azure-ultra-disks"></a>Korzystanie z usługi Azure Ultra disks
 
@@ -79,7 +79,7 @@ Teraz, gdy znasz strefę do wdrożenia, wykonaj kroki wdrażania opisane w tym a
 
 Najpierw Ustal rozmiar maszyny wirtualnej do wdrożenia. Obecnie tylko rodziny maszyn wirtualnych DsV3 i EsV3 obsługują Ultra Disks. Więcej informacji o tych rozmiarach maszyn wirtualnych znajduje się w drugiej tabeli w tym [blogu](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/) .
 
-Jeśli chcesz utworzyć maszynę wirtualną z wieloma dyskami, zapoznaj się z przykładem [Tworzenie maszyny wirtualnej z wieloma dyskami](https://aka.ms/UltraSSDTemplate).
+Jeśli chcesz utworzyć maszynę wirtualną z wieloma dyskami, zapoznaj się z przykładem [Tworzenie maszyny wirtualnej z wieloma dyskami](https://aka.ms/ultradiskArmTemplate).
 
 Jeśli zamierzasz użyć własnego szablonu, upewnij się, że **apiVersion** `Microsoft.Compute/virtualMachines` dla i `Microsoft.Compute/Disks` jest ustawiony jako `2018-06-01` (lub nowszy).
 
@@ -216,4 +216,4 @@ Update-AzDisk -ResourceGroupName $resourceGroup -DiskName $diskName -DiskUpdate 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Jeśli chcesz wypróbować nowy typ dysku, zażądaj [dostępu do tej ankiety](https://aka.ms/UltraDiskSignup).
+Jeśli chcesz wypróbować nowy typ dysku, [Zażądaj dostępu do tej ankiety](https://aka.ms/UltraDiskSignup).

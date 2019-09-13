@@ -1,6 +1,6 @@
 ---
 title: Instalowanie narzędzi Azure Data Lake Tools for Visual Studio
-description: W tym artykule opisano sposób instalowania narzędzi Azure Data Lake Tools dla programu Visual Studio.
+description: W tym artykule opisano sposób instalowania programu Azure Data Lake Tools for Visual Studio.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
@@ -8,43 +8,51 @@ ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: conceptual
-ms.date: 05/03/2018
-ms.openlocfilehash: 3269d38b691ec4dd9573a241c89dadc285787143
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 08/30/2019
+ms.openlocfilehash: 08f0456b6a8b663f0af68fbb179de14b9e3acf79
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60408140"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914100"
 ---
 # <a name="install-data-lake-tools-for-visual-studio"></a>Instalacja narzędzi Data Lake Tools for Visual Studio
 
-Poznaj sposoby tworzenia kont usługi Azure Data Lake Analytics przy użyciu programu Visual Studio, definiowania zadań w języku [U-SQL](data-lake-analytics-u-sql-get-started.md) oraz przesyłania zadań do usługi Data Lake Analytics. Więcej informacji na temat usługi Data Lake Analytics można znaleźć w artykule [Omówienie usługi Azure Data Lake Analytics](data-lake-analytics-overview.md).
+Dowiedz się, jak tworzyć konta Azure Data Lake Analytics przy użyciu programu Visual Studio. Możesz definiować zadania w [języku U-SQL](data-lake-analytics-u-sql-get-started.md) i przesyłać zadania do usługi Data Lake Analytics. Więcej informacji na temat usługi Data Lake Analytics można znaleźć w artykule [Omówienie usługi Azure Data Lake Analytics](data-lake-analytics-overview.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Visual Studio**: Obsługiwane są wszystkie wersje, z wyjątkiem Express.
-    * Visual Studio 2017
-    * Visual Studio 2015
-    * Visual Studio 2013
-* **Zestaw Microsoft Azure SDK dla platformy .NET** w wersji 2.7.1 lub nowszej.  Można go zainstalować przy użyciu [Instalatora platformy internetowej](https://www.microsoft.com/web/downloads/platform.aspx).
+* **Visual Studio**: Obsługiwane są wszystkie wersje poza Express.
+
+  * Visual Studio 2019
+  * Visual Studio 2017
+  * Visual Studio 2015
+  * Visual Studio 2013
+
+* **Zestaw Microsoft Azure SDK dla platformy .NET** w wersji 2.7.1 lub nowszej. Można go zainstalować przy użyciu [Instalatora platformy internetowej](https://www.microsoft.com/web/downloads/platform.aspx).
 * Konto usługi **Data Lake Analytics**. Aby utworzyć konto, zobacz artykuł [Wprowadzenie do pracy z usługą Azure Data Lake Analytics za pomocą witryny Azure Portal](data-lake-analytics-get-started-portal.md).
 
-## <a name="install-azure-data-lake-tools-for-visual-studio-2017"></a>Instalowanie narzędzi Azure Data Lake Tools for Visual Studio 2017
+## <a name="install-azure-data-lake-tools-for-visual-studio-2017-or-visual-studio-2019"></a>Zainstaluj Azure Data Lake Tools for Visual Studio 2017 lub Visual Studio 2019
 
-Narzędzia Azure Data Lake Tools for Visual Studio są obsługiwane w programie Visual Studio 2017 15.3 lub nowszym. Narzędzia te stanowią część obciążeń **Magazyn danych i przetwarzanie** oraz **Tworzenie aplikacji na platformie Azure** w instalatorze programu Visual Studio. Włącz jedno z tych dwóch obciążeń w ramach instalacji programu Visual Studio.  
+Azure Data Lake Tools for Visual Studio jest obsługiwane w programie Visual Studio 2017 15,3 lub nowszym. Jest to narzędzie, które jest częścią **magazynu i przetwarzania danych** oraz obciążeń związanych z **programowaniem na platformie Azure** . Włącz jedno z tych dwóch obciążeń w ramach instalacji programu Visual Studio.
 
-Włącz **przechowywanie i przetwarzanie danych** obciążenia, jak pokazano: ![Włącz obciążenie przetwarzania i przechowywania danych](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2017-install-01.png)
+Włącz obciążenie **magazynu i przetwarzania danych** , jak pokazano poniżej:
 
-Włącz **programowanie na platformie Azure** obciążenia, jak pokazano: ![Włącz obciążenie programistyczne platformy Azure](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2017-install-02.png)
+![Włączanie obciążenia magazynu i przetwarzania danych](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2019-install-01.png)
+
+Włącz obciążenie **Programowanie na platformie Azure** , jak pokazano:
+
+![Wybierz obciążenie Programowanie na platformie Azure](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2019-install-02.png)
 
 ## <a name="install-azure-data-lake-tools-for-visual-studio-2013-and-2015"></a>Instalowanie narzędzi Azure Data Lake Tools for Visual Studio w wersji 2013 i 2015
 
-Narzędzia Azure Data Lake Tools for Visual Studio możesz pobrać i zainstalować [z Centrum pobierania](https://aka.ms/adltoolsvs). Po instalacji pamiętaj, że:
-* Węzeł **Eksplorator serwera** > **Azure** zawiera węzeł **Data Lake Analytics**. 
+Pobierz i zainstaluj [narzędzia Microsoft Azure Data Lake i Stream Analytics Tools for Visual Studio ](https://aka.ms/adltoolsvs). Po zakończeniu instalacji program Visual Studio ma następujące zmiany:
+
+* Węzeł **Eksplorator serwera** > **Azure** zawiera węzeł **Data Lake Analytics**.
 * Menu **Narzędzia** zawiera element **Data Lake**.
 
-
 ## <a name="next-steps"></a>Następne kroki
-* Aby rejestrować informacje diagnostyczne, zobacz [Accessing diagnostics logs for Azure Data Lake Analytics](data-lake-analytics-diagnostic-logs.md) (Dostęp do dzienników diagnostycznych usługi Azure Data Lake Analytics)
+
+* Aby rejestrować informacje diagnostyczne, zobacz [Uzyskiwanie dostępu do dzienników diagnostycznych dla Azure Data Lake Analytics](data-lake-analytics-diagnostic-logs.md).
 * Aby uzyskać informacje na temat bardziej złożonego zapytania, zobacz temat [Analizowanie dzienników witryn sieci Web przy użyciu usługi Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
-* Aby użyć widoku wykonania wierzchołka, zobacz [korzystanie z widoku wykonania wierzchołka w narzędziach Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
+* Aby skorzystać z widoku wykonywania wierzchołków, zobacz temat [Używanie widoku wykonywania wierzchołka w Data Lake narzędzia dla programu Visual Studio](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md).

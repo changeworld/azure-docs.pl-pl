@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: c692b1c5b77b95e5487a847b46473906135c3d86
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: aeb00b84ac254232e0d68fd9631fb539a928e67d
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68261148"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931891"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Informacje o usłudze mobilności dla maszyn wirtualnych VMware i serwerów fizycznych
 
@@ -119,8 +119,8 @@ Użycie | UnifiedAgent. exe/role \<MS/MT >/InstallLocation \<lokalizacja instala
 Dzienniki instalacji | W obszarze%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log.
 /Role | Obowiązkowy parametr instalacji. Określa, czy należy zainstalować usługę mobilności (MS), czy główny cel (MT).
 /InstallLocation| Opcjonalny parametr. Określa lokalizację instalacji usługi mobilności (dowolny folder).
-/Platform | Obowiązkowy. Określa platformę, na której zainstalowano usługę mobilności. **Oprogramowanie VMware** dla maszyn wirtualnych VMware/serwerów fizycznych; **Platforma Azure** dla maszyn wirtualnych platformy Azure.
-/Silent| Opcjonalny. Określa, czy Instalator ma być uruchamiany w trybie dyskretnym.
+/Platform | Obowiązkowy. Określa platformę, na której zainstalowano usługę mobilności. **Oprogramowanie VMware** dla maszyn wirtualnych VMware/serwerów fizycznych; **Platforma Azure** dla maszyn wirtualnych platformy Azure.<br/><br/> W przypadku traktowania maszyn wirtualnych platformy Azure jako maszyn fizycznych należy określić program **VMware**.
+/Silent| Opcjonalna. Określa, czy Instalator ma być uruchamiany w trybie dyskretnym.
 
 #### <a name="registration-settings"></a>Ustawienia rejestracji
 **Ustawienie** | **Szczegóły**

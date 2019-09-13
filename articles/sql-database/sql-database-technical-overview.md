@@ -12,20 +12,22 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: f7fc5b32fb18da60816056c72dde8c53d439befe
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: d7cb473c54dc9cf735e43c65bc079fb4f21e4c97
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812192"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70913994"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Co to jest usługa Azure SQL Database
 
-Azure SQL Database to usługa zarządzana relacyjnej bazy danych ogólnego przeznaczenia, która umożliwia tworzenie warstwy magazynu danych o wysokiej dostępności dla aplikacji i rozwiązań w chmurze Microsoft Azure. SQL Database może być właściwym wyborem dla różnych nowoczesnych aplikacji w chmurze, ponieważ umożliwia korzystanie z zaawansowanych funkcji przetwarzania zarówno danych relacyjnych, jak i [nierelacyjnych struktur](sql-database-multi-model-features.md) , takich jak wykresy, JSON, przestrzenne i XML. Jest on oparty na najnowszej stabilnej wersji [aparatu bazy danych Microsoft SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json) i umożliwia korzystanie z bogatego zestawu zaawansowanych funkcji przetwarzania zapytań, takich jak [wysoka wydajność technologii w pamięci](sql-database-in-memory.md) i [inteligentne przetwarzanie zapytań. ](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json).
+Azure SQL Database to usługa zarządzana relacyjnej bazy danych ogólnego przeznaczenia, która umożliwia tworzenie warstwy magazynu danych o wysokiej dostępności dla aplikacji i rozwiązań w chmurze Microsoft Azure. SQL Database może być właściwym wyborem dla różnych nowoczesnych aplikacji w chmurze, ponieważ umożliwia korzystanie z zaawansowanych funkcji przetwarzania zarówno danych relacyjnych, jak i nierelacyjnych [struktur](sql-database-multi-model-features.md) , takich jak wykresy, JSON, przestrzenne i XML. Jest on oparty na najnowszej stabilnej wersji [aparatu bazy danych Microsoft SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json) i umożliwia korzystanie z bogatego zestawu zaawansowanych funkcji przetwarzania zapytań, takich jak [wysoka wydajność technologii w pamięci](sql-database-in-memory.md) i [inteligentne przetwarzanie zapytań. ](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json).
 Zgodnie ze strategią firmy Microsoft skupiającej się na chmurze najnowsze funkcjonalności programu SQL Server są wydawane najpierw w usłudze SQL Database, a dopiero później w samym programie SQL Server. Podejście to umożliwia użytkownikom dostęp do najnowszych możliwości programu SQL Server bez potrzeby wdrażania poprawek lub wykonywania uaktualnień — a na dodatek funkcje te są już przetestowane w milionach baz danych. SQL Database umożliwia łatwe definiowanie i skalowanie wydajności w ramach dwóch różnych modeli zakupów: [modelu zakupu opartego na rdzeń wirtualny](sql-database-service-tiers-vcore.md) i [modelu zakupu opartego](sql-database-service-tiers-dtu.md)na jednostkach DTU. SQL Database jest w pełni zarządzana usługa, która ma wbudowane dostępności, kopie zapasowe i inne typowe operacje konserwacyjne. Firma Microsoft obsługuje bezproblemowo wszystkie poprawki i aktualizowanie kodu SQL i systemu operacyjnego, a następnie wyodrębnia wszystkie zarządzanie podstawową infrastrukturą.
 
 > [!NOTE]
 > Słownik terminów w Azure SQL Database można znaleźć w artykule [SQL Database słownik terminów](sql-database-glossary-terms.md)
+
+## <a name="deployment-models"></a>Modele wdrażania
 
 Usługa Azure SQL Database udostępnia następujące opcje wdrażania na potrzeby bazy danych Azure SQL Database:
 
@@ -51,11 +53,19 @@ Możesz utworzyć swoją pierwszą aplikację w małej, pojedynczej bazie danych
 
 Dynamiczna skalowalność różni się od skalowania automatycznego. O skalowaniu automatycznym mówimy, gdy usługa jest skalowana automatycznie na podstawie kryteriów, natomiast dynamiczna skalowalność uwzględnia skalowanie ręczne bez przestojów. Pojedyncza baza danych obsługuje ręczną skalowalność, ale nie Skalowanie automatyczne. Aby zapewnić środowisko bardziej *zautomatyzowane*, rozważ użycie elastycznych pul baz danych, które umożliwiają bazom danych udostępnianie zasobów w puli w zależności od potrzeb. Istnieją jednak skrypty, które mogą pomóc zautomatyzować skalowalność dla pojedynczej bazy danych. Aby zapoznać się z przykładem, zobacz [Używanie programu PowerShell do monitorowania i skalowania pojedynczej bazy danych](scripts/sql-database-monitor-and-scale-database-powershell.md).
 
-### <a name="purchasing-models-service-tiers-compute-sizes-and-storage-amounts"></a>Modele zakupów, warstwy usług, rozmiary obliczeń i kwoty magazynu
+### <a name="purchasing-models"></a>Modele zakupów
 
 SQL Database oferuje dwa modele zakupu:
-- [Model zakupu oparty na rdzeń wirtualny](sql-database-service-tiers-vcore.md) umożliwia wybranie liczby rdzeni wirtualnych, ilości pamięci oraz ilości i szybkości magazynu. Model zakupu oparty na rdzeń wirtualny umożliwia również korzystanie z [Korzyść użycia hybrydowego platformy Azure SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) w celu uzyskania oszczędności kosztów. Aby uzyskać więcej informacji na temat Korzyść użycia hybrydowego platformy Azure, zobacz [często zadawane pytania](#sql-database-frequently-asked-questions-faq).
+- [Model zakupu oparty na rdzeń wirtualny](sql-database-service-tiers-vcore.md) umożliwia wybranie liczby rdzeni wirtualnych, ilości pamięci oraz ilości i szybkości magazynu. Model zakupu oparty na rdzeń wirtualny umożliwia również korzystanie z **[Korzyść użycia hybrydowego platformy Azure SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/)** w celu uzyskania oszczędności kosztów. Aby uzyskać więcej informacji na temat Korzyść użycia hybrydowego platformy Azure, zobacz [często zadawane pytania](#sql-database-frequently-asked-questions-faq).
 - [Model zakupów opartych na](sql-database-service-tiers-dtu.md) jednostkach DTU oferuje mieszankę zasobów obliczeniowych, pamięci i operacji we/wy w trzech warstwach usług w celu obsługi lekkich i intensywnych obciążeń związanych z bazami danych. Rozmiary obliczeniowe w poszczególnych warstwach zapewniają inną kombinację tych zasobów, do których można dodać dodatkowe zasoby magazynu.
+- [Model bezserwerowy](sql-database-serverless.md) , który automatycznie skaluje obliczenia na podstawie zapotrzebowania na obciążenia i rachunków dla ilości użytych obliczeń na sekundę. Warstwa obliczeniowa bezserwerowa również automatycznie wstrzymuje bazy danych w trakcie okresów nieaktywnych, gdy są naliczane opłaty za magazyn i automatycznie wznawiają bazy danych po powrocie działania.
+
+### <a name="service-tiers"></a>Warstwy usług
+
+Azure SQL Database oferuje trzy warstwy usług zaprojektowane dla różnych typów aplikacji:
+- [Ogólnego przeznaczenia/standardowa](sql-database-service-tier-general-purpose.md) warstwa usług zaprojektowana pod kątem typowych obciążeń. Oferuje zorientowane na budżety Opcje obliczeniowe i magazynowe.
+- Warstwa usługi [krytyczne dla działania firmy/Premium](sql-database-service-tier-business-critical.md) zaprojektowana na potrzeby aplikacji OLTP z wysoką szybkością transakcji i najniższym opóźnieniem we/wy. Oferuje największą odporność na błędy przy użyciu kilku izolowanych replik.
+- Warstwa usługi do [skalowania](sql-database-service-tier-hyperscale.md) dla bardzo dużych baz danych OLTP oraz możliwość automatycznego skalowania magazynu i skalowania w poziomie płynnie. 
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Pule elastyczne umożliwiające zmaksymalizowanie wykorzystania zasobów
 
@@ -156,7 +166,7 @@ Zaawansowane zabezpieczenia danych to ujednolicony pakiet zaawansowanych funkcji
 - [Klasyfikacja & odnajdywania danych](sql-database-data-discovery-and-classification.md):
 
   Ta funkcja (obecnie dostępna w wersji zapoznawczej) oferuje funkcje wbudowane w Azure SQL Database na potrzeby odnajdywania, klasyfikowania i etykietowania & ochrony poufnych danych w bazach danych. Za jej pomocą można zapewniać wgląd w stan klasyfikacji bazy danych oraz śledzić dostęp do danych poufnych w bazie danych i poza jej granicami.
-- [Ocena luk w zabezpieczeniach](sql-vulnerability-assessment.md):
+- [Ocena luk](sql-vulnerability-assessment.md)w zabezpieczeniach:
 
   Ta usługa może wykrywać, śledzić i pomagać w korygowaniu potencjalnych luk w zabezpieczeniach bazy danych. Zapewnia wgląd w stan zabezpieczeń i zapewnia kroki, które można wykonać w celu rozwiązania problemów z zabezpieczeniami oraz zwiększenia bezpieczeństwa bazy danych.
 - [Wykrywanie zagrożeń](sql-database-threat-detection.md):
@@ -208,7 +218,7 @@ Bieżąca wersja SQL Database to V12. Wersja v11 została wycofana.
 
 ### <a name="can-i-control-when-patching-downtime-occurs"></a>Czy mogę kontrolować, kiedy występuje poprawka przestoju
 
-Nie. Skutki zastosowania poprawek zwykle nie są zauważalne, jeśli w aplikacji jest stosowana [logika ponawiania](sql-database-develop-overview.md#resiliency) . Aby uzyskać więcej informacji o sposobach przygotowania do planowanych zdarzeń konserwacji w usłudze Azure SQL Database, zobacz [Planowanie zdarzeń konserwacji platformy Azure w Azure SQL Database](sql-database-planned-maintenance.md).
+Nie. Skutki zastosowania poprawek zwykle nie są zauważalne, jeśli w aplikacji [](sql-database-develop-overview.md#resiliency) jest stosowana logika ponawiania. Aby uzyskać więcej informacji o sposobach przygotowania do planowanych zdarzeń konserwacji w usłudze Azure SQL Database, zobacz [Planowanie zdarzeń konserwacji platformy Azure w Azure SQL Database](sql-database-planned-maintenance.md).
 
 ### <a name="azure-hybrid-benefit-questions"></a>Pytania Korzyść użycia hybrydowego platformy Azure
 

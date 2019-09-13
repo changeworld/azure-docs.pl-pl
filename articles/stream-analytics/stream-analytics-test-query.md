@@ -9,16 +9,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: b8670fc7958e66e7c25e27bb3a22429ab20b2514
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 9c67d511f6c94c8b9af034835e149875304e2235
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991003"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918978"
 ---
 # <a name="test-an-azure-stream-analytics-job-with-sample-data"></a>Testowanie zadania Azure Stream Analytics przy użyciu przykładowych danych
 
-W Azure Stream Analytics można testować zapytanie bez uruchamiania lub zatrzymywania zadania. Można testować zapytania dotyczące danych przychodzących z obiektu ujścia danych wejściowych lub przekazać przykładowe dane z pliku lokalnego.
+W Azure Stream Analytics można testować zapytanie bez uruchamiania lub zatrzymywania zadania. Można testować zapytania dotyczące danych przychodzących z Twojego ujścia danych wejściowych lub przekazać przykładowe dane z pliku lokalnego w witrynie Azure Portal. Możesz również testować zapytania lokalnie z lokalnych danych przykładowych lub danych na żywo w programie [Visual Studio](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-live-data-local-testing) i [Visual Studio Code](https://docs.microsoft.com/en-us/azure/stream-analytics/vscode-local-run). 
 
 ## <a name="sample-incoming-data-from-input"></a>Przykładowe przychodzące dane z danych wejściowych
 
@@ -34,7 +34,7 @@ Azure Stream Analytics automatycznie pobiera zdarzenia z danych wejściowych prz
 
    a. Typ serializacji dla danych jest wykrywany automatycznie, jeśli jego kod JSON lub CSV. Możesz również ręcznie zmienić ten plik w formacie JSON, CSV, AVRO, zmieniając opcję z menu rozwijanego.
     
-   b. Użyj selektora, aby wyświetlić dane w formacie **tabeli** lub nieprzetworzonym.
+   b. Użyj selektora, aby wyświetlić dane w formacie **tabeli** lub **nieprzetworzonym** .
     
    c. Jeśli wyświetlane dane nie są aktualne, wybierz pozycję **Odśwież** , aby wyświetlić najnowsze zdarzenia.
 
@@ -42,7 +42,7 @@ Azure Stream Analytics automatycznie pobiera zdarzenia z danych wejściowych prz
 
    ![Azure Stream Analytics przykładowe dane wejściowe w formacie tabeli](./media/stream-analytics-test-query/asa-sample-table.png)
 
-   W poniższej tabeli przedstawiono przykład danych w **formacie**nieprzetworzonym:
+   W poniższej tabeli przedstawiono przykład danych w **formacie nieprzetworzonym**:
 
    ![Azure Stream Analytics przykładowe dane wejściowe w formacie nieprzetworzonym](./media/stream-analytics-test-query/asa-sample-raw.png)
 

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: dca329ce598a9ecbc7da71cc1c24bf7731a4c994
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
-ms.translationtype: HT
+ms.openlocfilehash: 226a3b0ffa4b770d1738e69fd04592476b9f4075
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885436"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70935259"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Dostosowywanie klastrów usługi Azure HDInsight za pomocą akcji skryptu
 
@@ -165,11 +165,11 @@ W tej sekcji opisano różne sposoby używania akcji skryptu podczas tworzenia k
 
 3. W sekcji __Ustawienia zaawansowane__ wybierz pozycję __Akcje skryptu__. W sekcji __Akcje skryptu__ wybierz pozycję __+ Prześlij nowe__.
 
-    ![Prześlij nową akcję skryptu](./media/hdinsight-hadoop-customize-cluster-linux/add-script-action.png)
+    ![Prześlij nową akcję skryptu](./media/hdinsight-hadoop-customize-cluster-linux/add-new-script-action.png)
 
 4. Użyj wpisu __skryptu__ , aby wybrać utworzony skrypt. Aby użyć niestandardowego skryptu, wybierz opcję __niestandardowy__. Podaj __nazwę__ i __Identyfikator URI skryptu bash__ dla skryptu.
 
-    ![Dodawanie skryptu w formularzu wybierania skryptu](./media/hdinsight-hadoop-customize-cluster-linux/select-script.png)
+    ![Dodawanie skryptu w formularzu wybierania skryptu](./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png)
 
     W poniższej tabeli opisano elementy w formularzu:
 
@@ -185,7 +185,7 @@ W tej sekcji opisano różne sposoby używania akcji skryptu podczas tworzenia k
 
 5. Wybierz pozycję __Utwórz__ , aby zapisać skrypt. Następnie możesz użyć __+ Prześlij nowy__ , aby dodać kolejny skrypt.
 
-    ![Wiele akcji skryptu](./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts.png)
+    ![Wiele akcji skryptu](./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts-actions.png)
 
     Po zakończeniu dodawania skryptów wybierz przycisk __Wybierz__ , a następnie przycisk __dalej__ , aby powrócić do sekcji __Podsumowanie klastra__ .
 
@@ -251,7 +251,7 @@ Przejdź do [Azure Portal](https://portal.azure.com):
 
 4. Użyj wpisu __skryptu__ , aby wybrać utworzony skrypt. Aby użyć niestandardowego skryptu, wybierz opcję __niestandardowy__. Podaj __nazwę__ i __Identyfikator URI skryptu bash__ dla skryptu.
 
-    ![Dodawanie skryptu w formularzu wybierania skryptu](./media/hdinsight-hadoop-customize-cluster-linux/select-script.png)
+    ![Dodawanie skryptu w formularzu wybierania skryptu](./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png)
 
     W poniższej tabeli opisano elementy w formularzu:
 
@@ -438,7 +438,7 @@ Za pomocą interfejsu użytkownika sieci Web Ambari można wyświetlać informac
 
 2. Na pasku w górnej części strony wybierz wpis **Ops** . Na liście są wyświetlane bieżące i poprzednie operacje wykonywane w klastrze za pomocą Ambari.
 
-    ![Pasek interfejsu użytkownika sieci Web Ambari z wybranym elementem Ops](./media/hdinsight-hadoop-customize-cluster-linux/ambari-nav.png)
+    ![Pasek interfejsu użytkownika sieci Web Ambari z wybranym elementem Ops](./media/hdinsight-hadoop-customize-cluster-linux/hdi-apache-ambari-nav.png)
 
 3. Znajdź w kolumnie **operacje** wpisy **z\_uruchomioną customscriptactioną** . Te wpisy są tworzone po uruchomieniu akcji skryptu.
 
@@ -520,4 +520,4 @@ Istnieją jednak dwa wyjątki:
 * [Instalowanie i używanie oprogramowania Apache Giraph w klastrach usługi HDInsight](hdinsight-hadoop-giraph-install-linux.md)
 * [Dodawanie dodatkowego magazynu do klastra usługi HDInsight](hdinsight-hadoop-add-storage.md)
 
-[img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/HDI-Cluster-state.png "Etapy podczas tworzenia klastra"
+[img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/cluster-provisioning-states.png "Etapy podczas tworzenia klastra"

@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/14/2018
+ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: 1d50f239a0ef4de02c9f0c87a28b0f5092d9c529
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 5ef4ca3f6cbf45ac67bad6531926a7de54cd2012
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019036"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934812"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Zarządzanie kopiami zapasowymi baz danych SQL Server i ich monitorowanie
 
@@ -137,9 +137,35 @@ Wyrejestruj wystąpienie SQL Server po wyłączeniu ochrony, ale przed usunięci
 
 3. W obszarze **serwery chronione**wybierz serwer do wyrejestrowania. Aby usunąć magazyn, musisz wyrejestrować wszystkie serwery.
 
-4. Kliknij prawym przyciskiem myszy serwer chroniony, anastępnie wybierz polecenie Wyrejestruj.
+4. Kliknij prawym przyciskiem myszy serwer chroniony, a następnie wybierz polecenie **Wyrejestruj**.
 
    ![Wybieranie pozycji Usuń](./media/backup-azure-sql-database/delete-protected-server.jpg)
+
+
+## <a name="modify-policy"></a>Modyfikuj zasady
+Zmodyfikuj zasady, aby zmienić częstotliwość tworzenia kopii zapasowych lub zakres przechowywania.
+
+> [!NOTE]
+> Każda zmiana w okresie przechowywania będzie stosowana z mocą wsteczną do wszystkich starszych punktów odzyskiwania poza nowymi.
+
+Na pulpicie nawigacyjnym magazynu przejdź do pozycji **Zarządzaj** > **zasadami tworzenia kopii zapasowych** i wybierz zasady, które chcesz edytować.
+
+  ![Zarządzanie zasadami tworzenia kopii zapasowych](./media/backup-azure-sql-database/modify-backup-policy.png)
+
+  ![Modyfikowanie zasad tworzenia kopii zapasowych](./media/backup-azure-sql-database/modify-backup-policy-impact.png)
+
+Modyfikacje zasad będą mieć wpływ na wszystkie powiązane elementy kopii zapasowej i wyzwalają odpowiednie zadania **konfigurowania ochrony** . 
+
+#### <a name="inconsistent-policy"></a>Niespójne zasady 
+
+Czasami operacja modyfikowania zasad może prowadzić do **niespójnej** wersji zasad dla niektórych elementów kopii zapasowej. Dzieje się tak, gdy odpowiednie zadanie **konfigurowania ochrony** nie powiedzie się dla elementu kopii zapasowej po wyzwoleniu operacji modyfikowania zasad. Jest on wyświetlany w następujący sposób w widoku elementu kopii zapasowej:
+ 
+  ![Niespójne zasady](./media/backup-azure-sql-database/inconsistent-policy.png)
+
+Możesz naprawić wersję zasad dla wszystkich elementów, których dotyczy problem, w jednym kliknięciem:
+
+  ![Napraw niespójne zasady](./media/backup-azure-sql-database/fix-inconsistent-policy.png)
+ 
 
 ## <a name="re-register-extension-on-the-sql-server-vm"></a>Ponowne rejestrowanie rozszerzenia na maszynie wirtualnej SQL Server
 

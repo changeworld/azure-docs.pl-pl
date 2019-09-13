@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 3a4a77a9b4cdd30c04de4c4eb9d8731c1ea0616c
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 684b30a24e049722cb531cbc84e3a2cd90912ec8
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699249"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932633"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>Dodawanie/Usuwanie punktu końcowego serwera Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files bez rezygnacji z elastyczności, wydajności i zgodności lokalnego serwera plików. Robi to poprzez transformowanie serwerów z systemem Windows do szybkiej pamięci podręcznej udziału plików platformy Azure. Możesz użyć dowolnego dostępnego protokołu w systemie Windows Server w celu uzyskania lokalnego dostępu do danych (w tym protokołu SMB, systemu plików NFS i protokołu FTPS) i możesz mieć dowolną potrzebną Ci liczbę pamięci podręcznych na całym świecie.
@@ -37,8 +37,8 @@ W obszarze **Dodawanie punktu końcowego serwera**wymagane są następujące inf
 
 - **Zarejestrowany serwer**: Nazwa serwera lub klastra, na którym ma zostać utworzony punkt końcowy serwera.
 - **Ścieżka**: Ścieżka w systemie Windows Server, która ma zostać zsynchronizowana w ramach grupy synchronizacji.
-- Obsługa **warstw w chmurze**: Przełącznik umożliwiający włączenie lub wyłączenie obsługi warstw w chmurze. Gdy ta *Funkcja jest włączona* , Obsługa warstw w chmurze będzie uwzględniać pliki w udziałach plików platformy Azure. Powoduje to przekonwertowanie lokalnych udziałów plików na pamięć podręczną, a nie pełną kopię zestawu danych, co ułatwia zarządzanie wydajnością miejsca na serwerze.
-- **Wolne miejsce**w woluminie: ilość wolnego miejsca do zarezerwowania na woluminie, na którym znajduje się punkt końcowy serwera. Na przykład, jeśli ilość wolnego miejsca na woluminie jest ustawiona na 50% na woluminie z jednym punktem końcowym serwera, około połowy ilości danych zostanie przydzielona do Azure Files. Bez względu na to, czy włączono obsługę warstw w chmurze, udział plików platformy Azure zawsze ma kompletną kopię danych w grupie synchronizacji.
+- Obsługa **warstw w chmurze**: Przełącznik umożliwiający włączenie lub wyłączenie obsługi warstw w chmurze. Gdy ta funkcja jest włączona, obsługa warstw w chmurze będzie uwzględniać pliki w udziałach plików platformy Azure. Powoduje to przekonwertowanie lokalnych udziałów plików na pamięć podręczną, a nie pełną kopię zestawu danych, co ułatwia zarządzanie wydajnością miejsca na serwerze.
+- **Wolne miejsce w woluminie**: ilość wolnego miejsca do zarezerwowania na woluminie, na którym znajduje się punkt końcowy serwera. Na przykład, jeśli ilość wolnego miejsca na woluminie jest ustawiona na 50% na woluminie z jednym punktem końcowym serwera, około połowy ilości danych zostanie przydzielona do Azure Files. Bez względu na to, czy włączono obsługę warstw w chmurze, udział plików platformy Azure zawsze ma kompletną kopię danych w grupie synchronizacji.
 
 Wybierz pozycję **Utwórz** , aby dodać punkt końcowy serwera. Pliki w przestrzeni nazw grupy synchronizacji będą teraz nadal zsynchronizowane. 
 
@@ -50,10 +50,15 @@ Jeśli chcesz przestać używać Azure File Sync dla danego punktu końcowego se
 
 Aby upewnić się, że wszystkie pliki warstwowe są ponownie wywoływane przed usunięciem punktu końcowego serwera, Wyłącz obsługę warstw w chmurze w punkcie końcowym serwera, a następnie wykonaj następujące polecenie cmdlet programu PowerShell, aby odwołać wszystkie pliki warstwowe w przestrzeni nazw punktu końcowego serwera:
 
-```powershell
+```PowerShell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
+Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -Order CloudTieringPolicy
 ```
+Określenie `-Order CloudTieringPolicy` spowoduje, że najpierw zostanie przywoływany ostatnio zmodyfikowane pliki.
+Inne opcjonalne, ale przydatne parametry, które należy wziąć pod uwagę:
+* `-ThreadCount`Określa, ile plików można wielokrotnie odwoływać.
+* `-PerFileRetryCount`Określa, jak często zostanie podjęta próba odwołania pliku, który jest aktualnie zablokowany.
+* `-PerFileRetryDelaySeconds`Określa czas (w sekundach) między ponownymi próbami odwołania i powinna być zawsze używana w połączeniu z poprzednim parametrem.
 
 > [!Note]  
 > Jeśli na lokalnym woluminie hostującym serwer nie ma wystarczającej ilości wolnego miejsca, aby odwołać wszystkie dane warstwowe `Invoke-StorageSyncFileRecall` , polecenie cmdlet kończy się niepowodzeniem.  

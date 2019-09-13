@@ -1,6 +1,6 @@
 ---
-title: Używanie pustych węzłów brzegowych w klastrach usługi Apache Hadoop w HDInsight — Azure
-description: Jak dodać pustego węzła krawędzi do klastra usługi HDInsight, który może służyć jako klienta, a następnie/hosta testów aplikacji HDInsight.
+title: Używanie pustych węzłów brzegowych w klastrach Apache Hadoop w usłudze HDInsight — Azure
+description: Jak dodać pusty węzeł brzegowy do klastra usługi HDInsight, który może być używany jako klient, a następnie testować/hostować aplikacje usługi HDInsight.
 ms.reviewer: jasonh
 author: hrasheed-msft
 ms.service: hdinsight
@@ -8,18 +8,18 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: hrasheed
-ms.openlocfilehash: 41313c7d484df5568fbf729b683a0e9df5325abc
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 31cffc71937f7be158da8cbbd1d8abe6e3fe8372
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67433737"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916651"
 ---
-# <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Używanie pustych węzłów brzegowych w klastrach usługi Apache Hadoop w HDInsight
+# <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Używanie pustych węzłów brzegowych w klastrach Apache Hadoop w usłudze HDInsight
 
-Dowiedz się, jak dodać pustego węzła krawędzi do klastra usługi HDInsight. Pustego węzła krawędzi jest maszyną wirtualną systemu Linux przy użyciu tych samych narzędzi klienckich, które są zainstalowane i skonfigurowane tak jak w węzłach głównych, ale bez [Apache Hadoop](https://hadoop.apache.org/) usług. W węźle brzegowym służy do uzyskiwania dostępu do klastra, testowania aplikację kliencką i hosting aplikacji klienckich. 
+Dowiedz się, jak dodać pusty węzeł brzegowy do klastra usługi HDInsight. Pusty węzeł brzegowy to maszyna wirtualna z systemem Linux z tymi samymi narzędziami klienta zainstalowanymi i skonfigurowanymi jako węzłów głównych, ale bez usług [Apache Hadoop](https://hadoop.apache.org/) . Węzeł brzegowy służy do uzyskiwania dostępu do klastra, testowania aplikacji klienckich i hostowania aplikacji klienckich. 
 
-Pustego węzła krawędzi można dodać do istniejącego klastra HDInsight, do nowego klastra podczas tworzenia klastra. Dodawanie pustego węzła krawędzi jest wykonywane przy użyciu szablonu usługi Azure Resource Manager.  W poniższym przykładzie pokazano, jak jest wykonywane przy użyciu szablonu:
+Po utworzeniu klastra można dodać pusty węzeł brzegowy do istniejącego klastra usługi HDInsight do nowego klastra. Dodawanie pustego węzła krawędzi jest wykonywane przy użyciu szablonu Azure Resource Manager.  W poniższym przykładzie pokazano, jak to zrobić za pomocą szablonu:
 
     "resources": [
         {
@@ -50,114 +50,114 @@ Pustego węzła krawędzi można dodać do istniejącego klastra HDInsight, do n
         }
     ],
 
-Jak pokazano w przykładzie, można opcjonalnie wywołać [skryptu akcji](hdinsight-hadoop-customize-cluster-linux.md) przeprowadzenie dodatkowej konfiguracji, takich jak instalowanie [Apache Hue](hdinsight-hadoop-hue-linux.md) w węźle krawędzi. Skrypt akcji skryptu musi być dostępny publicznie w Internecie.  Na przykład jeśli skrypt jest przechowywany w usłudze Azure storage, użyj publiczne kontenery lub publiczne obiekty BLOB.
+Jak pokazano w przykładzie, można opcjonalnie wywołać [akcję skryptu](hdinsight-hadoop-customize-cluster-linux.md) , aby wykonać dodatkową konfigurację, taką jak instalowanie [odcienia Apache](hdinsight-hadoop-hue-linux.md) w węźle brzegowym. Skrypt akcji skryptu musi być publicznie dostępny w sieci Web.  Jeśli na przykład skrypt jest przechowywany w usłudze Azure Storage, należy użyć kontenerów publicznych lub publicznych obiektów BLOB.
 
-Rozmiar maszyny wirtualnej węzła krawędzi musi spełniać wymagania rozmiar maszyny wirtualnej węzła procesu roboczego HDInsight klastra. Rozmiary maszyn wirtualnych węzła zalecane procesu roboczego, zobacz [klastrów utworzyć Apache Hadoop w HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-types).
+Rozmiar maszyny wirtualnej węzła brzegowego musi być zgodny z wymaganiami dotyczącymi rozmiaru maszyny wirtualnej klastra usługi HDInsight. Aby uzyskać zalecane rozmiary maszyn wirtualnych węzłów procesu roboczego, zobacz [Tworzenie klastrów Apache Hadoop w usłudze HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-types).
 
-Po utworzeniu węzeł krawędzi, możesz nawiązać połączenie z węzłem krawędzi za pomocą protokołu SSH i uruchom narzędzia klienta, aby uzyskać dostęp do klastra usługi Hadoop w HDInsight.
+Po utworzeniu węzła brzegowego można nawiązać połączenie z węzłem brzegowym przy użyciu protokołu SSH, a następnie uruchomić narzędzia klienckie w celu uzyskania dostępu do klastra Hadoop w usłudze HDInsight.
 
 > [!WARNING]   
-> Niestandardowe składniki, które są instalowane w węzłach brzegowych otrzymywać uzasadnioną komercyjnie pomoc techniczną od firmy Microsoft. Może to spowodować Rozwiązywanie problemów, które wystąpią. Lub użytkownik może odwołać się do zasobów społeczności, aby uzyskać dalszą pomoc. Poniżej przedstawiono niektóre z najbardziej aktywnych lokacji w celu uzyskania pomocy od społeczności:
+> Składniki niestandardowe zainstalowane w węźle brzegowym otrzymują komercyjnie uzasadnioną pomoc techniczną firmy Microsoft. Może to spowodować rozwiązanie napotkanych problemów. Możesz też przystąpić do zasobów społeczności, aby uzyskać dalszą pomoc. Poniżej wymieniono niektóre z najbardziej aktywnych witryn do uzyskiwania pomocy od społeczności:
 >
-> * [Forum MSDN dotyczące HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)
+> * [Forum MSDN dotyczące usługi HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)
 > * [https://stackoverflow.com](https://stackoverflow.com).
 >
-> Jeśli używasz technologii Apache można znaleźć pomoc za pośrednictwem Apache witryny projektu na [ https://apache.org ](https://apache.org), takich jak [Apache Hadoop](https://hadoop.apache.org/) lokacji.
+> W przypadku korzystania z technologii Apache można znaleźć pomoc w witrynach projektów Apache w systemie [https://apache.org](https://apache.org), takich jak lokacja [Apache Hadoop](https://hadoop.apache.org/) .
 
 > [!IMPORTANT]
-> Obrazy Ubuntu stają się dostępne dla nowego Tworzenie klastra HDInsight w ciągu 3 miesięcy opublikować. Począwszy od stycznia 2019 r, są uruchomione klastrów (łącznie z węzłów krawędzi) **nie** poprawiono automatycznie. Klienci, należy użyć akcji skryptu lub innych mechanizmów zastosowania poprawki względem działającego klastra.  Aby uzyskać więcej informacji, zobacz [stosowania poprawek systemu operacyjnego dla HDInsight](./hdinsight-os-patching.md).
+> Obrazy Ubuntu są dostępne dla nowego klastra usługi HDInsight w ciągu 3 miesięcy od opublikowania. Począwszy od stycznia 2019, uruchomione klastry (w tym węzły brzegowe) **nie** są poprawiane przez program. Aby zastosować poprawki do działającego klastra, klienci muszą używać akcji skryptu lub innych mechanizmów.  Aby uzyskać więcej informacji, zobacz [poprawka systemu operacyjnego dla usługi HDInsight](./hdinsight-os-patching.md).
 
-## <a name="add-an-edge-node-to-an-existing-cluster"></a>Dodaj węzeł krawędzi do istniejącego klastra
-W tej sekcji używasz szablonu usługi Resource Manager można dodać węzła brzegowego do istniejącego klastra HDInsight.  Szablon usługi Resource Manager można znaleźć w [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/). Szablon usługi Resource Manager wymaga akcji skryptu, znajdujący się w https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh. Skrypt nie wykonuje żadnych akcji.  Jest aby zademonstrować wywoływania akcji skryptu za pomocą szablonu usługi Resource Manager.
+## <a name="add-an-edge-node-to-an-existing-cluster"></a>Dodawanie węzła krawędzi do istniejącego klastra
+W tej sekcji użyjesz szablonu Menedżer zasobów, aby dodać węzeł brzegowy do istniejącego klastra usługi HDInsight.  Szablon Menedżer zasobów można znaleźć w witrynie [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/). Szablon Menedżer zasobów wywołuje akcję skryptu znajdującą się w https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh. Skrypt nie wykonuje żadnych akcji.  Jest to zademonstrowanie wywoływanej akcji skryptu z szablonu Menedżer zasobów.
 
-**Aby dodać pustego węzła krawędzi do istniejącego klastra**
+**Aby dodać pusty węzeł krawędzi do istniejącego klastra**
 
-1. Kliknij poniższy obraz, aby zalogować się do platformy Azure i otworzyć szablon usługi Azure Resource Manager w witrynie Azure portal. 
+1. Kliknij poniższy obraz, aby zalogować się do platformy Azure i otworzyć szablon Azure Resource Manager w Azure Portal. 
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-add-edge-node%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-use-edge-node/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-add-edge-node%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-use-edge-node/hdi-deploy-to-azure1.png" alt="Deploy to Azure"></a>
 3. Skonfiguruj następujące właściwości:
    
-   * **Subskrypcja**: Wybierz subskrypcję platformy Azure używane do tworzenia klastra.
-   * **Grupa zasobów**: Wybierz grupę zasobów używaną do istniejącego klastra HDInsight.
-   * **Lokalizacja**: Wybierz lokalizację, w istniejącym klastrze HDInsight.
-   * **Nazwa klastra**: Wprowadź nazwę istniejącego klastra HDInsight.
-   * **Rozmiar węzła krawędzi**: Wybierz jeden z rozmiarów maszyn wirtualnych. Rozmiar maszyny wirtualnej musi spełniać wymagania rozmiar maszyny wirtualnej węzła procesu roboczego. Rozmiary maszyn wirtualnych węzła zalecane procesu roboczego, zobacz [klastrów utworzyć Apache Hadoop w HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-types).
-   * **Prefiks węzła krawędzi**: Wartość domyślna to **nowe**.  Nazwa węzła krawędzi przy użyciu wartości domyślnej, jest **nowe edgenode**.  Można dostosować prefiks z portalu. Można również dostosować pełną nazwę z szablonu.
+   * **Subskrypcja**: Wybierz subskrypcję platformy Azure używaną do tworzenia klastra.
+   * **Grupa zasobów**: Wybierz grupę zasobów używaną dla istniejącego klastra usługi HDInsight.
+   * **Lokalizacja**: Wybierz lokalizację istniejącego klastra usługi HDInsight.
+   * **Nazwa klastra**: Wprowadź nazwę istniejącego klastra usługi HDInsight.
+   * **Rozmiar węzła krawędzi**: Wybierz jeden z rozmiarów maszyn wirtualnych. Rozmiar maszyny wirtualnej musi być zgodny z wymaganiami dotyczącymi rozmiaru maszyny wirtualnej węzła procesu roboczego. Aby uzyskać zalecane rozmiary maszyn wirtualnych węzłów procesu roboczego, zobacz [Tworzenie klastrów Apache Hadoop w usłudze HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-types).
+   * **Prefiks węzła krawędzi**: Wartość domyślna to **New**.  Przy użyciu wartości domyślnej, nazwa węzła krawędzi to **New-edgenode**.  Można dostosować prefiks z portalu. Możesz również dostosować pełną nazwę z szablonu.
 
-4. Sprawdź **zgodę na warunki i postanowienia, o których wspomniano**, a następnie kliknij przycisk **zakupu** do utworzenia węzła krawędzi.
+4. Zaznacz pole wyboru Akceptuję **warunki i postanowienia podane powyżej**, a następnie kliknij przycisk **Kup** , aby utworzyć węzeł brzegowy.
 
 >[!IMPORTANT]  
-> Upewnij się wybrać grupę zasobów platformy Azure do istniejącego klastra HDInsight.  W przeciwnym razie zostanie wyświetlony komunikat o błędzie "nie można wykonać żądanej operacji dla zasobu zagnieżdżonego. Zasób nadrzędny "&lt;Nazwa_klastra >' nie znaleziono."
+> Upewnij się, że wybrano grupę zasobów platformy Azure dla istniejącego klastra usługi HDInsight.  W przeciwnym razie zostanie wyświetlony komunikat o błędzie "nie można wykonać wymaganej operacji na zasobie zagnieżdżonym. Nie znaleziono zasobu&lt;nadrzędnego "ClusterName >". "
 
-## <a name="add-an-edge-node-when-creating-a-cluster"></a>Dodaj węzeł krawędzi, podczas tworzenia klastra
-W tej sekcji użyjesz szablon usługi Resource Manager do utworzenia klastra HDInsight z węzłem krawędzi.  Szablon usługi Resource Manager można znaleźć w [galerii szablonów szybkiego startu platformy Azure](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/). Szablon usługi Resource Manager wymaga akcji skryptu, znajdujący się w https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.sh. Skrypt nie wykonuje żadnych akcji.  Jest aby zademonstrować wywoływania akcji skryptu za pomocą szablonu usługi Resource Manager.
+## <a name="add-an-edge-node-when-creating-a-cluster"></a>Dodawanie węzła krawędzi podczas tworzenia klastra
+W tej sekcji użyjesz szablonu Menedżer zasobów, aby utworzyć klaster usługi HDInsight z węzłem krawędzi.  Szablon Menedżer zasobów można znaleźć w [galerii szablonów szybkiego startu platformy Azure](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/). Szablon Menedżer zasobów wywołuje akcję skryptu znajdującą się w https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.sh. Skrypt nie wykonuje żadnych akcji.  Jest to zademonstrowanie wywoływanej akcji skryptu z szablonu Menedżer zasobów.
 
 **Aby utworzyć klaster usługi HDInsight z węzłem krawędzi**
 
-1. Jeśli nie masz jeszcze, należy utworzyć klaster usługi HDInsight.  Zobacz [rozpoczęcie korzystania z usługi Hadoop w HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).
-2. Kliknij poniższy obraz, aby zalogować się do platformy Azure i otworzyć szablon usługi Azure Resource Manager w witrynie Azure portal. 
+1. Utwórz klaster usługi HDInsight, jeśli jeszcze go nie masz.  Zobacz [Rozpoczynanie korzystania z usługi Hadoop w usłudze HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).
+2. Kliknij poniższy obraz, aby zalogować się do platformy Azure i otworzyć szablon Azure Resource Manager w Azure Portal. 
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-edge-node%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-use-edge-node/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-edge-node%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-use-edge-node/hdi-deploy-to-azure1.png" alt="Deploy to Azure"></a>
 3. Skonfiguruj następujące właściwości:
    
-   * **Subskrypcja**: Wybierz subskrypcję platformy Azure używane do tworzenia klastra.
-   * **Grupa zasobów**: Utwórz nową grupę zasobów klastra.
+   * **Subskrypcja**: Wybierz subskrypcję platformy Azure używaną do tworzenia klastra.
+   * **Grupa zasobów**: Utwórz nową grupę zasobów używaną w klastrze.
    * **Lokalizacja**: Wybierz lokalizację dla grupy zasobów.
-   * **Nazwa klastra**: Wprowadź nazwę dla nowego klastra utworzyć.
-   * **Nazwa użytkownika logowania klastra**: Wprowadź nazwę użytkownika Hadoop HTTP.  Nazwa domyślna to **admin**.
-   * **Hasło logowania klastra**: Wprowadź hasło użytkownika HTTP usługi Hadoop.
-   * **Nazwa użytkownika SSH**: Wprowadź nazwę użytkownika SSH. Nazwa domyślna to **sshuser**.
-   * **SSH hasła**: Wprowadź hasło użytkownika SSH.
-   * **Zainstaluj akcji skryptu**: Zachowaj wartość domyślną dla pośrednictwa w tym artykule.
+   * **Nazwa klastra**: Wprowadź nazwę nowego klastra do utworzenia.
+   * **Nazwa użytkownika logowania klastra**: Wprowadź nazwę użytkownika HTTP usługi Hadoop.  Nazwa domyślna to **admin**.
+   * **Hasło logowania klastra**: Wprowadź hasło użytkownika protokołu HTTP usługi Hadoop.
+   * **Nazwa użytkownika ssh**: Wprowadź nazwę użytkownika SSH. Nazwa domyślna to **sshuser**.
+   * **Hasło ssh**: Wprowadź hasło użytkownika SSH.
+   * **Akcja instalacji skryptu**: Pozostaw wartość domyślną, aby przejść przez ten artykuł.
      
-     Niektóre właściwości zostały zapisane na stałe w szablonie: Typ klastra, liczby węzłów procesu roboczego klastra, rozmiar węzła krawędzi i nazwa węzła krawędzi.
-4. Sprawdź **zgodę na warunki i postanowienia, o których wspomniano**, a następnie kliknij przycisk **zakupu** do utworzenia klastra z węzłem krawędzi.
+     Niektóre właściwości zostały stałe w szablonie: Typ klastra, liczba węzłów procesu roboczego klastra, rozmiar węzła krawędzi i nazwa węzła krawędzi.
+4. Zaznacz **Akceptuję warunki i postanowienia wymienione powyżej**, a następnie kliknij przycisk **Kup** , aby utworzyć klaster z węzłem krawędzi.
 
 ## <a name="add-multiple-edge-nodes"></a>Dodawanie wielu węzłów brzegowych
 
-Wiele węzłów krawędzi można dodać do klastra usługi HDInsight.  Konfiguracja wielu węzłów krawędzi jest możliwe tylko przy użyciu szablonów usługi Azure Resource Manager.  Zobacz przykładowy szablon na początku tego artykułu.  Należy zaktualizować **targetInstanceCount** do odzwierciedlają liczbę węzłów brzegowych, które chcesz utworzyć.
+Można dodać wiele węzłów krawędzi do klastra usługi HDInsight.  Konfigurację węzłów z wieloma krawędziami można wykonać tylko przy użyciu szablonów Azure Resource Manager.  Zapoznaj się z przykładem szablonu na początku tego artykułu.  Należy zaktualizować **targetInstanceCount** tak, aby odzwierciedlał liczbę węzłów krawędzi, które chcesz utworzyć.
 
-## <a name="access-an-edge-node"></a>Dostęp do węzła krawędzi
-W węźle brzegowym ssh punkt końcowy jest &lt;EdgeNodeName >.&lt; Nazwa_klastra >-ssh.azurehdinsight.net:22.  Na przykład nowy edgenode.myedgenode0914-ssh.azurehdinsight.net:22.
+## <a name="access-an-edge-node"></a>Dostęp do węzła brzegowego
+Punkt końcowy SSH węzła brzegowego &lt;to EdgeNodeName >&lt; . ClusterName >-ssh.azurehdinsight.net:22.  Na przykład new-edgenode.myedgenode0914-ssh.azurehdinsight.net:22.
 
-W węźle brzegowym pojawia się jako aplikację w witrynie Azure portal.  Portal zapewnia informacje, które mają dostęp do węzła krawędzi przy użyciu protokołu SSH.
+Węzeł brzegowy jest wyświetlany jako aplikacja na Azure Portal.  Portal udostępnia informacje umożliwiające dostęp do węzła brzegowego przy użyciu protokołu SSH.
 
-**Aby sprawdzić, punkt końcowy SSH dla węzła krawędzi**
+**Aby sprawdzić punkt końcowy SSH węzła brzegowego**
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Otwórz węzeł krawędzi klastra HDInsight.
-3. Kliknij przycisk **aplikacji**. Zostanie wyświetlona w węźle brzegowym.  Nazwa domyślna to **nowe edgenode**.
-4. Kliknij węzeł krawędzi. Zostanie wyświetlona punkt końcowy SSH.
+2. Otwórz klaster usługi HDInsight z węzłem krawędzi.
+3. Kliknij pozycję **aplikacje**. Zobaczysz węzeł brzegowy.  Nazwa domyślna to **New-edgenode**.
+4. Kliknij węzeł brzegowy. Zobaczysz punkt końcowy SSH.
 
-**Aby korzystanie z programu Hive w węźle krawędzi**
+**Aby użyć programu Hive na węźle brzegowym**
 
 1. Połącz się z węzłem brzegowym za pomocą protokołu SSH. Aby uzyskać informacje, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. Po nawiązaniu połączenia z węzłem krawędzi za pomocą protokołu SSH, użyj następującego polecenia, aby otworzyć konsolę Hive:
+2. Po nawiązaniu połączenia z węzłem brzegowym przy użyciu protokołu SSH Użyj następującego polecenia, aby otworzyć konsolę programu Hive:
    
         hive
-3. Uruchom następujące polecenie, aby wyświetlić tabele programu Hive w klastrze:
+3. Uruchom następujące polecenie, aby wyświetlić tabele Hive w klastrze:
    
         show tables;
 
 ## <a name="delete-an-edge-node"></a>Usuń węzeł krawędzi
-W witrynie Azure portal, można usunąć węzła krawędzi.
+Węzeł brzegowy można usunąć z Azure Portal.
 
-**Aby dostęp do węzła krawędzi**
+**Aby uzyskać dostęp do węzła brzegowego**
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Otwórz węzeł krawędzi klastra HDInsight.
-3. Kliknij przycisk **aplikacji**. Zobaczysz listę węzłów krawędzi.  
-4. Kliknij prawym przyciskiem myszy węzła krawędzi, które chcesz usunąć, a następnie kliknij przycisk **Usuń**.
+2. Otwórz klaster usługi HDInsight z węzłem krawędzi.
+3. Kliknij pozycję **aplikacje**. Zobaczysz listę węzłów brzegowych.  
+4. Kliknij prawym przyciskiem myszy węzeł brzegowy, który chcesz usunąć, a następnie kliknij polecenie **Usuń**.
 5. Kliknij przycisk **Tak**, aby potwierdzić.
 
-## <a name="next-steps"></a>Kolejne kroki
-W tym artykule wiesz, jak dodać węzeł krawędzi oraz sposób dostępu do węzła krawędzi. Aby dowiedzieć się więcej, zobacz następujące artykuły:
+## <a name="next-steps"></a>Następne kroki
+W tym artykule pokazano, jak dodać węzeł brzegowy i jak uzyskać dostęp do węzła brzegowego. Aby dowiedzieć się więcej, zobacz następujące artykuły:
 
-* [Instalowanie aplikacji HDInsight](hdinsight-apps-install-applications.md): Dowiedz się, jak instalowanie aplikacji usługi HDInsight do klastrów.
+* [Zainstaluj aplikacje usługi HDInsight](hdinsight-apps-install-applications.md): Dowiedz się, jak zainstalować aplikację usługi HDInsight w klastrach.
 * [Instalowanie niestandardowych aplikacji HDInsight](hdinsight-apps-install-custom-applications.md): Dowiedz się, jak wdrożyć nieopublikowane aplikację HDInsight w usłudze HDInsight.
-* [Publikowanie aplikacji HDInsight](hdinsight-apps-publish-applications.md): Dowiedz się, jak opublikować niestandardowe aplikacje HDInsight w portalu Azure Marketplace.
-* [MSDN: Instalowanie aplikacji usługi HDInsight](https://msdn.microsoft.com/library/mt706515.aspx): Dowiedz się, jak zdefiniować aplikacje HDInsight.
+* [Publikowanie aplikacji usługi HDInsight](hdinsight-apps-publish-applications.md): Dowiedz się, jak publikować niestandardowe aplikacje usługi HDInsight w portalu Azure Marketplace.
+* [MSDN: Zainstaluj aplikację](https://msdn.microsoft.com/library/mt706515.aspx)usługi HDInsight: Dowiedz się, jak definiować aplikacje usługi HDInsight.
 * [Dostosowywanie klastrów usługi HDInsight opartych na systemie Linux przy użyciu akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md): dowiedz się, jak instalować dodatkowe aplikacje za pomocą akcji skryptu.
 * [Tworzenie klastrów opartych na systemie Linux Apache Hadoop w HDInsight przy użyciu szablonów usługi Resource Manager](hdinsight-hadoop-create-linux-clusters-arm-templates.md): Dowiedz się, jak wywoływać szablony usługi Resource Manager w celu tworzenia klastrów HDInsight.
 

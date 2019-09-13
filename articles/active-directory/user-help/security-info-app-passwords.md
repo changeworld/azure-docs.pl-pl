@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d599607da6653d088f53490ea4d4b5f7f6d0f236
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 9638893c707757cb520acdf18e8e89a6cdf13f08
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382930"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915974"
 ---
 # <a name="manage-app-passwords-from-your-security-info-preview-page"></a>Zarządzanie hasłami aplikacji na stronie z informacjami o zabezpieczeniach (wersja zapoznawcza)
 
@@ -30,11 +30,9 @@ Niektóre aplikacje, takie jak Outlook 2010, nie obsługują weryfikacji dwuetap
 
 W przypadku korzystania z haseł aplikacji ważne jest, aby pamiętać:
 
-- Hasła aplikacji są generowane automatycznie i wprowadzane tylko raz dla każdej aplikacji.
+- Hasła aplikacji są generowane automatycznie i należy je utworzyć i wprowadzić raz na aplikację.
 
 - Dla każdego użytkownika istnieje limit 40 haseł. Jeśli spróbujesz utworzyć jeden po tym limicie, zostanie wyświetlony monit o usunięcie istniejącego hasła przed utworzeniem nowego.
-
-- Użyj jednego hasła aplikacji na urządzenie, a nie na aplikację. Na przykład utwórz jedno hasło dla wszystkich aplikacji na laptopie, a następnie inne pojedyncze hasło dla wszystkich aplikacji na pulpicie.
 
     >[!Note]
     >Klienci korzystający z pakietu Office 2013 (w tym Outlook) obsługują nowe protokoły uwierzytelniania i mogą być używani do weryfikacji dwuetapowej. Ta pomoc techniczna oznacza, że po włączeniu weryfikacji dwuetapowej nie będą już potrzebne hasła aplikacji dla klientów pakietu Office 2013. Aby uzyskać więcej informacji, zobacz artykuł [jak nowoczesne uwierzytelnianie działa dla pakietów office 2013 i office 2016 Client Apps](https://support.office.com/article/how-modern-authentication-works-for-office-2013-and-office-2016-client-apps-e4c45989-4b1a-462e-a81b-2a13191cf517) .
@@ -44,7 +42,7 @@ W przypadku korzystania z haseł aplikacji ważne jest, aby pamiętać:
 Jeśli korzystasz z weryfikacji dwuetapowej przy użyciu konta służbowego, a administrator włączył informacje zabezpieczające, możesz tworzyć i usuwać hasła aplikacji przy użyciu strony **informacje zabezpieczające** .
 
 >[!Note]
->Jeśli administrator nie włączył środowiska informacje zabezpieczające, należy postępować zgodnie z instrukcjami i informacjami w sekcji [Zarządzanie hasłami aplikacji na potrzeby weryfikacji](multi-factor-authentication-end-user-app-passwords.md) dwuetapowej.
+>Jeśli administrator nie włączył środowiska informacje zabezpieczające, należy postępować zgodnie z instrukcjami i informacjami w sekcji [Zarządzanie hasłami aplikacji na potrzeby weryfikacji dwuetapowej](multi-factor-authentication-end-user-app-passwords.md) .
 
 ### <a name="to-create-a-new-app-password"></a>Aby utworzyć nowe hasło aplikacji
 

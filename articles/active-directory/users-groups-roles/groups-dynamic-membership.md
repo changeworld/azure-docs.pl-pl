@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b5f85aa99876ef6c3c9193612051085f3e0ffc0
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 59450fc93052a1e169d13fab5b80cbc57c169e0f
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70872189"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70909785"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Reguły członkostwa dynamicznego dla grup w Azure Active Directory
 
@@ -369,14 +369,14 @@ Można użyć następujących atrybutów urządzeń.
  Atrybut urządzenia  | Wartości | Przykład
  ----- | ----- | ----------------
  accountEnabled | PRAWDA FAŁSZ | (Device. accountEnabled-EQ true)
- displayName | dowolna wartość ciągu |(Device. displayName-EQ "Rob iPhone")
- deviceOSType | dowolna wartość ciągu | (Device. deviceOSType-EQ "iPad") — lub (Device. deviceOSType-EQ "iPhone")<br>(Device. deviceOSType-zawiera "AndroidEnterprise")<br>(Device. deviceOSType-EQ "AndroidForWork")
- deviceOSVersion | dowolna wartość ciągu | (device.deviceOSVersion -eq "9.1")
+ displayName | Dowolna wartość ciągu |(Device. displayName-EQ "Rob iPhone")
+ deviceOSType | Dowolna wartość ciągu | (Device. deviceOSType-EQ "iPad") — lub (Device. deviceOSType-EQ "iPhone")<br>(Device. deviceOSType-zawiera "AndroidEnterprise")<br>(Device. deviceOSType-EQ "AndroidForWork")
+ deviceOSVersion | Dowolna wartość ciągu | (device.deviceOSVersion -eq "9.1")
  deviceCategory | prawidłowa nazwa kategorii urządzeń | (Device. deviceCategory-EQ "BYOD")
- deviceManufacturer | dowolna wartość ciągu | (Device. deviceManufacturer-EQ "Samsung")
- deviceModel | dowolna wartość ciągu | (Device. deviceModel-EQ "iPad Air")
+ deviceManufacturer | Dowolna wartość ciągu | (Device. deviceManufacturer-EQ "Samsung")
+ deviceModel | Dowolna wartość ciągu | (Device. deviceModel-EQ "iPad Air")
  deviceOwnership | Osobiste, firma, nieznane | (Device. deviceOwnership-EQ "Company")
- enrollmentProfileName | Profil rejestracji urządzeń firmy Apple lub nazwa profilu autopilotażu systemu Windows | (Device. enrollmentProfileName-EQ "telefony iPhone")
+ enrollmentProfileName | Profil rejestracji urządzeń firmy Apple, rejestracja urządzeń — identyfikatory urządzeń firmowych (Android-kiosk) lub nazwa profilu autopilotażu systemu Windows | (Device. enrollmentProfileName-EQ "telefony iPhone")
  isrootd | PRAWDA FAŁSZ | (Device. isrootd-EQ true)
  managementtype | MDM (dla urządzeń przenośnych)<br>Komputer PC (dla komputerów zarządzanych przez agenta komputera usługi Intune) | (Device. managementtype-EQ "MDM")
  deviceId | prawidłowy identyfikator urządzenia usługi Azure AD | (Device. deviceId-EQ "d4fe7726-5966-431c-b3b8-cddc8fdb717d")

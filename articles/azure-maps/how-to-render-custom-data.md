@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b6343931287ed59363db2715641ca63a814a9c32
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 6619fd842f225a6d362a4b308dde6e35b43677c9
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638795"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915754"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Renderowanie niestandardowych danych na mapie rastrowej
 
@@ -27,7 +27,8 @@ Aby renderować niestandardowe pinezki, etykiety i nakładki geometryczne, możn
 
 ### <a name="create-an-azure-maps-account"></a>Tworzenie konta usługi Azure Maps
 
-Aby wykonać procedury opisane w tym artykule, musisz najpierw [utworzyć konto Azure Maps](how-to-manage-account-keys.md) w warstwie cenowej S1.
+Aby wykonać procedury opisane w tym artykule, musisz najpierw utworzyć konto Azure Maps, postępując zgodnie z instrukcjami w sekcji [Zarządzanie kontem](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) , a następnie wykonaj kroki opisane w sekcji [Uzyskiwanie klucza podstawowego](./tutorial-search-location.md#getkey) , aby pobrać podstawowy klucz subskrypcji dla konta.
+
 
 ## <a name="render-pushpins-with-labels-and-a-custom-image"></a>Renderowanie pinezki z etykietami i obrazem niestandardowym
 
@@ -204,7 +205,7 @@ Wykonaj następujące kroki, aby renderować okrąg i pinezki z etykietami niest
 
     ![Renderuj okrąg z niestandardowymi pinezkami](./media/how-to-render-custom-data/circle-custom-pins.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 
 * Zapoznaj się z dokumentacją [interfejsu API pobierania obrazu Azure Maps](https://docs.microsoft.com/rest/api/maps/render/getmapimage) .

@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/24/2019
+ms.date: 09/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 311db544a119d4b9bee7d31cfdfac33aa3c4ed79
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: b9b4a33e5aee92a4e8caa7a1128538cb2f1a8a7e
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233162"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933117"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Informacje o kondycji maszyn wirtualnych platformy Azure
 
@@ -36,49 +36,52 @@ Informacje o konfigurowaniu Azure Monitor dla maszyn wirtualnych można znaleź�
 
 Ta sekcja zawiera opis domyślnych kryteriów kondycji do monitorowania maszyn wirtualnych z systemami Windows i Linux. Wszystkie kryteria kondycji są wstępnie skonfigurowane do wysyłania alertu po wykryciu złej kondycji.
 
-### <a name="windows-vms"></a>Maszyny wirtualne z systemem Windows
+| Nazwa monitora | Częstotliwość (min) | Czas trwania lookback (min) | Operator | Próg | Alert w stanie | severity | Kategoria obciążenia | 
+|--------------|-----------|----------|----------|-----------|----------------|----------|-------------------|
+| Dysk logiczny w trybie online | 5 | 15 | <> | 1 (prawda) | Krytyczny | Sev1 | Linux | 
+| Wolne miejsce na dysku logicznym | 5 | 15 | < | 200 MB (ostrzeżenie)<br> 100 MB (krytyczna) | Ostrzeżenie | Sev1<br> Sev2 | Linux | 
+| Dysk logiczny% Free węzłów i | 5 | 15 | < | 5% | Krytyczny | Sev1 | Linux | 
+| Wolne miejsce na dysku logicznym (%) | 5 | 15 | < | 5% | Krytyczny | Sev1 | Linux | 
+| Stan karty sieciowej | 5 | 15 | <> | 1 (prawda) | Ostrzeżenie | Sev2 | Linux | 
+| Dostępna pamięć (MB) w systemie operacyjnym | 5 | 10 | < | 2,5 MB | Krytyczny | Sev1 | Linux | 
+| Średnia liczba dysków Czas dysku w s/Odczyt | 5 | 25 | > | 0,05 s | Krytyczny | Sev1 | Linux | 
+| Średnia liczba dysków Dysku w s/Transfer | 5 | 25 | > | 0,05 s | Krytyczny | Sev1 | Linux | 
+| Średnia liczba dysków Dysku w s/Zapis | 5 | 25 | > | 0,05 s | Krytyczny | Sev1 | Linux | 
+| Stan dysku | 5 | 25 | <> | 1 (prawda) | Krytyczny | Sev1 | Linux | 
+| Łączny czas procesora (%) w systemie operacyjnym | 5 | 10 | >= | 95% | Krytyczny | Sev1 | Linux | 
+| Procent łącznego użycia procesora CPU | 5 | 10 | >= | 95% | Krytyczny | Sev1 | Windows | 
+| Błąd lub uszkodzenie systemu plików | 60 | 60 | <> | 4 | Krytyczny | Sev1 | Windows | 
+| Średnia liczba sekund dysku logicznego na odczyt | 1 | 15 | > | 0,04 s | Ostrzeżenie | Sev2 | Windows | 
+| Średnia liczba sekund dysku logicznego na transfer | 1 | 15 | > | 0,04 s | Ostrzeżenie | Sev2 | Windows | 
+| Średni czas dysku logicznego (w sekundach) na zapis (dysk logiczny) | 1 | 15 | > | 0,04 s | Ostrzeżenie | Sev2 | Windows | 
+| Bieżąca długość kolejki dysku (dysk logiczny) | 5 | 60 | >= | 32 | Ostrzeżenie | Sev2 | Windows | 
+| Wolne miejsce na dysku logicznym (MB) | 15 | 60 | > | Ostrzeżenie 500 MB<br> krytyczne 300 MB | Krytyczny | Sev1<br> Sev2 | Windows | 
+| Wolne miejsce na dysku logicznym (%) | 15 | 60 | > | 10% ostrzeżenia<br> 5% krytyczne | Krytyczny | Sev1<br> Sev2 | Windows |
+| Procent czasu bezczynności dysku logicznego | 15 | 360 | <= | 20% | Ostrzeżenie | Sev2 | Windows | 
+| Procent wykorzystania przepustowości | 5 | 60 | >= | 60% | Ostrzeżenie | Sev2 | Windows | 
+| Procent całkowitej liczby użytych przepustowości | 5 | 60 | >= | 75% | Ostrzeżenie | Sev2 | Windows | 
+| Procent użycia przepustowości | 5 | 60 | >= | 60% | Ostrzeżenie | Sev2 | Windows | 
+| Service Health klienta DHCP | 5 | 12 | <> | 4 (uruchomione) | Krytyczny | Sev1 | Windows | 
+| Service Health klienta DNS | 5 | 12 | <> | 4 (uruchomione) | Krytyczny | Sev1 | Windows | 
+| Service Health dziennika zdarzeń systemu Windows | 5 | 12 | <> | 4 (uruchomione) | Krytyczny | Sev1 | Windows | 
+| Service Health zapory systemu Windows | 5 | 12 | <> | 4 (uruchomione) | Krytyczny | Sev1 | Windows | 
+| Service Health RPC | 5 | 12 | <> | 4 (uruchomione) | Krytyczny | Sev1 | Windows | 
+| Service Health serwera | 5 | 12 | <> | 4 (uruchomione) | Krytyczny | Sev1 | Windows | 
+| Windows Remote Management Service Health | 5 | 12 | <> | 4 (uruchomione) | Krytyczny | Sev1 | Windows | 
+| Dostępna pamięć (MB) | 5 | 10 | < | 100 MB | Krytyczny | Sev1 | Windows | 
+| Wolne wpisy tabeli stron systemu | 5 | 10 | <= | 5000 | Krytyczny | Sev1 | Windows | 
+| Liczba stron pamięci na sekundę | 5 | 10 | >= | 5000/s | Ostrzeżenie | Sev1 | Windows | 
+| Procent zadeklarowanej pamięci w użyciu | 5 | 10 | > | 80% | Krytyczny | Sev1 | Windows | 
+| Średni czas transferu na sekundę dysku | 1 | 15 | > | 0,04 s | Ostrzeżenie | Sev2 | Windows | 
+| Średni czas dysku na zapis | 1 | 15 | > | 0,04 s | Ostrzeżenie | Sev2 | Windows | 
+| Bieżąca długość kolejki dysku | 5 | 60 | >= | 32 | Ostrzeżenie | Sev2 | Windows | 
+| Procent czasu bezczynności dysku | 5 | 60 | >= | 20% | Ostrzeżenie | Sev2 | Windows | 
 
-- Dostępna pamięć (MB)
-- Średni czas zapisu na dysku (w sekundach)
-- Średni czas (w sekundach) na zapis (dysk)
-- Średnia liczba sekund dysku logicznego na odczyt
-- Średnia liczba sekund dysku logicznego na transfer
-- Średni czas odczytu dysku na sekundę
-- Średni czas transferu na sekundę dysku
-- Bieżąca długość kolejki dysku (dysk logiczny)
-- Bieżąca długość kolejki dysku (dysk)
-- Procent czasu bezczynności dysku
-- Błąd lub uszkodzenie systemu plików
-- Wolne miejsce na dysku logicznym (%) Małą
-- Mała ilość wolnego miejsca na dysku logicznym (MB)
-- Procent czasu bezczynności dysku logicznego
-- Liczba stron pamięci na sekundę
-- Procent wykorzystania przepustowości
-- Procent całkowitej liczby użytych przepustowości
-- Procent użycia przepustowości
-- Procent zadeklarowanej pamięci w użyciu
-- Procent czasu bezczynności dysku
-- Service Health klienta DHCP
-- Service Health klienta DNS
-- Service Health RPC
-- Service Health serwera
-- Procent łącznego użycia procesora CPU
-- Service Health dziennika zdarzeń systemu Windows
-- Service Health zapory systemu Windows
-- Windows Remote Management Service Health
+>[!NOTE]
+>Lookback czas trwania reprezentuje, jak często okno wyszukania sprawdza wartości metryk, na przykład w ciągu ostatnich pięciu minut.  
 
-### <a name="linux-vms"></a>Maszyny wirtualne z systemem Linux
-
-- Średnia liczba dysków Dysku w s/Transfer
-- Średnia liczba dysków Czas dysku w s/Odczyt
-- Średnia liczba dysków Dysku w s/Zapis
-- Kondycja dysku
-- Wolne miejsce na dysku logicznym
-- Wolne miejsce na dysku logicznym (%)
-- Dysk logiczny% Free węzłów i
-- Kondycja karty sieciowej
-- Łączny czas procesora (%)
-- Dostępna pamięć (MB) w systemie operacyjnym
+>[!NOTE]
+>Częstotliwość określa, jak często alert dotyczący metryki sprawdza, czy warunki są spełnione, na przykład co minutę.  Jest to szybkość, z jaką jest wykonywane kryterium kondycji, a lookback to czas trwania oceny kryterium kondycji. Na przykład kryterium kondycji ocenia się, jeśli **użycie procesora CPU** jest większe niż 95% z częstotliwością wynoszącą 5 minut i pozostanie większe niż 95% przez 15 minut (3 kolejne cykle oceny), a następnie stan zostanie zaktualizowany na krytyczny ważność, jeśli nie została jeszcze.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
@@ -90,7 +93,7 @@ Przed użyciem funkcji kondycji dla pojedynczej maszyny wirtualnej lub grupy mas
 
 ### <a name="view-health-directly-from-a-vm"></a>Wyświetlanie kondycji bezpośrednio z maszyny wirtualnej
 
-Aby wyświetlić kondycję maszyny wirtualnej platformy Azure, wybierz pozycję **Insights (wersja zapoznawcza)** w lewym okienku maszyny wirtualnej. Na stronie usługi VM Insights karta Kondycja jest domyślnie otwarta i wyświetlany jest widok kondycji maszyny wirtualnej.
+Aby wyświetlić kondycję maszyny wirtualnej platformy Azure, wybierz pozycję **Insights (wersja zapoznawcza)** w lewym okienku maszyny wirtualnej. Na stronie usługi VM Insights karta **kondycja** jest domyślnie otwarta i wyświetlany jest widok kondycji maszyny wirtualnej.
 
 ![Przegląd kondycji Azure Monitor dla maszyn wirtualnych wybranej maszyny wirtualnej platformy Azure](./media/vminsights-health/vminsights-directvm-health-01.png)
 
@@ -166,7 +169,7 @@ Dla każdego z elementów na liście można kliknąć odpowiedni stan kondycji, 
 
 Na stronie **Virtual Machines** , jeśli wybierzesz nazwę maszyny wirtualnej w kolumnie **Nazwa maszyny wirtualnej**, nastąpi przekierowanie do strony **wystąpienie maszyny wirtualnej** . Ta strona zawiera więcej szczegółów dotyczących alertów i kryteriów kondycji, które mają wpływ na wybraną maszynę wirtualną. Zafiltruj Szczegóły stanu kondycji, wybierając ikonę **stanu kondycji** w lewym górnym rogu strony, aby zobaczyć, które składniki są w złej kondycji. Możesz również wyświetlać alerty kondycji maszyny wirtualnej zgłoszone przez składnik złej kondycji uporządkowany według ważności alertu.
 
-W widoku **listy maszyn wirtualnych** wybierz nazwę maszyny wirtualnej, aby otworzyć stronę kondycji dla tej maszyny wirtualnej, podobnie jak w przypadku wybrania usługi **Insights (wersja zapoznawcza)** bezpośrednio z maszyny wirtualnej.
+W widoku **listy maszyn wirtualnych** wybierz nazwę maszyny wirtualnej, aby otworzyć stronę **kondycji** dla tej maszyny wirtualnej, podobnie jak w przypadku wybrania usługi **Insights (wersja zapoznawcza)** bezpośrednio z maszyny wirtualnej.
 
 ![Wgląd w szczegółowe dane maszyny wirtualnej platformy Azure](./media/vminsights-health/vminsights-directvm-health.png)
 
@@ -197,13 +200,13 @@ Uruchom diagnostykę kondycji, korzystając z następujących metod:
 
 * Stan kondycji zbiorczej dla wszystkich maszyn wirtualnych z perspektywy zagregowanej maszyny wirtualnej w Azure Monitor:
 
-    1. Na stronie **kondycja** wybierz ikonę dla krytycznego, ostrzegawczego, **zdrowego**lub nieznanego stanu kondycji w sekcji **kondycja maszyny wirtualnej gościa**.
+    1. Na stronie **kondycja** wybierz ikonę dla **krytycznego**, **ostrzegawczego**, **zdrowego**lub **nieznanego** stanu kondycji w sekcji **kondycja maszyny wirtualnej gościa**.
     2. Przejdź do strony, na której znajdują się wszystkie maszyny wirtualne pasujące do tej filtrowanej kategorii.
     3. Wybierz wartość w kolumnie **stan kondycji** , aby otworzyć zakres diagnostyki kondycji dla tej maszyny wirtualnej.
 
 * Według systemu operacyjnego z perspektywy zagregowanej maszyny wirtualnej w Azure Monitor. W obszarze **dystrybucja maszyny wirtualnej**wybranie jednej z wartości kolumny spowoduje otwarcie strony **Virtual Machines** i zwrócenie listy w tabeli odpowiadającej filtrowanej kategorii. Wybranie wartości w kolumnie **stan kondycji** spowoduje otwarcie diagnostyki kondycji dla wybranej maszyny wirtualnej.
  
-* Z poziomu maszyny wirtualnej gościa na karcie kondycja Azure monitor dla maszyn wirtualnych wybierz pozycję **Wyświetl diagnostykę kondycji**.
+* Z poziomu maszyny wirtualnej gościa na karcie **kondycja** Azure monitor dla maszyn wirtualnych wybierz pozycję **Wyświetl diagnostykę kondycji**.
 
 Diagnostyka kondycji organizuje informacje o kondycji w dwie kategorie: dostępność i wydajność.
  
@@ -211,7 +214,7 @@ Wszystkie kryteria kondycji zdefiniowane dla składnika, takie jak dysk logiczny
 
 Ponadto kategorię kryteriów można zobaczyć obok kolumny **kryteria kondycji** . Jeśli kryteria nie pasują do wybranej kategorii, komunikat informujący o **braku kryteriów kondycji dostępnych dla wybranej kategorii** zostanie wyświetlony w kolumnie **kryteria kondycji** .
 
-Stan kryteriów kondycji definiuje się przy użyciu jednego z czterech typów: **Krytyczne**, **ostrzegawcze**, w **dobrej kondycji**i nieznane. Pierwsze trzy można konfigurować, co oznacza, że możesz modyfikować wartości progowe monitorów bezpośrednio w okienku Konfiguracja **kryteriów kondycji** . Jest to możliwe również przy użyciu [operacji monitorowania aktualizacji](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/monitors/update)interfejsu API REST Azure monitor. **Nieznane** nie można skonfigurować i jest zarezerwowane dla konkretnych scenariuszy.
+Stan kryteriów kondycji definiuje się przy użyciu jednego z czterech typów: **Krytyczne**, **ostrzegawcze**, w **dobrej kondycji**i **nieznane**. Pierwsze trzy można konfigurować, co oznacza, że możesz modyfikować wartości progowe monitorów bezpośrednio w okienku Konfiguracja **kryteriów kondycji** . Jest to możliwe również przy użyciu [operacji monitorowania aktualizacji](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/monitors/update)interfejsu API REST Azure monitor. **Nieznane** nie można skonfigurować i jest zarezerwowane dla konkretnych scenariuszy.
 
 Strona **Diagnostyka kondycji** ma trzy główne sekcje:
 
@@ -249,19 +252,19 @@ Można zmienić konfigurację typu kryteriów kondycji **jednostki** , wybieraj�
 
 ![Przykład konfigurowania kryteriów kondycji](./media/vminsights-health/health-diagnostics-vm-example-02.png)
 
-W okienku Konfiguracja dla wybranych kryteriów kondycji w przypadku użycia przykładowego średniego **dysku w sekundach dla zapisu**próg można skonfigurować przy użyciu innej wartości liczbowej. Jest to Monitor dwustanowy, co oznacza, że może ulec zmianie tylko w **dobrej kondycji** na **Ostrzeżenie**.
+W okienku Konfiguracja dla wybranych kryteriów kondycji w przypadku użycia przykładowego **średniego dysku w sekundach dla zapisu**próg można skonfigurować przy użyciu innej wartości liczbowej. Jest to Monitor dwustanowy, co oznacza, że może ulec zmianie tylko w **dobrej kondycji** na **Ostrzeżenie**.
 
 Inne kryteria kondycji czasami używają trzech stanów, w których można skonfigurować wartość ostrzegawczą i krytyczną dla progów kondycji. Próg można także zmodyfikować przy użyciu [konfiguracji monitora](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/monitors/update)interfejsu API REST Azure monitor.
 
 >[!NOTE]
->Stosowanie zmian konfiguracji kryteriów kondycji do jednego wystąpienia stosuje je do wszystkich monitorowanych wystąpień. Na przykład po wybraniu opcji **dysk-1 D:** , a następnie zmodyfikowaniu średniego czasu **dysku na próg zapisu** , zmiana dotyczy wszystkich wystąpień odnalezionych i monitorowanych na maszynie wirtualnej.
+>Stosowanie zmian konfiguracji kryteriów kondycji do jednego wystąpienia stosuje je do wszystkich monitorowanych wystąpień. Na przykład po wybraniu opcji **dysk-1 D:** , a następnie zmodyfikowaniu **średniego czasu dysku na próg zapisu** , zmiana dotyczy wszystkich wystąpień odnalezionych i monitorowanych na maszynie wirtualnej.
 
 
 ![Konfigurowanie kryteriów kondycji przykładu monitora jednostkowego](./media/vminsights-health/health-diagnostics-criteria-config-01.png)
 
 Jeśli chcesz dowiedzieć się więcej na temat kryteriów kondycji, dodaliśmy artykuły merytoryczne ułatwiające identyfikowanie problemów, przyczyn i rozwiązań. Wybierz pozycję **Wyświetl informacje** na stronie, aby wyświetlić powiązany artykuł merytoryczny.
 
-Aby zapoznać się ze wszystkimi artykułami merytorycznymi zawartymi w Azure Monitor dla maszyn wirtualnych kondycji, zobacz [Azure monitor dokumentacji](https://docs.microsoft.com/azure/monitoring/infrastructure-health/)dotyczącej kondycji.
+Aby zapoznać się ze wszystkimi artykułami merytorycznymi zawartymi w Azure Monitor dla maszyn wirtualnych kondycji, zobacz [Azure monitor dokumentacji dotyczącej kondycji](https://docs.microsoft.com/azure/monitoring/infrastructure-health/).
 
 ### <a name="state-changes"></a>Zmiany stanu
 
@@ -287,13 +290,13 @@ Azure Monitor dla maszyn wirtualnych Health integruje się z [alertami platformy
 
 Alerty nie są skojarzone z grupą akcji w celu powiadomienia użytkownika o wyzwoleniu alertu. Użytkownik z rolą właściciela w zakresie subskrypcji musi skonfigurować powiadomienia, wykonując czynności opisane w sekcji [Konfigurowanie alertów](#configure-alerts) .
 
-Całkowita liczba alertów dotyczących kondycji maszyn wirtualnych sklasyfikowanych według ważności jest dostępna na pulpicie nawigacyjnym kondycji w sekcji **alerty** . Po wybraniu całkowitej liczby alertów lub liczby odpowiadającej poziomowi ważności zostanie otwarta strona **alerty** z listami wszystkich alertów pasujących do wybranych elementów.
+Całkowita liczba alertów dotyczących kondycji maszyn wirtualnych sklasyfikowanych według ważności jest dostępna na pulpicie nawigacyjnym **kondycji** w sekcji **alerty** . Po wybraniu całkowitej liczby alertów lub liczby odpowiadającej poziomowi ważności zostanie otwarta strona **alerty** z listami wszystkich alertów pasujących do wybranych elementów.
 
 Na przykład, jeśli wybierzesz wiersz odpowiadający **poziomowi ważnośćemu 1**, zobaczysz następujący widok:
 
 ![Przykład wszystkich alertów poziomu ważności 1](./media/vminsights-health/vminsights-sev1-alerts-01.png)
 
-Nie ma zakresu strony **wszystkie alerty** , aby wyświetlić tylko alerty pasujące do wybranej opcji. Jest on również filtrowany według **typu zasobu** , aby pokazać tylko alerty kondycji zgłoszone przez zasób maszyny wirtualnej. Ten format jest odzwierciedlany na liście alertów pod zasobem **docelowym**kolumny, gdzie pokazuje maszynę wirtualną platformy Azure zgłoszony alert w przypadku spełnienia warunku złej kondycji.
+Nie ma zakresu strony **wszystkie alerty** , aby wyświetlić tylko alerty pasujące do wybranej opcji. Jest on również filtrowany według **typu zasobu** , aby pokazać tylko alerty kondycji zgłoszone przez zasób maszyny wirtualnej. Ten format jest odzwierciedlany na liście alertów pod **zasobem docelowym**kolumny, gdzie pokazuje maszynę wirtualną platformy Azure zgłoszony alert w przypadku spełnienia warunku złej kondycji.
 
 Alerty z innych typów zasobów lub usług nie są przeznaczone do uwzględnienia w tym widoku. Te alerty obejmują alerty dziennika, które są oparte na kwerendach dzienników lub alertach metryk, które normalnie są wyświetlane na stronie domyślnej Azure Monitor [wszystkie alerty](../../azure-monitor/platform/alerts-overview.md#all-alerts-page) .
 

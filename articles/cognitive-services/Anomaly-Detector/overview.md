@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 03/26/2019
+ms.date: 09/05/2019
 ms.author: aahi
-ms.openlocfilehash: 70cb4a008391ad55562bc55fb45d877988e68643
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 3bd60ff1e732940bbb13c2e224084cf7e331266b
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854774"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934877"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Co to jest interfejs API narzędzia do wykrywania anomalii?
 
@@ -38,7 +38,7 @@ Dzięki detektorowi anomalii można automatycznie wykrywać anomalie w danych sz
 
 ## <a name="demo"></a>Pokaz
 
-Zapoznaj się [](https://aka.ms/adDemo) z tą interaktywną prezentacją, aby dowiedzieć się, jak działa detektor anomalii.
+Zapoznaj się z tą [interaktywną prezentacją](https://aka.ms/adDemo) , aby dowiedzieć się, jak działa detektor anomalii.
 Aby uruchomić demonstrację, należy utworzyć zasób wykrywania anomalii i uzyskać klucz interfejsu API i punkt końcowy.
 
 ## <a name="notebook"></a>Notes
@@ -76,6 +76,11 @@ Po zarejestrowaniu:
 * Zapoznaj się z tym papierem [usługi wykrywania anomalii w szeregach czasowych w firmie Microsoft](https://arxiv.org/abs/1906.03821) (zaakceptowanej przez KDD 2019) dla algorytmów SR-CNN opracowanych przez firmę Microsoft.
 
 > [!VIDEO https://www.youtube.com/embed/ERTaAnwCarM]
+
+## <a name="join-the-anomaly-detector-community"></a>Dołącz do społeczności wykrywania anomalii
+
+* Dołącz do [grupy doradcy wykrywania anomalii w usłudze Microsoft Teams](https://aka.ms/AdAdvisorsJoin)
+* Zobacz wybraną [zawartość wygenerowaną przez użytkownika](user-generated-content.md)
 
 ## <a name="next-steps"></a>Następne kroki
 

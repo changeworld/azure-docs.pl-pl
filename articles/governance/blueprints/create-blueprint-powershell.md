@@ -7,12 +7,12 @@ ms.date: 08/21/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: bfd2d1215e7673f7ff73a0c875973e45362ce6b0
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: d2069819203e821b42ea2f70e38f27b49053639e
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231905"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910051"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Szybki start: Definiowanie i przypisywanie Azure Blueprint przy użyciu programu PowerShell
 
@@ -28,12 +28,16 @@ Znajomość sposobu tworzenia i przypisywania strategii umożliwia definiowanie 
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free).
 
+## <a name="prerequisites"></a>Wymagania wstępne
+
+Jeśli nie jest jeszcze zainstalowana, postępuj zgodnie z instrukcjami w temacie [Dodawanie modułu AZ. plan](./how-to/manage-assignments-ps.md#add-the-azblueprint-module) w celu zainstalowania i sprawdzenia poprawności modułu **AZ. plan** z poziomu Galeria programu PowerShell.
+
 ## <a name="create-a-blueprint"></a>Tworzenie strategii
 
 Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utworzenie strategii z dostępnych zasobów. Utworzymy strategię o nazwie „MyBlueprint” służącą do konfigurowania przypisań ról i zasad dla subskrypcji. Następnie dodamy grupę zasobów, szablon usługi Resource Manager i przypisanie roli w grupie zasobów.
 
 > [!NOTE]
-> W przypadku korzystania z programu PowerShell, obiekt planu jest tworzony jako pierwszy. Dla każdego _artefaktu_ zawierającego parametry, który ma zostać dodany, parametry _strategii_ początkowej muszą zostać zdefiniowane wcześniej.
+> W przypadku _korzystania z programu PowerShell, obiekt planu_ jest tworzony jako pierwszy. Dla każdego _artefaktu_ zawierającego parametry, który ma zostać dodany, parametry _strategii_ początkowej muszą zostać zdefiniowane wcześniej.
 
 1. Utwórz obiekt _strategii_ początkowej. Parametr **BlueprintFile** pobiera plik JSON, który zawiera właściwości strategii, wszystkie grupy zasobów do utworzenia i wszystkie parametry poziomu planu. Parametry są określane podczas przypisywania i używane przez artefakty dodane w kolejnych krokach.
 
@@ -311,9 +315,9 @@ Wartość zmiennej `{BlueprintVersion}` jest ciągiem liter, cyfr i łączników
 
 ## <a name="assign-a-blueprint"></a>Przypisywanie strategii
 
-Po opublikowaniu planu przy użyciu programu PowerShell można go przypisać do subskrypcji. Przypisz utworzoną przez siebie strategię do jednej z subskrypcji w Twojej hierarchii grup zarządzania. Jeśli strategia została zapisana w subskrypcji, można ją przypisać tylko do tej subskrypcji. Parametr strategii określa plan do przypisania. Aby podać nazwę, lokalizację, tożsamość, blokadę i parametry planu, użyj pasujących parametrów programu PowerShell w `New-AzBlueprintAssignment` poleceniu cmdlet lub podaj je w pliku JSON parametrów **AssignmentFile** .
+Po opublikowaniu planu przy użyciu programu PowerShell można go przypisać do subskrypcji. Przypisz utworzoną przez siebie strategię do jednej z subskrypcji w Twojej hierarchii grup zarządzania. Jeśli strategia została zapisana w subskrypcji, można ją przypisać tylko do tej subskrypcji. Parametr **strategii określa plan do** przypisania. Aby podać nazwę, lokalizację, tożsamość, blokadę i parametry planu, użyj pasujących parametrów programu PowerShell w `New-AzBlueprintAssignment` poleceniu cmdlet lub podaj je w pliku JSON parametrów **AssignmentFile** .
 
-1. Uruchom wdrażanie strategii, przypisując ją do subskrypcji. Ponieważ parametry współautorów i **właścicieli** wymagają tablicy obiektów objectid, aby można było przydzielić przypisanie roli, użyj [interfejs API programu Graph Azure Active Directory](../../active-directory/develop/active-directory-graph-api.md) , aby gromadzić identyfikatory objectid do użycia w **AssignmentFile** dla własnych użytkowników, grup lub podmiotów usługi.
+1. Uruchom wdrażanie strategii, przypisując ją do subskrypcji. Ponieważ parametry **współautorów** i **właścicieli** wymagają tablicy obiektów objectid, aby można było przydzielić przypisanie roli, użyj [interfejs API programu Graph Azure Active Directory](../../active-directory/develop/active-directory-graph-api.md) , aby gromadzić identyfikatory objectid do użycia w **AssignmentFile** dla własnych użytkowników, grup lub podmiotów usługi.
 
    - Plik JSON — blueprintAssignment. JSON
 
@@ -397,7 +401,7 @@ Remove-AzBlueprintAssignment -Name 'assignMyBlueprint'
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o [cyklu życia](./concepts/lifecycle.md)planu.
+- Uzyskaj informacje na temat [cyklu życia strategii](./concepts/lifecycle.md).
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](./concepts/parameters.md).
 - Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](./concepts/sequencing-order.md).
 - Dowiedz się, jak używać [blokowania zasobów strategii](./concepts/resource-locking.md).

@@ -8,12 +8,12 @@ ms.custom: tutorial-develop, mvc
 ms.topic: tutorial
 ms.date: 05/21/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 9c6bd2040cb90f7a837efdf11d33a6e6999bc944
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 7e57abcc3df17dadd2e607895a8de011761ed68c
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65965501"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932795"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Samouczek: wykonywanie zapytań w usłudze Azure Cosmos DB przy użyciu interfejsu API SQL
 
@@ -61,7 +61,7 @@ Zapytania SQL w tym artykule korzystają z następującego przykładowego dokume
 Zapytania można uruchamiać przy użyciu Eksploratora danych w witrynie Azure Portal, za pomocą [interfejsu API REST i zestawów SDK](sql-api-sdk-dotnet.md), a nawet [placu zabaw dla zapytań](https://www.documentdb.com/sql/demo), który uruchamia zapytania na istniejącym zestawie danych przykładowych.
 
 Aby uzyskać więcej informacji na temat zapytań SQL zobacz:
-* [Zapytanie SQL i składnia SQL](how-to-sql-query.md)
+* [Zapytanie SQL i składnia SQL](sql-query-getting-started.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -124,7 +124,7 @@ Następne zapytanie zwraca imiona wszystkich dzieci w rodzinie o identyfikatorze
 [ { "givenName": "Jesse" }, { "givenName": "Lisa" } ]
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku wykonano następujące czynności:
 

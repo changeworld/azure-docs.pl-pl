@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/04/2019
+ms.date: 09/06/2019
 ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d3cbaf76489058624e56bec50b37eeb18a99ba7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 1cf3eead3a56297efa3bea90ef48eb464ad63da0
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812514"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898516"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Instrukcje: Wyświetlanie listy aplikacji w galerii aplikacji usługi Azure Active Directory
 
@@ -48,7 +48,12 @@ W tym artykule pokazano, jak wyświetlić listę aplikacji w galerii aplikacji u
 
 - W przypadku logowania jednokrotnego za pomocą hasła upewnij się, że aplikacja obsługuje uwierzytelnianie formularzy, aby można było utworzyć magazynowanie haseł w celu uzyskania obsługi logowania jednokrotnego zgodnie z oczekiwaniami.
 
+- W przypadku automatycznych żądań aprowizacji użytkowników aplikacja powinna być wyświetlana w galerii z włączoną funkcją logowania jednokrotnego przy użyciu protokołu SAML 2.0/WS-karmionego. Możesz poprosić o Logowanie jednokrotne i obsługę administracyjną użytkowników w portalu, jeśli nie zostały one jeszcze wymienione.
+
 - Potrzeba stałego konta do testowania z co najmniej 2 zarejestrowanymi użytkownikami.
+
+> [!NOTE]
+> Pracujemy z dużą liczbą żądań łącznika Standard scim, więc zatrzymamy nowe żądania w naszym portalu. Zaczekaj na żądania aż do dalszej uwagi. Przepraszamy za to opóźnienie i wszelkie powstałe niedogodności.
 
 ## <a name="submit-the-request-in-the-portal"></a>Prześlij żądanie w portalu
 
@@ -82,7 +87,7 @@ Aby wyświetlić listę aplikacji w galerii aplikacji usługi Azure AD, najpierw
     * Jeśli chcesz dodać aplikację do listy w galerii za pomocą OpenID Connect Connect, wybierz pozycję **OpenID Connect connect & OAuth 2,0** .
     * Jeśli masz jakieś problemy dotyczące dostępu, skontaktuj się z [zespołem ds. integracji rejestracji jednokrotnej usługi Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
 
-- **SAML 2,0** lub **WS-karmione**: Jeśli aplikacja obsługuje protokół SAML 2,0, możesz zintegrować go bezpośrednio z dzierżawą usługi Azure AD przy użyciu [instrukcji, aby dodać aplikację niestandardową](../active-directory-saas-custom-apps.md).
+- **SAML 2,0** lub **WS-karmione**: Jeśli aplikacja obsługuje protokół SAML 2,0, możesz zintegrować go bezpośrednio z dzierżawą usługi Azure AD przy użyciu [instrukcji, aby dodać aplikację](../active-directory-saas-custom-apps.md)niestandardową.
 
   ![Oś czasu na liście aplikacji SAML 2,0 lub WS-pokarmowa do galerii](./media/howto-app-gallery-listing/saml.png)
 
@@ -95,7 +100,7 @@ Utwórz aplikację sieci Web, która zawiera stronę logowania w formacie HTML, 
 
 ![Oś czasu wyświetlania aplikacji SSO z hasłem w galerii](./media/howto-app-gallery-listing/passwordsso.png)
 
-* Jeśli chcesz dodać aplikację do listy w galerii przy użyciu hasła logowania jednokrotnego, wybierz pozycję **Logowanie jednokrotne jako hasło** powyżej.
+* Jeśli chcesz dodać aplikację do listy w galerii przy użyciu hasła logowania jednokrotnego, wybierz pozycję Logowanie jednokrotne jako **hasło** powyżej.
 * Jeśli masz jakieś problemy dotyczące dostępu, skontaktuj się z [zespołem ds. integracji rejestracji jednokrotnej usługi Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
 ## <a name="updateremove-existing-listing"></a>Aktualizuj/Usuń istniejącą listę

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 1b1e9338f92aaefab8e7754139066ac03e8b8213
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: c39db870e44d4e810817b70e2793b8805088180e
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142632"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932542"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Zestaw .NET Core SDK Azure Cosmos DB dla interfejsu API SQL: Informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -44,6 +44,11 @@ ms.locfileid: "70142632"
 
 > [!NOTE]
 > W przypadku korzystania z platformy .NET Core zapoznaj się z najnowszą wersją 3. x [zestawu SDK platformy .NET](sql-api-sdk-dotnet-standard.md), która jest przeznaczona dla .NET Standard. 
+
+### <a name="a-name260260"></a><a name="2.6.0"/>2.6.0
+
+* Dodano PortReusePolicy do ConnectionPolicy
+* Naprawiono ntdll! Problem z RtlGetVersion TypeLoadException, gdy zestaw SDK jest używany w aplikacji platformy UWP
 
 ### <a name="a-name251251"></a><a name="2.5.1"/>2.5.1
 
@@ -267,6 +272,7 @@ Wszystkie żądania do Azure Cosmos DB za pomocą wycofanego zestawu SDK są odr
 
 | Version | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
+| [2.6.0](#2.6.0) |30 sierpnia 2019 |--- |
 | [2.5.1](#2.5.1) |02 lipca 2019 |--- |
 | [2.4.1](#2.4.1) |20 czerwca 2019 |--- |
 | [2.4.0](#2.4.0) |05 maja 2019 |--- |

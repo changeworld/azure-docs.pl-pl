@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/08/2019
+ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: 5828d4f453afeccfaac206195f064e43a20d1ba0
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 8e732496c4523646f02ef461b7d3c52314c28dae
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844769"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932828"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrowanie do klucza tworzenia zasobów platformy Azure
 
@@ -35,7 +35,8 @@ Jeśli na przykład masz 2 typy tworzonych aplikacji LUIS z różnymi elementami
 
 Migracja obejmuje:
 
-* **Wszystkie** aplikacje właściciela.
+* Wszyscy użytkownicy LUIS, właściciele i współautorzy.
+* **Wszystkie** aplikacje.
 * Migracja **jednokierunkowa** .
 
 Właściciel nie może wybrać podzestawu aplikacji do migracji, a proces nie jest odwracalny. 
@@ -87,13 +88,17 @@ Współautorzy można dodać do zasobu tworzenia z _Azure Portal_na stronie **Ac
 
 ## <a name="migration-for-the-app-contributor"></a>Migracja dla współautora aplikacji
 
+Każdy użytkownik programu LUIS musi przeprowadzić migrację, w tym współpracowników/współautorów. 
+
 ### <a name="before-the-app-is-migrated"></a>Przed przeprowadzeniem migracji aplikacji
 
 Możesz wyeksportować aplikację, której jesteś współpracownikiem, a następnie zaimportować aplikację z powrotem do LUIS. Proces importowania tworzy nową aplikację z nowym IDENTYFIKATORem aplikacji, dla którego jesteś właścicielem.
 
 ### <a name="after-the-app-is-migrated"></a>Po migracji aplikacji
 
-Jeśli po zakończeniu procesu migracji potrzebujesz dostępu do oryginalnej aplikacji, musisz dodać do zasobu tworzenia platformy Azure jako współpracownika przez właściciela aplikacji.  
+Właściciel aplikacji musi [dodać swój adres e-mail do zasobu tworzenia platformy Azure jako współpracownika](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource). 
+
+Po zakończeniu procesu migracji wszystkie posiadane aplikacje są dostępne na stronie **Moje aplikacje** w portalu Luis.  
 
 ## <a name="next-steps"></a>Następne kroki
 

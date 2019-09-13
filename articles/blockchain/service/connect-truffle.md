@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 822402f548fe0fc866051a9c77adef6e37c3fa75
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: ea64e3fe4789ac0558463ded81c8179db83469d5
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240886"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932594"
 ---
-# <a name="quickstart-use-truffle-to-connect-to-a-transaction-node"></a>Szybki start: Używanie Truffle do nawiązywania połączenia z węzłem transakcji
+# <a name="quickstart-use-truffle-to-connect-to-a-transaction-node"></a>Szybki start: Użycie programu Truffle do nawiązania połączenia z węzłem transakcji
 
 Truffle to środowisko deweloperskie łańcucha bloków, którego można użyć do nawiązania połączenia z węzłem transakcji usługi Azure łańcucha bloków.
 
@@ -25,7 +25,7 @@ Truffle to środowisko deweloperskie łańcucha bloków, którego można użyć 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Tworzenie elementu członkowskiego usługi Azure łańcucha bloków](create-member.md)
+* Pełny [Przewodnik Szybki Start: Utwórz składową łańcucha bloków przy użyciu Azure Portal](create-member.md) lub [szybkiego startu: Tworzenie członka usługi Azure łańcucha bloków Service łańcucha bloków przy użyciu interfejsu wiersza polecenia platformy Azure](create-member-cli.md)
 * Zainstaluj [Truffle](https://github.com/trufflesuite/truffle). Truffle wymaga zainstalowania kilku narzędzi, w tym [Node. js](https://nodejs.org), [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 * Zainstaluj środowisko [Python 2.7.15](https://www.python.org/downloads/release/python-2715/). Środowisko Python jest niezbędne dla Web3.
 
@@ -124,7 +124,7 @@ Użyj *Web3* , aby nawiązać połączenie z węzłem transakcji.
 
 W tym przewodniku szybki start utworzono projekt Truffle w celu nawiązania połączenia z domyślnym węzłem transakcji usługi Azure łańcucha bloków Service.
 
-Skorzystaj z następnego samouczka, aby użyć zestawu Azure łańcucha bloków Development Kit dla Ethereum i Truffle, aby wykonać funkcję inteligentnego kontraktu za pośrednictwem transakcji w sieci łańcucha bloków konsorcjum.
+Skorzystaj z następnego samouczka, aby użyć zestawu Azure łańcucha bloków Development Kit dla Ethereum i Truffle do tworzenia, kompilowania, wdrażania i wykonywania funkcji kontraktu inteligentnego za pośrednictwem transakcji.
 
 > [!div class="nextstepaction"]
-> [Korzystanie z inteligentnych kontraktów w usłudze Azure łańcucha bloków Service](send-transaction.md)
+> [Używanie Visual Studio Code do tworzenia, kompilowania i wdrażania kontraktów inteligentnych](send-transaction.md)

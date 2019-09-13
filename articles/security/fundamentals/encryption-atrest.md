@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: barclayn
-ms.openlocfilehash: f3cacdad2986de257ae345f4baa9d14ea6c894b2
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 78062dd92d20da365bb4f3d9c21cc4d576bae01f
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873187"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918866"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Szyfrowanie danych platformy Azure — w spoczynku
 
@@ -39,7 +39,7 @@ Szyfrowanie w spoczynku to kodowanie (szyfrowanie) danych, gdy są utrwalane. Sz
 - Symetryczny klucz szyfrowania jest używany do szyfrowania danych podczas zapisywania w magazynie.
 - Ten sam klucz szyfrowania jest używany do odszyfrowywania tych danych, ponieważ jest readied do użycia w pamięci.
 - Dane mogą być partycjonowane i różne klucze mogą być używane dla każdej partycji.
-- Klucze muszą być przechowywane w bezpiecznej lokalizacji z kontrolą dostępu opartą na tożsamości i zasadami inspekcji. Klucze szyfrowania danych są często szyfrowane za pomocą szyfrowania asymetrycznego w celu dodatkowego ograniczenia dostępu.
+- Klucze muszą być przechowywane w bezpiecznej lokalizacji z kontrolą dostępu opartą na tożsamości i zasadami inspekcji. Klucze szyfrowania danych są często szyfrowane za pomocą klucza szyfrowania kluczy w Azure Key Vault, aby dodatkowo ograniczyć dostęp.
 
 W tym scenariuszu scenariusze zarządzania kluczami i kontroli, a także zapewnienia skalowalności i dostępności, wymagają dodatkowych konstrukcji. Poniżej opisano Microsoft Azure szyfrowanie przy założeniach i składnikach Rest.
 
@@ -71,12 +71,12 @@ Uprawnienia do korzystania z kluczy przechowywanych w Azure Key Vault w celu zar
 
 ### <a name="key-hierarchy"></a>Hierarchia kluczy
 
-W implementacji REST jest używany więcej niż jeden klucz szyfrowania. Szyfrowanie asymetryczne jest przydatne do ustanowienia zaufania i uwierzytelniania potrzebnego do uzyskiwania dostępu do kluczy i zarządzania nimi. Szyfrowanie symetryczne jest wydajniejsze w przypadku szyfrowania i odszyfrowywania zbiorczego, co pozwala na silniejsze szyfrowanie i lepszą wydajność. Ograniczenie użycia jednego klucza szyfrowania zmniejsza ryzyko naruszenia klucza i koszt ponownego szyfrowania, gdy klucz musi zostać zastąpiony. W przypadku szyfrowania systemu Azure w modelach REST używana jest hierarchia kluczy składająca się z następujących typów kluczy:
+W implementacji REST jest używany więcej niż jeden klucz szyfrowania. Przechowywanie klucza szyfrowania w Azure Key Vault zapewnia bezpieczny dostęp do klucza i centralne zarządzanie kluczami. Jednak lokalny dostęp usługi do kluczy szyfrowania jest bardziej wydajny w przypadku szyfrowania zbiorczego i odszyfrowywania niż korzystanie z Key Vault dla każdej operacji na danych, co pozwala na silniejsze szyfrowanie i lepszą wydajność. Ograniczenie użycia jednego klucza szyfrowania zmniejsza ryzyko naruszenia klucza i koszt ponownego szyfrowania, gdy klucz musi zostać zastąpiony. Funkcje szyfrowania platformy Azure w modelach REST używają hierarchii kluczy składającej się z następujących typów kluczy, aby rozwiązać wszystkie te wymagania:
 
 - **Klucz szyfrowania danych (undek)** — symetryczny klucz AES256 używany do szyfrowania partycji lub bloku danych.  Pojedynczy zasób może mieć wiele partycji i wiele kluczy szyfrowania danych. Szyfrowanie każdego bloku danych przy użyciu innego klucza sprawia, że ataki analizy kryptograficznej są trudniejsze. Dostęp do DEKs jest wymagany przez dostawcę zasobów lub wystąpienie aplikacji, które szyfruje i odszyfrowuje określony blok. Gdy klucz szyfrowania danych jest zastępowany nowym kluczem, tylko dane w skojarzonym bloku muszą zostać ponownie zaszyfrowane przy użyciu nowego klucza.
-- **Klucz szyfrowania klucza (KEK)** — klucz szyfrowania asymetrycznego używany do szyfrowania kluczy szyfrowania danych. Użycie klucza szyfrowania klucza pozwala szyfrować i kontrolować klucze szyfrowania danych. Jednostka, która ma dostęp do elementu KEK, może być różna od jednostki, która wymaga tego elementu. Jednostka może przetworzyć dostęp do tego klucza, aby ograniczyć dostęp do każdego szyfrowania danych do określonej partycji. Ponieważ KEK jest wymagany do odszyfrowania DEKs, KEK jest efektywnie jednym punktem, przez który DEKs może być skutecznie usunięty przez usunięcie KEK.
+- **Klucz szyfrowania klucza (KEK)** — klucz szyfrowania służący do szyfrowania kluczy szyfrowania danych. Użycie klucza szyfrowania klucza, który nigdy nie opuszcza Key Vault pozwala na szyfrowanie kluczy szyfrowania danych i sterowanie nimi. Jednostka, która ma dostęp do elementu KEK, może być różna od jednostki, która wymaga tego elementu. Jednostka może przetworzyć dostęp do tego klucza, aby ograniczyć dostęp do każdego szyfrowania danych do określonej partycji. Ponieważ KEK jest wymagany do odszyfrowania DEKs, KEK jest efektywnie jednym punktem, przez który DEKs może być skutecznie usunięty przez usunięcie KEK.
 
-Klucze szyfrowania danych szyfrowane za pomocą kluczy szyfrowania kluczy są przechowywane oddzielnie, a tylko jednostka mająca dostęp do klucza szyfrowania kluczy może pobrać wszystkie klucze szyfrowania danych zaszyfrowane za pomocą tego klucza. Obsługiwane są różne modele magazynu kluczy. Szczegółowo omówiono każdy model w dalszej części następnej sekcji.
+Klucze szyfrowania danych szyfrowane za pomocą kluczy szyfrowania kluczy są przechowywane oddzielnie, a tylko jednostka mająca dostęp do klucza szyfrowania klucza może odszyfrować te klucze szyfrowania danych. Obsługiwane są różne modele magazynu kluczy. Szczegółowo omówiono każdy model w dalszej części następnej sekcji.
 
 ## <a name="data-encryption-models"></a>Modele szyfrowania danych
 
@@ -150,7 +150,9 @@ Gdy używane jest szyfrowanie po stronie serwera z kluczami zarządzanymi przez 
 
 #### <a name="server-side-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Szyfrowanie po stronie serwera przy użyciu kluczy zarządzanych przez klienta w programie Azure Key Vault
 
-W przypadku scenariuszy, w których wymagane jest szyfrowanie danych w stanie spoczynku i sterowanie kluczami szyfrowania, klienci mogą korzystać z szyfrowania po stronie serwera przy użyciu kluczy zarządzanych przez klienta w Key Vault. Niektóre usługi mogą przechowywać tylko klucz szyfrowania klucza głównego w Azure Key Vault i przechowywać zaszyfrowany klucz szyfrowania danych w wewnętrznej lokalizacji zbliżonej do danych. W tym scenariuszu klienci mogą przenosić własne klucze do Key Vault (BYOK – Bring Your Own Key) lub generować nowe i używać ich do szyfrowania żądanych zasobów. Mimo że dostawca zasobów wykonuje operacje szyfrowania i odszyfrowywania, używa skonfigurowanego klucza jako klucza głównego dla wszystkich operacji szyfrowania.
+W przypadku scenariuszy, w których wymagane jest szyfrowanie danych w stanie spoczynku i sterowanie kluczami szyfrowania, klienci mogą korzystać z szyfrowania po stronie serwera przy użyciu kluczy zarządzanych przez klienta w Key Vault. Niektóre usługi mogą przechowywać tylko klucz szyfrowania klucza głównego w Azure Key Vault i przechowywać zaszyfrowany klucz szyfrowania danych w wewnętrznej lokalizacji zbliżonej do danych. W tym scenariuszu klienci mogą przenosić własne klucze do Key Vault (BYOK – Bring Your Own Key) lub generować nowe i używać ich do szyfrowania żądanych zasobów. Mimo że dostawca zasobów wykonuje operacje szyfrowania i odszyfrowywania, używa skonfigurowanego klucza szyfrowania klucza jako klucza głównego dla wszystkich operacji szyfrowania.
+
+Utrata kluczy szyfrowania kluczy oznacza utratę danych. Z tego powodu klucze nie powinny być usuwane. Należy utworzyć kopię zapasową kluczy, gdy zostały utworzone lub obrócone. [Usuwanie nietrwałe](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) powinno być włączone na dowolnym magazynie przechowującym klucze szyfrowania kluczy. Zamiast usuwać klucz, ustaw wartość włączone na false lub ustaw datę wygaśnięcia.
 
 ##### <a name="key-access"></a>Dostęp do klucza
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 8b4764d855663325b2445f7b588b795c15f4edde
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 095c8fa080d96c9dc6d40261ee5afc559e9ca06b
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596327"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933883"
 ---
 # <a name="tutorial-configure-security-agents"></a>Samouczek: Konfigurowanie alertów zabezpieczeń
 
@@ -87,28 +87,28 @@ Aby użyć domyślnej wartości właściwości, Usuń właściwość z obiektu k
 
 1. W IoT Hub Znajdź i wybierz urządzenie, które chcesz zmienić.
 
-2. Kliknij urządzenie, a następnie w module **azureiotsecurity** .
+1. Kliknij urządzenie, a następnie w module **azureiotsecurity** .
 
-3. Kliknij pozycję **identyfikator modułu**— sznurek.
+1. Kliknij pozycję **identyfikator modułu — sznurek**.
 
-4. Edytuj właściwości, które chcesz zmienić w module zabezpieczeń.
+1. Edytuj właściwości, które chcesz zmienić w module zabezpieczeń.
    
    Na przykład, aby skonfigurować zdarzenia połączeń jako wysoki priorytet i zbierać zdarzenia o wysokim priorytecie co 7 minut, użyj poniższej konfiguracji.
    
-   ```json
+    ```json
     "desired": {
-      "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration": {
-        "highPriorityMessageFrequency": {
-          "value" : "PT7M"
-        },    
-        "eventPriorityConnectionCreate": {
-          "value" : "High" 
+        "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration": {
+            "highPriorityMessageFrequency": {
+                "value": "PT7M"
+            },
+            "eventPriorityConnectionCreate": {
+                "value": "High"
+            }
         }
-      } 
-    }, 
+    }
     ```
 
-5. Kliknij polecenie **Zapisz**.
+1. Kliknij polecenie **Zapisz**.
 
 ### <a name="using-a-default-value"></a>Używanie wartości domyślnej
 
@@ -120,7 +120,7 @@ Poniższa tabela zawiera właściwości, które mają być kontrolowane Azure Se
 
 Wartości domyślne są dostępne w odpowiednim schemacie w serwisie [GitHub](https\://aka.ms/iot-security-module-default).
 
-| Name (Nazwa)| Stan | Prawidłowe wartości| Wartości domyślne| Opis |
+| Name| State | Prawidłowe wartości| Wartości domyślne| Opis |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
 |highPriorityMessageFrequency|Wymagane: FAŁSZ |Prawidłowe wartości: Czas trwania w formacie ISO 8601 |Wartość domyślna: PT7M |Maksymalny przedział czasu przed wysłaniem komunikatów o wysokim priorytecie.|
 |lowPriorityMessageFrequency |Wymagane: FAŁSZ|Prawidłowe wartości: Czas trwania w formacie ISO 8601 |Wartość domyślna: PT5H |Maksymalny czas przed wysłaniem komunikatów o niskim priorytecie.| 
@@ -150,7 +150,7 @@ Wartości domyślne są dostępne w odpowiednim schemacie w serwisie [GitHub](ht
 |
  
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Opis Azure Security Center dotyczących zaleceń IoT](concept-recommendations.md)
 - [Eksplorowanie Azure Security Center dotyczących alertów IoT](concept-security-alerts.md)

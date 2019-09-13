@@ -8,21 +8,21 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/24/2018
-ms.openlocfilehash: 72e8b1331005db59be572e033bfaaaf5ceeea0b3
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f3c6eabeac74df8ea88cf1a0670af9624e98771a
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67433605"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70935171"
 ---
-# <a name="create-apache-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Tworzenie klastra Apache Hadoop z bezpiecznym transferem kont magazynu w usłudze Azure HDInsight
+# <a name="create-apache-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Tworzenie klastra Apache Hadoop z kontami magazynu Secure transfer w usłudze Azure HDInsight
 
 Funkcja [Wymagany bezpieczny transfer](../storage/common/storage-require-secure-transfer.md) poprawia bezpieczeństwo konta usługi Azure Storage poprzez wymuszanie kierowania wszystkich zapytań do konta przez zabezpieczone połączenie. Funkcja ta oraz schemat wasbs są obsługiwane tylko w klastrze usługi HDInsight w wersji 3.6 lub nowszym.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Przed przystąpieniem do wykonywania w tym artykule, musisz mieć:
+Przed rozpoczęciem tego artykułu musisz dysponować:
 
-* **Subskrypcja platformy Azure**: Aby utworzyć bezpłatne konto próbne jednego miesiąca, przejdź do [azure.microsoft.com/free](https://azure.microsoft.com/free).
+* **Subskrypcja platformy Azure**: Aby utworzyć bezpłatne konto próbne miesięczne, przejdź do [Azure.Microsoft.com/Free](https://azure.microsoft.com/free).
 * **Konto usługi Azure Storage z włączonym bezpiecznym transferem**. Aby uzyskać instrukcje, zobacz [Tworzenie konta magazynu](../storage/common/storage-quickstart-create-account.md) oraz [Wymaganie bezpiecznego transferu](../storage/common/storage-require-secure-transfer.md).
 * **Kontener obiektów blob na koncie magazynu**.
 
@@ -31,11 +31,11 @@ Przed przystąpieniem do wykonywania w tym artykule, musisz mieć:
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 
-W tej sekcji tworzysz klaster Hadoop w usłudze HDInsight przy użyciu [szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy.md). Szablon znajduje się w [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-existing-default-storage-account/). Znajomość szablonów usługi Resource Manager nie jest wymagana do korzystania z tego artykułu. Inne metody tworzenia klastrów i opis właściwości używanych w tym artykule, zobacz [klastrów HDInsight tworzenie](hdinsight-hadoop-provision-linux-clusters.md).
+W tej sekcji tworzysz klaster Hadoop w usłudze HDInsight przy użyciu [szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy.md). Szablon znajduje się w serwisie [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-existing-default-storage-account/). Znajomość szablonów usługi Resource Manager nie jest wymagana do korzystania z tego artykułu. Aby poznać inne metody tworzenia klastrów i zrozumieć właściwości używane w tym artykule, zobacz [Tworzenie klastrów usługi HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
 1. Kliknij poniższy obraz, aby zalogować się do platformy Azure i otworzyć szablon usługi Resource Manager w witrynie Azure Portal.
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-existing-default-storage-account%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hadoop-linux-tutorial-get-started/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-existing-default-storage-account%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage/hdi-deploy-to-azure1.png" alt="Deploy to Azure"></a>
 
 2. Postępuj zgodnie z instrukcjami, aby utworzyć klaster o następujących specyfikacjach: 
 
@@ -60,15 +60,15 @@ Dostępnych jest kilka opcji dodawania kolejnych kont magazynu z bezpiecznym tra
 - Utwórz klaster przy użyciu witryny [Azure Portal](https://portal.azure.com) i określ połączone konto magazynu.
 - Użyj akcji skryptu, aby dodać kolejne konta magazynu z bezpiecznym transferem do istniejącego klastra usługi HDInsight. Aby uzyskać więcej informacji, zobacz [Dodawanie kolejnych kont magazynu do usługi HDInsight](hdinsight-hadoop-add-storage.md).
 
-## <a name="next-steps"></a>Kolejne kroki
-W tym artykule mają pokazaliśmy, jak utworzyć klaster usługi HDInsight oraz włączania bezpiecznego transferu na kontach magazynu.
+## <a name="next-steps"></a>Następne kroki
+W tym artykule przedstawiono sposób tworzenia klastra usługi HDInsight i włączania bezpiecznego transferu do kont magazynu.
 
 Aby dowiedzieć się więcej na temat analizowania danych za pomocą usługi HDInsight, zobacz następujące artykuły:
 
-* Aby dowiedzieć się więcej o korzystaniu z [Apache Hive](https://hive.apache.org/) z HDInsight, w tym poznać sposoby wykonywania zapytań Hive z programu Visual Studio, zobacz [używanie programu Apache Hive z HDInsight][hdinsight-use-hive].
-* Aby dowiedzieć się więcej na temat [Apache Pig](https://pig.apache.org/), języka używanego do przekształcania danych, zobacz [Use Apache Pig z HDInsight][hdinsight-use-pig].
-* Aby dowiedzieć się więcej na temat [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html), sposobie pisania programów przetwarzających dane na platformie Hadoop, zobacz [używanie Apache Hadoop MapReduce z HDInsight][hdinsight-use-mapreduce].
-* Aby dowiedzieć się więcej o korzystaniu z narzędzi HDInsight dla programu Visual Studio do analizowania danych w HDInsight, zobacz [rozpoczęcie korzystania z narzędzi Visual Studio Apache Hadoop dla HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md).
+* Aby dowiedzieć się więcej o korzystaniu z [Apache Hive](https://hive.apache.org/) z usługą HDInsight, w tym o tym, jak wykonywać zapytania Hive z programu Visual Studio, zobacz [Korzystanie z Apache Hive z usługą HDInsight][hdinsight-use-hive].
+* Aby dowiedzieć się więcej o programie [Apache wieprz](https://pig.apache.org/), języku używanym do przekształcania danych, zobacz [Korzystanie z Apache świni z usługą HDInsight][hdinsight-use-pig].
+* Aby dowiedzieć się więcej o [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html), sposób pisania programów przetwarzających dane w usłudze Hadoop, zobacz [Używanie Apache Hadoop MapReduce z usługą HDInsight][hdinsight-use-mapreduce].
+* Aby dowiedzieć się więcej o korzystaniu z narzędzi HDInsight Tools for Visual Studio do analizowania danych w usłudze HDInsight, zobacz [Rozpoczynanie pracy z narzędziami Apache Hadoop programu Visual Studio dla usługi HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
 Aby dowiedzieć się więcej o sposobie przechowywania danych przez usługę HDInsight lub sposobie przesyłania danych do usługi HDInsight, zobacz następujące artykuły:
 
@@ -79,11 +79,11 @@ Aby dowiedzieć się więcej o tworzeniu klastra usługi HDInsight i zarządzani
 
 * Aby uzyskać więcej informacji na temat zarządzania opartym na systemie Linux klastrem usługi HDInsight, zobacz artykuł [Zarządzanie klastrami usługi HDInsight za pomocą narzędzia Apache Ambari](hdinsight-hadoop-manage-ambari.md).
 * Aby dowiedzieć się więcej na temat opcji, które można wybrać podczas tworzenia klastra usługi HDInsight, zobacz [Tworzenie klastra usługi HDInsight w systemie Linux przy użyciu niestandardowych opcji](hdinsight-hadoop-provision-linux-clusters.md).
-* Jeśli znasz systemów Linux i technologii Apache Hadoop, ale chcesz poznać szczegóły dotyczące usługi Hadoop w HDInsight, zobacz [Praca z usługą HDInsight w systemie Linux](hdinsight-hadoop-linux-information.md). Artykuł zawiera następujące informacje:
+* Jeśli znasz system Linux i Apache Hadoop, ale chcesz poznać szczegóły dotyczące platformy Hadoop w usłudze HDInsight, zobacz [Praca z usługą HDInsight w systemie Linux](hdinsight-hadoop-linux-information.md). Artykuł zawiera następujące informacje:
 
-  * Adresy URL dla usług hostowanych w klastrze, takich jak [Apache Ambari](https://ambari.apache.org/) i [usługi WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat)
-  * Lokalizacja [Apache Hadoop](https://hadoop.apache.org/) plików oraz przykłady lokalnego systemu plików
-  * Korzystanie z usługi Azure Storage (WASB) zamiast [Apache Hadoop HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) jako domyślne dane Magazyn
+  * Adresy URL usług hostowanych w klastrze, takie jak [Apache Ambari](https://ambari.apache.org/) i [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat)
+  * Lokalizacja [Apache Hadoop](https://hadoop.apache.org/) plików i przykładów w lokalnym systemie plików
+  * Korzystanie z usługi Azure Storage (WASB) zamiast [Apache HADOOP HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) jako domyślnego magazynu danych
 
 [1]: ../HDInsight/hadoop/apache-hadoop-visual-studio-tools-get-started.md
 

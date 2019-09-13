@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 7c3f72c3ce6acfb63e682b479519dba02a9900eb
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 618931c3a45fcb25b2a9221ea3f6069e9ff11de5
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844899"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933203"
 ---
 # <a name="implement-iot-spatial-analytics-using-azure-maps"></a>Implementowanie analizy przestrzennej IoT przy użyciu Azure Maps
 
@@ -104,7 +104,7 @@ Aby wykonać kroki opisane w tym samouczku, musisz najpierw utworzyć grupę zas
 
 ### <a name="create-an-azure-maps-account"></a>Tworzenie konta usługi Azure Maps 
 
-Aby zaimplementować logikę biznesową na podstawie Azure Maps analiz przestrzennych, należy utworzyć konto Azure Maps w utworzonej grupie zasobów. Postępuj zgodnie z instrukcjami podanymi w artykule [Zarządzanie kontem](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys) , aby utworzyć subskrypcję konta usługi Azure Maps przy użyciu warstwy cenowej S1 i wyświetlić [szczegóły dotyczące uwierzytelniania](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication#view-authentication-details) , aby dowiedzieć się, jak uzyskać klucz subskrypcji.
+Aby zaimplementować logikę biznesową na podstawie Azure Maps analiz przestrzennych, należy utworzyć konto Azure Maps w utworzonej grupie zasobów. Postępuj zgodnie z instrukcjami w sekcji [Zarządzanie kontem](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) , aby utworzyć subskrypcję konta usługi Azure Maps z warstwą cenową S1, a następnie wykonaj kroki opisane w sekcji [Uzyskiwanie klucza podstawowego](./tutorial-search-location.md#getkey) , aby uzyskać podstawowy klucz subskrypcji dla konta.
 
 
 ### <a name="create-a-storage-account"></a>Tworzenie konta magazynu
@@ -167,7 +167,7 @@ Otwórz aplikację Poster i postępuj zgodnie z poniższymi instrukcjami, aby pr
     
     Wartość "GEOJSON" dla `dataFormat` parametru w ścieżce URL reprezentuje Format przekazywanych danych.
 
-3. Kliknij pozycję **Params** (Parametry), a następnie wprowadź poniższą parę klucz-wartość, która będzie używana w przypadku adresu URL żądania POST. Zastąp wartość subscription-key swoim kluczem subskrypcji usługi Azure Maps.
+3. Kliknij pozycję **Params** (Parametry), a następnie wprowadź poniższą parę klucz-wartość, która będzie używana w przypadku adresu URL żądania POST. Zastąp wartość klucza subskrypcji kluczową subskrypcją Azure Maps.
    
     ![Parametry klucz-wartość narzędzia Postman](./media/tutorial-iot-hub-maps/postman-key-vals.png)
 
@@ -224,7 +224,7 @@ Azure Functions to bezserwerowa usługa obliczeniowa, która umożliwia uruchami
 6. Skopiuj [kod c#](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx) do funkcji, a następnie kliknij przycisk **Zapisz**.
  
 7. W skrypcie języka c# Zastąp następujące parametry:
-    * Zastąp **SUBSCRIPTION_KEY** kluczem subskrypcji konta usługi Azure Maps.
+    * Zastąp **SUBSCRIPTION_KEY** kluczem podstawowej subskrypcji konta Azure Maps.
     * Zastąp **UDID** z UDIDem przekazana geoogrodzenia, 
     * Funkcja **CreateBlobAsync** w skrypcie tworzy obiekt BLOB dla zdarzenia na koncie magazynu danych. Zastąp wartość **ACCESS_KEY**, **ACCOUNT_NAME** i **STORAGE_CONTAINER_NAME** kluczem dostępu do konta magazynu oraz nazwą konta i kontenerem magazynu danych.
 

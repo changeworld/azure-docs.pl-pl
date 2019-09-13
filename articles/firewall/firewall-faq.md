@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: victorh
-ms.openlocfilehash: 119f28bcc4f88f0b4dc0ce65584dbce326087eba
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: da5880d27e5dd51d3a5f90b7cd6cf2e7dec50f89
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114776"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932747"
 ---
 # <a name="azure-firewall-faq"></a>Często zadawane pytania dotyczące zapory platformy Azure
 
@@ -88,7 +88,7 @@ Zobacz [Cennik usługi Azure firewall](https://azure.microsoft.com/pricing/detai
 
 Można użyć Azure PowerShell *alokacji* i *alokacji* metod.
 
-Przykład:
+Na przykład:
 
 ```azurepowershell
 # Stop an existing firewall
@@ -150,6 +150,9 @@ Skonfigurowanie * **. contoso.com**umożliwia *anyvalue*. contoso.com, ale nie c
 ## <a name="what-does-provisioning-state-failed-mean"></a>Co to *jest stan aprowizacji: Co* się nie powiodło?
 
 Za każdym razem, gdy stosowana jest zmiana konfiguracji, Zapora platformy Azure próbuje zaktualizować wszystkie jej bazowe wystąpienia zaplecza. W rzadkich przypadkach nie można zaktualizować jednego z tych wystąpień zaplecza przy użyciu nowej konfiguracji, a proces aktualizacji zostanie zatrzymany z nieprawidłowym stanem aprowizacji. Zapora platformy Azure nadal działa, ale zastosowana konfiguracja może być w niespójnym stanie, w którym niektóre wystąpienia mają poprzednią konfigurację, gdzie inne mają zaktualizowany zestaw reguł. W takim przypadku spróbuj zaktualizować konfigurację jeszcze raz, dopóki operacja się nie powiedzie, a Zapora *zakończyła się pomyślnie* .
+
+### <a name="how-does-azure-firewall-handle-planned-maintenance-and-unplanned-failures"></a>Jak Zapora platformy Azure obsługuje planowaną konserwację i nieplanowane błędy?
+Zapora platformy Azure składa się z kilku węzłów zaplecza w konfiguracji aktywne-aktywne.  W przypadku każdej planowanej konserwacji mamy do bezpiecznego aktualizowania węzłów opróżnianie logiki.  Aktualizacje są planowane w godzinach poza godzinami pracy dla każdego regionu platformy Azure w celu dodatkowego ograniczenia ryzyka zakłócenia.  W przypadku nieplanowanych problemów tworzymy nowy węzeł, który zastąpi węzeł zakończony niepowodzeniem.  Połączenie z nowym węzłem jest zwykle ponownie nawiązane w ciągu 10 sekund od momentu awarii.
 
 ## <a name="is-there-a-character-limit-for-a-firewall-name"></a>Czy istnieje limit znaków nazwy zapory?
 

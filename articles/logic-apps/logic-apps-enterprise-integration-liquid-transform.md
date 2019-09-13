@@ -1,6 +1,6 @@
 ---
-title: Konwertujące dane JSON przy użyciu transformacji Liquid — Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Utwórz przekształcenia lub mapy dla zaawansowanych transformacji JSON za pomocą aplikacji logiki i płynnych szablonu
+title: Konwertowanie danych JSON przy użyciu transformacji płynnej — Azure Logic Apps | Microsoft Docs
+description: Tworzenie transformacji lub map dla zaawansowanych przekształceń JSON przy użyciu szablonu Logic Apps i płynu
 services: logic-apps
 ms.service: logic-apps
 author: divyaswarnkar
@@ -9,35 +9,35 @@ ms.reviewer: estfan, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 08/16/2018
-ms.openlocfilehash: 5472a8ce2670a34174d6d39f0d90faca8a7002ad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 203c57a2755a3287566a774e2878a87b847337b9
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61467527"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900656"
 ---
-# <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Wykonywać zaawansowane przekształceń JSON i łącznika Liquid szablonów w usłudze Azure Logic Apps
+# <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Wykonaj zaawansowane przekształcenia JSON przy użyciu szablonów płynnych w Azure Logic Apps
 
-Można wykonać podstawowe przekształceń JSON w aplikacjach logiki, za pomocą danych natywnych operacji akcji takich jak **Compose** lub **Przeanalizuj dane JSON**. Wykonywanie zaawansowanych przekształceń JSON, można utworzyć szablony lub mapy za pomocą [Liquid](https://shopify.github.io/liquid/), który jest językiem szablonu typu open source dla aplikacji sieci web elastyczne. Płynne szablon definiuje sposób przekształcania danych wyjściowych JSON i obsługuje bardziej złożonych przekształceń JSON, takich jak iteracji przepływów sterowania, zmienne i tak dalej. 
+W aplikacjach logiki można wykonywać podstawowe przekształcenia JSON z akcjami operacji danych natywnych, takimi jak **Redaguj** lub **Analizuj dane JSON**. Aby przeprowadzić zaawansowane przekształcenia JSON, możesz tworzyć szablony lub mapy z [płynnością](https://shopify.github.io/liquid/), czyli językiem szablonu Open-Source dla elastycznych aplikacji sieci Web. Szablon płynu definiuje sposób przekształcania danych wyjściowych JSON i obsługuje bardziej złożone przekształcenia JSON, takie jak iteracje, przepływy sterowania, zmienne i tak dalej. 
 
-Zanim będzie można wykonywać przekształcenia Liquid w aplikacji logiki, należy najpierw zdefiniować za pomocą pliku JSON do formatu JSON mapowania przy użyciu szablonu płynne i magazynu, które mapują na koncie integracji. W tym artykule przedstawiono sposób tworzenia i używania tego szablonu Liquid lub mapy. 
+Aby można było wykonać transformację płynną w aplikacji logiki, należy najpierw zdefiniować mapowanie JSON na format JSON z szablonem płynnym i sklepem, który jest mapowany na koncie integracji. W tym artykule przedstawiono sposób tworzenia i używania tego szablonu lub mapy ciekłej. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, możesz [rozpocząć pracę z bezpłatnym kontem platformy Azure](https://azure.microsoft.com/free/). Ewentualnie [logowania do subskrypcji płatności](https://azure.microsoft.com/pricing/purchase-options/).
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, możesz [rozpocząć pracę z bezpłatnym kontem platformy Azure](https://azure.microsoft.com/free/). Możesz też [zarejestrować się, aby uzyskać subskrypcję z opcją płatność zgodnie z rzeczywistym](https://azure.microsoft.com/pricing/purchase-options/)użyciem.
 
-* Podstawową wiedzę na temat o [sposób tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Podstawowa wiedza [na temat tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Podstawowy [konta integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
+* Podstawowe [konto integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 
-* Podstawową wiedzę na temat o [język Liquid szablonu.](https://shopify.github.io/liquid/)
+* Podstawowa wiedza na temat [języka z szablonem płynnym.](https://shopify.github.io/liquid/)
 
-## <a name="create-liquid-template-or-map-for-your-integration-account"></a>Tworzenie płynnych szablon lub mapy dla konta integracji
+## <a name="create-liquid-template-or-map-for-your-integration-account"></a>Utwórz szablon płynny lub mapę dla konta integracji
 
-1. W tym przykładzie należy utworzyć przykładowy szablon Liquid opisane w tym kroku. W szablonie Liquid służy [filtry cieczy](https://shopify.github.io/liquid/basics/introduction/#filters), wykorzystującymi [DotLiquid](https://dotliquidmarkup.org/) i C# konwencji nazewnictwa. 
+1. Na potrzeby tego przykładu Utwórz przykładowy szablon płynny opisany w tym kroku. W szablonie płynnym można używać [filtrów ciekłych](https://shopify.github.io/liquid/basics/introduction/#filters), które używają [DotLiquid](https://dotliquidmarkup.org/) i C# konwencji nazewnictwa. 
 
    > [!NOTE]
-   > Upewnij się, użyj nazwy filtru *zasad stosowania wielkich liter* w szablonie. W przeciwnym razie filtry nie będzie działać.
+   > Upewnij się, że nazwy filtrów używają *wielkości liter* w szablonie. W przeciwnym razie filtry nie będą działały.
 
    ```json
    {%- assign deviceList = content.devices | Split: ', ' -%}
@@ -58,76 +58,76 @@ Zanim będzie można wykonywać przekształcenia Liquid w aplikacji logiki, nale
    }
    ```
 
-2. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). W głównym menu platformy Azure, wybierz **wszystkie zasoby**. W polu wyszukiwania Znajdź i wybierz swoje konto integracji.
+2. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). W głównym menu platformy Azure wybierz pozycję **wszystkie zasoby**. W polu wyszukiwania Znajdź i wybierz swoje konto integracji.
 
    ![Wybierz konto integracji](./media/logic-apps-enterprise-integration-liquid-transform/select-integration-account.png)
 
-3.  W obszarze **składniki**, wybierz opcję **mapy**.
+3.  W obszarze **składniki**wybierz pozycję **Maps**.
 
-    ![Wybierz mapy](./media/logic-apps-enterprise-integration-liquid-transform/add-maps.png)
+    ![Wybieranie map](./media/logic-apps-enterprise-integration-liquid-transform/add-maps.png)
 
-4. Wybierz **Dodaj** i Podaj te szczegóły dla mapy:
+4. Wybierz pozycję **Dodaj** i podaj następujące szczegóły dotyczące mapy:
 
-   | Właściwość | Wartość | Opis | 
+   | Właściwość | Value | Opis | 
    |----------|-------|-------------|
-   | **Nazwa** | JsonToJsonTemplate | Nazwa mapy, czyli "JsonToJsonTemplate" w tym przykładzie | 
-   | **Typ mapowania** | **liquid** | Typ mapy. Dla formatu JSON do formatu JSON transformacji, musisz wybrać **liquid**. | 
-   | **Mapy** | "SimpleJsonToJsonTemplate.liquid" | Istniejącego Liquid szablon lub mapy pliku na potrzeby przekształcania, czyli "SimpleJsonToJsonTemplate.liquid" w tym przykładzie. Aby znaleźć ten plik, można użyć selektora plików. |
+   | **Nazwa** | JsonToJsonTemplate | Nazwa mapy, która jest w tym przykładzie "JsonToJsonTemplate" | 
+   | **Typ mapy** | **obrotow** | Typ mapy. W przypadku transformacji JSON do formatu JSON należy wybrać pozycję **Liquid**. | 
+   | **Zmapować** | "SimpleJsonToJsonTemplate.liquid" | Istniejący szablon płynu lub plik mapy do użycia na potrzeby transformacji, czyli "SimpleJsonToJsonTemplate. Liquid" w tym przykładzie. Aby znaleźć ten plik, można użyć selektora plików. |
    ||| 
 
-   ![Dodaj szablon liquid](./media/logic-apps-enterprise-integration-liquid-transform/add-liquid-template.png)
+   ![Dodaj szablon płynny](./media/logic-apps-enterprise-integration-liquid-transform/add-liquid-template.png)
     
-## <a name="add-the-liquid-action-for-json-transformation"></a>Dodaj akcję Liquid dla transformacji JSON
+## <a name="add-the-liquid-action-for-json-transformation"></a>Dodawanie akcji ciekłej dla transformacji JSON
 
-1. W witrynie Azure portal, wykonaj następujące kroki, aby [Tworzenie pustej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+1. W Azure Portal wykonaj następujące kroki, aby [utworzyć pustą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-2. W Projektancie aplikacji logiki Dodaj [wyzwalacza żądania](../connectors/connectors-native-reqres.md#use-the-http-request-trigger) do aplikacji logiki.
+2. W Projektancie aplikacji logiki Dodaj [wyzwalacz żądania](../connectors/connectors-native-reqres.md#add-request) do aplikacji logiki.
 
-3. W obszarze wyzwalacza wybierz **nowy krok**. 
-   W polu wyszukiwania wprowadź "cieczy" jako filtr i wybierz następującą akcję: **Przekształć JSON do formatu JSON — cieczy**
+3. W obszarze wyzwalacza wybierz pozycję **nowy krok**. 
+   W polu wyszukiwania wprowadź "Liquid" jako filtr, a następnie wybierz tę akcję: **Przekształć JSON do formatu JSON-Liquid**
 
-   ![Znajdowanie i wybieranie akcji Liquid](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
+   ![Znajdź i wybierz akcję ciekłej](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
 
-4. Kliknij wewnątrz **zawartości** tak, aby wyświetlić listę zawartości dynamicznej, a wybierz **treści** tokenu.
+4. Kliknij wewnątrz pola **zawartość** , aby wyświetlić listę zawartości dynamicznej, a następnie wybierz pozycję token **treści** .
   
-   ![Wybieranie treści](./media/logic-apps-enterprise-integration-liquid-transform/select-body.png)
+   ![Wybierz treść](./media/logic-apps-enterprise-integration-liquid-transform/select-body.png)
  
-5. Z **mapy** , wybierz szablon Liquid "JsonToJsonTemplate" znajduje się w tym przykładzie na liście.
+5. Z listy **Mapa** wybierz swój szablon płynny, czyli "JsonToJsonTemplate" w tym przykładzie.
 
-   ![Wybierz mapę](./media/logic-apps-enterprise-integration-liquid-transform/select-map.png)
+   ![Wybieranie mapy](./media/logic-apps-enterprise-integration-liquid-transform/select-map.png)
 
-   Jeśli lista mapy jest pusta, najprawdopodobniej aplikacja logiki nie jest połączony z kontem integracji. 
-   Aby połączyć aplikację logiki z kontem integracji, które ma Liquid szablon lub mapy, wykonaj następujące kroki:
+   Jeśli lista Maps jest pusta, najprawdopodobniej Twoja aplikacja logiki nie jest połączona z kontem integracji. 
+   Aby połączyć aplikację logiki z kontem integracji, które ma szablon lub mapę płynną, wykonaj następujące kroki:
 
-   1. W menu aplikacji logiki, wybierz **ustawienia przepływu pracy**.
+   1. W menu aplikacji logiki wybierz pozycję **Ustawienia przepływu pracy**.
 
-   2. Z **wybierz konto integracji** wybierz swoje konto integracji i wybierz polecenie **Zapisz**.
+   2. Na liście **Wybierz konto integracji** wybierz swoje konto integracji i wybierz pozycję **Zapisz**.
 
       ![Połącz aplikację logiki z kontem integracji](./media/logic-apps-enterprise-integration-liquid-transform/link-integration-account.png)
 
-## <a name="test-your-logic-app"></a>Przetestuj aplikację logiki
+## <a name="test-your-logic-app"></a>Testowanie aplikacji logiki
 
-Wpis w danych wejściowych JSON do aplikacji logiki z [Postman](https://www.getpostman.com/postman) lub podobnego narzędzia. Przekształcone dane wyjściowe JSON z aplikacji logiki będzie wyglądać następująco:
+Wyślij dane wejściowe JSON do aplikacji logiki z [](https://www.getpostman.com/postman) programu Poster lub podobnego narzędzia. Przekształcone dane wyjściowe JSON z aplikacji logiki wyglądają podobnie jak w tym przykładzie:
   
 ![Przykładowe dane wyjściowe](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontojson.png)
 
-## <a name="more-liquid-action-examples"></a>Więcej przykładów akcji Liquid
-Cieczy nie jest ograniczona do tylko przekształceń JSON i łącznika. Poniżej przedstawiono inne akcje dostępnych transformacji, korzystających z płynnych.
+## <a name="more-liquid-action-examples"></a>Więcej przykładowych akcji w postaci ciekłej
+Płyn nie jest ograniczony tylko do transformacji JSON. Oto inne dostępne akcje transformacji, które używają cieczy.
 
 * Przekształć JSON do tekstu
   
-  Oto Liquid szablon używany w tym przykładzie:
+  Oto szablon płynu używany do tego przykładu:
    
    ``` json
    {{content.firstName | Append: ' ' | Append: content.lastName}}
    ```
    Poniżej przedstawiono przykładowe dane wejściowe i wyjściowe:
   
-   ![Przykładowe dane wyjściowe JSON do tekstu](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontotext.png)
+   ![Przykład danych wyjściowych JSON do tekstu](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontotext.png)
 
 * Przekształć element XML do formatu JSON
   
-  Oto Liquid szablon używany w tym przykładzie:
+  Oto szablon płynu używany do tego przykładu:
    
    ``` json
    [{% JSONArrayFor item in content -%}
@@ -136,11 +136,11 @@ Cieczy nie jest ograniczona do tylko przekształceń JSON i łącznika. Poniżej
    ```
    Poniżej przedstawiono przykładowe dane wejściowe i wyjściowe:
 
-   ![Przykładowe dane wyjściowe XML do formatu JSON](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltojson.png)
+   ![Przykład danych wyjściowych XML do formatu JSON](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltojson.png)
 
-* Przekształć element XML do tekstu
+* Przekształć XML do tekstu
   
-  Oto Liquid szablon używany w tym przykładzie:
+  Oto szablon płynu używany do tego przykładu:
 
    ``` json
    {{content.firstName | Append: ' ' | Append: content.lastName}}
@@ -148,10 +148,10 @@ Cieczy nie jest ograniczona do tylko przekształceń JSON i łącznika. Poniżej
 
    Poniżej przedstawiono przykładowe dane wejściowe i wyjściowe:
 
-   ![Przykładowe dane wyjściowe XML do tekstu](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltotext.png)
+   ![Przykład danych wyjściowych XML do tekstu](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltotext.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Dowiedz się więcej na temat pakietu integracyjnego dla przedsiębiorstw](../logic-apps/logic-apps-enterprise-integration-overview.md "więcej informacji na temat pakietu integracyjnego dla przedsiębiorstw")  
-* [Dowiedz się więcej na temat map](../logic-apps/logic-apps-enterprise-integration-maps.md "Dowiedz się więcej na temat map integracji przedsiębiorstw")  
+* [Dowiedz się więcej o pakiet integracyjny dla przedsiębiorstw] (../logic-apps/logic-apps-enterprise-integration-overview.md "Dowiedz się więcej o pakiet integracyjny dla przedsiębiorstw")  
+* [Dowiedz się więcej o mapach] (../logic-apps/logic-apps-enterprise-integration-maps.md "Dowiedz się więcej na temat map integracji przedsiębiorstwa")  
 

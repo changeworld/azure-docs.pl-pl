@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 66fa7c2f61af250e4b63b67f6941bed768bd94c4
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 03b279e6193c55141b80a5fadc9d39c7c1681006
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69541903"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915149"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Samouczek: Tworzenie modułów usługi IoT Edge dla urządzeń z systemem Windows
 
@@ -194,13 +194,13 @@ Przykładowy C# kod, który jest dostarczany z szablonem projektu, używa [klasy
 
 6. Znajdź właściwość **modules** $edgeAgent żądanych właściwości. 
 
-   W tym miejscu powinny znajdować się dwa moduły. Pierwszy to **tempSensor**, który jest domyślnie zawarty we wszystkich szablonach, aby zapewnić symulowane dane temperatury, których można użyć do testowania modułów. Drugim jest moduł **IotEdgeModule1** , który został utworzony w ramach tego projektu.
+   W tym miejscu powinny znajdować się dwa moduły. Pierwszy to **SimulatedTemperatureSensor**, który jest domyślnie zawarty we wszystkich szablonach, aby zapewnić symulowane dane temperatury, których można użyć do testowania modułów. Drugim jest moduł **IotEdgeModule1** , który został utworzony w ramach tego projektu.
 
    Ta właściwość modułów deklaruje, które moduły mają być uwzględnione we wdrożeniu na urządzeniu lub urządzeniach. 
 
 7. Znajdź właściwość **routes** $edgeHub żądanych właściwości. 
 
-   Jedna z funkcji, jeśli moduł IoT Edge Hub ma kierować komunikaty między wszystkimi modułami w ramach wdrożenia. Sprawdź wartości we właściwości trasy. Pierwsza trasa, **IotEdgeModule1ToIoTHub**, używa znaku wieloznacznego ( **\*** ), aby dołączyć komunikat pochodzący z kolejki wyjściowej w module IotEdgeModule1. Te komunikaty przechodzą do *$upstream*, która jest nazwą zastrzeżoną, która wskazuje IoT Hub. Druga trasa, **sensorToIotEdgeModule1**, pobiera komunikaty pochodzące z modułu tempSensor i kieruje je do kolejki wejściowej *INPUT1* modułu IotEdgeModule1. 
+   Jedna z funkcji, jeśli moduł IoT Edge Hub ma kierować komunikaty między wszystkimi modułami w ramach wdrożenia. Sprawdź wartości we właściwości trasy. Pierwsza trasa, **IotEdgeModule1ToIoTHub**, używa znaku wieloznacznego ( **\*** ), aby dołączyć komunikat pochodzący z kolejki wyjściowej w module IotEdgeModule1. Te komunikaty przechodzą do *$upstream*, która jest nazwą zastrzeżoną, która wskazuje IoT Hub. Druga trasa, **sensorToIotEdgeModule1**, pobiera komunikaty pochodzące z modułu SimulatedTemperatureSensor i kieruje je do kolejki wejściowej *INPUT1* modułu IotEdgeModule1. 
 
    ![Przejrzyj trasy w pliku Deployment. Template. JSON](./media/tutorial-develop-for-windows/deployment-routes.png)
 
@@ -284,14 +284,14 @@ Sprawdzono, że skompilowane obrazy kontenerów są przechowywane w rejestrze ko
 
 4. Rozwiń szczegóły urządzenia IoT Edge w programie Cloud Explorer, aby wyświetlić moduły na urządzeniu.
 
-5. Użyj przycisku **Odśwież** , aby zaktualizować stan urządzenia, aby zobaczyć, że moduły TempSensor i IotEdgeModule1 zostały wdrożone na urządzeniu. 
+5. Użyj przycisku **Odśwież** , aby zaktualizować stan urządzenia, aby zobaczyć, że moduły SimulatedTemperatureSensor i IotEdgeModule1 zostały wdrożone na urządzeniu. 
 
 
    ![Wyświetlanie modułów uruchomionych na urządzeniu IoT Edge](./media/tutorial-develop-for-windows/view-running-modules.png)
 
 ## <a name="view-messages-from-device"></a>Wyświetl komunikaty z urządzenia
 
-Kod IotEdgeModule1 odbiera wiadomości za pomocą swojej kolejki wejściowej i przekazuje je wraz z kolejką wyjściową. Manifest wdrożenia zadeklarowany tras, które przekazały komunikaty z tempSensor do IotEdgeModule1, a następnie przesyłają dalej komunikaty z IotEdgeModule1 do IoT Hub. Narzędzia Azure IoT Edge Tools for Visual Studio umożliwiają wyświetlanie komunikatów, które docierają do IoT Hub z poszczególnych urządzeń. 
+Kod IotEdgeModule1 odbiera wiadomości za pomocą swojej kolejki wejściowej i przekazuje je wraz z kolejką wyjściową. Manifest wdrożenia zadeklarowany tras, które przekazały komunikaty z SimulatedTemperatureSensor do IotEdgeModule1, a następnie przesyłają dalej komunikaty z IotEdgeModule1 do IoT Hub. Narzędzia Azure IoT Edge Tools for Visual Studio umożliwiają wyświetlanie komunikatów, które docierają do IoT Hub z poszczególnych urządzeń. 
 
 1. W programie Visual Studio Cloud Explorer wybierz nazwę urządzenia IoT Edge, które zostało wdrożone. 
 
@@ -315,7 +315,7 @@ Polecenia w tej sekcji dotyczą urządzenia IoT Edge, a nie komputera dewelopers
    iotedge list
    ```
 
-   Powinny być widoczne cztery moduły: dwa IoT Edge moduły środowiska uruchomieniowego, tempSensor i IotEdgeModule1. Wszystkie cztery powinny być wymienione jako uruchomione.
+   Powinny być widoczne cztery moduły: dwa IoT Edge moduły środowiska uruchomieniowego, SimulatedTemperatureSensor i IotEdgeModule1. Wszystkie cztery powinny być wymienione jako uruchomione.
 
 * Inspekcja dzienników dla określonego modułu:
 
@@ -325,7 +325,7 @@ Polecenia w tej sekcji dotyczą urządzenia IoT Edge, a nie komputera dewelopers
 
    W modułach IoT Edge jest rozróżniana wielkość liter. 
 
-   Dzienniki tempSensor i IotEdgeModule1 powinny zawierać komunikaty, które są przetwarzane. Moduł edgeAgent jest odpowiedzialny za uruchamianie innych modułów, więc jego dzienniki zawierają informacje dotyczące implementowania manifestu wdrożenia. Jeśli którykolwiek moduł nie jest wyświetlany lub nie jest uruchomiony, dzienniki edgeAgent prawdopodobnie będą miały błędy. Moduł edgeHub jest odpowiedzialny za komunikację między modułami i IoT Hub. Jeśli moduły są uruchomione, ale komunikaty nie docierają do centrum IoT, dzienniki edgeHub prawdopodobnie będą miały błędy. 
+   Dzienniki SimulatedTemperatureSensor i IotEdgeModule1 powinny zawierać komunikaty, które są przetwarzane. Moduł edgeAgent jest odpowiedzialny za uruchamianie innych modułów, więc jego dzienniki zawierają informacje dotyczące implementowania manifestu wdrożenia. Jeśli którykolwiek moduł nie jest wyświetlany lub nie jest uruchomiony, dzienniki edgeAgent prawdopodobnie będą miały błędy. Moduł edgeHub jest odpowiedzialny za komunikację między modułami i IoT Hub. Jeśli moduły są uruchomione, ale komunikaty nie docierają do centrum IoT, dzienniki edgeHub prawdopodobnie będą miały błędy. 
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: 6be97e3a94a10097e53863577da5bf9c6cde5ea0
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 6cac4bd05f2acf5b11a8235a4bc1e0d09e0c4dc7
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734899"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885936"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Samouczek: Konfigurowanie zasad platformy Apache Kafka w usłudze HDInsight przy użyciu pakietu Enterprise Security (wersja zapoznawcza)
 
@@ -64,7 +64,7 @@ Utwórz zasady platformy Ranger dla użytkowników **sales_user** i **marketing_
    * „*” oznacza zero lub więcej wystąpień znaków.
    * „?” oznacza pojedynczy znak.
 
-   ![Interfejs użytkownika administratora platformy Apache Ranger — tworzenie zasad](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)
+   ![Interfejs użytkownika administratora Apache Ranger — tworzenie Policy1](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)
 
    Zaczekaj kilka minut na zsynchronizowanie platformy Ranger z usługą Azure AD, jeśli użytkownik domeny nie zostanie automatycznie wypełniony dla ustawienia **Select User** (Wybierz użytkownika).
 
@@ -79,7 +79,7 @@ Utwórz zasady platformy Ranger dla użytkowników **sales_user** i **marketing_
    |Select User (Wybierz użytkownika)  |  marketing_user1 |
    |Uprawnienia  | publish, consume, create |
 
-   ![Interfejs użytkownika administratora platformy Apache Ranger — tworzenie zasad](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy-2.png)  
+   ![Interfejs użytkownika administratora Apache Ranger — tworzenie Policy2](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy-2.png)  
 
 6. Wybierz pozycję **Dodaj** , aby zapisać zasady.
 

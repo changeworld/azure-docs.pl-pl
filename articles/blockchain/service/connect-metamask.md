@@ -1,6 +1,6 @@
 ---
-title: MetaMask nawiązać połączenie z siecią Azure Blockchain Service
-description: Łączenie z siecią Azure Blockchain Service przy użyciu MetaMask i wdróż inteligentne kontraktu.
+title: Podłącz maskę do sieci usługi Azure łańcucha bloków Service
+description: Nawiązywanie połączenia z siecią usługi Azure łańcucha bloków przy użyciu funkcji dbmask i wdrażanie kontraktu inteligentnego.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
@@ -10,73 +10,73 @@ ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: db029cee6edcd14d29c83964e5bf75aa45077e7e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 5b46c5b2e8f613d351442fdf3c8ae5ee2198f2da
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026900"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933986"
 ---
-# <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>Szybki start: Umożliwia MetaMask łącz się i wdrażaj inteligentne kontraktu
+# <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>Szybki start: Łączenie i wdrażanie kontraktu inteligentnego przy użyciu klasy dbmask
 
-W tym przewodniku Szybki Start użyjesz MetaMask połączenie z siecią Azure Blockchain Service i użyj Remix, aby wdrożyć inteligentne kontraktu. Metamask to rozszerzenie przeglądarki do zarządzania portfela Ether i wykonywać akcje inteligentne kontraktu.
+W tym przewodniku szybki start użyjemy do łączenia się z siecią usługi Azure łańcucha bloków i używania Remix do wdrażania kontraktu inteligentnego. Dbmask to rozszerzenie przeglądarki umożliwiające zarządzanie portfelem eteru i wykonywanie akcji inteligentnych kontraktu.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Tworzenie elementu członkowskiego temat aplikacji Azure Blockchain](create-member.md)
-* Zainstaluj [MetaMask rozszerzenia przeglądarki](https://metamask.io)
-* Generowanie MetaMask [portfela](https://metamask.zendesk.com/hc/en-us/articles/360015488971-New-to-MetaMask-Learn-How-to-Setup-MetaMask-the-First-Time)
+* Pełny [Przewodnik Szybki Start: Utwórz składową łańcucha bloków przy użyciu Azure Portal](create-member.md) lub [szybkiego startu: Tworzenie członka usługi Azure łańcucha bloków Service łańcucha bloków przy użyciu interfejsu wiersza polecenia platformy Azure](create-member-cli.md)
+* Zainstaluj [rozszerzenie przeglądarki Xmlmask](https://metamask.io)
+* Generowanie [portfela](https://metamask.zendesk.com/hc/en-us/articles/360015488971-New-to-MetaMask-Learn-How-to-Setup-MetaMask-the-First-Time) z maską
 
-## <a name="get-endpoint-address"></a>Pobieranie adresu punktu końcowego
+## <a name="get-endpoint-address"></a>Pobierz adres punktu końcowego
 
-Potrzebujesz adresu punktu końcowego usługi Azure Service łańcuch bloków do połączenia z siecią łańcucha bloków. Adres i kluczy dostępu punktu końcowego można znaleźć w witrynie Azure portal.
+Do nawiązania połączenia z siecią łańcucha bloków potrzebny jest adres punktu końcowego usługi Azure łańcucha bloków. Adres punktu końcowego i klucze dostępu można znaleźć w Azure Portal.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Przejdź do elementu członkowskiego usługi Azure Service łańcucha bloków. Wybierz **węzłów transakcji** i domyślne łącze węzła transakcji.
+1. Przejdź do elementu członkowskiego usługi Azure łańcucha bloków. Wybierz pozycję **węzły transakcji** i domyślne łącze węzła transakcji.
 
-    ![Wybierz węzeł transakcji domyślne](./media/connect-metamask/transaction-nodes.png)
+    ![Wybierz domyślny węzeł transakcji](./media/connect-metamask/transaction-nodes.png)
 
-1. Wybierz **parametry połączenia > klucze dostępu**.
-1. Kopiuj adres punktu końcowego z **HTTPS (klucz dostępu 1)**. Potrzebujesz adresu do następnej sekcji.
+1. Wybierz **Parametry połączenia > klucze dostępu**.
+1. Skopiuj adres punktu końcowego z **protokołu HTTPS (dostęp do klucza 1)** . Potrzebujesz adresu dla następnej sekcji.
 
     ![Parametry połączenia](./media/connect-metamask/connection-string.png)
 
-## <a name="connect-metamask"></a>Połącz MetaMask
+## <a name="connect-metamask"></a>Łączenie z maską
 
-1. Otwórz MetaMask rozszerzenia przeglądarki i zaloguj się.
-1. Na liście rozwijanej sieci wybierz **RPC niestandardowe**.
+1. Otwórz rozszerzenie przeglądarki dbmask i zaloguj się.
+1. Z listy rozwijanej sieć wybierz pozycję **niestandardowe wywołanie RPC**.
 
-    ![Niestandardowe RPC](./media/connect-metamask/custom-rpc.png)
+    ![Niestandardowe wywołanie RPC](./media/connect-metamask/custom-rpc.png)
 
-1. W **nową sieć > adres URL nowego RPC**, wprowadź adres punktu końcowego skopiowane z poprzedniej sekcji.
+1. W obszarze **nowy > sieciowej nowy adres URL usługi RPC**wprowadź adres punktu końcowego skopiowany z poprzedniej sekcji.
 1. Wybierz pozycję **Zapisz**.
 
-    Jeśli połączenie zakończyło się pomyślnie, sieci prywatnej jest wyświetlany na liście rozwijanej sieci.
+    Jeśli połączenie zakończyło się pomyślnie, Sieć prywatna zostanie wyświetlona na liście rozwijanej sieć.
 
-    ![Nową sieć](./media/connect-metamask/new-network.png)
+    ![Nowa sieć](./media/connect-metamask/new-network.png)
 
-## <a name="deploy-smart-contract"></a>Wdrażanie inteligentne kontraktu
+## <a name="deploy-smart-contract"></a>Wdrażanie kontraktu inteligentnego
 
-Remix to środowisko programistyczne, przeglądarki trwałość. Przy użyciu MetaMask i Remix razem, należy wdrożyć i podejmuj działania na kontraktów inteligentnych.
+Remix to środowisko programistyczne oparte na przeglądarce. Korzystając z funkcji dbmasking i remix, możesz wdrażać i podejmować działania dotyczące inteligentnych umów.
 
 1. W przeglądarce przejdź do `https://remix.ethereum.org`.
 1. Wybierz pozycję **Uruchom**. 
 
-    Zestawy MetaMask swoje **środowiska** do **wprowadzony sieci Web 3** i **konta** do sieci.
+    Maska usuwania ustawia swoje **środowisko** do **dodania Web3** i **konta** do sieci.
 
-    ![Karta Uruchamianie](./media/connect-metamask/injected-web3.png)
+    ![Karta przebieg](./media/connect-metamask/injected-web3.png)
 
-1. Wybierz **Utwórz nowy plik**.
+1. Wybierz pozycję **Utwórz nowy plik**.
 
-    Nadaj nowemu plikowi `simple.sol`.
+    Nazwij nowy plik `simple.sol`.
 
     ![Utwórz plik](./media/connect-metamask/create-file.png)
 
     Kliknij przycisk **OK**.
 
-1. W edytorze Remix Wklej następujące **proste kontraktu inteligentne** kodu.
+1. W edytorze Remix wklej następujący **prosty kod kontraktu inteligentnego** .
 
     ```solidity
     pragma solidity ^0.5.0;
@@ -98,53 +98,53 @@ Remix to środowisko programistyczne, przeglądarki trwałość. Przy użyciu Me
     }
     ```
 
-    **Proste kontraktu** deklaruje zmienną stanu o nazwie **Saldo**. Istnieją dwie funkcje zdefiniowane. **Dodaj** funkcja dodaje numer **Saldo**. **Uzyskać** funkcja zwraca wartość **Saldo**.
+    **Prosta umowa** deklaruje zmienną stanu o nazwie **Saldo**. Zdefiniowano dwie funkcje. Funkcja **Dodaj** dodaje liczbę do **zrównoważenia**. Funkcja **Get** zwraca wartość **Saldo**.
 
-1. Aby skompilować kontrakt, wybierz **kompilacji > Uruchom, aby skompilować**. Jeśli to się powiedzie, jest wyświetlane zielone pole z nazwą kontraktu.
+1. Aby skompilować kontrakt, wybierz **kompilację, > rozpocząć Kompilowanie**. Jeśli to się powiedzie, zostanie wyświetlony zielony prostokąt z nazwą kontraktu.
 
-    ![Kompilowanie](./media/connect-metamask/compile.png)
+    ![Kompilacji](./media/connect-metamask/compile.png)
 
-1. Do wykonania kontrakt, wybierz **Uruchom** kartę. Wybierz **proste** kontraktu następnie **Wdróż**.
+1. Aby wykonać kontrakt, wybierz kartę **uruchomienie** . Wybierz kontrakt **prosty** , a następnie **Wdróż**.
 
-    ![Niestandardowe RPC](./media/connect-metamask/deploy.png)
+    ![Niestandardowe wywołanie RPC](./media/connect-metamask/deploy.png)
 
-1. Wyświetlane jest powiadomienie MetaMask wysyłać alerty funduszy niewystarczające do wykonania transakcji.
+1. Zostanie wyświetlone powiadomienie o niewystarczającej masce do wykonania transakcji.
 
-    Dla sieci publicznego łańcucha bloków będziesz potrzebować Ether płacić za koszty transakcji. Ponieważ jest to w konsorcjum sieci prywatnej, można ustawić cenę gazu do zera.
+    W przypadku sieci publicznej łańcucha bloków należy ponieść Eter, aby płacić za koszt transakcji. Ponieważ jest to sieć prywatna w konsorcjum, można ustawić cenę gazu na zero.
 
-1.  Wybierz **opłata gaz > Edytuj > Zaawansowane**ustaw **cenę gazu** na 0.
+1.  Wybierz pozycję **opłata za gaz > edytuj > zaawansowane**, ustaw **cenę gazu** na 0.
 
     ![Cena gazu](./media/connect-metamask/gas-price.png)
 
     Wybierz pozycję **Zapisz**.
 
-1. Wybierz **Potwierdź** do wdrożenia inteligentne kontraktu łańcucha bloków.
-1. W **wdrożone umów** sekcji, a następnie rozwiń **proste** kontraktu.
+1. Wybierz pozycję **Potwierdź** , aby wdrożyć kontrakt inteligentny do łańcucha bloków.
+1. W sekcji **wdrożone kontrakty** rozwiń pozycję **prosty** kontrakt.
 
-    ![Wdrożone kontraktu](./media/connect-metamask/deployed-contract.png)
+    ![Wdrożony kontrakt](./media/connect-metamask/deployed-contract.png)
 
-    Istnieją dwie akcje **Dodaj** i **uzyskać** mapowania funkcji zdefiniowanych w kontrakcie.
+    Istnieją dwie akcje, które umożliwiają **Dodawanie** i **pobieranie** mapy do funkcji zdefiniowanych w kontrakcie.
 
-1. Aby wykonać **Dodaj** transakcji z łańcucha bloków, wprowadź liczbę, aby dodać, a następnie wybierz pozycję **Dodaj**.
-1. Podobnie jak podczas wdrażania kontrakt, MetaMask wyświetlane jest powiadomienie wysyłać alerty funduszy niewystarczające do wykonania transakcji.
+1. Aby wykonać operację **Dodaj** transakcję na łańcucha bloków, wprowadź liczbę, która ma zostać dodana, a następnie wybierz pozycję **Dodaj**.
+1. Podobnie jak w przypadku wdrożenia kontraktu, wyświetlane jest powiadomienie o niewystarczającej masce do wykonania transakcji.
 
-    Ponieważ jest to w konsorcjum sieci prywatnej, możemy ustawić cenę gazu na zero.
+    Ponieważ jest to sieć prywatna w ramach konsorcjum, można ustawić cenę gazu na zero.
 
-1.  Wybierz **opłata gaz > Edytuj > Zaawansowane**ustaw **cenę gazu** na 0, a następnie wybierz **Zapisz**.
-1. Wybierz **Potwierdź** do wykonania transakcji z łańcucha bloków.
-1. Wybierz **uzyskać** akcji. To wywołanie zapytania o dane węzła. Transakcja nie jest wymagane.
-1. W okienku debugowanie Remix można wyświetlić szczegółowe informacje o transakcji na łańcucha bloków.
+1.  Wybierz pozycję **opłata za gaz > edytuj > zaawansowane**, ustaw **cenę gazu** na 0, a następnie wybierz pozycję **Zapisz**.
+1. Wybierz pozycję **Potwierdź** , aby wykonać transakcję w łańcucha bloków.
+1. Wybierz pozycję **Pobierz** akcję. Jest to wywołanie do zapytania o dane węzła. Transakcja nie jest wymagana.
+1. W okienku debugowanie elementu Remix można zobaczyć szczegóły dotyczące transakcji w łańcucha bloków.
 
-    ![Debugowanie historii](./media/connect-metamask/debug.png)
+    ![Historia debugowania](./media/connect-metamask/debug.png)
 
-    Możesz zobaczyć **proste** tworzenia transakcji dla kontraktu **simple.add**i wywołanie **simple.get**.
+    Możesz zobaczyć **proste** tworzenie kontraktu, transakcję dla **prostego. Dodaj**i Wywołaj metodę **Simple. Get**.
 
-1. Widać również historii transakcji w MetaMask. Otwórz MetaMask rozszerzenia przeglądarki.
-1. W **historii** sekcji, możesz zobaczyć dziennik transakcji i wdrożone kontraktu.
+1. Możesz również wyświetlić historię transakcji w ramach maski. Otwórz rozszerzenie przeglądarki z maską.
+1. W sekcji **historia** można zobaczyć dziennik wdrożonego kontraktu i transakcji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki Start MetaMask rozszerzenia przeglądarki jest używane do łączenia się z węzłem transakcji usługi Azure Service łańcucha bloków, wdrażanie inteligentne kontraktu i wysyłać transakcji łańcucha bloków. Spróbuj następnego samouczka, aby wdrożyć i wysłać transakcji za pomocą Truffle.
+W tym przewodniku szybki start użyto rozszerzenia Browser masking do nawiązania połączenia z węzłem transakcji usługi Azure łańcucha bloków, wdrożenia kontraktu inteligentnego i wysłania transakcji do łańcucha bloków. Skorzystaj z następnego samouczka, aby użyć zestawu Azure łańcucha bloków Development Kit dla Ethereum i Truffle do tworzenia, kompilowania, wdrażania i wykonywania funkcji kontraktu inteligentnego za pośrednictwem transakcji.
 
 > [!div class="nextstepaction"]
-> [Wyślij transakcji](send-transaction.md)
+> [Używanie Visual Studio Code do tworzenia, kompilowania i wdrażania kontraktów inteligentnych](send-transaction.md)

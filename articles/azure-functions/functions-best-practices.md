@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 19e088eee878695d24678d1df17b2848a4be1e01
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2782781fdfd560c0c8f322e362fcf74c796664bd
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097535"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933058"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optymalizacja wydajności i niezawodności Azure Functions
 
 Ten artykuł zawiera wskazówki dotyczące poprawy wydajności i niezawodności aplikacji funkcji bezserwerowych. [](https://azure.microsoft.com/solutions/serverless/) 
 
-## <a name="general-best-practices"></a>Ogólne najlepsze rozwiązania
+## <a name="general-best-practices"></a>Ogólne najlepsze praktyki
 
 Poniżej przedstawiono najlepsze rozwiązania w zakresie kompilowania i tworzenia architektury rozwiązań bezserwerowych przy użyciu Azure Functions.
 
@@ -36,7 +36,7 @@ Jeśli to możliwe, Refaktoryzacja duże funkcje do mniejszych zestawów funkcji
 
 ### <a name="cross-function-communication"></a>Komunikacja między funkcjami
 
-[Durable Functions](durable/durable-functions-concepts.md) i [Azure Logic Apps](../logic-apps/logic-apps-overview.md) są kompilowane do zarządzania przejściami stanu i komunikacją między wieloma funkcjami.
+[Durable Functions](durable/durable-functions-overview.md) i [Azure Logic Apps](../logic-apps/logic-apps-overview.md) są kompilowane do zarządzania przejściami stanu i komunikacją między wieloma funkcjami.
 
 Jeśli nie korzystasz z Durable Functions lub Logic Apps do integracji z wieloma funkcjami, najlepszym rozwiązaniem jest użycie kolejek usługi Storage do komunikacji między funkcjami.  Głównym powodem jest to, że kolejki magazynu są tańsze i łatwiejsze do aprowizacji. 
 

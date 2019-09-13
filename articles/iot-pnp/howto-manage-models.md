@@ -8,12 +8,12 @@ services: iot-pnp
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: yahajiza
-ms.openlocfilehash: ec36bef9c2b65a5c88a52621bbf3a1db708c235c
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 1b71d8bd0f0417c7dc408c580a1c73ac654743ce
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69880503"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932858"
 ---
 # <a name="manage-models-in-the-repository"></a>Zarządzanie modelami w repozytorium
 
@@ -41,7 +41,7 @@ W [portalu Azure Certified for IoT](https://preview.catalog.azureiotsolutions.co
 
 ## <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-Interfejs wiersza polecenia platformy Azure umożliwia zarządzanie modelami możliwości urządzeń i interfejsami w usłudze IoT Plug and Play repozytoria modelu publicznego i firmy.
+Interfejs wiersza polecenia platformy Azure umożliwia zarządzanie modelami możliwości urządzeń i interfejsami w usłudze IoT Plug and Play repozytoria modelu publicznego i firmy. Aby uzyskać więcej informacji, zobacz Przewodnik dotyczący [instalacji i używania rozszerzenia Azure IoT dla interfejsu wiersza polecenia platformy Azure](./howto-install-pnp-cli.md) .
 
 ## <a name="visual-studio-code"></a>Visual Studio Code
 

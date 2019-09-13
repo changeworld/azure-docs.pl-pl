@@ -8,15 +8,15 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
-ms.author: sstein
+ms.author: sashan
 ms.reviewer: carlrab
-ms.date: 08/29/2019
-ms.openlocfilehash: cdbc79ca6764dd49f427b395dbaf8502c58bf63a
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.date: 09/04/2019
+ms.openlocfilehash: de56e66046bb61ac31c1842ae6ce7a9c6720760d
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173430"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934199"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Kopiowanie spójnej transakcyjnie kopii bazy danych Azure SQL Database
 
@@ -24,7 +24,7 @@ Azure SQL Database oferuje kilka metod tworzenia spójnej i niefunkcjonalnej kop
 
 ## <a name="overview"></a>Omówienie
 
-Kopia bazy danych jest migawką źródłowej bazy danych w czasie żądania kopiowania. Możesz wybrać ten sam serwer lub inny serwer. Można również wybrać opcję utrzymania warstwy usługi i rozmiaru obliczeń lub użyć innego rozmiaru obliczeniowego w ramach tej samej warstwy usług (Edition). Po zakończeniu kopiowania zostanie ona w pełni funkcjonalna, niezależna baza danych. W tym momencie można go uaktualnić lub zmienić na starszą wersję. Logowania, użytkownicy i uprawnienia mogą być zarządzane niezależnie. Kopia jest tworzona przy użyciu technologii replikacji geograficznej, a po zakończeniu umieszczania zostanie wykonane automatyczne działanie łącza replikacji geograficznej. Wszystkie wymagania dotyczące korzystania z replikacji geograficznej dotyczą operacji kopiowania bazy danych. Szczegółowe informacje znajdują się w temacie [Omówienie aktywnej replikacji](sql-database-active-geo-replication.md) geograficznej.
+Kopia bazy danych jest migawką źródłowej bazy danych w czasie żądania kopiowania. Możesz wybrać ten sam serwer lub inny serwer. Można również wybrać opcję utrzymania warstwy usługi i rozmiaru obliczeń lub użyć innego rozmiaru obliczeniowego w ramach tej samej warstwy usług (Edition). Po zakończeniu kopiowania zostanie ona w pełni funkcjonalna, niezależna baza danych. W tym momencie można go uaktualnić lub zmienić na starszą wersję. Logowania, użytkownicy i uprawnienia mogą być zarządzane niezależnie. Kopia jest tworzona przy użyciu technologii replikacji geograficznej, a po zakończeniu umieszczania zostanie wykonane automatyczne działanie łącza replikacji geograficznej. Wszystkie wymagania dotyczące korzystania z replikacji geograficznej dotyczą operacji kopiowania bazy danych. Szczegółowe informacje znajdują się w temacie [Omówienie aktywnej replikacji geograficznej](sql-database-active-geo-replication.md) .
 
 > [!NOTE]
 > [Automatyczne kopie zapasowe bazy danych](sql-database-automated-backups.md) są używane podczas tworzenia kopii bazy danych.
@@ -72,7 +72,8 @@ Aby utworzyć kopię bazy danych, musisz mieć następujące role:
 - SQL Server rolę współautor lub
 - Rola niestandardowa w źródłowej i docelowej bazie danych z następującymi uprawnieniami:
 
-   Microsoft. SQL/serwery/bazy danych/Odczyt Microsoft. SQL/serwery/bazy danych/zapis
+   Microsoft.Sql/servers/databases/read   
+   Microsoft.Sql/servers/databases/write   
 
 Aby anulować kopię bazy danych, musisz mieć następujące role:
 
@@ -80,7 +81,23 @@ Aby anulować kopię bazy danych, musisz mieć następujące role:
 - SQL Server rolę współautor lub
 - Rola niestandardowa w źródłowej i docelowej bazie danych z następującymi uprawnieniami:
 
-   Microsoft. SQL/serwery/bazy danych/Odczyt Microsoft. SQL/serwery/bazy danych/zapis
+   Microsoft.Sql/servers/databases/read   
+   Microsoft.Sql/servers/databases/write   
+   
+Aby zarządzać kopią bazy danych przy użyciu Azure Portal, potrzebne są również następujące uprawnienia:
+
+&nbsp;&nbsp; Microsoft.resources/subscriptions&nbsp; /sources/Read   
+&nbsp;&nbsp; Microsoft.resources/subscriptions/&nbsp; Resources/Write   
+&nbsp;&nbsp; Microsoft.resources&nbsp; /Deployments/Read   
+&nbsp;&nbsp; Microsoft.resources&nbsp; /Deployments/Write   
+&nbsp;&nbsp; Microsoft.resources/Deployments&nbsp; /operationstatuses/Read    
+
+Jeśli chcesz zobaczyć operacje w obszarze wdrożenia w grupie zasobów portalu, operacje między wieloma dostawcami zasobów, w tym operacje SQL, będą potrzebne następujące dodatkowe role RBAC: 
+
+&nbsp;&nbsp; Microsoft.resources/subscriptions/ResourceGroups/Deployments&nbsp; /Operations/Read   
+&nbsp;&nbsp; Microsoft.resources/subscriptions/ResourceGroups/Deployments&nbsp; /operationstatuses/Read
+
+
 
 ## <a name="copy-a-database-by-using-transact-sql"></a>Kopiowanie bazy danych przy użyciu języka Transact-SQL
 
@@ -122,7 +139,7 @@ Możesz użyć kroków opisanych w poprzedniej sekcji, aby skopiować bazę dany
 
 Monitoruj proces kopiowania, wykonując zapytania dotyczące widoków sys. databases i sys. DM _database_copies. Gdy kopiowanie jest w toku, kolumna **state_desc** widoku sys. databases dla nowej bazy danych jest ustawiona do **kopiowania**.
 
-* Jeśli kopiowanie nie powiedzie się, kolumna **state_desc** widoku sys. databases dla nowej bazy danych jest ustawionana podejrzane. Wykonaj instrukcję DROP w nowej bazie danych i spróbuj ponownie później.
+* Jeśli kopiowanie nie powiedzie się, kolumna **state_desc** widoku sys. databases dla nowej bazy danych jest ustawiona na **podejrzane**. Wykonaj instrukcję DROP w nowej bazie danych i spróbuj ponownie później.
 * Jeśli kopiowanie powiedzie się, kolumna **state_desc** widoku sys. databases dla nowej bazy danych jest ustawiona na **online**. Kopiowanie zostało ukończone, a nowa baza danych jest zwykłą bazą danych, która może zostać zmieniona niezależnie od źródłowej bazy danych.
 
 > [!NOTE]

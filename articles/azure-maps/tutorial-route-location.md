@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: fd75ca1fbad358e80a2c040b5ead8c50611489e2
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 52355a8896f4891e99d07e2b4106cede77a1f8df
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478871"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916204"
 ---
 # <a name="route-to-a-point-of-interest-using-azure-maps"></a>Znajdowanie trasy do punktu orientacyjnego przy użyciu usługi Azure Maps
 
@@ -27,7 +27,7 @@ W tym samouczku pokazano, jak używać konta usługi Azure Maps i zestawu Route 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed kontynuowaniem wykonaj kroki poprzedniego samouczka, aby [utworzyć konto usługi Azure Maps](./tutorial-search-location.md#createaccount), a następnie [pobierz klucz subskrypcji dla swojego konta](./tutorial-search-location.md#getkey).
+Przed kontynuowaniem postępuj zgodnie z instrukcjami podanymi w sekcji [Zarządzanie kontem](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) , aby utworzyć subskrypcję konta usługi Azure Maps za pomocą warstwy cenowej S1, a następnie wykonaj kroki opisane w sekcji [Uzyskiwanie klucza podstawowego](./tutorial-search-location.md#getkey) , aby uzyskać podstawowy klucz subskrypcji dla konta.
 
 <a id="getcoordinates"></a>
 
@@ -209,7 +209,7 @@ W tej sekcji pokazano, jak używać interfejsu API usługi Route Azure Maps do z
 
     ![Kontrolka mapy platformy Azure i usługa Route Service](./media/tutorial-route-location/map-route.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

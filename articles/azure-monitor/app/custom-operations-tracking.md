@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/30/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 45eebe5bce819fa59f2ed6779e845afa6b3efaa5
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 34658fb1db84ff09a4c3d22ea95f5bfc7384721d
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276854"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883643"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Śledzenie operacji niestandardowych przy użyciu zestawu SDK platformy Application Insights .NET
 
@@ -125,7 +125,10 @@ public class ApplicationInsightsMiddleware : OwinMiddleware
 Protokół HTTP dla korelacji deklaruje `Correlation-Context` również nagłówek. Jest to jednak pomijane w tym miejscu dla uproszczenia.
 
 ## <a name="queue-instrumentation"></a>Instrumentacja kolejki
-[W przypadku protokołu HTTP dla korelacji](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md) aby przekazać szczegóły korelacji z żądaniem http, każdy protokół kolejki musi określać, jak te same szczegóły są przekazywane wzdłuż komunikatu kolejki. Niektóre protokoły kolejek (takie jak AMQP) umożliwiają przekazywanie dodatkowych metadanych i niektórych innych (takich jak Kolejka usługi Azure Storage) Wymagaj kodowania kontekstu do ładunku komunikatów.
+Chociaż istnieją [konteksty śledzenia W3C](https://www.w3.org/TR/trace-context/) i [protokół HTTP dla korelacji](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md) do przekazywania szczegółów korelacji z żądaniem http, każdy protokół kolejki musi określać, jak te same szczegóły są przekazywane wzdłuż komunikatu kolejki. Niektóre protokoły kolejek (takie jak AMQP) umożliwiają przekazywanie dodatkowych metadanych i niektórych innych (takich jak Kolejka usługi Azure Storage) Wymagaj kodowania kontekstu do ładunku komunikatów.
+
+> [!NOTE]
+> * **Śledzenie między składnikami nie jest jeszcze obsługiwane w przypadku kolejek** W przypadku protokołu HTTP, jeśli producent i konsument wysyłają dane telemetryczne do różnych zasobów Application Insights, środowisko diagnostyki transakcji i mapa aplikacji pokazują transakcje i zamapowane na zakończenie. W przypadku kolejek to nie jest jeszcze obsługiwane. 
 
 ### <a name="service-bus-queue"></a>Kolejka usługi Service Bus
 Application Insights śledzi połączenia Service Bus komunikatów z nowym [klientem Microsoft Azure ServiceBus dla platformy .NET w](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/) wersji 3.0.0 lub nowszej.
@@ -142,7 +145,8 @@ public async Task Enqueue(string payload)
     // StartOperation is a helper method that initializes the telemetry item
     // and allows correlation of this operation with its parent and children.
     var operation = telemetryClient.StartOperation<DependencyTelemetry>("enqueue " + queueName);
-    operation.Telemetry.Type = "Queue";
+    
+    operation.Telemetry.Type = "Azure Service Bus";
     operation.Telemetry.Data = "Enqueue " + queueName;
 
     var message = new BrokeredMessage(payload);
@@ -179,7 +183,7 @@ public async Task Process(BrokeredMessage message)
 {
     // After the message is taken from the queue, create RequestTelemetry to track its processing.
     // It might also make sense to get the name from the message.
-    RequestTelemetry requestTelemetry = new RequestTelemetry { Name = "Dequeue " + queueName };
+    RequestTelemetry requestTelemetry = new RequestTelemetry { Name = "process " + queueName };
 
     var rootId = message.Properties["RootId"].ToString();
     var parentId = message.Properties["ParentId"].ToString();
@@ -228,7 +232,7 @@ Ten przykład pokazuje, `Enqueue` jak śledzić operację. Możesz:
 public async Task Enqueue(CloudQueue queue, string message)
 {
     var operation = telemetryClient.StartOperation<DependencyTelemetry>("enqueue " + queue.Name);
-    operation.Telemetry.Type = "Queue";
+    operation.Telemetry.Type = "Azure queue";
     operation.Telemetry.Data = "Enqueue " + queue.Name;
 
     // MessagePayload represents your custom message and also serializes correlation identifiers into payload.
@@ -274,38 +278,18 @@ Aby zmniejszyć ilość danych telemetrycznych raportowanych przez aplikację lu
 #### <a name="dequeue"></a>Z kolejki
 `Enqueue`Podobnie, rzeczywiste żądanie HTTP do kolejki magazynu jest automatycznie śledzone przez Application Insights. `Enqueue` Jednakże operacja powinna być wykonywana w kontekście nadrzędnym, takim jak kontekst żądania przychodzącego. Application Insights zestawy SDK automatycznie skorelowane takie operacje (i ich części protokołu HTTP) z żądaniem nadrzędnym i inną telemetrię raportowaną w tym samym zakresie.
 
-Operacja `Dequeue` jest w tej samej lewie. Zestaw Application Insights SDK automatycznie śledzi żądania HTTP. Jednak nie wie kontekstu korelacji do momentu przeanalizowania komunikatu. Nie można skorelować żądania HTTP, aby uzyskać komunikat z resztą telemetrii.
-
-W wielu przypadkach warto również skorelować żądanie HTTP do kolejki z innymi śladami. Poniższy przykład ilustruje, jak to zrobić:
+Operacja `Dequeue` jest w tej samej lewie. Zestaw Application Insights SDK automatycznie śledzi żądania HTTP. Jednak nie wie kontekstu korelacji do momentu przeanalizowania komunikatu. Nie można skorelować żądania HTTP, aby uzyskać komunikat z resztą danych telemetrycznych, zwłaszcza w przypadku otrzymania więcej niż jednego komunikatu.
 
 ```csharp
 public async Task<MessagePayload> Dequeue(CloudQueue queue)
 {
-    var telemetry = new DependencyTelemetry
-    {
-        Type = "Queue",
-        Name = "Dequeue " + queue.Name
-    };
-
-    telemetry.Start();
-
+    var operation = telemetryClient.StartOperation<DependencyTelemetry>("dequeue " + queue.Name);
+    operation.Telemetry.Type = "Azure queue";
+    operation.Telemetry.Data = "Dequeue " + queue.Name;
+    
     try
     {
         var message = await queue.GetMessageAsync();
-
-        if (message != null)
-        {
-            var payload = JsonConvert.DeserializeObject<MessagePayload>(message.AsString);
-
-            // If there is a message, we want to correlate the Dequeue operation with processing.
-            // However, we will only know what correlation ID to use after we get it from the message,
-            // so we will report telemetry after we know the IDs.
-            telemetry.Context.Operation.Id = payload.RootId;
-            telemetry.Context.Operation.ParentId = payload.ParentId;
-
-            // Delete the message.
-            return payload;
-        }
     }
     catch (StorageException e)
     {
@@ -317,8 +301,7 @@ public async Task<MessagePayload> Dequeue(CloudQueue queue)
     finally
     {
         // Update status code and success as appropriate.
-        telemetry.Stop();
-        telemetryClient.TrackDependency(telemetry);
+        telemetryClient.StopOperation(operation);
     }
 
     return null;
@@ -333,7 +316,8 @@ W poniższym przykładzie komunikat przychodzący jest śledzony w sposób podob
 public async Task Process(MessagePayload message)
 {
     // After the message is dequeued from the queue, create RequestTelemetry to track its processing.
-    RequestTelemetry requestTelemetry = new RequestTelemetry { Name = "Dequeue " + queueName };
+    RequestTelemetry requestTelemetry = new RequestTelemetry { Name = "process " + queueName };
+    
     // It might also make sense to get the name from the message.
     requestTelemetry.Context.Operation.Id = message.RootId;
     requestTelemetry.Context.Operation.ParentId = message.ParentId;
@@ -368,8 +352,15 @@ W przypadku usuwania komunikatów z Instrumentacji upewnij się, że ustawisz id
 - `Activity`Zatrzymaj.
 - Użyj `Start/StopOperation`lub ręcznie Wywołaj `Track` dane telemetryczne.
 
+### <a name="dependency-types"></a>Typy zależności
+
+Application Insights używa typu zależności do Cusomize środowiska interfejsu użytkownika. W przypadku kolejek rozpoznaje następujące typy `DependencyTelemetry` , które zwiększają [możliwości diagnostyki transakcji](/azure-monitor/app/transaction-diagnostics):
+- `Azure queue`w przypadku kolejek usługi Azure Storage
+- `Azure Event Hubs`dla usługi Azure Event Hubs
+- `Azure Service Bus`dla Azure Service Bus
+
 ### <a name="batch-processing"></a>Przetwarzanie wsadowe
-W przypadku niektórych kolejek można usunąć z kolejki wiele komunikatów z jednym żądaniem. Przetwarzanie takich komunikatów jest uznawane za niezależne i należy do różnych operacji logicznych. W takim przypadku nie jest możliwe skorelowanie `Dequeue` operacji do określonego przetwarzania komunikatów.
+W przypadku niektórych kolejek można usunąć z kolejki wiele komunikatów z jednym żądaniem. Przetwarzanie takich komunikatów jest uznawane za niezależne i należy do różnych operacji logicznych. Nie jest możliwe skorelowanie `Dequeue` operacji z przetworzonym komunikatem.
 
 Każdy komunikat powinien być przetwarzany we własnym przepływie kontroli asynchronicznej. Aby uzyskać więcej informacji, zobacz sekcję [Śledzenie zależności wychodzących](#outgoing-dependencies-tracking) .
 
@@ -442,7 +433,7 @@ public async Task RunMyTaskAsync()
 
 Operacja usuwania powoduje zatrzymanie operacji, więc można ją wykonać, a nie wywołując `StopOperation`.
 
-*Ostrzeżenie*: w niektórych przypadkach wyjątek [niedozwolony](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-finally) `finally` może nie być wywoływany, więc operacje mogą nie być śledzone.
+*Ostrzeżenie*: w niektórych przypadkach wyjątek niedozwolony [](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-finally) `finally` może nie być wywoływany, więc operacje mogą nie być śledzone.
 
 ### <a name="parallel-operations-processing-and-tracking"></a>Równoległe przetwarzanie operacji i śledzenie
 
@@ -494,8 +485,9 @@ Każda operacja Application Insights (żądanie lub zależność) obejmuje `Acti
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Poznaj podstawy [korelacji telemetrii](correlation.md) w Application Insights.
+- Poznaj podstawy korelacji [](correlation.md) telemetrii w Application Insights.
+- Sprawdź, jak skorelowane dane mają wpływ na [środowisko diagnostyki transakcji](/azure-monitor/app/transaction-diagnostics) i [mapę aplikacji](/azure-monitor/app/app-map).
 - Zobacz [model danych](../../azure-monitor/app/data-model.md) dla typów Application Insights i modelu danych.
 - Zgłoś niestandardowe [zdarzenia i metryki](../../azure-monitor/app/api-custom-events-metrics.md) do Application Insights.
-- Zapoznaj się z [konfiguracją](configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet) standardową dla kolekcji właściwości kontekstu.
+- Zapoznaj się [](configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet) z konfiguracją standardową dla kolekcji właściwości kontekstu.
 - Sprawdź [Przewodnik użytkownika System. Diagnostics. Activity](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) , aby zobaczyć, jak skorelować dane telemetryczne.

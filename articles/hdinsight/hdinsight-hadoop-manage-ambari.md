@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: d0641a1c058db59acd5e9a64b10bb57b334f82bd
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 3ca9c12caa7fa9b54cd63c2655166d95477dffa2
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442065"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885269"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Zarządzanie klastrami usługi HDInsight przy użyciu interfejsu użytkownika sieci Web Apache Ambari
 
@@ -76,7 +76,7 @@ Alerty inne niż **OK** powodują wyświetlenie liczby alertów w pozycji **# al
 
 Alerty są zorganizowane w kilka domyślnych grup, które mogą być wyświetlane na stronie **alerty** .
 
-![Strona alerty](./media/hdinsight-hadoop-manage-ambari/alerts.png)
+![Strona alerty](./media/hdinsight-hadoop-manage-ambari/hdinsight-alerts-page.png)
 
 Grupami można zarządzać za pomocą menu **Akcje** i wybierając pozycję **Zarządzaj grupami alertów**.
 
@@ -92,13 +92,13 @@ Na koniec wybranie opcji __Zarządzaj ustawieniami alertów__ z menu __Akcje__ p
 
 Karta **metryki** pulpitu nawigacyjnego zawiera serię elementów widget, które ułatwiają szybkie monitorowanie stanu klastra. Kilka widżetów, takich jak **użycie procesora CPU**, udostępnia dodatkowe informacje po kliknięciu.
 
-![Pulpit nawigacyjny z metrykami](./media/hdinsight-hadoop-manage-ambari/metrics.png)
+![Pulpit nawigacyjny z metrykami](./media/hdinsight-hadoop-manage-ambari/hdi-metrics-dashboard.png)
 
 Na karcie **map cieplnych** są wyświetlane metryki jako kolorowe map cieplnych, które przechodzą z koloru zielonego na czerwony.
 
-![Pulpit nawigacyjny z map cieplnych](./media/hdinsight-hadoop-manage-ambari/heatmap.png)
+![Pulpit nawigacyjny z map cieplnych](./media/hdinsight-hadoop-manage-ambari/hdi-heatmap-dashboard.png)
 
-Aby uzyskać więcej informacji na temat węzłów w klastrze, wybierz pozycję hosty. Następnie wybierz konkretny wybrany węzeł.
+Aby uzyskać więcej informacji na temat węzłów w klastrze, wybierz pozycję **hosty**. Następnie wybierz konkretny wybrany węzeł.
 
 ![Szczegóły hosta](./media/hdinsight-hadoop-manage-ambari/host-details.png)
 
@@ -133,16 +133,16 @@ Wybranie dowolnego z tych linków spowoduje otwarcie nowej karty w przeglądarce
 
 ### <a name="ambari-users-groups-and-permissions"></a>Ambari użytkownicy, grupy i uprawnienia
 
-Praca z użytkownikami, grupami i uprawnieniami jest obsługiwana w przypadku korzystania z klastra usługi HDInsight przyłączonego do [domeny](./domain-joined/hdinsight-security-overview.md) . Aby uzyskać informacje na temat korzystania z interfejsu użytkownika zarządzania Ambari w klastrze przyłączonym do domeny, zobacz [Zarządzanie przyłączonymi do domeny klastrami usługi HDInsight](./domain-joined/hdinsight-security-overview.md).
+Praca z użytkownikami, grupami i uprawnieniami jest obsługiwana w przypadku korzystania z klastra usługi HDInsight [przyłączonego do domeny](./domain-joined/hdinsight-security-overview.md) . Aby uzyskać informacje na temat korzystania z interfejsu użytkownika zarządzania Ambari w klastrze przyłączonym do domeny, zobacz [Zarządzanie przyłączonymi do domeny klastrami usługi HDInsight](./domain-joined/hdinsight-security-overview.md).
 
 > [!WARNING]  
 > Nie należy zmieniać hasła licznika Ambari (hdinsightwatchdog) w klastrze usługi HDInsight opartym na systemie Linux. Zmiana hasła zrywa możliwość korzystania z akcji skryptu lub wykonywania operacji skalowania w klastrze.
 
 ### <a name="hosts"></a>Hosty
 
-Na  stronie hosty są wyświetlane wszystkie hosty w klastrze. Aby zarządzać hostami, wykonaj następujące kroki.
+Na stronie **hosty** są wyświetlane wszystkie hosty w klastrze. Aby zarządzać hostami, wykonaj następujące kroki.
 
-![Strona hosts](./media/hdinsight-hadoop-manage-ambari/hosts.png)
+![Strona hosts](./media/hdinsight-hadoop-manage-ambari/hdinsight-hosts-page.png)
 
 > [!NOTE]  
 > Dodawanie, likwidowanie i relikwidowanie hosta nie powinno być używane z klastrami usługi HDInsight.

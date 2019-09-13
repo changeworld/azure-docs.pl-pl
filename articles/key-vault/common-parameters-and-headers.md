@@ -1,34 +1,34 @@
 ---
 title: Typowe parametry i nagłówki
-description: Parametry i nagłówki wspólne dla wszystkich operacji, które może wykonywać związane z zasobami usługi Key Vault.
+description: Parametry i nagłówki wspólne dla wszystkich operacji, które mogą być powiązane z Key Vault zasobami.
 services: key-vault
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 01ac02ca0e449dcac8fcd05450566fd8138acba3
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 7ec8e1df71e6513b13e9c37174a3363471be01d9
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "64696686"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879268"
 ---
 # <a name="common-parameters-and-headers"></a>Typowe parametry i nagłówki
 
-Wspólne dla wszystkich operacji, które może wykonywać związane z zasobami usługi Key Vault są następujące informacje:
+Następujące informacje są wspólne dla wszystkich operacji, które mogą być powiązane z Key Vault zasobami:
 
-- Zastąp `{api-version}` z wersją interfejsu api w identyfikatorze URI.
-- Zastąp `{subscription-id}` identyfikatorem subskrypcji, w identyfikatorze URI
-- Zastąp `{resource-group-name}` z grupą zasobów. Aby uzyskać więcej informacji zobacz Używanie grup zasobów do zarządzania zasobami platformy Azure.
-- Zastąp `{vault-name}` nazwą magazynu kluczy w identyfikatorze URI.
-- Ustaw nagłówek Content-Type application/json.
-- Ustaw nagłówek autoryzacji JSON Web Token uzyskany z usługi Azure Active Directory (AAD). Aby uzyskać więcej informacji, zobacz [uwierzytelniania usługi Azure Resource Manager](authentication-requests-and-responses.md) żądań.
+- Zamień `{api-version}` na wersję interfejsu API w identyfikatorze URI.
+- Zamień `{subscription-id}` na identyfikator subskrypcji w identyfikatorze URI
+- Zamień `{resource-group-name}` na grupę zasobów. Aby uzyskać więcej informacji, zobacz Używanie grup zasobów do zarządzania zasobami platformy Azure.
+- Zamień `{vault-name}` na nazwę magazynu kluczy w identyfikatorze URI.
+- Ustaw nagłówek Content-Type na wartość Application/JSON.
+- Ustaw nagłówek autoryzacji na token sieci Web JSON uzyskany z Azure Active Directory (AAD). Aby uzyskać więcej informacji, zobacz [uwierzytelnianie żądań Azure Resource Manager](authentication-requests-and-responses.md) .
 
-## <a name="common-error-response"></a>Odpowiedzi na typowe błąd
-Kody stanu HTTP będzie używane przez usługę do wskazania powodzenia lub niepowodzenia. Ponadto błędy zawierają odpowiedzi w następującym formacie:
+## <a name="common-error-response"></a>Częsta odpowiedź na błąd
+Usługa będzie używać kodów stanu HTTP, aby wskazać powodzenie lub niepowodzenie. Ponadto błędy zawierają odpowiedź w następującym formacie:
 
 ```
    {  
@@ -39,12 +39,12 @@ Kody stanu HTTP będzie używane przez usługę do wskazania powodzenia lub niep
    }  
 ```
 
-|Nazwa elementu | Typ | Opis |
+|Nazwa elementu | Type | Opis |
 |---|---|---|
-| code | string | Typ błędu, który wystąpił.|
-| message | string | Opis co było przyczyną błędu. |
+| code | ciąg | Typ błędu, który wystąpił.|
+| message | ciąg | Opis przyczyny błędu. |
 
 
 
 ## <a name="see-also"></a>Zobacz też
- [Dokumentacja interfejsu API REST usługi Azure Key Vault](/rest/api/keyvault/)
+ [Dokumentacja interfejsu API REST Azure Key Vault](/rest/api/keyvault/)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: bwren
-ms.openlocfilehash: 126d96cbd85f4e91de5a6393be02a15240b51ade
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: e8fd49781301406e0c35e1de57cea3040167c6c3
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035583"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915864"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Portal pakietu OMS przeniesiony do platformy Azure
 
@@ -50,7 +50,7 @@ Chociaż większość funkcji będzie nadal działać bez konieczności przeprow
 Zapoznaj się z [typowymi pytaniami dotyczącymi przejścia z portalu pakietu OMS w celu Azure Portal log Analytics użytkowników,](oms-portal-faq.md) Aby uzyskać informacje o sposobach przejścia do Azure Portal. 
 
 ## <a name="user-access-and-role-migration"></a>Migracja dostępu użytkowników i ról
-Azure Portal zarządzanie dostępem jest bogatsze i wydajniejsze niż zarządzanie dostępem w portalu pakietu OMS. Aby uzyskać szczegółowe informacje na temat zarządzania dostępem w programie Log Analytics, zobacz [projektowanie obszaru roboczego dzienników Azure Monitor] Design-Logs-deployment.md).
+Azure Portal zarządzanie dostępem jest bogatsze i wydajniejsze niż zarządzanie dostępem w portalu pakietu OMS. Aby uzyskać szczegółowe informacje na temat zarządzania dostępem w programie Log Analytics, zobacz temat [projektowanie obszaru roboczego dzienniki Azure monitor](design-logs-deployment.md) .
 
 > [!NOTE]
 > W poprzednich wersjach tego artykułu określono, że uprawnienia zostaną automatycznie skonwertowane z portalu pakietu OMS do Azure Portal. Ta Automatyczna konwersja nie jest już planowana i należy wykonać konwersję samodzielnie.

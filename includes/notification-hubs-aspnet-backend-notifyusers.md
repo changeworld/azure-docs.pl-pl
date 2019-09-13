@@ -5,15 +5,15 @@ services: notification-hubs
 author: spelluru
 ms.service: notification-hubs
 ms.topic: include
-ms.date: 03/22/2019
+ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 590ba4b7a61fa437767d99ac6b9ae3e0fa94edc3
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 60d5d8efb10cce54743038599238cc6f61922369
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227804"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934098"
 ---
 ## <a name="create-the-webapi-project"></a>Tworzenie projektu interfejsu WebAPI
 
@@ -59,7 +59,7 @@ Utwórz nowe zaplecze interfejsu WebAPI na platformie ASP.NET, wykonując nastę
 
     ![Okno Konfigurowanie aplikacji internetowej platformy Microsoft Azure][B5]
 
-    Jeśli nie widzisz tę stronę w celu skonfigurowania plan usługi app service, przejdź do samouczka. Możesz skonfigurować tak, podczas publikowania aplikacji później. 
+    Jeśli nie widzisz tej strony na potrzeby konfigurowania planu usługi App Service, przejdź do samouczka. Można go skonfigurować podczas późniejszego publikowania aplikacji. 
 
 ## <a name="authenticate-clients-to-the-webapi-backend"></a>Uwierzytelnianie klientów w zapleczu interfejsu WebAPI
 
@@ -185,6 +185,9 @@ W tej sekcji dodajesz nowy kontroler do zaplecza interfejsu WebAPI w celu obsłu
         }
     }
     ```
+    > [!IMPORTANT]
+    > Aby kontynuować, wprowadź **nazwę** i **DefaultFullSharedAccessSignature** centrum. 
+    
 7. Następnie utwórz nowy kontroler o nazwie **RegisterController**. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy folder **Kontrolery**, wybierz polecenie **Dodaj**, a następnie kliknij pozycję **Kontroler**.
 
 8. Wybierz pozycję **Kontroler internetowego interfejsu API 2 — pusty**, a następnie wybierz pozycję **Dodaj**.

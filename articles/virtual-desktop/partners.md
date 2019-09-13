@@ -7,27 +7,16 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: bd5ec1e75fa1669b0ca33e4cb4629793b09a9bad
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: ddfe5c855b6cd0171494f1af20dc5eb4ae571a6e
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036121"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918997"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integracja z partnerem pulpitu wirtualnego systemu Windows
 
 Ten artykuł zawiera listę partnerów pulpitu wirtualnego systemu Windows w kolejności alfabetycznej.
-
-## <a name="active-cypher"></a>Aktywne szyfr
-
-![Aktywne logo szyfr](./media/partners/active-cypher.png)
-
-Active szyfr to dostawca usług dodanego pulpitu wirtualnego systemu Windows, który umożliwia ochronę przedsiębiorstwa przed naruszeniami i utratą danych. W przypadku korzystania z usługi Active szyfr innowacyjne technologie szyfrowania obsługują ogólną strategię ochrony plików do uruchamiania pulpitu wirtualnego systemu Windows na platformie Azure.
-
-Gdy jest używany z pulpitem wirtualnym systemu Windows, usługa Active szyfr zapewnia dodatkowe możliwości umożliwiające dostęp i mobilność danych użytkowników, zapobiegając nieumyślnemu utracie danych. W przypadku korzystania z usługi Active szyfr istniejące zasady zabezpieczeń grupy i uprawnienia w Azure Information Protection mogą być używane do szyfrowania plików użytkownika przy użyciu pulpitu wirtualnego systemu Windows.
-
-- [Zobacz Krótki opis wspólnego rozwiązania.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oNLu)
-- [Przejdź do witryny sieci Web partnera.](https://activecypher.com/)
 
 ## <a name="cloudjumper"></a>CloudJumper
 

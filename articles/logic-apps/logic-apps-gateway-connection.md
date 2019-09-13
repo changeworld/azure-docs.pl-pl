@@ -9,16 +9,16 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 07/01/2019
-ms.openlocfilehash: 65c1d427939dc39aebece24b923bc4ebfbf136bb
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: ed2ba70b803940700044e900a1b2bb6607c0f051
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861037"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934074"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Nawiązywanie połączenia z lokalnymi źródłami danych z Azure Logic Apps
 
-Aby uzyskać dostęp do źródeł danych w środowisku lokalnym z poziomu aplikacji logiki, utwórz zasób lokalnej bramy danych w Azure Portal. Aplikacje logiki mogą następnie używać [łączników lokalnych](../logic-apps/logic-apps-gateway-install.md#supported-connections). W tym artykule przedstawiono sposób tworzenia zasobu bramy platformy Azure *po* [pobraniu i zainstalowaniu bramy na komputerze lokalnym](../logic-apps/logic-apps-gateway-install.md). Aby dowiedzieć się więcej o działaniu bramy, zobacz [jak działa Brama](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service).
+Aby uzyskać dostęp do źródeł danych w środowisku lokalnym z poziomu aplikacji logiki, utwórz zasób lokalnej bramy danych w Azure Portal. Aplikacje logiki mogą następnie używać [łączników lokalnych](../connectors/apis-list.md#on-premises-connectors). W tym artykule przedstawiono sposób tworzenia zasobu bramy platformy Azure *po* [pobraniu i zainstalowaniu bramy na komputerze lokalnym](../logic-apps/logic-apps-gateway-install.md). Aby uzyskać więcej informacji o bramie, zobacz [jak działa Brama](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service).
 
 > [!TIP]
 > W celu nawiązania połączenia z sieciami wirtualnymi platformy Azure Rozważ utworzenie [*środowiska usługi integracji*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) . 
@@ -29,6 +29,27 @@ Aby uzyskać informacje o sposobach korzystania z bramy z innymi usługami, zoba
 * [Microsoft Flow lokalnej bramy danych](https://flow.microsoft.com/documentation/gateway-manage/)
 * [Microsoft PowerApps lokalnej bramy danych](https://powerapps.microsoft.com/tutorials/gateway-management/)
 * [Azure Analysis Services lokalnej bramy danych](../analysis-services/analysis-services-gateway.md)
+
+<a name="supported-connections"></a>
+
+## <a name="supported-data-sources"></a>Obsługiwane źródła danych
+
+W przypadku Azure Logic Apps lokalna Brama danych obsługuje [Łączniki lokalne](../connectors/apis-list.md#on-premises-connectors) dla następujących źródeł danych:
+
+* BizTalk Server 2016
+* System plików
+* IBM DB2  
+* IBM Informix
+* IBM MQ
+* MySQL
+* Oracle Database
+* PostgreSQL
+* SAP
+* Oprogramowanie SharePoint Server
+* SQL Server
+* Teradata
+
+Mimo że sama Brama nie wiąże się z dodatkowymi kosztami, [model cenowy Logic Apps](../logic-apps/logic-apps-pricing.md) ma zastosowanie do tych łączników i innych operacji w Azure Logic Apps.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -135,6 +156,13 @@ Aby utworzyć inny zasób bramy, Połącz instalację bramy z innym zasobem bram
 <a name="faq"></a>
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
+
+**P**: Dlaczego nie widzę mojej instalacji bramy podczas tworzenia zasobu bramy na platformie Azure? <br/>
+**Odp.:** Ten problem może wystąpić z następujących powodów:
+
+* Instalacja bramy została już zarejestrowana i przejęta przez inny zasób bramy na platformie Azure. Instalacje bramy nie pojawiają się na liście wystąpień po utworzeniu zasobów bramy. Aby sprawdzić rejestracje bramy w Azure Portal, przejrzyj wszystkie zasoby platformy Azure z typem **lokalnych bram danych** dla *wszystkich* subskrypcji platformy Azure.
+
+* Tożsamość usługi Azure AD dla osoby, która zainstalowała bramę, różni się od osoby, która zarejestrowano w Azure Portal. Sprawdź, czy zalogowano się za pomocą tej samej tożsamości, na której zainstalowano bramę.
 
 [!INCLUDE [existing-gateway-location-changed](../../includes/logic-apps-existing-gateway-location-changed.md)]
 

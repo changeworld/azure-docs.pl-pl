@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: 8bc1e4d5eae76796e82195b4ef34ddefc54302b9
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
-ms.translationtype: HT
+ms.openlocfilehash: e57b5a49ac0c99fa81e54134e74964bf38418e4d
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910344"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934911"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net"></a>Szybki start: Azure Key Vault Biblioteka kliencka dla platformy .NET
 
@@ -118,7 +118,7 @@ Ta operacja zwróci serię par klucz/wartość.
 }
 ```
 
-Zwróć uwagę na clientId, clientSecret, Identyfikator subskrypcji i tenantId, ponieważ będziemy z nich korzystać w powyższym kroku [uwierzytelnianie w magazynie kluczy](#authenticate-to-your-key-vault) .
+Zwróć uwagę na clientId i clientSecret, ponieważ będziemy z nich korzystać w powyższym kroku [uwierzytelnianie w magazynie kluczy](#authenticate-to-your-key-vault) .
 
 Wymagany jest również identyfikator aplikacji głównej usługi. Można go znaleźć, uruchamiając [AZ AD Sp list](https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list) z `--show-mine` parametrem:
 
@@ -164,10 +164,6 @@ Ten przewodnik Szybki Start platformy .NET opiera się na zmiennych środowiskow
 setx akvClientId <your-clientID>
 
 setx akvClientSecret <your-clientSecret>
-
-setx akvTenantId <your-tentantId>
-
-setx akvSubscriptionId <your-subscriptionId>
 ````
 
 Przy każdym wywołaniu `setx`należy uzyskać odpowiedź "sukces: Określona wartość została zapisana. "
@@ -178,7 +174,7 @@ Przypisz te zmienne środowiskowe do ciągów w kodzie, a następnie Uwierzyteln
 
 ### <a name="save-a-secret"></a>Zapisz klucz tajny
 
-Teraz, gdy aplikacja jest uwierzytelniana, możesz umieścić klucz tajny w magazynie kluczy przy użyciu [metody SetSecretAsync](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync) , która wymaga adresu URL Twojego magazynu, który znajduje się w formularzu `https://<your-unique-keyvault-name>.vault.azure.net/secrets/`. Wymaga również nazwy wpisu tajnego — używamy hasła ".  Możesz chcieć przypisać te ciągi do zmiennych dla resue.
+Teraz, gdy aplikacja jest uwierzytelniana, możesz umieścić klucz tajny w magazynie kluczy przy użyciu [metody SetSecretAsync](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync) , która wymaga adresu URL Twojego magazynu, który znajduje się w formularzu `https://<your-unique-keyvault-name>.vault.azure.net/secrets/`. Wymaga również nazwy wpisu tajnego — używamy hasła ".  Możesz przypisać te ciągi do zmiennych do ponownego użycia.
 
 [!code-csharp[Set secret](~/samples-key-vault-dotnet-quickstart/akvdotnet/Program.cs?name=setsecret)]
 

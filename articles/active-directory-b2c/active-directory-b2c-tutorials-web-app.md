@@ -1,21 +1,21 @@
 ---
-title: Samouczek — włączanie uwierzytelniania w aplikacji internetowej — Azure Active Directory B2C | Microsoft Docs
+title: Samouczek — Włączanie uwierzytelniania w aplikacji sieci Web — Azure Active Directory B2C
 description: Samouczek dotyczący sposobu użycia usługi Azure Active Directory B2C w celu określenia nazwy logowania użytkownika na potrzeby aplikacji internetowej platformy ASP.NET.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.author: marsma
-ms.date: 02/04/2019
+ms.date: 09/12/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: bcfd1ef02c68de7709cb8642b94f23a6884ea156
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 2066a7848efaf067dddde3d5db1decfc88d94436
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464763"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914221"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Samouczek: włączanie uwierzytelniania w aplikacji internetowej przy użyciu usługi Azure Active Directory B2C
 
@@ -32,8 +32,8 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- [Tworzenie przepływów użytkownika](tutorial-create-user-flows.md), aby umieścić platformę użytkownika w Twojej aplikacji.
-- Zainstaluj [program Visual Studio 2019](https://www.visualstudio.com/downloads/) przy użyciu obciążeń **ASP.NET i Web Development** .
+* [Tworzenie przepływów użytkownika](tutorial-create-user-flows.md), aby umieścić platformę użytkownika w Twojej aplikacji.
+* Zainstaluj [program Visual Studio 2019](https://www.visualstudio.com/downloads/) przy użyciu obciążeń **ASP.NET i Web Development** .
 
 ## <a name="update-the-application"></a>Aktualizowanie aplikacji
 
@@ -58,15 +58,21 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 
 Przykładowe rozwiązanie zawiera następujące dwa projekty:
 
-- **TaskWebApp** — tworzenie i edytowanie listy zadań. W przykładowej aplikacji jest używany przepływ użytkownika dotyczący **tworzenia konta lub logowania** na potrzeby tworzenia kont lub logowania użytkowników.
+- **TaskWebApp** — tworzenie i edytowanie listy zadań. Przykład korzysta z przepływu logowania **lub logowania** użytkownika w celu rejestracji i logowania użytkowników.
 - **TaskService** — obsługuje następujące funkcje listy zadań: tworzenie, odczytywanie, aktualizowanie i usuwanie. Interfejs API jest chroniony przez usługę Azure AD B2C i wywoływany przez aplikację TaskWebApp.
 
-Należy zmienić przykładową aplikację tak, aby korzystała z aplikacji zarejestrowanej w Twojej dzierżawie. Obejmuje to zanotowane wcześniej identyfikator aplikacji i klucz. Skonfiguruj też utworzone przepływy użytkownika. Przykładowa aplikacja definiuje wartości konfiguracji jako ustawienia w pliku Web.config. Aby zmienić ustawienia:
+Należy zmienić przykładową aplikację tak, aby korzystała z aplikacji zarejestrowanej w Twojej dzierżawie. Obejmuje to zanotowane wcześniej identyfikator aplikacji i klucz. Skonfiguruj też utworzone przepływy użytkownika. Przykład definiuje wartości konfiguracji jako ustawienia w pliku *Web. config* .
+
+Zaktualizuj ustawienia w pliku Web. config, aby współdziałać z przepływem użytkownika:
 
 1. Otwórz rozwiązanie **B2C-WebAPI-DotNet** w programie Visual Studio.
-2. W projekcie **TaskWebApp** otwórz plik **Web.config**. Zastąp wartość elementu `ida:Tenant` nazwą utworzonej dzierżawy. Zastąp wartość elementu `ida:ClientId` zanotowanym identyfikatorem aplikacji. Zastąp wartość elementu `ida:ClientSecret` zanotowanym kluczem. Przed dodaniem do pliku Web. config należy kodować kod tajny klienta.
-3. W pliku **Web.config** zastąp wartość elementu `ida:SignUpSignInPolicyId` ciągiem `b2c_1_signupsignin1`. Zastąp wartość elementu `ida:EditProfilePolicyId` cięgiem `b2c_1_profileediting1`. Zastąp wartość elementu `ida:ResetPasswordPolicyId` cięgiem `b2c_1_passwordreset1`.
-
+1. W projekcie **TaskWebApp** otwórz plik **Web.config**.
+    1. Zastąp wartość `ida:Tenant` i `ida:AadInstance` nazwą utworzonego dzierżawcy.
+    1. Zastąp wartość `ida:ClientId` identyfikatorem aplikacji, która została zarejestrowana.
+    1. Zastąp wartość elementu `ida:ClientSecret` zanotowanym kluczem. Przed dodaniem do pliku Web. config należy kodować kod tajny klienta.
+    1. Zastąp wartość wartością `ida:SignUpSignInPolicyId`. `b2c_1_signupsignin1`
+    1. Zastąp wartość wartością `ida:EditProfilePolicyId`. `b2c_1_profileediting1`
+    1. Zastąp wartość wartością `ida:ResetPasswordPolicyId`. `b2c_1_passwordreset1`
 
 ## <a name="run-the-sample"></a>Uruchamianie aplikacji przykładowej
 

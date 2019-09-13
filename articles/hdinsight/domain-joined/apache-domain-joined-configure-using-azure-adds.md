@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: 83e9e1364293601337f854f083bbb279361e29c5
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: aa18c4a078edf579e8d9c4c09df99100dfcea148
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810999"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918326"
 ---
 # <a name="enterprise-security-package-configurations-with-azure-active-directory-domain-services-in-hdinsight"></a>pakiet Enterprise Security konfiguracji z Azure Active Directory Domain Services w usłudze HDInsight
 
@@ -74,7 +74,7 @@ Po utworzeniu tożsamości zarządzanej i otrzymaniu odpowiedniej roli administr
 
 Po włączeniu usługi Azure AD-DS lokalny serwer usługi nazw domen (DNS) jest uruchamiany na Virtual Machines usługi AD. Skonfiguruj Virtual Network usługi Azure AD — DS (VNET), aby korzystać z tych niestandardowych serwerów DNS. Aby zlokalizować odpowiednie adresy IP, wybierz pozycję **Właściwości** w kategorii **Zarządzanie** i Sprawdź adresy IP wymienione pod **adresem IP na Virtual Network**.
 
-![Lokalizowanie adresów IP dla lokalnych serwerów DNS](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-dns.png)
+![Lokalizowanie adresów IP dla lokalnych serwerów DNS](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-dns1.png)
 
 Zmień konfigurację serwerów DNS w sieci wirtualnej usługi Azure AD-DS, aby użyć tych niestandardowych adresów IP, wybierając pozycję **serwery DNS** w kategorii **Ustawienia** . Następnie kliknij przycisk radiowy obok pozycji **niestandardowy**, wprowadź pierwszy adres IP w polu tekstowym poniżej i kliknij przycisk **Zapisz**. Dodaj dodatkowe adresy IP, korzystając z tych samych kroków.
 

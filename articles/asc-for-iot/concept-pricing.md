@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 603df1def011232ad2120c37ad1ba256f2a30526
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: e742848df56e4e2be1b9edf42586e642f0c938cb
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596517"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933804"
 ---
 # <a name="pricing-and-associated-costs"></a>Cennik i powiązane koszty
 
@@ -62,13 +62,14 @@ Poniższa tabela zawiera podsumowanie powiązanych kosztów i implikacje poszcze
 |     | Użycie | Komentarz |
 | --- | --- | --- |
 | **Użycie limitu przydziału IoT Hub** |  |
-| [Eksportowanie zadania urządzenia](https://docs.microsoft.com/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices) (eksport z przędzą) | raz dziennie | Wyłącz _zbieranie metadanych_ z przędzy |
+| [Eksportowanie zadania urządzenia](https://docs.microsoft.com/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices) (eksport z przędzą) | raz dziennie | Wyłącz _zbieranie metadanych z przędzy_ |
 | **Magazyn Log Analytics** |  |
 | Zalecenia i alerty dotyczące urządzeń| Zalecenia dotyczące zabezpieczeń i alerty wygenerowane przez usługę | Nieopcjonalne |
 | Surowe dane zabezpieczeń| Surowe dane zabezpieczeń z urządzeń IoT zebranych przez agentów zabezpieczeń | Wyłącz _zdarzenia związane z zabezpieczeniami magazynu RAW_ |
+|
 
 >[!Important]
-> Rezygnacja ma poważne konsekwencje dla dostępnych funkcji zabezpieczeń.
+> Rezygnacja z nich ma surowe konsekwencje dla Azure Security Center na potrzeby dostępności funkcji zabezpieczeń IoT. 
   
 | Zrezygnuj | Implikacje |
 | --- | --- |
@@ -84,5 +85,5 @@ Poniższa tabela zawiera podsumowanie powiązanych kosztów i implikacje poszcze
 
 - Uzyskiwanie dostępu do [danych pierwotnych zabezpieczeń](how-to-security-data-access.md)
 - [Badanie urządzenia](how-to-investigate-device.md)
-- Omówienie i eksplorowanie zaleceń dotyczących [zabezpieczeń](concept-recommendations.md)
+- Omówienie i eksplorowanie [zaleceń dotyczących zabezpieczeń](concept-recommendations.md)
 - Poznawanie i eksplorowanie [alertów zabezpieczeń](concept-security-alerts.md)

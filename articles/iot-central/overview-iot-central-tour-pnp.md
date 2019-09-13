@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 4a0c9d16474ddf032ff88382bc240713bc734ff8
-ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
+ms.openlocfilehash: 82996db232fde0424ccc8e3e478a70a5892231e6
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70211888"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70884826"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui-preview-features"></a>Skorzystaj z samouczka dotyczącego interfejsu użytkownika platformy Azure IoT Central (funkcje w wersji zapoznawczej)
 
@@ -44,24 +44,23 @@ Użyj menu nawigacji po lewej stronie, aby uzyskać dostęp do różnych obszar�
       ![Left navigation menu](media/overview-iot-central-tour-pnp/navigationbar.png)
   :::column-end:::
   :::column span="2":::
+     **Pulpit nawigacyjny** wyświetla pulpit nawigacyjny aplikacji. Jako Konstruktor możesz dostosować pulpit nawigacyjny dla operatorów. Użytkownicy mogą również tworzyć własne pulpity nawigacyjne.
+     
+     **Urządzenia** przedstawiają symulowane i rzeczywiste urządzenia skojarzone z każdym szablonem urządzenia w aplikacji. Operator używa narzędzia **Device Explorer**, aby zarządzać połączonymi urządzeniami.
 
-      **Dashboard** displays your application dashboard. As a builder, you can customize the dashboard for your operators. Users can also create their own  dashboards.
-    
-      **Devices** lists the simulated and real devices associated with each device template in the application. As an operator, you use the **Device Explorer** to manage your connected devices.
-    
-      **Device groups** lets you view and create device groups. As an operator, you can create device groups as a logical collections of devices specified by a query.
+     **Grupy urządzeń** umożliwiają wyświetlanie i tworzenie grup urządzeń. Jako operator można utworzyć grupy urządzeń jako logiczne Kolekcje urządzeń określonych przez zapytanie.
 
-      **Rules** lets you edit rules that fire based on device telemetry and trigger customizable actions.
-    
-      **Analytics** shows analytics derived from device telemetry for devices and device groups. As an operator, you can create custom views on top of device data to derive insights from your application.
-    
-      **Jobs** enables bulk device management by having you create and run jobs to update your devices at scale.
-    
-      **Device templates** shows the tools a builder uses to create and manage device templates.
-    
-      **Data export** enables an administrator to configure a continuous export to other Azure services such as storage and queues.
-    
-      **Administration** shows the application administration pages where an administrator can manage application settings, users, and roles.
+     **Reguły** umożliwiają edytowanie reguł, które są uruchamiane na podstawie danych telemetrycznych urządzenia i wyzwalanie dostosowywalnych akcji.
+
+     **Analiza** przedstawia analizę pochodzącą od danych telemetrycznych urządzeń dla urządzeń i grup urządzeń. Operator może tworzyć widoki niestandardowe na podstawie danych urządzenia w celu uzyskania szczegółowych informacji z aplikacji.
+
+     **Zadania** umożliwiają zbiorcze zarządzanie urządzeniami przez tworzenie i uruchamianie zadań w celu aktualizowania urządzeń w odpowiedniej skali.
+
+     **Szablony urządzeń** pokazują narzędzia, których Konstruktor używa do tworzenia szablonów urządzeń i zarządzania nimi.
+
+     **Eksport danych** umożliwia administratorowi skonfigurowanie ciągłego eksportowania do innych usług platformy Azure, takich jak magazyn i kolejki.
+
+     **Administracja** pokazuje strony administrowania aplikacjami, na których administrator może zarządzać ustawieniami, użytkownikami i rolami aplikacji.
    :::column-end:::
 :::row-end:::
 

@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 96a8eab57f1714eed4831bea01508e9140d1dfad
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
-ms.translationtype: MT
+ms.openlocfilehash: 69631b39403dedab56ed75cb145d464c0e1f747c
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934985"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70935337"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Przewodnik rozwiązywania problemów Eksplorator usługi Azure Storage
 
@@ -30,7 +30,7 @@ Jeśli masz problemy z uzyskaniem dostępu do zasobów magazynu przy użyciu RBA
 
 Jeśli nie masz pewności, czy masz odpowiednie role lub uprawnienia, skontaktuj się z administratorem konta platformy Azure.
 
-#### <a name="read-listget-storage-accounts"></a>Przeczytaj Wyświetl/pobierz konta magazynu
+#### <a name="read-listget-storage-accounts"></a>Przeczytaj Wyświetl/Pobierz konta magazynu
 
 Musisz mieć uprawnienia do wyświetlania listy kont magazynu. Uprawnienie to można uzyskać przez przypisaną rolę "czytelnik".
 
@@ -59,7 +59,7 @@ Jeśli nie masz roli przyznającej uprawnienia do warstwy zarządzania, Eksplora
 
 ### <a name="what-if-i-cant-get-the-management-layer-permissions-i-need-from-my-administrator"></a>Co zrobić, jeśli nie mogę uzyskać wymaganych uprawnień do warstwy zarządzania z mojego administratora?
 
-W tej chwili nie mamy jeszcze rozwiązania dotyczącego kontroli RBAC. Obejście tego problemu pozwala na zażądanie identyfikatora URI sygnatury dostępu współdzielonego w celu dołączenia [do zasobu](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-sas-uri).
+W tej chwili nie mamy jeszcze rozwiązania dotyczącego kontroli RBAC. Obejście tego problemu pozwala na zażądanie identyfikatora URI sygnatury dostępu współdzielonego w celu [dołączenia do zasobu](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-sas-uri).
 
 ## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>Błąd: Certyfikat z podpisem własnym w łańcuchu certyfikatów (i podobne błędy)
 
@@ -71,7 +71,7 @@ Błędy certyfikatów są spowodowane jedną z dwóch następujących sytuacji:
 Gdy Eksplorator usługi Storage widzi certyfikat z podpisem własnym lub niezaufany, nie może już wiedzieć, czy odebrany komunikat HTTPS został zmieniony. Jeśli masz kopię certyfikatu z podpisem własnym, możesz wydać Eksplorator usługi Storage zaufania, wykonując następujące czynności:
 
 1. Uzyskaj kopię certyfikatu X. 509 z kodowaniem Base-64 (. cer)
-2. Kliknij pozycję **Edytuj** > **Certyfikaty** > SSL**Importuj certyfikaty**, a następnie użyj selektora plików, aby znaleźć, wybrać i otworzyć plik CER.
+2. Kliknij pozycję **Edytuj** → **Certyfikaty SSL** → **Importuj certyfikaty**, a następnie użyj selektora plików, aby znaleźć, wybrać i otworzyć plik. cer
 
 Ten problem może być również wynikiem wielu certyfikatów (głównych i pośrednich). Aby można było przezwyciężyć błąd, należy dodać oba certyfikaty.
 
@@ -86,7 +86,7 @@ Jeśli nie masz pewności, skąd pochodzi certyfikat, możesz wykonać następuj
 3. Wykonaj polecenie `s_client -showcerts -connect microsoft.com:443`
 4. Wyszukaj certyfikaty z podpisem własnym. Jeśli nie masz pewności, które certyfikaty są z podpisem własnym, sprawdź, czy każdy temat `("s:")` i wystawca `("i:")` są takie same.
 5. Po znalezieniu wszystkich certyfikatów z podpisem własnym dla każdej z nich skopiuj i Wklej wszystkie elementy z i, w tym **-----Rozpocznij certyfikat-----** , aby **-----końcowy-----certyfikatów** do nowego pliku. cer.
-6. Otwórz Eksplorator usługi Storage, kliknij przycisk **Edytuj** > **Certyfikaty** > SSL**Importuj certyfikaty**, a następnie użyj selektora plików, aby znaleźć, wybrać i otworzyć utworzone pliki CER.
+6. Otwórz Eksplorator usługi Storage, kliknij przycisk Edytuj **Certyfikaty SSL** → → **zaimportować certyfikaty**, a następnie użyj selektora plików, aby znaleźć, wybrać i otworzyć utworzone pliki CER.
 
 Jeśli nie możesz znaleźć żadnych certyfikatów z podpisem własnym za pomocą powyższych kroków, skontaktuj się z nami za pomocą narzędzia opinii, aby uzyskać pomoc. Możesz również uruchomić Eksplorator usługi Storage z wiersza polecenia z `--ignore-certificate-errors` flagą. Po uruchomieniu z tą flagą Eksplorator usługi Storage zignoruje Błędy certyfikatów.
 
@@ -196,7 +196,7 @@ Jeśli masz narzędzia sieciowe, takie jak programu Fiddler for Windows, możesz
 * Sprawdź numer portu używany przez narzędzie sieciowe.
 * Wprowadź adres URL hosta lokalnego i numer portu Narzędzia sieciowego jako ustawienia serwera proxy w Eksplorator usługi Storage. Po poprawnym wykonaniu tego narzędzia sieciowego rozpocznie rejestrowanie żądań sieci wysyłanych przez Eksplorator usługi Storage do punktów końcowych zarządzania i usług. Na przykład wprowadź https://cawablobgrs.blob.core.windows.net/ dla punktu końcowego obiektu BLOB w przeglądarce i otrzymasz odpowiedź podobną do następującej, która sugeruje, że zasób istnieje, chociaż nie możesz uzyskać do niego dostępu.
 
-![przykładowy kod](./media/storage-explorer-troubleshooting/4022502_en_2.png)
+![Przykładowy kod](./media/storage-explorer-troubleshooting/4022502_en_2.png)
 
 ### <a name="contact-proxy-server-admin"></a>Skontaktuj się z administratorem serwera proxy
 
@@ -214,6 +214,58 @@ Jeśli nawiązano połączenie z platformą Azure za pomocą serwera proxy, spra
 Jeśli zostanie wyświetlony komunikat o błędzie, istnieje możliwość, że nie masz wymaganych uprawnień do uzyskania kluczy dla konta magazynu. Aby potwierdzić, że jest to przypadek, przejdź do portalu i Znajdź swoje konto magazynu. Możesz szybko to zrobić, klikając prawym przyciskiem myszy węzeł konta magazynu, a następnie klikając polecenie "Otwórz w portalu". Po wykonaniu tych czynności przejdź do bloku "klucze dostępu". Jeśli nie masz uprawnień do wyświetlania kluczy, zostanie wyświetlona strona z komunikatem "nie masz dostępu". Aby obejść ten problem, możesz uzyskać klucz konta od kogoś innego i dołączyć nazwę i klucz lub poprosił kogoś o sygnaturę dostępu współdzielonego z kontem magazynu i użyć go do dołączenia konta magazynu.
 
 Jeśli zobaczysz klucze konta, wygeneruj problem w usłudze GitHub, aby pomóc Ci rozwiązać ten problem.
+
+## <a name="error-occurred-while-adding-new-connection-typeerror-cannot-read-property-version-of-undefined"></a>Wystąpił błąd podczas dodawania nowego połączenia: TypeError Nie można odczytać właściwości "Version" niezdefiniowanej
+
+Jeśli podczas próby dodania połączenia niestandardowego zostanie wyświetlony komunikat o błędzie, istnieje możliwość, że dane połączenia przechowywane w lokalnym Menedżerze poświadczeń są uszkodzone.
+Aby obejść ten problem, możesz spróbować usunąć uszkodzone połączenia lokalne, a następnie dodać je ponownie.
+
+1. Rozpocznij Eksplorator usługi Storage. W górnym menu Przejdź do pozycji pomoc → Przełącz Narzędzia deweloperskie.
+2. W otwartym oknie przejdź do pozycji karta aplikacji → Local Storage (lewa strona) → file://
+3. W zależności od typu połączeń, z którymi występuje problem, poszukaj jego klucza i skopiuj jego wartość do edytora tekstu. Wartość jest tablicą niestandardowych nazw połączeń.
+    * Konta magazynu
+        * `StorageExplorer_CustomConnections_Accounts_v1`
+    * Kontenery obiektów blob
+        * `StorageExplorer_CustomConnections_Blobs_v1`
+        * `StorageExplorer_CustomConnections_Blobs_v2`
+    * Udziały plików
+        * `StorageExplorer_CustomConnections_Files_v1`
+    * Kolejki
+        * `StorageExplorer_CustomConnections_Queues_v1`
+    * Tabele
+        * `StorageExplorer_CustomConnections_Tables_v1`
+4. Po zapisaniu bieżących nazw połączeń ustaw wartość w Narzędzia deweloperskie `[]`.
+
+Aby zachować połączenia, które nie są uszkodzone, można wykonać następujące kroki w celu zlokalizowania uszkodzonych połączeń. Jeśli nie chcesz utracić wszystkich istniejących połączeń, możesz pominąć poniższe kroki i postępować zgodnie z instrukcjami dotyczącymi konkretnej platformy, aby wyczyścić dane połączenia.
+
+1. W edytorze tekstów ponownie Dodaj wszystkie nazwy połączeń z powrotem do Narzędzia deweloperskie i sprawdź, czy połączenie nadal działa.
+2. Jeśli połączenie działa prawidłowo, nie jest uszkodzone i można je bezpiecznie pozostawić. Jeśli połączenie nie działa, usuń jego wartość z Narzędzia deweloperskie i Zapisz je, aby można było dodać je ponownie później.
+3. Powtarzaj do momentu zbadania wszystkich połączeń.
+
+Po przejściu przez wszystkie połączenia w przypadku wszystkich nazw połączeń, które nie zostały dodane z powrotem, należy wyczyścić ich uszkodzone dane (jeśli istnieją) i dodać je ponownie za pomocą zwykłych kroków przy użyciu Eksplorator usługi Storage.
+
+# <a name="windowstabwindows"></a>[Windows](#tab/Windows)
+
+1. Otwórz okno "Menedżer poświadczeń", otwierając menu Start i wyszukując ciąg "Menedżer poświadczeń".
+2. W otwartym oknie przejdź do pozycji "poświadczenia systemu Windows".
+3. W obszarze "ogólne poświadczenia" Wyszukaj wpisy z kluczem `<connection_type_key>/<corrupted_connection_name>` (na `StorageExplorer_CustomConnections_Accounts_v1/account1`przykład).
+4. Usuń te wpisy i Dodaj połączenia ponownie.
+
+# <a name="macostabmacos"></a>[macOS](#tab/macOS)
+
+1. Otwórz centrum uwagi (pasek miejsca polecenia) i wyszukaj ciąg "dostęp do łańcucha kluczy".
+2. Wyszukaj wpisy z kluczem `<connection_type_key>/<corrupted_connection_name>` (na `StorageExplorer_CustomConnections_Accounts_v1/account1`przykład).
+3. Usuń te wpisy i Dodaj połączenia ponownie.
+
+# <a name="linuxtablinux"></a>[Linux](#tab/Linux)
+
+Lokalne zarządzanie poświadczeniami różni się w zależności od dystrybucji systemu Linux. Jeśli dystrybucja systemu Linux nie udostępnia wbudowanego interfejsu GUI do lokalnego zarządzania poświadczeniami, możesz zainstalować narzędzie innych firm, aby zarządzać poświadczeniami lokalnymi. Na przykład można użyć [Seahorse](https://wiki.gnome.org/Apps/Seahorse/), narzędzia interfejsu GUI open source do zarządzania poświadczeniami lokalnymi systemu Linux.
+
+1. Otwórz swoje lokalne narzędzie do zarządzania poświadczeniami, a następnie Znajdź zapisane poświadczenia.
+2. Wyszukaj wpisy z kluczem `<connection_type_key>/<corrupted_connection_name>` (na `StorageExplorer_CustomConnections_Accounts_v1/account1`przykład).
+3. Usuń te wpisy i Dodaj połączenia ponownie.
+
+Jeśli po wykonaniu tych kroków nadal występują te błędy, lub jeśli chcesz udostępnić dane, które Twoim zdaniem są uszkodzone, [Otwórz problem](https://github.com/microsoft/AzureStorageExplorer/issues) na naszej stronie usługi GitHub.
 
 ## <a name="issues-with-sas-url"></a>Problemy z adresem URL SAS
 
@@ -233,15 +285,15 @@ Jeśli przypadkowo dołączono przy użyciu nieprawidłowego adresu URL sygnatur
 
 ## <a name="linux-dependencies"></a>Zależności systemu Linux
 
-<!-- Storage Explorer 1.9.0 and later is available as a snap from the Snap Store. The Storage Explorer snap installs all of its dependencies with no extra hassle.
+Eksplorator usługi Storage 1.10.0 i nowsze są dostępne jako Przyciągaj z magazynu Snap. Eksplorator usługi Storage Snap automatycznie instaluje wszystkie zależności i aktualizuje, gdy dostępna jest nowa wersja przyciągania. Zalecaną metodą instalacji jest zainstalowanie przystawki Eksplorator usługi Storage.
 
-Storage Explorer requires the use of a password manager, which may need to be connected manually before Storage Explorer will work correctly. You can connect Storage Explorer to your system's password manager with the following command:
+Eksplorator usługi Storage wymaga użycia Menedżera haseł, co może wymagać ręcznego połączenia, zanim Eksplorator usługi Storage będzie działać poprawnie. Eksplorator usługi Storage można połączyć z menedżerem haseł systemu przy użyciu następującego polecenia:
 
 ```bash
 snap connect storage-explorer:password-manager-service :password-manager-service
 ```
 
-You can also download the application .tar.gz file, but you'll have to install dependencies manually. -->
+Możesz również pobrać aplikację jako plik tar. gz, ale musisz ręcznie zainstalować zależności.
 
 > [!IMPORTANT]
 > Eksplorator usługi Storage, zgodnie z opisem w pobraniu elementu. tar. gz, jest obsługiwana tylko dla dystrybucji Ubuntu. Inne dystrybucje nie zostały zweryfikowane i mogą wymagać alternatywnych lub dodatkowych pakietów.

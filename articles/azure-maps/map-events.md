@@ -1,22 +1,22 @@
 ---
-title: Obsługa zdarzeń myszy przy użyciu Azure Maps | Microsoft Docs
+title: Obsługa zdarzeń przy użyciu Azure Maps | Microsoft Docs
 description: Jak utworzyć interaktywną mapę sieci Web SDK przy użyciu zdarzeń mapy
 author: jingjing-z
 ms.author: jinzh
-ms.date: 07/29/2019
+ms.date: 09/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 37a3fc3178fe5caeacedfd355a6065ee189a5890
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: c5b4ed73d7bc4d89a67280a0bb183f374ae093d8
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976542"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899426"
 ---
-# <a name="interact-with-the-map---mouse-events"></a>Korzystanie z zdarzeń dotyczących mapy — myszy
+# <a name="interact-with-the-map"></a>Korzystanie z mapy
 
 W tym artykule pokazano, jak używać właściwości [zdarzenia klasy mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?#events) do wyróżniania zdarzeń na mapie i na różnych warstwach mapy. Pokazano w nim także, jak używać właściwości zdarzenia klasy mapy do wyróżniania zdarzeń podczas korzystania z znacznika HTML.
 
@@ -46,6 +46,61 @@ Poniższy kod dodaje zdarzenia mapy JavaScript do znacznika HTML. Wyróżnia tak
 
 <iframe height='500' scrolling='no' title='Korzystanie z zdarzeń mapy — znaczniki HTML' src='//codepen.io/azuremaps/embed/VVzKJY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz, jak <a href='https://codepen.io/azuremaps/pen/VVzKJY/'>korzystać z pióra z zdarzeniami znacznika mapy kodu HTML</a> według<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () w <a href='https://codepen.io'>CodePen</a>.
 </iframe>
+
+W poniższej tabeli wymieniono wszystkie obsługiwane zdarzenia klas mapy.
+
+| Wydarzenie             | Opis |
+|-------------------|-------------|
+| boxzoomend        | Uruchamiany po zakończeniu interakcji "pole Powiększ".|
+| boxzoomstart      | Uruchamiany po rozpoczęciu interakcji "Box zoom".|
+| polecenie             | Uruchamiany, gdy urządzenie wskazujące zostanie naciśnięte i wydane w tym samym punkcie na mapie.|
+| zamknij             | Uruchamiany, gdy menu podręczne jest zamknięte ręcznie lub programowo.|
+| zmieniona       | Uruchamiany po kliknięciu prawego przycisku myszy.|
+| dodano dane         | Uruchamiany, gdy kształty są dodawane do źródła danych.|
+| Usunięto       | Uruchamiany, gdy kształty są usuwane ze źródła danych.|
+| datasourceupdated | Uruchamiany, gdy obiekt DataSource zostanie zaktualizowany.|
+| DblClick          | Uruchamiany, gdy urządzenie wskazujące jest kliknięte dwukrotnie w tym samym punkcie na mapie.|
+| Przeciągnąć              | Wywoływane wielokrotnie podczas interakcji "przeciągnij do kadrowania" w znaczniku mapy, popup lub HTML.|
+| dragend           | Uruchamiany po zakończeniu interakcji "przeciągnij do kadrowania" w znaczniku mapy, popup lub HTML.|
+| dragstart         | Uruchamiany, gdy interakcja "przeciągnij do panoram" zaczyna się w znaczniku mapy, popup lub HTML.|
+| błąd             | Uruchamiany, gdy wystąpi błąd.|
+| zdarzenia           | Uruchamiany po naciśnięciu klawisza.|
+| KeyPress          | Uruchamiany, gdy zostanie naciśnięty klucz generujący znak typable (klucz ANSI).|
+| KeyUp             | Uruchamiany po wydaniu klucza.|
+| layeradded        | Uruchamiany, gdy warstwa zostanie dodana do mapy.|
+| load              | Uruchamiany natychmiast po pobraniu wszystkich niezbędnych zasobów i wykonaniu pierwszego wizualnego renderowania mapy.|
+| MouseDown         | Uruchamiany, gdy urządzenie wskazujące zostanie naciśnięte na mapie.|
+| MouseMove         | Uruchamiany, gdy urządzenie wskazujące jest przenoszone na mapie.|
+| mouseout          | Uruchamiany, gdy urządzenie punktowe opuści kanwę mapy.|
+| MouseOver         | Uruchamiany, gdy urządzenie wskazujące jest przenoszone na mapie.|
+| MouseUp           | Uruchamiany, gdy urządzenie wskazujące jest wydzierżawione na mapie.|
+| Przenieś              | Uruchamiany wielokrotnie podczas animowanego przejścia z jednego widoku do drugiego w wyniku interakcji z użytkownikiem lub metod.|
+| moveend           | Uruchamiany tuż po zakończeniu przez mapę przejścia z jednego widoku do drugiego w wyniku interakcji z użytkownikiem lub metod.|
+| movestart         | Uruchamiany tuż przed rozpoczęciem przez mapę przejścia z jednego widoku do drugiego w wyniku interakcji z użytkownikiem lub metod.|
+| open              | Uruchamiany po ręcznym otwarciu okna podręcznego lub programowo.|
+| tonu             | Uruchamiany zawsze, gdy nastąpi zmiana skoku mapy (pochylenie) w wyniku interakcji z użytkownikiem lub metod.|
+| pitchend          | Uruchamiany natychmiast po pochylenie mapy (nachylenie) zakończy się zmianami w wyniku interakcji z użytkownikiem lub metodami.|
+| pitchstart        | Uruchamiany zawsze, gdy gęstość mapy (nachylenie) rozpoczyna zmianę w wyniku interakcji z użytkownikiem lub metod.|
+| gotowy             | Uruchamiany, gdy minimalne wymagane zasoby mapy są ładowane, zanim mapa będzie gotowa do programistycznego manipulowania.|
+| renderowania            | <p> Uruchamiany za każdym razem, gdy mapa zostanie narysowana na ekranie, w wyniku:<ul><li>Zmiana pozycji mapy, powiększenia, skoku lub nanoszenia.</li><li>Zmiana stylu mapy.</li><li>Zmiana źródła źródła danych.</li><li>Ładowanie kafelka wektorowego, pliku GEOJSON, symbolu lub Sprite.</li></ul></p>|
+| Zmień rozmiar            | Uruchamiany natychmiast po zmianie rozmiaru mapy.|
+| obróceni            | Wywoływane wielokrotnie podczas interakcji "przeciągnij, aby obrócić".|
+| rotateend         | Uruchamiany po zakończeniu interakcji "przeciągnij do obrotu".|
+| rotatestart       | Uruchamiany po rozpoczęciu interakcji "przeciągnij do obrotu".|
+| shapechanged      | Uruchamiany, gdy zostanie zmieniona właściwość obiektu kształtu.|
+| sourceadded       | Uruchamiany, gdy do mapy zostanie dodane źródło danych lub VectorTileSource.|
+| sourceremoved     | Uruchamiany po usunięciu źródła danych lub VectorTileSource z mapy.|
+| styledata         | Uruchamiany, gdy styl mapy zostanie załadowany lub zmieniony.|
+| tokenacquired     | Uruchamiany, gdy zostanie uzyskany token dostępu usługi AAD.|
+| touchcancel       | Uruchamiany, gdy w mapie wystąpi zdarzenie touchcancel.|
+| touchend          | Uruchamiany, gdy w mapie wystąpi zdarzenie touchend.|
+| touchmove         | Uruchamiany, gdy w mapie wystąpi zdarzenie TouchMove.|
+| touchstart        | Uruchamiany, gdy w mapie wystąpi zdarzenie touchstart.|
+| trzykołowych             | Uruchamiany, gdy na mapie wystąpi zdarzenie kółka myszy.|
+| Zmieniać              | Uruchamiany wielokrotnie podczas animowanego przejścia z jednego poziomu powiększenia na inny w wyniku interakcji z użytkownikiem lub metod.|
+| zoomend           | Uruchamiany tuż po zakończeniu przez mapę przejścia z jednego poziomu powiększenia na inny w wyniku interakcji z użytkownikiem lub metod.|
+| zoomstart         | Uruchamiany tuż przed rozpoczęciem przez mapę przejścia z jednego poziomu powiększenia na inny w wyniku interakcji z użytkownikiem lub metod.|
+
 
 ## <a name="next-steps"></a>Następne kroki
 

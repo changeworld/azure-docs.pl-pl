@@ -1,5 +1,5 @@
 ---
-title: 'Node. js — szybki start: Twórz, Ładuj i badaj indeksy przy użyciu Azure Search interfejsów API REST — Azure Search'
+title: 'Szybki start: Tworzenie indeksu wyszukiwania w języku Node. js przy użyciu interfejsów API REST — Azure Search'
 description: Przykład środowiska Node. js dla Azure Search, pokazujący, jak tworzyć, ładować dane do i wysyłać zapytania z języka JavaScript.
 author: lobrien
 manager: nitinme
@@ -8,16 +8,16 @@ services: search
 ms.service: search
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 07/30/2019
+ms.date: 09/10/2019
 ms.author: laobri
-ms.openlocfilehash: b22a6371522674895465afac88e68f556ab09bcb
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 4e17247ea412b5472a0c23fd74ff7e53f375710d
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656301"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881504"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-nodejs"></a>Szybki start: Tworzenie indeksu Azure Search w programie Node. js
+# <a name="quickstart-create-an-azure-search-index-in-nodejs-using-rest-apis"></a>Szybki start: Tworzenie indeksu Azure Search w programie Node. js przy użyciu interfejsów API REST
 > [!div class="op_single_selector"]
 > * [JavaScript](search-get-started-nodejs.md)
 > * [C#](search-get-started-dotnet.md)
@@ -39,7 +39,7 @@ W tym przewodniku Szybki Start są używane następujące usługi, narzędzia i 
 + Przykładowa struktura indeksu i pasujące dokumenty są podane w tym artykule lub w katalogu [ **szybkiego startu** repozytorium](https://github.com/Azure-Samples/azure-search-javascript-samples/).
 + [Utwórz usługę Azure Search](search-create-service-portal.md) lub [Znajdź istniejącą usługę](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach bieżącej subskrypcji. Możesz użyć bezpłatnej usługi dla tego przewodnika Szybki Start.
 
-Rekomendowane
+Zalecane:
 
 * [Program Visual Studio Code](https://code.visualstudio.com)
 * Rozszerzenia [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) i [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) dla programu vscode.
@@ -124,7 +124,7 @@ Zastąp `[SERVICE_NAME]` wartość nazwą swojej usługi wyszukiwania. Zamień `
 
 ## <a name="1---create-index"></a>1 — Tworzenie indeksu 
 
-Utwórz plik **hotels_quickstart_index. JSON**.  Ten plik definiuje sposób, w jaki Azure Search współpracuje z dokumentami, które zostaną załadowane w następnym kroku. Każde pole zostanie zidentyfikowane przez `name` i ma określony. `type` Każde pole ma także serię atrybutów indeksu, które określają, czy Azure Search mogą przeszukiwać, filtrować, sortować i aspektować pola. Większość pól to proste typy danych, ale niektóre, takie jak `AddressType` złożone typy, które umożliwiają tworzenie rozbudowanych struktur danych w indeksie.  Więcej informacji o [obsługiwanych typach danych](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) i atrybutach [indeksu](https://docs.microsoft.com/azure/search/search-what-is-an-index#index-attributes)można znaleźć w części. 
+Utwórz plik **hotels_quickstart_index. JSON**.  Ten plik definiuje sposób, w jaki Azure Search współpracuje z dokumentami, które zostaną załadowane w następnym kroku. Każde pole zostanie zidentyfikowane przez `name` i ma określony. `type` Każde pole ma także serię atrybutów indeksu, które określają, czy Azure Search mogą przeszukiwać, filtrować, sortować i aspektować pola. Większość pól to proste typy danych, ale niektóre, takie jak `AddressType` złożone typy, które umożliwiają tworzenie rozbudowanych struktur danych w indeksie.  Więcej informacji o [obsługiwanych typach danych](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) i [atrybutach indeksu](https://docs.microsoft.com/azure/search/search-what-is-an-index#index-attributes)można znaleźć w części. 
 
 Dodaj następujący kod do **hotels_quickstart_index. JSON** lub [Pobierz plik](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/hotels_quickstart_index.json). 
 
@@ -453,7 +453,7 @@ Nie zapomnij, że końcowe `run()`wywołanie! Jest to punkt wejścia do programu
 
 Zwróć uwagę `AzureSearchClient.indexExistsAsync()` , `AzureSearchClient.deleteIndexAsync()` że nie przyjmują parametrów. Te funkcje są `AzureSearchClient.request()` wywoływane bez `bodyJson` argumentu. W `AzureSearchClient.request()`, ponieważ `bodyJson === null` jest `true`to, `init` struktura jest ustawiona jako tylko zlecenie http ("Get" dla `indexExistsAsync()` i "Delete" dla `deleteIndexAsync()`) i nagłówków, które określają klucz żądania.  
 
-Z kolei `AzureSearchClient.createIndexAsync(indexDefinition)` Metoda przyjmuje parametr . Funkcja w `index.js`, przekazuje zawartość pliku **hotels_quickstart_index. JSON** do `AzureSearchClient.createIndexAsync(indexDefinition)` metody. `run` Metoda przekazuje tę definicję do `AzureSearchClient.request()`. `createIndexAsync()` W `AzureSearchClient.request()`, ponieważ `bodyJson === null` jest teraz `false`, `init` struktura zawiera nie tylko czasownik http ( `body` "Put") i nagłówki, ale ustawia do danych definicji indeksu.
+Z `AzureSearchClient.createIndexAsync(indexDefinition)` _kolei Metoda przyjmuje_ parametr. Funkcja w `index.js`, przekazuje zawartość pliku **hotels_quickstart_index. JSON** do `AzureSearchClient.createIndexAsync(indexDefinition)` metody. `run` Metoda przekazuje tę definicję do `AzureSearchClient.request()`. `createIndexAsync()` W `AzureSearchClient.request()`, ponieważ `bodyJson === null` jest teraz `false`, `init` struktura zawiera nie tylko czasownik http ( `body` "Put") i nagłówki, ale ustawia do danych definicji indeksu.
 
 ### <a name="prepare-and-run-the-sample"></a>Przygotowywanie i uruchamianie przykładu
 
@@ -600,7 +600,7 @@ const run = async () => {
 }
 ```
 
-Ponownie uruchom program z `node index.js`. Powinien pojawić się nieco inny zestaw komunikatów od tych, które zostały podane w kroku 1. Tym razem indeks istnieje i powinien zostać wyświetlony komunikat o usunięciu, zanim aplikacja utworzy nowy indeks i opublikuje do niego dane. 
+Ponownie uruchom program z `node index.js`. Powinien pojawić się nieco inny zestaw komunikatów od tych, które zostały podane w kroku 1. Tym _razem indeks istnieje_ i powinien zostać wyświetlony komunikat o usunięciu, zanim aplikacja utworzy nowy indeks i opublikuje do niego dane. 
 
 ## <a name="3---search-an-index"></a>3 — Przeszukiwanie indeksu
 

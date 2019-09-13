@@ -10,13 +10,13 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/14/2018
-ms.openlocfilehash: 3fb958b446c3f1e78f78f40f112d8d55d37b0986
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 09/11/2019
+ms.openlocfilehash: 7600398d213748bdea9da5a483a8c10d486a8048
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141549"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915542"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Tworzenie wyzwalacza uruchamiającego potok w oknie wirowania
 Ten artykuł zawiera instrukcje dotyczące tworzenia, uruchamiania i monitorowania wyzwalacza okna wirowania. Aby uzyskać ogólne informacje o wyzwalaczach i obsługiwanych typach, zobacz temat [wykonywanie i wyzwalacze potoku](concepts-pipeline-execution-triggers.md).
@@ -25,11 +25,14 @@ Wyzwalacze okna wirowania to rodzaj wyzwalaczy uruchamianych w określonych odst
 
 ## <a name="data-factory-ui"></a>Interfejs użytkownika usługi Data Factory
 
-Aby utworzyć wyzwalacz okna wirowania w Azure Portal, wybierz opcję **wyzwól > okno > dalej**, a następnie skonfiguruj właściwości, które definiują okno wirowania.
+1. Aby utworzyć wyzwalacz okna wirowania w interfejsie użytkownika Data Factory, wybierz kartę **wyzwalacze** , a następnie wybierz pozycję **Nowy**. 
+1. Po otwarciu okienka konfiguracja wyzwalacza wybierz pozycję **wirowania okno**, a następnie zdefiniuj właściwości wyzwalacza okna wirowania. 
+1. Po zakończeniu wybierz pozycję **Zapisz**.
 
 ![Utwórz wyzwalacz okna wirowania w Azure Portal](media/how-to-create-tumbling-window-trigger/create-tumbling-window-trigger.png)
 
 ## <a name="tumbling-window-trigger-type-properties"></a>Właściwości typu wyzwalacza okna wirowania
+
 Okno wirowania ma następujące właściwości typu wyzwalacza:
 
 ```
@@ -94,7 +97,7 @@ Poniższa tabela zawiera ogólne omówienie głównych elementów JSON, które s
 | **type** | Typ wyzwalacza. Typ to stała wartość "TumblingWindowTrigger". | String | "TumblingWindowTrigger" | Tak |
 | **runtimeState** | Bieżący stan czasu uruchomienia wyzwalacza.<br/>**Uwaga**: Ten element jest \<tylko do odczytu >. | String | "Uruchomiona", "zatrzymana", "wyłączona" | Tak |
 | **frequency** | Ciąg, który reprezentuje jednostkę częstotliwości (minuty lub godziny), przy której wyzwalacz powtarza się. Jeśli wartości daty **rozpoczęcia** są bardziej szczegółowe niż wartość **częstotliwości** , daty **rozpoczęcia** są brane pod uwagę podczas obliczania granic okna. Na przykład jeśli wartość **częstotliwości** wynosi co godzinę, a wartość **StartTime** to 2017-09-01T10:10:10Z, pierwsze okno to (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z). | String | "minuta", "godzina"  | Tak |
-| **interval** | Dodatnia liczba całkowita oznaczająca interwał wartości właściwości **frequency**, która określa częstotliwość uruchamiania wyzwalacza. Jeśli na przykład **Interwał** wynosi 3, a **częstotliwość** to "godzina", wyzwalacz powtarza się co 3 godziny. | Integer | Dodatnia liczba całkowita. | Tak |
+| **interval** | Dodatnia liczba całkowita oznaczająca interwał wartości właściwości **frequency**, która określa częstotliwość uruchamiania wyzwalacza. Jeśli na przykład **Interwał** wynosi 3, a **częstotliwość** to "godzina", wyzwalacz powtarza się co 3 godziny. <br/>**Uwaga**: Minimalny interwał okna to 15 minut. | Integer | Dodatnia liczba całkowita. | Tak |
 | **startTime**| Pierwsze wystąpienie, które może znajdować się w przeszłości. Pierwszy interwał wyzwalacza to (**StartTime**,**Interwał** **StartTime** + ). | DateTime | Wartość daty i godziny. | Tak |
 | **endTime**| Ostatnie wystąpienie, które może znajdować się w przeszłości. | DateTime | Wartość daty i godziny. | Tak |
 | **delay** | Czas opóźnienia rozpoczęcia przetwarzania danych w oknie. Uruchomienie potoku jest uruchamiane po upływie oczekiwanego czasu wykonania i ilości **opóźnienia**. **Opóźnienie** określa, jak długo wyzwalacz czeka poza czas oczekiwania przed wyzwoleniem nowego uruchomienia. **Opóźnienie** nie zmienia okna **StartTime**. Na przykład wartość **opóźnienia** 00:10:00 oznacza opóźnienie wynoszące 10 minut. | Timespan<br/>(hh: mm: SS)  | Wartość TimeSpan, której wartością domyślną jest 00:00:00. | Nie |

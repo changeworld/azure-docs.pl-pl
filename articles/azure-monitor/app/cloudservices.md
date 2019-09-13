@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 64995ad0560efd06bfa0084c948527e8a01e1890
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 9325d2dd6c897f4c8dacb3dcf3a382f9f0e856a8
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "67443334"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933006"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights dla usług Azure Cloud Services
 [Application Insights][start] mogą monitorować [aplikacje usługi w chmurze platformy Azure](https://azure.microsoft.com/services/cloud-services/) pod kątem dostępności, wydajności, błędów i użycia przez połączenie danych z zestawów sdk Application Insights z danymi [Diagnostyka Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) z usług w chmurze. Dzięki uzyskiwanym opiniom dotyczącym wydajności i skuteczności aplikacji możesz dokonać opartych na informacjach wyborów dotyczących kierunku projektu w każdym cyklu życia.
@@ -63,7 +63,7 @@ Każdy zasób należy do grupy zasobów. Grupy zasobów służą do zarządzania
 ### <a name="resources-for-components"></a>Zasoby dla składników
 Zalecamy utworzenie osobnego zasobu dla każdego składnika aplikacji. Oznacza to, że tworzysz zasób dla każdej roli sieci Web i roli procesu roboczego. Każdy składnik można analizować oddzielnie, ale utworzysz [pulpit nawigacyjny](../../azure-monitor/app/overview-dashboard.md) , który łączy kluczowe wykresy ze wszystkich składników, dzięki czemu można je porównywać i monitorować razem w jednym widoku. 
 
-Alternatywnym podejściem jest wysyłanie danych telemetrycznych z więcej niż jednej roli do tego samego zasobu, ale [dodanie właściwości wymiaru do każdego elementu](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer) telemetrii, który identyfikuje jego rolę źródłową. W tym podejściu wykresy metryk, takie jak wyjątki, zwykle pokazują agregację liczników z różnych ról, ale w razie potrzeby można podzielić wykres na segmenty. Możesz również filtrować wyszukiwania według tego samego wymiaru. Alternatywą jest łatwiejsze wyświetlanie wszystkiego w tym samym czasie, ale może to również prowadzić do pomyłek między rolami.
+Alternatywnym podejściem jest wysyłanie danych telemetrycznych z więcej niż jednej roli do tego samego zasobu, ale [dodanie właściwości wymiaru do każdego elementu telemetrii](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer) , który identyfikuje jego rolę źródłową. W tym podejściu wykresy metryk, takie jak wyjątki, zwykle pokazują agregację liczników z różnych ról, ale w razie potrzeby można podzielić wykres na segmenty. Możesz również filtrować wyszukiwania według tego samego wymiaru. Alternatywą jest łatwiejsze wyświetlanie wszystkiego w tym samym czasie, ale może to również prowadzić do pomyłek między rolami.
 
 Telemetria przeglądarki zwykle jest zawarta w tym samym zasobie, co jej rola sieci Web po stronie serwera.
 
@@ -84,8 +84,9 @@ Jeśli postanowisz utworzyć oddzielny zasób dla każdej roli i być może jest
 
     ![Okienko Application Insights](./media/cloudservices/01-new.png)
 
-1. Z listy rozwijanej **Typ aplikacji** wybierz pozycję **aplikacja sieci Web ASP.NET**.  
-    Każdy zasób jest identyfikowany przez klucz Instrumentacji. Ten klucz może być potrzebny później, jeśli chcesz ręcznie skonfigurować lub zweryfikować konfigurację zestawu SDK.
+1. Z listy rozwijanej **Typ aplikacji** wybierz pozycję **aplikacja sieci Web ASP.NET**.
+
+Każdy zasób jest identyfikowany przez klucz Instrumentacji. Ten klucz może być potrzebny później, jeśli chcesz ręcznie skonfigurować lub zweryfikować konfigurację zestawu SDK.
 
 
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>Konfigurowanie diagnostyki platformy Azure dla każdej roli
@@ -108,7 +109,7 @@ Za pomocą tej opcji można dodać do dowolnej roli niestandardowe telemetrię b
 
 W programie Visual Studio skonfiguruj zestaw SDK usługi Application Insights dla każdego projektu aplikacji w chmurze.
 
-1. Aby skonfigurować **role sieci Web**, kliknij prawym przyciskiem myszy projekt, a następnie wybierz pozycję **Konfiguruj Application Insights** lub **Dodaj > Application Insights**dane telemetryczne.
+1. Aby skonfigurować **role sieci Web**, kliknij prawym przyciskiem myszy projekt, a następnie wybierz pozycję **Konfiguruj Application Insights** lub **Dodaj > Application Insights dane telemetryczne**.
 
 1. Aby skonfigurować **role procesów roboczych**: 
 
@@ -133,8 +134,9 @@ W programie Visual Studio skonfiguruj zestaw SDK usługi Application Insights dl
     * [Rola procesu roboczego](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L232)
     * [Dla stron sieci Web](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13) 
 
-1. Ustaw plik *ApplicationInsights. config* , który ma być zawsze kopiowany do katalogu wyjściowego.  
-    W pliku *. config* zostanie wyświetlony komunikat z prośbą o umieszczenie w niej klucza Instrumentacji. Jednak w przypadku aplikacji w chmurze lepiej jest ustawić ją z pliku *. cscfg* . Takie podejście zapewnia, że rola jest prawidłowo identyfikowana w portalu.
+1. Ustaw plik *ApplicationInsights. config* , który ma być zawsze kopiowany do katalogu wyjściowego.
+
+   W pliku *. config* zostanie wyświetlony komunikat z prośbą o umieszczenie w niej klucza Instrumentacji. Jednak w przypadku aplikacji w chmurze lepiej jest ustawić ją z pliku *. cscfg* . Takie podejście zapewnia, że rola jest prawidłowo identyfikowana w portalu.
 
 ## <a name="set-up-status-monitor-to-collect-full-sql-queries-optional"></a>Skonfiguruj monitor stanu, aby zbierać pełne zapytania SQL (opcjonalnie)
 
@@ -171,16 +173,19 @@ Ten krok jest wymagany tylko wtedy, gdy chcesz przechwytywać pełne zapytania S
 
 1. Uruchom aplikację i zaloguj się do platformy Azure. 
 
-1. Otwórz utworzone zasoby Application Insights.  
-    Poszczególne punkty danych są wyświetlane w obszarze [wyszukiwania](../../azure-monitor/app/diagnostic-search.md), a zagregowane dane są wyświetlane w [Eksploratorze metryk](../../azure-monitor/app/metrics-explorer.md). 
+1. Otwórz utworzone zasoby Application Insights.
+
+   Poszczególne punkty danych są wyświetlane w obszarze [wyszukiwania][diagnostic], a zagregowane dane są wyświetlane w [Eksploratorze metryk](../../azure-monitor/app/metrics-explorer.md).
 
 1. Dodaj więcej danych telemetrycznych (Zobacz następne sekcje), a następnie Opublikuj swoją aplikację, aby uzyskać informacje na temat diagnostyki i użycia na żywo. 
 
 Jeśli nie ma żadnych danych, wykonaj następujące czynności:
+
 1. Aby wyświetlić poszczególne zdarzenia, Otwórz kafelek [wyszukiwania][diagnostic] .
 1. W aplikacji otwórz różne strony, aby wygenerowały pewne dane telemetryczne.
 1. Zaczekaj kilka sekund, a następnie kliknij przycisk **Odśwież**.  
-    Aby uzyskać więcej informacji, zobacz temat [Rozwiązywanie problemów][qna].
+
+Aby uzyskać więcej informacji, zobacz temat [Rozwiązywanie problemów][qna].
 
 ## <a name="view-azure-diagnostics-events"></a>Wyświetlanie zdarzeń Diagnostyka Azure
 [Diagnostyka Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) informacje można znaleźć w Application Insights w następujących lokalizacjach:

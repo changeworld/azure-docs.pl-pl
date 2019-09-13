@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 996a084fd653b2100d94313e8801d915b4bf2cf3
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 25615ae8bc9bc8cadbe973f3a1859c2d43b067a9
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348174"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915576"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>Najlepsze rozwiązania dotyczące korzystania z Azure Maps Search Service
 
@@ -27,7 +27,7 @@ Azure Maps [Search Service](https://docs.microsoft.com/rest/api/maps/search) obe
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby wykonać wywołania do interfejsów API usługi Maps, musisz mieć konto i klucz mapy. Aby uzyskać informacje na temat tworzenia konta i pobierania klucza, zobacz [jak zarządzać kontem i kluczami Azure Maps](how-to-manage-account-keys.md).
+Aby wykonać wywołania do interfejsów API usługi Maps, musisz mieć konto i klucz mapy. Aby uzyskać informacje na temat tworzenia konta, postępuj zgodnie z instrukcjami w sekcji [Zarządzanie kontem](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) i wykonaj kroki opisane w sekcji [Uzyskiwanie klucza podstawowego](./tutorial-search-location.md#getkey) , aby pobrać podstawowy klucz subskrypcji dla konta.
 
 > [!Tip]
 > Aby wysłać zapytanie do usługi wyszukiwania, możesz użyć [aplikacji Poster](https://www.getpostman.com/apps) do kompilowania wywołań REST lub można użyć dowolnego preferowanego środowiska DEWELOPERSKIEGO interfejsu API.
@@ -700,7 +700,7 @@ Gdy typ odpowiedzi jest **geometryczny**, może zawierać identyfikator geometri
 } 
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Dowiedz się [, jak kompilować żądania usługi Search Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address).
 * Zapoznaj się z [dokumentacją interfejsu API usługi Azure Maps Search](https://docs.microsoft.com/rest/api/maps/search). 

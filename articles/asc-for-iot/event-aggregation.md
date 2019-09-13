@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/21/2019
 ms.author: mlottner
-ms.openlocfilehash: a8f751d0a40a8d8e1555549c200a9a7ca8ef0661
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: b8100fc78eced9aa26fe185a8d68244d8f665ff2
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600620"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933902"
 ---
 # <a name="security-agent-event-aggregation"></a>Agregacja zdarzeń agenta zabezpieczeń
 
@@ -59,9 +59,10 @@ Po analizie Azure Security Center dla usługi IoT tworzy alerty zabezpieczeń dl
 
 Czas rozpoczęcia agregacji, czas zakończenia i liczba trafień dla każdego zdarzenia są rejestrowane w polu usługi Event **ExtraDetails** w log Analytics do użycia podczas badania. 
 
+Każde zagregowane zdarzenie przedstawia 24-godzinny okres zebranych alertów. Korzystając z menu Opcje zdarzenia w lewym górnym rogu każdego zdarzenia, można **odrzucić** każde pojedyncze zagregowane zdarzenie.    
 
 ## <a name="event-aggregation-twin-configuration"></a>Konfiguracja dwuosiowa agregacji zdarzeń
-Wprowadź zmiany w konfiguracji Azure Security Center dla agregacji zdarzeń IoT w [obiekcie konfiguracji agenta](how-to-agent-configuration.md) dla nieazureiotsecurityego modułu w module.
+Wprowadź zmiany w konfiguracji Azure Security Center dla agregacji zdarzeń IoT w [obiekcie konfiguracji agenta](how-to-agent-configuration.md) dla **nieazureiotsecurityego** modułu w module.
 
 | Nazwa konfiguracji | Możliwe wartości | Szczegóły | Uwagi |
 |:-----------|:---------------|:--------|:--------|

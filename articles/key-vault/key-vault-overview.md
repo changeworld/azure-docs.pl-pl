@@ -2,20 +2,20 @@
 title: Omówienie usługi Azure Key Vault — Azure Key Vault | Microsoft Docs
 description: Azure Key Vault to usługa w chmurze, która działa jako bezpieczny magazyn wpisów tajnych.
 services: key-vault
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
-ms.author: barclayn
-ms.openlocfilehash: 456f828f09a710009d30e1c0a669cde658318ae0
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.author: mbaldwin
+ms.openlocfilehash: e814c9f7859fb18280c3a9ffd72bd4053a4895ad
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65789372"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883218"
 ---
 # <a name="what-is-azure-key-vault"></a>Co to jest usługa Azure Key Vault?
 
@@ -42,7 +42,7 @@ Udzielenie dostępu do magazynu kluczy wywołującemu użytkownikowi lub aplikac
 
 Uwierzytelnianie jest wykonywane za pośrednictwem usługi Azure Active Directory. Autoryzacja może odbywać się przy użyciu funkcji kontroli dostępu na podstawie ról (RBAC, role-based access control) lub zasad dostępu usługi Key Vault. Funkcja RBAC jest używana do obsługi zarządzania magazynami, a zasady dostępu do magazynu kluczy są używane podczas próby uzyskania dostępu do danych przechowywanych w magazynie.
 
-Usługa Azure Key Vault może być chroniona za pomocą programowego lub sprzętowego modułu HSM. W przypadku sytuacji wymagających dodatkowych zabezpieczeń możesz zaimportować klucz do modułu HSM lub wygenerować w nim klucze, które nigdy nie opuszczają modułu HSM. Firma Microsoft używa nCipher sprzętowych modułów zabezpieczeń. Można użyć narzędzia nCipher, aby przenieść klucz z modułu HSM usługi Azure Key Vault.
+Usługa Azure Key Vault może być chroniona za pomocą programowego lub sprzętowego modułu HSM. W przypadku sytuacji wymagających dodatkowych zabezpieczeń możesz zaimportować klucz do modułu HSM lub wygenerować w nim klucze, które nigdy nie opuszczają modułu HSM. Firma Microsoft używa oprogramowanie wspomagające nCipher sprzętowych modułów zabezpieczeń. Za pomocą narzędzi oprogramowanie wspomagające nCipher można przenieść klucz z modułu HSM do Azure Key Vault.
 
 Usługa Azure Key Vault została zaprojektowana w taki sposób, aby firma Microsoft nie miała wglądu w Twoje dane ani nie mogła ich wyodrębnić.
 
@@ -52,7 +52,7 @@ Po utworzeniu kilku magazynów usługi Key Vault może zajść potrzeba monitoro
 
 - Archiwizowanie na koncie magazynu.
 - Przesyłanie strumieniowe do centrum zdarzeń.
-- Wyślij dzienniki do dzienników usługi Azure Monitor.
+- Wyślij dzienniki do Azure Monitor dzienników.
 
 Kontrolujesz dzienniki i możesz je zabezpieczyć przez ograniczenie dostępu, a także możesz usunąć dzienniki, które nie są już potrzebne.
 
@@ -77,7 +77,7 @@ Jako bezpieczny magazyn na platformie Azure usługa Key Vault jest używana do u
 
 Samą usługę Key Vault można zintegrować z kontami magazynu, centrami zdarzeń i analizą dzienników.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Szybki start: tworzenie usługi Azure Key Vault przy użyciu interfejsu wiersza polecenia](quick-create-cli.md)
 - [Konfigurowanie aplikacji internetowej platformy Azure w celu odczytu wpisu tajnego z usługi Key Vault](tutorial-web-application-keyvault.md)

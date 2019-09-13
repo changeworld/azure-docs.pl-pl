@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6aca340994f10bd546a25e577258d90d7b7b1368
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 2721e134e03d3d622e61085dc39a2914098ba570
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860956"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70930736"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Informacje o wersji usługi Azure Machine Learning
 
@@ -25,7 +25,7 @@ Zobacz [listę znanych problemów](resource-known-issues.md) informacje na temat
 
 ## <a name="2019-09-09"></a>2019-09-09
 
-### <a name="new-web-experience-for-azure-machine-learning-workspaces-preview"></a>Nowe środowisko internetowe dla Azure Machine Learning obszarów roboczych (wersja zapoznawcza)
+### <a name="new-web-experience-preview-for-azure-machine-learning-workspaces"></a>Nowe środowisko sieci Web (wersja zapoznawcza) dla Azure Machine Learning obszarów roboczych 
 Nowe środowisko internetowe umożliwia analitykom danych i inżynierom danych ukończenie kompleksowych cykli życia uczenia maszynowego z przygotowywanie i wizualizowania danych w celu uczenia i wdrażania modeli w jednej lokalizacji. 
 
 ![Interfejs użytkownika obszaru roboczego Azure Machine Learning (wersja zapoznawcza)](./media/azure-machine-learning-release-notes/new-ui-for-workspaces.jpg)
@@ -34,7 +34,7 @@ Nowe środowisko internetowe umożliwia analitykom danych i inżynierom danych u
 
 Korzystając z tego nowego interfejsu Azure Machine Learning, możesz teraz:
 + Zarządzanie notesami lub łączenie się z usługą Jupyter
-+ Uruchamianie zautomatyzowanych eksperymentów ML
++ [Uruchamianie zautomatyzowanych eksperymentów ML](tutorial-first-experiment-automated-ml.md)
 + [Tworzenie zestawów danych z lokalnych plików, magazynów elementów, & plików sieci Web](how-to-create-register-datasets.md)
 + Eksplorowanie & Przygotowanie zestawów danych do tworzenia modelu
 + Monitoruj dryfowanie danych dla modeli 

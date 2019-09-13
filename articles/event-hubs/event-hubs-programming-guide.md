@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: d9a1dff9c44403ad14e58b3fc3cda880cf65a29c
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 28b5c2db0f347b27beb31d427c7f189d74903dff
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679107"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70913978"
 ---
 # <a name="programming-guide-for-azure-event-hubs"></a>Przewodnik programowania dotyczący usługi Azure Event Hubs
 W tym artykule omówiono kilka typowych scenariuszy, w pisaniu kodu za pomocą usługi Azure Event Hubs. Przyjęto założenie, że wstępnie znasz i rozumiesz usługę Event Hubs. Omówienie koncepcji usługi Event Hubs można znaleźć w temacie [Przegląd usługi Event Hubs](event-hubs-what-is-event-hubs.md).
@@ -140,7 +140,10 @@ Klasa [EventProcessorHost][] implementuje również mechanizm tworzenia punktów
 
 ## <a name="publisher-revocation"></a>Odwołanie wydawcy
 
-Oprócz zaawansowanych funkcji środowiska wykonawczego [EventProcessorHost][], usługa Event Hubs umożliwia odwołanie wydawcy w celu zablokowania określonym wydawcom możliwości wysyłania zdarzeń do Centrum zdarzeń. Funkcje te są przydatne, jeśli naruszono bezpieczeństwo tokenu wydawcy lub aktualizacja oprogramowania powoduje nieuprawnione zachowanie. W takich sytuacjach dla tożsamości wydawcy, która jest częścią jego tokenu sygnatury dostępu współdzielonego, można zablokować dostęp do publikowania zdarzeń.
+Oprócz zaawansowanych funkcji w czasie wykonywania hosta procesora zdarzeń usługa Event Hubs umożliwia [odwoływanie wydawcy](/rest/api/eventhub/revoke-publisher) w celu zablokowania wysyłania zdarzeń przez określonych wydawców do centrum zdarzeń. Funkcje te są przydatne, jeśli naruszono bezpieczeństwo tokenu wydawcy lub aktualizacja oprogramowania powoduje nieuprawnione zachowanie. W takich sytuacjach dla tożsamości wydawcy, która jest częścią jego tokenu sygnatury dostępu współdzielonego, można zablokować dostęp do publikowania zdarzeń.
+
+> [!NOTE]
+> Obecnie tylko interfejs API REST obsługuje tę funkcję ([odwołanie wydawcy](/rest/api/eventhub/revoke-publisher)).
 
 Aby uzyskać więcej informacji o odwołaniu wydawcy i sposobie wysyłania zdarzeń do usługi Event Hubs jako wydawca, zobacz przykład [Event Hubs Large Scale Secure Publishing](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab) (Bezpieczne publikowanie na dużą skalę w usłudze Event Hubs).
 

@@ -1,18 +1,18 @@
 ---
-title: Co nowego w Azure Site Recovery | Microsoft Docs
+title: Co nowego w Azure Site Recovery
 description: Zawiera podsumowanie nowych funkcji wprowadzonych w Azure Site Recovery
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 09/12/2019
 ms.author: raynew
-ms.openlocfilehash: 5cd4b86c9c70f713a207f7feea9fa8efc06b6247
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 2d40e6fef215219035720ee64492a91fcdafb472
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70146903"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933933"
 ---
 # <a name="whats-new-in-site-recovery"></a>Co nowego w usłudze Site Recovery
 
@@ -24,16 +24,56 @@ Możesz postępować zgodnie z Site Recovery powiadomieniami o aktualizacji w ka
 
 W przypadku składników Site Recovery obsługiwane są wersje N-4, gdzie N to najnowsza wydana wersja. Są one podsumowane w poniższej tabeli.
 
-**Aktualizacja** |  **Ujednolicona konfiguracja** | **Komórki jajowe serwera konfiguracji** | **Agent usługi mobilności** | **Dostawca Site Recovery** | **Agent Recovery Services** 
---- | --- | --- | --- | ---
+**Aktualizacja** |  **Ujednolicona konfiguracja** | **Komórki jajowe serwera konfiguracji** | **Agent usługi mobilności** | **Dostawca Site Recovery** | **Agent Recovery Services**
+--- | --- | --- | --- | --- | ---
+[Pakiet zbiorczy 40](https://support.microsoft.com/help/4517283/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
 [Pakiet zbiorczy 39](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
 [Pakiet zbiorczy 38](https://support.microsoft.com/help/4513507/) | 9.26.5269.1 | 5.1.4500.0 | 9.26.5269.1 | 5.1.4500.0 | 2.0.9165.0
 [Pakiet zbiorczy 37](https://support.microsoft.com/help/4508614/) | 9.25.5241.1 | 5.1.4300.0 | 9.25.5241.1 | 5.1.4300.0 | 2.0.9163.0
 [Pakiet zbiorczy 36](https://support.microsoft.com/help/4503156/) | 9.24.5211.1 | 5.1.4150.0 | 9.24.5211.1 | 5.1.4150.0 | 2.0.9160.0 
-[Pakiet zbiorczy 35](https://support.microsoft.com/help/4494485/) | 9.23.5163.1 | 5.1.4000.0 | 9.23.5163.1 | 5.1.4000.0 | 2.0.9156.0 
         
 
 [Dowiedz się więcej](service-updates-how-to.md) na temat instalacji i obsługi aktualizacji.
+
+
+## <a name="updates-september-2019"></a>Aktualizacje (2019 września)
+
+### <a name="update-rollup-40"></a>Pakiet zbiorczy aktualizacji 40
+
+[Pakiet zbiorczy aktualizacji 40](h https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) udostępnia następujące aktualizacje.
+
+**Aktualizacja** | **Szczegóły**
+--- | ---
+**Dostawcy i agenci** | Aktualizacje Site Recovery agentów i dostawców (zgodnie z opisem w pakiecie zbiorczym)
+**Rozwiązywanie poprawek/ulepszeń** | Szereg poprawek i ulepszeń (zgodnie z opisem w pakiecie zbiorczym)
+
+
+
+
+### <a name="azure-vm-disaster-recovery"></a>Odzyskiwanie po awarii maszyny wirtualnej platformy Azure
+
+W tabeli zestawiono nowe funkcje odzyskiwania po awarii maszyny wirtualnej platformy Azure.
+
+**Funkcja** | **Szczegóły**
+--- | ---
+**Oczyść po powrocie po awarii** | Po przejściu w tryb failover na pomocniczą platformę Azure, a następnie po awarii do regionu podstawowego program Site Recovery automatycznie czyści maszyny w regionie pomocniczym. Nie ma potrzeby ręcznego usuwania maszyn wirtualnych i kart interfejsu sieciowego.
+**Test pracy w trybie failover zachowuje adres IP** | Teraz można zachować adres IP źródłowej maszyny wirtualnej podczas przechodzenia do szczegółów odzyskiwania po awarii i wybrać statyczny adres IP dla testowego trybu failover.
+
+## <a name="vmwarephysical-server-disaster-recovery"></a>Odzyskiwanie po awarii oprogramowania VMware/serwera fizycznego
+
+Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
+
+**Funkcja** | **Szczegóły**
+--- | ---
+Nowe alerty serwera przetwarzania | Dodaliśmy nowe alerty serwera przetwarzania. [Dowiedz się więcej](vmware-physical-azure-monitor-process-server.md). 
+
+## <a name="hyper-v-disaster-recovery"></a>Odzyskiwanie awaryjne funkcji Hyper-V
+
+Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
+
+**Funkcja** | **Szczegóły**
+--- | ---
+Konto magazynu | Site Recovery teraz obsługuje korzystanie z konta magazynu z włączoną funkcją kontroli dostępu opartej na rolach (RBAC). [Dowiedz się więcej](../storage/common/storage-account-manage.md#access-control) o kontroli dostępu dla kont magazynu. 
 
 
 ## <a name="updates-august-2019"></a>Aktualizacje (sierpień 2019)

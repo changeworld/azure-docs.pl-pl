@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: 25c732d1311e2bcffe0fda0d5e427d5df5f99da6
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 1d9fc022a0b0d5ba96517b4ed06b4a2576245a26
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70065943"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70886027"
 ---
 # <a name="security-groups"></a>Grupy zabezpieczeń
 <a name="network-security-groups"></a>
@@ -87,7 +87,7 @@ Poniższe Tagi usługi są dostępne do użycia w [regułach sieciowych grup zab
 * **SQL*** (tylko Menedżer zasobów): Ten tag określa prefiksy adresów Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL i Azure SQL Data Warehouse usług. W przypadku określenia wartości *Sql* dozwolony lub blokowany jest ruch do usługi Sql. Jeśli chcesz zezwolić na dostęp do bazy danych SQL w określonym [regionie](https://azure.microsoft.com/regions), możesz określić region w następującym formacie SQL. [nazwa regionu]. Tag reprezentuje usługę, ale nie konkretne wystąpienia usługi. Na przykład tag reprezentuje usługę Azure SQL Database, ale nie konkretną bazę danych lub serwer SQL. Ten tag jest zalecany dla reguły zabezpieczeń dla ruchu wychodzącego. 
 * **SqlManagement*** (tylko Menedżer zasobów): Ten tag określa prefiksy adresów ruchu zarządzania dla dedykowanych wdrożeń SQL. Jeśli określisz wartość SqlManagement dla wartości, ruch jest dozwolony lub zabroniony do elementu SqlManagement. Ten tag jest zalecany dla reguły zabezpieczeń dla ruchu przychodzącego/wychodzącego. 
 * **Magazyn*** (tylko Menedżer zasobów): ten tag określa przestrzeń adresów IP dla usługi Azure Storage. W przypadku określenia wartości *Storage* dozwolony lub blokowany jest ruch do usługi Storage. Jeśli chcesz zezwolić na dostęp tylko do magazynu w określonym [regionie](https://azure.microsoft.com/regions), możesz określić region w następującym formacie. [nazwa regionu]. Tag reprezentuje usługę, ale nie konkretne wystąpienia usługi. Na przykład tag reprezentuje usługę Azure Storage, ale nie konkretne konto usługi Azure Storage. Ten tag jest zalecany dla reguły zabezpieczeń dla ruchu wychodzącego. 
-* **VirtualNetwork** (Resource Manager) (**VIRTUAL_NETWORK** — model klasyczny): Ten tag obejmuje przestrzeń adresową sieci wirtualnej (wszystkie zakresy CIDR zdefiniowane dla sieci wirtualnej), wszystkie połączone lokalne przestrzenie adresowe, równorzędne [](virtual-network-peering-overview.md) sieci wirtualne lub sieć wirtualną połączone z [bramą sieci wirtualnej](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json) i adresem prefiksy używane w przypadku [tras zdefiniowanych przez użytkownika](virtual-networks-udr-overview.md). Należy pamiętać, że ten tag może zawierać trasy domyślnej. 
+* **VirtualNetwork** (Resource Manager) (**VIRTUAL_NETWORK** — model klasyczny): Ten tag obejmuje przestrzeń adresową sieci wirtualnej (wszystkie zakresy CIDR zdefiniowane dla sieci wirtualnej), wszystkie połączone lokalne przestrzenie adresowe, [równorzędne](virtual-network-peering-overview.md) sieci wirtualne lub sieć wirtualną połączoną z [bramą sieci wirtualnej](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json), [ wirtualny adres IP hosta](security-overview.md#azure-platform-considerations) i prefiksy adresów używane na [trasach zdefiniowanych przez użytkownika](virtual-networks-udr-overview.md). Należy pamiętać, że ten tag może zawierać trasy domyślnej. 
 
 > [!NOTE]
 > Tagi usług platformy Azure określają prefiksy adresów określonych chmur, które są używane. 

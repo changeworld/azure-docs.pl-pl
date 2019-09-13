@@ -2,8 +2,8 @@
 title: Monitorowanie opcji - sprzętowego modułu zabezpieczeń platformy Azure w wersji dedykowanej | Dokumentacja firmy Microsoft
 description: Omówienie platformy Azure w wersji dedykowanej sprzętowego modułu zabezpieczeń monitorowanie obowiązki i opcje monitorowania
 services: dedicated-hsm
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
@@ -11,13 +11,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.author: barclayn
-ms.openlocfilehash: 2bcf1d1e007398cf80839f5e1d0bac78fd80db07
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mbaldwin
+ms.openlocfilehash: 3fde577a6b0efb7584e1c9efd57c95583ebe4ec9
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60912233"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881422"
 ---
 # <a name="azure-dedicated-hsm-monitoring"></a>Monitorowanie platformy Azure w wersji dedykowanej przez moduł HSM
 

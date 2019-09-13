@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 09/12/2019
 ms.author: ellbe
-ms.openlocfilehash: ea7d2c451127283f2af204de2c961747880e1bfe
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: 843b92d3fe34d592b39cd86ece447fef2ff9af67
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494899"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931110"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>Automatycznie zidentyfikuj język mówiony przy użyciu modelu identyfikacji języka
 
@@ -59,4 +59,5 @@ Język dominujący modelu jest dostępny w formacie JSON usługi Insights jako `
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Omówienie](video-indexer-overview.md)
+* [Omówienie](video-indexer-overview.md)
+* [Automatyczne identyfikowanie i transkrypcja zawartości w wielu językach](multi-language-identification-transcription.md)

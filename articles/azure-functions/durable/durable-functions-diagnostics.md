@@ -2,19 +2,19 @@
 title: Diagnostyka w Durable Functions — Azure
 description: Dowiedz się, jak zdiagnozować problemy przy użyciu rozszerzenia Durable Functions Azure Functions.
 services: functions
-author: ggailey777
+author: cgillum
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 7c02d4dfde7869da7985817b06f6de398bbef38d
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: d2badee3eaa5a9af48e89adc1b59beacc1571792
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734491"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933507"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Diagnostyka w Durable Functions na platformie Azure
 
@@ -28,11 +28,11 @@ Azure Functions trwałego rozszerzenia emituje także *zdarzenia śledzenia* , k
 
 ### <a name="tracking-data"></a>Śledzenie danych
 
-Każde zdarzenie cyklu życia wystąpienia aranżacji powoduje zapisanie zdarzenia śledzenia w kolekcji **TRACES** w Application Insights. To zdarzenie zawiera ładunek **customDimensions** z kilkoma polami.  Wszystkie nazwy pól są poprzedzone `prop__`.
+Każde zdarzenie cyklu życia wystąpienia aranżacji powoduje zapisanie zdarzenia śledzenia w kolekcji TRACES w Application Insights. To zdarzenie zawiera ładunek **customDimensions** z kilkoma polami.  Wszystkie nazwy pól są poprzedzone `prop__`.
 
 * **hubName**: Nazwa centrum zadań, w którym są uruchomione aranżacje.
 * Nazwa: Nazwa aplikacji funkcji. Jest to przydatne, gdy masz wiele aplikacji funkcji, które współużytkują to samo wystąpienie Application Insights.
-* **gniazdoname**: [Miejsce wdrożenia](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/) , w którym jest uruchomiona bieżąca aplikacja funkcji. Jest to przydatne w przypadku korzystania z miejsc wdrożenia w celu uzyskania wersji swoich aranżacji.
+* **gniazdoname**: [Miejsce wdrożenia](../functions-deployment-slots.md) , w którym jest uruchomiona bieżąca aplikacja funkcji. Jest to przydatne w przypadku korzystania z miejsc wdrożenia w celu uzyskania wersji swoich aranżacji.
 * **funkcjaname**: Nazwa funkcji programu Orchestrator lub Activity.
 * **funkcjatype**: Typ funkcji, na przykład **Orchestrator** lub **Activity**.
 * **Identyfikator wystąpienia**: Unikatowy identyfikator wystąpienia aranżacji.
@@ -40,7 +40,7 @@ Każde zdarzenie cyklu życia wystąpienia aranżacji powoduje zapisanie zdarzen
   * **Zaplanowane**: Funkcja została zaplanowana do wykonania, ale jeszcze jej nie uruchomiono.
   * **Uruchomiono**: Funkcja zaczęła działać, ale nie została jeszcze oczekiwana lub ukończona.
   * **Oczekiwane**: Program Orchestrator zaplanował pewną pracę i oczekuje na jego zakończenie.
-  * **Nasłuchiwanie**: Koordynator nasłuchuje powiadomienia o zdarzeniu zewnętrznym.
+  * Nasłuchiwanie: Koordynator nasłuchuje powiadomienia o zdarzeniu zewnętrznym.
   * **Ukończono**: Funkcja została ukończona pomyślnie.
   * **Niepowodzenie**: Działanie funkcji nie powiodło się z powodu błędu.
 * **Przyczyna**: Dodatkowe dane skojarzone ze zdarzeniem śledzenia. Jeśli na przykład wystąpienie oczekuje na powiadomienie o zdarzeniu zewnętrznym, to pole wskazuje nazwę zdarzenia, dla którego oczekuje. Jeśli funkcja zakończyła się niepowodzeniem, będzie zawierać szczegóły błędu.
@@ -107,7 +107,7 @@ Aby włączyć emitowanie pełnych zdarzeń powtarzania aranżacji `LogReplayEve
 
 ### <a name="single-instance-query"></a>Zapytanie o pojedynczym wystąpieniu
 
-Następujące zapytanie pokazuje historyczne dane śledzenia dla pojedynczego wystąpienia aranżacji funkcji w [sekwencji Hello](durable-functions-sequence.md) . Jest ona zapisywana przy użyciu [języka zapytań Application Insights (AIQL)](https://aka.ms/LogAnalyticsLanguageReference). Filtruje wykonywanie powtarzania, tak aby była wyświetlana tylko ścieżka wykonywania *logicznego* . Zdarzenia mogą być uporządkowane według sortowania `timestamp` według `sequenceNumber` i jak pokazano w poniższym zapytaniu:
+Następujące zapytanie pokazuje historyczne dane śledzenia dla pojedynczego wystąpienia aranżacji funkcji w [sekwencji Hello](durable-functions-sequence.md) . Jest ona zapisywana przy użyciu [języka zapytań Application Insights (AIQL)](https://aka.ms/LogAnalyticsLanguageReference). Filtruje wykonywanie powtarzania, tak aby była wyświetlana tylko ścieżka wykonywania logicznego. Zdarzenia mogą być uporządkowane według sortowania `timestamp` według `sequenceNumber` i jak pokazano w poniższym zapytaniu:
 
 ```AIQL
 let targetInstanceId = "ddd1aaa685034059b545eb004b15d4eb";
@@ -349,12 +349,13 @@ Klienci otrzymają następujące odpowiedzi:
 
 Azure Functions obsługuje kod funkcji debugowania bezpośrednio, a ta sama obsługa jest przenoszone do Durable Functions, niezależnie od tego, czy działa na platformie Azure, czy lokalnie. Istnieje jednak kilka zachowań, z którymi należy wiedzieć podczas debugowania:
 
-* **Odtwórz**ponownie: Funkcje programu Orchestrator są regularnie powtarzane, gdy są odbierane nowe dane wejściowe. Oznacza to, że jedno *logiczne* wykonanie funkcji programu Orchestrator może skutkować tym samym punktem przerwania, szczególnie, jeśli jest ono wcześniej ustawione w kodzie funkcji.
-* **Oczekiwanie**: `await` Za każdym razem, gdy wystąpi, zwraca kontrolę z powrotem do trwałego dyspozytora struktury zadań. Jeśli jest to pierwszy raz `await` , skojarzone zadanie *nigdy nie* zostanie wznowione. Ponieważ zadanie nigdy nie zostanie wznowione, przechodzenie do oczekiwania (F10 w programie Visual Studio) nie jest *w* rzeczywistości możliwe. Przechodzenie do kolejnych kroków działa tylko wtedy, gdy zadanie jest odtwarzane.
-* **Limity czasu obsługi komunikatów**: Durable Functions wewnętrznie używa komunikatów w kolejce do wykonywania zarówno funkcji programu Orchestrator, jak i funkcji działania. W środowisku z obsługą wiele maszyn wirtualnych przerwanie debugowania przez dłuższy czas może spowodować, że inna maszyna wirtualna będzie mogła pobrać komunikat, co spowodowało zduplikowane wykonanie. To zachowanie istnieje dla zwykłych funkcji wyzwalacza kolejki, ale jest ważne, aby wskazać w tym kontekście, ponieważ kolejki są szczegółami implementacji.
+* **Odtwórz**ponownie: Funkcje programu Orchestrator są regularnie [powtarzane](durable-functions-orchestrations.md#reliability) , gdy są odbierane nowe dane wejściowe. Oznacza to, że jedno *logiczne* wykonanie funkcji programu Orchestrator może skutkować tym samym punktem przerwania, szczególnie, jeśli jest ono wcześniej ustawione w kodzie funkcji.
+* **Oczekiwanie**: Za każdym razem, gdy zostanienapotkanywfunkcjiprogramuOrchestrator,dajeonakontrolęzpowrotemdodyspozytoratrwałejstrukturyzadań.`await` Jeśli jest to pierwszy raz `await` , skojarzone zadanie *nigdy nie* zostanie wznowione. Ponieważ zadanie nigdy nie zostanie wznowione, przechodzenie do oczekiwania (F10 w programie Visual Studio) nie jest *w* rzeczywistości możliwe. Przechodzenie do kolejnych kroków działa tylko wtedy, gdy zadanie jest odtwarzane.
+* **Limity czasu obsługi komunikatów**: Durable Functions wewnętrznie używa komunikatów w kolejce do wykonywania zadań programu Orchestrator, Activity i Entity. W środowisku z obsługą wiele maszyn wirtualnych przerwanie debugowania przez dłuższy czas może spowodować, że inna maszyna wirtualna będzie mogła pobrać komunikat, co spowodowało zduplikowane wykonanie. To zachowanie istnieje dla zwykłych funkcji wyzwalacza kolejki, ale jest ważne, aby wskazać w tym kontekście, ponieważ kolejki są szczegółami implementacji.
+* **Zatrzymywanie i uruchamianie**: Komunikaty w trwałych funkcjach utrzymują się między sesjami debugowania. Jeśli zatrzymasz debugowanie i zakończy proces hosta lokalnego podczas wykonywania trwałej funkcji, ta funkcja może zostać ponownie wykonana automatycznie w przyszłej sesji debugowania. Może to być mylące, gdy nie jest oczekiwane. Czyszczenie wszystkich komunikatów z [wewnętrznych kolejek magazynu](durable-functions-perf-and-scale.md#internal-queue-triggers) między sesjami debugowania jest jedną techniką, aby uniknąć tego zachowania.
 
 > [!TIP]
-> Jeśli ustawienia punktów przerwania mają być przerywane tylko przy wykonywaniu niepowtarzania, można ustawić punkt przerwania warunkowego, który działa `IsReplaying` tylko `false`wtedy, gdy jest to.
+> Jeśli ustawienia punktów przerwania w funkcjach programu Orchestrator mają być przerywane tylko przy wykonywaniu niepowtarzania, można ustawić punkt przerwania warunkowego, `IsReplaying` który `false`działa tylko wtedy, gdy jest to.
 
 ## <a name="storage"></a>Magazyn
 
@@ -370,4 +371,4 @@ Jest to przydatne w przypadku debugowania, ponieważ widzisz dokładnie, z jakim
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się, jak korzystać z trwałych czasomierzy](durable-functions-timers.md)
+> [Dowiedz się więcej o monitorowaniu w Azure Functions](../functions-monitoring.md)

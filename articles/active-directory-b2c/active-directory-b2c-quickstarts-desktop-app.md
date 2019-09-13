@@ -1,6 +1,6 @@
 ---
-title: Szybki start — konfigurowanie logowania dla aplikacji klasycznej przy użyciu usługi Azure Active Directory B2C | Microsoft Docs
-description: Uruchamianie przykładowej aplikacji klasycznej platformy ASP.NET, która używa usługi Azure Active Directory B2C do udostępniania funkcji logowania do konta.
+title: Szybki Start — Konfigurowanie logowania dla aplikacji klasycznej przy użyciu Azure Active Directory B2C
+description: Uruchom przykładową aplikację klasyczną WPF, która używa Azure Active Directory B2C, aby zapewnić logowanie do konta.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/30/2018
+ms.date: 09/12/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 636e47c1d0c689dd9660f8bf01ada571d3824961
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 98d312dbafd399cc8b92e2c4fb70499853c214b5
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835455"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914286"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>Szybki start: konfigurowanie logowania dla aplikacji klasycznej przy użyciu usługi Azure Active Directory B2C
 
@@ -26,8 +26,8 @@ Usługa Azure Active Directory (Azure AD) B2C umożliwia zarządzanie tożsamoś
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- [Visual Studio 2019](https://www.visualstudio.com/downloads/) z **ASP.NET i tworzenie aplikacji internetowych** obciążenia.
-- Konto w sieci społecznościowej: Facebook, Google, Microsoft lub Twitter.
+- [Program Visual Studio 2019](https://www.visualstudio.com/downloads/) z **ASP.NET i programowaniem w sieci Web** .
+- Konto społecznościowe w serwisie Facebook, Google lub Microsoft.
 - [Pobierz plik zip](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop/archive/master.zip) lub sklonuj przykładową aplikację internetową z usługi GitHub.
 
     ```
@@ -43,16 +43,16 @@ Usługa Azure Active Directory (Azure AD) B2C umożliwia zarządzanie tożsamoś
 
 1. Kliknij pozycję **Zaloguj**, aby uruchomić przepływ pracy **Rejestrowanie lub logowanie**.
 
-    ![Zrzut ekranu przedstawiający przykładową aplikację WPF](media/active-directory-b2c-quickstarts-desktop-app/wpf-sample-application.png)
+    ![Zrzut ekranu przykładowej aplikacji WPF](media/active-directory-b2c-quickstarts-desktop-app/wpf-sample-application.png)
 
-    Przykład obsługuje kilka opcji rejestracji. Te opcje obejmują przy użyciu dostawcy tożsamości społecznościowych lub tworzenia konta lokalnego przy użyciu adresu e-mail. Dla tego przewodnika Szybki start należy użyć konta dostawcy tożsamości dla sieci społecznościowej Facebook, Google, Microsoft lub Twitter.
+    Przykład obsługuje kilka opcji rejestracji. Te opcje obejmują użycie dostawcy tożsamości społecznościowej lub utworzenie konta lokalnego przy użyciu adresu e-mail. W tym przewodniku szybki start Użyj konta dostawcy tożsamości społecznościowej w serwisie Facebook, Google lub Microsoft.
 
 
-2. Dla przykładowej aplikacji internetowej usługa Azure AD B2C wyświetla niestandardową stronę logowania fikcyjnej marki Wingtip Toys. Aby zarejestrować się przy użyciu dostawcy tożsamości dla sieci społecznościowej, kliknij przycisk dostawcy tożsamości, którego chcesz użyć.
+2. Azure AD B2C przedstawia stronę logowania fikcyjnej firmy o nazwie Fabrikam dla przykładowej aplikacji sieci Web. Aby zarejestrować się przy użyciu dostawcy tożsamości dla sieci społecznościowej, kliknij przycisk dostawcy tożsamości, którego chcesz użyć.
 
-    ![Strona logowania lub zarejestruj przedstawiający dostawców tożsamości](media/active-directory-b2c-quickstarts-desktop-app/sign-in-or-sign-up-wpf.png)
+    ![Strona logowania lub rejestracji przedstawiająca dostawców tożsamości](media/active-directory-b2c-quickstarts-desktop-app/sign-in-or-sign-up-wpf.png)
 
-    Uwierzytelniasz się (Zaloguj) przy użyciu konta społecznościowego poświadczeń i Autoryzuj aplikację do odczytywania informacji z konta społecznościowego. Po udzieleniu dostępu aplikacji może ona pobrać informacje z profilu na koncie w sieci społecznościowej, takie jak Twoje nazwisko i miasto.
+    Użytkownik uwierzytelnia się (loguje się) przy użyciu poświadczeń konta społecznościowego i autoryzuje aplikację do odczytywania informacji z konta społecznościowego. Po udzieleniu dostępu aplikacji może ona pobrać informacje z profilu na koncie w sieci społecznościowej, takie jak Twoje nazwisko i miasto.
 
 2. Zakończ proces logowania dla dostawcy tożsamości.
 
@@ -64,9 +64,9 @@ Usługa Azure AD B2C zawiera funkcję umożliwiającą użytkownikom aktualizowa
 
 1. Na pasku menu aplikacji kliknij pozycję **Edit profile** (Edytuj profil), aby edytować utworzony profil.
 
-    ![Edytuj profil wyróżnionym WPF Przykładowa aplikacja](media/active-directory-b2c-quickstarts-desktop-app/edit-profile-wpf.png)
+    ![Przycisk Edytuj profil wyróżniony w przykładowej aplikacji WPF](media/active-directory-b2c-quickstarts-desktop-app/edit-profile-wpf.png)
 
-2. Wybierz dostawcę tożsamości skojarzonego z utworzonym kontem. Jeśli na przykład użyto usługi Twitter jako dostawcy tożsamości podczas tworzenia konta, wybierz usługę Twitter, aby zmodyfikować szczegóły skojarzonego profilu.
+2. Wybierz dostawcę tożsamości skojarzonego z utworzonym kontem. Jeśli na przykład podczas tworzenia konta użyto usługi Facebook jako dostawcy tożsamości, wybierz pozycję Facebook, aby zmodyfikować szczegóły skojarzonego profilu.
 
 3. W polu **Display name** zmień swoją nazwę wyświetlaną, a w polu **City** — miejscowość, a następnie kliknij przycisk **Continue** (Kontynuuj).
 
@@ -86,14 +86,14 @@ Pomyślnie użyto konta użytkownika usługi Azure AD B2C do wykonania autoryzow
 
 Jeśli planujesz wypróbować inne przewodniki Szybki start lub samouczki usługi Azure AD B2C, możesz użyć swojej dzierżawy usługi Azure AD B2C. Możesz [usunąć dzierżawę usługi Azure AD B2C](active-directory-b2c-faqs.md#how-do-i-delete-my-azure-ad-b2c-tenant), gdy nie będzie już potrzebna.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki Start użyto przykładowej aplikacji klasycznej do:
+W tym przewodniku szybki start użyto przykładowej aplikacji klasycznej do:
 
-* Zaloguj się przy użyciu niestandardowej strony logowania
-* Zaloguj się przy użyciu dostawcy tożsamości społecznościowych
-* Tworzenie konta usługi Azure AD B2C
-* Wywoływanie internetowego interfejsu API chronionego przez usługę Azure AD B2C
+* Logowanie za pomocą niestandardowej strony logowania
+* Zaloguj się przy użyciu dostawcy tożsamości społecznościowej
+* Utwórz konto Azure AD B2C
+* Wywoływanie internetowego interfejsu API chronionego przez Azure AD B2C
 
 Wprowadzenie do tworzenia własnej dzierżawy usługi Azure AD B2C.
 

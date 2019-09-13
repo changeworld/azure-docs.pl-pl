@@ -6,14 +6,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 06/18/2019
+ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: 3c16d8b5f1611c6c05e60d65551f73eb2d395668
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 847a4ec7da3c9b00753e5d07baf2952b31d2b5bb
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872902"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934848"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Tworzenie kopii zapasowych baz danych programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -36,8 +36,7 @@ Przed wykonaniem kopii zapasowej bazy danych SQL Server należy sprawdzić nast�
 1. Zidentyfikuj lub Utwórz [magazyn Recovery Services](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault) w tym samym regionie lub ustawieniach regionalnych co maszyna wirtualna hostującym wystąpienie SQL Server.
 2. Sprawdź, czy maszyna wirtualna ma [łączność sieciową](backup-sql-server-database-azure-vms.md#establish-network-connectivity).
 3. Upewnij się, że bazy danych SQL Server są zgodne z [wytycznymi nazewnictwa bazy danych dla Azure Backup](#database-naming-guidelines-for-azure-backup).
-4. W przypadku wersji SQL 2008 i 2008 R2 [Dodaj klucz rejestru](#add-registry-key-to-enable-registration) , aby umożliwić rejestrację serwera. Ten krok nie będzie wymagany, gdy funkcja jest ogólnie dostępna.
-5. Sprawdź, czy nie masz włączonych rozwiązań do tworzenia kopii zapasowych dla bazy danych. Przed utworzeniem kopii zapasowej bazy danych Wyłącz wszystkie inne SQL Server kopie zapasowe.
+4. Sprawdź, czy nie masz włączonych rozwiązań do tworzenia kopii zapasowych dla bazy danych. Przed utworzeniem kopii zapasowej bazy danych Wyłącz wszystkie inne SQL Server kopie zapasowe.
 
 > [!NOTE]
 > Możesz włączyć Azure Backup dla maszyny wirtualnej platformy Azure, a także dla SQL Serverj bazy danych działającej na maszynie wirtualnej bez konfliktu.
@@ -56,7 +55,7 @@ Ustanów łączność przy użyciu jednej z następujących opcji:
     Aby utworzyć regułę przy użyciu portalu:
     
     - W obszarze **wszystkie usługi**przejdź do pozycji **sieciowe grupy zabezpieczeń** i wybierz grupę zabezpieczeń sieci.
-    - W obszarze **Ustawienia**wybierz pozycję **reguły zabezpieczeń dla ruchu** wychodzącego.
+    - W obszarze **Ustawienia**wybierz pozycję **reguły zabezpieczeń dla ruchu wychodzącego** .
     - Wybierz pozycję **Dodaj**. Wprowadź wszystkie wymagane szczegóły dotyczące tworzenia nowej reguły zgodnie z opisem w [ustawieniach reguły zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings). Upewnij się, że opcja **miejsce docelowe** jest ustawiona na **tag usługi** i **znacznik usługi docelowej** jest ustawiony na **AzureBackup**.
     - Kliknij przycisk **Dodaj**, aby zapisać nowo utworzoną regułę zabezpieczeń dla ruchu wychodzącego.
     
@@ -98,22 +97,6 @@ Należy unikać używania następujących elementów w nazwach baz danych:
 
 Aliasowanie jest dostępne dla nieobsługiwanych znaków, ale zalecamy ich uniknięcie. Aby uzyskać więcej informacji, zobacz [Understanding the Table Service Data Model (Omówienie modelu danych usługi Table Service)](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN).
 
-### <a name="add-registry-key-to-enable-registration"></a>Dodaj klucz rejestru, aby włączyć rejestrację
-
-1. Otwórz regedit
-2. Utwórz ścieżkę katalogu rejestru: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WorkloadBackup\TestHook (należy utworzyć TestHook "Key" w obszarze WorkloadBackup, które z kolei muszą zostać utworzone w ramach firmy Microsoft).
-3. W ścieżce katalogu rejestru Utwórz nową "wartość ciągu" z nazwą ciągu **AzureBackupEnableWin2K8R2SP1** i wartością: **True**
-
-    ![Regedit na potrzeby włączania rejestracji](media/backup-azure-sql-database/reg-edit-sqleos-bkp.png)
-
-Możesz również zautomatyzować ten krok, uruchamiając plik reg za pomocą następującego polecenia:
-
-```csharp
-Windows Registry Editor Version 5.00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WorkloadBackup\TestHook]
-"AzureBackupEnableWin2K8R2SP1"="True"
-```
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -143,7 +126,7 @@ Jak odnajdywać bazy danych uruchomione na maszynie wirtualnej:
 
 6. Na liście maszyn wirtualnych wybierz maszynę wirtualną z uruchomioną bazą danych programu SQL Server i wybierz pozycję **Odnajdź bazy danych**.
 
-7. Śledź odnajdywanie bazydanych w powiadomieniach. Czas wymagany dla tej akcji zależy od liczby baz danych maszyn wirtualnych. Po odnalezieniu wybranych baz danych zostanie wyświetlony komunikat o powodzeniu.
+7. Śledź odnajdywanie bazy danych w **powiadomieniach**. Czas wymagany dla tej akcji zależy od liczby baz danych maszyn wirtualnych. Po odnalezieniu wybranych baz danych zostanie wyświetlony komunikat o powodzeniu.
 
     ![Komunikat o powodzeniu wdrożenia](./media/backup-azure-sql-database/notifications-db-discovered.png)
 
@@ -160,7 +143,7 @@ Jak odnajdywać bazy danych uruchomione na maszynie wirtualnej:
 
 ## <a name="configure-backup"></a>Konfigurowanie kopii zapasowych  
 
-1. W obszarze **cel** > **kopii zapasowej krok 2: Skonfiguruj kopię zapasową**, wybierz pozycję **Konfiguruj kopię zapasową**.
+1. W obszarze > cel ****kopii zapasowej**krok 2: Skonfiguruj kopię zapasową**, wybierz pozycję **Konfiguruj kopię zapasową**.
 
    ![Wybieranie pozycji Konfiguruj kopię zapasową](./media/backup-azure-sql-database/backup-goal-configure-backup.png)
 
@@ -261,18 +244,6 @@ Aby utworzyć nowe zasady kopii zapasowych:
     - Na zapleczu usługa Azure Backup używa natywnej kompresji kopii zapasowej SQL.
 
 14. Po zakończeniu edycji zasad kopii zapasowych wybierz pozycję **OK**.
-
-
-### <a name="modify-policy"></a>Modyfikuj zasady
-Zmodyfikuj zasady, aby zmienić częstotliwość tworzenia kopii zapasowych lub zakres przechowywania.
-
-> [!NOTE]
-> Każda zmiana w okresie przechowywania będzie stosowana z mocą wsteczną do wszystkich starszych punktów odzyskiwania poza nowymi.
-
-Na pulpicie nawigacyjnym magazynu przejdź do pozycji **Zarządzaj** > **zasadami tworzenia kopii zapasowych** i wybierz zasady, które chcesz edytować.
-
-  ![Zarządzanie zasadami tworzenia kopii zapasowych](./media/backup-azure-sql-database/modify-backup-policy.png)
-
 
 ## <a name="enable-auto-protection"></a>Włączanie ochrony automatycznej  
 
