@@ -298,7 +298,7 @@ Prześlij plik i zwróć uwagę, że folder. programu vscode jest automatycznie 
     | args | Argumenty wiersza polecenia dla aplikacji | lista ciągów |
     | jars | Jars do użycia w tej sesji | lista ciągów | 
     | pyFiles | Pliki języka Python, które mają być używane w tej sesji | lista ciągów |
-    | — pliki | pliki, które mają być używane w tej sesji | lista ciągów |
+    | files | pliki, które mają być używane w tej sesji | lista ciągów |
     | driverMemory | Ilość pamięci do użycia w procesie sterownika | String |
     | driverCores | Liczba rdzeni do użycia w procesie sterownika | Int |
     | executorMemory | Ilość pamięci do użycia na proces wykonawczy | String |
@@ -317,7 +317,7 @@ Prześlij plik i zwróć uwagę, że folder. programu vscode jest automatycznie 
     | id | Identyfikator sesji | Int | 
     | appId | Identyfikator aplikacji dla tej sesji | String |
     | appInfo | Szczegółowe informacje o aplikacji | Mapa klucza = Val |
-    | dziennik | Wiersze dziennika | lista ciągów |
+    | log | Wiersze dziennika | lista ciągów |
     | state |Stan partii | String |
 
     >[!NOTE]
