@@ -70,18 +70,18 @@ Następujące typy danych są obsługiwane w modelach utworzonych przy użyciu b
 | int |32 bitowa liczba całkowita |
 | float |liczba zmiennoprzecinkowa o pojedynczej precyzji |
 | long |Długa liczba całkowita |
-| Int8\_t |8-bitowa liczba całkowita |
-| Int16\_t |16-bitowa liczba całkowita |
+| int8\_t |8-bitowa liczba całkowita |
+| int16\_t |16-bitowa liczba całkowita |
 | int32\_t |32 bitowa liczba całkowita |
-| Int64\_t |64 bitowa liczba całkowita |
+| int64\_t |64 bitowa liczba całkowita |
 | bool |boolean |
-| ASCII\_char\_PTR |Ciąg ASCII |
+| ascii\_char\_ptr |Ciąg ASCII |
 | EDM\_DATE\_TIME\_OFFSET |przesunięcie daty i godziny |
-| IDENTYFIKATOR\_GUID MODELU EDM |Identyfikator GUID |
+| EDM\_GUID |Identyfikator GUID |
 | EDM\_BINARY |binary |
 | DECLARE\_STRUCT |Typ danych złożonych |
 
-Zacznijmy od ostatniego typu danych. **Deklaracja DECLARE\_** umożliwia Definiowanie złożonych typów danych, które są grupami innych typów pierwotnych. Te grupowania umożliwiają zdefiniowanie modelu, który wygląda następująco:
+Zacznijmy od ostatniego typu danych. **DECLARE\_STRUCT** umożliwia Definiowanie złożonych typów danych, które są grupami innych typów pierwotnych. Te grupowania umożliwiają zdefiniowanie modelu, który wygląda następująco:
 
 ```C
 DECLARE_STRUCT(TestType,
