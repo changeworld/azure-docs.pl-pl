@@ -14,17 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.custom: seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 84f035a55256ab22c823b2aaed9c9c2400eebf5b
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: b85099605d7f660b792186f7e17b0ed4ea43ef04
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173406"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967852"
 ---
 # <a name="use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Wysyłanie i odbieranie komunikatów za pomocą kolejek Azure Service Bus przy użyciu języka Java
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
-W ramach tego samouczka nauczysz się tworzyć aplikacje Java do wysyłania komunikatów do i odbierania komunikatów z kolejki Service Bus. 
+W ramach tego samouczka nauczysz się tworzyć aplikacje Java do wysyłania komunikatów do i odbierania komunikatów z kolejki Azure Service Bus. 
 
 > [!NOTE]
 > Przykłady dla języka Java w witrynie GitHub można znaleźć w [repozytorium Azure-Service-Bus](https://github.com/Azure/azure-service-bus/tree/master/samples/Java).
@@ -35,7 +35,7 @@ W ramach tego samouczka nauczysz się tworzyć aplikacje Java do wysyłania komu
     1. Zapoznaj się z krótkim omówieniem **kolejek**Service Bus. 
     2. Utwórz **przestrzeń nazw**Service Bus. 
     3. Pobierz **Parametry połączenia**.
-    4. Utwórz kolejkęService Bus.
+    4. Utwórz **kolejkę**Service Bus.
 3. Zainstaluj [zestaw Azure SDK dla języka Java][Azure SDK for Java]. 
 
 

@@ -1,36 +1,36 @@
 ---
-title: Wybieranie trybu rozpoznawania mowy Bing | Dokumentacja firmy Microsoft
+title: Jak wybrać tryb rozpoznawania rozpoznawanie mowy Bing | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: Jak wybrać najlepszy tryb rozpoznawania w rozpoznawania mowy Bing.
+description: Jak wybrać tryb najlepszego rozpoznawania w rozpoznawanie mowy Bing.
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 99e69691d9904285ecff356523813b426c98fca2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1860acb571c837a5eb4c75be69a96d1b22682118
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515020"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965670"
 ---
-# <a name="bing-speech-recognition-modes"></a>Tryby rozpoznawania mowy Bing
+# <a name="bing-speech-recognition-modes"></a>rozpoznawanie mowy Bing tryby rozpoznawania
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
-Zamiany mowy na tekst interfejsów API Bing obsługi wielu trybów rozpoznawania mowy. Wybierz tryb, który daje najlepsze rezultaty uznania dla swojej aplikacji.
+Interfejsy API zamiana mowy na tekst Bing obsługują wiele trybów rozpoznawania mowy. Wybierz tryb, który daje najlepsze wyniki rozpoznawania dla aplikacji.
 
 | Tryb | Opis |
 |---|---|
-| *interactive* | Rozpoznawanie "Poleceń i kontroli" dla użytkownika interaktywnego zastosowaniach. Użytkownicy Mów krótkich fraz przeznaczony jako polecenia do aplikacji. |
-| *Dyktowanie* | Ciągłe rozpoznawania dyktowanie scenariuszach. Użytkownicy Mów dłużej zdań, które są wyświetlane jako tekst. Użytkownicy przyjąć bardziej formalne stylu wypowiedzi. |
-| *konwersacji* | Ciągłe doceniać przepisywania konwersacje między ludzi. Użytkownicy przyjmuje mniej formalny stylu wypowiedzi i może przełączać się między dłużej zdania i fraz krótszy.
+| *interactive* | Rozpoznawanie "polecenie i kontrola" dla interaktywnych scenariuszy aplikacji użytkownika. Użytkownicy czytają krótkie frazy zamierzone jako polecenia do aplikacji. |
+| *Dyktowanie* | Ciągłe rozpoznawanie scenariuszy dyktowania. Użytkownicy czytają dłuższe zdania, które są wyświetlane jako tekst. Użytkownicy przyjmują bardziej formalny styl mówiący. |
+| *konwersacji* | Ciągłe rozpoznawanie konwersacji jego przepisywania między ludźmi. Użytkownicy przyjmują mniej formalny styl mówiący i mogą być zamienne z dłuższych zdań i krótszych fraz.
 
 > [!NOTE]
-> Te tryby są stosowane, gdy używasz [interfejsów API REST](../GetStarted/GetStartedREST.md). [Biblioteki klienckie](../GetStarted/GetStartedClientLibraries.md) użyć innych parametrów, aby określić tryb rozpoznawania. Aby uzyskać więcej informacji zobacz Biblioteka klienta wybranych przez użytkownika.
+> Te tryby są stosowane w przypadku używania [interfejsów API REST](../GetStarted/GetStartedREST.md). [Biblioteki klienckie](../GetStarted/GetStartedClientLibraries.md) używają różnych parametrów do określenia trybu rozpoznawania. Aby uzyskać więcej informacji, zapoznaj się z dowolnie wybraną biblioteką klienta.
 
-Aby uzyskać więcej informacji, zobacz [tryby rozpoznawania](../concepts.md#recognition-modes) strony.
+Aby uzyskać więcej informacji, zobacz stronę [trybów rozpoznawania](../concepts.md#recognition-modes) .

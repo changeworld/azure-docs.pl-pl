@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: ashishth
-ms.openlocfilehash: 8ba27261f5ba505c37ef4cc82d06b314471440bc
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 1e7059d30c5d480948eb681b477239151020b266
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811898"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961823"
 ---
 # <a name="apache-phoenix-in-azure-hdinsight"></a>Apache Phoenix w usłudze Azure HDInsight
 
@@ -129,11 +129,11 @@ HDInsight An klaster HBase zawiera [interfejs użytkownika Ambari](hdinsight-had
 
 2. Wybierz pozycję **HBase** z listy usług w menu po lewej stronie, a następnie **Wybierz kartę konfiguracje** .
 
-    ![Ambari HBase config](./media/hdinsight-phoenix-in-hdinsight/ambari-hbase-config.png)
+    ![Ambari HBase config](./media/hdinsight-phoenix-in-hdinsight/ambari-hbase-config1.png)
 
 3. Aby włączyć lub wyłączyć Phoenix i ustawić limit czasu zapytania, Znajdź sekcję konfiguracyjną **języka SQL w Phoenix** .
 
-    ![Sekcja konfiguracji SQL w Ambari Phoenix](./media/hdinsight-phoenix-in-hdinsight/ambari-phoenix.png)
+    ![Sekcja konfiguracji SQL w Ambari Phoenix](./media/hdinsight-phoenix-in-hdinsight/apache-ambari-phoenix.png)
 
 ## <a name="see-also"></a>Zobacz także
 

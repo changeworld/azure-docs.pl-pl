@@ -1,6 +1,6 @@
 ---
-title: Operacjonalizacja potoku analizy danych — Azure
-description: Skonfigurować i uruchomić przykład potoku danych, który jest wyzwalany przez nowe dane i tworzy zwięzłe wyników.
+title: Operacjonalizować potoku analizy danych — Azure
+description: Konfigurowanie i uruchamianie przykładowego potoku danych, który jest wyzwalany przez nowe dane i tworzy zwięzłe wyniki.
 ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
@@ -8,68 +8,68 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 524386c046534b0ef0050e15d326118b84822822
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dec3cdd63f3e3ff303bfd60ca1ae77a4c4641190
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64718048"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961305"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Operacjonalizacja potoku analizy danych
 
-*Potoki danych* underly wiele rozwiązań do analizy danych. Jak sugeruje nazwa, potok danych pobiera nieprzetworzone dane, czyści przekształca je stosownie do potrzeb i następnie przeważnie wykonuje obliczenia lub agregacji przed zapisaniem przetworzone dane. Przetworzone dane są używane przez klientów, raportów lub interfejsów API. Należy podać powtarzalne wyniki w potoku danych, czy zgodnie z harmonogramem lub po wyzwoleniu przez nowe dane.
+*Potoki danych* w ramach wielu rozwiązań do analizy danych. Jak sugeruje nazwa, Potok danych zajmuje dane pierwotne, czyści i przekształca je zgodnie z potrzebami, a następnie zazwyczaj wykonuje obliczenia lub agregacje przed zapisaniem przetworzonych danych. Przetworzone dane są używane przez klientów, raporty lub interfejsy API. Potok danych musi zapewniać powtarzające się wyniki, zarówno zgodnie z harmonogramem, jak i wyzwalane przez nowe dane.
 
-W tym artykule opisano jak operacjonalizować potoki danych powtarzalności, przy użyciu programu Oozie uruchomione w klastrach usługi HDInsight Hadoop. Przykładowy scenariusz przeprowadzi potoku danych, który przygotowuje i przetwarza dane szeregów czasowych lotu lotniczej.
+W tym artykule opisano, jak operacjonalizować potoki danych w celu ich powtarzalności przy użyciu Oozie uruchomionych w klastrach usługi HDInsight Hadoop. Przykładowy scenariusz przeprowadzi Cię przez potok danych, który przygotowuje i przetwarza dane z szeregów czasowych lotów lotniczych.
 
-W poniższym scenariuszu dane wejściowe są prostego pliku zawierającego partii danych lotów przez jeden miesiąc. Te dane lotu obejmują informacje, takie jak port początkowego i docelowego, mil przesyłane, wyjścia i czasy przybycia i tak dalej. Celem z tym potoku jest podsumowanie codzienną wydajność linii lotniczych, gdzie każdy linii lotniczych ma jeden wiersz dla każdego dnia średni wysyłki i przeznaczenia opóźnień w minut, a łączna liczba kilometrów przesyłane, tego samego dnia.
+W poniższym scenariuszu dane wejściowe są plikiem prostym zawierającym partię danych lotu przez jeden miesiąc. Te dane lotu obejmują takie informacje, jak źródło i docelowy port lotniczy, kilometry, godziny wyjazdu i przybycia itd. Celem tego potoku jest podsumowanie dziennej wydajności linii lotniczych, gdzie każdy z nich ma jeden wiersz dla każdego dnia z średnimi opóźnieniami wyjazdu i przybycia w ciągu kilku minut, a całkowita liczba kilometrów jest w tym dniu.
 
-| YEAR | MONTH | DAY_OF_MONTH | OPERATORA |AVG_DEP_DELAY | AVG_ARR_DELAY |TOTAL_DISTANCE |
+| ROK | MIESIĄC | DAY_OF_MONTH | KARUZEL |AVG_DEP_DELAY | AVG_ARR_DELAY |TOTAL_DISTANCE |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2017 | 1 | 3 | AA | 10.142229 | 7.862926 | 2644539 |
-| 2017 | 1 | 3 | AS | 9.435449 | 5.482143 | 572289 |
-| 2017 | 1 | 3 | DL | 6.935409 | -2.1893024 | 1909696 |
+| 2017 | 1 | 3 | AA | 10.142229 | 7,862926 | 2644539 |
+| 2017 | 1 | 3 | AS | 9,435449 | 5,482143 | 572289 |
+| 2017 | 1 | 3 | DL | 6,935409 | -2.1893024 | 1909696 |
 
-Przykładowy potok czeka, aż danych lotów nowy okres czasu nadejściu, a następnie przechowuje te informacje szczegółowe lot do magazynu danych Apache Hive dla długoterminowego analiz. Potok tworzy również znacznie mniejszy zestaw danych, który znajduje się podsumowanie tylko dziennego lotu dane. Ta lotu podsumowanie danych dotyczących dziennego są wysyłane do usługi SQL database w odniesieniu do sporządzanie raportów, takich jak witryny sieci Web.
+Przykładowy potok czeka na nadejście nowych danych lotu okresu, a następnie przechowuje te szczegółowe informacje o locie do magazynu danych Apache Hive na potrzeby analiz długoterminowych. Potok tworzy również znacznie mniejszy zestaw danych, który podsumowuje tylko dzienne dane lotu. Te codzienne dane podsumowania lotu są wysyłane do bazy danych SQL w celu udostępnienia raportów, takich jak witryna sieci Web.
 
-Na poniższym diagramie przedstawiono przykład potoku.
+Poniższy diagram ilustruje przykład potoku.
 
-![Potok danych w locie](./media/hdinsight-operationalize-data-pipeline/pipeline-overview.png)
+![Potok danych lotu](./media/hdinsight-operationalize-data-pipeline/flight-pipeline-overview.png)
 
 ## <a name="apache-oozie-solution-overview"></a>Omówienie rozwiązania Apache Oozie
 
-Ten potok używa Apache Oozie uruchomione w klastrze usługi HDInsight Hadoop.
+Ten potok używa platformy Apache Oozie uruchomionej w klastrze usługi HDInsight Hadoop.
 
-Oozie w tym artykule opisano jej potoki pod względem *akcje*, *przepływy pracy*, i *koordynatorów*. Akcje określają rzeczywistą pracę do wykonania, takie jak uruchomienie zapytania programu Hive. Przepływy pracy określają, sekwencję akcji. Koordynatorów określają harmonogram uruchamiania przepływu pracy. Koordynatorów można również poczekać na dostępność nowych danych przed uruchomieniem wystąpienia przepływu pracy.
+Oozie opisuje swoje potoki pod względem *akcji*, *przepływów pracy*i *koordynatorów*. Akcje określają rzeczywistą służbę do wykonania, na przykład uruchomienie zapytania programu Hive. Przepływy pracy definiują sekwencję akcji. Koordynatorzy definiują harmonogram wykonywania przepływu pracy. Koordynatorzy mogą również oczekiwać na dostępność nowych danych przed uruchomieniem wystąpienia przepływu pracy.
 
-Na poniższym diagramie przedstawiono projektowania wysokiego poziomu, ten przykład Oozie potoku.
+Na poniższym diagramie przedstawiono ogólny projekt tego przykładowego potoku Oozie.
 
 ![Potok danych lotu Oozie](./media/hdinsight-operationalize-data-pipeline/pipeline-overview-oozie.png)
 
-### <a name="provision-azure-resources"></a>Aprowizowanie zasobów platformy Azure
+### <a name="provision-azure-resources"></a>Udostępnianie zasobów platformy Azure
 
-Ten potok wymaga usługi Azure SQL Database i klaster usługi HDInsight Hadoop, w tej samej lokalizacji. Azure SQL Database przechowuje podsumowania danych generowanych przez potok i magazynu metadanych Oozie.
+Ten potok wymaga Azure SQL Database i klastra usługi HDInsight Hadoop w tej samej lokalizacji. Azure SQL Database przechowuje zarówno dane podsumowania generowane przez potok, jak i magazyn metadanych Oozie.
 
-#### <a name="provision-azure-sql-database"></a>Aprowizowanie usługi Azure SQL Database
+#### <a name="provision-azure-sql-database"></a>Azure SQL Database udostępniania
 
-1. Przy użyciu witryny Azure portal utworzyć nową grupę zasobów o nazwie `oozie` ma zawierać wszystkie zasoby, które są używane przez ten przykład.
-2. W ramach `oozie` grupę zasobów, Zainicjuj obsługę serwera SQL Azure i bazy danych. Nie potrzebujesz bazy danych większe niż w warstwie cenowej standardowa S1.
-3. W witrynie Azure portal, przejdź do okienka w nowo wdrożonym bazy danych SQL i wybierz **narzędzia**.
+1. Korzystając z Azure Portal, Utwórz nową grupę zasobów o nazwie `oozie` tak, aby zawierała wszystkie zasoby używane w tym przykładzie.
+2. W grupie `oozie` zasobów Zainicjuj obsługę SQL Server i bazy danych platformy Azure. Baza danych jest niezbędna niż standardowa warstwa cenowa S1.
+3. Za pomocą Azure Portal przejdź do okienka dla nowo wdrożonego SQL Database i wybierz pozycję **Narzędzia**.
 
-    ![Przycisk narzędzia](./media/hdinsight-operationalize-data-pipeline/sql-db-tools.png)
+    ![Przycisk Narzędzia](./media/hdinsight-operationalize-data-pipeline/hdi-sql-db-tools-button.png)
 
-4. Wybierz **edytora zapytań**.
+4. Wybierz **Edytor zapytań**.
 
-    ![Przycisk Edytor zapytań](./media/hdinsight-operationalize-data-pipeline/sql-db-query-editor.png)
+    ![Przycisk Edytor zapytań](./media/hdinsight-operationalize-data-pipeline/sql-db-query-editor1.png)
 
-5. W **edytora zapytań** okienku wybierz **logowania**.
+5. W okienku **edytora zapytań** wybierz pozycję **Zaloguj**.
 
-    ![Przycisk logowania](./media/hdinsight-operationalize-data-pipeline/sql-db-login1.png)
+    ![Przycisk Zaloguj](./media/hdinsight-operationalize-data-pipeline/sql-db-login-window1.png)
 
-6. Wprowadź swoje poświadczenia bazy danych SQL, a następnie wybierz **OK**.
+6. Wprowadź poświadczenia SQL Database i wybierz **przycisk OK**.
 
-   ![Formularz logowania](./media/hdinsight-operationalize-data-pipeline/sql-db-login2.png)
+   ![Formularz logowania](./media/hdinsight-operationalize-data-pipeline/sql-db-login-window2.png)
 
-7. W obszarze tekstowym edytora zapytań wpisz następujące instrukcje SQL, aby utworzyć `dailyflights` tabeli, w którym będą przechowywane podsumowane dane z każdego uruchomienia potoku.
+7. W obszarze tekst edytora zapytań wprowadź następujące instrukcje SQL, aby utworzyć `dailyflights` tabelę, w której będą przechowywane podsumowane dane z każdego przebiegu potoku.
 
     ```
     CREATE TABLE dailyflights
@@ -88,58 +88,58 @@ Ten potok wymaga usługi Azure SQL Database i klaster usługi HDInsight Hadoop, 
     GO
     ```
 
-8. Wybierz **Uruchom** do wykonywania instrukcji SQL.
+8. Wybierz pozycję **Uruchom** , aby wykonać instrukcje języka SQL.
 
-    ![Przycisk Uruchom](./media/hdinsight-operationalize-data-pipeline/sql-db-run.png)
+    ![Przycisk Uruchom](./media/hdinsight-operationalize-data-pipeline/hdi-sql-db-run-button.png)
 
-Usługi Azure SQL Database jest teraz gotowy.
+Azure SQL Database jest teraz gotowa.
 
-#### <a name="provision-an-hdinsight-hadoop-cluster"></a>Zainicjuj obsługę klastra Hadoop usługi HDInsight
+#### <a name="provision-an-hdinsight-hadoop-cluster"></a>Inicjowanie obsługi administracyjnej klastra usługi HDInsight Hadoop
 
-1. W witrynie Azure portal wybierz **+ nowy** i wyszukaj HDInsight.
+1. W Azure Portal wybierz pozycję **+ Nowy** i Wyszukaj w usłudze HDInsight.
 2. Wybierz pozycję **Utwórz**.
-3. W okienku podstawy Podaj unikatową nazwę dla klastra, a następnie wybierz swoją subskrypcję platformy Azure.
+3. W okienku podstawowe Określ unikatową nazwę klastra i wybierz subskrypcję platformy Azure.
 
-    ![Nazwa klastra HDInsight i subskrypcji](./media/hdinsight-operationalize-data-pipeline/hdi-name-sub.png)
+    ![Nazwa i subskrypcja klastra usługi HDInsight](./media/hdinsight-operationalize-data-pipeline/cluster-name-subscription.png)
 
-4. W **typ klastra** okienku wybierz **Hadoop** klastra typu **Linux** systemu operacyjnego i najnowszej wersji klastra HDInsight. Pozostaw **klastra warstwy** na **standardowa**.
+4. W okienku **Typ klastra** wybierz typ klastra **Hadoop** , system operacyjny **Linux** i najnowszą wersję klastra usługi HDInsight. Pozostaw **warstwę klastra** w warstwie **standardowa**.
 
-    ![Typ klastra usługi HDInsight](./media/hdinsight-operationalize-data-pipeline/hdi-cluster-type.png)
+    ![Typ klastra usługi HDInsight](./media/hdinsight-operationalize-data-pipeline/hdinsight-cluster-type.png)
 
-5. Wybierz **wybierz** do zastosowania wybór typu klastra.
-6. Wykonaj **podstawy** okienko podawanie hasła logowania i wybierając swoje `oozie` zasobów z listy, a następnie wybierz **dalej**.
+5. Wybierz **pozycję Wybierz** , aby zastosować wybór typu klastra.
+6. Wypełnij okienko **podstawowe** , podając hasło logowania i wybierając `oozie` grupę zasobów z listy, a następnie wybierz przycisk **dalej**.
 
-    ![W okienku podstawy HDInsight](./media/hdinsight-operationalize-data-pipeline/hdi-basics.png)
+    ![Okienko podstawowe usługi HDInsight](./media/hdinsight-operationalize-data-pipeline/hdinsight-basics-pane.png)
 
-7. W **magazynu** okienko, pozostaw magazynu podstawowego typu zestawu do **usługi Azure Storage**, wybierz opcję **Utwórz nową**, a następnie podaj nazwę dla nowego konta.
+7. W okienku **Magazyn** pozostaw podstawowy typ magazynu ustawiony na **usługę Azure Storage**, wybierz pozycję **Utwórz nowy**i podaj nazwę nowego konta.
 
-    ![Ustawienia konta magazynu HDInsight](./media/hdinsight-operationalize-data-pipeline/hdi-storage.png)
+    ![Ustawienia konta HDInsight Storage](./media/hdinsight-operationalize-data-pipeline/storage-account-settings.png)
 
-8. Aby uzyskać **ustawienia magazynu metadanych**w obszarze **wybierz bazę danych SQL dla usługi Hive**, wybierz bazę danych utworzoną wcześniej.
+8. W obszarze **ustawienia magazynu metadanych**w obszarze **Wybierz bazę danych SQL dla programu Hive**Wybierz utworzoną wcześniej bazę danych.
 
-    ![Ustawienia magazynu metadanych HDInsight Hive](./media/hdinsight-operationalize-data-pipeline/hdi-metastore-hive.png)
+    ![Ustawienia magazynu metadanych usługi HDInsight Hive](./media/hdinsight-operationalize-data-pipeline/hive-metastore-settings.png)
 
-9. Wybierz **Uwierzytelnij bazę danych SQL**.
+9. Wybierz pozycję **uwierzytelnij SQL Database**.
 
-    ![Magazyn metadanych Hive HDInsight uwierzytelniania](./media/hdinsight-operationalize-data-pipeline/hdi-authenticate-sql.png)
+    ![Uwierzytelnianie magazynu metadanych usługi HDInsight Hive](./media/hdinsight-operationalize-data-pipeline/hdi-authenticate-sql.png)
 
-10. Wprowadź nazwę użytkownika bazy danych SQL i hasło, a następnie wybierz **wybierz**. 
+10. Wprowadź nazwę użytkownika i hasło bazy danych SQL, a następnie wybierz **pozycję Wybierz**. 
 
-       ![Magazyn metadanych HDInsight Hive uwierzytelnienia logowania](./media/hdinsight-operationalize-data-pipeline/hdi-authenticate-sql-login.png)
+       ![Logowanie przy uwierzytelnianiu usługi HDInsight Hive magazynu metadanych](./media/hdinsight-operationalize-data-pipeline/hdi-authenticate-sql-login.png)
 
-11. Po powrocie **ustawienia magazynu metadanych** okienku wybierz bazę danych pod kątem metadanych programu Oozie przechowywania i uwierzytelniania, tak jak wcześniej. 
+11. Wróć do okienka **ustawień magazynu** metadanych, wybierz bazę danych dla magazynu Oozie Metadata i Uwierzytelnij się tak jak wcześniej. 
 
-       ![Ustawienia magazynu metadanych HDInsight](./media/hdinsight-operationalize-data-pipeline/hdi-metastore-settings.png)
+       ![Ustawienia magazynu metadanych usługi HDInsight](./media/hdinsight-operationalize-data-pipeline/hdi-metastore-settings.png)
 
 12. Wybierz opcję **Dalej**.
-13. Na **Podsumowanie** okienku wybierz **Utwórz** do wdrożenia klastra.
+13. W okienku **Podsumowanie** wybierz pozycję **Utwórz** , aby wdrożyć klaster.
 
-### <a name="verify-ssh-tunneling-setup"></a>Sprawdź ustawienia tunelowania SSH
+### <a name="verify-ssh-tunneling-setup"></a>Weryfikowanie instalacji tunelowania SSH
 
-Wyświetl stan usługi Koordynator i wystąpienia przepływu pracy za pomocą konsoli sieci Web programu Oozie, skonfiguruj tunelu SSH w klastrze usługi HDInsight. Aby uzyskać więcej informacji, zobacz [tunelu SSH](hdinsight-linux-ambari-ssh-tunnel.md).
+Aby użyć konsoli sieci Web Oozie do wyświetlania stanu koordynatora i wystąpień przepływu pracy, należy skonfigurować tunel SSH do klastra usługi HDInsight. Aby uzyskać więcej informacji, zobacz [tunel SSH](hdinsight-linux-ambari-ssh-tunnel.md).
 
 > [!NOTE]  
-> Możesz również użyć dla programu Chrome przy użyciu [Foxy Proxy](https://getfoxyproxy.org/) rozszerzenia do przeglądania zasobów sieci web klastra przez tunel SSH. Skonfigurować go do serwera proxy wszystkie żądania za pośrednictwem hosta `localhost` port tunelu 9876. To podejście jest zgodny z podsystemu Windows dla systemu Linux, nazywana również Bash w systemie Windows 10.
+> Możesz również użyć programu Chrome z rozszerzeniem [serwera proxy Foxy](https://getfoxyproxy.org/) , aby przeglądać zasoby sieci Web klastra za pośrednictwem tunelu SSH. Skonfiguruj je do serwera proxy wszystkie żądania za pomocą `localhost` hosta na porcie 9876 tunelu. Takie podejście jest zgodne z podsystemem Windows dla systemu Linux, znanym również jako bash w systemie Windows 10.
 
 1. Uruchom następujące polecenie, aby otworzyć tunel SSH do klastra:
 
@@ -147,44 +147,44 @@ Wyświetl stan usługi Koordynator i wystąpienia przepływu pracy za pomocą ko
     ssh -C2qTnNf -D 9876 sshuser@[CLUSTERNAME]-ssh.azurehdinsight.net
     ```
 
-2. Sprawdź, czy działa tunelu, przechodząc do narzędzia Ambari w węźle głównym, przechodząc do:
+2. Sprawdź, czy tunel działa, przechodząc do Ambari w węźle głównym, przeglądając do:
 
-    http:\//headnodehost:8080
+    http:\//headnodehost: 8080
 
-3. Dostęp do **konsoli sieci Web programu Oozie** w ramach Ambari, zaznacz **Oozie**, **szybkie linki**, a następnie wybierz pozycję **konsoli sieci Web programu Oozie**.
+3. Aby uzyskać dostęp do **konsoli sieci Web Oozie** z poziomu usługi Ambari, wybierz pozycję **Oozie**, **szybkie linki**, a następnie wybierz pozycję **Oozie Web Console**.
 
 ### <a name="configure-hive"></a>Konfigurowanie programu Hive
 
-1. Pobierz przykładowy plik CSV zawierający dane lotu przez jeden miesiąc. Pobierz swój plik ZIP `2017-01-FlightData.zip` z [repozytorium HDInsight GitHub](https://github.com/hdinsight/hdinsight-dev-guide) i Rozpakuj go do pliku CSV `2017-01-FlightData.csv`. 
+1. Pobierz przykładowy plik CSV zawierający dane lotu przez jeden miesiąc. Pobierz plik `2017-01-FlightData.zip` zip z [repozytorium GitHub usługi HDInsight](https://github.com/hdinsight/hdinsight-dev-guide) i rozpakuj go do pliku `2017-01-FlightData.csv`CSV. 
 
-2. Skopiuj ten plik CSV do konta usługi Azure Storage dołączone do klastra usługi HDInsight i umieść go w `/example/data/flights` folderu.
+2. Skopiuj ten plik CSV do konta magazynu platformy Azure dołączonego do klastra usługi HDInsight i umieść go w `/example/data/flights` folderze.
 
-Możesz skopiować plik przy użyciu punktu połączenia usługi w swojej `bash` sesji powłoki.
+Plik można skopiować przy użyciu punktu połączenia usługi `bash` w sesji powłoki.
 
-1. Użyj punktu połączenia usługi, aby skopiować pliki z komputera lokalnego w lokalnym magazynie węzła głównego klastra usługi HDInsight.
+1. Użyj punktu połączenia usługi, aby skopiować pliki z komputera lokalnego do lokalnego magazynu węzła głównego klastra usługi HDInsight.
 
     ```bash
     scp ./2017-01-FlightData.csv sshuser@[CLUSTERNAME]-ssh.azurehdinsight.net:2017-01-FlightData.csv
     ```
 
-2. Użyj polecenia systemu plików HDFS, aby skopiować plik z magazynu lokalnego węzła głównego do usługi Azure Storage.
+2. Za pomocą polecenia HDFS Skopiuj plik z lokalnego magazynu węzła głównego do usługi Azure Storage.
 
     ```bash
     hdfs dfs -put ./2017-01-FlightData.csv /example/data/flights/2017-01-FlightData.csv
     ```
 
-Przykładowe dane, jest teraz dostępna. Potok wymaga jednak dwie tabele programu Hive do przetwarzania, jeden dla danych przychodzących (`rawFlights`) i jeden dla podsumowane dane (`flights`). Utworzenie tych tabel w Ambari w następujący sposób.
+Przykładowe dane są teraz dostępne. Jednak potok wymaga dwóch tabel programu Hive do przetwarzania, jeden dla danych przychodzących (`rawFlights`) i jeden dla danych podsumowanych (`flights`). Utwórz te tabele w Ambari w następujący sposób.
 
-1. Zaloguj się do narzędzia Ambari, przechodząc do protokołu http:\//headnodehost:8080.
-2. Z listy usług wybierz **Hive**.
+1. Zaloguj się do Ambari, przechodząc do protokołu HTTP\/:/headnodehost: 8080.
+2. Z listy usług wybierz pozycję **Hive**.
 
-    ![Wybierając Hive narzędzia Ambari](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)
+    ![Wybieranie gałęzi w Ambari](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)
 
-3. Wybierz **przejdź do widoku** obok etykiety 2.0 programu Hive widoku.
+3. Wybierz pozycję **Przejdź do widoku** obok etykiety widok programu Hive 2,0.
 
-    ![Wybierając widoku Hive narzędzia Ambari](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-summary.png)
+    ![Wybieranie widoku programu Hive w Ambari](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-summary.png)
 
-4. W obszarze tekstu zapytania wklej poniższe instrukcje, aby utworzyć `rawFlights` tabeli. `rawFlights` Tabeli znajdują się schematu przy odczycie plików CSV, w ramach `/example/data/flights` folderu w usłudze Azure Storage. 
+4. W obszarze tekstu zapytania Wklej następujące instrukcje, aby utworzyć `rawFlights` tabelę. Tabela zawiera schemat na potrzeby odczytywania plików `/example/data/flights` CSV znajdujących się w folderze w usłudze Azure Storage. `rawFlights` 
 
     ```
     CREATE EXTERNAL TABLE IF NOT EXISTS rawflights (
@@ -209,11 +209,11 @@ Przykładowe dane, jest teraz dostępna. Potok wymaga jednak dwie tabele program
     LOCATION '/example/data/flights'
     ```
 
-5. Wybierz **Execute** tworzenia tabeli.
+5. Wybierz pozycję **Execute (wykonaj** ), aby utworzyć tabelę.
 
-    ![Zapytanie programu hive na systemu Ambari](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png)
+    ![Zapytanie programu Hive w Ambari](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png)
 
-6. Aby utworzyć `flights` tabeli, Zastąp tekst umieszczony w obszarze tekstu zapytania przy użyciu następujących instrukcji. `flights` Tabela jest tabelą zarządzanych Hive partycjonowania danych ładowane przez rok, miesiąc i dzień miesiąca. Ta tabela będzie zawierać wszystkie dane historyczne lotu, za pomocą najniższy poziom szczegółowości obecne w danych źródłowych o jeden wiersz na lot.
+6. Aby utworzyć `flights` tabelę, Zastąp tekst w obszarze tekstu zapytania poniższymi instrukcjami. `flights` Tabela jest tabelą zarządzaną Hive, która dzieli dane ładowane do nich przez rok, miesiąc i dzień miesiąca. Ta tabela będzie zawierać wszystkie historyczne dane lotu z najniższym rozdrobnieniem obecnym w danych źródłowych jednego wiersza na lot.
 
     ```
     SET hive.exec.dynamic.partition.mode=nonstrict;
@@ -239,21 +239,21 @@ Przykładowe dane, jest teraz dostępna. Potok wymaga jednak dwie tabele program
     );
     ```
 
-7. Wybierz **Execute** tworzenia tabeli.
+7. Wybierz pozycję **Execute (wykonaj** ), aby utworzyć tabelę.
 
-### <a name="create-the-oozie-workflow"></a>Tworzenie przepływu pracy programu Oozie
+### <a name="create-the-oozie-workflow"></a>Tworzenie przepływu pracy Oozie
 
-Potoki zazwyczaj przetwarzanie danych w partiach w danym przedziale czasu. W takim przypadku potok przetwarza dane lotu codziennie. To podejście umożliwia wejściowych plików CSV do osiągnięcia codziennie, co tydzień, co miesiąc lub co rok.
+Potoki zwykle przetwarzają dane w partiach według danego przedziału czasu. W takim przypadku potok codziennie przetwarza dane lotu. Takie podejście umożliwia codzienne, cotygodniowe, comiesięczne lub roczne wprowadzanie wejściowych plików CSV.
 
-Przykładowy przepływ pracy przetwarza lotu dane dzień po dniu, w trzech głównych kroków:
+Przykładowy przepływ pracy przetwarza dziennie danych lotu w trzech głównych krokach:
 
-1. Uruchomienie zapytania programu Hive, aby wyodrębnić dane dla tego samego dnia, zakres dat z pliku CSV źródła, które są reprezentowane przez `rawFlights` tabeli i wstawianie danych do `flights` tabeli.
-2. Uruchomienie zapytania programu Hive umożliwia dynamiczne tworzenie tabeli tymczasowej w gałęzi w ciągu dnia, który zawiera kopię danych lotów podsumowane według dnia, jak i operatora.
-3. Skopiuj wszystkie dane z tabeli tymczasowej codzienne w gałęzi do miejsca docelowego przy użyciu narzędzia Apache Sqoop `dailyflights` tabeli w bazie danych SQL Azure. Sqoop odczytuje wiersze źródła danych w tej tabeli znajdującej się w usłudze Azure Storage i ładuje je do bazy danych SQL przy użyciu połączenia sterownika JDBC.
+1. Uruchom zapytanie programu Hive, aby wyodrębnić dane z zakresu dat tego dnia ze źródłowego pliku CSV reprezentowanego przez `rawFlights` tabelę i wstawić dane `flights` do tabeli.
+2. Uruchom zapytanie programu Hive, aby dynamicznie utworzyć tabelę przejściową w ramach platformy Hive na dzień, która zawiera kopię danych lotu podsumowaną według dnia i operatora.
+3. Za pomocą platformy Apache Sqoop Skopiuj wszystkie dane z codziennej tabeli przemieszczania do tabeli docelowej `dailyflights` w Azure SQL Database. Sqoop odczytuje wiersze źródłowe z danych znajdujących się w tabeli Hive znajdujących się w usłudze Azure Storage i ładuje je do SQL Database przy użyciu połączenia JDBC.
 
-Te trzy kroki są koordynowane przez przepływ pracy programu Oozie. 
+Te trzy kroki są koordynowane przez przepływ pracy Oozie. 
 
-1. Utwórz kwerendę w pliku `hive-load-flights-partition.hql`.
+1. Utwórz zapytanie w pliku `hive-load-flights-partition.hql`.
 
     ```
     SET hive.exec.dynamic.partition.mode=nonstrict;
@@ -277,9 +277,9 @@ Te trzy kroki są koordynowane przez przepływ pracy programu Oozie.
     WHERE year = ${year} AND month = ${month} AND day_of_month = ${day};
     ```
 
-    Zmienne programu Oozie należy użyć składni `${variableName}`. Te zmienne są ustawiane `job.properties` plików zgodnie z opisem w kolejnym kroku. Oozie zastępowane rzeczywistymi wartościami w czasie wykonywania.
+    Zmienne Oozie używają składni `${variableName}`. Te zmienne są ustawiane w `job.properties` pliku zgodnie z opisem w kolejnym kroku. Oozie podstawia rzeczywiste wartości w czasie wykonywania.
 
-2. Utwórz kwerendę w pliku `hive-create-daily-summary-table.hql`.
+2. Utwórz zapytanie w pliku `hive-create-daily-summary-table.hql`.
 
     ```
     DROP TABLE ${hiveTableName};
@@ -303,15 +303,15 @@ Te trzy kroki są koordynowane przez przepływ pracy programu Oozie.
     HAVING year = ${year} AND month = ${month} AND day_of_month = ${day};
     ```
 
-    To zapytanie tworzy tymczasową tabelę, która będzie przechowywać podsumowane dane przez jeden dzień, zwróć uwagę na instrukcji SELECT, która oblicza średnie opóźnienia i łączna liczba odległość przesyłane przez operatora, według dnia. Dane do tej tabeli przechowywaną w znanej lokalizacji (ścieżka wskazanego przez zmienną hiveDataFolder), dzięki czemu może służyć jako źródło dla Sqoop w następnym kroku.
+    To zapytanie tworzy tabelę przejściową, w której będą przechowywane tylko podsumowane dane przez jeden dzień. należy zwrócić uwagę na instrukcję SELECT, która oblicza średnie opóźnienia i łączną odległość przewidzianą przez operatora według dnia. Dane wstawione do tej tabeli przechowywane we wskazanej lokalizacji (ścieżki wskazanej przez zmienną hiveDataFolder), aby można było ich użyć jako źródła dla Sqoop w następnym kroku.
 
-3. Uruchom następujące polecenie narzędzia Sqoop.
+3. Uruchom następujące polecenie Sqoop.
 
     ```
     sqoop export --connect ${sqlDatabaseConnectionString} --table ${sqlDatabaseTableName} --export-dir ${hiveDataFolder} -m 1 --input-fields-terminated-by "\t"
     ```
 
-Te trzy kroki są wyrażane jako osobne akcje trzy w następującym pliku przepływu pracy programu Oozie o nazwie `workflow.xml`.
+Te trzy kroki są wyrażane jako trzy osobne akcje w następującym pliku przepływu pracy Oozie `workflow.xml`o nazwie.
 
 ```
 <workflow-app name="loadflightstable" xmlns="uri:oozie:workflow:0.5">
@@ -389,7 +389,7 @@ Te trzy kroki są wyrażane jako osobne akcje trzy w następującym pliku przep�
 </workflow-app>
 ```
 
-Ich ścieżkę w usłudze Azure Storage są dostępne dla obu zapytań programu Hive, a pozostałe wartości zmiennych są dostarczane przez następujące `job.properties` pliku. Ten plik służy do konfigurowania przepływu pracy do uruchamiania w dniu 3 stycznia 2017 r.
+Dwie zapytania programu Hive są dostępne przez ich ścieżkę w usłudze Azure Storage, a pozostałe wartości zmiennych są udostępniane przez następujący `job.properties` plik. Ten plik konfiguruje przepływ pracy do uruchomienia dla daty 3 stycznia 2017.
 
 ```
 nameNode=wasbs://[CONTAINERNAME]@[ACCOUNTNAME].blob.core.windows.net
@@ -409,42 +409,42 @@ month=01
 day=03
 ```
 
-Poniższa tabela zawiera podsumowanie każdej właściwości i wskazuje, gdzie można znaleźć wartości dla Twojego środowiska.
+Poniższa tabela zawiera podsumowanie poszczególnych właściwości i wskazuje, gdzie można znaleźć wartości dla własnego środowiska.
 
-| Właściwość | Wartość źródła |
+| Właściwość | Źródło wartości |
 | --- | --- |
-| nameNode | Pełna ścieżka do kontenera magazynu Azure dołączone do klastra usługi HDInsight. |
-| jobTracker | Wewnętrzne nazwy hosta do aktywnego klastra YARN głównymi węzła. Na stronie głównej systemu Ambari z listy usług wybierz YARN, a następnie wybierz aktywny Resource Manager. Nazwa hosta identyfikatora URI jest wyświetlany w górnej części strony. Dołącz portu 8050. |
-| queueName | Nazwa kolejki YARN, używane podczas planowania zadań Hive. Pozostaw domyślne. |
-| oozie.use.system.libpath | Pozostaw jako PRAWDA. |
-| appBase | Ścieżka do podfolderu w usłudze Azure Storage, gdzie wdrażanie przepływu pracy programu Oozie i pliki pomocnicze. |
-| oozie.wf.application.path | Lokalizacja przepływu pracy programu Oozie `workflow.xml` do uruchomienia. |
-| hiveScriptLoadPartition | Ścieżka do plik zapytania programu Hive w usłudze Azure Storage `hive-load-flights-partition.hql`. |
-| hiveScriptCreateDailyTable | Ścieżka do plik zapytania programu Hive w usłudze Azure Storage `hive-create-daily-summary-table.hql`. |
-| hiveDailyTableName | Dynamicznie generowanym Nazwa do użycia dla tabeli przemieszczania. |
-| hiveDataFolder | Ścieżka w usłudze Azure Storage do danych zawarty w tabeli przemieszczania. |
-| sqlDatabaseConnectionString | Składnia parametry połączenia sterownika JDBC usługi Azure SQL Database. |
-| sqlDatabaseTableName | Nazwa tabeli w usłudze Azure SQL Database, do którego zostaną wstawione wiersze podsumowania. Pozostaw `dailyflights`. |
-| rocznie | Składnik roku, dnia, dla których lotu podsumowania są obliczane. Pozostawić. |
-| miesiąc | Składnik miesiąca, dnia, dla których lotu podsumowania są obliczane. Pozostawić. |
-| dzień | Dzień składnik miesiąca, dnia, dla których lotu podsumowania są obliczane. Pozostawić. |
+| NameNode | Pełna ścieżka do kontenera magazynu platformy Azure dołączonego do klastra usługi HDInsight. |
+| jobTracker | Wewnętrzna nazwa hosta do węzła głównego PRZĘDZy w klastrze. Na stronie głównej Ambari wybierz z listy usług pozycję PRZĘDZa, a następnie wybierz pozycję Active Menedżer zasobów. Identyfikator URI nazwy hosta jest wyświetlany w górnej części strony. Dołącz port 8050. |
+| queueName | Nazwa kolejki PRZĘDZy użyta podczas planowania akcji programu Hive. Pozostaw jako domyślny. |
+| oozie.use.system.libpath | Pozostaw wartość true. |
+| appBase | Ścieżka do podfolderu w usłudze Azure Storage, w której jest wdrażany przepływ pracy Oozie i pliki pomocnicze. |
+| oozie.wf.application.path | Lokalizacja przepływu pracy `workflow.xml` Oozie do uruchomienia. |
+| hiveScriptLoadPartition | Ścieżka do pliku `hive-load-flights-partition.hql`zapytania programu Hive w usłudze Azure Storage. |
+| hiveScriptCreateDailyTable | Ścieżka do pliku `hive-create-daily-summary-table.hql`zapytania programu Hive w usłudze Azure Storage. |
+| hiveDailyTableName | Generowana dynamicznie nazwa do użycia w tabeli przemieszczania. |
+| hiveDataFolder | Ścieżka w usłudze Azure Storage do danych zawartych w tabeli przemieszczania. |
+| sqlDatabaseConnectionString | Parametry połączenia składni JDBC z Azure SQL Database. |
+| sqlDatabaseTableName | Nazwa tabeli w Azure SQL Database, do której są wstawiane wiersze podsumowania. Pozostaw jako `dailyflights`. |
+| rok | Składnik roku dnia, dla którego są obliczane podsumowania lotu. Pozostaw jako is. |
+| miesiąc | Składnik miesiąca dnia, dla którego są obliczane podsumowania lotu. Pozostaw jako is. |
+| dzień | Składnik dzień miesiąca dnia, dla którego są obliczane podsumowania lotu. Pozostaw jako is. |
 
 > [!NOTE]  
-> Pamiętaj zaktualizować swoją kopię `job.properties` pliku z wartościami dla danego środowiska, aby można było wdrożyć i uruchomić przepływ pracy programu Oozie.
+> Przed wdrożeniem i uruchomieniem przepływu pracy `job.properties` Oozie należy zaktualizować kopię pliku przy użyciu wartości właściwych dla danego środowiska.
 
-### <a name="deploy-and-run-the-oozie-workflow"></a>Wdrażanie i uruchamianie przepływu pracy programu Oozie
+### <a name="deploy-and-run-the-oozie-workflow"></a>Wdrażanie i uruchamianie przepływu pracy Oozie
 
-Użyj połączenia usługi z sesji programu bash, aby wdrożyć przepływ pracy programu Oozie (`workflow.xml`), zapytania programu Hive (`hive-load-flights-partition.hql` i `hive-create-daily-summary-table.hql`) i konfiguracji zadań (`job.properties`).  W technologii Oozie, tylko `job.properties` pliku może istnieć w magazynie lokalnym węzła głównego. Wszystkie inne pliki muszą być przechowywane w systemie plików HDFS, w tym przypadku usługi Azure Storage. Akcja Sqoop używane przez przepływ pracy zależy od sterownika JDBC, do komunikowania się z bazą danych SQL, które muszą zostać skopiowane z węzłem głównym systemu plików HDFS.
+Użyj punktu połączenia usługi z sesji bash, aby wdrożyć przepływ pracy`workflow.xml`Oozie (), zapytania programu`hive-load-flights-partition.hql` Hive `hive-create-daily-summary-table.hql`(i) oraz konfigurację zadania`job.properties`().  W programie Oozie tylko `job.properties` plik może istnieć w lokalnym magazynie węzła głównego. Wszystkie inne pliki muszą być przechowywane w systemie plików HDFS, w tym przypadku usługi Azure Storage. Akcja Sqoop używana przez przepływ pracy zależy od sterownika JDBC do komunikowania się z SQL Database, który należy skopiować z węzła głównego do systemu plików HDFS.
 
-1. Utwórz `load_flights_by_day` podfolder poniżej ścieżki użytkownika w magazynie lokalnym węzła głównego.
+1. `load_flights_by_day` Utwórz podfolder pod ścieżką użytkownika w lokalnym magazynie węzła głównego.
 
         ssh sshuser@[CLUSTERNAME]-ssh.azurehdinsight.net 'mkdir load_flights_by_day'
 
-2. Skopiuj wszystkie pliki w bieżącym katalogu ( `workflow.xml` i `job.properties` plików) do `load_flights_by_day` podfolderu.
+2. Skopiuj wszystkie pliki w bieżącym katalogu ( `workflow.xml` `load_flights_by_day` pliki i `job.properties` ) do podfolderu.
 
         scp ./* sshuser@[CLUSTERNAME]-ssh.azurehdinsight.net:load_flights_by_day
 
-3. SSH węzłem głównym i przejdź do `load_flights_by_day` folderu.
+3. Połącz się z węzłem głównym i przejdź do `load_flights_by_day` folderu głównego.
 
         ssh sshuser@[CLUSTERNAME]-ssh.azurehdinsight.net
         cd load_flights_by_day
@@ -453,7 +453,7 @@ Użyj połączenia usługi z sesji programu bash, aby wdrożyć przepływ pracy 
 
         hdfs dfs -put ./* /oozie/load_flights_by_day
 
-5. Kopiuj `sqljdbc41.jar` z lokalnego węzła głównego do folderu przepływu pracy w systemie plików HDFS:
+5. Skopiuj `sqljdbc41.jar` z lokalnego węzła głównego do folderu przepływu pracy w systemie HDFS:
 
         hdfs dfs -put /usr/share/java/sqljdbc_4.1/enu/sqljdbc*.jar /oozie/load_flights_by_day
 
@@ -461,19 +461,19 @@ Użyj połączenia usługi z sesji programu bash, aby wdrożyć przepływ pracy 
 
         oozie job -config job.properties -run
 
-7. Sprawdź, czy stan za pomocą konsoli sieci Web programu Oozie. W ramach Ambari, zaznacz **Oozie**, **szybkich łączy**, a następnie **konsoli sieci Web programu Oozie**. W obszarze **zadania przepływu pracy** zaznacz **wszystkie zadania**.
+7. Obserwuj stan przy użyciu konsoli sieci Web Oozie. W programie Ambari wybierz pozycję **Oozie**, **szybkie linki**i **Oozie konsolę sieci Web**. Na karcie **zadania przepływu pracy** wybierz pozycję **wszystkie zadania**.
 
-    ![Oozie Web Console Workflows](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png)
+    ![Przepływy pracy konsoli sieci Web Oozie](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png)
 
-8. Jeśli stan jest zakończyło się pomyślnie, zapytanie tabeli bazy danych SQL, aby wyświetlić wstawione wiersze. Przy użyciu witryny Azure portal, przejdź do okienka dla usługi SQL Database, wybierz **narzędzia**, a następnie otwórz **edytora zapytań**.
+8. Gdy stan ma wartość powodzenie, wykonaj zapytanie do tabeli bazy danych SQL w celu wyświetlenia wstawionych wierszy. Korzystając z Azure Portal, przejdź do okienka dla SQL Database, wybierz pozycję **Narzędzia**, a następnie otwórz **Edytor zapytań**.
 
         SELECT * FROM dailyflights
 
-Teraz, gdy w ciągu dnia jeden test jest uruchomiony przepływ pracy, może zawijać się ten przepływ pracy przy użyciu koordynatora, która planuje przepływu pracy, dzięki czemu jest uruchamiane raz dziennie.
+Teraz, gdy przepływ pracy jest uruchomiony dla pojedynczego dnia testowego, możesz otoczyć ten przepływ pracy koordynatorem, który planuje przepływ pracy tak, aby był uruchamiany codziennie.
 
-### <a name="run-the-workflow-with-a-coordinator"></a>Uruchamianie przepływu pracy przy użyciu koordynatora
+### <a name="run-the-workflow-with-a-coordinator"></a>Uruchamianie przepływu pracy z koordynatorem
 
-Aby zaplanować ten przepływ pracy, aby była uruchamiana codziennie (lub wszystkie dni w zakresie dat), można użyć koordynatora. Koordynator jest definiowany przez plik XML, na przykład `coordinator.xml`:
+Aby zaplanować ten przepływ pracy w taki sposób, aby był uruchamiany codziennie (lub wszystkie dni w zakresie dat), można użyć koordynatora. Koordynator jest zdefiniowany przez plik XML, na przykład `coordinator.xml`:
 
 ```
 <coordinator-app name="daily_export" start="2017-01-01T00:00Z" end="2017-01-05T00:00Z" frequency="${coord:days(1)}" timezone="UTC" xmlns="uri:oozie:coordinator:0.4">
@@ -542,17 +542,17 @@ Aby zaplanować ten przepływ pracy, aby była uruchamiana codziennie (lub wszys
 </coordinator-app>
 ```
 
-Jak widać, większość koordynatora po prostu przekazuje informacje o konfiguracji dla wystąpienia przepływu pracy. Istnieje jednak kilka istotnych elementów w celu wyróżnienia.
+Jak widać, większość koordynatora przekazuje tylko informacje o konfiguracji do wystąpienia przepływu pracy. Istnieje jednak kilka ważnych elementów, które należy wywołać.
 
-* Punkt 1: `start` i `end` atrybuty na `coordinator-app` samego elementu sterowania przedział czasu, w którym jest uruchamiany koordynatora.
+* Punkt 1: Atrybuty `start` i `end` w`coordinator-app` samym elemencie kontrolują przedział czasu, w którym działa koordynator.
 
     ```
     <coordinator-app ... start="2017-01-01T00:00Z" end="2017-01-05T00:00Z" frequency="${coord:days(1)}" ...>
     ```
 
-    Koordynator jest odpowiedzialna za planowanie akcji w ramach `start` i `end` zakres, dat, zgodnie z interwałem określonym przez `frequency` atrybutu. Każda akcja zaplanowane z kolei uruchamia przepływ pracy, zgodnie z konfiguracją. W powyższej definicji koordynator Koordynator jest skonfigurowany do uruchamiania działań od 1 stycznia 2017 r. do 5 stycznia 2017 r. Częstotliwość jest ustawiona na 1 dzień, [język wyrażeń Oozie](https://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation) wyrażenie częstotliwość `${coord:days(1)}`. Skutkuje to koordynator planowania akcję (a tym samym przepływu pracy) raz dziennie. Dla zakresów dat, które znajdują się w przeszłości, jak w poniższym przykładzie akcja zostanie zaplanowane do uruchomienia bez opóźnień. Początek daty, w którym akcja jest zaplanowane do uruchomienia jest nazywany *nominalna czasu*. Na przykład do przetwarzania danych dla 1 stycznia 2017 r. koordynator będą planować akcji z nominalna czasem 2017-01-01T00:00:00 GMT.
+    Koordynator jest odpowiedzialny za planowanie akcji w ramach `start` i `end` zakres dat, zgodnie z interwałem określonym przez `frequency` atrybut. Każda zaplanowana akcja z kolei uruchamia przepływ pracy zgodnie z konfiguracją. W powyższej definicji koordynatora koordynator jest skonfigurowany do uruchamiania akcji od 1 stycznia 2017 do 5 stycznia 2017. Częstotliwość jest ustawiana na 1 dzień przez wyrażenie `${coord:days(1)}`częstotliwości [języka wyrażenia Oozie](https://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation) . Powoduje to, że koordynator zaplanował akcję (a tym samym przepływ pracy) raz dziennie. W przypadku zakresów dat, które znajdują się w przeszłości, jak w tym przykładzie, akcja zostanie zaplanowana do uruchomienia bez opóźnień. Początek daty, od której zaplanowano uruchomienie akcji, nazywa się *czasem nominalnym*. Na przykład w celu przetworzenia danych z 1 stycznia 2017 koordynator będzie planować akcję o nominalnym czasie wynoszącym 2017-01-01T00:00:00 GMT.
 
-* Punkt 2: W zakresie przepływu pracy `dataset` element określa, gdzie szukać w systemie plików HDFS dane dla zakresu określonej daty i konfiguruje się, jak Oozie Określa, czy dane są dostępne jeszcze do przetworzenia.
+* Punkt 2: W zakresie dat przepływu pracy `dataset` element określa, gdzie należy szukać danych w systemie plików HDFS dla określonego zakresu dat, i określa, jak Oozie określa, czy dane są jeszcze dostępne do przetworzenia.
 
     ```
     <dataset name="ds_input1" frequency="${coord:days(1)}" initial-instance="2016-12-31T00:00Z" timezone="UTC">
@@ -561,11 +561,11 @@ Jak widać, większość koordynatora po prostu przekazuje informacje o konfigur
     </dataset>
     ```
 
-    Ścieżka do danych w systemie plików HDFS jest tworzona dynamicznie zgodnie z wyrażeniem w `uri-template` elementu. W tym koordynatora częstotliwości równej jeden dzień również jest używany z zestawem danych. Podczas działania są zaplanowane (i definiuje ich czasy nominalna), podczas gdy daty rozpoczęcia i zakończenia w kontrolce elementu koordynator `initial-instance` i `frequency` w zestawie danych, kontrolować obliczanie daty, który jest używany podczas tworzenia `uri-template`. W tym przypadku wartość pierwszego wystąpienia jeden dzień przed rozpoczęciem koordynatora, aby upewnić się, wybiera się pierwszego dnia przez dane pomagają w zrealizowaniu (1/1/2017). Obliczenia daty typizowanego zestawu danych przenosi do przodu od wartości `initial-instance` przesuwania (12/31/2016), z przyrostem równym częstotliwość zestawu danych (1 dzień), aż do znalezienia Data ostatniego, które nie przekaże nominalna czas ustawiony przez koordynatora (2017-01-01T00:00:00 GMT dla pierwszej akcji).
+    Ścieżka do danych w systemie plików HDFS jest tworzona dynamicznie zgodnie z wyrażeniem podanym w `uri-template` elemencie. W tym koordynatorze jest również używana częstotliwość o jeden dzień z zestawem danych. Podczas gdy akcje są zaplanowane (i definiuje ich czasy nominalne), a `initial-instance` `frequency` daty rozpoczęcia i zakończenia elementu koordynatora są zależne od tego, czy w zestawie danych jest włączone Obliczanie daty używanej w konstruowaniu `uri-template`. W takim przypadku należy ustawić początkowe wystąpienie na jeden dzień przed rozpoczęciem koordynatora, aby upewnić się, że wybiera on pierwszy dzień (1/1/2017) danych. Obliczenia daty zestawu danych są przenoszone z wartości `initial-instance` (12/31/2016) w przyrostach częstotliwości zestawu danych (1 dzień), aż do momentu znalezienia najnowszej daty, która nie przekazuje czasu nominalnego ustawionego przez koordynatora (2017-01-01T00:00:00 GMT dla pierwszej akcji).
 
-    Pusty `done-flag` element wskazuje, że podczas Oozie sprawdza obecność danych wejściowych w wyznaczonym czasie, Oozie określa danych czy są dostępne przez obecność pliku lub katalogu. W tym przypadku jest obecność pliku csv. Jeśli plik csv jest obecny, Oozie zakłada danych jest gotowy i uruchamia wystąpienie przepływu pracy do przetwarzania pliku. Jeśli istnieje plik csv, nie jest obecny, Oozie przyjęto założenie, że dane nie są jeszcze gotowe i że przebieg przepływu pracy przechodzi w stan oczekiwania.
+    Pusty `done-flag` element wskazuje, że gdy Oozie sprawdza obecność danych wejściowych w wyznaczonym czasie, Oozie określa dane, czy są dostępne według obecności katalogu lub pliku. W takim przypadku jest to obecność pliku CSV. Jeśli plik CSV jest obecny, Oozie zakłada, że dane są gotowe i uruchamia wystąpienie przepływu pracy w celu przetworzenia pliku. Jeśli nie ma pliku CSV, Oozie zakłada, że dane nie są jeszcze gotowe i że przebieg przepływu pracy przechodzi w stan oczekiwania.
 
-* Punkt 3: `data-in` Element określa określonej sygnatury czasowej do użycia jako nominalna czas podczas zastępowania wartości w `uri-template` dla skojarzonego zestawu danych.
+* Punkt 3: Element określa konkretny znacznik czasu, który ma być używany jako czas nominalny podczas zamieniania `uri-template` wartości w dla skojarzonego zestawu danych. `data-in`
 
     ```
     <data-in name="event_input1" dataset="ds_input1">
@@ -573,17 +573,17 @@ Jak widać, większość koordynatora po prostu przekazuje informacje o konfigur
     </data-in>
     ```
 
-    W tym przypadku Przypisz wystąpienie do wyrażenia `${coord:current(0)}`, co przekłada się przy użyciu nominalna czasu działania pierwotnie zaplanowane przez koordynatora. Oznacza to gdy koordynator planuje akcję do przeprowadzenia nominalna czas 2017-01-01, 01/01/2017 będzie wówczas co to jest używany do zastępowania roku (2017) i miesiąca (01) zmiennych w szablon identyfikatora URI. Gdy szablon identyfikatora URI jest obliczana dla tego wystąpienia, Oozie sprawdza, czy oczekiwany katalog lub plik jest dostępna i odpowiednio planuje następnego uruchomienia przepływu pracy.
+    W takim przypadku należy ustawić wystąpienie na wyrażenie `${coord:current(0)}`, które jest tłumaczone na użycie nominalnego czasu akcji zgodnie z oryginalnie zaplanowaną przez koordynatora. Innymi słowy, gdy koordynator planuje uruchomienie akcji z czasem nominalnym 01/01/2017, a następnie 01/01/2017 jest używany do zastępowania zmiennych YEAR (2017) i miesiąca (01) w szablonie identyfikatora URI. Gdy szablon URI zostanie obliczony dla tego wystąpienia, Oozie sprawdza, czy oczekiwany katalog lub plik jest dostępny i harmonogram następnego przebiegu przepływu pracy.
 
-Połącz trzech poprzednich punktach umożliwiające uzyskanie sytuacji, w którym koordynator planuje przetwarzania źródła danych w czasie każdego dnia. 
+Trzy poprzednie punkty łączą się, aby dać sytuację, w której koordynator planuje przetwarzanie danych źródłowych w codziennym miejscu. 
 
-* Punkt 1: Koordynator rozpoczyna się od nominalna dnia 2017-01-01.
+* Punkt 1: Koordynator rozpoczyna się od nominalnej daty 2017-01-01.
 
 * Punkt 2: Oozie szuka danych dostępnych w `sourceDataFolder/2017-01-FlightData.csv`.
 
-* Punkt 3: Jeśli Oozie znajdzie się ten plik, planuje wystąpienie przepływu pracy, który przetworzy dane do 2017-01-01. Oozie następnie kontynuuje przetwarzanie 2017-01-02. Tego okresu ewaluacji powtarza się maksymalnie z wyjątkiem 2017-01-05.
+* Punkt 3: Gdy Oozie odnajdzie ten plik, planuje wystąpienie przepływu pracy, który będzie przetwarzać dane dla 2017-01-01. Oozie następnie kontynuuje przetwarzanie dla 2017-01-02. Ta ocena powtarza się do, ale nie do 2017-01-05.
 
-Jak przy użyciu przepływów pracy, konfigurację Koordynator jest zdefiniowany w `job.properties` pliku, który jest nadzbiorem ustawieniami używanymi przez przepływ pracy.
+Podobnie jak w przypadku przepływów pracy konfiguracja koordynatora jest definiowana w `job.properties` pliku, który ma nadzbiór ustawień używanych przez przepływ pracy.
 
 ```
 nameNode=wasbs://[CONTAINERNAME]@[ACCOUNTNAME].blob.core.windows.net
@@ -602,25 +602,25 @@ sqlDatabaseTableName=dailyflights
 
 ```
 
-Tylko nowe właściwości wprowadzone w tym `job.properties` pliku są:
+Jedyne nowe właściwości wprowadzone w tym `job.properties` pliku to:
 
-| Właściwość | Wartość źródła |
+| Właściwość | Źródło wartości |
 | --- | --- |
-| oozie.coord.application.path | Wskazuje lokalizację `coordinator.xml` plik zawierający koordynatora programu Oozie do uruchomienia. |
-| hiveDailyTableNamePrefix | Prefiks używany podczas tworzenia dynamicznie Nazwa tabeli tymczasowej. |
-| hiveDataFolderPrefix | Prefiks ścieżki, w którym będą przechowywane wszystkie tabele przemieszczania. |
+| oozie.coord.application.path | Wskazuje lokalizację `coordinator.xml` pliku zawierającego koordynatora Oozie do uruchomienia. |
+| hiveDailyTableNamePrefix | Prefiks używany podczas dynamicznego tworzenia nazwy tabeli dla tabeli przemieszczania. |
+| hiveDataFolderPrefix | Prefiks ścieżki, w której będą przechowywane wszystkie tabele przemieszczania. |
 
-### <a name="deploy-and-run-the-oozie-coordinator"></a>Wdrażanie i uruchamianie koordynatora programu Oozie
+### <a name="deploy-and-run-the-oozie-coordinator"></a>Wdrażanie i uruchamianie koordynatora Oozie
 
-Aby uruchomić potok przy użyciu koordynatora, przejdź w podobny sposób jak w przypadku przepływu pracy, z wyjątkiem pracować z folderem o jeden poziom wyżej folder, który zawiera przepływ pracy. Ta konwencja folderu oddziela koordynatorów od przepływów pracy na dysku, więc jednego koordynatora można skojarzyć z inną podrzędne przepływy pracy.
+Aby uruchomić potok z koordynatorem, Kontynuuj w podobny sposób jak w przypadku przepływu pracy, z wyjątkiem tego, że pracujesz z folderu o jeden poziom powyżej folderu zawierającego przepływ pracy. Ta konwencja folderu oddziela koordynatorów z przepływów pracy na dysku, dzięki czemu można skojarzyć jednego koordynatora z różnymi podrzędnymi przepływami pracy.
 
-1. Użyj punkt połączenia usługi na maszynie lokalnej, aby skopiować plików koordynator o rozmiarze do magazynu lokalnego węzła głównego klastra.
+1. Użyj punktu połączenia usługi z komputera lokalnego, aby skopiować pliki koordynatora do lokalnego magazynu węzła głównego klastra.
 
     ```bash
     scp ./* sshuser@[CLUSTERNAME]-ssh.azurehdinsight.net:~
     ```
 
-2. Nawiąż połączenie z węzłem głównym.
+2. Użyj protokołu SSH do węzła głównego.
 
     ```bash
     ssh sshuser@[CLUSTERNAME]-ssh.azurehdinsight.net 
@@ -638,18 +638,18 @@ Aby uruchomić potok przy użyciu koordynatora, przejdź w podobny sposób jak w
     oozie job -config job.properties -run
     ```
 
-5. Sprawdź stan za pomocą konsoli sieci Web programu Oozie, wybierając ten czas **koordynator zadań** kartę, a następnie **wszystkie zadania**.
+5. Sprawdź stan za pomocą konsoli sieci Web Oozie, tym razem wybierając kartę **zadania koordynatora** , a następnie **wszystkie zadania**.
 
     ![Oozie Web Console Coordinator Jobs](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-jobs.png)
 
-6. Wybierz wystąpienie koordynatora, aby wyświetlić listę zaplanowanych akcji. W tym przypadku powinny być widoczne cztery akcje za pomocą nominalna razy w zakresie od 1/1/2017 do 1/4/2017.
+6. Wybierz wystąpienie koordynatora, aby wyświetlić listę zaplanowanych akcji. W takim przypadku powinny być widoczne cztery działania z przedziałami nominalnymi z zakresu od 1/1/2017 do 1/4/2017.
 
     ![Oozie Web Console Coordinator Job](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-instance.png)
 
-    Każda akcja na tej liście odnosi się do wystąpienia przepływu pracy, który przetwarza jednego dnia, przez które danych, gdzie początku tego samego dnia jest wskazywany przez nominalna czasu.
+    Każda akcja na tej liście odpowiada wystąpieniu przepływu pracy, który przetwarza dane z jednego dnia, gdzie początek tego dnia jest wskazywany przez nominalny czas.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Apache Oozie dokumentacji](https://oozie.apache.org/docs/4.2.0/index.html)
+* [Dokumentacja oprogramowania Apache Oozie](https://oozie.apache.org/docs/4.2.0/index.html)
 
 <!-- * Build the same pipeline [using Azure Data Factory](tbd.md).  -->

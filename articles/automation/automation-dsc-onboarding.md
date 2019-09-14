@@ -9,12 +9,12 @@ ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: b003c0cc6480c5d03c3755e7c57785ab2026194b
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: c05ac7a1894fc3e159ef8fc2b3dd2654714faccf
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498407"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965186"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Dołączanie maszyn w celu zarządzania przez Azure Automation konfigurację stanu
 
@@ -67,7 +67,8 @@ Jeśli zarządzasz zestawem skalowania maszyn wirtualnych, zapoznaj się z przyk
 
 ### <a name="powershell"></a>PowerShell
 
-Polecenie cmdlet [register-AzAutomationDscNode](/powershell/module/az.automation/register-azautomationdscnode) może służyć do dołączania maszyn wirtualnych w Azure Portal za pomocą programu PowerShell.
+Polecenie cmdlet [register-AzAutomationDscNode](/powershell/module/az.automation/register-azautomationdscnode) może służyć do dołączania maszyn wirtualnych na platformie Azure przy użyciu programu PowerShell.
+Jednak jest to obecnie tylko zaimplementowane dla maszyn z systemem Windows (polecenie cmdlet wyzwala tylko rozszerzenie systemu Windows).
 
 ### <a name="registering-virtual-machines-across-azure-subscriptions"></a>Rejestrowanie maszyn wirtualnych w ramach subskrypcji platformy Azure
 
@@ -107,7 +108,7 @@ Serwery z systemem Linux działające lokalnie lub w innych środowiskach w chmu
 
    - Aby znaleźć klucz rejestracji i adres URL rejestracji dla konta usługi Automation, zobacz następującą sekcję [**bezpieczna Rejestracja**](#secure-registration) .
 
-     Jeśli lokalne Configuration Manager konfiguracji DSC środowiska PowerShell nie **są zgodne z** przypadkiem użycia lub chcesz dołączyć maszyny, aby były one tylko zgłaszane do Azure Automation konfiguracji stanu, wykonaj kroki 3-6. W przeciwnym razie przejdź bezpośrednio do kroku 6.
+     Jeśli lokalne Configuration Manager konfiguracji DSC środowiska PowerShell nie są zgodne z przypadkiem użycia lub chcesz dołączyć maszyny, aby były one tylko zgłaszane do Azure Automation konfiguracji stanu, wykonaj kroki 3-6. W przeciwnym razie przejdź bezpośrednio do kroku 6.
 
 1. Postępuj zgodnie z instrukcjami w poniższej sekcji [**generowanie konfiguracyjnych konfiguracji DSC**](#generating-dsc-metaconfigurations) w celu wygenerowania folderu zawierającego wymaganą konfigurację konfiguracji DSC.
 1. Zdalnie Zastosuj konfigurację konfiguracji DSC programu PowerShell do maszyn, które chcesz dołączyć:
@@ -317,7 +318,7 @@ Aby rozwiązać problem lub wyświetlić stan rozszerzenia konfiguracji żądane
 
 Po zarejestrowaniu komputera jako węzła DSC w konfiguracji stanu Azure Automation istnieje kilka powodów, dla których może być konieczne ponowne zarejestrowanie tego węzła w przyszłości:
 
-- Po zarejestrowaniu każdy węzeł automatycznie negocjuje unikatowy certyfikat na potrzeby uwierzytelniania wygaśnie po upływie jednego roku. Obecnie protokół rejestracji DSC programu PowerShell nie może automatycznie odnawiać certyfikatów, gdy zbliżają się do wygaśnięcia, więc należy ponownie zarejestrować węzły po upływie roku. Przed ponownym zarejestrowaniem upewnij się, że w każdym węźle jest uruchomiony system Windows Management Framework 5,0 RTM. Jeśli certyfikat uwierzytelniania węzła wygaśnie i węzeł nie zostanie ponownie zarejestrowany, węzeł nie będzie mógł komunikować się z Azure Automation i jest oznaczony jako "nie odpowiada". Ponowne zarejestrowanie wykonane przez 90 dni lub mniej od czasu wygaśnięcia certyfikatu lub w dowolnym momencie po upływie czasu wygaśnięcia certyfikatu spowoduje wygenerowanie i użycie nowego certyfikatu.
+- W przypadku wersji systemu Windows Server starszych niż Windows Server 2019 każdy węzeł automatycznie negocjuje unikatowy certyfikat na potrzeby uwierzytelniania, który wygaśnie po upływie jednego roku. Obecnie protokół rejestracji DSC programu PowerShell nie może automatycznie odnawiać certyfikatów, gdy zbliżają się do wygaśnięcia, więc należy ponownie zarejestrować węzły po upływie roku. Przed ponownym zarejestrowaniem upewnij się, że w każdym węźle jest uruchomiony system Windows Management Framework 5,0 RTM. Jeśli certyfikat uwierzytelniania węzła wygaśnie i węzeł nie zostanie ponownie zarejestrowany, węzeł nie będzie mógł komunikować się z Azure Automation i jest oznaczony jako "nie odpowiada". Ponowne zarejestrowanie wykonane przez 90 dni lub mniej od czasu wygaśnięcia certyfikatu lub w dowolnym momencie po upływie czasu wygaśnięcia certyfikatu spowoduje wygenerowanie i użycie nowego certyfikatu.  Rozwiązanie tego problemu jest zawarte w systemie Windows Server 2019 lub nowszym.
 - Aby zmienić [wartości wszystkich lokalnych Configuration Manager środowiska PowerShell](/powershell/dsc/metaconfig4) , które zostały ustawione podczas początkowej rejestracji węzła, na przykład ConfigurationMode. Obecnie te wartości agenta DSC można zmienić tylko poprzez rerejestrację. Jedynym wyjątkiem jest konfiguracja węzła przypisana do węzła — można ją zmienić w Azure Automation DSC bezpośrednio.
 
 Ponowna rejestracja może być wykonywana w taki sam sposób, jak początkowo zarejestrowano węzeł przy użyciu dowolnej metody dołączania opisanej w tym dokumencie. Nie musisz wyrejestrować węzła z konfiguracji stanu Azure Automation przed ponownym zarejestrowaniem.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 951b1f3749807ac6aee78a96ae7eb38877ca6acc
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: fb333db693c0f42b66e9fd45f5eb3c879787875d
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991808"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959099"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Znane problemy związane z usługi Azure Data Lake Storage Gen2
 
@@ -100,7 +100,7 @@ W poniższej tabeli wymieniono wszystkie inne funkcje i narzędzia, które nie s
 | **Blobfuse** |Jeszcze nieobsługiwane|
 | **Niestandardowe domeny** |Jeszcze nieobsługiwane|
 | **Eksplorator systemu plików** | Ograniczona pomoc techniczna |
-| **Rejestrowanie diagnostyczne** |Dzienniki diagnostyczne są obsługiwane tylko wtedy, gdy zarejestrujesz się w dostępie do usługi [Data Lake Storage](data-lake-storage-multi-protocol-access.md) w wersji zapoznawczej. <br><br>Włączanie dzienników w Azure Portal nie jest obecnie obsługiwane. Oto przykład sposobu włączania dzienników przy użyciu programu PowerShell. <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`. <br><br>Upewnij się, że `Blob` określono jako wartość `-ServiceType` parametru, jak pokazano w tym przykładzie. 
+| **Rejestrowanie diagnostyczne** |Dzienniki diagnostyczne są obsługiwane tylko wtedy, gdy zarejestrujesz się w [dostępie](data-lake-storage-multi-protocol-access.md) do usługi Data Lake Storage w wersji zapoznawczej. <br><br>Włączanie dzienników w Azure Portal nie jest obecnie obsługiwane. Oto przykład sposobu włączania dzienników przy użyciu programu PowerShell. <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`. <br><br>Upewnij się, że `Blob` określono jako wartość `-ServiceType` parametru, jak pokazano w tym przykładzie. <br><br>Obecnie nie można używać Eksplorator usługi Azure Storage do wyświetlania dzienników diagnostycznych. Aby wyświetlić dzienniki, użyj AzCopy lub zestawów SDK.
 | **Niezmienny magazyn** |Jeszcze nieobsługiwane <br><br>Niezmienny magazyn umożliwia przechowywanie danych w [robaku (zapis jeden raz, odczyt wielu)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) .|
 | **Warstwy na poziomie obiektów** |Warstwy chłodna i archiwalna są obsługiwane tylko wtedy, gdy zarejestrujesz się w dostępie do usługi [Data Lake Storage](data-lake-storage-multi-protocol-access.md) Preview. <br><br> Wszystkie inne warstwy dostępu nie są jeszcze obsługiwane.|
 | **Obsługa programu PowerShell i interfejsu wiersza polecenia** | Ograniczona funkcjonalność <br><br>Obsługiwane są operacje zarządzania, takie jak tworzenie konta. Operacje płaszczyzny danych, takie jak przekazywanie i pobieranie plików, są w publicznej wersji zapoznawczej w ramach [dostępu do wieloprotokołowego Data Lake Storage](data-lake-storage-multi-protocol-access.md). Praca z katalogami i ustawianie list kontroli dostępu (ACL) nie jest jeszcze obsługiwana. |

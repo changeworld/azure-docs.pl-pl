@@ -3,20 +3,20 @@ title: 'Szybki start: interfejs API tłumaczenia mowy w usłudze Translator dla 
 titlesuffix: Azure Cognitive Services
 description: Uzyskaj informacje oraz przykłady kodu w celu szybkiego rozpoczęcia korzystania z interfejsu API tłumaczenia mowy w usłudze Translator.
 services: cognitive-services
-author: swmachan
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: quickstart
 ms.date: 04/26/2019
-ms.author: swmachan
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 5cca3d5d02f9618e99f122bf3fc2a7d2874e1cdf
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 359d962db8b7d8cfdc17c230351bc5556604ebbe
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444504"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965418"
 ---
 # <a name="quickstart-translator-speech-api-with-c"></a>Szybki start: interfejs API tłumaczenia mowy w usłudze Translator dla języka C#
 <a name="HOLTop"></a>
@@ -27,7 +27,7 @@ W tym artykule pokazano, jak używać interfejsu API tłumaczenia mowy w usłudz
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Konieczne będzie [Visual Studio 2019](https://www.visualstudio.com/downloads/) do uruchamiania tego kodu na Windows. (Można korzystać z bezpłatnej wersji Community Edition). Jeśli używasz systemu Mac OS lub Linux, możesz również użyć edytora tekstów [Visual Studio Code](https://code.visualstudio.com/Download) jako alternatywy.
+Do uruchomienia tego kodu w systemie Windows jest wymagany [program Visual Studio 2019](https://www.visualstudio.com/downloads/) . (Można korzystać z bezpłatnej wersji Community Edition). Jeśli używasz systemu Mac OS lub Linux, możesz również użyć edytora tekstów [Visual Studio Code](https://code.visualstudio.com/Download) jako alternatywy.
 
 Plik wav o nazwie „speak.wav” musi znajdować się w tym samym folderze co plik wykonywalny, który skompilujesz przy użyciu poniższego kodu. Ten plik wav powinien być plikiem zapisanym w standardzie PCM, o 16-bitowej rozdzielczości, częstotliwości 16 kHz w formacie mono.
 
@@ -153,7 +153,7 @@ Pomyślnym wynikiem jest utworzenie pliku o nazwie „speak2.wav”. Ten plik za
 
 [Powrót do początku](#HOLTop)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Samouczek dotyczący tłumaczenia mowy w usłudze Translator](../tutorial-translator-speech-csharp.md)

@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: cad04df9ba76ce483a308411949e6f98bab23bf9
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 29fd82eb0253f2f7f6b9bc8b6a84882e2372124c
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858543"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984967"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Różnice w języku T-SQL wystąpienia zarządzanego, ograniczenia i znane problemy
 
@@ -339,7 +339,7 @@ Wystąpienie zarządzane nie może uzyskać dostępu do udziałów plików i fol
 - `ALTER ASSEMBLY`nie można odwoływać się do plików. Zobacz [ALTER Assembly](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
 
 ### <a name="database-mail-db_mail"></a>Poczta bazy danych (db_mail)
- - `sp_send_dbmail`nie można wysłać załączników @file_attachments przy użyciu parametru. Ta procedura nie umożliwia dostępu do lokalnego systemu plików ani udziałów w zakresie lub magazynu obiektów blob platformy Azure.
+ - `sp_send_dbmail`nie można wysłać załączników @file_attachments przy użyciu parametru. W przypadku lokalnego systemu plików i udziałów Extertal lub magazynu obiektów blob platformy Azure ta procedura jest niedostępna.
  - Zobacz znane problemy związane z `@query` parametrem i uwierzytelnianiem.
  
 ### <a name="dbcc"></a>DBCC
@@ -479,9 +479,12 @@ Ograniczenia:
 - Przywracanie pliku bazy danych zawierającej jakiekolwiek ograniczenie opisane w tym dokumencie (na `FILESTREAM` przykład lub `FILETABLE` obiekty) nie może zostać przywrócone w wystąpieniu zarządzanym. `.BAK`
 - `.BAK`nie można przywrócić plików zawierających wiele zestawów kopii zapasowych. 
 - `.BAK`nie można przywrócić plików zawierających wiele plików dziennika.
-- Kopie zapasowe zawierające bazy danych o rozmiarze większym niż 8TB, aktywne obiekty OLTP w pamięci lub więcej niż 280 plików nie mogą zostać przywrócone w wystąpieniu Ogólnego przeznaczenia. 
+- Kopie zapasowe, które zawierają bazy danych o rozmiarze większym niż 8TB, aktywne obiekty OLTP w pamięci lub liczba plików, które przekroczą 280 plików na wystąpienie, nie mogą zostać przywrócone w wystąpieniu Ogólnego przeznaczenia. 
 - Kopie zapasowe zawierające bazy danych 4 TB lub obiektów OLTP w pamięci o łącznym rozmiarze większym niż rozmiar opisany w [limitach zasobów](sql-database-managed-instance-resource-limits.md) nie mogą zostać przywrócone w wystąpieniu krytyczne dla działania firmy.
 Aby uzyskać informacje na temat przywracania instrukcji, zobacz [przywracanie instrukcji](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql).
+
+ > [!IMPORTANT]
+ > Te same ograniczenia dotyczą wbudowanej operacji przywracania do punktu w czasie. Przykładowo nie można przywrócić bazy danych Ogólnego przeznaczenia o pojemności większej niż 4 TB w wystąpieniu Krytyczne dla działania firmy. W wystąpieniu Ogólnego przeznaczenia nie można przywrócić bazy danych Krytyczne dla działania firmy z plikami OLTP w pamięci lub więcej niż 280 plików.
 
 ### <a name="service-broker"></a>Broker usług
 

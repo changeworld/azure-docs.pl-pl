@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie danych z programu Teradata przy użyciu Azure Data Factory | Microsoft Docs
-description: Łącznik programu Teradata usługi Data Factory umożliwia kopiowanie danych z bazy danych programu Teradata do magazynów danych obsługiwanych przez Data Factory jako ujścia.
+title: Kopiowanie danych z programu Teradata Vantage przy użyciu Azure Data Factory | Microsoft Docs
+description: Łącznik programu Teradata usługi Data Factory umożliwia kopiowanie danych z programu Teradata Vantage do magazynów danych obsługiwanych przez Data Factory jako ujścia.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,26 +10,26 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 09/13/2019
 ms.author: jingwang
-ms.openlocfilehash: bec1c0c3523e6d9cfb0b2fdbc7a093ffe0637743
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: f17a7ef2131662cdb9ef4d138303556215810fba
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232496"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959012"
 ---
-# <a name="copy-data-from-teradata-by-using-azure-data-factory"></a>Kopiowanie danych z programu Teradata przy użyciu Azure Data Factory
+# <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Kopiowanie danych z programu Teradata Vantage przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
 >
 > * [Wersja 1](v1/data-factory-onprem-teradata-connector.md)
 > * [Bieżąca wersja](connector-teradata.md)
 
-W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z bazy danych programu Teradata. Kompilacja jest oparta na [przeglądzie działania kopiowania](copy-activity-overview.md).
+W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z programu Teradata Vantage. Kompilacja jest oparta na [przeglądzie działania kopiowania](copy-activity-overview.md).
 
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
-Dane z bazy danych programu Teradata można kopiować do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
+Dane z programu Teradata Vantage można skopiować do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
 W każdym przypadku ten łącznik programu Teradata obsługuje:
 
@@ -62,8 +62,8 @@ Połączona usługa programu Teradata obsługuje następujące właściwości:
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość Type musi być ustawiona na wartość **Teradata**. | Tak |
-| connectionString | Określa informacje, które są konieczne do nawiązania połączenia z wystąpieniem bazy danych programu Teradata. Zapoznaj się z poniższymi przykładami.<br/>Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć `password` konfigurację z parametrów połączenia. Aby uzyskać więcej informacji, zobacz temat [poświadczenia sklepu w Azure Key Vault](store-credentials-in-key-vault.md) . | Tak |
-| username | Określ nazwę użytkownika, aby nawiązać połączenie z bazą danych programu Teradata. Ma zastosowanie w przypadku korzystania z uwierzytelniania systemu Windows. | Nie |
+| connectionString | Określa informacje, które są konieczne do nawiązania połączenia z wystąpieniem programu Teradata. Zapoznaj się z poniższymi przykładami.<br/>Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć `password` konfigurację z parametrów połączenia. Aby uzyskać więcej informacji, zobacz temat [poświadczenia sklepu w Azure Key Vault](store-credentials-in-key-vault.md) . | Tak |
+| username | Określ nazwę użytkownika, aby połączyć się z programem Teradata. Ma zastosowanie w przypadku korzystania z uwierzytelniania systemu Windows. | Nie |
 | password | Określ hasło dla konta użytkownika określonego dla nazwy użytkownika. Możesz również wybrać odwołanie do [wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). <br>Ma zastosowanie w przypadku korzystania z uwierzytelniania systemu Windows lub odwoływania się do hasła w Key Vault na potrzeby uwierzytelniania podstawowego. | Nie |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Tak |
 
@@ -142,8 +142,8 @@ Aby skopiować dane z programu Teradata, obsługiwane są następujące właści
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość Type zestawu danych musi być ustawiona na `TeradataTable`wartość. | Tak |
-| database | Nazwa bazy danych programu Teradata. | Nie (Jeśli określono parametr "query" w źródle działania) |
-| table | Nazwa tabeli w bazie danych programu Teradata. | Nie (Jeśli określono parametr "query" w źródle działania) |
+| database | Nazwa wystąpienia programu Teradata. | Nie (Jeśli określono parametr "query" w źródle działania) |
+| table | Nazwa tabeli w wystąpieniu programu Teradata. | Nie (Jeśli określono parametr "query" w źródle działania) |
 
 **Przykład:**
 
@@ -197,7 +197,7 @@ Aby skopiować dane z programu Teradata, w sekcji **Źródło** działania kopio
 |:--- |:--- |:--- |
 | type | Właściwość Type źródła działania Copy musi być ustawiona na `TeradataSource`wartość. | Tak |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Może to być na przykład `"SELECT * FROM MyTable"`.<br>Po włączeniu obciążenia partycjonowanego należy podłączyć wszystkie odpowiednie wbudowane parametry partycji w zapytaniu. Przykłady można znaleźć w sekcji [Kopiowanie równoległe z programu Teradata](#parallel-copy-from-teradata) . | Nie (Jeśli określono table w zestawie danych) |
-| partitionOptions | Określa opcje partycjonowania danych używane do ładowania danych z programu Teradata. <br>Dozwolone wartości to: **Brak** (wartość domyślna), **hash** i **DynamicRange**.<br>Gdy opcja partycji jest włączona (to nie `None`jest), stopień równoległości do współbieżnego ładowania danych z bazy danych programu Teradata jest kontrolowany [`parallelCopies`](copy-activity-performance.md#parallel-copy) przez ustawienie działania kopiowania. | Nie |
+| partitionOptions | Określa opcje partycjonowania danych używane do ładowania danych z programu Teradata. <br>Dozwolone wartości to: **Brak** (wartość domyślna), **hash** i **DynamicRange**.<br>Gdy opcja partycji jest włączona (to nie `None`jest), stopień równoległości do współbieżnego ładowania danych z programu Teradata jest kontrolowany [`parallelCopies`](copy-activity-performance.md#parallel-copy) przez ustawienie działania kopiowania. | Nie |
 | partitionSettings | Określ grupę ustawień partycjonowania danych. <br>Zastosuj, gdy opcja partycji `None`nie jest. | Nie |
 | partitionColumnName | Określ nazwę kolumny źródłowej, która będzie używana przez partycję zakresu lub partycję skrótu dla kopii równoległej. Jeśli nie zostanie określony, podstawowy indeks tabeli zostanie wykryty i użyty jako kolumna partycji. <br>Zastosuj, gdy opcja partycji to `Hash` lub `DynamicRange`. Jeśli używasz zapytania, aby pobrać dane źródłowe, hak `?AdfHashPartitionCondition` lub `?AdfRangePartitionColumnName` w klauzuli WHERE. Zobacz przykład w sekcji [Kopiowanie równoległe z programu Teradata](#parallel-copy-from-teradata) . | Nie |
 | partitionUpperBound | Maksymalna wartość kolumny partycji, w której mają zostać skopiowane dane. <br>Zastosuj, gdy opcja partycji `DynamicRange`jest. Jeśli używasz zapytania do pobierania danych źródłowych, hak `?AdfRangePartitionUpbound` w klauzuli WHERE. Aby zapoznać się z przykładem, zobacz sekcję [Kopiowanie równoległe z programu Teradata](#parallel-copy-from-teradata) . | Nie |
@@ -245,9 +245,9 @@ Aby skopiować dane z programu Teradata, w sekcji **Źródło** działania kopio
 
 ![Zrzut ekranu przedstawiający opcje partycji](./media/connector-teradata/connector-teradata-partition-options.png)
 
-Po włączeniu kopiowania partycjonowanego Data Factory uruchamia zapytania równoległe względem źródła programu Teradata w celu załadowania danych przez partycje. Stopień równoległy jest kontrolowany przez [`parallelCopies`](copy-activity-performance.md#parallel-copy) ustawienie działania kopiowania. Jeśli na przykład ustawisz `parallelCopies` cztery, Data Factory współbieżnie generuje i uruchamia cztery zapytania w oparciu o określoną opcję partycji i ustawienia, a każde zapytanie pobiera część danych z bazy danych programu Teradata.
+Po włączeniu kopiowania partycjonowanego Data Factory uruchamia zapytania równoległe względem źródła programu Teradata w celu załadowania danych przez partycje. Stopień równoległy jest kontrolowany przez [`parallelCopies`](copy-activity-performance.md#parallel-copy) ustawienie działania kopiowania. Jeśli na przykład ustawisz `parallelCopies` cztery, Data Factory współbieżnie generuje i uruchamia cztery zapytania w oparciu o określoną opcję partycji i ustawienia, a każde zapytanie pobiera część danych z programu Teradata.
 
-Przed załadowaniem dużej ilości danych z bazy danych programu Teradata zaleca się włączenie kopiowania równoległego przy użyciu partycjonowania danych. Poniżej przedstawiono sugerowane konfiguracje dla różnych scenariuszy. Podczas kopiowania danych do magazynu danych opartego na plikach, należy ponownie wykonać zapis do folderu jako wiele plików (Określ tylko nazwę folderu), w którym to przypadku wydajność jest lepsza niż zapis do pojedynczego pliku.
+Zalecane jest włączenie kopiowania równoległego przy użyciu partycjonowania danych, szczególnie podczas ładowania dużej ilości danych z programu Teradata. Poniżej przedstawiono sugerowane konfiguracje dla różnych scenariuszy. Podczas kopiowania danych do magazynu danych opartego na plikach, należy ponownie wykonać zapis do folderu jako wiele plików (Określ tylko nazwę folderu), w którym to przypadku wydajność jest lepsza niż zapis do pojedynczego pliku.
 
 | Scenariusz                                                     | Sugerowane ustawienia                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |

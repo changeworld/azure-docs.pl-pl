@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 09/12/2019
 ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 5b46c5b2e8f613d351442fdf3c8ae5ee2198f2da
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: b89e75d406a738fb685bb3294dca8d79a2b9170c
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933986"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966523"
 ---
 # <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>Szybki start: Łączenie i wdrażanie kontraktu inteligentnego przy użyciu klasy dbmask
 
@@ -62,20 +62,13 @@ Do nawiązania połączenia z siecią łańcucha bloków potrzebny jest adres pu
 Remix to środowisko programistyczne oparte na przeglądarce. Korzystając z funkcji dbmasking i remix, możesz wdrażać i podejmować działania dotyczące inteligentnych umów.
 
 1. W przeglądarce przejdź do `https://remix.ethereum.org`.
-1. Wybierz pozycję **Uruchom**. 
-
-    Maska usuwania ustawia swoje **środowisko** do **dodania Web3** i **konta** do sieci.
-
-    ![Karta przebieg](./media/connect-metamask/injected-web3.png)
-
-1. Wybierz pozycję **Utwórz nowy plik**.
+1. Wybierz pozycję **nowy plik** na karcie **Narzędzia główne** w obszarze **plik**.
 
     Nazwij nowy plik `simple.sol`.
 
     ![Utwórz plik](./media/connect-metamask/create-file.png)
 
     Kliknij przycisk **OK**.
-
 1. W edytorze Remix wklej następujący **prosty kod kontraktu inteligentnego** .
 
     ```solidity
@@ -99,14 +92,18 @@ Remix to środowisko programistyczne oparte na przeglądarce. Korzystając z fun
     ```
 
     **Prosta umowa** deklaruje zmienną stanu o nazwie **Saldo**. Zdefiniowano dwie funkcje. Funkcja **Dodaj** dodaje liczbę do **zrównoważenia**. Funkcja **Get** zwraca wartość **Saldo**.
-
-1. Aby skompilować kontrakt, wybierz **kompilację, > rozpocząć Kompilowanie**. Jeśli to się powiedzie, zostanie wyświetlony zielony prostokąt z nazwą kontraktu.
+1. Aby skompilować kontrakt, najpierw wybierz okienko kompilatora o pełnej trwałość, a następnie wybierz opcję **Kompiluj Simple. peruwiański**. 
 
     ![Kompilacji](./media/connect-metamask/compile.png)
 
-1. Aby wykonać kontrakt, wybierz kartę **uruchomienie** . Wybierz kontrakt **prosty** , a następnie **Wdróż**.
+1. Wybierz okienko **wdróż & przebiegu** , a następnie ustaw **środowisko** na **Web3** , aby nawiązać połączenie za pomocą elementu sqlmasking z członkiem łańcucha bloków.
 
-    ![Niestandardowe wywołanie RPC](./media/connect-metamask/deploy.png)
+    ![Karta przebieg](./media/connect-metamask/injected-web3.png)
+
+1. Wybierz kontrakt **prosty** , a następnie **Wdróż**.
+
+    ![Wdrażanie](./media/connect-metamask/deploy.png)
+
 
 1. Zostanie wyświetlone powiadomienie o niewystarczającej masce do wykonania transakcji.
 
@@ -125,13 +122,13 @@ Remix to środowisko programistyczne oparte na przeglądarce. Korzystając z fun
 
     Istnieją dwie akcje, które umożliwiają **Dodawanie** i **pobieranie** mapy do funkcji zdefiniowanych w kontrakcie.
 
-1. Aby wykonać operację **Dodaj** transakcję na łańcucha bloków, wprowadź liczbę, która ma zostać dodana, a następnie wybierz pozycję **Dodaj**.
+1. Aby wykonać operację **Dodaj** transakcję na łańcucha bloków, wprowadź liczbę, która ma zostać dodana, a następnie wybierz pozycję **Dodaj**. Może zostać wyświetlony komunikat o niepowodzeniu oceny gazu z Remix. Wysyłasz transakcję do prywatnego łańcucha bloków, która nie wymaga gazu. Wybierz pozycję **Wyślij transakcję** , aby wymusić transakcję.
 1. Podobnie jak w przypadku wdrożenia kontraktu, wyświetlane jest powiadomienie o niewystarczającej masce do wykonania transakcji.
 
     Ponieważ jest to sieć prywatna w ramach konsorcjum, można ustawić cenę gazu na zero.
 
 1.  Wybierz pozycję **opłata za gaz > edytuj > zaawansowane**, ustaw **cenę gazu** na 0, a następnie wybierz pozycję **Zapisz**.
-1. Wybierz pozycję **Potwierdź** , aby wykonać transakcję w łańcucha bloków.
+1. Wybierz pozycję **Potwierdź** , aby wysłać transakcję do łańcucha bloków.
 1. Wybierz pozycję **Pobierz** akcję. Jest to wywołanie do zapytania o dane węzła. Transakcja nie jest wymagana.
 1. W okienku debugowanie elementu Remix można zobaczyć szczegóły dotyczące transakcji w łańcucha bloków.
 

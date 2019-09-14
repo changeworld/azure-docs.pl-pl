@@ -1,7 +1,7 @@
 ---
 title: Filtrowanie ruchu sieciowego — samouczek — Azure Portal
 titlesuffix: Azure Virtual Network
-description: W tym samouczku dowiesz się, jak filtrować ruch sieciowy do podsieci z sieciową grupą zabezpieczeń, za pomocą witryny Azure portal.
+description: W tym samouczku dowiesz się, jak filtrować ruch sieciowy w podsieci z grupą zabezpieczeń sieci przy użyciu Azure Portal.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: kumud
-ms.openlocfilehash: 4097d4fc46aac88cd44d21a4cdcf0d7d5093feea
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 2d0519abdf25a6fc8373f9d1a3a7232a9783d316
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242733"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984905"
 ---
-# <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Samouczek: Filtrowanie ruchu sieciowego z sieciową grupą zabezpieczeń, za pomocą witryny Azure portal
+# <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Samouczek: Filtrowanie ruchu sieciowego za pomocą sieciowej grupy zabezpieczeń przy użyciu Azure Portal
 
 Ruch sieciowy przychodzący do podsieci sieci wirtualnej i wychodzący z niej możesz filtrować za pomocą sieciowej grupy zabezpieczeń. Sieciowe grupy zabezpieczeń zawierają reguły zabezpieczeń, które filtrują ruch sieciowy według adresów IP, portów i protokołów. Reguły zabezpieczeń są stosowane do zasobów wdrożonych w podsieci. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -51,7 +51,7 @@ Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
     | Przestrzeń adresowa           | 10.0.0.0/16                                        |
     | Subskrypcja            | Wybierz subskrypcję.                          |
     | Grupa zasobów          | Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę *myResourceGroup*. |
-    | Lokalizacja                | Wybierz pozycję **Wschodnie stany USA**.                                |
+    | Location                | Wybierz pozycję **Wschodnie stany USA**.                                |
     | Nazwa podsieci            | mySubnet                                           |
     | Zakres adresów podsieci: 10.41.0.0/24  | 10.0.0.0/24                                        |
 
@@ -65,19 +65,19 @@ Grupa zabezpieczeń aplikacji umożliwia grupowanie serwerów o podobnych funkcj
 
     | Ustawienie        | Wartość                                                         |
     | ---            | ---                                                           |
-    | Name (Nazwa)           | myAsgWebServers                                               |
-    | Subskrypcja   | Wybierz subskrypcję.                                     |
-    | Grupa zasobów | Wybierz pozycję **Użyj istniejącej** i wybierz grupę **myResourceGroup**. |
-    | Lokalizacja       | Wschodnie stany USA                                                       |
+    | Name           | myAsgWebServers                                               |
+    | Subscription   | Wybierz subskrypcję.                                     |
+    | Resource group | Wybierz pozycję **Użyj istniejącej** i wybierz grupę **myResourceGroup**. |
+    | Location       | East US                                                       |
 
 4. Ponownie wykonaj krok 3, używając następujących wartości:
 
     | Ustawienie        | Wartość                                                         |
     | ---            | ---                                                           |
-    | Name (Nazwa)           | myAsgMgmtServers                                              |
-    | Subskrypcja   | Wybierz subskrypcję.                                     |
-    | Grupa zasobów | Wybierz pozycję **Użyj istniejącej** i wybierz grupę **myResourceGroup**. |
-    | Lokalizacja       | Wschodnie stany USA                                                       |
+    | Name           | myAsgMgmtServers                                              |
+    | Subscription   | Wybierz subskrypcję.                                     |
+    | Resource group | Wybierz pozycję **Użyj istniejącej** i wybierz grupę **myResourceGroup**. |
+    | Location       | East US                                                       |
 
 ## <a name="create-a-network-security-group"></a>Tworzenie sieciowej grupy zabezpieczeń
 
@@ -87,10 +87,10 @@ Grupa zabezpieczeń aplikacji umożliwia grupowanie serwerów o podobnych funkcj
 
     |Ustawienie|Wartość|
     |---|---|
-    |Name (Nazwa)|myNsg|
-    |Subskrypcja| Wybierz subskrypcję.|
+    |Name|myNsg|
+    |Subscription| Wybierz subskrypcję.|
     |Grupa zasobów | Wybierz pozycję **Użyj istniejącej** i wybierz grupę *myResourceGroup*.|
-    |Lokalizacja|Wschodnie stany USA|
+    |Location|East US|
 
 ## <a name="associate-network-security-group-to-subnet"></a>Przypisywanie sieciowej grupy zabezpieczeń do podsieci
 
@@ -109,22 +109,22 @@ Grupa zabezpieczeń aplikacji umożliwia grupowanie serwerów o podobnych funkcj
 
 2. Utwórz regułę zabezpieczeń, która zezwala na stosowanie portów 80 i 443 do grupy zabezpieczeń aplikacji **myAsgWebServers**. W obszarze **Dodaj regułę zabezpieczeń ruchu przychodzącego** wprowadź lub wybierz następujące wartości, zaakceptuj pozostałe wartości domyślne, a następnie wybierz opcję **Dodaj**:
 
-    | Ustawienie                 | Wartość                                                                                                           |
+    | Ustawienie                 | Value                                                                                                           |
     | ---------               | ---------                                                                                                       |
-    | Lokalizacja docelowa             | Wybierz opcję **Grupa zabezpieczeń aplikacji**, a następnie wybierz opcję **myAsgWebServers** w pozycji **Grupa zabezpieczeń aplikacji**.  |
+    | Miejsce docelowe             | Wybierz opcję **Grupa zabezpieczeń aplikacji**, a następnie wybierz opcję **myAsgWebServers** w pozycji **Grupa zabezpieczeń aplikacji**.  |
     | Docelowe zakresy portów | Wprowadź wartości 80,443                                                                                                    |
     | Protocol                | Wybierz pozycję TCP                                                                                                      |
-    | Name (Nazwa)                    | Allow-Web-All                                                                                                   |
+    | Name                    | Allow-Web-All                                                                                                   |
 
 3. Ponownie wykonaj krok 2, używając następujących wartości:
 
-    | Ustawienie                 | Wartość                                                                                                           |
+    | Ustawienie                 | Value                                                                                                           |
     | ---------               | ---------                                                                                                       |
-    | Lokalizacja docelowa             | Wybierz opcję **Grupa zabezpieczeń aplikacji**, a następnie wybierz opcję **myAsgMgmtServers** w pozycji **Grupa zabezpieczeń aplikacji**. |
+    | Miejsce docelowe             | Wybierz opcję **Grupa zabezpieczeń aplikacji**, a następnie wybierz opcję **myAsgMgmtServers** w pozycji **Grupa zabezpieczeń aplikacji**. |
     | Docelowe zakresy portów | Wprowadź 3389                                                                                                      |
     | Protocol                | Wybierz pozycję TCP                                                                                                      |
-    | Priorytet                | Wprowadź wartość 110                                                                                                       |
-    | Name (Nazwa)                    | Allow-RDP-All                                                                                                   |
+    | Priority                | Wprowadź wartość 110                                                                                                       |
+    | Name                    | Allow-RDP-All                                                                                                   |
 
     W tym samouczku protokół RDP (port 3389) jest połączony z Internetem dla maszyny wirtualnej przydzielonej do grupy zabezpieczeń aplikacji *myAsgMgmtServers*. W przypadku środowisk produkcyjnych zamiast uwidaczniania portu 3389 w Internecie zaleca się połączenie z zasobami platformy Azure, którymi chcesz zarządzać, przy użyciu sieci VPN lub prywatnego połączenia sieciowego.
 
@@ -140,27 +140,29 @@ W sieci wirtualnej utwórz dwie maszyny wirtualne.
 
 1. W lewym górnym rogu witryny Azure Portal wybierz pozycję **+ Utwórz zasób**.
 2. Wybierz pozycję **Wystąpienia obliczeniowe**, a następnie wybierz pozycję **Windows Server 2016 Datacenter**.
-3. Wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz przycisk **OK**:
+3. Wprowadź lub wybierz poniższe informacje, a następnie zaakceptuj wartości domyślne dla pozostałych ustawień:
 
-    |Ustawienie|Wartość|
+    |Ustawienie|Value|
     |---|---|
-    |Name (Nazwa)|myVmWeb|
+    |Subscription| Wybierz subskrypcję.|
+    |Resource group| Wybierz pozycję **Użyj istniejącej** i wybierz grupę **myResourceGroup**.|
+    |Name|myVmWeb|
+    |Location| Wybierz pozycję **Wschodnie stany USA**.|
     |Nazwa użytkownika| Wprowadź wybraną nazwę użytkownika.|
     |Hasło| Wprowadź wybrane hasło. Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-    |Subskrypcja| Wybierz subskrypcję.|
-    |Grupa zasobów| Wybierz pozycję **Użyj istniejącej** i wybierz grupę **myResourceGroup**.|
-    |Lokalizacja| Wybierz pozycję **Wschodnie stany USA**|
+
+   
 
 4. Wybierz rozmiar maszyny wirtualnej, a następnie wybierz pozycję **Wybierz**.
-5. W obszarze **Ustawienia** wybierz następujące wartości, zaakceptuj pozostałe wartości domyślne, a następnie wybierz przycisk **OK**:
+5. W obszarze **Sieć**wybierz następujące wartości i zaakceptuj pozostałe ustawienia domyślne:
 
     |Ustawienie|Wartość|
     |---|---|
-    |Sieć wirtualna |Wybierz pozycję **myVirtualNetwork**|
-    |Sieciowa grupa zabezpieczeń | Wybierz pozycję **Zaawansowane**.|
-    |Sieciowa grupa zabezpieczeń (zapora)| Wybierz opcję **(nowa) myVmWeb-nsg**, a następnie w pozycji **Wybierz sieciową grupę zabezpieczeń** wybierz opcję **Brak**. |
+    |Sieć wirtualna |Wybierz pozycję **myVirtualNetwork**.|
+    |Grupa zabezpieczeń sieci karty sieciowej |Wybierz pozycję **Zaawansowane**.|
+    |Publiczne porty przychodzące|Wybierz pozycję **Brak**. |
 
-6. W obszarze **Utwórz** na stronie **Podsumowanie** wybierz pozycję **Utwórz**, aby rozpocząć wdrażanie maszyny wirtualnej.
+6. Wybierz pozycję **Recenzja + Utwórz** w lewym górnym rogu, a następnie wybierz pozycję **Utwórz** , aby rozpocząć wdrażanie maszyny wirtualnej.
 
 ### <a name="create-the-second-vm"></a>Tworzenie drugiej maszyny wirtualnej
 
@@ -217,7 +219,7 @@ Gdy grupa zasobów i wszystkie znajdujące się w niej zasoby nie będą już po
 2. Wybierz pozycję **Usuń grupę zasobów**.
 3. W polu **WPISZ NAZWĘ GRUPY ZASOBÓW:** wprowadź nazwę *myResourceGroup*, a następnie wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku utworzono sieciową grupę zabezpieczeń i skojarzono ją z podsiecią sieci wirtualnej. Aby dowiedzieć się więcej na temat sieciowych grup zabezpieczeń, zobacz [Network security groups overview (Omówienie sieciowych grup zabezpieczeń)](security-overview.md) oraz [Manage a network security group (Zarządzanie sieciową grupą zabezpieczeń)](manage-network-security-group.md).
 

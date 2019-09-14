@@ -3,7 +3,7 @@ title: Wskazówki dotyczące planowania Azure NetApp Files sieci | Microsoft Doc
 description: Opisuje wskazówki, które mogą pomóc w zaprojektowaniu efektywnej architektury sieci przy użyciu Azure NetApp Files.
 services: azure-netapp-files
 documentationcenter: ''
-author: b-juche
+author: ram-kakani
 manager: ''
 editor: ''
 ms.assetid: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 087ecee053069a02e4d4dd6f636d05ea15269e2e
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 02852b325a22f274b4aa6e793b03c733c38bb9aa
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383490"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984134"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Wytyczne dotyczące planowania sieci usługi Azure NetApp Files
 
@@ -36,13 +36,13 @@ Należy pamiętać o kilku kwestiach związanych z planowaniem Azure NetApp File
 Poniższe funkcje nie są obecnie obsługiwane w przypadku Azure NetApp Files: 
 
 * Sieciowe grupy zabezpieczeń (sieciowych grup zabezpieczeń) zastosowane do delegowanej podsieci
-* Trasy zdefiniowane przez użytkownika (UDR) z następnym przeskokiem jako podsieć plików NetApp usługi Azure
+* Trasy zdefiniowane przez użytkownika (UDR) z prefiksem adresu jako podsieć usługi Azure NetApp Files
 * Zasady platformy Azure (na przykład niestandardowe zasady nazewnictwa) w interfejsie Azure NetApp Files
 * Usługi równoważenia obciążenia dla ruchu Azure NetApp Filesowego
 
 Następujące ograniczenia dotyczące sieci mają zastosowanie do Azure NetApp Files:
 
-* Liczba adresów IP używanych w sieci wirtualnej z Azure NetApp Files (w tym sieci wirtualnych komunikacji równorzędnej) nie może przekraczać 1000.
+* Liczba adresów IP używanych w sieci wirtualnej z Azure NetApp Files (w tym sieci wirtualnych komunikacji równorzędnej) nie może przekraczać 1000. Pracujemy nad zwiększeniem tego limitu, aby spełnić wymagania dotyczące skalowania klientów. W tymczasowym przypadku, jeśli potrzebujesz więcej adresów IP, skontaktuj się z naszym zespołem pomocy technicznej, korzystając z przypadku użycia i wymaganego limitu.
 * W każdej sieci wirtualnej Azure Virtual Network (VNet) można delegować tylko jedną podsieć do usługi Azure NetApp Files.
 
 
@@ -50,7 +50,7 @@ Następujące ograniczenia dotyczące sieci mają zastosowanie do Azure NetApp F
 
 W poniższej tabeli opisano topologie sieci obsługiwane przez Azure NetApp Files.  Opisano w nim również obejścia dla nieobsługiwanych topologii. 
 
-|    Replikacji    |    Jest obsługiwana    |     Obejście    |
+|    Topologie    |    Jest obsługiwana    |     Obejście    |
 |-------------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------------------------|
 |    Łączność z woluminem w lokalnej sieci wirtualnej    |    Tak    |         |
 |    Łączność z woluminem w równorzędnej sieci wirtualnej (ten sam region)    |    Tak    |         |
@@ -71,7 +71,7 @@ Przed zainicjowaniem obsługi woluminu Azure NetApp Files należy utworzyć sie�
 
 ### <a name="subnets"></a>Podsieci
 
-Podsieci segmentuje sieć wirtualną w oddzielnych przestrzeniach adresowych, które są używane przez zasoby platformy Azure.  Woluminy Azure NetApp Files są zawarte w podsieci w specjalnym przeznaczeniu nazywanym [delegowaną](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet)podsiecią. 
+Podsieci segmentuje sieć wirtualną w oddzielnych przestrzeniach adresowych, które są używane przez zasoby platformy Azure.  Woluminy Azure NetApp Files są zawarte w podsieci w specjalnym przeznaczeniu nazywanym [delegowaną podsiecią](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet). 
 
 Delegowanie podsieci daje jawne uprawnienia do usługi Azure NetApp Files do tworzenia zasobów specyficznych dla usługi w podsieci.  Używa unikatowego identyfikatora podczas wdrażania usługi. W takim przypadku tworzony jest interfejs sieciowy, aby umożliwić łączność z Azure NetApp Files.
 

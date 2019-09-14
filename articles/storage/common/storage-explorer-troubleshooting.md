@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 69631b39403dedab56ed75cb145d464c0e1f747c
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
-ms.translationtype: HT
+ms.openlocfilehash: 3a95d52f2a0aa07094f91b0653fcb94ff1f88d44
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935337"
+ms.locfileid: "70958999"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Przewodnik rozwiązywania problemów Eksplorator usługi Azure Storage
 
@@ -264,6 +264,7 @@ Lokalne zarządzanie poświadczeniami różni się w zależności od dystrybucji
 1. Otwórz swoje lokalne narzędzie do zarządzania poświadczeniami, a następnie Znajdź zapisane poświadczenia.
 2. Wyszukaj wpisy z kluczem `<connection_type_key>/<corrupted_connection_name>` (na `StorageExplorer_CustomConnections_Accounts_v1/account1`przykład).
 3. Usuń te wpisy i Dodaj połączenia ponownie.
+---
 
 Jeśli po wykonaniu tych kroków nadal występują te błędy, lub jeśli chcesz udostępnić dane, które Twoim zdaniem są uszkodzone, [Otwórz problem](https://github.com/microsoft/AzureStorageExplorer/issues) na naszej stronie usługi GitHub.
 

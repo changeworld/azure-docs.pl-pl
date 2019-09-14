@@ -1,28 +1,28 @@
 ---
-title: Obsługiwane języki — interfejs API mowy usługi Translator
+title: Obsługiwane języki — interfejs API tłumaczenia mowy w usłudze Translator
 titlesuffix: Azure Cognitive Services
-description: Wyświetl języki obsługiwane przez interfejs API mowy usługi Translator.
+description: Języki widoku obsługiwane przez interfejs API tłumaczenia mowy w usłudze Translator.
 services: cognitive-services
-author: swmachan
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: conceptual
 ms.date: 3/5/2018
-ms.author: swmachan
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: ed8f693e4dc0344a0117ae9d6992b925992ef0c4
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 2f5b48f2dbc2d109c03613676c6a119fd971603b
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446928"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965440"
 ---
-# <a name="languages-supported-by-the-translator-speech-api"></a>Języki obsługiwane przez interfejs API mowy usługi Translator
+# <a name="languages-supported-by-the-translator-speech-api"></a>Języki obsługiwane przez interfejs API tłumaczenia mowy w usłudze Translator
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
-Następujące języki są obsługiwane w przypadku tłumaczenia mowy. Jeśli oba języki są obsługiwane w przypadku tłumaczenia mowy i rozpoznawania mowy do rozpoznawania mowy, lub zamiana mowy na tekst jest dostępny. Jeśli język docelowy nie jest obsługiwane w przypadku tłumaczenia mowy, dostępna jest tylko mowy tłumaczenia tekstów.
+Następujące języki są obsługiwane w przypadku tłumaczenia mowy. Jeśli oba języki są obsługiwane w przypadku tłumaczenia mowy, funkcja zamiany mowy na mowę lub zamiany mowy na tekst jest dostępna. Jeśli język docelowy nie jest obsługiwany w przypadku tłumaczenia mowy, dostępne jest tylko tłumaczenie mowy na tekst.
 
 | Język mowy    |
 |:----------- |
@@ -37,7 +37,7 @@ Następujące języki są obsługiwane w przypadku tłumaczenia mowy. Jeśli oba
 | Rosyjski      |
 | Hiszpański      |
 
-Interfejs API mowy usługi Translator obsługuje następujące języki jako język docelowy zamiana mowy na tekst tłumaczenia.
+Interfejs API tłumaczenia mowy w usłudze Translator obsługuje następujące języki jako język docelowy dla tłumaczenia mowy na tekst.
 
 | Język tekstu    | Kod języka |
 |:----------- |:-------------:|
@@ -105,16 +105,16 @@ Interfejs API mowy usługi Translator obsługuje następujące języki jako jęz
 | Walijski      | `cy`          |
 | Yucatec Maya      | `yua`          |
 
-## <a name="access-the-list-programmatically"></a>Programowo uzyskać dostęp do listy
+## <a name="access-the-list-programmatically"></a>Programowe uzyskiwanie dostępu do listy
 
-Listę obsługiwanych języków, w sposób programowy za pomocą zasobów języków są dostępne. Lista zawiera kod języka, a także nazwę języka w języku angielskim lub innych obsługiwanych języków. Ta lista jest automatycznie aktualizowana przez usługę mowy usługi Translator miarę udostępniania nowych języków.
+Możesz uzyskać dostęp do listy obsługiwanych języków programowo przy użyciu zasobu Języki. Lista zawiera kod języka, a także nazwę języka w języku angielskim lub inny obsługiwany język. Ta lista jest automatycznie aktualizowana przez usługę tłumaczenie mowy w usłudze Translator, gdy nowe języki staną się dostępne.
 
-Zasób języków zwraca listę wszystkich obsługiwanych językach mowy, tekst i zamiany tekstu na mowę. Zasób języków nie wymaga uwierzytelniania.
+Zasób Języki zwraca listę obsługiwanych języków mowy, tekstu i tekstu na mowę. Zasób języków nie wymaga uwierzytelniania.
 
-[Dokumentacja interfejsu API możesz wypróbować metoda języków można znaleźć w](languages-reference.md)
+[Odwiedź odwołanie do interfejsu API, aby wypróbować metodę języka](languages-reference.md)
 
-## <a name="access-the-list-on-the-microsoft-translator-website"></a>Dostęp do listy w witrynie internetowej Microsoft Translator
+## <a name="access-the-list-on-the-microsoft-translator-website"></a>Dostęp do listy w witrynie sieci Web usługi Microsoft Translator
 
-Dla rzut oka na językach usługa Microsoft Translator witryny sieci Web pokazuje wszystkie języki obsługiwane przez tekstu usługi Translator i interfejsy API rozpoznawania mowy. Ta lista nie zawiera informacje specyficzne dla deweloperów, takie jak kodów języków.
+Aby uzyskać szybki przegląd języków, w witrynie sieci Web usługi Microsoft Translator są wyświetlane wszystkie języki obsługiwane przez tłumaczenie tekstu w usłudze Translator i interfejsy API rozpoznawania mowy. Ta lista nie zawiera informacji specyficznych dla deweloperów, takich jak kody języka.
 
-[Zobacz listy języków](https://www.microsoft.com/translator/languages.aspx)
+[Zobacz listę języków](https://www.microsoft.com/translator/languages.aspx)

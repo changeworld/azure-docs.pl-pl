@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4f823b62237e8018f092d7a94fb479f7fbdd38da
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 915388b850b1b046dae91a20540881480694a944
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565775"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967057"
 ---
 # <a name="what-is-computer-vision"></a>Czym jest przetwarzanie obrazów?
 
@@ -71,10 +71,10 @@ Przetwarzanie obrazów umożliwia analizowanie obrazów, które spełniają nast
 
 Jak w przypadku wszystkich usług Cognitive Services, deweloperzy korzystający z usługi przetwarzania obrazów powinni znać zasady firmy Microsoft dotyczące danych klientów. Zobacz [stronę usług Cognitive Services](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) w Centrum zaufania firmy Microsoft, aby dowiedzieć się więcej.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Rozpocznij pracę z przetwarzaniem obrazów, korzystając z przewodnika Szybki start:
 
-- [Szybki start: Analizowanie obrazu](quickstarts-sdk/csharp-analyze-sdk.md)
-- [Szybki start: Wyodrębnianie tekstu odręcznego](quickstarts-sdk/csharp-hand-text-sdk.md)
-- [Szybki start: Generowanie miniatur](quickstarts-sdk/csharp-thumb-sdk.md)
+- [Szybki start: Zestaw SDK przetwarzanie obrazów .NET](quickstarts-sdk/csharp-sdk.md)
+- [Szybki start: przetwarzanie obrazów Python SDK](quickstarts-sdk/python-sdk.md)
+- [Szybki start: przetwarzanie obrazów Java SDK](quickstarts-sdk/java-sdk.md)

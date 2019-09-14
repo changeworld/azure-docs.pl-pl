@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5949f57a87f324dc2e6651611574f4b66215c8a8
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 895d44ea7ab6bfebee44014ad4e96016a555c08e
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389762"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959935"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Wdrażanie ochrony haseł w usłudze Azure AD
 
@@ -38,11 +38,11 @@ Istnieje również możliwość, że sprawdzanie poprawności hasła ma wpływ n
 * [Podwyższanie poziomu repliki kontrolera domeny kończy się niepowodzeniem z powodu słabego hasła trybu naprawy usług katalogowych](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password)
 * [Obniżanie poziomu kontrolera domeny nie powiodło się z powodu słabego hasła administratora lokalnego](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-demotion-fails-due-to-a-weak-local-administrator-password)
 
-Po uruchomieniu funkcji w trybie inspekcji przez rozsądny okres można zmienić konfigurację z *inspekcji* w celu *wymuszenia* , aby wymagać bardziej bezpiecznych haseł. Ukierunkowane monitorowanie w tym czasie jest dobrym pomysłem.
+Po uruchomieniu funkcji w trybie inspekcji przez rozsądny okres można zmienić konfigurację z *inspekcji* w celu wymuszenia, aby wymagać bardziej bezpiecznych haseł. Ukierunkowane monitorowanie w tym czasie jest dobrym pomysłem.
 
 ## <a name="deployment-requirements"></a>Wymagania dotyczące wdrażania
 
-* Wymagania dotyczące licencjonowania usługi Azure AD Password Protection można znaleźć w artykule [eliminowanie nieprawidłowych haseł w organizacji](concept-password-ban-bad.md#license-requirements).
+* Wymagania dotyczące licencjonowania usługi Azure AD Password Protection można znaleźć w artykule eliminowanie nieprawidłowych [haseł w organizacji](concept-password-ban-bad.md#license-requirements).
 * Wszystkie kontrolery domeny, na których zainstalowano usługę agenta DC dla ochrony haseł usługi Azure AD, muszą mieć uruchomiony system Windows Server 2012 lub nowszy. Ten wymóg nie oznacza, że domena lub las Active Directory muszą być również na poziomie funkcjonalności domeny lub lasu systemu Windows Server 2012. Jak wspomniano w [zasadach projektowania](concept-password-ban-bad-on-premises.md#design-principles), nie ma minimalnych DFL lub FFL wymaganych do uruchomienia agenta lub oprogramowania serwera proxy.
 * Na wszystkich maszynach, na których zainstalowano usługę agenta kontrolera domeny, musi być zainstalowany program .NET 4,5.
 * Na wszystkich maszynach, na których zainstalowano usługę proxy dla ochrony haseł usługi Azure AD, musi działać system Windows Server 2012 R2 lub nowszy.
@@ -65,6 +65,14 @@ Po uruchomieniu funkcji w trybie inspekcji przez rozsądny okres można zmienić
 * Konto administratora globalnego do zarejestrowania usługi proxy na potrzeby ochrony hasłem i lasu w usłudze Azure AD.
 * Konto, które ma Active Directory uprawnienia administratora domeny w domenie głównej lasu do zarejestrowania lasu systemu Windows Server Active Directory z usługą Azure AD.
 * Każda domena Active Directory, na której działa oprogramowanie usługi agenta kontrolera domeny, musi używać replikacji rozproszony system plików (DFSR) do replikacji folderu SYSVOL.
+
+  Jeśli domena nie korzysta już z usługi DFSR, przed zainstalowaniem ochrony przy użyciu usługi Azure AD Password należy przeprowadzić migrację do niej. Aby uzyskać więcej informacji, zobacz następujący link:
+
+  [Przewodnik migracji replikacji folderu SYSVOL: Usługa FRS do Replikacja systemu plików DFS](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
+
+  > [!WARNING]
+  > Oprogramowanie agenta DC ochrony hasłem w usłudze Azure AD będzie obecnie instalowane na kontrolerach domeny w domenach, które nadal korzystają z usługi FRS (technologii poprzednika z DFSR) na potrzeby replikacji folderu SYSVOL, ale oprogramowanie nie będzie działało prawidłowo w tym środowisku. Dodatkowe negatywne efekty uboczne obejmują pojedyncze pliki, których replikacja nie powiodła się, a procedury przywracania folderu SYSVOL pojawiają się po awarii, ale w trybie dyskretnym nie można zreplikować wszystkich plików. Należy przeprowadzić migrację domeny tak szybko, jak to możliwe, zarówno w przypadku związanych z nią korzyści, jak i do odblokowania wdrożenia ochrony hasłem usługi Azure AD. Przyszłe wersje oprogramowania zostaną automatycznie wyłączone po uruchomieniu w domenie, która nadal korzysta z usługi FRS.
+
 * Usługa dystrybucji kluczy musi być włączona na wszystkich kontrolerach domeny w domenie z systemem Windows Server 2012. Domyślnie ta usługa jest włączona za pośrednictwem uruchomienia wyzwalacza ręcznego.
 
 ## <a name="single-forest-deployment"></a>Wdrożenie z jednego lasu
@@ -281,7 +289,7 @@ Istnieją dwa wymagane Instalatory dla ochrony hasłem usługi Azure AD. Są one
 
    Usługę agenta DC można zainstalować na komputerze, który nie jest jeszcze kontrolerem domeny. W takim przypadku usługa zostanie uruchomiona i uruchomiona, ale pozostanie nieaktywna, dopóki komputer nie zostanie podwyższony do poziomu kontrolera domeny.
 
-   Instalację oprogramowania można zautomatyzować za pomocą standardowych procedur MSI. Na przykład:
+   Instalację oprogramowania można zautomatyzować za pomocą standardowych procedur MSI. Przykład:
 
    `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`
 

@@ -1,77 +1,77 @@
 ---
 title: Architektura sieci wirtualnej usługi Azure HDInsight
-description: Dowiedz się więcej z dostępnych zasobów, podczas tworzenia klastra usługi HDInsight w usłudze Azure Virtual Network.
+description: Informacje o zasobach dostępnych podczas tworzenia klastra usługi HDInsight w usłudze Azure Virtual Network.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: 41420497bffd0abdc598e4c86b2dbda1466b2ce1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 340974201d62f97669db442f4a95439a6ac90a5e
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66252849"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960628"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Architektura sieci wirtualnej usługi Azure HDInsight
 
-W tym artykule opisano zasoby, które znajdują się w przypadku wdrażania klastra usługi HDInsight w niestandardowych sieci wirtualnej platformy Azure. Ta informacja pomoże łączenie z zasobami lokalnymi, do klastra usługi HDInsight na platformie Azure. Aby uzyskać więcej informacji na temat sieci wirtualnych platformy Azure, zobacz [co to jest Azure Virtual Network?](../virtual-network/virtual-networks-overview.md).
+W tym artykule opisano zasoby, które są obecne podczas wdrażania klastra usługi HDInsight, do niestandardowego Virtual Network platformy Azure. Te informacje ułatwią połączenie zasobów lokalnych z klastrem usługi HDInsight na platformie Azure. Aby uzyskać więcej informacji na temat sieci wirtualnych platformy Azure, zobacz [co to jest usługa azure Virtual Network?](../virtual-network/virtual-networks-overview.md).
 
 ## <a name="resource-types-in-azure-hdinsight-clusters"></a>Typy zasobów w klastrach usługi Azure HDInsight
 
-Usługa Azure HDInsight clusters mają różne typy maszyn wirtualnych, albo przez węzły. Każdy typ węzła odgrywa rolę w działania systemu. W poniższej tabeli podsumowano te typy węzłów i ich ról w klastrze.
+Klastry usługi Azure HDInsight mają różne typy maszyn wirtualnych lub węzłów. Każdy typ węzła odgrywa rolę w działaniu systemu. Poniższa tabela zawiera podsumowanie typów węzłów i ich ról w klastrze.
 
-| Typ | Opis |
+| Type | Opis |
 | --- | --- |
-| Węzeł główny |  W przypadku wszystkich typów klastrów z wyjątkiem systemu Apache Storm węzły główne hostują procesów, które Zarządzanie wykonywaniem aplikacji rozproszonej. Węzeł główny jest również węzeł, który można nawiąż połączenie i wykonywania aplikacji, które następnie są koordynowany uruchamianej w zasobów klastra. Liczba węzłów głównych jest ustalony na dwa wszystkie typy klastrów. |
-| Węzeł usługi zooKeeper | Dozorcy służy do koordynowania zadań między węzły, które wykonują przetwarzania danych. Ponadto jest wybór lidera węzła głównego i śledzi informacje o który węzła głównego jest uruchomioną określoną usługą wzorca. Liczba węzłów dozorcy jest ustalony na trzy. |
-| Węzeł procesu roboczego | Reprezentuje węzły, które obsługują funkcję przetwarzania danych. Węzłów procesu roboczego może być dodane lub usunięte z klastra na skalowanie możliwości obliczeniowych i zarządzania kosztami. |
-| Węzłem krawędzi oprogramowania R Server | Węzłem krawędzi oprogramowania R Server reprezentuje węzeł, w którym można nawiąż połączenie i wykonywania aplikacji, które następnie są koordynowany uruchamianej w zasobów klastra. Węzeł krawędzi nie uczestniczy w analizy danych w klastrze. Ten węzeł obsługuje również R Studio Server, dzięki któremu można uruchomić aplikację języka R za pomocą przeglądarki. |
-| Węzeł regionu | Typ klastra HBase uruchamiane serwera regionalnego węzła region (nazywane również węzeł danych). Serwery regionów obsługi i zarządzanie nimi część danych zarządzanych przez bazę danych HBase. Węzły regionu można dodane lub usunięte z klastra na skalowanie możliwości obliczeniowych i zarządzania kosztami.|
-| Węzeł nimbus | Dla typu klastra Storm węzeł Nimbus oferuje funkcje podobne do węzła głównego. Węzeł Nimbus przypisuje zadania do innych węzłów w klastrze za pośrednictwem dozorcy, która koordynuje uruchomionych topologii systemu Storm. |
-| Nadzorca węzła | Dla typu klastra Storm węzeł nadzorca wykonuje instrukcji udostępnionych przez węzeł Nimbus do wykonywania żądanego przetwarzania. |
+| Węzeł główny |  W przypadku wszystkich typów klastrów, z wyjątkiem Apache Storm, węzły główne obsługują procesy zarządzające wykonywaniem aplikacji rozproszonej. Węzeł główny jest również węzłem, w którym można używać protokołu SSH, i wykonywać aplikacje, które następnie są skoordynowane do uruchamiania przez zasoby klastra. Liczba węzłów głównych jest ustalona w dwóch dla wszystkich typów klastrów. |
+| Węzeł dozorcy | Dozorcy koordynuje zadania między węzłami, które przetwarzają przetwarzanie danych. Powoduje również wybór lidera węzła głównego i śledzi, w którym węźle głównym działa określona usługa główna. Liczba węzłów dozorcy jest ustalona na trzy. |
+| Węzeł procesu roboczego | Reprezentuje węzły obsługujące funkcje przetwarzania danych. Węzły procesu roboczego mogą być dodawane lub usuwane z klastra w celu skalowania możliwości obliczeniowych i zarządzania kosztami. |
+| R Server węzeł krawędzi | Węzeł brzegowy R Server reprezentuje węzeł, do którego można przeprowadzić protokół SSH, i wykonywać aplikacje, które następnie są skoordynowane do uruchamiania przez zasoby klastra. Węzeł brzegowy nie uczestniczy w analizie danych w klastrze. Ten węzeł hostuje również program R Studio Server, umożliwiając uruchamianie aplikacji języka R przy użyciu przeglądarki. |
+| Węzeł regionu | W przypadku typu klastra HBase węzeł regionu (nazywany także węzłem danych) uruchamia serwer regionu. Serwery regionów oferują i zarządzają częścią danych zarządzanych przez HBase. Węzły regionów można dodawać i usuwać z klastra w celu skalowania możliwości obliczeniowych i zarządzania kosztami.|
+| Węzeł Nimbus | W przypadku typu klastra burzy węzeł Nimbus zapewnia funkcjonalność podobną do węzła głównego. Węzeł Nimbus przypisuje zadania do innych węzłów w klastrze za pomocą dozorcy, który koordynuje uruchamianie topologii burzy. |
+| Węzeł nadzoru | W przypadku typu klastra burzy węzeł nadzoru wykonuje instrukcje dostarczone przez węzeł Nimbus w celu wykonania żądanego przetwarzania. |
 
-## <a name="basic-virtual-network-resources"></a>Zasoby podstawowe sieci wirtualnej
+## <a name="basic-virtual-network-resources"></a>Podstawowe zasoby sieci wirtualnej
 
-Na poniższym diagramie przedstawiono umieszczania HDInsight węzłów i zasobów sieciowych na platformie Azure.
+Na poniższym diagramie przedstawiono rozmieszczenie węzłów usługi HDInsight i zasobów sieciowych na platformie Azure.
 
-![Diagram jednostek HDInsight utworzone w sieci Wirtualnej platformy Azure niestandardowe](./media/hdinsight-virtual-network-architecture/vnet-diagram.png)
+![Diagram obiektów usługi HDInsight utworzonych w niestandardowej sieci wirtualnej platformy Azure](./media/hdinsight-virtual-network-architecture/hdinsight-vnet-diagram.png)
 
-Domyślne zasoby wtedy, gdy HDInsight jest wdrażana w sieci wirtualnej platformy Azure obejmują typy węzłów klastra, które są wymienione w powyższej tabeli, a także urządzeń sieciowych, które obsługują komunikację między siecią wirtualną, jak i spoza sieci.
+Domyślne zasoby obecne podczas wdrażania usługi HDInsight na platformie Azure Virtual Network obejmują typy węzłów klastra wymienione w poprzedniej tabeli, a także urządzenia sieciowe obsługujące komunikację między siecią wirtualną i sieciami zewnętrznymi.
 
-Poniższa tabela zawiera podsumowanie węzłów klastra dziewięć, tworzonych podczas HDInsight zostaje wdrożony do niestandardowa sieć wirtualna platformy Azure.
+Poniższa tabela zawiera podsumowanie dziewięciu węzłów klastra utworzonych podczas wdrażania usługi HDInsight w niestandardowym Virtual Network platformy Azure.
 
-| Typ zasobu | Liczba | Szczegóły |
+| Typ zasobu | Liczba obecna | Szczegóły |
 | --- | --- | --- |
 |Węzeł główny | dwa |    |
 |Węzeł usługi ZooKeeper | trzy | |
-|Węzeł procesu roboczego | dwa | Ta liczba może się różnić w zależności od konfiguracji klastra i skalowanie. Dla platformy Apache Kafka, wymagany jest co najmniej trzy węzły procesu roboczego.  |
-|Węzeł bramy | dwa | Węzły bramy są maszyn wirtualnych platformy Azure, które są tworzone na platformie Azure, ale nie są widoczne w ramach subskrypcji. Jeśli musisz ponownie uruchomić te węzły, skontaktuj się z działem pomocy technicznej. |
+|Węzeł procesu roboczego | dwa | Ta liczba może się różnić w zależności od konfiguracji i skalowania klastra. Do Apache Kafka jest wymagany co najmniej trzy węzły procesu roboczego.  |
+|Węzeł bramy | dwa | Węzły bramy są maszynami wirtualnymi platformy Azure, które są tworzone na platformie Azure, ale nie są widoczne w Twojej subskrypcji. Skontaktuj się z pomocą techniczną, jeśli chcesz ponownie uruchomić te węzły. |
 
-Następujące zasoby sieci obecne są tworzone automatycznie w sieci wirtualnej używane z HDInsight:
+Następujące zasoby sieciowe są tworzone automatycznie w ramach sieci wirtualnej używanej z usługą HDInsight:
 
-| Zasób sieci | Liczba | Szczegóły |
+| Zasób sieciowy | Liczba obecna | Szczegóły |
 | --- | --- | --- |
 |Moduł równoważenia obciążenia | trzy | |
-|Interfejsy sieciowe | dziewięć | Ta wartość jest oparty na klastrze normalne, gdzie każdy węzeł ma własny interfejs sieciowy. Dziewięć interfejsy są dwa węzły główne, trzy węzły dozorcy, dwa węzły procesu roboczego i dwa węzły bramy wymienionych w powyższej tabeli. |
+|Interfejsy sieciowe | dziewięć | Ta wartość jest oparta na normalnym klastrze, gdzie każdy węzeł ma własny interfejs sieciowy. Dziewięć interfejsów dotyczą dwa węzły główne, trzy węzły dozorcy, dwa węzły procesu roboczego i dwa węzły bramy wymienione w poprzedniej tabeli. |
 |Publiczne adresy IP | dwa |    |
 
-## <a name="endpoints-for-connecting-to-hdinsight"></a>Punkty końcowe dotyczące łączenia usługi HDInsight
+## <a name="endpoints-for-connecting-to-hdinsight"></a>Punkty końcowe do łączenia się z usługą HDInsight
 
-Aby uzyskać dostęp klastra HDInsight na trzy sposoby:
+Dostęp do klastra usługi HDInsight można uzyskać na trzy sposoby:
 
 - Punkt końcowy HTTPS poza siecią wirtualną w `CLUSTERNAME.azurehdinsight.net`.
-- Punkt końcowy SSH w celu bezpośredniego połączenia z węzłem głównym w `CLUSTERNAME-ssh.azurehdinsight.net`.
-- Punkt końcowy HTTPS w sieci wirtualnej `CLUSTERNAME-int.azurehdinsight.net`. Zwróć uwagę "-int" w tym adresie URL. Ten punkt końcowy zostanie rozpoznana prywatny adres IP w tej sieci wirtualnej i nie jest dostępne z publicznej sieci internet.
+- Punkt końcowy SSH służący do bezpośredniego łączenia się z `CLUSTERNAME-ssh.azurehdinsight.net`usługą węzła głównego pod adresem.
+- Punkt końcowy HTTPS w sieci `CLUSTERNAME-int.azurehdinsight.net`wirtualnej. Zwróć uwagę na wartość "-int" w tym adresie URL. Ten punkt końcowy zostanie rozpoznany jako prywatny adres IP w tej sieci wirtualnej i nie będzie dostępny z publicznego Internetu.
 
-Każda z tych trzech punktów końcowych są przypisywane modułu równoważenia obciążenia.
+Te trzy punkty końcowe są przypisane do modułu równoważenia obciążenia.
 
-Publiczne adresy IP podano też dwa punkty końcowe, które umożliwiają połączenie z spoza sieci wirtualnej.
+Publiczne adresy IP są również dostarczane do dwóch punktów końcowych, które zezwalają na połączenie spoza sieci wirtualnej.
 
-1. Jeden publiczny adres IP jest przypisany do modułu równoważenia obciążenia dla w pełni kwalifikowana nazwa domeny (FQDN) do użycia podczas łączenia się z klastrem z Internetu `CLUSTERNAME.azurehdinsight.net`.
-1. Drugi publiczny adres IP jest używany dla nazwy domeny tylko SSH `CLUSTERNAME-ssh.azurehdinsight.net`.
+1. Jeden publiczny adres IP jest przypisywany do modułu równoważenia obciążenia dla w pełni kwalifikowanej nazwy domeny (FQDN) do użycia podczas nawiązywania połączenia z klastrem z Internetu `CLUSTERNAME.azurehdinsight.net`.
+1. Drugi publiczny adres IP jest używany jako nazwa `CLUSTERNAME-ssh.azurehdinsight.net`domeny tylko SSH.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Zabezpieczanie ruchu przychodzącego do klastrów HDInsight w sieci wirtualnej przy użyciu prywatnych punktów końcowych](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/)
+* [Zabezpieczanie ruchu przychodzącego do klastrów usługi HDInsight w sieci wirtualnej za pomocą prywatnego punktu końcowego](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/)

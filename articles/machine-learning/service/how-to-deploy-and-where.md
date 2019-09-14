@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: cf72a83035e318d3a937176bbaaebd8e298d3ad2
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 358cbfb80da03d20475e591f0fd0c5b907b83b22
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390671"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984705"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Wdrażaj modele za pomocą usługi Azure Machine Learning
 
@@ -221,7 +221,7 @@ Te typy są obecnie obsługiwane:
 * `pandas`
 * `numpy`
 * `pyspark`
-* Standardowy obiekt języka Python
+* standardowy obiekt języka Python
 
 Aby użyć generacji schematu, Dołącz `inference-schema` pakiet do pliku środowiska Conda.
 
@@ -805,6 +805,19 @@ Aby uzyskać więcej przykładowych projektów i przykładów, zobacz te przykł
 * [Microsoft/MLOps](https://github.com/Microsoft/MLOps)
 * [Microsoft/MLOpsPython](https://github.com/microsoft/MLOpsPython)
 
+## <a name="download-a-model"></a>Pobierz model
+Jeśli chcesz pobrać model do użycia w środowisku wykonawczym, możesz to zrobić za pomocą następujących poleceń zestawu SDK/interfejsu wiersza polecenia:
+
+ZESTAWIE
+```python
+model_path = Model(ws,'mymodel').download()
+```
+
+INTERFEJS
+```azurecli-interactive
+az ml model download --model-id mymodel:1 --target-dir model_folder
+```
+
 ## <a name="package-models"></a>Modele pakietów
 
 W niektórych przypadkach może być konieczne utworzenie obrazu platformy Docker bez wdrażania modelu (Jeśli na przykład planujesz [wdrożyć program w Azure App Service](how-to-deploy-app-service.md)). Możesz też chcieć pobrać obraz i uruchomić go w lokalnej instalacji platformy Docker. Możesz nawet pobrać pliki użyte do skompilowania obrazu, sprawdzić je, zmodyfikować i ręcznie utworzyć obraz.
@@ -832,7 +845,7 @@ package = Model.package(ws, [model], inference_config)
 package.wait_for_creation(show_output=True)
 ```
 
-Po utworzeniu pakietu można użyć `package.pull()` programu w celu ściągnięcia obrazu do lokalnego środowiska platformy Docker. W danych wyjściowych tego polecenia zostanie wyświetlona nazwa obrazu. Przykład: 
+Po utworzeniu pakietu można użyć `package.pull()` programu w celu ściągnięcia obrazu do lokalnego środowiska platformy Docker. W danych wyjściowych tego polecenia zostanie wyświetlona nazwa obrazu. Na przykład: 
 
 `Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`. 
 

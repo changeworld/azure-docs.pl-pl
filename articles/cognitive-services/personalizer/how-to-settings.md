@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: cd67f435ff390267e01acd99594b9063db4c4ee1
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 376c2efbf3269092d0534870108ef6d753f8743e
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69559095"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962522"
 ---
 # <a name="personalizer-settings"></a>Ustawienia personalizacji
 
@@ -35,7 +35,7 @@ Utwórz zasób personalizacji dla każdej pętli opinii.
 1. Znajdź zasób personalizowania. 
 1. W sekcji **Zarządzanie zasobami** wybierz pozycję **Ustawienia**.
 
-    Przed opuszczeniem Azure Portal Skopiuj jeden z kluczy zasobów ze strony **klucze** . Będzie on potrzebny do korzystania z [zestawu SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer)programu Personalizacja.
+    Przed opuszczeniem Azure Portal Skopiuj jeden z kluczy zasobów ze strony **klucze** . Będzie on potrzebny do korzystania z [zestawu SDK programu Personalizacja](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer).
 
 ### <a name="configure-reward-settings-for-the-feedback-loop-based-on-use-case"></a>Skonfiguruj ustawienia nagrody dla pętli opinii na podstawie przypadku użycia
 
@@ -47,7 +47,7 @@ Skonfiguruj ustawienia usługi dla używanej przez pętlę opinii. Zmiany nastę
 |--|--|
 |Nagradzany czas oczekiwania|Ustawia długość czasu, przez który program Personalizuj będzie zbierać wartości nagrody dla wywołania rangi, rozpoczynając od momentu wywołania rangi. Ta wartość jest ustawiana przez pytanie: "Jak długo Personalizacja ma czekać na nagrody?" Wszystkie nagrody przychodzące po tym oknie będą rejestrowane, ale nie są używane do uczenia się.|
 |Wynagrodzenie domyślne|Jeśli Personalizacja nie otrzymuje żadnego nadawania w czasie oczekiwania w przedziale czasowym, skojarzonym z wywołaniem rangi, Personalizowanie przypisze domyślne wynagrodzenie. Domyślnie, a w większości scenariuszy wartość domyślna to zero.|
-|Agregacja nagrody|Jeśli odebrane zostanie wiele nagrody dla tego samego wywołania interfejsu API rangi, używana jest ta metoda agregacji: **sum** lub Najwcześniejsza. Najwcześniej wybierany jest najwcześniejszy wynik otrzymany i odrzuca resztę. Jest to przydatne, jeśli chcesz uzyskać unikatowe wynagrodzenie między możliwymi duplikatami wywołań. |
+|Agregacja nagrody|Jeśli odebrane zostanie wiele nagrody dla tego samego wywołania interfejsu API rangi, używana jest ta metoda agregacji: **sum** lub **Najwcześniejsza**. Najwcześniej wybierany jest najwcześniejszy wynik otrzymany i odrzuca resztę. Jest to przydatne, jeśli chcesz uzyskać unikatowe wynagrodzenie między możliwymi duplikatami wywołań. |
 
 Po zmianie tych ustawień upewnij się, że wybrano pozycję **Zapisz**.
 
@@ -67,7 +67,7 @@ Najnowszy model, przeszkolony z nagradzania wywołań interfejsu API z każdego 
 
 Wysokie częstotliwości aktualizacji modelu są przydatne w sytuacjach, w których chcesz ściśle śledzić zmiany zachowań użytkownika. Przykłady obejmują witryny, które są uruchamiane na żywo wiadomości, zawartości wirusowej lub licytacji produktu na żywo. W tych scenariuszach można użyć częstotliwości 15 minut. W większości przypadków użycia niższa częstotliwość aktualizacji jest skuteczna. Częstotliwości aktualizacji o pojedynczej minucie są przydatne podczas debugowania kodu aplikacji przy użyciu narzędzia do personalizacji, wykonywania pokazów lub interaktywnego testowania aspektów uczenia maszynowego.
 
-![Częstotliwość aktualizacji modelu określa, jak często nowy model personalizowania jest przeszkolny.](media/settings/configure-model-update-frequency-settings.png)
+![Częstotliwość aktualizacji modelu określa, jak często nowy model personalizowania jest przeszkolny.](media/settings/configure-model-update-frequency-settings-15-minutes.png)
 
 Po zmianie tego ustawienia upewnij się, że wybrano pozycję **Zapisz**.
 

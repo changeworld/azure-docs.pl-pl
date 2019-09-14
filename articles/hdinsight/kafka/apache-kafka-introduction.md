@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 06/13/2019
-ms.openlocfilehash: e500f08de414a5907a0f1aeeca90d8c2090adcdd
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 7cf83af52d5bedee5b4d57ee1b4dda2fb34d1b3f
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137058"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960082"
 ---
-# <a name="what-is-apache-kafka-in-azure-hdinsight"></a>Co to jest platforma Apache Kafka w usłudze Azure HDInsight
+# <a name="what-is-apache-kafka-in-azure-hdinsight"></a>Co to jest Apache Kafka w usłudze Azure HDInsight
 
 [Apache Kafka](https://kafka.apache.org) to rozproszona platforma przesyłania strumieniowego typu „open source”, która umożliwia tworzenie aplikacji i potoków danych przesyłania strumieniowego w czasie rzeczywistym. Ponadto platforma Kafka oferuje funkcję brokera komunikatów, która działa podobnie do kolejki komunikatów. Pozwala ona publikować i subskrybować w nazwanych strumieniach danych. 
 
@@ -45,7 +45,7 @@ Cechy charakterystyczne platformy Kafka w usłudze HDInsight są następujące:
 
 Poniższy diagram przedstawia typową konfigurację platformy Kafka korzystającą z grup konsumentów, partycjonowania i replikacji w celu zapewnienia równoległego odczytu zdarzeń przy zachowaniu odporności na uszkodzenia:
 
-![Diagram konfiguracji klastra platformy Kafka](./media/apache-kafka-introduction/kafka-cluster.png)
+![Diagram konfiguracji klastra platformy Kafka](./media/apache-kafka-introduction/kafka-cluster-diagram.png)
 
 Usługa Apache ZooKeeper zarządza stanem klastra platformy Kafka. Usługę Zookeeper zaprojektowano pod kątem obsługi jednoczesnych, odpornych transakcji o małych opóźnieniach. 
 
@@ -89,7 +89,7 @@ Poniżej przedstawiono typowe zadania i wzorce, które mogą być wykonywane prz
 
 * **Przekształcanie**: przetwarzanie strumienia umożliwia łączenie i urozmaicanie danych z wielu tematów wejściowych w formie tematów wyjściowych.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się, jak korzystać z platformy Apache Kafka w usłudze HDInsight, użyj następujących linków:
 

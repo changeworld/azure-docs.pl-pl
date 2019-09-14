@@ -7,12 +7,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: hrasheed
-ms.openlocfilehash: 40caabc08b08e4c9268bf60d588819ce81717986
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
-ms.translationtype: HT
+ms.openlocfilehash: a8ef347b874bf01fc2832d0a785f6fcec58ef095
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900272"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961224"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Używanie Azure Data Lake Storage Gen2 z klastrami usługi Azure HDInsight
 
@@ -56,7 +56,7 @@ Utwórz konto usługi Azure Data Lake Storage Gen2.
 1. Kliknij przycisk **Utwórz**.
 1. Na ekranie **Tworzenie konta magazynu** :
     1. Wybierz prawidłową subskrypcję i grupę zasobów.
-    1. Wprowadź nazwę konta Data Lake Storage Gen2. Aby uzyskać więcej informacji o nazewnictwie kont magazynu convetions, zobacz [konwencje nazewnictwa dla zasobów platformy Azure](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#storage).
+    1. Wprowadź nazwę konta Data Lake Storage Gen2. Aby uzyskać więcej informacji na temat konwencji nazewnictwa kont magazynu, zobacz [konwencje nazewnictwa dla zasobów platformy Azure](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#storage).
     1. Kliknij kartę **Zaawansowane** .
     1. Kliknij pozycję **włączone** obok **hierarchicznej przestrzeni nazw** w obszarze **Data Lake Storage Gen2**.
     1. Kliknij pozycję **Przegląd + utwórz**.
@@ -64,7 +64,7 @@ Utwórz konto usługi Azure Data Lake Storage Gen2.
 
 Aby uzyskać więcej informacji na temat innych opcji podczas tworzenia konta magazynu [, zobacz Szybki Start: Utwórz konto](../storage/blobs/data-lake-storage-quickstart-create-account.md)magazynu Azure Data Lake Storage Gen2.
 
-![Zrzut ekranu przedstawiający tworzenie konta magazynu w Azure Portal](./media/hdinsight-hadoop-data-lake-storage-gen2/azure-data-lake-storage-account-create-advanced.png)
+![Zrzut ekranu przedstawiający tworzenie konta magazynu w Azure Portal](./media/hdinsight-hadoop-use-data-lake-storage-gen2/azure-data-lake-storage-account-create-advanced.png)
 
 ### <a name="set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account"></a>Skonfiguruj uprawnienia dla tożsamości zarządzanej na koncie Data Lake Storage Gen2
 
@@ -73,12 +73,12 @@ Przypisz zarządzaną tożsamość do roli **właściciela danych obiektów blob
 1. W [Azure Portal](https://portal.azure.com)przejdź do konta magazynu.
 1. Wybierz konto magazynu, a następnie wybierz pozycję **Kontrola dostępu (IAM)** , aby wyświetlić ustawienia kontroli dostępu dla konta. Wybierz kartę **przypisania ról** , aby wyświetlić listę przypisań ról.
     
-    ![Zrzut ekranu przedstawiający ustawienia kontroli dostępu do magazynu](./media/hdinsight-hadoop-data-lake-storage-gen2/portal-access-control.png)
+    ![Zrzut ekranu przedstawiający ustawienia kontroli dostępu do magazynu](./media/hdinsight-hadoop-use-data-lake-storage-gen2/portal-access-control.png)
     
 1. Wybierz przycisk **+ Dodaj przypisanie roli** , aby dodać nową rolę.
 1. W oknie **Dodawanie przypisania roli** wybierz rolę **właściciela danych obiektu blob magazynu** . Następnie wybierz subskrypcję, która ma zarządzaną tożsamość i konto magazynu. Następnie wyszukaj, aby zlokalizować utworzoną wcześniej tożsamość zarządzaną przypisaną przez użytkownika. Na koniec Wybierz zarządzaną tożsamość i zostanie ona wyświetlona w obszarze **wybranych członków**.
     
-    ![Zrzut ekranu przedstawiający sposób przypisywania roli RBAC](./media/hdinsight-hadoop-data-lake-storage-gen2/add-rbac-role3.png)
+    ![Zrzut ekranu przedstawiający sposób przypisywania roli RBAC](./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png)
     
 1. Wybierz pozycję **Zapisz**. Wybrana tożsamość przypisana przez użytkownika jest teraz wyświetlana w obszarze wybranej roli.
 1. Po zakończeniu początkowej konfiguracji można utworzyć klaster za pomocą portalu. Klaster musi znajdować się w tym samym regionie świadczenia usługi Azure co konto magazynu. W sekcji **Magazyn** w menu Tworzenie klastra wybierz następujące opcje:
@@ -86,11 +86,11 @@ Przypisz zarządzaną tożsamość do roli **właściciela danych obiektów blob
     * W obszarze **Typ magazynu podstawowego**wybierz pozycję **Azure Data Lake Storage Gen2**.
     * W obszarze **Wybierz konto magazynu**Wyszukaj i wybierz nowo utworzone konto magazynu Data Lake Storage Gen2.
         
-        ![Ustawienia magazynu na potrzeby używania Data Lake Storage Gen2 z usługą Azure HDInsight](./media/hdinsight-hadoop-data-lake-storage-gen2/primary-storage-type-adls-gen2.png)
+        ![Ustawienia magazynu na potrzeby używania Data Lake Storage Gen2 z usługą Azure HDInsight](./media/hdinsight-hadoop-use-data-lake-storage-gen2/primary-storage-type-adls-gen2.png)
     
     * W obszarze **tożsamość**Wybierz poprawną subskrypcję i nowo utworzoną tożsamość zarządzaną przez użytkownika.
         
-        ![Ustawienia tożsamości na potrzeby używania Data Lake Storage Gen2 z usługą Azure HDInsight](./media/hdinsight-hadoop-data-lake-storage-gen2/managed-identity-cluster-creation.png)
+        ![Ustawienia tożsamości na potrzeby używania Data Lake Storage Gen2 z usługą Azure HDInsight](./media/hdinsight-hadoop-use-data-lake-storage-gen2/managed-identity-cluster-creation.png)
         
 > [!Note]
 > Aby dodać konto Data Lake Storage Gen2 pomocniczego, na poziomie konta magazynu wystarczy przypisać zarządzaną tożsamość utworzoną wcześniej do nowego konta magazynu Data Lake Storage Gen2, które chcesz dodać. Upewnij się, że Dodawanie konta Data Lake Storage Gen2 pomocniczego za pośrednictwem bloku "dodatkowe konta magazynu" w usłudze HDInsight nie jest obsługiwane. 

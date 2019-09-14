@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie dostępem do zasobów platformy Azure dla użytkowników zewnętrznych, korzystając z modelu RBAC | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zarządzać dostępem do zasobów platformy Azure dla użytkowników spoza organizacji za pomocą kontroli dostępu opartej na rolach (RBAC).
+title: Zarządzanie dostępem do zasobów platformy Azure dla zewnętrznych użytkowników-Gości korzystających z funkcji RBAC | Microsoft Docs
+description: Dowiedz się, jak zarządzać dostępem do zasobów platformy Azure dla użytkowników zewnętrznych w organizacji przy użyciu kontroli dostępu opartej na rolach (RBAC).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -12,123 +12,197 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 03/20/2018
+ms.date: 09/12/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: d919453816436366c00dde506210a2ed38cc69b7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 12f4b0276074b6732cf57443f51ef5d867f205a6
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65952210"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967272"
 ---
-# <a name="manage-access-to-azure-resources-for-external-users-using-rbac"></a>Zarządzanie dostępem do zasobów platformy Azure dla użytkowników zewnętrznych, korzystając z modelu RBAC
+# <a name="manage-access-to-azure-resources-for-external-guest-users-using-rbac"></a>Zarządzanie dostępem do zasobów platformy Azure dla zewnętrznych użytkowników-Gości korzystających z funkcji RBAC
 
-Kontrola dostępu oparta na rolach (RBAC) umożliwia lepsze zarządzanie zabezpieczeniami dla dużych organizacji i dla małych i średnich firmach praca z zewnętrznych współpracowników, dostawców lub freelancers, którzy potrzebują dostępu do określonych zasobów w danym środowisku, ale niekoniecznie do całego infrastruktury ani żadnych zakresów związanych z rozliczeniami. RBAC umożliwia elastyczną będącej właścicielem jedną subskrypcję platformy Azure zarządza konta administratora (roli administratora usługi na poziomie subskrypcji) i zaprosili wielu użytkowników do pracy w ramach tej samej subskrypcji, ale bez żadnych praw administracyjnych dla niego .
+Kontrola dostępu oparta na rolach (RBAC) umożliwia lepsze zarządzanie zabezpieczeniami w dużych organizacjach i małych i średnich firm pracujących z zewnętrznymi współpracownikami, dostawcami lub osobami niezależnymi, które potrzebują dostępu do określonych zasobów w środowisku, ale nie musi to być cała infrastruktura ani żadne zakresy związane z rozliczeniami. Możesz użyć możliwości w [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) , aby współpracować z zewnętrznymi użytkownikami-gośćmi i można użyć RBAC, aby przyznać tylko uprawnienia wymagane przez użytkowników-Gości w danym środowisku.
 
-> [!NOTE]
-> Subskrypcje usługi Office 365 lub licencji usługi Azure Active Directory (na przykład: Dostęp do usługi Azure Active Directory) udostępnioną za pomocą Centrum administracyjnego nie spełniam jej wymagań przy użyciu funkcji RBAC w programie Microsoft 365.
+## <a name="when-would-you-invite-guest-users"></a>Kiedy zapraszasz użytkowników-Gości?
 
-## <a name="assign-rbac-roles-at-the-subscription-scope"></a>Przypisz role RBAC w zakresie subskrypcji
+Oto kilka przykładowych scenariuszy, które mogą zapraszać użytkowników-Gości do organizacji i udzielać uprawnień:
 
-Istnieją dwie typowe przykłady dotyczące kontroli RBAC jest używana (między innymi):
+- Zezwól zewnętrznemu dostawcy samoobsługowego, który ma dostęp do zasobów platformy Azure dla projektu i ma tylko konto e-mail.
+- Zezwól partnerowi zewnętrznemu na zarządzanie określonymi zasobami lub całą subskrypcją.
+- Zezwól inżynierom pomocy technicznej, które nie są w organizacji (np. pomocy technicznej firmy Microsoft), aby tymczasowo uzyskiwać dostęp do zasobów platformy Azure w celu rozwiązywania problemów.
 
-* Zewnętrznych użytkowników z organizacji (nie jest częścią użytkownika administratora dzierżawy Azure Active Directory) zaproszenie do zarządzania niektórych zasobów lub subskrypcji całego
-* Praca z użytkowników w organizacji (są one częścią dzierżawy usługi Azure Active Directory użytkownika), ale należy do różnych zespołów lub grupy, którzy muszą szczegółową dostępu do całej subskrypcji lub do określonych grup zasobów lub zakresy zasobów w środowisku
+## <a name="permission-differences-between-member-users-and-guest-users"></a>Różnice uprawnień między użytkownikami należącymi do członków i użytkownikami-Gośćmi
 
-## <a name="grant-access-at-a-subscription-level-for-a-user-outside-of-azure-active-directory"></a>Udzielanie dostępu na poziomie subskrypcji dla użytkownika poza usługą Azure Active Directory
+Natywni członkowie katalogu (Użytkownicy z członkami) mają różne uprawnienia niż użytkownicy zaproszeni z innego katalogu jako gość współpracy B2B (Goście). Na przykład użytkownik może odczytać prawie wszystkie informacje o katalogu, podczas gdy użytkownicy-Goście mają ograniczone uprawnienia do katalogu. Aby uzyskać więcej informacji na temat użytkowników-członków i użytkowników-Gości, zobacz [co to są domyślne uprawnienia użytkownika w Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md).
 
-Role RBAC, które mogą być przyznane tylko przez **właścicieli** subskrypcji. W związku z tym administrator musi być zalogowany jako użytkownik posiadający tę rolę wstępnie przypisane lub została utworzona subskrypcja platformy Azure.
+## <a name="add-a-guest-user-to-your-directory"></a>Dodawanie użytkownika-gościa do katalogu
 
-W witrynie Azure portal po zalogowaniu się jako administrator, wybierz pozycję "Subskrypcje" i wybierz opcję jedno.
-![Blok subskrypcji w witrynie Azure portal](./media/role-assignments-external-users/0.png) domyślnie, jeśli administrator subskrypcji platformy Azure, użytkownik będzie wyświetlany jako **administrator konta**, to jest rola subskrypcji. Aby uzyskać więcej informacji na temat ról subskrypcji platformy Azure, zobacz [Administratorzy subskrypcji platformy Azure Dodaj lub zmień](../billing/billing-add-change-azure-subscription-administrator.md).
+Wykonaj następujące kroki, aby dodać użytkownika-gościa do katalogu przy użyciu strony Azure Active Directory.
 
-W tym przykładzie użytkownik "alflanigan@outlook.com" jest **właściciela** "Bezpłatna wersja próbna" dzierżawy "Domyślna dzierżawa usługi Azure" subskrypcji w usłudze AAD. Ponieważ ten użytkownik jest twórca subskrypcji platformy Azure za pomocą początkowego Account Microsoft "Outlook" (Account Microsoft = programu Outlook, na żywo itp.) będzie domyślna nazwa domeny dla wszystkich innych użytkowników, dodać w tej dzierżawie **"\@ alflaniganuoutlook.onmicrosoft.com"** . Zgodnie z projektem składni nowej domeny jest tworzona przez zestawiania nazwy użytkownika i domena nazwa użytkownika, który utworzył dzierżawy oraz dodawania rozszerzenia **". onmicrosoft.com"** .
-Ponadto użytkownicy mogą zarejestrować się przy użyciu niestandardowej nazwy domeny w dzierżawie po dodaniu i weryfikowanie jego dla nowej dzierżawy. Aby uzyskać więcej informacji na temat zweryfikować niestandardowej nazwy domeny w dzierżawie usługi Azure Active Directory, zobacz [Dodawanie niestandardowej nazwy domeny do katalogu](../active-directory/fundamentals/add-custom-domain.md).
+1. Upewnij się, że ustawienia współpracy zewnętrznej Twojej organizacji zostały skonfigurowane tak, aby można było zapraszać Gości. Aby uzyskać więcej informacji, zobacz [Włączanie współpracy zewnętrznej B2B i zarządzanie osobami, które mogą zapraszać Gości](../active-directory/b2b/delegate-invitations.md).
 
-W tym przykładzie katalog "Domyślna dzierżawa usługi Azure" zawiera tylko użytkownicy z tą nazwą domeny "\@alflanigan.onmicrosoft.com".
+1. W Azure Portal kliknij pozycję **Azure Active Directory** > **Użytkownicy** > **nowy użytkownik-Gość**.
 
-Po wybraniu subskrypcji, należy kliknąć przycisk administratora **kontrola dostępu (IAM)** i następnie **dodać nową rolę**.
+    ![Nowa funkcja użytkownika-gościa w Azure Portal](./media/role-assignments-external-users/invite-guest-user.png)
 
-![Funkcja zarządzania tożsamościami i Dostępem kontroli dostępu w witrynie Azure portal](./media/role-assignments-external-users/1.png)
+1. Postępuj zgodnie z instrukcjami, aby dodać nowego użytkownika-gościa. Aby uzyskać więcej informacji, zobacz [dodawanie Azure Active Directory użytkowników współpracy B2B w Azure Portal](../active-directory/b2b/add-users-administrator.md#add-guest-users-to-the-directory).
 
-![Dodawanie nowego użytkownika w funkcji zarządzania tożsamościami i Dostępem kontroli dostępu w witrynie Azure portal](./media/role-assignments-external-users/2.png)
+Po dodaniu użytkownika-gościa do katalogu można wysłać użytkownikowi gość bezpośredni link do udostępnionej aplikacji lub kliknąć adres URL wykupu w wiadomości e-mail z zaproszeniem.
 
-Następnym krokiem jest wybierz rolę do przypisania i użytkownik, któremu zostanie przypisana rola RBAC do. W **roli** menu rozwijane administratora widzi tylko wbudowane role kontroli RBAC, które są dostępne na platformie Azure. Aby uzyskać bardziej szczegółowe objaśnienia dotyczące poszczególnych ról i ich zakresy możliwe do przypisania, zobacz [wbudowane role zasobów platformy Azure](built-in-roles.md).
+![Wiadomość e-mail z zaproszeniem gościa](./media/role-assignments-external-users/invite-email.png)
 
-Użytkownika administratora musi dodać adres e-mail użytkownika zewnętrznego. To oczekiwane zachowanie dla użytkownika zewnętrznego, które nie są wyświetlani w istniejącej dzierżawy. Po użytkownik zewnętrzny zostali zaproszeni, będą one widoczne w obszarze **subskrypcje > Kontrola dostępu (IAM)** przy użyciu wszystkich bieżących użytkowników, które są obecnie przypisane rolę RBAC w zakresie subskrypcji.
+Aby użytkownik-gość mógł uzyskać dostęp do katalogu, musi zakończyć proces zaproszenia.
 
-![Dodaj uprawnienia do nowej roli RBAC](./media/role-assignments-external-users/3.png)
+![Uprawnienia do przeglądania zaproszenia użytkownika-gościa](./media/role-assignments-external-users/invite-review-permissions.png)
 
-![Lista ról RBAC na poziomie subskrypcji](./media/role-assignments-external-users/4.png)
+Aby uzyskać więcej informacji na temat procesu zaproszenia, zobacz [Azure Active Directory realizacji zaproszeń do współpracy B2B](../active-directory/b2b/redemption-experience.md).
 
-Użytkownik "chessercarlton@gmail.com" został zaproszony jako **właściciela** dla subskrypcji "Bezpłatna wersja próbna". Po wysłaniu zaproszenia, zewnętrzne użytkownik otrzyma wiadomość e-mail z potwierdzeniem z łącze do aktywacji.
-![wiadomość e-mail z zaproszeniem dla ról RBAC](./media/role-assignments-external-users/5.png)
+## <a name="grant-access-to-a-guest-user"></a>Udzielanie dostępu użytkownikowi gościa
 
-Jest spoza organizacji, nowy użytkownik nie ma żadnych istniejących atrybutów w katalogu "Domyślna dzierżawa usługi Azure". Zostaną one utworzone po użytkownik zewnętrzny wyraził zgody rejestruje się w katalogu, który jest skojarzony z tą subskrypcją zostali przypisani do roli.
+Aby udzielić dostępu w ramach RBAC, należy przypisać rolę. Aby udzielić dostępu użytkownikowi gościa, wykonaj [te same czynności](role-assignments-portal.md#add-a-role-assignment) co w przypadku użytkownika, grupy, nazwy głównej usługi lub tożsamości zarządzanej. Wykonaj następujące kroki, aby udzielić dostępu użytkownikowi gościa w różnych zakresach.
 
-![wiadomości z zaproszeniem dla ról RBAC](./media/role-assignments-external-users/6.png)
+1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**.
 
-Pokazuje użytkownika zewnętrznego w dzierżawie usługi Azure Active Directory od teraz jako użytkownik zewnętrzny i to można wyświetlić w witrynie Azure portal.
+1.  Wybierz zestaw zasobów, do których odnosi się ten dostęp, nazywany również zakresem. Można na przykład wybrać **grupy zarządzania**, **subskrypcje**, **grupy zasobów**lub zasób.
 
-![witryny Azure portal użytkowników bloku azure active directory](./media/role-assignments-external-users/7.png)
+1. Kliknij konkretny zasób.
 
-W **użytkowników** widoku, użytkownicy zewnętrzni mogą być rozpoznawane przez typ inną ikonę w witrynie Azure portal.
+1. Kliknij przycisk **kontrola dostępu (IAM)** .
 
-Jednak udzielenie **właściciela** lub **Współautor** dostęp do użytkownika zewnętrznego w **subskrypcji** zakresu, nie zezwala na dostęp do katalogu użytkownika administracyjnego, chyba że **Administratora globalnego** to umożliwia. W ich właściwości użytkownika **typ użytkownika**, który ma dwie typowe parametry, **elementu członkowskiego** i **gościa** mogą zostać zidentyfikowane. Element członkowski jest użytkownik, który jest zarejestrowany w katalogu, a Gość jest użytkownikiem, który został zaproszony do katalogu z zewnętrznego źródła. Aby uzyskać więcej informacji, zobacz [jak Administratorzy usługi Azure Active Directory dodać użytkowników we współpracy B2B](../active-directory/active-directory-b2b-admin-add-users.md).
+    Poniższy zrzut ekranu przedstawia przykład bloku kontroli dostępu (IAM) dla grupy zasobów. Jeśli w tym miejscu wprowadzisz jakiekolwiek zmiany kontroli dostępu, zostaną one zastosowane tylko do grupy zasobów.
 
-> [!NOTE]
-> Upewnij się, że po wprowadzeniu poświadczeń w portalu, zewnętrzne użytkownik wybierze poprawnego katalogu do logowania się na. Ten sam użytkownik może mieć dostęp do wielu katalogów i można wybrać jeden z nich, klikając nazwę użytkownika w prawej górnej w witrynie Azure portal a następnie wybierz odpowiedniego katalogu z listy rozwijanej.
+    ![Blok kontroli dostępu (IAM) dla grupy zasobów](./media/role-assignments-external-users/access-control-resource-group.png)
 
-Będąc gościa w katalogu, użytkowników zewnętrznych mogą zarządzać wszystkie zasoby w subskrypcji platformy Azure, ale nie można uzyskać dostępu do katalogu.
+1. Kliknij kartę **przypisania roli** , aby wyświetlić wszystkie przypisania ról w tym zakresie.
 
-![dostęp ograniczony do portalu Azure usługi active directory azure](./media/role-assignments-external-users/9.png)
+1. Kliknij pozycję **Dodaj** > **Dodaj przypisanie roli**, aby otworzyć okienko Dodawanie przypisania roli.
 
-Usługa Azure Active Directory i subskrypcję platformy Azure nie mają relacji relacji nadrzędny podrzędny, podobnie jak inne zasoby platformy Azure (na przykład: maszyny wirtualne, sieci wirtualne, aplikacje sieci web, Magazyn itp.) z subskrypcją platformy Azure. Wszystkie one utworzone, zarządzane i rozliczane w ramach subskrypcji platformy Azure, natomiast subskrypcji platformy Azure służy do zarządzania dostępem do usługi Azure directory. Aby uzyskać więcej informacji, zobacz [subskrypcji platformy Azure jest powiązany z usługą Azure AD](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
+    Jeśli nie masz uprawnień do przypisywania ról, opcja Dodaj przypisanie roli będzie wyłączona.
 
-Z wszystkie wbudowane role kontroli RBAC **właściciela** i **Współautor** oferują dostęp do pełnego zarządzania, do wszystkich zasobów w środowisku, a różnica, możliwe, że Współautor nie mogą tworzyć i usuwać nowe role RBAC . Inne role wbudowane, takie jak **Współautor maszyny wirtualnej** oferują dostęp do pełnego zarządzania, tylko do zasobów, jest określany przez nazwę, niezależnie od tego **grupy zasobów** są one tworzone w.
+    ![Menu Dodaj](./media/role-assignments-external-users/add-menu.png)
 
-Przypisanie wbudowanej roli RBAC **Współautor maszyny wirtualnej** na poziomie subskrypcji, oznacza, że użytkownik przypisany do roli:
+1. Z listy rozwijanej **Rola** wybierz rolę, taką jak **Współautor·maszyny·wirtualnej**.
 
-* Można wyświetlić wszystkich maszyn wirtualnych niezależnie od tego, daty ich wdrożenia i grupy zasobów, które są częścią
-* Dostępem do pełnego zarządzania z maszynami wirtualnymi w subskrypcji
-* Nie można wyświetlić inne typy zasobów w subskrypcji
-* Nie można wykonać operacji zmiany z punktu widzenia rozliczeń
+1. Z listy **Wybierz** wybierz użytkownika-gościa. Jeśli nie widzisz użytkownika na liście, możesz wpisać w polu **Wybierz** , aby przeszukać katalog pod kątem nazw wyświetlanych, adresów e-mail i identyfikatorów obiektów.
 
-## <a name="assign-a-built-in-rbac-role-to-an-external-user"></a>Przypisywanie roli wbudowanej RBAC do użytkownika zewnętrznego
+   ![Okienko Dodawanie przypisania roli](./media/role-assignments-external-users/add-role-assignment.png)
 
-Inny scenariusz w tym teście użytkownika zewnętrznego "alflanigan@gmail.com" zostanie dodany jako **Współautor maszyny wirtualnej**.
+1. Kliknij przycisk **Zapisz** , aby przypisać rolę w wybranym zakresie.
 
-![wbudowana rola Współautor maszyny wirtualnej](./media/role-assignments-external-users/11.png)
+    ![Przypisanie roli dla współautora maszyny wirtualnej](./media/role-assignments-external-users/access-control-role-assignments.png)
 
-Normalne zachowanie dla tego użytkownika zewnętrznego, z tą rolą wbudowanych jest wyświetlanie i zarządzanie nimi, tylko maszyny wirtualne i ich sąsiadujących zasoby usługi Resource Manager tylko niezbędne podczas wdrażania. Zgodnie z projektem te role ograniczone oferują dostęp tylko do ich odpowiedniego zasoby utworzone w witrynie Azure portal.
+## <a name="grant-access-to-a-guest-user-not-yet-in-your-directory"></a>Udziel dostępu użytkownikowi gościa jeszcze nie w Twoim katalogu
 
-![Omówienie roli Współautor maszyny wirtualnej w witrynie Azure portal](./media/role-assignments-external-users/12.png)
+Aby udzielić dostępu w ramach RBAC, należy przypisać rolę. Aby udzielić dostępu użytkownikowi gościa, wykonaj [te same czynności](role-assignments-portal.md#add-a-role-assignment) co w przypadku użytkownika, grupy, nazwy głównej usługi lub tożsamości zarządzanej.
 
-## <a name="grant-access-at-a-subscription-level-for-a-user-in-the-same-directory"></a>Udzielanie dostępu na poziomie subskrypcji dla użytkownika, w tym samym katalogu
+Jeśli użytkownik-Gość nie znajduje się jeszcze w Twoim katalogu, możesz zaprosić użytkownika bezpośrednio z okienka Dodawanie przypisania roli.
 
-Przepływ procesu jest taka sama jak dodawanie użytkownika zewnętrznego, zarówno z perspektywy administratora, udzielanie rolę RBAC, a także użytkownika zostanie im przyznany dostęp do roli. W tym miejscu różnica polega na tym, że zaproszonego użytkownika nie otrzyma żadnych zaproszeń e-mail ponieważ wszystkie zakresy zasobów w ramach subskrypcji będą dostępne na pulpicie nawigacyjnym po zalogowaniu się.
+1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**.
 
-## <a name="assign-rbac-roles-at-the-resource-group-scope"></a>Przypisz role RBAC w zakresie grupy zasobów
+1.  Wybierz zestaw zasobów, do których odnosi się ten dostęp, nazywany również zakresem. Można na przykład wybrać **grupy zarządzania**, **subskrypcje**, **grupy zasobów**lub zasób.
 
-Przypisz rolę RBAC w **grupy zasobów** zakres ma identyczne proces trwa przypisywanie roli na poziomie subskrypcji, dla obu typów użytkowników — zewnętrznego lub wewnętrznego (część tego samego katalogu). Użytkownicy, którym przypisano rolę RBAC jest, aby zobaczyć w swoim środowisku, tylko do grupy zasobów zostały przypisane dostęp z **grup zasobów** ikony w witrynie Azure portal.
+1. Kliknij konkretny zasób.
 
-## <a name="assign-rbac-roles-at-the-resource-scope"></a>Przypisz role RBAC w zakresie zasobów
+1. Kliknij przycisk **kontrola dostępu (IAM)** .
 
-Przypisz rolę RBAC w zakresie zasobów na platformie Azure ma identyczne proces trwa przypisywanie roli na poziomie subskrypcji lub na poziomie grupy zasobów zgodnie z tym samym przepływie pracy oba scenariusze. Użytkownicy, którym przypisano rolę RBAC można znajduje się w artykule tylko elementy, które zostali przypisani dostęp do jednej w **wszystkie zasoby** karty lub bezpośrednio na pulpicie nawigacyjnym.
+1. Kliknij kartę **przypisania roli** , aby wyświetlić wszystkie przypisania ról w tym zakresie.
 
-Ważnym aspektem dla RBAC, zarówno w zakresie grupy zasobów lub w zakresie zasobów jest przeznaczony dla użytkowników upewnić się zarejestrować się w katalogu poprawny.
+1. Kliknij pozycję **Dodaj** > **Dodaj przypisanie roli**, aby otworzyć okienko Dodawanie przypisania roli.
 
-![katalog logowania w witrynie Azure portal](./media/role-assignments-external-users/13.png)
+    ![Menu Dodaj](./media/role-assignments-external-users/add-menu.png)
 
-## <a name="assign-rbac-roles-for-an-azure-active-directory-group"></a>Przypisz role RBAC dla grupy usługi Azure Active Directory
+1. Z listy rozwijanej **Rola** wybierz rolę, taką jak **Współautor·maszyny·wirtualnej**.
 
-Wszystkie scenariusze przy użyciu funkcji RBAC w trzech różnych zakresów na platformie Azure oferuje uprawnienia zarządzania, wdrażania i administrowania zasobami różnych jako przypisanych użytkowników bez konieczności zarządzania subskrypcją osobistych. Niezależnie od tego dla subskrypcji, grupy zasobów lub zasobu zakresu jest przypisywana rola RBAC, wszystkie zasoby, które są utworzone dalej przypisanych użytkowników są naliczane w ramach jednej subskrypcji platformy Azure, w której użytkownicy mają dostęp do. Dzięki temu użytkownicy, którzy mają rozliczeń uprawnień administratora dla tej subskrypcji platformy Azure cały ma pełny przegląd zużycia, niezależnie od tego, który zarządza zasobami.
+1. Na liście **Wybierz** wpisz adres e-mail osoby, którą chcesz zaprosić, i wybierz tę osobę.
 
-W przypadku większych organizacji można stosować w taki sam sposób dla grup usługi Azure Active Directory, biorąc pod uwagę z punktu widzenia użytkownika administrator chce udzielić dostępu szczegółowej całego działów lub zespołów, indywidualnie dla każdego użytkownika, w związku z tym biorąc pod uwagę role RBAC go jako bardzo czasu i zarządzania wydajne opcję. Aby zilustrować ten przykład **Współautor** rola została dodana do jednej z grup w dzierżawie na poziomie subskrypcji.
+   ![Zaproś użytkownika-gościa w okienku Dodaj przypisanie roli](./media/role-assignments-external-users/add-role-assignment-new-guest.png)
 
-![Dodaj rolę RBAC dla grup usługi AAD](./media/role-assignments-external-users/14.png)
+1. Kliknij przycisk **Zapisz** , aby dodać użytkownika-gościa do katalogu, przypisać rolę i wysłać zaproszenie.
 
-Te grupy to grupy zabezpieczeń, które są aprowizowane i zarządzane tylko w ramach usługi Azure Active Directory.
+    Po kilku chwilach zobaczysz powiadomienie o przypisaniu roli i informacje o zaproszeniu.
 
+    ![Przypisanie roli i powiadomienie zaproszonego użytkownika](./media/role-assignments-external-users/invited-user-notification.png)
+
+1. Aby ręcznie zaprosić użytkownika-gościa, kliknij prawym przyciskiem myszy i skopiuj link do zaproszenia w powiadomieniu. Nie klikaj linku zaproszenia, ponieważ uruchamia proces zaproszenia.
+
+    Link do zaproszenia będzie miał następujący format:
+
+    `https://invitations.microsoft.com/redeem/...`
+
+1. Wyślij link zaproszenia do użytkownika-gościa, aby zakończyć proces zaproszenia.
+
+    Aby uzyskać więcej informacji na temat procesu zaproszenia, zobacz [Azure Active Directory realizacji zaproszeń do współpracy B2B](../active-directory/b2b/redemption-experience.md).
+
+## <a name="remove-a-guest-user-from-your-directory"></a>Usuń użytkownika-gościa z katalogu
+
+Przed usunięciem użytkownika-gościa z katalogu należy najpierw usunąć wszystkie przypisania ról dla tego użytkownika. Wykonaj następujące kroki, aby usunąć użytkownika-gościa z katalogu.
+
+1. Otwórz **kontrolę dostępu (IAM)** w zakresie, na przykład grupy zarządzania, subskrypcji, grupy zasobów lub zasobu, gdzie użytkownik-Gość ma przypisanie roli.
+
+1. Kliknij kartę **przypisania ról** , aby wyświetlić wszystkie przypisania ról.
+
+1. Na liście przypisań ról Dodaj znacznik wyboru obok użytkownika-gościa z przypisaniem roli, które chcesz usunąć.
+
+   ![Usuń przypisanie roli](./media/role-assignments-external-users/remove-role-assignment-select.png)
+
+1. Kliknij pozycję **Usuń**.
+
+   ![Komunikat dotyczący usuwania przypisania roli](./media/role-assignments-external-users/remove-role-assignment.png)
+
+1. W wyświetlonym komunikacie dotyczącym usuwania przypisania roli wybierz pozycję **Tak**.
+
+1. Na pasku nawigacyjnym po lewej stronie kliknij pozycję **Azure Active Directory** > **Użytkownicy**.
+
+1. Kliknij użytkownika-gościa, który chcesz usunąć.
+
+1. Kliknij przycisk **Usuń**.
+
+   ![Usuń użytkownika-gościa](./media/role-assignments-external-users/delete-guest-user.png)
+
+1. W wyświetlonym komunikacie Usuń kliknij przycisk **tak**.
+
+## <a name="troubleshoot"></a>Rozwiązywanie problemów
+
+### <a name="guest-user-cannot-browse-the-directory"></a>Użytkownik-Gość nie może przeglądać katalogu
+
+Użytkownicy-Goście mają ograniczone uprawnienia do katalogu. Na przykład użytkownicy-Goście nie mogą przeglądać katalogu i nie mogą wyszukiwać grup ani aplikacji. Aby uzyskać więcej informacji, zobacz [co to są domyślne uprawnienia użytkownika w Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md).
+
+![Użytkownik-Gość nie może przeglądać użytkowników w katalogu](./media/role-assignments-external-users/directory-no-users.png)
+
+Jeśli użytkownik-Gość potrzebuje dodatkowych uprawnień w katalogu, można przypisać rolę katalogu do użytkownika-gościa. Jeśli chcesz, aby użytkownik-Gość miał pełny dostęp do odczytu do katalogu, możesz dodać użytkownika-gościa do roli [czytelnicy katalogów](../active-directory/users-groups-roles/directory-assign-admin-roles.md) w usłudze Azure AD. Aby uzyskać więcej informacji, zobacz [Przyznawanie uprawnień użytkownikom z organizacji partnerskich w dzierżawie Azure Active Directory](../active-directory/b2b/add-guest-to-role.md).
+
+![Przypisywanie roli czytelnicy Directory](./media/role-assignments-external-users/directory-roles.png)
+
+### <a name="guest-user-cannot-browse-users-groups-or-service-principals-to-assign-roles"></a>Użytkownik-Gość nie może przeglądać użytkowników, grup ani nazw głównych usług w celu przypisania ról
+
+Użytkownicy-Goście mają ograniczone uprawnienia do katalogu. Nawet jeśli użytkownik-Gość jest [właścicielem](built-in-roles.md#owner) w określonym zakresie, próba utworzenia przypisania roli w celu udzielenia innej osobie dostępu nie może przeglądać listy użytkowników, grup ani nazw podmiotów usługi.
+
+![Użytkownik-Gość nie może przeglądać podmiotów zabezpieczeń w celu przypisania ról](./media/role-assignments-external-users/directory-no-browse.png)
+
+Jeśli użytkownik-Gość wie o dokładnej nazwie logowania w katalogu, może udzielić dostępu. Jeśli chcesz, aby użytkownik-Gość miał pełny dostęp do odczytu do katalogu, możesz dodać użytkownika-gościa do roli [czytelnicy katalogów](../active-directory/users-groups-roles/directory-assign-admin-roles.md) w usłudze Azure AD. Aby uzyskać więcej informacji, zobacz [Przyznawanie uprawnień użytkownikom z organizacji partnerskich w dzierżawie Azure Active Directory](../active-directory/b2b/add-guest-to-role.md).
+
+### <a name="guest-user-cannot-register-applications-or-create-service-principals"></a>Użytkownik-Gość nie może zarejestrować aplikacji ani utworzyć jednostek usługi
+
+Użytkownicy-Goście mają ograniczone uprawnienia do katalogu. Jeśli użytkownik-Gość musi mieć możliwość rejestrowania aplikacji lub tworzenia jednostek usługi, można dodać użytkownika-gościa do roli [Deweloper aplikacji](../active-directory/users-groups-roles/directory-assign-admin-roles.md) w usłudze Azure AD. Aby uzyskać więcej informacji, zobacz [Przyznawanie uprawnień użytkownikom z organizacji partnerskich w dzierżawie Azure Active Directory](../active-directory/b2b/add-guest-to-role.md).
+
+![Użytkownik-Gość nie może zarejestrować aplikacji](./media/role-assignments-external-users/directory-access-denied.png)
+
+### <a name="guest-user-does-not-see-the-new-directory"></a>Użytkownik-Gość nie widzi nowego katalogu
+
+Jeśli użytkownik-Gość uzyska dostęp do katalogu, ale nie zobaczy nowego katalogu wymienionego w Azure Portal podczas próby przełączenia się w okienku **katalogów i subskrypcji** , upewnij się, że użytkownik-Gość ukończy proces zaproszenia. Aby uzyskać więcej informacji na temat procesu zaproszenia, zobacz [Azure Active Directory realizacji zaproszeń do współpracy B2B](../active-directory/b2b/redemption-experience.md).
+
+### <a name="guest-user-does-not-see-resources"></a>Użytkownik-Gość nie widzi zasobów
+
+Jeśli użytkownik-Gość uzyska dostęp do katalogu, ale nie widzi zasobów, do których udzielono dostępu w Azure Portal, upewnij się, że użytkownik-Gość zaznaczył poprawny katalog. Użytkownik-gość może mieć dostęp do wielu katalogów. Aby przełączyć katalogi, w lewym górnym rogu kliknij pozycję **katalog + subskrypcja**, a następnie kliknij odpowiedni katalog.
+
+![Okienko katalogów i subskrypcji w Azure Portal](./media/role-assignments-external-users/directory-subscription.png)
+
+## <a name="next-steps"></a>Następne kroki
+
+- [Dodają użytkowników we współpracy B2B usługi Azure Active Directory w witrynie Azure portal](../active-directory/b2b/add-users-administrator.md)
+- [Właściwości Azure Active Directory użytkownika współpracy B2B](../active-directory/b2b/user-properties.md)
+- [Elementy wiadomości e-mail z zaproszeniem do współpracy B2B — Azure Active Directory](../active-directory/b2b/invitation-email-elements.md)

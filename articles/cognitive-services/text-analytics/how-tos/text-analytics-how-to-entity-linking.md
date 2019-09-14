@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: 93d5b3de47ec0b3c0494589da0baf87f91a0233a
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 642b21624ce3ffc993d5f29a413845044d703fd7
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390257"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984267"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak używać rozpoznawania jednostek nazwanych w analiza tekstu
 
@@ -47,7 +47,6 @@ Używanie łączenia jednostek w różnych językach wymaga użycia odpowiedniej
 | Ilość      | Liczba        | „6”, „six”     |
 | Ilość      | Wartość procentowa    | „50%”, „fifty percent”|
 | Ilość      | Liczba porządkowa       | „2nd”, „second”     |
-| Ilość      | Zakres liczb   | „4 to 8”     |
 | Ilość      | Wiek           | "90 dzień dawna", "30 lat starych"    |
 | Ilość      | Currency      | „$10,99”     |
 | Ilość      | Wymiar     | „10 miles”, „40 cm”     |
@@ -59,7 +58,6 @@ Używanie łączenia jednostek w różnych językach wymaga użycia odpowiedniej
 | DateTime      | Zakres czasu     | „6pm to 7pm”     |
 | DateTime      | Duration      | „1 minute and 45 seconds”   |
 | DateTime      | Zestaw           | „every Tuesday”     |
-| DateTime      | Strefa czasowa      |    |
 | URL           | NIE DOTYCZY\*         | "https:\//www.Bing.com"    |
 | Email         | NIE DOTYCZY\*         | "support@contoso.com" |
 

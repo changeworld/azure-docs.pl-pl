@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: anroth
-ms.openlocfilehash: 22955ba4b885b264210dc8788f2a410b785b28b4
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 50325b75280160a3fefa5b5487df29a25e53bddd
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883980"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966945"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Korzystanie z modelu za pomocą interfejsu API przewidywania
 
@@ -26,7 +26,7 @@ Po nauczeniu modelu możesz programowo przetestować obrazy przez przesłanie ic
 
 ## <a name="publish-your-trained-iteration"></a>Publikowanie przeszkolonej iteracji
 
-Na stronie [Custom Vision ](https://customvision.ai) wybierz swój projekt, a następnie kartę __Wydajność__ .
+Na stronie [Custom Vision ](https://customvision.ai) wybierz swój projekt, a następnie kartę __Wydajność__.
 
 Aby przesłać obrazy do interfejsu API przewidywania, najpierw musisz opublikować iterację do prognozowania, którą można wykonać, wybierając pozycję __Publikuj__ i podając nazwę opublikowanej iteracji. Dzięki temu Twój model będzie dostępny dla interfejsu API przewidywania zasobów Custom Vision platformy Azure.
 
@@ -38,14 +38,12 @@ Po pomyślnym opublikowaniu modelu zobaczysz etykietę "Opublikowano" obok itera
 
 ## <a name="get-the-url-and-prediction-key"></a>Pobieranie adresu URL i klucza predykcyjnego
 
-Po opublikowaniu modelu możesz pobrać wymagane informacje, wybierając pozycję __adres URL przewidywania__ . Spowoduje to otwarcie okna dialogowego z informacjami dotyczącymi korzystania z interfejsu API przewidywania, w tym __adres URL przewidywania__ i __klucz predykcyjny__ .
+Po opublikowaniu modelu możesz pobrać wymagane informacje, wybierając pozycję __adres URL przewidywania__. Spowoduje to otwarcie okna dialogowego z informacjami dotyczącymi korzystania z interfejsu API przewidywania, w tym __adres URL przewidywania__ i __klucz predykcyjny__.
 
 ![Karta wydajność jest pokazywana z czerwonym prostokątem otaczającym przycisk prognozowanego adresu URL.](./media/use-prediction-api/published-iteration-prediction-url.png)
 
 ![Karta wydajność jest pokazywana z czerwonym prostokątem otaczającym wartość adresu URL prognozowania przy użyciu pliku obrazu oraz wartości predykcyjnego klucza.](./media/use-prediction-api/prediction-api-info.png)
 
-> [!TIP]
-> __Klucz predykcyjny__ można również znaleźć na stronie [Azure Portal](https://portal.azure.com) dla Custom Vision zasobu platformy Azure skojarzonego z projektem w bloku __klucze__ .
 
 W tym przewodniku użyjesz lokalnego obrazu, więc Skopiuj adres URL w obszarze **Jeśli masz plik obrazu** do lokalizacji tymczasowej. Skopiuj również odpowiednią wartość __klucza przewidywania__ .
 
@@ -53,7 +51,7 @@ W tym przewodniku użyjesz lokalnego obrazu, więc Skopiuj adres URL w obszarze 
 
 1. W programie Visual Studio Utwórz nową C# aplikację konsolową.
 
-1. Użyj poniższego kodu jako treści pliku __Program.cs__ .
+1. Użyj poniższego kodu jako treści pliku __Program.cs__.
 
     ```csharp
     using System;

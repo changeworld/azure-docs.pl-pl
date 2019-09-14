@@ -7,12 +7,12 @@ ms.service: service-fabric
 ms.topic: article
 ms.date: 07/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: 9f6f3d43f80b3c69b0c1106b8e395b4d8f5d32ab
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: cf04efd8dac3ba4d252701d79c65b1bf56619fe0
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640702"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70968238"
 ---
 # <a name="deploy-service-fabric-application-with-system-assigned-managed-identity-preview"></a>Wdrażanie aplikacji Service Fabric przy użyciu tożsamości zarządzanej przypisanej do systemu (wersja zapoznawcza)
 
@@ -78,7 +78,7 @@ Ta właściwość deklaruje (do Azure Resource Manager i dostawcy zasobów zarz�
 
     Ten element przypisuje tożsamość aplikacji do usługi; bez tego przypisania usługa nie będzie mogła uzyskać dostępu do tożsamości aplikacji. W powyższym `SystemAssigned` fragmencie kodu tożsamość (która jest zastrzeżonym słowem kluczowym) jest zamapowana na definicję usługi pod przyjazną `WebAdmin`nazwą.
 
-3. Zaktualizuj manifest usługi, aby dodać element **ManagedIdentity** w sekcji Resources o nazwie zgodnej z `ServiceIdentityRef` wartością ustawienia z `IdentityBindingPolicy` definicji w manifeście aplikacji:
+3. Zaktualizuj manifest usługi, aby dodać element **ManagedIdentity** w sekcji **resources** o nazwie zgodnej z `ServiceIdentityRef` wartością ustawienia z `IdentityBindingPolicy` definicji w manifeście aplikacji:
 
     **Servicemanifest. XML**
 
@@ -93,15 +93,9 @@ Ta właściwość deklaruje (do Azure Resource Manager i dostawcy zasobów zarz�
     Jest to równoważne mapowanie tożsamości do usługi zgodnie z powyższym opisem, ale z perspektywy definicji usługi. Tożsamość jest przywoływana tutaj przez przyjazną nazwę`WebAdmin`(), zgodnie z deklaracją w manifeście aplikacji.
 
 ## <a name="next-steps"></a>Następne kroki
-
 * Przejrzyj [obsługę tożsamości zarządzanych](./concepts-managed-identity.md) w usłudze Azure Service Fabric
-
 * [Wdróż nowy](./configure-new-azure-service-fabric-enable-managed-identity.md) Klaster Service Fabric platformy Azure z obsługą tożsamości zarządzanej 
-
 * [Włącz zarządzaną tożsamość](./configure-existing-cluster-enable-managed-identity-token-service.md) w istniejącym klastrze Service Fabric platformy Azure
-
 * Korzystanie [z zarządzanej tożsamości aplikacji Service Fabric z kodu źródłowego](./how-to-managed-identity-service-fabric-app-code.md)
-
 * [Wdrażanie aplikacji Service Fabric platformy Azure przy użyciu tożsamości zarządzanej przypisanej przez użytkownika](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
-
 * [Przyznaj aplikacji Service Fabric platformy Azure dostęp do innych zasobów platformy Azure](./how-to-grant-access-other-resources.md)

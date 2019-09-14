@@ -4,15 +4,16 @@ description: Poznaj wskazówki dotyczące uaktualniania klastra usługi Azure HD
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: f4458b33edb9d55c30de8c5168668743abb33161
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: a62da0d27d21589f7b75a89cc184ce9f456f1fed
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811642"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960707"
 ---
 # <a name="upgrade-hdinsight-cluster-to-a-newer-version"></a>Uaktualnianie klastra usługi HDInsight do nowszej wersji
 Aby skorzystać z najnowszych funkcji usługi HDInsight, zalecamy uaktualnienie klastrów usługi HDInsight do najnowszej wersji. Postępuj zgodnie z poniższymi wskazówkami, aby uaktualnić wersje klastra usługi HDInsight.
@@ -23,7 +24,7 @@ Aby skorzystać z najnowszych funkcji usługi HDInsight, zalecamy uaktualnienie 
 ## <a name="upgrade-tasks"></a>Zadania uaktualniania
 Przepływ pracy uaktualniania klastra usługi HDInsight jest następujący:.
 
-![Diagram przepływu pracy uaktualniania](./media/hdinsight-upgrade-cluster/upgrade-workflow.png)
+![Diagram przepływu pracy uaktualniania](./media/hdinsight-upgrade-cluster/upgrade-workflow-diagram.png)
 
 1. Przeczytaj każdą z sekcji tego dokumentu, aby poznać zmiany, które mogą być wymagane podczas uaktualniania klastra usługi HDInsight.
 2. Utwórz klaster jako środowisko testu/jakości. Aby uzyskać więcej informacji na temat tworzenia klastra, zobacz [informacje na temat tworzenia klastrów usługi HDInsight opartych na systemie Linux](hdinsight-hadoop-provision-linux-clusters.md)

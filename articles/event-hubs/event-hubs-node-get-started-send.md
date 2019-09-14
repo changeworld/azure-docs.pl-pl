@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 04/15/2019
 ms.author: spelluru
-ms.openlocfilehash: a3233a32bf8a0e602fbdb64778fad25f550294df
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 3bb222d3197ef37d56767300d71cc350d25a37bd
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699045"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984483"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-nodejs"></a>Wysyłanie zdarzeń do i odbieranie zdarzeń z usługi Azure Event Hubs przy użyciu środowiska Node. js
 
@@ -142,10 +142,10 @@ W tej sekcji pokazano, jak odbierać zdarzenia z centrum zdarzeń przy użyciu u
 
     // Connection string - primary key of the Event Hubs namespace. 
     // For example: Endpoint=sb://myeventhubns.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-    const connectionString = "Endpoint=sb://<EVENT HUBS NAMESPACE NAME>.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=<SHARED ACCESS KEY>";
+    const eventHubConnectionString = "Endpoint=sb://<EVENT HUBS NAMESPACE NAME>.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=<SHARED ACCESS KEY>";
 
     // Name of the event hub. For example: myeventhub
-    const eventHubsName = "<EVENT HUB NAME>";
+    const eventHubName = "<EVENT HUB NAME>";
 
     // Azure Storage connection string
     const storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=<STORAGE ACCOUNT NAME>;AccountKey=<STORAGE ACCOUNT KEY>;EndpointSuffix=core.windows.net";
@@ -186,7 +186,7 @@ W tej sekcji pokazano, jak odbierać zdarzenia z centrum zdarzeń przy użyciu u
 
 Gratulacje! Odebrano zdarzenia z centrum zdarzeń za pomocą hosta procesora zdarzeń. Spowoduje to odebranie zdarzeń ze wszystkich partycji domyślnej grupy odbiorców w centrum zdarzeń
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Przeczytaj następujące artykuły:
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)

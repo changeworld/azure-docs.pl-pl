@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: normesta
 ms.reviewer: bensack
-ms.openlocfilehash: 59574f0a07f4ecc145f2b0efd430e65cbdebcc65
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: d76ea317271ae0e8eb0d54fcfee5dc005d836fc1
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991572"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984959"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen2-by-using-power-bi"></a>Analizowanie danych w Azure Data Lake Storage Gen2 przy użyciu Power BI
 
@@ -28,7 +28,7 @@ Przed przystąpieniem do wykonania kroków opisanych w tym samouczku należy dys
 > * Konto magazynu, które ma hierarchiczną przestrzeń nazw. Postępuj zgodnie z [tymi](data-lake-storage-quickstart-create-account.md) instrukcjami, aby je utworzyć.
 > W tym artykule przyjęto założenie, że utworzono `myadlsg2`konto o nazwie.
 > * Przykładowy plik danych o nazwie `Drivers.txt` znajdujący się na koncie magazynu.
-> Możesz pobrać ten przykład z [repozytorium Azure Data Lake git](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceDataDrivers.txt), a następnie przekazać ten plik na konto magazynu.
+> Możesz pobrać ten przykład z [repozytorium Azure Data Lake git](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt), a następnie przekazać ten plik na konto magazynu.
 > * **Power BI Desktop**. Możesz pobrać ten program z [Centrum pobierania Microsoft](https://www.microsoft.com/download/details.aspx?id=45331). 
 
 ## <a name="create-a-report-in-power-bi-desktop"></a>Tworzenie raportu w programie Power BI Desktop

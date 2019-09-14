@@ -1,71 +1,71 @@
 ---
-title: Azure Marketplace i AppSource Podręcznik publikowania
-description: 'Omówienie portalu Azure Marketplace i Microsoft AppSource dla: wydawcy aplikacji i usługi.'
+title: Podręcznik publikowania w witrynie Azure Marketplace i AppSource
+description: Omówienie portalu Azure Marketplace i Microsoft AppSource dla wydawców aplikacji i usług.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: ellacroi
 ms.service: marketplace
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 58591302280c67dbd0f69ebe0bc47cf95c8bfc18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cd6b09a1130e50fae7bd83579a0f176af0b5b9cd
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956746"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962622"
 ---
-# <a name="azure-marketplace-and-appsource-publishing-guide"></a>Azure Marketplace i AppSource Podręcznik publikowania
+# <a name="azure-marketplace-and-appsource-publishing-guide"></a>Podręcznik publikowania w witrynie Azure Marketplace i AppSource
 
-Podręcznik publikowania w portalu Marketplace ułatwia nowych i istniejących wydawców Dowiedz się, jak używać sklepów w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com) i [Microsoft AppSource](https://appsource.microsoft.com) rozwijania działalności w ramach partnerstwa z firmą Microsoft, wyświetlając listę aplikacji i usług.
+Przewodnik publikowania w witrynie Marketplace został zaprojektowany z założeniami, aby pomóc nowym i istniejącym wydawcom dowiedzieć się, jak korzystać z [sklepów w witrynie Azure Marketplace](https://azuremarketplace.microsoft.com) , a [Microsoft AppSource](https://appsource.microsoft.com) rozwijać swoją firmę w partnerstwie z firmą Microsoft, wymieniając aplikacje i Services.
 
 >[!Note]
->Marketplace, w której odnosi się do portalu Azure Marketplace i AppSource.  Zobacz [Marketplace jednego, dwóch witryn sklepów](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace) Aby uzyskać więcej informacji.
+>Witryna Marketplace dotyczy zarówno platformy Azure Marketplace, jak i AppSource.  Aby uzyskać więcej informacji [, zobacz jeden z rynków Marketplace](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace) .
 
 Ten przewodnik obejmuje następujące tematy: 
-*   Co to jest Portal Marketplace i jak to działa 
-*   Różnica między sklepów w portalu Azure Marketplace i AppSource 
-*   Korzyści z uczestnictwa w portalu Marketplace 
-*   Jak zostać wydawcą i wyświetlanie listy aplikacji lub usługi 
-*   Jak Rozwijaj działalność 
+*   Co to jest portal Marketplace i jak to działa 
+*   Różnica między sklepami Azure Marketplace i AppSourceymi 
+*   Korzyści wynikające z uczestnictwa w portalu Marketplace 
+*   Jak zostać wydawcą i wystawić swoją aplikację lub usługę 
+*   Jak rozwijać swoją firmę 
 
-Ten przewodnik zawiera techniczne i biznesowe informacje o krokach, które należy wykonać przed listy aplikacji i usług. Użyj spisu treści, aby przejść do różnych sekcji przewodnika i przejść bezpośrednio do kluczowe tematy.
+Ten przewodnik zawiera informacje techniczne i biznesowe dotyczące czynności, które należy wykonać przed wyświetleniem listy aplikacji i usług. Za pomocą spisu treści przejdź do różnych sekcji przewodnika i przejdź bezpośrednio do najważniejszych tematów.
 
-Masz pytania dotyczące portalu Azure Marketplace i AppSource, Wyślij do nas wiadomość, w obszarze **typ problemu** > **przechodzenia do portalu Marketplace**.  Nasz zespół ds. dołączania wydawcy witryny Marketplace będą chętnie Ci pomożemy! 
+Pytania dotyczące portalu Azure Marketplace i usługi AppSource umożliwiają wysyłanie wiadomości w obszarze **Typ** > problemu.  Nasz zespół ds. dołączania do portalu Marketplace będzie zadowolony z pomocy! 
 
-## <a name="benefits-of-participating-in-the-marketplace"></a>Korzyści z uczestnictwa w portalu Marketplace 
+## <a name="benefits-of-participating-in-the-marketplace"></a>Korzyści wynikające z uczestnictwa w portalu Marketplace 
 
-Portal Marketplace jest punktem startowym dla wspólnych działań go-to-market z firmą Microsoft, które mogą pomóc przyspieszyć rozwój Twojej firmy. Za pomocą promocji uruchamiania, generowania popytu i wspólne sprzedaży i marketingu, oferty w witrynie Marketplace mogą być centralnym punktem silnika firm chmury. Nie ma żadnych opłat za uczestnictwa w portalu Marketplace.
+Portal Marketplace to konsola uruchamiania dla wspólnych działań związanych z przejściem do rynku z firmą Microsoft, która może przyspieszyć rozwój Twojej firmy. Dzięki użyciu promocji uruchamiania, generacji popytu i wspólnych sprzedaży i marketingu oferty rynkowe mogą być filareme w chmurze biznesowej. Nie ma opłat za uczestnictwo w portalu Marketplace.
 
-Naszym celem jest łączenie klientów firmy Microsoft z najlepszymi rozwiązaniami, które są oferowane przez nasz ekosystem partnerów. Aby to zrobić, obsługujemy możesz w całym przygodę z dołączania do publikowania i wzrost. 
+Naszym celem jest połączenie klientów firmy Microsoft z najlepszymi rozwiązaniami oferowanymi przez naszych partnerów partnerskich. W tym celu firma Microsoft wspiera Twoją drogę, od dołączenia do publikowania i wzrostu. 
 
-Wykorzystaj możliwości znajdują się w portalu Marketplace w celu Rozwijaj swoją firmę.
+Skorzystaj z możliwości dostępnych w portalu Marketplace, aby rozwijać swoją firmę.
 
-### <a name="expand-to-new-markets-and-segments-and-generate-new-sales-opportunities"></a>Rozwiń do nowych rynków i segmentów i generowanie nowych szans sprzedaży
+### <a name="expand-to-new-markets-and-segments-and-generate-new-sales-opportunities"></a>Rozwijaj do nowych rynków i segmentów i Generuj nowe szanse sprzedaży
 
-Użyj portalu Marketplace jako kanał dostępu do nowych rynków, segmenty i użytkownicy w chmurze firmy Microsoft z portfolio rozwiązań. Generowanie nowych marketing potencjalnych klientów i zaspakajanie potrzeb istniejących nowych potencjalnych klientów do szans sprzedaży. Korzystać ze wspólnych sprzedaży i marketingu działań, uzyskanie większej liczby klientów.
+Skorzystaj z portalu Marketplace jako kanału, aby uzyskać dostęp do nowych rynków, segmentów i użytkowników chmury firmy Microsoft w portfelu rozwiązań. Generuj nowe potencjalni klienci marketingowi i informacyjna nowe potencjalni klienci do sprzedaży. Skorzystaj z wspólnych działań marketingowych i sprzedaży, aby uzyskać więcej klientów.
 
-### <a name="enhance-business-value-and-increase-deal-size-with-existing-and-new-customers"></a>Zwiększ wartość biznesową i Zwiększaj rozmiar umów z istniejących i nowych klientów 
+### <a name="enhance-business-value-and-increase-deal-size-with-existing-and-new-customers"></a>Zwiększaj wartość biznesową i zwiększaj wielkość transakcji, korzystając z istniejących i nowych klientów 
 
-Oferować zakupu takich produktów i sprzedaży rozwiązań, odnoszący się problemy klientów po przeniesieniu obciążeń do chmury. Sprzedaj lub wdrażania w portalu Marketplace, można zmniejszyć cykle sprzedaży, Przyspiesz projekty i zwiększyć zyskowność ofertę sprzedając kompletnych rozwiązań w tej branży scenariuszy i docelowy konkretnych obciążeń. 
+Sprzedawaj swoje rozwiązania i sprzedawaj je na wiele użytkowników, umożliwiając rozwiązywanie problemów z klientami po przeniesieniu obciążeń do chmury. Jeśli sprzedajesz lub wdrażasz za pomocą portalu Marketplace, możesz zmniejszyć liczbę cykli sprzedaży, przyspieszyć projekty i zwiększyć zyskowność transakcji, oferując kompletne rozwiązania przeznaczone dla konkretnych obciążeń i scenariuszy branżowych. 
 
 ### <a name="get-actionable-insights"></a>Uzyskuj szczegółowe informacje z możliwością działania 
 
-Uzyskuj szczegółowe informacje dotyczące wydajności swojej oferty za pośrednictwem informacji i analiz, które będą dostępne w portalu Marketplace. Uzyskaj więcej informacji na temat wydajność kampanii, zamówień i wypłaty oraz sposób zmaksymalizowania działań marketingowych dla Twojego rozwiązania.
+Uzyskaj wgląd w wydajność swoich aukcji za pomocą szczegółowych informacji i analiz dostępnych w portalu Marketplace. Uzyskaj więcej informacji na temat wydajności kampanii, zamówień i wypłat oraz sposobu maksymalizowania działań kampanii związanych z rozwiązaniem.
 
-### <a name="marketplace-go-to-market-benefits"></a>Korzyści go-to-market portalu Marketplace 
+### <a name="commercial-marketplace-benefits"></a>Komercyjne korzyści z witryny Marketplace 
 
-Dla nowych ofert w portalu Marketplace kwalifikują się do zestaw bezpłatnych korzyści, w celu ułatwiania partnerom Rozwijaj swoją działalność w portalu Marketplace. Te korzyści można podzielić na następujące kategorie: 
+Nowe aukcje w portalu Marketplace kwalifikują się do korzystania z różnorodnych bezpłatnych korzyści, aby pomóc partnerom rozwijać swoją firmę w portalu Marketplace. Te korzyści są następujące: 
 
-*   Technical Preview: Wszystko, czego potrzebujesz do przygotowania aplikacji do uruchomienia. Pomoc techniczna, projekt aplikacji i projektowania architektury, aby kredytów systemu Azure na potrzeby opracowywania i testowania. 
+*   Naukow Wszystko, czego potrzebujesz, aby przygotować aplikację do uruchomienia. Od pomocy technicznej, projektowania aplikacji i projektu architektury, do środków na korzystanie z platformy Azure na potrzeby tworzenia i testowania. 
 
-*   W zakresie współpracy marketingowej: Wszystko, czego potrzebujesz do uruchomienia oferty. Dostęp do bezpłatnych Microsoft Go-To-Market Uruchom Fundamentals ułatwiające Uruchom i wypromuj swoje rozwiązanie. Można również możliwość skorzystania z dodatkowych włączenia kampanii marketingowych firmy Microsoft i możliwości, aby była polecana w portalu Marketplace.
+*   Współmarketing: Wszystko, czego potrzebujesz do uruchomienia oferty. Uzyskaj dostęp do bezpłatnych podstaw uruchamiania Microsoft go-to-Market w celu ułatwienia uruchamiania i promowania rozwiązania. Możesz również kwalifikować się do dołączenia do dodatkowych kampanii marketingowych firmy Microsoft i możliwości ich promowania w portalu Marketplace.
 
-*   Prowadzenie sprzedaży: Rozpoczyna się lub Skróć swoją drogę do sprzedaży w firmie Microsoft za pośrednictwem portalu Marketplace. Dostęp do programów i obsługę dysków połączonych zasobów sprzedaży z usługą Microsoft teams.
+*   Sprzedawanie: Zacznij lub Przyspiesz swoją podróż, aby sprzedawać w firmie Microsoft w portalu Marketplace. Uzyskiwanie dostępu do programów i pomocy technicznej w celu zapewnienia wspólnego sprzedaży za pomocą zespołów Microsoft Teams.
 
-Po zakończeniu [Prześlij swoje rozwiązanie](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) w portalu Marketplace, nasz zespół organizujący dołączanie skontaktuje się z obsługę środowisko publikowania.  Zobacz [sposób tworzenia konta w Centrum partnerskim](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) Aby uzyskać więcej informacji.
+Po [przesłaniu rozwiązania](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) do portalu Marketplace nasz zespół ds. dołączania skontaktuje się z pomocą techniczną, aby obsłużyć proces publikowania.  Aby uzyskać więcej informacji [, zobacz jak utworzyć konto Centrum partnerskiego](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) .
 
-Aby uzyskać więcej informacji na temat korzyści Microsoft Go-To-Market i sposobów rozwoju swojej działalności na rynku, zobacz [usług Microsoft Go-To-Market Services](https://partner.microsoft.com/reach-customers/gtm).
+Dowiedz się więcej o [korzyściach z używania komercyjnego portalu Marketplace](https://docs.microsoft.com//azure/marketplace/gtm-your-marketplace-benefits).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Przejrzyj szczegółowe informacje na temat zagadnień związanych z chmurą marketplace za pośrednictwem spisu treści po lewej stronie. 
+Przejrzyj szczegółowe informacje na temat tematów dotyczących portalu Marketplace, przeglądając Spis treści po lewej stronie. 

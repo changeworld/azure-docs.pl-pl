@@ -8,17 +8,17 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
-ms.date: 07/26/2019
-ms.openlocfilehash: df43b52514eebc3216dbec01cff0d8a3b14e7940
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.date: 08/01/2019
+ms.openlocfilehash: 8e2e9d30fa24e56711a0d6800a8ca9a34e53c12e
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517659"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967225"
 ---
 # <a name="add-artifacts-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Dodaj artefakty do środowiska usługi integracji (ISE) w Azure Logic Apps
 
-Po utworzeniu [środowiska usługi integracji (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Dodaj artefakty, takie jak aplikacje logiki, konta integracji i łączniki niestandardowe, aby mogły uzyskiwać dostęp do zasobów w sieci wirtualnej platformy Azure.
+Po utworzeniu [środowiska usługi integracji (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Dodaj artefakty, takie jak aplikacje logiki, konta integracji i łączniki, aby mogły uzyskiwać dostęp do zasobów w sieci wirtualnej platformy Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -28,7 +28,7 @@ Po utworzeniu [środowiska usługi integracji (ISE)](../logic-apps/connect-virtu
 
 <a name="create-logic-apps-environment"></a>
 
-## <a name="create-logic-apps-in-an-ise"></a>Tworzenie aplikacji logiki w ISE
+## <a name="create-logic-apps"></a>Tworzenie aplikacji logiki
 
 Aby skompilować Aplikacje logiki, które działają w środowisku usługi integracji (ISE), wykonaj następujące kroki:
 
@@ -57,7 +57,7 @@ Aby skompilować Aplikacje logiki, które działają w środowisku usługi integ
 
 <a name="create-integration-account-environment"></a>
 
-## <a name="create-integration-accounts-in-an-ise"></a>Tworzenie kont integracji w ISE
+## <a name="create-integration-accounts"></a>Tworzenie kont integracji
 
 W oparciu o [ISEą jednostkę SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) wybraną podczas tworzenia ISE obejmuje specyficzne użycie konta integracji bez dodatkowych kosztów. Aplikacje logiki, które istnieją w środowisku usługi integracji (ISE), mogą odwoływać się tylko do kont integracji, które istnieją w tym samym ISE. Aby konto integracji działało z usługą Logic Apps w ISE, zarówno konto integracji, jak i Aplikacje logiki muszą używać tego *samego środowiska* , co ich lokalizacja. Aby uzyskać więcej informacji na temat kont integracji i ISEs [, zobacz konta integracji](connect-virtual-network-vnet-isolated-environment-overview.md#create-integration-account-environment
 )z ISE.
@@ -84,9 +84,25 @@ Aby utworzyć konto integracji korzystające z ISE, wykonaj następujące kroki:
 
 1. Aby zarządzać kontami integracji w ISE, zobacz [Zarządzanie środowiskiem usługi integracji](../logic-apps/ise-manage-integration-service-environment.md).
 
+<a name="add-ise-connectors-environment"></a>
+
+## <a name="add-ise-connectors"></a>Dodawanie łączników ISE
+
+Możesz dodać łączniki zarządzane przez firmę Microsoft, które są dostępne do użycia w ISE, ale nie są wdrożone w ISE.
+
+1. W menu ISE w obszarze **Ustawienia**wybierz pozycję **Łączniki zarządzane**. Na pasku narzędzi wybierz pozycję **Dodaj**.
+
+   ![Wyświetlanie łączników zarządzanych](./media/add-artifacts-integration-service-environment-ise/ise-view-managed-connectors.png)
+
+1. W okienku **Dodaj nowe łączniki zarządzane** Otwórz listę **Znajdź łącznik** . Jeśli potrzebny łącznik jest dostępny, wybierz ten łącznik, a następnie wybierz pozycję **Utwórz**.
+
+   Na liście są wyświetlane tylko te łączniki, które są uprawnione, ale nie są wdrażane w ISE. Łączniki, które są już wdrożone w ISE, są niedostępne do wyboru.
+
+   ![Wybierz kwalifikujący się łącznik](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
+
 <a name="create-custom-connectors-environment"></a>
 
-## <a name="create-custom-connectors-in-an-ise"></a>Tworzenie łączników niestandardowych w ISE
+## <a name="create-custom-connectors"></a>Tworzenie łączników niestandardowych
 
 Aby używać łączników niestandardowych w ISE, Utwórz te łączniki niestandardowe bezpośrednio wewnątrz ISE.
 
@@ -108,6 +124,6 @@ Aby używać łączników niestandardowych w ISE, Utwórz te łączniki niestand
 
 1. Aby zarządzać łącznikami niestandardowymi w ISE, zobacz [Zarządzanie środowiskiem usługi integracji](../logic-apps/ise-manage-integration-service-environment.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Zarządzaj środowiskami usługi integracji](../logic-apps/ise-manage-integration-service-environment.md)

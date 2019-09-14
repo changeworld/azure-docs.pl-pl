@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 09/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 28ec42f1634e0546d75f81ed76b1ecbac51f6c3f
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: a2b467eed010edbb842d536bd8f6e3f4107fcea8
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277611"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984361"
 ---
 # <a name="manage-qna-maker-resources"></a>Zarządzanie zasobami QnA Maker
 
@@ -87,6 +87,8 @@ Klucze subskrypcji można wyświetlić i zresetować z poziomu Azure Portal, w k
 
 ## <a name="find-endpoint-keys-in-the-qna-maker-portal"></a>Znajdź klucze punktów końcowych w portalu QnA Maker
 
+Punkt końcowy znajduje się w tym samym regionie, w którym znajduje się zasób, ponieważ klucze punktów końcowych są używane do wywołania bazy wiedzy.
+
 Klucze punkt końcowy, można zarządzać przy użyciu [portalu narzędzia QnA Maker](https://qnamaker.ai).
 
 1. Zaloguj się do [portalu QNA Maker](https://qnamaker.ai), przejdź do swojego profilu, a następnie wybierz pozycję **Ustawienia usługi**:
@@ -111,6 +113,8 @@ QnA Maker tworzy kilka zasobów platformy Azure. Aby ograniczyć zarządzanie i 
 |App Service|X|Niemożliwa przez projekt|
 |Application Insights|✔|Mogą być udostępniane|
 |Usługa wyszukiwania|✔|1. `testkb` jest zarezerwowaną nazwą usługi QnAMaker. nie może być używana przez inne osoby.<br>2. Mapa synonimów o nazwie `synonym-map` jest zarezerwowana dla usługi QnAMaker.<br>3. Liczba opublikowanych baz wiedzy jest ograniczona przez warstwę usługi wyszukiwania. Jeśli dostępne są wolne indeksy, można z nich korzystać inne usługi.|
+
+Dowiedz się więcej na temat [usługi App Service](../../../app-service/index.yml) i [usługi wyszukiwania](../../../search/index.yml).
 
 ### <a name="using-a-single-search-service"></a>Korzystanie z pojedynczej usługi wyszukiwania
 
@@ -202,6 +206,8 @@ Bieżącą wersję można sprawdzić pod adresem https://www.qnamaker.ai/UserSet
 Usługa zarządzania QnA Maker jest używana tylko dla portalu QnA Maker i do wstępnego przetwarzania danych. Ta usługa jest dostępna tylko w regionie zachodnie stany USA. W tym regionie zachodnie stany USA nie są przechowywane żadne dane klienta.
 
 ## <a name="next-steps"></a>Następne kroki
+
+Dowiedz się więcej na temat [usługi App Service](../../../app-service/index.yml) i [usługi wyszukiwania](../../../search/index.yml).
 
 > [!div class="nextstepaction"]
 > [Tworzenie i publikowanie bazy wiedzy](../Quickstarts/create-publish-knowledge-base.md)

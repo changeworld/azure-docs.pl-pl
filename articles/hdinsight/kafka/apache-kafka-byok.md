@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: f619a0179849e2ca17a0528d97ef13f0788a4838
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 09cca0eda9a82b1605323678d7442700dc1a2292
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811544"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960484"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Przenoszenie własnego klucza do Apache Kafka w usłudze Azure HDInsight
 
@@ -58,7 +58,7 @@ Aby utworzyć klaster Kafka z obsługą BYOK, wykonaj następujące czynności:
 
         b. Ustaw **Opcje** w celu **wygenerowania** klucza i nadaj mu nazwę.
 
-        ![Generuj nazwę klucza](./media/apache-kafka-byok/kafka-create-a-key.png "Generuj nazwę klucza")
+        ![Generuj nazwę klucza](./media/apache-kafka-byok/apache-kafka-create-key.png "Generuj nazwę klucza")
 
         c. Wybierz utworzony klucz z listy kluczy.
 
@@ -103,7 +103,7 @@ Aby utworzyć klaster Kafka z obsługą BYOK, wykonaj następujące czynności:
 
    Aby obrócić klucz, musisz mieć pełny adres URL nowego klucza (zobacz krok 3 [instalacji Key Vault i kluczy](#setup-the-key-vault-and-keys)). Po wykonaniu tej opcji przejdź do sekcji Właściwości klastra Kafka w portalu, a następnie kliknij pozycję **Zmień klucz** w obszarze **adres URL klucza szyfrowania dysku**. Wprowadź adres URL nowego klucza i prześlij go, aby obrócić klucz.
 
-   ![Kafka Obróć klucz szyfrowania dysku](./media/apache-kafka-byok/kafka-change-key.png)
+   ![Kafka Obróć klucz szyfrowania dysku](./media/apache-kafka-byok/apache-kafka-change-key.png)
 
 ## <a name="faq-for-byok-to-apache-kafka"></a>Często zadawane pytania dotyczące BYOK do Apache Kafka
 

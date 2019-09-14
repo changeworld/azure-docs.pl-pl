@@ -8,97 +8,97 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 4b75b2cbd629204e7edbf1196eec9b03cb7a6736
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a6b2a7981452b47a3992b6c0efee286878e143fb
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943153"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962897"
 ---
 <a name="web-analytics"></a>Analiza sieci Web
 =============
 
-Ten artykuł zawiera o instrukcje do nauczenia i używania funkcji Web Analytics, aby jak najlepiej Rozwijaj swoją działalność. Obecnie na tej karcie Insights jest dostępna dla dowolnej oferty usługi AppSource.
+Ten artykuł zawiera instrukcje dotyczące uczenia się i używania analizy sieci Web w celu najlepszego rozwoju firmy. Obecnie ta karta Insights jest dostępna dla dowolnych ofert AppSource.
 
-Skoro już skompilowane i opublikowane oferty, następnej części swoją podróż po jest śledzenie i mierzyć jej\' sukces. Za pomocą **funkcji Web Analytics**, dodaliśmy możliwość wyświetlania, dokładnie tak jak robi wszystkich Twoich ofert w portalu marketplace. Aby rozpocząć ten proces, przejdź do strony szczegółowych informacji po lewej stronie portalu Cloud Partner, aby zobaczyć nową kartę analizy.
+Po skompilowaniu i opublikowaniu oferty następnym etapem podróży jest śledzenie i mierzenie jego\' sukcesu. Dzięki funkcji **Web Analytics**mogliśmy dowiedzieć się, jak dobrze każda z ofert działa w portalu Marketplace. Aby rozpocząć podróż, przejdź do strony usługi Insights po lewej stronie portal Cloud Partner, aby wyświetlić kartę nowe analizy.
 
-![Strona WebAnalytics](./media/si-getting-started/WebAnalytics1.png)
+![Strona usługi Webanalytics](./media/si-getting-started/WebAnalytics1.png)
 
-Zobaczysz rozbudowany pulpit nawigacyjny dla Twojego Identyfikatora wydawcy, została opracowana za pomocą usługi Microsoft Power BI, która umożliwia wyświetlenie wszystkich Twoich ofert\' danych, który jest ustawiony na codzienne odświeżanie.
+Zostanie wyświetlony rozbudowany pulpit nawigacyjny dla identyfikatora wydawcy, który został utworzony za pomocą firmy Microsoft Power BI i będzie można zobaczyć wszystkie dane\' z ofert, które są odświeżane codziennie.
 
-<a name="microsoft-campaigns"></a>**Microsoft Campaigns**
+<a name="microsoft-campaigns"></a>**Kampanie firmy Microsoft**
 -----------------------
 
-Rozwijaj swoje oferty i śledzić wzrostem Twoich ofert, w celu udostępniliśmy możliwość używania **kampanie firmy Microsoft** w portalu Cloud Partner. Kampanie są funkcją nowo obsługiwanych dla portalu marketplace, która umożliwi służących do śledzenia różnych kanałów, które wysyłają klientów na stronie szczegółów aplikacji.
+Aby można było rozwijać oferty i śledzić rozwój ofert, umożliwia korzystanie z **kampanii firmy Microsoft** na portal Cloud partner. Kampanie to nowo obsługiwana funkcja portalu Marketplace, która umożliwi śledzenie różnych kanałów wysyłających klientów do strony szczegółów aplikacji.
 
 ### <a name="how-to-make-a-campaign"></a>**Jak utworzyć kampanię**
 
-Najprostszym sposobem opisują kampanii jest dodajesz niestandardowe słowo/termin do adresu URL, umieszczać swoje dokumenty na stronie szczegółów aplikacji w portalu marketplace. Google, Bing, LinkedIn i wiele innych witryn zachęcamy do tworzenia anonsu, połączyć się z ich witryny w żądanej witryny.
+Najprostszym sposobem opisywania kampanii jest dodanie niestandardowego słowa/terminu do adresu URL, który znajduje się na stronie szczegółów aplikacji w portalu Marketplace. Usługi Google, Bing, LinkedIn i wiele innych lokacji zachęcają do utworzenia anonsu, linku z witryny do żądanej lokacji.
 
-Ogólnie rzecz biorąc tych działań, które mają pomóc klientom nowego dysku w produkcie i jest niezbędne do oceny sukcesu sposobu działania wszystkich kanałów. Jest to, gdzie są dostępne w kampanii.
+Ogólnie rzecz biorąc, te wysiłki mają na celu ułatwienie klientom nowych klientów i istotne jest zmierzenie sukcesu wykonywanych przez poszczególne kanały. Tutaj są dostępne kampanie.
 
 Istnieją dwa sposoby generowania własnych kampanii.
 
-1. Dodaj do adresu URL parametru zapytania **mktcmpid** opisujący, co to jest kampanii i strony lub zdarzenia tych klientów pochodzą.
+1. Dodaj do adresu URL parametr zapytania **mktcmpid** , który opisuje, co to jest kampania oraz na jakie dane/wydarzenie pochodzą od tych klientów.
 
-Na przykład można użyć: <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign>
+Na przykład można użyć:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign>
 
-1. (Zaawansowane): Użyj jednej z naszych obsługiwana i ogólny kampanii identyfikatorów w adresie URL. Chcemy być ograniczanych znacznikami ref dodatkowe, które należy użyć, aby firma Microsoft obsługuje Konwencji automatycznie rozpoznaje te dodatkowe tagi:
+1. (Zaawansowane): Użyj jednego z naszych obsługiwanych, ogólnych identyfikatorów kampanii w adresie URL. Chcemy, aby dodaliśmy do nich dodatkowe Tagi ref, które należy użyć, dlatego firma Microsoft obsługuje Konwencję, aby automatycznie rozpoznawać te dodatkowe Tagi:
     
-    1. **utm\_campaign**
-    2. **utm\_źródła**
-    3. **REF**
-    4. **src**
+    1. **Kampania UTM\_**
+    2. **Źródło\_UTM**
+    3. **umieszczone**
+    4. **SRC**
 
-Na przykład można użyć: <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=NewCampaign>
+Na przykład można użyć:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=NewCampaign>
 
-Użytkownik może być kombinacją wielu z tych identyfikatorów kampanii do dalszego identyfikowania wielu źródeł kierowania ruchu dla kampanii, takich jak klient pochodzenia (wiadomości e-mail, blogów, źródła mediów społecznościowych itp.).
+Możesz wybrać kombinację wielu tych identyfikatorów kampanii, aby dodatkowo identyfikować wiele źródeł, które będą napędzać daną kampanię, taką jak miejsce, z którego pochodzi klient (poczta e-mail, blog, Źródło mediów społecznościowych itp.).
 
-Na przykład:
+Przykład:
 
-1. Biuletyn — odwołania:  <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=newsletter>
-2. LinkedIn odwołania:  <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=LinkedIn>
+1. Odwołujący biuletyn:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=newsletter>
+2. Odwołujący serwis LinkedIn:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=LinkedIn>
 
-### <a name="ensuring-campaigns-pass-through-all-your-pages"></a>**Zapewnianie kampanii przekazywania wszystkich stron**
+### <a name="ensuring-campaigns-pass-through-all-your-pages"></a>**Zapewnienie, że kampanie przechodzą przez wszystkie strony**
 
-Może wystąpić scenariusz, w których kampanii mają strona pośrednia które napędzają ruchu, następnie przechodzi do wysyłania klientów w portalu Marketplace. Jest ważne dopuszczone początkowej kampanię z użyciem identyfikatorów do końcowego adresu URL, wysyłanych do portalu marketplace.
+Może istnieć scenariusz, w którym kampanie zawierają pośrednią stronę, do której prowadzi ruch, a następnie wysyła klientów do portalu Marketplace. Ważne jest, aby przekazać początkowe identyfikatory kampanii do końcowego adresu URL, który został wysłany do portalu Marketplace.
 
 Oto przykład:
 
-1. Pracownik Marketing kupuje reklam od firmy Google do dysku ruchu do firmy\'strona docelowa s <https://contoso.com>. Ta strona docelowa będzie mieć \"spróbuj dany produkt\" łącze prowadzące do <https://appsource.com>.
-2. Użytkownik klika ad i wyładowuje na jego firma\'strona docelowa s.
-    1.  Adres odwołania URL = google.com
-    2.  Adres URL strony = <https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
-3. Użytkownik klika polecenie \"spróbuj dany produkt\" połączyć, a następnie przechodzi do usługi AppSource.
-    1. Adres odwołania URL =  <https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
-    2. Adres URL strony (**upewnij się, że ten adres URL ma utm\_kampanii i utm\_źródło dodane do tego adresu URL**) = [ https://appsource.microsoft.com/en-us/product/dynamics-365/contoso.offername? **utm\_ kampanii = MyCampaignAdName & utm\_ źródła = MySourceAdName**](https://appsource.microsoft.com/en-us/product/dynamics-365/contoso.offername?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName)
+1. Pracownicy działu marketingu kupowają reklamy od firmy\'Google w celu kierowania ruchu do strony <https://contoso.com>docelowej. Ta strona docelowa \"zawiera link Wypróbuj\" produkt, do <https://appsource.com>którego się odnosi.
+2. Użytkownik klika pozycję AD i grunty na stronie docelowej firmy\'.
+    1.  Adres URL odwołania = google.com
+    2.  Adres URL strony docelowej =<https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
+3. Użytkownik klika \"link Wypróbuj produkt\" i przechodzi do AppSource.
+    1. Adres URL odwołania =<https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
+    2. Adres URL strony docelowej (**upewnij się, że ten\_adres URL ma\_UTM kampanię i źródło UTM dodane do tego adresu URL**) = [ https://appsource.microsoft.com/product/dynamics-365/contoso.offername? **UTM\_ kampania = MyCampaignAdName & UTM\_ Source = MySourceAdName** ](https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName)
 
-<a name="how-to-evaluate-the-success-of-a-campaign"></a>Jak ocenić Powodzenie kampanii
+<a name="how-to-evaluate-the-success-of-a-campaign"></a>Jak oszacować sukces kampanii
 -----------------------------------------
 
-### <a name="page-visits-by-campaign"></a>**Strona wizyty według kampanii**
+### <a name="page-visits-by-campaign"></a>**Odwiedziny stron według kampanii**
 
 ![WebAnalytics2](./media/si-getting-started/WebAnalytics2.png)
 
-Jest to podział każdego swoje codzienne odwiedzin strony przez kampanii, które pochodzą z.
+Jest to podział poszczególnych codziennych odwiedzin stron przez kampanię, z której pochodzą.
 
 ### <a name="conversion-rate-by-campaign"></a>**Współczynnik konwersji według kampanii**
 
 ![WebAnalytics3](./media/si-getting-started/WebAnalytics3.png)
 
-Podobnie jak pokazujemy współczynnik konwersji całej oferty, na tym wykresie można zobaczyć podział jak robią różnych kampanii. Ten wykres pomoże zidentyfikować, skąd pochodzą kampanii wyższe szybkości konwersji.
+Podobnie jak pokazujemy stopień konwersji całej oferty, na tym wykresie można zobaczyć, jak działają różne kampanie. Ten wykres powinien pomóc w ustaleniu, gdzie pochodzą z wyższego stopnia konwersji.
 
-### <a name="distribution-by-campaign"></a>**Rozkład według kampanii**
+### <a name="distribution-by-campaign"></a>**Dystrybucja według kampanii**
 
 ![WebAnalytics4](./media/si-getting-started/WebAnalytics4.png)
 
-Podobnie jak przyjrzymy się domen klientów, ten wykres umożliwia zobaczyć rozkład danych na kampanię, który użytkownicy będą dostępne w portalu Marketplace, w obszarze. \_NoCampaign oznacza, że klient nie miał identyfikator kampanii w adresie url po ich przejście do portalu marketplace.
+Podobnie jak w przypadku domen klientów, ten wykres umożliwia wyświetlenie dystrybucji danych na kampanię, do której użytkownicy znajdują się w portalu Marketplace. \_Nokampania oznacza, że klient nie miał identyfikatora kampanii w adresie URL podczas przechodzenia do portalu Marketplace.
 
 <a name="next-steps"></a>**Następne kroki**
 --------------
 
-Teraz, gdy masz możliwość śledzenia sukces swojej oferty, chcemy zachęcamy do tworzenia własnych kampanii.
+Teraz, gdy masz możliwość śledzenia sukcesu ofert, chcemy zachęcić Cię do tworzenia własnych kampanii.
 
-Jeśli masz pytania/funkcja żądań, udostępniać je za pomocą informacji zwrotnych dotyczących znajduje się w prawym górnym rogu.
+Jeśli masz pytania/żądania funkcji, Podziel je za pośrednictwem opinii znajdującej się w prawym górnym rogu.
 
-![Opinie w portalu Cloud Partner](./media/si-getting-started/WebAnalytics5.png)
+![Opinie w portal Cloud Partner](./media/si-getting-started/WebAnalytics5.png)

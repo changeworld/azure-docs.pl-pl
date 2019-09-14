@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: pabutler
-ms.openlocfilehash: 98d33dd1aad726d4da8499006166dfd2c043378f
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 40170540458b7bc7ddb30f88117d472858937e8c
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68977151"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962932"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Udział partnera w zakresie użycia platformy Azure przez klienta
 
@@ -247,7 +247,7 @@ foreach ($deployment in $deployments){
 
 ## <a name="report"></a>Raport
 
-Raport dotyczący przypisywania użycia klientów można znaleźć na pulpicie nawigacyjnym Centrum partnerskiego. ([https://partner.microsoft.com/en-us/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)). Aby wyświetlić raport, należy zalogować się przy użyciu poświadczeń Centrum partnerskiego. Jeśli wystąpią problemy z raportem lub zalogowaniem, Utwórz żądanie pomocy technicznej zgodnie z instrukcjami w sekcji Uzyskiwanie pomocy technicznej.
+Raport dotyczący przypisywania użycia klientów można znaleźć na pulpicie nawigacyjnym Centrum partnerskiego. ([https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)). Aby wyświetlić raport, należy zalogować się przy użyciu poświadczeń Centrum partnerskiego. Jeśli wystąpią problemy z raportem lub zalogowaniem, Utwórz żądanie pomocy technicznej zgodnie z instrukcjami w sekcji Uzyskiwanie pomocy technicznej.
 
 Wybierz pozycję śledzony szablon na liście rozwijanej Typ powiązania partnera, aby wyświetlić raport.
 
@@ -269,7 +269,7 @@ Po wdrożeniu \<oprogramowania partnerskiego > Firma Microsoft może zidentyfiko
 
 Istnieją dwa kanały pomocy technicznej w zależności od występujących problemów.
 
-W przypadku wystąpienia jakichkolwiek problemów w centrum partnerskim, takich jak wyświetlanie raportu dotyczącego użycia klienta lub logowanie, Utwórz żądanie pomocy technicznej z zespołem pomocy technicznej Centrum partnerskiego tutaj:[https://partner.microsoft.com/en-US/support](https://partner.microsoft.com/support)
+W przypadku wystąpienia jakichkolwiek problemów w centrum partnerskim, takich jak wyświetlanie raportu dotyczącego użycia klienta lub logowanie, Utwórz żądanie pomocy technicznej z zespołem pomocy technicznej Centrum partnerskiego tutaj:[https://partner.microsoft.com/support](https://partner.microsoft.com/support)
 
 ![](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
 

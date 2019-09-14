@@ -17,12 +17,12 @@ ms.date: 07/29/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74b2d80d21822758991ad8b3bc1d3bb44e2257f4
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 3d48aa3ead28ab0b0a22478a0c4183995483058a
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129811"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983499"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Raporty dotyczące aprowizacji w portalu Azure Active Directory (wersja zapoznawcza)
 
@@ -30,7 +30,7 @@ Architektura raportowania w Azure Active Directory (Azure AD) składa się z nas
 
 - **Aktywność** 
     - **Logowania** — informacje na temat użycia zarządzanych aplikacji i działań związanych z logowaniem użytkowników.
-    - Dzienniki inspekcji dzienników inspekcji zapewniają informacje o aktywności systemu dotyczące zarządzania użytkownikami i grupami, zarządzane aplikacje i działania w katalogu.[](concept-audit-logs.md)  - 
+    - **Dzienniki inspekcji dzienników**inspekcji zapewniają informacje o aktywności systemu dotyczące zarządzania użytkownikami i grupami, zarządzane aplikacje i działania w katalogu.[](concept-audit-logs.md)  - 
     - **Dzienniki aprowizacji** — zapewniają działania systemowe dotyczące użytkowników, grup i ról, które są obsługiwane przez usługę aprowizacji usługi Azure AD. 
 
 - **Zabezpieczenia** 
@@ -50,7 +50,7 @@ Ten temat zawiera omówienie raportu aprowizacji.
 
 Dzierżawca musi mieć skojarzoną licencję Azure AD — wersja Premium, aby wyświetlić raport dotyczący całej aktywności aprowizacji. Aby uaktualnić swoją wersję usługi Azure Active Directory, zobacz [Wprowadzenie do usługi Azure Active Directory w wersji Premium](../fundamentals/active-directory-get-started-premium.md). 
 
-## <a name="provisioning-logs"></a>Dzienniki aprowizacji
+## <a name="provisioning-logs"></a>Dzienniki aprowizowania
 
 Dzienniki aprowizacji zapewniają odpowiedzi na następujące pytania:
 
@@ -85,7 +85,7 @@ Dzięki temu możesz wyświetlić dodatkowe pola lub usunąć pola, które są j
 
 Wybierz element w widoku listy, aby uzyskać bardziej szczegółowe informacje.
 
-![Szczegółowe informacje](./media/concept-provisioning-logs/detailed-information.png "Szczegółowe informacje")
+![Szczegółowe informacje](./media/concept-provisioning-logs/steps.png "Filtr")
 
 
 ## <a name="filter-provisioning-activities"></a>Filtrowanie działań aprowizacji

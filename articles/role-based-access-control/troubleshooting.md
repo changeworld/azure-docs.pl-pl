@@ -15,12 +15,12 @@ ms.date: 08/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: c3ca873cb4dd49d77ba818b3d05c3aa41e89276f
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: eb7c2cb4a20c89f3a54f23e354d56e5dc3711ef0
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982724"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967104"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Rozwiązywanie problemów z funkcją RBAC dla zasobów platformy Azure
 
@@ -70,7 +70,7 @@ ObjectType         : Unknown
 CanDelegate        : False
 ```
 
-Podobnie podczas wyświetlania listy przypisań ról przy użyciu interfejsu wiersza polecenia platformy Azure mogą być widoczne przydziały z pustą `principalName`. Na przykład [AZ role list](/cli/azure/role/assignment#az-role-assignment-list) przypisywanie zwraca przypisanie roli, które jest podobne do następujących:
+Podobnie podczas wyświetlania listy przypisań ról przy użyciu interfejsu wiersza polecenia platformy Azure mogą być widoczne przydziały z pustą `principalName`. Na przykład [AZ role list przypisywanie](/cli/azure/role/assignment#az-role-assignment-list) zwraca przypisanie roli, które jest podobne do następujących:
 
 ```azurecli
 {
@@ -182,6 +182,8 @@ Niektóre funkcje [Azure Functions](../azure-functions/functions-overview.md) wy
 Czytelnik może kliknąć kartę **funkcje platformy** , a następnie kliknąć pozycję **wszystkie ustawienia** , aby wyświetlić niektóre ustawienia związane z aplikacją funkcji (podobną do aplikacji sieci Web), ale nie mogą modyfikować żadnego z tych ustawień. Aby uzyskać dostęp do tych funkcji, będzie potrzebna rola [współautor](built-in-roles.md#contributor) .
 
 ## <a name="next-steps"></a>Następne kroki
-* [Zarządzanie dostępem do zasobów platformy Azure za pomocą kontroli dostępu opartej na rolach i witryny Azure Portal](role-assignments-portal.md)
-* [Wyświetlanie dzienników aktywności związanych ze zmianami RBAC w zasobach platformy Azure](change-history-report.md)
+
+- [Rozwiązywanie problemów z użytkownikami-Gośćmi](role-assignments-external-users.md#troubleshoot)
+- [Zarządzanie dostępem do zasobów platformy Azure za pomocą kontroli dostępu opartej na rolach i witryny Azure Portal](role-assignments-portal.md)
+- [Wyświetlanie dzienników aktywności związanych ze zmianami RBAC w zasobach platformy Azure](change-history-report.md)
 

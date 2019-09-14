@@ -3,20 +3,20 @@ title: Co to jest usługa tłumaczenia mowy w usłudze Translator?
 titleSuffix: Azure Cognitive Services
 description: Interfejs API tłumaczenia mowy w usłudze Translator umożliwia dodawanie do aplikacji tłumaczeń mowy na mowę i mowy na tekst.
 services: cognitive-services
-author: swmachan
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: overview
 ms.date: 3/5/2018
-ms.author: swmachan
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: ed425cd6545d85cdf3b2f76038b381a0f09045f9
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: eaa6e9a7e8e7edd4241594ad7c2188c3fb50295e
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449652"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966436"
 ---
 # <a name="what-is-translator-speech-api"></a>Co to jest interfejs API tłumaczenia mowy w usłudze Translator?
 
@@ -59,7 +59,7 @@ Listę obsługiwanych języków można znaleźć w witrynie [Microsoft.com](http
 
 Dowiedz się więcej o [sposobie działania technologii NMT](https://www.microsoft.com/en-us/translator/mt.aspx#nnt)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie konta](translator-speech-how-to-signup.md)

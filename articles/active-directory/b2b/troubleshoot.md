@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów z współpracy B2B — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Środki zaradcze dla typowych problemów przy użyciu funkcji współpracy B2B usługi Azure Active Directory
+title: Rozwiązywanie problemów ze współpracą B2B — Azure Active Directory | Microsoft Docs
+description: Rozwiązywanie typowych problemów związanych z Azure Active Directory współpracy B2B
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,86 +12,86 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4185d29ff1770ed9549b4b63a2e5da579bcf054f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f91ddee8668316df69c98ed14fbcabcb06b6da82
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65767154"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983397"
 ---
-# <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Rozwiązywanie problemów z współpracy B2B usługi Azure Active Directory
+# <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Rozwiązywanie problemów Azure Active Directory współpracy B2B
 
-Poniżej przedstawiono niektóre środki zaradcze dla typowych problemów przy użyciu funkcji współpracy B2B usługi Azure Active Directory (Azure AD).
+Poniżej przedstawiono niektóre zagadnienia dotyczące typowych problemów związanych z usługą współpracy między firmami Azure Active Directory (Azure AD).
 
-## <a name="ive-added-an-external-user-but-do-not-see-them-in-my-global-address-book-or-in-the-people-picker"></a>Czy mogę dodano użytkownika zewnętrznego, ale nie ma ich w książce adresowej globalne lub selektora osób
+## <a name="ive-added-an-external-user-but-do-not-see-them-in-my-global-address-book-or-in-the-people-picker"></a>Dodaliśmy użytkownika zewnętrznego, ale nie są one widoczne w mojej globalnej książce adresowej lub w selektorze osób
 
-W przypadkach, w którym użytkownicy zewnętrzni nie zostaną wypełnione na liście obiekt może potrwać kilka minut, aby replikować.
+W przypadku, gdy użytkownicy zewnętrzni nie są wypełnini na liście, replikacja może zająć kilka minut.
 
-## <a name="a-b2b-guest-user-is-not-showing-up-in-sharepoint-onlineonedrive-people-picker"></a>Użytkownik-Gość B2B nie są wyświetlane w Selektor osób programu SharePoint Online/OneDrive
+## <a name="a-b2b-guest-user-is-not-showing-up-in-sharepoint-onlineonedrive-people-picker"></a>Użytkownik gościa B2B nie jest wyświetlany w selektorze usługi SharePoint Online/OneDrive osoby
 
-Możliwość wyszukiwania dla istniejących użytkowników-gości w Selektor osób programu SharePoint Online (SPO) został WYŁĄCZONY, aby dopasować starsze zachowanie domyślnie.
+Możliwość wyszukiwania istniejących użytkowników-Gości w selektorze osób usługi SharePoint Online (SPO) jest domyślnie wyłączona, aby dopasować starsze zachowanie.
 
-Aby włączyć tę funkcję, należy za pomocą ustawienia "ShowPeoplePickerSuggestionsForGuestUsers" na poziomie kolekcji dzierżawy i witryny. Można ustawić funkcję przy użyciu Set-SPOTenant i SPOSite zestaw poleceń cmdlet, które pozwalają członkom wyszukiwanie wszystkich istniejących użytkowników-gości w katalogu. Zmiany w zakresie dzierżawy nie wpływają na już aprowizowanych witryn SPO.
+Tę funkcję można włączyć za pomocą ustawienia "ShowPeoplePickerSuggestionsForGuestUsers" na poziomie dzierżawy i kolekcji witryn. Funkcję można ustawić za pomocą poleceń cmdlet Set-SPOTenant i Set-SPOSite, które umożliwiają członkom przeszukiwanie wszystkich istniejących użytkowników-Gości w katalogu. Zmiany w zakresie dzierżawy nie mają wpływu na już inicjowane witryny SPO.
 
-## <a name="invitations-have-been-disabled-for-directory"></a>Zaproszeń zostały wyłączone dla katalogu
+## <a name="invitations-have-been-disabled-for-directory"></a>Zaproszenia zostały wyłączone dla katalogu
 
-Jeśli zostanie wyświetlone powiadomienie, że nie masz uprawnień do zapraszania użytkowników, należy sprawdzić, czy Twoje konto użytkownika jest autoryzowany do zapraszania użytkowników zewnętrznych w obszarze Ustawienia użytkownika:
+Jeśli otrzymasz powiadomienie, że nie masz uprawnień do zapraszania użytkowników, sprawdź, czy konto użytkownika jest autoryzowane do zapraszania użytkowników zewnętrznych w obszarze Azure Active Directory > Ustawienia użytkownika > użytkowników zewnętrznych > zarządzania ustawieniami współpracy zewnętrznej:
 
 ![Zrzut ekranu przedstawiający ustawienia użytkowników zewnętrznych](media/troubleshoot/external-user-settings.png)
 
-Jeśli zostały ostatnio zmodyfikowane tych ustawień lub przypisana rola osoba zapraszająca gości do użytkownika, może występować opóźnienie 15 – 60 minut aby zmiany zaczęły obowiązywać.
+Jeśli ostatnio zmodyfikowano te ustawienia lub przypisano do użytkownika rolę zapraszania gościa, może upłynąć do 15-60 minut, zanim zmiany zaczną obowiązywać.
 
-## <a name="the-user-that-i-invited-is-receiving-an-error-during-redemption"></a>Użytkownik, który mogę zaproszenie jest komunikat o błędzie podczas realizacji
+## <a name="the-user-that-i-invited-is-receiving-an-error-during-redemption"></a>Użytkownik, który zaprosił, otrzymuje błąd podczas realizacji
 
 Typowe błędy:
 
-### <a name="invitees-admin-has-disallowed-emailverified-users-from-being-created-in-their-tenant"></a>Zaproszonej administrator nie zezwolił EmailVerified użytkowników z tworzona w ramach ich dzierżawy
+### <a name="invitees-admin-has-disallowed-emailverified-users-from-being-created-in-their-tenant"></a>Administrator osoby zaproszonej nie zezwolił na tworzenie EmailVerified użytkowników w swojej dzierżawie
 
-Podczas zapraszania użytkowników, których organizacja używa usługi Azure Active Directory, ale których nie istnieje konta określonego użytkownika (na przykład, użytkownik nie istnieje w domenie contoso.com w usłudze Azure AD). Administrator domeny contoso.com może mieć zasady w miejscu, uniemożliwiając tworzonych przez użytkowników. Użytkownik musi skontaktować się z ich administratora, aby określić, czy użytkownicy zewnętrzni mogą. Może być konieczne użytkownika zewnętrznego administratora umożliwiające użytkownikom zweryfikować poczty E-mail w ich domenie (zobacz ten [artykułu](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) na co pozwala użytkownikom zweryfikować wiadomości E-mail).
+Gdy zapraszasz użytkowników, których organizacja używa Azure Active Directory, ale gdzie konto określonego użytkownika nie istnieje (na przykład użytkownik nie istnieje w usłudze Azure AD contoso.com). Administrator contoso.com może mieć zasady, które uniemożliwiają tworzenie użytkowników. Użytkownik musi skontaktować się z administratorem, aby określić, czy jest dozwolony dostęp użytkowników zewnętrznych. Administrator użytkownika zewnętrznego może wymagać zezwolenia użytkownikom zweryfikowanym pocztą E-mail w swojej domenie (zobacz ten [artykuł](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) na temat zezwalania na zweryfikowane wiadomości e-mail).
 
-![Użytkowników zweryfikowanych błędzie informujący, że dzierżawa nie zezwala na adres e-mail](media/troubleshoot/allow-email-verified-users.png)
+![Błąd wskazujący, że dzierżawca nie zezwala na zweryfikowane wiadomości e-mail](media/troubleshoot/allow-email-verified-users.png)
 
-### <a name="external-user-does-not-exist-already-in-a-federated-domain"></a>Użytkownik zewnętrzny nie istnieje już w domeny federacyjnej
+### <a name="external-user-does-not-exist-already-in-a-federated-domain"></a>Użytkownik zewnętrzny nie istnieje już w domenie federacyjnej
 
-Jeśli używasz uwierzytelniania federacyjnego i użytkownik nie istnieje w usłudze Azure Active Directory, nie można zaprosić użytkownika.
+Jeśli używasz uwierzytelniania federacyjnego, a użytkownik nie istnieje jeszcze w Azure Active Directory, nie można zaprosić użytkownika.
 
-Aby rozwiązać ten problem, administrator użytkownika zewnętrznego należy zsynchronizować konta do usługi Azure Active Directory.
+Aby rozwiązać ten problem, administrator użytkownika zewnętrznego musi zsynchronizować konto użytkownika, aby Azure Active Directory.
 
-## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>Jak oznacza\#", który nie jest zazwyczaj prawidłowy znak synchronizacji z usługą Azure AD?
+## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>Jak "\#", który nie jest zwykle prawidłowym znakiem, jest synchronizowany z usługą Azure AD?
 
-"\#" to zastrzeżony znak w UPN dla użytkowników zewnętrznych lub współpracy B2B usługi Azure AD, ponieważ konto zaproszonego user@contoso.com staje się user_contoso.com#EXT#@fabrikam.onmicrosoft.com. W związku z tym \# w pochodzące z lokalnej nazwy UPN nie mogą logować się do witryny Azure portal. 
+"\#" jest zastrzeżonym znakiem w UPN dla współpracy z usługą Azure AD B2B lub użytkownikami zewnętrznymi, ponieważ user@contoso.com zaproszone konto zmieni się na user_contoso@fabrikam.onmicrosoft.com. com # EXT #. \# Z tego względu nazwy UPN pochodzące z lokalnego nie mogą zalogować się do Azure Portal. 
 
-## <a name="i-receive-an-error-when-adding-external-users-to-a-synchronized-group"></a>Otrzymuję komunikat o błędzie podczas dodawania użytkowników zewnętrznych do grupy zsynchronizowane
+## <a name="i-receive-an-error-when-adding-external-users-to-a-synchronized-group"></a>Wystąpił błąd podczas dodawania użytkowników zewnętrznych do zsynchronizowanej grupy
 
-Użytkownicy zewnętrzni można dodawać tylko w grupach "Zabezpieczenia" lub "przypisane", a nie grupy, które są zarządzanego w środowisku lokalnym.
+Użytkowników zewnętrznych można dodawać tylko do grup "Assigned" lub "Security", a nie do grup, które są w środowisku lokalnym.
 
-## <a name="my-external-user-did-not-receive-an-email-to-redeem"></a>Moje użytkowników zewnętrznych nie otrzymał wiadomość e-mail, aby zrealizować
+## <a name="my-external-user-did-not-receive-an-email-to-redeem"></a>Mój użytkownik zewnętrzny nie otrzymał wiadomości e-mail do zrealizowania
 
-Osoby zaproszonej skontaktować się z ich usługodawcy internetowego lub spamu filtr, aby upewnić się, że następujący adres może: Invites@microsoft.com
+Zapraszanie powinno sprawdzić swój filtr usługodawcy internetowego lub spamu, aby upewnić się, że dozwolony jest następujący adres:Invites@microsoft.com
 
-## <a name="i-notice-that-the-custom-message-does-not-get-included-with-invitation-messages-at-times"></a>I Zwróć uwagę, że niestandardowy komunikat nie uzyska dołączone do wiadomości z zaproszeniem w czasie
+## <a name="i-notice-that-the-custom-message-does-not-get-included-with-invitation-messages-at-times"></a>Zauważ, że wiadomość niestandardowa nie jest dołączona do wiadomości z zaproszeniem w czasie
 
-Aby zapewnić zgodność z przepisami dotyczącymi prywatności, nasze interfejsy API zawierają niestandardowych komunikatów w wiadomości e-mail z zaproszeniem po:
+W celu zapewnienia zgodności z przepisami dotyczącymi ochrony prywatności nasze interfejsy API nie zawierają niestandardowych wiadomości e-mail z zaproszeniem, gdy:
 
-- Osoba zapraszająca nie ma adresu e-mail w zapraszający dzierżawca
-- Gdy z jednostki usługi App Service wysyła zaproszenia
+- Zapraszający nie ma adresu e-mail w ramach zapraszanej dzierżawy
+- Gdy podmiot zabezpieczeń appService wysyła zaproszenie
 
-Ten scenariusz jest dla Ciebie ważne, można pominąć wiadomości e-mail z zaproszeniem naszego interfejsu API i wyślij go za pośrednictwem mechanizmu e-mail wybranego. Zapoznaj się z Twojej organizacji doradcą prawnym, aby upewnić się, że dowolnych wiadomości e-mail, że wysyłane w ten sposób również są zgodne z przepisami dotyczącymi prywatności.
+Jeśli ten scenariusz jest istotny, możesz pominąć nasz adres e-mail zaproszenia do obsługi interfejsu API i wysłać go za pomocą wybranego przez siebie mechanizmu poczty e-mail. Skontaktuj się z prawnikami w organizacji, aby upewnić się, że wszystkie wysyłane wiadomości e-mail również są zgodne z przepisami dotyczącymi ochrony prywatności.
 
-## <a name="you-receive-an-aadsts65005-error-when-you-try-to-log-in-to-an-azure-resource"></a>Komunikat o błędzie "AADSTS65005" podczas próby logowania do zasobu platformy Azure
+## <a name="you-receive-an-aadsts65005-error-when-you-try-to-log-in-to-an-azure-resource"></a>Podczas próby zalogowania się do zasobu platformy Azure pojawia się błąd "AADSTS65005"
 
-Użytkownik mający konto gościa nie można zalogować się i otrzymuje następujący komunikat o błędzie:
+Użytkownik, który ma konto gościa nie może się zalogować i otrzymuje następujący komunikat o błędzie:
 
     AADSTS65005: Using application 'AppName' is currently not supported for your organization contoso.com because it is in an unmanaged state. An administrator needs to claim ownership of the company by DNS validation of contoso.com before the application AppName can be provisioned.
 
-Użytkownik ma konto użytkownika usługi Azure i utworzyć niezbędnej dzierżawy, która została porzucona lub niezarządzane. Ponadto istnieją nie globalne lub firmy Administratorzy w dzierżawie.
+Użytkownik ma konto użytkownika platformy Azure i jest porzuconym lub niezarządzanym dzierżawcą. Ponadto w dzierżawie nie ma żadnych administratorów globalnych ani firmowych.
 
-Aby rozwiązać ten problem, możesz przejąć dzierżawy porzucone. Zapoznaj się [przejąć niezarządzanego katalogu jako administrator usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover). Należy również uzyskać dostęp dla danego sufiksu domeny DNS połączone z Internetem w celu zapewnienia bezpośredniego dowody, że Ty masz kontrolę przestrzeni nazw. Po dzierżawy są zwracane do zarządzanego stanu, należy omówić z klientem, czy opuszczania użytkowników i zweryfikowaną nazwą domeny jest najlepszym rozwiązaniem dla organizacji.
+Aby rozwiązać ten problem, musisz przejąć pozostałą dzierżawę. Zapoznaj się z artykułem [przejmowanie niezarządzanego katalogu jako administrator w Azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover). Aby zapewnić bezpośredni dowód, że masz kontrolę nad przestrzenią nazw, należy również uzyskać dostęp do internetowego serwera DNS dla danego sufiksu domeny. Gdy dzierżawa zostanie zwrócona do stanu zarządzanego, zapoznaj się z klientem, czy opuszczenie użytkowników i zweryfikowanej nazwy domeny jest najlepszą opcją dla swojej organizacji.
 
-## <a name="a-guest-user-with-a-just-in-time-or-viral-tenant-is-unable-to-reset-their-password"></a>Użytkownik-Gość w dzierżawie just in time lub "wirusowego" nie jest w stanie do zresetowania swojego hasła
+## <a name="a-guest-user-with-a-just-in-time-or-viral-tenant-is-unable-to-reset-their-password"></a>Użytkownik-Gość z dzierżawcą "just in Time" lub "wirusowym" nie może zresetować hasła
 
-Jeśli dzierżawa tożsamości jest just-in-time (JIT) lub utworzyć niezbędnej dzierżawy (co oznacza, że jest oddzielnym niezarządzanej dzierżawy platformy Azure), tylko użytkownik-Gość mogą zresetować swoje hasło. Czasami organizacji będzie [przejęcie zarządzania wirusowe dzierżaw](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover) które są tworzone, gdy pracownicy korzystają ich służbowe adresy e-mail, aby się zarejestrować dla usług. Po organizacji ma utworzyć niezbędnej dzierżawy, tylko przez administratorów w organizacji można zresetować hasła użytkownika lub włączyć funkcji samoobsługowego resetowania HASEŁ. W razie potrzeby jako organizacji zapraszającej można usunąć konta gościa z katalogu i ponownie wysłać zaproszenia.
+Jeśli dzierżawa tożsamości jest dzierżawą just-in-Time (JIT) lub wirusową (co oznacza, że jest to oddzielna, niezarządzana dzierżawa platformy Azure), tylko użytkownik-Gość może zresetować swoje hasło. Czasami organizacja zajmie się [zarządzaniem wirusami](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover) , które są tworzone, gdy pracownicy używają służbowych adresów e-mail do rejestracji w usłudze. Gdy organizacja zajmie się wirusową dzierżawą, tylko administrator w tej organizacji może zresetować hasło użytkownika lub włączyć SSPR. Jeśli to konieczne, jako zapraszana organizacja możesz usunąć konto użytkownika-gościa z katalogu i ponownie wysłać zaproszenie.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Uzyskaj pomoc techniczną dla współpracy B2B](get-support.md)
+[Uzyskaj pomoc techniczną dotyczącą współpracy B2B](get-support.md)

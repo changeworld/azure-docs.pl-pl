@@ -6,14 +6,14 @@ author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 09/06/2019
 ms.author: danlep
-ms.openlocfilehash: 6cf5efb33340844d782dc4481f5834d7590e745a
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: c0d4bd397c68fe3ed2d36404af9230e2316f3362
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172303"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959188"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Zaufanie do zawartości w usłudze Azure Container Registry
 
@@ -43,7 +43,7 @@ Zaufanie do zawartości jest zarządzane przy użyciu zestawu kryptograficznych 
 
 Pierwszym krokiem jest włączenie zaufania do zawartości na poziomie rejestru. Gdy włączysz zaufanie do zawartości, klienci (użytkownicy lub usługi) będą mogli wypychać podpisane obrazy do Twojego rejestru. Włączenie zaufania do zawartości w rejestrze nie ogranicza użycia rejestru tylko do użytkowników z włączonym zaufaniem do zawartości. Użytkownicy bez włączonego zaufania do zawartości wciąż będą mogli używać Twojego rejestru w zwykły sposób. Jednak użytkownicy z włączony zaufaniem do zawartości w swoich klientach będą widzieć w Twoim rejestrze *tylko* podpisane obrazy.
 
-Aby włączyć zaufanie do zawartości dla rejestru, najpierw przejdź do rejestru w witrynie Azure Portal. W obszarze **zasady**wybierz > pozycję**Zaoszczędź**zawartość**włączona** > .
+Aby włączyć zaufanie do zawartości dla rejestru, najpierw przejdź do rejestru w witrynie Azure Portal. W obszarze **zasady**wybierz > pozycję**Zaoszczędź**zawartość**włączona** > . Można również użyć polecenia [AZ ACR config Content-Trust Update][az-acr-config-content-trust-update] w interfejsie użytkownika platformy Azure.
 
 ![Włączanie zaufania do zawartości dla rejestru w witrynie Azure Portal][content-trust-01-portal]
 
@@ -75,6 +75,9 @@ docker build --disable-content-trust -t myacr.azurecr.io/myimage:v1 .
 ## <a name="grant-image-signing-permissions"></a>Udzielanie uprawnień do podpisywania obrazów
 
 Tylko użytkownicy lub systemy, którym udzielono uprawnień, mogą wypychać zaufane obrazy do rejestru. Aby udzielić użytkownikowi (lub systemowi korzystającemu z jednostki usługi) uprawnień do wypychania zaufanych obrazów, przydziel jego tożsamości w usłudze Azure Active Directory rolę `AcrImageSigner`. Jest to uzupełnienie `AcrPush` (lub równoważnej) roli wymaganej do wypychania obrazów do rejestru. Aby uzyskać szczegółowe informacje, zobacz [Azure Container Registry ról i uprawnień](container-registry-roles.md).
+
+> [!NOTE]
+> Nie można udzielić zaufanego uprawnienia wypychania obrazu do [konta administratora](container-registry-authentication.md#admin-account) usługi Azure Container Registry.
 
 Szczegóły dotyczące przydzielania roli `AcrImageSigner` w witrynie Azure Portal i interfejsie wiersza polecenia platformy Azure znajdują się poniżej.
 
@@ -113,7 +116,8 @@ az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee 
 
 Identyfikator `<service principal ID>` może być identyfikatorem **appId** lub **objectId** bądź jedną z nazw **servicePrincipalName**. Aby uzyskać więcej informacji na temat pracy z jednostkami usługi i usługą Azure Container Registry, zobacz [Uwierzytelnianie w usłudze Azure Container Registry przy użyciu jednostek usługi](container-registry-auth-service-principal.md).
 
-Po zmianie ról Uruchom `az acr login` polecenie, aby odświeżyć lokalny token tożsamości dla interfejsu wiersza polecenia platformy Azure, aby nowe role zaczęły obowiązywać.
+> [!IMPORTANT]
+> Po zmianie ról Uruchom `az acr login` polecenie, aby odświeżyć lokalny token tożsamości dla interfejsu wiersza polecenia platformy Azure, aby nowe role zaczęły obowiązywać. Aby uzyskać informacje na temat weryfikowania ról dla tożsamości, zobacz [Zarządzanie dostępem do zasobów platformy Azure przy użyciu RBAC i interfejsu wiersza polecenia platformy Azure](../role-based-access-control/role-assignments-cli.md) i [Rozwiązywanie problemów z rolą RBAC dla zasobów platformy Azure](../role-based-access-control/troubleshooting.md).
 
 ## <a name="push-a-trusted-image"></a>Wypychanie zaufanego obrazu
 
@@ -214,3 +218,4 @@ Aby wyłączyć zaufanie do zawartości dla rejestru, przejdź do rejestru w wit
 
 <!-- LINKS - internal -->
 [azure-cli]: /cli/azure/install-azure-cli
+[az-acr-config-content-trust-update]: /cli/azure/acr/config/content-trust#az-acr-config-content-trust-update

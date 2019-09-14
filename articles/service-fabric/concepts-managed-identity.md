@@ -7,12 +7,12 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: 3e95412675100043eb21f50c8f93aa0ec0b6b7e6
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: d63fd3d1b778c691d053f13fbf0fbb2ed5ccb3e3
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963999"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70968279"
 ---
 # <a name="managed-identity-for-service-fabric-application-preview"></a>Tożsamość zarządzana dla aplikacji Service Fabric (wersja zapoznawcza)
 
@@ -62,9 +62,8 @@ Lista obsługiwanych scenariuszy dotyczących wersji zapoznawczej jest następuj
 
 Następujące scenariusze nie są obsługiwane lub nie są zalecane; Uwaga te akcje mogą nie być blokowane, ale mogą powodować awarię aplikacji:
 
-   - Usuń lub Zmień tożsamości przypisane do aplikacji. Jeśli musisz wprowadzić zmiany, Prześlij oddzielne wdrożenia, aby najpierw dodać nowe przypisanie tożsamości, a następnie usunąć wcześniej przypisane. Usunięcie tożsamości z istniejącej aplikacji może mieć niepożądane skutki, w tym pozostawienie aplikacji w stanie, który nie jest uaktualniony. Całkowicie można bezpiecznie usunąć aplikację, jeśli konieczne jest usunięcie tożsamości; Uwaga: spowoduje to usunięcie tożsamości przypisanej do systemu (jeśli została zdefiniowana) skojarzonej z aplikacją i spowoduje usunięcie wszelkich skojarzeń z tożsamościami przypisanymi do aplikacji.
+   - Usuwanie lub zmiana tożsamości przypisanych do aplikacji; Jeśli musisz wprowadzić zmiany, Prześlij oddzielne wdrożenia, aby najpierw dodać nowe przypisanie tożsamości, a następnie usunąć wcześniej przypisane. Usunięcie tożsamości z istniejącej aplikacji może mieć niepożądane skutki, w tym pozostawienie aplikacji w stanie, który nie jest uaktualniony. Całkowicie można bezpiecznie usunąć aplikację, jeśli konieczne jest usunięcie tożsamości; Uwaga: spowoduje to usunięcie tożsamości przypisanej do systemu (jeśli została zdefiniowana) skojarzonej z aplikacją i spowoduje usunięcie wszelkich skojarzeń z tożsamościami przypisanymi do aplikacji.
 
-   - Nie zaleca się miksowania tożsamości przypisanych do systemu i przypisanych do użytkownika w tej samej aplikacji.
 >
 > [!NOTE]
 >

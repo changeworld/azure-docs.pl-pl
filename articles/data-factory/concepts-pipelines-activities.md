@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.openlocfilehash: c986b4efea905ce4e1d9ee6f08b688fe6ef6ef5e
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: cb776b28a8c06784a2aa41e42429a3f183254138
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142554"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984219"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Potoki i działania w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -149,7 +149,7 @@ Zasady wpływają na zachowanie działania w czasie wykonania, określając opcj
     "properties": {
       "activities": [
         {
-          "name": "MyCopyBlobtoSqlActivity"
+          "name": "MyCopyBlobtoSqlActivity",
           "type": "Copy",
           "typeProperties": {
             ...

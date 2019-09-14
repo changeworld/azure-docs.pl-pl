@@ -1,46 +1,46 @@
 ---
-title: Metoda języków interfejs API mowy usługi Translator
+title: Metoda interfejs API tłumaczenia mowy w usłudze Translator Languages
 titleSuffix: Azure Cognitive Services
-description: Metoda języków interfejsu API mowy usługi Translator.
+description: Użyj metody interfejs API tłumaczenia mowy w usłudze Translator Languages.
 services: cognitive-services
-author: swmachan
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: conceptual
 ms.date: 05/18/2018
-ms.author: swmachan
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 4abe6330d0359f7d7c922facecaaf1a8b1fc7174
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 46ac3928238382f56db5a799226bd3d9243b7ca2
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446950"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966412"
 ---
-# <a name="translator-speech-api-languages"></a>Interfejs API mowy usługi Translator Języki
+# <a name="translator-speech-api-languages"></a>Interfejs API tłumaczenia mowy w usłudze Translator: Languages
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
-Mowy usługi Translator nieustannie rozszerza listę języków obsługiwanych przez jego usług. Aby odnaleźć zbiór języków dostępnych do użycia z usługą mowy usługi Translator, należy użyć tego interfejsu API.
+Tłumaczenie mowy w usłudze Translator ciągle rozszerza listę języków obsługiwanych przez jej usługi. Ten interfejs API umożliwia odnalezienie zestawu języków, które są obecnie dostępne do użycia z usługą tłumaczenie mowy w usłudze Translator.
 
-Przykłady kodu, demonstrując korzystanie z interfejsu API, aby uzyskać dostępne języki są dostępne z [witryny GitHub w usłudze Translator firmy Microsoft](https://github.com/MicrosoftTranslator).
+Przykłady kodu ilustrujące korzystanie z interfejsu API do uzyskiwania dostępnych języków są dostępne w [witrynie GitHub usługi Microsoft Translator](https://github.com/MicrosoftTranslator).
 
 ## <a name="implementation-notes"></a>Uwagi dotyczące implementacji
 
-### <a name="get-languages"></a>Pobierz /languages
+### <a name="get-languages"></a>Pobierz/Languages
 
-Szerokiego zestawu języków jest dostępna dla transkrypcja mowy, tłumaczenie uzyskanego tekstu i wygenerować syntezatora mowy tłumaczenia.
+Dostępny jest szeroki zestaw języków umożliwiających transkrypcja mowy, tłumaczenie uzyskanego tekstu oraz generowanie wygenerowanej mowy tłumaczenia.
 
-Klient używa `scope` parametr do definiowania, który konfiguruje języków jest zainteresowany zapytania.
+Klient używa parametru zapytania `scope` , aby określić, które zestawy języków interesują.
 
-* **Mowy na tekst:** Użyj parametru zapytania `scope=speech` można pobrać zestaw dostępnych języków do transkrypcja mowy na tekst.
-* **Tłumaczenie tekstu:** Użyj parametru zapytania `scope=text` można pobrać zestawu języków dostępnych do translacji uzyskanego tekstu.
-* **Zamiana tekstu na mowę:**  Użyj parametru zapytania `scope=tts` można pobrać zestawu języków i głosy dostępne do syntetyzowania przetłumaczonego tekstu na mowę.
+* **Zamiana mowy na tekst:** Użyj parametru `scope=speech` zapytania, aby pobrać zestaw języków dostępnych do transkrypcja mowy na tekst.
+* **Tłumaczenie tekstu:** Użyj parametru `scope=text` zapytania, aby pobrać zestaw języków dostępnych do tłumaczenia tekstu uzyskanego.
+* **Zamiana tekstu na mowę:**  Użyj parametru `scope=tts` zapytania, aby pobrać zestaw języków i głosów dostępnych do tłumaczenia przetłumaczonego tekstu z powrotem na mowę.
 
-Klient może pobrać wiele zestawów jednocześnie, określając rozdzielaną przecinkami listę wyboru. Na przykład `scope=speech,text,tts`.
+Klient może pobrać wiele zestawów jednocześnie, określając listę opcji rozdzielonych przecinkami. Na przykład `scope=speech,text,tts`.
 
-Odpowiedź oznaczająca Powodzenie jest właściwością obiektu JSON dla każdego żądanego zestawu.
+Pomyślna odpowiedź to obiekt JSON z właściwością dla każdego żądanego zestawu.
 
 ```
 {
@@ -56,17 +56,17 @@ Odpowiedź oznaczająca Powodzenie jest właściwością obiektu JSON dla każde
 }
 ```
 
-Ponieważ klient może używać `scope` parametr zapytania, aby wybrać, który konfiguruje obsługiwanych języków, które ma zostać zwrócone, właściwą odpowiedź może zawierać tylko podzbiór wszystkich właściwości przedstawionych powyżej.
+Ponieważ klient może użyć `scope` parametru zapytania, aby wybrać, które zestawy obsługiwanych języków należy zwrócić, rzeczywista odpowiedź może zawierać tylko podzbiór wszystkich właściwości przedstawionych powyżej.
 
-Podana wartość każdej właściwości jest w następujący sposób.
+Wartość podana dla każdej właściwości jest następująca.
 
-### <a name="speech-to-text-speech"></a>Mowy na tekst (mowy)
+### <a name="speech-to-text-speech"></a>Zamiana mowy na tekst (Speech)
 
-Wartość skojarzona z właściwością mowy na tekst, `speech`, jest słownikiem (klucz, wartość) pary. Każdy klucz identyfikuje język obsługiwane w przypadku mowy na tekst. Klucz jest identyfikatorem tego Klient przechodzi do interfejsu API. Wartość skojarzoną z kluczem jest obiektem z następującymi właściwościami:
+Wartość skojarzona z właściwością zamiany mowy na tekst, `speech`jest słownikiem par (klucz, wartość). Każdy klucz identyfikuje język obsługiwany dla zamiany mowy na tekst. Klucz jest identyfikatorem przekazywanym przez klienta do interfejsu API. Wartość skojarzona z kluczem jest obiektem o następujących właściwościach:
 
 * `name`: Nazwa wyświetlana języka.
-* `language`: Tag języka skojarzonego napisane w języku. Zobacz "Tekst transakcji" poniżej.
-Przykładem jest:
+* `language`: Tag języka skojarzonego języka pisania. Zobacz sekcję "transakcja tekstowa" poniżej.
+Przykład:
 
 ```
 {
@@ -78,12 +78,12 @@ Przykładem jest:
 
 ### <a name="text-translation-text"></a>Tłumaczenie tekstu (tekst)
 
-Wartość skojarzona z `text` właściwość jest również słownika, gdzie każdy klucz identyfikuje język obsługiwane w przypadku tłumaczenie tekstu. Wartość skojarzoną z kluczem opisuje język:
+Wartość skojarzona z `text` właściwością jest również słownikiem, gdzie każdy klucz identyfikuje język obsługiwany przez tłumaczenie tekstu. Wartość skojarzona z kluczem zawiera opis języka:
 
 * `name`: Nazwa wyświetlana języka.
-* `dir`: Kierunek tekstu, który jest `rtl` w językach od prawej do lewej lub `ltr` w językach od lewej do prawej.
+* `dir`: Kierunkowość `ltr` w przypadku języków pisanych od prawej do lewej lub języków od lewej do prawej. `rtl`
 
-Przykładem jest:
+Przykład:
 
 ```
 {
@@ -93,18 +93,18 @@ Przykładem jest:
 }
 ```
 
-### <a name="text-to-speech-tts"></a>Zamiana tekstu na mowę (tts)
+### <a name="text-to-speech-tts"></a>Zamiana tekstu na mowę (TTS)
 
-Wartość skojarzona z właściwością zamiany tekstu na mowę, tts, jest również słownika, gdzie każdy klucz identyfikuje obsługiwane głosu. Dostępne są następujące atrybuty obiektu głosu:
+Wartość skojarzona z właściwością zamiany tekstu na mowę jest również słownikiem, gdzie każdy klucz identyfikuje obsługiwany głos. Atrybuty obiektu głosowego są następujące:
 
-* `displayName`: Nazwa wyświetlana dla głosu.
-* `gender`: Płeć (męskiego i żeńskiego) głosu.
-* `locale`: Tag języka głosu przy użyciu atrybutu podstawowego języka i regionu atrybutu.
-* `language`: Tag języka skojarzonego napisane w języku.
+* `displayName`: Nazwa wyświetlana głosu.
+* `gender`: Płeć głosu (samców lub samic).
+* `locale`: Tag języka głosu z atrybutu języka podstawowego i regionu atrybutu.
+* `language`: Tag języka skojarzonego języka pisania.
 * `languageName`: Nazwa wyświetlana języka.
-* `regionName`: Nazwa wyświetlana region dla tego języka.
+* `regionName`: Nazwa wyświetlana regionu dla tego języka.
 
-Przykładem jest:
+Przykład:
 
 ```
 {
@@ -121,35 +121,35 @@ Przykładem jest:
 ```
 
 ### <a name="localization"></a>Lokalizacja
-Usługa zwraca wszystkie nazwy w języku nagłówek "Accept-Language", wszystkie języki obsługiwane w tłumaczeniu tekstu.
+Usługa zwraca wszystkie nazwy w języku nagłówka "Accept-Language" dla wszystkich języków obsługiwanych w tłumaczeniu tekstowym.
 
-### <a name="response-class-status-200"></a>Klasa odpowiedzi (stanu 200)
+### <a name="response-class-status-200"></a>Klasa odpowiedzi (stan 200)
 Obiekt opisujący zestaw obsługiwanych języków.
 
 Wartość ModelExample:
 
-Langagues {mowy (object, opcjonalnie), tekst (object, opcjonalnie), tts (object, opcjonalnie)}
+Langagues {Speech (Object, Optional), text (Object, Optional), TTS (Object, Optional)}
 
 ### <a name="headers"></a>Nagłówki
 
-|nagłówek|Opis|Typ|
+|nagłówek|Opis|Type|
 :--|:--|:--|
-X-RequestId|Wartość wygenerowany przez serwer w celu zidentyfikowania żądania i używana na potrzeby rozwiązywania problemów.|string|
+X-RequestId|Wartość wygenerowana przez serwer w celu zidentyfikowania żądania i użycia na potrzeby rozwiązywania problemów.|ciąg|
 
 ### <a name="parameters"></a>Parametry
 
 |Parametr|Opis|Typ parametru|Typ danych|
 |:--|:--|:--|:--|
-|api-version    |Wersja interfejsu API zażądane przez klienta. Dozwolone wartości to: `1.0`.|query|string|
-|scope  |Zestawy obsługiwane języki lub głosy do zwrócenia do klienta. Ten parametr jest określony jako rozdzielana przecinkami lista słów kluczowych. Dostępne są następujące słowa kluczowe:<ul><li>`speech`: Udostępnia zestaw języków obsługiwanych na transkrypcja mowy.</li><li>`tts`: Udostępnia zestaw głosy są obsługiwane dla konwersji tekstu na mowę.</li><li>`text`: Udostępnia zestaw języki obsługiwane w przypadku tłumaczenie tekstu.</li></ul>Jeśli wartość nie jest określony, wartość `scope` wartość domyślna to `text`.|query|string|
-|X-ClientTraceId    |Identyfikator GUID generowany przez klienta umożliwia śledzenie żądań. W celu ułatwienia rozwiązywania problemów, klientów należy podać nową wartość z każdym żądaniem i ją.|nagłówek|string|
-|Zaakceptuj języka    |Niektóre pola w odpowiedzi są nazwami językach i regionach. Użyj tego parametru, aby określić język, w której zwracane są nazwy. Język jest określony, podając tag języka sformułowany BCP 47. Wybierz tag z listy identyfikatorów języka zwrócono `text` zakresu. Dla języków nieobsługiwanych nazw znajdują się w języku angielskim.<br/>Na przykład użyj wartości `fr` do żądania nazw w języku francuskim, lub użyj wartości `zh-Hant` do żądania nazw w chińskim tradycyjnym.|nagłówek|string|
+|api-version    |Wersja interfejsu API żądana przez klienta. Dozwolone wartości to: `1.0`.|query|ciąg|
+|scope  |Zestawy obsługiwanych języków lub głosów do zwrócenia do klienta programu. Ten parametr jest określany jako rozdzielana przecinkami lista słów kluczowych. Dostępne są następujące słowa kluczowe:<ul><li>`speech`: Zawiera zestaw języków obsługiwanych przez funkcję transkrypcja mowy.</li><li>`tts`: Zawiera zestaw głosów, które są obsługiwane w przypadku konwersji mowy tekstu.</li><li>`text`: Zawiera zestaw języków obsługiwanych na potrzeby tłumaczenia tekstu.</li></ul>Jeśli wartość nie jest określona, wartość `scope` `text`domyślna to.|query|ciąg|
+|X-ClientTraceId    |Wygenerowany przez klienta identyfikator GUID służący do śledzenia żądania. Aby ułatwić rozwiązywanie problemów, klienci powinni zapewnić nową wartość przy użyciu każdego żądania i rejestrować ją.|nagłówek|ciąg|
+|Zaakceptuj — język    |Niektóre pola w odpowiedzi są nazwami języków lub regionów. Ten parametr służy do definiowania języka, w którym są zwracane nazwy. Język jest określony przez udostępnienie poprawnie sformułowanego znacznika języka BCP 47. Wybierz tag z listy identyfikatorów języka zwracanych z `text` zakresem. W przypadku nieobsługiwanych języków nazwy są udostępniane w języku angielskim.<br/>Na przykład użyj wartości `fr` , aby zażądać nazw w języku francuskim, lub użyj wartości `zh-Hant` , aby zażądać nazw w języku chińskim tradycyjnym.|nagłówek|ciąg|
 
 ### <a name="response-messages"></a>Komunikaty odpowiedzi
 
 |Kod stanu HTTP|Reason|
 |:--|:--|
-|400|Nieprawidłowe żądanie. Sprawdź parametry wejściowe, aby upewnić się, że są one prawidłowe. Obiekt odpowiedzi zawiera bardziej szczegółowy opis błędu.|
+|400|Nieprawidłowe żądanie. Sprawdź parametry wejściowe, aby upewnić się, że są prawidłowe. Obiekt Response zawiera bardziej szczegółowy opis błędu.|
 |429|Zbyt wiele żądań.|
-|500|Wystąpił błąd. Jeśli błąd będzie się powtarzać, raportowania identyfikator śledzenia klienta (X-ClientTraceId) lub identyfikator (identyfikator żądania X) żądania.|
-|503|Serwer jest tymczasowo niedostępny. Ponów próbę żądania. Jeśli błąd będzie się powtarzać, raportowania identyfikator śledzenia klienta (X-ClientTraceId) lub identyfikator (identyfikator żądania X) żądania.|
+|500|Wystąpił błąd. Jeśli błąd będzie się powtarzać, zgłoś go za pomocą identyfikatora śledzenia klienta (X-ClientTraceId) lub identyfikatora żądania (X-Numer_id_żądania).|
+|503|Serwer jest tymczasowo niedostępny. Spróbuj ponownie wykonać żądanie. Jeśli błąd będzie się powtarzać, zgłoś go za pomocą identyfikatora śledzenia klienta (X-ClientTraceId) lub identyfikatora żądania (X-Numer_id_żądania).|

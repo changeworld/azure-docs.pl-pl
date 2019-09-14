@@ -1,87 +1,87 @@
 ---
-title: Instalowanie i używanie systemu Giraph w usłudze Azure HDInsight
-description: Dowiedz się, jak zainstalować system Giraph w klastrach HDInsight za pomocą akcji skryptu. System Giraph umożliwia czy wykres przetwarzania na platformie Apache Hadoop w chmurze platformy Azure.
+title: Instalowanie i używanie Giraph w usłudze Azure HDInsight
+description: Dowiedz się, jak zainstalować Giraph w klastrach usługi HDInsight przy użyciu akcji skryptu. Możesz użyć Giraph, aby przetwarzać wykresy w Apache Hadoop w chmurze platformy Azure.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.openlocfilehash: aa13d8dfc65f020f3f27183423913933cd0b9404
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f1ca536ffa2166df4ef6cf51654b7b410e72ea66
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64697600"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962069"
 ---
-# <a name="install-apache-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>Zainstaluj Apache Giraph w klastrach usługi HDInsight Hadoop, a przetwarzanie dużych wykresów za pomocą systemu Giraph
+# <a name="install-apache-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>Instalowanie platformy Apache Giraph w klastrach usługi HDInsight Hadoop i używanie Giraph do przetwarzania wykresów o dużej skali
 
-Dowiedz się, jak zainstalować system Apache Giraph w klastrze usługi HDInsight. Funkcja akcji skryptu HDInsight umożliwia dostosowanie klastra, uruchamiając skrypt powłoki bash. Skrypty można dostosowywać klastry, podczas i po utworzeniu klastra.
+Dowiedz się, jak zainstalować Apache Giraph w klastrze usługi HDInsight. Funkcja akcja skryptu usługi HDInsight umożliwia dostosowanie klastra przez uruchomienie skryptu bash. Skrypty mogą służyć do dostosowywania klastrów podczas tworzenia klastra i po nim.
 
-## <a name="whatis"></a>Co to jest system Giraph
+## <a name="whatis"></a>Co to jest Giraph
 
-[Apache Giraph](https://giraph.apache.org/) umożliwia wykonywanie wykres przetwarzania za pomocą usługi Hadoop i mogą być używane z usługi Azure HDInsight. Wykresy modelowania relacji między obiektami. Na przykład połączenia między routerami w dużej sieci, takich jak Internet lub relacji między osobami w sieciach społecznościowych. Przetwarzanie wykresów umożliwia przeglądanie informacji o relacji między obiektami w grafie, takich jak:
+Usługa [Apache Giraph](https://giraph.apache.org/) umożliwia przetwarzanie grafów przy użyciu usługi Hadoop i może być używana z usługą Azure HDInsight. Grafuje relacje modelu między obiektami. Na przykład połączenia między routerami w dużej sieci, takie jak Internet, lub relacje między osobami w sieciach społecznościowych. Przetwarzanie grafu umożliwia określenie relacji między obiektami w grafie, na przykład:
 
-* Identyfikowanie potencjalnych znajomych, na podstawie Twojej bieżącej relacji.
+* Identyfikowanie potencjalnych przyjaciół w oparciu o bieżące relacje.
 
-* Identyfikowanie najkrótszej trasy między dwoma komputerami w sieci.
+* Zidentyfikowanie najkrótszej trasy między dwoma komputerami w sieci.
 
-* Obliczanie rangę strony stron sieci Web.
+* Obliczanie rangi stron sieci Web.
 
 > [!WARNING]  
-> Składniki dostarczony z klastrem usługi HDInsight są w pełni obsługiwane — Microsoft Support pomaga wyizolować i rozwiązać problemy związane z tych składników.
+> Składniki dostarczane z klastrem usługi HDInsight są w pełni obsługiwane — pomoc techniczna firmy Microsoft ułatwiają izolowanie i rozwiązywanie problemów związanych z tymi składnikami.
 >
-> Składniki niestandardowe, takie jak system Giraph otrzymują uzasadnioną komercyjnie pomoc techniczną, aby pomóc rozwiązać ten problem. Microsoft Support może mieć do rozwiązania problemu. W przeciwnym razie należy zapoznać się z społeczności "open source", gdzie znajduje się specjalistyczna dla tej technologii. Na przykład istnieje wiele witryn społeczności, które mogą być używane, takie jak: [Forum MSDN dotyczące HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ https://stackoverflow.com ](https://stackoverflow.com). Projektów Apache mieć witryny projektu na [ https://apache.org ](https://apache.org), na przykład: [Hadoop](https://hadoop.apache.org/).
+> Niestandardowe składniki, takie jak Giraph, otrzymują komercyjnie uzasadnioną pomoc techniczną, która ułatwia dalsze Rozwiązywanie problemu. Pomoc techniczna firmy Microsoft może być w stanie rozwiązać problem. Jeśli nie, musisz skonsultować się z społecznościami Open Source, w których znajduje się Szczegółowa wiedza dotycząca tej technologii. Na przykład istnieje wiele witryn społeczności, które mogą być używane, takich jak: [Forum MSDN dotyczące](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)usługi HDInsight [https://stackoverflow.com](https://stackoverflow.com),. Również projekty Apache mają witryny projektu, [https://apache.org](https://apache.org)na przykład: Usługa [Hadoop](https://hadoop.apache.org/).
 
 
-## <a name="what-the-script-does"></a>Działanie skryptu
+## <a name="what-the-script-does"></a>Co robi skrypt
 
 Ten skrypt wykonuje następujące czynności:
 
-* Instaluje system Giraph do `/usr/hdp/current/giraph`
+* Instaluje Giraph do`/usr/hdp/current/giraph`
 
-* Kopiuje `giraph-examples.jar` plik do magazynu domyślnego (WASB) dla klastra: `/example/jars/giraph-examples.jar`
+* `giraph-examples.jar` Kopiuje plik do magazynu domyślnego (WASB) dla klastra:`/example/jars/giraph-examples.jar`
 
-## <a name="install"></a>Zainstalować system Giraph za pomocą akcji skryptu
+## <a name="install"></a>Instalowanie Giraph za pomocą akcji skryptu
 
-Przykładowy skrypt, aby zainstalować system Giraph w klastrze usługi HDInsight jest dostępna w następującej lokalizacji:
+Przykładowy skrypt służący do instalowania Giraph w klastrze usługi HDInsight jest dostępny w następującej lokalizacji:
 
     https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh
 
-Ta sekcja zawiera instrukcje dotyczące sposobu używania przykładowy skrypt podczas tworzenia klastra przy użyciu witryny Azure portal.
+Ta sekcja zawiera instrukcje dotyczące korzystania z przykładowego skryptu podczas tworzenia klastra przy użyciu Azure Portal.
 
 > [!NOTE]  
-> Akcja skryptu można zastosować przy użyciu dowolnej z następujących metod:
+> Akcję skryptu można zastosować przy użyciu dowolnej z następujących metod:
 > * Azure PowerShell
 > * Interfejs wiersza polecenia platformy Azure
-> * HDInsight SDK platformy .NET
+> * Zestaw SDK usługi HDInsight dla platformy .NET
 > * Szablony usługi Azure Resource Manager
 > 
-> Można również zastosować akcji skryptu na już działające klastry. Aby uzyskać więcej informacji, zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptów](hdinsight-hadoop-customize-cluster-linux.md).
+> Można również zastosować akcje skryptu do już uruchomionych klastrów. Aby uzyskać więcej informacji, zobacz [Dostosowywanie klastrów usługi HDInsight za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md).
 
-1. Rozpoczęcie tworzenia klastra wykonując kroki opisane w [klastry HDInsight opartych na systemie Linux z tworzenia](hdinsight-hadoop-create-linux-clusters-portal.md), kroków tworzenia.
+1. Rozpocznij tworzenie klastra, wykonując kroki opisane w temacie [Tworzenie klastrów usługi HDInsight opartych](hdinsight-hadoop-create-linux-clusters-portal.md)na systemie Linux, ale nie Dokończ tworzenia.
 
-2. W **opcjonalna konfiguracja** zaznacz **akcji skryptu**i podaj następujące informacje:
+2. W sekcji **Konfiguracja opcjonalna** wybierz pozycję **Akcje skryptu**, a następnie podaj następujące informacje:
 
-   * **NAZWA**: Wprowadź przyjazną nazwę dla akcji skryptu.
+   * **NAZWA**: Wprowadź przyjazną nazwę akcji skryptu.
 
    * **IDENTYFIKATOR URI SKRYPTU**: https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh
 
-   * **HEAD**: Sprawdź ten wpis.
+   * **NAGŁÓWEK**: Zaznacz ten wpis.
 
-   * **PROCES ROBOCZY**: Ten wpis należy pozostawić puste.
+   * **PROCES ROBOCZY**: Pozostaw ten wpis niezaznaczony.
 
-   * **ZOOKEEPER**: Ten wpis należy pozostawić puste.
+   * **DOZORCY**: Pozostaw ten wpis niezaznaczony.
 
    * **PARAMETRY**: Pozostaw to pole puste.
 
-3. W dolnej części **akcji skryptu**, użyj **wybierz** przycisk, aby zapisać konfigurację. Na koniec użyj **wybierz** znajdujący się u dołu **opcjonalna konfiguracja** sekcji, aby zapisać informacje o konfiguracji opcjonalnej.
+3. W dolnej części **akcji skryptu**Użyj przycisku **Wybierz** , aby zapisać konfigurację. Na koniec kliknij przycisk **Wybierz** w dolnej części sekcji **Konfiguracja opcjonalna** , aby zapisać opcjonalne informacje o konfiguracji.
 
-4. Kontynuuj tworzenie klastra zgodnie z opisem w [klastry HDInsight opartych na systemie Linux z tworzenia](hdinsight-hadoop-create-linux-clusters-portal.md).
+4. Kontynuuj tworzenie klastra zgodnie z opisem w temacie [Tworzenie klastrów usługi HDInsight opartych](hdinsight-hadoop-create-linux-clusters-portal.md)na systemie Linux.
 
-## <a name="usegiraph"></a>Jak korzystać z systemu Giraph w HDInsight?
+## <a name="usegiraph"></a>Jak mogę używać Giraph w usłudze HDInsight?
 
-Po utworzeniu klastra, wykonaj następujące kroki, aby uruchomić przykład SimpleShortestPathsComputation dołączone do systemu Giraph. W tym przykładzie użyto podstawowa [Pregel](https://people.apache.org/~edwardyoon/documents/pregel.pdf) wdrażania służące do znajdowania najkrótsze ścieżki między obiektami w grafie.
+Po utworzeniu klastra wykonaj następujące kroki, aby uruchomić przykład SimpleShortestPathsComputation zawarty w Giraph. W tym przykładzie użyto podstawowej implementacji [Pregel](https://people.apache.org/~edwardyoon/documents/pregel.pdf) do znajdowania najkrótszej ścieżki między obiektami w grafie.
 
 1. Nawiąż połączenie z klastrem usługi HDInsight przy użyciu protokołu SSH:
 
@@ -91,7 +91,7 @@ Po utworzeniu klastra, wykonaj następujące kroki, aby uruchomić przykład Sim
 
     Aby uzyskać informacje, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. Użyj następującego polecenia, aby utworzyć plik o nazwie **tiny_graph.txt**:
+2. Użyj następującego polecenia, aby utworzyć plik o nazwie **tiny_graph. txt**:
 
     ```bash
     nano tiny_graph.txt
@@ -107,43 +107,43 @@ Po utworzeniu klastra, wykonaj następujące kroki, aby uruchomić przykład Sim
     [4,0,[[3,4],[2,4]]]
     ```
 
-    Te dane w tym artykule opisano relację między obiektami na grafie skierowanym przy użyciu formatu `[source_id, source_value,[[dest_id], [edge_value],...]]`. Każdy wiersz reprezentuje relację między `source_id` obiektu i co najmniej jeden `dest_id` obiektów. `edge_value` Mogą być uważane za siłę lub odległości połączenie między `source_id` i `dest\_id`.
+    Te dane opisują relację między obiektami na wykresie kierowanym przy użyciu formatu `[source_id, source_value,[[dest_id], [edge_value],...]]`. Każdy wiersz reprezentuje relację między `source_id` obiektem a co najmniej jednym `dest_id` obiektem. Można traktować jako siłę lub odległość połączenia między `source_id` i `dest\_id`. `edge_value`
 
-    Rysowania, i jako odległość między obiektami za pomocą wartości (lub waga), dane może wyglądać podobnie jak na poniższym diagramie:
+    Wystawione i przy użyciu wartości (lub wagi) jako odległości między obiektami dane mogą wyglądać podobnie jak na poniższym diagramie:
 
-    ![tiny_graph.txt rysowana w formie okręgów linie różnych odległość między](./media/hdinsight-hadoop-giraph-install-linux/giraph-graph.png)
+    ![tiny_graph. txt rysowany jako okręgi z wierszami o różnej odległości między](./media/hdinsight-hadoop-giraph-install-linux/hdinsight-giraph-graph.png)
 
-3. Aby zapisać plik, użyj **Ctrl + X**, następnie **Y**, a na koniec **Enter** zaakceptować nazwę pliku.
+3. Aby zapisać plik, użyj **kombinacji klawiszy Ctrl + X**, a następnie **Y**, a następnie klawisz **Enter** , aby zaakceptować nazwę pliku.
 
-4. Przechowywanie danych na podstawowy magazyn dla klastra usługi HDInsight, należy wykonać następujące kroki:
+4. Poniższe dane służą do przechowywania danych w magazynie podstawowym dla klastra usługi HDInsight:
 
     ```bash
     hdfs dfs -put tiny_graph.txt /example/data/tiny_graph.txt
     ```
 
-5. Uruchom przykład SimpleShortestPathsComputation, używając następującego polecenia:
+5. Uruchom przykład SimpleShortestPathsComputation za pomocą następującego polecenia:
 
     ```bash
     yarn jar /usr/hdp/current/giraph/giraph-examples.jar org.apache.giraph.GiraphRunner org.apache.giraph.examples.SimpleShortestPathsComputation -ca mapred.job.tracker=headnodehost:9010 -vif org.apache.giraph.io.formats.JsonLongDoubleFloatDoubleVertexInputFormat -vip /example/data/tiny_graph.txt -vof org.apache.giraph.io.formats.IdWithValueTextOutputFormat -op /example/output/shortestpaths -w 2
     ```
 
-    W poniższej tabeli opisano parametry używane przy użyciu następującego polecenia:
+    Parametry używane z tym poleceniem są opisane w poniższej tabeli:
 
    | Parametr | Wyniki działania |
    | --- | --- |
-   | `jar` |Plik jar zawierający przykładów. |
-   | `org.apache.giraph.GiraphRunner` |Klasa, używane do uruchamiania przykładów. |
-   | `org.apache.giraph.examples.SimpleShortestPathsCoputation` |Przykład, który jest używany. W tym przykładzie oblicza najkrótsze ścieżki między ID 1 i inne identyfikatory na wykresie. |
-   | `-ca mapred.job.tracker` |Węzeł główny dla klastra. |
-   | `-vif` |Format wejściowy do użycia dla danych wejściowych. |
+   | `jar` |Plik JAR zawierający przykłady. |
+   | `org.apache.giraph.GiraphRunner` |Klasa używana do uruchamiania przykładów. |
+   | `org.apache.giraph.examples.SimpleShortestPathsCoputation` |Przykład, który jest używany. W tym przykładzie oblicza najkrótszą ścieżkę między IDENTYFIKATORem 1 i wszystkimi innymi identyfikatorami na wykresie. |
+   | `-ca mapred.job.tracker` |Węzła głównego klastra. |
+   | `-vif` |Format wejściowy, który ma być używany dla danych wejściowych. |
    | `-vip` |Plik danych wejściowych. |
-   | `-vof` |Format danych wyjściowych. W tym przykładzie, Identyfikatora i wartość w postaci zwykłego tekstu. |
-   | `-op` |Lokalizacja danych wyjściowych. |
-   | `-w 2` |Liczba procesów roboczych do użycia. W tym przykładzie 2. |
+   | `-vof` |Format danych wyjściowych. W tym przykładzie identyfikator i wartość jako zwykły tekst. |
+   | `-op` |Lokalizacja wyjściowa. |
+   | `-w 2` |Liczba procesów roboczych, które mają być używane. W tym przykładzie 2. |
 
-    Aby uzyskać więcej informacji na temat tych i innych parametrów używane z systemu Giraph przykładów, zobacz [Szybki Start Giraph](https://giraph.apache.org/quick_start.html).
+    Aby uzyskać więcej informacji na temat tych i innych parametrów używanych z przykładami Giraph, zobacz [Przewodnik Szybki Start Giraph](https://giraph.apache.org/quick_start.html).
 
-6. Po zakończeniu zadania, wyniki są przechowywane w **/example/out/shortestpaths** katalogu. Nazw plików wyjściowych zaczynają się od **część-m -** oraz kończyć się liczbę określającą pierwszy, drugi, plików itp. Aby wyświetlić dane wyjściowe, użyj następującego polecenia:
+6. Po zakończeniu zadania wyniki są przechowywane w katalogu **/example/out/shortestpaths** . Nazwy plików wyjściowych zaczynają się od **części-m-** i kończą się liczbą wskazującą pierwszy, drugi itd. plik. Użyj następującego polecenia, aby wyświetlić dane wyjściowe:
 
     ```bash
     hdfs dfs -text /example/output/shortestpaths/*
@@ -157,12 +157,12 @@ Po utworzeniu klastra, wykonaj następujące kroki, aby uruchomić przykład Sim
         1    0.0
         3    1.0
 
-    SimpleShortestPathComputation, jest przykład twardych kodowanego zaczynać obiekt o identyfikatorze 1 i najkrótsze ścieżki do innych obiektów. Dane wyjściowe są w formacie `destination_id` i `distance`. `distance` Wartość (lub waga) krawędzi przemieścić się między tymi obiekt ID 1 i identyfikatora celu.
+    SimpleShortestPathComputation przykład jest trudno zakodowany, aby rozpocząć od obiektu o IDENTYFIKATORze 1 i znaleźć najkrótszą ścieżkę do innych obiektów. Dane wyjściowe są w formacie `destination_id` i. `distance` `distance` Jest to wartość (lub waga) krawędzi, która jest przenoszona między obiektem o identyfikatorze 1 i identyfikatorem docelowym.
 
-    Zaprezentowania tych danych, można sprawdzić wyniki, podróżowanie najkrótsze ścieżki między 1 identyfikator i innych obiektów. Najkrótsze ścieżki między ID 1 i 4 identyfikator wynosi 5. Ta wartość jest całkowita odległość między <span style="color:orange">ID 1 i 3</span>, a następnie <span style="color:red">Identyfikatorem 3 i 4</span>.
+    Wizualizowanie tych danych możesz sprawdzić wyniki, najkrótsze ścieżki między identyfikatorem 1 i wszystkimi innymi obiektami. Najkrótsza ścieżka między IDENTYFIKATORem 1 i 4 to 5. Ta wartość to łączna odległość między <span style="color:orange">identyfikatorami 1 i 3</span>, a następnie <span style="color:red">Identyfikator 3 i 4</span>.
 
-    ![Rysowanie obiektów jako kółka, przy użyciu najkrótsze ścieżki między](./media/hdinsight-hadoop-giraph-install-linux/giraph-graph-out.png)
+    ![Rysowanie obiektów jako okręgów z najkrótszymi ścieżkami rysowanymi między](./media/hdinsight-hadoop-giraph-install-linux/hdinsight-giraph-graph-out.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Instalowanie i korzystanie z rozwiązania Hue w klastrach HDInsight](hdinsight-hadoop-hue-linux.md).
+* [Instalowanie i używanie odcienia w klastrach usługi HDInsight](hdinsight-hadoop-hue-linux.md).

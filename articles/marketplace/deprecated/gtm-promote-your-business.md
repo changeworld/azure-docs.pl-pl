@@ -1,40 +1,40 @@
 ---
-title: Usług go-To-Market — wypromuj swoją firmę Microsoft | Azure
-description: Go-To-Market Services — Wydawca może Dowiedz się, jak wypromuj swoją firmę z firmą Microsoft w tej sekcji.
+title: Usługi na rynku — Promuj swoją firmę dzięki firmie Microsoft | Azure
+description: Usługi na rynku — wydawcy mogą dowiedzieć się, jak promować swoją firmę firmie Microsoft w tej sekcji.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
 ms.date: 01/12/2019
 ms.author: ellacroi
-ms.openlocfilehash: 8bb064deae87e6545d003ffb1fa85058926f5dee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9549e40ea3b79c356867c2fe36dc336e69795c8b
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66688959"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962837"
 ---
 # <a name="promote-your-business-with-microsoft"></a>Promowanie swojej firmy we współpracy z firmą Microsoft
 
-Partnerzy portalu Marketplace są wymagane jako część programu Microsoft Partner Network (MPN). Jako członkiem programu MPN możesz uzyskać dostęp do dodatkowych pakietów korzyści, które są ukierunkowane na działalność. Odwiedź stronę [partner.microsoft.com](https://partner.microsoft.com) aby zobaczyć, jak można użyć sieci, aby uzyskać dostęp do:
+Partnerzy portalu Marketplace muszą być częścią Microsoft Partner Network (MPN). Jako członek MPN możesz uzyskać dostęp do dodatkowych korzyści ukierunkowanych na działalność biznesową. Odwiedź stronę [partner.Microsoft.com](https://partner.microsoft.com) , aby dowiedzieć się, jak można używać sieci do uzyskiwania dostępu do:
 
 * Nowe możliwości biznesowe.
-* Łączenie się z partnerami lub zespołów.
-* Rozwiązania i szkoleń, aby pomóc w rozwijaniu Twojego zestawu umiejętności.
+* Łączenie się z zespołami lub partnerami.
+* Rozwiązania i szkolenia ułatwiające rozwój zestawu umiejętności.
 
-## <a name="benefits-and-resources"></a>Korzyści i zasoby
+## <a name="benefits-and-resources"></a>Zalety i zasoby
 
-Aby promować oferty sieci Web lub aplikacji, a dostęp do więcej korzyści i zasobów, skorzystaj z poniższej tabeli:
+Aby podwyższyć poziom oferty lub aplikacji oraz uzyskać dostęp do większej liczby korzyści i zasobów, Skorzystaj z poniższej tabeli:
 
 | Korzyści | Zasoby |
 |:--- |:--- |
-| Zrealizujcie swoje korzyści Core | W ramach programu Microsoft Partner Network zyskujesz zestaw podstawowych korzyści, które może pomóc zaoszczędzić czas i pieniądze. Korzyści może pomóc <ul> <li> Zwiększanie możliwości, </li> <li> lepiej służyć klientom i </li> <li> Tworzenie połączeń, aby dotrzeć do firmy. </li> </ul> Aby uzyskać więcej informacji na temat głównych korzyści, odwiedź stronę [głównych korzyści i wymagania](https://partner.microsoft.com/en-US/membership/core-benefits#tab-content-1). |
-| Zdobądź również z kompetencją Cloud Platform | Zarabiać kompetencją pomaga <ul> <li> Rozróżniania samodzielnie, między innymi partnerami firmy Microsoft. </li> <li> Prezentacja techniczne Powodzenie doświadczenie i klientów na rynku. </li> </ul> Kompetencja jest wymaganiem wstępnym dla wielu programów kluczowy partner, takich jak wspólnej sprzedaży. Zobacz [kompetencję Cloud Platform](https://partner.microsoft.com/reach-customers/selling-with-microsoft) Aby uzyskać więcej informacji. |
-| Zostań gotowości do wspólnej sprzedaży adresu IP | Może być uprawnieni do skorzystania z adresu IP współpracy sprzedażowej program.  Ten program umożliwia: <ul> <li> Współpracuj bezpośrednio ze sprzedawcami firmy Microsoft i innymi partnerami, na docelowy potencjalnymi klientami i planowania konta. </li> <li> Uwidaczniania swoje rozwiązanie dla sprzedawców firmy Microsoft w katalogu rozwiązania sprzedawcy. </li> <li> Sprzedawcami firmy Microsoft są przez współpracy i zdobywania Tobie. </li> </ul> Zobacz [współpracy sprzedażowej program i Podwyższ poziom firmy](https://partner.microsoft.com/reach-customers/selling-with-microsoft) uzyskać więcej informacji, w tym wymagania kwalifikacyjne. |
+| Skorzystaj z podstawowych korzyści | W ramach Microsoft Partner Network otrzymujesz zestaw podstawowych korzyści, które mogą pomóc zaoszczędzić czas i pieniądze. Korzyści mogą pomóc <ul> <li> Wzmocnij swoje możliwości, </li> <li> lepiej Obsługuj klientów i </li> <li> Twórz połączenia w celu osiągnięcia pełnego potencjału biznesowego. </li> </ul> Aby uzyskać więcej informacji na temat najważniejszych korzyści, odwiedź [Podstawowe zalety i wymagania](https://partner.microsoft.com/membership/core-benefits#tab-content-1). |
+| Uzyskaj kompetencje dotyczące platformy w chmurze | Zdobywanie kompetencji ułatwia <ul> <li> Odróżnij się od innych partnerów firmy Microsoft. </li> <li> Zaprezentuj wiedzę techniczną i sukces klientów na rynku. </li> </ul> Kompetencja jest wymaganiem wstępnym dla wielu głównych programów partnerskich, takich jak współsprzedaż. Aby uzyskać więcej informacji, zobacz temat [kompetencje platformy w chmurze](https://partner.microsoft.com/reach-customers/selling-with-microsoft) . |
+| Zostań gotowym do odsprzedażu IP | Może być uprawniony do korzystania z programu do współdziałania w ramach protokołu IP.  Ten program umożliwia: <ul> <li> Współpracuj bezpośrednio ze sprzedawcami firmy Microsoft i innymi partnerami w celu uwzględnienia docelowych możliwości klientów i planowania konta. </li> <li> Aby Twoje rozwiązanie było widoczne dla sprzedawców firmy Microsoft w katalogu rozwiązań sprzedającego. </li> <li> Sprzedawcy firmy Microsoft są nagradzani z myślą o współpracy z nimi. </li> </ul> Aby uzyskać więcej informacji na temat wymagań dotyczących uprawnień, zobacz artykuł dotyczący współdziałania [i promowania firmy](https://partner.microsoft.com/reach-customers/selling-with-microsoft) . |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat usług GTM witryny marketplace, przejdź do [usług Go-to-market](https://partner.microsoft.com/reach-customers/gtm).
+Aby dowiedzieć się więcej o usługach GTM Marketplace, przejdź do [usługi go-to-Market](https://partner.microsoft.com/reach-customers/gtm).
 
 Zaloguj się do [portalu Cloud Partner](https://cloudpartner.azure.com) tworzenie i konfigurowanie swojej oferty.
 

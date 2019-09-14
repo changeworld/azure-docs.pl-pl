@@ -8,85 +8,85 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 8/18/2019
 ms.author: makromer
-ms.openlocfilehash: e1ba09f459152616941071c23f7a6545ec2a8b73
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 9964aaf060c43cc3e9992f515bf272011e795043
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210678"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962127"
 ---
-# <a name="process-fixed-length-text-files-using-data-factory-mapping-data-flows"></a>Przetwarzanie plików tekstowych o stałej długości przy użyciu Data Factory mapowania przepływów danych
+# <a name="process-fixed-length-text-files-by-using-data-factory-mapping-data-flows"></a>Przetwarzanie plików tekstowych o stałej długości przy użyciu Data Factory mapowania przepływów danych
 
-Data Factory mapowanie przepływów danych obsługuje dane transformacji z plików tekstowych o stałej szerokości. Zdefiniujesz zestaw danych dla pliku tekstowego bez ogranicznika, a następnie ustawisz podział podciągów na podstawie pozycji porządkowej.
+Korzystając z mapowania przepływów danych w Microsoft Azure Data Factory, można przekształcać dane z plików tekstowych o stałej szerokości. W poniższym zadaniu zdefiniujemy zestaw danych dla pliku tekstowego bez ogranicznika, a następnie ustawisz podział podciągów na podstawie pozycji porządkowej.
 
 ## <a name="create-a-pipeline"></a>Tworzenie potoku
 
-1. Przejdź do **+ Nowy potok** , aby rozpocząć nowy potok
+1. Wybierz pozycję **+ Nowy potok** , aby utworzyć nowy potok.
 
-2. Dodawanie działania przepływu danych, które będzie używane do przetwarzania plików o stałej szerokości
+2. Dodaj działanie przepływu danych, które będzie używane do przetwarzania plików o stałej szerokości:
 
-  ![Potok o stałej szerokości](media/data-flow/fwpipe.png)
+    ![Potok o stałej szerokości](media/data-flow/fwpipe.png)
 
-3. W działaniu przepływu danych wybierz kolejno pozycje nowy mapowanie przepływu danych.
+3. W działaniu przepływu danych wybierz pozycję **Nowy mapowanie przepływu danych**.
 
-4. Dodaj transformację źródłową, kolumnę pochodną, wybór i transformację ujścia
+4. Dodaj źródło, kolumnę pochodną, wybór i transformację ujścia:
 
-  ![Przepływ danych o stałej szerokości](media/data-flow/fw2.png)
+    ![Przepływ danych o stałej szerokości](media/data-flow/fw2.png)
 
-5. Skonfiguruj transformację źródłową, aby korzystała z nowego zestawu danych, który będzie tekstem rozdzielanym typem
+5. Skonfiguruj transformację źródłową, aby korzystała z nowego zestawu danych, który będzie typem tekstu rozdzielanego.
 
-6. Nie ustawiaj ogranicznika kolumny ani nagłówków
+6. Nie ustawiaj żadnego ogranicznika kolumny ani nagłówków.
 
-Będziemy po prostu ustawić punkty początkowe i długości dla tej zawartości pliku:
+   Teraz ustawimy pola początkowe i długości dla zawartości tego pliku:
 
-```
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-```
+    ```
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    ```
 
-7. Na karcie projekcja transformacji źródłowej powinna zostać wyświetlona jedna kolumna ciągów o nazwie "Column_1".
+7. Na karcie **projekcja** transformacji źródłowej powinna zostać wyświetlona kolumna ciągów o nazwie *Column_1*.
 
-8. Teraz w kolumnie pochodnej Utwórz nową kolumnę
+8. W kolumnie pochodna Utwórz nową kolumnę.
 
-9. Podajemy proste nazwy kolumn, takie jak Kol1
+9. Podajemy proste nazwy kolumn, takie jak *Kol1*.
 
-10. Następnie w Konstruktorze wyrażeń wpisz:
+10. W Konstruktorze wyrażeń wpisz następujące polecenie:
 
-  ```substring(Column_1,1,4)```
+    ```substring(Column_1,1,4)```
 
-  ![kolumna pochodna](media/data-flow/fwderivedcol1.png)
+    ![Kolumna pochodna](media/data-flow/fwderivedcol1.png)
 
-10. Powtórz tę czynność dla wszystkich kolumn, które należy przeanalizować
+11. Powtórz krok 10 dla wszystkich kolumn, które należy przeanalizować.
 
-12. Kliknij kartę Inspekcja, aby wyświetlić nowe kolumny, które zostaną wygenerowane.
+12. Wybierz kartę **Inspekcja** , aby wyświetlić nowe kolumny, które zostaną wygenerowane:
 
-  ![skontrol](media/data-flow/fwinspect.png)
+    ![skontrol](media/data-flow/fwinspect.png)
 
-13. Użyj opcji Przekształć, aby usunąć wszystkie kolumny, które nie są potrzebne do przekształcenia
+13. Użyj opcji Przekształć, aby usunąć wszystkie kolumny, które nie są potrzebne do przekształcenia:
 
-  ![Wybierz transformację](media/data-flow/fwselect.png)
+    ![Wybierz transformację](media/data-flow/fwselect.png)
 
-14. Na koniec użyj polecenia ujścia, aby wyprowadzić dane do folderu:
+14. Użyj ujścia, aby wyprowadzić dane do folderu:
 
-  ![zbiornik o stałej szerokości](media/data-flow/fwsink.png)
+    ![zbiornik o stałej szerokości](media/data-flow/fwsink.png)
 
-  Oto dane wyjściowe, które będą wyglądać następująco:
+    Oto jak wygląda dane wyjściowe:
 
-  ![Wyjście o stałej szerokości](media/data-flow/fxdoutput.png)
+    ![Wyjście o stałej szerokości](media/data-flow/fxdoutput.png)
 
-  Dane o stałej szerokości są teraz podzielone na cztery znaki i przypisane do Kol1, Col2, Col3, Col4,... Na podstawie powyższego przykładu dzielę dane na 4 kolumny
+  Dane o stałej szerokości są teraz podzielone, z czterema znakami i przypisanymi do Kol1, Col2, Col3, Col4 itd. Na podstawie powyższego przykładu dane są dzielone na cztery kolumny.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Kompiluj resztę logiki przepływu danych przy użyciu [transformacji](concepts-data-flow-overview.md) przepływu danych mapowania
+* Utwórz resztę logiki przepływu danych, korzystając z mapowania [przekształceń](concepts-data-flow-overview.md)przepływów danych.

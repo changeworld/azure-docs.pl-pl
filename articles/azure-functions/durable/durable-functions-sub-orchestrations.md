@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/07/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 74f33a1ce1026424a6cdb97699223aeb5ff8277f
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 7b5e811daecbb7687abe7a37b75e2730d7830c2c
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933143"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983613"
 ---
 # <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Organizowanie podrzędne w Durable Functions (Azure Functions)
 
@@ -22,7 +22,10 @@ Oprócz wywoływania funkcji działania, funkcje programu Orchestrator mogą wyw
 
 Funkcja programu Orchestrator może wywoływać inną funkcję programu Orchestrator, wywołując metody [CallSubOrchestratorAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorAsync_) lub [CallSubOrchestratorWithRetryAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorWithRetryAsync_) w programie .NET albo `callSubOrchestrator` metody lub `callSubOrchestratorWithRetry` w języku JavaScript. W artykule dotyczącym [obsługi błędów & wynagrodzenie](durable-functions-error-handling.md#automatic-retry-on-failure) zawiera więcej informacji na temat automatycznego ponawiania próby.
 
-Funkcje programu sub-Orchestrator zachowują się podobnie jak funkcje działania z perspektywy obiektu wywołującego. Mogą zwrócić wartość, zgłosić wyjątek i może oczekiwać przez nadrzędną funkcję programu Orchestrator.
+Funkcje programu sub-Orchestrator zachowują się podobnie jak funkcje działania z perspektywy obiektu wywołującego. Mogą zwrócić wartość, zgłosić wyjątek i może oczekiwać przez nadrzędną funkcję programu Orchestrator. 
+
+> [!NOTE]
+> Obecnie konieczne jest podanie `instanceId` wartości argumentu w interfejsie API podaranżacji w języku JavaScript.
 
 ## <a name="example"></a>Przykład
 
@@ -107,9 +110,12 @@ module.exports = df.orchestrator(function*(context) {
 
     // Run multiple device provisioning flows in parallel
     const provisioningTasks = [];
+    var id = 0;
     for (const deviceId of deviceIds) {
-        const provisionTask = context.df.callSubOrchestrator("DeviceProvisioningOrchestration", deviceId);
+        const child_id = context.df.instanceId+`:${id}`;
+        const provisionTask = context.df.callSubOrchestrator("DeviceProvisioningOrchestration", deviceId, child_id);
         provisioningTasks.push(provisionTask);
+        id++;
     }
 
     yield context.df.Task.all(provisioningTasks);

@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 694bd3b5f14ac37229763b33fb97c17bd4e573d4
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 4305213d272172cb89bfdd207b6c8106af3f4939
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69893804"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983932"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Utwórz plik parametrów Menedżer zasobów
 
@@ -204,6 +204,6 @@ Jeśli szablon zawiera parametr o takiej samej nazwie jak jeden z parametrów w 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby zrozumieć, jak definiować parametry w szablonie, zobacz [Opis struktury i składni szablonów Azure Resource Manager](resource-group-authoring-templates.md).
+- Aby zrozumieć, jak definiować parametry w szablonie, zobacz [Parametry w szablonach Azure Resource Manager](template-parameters.md).
 - Aby uzyskać więcej informacji o korzystaniu z wartości z magazynu kluczy, zobacz [używanie Azure Key Vault do przekazywania zabezpieczonej wartości parametrów podczas wdrażania](resource-manager-keyvault-parameter.md).
-
+- Aby uzyskać więcej informacji na temat parametrów, zobacz [Parametry w szablonach Azure Resource Manager](template-parameters.md).

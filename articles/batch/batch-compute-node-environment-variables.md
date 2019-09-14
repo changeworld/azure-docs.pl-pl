@@ -9,14 +9,14 @@ ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 08/13/2019
+ms.date: 09/12/2019
 ms.author: lahugh
-ms.openlocfilehash: 916dceb7c5e4314df98407b4e8fa4ed75cdb308c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 995dfeaf26180b74f135ed2b74fa40faf3a12c08
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095280"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70958786"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Zmienne środowiskowe środowiska uruchomieniowego Azure Batch
 
@@ -48,7 +48,7 @@ Wiersze poleceń wykonywane przez zadania w węzłach obliczeniowych nie są uru
 |-----------------------------------|--------------------------------------------------------------------------|--------------|---------|
 | AZ_BATCH_ACCOUNT_NAME           | Nazwa konta wsadowego, do którego należy zadanie.                  | Wszystkie zadania.   | mybatchaccount |
 | AZ_BATCH_ACCOUNT_URL            | Adres URL konta wsadowego. | Wszystkie zadania. | `https://myaccount.westus.batch.azure.com` |
-| AZ_BATCH_APP_PACKAGE            | Prefiks wszystkich zmiennych środowiskowych pakietu aplikacji. Na przykład jeśli aplikacja "foo" w wersji "1" jest zainstalowana w puli, zmienna środowiskowa to AZ_BATCH_APP_PACKAGE_FOO_1. AZ_BATCH_APP_PACKAGE_FOO_1 wskazuje lokalizację, do której pakiet został pobrany (folder). | Dowolne zadanie ze skojarzonym pakietem aplikacji. Dostępne również dla wszystkich zadań, jeśli węzeł ma pakiety aplikacji. | AZ_BATCH_APP_PACKAGE_FOO_1 |
+| AZ_BATCH_APP_PACKAGE            | Prefiks wszystkich zmiennych środowiskowych pakietu aplikacji. Na przykład jeśli aplikacja "foo" w wersji "1" jest zainstalowana w puli, zmienna środowiskowa to AZ_BATCH_APP_PACKAGE_FOO_1. AZ_BATCH_APP_PACKAGE_FOO_1 wskazuje lokalizację, do której pakiet został pobrany (folder). W przypadku używania domyślnej wersji pakietu aplikacji należy użyć zmiennej środowiskowej AZ_BATCH_APP_PACKAGE bez numerów wersji. | Dowolne zadanie ze skojarzonym pakietem aplikacji. Dostępne również dla wszystkich zadań, jeśli węzeł ma pakiety aplikacji. | AZ_BATCH_APP_PACKAGE_FOO_1 |
 | AZ_BATCH_AUTHENTICATION_TOKEN   | Token uwierzytelniania, który udziela dostępu do ograniczonego zestawu operacji usługi Batch. Ta zmienna środowiskowa jest obecna tylko wtedy, gdy [authenticationTokenSettings](/rest/api/batchservice/task/add#authenticationtokensettings) są ustawiane podczas [dodawania zadania](/rest/api/batchservice/task/add#request-body). Wartość tokenu jest używana w interfejsie API usługi Batch jako poświadczenia do tworzenia klienta usługi Batch, takiego jak [BatchClient. Open () .NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.batchclient.open#Microsoft_Azure_Batch_BatchClient_Open_Microsoft_Azure_Batch_Auth_BatchTokenCredentials_). | Wszystkie zadania. | Token dostępu OAuth2 |
 | AZ_BATCH_CERTIFICATES_DIR       | Katalog w [katalogu roboczym zadania][files_dirs] , w którym certyfikaty są przechowywane dla węzłów obliczeniowych systemu Linux. Ta zmienna środowiskowa nie ma zastosowania do węzłów obliczeniowych systemu Windows.                                                  | Wszystkie zadania.   |  /mnt/batch/tasks/workitems/batchjob001/job-1/task001/certs |
 | AZ_BATCH_HOST_LIST              | Lista węzłów, które są przydzielono do [zadania o wiele wystąpień][multi_instance] w formacie `nodeIP,nodeIP`. | Podstawowe i podrzędne podzadania. | `10.0.0.4,10.0.0.5` |

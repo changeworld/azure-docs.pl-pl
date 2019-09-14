@@ -9,12 +9,12 @@ ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 03/29/2019
-ms.openlocfilehash: bb1443afa14f2a23b807af52ab8fef6ac41ea200
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
-ms.translationtype: HT
+ms.openlocfilehash: d6cf19a07829afea924d3d799b1309cfc5f6329f
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934032"
+ms.locfileid: "70959965"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Uwierzytelnianie i dostęp do zasobów za pomocą tożsamości zarządzanych w Azure Logic Apps
 
@@ -23,7 +23,7 @@ Aby uzyskać dostęp do zasobów w innych dzierżawach usługi Azure Active Dire
 > [!NOTE]
 > Aplikacja logiki może używać zarządzanych tożsamości tylko z łącznikami obsługującymi zarządzane tożsamości. Obecnie tylko łącznik protokołu HTTP obsługuje tożsamości zarządzane.
 >
-> Obecnie można korzystać z maksymalnie 10 przepływów pracy aplikacji logiki z tożsamościami zarządzanymi przez system w każdej subskrypcji platformy Azure.
+> Obecnie można korzystać z do 100 przepływów pracy aplikacji logiki z tożsamościami zarządzanymi przez system w każdej subskrypcji platformy Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -76,7 +76,7 @@ Aby zautomatyzować tworzenie i wdrażanie zasobów platformy Azure, takich jak 
 }
 ```
 
-Przykład:
+Na przykład:
 
 ```json
 {
@@ -168,7 +168,7 @@ Po skonfigurowaniu aplikacji logiki za pomocą zarządzanej tożsamości przypis
    > 
    > We właściwości **odbiorców** wartość identyfikatora zasobu musi być dokładnie zgodna z oczekiwaniami usługi Azure AD, w tym wszystkich wymaganych końcowych ukośników. 
    > Te wartości identyfikatorów zasobów można znaleźć w tej [tabeli opisującej usługi platformy Azure, które obsługują usługę Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). 
-   > Jeśli na przykład używasz identyfikatora zasobu usługi Azure zasobów Manager, upewnij się, że identyfikator URI ma końcowy ukośnik.
+   > Jeśli na przykład używasz identyfikatora zasobu Azure Resource Manager, upewnij się, że identyfikator URI ma końcowy ukośnik.
 
 1. Kontynuuj tworzenie aplikacji logiki w odpowiedni sposób.
 

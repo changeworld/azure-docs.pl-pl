@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 2e79f38fb6495d75e0438fa3622cc226886c0773
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: aabcf7ac6c7bf14264178831bb3e4f6670d29984
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885547"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960909"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Skalowanie klastrów usługi Azure HDInsight
 
@@ -37,7 +37,7 @@ Firma Microsoft udostępnia następujące narzędzia do skalowania klastrów:
 |[Interfejs wiersza polecenia platformy Azure](hdinsight-administer-use-command-line.md)|klaster usługi Azure HDInsight \<zmiana rozmiaru klastraname > \<liczba wystąpień docelowych > |
 |[Azure Portal](https://portal.azure.com)|Otwórz okienko klastra usługi HDInsight, wybierz pozycję **rozmiar klastra** w menu po lewej stronie, a następnie w okienku rozmiar klastra wpisz liczbę węzłów procesu roboczego i wybierz pozycję Zapisz.|  
 
-![Skaluj klaster](./media/hdinsight-scaling-best-practices/scale-cluster-blade.png)
+![Skaluj klaster](./media/hdinsight-scaling-best-practices/scale-cluster-blade1.png)
 
 Korzystając z dowolnej z tych metod, można skalować klaster usługi HDInsight w górę lub w dół w ciągu kilku minut.
 
@@ -112,7 +112,7 @@ Aby wyświetlić listę oczekujących i uruchomionych zadań, można użyć **in
 3. Z poziomu interfejsu użytkownika Ambari wybierz pozycję **przędza** na liście usług w menu po lewej stronie.  
 4. Na stronie PRZĘDZa wybierz pozycję **szybkie linki** i umieść kursor nad aktywnym węzłem głównym, a następnie wybierz pozycję **interfejs użytkownika usługi ResourceManager**.
 
-    ![ResourceManager UI](./media/hdinsight-scaling-best-practices/resourcemanager-ui.png)
+    ![ResourceManager UI](./media/hdinsight-scaling-best-practices/resource-manager-ui1.png)
 
 Dostęp do interfejsu użytkownika programu ResourceManager można uzyskać `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster`bezpośrednio za pomocą narzędzia.
 
@@ -126,7 +126,7 @@ Aby ręcznie skasować tę uruchomioną aplikację, wykonaj następujące polece
 yarn application -kill <application_id>
 ```
 
-Na przykład:
+Przykład:
 
 ```bash
 yarn application -kill "application_1499348398273_0003"

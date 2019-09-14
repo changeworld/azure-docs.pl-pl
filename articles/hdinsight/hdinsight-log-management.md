@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: 5264491220a4b0756a2a9f0a96aae4ed67809618
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 4e9a6a9ca435971d64ec8f59203a518287e6db4e
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879488"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960981"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Zarządzanie dziennikami klastra usługi HDInsight
 
@@ -79,11 +79,11 @@ Apache Ambari upraszcza zarządzanie, konfigurację i monitorowanie klastra usł
 
 Aby otworzyć listę widoków usług, wybierz okienko **widoki Ambari** na stronie Azure portal usługi HDInsight.  Ta lista różni się w zależności od zainstalowanych bibliotek.  Na przykład można zobaczyć Menedżera kolejki PRZĘDZy, widok Hive i widok tez.  Wybierz łącze do usługi, aby wyświetlić informacje o konfiguracji i usłudze.  Na stronie **stos i wersja** interfejsu użytkownika Ambari dostępne są informacje na temat konfiguracji usługi klastra i historii wersji usługi. Aby przejść do tej sekcji interfejsu użytkownika Ambari, wybierz menu **administrator** , a następnie kliknij **stosy i wersje**.  Wybierz kartę **wersje** , aby wyświetlić informacje o wersji usługi.
 
-![Stos i wersje](./media/hdinsight-log-management/stack-versions.png)
+![Stos i wersje](./media/hdinsight-log-management/ambari-stack-versions.png)
 
-Za pomocą interfejsu użytkownika Ambari można pobrać konfigurację dla dowolnych (lub wszystkich) usług działających na określonym hoście (lub węźle) w klastrze.  Wybierz menu **hosty** , a następnie link do hosta zainteresowania. Na stronie tego hosta wybierz przycisk **Akcje hosta** , a następnie **Pobierz konfiguracji klienta**. 
+Za pomocą interfejsu użytkownika Ambari można pobrać konfigurację dla dowolnych (lub wszystkich) usług działających na określonym hoście (lub węźle) w klastrze.  Wybierz menu **hosty** , a następnie link do hosta zainteresowania. Na stronie tego hosta wybierz przycisk **Akcje hosta** , a następnie **Pobierz konfiguracji klienta**.
 
-![Konfiguracje klienta hosta](./media/hdinsight-log-management/client-configs.png)
+![Konfiguracje klienta hosta](./media/hdinsight-log-management/download-client-configs.png)
 
 ### <a name="view-the-script-action-logs"></a>Wyświetlanie dzienników akcji skryptu
 

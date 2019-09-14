@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: atsenthi
-ms.openlocfilehash: 07b26fb86392b26ef45c4370741a32efc7dc436b
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: f2621abcb2bac55ff123a11efa0ae9a082a1acbd
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640928"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70968261"
 ---
 # <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>Udzielanie zarządzanej tożsamości aplikacji Service Fabric do zasobów platformy Azure (wersja zapoznawcza)
 
@@ -69,7 +69,5 @@ Poniższy przykład ilustruje udzielanie dostępu do magazynu za pośrednictwem 
 Aby uzyskać więcej informacji, zobacz temat [magazyny — aktualizacje zasad dostępu](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy).
 
 ## <a name="next-steps"></a>Następne kroki
-
 * [Wdrażanie aplikacji Service Fabric platformy Azure przy użyciu tożsamości zarządzanej przypisanej do systemu](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
-
 * [Wdrażanie aplikacji Service Fabric platformy Azure przy użyciu tożsamości zarządzanej przypisanej przez użytkownika](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)

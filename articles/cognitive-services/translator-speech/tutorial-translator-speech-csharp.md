@@ -3,20 +3,20 @@ title: 'Samouczek: interfejs API tłumaczenia mowy w usłudze Translator dla ję
 titleSuffix: Azure Cognitive Services
 description: Użyj interfejsu API tłumaczenia mowy w usłudze Translator, aby przetłumaczyć tekst w czasie rzeczywistym.
 services: cognitive-services
-author: swmachan
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: tutorial
 ms.date: 3/5/2018
-ms.author: swmachan
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a3853dd810182948e12b578c33b8cb91bef4b1cf
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 669322aefb152729cc120abc0d7a52ce9d1151da
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445582"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965280"
 ---
 # <a name="tutorial-translator-speech-application-in-c"></a>Samouczek: Aplikacja z użyciem interfejsu API tłumaczenia mowy w usłudze Translator w języku C#
 
@@ -34,13 +34,13 @@ Plik rozwiązania Visual Studio dla tej aplikacji jest [dostępny w witrynie Git
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W tym samouczku należy dowolnej wersji programu Visual Studio 2019 r, w tym Community Edition.
+W tym samouczku potrzebna jest jakakolwiek wersja programu Visual Studio 2019, w tym wersja Community.
 
 Rozwiązanie programu Visual Studio kompiluje również instalator aplikacji. Do obsługi tej funkcji potrzebne są również [zestaw narzędzi programu WiX](http://wixtoolset.org/) i [rozszerzenie programu Visual Studio zestawu narzędzi programu WiX](https://marketplace.visualstudio.com/items?itemName=RobMensching.WixToolsetVisualStudio2017Extension).
 
 Potrzebny jest również klucz subskrypcji usługi tłumaczenia mowy w usłudze Translator, który możesz uzyskać z poziomu pulpitu nawigacyjnego platformy Microsoft Azure. Narzędzie dostępne jest w bezpłatnej warstwie cenowej, która umożliwia przetłumaczenie maksymalnie 10 godzin mowy miesięcznie bez żadnych opłat. Do celów tego samouczka ta warstwa jest wystarczająca.
 
-Innych firm [biblioteki na składnik JSON.NET](https://www.newtonsoft.com/json) (z Newtonsoft) jest również wymagany. Ten zestaw zostanie automatycznie zainstalowany przez narzędzie NuGet w przypadku zaznaczenia obu pól wyboru Package restore (Przywracanie pakietów) w opcjach programu Visual Studio.
+Wymagana jest również [biblioteka JSON.NET](https://www.newtonsoft.com/json) innej firmy (z Newtonsoft). Ten zestaw zostanie automatycznie zainstalowany przez narzędzie NuGet w przypadku zaznaczenia obu pól wyboru Package restore (Przywracanie pakietów) w opcjach programu Visual Studio.
 
 ## <a name="trying-the-translation-app"></a>Aplikacja do tłumaczenia — pierwsze kroki
 
@@ -428,7 +428,7 @@ Po uwierzytelnieniu ta metoda tworzy wystąpienie klasy `SpeechClient`. Klasa `S
 
 Dane binarne to dane audio (dane wyjściowe po zamianie tekstu na mowę) wysyłane przez usługę, gdy włączona jest opcja TTS. Dane tekstowe to częściowe lub pełne tłumaczenie tekstu mówionego. Po zainicjowaniu metoda podłącza funkcje umożliwiające obsługę tych komunikatów: dźwiękowych poprzez przechowywanie ich do późniejszego odtworzenia oraz tekstowych poprzez wyświetlenie ich w oknie.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Ten kod przykładowy to aplikacja bogata w funkcje, która pokazuje, jak korzystać z interfejsu API tłumaczenia mowy w usłudze Translator. Dlatego zawiera wiele elementów, które należy rozumieć. Tutaj pokazane zostały najważniejsze z nich. Odnośnie do reszty warto ustawić kilka punktów przerwania w programie Visual Studio i przejść przez proces tłumaczenia. Gdy zapoznasz się już z działaniem aplikacji przykładowej, możesz rozpocząć korzystanie z funkcji tłumaczenia mowy w usłudze Translator we własnych aplikacjach.
 

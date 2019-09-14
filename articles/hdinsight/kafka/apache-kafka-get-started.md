@@ -4,15 +4,16 @@ description: W tym przewodniku Szybki start dowiesz się, jak utworzyć klaster 
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 9fa6ad3c52e9b01fe9a62a2de52f62b1b1a95aa8
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: e0a2eecaa4b2f03fa12353854e75b9fda097675d
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779524"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960324"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Szybki start: Tworzenie klastra Apache Kafka w usłudze Azure HDInsight przy użyciu Azure Portal
 
@@ -38,7 +39,7 @@ Aby utworzyć klaster platformy Apache Kafka w usłudze HDInsight, wykonaj nast�
 
 2. W menu po lewej stronie przejdź do **+ Tworzenie** > usługi**HDInsight** **analizy** > zasobów.
    
-    ![Tworzenie klastra usługi HDInsight](./media/apache-kafka-get-started/create-hdinsight.png)
+    ![Tworzenie klastra usługi HDInsight](./media/apache-kafka-get-started/create-hdinsight-cluster.png)
 
 3. W bloku **Podstawowe** wprowadź lub wybierz następujące informacje:
 
@@ -49,7 +50,7 @@ Aby utworzyć klaster platformy Apache Kafka w usłudze HDInsight, wykonaj nast�
     
    Wybierz pozycję __Typ klastra__, aby wyświetlić okno **Konfiguracja klastra**.
    
-   ![Konfiguracja podstawowa klastra platformy Apache Kafka w usłudze HDInsight](./media/apache-kafka-get-started/custom-basics-kafka.png)
+   ![Konfiguracja podstawowa klastra platformy Apache Kafka w usłudze HDInsight](./media/apache-kafka-get-started/custom-basics-kafka1.png)
 
 4. W obszarze __Konfiguracja klastra__wybierz następujące wartości:
 
@@ -60,7 +61,7 @@ Aby utworzyć klaster platformy Apache Kafka w usłudze HDInsight, wykonaj nast�
 
     Wybierz pozycję **Wybierz** , aby zapisać ustawienia typu klastra i wrócić do __podstaw__.
 
-    ![Wybierz typ klastra](./media/apache-kafka-get-started/kafka-cluster-type.png)
+    ![Wybierz typ klastra](./media/apache-kafka-get-started/apache-kafka-cluster-type.png)
 
 5. W bloku __Podstawowe__ wprowadź lub wybierz następujące informacje:
 
@@ -98,7 +99,7 @@ Aby utworzyć klaster platformy Apache Kafka w usłudze HDInsight, wykonaj nast�
 
     Wpis **liczba dysków na węzeł procesu roboczego** pozwala konfigurować skalowalność platformy Apache Kafka w usłudze HDInsight. Do przechowywania danych platforma Apache Kafka w usłudze HDInsight używa dysku lokalnego maszyn wirtualnych w klastrze. Ze względu na duże obciążenie we/wy platformy Apache Kafka używana jest funkcja [Dyski zarządzane platformy Azure](../../virtual-machines/windows/managed-disks-overview.md), która zapewnia wysoką przepływność i więcej miejsca do magazynowania w każdym węźle. Można wybrać typ dysku zarządzanego __Standardowy__ (HDD) lub __Premium__ (SSD). Typ dysku zależy od rozmiaru maszyny wirtualnej używanej przez węzły procesu roboczego (brokery platformy Apache Kafka). Dyski w warstwie Premium są używane automatycznie przez maszyny wirtualne serii DS i GS. Wszystkie pozostałe typy maszyn wirtualnych korzystają z dysków standardowych.
 
-   ![Ustawianie rozmiaru klastra platformy Apache Kafka](./media/apache-kafka-get-started/kafka-cluster-size.png)
+   ![Ustawianie rozmiaru klastra platformy Apache Kafka](./media/apache-kafka-get-started/apace-kafka-cluster-size.png)
 
 10. W bloku __Ustawienia zaawansowane__ wybierz przycisk __Dalej__, aby kontynuować z ustawieniami domyślnymi.
 
@@ -304,7 +305,7 @@ Aby usunąć grupę zasobów za pomocą witryny Azure Portal:
 > 
 > Usunięcie platformy Apache Kafka w klastrze usługi HDInsight powoduje usunięcie wszystkich danych przechowywanych na platformie Kafka.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Używanie systemu Apache Spark z platformą Apache Kafka](../hdinsight-apache-kafka-spark-structured-streaming.md)

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 3ff9cfbd312e672fb89afb4838ad9f8aa6574370
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: d31eb9ccb5df9137bebb877cce169cf657113d30
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900004"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967758"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Zarządzanie klastrem usług ML w usłudze Azure HDInsight
 
@@ -31,7 +31,7 @@ W tym artykule dowiesz się, jak zarządzać istniejącym klastrem usług w usł
 
 Można włączyć wielu współbieżnych użytkowników klastra usługi ML w usłudze HDInsight, dodając więcej użytkowników do węzła brzegowego, na którym działa wersja Community RStudio. Podczas tworzenia klastra usługi HDInsight musisz podać dwóch użytkowników: użytkownika HTTP i użytkownika SSH:
 
-![Równoczesny użytkownik 1](./media/r-server-hdinsight-manage/concurrent-users-1.png)
+![Równoczesny użytkownik 1](./media/r-server-hdinsight-manage/hdi-concurrent-users1.png)
 
 - **Nazwa użytkownika logowania klastra**: użytkownik HTTP uwierzytelniany za pośrednictwem bramy HDInsight, która umożliwia ochronę utworzonych klastrów usługi HDInsight. Ten użytkownik HTTP służy do uzyskiwania dostępu do interfejsu użytkownika Apache Ambari, Apache Hadoop interfejsu użytkownika PRZĘDZy oraz innych składników interfejsu użytkownika.
 - **Nazwa użytkownika protokołu SSH (Secure Shell)** : użytkownik SSH zapewniający dostęp do klastra za pośrednictwem protokołu Secure Shell. Jest to użytkownik systemu Linux, który ma dostęp do wszystkich węzłów głównych, węzłów procesu roboczego oraz węzłów krawędzi. Pozwala to na korzystanie z dowolnego węzła klastra zdalnego za pomocą protokołu Secure Shell.
@@ -66,7 +66,7 @@ Aby dodać użytkownika do węzła krawędzi, uruchom te polecenia:
 
 Poniższy zrzut ekranu przedstawia dane wyjściowe.
 
-![Równoczesny użytkownik 3](./media/r-server-hdinsight-manage/concurrent-users-2.png)
+![Równoczesny użytkownik 3](./media/r-server-hdinsight-manage/hdi-concurrent-users2.png)
 
 Po wyświetleniu monitu o podanie "bieżące hasło protokołu Kerberos:" naciśnij klawisz **Enter** , aby go zignorować. Podanie opcji `-m` w poleceniu `useradd` powoduje, że system utworzy folder macierzysty użytkownika, wymagany przez program RStudio Community.
 

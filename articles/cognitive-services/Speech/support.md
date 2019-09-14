@@ -1,32 +1,32 @@
 ---
-title: Obsługa funkcji rozpoznawania mowy Bing | Dokumentacja firmy Microsoft
+title: Obsługa rozpoznawanie mowy Bing | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: Obsługa rozpoznawania mowy Bing.
+description: Obsługa rozpoznawanie mowy Bing.
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/08/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 3bd996f23c7253dde0a55198068d8535a62bf127
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d1b185cf6f69a547c50c8d2cf0e8b5f0da39444e
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60514936"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965636"
 ---
 # <a name="support"></a>Pomoc techniczna
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
-Jeśli masz pytania, opinię lub sugestie dotyczące funkcji rozpoznawania mowy Bing, użytkownik może się z nami za pośrednictwem witryny GitHub.
- - [Pytania związane z interfejsu API REST](https://github.com/Azure-Samples/SpeechToText-REST/issues)
+Jeśli masz pytania, opinie lub sugestie dotyczące rozpoznawanie mowy Bing, możesz skontaktować się z nami za pośrednictwem usługi GitHub.
+ - [Pytania dotyczące interfejsu API REST](https://github.com/Azure-Samples/SpeechToText-REST/issues)
  - [Biblioteka języka JavaScript](https://github.com/Azure-Samples/Cognitive-Speech-STT-JavaScript/issues)
- - [C# pulpitu biblioteki pytania związane z](https://github.com/Azure-Samples/Cognitive-Speech-STT-Windows/issues)
- - [C# dotyczące biblioteki pytania dotyczące usługi](https://github.com/Azure-Samples/Cognitive-Speech-STT-ServiceLibrary/issues)
- - [Biblioteka języka Java na pytania związane z systemem Android](https://github.com/Azure-Samples/Cognitive-Speech-STT-Android/issues)
- - [Biblioteki języka Objective-C w systemie iOS](https://github.com/Azure-Samples/Cognitive-Speech-STT-iOS/issues)
- - Pytania ogólne: [Forum usługi cognitive Services w witrynie UserVoice](https://cognitive.uservoice.com/)
+ - [C#pytania dotyczące biblioteki pulpitu](https://github.com/Azure-Samples/Cognitive-Speech-STT-Windows/issues)
+ - [C#pytania dotyczące biblioteki usług](https://github.com/Azure-Samples/Cognitive-Speech-STT-ServiceLibrary/issues)
+ - [Biblioteka języka Java na pytaniach dotyczących systemu Android](https://github.com/Azure-Samples/Cognitive-Speech-STT-Android/issues)
+ - [Biblioteka zamierzania języka C w systemie iOS](https://github.com/Azure-Samples/Cognitive-Speech-STT-iOS/issues)
+ - Pytania ogólne: [Forum usługi Cognitive Services UserVoice](https://cognitive.uservoice.com/)

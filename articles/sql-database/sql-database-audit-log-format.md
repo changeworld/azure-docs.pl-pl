@@ -7,16 +7,16 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: vainolo
-ms.author: arib
+author: barmichal
+ms.author: mibar
 ms.reviewer: vanto
 ms.date: 01/03/2019
-ms.openlocfilehash: 334d277370bb8d6678679c887f6a2b89d65652c3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 19795d5dc3998f601de8121176e52ef9dc83ee47
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569469"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70958453"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL Database format dziennika inspekcji
 
@@ -38,7 +38,7 @@ Zdarzenia inspekcji są zapisywane w przestrzeni nazw i centrum zdarzeń, które
 
 ### <a name="log-analytics"></a>Log Analytics
 
-Zdarzenia inspekcji są zapisywane w obszarze roboczym log Analytics zdefiniowanym podczas konfigurowania inspekcji `AzureDiagnostics` do tabeli z kategorią. `SQLSecurityAuditEvents` Aby uzyskać dodatkowe przydatne informacje na temat języka i poleceń wyszukiwania Log Analytics, zobacz [log Analytics informacje](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search)o wyszukiwaniu.
+Zdarzenia inspekcji są zapisywane w obszarze roboczym log Analytics zdefiniowanym podczas konfigurowania inspekcji `AzureDiagnostics` do tabeli z kategorią. `SQLSecurityAuditEvents` Aby uzyskać dodatkowe przydatne informacje na temat języka i poleceń wyszukiwania Log Analytics, zobacz [log Analytics informacje o wyszukiwaniu](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search).
 
 ## <a id="subheading-1"></a>Pola dziennika inspekcji
 
@@ -78,7 +78,7 @@ Zdarzenia inspekcji są zapisywane w obszarze roboczym log Analytics zdefiniowan
 | session_id | session_id_d | Identyfikator sesji, w której wystąpiło zdarzenie | smallint | int |
 | session_server_principal_name | session_server_principal_name_s | Podmiot zabezpieczeń serwera dla sesji | bazy | ciąg |
 | Merge | statement_s | Instrukcja T-SQL, która została wykonana (jeśli istnieje) | nvarchar (4000) | ciąg |
-| powiodło się | succeeded_s | Wskazuje, czy akcja, która wywołała zdarzenie, zakończyła się pomyślnie. W przypadku zdarzeń innych niż logowanie i Partia zadań ten raport dotyczy tylko tego, czy sprawdzenie uprawnień zakończyło się powodzeniem czy niepowodzeniem, a nie operacji. 1 = sukces, 0 = niepowodzenie | bit | ciąg |
+| Powiodło się | succeeded_s | Wskazuje, czy akcja, która wywołała zdarzenie, zakończyła się pomyślnie. W przypadku zdarzeń innych niż logowanie i Partia zadań ten raport dotyczy tylko tego, czy sprawdzenie uprawnień zakończyło się powodzeniem czy niepowodzeniem, a nie operacji. 1 = sukces, 0 = niepowodzenie | bit | ciąg |
 | target_database_principal_id | target_database_principal_id_d | Podmiot zabezpieczeń bazy danych jest operacją GRANT/DENY/REVOKE. 0, jeśli nie dotyczy | int | int |
 | target_database_principal_name | target_database_principal_name_s | Użytkownik docelowy akcji. Wartość NULL, jeśli nie dotyczy | ciąg | ciąg |
 | target_server_principal_id | target_server_principal_id_d | Podmiot zabezpieczeń serwera, na którym jest wykonywana operacja GRANT/DENY/REVOKE. Zwraca wartość 0, jeśli nie dotyczy | int | int |

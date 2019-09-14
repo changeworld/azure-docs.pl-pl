@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: bahariri
-ms.openlocfilehash: a7271eb6b8cbc8a117b5a8e75edfe02985ec3452
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 43a32177280361bb0c2a433af0cb5dd3cfc6b9d3
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60821533"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967601"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>Przy użyciu narzędzia MirrorMaker platformy Kafka z usługą Event Hubs dla platformy Apache Kafka
 
@@ -85,7 +85,7 @@ Zaktualizuj plik konfiguracji konsumenta `source-kafka.config`, który informuje
 
 ##### <a name="source-kafkaconfig"></a>kafka.config źródła
 
-```xml
+```
 bootstrap.servers={SOURCE.KAFKA.IP.ADDRESS1}:{SOURCE.KAFKA.PORT1},{SOURCE.KAFKA.IP.ADDRESS2}:{SOURCE.KAFKA.PORT2},etc
 group.id=example-mirrormaker-group
 exclude.internal.topics=true
@@ -98,7 +98,7 @@ Teraz zaktualizować plik konfiguracyjny producenta `mirror-eventhub.config`, kt
 
 ##### <a name="mirror-eventhubconfig"></a>dublowanie eventhub.config
 
-```xml
+```
 bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093
 client.id=mirror_maker_producer
 
@@ -121,12 +121,12 @@ Aby sprawdzić, czy zdarzenia osiągają do Centrum zdarzeń z obsługą platfor
 Przy użyciu narzędzia MirrorMaker, uruchamianie wszelkie zdarzenia wysyłane do źródła klastra platformy Kafka są odbierane przez klaster platformy Kafka i Kafka dublowanego włączono usługę Centrum zdarzeń. Przy użyciu narzędzia MirrorMaker i punktu końcowego usługi Event Hubs Kafka, można migrować istniejący potok Kafka do zarządzanej usługi Azure Event Hubs, bez zmieniania istniejącego klastra lub przerywania dowolnego przepływu bieżące dane.
 
 ## <a name="samples"></a>Przykłady
-Zobacz poniższe przykłady w witrynie GitHub:
+Zobacz następujące przykłady w witrynie GitHub:
 
-- [Przykładowy kod w tym samouczku w witrynie GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker)
-- [Azure Event Hubs platformy Kafka narzędzia MirrorMaker uruchomionych w wystąpieniu kontenera platformy Azure](https://github.com/djrosanova/EventHubsMirrorMaker)
+- [Przykładowy kod dla tego samouczka w witrynie GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker)
+- [Usługa Azure Event Hubs Kafka narzędzia MirrorMaker uruchomiona w wystąpieniu kontenera platformy Azure](https://github.com/djrosanova/EventHubsMirrorMaker)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]

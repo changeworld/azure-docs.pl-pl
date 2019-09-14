@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1f5f2dc6babbca219f0efbb1d7013d4e6e3270e6
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 1533ceebcda15c45a71c04580c35432de4125ccd
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873306"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984982"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrowanie maszyn wirtualnych usług Amazon Web Services (AWS) na platformę Azure
 
@@ -117,6 +117,7 @@ Na stronie **Cel ochrony** wybierz następujące wartości:
 |---------|-----------|
 | Gdzie znajdują się maszyny? |Wybierz pozycję **Lokalnie**.|
 | Gdzie chcesz zreplikować maszyny? |Wybierz pozycję **Do platformy Azure**.|
+| Czy przeprowadzasz migrację? | Wybierz pozycję **tak**, a następnie zaznacz pole wyboru obok pozycji **underdstand, ale chcę kontynuować Azure Site Recovery.**
 | Czy maszyny są zwirtualizowane? |Wybierz pozycję **Bez wirtualizacji / inne**.|
 
 Gdy wszystko będzie gotowe, wybierz przycisk **OK**, aby przejść do następnej sekcji.

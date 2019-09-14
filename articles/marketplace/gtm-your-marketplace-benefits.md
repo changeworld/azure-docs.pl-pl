@@ -5,14 +5,14 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 09/10/2019
 ms.author: v-qiwe
-ms.openlocfilehash: d1a0f3ea46922b8a684c269c13df068e0c879cbd
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: c09e685d10764470d328e7c66293551287b5b1b2
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309045"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962676"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Twoje komercyjne korzyści z witryny Marketplace
 
@@ -74,7 +74,7 @@ Wszyscy partnerzy, którzy posiadają ofertę na żywo, będą mogli korzystać 
 
 Szczegółowe opisy wszystkich tych korzyści można znaleźć na [talii programu w portalu Marketplace](https://aka.ms/marketplacerewards).
 
-Oprócz korzyści płynących partnerzy biznesowi korzystający z systemu Dynamics oferuje do Microsoft AppSource dostęp do dodatkowych programów programistycznych za pomocą programu [ISV Connect](https://partner.microsoft.com/en-us/solutions/business-applications/isv-overview). Obejmuje to obsługę techniczną, marketingową i sprzedażową, wyspecjalizowaną dla potrzeb partnerów aplikacji branżowych.
+Oprócz korzyści płynących partnerzy biznesowi korzystający z systemu Dynamics oferuje do Microsoft AppSource dostęp do dodatkowych programów programistycznych za pomocą programu [ISV Connect](https://partner.microsoft.com/solutions/business-applications/isv-overview). Obejmuje to obsługę techniczną, marketingową i sprzedażową, wyspecjalizowaną dla potrzeb partnerów aplikacji branżowych.
 
 ## <a name="marketplace-rewards-requirements-and-restrictions"></a>Wymagania i ograniczenia dotyczące witryny Marketplace
 
@@ -101,9 +101,9 @@ Transakcje, które są udowodnione jako fałszywe, nie będą wliczane do [warst
 
 ## <a name="next-steps"></a>Następne kroki
 
-Jeśli Twoja oferta została utworzona w portal Cloud Partner, zaloguj się w celu utworzenia lub skonfigurowania oferty.
+Jeśli Twoja oferta została utworzona w [Portal Cloud partner](https://cloudpartner.azure.com), zaloguj się w celu utworzenia lub skonfigurowania oferty.
 
-Jeśli Twoja oferta została utworzona w centrum partnerskim, zaloguj się w celu utworzenia lub skonfigurowania oferty.
+Jeśli Twoja oferta została utworzona w [centrum partnerskim](https://partner.microsoft.com/en-us/dashboard/commercial-marketplace/overview), zaloguj się w celu utworzenia lub skonfigurowania oferty.
 
 Przejrzyj [zasoby samoobsługowe dostępne dla Ciebie](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/).
 

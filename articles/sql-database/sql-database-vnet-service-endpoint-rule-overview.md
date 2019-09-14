@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 08/27/2019
-ms.openlocfilehash: d924f0eb89984fbe77f94eff553d00a25b4b7a3a
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 485c79bab90295cf9af9ef1dbbc209d46931a485
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309620"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984939"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Korzystanie z punktów końcowych usługi sieci wirtualnej i reguł dla serwerów baz danych
 
@@ -244,7 +244,7 @@ Musisz mieć już podsieć, która jest otagowana przy użyciu konkretnej *nazwy
 3. Ustaw ustawienie **Zezwalaj na dostęp do usług platformy Azure** .
 
     > [!IMPORTANT]
-    > W przypadku pozostawienia kontrolki ustawionej na wartość włączone serwer Azure SQL Database akceptuje komunikację z dowolnych podsieci. Pozostawienie kontrolki ustawionej na włączone może być nadmierne dostęp z punktu widzenia zabezpieczeń. Funkcja punktu końcowego usługi Microsoft Azure Virtual Network, w połączeniu z funkcją reguły sieci wirtualnej SQL Database, umożliwia zredukowanie obszaru zabezpieczeń.
+    > Jeśli pozostawisz formant ustawiony na wartość włączone, serwer Azure SQL Database akceptuje komunikację z dowolnych podsieci w ramach granicy platformy Azure, tj. z jednego z adresów IP, który jest rozpoznawany jako te w ramach zakresów zdefiniowanych dla centrów danych platformy Azure. Pozostawienie kontrolki ustawionej na włączone może być nadmierne dostęp z punktu widzenia zabezpieczeń. Funkcja punktu końcowego usługi Microsoft Azure Virtual Network, w połączeniu z funkcją reguły sieci wirtualnej SQL Database, umożliwia zredukowanie obszaru zabezpieczeń.
 
 4. Kliknij przycisk **+ Dodaj istniejący** formant, w sekcji **sieci wirtualne** .
 

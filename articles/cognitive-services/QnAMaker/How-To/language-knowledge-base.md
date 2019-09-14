@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 08/20/2019
+ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: 63eb13dd131fcc1c424c02fdac10f531cc9f0282
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 5e50c814fef24aa799549d055ad6496f5bdf05e0
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876628"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961475"
 ---
 # <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>Obsługa języka zawartości bazy wiedzy dla QnA Maker
 
@@ -29,19 +29,11 @@ Język jest rozpoznawany automatycznie z zawartości wyodrębnianych źródeł d
 
     ![Wybierz zasób Azure Search](../media/qnamaker-how-to-language-kb/select-azsearch.png)
 
-1. Wybierz indeks **testkb** . Ten indeks Azure Search jest zawsze pierwszym utworzonym i zawiera zapisaną zawartość wszystkich baz wiedzy w tej usłudze. 
+1. Wybierz pozycję **indeksy**, a następnie wybierz indeks **testkb** . Jest to pierwszy utworzony indeks Azure Search i zawiera zapisaną zawartość wszystkich baz wiedzy w tej usłudze. 
 
-    ![Wybierz test KB](../media/qnamaker-how-to-language-kb/select-testkb.png)
+1. Wybierz **pola** , aby wyświetlić pola w indeksie.
 
-1. Wybierz sekcję **pól** pokazującą szczegóły _testkb_ .
-
-    ![Wybierz pola](../media/qnamaker-how-to-language-kb/selectfields.png)
-
-1. Zaznacz pole wyboru **Analizator** , aby wyświetlić szczegółowe informacje o języku.
-
-    ![Wybór analizatora](../media/qnamaker-how-to-language-kb/select-analyzer.png)
-
-1. Należy sprawdzić, czy _Analizator_ jest ustawiony na określony język. Ten język został automatycznie wykryty podczas kroku tworzenia bazy wiedzy z zaimportowanych plików i adresów URL. Nie można zmienić tego języka po utworzeniu zasobu.
+1. `answer` Kolumna _analizatora_ pól ijestustawionanaokreślonyjęzyk.`questions` Ten język został automatycznie wykryty podczas kroku tworzenia bazy wiedzy z zaimportowanych plików i adresów URL. Nie można zmienić tego języka po utworzeniu zasobu.
 
     ![Wybrany Analizator](../media/qnamaker-how-to-language-kb/selected-analyzer.png)
 

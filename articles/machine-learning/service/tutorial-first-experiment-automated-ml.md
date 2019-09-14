@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/09/2019
-ms.openlocfilehash: 0dd4447736469644875dff914c6284b087be87d0
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: e831b94099a8bdf96710fc8ae8915938bbe997c4
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910219"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984526"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Samouczek: Tworzenie pierwszego modelu klasyfikacji przy użyciu automatycznej uczenia maszynowego
 
@@ -99,7 +99,8 @@ Zobaczysz ekran **wprowadzenie** , ponieważ jest to pierwszy eksperyment z auto
         Format pliku| Lista
         Ogranicznik| Przecinek
         Kodowanie| UTF-8
-        Nagłówki kolumn| Wszystkie pliki mają te same nagłówki pomijają wiersze | Brak
+        Nagłówki kolumn| Wszystkie pliki mają te same nagłówki
+        Pomiń wiersze | Brak
 
         >[!NOTE]
         > W przypadku zaktualizowania dowolnego z ustawień w tym formularzu wersja zapoznawcza będzie odpowiednio aktualizowana.

@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/26/2019
+ms.date: 09/12/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5431dd74629b9ed76a6a072d8ada286ce71a7633
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 7c7aaf911930f83775f66c47377bc68edb059519
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596101"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70958987"
 ---
 # <a name="monitor-server-metrics"></a>Monitorowanie metryk serwera
 
@@ -55,14 +55,18 @@ Użyj tej tabeli, aby określić, które metryki najlepiej sprawdzają się w sc
 |MemoryLimitLow|Pamięć: Limit pamięci — niski|Bajty|Average|Limit braku pamięci z pliku konfiguracji.|
 |MemoryLimitVertiPaq|Pamięć: Limit pamięci — tryb VertiPaq|Bajty|Average|Limit w pamięci z pliku konfiguracji.|
 |MemoryUsage|Pamięć: Użycie pamięci|Bajty|Average|Użycie pamięci przez proces serwera jako używany do obliczania ceny pamięci czyszczącej. Równe licznikowi Process\PrivateBytes i rozmiar danych mapowanych na pamięć, ignorowanie wszelkich pamięci, które zostały zamapowane lub przydzielone przez aparat analityczny w pamięci (VertiPaq) przekraczające limit pamięci aparatu.|
+|private_bytes_metric|Bajty prywatne |Bajty|Average|Całkowita ilość pamięci przydzielona przez proces aparatu Analysis Services i procesy kontenera mashupów, bez uwzględnienia pamięci współdzielonej z innymi procesami.|
+|virtual_bytes_metric|Bajty wirtualne |Bajty|Average|Bieżący rozmiar wirtualnej przestrzeni adresowej używanej przez proces aparatu i procesy kontenera mashupów Analysis Services.|
+|mashup_engine_private_bytes_metric|Liczba prywatnych bajtów aparatu M |Bajty|Average|Łączna ilość pamięci w procesach kontenera programu mashup pamięć została przydzielona, bez uwzględnienia pamięci współdzielonej z innymi procesami.|
+|mashup_engine_virtual_bytes_metric|Liczba bajtów wirtualnych aparatu M |Bajty|Average|Bieżący rozmiar wirtualnej przestrzeni adresowej, z której korzystają procesy kontenera mashupu.|
 |Limit przydziału|Pamięć: Limit przydziału|Bajty|Average|Bieżący limit pamięci (w bajtach). Przydział pamięci jest również nazywany przydziałem pamięci lub rezerwacją pamięci.|
 |QuotaBlocked|Pamięć: Limit przydziału zablokowany|Count|Average|Bieżąca liczba żądań przydziałów blokowanych do momentu zwolnienia innych limitów przydziału pamięci.|
 |VertiPaqNonpaged|Pamięć: Niestronicowana VertiPaq|Bajty|Average|Bajty pamięci zablokowane w zestawie roboczym do użycia przez aparat w pamięci.|
 |VertiPaqPaged|Pamięć: Stronicowana VertiPaq|Bajty|Average|Bajty stronicowanej pamięci w użyciu dla danych w pamięci.|
 |ProcessingPoolJobQueueLength|Długość kolejki zadań puli przetwarzania|Count|Average|Liczba zadań innych niż zadania we/wy w kolejce puli wątków przetwarzania.|
-|RowsConvertedPerSec|W toku: Przekonwertowane wiersze na sekundę|CountPerSecond|Average|Szybkość wierszy przekonwertowanych podczas przetwarzania.|
-|RowsReadPerSec|W toku: Odczytane wiersze na sekundę|CountPerSecond|Average|Współczynnik wierszy odczytanych ze wszystkich relacyjnych baz danych.|
-|RowsWrittenPerSec|W toku: Wiersze zapisywane na sekundę|CountPerSecond|Average|Częstotliwość wierszy zapisywana podczas przetwarzania.|
+|RowsConvertedPerSec|Rozpatrywan Przekonwertowane wiersze na sekundę|CountPerSecond|Average|Szybkość wierszy przekonwertowanych podczas przetwarzania.|
+|RowsReadPerSec|Rozpatrywan Odczytane wiersze na sekundę|CountPerSecond|Average|Współczynnik wierszy odczytanych ze wszystkich relacyjnych baz danych.|
+|RowsWrittenPerSec|Rozpatrywan Wiersze zapisywane na sekundę|CountPerSecond|Average|Częstotliwość wierszy zapisywana podczas przetwarzania.|
 |qpu_metric|QPU|Count|Average|QPU. Zakres 0-100 dla S1, 0-200 dla S2 i 0-400 dla S4|
 |QueryPoolBusyThreads|Wątki zajęte w puli zapytań|Count|Average|Liczba zajętych wątków w puli wątków zapytań.|
 |SuccessfullConnectionsPerSec|Udane połączenia na sekundę|CountPerSecond|Average|Szybkość pomyślnych połączeń.|

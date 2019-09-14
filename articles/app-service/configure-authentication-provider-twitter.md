@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 04/19/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: d49b8bf9c62813023c1a1e06e0f8fc0d7809f48d
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: f7154da76b41198c208d02b8c563ba26ff8101a1
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232058"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983597"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-twitter-login"></a>Jak skonfigurować aplikację App Service do korzystania z logowania do usługi Twitter
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -31,10 +31,10 @@ Aby wykonać procedurę opisaną w tym temacie, musisz mieć konto w usłudze Tw
 ## <a name="register"> </a>Rejestrowanie aplikacji w usłudze Twitter
 1. Zaloguj się do [Azure Portal]i przejdź do swojej aplikacji. Skopiuj **adres URL**. Zostanie ona użyta do skonfigurowania aplikacji usługi Twitter.
 2. Przejdź do witryny sieci Web [Deweloperzy usługi Twitter] , zaloguj się przy użyciu poświadczeń konta w usłudze Twitter, a następnie kliknij pozycję **Utwórz nową aplikację**.
-3. Wpisz **nazwę** i **Opis** nowej aplikacji. Wklej **adres URL** aplikacji do wartości **witryny sieci Web** . Następnie w polu **adres URL wywołania zwrotnego**wpisz adres url aplikacji App Service i dołącz ścieżkę `/.auth/login/aad/callback`. Na przykład `https://contoso.azurewebsites.net/.auth/login/twitter/callback`. Upewnij się, że używasz schematu HTTPS.
+3. Wpisz **nazwę** i **Opis** nowej aplikacji. Wklej **adres URL** aplikacji do wartości **witryny sieci Web** . Następnie w polu **adres URL wywołania zwrotnego**wpisz adres url aplikacji App Service i dołącz ścieżkę `/.auth/login/twitter/callback`. Na przykład `https://contoso.azurewebsites.net/.auth/login/twitter/callback`. Upewnij się, że używasz schematu HTTPS.
 4. W dolnej części strony Przeczytaj i zaakceptuj warunki. Następnie kliknij pozycję **Utwórz aplikację w usłudze Twitter**. Zostaną wyświetlone szczegóły aplikacji.
 5. Kliknij kartę **Ustawienia** , zaznacz pole wyboru **Zezwalaj tej aplikacji na używanie do logowania się przy użyciu usługi Twitter**, a następnie kliknij przycisk **Aktualizuj ustawienia**.
-6. Wybierz kartę **klucze i tokeny dostępu** . Zanotuj wartości **klucza klienta (klucz interfejsu API)** i klucz tajny **klienta (wpis tajny interfejsu API)** .
+6. Wybierz kartę **klucze i tokeny dostępu** . Zanotuj wartości **klucza klienta (klucz interfejsu API)** i klucz **tajny klienta (wpis tajny interfejsu API)** .
    
    > [!NOTE]
    > Wpis tajny klienta jest ważnym poświadczeniem zabezpieczeń. Nie należy udostępniać tego klucza tajnego nikomu ani rozpowszechniać go wraz z Twoją aplikacją.

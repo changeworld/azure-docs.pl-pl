@@ -7,12 +7,12 @@ ms.author: shthota
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/09/2019
-ms.openlocfilehash: be1da90ef089da412545ac8af6fabb04198d821c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 535dae4226f7db9cbc7240f9a92642f0e206cd3b
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70880198"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962730"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Analiza komercyjnego portalu Marketplace w centrum partnerskim
 
@@ -26,7 +26,6 @@ Aby uzyskać dostęp do narzędzi do analiz Centrum partnerskiego, Otwórz pulpi
 |[Zamówienie](#orders-dashboard)|Informacje o zamówieniach w formacie graficznym i do pobrania|
 |[Klientów](#customer-dashboard)|Informacje o klientach, w tym trendy wzrostu, prezentowane w formacie graficznym i do pobrania|
 |[Proces](#downloads-dashboard)|Lista żądań pobierania w ciągu ostatnich 30 dni|
-|[Oceny i przeglądy](#ratings-and-reviews)| Informacje o ocenach i przeglądach sprzedanych przez klientów w przypadku ofert, które zostały nabyte.
 
 ## <a name="summary-dashboard"></a>Pulpit nawigacyjny podsumowania
 
@@ -286,38 +285,3 @@ Otrzymasz powiadomienie wyskakujące i wiadomość e-mail zawierającą link **d
 | Nazwa dostawcy| Odbiorcy| Nazwa dostawcy występującego w relacji między firmą Microsoft a klientem końcowym. Jeśli klient jest przedsiębiorstwem do odsprzedawcy, będzie to odsprzedawca. Jeśli jest używany dostawca rozwiązań w chmurze (CSP), będzie to dostawca usług kryptograficznych.|
 | SKU| Zamówienie| Nazwa jednostki SKU zdefiniowana podczas publikowania. Oferta może mieć wiele jednostek SKU, ale jednostka SKU może być skojarzona tylko z jedną ofertą.||
 | Data zakończenia okresu próbnego| Zamówienie| Data zakończenia okresu próbnego dla tego zamówienia lub zostanie ona zakończona.||
-
-## <a name="ratings-and-reviews"></a>Oceny i przeglądy
-
-Gdy klienci przeglądają, szukają i kupują oferty w ramach obu rynków, mogą opuścić klasyfikacje i przeglądy dla ofert, które zostały nabyte. Mogą przesyłać nowe oceny lub przeglądy oraz aktualizować lub usuwać klasyfikacje lub przeglądy, które zostały już przesłane. Przeglądy są publikowane w witrynie Azure Marketplace lub AppSource na karcie przeglądy na stronie wyświetlania produktu oferty. Klienci mogą dołączać swoje nazwy do klasyfikacji lub przeglądów lub mogą publikować anonimowo.  
-
-> [!NOTE]
-> Klienci mogą wprowadzać zmiany tylko do ocen i przeglądów, których są właścicielami.
-
-**Pulpit nawigacyjny recenzja & przegląd** przedstawia trendy i szczegółowe informacje o działaniach klientów. Zawiera graficzną reprezentację:
-
-- Klasyfikacje & przeglądy  
-- Przejrzyj Komentarze
-
-### <a name="marketplace-storefront-tabs"></a>Karty witryny Marketplace
-
-Wydawcy mogą wyświetlać metryki oferty osobno na kartach AppSource & Azure Marketplace. Aby wyświetlić określone metryki oferty, wybierz pozycję **Oferta** z listy rozwijanej:
-
-![Lista rozwijana oferty Centrum partnerskiego](./media/analyze-offer-dropdown.png)
-
-### <a name="ratings-and-reviews-summary"></a>Podsumowanie klasyfikacji i przeglądów
-
-Sekcja podsumowania ocen & przeglądów zawiera poniższe metryki dla wybranego zakresu dat:
-
-- **Średnia ocena:** Średnia ważona średniej klasyfikacji wszystkich ocen przesłanych przez klientów dla wybranej oferty.
-- **Podział klasyfikacji:** Podział klasyfikacji gwiazdkowej według liczby klientów, którzy przesłały klasyfikacje. Wykres słupkowy jest układany z rzeczywistą i skorygowaną klasyfikacją (zaktualizowaną liczbę ocen).
-- **Łączna Klasyfikacja:** Łączna liczba przesłanych ocen. Ta liczba obejmuje również klasyfikacje z i bez przeglądów.
-- **Oceny z recenzjami:** Liczba przesłanych recenzji.
-
-![Podsumowanie klasyfikacji i przeglądów Centrum partnerskiego](./media/analyze-ratings-summary.png)
-
-### <a name="review-comments"></a>Przejrzyj Komentarze
-
-Przeglądy są wyświetlane w kolejności chronologicznej w przypadku ich opublikowania. Widok domyślny wyświetla wszystkie Recenzje. Możesz filtrować Recenzje według klasyfikacji gwiazdkowej przy użyciu **filtru** z menu rozwijanego. Możesz również wyszukać słowa kluczowe, które pojawiają się w przeglądzie.  
-
-![Analiza komentarzy dotyczących przeglądu Centrum partnerskiego](./media/analyze-reviews.png)

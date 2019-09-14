@@ -4,14 +4,14 @@ description: Pokazuje, jak typy zasobów obsługują usuwanie w trybie pełnym w
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 08/04/2019
+ms.date: 09/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: d783ab9c12952393f0a74b245109dda58bff3927
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 268f6b7f3e7462986e6289088a0716794dc832f1
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194397"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983964"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Usuwanie zasobów platformy Azure na potrzeby wdrożeń w trybie pełnym
 
@@ -24,7 +24,6 @@ Typy zasobów oznaczone atrybutem **no** nie są automatycznie usuwane, gdy nie 
 Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="op_single_selector"]
 > - [Microsoft. AAD](#microsoftaad)
-> - [Microsoft. AADDomainServices](#microsoftaaddomainservices)
 > - [Microsoft. Dodatki](#microsoftaddons)
 > - [Microsoft. ADHybridHealthService](#microsoftadhybridhealthservice)
 > - [Microsoft. Advisor](#microsoftadvisor)
@@ -32,6 +31,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > - [Microsoft.AnalysisServices](#microsoftanalysisservices)
 > - [Microsoft.ApiManagement](#microsoftapimanagement)
 > - [Microsoft.AppConfiguration](#microsoftappconfiguration)
+> - [Microsoft. AppPlatform](#microsoftappplatform)
 > - [Microsoft. zaświadczanie](#microsoftattestation)
 > - [Microsoft.Authorization](#microsoftauthorization)
 > - [Microsoft. Automation](#microsoftautomation)
@@ -65,14 +65,12 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > - [Microsoft.ContentModerator](#microsoftcontentmoderator)
 > - [Microsoft.CortanaAnalytics](#microsoftcortanaanalytics)
 > - [Microsoft.CostManagement](#microsoftcostmanagement)
-> - [Microsoft.CustomerInsights](#microsoftcustomerinsights)
 > - [Microsoft. CustomerLockbox](#microsoftcustomerlockbox)
 > - [Microsoft. CustomProviders](#microsoftcustomproviders)
 > - [Microsoft.DataBox](#microsoftdatabox)
 > - [Microsoft.DataBoxEdge](#microsoftdataboxedge)
 > - [Microsoft. datacegły](#microsoftdatabricks)
 > - [Microsoft.DataCatalog](#microsoftdatacatalog)
-> - [Microsoft.DataConnect](#microsoftdataconnect)
 > - [Microsoft.DataFactory](#microsoftdatafactory)
 > - [Microsoft.DataLakeAnalytics](#microsoftdatalakeanalytics)
 > - [Microsoft.DataLakeStore](#microsoftdatalakestore)
@@ -115,7 +113,6 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > - [Microsoft. MachineLearning](#microsoftmachinelearning)
 > - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
 > - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
-> - [Microsoft. ManagedLab](#microsoftmanagedlab)
 > - [Microsoft. ManagedServices](#microsoftmanagedservices)
 > - [Microsoft. Management](#microsoftmanagement)
 > - [Microsoft. Maps](#microsoftmaps)
@@ -183,13 +180,6 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | DomainServices/oucontainer | Nie |
 > | DomainServices/ReplicaSets | Tak |
 
-## <a name="microsoftaaddomainservices"></a>Microsoft. AADDomainServices
-
-> [!div class="mx-tableFixed"]
-> | Typ zasobu | Usuwanie w trybie pełnym |
-> | ------------- | ----------- |
-> | domeny | Nie |
-
 ## <a name="microsoftaddons"></a>Microsoft.Addons
 
 > [!div class="mx-tableFixed"]
@@ -234,8 +224,8 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | alertsMetaData | Nie |
 > | alertsSummary | Nie |
 > | alertsSummaryList | Nie |
-> | opinii | Nie |
-> | smartDetectorAlertRules | Nie |
+> | Opinii | Nie |
+> | smartDetectorAlertRules | Tak |
 > | smartDetectorRuntimeEnvironments | Nie |
 > | smartGroups | Nie |
 
@@ -262,6 +252,13 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | ------------- | ----------- |
 > | configurationStores | Tak |
 > | configurationStores/eventGridFilters | Nie |
+
+## <a name="microsoftappplatform"></a>Microsoft. AppPlatform
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Usuwanie w trybie pełnym |
+> | ------------- | ----------- |
+> | Wiosna | Tak |
 
 ## <a name="microsoftattestation"></a>Microsoft. zaświadczanie
 
@@ -331,6 +328,10 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Usuwanie w trybie pełnym |
 > | ------------- | ----------- |
+> | hybridDataManagers | Tak |
+> | postgresInstances | Tak |
+> | sqlBigDataClusters | Tak |
+> | Wystąpienia sqlinstances | Tak |
 > | sqlServerRegistrations | Tak |
 > | sqlServerRegistrations/SQLServers | Nie |
 
@@ -357,11 +358,28 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | ------------- | ----------- |
 > | billingAccounts | Nie |
 > | billingAccounts/umowy | Nie |
+> | billingAccounts/billingPermissions | Nie |
 > | billingAccounts/billingProfiles | Nie |
+> | billingAccounts/billingProfiles/billingPermissions | Nie |
+> | billingAccounts/billingProfiles/billingRoleAssignments | Nie |
+> | billingAccounts/billingProfiles/billingRoleDefinitions | Nie |
 > | billingAccounts/billingProfiles/billingSubscriptions | Nie |
+> | billingAccounts/billingProfiles/createBillingRoleAssignment | Nie |
+> | billingAccounts/billingProfiles/klienci | Nie |
 > | billingAccounts/billingProfiles/faktury | Nie |
 > | billingAccounts/billingProfiles/faktury/arkusza cen | Nie |
 > | billingAccounts/billingProfiles/invoiceSections | Nie |
+> | billingAccounts/billingProfiles/invoiceSections/billingPermissions | Nie |
+> | billingAccounts/billingProfiles/invoiceSections/billingRoleAssignments | Nie |
+> | billingAccounts/billingProfiles/invoiceSections/billingRoleDefinitions | Nie |
+> | billingAccounts/billingProfiles/invoiceSections/billingSubscriptions | Nie |
+> | billingAccounts/billingProfiles/invoiceSections/createBillingRoleAssignment | Nie |
+> | billingAccounts/billingProfiles/invoiceSections/initiateTransfer | Nie |
+> | billingAccounts/billingProfiles/invoiceSections/produkty | Nie |
+> | billingAccounts/billingProfiles/invoiceSections/produkty/transfer | Nie |
+> | billingAccounts/billingProfiles/invoiceSections/produkty/updateAutoRenew | Nie |
+> | billingAccounts/billingProfiles/invoiceSections/Transactions | Nie |
+> | billingAccounts/billingProfiles/invoiceSections/transfery | Nie |
 > | billingAccounts/BillingProfiles/patchOperations | Nie |
 > | billingAccounts/billingProfiles/paymentMethods | Nie |
 > | billingAccounts/billingProfiles/zasady | Nie |
@@ -369,10 +387,17 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | billingAccounts/billingProfiles/pricesheetDownloadOperations | Nie |
 > | billingAccounts/billingProfiles/produkty | Nie |
 > | billingAccounts/billingProfiles/Transactions | Nie |
+> | billingAccounts/billingRoleAssignments | Nie |
+> | billingAccounts/billingRoleDefinitions | Nie |
 > | billingAccounts/billingSubscriptions | Nie |
+> | billingAccounts/createBillingRoleAssignment | Nie |
 > | billingAccounts/createInvoiceSectionOperations | Nie |
 > | billingAccounts/klienci | Nie |
 > | billingAccounts/klienci/billingSubscriptions | Nie |
+> | billingAccounts/klienci/initiateTransfer | Nie |
+> | billingAccounts/klienci/produkty | Nie |
+> | billingAccounts/klienci/transakcje | Nie |
+> | billingAccounts/klienci/transfery | Nie |
 > | billingAccounts/działy | Nie |
 > | billingAccounts/enrollmentAccounts | Nie |
 > | billingAccounts/faktury | Nie |
@@ -395,11 +420,11 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | billingAccounts/produkty | Nie |
 > | billingAccounts/transakcje | Nie |
 > | billingPeriods | Nie |
-> | billingPermissions | Nie |
+> | BillingPermissions | Nie |
 > | billingProperty | Nie |
-> | billingRoleAssignments | Nie |
-> | billingRoleDefinitions | Nie |
-> | createBillingRoleAssignment | Nie |
+> | BillingRoleAssignments | Nie |
+> | BillingRoleDefinitions | Nie |
+> | CreateBillingRoleAssignment | Nie |
 > | działów | Nie |
 > | enrollmentAccounts | Nie |
 > | faktur | Nie |
@@ -407,6 +432,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | transfery/acceptTransfer | Nie |
 > | transfery/declineTransfer | Nie |
 > | transfery/operationStatus | Nie |
+> | transfery/validateTransfer | Nie |
 > | validateAddress | Nie |
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
@@ -475,7 +501,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | calculatePurchasePrice | Nie |
 > | wykazy | Nie |
 > | commercialReservationOrders | Nie |
-> | zamian | Nie |
+> | Zamian | Nie |
 > | placePurchaseOrder | Nie |
 > | reservationOrders | Nie |
 > | reservationOrders/calculateRefund | Nie |
@@ -532,7 +558,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | quotas | Nie |
 > | resourceTypes | Nie |
 > | validateSubscriptionMoveAvailability | Nie |
-> | virtualMachines | Tak |
+> | VirtualMachines | Tak |
 > | virtualMachines/diagnosticSettings | Nie |
 > | virtualMachines/metricDefinitions | Nie |
 > | virtualMachines/metryki | Nie |
@@ -573,12 +599,16 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | publicImages | Nie |
 > | quotas | Nie |
 > | storageAccounts | Tak |
+> | storageAccounts/blobServices | Nie |
+> | storageAccounts/fileServices | Nie |
 > | storageAccounts/metricDefinitions | Nie |
 > | storageAccounts/metryki | Nie |
+> | storageAccounts/queueServices | Nie |
 > | storageAccounts/usługi | Nie |
 > | storageAccounts/usługi/diagnosticSettings | Nie |
 > | storageAccounts/usługi/metricDefinitions | Nie |
 > | storageAccounts/usługi/metryki | Nie |
+> | storageAccounts/tableServices | Nie |
 > | storageAccounts/vmImages | Nie |
 > | vmImages | Nie |
 
@@ -619,7 +649,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | sharedVMImages | Tak |
 > | sharedVMImages/wersje | Tak |
 > | migawki | Tak |
-> | virtualMachines | Tak |
+> | VirtualMachines | Tak |
 > | virtualMachines/rozszerzenia | Tak |
 > | virtualMachines/metricDefinitions | Nie |
 > | virtualMachines/scriptJobs | Nie |
@@ -723,13 +753,13 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | Typ zasobu | Usuwanie w trybie pełnym |
 > | ------------- | ----------- |
 > | Alerty | Nie |
-> | BillingAccounts | Nie |
+> | billingAccounts | Nie |
 > | Budżety | Nie |
 > | CloudConnectors | Nie |
 > | Łączniki | Tak |
 > | Działy | Nie |
 > | Wymiary | Nie |
-> | EnrollmentAccounts | Nie |
+> | enrollmentAccounts | Nie |
 > | Eksporty | Nie |
 > | ExternalBillingAccounts | Nie |
 > | ExternalBillingAccounts/alerty | Nie |
@@ -743,31 +773,12 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | ExternalSubscriptions/zapytanie | Nie |
 > | Prognoza | Nie |
 > | Zapytanie | Nie |
-> | zarejestrować | Nie |
+> | Zarejestrować | Nie |
 > | Reportconfigs | Nie |
 > | Raporty | Nie |
 > | Ustawienia | Nie |
 > | showbackRules | Nie |
 > | Widoki | Nie |
-
-## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
-
-> [!div class="mx-tableFixed"]
-> | Typ zasobu | Usuwanie w trybie pełnym |
-> | ------------- | ----------- |
-> | węzłów | Tak |
-> | Centra/authorizationPolicies | Nie |
-> | Centra/łączniki | Nie |
-> | Centra/łączniki/mapowania | Nie |
-> | Centra/interakcje | Nie |
-> | hubs/kpi | Nie |
-> | Centra/linki | Nie |
-> | Centra/profile | Nie |
-> | Centra/roleAssignments | Nie |
-> | Centra/role | Nie |
-> | hubs/suggestTypeSchema | Nie |
-> | Centra/widoki | Nie |
-> | hubs/widgetTypes | Nie |
 
 ## <a name="microsoftcustomerlockbox"></a>Microsoft. CustomerLockbox
 
@@ -813,15 +824,12 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | ------------- | ----------- |
 > | wykazy | Tak |
 > | wykazy | Tak |
+> | wykazy danych/źródła danych | Nie |
+> | wykazy danych/źródła danych/skany | Nie |
+> | wykazy danych/źródła danych/skany/zestawy danych | Nie |
+> | wykazy danych/źródła danych/skanowania/wyzwalacze | Nie |
 > | webcatalogs/scantargets | Nie |
 > | webcatalogs/scantargets/zbiory danych | Nie |
-
-## <a name="microsoftdataconnect"></a>Microsoft.DataConnect
-
-> [!div class="mx-tableFixed"]
-> | Typ zasobu | Usuwanie w trybie pełnym |
-> | ------------- | ----------- |
-> | connectionManagers | Tak |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 
@@ -940,7 +948,6 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | ------------- | ----------- |
 > | applicationgroups | Tak |
 > | applicationgroups/aplikacje | Nie |
-> | applicationgroups/assignedusers | Nie |
 > | applicationgroups/startmenuitems | Nie |
 > | hostpools | Tak |
 > | hostpools/sessionhosts | Nie |
@@ -953,7 +960,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Usuwanie w trybie pełnym |
 > | ------------- | ----------- |
-> | ElasticPools | Tak |
+> | elasticPools | Tak |
 > | ElasticPools/IotHubTenants | Tak |
 > | IotHubs | Tak |
 > | IotHubs/eventGridFilters | Nie |
@@ -1069,7 +1076,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | Moje obszary/obszary/obszary/galleryitems | Nie |
 > | Moje obszary/obszary/galleryitems | Nie |
 > | Moje obszary/galleryitems | Nie |
-> | zarejestrować | Nie |
+> | Zarejestrować | Nie |
 > | zasoby | Nie |
 > | retrieveresourcesbyid | Nie |
 
@@ -1085,8 +1092,9 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Usuwanie w trybie pełnym |
 > | ------------- | ----------- |
+> | autoManagedVmConfigurationProfiles | Tak |
 > | guestConfigurationAssignments | Nie |
-> | programy | Nie |
+> | Programy | Nie |
 > | softwareUpdateProfile | Nie |
 > | softwareUpdates | Nie |
 
@@ -1139,7 +1147,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Usuwanie w trybie pełnym |
 > | ------------- | ----------- |
-> | komponentów | Tak |
+> | Komponentów | Tak |
 > | networkScopes | Tak |
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
@@ -1211,6 +1219,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | hostingEnvironments | Tak |
 > | integrationAccounts | Tak |
 > | integrationServiceEnvironments | Tak |
+> | integrationServiceEnvironments/managedApis | Tak |
 > | isolatedEnvironments | Tak |
 > | przebieg | Tak |
 
@@ -1238,13 +1247,6 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | ------------- | ----------- |
 > | Tożsamości | Nie |
 > | Resourceidentity | Tak |
-
-## <a name="microsoftmanagedlab"></a>Microsoft.ManagedLab
-
-> [!div class="mx-tableFixed"]
-> | Typ zasobu | Usuwanie w trybie pełnym |
-> | ------------- | ----------- |
-> | labaccounts | Tak |
 
 ## <a name="microsoftmanagedservices"></a>Microsoft. ManagedServices
 
@@ -1279,7 +1281,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Usuwanie w trybie pełnym |
 > | ------------- | ----------- |
-> | otrzymane | Nie |
+> | Otrzymane | Nie |
 > | offerTypes | Nie |
 > | offerTypes/wydawcy | Nie |
 > | offerTypes/wydawcy/oferty | Nie |
@@ -1352,8 +1354,11 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Usuwanie w trybie pełnym |
 > | ------------- | ----------- |
+> | holographicsBroadcastAccounts | Tak |
+> | objectUnderstandingAccounts | Tak |
 > | remoteRenderingAccounts | Tak |
 > | spatialAnchorsAccounts | Tak |
+> | surfaceReconstructionAccounts | Tak |
 
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp
 
@@ -1474,6 +1479,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Usuwanie w trybie pełnym |
 > | ------------- | ----------- |
+> | oparty | Tak |
 > | urządzenia | Nie |
 > | linkTargets | Nie |
 > | storageInsightConfigs | Nie |
@@ -1500,6 +1506,8 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | legacyPeerings | Nie |
 > | peerAsns | Nie |
 > | komunikacje równorzędne | Tak |
+> | peeringServiceProviders | Nie |
+> | peeringServices | Tak |
 
 ## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
 
@@ -1517,7 +1525,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | Typ zasobu | Usuwanie w trybie pełnym |
 > | ------------- | ----------- |
 > | konsol | Nie |
-> | pulpitów nawigacyjnych | Tak |
+> | Pulpitów nawigacyjnych | Tak |
 > | userSettings | Nie |
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
@@ -1625,7 +1633,6 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Usuwanie w trybie pełnym |
 > | ------------- | ----------- |
-> | przepływy | Tak |
 > | jobcollections | Tak |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
@@ -1660,6 +1667,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | iotSecuritySolutions/analyticsModels/aggregatedAlerts | Nie |
 > | iotSecuritySolutions/analyticsModels/aggregatedRecommendations | Nie |
 > | jitNetworkAccessPolicies | Nie |
+> | networkData | Nie |
 > | playbookConfigurations | Tak |
 > | Zasady | Nie |
 > | cen | Nie |
@@ -1692,7 +1700,8 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | ------------- | ----------- |
 > | agregacji | Nie |
 > | Reguły alertów | Nie |
-> | zakładki | Nie |
+> | alertRuleTemplates | Nie |
+> | Zakładki | Nie |
 > | padkach | Nie |
 > | Połączenia dataconnecters | Nie |
 > | jednostki | Nie |
@@ -1910,6 +1919,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | ------------- | ----------- |
 > | anuluj | Nie |
 > | Anulowanie subskrypcji | Nie |
+> | włącz | Nie |
 > | zmień nazwę | Nie |
 > | SubscriptionDefinitions | Nie |
 > | SubscriptionOperations | Nie |
@@ -1931,7 +1941,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | ------------- | ----------- |
 > | dedicatedCloudNodes | Tak |
 > | dedicatedCloudServices | Tak |
-> | virtualMachines | Tak |
+> | VirtualMachines | Tak |
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 
@@ -1998,7 +2008,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Usuwanie w trybie pełnym |
 > | ------------- | ----------- |
-> | komponentów | Nie |
+> | Komponentów | Nie |
 > | componentsSummary | Nie |
 > | monitorInstances | Nie |
 > | monitorInstancesSummary | Nie |

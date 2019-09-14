@@ -8,17 +8,17 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
-ms.date: 07/26/2019
-ms.openlocfilehash: 8f10e3d3fd7c67d1e803e8f85c9918c91bb81d59
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.date: 08/01/2019
+ms.openlocfilehash: 6a6b096911ac8596fe29aeb4596f1da6d5266794
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517464"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967806"
 ---
 # <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Zarządzanie środowiskiem usługi integracji (ISE) w Azure Logic Apps
 
-Aby sprawdzić kondycję sieci dla [środowiska usługi integracji (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) i zarządzać aplikacjami logiki, połączeniami, kontami integracji i łącznikami niestandardowymi, które istnieją w ISE, wykonaj kroki opisane w tym temacie.
+Aby sprawdzić kondycję sieci dla [środowiska usługi integracji (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) i zarządzać aplikacjami logiki, połączeniami, kontami integracji i łącznikami istniejącymi w ISE, wykonaj kroki opisane w tym temacie. Aby dodać te artefakty do ISE, zobacz [Dodawanie artefaktów do środowiska usługi integracji](../logic-apps/add-artifacts-integration-service-environment-ise.md).
 
 ## <a name="view-your-ise"></a>Wyświetlanie ISE
 
@@ -46,31 +46,49 @@ W menu ISE w obszarze **Ustawienia**wybierz pozycję **kondycja sieci**. W tym o
 
 ## <a name="manage-your-logic-apps"></a>Zarządzanie aplikacjami logiki
 
+Aplikacje logiki można wyświetlać i zarządzać nimi, które znajdują się w ISE.
+
 1. W menu ISE w obszarze **Ustawienia**wybierz pozycję **Aplikacje logiki**.
 
-   ![Znajdowanie aplikacji logiki](./media/ise-manage-integration-service-environment/ise-find-logic-apps.png)
+   ![Wyświetlanie aplikacji logiki](./media/ise-manage-integration-service-environment/ise-find-logic-apps.png)
 
-1. Aby usunąć aplikacje logiki z usługi ISE, gdy nie są już potrzebne, wybierz te aplikacje logiki, a następnie wybierz pozycję **Usuń**.
+1. Aby usunąć aplikacje logiki, które nie są już potrzebne w ISE, wybierz te aplikacje logiki, a następnie wybierz pozycję **Usuń**. Aby potwierdzić, że chcesz usunąć, wybierz pozycję **tak**.
 
 <a name="find-api-connections"></a>
 
 ## <a name="manage-api-connections"></a>Zarządzanie połączeniami interfejsu API
 
-1. Aby wyświetlić połączenia interfejsu API, które zostały utworzone przez aplikacje logiki uruchomione w ISE, w menu ISE w obszarze **Ustawienia**wybierz pozycję **połączenia interfejsu API**.
+Można wyświetlać i zarządzać połączeniami utworzonymi przez aplikacje logiki działające w ISE.
 
-   ![Znajdowanie połączeń interfejsu API](./media/ise-manage-integration-service-environment/ise-find-api-connections.png)
+1. W menu ISE w obszarze **Ustawienia**wybierz pozycję **połączenia interfejsu API**.
 
-1. Aby usunąć połączenia z usługi ISE, gdy nie są już potrzebne, wybierz te połączenia, a następnie wybierz pozycję **Usuń**.
+   ![Wyświetlanie połączeń interfejsu API](./media/ise-manage-integration-service-environment/ise-find-api-connections.png)
+
+1. Aby usunąć połączenia, które nie są już potrzebne w ISE, wybierz te połączenia, a następnie wybierz pozycję **Usuń**. Aby potwierdzić, że chcesz usunąć, wybierz pozycję **tak**.
+
+<a name="manage-api-connectors"></a>
+
+## <a name="manage-ise-connectors"></a>Zarządzanie łącznikami ISE
+
+Można wyświetlać łączniki interfejsu API wdrożone w ISE i zarządzać nimi.
+
+1. W menu ISE w obszarze **Ustawienia**wybierz pozycję **Łączniki zarządzane**.
+
+   ![Wyświetlanie łączników zarządzanych](./media/ise-manage-integration-service-environment/ise-view-managed-connectors.png)
+
+1. Aby usunąć łączniki, które nie mają być dostępne w ISE, wybierz te łączniki, a następnie wybierz pozycję **Usuń**. Aby potwierdzić, że chcesz usunąć, wybierz pozycję **tak**.
 
 <a name="find-custom-connectors"></a>
 
 ## <a name="manage-custom-connectors"></a>Zarządzanie łącznikami niestandardowymi
 
-1. Aby wyświetlić łączniki niestandardowe, które zostały utworzone w ISE, w menu ISE w obszarze **Ustawienia**wybierz pozycję **Łączniki niestandardowe**.
+Można wyświetlać łączniki niestandardowe wdrożone w ISE i zarządzać nimi.
+
+1. W menu ISE w obszarze **Ustawienia**wybierz pozycję **Łączniki niestandardowe**.
 
    ![Znajdowanie łączników niestandardowych](./media/ise-manage-integration-service-environment/ise-find-custom-connectors.png)
 
-1. Aby usunąć łączniki niestandardowe z ISE, gdy nie są już potrzebne, zaznacz te łączniki, a następnie wybierz pozycję **Usuń**.
+1. Aby usunąć łączniki niestandardowe, które nie są już potrzebne w ISE, wybierz te łączniki, a następnie wybierz pozycję **Usuń**. Aby potwierdzić, że chcesz usunąć, wybierz pozycję **tak**.
 
 <a name="find-integration-accounts"></a>
 

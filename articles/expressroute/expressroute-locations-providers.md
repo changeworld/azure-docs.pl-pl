@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/09/2019
+ms.date: 09/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: f3bae365692b2165e4944becbe5081bb69bef98b
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 69226cafc31771ae5307999e921cec4ae7841f8c
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70846113"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967137"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partnerzy i lokalizacje komunikacji równorzędnej usługi ExpressRoute
 
@@ -190,7 +190,7 @@ Jeśli jesteś zdalny i nie masz łączności z włóknami lub chcesz poznać in
 
 * Intelsat
 * [SES](https://www.ses.com/networks/signature-solutions/signature-cloud/ses-and-azure-expressroute)
-* Viasat
+* [Viasat](http://www.directcloud.viasatbusiness.com/)
 
 ## <a name="c1partners"></a>Łączność za pośrednictwem dodatkowych dostawców usług
 | **Location** | **Exchange** | **Dostawcy połączeń** |

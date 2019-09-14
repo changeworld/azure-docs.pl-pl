@@ -1,6 +1,6 @@
 ---
-title: Dzienniki monitora platformy Azure dla platformy Apache Kafka — Azure HDInsight
-description: Dowiedz się, jak analizować dzienniki z klastra platformy Apache Kafka w usłudze Azure HDInsight przy użyciu dzienników usługi Azure Monitor.
+title: Azure Monitor dzienników dla Apache Kafka — Azure HDInsight
+description: Dowiedz się, jak za pomocą dzienników Azure Monitor analizować dzienniki z klastra Apache Kafka w usłudze Azure HDInsight.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,37 +8,37 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.openlocfilehash: 1e141aea3b22bfdcb981513f03e595b6c2f15466
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 44eea1bc6390e743aff104550e5b6d7e97c45929
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65147983"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960116"
 ---
-# <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analizowanie dzienników dla platformy Apache Kafka w HDInsight
+# <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analizowanie dzienników dla Apache Kafka w usłudze HDInsight
 
-Dowiedz się, jak analizować dzienniki generowane przez platformy Apache Kafka w HDInsight przy użyciu dzienników usługi Azure Monitor.
+Dowiedz się, jak za pomocą dzienników Azure Monitor analizować dzienniki wygenerowane przez Apache Kafka w usłudze HDInsight.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="enable-azure-monitor-logs-for-apache-kafka"></a>Włączanie dzienników usługi Azure Monitor dla platformy Apache Kafka
+## <a name="enable-azure-monitor-logs-for-apache-kafka"></a>Włącz Azure Monitor dzienniki dla Apache Kafka
 
-Kroki, aby włączyć dzienniki usługi Azure Monitor for HDInsight są takie same dla wszystkich klastrów HDInsight. Aby zrozumieć, jak utworzyć i skonfigurować wymagane usługi, należy użyć następujących łączy:
+Kroki umożliwiające włączenie dzienników Azure Monitor dla usługi HDInsight są takie same dla wszystkich klastrów usługi HDInsight. Skorzystaj z poniższych linków, aby dowiedzieć się, jak utworzyć i skonfigurować wymagane usługi:
 
-1. Utwórz obszar roboczy usługi Log Analytics. Aby uzyskać więcej informacji, zobacz [dzienników w usłudze Azure Monitor](../../azure-monitor/platform/data-platform-logs.md) dokumentu.
+1. Utwórz obszar roboczy Log Analytics. Aby uzyskać więcej informacji, zobacz [dzienniki w Azure monitor](../../azure-monitor/platform/data-platform-logs.md) dokumentu.
 
-2. Utwórz platformy Kafka w klastrze HDInsight. Aby uzyskać więcej informacji, zobacz [rozpoczynać platformy Apache Kafka w HDInsight](apache-kafka-get-started.md) dokumentu.
+2. Utwórz Kafka w klastrze usługi HDInsight. Aby uzyskać więcej informacji, zobacz artykuł [Rozpoczynanie pracy z Apache Kafka w usłudze HDInsight](apache-kafka-get-started.md) .
 
-3. Skonfiguruj klaster platformy Kafka przy użyciu dzienników usługi Azure Monitor. Aby uzyskać więcej informacji, zobacz [użycia usługi Azure Monitor dzienników do monitorowania HDInsight](../hdinsight-hadoop-oms-log-analytics-tutorial.md) dokumentu.
+3. Skonfiguruj klaster Kafka, tak aby korzystał z dzienników Azure Monitor. Aby uzyskać więcej informacji, zobacz [dzienniki używania Azure monitor do monitorowania](../hdinsight-hadoop-oms-log-analytics-tutorial.md) dokumentu usługi HDInsight.
 
 > [!IMPORTANT]  
-> Może upłynąć około 20 minut, zanim dane są dostępne w przypadku dzienników usługi Azure Monitor.
+> Dostęp do danych dzienników Azure Monitor może potrwać około 20 minut.
 
 ## <a name="query-logs"></a>Dzienniki zapytań
 
-1. Z [witryny Azure portal](https://portal.azure.com), wybierz swój obszar roboczy usługi Log Analytics.
+1. Na [Azure Portal](https://portal.azure.com)wybierz obszar roboczy log Analytics.
 
-2. W menu po lewej stronie w obszarze **ogólne**, wybierz opcję **dzienniki**. W tym miejscu można wyszukiwać dane zebrane z platformy Kafka. W oknie zapytania wprowadź kwerendę, a następnie wybierz pozycję **Uruchom**. Poniżej przedstawiono niektóre przykładowe wyszukiwania:
+2. W menu po lewej stronie w obszarze **Ogólne**wybierz pozycję **dzienniki**. W tym miejscu możesz wyszukiwać zebrane dane z Kafka. Wprowadź zapytanie w oknie zapytania, a następnie wybierz polecenie **Uruchom**. Oto kilka przykładowych wyszukiwań:
 
 * Użycie dysku:
 
@@ -81,25 +81,25 @@ Kroki, aby włączyć dzienniki usługi Azure Monitor for HDInsight są takie sa
     ```
 
     > [!IMPORTANT]  
-    > Zastąp wartości zapytania konkretnych informacji klastra. Na przykład `ClusterName_s` należy ustawić na nazwę klastra. `HostName_s` należy określić nazwę domeny z węzłem procesu roboczego w klastrze.
+    > Zamień wartości zapytania na informacje specyficzne dla klastra. Na przykład `ClusterName_s` musi być ustawiony na nazwę klastra. `HostName_s`musi być ustawiona na nazwę domeny węzła procesu roboczego w klastrze.
     
-    Możesz też wprowadzić `*` aby wyszukać wszystkie typy rejestrowanych. Obecnie dostępne dla zapytań są następujące dzienniki:
+    Możesz również wprowadzić `*` , aby przeszukać wszystkie typy zarejestrowane. Obecnie następujące dzienniki są dostępne dla zapytań:
     
     | Typ dziennika | Opis |
     | ---- | ---- |
-    | log\_kafkaserver\_CL | Server.log brokera platformy Kafka |
-    | log\_kafkacontroller\_CL | Controller.log brokera platformy Kafka |
-    | metrics\_kafka\_CL | Metryki JMX z platformy Kafka |
+    | log\_kafkaserver\_CL | Kafka brokera serwera. log |
+    | Dziennik\_kafkacontroller\_CL | Kafka brokera. log |
+    | \_metryki\_Kafka CL | Metryki Kafka JMX |
     
-    ![Obraz wyszukiwania użycia procesora CPU](./media/apache-kafka-log-analytics-operations-management/kafka-cpu-usage.png)
+    ![Obraz wyszukiwania użycia procesora CPU](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
  
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat usługi Azure Monitor, zobacz [Omówienie usługi Azure Monitor](../../log-analytics/log-analytics-get-started.md), i [zapytań usługi Azure Monitor dzienników do monitorowania klastrów HDInsight](../hdinsight-hadoop-oms-log-analytics-use-queries.md).
+Aby uzyskać więcej informacji na temat Azure Monitor, zobacz [omówienie Azure monitor](../../log-analytics/log-analytics-get-started.md)i [dzienniki Azure monitor zapytań do monitorowania klastrów usługi HDInsight](../hdinsight-hadoop-oms-log-analytics-use-queries.md).
 
-Aby uzyskać więcej informacji na temat pracy z platformą Apache Kafka zobacz następujące dokumenty:
+Aby uzyskać więcej informacji na temat pracy z Apache Kafka, zobacz następujące dokumenty:
 
-* [Platforma Apache Kafka dublowanie między klastrami HDInsight](apache-kafka-mirroring.md)
-* [Zwiększ skalowalność platformy Apache Kafka w HDInsight](apache-kafka-scalability.md)
-* [Use Apache Spark streaming (DStreams) dzięki platformie Apache Kafka](../hdinsight-apache-spark-with-kafka.md)
-* [Korzystanie z platformy Apache Spark structured streaming dzięki platformie Apache Kafka](../hdinsight-apache-kafka-spark-structured-streaming.md)
+* [Apache Kafka dublowania między klastrami usługi HDInsight](apache-kafka-mirroring.md)
+* [Zwiększenie skalowalności Apache Kafka w usłudze HDInsight](apache-kafka-scalability.md)
+* [Użyj Apache Spark streaming (DStreams) z Apache Kafka](../hdinsight-apache-spark-with-kafka.md)
+* [Używanie Apache Spark strukturalnych przesyłania strumieniowego z Apache Kafka](../hdinsight-apache-kafka-spark-structured-streaming.md)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/06/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 2ef207a14582e6ba0d9f8a25c0314c5ec639c7cb
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 762ab2800193aa084b771b7d000b383a7004097e
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882843"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984914"
 ---
 # <a name="what-is-azure-security-center"></a>Co to jest Centrum zabezpieczeń Azure?
 
@@ -38,7 +38,7 @@ Azure Security Center rozwiązuje trzy najbardziej pilne problemy związane z za
 
 Aby sprostać tym wyzwaniom, Security Center oferuje narzędzia umożliwiające:
 
--   **Zwiększanie poziomu bezpieczeństwa**: Security Center ocenia środowisko i pozwala poznać stan zasobów i określić, czy są one bezpieczne.
+-   **Zwiększanie poziomu bezpieczeństwa**: Security Center ocenia środowisko i umożliwia zrozumienie stanu zasobów oraz tego, czy są one bezpieczne.
 
 -   **Ochronę przed zagrożeniami**: Security Center umożliwia ocenę obciążeń i generuje zalecenia dotyczące zapobiegania zagrożeniom oraz alerty związane z wykryciem zagrożeń.
 
@@ -80,7 +80,7 @@ Jednym z najbardziej zaawansowanych narzędzi Security Center zapewnia stałe mo
 
 ![Mapa sieci w usłudze Security Center](media/security-center-intro/sc-net-map.png)
 
-Security Center upraszczają alerty zabezpieczeń w jednym kroku, przez dodanie **bezpiecznego wyniku**. Wskaźniki bezpieczeństwa są teraz skojarzone z każdym zaleceniem, co pozwala lepiej zrozumieć ważność danego zalecenia dla ogólnego poziomu bezpieczeństwa. Jest to kluczowe znaczenie w umożliwieniu **określania priorytetów pracy**w zabezpieczeniach.
+Security Center upraszczają alerty zabezpieczeń w jednym kroku, przez dodanie **bezpiecznego wyniku**. Wskaźniki bezpieczeństwa są teraz skojarzone z każdym zaleceniem, co pozwala lepiej zrozumieć ważność danego zalecenia dla ogólnego poziomu bezpieczeństwa. Jest to kluczowe znaczenie w umożliwieniu **określania priorytetów pracy w zabezpieczeniach**.
 
 ![Wskaźnik bezpieczeństwa w usłudze Security Center](media/security-center-intro/sc-secure-score.png)
 

@@ -1,46 +1,46 @@
 ---
-title: Wprowadzenie do interfejsu API rozpoznawania mowy Bing za pomocą biblioteki klienta | Dokumentacja firmy Microsoft
+title: Rozpoczynanie pracy z interfejsem API rozpoznawania rozpoznawanie mowy Bing przy użyciu bibliotek klienckich | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: Użyj biblioteki klienta mowy Bing w usługach Microsoft Cognitive Services do tworzenia aplikacji, które Konwertuj dźwięk mówiony na tekst.
+description: Użyj rozpoznawanie mowy Bing bibliotek klienckich w programie Microsoft Cognitive Services do tworzenia aplikacji, które konwertują dźwięk mówiony na tekst.
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 89eb18a2b4af76f6489442dc66ab12d0840e92c7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8ea0c9e7104b29456749c7f1af2a671b32a8fde2
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515231"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966843"
 ---
-# <a name="get-started-with-bing-speech-service-client-libraries"></a>Rozpoczynanie pracy z bibliotekami klienckimi usługa rozpoznawania mowy Bing
+# <a name="get-started-with-bing-speech-service-client-libraries"></a>Wprowadzenie do bibliotek klienckich usługi rozpoznawanie mowy Bing Service
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
-Poza wprowadzeniem bezpośrednich żądań HTTP za pośrednictwem interfejsu API REST, usługa rozpoznawania mowy Bing oferuje deweloperom biblioteki klienta mowy w różnych językach. Biblioteki klienta mowy:
+Oprócz bezpośredniego żądania HTTP za pośrednictwem interfejsu API REST usługa rozpoznawanie mowy Bing udostępnia deweloperom biblioteki klienta mowy w różnych językach. Biblioteki klienta mowy:
 
-- Obsługuje bardziej zaawansowane funkcje rozpoznawanie mowy, takie jak wyników pośrednich w czasie rzeczywistym, strumienia długo audio (maksymalnie 10 minut) i ciągłe rozpoznawania.
-- Zapewniają proste i idiomatyczną interfejsu API w języku preferowanym.
-- Ukryj szczegóły niskiego poziomu komunikacji.
+- Obsługa bardziej zaawansowanych funkcji rozpoznawania mowy, takich jak pośrednie wyniki w czasie rzeczywistym, długi strumień audio (do 10 minut) i ciągłe rozpoznawanie.
+- Podaj prosty i idiomatyczne interfejs API w języku preferencji.
+- Ukryj szczegóły komunikacji niskiego poziomu.
 
-Obecnie dostępne są następujące biblioteki klienta mowy Bing:
+Obecnie dostępne są następujące rozpoznawanie mowy Bing biblioteki klienckie:
 
-- [Biblioteka pulpitu języka C#](GetStartedCSharpDesktop.md)
-- [Biblioteka usługi C#](GetStartedCSharpServiceLibrary.md)
+- [C#Biblioteka pulpitu](GetStartedCSharpDesktop.md)
+- [C#Biblioteka usług](GetStartedCSharpServiceLibrary.md)
 - [Biblioteka języka JavaScript](GetStartedJSWebsockets.md)
-- [Biblioteka języka Java dla systemu Android](GetStartedJavaAndroid.md)
-- [Biblioteka języka Objective-C dla systemu iOS](Get-Started-ObjectiveC-iOS.md)
+- [Biblioteka Java dla systemu Android](GetStartedJavaAndroid.md)
+- [Biblioteka języka C dla systemu iOS](Get-Started-ObjectiveC-iOS.md)
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Przykłady](../samples.md) strona zawiera pełną próbek do użycia biblioteki klienta mowy.
-- Jeśli potrzebujesz biblioteki klienckiej, która nie jest jeszcze dostępna, można utworzyć własnych zestawów SDK. Implementowanie [protokołu WebSocket mowy](../API-Reference-REST/websocketprotocol.md) na platformie i Użyj preferowanego języka.
+- Na stronie [przykłady](../samples.md) znajdują się kompletne przykłady dotyczące korzystania z bibliotek klienckich mowy.
+- Jeśli potrzebujesz biblioteki klienckiej, która nie jest jeszcze obsługiwana, możesz utworzyć własny zestaw SDK. Zaimplementuj [Protokół WebSocket mowy](../API-Reference-REST/websocketprotocol.md) na platformie i Użyj wybranego języka.
 
 ## <a name="license"></a>Licencja
 
-Wszystkie Cognitive Services zestawy SDK i przykłady są licencjonowane z licencją MIT. Aby uzyskać więcej informacji, zobacz [licencji](https://github.com/Microsoft/Cognitive-Speech-STT-JavaScript/blob/master/LICENSE.md).
+Wszystkie Cognitive Services zestawy SDK i przykłady są licencjonowane z licencją MIT. Aby uzyskać więcej informacji, zobacz [licencja](https://github.com/Microsoft/Cognitive-Speech-STT-JavaScript/blob/master/LICENSE.md).

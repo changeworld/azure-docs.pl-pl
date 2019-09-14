@@ -8,13 +8,13 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.author: rimman
-ms.custom: seo-java-august2019
-ms.openlocfilehash: f30b1ef7a80e11c2cefd8689845fb7d450a1c167
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 7129819b6cec068420b0b265d878078622721812
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172347"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965388"
 ---
 # <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>Szybki start: Tworzenie aplikacji konsolowej przy użyciu języka Java i interfejsu API MongoDB w Azure Cosmos DB
 
@@ -27,7 +27,7 @@ ms.locfileid: "70172347"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Dzięki dystrybucji globalnej i możliwości skalowania poziomego w usłudze Cosmos DB możesz szybko tworzyć i badać za pomocą zapytań bazy danych dokumentów, par klucz/wartość oraz grafów. 
+W tym przewodniku szybki start użyjesz interfejsu API Azure Cosmos DB dla Mongo DB i Java SDK, aby utworzyć aplikację internetową konsoli. Azure Cosmos DB umożliwia szybkie tworzenie i wysyłanie zapytań do baz danych dokumentów, kluczy/wartości i grafów, a wszystkie korzyści wynikające z dystrybucji globalnej i możliwości skalowania poziomego są dostępne w ramach rdzenia Cosmos DB.
 
 Ten przewodnik Szybki start opisuje sposób tworzenia konta usługi Cosmos przy użyciu [interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB](mongodb-introduction.md). Następnie utworzysz i wdrożysz aplikację konsoli przy użyciu [sterownika Java MongoDB](https://docs.mongodb.com/ecosystem/drivers/java/). 
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ece7f93b5397db16e03c1eab1d2dc1e568113d9
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 82fe917f911be45d7f68662e956fe3bd14f92267
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879257"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959878"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Ochrona hasłem w usłudze Azure AD — często zadawane pytania
 
@@ -77,6 +77,13 @@ Aby uzyskać więcej informacji, zobacz następujące artykuły:
 [Przypadek migrowania replikacji folderu SYSVOL do usługi DFSR](https://blogs.technet.microsoft.com/askds/2010/04/22/the-case-for-migrating-sysvol-to-dfsr)
 
 [Koniec to Nigh dla usługi FRS](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs)
+
+Jeśli domena nie korzysta już z usługi DFSR, przed zainstalowaniem ochrony przy użyciu usługi Azure AD Password należy przeprowadzić migrację do niej. Aby uzyskać więcej informacji, zobacz następujący link:
+
+[Przewodnik migracji replikacji folderu SYSVOL: Usługa FRS do Replikacja systemu plików DFS](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
+
+> [!WARNING]
+> Oprogramowanie agenta DC ochrony hasłem w usłudze Azure AD będzie obecnie instalowane na kontrolerach domeny w domenach, które nadal używają usługi FRS do replikacji folderu SYSVOL, ale oprogramowanie nie będzie działało prawidłowo w tym środowisku. Dodatkowe negatywne efekty uboczne obejmują pojedyncze pliki, których replikacja nie powiodła się, a procedury przywracania folderu SYSVOL pojawiają się po awarii, ale w trybie dyskretnym nie można zreplikować wszystkich plików. Należy przeprowadzić migrację domeny tak szybko, jak to możliwe, zarówno w przypadku związanych z nią korzyści, jak i do odblokowania wdrożenia ochrony hasłem usługi Azure AD. Przyszłe wersje oprogramowania zostaną automatycznie wyłączone po uruchomieniu w domenie, która nadal korzysta z usługi FRS.
 
 **Pyt.: Ile miejsca na dysku jest wymagane przez funkcję w udziale Sysvol domeny?**
 

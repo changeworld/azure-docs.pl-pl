@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: pabutler
-ms.openlocfilehash: 4bca52f19348569444ee09348c49756f64c986b7
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 746b1b51d593b21bdf85bca4eeb75c135196093a
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884446"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962852"
 ---
 # <a name="azure-and-appsource-marketplace-offers"></a>Oferty dotyczące platformy Azure i usługi AppSource Marketplace
 
@@ -29,14 +29,14 @@ Aby uzyskać więcej informacji na temat tych rynków, zobacz artykuł [Azure Ma
 
 ## <a name="common-offer-operations"></a>Operacje wspólnej oferty
 
-Proces tworzenia nowej oferty różni się znacznie w różnych typach oferty, na przykład między ofertą [aplikacji platformy Azure](./azure-applications/cpp-azure-app-offer.md) i [ofertą usługi konsultingowej](./consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md).  W przeciwieństwie do wielu innych operacji wykonywanych w ramach oferty w [Portal Cloud partner](https://cloudpartner.azure.com) są one dość ustandaryzowane dla różnych typów ofert.  Te Typowe operacje — w tym publikowanie, wyświetlanie stanu, aktualizowanie i usuwanie — są omówione w sekcji [zarządzanie ofertami](./manage-offers/cpp-manage-offers.md)
+Proces tworzenia nowej oferty różni się znacznie w różnych typach oferty, na przykład między [ofertą aplikacji platformy Azure](./azure-applications/cpp-azure-app-offer.md) i [ofertą usługi konsultingowej](./consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md).  W przeciwieństwie do wielu innych operacji wykonywanych w ramach oferty w [Portal Cloud partner](https://cloudpartner.azure.com) są one dość ustandaryzowane dla różnych typów ofert.  Te Typowe operacje — w tym publikowanie, wyświetlanie stanu, aktualizowanie i usuwanie — są omówione w sekcji [zarządzanie ofertami](./manage-offers/cpp-manage-offers.md)
 
 
 ## <a name="test-drive"></a>Wersja testowa
 
 *Test Drive* to funkcja portalu Marketplace, która zapewnia klientom "Wypróbuj przed zakupem" opcję demonstracyjną dla każdej oferty, tak aby była włączona.  Możliwości dysku testowego są ograniczone do następującego podzestawu typów ofert: [Aplikacje platformy Azure](./azure-applications/cpp-azure-app-offer.md), [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md), [Dynamics 365 do zaangażowania klientów](./dyn365ce/cpp-customer-engagement-offer.md), [Dynamics 365 dla finansów i operacji](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md), [aplikacji SaaS](./saas-app/cpp-saas-offer.md)oraz [maszyn wirtualnych](./virtual-machine/cpp-virtual-machine-offer.md).  Ta funkcja wymaga, aby Wydawca utworzył szablon dysku testowego dostosowany do jego oferty.  Aby uzyskać więcej informacji, zobacz sekcję [dysk testowy](./test-drive/what-is-test-drive.md).
 
-Możesz przeglądać istniejące oferty portalu Marketplace, które mają demonstrację dysku testowego, stosując [Filtr dysku testowego](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=test-drive). 
+Możesz przeglądać istniejące oferty portalu Marketplace, które mają demonstrację dysku testowego, stosując [Filtr dysku testowego](https://azuremarketplace.microsoft.com/marketplace/apps?filters=test-drive). 
 
 
 ## <a name="azure-marketplace-and-appsource-offer-types"></a>Azure Marketplace i typy ofert AppSource

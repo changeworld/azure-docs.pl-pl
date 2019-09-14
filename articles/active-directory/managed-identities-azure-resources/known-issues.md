@@ -1,6 +1,6 @@
 ---
-title: Często zadawane pytania i znane problemy związane z zarządzanych tożsamości dla zasobów platformy Azure
-description: Znane problemy związane z zarządzanych tożsamości dla zasobów platformy Azure.
+title: Często zadawane pytania i znane problemy związane z tożsamościami zarządzanymi dla zasobów platformy Azure
+description: Znane problemy związane z tożsamościami zarządzanymi dla zasobów platformy Azure.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -16,14 +16,14 @@ ms.workload: identity
 ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1eb5600a9793963a722967e1bbe702cf3b2f670e
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 8d882b34bc4f057035a16b7916249cfe8f0b8d0b
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147113"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983432"
 ---
-# <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Często zadawane pytania i znane problemy związane z zarządzanych tożsamości dla zasobów platformy Azure
+# <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Często zadawane pytania i znane problemy związane z tożsamościami zarządzanymi dla zasobów platformy Azure
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -32,122 +32,122 @@ ms.locfileid: "67147113"
 > [!NOTE]
 > Tożsamości zarządzane dla zasobów platformy Azure to nowa nazwa usługi znanej wcześniej jako Tożsamość usługi zarządzanej (MSI).
 
-### <a name="does-managed-identities-for-azure-resources-work-with-azure-cloud-services"></a>Zarządzanych tożsamości dla zasobów platformy Azure działa z usługami w chmurze platformy Azure?
+### <a name="does-managed-identities-for-azure-resources-work-with-azure-cloud-services"></a>Czy zarządzane tożsamości dla zasobów platformy Azure współpracują z usługą Azure Cloud Services?
 
-Nie, nie ma żadnych planów, aby obsługiwać zarządzanych tożsamości na potrzeby zasobów platformy Azure w usługach Azure Cloud Services.
+Nie. nie ma żadnych planów do obsługi tożsamości zarządzanych dla zasobów platformy Azure w usłudze Azure Cloud Services.
 
-### <a name="does-managed-identities-for-azure-resources-work-with-the-active-directory-authentication-library-adal-or-the-microsoft-authentication-library-msal"></a>Zarządzanych tożsamości dla zasobów platformy Azure działa z Active Directory Authentication Library (ADAL) lub biblioteka Microsoft Authentication Library (MSAL)?
+### <a name="does-managed-identities-for-azure-resources-work-with-the-active-directory-authentication-library-adal-or-the-microsoft-authentication-library-msal"></a>Czy zarządzane tożsamości dla zasobów platformy Azure współpracują z Active Directory Authentication Library (ADAL) czy z biblioteką uwierzytelniania firmy Microsoft (MSAL)?
 
-Dla zasobów platformy Azure nie jest jeszcze zintegrowana z biblioteką ADAL lub biblioteki MSAL, nie, zarządzanych tożsamości. Aby uzyskać więcej informacji na temat pozyskiwania token dla zarządzanych tożsamości dla zasobów platformy Azure przy użyciu punktu końcowego REST, zobacz [jak uzyskiwanie tokenu dostępu, za pomocą tożsamości zarządzanych zasobów platformy Azure na Maszynie wirtualnej platformy Azure](how-to-use-vm-token.md).
+Nie, zarządzane tożsamości dla zasobów platformy Azure nie są jeszcze zintegrowane z biblioteką ADAL lub MSAL. Aby uzyskać szczegółowe informacje na temat uzyskiwania tokenu dla tożsamości zarządzanych dla zasobów platformy Azure przy użyciu punktu końcowego REST, zobacz [jak używać tożsamości zarządzanych dla zasobów platformy Azure na maszynie wirtualnej platformy Azure w celu uzyskania tokenu dostępu](how-to-use-vm-token.md).
 
-### <a name="what-is-the-security-boundary-of-managed-identities-for-azure-resources"></a>Co to jest granicy zabezpieczeń z zarządzanych tożsamości dla zasobów platformy Azure?
+### <a name="what-is-the-security-boundary-of-managed-identities-for-azure-resources"></a>Jaka jest granica zabezpieczeń zarządzanych tożsamości dla zasobów platformy Azure?
 
-Granicy zabezpieczeń tożsamości jest zasób, do której jest dołączony do. Na przykład granice zabezpieczeń dla maszyny wirtualnej z zarządzanych tożsamości dla zasobów platformy Azure jest włączone, maszyna wirtualna. Każdy kod uruchomiony na tej maszynie Wirtualnej jest w stanie wywołać zarządzanych tożsamości dla zasobów platformy Azure z punktu końcowego i żądania tokenów. Jest podobnie środowisko z innymi zasobami, które obsługują zarządzanych tożsamości dla zasobów platformy Azure.
+Granica zabezpieczeń tożsamości jest zasobem, do którego jest dołączony. Na przykład granica zabezpieczeń maszyny wirtualnej z zarządzanymi tożsamościami dla zasobów platformy Azure to maszyna wirtualna. Każdy kod uruchomiony na tej maszynie wirtualnej może wywoływać zarządzane tożsamości dla punktu końcowego zasobów platformy Azure i tokenów żądań. Jest to podobne środowisko z innymi zasobami, które obsługują zarządzane tożsamości dla zasobów platformy Azure.
 
-### <a name="what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request"></a>Jakie tożsamości zostanie domyślnie IMDS if określać tożsamość w żądaniu?
+### <a name="what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request"></a>Jaką tożsamość będzie IMDS domyślnie, jeśli nie określisz tożsamości w żądaniu?
 
-- Jeśli włączono przypisanej tożsamość zarządzaną w systemie, a nie tożsamości jest określony w żądaniu, domyślnie zostanie IMDS przypisanego tożsamości zarządzanej przez system.
-- Jeśli system przypisane tożsamość zarządzana nie jest włączony, a istnieje tylko jeden użytkownik przypisany tożsamości zarządzanej, IMDS będą domyślnie do tego pojedynczego zarządzanych tożsamości przypisanych przez użytkownika. 
-- Jeśli system przypisane tożsamość zarządzana nie jest włączony, a istnieje wielu użytkowników zarządzanych tożsamości przypisanych przez, następnie podając tożsamość zarządzaną w żądaniu jest wymagana.
+- Jeśli jest włączona tożsamość zarządzana przypisana przez system i żadna tożsamość nie została określona w żądaniu, IMDS domyślnie zostanie skojarzona z tożsamością zarządzaną przez system.
+- Jeśli tożsamość zarządzana przypisana przez system nie jest włączona i istnieje tylko jedna tożsamość zarządzana przypisana przez użytkownika, IMDS zostanie domyślnie przypisana tożsamość zarządzana pojedynczego użytkownika. 
+- Jeśli tożsamość zarządzana przypisana przez system nie jest włączona, a istnieją wiele tożsamości zarządzanych przypisanych przez użytkownika, a następnie wymagane jest określenie tożsamości zarządzanej w żądaniu.
 
-### <a name="should-i-use-the-managed-identities-for-azure-resources-imds-endpoint-or-the-vm-extension-endpoint"></a>Punkt końcowy IMDS zasobów platformy Azure lub punktu końcowego z rozszerzenia maszyny Wirtualnej należy używać zarządzanych tożsamości?
+### <a name="should-i-use-the-managed-identities-for-azure-resources-imds-endpoint-or-the-vm-extension-endpoint"></a>Czy należy używać zarządzanych tożsamości dla punktu końcowego IMDS zasobów platformy Azure lub punktu końcowego rozszerzenia maszyny wirtualnej?
 
-Korzystając z zarządzanych tożsamości dla zasobów platformy Azure z maszynami wirtualnymi, zaleca się przy użyciu punktu końcowego IMDS. Azure Instance Metadata Service jest punkt końcowy REST dostępne dla wszystkich maszyn wirtualnych IaaS utworzone za pomocą usługi Azure Resource Manager. 
+W przypadku korzystania z tożsamości zarządzanych dla zasobów platformy Azure z maszynami wirtualnymi zalecamy użycie punktu końcowego IMDS. Instance Metadata Service platformy Azure to punkt końcowy REST dostępny dla wszystkich maszyn wirtualnych IaaS utworzonych za pośrednictwem Azure Resource Manager. 
 
-Korzyści z używania zarządzanych tożsamości dla zasobów platformy Azure za pośrednictwem IMDS, należą:
-- Wszystkie systemy operacyjne obsługiwane modelu IaaS platformy Azure mogą używać zarządzanych tożsamości dla zasobów platformy Azure za pośrednictwem IMDS.
-- Nie musisz zainstalować rozszerzenie na maszynie Wirtualnej, aby umożliwić zarządzanych tożsamości dla zasobów platformy Azure. 
-- Certyfikaty używane przez zarządzanych tożsamości dla zasobów platformy Azure nie są już dostępne na maszynie wirtualnej.
-- Punkt końcowy IMDS jest dobrze znanego nierutowalny adresu IP, dostępne tylko z poziomu maszyny Wirtualnej.
-- 1000 przypisanych do użytkowników zarządzanych tożsamości można przypisać do jednej maszyny Wirtualnej. 
+Niektóre korzyści wynikające z używania tożsamości zarządzanych dla zasobów platformy Azure za pośrednictwem IMDS są następujące:
+- Wszystkie systemy operacyjne obsługiwane przez usługę Azure IaaS mogą używać tożsamości zarządzanych dla zasobów platformy Azure za pośrednictwem usługi IMDS.
+- Nie trzeba już instalować rozszerzenia na maszynie wirtualnej, aby umożliwić zarządzanie tożsamościami dla zasobów platformy Azure. 
+- Certyfikaty używane przez zarządzane tożsamości dla zasobów platformy Azure nie są już obecne na maszynie wirtualnej.
+- Punkt końcowy IMDS jest dobrze znanym adresem IP bez obsługi routingu, który jest dostępny tylko w ramach maszyny wirtualnej.
+- 1000 tożsamości zarządzane przypisane przez użytkownika można przypisać do pojedynczej maszyny wirtualnej. 
 
-Zarządzanych tożsamości dla rozszerzenia maszyny Wirtualnej zasoby platformy Azure jest nadal dostępna; Jednak firma Microsoft nie jest już opracowujesz nową funkcję na nim. Zaleca się przejście na użycie punktu końcowego IMDS. 
+Zarządzane tożsamości dla rozszerzenia maszyny wirtualnej zasobów platformy Azure są nadal dostępne; nie opracowujemy jednak już nowych funkcji. Zalecamy przełączenie do korzystania z punktu końcowego IMDS. 
 
-Niektóre ograniczenia przy użyciu punktu końcowego z rozszerzenia maszyny Wirtualnej to:
-- Ograniczona obsługa dystrybucje systemu Linux: Stabilny systemu CoreOS, CentOS 7.1, Red Hat 7.2, Ubuntu 15.04, Ubuntu 16.04
-- Do maszyny Wirtualnej można przypisać maksymalnie 32 przypisanych do użytkowników zarządzanych tożsamości.
+Niektóre ograniczenia związane z korzystaniem z punktu końcowego rozszerzenia maszyny wirtualnej są następujące:
+- Ograniczona obsługa dystrybucji systemu Linux: CoreOS stabilny, CentOS 7,1, Red Hat 7,2, Ubuntu 15,04, Ubuntu 16,04
+- Do maszyny wirtualnej można przypisać tylko 32 tożsamości zarządzane przypisane przez użytkownika.
 
 
-Uwaga: Zarządzanych tożsamości dla rozszerzenia maszyny Wirtualnej zasoby platformy Azure będzie obsługiwany w styczniu 2019 r. 
+Uwaga: Identyfikatory zarządzane dla rozszerzenia maszyny wirtualnej zasobów platformy Azure nie są obsługiwane w styczniu 2019. 
 
-Aby uzyskać więcej informacji na temat usługi Azure Instance Metadata Service, zobacz [IMDS dokumentacji](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
+Aby uzyskać więcej informacji na temat usługi Azure Instance Metadata Service, zobacz [dokumentację IMDS](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
 
-### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>Zostaną zarządzanych tożsamości odtworzone automatycznie Jeśli przenieść subskrypcję do innego katalogu?
+### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>Czy tożsamość zarządzana zostanie automatycznie utworzona, Jeśli przeniesiesz subskrypcję do innego katalogu?
 
-Nie. Jeśli przeniesiesz subskrypcję do innego katalogu, trzeba będzie ponownie je utworzyć ręcznie i ponownie przyznawanie przypisania ról RBAC platformy Azure.
-- Dla zarządzanych tożsamości przypisanych przez system: Wyłącz i ponownie włączyć. 
-- Dla zarządzanych tożsamości przypisanych przez użytkownika: Usuń i ponownie utwórz ponownie podłączyć do wymaganych zasobów (np. maszyn wirtualnych)
+Nie. Jeśli przeniesiesz subskrypcję do innego katalogu, musisz ręcznie je ponownie utworzyć i ponownie udzielić przypisań ról RBAC platformy Azure.
+- Dla tożsamości zarządzanych przypisanych przez system: Wyłącz i ponownie włącz. 
+- W przypadku tożsamości zarządzanych przypisanych przez użytkownika: Usuń, ponownie utwórz i Dołącz je do niezbędnych zasobów (np. maszyn wirtualnych).
 
-### <a name="can-i-use-a-managed-identity-to-access-a-resource-in-a-different-directorytenant"></a>Dostęp do zasobów w innej katalogu/dzierżawy mogą używać tożsamości zarządzanej?
+### <a name="can-i-use-a-managed-identity-to-access-a-resource-in-a-different-directorytenant"></a>Czy mogę użyć tożsamości zarządzanej w celu uzyskania dostępu do zasobu w innym katalogu/dzierżawie?
 
-Nie. Zarządzanych tożsamości nie obsługują obecnie katalogu dla wielu scenariuszy. 
+Nie. Tożsamości zarządzane nie obsługują obecnie scenariuszy między katalogami. 
 
-### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>Jakich uprawnień RBAC platformy Azure są wymagane do tożsamość zarządzaną w zasobie? 
+### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>Jakie uprawnienia RBAC platformy Azure są wymagane do zarządzania tożsamościami w zasobie? 
 
-- Tożsamość zarządzana przypisana przez system: Potrzebujesz uprawnienia do zapisu przez zasób. Exampl w przypadku maszyn wirtualnych należy Microsoft.Compute/virtualMachines/write. Ta akcja znajduje się w zasobie określonego wbudowanych ról, takich jak [Współautor maszyny wirtualnej](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor).
-- Tożsamość zarządzana przypisanych przez użytkownika: Potrzebujesz uprawnienia do zapisu przez zasób. Na przykład w przypadku maszyn wirtualnych należy Microsoft.Compute/virtualMachines/write. Oprócz [Operator tożsamości zarządzanych](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) przypisania roli za pośrednictwem tożsamość zarządzaną.
+- Tożsamość zarządzana przypisana przez system: Potrzebujesz uprawnień do zapisu nad zasobem. Na przykład w przypadku maszyn wirtualnych, których potrzebujesz firma Microsoft. COMPUTE/virtualMachines/Write. Ta akcja jest uwzględniona w rolach wbudowanych specyficznych dla zasobów, takich jak [współautor maszyny wirtualnej](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor).
+- Tożsamość zarządzana przypisana przez użytkownika: Potrzebujesz uprawnień do zapisu nad zasobem. Na przykład w przypadku maszyn wirtualnych, których potrzebujesz firma Microsoft. COMPUTE/virtualMachines/Write. Oprócz przypisywania roli [operatora tożsamości zarządzanej](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) przez zarządzaną tożsamość.
 
-### <a name="how-do-you-restart-the-managed-identities-for-azure-resources-extension"></a>Jak ponownym zarządzanych tożsamości dla rozszerzenia zasobów platformy Azure?
-W systemie Windows i niektóre wersje systemu Linux Jeśli rozszerzenie zostanie zatrzymana, następujące polecenie cmdlet może służyć do ręcznie uruchomić ponownie:
+### <a name="how-do-you-restart-the-managed-identities-for-azure-resources-extension"></a>Jak ponownie uruchomić zarządzane tożsamości dla rozszerzenia zasobów platformy Azure?
+W systemie Windows i niektórych wersjach systemu Linux, jeśli rozszerzenie zostanie zatrzymane, można użyć następującego polecenia cmdlet, aby ręcznie uruchomić ponownie:
 
 ```powershell
 Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <location> -Publisher Microsoft.ManagedIdentity -VMName <vm name> -ResourceGroupName <resource group name> -ForceRerun <Any string different from any last value used>
 ```
 
 Gdzie: 
-- Rozszerzenie nazwy i typu dla Windows to: ManagedIdentityExtensionForWindows
-- Rozszerzenie nazwy i typu dla systemu Linux jest: ManagedIdentityExtensionForLinux
+- Nazwa rozszerzenia i typ dla systemu Windows to: ManagedIdentityExtensionForWindows
+- Nazwa rozszerzenia i typ dla systemu Linux to: ManagedIdentityExtensionForLinux
 
 ## <a name="known-issues"></a>Znane problemy
 
-### <a name="automation-script-fails-when-attempting-schema-export-for-managed-identities-for-azure-resources-extension"></a>"Skrypt automatyzacji" kończy się niepowodzeniem podczas próby eksport schematu dla zarządzanych tożsamości dla rozszerzenia zasobów platformy Azure
+### <a name="automation-script-fails-when-attempting-schema-export-for-managed-identities-for-azure-resources-extension"></a>"Skrypt automatyzacji" kończy się niepowodzeniem podczas próby eksportowania schematu dla tożsamości zarządzanych dla rozszerzenia zasobów platformy Azure
 
-Po włączeniu zarządzanych tożsamości dla zasobów platformy Azure na maszynie Wirtualnej następujący błąd jest wyświetlany, gdy próba użycia funkcji "Skrypt automatyzacji" dla maszyny Wirtualnej lub jej grupy zasobów:
+Gdy zarządzane tożsamości dla zasobów platformy Azure są włączone na maszynie wirtualnej, podczas próby użycia funkcji "skrypt automatyzacji" dla maszyny wirtualnej lub jej grupy zasobów jest wyświetlany następujący błąd:
 
-![Błąd eksportowania zarządzanych tożsamości dla zasobów platformy Azure, skrypt automatyzacji](./media/msi-known-issues/automation-script-export-error.png)
+![Tożsamość zarządzana dla błędu eksportowania skryptu automatyzacji zasobów platformy Azure](./media/msi-known-issues/automation-script-export-error.png)
 
-Zarządzanych tożsamości dla zasobów platformy Azure, które rozszerzenia maszyny Wirtualnej (zaplanowane do wycofania z użycia w styczniu 2019) jest obecnie nie obsługuje możliwość eksportowania jego schematu do szablonu grupy zasobów. W rezultacie w wygenerowany szablon nie są wyświetlane parametry konfiguracji, aby umożliwić zarządzanych tożsamości dla zasobów platformy Azure w zasobie. Poniższe sekcje mogą być dodawane ręcznie, wykonując na potrzeby przykładów w [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na Maszynie wirtualnej platformy Azure przy użyciu szablonów](qs-configure-template-windows-vm.md).
+Zarządzane tożsamości dla rozszerzenia maszyny wirtualnej zasobów platformy Azure (planowane do wycofania w styczniu 2019) nie obsługują obecnie możliwości eksportowania jego schematu do szablonu grupy zasobów. W związku z tym wygenerowany szablon nie pokazuje parametrów konfiguracji, aby umożliwić zarządzanie tożsamościami dla zasobów platformy Azure w ramach zasobu. Te sekcje można dodać ręcznie, postępując zgodnie z przykładami w temacie [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej platformy Azure przy użyciu szablonów](qs-configure-template-windows-vm.md).
 
-Gdy funkcja eksportu schematu stają się dostępne dla zarządzanych tożsamości dla rozszerzenia maszyny Wirtualnej zasoby platformy Azure (planowana do wycofania z użycia w styczniu 2019), będzie ono wyświetlane w [eksportowanie grupy zasobów zawierające rozszerzeń maszyn wirtualnych](../../virtual-machines/extensions/export-templates.md#supported-virtual-machine-extensions).
+Po udostępnieniu funkcji eksportu schematu dla tożsamości zarządzanych dla rozszerzenia maszyny wirtualnej Azure Resources (planowanej do wycofania w styczniu 2019) zostanie ono wyświetlone w obszarze [Eksportowanie grup zasobów zawierających rozszerzenia maszyn wirtualnych](../../virtual-machines/extensions/export-templates.md#supported-virtual-machine-extensions).
 
-### <a name="vm-fails-to-start-after-being-moved-from-resource-group-or-subscription"></a>Maszyna wirtualna nie została uruchomiona po jest przenoszony z grupy zasobów lub subskrypcji
+### <a name="vm-fails-to-start-after-being-moved-from-resource-group-or-subscription"></a>Nie można uruchomić maszyny wirtualnej po przeniesieniu jej z grupy zasobów lub subskrypcji
 
-Jeśli przenosisz Maszynę wirtualną w stanie uruchomienia, nadal działa podczas przenoszenia. Jednak po przeniesieniu, jeśli maszyna wirtualna zostanie zatrzymana i uruchomiona ponownie, zakończy się niepowodzeniem do uruchomienia. Ten problem występuje, ponieważ maszyna wirtualna nie aktualizuje odwołanie do zarządzanych tożsamości dla tożsamości zasobów platformy Azure i wskaż w starej grupy zasobów w dalszym ciągu.
+Jeśli przeniesiesz maszynę wirtualną w stan uruchomienia, będzie ona nadal działać podczas przenoszenia. Jednak po przeniesieniu, jeśli maszyna wirtualna zostanie zatrzymana i uruchomiona ponownie, nie zostanie uruchomiona. Ten problem występuje, ponieważ maszyna wirtualna nie aktualizuje odwołania do zarządzanych tożsamości dla tożsamości zasobów platformy Azure i kontynuuje wskazywanie jej w starej grupie zasobów.
 
 **Obejście problemu** 
  
-Wyzwalanie aktualizacji na maszynie Wirtualnej, dzięki czemu go uzyskać prawidłowe wartości dla zarządzanych tożsamości dla zasobów platformy Azure. Możesz tworzyć zmiany właściwości maszyny Wirtualnej, można zaktualizować odwołania do zarządzanych tożsamości dla tożsamości zasobów platformy Azure. Na przykład można ustawić nową wartość tagu na maszynie Wirtualnej za pomocą następującego polecenia:
+Wyzwól aktualizację na maszynie wirtualnej, aby możliwe było uzyskanie prawidłowych wartości dla zarządzanych tożsamości dla zasobów platformy Azure. Aby zaktualizować odwołanie do zarządzanych tożsamości dla tożsamości zasobów platformy Azure, można zmienić wartość właściwości maszyny wirtualnej. Na przykład można ustawić nową wartość tagu na maszynie wirtualnej przy użyciu następującego polecenia:
 
 ```azurecli-interactive
  az  vm update -n <VM Name> -g <Resource Group> --set tags.fixVM=1
 ```
  
-To polecenie ustawia nowy tag "fixVM" o wartości 1 na maszynie Wirtualnej. 
+To polecenie ustawia nowy tag "fixVM" o wartości 1 na maszynie wirtualnej. 
  
-Przez ustawienie tej właściwości, maszyna wirtualna zostaje zaktualizowana o poprawne zarządzanych tożsamości dla identyfikatora URI zasobu zasobów platformy Azure, a następnie powinno być możliwe do uruchomienia maszyny Wirtualnej. 
+Ustawiając tę właściwość, maszyna wirtualna ma aktualizacje z poprawnymi tożsamościami zarządzanymi dla identyfikatora URI zasobu zasobów platformy Azure, a następnie powinno być możliwe uruchomienie maszyny wirtualnej. 
  
-Gdy maszyna wirtualna jest uruchomiona, można usunąć tagu za pomocą następującego polecenia:
+Po uruchomieniu maszyny wirtualnej tag można usunąć za pomocą następującego polecenia:
 
 ```azurecli-interactive
 az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 ```
 
-### <a name="vm-extension-provisioning-fails"></a>Rozszerzenie maszyny Wirtualnej, inicjowanie obsługi administracyjnej kończy się niepowodzeniem
+### <a name="vm-extension-provisioning-fails"></a>Inicjowanie obsługi rozszerzenia maszyny wirtualnej nie powiodło się
 
-Inicjowanie obsługi rozszerzenia maszyny Wirtualnej może zakończyć się niepowodzeniem z powodu błędów wyszukiwania DNS. Uruchom ponownie maszynę Wirtualną i spróbuj ponownie.
+Inicjowanie obsługi rozszerzenia maszyny wirtualnej może zakończyć się niepowodzeniem z powodu błędów wyszukiwania DNS. Uruchom ponownie maszynę wirtualną i spróbuj ponownie.
  
 > [!NOTE]
-> Rozszerzenie maszyny Wirtualnej jest planowana do wycofania z użycia stycznia 2019 r. Zaleca się, że przeniesiesz przy użyciu punktu końcowego IMDS.
+> Rozszerzenie maszyny wirtualnej jest planowane do wycofania do stycznia 2019. Zalecamy przechodzenie do korzystania z punktu końcowego IMDS.
 
-### <a name="transferring-a-subscription-between-azure-ad-directories"></a>Transferowania subskrypcji między katalogami usługi Azure AD
+### <a name="transferring-a-subscription-between-azure-ad-directories"></a>Przenoszenie subskrypcji między katalogami usługi Azure AD
 
-Zarządzanych tożsamości nie zostać zaktualizowana, gdy subskrypcja jest przeniesiony/przeniesione do innego katalogu. Co w efekcie wszelkie istnieje przypisana przez system lub zarządzanych tożsamości przypisanych przez użytkownika zostaną przerwane. 
+Tożsamości zarządzane nie są aktualizowane, gdy subskrypcja jest przenoszona/przenoszona do innego katalogu. W związku z tym wszystkie istniejące tożsamości zarządzane przypisane do systemu lub przypisane przez użytkownika zostaną przerwane. 
 
-Rozwiązania dla zarządzanych tożsamości w ramach subskrypcji, która została przeniesiona do innego katalogu:
+Obejście dla zarządzanych tożsamości w ramach subskrypcji, która została przeniesiona do innego katalogu:
 
- - Dla zarządzanych tożsamości przypisanych przez system: Wyłącz i ponownie włączyć. 
- - Dla zarządzanych tożsamości przypisanych przez użytkownika: Usuń i ponownie utwórz ponownie podłączyć do wymaganych zasobów (np. maszyn wirtualnych)
+ - Dla tożsamości zarządzanych przypisanych przez system: Wyłącz i ponownie włącz. 
+ - W przypadku tożsamości zarządzanych przypisanych przez użytkownika: Usuń, ponownie utwórz i Dołącz je do niezbędnych zasobów (np. maszyn wirtualnych).
 
-### <a name="moving-a-user-assigned-managed-identity-to-a-different-resource-groupsubscription"></a>Przenoszenie tożsamości zarządzanej użytkownik przypisany do subskrypcji/grupy inny zasób
+### <a name="moving-a-user-assigned-managed-identity-to-a-different-resource-groupsubscription"></a>Przeniesienie tożsamości zarządzanej przypisanej przez użytkownika do innej grupy zasobów/subskrypcji
 
-Przenoszenie tożsamości zarządzanej użytkownik przypisany do innej grupy zasobów spowoduje, że tożsamości można przerwać. W rezultacie zasobów (np. maszyna wirtualna), przy użyciu tej tożsamości nie będzie do żądania tokenów dla niego. 
+Przeniesienie tożsamości zarządzanej przypisanej przez użytkownika do innej grupy zasobów spowoduje, że tożsamość zostanie przerwana. W związku z tym zasoby (np. VM) używające tej tożsamości nie będą mogły żądać tokenów dla niego. 

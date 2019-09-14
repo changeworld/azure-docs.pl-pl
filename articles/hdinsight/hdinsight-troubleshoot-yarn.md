@@ -6,12 +6,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 8bfe249b0295bc860cf17a006c3787ff8afa676b
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 15ef18663a42153c11a55d4c5963d47f0e2514d6
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69573707"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961681"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z Apache Hadoop PRZĘDZą przy użyciu usługi Azure HDInsight
 
@@ -33,27 +33,27 @@ W tym przykładzie dwie istniejącej kolejki (**domyślne** i **thriftsvr**) są
 
 1. Wybierz **widoków Ambari** ikonę, a następnie wybierz wzorca siatki. Następnie wybierz pozycję **menedżera kolejki YARN**.
 
-    ![Wybierz ikonę widoków Ambari](media/hdinsight-troubleshoot-yarn/create-queue-1.png)
+    ![Wybierz ikonę widoków Ambari](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
 2. Wybierz **domyślne** kolejki.
 
-    ![Wybierz kolejkę domyślne](media/hdinsight-troubleshoot-yarn/create-queue-2.png)
+    ![Wybierz kolejkę domyślne](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
 3. Dla **domyślne** kolejki i zmienić **pojemności** z 50%, 25%. Aby uzyskać **thriftsvr** kolejki, zmień **pojemności** 25%.
 
-    ![Zmienianie pojemności do 25% domyślnej i thriftsvr kolejek](media/hdinsight-troubleshoot-yarn/create-queue-3.png)
+    ![Zmienianie pojemności do 25% domyślnej i thriftsvr kolejek](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
 4. Aby utworzyć nową kolejkę, wybierz **Dodaj kolejkę**.
 
-    ![Wybierz opcję Dodaj kolejkę](media/hdinsight-troubleshoot-yarn/create-queue-4.png)
+    ![Wybierz opcję Dodaj kolejkę](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
 
 5. Nazwa nowej kolejki.
 
-    ![Nazwa kolejki platformy Spark](media/hdinsight-troubleshoot-yarn/create-queue-5.png)  
+    ![Nazwa kolejki platformy Spark](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
 
 6. Pozostaw **pojemności** wartości na 50%, a następnie wybierz **akcje** przycisku.
 
-    ![Wybierz przycisk Akcje](media/hdinsight-troubleshoot-yarn/create-queue-6.png)  
+    ![Wybierz przycisk Akcje](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
 7. Wybierz **Zapisz i Odśwież kolejek**.
 
-    ![Wybierz pozycję Zapisz i Odśwież kolejek](media/hdinsight-troubleshoot-yarn/create-queue-7.png)  
+    ![Wybierz pozycję Zapisz i Odśwież kolejek](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png)  
 
 Te zmiany są widoczne od razu po Interfejsie użytkownika YARN harmonogramu.
 

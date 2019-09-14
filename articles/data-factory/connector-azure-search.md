@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 09/13/2019
 ms.author: jingwang
-ms.openlocfilehash: bc914d27e9bea15a625dd2cd196401d733f8cfb8
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: c2165d0ff16233766918f9e274324b02d1bf1ac8
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275936"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962115"
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Kopiowanie danych do indeksu Azure Search przy użyciu Azure Data Factory
 
@@ -164,7 +164,7 @@ Usługa Azure Search obsługuje pisanie dokumentów jako partii. Zadanie wsadowe
 ]
 ```
 
-### <a name="data-type-support"></a>Obsługa typu danych
+## <a name="data-type-support"></a>Obsługa typu danych
 
 W poniższej tabeli określono, czy Azure Search typ danych jest obsługiwany.
 
@@ -178,6 +178,8 @@ W poniższej tabeli określono, czy Azure Search typ danych jest obsługiwany.
 | DataTimeOffset | T |
 | String Array | Nie |
 | GeographyPoint względem | Nie |
+
+Obecnie inne typy danych (np. ComplexType) nie są obsługiwane. Aby uzyskać pełną listę typów danych obsługiwanych przez usługę Azure wyszukiwanie, zobacz [obsługiwane typy danych (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types).
 
 ## <a name="next-steps"></a>Następne kroki
 Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md##supported-data-stores-and-formats).

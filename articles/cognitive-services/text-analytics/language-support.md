@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: aahi
-ms.openlocfilehash: 558ce8950a1848f0cddc247f60dd4e75dd20ccf0
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: e14cb56db6e45fe86ecd5e73766c47d29dd23fa1
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305477"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984242"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Obsługa języka i regionu dla interfejs API analizy tekstu
 
@@ -48,7 +48,7 @@ Obsługa języka jest początkowo wdrażana w wersji zapoznawczej, z stopniowani
 |:----------- |:-------------:|:---------:|:-----------:|:-----------:|:-----------:
 | Arabski      | `ar`          |           |             | ✔ \*                     | |
 | Czeski       | `cs`          |           |             | ✔ \*                     | |
-| Chiński (uproszczony) | `zh-CN`|           |             | ✔         |    |
+| Chiński (uproszczony) | `zh-CN`| ✔ \***     |             | ✔         |    |
 | Duński      | `da`          | ✔ \*     | ✔           | ✔ \*            |     |
 | Holenderski       | `nl`          | ✔ \*     | ✔          |  ✔ \*           |     |
 | Angielski     | `en`          | ✔        | ✔           |  ✔ \*\*     |      |
@@ -58,7 +58,7 @@ Obsługa języka jest początkowo wdrażana w wersji zapoznawczej, z stopniowani
 | Grecki       | `el`          | ✔ \*     |             |            |     |
 | Węgierski   | `hu`          |           |             |  ✔ \*          |     | 
 | Włoski     | `it`          | ✔ \*     | ✔           |  ✔ \*           |     |
-| Japoński    | `ja`          |          | ✔           |  ✔ \*          |     |
+| Japoński    | `ja`          | ✔ \***         | ✔           |  ✔ \*          |     |
 | Koreański      | `ko`          |          | ✔           |  ✔ \*          |     |
 | Norweski (bokmål) | `no`  | ✔ \*     |  ✔          | ✔ \*            |     |
 | Polski      | `pl`          | ✔ \*     |  ✔          |  ✔ \*           |     |
@@ -71,7 +71,9 @@ Obsługa języka jest początkowo wdrażana w wersji zapoznawczej, z stopniowani
 
 \*Obsługa języka jest w wersji zapoznawczej
 
-\*\*Dla tego języka są dostępne zarówno [rozpoznawanie jednostek nazwanych](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-ner) , jak i [Konsolidacja jednostek](how-tos/text-analytics-how-to-entity-linking.md#entity-linking) .    
+\*\*Dla tego języka są dostępne zarówno [rozpoznawanie jednostek nazwanych](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-ner) , jak i [Konsolidacja jednostek](how-tos/text-analytics-how-to-entity-linking.md#entity-linking) .  
+
+\** * Dostępne w [publicznej wersji Zapoznawczej analiza tonacji v3](https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-v3-public-preview)
 
 ## <a name="see-also"></a>Zobacz także
 

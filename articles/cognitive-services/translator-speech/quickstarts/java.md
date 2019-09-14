@@ -3,20 +3,20 @@ title: 'Szybki start: Interfejs API tłumaczenia mowy w usłudze Translator dla 
 titlesuffix: Azure Cognitive Services
 description: Uzyskaj informacje oraz przykłady kodu w celu szybkiego rozpoczęcia korzystania z interfejsu API tłumaczenia mowy w usłudze Translator.
 services: cognitive-services
-author: swmachan
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
-ms.author: swmachan
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 587c55148d3c5ee2bdad5b25747e5dd8dadc35ba
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: bdf207fadd71d843e4ee72a645e787d3d50c12f5
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442157"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966424"
 ---
 # <a name="quickstart-translator-speech-api-with-java"></a>Szybki start: Interfejs API tłumaczenia mowy w usłudze Translator dla języka Java
 <a name="HOLTop"></a>
@@ -273,7 +273,7 @@ Pomyślnym wynikiem jest utworzenie pliku o nazwie „speak2.wav”. Ten plik za
 
 [Powrót do początku](#HOLTop)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Samouczek dotyczący tłumaczenia mowy w usłudze Translator](../tutorial-translator-speech-csharp.md)

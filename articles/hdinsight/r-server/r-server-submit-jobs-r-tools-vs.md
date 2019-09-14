@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 0ae717487f1538536601c8578e744d976798bf76
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 2d53f1bfc6eade535bfb1b3bb07d5115ffe5fc80
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899924"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967942"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Przesyłanie zadań z narzędzi R Tools for Visual Studio
 
@@ -55,7 +55,8 @@ RTVS ulepsza przepływ pracy w języku R, oferując narzędzia, takie jak [okno 
 5. `1-Getting Started with R.R` Otwórz plik `A first look at R` w folderze rozwiązania.
 6. Zaczynając od góry pliku, naciśnij klawisze CTRL + ENTER, aby wysłać każdy wiersz pojedynczo do okna R Interactive. Niektóre wiersze mogą chwilę potrwać, ponieważ zainstalują pakiety.
     * Alternatywnie możesz wybrać wszystkie wiersze w pliku R (Ctrl + A), a następnie wykonać wszystkie (Ctrl + Enter) lub wybrać ikonę Execute Interactive na pasku narzędzi.
-        ![Wykonaj interaktywnie](./media/r-server-submit-jobs-r-tools-vs/execute-interactive.png)
+
+        ![Wykonaj interaktywnie](./media/r-server-submit-jobs-r-tools-vs/execute-interactive1.png)
 
 7. Po uruchomieniu wszystkich wierszy w skrypcie powinny zostać wyświetlone dane wyjściowe podobne do tego:
 
@@ -82,20 +83,20 @@ Za pomocą ml Server lub Microsoft R Client firmy Microsoft z komputera z system
     # Create the Spark Cluster compute context
     mySparkCluster <- RxSpark(
           sshUsername = mySshUsername,
-      sshHostname = mySshHostname,
-      sshSwitches = mySshSwitches,
-      sshProfileScript = mySshProfileScript,
-      consoleOutput = TRUE,
-      hdfsShareDir = myHdfsShareDir,
-      shareDir = myShareDir,
-      sshClientDir = mySshClientDir
+          sshHostname = mySshHostname,
+          sshSwitches = mySshSwitches,
+          sshProfileScript = mySshProfileScript,
+          consoleOutput = TRUE,
+          hdfsShareDir = myHdfsShareDir,
+          shareDir = myShareDir,
+          sshClientDir = mySshClientDir
     )
-    
+
     # Set the current compute context as the Spark compute context defined above
     rxSetComputeContext(mySparkCluster)
     ```
-    
-    ![Ustawianie kontekstu Spark](./media/r-server-submit-jobs-r-tools-vs/spark-context.png)
+
+   ![Ustawianie kontekstu Spark](./media/r-server-submit-jobs-r-tools-vs/apache-spark-context.png)
 
 1. W oknie R Interactive wykonaj następujące polecenia:
 
@@ -107,13 +108,12 @@ Za pomocą ml Server lub Microsoft R Client firmy Microsoft z komputera z system
 
     Powinny pojawić się dane wyjściowe podobne do następujących:
 
-    ![Pomyślne wykonanie polecenia RX](./media/r-server-submit-jobs-r-tools-vs/rx-commands.png)
-
+    ![Pomyślne wykonanie](./media/r-server-submit-jobs-r-tools-vs/successful-rx-commands.png) polecenia RX
 1. Sprawdź, czy `rxHadoopCopy` pomyślnie `people.json` skopiowano plik z przykładowego folderu danych do nowo utworzonego `/user/RevoShare/newUser` folderu:
 
     1. W okienku klastra usługi HDInsight ML na platformie Azure wybierz pozycję **konta magazynu** z menu po lewej stronie.
 
-        ![Konta magazynu](./media/r-server-submit-jobs-r-tools-vs/storage-accounts.png)
+        ![Konta magazynu](./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png)
 
     2. Wybierz domyślne konto magazynu dla klastra, pamiętając o nazwie kontenera/katalogu.
 
@@ -123,7 +123,7 @@ Za pomocą ml Server lub Microsoft R Client firmy Microsoft z komputera z system
 
     4. Wybierz nazwę kontenera klastra, przejdź do folderu **User** (może być konieczne kliknięcie przycisku *Załaduj więcej* w dolnej części listy), a następnie wybierz pozycję *RevoShare*, a następnie **newUser**. Plik powinien być wyświetlony `newUser` w folderze. `people.json`
 
-        ![Skopiowano plik](./media/r-server-submit-jobs-r-tools-vs/copied-file.png)
+        ![Skopiowano plik](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
 
 1. Po zakończeniu korzystania z bieżącego kontekstu Apache Spark należy go zatrzymać. Nie można uruchamiać wielu kontekstów jednocześnie.
 

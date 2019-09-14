@@ -9,14 +9,14 @@ displayName: chat history, history, chat logs, logs
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: ebc06057dfa4bce72821ddf807cda46270e8ff3e
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 5c55084a57e46931049841f5011941b2115e9e69
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70206838"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961537"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>Uzyskiwanie danych analitycznych na potrzeby bazy wiedzy
 
@@ -26,9 +26,7 @@ QnA Maker przechowuje wszystkie dzienniki rozmowy i inne dane telemetryczne, je�
 
     ![Wybierz zasób usługi Application Insights](../media/qnamaker-how-to-analytics-kb/resources-created.png)
 
-2. Wybierz pozycję **Analiza**. Zostanie otwarte nowe okno, w którym można wykonywać zapytania o dane telemetryczne QnA Maker.
-
-    ![Wybieranie analiz](../media/qnamaker-how-to-analytics-kb/analytics.png)
+2. Wybierz pozycję **Dziennik (analiza)** . Zostanie otwarte nowe okno, w którym można wykonywać zapytania o dane telemetryczne QnA Maker.
 
 3. Wklej w poniższym zapytaniu i uruchom go.
 
@@ -48,7 +46,7 @@ QnA Maker przechowuje wszystkie dzienniki rozmowy i inne dane telemetryczne, je�
 
     Wybierz pozycję **Uruchom** , aby uruchomić zapytanie.
 
-    ![Uruchom zapytanie](../media/qnamaker-how-to-analytics-kb/run-query.png)
+    [![Uruchom zapytanie, aby określić pytania, odpowiedzi i oceny od użytkowników](../media/qnamaker-how-to-analytics-kb/run-query.png)](../media/qnamaker-how-to-analytics-kb/run-query.png#lightbox)
 
 ## <a name="run-queries-for-other-analytics-on-your-qna-maker-knowledge-base"></a>Uruchamianie zapytań dotyczących innych analiz w bazie wiedzy QnA Maker
 

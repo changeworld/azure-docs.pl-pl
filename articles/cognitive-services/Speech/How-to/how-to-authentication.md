@@ -1,24 +1,24 @@
 ---
-title: Uwierzytelnianie rozpoznawania mowy Bing | Dokumentacja firmy Microsoft
+title: Uwierzytelnianie w rozpoznawanie mowy Bing | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: Żądania uwierzytelniania do użycia interfejsu API rozpoznawania mowy Bing
+description: Żądaj uwierzytelniania, aby używać interfejs API rozpoznawania mowy Bing
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 11d6256fb63452b849a80abab181876d14b3b6a6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d1e708ff29293b87935d0d191ba44ad4a11917a0
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515056"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965653"
 ---
-# <a name="authenticate-to-the-speech-api"></a>Uwierzytelnianie interfejsu API mowy
+# <a name="authenticate-to-the-speech-api"></a>Uwierzytelnianie w Speech API
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
@@ -27,19 +27,19 @@ Rozpoznawanie mowy Bing obsługuje uwierzytelnianie przy użyciu:
 - Klucz subskrypcji.
 - Token autoryzacji.
 
-## <a name="use-a-subscription-key"></a>Klucz subskrypcji
+## <a name="use-a-subscription-key"></a>Korzystanie z klucza subskrypcji
 
-Aby korzystać z usługi rozpoznawania mowy, muszą najpierw zasubskrybować interfejsu API rozpoznawania mowy, który jest częścią usług Cognitive Services (wcześniej Project Oxford). Możesz uzyskać bezpłatną subskrypcję próbną kluczy z [subskrypcji usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/) strony. Po wybraniu interfejsu API rozpoznawania mowy, wybierz opcję **Uzyskaj klucz interfejsu API** można pobrać klucza. Zwraca klucz podstawowy i pomocniczy. Oba klucze są powiązane z tego samego limitu przydziału, aby można było używać żadnego z nich.
+Aby korzystać z usługi mowy, musisz najpierw subskrybować Speech API, które są częścią Cognitive Services (wcześniej Project Oxford). Klucze subskrypcji bezpłatnej wersji próbnej możesz uzyskać ze strony [subskrypcji Cognitive Services](https://azure.microsoft.com/try/cognitive-services/) . Po wybraniu Speech API wybierz pozycję **Pobierz klucz interfejsu API** , aby uzyskać klucz. Zwraca klucz podstawowy i pomocniczy. Oba klucze są powiązane z tym samym limitem przydziału, więc można użyć obu kluczy.
 
-Dla długoterminowego użytkowania lub zwiększenia limitu przydziału, należy zasubskrybować [konta platformy Azure](https://azure.microsoft.com/free/).
+Aby uzyskać długoterminowe użycie lub zwiększony limit przydziału, Utwórz [konto platformy Azure](https://azure.microsoft.com/free/).
 
-Aby korzystać z interfejsu API REST mowy, należy przekazać klucz subskrypcji w `Ocp-Apim-Subscription-Key` pole w nagłówku żądania.
+Aby użyć interfejsu API REST usługi Speech, należy przekazać klucz `Ocp-Apim-Subscription-Key` subskrypcji do pola w nagłówku żądania.
 
-Name (Nazwa)| Format| Opis
+Name| Format| Opis
 ----|-------|------------
 OCP-Apim-Subscription-Key | ASCII | YOUR_SUBSCRIPTION_KEY
 
-Oto przykład nagłówek żądania:
+Poniżej znajduje się przykład nagłówka żądania:
 
 ```HTTP
 POST https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=en-US&format=detailed HTTP/1.1
@@ -52,28 +52,28 @@ Expect: 100-continue
 ```
 
 > [!IMPORTANT]
-> Jeśli używasz [biblioteki klienckie](../GetStarted/GetStartedClientLibraries.md) w aplikacji, sprawdź, czy można pobrać tokenu autoryzacji z kluczem subskrypcji, zgodnie z opisem w poniższej sekcji. Biblioteki klienckie Użyj klucz subskrypcji do uzyskania tokenu autoryzacji, a następnie użyj tokenu służącego do uwierzytelniania.
+> Jeśli używasz [bibliotek klienckich](../GetStarted/GetStartedClientLibraries.md) w aplikacji, sprawdź, czy możesz uzyskać Token autoryzacji z kluczem subskrypcji, zgodnie z opisem w poniższej sekcji. Biblioteki klienckie używają klucza subskrypcji w celu uzyskania tokenu autoryzacji, a następnie użycia tokenu do uwierzytelniania.
 
 ## <a name="use-an-authorization-token"></a>Użyj tokenu autoryzacji
 
-Alternatywnie można użyć tokenu autoryzacji dla uwierzytelniania jako dowód uwierzytelniania/autoryzacji. Aby uzyskać token, należy najpierw uzyskać klucz subskrypcji z interfejsu API rozpoznawania mowy, zgodnie z opisem w [poprzedniej sekcji](#use-a-subscription-key).
+Alternatywnie można użyć tokenu autoryzacji do uwierzytelniania jako potwierdzenie uwierzytelniania/autoryzacji. Aby uzyskać ten token, należy najpierw uzyskać klucz subskrypcji z Speech API, zgodnie z opisem w [poprzedniej sekcji](#use-a-subscription-key).
 
-### <a name="get-an-authorization-token"></a>Pobierz token autoryzacji
+### <a name="get-an-authorization-token"></a>Pobieranie tokenu autoryzacji
 
-Po umieszczeniu klucza ważnej subskrypcji, należy wysłać żądanie POST do tokenu usługi Cognitive Services. W odpowiedzi otrzymasz token autoryzacji jako JSON Web Token (JWT).
+Po prawidłowym kluczu subskrypcji Wyślij żądanie POST do usługi tokenów Cognitive Services. W odpowiedzi otrzymujesz Token autoryzacji jako token sieci Web JSON (JWT).
 
 > [!NOTE]
-> Token ma wygaśnięcia 10 minut. Aby odnowić token, zobacz następującą sekcję.
+> Ważność tokenu wynosi 10 minut. Aby odnowić token, zapoznaj się z następującą sekcją.
 
-Identyfikator URI tokenu usługi znajduje się tutaj:
+Identyfikator URI usługi tokenu znajduje się tutaj:
 
 ```
 https://api.cognitive.microsoft.com/sts/v1.0/issueToken
 ```
 
-Poniższy przykładowy kod przedstawia sposób uzyskania tokenu dostępu. Zastąp `YOUR_SUBSCRIPTION_KEY` z kluczem subskrypcji:
+Poniższy przykład kodu pokazuje, jak uzyskać token dostępu. Zastąp `YOUR_SUBSCRIPTION_KEY` własnym kluczem subskrypcji:
 
-# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```Powershell
 $FetchTokenHeader = @{
@@ -89,9 +89,9 @@ $OAuthToken
 
 ```
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# <a name="curltabcurl"></a>[odsłon](#tab/curl)
 
-W przykładzie użyto programu curl w systemie Linux przy użyciu programu bash. Jeśli nie jest dostępny na Twojej platformie, może być konieczne do zainstalowania programu curl. Przykład działa również na Cygwin na Windows, systemu Git Bash, zsh i innych powłoki.
+W przykładzie zastosowano zwinięcie w systemie Linux z bash. Jeśli nie jest on dostępny na twojej platformie, może być konieczne zainstalowanie zawieszania. Przykład działa również na Cygwin w systemie Windows, Git bash, zsh i innych powłokach.
 
 ```
 curl -v -X POST "https://api.cognitive.microsoft.com/sts/v1.0/issueToken" -H "Content-type: application/x-www-form-urlencoded" -H "Content-Length: 0" -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY"
@@ -138,7 +138,7 @@ curl -v -X POST "https://api.cognitive.microsoft.com/sts/v1.0/issueToken" -H "Co
 
 ---
 
-Poniżej przedstawiono przykładowe żądanie POST:
+Oto przykładowe żądanie POST:
 
 ```HTTP
 POST https://api.cognitive.microsoft.com/sts/v1.0/issueToken HTTP/1.1
@@ -149,18 +149,18 @@ Content-Length: 0
 Connection: Keep-Alive
 ```
 
-Jeśli nie otrzymasz autoryzacji token z usługi tokenu, sprawdź, czy klucz subskrypcji jest nadal ważny. Jeśli używasz bezpłatnej wersji próbnej klucza, przejdź do strony [subskrypcji usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/) stronie, kliknij "Zaloguj", aby zalogować się przy użyciu konta, którego użyto dla bezpłatnej wersji próbnej klucza i sprawdź, czy klucz subskrypcji wygasło lub przekracza limit przydziału.
+Jeśli nie możesz uzyskać tokenu autoryzacji z usługi tokenów, sprawdź, czy klucz subskrypcji jest nadal ważny. Jeśli używasz bezpłatnego klucza wersji próbnej, przejdź do strony [subskrypcji Cognitive Services](https://azure.microsoft.com/try/cognitive-services/) , kliknij przycisk Zaloguj się, aby zalogować się przy użyciu konta użytego do zastosowania bezpłatnego klucza wersji próbnej, i sprawdź, czy klucz subskrypcji wygasł lub przekracza limit przydziału.
 
-### <a name="use-an-authorization-token-in-a-request"></a>Użyj tokenu autoryzacji w żądaniu
+### <a name="use-an-authorization-token-in-a-request"></a>Używanie tokenu autoryzacji w żądaniu
 
-Każdorazowo wywołania interfejsu API rozpoznawania mowy, musisz przekazać token autoryzacji w `Authorization` nagłówka. `Authorization` Nagłówek musi zawierać token dostępu JWT.
+Za każdym razem, gdy wywołasz Speech API, musisz przekazać Token autoryzacji w `Authorization` nagłówku. `Authorization` Nagłówek musi zawierać token dostępu JWT.
 
-Poniższy przykład przedstawia sposób użycia tokenu autoryzacji podczas wywoływania interfejsu API REST mowy.
+Poniższy przykład pokazuje, jak używać tokenu autoryzacji podczas wywoływania interfejsu API REST mowy.
 
 > [!NOTE]
-> Zastąp `YOUR_AUDIO_FILE` ze ścieżką do pliku nagrań audio. Zastąp `YOUR_ACCESS_TOKEN` tokenem autoryzacji uzyskanego w poprzednim kroku [uzyskania tokenu autoryzacji](#get-an-authorization-token).
+> Zastąp `YOUR_AUDIO_FILE` ze ścieżką do pliku nagrań audio. Zamień `YOUR_ACCESS_TOKEN` na token autoryzacji uzyskany w poprzednim kroku [Pobierz token autoryzacji](#get-an-authorization-token).
 
-# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```Powershell
 
@@ -184,7 +184,7 @@ $RecoResponse
 
 ```
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# <a name="curltabcurl"></a>[odsłon](#tab/curl)
 
 ```
 curl -v -X POST "https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=en-us&format=detailed" -H "Transfer-Encoding: chunked" -H "Authorization: Bearer YOUR_ACCESS_TOKEN" -H "Content-type: audio/wav; codec=audio/pcm; samplerate=16000" --data-binary @YOUR_AUDIO_FILE
@@ -231,11 +231,11 @@ using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 ---
 
-### <a name="renew-an-authorization-token"></a>Odnów token autoryzacji
+### <a name="renew-an-authorization-token"></a>Odnów Token autoryzacji
 
-Token autoryzacji wygasa po określonym czasie (obecnie 10 minut). Musisz odnowić token autoryzacji, przed jego wygaśnięciem.
+Token autoryzacji wygasa po upływie określonego czasu (obecnie 10 minut). Token autoryzacji należy odnowić przed jego wygaśnięciem.
 
-Poniższy kod jest przykładem implementacji w języku C#, jak do odnowienia tokenu autoryzacji:
+Poniższy kod stanowi przykład implementacji C# odnowienia tokenu autoryzacji:
 
 ```cs
     /*

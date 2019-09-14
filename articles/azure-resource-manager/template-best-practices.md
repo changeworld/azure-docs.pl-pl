@@ -1,22 +1,17 @@
 ---
 title: Najlepsze rozwiązania dotyczące Azure Resource Manager szablonów
 description: Opisuje zalecane podejścia do tworzenia szablonów Azure Resource Manager. Oferuje sugestie pozwalające uniknąć typowych problemów związanych z korzystaniem z szablonów.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/16/2019
+ms.date: 09/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 361fcc6b60e863ee43d348cedd6b1571f3f563a2
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: bd3167b7f0daf7ebd595b2c33b1147140415c3de
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812904"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983824"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Najlepsze rozwiązania dotyczące szablonu Azure Resource Manager
 
@@ -47,7 +42,8 @@ Podczas wdrażania zasobów w grupie zasobów Grupa zasobów przechowuje metadan
 Jeśli region grupy zasobów jest tymczasowo niedostępny, nie można zaktualizować zasobów w grupie zasobów, ponieważ metadane są niedostępne. Zasoby w innych regionach będą nadal działać zgodnie z oczekiwaniami, ale nie można ich zaktualizować. Aby zminimalizować ryzyko, Znajdź grupę zasobów i zasoby w tym samym regionie.
 
 ## <a name="parameters"></a>Parametry
-Informacje przedstawione w tej sekcji mogą być przydatne podczas pracy z [parametrami](resource-group-authoring-templates.md#parameters).
+
+Informacje przedstawione w tej sekcji mogą być przydatne podczas pracy z [parametrami](template-parameters.md).
 
 ### <a name="general-recommendations-for-parameters"></a>Ogólne zalecenia dotyczące parametrów
 
@@ -149,7 +145,7 @@ Informacje przedstawione w tej sekcji mogą być przydatne podczas pracy z [para
 
 ## <a name="variables"></a>Zmienne
 
-Poniższe informacje mogą być przydatne podczas pracy ze [zmiennymi](resource-group-authoring-templates.md#variables):
+Poniższe informacje mogą być przydatne podczas pracy ze zmiennymi [](template-variables.md):
 
 * Użyj notacji CamelCase przypadku nazw zmiennych.
 
@@ -159,7 +155,7 @@ Poniższe informacje mogą być przydatne podczas pracy ze [zmiennymi](resource-
 
 * Nie używaj zmiennych dla `apiVersion` zasobu. Wersja interfejsu API określa schemat zasobu. Często nie można zmienić wersji bez zmiany właściwości zasobu.
 
-* Nie można użyć funkcji [Reference](resource-group-template-functions-resource.md#reference) w sekcji **zmiennych** szablonu. Funkcja **Reference** dziedziczy jej wartość ze stanu środowiska uruchomieniowego zasobu. Jednak zmienne są rozwiązywane podczas początkowej analizy szablonu. Konstruowanie wartości, które wymagają funkcji **referencyjnej** , bezpośrednio w sekcji **zasoby** lub dane **wyjściowe** szablonu.
+* Nie można użyć funkcji [Reference](resource-group-template-functions-resource.md#reference) w sekcji **zmiennych** szablonu. Funkcja **Reference** dziedziczy jej wartość ze stanu środowiska uruchomieniowego zasobu. Jednak zmienne są rozwiązywane podczas początkowej analizy szablonu. Konstruowanie wartości, które wymagają funkcji referencyjnej, bezpośrednio w sekcji **zasoby** lub dane **wyjściowe** szablonu.
 
 * Dołącz zmienne nazw zasobów, które muszą być unikatowe.
 
@@ -286,7 +282,7 @@ Poniższe informacje mogą być przydatne podczas pracy z [zasobami](resource-gr
 
 ## <a name="outputs"></a>outputs
 
-W przypadku tworzenia publicznych adresów IP za pomocą szablonu należy uwzględnić [sekcję](resource-group-authoring-templates.md#outputs) Output, która zwraca szczegółowe informacje o adresie IP i w pełni kwalifikowanej nazwie domeny (FQDN). Można użyć wartości danych wyjściowych można łatwo pobrać szczegółowe informacje dotyczące publicznych adresów IP i nazw FQDN po wdrożeniu.
+W przypadku tworzenia publicznych adresów IP za pomocą szablonu należy uwzględnić [sekcję](template-outputs.md) Output, która zwraca szczegółowe informacje o adresie IP i w pełni kwalifikowanej nazwie domeny (FQDN). Można użyć wartości danych wyjściowych można łatwo pobrać szczegółowe informacje dotyczące publicznych adresów IP i nazw FQDN po wdrożeniu.
 
 ```json
 "outputs": {

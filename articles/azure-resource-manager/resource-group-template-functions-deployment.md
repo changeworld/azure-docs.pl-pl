@@ -4,14 +4,14 @@ description: Opisuje funkcje, które mają być używane w szablonie Azure Resou
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 01/03/2019
+ms.date: 09/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 236fbb9e4ed3283ecf9147e6eb5033fb906a127b
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 12698d1655c414b1ee3b9866cc975dc53e4ef095
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194356"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983987"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Funkcje wdrażania dla Azure Resource Manager szablonów 
 
@@ -24,8 +24,6 @@ Menedżer zasobów udostępnia następujące funkcje do uzyskiwania wartości z 
 Aby uzyskać wartości z zasobów, grup zasobów lub subskrypcji, zobacz temat [funkcje zasobów](resource-group-template-functions-resource.md).
 
 <a id="deployment" />
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="deployment"></a>deployment
 `deployment()`
@@ -136,18 +134,6 @@ Poprzedni przykład zwraca następujący obiekt:
 }
 ```
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/deployment.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/deployment.json
-```
-
 Aby zapoznać się z szablonem na poziomie subskrypcji korzystającym z funkcji wdrażania, zobacz [Funkcja wdrażania subskrypcji](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json). Jest ona wdrażana za `az deployment create` pomocą `New-AzDeployment` polecenia lub.
 
 <a id="parameters" />
@@ -254,21 +240,11 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | arrayOutput | Array | [1, 2, 3] |
 | crossOutput | String | Opcja 1 |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/parameters.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/parameters.json
-```
+Aby uzyskać więcej informacji na temat używania parametrów, zobacz [Parametry w szablonie Azure Resource Manager](template-parameters.md).
 
 <a id="variables" />
 
-## <a name="variables"></a>modyfikacj
+## <a name="variables"></a>Modyfikacj
 `variables(variableName)`
 
 Zwraca wartość zmiennej. Określona nazwa zmiennej musi być zdefiniowana w sekcji zmiennych szablonu.
@@ -356,19 +332,9 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | exampleOutput3 | String | NazwaMojejZmiennej |
 | exampleOutput4 |  Object | {"Property1": "wartość1", "Property2": "wartość2"} |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
+Aby uzyskać więcej informacji o używaniu zmiennych, zobacz [zmienne w szablonie Azure Resource Manager](template-variables.md).
 
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/variables.json
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/variables.json
-```
-
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Aby uzyskać opis sekcje szablonu usługi Azure Resource Manager, zobacz [tworzenia usługi Azure Resource Manager](resource-group-authoring-templates.md).
 * Aby scalić kilka szablonów, zobacz [Używanie połączonych szablonów z Azure Resource Manager](resource-group-linked-templates.md).
 * Do iteracji określoną liczbę razy podczas tworzenia dla typu zasobów, zobacz [tworzenie wielu wystąpień zasobów w usłudze Azure Resource Manager](resource-group-create-multiple.md).

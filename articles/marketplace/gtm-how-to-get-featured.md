@@ -1,50 +1,50 @@
 ---
-title: Usług go-To-Market — jak może zostać w portalu marketplace | Azure
-description: Go-To-Market Services — w tej sekcji opisano, jak pobrać listę polecane w witrynie Azure Marketplace
+title: Usługi na rynku — jak uzyskać proponowane informacje w witrynie Marketplace | Azure
+description: Usługi "przejdź do rynku" — w tej sekcji opisano, jak uzyskać listę proponowaną w portalu Azure Marketplace
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
 ms.date: 12/21/2018
 ms.author: ellacroi
-ms.openlocfilehash: 5194bdcd5b77b0527ccdefc1af85bf03bdac2cab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a99237ec52d302dbb7fc3914c6abfff5fecf4523
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938174"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962757"
 ---
-# <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>Jak uzyskać oferowanymi w usłudze AppSource i portalu Azure Marketplace
+# <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>Jak uzyskać promowanie w AppSource i witrynie Azure Marketplace
 
-Portal Azure Marketplace i AppSource **polecane aplikacje** sekcje, w którym uzyskujesz aplikację do witryny:
+W witrynie Azure Marketplace i AppSource znajdują się sekcje **Polecane aplikacje** , w których można uzyskać dostęp do aplikacji:
 
-* Po pierwsze w przypadku transakcji oferty lub wersji próbnej, można użyć korzyści "podwyższania poziomu kategorii" za pośrednictwem korzyści Go-to-Market.
-* Po drugie Przejrzyj listę najlepszych rozwiązań i kryteria poniżej, aby zdobyć miejsce.
+* Po pierwsze, jeśli masz ofertę wersji PRÓBnej lub transakcji, możesz skorzystać z korzyści "Promocja kategorii" w ramach [komercyjnych korzyści z witryny Marketplace](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits).
+* Następnie zapoznaj się z listą najlepszych rozwiązań i kryteriów poniżej, aby zdobyć miejsce.
 
-Algorytm wybór polecane aplikacje generuje wynik do aplikacji przez firmę Microsoft, podobnie jak wynik kredytowe osoby w Stanach Zjednoczonych.  Co tydzień wybór polecane aplikacje będzie zależeć od obliczeń, wydajność aplikacji i usług.
+Algorytm wyboru Polecane aplikacje generuje wynik do aplikacji przez firmę Microsoft, podobnie jak w Stanach Zjednoczonych.  Cotygodniowe Wybieranie polecanych aplikacji będzie opierać się na obliczaniu wydajności aplikacji i usług.
 
-## <a name="steps-to-take"></a>Czynności do wykonania
+## <a name="steps-to-take"></a>Kroki do wykonania
 
-Można wykonać następujące elementy akcji, aby poprawić Twój wynik:
+Aby poprawić wynik, można wykonać następujące czynności:
 
-1. *Upewnij się, że usługi lub aplikacji odpowiednio podzielone*: Wybierz trzy kategorie, które reprezentują możliwości usług lub aplikacji.
-2. *Portal Azure Marketplace aplikacji: Rozwijaj swoje użycie platformy Azure — miesiącami.* Jeśli jesteś w stanie osiągać 1000 godzin użycia platformy Azure miesięcznie, będzie znacznie zwiększyć szanse jest funkcjonalna.
-3. *Aplikacje usługi AppSource: zwiększyć pozyskanie dostępne oferty.* Jeśli jesteś w stanie do osiągnięcia 10 pozyskanie miesięcznie, będzie znacznie zwiększyć szanse są polecane. 
-4. *Osiągnięcie stanu gotowości do wspólnej sprzedaży*: zostały spełnione wymagania opisane dla ready wspólnej sprzedaży.
-5. *Poprawić jakość oferty*: zobacz [zawartości, lista wytycznych](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation) instrukcje dotyczące sposobu modyfikowania oferty
-6. Publikowanie wiele ofert w witrynie Marketplace: podstawowe aplikacje i usługi należą? Czy masz wersję próbną interfejsu?
-7. Zachęć klientów do zapisania recenzji.
+1. *Upewnij się, że Twoja aplikacja lub usługa jest odpowiednio skategoryzowana*: Wybierz trzy kategorie reprezentujące możliwości aplikacji lub usługi.
+2. *Aplikacje platformy Azure Marketplace: Zwiększ miesięczny poziom użycia platformy Azure w ciągu miesiąca.* Jeśli masz dostęp do 1 000 godzin korzystania z platformy Azure w miesiącu, znacznie zwiększy się szanse na ich promowanie.
+3. *AppSource Apps: Zwiększ liczbę operacji pozyskiwania do oferty.* Jeśli masz możliwość osiągnięcia 10 nabyć miesięcznie, znacznie zwiększy się szanse na ich promowanie. 
+4. *Osiągnięcie stanu gotowości do rozłożenia*: należy spełnić wymagania dotyczące współdziałania w ramach współpracy.
+5. *Popraw jakość oferty*: Aby uzyskać informacje na temat modyfikowania oferty, zobacz [wytyczne dotyczące zawartości](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation)
+6. Publikuj wiele ofert w portalu Marketplace: czy wszystkie podstawowe aplikacje i usługi są wymienione na liście? Czy masz doświadczenie w wersji próbnej?
+7. Zachęcaj klientów do pisania recenzji.
 
-Polecane aplikacje promocji oddzielnie działają z algorytmu wyszukiwania.
+Promocje Polecane aplikacje działają niezależnie od algorytmu wyszukiwania.
 
 >[!Note]
->Jeśli rozwiązanie nie jest prawidłowo wyświetlane w wynikach wyszukiwania, bilet pomocy technicznej za pośrednictwem menu Pomoc w [portalu Cloud Partner](https://cloudpartner.azure.com/).
+>Jeśli Twoje rozwiązanie nie jest prawidłowo wyświetlane w wynikach wyszukiwania, należy uzyskać bilet pomocy technicznej za pomocą menu Pomoc w [Portal Cloud partner](https://cloudpartner.azure.com/).
 
-Dział pomocy technicznej Twojej GTM obejmuje również cała biblioteka szablonami samodzielnej pomocy, zawartości sieci web, szkolenia i narzędzia ułatwiające dalsze podwyższanie poziomu swojej oferty i Twojej firmy.
+Obsługa GTM obejmuje również pełną bibliotekę szablonów samodzielnej pomocy, zawartości sieci Web, szkoleń i narzędzi, które ułatwiają dalsze promowanie Twoich aukcji i Twojej firmy.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat usług GTM witryny marketplace, przejdź do [usług Go-to-market](https://partner.microsoft.com/reach-customers/gtm).
+Dowiedz się więcej o [korzyściach z używania komercyjnego portalu Marketplace](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits).
 
 Zaloguj się do [portalu Cloud Partner](https://cloudpartner.azure.com) tworzenie i konfigurowanie swojej oferty.
 

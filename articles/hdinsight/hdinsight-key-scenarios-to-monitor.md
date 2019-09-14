@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 706f0333f1cca984b44e0fc96a5b014d4157ce4c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 936307399b658b75962e6969820215f9808d053f
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879697"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961051"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Monitorowanie wydajności klastra w usłudze Azure HDInsight
 
@@ -36,11 +36,11 @@ Aby uzyskać ogólne omówienie węzłów klastra i ich ładowania, zaloguj się
 
 Zobaczysz również kolumny przedstawiające liczbę rdzeni i ilość pamięci RAM dla każdego hosta, a także użycie dysku i średnie obciążenie.
 
-![Karta hosty](./media/hdinsight-key-scenarios-to-monitor/hosts-tab.png)
+![Karta hosty](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-hosts-tab.png)
 
 Wybierz dowolny z nazw hostów, aby zapoznać się ze szczegółowymi informacjami na temat składników uruchomionych na tym hoście oraz ich metryk. Metryki są wyświetlane jako można wybrać oś czasu użycia procesora CPU, obciążenia, użycie dysku, użycie pamięci, użycie sieci i liczbę procesów.
 
-![Szczegóły hosta](./media/hdinsight-key-scenarios-to-monitor/host-details.png)
+![Szczegóły hosta](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-host-details.png)
 
 Aby uzyskać szczegółowe informacje na temat ustawiania alertów i wyświetlania metryk, zobacz [Zarządzanie klastrami usługi HDInsight przy użyciu interfejsu użytkownika sieci Web Apache Ambari](hdinsight-hadoop-manage-ambari.md) .
 
@@ -56,7 +56,7 @@ Gdy wiele dzierżawców współużytkuje duży klaster, istnieje konkurencja dla
 
 PRZĘDZa umożliwia przydzielanie zasobów do tych kolejek i pokazuje, czy są przypisane wszystkie dostępne zasoby. Aby wyświetlić informacje o kolejkach, zaloguj się do interfejsu użytkownika sieci Web Ambari, a następnie wybierz pozycję **Menedżer kolejki przędzy** w górnym menu.
 
-![Menedżer kolejki PRZĘDZy](./media/hdinsight-key-scenarios-to-monitor/yarn-queue-manager.png)
+![Menedżer kolejki PRZĘDZy](./media/hdinsight-key-scenarios-to-monitor/apache-yarn-queue-manager.png)
 
 Na stronie Menedżer kolejki PRZĘDZy zostanie wyświetlona lista kolejek z lewej strony wraz z wartością procentową pojemności przypisanej do każdego z nich.
 
@@ -64,11 +64,11 @@ Na stronie Menedżer kolejki PRZĘDZy zostanie wyświetlona lista kolejek z lewe
 
 Aby zapoznać się z bardziej szczegółowymi informacjami o kolejkach, na pulpicie nawigacyjnym Ambari wybierz usługę **przędzy** z listy po lewej stronie. Następnie w menu rozwijanym **szybkie linki** wybierz pozycję **Menedżer zasobów interfejs użytkownika** pod aktywnym węzłem.
 
-![Łącze menu interfejsu użytkownika Menedżer zasobów](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
+![Łącze menu interfejsu użytkownika Menedżer zasobów](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu-link.png)
 
 W interfejsie użytkownika Menedżer zasobów wybierz pozycję **harmonogram** z menu po lewej stronie. Zostanie wyświetlona lista kolejek pod *kolejkami aplikacji*. W tym miejscu możesz zobaczyć pojemność użytą dla każdej z kolejek, jak również są dystrybuowane zadania między nimi oraz czy wszystkie zadania są ograniczone do zasobów.
 
-![Menedżer zasobów menu interfejsu użytkownika](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui.png)
+![Menedżer zasobów menu interfejsu użytkownika](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
 
 ## <a name="storage-throttling"></a>Ograniczanie magazynu
 

@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: overview
 ms.date: 08/31/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 419505404214d60a2c928770a34384f80c8446cb
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
-ms.translationtype: HT
+ms.openlocfilehash: 99e61cef55bd97704063e4d2da90909d0376c327
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935873"
+ms.locfileid: "70961461"
 ---
 # <a name="entity-functions-preview"></a>Funkcje jednostki (wersja zapoznawcza)
 
@@ -32,7 +32,7 @@ Jednostki (czasami określane jako *wystąpienia*jednostek) są dostępne za po�
 
 Na przykład funkcja jednostki *licznika* może być używana do przechowywania wyników w grze online. Każde wystąpienie gry będzie miało unikatowy identyfikator jednostki, na `@Counter@Game1`przykład, `@Counter@Game2`, i tak dalej. Wszystkie operacje przeznaczone dla określonej jednostki wymagają określenia identyfikatora jednostki jako parametru.
 
-## <a name="programing-models"></a>Modele programów
+## <a name="programming-models"></a>Modele programowania
 
 Trwałe jednostki obsługują dwa różne modele programowania. Pierwszy model jest dynamicznym modelem funkcjonalnym, w którym jednostka jest definiowana przez pojedynczą funkcję. Drugi model jest modelem zorientowanym na obiekt, w którym jednostka jest definiowana przez klasę i metody. Te modele i modele programowania umożliwiające współdziałanie z jednostkami są opisane w następnych sekcjach.
 

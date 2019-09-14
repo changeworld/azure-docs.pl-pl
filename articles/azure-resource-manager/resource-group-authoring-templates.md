@@ -4,14 +4,14 @@ description: Opisuje strukturę i właściwości szablonów Azure Resource Manag
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 09/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: d396b6b48687e451396849cc256c25f847a219cf
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 4a5c1a99911c31f539d4f55adefb2c5f06243dd0
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306838"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984092"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Zrozumienie struktury i składni szablonów Azure Resource Manager
 
@@ -84,6 +84,8 @@ Dostępne właściwości dla parametru to:
 | maxLength |Nie |Maksymalna długość parametrów ciągu, bezpiecznego ciągu i typu tablicy, ta wartość jest włącznie. |
 | description |Nie |Opis parametru, który jest wyświetlany użytkownikom w portalu. Aby uzyskać więcej informacji, zobacz [Komentarze w szablonach](#comments). |
 
+Aby uzyskać przykłady użycia parametrów, zobacz [Parametry w szablonach Azure Resource Manager](template-parameters.md).
+
 ## <a name="variables"></a>Zmienne
 
 W sekcji zmienne można skonstruować wartości, które mogą być używane w całym szablonie. Nie musisz definiować zmiennych, ale często upraszczamy szablon przez zredukowanie złożonych wyrażeń.
@@ -116,6 +118,8 @@ W poniższym przykładzie przedstawiono dostępne opcje definiowania zmiennej:
 ```
 
 Aby uzyskać informacje o `copy` używaniu do tworzenia kilku wartości dla zmiennej, zobacz [zmienna iteracja](resource-group-create-multiple.md#variable-iteration).
+
+Aby zapoznać się z przykładami użycia zmiennych, zobacz [zmienne w szablonie Azure Resource Manager](template-variables.md).
 
 ## <a name="functions"></a>Funkcje
 
@@ -159,6 +163,8 @@ Podczas definiowania funkcji użytkownika istnieją pewne ograniczenia:
 | wartość parametru-value |Nie |Typ wartości parametru. Dozwolone typy i wartości to **String**, **SecureString**, **int**, **bool**, **Object**, **secureobject**i **Array**. |
 | Typ danych wyjściowych |Tak |Typ wartości danych wyjściowych. Wartości wyjściowe obsługują te same typy jak parametry wejściowe funkcji. |
 | Wartość wyjściowa |Tak |Wyrażenie języka szablonu, które jest oceniane i zwracane przez funkcję. |
+
+Przykłady korzystania z funkcji niestandardowych można znaleźć [w temacie Funkcje zdefiniowane przez użytkownika w szablonie Azure Resource Manager](template-user-defined-functions.md).
 
 ## <a name="resources"></a>Zasoby
 
@@ -228,7 +234,7 @@ Należy zdefiniować zasoby o następującej strukturze:
 | name |Tak |Nazwa zasobu. Nazwa musi następować zgodnie z ograniczeniami składnika URI zdefiniowanymi w RFC3986. Usługi platformy Azure, które uwidaczniają nazwę zasobu podmiotom zewnętrznym, sprawdzają poprawność nazwy, aby upewnić się, że nie jest próbą sfałszowania innej tożsamości. W przypadku zasobu podrzędnego format nazwy zależy od tego, czy jest on zagnieżdżony w obrębie zasobu nadrzędnego, czy zdefiniowany poza zasobem nadrzędnym. Zobacz [Set Name i Type dla zasobów podrzędnych](child-resource-name-type.md). |
 | location |Różna |Obsługiwane lokalizacje geograficzne podanego zasobu. Można wybrać dowolną z dostępnych lokalizacji, ale zazwyczaj warto ją wybrać blisko użytkowników. Zwykle warto również umieścić zasoby, które współpracują ze sobą w tym samym regionie. Większość typów zasobów wymaga lokalizacji, ale niektóre typy (takie jak przypisanie roli) nie wymagają lokalizacji. Zobacz [Ustawianie lokalizacji zasobu](resource-location.md). |
 | tags |Nie |Tagi, które są skojarzone z zasobem. Zastosuj Tagi, aby logicznie organizować zasoby w ramach subskrypcji. |
-| komentarz |Nie |Twoje notatki umożliwiające dokumentowanie zasobów w szablonie. Aby uzyskać więcej informacji, zobacz [Komentarze w szablonach](resource-group-authoring-templates.md#comments). |
+| Komentarz |Nie |Twoje notatki umożliwiające dokumentowanie zasobów w szablonie. Aby uzyskać więcej informacji, zobacz [Komentarze w szablonach](resource-group-authoring-templates.md#comments). |
 | kopiuj |Nie |Jeśli potrzebujesz więcej niż jednego wystąpienia, liczba zasobów do utworzenia. Domyślny tryb jest równoległy. Określ tryb seryjny, gdy nie chcesz, aby wszystkie lub zasoby zostały wdrożone w tym samym czasie. Aby uzyskać więcej informacji, zobacz [Tworzenie kilku wystąpień zasobów w Azure Resource Manager](resource-group-create-multiple.md). |
 | dependsOn |Nie |Zasoby, które muszą zostać wdrożone przed wdrożeniem tego zasobu. Menedżer zasobów oblicza zależności między zasobami i wdraża je w odpowiedniej kolejności. Gdy zasoby nie są od siebie zależne, są wdrażane równolegle. Wartość może być rozdzielaną przecinkami listą nazw zasobów lub unikatowych identyfikatorów zasobów. Tylko zasoby, które są wdrożone w tym szablonie. Zasoby, które nie są zdefiniowane w tym szablonie, muszą już istnieć. Należy unikać dodawania niepotrzebnych zależności, ponieważ mogą one spowalniać wdrożenie i tworzyć zależności cykliczne. Aby uzyskać wskazówki dotyczące ustawiania zależności, zobacz [Definiowanie zależności w szablonach Azure Resource Manager](resource-group-define-dependencies.md). |
 | properties |Nie |Ustawienia konfiguracji dotyczące zasobów. Wartości właściwości są takie same jak wartości podane w treści żądania dla operacji interfejsu API REST (Metoda PUT), aby utworzyć zasób. Możesz również określić tablicę kopiowania, aby utworzyć kilka wystąpień właściwości. Aby określić dostępne wartości, zobacz [Dokumentacja szablonu](/azure/templates/). |
@@ -259,6 +265,8 @@ Poniższy przykład pokazuje strukturę definicję danych wyjściowych:
 | condition |Nie | Wartość logiczna wskazująca, czy ta wartość wyjściowa jest zwracana. Gdy `true`wartość jest uwzględniona w danych wyjściowych dla wdrożenia. Gdy `false`wartość wyjściowa jest pomijana dla tego wdrożenia. Gdy nie zostanie określony, wartość domyślna to `true`. |
 | type |Yes |Typ wartości danych wyjściowych. Wartości wyjściowe obsługują te same typy jako parametrów wejściowych szablonu. W przypadku określenia elementu **SecureString** dla typu danych wyjściowych wartość nie jest wyświetlana w historii wdrożenia i nie można jej pobrać z innego szablonu. Aby użyć wartości klucza tajnego w więcej niż jednym szablonie, należy zapisać klucz tajny w Key Vault i odwołać się do wpisu tajnego w pliku parametrów. Aby uzyskać więcej informacji, zobacz [używanie Azure Key Vault do przekazywania zabezpieczonej wartości parametrów podczas wdrażania](resource-manager-keyvault-parameter.md). |
 | value |Yes |Wyrażenie języka szablonu, który jest obliczany i zwracany, jako wartość danych wyjściowych. |
+
+Aby zapoznać się z przykładami sposobu korzystania z danych wyjściowych, zobacz dane [wyjściowe w szablonie Azure Resource Manager](template-outputs.md).
 
 <a id="comments" />
 
@@ -320,7 +328,7 @@ W przypadku **zasobów**Dodaj `comments` element lub obiekt metadanych. W poniż
 ]
 ```
 
-W **przypadku danych wyjściowych**Dodaj obiekt metadanych do wartości wyjściowej.
+Wprzypadku danych wyjściowych Dodaj obiekt metadanych do wartości wyjściowej.
 
 ```json
 "outputs": {

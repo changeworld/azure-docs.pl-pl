@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 09/12/2019
 ms.author: dapine
-ms.openlocfilehash: 8664d0f727c47da1b70b8060f879a49fbbd8c7c5
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 3cc61798fb5e5ecba91fef93a743b492dce75211
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051325"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966773"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Instalowanie i uruchamianie kontenerów analiza tekstu
 
@@ -40,7 +40,7 @@ Przed rozpoczęciem korzystania z kontenerów analizy tekstu, musi spełniać na
 
 [!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]
 
-### <a name="the-host-computer"></a>Komputer-host
+## <a name="the-host-computer"></a>Komputer-host
 
 [!INCLUDE [Host Computer requirements](../../../../includes/cognitive-services-containers-host-computer.md)]
 
@@ -48,15 +48,15 @@ Przed rozpoczęciem korzystania z kontenerów analizy tekstu, musi spełniać na
 
 W poniższej tabeli przedstawiono minimalne i zalecane rdzeni procesora CPU, co najmniej 2,6 gigaherc (GHz) lub szybszy i pamięci w gigabajtach (GB) do przydzielenia dla każdego kontenera analizy tekstu.
 
-#### <a name="key-phrase-extractiontabkeyphrase"></a>[Wyodrębnianie kluczowych fraz](#tab/keyphrase)
+# <a name="key-phrase-extractiontabkeyphrase"></a>[Wyodrębnianie kluczowych fraz](#tab/keyphrase)
 
 [!INCLUDE [key-phrase-extraction-container-requirements](../includes/key-phrase-extraction-container-requirements.md)]
 
-#### <a name="language-detectiontablanguage"></a>[Wykrywanie języka](#tab/language)
+# <a name="language-detectiontablanguage"></a>[Wykrywanie języka](#tab/language)
 
 [!INCLUDE [language-detection-container-requirements](../includes/language-detection-container-requirements.md)]
 
-#### <a name="sentiment-analysistabsentiment"></a>[Analiza tonacji](#tab/sentiment)
+# <a name="sentiment-analysistabsentiment"></a>[Analiza tonacji](#tab/sentiment)
 
 [!INCLUDE [sentiment-analysis-container-requirements](../includes/sentiment-analysis-container-requirements.md)]
 
@@ -67,21 +67,41 @@ W poniższej tabeli przedstawiono minimalne i zalecane rdzeni procesora CPU, co 
 
 Rdzeń i pamięć odpowiadają `--cpus` ustawieniom i `--memory` , które są `docker run` używane jako część polecenia.
 
-#### <a name="key-phrase-extractiontabkeyphrase"></a>[Wyodrębnianie kluczowych fraz](#tab/keyphrase)
+## <a name="get-the-container-image-with-docker-pull"></a>Pobierz obraz kontenera za pomocą`docker pull`
 
-[!INCLUDE [docker-pull-key-phrase-extraction-container](../includes/docker-pull-key-phrase-extraction-container.md)]
+Obrazy kontenerów dla analiza tekstu są dostępne w programie Microsoft Container Registry.
 
-#### <a name="language-detectiontablanguage"></a>[Wykrywanie języka](#tab/language)
+# <a name="key-phrase-extractiontabkeyphrase"></a>[Wyodrębnianie kluczowych fraz](#tab/keyphrase)
 
-[!INCLUDE [docker-pull-language-detection-container](../includes/docker-pull-language-detection-container.md)]
+[!INCLUDE [key-phrase-extraction-container-repository](../includes/key-phrase-extraction-container-repository.md)]
 
-#### <a name="sentiment-analysistabsentiment"></a>[Analiza tonacji](#tab/sentiment)
+# <a name="language-detectiontablanguage"></a>[Wykrywanie języka](#tab/language)
 
-[!INCLUDE [docker-pull-sentiment-analysis-container](../includes/docker-pull-sentiment-analysis-container.md)]
+[!INCLUDE [language-detection-container-repository](../includes/language-detection-container-repository.md)]
+
+# <a name="sentiment-analysistabsentiment"></a>[Analiza tonacji](#tab/sentiment)
+
+[!INCLUDE [sentiment-analysis-container-repository](../includes/sentiment-analysis-container-repository.md)]
 
 ***
 
 [!INCLUDE [Tip for using docker list](../../../../includes/cognitive-services-containers-docker-list-tip.md)]
+
+### <a name="docker-pull-for-the-text-analytics-containers"></a>Wypychanie platformy Docker dla kontenerów analiza tekstu
+
+# <a name="key-phrase-extractiontabkeyphrase"></a>[Wyodrębnianie kluczowych fraz](#tab/keyphrase)
+
+[!INCLUDE [docker-pull-key-phrase-extraction-container](../includes/docker-pull-key-phrase-extraction-container.md)]
+
+# <a name="language-detectiontablanguage"></a>[Wykrywanie języka](#tab/language)
+
+[!INCLUDE [docker-pull-language-detection-container](../includes/docker-pull-language-detection-container.md)]
+
+# <a name="sentiment-analysistabsentiment"></a>[Analiza tonacji](#tab/sentiment)
+
+[!INCLUDE [docker-pull-sentiment-analysis-container](../includes/docker-pull-sentiment-analysis-container.md)]
+
+***
 
 ## <a name="how-to-use-the-container"></a>Jak używać kontenera
 
@@ -96,15 +116,15 @@ Użyj polecenia [Docker Run](https://docs.docker.com/engine/reference/commandlin
 
 Przykłady polecenia są dostępne. [](../text-analytics-resource-container-config.md#example-docker-run-commands) `docker run`
 
-#### <a name="key-phrase-extractiontabkeyphrase"></a>[Wyodrębnianie kluczowych fraz](#tab/keyphrase)
+# <a name="key-phrase-extractiontabkeyphrase"></a>[Wyodrębnianie kluczowych fraz](#tab/keyphrase)
 
 [!INCLUDE [docker-run-key-phrase-extraction-container](../includes/docker-run-key-phrase-extraction-container.md)]
 
-#### <a name="language-detectiontablanguage"></a>[Wykrywanie języka](#tab/language)
+# <a name="language-detectiontablanguage"></a>[Wykrywanie języka](#tab/language)
 
 [!INCLUDE [docker-run-language-detection-container](../includes/docker-run-language-detection-container.md)]
 
-#### <a name="sentiment-analysistabsentiment"></a>[Analiza tonacji](#tab/sentiment)
+# <a name="sentiment-analysistabsentiment"></a>[Analiza tonacji](#tab/sentiment)
 
 [!INCLUDE [docker-run-sentiment-analysis-container](../includes/docker-run-sentiment-analysis-container.md)]
 
@@ -131,7 +151,7 @@ Użyj hosta, `http://localhost:5000`, dla interfejsów API kontenerów.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Jeśli uruchamiasz kontener z instalacją wyjściową [](../text-analytics-resource-container-config.md#mount-settings) i włączono rejestrowanie, kontener generuje pliki dziennika, które są przydatne do rozwiązywania problemów występujących podczas uruchamiania lub uruchamiania kontenera.
+Jeśli uruchamiasz kontener z [instalacją wyjściową](../text-analytics-resource-container-config.md#mount-settings) i włączono rejestrowanie, kontener generuje pliki dziennika, które są przydatne do rozwiązywania problemów występujących podczas uruchamiania lub uruchamiania kontenera.
 
 ## <a name="billing"></a>Rozliczenia
 
@@ -149,7 +169,10 @@ Aby uzyskać więcej informacji o tych opcjach, zobacz [skonfigurować kontenery
 
 W tym artykule przedstawiono pojęcia i przepływ pracy na potrzeby pobierania, instalowania i uruchamiania kontenerów analizy tekstu. Podsumowanie:
 
-* Analiza tekstu zawiera trzy kontenery systemu Linux dla platformy Docker, zawieranie, wyodrębnianie kluczowych fraz, wykrywanie języka i analiza opinii.
+* Analiza tekstu oferuje trzy kontenery systemu Linux dla platformy Docker, hermetyzowając różne możliwości:
+   * *Wyodrębnianie kluczowych fraz*
+   * *Wykrywanie języka*
+   * *Analiza tonacji*
 * Obrazy kontenerów są pobierane z rejestru kontenerów firmy Microsoft (MCR) na platformie Azure.
 * Obrazy kontenera Uruchom na platformie Docker.
 * Można użyć interfejsu API REST lub zestawu SDK do wywoływania operacji w kontenerach analizy tekstu, określając host identyfikatora URI kontenera.

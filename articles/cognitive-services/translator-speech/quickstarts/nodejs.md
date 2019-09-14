@@ -3,20 +3,20 @@ title: 'Szybki start: Interfejs API tłumaczenia mowy w usłudze Translator dla 
 titlesuffix: Azure Cognitive Services
 description: Uzyskaj informacje oraz przykłady kodu w celu szybkiego rozpoczęcia korzystania z interfejsu API tłumaczenia mowy w usłudze Translator.
 services: cognitive-services
-author: swmachan
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
-ms.author: swmachan
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: c16b4ca0375376829c7617b488d16151363dc816
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: fc5c6fe4040a8f4140cd18ff41373d50f74a6a55
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442145"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965412"
 ---
 # <a name="quickstart-translator-speech-api-with-nodejs"></a>Szybki start: Interfejs API tłumaczenia mowy w usłudze Translator dla oprogramowania Node.js
 <a name="HOLTop"></a>
@@ -165,7 +165,7 @@ Pomyślnym wynikiem jest utworzenie pliku o nazwie „speak2.wav”. Ten plik za
 
 [Powrót do początku](#HOLTop)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Samouczek dotyczący tłumaczenia mowy w usłudze Translator](../tutorial-translator-speech-csharp.md)

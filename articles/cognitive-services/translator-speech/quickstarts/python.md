@@ -3,20 +3,20 @@ title: 'Szybki start: Interfejs API tłumaczenia mowy w usłudze Translator dla 
 titlesuffix: Azure Cognitive Services
 description: Uzyskaj informacje oraz przykłady kodu w celu szybkiego rozpoczęcia korzystania z interfejsu API tłumaczenia mowy w usłudze Translator.
 services: cognitive-services
-author: swmachan
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: quickstart
 ms.date: 07/17/2018
-ms.author: swmachan
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 9426514853d58db1aa43eb42ee054b7bd931ae62
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 7189563ebbcc5ae1a167f99ff8704aff16d0feac
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356915"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966477"
 ---
 # <a name="quickstart-translator-speech-api-with-python"></a>Szybki start: Interfejs API tłumaczenia mowy w usłudze Translator dla języka Python
 <a name="HOLTop"></a>

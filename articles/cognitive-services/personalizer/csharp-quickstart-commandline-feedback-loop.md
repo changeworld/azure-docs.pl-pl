@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 08/30/2019
+ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: e9dd01a58309a6b65538b19b25df70e3d18866a9
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 2fc9e91a34975642a666aa794694cfcc3321c93f
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207338"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962543"
 ---
 # <a name="quickstart-personalize-client-library-for-net"></a>Szybki start: Personalizowanie biblioteki klienckiej dla platformy .NET
 
@@ -47,6 +47,8 @@ Po otrzymaniu klucza z subskrypcji próbnej lub zasobu Utwórz dwie [zmienne śr
 
 * `PERSONALIZER_RESOURCE_KEY`dla klucza zasobu.
 * `PERSONALIZER_RESOURCE_ENDPOINT`dla punktu końcowego zasobu.
+
+W Azure Portal wartości klucza i punktu końcowego są dostępne na stronie **Szybki Start** .
 
 ### <a name="change-the-model-update-frequency"></a>Zmień częstotliwość aktualizacji modelu
 
@@ -98,7 +100,7 @@ Klient narzędzia personalizacji jest obiektem [PersonalizerClient](https://docs
 
 Aby poprosił o rangę zawartości, Utwórz element [RankRequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer.models.rankrequest?view=azure-dotnet-preview), a następnie Przekaż go do [klienta. Ranga](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer.personalizerclientextensions.rank?view=azure-dotnet-preview) metody. Metoda rangi zwraca RankResponse, zawierający sklasyfikowaną zawartość. 
 
-Aby wysłać wynagrodzenie do programu Personalizacja, Utwórz element [RewardRequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer.models.rewardrequest?view=azure-dotnet-preview), a następnie Przekaż go do [klienta. ](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer.personalizerclientextensions.reward?view=azure-dotnet-preview)Metoda nagradzania. 
+Aby wysłać wynagrodzenie do programu Personalizacja, Utwórz element [RewardRequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer.models.rewardrequest?view=azure-dotnet-preview), a następnie Przekaż go do [klienta. Metoda nagradzania](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer.personalizerclientextensions.reward?view=azure-dotnet-preview) . 
 
 Ustalenie nagrody w tym przewodniku Szybki Start jest proste. W systemie produkcyjnym określenie, co ma wpływ na [wynik nagrody](concept-rewards.md) i według ile może być złożonym procesem, można zmienić z upływem czasu. Powinna to być jedna z podstawowych decyzji projektowych w architekturze personalizacji. 
 
@@ -236,7 +238,7 @@ Ten przewodnik Szybki Start zawiera proste funkcje kontekstu o porze dnia i pref
 
 Aby zakończyć żądanie pozyskania, program pobiera wybór użytkownika z wiersza polecenia, przypisuje wartość liczbową do każdego zaznaczenia, a następnie wysyła unikatowy identyfikator zdarzenia rangi i wartość liczbową do metody nagrody.
 
-Ten przewodnik Szybki Start przypisuje prostą liczbę jako wynagrodzenie, zero lub 1. W systemach produkcyjnych określenie, kiedy i co mają być wysyłane do [](concept-rewards.md) płatnego wywołania, może być nieuproszczone, w zależności od konkretnych potrzeb. 
+Ten przewodnik Szybki Start przypisuje prostą liczbę jako wynagrodzenie, zero lub 1. W systemach produkcyjnych określenie, kiedy i co mają być wysyłane do [płatnego wywołania,](concept-rewards.md) może być nieuproszczone, w zależności od konkretnych potrzeb. 
 
 [!code-csharp[The Personalizer learning loop ranks the request.](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=reward)]
 

@@ -1,7 +1,7 @@
 ---
-title: Metryki dzienników podczas przebiegów szkoleniowych
+title: Rejestruj eksperymenty w ML & metryki
 titleSuffix: Azure Machine Learning service
-description: Możesz śledzić eksperymenty i monitorować metryki, aby usprawnić proces tworzenia modelu. Dowiedz się, jak dodać rejestrowanie do skryptu szkoleniowego, jak przesłać eksperyment, jak sprawdzić postęp uruchomionego zadania i jak wyświetlić zarejestrowane wyniki przebiegu.
+description: Monitoruj eksperymenty dotyczące platformy Azure ML i monitoruj metryki uruchamiania, aby usprawnić proces tworzenia modelu. Dodaj rejestrowanie do skryptu szkoleniowego i Wyświetl zarejestrowane wyniki przebiegu.  Użyj Run. log, Run. start_logging lub ScriptRunConfig.
 services: machine-learning
 author: heatherbshapiro
 ms.author: hshapiro
@@ -10,18 +10,18 @@ ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/11/2019
+ms.date: 09/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0f295bf3a76d89e811fe9a022a3ccb68fbe7556a
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 1c2747c8eaac0323ac32f67afb27ac854a3a5ce9
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858725"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959941"
 ---
-# <a name="track-machine-learning-training-metrics-with-azure-machine-learning"></a>Śledzenie metryk szkolenia uczenia maszynowego za pomocą Azure Machine Learning
+# <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Monitoruj uruchomienia eksperymentów i metryki usługi Azure ML
 
-Usprawnij proces tworzenia modelu, śledząc eksperymenty i metryki monitorowania. W tym artykule dowiesz się, jak dodać kod rejestrowania do skryptu szkoleniowego, przesłać przebieg eksperymentu, monitorować ten przebieg i sprawdzić wyniki w usłudze Azure Machine Learning.
+Usprawnij proces tworzenia modelu, śledząc eksperymenty i monitorowane metryki. W tym artykule dowiesz się, jak dodać kod rejestrowania do skryptu szkoleniowego, przesłać przebieg eksperymentu, monitorować ten przebieg i sprawdzić wyniki w usłudze Azure Machine Learning.
 
 > [!NOTE]
 > Usługa Azure Machine Learning może również rejestrować informacje z innych źródeł podczas szkoleń, takich jak automatyczne uruchomienia uczenia maszynowego lub kontener platformy Docker, który uruchamia zadanie szkoleniowe. Te dzienniki nie są udokumentowane. Jeśli wystąpią problemy i skontaktuje się z działem pomocy technicznej firmy Microsoft, mogą oni korzystać z tych dzienników podczas rozwiązywania problemów.

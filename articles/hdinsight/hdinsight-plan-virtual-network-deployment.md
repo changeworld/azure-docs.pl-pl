@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 135855ee33f783e85b398c7f9716c2c897633de9
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: a0c9c729081da9f6c7b8f549a4906d432af6ecb2
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779537"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961633"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Planowanie sieci wirtualnej dla usługi Azure HDInsight
 
@@ -97,7 +97,7 @@ Wykonaj kroki opisane w tej sekcji, aby dowiedzieć się, jak dodać nową usłu
         az network route-table list --resource-group RESOURCEGROUP
         ```
 
-        Aby uzyskać więcej informacji, zobacz artykuł dotyczący [rozwiązywania problemów](../virtual-network/diagnose-network-routing-problem.md) z trasami.
+        Aby uzyskać więcej informacji, zobacz artykuł dotyczący [rozwiązywania problemów z trasami](../virtual-network/diagnose-network-routing-problem.md) .
 
 3. Utwórz klaster usługi HDInsight i wybierz Virtual Network platformy Azure podczas konfiguracji. Aby zrozumieć proces tworzenia klastra, wykonaj kroki opisane w następujących dokumentach:
 
@@ -124,7 +124,7 @@ Platforma Azure udostępnia rozpoznawanie nazw dla usług platformy Azure, któr
 
     Oba węzły mogą komunikować się bezpośrednio ze sobą oraz z innymi węzłami w usłudze HDInsight przy użyciu wewnętrznych nazw DNS.
 
-Domyślne rozpoznawanie nazw nie zezwala usłudze HDInsight na rozpoznawanie nazw zasobów w sieciach, które są przyłączone do sieci wirtualnej. Na przykład często można przyłączyć sieć lokalną do sieci wirtualnej. Tylko w przypadku domyślnego rozpoznawania nazw Usługa HDInsight nie ma dostępu do zasobów w sieci lokalnej według nazwy. Przeciwieństwem jest również wartość true, zasoby w sieci lokalnej nie mogą uzyskać dostępu do zasobów w sieci wirtualnej według nazwy.
+Domyślne rozpoznawanie nazw __nie zezwala usłudze HDInsight na rozpoznawanie__ nazw zasobów w sieciach, które są przyłączone do sieci wirtualnej. Na przykład często można przyłączyć sieć lokalną do sieci wirtualnej. Tylko w przypadku domyślnego rozpoznawania nazw Usługa HDInsight nie ma dostępu do zasobów w sieci lokalnej według nazwy. Przeciwieństwem jest również wartość true, zasoby w sieci lokalnej nie mogą uzyskać dostępu do zasobów w sieci wirtualnej według nazwy.
 
 > [!WARNING]  
 > Należy utworzyć niestandardowy serwer DNS i skonfigurować sieć wirtualną tak, aby korzystała z niej przed utworzeniem klastra usługi HDInsight.
@@ -212,7 +212,7 @@ Ruch sieciowy w sieciach wirtualnych platformy Azure można kontrolować przy u�
 
 Usługa HDInsight wymaga nieograniczonego dostępu do kondycji usługi HDInsight i usług zarządzania zarówno dla ruchu przychodzącego, jak i wychodzącego z sieci wirtualnej. W przypadku korzystania z sieciowych grup zabezpieczeń należy upewnić się, że te usługi mogą nadal komunikować się z klastrem HDInsight.
 
-![Diagram obiektów usługi HDInsight utworzonych w niestandardowej sieci wirtualnej platformy Azure](./media/hdinsight-virtual-network-architecture/vnet-diagram.png)
+![Diagram obiektów usługi HDInsight utworzonych w niestandardowej sieci wirtualnej platformy Azure](./media/hdinsight-plan-virtual-network-deployment/hdinsight-vnet-diagram.png)
 
 ### <a name="hdinsight-with-network-security-groups"></a>HDInsight z sieciowymi grupami zabezpieczeń
 
@@ -220,11 +220,11 @@ Jeśli planujesz używać **grup zabezpieczeń sieci** do kontrolowania ruchu si
 
 1. Określ region platformy Azure, który ma być używany przez usługę HDInsight.
 
-2. Zidentyfikuj adresy IP wymagane przez usługi HDInsight. Aby uzyskać więcej informacji, zobacz [adresy IP zarządzania usługą HDInsight](hdinsight-management-ip-addresses.md).
+2. Zidentyfikuj adresy IP wymagane przez usługi HDInsight. Aby uzyskać więcej informacji, zobacz [Adresy IP zarządzania usługą HDInsight](hdinsight-management-ip-addresses.md).
 
 3. Utwórz lub zmodyfikuj sieciowe grupy zabezpieczeń dla podsieci, w której ma zostać zainstalowana Usługa HDInsight.
 
-    * __Sieciowe grupy zabezpieczeń__: Zezwalaj na ruch przychodzący na porcie __443__ z adresów IP. Dzięki temu usługi HDInsight Management Services mogą dotrzeć do klastra spoza sieci wirtualnej.
+    * __Sieciowe grupy zabezpieczeń__: Zezwalaj na ruch __przychodzący__ na porcie __443__ z adresów IP. Dzięki temu usługi HDInsight Management Services mogą dotrzeć do klastra spoza sieci wirtualnej.
 
 Aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń, zobacz [Omówienie sieciowych grup zabezpieczeń](../virtual-network/security-overview.md).
 
@@ -234,7 +234,7 @@ Aby uzyskać więcej informacji na temat sterowania ruchem wychodzącym z klastr
 
 #### <a name="forced-tunneling-to-on-premise"></a>Wymuszone tunelowanie do środowiska lokalnego
 
-Wymuszone tunelowanie jest konfiguracją routingu zdefiniowaną przez użytkownika, w której cały ruch z podsieci jest wymuszany w określonej sieci lub lokalizacji, na przykład w sieci lokalnej. Usługa HDInsight nie obsługuje wymuszonego tunelowania ruchu do sieci lokalnych. 
+Wymuszone tunelowanie jest konfiguracją routingu zdefiniowaną przez użytkownika, w której cały ruch z podsieci jest wymuszany w określonej sieci lub lokalizacji, na przykład w sieci lokalnej. Usługa HDInsight __nie obsługuje__ wymuszonego tunelowania ruchu do sieci lokalnych. 
 
 ## <a id="hdinsight-ip"></a>Wymagane adresy IP
 
@@ -248,7 +248,7 @@ Aby uzyskać listę portów dla określonych usług, zobacz [porty używane prze
 
 Aby uzyskać więcej informacji na temat reguł zapory dla urządzeń wirtualnych, zobacz dokument [scenariusza wirtualnego urządzenia](../virtual-network/virtual-network-scenario-udr-gw-nva.md) .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Aby zapoznać się z przykładami kodu i przykłady tworzenia sieci wirtualnych platformy Azure, zobacz [Tworzenie sieci wirtualnych dla klastrów usługi Azure HDInsight](hdinsight-create-virtual-network.md).
 * Aby zapoznać się z kompleksowym przykładem konfigurowania usługi HDInsight w celu nawiązania połączenia z siecią lokalną, zobacz [łączenie usługi HDInsight z siecią lokalną](./connect-on-premises-network.md).

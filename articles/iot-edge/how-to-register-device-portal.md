@@ -9,22 +9,22 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 16660fbed465cc70f16cde430024f33b8aa4350e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7f3d0037bcf0fd33ae23c298679e3157046247cb
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66495359"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983541"
 ---
 # <a name="register-a-new-azure-iot-edge-device-from-the-azure-portal"></a>Rejestrowanie nowego urządzenia usługi Azure IoT Edge w witrynie Azure portal
 
-Zanim użyjesz urządzeń IoT za pomocą usługi Azure IoT Edge, musisz zarejestrować ich przy użyciu usługi IoT hub. Po zarejestrowaniu urządzenia, pojawi się parametry połączenia, który może służyć do konfigurowania urządzenia pod kątem obciążeń IoT Edge.
+Zanim użyjesz urządzeń IoT za pomocą usługi Azure IoT Edge, musisz zarejestrować ich przy użyciu usługi IoT hub. Po zarejestrowaniu urządzenia otrzymujesz parametry połączenia, których można użyć do skonfigurowania urządzenia na potrzeby obciążeń IoT Edge.
 
 W tym artykule pokazano, jak zarejestrować nowe urządzenie usługi IoT Edge przy użyciu witryny Azure portal.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Bezpłatne dla warstwy standardowej [usługi IoT hub](../iot-hub/iot-hub-create-through-portal.md) w subskrypcji platformy Azure.
+Bezpłatne lub standardowe [Centrum IoT](../iot-hub/iot-hub-create-through-portal.md) w ramach subskrypcji platformy Azure.
 
 ## <a name="create-a-device"></a>Tworzenie urządzenia
 
@@ -32,8 +32,8 @@ W witrynie Azure portal urządzenia usługi IoT Edge są tworzone i zarządzane 
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) i przejdź do Centrum IoT hub.
 2. Wybierz **usługi IoT Edge** z menu.
-3. Wybierz **Dodaj urządzenia usługi IoT Edge**.
-4. Podaj identyfikator opisu urządzenia. Automatycznie Generuj klucze uwierzytelniania i połączyć nowe urządzenie do Centrum, należy użyć ustawień domyślnych.
+3. Wybierz pozycję **Dodaj urządzenie IoT Edge**.
+4. Podaj identyfikator opisu urządzenia. Użyj ustawień domyślnych, aby automatycznie generować klucze uwierzytelniania i połączyć nowe urządzenie z centrum.
 5. Wybierz pozycję **Zapisz**.
 
 ## <a name="view-all-devices"></a>Wyświetl wszystkie urządzenia
@@ -44,9 +44,9 @@ Wszystkie włączone krawędzi urządzenia, łączących się z Centrum IoT hub 
 
 Gdy wszystko będzie gotowe skonfigurować urządzenie, należy parametry połączenia, która łączy urządzenie fizyczne za pomocą jej tożsamości w usłudze IoT hub.
 
-1. Z **usługi IoT Edge** strony w portalu, kliknij pozycję identyfikator urządzenia, z listy urządzenia usługi IoT Edge.
+1. Na stronie **IoT Edge** w portalu kliknij identyfikator urządzenia na liście urządzeń IoT Edge.
 2. Skopiuj wartość albo **parametry połączenia (klucz podstawowy)** lub **parametry połączenia (klucz pomocniczy)** .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak [wdrażać moduły do urządzenia przy użyciu witryny Azure portal](how-to-deploy-modules-portal.md).
+Dowiedz się [, jak wdrażać moduły na urządzeniu przy użyciu Azure Portal](how-to-deploy-modules-portal.md).

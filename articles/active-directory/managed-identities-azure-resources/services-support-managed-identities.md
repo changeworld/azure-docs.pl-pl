@@ -10,12 +10,12 @@ ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9464b408f43f55cb75a57798b098be6335328e3
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: d5f271f75a4faa7067f8a52d63a34772780c6448
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70136520"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959908"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Usługi obsługujące zarządzane tożsamości dla zasobów platformy Azure
 
@@ -33,7 +33,7 @@ Następujące usługi platformy Azure obsługują tożsamości zarządzane dla z
 | Typ tożsamości zarządzanej | Wszystkie ogólnie dostępne<br>Globalne regiony platformy Azure | Azure Government | Azure (Niemcy) | Azure w Chinach — 21Vianet |
 | --- | --- | --- | --- | --- |
 | Przypisana przez system | Dostępne | Wersja zapoznawcza | Wersja zapoznawcza | Wersja zapoznawcza | 
-| Przypisana przez użytkownika | Wersja zapoznawcza | Wersja zapoznawcza | Wersja zapoznawcza | Wersja zapoznawcza |
+| Przypisana przez użytkownika | Dostępne | Wersja zapoznawcza | Wersja zapoznawcza | Wersja zapoznawcza |
 
 Zapoznaj się z poniższą listą, aby skonfigurować tożsamość zarządzaną dla usługi Azure Virtual Machines (w regionach, w których są dostępne):
 
@@ -48,7 +48,7 @@ Zapoznaj się z poniższą listą, aby skonfigurować tożsamość zarządzaną 
 |Typ tożsamości zarządzanej | Wszystkie ogólnie dostępne<br>Globalne regiony platformy Azure | Azure Government | Azure (Niemcy) | Azure w Chinach — 21Vianet |
 | --- | --- | --- | --- | --- |
 | Przypisana przez system | Dostępne | Wersja zapoznawcza | Wersja zapoznawcza | Wersja zapoznawcza |
-| Przypisana przez użytkownika | Wersja zapoznawcza | Wersja zapoznawcza | Wersja zapoznawcza | Wersja zapoznawcza |
+| Przypisana przez użytkownika | Dostępne | Wersja zapoznawcza | Wersja zapoznawcza | Wersja zapoznawcza |
 
 Zapoznaj się z poniższą listą, aby skonfigurować tożsamość zarządzaną dla usługi Azure Virtual Machine Scale Sets (w regionach, w których są dostępne):
 
@@ -210,7 +210,7 @@ Zapoznaj się z poniższą listą, aby skonfigurować dostęp do Azure Resource 
 
 | Chmura | Identyfikator zasobu | State |
 |--------|------------|--------|
-| Globalne platformy Azure | `https://eventhubs.azure.net` | Wersja zapoznawcza |
+| Globalne platformy Azure | `https://eventhubs.azure.net` | Dostępne |
 | Azure Government |  | Niedostępna |
 | Azure (Niemcy) |   | Niedostępna |
 | Azure w Chinach — 21Vianet |  | Niedostępna |
@@ -219,7 +219,7 @@ Zapoznaj się z poniższą listą, aby skonfigurować dostęp do Azure Resource 
 
 | Chmura | Identyfikator zasobu | State |
 |--------|------------|--------|
-| Globalne platformy Azure | `https://servicebus.azure.net`  | Wersja zapoznawcza |
+| Globalne platformy Azure | `https://servicebus.azure.net`  | Dostępne |
 | Azure Government |  | Niedostępna |
 | Azure (Niemcy) |   | Niedostępna |
 | Azure w Chinach — 21Vianet |  | Niedostępna |

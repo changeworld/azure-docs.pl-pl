@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: juliako
-ms.openlocfilehash: d45842a4c61f871a479c91f7b192de8e567f9821
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 8158611678acc23d89bab377c170759c6bf9677f
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70862020"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962630"
 ---
 # <a name="animated-character-detection-preview"></a>Wykrywanie znaków animowanych (wersja zapoznawcza)
 
@@ -91,8 +91,7 @@ Jeśli masz konto płatne Video Indexer, musisz najpierw połączyć konto Custo
     1. Po wpisaniu nowej nazwy kliknij ikonę wyboru obok nowej nazwy. Spowoduje to zapisanie nowej nazwy w modelu w Video Indexer.
     1. Po zakończeniu edycji wszystkich żądanych nazw musisz nauczyć się modelu.
 
-        * Konta próbne: Otwórz stronę Dostosowywanie i kliknij kartę animowane znaki i kliknij posiadany model przycisku **uczenia** .
-        * Płatne konta: Otwórz stronę Dostosowywanie i kliknij kartę animowane znaki. W przypadku odpowiedniego modelu kliknij link **Edytuj w Custom Vision** . Następnie zostanie przekierowany do strony modelu w Custom Vision. Kliknij przycisk "uczenie", aby wyszkolić model. 
+        Otwórz stronę Dostosowywanie i kliknij kartę **animowane znaki** . W przypadku odpowiedniego modelu kliknij link **Edytuj w Custom Vision** . Następnie zostanie przekierowany do strony modelu w Custom Vision. Kliknij przycisk **uczenie** , aby szkolić model. 
     1. Po przeszkoleniu wszystkie filmy wideo, które będą indeksowane lub ponownego indeksowania przy użyciu tego modelu, będą rozpoznawać przeszkolone znaki. 
     Płatne konta, które mają dostęp do konta Custom Vision, mogą zobaczyć modele i obrazy otagowane. Dowiedz się więcej o [ulepszaniu klasyfikatora w Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier).
 

@@ -1,39 +1,39 @@
 ---
-title: Przykłady dotyczące korzystania z funkcji rozpoznawania mowy Bing | Dokumentacja firmy Microsoft
+title: Przykłady użycia rozpoznawanie mowy Bing | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: Przykłady dotyczące korzystania z usługa mowy firmy Microsoft, która konwertuje dźwięk mówiony na tekst.
+description: Przykłady użycia usługi Microsoft Speech, która konwertuje mówiony dźwięk na tekst.
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 4db95bdc5e83badef0170bfb3b1c52bb8610c655
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6f2e5d46063397d401a426662c86b175e9706bea
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60514950"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966452"
 ---
-# <a name="bing-speech-client-samples"></a>Przykłady klienta rozpoznawania mowy Bing
+# <a name="bing-speech-client-samples"></a>Przykłady klienta rozpoznawanie mowy Bing
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
-Rozpoznawania mowy Bing udostępnia przykłady end-to-end, aby zademonstrować różnych przypadków użycia, na przykład polecenie rozpoznawania ciągłe, wyróżnień i wykrywanie intencji. Wszystkie przykłady są dostępne w witrynie GitHub i można go pobrać za pomocą następujących łączy: README.md w każdym repozytorium, jak również [biblioteki klienckie](GetStarted/GetStartedClientLibraries.md) strony zawierają szczegółowe informacje o sposobie tworzenia i uruchamiania przykładów należy.
+Rozpoznawanie mowy Bing zapewnia kompleksową próbkę demonstrującą różne przypadki użycia, na przykład rozpoznawanie poleceń, rozpoznawanie ciągłe i wykrywanie intencji. Wszystkie przykłady są dostępne w usłudze GitHub i mogą być pobierane przez następujące linki: README.md w każdym repozytorium, a także Strona [biblioteki klienta](GetStarted/GetStartedClientLibraries.md) zawiera szczegółowe informacje na temat sposobu kompilowania i uruchamiania przykładów.
 
 - [Przykłady interfejsu API REST](https://github.com/Azure-Samples/SpeechToText-REST)
 
-- [Przykładowe skrypty JavaScript](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript)
+- [Przykłady kodu JavaScript](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript)
 
-- [Przykłady klienta pulpitu języka C#](https://github.com/Azure-Samples/Cognitive-Speech-STT-Windows)
+- [C#Przykłady klienta pulpitu](https://github.com/Azure-Samples/Cognitive-Speech-STT-Windows)
 
-- [Przykłady usługi C#](https://github.com/Azure-Samples/Cognitive-Speech-STT-ServiceLibrary)
+- [C#Przykłady usługi](https://github.com/Azure-Samples/Cognitive-Speech-STT-ServiceLibrary)
 
-- [Oprogramowanie Java na przykłady dla systemu Android](https://github.com/Azure-Samples/Cognitive-Speech-STT-Android)
+- [Środowisko Java w przykładach systemu Android](https://github.com/Azure-Samples/Cognitive-Speech-STT-Android)
 
-- [ObjectiveC na przykłady dla systemu iOS](https://github.com/Azure-Samples/Cognitive-Speech-STT-iOS)
+- [ObjectiveC na przykładach systemu iOS](https://github.com/Azure-Samples/Cognitive-Speech-STT-iOS)
 
-Wszystkie zestawy SDK usługi Microsoft Cognitive Services i przykłady podlegają licencji MIT. Aby uzyskać więcej informacji, zobacz [licencji](https://github.com/Azure-Samples/SpeechToText-REST/blob/master/LICENSE).
+Wszystkie zestawy SDK usługi Microsoft Cognitive Services i przykłady podlegają licencji MIT. Aby uzyskać więcej informacji, zobacz [licencja](https://github.com/Azure-Samples/SpeechToText-REST/blob/master/LICENSE).

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: f58c847f512f2db72fdca823637192c3b638b1ae
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
-ms.translationtype: HT
+ms.openlocfilehash: 9a7008ca7967135209b8fc2c341998570a2679be
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879341"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960835"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Synchronizowanie użytkowników usługi Azure Active Directory z klastrem usługi HDInsight
 
@@ -31,11 +31,11 @@ Aby wyświetlić hosty, Otwórz interfejs użytkownika sieci Web Ambari. Każdy 
 
 2. Wybierz pozycję **Wszyscy użytkownicy** w menu po lewej stronie, a następnie wybierz pozycję **nowy użytkownik**.
 
-    ![Okienko wszystkie użytkowników](./media/hdinsight-sync-aad-users-to-cluster/aad-users.png)
+    ![Okienko wszystkie użytkowników](./media/hdinsight-sync-aad-users-to-cluster/users-and-groups-new.png)
 
 3. Wypełnij formularz nowego użytkownika. Wybierz grupy, które zostały utworzone na potrzeby przypisywania uprawnień opartych na klastrze. W tym przykładzie należy utworzyć grupę o nazwie "HiveUsers", do której można przypisać nowych użytkowników. [Przykładowe instrukcje](hdinsight-domain-joined-configure.md) dotyczące tworzenia klastra ESP obejmują dodanie dwóch grup `HiveUsers` i. `AAD DC Administrators`
 
-    ![Okienko nowego użytkownika](./media/hdinsight-sync-aad-users-to-cluster/aad-new-user.png)
+    ![Okienko nowego użytkownika](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-new-user-form.png)
 
 4. Wybierz pozycję **Utwórz**.
 
@@ -131,11 +131,11 @@ Otwórz [interfejs użytkownika programu Apache Ambari Web](hdinsight-hadoop-man
 
 1. Na pulpicie nawigacyjnym Ambari wybierz pozycję **Zarządzaj Ambari** w menu **administrator** .
 
-    ![Zarządzanie Ambari](./media/hdinsight-sync-aad-users-to-cluster/manage-ambari.png)
+    ![Zarządzanie Ambari](./media/hdinsight-sync-aad-users-to-cluster/manage-apache-ambari.png)
 
 2. Wybierz opcję **Użytkownicy** w grupie menu **Zarządzanie użytkownikami i grupami** po lewej stronie.
 
-    ![Element menu użytkownicy](./media/hdinsight-sync-aad-users-to-cluster/users-link.png)
+    ![Element menu użytkownicy](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-menu-item.png)
 
 3. Nowy użytkownik powinien być wymieniony w tabeli users (Użytkownicy). Typ ma ustawioną wartość `LDAP` , `Local`a nie.
 

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: 950294094584958e83f6a16630a6e1f897785e46
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.date: 09/12/2019
+ms.openlocfilehash: e5d1dbc8c212d4cdefb12fb740a454324d3adfa1
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69897283"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962919"
 ---
 # <a name="supported-azure-database-for-mariadb-server-versions"></a>Obsługiwane wersje serwera Azure Database for MariaDB
 
@@ -20,21 +20,21 @@ Azure Database for MariaDB został opracowany z [serwera MariaDB](https://downlo
 MariaDB używa schematu nazewnictwa X. Y. Z. X jest wersją główną, Y jest wersją pomocniczą i Z jest wersją poprawki.
 
 > [!NOTE]
-> W usłudze Brama jest używana do przekierowywania połączeń z wystąpieniami serwera. Po nawiązaniu połączenia klient MySQL wyświetla wersję zestawu MariaDB w bramie, a nie rzeczywistą wersję działającą w wystąpieniu serwera MariaDB. Aby określić wersję wystąpienia serwera MariaDB, użyj `SELECT VERSION();` polecenia.
+> W usłudze brama służy do przekierowywania połączeń do wystąpień serwera. Po nawiązaniu połączenia klient MySQL wyświetla wersję zestawu MariaDB w bramie, a nie rzeczywistą wersję działającą w wystąpieniu serwera MariaDB. Aby określić wersję wystąpienia serwera MariaDB, użyj `SELECT VERSION();` polecenia.
 
 Azure Database for MariaDB obecnie obsługuje następującą wersję:
 
 ## <a name="mariadb-version-102"></a>MariaDB w wersji 10,2
 
-Wersja poprawki: 10.2.23
+Wersja poprawki: 10.2.25
 
-Zapoznaj się z [dokumentacją MariaDB](https://mariadb.com/kb/en/library/mariadb-10223-release-notes/) , aby dowiedzieć się więcej na temat ulepszeń i poprawek w programie MariaDB 10.2.23.
+Zapoznaj się z [dokumentacją MariaDB](https://mariadb.com/kb/en/library/mariadb-10225-release-notes/) , aby dowiedzieć się więcej na temat ulepszeń i poprawek w tej wersji.
 
 ## <a name="mariadb-version-103"></a>MariaDB w wersji 10,3
 
-Wersja poprawki: 10.3.14
+Wersja poprawki: 10.3.16
 
-Zapoznaj się z [dokumentacją MariaDB](https://mariadb.com/kb/en/library/mariadb-10314-release-notes/) , aby dowiedzieć się więcej na temat ulepszeń i poprawek w programie MariaDB 10.3.14.
+Zapoznaj się z [dokumentacją MariaDB](https://mariadb.com/kb/en/library/mariadb-10316-release-notes/) , aby dowiedzieć się więcej na temat ulepszeń i poprawek w tej wersji.
 
 ## <a name="managing-updates-and-upgrades"></a>Zarządzanie aktualizacjami i uaktualnieniami
 Usługa automatycznie zarządza uaktualnieniami aktualizacji poprawek. Na przykład 10.2.21 do 10.2.23.  

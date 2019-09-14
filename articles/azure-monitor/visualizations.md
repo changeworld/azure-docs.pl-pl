@@ -1,6 +1,6 @@
 ---
-title: Wizualizowanie danych z usługi Azure Monitor | Dokumentacja firmy Microsoft
-description: Zawiera podsumowanie informacji o dostępnych metod wizualizować metryki i rejestrowanie danych przechowywanych w usłudze Azure Monitor.
+title: Wizualizowanie danych z Azure Monitor | Microsoft Docs
+description: Zawiera podsumowanie dostępnych metod wizualizacji danych metryk i dzienników przechowywanych w Azure Monitor.
 author: bwren
 manager: carmonm
 editor: ''
@@ -12,135 +12,135 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/24/2018
 ms.author: bwren
-ms.openlocfilehash: 4e9bb9bd86e22efa5dd514e742481911b09c5e17
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6390384220830d473b56f4082a98dfaa8aa686d1
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61088299"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984189"
 ---
-# <a name="visualizing-data-from-azure-monitor"></a>Wizualizowanie danych z usługi Azure Monitor
-Ten artykuł zawiera podsumowanie dostępnych metod w celu wizualizacji dane dzienników i metryk przechowywanych w usłudze Azure Monitor.
+# <a name="visualizing-data-from-azure-monitor"></a>Wizualizowanie danych z Azure Monitor
+Ten artykuł zawiera podsumowanie dostępnych metod wizualizacji danych dziennika i metryk przechowywanych w Azure Monitor.
 
-Wizualizacji, takich jak wykresy i diagramy ułatwia analizowanie danych monitorowania, aby przejść do szczegółów problemów i zidentyfikować wzorce. W zależności od używanego narzędzia może również mieć możliwość udostępniać wizualizacje innym użytkownikom w organizacji i poza nią.
+Wizualizacje, takie jak wykresy i wykresy, mogą ułatwić analizowanie danych monitorowania w celu przechodzenia do szczegółów dotyczących problemów i identyfikowania wzorców. W zależności od używanego narzędzia możesz również mieć możliwość udostępniania wizualizacji innym użytkownikom wewnątrz i na zewnątrz organizacji.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="azure-dashboards"></a>Pulpitów nawigacyjnych platformy Azure
-[Pulpitów nawigacyjnych platformy Azure](../azure-portal/azure-portal-dashboards.md) to technologia dashboarding głównej na platformie Azure. Są one szczególnie użyteczne w dostarczaniu jedną taflę szkła za pośrednictwem infrastruktury platformy Azure i usług, co pozwala szybko zidentyfikować ważne problemy.
+## <a name="azure-dashboards"></a>Pulpity nawigacyjne platformy Azure
+[Pulpity nawigacyjne platformy Azure](../azure-portal/azure-portal-dashboards.md) są podstawową technologią nawigacyjną dla platformy Azure. Są one szczególnie przydatne w przypadku udostępniania pojedynczego okienka Glass przez infrastrukturę i usługi platformy Azure, co pozwala na szybkie identyfikowanie ważnych problemów.
 
 ![Pulpit nawigacyjny](media/visualizations/dashboard.png)
 
 ### <a name="advantages"></a>Zalety
-- Głęboka integracja na platformie Azure. Wizualizacje można przypiąć do pulpitów nawigacyjnych z wielu stronach platformy Azure, m.in. Eksplorator metryk usługi Log Analytics i usługi Application Insights.
-- Obsługuje zarówno metryk i dzienników.
-- Połącz dane z wielu źródeł, takich jak dane wyjściowe z [Eksploratora metryk](platform/metrics-charts.md), [rejestrowania zapytań](log-query/log-query-overview.md), i [mapuje](app/app-map.md) i dostępności w usłudze Application Insights.
-- Opcja osobistym lub udostępnione pulpity nawigacyjne. Zintegrowana z platformą Azure [uwierzytelniania opartego na rolach (RBAC)](../role-based-access-control/overview.md).
-- Automatyczne odświeżanie. Odświeżanie metryk zależy od zakresu czasu z co najmniej pięć minut. Odśwież dzienniki na jedną minutę.
-- Metryki sparametryzowanego pulpity nawigacyjne z sygnatury czasowej i parametry niestandardowe.
-- Opcje układu.
+- Głębokiej integracji z platformą Azure. Wizualizacje można przypinać do pulpitów nawigacyjnych z wielu stron platformy Azure, w tym Eksplorator metryk, Log Analytics i Application Insights.
+- Obsługuje metryki i dzienniki.
+- Połącz dane z wielu źródeł, w tym dane wyjściowe z [Eksploratora metryk](platform/metrics-charts.md), [zapytań dzienników](log-query/log-query-overview.md)i [map](app/app-map.md) i dostępności w Application Insights.
+- Opcja dla osobistych lub udostępnionych pulpitów nawigacyjnych. Integracja z [uwierzytelnianiem opartym na rolach (RBAC) na](../role-based-access-control/overview.md)platformie Azure.
+- Automatyczne odświeżanie. Odświeżanie metryk zależy od zakresu czasu, który jest co najmniej pięć minut. Dzienniki są odświeżane co godzinę przy użyciu opcji ręcznego odświeżania na żądanie, klikając ikonę "Odśwież" w danej wizualizacji lub odświeżając pełny pulpit nawigacyjny.
+- Parametry, które są pulpitami nawigacyjnymi metryk z sygnaturami czasowymi i parametry niestandardowe.
+- Elastyczne opcje układu.
 - Tryb pełnoekranowy.
 
 
 ### <a name="limitations"></a>Ograniczenia
-- Ograniczone kontroli nad wizualizacje dziennika bez obsługi dla tabel danych. Łączna liczba serii danych jest ograniczona do 10 z dalszych serii danych zgrupowane w obszarze _innych_ przedziału.
-- Nie niestandardowych parametrów obsługę dziennika wykresów.
-- Wykresy dziennika są ograniczone do ostatnich 30 dni.
-- Wykresy dziennika tylko można przypiąć do udostępnionych pulpitów nawigacyjnych.
-- Nie interakcję z danymi pulpitu nawigacyjnego.
-- Ograniczone kontekstowych Przechodzenie do szczegółów.
+- Ograniczona kontrola nad wizualizacjami dzienników bez obsługi tabel danych. Łączna liczba serii danych jest ograniczona do 10 i dalsze serie danych są pogrupowane w _innym_ zasobniku.
+- Brak obsługi parametrów niestandardowych dla wykresów dzienników.
+- Wykresy dzienników są ograniczone do 30 ostatnich dni.
+- Wykresy dzienników można przypinać tylko do udostępnionych pulpitów nawigacyjnych.
+- Brak interakcji z danymi pulpitu nawigacyjnego.
+- Ograniczone kontekstowe przechodzenie do szczegółów.
 
-## <a name="azure-monitor-views"></a>Widoki usługi Azure Monitor
-[Widoki w usłudze Azure Monitor](platform/view-designer.md) pozwalają na tworzenie niestandardowych wizualizacji przy użyciu danych dziennika. Są one używane przez [rozwiązania do monitorowania](insights/solutions.md) przedstawienie danych pobierają.
+## <a name="azure-monitor-views"></a>Widoki Azure Monitor
+[Widoki w Azure monitor](platform/view-designer.md) umożliwiają tworzenie niestandardowych wizualizacji przy użyciu danych dziennika. Są one używane przez [rozwiązania monitorujące](insights/solutions.md) , które umożliwiają prezentowanie zbieranych danych.
 
 ![Widok](media/visualizations/view.png)
 
 ### <a name="advantages"></a>Zalety
-- Bogate wizualizacje za dane dziennika.
-- Eksportowanie i importowanie widoków, aby przenieść je do innych grup zasobów i subskrypcji.
-- Integruje się z usługi Azure Monitor model zarządzania obszarami roboczymi i rozwiązania do monitorowania.
-- [Filtry](platform/view-designer-filters.md) niestandardowych parametrów.
-- Interakcyjne obsługuje wielopoziomowe testowania odzyskiwania po awarii w (Widok przejście do innego widoku)
+- Rozbudowane wizualizacje danych dziennika.
+- Eksportuj i Importuj widoki, aby przenieść je do innych grup zasobów i subskrypcji.
+- Integruje się z modelem zarządzania Azure Monitor z obszarami roboczymi i rozwiązaniami do monitorowania.
+- [Filtry](platform/view-designer-filters.md) dla parametrów niestandardowych.
+- Interaktywny, obsługuje przechodzenie na wiele poziomów (widok przechodzenia do szczegółów w innym widoku)
 
 ### <a name="limitations"></a>Ograniczenia
 - Obsługuje dzienniki, ale nie metryki.
 - Brak widoków osobistych. Dostępne dla wszystkich użytkowników mających dostęp do obszaru roboczego.
-- Nie automatycznego odświeżania.
+- Brak automatycznego odświeżania.
 - Ograniczone opcje układu.
-- Brak obsługi zapytań w wielu obszarach roboczych lub aplikacji usługa Application Insights.
-- Zapytania są ograniczone w odpowiedzi rozmiar 8MB, a zapytanie czas wykonywania 110 sekund.
+- Brak obsługi zapytań w wielu obszarach roboczych lub aplikacjach Application Insights.
+- Zapytania są ograniczone w rozmiarze odpowiedzi do 8 MB i czas wykonywania zapytania wynoszący 110 sekund.
 
 
 ## <a name="workbooks"></a>Skoroszyty
-[Skoroszyty](../azure-monitor/app/usage-workbooks.md) są interaktywne dokumentów, które zawierają szczegółowe informacje w danych, analizy i współpracy w ramach zespołu. Szczegółowe przykłady, w którym skoroszyty są przydatne rozwiązywania problemów przewodniki i postmortem zdarzenia.
+[Skoroszyty](../azure-monitor/app/usage-workbooks.md) to interaktywne dokumenty, które zapewniają szczegółowe informacje o danych, badaniu i współpracy w zespole. Konkretne przykłady, w których przydatne są skoroszyty, to przewodniki dotyczące rozwiązywania problemów i postmortem zdarzeń.
 
 ![Skoroszyt](media/visualizations/workbook.png)
 
 ### <a name="advantages"></a>Zalety
-- Obsługuje zarówno metryk i dzienników.
-- Obsługuje parametry umożliwiające interaktywne raporty, w którym zaznaczenie elementu w tabeli będzie dynamicznie aktualizować skojarzone wykresy i wizualizacje.
-- Przepływ podobne do dokumentu.
-- Opcja w przypadku osobistych lub udostępnione skoroszyty.
-- Łatwy w użyciu i współpracy przyjaznego środowiska tworzenia.
-- Szablony obsługują galerii publicznej szablonów opartych na usłudze GitHub.
+- Obsługuje metryki i dzienniki.
+- Obsługuje parametry włączające interaktywne raporty, w których wybranie elementu w tabeli spowoduje dynamiczne aktualizowanie skojarzonych wykresów i wizualizacji.
+- Przepływ podobny do dokumentu.
+- Opcja dla skoroszytów osobistych lub udostępnionych.
+- Łatwe, przyjazne dla współpracy środowisko tworzenia.
+- Szablony obsługują publiczną galerię szablonów opartą na witrynie GitHub.
 
 ### <a name="limitations"></a>Ograniczenia
-- Nie automatycznego odświeżania.
-- Nie gęstą układ, takich jak pulpity nawigacyjne, które powodują, że skoroszyty mniej przydatne jako jedną taflę szkła. Mają więcej zapewniające lepszy wgląd w dane.
+- Brak automatycznego odświeżania.
+- Nie ma układu gęstego, takiego jak pulpity nawigacyjne, co sprawia, że skoroszyty są mniej przydatne jako pojedyncze okienko szkła. Zamierzone więcej, aby zapewnić dokładniejszy wgląd w szczegółowe dane.
 
 
 ## <a name="power-bi"></a>Power BI
-[Usługa Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) jest szczególnie przydatne podczas tworzenia biznesowymi pulpitów nawigacyjnych i raportów, a także raporty, analizy trendów długoterminowych kluczowego wskaźnika wydajności. Możesz [Importuj wyniki zapytania dziennika](platform/powerbi.md) do usługi Power BI zestawu danych, dzięki czemu można wykorzystać jej funkcje, takie jak łączenie danych z różnych źródeł oraz udostępnianie raportów w sieci web i urządzeń przenośnych.
+[Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) jest szczególnie przydatna do tworzenia ukierunkowanych na działalność firmowych pulpitów nawigacyjnych i raportów, a także raportów umożliwiających analizowanie długoterminowych trendów kluczowych wskaźników wydajności. [Wyniki zapytania dziennika można zaimportować](platform/powerbi.md) do zestawu danych Power BI, dzięki czemu można korzystać z jego funkcji, takich jak łączenie danych z różnych źródeł i udostępnianie raportów w sieci Web i na urządzeniach przenośnych.
 
 ![Power BI](media/visualizations/power-bi.png)
 
 ### <a name="advantages"></a>Zalety
-- Bogate wizualizacje.
-- Ekstensywna interaktywność, w tym powiększenia i filtrowanie krzyżowe.
-- Łatwe udostępnianie w całej organizacji.
+- Rozbudowane wizualizacje.
+- Rozległe interakcje, w tym powiększanie i filtrowanie krzyżowe.
+- Łatwa do udostępnienia w całej organizacji.
 - Integracja z innymi danymi z wielu źródeł danych.
-- Lepsza wydajność za pomocą wyników z pamięci podręcznej w module.
+- Lepsza wydajność z wynikami buforowanymi w module.
 
 
 ### <a name="limitations"></a>Ograniczenia
 - Obsługuje dzienniki, ale nie metryki.
-- Brak integracji platformy Azure. Nie można zarządzać pulpitów nawigacyjnych i modeli za pomocą usługi Azure Resource Manager.
-- Wyniki zapytania należy zaimportować do modelu usługi Power BI, aby skonfigurować. Ograniczenia dotyczące rozmiaru wyników i odświeżania.
-- Odświeżanie danych ograniczone z 8 razy dziennie.
+- Brak integracji z platformą Azure. Nie można zarządzać pulpitami nawigacyjnymi i modelami za poorednictwem Azure Resource Manager.
+- Aby można było skonfigurować wyniki zapytania, należy je zaimportować do modelu Power BI. Ograniczenie rozmiaru i odświeżania wyniku.
+- Ograniczone odświeżanie danych przez osiem razy dziennie.
 
 
 ## <a name="grafana"></a>Grafana
-[Grafana](https://grafana.com/) to otwarta platforma, która excels w operacyjne pulpity nawigacyjne. Jest to szczególnie przydatne w przypadku wykrywanie i izolowanie i sklasyfikowaniu zdarzenia operacyjne. Możesz dodać [wtyczki źródła danych Grafana usługi Azure Monitor](platform/grafana-plugin.md) do subskrypcji platformy Azure, aby wizualizować dane metryki platformy Azure.
+[Grafana](https://grafana.com/) to otwarta platforma, którą program Excel ma w operacyjnych pulpitach nawigacyjnych. Jest to szczególnie przydatne w przypadku wykrywania i izolowania i segregowania zdarzeń operacyjnych. Możesz dodać [wtyczkę Grafana Azure monitor źródła danych](platform/grafana-plugin.md) do subskrypcji platformy Azure, aby wizualizować dane metryk platformy Azure.
 
 ![Grafana](media/visualizations/grafana.png)
 
 ### <a name="advantages"></a>Zalety
-- Bogate wizualizacje.
-- Zaawansowany ekosystem źródeł danych.
-- Interakcyjność danych, w tym powiększyć.
+- Rozbudowane wizualizacje.
+- Bogaty ekosystem źródeł danych.
+- Interaktywność danych, w tym powiększanie.
 - Obsługuje parametry.
 
 ### <a name="limitations"></a>Ograniczenia
-- Brak integracji platformy Azure. Nie można zarządzać pulpitów nawigacyjnych i modeli za pomocą usługi Azure Resource Manager.
-- Koszty obsługi dodatkowej infrastruktury Grafana lub dodatkowych kosztów Grafana chmury.
+- Brak integracji z platformą Azure. Nie można zarządzać pulpitami nawigacyjnymi i modelami za poorednictwem Azure Resource Manager.
+- Koszt obsługi dodatkowej infrastruktury usługi Grafana lub dodatkowego kosztu chmury Grafana.
 
 
-## <a name="build-your-own-custom-application"></a>Tworzenie niestandardowych aplikacji
-Dane w dzienniku i dane metryk w usłudze Azure Monitor dostęp za pośrednictwem jego interfejsu API za pomocą dowolnego klienta REST, co pozwala na tworzenie własnych niestandardowych witryn sieci Web i aplikacji.
+## <a name="build-your-own-custom-application"></a>Tworzenie własnej aplikacji niestandardowej
+Możesz uzyskać dostęp do danych w dziennikach i danych metryk w Azure Monitor za pomocą interfejsu API za pomocą dowolnego klienta REST, który umożliwia tworzenie własnych niestandardowych witryn sieci Web i aplikacji.
 
 ### <a name="advantages"></a>Zalety
-- Pełna elastyczność interfejsu użytkownika, wizualizacji, interakcyjność i funkcje.
-- Możesz łączyć metryki i rejestrowanie danych z innych źródeł danych.
+- Pełna elastyczność interfejsu użytkownika, wizualizacji, interakcji i funkcji.
+- Łączenie metryk i danych dzienników z innymi źródłami danych.
 
 ### <a name="disadvantages"></a>Wady
-- Znaczący inżynieryjny nakład pracy wymagany.
+- Wymagany jest znaczny nakład pracy inżynieryjnej.
 
 
-## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się więcej o [dane zebrane przez usługi Azure Monitor](platform/data-platform.md).
-- Dowiedz się więcej o [pulpitów nawigacyjnych platformy Azure](../azure-portal/azure-portal-dashboards.md).
-- Dowiedz się więcej o [widoków w usłudze Azure Monitor](platform/view-designer.md).
-- Dowiedz się więcej o [skoroszyty](../azure-monitor/app/usage-workbooks.md).
-- Dowiedz się więcej o [importowania danych dziennika w usłudze Power BI](../azure-monitor/platform/powerbi.md).
-- Dowiedz się więcej o [wtyczki źródła danych Grafana usługi Azure Monitor](../azure-monitor/platform/grafana-plugin.md).
+## <a name="next-steps"></a>Następne kroki
+- Dowiedz się więcej na temat [danych zbieranych przez Azure monitor](platform/data-platform.md).
+- Dowiedz się więcej o [pulpitach nawigacyjnych platformy Azure](../azure-portal/azure-portal-dashboards.md).
+- Dowiedz się więcej o [widokach w Azure monitor](platform/view-designer.md).
+- Dowiedz [](../azure-monitor/app/usage-workbooks.md)się więcej na temat skoroszytów.
+- Dowiedz się więcej [na temat importowania danych dziennika do Power BI](../azure-monitor/platform/powerbi.md).
+- Dowiedz się więcej na temat [wtyczki źródła danych Grafana Azure monitor](../azure-monitor/platform/grafana-plugin.md).
 

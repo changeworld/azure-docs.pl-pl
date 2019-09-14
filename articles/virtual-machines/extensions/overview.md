@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/30/2018
+ms.date: 09/12/2019
 ms.author: roiyz
-ms.openlocfilehash: 8c63df2d9a7e398fb9b67edd3b57a3ba06cbe7a1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 200a5e93c24f6aa4ecf9d76cffac261d83498d02
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084323"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70958833"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Rozszerzenia i funkcje maszyny wirtualnej platformy Azure
 Rozszerzenia maszyny wirtualnej platformy Azure to małe aplikacje, które udostępniają zadania konfiguracji po wdrożeniu i automatyzacji na maszynach wirtualnych platformy Azure, można użyć istniejących obrazów, a następnie dostosować je w ramach wdrożeń, dzięki czemu możesz uzyskać niestandardową firmę Kompilowanie obrazów.
@@ -37,7 +37,7 @@ Przykłady kluczowych scenariuszy, w których rozszerzenia są używane dla:
 Rozszerzenia można powiązać z nowym wdrożeniem maszyny wirtualnej. Mogą na przykład być częścią większego wdrożenia, konfigurowania aplikacji na maszynach wirtualnych lub uruchamiania ich na wszystkich obsługiwanych systemach obsługujących rozszerzenia po wdrożeniu.
 
 ## <a name="how-can-i-find-what-extensions-are-available"></a>Jak mogę znaleźć dostępne rozszerzenia?
-Dostępne rozszerzenia można wyświetlić w bloku maszyny wirtualnej w portalu, w obszarze rozszerzenia reprezentuje ona tylko niewielką ilość, aby uzyskać pełną listę, można użyć narzędzi interfejsu wiersza polecenia, zobacz odnajdywanie [rozszerzeń maszyn wirtualnych dla systemu Linux](features-linux.md) i [odnajdywanie rozszerzeń maszyn wirtualnych w systemie Windows](features-windows.md).
+Dostępne rozszerzenia można wyświetlić w bloku maszyny wirtualnej w portalu, w obszarze rozszerzenia reprezentuje ona tylko niewielką ilość, aby uzyskać pełną listę, można użyć narzędzi interfejsu wiersza polecenia, zobacz [odnajdywanie rozszerzeń maszyn wirtualnych dla systemu Linux](features-linux.md) i [odnajdywanie rozszerzeń maszyn wirtualnych w systemie Windows](features-windows.md).
 
 ## <a name="how-can-i-install-an-extension"></a>Jak mogę zainstalować rozszerzenie?
 Rozszerzenia maszyny wirtualnej platformy Azure można zarządzać przy użyciu interfejsu wiersza polecenia platformy Azure, Azure PowerShell, szablonów Azure Resource Manager i Azure Portal. Aby wypróbować rozszerzenie, możesz przejść do Azure Portal, wybrać rozszerzenie niestandardowego skryptu, a następnie przekazać polecenie/skrypt i uruchomić rozszerzenia.
@@ -49,6 +49,30 @@ Nie musisz łączyć się z maszyną wirtualną bezpośrednio, aby zainstalować
 
 ## <a name="anything-else-i-should-be-thinking-about-for-extensions"></a>Coś innego, co muszę zrobić w przypadku rozszerzeń?
 Rozszerzenia instalują aplikacje, podobnie jak w przypadku niektórych aplikacji, istnieją pewne wymagania, w przypadku rozszerzenia istnieje lista obsługiwanych systemów operacyjnych systemów Windows i Linux oraz wymaganych jest zainstalowanie agentów maszyny wirtualnej platformy Azure. Niektóre pojedyncze aplikacje rozszerzenia maszyny wirtualnej mogą mieć własne wymagania wstępne dotyczące środowiska, takie jak dostęp do punktu końcowego.
+
+## <a name="troubleshoot-extensions"></a>Rozwiązywanie problemów z rozszerzeniami
+
+Informacje dotyczące rozwiązywania problemów dla każdego rozszerzenia można znaleźć w sekcji **Rozwiązywanie problemów i pomoc techniczna** w temacie Omówienie rozszerzenia. Poniżej znajduje się lista dostępnych informacji dotyczących rozwiązywania problemów:
+
+| Przestrzeń nazw | Rozwiązywanie problemów |
+|-----------|-----------------|
+| Microsoft. Azure. Monitoring. dependencyagent. dependencyagentlinux | [Zależność Azure Monitor dla systemu Linux](agent-dependency-linux.md#troubleshoot-and-support) |
+| Microsoft. Azure. Monitoring. dependencyagent. dependencyagentwindows | [Azure Monitor zależność dla systemu Windows](agent-dependency-windows.md#troubleshoot-and-support) |
+| Microsoft. Azure. Security. azurediskencryptionforlinux | [Azure Disk Encryption dla systemu Linux](azure-disk-enc-linux.md#troubleshoot-and-support) |
+| Microsoft. Azure. Security. azurediskencryption | [Azure Disk Encryption dla systemu Windows](azure-disk-enc-windows.md#troubleshoot-and-support) |
+| Microsoft. COMPUTE. customscriptextension | [Skrypt niestandardowy dla systemu Windows](custom-script-windows.md#troubleshoot-and-support) |
+| Microsoft. ostcextensions. customscriptforlinux | [Konfiguracja żądanego stanu dla systemu Linux](dsc-linux.md#troubleshoot-and-support) |
+| Microsoft. PowerShell. DSC | [Konfiguracja żądanego stanu dla systemu Windows](dsc-windows.md#troubleshoot-and-support) |
+| Microsoft. hpccompute. nvidiagpudriverlinux | [Rozszerzenie sterownika GPU NVIDIA dla systemu Linux](hpccompute-gpu-linux.md#troubleshoot-and-support) |
+| Microsoft. hpccompute. nvidiagpudriverwindows | [Rozszerzenie sterownika GPU NVIDIA dla systemu Windows](hpccompute-gpu-windows.md#troubleshoot-and-support) |
+| Microsoft. Azure. Security. iaasantimalware | [Rozszerzenie chroniące przed złośliwym kodem dla systemu Windows](iaas-antimalware-windows.md#troubleshoot-and-support) |
+| Microsoft. enterprisecloud. Monitoring. omsagentforlinux | [Azure Monitor dla systemu Linux](oms-linux.md#troubleshoot-and-support)
+| Microsoft. enterprisecloud. Monitoring. microsoftmonitoringagent | [Azure Monitor dla systemu Windows](oms-windows.md#troubleshoot-and-support) |
+| rozwiązania Stackify. linuxagent. Extension. stackifylinuxagentextension | [Rozwiązania Stackify retrace dla systemu Linux](stackify-retrace-linux.md#troubleshoot-and-support) |
+| vmaccessforlinux. Microsoft. ostcextensions | [Resetowanie hasła (VMAccess) dla systemu Linux](vmaccess.md#troubleshoot-and-support) |
+| Microsoft. recoveryservices. VMSnapshot | [Migawka dla systemu Linux](vmsnapshot-linux.md#troubleshoot-and-support) |
+| Microsoft. recoveryservices. VMSnapshot | [Migawka dla systemu Windows](vmsnapshot-windows.md#troubleshoot-and-support) |
+
 
 ## <a name="next-steps"></a>Następne kroki
 * Aby uzyskać więcej informacji na temat działania agenta i rozszerzeń systemu Linux, zobacz [Azure VM Extensions and features for Linux](features-linux.md).

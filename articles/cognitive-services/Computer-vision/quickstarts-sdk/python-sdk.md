@@ -1,370 +1,210 @@
 ---
-title: 'Szybki start: Zestaw SDK dla języka Python'
-titleSuffix: Azure Cognitive Services
-description: W tym przewodniku szybki start dowiesz się, jak używać zestawu SDK języka Python dla typowych zadań, takich jak analizowanie obrazów, uzyskiwanie opisu, rozpoznawanie tekstu i generowanie miniatury.
+title: 'Szybki start: przetwarzanie obrazów Biblioteka kliencka dla języka Python | Microsoft Docs'
+description: Rozpocznij pracę z biblioteką klienta przetwarzanie obrazów dla języka Python.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 09/03/2019
+ms.date: 09/10/2019
 ms.author: pafarley
-ms.openlocfilehash: bc42edc3e97aa68c5fe9d2b3162913e8925df4ee
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 8d47ae84fd489b4841d8bcf7755da6c30cf6035d
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375658"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966997"
 ---
-# <a name="azure-cognitive-services-computer-vision-sdk-for-python"></a>Zestaw SDK przetwarzania obrazów usług Azure Cognitive Services dla języka Python
+# <a name="quickstart-computer-vision-client-library-for-python"></a>Szybki start: przetwarzanie obrazów Biblioteka kliencka dla języka Python
 
 Usługa przetwarzania obrazów oferuje deweloperom dostęp do zaawansowanych algorytmów przetwarzania obrazów i zwracania informacji. Algorytmy przetwarzania obrazów pozwalają analizować zawartość obrazu na różne sposoby, w zależności od interesujących Cię funkcji wizualnych.
 
-* [Analizowanie obrazu](#analyze-an-image)
-* [Pobieranie listy domen tematycznych](#get-subject-domain-list)
-* [Analizowanie obrazu według domeny](#analyze-an-image-by-domain)
-* [Pobieranie tekstu opisu obrazu](#get-text-description-of-an-image)
-* [Pobieranie tekstu odręcznego z obrazu](#get-text-from-image)
-* [Generowanie miniatury](#generate-thumbnail)
+Użyj biblioteki klienta przetwarzanie obrazów dla języka Python, aby:
 
-Aby uzyskać więcej informacji na temat tej usługi, zobacz [co to jest przetwarzanie obrazów?][computervision_docs].
+* Analizuj obraz pod kątem tagów, opisu tekstu, twarzy, treści dla dorosłych itd.
+* Rozpoznawanie wydrukowanych i odręcznych tekstu za pomocą interfejsu API odczytu usługi Batch.
 
-Szukasz dodatkowej dokumentacji?
+> [!NOTE]
+> Scenariusze w tym przewodniku szybki start korzystają ze zdalnych adresów URL obrazów. Przykładowy kod, który wykonuje te same operacje na obrazach lokalnych, zawiera kod w witrynie [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py).
 
-* [Dokumentacja referencyjna zestawu SDK](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision)
-* [Dokumentacja przetwarzania obrazów w usługach Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/computer-vision/)
+[](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision) | [Przykłady](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0) pakietu | [kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-computervision)[](https://pypi.org/project/azure-cognitiveservices-vision-computervision/)źródłowego biblioteki dokumentacji referencyjnej (PiPy) | 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Python 3.6 +][python]
-* Bezpłatny [klucz przetwarzanie obrazów][computervision_resource] i skojarzony punkt końcowy. Te wartości są potrzebne podczas tworzenia wystąpienia obiektu klienta [ComputerVisionClient][ref_computervisionclient] . Aby uzyskać te wartości, użyj jednej z następujących metod.
+* Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/)
+* [Python 3.x](https://www.python.org/)
 
-### <a name="if-you-dont-have-an-azure-subscription"></a>Jeśli nie masz subskrypcji platformy Azure
+## <a name="setting-up"></a>Konfigurowanie
 
-Dla usługi przetwarzanie obrazów Utwórz bezpłatny klucz ważny przez 7 dni **[][computervision_resource]** . Po utworzeniu klucza skopiuj klucz i nazwę punktu końcowego. Będą one potrzebne do [utworzenia klienta](#create-client).
+### <a name="create-a-computer-vision-azure-resource"></a>Tworzenie zasobu przetwarzanie obrazów platformy Azure
 
-Po utworzeniu klucza zachowaj następujące wartości:
+Usługa Azure Cognitive Services jest reprezentowana przez zasoby platformy Azure, które subskrybujesz. Utwórz zasób dla przetwarzanie obrazów przy użyciu [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) lub [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) na komputerze lokalnym. Możesz również wykonać następujące czynności:
 
-* Wartość klucza: ciąg 32 znaków w formacie `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`
-* Kluczowy punkt końcowy: podstawowy adres URL punktu\:końcowego, https//westcentralus.API.Cognitive.Microsoft.com
+* Uzyskaj [klucz wersji próbnej](https://azure.microsoft.com/try/cognitive-services/#decision) ważny przez siedem dni bezpłatnie. Po utworzeniu konta będzie ono dostępne w [witrynie sieci Web systemu Azure](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
+* Wyświetl zasób na [Azure Portal](https://portal.azure.com/)
 
-### <a name="if-you-have-an-azure-subscription"></a>Jeśli masz subskrypcję platformy Azure
+Po otrzymaniu klucza z subskrypcji próbnej lub zasobu [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla adresu URL klucza i punktu końcowego, odpowiednio `COMPUTER_VISION_SUBSCRIPTION_KEY` nazwane `COMPUTER_VISION_ENDPOINT`i.
+ 
+### <a name="create-a-new-python-application"></a>Tworzenie nowej aplikacji w języku Python
 
-Najprostszą metodą utworzenia zasobu w ramach subskrypcji jest użycie następującego polecenia [interfejsu CLI platformy Azure][azure_cli] . Spowoduje to utworzenie klucza usługi poznawczej, który może być używany w wielu usługach poznawczych. Należy wybrać nazwę _istniejącej_ grupy zasobów, na przykład "My-cogserv-Group" i nową nazwę zasobu, na przykład "My-Computer-Vision-Resource".
+Utwórz nowy skrypt&mdash;w języku Python, na przykład*QuickStart-File.py*. Następnie otwórz go w preferowanym edytorze lub środowisku IDE i zaimportuj poniższe biblioteki.
 
-```Bash
-RES_REGION=westeurope
-RES_GROUP=<resourcegroup-name>
-ACCT_NAME=<computervision-account-name>
+[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_imports)]
 
-az cognitiveservices account create \
-    --resource-group $RES_GROUP \
-    --name $ACCT_NAME \
-    --location $RES_REGION \
-    --kind CognitiveServices \
-    --sku S0 \
-    --yes
+Następnie utwórz zmienne dla punktu końcowego i klucza usługi Azure Resource.
+
+[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_vars)]
+
+> [!NOTE]
+> Jeśli zmienna środowiskowa została utworzona po uruchomieniu aplikacji, należy zamknąć i ponownie otworzyć Edytor, środowisko IDE lub powłokę, na których jest uruchomiona, aby uzyskać dostęp do zmiennej.
+
+### <a name="install-the-client-library"></a>Zainstaluj bibliotekę kliencką
+
+Bibliotekę kliencką można zainstalować za pomocą programu:
+
+```console
+pip install --upgrade azure-cognitiveservices-Computer Vision
 ```
 
-<!--
-## Installation
+## <a name="object-model"></a>Model obiektów
 
-Install the Azure Cognitive Services Computer Vision SDK with [pip][pip], optionally within a [virtual environment][venv].
+Poniższe klasy i interfejsy obsługują niektóre główne funkcje zestawu SDK języka Python przetwarzanie obrazów.
 
-### Configure a virtual environment (optional)
+|Name|Opis|
+|---|---|
+|[ComputerVisionClientOperationsMixin](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.operations.computervisionclientoperationsmixin?view=azure-python)| Ta klasa bezpośrednio obsługuje wszystkie operacje na obrazach, takie jak analiza obrazu, wykrywanie tekstu i generowanie miniatury.|
+| [ComputerVisionClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python) | Ta klasa jest wymagana dla wszystkich funkcji przetwarzanie obrazów. Tworzysz wystąpienie z informacjami o subskrypcji i używasz ich do tworzenia wystąpień innych klas. Implementuje **ComputerVisionClientOperationsMixin**.|
+|[VisualFeatureTypes](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-python)| To Wyliczenie definiuje różne typy analizy obrazów, które można wykonać przy użyciu standardowej operacji analizy. Należy określić zestaw wartości **VisualFeatureTypes** w zależności od potrzeb. |
 
-Although not required, you can keep your base system and Azure SDK environments isolated from one another if you use a [virtual environment][virtualenv]. Execute the following commands to configure and then enter a virtual environment with [venv][venv], such as `cogsrv-vision-env`:
+## <a name="code-examples"></a>Przykłady kodu
 
-```Bash
-python3 -m venv cogsrv-vision-env
-source cogsrv-vision-env/bin/activate
-```
--->
+Te fragmenty kodu przedstawiają sposób wykonywania następujących zadań za pomocą biblioteki klienta przetwarzanie obrazów dla języka Python:
 
-### <a name="install-the-sdk"></a>Instalacja zestawu SDK
+* [Uwierzytelnianie klienta](#authenticate-the-client)
+* [Analizowanie obrazu](#analyze-an-image)
+* [Odczytaj tekst drukowany i odręczny](#read-printed-and-handwritten-text)
 
-Zainstaluj [pakiet][pypi_computervision] Azure COGNITIVE Services przetwarzanie obrazów SDK dla języka Python za pomocą narzędzia [PIP][pip]:
+## <a name="authenticate-the-client"></a>Uwierzytelnianie klienta
 
-```Bash
-pip install azure-cognitiveservices-vision-computervision
-```
+> [!NOTE]
+> W tym przewodniku szybki start przyjęto założenie, że dla klucza przetwarzanie obrazów `COMPUTER_VISION_SUBSCRIPTION_KEY`została [utworzona zmienna środowiskowa](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) o nazwie.
 
-## <a name="authentication"></a>Authentication
+Utwórz wystąpienie klienta z punktem końcowym i kluczem. Utwórz obiekt [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) z kluczem i użyj go w punkcie końcowym, aby utworzyć obiekt [ComputerVisionClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python) .
 
-Po utworzeniu zasobu przetwarzanie obrazów potrzebujesz **punktu końcowego**oraz jednego z **kluczy konta** , aby utworzyć wystąpienie obiektu klienta.
+[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_client)]
 
-Użyj tych wartości podczas tworzenia wystąpienia obiektu klienta [ComputerVisionClient][ref_computervisionclient] .
+## <a name="analyze-an-image"></a>Analizowanie obrazu
 
-Na przykład użyj terminalu bash, aby ustawić zmienne środowiskowe:
+Zapisz odwołanie do adresu URL obrazu, który chcesz przeanalizować.
 
-```Bash
-ACCOUNT_ENDPOINT=<resourcegroup-name>
-ACCT_NAME=<computervision-account-name>
-```
+[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_remoteimage)]
 
-### <a name="for-azure-subscription-users-get-credentials-for-key-and-endpoint"></a>W przypadku użytkowników subskrypcji platformy Azure Uzyskaj poświadczenia dla klucza i punktu końcowego
+### <a name="get-image-description"></a>Pobierz opis obrazu
 
-Jeśli nie pamiętasz swojego punktu końcowego i klucza, możesz użyć następującej metody, aby je znaleźć. Jeśli musisz utworzyć klucz i punkt końcowy, możesz użyć metody dla [posiadaczy subskrypcji platformy Azure](#if-you-have-an-azure-subscription) lub dla [użytkowników bez subskrypcji platformy Azure](#if-you-dont-have-an-azure-subscription).
+Poniższy kod pobiera listę wygenerowanych napisów dla obrazu. Aby uzyskać więcej informacji, zobacz [Opis obrazów](../concept-describing-images.md) .
 
-Użyj poniższego fragmentu [interfejsu wiersza polecenia platformy Azure][cloud_shell] , aby wypełnić dwie zmienne środowiskowe za pomocą **punktu końcowego** konta przetwarzanie obrazów i jednego z jego **kluczy** (można również znaleźć te wartości w [Azure Portal][azure_portal]). Ten fragment kodu został sformatowany dla powłoki Bash.
+[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_describe)]
 
-```Bash
-RES_GROUP=<resourcegroup-name>
-ACCT_NAME=<computervision-account-name>
+### <a name="get-image-category"></a>Pobierz kategorię obrazu
 
-export ACCOUNT_ENDPOINT=$(az cognitiveservices account show \
-    --resource-group $RES_GROUP \
-    --name $ACCT_NAME \
-    --query endpoint \
-    --output tsv)
+Poniższy kod pobiera wykrytą kategorię obrazu. Aby uzyskać więcej informacji, zobacz [kategoryzowanie obrazów](../concept-categorizing-images.md) .
 
-export ACCOUNT_KEY=$(az cognitiveservices account keys list \
-    --resource-group $RES_GROUP \
-    --name $ACCT_NAME \
-    --query key1 \
-    --output tsv)
-```
+[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_categorize)]
 
+### <a name="get-image-tags"></a>Pobierz Tagi obrazu
 
-### <a name="create-client"></a>Tworzenie klienta
+Poniższy kod pobiera zestaw wykrytych tagów z obrazu. Aby uzyskać więcej informacji, zobacz [Tagi zawartości](../concept-tagging-images.md) .
 
-Pobierz punkt końcowy i klucz ze zmiennych środowiskowych, a następnie Utwórz obiekt klienta [ComputerVisionClient][ref_computervisionclient] .
+[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_tags)]
 
-```Python
-from azure.cognitiveservices.vision.computervision import ComputerVisionClient
-from azure.cognitiveservices.vision.computervision.models import VisualFeatureTypes
-from msrest.authentication import CognitiveServicesCredentials
+### <a name="detect-objects"></a>Wykryj obiekty
 
-# Get endpoint and key from environment variables
-import os
-endpoint = os.environ['ACCOUNT_ENDPOINT']
-key = os.environ['ACCOUNT_KEY']
+Poniższy kod wykrywa typowe obiekty w obrazie i drukuje je do konsoli programu. Aby uzyskać więcej informacji, zobacz [wykrywanie obiektów](../concept-object-detection.md) .
 
-# Set credentials
-credentials = CognitiveServicesCredentials(key)
+[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_objects)]
 
-# Create client
-client = ComputerVisionClient(endpoint, credentials)
-```
+### <a name="detect-brands"></a>Wykrywanie marek
 
-## <a name="examples"></a>Przykłady
+Poniższy kod wykrywa marki i logo firmy w obrazie i drukuje je do konsoli programu. Aby uzyskać więcej informacji, zobacz [wykrywanie marki](../concept-brand-detection.md) .
 
-Musisz mieć obiekt klienta [ComputerVisionClient][ref_computervisionclient] przed użyciem któregoś z poniższych zadań.
+[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_objects)]
 
-### <a name="analyze-an-image"></a>Analizowanie obrazu
+### <a name="detect-faces"></a>Wykrywanie twarzy
 
-Obraz niektórych funkcji można analizować za pomocą [`analyze_image`][ref_computervisionclient_analyze_image]programu. [`visual_features`][ref_computervision_model_visualfeatures] Użyj właściwości, aby ustawić typy analiz do wykonania na obrazie. Typowe wartości to `VisualFeatureTypes.tags` i `VisualFeatureTypes.description`.
+Poniższy kod zwraca wykryte twarze na obrazie ze współrzędnymi prostokątów i wybierz atrybuty twarzy. Aby uzyskać więcej informacji, zobacz [wykrywanie czołowe](../concept-detecting-faces.md) .
 
-```Python
-url = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Broadway_and_Times_Square_by_night.jpg/450px-Broadway_and_Times_Square_by_night.jpg"
+[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_faces)]
 
-image_analysis = client.analyze_image(url,visual_features=[VisualFeatureTypes.tags])
+### <a name="detect-adult-or-racy-content"></a>Wykrywanie zawartości dla dorosłych lub erotycznej
 
-for tag in image_analysis.tags:
-    print(tag)
-```
+Poniższy kod drukuje wykrytą obecność zawartości dla dorosłych lub erotycznej w obrazie. Aby uzyskać więcej informacji [, zobacz zawartość dla dorosłych i erotycznej](../concept-detecting-adult-content.md) .
 
-### <a name="get-subject-domain-list"></a>Pobieranie listy domen tematycznych
+[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_adult)]
 
-Przejrzyj domeny tematu używane do analizowania obrazu za pomocą [`list_models`][ref_computervisionclient_list_models]programu. Te nazwy domen są używane podczas [analizowania obrazu według domeny](#analyze-an-image-by-domain). Przykładowa domena to `landmarks`.
+### <a name="get-image-color-scheme"></a>Pobierz schemat kolorów obrazu
 
-```Python
-models = client.list_models()
+Poniższy kod drukuje wykryte atrybuty koloru w obrazie, takie jak kolory dominujące i kolor akcentu. Zobacz [schematy kolorów](../concept-detecting-color-schemes.md) , aby uzyskać więcej szczegółów.
 
-for x in models.models_property:
-    print(x)
-```
+[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_color)]
 
-### <a name="analyze-an-image-by-domain"></a>Analizowanie obrazu według domeny
+### <a name="get-domain-specific-content"></a>Pobieranie zawartości specyficznej dla domeny
 
-Obraz można analizować według domeny [`analyze_image_by_domain`][ref_computervisionclient_analyze_image_by_domain]podmiotu. Prawidłowe nazwy domen można znaleźć na [liście obsługiwanych domen tematycznych](#get-subject-domain-list).
+Przetwarzanie obrazów może korzystać z wyspecjalizowanego modelu do dalszej analizy obrazów. Aby uzyskać więcej informacji, zobacz [zawartość specyficzną dla domeny](../concept-detecting-domain-content.md) . 
 
-```Python
-# type of prediction
-domain = "landmarks"
+Poniższy kod analizuje dane dotyczące wykrytych osobistości w obrazie.
 
-# Public domain image of Eiffel tower
-url = "https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg"
+[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_celebs)]
 
-# English language response
-language = "en"
+Poniższy kod analizuje dane dotyczące wykrytych punktów orientacyjnych w obrazie.
 
-analysis = client.analyze_image_by_domain(domain, url, language)
+[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_landmarks)]
 
-for landmark in analysis.result["landmarks"]:
-    print(landmark["name"])
-    print(landmark["confidence"])
+### <a name="get-the-image-type"></a>Pobierz typ obrazu
+
+Poniższy kod drukuje informacje o typie obrazu&mdash;, niezależnie od tego, czy jest to obiekt clipart czy rysowanie liniowe.
+
+[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_type)]
+
+## <a name="read-printed-and-handwritten-text"></a>Odczytaj tekst drukowany i odręczny
+
+Przetwarzanie obrazów może odczytać widoczny tekst w obrazie i przekonwertować go na strumień znaków. Należy to zrobić w dwóch częściach.
+
+### <a name="call-the-read-api"></a>Wywoływanie interfejsu API odczytu
+
+Najpierw użyj następującego kodu, aby wywołać metodę **batch_read_file** dla danego obrazu. Zwraca identyfikator operacji i uruchamia proces asynchroniczny w celu odczytania zawartości obrazu.
+
+[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_read_call)]
+
+### <a name="get-read-results"></a>Pobierz wyniki odczytu
+
+Następnie Pobierz identyfikator operacji zwrócony z wywołania **batch_read_file** i użyj go do wysyłania zapytań do usługi w celu uzyskania wyników operacji. Poniższy kod sprawdza operacje w okresach jednego sekundy do momentu zwrócenia wyników. Następnie program drukuje wyodrębnione dane tekstowe do konsoli programu.
+
+[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_read_response)]
+
+## <a name="run-the-application"></a>Uruchamianie aplikacji
+
+Uruchom aplikację za pomocą `python` polecenia w pliku szybkiego startu.
+
+```console
+python quickstart-file.py
 ```
 
-### <a name="get-text-description-of-an-image"></a>Pobieranie tekstu opisu obrazu
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Możesz uzyskać opis tekstowy obrazu z [`describe_image`][ref_computervisionclient_describe_image]. Przy użyciu właściwości `max_description` można pobrać kilka opisów w przypadku przeprowadzania analizy tekstu pod kątem słów kluczowych skojarzonych z obrazem. Przykładowe opisy tekstowe dla następującego obrazu to `a train crossing a bridge over a body of water`, `a large bridge over a body of water` i `a train crossing a bridge over a large body of water`.
+Jeśli chcesz wyczyścić i usunąć subskrypcję Cognitive Services, możesz usunąć zasób lub grupę zasobów. Usunięcie grupy zasobów spowoduje również usunięcie wszystkich skojarzonych z nią zasobów.
 
-```Python
-domain = "landmarks"
-url = "http://www.public-domain-photos.com/free-stock-photos-4/travel/san-francisco/golden-gate-bridge-in-san-francisco.jpg"
-language = "en"
-max_descriptions = 3
+* [Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#clean-up-resources)
+* [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli#clean-up-resources)
 
-analysis = client.describe_image(url, max_descriptions, language)
-
-for caption in analysis.captions:
-    print(caption.text)
-    print(caption.confidence)
-```
-
-### <a name="get-text-from-image"></a>Pobieranie tekstu z obrazu
-
-Można wyodrębnić dowolny odręczny lub drukowany tekst znajdujący się na obrazie. Wymaga to dwóch wywołań zestawu SDK: [`batch_read_file`](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python) i. [`get_read_operation_result`](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python) Wywołanie `batch_read_file` jest asynchroniczne. W wynikach `get_read_operation_result` wywołania należy sprawdzić, czy pierwsze wywołanie zostało zakończone z [`TextOperationStatusCodes`][ref_computervision_model_textoperationstatuscodes] przed wyodrębnieniem danych tekstowych. Wyniki obejmują tekst oraz współrzędne pola ograniczenia tekstu.
-
-```Python
-# import models
-from azure.cognitiveservices.vision.computervision.models import TextOperationStatusCodes
-import time
-
-url = "https://azurecomcdn.azureedge.net/cvt-1979217d3d0d31c5c87cbd991bccfee2d184b55eeb4081200012bdaf6a65601a/images/shared/cognitive-services-demos/read-text/read-1-thumbnail.png"
-raw = True
-custom_headers = None
-numberOfCharsInOperationId = 36
-
-# Async SDK call
-rawHttpResponse = client.batch_read_file(url, custom_headers,  raw)
-
-# Get ID from returned headers
-operationLocation = rawHttpResponse.headers["Operation-Location"]
-idLocation = len(operationLocation) - numberOfCharsInOperationId
-operationId = operationLocation[idLocation:]
-
-# SDK call
-while True:
-    result = client.get_read_operation_result(operationId)
-    if result.status not in ['NotStarted', 'Running']:
-        break
-    time.sleep(1)
-
-# Get data
-if result.status == TextOperationStatusCodes.succeeded:
-    for textResult in result.recognition_results:
-        for line in textResult.lines:
-            print(line.text)
-            print(line.bounding_box)
-```
-
-### <a name="generate-thumbnail"></a>Generowanie miniatury
-
-Można wygenerować miniaturę (JPG) obrazu z [`generate_thumbnail`][ref_computervisionclient_generate_thumbnail]. Miniatura nie musi mieć takich samych proporcji co oryginalny obraz.
-
-Aby skorzystać z tego przykładu, zainstaluj pakiet **Pillow**:
-
-```bash
-pip install Pillow
-```
-
-Po zainstalowaniu pakietu Pillow możesz użyć go w poniższym przykładowym kodzie w celu wygenerowania miniatury.
-
-```Python
-# Pillow package
-from PIL import Image
-
-# IO package to create local image
-import io
-
-width = 50
-height = 50
-url = "http://www.public-domain-photos.com/free-stock-photos-4/travel/san-francisco/golden-gate-bridge-in-san-francisco.jpg"
-
-thumbnail = client.generate_thumbnail(width, height, url)
-
-for x in thumbnail:
-    image = Image.open(io.BytesIO(x))
-
-image.save('thumbnail.jpg')
-```
-
-## <a name="troubleshooting"></a>Rozwiązywanie problemów
-
-### <a name="general"></a>Ogólne
-
-Podczas współdziałania z obiektem klienta [ComputerVisionClient][ref_computervisionclient] za pomocą zestawu SDK [`ComputerVisionErrorException`][ref_computervision_computervisionerrorexception] języka Python Klasa jest używana do zwracania błędów. Błędy zwracane przez tę usługę odpowiadają kodom stanu HTTP zwracanym dla żądań interfejsu API REST.
-
-Na przykład jeśli spróbujesz przeprowadzić analizę obrazu za pomocą nieprawidłowego klucza, zostanie zwrócony błąd `401`. W poniższym fragmencie kodu [błąd][ref_httpfailure] jest obsługiwany bezpiecznie przez przechwycenie wyjątku i wyświetlenie dodatkowych informacji o błędzie.
-
-```Python
-
-domain = "landmarks"
-url = "http://www.public-domain-photos.com/free-stock-photos-4/travel/san-francisco/golden-gate-bridge-in-san-francisco.jpg"
-language = "en"
-max_descriptions = 3
-
-try:
-    analysis = client.describe_image(url, max_descriptions, language)
-
-    for caption in analysis.captions:
-        print(caption.text)
-        print(caption.confidence)
-except HTTPFailure as e:
-    if e.status_code == 401:
-        print("Error unauthorized. Make sure your key and endpoint are correct.")
-    else:
-        raise
-```
-
-### <a name="handle-transient-errors-with-retries"></a>Obsługa błędów przejściowych z logiką ponawiania próby
-
-Podczas pracy z klientem [ComputerVisionClient][ref_computervisionclient] mogą wystąpić błędy przejściowe wynikające z [limitów szybkości][computervision_request_units] wymuszonych przez usługę lub innych problemów przejściowych, takich jak awaria sieci. Aby uzyskać informacje na temat obsługi tych typów błędów, zobacz [wzorzec ponawiania][azure_pattern_retry] wzorców w przewodniku po wzorcach projektowania i pokrewny [wzorzec wyłącznika][azure_pattern_circuit_breaker].
 
 ## <a name="next-steps"></a>Następne kroki
 
+W tym przewodniku szybki start pokazano, jak używać biblioteki przetwarzanie obrazów dla języka Python do wykonywania zadań bazowych. Następnie zapoznaj się z dokumentacją referencyjną, aby dowiedzieć się więcej o bibliotece.
+
+
 > [!div class="nextstepaction"]
-> [Applying content tags to images (Stosowanie tagów zawartości do obrazów)](../concept-tagging-images.md)
+>[Odwołanie interfejs API przetwarzania obrazów (Python)](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision)
 
-<!-- LINKS -->
-[pip]: https://pypi.org/project/pip/
-[python]: https://www.python.org/downloads/
-
-[azure_cli]: https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-create
-[azure_pattern_circuit_breaker]: https://docs.microsoft.com/azure/architecture/patterns/circuit-breaker
-[azure_pattern_retry]: https://docs.microsoft.com/azure/architecture/patterns/retry
-[azure_portal]: https://portal.azure.com
-[azure_sub]: https://azure.microsoft.com/free/
-
-[cloud_shell]: https://docs.microsoft.com/azure/cloud-shell/overview
-
-[venv]: https://docs.python.org/3/library/venv.html
-[virtualenv]: https://virtualenv.pypa.io
-
-[source_code]: https://github.com/Azure/azure-sdk-for-python/tree/master/azure-cognitiveservices-vision-computervision
-
-[pypi_computervision]:https://pypi.org/project/azure-cognitiveservices-vision-computervision/
-[pypi_pillow]:https://pypi.org/project/Pillow/
-
-[ref_computervision_sdk]: https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision?view=azure-python
-[ref_computervision_computervisionerrorexception]:https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.models.computervisionerrorexception?view=azure-python
-[ref_httpfailure]: https://docs.microsoft.com/python/api/msrest/msrest.exceptions.httpoperationerror?view=azure-python
-
-
-[computervision_resource]: https://azure.microsoft.com/try/cognitive-services/?
-
-[computervision_docs]: https://docs.microsoft.com/azure/cognitive-services/computer-vision/home
-
-[ref_computervisionclient]: https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python
-
-[ref_computervisionclient_analyze_image]: https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python
-
-[ref_computervisionclient_list_models]:https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python
-
-[ref_computervisionclient_analyze_image_by_domain]:https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python
-
-[ref_computervisionclient_describe_image]:https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python
-
-[ref_computervisionclient_get_text_operation_result]:https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python
-
-[ref_computervisionclient_generate_thumbnail]:https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python
-
-
-[ref_computervision_model_visualfeatures]:https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-python
-
-[ref_computervision_model_textoperationstatuscodes]:https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.models.textoperationstatuscodes?view=azure-python
-
-[computervision_request_units]:https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision/
+* [Co to jest interfejs API przetwarzania obrazów?](../Home.md)
+* Kod źródłowy tego przykładu można znaleźć w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py).

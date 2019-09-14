@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 9bccd826a37b66f7f89e70c57260a0db08342421
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 4e36362fd42a147ee900005d84b0af1b4839aae1
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019183"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965131"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Samouczek: Skalowanie aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -48,7 +48,7 @@ azure-vote-back-2549686872-4d2r5   1/1       Running   0          31m
 azure-vote-front-848767080-tf34m   1/1       Running   0          31m
 ```
 
-Aby ręcznie zmienić liczbę zasobników we wdrożeniu z *przodu platformy Azure* , użyj polecenia skalowanie [polecenia kubectl][kubectl-scale] . W poniższym przykładzie liczba zasobników frontonu jest zwiększana do *5*:
+Aby ręcznie zmienić liczbę zasobników we wdrożeniu z *przodu platformy Azure* , użyj polecenia [skalowanie polecenia kubectl][kubectl-scale] . W poniższym przykładzie liczba zasobników frontonu jest zwiększana do *5*:
 
 ```console
 kubectl scale --replicas=5 deployment/azure-vote-front
@@ -94,7 +94,7 @@ resources:
      cpu: 500m
 ```
 
-W poniższym przykładzie za pomocą polecenia [automatycznego skalowania polecenia kubectl][kubectl-autoscale] można automatycznie skalować liczbę zasobników we wdrożeniu z *przodu platformy Azure* . Jeśli użycie procesora CPU przekroczy 50%, skalowanie automatyczne spowoduje zwiększenie liczby zasobników do maksymalnie *10* wystąpień. Dla wdrożenia zostaną następnie zdefiniowane przynajmniej *3* wystąpienia:
+W poniższym przykładzie za pomocą polecenia [automatycznego skalowania polecenia kubectl][kubectl-autoscale] można automatycznie skalować liczbę zasobników we wdrożeniu z *przodu platformy Azure* . Jeśli średnie użycie procesora CPU we wszystkich jednostkach dziennych przekroczy 50% żądanego użycia, Skalowanie automatyczne zwiększy się do *10* wystąpień. Dla wdrożenia zostaną następnie zdefiniowane przynajmniej *3* wystąpienia:
 
 ```console
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10

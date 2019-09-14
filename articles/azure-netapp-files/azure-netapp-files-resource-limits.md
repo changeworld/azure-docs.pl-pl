@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: b-juche
-ms.openlocfilehash: 4ce40fdf36f7d66e60e15955318e43f1f24f275f
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 15d0a584d88045f6020162a88124cd9d6a4735bf
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515851"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984007"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Limity zasobów dla usługi Azure NetApp Files
 
@@ -36,7 +36,7 @@ W poniższej tabeli opisano limity zasobów dla Azure NetApp Files:
 |  Liczba woluminów na pulę pojemności     |    500   |    Tak     |
 |  Liczba migawek na wolumin       |    255     |    Nie        |
 |  Liczba podsieci delegowanych do Azure NetApp Files (Microsoft. NetApp/Volumes) na platformie Azure Virtual Network    |   1   |    Nie    |
-|  Liczba współbieżnych adresów IP w sieci wirtualnej (w tym sieci wirtualnych komunikacji równorzędnej), które mogą uzyskiwać dostęp Azure NetApp Files   |    1000   |    Nie   |
+|  Liczba adresów IP w sieci wirtualnej (w tym sieci wirtualnych komunikacji równorzędnej), które mogą uzyskiwać dostęp Azure NetApp Files   |    1000   |    Tak   |
 |  Minimalny rozmiar puli o pojedynczej pojemności   |  4 TiB     |    Nie  |
 |  Maksymalny rozmiar puli o pojedynczej pojemności    |  500 TiB   |   Nie   |
 |  Minimalny rozmiar pojedynczego woluminu    |    100 GiB    |    Nie    |
@@ -53,7 +53,7 @@ Ze płaszczyzny nawigacyjnej Azure Portal:
 2. Kliknij pozycję **+ nowe żądanie obsługi**.
 3. Na karcie podstawowe podaj następujące informacje: 
     1. Typ problemu: Wybierz pozycję **usługi i limity subskrypcji (przydziały)** .
-    2. Subskrypcje: Wybierz subskrypcję zasobu, dla którego chcesz zwiększyć przydział.
+    2. Opłaty Wybierz subskrypcję zasobu, dla którego chcesz zwiększyć przydział.
     3. Typ limitu przydziału: Wybierz **magazyn: Limity**Azure NetApp Files.
     4. Kliknij pozycję **Next: Rozwiązania**.
 4. Na karcie Szczegóły:
