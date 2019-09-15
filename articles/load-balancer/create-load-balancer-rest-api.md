@@ -35,10 +35,10 @@ Użyj następujące żądanie HTTP PUT, aby utworzyć nowy Azure podstawowego mo
 
 |Name (Nazwa)  |W  |Wymagane |Typ |Opis |
 |---------|---------|---------|---------|--------|
-|subscriptionId   |  ścieżka       |  True       |   ciąg      |  Poświadczenia subskrypcji, które jednoznacznie identyfikują subskrypcji Microsoft Azure. Identyfikator subskrypcji jest częścią identyfikatora URI, dla każdego wywołania usługi.      |
-|resourceGroupName     |     ścieżka    | True        |  ciąg       |   Nazwa grupy zasobów.     |
-|loadBalancerName     |  ścieżka       |      True   |    ciąg     |    Nazwa modułu równoważenia obciążenia.    |
-|api-version    |   query     |  True       |     ciąg    |  Wersja interfejsu API klienta.      |
+|subscriptionId   |  path       |  True       |   string      |  Poświadczenia subskrypcji, które jednoznacznie identyfikują subskrypcji Microsoft Azure. Identyfikator subskrypcji jest częścią identyfikatora URI, dla każdego wywołania usługi.      |
+|resourceGroupName     |     path    | True        |  string       |   Nazwa grupy zasobów.     |
+|loadBalancerName     |  path       |      True   |    string     |    Nazwa modułu równoważenia obciążenia.    |
+|api-version    |   query     |  True       |     string    |  Wersja interfejsu API klienta.      |
 
 
 
@@ -48,7 +48,7 @@ Wymagany jest tylko parametr `location`. Jeżeli nie zdefiniujesz *jednostki SKU
 
 | Name (Nazwa) | Typ | Opis |
 | :--- | :--- | :---------- |
-| location | ciąg | Lokalizacja zasobu. Pobierz bieżącą listę lokalizacji przy użyciu [listy lokalizacji](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations) operacji. |
+| location | string | Lokalizacja zasobu. Pobierz bieżącą listę lokalizacji przy użyciu [listy lokalizacji](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations) operacji. |
 
 
 ## <a name="example-create-and-update-a-basic-load-balancer"></a>Przykład: Tworzenie i aktualizowanie podstawowego Load Balancer
