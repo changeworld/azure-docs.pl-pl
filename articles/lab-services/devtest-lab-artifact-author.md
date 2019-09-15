@@ -84,10 +84,10 @@ Aby zdefiniować parametry, należy użyć następującej strukturze:
 
 Dozwolone typy to:
 
-* ciąg (dowolny prawidłowy ciąg JSON)
+* string (dowolny prawidłowy ciąg JSON)
 * int (Dowolna prawidłowa JSON liczba całkowita)
-* wartość logiczna (wszystkie prawidłowe logiczna JSON)
-* Tablica (wszystkie prawidłową tablicą JSON)
+* bool (wszystkie prawidłowe logiczna JSON)
+* array (wszystkie prawidłową tablicą JSON)
 
 ## <a name="secrets-as-secure-strings"></a>Wpisy tajne jako bezpieczny ciąg
 Zadeklaruj wpisów tajnych jako bezpieczny ciąg. Oto Składnia deklaracji parametru bezpieczny ciąg, w ramach `parameters` części **artifactfile.json** pliku:
