@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 27961413d0dddc165f90ebde1c5e1aee6b8d9fd3
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 36ba9e2d3385184f32876a6d067b58f7c21a90bd
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981838"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003278"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-sql-api-account-using-striim"></a>Migrowanie danych do Azure Cosmos DB konta interfejsu API SQL przy użyciu Striim
  
@@ -42,7 +42,7 @@ W tym artykule przedstawiono sposób korzystania z programu Striim do migrowania
 
    |Ustawienie | Wartość | Opis |
    | ---| ---| ---|
-   |Typ wdrożenia Striim |Autonomiczne | Striim można uruchamiać w **autonomicznych** lub niezależnych typach wdrożenia **klastra** . Tryb autonomiczny wdroży serwer Striim na jednej maszynie wirtualnej i będzie można wybrać rozmiar maszyn wirtualnych w zależności od ilości danych. W trybie klastra zostanie wdrożony serwer Striim na co najmniej dwóch maszynach wirtualnych o wybranym rozmiarze. Środowiska klastra z więcej niż 2 węzłami oferują automatyczną wysoką dostępność i tryb failover.</br></br> W tym samouczku można wybrać opcję autonomiczną. Użyj domyślnej maszyny wirtualnej o rozmiarze "Standard_F4s".  | 
+   |Typ wdrożenia Striim |Autonomiczne | Striim można uruchamiać w **autonomicznych lub niezależnych** typach wdrożenia **klastra** . Tryb autonomiczny wdroży serwer Striim na jednej maszynie wirtualnej i będzie można wybrać rozmiar maszyn wirtualnych w zależności od ilości danych. W trybie klastra zostanie wdrożony serwer Striim na co najmniej dwóch maszynach wirtualnych o wybranym rozmiarze. Środowiska klastra z więcej niż 2 węzłami oferują automatyczną wysoką dostępność i tryb failover.</br></br> W tym samouczku można wybrać opcję autonomiczną. Użyj domyślnej maszyny wirtualnej o rozmiarze "Standard_F4s".  | 
    | Nazwa klastra Striim|    < Striim_cluster_Name >|  Nazwa klastra Striim.|
    | Striim hasło klastra|   < Striim_cluster_password >|  Hasło do klastra.|
 
@@ -160,7 +160,7 @@ W tej sekcji skonfigurujesz Azure Cosmos DB konto interfejsu API SQL jako cel pr
 
 1. Skonfigurujmy teraz obiekt docelowy:
 
-   * **Nazwa** docelowa — Podaj przyjazną nazwę dla elementu docelowego. 
+   * **Nazwa docelowa** — Podaj przyjazną nazwę dla elementu docelowego. 
    * **Dane wejściowe z** — z listy rozwijanej wybierz strumień wejściowy z tego, który został utworzony w konfiguracji źródłowej programu Oracle. 
    * **Kolekcje**— wprowadź właściwości konfiguracji Azure Cosmos DB docelowej. Składnia kolekcji to **SourceSchema. sources, TargetDatabase. TargetContainer**. W tym przykładzie wartością może być "SYSTEM. ZAMÓWIENIA, StriimDemo. Orders. 
    * **AccessKey** — konto platformy Azure Cosmos.
@@ -193,7 +193,7 @@ W tej sekcji skonfigurujesz Azure Cosmos DB konto interfejsu API SQL jako cel pr
 
    ![Weryfikowanie zmigrowanych danych na platformie Azure](./media/cosmosdb-sql-api-migrate-data-striim/portal-validate-results.png)
 
-Korzystając z rozwiązania Striim na platformie Azure, można w sposób ciągły migrować dane do Azure Cosmos DB z różnych źródeł, takich jak Oracle, Cassandra, MongoDB i różne, aby Azure Cosmos DB. W przypadku wszelkich problemów podczas konfigurowania ścieżki migracji za pomocą Striim, należy wysłać żądanie obsługi w [witrynie sieci Web Striim](https://go2.striim.com/request-support-striim).
+Korzystając z rozwiązania Striim na platformie Azure, można w sposób ciągły migrować dane do Azure Cosmos DB z różnych źródeł, takich jak Oracle, Cassandra, MongoDB i różne, aby Azure Cosmos DB. Aby dowiedzieć się więcej, odwiedź witrynę [sieci Web Striim](https://www.striim.com/), [Pobierz bezpłatną 30-dniową wersję próbną Striim](https://go2.striim.com/download-free-trial)i w przypadku wszelkich problemów podczas konfigurowania ścieżki migracji przy użyciu Striim, Utwórz [żądanie pomocy technicznej.](https://go2.striim.com/request-support-striim)
 
 ## <a name="next-steps"></a>Następne kroki
 

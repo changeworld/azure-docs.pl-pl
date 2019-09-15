@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 11/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: e6f6ba131a4fb5dd31f113afd2b6de2d65aeaea0
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 828ec2b925535df3f925093466556447e703cd76
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915161"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003835"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Tworzenie C# topologii dla Apache Storm przy użyciu narzędzi Data Lake Tools for Visual Studio
 
@@ -135,7 +135,7 @@ Aby zapoznać się z przykładową topologią, która używa tego składnika i w
 
 2. W oknie **Nowy projekt** rozwiń węzeł **zainstalowane** > **Szablony**, a następnie wybierz pozycję **Azure Data Lake**. Z listy szablonów wybierz pozycję **aplikacja burzowa**. W dolnej części ekranu wprowadź **WORDCOUNT** jako nazwę aplikacji.
 
-    ![Zrzut ekranu przedstawiający okno nowy projekt](./media/apache-storm-develop-csharp-visual-studio-topology/new-project.png)
+    ![Zrzut ekranu przedstawiający okno nowy projekt](./media/apache-storm-develop-csharp-visual-studio-topology/apache-storm-new-project.png)
 
 3. Po utworzeniu projektu należy mieć następujące pliki:
 
@@ -338,7 +338,7 @@ Aby zapoznać się z przykładową topologią, która używa tego składnika i w
 
 Elementy Spout i pioruny są rozmieszczone na grafie, który definiuje sposób przepływu danych między składnikami. W przypadku tej topologii wykres jest następujący:
 
-![Diagram przedstawiający sposób rozmieszczenia składników](./media/apache-storm-develop-csharp-visual-studio-topology/wordcount-topology.png)
+![Diagram przedstawiający sposób rozmieszczenia składników](./media/apache-storm-develop-csharp-visual-studio-topology/word-count-topology1.png)
 
 Zdania są emitowane z elementu Spout i są dystrybuowane do wystąpień pioruna rozdzielacza. Piorun rozdzielacza dzieli zdania na wyrazy, które są dystrybuowane do błyskawicy licznika.
 
@@ -461,7 +461,6 @@ Przykład topologii hybrydowej, tworzenie projektu i wybieranie **hybrydowego pr
   > [!NOTE]  
   > W tej wersji pokazano również, jak używać kodu Clojure z pliku tekstowego jako składnika języka Java.
 
-
 Aby przełączyć topologię używaną podczas przesyłania projektu, Przenieś `[Active(true)]` instrukcję do topologii, której chcesz użyć, przed przesłaniem jej do klastra.
 
 > [!NOTE]  
@@ -571,15 +570,15 @@ Chociaż można łatwo wdrożyć topologię w klastrze, w niektórych przypadkac
    > [!NOTE]
    > Pamiętaj, aby zmienić **Typ danych wyjściowych** z powrotem na **bibliotekę klas** przed wdrożeniem topologii w klastrze.
 
-2. W **Eksplorator rozwiązań**kliknij prawym przyciskiem myszy projekt, a następnie wybierz polecenie **Dodaj** > **nowy element**. Wybierz **klasę**i wprowadź **LocalTest.cs** jako nazwę klasy. Na koniec kliknij przycisk **Dodaj**.
+1. W **Eksplorator rozwiązań**kliknij prawym przyciskiem myszy projekt, a następnie wybierz polecenie **Dodaj** > **nowy element**. Wybierz **klasę**i wprowadź **LocalTest.cs** jako nazwę klasy. Na koniec kliknij przycisk **Dodaj**.
 
-3. Otwórz **LocalTest.cs**i Dodaj następującą instrukcję **using** u góry:
+1. Otwórz **LocalTest.cs**i Dodaj następującą instrukcję **using** u góry:
 
     ```csharp
     using Microsoft.SCP;
     ```
 
-4. Użyj następującego kodu jako zawartości klasy **LocalTest** :
+1. Użyj następującego kodu jako zawartości klasy **LocalTest** :
 
     ```csharp
     // Drives the topology components
@@ -681,9 +680,9 @@ Chociaż można łatwo wdrożyć topologię w klastrze, w niektórych przypadkac
     Console.ReadKey();
     ```
 
-2. Zapisz zmiany, a następnie kliknij **F5** lub wybierz **Debuguj** > **Rozpocznij debugowanie** , aby uruchomić projekt. Powinno zostać wyświetlone okno konsoli i stan rejestrowania w miarę postępów testów. Gdy zostaną wyświetlone **testy** , naciśnij dowolny klawisz, aby zamknąć okno.
+1. Zapisz zmiany, a następnie kliknij **F5** lub wybierz **Debuguj** > **Rozpocznij debugowanie** , aby uruchomić projekt. Powinno zostać wyświetlone okno konsoli i stan rejestrowania w miarę postępów testów. Gdy zostaną wyświetlone **testy** , naciśnij dowolny klawisz, aby zamknąć okno.
 
-3. Aby zlokalizować katalog zawierający projekt, użyj **Eksploratora Windows** . Na przykład: **C:\Users\<YOUR_USER_NAME > \Documents\Visual Studio 2013 \ Projects\WordCount\WordCount**. W tym katalogu Otwórz pozycję **bin**, a następnie kliknij pozycję **Debuguj**. Powinny zostać wyświetlone pliki tekstowe, które zostały utworzone po uruchomieniu testów: zdania. txt, Counter. txt i rozdzielacz. txt. Otwórz każdy plik tekstowy i sprawdź dane.
+1. Aby zlokalizować katalog zawierający projekt, użyj **Eksploratora Windows** . Na przykład: **C:\Users\<YOUR_USER_NAME > \Documents\Visual Studio 2013 \ Projects\WordCount\WordCount**. W tym katalogu Otwórz pozycję **bin**, a następnie kliknij pozycję **Debuguj**. Powinny zostać wyświetlone pliki tekstowe, które zostały utworzone po uruchomieniu testów: zdania. txt, Counter. txt i rozdzielacz. txt. Otwórz każdy plik tekstowy i sprawdź dane.
 
    > [!NOTE]  
    > Dane ciągu są utrwalane jako tablica wartości dziesiętnych w tych plikach. Na przykład \[[97 103 111]] w pliku **rozdzielacza. txt** jest wyraz *i*.

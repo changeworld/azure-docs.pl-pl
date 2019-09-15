@@ -9,12 +9,12 @@ ms.date: 06/24/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 837e3be209da1fe42ced9e4a23a75c46612cebd2
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: ca155763109dbf4292738354244dc397272d06f4
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036624"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002240"
 ---
 # <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-azure-cli"></a>Konfigurowanie kluczy zarządzanych przez klienta na potrzeby szyfrowania usługi Azure Storage z poziomu interfejsu wiersza polecenia platformy Azure
 
@@ -23,7 +23,7 @@ ms.locfileid: "69036624"
 W tym artykule pokazano, jak skonfigurować magazyn kluczy z kluczami zarządzanymi przez klienta przy użyciu interfejsu wiersza polecenia platformy Azure.
 
 > [!IMPORTANT]
-> W przypadku korzystania z kluczy zarządzanych przez klienta z szyfrowaniem usługi Azure Storage wymagane jest skonfigurowanie dwóch wymaganych właściwości magazynu kluczy, **usuwania** nietrwałego i nieprzeczyszczania. Te właściwości są domyślnie włączone podczas tworzenia nowego magazynu kluczy w Azure Portal. Jeśli jednak musisz włączyć te właściwości w istniejącym magazynie kluczy, musisz użyć programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
+> W przypadku korzystania z kluczy zarządzanych przez klienta z szyfrowaniem usługi Azure Storage wymagane jest skonfigurowanie dwóch wymaganych właściwości magazynu kluczy, **usuwania nietrwałego** i **nieprzeczyszczania**. Te właściwości są domyślnie włączone podczas tworzenia nowego magazynu kluczy w Azure Portal. Jeśli jednak musisz włączyć te właściwości w istniejącym magazynie kluczy, musisz użyć programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
 > Obsługiwane są tylko klucze RSA i rozmiar klucza 2048.
 
 ## <a name="assign-an-identity-to-the-storage-account"></a>Przypisywanie tożsamości do konta magazynu
@@ -47,7 +47,7 @@ Aby uzyskać więcej informacji na temat konfigurowania tożsamości zarządzany
 
 Magazyn kluczy używany do przechowywania kluczy zarządzanych przez klienta do szyfrowania usługi Azure Storage musi mieć włączone dwa ustawienia ochrony klucza, **usuwanie nietrwałe** i **nie przeczyszczanie**. Aby utworzyć nowy magazyn kluczy przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure z włączonymi tymi ustawieniami, uruchom następujące polecenia. Pamiętaj, aby zastąpić wartości zastępcze w nawiasach własnymi wartościami. 
 
-Aby utworzyć nowy magazyn kluczy przy użyciu interfejsu wiersza polecenia platformy Azure, wywołaj polecenie [AZ](/cli/azure/keyvault#az-keyvault-create)Key webcreate. Pamiętaj, aby zastąpić wartości zastępcze w nawiasach własnymi wartościami.
+Aby utworzyć nowy magazyn kluczy przy użyciu interfejsu wiersza polecenia platformy Azure, wywołaj polecenie [AZ Key webcreate](/cli/azure/keyvault#az-keyvault-create). Pamiętaj, aby zastąpić wartości zastępcze w nawiasach własnymi wartościami.
 
 ```azurecli-interactive
 az keyvault create \
@@ -120,4 +120,4 @@ Podczas tworzenia nowej wersji klucza należy zaktualizować konto magazynu, aby
 ## <a name="next-steps"></a>Następne kroki
 
 - [Szyfrowanie usługi Azure Storage dla danych magazynowanych](storage-service-encryption.md) 
-- [Co to jest Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)?
+- [Co to jest Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?

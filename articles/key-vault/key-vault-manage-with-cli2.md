@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 952126b76b00ff472181c72b1fd7b1a0e1b14e40
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 51e5c654da95732409c3bbb7acae088d8935a59d
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976342"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000637"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Zarządzanie Key Vault przy użyciu interfejsu wiersza polecenia platformy Azure 
 
@@ -35,7 +35,7 @@ Usługa Azure Key Vault jest dostępna w większości regionów. Aby uzyskać wi
 > Ten artykuł nie zawiera instrukcji dotyczących sposobu pisania aplikacji platformy Azure, która zawiera jeden z kroków, który pokazuje, jak autoryzować aplikację do korzystania z klucza lub wpisu tajnego w magazynie kluczy.
 >
 
-Aby zapoznać się z omówieniem Azure Key Vault, zobacz [co to jest Azure Key Vault?](key-vault-whatis.md)
+Aby zapoznać się z omówieniem Azure Key Vault, zobacz [co to jest Azure Key Vault?](key-vault-overview.md)
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Wymagania wstępne

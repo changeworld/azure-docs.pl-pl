@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: wesmc
-ms.openlocfilehash: 9be0b93335cef919db4efa2fce361bda1f9b934e
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 18864a662464f77d799e54d583092a371bc2d137
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891993"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999965"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Wybieranie odpowiedniej warstwy IoT Hub dla rozwiązania
 
@@ -33,7 +33,7 @@ Każda warstwa IoT Hub jest dostępna w trzech rozmiarach, w zależności od teg
 
 Standardowa warstwa IoT Hub włącza wszystkie funkcje i jest wymagana dla wszystkich rozwiązań IoT, które chcą korzystać z funkcji komunikacji dwukierunkowej. Warstwa Podstawowa umożliwia podzbiór funkcji i jest przeznaczona dla rozwiązań IoT, które wymagają tylko jednokierunkowej komunikacji między urządzeniami a chmurą. Obie warstwy oferują te same funkcje zabezpieczeń i uwierzytelniania.
 
-Na IoT Hub można wybrać tylko jeden typ [wersji](https://azure.microsoft.com/pricing/details/iot-hub/) w ramach warstwy. Można na przykład utworzyć IoT Hub z wieloma jednostkami S1, ale nie z różnymi jednostkami, takimi jak S1 i B3, lub S1 i S2.
+Na IoT Hub można wybrać tylko jeden typ [wersji](https://azure.microsoft.com/pricing/details/iot-hub/) w ramach warstwy. Można na przykład utworzyć IoT Hub z wieloma jednostkami S1, ale nie z różnymi jednostkami, takimi jak S1 i S2.
 
 | Możliwość | Warstwa Podstawowa | Warstwa Bezpłatna/standardowa |
 | ---------- | ---------- | ------------- |
@@ -86,6 +86,10 @@ Różnica w obsługiwanych możliwościach między warstwami podstawowa i Standa
 | Wyślij zdarzenie modułu | Tylko AMQP i MQTT | Tylko AMQP i MQTT |
 | [Aktualizuj stan przekazywania plików](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | Tak | Tak |
 | [Zbiorcza operacja urządzenia](https://docs.microsoft.com/rest/api/iothub/service/bulkcreateorupdatedevices) | Tak, z wyjątkiem możliwości IoT Edge | Tak |
+| [Anuluj zadanie importowania eksportu](https://docs.microsoft.com/rest/api/iothub/service/cancelimportexportjob) | Tak | Tak |
+| [Tworzenie zadania importowania eksportu](https://docs.microsoft.com/rest/api/iothub/service/createimportexportjob) | Tak | Tak |
+| [Pobierz zadanie importowania eksportu](https://docs.microsoft.com/rest/api/iothub/service/getimportexportjob) | Tak | Tak |
+| [Pobierz zadania importowania eksportu](https://docs.microsoft.com/rest/api/iothub/service/getimportexportjobs) | Tak | Tak |
 | [Przeczyść kolejkę poleceń](https://docs.microsoft.com/rest/api/iothub/service/purgecommandqueue) |   | Tak |
 | [Pobierz sznurki urządzenia](https://docs.microsoft.com/rest/api/iothub/service/gettwin) |   | Tak |
 | [Pobierz sznurki modułu](https://docs.microsoft.com/rest/api/iothub/service/getmoduletwin) |   | Tak |
@@ -107,17 +111,17 @@ Najlepszym sposobem na dopasowanie rozwiązania IoT Hub jest oszacowanie ruchu w
 * Komunikaty z chmury do urządzenia
 * Operacje rejestru tożsamości
 
-Ruch jest mierzony dla poszczególnych jednostek, nie na koncentratorze. Wystąpienie IoT Hub Level 1 lub 2 może mieć dowolną liczbę skojarzonych z nim 200 jednostek. Wystąpienie IoT Hub poziomu 3 może mieć maksymalnie 10 jednostek. Po utworzeniu Centrum IoT można zmienić liczbę jednostek lub przenieść się między rozmiarem 1, 2 i 3 w ramach określonej warstwy bez przerywania istniejących operacji. Aby uzyskać więcej informacji, zobacz [jak uaktualnić IoT Hub](iot-hub-upgrade.md).
+Ruch jest mierzony dla Centrum IoT w przypadku poszczególnych jednostek. Podczas tworzenia Centrum IoT wybierz jego warstwę i wersję, a następnie ustaw liczbę dostępnych jednostek. Możesz zakupić do 200 jednostek dla wersji B1, B2, S1 lub S2 lub do 10 jednostek dla wersji B3 lub S3. Po utworzeniu usługi IoT Hub można zmienić liczbę jednostek dostępnych w ramach swojej wersji, uaktualnić lub obniżyć wersje między wersjami w ramach jej warstwy (od B1 do B2) lub uaktualnić z poziomu podstawowego do warstwy Standardowa (B1 do S1) bez zakłócania istniejących operacji. Aby uzyskać więcej informacji, zobacz [jak uaktualnić Centrum IoT Hub](iot-hub-upgrade.md).  
 
 Przykładem możliwości ruchu poszczególnych warstw, komunikaty z urządzenia do chmury są następujące:
 
-| Warstwa | Ciągła przepływność | Ciągła szybkość wysyłania |
+| Wersja warstwy | Ciągła przepływność | Ciągła szybkość wysyłania |
 | --- | --- | --- |
 | B1, S1 |Do 1111 KB/minutę na jednostkę<br/>(1,5 GB/dzień/jednostka) |Średnia z 278 komunikatów na minutę na jednostkę<br/>(400 000 komunikatów dziennie na jednostkę) |
 | B2, S2 |Do 16 MB na minutę na jednostkę<br/>(22,8 GB/dzień/jednostka) |Średnia z 4 167 komunikatów na minutę na jednostkę<br/>(6 000 000 komunikatów dziennie na jednostkę) |
 | B3, S3 |Do 814 MB/minutę na jednostkę<br/>(1144,4 GB/dzień/jednostka) |Średnia z 208 333 komunikatów na minutę na jednostkę<br/>(300 000 000 komunikatów dziennie na jednostkę) |
 
-Oprócz tych informacji o przepływności Zobacz przydziały [i ograniczenia dotyczące IoT Hub](iot-hub-devguide-quotas-throttling.md) i odpowiednio Projektuj rozwiązanie.
+Przepływność między urządzeniami a chmurą jest tylko jedną z metryk, które należy wziąć pod uwagę podczas projektowania rozwiązania IoT. Aby uzyskać bardziej szczegółowe informacje, zobacz [IoT Hub przydziały i ograniczenia](iot-hub-devguide-quotas-throttling.md).
 
 ### <a name="identity-registry-operation-throughput"></a>Przepływność operacji rejestru tożsamości
 
@@ -127,7 +131,7 @@ Aby uzyskać określone numery wydajności, zobacz [IoT Hub przydziały i ograni
 
 ## <a name="auto-scale"></a>Automatyczne skalowanie
 
-Jeśli zbliżasz się do dozwolonego limitu komunikatów na IoT Hub, możesz użyć tych [kroków do automatycznego skalowania](https://azure.microsoft.com/resources/samples/iot-hub-dotnet-autoscale/) , aby zwiększyć jednostkę IoT Hub w tej samej warstwie IoT Hub.
+Jeśli zbliżasz się do dozwolonego limitu komunikatów w centrum IoT, możesz użyć tych [kroków do automatycznego skalowania](https://azure.microsoft.com/resources/samples/iot-hub-dotnet-autoscale/) , aby zwiększyć jednostkę IoT Hub w tej samej warstwie IoT Hub.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,7 +1,7 @@
 ---
 title: Odwołanie do funkcji geograficznej OData — Azure Search
 description: Funkcje geoprzestrzenne OData, geograficzne. odległość i geograficznie. przecinają się w Azure Search zapytaniach.
-ms.date: 06/13/2019
+ms.date: 09/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -19,18 +19,21 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 9585a9a7ea976ed32ccb8eed1e69877339196f87
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 03220786c65ab510a632252b20d593cd96a90494
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647579"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003454"
 ---
 # <a name="odata-geo-spatial-functions-in-azure-search---geodistance-and-geointersects"></a>Funkcje geoprzestrzenne OData w Azure Search `geo.distance` i`geo.intersects`
 
 Azure Search obsługuje zapytania przestrzenne geograficznie w [wyrażeniach filtru OData](query-odata-filter-orderby-syntax.md) za `geo.intersects` pośrednictwem `geo.distance` funkcji i. `geo.distance` Funkcja zwraca odległość w kilometrach między dwoma punktami, jedną jako zmienną pola lub zakres i jedną z nich jest stałą przekazaną w ramach filtra. `geo.intersects` Funkcja zwraca`true` , jeśli dany punkt znajduje się w obrębie danego wielokąta, gdzie punkt jest zmienną pola lub zakresu, a Wielokąt jest określony jako element stały przekazany jako część filtru.
 
-Funkcji można także użyć w parametrze [ **$OrderBy** ](search-query-odata-orderby.md) , aby posortować wyniki wyszukiwania według odległości od danego punktu. `geo.distance` Składnia dla `geo.distance` w **$OrderBy** jest taka sama jak w **$Filter**. W przypadku `geo.distance` korzystania z programu w **$OrderBy**pole, do którego ma zastosowanie, musi `Edm.GeographyPoint` być typu, a także do **sortowania**.
+Funkcji można także użyć w [parametrze **$OrderBy** ](search-query-odata-orderby.md) , aby posortować wyniki wyszukiwania według odległości od danego punktu. `geo.distance` Składnia dla `geo.distance` w **$OrderBy** jest taka sama jak w **$Filter**. W przypadku `geo.distance` korzystania z programu w **$OrderBy**pole, do którego ma zastosowanie, musi `Edm.GeographyPoint` być typu, a także do **sortowania**.
+
+> [!NOTE]
+> W przypadku `geo.distance` używania parametrów **$OrderBy** pole przekazywane do funkcji musi zawierać tylko jeden punkt geograficzny. Innymi słowy, musi być typu `Edm.GeographyPoint` i nie. `Collection(Edm.GeographyPoint)` Sortowanie pól kolekcji w Azure Search nie jest możliwe.
 
 ## <a name="syntax"></a>Składnia
 

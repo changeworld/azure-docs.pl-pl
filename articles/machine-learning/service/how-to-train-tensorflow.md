@@ -1,7 +1,7 @@
 ---
 title: Uczenie sieci neuronowych uczenie głębokie z TensorFlow
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak uruchamiać skrypty szkoleniowe TensorFlow na dużą skalę za pomocą usługi Azure Machine Learning.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak uruchamiać skrypty szkoleniowe TensorFlow na dużą skalę przy użyciu Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9b65a9b7440922d2b1d7a02a79cc6d0811a1d9fc
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 52c675369fa70d1b1113f34b9b0dda2126547e0a
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639339"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002518"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>Twórz TensorFlow model uczenia głębokiego na dużą skalę dzięki Azure Machine Learning
 
@@ -23,7 +23,7 @@ W tym artykule pokazano, jak uruchamiać skrypty szkoleniowe [TensorFlow](https:
 
 Bez względu na to, czy tworzysz model TensorFlow z podstaw, czy przenosisz [istniejący model](how-to-deploy-existing-model.md) do chmury, możesz użyć Azure Machine Learning, aby skalować zadania szkoleniowe typu "open source" do kompilowania, wdrażania, wersji i monitorowania modeli klasy produkcyjnej .
 
-Dowiedz się [](concept-deep-learning-vs-machine-learning.md)więcej na temat uczenia głębokiego i uczenia maszynowego.
+Dowiedz się więcej na temat uczenia głębokiego i uczenia [maszynowego](concept-deep-learning-vs-machine-learning.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -65,7 +65,7 @@ from azureml.core.compute_target import ComputeTargetException
 
 ### <a name="initialize-a-workspace"></a>Inicjowanie obszaru roboczego
 
-[Obszar roboczy usługi Azure Machine Learning](concept-workspace.md) jest zasobem najwyższego poziomu dla usługi. Zapewnia ono scentralizowane miejsce do pracy ze wszystkimi tworzonymi artefaktami. W zestawie SDK języka Python można uzyskać dostęp do artefaktów obszaru roboczego przez [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) utworzenie obiektu.
+[Obszar roboczy Azure Machine Learning](concept-workspace.md) jest zasobem najwyższego poziomu dla usługi. Zapewnia ono scentralizowane miejsce do pracy ze wszystkimi tworzonymi artefaktami. W zestawie SDK języka Python można uzyskać dostęp do artefaktów obszaru roboczego przez [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) utworzenie obiektu.
 
 Utwórz obiekt obszaru roboczego z `config.json` pliku utworzonego w [sekcji wymagania wstępne](#prerequisites).
 
@@ -201,9 +201,9 @@ for f in run.get_file_names():
 
 ## <a name="distributed-training"></a>Rozproszonego szkolenia
 
-[`TensorFlow`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) Szacowania obsługuje również szkolenia rozproszone między procesorami i klastrami GPU. Można łatwo uruchomić rozproszone zadania TensorFlow, a usługa Azure Machine Learning będzie zarządzać aranżacją.
+[`TensorFlow`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) Szacowania obsługuje również szkolenia rozproszone między procesorami i klastrami GPU. Można łatwo uruchomić rozproszone zadania TensorFlow, a Azure Machine Learning będzie zarządzać aranżacją.
 
-Usługa Azure Machine Learning obsługuje dwie metody rozłożonego szkolenia w TensorFlow:
+Usługa Azure Machine Learning obsługuje dwie metody rozproszonego szkolenia w TensorFlow:
 
 - Szkolenie rozproszone [oparte na MPI](https://www.open-mpi.org/) za pomocą platformy [Horovod](https://github.com/uber/horovod)
 - Natywne [rozproszone TensorFlow](https://www.tensorflow.org/deploy/distributed) przy użyciu metody serwera parametrów

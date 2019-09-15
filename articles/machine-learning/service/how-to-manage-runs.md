@@ -1,6 +1,6 @@
 ---
 title: Uruchamianie, monitorowanie i anulowanie przebiegów szkoleniowych w języku Python
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Dowiedz się, jak uruchamiać, ustawiać stan, oznaczać i organizować eksperymenty uczenia maszynowego.
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2019
-ms.openlocfilehash: b938d55749373711ddf2a19df12b987276b224ca
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 6615b5c277577ee2238434591c61362885f2fec6
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376294"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002744"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Uruchamianie, monitorowanie i anulowanie przebiegów szkoleniowych w języku Python
 
@@ -33,9 +33,9 @@ W tym artykule przedstawiono przykłady następujących zadań:
 
 Potrzebne będą następujące elementy:
 
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
 
-* [Obszar roboczy usługi Azure Machine Learning](how-to-manage-workspace.md).
+* [Obszar roboczy Azure Machine Learning](how-to-manage-workspace.md).
 
 * Zestaw Azure Machine Learning SDK dla języka Python (wersja 1.0.21 lub nowsza). Aby zainstalować lub zaktualizować najnowszą wersję zestawu SDK, zobacz [Instalowanie lub aktualizowanie zestawu SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
@@ -45,7 +45,7 @@ Potrzebne będą następujące elementy:
     print(azureml.core.VERSION)
     ```
 
-* [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) i [rozszerzenie interfejsu wiersza polecenia dla usługi Azure Machine Learning](reference-azure-machine-learning-cli.md).
+* [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) i [rozszerzenie interfejsu wiersza polecenia dla Azure Machine Learning](reference-azure-machine-learning-cli.md).
 
 ## <a name="start-a-run-and-its-logging-process"></a>Rozpocznij przebieg i proces rejestrowania
 
@@ -79,7 +79,7 @@ Aby rozpocząć wykonywanie eksperymentu, wykonaj następujące czynności:
     az login
     ```
 
-1. Dołącz konfigurację obszaru roboczego do folderu, który zawiera skrypt szkoleniowy. Zamień `myworkspace` na obszar roboczy usługi Azure Machine Learning. Zamień `myresourcegroup` na grupę zasobów platformy Azure, która zawiera obszar roboczy:
+1. Dołącz konfigurację obszaru roboczego do folderu, który zawiera skrypt szkoleniowy. Zamień `myworkspace` na obszar roboczy Azure Machine Learning. Zamień `myresourcegroup` na grupę zasobów platformy Azure, która zawiera obszar roboczy:
 
     ```azurecli-interactive
     az ml folder attach -w myworkspace -g myresourcegroup
@@ -253,7 +253,7 @@ print(parent_run.get_children())
 
 ## <a name="tag-and-find-runs"></a>Tagi i Znajdź przebiegi
 
-W usłudze Azure Machine Learning można użyć właściwości i tagów, aby ułatwić organizowanie i wykonywanie zapytań dotyczących przebiegów w celu uzyskania ważnych informacji.
+W Azure Machine Learning można użyć właściwości i tagów, aby ułatwić organizowanie i wykonywanie zapytań dotyczących przebiegów w celu uzyskania ważnych informacji.
 
 ### <a name="add-properties-and-tags"></a>Dodaj właściwości i Tagi
 

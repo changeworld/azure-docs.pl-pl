@@ -1,53 +1,53 @@
 ---
-title: Podzapytania SQL dla usługi Azure Cosmos DB
-description: Dowiedz się więcej o podzapytań SQL i ich typowe przypadki użycia w usłudze Azure Cosmos DB
+title: Podzapytania SQL dla Azure Cosmos DB
+description: Dowiedz się więcej na temat podzapytań SQL i ich typowych przypadków użycia w Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: tisande
-ms.openlocfilehash: 4181a44e87d59d35d424a51c8fedc89523223f90
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: cea9963f5073834a24ede44306eb89414909fc83
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342796"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003480"
 ---
-# <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Przykłady podzapytania SQL dla usługi Azure Cosmos DB
+# <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Przykłady podzapytań SQL dla Azure Cosmos DB
 
-Podzapytania jest zapytanie zagnieżdżone w obrębie innego zapytania. Podzapytania jest również nazywany zapytanie wewnętrzne lub wewnętrzne wybierz. Instrukcja, która zawiera podzapytanie jest zazwyczaj wywoływana zapytanie zewnętrzne.
+Podzapytanie jest zagnieżdżona w innym zapytaniu. Podzapytanie jest również nazywane zapytaniem wewnętrznym lub zaznaczeniem wewnętrznym. Instrukcja zawierająca podzapytanie jest zazwyczaj nazywana zewnętrznym zapytaniem.
 
-W tym artykule opisano podzapytań SQL i ich typowe przypadki użycia w usłudze Azure Cosmos DB. Wszystkie przykładowe zapytania w tym dokumencie mogą być uruchamiane względem zestawu danych departamentu, które są wstępnie ładowane na [Plac zabaw dla usługi Azure Cosmos DB zapytań](https://www.documentdb.com/sql/demo).
+W tym artykule opisano podzapytania SQL i ich typowe przypadki użycia w programie Azure Cosmos DB. Wszystkie przykładowe zapytania w tym dokumencie można uruchomić względem zestawu danych odżywiania, który jest wstępnie załadowany na [Azure Cosmos DB środowisko testowe zapytań](https://www.documentdb.com/sql/demo).
 
 ## <a name="types-of-subqueries"></a>Typy podzapytań
 
-Istnieją dwa główne rodzaje podzapytań:
+Istnieją dwa główne typy podzapytań:
 
-* **Skorelowane**: Podzapytania, który odwołuje się do wartości z zapytania zewnętrznego. Podzapytanie jest oceniany jeden raz dla każdego wiersza, który przetwarza zapytanie zewnętrzne.
-* **Skorelowane**: Podzapytania, który jest niezależny od zapytanie zewnętrzne. Może działać na jego własnej bez polegania na zewnętrzny zapytaniu.
+* **Skorelowane**: Podzapytanie, które odwołuje się do wartości z zapytania zewnętrznego. Podzapytanie jest oceniane raz dla każdego wiersza, który przetwarza zapytanie zewnętrzne.
+* **Nieskorelowane**: Podzapytanie niezależne od zapytania zewnętrznego. Może być uruchamiany samodzielnie bez polegania na zewnętrznym zapytaniu.
 
 > [!NOTE]
-> Usługa Azure Cosmos DB obsługuje tylko skorelowany podzapytania.
+> Azure Cosmos DB obsługuje tylko skorelowane podzapytania.
 
-Zapytania podrzędne mogą być klasyfikowane w dalszej, na podstawie liczby wierszy i kolumn, które zwracają. Istnieją trzy typy:
+Podzapytania można zaklasyfikować w oparciu o liczbę wierszy i kolumn, które zwracają. Istnieją trzy typy:
 * **Tabela**: Zwraca wiele wierszy i wiele kolumn.
-* **Wielowartościowy**: Zwraca wiele wierszy i pojedynczą kolumną.
-* **Skalarną**: Zwraca pojedynczy wiersz i pojedynczą kolumną.
+* **Wiele wartości**: Zwraca wiele wierszy i pojedynczą kolumnę.
+* **Skalarny**: Zwraca pojedynczy wiersz i pojedynczą kolumnę.
 
-Zapytania SQL w usłudze Azure Cosmos DB zawsze zwraca jednokolumnową (prostą wartością lub złożonych dokumentów). W związku z tym tylko podzapytań wielowartościowymi i skalarem mają zastosowanie w usłudze Azure Cosmos DB. Podzapytania wielowartościowych tylko w klauzuli FROM służy jako wyrażenie relacyjne. Podzapytania skalarne można użyć jako wyrażenie skalarne, które w polu Wybierz lub klauzuli WHERE lub wyrażenie relacyjne w klauzuli FROM.
+Zapytania SQL w Azure Cosmos DB zawsze zwracają pojedynczą kolumnę (prostą lub złożoną). W związku z tym w Azure Cosmos DB są stosowane tylko wielowartościowe i skalarne podzapytania. Można użyć wielowartościowego podzapytania tylko w klauzuli FROM jako wyrażenia relacyjnego. Można użyć podzapytania skalarnego jako wyrażenia skalarnego w klauzuli SELECT lub WHERE lub jako wyrażenie relacyjne w klauzuli FROM.
 
-## <a name="multi-value-subqueries"></a>Podzapytania wielowartościowymi
+## <a name="multi-value-subqueries"></a>Podzapytania wielowartościowe
 
-Podzapytania wielowartościowych zwrócić zestaw dokumentów i są zawsze używane w klauzuli FROM. Służą one do:
+Podzapytania o wiele wartości zwracają zestaw dokumentów i są zawsze używane w klauzuli FROM. Są one używane do:
 
-* Optymalizacja sprzężenia wyrażeń. 
-* Ocenianie wyrażenia kosztowne raz i odwołuje się do wiele razy.
+* Optymalizowanie wyrażeń SPRZĘŻENIa. 
+* Ocenianie kosztownych wyrażeń jednokrotnie i odwoływanie się do wielu razy.
 
-## <a name="optimize-join-expressions"></a>Optymalizacja sprzężenia wyrażeń
+## <a name="optimize-join-expressions"></a>Optymalizuj wyrażenia SPRZĘŻENIa
 
-Podzapytania wielowartościowych można zoptymalizować wyrażeniach sprzężenia, wypychając predykatów po każdym wyrażeniu Wybierz wiele, a nie po wszystkich sprzężenia krzyżowe w klauzuli WHERE.
+Podzapytania wielowartościowe mogą optymalizować wyrażenia SPRZĘŻENIa przez wypychanie predykatów po każdym wyrażeniu wyboru-wielu, a nie po wszystkich sprzężeniach krzyżowych w klauzuli WHERE.
 
-Należy wziąć pod uwagę następujące zapytanie:
+Rozważ następujące zapytanie:
 
 ```sql
 SELECT Count(1) AS Count
@@ -59,11 +59,11 @@ WHERE t.name = 'infant formula' AND (n.nutritionValue > 0
 AND n.nutritionValue < 10) AND s.amount > 1
 ```
 
-Dla tego zapytania indeksu będzie odpowiadał na dowolny dokument, który ma tag o nazwie "niemowląt." Jest odżywczych element z wartością z zakresu od 0 do 10, a element obsługująca o kwotę większą niż 1. Wyrażenia w tym miejscu będzie wykonywać iloczyn wektorowy wszystkich elementów, tagów, składników i porcji tablic dla każdego pasującego dokumentu przed zastosowaniem dowolnego filtru. 
+Dla tego zapytania indeks będzie pasować do dowolnego dokumentu, który ma tag o nazwie "Formuła niemowląt". Jest to element składnika pokarmowego z wartością z przedziału od 0 do 10 i obsługujący element o wartości większej niż 1. Wyrażenie JOIN w tym miejscu będzie przekroczyć iloczyn wszystkich elementów tagów, składników odżywczych i obsługuje tablice dla każdego pasującego dokumentu przed zastosowaniem filtra. 
 
-Klauzula WHERE następnie zastosuje filtr krotki predykatu w każdym < c, t, n, s >. Na przykład jeśli pasujących dokumentów 10 elementów we wszystkich trzech tablic, jego rozwinie 1 x 10 x 10 x 10 (czyli 1000) krotek. W tym miejscu przy użyciu podzapytań może pomóc w filtrowanie elementów tablicy połączonych przed sprzężeniem ich ze następnego wyrażenia.
+Klauzula WHERE następnie zastosuje predykat filtru dla każdej <, t, n, s > krotki. Na przykład, jeśli pasujący dokument ma 10 elementów w każdej z trzech tablic, zostanie rozszerzony na 1 x 10 x 10 x 10 (czyli 1 000) krotek. Użycie podkwerend tutaj może pomóc w filtrowaniu sprzężonych elementów tablicy przed dołączeniem do następnego wyrażenia.
 
-To zapytanie jest równoważne z poprzednim, ale przy użyciu zapytania podrzędne:
+To zapytanie jest równoważne poprzedniemu, ale używa podzapytań:
 
 ```sql
 SELECT Count(1) AS Count
@@ -73,13 +73,13 @@ JOIN (SELECT VALUE n FROM n IN c.nutrients WHERE n.nutritionValue > 0 AND n.nutr
 JOIN (SELECT VALUE s FROM s IN c.servings WHERE s.amount > 1)
 ```
 
-Założono, że tylko jeden element w tablicy tagów jest zgodny z filtrem, i istnieje pięć elementów dla składników i porcji tablic. Następnie rozwinie wyrażeniach sprzężenia 1 x 1 x 5 x 5 = 25 elementów, w przeciwieństwie do 1000 elementów w pierwszym zapytaniu.
+Załóżmy, że tylko jeden element w tablicy tagów pasuje do filtru i istnieje pięć elementów dla obydwu składników pokarmowych i obsługujących tablice. Wyrażenia SPRZĘŻENIa zostaną następnie rozszerzone na 1 x 1 x 5 x 5 = 25 elementów, w przeciwieństwie do 1 000 elementów w pierwszej kwerendzie.
 
-## <a name="evaluate-once-and-reference-many-times"></a>Oceń raz i odwołania wiele razy
+## <a name="evaluate-once-and-reference-many-times"></a>Oceń raz i odwołuje się wiele razy
 
-Podzapytania może pomóc w optymalizacji zapytań za pomocą wyrażeń kosztowne, takich jak funkcje zdefiniowane przez użytkownika (UDF), złożonych ciągów lub wyrażeniach arytmetycznych. Podzapytania wraz z wyrażeniu JOIN służy do obliczenia wyrażenia raz, ale odwoływać się do niego wiele razy.
+Podzapytania mogą pomóc zoptymalizować zapytania z kosztownymi wyrażeniami, takimi jak funkcje zdefiniowane przez użytkownika (UDF), ciągi złożone lub wyrażenia arytmetyczne. Możesz użyć podzapytania wraz z wyrażeniem SPRZĘŻENIa, aby obliczyć wyrażenie jeden raz, ale odwołują się do niego wiele razy.
 
-Następujące zapytanie działa systemu plików UDF `GetMaxNutritionValue` dwa razy:
+Następujące zapytanie uruchamia dwa razy klawisz `GetMaxNutritionValue` UDF:
 
 ```sql
 SELECT c.id, udf.GetMaxNutritionValue(c.nutrients) AS MaxNutritionValue
@@ -87,7 +87,7 @@ FROM c
 WHERE udf.GetMaxNutritionValue(c.nutrients) > 100
 ```
 
-Oto zapytanie równoważne, który jest uruchamiany tylko raz funkcji zdefiniowanej przez użytkownika:
+Oto odpowiednik zapytania, które uruchamia tylko jeden raz:
 
 ```sql
 SELECT TOP 1000 c.id, MaxNutritionValue
@@ -97,10 +97,10 @@ WHERE MaxNutritionValue > 100
 ``` 
 
 > [!NOTE] 
-> Należy pamiętać, zachowanie obejmujących wiele produktów w wyrażeniach sprzężenia. Jeśli wyrażenie funkcji zdefiniowanej przez użytkownika może być Niezdefiniowany, należy upewnić się, że zawsze wyrażeniu JOIN tworzy jeden wiersz, zwracając obiekt z podzapytanie, a nie wartość bezpośrednio.
+> Należy zwrócić uwagę na zachowanie różnych produktów w wyrażeniach SPRZĘŻENIa. Jeśli wyrażenie UDF może oszacować do wartości undefined, należy upewnić się, że wyrażenie JOIN zawsze generuje pojedynczy wiersz, zwracając obiekt z podzapytania, a nie wartość bezpośrednio.
 >
 
-Oto przykład podobne, która zwraca obiekt, a nie wartość:
+Oto podobny przykład, który zwraca obiekt, a nie wartość:
 
 ```sql
 SELECT TOP 1000 c.id, m.MaxNutritionValue
@@ -109,7 +109,7 @@ JOIN (SELECT udf.GetMaxNutritionValue(c.nutrients) AS MaxNutritionValue) m
 WHERE m.MaxNutritionValue > 100
 ```
 
-To podejście nie jest ograniczona do funkcji zdefiniowanych przez użytkownika. Dotyczy to dowolne wyrażenie potencjalnie kosztowne. Na przykład, można wykonać tej samej metody, funkcją matematyczne `avg`:
+Podejście nie jest ograniczone do UDF. Ma to zastosowanie do dowolnego potencjalnego wyrażenia. Na przykład można zastosować takie samo podejście z funkcją `avg`matematyczną:
 
 ```sql
 SELECT TOP 1000 c.id, AvgNutritionValue
@@ -118,34 +118,34 @@ JOIN (SELECT VALUE avg(n.nutritionValue) FROM n IN c.nutrients) AvgNutritionValu
 WHERE AvgNutritionValue > 80
 ```
 
-## <a name="mimic-join-with-external-reference-data"></a>Naśladowanie łączenia z danymi referencyjnymi zewnętrznych
+## <a name="mimic-join-with-external-reference-data"></a>Naśladowanie sprzężenia z zewnętrznymi danymi referencyjnymi
 
-Często konieczne może się odwoływać się do danych statycznych, które zmieniają się rzadko, takich jak jednostek pomiaru lub numerów kierunkowych krajów. Zaleca się, nie można zduplikować takich danych dla każdego dokumentu. Unikanie ta duplikacja zapisywania w magazynie i zwiększyć wydajność, przechowując mniejszy rozmiar dokumentu. Podzapytania służy do naśladowania semantyki sprzężenia wewnętrznego z kolekcją danych referencyjnych.
+Czasami może być konieczne odwołujące się do danych statycznych, które rzadko zmieniają się, na przykład jednostek miary lub kodów krajów. Lepiej nie duplikować takich danych dla każdego dokumentu. Uniknięcie tego duplikacji spowoduje zapisanie w magazynie i zwiększenie wydajności zapisu przez pozostawienie mniejszego rozmiaru dokumentu. Za pomocą podzapytania można naśladować semantykę sprzężenia wewnętrznego z kolekcją danych referencyjnych.
 
-Na przykład należy wziąć pod uwagę ten zestaw danych referencyjnych:
+Na przykład rozważmy ten zestaw danych referencyjnych:
 
 | **Unit** | **Nazwa**            | **Mnożnik** | **Jednostka podstawowa** |
 | -------- | ------------------- | -------------- | ------------- |
-| NG       | Nanogram            | 1.00E-09       | Gram          |
-| g       | Microgram           | 1.00E-06       | Gram          |
-| mg       | Milligram           | 1.00E-03       | Gram          |
-| g        | Gram                | 1.00E + 00       | Gram          |
-| kg       | Kilogram            | 1.00E + 03       | Gram          |
-| Mg       | Megagram            | 1.00E + 06       | Gram          |
-| Gg       | Gigagram            | 1.00E + 09       | Gram          |
-| nJ       | Nanojoule           | 1.00E-09       | Joule —         |
-| µJ       | Microjoule          | 1.00E-06       | Joule —         |
-| mJ       | Millijoule          | 1.00E-03       | Joule —         |
-| J        | Joule —               | 1.00E + 00       | Joule —         |
-| kJ       | Kilojoule           | 1.00E + 03       | Joule —         |
-| MJ       | Megajoule           | 1.00E + 06       | Joule —         |
-| GJ       | Gigajoule           | 1.00E + 09       | Joule —         |
-| Licencja CAL      | Calorie             | 1.00E + 00       | Kaloria       |
-| kcal     | Calorie             | 1.00E + 03       | Kaloria       |
+| gazu       | Nanogram            | 1.00 E-09       | Sprawdzanie          |
+| g       | Microgram           | 1.00 E-06       | Sprawdzanie          |
+| mg       | Ilość           | 1,00 E-03       | Sprawdzanie          |
+| g        | Sprawdzanie                | 1,00 E + 00       | Sprawdzanie          |
+| kg       | Kg            | 1,00 E + 03       | Sprawdzanie          |
+| mg       | Megagram            | 1,00 E + 06       | Sprawdzanie          |
+| GG       | Gigagram            | 1,00 E + 09       | Sprawdzanie          |
+| nJ       | Nanojoule           | 1.00 E-09       | Joule —         |
+| µJ       | Microjoule          | 1.00 E-06       | Joule —         |
+| mJ       | Millijoule          | 1,00 E-03       | Joule —         |
+| J        | Joule —               | 1,00 E + 00       | Joule —         |
+| kJ       | Kilojoule           | 1,00 E + 03       | Joule —         |
+| MJ       | Megajoule           | 1,00 E + 06       | Joule —         |
+| GJ       | Gigajoule           | 1,00 E + 09       | Joule —         |
+| cal      | Calorie             | 1,00 E + 00       | calorie       |
+| kcal     | Calorie             | 1,00 E + 03       | calorie       |
 | IU       | Jednostki międzynarodowe |                |               |
 
 
-Następujące zapytanie naśladuje, łączenie z danymi, aby dodać nazwę jednostki w typie danych wyjściowych:
+Następujące zapytanie naśladuje sprzężenie z tymi danymi, aby dodać nazwę jednostki do danych wyjściowych:
 
 ```sql
 SELECT TOP 10 n.id, n.description, n.nutritionValue, n.units, r.name
@@ -175,21 +175,21 @@ JOIN r IN (
 WHERE n.units = r.unit
 ```
 
-## <a name="scalar-subqueries"></a>Skalarnych podzapytań
+## <a name="scalar-subqueries"></a>Podzapytania skalarne
 
-Wyrażenie skalarne podzapytania znajduje się podzapytanie, którego wynikiem jest wartość typu single. Wartość wyrażenia skalarne podzapytania jest wartością rzutu (klauzuli SELECT) podzapytanie.  W wielu miejscach, w którym wyrażenie skalarne, które jest prawidłowy, można użyć wyrażenia skalarne podzapytania. Na przykład można użyć skalarne podzapytania w dowolnych wyrażeń w obu wybierz i klauzulach WHERE.
+Skalarne wyrażenie podzapytania jest podzapytaniem, którego wynikiem jest pojedyncza wartość. Wartość wyrażenia skalarnego podzapytania jest wartością projekcji (klauzula SELECT) podzapytania.  Wyrażenia skalarnego podzapytania można użyć w wielu miejscach, w których wyrażenie skalarne jest prawidłowe. Można na przykład użyć podzapytania skalarnego w dowolnym wyrażeniu w klauzuli SELECT i WHERE.
 
-Za pomocą skalarne podzapytanie nie zawsze optymalizowania, mimo że. Na przykład przekazanie skalarne podzapytanie jako argumentu do systemu lub funkcje zdefiniowane przez użytkownika zapewnia żadnych korzyści w zużycia zasobów (RU) lub opóźnienia.
+Użycie podzapytania skalarnego nie zawsze pomaga zoptymalizować, chociaż. Na przykład przekazywanie podzapytania skalarnego jako argumentu do systemu lub funkcji zdefiniowanych przez użytkownika nie zapewnia żadnej korzyści dotyczącej użycia jednostki zasobów (RU) ani opóźnienia.
 
-Podzapytań skalarnych mogą być dodatkowo klasyfikowane jako:
-* Proste wyrażenie skalarne podzapytań
-* Łączny skalarnych podzapytań
+Podzapytania skalarne mogą być klasyfikowane jako:
+* Podzapytania skalarne w wyrażeniach prostych
+* Agreguj podzapytania skalarne
 
-## <a name="simple-expression-scalar-subqueries"></a>Proste wyrażenie skalarne podzapytań
+## <a name="simple-expression-scalar-subqueries"></a>Podzapytania skalarne w wyrażeniach prostych
 
-Proste wyrażenie skalarne podzapytania jest skorelowane podzapytanie, zawierającej klauzuli SELECT, która nie zawiera żadnych wyrażeniami dotyczącymi agregacji. Te podzapytań zapewniają korzyści nie optymalizacji, ponieważ kompilator konwertuje je do jednego większego wyrażenia proste. Nie jest skorelowany kontekst między zapytaniami wewnętrznych i zewnętrznych.
+Uproszczone podzapytanie skalarne wyrażeń jest skorelowane podzapytanie, które ma klauzulę SELECT, która nie zawiera żadnych wyrażeń agregujących. Te podzapytania nie zapewniają korzyści optymalizacji, ponieważ kompilator konwertuje je na jedno większe wyrażenie proste. Nie istnieje skorelowany kontekst między zapytaniami wewnętrznymi i zewnętrznymi.
 
-Poniżej przedstawiono kilka przykładów:
+Oto kilka przykładów:
 
 **Przykład 1**
 
@@ -197,13 +197,13 @@ Poniżej przedstawiono kilka przykładów:
 SELECT 1 AS a, 2 AS b
 ```
 
-Można napisać ponownie to zapytanie przy użyciu podzapytania proste wyrażenie skalarne, aby:
+Możesz ponownie napisać to zapytanie, używając prostego podzapytania skalarnego Expression, aby:
 
 ```sql
 SELECT (SELECT VALUE 1) AS a, (SELECT VALUE 2) AS b
 ```
 
-Oba zapytania do przedstawienia tych danych wyjściowych:
+Oba zapytania tworzą następujące dane wyjściowe:
 
 ```json
 [
@@ -218,14 +218,14 @@ SELECT TOP 5 Concat('id_', f.id) AS id
 FROM food f
 ```
 
-Można napisać ponownie to zapytanie przy użyciu podzapytania proste wyrażenie skalarne, aby:
+Możesz ponownie napisać to zapytanie, używając prostego podzapytania skalarnego Expression, aby:
 
 ```sql
 SELECT TOP 5 (SELECT VALUE Concat('id_', f.id)) AS id
 FROM food f
 ```
 
-Dane wyjściowe zapytań:
+Wyniki zapytania:
 
 ```json
 [
@@ -244,14 +244,14 @@ SELECT TOP 5 f.id, Contains(f.description, 'fruit') = true ? f.description : und
 FROM food f
 ```
 
-Można napisać ponownie to zapytanie przy użyciu podzapytania proste wyrażenie skalarne, aby:
+Możesz ponownie napisać to zapytanie, używając prostego podzapytania skalarnego Expression, aby:
 
 ```sql
 SELECT TOP 10 f.id, (SELECT f.description WHERE Contains(f.description, 'fruit')).description
 FROM food f
 ```
 
-Dane wyjściowe zapytań:
+Wyniki zapytania:
 
 ```json
 [
@@ -263,13 +263,13 @@ Dane wyjściowe zapytań:
 ]
 ```
 
-### <a name="aggregate-scalar-subqueries"></a>Łączny skalarnych podzapytań
+### <a name="aggregate-scalar-subqueries"></a>Agreguj podzapytania skalarne
 
-Łączny podzapytania skalarne znajduje się podzapytanie zawierającej funkcji agregującej w projekcji lub filtr, którego wynikiem jest wartość typu single.
+Zagregowane podzapytanie skalarne jest podzapytaniem, które zawiera funkcję agregującą w projekcji lub filtr, który daje w wyniku pojedynczą wartość.
 
 **Przykład 1:**
 
-W tym miejscu znajduje się podzapytanie za pomocą wyrażenia pojedynczej funkcji agregującej w swojej projekcji:
+Oto podzapytanie zawierające wyrażenie pojedynczego funkcji agregującej w projekcji:
 
 ```sql
 SELECT TOP 5 
@@ -279,7 +279,7 @@ SELECT TOP 5
 FROM food f
 ```
 
-Dane wyjściowe zapytań:
+Wyniki zapytania:
 
 ```json
 [
@@ -293,7 +293,7 @@ Dane wyjściowe zapytań:
 
 **Przykład 2**
 
-W tym miejscu znajduje się podzapytanie z wielu funkcji agregującej wyrażeń:
+Oto podzapytanie z wieloma wyrażeniami funkcji agregowania:
 
 ```sql
 SELECT TOP 5 f.id, (
@@ -304,7 +304,7 @@ SELECT TOP 5 f.id, (
 FROM food f
 ```
 
-Dane wyjściowe zapytań:
+Wyniki zapytania:
 
 ```json
 [
@@ -318,7 +318,7 @@ Dane wyjściowe zapytań:
 
 **Przykład 3**
 
-Oto zapytanie za pomocą agregacji podzapytania, zarówno w przypadku projekcji, jak i filtr:
+Oto zapytanie z podzapytaniem zagregowanym zarówno dla projekcji, jak i filtru:
 
 ```sql
 SELECT TOP 5 
@@ -328,7 +328,7 @@ FROM food f
 WHERE (SELECT VALUE Count(1) FROM n IN f.nutrients WHERE n.units = 'mg') > 20
 ```
 
-Dane wyjściowe zapytań:
+Wyniki zapytania:
 
 ```json
 [
@@ -340,7 +340,7 @@ Dane wyjściowe zapytań:
 ]
 ```
 
-Więcej optymalny sposób, aby zapisać to zapytanie jest odbędzie się podzapytanie i odwoływać się do podzapytania aliasu w obu wybierz i klauzulach WHERE. To zapytanie jest bardziej wydajne, ponieważ jest wymagane wykonanie podzapytania tylko wewnątrz instrukcji join, a nie w projekcji i filtru.
+Bardziej optymalnym sposobem pisania tego zapytania jest dołączenie do podzapytania i odwołanie się do aliasu podzapytania w klauzulach SELECT i WHERE. To zapytanie jest bardziej wydajne, ponieważ należy wykonać podzapytanie tylko w instrukcji join, a nie w projekcji i filtrze.
 
 ```sql
 SELECT TOP 5 f.id, count_mg
@@ -351,26 +351,26 @@ WHERE count_mg > 20
 
 ## <a name="exists-expression"></a>Wyrażenie EXISTS
 
-Usługa Azure Cosmos DB obsługuje wyrażenia EXISTS. Jest to łączny podzapytania skalarne, wbudowane interfejsu API SQL usługi Azure Cosmos DB. EXISTS to wyrażenie logiczne, które przyjmuje wyrażenia podzapytania i zwraca wartość true, jeśli podzapytanie zwraca wszystkie wiersze. W przeciwnym razie zwraca wartość false.
+Azure Cosmos DB obsługuje wyrażenia EXISTS. Jest to zagregowane podzapytanie skalarne wbudowane w interfejs API SQL Azure Cosmos DB. EXISTS jest wyrażeniem logicznym, które przyjmuje wyrażenie subquery i zwraca wartość true, jeśli podzapytanie zwraca wszystkie wiersze. W przeciwnym razie zwraca wartość false.
 
-Ponieważ interfejsu API SQL usługi Azure Cosmos DB nie odróżnia wyrażenia logiczne i inne wyrażenia skalarne, można użyć EXISTS w obu wybierz i klauzulach WHERE. Jest to w przeciwieństwie do języka T-SQL, gdzie wyrażenie logiczne (na przykład EXISTS, między oraz w) jest ograniczony do bieżącego filtra.
+Ponieważ Azure Cosmos DB interfejs API SQL nie rozróżnia wyrażeń logicznych i innych wyrażeń skalarnych, można użyć operatora EXISTS w obu klauzulach SELECT i WHERE. Jest to w przeciwieństwie do języka T-SQL, gdzie wyrażenie logiczne (na przykład istnieje, między i w) jest ograniczone do filtru.
 
-Jeśli podzapytanie EXISTS zwraca pojedynczą wartość, która ma niezdefiniowane, ISTNIEJE oceni na wartość false. Na przykład należy wziąć pod uwagę następujące zapytanie, które zwróci wartość false:
+Jeśli podzapytanie EXISTS zwróci pojedynczą wartość, która nie jest zdefiniowana, istnieje wartość false. Na przykład rozważmy następujące zapytanie, którego wynikiem jest wartość false:
 ```sql
 SELECT EXISTS (SELECT VALUE undefined)
 ```   
 
 
-W przypadku pominięcia VALUE — słowo kluczowe w poprzednim podzapytania zapytanie będzie przyjmowało wartość true:
+Jeśli słowo kluczowe VALUE w powyższym podzapytaniu zostanie pominięte, kwerenda zwróci wartość true:
 ```sql
 SELECT EXISTS (SELECT undefined) 
 ```
 
-Podzapytanie będzie zawierać listę wartości z wybranej listy w obiekcie. Jeśli wybrana lista nie zawiera danych, podzapytanie będzie zwracać pojedynczą wartość "{}". Ta wartość jest zdefiniowana, więc EXISTS zwraca wartość true.
+Podzapytanie będzie zawierać listę wartości z wybranej listy w obiekcie. Jeśli wybrana lista nie ma żadnych wartości, podzapytanie zwróci pojedynczą wartość "{}". Ta wartość jest zdefiniowana, a zatem istnieje wartość true.
 
-### <a name="example-rewriting-arraycontains-and-join-as-exists"></a>Przykład: ARRAY_CONTAINS ponownego zapisywania adresów i sprzężenia jako EXISTS
+### <a name="example-rewriting-array_contains-and-join-as-exists"></a>Przykład: Ponowne zapisywanie ARRAY_CONTAINS i dołączanie jako istnieje
 
-Typowy przypadek użycia programu ARRAY_CONTAINS jest filtrującą dane dokumentu z istniejących elementów w tablicy. W tym przypadku możemy sprawdzamy, czy tablica tagów zawiera element o nazwie "pomarańczowy."
+Typowym przypadkiem użycia ARRAY_CONTAINS jest filtrowanie dokumentu przez istnienie elementu w tablicy. W tym przypadku Sprawdzamy, czy tablica tagów zawiera element o nazwie "pomarańczowy".
 
 ```sql
 SELECT TOP 5 f.id, f.tags
@@ -378,7 +378,7 @@ FROM food f
 WHERE ARRAY_CONTAINS(f.tags, {name: 'orange'})
 ```
 
-Można napisać ponownie tego samego zapytania, aby użyć EXISTS:
+Możesz ponownie napisać to samo zapytanie do użycia:
 
 ```sql
 SELECT TOP 5 f.id, f.tags
@@ -386,9 +386,9 @@ FROM food f
 WHERE EXISTS(SELECT VALUE t FROM t IN f.tags WHERE t.name = 'orange')
 ```
 
-Ponadto ARRAY_CONTAINS można tylko Sprawdź, czy wartość jest równa dowolnego elementu w tablicy. Jeśli potrzebujesz bardziej złożonych filtrów właściwości tablicy, należy użyć sprzężenia.
+Ponadto ARRAY_CONTAINS może sprawdzić, czy wartość jest równa każdemu elementowi w tablicy. Jeśli potrzebujesz bardziej złożonych filtrów dla właściwości tablicy, użyj SPRZĘŻENIa.
 
-Należy wziąć pod uwagę następujące zapytanie, który filtruje jednostki i `nutritionValue` właściwości w tablicy: 
+Rozważmy następujące zapytanie, które jest oparte na jednostkach `nutritionValue` i właściwościach tablicy: 
 
 ```sql
 SELECT VALUE c.description
@@ -397,9 +397,9 @@ JOIN n IN c.nutrients
 WHERE n.units= "mg" AND n.nutritionValue > 0
 ```
 
-Dla każdej wersji dokumenty w kolekcji obejmujących wiele produktów odbywa się ze swoimi elementami tablicy. Ta operacja JOIN pozwala filtrować dane według właściwości w tablicy. Jednak zużycia jednostek RU to zapytanie będzie znaczące. Na przykład jeśli 1000 dokumentów 100 elementów w każdej macierzy, jego rozszerzy do 1000 x 100 (tj. 100 000) krotek.
+Dla każdego dokumentu w kolekcji, wiele produktów jest wykonywanych ze swoimi elementami tablicy. Ta operacja łączenia umożliwia filtrowanie właściwości w tablicy. Użycie tego zapytania jest jednak istotne. Na przykład jeśli 1 000 dokumenty mają 100 elementy w każdej tablicy, zostanie rozwinięte do 1 000 x 100 (czyli 100 000) krotek.
 
-Za pomocą EXISTS może pomóc uniknąć tego kosztowne obejmujących wiele produktów:
+Użycie już istnieje może pomóc w uniknięciu tego kosztownego skrzyżowania:
 
 ```sql
 SELECT VALUE c.description
@@ -411,9 +411,9 @@ WHERE EXISTS(
 )
 ```
 
-W tym przypadku filtrowanie według elementów tablicy w podzapytaniu EXISTS. Jeśli do elementu tablicy jest zgodny z filtrem, następnie projektu i EXISTS zwraca wartość true.
+W takim przypadku należy odfiltrować elementy tablicy w podzapytaniu EXISTS. Jeśli element tablicy jest zgodny z filtrem, należy go projektować i istnieje wartość true.
 
-Możesz również alias EXISTS i odwoływać się do niego w projekcji:
+Istnieje również możliwość aliasowania i odwoływania się do niego w projekcji:
 
 ```sql
 SELECT TOP 1 c.description, EXISTS(
@@ -423,7 +423,7 @@ SELECT TOP 1 c.description, EXISTS(
 FROM c
 ```
 
-Dane wyjściowe zapytań:
+Wyniki zapytania:
 
 ```json
 [
@@ -436,14 +436,14 @@ Dane wyjściowe zapytań:
 
 ## <a name="array-expression"></a>Wyrażenie tablicy
 
-Do projektu z wynikami zapytania jako tablicę, można użyć wyrażenia tablicy. Możesz użyć tego wyrażenia tylko w klauzuli SELECT zapytania.
+Możesz użyć wyrażenia ARRAY, aby zaprojektować wyniki zapytania jako tablicę. Tego wyrażenia można użyć tylko w klauzuli SELECT zapytania.
 
 ```sql
 SELECT TOP 1   f.id, ARRAY(SELECT VALUE t.name FROM t in f.tags) AS tagNames
 FROM  food f
 ```
 
-Dane wyjściowe zapytań:
+Wyniki zapytania:
 
 ```json
 [
@@ -459,14 +459,14 @@ Dane wyjściowe zapytań:
 ]
 ```
 
-Podobnie jak w przypadku innych podzapytań filtry przy użyciu wyrażenia TABLICOWEGO są możliwe.
+Podobnie jak w przypadku innych podkwerend, filtry z wyrażeniem ARRAY są możliwe.
 
 ```sql
 SELECT TOP 1 c.id, ARRAY(SELECT VALUE t FROM t in c.tags WHERE t.name != 'infant formula') AS tagNames
 FROM c
 ```
 
-Dane wyjściowe zapytań:
+Wyniki zapytania:
 
 ```json
 [
@@ -493,7 +493,7 @@ Dane wyjściowe zapytań:
 ]
 ```
 
-Wyrażenia tablicy może również pochodzić po klauzuli FROM w podzapytania.
+Wyrażenia tablicowe mogą być również dostępne po klauzuli FROM w podzapytaniach.
 
 ```sql
 SELECT TOP 1 c.id, ARRAY(SELECT VALUE t.name FROM t in c.tags) as tagNames
@@ -501,7 +501,7 @@ FROM c
 JOIN n IN (SELECT VALUE ARRAY(SELECT t FROM t in c.tags WHERE t.name != 'infant formula'))
 ```
 
-Dane wyjściowe zapytań:
+Wyniki zapytania:
 
 ```json
 [
@@ -517,7 +517,7 @@ Dane wyjściowe zapytań:
 ]
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Przykłady dla platformy .NET w usłudze Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-dotnet)
-- [Modelowanie danych dokumentów](modeling-data.md)
+- [Przykłady dla platformy .NET w usłudze Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Dane dokumentu modelu](modeling-data.md)

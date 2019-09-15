@@ -1,6 +1,6 @@
 ---
 title: Rejestruj eksperymenty w ML & metryki
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Monitoruj eksperymenty dotyczące platformy Azure ML i monitoruj metryki uruchamiania, aby usprawnić proces tworzenia modelu. Dodaj rejestrowanie do skryptu szkoleniowego i Wyświetl zarejestrowane wyniki przebiegu.  Użyj Run. log, Run. start_logging lub ScriptRunConfig.
 services: machine-learning
 author: heatherbshapiro
@@ -12,19 +12,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1c2747c8eaac0323ac32f67afb27ac854a3a5ce9
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: a37ed7c7f39324a7fb4750389c0d76c36539c3cc
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959941"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002707"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Monitoruj uruchomienia eksperymentów i metryki usługi Azure ML
 
-Usprawnij proces tworzenia modelu, śledząc eksperymenty i monitorowane metryki. W tym artykule dowiesz się, jak dodać kod rejestrowania do skryptu szkoleniowego, przesłać przebieg eksperymentu, monitorować ten przebieg i sprawdzić wyniki w usłudze Azure Machine Learning.
+Usprawnij proces tworzenia modelu, śledząc eksperymenty i monitorowane metryki. W tym artykule dowiesz się, jak dodać kod rejestrowania do skryptu szkoleniowego, przesłać przebieg eksperymentu, monitorować ten przebieg i sprawdzić wyniki w Azure Machine Learning.
 
 > [!NOTE]
-> Usługa Azure Machine Learning może również rejestrować informacje z innych źródeł podczas szkoleń, takich jak automatyczne uruchomienia uczenia maszynowego lub kontener platformy Docker, który uruchamia zadanie szkoleniowe. Te dzienniki nie są udokumentowane. Jeśli wystąpią problemy i skontaktuje się z działem pomocy technicznej firmy Microsoft, mogą oni korzystać z tych dzienników podczas rozwiązywania problemów.
+> Azure Machine Learning mogą także rejestrować informacje z innych źródeł podczas szkoleń, takich jak automatyczne uruchomienia uczenia maszynowego lub kontener platformy Docker, który uruchamia zadanie szkoleniowe. Te dzienniki nie są udokumentowane. Jeśli wystąpią problemy i skontaktuje się z działem pomocy technicznej firmy Microsoft, mogą oni korzystać z tych dzienników podczas rozwiązywania problemów.
 
 ## <a name="available-metrics-to-track"></a>Dostępne metryki do śledzenia
 
@@ -65,7 +65,7 @@ Przed dodaniem rejestrowania i przesyłanie eksperymentu, należy skonfigurować
 
 **start_logging** tworzy interakcyjnego wykonywania do użytku w scenariuszach takich jak notesy. Wszystkie metryki, które są rejestrowane w trakcie sesji są dodawane do rekordu uruchomienia w eksperymencie.
 
-Poniższy przykład przygotowuje prosty model Ridge skryptu sklearn lokalnie w przypadku lokalnego notesu programu Jupyter. Aby dowiedzieć się więcej na temat przesyłanie eksperymentów w różnych środowiskach, zobacz [Konfigurowanie obliczeniowych elementów docelowych do trenowania modelu za pomocą usługi Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-set-up-training-targets).
+Poniższy przykład przygotowuje prosty model Ridge skryptu sklearn lokalnie w przypadku lokalnego notesu programu Jupyter. Aby dowiedzieć się więcej o przesyłaniu eksperymentów do różnych środowisk, zobacz [Konfigurowanie celów obliczeniowych na potrzeby szkolenia modeli przy użyciu Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-set-up-training-targets).
 
 1. Utwórz skrypt szkoleniowy w lokalnego notesu programu Jupyter. 
 
@@ -91,7 +91,7 @@ Poniższy przykład przygotowuje prosty model Ridge skryptu sklearn lokalnie w p
    joblib.dump(value = reg, filename = 'model.pkl');
    ```
 
-2. Dodaj śledzenia eksperymentu przy użyciu zestawu SDK usługi Azure Machine Learning i przekazywanie utrwalonych modelu na uruchomienie rekordu eksperymentu. Poniższy kod dodaje znaczniki, dzienników i przekazuje plik modelu na uruchomienie eksperymentu.
+2. Dodaj śledzenie eksperymentu przy użyciu zestawu SDK Azure Machine Learning i przekaż utrwalony model do rekordu przebiegu eksperymentu. Poniższy kod dodaje znaczniki, dzienników i przekazuje plik modelu na uruchomienie eksperymentu.
 
    ```python
     # Get an experiment object from Azure Machine Learning

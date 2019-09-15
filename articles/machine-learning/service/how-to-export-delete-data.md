@@ -1,7 +1,7 @@
 ---
 title: Eksportowanie lub usuwanie danych obszaru roboczego
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak wyeksportować lub usunąć obszar roboczy za pomocą witryny Azure portal, interfejsu wiersza polecenia, zestaw SDK i uwierzytelnionego interfejsów API REST.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak wyeksportować lub usunąć obszar roboczy przy użyciu interfejsów API REST Azure Portal, CLI, SDK i uwierzytelniony.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: ph-com
 ms.author: pahusban
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3b55282adf56bedb0724eca578b8eaea00c26074
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18e2ab18dac214e73eaf6ad7dfcb9dbbab0b5cf5
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65023973"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002836"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Eksportowanie lub usuwanie danych obszaru roboczego usługi Machine Learning 
 
@@ -27,9 +27,9 @@ W usłudze Azure Machine Learning można eksportować lub usuwania danych obszar
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="control-your-workspace-data"></a>Kontrolowanie danych obszaru roboczego
-W ramach produktu — dane przechowywane przez usługi Azure Machine Learning jest dostępny dla eksportowania i usuwania za pośrednictwem witryny Azure portal, interfejsu wiersza polecenia, zestaw SDK i uwierzytelniony interfejsów API REST. Dane telemetryczne są dostępne za pośrednictwem portalu Azure prywatności. 
+Dane w produkcie przechowywane przez Azure Machine Learning są dostępne do eksportowania i usuwania za pomocą Azure Portal, interfejsu wiersza polecenia, zestawu SDK i uwierzytelnionych interfejsów API REST. Dane telemetryczne są dostępne za pośrednictwem portalu Azure prywatności. 
 
-W usługach Azure Machine Learning dane osobowe składa się z informacjami o użytkownikach w dokumentach historii uruchamiania i rejestruje dane telemetryczne niektórych interakcji użytkowników z usługą.
+W Azure Machine Learning dane osobowe składają się z informacji o użytkowniku w dokumentach historia uruchamiania i rekordy telemetrii niektórych interakcji użytkownika z usługą.
 
 ## <a name="delete-workspace-data-with-the-rest-api"></a>Usuwanie danych obszaru roboczego za pomocą interfejsu API REST 
 
@@ -232,28 +232,28 @@ Szablony można uzyskać przez:
 
     https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/DataSources/{id}
 
-## <a name="delete-visual-interface-assets"></a>Usuń interfejs graficzny zasobów
+## <a name="delete-visual-interface-assets"></a>Usuń zasoby interfejsu wizualizacji
 
-W interfejs graficzny, w której utworzono eksperymentu usuwać poszczególne zasoby:
+W interfejsie wizualizacji, w którym został utworzony eksperyment, Usuń pojedyncze zasoby:
 
-1. Po lewej stronie wybierz typ zasobów, które chcesz usunąć.
+1. Po lewej stronie wybierz typ zasobu, który chcesz usunąć.
 
     ![Usuń zasoby](media/how-to-export-delete-data.md/delete-experiment.png)
 
-1. Na liście wybierz poszczególne zasoby można usunąć.
+1. Z listy wybierz poszczególne zasoby do usunięcia.
 
-1. Na dole, zaznacz **Usuń**.
+1. Na dole wybierz pozycję **Usuń**.
 
-## <a name="export-visual-interface-data"></a>Eksportowanie danych interfejsu wizualnego
+## <a name="export-visual-interface-data"></a>Eksportuj dane interfejsu wizualizacji
 
-W interfejs graficzny, w której utworzono eksperymentu należy wyeksportować dane, które zostały dodane:
+W interfejsie wizualizacji, w którym został utworzony eksperyment, Eksportuj dane, które zostały dodane:
 
-1. Po lewej stronie, wybierz **danych**.
+1. Po lewej stronie wybierz pozycję **dane**.
 
-1. Na górze, wybierz **Moje zestawy danych** lub **przykłady** do lokalizowania danych, którą chcesz wyeksportować.
+1. W górnej części wybierz pozycję **Moje zestawy danych** lub **przykłady** , aby zlokalizować dane, które chcesz wyeksportować.
 
     ![Pobieranie danych](media/how-to-export-delete-data.md/download-data.png)
 
-1. Na liście wybierz poszczególne zestawy danych do wyeksportowania.
+1. Z listy wybierz poszczególne zestawy danych do wyeksportowania.
 
-1. Na dole, zaznacz **Pobierz**.
+1. Na dole wybierz pozycję **Pobierz**.

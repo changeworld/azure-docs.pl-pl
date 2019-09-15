@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Potoki Azure ML do oceniania partii'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Utwórz potok ML do uruchamiania oceniania wsadowego na modelu klasyfikacji obrazów. Potoki usługi Machine Learning optymalizują przepływ pracy przy użyciu szybkości, przenośności i ponownego wykorzystania, dzięki czemu możesz skupić się na wiedzy, uczeniu maszynowym, a nie na infrastrukturze i automatyzacji.
 services: machine-learning
 ms.service: machine-learning
@@ -10,16 +10,16 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/05/2019
-ms.openlocfilehash: 039dbc435cbffed9fe2a9e9be0053d5eb663e9bb
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: aa280ea71735ce7c4000951e5c11de2913aaebe8
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997355"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001614"
 ---
 # <a name="use-azure-machine-learning-pipelines-for-batch-scoring"></a>Korzystanie z potoków Azure Machine Learning na potrzeby oceniania partii
 
-W tym samouczku użyjesz potoków usługi Azure Machine Learning, aby uruchomić wsadowe ocenianie lub wnioskowanie, zadanie. To przykładowe zadanie służy do klasyfikowania obrazów bez etykiet, korzystając z wstępnie [nauczonego](https://arxiv.org/abs/1512.00567) modelu splotowych neuronowych Network Tensorflow. Po skompilowaniu i opublikowaniu potoku należy skonfigurować punkt końcowy REST, aby można było wyzwolić potok z dowolnej biblioteki HTTP na dowolnej platformie.
+W tym samouczku użyjesz potoków Azure Machine Learning do uruchamiania oceniania partii lub wnioskowania, zadania. To przykładowe zadanie służy do klasyfikowania obrazów bez etykiet, korzystając z wstępnie [nauczonego](https://arxiv.org/abs/1512.00567) modelu splotowych neuronowych Network Tensorflow. Po skompilowaniu i opublikowaniu potoku należy skonfigurować punkt końcowy REST, aby można było wyzwolić potok z dowolnej biblioteki HTTP na dowolnej platformie.
 
 Potoki usługi Machine Learning optymalizują przepływ pracy przy użyciu szybkości, przenośności i ponownego wykorzystania, dzięki czemu możesz skupić się na wiedzy, uczeniu maszynowym, a nie na infrastrukturze i automatyzacji. [Dowiedz się więcej o potokach ml](concept-ml-pipelines.md).
 
@@ -33,11 +33,11 @@ W tym samouczku przedstawiono następujące zadania:
 > * Kompilowanie, uruchamianie i publikowanie potoku
 > * Włączanie punktu końcowego REST dla potoku
 
-Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
+Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Ukończ [część 1 samouczka Instalatora](tutorial-1st-experiment-sdk-setup.md) , jeśli nie masz jeszcze obszaru roboczego usługi Azure Machine Learning lub maszyny wirtualnej notesu.
+* Ukończ [część 1 samouczka Instalatora](tutorial-1st-experiment-sdk-setup.md) , jeśli nie masz jeszcze obszaru roboczego Azure Machine Learning lub maszyny wirtualnej notesu.
 * Po zakończeniu pracy z samouczkiem Instalatora Otwórz Notes **samouczków/tutorial-Pipeline-Batch-Scoring-Classification. ipynb** przy użyciu tego samego serwera notesu.
 
 Ten samouczek jest również dostępny w witrynie [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) , jeśli chcesz uruchomić go w [środowisku lokalnym](how-to-configure-environment.md#local). Uruchom `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-pipeline-steps pandas requests` , aby pobrać wymagane pakiety.
@@ -512,7 +512,7 @@ RunDetails(published_pipeline_run).show()
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Nie wykonuj tej sekcji, jeśli planujesz Uruchamianie innych samouczków usługi Azure Machine Learning.
+Nie wykonuj tej sekcji, jeśli planujesz Uruchamianie innych samouczków Azure Machine Learning.
 
 ### <a name="stop-the-notebook-vm"></a>Zatrzymaj maszynę wirtualną notesu
 

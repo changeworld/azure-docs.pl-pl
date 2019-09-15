@@ -11,16 +11,16 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 5aaad8c44328e1cc2aeb7729e3e221665823a467
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 0bba755ec5683e988bb8ae3f2308a1c298b228b0
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072982"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000559"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Klasyfikacja & Azure SQL Database i SQL Data Warehouse odnajdywania danych
 
-Funkcja odnajdywania danych & zapewnia zaawansowane funkcje wbudowane w Azure SQL Databasedo odnajdywania, klasyfikowania & i etykietowania**ochrony** poufnych danych w bazach danych.
+Funkcja odnajdywania danych & zapewnia zaawansowane funkcje wbudowane w Azure SQL Database do **odnajdywania**, **klasyfikowania** & i **etykietowania** **ochrony** poufnych danych w bazach danych.
 
 Odnajdywanie i klasyfikowanie najbardziej poufnych danych (biznes, finanse, opieka, dane osobowe) i tak dalej.) może odgrywać rolę przestawną w schemacieie ochrony informacji organizacji. Może to być infrastruktura dla:
 
@@ -137,6 +137,8 @@ Przy użyciu języka T-SQL można dodawać/usuwać klasyfikacje kolumn, a także
 - Dodaj/zaktualizuj klasyfikację jednej lub kilku kolumn: [DODAJ KLASYFIKACJĘ CZUŁOŚCI](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
 - Usuń klasyfikację z jednej lub kilku kolumn: [KLASYFIKACJA USUWANIA CZUŁOŚCI](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - Wyświetl wszystkie klasyfikacje w bazie danych: [sys. sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
+
+### <a name="manage-classifications-using-rest-apis"></a>Zarządzanie klasyfikacjami przy użyciu interfejsów API REST
 
 Za pomocą interfejsów API REST można także programowo zarządzać klasyfikacjami. Opublikowane interfejsy API REST obsługują następujące operacje:
 

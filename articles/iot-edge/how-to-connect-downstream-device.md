@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: f739bdbd295662006a964f890147ad67c373d7b5
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 41039d148e0aae7303dbc95c832bed842acdcc90
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698633"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999403"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Podłącz urządzenie z podrzędnych do bramy usługi Azure IoT Edge
 
@@ -170,10 +170,9 @@ W tej sekcji przedstawiono przykładową aplikację do łączenia z klienta urz�
 
 W tej sekcji przedstawiono przykładową aplikację do łączenia z klienta usługi Azure IoT dla środowiska Python urządzenia do bramy usługi IoT Edge. 
 
-1. Pobierz przykład **edge_downstream_client** z [zestaw SDK urządzeń Azure IoT dla przykłady w języku Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/device/samples). 
-2. Upewnij się, że wszystkie wstępnie wymagane składniki do uruchomienia przykładu, przeglądając **readme.md** pliku. 
-3. W pliku edge_downstream_client.py zaktualizuj **parametry_połączenia** i **TRUSTED_ROOT_CA_CERTIFICATE_PATH** zmiennych. 
-4. Zapoznaj się z dokumentacją zestawu SDK, aby uzyskać instrukcje dotyczące sposobu uruchamiania przykładu na urządzeniu z systemem. 
+1. Pobierz przykład dla **send_message** z [zestawu SDK urządzeń Azure IoT dla przykładów języka Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/advanced-edge-scenarios). 
+2. Upewnij się, że jesteś uruchomiony w kontenerze brzegowym lub w scenariuszu debugowania, `EdgeHubConnectionString` Ustaw zmienne środowiskowe i. `EdgeModuleCACertificateFile`
+3. Zapoznaj się z dokumentacją zestawu SDK, aby uzyskać instrukcje dotyczące sposobu uruchamiania przykładu na urządzeniu z systemem. 
 
 
 ## <a name="test-the-gateway-connection"></a>Testuj połączenie bramy

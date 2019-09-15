@@ -1,6 +1,6 @@
 ---
 title: Zarządzanie i zażądać limity przydziałów zasobów
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: W tym przewodniku opisano różne przydziały dla zasobów usługi Azure Machine Learning i sposób wyświetlania i zażądać zwiększenia przydziału.
 services: machine-learning
 ms.service: machine-learning
@@ -11,26 +11,26 @@ author: nishankgu
 ms.author: nigup
 ms.date: 05/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: bc0455b34ebdcb080e0cd702e58d8163228b60ff
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 2ee819625f772c96ac6c5a771935da17ee05f3aa
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278064"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002689"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Zarządzanie i zażądać przydziały dla zasobów platformy Azure
 
-Jak z innymi usługami platformy Azure istnieją limity określonych zasobów skojarzonych z usługą Azure Machine Learning. Te limity mieszczą się w zakresie od limitu liczby obszarów roboczych, które można utworzyć, aby ograniczyć rzeczywiste podstawowe obliczenia, które są używane na potrzeby szkoleń lub wnioskowania/oceny modelu. 
+Podobnie jak w przypadku innych usług platformy Azure, istnieją ograniczenia dotyczące niektórych zasobów skojarzonych z Azure Machine Learning. Te limity mieszczą się w zakresie od limitu liczby obszarów roboczych, które można utworzyć, aby ograniczyć rzeczywiste podstawowe obliczenia, które są używane na potrzeby szkoleń lub wnioskowania/oceny modelu. 
 
 Ten artykuł zawiera szczegółowe informacje dotyczące wstępnie skonfigurowane limity dla różnych zasobów platformy Azure dla Twojej subskrypcji i zawiera także przydatne linki, które żądania udoskonalenia limitu przydziału dla każdego typu zasobu. Limity te są umieszczane w miejscu, aby zapobiec budżetu przepełnień z powodu oszustw i uwzględnić ograniczenia pojemność na platformie Azure.
 
-Te przydziały należy uwzględnić podczas projektowania i skalowania zasobów usługi Azure Machine Learning w ramach obciążeń produkcyjnych. Na przykład jeśli klaster nie osiągnie docelową liczbę określonych węzłów, być może osiągnięto limit liczby rdzeni obliczeniowych Azure Machine Learning dla subskrypcji. Jeśli chcesz zwiększyć limit lub limitu przydziału przekracza Limit domyślne, otwórz żądanie obsługi klienta online bez dodatkowych opłat. Nie można zwiększyć limity powyżej maksymalny Limit pokazanymi w poniższych tabelach ze względu na ograniczenia pojemności na platformie Azure. W przypadku żadnej kolumny maksymalny Limit zasób nie ma limitów dostosowywalnych.
+Te przydziały należy uwzględnić podczas projektowania i skalowania zasobów Azure Machine Learning w ramach obciążeń produkcyjnych. Na przykład jeśli klaster nie osiągnie docelową liczbę określonych węzłów, być może osiągnięto limit liczby rdzeni obliczeniowych Azure Machine Learning dla subskrypcji. Jeśli chcesz zwiększyć limit lub limitu przydziału przekracza Limit domyślne, otwórz żądanie obsługi klienta online bez dodatkowych opłat. Nie można zwiększyć limity powyżej maksymalny Limit pokazanymi w poniższych tabelach ze względu na ograniczenia pojemności na platformie Azure. W przypadku żadnej kolumny maksymalny Limit zasób nie ma limitów dostosowywalnych.
 
 ## <a name="special-considerations"></a>Specjalne uwagi
 
 + Przydział to limit środków, nie gwarancję możliwości obliczeniowych. Jeśli masz zapotrzebowanie na pojemność, skontaktuj się z działem pomocy technicznej platformy Azure.
 
-+ Limit przydziału jest udostępniany we wszystkich usługach w Twoich subskrypcjach w tym usługi Azure Machine Learning. Jedyny wyjątek to Azure Machine Learning COMPUTE, który ma oddzielny przydział od podstawowego limitu przydziału. Pamiętaj obliczyć użycie przydziału dla wszystkich usług podczas obliczania Twoje potrzeby związane z pojemnością.
++ Przydział jest współużytkowany przez wszystkie usługi w Twoich subskrypcjach, w tym Azure Machine Learning. Jedyny wyjątek to Azure Machine Learning COMPUTE, który ma oddzielny przydział od podstawowego limitu przydziału. Pamiętaj obliczyć użycie przydziału dla wszystkich usług podczas obliczania Twoje potrzeby związane z pojemnością.
 
 + Domyślne limity zależą od typu kategorii oferty, takie jak bezpłatna wersja próbna, płatności i serii, na przykład Dv2, F, G i tak dalej.
 

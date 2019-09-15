@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2010
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 4bea46e62f90a41b566781457a39718849ee0e15
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 02b9c439a932a4b35700871e68bdad7f03451110
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259245"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003499"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-node-web-app"></a>Szybki start: Ustawianie i pobieranie wpisu tajnego z Azure Key Vault przy użyciu aplikacji sieci Web Node 
 
@@ -27,7 +27,7 @@ W tym przewodniku szybki start przedstawiono sposób przechowywania wpisu tajneg
 * Włączanie [tożsamości zarządzanej](../active-directory/managed-service-identity/overview.md) dla aplikacji internetowej.
 * Przyznawanie wymaganych uprawnień w celu umożliwienia aplikacji internetowej odczytu danych z magazynu kluczy.
 
-Przed kontynuowaniem upewnij się, że znasz [podstawowe pojęcia dotyczące Key Vault](key-vault-whatis.md#basic-concepts).
+Przed kontynuowaniem upewnij się, że znasz [podstawowe pojęcia dotyczące Key Vault](basic-concepts.md).
 
 > [!NOTE]
 > Usługa Key Vault to centralne repozytorium do programistycznego przechowywania wpisów tajnych. W tym celu aplikacje i użytkownicy muszą najpierw uwierzytelnić się w usłudze Key Vault — czyli podać wpis tajny. Aby zastosować najlepsze rozwiązania dotyczące bezpieczeństwa, pierwszy wpis tajny musi być okresowo obracany. 

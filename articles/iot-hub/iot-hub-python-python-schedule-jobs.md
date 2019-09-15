@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.author: robinsh
-ms.openlocfilehash: a1b206b3be4cf012d7d0cd399cf2a67d853537b1
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: f1fbfcaa80a3d1781878fe3d6eb14558a3b298a5
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147393"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999518"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>Planowanie i emitowanie zadań (Python)
 
@@ -69,14 +69,14 @@ Na końcu tego samouczka będziesz mieć dwie aplikacje w języku Python:
 
 W tej sekcji utworzysz aplikację konsolową w języku Python, która reaguje na bezpośrednią metodę wywoływaną przez chmurę, która wyzwala symulowaną metodę **lockDoor** .
 
-1. W wierszu polecenia Uruchom następujące polecenie, aby zainstalować pakiet **Azure-IoT-Device-Client** :
+1. W wierszu polecenia Uruchom następujące polecenie, aby zainstalować pakiet **Azure-IoT-Device** :
 
     ```cmd/sh
-    pip install azure-iothub-device-client
+    pip install azure-iot-device
     ```
 
    > [!NOTE]
-   > Pakiety PIP dla usług Azure-iothub-Service-Client i Azure-iothub-Device-Client są obecnie dostępne tylko dla systemu operacyjnego Windows. W przypadku systemu Linux/Mac OS zapoznaj się z sekcjami dotyczącymi systemu Linux i Mac OS w sekcji [przygotowanie środowiska programistycznego dla języka Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) .
+   > Pakiety PIP dla platformy Azure-iothub-Service-Client są obecnie dostępne tylko dla systemu operacyjnego Windows. W przypadku systemu Linux/Mac OS zapoznaj się z sekcjami dotyczącymi systemu Linux i Mac OS w sekcji [przygotowanie środowiska programistycznego dla języka Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) .
    >
 
 2. Za pomocą edytora tekstów Utwórz nowy plik **simDevice.py** w katalogu roboczym.
@@ -84,41 +84,37 @@ W tej sekcji utworzysz aplikację konsolową w języku Python, która reaguje na
 3. Dodaj następujące `import` instrukcje i zmienne na początku pliku **simDevice.py** . Zamień `deviceConnectionString` na parametry połączenia utworzonego powyżej urządzenia:
 
     ```python
+    import threading
     import time
-    import sys
+    from azure.iot.device import IoTHubDeviceClient, MethodResponse
 
-    import iothub_client
-    from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult
-    from iothub_client import IoTHubError, DeviceMethodReturnValue
-
-    METHOD_CONTEXT = 0
-    TWIN_CONTEXT = 0
-    WAIT_COUNT = 10
-
-    PROTOCOL = IoTHubTransportProvider.MQTT
     CONNECTION_STRING = "{deviceConnectionString}"
     ```
 
 4. Dodaj następujące wywołanie zwrotne funkcji, aby obsłużyć metodę **lockDoor** :
 
     ```python
-    def device_method_callback(method_name, payload, user_context):
-        if method_name == "lockDoor":
-            print ( "Locking Door!" )
+    def lockdoor_listener(client):
+        while True:
+            # Receive the direct method request
+            method_request = client.receive_method_request("lockDoor")  # blocking call
+            print( "Locking Door!" )
 
-            device_method_return_value = DeviceMethodReturnValue()
-            device_method_return_value.response = "{ \"Response\": \"lockDoor called successfully\" }"
-            device_method_return_value.status = 200
-            return device_method_return_value
+            resp_status = 200
+            resp_payload = {"Response": "lockDoor called successfully"}
+            method_response = MethodResponse(method_request.request_id, resp_status, resp_payload)
+            client.send_method_response(method_response)
     ```
 
 5. Dodaj kolejne wywołanie zwrotne funkcji w celu obsługi aktualizacji bliźniaczych reprezentacji urządzeń:
 
     ```python
-    def device_twin_callback(update_state, payload, user_context):
-        print ( "")
-        print ( "Twin callback called with:")
-        print ( "payload: %s" % payload )
+    def twin_update_listener(client):
+        while True:
+            patch = client.receive_twin_desired_properties_patch()  # blocking call
+            print ("")
+            print ("Twin desired properties patch received:")
+            print (patch)
     ```
 
 6. Dodaj następujący kod, aby zarejestrować procedurę obsługi dla metody **lockDoor** . Uwzględnij `main` również procedurę:
@@ -126,30 +122,28 @@ W tej sekcji utworzysz aplikację konsolową w języku Python, która reaguje na
     ```python
     def iothub_jobs_sample_run():
         try:
-            client = IoTHubClient(CONNECTION_STRING, PROTOCOL)
-            client.set_device_method_callback(device_method_callback, METHOD_CONTEXT)
-            client.set_device_twin_callback(device_twin_callback, TWIN_CONTEXT)
+            client = IoTHubDeviceClient.create_from_connection_string(CONNECTION_STRING)
 
-            print ( "Direct method initialized." )
-            print ( "Device twin callback initialized." )
-            print ( "IoTHubClient waiting for commands, press Ctrl-C to exit" )
+            print( "Beginning to listen for 'lockDoor' direct method invocations...")
+            lockdoor_listener_thread = threading.Thread(target=lockdoor_listener, args=(client,))
+            lockdoor_listener_thread.daemon = True
+            lockdoor_listener_thread.start()
 
+            # Begin listening for updates to the Twin desired properties
+            print ( "Beginning to listen for updates to Twin desired properties...")
+            twin_update_listener_thread = threading.Thread(target=twin_update_listener, args=(client,))
+            twin_update_listener_thread.daemon = True
+            twin_update_listener_thread.start()
+            
             while True:
-                status_counter = 0
-                while status_counter <= WAIT_COUNT:
-                    time.sleep(10)
-                    status_counter += 1
+                time.sleep(1000)
 
-        except IoTHubError as iothub_error:
-            print ( "Unexpected error %s from IoTHub" % iothub_error )
-            return
         except KeyboardInterrupt:
-            print ( "IoTHubClient sample stopped" )
+            print ( "IoTHubDeviceClient sample stopped" )
 
     if __name__ == '__main__':
         print ( "Starting the IoT Hub Python jobs sample..." )
-        print ( "    Protocol %s" % PROTOCOL )
-        print ( "    Connection string=%s" % CONNECTION_STRING )
+        print ( "IoTHubDeviceClient waiting for commands, press Ctrl-C to exit" )
 
         iothub_jobs_sample_run()
     ```
@@ -168,17 +162,17 @@ Aby utworzyć zasady dostępu współdzielonego, które przyznają uprawnienia d
 
 1. Otwórz Centrum IoT Hub w [Azure Portal](https://portal.azure.com). Najprostszym sposobem, aby uzyskać dostęp do usługi IoT Hub, jest wybranie opcji **grupy zasobów**, wybranie grupy zasobów, w której znajduje się centrum IoT Hub, a następnie wybranie Centrum IoT Hub z listy zasobów.
 
-2. W okienku po lewej stronie Centrum IoT wybierz pozycję **zasady dostępu**współdzielonego.
+2. W okienku po lewej stronie Centrum IoT wybierz pozycję **zasady dostępu współdzielonego**.
 
 3. W górnym menu powyżej listy zasad wybierz pozycję **Dodaj**.
 
-4. W okienku **Dodawanie zasad dostępu** współdzielonego Wprowadź opisową nazwę zasad. na przykład: *serviceAndRegistryReadWrite*. W obszarze **uprawnienia**wybierz **pozycję Usługa Connect** i **Zapisz rejestr** (**odczyt rejestru** jest wybierany automatycznie po wybraniu pozycji **zapis w rejestrze**). Następnie wybierz przycisk **Utwórz**.
+4. W okienku **Dodawanie zasad dostępu współdzielonego** Wprowadź opisową nazwę zasad. na przykład: *serviceAndRegistryReadWrite*. W obszarze **uprawnienia**wybierz **pozycję Usługa Connect** i **Zapisz rejestr** (**odczyt rejestru** jest wybierany automatycznie po wybraniu pozycji **zapis w rejestrze**). Następnie wybierz przycisk **Utwórz**.
 
     ![Pokaż, jak dodać nowe zasady dostępu współdzielonego](./media/iot-hub-python-python-schedule-jobs/add-policy.png)
 
-5. W okienku **zasady dostępu** współdzielonego wybierz nowe zasady z listy zasad.
+5. W okienku **zasady dostępu współdzielonego** wybierz nowe zasady z listy zasad.
 
-6. W obszarze **klucze dostępu**współdzielonego wybierz ikonę kopiowania **parametrów połączenia — klucz podstawowy** i Zapisz wartość.
+6. W obszarze **klucze dostępu współdzielonego**wybierz ikonę kopiowania **parametrów połączenia — klucz podstawowy** i Zapisz wartość.
 
     ![Sposób pobierania parametrów połączenia](./media/iot-hub-python-python-schedule-jobs/get-connection-string.png)
 

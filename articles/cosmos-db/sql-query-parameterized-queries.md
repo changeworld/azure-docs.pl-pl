@@ -1,25 +1,25 @@
 ---
-title: Sparametryzowanych zapytań w usłudze Azure Cosmos DB
-description: Dowiedz się więcej na temat zapytań SQL sparametryzowane
+title: Zapytania sparametryzowane w Azure Cosmos DB
+description: Dowiedz się więcej na temat zapytań parametrycznych SQL
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: tisande
-ms.openlocfilehash: 2bfc22346c1dd43d7d3c2937ffc286e48ae774d0
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 45c1344c32e35f60f35ba8ed105e912d92574cce
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342907"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003610"
 ---
-# <a name="parameterized-queries-in-azure-cosmos-db"></a>Sparametryzowanych zapytań w usłudze Azure Cosmos DB
+# <a name="parameterized-queries-in-azure-cosmos-db"></a>Zapytania sparametryzowane w Azure Cosmos DB
 
-Usługa cosmos DB obsługuje zapytania z parametrami wyrażone w znanej @ notacji. SQL — sparametryzowane zapewnia niezawodne obsługi i anulowania zapewnianego element danych wejściowych użytkownika i uniemożliwia przypadkowe ujawnienie danych przez wstrzyknięcie kodu SQL.
+Cosmos DB obsługuje zapytania z parametrami wyrażonymi przez znajomą @ Notation. Sparametryzowane SQL zapewnia niezawodną obsługę i ucieczkę danych wejściowych użytkownika i zapobiega przypadkowemu narażeniu danych przez iniekcję SQL.
 
 ## <a name="examples"></a>Przykłady
 
-Na przykład można napisać zapytanie pobierające `lastName` i `address.state` jako parametry i wykonaj go dla różnych wartości `lastName` i `address.state` na podstawie danych wejściowych użytkownika.
+Można na przykład napisać zapytanie, które `lastName` przyjmuje i `address.state` jako parametry, i wykonać `lastName` je dla różnych wartości i `address.state` na podstawie danych wejściowych użytkownika.
 
 ```sql
     SELECT *
@@ -27,7 +27,7 @@ Na przykład można napisać zapytanie pobierające `lastName` i `address.state`
     WHERE f.lastName = @lastName AND f.address.state = @addressState
 ```
 
-Następnie możesz wysłać żądanie do usługi Cosmos DB jako sparametryzowanych zapytań JSON, jak pokazano poniżej:
+Następnie można wysłać to żądanie do Cosmos DB jako sparametryzowane zapytanie JSON podobne do następujących:
 
 ```sql
     {
@@ -39,7 +39,7 @@ Następnie możesz wysłać żądanie do usługi Cosmos DB jako sparametryzowany
     }
 ```
 
-W poniższym przykładzie ustawiono argument TOP za pomocą sparametryzowanych zapytań: 
+Poniższy przykład ustawia argument TOP z zapytaniem sparametryzowanym: 
 
 ```sql
     {
@@ -50,10 +50,10 @@ W poniższym przykładzie ustawiono argument TOP za pomocą sparametryzowanych z
     }
 ```
 
-Wartości parametru może być dowolnym prawidłowym kodem JSON: ciągi, liczby, wartości logicznych ma wartość null, nawet wtedy, tablic lub są zagnieżdżone JSON. Ponieważ usługi Cosmos DB korzysta ze schematów, parametry nie są weryfikowany pod kątem dowolnego typu.
+Wartości parametrów mogą być dowolnymi prawidłowymi wartościami JSON: String, Numbers, Boolean, null, tablice parzyste lub zagnieżdżony kod JSON. Ponieważ Cosmos DB jest bez schematu, parametry nie są sprawdzane względem żadnego typu.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Przykłady dla platformy .NET w usłudze Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-dotnet)
-- [Modelowanie danych dokumentów](modeling-data.md)
+- [Przykłady dla platformy .NET w usłudze Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Dane dokumentu modelu](modeling-data.md)

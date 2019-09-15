@@ -555,7 +555,7 @@
             - name: Python
               href: table-sdk-python.md
             - name: Interfejsy API REST usługi Table Storage
-              href: /rest/api/storageservices/Table-Service-Concepts
+              href: /rest/api/storageservices/table-service-rest-api
     - name: Interfejs API rozwiązania etcd
       items:
         - name: Wprowadzenie

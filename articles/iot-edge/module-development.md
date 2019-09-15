@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 923859fdb0b398d04e710810a96c33fb1c3cd9da
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 9d983dc4a2623e7f2a272ea2a320d2658d784dee
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698581"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003596"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>Opracowywanie własnych modułów IoT Edge
 
@@ -60,7 +60,7 @@ Na koniec komunikatów przesyłanych z chmury do urządzenia obsługiwane przez 
 1. Utwórz wystąpienie ModuleClient w aplikacji.
 2. Upewnij się, że Twoja aplikacja akceptuje certyfikat przedstawiony przez Centrum usługi IoT Edge na tym urządzeniu.
 
-Utwórz wystąpienie ModuleClient, aby połączyć moduł z Centrum IoT Edge uruchomionego na urządzeniu, podobnie jak wystąpienia DeviceClient połączą urządzenia IoT z IoT Hub. Aby uzyskać więcej informacji na temat klasy ModuleClient i jej metod komunikacji, zobacz Dokumentacja interfejsu API dla preferowanego języka SDK: [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet), [C i Python](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)lub [Node. js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest).
+Utwórz wystąpienie ModuleClient, aby połączyć moduł z Centrum IoT Edge uruchomionego na urządzeniu, podobnie jak wystąpienia DeviceClient połączą urządzenia IoT z IoT Hub. Aby uzyskać więcej informacji na temat klasy ModuleClient i jej metod komunikacji, zobacz Dokumentacja interfejsu API dla preferowanego języka SDK: [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet), [C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Python](https://docs.microsoft.com/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient?view=azure-python), [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)lub [Node. js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest).
 
 ## <a name="language-and-architecture-support"></a>Obsługa języków i architektury
 
@@ -79,7 +79,7 @@ W przypadku wszystkich języków w poniższej tabeli IoT Edge obsługuje program
 | Python | Visual Studio Code |
 
 >[!NOTE]
->Obsługa programowania i debugowania dla urządzeń z systemem ARM64 Linux jest w [publicznej wersji](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)zapoznawczej. Aby uzyskać więcej informacji, zobacz [programowanie i debugowanie modułów IoT Edge arm64 w Visual Studio Code (wersja zapoznawcza)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview).
+>Obsługa programowania i debugowania dla urządzeń z systemem ARM64 Linux jest w [publicznej wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Aby uzyskać więcej informacji, zobacz [programowanie i debugowanie modułów IoT Edge arm64 w Visual Studio Code (wersja zapoznawcza)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview).
 
 ### <a name="windows"></a>Windows
 
@@ -90,7 +90,7 @@ W przypadku wszystkich języków w poniższej tabeli IoT Edge obsługuje program
 | C | Visual Studio 2017/2019 |
 | C# | Visual Studio Code (bez możliwości debugowania)<br>Visual Studio 2017/2019 |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Przygotuj środowisko deweloperskie i testowe dla IoT Edge](development-environment.md)
 

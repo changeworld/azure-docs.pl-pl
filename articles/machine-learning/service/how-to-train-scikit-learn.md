@@ -1,6 +1,6 @@
 ---
 title: Uczenie modeli uczenia maszynowego za pomocą scikit — uczenie się
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Dowiedz się, jak uruchamiać scikite skrypty szkoleniowe na skalę przedsiębiorstwa przy użyciu klasy skryptu sklearn szacowania firmy Azure Machine Learning. Przykładowe skrypty klasyfikują obrazy kwiatów z przesłoną w celu utworzenia modelu uczenia maszynowego na podstawie zestawu danych Iris scikit.
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +10,14 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5c44f4ed5cd6488520bf6dd99f502f33049b9b17
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 2b05ba7e4d38b596bdf76655fad0736425f8ce89
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68962997"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002534"
 ---
-# <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning-service"></a>Kompiluj scikit — Poznaj modele na dużą skalę za pomocą usługi Azure Machine Learning
+# <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Kompiluj scikit — Poznaj modele na dużą skalę dzięki Azure Machine Learning
 
 W tym artykule dowiesz się, jak uruchamiać scikite skrypty szkoleniowe na skalę przedsiębiorstwa przy użyciu klasy [skryptu sklearn szacowania](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) firmy Azure Machine Learning. 
 
@@ -65,7 +65,7 @@ from azureml.core.compute_target import ComputeTargetException
 
 ### <a name="initialize-a-workspace"></a>Inicjowanie obszaru roboczego
 
-[Obszar roboczy usługi Azure Machine Learning](concept-workspace.md) jest zasobem najwyższego poziomu dla usługi. Zapewnia ono scentralizowane miejsce do pracy ze wszystkimi tworzonymi artefaktami. W zestawie SDK języka Python można uzyskać dostęp do artefaktów obszaru roboczego przez [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) utworzenie obiektu.
+[Obszar roboczy Azure Machine Learning](concept-workspace.md) jest zasobem najwyższego poziomu dla usługi. Zapewnia ono scentralizowane miejsce do pracy ze wszystkimi tworzonymi artefaktami. W zestawie SDK języka Python można uzyskać dostęp do artefaktów obszaru roboczego przez [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) utworzenie obiektu.
 
 Utwórz obiekt obszaru roboczego z `config.json` pliku utworzonego w [sekcji wymagania wstępne](#prerequisites).
 
@@ -193,7 +193,7 @@ model = run.register_model(model_name='sklearn-iris', model_path='model.joblib')
 ## <a name="next-steps"></a>Następne kroki
 
 
-W tym artykule został przeszkolony i zarejestrowany model Keras w usłudze Azure Machine Learning. Aby dowiedzieć się, jak wdrożyć model, przejdź do naszego artykułu wdrożenia modelu.
+W tym artykule został przeszkolony i zarejestrowany model Keras na Azure Machine Learning. Aby dowiedzieć się, jak wdrożyć model, przejdź do naszego artykułu wdrożenia modelu.
 
 > [!div class="nextstepaction"]
 > [Jak i gdzie wdrażać modele](how-to-deploy-and-where.md)

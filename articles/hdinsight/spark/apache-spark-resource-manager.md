@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0d97ca91466516b8722ecca77d19078399a258f7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: ac0109ff8c5dd7f6013acefbe5ee08a13494cb77
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814091"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001767"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Zarządzanie zasobami klastra Apache Spark w usłudze Azure HDInsight 
 
@@ -51,17 +51,19 @@ Interfejs użytkownika sieci Web serwera historii platformy Spark wygląda nast�
 ![Serwer historii usługi HDInsight Spark](./media/apache-spark-resource-manager/hdinsight-spark-history-server.png)
 
 ## <a name="open-the-yarn-ui"></a>Otwórz interfejs użytkownika przędzy
+
 Za pomocą interfejsu użytkownika PRZĘDZy można monitorować aplikacje, które są aktualnie uruchomione w klastrze Spark.
 
 1. W [Azure Portal](https://portal.azure.com/)Otwórz klaster Spark. Aby uzyskać więcej informacji, zobacz Wyświetlanie [i wyświetlanie klastrów](../hdinsight-administer-use-portal-linux.md#showClusters).
 2. W obszarze **szybkie linki**kliknij pozycję **pulpit nawigacyjny klastra**, a następnie kliknij pozycję **przędza**.
 
-    ![Uruchom interfejs użytkownika PRZĘDZy](./media/apache-spark-resource-manager/launch-yarn-ui.png)
+    ![Uruchom interfejs użytkownika PRZĘDZy](./media/apache-spark-resource-manager/hdi-launch-apache-yarn.png)
 
    > [!TIP]  
    > Alternatywnie można również uruchomić interfejs użytkownika PRZĘDZy z interfejsu użytkownika Ambari. Aby uruchomić interfejs użytkownika Ambari, kliknij pozycję **pulpit nawigacyjny klastra**, a następnie kliknij pozycję **pulpit nawigacyjny klastra usługi HDInsight**. W interfejsie użytkownika Ambari kliknij pozycję **przędza**, kliknij pozycję **szybkie linki**, kliknij pozycję aktywne Menedżer zasobów, a następnie kliknij pozycję **interfejs użytkownika Menedżer zasobów**.
 
 ## <a name="optimize-clusters-for-spark-applications"></a>Optymalizowanie klastrów dla aplikacji platformy Spark
+
 Trzy kluczowe parametry, które mogą być używane do konfiguracji platformy Spark w zależności od wymagań aplikacji `spark.executor.instances`to `spark.executor.cores`, i `spark.executor.memory`. Program wykonujący to proces uruchomiony dla aplikacji platformy Spark. Jest on uruchamiany w węźle procesu roboczego i jest odpowiedzialny za wykonywanie zadań aplikacji. Domyślna liczba modułów wykonujących i rozmiary wykonawców dla każdego klastra jest obliczana na podstawie liczby węzłów procesu roboczego i rozmiaru węzła procesu roboczego. Te informacje są przechowywane w `spark-defaults.conf` węzłach głównych klastra.
 
 Trzy parametry konfiguracji można skonfigurować na poziomie klastra (dla wszystkich aplikacji uruchamianych w klastrze) lub można je określić również dla poszczególnych aplikacji.
@@ -76,7 +78,7 @@ Trzy parametry konfiguracji można skonfigurować na poziomie klastra (dla wszys
 
 3. Kliknij przycisk **Zapisz** , aby zapisać zmiany konfiguracji. W górnej części strony zostanie wyświetlony monit o ponowne uruchomienie wszystkich usług, których to dotyczy. Kliknij przycisk **Uruchom ponownie**.
 
-    ![Ponowne uruchamianie usług](./media/apache-spark-resource-manager/restart-services.png)
+    ![Ponowne uruchamianie usług](./media/apache-spark-resource-manager/apache-ambari-restart-services.png)
 
 ### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>Zmień parametry aplikacji działającej w notesie Jupyter
 W przypadku aplikacji uruchamianych w notesie Jupyter można użyć `%%configure` Magic, aby wprowadzić zmiany w konfiguracji. W idealnym przypadku należy wprowadzić takie zmiany na początku aplikacji, zanim zaczniesz korzystać z pierwszej komórki kodu. W ten sposób zagwarantujemy, że konfiguracja zostanie zastosowana do sesji usługi Livy, gdy zostanie utworzona. Jeśli chcesz zmienić konfigurację na późniejszym etapie w aplikacji, musisz użyć `-f` parametru. Jednak dzięki temu cały postęp w aplikacji zostanie utracony.
@@ -135,21 +137,21 @@ Ze względu na dynamiczną alokację Spark jedynymi zasobami, które są używan
 ## <a name="restart-the-jupyter-service"></a>Uruchom ponownie usługę Jupyter
 Uruchom interfejs użytkownika sieci Web Ambari, jak pokazano na początku artykułu. W okienku nawigacji po lewej stronie kliknij pozycję **Jupyter**, kliknij pozycję **Akcje usługi**, a następnie kliknij pozycję **Uruchom ponownie wszystkie**. Spowoduje to uruchomienie usługi Jupyter na wszystkich węzłów głównychach.
 
-![Uruchom ponownie Jupyter](./media/apache-spark-resource-manager/restart-jupyter.png "Uruchom ponownie Jupyter")
+![Uruchom ponownie Jupyter](./media/apache-spark-resource-manager/apache-ambari-restart-jupyter.png "Uruchom ponownie Jupyter")
 
 ## <a name="monitor-resources"></a>Monitorowanie zasobów
 Uruchom interfejs użytkownika przędzy, jak pokazano na początku artykułu. W tabeli metryk klastra w górnej części ekranu Sprawdź wartości **używanej pamięci** i kolumny **łącznie z pamięcią** . Jeśli te dwie wartości są zamknięte, może nie być wystarczającej ilości zasobów do uruchomienia następnej aplikacji. To samo dotyczy **rdzeni wirtualnych używanych** i **rdzeni wirtualnych sum** kolumn. Ponadto w widoku głównym, jeśli istnieje aplikacja, która została **zaakceptowana** , a nie przeszedł w stan **uruchomienia** lub **niepowodzenia** , może to oznaczać, że nie jest dostępna wystarczająca ilość zasobów do uruchomienia.
 
-![Limit zasobów](./media/apache-spark-resource-manager/resource-limit.png "Limit zasobów")
+![Limit zasobów](./media/apache-spark-resource-manager/apache-ambari-resource-limit.png "Limit zasobów")
 
 ## <a name="kill-running-applications"></a>Kasuj uruchomione aplikacje
 1. W interfejsie użytkownika przędzenia w lewym panelu kliknij pozycję **działa**. Z listy uruchomionych aplikacji Ustal, czy aplikacja ma zostać zainstalowana, a następnie kliknij **Identyfikator**.
 
-    ![Kasuj APP1](./media/apache-spark-resource-manager/kill-app1.png "Kasuj APP1")
+    ![Kasuj APP1](./media/apache-spark-resource-manager/apache-ambari-kill-app1.png "Kasuj APP1")
 
 2. Kliknij pozycję **Kasuj aplikację** w prawym górnym rogu, a następnie kliknij przycisk **OK**.
 
-    ![Kasuj APP2](./media/apache-spark-resource-manager/kill-app2.png "Kasuj APP2")
+    ![Kasuj APP2](./media/apache-spark-resource-manager/apache-ambari-kill-app2.png "Kasuj APP2")
 
 ## <a name="see-also"></a>Zobacz także
 * [Śledzenie i debugowanie zadań uruchamianych w klastrze Apache Spark w usłudze HDInsight](apache-spark-job-debugging.md)

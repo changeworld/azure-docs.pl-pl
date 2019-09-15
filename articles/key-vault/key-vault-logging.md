@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: fc0f259a4866f7eb2438938c7a10989db9200aa4
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 997651887c3c378e4791553d5ff05f585ad169ea
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976974"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000667"
 ---
 # <a name="azure-key-vault-logging"></a>Funkcja rejestrowania usługi Azure Key Vault
 
@@ -35,7 +35,7 @@ Użyj tego samouczka, aby rozpocząć pracę z funkcją rejestrowania usługi Az
 > Ten artykuł zawiera Azure PowerShell instrukcje dotyczące aktualizowania rejestrowania diagnostycznego. Rejestrowanie diagnostyczne można również zaktualizować za pomocą Azure Monitor w sekcji **dzienniki diagnostyczne** Azure Portal. 
 >
 
-Aby uzyskać przegląd informacji na temat Key Vault, zobacz [co to jest Azure Key Vault?](key-vault-whatis.md). Informacje o tym, gdzie Key Vault są dostępne, można znaleźć na [stronie](https://azure.microsoft.com/pricing/details/key-vault/)z cennikiem.
+Aby uzyskać przegląd informacji na temat Key Vault, zobacz [co to jest Azure Key Vault?](key-vault-overview.md). Informacje o tym, gdzie Key Vault są dostępne, można znaleźć na [stronie z cennikiem](https://azure.microsoft.com/pricing/details/key-vault/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -75,7 +75,7 @@ Wskazywanie programu PowerShell z odpowiednią subskrypcją jest ważnym krokiem
 
 Mimo że możesz użyć istniejącego konta magazynu dla dzienników, utworzymy konto magazynu, które będzie przeznaczone do Key Vault dzienników. Aby dowiedzieć się, w jaki sposób należy określić tę opcję później, dane będą przechowywane w zmiennej o nazwie **sa**.
 
-Aby ułatwić zarządzanie, użyjemy również tej samej grupy zasobów, która zawiera Magazyn kluczy. W samouczku z [wprowadzeniem](key-vault-get-started.md)ta grupa zasobów ma nazwę **ContosoResourceGroup**i będziemy nadal korzystać z lokalizacji Azja Wschodnia. Zastąp te wartości własnymi, stosownie do potrzeb:
+Aby ułatwić zarządzanie, użyjemy również tej samej grupy zasobów, która zawiera Magazyn kluczy. W [samouczku z wprowadzeniem](key-vault-get-started.md)ta grupa zasobów ma nazwę **ContosoResourceGroup**i będziemy nadal korzystać z lokalizacji Azja Wschodnia. Zastąp te wartości własnymi, stosownie do potrzeb:
 
 ```powershell
  $sa = New-AzStorageAccount -ResourceGroupName ContosoResourceGroup -Name contosokeyvaultlogs -Type Standard_LRS -Location 'East Asia'
@@ -88,7 +88,7 @@ Aby ułatwić zarządzanie, użyjemy również tej samej grupy zasobów, która 
 
 ## <a id="identify"></a>Identyfikowanie magazynu kluczy dla dzienników
 
-W samouczku z [wprowadzeniem](key-vault-get-started.md)nazwa magazynu kluczy została **ContosoKeyVault**. Będziemy nadal używać tej nazwy i przechowywać szczegóły w zmiennej o nazwie **KV**:
+W [samouczku z wprowadzeniem](key-vault-get-started.md)nazwa magazynu kluczy została **ContosoKeyVault**. Będziemy nadal używać tej nazwy i przechowywać szczegóły w zmiennej o nazwie **KV**:
 
 ```powershell
 $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
@@ -262,15 +262,15 @@ W poniższej tabeli wymieniono nazwy pól i opisy:
 | **callerIpAddress** |Adres IP klienta, który wykonał żądanie. |
 | **correlationId** |Opcjonalny identyfikator GUID, który klient może przekazać w celu skorelowania dzienników po stronie klienta z dziennikami po stronie usługi (Key Vault). |
 | **Identity** |Tożsamość z tokenu, która została przedstawiona w żądaniu interfejsu API REST. Zwykle jest to "użytkownik", "Nazwa główna usługi" lub kombinacja "użytkownik + appId", jak w przypadku żądania, które wynika z Azure PowerShell polecenia cmdlet. |
-| **Właściwości** |Informacje, które różnią się w zależności odoperacji (OperationName). W większości przypadków to pole zawiera informacje o kliencie (ciąg agenta użytkownika przekazaną przez klienta), dokładny identyfikator URI żądania interfejsu API REST i kod stanu HTTP. Ponadto, gdy obiekt jest zwracany w wyniku żądania (na przykład **Create** lub **VaultGet**), zawiera również identyfikator URI klucza (as "ID"), identyfikator URI magazynu lub tajny identyfikator URI. |
+| **Właściwości** |Informacje, które różnią się w zależności od operacji (**OperationName**). W większości przypadków to pole zawiera informacje o kliencie (ciąg agenta użytkownika przekazaną przez klienta), dokładny identyfikator URI żądania interfejsu API REST i kod stanu HTTP. Ponadto, gdy obiekt jest zwracany w wyniku żądania (na przykład **Create** lub **VaultGet**), zawiera również identyfikator URI klucza (as "ID"), identyfikator URI magazynu lub tajny identyfikator URI. |
 
-Wartości pola OperationName są w formacie *ObjectVerb* . Przykład:
+Wartości pola **OperationName** są w formacie *ObjectVerb* . Przykład:
 
 * Wszystkie operacje magazynu kluczy mają `Vault<action>` format, taki jak `VaultGet` i `VaultCreate`.
 * Wszystkie operacje na kluczach `Key<action>` mają format, taki `KeySign` jak `KeyList`i.
 * Wszystkie operacje tajne mają `Secret<action>` format, taki jak `SecretGet` i `SecretListVersions`.
 
-W poniższej tabeli wymieniono wartości OperationName i odpowiednie polecenia interfejsu API REST:
+W poniższej tabeli wymieniono wartości **OperationName** i odpowiednie polecenia interfejsu API REST:
 
 | operationName | Polecenie interfejsu API REST |
 | --- | --- |

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: thweiss
-ms.openlocfilehash: 60b323c12e5c548c974a7d660d08861637ac2381
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 944c05a28eb33c659bf4aaa600985530122f8d3e
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996682"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000326"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Zasady indeksowania w Azure Cosmos DB
 
@@ -26,8 +26,11 @@ W niektórych sytuacjach może zaistnieć potrzeba zastąpienia tego zachowania 
 
 Azure Cosmos DB obsługuje dwa tryby indeksowania:
 
-- **Spójne**: Jeśli zasada indeksowania kontenera jest ustawiona na spójne, indeks zostanie zaktualizowany synchronicznie podczas tworzenia, aktualizowania lub usuwania elementów. Oznacza to, że spójność zapytań odczytu będzie [spójna z konfiguracją dla konta](consistency-levels.md).
-- **Brak**: Jeśli dla zasad indeksowania kontenera określono wartość Brak, indeksowanie jest skutecznie wyłączone w tym kontenerze. Jest to często używane, gdy kontener jest używany jako czysty magazyn klucz-wartość bez konieczności stosowania indeksów pomocniczych. Może również ułatwić przyspieszenie operacji wstawiania zbiorczego.
+- **Spójne**: Indeks jest aktualizowany synchronicznie podczas tworzenia, aktualizowania lub usuwania elementów. Oznacza to, że spójność zapytań odczytu będzie [spójna z konfiguracją dla konta](consistency-levels.md).
+- **Brak**: Indeksowanie jest wyłączone w kontenerze. Jest to często używane, gdy kontener jest używany jako czysty magazyn klucz-wartość bez konieczności stosowania indeksów pomocniczych. Może również służyć do poprawy wydajności operacji zbiorczych. Po zakończeniu operacji zbiorczych tryb indeksu może być ustawiony na spójny, a następnie monitorowany przy użyciu [IndexTransformationProgress](how-to-manage-indexing-policy.md#use-the-net-sdk-v2) do momentu ukończenia.
+
+> [!NOTE]
+> Cosmos DB obsługuje również tryb indeksowania z opóźnieniem. Indeksowanie z opóźnieniem wykonuje aktualizacje dla indeksu na znacznie niższym poziomie priorytetu, gdy aparat nie wykonuje żadnej innej pracy. Może to spowodować **niespójne lub niekompletne** wyniki zapytania. Ponadto używanie indeksowania z opóźnieniem zamiast wartości "none" dla operacji zbiorczych również nie zapewnia żadnych korzyści, ponieważ jakakolwiek zmiana w trybie indeksowania spowoduje, że indeks zostanie usunięty i utworzony ponownie. Z tych powodów zalecamy, aby klienci korzystali z tej usługi. Aby zwiększyć wydajność operacji zbiorczych, ustaw tryb indeksowania na None, a następnie wróć do trybu spójnego i `IndexTransformationProgress` Monitoruj właściwość w kontenerze do momentu ukończenia.
 
 Domyślnie zasady indeksowania są ustawione na `automatic`. Jest to osiągane przez ustawienie `automatic` właściwości w zasadach indeksowania na. `true` Ustawienie tej właściwości `true` umożliwia usłudze Azure CosmosDB Automatyczne indeksowanie dokumentów w miarę ich pisania.
 

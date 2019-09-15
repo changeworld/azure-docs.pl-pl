@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Szyfrowanie i odszyfrowywanie obiektów blob w usłudze Azure Storage przy użyciu usługi Azure Key Vault | Dokumentacja firmy Microsoft'
-description: Jak szyfrowanie i odszyfrowywanie obiektów blob za pomocą szyfrowania po stronie klienta dla usługi Microsoft Azure Storage z usługą Azure Key Vault.
+title: 'Samouczek: Szyfrowanie i odszyfrowywanie obiektów BLOB w usłudze Azure Storage przy użyciu Azure Key Vault | Microsoft Docs'
+description: Jak szyfrować i odszyfrowywać obiekt BLOB przy użyciu szyfrowania po stronie klienta dla Microsoft Azure Storage z Azure Key Vault.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,23 +9,23 @@ ms.date: 05/14/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: d7c740133911689c6d3f8e29c2cb20aa8873f0c7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 34dbcaeedb544a8a8808aab3e8e3315f1790dd9a
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65788010"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003431"
 ---
-# <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>Samouczek: Szyfrowanie i odszyfrowywanie obiektów blob w Microsoft Azure Storage przy użyciu usługi Azure Key Vault
+# <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>Samouczek: Szyfrowanie i odszyfrowywanie obiektów BLOB w Microsoft Azure Storage przy użyciu Azure Key Vault
 
 ## <a name="introduction"></a>Wprowadzenie
-W tym samouczku opisano, jak korzystać z szyfrowania magazynu po stronie klienta za pomocą usługi Azure Key Vault. Przeprowadzi Cię on jak szyfrowanie i odszyfrowywanie obiektów blob, w aplikacji konsolowej przy użyciu tych technologii.
+W tym samouczku opisano sposób korzystania z szyfrowania magazynu po stronie klienta z Azure Key Vault. Przeprowadzi Cię przez proces szyfrowania i odszyfrowywania obiektu BLOB w aplikacji konsolowej przy użyciu tych technologii.
 
 **Szacowany czas trwania:** 20 minut
 
-Aby uzyskać informacje ogólne o usłudze Azure Key Vault, zobacz [co to jest usługa Azure Key Vault?](../../key-vault/key-vault-whatis.md).
+Aby uzyskać przegląd informacji na temat Azure Key Vault, zobacz [co to jest Azure Key Vault?](../../key-vault/key-vault-overview.md).
 
-Aby uzyskać przegląd informacji o szyfrowaniu po stronie klienta dla usługi Azure Storage, zobacz [szyfrowanie po stronie klienta i usługi Azure Key Vault dla usługi Microsoft Azure Storage](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Aby uzyskać przegląd informacji o szyfrowaniu po stronie klienta dla usługi Azure Storage, zapoznaj się z tematem [szyfrowanie po stronie klienta i Azure Key Vault Microsoft Azure Storage](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -37,33 +37,33 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 ## <a name="overview-of-client-side-encryption"></a>Omówienie szyfrowania po stronie klienta
 
-Aby uzyskać omówienie szyfrowania po stronie klienta dla usługi Azure Storage, zobacz [szyfrowanie po stronie klienta i usługi Azure Key Vault dla usługi Microsoft Azure Storage](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+Aby zapoznać się z omówieniem szyfrowania po stronie klienta dla usługi Azure Storage, zapoznaj się z tematem [szyfrowanie po stronie klienta i Azure Key Vault dla Microsoft Azure Storage](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
-Poniżej przedstawiono krótki opis sposobu działania szyfrowania po stronie klienta:
+Poniżej znajduje się krótki opis sposobu działania szyfrowania po stronie klienta:
 
-1. Zestaw SDK klienta usługi Azure Storage generuje klucz szyfrowania zawartości (CEK), czyli jeden jednorazowej Użyj klucza symetrycznego.
+1. Zestaw SDK klienta usługi Azure Storage generuje klucz szyfrowania zawartości (CEK), który jest jednorazowym użyciem klucza symetrycznego.
 2. Dane klienta są szyfrowane przy użyciu tego CEK.
-3. CEK jest następnie opakowywany (zaszyfrowane) przy użyciu klucza szyfrowania klucza (KEK). Klucza KEK jest identyfikowana przez identyfikator klucza i można asymetryczną parę kluczy lub klucz symetryczny i mogą być zarządzane lokalnie lub przechowywane w usłudze Azure Key Vault. Klienta usługi Storage, sama nigdy nie ma dostępu do klucza KEK. Po prostu wywołuje algorytmu zawijanie kluczy, który znajduje się za pomocą usługi Key Vault. Klienci mogą wybrać opcję użycia niestandardowych dostawców klucza zawijania/rozpakowanie chcący.
+3. CEK jest następnie opakowany (zaszyfrowany) przy użyciu klucza szyfrowania klucza (KEK). KEK jest identyfikowany przez identyfikator klucza i może być parę kluczy asymetrycznych lub kluczem symetrycznym i może być zarządzany lokalnie lub przechowywany w Azure Key Vault. Klient magazynu nigdy nie ma dostępu do KEK. Po prostu wywołuje algorytm zawijania kluczy, który jest dostarczany przez Key Vault. Klienci mogą zdecydować się na użycie niestandardowych dostawców na potrzeby zawijania kluczy/rozpakowywania w razie potrzeby.
 4. Zaszyfrowane dane są następnie przekazywane do usługi Azure Storage.
 
-## <a name="set-up-your-azure-key-vault"></a>Konfigurowanie usługi Azure Key Vault
+## <a name="set-up-your-azure-key-vault"></a>Skonfiguruj Azure Key Vault
 
-Aby kontynuować z tego samouczka, należy wykonać następujące kroki, które są opisane w tym samouczku [Szybki Start: Ustawianie i pobieranie wpisu tajnego z usługi Azure Key Vault za pomocą aplikacji internetowej platformy .NET](../../key-vault/quick-create-net.md):
+Aby móc kontynuować pracę z tym samouczkiem, należy wykonać następujące kroki, które opisano w samouczku [szybki start: Ustawianie i pobieranie wpisu tajnego z Azure Key Vault przy użyciu aplikacji](../../key-vault/quick-create-net.md)sieci Web platformy .NET:
 
 * Tworzenie magazynu kluczy.
 * Dodawanie klucza lub wpisu tajnego do magazynu kluczy.
-* Rejestrowanie aplikacji w usłudze Azure Active Directory.
-* Zezwól aplikacji na używanie klucza lub klucza tajnego.
+* Zarejestruj aplikację przy użyciu Azure Active Directory.
+* Autoryzuj aplikację do korzystania z klucza lub wpisu tajnego.
 
-Zanotuj ClientID i ClientSecret, które zostały wygenerowane podczas rejestrowania aplikacji w usłudze Azure Active Directory.
+Zanotuj ClientID i ClientSecret, które zostały wygenerowane podczas rejestrowania aplikacji przy użyciu Azure Active Directory.
 
-Utwórz oba klucze w magazynie kluczy. Przyjęto założenie, że w pozostałej części tego samouczka użyto następujących nazw: ContosoKeyVault i TestRSAKey1.
+Utwórz oba klucze w magazynie kluczy. Przyjęto założenie, że w pozostałej części samouczka użyto następujących nazw: ContosoKeyVault i TestRSAKey1.
 
 ## <a name="create-a-console-application-with-packages-and-appsettings"></a>Tworzenie aplikacji konsolowej przy użyciu pakietów i AppSettings
 
-W programie Visual Studio Utwórz nową aplikację konsoli.
+W programie Visual Studio Utwórz nową aplikację konsolową.
 
-Dodaj pakiety nuget niezbędne w konsoli Menedżera pakietów.
+Dodaj wymagane pakiety NuGet w konsoli Menedżera pakietów.
 
 ```powershell
 Install-Package Microsoft.Azure.ConfigurationManager
@@ -75,7 +75,7 @@ Install-Package Microsoft.Azure.KeyVault
 Install-Package Microsoft.Azure.KeyVault.Extensions
 ```
 
-Dodaj AppSettings App.config.
+Dodaj AppSettings do pliku App. config.
 
 ```xml
 <appSettings>
@@ -87,7 +87,7 @@ Dodaj AppSettings App.config.
 </appSettings>
 ```
 
-Dodaj następujący kod `using` dyrektywy i upewnij się, że można dodać odwołania do System.Configuration do projektu.
+Dodaj następujące `using` dyrektywy i pamiętaj, aby dodać odwołanie do elementu System. Configuration do projektu.
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -101,9 +101,9 @@ using System.Threading;
 using System.IO;
 ```
 
-## <a name="add-a-method-to-get-a-token-to-your-console-application"></a>Dodaj metodę, aby uzyskać token do aplikacji konsoli
+## <a name="add-a-method-to-get-a-token-to-your-console-application"></a>Dodawanie metody w celu uzyskania tokenu do aplikacji konsolowej
 
-Poniższa metoda jest używana przez klasy usługi Key Vault, które muszą zostać uwierzytelniony na potrzeby dostępu do magazynu kluczy.
+Następująca metoda jest używana przez klasy Key Vault, które muszą uwierzytelniać się w celu uzyskania dostępu do magazynu kluczy.
 
 ```csharp
 private async static Task<string> GetToken(string authority, string resource, string scope)
@@ -121,9 +121,9 @@ private async static Task<string> GetToken(string authority, string resource, st
 }
 ```
 
-## <a name="access-storage-and-key-vault-in-your-program"></a>Dostęp do magazynu oraz usługi Key Vault w programie
+## <a name="access-storage-and-key-vault-in-your-program"></a>Dostęp do magazynu i Key Vault w programie
 
-W przypadku metody Main() Dodaj następujący kod.
+W metodzie Main () Dodaj następujący kod.
 
 ```csharp
 // This is standard code to interact with Blob storage.
@@ -141,19 +141,19 @@ KeyVaultKeyResolver cloudResolver = new KeyVaultKeyResolver(GetToken);
 ```
 
 > [!NOTE]
-> Modele obiektów magazynu kluczy
+> Key Vault modele obiektów
 > 
-> Jest ważne dowiedzieć się, że istnieją faktycznie dwie usługi Key Vault modele obiektów pod uwagę: jeden opiera się na interfejsie API REST (przestrzeń nazw magazynu kluczy), a drugi to rozszerzenie do szyfrowania po stronie klienta.
+> Ważne jest, aby zrozumieć, że istnieją dwa Key Vault modele obiektów, które mają być świadome: jeden jest oparty na interfejsie API REST (przestrzeni nazw magazynu kluczy), a drugi to rozszerzenie dla szyfrowania po stronie klienta.
 > 
-> Klucz klienta magazynu korzysta z interfejsu API REST i rozumie JSON Web kluczy i wpisów tajnych dla dwa rodzaje elementów, które są zawarte w usłudze Key Vault.
+> Klient Key Vault współdziała z interfejsem API REST i rozpoznaje klucze sieci Web JSON oraz wpisy tajne dla dwóch rodzajów elementów zawartych w Key Vault.
 > 
-> Rozszerzenia magazynu klucza to klasy, które wydają się być utworzone specjalnie na potrzeby szyfrowania po stronie klienta w usłudze Azure Storage. Zawierają one interfejs dla kluczy (klucz Instrumentacji) i oparty na koncepcji program rozpoznawania nazw klucz klasy. Istnieją dwie implementacje klucz instrumentacji, które należy znać: RSAKey i SymmetricKey. Teraz się zdarzyć się z rzeczy, które znajdują się w usłudze Key Vault, ale w tym momencie są one niezależne klasy (tak, aby klucz i wpis tajny pobrany przez klienta klucza magazynu nie należy implementować klucz Instrumentacji).
+> Rozszerzenia Key Vault to klasy, które są wydające się głównie do szyfrowania po stronie klienta w usłudze Azure Storage. Zawierają one interfejs dla kluczy (IKey) i klasy oparte na koncepcji programu rozpoznawania kluczy. Istnieją dwie implementacje IKey, które należy znać: RSAKey i SymmetricKey. Teraz nastąpiły zbieżność z elementami zawartymi w Key Vault, ale w tym momencie są one niezależnymi klasami (więc klucz i wpis tajny pobierany przez klienta Key Vault nie implementują IKey).
 > 
 > 
 
 ## <a name="encrypt-blob-and-upload"></a>Szyfrowanie obiektów blob i przekazywanie
 
-Dodaj następujący kod do szyfrowania obiektów blob i przekaż go do konta usługi Azure storage. **ResolveKeyAsync** metodę, która jest używana funkcja zwraca klucz instrumentacji.
+Dodaj następujący kod, aby zaszyfrować obiekt BLOB i przekazać go do konta usługi Azure Storage. Używana metoda **ResolveKeyAsync** zwraca wartość iKey.
 
 ```csharp
 // Retrieve the key that you created previously.
@@ -175,15 +175,15 @@ using (var stream = System.IO.File.OpenRead(@"C:\Temp\MyFile.txt"))
 ```
 
 > [!NOTE]
-> Jeśli przyjrzymy się Konstruktor BlobEncryptionPolicy, pojawi się akceptowało klucza i/lub program rozpoznawania nazw. Należy pamiętać, obecnie nie można użyć program rozpoznawania nazw dla celów szyfrowania, ponieważ aktualnie nie robi obsługujące domyślnego klucza.
+> Jeśli zobaczysz Konstruktor BlobEncryptionPolicy, zobaczysz, że może on akceptować klucz i/lub program rozpoznawania nazw. Należy pamiętać, że obecnie nie można użyć programu rozpoznawania nazw do szyfrowania, ponieważ obecnie nie obsługuje on klucza domyślnego.
 
-## <a name="decrypt-blob-and-download"></a>Odszyfrowywanie obiektów blob i pobieranie
+## <a name="decrypt-blob-and-download"></a>Odszyfruj obiekt BLOB i Pobierz
 
-Jest tak naprawdę gdy przy użyciu klas programu rozpoznawania nazw ma sensu. Identyfikator klucza używanego do szyfrowania jest skojarzone z obiektu blob w jego metadane, więc nie ma powodu do pobierania klucza i Zapamiętaj skojarzenia między kluczem i obiektów blob. Masz upewnić się, że klucz pozostanie w usłudze Key Vault.   
+Odszyfrowywanie jest naprawdę przydatne w przypadku korzystania z klas rozpoznawania nazw. Identyfikator klucza używany do szyfrowania jest skojarzony z obiektem BLOB w swoich metadanych, dlatego nie istnieje powód pobrania klucza i zapamiętania skojarzenia między kluczem a obiektem BLOB. Wystarczy upewnić się, że klucz pozostanie w Key Vault.   
 
-Klucz prywatny klucz RSA pozostaje w usłudze Key Vault, więc do odszyfrowywania wystąpią, zaszyfrowany klucz z metadane obiektu blob, który zawiera CEK są wysyłane do usługi Key Vault do odszyfrowywania.
+Klucz prywatny klucza RSA pozostaje w Key Vault, więc w celu odszyfrowania wystąpił zaszyfrowany klucz z metadanych obiektu BLOB, który zawiera CEK, jest wysyłany do Key Vault w celu odszyfrowania.
 
-Dodaj następujący kod do odszyfrowania obiektów blob, który właśnie został przekazany.
+Dodaj następujące elementy do odszyfrowania obiektu BLOB, który właśnie został przekazany.
 
 ```csharp
 // In this case, we will not pass a key and only pass the resolver because
@@ -196,18 +196,18 @@ using (var np = File.Open(@"C:\data\MyFileDecrypted.txt", FileMode.Create))
 ```
 
 > [!NOTE]
-> Istnieje kilka innych rodzajów rozpoznawania nazw, aby ułatwić zarządzanie kluczami, w tym: AggregateKeyResolver i CachingKeyResolver.
+> Istnieje kilka innych rodzajów resolverów, które ułatwiają zarządzanie kluczami, w tym: AggregateKeyResolver i CachingKeyResolver.
 
-## <a name="use-key-vault-secrets"></a>Użyj wpisy tajne usługi Key Vault
+## <a name="use-key-vault-secrets"></a>Użyj Key Vault wpisów tajnych
 
-Sposób używania wpisu tajnego za pomocą szyfrowania po stronie klienta jest za pośrednictwem klasy SymmetricKey, ponieważ klucz tajny jest zasadniczo klucza symetrycznego. Jednakże jak wspomniano powyżej, klucz tajny w usłudze Key Vault nie została zamapowana dokładnie SymmetricKey. Istnieje kilka rzeczy, aby zrozumieć:
+Sposób użycia klucza tajnego z szyfrowaniem po stronie klienta polega na użyciu klasy SymmetricKey, ponieważ klucz tajny jest zasadniczo kluczem symetrycznym. Jednak jak wspomniano powyżej, wpis tajny w Key Vault nie jest mapowany do SymmetricKey. Istnieje kilka kwestii, które należy zrozumieć:
 
-* Klucz w SymmetricKey musi być stałą długość: 128, 192, 256, 384 lub 512 bitów.
-* Klucz w SymmetricKey powinien być zakodowane w formacie Base64.
-* Klucz tajny usługi Key Vault, która będzie służyć jako SymmetricKey musi mieć typ zawartości "application/octet-stream" w usłudze Key Vault.
+* Klucz w SymmetricKey musi mieć stałą długość: 128, 192, 256, 384 lub 512 bity.
+* Klucz w SymmetricKey powinien być zakodowany w formacie base64.
+* Wpis tajny Key Vault, który będzie używany jako SymmetricKey, musi mieć typ zawartości "application/octet-stream" w Key Vault.
 
-Oto przykład w programie PowerShell tworzenia klucz tajny w usłudze Key Vault, który może służyć jako SymmetricKey.
-Należy pamiętać, że wartość zakodowany $key, jest tylko w celach demonstracyjnych. We własnym kodzie można wygenerować ten klucz.
+Oto przykład w programie PowerShell tworzenia wpisu tajnego w Key Vault, który może być używany jako SymmetricKey.
+Należy pamiętać, że twarda wartość, $key, jest tylko do celów demonstracyjnych. W swoim własnym kodzie chcesz wygenerować ten klucz.
 
 ```csharp
 // Here we are making a 128-bit key so we have 16 characters.
@@ -222,7 +222,7 @@ $secretvalue = ConvertTo-SecureString $enc -AsPlainText -Force
 $secret = Set-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'TestSecret2' -SecretValue $secretvalue -ContentType "application/octet-stream"
 ```
 
-W całej aplikacji konsolowej to samo wywołanie jako przed służy do pobierania tego wpisu tajnego jako SymmetricKey.
+W aplikacji konsolowej można użyć tego samego wywołania jak wcześniej, aby pobrać ten klucz tajny jako SymmetricKey.
 
 ```csharp
 SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
@@ -231,10 +231,10 @@ SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
 ```
 Gotowe. Owocnej pracy.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat przy użyciu usługi Microsoft Azure Storage w języku C#, zobacz [biblioteki klienta usługi Microsoft Azure Storage dla platformy .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
+Aby uzyskać więcej informacji o korzystaniu C#z Microsoft Azure Storage z usługą, zobacz [Microsoft Azure Storage Library Client dla platformy .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
 
-Aby uzyskać więcej informacji na temat interfejsu API REST obiektów Blob, zobacz [interfejsu API REST usługi Blob](https://msdn.microsoft.com/library/azure/dd135733.aspx).
+Aby uzyskać więcej informacji na temat interfejsu API REST obiektów blob, zobacz [interfejs API REST usługi BLOB Service](https://msdn.microsoft.com/library/azure/dd135733.aspx).
 
-Aby uzyskać najnowsze informacje dotyczące usługi Microsoft Azure Storage, przejdź do [Blog zespołu programu Microsoft Azure Storage](https://blogs.msdn.com/b/windowsazurestorage/).
+Aby uzyskać najnowsze informacje na temat Microsoft Azure Storage, przejdź do [blogu zespołu Microsoft Azure Storage](https://blogs.msdn.com/b/windowsazurestorage/).

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: ca2f346950d84fda736437f439efc5d35e342799
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 5329323122d8470b19055040b6f00b6db7c0e75f
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934567"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70998944"
 ---
 # <a name="azure-service-fabric-security-overview"></a>Omówienie zabezpieczeń usługi Azure Service Fabric
 [Azure Service Fabric](../../service-fabric/service-fabric-overview.md) to platforma systemów rozproszonych ułatwiająca pakowanie i wdrażanie skalowalnych i niezawodnych mikrousług oraz zarządzanie nimi. Service Fabric rozwiązuje problemy związane z tworzeniem aplikacji w chmurze i zarządzaniem nimi. Deweloperzy i Administratorzy mogą uniknąć złożonych problemów z infrastrukturą i skupić się na wdrażaniu wymagających obciążeń o krytycznym znaczeniu, które są skalowalne i niezawodne.
@@ -132,7 +132,7 @@ Należy skonfigurować zabezpieczenia między węzłami przy użyciu ClientIdent
 ### <a name="manage-secrets-in-service-fabric-applications"></a>Zarządzanie wpisami tajnymi w aplikacjach Service Fabric
 Wpisy tajne mogą być dowolnymi informacjami poufnymi, takimi jak parametry połączenia magazynu, hasła lub inne wartości, które nie powinny być obsługiwane w postaci zwykłego tekstu.
 
-Za pomocą [Azure Key Vault](../../key-vault/key-vault-whatis.md) można zarządzać kluczami i wpisami tajnymi. Jednak korzystanie z wpisów tajnych w aplikacji nie zależy od określonej platformy w chmurze. Aplikacje można wdrażać w klastrze hostowanym w dowolnym miejscu. W tym przepływie istnieją cztery główne kroki:
+Za pomocą [Azure Key Vault](../../key-vault/key-vault-overview.md) można zarządzać kluczami i wpisami tajnymi. Jednak korzystanie z wpisów tajnych w aplikacji nie zależy od określonej platformy w chmurze. Aplikacje można wdrażać w klastrze hostowanym w dowolnym miejscu. W tym przepływie istnieją cztery główne kroki:
 
 1.  Pobierz certyfikat szyfrowania danych.
 2.  Zainstaluj certyfikat w klastrze.

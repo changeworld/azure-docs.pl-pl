@@ -7,12 +7,12 @@ ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: b590eeb86972a8e769fc240b1935c6c8ed32530a
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: e723fab12c6ba88ec5698a697ba1ddd774eed7e2
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231741"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000511"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>Omówienie przykładu strategii usług udostępnionych ISO 27001.
 
@@ -38,7 +38,7 @@ To środowisko składa się z kilku usług platformy Azure, które udostępniaj�
   - Host przesiadkowy lub host bastionu używany do zarządzania, który jest dostępny tylko za pośrednictwem usługi [Azure Firewall](../../../../firewall/overview.md) wdrożonej w podsieci stosu przychodzącego
   - Dwie maszyny wirtualne z uruchomionymi usługami Active Directory Domain Services (ADDS) i systemem DNS dostępne tylko za pośrednictwem serwera przesiadkowego, które można skonfigurować tylko do replikacji usługi AD za pośrednictwem sieci VPN lub połączenia usługi [ExpressRoute](../../../../expressroute/expressroute-introduction.md) (nie są wdrażane w ramach strategii)
   - Korzystanie z usługi [Azure Net Watcher](../../../../network-watcher/network-watcher-monitoring-overview.md) i standardowej ochrony przed atakami DDoS
-- Wystąpienie usługi [Azure Key Vault](../../../../key-vault/key-vault-whatis.md) umożliwiające hostowanie wpisów tajnych używanych na potrzeby maszyn wirtualnych wdrożonych w środowisku usług udostępnionych
+- Wystąpienie usługi [Azure Key Vault](../../../../key-vault/key-vault-overview.md) umożliwiające hostowanie wpisów tajnych używanych na potrzeby maszyn wirtualnych wdrożonych w środowisku usług udostępnionych
 
 Wszystkie te elementy są zgodne ze sprawdzonymi rozwiązaniami opublikowanymi na stronie [Centrum architektury platformy Azure — architektury referencyjne](/azure/architecture/reference-architectures/).
 

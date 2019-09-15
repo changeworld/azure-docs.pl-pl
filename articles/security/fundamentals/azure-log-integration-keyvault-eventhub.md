@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: 01ab4f6f0535f137c7ffeb99c36ecd1e831de6f7
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 15223c59f270dc562e521697186cfaf7f30073b9
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727664"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71004114"
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Samouczek Azure Log Integration: Przetwarzanie Azure Key Vault zdarzeń przy użyciu Event Hubs
 
@@ -44,7 +44,7 @@ Informacje zawarte w tym sposobie ułatwiają zrozumienie powodów związanych z
 
 Aby uzyskać więcej informacji na temat usług, które zawiera ten samouczek, zobacz: 
 
-- [Usługa Azure Key Vault](/azure/key-vault/key-vault-whatis)
+- [Usługa Azure Key Vault](/azure/key-vault/key-vault-overview)
 - [Azure Event Hubs](/azure/event-hubs/event-hubs-what-is-event-hubs)
 - [Azure Log Integration](azure-log-integration-overview.md)
 
@@ -179,7 +179,7 @@ Uruchom polecenie AzLog dla każdego centrum zdarzeń:
 
 Po minucie lub w celu uruchomienia ostatnich dwóch poleceń powinny zostać wyświetlone pliki JSON, które są generowane. Można potwierdzić, że przez monitorowanie katalogu **C:\users\AzLog\EventHubJson**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Azure Log Integration często zadawane pytania](azure-log-integration-faq.md)
 - [Wprowadzenie do Azure Log Integration](azure-log-integration-get-started.md)

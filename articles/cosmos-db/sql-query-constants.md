@@ -1,19 +1,19 @@
 ---
-title: Stałe SQL w usłudze Azure Cosmos DB
-description: Dowiedz się więcej o stałych SQL w usłudze Azure Cosmos DB
+title: Stałe SQL w Azure Cosmos DB
+description: Informacje o stałych SQL w Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
-ms.openlocfilehash: ed337c8330eb8b3e4ad97c92cca1d0c5977f9588
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 41cafeb76b7b9481a78ffcff179676d0aa7bf6fd
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342588"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002045"
 ---
-# <a name="azure-cosmos-db-sql-query-constants"></a>Stałe zapytania w usłudze Azure Cosmos DB SQL  
+# <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB stałe zapytania SQL  
 
  Stała, znana także jako literał lub wartość skalarną, jest symbol, który reprezentuje wartość określonych danych. Format stałej zależy od typu danych wartość, którą reprezentuje.  
   
@@ -26,10 +26,10 @@ ms.locfileid: "67342588"
 |**Wartość logiczna**|Wartości: **false**, **true**.|  
 |**Liczba**|Podwójnej precyzji liczba zmiennoprzecinkowa, IEEE 754 standardowych.|  
 |**Ciąg**|Sekwencja zero lub więcej znaków Unicode. Parametry muszą być ujęte w pojedyncze lub podwójne cudzysłowy.|  
-|**Tablica**|Sekwencja zero lub więcej elementów. Każdy element może być wartością typu danych skalarnych, z wyjątkiem **niezdefiniowane**.|  
+|**Tablica**|Sekwencja zero lub więcej elementów. Każdy element może być wartością dowolnego typu danych skalarnych, z wyjątkiem **undefined**.|  
 |**Obiekt**|Nieuporządkowana zestaw par nazwa/wartość zero lub więcej. Nazwa jest ciągiem Unicode, wartość może być dowolnego typu danych skalarnych, z wyjątkiem **niezdefiniowane**.|  
   
-## <a name="bk_syntax"></a>Składnia
+## <a name="bk_syntax"></a>Obowiązuje
   
 ```sql  
 <constant> ::=  
@@ -59,7 +59,7 @@ ms.locfileid: "67342588"
   
 ```  
   
-##  <a name="bk_arguments"></a> argumenty
+##  <a name="bk_arguments"></a>Argumentu
   
 * `<undefined_constant>; Undefined`  
   
@@ -107,7 +107,7 @@ ms.locfileid: "67342588"
 |-|-|-|  
 |\\'|apostrof (')|U+0027|  
 |\\"|znak cudzysłowu (")|U+0022|  
-|\\\ |kreska ułamkowa odwrotnej (\\)|U+005C|  
+|\\\ |odwrócony ukośnik (\\)|U+005C|  
 |\\/|kreska ułamkowa (/)|U+002F|  
 |\b|BACKSPACE|U+0008|  
 |\f|Wysuw strony|U+000C|  
@@ -116,7 +116,7 @@ ms.locfileid: "67342588"
 |\t|tabulator|U+0009|  
 |\uXXXX|Znak Unicode, zdefiniowane przez 4 cyfr szesnastkowych.|U+XXXX|  
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Przykłady dla platformy .NET w usłudze Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-dotnet)
-- [Modelowanie danych dokumentów](modeling-data.md)
+- [Przykłady dla platformy .NET w usłudze Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Dane dokumentu modelu](modeling-data.md)

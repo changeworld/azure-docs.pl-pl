@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: f002a4d67ee782b11cd8f39784eb48b136328c89
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 48095a2d446c8f85bab9d9268e924e29fe9a9f21
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876701"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003886"
 ---
 # <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>Samouczek: Używanie maszyny wirtualnej z systemem Linux i aplikacji w języku Python do zapisywania wpisów tajnych w usłudze Azure Key Vault
 
@@ -30,7 +30,7 @@ W tym samouczku skonfigurujesz aplikację internetową platformy Azure pod kąte
 > * Przyznawanie wymaganych uprawnień w celu umożliwienia aplikacji konsolowej odczytu danych z magazynu kluczy
 > * Pobieranie wpisu tajnego z magazynu kluczy
 
-Zanim przejdziesz dalej, zapoznaj się z [podstawowymi pojęciami dotyczącymi usługi Key Vault](key-vault-whatis.md#basic-concepts).
+Zanim przejdziesz dalej, zapoznaj się z [podstawowymi pojęciami dotyczącymi usługi Key Vault](basic-concepts.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

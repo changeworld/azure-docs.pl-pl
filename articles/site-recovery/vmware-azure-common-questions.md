@@ -8,12 +8,12 @@ services: site-recovery
 ms.date: 06/27/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 27e5323e2c9fed3886b2ddf175a2c67718ad52d0
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: c1897b73164b05dfd881729147e6d082be547530
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959146"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002274"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Często zadawane pytania dotyczące replikacji oprogramowania VMware do platformy Azure
 
@@ -231,7 +231,7 @@ Zapoznaj się z [wymaganiami wstępnymi](vmware-azure-deploy-configuration-serve
 
 ### <a name="can-i-manually-set-up-the-configuration-server-instead-of-using-a-template"></a>Czy można ręcznie skonfigurować serwer konfiguracji zamiast używać szablonu?
 
-Zalecamy [utworzenie maszyny wirtualnej serwera konfiguracji](vmware-azure-deploy-configuration-server.md) przy użyciu najnowszej wersji szablonu Open Virtual Machine format (OVF). Jeśli nie możesz użyć szablonu (na przykład jeśli nie masz dostępu do serwera VMware), [Pobierz](physical-azure-set-up-source.md) plik instalacyjny z portalu i skonfiguruj serwer konfiguracji.
+Zalecamy [utworzenie maszyny wirtualnej serwera konfiguracji](vmware-azure-deploy-configuration-server.md) przy użyciu najnowszej wersji szablonu Open Virtualization format (OVF). Jeśli nie możesz użyć szablonu (na przykład jeśli nie masz dostępu do serwera VMware), [Pobierz](physical-azure-set-up-source.md) plik instalacyjny z portalu i skonfiguruj serwer konfiguracji.
 
 ### <a name="can-a-configuration-server-replicate-to-more-than-one-region"></a>Czy serwer konfiguracji może być replikowany do więcej niż jednego regionu?
 

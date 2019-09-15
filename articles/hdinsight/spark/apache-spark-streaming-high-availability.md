@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/26/2018
-ms.openlocfilehash: 9424ebbd4ed2e1536a10d77a88257bad948628e2
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: e4414a64b2ee34ec16fde56dd750f2faa26b2e09
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915408"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002981"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>Tworzenie Apache Spark zadań przesyłania strumieniowego o wysokiej dostępności przy użyciu PRZĘDZy
 
@@ -21,7 +21,7 @@ ms.locfileid: "70915408"
 
 Usługa Spark Streaming tworzy długotrwałe zadania, w których można zastosować przekształcenia do danych, a następnie wypchnąć wyniki do systemów plików, baz danych, pulpitów nawigacyjnych i konsoli programu. Procesy przesyłania strumieniowego Spark przetwarzają mikropartie danych, tworząc najpierw partię zdarzeń w określonym przedziale czasu. Następnie ta partia jest wysyłana na potrzeby przetwarzania i wygenerowania danych wyjściowych. Przedziały czasu partii są zwykle zdefiniowane w częściach sekundy.
 
-![Przesyłanie strumieniowe Spark](./media/apache-spark-streaming-high-availability/spark-streaming.png)
+![Przesyłanie strumieniowe Spark](./media/apache-spark-streaming-high-availability/apache-spark-streaming.png)
 
 ## <a name="dstreams"></a>DStreams
 
@@ -57,7 +57,7 @@ Aby utworzyć aplikację, która przetwarza każde zdarzenie raz (i tylko raz), 
 
 W usłudze HDInsight współpraca klastra jest koordynowana przez *inny* program. Projektowanie wysokiej dostępności dla przesyłania strumieniowego Spark obejmuje techniki przesyłania strumieniowego Spark, a także dla składników PRZĘDZy.  Poniżej przedstawiono przykładową konfigurację przy użyciu PRZĘDZy. 
 
-![Architektura PRZĘDZy](./media/apache-spark-streaming-high-availability/yarn-arch.png)
+![Architektura PRZĘDZy](./media/apache-spark-streaming-high-availability/hdi-yarn-architecture.png)
 
 W poniższych sekcjach opisano zagadnienia dotyczące projektowania tej konfiguracji.
 

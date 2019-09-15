@@ -10,17 +10,17 @@ ms.author: daperlov
 ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
-ms.date: 01/17/2019
-ms.openlocfilehash: 4d4fe32b5f457e2b223132006afd20bfe3161bbd
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 08/14/2019
+ms.openlocfilehash: e522cba88eaf9cb63ef7ef2f20e3b72691261073
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142604"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002398"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Ciągła integracja i dostarczanie (CI/CD) w Azure Data Factory
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Ciągła integracja to zwyczajowa metoda testowania każdej zmiany wykonywanej w bazie kodu, jak najszybciej, jak to możliwe. Ciągłe dostarczanie odbywa się przy testowaniu, który jest wykonywany podczas ciągłej integracji i wypycha zmiany do systemu przejściowego lub produkcyjnego.
 
@@ -90,7 +90,7 @@ Poniżej znajduje się przewodnik konfigurowania wersji Azure Pipelines, która 
 
 1.  W [środowisku użytkownika usługi Azure DevOps](https://dev.azure.com/)Otwórz projekt skonfigurowany przy użyciu Data Factory.
 
-1.  W lewej części strony kliknij pozycję potoki, a następnie wybierz pozycję **wersje**.
+1.  W lewej części strony kliknij pozycję **potoki** , a następnie wybierz pozycję **wersje**.
 
     ![](media/continuous-integration-deployment/continuous-integration-image6.png)
 
@@ -176,7 +176,7 @@ Istnieją dwa sposoby obsługi wpisów tajnych:
 
 #### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Przyznawanie uprawnień agentowi Azure Pipelines
 
-Jeśli odpowiednie uprawnienia nie są dostępne, zadanie Azure Key Vault może zakończyć się niepowodzeniem z powodu błędu odmowy dostępu. Pobierz dzienniki wydania i Znajdź `.ps1` plik za pomocą polecenia, aby przyznać uprawnienia agentowi Azure Pipelines. Można uruchomić polecenie bezpośrednio lub skopiować Identyfikator podmiotu zabezpieczeń z pliku i ręcznie dodać zasady dostępu w Azure Portal. Wymagane są minimalne uprawnienia.
+Jeśli odpowiednie uprawnienia nie są dostępne, zadanie Azure Key Vault może zakończyć się niepowodzeniem z powodu błędu odmowy dostępu. Pobierz dzienniki wydania i Znajdź `.ps1` plik za pomocą polecenia, aby przyznać uprawnienia agentowi Azure Pipelines. Można uruchomić polecenie bezpośrednio lub skopiować Identyfikator podmiotu zabezpieczeń z pliku i ręcznie dodać zasady dostępu w Azure Portal. Wymagane są **minimalne** uprawnienia.
 
 ### <a name="update-active-triggers"></a>Aktualizuj aktywne wyzwalacze
 
@@ -199,7 +199,7 @@ Wdrożenie może zakończyć się niepowodzeniem, jeśli spróbujesz zaktualizow
 Po wdrożeniu można wykonać podobne kroki ( `Start-AzDataFactoryV2Trigger` z funkcją).
 
 > [!IMPORTANT]
-> W scenariuszach ciągłej integracji i wdrażania typ Integration Runtime w różnych środowiskach musi być taki sam. Na przykład jeśli w środowisku deweloperskim jest używane samodzielna Integration Runtime (IR), ten sam IR musi być typu samodzielnego w innych środowiskach, takich jak test i produkcja. Podobnie, jeśli udostępniasz środowiska Integration Runtime na wielu etapach, musisz skonfigurować środowisko Integration Runtime jako połączone samodzielnie *hostowane* we wszystkich środowiskach, takich jak programowanie, testowanie i środowisko produkcyjne.
+> W scenariuszach ciągłej integracji i wdrażania typ Integration Runtime w różnych środowiskach musi być taki sam. Na przykład jeśli w środowisku deweloperskim jest używane samodzielna Integration Runtime (IR), ten sam IR musi być typu samodzielnego w innych środowiskach, takich jak test i produkcja. Podobnie, jeśli udostępniasz środowiska Integration Runtime na wielu etapach, musisz skonfigurować środowisko Integration Runtime jako *połączone samodzielnie hostowane* we wszystkich środowiskach, takich jak programowanie, testowanie i środowisko produkcyjne.
 
 #### <a name="sample-prepostdeployment-script"></a>Przykładowy skrypt poprzedzający/powdrożeniowe
 

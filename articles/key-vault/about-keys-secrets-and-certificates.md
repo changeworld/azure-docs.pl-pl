@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 8ea7fc5a318775b05c03166df3d9b457ec004273
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 4bbe9d9bfaf49fe93631787b347a3446e4b0f817
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773128"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000578"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Klucze, wpisy tajne i certyfikaty — informacje
 
@@ -25,7 +25,7 @@ Azure Key Vault umożliwia aplikacjom Microsoft Azure i użytkownikom przechowyw
 - Przystawki Obsługuje certyfikaty, które są oparte na kluczach i wpisach tajnych i dodają funkcję automatycznego odnawiania.
 - Azure Storage: Może zarządzać kluczami konta usługi Azure Storage. Wewnętrznie Key Vault mogą wyświetlać (synchronizować) klucze przy użyciu konta usługi Azure Storage i ponownie generować (obrócić) klucze okresowo. 
 
-Aby uzyskać więcej ogólnych informacji na temat Key Vault, zobacz [co to jest Azure Key Vault?](/azure/key-vault/key-vault-whatis)
+Aby uzyskać więcej ogólnych informacji na temat Key Vault, zobacz [co to jest Azure Key Vault?](/azure/key-vault/key-vault-overview)
 
 ## <a name="azure-key-vault"></a>W usłudze Azure Key Vault
 
@@ -181,7 +181,7 @@ Aby uzyskać więcej informacji na temat IntDate i innych typów danych, zobacz 
 
 #### <a name="date-time-controlled-operations"></a>Operacje kontrolowane przez datę i godzinę
 
-Klucze, które nie są jeszcze prawidłowe i wygasły, poza oknem*EXP* usługi *NBF* / , będą działały w przypadku operacji **odszyfrowania**, **odpakowania**i **weryfikacji** (nie zwróci 403, zabronione). Uzasadnienie użycia nieprawidłowego stanu ma umożliwić przetestowanie klucza przed użyciem produkcji. Uzasadnienie dotyczące korzystania z stanu wygasłego polega na umożliwieniu operacji odzyskiwania danych, które zostały utworzone, gdy klucz był prawidłowy. Ponadto można wyłączyć dostęp do klucza przy użyciu zasad Key Vault lub przez zaktualizowanie atrybutu *Enabled* klucza na **wartość false**.
+Klucze, które nie są jeszcze prawidłowe i wygasły, poza oknem*EXP* usługi *NBF* / , będądziałały w przypadku operacji odszyfrowania, odpakowania i **weryfikacji** (nie zwróci 403, zabronione). Uzasadnienie użycia nieprawidłowego stanu ma umożliwić przetestowanie klucza przed użyciem produkcji. Uzasadnienie dotyczące korzystania z stanu wygasłego polega na umożliwieniu operacji odzyskiwania danych, które zostały utworzone, gdy klucz był prawidłowy. Ponadto można wyłączyć dostęp do klucza przy użyciu zasad Key Vault lub przez zaktualizowanie atrybutu *Enabled* klucza na **wartość false**.
 
 Aby uzyskać więcej informacji na temat typów danych, zobacz [typy danych](#data-types).
 
@@ -238,8 +238,8 @@ Key Vault obsługuje również pole ContentType dla wpisów tajnych. Klienci mog
 
 Oprócz danych tajnych można określić następujące atrybuty:  
 
-- *EXP*: IntDate, opcjonalne, wartość domyślna to **nieskończoność**. Atrybut *EXP* (czas wygaśnięcia) określa czas wygaśnięcia lub po którym dane tajne nie powinny być pobierane, z wyjątkiem [określonych sytuacji](#date-time-controlled-operations). To pole służy tylko do celów **informacyjnych** , ponieważ informuje użytkowników usługi magazynu kluczy, że nie można użyć określonego klucza tajnego. Wartość musi być liczbą zawierającą wartość IntDate.   
-- *nbf*: IntDate, opcjonalnie, domyślnie jest **teraz**. Atrybut *NBF* (nie wcześniej) określa czas, po którym dane tajne nie powinny być pobierane, z wyjątkiem [określonych sytuacji](#date-time-controlled-operations). To pole służy tylko do celów **informacyjnych** . Wartość musi być liczbą zawierającą wartość IntDate. 
+- *EXP*: IntDate, opcjonalne, wartość domyślnato nieskończoność. Atrybut *EXP* (czas wygaśnięcia) określa czas wygaśnięcia lub po którym dane tajne nie powinny być pobierane, z wyjątkiem [określonych sytuacji](#date-time-controlled-operations). To pole służy tylko do celów informacyjnych, ponieważ informuje użytkowników usługi magazynu kluczy, że nie można użyć określonego klucza tajnego. Wartość musi być liczbą zawierającą wartość IntDate.   
+- *nbf*: IntDate, opcjonalnie, domyślnie jest **teraz**. Atrybut *NBF* (nie wcześniej) określa czas, po którym dane tajne nie powinny być pobierane, z wyjątkiem [określonych sytuacji](#date-time-controlled-operations). To pole służy tylko do celów informacyjnych. Wartość musi być liczbą zawierającą wartość IntDate. 
 - *włączone*: wartość logiczna, opcjonalna, **wartość**domyślna to true. Ten atrybut określa, czy można pobrać dane tajne. Atrybut Enabled jest używany w połączeniu z *NBF* i *EXP* , gdy operacja przejdzie między *NBF* i *EXP*, będzie dozwolona tylko wtedy, gdy ustawienie Enabled ma **wartość true**. Operacje poza oknem *NBF* i *EXP* są automatycznie niedozwolone, z wyjątkiem [określonych sytuacji](#date-time-controlled-operations).  
 
 Istnieją dodatkowe atrybuty tylko do odczytu, które znajdują się w dowolnej odpowiedzi zawierającej atrybuty tajne:  
@@ -428,9 +428,9 @@ Jeśli zasada certyfikatu jest ustawiona na automatyczne odnawianie, zostanie wy
   - *Przywróć*: Przywracanie kopii zapasowej certyfikatu w magazynie kluczy
   - *managecontacts*: Zarządzaj kontaktami z certyfikatem Key Vault  
   - *manageissuers*: Zarządzanie Key Vault urzędów certyfikacji/wystawców
-  - *getemitencis*: Pobieranie urzędów certyfikacji/wystawców certyfikatów
+  - getemitencis: Pobieranie urzędów certyfikacji/wystawców certyfikatów
   - *listissuers*: Wyświetlanie listy urzędów certyfikacji/wystawców certyfikatów  
-  - *setemitencis*: Tworzenie lub aktualizowanie urzędów/wystawców certyfikatu Key Vault  
+  - setemitencis: Tworzenie lub aktualizowanie urzędów/wystawców certyfikatu Key Vault  
   - *deleteissuers*: Usuwanie urzędów certyfikacji i wystawców certyfikatów Key Vault  
  
 - Uprawnienia dla operacji uprzywilejowanych

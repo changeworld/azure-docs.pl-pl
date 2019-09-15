@@ -1,7 +1,7 @@
 ---
 title: 'Samouczek dotyczący modelu regresji: Zautomatyzowane uczenie maszynowe'
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak wygenerować model uczenia maszynowego przy użyciu zautomatyzowanego uczenia maszynowego. Korzystając z usługi Azure Machine Learning, można w sposób zautomatyzowany wykonywać wstępne przetwarzanie danych, wybierać algorytmy i hiperparametry. Końcowy model jest następnie wdrażany za pomocą usługi Azure Machine Learning.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak wygenerować model uczenia maszynowego przy użyciu zautomatyzowanego uczenia maszynowego. Korzystając z usługi Azure Machine Learning, można w sposób zautomatyzowany wykonywać wstępne przetwarzanie danych, wybierać algorytmy i hiperparametry. Następnie końcowy model jest wdrażany z Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 08/21/2019
-ms.openlocfilehash: 990755b247190f689a90d5cdf3d60d6eff9f4ae7
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: f08f2f07137e518925ee4dbe9b128e100be870c9
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036244"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003983"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Samouczek: Korzystanie z automatycznej uczenia maszynowego do przewidywania opłat za taksówkę
 
-W tym samouczku użyjesz automatycznego uczenia maszynowego w usłudze Azure Machine Learning, aby utworzyć model regresji do przewidywania cen opłat za taksówkę NYC. Ten proces akceptuje dane szkoleniowe i ustawienia konfiguracji, a następnie automatycznie wykonuje iterację przez kombinacje różnych metod normalizacji/normalizacji funkcji, modeli i parametrów z parametrami, aby dotrzeć do najlepszego modelu.
+W tym samouczku użyjesz automatycznego uczenia maszynowego w Azure Machine Learning, aby utworzyć model regresji do przewidywania cen opłat za taksówkę NYC. Ten proces akceptuje dane szkoleniowe i ustawienia konfiguracji, a następnie automatycznie wykonuje iterację przez kombinacje różnych metod normalizacji/normalizacji funkcji, modeli i parametrów z parametrami, aby dotrzeć do najlepszego modelu.
 
 ![Diagram przepływu](./media/tutorial-auto-train-models/flow2.png)
 
@@ -30,11 +30,11 @@ W tym samouczku przedstawiono następujące zadania:
 > * Uczenie zautomatyzowanego modelu regresji uczenia maszynowego
 > * Oblicz dokładność modelu
 
-Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj obecnie [bezpłatną lub płatną wersję](https://aka.ms/AMLFree) usługi Azure Machine Learning.
+Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję](https://aka.ms/AMLFree) Azure Machine Learning dzisiaj.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Ukończ [Samouczek instalacji](tutorial-1st-experiment-sdk-setup.md) , jeśli nie masz jeszcze obszaru roboczego usługi Azure Machine Learning lub maszyny wirtualnej notesu.
+* Ukończ [Samouczek instalacji](tutorial-1st-experiment-sdk-setup.md) , jeśli nie masz jeszcze obszaru roboczego Azure Machine Learning lub maszyny wirtualnej notesu.
 * Po zakończeniu pracy z samouczkiem Instalatora Otwórz Notes **samouczków/Regression-Automated-ml. ipynb** przy użyciu tego samego serwera notesu.
 
 Ten samouczek jest również dostępny w witrynie [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) , jeśli chcesz uruchomić go w [środowisku lokalnym](how-to-configure-environment.md#local). Uruchom `pip install azureml-sdk[automl] azureml-opendatasets azureml-widgets` , aby pobrać wymagane pakiety.
@@ -983,7 +983,7 @@ local_run = experiment.submit(automl_config, show_output=True)
 
 ## <a name="explore-the-results"></a>Eksplorowanie wyników
 
-Poznaj wyniki automatycznego szkolenia przy użyciu widżetu [Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py). Widżet umożliwia wyświetlenie wykresu i tabeli wszystkich poszczególnych iteracji przebiegów oraz metryki i metadanych dokładności szkoleniowej. Ponadto można odfiltrować różne metryki dokładności niż Metryka podstawowa za pomocą selektora listy rozwijanej.
+Poznaj wyniki automatycznego szkolenia przy użyciu [widżetu Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py). Widżet umożliwia wyświetlenie wykresu i tabeli wszystkich poszczególnych iteracji przebiegów oraz metryki i metadanych dokładności szkoleniowej. Ponadto można odfiltrować różne metryki dokładności niż Metryka podstawowa za pomocą selektora listy rozwijanej.
 
 ```python
 from azureml.widgets import RunDetails
@@ -1057,7 +1057,7 @@ Tradycyjne maszyny, uczenia modelu procesu opracowywania jest bardzo dużej ilo�
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Nie wykonuj tej sekcji, jeśli planujesz Uruchamianie innych samouczków usługi Azure Machine Learning.
+Nie wykonuj tej sekcji, jeśli planujesz Uruchamianie innych samouczków Azure Machine Learning.
 
 ### <a name="stop-the-notebook-vm"></a>Zatrzymaj maszynę wirtualną notesu
 
@@ -1088,4 +1088,4 @@ W tym samouczku zautomatyzowanego uczenia maszynowego wykonano następujące czy
 > * Przeprowadzono trenowanie przy użyciu zautomatyzowanego modelu regresji lokalnie z użyciem niestandardowych parametrów.
 > * Zbadano i przejrzano wyniki trenowania.
 
-[Wdróż model](tutorial-deploy-models-with-aml.md) przy użyciu usługi Azure Machine Learning.
+[Wdróż model](tutorial-deploy-models-with-aml.md) za pomocą usługi Azure Machine Learning.

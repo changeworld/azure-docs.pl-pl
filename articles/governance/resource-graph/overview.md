@@ -7,12 +7,12 @@ ms.date: 05/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 7091e2bd1ee24843299721d3c21a8546197fac6f
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 6721769b0ab6df4165281d9b5b75c0e1332ed1dc
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207576"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001649"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Omówienie usługi Azure Resource Graph
 
@@ -49,7 +49,7 @@ Następnie Wykres zasobów aktualizuje swoją bazę danych. Wykres zasobów wyko
 
 ## <a name="the-query-language"></a>Język zapytań
 
-Teraz, gdy lepiej rozumiesz, czym jest usługa Azure Resource Graph, przyjrzyjmy się bliżej temu, jak tworzyć zapytania.
+Teraz, gdy znasz już usługę Azure Resource Graph, przyjrzyjmy się szczegółowe do tworzenia zapytań.
 
 Ważne jest zrozumienie, że język zapytań usługi Azure Resource Graph opiera się na języku zapytań [Kusto Query Language](../../data-explorer/data-explorer-overview.md) używanym przez usługę Azure Data Explorer.
 
@@ -76,7 +76,7 @@ Wykres zasobów ogranicza zapytania na poziomie użytkownika. Odpowiedź usługi
 - `x-ms-user-quota-remaining`(int): Przydział pozostałych zasobów dla użytkownika. Ta wartość jest mapowana na liczbę zapytań.
 - `x-ms-user-quota-resets-after`(hh: mm: SS): Czas trwania do momentu zresetowania zużycia przydziału użytkownika
 
-Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące żądań](./concepts/guidance-for-throttled-requests.md)z ograniczeniami.
+Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące żądań z ograniczeniami](./concepts/guidance-for-throttled-requests.md).
 
 ## <a name="running-your-first-query"></a>Uruchamianie pierwszego zapytania
 
@@ -93,4 +93,4 @@ Wykres zasobów obsługuje interfejs wiersza polecenia platformy Azure, Azure Po
 - Uruchom pierwsze zapytanie przy użyciu [interfejsu wiersza polecenia platformy Azure](first-query-azurecli.md).
 - Uruchom pierwsze zapytanie przy użyciu [Azure PowerShell](first-query-powershell.md).
 - Zacznij od [początkowych zapytań](./samples/starter.md).
-- Popraw swoją wiedzę dzięki [](./samples/advanced.md)zaawansowanym zapytaniami.
+- Popraw swoją wiedzę dzięki [zaawansowanym zapytaniami](./samples/advanced.md).

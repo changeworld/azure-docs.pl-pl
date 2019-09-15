@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 132dd91ba121fc5939a0f30194fe4abdd3755414
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 1a26d6228fd2d0383f22d4f286cc84e263facfe6
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67847045"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999101"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -48,12 +48,12 @@ Element **ClaimType** zawiera następujący atrybut:
 
 Element **ClaimType** zawiera następujące elementy:
 
-| Element | Wystąpień | Opis |
+| Element | Wystąpienia | Opis |
 | ------- | ----------- | ----------- |
 | DisplayName | 0:1 | Tytuł wyświetlany użytkownikom na różnych ekranach. Wartość może być [zlokalizowana](localization.md). |
 | DataType | 0:1 | Typ żądania. Można użyć typów danych Boolean, Date, dateTime, int, Long, String, StringCollection, alternativeSecurityIdCollection. |
 | DefaultPartnerClaimTypes | 0:1 | Domyślne typy roszczeń partnera, które mają być używane przez określony protokół. Wartość można zastąpić w **PartnerClaimType** określonym w elementach **oświadczenie inputclaim** lub **oświadczenie outputclaim** . Użyj tego elementu, aby określić nazwę domyślną dla protokołu.  |
-| Bitowa | 0:1 | Opcjonalny ciąg znaków maskowania, który można zastosować podczas wyświetlania żądania. Na przykład numer telefonu 324-232-4343 może być maskowany jako XXX-XXX-4343. |
+| Maska | 0:1 | Opcjonalny ciąg znaków maskowania, który można zastosować podczas wyświetlania żądania. Na przykład numer telefonu 324-232-4343 może być maskowany jako XXX-XXX-4343. |
 | UserHelpText | 0:1 | Opis typu zgłoszenia, który może być przydatny dla użytkowników, aby zrozumieć jego przeznaczenie. Wartość może być [zlokalizowana](localization.md). |
 | UserInputType | 0:1 | Typ kontrolki wejściowej, która powinna być dostępna dla użytkownika po ręcznym wprowadzeniu danych roszczeń dla typu zgłoszenia. Zobacz typy danych wejściowych użytkownika zdefiniowane w dalszej części tej strony. |
 | Ograniczenie | 0:1 | Ograniczenia wartości dla tego żądania, takie jak wyrażenie regularne (regularne) lub lista akceptowalnych wartości. Wartość może być [zlokalizowana](localization.md). |
@@ -63,7 +63,7 @@ PredicateValidationReference| 0:1 | Odwołanie do elementu **PredicateValidation
 
 **DefaultPartnerClaimTypes** może zawierać następujący element:
 
-| Element | Wystąpień | Opis |
+| Element | Wystąpienia | Opis |
 | ------- | ----------- | ----------- |
 | Protocol | 0: n | Lista protokołów z domyślną nazwą typu zgłoszenia partnera. |
 
@@ -71,7 +71,7 @@ Element **Protocol** zawiera następujące atrybuty:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Name | Tak | Nazwa prawidłowego protokołu obsługiwanego przez Azure AD B2C. Możliwe wartości to:  OAuth1, OAuth2, SAML2, OpenIdConnect, WsFed lub WsTrust. |
+| Name | Tak | Nazwa prawidłowego protokołu obsługiwanego przez Azure AD B2C. Możliwe wartości to:  OAuth1, OAuth2, SAML2, OpenIdConnect. |
 | PartnerClaimType | Tak | Nazwa typu zgłoszenia do użycia. |
 
 W poniższym przykładzie, gdy platforma obsługi tożsamości współdziała z dostawcą tożsamości SAML2 lub aplikacją jednostki uzależnionej, to wniosek o **nazwisko** jest mapowany do `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`, z OpenIdConnect i OAuth2, to wniosek jest mapowany na `family_name` .
@@ -100,7 +100,7 @@ W związku z tym token JWT wystawiony przez Azure AD B2C emituje `family_name` *
 }
 ```
 
-### <a name="mask"></a>Bitowa
+### <a name="mask"></a>Maska
 
 Element **Mask** zawiera następujące atrybuty:
 
@@ -150,10 +150,10 @@ Element **ograniczenia** może zawierać następujący atrybut:
 
 Element **ograniczenia** zawiera następujące elementy:
 
-| Element | Wystąpień | Opis |
+| Element | Wystąpienia | Opis |
 | ------- | ----------- | ----------- |
 | Licznik | 1: n | Dostępne opcje w interfejsie użytkownika dla użytkownika, które mają zostać wybrane dla roszczeń, takie jak wartość z listy rozwijanej. |
-| Wzorce | 1:1 | Wyrażenie regularne, które ma być używane. |
+| Wzorzec | 1:1 | Wyrażenie regularne, które ma być używane. |
 
 ### <a name="enumeration"></a>Licznik
 
@@ -161,7 +161,7 @@ Element **Enumeration** zawiera następujące atrybuty:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Text | Yes | Ciąg wyświetlany, który jest wyświetlany użytkownikowi w interfejsie użytkownika dla tej opcji. |
+| Text | Tak | Ciąg wyświetlany, który jest wyświetlany użytkownikowi w interfejsie użytkownika dla tej opcji. |
 |Value | Tak | Wartość żądania skojarzona z wybraniem tej opcji. |
 | SelectByDefault | Nie | Wskazuje, czy ta opcja powinna być wybrana domyślnie w interfejsie użytkownika. Możliwe wartości: Wartość TRUE lub False. |
 
@@ -184,7 +184,7 @@ Lista miast listy rozwijanej z wartością domyślną ustawioną na Nowy Jork:
 
 ![Kontrolka listy rozwijanej renderowana w przeglądarce i pokazująca wartość domyślną](./media/claimsschema/dropdownsingleselect.png)
 
-### <a name="pattern"></a>Wzorce
+### <a name="pattern"></a>Wzorzec
 
 Element **Pattern** może zawierać następujące atrybuty:
 
@@ -354,9 +354,9 @@ Typ danych wejściowych użytkownika **tylko do odczytu** służy do udostępnia
 ```
 
 
-### <a name="paragraph"></a>Przepisów
+### <a name="paragraph"></a>Akapit
 
-Typ **** danych wejściowych użytkownika akapitu służy do podania pola, które wyświetla tekst tylko w znaczniku akapitu. &lt;Na przykład&gt;tekst/p&lt;.&gt;
+Typ danych wejściowych użytkownika akapitu służy do podania pola, które wyświetla tekst tylko w znaczniku akapitu. &lt;Na przykład&gt;tekst/p&lt;.&gt;
 
 ![Korzystanie z typu "Claim" z akapitem](./media/claimsschema/paragraph.png)
 

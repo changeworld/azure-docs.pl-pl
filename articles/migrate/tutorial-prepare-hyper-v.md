@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/24/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 87df37cc6baa863bb0b068bdfeb9cde873e38836
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 87a585f821f7b41c689899818627d863394fe844
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952077"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003093"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Przygotowanie do oceny i migracji maszyn wirtualnych funkcji Hyper-V na platformę Azure
 
@@ -99,7 +99,7 @@ Aby przygotować się do oceny funkcji Hyper-V, wykonaj następujące czynności
 1. Sprawdź ustawienia hosta funkcji Hyper-V.
 2. Skonfiguruj komunikację zdalną programu PowerShell na każdym hoście, tak aby urządzenie Azure Migrate mogły uruchamiać polecenia programu PowerShell na hoście przy użyciu połączenia usługi WinRM.
 3. Jeśli dyski maszyny wirtualnej znajdują się w zdalnym magazynie SMB, potrzebne jest Delegowanie poświadczeń. 
-    - Włącz delegowanie CredSSP, aby urządzenie Azure Migrate było działać jako klient, Delegowanie poświadczeń do hosta. T
+    - Włącz delegowanie CredSSP, aby urządzenie Azure Migrate było działać jako klient, Delegowanie poświadczeń do hosta.
     - Każdy host może działać jako delegat dla urządzenia, zgodnie z poniższym opisem.
     - Później podczas konfigurowania urządzenia zostanie włączone delegowanie na urządzeniu.
 4. Przejrzyj wymagania dotyczące urządzenia i dostęp do adresu URL/portu, który jest wymagany dla urządzenia.
@@ -113,7 +113,7 @@ Te ustawienia można skonfigurować ręcznie, korzystając z poniższych procedu
 
 Skrypt weryfikuje hosty funkcji Hyper-V i konfiguruje ustawienia potrzebne do odnajdywania i oceniania maszyn wirtualnych funkcji Hyper-V. Oto co robi:
 
-- Sprawdza, czy uruchomiono skrypt w obsługiwanej wersji programu PowerShell.
+- Sprawdza, czy skrypt jest uruchamiany w obsługiwanej wersji programu PowerShell.
 - Sprawdza, czy użytkownika (użytkownik uruchamiający skrypt) ma uprawnienia administracyjne na hoście funkcji Hyper-V.
 - Umożliwia utworzenie konta użytkownika lokalnego (nie administratora), które jest używane przez usługę Azure Migrate do komunikacji z hostem funkcji Hyper-V. To konto użytkownika jest dodawane do tych grup na hoście:
     - Użytkownicy zarządzania zdalnego

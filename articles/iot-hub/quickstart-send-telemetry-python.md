@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/28/2019
-ms.openlocfilehash: c92b019e15c6a9ee5b2d38e240ae4f9891621f72
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: a08719d322f044bbf1ced8103af5e4e23ed948c9
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360196"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70998479"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>Szybki start: wysyłanie danych telemetrycznych z urządzenia do centrum IoT oraz odczytywanie ich przy użyciu aplikacji zaplecza (Python)
 
@@ -30,22 +30,6 @@ W tym przewodniku Szybki start używana jest wstępnie napisana aplikacja język
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-
-Przykładowa aplikacja uruchamiana w tym przewodniku Szybki Start jest zapisywana przy użyciu języka Python. Obecnie usługi Microsoft Azure IoT SDK dla języka Python obsługują tylko określone wersje języka Python dla każdej platformy. Aby dowiedzieć się więcej, zobacz [plik Readme zestawu SDK języka Python](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues).
-
-W tym przewodniku szybki start założono, że używasz komputera deweloperskiego z systemem Windows. W przypadku systemów Windows obsługiwane jest tylko środowisko [Python 3.6. x](https://www.python.org/downloads/release/python-368/) . Wybrany instalator języka Python powinien być oparty na architekturze systemu, którego używasz. Jeśli architektura procesora systemu jest 32 bit, Pobierz instalatora x86; w przypadku architektury 64-bitowej Pobierz instalatora x86-64. Ponadto upewnij się, że dla architektury (x86 lub x64) jest zainstalowany pakiet redystrybucyjny [firmy Microsoft dla programu C++ Visual Studio 2019](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) .
-
-Możesz pobrać Język Python dla innych platform z [Python.org](https://www.python.org/downloads/).
-
-Możesz sprawdzić bieżącą wersję języka Python na komputerze deweloperskim przy użyciu jednego z następujących poleceń:
-
-```python
-python - -version
-```
-
-```python
-python3 - -version
-```
 
 Uruchom następujące polecenie, aby dodać rozszerzenie IoT Microsoft Azure dla interfejsu wiersza polecenia platformy Azure do wystąpienia Cloud Shell. Rozszerzenie IOT dodaje do interfejsu wiersza polecenia platformy Azure IoT Hub, IoT Edge i usługi IoT Device Provisioning Service (DPS).
 
@@ -100,7 +84,7 @@ Aplikacja urządzenia symulowanego łączy się z punktem końcowym specyficznym
 1. W lokalnym oknie terminalu uruchom następujące polecenia, aby zainstalować wymagane biblioteki dla aplikacji urządzenia symulowanego:
 
     ```cmd/sh
-    pip install azure-iothub-device-client
+    pip install azure-iot-device
     ```
 
 1. W lokalnym oknie terminalu uruchom następujące polecenia, aby uruchomić aplikację urządzenia symulowanego:
@@ -112,13 +96,7 @@ Aplikacja urządzenia symulowanego łączy się z punktem końcowym specyficznym
     Poniższy zrzut ekranu przedstawia dane wyjściowe w momencie wysyłania przez aplikację urządzenia symulowanego danych telemetrycznych do centrum IoT:
 
     ![Uruchamianie urządzenia symulowanego](media/quickstart-send-telemetry-python/SimulatedDevice.png)
-    
-### <a name="to-avoid-the-import-iothubclient-error"></a>Aby uniknąć błędu importowania iothub_client
-Bieżąca wersja zestawu Azure IoT SDK dla języka Python to otoka w [zestawie SDK języka C](https://github.com/azure/azure-iot-sdk-c). Jest on generowany przy użyciu [](https://www.boost.org/) biblioteki zwiększania. Z tego powodu zawiera kilka znaczących ograniczeń. Więcej szczegółów można znaleźć [tutaj](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues)
 
-1. Sprawdź, czy masz odpowiednią wersję języka [Python](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues). Należy pamiętać, że tylko niektóre wersje działają prawidłowo dla tego przykładu. 
-2. Sprawdź, czy masz odpowiednią wersję C++ środowiska uruchomieniowego [Microsoft Visual C++ redystrybucyjną dla programu Visual Studio 2019](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads). (Zalecamy Najnowsza wersja).
-3. Sprawdź, czy zainstalowano klienta iothub: `pip install azure-iothub-device-client`.
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Odczytywanie danych telemetrycznych z centrum
 

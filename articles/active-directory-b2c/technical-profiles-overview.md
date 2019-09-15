@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: cdb1b49af5d3a85dc1853e5964c1cdfdd5c3a7cd
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 679de2d3a5519e57978239ddd75a4b9fa2ffef3c
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716670"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70998755"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Informacje o profilach technicznych w Azure Active Directory B2C zasadach niestandardowych
 
@@ -37,7 +37,6 @@ Profil techniczny umożliwia realizację następujących typów scenariuszy:
 - [Dostawca RESTful](restful-technical-profile.md) — wywoływanie usług interfejsu API REST, takich jak sprawdzanie danych wejściowych użytkownika, Wzbogacanie danych użytkownika lub Integrowanie z aplikacjami biznesowymi.
 - [SAML2](saml-technical-profile.md) -Federacja z dowolnym dostawcą tożsamości protokołu SAML.
 - [Samodzielne](self-asserted-technical-profile.md) współpracujące z użytkownikiem. Na przykład Zbierz poświadczenia użytkownika w celu zalogowania się, renderowania strony rejestracji lub resetowania hasła.
-- **WsFed** -Federacja z dowolnym dostawcą tożsamości protokołu WsFed.
 - [Zarządzanie sesjami](active-directory-b2c-reference-sso-custom.md) — obsługa różnych typów sesji.
 - **Application Insights**
 
@@ -49,7 +48,7 @@ Wszystkie typy profilów technicznych mają takie same koncepcje. Wysyłasz ośw
  
 1. **InputClaimsTransformation** — oświadczenia wejściowe dla każdej [transformacji oświadczeń](claimstransformations.md) wejściowych są pobierane z zbioru oświadczeń i po wykonaniu oświadczenia wyjściowe są umieszczane w zbiorze oświadczeń. Oświadczenia wyjściowe przekształcenia oświadczeń wejściowych mogą być oświadczeniami wejściowymi kolejnych transformacji oświadczeń wejściowych.
 2. **InputClaims** — oświadczenia są pobierane z zbioru oświadczeń i są używane w profilu technicznym. Na przykład [samodzielnie potwierdzony profil techniczny](self-asserted-technical-profile.md) używa oświadczeń wejściowych do wstępnego wypełniania oświadczeń wyjściowych dostarczanych przez użytkownika. Profil techniczny interfejsu API REST używa oświadczeń wejściowych do wysyłania parametrów wejściowych do punktu końcowego interfejsu API REST. Azure Active Directory używa jako unikatowego identyfikatora do odczytywania, aktualizowania lub usuwania konta.
-3. **Wykonywanie profilu technicznego** — profil techniczny wymienia oświadczenia ze skonfigurowaną stroną. Na przykład:
+3. **Wykonywanie profilu technicznego** — profil techniczny wymienia oświadczenia ze skonfigurowaną stroną. Przykład:
     - Przekieruj użytkownika do dostawcy tożsamości, aby zakończyć logowanie. Po pomyślnym zalogowaniu użytkownik wraca do tyłu, a wykonywanie profilu technicznego będzie kontynuowane.
     - Wywołaj interfejs API REST podczas wysyłania parametrów jako InputClaims i pobierania informacji z powrotem jako OutputClaims.
     - Utwórz lub zaktualizuj konto użytkownika.

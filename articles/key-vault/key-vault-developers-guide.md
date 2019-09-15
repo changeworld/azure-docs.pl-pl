@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: ca640b058a1d91d15c5accb9367936368511a3ef
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: a2749ca35e6137d42a09b79da9315c8f7b242c31
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881613"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000796"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Przewodnik dewelopera Azure Key Vault
 
@@ -24,7 +24,7 @@ Key Vault pozwala bezpiecznie uzyskać dostęp do poufnych informacji z aplikacj
 - Aplikacja może korzystać z kluczy do podpisywania i szyfrowania, a jednocześnie zarządzaniem kluczami zewnętrznymi z poziomu aplikacji, dzięki czemu rozwiązanie może być odpowiednie jako aplikacji rozproszonej geograficznie.
 - Począwszy od wersji 2016 września dla Key Vault, Twoje aplikacje mogą teraz zarządzać certyfikatami Key Vault. Aby uzyskać więcej informacji, zobacz [Informacje o kluczach, wpisach tajnych i certyfikatach](/rest/api/keyvault/about-keys--secrets-and-certificates).
 
-Aby uzyskać więcej ogólnych informacji na temat Azure Key Vault, zobacz [co to jest Key Vault](key-vault-whatis.md).
+Aby uzyskać więcej ogólnych informacji na temat Azure Key Vault, zobacz [co to jest Key Vault](key-vault-overview.md).
 
 ## <a name="public-previews"></a>Publiczne podglądy
 

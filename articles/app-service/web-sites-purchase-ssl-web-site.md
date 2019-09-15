@@ -15,16 +15,16 @@ ms.date: 10/16/2018
 ms.author: cephalin
 ms.reviewer: apurvajo
 ms.custom: seodec18
-ms.openlocfilehash: d6d3e91bef6c4f837b068d755994b2f3268600da
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 7c899bae6cf36e68664a3ce60939f72a4b5bd1ab
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074052"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001204"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Kup i skonfiguruj certyfikat SSL dla Azure App Service
 
-W tym samouczku pokazano, jak zabezpieczyć [aplikację App Serviceową](https://docs.microsoft.com/azure/app-service/) lub [aplikację funkcji](https://docs.microsoft.com/azure/azure-functions/) przez utworzenie (zakup) certyfikatu App Service w [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) , a następnie powiązanie go z aplikacją App Service.
+W tym samouczku pokazano, jak zabezpieczyć [aplikację App Serviceową](https://docs.microsoft.com/azure/app-service/) lub [aplikację funkcji](https://docs.microsoft.com/azure/azure-functions/) przez utworzenie (zakup) certyfikatu App Service w [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) , a następnie powiązanie go z aplikacją App Service.
 
 > [!TIP]
 > Certyfikaty App Service mogą być używane dla wszystkich usług platformy Azure lub innych niż usługi platformy Azure i nie są ograniczone do App Services. W tym celu należy utworzyć lokalną kopię pliku PFX certyfikatu App Service, którego można użyć w dowolnym miejscu. Aby uzyskać więcej informacji, zobacz [Tworzenie lokalnej kopii PFX certyfikat usługi App Service](https://blogs.msdn.microsoft.com/benjaminperkins/2017/04/12/export-an-azure-app-service-certificate-pfx-powershell/).
@@ -35,7 +35,7 @@ W tym samouczku pokazano, jak zabezpieczyć [aplikację App Serviceową](https:/
 Aby wykonać następujące czynności:
 
 - [Utwórz aplikację usługi App Service](/azure/app-service/)
-- [Mapowanie nazwy domeny do aplikacji](app-service-web-tutorial-custom-domain.md) lub kupowanie [i Konfigurowanie na platformie Azure](manage-custom-dns-buy-domain.md)
+- [Mapowanie nazwy domeny do aplikacji](app-service-web-tutorial-custom-domain.md) lub [kupowanie i Konfigurowanie na platformie Azure](manage-custom-dns-buy-domain.md)
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
@@ -53,7 +53,7 @@ Skorzystaj z poniższej tabeli, aby skonfigurować certyfikat. Po zakończeniu k
 | Sama nazwa hosta w domenie | W tym miejscu określ domenę główną. Wystawiony certyfikat zabezpiecza *zarówno* domenę główną, jak i `www` poddomenę. W wystawionym certyfikacie pole Common Name (nazwa pospolita) zawiera domenę główną, a pole Alternatywna nazwa `www` podmiotu zawiera domenę. Aby zabezpieczyć tylko każdą poddomenę, określ w pełni kwalifikowaną nazwę domeny podrzędnej domeny (na przykład `mysubdomain.contoso.com`).|
 | Subscription | Centrum danych, w którym hostowana jest aplikacja internetowa. |
 | Resource group | Grupa zasobów, która zawiera certyfikat. Możesz na przykład użyć nowej grupy zasobów lub wybrać tę samą grupę zasobów co App Service aplikacji. |
-| Jednostka SKU certyfikatu | Określa typ certyfikatu do utworzenia, czy certyfikat standardowy czy [certyfikat](https://wikipedia.org/wiki/Wildcard_certificate)wieloznaczny. |
+| Jednostka SKU certyfikatu | Określa typ certyfikatu do utworzenia, czy certyfikat standardowy czy [certyfikat wieloznaczny](https://wikipedia.org/wiki/Wildcard_certificate). |
 | Postanowienia prawne | Kliknij, aby potwierdzić, że zgadzasz się z postanowieniami prawnymi. Certyfikaty są uzyskiwane z GoDaddy. |
 
 ## <a name="store-in-azure-key-vault"></a>Przechowywanie w Azure Key Vault
@@ -64,7 +64,7 @@ Na stronie [Certyfikaty App Service](https://portal.azure.com/#blade/HubsExtensi
 
 ![Wstaw obraz gotowy do przechowania w KV](./media/app-service-web-purchase-ssl-web-site/ReadyKV.png)
 
-[Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) to usługa platformy Azure, która pomaga chronić klucze kryptograficzne i wpisy tajne używane przez aplikacje i usługi w chmurze. Jest to magazyn wybrany dla App Service certyfikatów.
+[Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) to usługa platformy Azure, która pomaga chronić klucze kryptograficzne i wpisy tajne używane przez aplikacje i usługi w chmurze. Jest to magazyn wybrany dla App Service certyfikatów.
 
 Na stronie **stan Key Vault** kliknij pozycję **Key Vault repozytorium** , aby utworzyć nowy magazyn, lub wybierz istniejący magazyn. Jeśli zdecydujesz się utworzyć nowy magazyn, Skorzystaj z poniższej tabeli, aby skonfigurować magazyn, a następnie kliknij przycisk Utwórz. Zobacz, aby utworzyć nowe Key Vault w ramach tej samej subskrypcji i grupy zasobów.
 

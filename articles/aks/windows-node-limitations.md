@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: ca5d857e4d473c7f76b7fac62e8a8bab39769b25
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: a0fe65428a3329d4843ec913e934fb7a91b13759
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233134"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000214"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Bieżące ograniczenia dotyczące pul węzłów systemu Windows Server i obciążeń aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -36,7 +36,7 @@ Obsługa puli węzłów serwera okna zawiera pewne ograniczenia, które są czę
 
 Kubernetes jest historycznym systemem Linux. Wiele przykładów używanych w nadrzędnej witrynie sieci Web [Kubernetes.IO][kubernetes] jest przeznaczonych do użycia w węzłach systemu Linux. Podczas tworzenia wdrożeń korzystających z kontenerów systemu Windows Server następujące zagadnienia są stosowane na poziomie systemu operacyjnego:
 
-- **Tożsamość** — Linux używa identyfikatora użytkownika (UID) i identyfikatora GROUPID (GID) reprezentowanego jako typy całkowite. Nazwy użytkowników i grup nie są kanoniczne — to tylko alias w */etc/Groups* lub */etc/passwd* z powrotem do UID + GID.
+- **Tożsamość** — system Linux identyfikuje użytkownika przez liczbę całkowitą użytkownika (UID). Użytkownik ma także alfanumeryczną nazwę użytkownika na potrzeby logowania, którą system Linux tłumaczy na UID użytkownika. Podobnie system Linux identyfikuje grupę użytkowników według identyfikatora grupy całkowitej (GID) i tłumaczy nazwę grupy na odpowiadającą jej wartość GID.
     - System Windows Server używa większego identyfikatora zabezpieczeń (SID), który jest przechowywany w bazie danych Menedżera dostępu zabezpieczeń (SAM) systemu Windows. Ta baza danych nie jest udostępniana między hostem i kontenerami ani między kontenerami.
 - **Uprawnienia do plików** — system Windows Server używa listy kontroli dostępu opartej na identyfikatorach SID, a nie maski bitów uprawnień i UID + GID
 - **Ścieżki plików** — Konwencja w systemie Windows Server jest używana \ zamiast/.
@@ -60,7 +60,7 @@ Obecnie jest wymagane ustawienie co najmniej 30 zasobników, aby zapewnić nieza
 
 ## <a name="how-do-patch-my-windows-nodes"></a>Jak zastosować poprawki do węzłów systemu Windows?
 
-Węzły systemu Windows Server w AKS muszą zostać uaktualnione w celu pobrania najnowszych poprawek poprawek i aktualizacji. Aktualizacje systemu Windows nie są włączone na węzłach w AKS. AKS zwalnia nowe obrazy puli węzłów, gdy tylko poprawki są dostępne, klienci są odpowiedzialni za uaktualnienie pul węzłów, aby zachować bieżące informacje na temat poprawek i poprawek. Dotyczy to również używanej wersji Kubernetes. Informacje o wersji AKS będą wskazywać, kiedy są dostępne nowe wersje. Aby uzyskać więcej informacji na temat uaktualniania puli węzłów systemu Windows Server, zobacz [uaktualnianie puli węzłów w AKS][nodepool-upgrade].
+Węzły systemu Windows Server w AKS muszą zostać *uaktualnione* w celu pobrania najnowszych poprawek poprawek i aktualizacji. Aktualizacje systemu Windows nie są włączone na węzłach w AKS. AKS zwalnia nowe obrazy puli węzłów, gdy tylko poprawki są dostępne, klienci są odpowiedzialni za uaktualnienie pul węzłów, aby zachować bieżące informacje na temat poprawek i poprawek. Dotyczy to również używanej wersji Kubernetes. Informacje o wersji AKS będą wskazywać, kiedy są dostępne nowe wersje. Aby uzyskać więcej informacji na temat uaktualniania puli węzłów systemu Windows Server, zobacz [uaktualnianie puli węzłów w AKS][nodepool-upgrade].
 
 > [!NOTE]
 > Zaktualizowany obraz systemu Windows Server będzie używany tylko wtedy, gdy uaktualnienie klastra (uaktualnienie płaszczyzny kontroli) zostało wykonane przed uaktualnieniem puli węzłów

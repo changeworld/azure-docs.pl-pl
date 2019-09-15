@@ -9,12 +9,12 @@ ms.date: 07/22/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 58c88e9b7cf2e0f80c88d32e02d13096a9623a4b
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: ed668f744716b062fd70d2f63d89152f6fc8a902
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914024"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999138"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Użyj programu Visual Studio 2019 do tworzenia i debugowania modułów dla Azure IoT Edge
 
@@ -44,7 +44,7 @@ Po przygotowaniu programu Visual Studio 2019 potrzebne są również następują
 
 - Pobierz i zainstaluj program [Docker Community Edition](https://docs.docker.com/install/) na komputerze deweloperskim, aby skompilować i uruchomić obrazy modułu. Należy ustawić platformę Docker CE do uruchamiania w trybie kontenera systemu Linux lub w trybie kontenera Windows.
 
-- Skonfiguruj lokalne środowisko programistyczne, aby debugować, uruchamiać i testować rozwiązanie IoT Edge przez zainstalowanie [narzędzia deweloperskiego usługi Azure IoT EdgeHub](https://pypi.org/project/iotedgehubdev/). Zainstaluj środowisko [Python (2.7/3.6) i narzędzie PIP](https://www.python.org/) , a następnie zainstaluj pakiet **iotedgehubdev** , uruchamiając następujące polecenie w terminalu. Upewnij się, że używana wersja narzędzia deweloperskiego EdgeHub IoT Azure jest większa niż 0.3.0.
+- Skonfiguruj lokalne środowisko programistyczne, aby debugować, uruchamiać i testować rozwiązanie IoT Edge przez zainstalowanie [narzędzia deweloperskiego usługi Azure IoT EdgeHub](https://pypi.org/project/iotedgehubdev/). Zainstaluj język [Python (2.7/3.6 +) i PIP](https://www.python.org/) , a następnie zainstaluj pakiet **iotedgehubdev** , uruchamiając następujące polecenie w terminalu. Upewnij się, że używana wersja narzędzia deweloperskiego EdgeHub IoT Azure jest większa niż 0.3.0.
 
    ```cmd
    pip install --upgrade iotedgehubdev

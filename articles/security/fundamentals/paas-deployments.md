@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: d20ea4a6e86bb889615d3ab9bfcac5aedf838ceb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 67a34b2b0a997a118cb2fe1b99de04bd58063307
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098620"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999042"
 ---
 # <a name="securing-paas-deployments"></a>Zabezpieczanie wdrożeń PaaS
 
@@ -88,7 +88,7 @@ Zasady i wzorce dla obwodu sieci są dostępne dla dekad. Z kolei branża ma sto
 Poniżej przedstawiono najlepsze rozwiązania dotyczące zarządzania obwodem tożsamości.
 
 **Najlepsze rozwiązanie**: Zabezpiecz swoje klucze i poświadczenia, aby zabezpieczyć wdrożenie PaaS.   
-**Szczegóły**: Utrata kluczy i poświadczeń jest typowym problemem. Możesz użyć scentralizowanego rozwiązania, w którym klucze i wpisy tajne mogą być przechowywane w sprzętowych modułach zabezpieczeń (sprzętowych modułów zabezpieczeń). [Azure Key Vault](../../key-vault/key-vault-whatis.md) zabezpiecza klucze i wpisy tajne, szyfrując klucze uwierzytelniania, klucze konta magazynu, klucze szyfrowania danych, pliki PFX i hasła przy użyciu kluczy chronionych przez sprzętowych modułów zabezpieczeń.
+**Szczegóły**: Utrata kluczy i poświadczeń jest typowym problemem. Możesz użyć scentralizowanego rozwiązania, w którym klucze i wpisy tajne mogą być przechowywane w sprzętowych modułach zabezpieczeń (sprzętowych modułów zabezpieczeń). [Azure Key Vault](../../key-vault/key-vault-overview.md) zabezpiecza klucze i wpisy tajne, szyfrując klucze uwierzytelniania, klucze konta magazynu, klucze szyfrowania danych, pliki PFX i hasła przy użyciu kluczy chronionych przez sprzętowych modułów zabezpieczeń.
 
 **Najlepsze rozwiązanie**: Nie umieszczaj poświadczeń i innych wpisów tajnych w kodzie źródłowym ani w witrynie GitHub.   
 **Szczegóły**: Jedyną czynnością, która nie jest utrata kluczy i poświadczeń, jest posiadanie nieautoryzowanej strony dostępu do nich. Osoby atakujące mogą skorzystać z technologii bot, aby znaleźć klucze i wpisy tajne przechowywane w repozytoriach kodu, takich jak GitHub. Nie umieszczaj kluczy i wpisów tajnych w tych publicznych repozytoriach kodu.
@@ -108,7 +108,7 @@ Użyj uwierzytelniania dwuskładnikowego. Uwierzytelnianie dwuskładnikowe jest 
 Użyj standardowych protokołów uwierzytelniania, takich jak OAuth2 i Kerberos. Te protokoły zostały rozbudowane i mogą być wdrażane w ramach bibliotek platformy na potrzeby uwierzytelniania i autoryzacji.
 
 ## <a name="use-threat-modeling-during-application-design"></a>Korzystanie z modelowania zagrożeń podczas projektowania aplikacji
-[Cykl rozwoju zabezpieczeń](https://www.microsoft.com/en-us/sdl) firmy Microsoft określa, że zespoły powinny być zaangażowane w proces nazywany modelem zagrożeń podczas fazy projektowania. Aby ułatwić ten proces, firma Microsoft stworzyła [Threat Modeling Tool SDL](/azure/security/azure-security-threat-modeling-tool). Modelowanie projektu aplikacji i wyliczanie [](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) zagrożeń krokowych we wszystkich granicach zaufania może przechwycić błędy projektu wczesnie.
+[Cykl rozwoju zabezpieczeń](https://www.microsoft.com/en-us/sdl) firmy Microsoft określa, że zespoły powinny być zaangażowane w proces nazywany modelem zagrożeń podczas fazy projektowania. Aby ułatwić ten proces, firma Microsoft stworzyła [Threat Modeling Tool SDL](/azure/security/azure-security-threat-modeling-tool). Modelowanie projektu aplikacji i wyliczanie zagrożeń [krokowych](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) we wszystkich granicach zaufania może przechwycić błędy projektu wczesnie.
 
 Poniższa tabela zawiera listę zagrożeń związanych z KROKami i zawiera przykładowe środki zaradcze, które korzystają z funkcji platformy Azure. Te środki zaradcze nie będą działały w każdej sytuacji.
 
@@ -133,7 +133,7 @@ Poniżej przedstawiono najlepsze rozwiązania dotyczące korzystania z App Servi
 **Szczegóły**: Ograniczanie dostępu jest przeznaczone dla organizacji, które chcą wymusić zasady zabezpieczeń na potrzeby dostępu do danych. Za pomocą RBAC można przypisywać uprawnienia użytkownikom, grupom i aplikacjom w określonym zakresie. Aby dowiedzieć się więcej o udzielaniu użytkownikom dostępu do aplikacji, zobacz Wprowadzenie do [zarządzania dostępem](/azure/role-based-access-control/overview).
 
 **Najlepsze rozwiązanie**: Ochrona kluczy.   
-**Szczegóły**: Azure Key Vault pomaga chronić klucze kryptograficzne i wpisy tajne używane przez aplikacje i usługi w chmurze. Za pomocą Key Vault można szyfrować klucze i wpisy tajne (takie jak klucze uwierzytelniania, klucze konta magazynu, klucze szyfrowania danych). Pliki i hasła PFX) przy użyciu kluczy chronionych przez sprzętowe moduły zabezpieczeń (sprzętowych modułów zabezpieczeń). W celu zapewnienia dodatkowego bezpieczeństwa możesz zaimportować lub wygenerować klucze w modułach HSM. Aby dowiedzieć się więcej, zobacz [Azure Key Vault](/azure/key-vault/key-vault-whatis) . Za pomocą Key Vault można także zarządzać certyfikatami TLS przy użyciu autoodnawiania.
+**Szczegóły**: Azure Key Vault pomaga chronić klucze kryptograficzne i wpisy tajne używane przez aplikacje i usługi w chmurze. Za pomocą Key Vault można szyfrować klucze i wpisy tajne (takie jak klucze uwierzytelniania, klucze konta magazynu, klucze szyfrowania danych). Pliki i hasła PFX) przy użyciu kluczy chronionych przez sprzętowe moduły zabezpieczeń (sprzętowych modułów zabezpieczeń). W celu zapewnienia dodatkowego bezpieczeństwa możesz zaimportować lub wygenerować klucze w modułach HSM. Aby dowiedzieć się więcej, zobacz [Azure Key Vault](/azure/key-vault/key-vault-overview) . Za pomocą Key Vault można także zarządzać certyfikatami TLS przy użyciu autoodnawiania.
 
 **Najlepsze rozwiązanie**: Ogranicz przychodzące źródłowe adresy IP.   
 **Szczegóły**: [App Service Environment](/azure/app-service/environment/intro) ma funkcję integracji sieci wirtualnej, która pomaga ograniczyć przychodzące źródłowe adresy IP za pomocą sieciowych grup zabezpieczeń. Sieci wirtualne umożliwiają umieszczanie zasobów platformy Azure w nieinternetowej, rutowanej sieci, do której kontroluje się dostęp. Aby dowiedzieć się więcej, zobacz [Integrowanie aplikacji z siecią wirtualną platformy Azure](/azure/app-service/web-sites-integrate-with-vnet).
@@ -159,7 +159,7 @@ Użyj [usługi Azure Application Insights](https://azure.microsoft.com/documenta
 Usługa Application Insights ma szeroką gamę narzędzi do interakcji z danymi, które zbiera. Usługa Application Insights przechowuje dane we wspólnym repozytorium. Korzystanie z funkcji udostępnionych, takich jak alerty, pulpity nawigacyjne i szczegółowa analiza, może być możliwe przy użyciu języka zapytań Kusto.
 
 ## <a name="perform-security-penetration-testing"></a>Przeprowadź testowanie penetracji zabezpieczeń
-Sprawdzanie poprawności zabezpieczeń ochrony jest tak ważne jak testowanie wszelkich innych funkcji. Przetestowanie [penetracji](pen-testing.md) standardowej części procesu kompilowania i wdrażania. Zaplanuj regularne testy zabezpieczeń i skanowania w poszukiwaniu wdrożonych aplikacji oraz monitoruj otwarte porty, punkty końcowe i ataki.
+Sprawdzanie poprawności zabezpieczeń ochrony jest tak ważne jak testowanie wszelkich innych funkcji. [Przetestowanie penetracji](pen-testing.md) standardowej części procesu kompilowania i wdrażania. Zaplanuj regularne testy zabezpieczeń i skanowania w poszukiwaniu wdrożonych aplikacji oraz monitoruj otwarte porty, punkty końcowe i ataki.
 
 Testowanie rozmyte to metoda odnajdywania awarii programu (błędy kodu) przez dostarczanie nieprawidłowo sformułowanych danych wejściowych do interfejsów programu (punktów wejścia), które analizują i zużywają te dane. [Wykrywanie zagrożeń zabezpieczeń firmy Microsoft](https://www.microsoft.com/en-us/security-risk-detection/) jest narzędziem opartym na chmurze, które służy do wyszukiwania usterek i innych luk w zabezpieczeniach oprogramowania przed wdrożeniem go na platformie Azure. Narzędzie jest przeznaczone do przechwytywania luk w zabezpieczeniach przed wdrożeniem oprogramowania, dzięki czemu nie trzeba poprawiać usterki, rozwiązywać awarii ani reagować na ataki po wydaniu oprogramowania.
 

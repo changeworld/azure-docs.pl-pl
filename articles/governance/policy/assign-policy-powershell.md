@@ -7,12 +7,12 @@ ms.date: 03/11/2019
 ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: bcdac2635c9d40bcd0f7605fad7479d5b8cdddba
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: c18e48d76381bf40e6177feb389a0197aace081d
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70239202"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000848"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>Szybki start: Tworzenie przypisania usługi Azure Policy w celu identyfikacji niezgodnych zasobów przy użyciu usługi Azure PowerShell
 
@@ -59,7 +59,7 @@ Poprzednie polecenia korzystają z następujących informacji:
 - **Definicja** — identyfikator definicji zasad, na podstawie której tworzysz przypisanie. W tym przypadku jest to identyfikator definicji zasad *Audit VMs that do not use managed disks* (Przeprowadź inspekcję maszyn wirtualnych, które nie korzystają z dysków zarządzanych).
 - **Zakres** — zakres określa, jakie zasoby lub grupy zasobów są wymuszane w ramach przypisania zasad. Może obejmować zarówno subskrypcje, jak i grupy zasobów. Pamiętaj, aby zastąpić fragment &lt;zakres&gt; nazwą grupy zasobów.
 
-Teraz możesz zidentyfikować niezgodne zasoby, aby poznać stan zgodności Twojego środowiska.
+Teraz możesz zidentyfikować niezgodne zasoby, aby zrozumieć stan zgodności środowiska.
 
 ## <a name="identify-non-compliant-resources"></a>Identyfikowanie niezgodnych zasobów
 

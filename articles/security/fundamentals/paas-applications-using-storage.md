@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: tomsh
-ms.openlocfilehash: 9d88b8101f37fde5d1ab8ac11253884b6534e3b5
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 675e10101d01d831aad7652c70cbfcf320085a3c
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726762"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999166"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>Najlepsze rozwiązania dotyczące zabezpieczania aplikacji PaaS Web i Mobile przy użyciu usługi Azure Storage
 W tym artykule omówiono zbiór najlepszych rozwiązań z zakresu bezpieczeństwa usługi Azure Storage na potrzeby zabezpieczania aplikacji internetowych i mobilnych platformy jako usługi (PaaS). Te najlepsze rozwiązania wynikają z naszych rozwiązań związanych z platformą Azure i klientami.
@@ -71,7 +71,7 @@ Aby dowiedzieć się więcej na temat RBAC, zobacz:
 ## <a name="use-client-side-encryption-for-high-value-data"></a>Korzystanie z szyfrowania po stronie klienta dla danych o wysokiej wartości
 Szyfrowanie po stronie klienta umożliwia programowe szyfrowanie danych podczas przesyłania przed przekazaniem ich do usługi Azure Storage oraz programowo odszyfrowywanie danych podczas ich pobierania. Zapewnia to szyfrowanie danych w trakcie przesyłania, ale również zapewnia szyfrowanie danych przechowywanych w spoczynku. Szyfrowanie po stronie klienta to najbezpieczniejsza Metoda szyfrowania danych, ale wymaga to wprowadzenia programistycznych zmian w aplikacji oraz umieszczenia procesów zarządzania kluczami.
 
-Szyfrowanie po stronie klienta umożliwia również kontrolę nad kluczami szyfrowania. Można generować własne klucze szyfrowania i zarządzać nimi. Wykorzystuje technikę koperty, w której Biblioteka klienta usługi Azure Storage generuje klucz szyfrowania zawartości (CEK), który jest następnie opakowany (zaszyfrowany) przy użyciu klucza szyfrowania klucza (KEK). KEK jest identyfikowany przez identyfikator klucza i może być parę kluczy asymetrycznych lub kluczem symetrycznym i może być zarządzany lokalnie lub przechowywany w [Azure Key Vault](/azure/key-vault/key-vault-whatis).
+Szyfrowanie po stronie klienta umożliwia również kontrolę nad kluczami szyfrowania. Można generować własne klucze szyfrowania i zarządzać nimi. Wykorzystuje technikę koperty, w której Biblioteka klienta usługi Azure Storage generuje klucz szyfrowania zawartości (CEK), który jest następnie opakowany (zaszyfrowany) przy użyciu klucza szyfrowania klucza (KEK). KEK jest identyfikowany przez identyfikator klucza i może być parę kluczy asymetrycznych lub kluczem symetrycznym i może być zarządzany lokalnie lub przechowywany w [Azure Key Vault](/azure/key-vault/key-vault-overview).
 
 Szyfrowanie po stronie klienta jest wbudowane w środowisko Java i biblioteki klienckie programu .NET Storage. Zapoznaj się z tematem [szyfrowanie po stronie klienta i Azure Key Vault dla Microsoft Azure Storage](/azure/storage/common/storage-client-side-encryption) , aby uzyskać informacje dotyczące szyfrowania danych w aplikacjach klienckich oraz generowania własnych kluczy szyfrowania i zarządzania nimi.
 

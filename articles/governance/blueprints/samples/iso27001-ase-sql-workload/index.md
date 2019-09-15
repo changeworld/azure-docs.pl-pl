@@ -7,12 +7,12 @@ ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 8877c29341c95d5cd0fe8e35887c44594e0b6d41
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: cee3867449aea1cb1c59ac5a7c3be57291d1aebc
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231769"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000133"
 ---
 # <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Przegląd przykładowej strategii obciążenia środowiska App Service Environment/bazy danych SQL ISO 27001
 
@@ -36,7 +36,7 @@ To środowisko składa się z kilku usług platformy Azure, które udostępniaj�
 - [Zasady platformy Azure](../../../policy/overview.md) blokujące usługi, które można wdrażać w środowisku, i odmawiające utworzenia zasobu publicznego adresu IP
 - Sieć wirtualna zawierająca jedną podsieć i połączona równorzędnie z istniejącym wcześniej środowiskiem [usług udostępnionych](../iso27001-shared/index.md), która wymusza przekazywanie całego ruchu przez zaporę [usług udostępnionych](../iso27001-shared/index.md). Sieć wirtualna hostuje następujące zasoby:
   - [Środowiska Azure App Service Environment](../../../../app-service/environment/intro.md), które umożliwiają hostowanie aplikacji internetowych, internetowych interfejsów API lub funkcji
-  - Wystąpienie usługi [Azure Key Vault](../../../../key-vault/key-vault-whatis.md) używające punktu końcowego usługi sieci wirtualnej do przechowywania wpisów tajnych używanych przez aplikacje działające w środowisku obciążenia
+  - Wystąpienie usługi [Azure Key Vault](../../../../key-vault/key-vault-overview.md) używające punktu końcowego usługi sieci wirtualnej do przechowywania wpisów tajnych używanych przez aplikacje działające w środowisku obciążenia
   - Wystąpienie usługi [Azure SQL Database](../../../../sql-database/sql-database-technical-overview.md) używające punktu końcowego usługi sieci wirtualnej do hostowania baz danych używanych na potrzeby aplikacji w środowisku obciążenia
 
 ## <a name="next-steps"></a>Następne kroki

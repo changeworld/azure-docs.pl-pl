@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: tisande
-ms.openlocfilehash: 5537133b31bb63c9fa6ac3a52b344f7f1d9c4c8a
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 8de5140d0146ccbb18f41867e1c716aa2f3897b7
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614340"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001907"
 ---
 # <a name="getting-started-with-sql-queries"></a>Wprowadzenie do zapytań SQL
 
@@ -171,5 +171,5 @@ W powyższych przykładach przedstawiono kilka aspektów języka zapytań Cosmos
 ## <a name="next-steps"></a>Następne kroki
 
 - [Wprowadzenie do Azure Cosmos DB](introduction.md)
-- [Przykłady dla platformy .NET w usłudze Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [Przykłady dla platformy .NET w usłudze Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Klauzula SELECT](sql-query-select.md)

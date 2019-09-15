@@ -1,7 +1,7 @@
 ---
 title: Jak wdrażać modele na maszynach wirtualnych notesu
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak wdrożyć modele usług Azure Machine Learning jako usługę sieci Web przy użyciu maszyn wirtualnych notesu.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak wdrażać modele Azure Machine Learning jako usługę sieci Web przy użyciu maszyn wirtualnych notesu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,26 +10,26 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 08/08/2019
-ms.openlocfilehash: d6b26dfe1eb8ea65dd7c751a148c599123b0f6db
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 046f998038c47a48a8528bf36d87ac836395eec2
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947762"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002831"
 ---
 # <a name="deploy-a-model-to-notebook-vms"></a>Wdrażanie modelu na maszynach wirtualnych notesu
 
-Dowiedz się, jak za pomocą usługi Azure Machine Learning wdrożyć model jako usługę sieci Web na maszynie wirtualnej notesu. Użyj maszyn wirtualnych z notesem, jeśli spełniony jest jeden z następujących warunków:
+Dowiedz się, jak za pomocą Azure Machine Learning wdrożyć model jako usługę sieci Web na maszynie wirtualnej notesu. Użyj maszyn wirtualnych z notesem, jeśli spełniony jest jeden z następujących warunków:
 
 - Musisz szybko wdrażać i weryfikacja modelu.
 - W przypadku testowania modelu, który jest w fazie projektowania.
 
 > [!TIP]
-> Wdrożenie modelu na podstawie Jupyter Notebook na maszynie wirtualnej w notesie do usługi sieci Web na tej samej maszynie wirtualnej jest _wdrażaniem lokalnym_. W takim przypadku komputer "lokalny" jest maszyną wirtualną notesu. Więcej informacji o wdrożeniach znajduje się w temacie [Deploying Models with Azure Machine Learning Service](how-to-deploy-and-where.md).
+> Wdrożenie modelu na podstawie Jupyter Notebook na maszynie wirtualnej w notesie do usługi sieci Web na tej samej maszynie wirtualnej jest _wdrażaniem lokalnym_. W takim przypadku komputer "lokalny" jest maszyną wirtualną notesu. Aby uzyskać więcej informacji na temat wdrożeń, zobacz [Wdrażanie modeli przy użyciu Azure Machine Learning](how-to-deploy-and-where.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Obszar roboczy usługi Azure Machine Learning z uruchomioną maszyną wirtualną notesu. Aby uzyskać więcej informacji, zobacz temat [Instalowanie środowiska i obszaru roboczego](tutorial-1st-experiment-sdk-setup.md).
+- Obszar roboczy Azure Machine Learning z uruchomioną maszyną wirtualną z notesem. Aby uzyskać więcej informacji, zobacz temat [Instalowanie środowiska i obszaru roboczego](tutorial-1st-experiment-sdk-setup.md).
 
 ## <a name="deploy-to-the-notebook-vms"></a>Wdrażanie na maszynach wirtualnych notesu
 

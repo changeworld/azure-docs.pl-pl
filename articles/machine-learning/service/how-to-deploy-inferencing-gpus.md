@@ -1,7 +1,7 @@
 ---
 title: Wdrażanie modelu na potrzeby wnioskowania z procesorem GPU
-titleSuffix: Azure Machine Learning service
-description: W tym artykule przedstawiono sposób użycia usługi Azure Machine Learning do wdrożenia modelu uczenia głębokiego z obsługą procesora GPU jako usługi sieci Web. żądania wnioskowania dotyczące usługi i oceny.
+titleSuffix: Azure Machine Learning
+description: W tym artykule przedstawiono sposób użycia Azure Machine Learning do wdrożenia modelu uczenia głębokiego z obsługą procesora GPU jako usługi sieci Web. żądania wnioskowania dotyczące usługi i oceny.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 07/24/2019
-ms.openlocfilehash: 3113ad050ec6040d4f7964e940c507024bcf002d
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: bfed4daed51e95bb0b86ef187d45722e2c3a25ab
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844989"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002767"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Wdrażanie modelu uczenia głębokiego na potrzeby wnioskowania z procesorem GPU
 
-W tym artykule przedstawiono sposób użycia usługi Azure Machine Learning do wdrożenia modelu z obsługą procesora GPU jako usługi sieci Web. Informacje przedstawione w tym artykule opierają się na wdrażaniu modelu w usłudze Azure Kubernetes Service (AKS). Klaster AKS udostępnia zasób procesora GPU, który jest używany przez model do wnioskowania.
+W tym artykule przedstawiono sposób użycia Azure Machine Learning do wdrożenia modelu z obsługą procesora GPU jako usługi sieci Web. Informacje przedstawione w tym artykule opierają się na wdrażaniu modelu w usłudze Azure Kubernetes Service (AKS). Klaster AKS udostępnia zasób procesora GPU, który jest używany przez model do wnioskowania.
 
 Wnioskowanie, lub ocenianie modelu, to faza, w której wdrożony model jest używany do tworzenia prognoz. Korzystanie z procesorów GPU zamiast procesorów oferuje zalety wydajności na wysoce działania równoległego obliczeń.
 
@@ -34,7 +34,7 @@ Wnioskowanie, lub ocenianie modelu, to faza, w której wdrożony model jest uży
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Obszar roboczy usługi Azure Machine Learning. Aby uzyskać więcej informacji, zobacz [Tworzenie obszaru roboczego usługi Azure Machine Learning](how-to-manage-workspace.md).
+* Obszar roboczy usługi Azure Machine Learning. Aby uzyskać więcej informacji, zobacz [Tworzenie obszaru roboczego Azure Machine Learning](how-to-manage-workspace.md).
 
 * Środowisko programistyczne języka Python z zainstalowanym zestawem SDK Azure Machine Learning. Aby uzyskać więcej informacji, zobacz [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).  
 
@@ -51,7 +51,7 @@ Wnioskowanie, lub ocenianie modelu, to faza, w której wdrożony model jest uży
 Aby nawiązać połączenie z istniejącym obszarem roboczym, użyj następującego kodu:
 
 > [!IMPORTANT]
-> Ten fragment kodu oczekuje, że Konfiguracja obszaru roboczego ma zostać zapisana w bieżącym katalogu lub jego elemencie nadrzędnym. Aby uzyskać więcej informacji na temat tworzenia obszaru roboczego, zobacz temat [Tworzenie obszarów roboczych usługi Azure Machine Learning i zarządzanie nimi](how-to-manage-workspace.md).   Aby uzyskać więcej informacji na temat zapisywania konfiguracji do pliku, zobacz [Tworzenie pliku konfiguracji obszaru roboczego](how-to-configure-environment.md#workspace).
+> Ten fragment kodu oczekuje, że Konfiguracja obszaru roboczego ma zostać zapisana w bieżącym katalogu lub jego elemencie nadrzędnym. Aby uzyskać więcej informacji na temat tworzenia obszaru roboczego, zobacz [Tworzenie obszarów roboczych i zarządzanie nimi Azure Machine Learning](how-to-manage-workspace.md).   Aby uzyskać więcej informacji na temat zapisywania konfiguracji do pliku, zobacz [Tworzenie pliku konfiguracji obszaru roboczego](how-to-configure-environment.md#workspace).
 
 ```python
 from azureml.core import Workspace
@@ -93,7 +93,7 @@ except ComputeTargetException:
 > [!IMPORTANT]
 > Na platformie Azure zostanie naliczona wartość, o ile istnieje klaster AKS. Upewnij się, że klaster AKS został usunięty po zakończeniu pracy z nim.
 
-Aby uzyskać więcej informacji na temat korzystania z usługi AKS z usługą Azure Machine Learning, zobacz [jak wdrożyć usługę Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md).
+Aby uzyskać więcej informacji na temat korzystania z programu AKS z Azure Machine Learning, zobacz [jak wdrożyć usługę Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md).
 
 ## <a name="write-the-entry-script"></a>Napisz skrypt wpisu
 

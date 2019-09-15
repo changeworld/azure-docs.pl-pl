@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2019
 ms.author: terrylan
-ms.openlocfilehash: dd47f4b7e0e9e27714be3862494bfdabf122d458
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 4967f6f7831f1f09a502b935342fcd752af72fce
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726791"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999145"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-app-service"></a>Najlepsze rozwiązania dotyczące zabezpieczania aplikacji PaaS Web i Mobile przy użyciu Azure App Service
 
@@ -35,7 +35,7 @@ App Service udostępnia usługę OAuth 2,0 dla dostawcy tożsamości. Uwierzytel
 Ograniczanie dostępu jest przeznaczone dla organizacji, które chcą wymusić zasady zabezpieczeń na potrzeby dostępu do danych. Kontroli dostępu opartej na rolach (RBAC) można używać do przypisywania uprawnień użytkownikom, grupom i aplikacjom w określonym zakresie, takich jak konieczność znajomości i najniższych zasad zabezpieczeń. Aby dowiedzieć się więcej o udzielaniu użytkownikom dostępu do aplikacji, zobacz [co to jest kontrola dostępu oparta na rolach](/azure/role-based-access-control/overview).
 
 ## <a name="protect-your-keys"></a>Ochrona kluczy
-Nie ma znaczenia, jak dobre zabezpieczenia to utrata kluczy subskrypcji. Usługa Azure Key Vault ułatwia ochronę kluczy kryptograficznych i kluczy tajnych używanych przez aplikacje i usługi w chmurze. Za pomocą Key Vault można szyfrować klucze i wpisy tajne (takie jak klucze uwierzytelniania, klucze konta magazynu, klucze szyfrowania danych). Pliki i hasła PFX) przy użyciu kluczy chronionych przez sprzętowe moduły zabezpieczeń (sprzętowych modułów zabezpieczeń). W celu zapewnienia dodatkowego bezpieczeństwa możesz zaimportować lub wygenerować klucze w modułach HSM. Za pomocą Key Vault można także zarządzać certyfikatami TLS przy użyciu autoodnawiania. Aby dowiedzieć się więcej, zobacz [co to jest Azure Key Vault](../../key-vault/key-vault-whatis.md) .
+Nie ma znaczenia, jak dobre zabezpieczenia to utrata kluczy subskrypcji. Usługa Azure Key Vault ułatwia ochronę kluczy kryptograficznych i kluczy tajnych używanych przez aplikacje i usługi w chmurze. Za pomocą Key Vault można szyfrować klucze i wpisy tajne (takie jak klucze uwierzytelniania, klucze konta magazynu, klucze szyfrowania danych). Pliki i hasła PFX) przy użyciu kluczy chronionych przez sprzętowe moduły zabezpieczeń (sprzętowych modułów zabezpieczeń). W celu zapewnienia dodatkowego bezpieczeństwa możesz zaimportować lub wygenerować klucze w modułach HSM. Za pomocą Key Vault można także zarządzać certyfikatami TLS przy użyciu autoodnawiania. Aby dowiedzieć się więcej, zobacz [co to jest Azure Key Vault](../../key-vault/key-vault-overview.md) .
 
 ## <a name="restrict-incoming-source-ip-addresses"></a>Ogranicz przychodzące źródłowe adresy IP
 [Środowiska App Service](../../app-service/environment/intro.md) zawierają funkcję integracji sieci wirtualnej, która pomaga ograniczyć przychodzące źródłowe adresy IP za pomocą sieciowych grup zabezpieczeń (sieciowych grup zabezpieczeń). Jeśli nie znasz usługi Azure Virtual Networks (sieci wirtualnych), jest to funkcja, która umożliwia umieszczanie wielu zasobów platformy Azure w nieinternetowej, rutowanej sieci, do której można kontrolować dostęp. Aby dowiedzieć się więcej, zobacz [Integrowanie aplikacji z usługą Azure Virtual Network](../../app-service/web-sites-integrate-with-vnet.md).
@@ -43,7 +43,7 @@ Nie ma znaczenia, jak dobre zabezpieczenia to utrata kluczy subskrypcji. Usługa
 Aby uzyskać App Service w systemie Windows, można również dynamicznie ograniczyć adresy IP, konfigurując plik Web. config. Aby uzyskać więcej informacji, zobacz [dynamiczne zabezpieczenia adresów IP](/iis/configuration/system.webServer/security/dynamicIpSecurity/).
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym artykule wprowadzono do App Service kolekcji najlepszych rozwiązań dotyczących zabezpieczeń w zakresie zabezpieczania aplikacji PaaS Web i Mobile. Aby dowiedzieć się więcej o zabezpieczaniu wdrożeń PaaS, zobacz:
 
 - [Zabezpieczanie wdrożeń typu PaaS](paas-deployments.md)

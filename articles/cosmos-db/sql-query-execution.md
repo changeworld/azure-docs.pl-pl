@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
-ms.openlocfilehash: 0eca458c344e5c44ad62121db14e6b286dc19a86
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: c42732df1bcfa8649c89899febc364bb1f5f9b5a
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614444"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999909"
 ---
 # <a name="azure-cosmos-db-sql-query-execution"></a>Azure Cosmos DB wykonywania zapytania SQL
 
@@ -21,7 +21,7 @@ W poniższych przykładach pokazano, jak utworzyć zapytanie i przesłać je do 
 
 ## <a id="REST-API"></a>Interfejs API REST
 
-Usługa Cosmos DB oferuje otwarty model programowania RESTful używający protokołu HTTP. Model zasobów składa się z zestawu zasobów w ramach konta bazy danych, który jest objęty subskrypcją platformy Azure. Konto bazy danych składa się z zestawu *baz danych*, z których każdy może zawieraćwiele kontenerów, które z kolei zawierają *elementy*, UDF i inne typy zasobów. Każdy zasób Cosmos DB jest adresowany przy użyciu logicznego i stabilnego identyfikatora URI. Zestaw zasobów nosi nazwę *źródła danych*. 
+Usługa Cosmos DB oferuje otwarty model programowania RESTful używający protokołu HTTP. Model zasobów składa się z zestawu zasobów w ramach konta bazy danych, który jest objęty subskrypcją platformy Azure. Konto bazy danych składa się z zestawu *baz danych*, z których każdy może zawierać wiele *kontenerów*, które z kolei zawierają *elementy*, UDF i inne typy zasobów. Każdy zasób Cosmos DB jest adresowany przy użyciu logicznego i stabilnego identyfikatora URI. Zestaw zasobów nosi nazwę *źródła danych*. 
 
 Podstawowy model interakcji z tymi zasobami `GET`odbywa się za pośrednictwem czasowników `PUT`http `POST`,, `DELETE`i, przy użyciu standardowych interpretacji. Użyj `POST` , aby utworzyć nowy zasób, wykonać procedurę składowaną lub wydać zapytanie Cosmos DB. Zapytania są zawsze operacjami tylko do odczytu bez efektów ubocznych.
 
@@ -245,7 +245,7 @@ Klient platformy .NET automatycznie wykonuje iterację na wszystkich stronach wy
 
 Można również jawnie kontrolować stronicowanie `IDocumentQueryable` `ResponseContinuationToken` , tworząc `IQueryable` przy użyciu obiektu, odczytując wartości i przekazując je ponownie jako `RequestContinuationToken`. `FeedOptions` Można ustawić `EnableScanInQuery` , aby włączyć skanowanie, gdy zapytanie nie jest obsługiwane przez skonfigurowane zasady indeksowania. W przypadku kontenerów partycjonowanych można użyć `PartitionKey` programu, aby uruchomić zapytanie względem pojedynczej partycji, chociaż Azure Cosmos DB może automatycznie wyodrębnić ten element z tekstu zapytania. Za pomocą `EnableCrossPartitionQuery` programu można uruchamiać zapytania dotyczące wielu partycji.
 
-Aby uzyskać więcej przykładów platformy .NET z zapytaniami, zobacz [przykłady Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmosdb-dotnet) w witrynie GitHub.
+Aby uzyskać więcej przykładów platformy .NET z zapytaniami, zobacz [przykłady Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmos-dotnet-v3) w witrynie GitHub.
 
 ## <a id="JavaScript-server-side-API"></a>Interfejs API języka JavaScript po stronie serwera
 
@@ -288,5 +288,5 @@ Poniższy przykład pokazuje, jak używać `queryDocuments` programu w interfejs
 ## <a name="next-steps"></a>Następne kroki
 
 - [Wprowadzenie do Azure Cosmos DB](introduction.md)
-- [Przykłady dla platformy .NET w usłudze Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [Przykłady dla platformy .NET w usłudze Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Azure Cosmos DB poziomów spójności](consistency-levels.md)

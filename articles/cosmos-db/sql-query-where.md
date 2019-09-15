@@ -1,21 +1,21 @@
 ---
-title: Klauzula WHERE w usłudze Azure Cosmos DB
-description: Dowiedz się więcej o klauzuli WHERE języka SQL dla usługi Azure Cosmos DB
+title: Klauzula WHERE w Azure Cosmos DB
+description: Informacje o klauzuli WHERE języka SQL dla Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 6a942e48ffea7785fe971cc2f8fa66e8569ed672
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 362024868de269ed64a440a25e8c19c5b68bef80
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342794"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003477"
 ---
 # <a name="where-clause"></a>Klauzula WHERE
 
-Opcjonalna klauzula WHERE (`WHERE <filter_condition>`) określa warunki, w formacie JSON źródła musi spełniać dla zapytania je uwzględnić w wynikach. Element JSON musi być określone warunki, aby `true` wziąć pod uwagę na wynik. Warstwa indeksu używa klauzuli WHERE, aby określić najmniejszy podzbiór elementów źródła, które mogą być częścią wynik.
+Opcjonalna klauzula WHERE (`WHERE <filter_condition>`) określa warunek (y), które muszą spełniać źródłowe elementy JSON dla zapytania, aby uwzględnić je w wynikach. Element JSON musi oszacować określone warunki, aby `true` można je było uwzględnić w wyniku. Warstwa indeksu używa klauzuli WHERE do określenia najmniejszego podzestawu elementów źródłowych, które mogą być częścią wyniku.
   
 ## <a name="syntax"></a>Składnia
   
@@ -33,7 +33,7 @@ WHERE <filter_condition>
   
 - `<scalar_expression>`  
   
-   Wyrażenie reprezentujące wartość ma zostać obliczony. Zobacz [wyrażenia skalarne](sql-query-scalar-expressions.md) Aby uzyskać szczegółowe informacje.  
+   Wyrażenie reprezentujące wartość ma zostać obliczony. Aby uzyskać szczegółowe informacje, zobacz [wyrażenia skalarne](sql-query-scalar-expressions.md) .  
   
 
 ## <a name="remarks"></a>Uwagi
@@ -42,7 +42,7 @@ WHERE <filter_condition>
 
 ## <a name="examples"></a>Przykłady
 
-Poniższe zapytanie elementów żądań, które zawierają `id` właściwości, których wartość jest `AndersenFamily`. Wyklucza dowolny element, który nie ma `id` właściwości lub którego wartość nie jest zgodna `AndersenFamily`.
+Następujące zapytanie żąda elementów, które zawierają `id` właściwość, której wartość to. `AndersenFamily` Wyklucza wszelkie elementy, które nie mają `id` właściwości lub których wartość nie jest zgodna. `AndersenFamily`
 
 ```sql
     SELECT f.address
@@ -50,7 +50,7 @@ Poniższe zapytanie elementów żądań, które zawierają `id` właściwości, 
     WHERE f.id = "AndersenFamily"
 ```
 
-Wyniki są:
+Wyniki są następujące:
 
 ```json
     [{
@@ -66,7 +66,7 @@ Wyniki są:
 
 W poprzednim przykładzie pokazano proste zapytanie dotyczące równości. Interfejs API SQL obsługuje również różne [wyrażenia skalarne](sql-query-scalar-expressions.md). Najczęściej używane są wyrażenia binarne i jednoargumentowe. Odwołania do właściwości z obiektu JSON źródła są również prawidłowymi wyrażeniami.
 
-Można użyć następujących obsługiwanych operatory binarne:  
+Można użyć następujących obsługiwanych operatorów binarnych:  
 
 |**Typ operatora**  | **Wartości** |
 |---------|---------|
@@ -76,7 +76,7 @@ Można użyć następujących obsługiwanych operatory binarne:
 |Porównanie | =, !=, &lt;, &gt;, &lt;=, &gt;=, <> |
 |String     |  \|\| (łączenie) |
 
-Operatory dwuargumentowe należy użyć następujących zapytań:
+Następujące zapytania używają operatorów binarnych:
 
 ```sql
     SELECT *
@@ -92,7 +92,7 @@ Operatory dwuargumentowe należy użyć następujących zapytań:
     WHERE c.grade >= 5    -- matching grades == 5
 ```
 
-Można również użyć operatorów jednoargumentowych +,-, ~, a nie w zapytaniach, jak pokazano w poniższych przykładach:
+Można również użyć operatorów jednoargumentowych +,-, ~, a nie w zapytaniach, jak pokazano w następujących przykładach:
 
 ```sql
     SELECT *
@@ -104,10 +104,10 @@ Można również użyć operatorów jednoargumentowych +,-, ~, a nie w zapytania
     WHERE (-c.grade = -5)  -- matching grades == 5
 ```
 
-Umożliwia także odwołania do właściwości w zapytaniach. Na przykład `SELECT * FROM Families f WHERE f.isRegistered` zwraca element JSON zawierający właściwości `isRegistered` o wartości równej `true`. Wszelkie inne wartości, takich jak `false`, `null`, `Undefined`, `<number>`, `<string>`, `<object>`, lub `<array>`, wyklucza element z wynikiem. 
+Można również użyć odwołań do właściwości w zapytaniach. Na przykład `SELECT * FROM Families f WHERE f.isRegistered` zwraca element JSON zawierający Właściwość `isRegistered` o wartości równej `true`. Każda inna wartość, taka jak `false` `Undefined`, `null` `<number>` `<string>` `<array>`,,,, lub, wyklucza element z wyniku. `<object>` 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Rozpoczęcie pracy](sql-query-getting-started.md)
-- [Przykłady dla platformy .NET w usłudze Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [Przykłady dla platformy .NET w usłudze Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [FROM — klauzula](sql-query-from.md)

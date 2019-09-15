@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: be6d54886f23b0fa219b1e4b8948b4a4c51f5864
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: a3ded11ac6a68e82fba76e7551699f29f3cb6075
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716820"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70998416"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Zasady niestandardowe w Azure Active Directory B2C
 
@@ -33,7 +33,7 @@ Zasady niestandardowe to pliki konfiguracji, które definiują zachowanie dzier�
 | Dostosowanie atrybutu | Atrybuty standardowe i niestandardowe. | Ten |
 | Zarządzanie tokenami i sesjami | Token niestandardowy i wiele opcji sesji. | Ten |
 | Dostawcy tożsamości | Wstępnie zdefiniowany dostawca usług lokalnych lub społecznościowych oraz większość OIDC dostawców tożsamości, takich jak Federacja Federacji z dzierżawami Azure Active Directory. | OIDC oparte na standardach, OAUTH i SAML.  Uwierzytelnianie jest również możliwe przy użyciu integracji z interfejsami API REST. |
-| Zadania tożsamości | Utwórz konto lub Zaloguj się przy użyciu lokalnego lub wielu kont społecznościowych.<br><br>Samoobsługowe resetowanie hasła.<br><br>Edytowanie profilu.<br><br>Uwierzytelnianie wieloskładnikowe.<br><br>Dostosowywanie tokenów i sesji.<br><br>Dostęp do przepływów tokenów. | Wykonaj te same zadania co przepływy użytkownika przy użyciu niestandardowych dostawców tożsamości lub użyj zakresów niestandardowych.<br><br>Zainicjuj obsługę konta użytkownika w innym systemie w czasie rejestracji.<br><br>Wyślij powitalną wiadomość e-mail przy użyciu własnego dostawcy usługi poczty e-mail.<br><br>Użyj magazynu użytkownika poza Azure AD B2C.<br><br>Sprawdź poprawność dostarczonych przez użytkownika informacji z zaufanym systemem przy użyciu interfejsu API. |
+| Zadania tożsamości | Utwórz konto lub Zaloguj się przy użyciu lokalnego lub wielu kont społecznościowych.<br><br>Samoobsługowe resetowanie hasła.<br><br>Edytowanie profilu.<br><br>Multi-Factor Authentication.<br><br>Dostosowywanie tokenów i sesji.<br><br>Dostęp do przepływów tokenów. | Wykonaj te same zadania co przepływy użytkownika przy użyciu niestandardowych dostawców tożsamości lub użyj zakresów niestandardowych.<br><br>Zainicjuj obsługę konta użytkownika w innym systemie w czasie rejestracji.<br><br>Wyślij powitalną wiadomość e-mail przy użyciu własnego dostawcy usługi poczty e-mail.<br><br>Użyj magazynu użytkownika poza Azure AD B2C.<br><br>Sprawdź poprawność dostarczonych przez użytkownika informacji z zaufanym systemem przy użyciu interfejsu API. |
 
 ## <a name="policy-files"></a>Pliki zasad
 
@@ -55,7 +55,7 @@ Usługa zarządzania tożsamościami i dostępem klienta (CIAM) na platformie Az
 
 Azure AD B2C współdziała z dostawcami tożsamości, użytkownikami, innymi systemami oraz z lokalnym katalogiem użytkownika w sekwencji w celu osiągnięcia zadania tożsamości. Na przykład Zaloguj użytkownika, Zarejestruj nowego użytkownika lub zresetuj hasło. Struktura środowiska tożsamości i zasady (nazywane również przeprowadzeniem przez użytkownika lub zasadami struktury zaufania) ustanawiają relację zaufania innej firmy i jawnie definiują aktorów, akcje, protokoły i sekwencję kroków do ukończenia.
 
-Platforma obsługi tożsamości jest w pełni konfigurowalną, opartą na chmurze platformą Azure, która organizuje relacje zaufania między jednostkami w standardowych formatach protokołów, takimi jak OpenID Connect Connect, OAuth, SAML, WSFed i kilka niestandardowych, na przykład REST Wymiany oświadczeń systemu opartego na interfejsie API. Struktura tworzy przyjazne dla użytkownika środowisko, które obsługuje język HTML i CSS.
+Platforma tożsamości jest w pełni konfigurowalną, opartą na chmurze platformą Azure, która organizuje relacje zaufania między jednostkami w standardowych formatach protokołów, takimi jak OpenID Connect Connect, OAuth, SAML i kilka niestandardowymi, na przykład REST Wymiany oświadczeń systemu opartego na interfejsie API. Struktura tworzy przyjazne dla użytkownika środowisko, które obsługuje język HTML i CSS.
 
 Niestandardowe zasady są reprezentowane jako jeden lub kilka plików w formacie XML, które odwołują się do siebie nawzajem zgodnie z łańcuchem hierarchii. Elementy XML definiują schemat oświadczeń, przekształcenia oświadczeń, definicje zawartości, dostawcy oświadczeń, profile techniczne oraz kroki aranżacji przechodzenia przez użytkownika między innymi elementami. Zasady niestandardowe są dostępne jako jeden lub kilka plików XML, które są wykonywane przez strukturę środowiska tożsamości w przypadku wywołania przez jednostkę uzależnioną. Deweloperzy konfigurujący zasady niestandardowe muszą definiować relacje zaufania w szczegółowy sposób, aby obejmowały punkty końcowe metadanych, dokładne definicje wymiany oświadczeń i konfigurować klucze tajne, klucze i certyfikaty, zgodnie z potrzebami każdego dostawcy tożsamości.
 
@@ -63,7 +63,7 @@ Niestandardowe zasady są reprezentowane jako jeden lub kilka plików w formacie
 
 Gdy aplikacja wywołuje plik zasad RP, struktura środowiska tożsamości w Azure AD B2C dodaje wszystkie elementy z pliku bazowego, z pliku rozszerzeń, a następnie z pliku zasad RP, aby utworzyć bieżące zasady.  Elementy tego samego typu i nazwy w pliku RP przesłonią te w rozszerzeniach, a rozszerzenia przesłaniają bazę.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Wprowadzenie do zasad niestandardowych](active-directory-b2c-get-started-custom.md)

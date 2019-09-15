@@ -1,6 +1,6 @@
 ---
 title: Zbieranie danych z modeli produkcyjnych
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Dowiedz się, jak zbierać dane wejściowe modelu usługi Azure Machine Learning w usłudze Azure Blob storage.
 services: machine-learning
 ms.service: machine-learning
@@ -11,16 +11,16 @@ ms.author: marthalc
 author: marthalc
 ms.date: 07/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 16fac492fe4c193ecd7ffa7eeff1e884acb742ae
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: d836b600a39b73f60c0847c5a9642f396fb70d17
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860523"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002856"
 ---
 # <a name="collect-data-for-models-in-production"></a>Zbieranie danych dla modeli w środowisku produkcyjnym
 
-W tym artykule możesz dowiedzieć się, jak można zbierać dane w modelu wejściowym z usługi Azure Machine Learning, który został wdrożony do klastra Kubernetes usługi Azure (AKS) do usługi Azure Blob storage. 
+W tym artykule można dowiedzieć się, jak zbierać dane modeli wejściowych z Azure Machine Learning wdrożonych w klastrze usługi Azure Kubernetes (AKS) w usłudze Azure Blob Storage. 
 
 Po włączeniu tych danych, które są zbierane pomoże Ci:
 * [Monitoruj dryfy danych](how-to-monitor-data-drift.md) w miarę wprowadzania danych produkcyjnych do modelu
@@ -50,9 +50,9 @@ Dane wyjściowe pobiera zapisane w obiekcie Blob platformy Azure. Ponieważ dane
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
+- Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
 
-- Usługi Azure Machine Learning service obszar roboczy, zawierający skrypty i zestawu SDK usługi Azure Machine Learning dla języka Python zainstalowane katalogu lokalnego. Dowiedz się, jak uzyskać te wymagania wstępne przy użyciu [sposób konfigurowania środowiska deweloperskiego](how-to-configure-environment.md) dokumentu.
+- Azure Machine Learning obszar roboczy, katalog lokalny zawierający skrypty oraz zestaw Azure Machine Learning SDK dla języka Python. Dowiedz się, jak uzyskać te wymagania wstępne przy użyciu [sposób konfigurowania środowiska deweloperskiego](how-to-configure-environment.md) dokumentu.
 
 - Model uczenia maszynowego uczonego wdrażanych na platformie Azure Kubernetes Service (AKS). Jeśli nie masz, zobacz [szkolenie modeli klasyfikacji obrazów](tutorial-train-models-with-aml.md) samouczka.
 
@@ -61,7 +61,7 @@ Dane wyjściowe pobiera zapisane w obiekcie Blob platformy Azure. Ponieważ dane
 - [Konfigurowanie środowiska](how-to-configure-environment.md) i zainstaluj [monitorowania SDK](https://aka.ms/aml-monitoring-sdk).
 
 ## <a name="enable-data-collection"></a>Włączanie zbierania danych
-Niezależnie od tego modelu wdrażana za pośrednictwem usługi Azure Machine Learning lub innych narzędzi można włączyć zbierania danych. 
+Zbieranie danych można włączyć niezależnie od modelu wdrażanego za pomocą Azure Machine Learning lub innych narzędzi. 
 
 Aby ją włączyć, należy:
 

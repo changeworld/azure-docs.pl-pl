@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: c27c787eeac9bbf68b512b55b9ceab11074a81d8
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 84256d79ec543d038b4d3d3f3dc6901bbd003871
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934351"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003371"
 ---
 # <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>Samouczek: Korzystanie z usługi Azure Key Vault w aplikacji internetowej platformy Azure na platformie .NET
 
@@ -33,7 +33,7 @@ Ten samouczek przedstawia sposób wykonania następujących czynności:
 > * Przypisz uprawnienie do aplikacji sieci Web.
 > * Uruchom aplikację sieci Web na platformie Azure.
 
-Przed rozpoczęciem Przeczytaj [Key Vault podstawowe pojęcia](key-vault-whatis.md#basic-concepts). 
+Przed rozpoczęciem Przeczytaj [Key Vault podstawowe pojęcia](basic-concepts.md). 
 
 Jeśli nie masz subskrypcji platformy Azure, Utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -48,9 +48,9 @@ Jeśli nie masz subskrypcji platformy Azure, Utwórz [bezpłatne konto](https://
 
 ## <a name="about-managed-service-identity"></a>Informacje o tożsamości usługi zarządzanej
 
-Azure Key Vault przechowuje poświadczenia bezpiecznie, więc nie są wyświetlane w kodzie. Aby jednak pobrać klucze, musisz uwierzytelnić się w usłudze Azure Key Vault. W tym celu potrzebujesz poświadczenia. To klasyczny przykład dylematu dotyczącego uruchamiania. Tożsamość usługi zarządzanej rozwiązuje ten problem poprzez zapewnienie _tożsamości uruchamiania_ , która upraszcza ten proces.
+Azure Key Vault przechowuje poświadczenia bezpiecznie, więc nie są wyświetlane w kodzie. Aby jednak pobrać klucze, musisz uwierzytelnić się w usłudze Azure Key Vault. W tym celu potrzebujesz poświadczenia. To klasyczny przykład dylematu dotyczącego uruchamiania. Tożsamość usługi zarządzanej rozwiązuje ten problem poprzez zapewnienie _tożsamości uruchamiania_, która upraszcza ten proces.
 
-Po włączeniu MSI dla usługi platformy Azure, takiej jak Azure Virtual Machines, Azure App Service lub Azure Functions, platforma Azure tworzy jednostkę [usługi](key-vault-whatis.md#basic-concepts). Plik MSI robi to w przypadku wystąpienia usługi w Azure Active Directory (Azure AD) i wprowadza poświadczenia nazwy głównej usługi do tego wystąpienia.
+Po włączeniu MSI dla usługi platformy Azure, takiej jak Azure Virtual Machines, Azure App Service lub Azure Functions, platforma Azure tworzy jednostkę [usługi](basic-concepts.md). Plik MSI robi to w przypadku wystąpienia usługi w Azure Active Directory (Azure AD) i wprowadza poświadczenia nazwy głównej usługi do tego wystąpienia.
 
 ![Diagram dotyczący tożsamości usługi zarządzanej](media/MSI.png)
 

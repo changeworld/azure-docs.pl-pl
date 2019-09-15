@@ -1,21 +1,21 @@
 ---
-title: SELECT — klauzula w usłudze Azure Cosmos DB
-description: Dowiedz się więcej o klauzuli SQL ZAZNACZYĆ dla usługi Azure Cosmos DB. Użyj programu SQL jako języka zapytań usługi Azure Cosmos DB w formacie JSON.
+title: Klauzula SELECT w Azure Cosmos DB
+description: Dowiedz się więcej na temat klauzuli SELECT języka SQL dla Azure Cosmos DB. Użyj programu SQL jako Azure Cosmos DB języka zapytań JSON.
 author: ginarobinson
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: girobins
-ms.openlocfilehash: 84d0212f7f212b4554b506726e027fe51f795eea
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: d34b1c39d9789409dc365cd4cf07fdc3d5a780fd
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342525"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003515"
 ---
-# <a name="select-clause"></a>Klauzula SELECT
+# <a name="select-clause"></a>SELECT — klauzula
 
-Każdego zapytania składa się w klauzuli SELECT i opcjonalnych [FROM](sql-query-from.md) i [gdzie](sql-query-where.md) klauzule na standardy ANSI SQL. Zazwyczaj są wyliczane źródła w klauzuli FROM a klauzuli WHERE zastosowanie filtru źródła do pobrania podzbioru w formacie JSON. Klauzula SELECT następnie projektów wymagane wartości JSON na liście wyboru.
+Każde zapytanie składa się z klauzuli SELECT i opcjonalnych klauzul from i [WHERE](sql-query-where.md) , zgodnie [ze](sql-query-from.md) standardami ANSI języka SQL. Typowo, źródło w klauzuli FROM jest wyliczane i klauzula WHERE stosuje filtr dla źródła, aby pobrać podzestaw elementów JSON. Klauzula SELECT następnie projektuje żądane wartości JSON na liście wyboru.
 
 ## <a name="syntax"></a>Składnia
 
@@ -52,7 +52,7 @@ SELECT <select_specification>
  
 - `DISTINCT`
   
-  Określa, duplikaty właściwości przewidywany powinny zostać usunięte.  
+  Określa, że duplikaty właściwości rzutowane powinny zostać usunięte.  
 
 - `<scalar_expression>`  
 
@@ -78,7 +78,7 @@ Zarówno `SELECT <select_list>` i `SELECT *` są "sugar składni" i można równ
   
 ## <a name="examples"></a>Przykłady
 
-Wybierz następujące zapytanie zwraca przykład `address` z `Families` którego `id` odpowiada `AndersenFamily`:
+Poniższy przykład `address` zapytania SELECT zwraca, z `Families` którego `id` pasuje: `AndersenFamily`
 
 ```sql
     SELECT f.address
@@ -86,7 +86,7 @@ Wybierz następujące zapytanie zwraca przykład `address` z `Families` którego
     WHERE f.id = "AndersenFamily"
 ```
 
-Wyniki są:
+Wyniki są następujące:
 
 ```json
     [{
@@ -99,7 +99,7 @@ Wyniki są:
 ```
 
 ### <a name="quoted-property-accessor"></a>Metoda dostępu do właściwości w cudzysłowie
-Możesz uzyskać dostęp właściwości za pomocą operatora [] właściwości w cudzysłowie. Na przykład elementy `SELECT c.grade` i `SELECT c["grade"]` są równoważne. Ta składnia jest przydatne w jako znak ucieczki dla właściwości, która zawiera spacje, znaki specjalne lub ma taką samą nazwę jak słowo kluczowe SQL lub słowo zastrzeżone.
+Można uzyskać dostęp do właściwości przy użyciu operatora właściwości cytowane []. Na przykład elementy `SELECT c.grade` i `SELECT c["grade"]` są równoważne. Ta składnia jest przydatna do ucieczki właściwości, która zawiera spacje, znaki specjalne lub ma taką samą nazwę jak słowo kluczowe SQL lub słowo zastrzeżone.
 
 ```sql
     SELECT f["lastName"]
@@ -109,7 +109,7 @@ Możesz uzyskać dostęp właściwości za pomocą operatora [] właściwości w
 
 ### <a name="nested-properties"></a>Właściwości zagnieżdżone
 
-Poniższy przykład projekty dwie właściwości zagnieżdżone, `f.address.state` i `f.address.city`.
+W poniższym przykładzie przedstawiono projekty dwóch zagnieżdżonych `f.address.state` właściwości `f.address.city`i.
 
 ```sql
     SELECT f.address.state, f.address.city
@@ -117,7 +117,7 @@ Poniższy przykład projekty dwie właściwości zagnieżdżone, `f.address.stat
     WHERE f.id = "AndersenFamily"
 ```
 
-Wyniki są:
+Wyniki są następujące:
 
 ```json
     [{
@@ -127,7 +127,7 @@ Wyniki są:
 ```
 ### <a name="json-expressions"></a>Wyrażenia JSON
 
-Projekcja obsługuje również wyrażeń JSON, jak pokazano w poniższym przykładzie:
+Projekcja obsługuje również wyrażenia JSON, jak pokazano w następującym przykładzie:
 
 ```sql
     SELECT { "state": f.address.state, "city": f.address.city, "name": f.id }
@@ -135,7 +135,7 @@ Projekcja obsługuje również wyrażeń JSON, jak pokazano w poniższym przykł
     WHERE f.id = "AndersenFamily"
 ```
 
-Wyniki są:
+Wyniki są następujące:
 
 ```json
     [{
@@ -147,7 +147,7 @@ Wyniki są:
     }]
 ```
 
-W powyższym przykładzie klauzuli SELECT musi utworzyć obiekt JSON, a ponieważ przykład zawiera bez klucza, klauzuli używa nazwy zmiennej niejawnego argumentu `$1`. Następujące zapytanie zwraca dwie zmienne niejawnego argumentu: `$1` i `$2`.
+W poprzednim przykładzie klauzula SELECT musi utworzyć obiekt JSON, a ponieważ przykład nie zawiera klucza, klauzula używa nazwy `$1`zmiennej argumentu niejawnego. Następujące zapytanie zwraca dwie niejawne zmienne argumentów `$1` : `$2`i.
 
 ```sql
     SELECT { "state": f.address.state, "city": f.address.city },
@@ -156,7 +156,7 @@ W powyższym przykładzie klauzuli SELECT musi utworzyć obiekt JSON, a poniewa�
     WHERE f.id = "AndersenFamily"
 ```
 
-Wyniki są:
+Wyniki są następujące:
 
 ```json
     [{
@@ -170,8 +170,8 @@ Wyniki są:
     }]
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Rozpoczęcie pracy](sql-query-getting-started.md)
-- [Przykłady dla platformy .NET w usłudze Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [Przykłady dla platformy .NET w usłudze Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Klauzula WHERE](sql-query-where.md)

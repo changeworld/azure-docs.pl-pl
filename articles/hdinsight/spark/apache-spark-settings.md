@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: 2d369af7c11473d811677f33f9112d41260fcecf
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 48f19e5da8c7703cc597518246c2f62ebce3ae17
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736023"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003177"
 ---
 # <a name="configure-apache-spark-settings"></a>Konfigurowanie ustawień platformy Apache Spark
 
@@ -44,11 +44,11 @@ Apache Spark ma trzy lokalizacje konfiguracji systemu:
 W przypadku wybrania określonej wersji platformy Spark klaster zawiera domyślne ustawienia konfiguracji.  Domyślne wartości konfiguracji platformy Spark można zmienić przy użyciu niestandardowego pliku konfiguracji platformy Spark.  Poniżej przedstawiono przykład.
 
 ```
-    spark.hadoop.io.compression.codecs org.apache.hadoop.io.compress.GzipCodec
-    spark.hadoop.mapreduce.input.fileinputformat.split.minsize 1099511627776
-    spark.hadoop.parquet.block.size 1099511627776
-    spark.sql.files.maxPartitionBytes 1099511627776
-    spark.sql.files.openCostInBytes 1099511627776
+spark.hadoop.io.compression.codecs org.apache.hadoop.io.compress.GzipCodec
+spark.hadoop.mapreduce.input.fileinputformat.split.minsize 1099511627776
+spark.hadoop.parquet.block.size 1099511627776
+spark.sql.files.maxPartitionBytes 1099511627776
+spark.sql.files.openCostInBytes 1099511627776
 ```
 
 W przykładzie przedstawionym powyżej zastąpił kilka wartości domyślnych dla pięciu parametrów konfiguracji platformy Spark.  Oto koder-dekoder kompresji, Apache Hadoop MapReduce podzielić minimalny rozmiar i rozmiary bloków Parquet, a także wartości domyślne dla partycji SQL i otwartych rozmiarów plików.  Te zmiany konfiguracji są wybierane, ponieważ skojarzone dane i zadania (w tym przykładzie dane genomiki) mają szczególne cechy, które będą działać lepiej przy użyciu tych niestandardowych ustawień konfiguracji.
@@ -63,7 +63,7 @@ Zostanie wyświetlony interfejs użytkownika sieci Web Apache Ambari z widokiem 
 
 Aby wyświetlić wartości konfiguracyjne dla Apache Spark, wybierz pozycję **historia konfiguracji**, a następnie wybierz pozycję **Spark2**.  Wybierz kartę **konfiguracje** , a następnie wybierz `Spark` link (lub `Spark2`, w zależności od wersji) na liście usług.  Zostanie wyświetlona lista wartości konfiguracyjnych dla klastra:
 
-![Konfiguracje platformy Spark](./media/apache-spark-settings/spark-config.png)
+![Konfiguracje platformy Spark](./media/apache-spark-settings/spark-configurations.png)
 
 Aby wyświetlić i zmienić poszczególne wartości konfiguracji platformy Spark, Wybierz dowolne łącze z słowem "Spark" w tytule łącza.  Konfiguracje dla platformy Spark zawierają wartości konfiguracji niestandardowej i zaawansowane w następujących kategoriach:
 
@@ -82,7 +82,7 @@ W przypadku utworzenia niedomyślnego zestawu wartości konfiguracji można tak�
 
 Na poniższym diagramie przedstawiono obiekty Key Spark: program sterownika i skojarzony z nim kontekst platformy Spark oraz Menedżer klastra i *węzły procesu roboczego* .  Każdy węzeł procesu roboczego obejmuje moduł wykonujący, pamięć podręczną i *n* wystąpień zadań.
 
-![Obiekty klastra](./media/apache-spark-settings/spark-arch.png)
+![Obiekty klastra](./media/apache-spark-settings/hdi-spark-architecture.png)
 
 Zadania platformy Spark korzystają z zasobów procesów roboczych, szczególnie pamięci, dlatego należy dostosować wartości konfiguracji platformy Spark dla modułów wykonujących procesy robocze.
 
@@ -93,7 +93,7 @@ Trzy kluczowe parametry, które są często dostosowywane do dostrajania konfigu
 
 Innym źródłem informacji o zasobach używanych przez funkcje wykonawcze platformy Spark jest interfejs użytkownika aplikacji platformy Spark.  W interfejsie użytkownika platformy Spark wybierz kartę **wykonawcy** , aby wyświetlić widok podsumowania i szczegółów konfiguracji i zasobów używanych przez program wykonujący.  Te widoki mogą pomóc w ustaleniu, czy należy zmienić wartości domyślne dla funkcji wykonawczych platformy Spark dla całego klastra, czy dla określonego zestawu wykonań.
 
-![Testy platformy Spark](./media/apache-spark-settings/spark-executors.png)
+![Testy platformy Spark](./media/apache-spark-settings/apache-spark-executors.png)
 
 Alternatywnie można użyć interfejsu API REST Ambari, aby programowo sprawdzić ustawienia konfiguracji klastra usługi HDInsight i usługi Spark.  Więcej informacji można znaleźć w [dokumentacji interfejsu API Apache Ambari w witrynie GitHub](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 
@@ -105,7 +105,7 @@ W zależności od obciążenia platformy Spark może się okazać, że bardziej 
 
 Oto przykład dwóch węzłów procesu roboczego z różnymi wartościami konfiguracji:
 
-![Dwie konfiguracje węzłów](./media/apache-spark-settings/executor-config.png)
+![Dwie konfiguracje węzłów](./media/apache-spark-settings/executor-configuration.png)
 
 Na poniższej liście przedstawiono parametry pamięci programu wykonującego testy.
 
@@ -116,7 +116,7 @@ Na poniższej liście przedstawiono parametry pamięci programu wykonującego te
 
 PRZĘDZa kontroluje maksymalną sumę pamięci używaną przez kontenery w każdym węźle Spark. Na poniższym diagramie przedstawiono relacje poszczególnych węzłów między obiektami konfiguracji PRZĘDZenia a obiektami Spark.
 
-![Zarządzanie pamięcią w ramach PRZĘDZy](./media/apache-spark-settings/yarn-spark-memory.png)
+![Zarządzanie pamięcią w ramach PRZĘDZy](./media/apache-spark-settings/hdi-yarn-spark-memory.png)
 
 ## <a name="change-parameters-for-an-application-running-in-jupyter-notebook"></a>Zmień parametry aplikacji uruchomionej w notesie Jupyter
 
@@ -136,8 +136,8 @@ W przypadku aplikacji uruchamianych w notesie Jupyter Użyj `%%configure` polece
 Poniższy kod przedstawia sposób zmiany konfiguracji aplikacji uruchomionej w notesie Jupyter.
 
 ```
-    %%configure
-    {"executorMemory": "3072M", "executorCores": 4, "numExecutors":10}
+%%configure
+{"executorMemory": "3072M", "executorCores": 4, "numExecutors":10}
 ```
 
 ## <a name="conclusion"></a>Wniosek

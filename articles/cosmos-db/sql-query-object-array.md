@@ -1,32 +1,32 @@
 ---
-title: Praca z tablicami i obiektami w usłudze Azure Cosmos DB
-description: Więcej informacji na temat tablicy i obiektów tworzenia składni SQL usługi Azure Cosmos DB.
+title: Praca z tablicami i obiektami w Azure Cosmos DB
+description: Informacje na temat składni SQL tworzenia obiektów i tablic dla Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: tisande
-ms.openlocfilehash: 338f3b51edf38d20a963992e121b7e2dbd0c6873
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 17a0e4ddf5acd267a4cfbb68c218fe9409a91d57
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342767"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003936"
 ---
-# <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>Praca z tablicami i obiektami w usłudze Azure Cosmos DB
+# <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>Praca z tablicami i obiektami w Azure Cosmos DB
 
-Kluczową funkcją interfejsu API SQL usługi Azure Cosmos DB jest tworzenie tablicy i obiektów.
+Kluczową funkcją interfejsu API SQL Azure Cosmos DB jest tworzenie tablic i obiektów.
 
 ## <a name="arrays"></a>Tablice
 
-Można utworzyć tablic, jak pokazano w poniższym przykładzie:
+Można skonstruować tablice, jak pokazano w następującym przykładzie:
 
 ```sql
     SELECT [f.address.city, f.address.state] AS CityState
     FROM Families f
 ```
 
-Wyniki są:
+Wyniki są następujące:
 
 ```json
     [
@@ -45,7 +45,7 @@ Wyniki są:
     ]
 ```
 
-Można również użyć [wyrażenia tablicy](sql-query-subquery.md#array-expression) do utworzenia tablicy z [w podzapytaniu](sql-query-subquery.md) wyników. To zapytanie pobiera różne imiona wszystkich dzieci w tablicy.
+Możesz również użyć [wyrażenia Array](sql-query-subquery.md#array-expression) , aby utworzyć tablicę z wyników [podzapytania](sql-query-subquery.md) . To zapytanie pobiera wszystkie różne nazwy elementów podrzędnych w tablicy.
 
 ```sql
 SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as ChildNames
@@ -54,14 +54,14 @@ FROM f
 
 ## <a id="Iteration"></a>Iteracja
 
-Interfejs API SQL zapewnia obsługę Iterowanie przez tablice JSON z nową konstrukcję dodane za pośrednictwem [IN — słowo kluczowe](sql-query-keywords.md#in) w źródle FROM. W poniższym przykładzie:
+Interfejs API SQL zapewnia obsługę iteracji w tablicach JSON, a nowa konstrukcja dodana za pośrednictwem [słowa kluczowego in](sql-query-keywords.md#in) w źródle from. W poniższym przykładzie:
 
 ```sql
     SELECT *
     FROM Families.children
 ```
 
-Wyniki są:
+Wyniki są następujące:
 
 ```json
     [
@@ -90,14 +90,14 @@ Wyniki są:
     ]
 ```
 
-Następne zapytanie wykonuje iterację przez `children` w `Families` kontenera. Tablica dane wyjściowe różni się od poprzedniego zapytania. Ten przykład dzieli `children`i spłaszcza wyniki do jednej tablicy:  
+Następne zapytanie wykonuje iterację `children` `Families` w kontenerze. Tablica wyjściowa różni się od powyższego zapytania. Ten przykład dzieli `children`i spłaszcza wyniki do pojedynczej tablicy:  
 
 ```sql
     SELECT *
     FROM c IN Families.children
 ```
 
-Wyniki są:
+Wyniki są następujące:
 
 ```json
     [
@@ -122,7 +122,7 @@ Wyniki są:
     ]
 ```
 
-Można filtrować dalsze na każdy pojedynczy wpis tablicy, jak pokazano w poniższym przykładzie:
+Można filtrować więcej według poszczególnych wpisów tablicy, jak pokazano w następującym przykładzie:
 
 ```sql
     SELECT c.givenName
@@ -130,7 +130,7 @@ Można filtrować dalsze na każdy pojedynczy wpis tablicy, jak pokazano w poni�
     WHERE c.grade = 8
 ```
 
-Wyniki są:
+Wyniki są następujące:
 
 ```json
     [{
@@ -138,14 +138,14 @@ Wyniki są:
     }]
 ```
 
-Możesz także agregować za pośrednictwem wyniku iterację tablicy. Na przykład następujące zapytanie zlicza liczbę elementów podrzędnych wśród wszystkich rodzin:
+Można również agregować wynik iteracji tablicy. Na przykład następujące zapytanie liczy liczbę elementów podrzędnych między wszystkimi rodzinami:
 
 ```sql
     SELECT COUNT(child)
     FROM child IN Families.children
 ```
 
-Wyniki są:
+Wyniki są następujące:
 
 ```json
     [
@@ -155,8 +155,8 @@ Wyniki są:
     ]
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Rozpoczęcie pracy](sql-query-getting-started.md)
-- [Przykłady dla platformy .NET w usłudze Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-dotnet)
-- [Sprzężenia](sql-query-join.md)
+- [Przykłady dla platformy .NET w usłudze Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Łącze](sql-query-join.md)

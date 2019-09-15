@@ -10,12 +10,12 @@ ms.date: 03/24/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 55cdb70a02aae62a69f4fc930f4c6ee385a24702
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 2784d57f3f85094230b481dd9fedca191edb39d4
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839547"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001106"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>Samouczek: Opracowywanie i wdrażanie modułu IoT Edge Python dla urządzeń z systemem Linux
 
@@ -33,6 +33,9 @@ Moduły usługi Azure IoT Edge umożliwiają wdrożenie kodu implementującego l
 Utworzony w tym samouczku moduł usługi IoT Edge filtruje dane temperatury generowane przez urządzenie. Komunikaty są wysyłane tylko wtedy, gdy temperatura przekroczy określony próg. Ten typ analizy brzegowej pomaga zmniejszyć ilość danych przekazywanych do chmury i w niej przechowywanych. 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+> [!NOTE]
+> Poniższy przewodnik dotyczy zestawu SDK języka Python w wersji 1, który został uznany za przestarzały. Obecnie pracujemy nad udostępnieniem tego przewodnika w wersji 2. Obejrzyj to miejsce, aby uzyskać aktualizacje.
 
 ## <a name="solution-scope"></a>Zakres rozwiązania
 
@@ -260,7 +263,7 @@ W przeciwnym razie możesz usunąć konfiguracje lokalne i zasoby platformy Azur
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku został utworzony moduł usługi IoT Edge zawierający kod służący do filtrowania nieprzetworzonych danych wygenerowanych przez urządzenie usługi IoT Edge. Gdy wszystko będzie gotowe do tworzenia własnych modułów, możesz dowiedzieć się więcej na temat [opracowywania własnych modułów IoT Edge](module-development.md) lub tworzenia [modułów z Visual Studio Code](how-to-vs-code-develop-module.md). Możesz przejść do kolejnych samouczków, aby dowiedzieć się, jak Azure IoT Edge może pomóc w wdrażaniu usług Azure Cloud Services w celu przetwarzania i analizowania danych na krawędzi.
 

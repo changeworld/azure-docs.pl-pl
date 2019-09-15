@@ -1,60 +1,60 @@
 ---
-title: Kończenie żądań SSL z certyfikatami w usłudze Azure Key Vault
-description: Dowiedz się więcej na temat integracji usługi Azure Application Gateway z usługą Key Vault dla certyfikatów serwera, które są dołączone do odbiorników z włączonym protokołem HTTPS.
+title: Kończenie połączeń SSL z certyfikatami Azure Key Vault
+description: Dowiedz się, jak zintegrować Application Gateway platformy Azure z Key Vault dla certyfikatów serwera, które są dołączone do odbiorników z włączonym protokołem HTTPS.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: 18af315c58c838a7237acfbcc32f622a0edbd3b3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 725a9d67e6a6412fc48a4278b5a8a163272e5133
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65827625"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000979"
 ---
-# <a name="ssl-termination-with-key-vault-certificates"></a>Kończenie żądań SSL z certyfikatami usługi Key Vault
+# <a name="ssl-termination-with-key-vault-certificates"></a>Kończenie połączeń SSL z certyfikatami Key Vault
 
-[Usługa Azure Key Vault](../key-vault/key-vault-whatis.md) jest wpis tajny zarządzane platformy przechowywania, można użyć do ochrony kluczy tajnych, klucze i certyfikaty SSL. Usługa Azure Application Gateway obsługuje integrację z usługą Key Vault (w publicznej wersji zapoznawczej) dla certyfikatów serwera, które są dołączone do odbiorników z włączonym protokołem HTTPS. Ta obsługa jest ograniczona do 2 jednostki SKU bramy Application Gateway.
+[Azure Key Vault](../key-vault/key-vault-overview.md) to magazyn tajny zarządzany przez platformę, którego można użyć do zabezpieczenia kluczy tajnych, klucze i certyfikatów SSL. Usługa Azure Application Gateway obsługuje integrację z usługą Key Vault (w publicznej wersji zapoznawczej) dla certyfikatów serwera, które są dołączone do odbiorników z włączonym protokołem HTTPS. Ta obsługa jest ograniczona do wersji 2 jednostki SKU systemu Application Gateway.
 
 > [!IMPORTANT]
-> Integracja usługi Application Gateway, za pomocą usługi Key Vault jest obecnie w publicznej wersji zapoznawczej. Tej wersji zapoznawczej jest oferowana bez Umowa dotycząca poziomu usług (SLA) i nie jest zalecane w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Integracja Application Gateway z Key Vault jest obecnie dostępna w publicznej wersji zapoznawczej. Ta wersja zapoznawcza jest świadczona bez umowy dotyczącej poziomu usług (SLA) i nie jest zalecana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ta publiczna wersja zapoznawcza oferuje dwa modele do kończenia żądań SSL:
+Ta Publiczna wersja zapoznawcza oferuje dwa modele do zakończenia protokołu SSL:
 
-- Możesz jawnie określić certyfikaty SSL, dołączone do odbiornika. Ten model jest tradycyjny sposób przekazania certyfikaty SSL do usługi Application Gateway dla kończenia żądań SSL.
-- Opcjonalnie możesz podać odwołanie do istniejącego certyfikatu usługi Key Vault lub klucz tajny, podczas tworzenia odbiornika z włączonym protokołem HTTPS.
+- Można jawnie podać certyfikaty SSL dołączone do odbiornika. Ten model jest tradycyjnym sposobem przekazywania certyfikatów SSL do Application Gateway na potrzeby zakończenia protokołu SSL.
+- Opcjonalnie można podać odwołanie do istniejącego certyfikatu Key Vault lub klucza tajnego podczas tworzenia odbiornika z obsługą protokołu HTTPS.
 
-Integracja bramy aplikacji z usługą Key Vault oferuje wiele korzyści, w tym:
+Integracja Application Gateway z Key Vault oferuje wiele korzyści, w tym:
 
-- Lepsze zabezpieczenia, ponieważ certyfikaty SSL nie są bezpośrednio obsługiwane przez zespół deweloperów aplikacji. Dzięki integracji zespołu zabezpieczeń osobno do:
-  * Konfigurowanie bramy aplikacji.
-  * Kontrolka bramy procesy cyklów życia aplikacji.
-  * Udziel uprawnień do bram wybranej aplikacji do dostępu do certyfikatów, które są przechowywane w magazynie kluczy.
-- Obsługa importowania istniejących certyfikatów do magazynu kluczy. Lub Użyj klucza magazynu z interfejsów API do tworzenia i zarządzania nowe certyfikaty z żadnym z zaufanych partnerów usługi Key Vault.
-- Obsługa automatycznego odnawiania certyfikatów, które są przechowywane w magazynie kluczy.
+- Silniejsze zabezpieczenia, ponieważ certyfikaty SSL nie są bezpośrednio obsługiwane przez zespół deweloperów aplikacji. Integracja umożliwia oddzielnemu zespołowi ds. zabezpieczeń:
+  * Konfigurowanie bram aplikacji.
+  * Kontroluj cykle życia bramy aplikacji.
+  * Udziel uprawnień wybranym bramom aplikacji dostępu do certyfikatów przechowywanych w magazynie kluczy.
+- Obsługa importowania istniejących certyfikatów do magazynu kluczy. Lub użyj Key Vault interfejsów API, aby tworzyć nowe certyfikaty i zarządzać nimi za pomocą dowolnych zaufanych partnerów Key Vault.
+- Obsługa automatycznego odnawiania certyfikatów przechowywanych w magazynie kluczy.
 
-Usługa Application Gateway obecnie obsługuje tylko certyfikaty z zweryfikowana przez oprogramowanie. Sprzętowy moduł zabezpieczeń (HSM)-zweryfikowanych certyfikaty nie są obsługiwane. Po skonfigurowaniu bramy aplikacji do używania certyfikatów usługi Key Vault jego wystąpienia pobrać certyfikatu z usługi Key Vault i je zainstalować lokalnie kończenia żądań SSL. Wystąpienia również wykonać sondowanie usługi Key Vault w odstępach czasu 24-godzinnym, pobieranie wersji odnowionego certyfikatu, jeśli taki istnieje. Jeśli zostanie znaleziony zaktualizowany certyfikat, certyfikat SSL skojarzonych obecnie z odbiornik HTTPS jest automatycznie obracane.
+Application Gateway obecnie obsługuje tylko certyfikaty zweryfikowane przez oprogramowanie. Sprzętowy moduł zabezpieczeń (HSM) — zweryfikowane certyfikaty nie są obsługiwane. Gdy Application Gateway jest skonfigurowany do korzystania z certyfikatów Key Vault, jego wystąpienia pobierają certyfikat z Key Vault i instalują je lokalnie w celu zakończenia protokołu SSL. Wystąpienia są również sondowane Key Vault co 24 godziny w celu pobrania odnowionej wersji certyfikatu (jeśli istnieje). W przypadku znalezienia zaktualizowanego certyfikatu certyfikat SSL aktualnie skojarzony z odbiornikiem HTTPS jest automatycznie obracany.
 
-## <a name="how-integration-works"></a>Jak działa Integracja
+## <a name="how-integration-works"></a>Jak działa integracja
 
-Integracja bramy aplikacji z usługą Key Vault wymaga procesu konfiguracji trzech kroków:
+Integracja Application Gateway z Key Vault wymaga procesu konfiguracji z trzema krokami:
 
-1. **Tworzenie zarządzanych tożsamości przypisanych przez użytkownika**
+1. **Tworzenie tożsamości zarządzanej przypisanej przez użytkownika**
 
-   Utwórz lub ponowne używanie istniejących przypisanych do użytkowników zarządzanych tożsamości, która używa bramy Application Gateway, można pobrać certyfikatów z usługi Key Vault w Twoim imieniu. Aby uzyskać więcej informacji, zobacz [Czym są tożsamości zarządzane dla zasobów platformy Azure?](../active-directory/managed-identities-azure-resources/overview.md). Spowoduje to utworzenie nowej tożsamości w dzierżawie usługi Azure Active Directory. Tożsamość jest zaufana dla subskrypcji, która służy do tworzenia tożsamości.
+   Należy utworzyć lub ponownie użyć istniejącej tożsamości zarządzanej przypisanej przez użytkownika, która Application Gateway używa do pobierania certyfikatów z usługi Key Vault w Twoim imieniu. Aby uzyskać więcej informacji, zobacz [Czym są tożsamości zarządzane dla zasobów platformy Azure?](../active-directory/managed-identities-azure-resources/overview.md). Ten krok powoduje utworzenie nowej tożsamości w dzierżawie Azure Active Directory. Tożsamość jest zaufana przez subskrypcję, która jest używana do tworzenia tożsamości.
 
 1. **Konfigurowanie magazynu kluczy**
 
-   Możesz następnie zaimportuj istniejący certyfikat lub Utwórz nową w magazynie kluczy. Certyfikat będzie używany przez aplikacje działające przez bramę aplikacji. W tym kroku możesz również użyć wpisu tajnego usługi key vault, który jest przechowywany jako hasło, podstawowy Base64 pliku PFX. Firma Microsoft zaleca użycie typu certyfikatu z powodu możliwości ich automatyczne odnawianie, który jest dostępny z obiektami typu certyfikatu w magazynie kluczy. Po utworzeniu certyfikatu lub klucza tajnego, definiowanie zasad dostępu w usłudze key vault, aby umożliwić tożsamości należy przyznać *uzyskać* dostępu do klucza tajnego.
+   Następnie można zaimportować istniejący certyfikat lub utworzyć nowy w magazynie kluczy. Certyfikat będzie używany przez aplikacje uruchamiane za pomocą bramy aplikacji. W tym kroku można także użyć klucza tajnego magazynu kluczy, który jest przechowywany jako hasło mniejsze niż 64 zakodowany plik PFX. Zalecamy używanie typu certyfikatu z powodu możliwości autoodnawiania, która jest dostępna z obiektami typu certyfikat w magazynie kluczy. Po utworzeniu certyfikatu lub wpisu tajnego należy zdefiniować zasady dostępu w magazynie kluczy, aby *umożliwić udzielenie tożsamości* dostępu do klucza tajnego.
 
 1. **Konfigurowanie bramy aplikacji**
 
-   Po wykonaniu dwa poprzednie kroki, można skonfigurować lub zmodyfikować istniejącą bramę aplikacji do używania zarządzanych tożsamości przypisanych przez użytkownika. Możesz również skonfigurować certyfikat SSL odbiornika HTTP wskaż pełny identyfikator URI z certyfikatem usługi Key Vault lub identyfikator wpisu tajnego.
+   Po wykonaniu dwóch powyższych kroków można skonfigurować lub zmodyfikować istniejącą bramę aplikacji tak, aby korzystała z tożsamości zarządzanej przypisanej przez użytkownika. Istnieje również możliwość skonfigurowania certyfikatu SSL odbiornika HTTP w taki sposób, aby wskazywał pełny identyfikator URI certyfikatu Key Vault lub identyfikatora tajnego.
 
-   ![Certyfikaty usługi Key vault](media/key-vault-certs/ag-kv.png)
+   ![Certyfikaty magazynu kluczy](media/key-vault-certs/ag-kv.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Konfigurowanie kończenia żądań SSL z certyfikatami usługi Key Vault przy użyciu programu Azure PowerShell](configure-keyvault-ps.md)
+[Konfigurowanie kończenia połączeń SSL z certyfikatami Key Vault przy użyciu Azure PowerShell](configure-keyvault-ps.md)

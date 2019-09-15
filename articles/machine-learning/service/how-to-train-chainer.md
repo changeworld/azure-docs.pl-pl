@@ -1,6 +1,6 @@
 ---
 title: Uczenie sieci neuronowych uczenie głębokie z modułem łańcucha
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Dowiedz się, jak uruchamiać skrypty szkoleniowe PyTorch na skalę przedsiębiorstwa Azure Machine Learning przy użyciu klasy szacowania w łańcuchu kluczy.  Przykładowy skrypt classifis obrazy cyfrowo, aby zbudować sieć neuronowych uczenia głębokiego przy użyciu biblioteki języka Python w łańcuchu, która działa w oparciu o numpy.
 services: machine-learning
 ms.service: machine-learning
@@ -10,22 +10,22 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: bc14ba2bcaa80236717c062abd1dc8a63b58305c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 91e638793d77a6d38f9813345829720d98545293
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966830"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002717"
 ---
-# <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning-service"></a>Uczenie i rejestrowanie modeli łańcucha na dużą skalę za pomocą usługi Azure Machine Learning
+# <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning"></a>Uczenie i rejestrowanie modeli łańcucha na dużą skalę za pomocą Azure Machine Learning
 
 W tym artykule dowiesz się, jak uruchamiać skrypty szkoleniowe [łańcucha](https://chainer.org/) na skalę przedsiębiorstwa przy użyciu klasy [szacowania łańcucha](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) firmy Azure Machine Learning. Przykładowy skrypt szkoleniowy w tym artykule używa popularnego [zestawu danych mnist ręcznie](http://yann.lecun.com/exdb/mnist/) do klasyfikowania cyfr odpisanych ręcznie przy użyciu sieci głębokiej neuronowych (DNN) utworzonej przy użyciu biblioteki języka Python w usłudze, która działa w oparciu o [numpy](https://www.numpy.org/).
 
 Bez względu na to, czy przeprowadzasz uczenie modelu łańcucha uczenia głębokiego od podstaw lub przenosisz istniejący model do chmury, możesz użyć Azure Machine Learning, aby skalować zadania szkoleniowe typu "open source" przy użyciu elastycznych zasobów obliczeniowych w chmurze. Możesz tworzyć, wdrażać, instalować i monitorować modele klasy produkcyjnej za pomocą Azure Machine Learning. 
 
-Dowiedz się [](concept-deep-learning-vs-machine-learning.md)więcej na temat uczenia głębokiego i uczenia maszynowego.
+Dowiedz się więcej na temat uczenia głębokiego i uczenia [maszynowego](concept-deep-learning-vs-machine-learning.md).
 
-Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
+Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -34,7 +34,7 @@ Uruchom ten kod w dowolnym z następujących środowisk:
 - Maszyna wirtualna w Azure Machine Learning Notes — nie jest wymagane pobieranie ani instalacja
 
     - Wykonaj kroki z artykułu [Samouczek: Zainstaluj środowisko i obszar](tutorial-1st-experiment-sdk-setup.md) roboczy, aby utworzyć dedykowany serwer notesu wstępnie załadowany z zestawem SDK i przykładowym repozytorium.
-    - W folderze przykłady głębokiego uczenia na serwerze notesu Znajdź ukończony Notes i pliki w folderze " **instrukcje-to-use-uczenie i szkolenia-with-lt-Learning/uczenie** ----dostrojenie-wdrażanie-with-the-The-The-Binding.  Notes obejmuje rozwinięte sekcje obejmujące dostrajanie inteligentnego parametru, wdrożenie modelu i widżety notesu.
+    - W folderze przykłady głębokiego uczenia na serwerze notesu Znajdź ukończony Notes i pliki w folderze " **instrukcje-to-use-uczenie i szkolenia-with-lt-Learning/uczenie----dostrojenie-wdrażanie-with-the-The-The** -Binding.  Notes obejmuje rozwinięte sekcje obejmujące dostrajanie inteligentnego parametru, wdrożenie modelu i widżety notesu.
 
 - Własny serwer Jupyter Notebook
 
@@ -60,7 +60,7 @@ print("SDK version:", azureml.core.VERSION)
 
 ### <a name="initialize-a-workspace"></a>Inicjowanie obszaru roboczego
 
-[Obszar roboczy usługi Azure Machine Learning](concept-workspace.md) jest zasobem najwyższego poziomu dla usługi. Zapewnia ono scentralizowane miejsce do pracy ze wszystkimi tworzonymi artefaktami. W zestawie SDK języka Python można uzyskać dostęp do artefaktów obszaru roboczego przez [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) utworzenie obiektu.
+[Obszar roboczy Azure Machine Learning](concept-workspace.md) jest zasobem najwyższego poziomu dla usługi. Zapewnia ono scentralizowane miejsce do pracy ze wszystkimi tworzonymi artefaktami. W zestawie SDK języka Python można uzyskać dostęp do artefaktów obszaru roboczego przez [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) utworzenie obiektu.
 
 Utwórz obiekt obszaru roboczego, odczytując `config.json` plik utworzony w [sekcji wymagania wstępne](#prerequisites):
 
@@ -209,7 +209,7 @@ for f in run.get_file_names():
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym artykule opisano przeszkolone i zarejestrowano głębokie uczenie neuronowych sieci przy użyciu łańcucha w usłudze Azure Machine Learning. Aby dowiedzieć się, jak wdrożyć model, przejdź do naszego artykułu [wdrożenia modelu](how-to-deploy-and-where.md) .
+W tym artykule opisano przeszkolone i zarejestrowano głębokie uczenie neuronowych sieci przy użyciu łańcucha na Azure Machine Learning. Aby dowiedzieć się, jak wdrożyć model, przejdź do naszego artykułu [wdrożenia modelu](how-to-deploy-and-where.md) .
 
 * [Dostosowywanie hiperparametrów](how-to-tune-hyperparameters.md)
 

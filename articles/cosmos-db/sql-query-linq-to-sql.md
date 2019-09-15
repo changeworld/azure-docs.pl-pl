@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: tisande
-ms.openlocfilehash: ce9d96a90a2463d1ab8e1a9774a019e38ca681f4
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: ad6dcf7307955300a781a7a649b6ac76b3c69589
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036030"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003551"
 ---
 # <a name="linq-to-sql-translation"></a>Tłumaczenie składni LINQ na język SQL
 
@@ -68,7 +68,7 @@ Dostawca LINQ zawarty w zestawie SDK programu SQL .NET obsługuje następujące 
 - **Funkcje matematyczne**: Obsługuje tłumaczenie z platformy `Abs`.NET `Acos`, `Asin` `Atan` `Ceiling` ,,`Floor`, ,,`Cos`,,,, ,`Pow` `Exp` `Log` `Log10` `Round`, `Sign`, ,,`Sin`i dorównoważnychfunkcji`Truncate` wbudowanych języka SQL. `Sqrt` `Tan`
 - **Funkcje ciągów**: Obsługuje tłumaczenie z platformy `Concat`.NET `Contains`, `Count` `EndsWith``IndexOf` ,,`StartsWith`, ,,`Replace`,,,, ,`ToUpper` `Reverse` `SubString` `ToLower` `TrimEnd` i`TrimStart` do równoważnych funkcji wbudowanych języka SQL.
 - **Funkcje tablicowe**: Obsługuje tłumaczenie z platformy `Concat`.NET `Contains`, i `Count` do równoważnych funkcji wbudowanych języka SQL.
-- **Funkcje rozszerzenia**geograficznego: Obsługuje tłumaczenie z `Distance`metod zastępczych `IsValid` `IsValidDetailed`,, i `Within` do równoważnych funkcji wbudowanych języka SQL.
+- **Funkcje rozszerzenia geograficznego**: Obsługuje tłumaczenie z `Distance`metod zastępczych `IsValid` `IsValidDetailed`,, i `Within` do równoważnych funkcji wbudowanych języka SQL.
 - **Funkcja rozszerzenia funkcji zdefiniowanej przez użytkownika**: Obsługuje tłumaczenie z metody `UserDefinedFunctionProvider.Invoke` zastępczej do odpowiedniej funkcji zdefiniowanej przez użytkownika.
 - **Różne**: Obsługuje translację `Coalesce` i operatory warunkowe. Można przetłumaczyć `Contains` na ciąg zawiera, ARRAY_CONTAINS lub SQL w, w zależności od kontekstu.
 
@@ -324,5 +324,5 @@ Zapytanie zagnieżdżone stosuje wewnętrzne zapytanie do każdego elementu zewn
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Przykłady dla platformy .NET w usłudze Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [Przykłady dla platformy .NET w usłudze Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Dane dokumentu modelu](modeling-data.md)

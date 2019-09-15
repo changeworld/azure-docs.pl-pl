@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 03/01/2019
-ms.openlocfilehash: 86ac58aea174ca05580da99b6bde0cc3823ab151
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 68c9279333e9ee92cbca1034f70801c153b6cdb8
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883065"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000551"
 ---
 # <a name="manage-storage-account-keys-with-azure-key-vault-and-the-azure-cli"></a>Zarządzanie kluczami konta magazynu przy użyciu Azure Key Vault i interfejsu wiersza polecenia platformy Azure 
 
@@ -158,7 +158,7 @@ Istnieją trzy sposoby uwierzytelniania do Key Vault:
 - Użyj nazwy głównej usługi i certyfikatu. 
 - Użyj nazwy głównej usługi i hasła. Takie podejście nie jest zalecane.
 
-Aby uzyskać więcej informacji, [Zobacz Azure Key Vault: Podstawowe pojęcia](key-vault-whatis.md#basic-concepts).
+Aby uzyskać więcej informacji, [Zobacz Azure Key Vault: Podstawowe pojęcia](basic-concepts.md).
 
 Poniższy przykład ilustruje sposób pobierania tokenów sygnatury dostępu współdzielonego. Tokeny są pobierane po utworzeniu definicji sygnatury dostępu współdzielonego. 
 

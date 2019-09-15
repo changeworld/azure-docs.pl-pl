@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 87acc6e8c561349b734bd9cd98300b65e730abe7
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 316ed596cfa49987e229004c388267286ff50927
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928088"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000966"
 ---
 # <a name="design-secure-applications-on-azure"></a>Projektowanie bezpiecznych aplikacji na platformie Azure
 W tym artykule opisano działania związane z bezpieczeństwem i kontrolki, które należy wziąć pod uwagę podczas projektowania aplikacji w chmurze. Zasoby szkoleniowe wraz z pytaniami i pojęciami związanymi z bezpieczeństwem, które należy wziąć pod uwagę podczas wymagań i fazy projektowania [cyklu życia Microsoft Security Development (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) . Celem jest ułatwienie zdefiniowania działań i usług platformy Azure, których można użyć do zaprojektowania bezpieczniejszej aplikacji.
@@ -43,7 +43,7 @@ Skorzystaj z następujących zasobów na etapie uczenia, aby zaznajomić się z 
   - [Azure DevOps Services](https://docs.microsoft.com/azure/devops/) udostępnia narzędzia do współpracy deweloperskiej. Narzędzia te obejmują potoki o wysokiej wydajności, bezpłatne repozytoria Git, konfigurowalne tablice Kanban i rozbudowane zautomatyzowane testowanie obciążenia oparte na chmurze.
     [Centrum zasobów DevOps](https://docs.microsoft.com/azure/devops/learn/) łączy nasze zasoby na potrzeby uczenia DevOps, kontroli wersji Git, metod agile, sposobu pracy z DevOps w firmie Microsoft oraz jak można ocenić własne postępy DevOps.
 
-  - [5 najważniejszych elementów zabezpieczeń, które należy wziąć pod uwagę przed rozpoczęciem wypychania do](https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider/index?WT.mc_id=Learn-Blog-tajanca) środowiska produkcyjnego, pokazuje, jak zabezpieczyć aplikacje sieci Web na platformie Azure i chronić aplikacje przed najbardziej typowymi i niebezpiecznymi atakami aplikacji sieci Web.
+  - [5 najważniejszych elementów zabezpieczeń, które należy wziąć pod uwagę przed rozpoczęciem wypychania do środowiska produkcyjnego](https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider/index?WT.mc_id=Learn-Blog-tajanca) , pokazuje, jak zabezpieczyć aplikacje sieci Web na platformie Azure i chronić aplikacje przed najbardziej typowymi i niebezpiecznymi atakami aplikacji sieci Web.
 
   - [Secure DevOps Kit dla platformy Azure](https://azsk.azurewebsites.net/index.html) to zbiór skryptów, narzędzi, rozszerzeń i automatyzacji, które są związane z kompleksową subskrypcją platformy Azure i wymaganiami dotyczącymi zabezpieczeń zasobów DevOps zespołów, które używają rozległej automatyzacji. Pakiet Secure DevOps Kit dla platformy Azure może przedstawiać sposób bezproblemowego integrowania zabezpieczeń z natywnymi przepływami pracy DevOps. Zestaw adresów zawiera narzędzia, takie jak testy weryfikacyjne zabezpieczeń (SVTs), które mogą pomóc deweloperom pisać bezpieczny kod i przetestować bezpieczną konfigurację swoich aplikacji w chmurze na etapach tworzenia kodu i wczesnego rozwoju.
 
@@ -149,14 +149,14 @@ Modelowanie zagrożeń polega na zidentyfikowaniu potencjalnych zagrożeń bezpi
 
 Aby ułatwić proces modelowania zagrożeń, zaprojektowano [Threat Modeling Tool SDL](threat-modeling-tool.md) z innymi ekspertami. To narzędzie ułatwia modelowanie zagrożeń dla wszystkich deweloperów, oferując jasne wskazówki dotyczące tworzenia i analizowania modeli zagrożeń.
 
-Modelowanie projektu aplikacji i wyliczanie [](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) zagrożeń dotyczących kroków — fałszowanie, manipulowanie, wyparcie, ujawnienie informacji, odmowa usługi i podniesienie uprawnień — we wszystkich granicach zaufania okazało się skutecznym sposobem przechwytywania błędów projektowania Wczesne. W poniższej tabeli przedstawiono listę zagrożeń i przedstawiono przykładowe środki zaradcze korzystające z funkcji oferowanych przez platformę Azure. Te środki zaradcze nie będą działały w każdej sytuacji.
+Modelowanie projektu aplikacji i wyliczanie [zagrożeń dotyczących](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) kroków — fałszowanie, manipulowanie, wyparcie, ujawnienie informacji, odmowa usługi i podniesienie uprawnień — we wszystkich granicach zaufania okazało się skutecznym sposobem przechwytywania błędów projektowania Wczesne. W poniższej tabeli przedstawiono listę zagrożeń i przedstawiono przykładowe środki zaradcze korzystające z funkcji oferowanych przez platformę Azure. Te środki zaradcze nie będą działały w każdej sytuacji.
 
 | Ważną | Właściwość zabezpieczeń | Potencjalne ograniczenia dotyczące platformy Azure |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Fałszowaniem               | Authentication        | [Wymagaj połączeń HTTPS](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
 | Manipulowanie              | Integralność             | Sprawdź poprawność certyfikatów SSL/TLS. Aplikacje korzystające z protokołu SSL/TLS muszą w pełni weryfikować certyfikaty X. 509 jednostek, z którymi się łączą. Użyj Azure Key Vault certyfikatów do [zarządzania certyfikatami x509](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-certificates). |
-| Rzuca            | Weryfikacja tożsamości       | Włącz [monitorowanie i diagnostykę](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)platformy Azure.|
-| Ujawnianie informacji | Poufne       | Szyfruj poufne dane [](../fundamentals/encryption-atrest.md) przechowywane i przesyłane [](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit). |
+| Rzuca            | Brak wyparcia       | Włącz [monitorowanie i diagnostykę](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)platformy Azure.|
+| Ujawnianie informacji | Poufne       | Szyfruj [poufne dane przechowywane](../fundamentals/encryption-atrest.md) [i przesyłane](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit). |
 | Odmowa usługi      | Dostępność          | Monitoruj metryki wydajności pod kątem potencjalnych odmowy warunków usługi. Implementuj filtry połączeń. [Usługa Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md#next-steps), w połączeniu z najlepszymi rozwiązaniami dotyczącymi projektowania aplikacji, zapewnia ochronę przed atakami na DDoS.|
 | Podniesienie uprawnień | Authorization         | Użyj <span class="underline"></span> [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)Azure Active Directory.|
 
@@ -203,7 +203,7 @@ Czynności, które można wykonać, aby opracować podejście zorientowane na to
 
 #### <a name="enforce-multi-factor-authentication-for-users"></a>Wymuszanie uwierzytelniania wieloskładnikowego dla użytkowników
 
-Użyj uwierzytelniania dwuskładnikowego. Uwierzytelnianie dwuskładnikowe jest bieżącym standardem uwierzytelniania i autoryzacji, ponieważ pozwala to uniknąć słabych zabezpieczeń, które są związane z typami nazw użytkowników i haseł uwierzytelniania. Dostęp do interfejsów zarządzania platformy Azure (Azure Portal/Remote PowerShell) i usług związanych z klientem powinien zostać zaprojektowany i skonfigurowany do korzystania z [uwierzytelniania wieloskładnikowego platformy Azure](../../active-directory/authentication/concept-mfa-howitworks.md).
+Użyj uwierzytelniania dwuskładnikowego. Uwierzytelnianie dwuskładnikowe jest bieżącym standardem uwierzytelniania i autoryzacji, ponieważ pozwala to uniknąć słabych zabezpieczeń, które są związane z typami nazw użytkowników i haseł uwierzytelniania. Dostęp do interfejsów zarządzania platformy Azure (Azure Portal/Remote PowerShell) i usług przeznaczonych dla klientów powinien zostać zaprojektowany i skonfigurowany do korzystania z usługi [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md).
 
 #### <a name="use-strong-authentication-and-authorization-platforms"></a>Korzystanie z mocnych platform uwierzytelniania i autoryzacji
 
@@ -215,7 +215,7 @@ Używanie mechanizmów uwierzytelniania i autoryzacji dostarczonych przez platfo
 
 #### <a name="apply-the-principle-of-least-privilege"></a>Stosuj zasadę najniższych uprawnień
 
-Koncepcja najniższych [uprawnień](https://en.wikipedia.org/wiki/Principle_of_least_privilege) oznacza umożliwienie użytkownikom dokładnego poziomu dostępu i kontroli potrzebnych do wykonywania zadań i nic więcej.
+Koncepcja [najniższych uprawnień](https://en.wikipedia.org/wiki/Principle_of_least_privilege) oznacza umożliwienie użytkownikom dokładnego poziomu dostępu i kontroli potrzebnych do wykonywania zadań i nic więcej.
 
 Czy deweloper oprogramowania musi mieć prawa administratora domeny? Czy asystent administracyjny musi mieć dostęp do kontrolek administracyjnych na komputerze osobistym? Ocenianie dostępu do oprogramowania nie jest inne. Jeśli używasz [kontroli dostępu opartej na rolach (RBAC)](../../role-based-access-control/overview.md) w celu zapewnienia użytkownikom różnych możliwości i uprawnień w aplikacji, nie będziesz mieć dostępu do wszystkich elementów. Ograniczając dostęp do co jest wymagane dla każdej roli, należy ograniczyć ryzyko wystąpienia problemu z zabezpieczeniami.
 
@@ -242,11 +242,11 @@ Najlepszym sposobem obrony przed tym rodzajem ataku jest poproszenie użytkownik
 
 Utrata kluczy i poświadczeń jest typowym problemem. Jedyną czynnością, która nie jest utrata kluczy i poświadczeń, jest posiadanie nieautoryzowanej strony dostępu do nich. Osoby atakujące mogą korzystać z zautomatyzowanych i ręcznych technik znajdowania kluczy i wpisów tajnych, które są przechowywane w repozytoriach kodu, takich jak GitHub. Nie należy umieszczać kluczy i wpisów tajnych w tych publicznych repozytoriach kodu ani na żadnym innym serwerze.
 
-Zawsze umieszczaj klucze, certyfikaty, wpisy tajne i parametry połączenia w rozwiązaniu do zarządzania kluczami. Możesz użyć scentralizowanego rozwiązania, w którym klucze i wpisy tajne są przechowywane w sprzętowych modułach zabezpieczeń (sprzętowych modułów zabezpieczeń). Platforma Azure udostępnia moduł HSM w chmurze z [Azure Key Vault](../../key-vault/key-vault-whatis.md).
+Zawsze umieszczaj klucze, certyfikaty, wpisy tajne i parametry połączenia w rozwiązaniu do zarządzania kluczami. Możesz użyć scentralizowanego rozwiązania, w którym klucze i wpisy tajne są przechowywane w sprzętowych modułach zabezpieczeń (sprzętowych modułów zabezpieczeń). Platforma Azure udostępnia moduł HSM w chmurze z [Azure Key Vault](../../key-vault/key-vault-overview.md).
 
-Key Vault jest magazynem wpisów *tajnych*: jest to scentralizowana usługa w chmurze służąca do przechowywania wpisów tajnych aplikacji. Key Vault zabezpiecza poufne dane przez przechowywanie wpisów tajnych aplikacji w jednej, centralnej lokalizacji i zapewnianie bezpiecznego dostępu, kontroli uprawnień i rejestrowania dostępu.
+Key Vault jest *magazynem wpisów tajnych*: jest to scentralizowana usługa w chmurze służąca do przechowywania wpisów tajnych aplikacji. Key Vault zabezpiecza poufne dane przez przechowywanie wpisów tajnych aplikacji w jednej, centralnej lokalizacji i zapewnianie bezpiecznego dostępu, kontroli uprawnień i rejestrowania dostępu.
 
-Wpisy tajne są przechowywanew poszczególnych magazynach. Każdy magazyn ma własne zasady konfiguracji i zabezpieczeń umożliwiające kontrolę dostępu. Dostęp do danych można uzyskać za pomocą interfejsu API REST lub zestawu SDK klienta, który jest dostępny dla większości języków programowania.
+Wpisy tajne są przechowywane w poszczególnych *magazynach*. Każdy magazyn ma własne zasady konfiguracji i zabezpieczeń umożliwiające kontrolę dostępu. Dostęp do danych można uzyskać za pomocą interfejsu API REST lub zestawu SDK klienta, który jest dostępny dla większości języków programowania.
 
 > [!IMPORTANT]
 > Azure Key Vault jest przeznaczona do przechowywania wpisów tajnych konfiguracji dla aplikacji serwerowych. Nie jest ona przeznaczona do przechowywania danych, które należą do użytkowników aplikacji. Jest to odzwierciedlone we właściwościach wydajności, interfejsie API i modelu kosztów.
@@ -277,7 +277,7 @@ Po umieszczeniu komentarzy w kodzie upewnij się, że nie zapisano żadnych pouf
 
 W zasadzie założono, że wszystko w projekcie deweloperskim będzie publiczną wiedzą podczas jej wdrażania. Należy unikać uwzględniania poufnych danych dowolnego rodzaju w projekcie.
 
-Wcześniej omówione [Azure Key Vault](../../key-vault/key-vault-whatis.md). Za pomocą Key Vault można przechowywać wpisy tajne, takie jak klucze i hasła, zamiast ich kodowania. Jeśli używasz Key Vault w połączeniu z tożsamościami zarządzanymi dla zasobów platformy Azure, Twoja aplikacja internetowa platformy Azure może łatwo i bezpiecznie uzyskiwać dostęp do wartości konfiguracji wpisów tajnych bez przechowywania wpisów tajnych w kontroli źródła lub konfiguracji. Aby dowiedzieć się więcej, zobacz Zarządzanie wpisami [tajnymi w aplikacjach serwerowych za pomocą Azure Key Vault](https://docs.microsoft.com/learn/modules/manage-secrets-with-azure-key-vault/).
+Wcześniej omówione [Azure Key Vault](../../key-vault/key-vault-overview.md). Za pomocą Key Vault można przechowywać wpisy tajne, takie jak klucze i hasła, zamiast ich kodowania. Jeśli używasz Key Vault w połączeniu z tożsamościami zarządzanymi dla zasobów platformy Azure, Twoja aplikacja internetowa platformy Azure może łatwo i bezpiecznie uzyskiwać dostęp do wartości konfiguracji wpisów tajnych bez przechowywania wpisów tajnych w kontroli źródła lub konfiguracji. Aby dowiedzieć się więcej, zobacz Zarządzanie wpisami [tajnymi w aplikacjach serwerowych za pomocą Azure Key Vault](https://docs.microsoft.com/learn/modules/manage-secrets-with-azure-key-vault/).
 
 ### <a name="implement-fail-safe-measures"></a>Implementowanie bezpiecznych miar zakończonych niepowodzeniem
 

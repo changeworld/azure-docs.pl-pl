@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 33128cbece3b217778182b3831b02e2f3f654f3b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c01f695210ebbd69a26b957e846ff645b1dea5bb
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853214"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999013"
 ---
 # <a name="microsoft-identity-platform-integration-checklist"></a>Lista kontrolna integracji z platformą Microsoft Identity
 
@@ -64,9 +64,9 @@ Użyj poniższej listy kontrolnej, aby upewnić się, że aplikacja jest efektyw
 |---|---|
 | ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Zachować własność wszystkich identyfikatorów URI przekierowania i zachować Aktualności rekordów DNS. Nie używaj symboli wieloznacznych (*) w identyfikatorach URI. W przypadku usługi Web Apps upewnij się, że wszystkie identyfikatory URI są bezpieczne i szyfrowane (na przykład przy użyciu schematów https). W przypadku klientów publicznych Użyj identyfikatorów URI przekierowania specyficznych dla platformy, jeśli są odpowiednie (głównie dla systemów iOS i Android). W przeciwnym razie Użyj identyfikatorów URI przekierowania z dużą ilością losowości, aby zapobiec kolizjom podczas wywoływania z powrotem do aplikacji. Jeśli aplikacja jest używana przez izolowanego agenta sieci Web, można użyć https://login.microsoftonline.com/nativeclient programu. Regularnie Przeglądaj i przycinaj wszystkie nieużywane lub niepotrzebne identyfikatory URI przekierowań. |
 | ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Jeśli Twoja aplikacja jest zarejestrowana w katalogu, Zminimalizuj i ręcznie Monitoruj listę właścicieli rejestracji aplikacji. |
-| ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Nie włączaj obsługi niejawnego [przepływu OAuth2](v2-oauth2-implicit-grant-flow.md) , chyba że jest to wymagane jawnie. Zapoznaj się z prawidłowym scenariuszem. [](v1-oauth2-implicit-grant-flow.md#suitable-scenarios-for-the-oauth2-implicit-grant) |
+| ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Nie włączaj obsługi [niejawnego przepływu OAuth2](v2-oauth2-implicit-grant-flow.md) , chyba że jest to wymagane jawnie. Zapoznaj się z prawidłowym [scenariuszem](v1-oauth2-implicit-grant-flow.md#suitable-scenarios-for-the-oauth2-implicit-grant). |
 | ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Nie używaj [przepływu poświadczeń hasła właściciela zasobu (ROPC)](v2-oauth-ropc.md), który bezpośrednio obsługuje hasła użytkowników. Ten przepływ wymaga wysokiego stopnia zaufania i zagrożeń użytkownika i powinien być używany tylko wtedy, gdy inne, bezpieczniejsze, nie można używać przepływów. |
-| ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Ochrona poświadczeń aplikacji i zarządzanie nimi. Użyj [poświadczeń certyfikatu](active-directory-certificate-credentials.md), a nie poświadczeń hasła (kluczy tajnych klienta). Jeśli musisz użyć poświadczenia hasła, nie ustawiaj go ręcznie. Nie należy przechowywać poświadczeń w kodzie ani w konfiguracji, a nigdy nie zezwalać na ich obsługę przez człowieka. Jeśli to możliwe, użyj [zarządzanych tożsamości dla zasobów platformy Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) lub [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) do przechowywania i regularnego rotacji Twoich poświadczeń. |
+| ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Ochrona poświadczeń aplikacji i zarządzanie nimi. Użyj [poświadczeń certyfikatu](active-directory-certificate-credentials.md), a nie poświadczeń hasła (kluczy tajnych klienta). Jeśli musisz użyć poświadczenia hasła, nie ustawiaj go ręcznie. Nie należy przechowywać poświadczeń w kodzie ani w konfiguracji, a nigdy nie zezwalać na ich obsługę przez człowieka. Jeśli to możliwe, użyj [zarządzanych tożsamości dla zasobów platformy Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) lub [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) do przechowywania i regularnego rotacji Twoich poświadczeń. |
 | ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Upewnij się, że aplikacja żąda najniższych uprawnień. Tylko Poproś o uprawnienia wymagane przez aplikację i tylko wtedy, gdy są one potrzebne. Zapoznaj się z różnymi [rodzajami uprawnień](v1-permissions-and-consent.md#types-of-permissions). W razie potrzeby używaj uprawnień aplikacji; Użyj uprawnień delegowanych, jeśli jest to możliwe. Aby uzyskać pełną listę uprawnień Microsoft Graph, zobacz to [odwołanie do uprawnień](https://docs.microsoft.com/graph/permissions-reference). |
 | ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | W przypadku zabezpieczania interfejsu API przy użyciu platformy tożsamości firmy Microsoft należy uważnie zastanowić się nad uprawnieniami, które powinien ujawnić. Weź pod uwagę, jaki jest poziom szczegółowości rozwiązania i jakie uprawnienia wymagają zgody administratora. Przed podjęciem decyzji o autoryzacji Sprawdź, czy w tokenach przychodzących są oczekiwane uprawnienia. |
 

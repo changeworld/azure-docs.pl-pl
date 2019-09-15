@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: b5ffc16a7c9dacef3036ca5ce225265252dcdf5d
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: a8aed646f03b777722518152354cfe80cea043a0
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516760"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002802"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>Najlepsze rozwiązania w zakresie macierzy wirtualnej StorSimple
 
@@ -45,7 +45,7 @@ Podczas aprowizacji macierzy wirtualnej należy zaimplementować następujące n
 | --- | --- | --- |
 | **Typ maszyny wirtualnej** |**Generacja 2** Maszyna wirtualna do użycia z systemem Windows Server 2012 lub nowszym oraz obrazem *VHDX* . <br></br> **Generacja 1** Maszyna wirtualna do użycia z systemem Windows Server 2008 lub nowszym oraz obrazem *VHD* . |Użyj maszyny wirtualnej w wersji 8 przy użyciu obrazu *. vmdk* . |
 | **Typ pamięci** |Skonfiguruj jako **pamięć statyczną**. <br></br> Nie używaj opcji **pamięci dynamicznej** . | |
-| **Typ dysku danych** |Inicjowanie obsługi **administracyjnej.**<br></br> **Stały rozmiar** zajmuje dużo czasu. <br></br> Nie należy używać opcji **różnicowych** . |Użyj opcji **alokowania elastycznego** . |
+| **Typ dysku danych** |Inicjowanie obsługiadministracyjnej.<br></br> **Stały rozmiar** zajmuje dużo czasu. <br></br> Nie należy używać opcji **różnicowych** . |Użyj opcji **alokowania elastycznego** . |
 | **Modyfikowanie dysku danych** |Rozszerzanie lub zmniejszanie jest niedozwolone. Próba wykonania tej czynności spowoduje utratę wszystkich danych lokalnych na urządzeniu. |Rozszerzanie lub zmniejszanie jest niedozwolone. Próba wykonania tej czynności spowoduje utratę wszystkich danych lokalnych na urządzeniu. |
 
 ### <a name="sizing"></a>Zmiany rozmiaru
@@ -199,7 +199,7 @@ Podczas konfigurowania rekordami ACR dla woluminów StorSimple należy stosować
 ### <a name="data-security-and-encryption"></a>Bezpieczeństwo i szyfrowanie danych
 Wirtualna macierz StorSimple ma funkcje zabezpieczeń i szyfrowania danych, które zapewniają poufność i integralność danych. W przypadku korzystania z tych funkcji zaleca się wykonanie następujących najlepszych rozwiązań: 
 
-* Zdefiniuj klucz szyfrowania magazynu w chmurze, aby generować szyfrowanie AES-256 przed wysłaniem danych z macierzy wirtualnej do chmury. Ten klucz nie jest wymagany, jeśli dane są szyfrowane i zaczynają się od. Klucz może być wygenerowany i bezpieczny przy użyciu systemu zarządzania kluczami, takiego jak [Magazyn kluczy Azure](../key-vault/key-vault-whatis.md).
+* Zdefiniuj klucz szyfrowania magazynu w chmurze, aby generować szyfrowanie AES-256 przed wysłaniem danych z macierzy wirtualnej do chmury. Ten klucz nie jest wymagany, jeśli dane są szyfrowane i zaczynają się od. Klucz może być wygenerowany i bezpieczny przy użyciu systemu zarządzania kluczami, takiego jak [Magazyn kluczy Azure](../key-vault/key-vault-overview.md).
 * Podczas konfigurowania konta magazynu za pośrednictwem usługi StorSimple Manager upewnij się, że włączono tryb SSL, aby utworzyć bezpieczny kanał na potrzeby komunikacji sieciowej między urządzeniem StorSimple a chmurą.
 * Wygeneruj ponownie klucze dla kont magazynu (przez uzyskanie dostępu do usługi Azure Storage) okresowo, aby uwzględnić wszelkie zmiany dostępu na podstawie zmienionej listy administratorów.
 * Dane w macierzy wirtualnej są kompresowane i deduplikowane przed wysłaniem ich do platformy Azure. Nie zalecamy korzystania z usługi roli deduplikacji danych na hoście z systemem Windows Server.

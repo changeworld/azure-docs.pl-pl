@@ -1,7 +1,7 @@
 ---
 title: Tworzenie obszarów roboczych przy użyciu interfejsu wiersza polecenia platformy Azure
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak utworzyć nowy obszar roboczy usługi Azure Machine Learning za pomocą interfejsu wiersza polecenia platformy Azure.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak utworzyć nowy obszar roboczy Azure Machine Learning przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
 ms.date: 08/30/2019
-ms.openlocfilehash: f398eb8124f45562ebc3c4238c641a6638811394
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 75487906e4323ea12a47d75164617212bd3e65d9
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873498"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002635"
 ---
-# <a name="create-a-workspace-for-azure-machine-learning-service-with-azure-cli"></a>Tworzenie obszaru roboczego dla usługi Azure Machine Learning przy użyciu interfejsu wiersza polecenia platformy Azure
+# <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Tworzenie obszaru roboczego dla Azure Machine Learning przy użyciu interfejsu wiersza polecenia platformy Azure
 
-W tym artykule dowiesz się, jak utworzyć obszar roboczy usługi Azure Machine Learning przy użyciu interfejsu wiersza polecenia platformy Azure. Interfejs wiersza polecenia platformy Azure umożliwia zarządzanie zasobami platformy Azure. Rozszerzenie uczenia maszynowego do interfejsu wiersza polecenia dostarcza poleceń do pracy z zasobami usługi Azure Machine Learning.
+W tym artykule dowiesz się, jak utworzyć obszar roboczy Azure Machine Learning przy użyciu interfejsu wiersza polecenia platformy Azure. Interfejs wiersza polecenia platformy Azure umożliwia zarządzanie zasobami platformy Azure. Rozszerzenie uczenia maszynowego do interfejsu wiersza polecenia dostarcza poleceń do pracy z zasobami Azure Machine Learning.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Subskrypcji platformy Azure**. Jeśli go nie masz, wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning Service](https://aka.ms/AMLFree).
+* **Subskrypcji platformy Azure**. Jeśli go nie masz, wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree).
 
 * Aby korzystać z poleceń interfejsu wiersza polecenia w tym dokumencie ze **środowiska lokalnego**, wymagany jest [interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
@@ -53,7 +53,7 @@ az extension add -n azure-cli-ml
 
 ## <a name="create-a-workspace"></a>Tworzenie obszaru roboczego
 
-Obszar roboczy usługi Azure Machine Learning opiera się na następujących usługach lub jednostkach platformy Azure:
+Obszar roboczy Azure Machine Learning opiera się na następujących usługach lub jednostkach platformy Azure:
 
 > [!IMPORTANT]
 > Jeśli nie określisz istniejącej usługi platformy Azure, zostanie ona utworzona automatycznie podczas tworzenia obszaru roboczego. Zawsze należy określić grupę zasobów.
@@ -68,10 +68,10 @@ Obszar roboczy usługi Azure Machine Learning opiera się na następujących us�
 
 ### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Obszar roboczy usługi Azure Machine Learning należy utworzyć w grupie zasobów. Możesz użyć istniejącej grupy zasobów lub utworzyć nową. Aby __utworzyć nową grupę zasobów__, użyj następującego polecenia. Zamień `<resource-group-name>` na nazwę, która ma być używana dla tej grupy zasobów. Zamień `<location>` na region platformy Azure, który ma być używany dla tej grupy zasobów:
+Obszar roboczy Azure Machine Learning należy utworzyć w grupie zasobów. Możesz użyć istniejącej grupy zasobów lub utworzyć nową. Aby __utworzyć nową grupę zasobów__, użyj następującego polecenia. Zamień `<resource-group-name>` na nazwę, która ma być używana dla tej grupy zasobów. Zamień `<location>` na region platformy Azure, który ma być używany dla tej grupy zasobów:
 
 > [!TIP]
-> Należy wybrać region, w którym usługa Azure Machine Learning jest dostępna. Aby uzyskać więcej informacji, zobacz [dostępne produkty według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service).
+> Należy wybrać region, w którym Azure Machine Learning jest dostępna. Aby uzyskać więcej informacji, zobacz [dostępne produkty według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service).
 
 ```azurecli-interactive
 az group create --name <resource-group-name> --location <location>
@@ -170,7 +170,7 @@ Aby utworzyć obszar roboczy, który korzysta z istniejących zasobów, należy 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<acr-name>"`
 
     > [!IMPORTANT]
-    > Aby można było używać [konta administratora](/azure/container-registry/container-registry-authentication#admin-account) z obszarem roboczym usługi Azure Machine Learning, rejestr kontenerów musi być włączony.
+    > Aby można było używać [konta administratora](/azure/container-registry/container-registry-authentication#admin-account) z obszarem roboczym Azure Machine Learning, rejestr kontenerów musi być włączony.
 
 Gdy masz identyfikatory zasobów, które mają być używane z obszarem roboczym, użyj polecenia Base `az workspace create -w <workspace-name> -g <resource-group-name>` i Dodaj parametry oraz identyfikatory dla istniejących zasobów programu. Na przykład następujące polecenie tworzy obszar roboczy, który używa istniejącego rejestru kontenerów:
 
@@ -302,7 +302,7 @@ Aby udostępnić obszar roboczy innemu użytkownikowi w ramach subskrypcji, uży
 az ml workspace share -w <workspace-name> -g <resource-group-name> --user <user> --role <role>
 ```
 
-Aby uzyskać więcej informacji na temat kontroli dostępu opartej na rolach (RBAC) przy użyciu usługi Azure Machine Learning, zobacz [Zarządzanie użytkownikami i rolami](how-to-assign-roles.md).
+Aby uzyskać więcej informacji na temat kontroli dostępu opartej na rolach (RBAC) z Azure Machine Learning, zobacz [Zarządzanie użytkownikami i rolami](how-to-assign-roles.md).
 
 Aby uzyskać więcej informacji, zobacz sekcję [AZ ml Workspace Share](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-share) documentation.
 

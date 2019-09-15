@@ -1,6 +1,6 @@
 ---
-title: Profili Technicalprofile | Dokumentacja firmy Microsoft
-description: Określ element profili Technicalprofile zasad niestandardowych w usłudze Azure Active Directory B2C.
+title: TechnicalProfiles | Microsoft Docs
+description: Określ element TechnicalProfiles zasad niestandardowych w Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f712634c83fa290ab24d5e8437a82d5f93af0b7f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e1192c8d0057d77306a1ffb06dd9bae12b7634ca
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512280"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70998740"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-A **profili Technicalprofile** element zawiera zbiór profilów Technical Preview obsługiwana przez dostawcę oświadczeń. Każdego dostawcy oświadczeń musi mieć co najmniej jeden profil techniczne określające punktów końcowych i protokoły wymagane do komunikowania się z dostawcą oświadczeń. Dostawcy oświadczeń mogą mieć wiele profilów Technical Preview.
+Element **TechnicalProfiles** zawiera zestaw profilów technicznych obsługiwanych przez dostawcę usług. Każdy dostawca oświadczeń musi mieć co najmniej jeden profil techniczny, który określa punkty końcowe i protokoły wymagane do komunikowania się z dostawcą oświadczeń. Dostawca oświadczeń może mieć wiele profilów technicznych.
 
 ```XML
 <ClaimsProvider>
@@ -72,180 +72,180 @@ A **profili Technicalprofile** element zawiera zbiór profilów Technical Previe
 </ClaimsProvider>
 ```
 
-**Profilu technicznego** element zawiera następujący atrybut:
+Element **profilu technicznym** zawiera następujący atrybut:
 
 | Atrybut | Wymagane | Opis |
 |---------|---------|---------|
-| Identyfikator | Yes | Unikatowy identyfikator profilu technicznego. Profil techniczny można się odwoływać przy użyciu tego identyfikatora, od innych elementów w pliku zasad. Na przykład **OrchestrationSteps** i **ValidationTechnicalProfile**. |
+| Id | Tak | Unikatowy identyfikator profilu technicznego. Profil techniczny może być przywoływany przy użyciu tego identyfikatora z innych elementów w pliku zasad. Na przykład **OrchestrationSteps** i **ValidationTechnicalProfile**. |
 
-**Profilu technicznego** zawiera następujące elementy:
+**Profilu technicznym** zawiera następujące elementy:
 
 | Element | Wystąpienia | Opis |
 | ------- | ----------- | ----------- |
-| Domain | 0:1 | Nazwa domeny dla profilu technicznego. Na przykład jeśli profilu technicznego określa dostawcę tożsamości usługi Facebook, nazwa domeny jest Facebook.com. |
-| Nazwa wyświetlana | 0:1 | Nazwa profilu technicznego, który może być widoczny dla użytkowników. |
-| Opis | 0:1 | Opis profilu technicznego, który może być widoczny dla użytkowników. |
-| Protocol | 0:1 | Protokół używany do komunikacji z drugiej strony. |
-| Metadane | 0:1 | Kolekcja par klucz/wartość, które są wykorzystywane przez protokół komunikacji z punktem końcowym w toku transakcji. |
-| InputTokenFormat | 0:1 | Format wejściowy tokenu. Możliwe wartości: `JSON`, `JWT`, `SAML11`, lub `SAML2`. `JWT` Wartość reprezentuje tokenu sieci Web JSON zgodnie z Specyfikacja IETF. `SAML11` Wartość reprezentuje token zabezpieczeń SAML 1.1, zgodnie z specyfikacją języka OASIS.  `SAML2` Wartość reprezentuje token zabezpieczeń SAML 2.0, zgodnie z specyfikacją języka OASIS. |
-| OutputTokenFormat | 0:1 | Format tokenu danych wyjściowych. Możliwe wartości: `JSON`, `JWT`, `SAML11`, lub `SAML2`. |
+| Domain | 0:1 | Nazwa domeny profilu technicznego. Na przykład jeśli Twój profil techniczny określa dostawcę tożsamości w serwisie Facebook, nazwa domeny to Facebook.com. |
+| DisplayName | 0:1 | Nazwa profilu technicznego, który może być wyświetlany użytkownikom. |
+| Opis | 0:1 | Opis profilu technicznego, który może być wyświetlany użytkownikom. |
+| Protocol | 0:1 | Protokół używany do komunikacji z drugą stroną. |
+| Metadane | 0:1 | Kolekcja par klucz/wartość, które są wykorzystywane przez protokół do komunikacji z punktem końcowym w trakcie transakcji. |
+| InputTokenFormat | 0:1 | Format tokenu wejściowego. Możliwe wartości: `JSON`, `JWT`, `SAML11`lub. `SAML2` `JWT` Wartość reprezentuje token sieci Web JSON zgodnie ze specyfikacją IETF. `SAML11` Wartość reprezentuje token zabezpieczający protokołu SAML 1,1 zgodnie ze specyfikacją języka Oasis.  `SAML2` Wartość reprezentuje token zabezpieczający protokołu SAML 2,0 zgodnie ze specyfikacją języka Oasis. |
+| OutputTokenFormat | 0:1 | Format tokenu wyjściowego. Możliwe wartości: `JSON`, `JWT`, `SAML11`lub. `SAML2` |
 | CryptographicKeys | 0:1 | Lista kluczy kryptograficznych, które są używane w profilu technicznym. |
-| InputClaimsTransformations | 0:1 | Lista uprzednio zdefiniowany odwołania do przekształceń oświadczeń, które mają zostać wykonane przed wysłaniem żadnych oświadczeń na dostawcy oświadczeń lub jednostkę uzależnioną. |
-| InputClaims | 0:1 | Lista uprzednio zdefiniowany odwołania do typów, które są wykonywane jako oświadczeń wejściowych w profilu technicznym. |
-| PersistedClaims | 0:1 | Lista uprzednio zdefiniowany odwołania do typów, które są zachowywane przez dostawcę oświadczeń, które odnoszą się do profilu technicznego oświadczeń. |
-| OutputClaims | 0:1 | Lista uprzednio zdefiniowany odwołania do typów, które są wykonywane jako dane wyjściowe w profilu technicznym oświadczeń. |
-| OutputClaimsTransformations | 0:1 | Lista uprzednio zdefiniowany odwołania do przekształceń oświadczeń, które mają zostać wykonane po otrzymaniu oświadczenia od dostawcy oświadczeń. |
-| ValidationTechnicalProfiles | 0: n | Lista odwołania do innych techniczne profilów, które korzysta z profilu technicznego do celów sprawdzania poprawności. Aby uzyskać więcej informacji, zobacz [profilu technicznego sprawdzania poprawności](validation-technical-profile.md)|
-| SubjectNamingInfo | 0:1 | Steruje produkcji nazwę podmiotu w tokeny, których nazwa podmiotu jest określane osobno z oświadczeń. Na przykład uwierzytelniania OAuth lub SAML.  |
-| IncludeClaimsFromTechnicalProfile | 0:1 | Identyfikator profilu technicznego, z którego będą wszystkie oświadczenia przychodzące i wychodzące ma zostać dodany do tego profilu technicznego. Profil techniczny odwołania musi być zdefiniowany w tym samym pliku zasad. |
-| IncludeTechnicalProfile |0:1 | Identyfikator profilu technicznego, z którego ma wszystkie dane, które mają zostać dodane do tego profilu technicznego. Profil techniczny odwołania musi istnieć w tym samym pliku zasad. |
-| UseTechnicalProfileForSessionManagement | 0:1 | Inny profil techniczny służący do zarządzania sesjami. |
+| InputClaimsTransformations | 0:1 | Lista wcześniej zdefiniowanych odwołań do transformacji oświadczeń, które należy wykonać przed wysłaniem jakichkolwiek oświadczeń do dostawcy oświadczeń lub jednostki uzależnionej. |
+| InputClaims | 0:1 | Lista wcześniej zdefiniowanych odwołań do typów zgłoszeń, które są pobierane jako dane wejściowe w profilu technicznym. |
+| PersistedClaims | 0:1 | Lista wcześniej zdefiniowanych odwołań do typów oświadczeń, które są utrwalane przez dostawcę oświadczeń odnoszących się do profilu technicznego. |
+| OutputClaims | 0:1 | Lista wcześniej zdefiniowanych odwołań do typów zgłoszeń, które są pobierane jako dane wyjściowe w profilu technicznym. |
+| OutputClaimsTransformations | 0:1 | Lista wcześniej zdefiniowanych odwołań do transformacji oświadczeń, które należy wykonać po odebraniu oświadczeń od dostawcy oświadczeń. |
+| ValidationTechnicalProfiles | 0: n | Lista odwołań do innych profilów technicznych używanych przez profil techniczny do celów weryfikacji. Aby uzyskać więcej informacji, zobacz temat [Sprawdzanie poprawności profilu technicznego](validation-technical-profile.md)|
+| SubjectNamingInfo | 0:1 | Kontroluje produkcję nazwy podmiotu w tokenach, w których nazwa podmiotu jest określona oddzielnie od oświadczeń. Na przykład uwierzytelnianie OAuth lub SAML.  |
+| IncludeClaimsFromTechnicalProfile | 0:1 | Identyfikator profilu technicznego, z którego mają zostać dodane wszystkie oświadczenia wejściowe i wyjściowe do tego profilu technicznego. Profil techniczny, do którego istnieje odwołanie, musi być zdefiniowany w tym samym pliku zasad. |
+| IncludeTechnicalProfile |0:1 | Identyfikator profilu technicznego, z którego mają zostać dodane wszystkie dane do tego profilu technicznego. Profil techniczny, do którego istnieje odwołanie, musi znajdować się w tym samym pliku zasad. |
+| UseTechnicalProfileForSessionManagement | 0:1 | Inny profil techniczny, który ma być używany na potrzeby zarządzania sesją. |
 |EnabledForUserJourneys| 0:1 |Kontroluje, czy profil techniczny jest wykonywany w podróży użytkownika.  |
 
 ### <a name="protocol"></a>Protocol
 
-**Protokołu** element zawiera następujące atrybuty:
+Element **Protocol** zawiera następujące atrybuty:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Name | Tak | Nazwa prawidłowe protokołu obsługiwanego przez usługę Azure AD B2C, która jest używana jako część profilu technicznego. Możliwe wartości: `OAuth1`, `OAuth2`, `SAML2`, `OpenIdConnect`, `WsFed`, `WsTrust`, `Proprietary`, `session management`, `self-asserted`, lub `None`. |
-| Program obsługi | Nie | Jeśli nazwa protokołu jest równa `Proprietary`, określ w pełni kwalifikowana nazwa zestawu, który jest używany przez usługę Azure AD B2C do określenia programu obsługi protokołu. |
+| Name | Tak | Nazwa prawidłowego protokołu obsługiwanego przez Azure AD B2C, który jest używany jako część profilu technicznego. Możliwe wartości: `OAuth1`, `OAuth2`, `SAML2` `OpenIdConnect` ,,`self-asserted`,, lub`None`. `Proprietary` `session management` |
+| jścia | Nie | Jeśli nazwa protokołu jest ustawiona na `Proprietary`, określ w pełni kwalifikowaną nazwę zestawu, który jest używany przez Azure AD B2C do określenia procedury obsługi protokołu. |
 
 ### <a name="metadata"></a>Metadane
 
-A **metadanych** element zawiera następujące elementy:
+Element **Metadata** zawiera następujące elementy:
 
 | Element | Wystąpienia | Opis |
 | ------- | ----------- | ----------- |
-| Element | 0: n | Metadane, które odnoszą się do profilu technicznego. Każdy typ profilu technicznego ma inny zbiór elementów metadanych. Patrz sekcja: typy profilu technicznego, aby uzyskać więcej informacji. |
+| Element | 0: n | Metadane odnoszące się do profilu technicznego. Każdy typ profilu technicznego ma inny zestaw elementów metadanych. Aby uzyskać więcej informacji, zobacz sekcję typy profilów technicznych. |
 
 #### <a name="item"></a>Element
 
-**Elementu** elementu **metadanych** element zawiera następujące atrybuty:
+Element **Item** elementu **Metadata** zawiera następujące atrybuty:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Klucz | Tak | Klucz metadanych. Zobacz każdego typu profilu technicznego dla listy elementów metadanych. |
+| Klucz | Tak | Klucz metadanych. Zobacz każdy typ profilu technicznego, aby wyświetlić listę elementów metadanych. |
 
 ### <a name="cryptographickeys"></a>CryptographicKeys
 
-**CryptographicKeys** element zawiera następującego elementu:
+Element **CryptographicKeys** zawiera następujący element:
 
 | Element | Wystąpienia | Opis |
 | ------- | ----------- | ----------- |
-| Klucz | 1: n | Klucz kryptograficzny używany w tym profilu technicznego. |
+| Klucz | 1: n | Klucz kryptograficzny używany w tym profilu technicznym. |
 
 #### <a name="key"></a>Klucz
 
-**Klucz** element zawiera następujący atrybut:
+Element **Key** zawiera następujący atrybut:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator | Nie | Unikatowy identyfikator określonej pary kluczy przywoływany z innych elementów w pliku zasad. |
-| StorageReferenceId | Tak | Identyfikator kontenera klucza magazynu przywoływany z innych elementów w pliku zasad. |
+| Id | Nie | Unikatowy identyfikator konkretnej pary kluczy, do której odwołuje się inne elementy w pliku zasad. |
+| Identyfikatorze storagereferenceid | Tak | Identyfikator kontenera klucza magazynu, do którego odwołuje się inne elementy w pliku zasad. |
 
 ### <a name="inputclaimstransformations"></a>InputClaimsTransformations
 
-**InputClaimsTransformations** element zawiera następującego elementu:
+Element **InputClaimsTransformations** zawiera następujący element:
 
 | Element | Wystąpienia | Opis |
 | ------- | ----------- | ----------- |
-| InputClaimsTransformation | 1: n | Identyfikator przekształcania oświadczeń, który ma być wykonany przed wysłaniem żadnych oświadczeń na dostawcy oświadczeń lub jednostkę uzależnioną. Przekształcanie oświadczeń może służyć do modyfikowania istniejących oświadczeń ClaimsSchema lub wygenerować nowe. |
+| InputClaimsTransformation | 1: n | Identyfikator transformacji oświadczeń, która powinna zostać wykonana przed wysłaniem jakichkolwiek oświadczeń do dostawcy oświadczeń lub jednostki uzależnionej. Transformacja oświadczeń może służyć do modyfikowania istniejących oświadczeń ClaimsSchema lub generowania nowych. |
 
 #### <a name="inputclaimstransformation"></a>InputClaimsTransformation
 
-**InputClaimsTransformation** element zawiera następujący atrybut:
+Element **InputClaimsTransformation** zawiera następujący atrybut:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator odwołania | Yes | Identyfikator już zdefiniowana w pliku zasad lub nadrzędnego pliku zasad przekształcania oświadczeń. |
+| referenceId | Tak | Identyfikator transformacji oświadczeń zdefiniowany już w pliku zasad lub nadrzędnym pliku zasad. |
 
 ### <a name="inputclaims"></a>InputClaims
 
-**InputClaims** element zawiera następującego elementu:
+Element **InputClaims** zawiera następujący element:
 
 | Element | Wystąpienia | Opis |
 | ------- | ----------- | ----------- |
-| Oświadczenie InputClaim | 1: n | Typ oświadczenia oczekiwanych danych wejściowych. |
+| Oświadczenie inputclaim | 1: n | Oczekiwany typ zgłoszenia wejściowego. |
 
-#### <a name="inputclaim"></a>Oświadczenie InputClaim
+#### <a name="inputclaim"></a>Oświadczenie inputclaim
 
-**Oświadczenie InputClaim** element zawiera następujące atrybuty:
+Element **oświadczenie inputclaim** zawiera następujące atrybuty:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | Tak | Identyfikator typu oświadczenia już zdefiniowane w sekcji ClaimsSchema plik zasad lub nadrzędnego pliku zasad. |
-| defaultValue | Nie | Wartość domyślną, służące do tworzenia oświadczeń, jeśli oświadczenie wskazywanym przez ClaimTypeReferenceId nie istnieje, tak aby wynikowe oświadczenia mogą być używane jako oświadczenie InputClaim przez profil techniczny. |
-| PartnerClaimType | Nie | Identyfikator typu oświadczenia partnera zewnętrznych zasad określony typ oświadczenia mapuje. Jeśli nie określono atrybutu PartnerClaimType zasad określony typ oświadczenia jest mapowany na typ roszczenia partnera o takiej samej nazwie. Tej właściwości należy użyć, gdy Twoja nazwa typ oświadczenia różni się od innych firm. Na przykład imię oświadczeń jest "imię" oświadczenie o nazwie "imię" jest używana przez partnera. |
+| ClaimTypeReferenceId | Tak | Identyfikator typu "Claim" jest już zdefiniowany w sekcji ClaimsSchema w pliku zasad lub nadrzędnym pliku zasad. |
+| defaultValue | Nie | Wartość domyślna, która ma zostać użyta do utworzenia żądania, jeśli nie istnieje w nim zastrzeżenie wskazywane przez ClaimTypeReferenceId, aby uzyskane wystąpienie może być używane jako oświadczenie inputclaim przez profil techniczny. |
+| PartnerClaimType | Nie | Identyfikator typu dla partnera zewnętrznego, na który jest mapowany określony typ roszczeń zasad. Jeśli atrybut PartnerClaimType nie zostanie określony, określony typ roszczeń zasad jest mapowany na typ wiązania partnera o tej samej nazwie. Użyj tej właściwości, gdy nazwa typu usługi jest inna od drugiej strony. Na przykład nazwa pierwszego wystąpienia to "imięname", podczas gdy Partner używa roszczeń o nazwie "first_name". |
 
 ### <a name="persistedclaims"></a>PersistedClaims
 
-**PersistedClaims** element zawiera następujące elementy:
+Element **PersistedClaims** zawiera następujące elementy:
 
 | Element | Wystąpienia | Opis |
 | ------- | ----------- | ----------- |
-| PersistedClaim | 1: n | Typ oświadczenia do innej witryny. |
+| PersistedClaim | 1: n | Typ zgłoszenia, który ma być trwały. |
 
 #### <a name="persistedclaim"></a>PersistedClaim
 
-**PersistedClaim** element zawiera następujące atrybuty:
+Element **PersistedClaim** zawiera następujące atrybuty:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | Tak | Identyfikator typu oświadczenia już zdefiniowane w sekcji ClaimsSchema plik zasad lub nadrzędnego pliku zasad. |
-| defaultValue | Nie | Wartość domyślną, służące do tworzenia oświadczeń, jeśli oświadczenie wskazywanym przez ClaimTypeReferenceId nie istnieje, tak aby wynikowe oświadczenia mogą być używane jako oświadczenie InputClaim przez profil techniczny. |
-| PartnerClaimType | Nie | Identyfikator typu oświadczenia partnera zewnętrznych zasad określony typ oświadczenia mapuje. Jeśli nie określono atrybutu PartnerClaimType zasad określony typ oświadczenia jest mapowany na typ roszczenia partnera o takiej samej nazwie. Tej właściwości należy użyć, gdy Twoja nazwa typ oświadczenia różni się od innych firm. Na przykład imię oświadczeń jest "imię" oświadczenie o nazwie "imię" jest używana przez partnera. |
+| ClaimTypeReferenceId | Tak | Identyfikator typu "Claim" jest już zdefiniowany w sekcji ClaimsSchema w pliku zasad lub nadrzędnym pliku zasad. |
+| defaultValue | Nie | Wartość domyślna, która ma zostać użyta do utworzenia żądania, jeśli nie istnieje w nim zastrzeżenie wskazywane przez ClaimTypeReferenceId, aby uzyskane wystąpienie może być używane jako oświadczenie inputclaim przez profil techniczny. |
+| PartnerClaimType | Nie | Identyfikator typu dla partnera zewnętrznego, na który jest mapowany określony typ roszczeń zasad. Jeśli atrybut PartnerClaimType nie zostanie określony, określony typ roszczeń zasad jest mapowany na typ wiązania partnera o tej samej nazwie. Użyj tej właściwości, gdy nazwa typu usługi jest inna od drugiej strony. Na przykład nazwa pierwszego wystąpienia to "imięname", podczas gdy Partner używa roszczeń o nazwie "first_name". |
 
 ### <a name="outputclaims"></a>OutputClaims
 
-**OutputClaims** element zawiera następującego elementu:
+Element **OutputClaims** zawiera następujący element:
 
 | Element | Wystąpienia | Opis |
 | ------- | ----------- | ----------- |
-| oświadczenie outputClaim | 1: n | Typ oświadczenia oczekiwanych danych wyjściowych. |
+| Oświadczenie outputclaim | 1: n | Oczekiwany typ zgłoszenia wyjściowego. |
 
-#### <a name="outputclaim"></a>oświadczenie outputClaim
+#### <a name="outputclaim"></a>Oświadczenie outputclaim
 
-**Oświadczenie OutputClaim** element zawiera następujące atrybuty:
+Element **oświadczenie outputclaim** zawiera następujące atrybuty:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | Tak | Identyfikator typu oświadczenia już zdefiniowane w sekcji ClaimsSchema plik zasad lub nadrzędnego pliku zasad. |
-| defaultValue | Nie | Wartość domyślną, służące do tworzenia oświadczeń, jeśli oświadczenie wskazywanym przez ClaimTypeReferenceId nie istnieje, tak aby wynikowe oświadczenia mogą być używane jako oświadczenie InputClaim przez profil techniczny. |
-|AlwaysUseDefaultValue |Nie |Wymusić użycie wartości domyślnej.  |
-| PartnerClaimType | Nie | Identyfikator typu oświadczenia partnera zewnętrznych zasad określony typ oświadczenia mapuje. Jeśli nie określono atrybutu PartnerClaimType zasad określony typ oświadczenia jest mapowany na typ roszczenia partnera o takiej samej nazwie. Tej właściwości należy użyć, gdy Twoja nazwa typ oświadczenia różni się od innych firm. Na przykład imię oświadczeń jest "imię" oświadczenie o nazwie "imię" jest używana przez partnera. |
+| ClaimTypeReferenceId | Tak | Identyfikator typu "Claim" jest już zdefiniowany w sekcji ClaimsSchema w pliku zasad lub nadrzędnym pliku zasad. |
+| defaultValue | Nie | Wartość domyślna, która ma zostać użyta do utworzenia żądania, jeśli nie istnieje w nim zastrzeżenie wskazywane przez ClaimTypeReferenceId, aby uzyskane wystąpienie może być używane jako oświadczenie inputclaim przez profil techniczny. |
+|AlwaysUseDefaultValue |Nie |Wymuś użycie wartości domyślnej.  |
+| PartnerClaimType | Nie | Identyfikator typu dla partnera zewnętrznego, na który jest mapowany określony typ roszczeń zasad. Jeśli atrybut PartnerClaimType nie zostanie określony, określony typ roszczeń zasad jest mapowany na typ wiązania partnera o tej samej nazwie. Użyj tej właściwości, gdy nazwa typu usługi jest inna od drugiej strony. Na przykład nazwa pierwszego wystąpienia to "imięname", podczas gdy Partner używa roszczeń o nazwie "first_name". |
 
 ### <a name="outputclaimstransformations"></a>OutputClaimsTransformations
 
-**OutputClaimsTransformations** element zawiera następującego elementu:
+Element **OutputClaimsTransformations** zawiera następujący element:
 
 | Element | Wystąpienia | Opis |
 | ------- | ----------- | ----------- |
-| OutputClaimsTransformation | 1: n | Identyfikatory przekształceń oświadczeń, które mają zostać wykonane przed wysłaniem żadnych oświadczeń na dostawcy oświadczeń lub jednostkę uzależnioną. Przekształcanie oświadczeń może służyć do modyfikowania istniejących oświadczeń ClaimsSchema lub wygenerować nowe. |
+| OutputClaimsTransformation | 1: n | Identyfikatory przekształceń oświadczeń, które należy wykonać przed wysłaniem oświadczeń do dostawcy oświadczeń lub jednostki uzależnionej. Transformacja oświadczeń może służyć do modyfikowania istniejących oświadczeń ClaimsSchema lub generowania nowych. |
 
 #### <a name="outputclaimstransformation"></a>OutputClaimsTransformation
 
-**OutputClaimsTransformation** element zawiera następujący atrybut:
+Element **OutputClaimsTransformation** zawiera następujący atrybut:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator odwołania | Tak | Identyfikator już zdefiniowana w pliku zasad lub nadrzędnego pliku zasad przekształcania oświadczeń. |
+| referenceId | Tak | Identyfikator transformacji oświadczeń zdefiniowany już w pliku zasad lub nadrzędnym pliku zasad. |
 
 ### <a name="validationtechnicalprofiles"></a>ValidationTechnicalProfiles
 
-**ValidationTechnicalProfiles** element zawiera następującego elementu:
+Element **ValidationTechnicalProfiles** zawiera następujący element:
 
 | Element | Wystąpienia | Opis |
 | ------- | ----------- | ----------- |
-| ValidationTechnicalProfile | 1: n | Niektórych lub wszystkich oświadczeń danych wyjściowych odwołujący się profilu technicznego, sprawdź poprawność identyfikatorów profile techniczne, które są używane. Wszystkie oświadczeń wejściowych, do którego istnieje odwołanie profilu technicznego musi znajdować się w oświadczeń danych wyjściowych odwołujący się profilu technicznego. |
+| ValidationTechnicalProfile | 1: n | Identyfikatory profilów technicznych, które są używane, sprawdzają niektóre lub wszystkie oświadczenia wynikowe profilu technicznego. Wszystkie oświadczenia wejściowe profilu technicznego, do którego istnieje odwołanie, muszą pojawić się w oświadczeniach wyjściowych w profilu technicznym odwołania. |
 
 #### <a name="validationtechnicalprofile"></a>ValidationTechnicalProfile
 
-**ValidationTechnicalProfile** element zawiera następujący atrybut:
+Element **ValidationTechnicalProfile** zawiera następujący atrybut:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator odwołania | Tak | Identyfikator profilu technicznego już zdefiniowana w pliku zasad lub nadrzędnego pliku zasad. |
+| referenceId | Tak | Identyfikator profilu technicznego jest już zdefiniowany w pliku zasad lub nadrzędnym pliku zasad. |
 
 ###  <a name="subjectnaminginfo"></a>SubjectNamingInfo
 
@@ -253,36 +253,36 @@ A **metadanych** element zawiera następujące elementy:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Typ oświadczenia | Yes | Identyfikator typu oświadczenia już zdefiniowane w sekcji ClaimsSchema w pliku zasad. |
+| Claim | Tak | Identyfikator typu "Claim" jest już zdefiniowany w sekcji ClaimsSchema w pliku zasad. |
 
 ### <a name="includetechnicalprofile"></a>IncludeTechnicalProfile
 
-**IncludeTechnicalProfile** element zawiera następujący atrybut:
+Element **IncludeTechnicalProfile** zawiera następujący atrybut:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator odwołania | Tak | Identyfikator profilu technicznego już zdefiniowana w pliku zasad lub nadrzędnego pliku zasad. |
+| referenceId | Tak | Identyfikator profilu technicznego jest już zdefiniowany w pliku zasad lub nadrzędnym pliku zasad. |
 
 ### <a name="usetechnicalprofileforsessionmanagement"></a>UseTechnicalProfileForSessionManagement
 
-**UseTechnicalProfileForSessionManagement** element zawiera następujący atrybut:
+Element **UseTechnicalProfileForSessionManagement** zawiera następujący atrybut:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator odwołania | Yes | Identyfikator profilu technicznego już zdefiniowana w pliku zasad lub nadrzędnego pliku zasad. |
+| referenceId | Tak | Identyfikator profilu technicznego jest już zdefiniowany w pliku zasad lub nadrzędnym pliku zasad. |
 
 ### <a name="enabledforuserjourneys"></a>EnabledForUserJourneys
-**ClaimsProviderSelections** podróży użytkownika definiuje listę opcji do wyboru dostawcy oświadczeń i ich kolejność. Za pomocą **EnabledForUserJourneys** elementu, można filtrować dostawcy oświadczeń, które jest dostępne dla użytkownika. **EnabledForUserJourneys** element zawiera jedną z następujących wartości:
+**ClaimsProviderSelections** w podróży użytkownika definiuje listę opcji wyboru dostawcy oświadczeń i ich kolejność. Za pomocą filtru **EnabledForUserJourneys** element, który jest dostępny dla użytkownika. Element **EnabledForUserJourneys** zawiera jedną z następujących wartości:
 
-- **Zawsze**, wykonaj profilu technicznego.
-- **Nigdy nie**, Pomiń profilu technicznego.
-- **OnClaimsExistence** wykonać tylko wtedy, gdy istnieje pewne oświadczenia, określona w profilu technicznym.
-- **OnItemExistenceInStringCollectionClaim**, wykonywanie, gdy element istnieje tylko w oświadczenie kolekcji parametrów.
-- **OnItemAbsenceInStringCollectionClaim** wykonać, tylko jeśli element nie istnieje oświadczenia kolekcji ciągów.
+- **Zawsze**należy wykonać profil techniczny.
+- **Nigdy**, Pomiń profil techniczny.
+- **OnClaimsExistence** wykonać tylko wtedy, gdy istnieje określone określone w profilu technicznym.
+- **OnItemExistenceInStringCollectionClaim**, wykonaj tylko wtedy, gdy element istnieje w ramach żądania kolekcji ciągów.
+- **OnItemAbsenceInStringCollectionClaim** wykonać tylko wtedy, gdy element nie istnieje w ramach żądania kolekcji ciągów.
 
-Za pomocą **OnClaimsExistence**, **OnItemExistenceInStringCollectionClaim** lub **OnItemAbsenceInStringCollectionClaim**, wymaga podania następujących metadane: **ClaimTypeOnWhichToEnable** Określa typ oświadczenia, który ma zostać obliczone **ClaimValueOnWhichToEnable** określa wartość do porównania.
+Korzystanie z **OnClaimsExistence**, **OnItemExistenceInStringCollectionClaim** lub **OnItemAbsenceInStringCollectionClaim**wymaga podania następujących metadanych: **ClaimTypeOnWhichToEnable** określa typ zgłoszenia, który ma zostać obliczony, **ClaimValueOnWhichToEnable** określa wartość, która ma być porównana.
 
-Następujące profilu technicznego jest wykonywany tylko wtedy, gdy **identityProviders** kolekcji ciągów zawiera wartość `facebook.com`:
+Następujący profil techniczny jest wykonywany tylko wtedy, gdy kolekcja ciągów **skojarzeni** zawiera wartość `facebook.com`:
 
 ```XML
 <TechnicalProfile Id="UnLink-Facebook-OAUTH">

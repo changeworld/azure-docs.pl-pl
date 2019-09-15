@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 1634d7cd3dfe8d118e220fa8620ef6467c15ea2c
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 7a032056a684107de3dd00fe4861f34c013a80db
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69983020"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003616"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Uwierzytelnianie urządzenia podrzędnego w usłudze Azure IoT Hub
 
@@ -101,7 +101,7 @@ Aby uzyskać więcej informacji na temat sposobu używania uwierzytelniania X. 5
 
 W przypadku uwierzytelniania z podpisem własnym X. 509, czasami określanego jako Uwierzytelnianie odciskiem palca, należy utworzyć nowe certyfikaty do umieszczenia na urządzeniu IoT. Te certyfikaty mają odcisk palca, które udostępniają IoT Hub na potrzeby uwierzytelniania. 
 
-Najprostszym sposobem na przetestowanie tego scenariusza jest użycie tego samego komputera, który został użyty do utworzenia certyfikatów w programie [Skonfiguruj urządzenie IoT Edge jako](how-to-create-transparent-gateway.md)niejawną bramę. Ten komputer powinien być już skonfigurowany przy użyciu odpowiedniego narzędzia, certyfikatu głównego urzędu certyfikacji i certyfikatu pośredniego urzędu certyfikacji w celu utworzenia certyfikatów urządzeń IoT. Możesz później skopiować certyfikaty końcowe i ich klucze prywatne do urządzenia podrzędnego. Postępując zgodnie z instrukcjami w artykule dotyczącym bramy, skonfigurujesz OpenSSL na maszynie, a następnie Sklonowano repozytorium IoT Edge, aby uzyskać dostęp do skryptów tworzenia certyfikatów. Następnie został utworzony katalog roboczy, który wywoła  **\<WRKDIR >** do przechowywania certyfikatów. Domyślne certyfikaty są przeznaczone do programowania i testowania, więc tylko ostatnie 30 dni. Należy utworzyć certyfikat głównego urzędu certyfikacji i certyfikat pośredni. 
+Najprostszym sposobem na przetestowanie tego scenariusza jest użycie tego samego komputera, który został użyty do utworzenia certyfikatów w programie [Skonfiguruj urządzenie IoT Edge jako niejawną bramę](how-to-create-transparent-gateway.md). Ten komputer powinien być już skonfigurowany przy użyciu odpowiedniego narzędzia, certyfikatu głównego urzędu certyfikacji i certyfikatu pośredniego urzędu certyfikacji w celu utworzenia certyfikatów urządzeń IoT. Możesz później skopiować certyfikaty końcowe i ich klucze prywatne do urządzenia podrzędnego. Postępując zgodnie z instrukcjami w artykule dotyczącym bramy, skonfigurujesz OpenSSL na maszynie, a następnie Sklonowano repozytorium IoT Edge, aby uzyskać dostęp do skryptów tworzenia certyfikatów. Następnie został utworzony katalog roboczy, który wywoła  **\<WRKDIR >** do przechowywania certyfikatów. Domyślne certyfikaty są przeznaczone do programowania i testowania, więc tylko ostatnie 30 dni. Należy utworzyć certyfikat głównego urzędu certyfikacji i certyfikat pośredni. 
 
 1. Przejdź do katalogu roboczego w oknie bash lub PowerShell. 
 
@@ -325,47 +325,32 @@ client.setOptions(options);
 
 #### <a name="python"></a>Python
 
-Przykład programu w języku Python uwierzytelniającego do IoT Hub za pomocą certyfikatów X. 509, zobacz przykład [iothub_client_sample_x509. PR](https://github.com/Azure/azure-iot-sdk-python/blob/master/device/samples/iothub_client_sample_x509.py) zestawu SDK usługi Java IoT. Niektóre z najważniejszych wierszy tego przykładu są zawarte w tym miejscu, aby zademonstrować proces uwierzytelniania.
+Zestaw SDK języka Python jest obecnie obsługiwany tylko przy użyciu certyfikatów x509 i kluczy z plików, a nie zdefiniowanych w tekście. W poniższym przykładzie odpowiednie ścieżki są przechowywane w zmiennych środowiskowych.
 
-Podczas definiowania parametrów połączenia dla urządzenia podrzędnego Użyj nazwy hosta IoT Edge urządzenia bramy dla parametru **hostname** . Nazwę hosta można znaleźć w pliku config. YAML urządzenia bramy. 
+Podczas definiowania nazwy hosta dla urządzenia podrzędnego Użyj nazwy hosta IoT Edge urządzenia bramy dla parametru **hostname** . Nazwę hosta można znaleźć w pliku config. YAML urządzenia bramy. 
 
 ```python
-# String containing Hostname, Device Id in the format:
-# "HostName=<gateway device hostname>;DeviceId=<device_id>;x509=true"
-CONNECTION_STRING = "[Device Connection String]"
+import os
+from azure.iot.device import IoTHubDeviceClient, X509
 
-X509_CERTIFICATE = (
-    "-----BEGIN CERTIFICATE-----""\n"
-    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX""\n"
-    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX""\n"
-    "...""\n"
-    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX""\n"
-    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX""\n"
-    "XXXXXXXXXXXX""\n"
-    "-----END CERTIFICATE-----"
-)
-
-X509_PRIVATEKEY = (
-    "-----BEGIN RSA PRIVATE KEY-----""\n"
-    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX""\n"
-    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX""\n"
-    "...""\n"
-    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX""\n"
-    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX""\n"
-    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-    "-----END RSA PRIVATE KEY-----"
-)
-
+HOSTNAME = "[IoT Edge Gateway Hostname]"
+DEVICE_ID = "[Device ID]"
 
 def iothub_client_init():
-    # prepare iothub client
-    client = IoTHubClient(CONNECTION_STRING, PROTOCOL)
+    x509 = X509(
+        cert_file=os.getenv("X509_CERT_FILE"),
+        key_file=os.getenv("X509_KEY_FILE")
+    )
 
-    # this brings in x509 privateKey and certificate
-    client.set_option("x509certificate", X509_CERTIFICATE)
-    client.set_option("x509privatekey", X509_PRIVATEKEY)
+    client = IoTHubDeviceClient.create_from_x509_certificate(
+        x509=x509,
+        hostname=HOSTNAME,
+        device_id=DEVICE_ID
+    )
+)
 
-    return client
+if __name__ == '__main__':
+    iothub_client_init()
 ```
 
 #### <a name="java"></a>Java

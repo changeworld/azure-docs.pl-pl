@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 06/07/2019
+ms.date: 09/13/2019
 ms.author: diberry
-ms.openlocfilehash: c258799b1305c4204d08d66aa36a0be7c71a4944
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 7c163dacae24749dbe309bca33bac016a3be7aa5
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034371"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002890"
 ---
 # <a name="how-personalizer-works"></a>Jak działa usługa Personalizacja
 
@@ -89,31 +89,6 @@ Personalizacja jest oparta na wykorzystaniu nauki i badań w dziedzinie [nauki w
 * Cechy bot & ton: dla botów, które mogą różnić się od tonu, szczegółowości i stylu pisania, rozważ zróżnicowanie tych cech w spersonalizowany sposób.
 * Treść alertu & powiadomień: określ tekst, który ma być używany na potrzeby alertów, aby zapewnić użytkownikom więcej.
 * Czas alertu & powiadomień: masz spersonalizowaną naukę podczas wysyłania powiadomień do użytkowników w celu ich przeprowadzenia.
-
-## <a name="checklist-for-applying-personalizer"></a>Lista kontrolna zastosowania personalizacji
-
-Można zastosować personalizację w sytuacjach, w których:
-
-* Użytkownik ma cel biznesowy lub użyteczny dla Twojej aplikacji.
-* Masz miejsce w aplikacji, w którym należy wprowadzić kontekstową decyzję, którą należy pokazać użytkownikom w celu usprawnienia tego celu.
-* Najlepszym wyborem może być i powinna być uczenie się od rozłącznych zachowań użytkowników i łącznego wyniku.
-* Korzystanie z uczenia maszynowego na potrzeby [](ethics-responsible-use.md) personalizacji jest zgodne z wytycznymi i wyborami dla Twojego zespołu.
-* Decyzja może być wyrażona jako Klasyfikacja najlepszej opcji ([Akcja](concepts-features.md#actions-represent-a-list-of-options) z ograniczonego zestawu opcji.
-* Sposób, w jaki działa wybór, może być obliczany przez logikę biznesową, przez mierzenie niektórych aspektów zachowania użytkownika i wyrażanie ich w liczbie od-1 do 1.
-* Wynik nagrody nie powoduje zbyt wielu lub zewnętrznych czynników, a w przeciwnym razie czas trwania eksperymentu jest niski, ponieważ wynik nagrody może być obliczany, gdy jest nadal istotny.
-* Można wyrazić kontekst dla rangi jako słownik zawierający co najmniej 5 funkcji, które można uznać za właściwy wybór i który nie zawiera informacji umożliwiających identyfikację użytkownika.
-* Masz informacje o każdej akcji jako słownik zawierający co najmniej 5 atrybutów lub funkcji, które uważasz za odpowiedni wybór.
-* Dane można przechowywać wystarczająco długo, aby gromadzić historię co najmniej 100 000 interakcji.
-
-## <a name="machine-learning-considerations-for-applying-personalizer"></a>Zagadnienia dotyczące uczenia maszynowego dotyczące zastosowania personalizacji
-
-Personalizacja jest oparta na nauce wzmacniania, która jest podejściem do uczenia maszynowego, które otrzymuje Opinie. 
-
-Personalizowanie nauczy się najlepiej w sytuacjach, gdy:
-* Istnieje wystarczająco dużo zdarzeń, aby zachować dostęp do optymalnej personalizacji, jeśli problem zostanie odczytany z upływem czasu (na przykład preferencje w wiadomościach lub w sposób). Personalizowanie dostosuje się do ciągłej zmiany w świecie rzeczywistym, ale wyniki nie będą optymalne, jeśli nie ma wystarczającej liczby zdarzeń i danych, które należy poznać, aby odkryć i rozliczyć nowe wzorce. Należy wybrać przypadek użycia, który ma być często wystarczający. Rozważ wyszukiwanie przypadków użycia, które wystąpią co najmniej 500 razy dziennie.
-* Kontekst i akcje mają wystarczającą liczbę funkcji, aby ułatwić uczenie się.
-* Liczba akcji dla każdej wywołania wynosi mniej niż 50.
-* Ustawienia przechowywania danych umożliwiają personalizację gromadzenie wystarczającej ilości danych w celu przeprowadzenia oceny w trybie offline i optymalizacji zasad. Zwykle jest to co najmniej 50 000 punktów danych.
 
 ## <a name="how-to-use-personalizer-in-a-web-application"></a>Jak używać personalizacji w aplikacji sieci Web
 

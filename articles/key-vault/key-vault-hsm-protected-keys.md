@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3cd8cd0b72f1b3ccea557ce0e12394081329dc5b
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 71b7e4bd9406e7fb300ebccd86908820b7628c29
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883303"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000760"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Jak generować i przesyłać klucze chronione przez moduł HSM dla Azure Key Vault
 
@@ -27,7 +27,7 @@ Informacje przedstawione w tym temacie ułatwiają planowanie, generowanie i tra
 Ta funkcja jest niedostępna dla Chin platformy Azure.
 
 > [!NOTE]
-> Aby uzyskać więcej informacji na temat Azure Key Vault, zobacz [co to jest Azure Key Vault?](key-vault-whatis.md)  
+> Aby uzyskać więcej informacji na temat Azure Key Vault, zobacz [co to jest Azure Key Vault?](key-vault-overview.md)  
 > Aby zapoznać się z samouczkiem wprowadzającym, które obejmuje tworzenie magazynu kluczy dla kluczy chronionych przez moduł HSM, zobacz [co to jest Azure Key Vault?](key-vault-overview.md).
 
 Więcej informacji o generowaniu i przesyłaniu klucza chronionego przez moduł HSM przez Internet:

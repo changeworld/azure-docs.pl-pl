@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 62fcc19f3cfe9109097d1f2a70d785060b5bdc53
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 408c9fb58b428c1671794c6e4e5cc890a153813f
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727351"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003951"
 ---
 # <a name="azure-encryption-overview"></a>Omówienie usługi Azure Encryption
 
@@ -61,7 +61,7 @@ Trzy modele szyfrowania po stronie serwera oferują różne charakterystyki zarz
 
 Maszyny wirtualne z systemem Windows i Linux można chronić za pomocą [usługi Azure Disk Encryption](/azure/security/azure-security-disk-encryption), która korzysta z technologii [Windows BitLocker i systemu](https://technet.microsoft.com/library/cc766295(v=ws.10).aspx) Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) do ochrony zarówno dysków systemu operacyjnego, jak i dysków danych z pełnym szyfrowaniem woluminów.
 
-Klucze szyfrowania i wpisy tajne są chronione w [subskrypcji Azure Key Vault](../../key-vault/key-vault-whatis.md). Za pomocą usługi Azure Backup można tworzyć kopie zapasowe i przywracać zaszyfrowane maszyny wirtualne (VM) korzystające z konfiguracji klucza szyfrowania kluczy (KEK).
+Klucze szyfrowania i wpisy tajne są chronione w [subskrypcji Azure Key Vault](../../key-vault/key-vault-overview.md). Za pomocą usługi Azure Backup można tworzyć kopie zapasowe i przywracać zaszyfrowane maszyny wirtualne (VM) korzystające z konfiguracji klucza szyfrowania kluczy (KEK).
 
 ### <a name="azure-storage-service-encryption"></a>Szyfrowanie usługi Azure Storage
 
@@ -99,7 +99,7 @@ Funkcja [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/s
 
 #### <a name="cell-level-or-column-level-encryption"></a>Szyfrowanie na poziomie komórki lub na poziomie kolumny
 
-Za pomocą Azure SQL Database można zastosować szyfrowanie symetryczne do kolumny danych przy użyciu języka Transact-SQL. Takie podejście nazywa się szyfrowaniem na poziomie [komórki lub szyfrowaniem na poziomie kolumny (cle)](/sql/relational-databases/security/encryption/encrypt-a-column-of-data), ponieważ można go użyć do szyfrowania określonych kolumn lub nawet określonych komórek danych z różnymi kluczami szyfrowania. Zapewnia to bardziej szczegółową funkcję szyfrowania niż TDE, która szyfruje dane na stronach.
+Za pomocą Azure SQL Database można zastosować szyfrowanie symetryczne do kolumny danych przy użyciu języka Transact-SQL. Takie podejście nazywa się [szyfrowaniem na poziomie komórki lub szyfrowaniem na poziomie kolumny (cle)](/sql/relational-databases/security/encryption/encrypt-a-column-of-data), ponieważ można go użyć do szyfrowania określonych kolumn lub nawet określonych komórek danych z różnymi kluczami szyfrowania. Zapewnia to bardziej szczegółową funkcję szyfrowania niż TDE, która szyfruje dane na stronach.
 
 CLE ma wbudowane funkcje, których można użyć do szyfrowania danych przy użyciu kluczy symetrycznych lub asymetrycznych, klucza publicznego certyfikatu lub hasła przy użyciu algorytmu 3DES.
 

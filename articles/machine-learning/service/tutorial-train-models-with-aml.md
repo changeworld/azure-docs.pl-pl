@@ -1,7 +1,7 @@
 ---
 title: 'Samouczek dotyczący klasyfikacji obrazów: Szkolenie modeli'
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak szkolić model klasyfikacji obrazów za pomocą scikit — Dowiedz się więcej w notesie środowiska Python Jupyter z usługą Azure Machine Learning. Ten samouczek jest pierwszą częścią dwuczęściowej serii.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak szkolić model klasyfikacji obrazów za pomocą scikit — Dowiedz się więcej w notesie środowiska Python Jupyter z Azure Machine Learning. Ten samouczek jest pierwszą częścią dwuczęściowej serii.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,18 +10,18 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8cf639a290067e71b562e0df844ee01d018a7557
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 5c7396baa745196e054c6cb49d349bf7684cd899
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170573"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001665"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Samouczek: Uczenie modeli klasyfikacji obrazów przy użyciu MNIST ręcznie danych i scikit — uczenie się za pomocą Azure Machine Learning
 
-W tym samouczku przeprowadzisz szkolenie modelu uczenia maszynowego na zdalnych zasobach obliczeniowych. Zastosujesz przepływ pracy trenowania i wdrażania dla usługi Azure Machine Learning w notesie Jupyter języka Python.  Następnie możesz użyć notesu jako szablonu do uczenia własnego modelu uczenia maszynowego z użyciem własnych danych. Ten samouczek jest **pierwszą częścią dwuczęściowej serii**.  
+W tym samouczku przeprowadzisz szkolenie modelu uczenia maszynowego na zdalnych zasobach obliczeniowych. Możesz użyć przepływu pracy szkolenia i wdrażania Azure Machine Learning w notesie w języku Python Jupyter.  Następnie możesz użyć notesu jako szablonu do uczenia własnego modelu uczenia maszynowego z użyciem własnych danych. Ten samouczek jest **pierwszą częścią dwuczęściowej serii**.  
 
-Ten samouczek uczy prostej regresji logistycznej przy użyciu zestawu danych [MNIST](http://yann.lecun.com/exdb/mnist/), biblioteki [scikit-learn](https://scikit-learn.org) oraz usługi Azure Machine Learning. MNIST jest popularnym zestawem danych składającym się z 70 000 obrazów w skali szarości. Każdy obraz ma rozmiar 28 x 28 pikseli i przedstawia odręcznie napisaną cyfrę z zakresu od 0 do 9. Celem jest utworzenie klasyfikatora wieloklasowego do identyfikacji cyfry reprezentowanej przez dany obraz.
+Ten samouczek pociąga za niego prostą regresję logistyczną za pomocą zestawu danych [mnist ręcznie](http://yann.lecun.com/exdb/mnist/) i [scikit — uczenie się](https://scikit-learn.org) z Azure Machine Learning. MNIST jest popularnym zestawem danych składającym się z 70 000 obrazów w skali szarości. Każdy obraz ma rozmiar 28 x 28 pikseli i przedstawia odręcznie napisaną cyfrę z zakresu od 0 do 9. Celem jest utworzenie klasyfikatora wieloklasowego do identyfikacji cyfry reprezentowanej przez dany obraz.
 
 Dowiedz się, jak wykonać następujące czynności:
 
@@ -33,7 +33,7 @@ Dowiedz się, jak wykonać następujące czynności:
 
 Tego, jak wybrać i wdrożyć model, dowiesz się z [drugiej części tego samouczka](tutorial-deploy-models-with-aml.md).
 
-Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
+Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
 
 >[!NOTE]
 > Kod w tym artykule został przetestowany przy użyciu [zestawu SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 1.0.57.
@@ -303,7 +303,7 @@ Zwróć uwagę, jak skrypt pobiera dane i zapisuje modele:
 
 + Skrypt uczenia odczytuje argument, aby znaleźć katalog zawierający dane. Podczas późniejszego przesyłania zadania wskażesz magazyn danych dla tego argumentu: ```parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')```
 
-+ Skrypt szkoleniowy zapisuje model w katalogu o nazwie Outputs. Dowolne pliki zapisane w tym katalogu są automatycznie przekazywane do Twojego obszaru roboczego. W dalszej części samouczka z poziomu tego katalogu uzyskasz dostęp do swojego modelu. `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`
++ Skrypt szkoleniowy zapisuje model w katalogu **o nazwie**Outputs. Dowolne pliki zapisane w tym katalogu są automatycznie przekazywane do Twojego obszaru roboczego. W dalszej części samouczka z poziomu tego katalogu uzyskasz dostęp do swojego modelu. `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`
 
 + Skrypt szkoleniowy wymaga pliku `utils.py` do poprawnego załadowania zestawu danych. Poniższy kod kopiuje `utils.py` do `script_folder` programu, aby można było uzyskać dostęp do pliku wraz z skryptem szkoleniowym w zasobie zdalnym.
 
@@ -436,7 +436,7 @@ compute_target.delete()
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku usługi Azure Machine Learning za pomocą języka Python wykonano następujące czynności:
+W tym Azure Machine Learning samouczku użyto języka Python dla następujących zadań:
 
 > [!div class="checklist"]
 > * Konfigurowanie środowiska projektowego.

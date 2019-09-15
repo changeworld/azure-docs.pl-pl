@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: f57d054134b9f2c8b327fe157e7a5b5e3d5ff183
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: b8e830cb187b375e17b3dc33c582126adfa32f3e
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813920"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002490"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>Analizowanie danych w Data Lake Storage Gen1 przy użyciu klastra usługi HDInsight Spark
 
@@ -25,7 +25,6 @@ W tym artykule opisano [Jupyter Notebook](https://jupyter.org/) dostępne z klas
 
 * Azure HDInsight Spark klaster z Data Lake Storage Gen1 jako magazyn. Postępuj zgodnie z instrukcjami w artykule [Szybki start: Konfigurowanie klastrów w usłudze HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
-    
 ## <a name="prepare-the-data"></a>Przygotowywanie danych
 
 > [!NOTE]  
@@ -57,7 +56,7 @@ Jeśli klaster usługi HDInsight został utworzony przy użyciu Data Lake Storag
 
 ## <a name="use-an-hdinsight-spark-cluster-with-data-lake-storage-gen1"></a>Korzystanie z klastra usługi HDInsight Spark z Data Lake Storage Gen1
 
-1. W [witrynie Azure Portal](https://portal.azure.com/), w tablicy startowej, kliknij kafelek klastra Apache Spark (jeśli przypięto go do tablicy startowej). Możesz także przejść do klastra, wybierając polecenia **Przeglądaj wszystko** > **Klastry usługi HDInsight**.
+1. W [Azure Portal](https://portal.azure.com/), w tablicy startowej, kliknij kafelek klastra Apache Spark (jeśli przypięto go do tablicy startowej). Możesz także przejść do klastra, wybierając polecenia **Przeglądaj wszystko** > **Klastry usługi HDInsight**.
 
 2. W bloku klastra Spark kliknij pozycję **Szybkie linki**, a następnie w bloku **Pulpit nawigacyjny klastra** kliknij pozycję **Jupyter Notebook**. Jeśli zostanie wyświetlony monit, wprowadź poświadczenia administratora klastra.
 
@@ -120,7 +119,7 @@ Jeśli klaster usługi HDInsight został utworzony przy użyciu Data Lake Storag
 
      Wyniki można również przeglądać w postaci innych wizualizacji. Na przykład wykres warstwowy tych samych danych wyjściowych będzie wyglądać w następujący sposób.
 
-     ![Wykres warstwowy wyników zapytania](./media/apache-spark-use-with-data-lake-store/jupyter-area-output.png "Wykres warstwowy wyników zapytania")
+     ![Wykres warstwowy wyników zapytania](./media/apache-spark-use-with-data-lake-store/jupyter-area-output1.png "Wykres warstwowy wyników zapytania")
 
 8. Po zakończeniu działania aplikacji należy ją zamknąć, aby zwolnić zasoby. W tym celu w menu **File** (Plik) w notesie kliknij polecenie **Close and Halt** (Zamknij i zatrzymaj). Spowoduje to zakończenie pracy i zamknięcie notesu.
 

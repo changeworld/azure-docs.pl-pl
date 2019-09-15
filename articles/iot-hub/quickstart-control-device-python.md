@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: fe0c16962eef38ac26490eb7928d1705ef63a217
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 6a3be3733c5041576d5db49256056ac4f0c03a7f
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68355029"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003020"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>Szybki start: Sterowanie urządzeniem podłączonym do centrum IoT Hub (Python)
 
@@ -34,22 +34,6 @@ Przewodnik Szybki start używa dwóch wstępnie napisanych aplikacji Python:
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-
-Dwie przykładowe aplikacje uruchamiane w tym przewodniku Szybki start zostały napisane w języku Python. Obecnie usługi Microsoft Azure IoT SDK dla języka Python obsługują tylko określone wersje języka Python dla każdej platformy. Aby dowiedzieć się więcej, zobacz [plik Readme zestawu SDK języka Python](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues).
-
-W tym przewodniku szybki start założono, że używasz komputera deweloperskiego z systemem Windows. W przypadku systemów Windows obsługiwane jest tylko środowisko [Python 3.6. x](https://www.python.org/downloads/release/python-368/) . Wybrany instalator języka Python powinien być oparty na architekturze systemu, którego używasz. Jeśli architektura procesora systemu jest 32 bit, Pobierz instalatora x86; w przypadku architektury 64-bitowej należy pobrać Instalatora x86-64. Ponadto upewnij się, że dla architektury (x86 lub x64) jest zainstalowany pakiet redystrybucyjny [firmy Microsoft C++ dla programu Visual Studio 2015, 2017 i 2019](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) .
-
-Możesz pobrać Język Python dla innych platform z [Python.org](https://www.python.org/downloads/).
-
-Możesz sprawdzić bieżącą wersję języka Python na komputerze deweloperskim przy użyciu jednego z następujących poleceń:
-
-```python
-python - -version
-```
-
-```python
-python3 - -version
-```
 
 Uruchom następujące polecenie, aby dodać rozszerzenie IoT Microsoft Azure dla interfejsu wiersza polecenia platformy Azure do wystąpienia Cloud Shell. Rozszerzenie IOT dodaje do interfejsu wiersza polecenia platformy Azure IoT Hub, IoT Edge i usługi IoT Device Provisioning Service (DPS).
 
@@ -114,7 +98,7 @@ Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw za
 
 ## <a name="listen-for-direct-method-calls"></a>Nasłuchiwanie wywołań metod bezpośrednich
 
-Aplikacja urządzenia symulowanego łączy się z punktem końcowym właściwym dla urządzenia w centrum IoT, wysyła symulowane dane telemetryczne i nasłuchuje wywołań metod bezpośrednich z centrum. W tym przewodniku Szybki start wywołanie metody bezpośredniej z centrum nakazuje urządzeniu zmienić interwał wysyłania danych telemetrycznych. Urządzenie symulowane wysyła potwierdzenie z powrotem do centrum po wykonaniu metody bezpośredniej.
+Aplikacja urządzenia symulowanego łączy się z punktem końcowym właściwym dla urządzenia w centrum IoT, wysyła symulowane dane telemetryczne i nasłuchuje wywołań metod bezpośrednich z centrum. W tym przewodniku Szybki start wywołanie metody bezpośredniej z centrum nakazuje urządzeniu zmienić interwał wysyłania danych telemetrycznych. Symulowane urządzenie wysyła potwierdzenie z powrotem do centrum po wykonaniu metody bezpośredniej.
 
 1. W lokalnym oknie terminalu przejdź do folderu głównego przykładowego projektu Python. Następnie przejdź do folderu **iot-hub\Quickstarts\simulated-device-2**.
 
@@ -140,7 +124,7 @@ Aplikacja urządzenia symulowanego łączy się z punktem końcowym właściwym 
 
 ## <a name="call-the-direct-method"></a>Wywoływanie metody bezpośredniej
 
-Aplikacja zaplecza łączy się z punktem końcowym po stronie usługi w usłudze IoT Hub. Aplikacja wykonuje wywołania metod bezpośrednich do urządzenia za pośrednictwem centrum IoT oraz nasłuchuje potwierdzeń. Aplikacja zaplecza usługi IoT Hub zwykle działa w chmurze.
+Aplikacja zaplecza łączy się z punktem końcowym po stronie usługi w usłudze IoT Hub. Aplikacja wykonuje bezpośrednie wywołania metody do urządzenia za pośrednictwem Centrum IoT Hub i nasłuchuje pod kątem potwierdzeń. Aplikacja zaplecza usługi IoT Hub zwykle działa w chmurze.
 
 1. W innym lokalnym oknie terminalu przejdź do folderu głównego przykładowego projektu Python. Następnie przejdź do folderu **iot-hub\Quickstarts\back-end-application**.
 
@@ -160,7 +144,7 @@ Aplikacja zaplecza łączy się z punktem końcowym po stronie usługi w usłudz
     python BackEndApplication.py
     ```
 
-    Poniższy zrzut ekranu przedstawia dane wyjściowe w sytuacji, w której aplikacja wykonuje wywołanie metody bezpośredniej do urządzenia i odbiera potwierdzenie:
+    Na poniższym zrzucie ekranu przedstawiono dane wyjściowe, gdy aplikacja wysyła wywołanie metody bezpośredniej do urządzenia i otrzymuje potwierdzenie:
 
     ![Uruchamianie aplikacji zaplecza](./media/quickstart-control-device-python/BackEndApplication.png)
 

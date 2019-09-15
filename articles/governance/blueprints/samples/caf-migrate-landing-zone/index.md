@@ -8,12 +8,12 @@ ms.topic: sample
 ms.service: blueprints
 manager: carmonm
 ms.custom: fasttrack-new
-ms.openlocfilehash: dc30aeae842cf9c3cd39422517ed49773c524f1e
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 81bde54c65cf3ed25da634c38b7b99e72a187e00
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232843"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002462"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>Omówienie przykładowej strategii strefy docelowej w przewodniku Microsoft Cloud Adoption Framework dla migracji na platformę Azure
 
@@ -29,7 +29,7 @@ Przykład strategii strefy docelowej migracji w przewodniku CAF służy do wdra�
 
 To środowisko składa się z kilku usług platformy Azure, które udostępniają bezpieczny, w pełni monitorowany ład możliwy do zastosowania w przedsiębiorstwach. To środowisko zawiera następujące składniki:
 
-- Wystąpienie usługi [Azure Key Vault](../../../../key-vault/key-vault-whatis.md) umożliwiające hostowanie wpisów tajnych używanych na potrzeby certyfikatów, kluczy i wpisów tajnych wdrożonych w środowisku usług udostępnionych
+- Wystąpienie usługi [Azure Key Vault](../../../../key-vault/key-vault-overview.md) umożliwiające hostowanie wpisów tajnych używanych na potrzeby certyfikatów, kluczy i wpisów tajnych wdrożonych w środowisku usług udostępnionych
 - Usługa [Log Analytics](../../../../azure-monitor/overview.md) jest wdrażana, aby upewnić się, że wszystkie akcje i usługi są rejestrowane w centralnej lokalizacji od chwili uruchomienia migracji
 - Wdrożenie usługi [Azure Security Center](../../../../security-center/security-center-intro.md) (wersja standardowa) zapewnia ochronę przed zagrożeniami dla zmigrowanych obciążeń.
 - Wdrożenie usługi [Azure Virtual Network](../../../../virtual-network/virtual-networks-overview.md) dostarcza izolowaną sieć i podsieci dla Twojej maszyny wirtualnej.

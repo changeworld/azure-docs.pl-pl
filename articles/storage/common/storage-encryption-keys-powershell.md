@@ -9,12 +9,12 @@ ms.date: 04/16/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 6c9adf1c00503ec7f1cbf4a3405c303eea2d2292
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 1b94f1686c2893c1c69bc846d3a0d29084975b7a
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034871"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002177"
 ---
 # <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-powershell"></a>Konfigurowanie kluczy zarządzanych przez klienta na potrzeby szyfrowania usługi Azure Storage za pomocą programu PowerShell
 
@@ -23,7 +23,7 @@ ms.locfileid: "69034871"
 W tym artykule pokazano, jak skonfigurować magazyn kluczy z kluczami zarządzanymi przez klienta przy użyciu programu PowerShell.
 
 > [!IMPORTANT]
-> W przypadku korzystania z kluczy zarządzanych przez klienta z szyfrowaniem usługi Azure Storage wymagane jest skonfigurowanie dwóch wymaganych właściwości magazynu kluczy, **usuwania** nietrwałego i nieprzeczyszczania. Te właściwości są domyślnie włączone podczas tworzenia nowego magazynu kluczy w Azure Portal. Jeśli jednak musisz włączyć te właściwości w istniejącym magazynie kluczy, musisz użyć programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
+> W przypadku korzystania z kluczy zarządzanych przez klienta z szyfrowaniem usługi Azure Storage wymagane jest skonfigurowanie dwóch wymaganych właściwości magazynu kluczy, **usuwania nietrwałego** i **nieprzeczyszczania**. Te właściwości są domyślnie włączone podczas tworzenia nowego magazynu kluczy w Azure Portal. Jeśli jednak musisz włączyć te właściwości w istniejącym magazynie kluczy, musisz użyć programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
 > Obsługiwane są tylko klucze RSA i rozmiar klucza 2048.
 
 ## <a name="assign-an-identity-to-the-storage-account"></a>Przypisywanie tożsamości do konta magazynu
@@ -97,4 +97,4 @@ Podczas tworzenia nowej wersji klucza należy zaktualizować konto magazynu, aby
 ## <a name="next-steps"></a>Następne kroki
 
 - [Szyfrowanie usługi Azure Storage dla danych magazynowanych](storage-service-encryption.md) 
-- [Co to jest Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)?
+- [Co to jest Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?

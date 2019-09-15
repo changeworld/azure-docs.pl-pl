@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 9a6b3a538304f2d09941650e3087130c21422dc0
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 6a43b721b70858d82083538638853c5bbdf1531d
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946345"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71004135"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikacja z Centrum IoT Hub przy użyciu protokołu MQTT
 
@@ -48,7 +48,7 @@ Poniższa tabela zawiera linki do przykładów kodu dla każdego obsługiwanego 
 | [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |IotHubClientProtocol.MQTT |
 | [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) |MQTT_Protocol |
 | [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) |TransportType.Mqtt |
-| [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/device/samples) |IoTHubTransportProvider.MQTT |
+| [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) |Zawsze obsługuje domyślnie MQTT |
 
 ### <a name="migrating-a-device-app-from-amqp-to-mqtt"></a>Migrowanie aplikacji urządzenia z usługi AMQP do usługi MQTT
 
@@ -59,6 +59,8 @@ W tym celu należy sprawdzić następujące elementy:
 * AMQP zwraca błędy dla wielu warunków, podczas gdy MQTT przerywa połączenie. W efekcie logika obsługi wyjątków może wymagać pewnych zmian.
 
 * MQTT nie obsługuje operacji odrzucania podczas otrzymywania [komunikatów z chmury do urządzenia](iot-hub-devguide-messaging.md). Jeśli Twoja aplikacja zaplecza musi odebrać odpowiedź z aplikacji urządzenia, należy rozważyć użycie [metod bezpośrednich](iot-hub-devguide-direct-methods.md).
+
+* AMQP nie jest obsługiwana w zestawie SDK języka Python
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>Bezpośrednie używanie protokołu MQTT (jako urządzenia)
 
@@ -222,7 +224,7 @@ client.connect(iot_hub_name+".azure-devices.net", port=8883)
 
 ## <a name="sending-device-to-cloud-messages"></a>Wysyłanie komunikatów z urządzenia do chmury
 
-Po pomyślnym nawiązaniu połączenia urządzenie może wysyłać komunikaty do IoT Hub przy `devices/{device_id}/messages/events/` użyciu `devices/{device_id}/messages/events/{property_bag}` lub jako **nazwy tematu**. `{property_bag}` Element umożliwia urządzeniu wysyłanie komunikatów z dodatkowymi właściwościami w formacie zakodowanym w adresie URL. Przykład:
+Po pomyślnym nawiązaniu połączenia urządzenie może wysyłać komunikaty do IoT Hub przy `devices/{device_id}/messages/events/` użyciu `devices/{device_id}/messages/events/{property_bag}` lub jako **nazwy tematu**. `{property_bag}` Element umożliwia urządzeniu wysyłanie komunikatów z dodatkowymi właściwościami w formacie zakodowanym w adresie URL. Na przykład:
 
 ```text
 RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-encoded(<PropertyName2>)=RFC 2396-encoded(<PropertyValue2>)…
@@ -275,7 +277,7 @@ Treść odpowiedzi zawiera sekcję właściwości sznurka urządzenia, jak pokaz
 
 Możliwe kody stanu to:
 
-|Stan | Opis |
+|State | Opis |
 | ----- | ----------- |
 | 204 | Powodzenie (nie jest zwracana żadna zawartość) |
 | 429 | Zbyt wiele żądań (z ograniczeniami), zgodnie z [ograniczeniami IoT Hub](iot-hub-devguide-quotas-throttling.md) |
@@ -306,7 +308,7 @@ Treść komunikatu żądania zawiera dokument JSON, który zawiera nowe wartośc
 
 Możliwe kody stanu to:
 
-|Stan | Opis |
+|State | Opis |
 | ----- | ----------- |
 | 200 | Powodzenie |
 | 400 | Nieprawidłowe żądanie. Źle sformułowany kod JSON |
@@ -333,7 +335,7 @@ Aby uzyskać więcej informacji, zobacz [przewodnik dewelopera urządzenia bliź
 
 ## <a name="receiving-desired-properties-update-notifications"></a>Otrzymywanie powiadomień o aktualizacji żądanych właściwości
 
-Gdy urządzenie jest połączone, IoT Hub wysyła powiadomienia do tematu `$iothub/twin/PATCH/properties/desired/?$version={new version}`, który zawiera zawartość aktualizacji wykonywanej przez zaplecze rozwiązania. Przykład:
+Gdy urządzenie jest połączone, IoT Hub wysyła powiadomienia do tematu `$iothub/twin/PATCH/properties/desired/?$version={new version}`, który zawiera zawartość aktualizacji wykonywanej przez zaplecze rozwiązania. Na przykład:
 
 ```json
 {

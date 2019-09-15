@@ -1,7 +1,7 @@
 ---
 title: Dostosowywanie hiperparametrów dla modelu
-titleSuffix: Azure Machine Learning service
-description: Efektywne dostrojenie hiperparametrów dla modelu uczenie głębokie uczenie / machine przy użyciu usługi Azure Machine Learning. Dowiesz się, jak definiować miejsce wyszukiwania parametrów, określać metrykę podstawową do optymalizacji i wczesne zakończenie działania.
+titleSuffix: Azure Machine Learning
+description: Wydajnie Dostrajaj parametry dla modelu uczenie głębokiego i uczenia maszynowego przy użyciu Azure Machine Learning. Dowiesz się, jak definiować miejsce wyszukiwania parametrów, określać metrykę podstawową do optymalizacji i wczesne zakończenie działania.
 ms.author: swatig
 author: swatig007
 ms.reviewer: sgilley
@@ -11,16 +11,16 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5a6f7c6de005112578cc29865574e5e255c99a8e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: cb4023be41377846ed209b3d6702188f5d79ba00
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873067"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999385"
 ---
-# <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning-service"></a>Dostosowywanie hiperparametrów dla modelu za pomocą usługi Azure Machine Learning
+# <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>Dostrajanie parametrów dla modelu za pomocą Azure Machine Learning
 
-Efektywne dostrojenie hiperparametrów dla modelu przy użyciu usługi Azure Machine Learning.  Do strojenia Hiperparametrycznego obejmuje następujące kroki:
+Efektywne dostrajanie parametrów dla modelu przy użyciu Azure Machine Learning.  Do strojenia Hiperparametrycznego obejmuje następujące kroki:
 
 * Zdefiniuj parametr przestrzeni wyszukiwania
 * Określ podstawowe metryki do optymalizacji  
@@ -94,7 +94,7 @@ Ten kod definiuje miejsce wyszukiwania o dwa parametry — `learning_rate` i `ke
 
 ### <a name="sampling-the-hyperparameter-space"></a>Próbkowanie miejsca hiperparametrycznego
 
-Można również określić parametr metody pobierania próbek do użycia za pośrednictwem definicji przestrzeni hiperparametrycznego. Usługa Azure Machine Learning obsługuje losowego próbkowanie, próbkowania siatki i Bayesowskie próbkowania.
+Można również określić parametr metody pobierania próbek do użycia za pośrednictwem definicji przestrzeni hiperparametrycznego. Azure Machine Learning obsługuje Próbkowanie losowe, próbkowanie siatki i próbkowanie bayesowskie.
 
 #### <a name="random-sampling"></a>Losowe próbkowania
 
@@ -186,7 +186,7 @@ Korzystając z początku zasad rozwiązania, można skonfigurować następujące
 * `evaluation_interval`: częstotliwość stosowania zasad. Każdym logowaniu skrypt szkoleniowy podstawowe metryki jest liczona jako jeden interwał. Ten sposób `evaluation_interval` 1 zostaną zastosowane zasady za każdym razem, gdy skrypt szkoleniowy Raporty podstawowe metryki. `evaluation_interval` 2 zostaną zastosowane zasady każdym innym czasie skrypt szkoleniowy Raporty podstawowe metryki. Jeśli nie zostanie określony, `evaluation_interval` jest ustawiona na 1, domyślnie.
 * `delay_evaluation`: opóźnia pierwszej oceny zasad określoną liczbę interwałów. Jest to parametr opcjonalny, który zezwala na wszystkie konfiguracje do uruchamiania dla początkowej minimalna liczba przedziałów, unikając przedwczesne zakończenie szkolenia związane z systemem. Jeśli zostanie określony, zostaną zastosowane zasady co wielu evaluation_interval, która jest większa lub równa delay_evaluation.
 
-Usługa Azure Machine Learning obsługuje następujące zasady wcześniejsze zakończenie.
+Azure Machine Learning obsługuje następujące zasady wczesnego zakończenia.
 
 ### <a name="bandit-policy"></a>Zasady bandit
 
@@ -304,7 +304,7 @@ experiment = Experiment(workspace, experiment_name)
 hyperdrive_run = experiment.submit(hyperdrive_run_config)
 ```
 
-`experiment_name` to nazwa, przypisz do Twojego hiperparametrycznego dostrajania eksperymentu, a `workspace` jest obszarem roboczym, w którym chcesz utworzyć eksperyment (Aby uzyskać więcej informacji na temat doświadczeń, zobacz [jak działa usługa Azure Machine Learning?](concept-azure-machine-learning-architecture.md))
+`experiment_name`jest nazwą przypisaną do eksperymentu strojenia parametrów i `workspace` jest obszarem roboczym, w którym chcesz utworzyć eksperyment (Aby uzyskać więcej informacji na temat eksperymentów, zobacz [jak działa Azure Machine Learning?](concept-azure-machine-learning-architecture.md))
 
 ## <a name="visualize-experiment"></a>Wizualizacja doświadczenia
 

@@ -1,25 +1,25 @@
 ---
-title: Tworzenie aliasów w usłudze Azure Cosmos DB
-description: Dowiedz się więcej o wartości aliasów zapytań SQL usługi Azure Cosmos DB
+title: Tworzenie aliasów w Azure Cosmos DB
+description: Informacje o aliasach wartości w Azure Cosmos DB zapytaniach SQL
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: e532fb7180af8a21de6ae9a2e4d798abd9e93e7b
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 3b17cbc7710647b1e1875025a1db1849034ec1dc
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342887"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002082"
 ---
-# <a name="aliasing-in-azure-cosmos-db"></a>Tworzenie aliasów w usłudze Azure Cosmos DB
+# <a name="aliasing-in-azure-cosmos-db"></a>Tworzenie aliasów w Azure Cosmos DB
 
-Można jawnie alias wartości w zapytaniach. Jeśli zapytanie ma dwie właściwości o takiej samej nazwie, należy użyć aliasów, można zmienić nazwy jedną lub obie właściwości, dzięki czemu są one rozróżniane w przewidywany wynik.
+Można jawnie aliasować wartości w zapytaniach. Jeśli zapytanie ma dwie właściwości o tej samej nazwie, użyj aliasu, aby zmienić nazwę jednej lub obu właściwości, tak aby były one niejednoznaczne w przewidywanym wyniku.
 
 ## <a name="examples"></a>Przykłady
 
-AS — słowo kluczowe używane do aliasów jest opcjonalne, jak pokazano w poniższym przykładzie, podczas projekcji drugiej wartości jako `NameInfo`:
+Słowo kluczowe AS używane do aliasowania jest opcjonalne, jak pokazano w poniższym przykładzie podczas projekcji drugiej wartości jako `NameInfo`:
 
 ```sql
     SELECT 
@@ -29,7 +29,7 @@ AS — słowo kluczowe używane do aliasów jest opcjonalne, jak pokazano w poni
     WHERE f.id = "AndersenFamily"
 ```
 
-Wyniki są:
+Wyniki są następujące:
 
 ```json
     [{
@@ -43,8 +43,8 @@ Wyniki są:
     }]
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Przykłady dla platformy .NET w usłudze Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [Przykłady dla platformy .NET w usłudze Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Klauzula SELECT](sql-query-select.md)
 - [FROM — klauzula](sql-query-from.md)

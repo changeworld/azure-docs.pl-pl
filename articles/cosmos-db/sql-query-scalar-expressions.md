@@ -1,21 +1,21 @@
 ---
-title: Wyrażenia skalarne zapytań SQL usługi Azure Cosmos DB
-description: Więcej informacji na temat wyrażenie skalarne składni SQL usługi Azure Cosmos DB.
+title: Wyrażenia skalarne w Azure Cosmos DB zapytania SQL
+description: Dowiedz się więcej na temat składni wyrażeń skalarnych SQL dla Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: 4464c39a45c47c680a13f3ebc34841b47ee0d7c6
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: c35ad65a584f8ee95142e9bc85a58b5b6cd99744
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342433"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003539"
 ---
-# <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Wyrażenia skalarne zapytań SQL usługi Azure Cosmos DB
+# <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Wyrażenia skalarne w Azure Cosmos DB zapytania SQL
 
-[Klauzuli SELECT](sql-query-select.md) obsługuje wyrażenia skalarne. Wyrażenie skalarne, które jest kombinacją symboli i operatorów, które mogą być obliczane w celu uzyskania pojedynczej wartości. Przykłady wyrażeń skalarnych: stałe, odwołania do właściwości, odwołania do elementu tablicy, odwołania do aliasu lub wywołania funkcji. Wyrażenia skalarne mogą być połączone w złożonych wyrażeń przy użyciu operatorów.
+[Klauzula SELECT](sql-query-select.md) obsługuje wyrażenia skalarne. Wyrażenie skalarne, które jest kombinacją symboli i operatorów, które mogą być obliczane w celu uzyskania pojedynczej wartości. Przykłady wyrażeń skalarnych obejmują: stałe, odwołania do właściwości, odwołania do elementów tablicy, odwołania aliasów lub wywołania funkcji. Wyrażenia skalarne mogą być łączone w wyrażenia złożone przy użyciu operatorów.
 
 ## <a name="syntax"></a>Składnia
   
@@ -59,11 +59,11 @@ ms.locfileid: "67342433"
   
 - `<scalar_expression>.property_name`  
   
-   Reprezentuje wartość właściwości obiektu. Jeśli właściwość nie istnieje lub odwołuje się do właściwości na wartość, która nie jest obiektem, a następnie wyrażenie ma **niezdefiniowane** wartość.  
+   Reprezentuje wartość właściwości obiektu. Jeśli właściwość nie istnieje lub właściwość jest przywoływana dla wartości, która nie jest obiektem, wyrażenie daje w wyniku **niezdefiniowaną** wartość.  
   
 - `<scalar_expression>'['"property_name"|array_index']'`  
   
-   Reprezentuje wartość właściwości o nazwie `property_name` lub elementu tablicy za pomocą indeksu `array_index` tablicy. Jeśli indeks tablicy właściwości/nie istnieje, lub odwołanie do indeksu tablicy/właściwości na wartość, która nie jest/Tablica obiektów, a następnie wyrażenie ma wartość niezdefiniowaną wartość.  
+   Reprezentuje wartość właściwości o nazwie `property_name` lub element tablicy z indeksem `array_index` tablicy. Jeśli indeks tablicy właściwości/nie istnieje, lub odwołanie do indeksu tablicy/właściwości na wartość, która nie jest/Tablica obiektów, a następnie wyrażenie ma wartość niezdefiniowaną wartość.  
   
 - `unary_operator <scalar_expression>`  
   
@@ -99,7 +99,7 @@ ms.locfileid: "67342433"
   
 ## <a name="remarks"></a>Uwagi
   
-  Podczas wywoływania funkcji skalarnej wbudowany lub zdefiniowany przez użytkownika, musi być zdefiniowany w argumentach. Jeśli którykolwiek z argumentów jest niezdefiniowana, nie zostanie wywołana funkcja, a wynik jest niezdefiniowany.  
+  Podczas wywoływania wbudowanej funkcji skalarnej lub zdefiniowanej przez użytkownika, wszystkie argumenty muszą być zdefiniowane. Jeśli którykolwiek z argumentów jest niezdefiniowana, nie zostanie wywołana funkcja, a wynik jest niezdefiniowany.  
   
   Podczas tworzenia obiektu, dowolnej właściwości, która jest przypisana wartość niezdefiniowana zostanie pominięty i nie są objęte utworzony obiekt.  
   
@@ -111,7 +111,7 @@ ms.locfileid: "67342433"
     SELECT ((2 + 11 % 7)-2)/3
 ```
 
-Wyniki są:
+Wyniki są następujące:
 
 ```json
     [{
@@ -119,14 +119,14 @@ Wyniki są:
     }]
 ```
 
-W następującym zapytaniu wynik wyrażenia skalarne jest wartością logiczną:
+W poniższym zapytaniu wynik wyrażenia skalarnego jest wartością logiczną:
 
 ```sql
     SELECT f.address.city = f.address.state AS AreFromSameCityState
     FROM Families f
 ```
 
-Wyniki są:
+Wyniki są następujące:
 
 ```json
     [
@@ -139,8 +139,8 @@ Wyniki są:
     ]
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Wprowadzenie do usługi Azure Cosmos DB](introduction.md)
-- [Przykłady dla platformy .NET w usłudze Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-dotnet)
-- [Zapytania podrzędne](sql-query-subquery.md)
+- [Wprowadzenie do Azure Cosmos DB](introduction.md)
+- [Przykłady dla platformy .NET w usłudze Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Podzapytania](sql-query-subquery.md)

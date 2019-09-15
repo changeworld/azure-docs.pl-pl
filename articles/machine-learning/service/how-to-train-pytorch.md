@@ -1,6 +1,6 @@
 ---
 title: Uczenie sieci neuronowych uczenie głębokie z PyTorch
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Dowiedz się, jak uruchamiać skrypty szkoleniowe PyTorch na skalę przedsiębiorstwa przy użyciu klasy PyTorch szacowania firmy Azure Machine Learning.  Przykładowe skrypty klasyfikują obrazy kurczaka i Turcja w celu utworzenia sieci neuronowych uczenia głębokiego na podstawie samouczka nauka transferu PyTorch.
 services: machine-learning
 ms.service: machine-learning
@@ -11,22 +11,22 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: d7ac3675ec9d90fc51bc9e3c72b76d8fb80312a8
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: c688f5a59a9a6d980f50a726f9da4dc4379ce073
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966786"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002569"
 ---
 # <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>Uczenie modeli Pytorch głębokie uczenie na dużą skalę dzięki Azure Machine Learning
 
 W tym artykule dowiesz się, jak uruchamiać skrypty szkoleniowe [PyTorch](https://pytorch.org/) na skalę przedsiębiorstwa przy użyciu klasy [PyTorch szacowania](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py) firmy Azure Machine Learning.  
 
-Przykładowe skrypty w tym artykule służą do klasyfikowania obrazów kurczaka i Turcja w celu utworzenia sieci neuronowych uczenia głębokiego na podstawie samouczka [](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)nauka transferu PyTorch. 
+Przykładowe skrypty w tym artykule służą do klasyfikowania obrazów kurczaka i Turcja w celu utworzenia sieci neuronowych uczenia głębokiego na podstawie [samouczka](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)nauka transferu PyTorch. 
 
 Bez względu na to, czy szkolenia mają być szkoleniowe ze względu na uczenie głębokie, czy do chmury, możesz użyć Azure Machine Learning, aby skalować zadania szkoleniowe typu "open source" przy użyciu elastycznych zasobów obliczeniowych w chmurze. Możesz tworzyć, wdrażać, instalować i monitorować modele klasy produkcyjnej za pomocą Azure Machine Learning. 
 
-Dowiedz się [](concept-deep-learning-vs-machine-learning.md)więcej na temat uczenia głębokiego i uczenia maszynowego.
+Dowiedz się więcej na temat uczenia głębokiego i uczenia [maszynowego](concept-deep-learning-vs-machine-learning.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -35,7 +35,7 @@ Uruchom ten kod w dowolnym z następujących środowisk:
  - Maszyna wirtualna w Azure Machine Learning Notes — nie jest wymagane pobieranie ani instalacja
 
     - Wykonaj kroki z artykułu [Samouczek: Zainstaluj środowisko i obszar](tutorial-1st-experiment-sdk-setup.md) roboczy, aby utworzyć dedykowany serwer notesu wstępnie załadowany z zestawem SDK i przykładowym repozytorium.
-    - W folderze przykłady głębokiego uczenia na serwerze notesu Znajdź ukończony i rozwinięty Notes, przechodząc do tego katalogu: How to- **use-azure > Training-with-Learning** -uczenie się > uczenie---------------pytorch. 
+    - W folderze przykłady głębokiego uczenia na serwerze notesu Znajdź ukończony i rozwinięty Notes, przechodząc do tego katalogu: How to- **use-azure > Training-with-Learning-uczenie się >** uczenie---------------pytorch. 
  
  - Własny serwer Jupyter Notebook
 
@@ -67,7 +67,7 @@ from azureml.train.dnn import PyTorch
 
 ### <a name="initialize-a-workspace"></a>Inicjowanie obszaru roboczego
 
-[Obszar roboczy usługi Azure Machine Learning](concept-workspace.md) jest zasobem najwyższego poziomu dla usługi. Zapewnia ono scentralizowane miejsce do pracy ze wszystkimi tworzonymi artefaktami. W zestawie SDK języka Python można uzyskać dostęp do artefaktów obszaru roboczego przez [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) utworzenie obiektu.
+[Obszar roboczy Azure Machine Learning](concept-workspace.md) jest zasobem najwyższego poziomu dla usługi. Zapewnia ono scentralizowane miejsce do pracy ze wszystkimi tworzonymi artefaktami. W zestawie SDK języka Python można uzyskać dostęp do artefaktów obszaru roboczego przez [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) utworzenie obiektu.
 
 Utwórz obiekt obszaru roboczego z `config.json` pliku utworzonego w [sekcji wymagania wstępne](#prerequisites).
 
@@ -93,7 +93,7 @@ Zestaw danych składa się z około 120 obrazów szkoleniowych przeznaczonych dl
 
 ### <a name="prepare-training-scripts"></a>Przygotuj skrypty szkoleniowe
 
-W tym samouczku skrypt `pytorch_train.py`szkoleniowy został już podany. W tym celu możesz wykonać dowolny niestandardowy skrypt szkoleniowy i uruchomić go w usłudze Azure Machine Learning.
+W tym samouczku skrypt `pytorch_train.py`szkoleniowy został już podany. W tym celu możesz wykonać dowolny niestandardowy skrypt szkoleniowy, tak jak jest, i uruchomić go za pomocą Azure Machine Learning.
 
 Przekaż skrypt `pytorch_train.py`szkoleniowy Pytorch.
 
@@ -101,7 +101,7 @@ Przekaż skrypt `pytorch_train.py`szkoleniowy Pytorch.
 shutil.copy('pytorch_train.py', project_folder)
 ```
 
-Jeśli jednak chcesz korzystać z funkcji śledzenia i metryk usługi Azure Machine Learning, musisz dodać małą ilość kodu w skrypcie szkoleniowym. Przykłady śledzenia metryk można znaleźć w `pytorch_train.py`temacie.
+Jeśli jednak chcesz korzystać z funkcji śledzenia Azure Machine Learning i metryk, musisz dodać małą ilość kodu w skrypcie szkoleniowym. Przykłady śledzenia metryk można znaleźć w `pytorch_train.py`temacie.
 
 ## <a name="create-a-compute-target"></a>Utworzyć cel obliczenia
 
@@ -189,7 +189,7 @@ for f in run.get_file_names():
 
 ## <a name="distributed-training"></a>Rozproszonego szkolenia
 
-[`PyTorch`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py) Szacowania obsługuje również szkolenia rozproszone między procesorami i klastrami GPU. Można łatwo uruchomić rozproszone zadania PyTorch, a usługa Azure Machine Learning będzie zarządzać aranżacją.
+[`PyTorch`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py) Szacowania obsługuje również szkolenia rozproszone między procesorami i klastrami GPU. Można łatwo uruchomić rozproszone zadania PyTorch, a Azure Machine Learning będzie zarządzać aranżacją.
 
 ### <a name="horovod"></a>Horovod
 [Horovod](https://github.com/uber/horovod) to "open source", która umożliwia zredukowanie architektury dla szkoleń rozproszonych opracowanych przez Uber. Oferuje łatwą ścieżkę do dystrybuowanych zadań PyTorch procesora GPU.
@@ -218,11 +218,11 @@ import horovod
 ```
 ## <a name="export-to-onnx"></a>Eksportuj do ONNX
 
-Aby zoptymalizować wnioskowanie za pomocą [środowiska uruchomieniowego ONNX](concept-onnx.md), przekonwertuj swój przeszkolony model PyTorch na format ONNX. Wnioskowanie lub ocenianie modelu to faza, w której wdrożony model jest używany do prognozowania, najczęściej dotyczący danych produkcyjnych. Przykład można [](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb) znaleźć w samouczku.
+Aby zoptymalizować wnioskowanie za pomocą [środowiska uruchomieniowego ONNX](concept-onnx.md), przekonwertuj swój przeszkolony model PyTorch na format ONNX. Wnioskowanie lub ocenianie modelu to faza, w której wdrożony model jest używany do prognozowania, najczęściej dotyczący danych produkcyjnych. Przykład można znaleźć w [samouczku](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb) .
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym artykule opisano przeszkolone i zarejestrowano uczenie głębokie, neuronowych sieci przy użyciu PyTorch w usłudze Azure Machine Learning. Aby dowiedzieć się, jak wdrożyć model, przejdź do naszego artykułu wdrożenia modelu.
+W tym artykule opisano przeszkolone i zarejestrowano uczenie głębokie, neuronowych sieci przy użyciu PyTorch na Azure Machine Learning. Aby dowiedzieć się, jak wdrożyć model, przejdź do naszego artykułu wdrożenia modelu.
 
 > [!div class="nextstepaction"]
 > [Jak i gdzie wdrażać modele](how-to-deploy-and-where.md)

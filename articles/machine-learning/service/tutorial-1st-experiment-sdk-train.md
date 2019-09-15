@@ -1,7 +1,7 @@
 ---
 title: 'Samouczek: Uczenie swojego pierwszego modelu ML'
-titleSuffix: Azure Machine Learning service
-description: W ramach tego samouczka nauczysz się podstawowe wzorce projektowe w usłudze Azure Machine Learning i nauczysz prosty model uczenia scikit na podstawie zestawu danych cukrzycą.
+titleSuffix: Azure Machine Learning
+description: W ramach tego samouczka nauczysz się podstawowe wzorce projektowe w Azure Machine Learning i uczenie prostego modelu uczenia scikitego na podstawie zestawu danych cukrzycą.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/03/2019
-ms.openlocfilehash: 989775916454b6710aef6c2c5be6792920622dab
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: b5d3a687adc8ecefcf581f7eda3b9e13d1973c62
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241297"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71004034"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Samouczek: Uczenie swojego pierwszego modelu ML
 
-Ten samouczek jest **drugą częścią dwuczęściowej serii samouczków**. W poprzednim samouczku [utworzono obszar roboczy i wybrano środowisko programistyczne](tutorial-1st-experiment-sdk-setup.md). W ramach tego samouczka nauczysz się podstawowe wzorce projektowe w usłudze Azure Machine Learning i nauczysz prosty model uczenia scikit na podstawie zestawu danych cukrzycą. Po ukończeniu tego samouczka będziesz mieć praktyczną wiedzę na temat zestawu SDK w celu skalowania w górę w celu opracowywania bardziej złożonych eksperymentów i przepływów pracy.
+Ten samouczek jest **drugą częścią dwuczęściowej serii samouczków**. W poprzednim samouczku [utworzono obszar roboczy i wybrano środowisko programistyczne](tutorial-1st-experiment-sdk-setup.md). W ramach tego samouczka nauczysz się podstawowe wzorce projektowe w Azure Machine Learning i uczenie prostego modelu uczenia scikitego na podstawie zestawu danych cukrzycą. Po ukończeniu tego samouczka będziesz mieć praktyczną wiedzę na temat zestawu SDK w celu skalowania w górę w celu opracowywania bardziej złożonych eksperymentów i przepływów pracy.
 
 W tym samouczku nauczysz się wykonywać następujące zadania:
 
@@ -197,7 +197,7 @@ best_run.download_file(name="model_alpha_0.1.pkl")
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Nie wykonuj tej sekcji, jeśli planujesz Uruchamianie innych samouczków usługi Azure Machine Learning.
+Nie wykonuj tej sekcji, jeśli planujesz Uruchamianie innych samouczków Azure Machine Learning.
 
 ### <a name="stop-the-notebook-vm"></a>Zatrzymaj maszynę wirtualną notesu
 

@@ -1,7 +1,7 @@
 ---
-title: Włączanie rejestrowania w usłudze Azure Machine Learning
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak włączyć rejestrowanie w usłudze Azure Machine Learning przy użyciu domyślnego pakietu rejestrowania w języku Python, a także korzystać z funkcji specyficznych dla zestawu SDK.
+title: Włącz rejestrowanie w Azure Machine Learning
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak włączyć rejestrowanie w Azure Machine Learning przy użyciu zarówno domyślnego pakietu rejestrowania języka Python, jak i funkcji specyficznych dla zestawu SDK.
 ms.author: trbye
 author: trevorbye
 services: machine-learning
@@ -10,14 +10,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
 ms.date: 07/12/2019
-ms.openlocfilehash: 9deb369dc812616cd7256bbab4101531ca08f127
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 80508a31db8d86569c52df98697ceb62520059d2
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847931"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002754"
 ---
-# <a name="enable-logging-in-azure-machine-learning-service"></a>Włączanie rejestrowania w usłudze Azure Machine Learning
+# <a name="enable-logging-in-azure-machine-learning"></a>Włącz rejestrowanie w Azure Machine Learning
 
 Zestaw Azure Machine Learning Python SDK umożliwia włączenie rejestrowania przy użyciu domyślnego pakietu rejestrowania języka Python, a także korzystanie z funkcji specyficznych dla zestawu SDK zarówno do rejestrowania lokalnego i rejestrowania w obszarze roboczym w portalu. Dzienniki udostępniają deweloperom informacje w czasie rzeczywistym dotyczące stanu aplikacji i mogą pomóc w diagnozowaniu błędów lub ostrzeżeń. W tym artykule przedstawiono różne sposoby włączania rejestrowania w następujących obszarach:
 
@@ -27,7 +27,7 @@ Zestaw Azure Machine Learning Python SDK umożliwia włączenie rejestrowania pr
 > * Wdrożone modele
 > * Ustawienia `logging` języka Python
 
-[Utwórz obszar roboczy usługi Azure Machine Learning](how-to-manage-workspace.md). Aby uzyskać [](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) więcej informacji na temat zestawu SDK, Skorzystaj z przewodnika.
+[Utwórz obszar roboczy Azure Machine Learning](how-to-manage-workspace.md). Aby uzyskać [](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) więcej informacji na temat zestawu SDK, Skorzystaj z przewodnika.
 
 ## <a name="training-models-and-compute-target-logging"></a>Modele szkoleń i rejestrowanie obiektów docelowych obliczeń
 
