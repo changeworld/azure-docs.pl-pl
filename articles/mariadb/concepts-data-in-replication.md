@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 07/11/2019
-ms.openlocfilehash: 28c2c01e85120ec17e6f782fb0686a627d50d0d0
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 09/13/2019
+ms.openlocfilehash: 3ceb8b4f3c2c50ac0ac3bd12831b5497f9a05afb
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70136742"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993042"
 ---
 # <a name="replicate-data-into-azure-database-for-mariadb"></a>Replikowanie danych do Azure Database for MariaDB
 
@@ -34,10 +34,10 @@ Główne scenariusze, które należy wziąć pod uwagę przy użyciu replikacja 
 - Każda tabela musi mieć klucz podstawowy.
 - Serwer główny powinien używać aparatu InnoDB.
 - Użytkownik musi mieć uprawnienia do konfigurowania rejestrowania plików binarnych i tworzenia nowych użytkowników na serwerze głównym.
-- Jeśli na serwerze głównym jest włączony protokół SSL, upewnij się, że certyfikat urzędu certyfikacji SSL podany dla domeny został uwzględniony w `mariadb.az_replication_change_master` procedurze składowanej. Zapoznaj się z [](https://docs.microsoft.com/azure/mariadb/howto-data-in-replication#link-the-master-and-replica-servers-to-start-data-in-replication) poniższymi przykładami i `master_ssl_ca` parametrem.
+- Jeśli na serwerze głównym jest włączony protokół SSL, upewnij się, że certyfikat urzędu certyfikacji SSL podany dla domeny został uwzględniony w `mariadb.az_replication_change_master` procedurze składowanej. Zapoznaj się z poniższymi [przykładami](https://docs.microsoft.com/azure/mariadb/howto-data-in-replication#link-the-master-and-replica-servers-to-start-data-in-replication) i `master_ssl_ca` parametrem.
 - Upewnij się, że adres IP serwera głównego został dodany do reguł zapory serwera repliki usługi Azure Database for MariaDB. Zaktualizuj reguły zapory za pomocą [witryny Azure Portal](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-portal) lub [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-cli).
 - Upewnij się, że maszyna hostująca serwer główny zezwala na ruch przychodzący i wychodzący na porcie 3306.
-- Upewnij się, że serwer główny ma **publiczny adres IP** lub usługa DNS jest publicznie dostępna
+- Upewnij się, że serwer główny ma **publiczny adres IP**, usługa DNS jest publicznie dostępna lub ma w pełni kwalifikowaną nazwę domeny (FQDN).
 
 ### <a name="other"></a>Inne
 - Replikacja danych jest obsługiwana tylko w warstwach cenowych Ogólnego przeznaczenia i zoptymalizowanych pod kątem pamięci.

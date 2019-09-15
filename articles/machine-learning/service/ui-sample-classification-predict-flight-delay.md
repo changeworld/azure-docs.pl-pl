@@ -1,6 +1,6 @@
 ---
 title: 'Przykład #6 interfejsu wizualizacji: Klasyfikacja do przewidywania opóźnień lotów'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: W tym artykule opisano sposób tworzenia modelu uczenia maszynowego w celu przewidywania opóźnień lotów przy użyciu graficznego interfejsu typu "przeciągnij i upuść" oraz niestandardowego kodu języka R.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 07/02/2019
-ms.openlocfilehash: 4c0a990ae3f45fc7b08c157f180d8ecf805c24e6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 3d1363d24aa6e5f8875ba90513a8d9d5b951c9db
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990023"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997111"
 ---
 # <a name="sample-6---classification-predict-flight-delays-using-r"></a>Przykład 6 — Klasyfikacja: Przewidywanie opóźnień lotów przy użyciu języka R
 
@@ -71,7 +71,7 @@ Aby dołączać rekordy lotu z rekordami godzinową pogody, użyj zaplanowanego 
 
 Kolumny, które mają dużą część brakujących wartości, są wykluczone przy użyciu modułu **kolumn projektu** . Te kolumny zawierają wszystkie kolumny wartości ciągów: **ValueForWindCharacter**, **WetBulbFarenheit**, **WetBulbCelsius**, **PressureTendency**, **PressureChange**, **SeaLevelPressure**i **StationPressure**.
 
-Czysty, nieobecny moduł **danych** zostanie zastosowany do pozostałych kolumn w celu usunięcia wierszy z brakującymi danymi.
+**Czysty, nieobecny moduł danych** zostanie zastosowany do pozostałych kolumn w celu usunięcia wierszy z brakującymi danymi.
 
 Czasy obserwacji pogody są zaokrąglane do najbliższej pełnej godziny. Czasy zaplanowanych lotów i czas obserwacji pogodowej są zaokrąglane w przeciwnych kierunkach, aby zapewnić, że model używa tylko pogody przed czasem lotu. 
 
@@ -79,7 +79,7 @@ Ponieważ dane pogody są raportowane w czasie lokalnym, są uwzględniane róż
 
 ### <a name="joining-datasets"></a>Sprzęganie zestawów danych
 
-Rekordy lotu są dołączane do danych pogodowych, które znajdują się na początku lotu (**OriginAirportID**) przy użyciu modułu **Join Data** .
+Rekordy lotu są **dołączane** do danych pogodowych, które znajdują się na początku lotu (**OriginAirportID**) przy użyciu modułu Join Data.
 
  ![Dołącz do lotu i pogody według pochodzenia](media/ui-sample-classification-predict-flight-delay/join-origin.png)
 
@@ -104,9 +104,9 @@ Aby skompilować model, możesz użyć wszystkich dostępnych funkcji lub wybra�
 
 ## <a name="choose-and-apply-a-learning-algorithm"></a>Wybieranie i stosowanie algorytmu uczenia
 
-Utwórz model przy użyciu dwuklasowego modułu **regresji logistycznej** i pouczenie go w zestawie danych szkoleniowych. 
+Utwórz model przy użyciu **dwuklasowego modułu regresji logistycznej** i pouczenie go w zestawie danych szkoleniowych. 
 
-Wynik modułu uczenie **modelu** jest przeszkolonym modelem klasyfikacji, który może służyć do oceny nowych próbek do prognozowania. Użyj zestawu testów, aby wygenerować wyniki z modeli szkolonych. Następnie należy użyć modułu **Oceń model** do analizowania i porównywania jakości modeli.
+Wynik modułu **uczenie modelu** jest przeszkolonym modelem klasyfikacji, który może służyć do oceny nowych próbek do prognozowania. Użyj zestawu testów, aby wygenerować wyniki z modeli szkolonych. Następnie należy użyć modułu **Oceń model** do analizowania i porównywania jakości modeli.
 
 Po uruchomieniu eksperymentu możesz wyświetlić dane wyjściowe z modułu **wyniku modelu** , klikając port wyjściowy i wybierając opcję **Wizualizuj**. Dane wyjściowe zawierają etykiety z wynikami i prawdopodobieństwa etykiet.
 

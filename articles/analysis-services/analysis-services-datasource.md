@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 09/13/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 096f8b3aa6ae66e65bbbd9ea6e2204af619199dd
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 81fc73ffd61a49eae1c4f107733b6f9f53efbb4f
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899407"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993390"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Źródła danych obsługiwane w Azure Analysis Services
 
@@ -42,7 +42,7 @@ Obsługiwane jest <a name="azsqlmanaged">2</a> Azure SQL Database wystąpienia z
 **Dostawcy**   
 Modele w pamięci i DirectQuery łączące się ze źródłami danych platformy Azure używają .NET Framework Dostawca danych do SQL Server.
 
-## <a name="on-premises-data-sources"></a>Lokalne źródła danych
+## <a name="other-data-sources"></a>Inne źródła danych
 
 Nawiązywanie połączenia z lokalnymi źródłami danych z programu i platformy Azure jako serwera wymaga bramy lokalnej. W przypadku korzystania z bramy wymagane są 64-bitowe dostawcy.
 
@@ -113,6 +113,10 @@ Dla lokalnych źródeł danych:
 W przypadku źródeł danych w chmurze:
 
 * W przypadku korzystania z uwierzytelniania SQL, personifikacja powinna być kontem usługi.
+
+## <a name="oauth-credentials"></a>Poświadczenia uwierzytelniania OAuth
+
+Dla modeli tabelarycznych na poziomie zgodności 1400 i wyższym Azure SQL Database, Azure SQL Data Warehouse, Dynamics 365 i lista programu SharePoint obsługują poświadczenia uwierzytelniania OAuth. Azure Analysis Services zarządza odświeżanie tokenów dla źródeł danych OAuth w celu uniknięcia przekroczeń limitu czasu dla długotrwałych operacji odświeżania. Aby wygenerować prawidłowe tokeny, Ustaw poświadczenia za pomocą programu SSMS.
 
 ## <a name="next-steps"></a>Następne kroki
 [Brama lokalna](analysis-services-gateway.md)   

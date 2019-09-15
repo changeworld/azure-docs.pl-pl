@@ -1,6 +1,6 @@
 ---
 title: 'Przykład #5 interfejsu wizualizacji: Klasyfikacja do przewidywania zmian i pragnienie + sprzedawanie'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Ten przykładowy przykład interfejsu wizualizacji przedstawia przewidywane zmiany klasyfikatora w postaci binarnej, czyli typowe zadanie zarządzania relacjami z klientami (CRM).
 services: machine-learning
 ms.service: machine-learning
@@ -10,18 +10,18 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: a2eabdd601fcf350d2076d33882e3d90255fee92
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 054ac3ea5224a4ffea2e7bae9da329ba7bc81233
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016468"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997134"
 ---
 # <a name="sample-5---classification-predict-churn-appetency-and-up-selling"></a>Przykład 5 — Klasyfikacja: Przewidywanie zmian, pragnienie i kupowanie 
 
 Dowiedz się, jak utworzyć złożony eksperyment uczenia maszynowego bez pisania jednego wiersza kodu przy użyciu interfejsu wizualizacji.
 
-Ten eksperyment pociąga za trzy, dwuklasowe klasyfikatory **drzewa decyzyjnego** do przewidywania typowych zadań dla systemów zarządzania relacjami z klientami (CRM): zmiany, pragnienie i sprzedaż. Wartości danych i etykiety są podzielone na wiele źródeł danych i szyfrowane w celu zachowywanie anonimowości informacji o klientach, jednak nadal możemy używać interfejsu wizualizacji do łączenia zestawów danych i uczenia modelu przy użyciu wartości zaszyfrowanych.
+Ten eksperyment pociąga za trzy, **dwuklasowe klasyfikatory drzewa decyzyjnego** do przewidywania typowych zadań dla systemów zarządzania relacjami z klientami (CRM): zmiany, pragnienie i sprzedaż. Wartości danych i etykiety są podzielone na wiele źródeł danych i szyfrowane w celu zachowywanie anonimowości informacji o klientach, jednak nadal możemy używać interfejsu wizualizacji do łączenia zestawów danych i uczenia modelu przy użyciu wartości zaszyfrowanych.
 
 Ponieważ próbujemy odpowiedzieć na pytanie "? jest to nazywane problemem klasyfikacji. Można jednak zastosować te same kroki w tym eksperymentie, aby rozwiązać dowolny typ problemu uczenia maszynowego, niezależnie od tego, czy jest to regresja, klasyfikacja, klastrowanie i tak dalej.
 
@@ -47,7 +47,7 @@ Ten przykładowy przykład interfejsu wizualizacji przedstawia przewidywane zmia
 
 Najpierw robimy proste przetwarzanie danych.
 
-- Pierwotny zestaw danych zawiera wiele brakujących wartości. Używamy nieoczyszczonego modułu **danych** , aby zastąpić brakujące wartości wartością 0.
+- Pierwotny zestaw danych zawiera wiele brakujących wartości. Używamy **nieoczyszczonego modułu danych** , aby zastąpić brakujące wartości wartością 0.
 
     ![Wyczyść zestaw danych](./media/ui-sample-classification-predict-churn/cleaned-dataset.png)
 
@@ -65,7 +65,7 @@ Wizualizuj dane wyjściowe modułu **oceny modelu** , aby zobaczyć wydajność 
 
 ![Oceń wyniki](./media/ui-sample-classification-predict-churn/evaluate-result.png)
 
- Suwak progu można przenieść i zobaczyć zmianę metryk dla zadania klasyfikacji binarnej.
+ Suwak **progu** można przenieść i zobaczyć zmianę metryk dla zadania klasyfikacji binarnej.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

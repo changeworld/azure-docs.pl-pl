@@ -11,20 +11,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/18/2019
+ms.date: 09/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 4bf2e057f4c5dad650834f9b42c75be3aedec46e
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 1cd5325be7def4bc631d994f8811734e6c3cf545
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142841"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996435"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Opis definicji ról dla zasobów platformy Azure
 
-Jeśli próbujesz zrozumieć, jak działa rola, lub jeśli tworzysz własną rolę niestandardową [dla zasobów platformy Azure](custom-roles.md), warto zrozumieć, w jaki sposób role są definiowane. W tym artykule opisano szczegóły definicji ról i przedstawiono kilka przykładów.
+Jeśli próbujesz zrozumieć, jak działa rola, lub jeśli tworzysz własną [rolę niestandardową dla zasobów platformy Azure](custom-roles.md), warto zrozumieć, w jaki sposób role są definiowane. W tym artykule opisano szczegóły definicji ról i przedstawiono kilka przykładów.
 
 ## <a name="role-definition-structure"></a>Struktura definicji roli
 
@@ -213,16 +213,18 @@ Uprawnienie określa operacje na danych, które są wykluczone z dozwolonej `Dat
 
 ## <a name="assignablescopes"></a>AssignableScopes
 
-`AssignableScopes` Właściwość określa zakresy (subskrypcje, grupy zasobów lub zasoby), dla których ta definicja roli jest dostępna. Rolę można przypisywać tylko w ramach subskrypcji lub grup zasobów, które ich wymagają, i nie należy w pełni korzystać ze środowiska użytkownika w przypadku pozostałej części subskrypcji lub grup zasobów. Należy użyć co najmniej jednej subskrypcji, grupy zasobów lub identyfikatora zasobu.
+`AssignableScopes` Właściwość określa zakresy (grupy zarządzania, subskrypcje, grupy zasobów lub zasoby), dla których ta definicja roli jest dostępna. Rolę można przypisać do przypisania tylko do grup zarządzania, subskrypcji lub grup zasobów, które go wymagają. Należy użyć co najmniej jednej grupy zarządzania, subskrypcji, grupy zasobów lub identyfikatora zasobu.
 
 Wbudowane role mają `AssignableScopes` ustawiony zakres główny (`"/"`). Zakres główny wskazuje, że rola jest dostępna do przypisania we wszystkich zakresach. Przykłady prawidłowych zakresów do przypisania to:
 
-| Scenariusz | Przykład |
+| Rola jest dostępna do przypisania | Przykład |
 |----------|---------|
-| Rola jest dostępna do przypisania w ramach jednej subskrypcji | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e"` |
-| Rola jest dostępna do przypisania w dwóch subskrypcjach | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e", "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"` |
-| Rola jest dostępna do przypisania tylko w sieciowej grupie zasobów | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/Network"` |
-| Rola jest dostępna do przypisywania we wszystkich zakresach (dotyczy tylko ról wbudowanych) | `"/"` |
+| Jedna subskrypcja | `"/subscriptions/{subscriptionId1}"` |
+| Dwie subskrypcje | `"/subscriptions/{subscriptionId1}", "/subscriptions/{subscriptionId2}"` |
+| Grupa zasobów sieciowych | `"/subscriptions/{subscriptionId1}/resourceGroups/Network"` |
+| Jedna grupa zarządzania | `"/providers/Microsoft.Management/managementGroups/{groupId1}"` |
+| Grupa zarządzania i subskrypcja | `"/providers/Microsoft.Management/managementGroups/{groupId1}", /subscriptions/{subscriptionId1}",` |
+| Wszystkie zakresy (dotyczy tylko ról wbudowanych) | `"/"` |
 
 Informacje o `AssignableScopes` rolach niestandardowych można znaleźć w temacie [role niestandardowe dla zasobów platformy Azure](custom-roles.md).
 

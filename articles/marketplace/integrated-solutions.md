@@ -1,44 +1,46 @@
 ---
 title: Zintegrowane rozwiązania | Azure
-description: Zintegrowane rozwiązania w portalu Azure Marketplace i AppSource
+description: Zintegrowane rozwiązania w witrynie Azure Marketplace i AppSource
 services: Azure, Marketplace, Compute, Storage, Networking
 author: qianw211
 ms.service: marketplace
 ms.topic: article
 ms.date: 02/27/2019
 ms.author: ellacroi
-ms.openlocfilehash: 363cd9319db0477e9b5ba2d2dd03a7e995a26fef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6015ce2d52c140a966636b887d021e76e92990d
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66515617"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993626"
 ---
-# <a name="integrated-solutions-in-azure-marketplace-and-appsource"></a>Zintegrowane rozwiązania w portalu Azure Marketplace i AppSource
+# <a name="integrated-solutions-in-azure-marketplace-and-appsource"></a>Zintegrowane rozwiązania w witrynie Azure Marketplace i AppSource
 
-Zintegrowane rozwiązanie łączy wykorzystaniem najlepszych technologii partnerów firmy Microsoft, wraz z konsultacji, wdrażania i obsługuje udostępniane przez ekspertów systemów Integratorzy systemów.
+Zintegrowane rozwiązanie wiąże się z najlepszymi technologiami partnerów firmy Microsoft, a także konsultacji, wdrażania i wsparcia zapewnianych przez Integratory systemów specjalistycznych (SI).
 
-Te rozwiązania są kompilowane na adres, muszą konkretnego klienta lub scenariusza, który rozpoczyna się od zrozumienia branży żądania lub słabe punkty. Co najmniej dwóch wykorzystaniem najlepszych technologii następnie są zintegrowane za SI utworzyć środowisko ujednolicone i powtarzalnego wdrażania dla klientów, aby je i szybkiego uruchamiania. Systemy, które integrator również zapewnia pojedynczy punkt, skontaktuj się z klienta, podając odpowiednie dostosowanie i doradztwa i obsługuje wokół rozwiązania.  Wynik jest zintegrowane rozwiązanie, w tym technologii i usług.
+Te rozwiązania zostały stworzone z myślą o konkretnym potrzebie klienta lub scenariuszu, który rozpoczyna się od znajomości wyzwania branżowego lub problemów. Dwie lub więcej najlepszych technologii, które są następnie zintegrowane przez SI, aby utworzyć ujednolicone i powtarzalne środowisko wdrażania dla klientów, aby szybko rozpocząć pracę. Integrator systemów udostępnia również pojedynczy punkt kontaktu dla klienta, który zapewnia odpowiednie dostosowania i doradztwo oraz pomoc techniczną dotyczącą rozwiązania.  Wynikiem jest zintegrowane rozwiązanie, w tym technologia i usługi.
 
 ## <a name="advantages"></a>Zalety
 
-Zalety zintegrowanego podejścia są następujące:
+Zalety zintegrowanego podejścia to:
 
-* *Doświadczenia w branży*: Integratorzy systemów dostarczanie rozwiązań branżowych i wiedzy
-* *Wartość czasu*: Metody wdrożenia zintegrowanego, aby łatwiej wykorzystać natychmiastowe korzyści
-* *Rozwiązania z wykorzystaniem najlepszych*: Odkryj łatwość zintegrowane środowisko na kupowanie i wdrażanie
+* *Ekspertyza branżowa*: Integratory systemów dostarczające rozwiązania i wiedzę charakterystyczną dla branży
+* *Czas do wartości*: Zintegrowane podejście do wdrażania pomagające w realizacji natychmiastowych korzyści
+* *Najlepsze rozwiązania z zakresu rasy*: Odkryj łatwość zintegrowanego środowiska kupowania i implementacji
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Poznaj zintegrowane rozwiązania i łączyć się z tych partnerów cenionym, odwiedzając ich ofert, w tym miejscu:
+Możesz odkrywać zintegrowane rozwiązania i łączyć się z tymi partnerami, odwiedzając ich aukcje tutaj:
 
-* [Aplikacja Customer 360 działającemu Zero2Hero](https://azuremarketplace.microsoft.com/marketplace/consulting-services/bardess.customer-360-powered-by-zero2hero)
-* [Szybkie Commerce](https://azuremarketplace.microsoft.com/marketplace/consulting-services/publicis-sapient.rapid_commerce)
-* [Analiza środków](https://azuremarketplace.microsoft.com/marketplace/consulting-services/rcg-us.rcg-enable-credit-analytics)
-* [Stos zabezpieczeń chmury opieki zdrowotnej](https://azuremarketplace.microsoft.com/marketplace/consulting-services/xentit.azure-xentit-trendmicro-qualys-hcss-12months)
-* [Aparat przyspieszanie operacji deweloperskich](https://azuremarketplace.microsoft.com/marketplace/consulting-services/sirrus7.sirrus7-devops-acceleration-engine?search=devops%20acceleration%20engine&page=1)
-* [Windows Server End-of-Support](https://azuremarketplace.microsoft.com/marketplace/consulting-services/new-signature.eos_appfactory)
+* [Klient 360 obsługiwany przez Zero2Hero](https://azuremarketplace.microsoft.com/marketplace/consulting-services/bardess.customer-360-powered-by-zero2hero)
+* [Szybkie handel](https://azuremarketplace.microsoft.com/marketplace/consulting-services/publicis-sapient.rapid_commerce)
+* [Analiza kredytów](https://azuremarketplace.microsoft.com/marketplace/consulting-services/rcg-us.rcg-enable-credit-analytics)
+* [Stos zabezpieczeń w chmurze opieki zdrowotnej](https://azuremarketplace.microsoft.com/marketplace/consulting-services/xentit.azure-xentit-trendmicro-qualys-hcss-12months)
+* [Aparat przyspieszenia DevOps](https://azuremarketplace.microsoft.com/marketplace/consulting-services/sirrus7.sirrus7-devops-acceleration-engine?search=devops%20acceleration%20engine&page=1)
+* [Koniec obsługi systemu Windows Server](https://azuremarketplace.microsoft.com/marketplace/consulting-services/new-signature.eos_appfactory)
 
-a także odwiedzając sekcję usług doradczych dotyczących [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/consulting-services).
+a także odwiedzając sekcję usługi doradcze w [witrynie Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/consulting-services).
+
+Aby uzyskać więcej informacji, zobacz [Publikowanie zintegrowanych rozwiązań](https://docs.microsoft.com/azure/marketplace/integrated-solutions-for-publishers) .
 
 ---

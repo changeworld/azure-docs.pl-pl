@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 6b62bee2a6159cfd1aa1d7278f0b1ffa744f3a87
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: ebf7b712dda19b396b044235bf194a5dd402ffac
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70124005"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996422"
 ---
 # <a name="azure-serial-console-for-windows"></a>Konsola szeregowa platformy Azure dla systemu Windows
 
@@ -50,7 +50,7 @@ Aby uzyskać dokumentację konsoli szeregowej dla systemu Linux, zobacz [Azure s
 > Jeśli nie widzisz niczego w konsoli szeregowej, upewnij się, że Diagnostyka rozruchu jest włączona na maszynie wirtualnej lub w zestawie skalowania maszyn wirtualnych.
 
 ### <a name="enable-the-serial-console-in-custom-or-older-images"></a>Włącz konsoli szeregowej na obrazach niestandardowych lub starszy
-Nowsze obrazy systemu Windows Server na platformie Azure mają [specjalnej konsoli administracyjnej](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) domyślnie włączone (SAC). Konsola SAC jest obsługiwane w wersji Windows server, ale nie jest dostępna w wersji klienta (na przykład systemu Windows 10, Windows 8 lub Windows 7).
+Nowsze obrazy systemu Windows Server na platformie Azure mają domyślnie włączoną [specjalną konsolę administracyjną](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) . Konsola SAC jest obsługiwane w wersji Windows server, ale nie jest dostępna w wersji klienta (na przykład systemu Windows 10, Windows 8 lub Windows 7).
 
 Starsze obrazów systemu Windows Server (utworzone przed lutym 2018 r.) można automatycznie włączyć konsoli szeregowej, za pomocą funkcji polecenia uruchomienia witryny Azure portal. W Azure Portal wybierz pozycję **Uruchom polecenie**, a następnie wybierz polecenie o nazwie **EnableEMS** z listy.
 
@@ -184,7 +184,7 @@ Mamy świadomość problemy z konsoli szeregowej. Poniżej przedstawiono listę 
 Problem                             |   Środki zaradcze
 :---------------------------------|:--------------------------------------------|
 Naciśnięcie klawisza **Enter** po transparent połączenia nie powoduje, że monit logowania do wyświetlenia. | Aby uzyskać więcej informacji, zobacz [Hitting wprowadź, nic nie robi](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Ten błąd może wystąpić, jeśli używasz niestandardowej maszyny Wirtualnej, urządzenia ze wzmocnionymi zabezpieczeniami lub konfiguracji rozruchu, który powoduje, że Windows niepowodzenie prawidłowo połączenia do portu szeregowego. Ten błąd występuje również w przypadku korzystania z maszyny wirtualnej z systemem Windows 10, ponieważ na maszynach wirtualnych z systemem Windows Server skonfigurowano obsługę usług EMS.
-Tylko informacje o kondycji jest wyświetlany podczas nawiązywania połączenia maszyny Wirtualnej z systemem Windows| Ten błąd występuje, jeśli nie włączono specjalnej konsoli administracyjnej dla obrazu systemu Windows. Zobacz [Włącz konsoli szeregowej na obrazach niestandardowych lub starsze](#enable-the-serial-console-in-custom-or-older-images) instrukcje na temat sposobu ręcznego włączenia SAC na maszynie Wirtualnej Windows. Aby uzyskać więcej informacji, zobacz [sygnałów kondycji Windows](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md).
+Tylko informacje o kondycji jest wyświetlany podczas nawiązywania połączenia maszyny Wirtualnej z systemem Windows| Ten błąd występuje, jeśli Specjalna konsola administracyjna nie została włączona dla obrazu systemu Windows. Zobacz [Włącz konsoli szeregowej na obrazach niestandardowych lub starsze](#enable-the-serial-console-in-custom-or-older-images) instrukcje na temat sposobu ręcznego włączenia SAC na maszynie Wirtualnej Windows. Aby uzyskać więcej informacji, zobacz [sygnałów kondycji Windows](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md).
 Nie można wpisać w SAC stanie się monit, jeśli włączone jest debugowanie jądra. | Nawiązać połączenia RDP z maszyną Wirtualną i uruchom `bcdedit /debug {current} off` z wiersza polecenia z podwyższonym poziomem uprawnień. Jeśli z jakiegoś powodu protokołu RDP, możesz zamiast tego Dołącz dysk systemu operacyjnego do innej maszyny Wirtualnej platformy Azure i zmodyfikuj go, gdy dołączony jako dysk danych, uruchamiając `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off`, następnie zamienianie dysku w ponownie.
 Wklejając w programie PowerShell powoduje SAC trzeciego znaku gdyby oryginalną zawartość powtarzających się znaków. | Obejście tego problemu, uruchom `Remove-Module PSReadLine` wyładować modułu PSReadLine z bieżącej sesji. Ta akcja nie zostanie skasowana czy odinstalowana modułu.
 Niektóre dane wejściowe z klawiatury generuje dziwne SAC dane wyjściowe (na przykład **[A**, **[3 ~** ). | [VT100](https://aka.ms/vtsequences) sekwencje ucieczki nie są obsługiwane przez wiersz SAC.

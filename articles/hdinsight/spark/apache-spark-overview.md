@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,mvc
 ms.topic: overview
 ms.date: 05/28/2019
 ms.author: hrasheed
-ms.openlocfilehash: 284c9bb1b9032d2f9caf0ce62c45ffa7cd8bf9d4
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: e325618ed1cdec6149ac31771c8bd67ecea7d559
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68476854"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993810"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Co to jest platforma Apache Spark w usłudze Azure HDInsight
 
@@ -25,7 +25,7 @@ Apache Spark jest platformą przetwarzania równoległego, która obsługuje prz
 
 Platforma Spark udostępnia typom pierwotnym możliwość używania klastrów obliczeniowych korzystających z funkcji przetwarzania w pamięci. Zadanie platformy Spark może ładować dane do pamięci, buforować je i wielokrotnie przesyłać do nich zapytania. Przetwarzanie w pamięci jest znacznie szybsze niż w przypadku aplikacji opartych na operacjach dyskowych, takich jak usługa Hadoop, która udostępnia dane za pomocą rozproszonego systemu plików usługi Hadoop (HDFS). Platforma Spark obsługuje również integrację z językiem programowania Scala, co pozwala manipulować rozproszonymi zestawami danych jak kolekcjami lokalnymi. Nie ma potrzeby, aby wszystkie elementy były obejmowane strukturami operacji mapowania i redukcji.
 
-![Tradycyjna technologia MapReduce a platforma Spark](./media/apache-spark-overview/mapreduce-vs-spark.png)
+![Tradycyjna technologia MapReduce a platforma Spark](./media/apache-spark-overview/map-reduce-vs-spark1.png)
 
 Klastry Spark w usłudze HDInsight oferują w pełni zarządzaną usługę Spark. Poniżej przedstawiono korzyści związane z utworzeniem klastra Spark w usłudze HDInsight.
 
@@ -57,7 +57,7 @@ Klastry Spark w usłudze HDInsight obejmują też [sterownik ODBC](https://go.mi
 
 ## <a name="spark-cluster-architecture"></a>Architektura klastra Spark
 
-![Architektura platformy Spark w usłudze HDInsight](./media/apache-spark-overview/spark-architecture.png)
+![Architektura platformy Spark w usłudze HDInsight](./media/apache-spark-overview/hdi-spark-architecture.png)
 
 Składniki platformy Spark najłatwiej zrozumieć, zapoznając się za sposobem działania platformy Spark w klastrach usługi HDInsight.
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: thweiss
-ms.openlocfilehash: 86ac042bdddce36f00be71cc5109618bec909d90
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 60b323c12e5c548c974a7d660d08861637ac2381
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914170"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996682"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Zasady indeksowania w Azure Cosmos DB
 
@@ -29,7 +29,7 @@ Azure Cosmos DB obsługuje dwa tryby indeksowania:
 - **Spójne**: Jeśli zasada indeksowania kontenera jest ustawiona na spójne, indeks zostanie zaktualizowany synchronicznie podczas tworzenia, aktualizowania lub usuwania elementów. Oznacza to, że spójność zapytań odczytu będzie [spójna z konfiguracją dla konta](consistency-levels.md).
 - **Brak**: Jeśli dla zasad indeksowania kontenera określono wartość Brak, indeksowanie jest skutecznie wyłączone w tym kontenerze. Jest to często używane, gdy kontener jest używany jako czysty magazyn klucz-wartość bez konieczności stosowania indeksów pomocniczych. Może również ułatwić przyspieszenie operacji wstawiania zbiorczego.
 
-Ponadto należy ustawić właściwość **Automatyczna** w zasadach indeksowania na **wartość true**. Ustawienie dla tej właściwości wartości true umożliwia Azure Cosmos DB Automatyczne indeksowanie dokumentów podczas ich pisania.
+Domyślnie zasady indeksowania są ustawione na `automatic`. Jest to osiągane przez ustawienie `automatic` właściwości w zasadach indeksowania na. `true` Ustawienie tej właściwości `true` umożliwia usłudze Azure CosmosDB Automatyczne indeksowanie dokumentów w miarę ich pisania.
 
 ## <a name="including-and-excluding-property-paths"></a>Uwzględnianie i wykluczanie ścieżek właściwości
 

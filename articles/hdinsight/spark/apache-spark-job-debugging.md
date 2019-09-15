@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: d6a8ac97aa3896eaf98651f5f1120fcc6bf25516
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: c71bf9be94799c2b109d57393e70e99a0710e252
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814114"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995501"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Debugowanie Apache Spark zadań uruchomionych w usłudze Azure HDInsight
 
@@ -29,14 +29,14 @@ Wymagane są następujące elementy:
 ## <a name="track-an-application-in-the-yarn-ui"></a>Śledzenie aplikacji w interfejsie użytkownika PRZĘDZy
 1. Uruchom interfejs użytkownika PRZĘDZy. Kliknij pozycję **przędza** w obszarze **pulpity nawigacyjne klastra**.
    
-    ![Uruchom interfejs użytkownika PRZĘDZy](./media/apache-spark-job-debugging/launch-yarn-ui.png)
+    ![Uruchom interfejs użytkownika PRZĘDZy](./media/apache-spark-job-debugging/launch-apache-yarn-ui.png)
    
    > [!TIP]  
    > Alternatywnie można również uruchomić interfejs użytkownika PRZĘDZy z interfejsu użytkownika Ambari. Aby uruchomić interfejs użytkownika Ambari, kliknij pozycję **Strona główna** w obszarze **pulpity nawigacyjne klastra**. W interfejsie użytkownika Ambari kliknij pozycję **przędza**, kliknij pozycję **szybkie linki**, kliknij pozycję aktywne Menedżer zasobów, a następnie kliknij pozycję **interfejs użytkownika Menedżer zasobów**. 
 
 2. Ponieważ uruchomiono zadanie Spark przy użyciu notesów Jupyter, aplikacja ma nazwę **remotesparkmagics** (jest to nazwa wszystkich aplikacji uruchamianych z notesów). Kliknij identyfikator aplikacji dla nazwy aplikacji, aby uzyskać więcej informacji o zadaniu. Spowoduje to uruchomienie widoku aplikacji.
    
-    ![Znajdź identyfikator aplikacji platformy Spark](./media/apache-spark-job-debugging/find-application-id.png)
+    ![Znajdź identyfikator aplikacji platformy Spark](./media/apache-spark-job-debugging/find-application-id1.png)
    
     W przypadku takich aplikacji, które są uruchamiane z notesów Jupyter, stan jest zawsze **uruchamiany** , dopóki nie zamkniesz notesu.
 3. W widoku aplikacji możesz przejść do szczegółów, aby dowiedzieć się więcej o kontenerach skojarzonych z aplikacją i dziennikach (stdout/stderr). Interfejs użytkownika Spark można również uruchomić, klikając link odpowiadający **adresowi URL śledzenia**, jak pokazano poniżej. 
@@ -48,13 +48,13 @@ W interfejsie użytkownika platformy Spark można przechodzić do szczegółów 
 
 1. Aby uruchomić interfejs użytkownika Spark, w widoku aplikacji kliknij link z **adresem URL śledzenia**, jak pokazano na poniższym zrzucie ekranu. Można wyświetlić wszystkie zadania platformy Spark uruchamiane przez aplikację uruchomioną w notesie Jupyter.
    
-    ![Wyświetlanie zadań platformy Spark](./media/apache-spark-job-debugging/view-spark-jobs.png)
+    ![Wyświetlanie zadań platformy Spark](./media/apache-spark-job-debugging/view-apache-spark-jobs.png)
 2. Kliknij kartę **wykonawcy** , aby wyświetlić informacje dotyczące przetwarzania i magazynowania dla każdego wykonawcy. Możesz również pobrać stos wywołań, klikając łącze **zrzut wątku** .
    
     ![Wyświetlanie modułów wykonujących Spark](./media/apache-spark-job-debugging/view-spark-executors.png)
 3. Kliknij kartę **etapy** , aby wyświetlić etapy skojarzone z aplikacją.
    
-    ![Wyświetl etapy platformy Spark](./media/apache-spark-job-debugging/view-spark-stages.png "Wyświetl etapy platformy Spark")
+    ![Wyświetl etapy platformy Spark](./media/apache-spark-job-debugging/view-apache-spark-stages.png "Wyświetl etapy platformy Spark")
    
     Każdy etap może mieć wiele zadań, dla których można wyświetlić statystyki wykonywania, jak pokazano poniżej.
    

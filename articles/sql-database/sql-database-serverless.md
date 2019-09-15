@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: ba4e1e933b00aa8ca74be30a6ea5e1a22844b15f
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: e6c815b317e60d7a65a2f26249782451bc917097
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858499"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993463"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL Database bezserwerowe (wersja zapoznawcza)
 
@@ -132,7 +132,7 @@ Autowznawianie jest wyzwalane, jeśli w dowolnym momencie spełniony jest który
 |Inspekcja|Wyświetlanie rekordów inspekcji.<br>Aktualizowanie lub przeglądanie zasad inspekcji.|
 |Maskowanie danych|Dodawanie, modyfikowanie, usuwanie lub wyświetlanie reguł maskowania danych|
 |Transparent Data Encryption|Wyświetlanie stanu lub stanu przezroczystego szyfrowania danych|
-|Zapytanie (wydajność) — magazyn danych|Modyfikowanie lub wyświetlanie ustawień magazynu zapytań; Dostrajanie automatyczne|
+|Zapytanie (wydajność) — magazyn danych|Modyfikowanie lub wyświetlanie ustawień magazynu zapytań|
 |Autodostrajanie|Aplikacja i weryfikacja zalecenia autodostrajania, takie jak indeksowanie automatycznego|
 |Kopiowanie bazy danych|Utwórz bazę danych jako kopię.<br>Eksportuj do pliku BACPAC.|
 |Synchronizacja danych SQL|Synchronizacja między bazami danych centrum i elementami członkowskimi, które są uruchamiane w konfigurowalnym harmonogramie lub są wykonywane ręcznie|

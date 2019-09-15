@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: zarhoads
-ms.openlocfilehash: 9cfced0860b206e41b3e9f82f1ed2b92867e6b39
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 42323af40ee18a965363321196a04aa75c00aa40
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914838"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996944"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Korzystanie ze standardowego modułu równoważenia obciążenia jednostki SKU w usłudze Azure Kubernetes Service (AKS)
 
@@ -277,6 +277,8 @@ Przejdź do publicznego adresu IP w przeglądarce i sprawdź, czy zobaczysz przy
 
 W przypadku korzystania ze *standardowego* modułu równoważenia obciążenia z zarządzanymi wychodzącymi adresami IP, które są tworzone domyślnie, można skalować liczbę zarządzanych wychodzących adresów IP, używając parametru- *Managed-IP-Count* .
 
+Aby zaktualizować istniejący klaster, uruchom następujące polecenie. Ten parametr można również ustawić podczas tworzenia klastra, aby miał wiele zarządzanych publicznych adresów IP.
+
 ```azurecli-interactive
 az aks update \
     --resource-group myResourceGroup \
@@ -284,11 +286,15 @@ az aks update \
     --load-balancer-managed-outbound-ip-count 2
 ```
 
-Powyższy przykład ustawia liczbę zarządzanych publicznych adresów IP z *2* dla klastra *MyAKSCluster* w ramach *zasobu*. Można również użyć parametru *modułu równoważenia obciążenia — licznik adresów IP* , aby ustawić początkową liczbę zarządzanych publicznych adresów IP w trakcie tworzenia klastra. Domyślna liczba zarządzanych publicznych adresów IP wychodzących to 1.
+Powyższy przykład ustawia liczbę zarządzanych publicznych adresów IP z *2* dla klastra *MyAKSCluster* w ramach *zasobu*. 
+
+Aby ustawić początkową liczbę zarządzanych publicznych adresów IP, które są używane podczas tworzenia klastra `--load-balancer-managed-outbound-ip-count` , można również użyć parametru *modułu równoważenia obciążenia-Managed-IP-Count* . Domyślna liczba zarządzanych publicznych adresów IP wychodzących to 1.
 
 ## <a name="optional---provide-your-own-public-ips-or-prefixes-for-egress"></a>Opcjonalne — Podaj własne publiczne adresy IP lub prefiksy dla ruchu wychodzącego
 
-W przypadku korzystania ze *standardowego* modułu równoważenia obciążenia jednostki SKU klaster AKS automatycznie tworzy publiczny adres IP w tej samej grupie zasobów utworzonej dla klastra AKS i przypisuje publiczny adres IP do modułu równoważenia obciążenia *standardowej* jednostki SKU. Alternatywnie możesz przypisać własny publiczny adres IP.
+W przypadku korzystania ze *standardowego* modułu równoważenia obciążenia jednostki SKU klaster AKS automatycznie tworzy publiczny adres IP w tej samej grupie zasobów utworzonej dla klastra AKS i przypisuje publiczny adres IP do modułu równoważenia obciążenia *standardowej* jednostki SKU. Alternatywnie można przypisać własny publiczny adres IP podczas tworzenia klastra lub zaktualizować właściwości modułu równoważenia obciążenia istniejącego klastra.
+
+Przez umieszczenie wielu adresów IP lub prefiksów, można zdefiniować wiele usług zapasowych podczas definiowania adresu IP za pojedynczym obiektem modułu równoważenia obciążenia. Punkt końcowy danych wychodzących określonych węzłów będzie zależeć od tego, z jakim usługą są one skojarzone.
 
 > [!IMPORTANT]
 > Należy używać publicznych adresów IP jednostki SKU dla ruchu wychodzącego ze *standardową* jednostką *SKU modułu* równoważenia obciążenia. Można zweryfikować jednostki SKU publicznych adresów IP za pomocą polecenia [AZ Network Public-IP show][az-network-public-ip-show] :
@@ -324,8 +330,6 @@ az network public-ip prefix show --resource-group myResourceGroup --name myPubli
 
 Powyższe polecenie wyświetla identyfikator *myPublicIPPrefix* publicznego adresu IP w *grupie zasobów zasobu* .
 
-Użyj polecenia *AZ AKS Update* z parametrem *równoważenia obciążenia wychodzącego IP prefiksów* z identyfikatorami z poprzedniego polecenia.
-
 Poniższy przykład używa parametru *równoważenia obciążenia-wychodzącego-IP prefiksów* z identyfikatorami z poprzedniego polecenia.
 
 ```azurecli-interactive
@@ -337,6 +341,36 @@ az aks update \
 
 > [!IMPORTANT]
 > Publiczne adresy IP i prefiksy adresów IPv4 muszą znajdować się w tym samym regionie i części tej samej subskrypcji, co klaster AKS.
+
+### <a name="define-your-own-public-ip-or-prefixes-at-cluster-create-time"></a>Definiowanie własnego publicznego adresu IP lub prefiksów podczas tworzenia klastra
+
+Możesz chcieć wprowadzić własne adresy IP lub prefiksy IP dla ruchu wychodzącego w czasie tworzenia klastra, aby obsługiwać scenariusze takie jak listy dozwolonyche punkty końcowe. Dołącz te same parametry, które podano powyżej, do kroku tworzenia klastra, aby zdefiniować własne publiczne adresy IP i prefiksy adresów IPv4 na początku cyklu życia klastra.
+
+Użyj polecenia *AZ AKS Create* z parametrem *Load-wychodzące-IP* , aby utworzyć nowy klaster z publicznymi adresami IP na początku.
+
+```
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --vm-set-type VirtualMachineScaleSets \
+    --node-count 1 \
+    --load-balancer-sku standard \
+    --generate-ssh-keys \
+    --load-balancer-outbound-ips <publicIpId1>,<publicIpId2>
+```
+
+Za pomocą polecenia *AZ AKS Create* z parametrem *równoważenia obciążenia wychodzącego IP prefiksów* Utwórz nowy klaster z prefiksami publicznych adresów IP na początku.
+
+```
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --vm-set-type VirtualMachineScaleSets \
+    --node-count 1 \
+    --load-balancer-sku standard \
+    --generate-ssh-keys \
+    --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
+```
 
 ## <a name="clean-up-the-standard-sku-load-balancer-configuration"></a>Czyszczenie konfiguracji standardowego modułu równoważenia obciążenia jednostki SKU
 

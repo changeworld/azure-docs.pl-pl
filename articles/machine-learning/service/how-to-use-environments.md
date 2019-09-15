@@ -1,6 +1,6 @@
 ---
 title: Twórz i wdrażaj środowiska oraz zarządzaj nimi, aby korzystać z szkoleń i wdrażania modelu
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Twórz środowiska i zarządzaj nimi, aby uzyskać model szkoleń i wdrożeń. Zarządzaj pakietami języka Python i innymi ustawieniami środowiska.
 services: machine-learning
 author: rastala
@@ -11,18 +11,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: e506259b980c0aaf0300c0bb0a1aa0803171643a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 242f3cec0ac766e537bd0483725ba51685bb7ced
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098948"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996616"
 ---
 # <a name="create-and-manage-environments-for-training-and-deployment"></a>Twórz środowiska szkoleniowe i wdrażaj i zarządzaj nimi
 
 W tym artykule dowiesz się, jak tworzyć [środowiska](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) Azure Machine Learning i zarządzać nimi, aby umożliwić śledzenie i odtwarzanie zależności oprogramowania w trakcie ich rozwoju.
 
-Zarządzanie zależnościami oprogramowania to typowe zadanie dla deweloperów. Chcesz mieć pewność, że kompilacje zostaną odtwarzalne bez konieczności ręcznej konfiguracji oprogramowania. W przypadku rozwiązań na potrzeby lokalnego programowania, takich jak PIP i Conda, Klasa środowiska usługi Azure Machine Learning udostępnia rozwiązanie do programowania w chmurze lokalnej i rozproszonej.
+Zarządzanie zależnościami oprogramowania to typowe zadanie dla deweloperów. Chcesz mieć pewność, że kompilacje zostaną odtwarzalne bez konieczności ręcznej konfiguracji oprogramowania. Dzięki rozwiązaniom na potrzeby lokalnego projektowania, takim jak PIP i Conda, Klasa środowisk Azure Machine Learning udostępnia rozwiązanie do programowania w chmurze lokalnej i rozproszonej.
 
 W przykładach w tym artykule przedstawiono sposób wykonywania tych operacji:
 
@@ -51,8 +51,8 @@ W przypadku środowiska zarządzanego przez użytkownika użytkownik jest odpowi
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Azure Machine Learning zestawu SDK dla języka [](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)Python.
-* [Obszar roboczy usługi Azure Machine Learning](how-to-manage-workspace.md).
+* Azure Machine Learning zestawu SDK dla języka [Python.](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
+* [Obszar roboczy Azure Machine Learning](how-to-manage-workspace.md).
 
 ## <a name="create-an-environment"></a>Tworzenie środowiska
 

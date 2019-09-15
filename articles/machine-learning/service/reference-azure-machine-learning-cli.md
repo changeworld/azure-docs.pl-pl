@@ -1,7 +1,7 @@
 ---
 title: Rozszerzenie interfejsu wiersza polecenia uczenia maszynowego
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się więcej o rozszerzenie interfejsu wiersza polecenia usługi Azure Machine Learning dla wiersza polecenia platformy Azure. Wiersza polecenia platformy Azure jest narzędziem wiersza polecenia dla wielu platform, która umożliwia pracę z zasobami w chmurze platformy Azure. Rozszerzenie usługi Machine Learning umożliwia pracę z usługą Azure Machine Learning.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się więcej o rozszerzenie interfejsu wiersza polecenia usługi Azure Machine Learning dla wiersza polecenia platformy Azure. Wiersza polecenia platformy Azure jest narzędziem wiersza polecenia dla wielu platform, która umożliwia pracę z zasobami w chmurze platformy Azure. Rozszerzenie Machine Learning umożliwia korzystanie z Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.author: jordane
 author: jpe316
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6c5068512f8ba26f7710bca7c0fccb98e0a5be33
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 85ebcc36d32b86ec2640ce7ce02190deaab19d6b
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996744"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997078"
 ---
-# <a name="use-the-cli-extension-for-azure-machine-learning-service"></a>Na użytek rozszerzenie interfejsu wiersza polecenia usługi Azure Machine Learning
+# <a name="use-the-cli-extension-for-azure-machine-learning"></a>Użyj rozszerzenia interfejsu wiersza polecenia dla Azure Machine Learning
 
-Interfejsu wiersza polecenia usługi Azure Machine Learning to rozszerzenie [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), interfejs wiersza polecenia dla wielu platform na platformie Azure. To rozszerzenie udostępnia polecenia do pracy z usługą Azure Machine Learning. Pozwala to zautomatyzować działania uczenia maszynowego. Poniższa lista zawiera przykładowe akcje, które można wykonać przy użyciu rozszerzenia interfejsu wiersza polecenia:
+Interfejsu wiersza polecenia usługi Azure Machine Learning to rozszerzenie [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), interfejs wiersza polecenia dla wielu platform na platformie Azure. To rozszerzenie udostępnia polecenia do pracy z Azure Machine Learning. Pozwala to zautomatyzować działania uczenia maszynowego. Poniższa lista zawiera przykładowe akcje, które można wykonać przy użyciu rozszerzenia interfejsu wiersza polecenia:
 
 + Uruchamianie eksperymentów w celu tworzenia modeli uczenia maszynowego
 
@@ -32,7 +32,7 @@ Interfejs wiersza polecenia nie jest zamiennikiem dla zestawu SDK usługi Azure 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Aby korzystać z interfejsu wiersza polecenia, musi mieć subskrypcję platformy Azure. Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
+* Aby korzystać z interfejsu wiersza polecenia, musi mieć subskrypcję platformy Azure. Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
 
 * [Wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
 
@@ -86,7 +86,7 @@ Poniższe polecenia pokazują, jak zarządzać zasoby używane przez usługi Azu
     az group create -n myresourcegroup -l westus2
     ```
 
-+ Utwórz obszar roboczy usługi Azure Machine Learning:
++ Utwórz obszar roboczy Azure Machine Learning:
 
     ```azurecli-interactive
     az ml workspace create -w myworkspace -g myresourcegroup
@@ -163,7 +163,7 @@ Poniższe polecenia pokazują, jak zarządzać zasoby używane przez usługi Azu
 
 ## <a name="environment-management"></a>Zarządzanie środowiskiem
 
-Następujące polecenia pokazują, jak tworzyć, rejestrować i wyświetlać listę [środowisk](how-to-configure-environment.md) Azure Machine Learning usługi dla Twojego obszaru roboczego:
+Następujące polecenia pokazują, jak tworzyć, rejestrować i wyświetlać listę [środowisk](how-to-configure-environment.md) Azure Machine Learning dla obszaru roboczego:
 
 + Utwórz pliki szkieletowe dla środowiska:
 

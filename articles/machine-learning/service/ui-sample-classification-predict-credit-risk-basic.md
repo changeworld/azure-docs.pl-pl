@@ -1,6 +1,6 @@
 ---
 title: 'Przykład #3 interfejsu wizualizacji: Klasyfikacja do prognozowania ryzyka kredytowego'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Dowiedz się, jak utworzyć klasyfikator uczenia maszynowego bez pisania pojedynczego wiersza kodu przy użyciu interfejsu wizualizacji.
 services: machine-learning
 ms.service: machine-learning
@@ -10,16 +10,16 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: 7565f94910d0e926682a72af42b02059fe7295ea
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 26e3f5f237cdd148d12f0a413eb97ed52cb84b49
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990050"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997054"
 ---
 # <a name="sample-3---classification-predict-credit-risk"></a>Przykład 3 — Klasyfikacja: Przewidywanie ryzyka kredytowego
 
-Dowiedz się, jak utworzyć klasyfikator uczenia maszynowego bez pisania pojedynczego wiersza kodu przy użyciu interfejsu wizualizacji. Ten przykład pociąga za pomocą dwuklasowego **drzewa decyzyjnego** , aby przewidzieć ryzyko kredytowe (wysokie lub niskie) w oparciu o informacje o aplikacji kredytowej, takie jak historia kredytów, wiek i liczba kart kredytowych.
+Dowiedz się, jak utworzyć klasyfikator uczenia maszynowego bez pisania pojedynczego wiersza kodu przy użyciu interfejsu wizualizacji. Ten przykład pociąga za pomocą **dwuklasowego drzewa decyzyjnego** , aby przewidzieć ryzyko kredytowe (wysokie lub niskie) w oparciu o informacje o aplikacji kredytowej, takie jak historia kredytów, wiek i liczba kart kredytowych.
 
 Ponieważ próbujemy odpowiedzieć na pytanie "? jest to nazywane problemem klasyfikacji. Można jednak zastosować ten sam podstawowy proces do rozwiązywania dowolnego typu problemu uczenia maszynowego, niezależnie od tego, czy jest to regresja, klasyfikacja, klastrowanie i tak dalej.
 
@@ -53,7 +53,7 @@ Wykonaj następujące kroki, aby utworzyć eksperyment:
 1. Dodaj moduł **Split Data (podział danych** ), aby utworzyć zestawy szkoleniowe i testowe. Ustaw ułamek wierszy w pierwszym zestawie danych wyjściowych na 0,7. To ustawienie określa, że 70% danych będzie wyprowadzane na lewy port modułu i reszta na właściwy port. Używamy lewego zestawu danych do szkolenia i po prawej stronie do testowania.
 1. Dodaj moduł **drzewa decyzyjnego z dwoma klasami** , aby zainicjować podwyższający klasyfikator drzewa decyzyjnego.
 1. Dodaj moduł **uczenia modelu** . Połącz klasyfikatora z poprzedniego kroku z lewym portem wejściowym **modelu uczenia**. Dodaj zestaw szkoleniowy (lewy port wyjściowy **danych podziału**) do właściwego portu wejściowego **modelu uczenia**. **Model uczenia** będzie szkolić klasyfikatora.
-1. Dodaj moduł **modelu oceny** i połącz go z modułem. Następnie Dodaj zestaw testów (prawidłowy port **danych podziału**) do **modelu wynikowego**. **Model wynikowy** wykona przewidywania. Możesz wybrać swój port wyjściowy, aby zobaczyć przewidywania i pozytywne wartości prawdopodobieństwa.
+1. Dodaj moduł **modelu oceny** i połącz go z **modułem** . Następnie Dodaj zestaw testów (prawidłowy port **danych podziału**) do **modelu wynikowego**. **Model wynikowy** wykona przewidywania. Możesz wybrać swój port wyjściowy, aby zobaczyć przewidywania i pozytywne wartości prawdopodobieństwa.
 1. Dodaj moduł **oceny modelu** i Połącz wynikowy zestaw danych z jego lewym portem wejściowym. Aby wyświetlić wyniki oceny, wybierz port wyjściowy modułu **oceny modelu** i wybierz opcję **Wizualizuj**.
 
 Oto kompletny wykres eksperymentu:

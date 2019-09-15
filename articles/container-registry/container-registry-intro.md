@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 06/28/2019
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 8b20c54d2151afae227a085dd66a0d31f2b85305
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 2262948a8368f9448d876166b712ebaf670b5a56
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310675"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70994355"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Wprowadzenie do prywatnych rejestrów kontenerów platformy Docker na platformie Azure
 
@@ -31,7 +31,7 @@ Aby uzyskać więcej informacji na temat pojęć związanych z platformą Docker
 * **Skalowalne systemy organizowania** zarządzające konteneryzowanymi aplikacjami w klastrach hostów, włączając w to rozwiązania [DC/OS](https://kubernetes.io/docs/), [Docker Swarm](https://docs.mesosphere.com/) i [Kubernetes](https://docs.docker.com/swarm/).
 * **Usługi platformy Azure** obsługujące kompilowanie i uruchamianie aplikacji w odpowiedniej skali, w tym usługi [Azure Kubernetes Service (AKS)](../aks/index.yml), [App Service](../app-service/index.yml), [Batch](../batch/index.yml), [Service Fabric](/azure/service-fabric/) i inne.
 
-Deweloperzy mogą również przeprowadzać wypychanie do rejestru kontenerów w ramach przepływu pracy opracowywania kontenera. Na przykład należy wskazać rejestr kontenerów z poziomu narzędzia do ciągłej integracji i dostarczania, takiego jak [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) lub [Jenkins](https://jenkins.io/).
+Deweloperzy mogą również przeprowadzać wypychanie do rejestru kontenerów w ramach przepływu pracy opracowywania kontenera. Na przykład należy wskazać rejestr kontenerów z poziomu narzędzia do ciągłej integracji i dostarczania, takiego jak [Azure Pipelines](/azure/devops/pipelines/ecosystems/containers/acr-template) lub [Jenkins](https://jenkins.io/).
 
 Skonfiguruj zadania ACR do automatycznego odbudowywania obrazów aplikacji, gdy ich obrazy podstawowe są aktualizowane lub Automatyzuj kompilacje obrazu, gdy zespół zatwierdzi kod w repozytorium git. Twórz wieloetapowe zadania w celu zautomatyzowania kompilowania, testowania i poprawiania wielu obrazów kontenerów równolegle w chmurze.
 

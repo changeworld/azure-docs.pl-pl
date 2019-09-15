@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 02/20/2019
+ms.date: 09/13/2019
 ms.author: aahi
-ms.openlocfilehash: d98d00275cbd89702e4bae0c93aa262805617e59
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 74697d69fbeb9072f839f0b6d49c010c5a7a7a05
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500780"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996708"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-sdk-for-c"></a>Szybki start: Sprawdzanie pisowni za pomocą zestawu SDK sprawdzania pisowni Bing dla języka C#
 
@@ -80,7 +80,7 @@ Aby dodać zestaw sprawdzanie pisowni Bing SDK do projektu, wybierz pozycję **Z
     }
     ```
 
-3. Pobierz pierwszą sugerowaną poprawkę, jeśli istnieje. Wyświetl wskaźnik sugestii i sugerowany wyraz. 
+3. Pobierz pierwszą sugerowaną poprawkę, jeśli istnieje. Wydrukuj ocenę sugestii i sugerowany wyraz. 
 
     ```csharp
             var suggestions = firstspellCheckResult.Suggestions;

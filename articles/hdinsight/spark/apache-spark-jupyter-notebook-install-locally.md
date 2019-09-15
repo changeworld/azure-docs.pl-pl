@@ -1,6 +1,6 @@
 ---
-title: Instalacja oprogramowania Jupyter lokalnie i łączenie z platformą Spark w usłudze Azure HDInsight
-description: Dowiedz się, jak zainstalować notesu programu Jupyter lokalnie na komputerze i podłącz go do klastra Apache Spark.
+title: Instalowanie Jupyter lokalnie i nawiązywanie połączenia z platformą Spark w usłudze Azure HDInsight
+description: Dowiedz się, jak zainstalować Notes Jupyter lokalnie na komputerze i połączyć go z klastrem Apache Spark.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,64 +8,64 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/06/2019
 ms.author: hrasheed
-ms.openlocfilehash: 489685485af4e3c8868f7e0281d2f81464a166f6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6ce3ff8e00bc92911a7405de1bb0bb7286fb5c15
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67066173"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993751"
 ---
-# <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Instalacja notesu programu Jupyter na komputerze i nawiązywanie z platformy Apache Spark w HDInsight
+# <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Instalowanie notesu Jupyter na komputerze i nawiązywanie połączenia z usługą Apache Spark w usłudze HDInsight
 
-W tym artykule dowiesz się, jak zainstalować notesu programu Jupyter przy użyciu niestandardowych PySpark (dla języka Python) i jądra platformy Apache Spark (w przypadku Scala) przy użyciu platformy Spark magic i łączenie Notes z klastrem usługi HDInsight. Może istnieć wiele możliwych przyczyn, aby instalacja oprogramowania Jupyter na komputerze lokalnym, a może to być także niektóre wyzwania. Aby uzyskać więcej informacji, zobacz sekcję [Dlaczego należy zainstalować Jupyter na moim komputerze](#why-should-i-install-jupyter-on-my-computer) na końcu tego artykułu.
+W tym artykule dowiesz się, jak zainstalować Notes Jupyter z użyciem niestandardowych PySpark (dla języka Python) i Apache Spark (dla Scala) za pomocą usługi Spark Magic i połączyć Notes z klastrem usługi HDInsight. Istnieje kilka powodów, dla których można instalować Jupyter na komputerze lokalnym, a także niektóre wyzwania. Aby uzyskać więcej informacji na ten temat, zobacz sekcję [Dlaczego należy zainstalować program Jupyter na komputerze](#why-should-i-install-jupyter-on-my-computer) na końcu tego artykułu.
 
-Istnieją cztery kroki klucza związane z instalacji programu Jupyter i nawiązywania połączenia z platformy Apache Spark w HDInsight.
+Istnieją cztery kluczowe kroki związane z instalowaniem Jupyter i nawiązywanie połączenia z usługą Apache Spark w usłudze HDInsight.
 
 * Skonfiguruj klaster Spark.
-* Zainstaluj notesu programu Jupyter.
-* Zainstaluj jądra PySpark i platformy Spark z magic platformy Spark.
-* Skonfiguruj magic Spark do dostępu do klastra Spark w HDInsight.
+* Zainstaluj Notes Jupyter.
+* Zainstaluj jądra PySpark i Spark przy użyciu Magic Spark.
+* Skonfiguruj magiczną platformę Spark, aby uzyskać dostęp do klastra Spark w usłudze HDInsight.
 
-Aby uzyskać więcej informacji o niestandardowych jądra i dostępne dla notesu Jupyter w klastrze HDInsight klastrze magic platformy Spark, zobacz [jądra, które są dostępne dla notesów programu Jupyter przy użyciu Apache Spark w systemie Linux klastrów HDInsight](apache-spark-jupyter-notebook-kernels.md).
+Aby uzyskać więcej informacji o niestandardowych jądrach i Magic Spark dostępnych dla notesów Jupyter z klastrem usługi HDInsight, zobacz [jądra dostępne dla notesów Jupyter z klastrami Apache Spark Linux w usłudze HDInsight](apache-spark-jupyter-notebook-kernels.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Wymagania wstępne wymienione w tym miejscu nie są dostępne do zainstalowania programu Jupyter. Są to do notesu programu Jupyter łączenia się z klastra usługi HDInsight po zainstalowaniu notesu.
+Wymagania wstępne wymienione w tym miejscu nie dotyczą instalowania Jupyter. Są one przeznaczone do łączenia notesu Jupyter z klastrem usługi HDInsight po zainstalowaniu notesu.
 
 * Klaster Apache Spark w usłudze HDInsight. Aby uzyskać instrukcje, zobacz [Tworzenie klastra platformy Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
-## <a name="install-jupyter-notebook-on-your-computer"></a>Zainstaluj notesu programu Jupyter na komputerze
+## <a name="install-jupyter-notebook-on-your-computer"></a>Instalowanie notesu Jupyter na komputerze
 
-Przed zainstalowaniem notesów programu Jupyter, należy zainstalować języka Python. [Dystrybucji pakietu Anaconda](https://www.anaconda.com/download/) zainstaluje zarówno, Python, jak i notesu programu Jupyter.
+Przed zainstalowaniem notesów Jupyter należy zainstalować środowisko Python. W ramach [dystrybucji Anaconda](https://www.anaconda.com/download/) zostanie zainstalowany zarówno Język Python, jak i Jupyter Notebook.
 
-Pobierz [Instalatora pakietu Anaconda](https://www.anaconda.com/download/) dla platformy i uruchom Instalatora. Podczas uruchamiania Kreatora instalacji, upewnij się, że wybierasz opcję, aby dodać Anaconda do zmiennej PATH.  Zobacz też [instalowanie Jupyter przy użyciu pakietu Anaconda](https://jupyter.readthedocs.io/en/latest/install.html).
+Pobierz [Instalatora Anaconda](https://www.anaconda.com/download/) na platformę i uruchom Instalatora. Podczas uruchamiania Kreatora instalacji upewnij się, że wybrano opcję dodania Anaconda do zmiennej PATH.  Zobacz również [Instalowanie Jupyter przy użyciu Anaconda](https://jupyter.readthedocs.io/en/latest/install.html).
 
-## <a name="install-spark-magic"></a>Zainstaluj magic platformy Spark
+## <a name="install-spark-magic"></a>Zainstaluj Magic Spark
 
-1. Wprowadzić jeden z poniższych poleceń do zainstalowania magic platformy Spark. Zobacz też [dokumentacji sparkmagic](https://github.com/jupyter-incubator/sparkmagic#installation).
+1. Wprowadź jedno z poniższych poleceń, aby zainstalować program Spark Magic. Zobacz również [dokumentację sparkmagic](https://github.com/jupyter-incubator/sparkmagic#installation).
 
-    |Wersja klastra | polecenie instalacji |
+    |Wersja klastra | Polecenie instalacji |
     |---|---|
-    |V3.6 i 3.5 |`pip install sparkmagic==0.12.7`|
-    |v3.4|`pip install sparkmagic==0.2.3`|
+    |v 3.6 i v 3.5 |`pip install sparkmagic==0.12.7`|
+    |v 3.4|`pip install sparkmagic==0.2.3`|
 
-1. Upewnij się, `ipywidgets` został poprawnie zainstalowany, uruchamiając następujące polecenie:
+1. Upewnij `ipywidgets` się, że program jest prawidłowo zainstalowany, uruchamiając następujące polecenie:
 
     ```cmd
     jupyter nbextension enable --py --sys-prefix widgetsnbextension
     ```
 
-## <a name="install-pyspark-and-spark-kernels"></a>Zainstaluj jądra PySpark i platformy Spark
+## <a name="install-pyspark-and-spark-kernels"></a>Instalowanie PySpark i jądra platformy Spark
 
-1. Wskazać, gdzie `sparkmagic` jest zainstalowany, wprowadzając następujące polecenie:
+1. Określ, `sparkmagic` gdzie jest zainstalowana, wprowadzając następujące polecenie:
 
     ```cmd
     pip show sparkmagic
     ```
 
-    Następnie można zmienić katalogu roboczego do lokalizacji identyfikowany za pomocą powyższego polecenia.
+    Następnie zmień katalog roboczy na lokalizację identyfikowaną za pomocą powyższego polecenia.
 
-1. W nowym katalogiem roboczym Wprowadź co najmniej jedną z poniższych poleceń do zainstalowania żądanego kernel(s):
+1. W nowym katalogu roboczym wprowadź co najmniej jedno z poniższych poleceń, aby zainstalować odpowiednie jądra:
 
     |Jądra | Polecenie |
     |---|---|
@@ -74,23 +74,23 @@ Pobierz [Instalatora pakietu Anaconda](https://www.anaconda.com/download/) dla p
     |PySpark|`jupyter-kernelspec install sparkmagic/kernels/pysparkkernel`|
     |PySpark3|`jupyter-kernelspec install sparkmagic/kernels/pyspark3kernel`|
 
-1. Opcjonalny. Wprowadź poniższe polecenie, aby włączyć rozszerzenie serwera:
+1. Opcjonalna. Wprowadź poniższe polecenie, aby włączyć rozszerzenie serwera:
 
     ```cmd
     jupyter serverextension enable --py sparkmagic
     ```
 
-## <a name="configure-spark-magic-to-connect-to-hdinsight-spark-cluster"></a>Konfigurowanie magic platformy Spark, aby połączyć się z klastrem HDInsight Spark
+## <a name="configure-spark-magic-to-connect-to-hdinsight-spark-cluster"></a>Konfigurowanie programu Spark Magic do nawiązywania połączenia z klastrem usługi HDInsight Spark
 
-W tej sekcji skonfigurujesz magic platformy Spark, zainstalowany wcześniej połączyć się z klastrem platformy Apache Spark.
+W tej sekcji skonfigurujesz program Spark, który został wcześniej zainstalowany do łączenia się z klastrem Apache Spark.
 
-1. Uruchom powłokę języka Python, za pomocą następującego polecenia:
+1. Uruchom powłokę języka Python za pomocą następującego polecenia:
 
     ```cmd
     python
     ```
 
-2. Informacje o konfiguracji programu Jupyter, zwykle znajduje się w katalogu macierzystego użytkowników. Wprowadź następujące polecenie, aby zidentyfikować katalogu macierzystego, a następnie utwórz folder o nazwie **.sparkmagic**.  Pełna ścieżka zostanie wyświetlona.
+2. Informacje o konfiguracji Jupyter są zwykle przechowywane w katalogu macierzystym użytkowników. Wprowadź następujące polecenie, aby zidentyfikować katalog macierzysty, i Utwórz folder o nazwie **. sparkmagic**.  Pełna ścieżka zostanie wypełniona.
 
     ```python
     import os
@@ -100,7 +100,7 @@ W tej sekcji skonfigurujesz magic platformy Spark, zainstalowany wcześniej poł
     exit()
     ```
 
-3. W folderze `.sparkmagic`, Utwórz plik o nazwie **config.json** i Dodaj następujący fragment kodu JSON wewnątrz niego.  
+3. W folderze `.sparkmagic`Utwórz plik o nazwie **config. JSON** i Dodaj do niego Poniższy fragment kodu JSON.  
 
     ```json
     {
@@ -122,61 +122,61 @@ W tej sekcji skonfigurujesz magic platformy Spark, zainstalowany wcześniej poł
     }
     ```
 
-4. Wprowadź następujące zmiany w pliku:
+4. Wprowadź następujące zmiany do pliku:
 
     |Wartość szablonu | Nowa wartość |
     |---|---|
-    |UŻYTKOWNIK {USERNAME}|Logowania do klastra, domyślnie jest `admin`.|
-    |{CLUSTERDNSNAME}|Nazwa klastra|
-    |{BASE64ENCODEDPASSWORD}|Hasło dla rzeczywistego hasła zakodowany w formacie base64.  Można wygenerować hasła base64 na [ https://www.url-encode-decode.com/base64-encode-decode/ ](https://www.url-encode-decode.com/base64-encode-decode/).|
-    |`"livy_server_heartbeat_timeout_seconds": 60`|Jeśli przy użyciu `sparkmagic 0.12.7` (klastry 3.5 i v3.6).  Jeśli przy użyciu `sparkmagic 0.2.3` (klastry wersji 3.4), Zamień `"should_heartbeat": true`.|
+    |UŻ|Logowanie klastra, wartość domyślna `admin`to.|
+    |CLUSTERDNSNAME|Nazwa klastra|
+    |{BASE64ENCODEDPASSWORD}|Zakodowane w formacie base64 hasło do rzeczywistego hasła.  Hasło Base64 można wygenerować pod adresem [https://www.url-encode-decode.com/base64-encode-decode/](https://www.url-encode-decode.com/base64-encode-decode/).|
+    |`"livy_server_heartbeat_timeout_seconds": 60`|Kontynuuj, jeśli `sparkmagic 0.12.7` jest używany (klastry v 3.5 i 3.6).  W przypadku `sparkmagic 0.2.3` używania (klastrów v 3.4) Zastąp `"should_heartbeat": true`ciąg opcją.|
 
-    Widać w pliku, pełny przykład [config.json przykładowe](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json).
+    W przykładowym pliku [config. JSON](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json)można zobaczyć pełny przykładowy plik.
 
    > [!TIP]  
-   > Puls są wysyłane do upewnij się, że nie przedostają sesji. Gdy komputer przechodzi w stan uśpienia lub jest wyłączony, pulsu nie są wysyłane, wynikiem jest sesja wyczyszczone. W przypadku klastrów wersji 3.4, jeśli chcesz wyłączyć to zachowanie można ustawić konfiguracji usługi Livy `livy.server.interactive.heartbeat.timeout` do `0` z poziomu interfejsu użytkownika Ambari. Dla klastrów 3.5 Jeśli nie ustawisz 3,5 konfiguracji powyżej, sesja nie zostaną usunięte.
+   > Pulsy są wysyłane w celu zapewnienia braku przecieku sesji. Gdy komputer przejdzie w tryb uśpienia lub jest wyłączony, puls nie zostanie wysłany, co spowodowało wyczyszczenie sesji. W przypadku klastrów w wersji 3.4, jeśli chcesz wyłączyć to zachowanie, można ustawić konfigurację `livy.server.interactive.heartbeat.timeout` `0` usługi Livy z poziomu interfejsu użytkownika Ambari. Jeśli w przypadku klastrów 3.5 nie zostanie ustawiona Powyższa konfiguracja 3,5, sesja nie zostanie usunięta.
 
-5. Rozpocznij Jupyter. Użyj następującego polecenia w wierszu polecenia.
+5. Uruchom Jupyter. Użyj następującego polecenia w wierszu polecenia.
 
     ```cmd
     jupyter notebook
     ```
 
-6. Sprawdź, czy za pomocą magic Spark dostępne jądra. Wykonaj poniższe kroki.
+6. Sprawdź, czy możesz użyć Magic Spark dostępnego z jądrami. Wykonaj poniższe kroki.
 
-    a. Utwórz nowy notes. W prawym rogu wybierz opcję **New**. Powinien zostać wyświetlony domyślnego jądra **języka Python 2** lub **Python 3** i jądra został zainstalowany. Rzeczywiste wartości mogą się różnić w zależności od opcji instalacji.  Wybierz **PySpark**.
+    a. Utwórz nowy notes. W prawym górnym rogu wybierz pozycję **Nowy**. Powinien zostać wyświetlony domyślny jądro **Python 2** lub **Python 3** i zainstalowane jądra. Rzeczywiste wartości mogą się różnić w zależności od opcji instalacji.  Wybierz pozycję **PySpark**.
 
-    ![Jądra w notesie Jupyter](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels.png "jądra w notesie Jupyter")
+    ![Jądra w notesie Jupyter](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels-notebook.png "Jądra w notesie Jupyter")
 
     > [!IMPORTANT]  
-    > Po wybraniu **New** Przejrzyj powłoki pod kątem błędów.  Jeśli zostanie wyświetlony błąd `TypeError: __init__() got an unexpected keyword argument 'io_loop'` może wystąpić znany problem w niektórych wersjach Tornado.  Jeśli tak, Zatrzymaj jądro i następnie obniżenia poziomu Tornado instalację za pomocą następującego polecenia: `pip install tornado==4.5.3`.
+    > Po wybraniu pozycji **Nowy** Przejrzyj powłokę pod kątem błędów.  Jeśli zobaczysz błąd `TypeError: __init__() got an unexpected keyword argument 'io_loop'` , może wystąpić znany problem z niektórymi wersjami programu Tornado.  Jeśli tak, Zatrzymaj jądro, a następnie Obniż poziom instalacji Tornado przy użyciu następującego polecenia `pip install tornado==4.5.3`:.
 
-    b. Uruchom poniższy fragment kodu.
+    b. Uruchom Poniższy fragment kodu.
 
     ```sql
     %%sql
     SELECT * FROM hivesampletable LIMIT 5
     ```  
 
-    Jeśli można pomyślnie pobrać dane wyjściowe, bada się połączenie z klastrem HDInsight.
+    Jeśli można pomyślnie pobrać dane wyjściowe, zostanie przetestowane połączenie z klastrem usługi HDInsight.
 
-    Można zaktualizować konfiguracji Notes, aby nawiązać połączenie z innym klastrem, należy zaktualizować config.json za pomocą nowego zestawu wartości, w jak pokazano w kroku 3 powyżej.
+    Jeśli chcesz zaktualizować konfigurację notesu w celu nawiązania połączenia z innym klastrem, zaktualizuj plik config. JSON przy użyciu nowego zestawu wartości, jak pokazano w kroku 3 powyżej.
 
-## <a name="why-should-i-install-jupyter-on-my-computer"></a>Dlaczego Instalacja oprogramowania Jupyter na moim komputerze?
+## <a name="why-should-i-install-jupyter-on-my-computer"></a>Dlaczego należy zainstalować program Jupyter na komputerze?
 
-Może to być z kilku powodów dlaczego warto Instalacja oprogramowania Jupyter na komputerze, a następnie nawiązać połączenie z klastrem platformy Apache Spark w HDInsight.
+Może być kilka powodów, dla których warto zainstalować program Jupyter na komputerze, a następnie połączyć go z klastrem Apache Spark w usłudze HDInsight.
 
-* Mimo że notesów programu Jupyter są już dostępne w klastrze Spark w usłudze Azure HDInsight, instalowanie Jupyter na komputerze zapewnia możliwość tworzenia notesy lokalnie, przetestować aplikację działającego klastra, a następnie przekaż notesy w klastrze. Na przekazywanie notesów w klastrze, możesz przekazać je za pomocą notesu programu Jupyter, z którym jest uruchomiona lub klastra lub zapisać je w folderze /HdiNotebooks na koncie magazynu skojarzonym z klastrem. Aby uzyskać więcej informacji na temat sposobu przechowywania notesów w klastrze, zobacz [notesów programu Jupyter przechowywania](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)?
-* Za pomocą notesów, które są dostępne lokalnie, możesz połączyć różnych klastrach platformy Spark, zgodnie z wymaganiami aplikacji.
-* GitHub można użyć do wdrożenia systemu kontroli źródła i mają kontrolę wersji dla komputerów przenośnych. Mogą też istnieć środowisko współpracy, w których wielu użytkowników może korzystać z tego samego notesu.
-* Możesz pracować z notesami lokalnie nawet bez klastra. Dzięki temu wystarczy klastra, aby przetestować notesów programu przed nimi nie do ręcznego zarządzania Notesy użytkownika lub środowiska deweloperskiego.
-* Może być łatwiejsze do skonfigurowania środowiska deweloperskiego lokalnego nie można skonfigurować instalację programu Jupyter w klastrze.  Możesz korzystać z zalet całe oprogramowanie zainstalowane lokalnie bez konfigurowania zdalnego klastrami.
+* Mimo że notesy Jupyter są już dostępne w klastrze Spark w usłudze Azure HDInsight, zainstalowanie Jupyter na komputerze zapewnia możliwość lokalnego tworzenia notesów, testowania aplikacji w uruchomionym klastrze, a następnie przekazywania Notesy do klastra. Aby przekazać Notes do klastra, można przekazać je za pomocą notesu Jupyter działającego w systemie lub w klastrze lub zapisać w folderze/HdiNotebooks na koncie magazynu skojarzonym z klastrem. Aby uzyskać więcej informacji o tym, jak notesy są przechowywane w klastrze, zobacz [gdzie są przechowywane notesy Jupyter](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)?
+* Dostępne lokalnie notesy umożliwiają łączenie się z różnymi klastrami platformy Spark na podstawie wymagań aplikacji.
+* Za pomocą usługi GitHub można zaimplementować system kontroli źródła i mieć kontrolę wersji dla notesów. Możesz również mieć środowisko współpracy, w którym wielu użytkowników może pracować z tym samym notesem.
+* Można korzystać z notesów lokalnie bez potrzeby klastra. Do testowania notesów jest potrzebny tylko klaster, a nie ręczne zarządzanie notesami lub środowiskiem programistycznym.
+* Skonfigurowanie lokalnego środowiska deweloperskiego może być łatwiejsze niż skonfigurowanie instalacji Jupyter w klastrze.  Można korzystać ze wszystkich zainstalowanych lokalnie programów bez konfigurowania co najmniej jednego klastra zdalnego.
 
 > [!WARNING]  
-> Jupyter zainstalowane na komputerze lokalnym wielu użytkowników umożliwia uruchamianie tego samego notesu na tym samym klastrze Spark w tym samym czasie. W takiej sytuacji wiele sesji usługi Livy są tworzone. Jeśli napotkania problemu, a chcesz debugować, który będzie że złożonym zadaniem w celu śledzenia sesji usługi Livy, które należy do użytkownika, który.  
+> Po zainstalowaniu Jupyter na komputerze lokalnym, wielu użytkowników może uruchamiać ten sam Notes w tym samym klastrze Spark w tym samym czasie. W takiej sytuacji tworzone są wiele sesji usługi Livy. Jeśli napotkasz problem i chcesz debugować ten program, będzie to złożone zadanie umożliwiające śledzenie, która sesja usługi Livy należy do którego użytkownika.  
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Omówienie: Platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)
-* [Platforma Apache Spark przy użyciu Power BI: Interakcyjna analiza danych przy użyciu platformy Spark w HDInsight przy użyciu narzędzi do analizy Biznesowej](apache-spark-use-bi-tools.md)
-* [Platforma Apache Spark w usłudze Machine Learning: Korzystanie z platformy Spark w HDInsight do analizy temperatury w budynku z użyciem danych HVAC](apache-spark-ipython-notebook-machine-learning.md)
+* [Podsumowanie Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)
+* [Apache Spark z usługą BI: Przeprowadzanie interaktywnej analizy danych przy użyciu platformy Spark w usłudze HDInsight przy użyciu narzędzi analizy biznesowej](apache-spark-use-bi-tools.md)
+* [Apache Spark z Machine Learning: Korzystanie z platformy Spark w usłudze HDInsight do analizowania temperatury kompilacji przy użyciu danych HVAC](apache-spark-ipython-notebook-machine-learning.md)

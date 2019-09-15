@@ -1,6 +1,6 @@
 ---
 title: 'Przykład interfejsu wizualizacji #3: regresja do ceny i porównywanie algorytmów'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: W tym artykule przedstawiono sposób tworzenia złożonego eksperymentu uczenia maszynowego bez konieczności pisania jednego wiersza kodu przy użyciu interfejsu wizualizacji. Dowiedz się, jak uczenie i porównywanie wielu modeli regresji w celu przewidywania cen samochodu w oparciu o funkcje techniczne
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: d05a601196ec4a5349a0acb4763098d9716c17f5
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 2c45ccf55b1adde7150dee17fd562b24ee4777ba
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989999"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997096"
 ---
 # <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>Przykład 2 — Regresja: Przewidywanie cen i porównywanie algorytmów
 
@@ -80,7 +80,7 @@ Oto wyniki:
 
 ![Porównaj wyniki](media/ui-sample-regression-predict-automobile-price-compare-algorithms/result.png)
 
-Wyniki te pokazują, że model zbudowany z **podwyższaną regresją drzewa decyzyjnego** ma dolny, średni błąd oznaczający, że nie jest on modelem opartym na regresji **lasu decyzji**.
+Wyniki te pokazują, że model zbudowany z **podwyższaną regresją drzewa decyzyjnego** ma dolny, średni błąd oznaczający, że nie jest on modelem opartym na **regresji lasu decyzji**.
 
 Oba algorytmy mają niższy błąd w zestawie danych szkoleniowych niż na niewidocznym zestawie danych testowych.
 

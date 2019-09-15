@@ -1,7 +1,7 @@
 ---
 title: 'Samouczek: Wdrażanie modelu uczenia maszynowego za pomocą interfejsu wizualnego'
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak utworzyć rozwiązanie do analizy predykcyjnej w interfejsie Visual Azure Machine Learning usługi. Uczenie, ocenę i wdrożenie modelu uczenia maszynowego przy użyciu modułów przeciągania i upuszczania. Ten samouczek jest drugą częścią serii dwóch części na temat przewidywania cen samochodów przy użyciu regresji liniowej.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak utworzyć rozwiązanie do analizy predykcyjnej w interfejsie wizualizacji Azure Machine Learning. Uczenie, ocenę i wdrożenie modelu uczenia maszynowego przy użyciu modułów przeciągania i upuszczania. Ten samouczek jest drugą częścią serii dwóch części na temat przewidywania cen samochodów przy użyciu regresji liniowej.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/11/2019
-ms.openlocfilehash: 64062aeab9a807d2aee7f4bca05d4019a3d9b736
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 22d5c41e8b815fd99450962cb63d11e9560c787f
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858632"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997011"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Samouczek: Wdrażanie modelu uczenia maszynowego za pomocą interfejsu wizualnego
 
@@ -105,7 +105,7 @@ Przejdź do karty **dokumentacji interfejsu API** , aby znaleźć więcej szczeg
 
 ## <a name="manage-models-and-deployments"></a>Zarządzanie modelami i wdrożeniami
 
-Modele i wdrożenia usługi sieci Web utworzone w interfejsie wizualizacji można także zarządzać za pomocą obszaru roboczego usługi Azure Machine Learning.
+Modele i wdrożenia usługi sieci Web utworzone w interfejsie wizualnym mogą być również zarządzane w obszarze roboczym Azure Machine Learning.
 
 1. Otwórz obszar roboczy w [Azure Portal](https://portal.azure.com/).  
 

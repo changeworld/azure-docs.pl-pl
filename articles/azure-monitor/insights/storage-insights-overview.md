@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/15/2019
 ms.author: magoedte
-ms.openlocfilehash: 36f70ebaaf3fe6d841ef700561bbd6a200366c84
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 17135f896140a843dd95c8d9624e9faf1d7194c3
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563876"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996244"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>Monitorowanie usługi magazynu za pomocą Azure Monitor dla magazynu (wersja zapoznawcza)
 
@@ -42,6 +42,10 @@ Ta funkcja nie wymaga włączenia ani skonfigurowania żadnych informacji. metry
 
 >[!NOTE]
 >Dostęp do tej funkcji nie jest naliczany, a opłaty są naliczane tylko za Azure Monitor podstawowe funkcje, które konfigurujesz lub włączasz, zgodnie z opisem na stronie [szczegóły cennika Azure monitor](https://azure.microsoft.com/pricing/details/monitor/) .
+
+>[!NOTE]
+>Azure Monitor dla magazynu nie obsługuje [kont ogólnego przeznaczenia w wersji 1](../../storage/common/storage-account-overview.md#general-purpose-v1-accounts).
+>
 
 ## <a name="view-from-azure-monitor"></a>Wyświetl od Azure Monitor
 
@@ -123,7 +127,7 @@ Bez względu na to, czy wybrano wartość w skoroszycie " **dostępność**kolum
 
     ![Przykład raportu wydajności](./media/storage-insights-overview/storage-account-performance-01.png)
 
-* Wybranie dowolnej kategorii błędów wymienionej w siatce Otwórz skoroszyt niepowodzeń . Raport przedstawia kafelki metryk wszystkich innych błędów po stronie klienta, z wyjątkiem opisanych i zakończonych powodzeniem żądań, błędów ograniczania liczby klientów, wykresu wydajności dla **typu odpowiedzi** transakcji dla metryki wymiaru dotyczącego atrybutu ClientOtherError, i dwie tabele — **transakcje według nazwy interfejsu API** i **transakcji według typu odpowiedzi**.
+* Wybranie dowolnej kategorii błędów wymienionej w siatce Otwórz skoroszyt **niepowodzeń** . Raport przedstawia kafelki metryk wszystkich innych błędów po stronie klienta, z wyjątkiem opisanych i zakończonych powodzeniem żądań, błędów ograniczania liczby klientów, wykresu wydajności dla **typu odpowiedzi** transakcji dla metryki wymiaru dotyczącego atrybutu ClientOtherError, i dwie tabele — **transakcje według nazwy interfejsu API** i **transakcji według typu odpowiedzi**.
 
    ![Przykładowy raport o błędach](./media/storage-insights-overview/storage-account-failures-01.png)
 
@@ -166,7 +170,7 @@ Można skonfigurować wiele subskrypcji i **przeglądanie** konta magazynu oraz 
 
 4. Wybierz z listy rozwijanej **konta magazynu** co najmniej jedno konto, na które ma być domyślnie. Pamiętaj, że skoroszyt obsługuje wybieranie maksymalnie 200 kont magazynu. 
 
-5. Wybierz pozycję **Zapisz jako** na pasku poleceń, aby zapisać kopię skoroszytu z własnymi dostosowaniami, a następnie kliknij pozycję zakończono **edycję** , aby powrócić do trybu odczytu.  
+5. Wybierz pozycję **Zapisz jako** na pasku poleceń, aby zapisać kopię skoroszytu z własnymi dostosowaniami, a następnie kliknij pozycję **Zakończono edycję** , aby powrócić do trybu odczytu.  
 
 ### <a name="modify-metrics-and-colors-in-the-workbook"></a>Modyfikuj metryki i kolory w skoroszycie
 
@@ -205,7 +209,7 @@ Teraz Zmień motyw kolorów dla metryk pojemności w raporcie, tak aby używał 
 
 3. Wybierz pozycję **Zapisz i Zamknij,** aby zatwierdzić zmianę.
 
-4. Wybierz pozycję **Zapisz jako** na pasku poleceń, aby zapisać kopię skoroszytu z własnymi dostosowaniami, a następnie kliknij pozycję zakończono **edycję** , aby powrócić do trybu odczytu.  
+4. Wybierz pozycję **Zapisz jako** na pasku poleceń, aby zapisać kopię skoroszytu z własnymi dostosowaniami, a następnie kliknij pozycję **Zakończono edycję** , aby powrócić do trybu odczytu.  
 
 ### <a name="modify-the-availability-threshold"></a>Modyfikowanie progu dostępności
 
@@ -223,11 +227,11 @@ W tym przykładzie pracujemy ze skoroszytem pojemności konta magazynu i ukazuj�
 
 5. Wybierz pozycję **Ustawienia kolumny** , a następnie w okienku **Edytowanie ustawień kolumny** w obszarze **kolumny** wybierz **dostępność (%) (Progi + sformatowane)** .
 
-6. Zmień wartość krytycznego stanu kondycji z **90** na **85** , a następnie kliknij przycisk **Zapisz i Zamknij**.
+6. Zmień wartość **krytycznego** stanu kondycji z **90** na **85** , a następnie kliknij przycisk **Zapisz i Zamknij**.
 
     ![Modyfikowanie wartości progowej dostępności dla stanu krytycznego](./media/storage-insights-overview/edit-column-settings-capacity-workbook-01.png)
 
-7. Wybierz pozycję **Zapisz jako** na pasku poleceń, aby zapisać kopię skoroszytu z własnymi dostosowaniami, a następnie kliknij pozycję zakończono **edycję** , aby powrócić do trybu odczytu.
+7. Wybierz pozycję **Zapisz jako** na pasku poleceń, aby zapisać kopię skoroszytu z własnymi dostosowaniami, a następnie kliknij pozycję **Zakończono edycję** , aby powrócić do trybu odczytu.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 

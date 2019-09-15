@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Przewidywanie ceny samochodów za pomocą interfejsu wizualnego'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Dowiedz się, jak uczenie, ocenę i wdrożenie modelu uczenia maszynowego przy użyciu graficznego interfejsu przeciągania i upuszczania. Ten samouczek jest częścią jednej z serii dwóch części na przewidywanie cen samochodów, przy użyciu regresji liniowej.
 author: peterclu
 ms.author: peterlu
@@ -9,16 +9,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 08/16/2019
-ms.openlocfilehash: a2134853c48ca09faa150f038be2d9327af75eee
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 11c65c217ef6c150c47f387f7f80070488a8df89
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891626"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996778"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>Samouczek: Przewidywanie ceny samochodów za pomocą interfejsu wizualnego
 
-W tym dwuczęściowym samouczku dowiesz się, jak za pomocą interfejsu wizualnego usługi Azure Machine Learning utworzyć i wdrożyć rozwiązanie analityczne do analizy predykcyjnej, które przewiduje cenę dowolnego samochodu. 
+W tym dwuczęściowym samouczku dowiesz się, jak za pomocą interfejsu wizualnego Azure Machine Learning utworzyć i wdrożyć rozwiązanie analityczne predykcyjne, które przewiduje cenę dowolnego samochodu. 
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GY]
 
@@ -41,11 +41,11 @@ Aby go znaleźć, na **stronie eksperymenty**wybierz pozycję **Dodaj nową**, *
 
 ## <a name="create-a-new-experiment"></a>Tworzenie nowego eksperymentu
 
-Aby utworzyć eksperyment interfejsu wizualizacji, należy najpierw potrzebować obszaru roboczego usługi Uczenie maszynowe platformy Azure. W tej sekcji dowiesz się, jak utworzyć oba te zasoby.
+Aby utworzyć eksperyment interfejsu wizualizacji, musisz najpierw wykonać Azure Machine Learning obszar roboczy usługi. W tej sekcji dowiesz się, jak utworzyć oba te zasoby.
 
 ### <a name="create-a-new-workspace"></a>Utwórz nowy obszar roboczy
 
-Jeśli masz obszar roboczy usługi Azure Machine Learning, przejdź do następnej sekcji.
+Jeśli masz obszar roboczy Azure Machine Learning, przejdź do następnej sekcji.
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 

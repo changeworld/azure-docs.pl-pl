@@ -9,15 +9,15 @@ ms.assetid: 1446AD8B-A685-4F5F-B4AA-74C8E9A40BE9
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: overview
-ms.date: 02/06/2019
+ms.date: 09/13/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 044cdde8e7c2f79835f4197ae70f7f0dc8d9ccec
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: f9e33ae30b3aa59f4705518c3df20118fa056a93
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302674"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996758"
 ---
 # <a name="what-is-the-bing-image-search-api"></a>Co to jest interfejs API wyszukiwania obrazów Bing?
 
@@ -43,7 +43,7 @@ Interfejs API wyszukiwania obrazów Bing jest usługą internetową RESTful, ła
 2. Wyślij żądanie do interfejsu API przy użyciu prawidłowego [zapytania wyszukiwania](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries).
 3. Przetwórz odpowiedź interfejsu API, analizując zwrócony komunikat JSON.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Najpierw wypróbuj [interaktywną demonstrację](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) interfejsu API wyszukiwania obrazów Bing.
 Ta demonstracja pokazuje, jak można szybko dostosować zapytanie wyszukiwania i wyszukać obrazy w Internecie.
@@ -66,3 +66,5 @@ Aby szybko rozpocząć pracę z pierwszym żądaniem interfejsu API, możesz nau
 * Artykuł [Pobieranie obrazów z Internetu za pomocą interfejsu API wyszukiwania obrazów Bing](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images) opisuje sposób wyszukiwania i pobierania obrazów z Internetu.
 
 * Artykuł [Wysyłanie i praca z zapytaniami wyszukiwania](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries) opisuje sposób tworzenia, dostosowywania i przestawiania zapytań wyszukiwania.
+
+* [Porównaj interfejsy API wyszukiwania Bing](../Bing-web-search/bing-api-comparison.md)

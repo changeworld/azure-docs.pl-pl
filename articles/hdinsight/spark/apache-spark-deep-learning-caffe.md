@@ -3,16 +3,17 @@ title: Użyj Caffe na Azure HDInsight Spark na potrzeby rozproszonej uczenia gł
 description: Użyj Caffe na Apache Spark na potrzeby rozproszonej uczenia głębokiego w usłudze Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: 31911c6c2456ab8b4949bab6ef8e541b91fc8a2c
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: bb234e5b34bd8046c4e65d7cc6812cde0db3b5b2
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814199"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995622"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>Użyj Caffe na Azure HDInsight Spark na potrzeby rozproszonej uczenia głębokiego
 
@@ -65,7 +66,7 @@ Drugim krokiem jest pobranie, skompilowanie i zainstalowanie protobuf 2.5.0 dla 
 
 Aby rozpocząć, można po prostu uruchomić tę akcję skryptu względem klastra do wszystkich węzłów procesu roboczego i węzłów głównych (dla usługi HDInsight 3,5). Można uruchomić akcje skryptu w istniejącym klastrze lub użyć akcji skryptu podczas tworzenia klastra. Aby uzyskać więcej informacji na temat akcji skryptu, zobacz dokumentację w [tym miejscu](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
 
-![Akcje skryptu do instalacji zależności](./media/apache-spark-deep-learning-caffe/Script-Action-1.png)
+![Akcje skryptu do instalacji zależności](./media/apache-spark-deep-learning-caffe/submit-script-action.png)
 
 
 ## <a name="step-2-build-caffe-on-apache-spark-for-hdinsight-on-the-head-node"></a>Krok 2: Kompiluj Caffe na Apache Spark dla usługi HDInsight w węźle głównym
@@ -175,7 +176,8 @@ W tym przykładzie, ponieważ korzystasz z procesora CPU zamiast GPU, należy zm
     # solver mode: CPU or GPU
     solver_mode: CPU
 
-![Caffe Config1](./media/apache-spark-deep-learning-caffe/Caffe-1.png)
+![Caffe Config1](./media/apache-spark-deep-learning-caffe/caffe-configuration1.png
+)
 
 W razie konieczności można zmienić inne wiersze.
 
@@ -184,7 +186,7 @@ Drugi plik ($ {CAFFE_ON_SPARK}/Data/lenet_memory_train_test.prototxt) definiuje,
 - Zmień wartość "File:/Users/Mridul/bigml/demodl/mnist_train_lmdb" na "wasb:///projects/machine_learning/image_dataset/mnist_train_lmdb"
 - Zmień wartość "File:/Users/Mridul/bigml/demodl/mnist_test_lmdb/" na "wasb:///projects/machine_learning/image_dataset/mnist_test_lmdb"
 
-![Caffe Config2](./media/apache-spark-deep-learning-caffe/Caffe-2.png)
+![Caffe Config2](./media/apache-spark-deep-learning-caffe/caffe-configuration2.png)
 
 Aby uzyskać więcej informacji na temat sposobu definiowania sieci, zapoznaj się z [dokumentacją Caffe w zestawie danych mnist ręcznie](https://caffe.berkeleyvision.org/gathered/examples/mnist.html)
 
@@ -204,15 +206,15 @@ Jeśli chcesz wiedzieć, co się stało, zazwyczaj musisz uzyskać dziennik ster
 
     https://yourclustername.azurehdinsight.net/yarnui
    
-![INTERFEJS UŻYTKOWNIKA PRZĘDZY](./media/apache-spark-deep-learning-caffe/YARN-UI-1.png)
+![INTERFEJS UŻYTKOWNIKA PRZĘDZY](./media/apache-spark-deep-learning-caffe/apache-yarn-window-1.png)
 
 Zapoznaj się z liczbą zasobów dla tej konkretnej aplikacji. Możesz kliknąć link "Scheduler", a następnie zobaczyć, że dla tej aplikacji będzie uruchomionych dziewięć kontenerów. należy zażądać PRZĘDZy, aby zapewnić osiem wykonawców, a inny kontener dla procesu sterownika. 
 
-![Harmonogram PRZĘDZy](./media/apache-spark-deep-learning-caffe/YARN-Scheduler.png)
+![Harmonogram PRZĘDZy](./media/apache-spark-deep-learning-caffe/apache-yarn-scheduler.png)
 
 Jeśli wystąpią błędy, warto sprawdzić dzienniki sterowników lub dzienniki kontenerów. W przypadku dzienników sterowników można kliknąć pozycję Identyfikator aplikacji w interfejsie użytkownika PRZĘDZy, a następnie kliknąć przycisk "dzienniki". Dzienniki sterowników są zapisywane w stderr.
 
-![INTERFEJS UŻYTKOWNIKA PRZĘDZY 2](./media/apache-spark-deep-learning-caffe/YARN-UI-2.png)
+![INTERFEJS UŻYTKOWNIKA PRZĘDZY 2](./media/apache-spark-deep-learning-caffe/apache-yarn-window-2.png)
 
 Na przykład może zostać wyświetlony następujący błąd z dzienników sterowników, wskazujący, że przydzieli zbyt wiele wykonawców.
 

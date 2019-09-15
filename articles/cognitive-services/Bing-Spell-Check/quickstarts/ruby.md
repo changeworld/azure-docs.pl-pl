@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 02/20/2019
+ms.date: 09/13/2019
 ms.author: aahi
-ms.openlocfilehash: 4c324bc013ccf339d19bb9dd7681909c4331db60
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: bf038b97335db20349577f754bfa41e1b98ee9b7
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500315"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996746"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-ruby"></a>Szybki start: Sprawdzanie pisowni za pomocą interfejsu API REST sprawdzania pisowni Bing i języka Ruby
 
@@ -49,7 +49,7 @@ Użyj tego przewodnika Szybki start, aby wykonać swoje pierwsze wywołanie inte
 
 ## <a name="send-a-spell-check-request"></a>Wysyłanie żądania sprawdzania pisowni
 
-1. Utwórz identyfikator URI na podstawie identyfikatora URI hosta, ścieżki oraz ciągu parametrów. Skonfiguruj zapytanie, aby zawierało tekst, dla którego ma być sprawdzana pisownia.
+1. Utwórz identyfikator URI na podstawie identyfikatora URI hosta, ścieżki oraz ciągu parametrów. Ustaw, aby zapytanie zawierało tekst, który ma być sprawdzany.
 
    ```ruby
    uri = URI(uri + path + params)

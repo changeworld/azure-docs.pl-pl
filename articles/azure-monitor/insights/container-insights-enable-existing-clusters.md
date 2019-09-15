@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/19/2019
+ms.date: 09/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 650729269370bfcd6608b82fc14c3306da1ed222
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 0153d39e1307458baa920d8e9107c8931242014e
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624438"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996262"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Włącz monitorowanie już wdrożonego klastra usługi Azure Kubernetes Service (AKS)
 
@@ -49,17 +49,51 @@ Dane wyjściowe będą wyglądać w następujący sposób:
 provisioningState       : Succeeded
 ```
 
-Jeśli czy raczej integrują się z istniejącym obszarem roboczym, użyj następującego polecenia, aby określić obszaru roboczego.
+### <a name="integrate-with-an-existing-workspace"></a>Integracja z istniejącym obszarem roboczym
 
-```azurecli
-az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG --workspace-resource-id <ExistingWorkspaceResourceID> 
-```
+Jeśli wolisz zintegrować z istniejącym obszarem roboczym, wykonaj następujące kroki, aby najpierw zidentyfikować pełny identyfikator zasobu log Analytics obszaru roboczego, który `--workspace-resource-id` jest wymagany dla tego parametru, a następnie uruchom polecenie, aby włączyć dodatek monitorowania dla wybrany obszar roboczy.  
 
-Dane wyjściowe będą wyglądać w następujący sposób:
+1. Wyświetl listę wszystkich subskrypcji, do których masz dostęp, za pomocą następującego polecenia:
 
-```azurecli
-provisioningState       : Succeeded
-```
+    ```azurecli
+    az account list --all -o table
+    ```
+
+    Dane wyjściowe będą wyglądać w następujący sposób:
+
+    ```azurecli
+    Name                                  CloudName    SubscriptionId                        State    IsDefault
+    ------------------------------------  -----------  ------------------------------------  -------  -----------
+    Microsoft Azure                       AzureCloud   68627f8c-91fO-4905-z48q-b032a81f8vy0  Enabled  True
+    ```
+
+    Skopiuj wartość identyfikatora **subskrypcji**.
+
+2. Przejdź do subskrypcji, w której znajduje się obszar roboczy Log Analytics, przy użyciu następującego polecenia:
+
+    ```azurecli
+    az account set -s <subscriptionId of the workspace>
+    ```
+
+3. Poniższy przykład wyświetla listę obszarów roboczych w Twoich subskrypcjach w domyślnym formacie JSON. 
+
+    ```
+    az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
+    ```
+
+    W danych wyjściowych Znajdź nazwę obszaru roboczego, a następnie skopiuj pełny identyfikator zasobu tego Log Analytics obszaru roboczego pod **identyfikatorem**pola.
+ 
+4. Uruchom następujące polecenie, aby włączyć dodatek monitorowania, zastępując wartość `--workspace-resource-id` parametru. Wartość ciągu musi znajdować się w podwójnych cudzysłowach:
+
+    ```azurecli
+    az aks enable-addons -a monitoring -n ExistingManagedCluster -g ExistingManagedClusterRG --workspace-resource-id  “/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>”
+    ```
+
+    Dane wyjściowe będą wyglądać w następujący sposób:
+
+    ```azurecli
+    provisioningState       : Succeeded
+    ```
 
 ## <a name="enable-using-terraform"></a>Włącz przy użyciu programu Terraform
 

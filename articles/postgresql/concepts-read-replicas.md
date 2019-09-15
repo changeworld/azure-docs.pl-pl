@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 1571fc449bd40063c531f9942fe9b51da56f783c
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: e276340041e69101190645caad9dbf6de57abd95
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764345"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996509"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Odczytaj repliki w Azure Database for PostgreSQL — pojedynczy serwer
 
@@ -57,7 +57,7 @@ Istnieją ograniczenia, które należy wziąć pod uwagę:
 
 
 ## <a name="create-a-replica"></a>Tworzenie repliki
-Serwer główny musi mieć `azure.replication_support` ustawiony parametr **rereplica**. Gdy ten parametr zostanie zmieniony, wymagane jest ponowne uruchomienie serwera, aby zmiany zaczęły obowiązywać. `azure.replication_support` (Parametr dotyczy tylko ogólnego przeznaczenia i warstw zoptymalizowanych pod kątem pamięci).
+Serwer główny musi mieć `azure.replication_support` ustawiony parametr rereplica. Gdy ten parametr zostanie zmieniony, wymagane jest ponowne uruchomienie serwera, aby zmiany zaczęły obowiązywać. `azure.replication_support` (Parametr dotyczy tylko ogólnego przeznaczenia i warstw zoptymalizowanych pod kątem pamięci).
 
 Po uruchomieniu przepływu pracy tworzenia repliki zostanie utworzony pusty serwer Azure Database for PostgreSQL. Nowy serwer jest wypełniony danymi znajdującymi się na serwerze głównym. Czas utworzenia zależy od ilości danych na serwerze głównym oraz czasu od ostatniego cotygodniowej pełnej kopii zapasowej. Czas może się wahać od kilku minut do kilku godzin.
 
@@ -147,7 +147,7 @@ Po pomyślnym przetworzeniu odczytów i zapisów aplikacja została ukończona w
 Ta sekcja zawiera podsumowanie zagadnień dotyczących funkcji odczytu repliki.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
-Przed utworzeniem repliki odczytu, `azure.replication_support` parametr musi być ustawiony na **replikę** na serwerze głównym. Gdy ten parametr zostanie zmieniony, wymagane jest ponowne uruchomienie serwera, aby zmiany zaczęły obowiązywać. Ten `azure.replication_support` parametr ma zastosowanie tylko do warstw ogólnego przeznaczenia i zoptymalizowanych pod kątem pamięci.
+Przed utworzeniem repliki odczytu, `azure.replication_support` parametr musi być ustawiony na replikę na serwerze głównym. Gdy ten parametr zostanie zmieniony, wymagane jest ponowne uruchomienie serwera, aby zmiany zaczęły obowiązywać. Ten `azure.replication_support` parametr ma zastosowanie tylko do warstw ogólnego przeznaczenia i zoptymalizowanych pod kątem pamięci.
 
 ### <a name="new-replicas"></a>Nowe repliki
 Replika odczytu jest tworzona jako nowy serwer Azure Database for PostgreSQL. Nie można wykonać istniejącego serwera w replice. Nie można utworzyć repliki innej repliki odczytu.
@@ -173,4 +173,4 @@ Po usunięciu serwera głównego wszystkie jego repliki odczytu stają się serw
 
 ## <a name="next-steps"></a>Następne kroki
 * Dowiedz się, jak [tworzyć repliki odczytu i zarządzać nimi w Azure Portal](howto-read-replicas-portal.md).
-* Dowiedz się, jak [tworzyć repliki odczytu i zarządzać nimi w interfejsie wiersza polecenia platformy Azure](howto-read-replicas-cli.md).
+* Dowiedz się, jak [tworzyć repliki odczytu i zarządzać nimi w interfejsie wiersza polecenia platformy Azure i interfejsu API REST](howto-read-replicas-cli.md).

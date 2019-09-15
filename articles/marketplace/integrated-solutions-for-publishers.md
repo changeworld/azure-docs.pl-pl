@@ -7,14 +7,14 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 08/15/2019
 ms.author: v-qiwe
-ms.openlocfilehash: 2d23b2b39844d48c6414d269f8d69d7b96fff272
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 13a7769e310bcd0cb28eddbf9dded3fe1d62eec7
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860306"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993681"
 ---
-# <a name="publishing-integrated-solutions"></a>Publikowanie rozwiązań zintegrowanych
+# <a name="publishing-integrated-solutions"></a>Publikowanie zintegrowanych rozwiązań
 
 Zintegrowane rozwiązanie łączy jednocześnie wiele technologii rozwiązań niezależnych dostawców oprogramowania, a także wdrożenie i usługi integratora systemów (SI) w ramach jednej powiązanej oferty, która jest wymieniona w witrynie Marketplace jako [Oferta usług doradczych](https://docs.microsoft.com/azure/marketplace/consulting-services).
 
@@ -89,5 +89,9 @@ Chociaż istnieje pięć typów usług dostępnych dla ofert usług doradczych, 
 ## <a name="going-to-market-with-your-integrated-solution"></a>Przejście na rynek dzięki zintegrowanemu rozwiązaniu 
 
 Gdy Twoje rozwiązanie znajduje się na żywo w witrynie Azure Marketplace lub AppSource, chcesz uzyskać świadomość i generowanie popytu przez działania marketingowe. Zapoznaj się z działaniami wymienionymi w [planie projektu i na osi czasu](https://aka.ms/AA5qiuc), w tym działania, które partnerzy mogą przełączać w swoich zespołach i ze sobą. Następnie uzyskaj dostęp do korzyści z platformy [przechodzenia do rynku](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits#list-trial-and-consulting-benefits) dla partnerów, którzy opublikowały w portalu Marketplace. Wszystkie zintegrowane oferty rozwiązań są uprawnione do korzystania z korzyści na poziomie wersji próbnej.
+
+## <a name="next-steps"></a>Następne kroki
+
+Zobacz [zintegrowane rozwiązania](https://docs.microsoft.com/azure/marketplace/integrated-solutions) , aby uzyskać informacje na temat kupowania zintegrowanego rozwiązania w portalu Marketplace.
 
 ---

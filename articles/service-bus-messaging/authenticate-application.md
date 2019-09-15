@@ -8,20 +8,20 @@ author: axisc
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: aschhab
-ms.openlocfilehash: 0860b1d621d2df5f371638bb48a03fdd8474d12d
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 6a78e4d81921fae8dcb325e9d72df1eee7b99a3b
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70014544"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997002"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Uwierzytelnianie i Autoryzowanie aplikacji przy użyciu Azure Active Directory dostępu do Azure Service Bus jednostek
 Azure Service Bus obsługuje używanie Azure Active Directory (Azure AD) do autoryzacji żądań Service Bus jednostek (kolejek, tematów, subskrypcji lub filtrów). Za pomocą usługi Azure AD można używać kontroli dostępu opartej na rolach (RBAC) do udzielania uprawnień podmiotowi zabezpieczeń, który może być użytkownikiem, grupą lub jednostką usługi aplikacji. Aby dowiedzieć się więcej o rolach i przypisaniach ról, zobacz [opis różnych ról](../role-based-access-control/overview.md).
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Gdy podmiot zabezpieczeń (użytkownik, Grupa lub aplikacja) próbuje uzyskać dostęp do jednostki Service Bus, żądanie musi być autoryzowane. W przypadku usługi Azure AD dostęp do zasobu jest procesem dwuetapowym. 
 
- 1. Najpierw jest uwierzytelniana tożsamość podmiotu zabezpieczeń i zwracany jest token OAuth 2,0. 
+ 1. Najpierw jest uwierzytelniana tożsamość podmiotu zabezpieczeń i zwracany jest token OAuth 2,0. Nazwa zasobu do żądania tokenu to `https://servicebus.azure.net`.
  1. Następnie token jest przesyłany w ramach żądania do usługi Service Bus, aby autoryzować dostęp do określonego zasobu.
 
 Krok uwierzytelniania wymaga, aby żądanie aplikacji zawierało token dostępu OAuth 2,0 w czasie wykonywania. Jeśli aplikacja jest uruchomiona w ramach jednostki platformy Azure, takiej jak maszyna wirtualna platformy Azure, zestaw skalowania maszyn wirtualnych lub aplikacja funkcji platformy Azure, może używać tożsamości zarządzanej do uzyskiwania dostępu do zasobów. Aby dowiedzieć się, jak uwierzytelniać żądania wysyłane przez zarządzaną tożsamość do usługi Service Bus, zobacz [uwierzytelnianie dostępu do zasobów Azure Service Bus za pomocą Azure Active Directory i zarządzanych tożsamości dla zasobów platformy Azure](service-bus-managed-service-identity.md). 
@@ -34,7 +34,7 @@ Aplikacje natywne i aplikacje sieci Web, które wysyłają żądania do Service 
 ## <a name="assigning-rbac-roles-for-access-rights"></a>Przypisywanie ról RBAC na potrzeby praw dostępu
 Azure Active Directory (Azure AD) autoryzuje prawa dostępu do zabezpieczonych zasobów za pośrednictwem [kontroli dostępu opartej na rolach (RBAC)](../role-based-access-control/overview.md). Azure Service Bus definiuje zestaw wbudowanych ról RBAC, które obejmują typowe zestawy uprawnień używane do uzyskiwania dostępu do jednostek Service Bus, a także definiuje role niestandardowe na potrzeby uzyskiwania dostępu do danych.
 
-Gdy rola RBAC jest przypisana do podmiotu zabezpieczeń usługi Azure AD, platforma Azure przyznaje dostęp do tych zasobów dla tego podmiotu zabezpieczeń. Dostęp można ograniczyć do poziomu subskrypcji, grupy zasobów lub przestrzeni nazw Service Bus. Podmiot zabezpieczeń usługi Azure AD może być użytkownikiem, grupą, główną usługą aplikacji lub zarządzaną tożsamością [dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md).
+Gdy rola RBAC jest przypisana do podmiotu zabezpieczeń usługi Azure AD, platforma Azure przyznaje dostęp do tych zasobów dla tego podmiotu zabezpieczeń. Dostęp można ograniczyć do poziomu subskrypcji, grupy zasobów lub przestrzeni nazw Service Bus. Podmiot zabezpieczeń usługi Azure AD może być użytkownikiem, grupą, główną usługą aplikacji lub [zarządzaną tożsamością dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md).
 
 ## <a name="built-in-rbac-roles-for-azure-service-bus"></a>Wbudowane role RBAC dla Azure Service Bus
 W przypadku Azure Service Bus Zarządzanie przestrzeniami nazw i wszystkimi powiązanymi zasobami za pośrednictwem Azure Portal i interfejsu API usługi Azure Resource Management jest już chronione przy użyciu modelu *kontroli dostępu opartej na rolach* (RBAC). Platforma Azure udostępnia następujące wbudowane role RBAC do autoryzacji dostępu do Service Bus przestrzeni nazw:
@@ -116,7 +116,7 @@ Aby uzyskać więcej informacji na temat rejestrowania aplikacji w usłudze Azur
 Aplikacja wymaga klucza tajnego klienta, aby potwierdzić swoją tożsamość podczas żądania tokenu. Aby dodać klucz tajny klienta, wykonaj następujące kroki.
 
 1. Przejdź do swojej rejestracji aplikacji w Azure Portal, jeśli nie jesteś jeszcze na stronie.
-1. W menu po lewej stronie wybierz pozycję **certyfikaty &** wpisy tajne.
+1. W menu po lewej stronie wybierz pozycję **certyfikaty & wpisy tajne** .
 1. W obszarze wpisy **tajne klienta**wybierz pozycję **Nowy wpis tajny klienta** , aby utworzyć nowy wpis tajny.
 
     ![Nowy wpis tajny klienta — przycisk](./media/authenticate-application/new-client-secret-button.png)
@@ -128,7 +128,7 @@ Aplikacja wymaga klucza tajnego klienta, aby potwierdzić swoją tożsamość po
     ![Klucz tajny klienta](./media/authenticate-application/client-secret.png)
 
 ### <a name="permissions-for-the-service-bus-api"></a>Uprawnienia dla interfejsu API Service Bus
-Jeśli aplikacja jest aplikacją konsolową, należy zarejestrować aplikację natywną i dodać uprawnienia interfejsu API do **programu Microsoft. ServiceBus** do wymaganego zestawu **uprawnień** . Natywne aplikacje potrzebują także **identyfikatora URI przekierowania** w usłudze Azure AD, który służy jako identyfikator; Identyfikator URI nie musi być miejscem docelowym sieci. Użyj `https://servicebus.microsoft.com` w tym przykładzie ponieważ próbki kodu już używa tego identyfikatora URI.
+Jeśli aplikacja jest aplikacją konsolową, należy zarejestrować aplikację natywną i dodać uprawnienia interfejsu API do **programu Microsoft. ServiceBus** do **wymaganego zestawu uprawnień** . Natywne aplikacje potrzebują także **identyfikatora URI przekierowania** w usłudze Azure AD, który służy jako identyfikator; Identyfikator URI nie musi być miejscem docelowym sieci. Użyj `https://servicebus.microsoft.com` w tym przykładzie ponieważ próbki kodu już używa tego identyfikatora URI.
 
 ### <a name="client-libraries-for-token-acquisition"></a>Biblioteki klienckie do pozyskiwania tokenów  
 Po zarejestrowaniu aplikacji i przyznaniu jej uprawnień do wysyłania/odbierania danych w Azure Service Bus możesz dodać kod do aplikacji, aby uwierzytelnić podmiot zabezpieczeń i uzyskać token OAuth 2,0. Aby uwierzytelnić i uzyskać token, można użyć jednej z [bibliotek uwierzytelniania platformy tożsamości firmy Microsoft](../active-directory/develop/reference-v2-libraries.md) lub innej biblioteki typu open source, która obsługuje OpenID Connect lub Connect 1,0. Aplikacja może następnie użyć tokenu dostępu do autoryzowania żądania względem Azure Service Bus.

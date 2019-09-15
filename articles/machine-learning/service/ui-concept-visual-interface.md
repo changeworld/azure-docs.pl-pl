@@ -1,7 +1,7 @@
 ---
 title: Interfejs wizualny
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się więcej na temat warunków, koncepcji i przepływu pracy tworzących interfejs wizualny (wersja zapoznawcza) dla usługi Azure Machine Learning.
+titleSuffix: Azure Machine Learning
+description: Poznaj warunki, koncepcje i przepływ pracy, które tworzą interfejs wizualizacji (wersja zapoznawcza) dla Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/15/2019
-ms.openlocfilehash: 70141e3ad438ff7ff6d4486e6c27ff4163416e95
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 65daf1468d27825d9904a14e42e43796d3985321
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860398"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996519"
 ---
-# <a name="what-is-the-visual-interface-for-azure-machine-learning-service"></a>Co to jest interfejs wizualny usługi Azure Machine Learning Service? 
+# <a name="what-is-the-visual-interface-for-azure-machine-learning"></a>Co to jest interfejs wizualny dla Azure Machine Learning? 
 
-Interfejs wizualny (wersja zapoznawcza) dla usługi Azure Machine Learning umożliwia Przygotowywanie danych, uczenie, testowanie, wdrażanie, zarządzanie i śledzenie modeli uczenia maszynowego bez konieczności pisania kodu.
+Interfejs wizualny (wersja zapoznawcza) dla Azure Machine Learning umożliwia Przygotowywanie danych, uczenie, testowanie, wdrażanie, zarządzanie i śledzenie modeli uczenia maszynowego bez konieczności pisania kodu.
 
 Nie ma potrzeby programowania, można wizualnie połączyć [zestawy danych](#dataset) i [moduły](#module) , aby utworzyć model.
 
-Interfejs wizualny używa [obszaru roboczego](concept-workspace.md) usługi Azure Machine Learning, aby:
+Interfejs wizualny używa [obszaru roboczego](concept-workspace.md) Azure Machine Learning, aby:
 
 + Zapisuj artefakty [eksperymentu](#experiment) w obszarze roboczym.
 + Dostęp do [zestawów danych](#dataset).

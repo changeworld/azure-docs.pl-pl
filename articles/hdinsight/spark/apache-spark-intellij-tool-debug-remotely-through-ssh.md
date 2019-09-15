@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/25/2017
-ms.openlocfilehash: 9690e114f9ae01c4aee71145525fdda2eff4701c
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 844901d9c689d5a04312b52101572854f4d7fe6b
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814182"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993986"
 ---
 # <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Debugowanie Apache Spark aplikacji w klastrze usługi HDInsight z Azure Toolkit for IntelliJ za pośrednictwem protokołu SSH
 
@@ -77,7 +77,7 @@ Aby rozwiązać ten problem, [Pobierz plik wykonywalny](https://public-repo-1.ho
 1. Otwórz skrypt **SparkCore_wasbloTest** , kliknij prawym przyciskiem myszy Edytor skryptów, a następnie wybierz opcję **Uruchom "[zadanie Spark] XXX"** , aby wykonać przebieg lokalny.
 1. Po zakończeniu lokalnego uruchomienia można zobaczyć plik wyjściowy Zapisz w bieżącym **__domyślnym__** **danych** > Eksploratora projektu.
 
-    ![Wynik uruchomienia lokalnego](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-result.png)
+    ![Wynik uruchomienia lokalnego](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-local-run-result.png)
 1. Nasze narzędzia ustawili domyślną konfigurację uruchamiania lokalnego podczas przeprowadzania lokalnego uruchamiania i debugowania lokalnego. Otwórz konfigurację **[Spark w usłudze HDInsight] XXX** w prawym górnym rogu, zobaczysz, że **[Spark w usłudze HDInsight] XXX** już utworzone w obszarze **Apache Spark w usłudze HDInsight**. Przejdź do karty **uruchamiania lokalnego** .
 
     ![Konfiguracja lokalnego uruchomienia](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-configuration.png)
@@ -114,20 +114,18 @@ Aby rozwiązać ten problem, [Pobierz plik wykonywalny](https://public-repo-1.ho
 
 1. Po zakończeniu ustawień konfiguracji można uruchomić projekt względem klastra zdalnego lub wykonać zdalne debugowanie.
    
-   ![Przycisk uruchamiania zdalnego](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/perform-remote-run.png)
+   ![Przycisk uruchamiania zdalnego](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/perform-remote-run-button.png)
 
 1. Kliknij przycisk **Rozłącz** , aby dzienniki przesłane nie były wyświetlane w lewym panelu. Jednak nadal działa w zapleczu.
 
-   ![Wynik uruchomienia zdalnego](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/remote-run-result.png)
-
-
+   ![Wynik uruchomienia zdalnego](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-remote-run-result.png)
 
 ### <a name="scenario-2-perform-remote-debugging"></a>Scenariusz 2: Wykonaj debugowanie zdalne
 1. Skonfiguruj punkty przerwania, a następnie kliknij ikonę **debugowania zdalnego** . Różnica polega na tym, że należy skonfigurować nazwę użytkownika/hasło SSH.
 
    ![Wybierz ikonę debugowania](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debug-icon.png)
 
-1. Gdy wykonanie programu dociera do punktu przerwania, zobaczysz kartę **sterownika** i dwie karty **wykonawcze** w okienku **debuger** . Wybierz ikonę **Wznów program** , aby kontynuować uruchamianie kodu, który następnie osiągnie następny punkt przerwania. Aby znaleźć docelowy moduł wykonujący debugowanie, należy przełączyć się na poprawną kartę programu **wykonującego** . Dzienniki wykonywania można wyświetlić na odpowiedniej karcie **konsoli** .
+1. Gdy wykonanie programu dociera do punktu przerwania, zobaczysz kartę **sterownika** i dwie karty **wykonawcze** w okienku **debuger** . Wybierz ikonę **Wznów program** , aby kontynuować uruchamianie kodu, który następnie osiągnie następny punkt przerwania. Aby znaleźć docelowy moduł wykonujący debugowanie , należy przełączyć się na poprawną kartę programu wykonującego. Dzienniki wykonywania można wyświetlić na odpowiedniej karcie **konsoli** .
 
    ![Karta debugowanie](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debugger-tab.png)
 
@@ -148,7 +146,7 @@ Aby rozwiązać ten problem, [Pobierz plik wykonywalny](https://public-repo-1.ho
 
 1. Kliknij prawym przyciskiem myszy obiekt docelowy na karcie **debugowanie** , a następnie wybierz pozycję **Ustaw wartość**. Następnie wprowadź nową wartość dla zmiennej. Następnie wybierz klawisz **Enter** , aby zapisać wartość. 
 
-   ![Ustawiono wartość](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-set-value.png) 
+   ![Ustawiono wartość](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-set-value1.png)
 
 1. Wybierz ikonę **Wznów program** , aby kontynuować uruchamianie programu. Tym razem nie jest przechwytywany żaden wyjątek. Można zobaczyć, że projekt zostanie uruchomiony pomyślnie bez żadnych wyjątków.
 

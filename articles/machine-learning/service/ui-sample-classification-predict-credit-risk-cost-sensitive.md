@@ -1,6 +1,6 @@
 ---
 title: 'Przykład #4 interfejsu wizualizacji: Klasyfikacja do prognozowania ryzyka kredytowego (z uwzględnieniem kosztów)'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: W tym artykule przedstawiono sposób tworzenia złożonego eksperymentu uczenia maszynowego za pomocą interfejsu wizualnego. Dowiesz się, jak zaimplementować niestandardowe skrypty języka Python i porównać wiele modeli, aby wybrać najlepszą opcję.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: ee4b67c82ef2bf5a1ef9c060687cc1c937328e66
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 977ff101b0f697a48b3e5595834c98fef0f1119a
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990429"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997023"
 ---
 # <a name="sample-4---classification-predict-credit-risk-cost-sensitive"></a>Przykład 4 — Klasyfikacja: Przewidywanie ryzyka kredytowego (z uwzględnieniem kosztów)
 
@@ -91,11 +91,11 @@ Moduł **wykonywania skryptu języka Python** replikuje zarówno zestaw danych s
 
 Algorytm **maszyny wektorowej obsługujący dwie klasy** wymaga znormalizowanych danych. Dlatego używamy modułu **normalizowanie danych** do normalizacji zakresów wszystkich funkcji liczbowych z `tanh` przekształceniem. `tanh` Transformacja konwertuje wszystkie funkcje liczbowe na wartości z zakresu od 0 do 1, zachowując ogólną dystrybucję wartości.
 
-Dwuklasowy moduł **maszyny wektorowej** obsługuje funkcje ciągów, konwertując je do funkcji kategorii, a następnie do funkcji binarnych o wartości 0 lub 1. Dlatego nie trzeba znormalizować tych funkcji.
+**Dwuklasowy moduł maszyny wektorowej** obsługuje funkcje ciągów, konwertując je do funkcji kategorii, a następnie do funkcji binarnych o wartości 0 lub 1. Dlatego nie trzeba znormalizować tych funkcji.
 
 ## <a name="models"></a>Modele
 
-Ze względu na to, że stosujemy dwa klasyfikatory, **dwie klasy obsługują maszyny wektorowe** (SVM) i dwuklasowe **drzewo decyzyjne**, a także dwa zestawy danych generują łącznie cztery modele:
+Ze względu na to, że stosujemy dwa klasyfikatory, **dwie klasy obsługują maszyny wektorowe** (SVM) i **dwuklasowe drzewo decyzyjne**, a także dwa zestawy danych generują łącznie cztery modele:
 
 - SVM z oryginalnymi danymi.
 - SVM z replikowanymi danymi.
@@ -104,7 +104,7 @@ Ze względu na to, że stosujemy dwa klasyfikatory, **dwie klasy obsługują mas
 
 Używamy standardowego eksperymentalnego przepływu pracy do tworzenia, uczenia i testowania modeli:
 
-1. Zainicjuj algorytmy uczenia przy użyciu dwuklasowej **maszyny wektorowej** i dwuklasowego **drzewa decyzyjnego**.
+1. Zainicjuj algorytmy uczenia przy użyciu **dwuklasowej maszyny wektorowej** i **dwuklasowego drzewa decyzyjnego**.
 1. Użyj **modelu uczenia** , aby zastosować algorytm do danych i utworzyć rzeczywisty model.
 1. Użyj **modelu oceny** , aby wygenerować wyniki przy użyciu przykładów testowych.
 
@@ -150,7 +150,7 @@ W pierwszej kolumnie jest wyświetlany algorytm uczenia maszynowego używany do 
 Druga kolumna wskazuje typ zestawu szkoleniowego.
 Trzecia kolumna zawiera wartość dokładności z uwzględnieniem kosztów.
 
-Z tych wyników można zobaczyć, że Najlepsza dokładność jest zapewniana przez model, który został utworzony z dwuklasową **maszyną wektorową** , i przeszkolony na zestawie danych szkolenia zreplikowane.
+Z tych wyników można zobaczyć, że Najlepsza dokładność jest zapewniana przez model, który został utworzony z **dwuklasową maszyną wektorową** , i przeszkolony na zestawie danych szkolenia zreplikowane.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

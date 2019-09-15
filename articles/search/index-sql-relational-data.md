@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: heidist
-ms.openlocfilehash: f6cc119387482e4f5403e91de98916cbe2aaff2a
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 60dfae48b0aa1d6e0d9bc8e79d5ff2dedd744fd5
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70963501"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993574"
 ---
 # <a name="how-to-model-relational-sql-data-for-import-and-indexing-in-azure-search"></a>Jak modelować relacyjne dane SQL do zaimportowania i indeksowania w Azure Search
 
@@ -152,11 +152,11 @@ Uwzględniając poprzedni zestaw wyników i powyższy schemat indeksu, masz wszy
 
 ## <a name="next-steps"></a>Następne kroki
 
-Za pomocą [Kreatora importu danych](search-import-data-portal.md) można indeksować zestaw wierszy podobny do przedstawionego w tym artykule. Kreator wykrywa osadzoną kolekcję JSON w *pokojach* i wnioskuje schemat indeksu, który dostarcza odpowiednią kolekcję typów złożonych. 
+Za pomocą własnego zestawu danych można utworzyć i załadować indeks za pomocą [Kreatora importu danych](search-import-data-portal.md) . Kreator wykrywa osadzoną kolekcję JSON, taką jak element zawarty w *pokojach*, i wnioskuje schemat indeksu, który zawiera kolekcję typu złożonego. 
 
   ![Kreator wywnioskowany przez Kreatora importu danych](media/index-sql-relational-data/search-index-rooms-complex-collection.png "Kreator wywnioskowany przez Kreatora importu danych")
 
-Aby ukończyć Importowanie i utworzyć używany indeks, należy wybrać klucz i ustawić atrybuty samodzielnie. Jeśli nie znasz tego kreatora, wypróbuj następujące przewodnik Szybki Start, aby poznać podstawowe kroki.
+Skorzystaj z poniższego przewodnika Szybki Start, aby poznać podstawowe kroki Kreatora importu danych.
 
 > [!div class="nextstepaction"]
 > [Szybki start: Tworzenie indeksu wyszukiwania przy użyciu Azure Portal](search-get-started-portal.md)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: b-juche
-ms.openlocfilehash: 563416418b3f387f103fddc88b3ba9ad4c93fdd4
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: aea783b818550b8219e1a0498256280f61f678e1
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69030799"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995115"
 ---
 # <a name="cost-model-for-azure-netapp-files"></a>Model kosztów usługi Azure NetApp Files 
 
@@ -73,7 +73,7 @@ Poniższy diagram ilustruje następujące koncepcje:
     * Woluminy od 1 do 8 są przypisane do 60 TiB każdy.  Całkowita użyta pojemność to 480 TiB.  
         Każdy wolumin ma limit QoS wynoszący 3,75 GiB/s przepływności (60 TiB * 64 MiB/s).  
     * Do woluminu 9 przypisano limit 20 TiB.  
-        Wolumin 9 ma limit QoS wynoszący 1,25 GiB/s przepływności (60 TiB * 64 MiB/s).
+        Wolumin 9 ma limit QoS 1,25 GiB/s przepływności (20 TiB * 64 MiB/s).
 * Wolumin 9 jest scenariuszem nadwyżkowym. Ma 25 TiB rzeczywistego zużycia.  
     * Po upływie okresu prolongaty o jednej godzinie rozmiar puli pojemności zostanie zmieniony na 505 TiB.  
         Oznacza to, że łączna zużyta pojemność = 8 * 60-TiB przydziału dla woluminów od 1 do 8 i 25 TiB rzeczywistego zużycia dla woluminu 9.

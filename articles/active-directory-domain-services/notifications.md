@@ -1,102 +1,89 @@
 ---
-title: 'Azure Active Directory Domain Services: Ustawienia powiadomień | Dokumentacja firmy Microsoft'
-description: Ustawienia powiadomień dla usług domenowych Azure AD
+title: Powiadomienia e-mail dla Azure AD Domain Services | Microsoft Docs "
+description: Dowiedz się, jak skonfigurować powiadomienia e-mail o problemach w Azure Active Directory Domain Services domenie zarządzanej
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: b9af1792-0b7f-4f3e-827a-9426cdb33ba6
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/20/2019
+ms.date: 09/12/2019
 ms.author: iainfou
-ms.openlocfilehash: a89b13d40f4eea08ecdb0f1eb8d68d1a146aca2b
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 8261723f145c7b8ba01e27108e7a309f9f483d2c
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67472794"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993132"
 ---
-# <a name="notification-settings-in-azure-ad-domain-services"></a>Ustawienia powiadomień w usługach domenowych Azure AD
+# <a name="configure-email-notifications-for-issues-in-azure-active-directory-domain-services"></a>Skonfiguruj powiadomienia e-mail pod kątem problemów w Azure Active Directory Domain Services
 
-Powiadomienia dotyczące usług domenowych Azure AD umożliwia zaktualizowania zaraz po wykryciu alert o kondycji w domenie zarządzanej.  
+Kondycja domeny zarządzanej Azure Active Directory Domain Services (Azure AD DS) jest monitorowana przez platformę Azure. Na stronie stan kondycji w Azure Portal są wyświetlane alerty dla domeny zarządzanej. Aby upewnić się, że w odpowiednim czasie odpowiedziały problemy, powiadomienia e-mail można skonfigurować do raportowania alertów dotyczących kondycji natychmiast po ich wykryciu w domenie zarządzanej AD DS platformy Azure.
 
-Ta funkcja jest dostępna tylko dla zarządzanych domen, które nie znajdują się w klasycznych sieciach wirtualnych.
+W tym artykule opisano sposób konfigurowania adresatów powiadomień e-mail dla domeny zarządzanej AD DS platformy Azure.
 
+## <a name="email-notification-overview"></a>Omówienie powiadomień e-mail
 
-## <a name="how-to-check-your-azure-ad-domain-services-email-notification-settings"></a>Jak sprawdzić ustawienia powiadomień poczty e-mail i usług domenowych Azure AD
+Aby poinformować użytkownika o problemach z domeną zarządzaną AD DS platformy Azure, możesz skonfigurować powiadomienia e-mail. Te powiadomienia e-mail określają domenę zarządzaną platformy Azure AD DS, w której znajduje się alert, a także podawanie czasu wykrywania i linku do strony kondycji w Azure Portal. Następnie można wykonać podane porady dotyczące rozwiązywania problemów, aby rozwiązać te problemy.
 
-1. Przejdź do [strony usług domenowych Azure AD](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices) w witrynie Azure portal
-2. Wybierz domenę zarządzaną z tabeli
-3. W obszarze nawigacji po lewej stronie, wybierz **ustawień powiadomień**
+Następujące przykładowe powiadomienie e-mail wskazuje krytyczne ostrzeżenie lub alert został wygenerowany w domenie zarządzanej AD DS platformy Azure:
 
-Na stronie wyświetla listę wszystkich adresatów wiadomości e-mail dla powiadomień e-mail dla usługi Azure AD Domain Services.
-
-## <a name="what-does-an-email-notification-look-like"></a>Jak wygląda powiadomienie e-mail?
-
-Poniższej ilustracji przedstawiono przykład wiadomość e-mail z powiadomieniem:
-
-![Przykład powiadomienia e-mail](./media/active-directory-domain-services-alerts/email-alert.png)
-
-Adres e-mail Określa domeny zarządzanej, który ten alert jest obecny na, zapewniając czas wykrycia oraz link do strony kondycji usług domenowych Azure AD w witrynie Azure portal.
+![Przykładowe powiadomienie e-mail](./media/active-directory-domain-services-alerts/email-alert.png)
 
 > [!WARNING]
-> Zawsze upewnij się, że wiadomość e-mail pochodzi z zweryfikowanych nadawcy Microsoft przed kliknięciem przycisku łącza w wiadomości e-mail. Wiadomości e-mail zawsze pochodzą z wiadomości e-mail azure-noreply@microsoft.com
+> Zawsze upewnij się, że wiadomość e-mail pochodzi od zweryfikowanego nadawcy firmy Microsoft przed kliknięciem linków w komunikacie. Powiadomienia e-mail zawsze pochodzą z `azure-noreply@microsoft.com` adresu.
 
+### <a name="why-would-i-receive-email-notifications"></a>Dlaczego otrzymuję powiadomienia e-mail?
 
-## <a name="why-would-i-receive-email-notifications"></a>Dlaczego będzie otrzymywać powiadomień pocztą e-mail?
+Usługa Azure AD DS wysyła powiadomienia e-mail o ważnych aktualizacjach dotyczących domeny zarządzanej. Te powiadomienia są przeznaczone tylko dla pilnych problemów, które mają wpływ na usługę i powinny być natychmiast rozwiązywane. Każde powiadomienie e-mail jest wyzwalane przez alert w domenie zarządzanej AD DS platformy Azure. Alerty są również wyświetlane w Azure Portal i można je wyświetlić na [stronie usługi Azure AD DS Health][check-health].
 
-Azure AD Domain Services wysyła powiadomienia e-mail o ważnych aktualizacji informacje o domenie.  Te powiadomienia są tylko w przypadku pilnych sprawach, będzie miało wpływ na usługi, które powinny być kierowany od razu. Każde powiadomienie e-mail jest wyzwalany przez alert w domenie zarządzanej. Te alerty są również wyświetlane w witrynie Azure portal i mogą być wyświetlane na [strony kondycji usług domenowych Azure AD](check-health.md).
+Usługa Azure AD DS nie wysyła wiadomości e-mail w celu reklamy, aktualizacji lub sprzedaży.
 
-Azure AD Domain Services nie wysyła wiadomości e-mail do tej listy dla anonsu, aktualizacji lub celów sprzedaży.
+### <a name="when-will-i-receive-email-notifications"></a>Kiedy otrzymam powiadomienia e-mail?
 
-## <a name="when-will-i-receive-email-notifications"></a>Kiedy będzie otrzymywał powiadomienia e-mail
+Powiadomienie jest wysyłane natychmiast po znalezieniu [nowego alertu][troubleshoot-alerts] w domenie zarządzanej AD DS platformy Azure. Jeśli alert nie zostanie rozwiązany, dodatkowe powiadomienia e-mail będą wysyłane jako przypomnienia co cztery dni.
 
-Natychmiast otrzymasz powiadomienie po [nowy alert](troubleshoot-alerts.md) znajduje się w domenie zarządzanej. Jeśli alert nie zostanie rozwiązany, powiadomienia e-mail będą wysyłane Przypominamy, co cztery dni.
+### <a name="who-should-receive-the-email-notifications"></a>Kto powinien otrzymywać powiadomienia e-mail?
 
-## <a name="who-should-receive-the-email-notifications"></a>Kto powinien otrzymywać powiadomienia e-mail?
+Lista adresatów wiadomości e-mail dla usługi Azure AD DS powinna składać się z osób, które mogą administrować i wprowadzać zmiany w domenie zarządzanej. Ta lista wiadomości e-mail powinna być uważana za "pierwszych odpowiadających" na wszelkie alerty i problemy.
 
+Do powiadomień e-mail można dodać maksymalnie pięciu dodatkowych adresatów. Jeśli potrzebujesz więcej niż pięciu adresatów powiadomień e-mail, Utwórz listę dystrybucyjną i Dodaj ją do listy powiadomień.
 
- Zalecane jest lista adresatów poczty e-mail na składa się z osób, które mogą administrować i wprowadzić zmiany do domeny zarządzanej usług domenowych Azure AD. Ta lista wiadomości e-mail powinny być uważane za swoje "pierwszy obiektów odpowiadających" na wykryte problemy. Jeśli masz więcej niż pięć dodatkowych wiadomości e-mail, które chcesz dodać, zaleca się utworzenie listy dystrybucyjnej, zamiast tego dodać do listy powiadomień.
+Możesz również wybrać opcję posiadania wszystkich *administratorów globalnych* w katalogu usługi Azure AD, a każdy członek grupy *Administratorzy domeny w usłudze AAD* odbiera powiadomienia e-mail. Usługa Azure AD DS wysyła tylko powiadomienia do 100 adresów e-mail, w tym listę administratorów globalnych i administratorów usługi AAD DC.
 
-Jesteś w stanie dodać maksymalnie pięć dodatkowych wiadomości e-mail dla powiadomień dotyczących usług domenowych Azure AD. Ponadto możesz również mają wszyscy administratorzy globalni w katalogu, a każdy członek grupy "Administratorzy usługi AAD DC" otrzymywać powiadomień pocztą e-mail w usługach domenowych Azure AD. Azure AD Domain Services wysyła powiadomienia do maksymalnie 100 adresów e-mail, łącznie z listą Administratorzy globalni i Administratorzy usługi AAD DC.
+## <a name="configure-email-notifications"></a>Konfigurowanie powiadomień e-mail
 
+Aby przejrzeć istniejących adresatów powiadomień e-mail lub dodać dodatkowych adresatów, wykonaj następujące czynności:
 
-## <a name="how-to-add-an-additional-email-recipient"></a>Jak dodać odbiorcy wiadomości e-mail dodatkowe
+1. W Azure Portal Wyszukaj i wybierz pozycję **Azure AD Domain Services**.
+1. Wybierz domenę zarządzaną platformy Azure AD DS, na przykład *contoso.com*.
+1. Po lewej stronie okna zasobów AD DS platformy Azure wybierz pozycję **Ustawienia powiadomień**. Są wyświetlane wszyscy adresaci powiadomień e-mail.
+1. Aby dodać adresata poczty e-mail, wprowadź adres e-mail w tabeli dodatkowych adresatów.
+1. Gdy skończysz, wybierz pozycję **Zapisz** na pasku nawigacyjnym najwyższego poziomu.
 
 > [!WARNING]
-> Po zmianie ustawień powiadomień, zmieniasz ustawienia powiadomień dla całej domeny zarządzanej, nie tylko siebie.
-
-1. Przejdź do [strony usług domenowych Azure AD](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices) w witrynie Azure portal.
-2. Kliknij domenę zarządzaną.
-3. W okienku nawigacji po lewej stronie, kliknij przycisk **ustawień powiadomień**.
-4. Aby dodać wiadomość e-mail, wpisz adres e-mail w tabeli dodatkowych adresatów.
-5. W okienku nawigacji górnej strony, kliknij przycisk "Zapisz".
+> Po zmianie ustawień powiadomień ustawienia powiadomień dla całej domeny zarządzanej usługi Azure AD DS są aktualizowane, a nie tylko przez siebie.
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-#### <a name="i-received-an-email-notification-for-an-alert-but-when-i-logged-on-to-the-azure-portal-there-was-no-alert-what-happened"></a>Otrzymuję wiadomość e-mail z powiadomieniem o alercie, ale gdy jest zalogowany do witryny Azure portal nie wystąpił żaden alert. Co się stało?
+### <a name="i-received-an-email-notification-for-an-alert-but-when-i-logged-on-to-the-azure-portal-there-was-no-alert-what-happened"></a>Otrzymuję powiadomienie e-mail dotyczące alertu, ale po zalogowaniu się do Azure Portal nie było alertu. Co się stało?
 
-Jeśli alert został rozwiązany, alert nie będzie wyświetlany w witrynie Azure portal. Najbardziej prawdopodobnym powodem jest czy ktoś inny, która odbiera powiadomienia e-mail rozwiązać alert w domenie zarządzanej lub był automatycznie rozwiązany przez usług domenowych Azure AD.
+Jeśli alert zostanie rozwiązany, alert zostanie wyczyszczony z Azure Portal. Najbardziej prawdopodobną przyczyną jest to, że ktoś inny otrzymuje powiadomienia e-mail o rozwiązaniu alertu w domenie zarządzanej platformy Azure AD DS lub został automatycznie rozwiązany przez platformę Azure.
 
+### <a name="why-can-i-not-edit-the-notification-settings"></a>Dlaczego nie mogę edytować ustawień powiadomień?
 
-#### <a name="why-can-i-not-edit-the-notification-settings"></a>Dlaczego nie można edytować ustawienia powiadomień?
+Jeśli nie możesz uzyskać dostępu do strony ustawień powiadomień w Azure Portal, nie masz uprawnień do edytowania domeny zarządzanej AD DS platformy Azure. Musisz skontaktować się z administratorem globalnym, aby uzyskać uprawnienia do edytowania zasobu usługi Azure AD DS lub usunąć go z listy adresatów.
 
-Jeśli nie możesz uzyskać dostęp do strony ustawienia powiadomień w witrynie Azure portal, nie masz uprawnień do edytowania usług domenowych Azure AD. Należy skontaktować się z administratorem globalnym, aby uzyskać uprawnienia do edytowania zasobów usługi Azure AD Domain Services lub usunięte z listy adresatów.
+### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>Nie otrzymuję powiadomień e-mail, mimo że podałem mój adres e-mail. Dlaczego?
 
-#### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>Nie mogę otrzymywać powiadomienia e-mail, mimo że można podać Mój adres e-mail. Dlaczego?
+Sprawdź spam lub folder wiadomości-śmieci w wiadomości e-mail dotyczącej powiadomienia i upewnij się, że nadawca `azure-noreply@microsoft.com`programu ma zezwalać.
 
-Sprawdź folder spamu lub śmieci w wiadomości e-mail powiadomienia i upewnij się, że lista dozwolonych nadawcy (azure-noreply@microsoft.com).
+## <a name="next-steps"></a>Następne kroki
 
-## <a name="next-steps"></a>Kolejne kroki
-- [Rozwiąż alerty w domenie zarządzanej](troubleshoot-alerts.md)
-- [Więcej informacji na temat usługi Azure AD Domain Services](overview.md)
-- [Skontaktuj się z zespołem produktu](contact-us.md)
+Aby uzyskać więcej informacji na temat rozwiązywania problemów, które mogą być zgłaszane, zobacz temat [Rozwiązywanie alertów w domenie zarządzanej usługi Azure AD DS][troubleshoot-alerts].
 
-## <a name="contact-us"></a>Skontaktuj się z nami
-Skontaktuj się z zespołem produktu usługi Azure Active Directory Domain Services, aby [Podziel się opinią lub pomocy technicznej](contact-us.md).
+<!-- INTERNAL LINKS -->
+[check-health]: check-health.md
+[troubleshoot-alerts]: troubleshoot-alerts.md

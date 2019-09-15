@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 240b2110db66af0982e4e1bf95d3715cbe733a60
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 0e11949804e0c3de52db315424f83905516b4da8
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816521"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996598"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Rozwiązywanie problemów z wydajnością Azure Files
 
@@ -22,7 +22,7 @@ W tym artykule wymieniono niektóre typowe problemy związane z udziałami plik�
 
 ### <a name="cause-1-share-experiencing-throttling"></a>Przyczyna 1: Udostępnianie z ograniczeniami
 
-Domyślny limit przydziału dla udziału w warstwie Premium to 100 GiB, który 100 zapewnia liczbę operacji wejścia/wyjścia na sekundę (z możliwością przekroczenia do 300 przez godzinę). Aby uzyskać więcej informacji o aprowizacji i jej relacji z wieloma operacjami we/ [](storage-files-planning.md#provisioned-shares) wy, zobacz sekcję udostępniane udziały w przewodniku planowania.
+Domyślny limit przydziału dla udziału w warstwie Premium to 100 GiB, który 100 zapewnia liczbę operacji wejścia/wyjścia na sekundę (z możliwością przekroczenia do 300 przez godzinę). Aby uzyskać więcej informacji o aprowizacji i jej relacji z wieloma operacjami we/wy, zobacz sekcję udostępniane [udziały](storage-files-planning.md#provisioned-shares) w przewodniku planowania.
 
 Aby potwierdzić, że Twój udział jest ograniczany, możesz skorzystać z metryk platformy Azure w portalu.
 
@@ -85,6 +85,7 @@ Jedną z potencjalnych przyczyn tego problemu jest brak obsługi wielu kanałów
 
 - Uzyskanie maszyny wirtualnej z większym rdzeniem może pomóc w zwiększeniu przepływności.
 - Uruchomienie aplikacji klienckiej z wielu maszyn wirtualnych spowoduje zwiększenie przepływności.
+
 - Jeśli to możliwe, Użyj interfejsów API REST.
 
 ## <a name="throughput-on-linux-clients-is-significantly-lower-when-compared-to-windows-clients"></a>Przepływność na klientach z systemem Linux jest znacznie mniejsza w porównaniu z klientami systemu Windows.
@@ -95,8 +96,9 @@ Jest to znany problem z implementacją klienta SMB w systemie Linux.
 
 ### <a name="workaround"></a>Obejście
 
-- Rozłożenie obciążenia na wiele maszyn wirtualnych
+- Rozłożenie obciążenia na wiele maszyn wirtualnych.
 - Na tej samej maszynie wirtualnej Użyj wielu punktów instalacji z opcją **nosharesock** i rozłożyć obciążenie na te punkty instalacji.
+- W systemie Linux spróbuj zainstalować przy użyciu opcji **nostrictsync** , aby uniknąć wymuszania opróżniania SMB dla każdego wywołania fsync. W przypadku Azure Files ta opcja nie zakłóca działania consistentcy danych, ale może spowodować zamienienie starych metadanych plików na listę katalogów (polecenie**ls-l** ). Bezpośrednie zapytanie o metadane pliku (**stat** polecenie) zwróci najbardziej aktualne metadane pliku.
 
 ## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>Duże opóźnienia w przypadku dużych obciążeń metadanych obejmujących liczne operacje otwierania/zamykania.
 

@@ -1,7 +1,7 @@
 ---
 title: Przykładowe notesy Jupyter
-titleSuffix: Azure Machine Learning service
-description: Znajdź i użyj przykładowych notesów Jupyter, aby poznać zestaw SDK języka Python dla usługi Azure Machine Learning.
+titleSuffix: Azure Machine Learning
+description: Znajdź i użyj przykładowych notesów Jupyter, aby poznać Azure Machine Learning Python for SDK.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +11,14 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 14962b936d1c09a6c50daa7bec460ce11dbefe5d
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: dd93e4e621a4fd474283f788e2cf67b305a1be3d
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860379"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997059"
 ---
-# <a name="explore-azure-machine-learning-service-with-jupyter-notebooks"></a>Eksplorowanie usługi Azure Machine Learning przy użyciu notesów Jupyter
+# <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Eksplorowanie Azure Machine Learning z notesami Jupyter
 
 [Przykładowe repozytorium Azure Machine Learning notesów](https://github.com/azure/machinelearningnotebooks) zawiera najnowsze Azure Machine Learning przykłady zestawu SDK dla języka Python. Te notesy Juypter zostały zaprojektowane, aby ułatwić zapoznanie się z zestawem SDK i służyć jako modele dla własnych projektów uczenia maszynowego.
 
@@ -55,7 +55,7 @@ Data Science Virtual Machine (DSVM) to dostosowany obraz maszyny wirtualnej zbud
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [przykładowymi notesami](https://aka.ms/aml-notebooks) , aby dowiedzieć się, co może zrobić usługa Azure Machine Learning lub wypróbuj te samouczki:
+Zapoznaj się z [przykładowymi notesami](https://aka.ms/aml-notebooks) , aby dowiedzieć się, jakie Azure Machine Learning można wykonać, lub wypróbuj te samouczki:
 
 - [Szkolenie i wdrażanie modelu klasyfikacji obrazów przy użyciu zestawu danych MNIST](tutorial-train-models-with-aml.md)
 

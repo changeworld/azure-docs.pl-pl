@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7385888c54d46e706621f781a64d12d3ae7aa5fb
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 87e130d3a4569971bffb9b1ac2e189babb900225
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512701"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997692"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Jakie typy dysków są dostępne na platformie Azure?
 
@@ -42,9 +42,9 @@ Podczas aprowizacji Ultra Disk można niezależnie skonfigurować pojemność i 
 Niektóre kluczowe możliwości Ultra disks to:
 
 - Pojemność dysku: Pojemność Ultra disks mieści się w zakresie od 4 GiB do 64 TiB.
-- Liczba operacji we/wy dysku: Ultra disks obsługuje limity liczby operacji we/wy 300 IOPS/GiB, maksymalnie 160 K operacji we/wy na dysk. Aby osiągnąć liczbę operacji we/wy, która została zainicjowana, upewnij się, że wybrane operacje we/wy na dysku są mniejsze niż limit liczby IOPS maszyny wirtualnej. Minimalna liczba operacji we/wy na dysk wynosi 2 IOPS/GiB, a ogólna podstawowa linia bazowa wynosi 100 operacji we/wy. Na przykład jeśli masz 4 GiB Ultra Disk, będziesz mieć co najmniej 100 operacji we/wy, a nie 8 operacji we/wy na sekundę.
+- Liczba operacji we/wy dysku: Ultra disks obsługuje limity liczby operacji we/wy 300 IOPS/GiB, maksymalnie 160 K operacji we/wy na dysk. Aby osiągnąć liczbę operacji we/wy, która została zainicjowana, upewnij się, że wybrane operacje we/wy na dysku są mniejsze niż limit liczby IOPS maszyny wirtualnej. Minimalna liczba operacji we/wy na dysk wynosi 2 IOPS/GiB, a ogólna podstawowa linia bazowa wynosi 100 operacji we/wy. Na przykład jeśli masz 4 GiB Ultra Disk, będziesz mieć co najmniej 100 operacji we/wy, a nie osiem operacji we/wy na sekundę.
 - Przepływność dysku: W przypadku bardzo dysków limit przepływności pojedynczego dysku to 256 KiB/s dla każdej z zainicjowanych operacji we/wy, maksymalnie 2000 s MB na dysk (gdzie MB/s = 10 ^ 6 bajtów na sekundę). Minimalna przepływność na dysk to 4KiB/s dla każdej z zainicjowanych operacji we/wy z co najmniej 1 MB/s.
-- Ultra disks obsługuje dostosowanie atrybutów wydajności dysku (IOPS i przepływności) w czasie wykonywania bez odłączania dysku od maszyny wirtualnej. Po wystawieniu operacji zmiany rozmiaru dysku na dysku może upłynąć do czasu, aż zmiana zacznie obowiązywać.
+- Ultra disks obsługuje dostosowanie atrybutów wydajności dysku (IOPS i przepływności) w czasie wykonywania bez odłączania dysku od maszyny wirtualnej. Po wystawieniu operacji zmiany rozmiaru dysku na dysku może upłynąć do czasu, aż zmiana zacznie obowiązywać. Przekroczono limit czterech operacji zmiany rozmiaru wydajności w oknie 24-godzinnym. Istnieje możliwość, że operacja zmiany rozmiaru wydajności nie powiedzie się z powodu braku wydajności przepustowości.
 
 ### <a name="disk-size"></a>Rozmiar dysku
 
@@ -71,3 +71,4 @@ Na razie Ultra dyski mają dodatkowe ograniczenia, są następujące:
 - Można utworzyć tylko jako puste dyski  
 - Nie obsługują jeszcze migawek dysków, obrazów maszyn wirtualnych, zestawów dostępności, zestawów skalowania maszyn wirtualnych i usługi Azure Disk Encryption
 - Nie należy jeszcze obsługiwać integracji z programem Azure Backup lub Azure Site Recovery
+- Bieżący maksymalny limit liczby operacji we/wy na maszynach wirtualnych "GA" to 80 000.

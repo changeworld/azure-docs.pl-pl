@@ -1,6 +1,6 @@
 ---
 title: Korzystanie z wpisów tajnych w przebiegach szkoleniowych
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Przekaż wpisy tajne do przebiegów szkoleniowych w sposób bezpieczny przy użyciu Key Vault obszaru roboczego
 services: machine-learning
 author: rastala
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 777818b74f935a560047d1eea20e0d0e657efcac
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 4872ba8a707192cd61ec371fa982a076d410e918
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019422"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996570"
 ---
 # <a name="use-secrets-in-training-runs"></a>Korzystanie z wpisów tajnych w przebiegach szkoleniowych
 
@@ -69,4 +69,4 @@ Metody Set i Get mają również wersje usługi Batch [set_secrets](https://docs
 ## <a name="next-steps"></a>Następne kroki
 
  * [Wyświetl przykładowy Notes](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/manage-azureml-service/authentication-in-azureml/authentication-in-azureml.ipynb)
- * [Dowiedz się więcej na temat zabezpieczeń przedsiębiorstwa za pomocą usługi Azure Machine Learning](concept-enterprise-security.md)
+ * [Dowiedz się więcej o zabezpieczeniach przedsiębiorstwa z Azure Machine Learning](concept-enterprise-security.md)

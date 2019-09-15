@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 02/23/2019
-ms.openlocfilehash: 8709d88c4d21a40ac8ebb27e5c1669d8f5fa3555
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 41acef4ebe13ac6152d795db4adfae5a6ae1ad91
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934222"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995428"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Azure SQL Database warstw usług
 
@@ -46,8 +46,6 @@ W poniższej tabeli opisano kluczowe różnice między warstwami usług dla najn
 | | Wystąpienie zarządzane  | 32 GB – 8 TB | ND | 32 GB – 4 TB |
 | **Rozmiar bazy danych TempDB** | Pojedyncza baza danych/Pula elastyczna | [32 GB na rdzeń wirtualny](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-for-provisioned-compute) | [32 GB na rdzeń wirtualny](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier-for-provisioned-compute) | [32 GB na rdzeń wirtualny](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute) |
 | | Wystąpienie zarządzane  | [24 GB na rdzeń wirtualny](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | ND | Do 4 TB — [ograniczone przez rozmiar magazynu](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
-| **Przepływność we/wy** | Pojedyncza baza danych | [500 operacji we/wy na sekundę](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-for-provisioned-compute) | Efektywne operacje we/wy będą zależeć od obciążenia. | [4000 operacji we/wy na sekundę](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute)|
-| | Wystąpienie zarządzane | [100-250 MB/s i 500-7500 operacji we/wy na plik](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | ND | [1375 operacji we/wy na sekundę](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
 | **Przepływność zapisu dziennika** | Pojedyncza baza danych | [1,875 MB/s na rdzeń wirtualny (maksymalnie 30 MB/s)](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-for-provisioned-compute) | 100 MB/s | [6 MB/s na rdzeń wirtualny (maksymalnie 96 MB/s)](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute) |
 | | Wystąpienie zarządzane | [3 MB/s na rdzeń wirtualny (maksymalnie 22 MB/s)](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | ND | [4 MB/s na rdzeń wirtualny (maksymalnie 48 MB/s)](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
 |**Dostępność**|Wszyscy| 99,99% |  [99,95% z jedną repliką pomocniczą, 99,99% z więcej replik](sql-database-service-tier-hyperscale-faq.md#what-slas-are-provided-for-a-hyperscale-database) | 99,99% <br/> [99,995% ze strefą nadmiarową pojedynczą bazą danych](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |

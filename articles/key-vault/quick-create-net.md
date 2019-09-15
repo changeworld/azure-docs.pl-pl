@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: e57b5a49ac0c99fa81e54134e74964bf38418e4d
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d24323996e222caf6456372cbc65681d2055c3db
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934911"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996640"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net"></a>Szybki start: Azure Key Vault Biblioteka kliencka dla platformy .NET
 
@@ -26,7 +26,6 @@ Usługa Azure Key Vault ułatwia ochronę kluczy kryptograficznych i kluczy tajn
 - Użyj zweryfikowanej sprzętowych modułów zabezpieczeń poziomu 2 trybu FIPS 140-2.
 
 [](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) | Pakiet[kodu](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/KeyVault)[](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/) źródłowego biblioteki dokumentacji interfejsu API (NuGet) | 
-
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -120,24 +119,12 @@ Ta operacja zwróci serię par klucz/wartość.
 
 Zwróć uwagę na clientId i clientSecret, ponieważ będziemy z nich korzystać w powyższym kroku [uwierzytelnianie w magazynie kluczy](#authenticate-to-your-key-vault) .
 
-Wymagany jest również identyfikator aplikacji głównej usługi. Można go znaleźć, uruchamiając [AZ AD Sp list](https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list) z `--show-mine` parametrem:
-
-```azurecli
-az ad sp list --show-mine
-```
-
-`appID` Pojawia się w zwróconym kodzie JSON:
-
-```json
-    "appId": "2cf5aa18-0100-445a-9438-0b93e577a3ed",
-```
-
 #### <a name="give-the-service-principal-access-to-your-key-vault"></a>Przyznaj jednostce usługi dostęp do magazynu kluczy
 
-Utwórz zasady dostępu dla magazynu kluczy, który przyznaje uprawnienia do nazwy głównej usługi. Można to zrobić za pomocą polecenia [AZ webmagazyn Set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) . Chcemy nadać jednostce usługi uprawnienia Get, list i Set dla kluczy i wpisów tajnych.
+Utwórz zasady dostępu dla magazynu kluczy, który przyznaje uprawnienia do nazwy głównej usługi przez przekazanie clientId do polecenia [AZ Key magazynu Set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) . Nadaj jednostce usługi uprawnienia Get, list i Set dla kluczy i wpisów tajnych.
 
 ```azurecli
-az keyvault set-policy -n <your-unique-keyvault-name> --spn <appid-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
+az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
 ```
 
 ## <a name="object-model"></a>Model obiektów

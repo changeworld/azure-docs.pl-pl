@@ -1,7 +1,7 @@
 ---
 title: Przewodnik rozwiązywania problemów z wdrażaniem
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak obejść, rozwiązać i rozwiązać typowe błędy wdrażania platformy Docker za pomocą usługi Azure Kubernetes i Azure Container Instances przy użyciu usługi Azure Machine Learning.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak obejść, rozwiązać i rozwiązać typowe błędy wdrażania platformy Docker za pomocą usługi Azure Kubernetes i Azure Container Instances przy użyciu Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,18 +11,18 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 07/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5ec92e34ffa68718525e9b407dc9e58f4c409975
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 08b9434dbcca96ff57e2c8182693023a5eb2eea9
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183544"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997174"
 ---
-# <a name="troubleshooting-azure-machine-learning-service-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Rozwiązywanie problemów Azure Machine Learning usługi Azure Kubernetes Service i wdrożenia Azure Container Instances
+# <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Rozwiązywanie problemów Azure Machine Learning usługi Azure Kubernetes i wdrożenia Azure Container Instances
 
-Dowiedz się, jak obejść typowe błędy wdrażania platformy Docker i rozwiązać je za pomocą usług Azure Container Instances (ACI) i Azure Kubernetes Service (AKS) przy użyciu usługi Azure Machine Learning.
+Dowiedz się, jak obejść typowe błędy wdrażania platformy Docker i rozwiązać je za pomocą usług Azure Container Instances (ACI) i Azure Kubernetes Service (AKS) przy użyciu Azure Machine Learning.
 
-W przypadku wdrażania modelu w usłudze Azure Machine Learning, system wykonuje wiele zadań. Dostępne są następujące zadania wdrażania:
+W przypadku wdrażania modelu w Azure Machine Learning system wykonuje wiele zadań. Dostępne są następujące zadania wdrażania:
 
 1. W rejestrze modelu obszaru roboczego, należy zarejestrować model.
 
@@ -260,7 +260,7 @@ Ustawienie poziomu rejestrowania na debugowanie może spowodować zarejestrowani
 
 ## <a name="function-fails-runinput_data"></a>Funkcja kończy się niepowodzeniem: run(input_data)
 
-Jeśli usługa została pomyślnie wdrożona, ale jej ulega awarii, gdy opublikujesz danych do punktu końcowego oceniania, można dodać błąd Przechwytywanie instrukcji w swojej `run(input_data)` funkcji tak, aby zamiast tego zwraca szczegółowy komunikat o błędzie. Na przykład:
+Jeśli usługa została pomyślnie wdrożona, ale jej ulega awarii, gdy opublikujesz danych do punktu końcowego oceniania, można dodać błąd Przechwytywanie instrukcji w swojej `run(input_data)` funkcji tak, aby zamiast tego zwraca szczegółowy komunikat o błędzie. Przykład:
 
 ```python
 def run(input_data):
@@ -346,7 +346,7 @@ W niektórych przypadkach może być konieczne interaktywne Debugowanie kodu w j
 
         ```json
         {
-            "name": "Azure Machine Learning service: Docker Debug",
+            "name": "Azure Machine Learning: Docker Debug",
             "type": "python",
             "request": "attach",
             "port": 5678,
@@ -479,7 +479,7 @@ W tym przykładzie tekstowym Nazwa rejestru to `myregistry` i obraz `myimage`ma 
     docker run --rm --name debug -p 8000:5001 -p 5678:5678 debug:1
     ```
 
-1. Aby dołączyć VS Code do PTVSD wewnątrz kontenera, Otwórz VS Code i naciśnij klawisz F5 lub wybierz opcję __Debuguj__. Po wyświetleniu monitu __wybierz usługę Azure Machine Learning: Konfiguracja debugowania__ platformy Docker. Możesz również wybrać ikonę debugowania na pasku __bocznym usługi Azure Machine Learning: Wpis debugowania__ platformy Docker z menu rozwijanego debugowania, a następnie użyj zieloną strzałkę, aby dołączyć debuger.
+1. Aby dołączyć VS Code do PTVSD wewnątrz kontenera, Otwórz VS Code i naciśnij klawisz F5 lub wybierz opcję __Debuguj__. Po wyświetleniu monitu __wybierz Azure Machine Learning: Konfiguracja debugowania__ platformy Docker. Możesz również wybrać ikonę debugowania z paska bocznego, __Azure Machine Learning: Wpis debugowania__ platformy Docker z menu rozwijanego debugowania, a następnie użyj zieloną strzałkę, aby dołączyć debuger.
 
     ![Ikona debugowania, przycisk Rozpocznij debugowanie i selektor konfiguracji](media/how-to-troubleshoot-deployment/start-debugging.png)
 

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: 889c2e75e9eee0586c709b032dbb6d1c58d45102
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 09/13/2019
+ms.openlocfilehash: 5ef11e86b85a537a809352325d56ac3ff983c2c1
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142055"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993046"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>Replikowanie danych do Azure Database for MySQL
 
@@ -22,6 +22,8 @@ Główne scenariusze, które należy wziąć pod uwagę przy użyciu replikacja 
 
 - **Synchronizacja danych hybrydowych:** Za pomocą replikacja typu data-in można zachować synchronizację danych między serwerami lokalnymi i Azure Database for MySQL. Ta synchronizacja jest przydatna do tworzenia aplikacji hybrydowych. Ta metoda jest atrakcyjna, gdy masz istniejący lokalny serwer baz danych, ale chcesz przenieść dane do regionu bliżej użytkowników końcowych.
 - **Synchronizacja z obsługą kilku chmur:** W przypadku złożonych rozwiązań w chmurze Użyj replikacja typu data-in do synchronizowania danych między Azure Database for MySQL i różnymi dostawcami chmury, w tym maszyn wirtualnych i usług baz danych hostowanych w tych chmurach.
+ 
+W przypadku scenariuszy migracji Użyj [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/)(DMS).
 
 ## <a name="limitations-and-considerations"></a>Ograniczenia i zagadnienia
 
@@ -34,10 +36,10 @@ Główne scenariusze, które należy wziąć pod uwagę przy użyciu replikacja 
 - Każda tabela musi mieć klucz podstawowy.
 - Serwer główny powinien korzystać z aparatu programu MySQL InnoDB.
 - Użytkownik musi mieć uprawnienia do konfigurowania rejestrowania plików binarnych i tworzenia nowych użytkowników na serwerze głównym.
-- Jeśli na serwerze głównym jest włączony protokół SSL, upewnij się, że certyfikat urzędu certyfikacji SSL podany dla domeny został uwzględniony w `mysql.az_replication_change_master` procedurze składowanej. Zapoznaj się z [](https://docs.microsoft.com/azure/mysql/howto-data-in-replication#link-master-and-replica-servers-to-start-data-in-replication) poniższymi przykładami i `master_ssl_ca` parametrem.
+- Jeśli na serwerze głównym jest włączony protokół SSL, upewnij się, że certyfikat urzędu certyfikacji SSL podany dla domeny został uwzględniony w `mysql.az_replication_change_master` procedurze składowanej. Zapoznaj się z poniższymi [przykładami](https://docs.microsoft.com/azure/mysql/howto-data-in-replication#link-master-and-replica-servers-to-start-data-in-replication) i `master_ssl_ca` parametrem.
 - Upewnij się, że adres IP serwera głównego został dodany do reguł zapory serwera repliki usługi Azure Database for MySQL. Zaktualizuj reguły zapory za pomocą [witryny Azure Portal](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-portal) lub [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-cli).
 - Upewnij się, że maszyna hostująca serwer główny zezwala na ruch przychodzący i wychodzący na porcie 3306.
-- Upewnij się, że serwer główny ma **publiczny adres IP** lub że system DNS jest dostępny publicznie.
+- Upewnij się, że serwer główny ma **publiczny adres IP**, usługa DNS jest publicznie dostępna lub ma w pełni kwalifikowaną nazwę domeny (FQDN).
 
 ### <a name="other"></a>Inne
 - Replikacja danych jest obsługiwana tylko w warstwach cenowych Ogólnego przeznaczenia i zoptymalizowanych pod kątem pamięci.
@@ -46,3 +48,4 @@ Główne scenariusze, które należy wziąć pod uwagę przy użyciu replikacja 
 ## <a name="next-steps"></a>Następne kroki
 - Dowiedz się, jak [skonfigurować replikację danych](howto-data-in-replication.md)
 - Więcej informacji [na temat replikowania na platformie Azure przy użyciu replik odczytu](concepts-read-replicas.md)
+- Dowiedz się więcej o tym, jak [migrować dane przy minimalnym przestoju przy użyciu usługi DMS](howto-migrate-online.md)

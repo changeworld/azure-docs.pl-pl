@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 8d058c55eab3d161e625d7d4ca3ef53b36497e00
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 673c83c861e1f044a521786a903dd7b21db8c170
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814078"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995558"
 ---
-# <a name="optimize-apache-spark-jobs"></a>Optymalizowanie zadań platformy Apache Spark
+# <a name="optimize-apache-spark-jobs-in-hdinsight"></a>Optymalizowanie Apache Spark zadań w usłudze HDInsight
 
 Dowiedz się, jak zoptymalizować konfigurację klastra [Apache Spark](https://spark.apache.org/) dla określonego obciążenia.  Najczęstszym wyzwaniem jest wykorzystanie pamięci z powodu nieprawidłowych konfiguracji (szczególnie programów wykonujących niewłaściwe rozmiary), długotrwałych operacji i zadań, które powodują operacje kartezjańskiego. Można przyspieszyć zadania z odpowiednimi buforowaniem i zezwalać na [pochylenie danych](#optimize-joins-and-shuffles). Aby uzyskać najlepszą wydajność, Monitoruj i sprawdzaj długotrwałe i czasochłonne wykonywanie zadań platformy Spark.
 
@@ -96,7 +96,7 @@ Dla odwołania, struktura pamięci platformy Spark i niektóre parametry pamięc
 
 Jeśli używasz [przędzy Apache Hadoop](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html), przędza kontroluje maksymalną sumę pamięci używaną przez wszystkie kontenery w każdym węźle platformy Spark.  Na poniższym diagramie przedstawiono obiekty kluczowe i ich relacje.
 
-![Zarządzanie pamięcią w ramach PRZĘDZy](./media/apache-spark-perf/yarn-spark-memory.png)
+![Zarządzanie pamięcią w ramach PRZĘDZy](./media/apache-spark-perf/apache-yarn-spark-memory.png)
 
 Aby rozwiązać komunikaty o braku pamięci, spróbuj wykonać następujące działania:
 

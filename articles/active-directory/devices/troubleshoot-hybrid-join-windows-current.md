@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4b0b5bd5972e544c4254ee0f425e27cc8c465f0
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 6d4a0f00c8bcf511f220d3e0df81adac1e9ff0d4
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297570"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995188"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Rozwiązywanie problemów z przyłączonymi urządzeniami hybrydowymi Azure Active Directory 
 
@@ -92,7 +92,7 @@ WamDefaultAuthority: organizations
 
 Przejrzyj poniższe pola i upewnij się, że mają one oczekiwane wartości:
 
-#### <a name="domainjoined--yes"></a>DomainJoined : OPCJĘ  
+#### <a name="domainjoined--yes"></a>DomainJoined : TAK  
 
 To pole wskazuje, czy urządzenie jest przyłączone do lokalnego Active Directory, czy nie. Jeśli wartość **nie**jest równa, urządzenie nie może wykonać sprzężenia hybrydowego usługi Azure AD.  
 
@@ -100,7 +100,7 @@ To pole wskazuje, czy urządzenie jest przyłączone do lokalnego Active Directo
 
 To pole wskazuje, czy urządzenie jest zarejestrowane w usłudze Azure AD jako urządzenie osobiste (oznaczone jako *dołączone do miejsca pracy*). Ta wartość powinna być **nie** dla komputera przyłączonego do domeny, który jest również przyłączony do hybrydowej usługi Azure AD. Jeśli wartość to **tak**, konto służbowe zostało dodane przed ukończeniem hybrydowego sprzężenia usługi Azure AD. W takim przypadku konto jest ignorowane w przypadku korzystania z aktualizacji z rocznicą systemu Windows 10 (1607).
 
-#### <a name="azureadjoined--yes"></a>AzureAdJoined : OPCJĘ  
+#### <a name="azureadjoined--yes"></a>AzureAdJoined : TAK  
 
 To pole wskazuje, czy urządzenie jest przyłączone do usługi Azure AD. Jeśli wartość **nie**jest, przyłączenie do usługi Azure AD nie zostało jeszcze ukończone. 
 
@@ -396,7 +396,7 @@ Pobierz skrypty publiczne tutaj: [ https://1drv.ms/u/s! AkyTjQ17vtfagYkZ6VJzPg78
 
 ### <a name="retrieve-the-join-status"></a>Pobieranie stanu sprzężenia 
 
-#### <a name="wamdefaultset-yes-and-azureadprt-yes"></a>WamDefaultSet: TAK i AzureADPrt: OPCJĘ
+#### <a name="wamdefaultset-yes-and-azureadprt-yes"></a>WamDefaultSet: TAK i AzureADPrt: TAK
   
 Te pola wskazują, czy użytkownik pomyślnie uwierzytelnił się w usłudze Azure AD podczas logowania się do urządzenia. Jeśli wartości **nie**są, może to być spowodowane:
 
@@ -404,6 +404,9 @@ Te pola wskazują, czy użytkownik pomyślnie uwierzytelnił się w usłudze Azu
 - Alternatywny identyfikator logowania
 - Nie znaleziono serwera proxy HTTP
 
+## <a name="known-issues"></a>Znane problemy
+- W obszarze Ustawienia — konta > — > dostęp do miejsca pracy lub szkoły, urządzenia dołączone do hybrydowej usługi Azure AD mogą wyświetlać dwa różne konta, jedno dla usługi Azure AD i jeden dla lokalnej usługi AD, połączone z hotspotami mobilnymi lub zewnętrznymi sieciami Wi-Fi. Jest to tylko problem z interfejsem użytkownika i nie ma żadnego wpływu na funkcjonalność. 
+ 
 ## <a name="next-steps"></a>Następne kroki
 
 Kontynuuj [Rozwiązywanie problemów z urządzeniami za pomocą polecenia dsregcmd](troubleshoot-device-dsregcmd.md)

@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/22/2019
-ms.openlocfilehash: 215660b0f0b8748461849f20e65a3585f939085e
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 8f684a9c0c40774c8c17a08801997c569be74c8d
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858785"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993338"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Tworzenie zestawów danych i uzyskiwanie do nich dostępu (wersja zapoznawcza) w Azure Machine Learning
 
@@ -76,7 +76,12 @@ workspace = Workspace.from_config()
 # retrieve an existing datastore in the workspace by name
 datastore = Datastore.get(workspace, datastore_name)
 ```
+
 ### <a name="create-tabulardatasets"></a>Utwórz TabularDatasets
+
+TabularDatasets można utworzyć za pomocą zestawu SDK lub strony docelowej obszaru roboczego (wersja zapoznawcza).
+
+#### <a name="sdk"></a>SDK 
 
 `from_delimited_files()` Użyj`TabularDatasetFactory` metody klasy, aby odczytać pliki w formacie CSV lub TSV i utworzyć niezarejestrowane TabularDataset. W przypadku odczytywania z wielu plików wyniki zostaną zagregowane w jednej reprezentacji tabelarycznej.
 
@@ -103,7 +108,18 @@ titanic_ds.take(3).to_pandas_dataframe()
 1|2|1|1|Cumings, Pani. Jan Bradley (Florencji Briggs th...|kobieta|38,0|1|0|KOMPUTER 17599|71,2833|C85|C
 2|3|1|3|Heikkinen, chybień. Laina|kobieta|26,0|0|0|STON/O2. 3101282|7,9250||N
 
+#### <a name="workspace-landing-page"></a>Strona docelowa obszaru roboczego 
+
+Zaloguj się do [strony docelowej obszaru roboczego](https://ml.azure.com) , aby utworzyć zestaw danych za pośrednictwem środowiska sieci Web. Obecnie Strona docelowa obszaru roboczego obsługuje tylko tworzenie TabularDatasets.
+
+Poniższe animacje pokazują, jak utworzyć zestaw danych na stronie docelowej obszaru roboczego. 
+
+Najpierw wybierz pozycję **zestawy danych** w sekcji **elementy zawartości** okienka po lewej stronie. Następnie wybierz pozycję **+ Utwórz zestaw danych** , aby wybrać źródło zestawu danych. może to być zarówno z plików lokalnych, magazynów danych, jak i publicznych adresów URL sieci Web. **Ustawienia i Podgląd** oraz formularze **schematów** są inteligentnie wypełniane na podstawie typu pliku. Wybierz pozycję **dalej** , aby je przejrzeć lub aby jeszcze bardziej skonfigurować zestaw danych przed utworzeniem. Wybierz pozycję **gotowe** , aby zakończyć tworzenie zestawu danych. 
+
+![Tworzenie zestawu danych przy użyciu interfejsu użytkownika](media/how-to-create-register-datasets/create-dataset-ui.gif)
+
 ### <a name="create-filedatasets"></a>Utwórz FileDatasets
+
 `from_files()` Użyj`FileDatasetFactory` metody klasy, aby załadować pliki w dowolnym formacie i utworzyć niezarejestrowane FileDataset.
 
 ```Python
@@ -134,6 +150,9 @@ titanic_ds = titanic_ds.register(workspace = workspace,
                                  description = 'titanic training data')
 ```
 
+>[!Note]
+> Zestawy danych utworzone za pośrednictwem strony docelowej obszaru roboczego są automatycznie rejestrowane w obszarze roboczym. 
+
 ## <a name="version-datasets"></a>Zestawy danych wersji
 
 Nowy zestaw danych można zarejestrować pod tą samą nazwą, tworząc nową wersję. Wersja zestawu danych to sposób zakładania stanu danych, dzięki czemu można zastosować określoną wersję zestawu danych na potrzeby eksperymentowania lub kopiowania w przyszłości. Typowe scenariusze, które należy wziąć pod uwagę w przypadku przechowywania wersji: 
@@ -141,7 +160,7 @@ Nowy zestaw danych można zarejestrować pod tą samą nazwą, tworząc nową we
 * W przypadku stosowania różnych metod przygotowywania lub opracowywania funkcji.
 
 ```Python
-# create a TabularDataset from new Titanic training data
+# create a TabularDataset from Titanic training data
 web_paths = [
             'https://dprepdata.blob.core.windows.net/demo/Titanic.csv',
             'https://dprepdata.blob.core.windows.net/demo/Titanic2.csv'

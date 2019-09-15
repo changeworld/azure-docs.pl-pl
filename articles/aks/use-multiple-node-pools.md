@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 516d4f47cb971dee91bc678ff56eeca71a28183a
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 92accf4317ef8d0e3837ce3789615b5aaf6f6919
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915854"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996893"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Wersja zapoznawcza — tworzenie i zarządzanie wieloma pulami węzłów dla klastra w usłudze Azure Kubernetes Service (AKS)
 
@@ -76,9 +76,9 @@ az provider register --namespace Microsoft.ContainerService
 Następujące ograniczenia są stosowane podczas tworzenia klastrów AKS i zarządzania nimi, które obsługują pule wielu węzłów:
 
 * Pule wielu węzłów są dostępne tylko dla klastrów utworzonych po pomyślnym zarejestrowaniu funkcji *MultiAgentpoolPreview* dla subskrypcji. Nie można dodać pul węzłów i zarządzać nimi z istniejącym klastrem AKS utworzonym przed pomyślnym zarejestrowaniem tej funkcji.
-* Nie można usunąć pierwszej puli węzłów.
+* Nie można usunąć domyślnej puli węzłów (pierwszy).
 * Nie można użyć dodatku routingu aplikacji protokołu HTTP.
-* Nie można dodać/zaktualizować/usunąć pul węzłów przy użyciu istniejącego szablonu Menedżer zasobów, tak jak w przypadku większości operacji. Zamiast tego należy [użyć oddzielnego szablonu Menedżer zasobów](#manage-node-pools-using-a-resource-manager-template) , aby wprowadzić zmiany pul węzłów w klastrze AKS.
+* Nie można dodać ani usunąć pul węzłów przy użyciu istniejącego szablonu Menedżer zasobów, tak jak w przypadku większości operacji. Zamiast tego należy [użyć oddzielnego szablonu Menedżer zasobów](#manage-node-pools-using-a-resource-manager-template) , aby wprowadzić zmiany pul węzłów w klastrze AKS.
 
 Chociaż ta funkcja jest dostępna w wersji zapoznawczej, obowiązują następujące dodatkowe ograniczenia:
 
@@ -89,6 +89,8 @@ Chociaż ta funkcja jest dostępna w wersji zapoznawczej, obowiązują następuj
 ## <a name="create-an-aks-cluster"></a>Tworzenie klastra AKS
 
 Aby rozpocząć, Utwórz klaster AKS z pulą jednego węzła. W poniższym przykładzie za pomocą polecenia [AZ Group Create][az-group-create] można utworzyć grupę zasobów o nazwie Moja *zasobów* w regionie *wschodnim* . Klaster AKS o nazwie *myAKSCluster* jest tworzony przy użyciu polecenia [AZ AKS Create][az-aks-create] . A *--Kubernetes-Version* of *1.13.10* służy do pokazywania sposobu aktualizowania puli węzłów w następnym kroku. Można określić dowolną [obsługiwaną wersję Kubernetes][supported-versions].
+
+Zdecydowanie zaleca się użycie usługi równoważenia obciążenia w warstwie Standardowa w przypadku korzystania z wielu pul węzłów. Przeczytaj [ten dokument](load-balancer-standard.md) , aby dowiedzieć się więcej o korzystaniu z usług równoważenia obciążenia w warstwie Standardowa z AKS.
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -101,7 +103,8 @@ az aks create \
     --vm-set-type VirtualMachineScaleSets \
     --node-count 2 \
     --generate-ssh-keys \
-    --kubernetes-version 1.13.10
+    --kubernetes-version 1.13.10 \
+    --load-balancer-sku standard
 ```
 
 Utworzenie klastra trwa kilka minut.
@@ -578,7 +581,7 @@ Zaktualizowanie klastra AKS może potrwać kilka minut, w zależności od ustawi
 ## <a name="assign-a-public-ip-per-node-in-a-node-pool"></a>Przypisywanie publicznego adresu IP na węzeł w puli węzłów
 
 > [!NOTE]
-> W trakcie korzystania z wersji zapoznawczej istnieje ograniczenie użycia tej funkcji w *programie AKS (wersja zapoznawcza) usługa Load Balancer w warstwie Standardowa* z powodu możliwych reguł modułu równoważenia obciążenia powodujących konflikt z obsługą maszyny wirtualnej. W wersji zapoznawczej Użyj *podstawowej jednostki SKU Load Balancer* , jeśli musisz przypisać publiczny adres IP na węzeł.
+> W trakcie korzystania z wersji zapoznawczej przypisywania publicznego adresu IP na węzeł nie można jej używać z jednostką *SKU usługa Load Balancer w warstwie Standardowa w AKS* ze względu na ewentualne reguły modułu równoważenia obciążenia powodujące konflikt z obsługą maszyny wirtualnej. W wersji zapoznawczej Użyj *podstawowej jednostki SKU Load Balancer* , jeśli musisz przypisać publiczny adres IP na węzeł.
 
 Węzły AKS nie wymagają swoich własnych publicznych adresów IP do komunikacji. Jednak niektóre scenariusze mogą wymagać, aby węzły w puli węzłów miały własne publiczne adresy IP. Przykładem są gry, w których konsola programu musi nawiązać bezpośrednie połączenie z maszyną wirtualną w chmurze, aby zminimalizować liczbę przeskoków. Można to osiągnąć, rejestrując się w celu uzyskania oddzielnej funkcji w wersji zapoznawczej, publicznego adresu IP węzła (wersja zapoznawcza).
 

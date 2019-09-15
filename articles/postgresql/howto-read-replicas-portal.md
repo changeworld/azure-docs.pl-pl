@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: bd1317242f84b4d8bd039da89d991a73f6cd3781
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 0ff6cd50a5a6cb1599a2248fbc61b0b6b307e791
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309309"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995450"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Tworzenie replik odczytu i zarządzanie nimi w Azure Database for PostgreSQL-pojedynczym serwerze z Azure Portal
 
@@ -54,7 +54,7 @@ Aby utworzyć replikę odczytu, wykonaj następujące kroki:
 
 2. Na pasku bocznym serwera w obszarze **Ustawienia**wybierz pozycję **replikacja**.
 
-3. Wybierz pozycję **Dodaj replikę**.
+3. Wybierz pozycję **Dodaj**replikę.
 
    ![Dodaj replikę](./media/howto-read-replicas-portal/add-replica.png)
 
@@ -179,4 +179,4 @@ Metryka **opóźnienia repliki** przedstawia czas od ostatniego odtworzenia tran
  
 ## <a name="next-steps"></a>Następne kroki
 * Dowiedz się więcej o [odczytaniu replik w Azure Database for PostgreSQL](concepts-read-replicas.md).
-* Dowiedz się, jak [tworzyć repliki odczytu i zarządzać nimi w interfejsie wiersza polecenia platformy Azure](howto-read-replicas-cli.md).
+* Dowiedz się, jak [tworzyć repliki odczytu i zarządzać nimi w interfejsie wiersza polecenia platformy Azure i interfejsu API REST](howto-read-replicas-cli.md).
