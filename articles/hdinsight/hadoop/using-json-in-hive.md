@@ -1,22 +1,22 @@
 ---
-title: Analizowanie i przetwarzanie dokumentów JSON za pomocą technologii Hive w usłudze Azure HDInsight
-description: Dowiedz się, jak używać dokumentów JSON i analizowania ich za pomocą technologii Hive w usłudze Azure HDInsight.
+title: Analizowanie i przetwarzanie dokumentów JSON za pomocą Apache Hive w usłudze Azure HDInsight
+description: Dowiedz się, jak używać dokumentów JSON i analizować je za pomocą Apache Hive w usłudze Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 5ec766cea2135f7c00df032ad0df4ada033d6293
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: dd1c9f5b10583e886c0357ce64bdf9d8bdc6c4c8
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461986"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883387"
 ---
-# <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Przetwarzanie i analizowanie dokumentów JSON za pomocą technologii Hive w usłudze Azure HDInsight
+# <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Przetwarzanie i analizowanie dokumentów JSON przy użyciu Apache Hive w usłudze Azure HDInsight
 
-Dowiedz się, jak przetwarzać i analizować pliki JavaScript Object Notation (JSON) za pomocą technologii Hive w usłudze Azure HDInsight. W tym artykule wykorzystano następujący dokument JSON:
+Dowiedz się, jak przetwarzać i analizować pliki JavaScript Object Notation (JSON) za pomocą Apache Hive w usłudze Azure HDInsight. W tym artykule jest stosowany następujący dokument JSON:
 
 ```json
 {
@@ -55,12 +55,12 @@ Dowiedz się, jak przetwarzać i analizować pliki JavaScript Object Notation (J
 }
 ```
 
-Plik znajduje się w temacie `wasb://processjson@hditutorialdata.blob.core.windows.net/`. Aby uzyskać więcej informacji na temat usługi Azure Blob storage za pomocą HDInsight, zobacz [zgodnego systemem plików HDFS użycia usługi Azure Blob storage przy użyciu technologii Apache Hadoop w HDInsight](../hdinsight-hadoop-use-blob-storage.md). Możesz skopiować plik do kontenera domyślnego klastra.
+Plik można znaleźć pod adresem `wasb://processjson@hditutorialdata.blob.core.windows.net/`. Aby uzyskać więcej informacji na temat korzystania z usługi Azure Blob Storage z usługą HDInsight, zobacz [Korzystanie z usługi Azure Blob Storage zgodnej z systemem plików HDFS przy użyciu Apache Hadoop w usłudze HDInsight](../hdinsight-hadoop-use-blob-storage.md). Plik można skopiować do domyślnego kontenera klastra.
 
-W tym artykule możesz użyć konsoli Apache Hive. Aby uzyskać instrukcje na temat sposobu Otwórz konsolę Hive, zobacz [Użyj Apache Ambari programu Hive widoku przy użyciu technologii Apache Hadoop w HDInsight](apache-hadoop-use-hive-ambari-view.md).
+W tym artykule użyto konsoli Apache Hive. Aby uzyskać instrukcje dotyczące sposobu otwierania konsoli programu Hive, zobacz temat [Korzystanie z programu Apache Ambari Hive View z Apache Hadoop w usłudze HDInsight](apache-hadoop-use-hive-ambari-view.md).
 
-## <a name="flatten-json-documents"></a>Spłaszczanie dokumentów JSON
-Z metod opisanych w następnej sekcji wymagają, że dokument JSON składać się z pojedynczego wiersza. Tak musisz spłaszczać dokument JSON do ciągu. Jeśli dokument JSON już jest spłaszczany, możesz pominąć ten krok i przejdź bezpośrednio do następnej sekcji, analizowanie danych JSON. Spłaszczanie dokumentów JSON, uruchom następujący skrypt:
+## <a name="flatten-json-documents"></a>Spłaszcz dokumenty JSON
+Metody wymienione w następnej sekcji wymagają, aby dokument JSON był złożony z pojedynczego wiersza. Dlatego należy spłaszczyć dokument JSON do ciągu. Jeśli dokument JSON został już spłaszczony, możesz pominąć ten krok i przejść bezpośrednio do następnej sekcji w temacie Analizowanie danych JSON. Aby spłaszczyć dokument JSON, uruchom następujący skrypt:
 
 ```sql
 DROP TABLE IF EXISTS StudentsRaw;
@@ -81,28 +81,28 @@ SELECT CONCAT_WS(' ',COLLECT_LIST(textcol)) AS singlelineJSON
 SELECT * FROM StudentsOneLine
 ```
 
-Plik JSON raw znajduje się w `wasb://processjson@hditutorialdata.blob.core.windows.net/`. **StudentsRaw** Hive punktów tabeli pierwotnych dokumencie JSON, który nie jest spłaszczany.
+Plik RAW JSON znajduje się w lokalizacji `wasb://processjson@hditutorialdata.blob.core.windows.net/`. Tabela **StudentsRaw** Hive wskazuje nieprzetworzony dokument JSON, który nie jest spłaszczony.
 
-**StudentsOneLine** tabeli hive za pomocą przechowuje dane w HDInsight domyślnego systemu plików w obszarze **/json/studentów/** ścieżki.
+W tabeli Hive **StudentsOneLine** są przechowywane dane w domyślnym systemie plików usługi HDInsight pod ścieżką **/JSON/Students/** .
 
-**Wstaw** wypełnia instrukcji **StudentOneLine** tabelę zawierającą spłaszczone dane JSON.
+Instrukcja **INSERT** wypełnia tabelę **StudentOneLine** za pomocą spłaszczonych danych JSON.
 
-**Wybierz** instrukcja zwraca tylko jeden wiersz.
+Instrukcja **SELECT** zwraca tylko jeden wiersz.
 
-Oto dane wyjściowe **wybierz** instrukcji:
+Oto dane wyjściowe instrukcji **SELECT** :
 
-![Spłaszczanie dokumentu JSON](./media/using-json-in-hive/flatten.png)
+![Spłaszczanie dokumentu JSON](./media/using-json-in-hive/hdinsight-flatten-json.png)
 
-## <a name="analyze-json-documents-in-hive"></a>Analizowanie dokumentów JSON w gałęzi
-Gałąź zawiera trzy różne mechanizmy uruchamianie zapytań dotyczących dokumentów JSON lub napisać własny:
+## <a name="analyze-json-documents-in-hive"></a>Analizowanie dokumentów JSON w usłudze Hive
+Program Hive oferuje trzy różne mechanizmy uruchamiania zapytań w dokumentach JSON lub można napisać własne:
 
-* Funkcja get_json_object zdefiniowanych przez użytkownika (UDF).
-* Użyj json_tuple funkcji zdefiniowanej przez użytkownika.
-* Użyj niestandardowego serializatora/Deserializator (SerDe).
-* Napisz własny funkcji zdefiniowanej przez użytkownika za pomocą języka Python lub innych języków. Aby uzyskać więcej informacji na temat sposobu uruchamiania kodu języka Python za pomocą technologii Hive, zobacz [UDF języka Python przy użyciu Apache Hive i Apache Pig] [języka python usługi hdinsight].
+* Użyj funkcji zdefiniowanej przez użytkownika (UDF) get_json_object.
+* Użyj json_tuple UDF.
+* Użyj niestandardowego serializatora/deserializacji (elementu SERDE).
+* Napisz własny format UDF przy użyciu języka Python lub innych języków. Aby uzyskać więcej informacji na temat sposobu uruchamiania własnego kodu w języku Python za pomocą usługi Hive, zobacz [Python UDF with Apache Hive i Apache świni] [HDInsight-Python].
 
-### <a name="use-the-getjsonobject-udf"></a>Use the get_json_object UDF
-Gałąź udostępnia wbudowanego systemu plików UDF o nazwie [get_json_object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) , można wykonać zapytania JSON w czasie wykonywania. Ta metoda przyjmuje dwa argumenty — nazwę tabeli i nazwy metody, która ma spłaszczonych dokument JSON i pola JSON, który ma zostać przeanalizowany. Spójrzmy na przykład, aby zobaczyć, jak działa ta funkcji zdefiniowanej przez użytkownika.
+### <a name="use-the-get_json_object-udf"></a>Korzystanie z get_json_object UDF
+Program Hive zawiera wbudowaną funkcję UDF o nazwie [get_json_object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) , która umożliwia wykonywanie zapytań JSON w czasie wykonywania. Ta metoda przyjmuje dwa argumenty — nazwę tabeli i nazwę metody, która ma spłaszczony dokument JSON i pole JSON, które należy przeanalizować. Spójrzmy na przykład, aby zobaczyć, jak działa ta metoda UDF.
 
 Następujące zapytanie zwraca imię i nazwisko dla każdego ucznia:
 
@@ -115,17 +115,17 @@ FROM StudentsOneLine;
 
 Oto dane wyjściowe po uruchomieniu tego zapytania w oknie konsoli:
 
-![get_json_object UDF](./media/using-json-in-hive/getjsonobject.png)
+![get_json_object UDF](./media/using-json-in-hive/hdinsight-get-json-object.png)
 
-Istnieją ograniczenia get_json_object funkcji zdefiniowanej przez użytkownika:
+Istnieją ograniczenia dotyczące get_json_object UDF:
 
-* Ponieważ każde pole w zapytaniu wymaga ponownej analizy zapytania, ma wpływ na wydajność.
-* **Pobierz\_JSON_OBJECT()** zwraca ciąg reprezentujący tablicę. Aby przekonwertować tej tablicy do tablicy programu Hive, należy użyć wyrażeń regularnych, aby zamienić nawiasy kwadratowe "[" i "]", a następnie należy także wywołać podziału, aby uzyskać tablicy.
+* Ponieważ każde pole w zapytaniu wymaga przeanalizowania zapytania, ma wpływ na wydajność.
+* **Get\_JSON_OBJECT ()** zwraca ciąg reprezentujący tablicę. Aby przekonwertować tę tablicę na tablicę programu Hive, należy użyć wyrażeń regularnych w celu zastąpienia nawiasów kwadratowych "[" i "]", a następnie należy wywołać metodę Split, aby pobrać tablicę.
 
-Jest to, dlaczego Hive wiki zaleca używanie json_tuple.  
+To dlatego, że witryna typu wiki programu Hive zaleca użycie json_tuple.  
 
-### <a name="use-the-jsontuple-udf"></a>Użyj json_tuple funkcji zdefiniowanej przez użytkownika
-Nosi nazwę innego systemu plików UDF, które są dostarczane przez program Hive [json_tuple](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-json_tuple), który działa lepiej niż [_obiekt json rzeczoznawcy](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object). Ta metoda przyjmuje zestaw kluczy i ciągu JSON i zwraca spójną kolekcję wartości za pomocą jednej funkcji. Następujące zapytanie zwraca identyfikator dla uczniów i klasy korporacyjnej z dokumentu JSON:
+### <a name="use-the-json_tuple-udf"></a>Korzystanie z json_tuple UDF
+Inna technologia UDF udostępniona przez gałąź " [json_tuple](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-json_tuple)", która wykonuje lepsze niż [get_ JSON _object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object). Ta metoda pobiera zestaw kluczy i ciąg JSON oraz zwraca spójność wartości przy użyciu jednej funkcji. Następujące zapytanie zwraca identyfikator ucznia i ocenę klasy z dokumentu JSON:
 
 ```sql
 SELECT q1.StudentId, q1.Grade
@@ -136,20 +136,20 @@ LATERAL VIEW JSON_TUPLE(jt.json_body, 'StudentId', 'Grade') q1
 
 Dane wyjściowe tego skryptu w konsoli programu Hive:
 
-![json_tuple UDF](./media/using-json-in-hive/jsontuple.png)
+![json_tuple UDF](./media/using-json-in-hive/hdinsight-json-tuple.png)
 
-Json_tuple korzysta z systemu plików UDF [poprzecznego widoku](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) składni w gałęzi, która umożliwia json\_spójnej kolekcji, aby utworzyć wirtualne tabelę, stosując funkcję UDT do każdego wiersza oryginalnej tabeli. Złożone JSON Smb1sessionsetup stają się zbyt niewygodne z powodu użycia powtarzanych **WYŚWIETL bocznych**. Ponadto **JSON_TUPLE** nie może obsługiwać JSON Smb1sessionsetup zagnieżdżonych.
+Json_tuple UDF używa składni [widoku bocznego](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) w Hive, co umożliwia spójność notacji JSON\_w celu utworzenia tabeli wirtualnej przez zastosowanie funkcji UDT do każdego wiersza oryginalnej tabeli. Złożone dane JSON stają się zbyt nieporęczny z powodu wielokrotnego użycia **widoku bocznego**. Ponadto **JSON_TUPLE** nie może obsłużyć ZAGNIEŻDŻONych notacji JSON.
 
-### <a name="use-a-custom-serde"></a>Użyj niestandardowego elementu SerDe
-Elementu SerDe jest najlepszym wyborem do analizowania zagnieżdżonych dokumentów JSON. Dzięki temu można zdefiniować schemat JSON, a następnie można użyć schematu do analizowania dokumentów. Aby uzyskać instrukcje, zobacz [jak niestandardowe SerDe JSON za pomocą programu Microsoft Azure HDInsight](https://web.archive.org/web/20190217104719/https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/).
+### <a name="use-a-custom-serde"></a>Użyj niestandardowego elementu SERDE
+Elementu SERDE jest najlepszym wyborem do analizowania zagnieżdżonych dokumentów JSON. Pozwala on definiować schemat JSON, a następnie można użyć schematu do analizy dokumentów. Aby uzyskać instrukcje, zobacz [How to use a Custom JSON elementu SERDE with Microsoft Azure HDInsight](https://web.archive.org/web/20190217104719/https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/).
 
 ## <a name="summary"></a>Podsumowanie
-Podsumowując typ operatora JSON w gałęzi, które można wybrać zależy od danego scenariusza. Jeśli masz tylko jedno pole w celu wyszukania proste dokument JSON, można użyć get_json_object Hive funkcji zdefiniowanej przez użytkownika. Jeśli masz więcej niż jednego klucza do wyszukania, można użyć json_tuple. W przypadku zagnieżdżonych dokumentu należy używać elementu SerDe JSON.
+Podsumowując, typ operatora JSON w wyborze gałęzi zależy od danego scenariusza. Jeśli masz prosty dokument JSON i masz tylko jedno pole do wyszukania, możesz użyć opcji UDF get_json_object. Jeśli masz więcej niż jeden klucz do wyszukania, możesz użyć json_tuple. Jeśli dokument jest zagnieżdżony, należy użyć elementu SERDE JSON.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać pokrewne artykuły zobacz:
+Aby poznać pokrewne artykuły, zobacz:
 
-* [Użyj Apache Hive i HiveQL z usługą Apache Hadoop w HDInsight do analizy przykładowego pliku Apache log4j](../hdinsight-use-hive.md)
-* [Analizowanie danych dotyczących opóźnień lotów przy użyciu zapytania interakcyjnego w HDInsight](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)
-* [Analizowanie danych serwisu Twitter przy użyciu technologii Hive w HDInsight](../hdinsight-analyze-twitter-data-linux.md)
+* [Analizowanie przykładowego pliku Apache Log4J przy użyciu Apache Hive i HiveQL z Apache Hadoop w usłudze HDInsight](../hdinsight-use-hive.md)
+* [Analizowanie danych dotyczących opóźnień lotów przy użyciu interakcyjnych zapytań w usłudze HDInsight](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)
+* [Analizowanie danych z usługi Twitter przy użyciu Apache Hive w usłudze HDInsight](../hdinsight-analyze-twitter-data-linux.md)
