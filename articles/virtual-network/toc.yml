@@ -253,6 +253,10 @@
           href: virtual-network-public-ip-address.md
         - name: Prefiks publicznego adresu IP
           href: manage-public-ip-address-prefix.md
+    - name: Przechodzenie między regionami
+      items:
+        - name: Sieci wirtualne — portal
+          href: virtual-network-azure-to-azure-migrate-vnet-portal.md
     - name: Rozwiązywanie problemów
       items:
         - name: Rozwiązywanie problemów dotyczących komunikacji równorzędnej sieci wirtualnych

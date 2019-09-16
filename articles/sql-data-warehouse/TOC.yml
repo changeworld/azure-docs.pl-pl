@@ -129,10 +129,16 @@
               href: /sql/t-sql/functions/openjson-transact-sql?view=azure-sqldw-latest
         - name: Zmaterializowany widok
           items:
+            - name: Wskazówki dotyczące dostosowywania wydajności
+              href: performance-tuning-materialized-views.md
             - name: Przycisk Utwórz
               href: /sql/t-sql/statements/create-materialized-view-as-select-transact-sql
             - name: Modyfikowanie
               href: /sql/t-sql/statements/alter-materialized-view-transact-sql
+        - name: Uporządkowany klastrowany indeks magazynu kolumn
+          items:
+            - name: Wskazówki dotyczące dostosowywania wydajności
+              href: performance-tuning-ordered-CCI.md
         - name: Buforowanie zestawu wyników
           href: /sql/t-sql/statements/set-result-set-caching-transact-sql
         - name: Tabele

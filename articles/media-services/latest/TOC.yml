@@ -32,6 +32,10 @@
     - name: Dynamiczne szyfrowanie przy użyciu usługi DRM
       displayName: 'PlayReady, Widevine, FairPlay'
       href: protect-with-drm.md
+- name: Przykłady
+  items:
+    - name: Przykłady usług Media Services
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-media-services'
 - name: Pojęcia
   items:
     - name: Omówienie

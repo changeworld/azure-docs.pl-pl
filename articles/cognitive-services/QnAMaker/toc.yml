@@ -111,7 +111,7 @@
         - name: Uzyskiwanie odpowiedzi przy użyciu metadanych
           href: How-To/metadata-generateanswer-usage.md
           displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
-        - name: Tworzenie bota z obsługą bazy wiedzy
+        - name: Tworzenie bota przy użyciu usług QnA Maker i LUIS
           href: Tutorials/integrate-qnamaker-luis.md
         - name: Tworzenie bazy wiedzy w innym języku
           href: How-To/language-knowledge-base.md

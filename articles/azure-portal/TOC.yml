@@ -4,6 +4,8 @@
   items:
     - name: Informacje o witrynie Azure Portal
       href: azure-portal-overview.md
+    - name: Wprowadzenie do Centrum Szybki start platformy Azure
+      href: azure-portal-quickstart-center.md
     - name: Obsługiwane przeglądarki i urządzenia
       href: azure-portal-supported-browsers-devices.md
 - name: Pojęcia
@@ -25,7 +27,7 @@
     - name: Eksportowanie i usuwanie ustawień użytkownika
       href: azure-portal-export-delete-settings.md
     - name: Seria instruktażowych wideo dla witryny Azure Portal
-      href: 'https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP4oflOL29TtqTzwhxR'
+      href: azure-portal-video-series.md
 - name: Dokumentacja
   items:
     - name: Skróty klawiaturowe

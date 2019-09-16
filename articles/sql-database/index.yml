@@ -13,7 +13,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: null
   ms.topic: overview
-  ms.date: 03/04/2019
+  ms.date: 09/09/2019
   ms.author: sstein
 abstract:
   description: 'Azure SQL Database to relacyjna baza danych jako usługa (DBaaS) ogólnego przeznaczenia, oparta na najnowszej stabilnej wersji aparatu bazy danych programu Microsoft SQL Server. Usługa SQL Database to wysokiej wydajności niezawodna i bezpieczna baza danych w chmurze, za pomocą której można tworzyć oparte na danych aplikacje i witryny internetowe w wybranym języku programowania bez zarządzania infrastrukturą. Dowiedz się, jak używać usługi SQL Database, korzystając z przewodników Szybki Start, samouczków i przykładów.'
@@ -27,7 +27,10 @@ abstract:
     href: 'https://azure.microsoft.com/resources/videos/create-sql-database-on-azure/'
     width: 250
 sections:
-  - items:
+  - title: Pojęcia
+    items:
+      - type: paragraph
+        text: 'Poznaj główne zalety bazy danych platformy jako usługi (PaaS) oraz modele zakupów i warstwy usług, z których możesz korzystać w celu uzyskania najlepszej konfiguracji ceny/wydajności.'
       - type: list
         style: cards
         className: cardsM
@@ -37,17 +40,41 @@ sections:
             html: '<p>Baza danych PaaS, która zawsze korzysta z najnowszej stabilnej wersji aparatu bazy danych programu SQL Server i systemu operacyjnego z zastosowanymi poprawkami, o dostępności na poziomie 99,99%.</p>'
             image:
               src: media/index/i_managed.svg
-            title: Pełne zarządzanie
+            title: Omówienie
           - href: /azure/sql-database/sql-database-service-tiers
             html: '<p>Dopasuj stosunek ceny do wydajności zgodnie ze swoimi potrzebami dzięki elastycznym warstwom usług obejmującym szeroki zakres opcji, od przystępnych cenowo (5 USD miesięcznie) po zaawansowane (bazy danych korzystające z 80 rdzeni).</p>'
             image:
               src: media/index/i_perftier.svg
-            title: Warstwy cenowe/usług
+            title: Modele cen
+          - href: /azure/sql-database/sql-database-service-tiers-general-purpose-business-critical
+            html: '<p>Wybierz warstwę usług i architekturę chmury, które najlepiej odpowiadają Twoim potrzebom lub które są zgodne z infrastrukturą używaną w środowisku lokalnym.</p>'
+            image:
+              src: media/index/gear.svg
+            title: Warstwy usług
           - href: /azure/sql-database/sql-database-scalability-index
             html: '<p>Łatwo skaluj w górę, skaluj w poziomie lub dziel swoje bazy danych na fragmenty w zależności od potrzeb, aby zwiększyć wydajność aplikacji.</p>'
             image:
               src: media/index/i_scale.svg
             title: Skalowalność
+          - href: /azure/sql-database/sql-database-paas
+            html: '<p>Dzięki wbudowanej wysokiej dostępności, automatycznym kopiom zapasowym i replikacji geograficznej operacje konserwacji czy awarie infrastruktury lub sprzętu nie zatrzymają Twojej firmy.</p>'
+            image:
+              src: media/index/i_intelligence.svg
+            title: Platforma jako usługa
+          - href: /azure/sql-database/sql-database-security-index
+            html: '<p>Zabezpiecz bazę danych przy użyciu uwierzytelniania usługi Azure AD, sieci wirtualnych, zapór i zawsze szyfrowanych połączeń. Identyfikuj zagrożenia i luki w zabezpieczeniach za pomocą wbudowanych zabezpieczeń.</p>'
+            image:
+              src: media/index/i_security.svg
+            title: Zaawansowane zabezpieczenia
+  - title: Modele wdrażania
+    items:
+      - type: paragraph
+        text: 'Wybierz model wdrażania dopasowany do Twoich potrzeb: pojedyncza baza danych jest najlepszym wyborem dla nowoczesnych aplikacji w chmurze, pule elastyczne są najlepszym miejscem do hostowania dużej floty baz danych, a wystąpienie zarządzane zapewnia wysoką zgodność z programem SQL Server i umożliwia łatwą migrację do chmury.'
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
           - href: /azure/sql-database/sql-database-single-index
             html: '<p>Zastosuj pojedynczą bazę danych zarządzaną przez serwer usługi SQL Database na potrzeby swoich aplikacji SaaS oraz mikrousług, które wymagają pojedynczej bazy danych o przewidywalnej wydajności.</p>'
             image:
@@ -63,21 +90,6 @@ sections:
             image:
               src: media/index/i_mi.svg
             title: Wystąpienie zarządzane
-          - href: /azure/sql-database/sql-database-paas
-            html: '<p>Dzięki wbudowanej wysokiej dostępności, automatycznym kopiom zapasowym i replikacji geograficznej operacje konserwacji czy awarie infrastruktury lub sprzętu nie zatrzymają Twojej firmy.</p>'
-            image:
-              src: media/index/gear.svg
-            title: Platforma jako usługa
-          - href: /azure/sql-database/sql-database-security-index
-            html: '<p>Zabezpieczenia bazy danych przy użyciu uwierzytelniania usługi Azure AD, sieci wirtualne, zapory, zawsze szyfrowane połączenia. Identyfikowanie zagrożeń i luk w zabezpieczeniach za pomocą wbudowanych zabezpieczeń.</p>'
-            image:
-              src: media/index/i_security.svg
-            title: Zaawansowane zabezpieczenia
-          - href: /azure/sql-database/sql-database-monitoring-tuning-index
-            html: <p>Wbudowane narzędzia monitorowania i inteligentnego dostosowywania pomagają znacznie zmniejszyć koszty działania baz danych i zarządzania nimi oraz zmaksymalizować wydajność aplikacji.</p>
-            image:
-              src: media/index/i_intelligence.svg
-            title: Monitorowanie i dostrajanie
   - title: 5-minutowe przewodniki Szybki start
     items:
       - type: paragraph
@@ -116,18 +128,21 @@ sections:
               - href: 'https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44'
               - href: /azure/sql-database/scripts/sql-database-create-configure-managed-instance-powershell
               - href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet'
-  - title: Samouczki krok po kroku
+  - title: Samouczki krok po kroku i materiały szkoleniowe
     items:
       - type: paragraph
         text: 'Dowiedz się, jak tworzyć i migrować bazy danych oraz zarządzać nimi za pomocą usługi SQL Database'
       - type: list
         style: ordered
         items:
+          - html: 'Decydowanie <a href="/azure/sql-database/sql-database-paas-vs-sql-server-iaas">czy właściwym wyborem na potrzeby obciążenia jest program SQL Server na maszynie wirtualnej (IaaS), czy usługa Azure SQL Database (PaaS)</a>.'
+          - html: Poznawanie <a href="/azure/sql-database/sql-database-features">funkcji obsługiwanych w usłudze Azure SQL Database i różnic w zachowaniu</a>.
           - html: Rozpoczynanie pracy z <a href="/azure/sql-database/sql-database-single-database-quickstart-guide">pojedynczą bazą danych</a> i <a href="/azure/sql-database/sql-database-managed-instance-quickstart-guide">wystąpieniem zarządzanym</a> za pomocą naszych przewodników Szybki start.
           - html: Tworzenie i projektowanie schematu dla nowej pojedynczej bazy danych przy użyciu platformy <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> lub <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a>
-          - html: Migrowanie istniejącej bazy danych na platformę Azure za pomocą <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">natywnego pliku kopii zapasowej programu SQL Server</a> lub <a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">narzędzia Data Migration Assistant</a> albo <a href="/azure/sql-database/sql-database-import">przez zaimportowanie pliku BACPAC</a>
+          - html: Migrowanie istniejącej bazy danych na platformę Azure za pomocą <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">natywnego pliku kopii zapasowej programu SQL Server</a> lub <a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">narzędzia Data Migration Assistant</a> albo <a href="/azure/sql-database/sql-database-import">przez zaimportowanie pliku BACPAC</a>.
           - html: <a href="/azure/sql-database/sql-database-security-tutorial">Zabezpieczanie usługi SQL Database</a>
-          - html: Globalne dystrybuowanie danych przy użyciu <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">rozproszonej geograficznie bazy danych</a>
+          - html: Globalne dystrybuowanie danych przy użyciu <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">rozproszonej geograficznie bazy danych</a>.
+          - html: Znajdowanie <a href="/azure/sql-database/sql-database-release-notes">nowych funkcji w usłudze Azure SQL Database</a>.
   - title: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
     items:
       - type: list

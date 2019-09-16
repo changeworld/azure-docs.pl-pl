@@ -1,4 +1,4 @@
-- name: Dokumentacja usługi Azure Machine Learning Service
+- name: Dokumentacja usługi Azure Machine Learning
   href: ../index.yml
 - name: Omówienie
   expanded: true
@@ -31,6 +31,11 @@
             - name: Automatyczne trenowanie modelu uczenia maszynowego
               displayName: 'automl, automated, auto ml,'
               href: tutorial-auto-train-models.md
+        - name: Wsadowe ocenianie przy użyciu potoków (zaawansowane)
+          items:
+            - name: Wsadowe ocenianie modelu klasyfikacji
+              displayName: pipelines
+              href: tutorial-pipeline-batch-scoring-classification.md
     - name: Interfejs wizualny
       items:
         - name: 1. Trenowanie modelu regresji
@@ -122,7 +127,7 @@
         - name: Używanie szablonu usługi Resource Manager
           displayName: arm
           href: how-to-create-workspace-template.md
-    - name: "Konfigurowanie środowiska deweloperskiego\_"
+    - name: Konfigurowanie środowiska deweloperskiego
       items:
         - name: Konfigurowanie środowisk deweloperskich
           displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'

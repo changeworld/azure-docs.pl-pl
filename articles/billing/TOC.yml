@@ -121,6 +121,10 @@
           href: billing-understand-free-service-meter-mapping.md
     - name: Edytowanie profilu
       href: billing-how-to-change-azure-account-profile.md
+    - name: Otwarta bankowość i silnie uwierzytelnianie klienta
+      href: billing-open-banking-strong-customer-authentication.md
+    - name: Rozwiązywanie problemów dotyczących zaległego salda
+      href: billing-azure-subscription-past-due-balance.md
     - name: Udzielanie dostępu do rozliczeń
       href: billing-manage-access.md
     - name: Role umów klienta firmy Microsoft na platformie Azure
@@ -131,6 +135,8 @@
       href: billing-view-all-accounts.md
     - name: Organizowanie kosztów w sekcjach faktury
       href: billing-mca-section-invoice.md
+    - name: Zadania umowy EA w umowie klienta firmy Microsoft
+      href: billing-mca-enterprise-operations.md
     - name: Zarządzanie umowami Enterprise Agreement
       items:
         - name: Rozpoczynanie pracy w portalu umowy Enterprise Agreement platformy Azure
@@ -151,8 +157,6 @@
           href: billing-ea-portal-troubleshoot.md
         - name: Zadania umowy EA w umowie klienta firmy Microsoft
           href: billing-mca-enterprise-operations.md
-    - name: Rozwiązywanie problemów dotyczących zaległego salda
-      href: billing-azure-subscription-past-due-balance.md
     - name: Konfigurowanie konta rozliczeniowego dla umowy klienta firmy Microsoft
       href: billing-mca-setup-account.md
     - name: Rejestracja przy użyciu konta usługi Office 365

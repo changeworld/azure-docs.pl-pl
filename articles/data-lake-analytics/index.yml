@@ -1,0 +1,91 @@
+### YamlMime:Landing
+title: Dokumentacja usługi Azure Data Lake Analytics
+summary: Dzięki usłudze Data Lake Analytics możesz uruchamiać zadania analizy danych big data skalowane do wielkich zestawów danych.
+metadata:
+  title: Azure Data Lake Analytics
+  description: Dzięki usłudze Data Lake Analytics możesz uruchamiać zadania analizy danych big data skalowane do wielkich zestawów danych.
+  services: service
+  ms.service: data-lake-analytics
+  ms.subservice: subservice
+  ms.topic: landing-page
+  ms.collection: collection
+  author: hrasheed-msft
+  ms.author: hrasheed
+  ms.date: 09/13/2019
+  ms.openlocfilehash: a370cf424d7ebdf32fcdd2e0f8653e2e36b7162b
+  ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 09/14/2019
+  ms.locfileid: "70997251"
+landingContent:
+- title: Informacje o usłudze Data Lake Analytics
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest usługa Azure Data Lake Analytics?
+      url: data-lake-analytics-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Tworzenie zadań U-SQL w witrynie Azure Portal
+      url: data-lake-analytics-get-started-portal.md
+    - text: Tworzenie zadań U-SQL przy użyciu interfejsu wiersza polecenia platformy Azure
+      url: data-lake-analytics-get-started-cli.md
+    - text: Tworzenie zadań U-SQL w programie Visual Studio Code
+      url: data-lake-analytics-data-lake-tools-for-vscode.md
+- title: Poznawanie języka U-SQL
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Wprowadzenie do języka U-SQL
+      url: data-lake-analytics-u-sql-get-started.md
+    - text: Dokumentacja języka U-SQL
+      url: https://docs.microsoft.com/u-sql/
+    - text: Wprowadzenie do wykazu języka U-SQL
+      url: data-lake-analytics-u-sql-catalog.md
+    - text: Korzystanie z operatorów definiowanych przez użytkownika
+      url: data-lake-analytics-u-sql-develop-user-defined-operators.md
+- title: Pisanie programów w języku U-SQL
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Korzystanie z narzędzi Data Lake Tools for Visual Studio
+      url: data-lake-analytics-data-lake-tools-get-started.md
+    - text: Korzystanie z projektu bazy danych U-SQL w programie Visual Studio
+      url: data-lake-analytics-data-lake-tools-develop-usql-database.md
+    - text: Korzystanie z przeglądarki zadań i widoku zadań
+      url: data-lake-analytics-data-lake-tools-view-jobs.md
+    - text: Debugowanie kodu języka C# zdefiniowanego przez użytkownika
+      url: data-lake-analytics-debug-u-sql-jobs.md
+    - text: Korzystanie z narzędzi Azure Data Lake Tools for Visual Studio Code
+      url: data-lake-analytics-data-lake-tools-for-vscode.md
+    - text: Używanie kodu niestandardowego w języku U-SQL w programie Visual Studio Code
+      url: data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md
+    - text: Planowanie zadań za pomocą usług SSIS
+      url: data-lake-analytics-schedule-jobs-ssis.md
+- title: Zarządzanie usługą Data Lake Analytics
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Zarządzanie za pomocą witryny Azure Portal
+      url: data-lake-analytics-manage-use-portal.md
+    - text: Zarządzanie za pomocą interfejsu wiersza polecenia platformy Azure
+      url: data-lake-analytics-manage-use-cli.md
+    - text: Zarządzanie za pomocą aplikacji platformy .NET
+      url: data-lake-analytics-manage-use-dotnet-sdk.md
+    - text: Dodawanie użytkownika w witrynie Azure Portal
+      url: data-lake-analytics-add-users.md
+    - text: Zarządzanie usługą Azure Data Lake Analytics przy użyciu zasad
+      url: data-lake-analytics-policies.md
+- title: Ciągła integracja i ciągłe wdrażanie
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurowanie potoku ciągłej integracji/ciągłego dostarczania
+      url: data-lake-analytics-cicd-overview.md
+    - text: Zarządzanie zestawami U-SQL
+      url: data-lake-analytics-cicd-manage-assemblies.md
+    - text: Testowanie skryptów U-SQL
+      url: data-lake-analytics-cicd-test.md
+    - text: Korzystanie zestawu U-SQL SDK
+      url: data-lake-analytics-u-sql-sdk.md

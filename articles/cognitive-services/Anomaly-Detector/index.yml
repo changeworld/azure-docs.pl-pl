@@ -1,10 +1,10 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentacja interfejsu API narzędzia do wykrywania anomalii
+summary: Dowiedz się, jak za pomocą interfejsu API narzędzia do wykrywania anomalii monitorować dane w czasie i wykrywać anomalie przy użyciu uczenia maszynowego. Uzyskaj wgląd w dane niezależnie od ilości, branży czy scenariusza.
 metadata:
-  title: 'Interfejs API narzędzia do wykrywania anomalii — samouczki, przewodniki Szybki start i dokumentacja interfejsu API'
+  title: Interfejs API narzędzia do wykrywania anomalii — samouczki, przewodniki Szybki start i dokumentacja interfejsu API
   titleSuffix: Azure Cognitive Services
-  description: 'Interfejs API narzędzia do wykrywania anomalii umożliwia monitorowanie danych w czasie i wykrywanie anomalii za pomocą uczenia maszynowego. Uzyskaj wgląd w dane niezależnie od ilości, branży czy scenariusza.'
+  description: Interfejs API narzędzia do wykrywania anomalii umożliwia monitorowanie danych w czasie i wykrywanie anomalii za pomocą uczenia maszynowego. Uzyskaj wgląd w dane niezależnie od ilości, branży czy scenariusza.
   services: cognitive-services
   author: aahill
   manager: nitinme
@@ -12,62 +12,102 @@ metadata:
   ms.service: cognitive-services
   ms.subservice: anomaly-detector
   ms.topic: landing-page
-  ms.date: 03/26/2019
+  ms.date: 09/10/2019
   ms.author: aahi
-abstract:
-  description: 'Interfejs API narzędzia do wykrywania anomalii pomaga w prosty sposób osadzać funkcje wykrywania anomalii w Twoich aplikacjach, dzięki czemu użytkownicy będą mogli szybko identyfikować problemy w celu minimalizowania strat i negatywnego wpływu na klienta. Nie jest wymagana żadna wiedza na temat uczenia maszynowego. Za pomocą jednego wywołania interfejsu API można uaktywnić ten wstępnie wytrenowany model sztucznej inteligencji, który pozyskuje dane szeregów czasowych wszystkich typów i w każdej ilości, wybiera najlepiej dopasowany model wykrywania anomalii dla Twoich danych w celu zapewnienia wysokiej dokładności i automatycznie wyświetla zdarzenia bezpośrednio po ich wystąpieniu. Możesz dostosować usługę, aby wykrywała anomalie różnych rozmiarów.  Narzędzie do wykrywania anomalii umożliwia identyfikowanie zdarzeń biznesowych, monitorowanie ruchu urządzeń IoT, wykrywanie oszustw, reagowanie na zmiany na rynku i nie tylko.'
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/anomaly-detector/overview
-            html: <p>Informacje o interfejsie API narzędzia do wykrywania anomalii</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Co to jest interfejs API narzędzia do wykrywania anomalii?
-          - href: /azure/cognitive-services/anomaly-detector/concepts/anomaly-detection-best-practices
-            html: <p>Optymalizowanie wyników wykrywania anomalii przy użyciu najlepszych rozwiązań dotyczących interfejsu API</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Najlepsze rozwiązania dotyczące interfejsu API narzędzia do wykrywania anomalii
-          - href: /azure/cognitive-services/anomaly-detector/how-to/identify-anomalies
-            html: '<p>Dostosuj czułość wykrywania anomalii, używaj różnych trybów wykrywania i nie tylko.</p>'
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Korzystanie z interfejsu API wykrywania anomalii
-  - title: 5-minutowe przewodniki Szybki start
-    items:
-      - type: paragraph
-        text: 'Wykrywaj anomalie w danych szeregów czasowych za pomocą następujących środowisk:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/logo_Csharp.svg
-            href: quickstarts/detect-data-anomalies-csharp
-            text: 'C#'
-          - image:
-              src: media/logo_Java.svg
-            href: quickstarts/detect-data-anomalies-java
-            text: Java
-          - image:
-              src: media/logo_python.svg
-            href: quickstarts/detect-data-anomalies-python
-            text: Python
-  - title: Dokumentacja
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Interfejs API REST
-            html: '<p><a href="https://aka.ms/anomaly-detector-rest-api-ref">Interfejs API narzędzia do wykrywania anomalii</a></p>'
-          - title: Zestawy SDK
-            html: '<p><a href="https://aka.ms/anomaly-detector-dotnet-ref">.NET</a></p> <p><a href="https://go.microsoft.com/fwlink/?linkid=2089915">Go</a></p> <p><a href="https://go.microsoft.com/fwlink/?linkid=2090370">Python</a></p> <p><a href="https://go.microsoft.com/fwlink/?linkid=2090788">Node.js</a></p>'
-          - title: PowerShell
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: Interfejs wiersza polecenia
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Interfejs wiersza polecenia platformy Azure</a></p>'
+  ms.openlocfilehash: 61db0fe16557b582ad43cd2eddbe8e421a0b743a
+  ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 09/13/2019
+  ms.locfileid: "70967073"
+landingContent:
+- title: Informacje o interfejsie API narzędzia do wykrywania anomalii
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest interfejs API narzędzia do wykrywania anomalii?
+      url: overview.md
+  - linkListType: get-started
+    links:
+    - text: Demonstracja interfejsu API narzędzia do wykrywania anomalii
+      url: https://aka.ms/adDemo
+  - linkListType: video
+    links:
+    - text: Wprowadzenie do interfejsu API narzędzia do wykrywania anomalii
+      url: https://channel9.msdn.com/Shows/AI-Show/Introducing-Azure-Anomaly-Detector?WT.mc_id=ai-c9-niner
+    - text: Algorytmy używane przez interfejs API wykrywania anomalii
+      url: https://www.youtube.com/embed/ERTaAnwCarM
+  - linkListType: reference
+    links:
+    - text: Algorytmy używane w wykrywaniu anomalii (oficjalny dokument)
+      url: https://arxiv.org/abs/1906.03821
+- title: Wykrywanie anomalii w danych
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Przy użyciu języka C#
+      url: quickstarts/detect-data-anomalies-csharp-sdk.md
+    - text: Korzystanie z języka Python
+      url: quickstarts/detect-data-anomalies-python-sdk.md
+  - linkListType: tutorial
+    links:
+    - text: Wizualizowanie anomalii przy użyciu wykrywania wsadowego i usługi Power BI
+      url: tutorials/batch-anomaly-detection-powerbi.md
+    - text: Wykrywanie anomalii w strumieniu danych przy użyciu usługi Azure Databricks
+      url: tutorials/batch-anomaly-detection-powerbi.md
+  - linkListType: video
+    links:
+    - text: Wykrywanie anomalii w strumieniu danych wykonywana przy użyciu usługi Azure Databricks
+      url: https://channel9.msdn.com/Shows/AI-Show/Anomaly-detection-on-streaming-data-using-Azure-Databricks
+- title: Optymalizowanie wyników wykrywania
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Dostosowywanie trybów wykrywania anomalii i parametrów dla danych.
+      url: how-to/identify-anomalies.md
+    - text: Stosowanie najlepszych rozwiązań w celu optymalizacji wyników wykrywania anomalii.
+      url: concepts/anomaly-detection-best-practices.md
+  - linkListType: video
+    links:
+    - text: Najlepsze rozwiązania dotyczące narzędzia do wykrywania anomalii
+      url: https://channel9.msdn.com/Shows/AI-Show/Anomaly-Detector-v10-Best-Practices
+- title: Używanie kontenerów platformy Docker
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Instalowanie i uruchamianie kontenerów narzędzia do wykrywania anomalii
+      url: anomaly-detector-container-howto.md
+    - text: Konfigurowanie kontenerów narzędzia do wykrywania anomalii
+      url: anomaly-detector-container-configuration.md
+    - text: Wdrażanie wystąpienia kontenera na platformie Azure
+      url: how-to/deploy-anomaly-detection-on-container-instances.md
+  - linkListType: video
+    links:
+    - text: Korzystanie z narzędzia do wykrywania anomalii w środowisku lokalnym z obsługą kontenerów
+      url: https://channel9.msdn.com/Shows/AI-Show/Bring-Anomaly-Detector-on-premise-with-containers-support
+- title: Dołączanie do społeczności narzędzia do wykrywania anomalii
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Dołączanie do grupy doradców ds. Narzędzia do wykrywania anomalii w usłudze Microsoft Teams
+      url: https://aka.ms/adadvisorsjoin
+    - text: Polecana zawartość wygenerowana przez użytkowników
+      url: user-generated-content.md
+- title: Dokumentacja
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Interfejs API REST
+      url: https://aka.ms/anomaly-detector-rest-api-ref
+    - text: Zestaw SDK .NET
+      url: https://aka.ms/anomaly-detector-dotnet-ref
+    - text: Zestaw Python SDK
+      url: https://go.microsoft.com/fwlink/?linkid=2090370
+    - text: Zestaw SDK dla języka Go
+      url: https://go.microsoft.com/fwlink/?linkid=2089915
+    - text: Zestaw SDK dla platformy Node.js
+      url: https://go.microsoft.com/fwlink/?linkid=2090788
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+    - text: Interfejs wiersza polecenia platformy Azure
+      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list

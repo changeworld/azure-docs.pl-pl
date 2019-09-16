@@ -98,6 +98,10 @@
       href: functions-premium-plan.md
     - name: Wdrożenia
       href: functions-deployment-technologies.md
+    - name: Zdarzenia i komunikaty
+      items:
+        - name: Projektowanie pod kątem identycznych danych wejściowych
+          href: functions-idempotent.md
     - name: Wyzwalacze i powiązania
       items:
         - name: Informacje o wyzwalaczach i powiązaniach
