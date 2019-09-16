@@ -45,7 +45,7 @@ Event Hubs otrzymywanie danych z Diagnostyka Azure jest obsługiwane w Cloud Ser
 * Event Hubs przestrzeń nazw, która została zainicjowana zgodnie z artykułem, [wprowadzenie do Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
 
 ## <a name="connect-azure-diagnostics-to-event-hubs-sink"></a>Łączenie Diagnostyka Azure z Event Hubs ujścia
-Domyślnie program Diagnostyka Azure zawsze wysyła dzienniki i metryki do konta usługi Azure Storage. Aplikacja może również wysyłać dane do Event Hubs przez dodanie nowej sekcji **ujścia** w elemencie **PublicConfig** / **WadCfg** pliku *. wadcfgx* . W programie Visual Studio plik *. wadcfgx* jest przechowywany w następującej ścieżce: > Plik diagnostyczny >  **** role > projektu usługi w chmurze (rolename **)** .**wadcfgx** .
+Domyślnie program Diagnostyka Azure zawsze wysyła dzienniki i metryki do konta usługi Azure Storage. Aplikacja może również wysyłać dane do Event Hubs przez dodanie nowej sekcji **ujścia** w elemencie **PublicConfig** / **WadCfg** pliku *. wadcfgx* . W programie Visual Studio plik *. wadcfgx* jest przechowywany w następującej ścieżce: **Plik diagnostyczny** > **role** > **projektu usługi w chmurze (rolename)**  > **wadcfgx** .
 
 ```xml
 <SinksConfig>
