@@ -306,7 +306,7 @@ Sprawdź, czy certyfikat jest zainstalowany w osobistym\'magazynie komputera. Wy
         |---|---|
         | Source | Any |
         | Source port ranges | * |
-        | Miejsce docelowe | Any |
+        | Destination | Any |
         | Destination port range | 636 |
         | Protocol | Any |
         | Action | Allow |
