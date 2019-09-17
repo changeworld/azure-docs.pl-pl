@@ -1,0 +1,55 @@
+### YamlMime:Landing
+title: Dokumentacja łącza prywatnego
+summary: Łącze prywatne platformy Azure umożliwia dostęp do usług PaaS platformy Azure (na przykład Azure Storage i SQL Database) oraz hostowanych przez platformę Azure usług klientów/partnerów przez prywatny punkt końcowy w sieci wirtualnej.  Ruch między siecią wirtualną a usługą odbywa się za pośrednictwem sieci szkieletowej firmy Microsoft, eliminując ekspozycję z publicznego Internetu. Możesz również utworzyć własną usługę łącza prywatnego w sieci wirtualnej i dostarczyć ją prywatnie do klientów.
+metadata:
+  title: Dokumentacja łącza prywatnego — przewodniki Szybki start, przewodniki, referencyjna dokumentacja interfejsów API
+  description: Dowiedz się, jak korzystać z usługi łącza prywatnego platformy Azure. W przewodnikach Szybki start i samouczkach pokazano, jak wdrożyć usługę łącza prywatnego.
+  ms.service: virtual-network
+  ms.topic: landing-page
+  ms.collection: collection
+  author: KumudD
+  ms.author: kumud
+  ms.date: 09/16/2019
+  ms.openlocfilehash: 867c20b96f8a48aeb52e455d718057e686ddfcbe
+  ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 09/16/2019
+  ms.locfileid: "71020215"
+landingContent:
+- title: Informacje o łączu prywatnym platformy Azure
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest łącze prywatne?
+      url: private-link-overview.md
+- title: Nawiązywanie połączenia z usługą platformy Azure
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Co to jest prywatny punkt końcowy?
+      url: private-endpoint-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Tworzenie prywatnego punktu końcowego
+      url: create-private-endpoint-portal.md
+- title: Tworzenie własnej usługi łącza prywatnego
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Co to jest usługa łącza prywatnego?
+      url: private-link-service-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Tworzenie usługi łącza prywatnego
+      url: create-private-link-service-powershell.md
+- title: Dokumentacja
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Interfejs wiersza polecenia platformy Azure
+      url: /cli/azure/network
+    - text: Azure PowerShell
+      url: /powershell/module/az.network
+    - text: REST
+      url: /rest/api/virtualnetwork/privatelinkservices
