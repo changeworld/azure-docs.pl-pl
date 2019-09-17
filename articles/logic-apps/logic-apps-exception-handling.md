@@ -72,9 +72,9 @@ Można też ręcznie określić zasady ponawiania w `inputs` sekcji dla akcji lu
 
 | Value | Type | Opis |
 |-------|------|-------------|
-| <*retry-typ zasad*> | String | Typ zasad ponawiania próby, którego chcesz użyć `default`: `none`, `fixed`, lub`exponential` | 
-| <*Ponawianie interwału*> | String | Interwał ponawiania, w którym wartość musi używać [formatu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Domyślny interwał minimalny to `PT5S` i maksymalny interwał to. `PT1D` Korzystając z zasad interwału wykładniczego, można określić różne wartości minimalne i maksymalne. | 
-| <*Ponawianie prób*> | Integer | Liczba ponownych prób, które muszą zawierać się w przedziale od 1 do 90 | 
+| <*retry-policy-type*> | String | Typ zasad ponawiania próby, którego chcesz użyć `default`: `none`, `fixed`, lub`exponential` | 
+| <*retry-interval*> | String | Interwał ponawiania, w którym wartość musi używać [formatu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Domyślny interwał minimalny to `PT5S` i maksymalny interwał to. `PT1D` Korzystając z zasad interwału wykładniczego, można określić różne wartości minimalne i maksymalne. | 
+| <*retry-attemps*> | Integer | Liczba ponownych prób, które muszą zawierać się w przedziale od 1 do 90 | 
 ||||
 
 *Obowiązkowe*
