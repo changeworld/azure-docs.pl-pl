@@ -139,7 +139,7 @@ W tych krokach opisano szczegółowy proces Logic Apps używany do przekazywania
 
      | Pole nagłówka żądania Logic Apps | Value | Type | Opis |
      |---------------------------------|-------|------|-------------|
-     | **Zakres zawartości** | <*range*> | String | Zakres bajtów bieżącego fragmentu zawartości, łącznie z wartością początkową, wartością końcową i łącznym rozmiarem zawartości, na przykład: "bajty = 0-1023/10100" |
+     | **Content-Range** | <*range*> | String | Zakres bajtów bieżącego fragmentu zawartości, łącznie z wartością początkową, wartością końcową i łącznym rozmiarem zawartości, na przykład: "bajty = 0-1023/10100" |
      | **Content-Type** | <*Typ zawartości*> | String | Typ zawartości fragmentarycznej |
      | **Content-Length** | <*Długość zawartości*> | String | Długość rozmiaru w bajtach bieżącego fragmentu |
      |||||
