@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 07/24/2019
 ms.author: osamaz
-ms.openlocfilehash: 681a99d31e7ededda74aa186ff36cc837125bbda
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: a496b91ab8ec14ce859df0da93e0ad5d87c50982
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70052214"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71019031"
 ---
 # <a name="connecting-azure-with-public-clouds"></a>Łączenie platformy Azure z chmurami publicznymi
 
@@ -36,7 +36,7 @@ Podczas nawiązywania połączenia za pośrednictwem dostawcy usługi Layer3 fir
 
 ![](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l3.png)
 
-Dostawca może obejść każdego dostawcę chmury w osobnym VRF. Jeśli ruch ze wszystkich dostawców chmury zostanie osiągnięty na routerze klienta. Jeśli klient korzysta z protokołu BGP z dostawcą usług, trasy te zostaną domyślnie ponownie ogłoszone dla innych dostawców chmury. 
+Dostawca może obsłużyć każdego dostawcę chmury w osobnym VRF, jeśli ruch ze wszystkich dostawców chmury zostanie osiągnięty na routerze klienta. Jeśli klient korzysta z protokołu BGP z dostawcą usług, trasy te zostaną domyślnie ponownie ogłoszone dla innych dostawców chmury. 
 
 Jeśli dostawca usług jest wyładunkowy dla wszystkich dostawców chmury w tym samym VRF, trasy będą anonsowane innym dostawcom chmury bezpośrednio od dostawcy usług. Jest to zakładane przez standardowe operacje BGP, w przypadku których trasy eBGP są domyślnie anonsowane do innych sąsiadów eBGP.
 
@@ -59,7 +59,7 @@ Klienci mogą korzystać z Internetu, aby połączyć swoje wystąpienia na plat
 Połączenia sieci VPN typu lokacja-lokacja nie są uznawane za rozwiązanie o wysokiej przepływności i małych opóźnieniach. Może jednak służyć jako kopia zapasowa do łączności fizycznej.
 
 ## <a name="next-steps"></a>Następne kroki
-Zapoznaj się z [ExpressRoute często][ER-FAQ] zadawanych pytań, aby uzyskać odpowiedzi na pytania dotyczące ExpressRoute i sieci wirtualnej.
+Zapoznaj się z [ExpressRoute często zadawanych][ER-FAQ] pytań, aby uzyskać odpowiedzi na pytania dotyczące ExpressRoute i sieci wirtualnej.
 
 Zobacz [Konfigurowanie bezpośredniego połączenia między platformą Azure i Oracle Cloud][ER-OCI] na potrzeby łączności między platformą Azure i firmą Oracle
 

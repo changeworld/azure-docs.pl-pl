@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: b62cbe6be7f48aa05bf3756580df0777aeee8cae
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 66b1aebb5197005dc93591e25b10a892d2855c37
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726078"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010615"
 ---
 # <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-preview"></a>Kopiowanie danych z bazy danych Oracle Eloqua, za pomocą usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -27,6 +27,11 @@ W tym artykule opisano sposób używania działania kopiowania w usłudze Azure 
 > Ten łącznik jest obecnie w wersji zapoznawczej. Możesz wypróbować tę funkcję i przekazać opinię. Jeśli w swoim rozwiązaniu chcesz wprowadzić zależność od łączników w wersji zapoznawczej, skontaktuj się z [pomocą techniczną platformy Azure](https://azure.microsoft.com/support/).
 
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
+
+Ten łącznik programu Oracle Eloqua jest obsługiwany dla następujących działań:
+
+- [Działanie kopiowania](copy-activity-overview.md) z [obsługiwaną macierzą źródłową](copy-activity-overview.md)
+- [Działanie Lookup](control-flow-lookup-activity.md)
 
 Możesz skopiować dane z bazy danych Oracle Eloqua, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
@@ -80,7 +85,7 @@ Aby skopiować dane z bazy danych Oracle Eloqua, należy ustawić właściwość
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość Type zestawu danych musi być ustawiona na wartość: **EloquaObject** | Tak |
-| tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
+| tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "query" w źródle działania) |
 
 **Przykład**
 
@@ -144,5 +149,10 @@ Aby skopiować dane z bazy danych Oracle Eloqua, należy ustawić typ źródłow
 ]
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="lookup-activity-properties"></a>Właściwości działania Lookup
+
+Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (wyszukiwanie](control-flow-lookup-activity.md)).
+
+
+## <a name="next-steps"></a>Następne kroki
 Aby uzyskać listę obsługiwanych — dane przechowywane przez usługę Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

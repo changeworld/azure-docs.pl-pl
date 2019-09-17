@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: dcc54b0f67b9bf08df602c3eb9a4bcb0ea699ee7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 137430ebf009686c3533bece19e550cc53229c99
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60405889"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71009581"
 ---
 # <a name="copy-data-from-paypal-using-azure-data-factory-preview"></a>Kopiowanie danych z systemu PayPal za pomocą usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -27,6 +27,11 @@ W tym artykule opisano sposób używania działania kopiowania w usłudze Azure 
 > Ten łącznik jest obecnie w wersji zapoznawczej. Możesz wypróbować tę funkcję i przekaż nam swoją opinię. Jeśli w swoim rozwiązaniu chcesz wprowadzić zależność od łączników w wersji zapoznawczej, skontaktuj się z [pomocą techniczną platformy Azure](https://azure.microsoft.com/support/).
 
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
+
+Ten łącznik usługi PayPal jest obsługiwany przez następujące działania:
+
+- [Działanie kopiowania](copy-activity-overview.md) z [obsługiwaną macierzą źródłową](copy-activity-overview.md)
+- [Działanie Lookup](control-flow-lookup-activity.md)
 
 Możesz skopiować dane z systemu PayPal, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
@@ -44,7 +49,7 @@ Następujące właściwości są obsługiwane dla systemu PayPal, połączone us
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **PayPal** | Tak |
+| type | Właściwość Type musi mieć ustawioną wartość: **—** | Tak |
 | host | Adres URL wystąpienia PayPal. (czyli api.sandbox.paypal.com)  | Yes |
 | clientId | Identyfikator klienta skojarzony z aplikacją systemu PayPal.  | Yes |
 | clientSecret | Klucz tajny klienta skojarzone z aplikacją systemu PayPal. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
@@ -79,8 +84,8 @@ Aby skopiować dane z systemu PayPal, należy ustawić właściwość typu zesta
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość typu elementu dataset musi być równa: **PayPalObject** | Tak |
-| tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **System PayPal** | Tak |
+| tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "query" w źródle działania) |
 
 **Przykład**
 
@@ -89,11 +94,12 @@ Aby skopiować dane z systemu PayPal, należy ustawić właściwość typu zesta
     "name": "PayPalDataset",
     "properties": {
         "type": "PayPalObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<PayPal linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -108,7 +114,7 @@ Aby skopiować dane z systemu PayPal, należy ustawić typ źródła w działani
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi być równa wartości właściwości type źródło działania kopiowania: **PayPalSource** | Tak |
+| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **PayPalSource** | Tak |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM Payment_Experience"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**
@@ -143,5 +149,10 @@ Aby skopiować dane z systemu PayPal, należy ustawić typ źródła w działani
 ]
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="lookup-activity-properties"></a>Właściwości działania Lookup
+
+Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (wyszukiwanie](control-flow-lookup-activity.md)).
+
+
+## <a name="next-steps"></a>Następne kroki
 Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

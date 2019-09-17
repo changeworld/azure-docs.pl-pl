@@ -4,15 +4,16 @@ description: Uzyskaj odpowiedzi na często zadawane pytania na temat pracy z us�
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 143a941b8266734a8415c71daafc07681bc13b80
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 8931f9b09836d30f95e25cee245932475c3cf64c
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70049565"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018356"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z platformy Apache Spark przy użyciu usługi Azure HDInsight
 
@@ -26,49 +27,49 @@ Wartości konfiguracji platformy Spark można dostrajać w celu uniknięcia wyj�
 
 1. Przejdź do **Spark2** > **configs**.
 
-    ![Wybierz kartę konfiguracje](./media/apache-troubleshoot-spark/update-config-2.png)
+    ![Wybierz kartę konfiguracje](./media/apache-troubleshoot-spark/apache-spark-ambari-config2.png)
 
 1. Na liście konfiguracji wybierz i rozwiń pozycję **Custom-spark2-Defaults**.
 
 1. Znajdź ustawienie wartości, które należy dopasować, takich jak **spark.executor.memory**. W tym przypadku wartość **9728m** jest zbyt wysoka.
 
-    ![Wybierz niestandardowe — spark — ustawienia domyślne](./media/apache-troubleshoot-spark/update-config-4.png)
+    ![Wybierz niestandardowe — spark — ustawienia domyślne](./media/apache-troubleshoot-spark/apache-spark-ambari-config4.png)
 
 1. Ustaw wartość na ustawienie zalecane. Wartość **2048m** jest zalecane w przypadku tego ustawienia.
 
 1. Zapisz wartość, a następnie Zapisz konfigurację. Wybierz pozycję **Zapisz**.
 
-    ![Zmień wartość na 2048m](./media/apache-troubleshoot-spark/update-config-6a.png)
+    ![Zmień wartość na 2048m](./media/apache-troubleshoot-spark/apache-spark-ambari-config6a.png)
 
     Wpisz notatkę o zmiany konfiguracji, a następnie wybierz **Zapisz**.
 
-    ![Wprowadź informację o zmianach, które wprowadziłeś](./media/apache-troubleshoot-spark/update-config-6c.png)
+    ![Wprowadź informację o zmianach, które wprowadziłeś](./media/apache-troubleshoot-spark/apache-spark-ambari-config6c.png)
 
     Otrzymasz powiadomienie, jeśli wszystkie konfiguracje wymagające uwagi. Należy pamiętać, elementy, a następnie wybierz **kontynuować mimo to**.
 
-    ![Wybierz kontynuować mimo to](./media/apache-troubleshoot-spark/update-config-6b.png)
+    ![Wybierz kontynuować mimo to](./media/apache-troubleshoot-spark/apache-spark-ambari-config6b.png)
 
 1. Przy każdym zapisaniu konfiguracji pojawia się monit o ponowne uruchomienie usługi. Wybierz **ponowne uruchomienie**.
 
-    ![Uruchom ponownie](./media/apache-troubleshoot-spark/update-config-7a.png)
+    ![Uruchom ponownie](./media/apache-troubleshoot-spark/apache-spark-ambari-config7a.png)
 
     Potwierdź ponowne uruchomienie.
 
-    ![Wybieranie przycisku Potwierdź ponowne uruchomienie wszystkich](./media/apache-troubleshoot-spark/update-config-7b.png)
+    ![Wybieranie przycisku Potwierdź ponowne uruchomienie wszystkich](./media/apache-troubleshoot-spark/apache-spark-ambari-config7b.png)
 
     Możesz przejrzeć procesów, które są uruchomione.
 
-    ![Przegląd uruchomionego procesu](./media/apache-troubleshoot-spark/update-config-7c.png)
+    ![Przegląd uruchomionego procesu](./media/apache-troubleshoot-spark/apache-spark-ambari-config7c.png)
 
 1. Można dodać konfiguracji. Na liście konfiguracji, wybierz **Custom-spark2 — ustawienia domyślne**, a następnie wybierz pozycję **Dodaj właściwość**.
 
-    ![Wybierz opcję Dodaj właściwość](./media/apache-troubleshoot-spark/update-config-8.png)
+    ![Wybierz opcję Dodaj właściwość](./media/apache-troubleshoot-spark/apache-spark-ambari-config8.png)
 
 1. Definiowania nowej właściwości. Można zdefiniować jedną właściwość, za pomocą okno dialogowe dotyczące konkretnych ustawień, takich jak typ danych. Alternatywnie można zdefiniować wiele właściwości, za pomocą jednej definicji dla każdego wiersza.
 
     W tym przykładzie **spark.driver.memory** właściwość jest zdefiniowana z wartością **4g**.
 
-    ![Zdefiniuj nową właściwość](./media/apache-troubleshoot-spark/update-config-9.png)
+    ![Zdefiniuj nową właściwość](./media/apache-troubleshoot-spark/apache-spark-ambari-config9.png)
 
 1. Zapisz konfigurację, a następnie uruchom ponownie usługę, zgodnie z opisem w kroku 6 i 7.
 

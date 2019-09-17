@@ -10,20 +10,20 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 08/27/2019
-ms.openlocfilehash: 0dea447ed44a61b20faf9a0a1690b2bbdd674b30
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.date: 09/16/2019
+ms.openlocfilehash: 7f7faf11ed18fa2a85587c193376a3e4ce905fd2
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70930622"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010188"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Przegląd Azure SQL Database limitów zasobów wystąpienia zarządzanego
 
-Ten artykuł zawiera omówienie limitów zasobów dla Azure SQL Database wystąpienia zarządzanego i zawiera informacje o sposobach żądania zwiększenia do tych limitów.
+Ten artykuł zawiera omówienie parametrów technicznych i limitów zasobów dla Azure SQL Database wystąpienia zarządzanego i zawiera informacje o sposobach żądania wzrostu do tych limitów.
 
 > [!NOTE]
-> Aby uzyskać różnice w obsługiwanych funkcjach i instrukcjach języka T-SQL, zobacz temat [różnice w funkcjach](sql-database-features.md) i [Obsługa instrukcji języka t-SQL](sql-database-managed-instance-transact-sql-information.md).
+> Aby uzyskać różnice w obsługiwanych funkcjach i instrukcjach języka T-SQL, zobacz temat [różnice w funkcjach](sql-database-features.md) i [Obsługa instrukcji języka t-SQL](sql-database-managed-instance-transact-sql-information.md). Aby uzyskać ogólną różnicę między warstwami usług w pojedynczej bazie danych i wystąpieniu zarządzanym, zobacz [porównanie warstwy usług](sql-database-service-tiers-general-purpose-business-critical.md#service-tier-comparison).
 
 ## <a name="instance-level-resource-limits"></a>Limity zasobów na poziomie wystąpienia
 
@@ -43,11 +43,11 @@ Wystąpienie zarządzane Azure SQL Database można wdrożyć na dwóch generacja
 
 > [!IMPORTANT]
 > - Obliczenia sprzęt jest stopniowo wycofywany. Zaleca się wdrożenie nowych wystąpień zarządzanych na sprzęcie 5 rdzeń.
-> - W tej chwili obliczenia sprzęt jest dostępny w następujących regionach: Europa Północna, Europa Zachodnia, Wschodnie stany USA, Południowo-środkowe stany USA, Północno-środkowe stany USA, zachodnie stany USA 2, środkowe stany USA, Kanada środkowa, Indie Południowe, Azja Południowo-Wschodnia i Korea środkowa.
+> - W tej chwili obliczenia sprzęt nadal jest dostępny tylko w następujących regionach: Europa Północna, Europa Zachodnia, Wschodnie stany USA, Południowo-środkowe stany USA, Północno-środkowe stany USA, zachodnie stany USA 2, środkowe stany USA, Kanada środkowa, Indie Południowe, Azja Południowo-Wschodnia i Korea środkowa.
 
 ### <a name="service-tier-characteristics"></a>Charakterystyki warstwy usług
 
-Wystąpienie zarządzane ma dwie warstwy usług: Ogólnego przeznaczenia i Krytyczne dla działania firmy. Te warstwy zapewniają różne możliwości, zgodnie z opisem w poniższej tabeli:
+Wystąpienie zarządzane ma dwie warstwy usług: [Ogólnego przeznaczenia](sql-database-service-tier-general-purpose.md) i [krytyczne dla działania firmy](sql-database-service-tier-business-critical.md). Te warstwy zapewniają [różne możliwości](sql-database-service-tiers-general-purpose-business-critical.md), zgodnie z opisem w poniższej tabeli:
 
 | **Funkcja** | **Ogólnego przeznaczenia** | **Krytyczne dla działania firmy** |
 | --- | --- | --- |
@@ -73,6 +73,9 @@ Wystąpienie zarządzane ma dwie warstwy usług: Ogólnego przeznaczenia i Kryty
 > - Przepływność i operacje we/wy zależą również od rozmiaru strony, która nie jest jawnie ograniczona przez wystąpienie zarządzane.
 > Można utworzyć kolejną replikę do odczytu w innym regionie świadczenia usługi Azure przy użyciu grup Autotryb failover.
 
+> [!NOTE]
+> Więcej informacji na temat [limitów zasobów w pulach wystąpień zarządzanych w tym artykule](sql-database-instance-pools.md#instance-pools-resource-limitations).
+
 ## <a name="supported-regions"></a>Obsługiwane regiony
 
 Wystąpienia zarządzane można tworzyć tylko w [obsługiwanych regionach](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Aby utworzyć wystąpienie zarządzane w regionie, który nie jest obecnie obsługiwany, można [wysłać żądanie pomocy technicznej za pośrednictwem Azure Portal](#obtaining-a-larger-quota-for-sql-managed-instance).
@@ -93,7 +96,7 @@ Wystąpienie zarządzane obecnie obsługuje tylko wdrożenie następujących typ
 Obsługiwane typy subskrypcji mogą zawierać ograniczoną liczbę zasobów na region. Wystąpienie zarządzane ma dwa domyślne limity dla regionu platformy Azure, w zależności od typu subskrypcji:
 
 - **Limit podsieci**: Maksymalna liczba podsieci, w których wystąpienia zarządzane są wdrażane w jednym regionie.
-- **Limit rdzeń wirtualny**: Maksymalna liczba rdzeni wirtualnych, które mogą zostać wdrożone we wszystkich wystąpieniach w jednym regionie.
+- **Limit rdzeń wirtualny**: Maksymalna liczba rdzeni wirtualnych, które mogą zostać wdrożone we wszystkich wystąpieniach w jednym regionie. Łączna liczba wystąpień nie jest ograniczona, o ile mieści się w limicie rdzeń wirtualny.
 
 > [!Note]
 > Te limity to ustawienia domyślne, a nie ograniczenia techniczne. Limity można zwiększyć na żądanie, tworząc specjalne [żądanie pomocy technicznej w Azure Portal,](#obtaining-a-larger-quota-for-sql-managed-instance) Jeśli potrzebujesz więcej wystąpień zarządzanych w bieżącym regionie. Alternatywnie można tworzyć nowe wystąpienia zarządzane w innym regionie świadczenia usługi Azure bez wysyłania żądań pomocy technicznej.

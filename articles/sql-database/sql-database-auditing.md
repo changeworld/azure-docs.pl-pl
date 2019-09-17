@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: b145b341a4db503a00d517decf6406e26f23c3cd
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: cc12579a4932894b730b04cdc77acc0151168bdb
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802454"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010212"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Rozpoczynanie pracy z inspekcją bazy danych SQL
 
@@ -58,7 +58,7 @@ Zasady inspekcji można zdefiniować dla konkretnej bazy danych lub jako domyśl
 
 - Jeśli *Inspekcja obiektów BLOB serwera jest włączona*, *zawsze ma zastosowanie do bazy danych programu*. Baza danych będzie poddawana inspekcji, niezależnie od ustawień inspekcji bazy danych.
 
-- Włączenie inspekcji obiektów BLOB w bazie danych lub hurtowni danych (oprócz włączenia jej na serwerze) *nie przesłania ani* nie zmienia żadnych ustawień inspekcji obiektów BLOB serwera. Obie inspekcje będą istnieć obok siebie. Inaczej mówiąc, baza danych jest monitorowana dwukrotnie. raz przez zasady serwera i jeden raz przez zasady bazy danych.
+- Włączenie inspekcji obiektów BLOB w bazie danych lub hurtowni danych (oprócz włączenia jej na serwerze) nie przesłania ani nie zmienia żadnych ustawień inspekcji obiektów BLOB serwera. Obie inspekcje będą istnieć obok siebie. Inaczej mówiąc, baza danych jest monitorowana dwukrotnie. raz przez zasady serwera i jeden raz przez zasady bazy danych.
 
    > [!NOTE]
    > Należy unikać jednoczesnego włączania inspekcji obiektów BLOB serwera i inspekcji obiektów BLOB bazy danych, chyba że:
@@ -72,7 +72,7 @@ Zasady inspekcji można zdefiniować dla konkretnej bazy danych lub jako domyśl
 W poniższej sekcji opisano konfigurację inspekcji przy użyciu Azure Portal.
 
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
-2. Przejdź do opcji **Inspekcja** pod nagłówkiem zabezpieczenia w okienku baza danych SQL/serwer.
+2. Przejdź do opcji Inspekcja pod nagłówkiem zabezpieczenia w okienku baza danych SQL/serwer.
 
     <a id="auditing-screenshot"></a>![Okienko nawigacji][1]
 
@@ -94,6 +94,9 @@ W poniższej sekcji opisano konfigurację inspekcji przy użyciu Azure Portal.
     ![Opcje magazynu](./media/sql-database-auditing-get-started/auditing-select-destination.png)
 
 6. Aby skonfigurować zapisywanie dzienników inspekcji na koncie magazynu, wybierz pozycję **Magazyn** i Otwórz **szczegóły magazynu**. Wybierz konto usługi Azure Storage, na którym będą zapisywane dzienniki, a następnie wybierz okres przechowywania. Stare dzienniki zostaną usunięte. Następnie kliknij przycisk **OK**.
+
+   > [!IMPORTANT]
+   > Wartość domyślna okresu przechowywania to 0 (nieograniczony czas przechowywania). Tę wartość można zmienić, przesuwając suwak **przechowywanie (dni)** w **ustawieniach magazynu** podczas konfigurowania konta magazynu na potrzeby inspekcji.
 
     ![konto magazynu](./media/sql-database-auditing-get-started/auditing_select_storage.png)
 
@@ -119,7 +122,7 @@ W poniższej sekcji opisano konfigurację inspekcji przy użyciu Azure Portal.
 
 W przypadku wybrania opcji zapisania dzienników inspekcji do Azure Monitor dzienników:
 
-- Użyj [Azure Portal](https://portal.azure.com).  Otwórz odpowiednią bazę danych. W górnej części strony **Inspekcja** bazy danych kliknij pozycję **Wyświetl dzienniki inspekcji**.
+- Użyj [Azure Portal](https://portal.azure.com).  Otwórz odpowiednią bazę danych. W górnej części strony Inspekcja bazy danych kliknij pozycję **Wyświetl dzienniki inspekcji**.
 
     ![Wyświetlanie dzienników inspekcji](./media/sql-database-auditing-get-started/auditing-view-audit-logs.png)
 
@@ -150,7 +153,7 @@ W przypadku wybrania opcji zapisania dzienników inspekcji na koncie usługi Azu
 
 - Dzienniki inspekcji są agregowane na koncie wybranym podczas instalacji. Dzienniki inspekcji można eksplorować przy użyciu narzędzia, takiego jak [Eksplorator usługi Azure Storage](https://storageexplorer.com/). W usłudze Azure Storage dzienniki inspekcji są zapisywane jako kolekcja plików obiektów BLOB w kontenerze o nazwie **sqldbauditlogs**. Aby uzyskać więcej informacji na temat hierarchii folderu magazynu, konwencji nazewnictwa i formatu dziennika, zobacz [format dziennika inspekcji SQL Database](https://go.microsoft.com/fwlink/?linkid=829599).
 
-- Użyj [Azure Portal](https://portal.azure.com).  Otwórz odpowiednią bazę danych. W górnej części strony **Inspekcja** bazy danych kliknij pozycję **Wyświetl dzienniki inspekcji**.
+- Użyj [Azure Portal](https://portal.azure.com).  Otwórz odpowiednią bazę danych. W górnej części strony Inspekcja bazy danych kliknij pozycję **Wyświetl dzienniki inspekcji**.
 
     ![Okienko nawigacji][7]
 
@@ -262,9 +265,9 @@ Aby zapoznać się z przykładem skryptu, zobacz [Konfigurowanie inspekcji i wyk
 Rozszerzone zasady z klauzulą WHERE obsługują dodatkowe filtrowanie:
 
 - [Utwórz lub zaktualizuj zasady *rozszerzonej* inspekcji bazy danych](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
-- [Tworzenie lub aktualizowanie zasad inspekcji *rozszerzonej* serwera](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
-- [Pobierz zasady inspekcji *rozszerzonej* bazy danych](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
-- [Pobieranie zasad inspekcji *rozszerzonej* serwera](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
+- [Tworzenie lub aktualizowanie zasad inspekcji rozszerzonej serwera](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
+- [Pobierz zasady inspekcji rozszerzonej bazy danych](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
+- [Pobieranie zasad inspekcji rozszerzonej serwera](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
 ## <a id="subheading-10"></a>Zarządzanie inspekcją usługi SQL Database przy użyciu szablonów Azure Resource Manager
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 2c490c9eb23ad62559a6246f1588f80080851014
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: b5d4febbb8e068ca8f922145c1e7255ab7a587ac
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726043"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010592"
 ---
 # <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>Kopiowanie danych z usługi QuickBooks Online przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -27,6 +27,11 @@ W tym artykule opisano sposób użycia działania kopiowania w usłudze Azure Da
 > Ten łącznik jest obecnie w wersji zapoznawczej. Możesz wypróbować tę funkcję i przekaż nam swoją opinię. Jeśli w swoim rozwiązaniu chcesz wprowadzić zależność od łączników w wersji zapoznawczej, skontaktuj się z [pomocą techniczną platformy Azure](https://azure.microsoft.com/support/).
 
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
+
+Ten łącznik programu QuickBooks jest obsługiwany dla następujących działań:
+
+- [Działanie kopiowania](copy-activity-overview.md) z [obsługiwaną macierzą źródłową](copy-activity-overview.md)
+- [Działanie Lookup](control-flow-lookup-activity.md)
 
 Możesz skopiować dane z usługi QuickBooks Online, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
@@ -46,7 +51,7 @@ Następujące właściwości są obsługiwane w przypadku QuickBooks połączone
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type musi mieć ustawioną wartość: **Programu** | Yes |
+| type | Właściwość Type musi mieć ustawioną wartość: **Programu** | Tak |
 | endpoint | Punkt końcowy serwera usługi QuickBooks Online. (czyli quickbooks.api.intuit.com)  | Yes |
 | companyId | Identyfikator firmy firmy QuickBooks, do autoryzacji. Aby uzyskać informacje o sposobach znajdowania Identyfikatora firmy, zobacz [jak znaleźć swój identyfikator firmy?](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551). | Yes |
 | consumerKey | Klucz klienta do uwierzytelniania protokołu OAuth 1.0. | Yes |
@@ -93,7 +98,7 @@ Aby skopiować dane z usługi QuickBooks Online, należy ustawić właściwość
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość Type zestawu danych musi być ustawiona na wartość: **QuickBooksObject** | Tak |
-| tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
+| tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "query" w źródle działania) |
 
 **Przykład**
 
@@ -122,7 +127,7 @@ Aby skopiować dane z usługi QuickBooks Online, należy ustawić typ źródłow
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **QuickBooksSource** | Yes |
+| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **QuickBooksSource** | Tak |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM "Bill" WHERE Id = '123'"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**
@@ -160,5 +165,10 @@ Aby skopiować dane z usługi QuickBooks Online, należy ustawić typ źródłow
 
 Działanie kopiowania w usłudze Azure Data Factory nie można skopiować danych bezpośrednio z programu Quickbooks Desktop. Aby skopiować dane z programu Quickbooks Desktop, eksportowania danych Quickbooks z plikiem przecinkami zawierającego wartości rozdzielane przecinkami (CSV), a następnie przekazać plik do usługi Azure Blob Storage. W tym miejscu można użyć usługi Data Factory do skopiowania danych ujścia wybranych przez użytkownika.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="lookup-activity-properties"></a>Właściwości działania Lookup
+
+Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (wyszukiwanie](control-flow-lookup-activity.md)).
+
+
+## <a name="next-steps"></a>Następne kroki
 Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

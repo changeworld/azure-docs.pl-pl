@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: raynew
-ms.openlocfilehash: 2d40e6fef215219035720ee64492a91fcdafb472
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 867a2dc9739e839a6957190f93311a811556df15
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933933"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010240"
 ---
 # <a name="whats-new-in-site-recovery"></a>Co nowego w usłudze Site Recovery
 
@@ -59,7 +59,7 @@ W tabeli zestawiono nowe funkcje odzyskiwania po awarii maszyny wirtualnej platf
 **Oczyść po powrocie po awarii** | Po przejściu w tryb failover na pomocniczą platformę Azure, a następnie po awarii do regionu podstawowego program Site Recovery automatycznie czyści maszyny w regionie pomocniczym. Nie ma potrzeby ręcznego usuwania maszyn wirtualnych i kart interfejsu sieciowego.
 **Test pracy w trybie failover zachowuje adres IP** | Teraz można zachować adres IP źródłowej maszyny wirtualnej podczas przechodzenia do szczegółów odzyskiwania po awarii i wybrać statyczny adres IP dla testowego trybu failover.
 
-## <a name="vmwarephysical-server-disaster-recovery"></a>Odzyskiwanie po awarii oprogramowania VMware/serwera fizycznego
+### <a name="vmwarephysical-server-disaster-recovery"></a>Odzyskiwanie po awarii oprogramowania VMware/serwera fizycznego
 
 Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 
@@ -67,13 +67,13 @@ Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 --- | ---
 Nowe alerty serwera przetwarzania | Dodaliśmy nowe alerty serwera przetwarzania. [Dowiedz się więcej](vmware-physical-azure-monitor-process-server.md). 
 
-## <a name="hyper-v-disaster-recovery"></a>Odzyskiwanie awaryjne funkcji Hyper-V
+### <a name="hyper-v-disaster-recovery"></a>Odzyskiwanie awaryjne funkcji Hyper-V
 
 Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 
 **Funkcja** | **Szczegóły**
 --- | ---
-Konto magazynu | Site Recovery teraz obsługuje korzystanie z konta magazynu z włączoną funkcją kontroli dostępu opartej na rolach (RBAC). [Dowiedz się więcej](../storage/common/storage-account-manage.md#access-control) o kontroli dostępu dla kont magazynu. 
+Konto magazynu | Site Recovery teraz obsługuje używanie kont magazynu z włączoną zaporą dla funkcji Hyper-V na potrzeby odzyskiwania po awarii platformy Azure.  Można wybrać konta magazynu z obsługą zapory jako konto docelowe lub magazyn pamięci podręcznej. W przypadku korzystania z konta z włączoną zaporą upewnij się, że opcja zezwala na używanie zaufanych usług firmy Microsoft.
 
 
 ## <a name="updates-august-2019"></a>Aktualizacje (sierpień 2019)

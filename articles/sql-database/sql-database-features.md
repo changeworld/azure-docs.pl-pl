@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 2ddef73121ef2f6c145516ca114989aa12b8003c
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 3cad1a73dd98928ed12748e2acffaea158dc5924
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873511"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010301"
 ---
 # <a name="azure-sql-database-features"></a>Funkcje Azure SQL Database
 
@@ -32,7 +32,7 @@ Azure SQL Database zarządza bazami danych i gwarantuje ich wysoką dostępnoś�
 
 Poniższa tabela zawiera listę głównych funkcji SQL Server i zawiera informacje o tym, czy funkcja jest częściowo czy w pełni obsługiwana w wystąpieniu zarządzanym, czy pojedyncza baza danych i elastycznych pulach, z linkiem do dodatkowych informacji na temat tej funkcji.
 
-| **Funkcja SQL** | **Pojedyncze bazy danych i pule elastyczne** | **Wystąpienia zarządzane** |
+| **Funkcja SQL** | **Pojedyncze bazy danych i pule elastyczne** | **Wystąpienia zarządzane i pule wystąpień** |
 | --- | --- | --- |
 | [Zawsze szyfrowane](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) | Tak — Zobacz artykuł [Magazyn certyfikatów](sql-database-always-encrypted.md) i magazyn [kluczy](sql-database-always-encrypted-azure-key-vault.md) | Tak — Zobacz artykuł [Magazyn certyfikatów](sql-database-always-encrypted.md) i magazyn [kluczy](sql-database-always-encrypted-azure-key-vault.md) |
 | [Zawsze włączone grupy dostępności](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | [Wysoka dostępność](sql-database-high-availability.md) jest dołączona do każdej bazy danych. Odzyskiwanie po awarii zostało omówione w [omówieniu ciągłości działania w Azure SQL Database](sql-database-business-continuity.md) | [Wysoka dostępność](sql-database-high-availability.md) jest dołączona do każdej bazy danych i [nie może być zarządzana przez użytkownika](sql-database-managed-instance-transact-sql-information.md#always-on-availability). Odzyskiwanie po awarii zostało omówione w [omówieniu ciągłości działania w Azure SQL Database](sql-database-business-continuity.md) |
@@ -112,7 +112,7 @@ Poniższa tabela zawiera listę głównych funkcji SQL Server i zawiera informac
 
 Platforma Azure udostępnia wiele możliwości PaaS, które są dodawane jako dodatkowa wartość do standardowych funkcji baz danych. Istnieje kilka usług zewnętrznych, które mogą być używane z usługą Azure SQL Database. 
 
-| **Funkcja platformy** | **Pojedyncze bazy danych i pule elastyczne** | **Wystąpienia zarządzane** |
+| **Funkcja platformy** | **Pojedyncze bazy danych i pule elastyczne** | **Wystąpienia zarządzane i pule wystąpień** |
 | --- | --- | --- |
 | [Aktywna replikacja geograficzna](sql-database-active-geo-replication.md) | Tak — wszystkie warstwy usług inne niż skalowanie | Nie, zobacz [grupy autofailover (wersja zapoznawcza)](sql-database-auto-failover-group.md) jako alternatywę |
 | [Grupy automatycznego trybu failover](sql-database-auto-failover-group.md) | Tak — wszystkie warstwy usług inne niż skalowanie | Tak, w [publicznej wersji](sql-database-auto-failover-group.md) zapoznawczej|
@@ -131,7 +131,7 @@ Platforma Azure udostępnia wiele możliwości PaaS, które są dodawane jako do
 | [Zarządzanie oparte na zasadach](https://docs.microsoft.com/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | Nie | Nie |
 | Publiczny adres IP | Tak. Dostęp można ograniczyć za pomocą zapory lub punktów końcowych usługi.  | Tak. Należy jawnie włączyć, a port 3342 musi być włączony w regułach sieciowej grupy zabezpieczeń. Publiczny adres IP można wyłączyć w razie konieczności. Aby uzyskać więcej informacji, zobacz [publiczny punkt końcowy](sql-database-managed-instance-public-endpoint-securely.md) . | 
 | [Przywracanie bazy danych do punktu w czasie](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model) | Tak — wszystkie warstwy usług inne niż skalowanie — Zobacz [SQL Database Recovery](sql-database-recovery-using-backups.md#point-in-time-restore) | Tak — zobacz [SQL Database Recovery](sql-database-recovery-using-backups.md#point-in-time-restore) |
-| Pule zasobów | Tak, jako [Pule elastyczne](sql-database-elastic-pool.md) | Nie. Pojedyncze wystąpienie zarządzane może mieć wiele baz danych, które współużytkują tę samą pulę zasobów. Wystąpienia zarządzane nie mogą udostępniać zasobów. |
+| Pule zasobów | Tak, jako [Pule elastyczne](sql-database-elastic-pool.md) | Tak. Pojedyncze wystąpienie zarządzane może mieć wiele baz danych, które współużytkują tę samą pulę zasobów. Ponadto można wdrożyć wiele wystąpień zarządzanych w [pulach wystąpień (wersja zapoznawcza)](sql-database-instance-pools.md) , które mogą udostępniać zasoby. |
 | Skalowanie w górę lub w dół (online) | Tak, możesz zmienić wartość DTU lub rdzeni wirtualnych zarezerwowaną lub maksymalną ilość miejsca w magazynie na minimalny czas przestoju. | Tak, możesz zmienić zastrzeżone rdzeni wirtualnych lub maks. magazyn o minimalnym przestoju. |
 | Alias SQL | Tak, zobacz [alias DNS](dns-alias-overview.md) | Nie |
 | [Analiza SQL](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | Tak | Tak |
@@ -146,7 +146,7 @@ Platforma Azure udostępnia wiele możliwości PaaS, które są dodawane jako do
 ## <a name="tools"></a>Narzędzia
 Usługa Azure SQL Database obsługuje różne narzędzia danych, które mogą pomóc w zarządzaniu danymi.
 
-| **Narzędzie** | **Pojedyncze bazy danych i pule elastyczne** | **Wystąpienia zarządzane** |
+| **Narzędzie** | **Pojedyncze bazy danych i pule elastyczne** | **Wystąpienia zarządzane i pule wystąpień** |
 | --- | --- | --- |
 | Azure Portal | Tak | Tak |
 | Interfejs wiersza polecenia platformy Azure | Tak | Tak|
@@ -167,7 +167,7 @@ Usługa Azure SQL Database obsługuje różne narzędzia danych, które mogą po
 
 Do przenoszenia danych między bazami danych SQL Server, pojedyncza baza danych i wystąpieniami zarządzanymi można używać różnych metod migracji. Niektóre metody są w **trybie online** i pobierają wszystkie zmiany wprowadzone w źródle podczas przeprowadzania migracji, natomiast w metodach **offline** należy zatrzymać obciążenie, które modyfikuje dane ze źródła, podczas gdy migracja jest w toku.
 
-| **Element źródłowy** | **Pojedyncza baza danych i Pula elastyczna** | **Wystąpienie zarządzane** |
+| **Element źródłowy** | **Pojedyncza baza danych i Pula elastyczna** | **Wystąpienia zarządzane i pule wystąpień** |
 | --- | --- | --- |
 | SQL Server (Premium, AzureVM, Amazon RDS) | **Sieci** [Usługa migracji danych (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [replikacja transakcyjna](sql-database-managed-instance-transactional-replication.md) <br/> **Stanie** [Plik BACPAC (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), bcp | **Sieci** [Usługa migracji danych (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [replikacja transakcyjna](sql-database-managed-instance-transactional-replication.md) <br/> **Stanie** Natywna kopia zapasowa/przywracanie, [plik BACPAC (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), bcp, [replikacja migawek](sql-database-managed-instance-transactional-replication.md) |
 | Pojedyncza baza danych | **Stanie** [Plik BACPAC (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), bcp | **Stanie** [Plik BACPAC (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), bcp |
@@ -183,3 +183,4 @@ Firma Microsoft kontynuuje Dodawanie funkcji do Azure SQL Database. Odwiedź str
 Aby uzyskać więcej informacji na temat typów Azure SQL Database, zobacz:
 - [Co to jest SQL Database?](sql-database-technical-overview.md)
 - [Co to jest wystąpienie zarządzane?](sql-database-managed-instance.md)
+- [Co to są pule wystąpień zarządzanych?](sql-database-instance-pools.md)

@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 0bba755ec5683e988bb8ae3f2308a1c298b228b0
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: b85793223e23aa3d668d6f86494da3ee78c43e91
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000559"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71009994"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Klasyfikacja & Azure SQL Database i SQL Data Warehouse odnajdywania danych
 
@@ -144,8 +144,11 @@ Za pomocą interfejsów API REST można także programowo zarządzać klasyfikac
 
 - [Utwórz lub zaktualizuj](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) — tworzy lub aktualizuje etykietę czułości danej kolumny.
 - [Usuń](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) — usuwa etykietę czułości danej kolumny.
+- [Wyłącz zalecenie](https://docs.microsoft.com/en-us/rest/api/sql/sensitivitylabels/disablerecommendation) — wyłącza zalecenia dotyczące czułości w danej kolumnie
+- [Włącz rekomendacje](https://docs.microsoft.com/en-us/rest/api/sql/sensitivitylabels/enablerecommendation) — włącza zalecenia dotyczące czułości w danej kolumnie (zalecenia są domyślnie włączone dla wszystkich kolumn)
 - [Get](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) -pobiera etykietę czułości danej kolumny
 - [Lista bieżąca według bazy danych](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) — pobiera bieżące etykiety czułości danej bazy danych
+
 - [Lista zalecana przez bazę danych](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) — pobiera zalecane etykiety czułości danej bazy danych.
 
 ## <a name="manage-data-discovery-and-classification-using-azure-powershell"></a>Zarządzanie odnajdywaniem i klasyfikacją danych przy użyciu Azure PowerShell

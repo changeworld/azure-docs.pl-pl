@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 3082c568b3ce3fa5199c7a7d0d082db36720d293
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 561f383327738c9a2ab29f2907f00ace1eec6def
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233021"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010277"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Kopiowanie danych z usługi Azure Cosmos DB (interfejs API SQL) lub za pomocą usługi Azure Data Factory
 
@@ -31,6 +31,11 @@ W tym artykule opisano sposób używania działania kopiowania w usłudze Azure 
 >Ten łącznik jest obsługiwany tylko kopiowanie danych z interfejsu API SQL usługi Cosmos DB. W przypadku interfejsu API MongoDB zapoznaj się z [łącznikiem dla interfejsu api Azure Cosmos DB MongoDB](connector-azure-cosmos-db-mongodb-api.md). Inne typy interfejsów API nie są obecnie obsługiwane.
 
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
+
+Ten łącznik Azure Cosmos DB (SQL API) jest obsługiwany dla następujących działań:
+
+- [Działanie kopiowania](copy-activity-overview.md) z [obsługiwaną macierzą źródłową/ujścia](copy-activity-overview.md)
+- [Działanie Lookup](control-flow-lookup-activity.md)
 
 Dane z Azure Cosmos DB (interfejs API SQL) można skopiować do dowolnego obsługiwanego magazynu danych ujścia lub skopiować dane z dowolnego obsługiwanego magazynu danych źródłowych do Azure Cosmos DB (interfejs API SQL). Aby uzyskać listę danych przechowywane na tym, że działanie kopiowania obsługuje jako źródła i ujścia, zobacz [obsługiwane magazyny danych i formatów](copy-activity-overview.md#supported-data-stores-and-formats).
 
@@ -251,6 +256,9 @@ Następujące właściwości są obsługiwane w działaniu kopiowania **źródł
     }
 ]
 ```
+## <a name="lookup-activity-properties"></a>Właściwości działania Lookup
+
+Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (wyszukiwanie](control-flow-lookup-activity.md)).
 
 ## <a name="import-or-export-json-documents"></a>Importowanie lub eksportowanie dokumentów JSON
 

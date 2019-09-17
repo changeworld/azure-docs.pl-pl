@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 09/17/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 08c1a8940bedb1093f618c8de53abc78f81c10dd
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 50f1d0bca958ef4504394cad1d771459cc8be27d
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918786"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018971"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Samouczek: Wdróż i skonfiguruj zaporę platformy Azure w sieci hybrydowej przy użyciu Azure Portal
 
@@ -58,9 +58,9 @@ Aby ten scenariusz przebiegał prawidłowo, muszą zostać spełnione trzy podst
 Zapoznaj się z sekcją [Tworzenie tras](#create-the-routes) w tym samouczku, aby poznać sposób tworzenia tych tras.
 
 >[!NOTE]
->Zapora platformy Azure musi mieć bezpośrednią łączność z Internetem. Jeśli AzureFirewallSubnet nauczy trasy domyślnej do sieci lokalnej za pośrednictwem protokołu BGP, należy przesłonić ten element przy użyciu wartości 0.0.0.0/0 UDR z wartością **NextHopType** ustawioną jako **Internet** w celu utrzymania bezpośredniej łączności z Internetem. Domyślnie Zapora platformy Azure nie obsługuje wymuszonego tunelowania do sieci lokalnej.
+>Zapora platformy Azure musi mieć bezpośrednią łączność z Internetem. Jeśli AzureFirewallSubnet nauczy trasy domyślnej do sieci lokalnej za pośrednictwem protokołu BGP, należy przesłonić ten element przy użyciu wartości 0.0.0.0/0 UDR z wartością **NextHopType** ustawioną jako **Internet** w celu utrzymania bezpośredniej łączności z Internetem.
 >
->Jeśli jednak konfiguracja wymaga wymuszonego tunelowania do sieci lokalnej, firma Microsoft będzie obsługiwać ją w przypadku poszczególnych przypadków. Skontaktuj się z pomocą techniczną, aby umożliwić nam zapoznanie się z Twoim przypadkiem. Jeśli zostanie zaakceptowana, zezwolimy na subskrypcję i upewnimy się, że jest utrzymywana wymagana łączność internetowa zapory.
+>Zapora platformy Azure nie obsługuje obecnie wymuszonego tunelowania. Jeśli konfiguracja wymaga wymuszonego tunelowania do sieci lokalnej i można określić docelowe prefiksy adresów IP dla miejsc docelowych Internetu, można skonfigurować te zakresy przy użyciu sieci lokalnej jako następnego skoku za pośrednictwem trasy zdefiniowanej przez użytkownika na stronie AzureFirewallSubnet. Lub można użyć protokołu BGP, aby zdefiniować te trasy.
 
 >[!NOTE]
 >Ruch między wirtualnymi sieciami równorzędnymi połączonymi bezpośrednio jest kierowany bezpośrednio nawet wtedy, gdy trasa zdefiniowana przez użytkownika wskazuje usługę Azure Firewall jako bramę domyślną. Aby w tym scenariuszu wysyłać ruch między podsieciami do zapory, trasa zdefiniowana przez użytkownika musi jawnie zawierać prefiks podsieci docelowej w obu podsieciach.
@@ -373,7 +373,7 @@ Tworzenie maszyny wirtualnej w sieci wirtualnej szprych, uruchamianie usług IIS
     - **Nazwa użytkownika**: *azureuser*.
     - **Hasło**: *Azure123456!*
 4. Wybierz pozycję **Dalej: Dyski**.
-5. Zaakceptuj wartości domyślne i wybierz pozycję **Dalej: sieć**.
+5. Zaakceptuj wartości domyślne i wybierz **pozycję Dalej: Sieć**.
 6. Wybierz pozycję Sieć wirtualna **-szprycha** dla sieci wirtualnej, a podsieć jest **obciążeniem SN**.
 7. W obszarze **publiczny adres IP**wybierz pozycję **Brak**.
 8. W przypadku **publicznych portów ruchu przychodzącego**wybierz opcję **Zezwalaj na wybrane porty**, a następnie wybierz pozycję **http (80)** i **protokół RDP (3389).**

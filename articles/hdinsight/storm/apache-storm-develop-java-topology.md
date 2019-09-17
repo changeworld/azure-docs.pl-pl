@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 3cdf2255208069e20f5a230cc2acd82a628fdcfd
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 41ed51fc0cec9843525275613cca211d2e1bf409
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840215"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018610"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Tworzenie topologii Apache Storm w języku Java
 
@@ -149,7 +149,7 @@ Dodaj zależność dla składników burzy. W `pom.xml`programie Dodaj następuj�
 W czasie kompilacji Maven używa tych informacji do wyszukania `storm-core` w repozytorium Maven. Najpierw szuka repozytorium na komputerze lokalnym. Jeśli pliki nie znajdują się tam, Maven pobiera je z publicznego repozytorium Maven i zapisuje je w repozytorium lokalnym.
 
 > [!NOTE]  
-> Zwróć uwagę `<scope>provided</scope>` na wiersz w tej sekcji. To ustawienie instruuje Maven, aby wykluczać z tworzonych przez siebie plików jar, ponieważ są one dostarczane przez system.
+> Zwróć uwagę `<scope>provided</scope>` na wiersz w tej sekcji. To ustawienie instruuje Maven, aby wykluczać z tworzonych **przez siebie plików** jar, ponieważ są one dostarczane przez system.
 
 ## <a name="build-configuration"></a>Konfiguracja kompilacji
 
@@ -487,7 +487,7 @@ Topologia łączy elementy Spout i napływa do grafu, który definiuje sposób p
 
 Na poniższej ilustracji przedstawiono Podstawowy diagram grafu składników dla tej topologii.
 
-![Diagram przedstawiający układ elementy Spout i piorunów](./media/apache-storm-develop-java-topology/wordcount-topology.png)
+![Diagram przedstawiający układ elementy Spout i piorunów](./media/apache-storm-develop-java-topology/word-count-topology1.png)
 
 Aby zaimplementować topologię, wprowadź poniższe polecenie, aby utworzyć i otworzyć nowy plik `WordCountTopology.java`:
 
@@ -758,7 +758,7 @@ Aby uzyskać więcej informacji o strumieniu, zobacz temat [platforma strumienio
     > [!WARNING]  
     > Jeśli topologia używa usługi burza 1.0.1, to polecenie kończy się niepowodzeniem. Ten błąd jest spowodowany [https://issues.apache.org/jira/browse/STORM-2055](https://issues.apache.org/jira/browse/STORM-2055)przez. Zamiast tego należy [zainstalować burzę w środowisku deweloperskim](https://storm.apache.org/releases/current/Setting-up-development-environment.html) i wykonać następujące czynności:
     >
-    > Jeśli masz zainstalowaną [burzę w środowisku deweloperskim](https://storm.apache.org/releases/current/Setting-up-development-environment.html), możesz użyć następujących poleceń:
+    > Jeśli masz [zainstalowaną burzę w środowisku deweloperskim](https://storm.apache.org/releases/current/Setting-up-development-environment.html), możesz użyć następujących poleceń:
     >
     > ```cmd
     > mvn compile package

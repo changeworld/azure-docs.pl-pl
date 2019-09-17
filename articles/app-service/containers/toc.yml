@@ -204,7 +204,7 @@
     - name: Podręczniki
       items:
         - name: Architektury referencyjne
-          href: /azure/architecture/reference-architectures/app-service-web-app/
+          href: /azure/architecture/reference-architectures/app-service-web-app/basic-web-app
         - name: Skrypty wdrażania
           href: 'https://azure.microsoft.com/documentation/scripts/'
     - name: Rozwiązywanie problemów

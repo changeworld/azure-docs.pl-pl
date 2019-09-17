@@ -10,16 +10,16 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/05/2019
-ms.openlocfilehash: aa280ea71735ce7c4000951e5c11de2913aaebe8
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 15a11ba74262ec5a354f0cb3fe22c09167c8d5a6
+ms.sourcegitcommit: d15b23e23328ce7502dd3d2846b49fd2d6d8209c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001614"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71005393"
 ---
 # <a name="use-azure-machine-learning-pipelines-for-batch-scoring"></a>Korzystanie z potoków Azure Machine Learning na potrzeby oceniania partii
 
-W tym samouczku użyjesz potoków Azure Machine Learning do uruchamiania oceniania partii lub wnioskowania, zadania. To przykładowe zadanie służy do klasyfikowania obrazów bez etykiet, korzystając z wstępnie [nauczonego](https://arxiv.org/abs/1512.00567) modelu splotowych neuronowych Network Tensorflow. Po skompilowaniu i opublikowaniu potoku należy skonfigurować punkt końcowy REST, aby można było wyzwolić potok z dowolnej biblioteki HTTP na dowolnej platformie.
+W tym samouczku użyjesz potoków Azure Machine Learning, aby uruchomić zadanie oceniania partii. W tym przykładzie używamy wstępnie [nauczonego](https://arxiv.org/abs/1512.00567) modelu splotowych neuronowych Network Tensorflow do klasyfikowania obrazów bez etykiet. Po skompilowaniu i opublikowaniu potoku należy skonfigurować punkt końcowy REST, aby można było wyzwolić potok z dowolnej biblioteki HTTP na dowolnej platformie.
 
 Potoki usługi Machine Learning optymalizują przepływ pracy przy użyciu szybkości, przenośności i ponownego wykorzystania, dzięki czemu możesz skupić się na wiedzy, uczeniu maszynowym, a nie na infrastrukturze i automatyzacji. [Dowiedz się więcej o potokach ml](concept-ml-pipelines.md).
 

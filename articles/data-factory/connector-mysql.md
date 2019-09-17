@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: d76b51aa5117e662e9ff17bb91516c758de3071c
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: d75fce09f1f90e64463488bc1da8d8bb8c2f1d14
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277705"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71009667"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Kopiowanie danych z programu MySQL przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -31,6 +31,11 @@ W tym artykule opisano sposób używania działania kopiowania w Azure Data Fact
 
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
+Ten łącznik MySQL jest obsługiwany dla następujących działań:
+
+- [Działanie kopiowania](copy-activity-overview.md) z [obsługiwaną macierzą źródłową](copy-activity-overview.md)
+- [Działanie Lookup](control-flow-lookup-activity.md)
+
 Dane z bazy danych MySQL można kopiować do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
 W przypadku tego łącznika MySQL obsługuje program MySQL w **wersji 5,6 i 5,7**.
@@ -41,7 +46,7 @@ W przypadku tego łącznika MySQL obsługuje program MySQL w **wersji 5,6 i 5,7*
 
 Integration Runtime udostępnia wbudowany sterownik MySQL, począwszy od wersji 3,7, dlatego nie trzeba ręcznie instalować żadnego sterownika.
 
-W przypadku samodzielnej wersji środowiska IR starszej niż 3,7 należy zainstalować oprogramowanie [MySQL Connector/NET dla systemu Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) w wersji między 6.6.5 i 6.10.7 na maszynie Integration Runtime. Ten sterownik 32-bitowego jest zgodny z 64 bitowym portem IR.
+W przypadku samodzielnej wersji środowiska IR starszej niż 3,7 należy zainstalować oprogramowanie [MySQL Connector/NET dla systemu Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) w wersji między 6.6.5 i 6.10.7 na maszynie Integration Runtime. Ten sterownik 32-bitowy jest zgodny z 64-bitowym portem IR.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
@@ -63,7 +68,7 @@ Typowe parametry połączenia jest `Server=<server>;Port=<port>;Database=<databa
 
 | Właściwość | Opis | Opcje | Wymagane |
 |:--- |:--- |:--- |:--- |
-| SSLMode | Ta opcja określa, czy sterownik używa szyfrowania SSL i weryfikacji podczas łączenia z bazą danych MySQL. Na przykład `SSLMode=<0/1/2/3/4>`| WYŁĄCZONE (0)/PREFEROWANe (1) **(wartość domyślna)** /wymagane (2)/VERIFY_CA (3)/VERIFY_IDENTITY (4) | Nie |
+| SSLMode | Ta opcja określa, czy sterownik używa szyfrowania SSL i weryfikacji podczas łączenia z bazą danych MySQL. Np.,`SSLMode=<0/1/2/3/4>`| WYŁĄCZONE (0)/PREFEROWANe (1) **(wartość domyślna)** /wymagane (2)/VERIFY_CA (3)/VERIFY_IDENTITY (4) | Nie |
 | UseSystemTrustStore | Ta opcja umożliwia określenie, czy certyfikat urzędu certyfikacji ma być używany z magazynu zaufania systemu, czy z określonego pliku PEM. Na przykład `UseSystemTrustStore=<0/1>;`| Włączone (1)/wyłączone (0) **(wartość domyślna)** | Nie |
 
 **Przykład:**
@@ -267,5 +272,10 @@ Podczas kopiowania danych z programu MySQL następujące mapowania są używane 
 | `varchar` |`String` |
 | `year` |`Int` |
 
-## <a name="next-steps"></a>Kolejne kroki
+
+## <a name="lookup-activity-properties"></a>Właściwości działania Lookup
+
+Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (wyszukiwanie](control-flow-lookup-activity.md)).
+
+## <a name="next-steps"></a>Następne kroki
 Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

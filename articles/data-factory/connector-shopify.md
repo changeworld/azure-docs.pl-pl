@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: b4bb56155e925f9e19570d89d091342afd594009
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 22f1394bb23568ac563af54f1df0b295f33f30d8
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725963"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010376"
 ---
 # <a name="copy-data-from-shopify-using-azure-data-factory-preview"></a>Kopiowanie danych z Shopify przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -27,6 +27,11 @@ W tym artykule opisano sposób używania działania kopiowania w usłudze Azure 
 > Ten łącznik jest obecnie w wersji zapoznawczej. Możesz wypróbować tę funkcję i przekaż nam swoją opinię. Jeśli w swoim rozwiązaniu chcesz wprowadzić zależność od łączników w wersji zapoznawczej, skontaktuj się z [pomocą techniczną platformy Azure](https://azure.microsoft.com/support/).
 
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
+
+Ten łącznik Shopify jest obsługiwany dla następujących działań:
+
+- [Działanie kopiowania](copy-activity-overview.md) z [obsługiwaną macierzą źródłową](copy-activity-overview.md)
+- [Działanie Lookup](control-flow-lookup-activity.md)
 
 Możesz skopiować dane z Shopify, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
@@ -44,7 +49,7 @@ Następujące właściwości są obsługiwane w przypadku Shopify połączone us
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type musi mieć ustawioną wartość: **Shopify** | Yes |
+| type | Właściwość Type musi mieć ustawioną wartość: **Shopify** | Tak |
 | host | Punkt końcowy serwera Shopify. (czyli mystore.myshopify.com)  | Yes |
 | accessToken | Token dostępu interfejsu API, który może służyć do dostępu do danych firmy Shopify. Token nie wygasa, jeśli jest w trybie offline. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | useEncryptedEndpoints | Określa, czy punkty końcowe źródła danych są szyfrowane przy użyciu protokołu HTTPS. Wartość domyślna to true.  | Nie |
@@ -77,7 +82,7 @@ Aby skopiować dane z Shopify, należy ustawić właściwość typu zestawu dany
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **ShopifyObject** | Yes |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **ShopifyObject** | Tak |
 | tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "query" w źródle działania) |
 
 **Przykład**
@@ -142,5 +147,10 @@ Aby skopiować dane z Shopify, należy ustawić typ źródła w działaniu kopio
 ]
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="lookup-activity-properties"></a>Właściwości działania Lookup
+
+Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (wyszukiwanie](control-flow-lookup-activity.md)).
+
+
+## <a name="next-steps"></a>Następne kroki
 Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

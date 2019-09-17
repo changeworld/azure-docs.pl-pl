@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: aahi
-ms.openlocfilehash: b1660034f1937d2d8ff9e70139407619626886a8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5e893fda5a0e71703eb867c045de19d391c012ed
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60498869"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018228"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>Szybki start: Używanie zestawu SDK wyszukiwania w Internecie Bing dla języka C#
 
@@ -31,7 +31,7 @@ Oto kilka rzeczy, które są potrzebne przed rozpoczęciem tego przewodnika Szyb
 * [Program Visual Studio](https://visualstudio.microsoft.com/downloads/) lub
 * [Program Visual Studio Code 2017](https://code.visualstudio.com/download)
   * [Rozszerzenie C# for Visual Studio Code](https://visualstudio.microsoft.com/downloads/)
-  * [Menedżer pakietów NuGet](https://github.com/jmrog/vscode-nuget-package-manager)
+  * [NuGet Package Manager](https://github.com/jmrog/vscode-nuget-package-manager)
 * [Zestaw SDK dla platformy .NET Core](https://www.microsoft.com/net/download)
 
 ## <a name="create-a-project-and-install-dependencies"></a>Tworzenie projektu i instalowanie zależności
@@ -39,7 +39,7 @@ Oto kilka rzeczy, które są potrzebne przed rozpoczęciem tego przewodnika Szyb
 > [!TIP]
 > Pobierz najnowszy kod jako rozwiązanie programu Visual Studio z witryny [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/).
 
-Pierwszym krokiem jest utworzenie nowego projektu konsoli. Aby uzyskać pomoc przy konfigurowaniu projektu konsoli, zobacz [Hello World — Twój pierwszy Program (C# Programming Guide)](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program). Aby korzystać z zestawu SDK wyszukiwania w Internecie Bing w aplikacji, musisz zainstalować element `Microsoft.Azure.CognitiveServices.Search.WebSearch` przy użyciu Menedżera pakietów NuGet.
+Pierwszym krokiem jest utworzenie nowego projektu konsoli. Jeśli potrzebujesz pomocy przy konfigurowaniu projektu konsoli, zobacz [Hello World — pierwszy program (C# Przewodnik programowania)](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program). Aby korzystać z zestawu SDK wyszukiwania w Internecie Bing w aplikacji, musisz zainstalować element `Microsoft.Azure.CognitiveServices.Search.WebSearch` przy użyciu Menedżera pakietów NuGet.
 
 [Pakiet zestawu SDK wyszukiwania w Internecie](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0) instaluje także następujące elementy:
 
@@ -61,7 +61,7 @@ using System.Linq;
 
 ## <a name="create-project-scaffolding"></a>Tworzenie szkieletu projektu
 
-Podczas tworzenia nowego projektu konsoli powinna zostać utworzona przestrzeń nazw i klasa dla aplikacji. Program powinien wyglądać następująco:
+Podczas tworzenia nowego projektu konsoli powinna zostać utworzona przestrzeń nazw i klasa dla aplikacji. Program powinien wyglądać podobnie do tego przykładu:
 
 ```csharp
 namespace WebSearchSDK
@@ -243,7 +243,7 @@ W tym przykładzie użyto parametrów `count` i `offset`, aby ograniczyć liczb�
     {
         try
         {
-            var webData = await client.Web.SearchAsync(query: "Best restaurants in Seattle", offset: 10, count: 20).Result;
+            var webData = await client.Web.SearchAsync(query: "Best restaurants in Seattle", offset: 10, count: 20);
             Console.WriteLine("\r\nSearching for \" Best restaurants in Seattle \"");
 
             if (webData?.WebPages?.Value?.Count > 0)
@@ -303,7 +303,7 @@ W tym przykładzie użyto parametru `response_filter`, aby przefiltrować wyniki
         try
         {
             IList<string> responseFilterstrings = new List<string>() { "news" };
-            var webData = await client.Web.SearchAsync(query: "Microsoft", responseFilter: responseFilterstrings).Result;
+            var webData = await client.Web.SearchAsync(query: "Microsoft", responseFilter: responseFilterstrings);
             Console.WriteLine("\r\nSearching for \" Microsoft \" with response filter \"news\"");
 
             if (webData?.News?.Value?.Count > 0)
@@ -366,7 +366,7 @@ W tym przykładzie użyto parametrów `answer_count`, `promote` i `safe_search`,
         try
         {
             IList<string> promoteAnswertypeStrings = new List<string>() { "videos" };
-            var webData = await client.Web.SearchAsync(query: "Music Videos", answerCount: 2, promote: promoteAnswertypeStrings, safeSearch: SafeSearch.Strict).Result;
+            var webData = await client.Web.SearchAsync(query: "Music Videos", answerCount: 2, promote: promoteAnswertypeStrings, safeSearch: SafeSearch.Strict);
             Console.WriteLine("\r\nSearching for \"Music Videos\"");
 
             if (webData?.Videos?.Value?.Count > 0)
@@ -422,7 +422,7 @@ W tym przykładzie użyto parametrów `answer_count`, `promote` i `safe_search`,
 
 Pamiętaj, aby po zakończeniu pracy z tym projektem usunąć klucz subskrypcji z kodu aplikacji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Przykłady zastosowania zestawu SDK dla platformy Node.js usług Cognitive Services](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)

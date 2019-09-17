@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 02/15/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 989bff7d8be5c234d9536afa8afc0beb6870807e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: d03b209902d3ab0bcdb247b1deefdd70d01905cb
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071661"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018495"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Tworzenie aplikacji internetowej Node.js na platformie Azure
 
@@ -51,7 +51,7 @@ Otwórz plik _index.js_ i znajdź następujący wiersz:
 const port = process.env.PORT || 1337;
 ```
 
-Usługa App Service wprowadza zmienną process.env.PORT do aplikacji, a kod wykorzystuje tę zmienną do określenia, którego portu należy nasłuchiwać. 
+App Service wypełnia zmienną środowiskową, **Process. env. Port**. Użyj tego w aplikacji, aby kod wie, który port nasłuchuje.
 
 W oknie terminalu przejdź do **katalogu głównego** przykładowego projektu Node. js (katalog zawierający _indeks. js_).
 

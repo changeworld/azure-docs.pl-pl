@@ -8,12 +8,12 @@ manager: rkarlin
 ms.date: 01/02/2019
 ms.service: key-vault
 ms.topic: conceptual
-ms.openlocfilehash: 2617ae7bd1c761ae7977eac518c2e40ca55da00c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: b39482f5c753fbfe6cc6663dda4f5381300c2c21
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883244"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71017249"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Punkty końcowe usługi sieci wirtualnej dla Azure Key Vault
 
@@ -60,7 +60,7 @@ Aby uzyskać więcej informacji, zobacz [Konfigurowanie zapór Azure Key Vault i
 
 Poniżej znajduje się lista zaufanych usług, które mogą uzyskiwać dostęp do magazynu kluczy, jeśli jest włączona opcja **Zezwalaj na zaufane usługi** .
 
-|Usługa zaufana|Scenariusze użytkowania|
+|Usługa zaufana|Obsługiwane scenariusze użycia|
 | --- | --- |
 |Usługa wdrażania Azure Virtual Machines|[Wdróż certyfikaty na maszynach wirtualnych z poziomu Key Vault zarządzanych przez klienta](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/).|
 |Usługa wdrażania szablonów Azure Resource Manager|[Przekazywanie bezpiecznych wartości podczas wdrażania](../azure-resource-manager/resource-manager-keyvault-parameter.md).|

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/25/2019
 ms.author: jingwang
-ms.openlocfilehash: b6d96ef2d2cdd79bec35f2581876823990e4a971
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: c15a60b7329359ee8d3e429159eb178c0c9b4782
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172616"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018768"
 ---
 # <a name="copy-data-to-and-from-azure-database-for-mysql-using-azure-data-factory"></a>Kopiowanie danych do i z Azure Database for MySQL przy użyciu Azure Data Factory
 
@@ -26,6 +26,11 @@ W tym artykule opisano sposób używania działania kopiowania w Azure Data Fact
 Ten łącznik jest wyspecjalizowany dla [usługi Azure Database for MySQL](../mysql/overview.md). Aby skopiować dane z ogólnej bazy danych MySQL znajdującej się lokalnie lub w chmurze, użyj [łącznika MySQL](connector-mysql.md).
 
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
+
+Ten łącznik Azure Database for MySQL jest obsługiwany dla następujących działań:
+
+- [Działanie kopiowania](copy-activity-overview.md) z [obsługiwaną macierzą źródłową/ujścia](copy-activity-overview.md)
+- [Działanie Lookup](control-flow-lookup-activity.md)
 
 Dane z Azure Database for MySQL można kopiować do dowolnego obsługiwanego magazynu danych ujścia. Można też skopiować dane z dowolnego obsługiwanego magazynu danych źródłowych do Azure Database for MySQL. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
@@ -188,8 +193,7 @@ Aby skopiować dane do Azure Database for MySQL, w sekcji **ujścia** działania
 | type | Właściwość Type ujścia działania Copy musi mieć ustawioną wartość: **AzureMySqlSink** | Tak |
 | preCopyScript | Określ zapytanie SQL dla działania kopiowania, które ma zostać wykonane przed zapisaniem danych w Azure Database for MySQL w każdym przebiegu. Ta właściwość służy do czyszczenia wstępnie załadowanych danych. | Nie |
 | writeBatchSize | Wstawia dane do tabeli Azure Database for MySQL, gdy rozmiar buforu osiągnie writeBatchSize.<br>Dozwolona wartość to liczba całkowita reprezentująca liczbę wierszy. | Nie (domyślnie 10 000) |
-| writeBatchTimeout | Czas oczekiwania na zakończenie operacji wstawiania partii przed upływem limitu czasu.<br> 
-Dozwolone wartości to TimeSpan. Przykładem jest 00:30:00 (30 minut). | Nie (domyślnie 00:00:30) |
+| writeBatchTimeout | Czas oczekiwania na zakończenie operacji wstawiania partii przed upływem limitu czasu.<br>Dozwolone wartości to TimeSpan. Przykładem jest 00:30:00 (30 minut). | Nie (domyślnie 00:00:30) |
 
 **Przykład:**
 
@@ -223,6 +227,10 @@ Dozwolone wartości to TimeSpan. Przykładem jest 00:30:00 (30 minut). | Nie (do
     }
 ]
 ```
+
+## <a name="lookup-activity-properties"></a>Właściwości działania Lookup
+
+Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (wyszukiwanie](control-flow-lookup-activity.md)).
 
 ## <a name="data-type-mapping-for-azure-database-for-mysql"></a>Mapowanie typu danych dla Azure Database for MySQL
 

@@ -1,17 +1,17 @@
 ---
-title: Najlepsze rozwiązania dotyczące tworzenia ocen przy użyciu oceny Azure Migrate Server | Microsoft Docs
+title: Najlepsze rozwiązania dotyczące tworzenia ocen przy użyciu oceny serwera Azure Migrate
 description: Zawiera wskazówki dotyczące tworzenia ocen przy użyciu oceny Azure Migrate Server.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/15/2019
+ms.date: 09/16/2019
 ms.author: raynew
-ms.openlocfilehash: 18b82b5553f7045c38c9de532199c2a0fd815ee1
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: a07e83c805fc422c861f6c644a59da0b42bb8072
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234316"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71007714"
 ---
 # <a name="best-practices-for-creating-assessments"></a>Najlepsze rozwiązania dotyczące tworzenia ocen
 
@@ -33,8 +33,8 @@ Jeśli na przykład masz lokalną maszynę wirtualną z czterema rdzeniami na po
 
 - **Ocena oparta na wydajności**:
     - Identyfikuje efektywne rdzenie i pamięć w oparciu o rdzeń (4 x 0,20 = 0,8) i pamięć (8 GB x 0,10 = 0,8) wykorzystanie.
-    - Stosuje współczynnik komfortu określony we właściwościach oceny (le'ts powiedzieć 1.3 x), aby uzyskać wartości, które mają być używane do ustalania rozmiarów. 
-    - Zaleca najbliższy rozmiar maszyny wirtualnej na platformie Azure, który może obsługiwać 1,4 rdzeni (0,8 x 1,3) i ~ 1,4 GB (0,8 x 1,3) pamięci.
+    - Stosuje współczynnik komfortu określony we właściwościach oceny (powiedzmy 1.3 x), aby uzyskać wartości, które mają być używane do ustalania rozmiarów. 
+    - Zaleca najbliższy rozmiar maszyny wirtualnej na platformie Azure, który może obsługiwać 1,04 rdzeni (0,8 x 1,3) i ~ 1,04 GB (0,8 x 1,3) pamięci.
 
 - **W przypadku oceny stanu lokalnego**:
     -  Zaleca maszynę wirtualną z czterema rdzeniami; 8 GB pamięci.
@@ -73,11 +73,11 @@ Poniżej przedstawiono sposób rozwiązywania niektórych typowych problemów ze
 
 ###  <a name="out-of-sync-assessments"></a>Oceny braku synchronizacji
 
-Jeśli dodasz lub usuniesz maszyny z grupy po utworzeniu oceny, utworzona Ocena zostanie oznaczona jako niezsynchronizowana.  Uruchom ocenę ponownie, abyodzwierciedlić zmiany grupy.
+Jeśli dodasz lub usuniesz maszyny z grupy po utworzeniu oceny, utworzona Ocena zostanie oznaczona jako niezsynchronizowana. Uruchom ocenę ponownie, abyodzwierciedlić zmiany grupy.
 
 ### <a name="outdated-assessments"></a>Nieaktualne oceny
 
-Jeśli istnieją lokalne zmiany w maszynach wirtualnych, które znajdują się w grupie, która została oceniona, ocena jest oznaczona jako nieaktualna. Aby odzwierciedlić zmiany, należy ponownie uruchomić ocenę.
+Jeśli istnieją lokalne zmiany w maszynach wirtualnych, które znajdują się w grupie, która została oceniona, ocena jestoznaczona jako nieaktualna. Aby odzwierciedlić zmiany, należy ponownie uruchomić ocenę.
 
 ### <a name="low-confidence-rating"></a>Ocena niskiej pewności
 
@@ -85,9 +85,9 @@ Ocena może nie zawierać wszystkich punktów danych z kilku powodów:
 
 - Nie profilujesz swojego środowiska przez czas trwania, dla którego tworzysz ocenę. Jeśli na przykład tworzysz *ocenę wydajnościową* z upływem czasu trwania wydajności ustawioną na jeden tydzień, musisz poczekać przez co najmniej tydzień po rozpoczęciu odnajdywania dla wszystkich punktów danych do zebrania. Zawsze można kliknąć pozycję **Oblicz ponownie** , aby wyświetlić najnowszą stosowną ocenę zaufania. Klasyfikacja zaufania ma zastosowanie tylko w przypadku tworzenia oceny *opartej na wydajności* .
 
-- Kilka maszyn wirtualnych zostało wyłączonych w czasie, dla którego jest obliczana ocena. Jeśli niektóre maszyny wirtualne zostały wyłączone przez pewien czas, Ocena serwera nie będzie mogła zbierać danych wydajności dla tego okresu.
+- Kilka maszyn wirtualnych zostało wyłączonych w czasie, dla którego jest obliczana ocena. Jeśli niektóre maszyny wirtualne zostały odłączona od zasilania na pewien czas, narzędzie Server Assessment nie będzie mogło zebrać danych o wydajności dla tego okresu.
 
-- Kilka maszyn wirtualnych zostało utworzonych po rozpoczęciu odnajdywania w ocenie serwera. Jeśli na przykład tworzysz ocenę dla historii wydajności za ostatni miesiąc, ale kilka maszyn wirtualnych zostało utworzonych w środowisku tylko tydzień temu. W takim przypadku dane wydajności dla nowych maszyn wirtualnych nie będą dostępne przez cały czas, a Ocena zaufania byłaby niska.
+- Kilka maszyn wirtualnych zostało utworzonych po uruchomieniu odnajdywania w narzędziu Server Assessment. Jeśli na przykład tworzysz ocenę dla historii wydajności za ostatni miesiąc, ale kilka maszyn wirtualnych zostało utworzonych w środowisku tylko tydzień temu. W tym przypadku dane wydajności dla nowych maszyn wirtualnych nie będą dostępne przez cały czas trwania i ocena ufności będzie niska.
 
 
 ## <a name="next-steps"></a>Następne kroki

@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie danych z i do programu Dynamics CRM lub Dynamics 365 (Common Data Service) za pomocą usługi Azure Data Factory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skopiować dane z programu Microsoft Dynamics CRM lub Microsoft Dynamics 365 (usługa Common Data Service) do obsługiwanych magazynów danych ujścia lub z obsługiwanymi magazynami danych źródłowych do programu Dynamics CRM lub Dynamics 365, za pomocą działania kopiowania w potoku usługi fabryka danych.
+title: Skopiuj dane z programu i do programu Dynamics CRM lub Dynamics 365 (Common Data Service) za pomocą Azure Data Factory | Microsoft Docs
+description: Informacje o kopiowaniu danych z programu Microsoft Dynamics CRM lub Microsoft Dynamics 365 (Common Data Service) do obsługiwanych magazynów danych ujścia lub z obsługiwanych magazynów danych źródłowych do programu Dynamics CRM lub Dynamics 365 przy użyciu działania kopiowania w potoku usługi Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,75 +12,80 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 3f7bf3ce8c01e82fa69b3b041b573b4b31a719d2
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 18fdb14430eee97ff2780d963abf3e5ceafe1126
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514090"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71009391"
 ---
-# <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopiowanie danych z i Dynamics 365 (Common Data Service) lub programu Dynamics CRM przy użyciu usługi Azure Data Factory
+# <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Skopiuj dane z programu i do usługi Dynamics 365 (Common Data Service) lub Dynamics CRM przy użyciu Azure Data Factory
 
-W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych z i do firmy Microsoft Dynamics 365 lub Microsoft Dynamics CRM. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
+W tym artykule opisano sposób używania działania kopiowania w programie Azure Data Factory do kopiowania danych z programów i do programu Microsoft Dynamics 365 lub Microsoft Dynamics CRM. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
 
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
-Możesz skopiować dane z Dynamics 365 (Common Data Service) lub programu Dynamics CRM, do dowolnego obsługiwanego magazynu danych ujścia. Możesz także skopiować dane z dowolnego obsługiwanego źródłowego magazynu danych Dynamics 365 (Common Data Service) lub programu Dynamics CRM. Aby uzyskać listę magazynów danych obsługiwanych jako źródła lub ujścia działania kopiowania, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
+Ten łącznik jest obsługiwany dla następujących działań:
 
-Ten łącznik Dynamics obsługuje Dynamics w wersji 7.x 9.x zarówno w trybie online lub lokalnie. W szczególności
+- [Działanie kopiowania](copy-activity-overview.md) z [obsługiwaną macierzą źródłową/ujścia](copy-activity-overview.md)
+- [Działanie Lookup](control-flow-lookup-activity.md)
 
-- W wersji 7.x mapy do programu Dynamics CRM 2015
-- Wersja 8.x map, Dynamics CRM 2016 i wcześniejszą wersję programu Dynamics 365
-- Wersja 9.x mapuje do nowszej wersji programu Dynamics 365
+Dane z usługi Dynamics 365 (Common Data Service) lub Dynamics CRM można skopiować do dowolnego obsługiwanego magazynu danych ujścia. Możesz również skopiować dane z dowolnego obsługiwanego źródłowego magazynu danych do usługi Dynamics 365 (Common Data Service) lub Dynamics CRM. Listę magazynów danych obsługiwanych jako źródła lub ujścia przez działanie kopiowania można znaleźć w tabeli [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) .
 
-Zapoznaj się z poniższą tabelą na typy uwierzytelniania obsługiwane i konfiguracje dla odpowiednich Dynamics wersje produktów. (IFD jest mała w przypadku wdrożenia połączone z Internetem).
+Ten łącznik Dynamics obsługuje system Dynamics w wersji 7. x do 9. x zarówno w trybie online, jak i lokalnie. Dokładniej mówiąc,
 
-| Wersje systemu Dynamics | Typy uwierzytelniania | Przykłady usługi połączonej |
+- Wersja 7. x Maps do programu Dynamics CRM 2015
+- Wersja 8. x Maps do programu Dynamics CRM 2016 i wczesnej wersji systemu Dynamics 365
+- Wersja 9. x mapuje do nowszej wersji systemu Dynamics 365
+
+Zapoznaj się z poniższą tabelą dotyczącą obsługiwanych typów i konfiguracji uwierzytelniania dla odpowiednich wersji i produktów systemu Dynamics. (IFD jest krótkie dla wdrożenia dostępnego z Internetu).
+
+| Wersje systemu Dynamics | Typy uwierzytelniania | Przykłady połączonej usługi |
 |:--- |:--- |:--- |
-| Dynamics 365 online <br> Dynamics CRM Online | Office365 | [Dynamics online i uwierzytelnianie usługi Office 365](#dynamics-365-and-dynamics-crm-online) |
-| Dynamics 365 w środowisku lokalnym za pomocą IFD <br> Dynamics CRM 2016 lokalnie przy użyciu IFD <br> Dynamics CRM 2015 lokalnie przy użyciu IFD | IFD | [Dynamics w środowisku lokalnym za pomocą IFD + IFD uwierzytelniania](#dynamics-365-and-dynamics-crm-on-premises-with-ifd) |
+| Dynamics 365 online <br> Dynamics CRM Online | Office365 | [Dynamics Online i uwierzytelnianie w usłudze Office 365](#dynamics-365-and-dynamics-crm-online) |
+| Dynamics 365 w środowisku lokalnym z IFD <br> Program Dynamics CRM 2016 w środowisku lokalnym z IFD <br> Program Dynamics CRM 2015 w środowisku lokalnym z IFD | IFD | [Lokalne uwierzytelnianie przy użyciu programu IFD + IFD](#dynamics-365-and-dynamics-crm-on-premises-with-ifd) |
 
-Dynamics 365 w szczególności następujące typy aplikacji są obsługiwane:
+Dla systemu Dynamics 365 obsługiwane są następujące typy aplikacji:
 
 - Dynamics 365 for Sales
-- Dynamics 365 for Customer Service
-- Dynamics 365 for Field Service
+- Dynamics 365 dla usługi klienta
+- Dynamics 365 dla usługi Field Service
 - Dynamics 365 for Project Service Automation
 - Dynamics 365 for Marketing
 
-Pozostałe typy aplikacji np. Finanse i operacje, Talent, itp., nie są obsługiwane przez ten łącznik.
+Inne typy aplikacji, np. Finanse i operacje, talent itp., nie są obsługiwane przez ten łącznik.
 
-Ten łącznik Dynamics jest wbudowana w górnej części [narzędzi Dynamics XRM](https://docs.microsoft.com/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools).
+Ten łącznik systemu Dynamics jest oparty na [narzędziach programu Dynamics Xrm](https://docs.microsoft.com/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools).
 
 >[!TIP]
->Aby skopiować dane z **Dynamics 365 Finance and Operations**, możesz użyć [łącznika Dynamics AX](connector-dynamics-ax.md).
+>Aby skopiować dane z systemu **dynamics 365 Finanse i operacje**, można użyć [łącznika programu Dynamics AX](connector-dynamics-ax.md).
 
-## <a name="get-started"></a>Rozpoczęcie pracy
+## <a name="get-started"></a>Wprowadzenie
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości, które są używane do definiowania jednostek usługi fabryka danych określonej do usługi Dynamics.
+Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości, które są używane do definiowania jednostek Data Factory specyficznych dla programu Dynamics.
 
 ## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 
-Następujące właściwości są obsługiwane w przypadku połączonej usługi Dynamics.
+Dla połączonej usługi Dynamics są obsługiwane następujące właściwości.
 
 ### <a name="dynamics-365-and-dynamics-crm-online"></a>Dynamics 365 i Dynamics CRM Online
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa **Dynamics**. | Yes |
-| deploymentType | Typ wdrażania wystąpienia programu Dynamics. Musi to być **"Online"** systemu Microsoft Dynamics online. | Yes |
-| serviceUri | Np. adres URL usługi Dynamics, Twoje wystąpienie `https://adfdynamics.crm.dynamics.com`. | Yes |
-| authenticationType | Typ uwierzytelniania, aby połączyć się z serwerem Dynamics. Określ **"Usługi Office 365"** systemu Microsoft Dynamics online. | Yes |
-| username | Określ nazwę użytkownika, aby nawiązać połączenie Dynamics. | Yes |
-| password | Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
-| connectVia | [Środowiska integration runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. | Nie dla źródła, tak ujścia Jeśli źródłem jest połączona usługa nie ma środowiska integration runtime |
+| type | Właściwość Type musi być ustawiona na wartość **Dynamics**. | Tak |
+| Typ wdrożenia | Typ wdrożenia wystąpienia programu Dynamics. Musi to być **"online"** dla usługi Dynamics online. | Tak |
+| serviceUri | Adres URL usługi wystąpienia programu Dynamics, np. `https://adfdynamics.crm.dynamics.com`. | Tak |
+| authenticationType | Typ uwierzytelniania służący do nawiązywania połączenia z serwerem Dynamics. Określ **wartość "Office 365"** dla usługi Dynamics online. | Tak |
+| username | Określ nazwę użytkownika, aby połączyć się z usługą Dynamics. | Tak |
+| password | Określ hasło dla konta użytkownika określonego dla nazwy użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| connectVia | [Środowiska integration runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. | Nie dla źródła, tak dla ujścia, jeśli źródłowa usługa nie ma środowiska Integration Runtime |
 
 >[!NOTE]
->Łącznik Dynamics, używany na potrzeby opcjonalne "nazwa_organizacji" właściwość identyfikuje Twoje wystąpienie usługi Dynamics CRM/365 Online. Gdy go nadal działa, są zalecane do określ nową właściwość "serviceUri" zamiast tego w celu uzyskania lepszej wydajności odnajdywania dla wystąpienia.
+>Łącznik Dynamics używany do używania opcjonalnej właściwości "organizationName" do identyfikowania wystąpienia usługi Dynamics CRM/365 online. Mimo że nadal pracuje, zaleca się określenie nowej właściwości "serviceUri", aby uzyskać lepszą wydajność odnajdywania wystąpień.
 
-**Przykład: Dynamics online przy użyciu uwierzytelniania usługi Office 365**
+**Przykład: Dynamics Online przy użyciu uwierzytelniania usługi Office 365**
 
 ```json
 {
@@ -106,23 +111,23 @@ Następujące właściwości są obsługiwane w przypadku połączonej usługi D
 }
 ```
 
-### <a name="dynamics-365-and-dynamics-crm-on-premises-with-ifd"></a>Dynamics 365 i Dynamics CRM w środowisku lokalnym za pomocą IFD
+### <a name="dynamics-365-and-dynamics-crm-on-premises-with-ifd"></a>Dynamics 365 i Dynamics CRM w środowisku lokalnym z IFD
 
-*Dodatkowe właściwości, które porównania Dynamics online są "hostName" i "port".*
+*Dodatkowe właściwości, które są porównywane z usługą Dynamics Online, to "hostName" i "Port".*
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa **Dynamics**. | Yes |
-| deploymentType | Typ wdrażania wystąpienia programu Dynamics. Musi to być **"OnPremisesWithIfd"** Dynamics i lokalnych przy użyciu IFD.| Yes |
-| hostName | Nazwa hosta na lokalnym serwerze Dynamics. | Yes |
-| port | Port lokalny serwer Dynamics. | Nie, port domyślny to 443 |
-| organizationName | Nazwa organizacji wystąpienia programu Dynamics. | Yes |
-| authenticationType | Typ uwierzytelniania, aby nawiązać połączenie z serwerem Dynamics. Określ **"Ifd"** Dynamics i lokalnych przy użyciu IFD. | Yes |
-| username | Określ nazwę użytkownika, aby nawiązać połączenie Dynamics. | Yes |
-| password | Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. Można wybrać opcję Oznacz to pole jako SecureString bezpiecznie przechowywać w usłudze ADF lub przechowywać haseł w usłudze Azure Key Vault i umożliwić działanie kopiowania pobierania w tym miejscu podczas kopiowania danych — Dowiedz się więcej z [Store poświadczeń w usłudze Key Vault](store-credentials-in-key-vault.md). | Yes |
+| type | Właściwość Type musi być ustawiona na wartość **Dynamics**. | Tak |
+| Typ wdrożenia | Typ wdrożenia wystąpienia programu Dynamics. Musi to być **"OnPremisesWithIfd"** dla platformy Dynamics w środowisku lokalnym z IFD.| Tak |
+| Nazw | Nazwa hosta lokalnego serwera Dynamics. | Tak |
+| port | Port lokalnego serwera Dynamics. | Nie, wartość domyślna to 443 |
+| Organizacja | Nazwa organizacji wystąpienia programu Dynamics. | Tak |
+| authenticationType | Typ uwierzytelniania do nawiązywania połączenia z serwerem Dynamics. Określ **"IFD"** dla platformy Dynamics lokalnie z IFD. | Tak |
+| username | Określ nazwę użytkownika, aby połączyć się z usługą Dynamics. | Tak |
+| password | Określ hasło dla konta użytkownika określonego dla nazwy użytkownika. Możesz oznaczyć to pole jako element SecureString, aby bezpiecznie przechowywać go w podajniku APD, lub przechowywać hasło w Azure Key Vault i pozwolić działaniu kopiowania ściągania podczas wykonywania kopii danych — Dowiedz się więcej z [poświadczeń magazynu w Key Vault](store-credentials-in-key-vault.md). | Tak |
 | connectVia | [Środowiska integration runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. | Brak źródła tak dla ujścia |
 
-**Przykład: Dynamics lokalnie przy użyciu IFD przy użyciu uwierzytelniania IFD**
+**Przykład: Lokalne usługi Dynamics z zaifd przy użyciu uwierzytelniania IFD**
 
 ```json
 {
@@ -154,17 +159,17 @@ Następujące właściwości są obsługiwane w przypadku połączonej usługi D
 
 Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych Dynamics.
 
-Aby skopiować dane z i do usługi Dynamics, należy ustawić właściwość typu zestawu danych na **DynamicsEntity**. Następujące właściwości są obsługiwane.
+Aby skopiować dane z i do dynamiki, należy ustawić Właściwość Type zestawu danych na **DynamicsEntity**. Następujące właściwości są obsługiwane.
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość typu elementu dataset musi być równa **DynamicsEntity**. |Yes |
-| entityName | Nazwa logicznej jednostki do pobrania. | Nie dla źródła (Jeśli określono parametr "zapytanie" w źródle działania) tak dla ujścia |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość **DynamicsEntity**. |Tak |
+| entityName | Logiczna Nazwa jednostki do pobrania. | Nie dla źródła (Jeśli określono "zapytanie" w źródle aktywności), tak dla ujścia |
 
 > [!IMPORTANT]
->- Podczas kopiowania danych z systemu Dynamics, w sekcji "strukturę" jest opcjonalne, ale zdecydowanie recommanded w zestawie danych Dynamics, aby upewnić się, wynik deterministyczne kopiowania. Definiuje typ danych kolumny danych Dynamics, który chcesz skopiować. Aby dowiedzieć się więcej, zobacz [struktury zestawu danych](concepts-datasets-linked-services.md#dataset-structure-or-schema) i [mapowanie typu danych dla usługi Dynamics](#data-type-mapping-for-dynamics).
->- Podczas importowania schematu w tworzeniu interfejsu użytkownika, ADF wnioskowanie schematu przez próbkowanie pierwszych wierszy z wyników kwerendy Dynamics zainicjować konstrukcji struktury, pominąć przypadków kolumn bez wartości. Takie samo zachowanie ma zastosowanie do skopiowania wykonania, jeśli brak definicji struktury jawnej. Możesz przejrzeć i dodać większą liczbę kolumn w Dynamics zestawu danych schematu/strukturę zgodnie z potrzebami, które będą honorowane w czasie wykonywania kopii.
->- Podczas kopiowania danych do usługi Dynamics, w sekcji "strukturę" jest opcjonalna w zestawie danych Dynamics. Kolumny do skopiowania do są określane przez schemat danych źródłowych. Jeśli źródłem jest plik CSV, bez nagłówka w wejściowego zestawu danych, należy określić "strukturę" z typem danych kolumny. Mapują do pól w pliku CSV pojedynczo, w kolejności.
+>- W przypadku kopiowania danych z platformy Dynamics sekcja "Structure" jest opcjonalna, ale wysoce przeciąga w zestawie danych Dynamics, aby zapewnić deterministyczny wynik kopiowania. Definiuje nazwę kolumny i typ danych dla danych programu Dynamics, które mają zostać skopiowane. Aby dowiedzieć się więcej, zobacz temat [Struktura zestawu](concepts-datasets-linked-services.md#dataset-structure-or-schema) danych i [Mapowanie typu danych dla programu Dynamics](#data-type-mapping-for-dynamics).
+>- Podczas importowania schematu w interfejsie użytkownika tworzenia modułu ADF można wywnioskować schemat przez próbkowanie najważniejszych wierszy z wyniku zapytania programu Dynamics w celu zainicjowania konstruowania struktury. w takim przypadku kolumny bez wartości zostaną pominięte. Takie samo zachowanie dotyczy operacji kopiowania, jeśli nie istnieje jawna Definicja struktury. W razie konieczności można przejrzeć i dodać więcej kolumn do schematu lub struktury zestawu danych Dynamics, które zostaną uznane za środowisko uruchomieniowe kopiowania.
+>- W przypadku kopiowania danych do programu Dynamics sekcja "Structure" jest opcjonalna w zestawie danych Dynamics. Kolumny do skopiowania są określane przez schemat danych źródłowych. Jeśli źródło jest plikiem CSV bez nagłówka, w wejściowym zestawie danych określ "Structure" z nazwą kolumny i typem danych. Są one mapowane na pola w pliku CSV jeden według jednego w kolejności.
 
 **Przykład:**
 
@@ -204,19 +209,19 @@ Aby skopiować dane z i do usługi Dynamics, należy ustawić właściwość typ
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez typów Dynamics źródła i ujścia.
+Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez typy obiektów źródłowych i obiektów ujścia systemu Dynamics.
 
 ### <a name="dynamics-as-a-source-type"></a>Dynamics jako typ źródła
 
-Aby skopiować dane z systemu Dynamics, należy ustawić typ źródłowego w działaniu kopiowania, aby **DynamicsSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji.
+Aby skopiować dane z systemu Dynamics, ustaw typ źródła w działaniu Copy na **DynamicsSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji.
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość typu źródła działania kopiowania musi być równa **DynamicsSource**. | Yes |
-| query | Narzędzia FetchXML jest język zapytania własności, który jest używany w usłudze Dynamics (online i lokalnego). Zobacz poniższy przykład. Aby dowiedzieć się więcej, zobacz [tworzenie zapytań przy użyciu narzędzia FetchXML](https://msdn.microsoft.com/library/gg328332.aspx). | Nie (Jeśli określono parametr "entityName" w zestawie danych) |
+| type | Właściwość Type źródła działania Copy musi być ustawiona na wartość **DynamicsSource**. | Tak |
+| query | FetchXML to własny język zapytań używany w usłudze Dynamics (online i lokalna). Zobacz poniższy przykład. Aby dowiedzieć się więcej, zobacz [Tworzenie zapytań za pomocą FetchXML](https://msdn.microsoft.com/library/gg328332.aspx). | Nie (Jeśli określono "EntityName" w zestawie danych) |
 
 >[!NOTE]
->Kolumna klucza podstawowego zawsze zostaną skopiowane się, nawet jeśli projekcji kolumny, skonfigurowanych w zapytanie FetchXML nie zawiera on.
+>Kolumna klucza podstawowego będzie zawsze kopiowana nawet wtedy, gdy rzutowanie kolumn skonfigurowane w zapytaniu FetchXML nie zawiera go.
 
 **Przykład:**
 
@@ -272,21 +277,21 @@ Aby skopiować dane z systemu Dynamics, należy ustawić typ źródłowego w dzi
 
 ### <a name="dynamics-as-a-sink-type"></a>Dynamics jako typ ujścia
 
-Aby skopiować dane do usługi Dynamics, należy ustawić typ ujścia w działaniu kopiowania, aby **DynamicsSink**. Następujące właściwości są obsługiwane w działaniu kopiowania **ujścia** sekcji.
+Aby skopiować dane do systemu Dynamics, ustaw typ ujścia w działaniu Copy na **DynamicsSink**. W sekcji **ujścia** działania kopiowania są obsługiwane następujące właściwości.
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type ujścia działania kopiowania musi być równa **DynamicsSink**. | Yes |
-| writeBehavior | Zachowanie zapisu operacji.<br/>Dozwolona wartość to **"Upsert"** . | Yes |
-| writeBatchSize | Liczba wierszy danych zapisanych w każdej z partii Dynamics. | Nie (wartość domyślna to 10) |
-| ignoreNullValues | Wskazuje, czy ignorować wartości null w danych wejściowych (z wyjątkiem pól klucza) podczas operacji zapisu.<br/>Dozwolone wartości to **true** i **false**.<br>- **True**: Pozostawiają dane w obiekcie docelowym niezmieniony po wykonaniu operacji upsert/aktualizacji. Po wykonaniu operacji wstawiania, należy wstawić zdefiniowana wartość domyślna.<br/>- **False**: Zaktualizować dane w obiekcie docelowym na wartość NULL, podczas wykonywania operacji upsert/aktualizacji. Po wykonaniu operacji wstawiania, należy wstawić wartość NULL. | Nie (wartość domyślna to false) |
+| type | Właściwość Type ujścia działania Copy musi być ustawiona na wartość **DynamicsSink**. | Tak |
+| writeBehavior | Zachowanie zapisu operacji.<br/>Dozwolona wartość to **"upsert"** . | Tak |
+| writeBatchSize | Liczba wierszy danych zapisywana w Dynamics w każdej partii. | Nie (wartość domyślna to 10) |
+| ignoreNullValues | Wskazuje, czy ignorować wartości null z danych wejściowych (z wyjątkiem pól klucza) podczas operacji zapisu.<br/>Dozwolone wartości to **true** i **false**.<br>- **True**: Pozostaw dane w obiekcie docelowym bez zmian po wykonaniu operacji upsert/Update. Wstaw zdefiniowaną wartość domyślną podczas wykonywania operacji wstawiania.<br/>- **False**: Zaktualizuj dane w obiekcie docelowym do wartości NULL po wykonaniu operacji upsert/Update. Wstaw wartość NULL po wykonaniu operacji wstawiania. | Nie (wartość domyślna to false) |
 
 >[!NOTE]
->Wartość domyślna obiektu sink "**writeBatchSize**"i działanie kopiowania" **[parallelCopies](copy-activity-performance.md#parallel-copy)** " ujścia Dynamics są oba 10. W związku z tym 100 rekordów są przesyłane do usługi Dynamics jednocześnie.
+>Wartość domyślna ujścia "**writeBatchSize**" i działanie Copy " **[parallelCopies](copy-activity-performance.md#parallel-copy)** " dla usługi Dynamics sink to 10. W związku z tym rekordy 100 są przesyłane do systemu Dynamics współbieżnie.
 
-For Dynamics 365 online, obowiązuje limit [2 wywołań współbieżnych usługi batch w ramach jednej organizacji](https://msdn.microsoft.com/library/jj863631.aspx#Run-time%20limitations). Przekroczeniu tego limitu błędu "Serwer jest zajęty" jest generowany, zanim pierwsze żądanie nigdy nie zostanie wykonany. Utrzymywanie "writeBatchSize" mniejsza lub równa 10 pozwoliłoby uniknąć takich ograniczania równoczesnych wywołań.
+W przypadku usługi Dynamics 365 online obowiązuje limit [2 współbieżnych wywołań wsadowych na organizację](https://msdn.microsoft.com/library/jj863631.aspx#Run-time%20limitations). W przypadku przekroczenia tego limitu zostanie zgłoszony błąd "serwer zajęty", zanim pierwsze żądanie zostanie kiedykolwiek wykonane. Pozostawienie "writeBatchSize" mniejszej lub równej 10 pozwoli uniknąć tego ograniczenia współbieżnych wywołań.
 
-Optymalną kombinację możliwości "**writeBatchSize**"i"**parallelCopies**" jest zależny od schematu jednostki np. liczba kolumn, rozmiar wiersza, liczba wtyczek/przepływy pracy/działań przepływu pracy podłączyłeś do tych wywołań itd. Domyślne ustawienie 10 writeBatchSize * 10 parallelCopies to zalecenie, zgodnie z usługi Dynamics, która będzie działać w przypadku większości obiektów Dynamics jednak może nie być najlepszą wydajność. Możesz określić wydajność, dostosowując kombinacji w ustawieniach działania kopiowania.
+Optymalna kombinacja parametrów "**writeBatchSize**" i "**parallelCopies**" zależy od schematu jednostki, np. liczby kolumn, rozmiaru wierszy, liczby wtyczek/przepływów pracy/przepływów działania połączonych z tymi wywołaniami itp. Domyślnym ustawieniem 10 writeBatchSize * 10 parallelCopies jest zalecenie zależne od usługi Dynamics, które będzie działać w przypadku większości jednostek systemu Dynamics, chociaż może to nie być Najlepsza wydajność. Możesz dostosować wydajność przez dostosowanie kombinacji w ustawieniach działania kopiowania.
 
 **Przykład:**
 
@@ -322,23 +327,23 @@ Optymalną kombinację możliwości "**writeBatchSize**"i"**parallelCopies**" je
 ]
 ```
 
-## <a name="data-type-mapping-for-dynamics"></a>Typ danych mapowania dla usługi Dynamics
+## <a name="data-type-mapping-for-dynamics"></a>Mapowanie typu danych dla systemu Dynamics
 
-Podczas kopiowania danych z systemu Dynamics, następujące mapowania są używane z typów danych Dynamics na typy danych tymczasowych fabryki danych. Aby dowiedzieć się, jak działania kopiowania mapuje typ schematu i danych źródła do ujścia, zobacz [schemat i dane mapowanie typu](copy-activity-schema-and-type-mapping.md).
+Podczas kopiowania danych z systemu Dynamics następujące mapowania są używane z typów danych systemu Dynamics do Data Factory danych pośrednich. Aby dowiedzieć się, jak działanie kopiowania mapuje schemat źródłowy i typ danych na ujścia, zobacz [Mapowanie schematu i typu danych](copy-activity-schema-and-type-mapping.md).
 
-Skonfiguruj odpowiedni typ danych Data Factory w strukturze zestawu danych, na podstawie źródła Dynamics — typ danych przy użyciu poniższej tabeli mapowania.
+Skonfiguruj odpowiedni typ danych Data Factory w strukturze zestawu danych na podstawie typu danych Dynamics, korzystając z następującej tabeli mapowania.
 
-| Typ danych Dynamics | Typ danych tymczasowych fabryki danych | Obsługiwane jako źródło | Obsługiwany jako ujście |
+| Typ danych Dynamics | Typ danych tymczasowych fabryki danych | Obsługiwane jako źródło | Obsługiwane jako ujścia |
 |:--- |:--- |:--- |:--- |
 | AttributeTypeCode.BigInt | Długie | ✓ | ✓ |
 | AttributeTypeCode.Boolean | Boolean | ✓ | ✓ |
 | AttributeType.Customer | Guid | ✓ | |
-| AttributeType.DateTime | DateTime | ✓ | ✓ |
+| AttributeType.DateTime | Datetime | ✓ | ✓ |
 | AttributeType.Decimal | Decimal | ✓ | ✓ |
 | AttributeType.Double | Double | ✓ | ✓ |
 | AttributeType.EntityName | String | ✓ | ✓ |
 | AttributeType.Integer | Int32 | ✓ | ✓ |
-| AttributeType.Lookup | Guid | ✓ | ✓ (ze skojarzonego pojedynczy element docelowy) |
+| AttributeType.Lookup | Guid | ✓ | ✓ (z skojarzonym pojedynczym elementem docelowym) |
 | AttributeType.ManagedProperty | Boolean | ✓ | |
 | AttributeType.Memo | String | ✓ | ✓ |
 | AttributeType.Money | Decimal | ✓ | ✓ |
@@ -350,7 +355,11 @@ Skonfiguruj odpowiedni typ danych Data Factory w strukturze zestawu danych, na p
 | AttributeType.Status | Int32 | ✓ | ✓ |
 
 > [!NOTE]
-> Typy danych Dynamics AttributeType.CalendarRules, AttributeType.MultiSelectPicklist i AttributeType.PartyList nie są obsługiwane.
+> Typy danych Dynamics, attributeType. CalendarRules, AttributeType. MultiSelectPicklist i AttributeType. PartyList nie są obsługiwane.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="lookup-activity-properties"></a>Właściwości działania Lookup
+
+Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (wyszukiwanie](control-flow-lookup-activity.md)).
+
+## <a name="next-steps"></a>Następne kroki
 Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

@@ -1,0 +1,135 @@
+---
+title: Co to jest prywatny punkt końcowy platformy Azure?
+description: Informacje o prywatnym punkcie końcowym platformy Azure
+services: virtual-network
+author: KumudD
+ms.service: virtual-network
+ms.topic: conceptual
+ms.date: 09/16/2019
+ms.author: kumud
+ms.openlocfilehash: 031055dce66361cc128ed42a4d0c942ccb5a3b82
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71017973"
+---
+# <a name="what-is-azure-private-endpoint"></a>Co to jest prywatny punkt końcowy platformy Azure?
+
+Prywatny punkt końcowy platformy Azure to interfejs sieciowy, który nawiązuje połączenie prywatnie i bezpiecznie z usługą obsługiwanej przez link prywatny platformy Azure. Prywatny punkt końcowy używa prywatnego adresu IP z sieci wirtualnej, efektywnie przenosząc usługę do sieci wirtualnej. Usługa może być usługą platformy Azure, taką jak Azure Storage, SQL itp. lub własną [usługą linku prywatnego](private-link-service-overview.md).
+  
+## <a name="private-endpoint-properties"></a>Właściwości prywatnego punktu końcowego 
+ Prywatny punkt końcowy określa następujące właściwości: 
+
+
+|Właściwość  |Description |
+|---------|---------|
+|Name    |    Unikatowa nazwa w obrębie grupy zasobów.      |
+|Subnet    |  Podsieć do wdrożenia i przydzielenia prywatnych adresów IP z sieci wirtualnej. Wymagania dotyczące podsieci znajdują się w sekcji ograniczenia w tym artykule.         |
+|Zasób link prywatny    |   Zasób link prywatny do łączenia się przy użyciu identyfikatora zasobu lub aliasu z listy dostępnych typów. Dla całego ruchu wysyłanego do tego zasobu zostanie wygenerowany unikatowy identyfikator sieci.       |
+|Podzasób docelowy   |      Podzasób do nawiązania połączenia. Każdy typ zasobu link prywatny ma różne opcje, które można wybrać na podstawie preferencji.    |
+|Metoda zatwierdzania połączeń    |  Automatyczne lub ręczne. W oparciu o uprawnienia kontroli dostępu opartej na rolach (RBAC) można automatycznie zatwierdzać prywatny punkt końcowy. Jeśli spróbujesz nawiązać połączenie z prywatnym zasobem linku bez RBAC, użyj metody ręcznej, aby zezwolić właścicielowi zasobu na zatwierdzanie połączenia.        |
+|Komunikat żądania     |  Można określić komunikat dla żądanych połączeń, które mają być zatwierdzane ręcznie. Ten komunikat może służyć do identyfikowania konkretnego żądania.        |
+|Stan połączenia   |   Właściwość tylko do odczytu określająca, czy prywatny punkt końcowy jest aktywny. Do wysyłania ruchu można używać tylko prywatnych punktów końcowych w zatwierdzonym stanie. Dostępne są dodatkowe Stany: <br>-**Zatwierdzone**: Połączenie zostało automatycznie lub ręcznie zatwierdzone i jest gotowe do użycia.</br><br>-**Oczekiwanie**: Połączenie zostało utworzone ręcznie i oczekuje na zatwierdzenie przez właściciela zasobu link prywatny.</br><br>-**Odrzucono**: Połączenie zostało odrzucone przez właściciela zasobu link prywatny.</br><br>-**Rozłączono**: Połączenie zostało usunięte przez właściciela zasobu link prywatny. Prywatny punkt końcowy zmienia się na format i powinien zostać usunięty do oczyszczenia. </br>|
+
+Poniżej przedstawiono niektóre kluczowe szczegóły dotyczące prywatnych punktów końcowych: 
+- Prywatny punkt końcowy umożliwia łączność między konsumentami z tej samej sieci wirtualnej, z regionalnie równorzędną sieci wirtualnych, globalnie równorzędną sieci wirtualnych i lokalnie przy użyciu [sieci VPN](https://azure.microsoft.com/services/vpn-gateway/) lub [Express Route](https://azure.microsoft.com/services/expressroute/) i usługi obsługiwane przez link prywatny.
+ 
+- Podczas tworzenia prywatnego punktu końcowego interfejs sieciowy jest również tworzony dla cyklu życia zasobu. Do interfejsu jest przypisany prywatny adres IP z podsieci, która jest mapowana na usługę łącza prywatnego.
+ 
+- Prywatny punkt końcowy musi być wdrożony w tym samym regionie, w którym znajduje się sieć wirtualna. 
+ 
+- Zasób link prywatny można wdrożyć w innym regionie niż sieć wirtualna i prywatny punkt końcowy.
+ 
+- Można utworzyć wiele prywatnych punktów końcowych przy użyciu tego samego zasobu linku prywatnego. W przypadku pojedynczej sieci używającej typowej konfiguracji serwera DNS zalecanym rozwiązaniem jest użycie jednego prywatnego punktu końcowego dla danego zasobu linku prywatnego, aby uniknąć zduplikowanych wpisów lub konfliktów w rozpoznawaniu nazw DNS. 
+ 
+- Wiele prywatnych punktów końcowych można utworzyć w tej samej lub różnych podsieciach w ramach tej samej sieci wirtualnej. Istnieją limity liczby prywatnych punktów końcowych, które można utworzyć w ramach subskrypcji. Aby uzyskać szczegółowe informacje, zobacz [limity platformy Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits.md#networking-limits).
+
+
+ 
+## <a name="private-link-resource"></a>Zasób link prywatny 
+Zasób link prywatny jest docelowym miejscem docelowym danego prywatnego punktu końcowego. Poniżej znajduje się lista dostępnych typów zasobów łącza prywatnego: 
+ 
+|Nazwa zasobu linku prywatnego  |Typ zasobu   |Dowolnych podrzędnych  |
+|---------|---------|---------|
+|**Usługa link prywatny** (Twoja usługa)   |  Microsoft. Network/privateLinkServices       | ciągiem |
+|**Azure SQL Database** | Microsoft.Sql/servers    |  Program SQL Server (sqlServer)        |
+|**Azure SQL Data Warehouse** | Microsoft.Sql/servers    |  Program SQL Server (sqlServer)        |
+|**Azure Storage**  | (Microsoft. Storage/storageAccounts)    |  Obiekt BLOB (BLOB, blob_secondary)<BR> Tabela (tabela, table_secondary)<BR> Kolejka (Queue, queue_secondary)<BR> Plik (plik, file_secondary)<BR> Sieć Web (sieć Web, web_secondary)        |
+|**Azure Data Lake Storage Gen2**  | (Microsoft. Storage/storageAccounts)    |  Obiekt BLOB (BLOB, blob_secondary)       |
+ 
+ 
+## <a name="network-security-of-private-endpoints"></a>Zabezpieczenia sieciowe prywatnych punktów końcowych 
+Gdy korzystasz z prywatnych punktów końcowych dla usług platformy Azure, ruch jest zabezpieczony do określonego zasobu linku prywatnego. Platforma wykonuje kontrolę dostępu, aby sprawdzić poprawność połączeń sieciowych tylko do określonego zasobu linku prywatnego. Aby uzyskać dostęp do dodatkowych zasobów w ramach tej samej usługi platformy Azure, wymagane są dodatkowe prywatne punkty końcowe. 
+ 
+Możesz całkowicie zablokować obciążenia, aby uzyskać dostęp do publicznych punktów końcowych w celu nawiązania połączenia z obsługiwaną usługą platformy Azure. Ta kontrolka zapewnia dodatkową warstwę zabezpieczeń sieci dla zasobów, udostępniając wbudowaną ochronę eksfiltracji, która uniemożliwia dostęp do innych zasobów hostowanych w tej samej usłudze platformy Azure. 
+ 
+## <a name="access-to-a-private-link-resource-using-approval-workflow"></a>Dostęp do prywatnego zasobu linku przy użyciu przepływu pracy zatwierdzania 
+Możesz połączyć się z zasobem link prywatny przy użyciu następujących metod zatwierdzania połączeń:
+- **Automatycznie** zatwierdzane podczas posiadania lub masz uprawnienia do określonego zasobu łącza prywatnego. Wymagane uprawnienie jest oparte na typie zasobu link prywatny w następującym formacie: Programu. \<Dostawca >/< resource_type >/privateEndpointConnectionApproval/Action
+- **Ręczne** żądanie, gdy nie masz wymaganego uprawnienia i chcesz zażądać dostępu. Zostanie zainicjowany przepływ pracy zatwierdzania. Prywatny punkt końcowy i kolejne połączenie prywatnego punktu końcowego zostaną utworzone w stanie "oczekiwanie". Właściciel zasobu link prywatny jest odpowiedzialny za zaakceptowanie połączenia. Po jego zatwierdzeniu prywatny punkt końcowy jest włączony do wysyłania ruchu normalnie, jak pokazano na poniższym diagramie przepływu pracy zatwierdzania.  
+
+![zatwierdzenie przepływu pracy](media/private-endpoint-overview/private-link-paas-workflow.png)
+ 
+Właściciel zasobu link prywatny może wykonywać następujące akcje za pośrednictwem połączenia prywatnego punktu końcowego: 
+- Przejrzyj wszystkie szczegóły połączeń prywatnych punktów końcowych. 
+- Zatwierdź połączenie prywatnego punktu końcowego. Odpowiedni prywatny punkt końcowy zostanie włączony do wysyłania ruchu do prywatnego zasobu linku. 
+- Odrzuć połączenie prywatnego punktu końcowego. Odpowiedni prywatny punkt końcowy zostanie zaktualizowany w celu odzwierciedlenia stanu.
+- Usuń połączenie prywatnego punktu końcowego w dowolnym stanie. Odpowiedni prywatny punkt końcowy zostanie zaktualizowany ze stanem rozłączenia w celu odzwierciedlenia akcji, właściciel prywatnego punktu końcowego może usunąć tylko zasób w tym momencie. 
+ 
+> [!NOTE]
+> Tylko prywatny punkt końcowy w zatwierdzonym stanie może wysyłać ruch do podanego zasobu linku prywatnego. 
+
+### <a name="connecting-using-alias"></a>Łączenie przy użyciu aliasu
+Alias jest unikatowy moniker, który jest generowany, gdy właściciel usługi tworzy prywatną usługę linku za pomocą usługi równoważenia obciążenia w warstwie Standardowa. Właściciel usługi może udostępniać ten alias użytkownikom w trybie offline. Konsumenci mogą zażądać połączenia z usługą linku prywatnego przy użyciu identyfikatora URI zasobu lub aliasu. Jeśli chcesz nawiązać połączenie przy użyciu aliasu, musisz utworzyć prywatny punkt końcowy przy użyciu metody ręcznego zatwierdzania połączeń. W przypadku używania metody zatwierdzania ręcznego połączenia ustaw parametr żądania ręcznego na wartość true podczas tworzenia przepływu prywatnego punktu końcowego. Aby uzyskać szczegółowe informacje, zapoznaj się z tematem [New-AzPrivateEndpoint](https://docs.microsoft.com/en-us/powershell/module/az.network/new-azprivateendpoint?view=azps-2.6.0) i [AZ Network Private-Endpoint Create](https://docs.microsoft.com/en-us/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create) . 
+
+## <a name="dns-configuration"></a>Konfiguracja usługi DNS 
+W przypadku nawiązywania połączenia z prywatnym zasobem linku przy użyciu w pełni kwalifikowanej nazwy domeny (FQDN) jako części parametrów połączenia należy prawidłowo skonfigurować ustawienia DNS w celu rozpoznania przydzielony prywatny adres IP. Istniejące usługi platformy Azure mogą już mieć konfigurację DNS do użycia podczas nawiązywania połączenia przez publiczny punkt końcowy. Należy je zastąpić, aby nawiązać połączenie przy użyciu prywatnego punktu końcowego. 
+ 
+Interfejs sieciowy skojarzony z prywatnym punktem końcowym zawiera pełen zestaw informacji wymaganych do skonfigurowania systemu DNS, w tym nazwy FQDN i prywatnych adresów IP przyznanych dla danego zasobu linku prywatnego. 
+ 
+Aby skonfigurować ustawienia DNS dla prywatnych punktów końcowych, można użyć następujących opcji: 
+- **Użyj pliku hosta (zalecane tylko do testowania)** . Aby zastąpić serwer DNS, można użyć pliku hosta na maszynie wirtualnej.  
+- **Użyj prywatnej strefy DNS**. Za pomocą prywatnych stref DNS można zastąpić rozpoznawanie nazw DNS dla danego prywatnego punktu końcowego. Prywatna strefa DNS może być połączona z siecią wirtualną w celu rozpoznania określonych domen.
+- **Użyj niestandardowego serwera DNS**. Możesz użyć własnego serwera DNS do zastąpienia rozpoznawania nazw DNS dla danego zasobu linku prywatnego. Jeśli serwer DNS jest hostowany w sieci wirtualnej, można utworzyć regułę przekazywania DNS w celu użycia prywatnej strefy DNS w celu uproszczenia konfiguracji wszystkich prywatnych zasobów łączy.
+ 
+> [!IMPORTANT]
+> Nie zaleca się przesłonięcia strefy, która aktywnie używa do rozpoznawania publicznych punktów końcowych. Połączenia z zasobami nie będą działać prawidłowo, bez przekazywania DNS do publicznej usługi DNS. Aby uniknąć problemów, Utwórz inną nazwę domeny lub postępuj według sugerowanej nazwy dla każdej usługi poniżej. 
+ 
+W przypadku usług platformy Azure Użyj zalecanych nazw stref, zgodnie z opisem w poniższej tabeli:
+
+|Typ zasobu link prywatny   |Układ zasobów podrzędnych  |Nazwa strefy  |
+|---------|---------|---------|
+|Baza danych SQL/DW (Microsoft. SQL/serwery)    |  Program SQL Server (sqlServer)        |   privatelink.database.windows.net       |
+|Konto magazynu (Microsoft. Storage/storageAccounts)    |  Obiekt BLOB (BLOB, blob_secondary)        |    privatelink.blob.core.windows.net      |
+|Konto magazynu (Microsoft. Storage/storageAccounts)    |    Tabela (tabela, table_secondary)      |   privatelink.table.core.windows.net       |
+|Konto magazynu (Microsoft. Storage/storageAccounts)    |    Kolejka (Queue, queue_secondary)     |   privatelink.queue.core.windows.net       |
+|Konto magazynu (Microsoft. Storage/storageAccounts)   |    Plik (plik, file_secondary)      |    privatelink.file.core.windows.net      |
+|Konto magazynu (Microsoft. Storage/storageAccounts)     |  Sieć Web (sieć Web, web_secondary)        |    privatelink.web.core.windows.net      |
+|Gen2 systemu plików Data Lake (Microsoft. Storage/storageAccounts)  |  Gen2 systemu plików Data Lake (DFS, dfs_secondary)        |     privatelink.dfs.core.windows.net     |
+||||
+ 
+
+Platforma Azure utworzy rekord DNS o nazwie kanonicznej (CNAME) w publicznym systemie DNS, aby przekierować rozwiązanie do sugerowanych nazw domen. Możliwe będzie przesłonięcie rozwiązania przy użyciu prywatnego adresu IP prywatnych punktów końcowych. 
+ 
+Aplikacje nie muszą zmieniać adresu URL połączenia. Podczas próby rozwiązania przy użyciu publicznego serwera DNS serwer DNS zostanie teraz rozpoznany jako prywatne punkty końcowe. Ten proces nie ma wpływu na aplikacje. 
+ 
+## <a name="limitations"></a>Ograniczenia
+ 
+Poniższa tabela zawiera listę znanych ograniczeń dotyczących używania prywatnych punktów końcowych: 
+
+
+|Ograniczenia |Opis |Środki zaradcze  |
+|---------|---------|---------|
+|Reguły sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń) nie mają zastosowania do prywatnego punktu końcowego    |SIECIOWEJ grupy zabezpieczeń nie jest obsługiwany w prywatnych punktach końcowych. W podsieciach zawierających prywatny punkt końcowy może być skojarzonych sieciowej grupy zabezpieczeń, więc reguły nie będą obowiązywać w przypadku ruchu przetwarzanego przez prywatny punkt końcowy. Aby wdrażać prywatne punkty końcowe w podsieci, należy [wyłączyć wymuszanie zasad sieciowych](disable-private-endpoint-network-policy.md) . SIECIOWEJ grupy zabezpieczeń jest nadal wymuszane dla innych obciążeń hostowanych w tej samej podsieci.   | Kontroluj ruch przy użyciu reguł sieciowej grupy zabezpieczeń dla ruchu wychodzącego na klientach źródłowych.        |
+|Nie można tworzyć prywatnych punktów końcowych w podsieciach włączonych dla punktu końcowego usługi lub obciążeń wyspecjalizowanych    |Nie można wdrożyć prywatnych punktów końcowych w podsieciach z włączonymi punktami końcowymi usług lub podsieciami delegowanymi do wyspecjalizowanych obciążeń|  Utwórz oddzielną podsieć do wdrożenia prywatnych punktów końcowych.        |
+|prywatny punkt końcowy można zamapować tylko do usługi linku prywatnego (należącej do klienta) w tym samym regionie.    |   Łączenie się z usługą linku prywatnego (własne) z innego regionu nie jest obsługiwane       |  W trakcie okresu zapoznawczego należy wdrożyć usługę prywatnego linku w tym samym regionie.        |
+|Wyspecjalizowane obciążenia nie mogą uzyskać dostępu do prywatnych punktów końcowych    |   Następujące usługi wdrożone w sieci wirtualnej nie mogą uzyskać dostępu do żadnego prywatnego zasobu linku przy użyciu prywatnych punktów końcowych:<br>Plan Usługi aplikacji</br>Wystąpienie kontenera platformy Azure</br>Azure NetApp Files</br>Dedykowany moduł HSM platformy Azure<br>       |   Brak środków zaradczych w trakcie okresu zapoznawczego.       |
+|  Portal nie obsługuje tworzenia prywatnych punktów końcowych przy użyciu aliasu  |   Portal umożliwia tylko tworzenie prywatnych punktów końcowych przy użyciu identyfikatora URI zasobu      | Użyj identyfikatora URI zasobu do żądania prywatnych połączeń punktów końcowych        |
+
+## <a name="next-steps"></a>Następne kroki
+- [Tworzenie prywatnego punktu końcowego dla serwera SQL Database przy użyciu portalu](create-private-endpoint-portal.md)
+- [Tworzenie prywatnego punktu końcowego dla serwera SQL Database przy użyciu programu PowerShell](create-private-endpoint-powershell.md)
+- [Tworzenie prywatnego punktu końcowego dla serwera SQL Database przy użyciu interfejsu wiersza polecenia](create-private-endpoint-cli.md)
+- [Tworzenie prywatnego punktu końcowego dla konta magazynu przy użyciu portalu](create-private-endpoint-storage-portal.md)
+- [Tworzenie własnej usługi linku prywatnego przy użyciu Azure PowerShell](create-private-link-service-powershell.md)

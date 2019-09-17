@@ -12,18 +12,23 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: c9ffd5a173bcfae41e08babbadae1e67047ed452
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 451def8ccfae947f4be6bebb015c1b34ac44c7f4
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725985"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010411"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Kopiowanie danych z usługi ServiceNow przy użyciu usługi Azure Data Factory
 
 W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych z usługi ServiceNow. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
 
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
+
+Ten łącznik usługi ServiceNow jest obsługiwany dla następujących działań:
+
+- [Działanie kopiowania](copy-activity-overview.md) z [obsługiwaną macierzą źródłową](copy-activity-overview.md)
+- [Działanie Lookup](control-flow-lookup-activity.md)
 
 Możesz skopiować dane z usługi ServiceNow, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
@@ -41,7 +46,7 @@ Następujące właściwości są obsługiwane dla usługi ServiceNow, połączon
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type musi mieć ustawioną wartość: **ServiceNow** | Yes |
+| type | Właściwość Type musi mieć ustawioną wartość: **ServiceNow** | Tak |
 | endpoint | Punkt końcowy serwera usługi ServiceNow (`http://<instance>.service-now.com`).  | Yes |
 | authenticationType | Typ uwierzytelniania do użycia. <br/>Dozwolone wartości to: **Basic**, **OAuth2** | Tak |
 | username | Nazwa użytkownika używana do łączenia się z serwerem usługi ServiceNow dla uwierzytelniania Basic i protokołu OAuth2.  | Yes |
@@ -81,7 +86,7 @@ Aby skopiować dane z usługi ServiceNow, należy ustawić właściwość typu z
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość Type zestawu danych musi być ustawiona na wartość: **ServiceNowObject** | Tak |
-| tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
+| tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "query" w źródle działania) |
 
 **Przykład**
 
@@ -110,7 +115,7 @@ Aby skopiować dane z usługi ServiceNow, należy ustawić typ źródła w dzia�
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **ServiceNowSource** | Yes |
+| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **ServiceNowSource** | Tak |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM Actual.alm_asset"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 Należy pamiętać, że podczas określania schematu i kolumn dla usługi ServiceNow w zapytaniu i **dotyczą [porady dotyczące wydajności](#performance-tips) na domniemanie wydajności kopiowania**.
@@ -165,5 +170,10 @@ Jeśli masz filtr w zapytaniu, należy użyć schemat "Rzeczywiste", który ma l
 
 Indeks tabeli ServiceNow może pomóc poprawić wydajność zapytań, zobacz [Tworzenie indeksu tabeli](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/table_administration/task/t_CreateCustomIndex.html).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="lookup-activity-properties"></a>Właściwości działania Lookup
+
+Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (wyszukiwanie](control-flow-lookup-activity.md)).
+
+
+## <a name="next-steps"></a>Następne kroki
 Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

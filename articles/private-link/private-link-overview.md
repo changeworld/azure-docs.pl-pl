@@ -1,0 +1,77 @@
+---
+title: Co to jest połączenie prywatne platformy Azure?
+description: Dowiedz się więcej o usłudze Azure Private link.
+services: virtual-network
+author: KumudD
+ms.service: virtual-network
+ms.topic: overview
+ms.date: 09/16/2019
+ms.author: kumud
+ms.openlocfilehash: 9b7dea0507d4434274d78546b98961b008ea8cd8
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71017892"
+---
+# <a name="what-is-azure-private-link-preview"></a>Co to jest połączenie prywatne platformy Azure? (Wersja zapoznawcza)
+Link prywatny platformy Azure umożliwia dostęp do usług Azure PaaS Services (na przykład Azure Storage i SQL Database) oraz hostowanych usług klienta i partnerskich platformy Azure za pośrednictwem [prywatnego punktu końcowego](private-endpoint-overview.md) w sieci wirtualnej. Ruch między siecią wirtualną a usługą odbywa się za pośrednictwem sieci szkieletowej firmy Microsoft, eliminując ekspozycję z publicznego Internetu. Możesz również utworzyć własną [prywatną usługę linku](private-link-service-overview.md) w sieci wirtualnej (VNET) i dostarczyć ją prywatnie do klientów. Środowisko instalacji i użycia korzystające z prywatnego linku platformy Azure jest spójne w przypadku usługi Azure PaaS, należącej do klienta i udostępnionych usług partnerskich.
+
+> [!IMPORTANT]
+> Ten podgląd publiczny nie jest objęty umową dotyczącą poziomu usług i nie należy korzystać z niego w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, mogą mieć ograniczone możliwości lub mogą nie być dostępne we wszystkich lokalizacjach platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Aby uzyskać znane ograniczenia, zobacz [prywatny punkt końcowy](private-endpoint-overview.md#limitations) i [Usługa łącza prywatnego](private-link-service-overview.md#limitations).
+
+
+![Omówienie prywatnego punktu końcowego](media/private-link-overview/private-endpoint.png)
+
+## <a name="key-benefits"></a>Najważniejsze korzyści
+Połączenie prywatne platformy Azure zapewnia następujące korzyści:  
+- **Usługi dostępu prywatnego na platformie Azure**: Połącz swoją sieć wirtualną z usługami działającymi na platformie Azure prywatnie bez konieczności publicznego adresu IP w lokalizacji źródłowej lub docelowej. Dostawcy usług mogą samodzielnie renderować swoje usługi w swojej sieci wirtualnej, a konsumenci mogą uzyskiwać dostęp do tych usług prywatnie w lokalnej sieci wirtualnej. Platforma linków prywatnych będzie obsługiwała łączność między klientem i usługami za pośrednictwem sieci szkieletowej platformy Azure. 
+ 
+- **Sieci lokalne i równorzędne**: Uzyskaj dostęp do usług działających na platformie Azure z zasobów lokalnych za pośrednictwem prywatnych tuneli równorzędnych ExpressRoute/VPN (z lokalnego) i równorzędnych sieci wirtualnych za pomocą prywatnych punktów końcowych. Nie trzeba konfigurować publicznej komunikacji równorzędnej ani przechodzić przez Internet w celu uzyskania dostępu do usługi. Ta możliwość zapewnia bezpieczny sposób migracji obciążeń do platformy Azure.
+ 
+- **Ochrona przed eksfiltracji danych**:  W przypadku połączenia prywatnego platformy Azure prywatny punkt końcowy w sieci wirtualnej jest mapowany do określonego wystąpienia zasobu PaaS klienta, a nie całej usługi. Korzystanie z prywatnych odbiorców punktu końcowego może łączyć się tylko z określonym zasobem, a nie z żadnym innym zasobem w usłudze. Mechanizm ten zapewnia ochronę przed zagrożeniami związanymi z eksfiltracji danych. 
+ 
+- **Globalny zasięg**: Połącz się prywatnie z usługami działającymi w innych regionach. Oznacza to, że sieć wirtualna konsumenta może znajdować się w regionie A i może łączyć się z usługami za pośrednictwem prywatnego linku w regionie B.  
+ 
+- **Dostają się do własnych usług**: Korzystaj z tych samych możliwości i funkcji, aby samodzielnie renderować swoją usługę klientom na platformie Azure. Przez umieszczenie usługi za usługa Load Balancer w warstwie Standardowa można ją włączyć dla linku prywatnego. Konsument może następnie połączyć się bezpośrednio z usługą przy użyciu prywatnego punktu końcowego we własnej sieci wirtualnej. Tymi żądaniami połączeń można zarządzać przy użyciu prostego przepływu wywołań zatwierdzania. Połączenie prywatne platformy Azure działa również dla klientów i usług należących do różnych Active Directory dzierżawców. 
+
+## <a name="availability"></a>Dostępność 
+ Poniższa tabela zawiera listę prywatnych usług linków oraz regionów, w których są one dostępne. 
+
+|Scenariusz  |Obsługiwane usługi   |Dostępne regiony | State   |
+|---------|---------|---------|---------|
+|Prywatne łącze dla usług należących do klienta|Usługi linków prywatnych w tle usługa Load Balancer w warstwie Standardowa |Zachodnio-środkowe stany USA; WestUS Południowo-środkowe stany USA; Wschodnie stany USA; Północne stany USA  |  Wersja zapoznawcza  |
+|Link prywatny dla usług Azure PaaS Services   | Azure Storage        |  Wschodnie stany USA, zachodnie stany USA, zachodnio-środkowe stany USA       | Wersja zapoznawcza         |
+|  | Azure Data Lake Storage Gen2        |  Wschodnie stany USA, zachodnie stany USA, zachodnio-środkowe stany USA       | Wersja zapoznawcza         |
+|  |  Azure SQL Database         | Zachodnio-środkowe stany USA; WestUS Południowo-środkowe stany USA; Wschodnie stany USA; Północne stany USA       |   Wersja zapoznawcza      |
+||Azure SQL Data Warehouse| Zachodnio-środkowe stany USA; WestUS Południowo-środkowe stany USA; Wschodnie stany USA; Północne stany USA |Wersja zapoznawcza|
+
+Aby zapoznać się z najbardziej aktualnymi powiadomieniami, zapoznaj się ze [stroną usługi Azure Virtual Network Updates](https://azure.microsoft.com/updates/?product=virtual-network). 
+
+## <a name="logging-and-monitoring"></a>Rejestrowanie i monitorowanie
+
+Usługa Azure Private link jest zintegrowana z usługą Azure Monitor, która umożliwia archiwizowanie dzienników na koncie magazynu, przesyłanie strumieniowe zdarzeń do centrum zdarzeń lub wysyłanie ich do dzienników Azure Monitor. Na Azure Monitor można uzyskać dostęp do następujących informacji: 
+- **Prywatny punkt końcowy**: Dane przetworzone przez prywatny punkt końcowy (WE/OUT)
+ 
+- **Usługa link prywatny**:
+    - Dane przetwarzane przez usługę linku prywatnego (WE/wychodzącym)
+    - Dostępność portów NAT  
+ 
+## <a name="pricing"></a>Cennik   
+Aby uzyskać szczegółowe informacje o cenach, zobacz [Cennik usługi Azure Private link](https://azure.microsoft.com/pricing/details/private-link/).
+ 
+## <a name="faqs"></a>Często zadawane pytania  
+Często zadawane pytania można znaleźć w sekcji [często zadawane pytania dotyczące linków prywatnych platformy Azure](private-link-faq.md).
+ 
+## <a name="limits"></a>Limity  
+Aby uzyskać limity, zobacz [limity linków prywatnych platformy Azure](../azure-subscription-service-limits.md#private-link-limits).
+
+## <a name="next-steps"></a>Następne kroki
+- [Tworzenie prywatnego punktu końcowego dla serwera SQL Database przy użyciu portalu](create-private-endpoint-portal.md)
+- [Tworzenie prywatnego punktu końcowego dla serwera SQL Database przy użyciu programu PowerShell](create-private-endpoint-powershell.md)
+- [Tworzenie prywatnego punktu końcowego dla serwera SQL Database przy użyciu interfejsu wiersza polecenia](create-private-endpoint-cli.md)
+- [Tworzenie prywatnego punktu końcowego dla konta magazynu przy użyciu portalu](create-private-endpoint-storage-portal.md)
+- [Tworzenie własnej usługi linku prywatnego przy użyciu Azure PowerShell](create-private-link-service-powershell.md)
+
+
+ 

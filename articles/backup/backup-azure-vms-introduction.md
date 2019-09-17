@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 09/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: 72ab33cd280892ac6de827986e21e04672e58960
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: db3e4b8a8abea4718f5779790906bf45591d221c
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951853"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018694"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Omówienie kopii zapasowej maszyny wirtualnej platformy Azure
 
@@ -79,7 +79,7 @@ Azure Backup wykonuje migawki zgodnie z harmonogramem tworzenia kopii zapasowych
 
 W poniższej tabeli objaśniono różne typy spójności migawek:
 
-**Zdjęcie** | **Szczegóły** | **Przywrócenia** | **Badan**
+**Zdjęcie** | **Szczegóły** | **Przywrócenia** | **Zagadnienie**
 --- | --- | --- | ---
 **Spójna na poziomie aplikacji** | Kopie zapasowe spójne z aplikacjami przechwytują zawartość pamięci i oczekujące operacje we/wy. Migawki spójne z aplikacjami używają składnika zapisywania usługi VSS (lub skryptów pre/post dla systemu Linux), aby zapewnić spójność danych aplikacji przed wystąpieniem kopii zapasowej. | Podczas odzyskiwania maszyny wirtualnej za pomocą migawki spójnej na poziomie aplikacji maszyna wirtualna jest uruchamiana. Nie występują uszkodzenia ani utrata danych. Aplikacje są uruchamiane w spójnym stanie. | W systemie Windows: Wszystkie składniki zapisywania usługi VSS zostały pomyślnie zakończone<br/><br/> W systemie Linux: Skrypty pre/post są skonfigurowane i zakończyły się powodzeniem
 **Spójny system plików** | Spójne kopie zapasowe systemu plików zapewniają spójność, pobierając migawkę wszystkich plików w tym samym czasie.<br/><br/> | Podczas odzyskiwania maszyny wirtualnej za pomocą migawki spójnej z systemem plików, maszyna wirtualna jest uruchamiana. Nie występują uszkodzenia ani utrata danych. Aplikacje muszą implementować własny mechanizm naprawy, aby upewnić się, że przywrócone dane są spójne. | W systemie Windows: Niektóre składniki zapisywania usługi VSS nie powiodły się <br/><br/> W systemie Linux: Wartość domyślna (Jeśli skrypty pre/post nie są skonfigurowane lub zakończyły się niepowodzeniem)
@@ -87,7 +87,7 @@ W poniższej tabeli objaśniono różne typy spójności migawek:
 
 ## <a name="backup-and-restore-considerations"></a>Uwagi dotyczące tworzenia kopii zapasowych i przywracania
 
-**Badan** | **Szczegóły**
+**Zagadnienie** | **Szczegóły**
 --- | ---
 **Dysk** | Tworzenie kopii zapasowych dysków maszyny wirtualnej jest równoległe. Na przykład jeśli maszyna wirtualna ma cztery dyski, usługa tworzenia kopii zapasowych próbuje wykonać kopię zapasową wszystkich czterech dysków równolegle. Kopia zapasowa jest przyrostowa (dotyczy tylko zmienionych danych).
 **Harmonogram** |  Aby zmniejszyć ruch kopii zapasowych, wykonaj kopię zapasową różnych maszyn wirtualnych w różnych porach dnia i upewnij się, że czasy nie nakładają się na siebie. Tworzenie kopii zapasowych maszyn wirtualnych w tym samym czasie powoduje wyczyszczenie ruchu.
@@ -113,7 +113,7 @@ Podczas konfigurowania kopii zapasowych maszyn wirtualnych Sugerujemy następuj�
 - Zmodyfikuj domyślne czasy harmonogramu, które są ustawiane w ramach zasad. Na przykład jeśli domyślny czas w zasadach wynosi 12:00, Zwiększ czas trwania o kilka minut, aby zasoby były optymalnie używane.
 - Jeśli przywracasz maszyny wirtualne z jednego magazynu, zdecydowanie zalecamy użycie różnych [kont magazynu ogólnego przeznaczenia w wersji 2](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) , aby upewnić się, że docelowe konto magazynu nie zostanie ograniczone. Na przykład każda maszyna wirtualna musi mieć inne konto magazynu. Na przykład jeśli zostaną przywrócone 10 maszyn wirtualnych, użyj 10 różnych kont magazynu.
 - W przypadku tworzenia kopii zapasowych maszyn wirtualnych korzystających z usługi Premium Storage z natychmiastowym przywróceniem zaleca się alokowanie *50%* wolnego miejsca w łącznym przydzielonym miejscu do magazynowania, które jest wymagane **tylko** dla pierwszej kopii zapasowej. Ilość wolnego miejsca na 50% nie jest wymagana w przypadku kopii zapasowych po wykonaniu pierwszej kopii zapasowej
-- Przywracanie z warstwy magazynowania ogólnego przeznaczenia V1 (migawka) zostanie ukończone w ciągu kilku minut, ponieważ migawka znajduje się na tym samym koncie magazynu. Przywrócenie z warstwy magazynu ogólnego przeznaczenia w wersji 2 (magazyn) może zająć kilka godzin. W przypadkach, gdy dane są dostępne w magazynie ogólnego przeznaczenia w wersji 1, zalecamy użycie funkcji natychmiastowego [przywracania](backup-instant-restore-capability.md) , aby przyspieszyć przywracanie. (Jeśli dane muszą zostać przywrócone z magazynu, zajmie więcej czasu).
+- Przywracanie z warstwy magazynowania ogólnego przeznaczenia V1 (migawka) zostanie ukończone w ciągu kilku minut, ponieważ migawka znajduje się na tym samym koncie magazynu. Przywrócenie z warstwy magazynu ogólnego przeznaczenia w wersji 2 (magazyn) może zająć kilka godzin. W przypadkach, gdy dane są dostępne w magazynie ogólnego przeznaczenia w wersji 1, zalecamy użycie funkcji [natychmiastowego przywracania](backup-instant-restore-capability.md) , aby przyspieszyć przywracanie. (Jeśli dane muszą zostać przywrócone z magazynu, zajmie więcej czasu).
 - Limit liczby dysków na konto magazynu jest określany względem tego, w jakim stopniu uzyskuje się dostęp do dysków przez aplikacje działające na maszynie wirtualnej infrastruktura jako usługa (IaaS). Ogólnie rzecz biorąc, jeśli na jednym koncie magazynu znajdują się od 5 do 10 dysków lub więcej, należy zrównoważyć obciążenie przez przeniesienie niektórych dysków do oddzielnych kont magazynu.
 
 ## <a name="backup-costs"></a>Koszty kopii zapasowych
@@ -140,48 +140,13 @@ Dysk danych 2 | 4095 GB | 0 GB
 Rzeczywistą wielkością maszyny wirtualnej w tym przypadku jest 17 GB + 30 GB + 0 GB = 47 GB. Ten rozmiar chronionego wystąpienia (47 GB) stanowi podstawę dla rachunku miesięcznego. Wraz ze wzrostem ilości danych w maszynie wirtualnej rozmiar chronionego wystąpienia używany do zmiany rozliczeń jest zgodny.
 
 <a name="limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb"></a>
-## <a name="limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30-tb"></a>Ograniczona publiczna wersja zapoznawcza: Tworzenie kopii zapasowej maszyny wirtualnej z rozmiarem dysku do 30 TB
+## <a name="public-preview-backup-of-vm-with-disk-sizes-up-to-30-tb"></a>Publiczna wersja zapoznawcza: Tworzenie kopii zapasowej maszyny wirtualnej z rozmiarem dysku do 30 TB
 
-Azure Backup teraz obsługuje ograniczoną publiczną wersję zapoznawczą większych i bardziej zaawansowanych [Managed disks platformy Azure](https://azure.microsoft.com/blog/larger-more-powerful-managed-disks-for-azure-virtual-machines/) o rozmiarze do 30 TB. Ta wersja zapoznawcza zapewnia obsługę na poziomie produkcyjnym zarządzanych maszyn wirtualnych.
+Azure Backup teraz obsługuje publiczną wersję zapoznawczą większych i bardziej zaawansowanych [Managed disks platformy Azure](https://azure.microsoft.com/blog/larger-more-powerful-managed-disks-for-azure-virtual-machines/) o rozmiarze do 30 TB. Ta wersja zapoznawcza zapewnia obsługę na poziomie produkcyjnym zarządzanych maszyn wirtualnych.
 
-Możesz bezproblemowo rejestrować w wersji zapoznawczej bez wpływu na bieżące kopie zapasowe. Po zarejestrowaniu subskrypcji w wersji zapoznawczej należy utworzyć kopię zapasową wszystkich maszyn wirtualnych z dyskami o rozmiarze do 30 TB. Aby zarejestrować się w wersji zapoznawczej:
- 
-Wykonaj następujące polecenia cmdlet z poziomu terminalu programu PowerShell z podwyższonym poziomem uprawnień:
+Kopie zapasowe maszyn wirtualnych z każdym rozmiarem dysku do 30TB i maksymalnie 256TB połączone dla wszystkich dysków w maszynie wirtualnej powinny bezproblemowo współpracować bez wpływu na istniejące kopie zapasowe. Nie jest wymagane wykonanie jakiejkolwiek czynności przez użytkownika, aby można było uruchamiać kopie zapasowe dysków o dużych rozmiarach, jeśli maszyna wirtualna została już skonfigurowana przy użyciu Azure Backup.
 
-1. Zaloguj się do swojego konta platformy Azure.
-
-    ```powershell
-    PS C:> Login-AzureRmAccount
-    ```
-
-2. Wybierz subskrypcję, która ma zostać zarejestrowana w celu uaktualnienia:
-
-    ```powershell
-    PS C:>  Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
-    ```
-3. Zarejestruj tę subskrypcję w programie w wersji zapoznawczej: 
-
-    ```powershell
-    PS C:> Register-AzureRmProviderFeature -FeatureName "LargeDiskVMBackupPreview" –ProviderNamespace Microsoft.RecoveryServices
-    ```
-
-    Poczekaj 30 minut, aż subskrypcja zostanie zarejestrowana w wersji zapoznawczej. 
-
- 4. Aby sprawdzić stan, uruchom następujące polecenia cmdlet:
-
-    ```powershell
-    PS C:> Get-AzureRmProviderFeature -FeatureName "LargeDiskVMBackupPreview" –ProviderNamespace Microsoft.RecoveryServices 
-    ```
-5. Gdy subskrypcja jest wyświetlana jako zarejestrowana, uruchom następujące polecenie:
-    
-    ```powershell
-    PS C:> Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
-    ```
-
-> [!NOTE]
-> Zaszyfrowane maszyny wirtualne z dyskami większymi niż 4 TB nie są obsługiwane w tej wersji zapoznawczej.
-
-
+Należy utworzyć kopię zapasową wszystkich Virtual Machines Azure z dużymi dyskami, na których skonfigurowano kopię zapasową.
 
 ## <a name="next-steps"></a>Następne kroki
 

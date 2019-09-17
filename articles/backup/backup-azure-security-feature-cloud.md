@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 08/04/2019
+ms.date: 09/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: 173e261266bffd042e12b327e26fda3a4e55ea4b
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 4fb88cbed4e73a7cea2b0ccf01b1429a3ff321f3
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898987"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018177"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Funkcje zabezpieczeń pomagające w ochronie obciążeń w chmurze korzystających z Azure Backup
 
@@ -26,47 +26,47 @@ Obawy dotyczące problemów z zabezpieczeniami takich jak złośliwe oprogramowa
 
 ### <a name="supported-regions"></a>Obsługiwane regiony
 
-Usuwanie nietrwałe jest obecnie obsługiwane w regionie zachodnie stany USA i Azja Wschodnia.
+Usuwanie nietrwałe jest obecnie obsługiwane w regionie zachodnie stany USA, Azja Wschodnia, Kanada środkowa, Kanada Wschodnia, Francja środkowa, Francja Południowa, Korea środkowa, Korea Południowa, Południowe Zjednoczone Królestwo, Zachodnie Zjednoczone Królestwo, Australia Wschodnia, Australia Południowo-Wschodnia, Ameryka Północna, zachodnie stany USA, zachodnie stany USA, Południowo-środkowe, Południowe Azja Wschodnia, Północno-środkowe stany USA, Południowo-środkowe stany USA, Japonia Wschodnia, Japonia Zachodnia, Indie Południowe, Indie Środkowe, Indie Zachodnie, Wschodnie stany USA 2, Szwajcaria Północna, Szwajcaria Zachodnia i wszystkie regiony narodowe.
 
 ### <a name="soft-delete-for-vms"></a>Usuwanie nietrwałe dla maszyn wirtualnych
 
 1. Aby można było usunąć dane kopii zapasowej maszyny wirtualnej, należy zatrzymać wykonywanie kopii zapasowej. W Azure Portal przejdź do magazynu usługi Recovery Services, kliknij prawym przyciskiem myszy element kopii zapasowej, a następnie wybierz polecenie **Zatrzymaj tworzenie kopii zapasowej**.
 
-    ![Zrzut ekranu przedstawiający elementy Azure Portal kopii zapasowej](./media/backup-azure-security-feature-cloud/backup-stopped.png)
+   ![Zrzut ekranu przedstawiający elementy Azure Portal kopii zapasowej](./media/backup-azure-security-feature-cloud/backup-stopped.png)
 
 2. W poniższym oknie zostanie wybrana opcja usuwania lub zachowywania danych kopii zapasowej. Jeśli wybierzesz pozycję **Usuń dane kopii zapasowej** , a następnie **Zatrzymaj kopię zapasową**, kopia zapasowa maszyny wirtualnej nie zostanie trwale usunięta. Zamiast tego dane kopii zapasowej będą przechowywane przez 14 dni w stanie nietrwałego usunięcia. W przypadku wybrania opcji **Usuń dane kopii zapasowej** do skonfigurowanego identyfikatora poczty e-mail zostanie wysłany alert z informacją o tym, że 14 dni pozostaną Rozszerzone przechowywanie danych kopii zapasowej. Ponadto w 12-dniowym dniu jest wysyłany alert e-mail z informacją o tym, że pozostały jeszcze dwa dni, aby przywracania aktywności usunięte dane. Usuwanie zostanie odroczone do 15-dniowego dnia, po upływie którego nastąpi trwałe usunięcie i zostanie wysłany końcowy alert e-mail z informacją o trwałym usunięciu danych.
 
-    ![Zrzut ekranu przedstawiający ekran Azure Portal, Zatrzymaj tworzenie kopii zapasowej](./media/backup-azure-security-feature-cloud/delete-backup-data.png)
+   ![Zrzut ekranu przedstawiający ekran Azure Portal, Zatrzymaj tworzenie kopii zapasowej](./media/backup-azure-security-feature-cloud/delete-backup-data.png)
 
 3. W ciągu 14 dni w magazynie Recovery Services nietrwałe usunięte maszyny wirtualne będą wyświetlane z czerwoną ikoną "miękki-Delete".
 
-    ![Zrzut ekranu przedstawiający Azure Portal, maszynę wirtualną w stanie usuwania nietrwałego](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
+   ![Zrzut ekranu przedstawiający Azure Portal, maszynę wirtualną w stanie usuwania nietrwałego](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
-> [!NOTE]
-> Jeśli w magazynie znajdują się jakiekolwiek nietrwałe usunięte elementy kopii zapasowej, nie można w tym momencie usunąć magazynu. Spróbuj usunąć magazyn po usunięciu trwałych elementów kopii zapasowej. w magazynie nie ma żadnego elementu usuniętego nietrwałego stanu.
+   > [!NOTE]
+   > Jeśli w magazynie znajdują się jakiekolwiek nietrwałe usunięte elementy kopii zapasowej, nie można w tym momencie usunąć magazynu. Spróbuj usunąć magazyn po usunięciu trwałych elementów kopii zapasowej. w magazynie nie ma żadnego elementu usuniętego nietrwałego stanu.
 
 4. Aby przywrócić maszynę wirtualną usuniętą z nietrwałego, należy najpierw ją usunąć. Aby cofnąć usunięcie, wybierz maszynę wirtualną, która została usunięta, a następnie kliknij opcję **Cofnij usunięcie**.
 
-     ![Zrzut ekranu przedstawiający Azure Portal, cofanie usunięcia maszyny wirtualnej](./media/backup-azure-security-feature-cloud/choose-undelete.png)
+   ![Zrzut ekranu przedstawiający Azure Portal, cofanie usunięcia maszyny wirtualnej](./media/backup-azure-security-feature-cloud/choose-undelete.png)
 
-Zostanie wyświetlone okno z ostrzeżeniem, że w przypadku wybrania opcji Cofnij usuwanie wszystkie punkty przywracania dla maszyny wirtualnej będą cofnięte i dostępne do wykonania operacji przywracania. Maszyna wirtualna zostanie zachowana w stanie "Zatrzymaj ochronę przy zachowaniu danych" z wstrzymanymi kopiami zapasowymi, a dane kopii zapasowej są zachowywane w nieskończoność bez względu na to, czy zasady tworzenia
+   Zostanie wyświetlone okno z ostrzeżeniem, że w przypadku wybrania opcji Cofnij usuwanie wszystkie punkty przywracania dla maszyny wirtualnej będą cofnięte i dostępne do wykonania operacji przywracania. Maszyna wirtualna zostanie zachowana w stanie "Zatrzymaj ochronę przy zachowaniu danych" z wstrzymanymi kopiami zapasowymi, a dane kopii zapasowej są zachowywane w nieskończoność bez względu na to, czy zasady tworzenia
 
- ![Zrzut ekranu przedstawiający Azure Portal, potwierdź Cofnięcie usunięcia maszyny wirtualnej](./media/backup-azure-security-feature-cloud/undelete-vm.png)
+   ![Zrzut ekranu przedstawiający Azure Portal, potwierdź Cofnięcie usunięcia maszyny wirtualnej](./media/backup-azure-security-feature-cloud/undelete-vm.png)
 
-W tym momencie można również przywrócić maszynę wirtualną, wybierając pozycję **Przywróć maszynę wirtualną** z wybranego punktu przywracania.  
+   W tym momencie można również przywrócić maszynę wirtualną, wybierając pozycję **Przywróć maszynę wirtualną** z wybranego punktu przywracania.  
 
    ![Zrzut ekranu przedstawiający Azure Portal, opcja Przywróć maszynę wirtualną](./media/backup-azure-security-feature-cloud/restore-vm.png)
 
-> [!NOTE]
-> Moduł wyrzucania elementów bezużytecznych będzie uruchamiał i czyścił wygasłe punkty odzyskiwania dopiero po wykonaniu operacji **wznawiania kopii zapasowej** .
+   > [!NOTE]
+   > Moduł wyrzucania elementów bezużytecznych będzie uruchamiał i czyścił wygasłe punkty odzyskiwania dopiero po wykonaniu operacji **wznawiania kopii zapasowej** .
 
 5. Po ukończeniu procesu cofania usuwania stan zwróci wartość "Zatrzymaj tworzenie kopii zapasowej z zachowaniem danych", a następnie wybierz pozycję **Wznów tworzenie kopii zapasowej**. Operacja **Wznów tworzenie kopii zapasowej** powoduje przywrócenie elementu kopii zapasowej w stanie aktywnym, skojarzony z zasadami tworzenia kopii zapasowych wybranym przez użytkownika w celu zdefiniowania harmonogramów tworzenia kopii zapasowych i przechowywania.
 
-      ![Zrzut ekranu przedstawiający Azure Portal, Wznów opcję tworzenia kopii zapasowej](./media/backup-azure-security-feature-cloud/resume-backup.png)
+   ![Zrzut ekranu przedstawiający Azure Portal, Wznów opcję tworzenia kopii zapasowej](./media/backup-azure-security-feature-cloud/resume-backup.png)
 
 Ten wykres przepływu przedstawia różne kroki i Stany elementu kopii zapasowej:
 
-   ![Cykl życia nietrwałego usuniętego elementu kopii zapasowej](./media/backup-azure-security-feature-cloud/lifecycle.png)
+![Cykl życia nietrwałego usuniętego elementu kopii zapasowej](./media/backup-azure-security-feature-cloud/lifecycle.png)
 
 Aby uzyskać więcej informacji, zobacz sekcję [często zadawane pytania](backup-azure-security-feature-cloud.md#frequently-asked-questions) poniżej.
 
@@ -101,23 +101,23 @@ Nie. jest on tworzony i domyślnie włączony dla wszystkich magazynów usługi 
 #### <a name="can-i-configure-the-number-of-days-for-which-my-data-will-be-retained-in-soft-deleted-state-after-delete-operation-is-complete"></a>Czy można skonfigurować liczbę dni, przez jaką dane będą przechowywane w stanie nieusuniętym, po zakończeniu operacji usuwania?
 
 Nie, po operacji usuwania zostanie ustalony 14-dniowy dodatkowy czas przechowywania.
-  
+ 
 #### <a name="do-i-need-to-pay-the-cost-for-this-additional-14-day-retention"></a>Czy muszę płacić za to dodatkowe 14 dni?
 
 Nie, to 14-dniowe dodatkowe przechowywanie jest bezpłatne w ramach funkcji usuwania nietrwałego.
-  
+ 
 #### <a name="can-i-perform-a-restore-operation-when-my-data-is-in-soft-delete-state"></a>Czy można wykonać operację przywracania, gdy moje dane są w stanie usuwania nietrwałego?
 
 Nie, Usuń nietrwały zasób nietrwałego w celu przywrócenia. Operacja cofnięcia usunięcia spowoduje przywrócenie zasobu z powrotem do **stanu Zatrzymaj ochronę przy zachowaniu danych** , w którym można przywrócić wszystkie punkty w czasie. Moduł wyrzucania elementów bezużytecznych pozostaje wstrzymany w tym stanie.
-  
+ 
 #### <a name="will-my-snapshots-follow-the-same-lifecycle-as-my-recovery-points-in-the-vault"></a>Czy moje migawki będą zgodne z tym samym cyklem życia jak moje punkty odzyskiwania w magazynie?
 
 Tak.
-  
+ 
 #### <a name="how-can-i-trigger-the-scheduled-backups-again-for-a-soft-deleted-resource"></a>Jak można ponownie wyzwolić zaplanowane kopie zapasowe dla nietrwałego zasobu?
 
 Cofnięcie usunięcia po wykonaniu operacji Wznów spowoduje ponowne włączenie ochrony zasobu. Operacja Wznów kojarzy zasady tworzenia kopii zapasowych, aby wyzwolić zaplanowane kopie zapasowe z wybranym okresem przechowywania. Ponadto Moduł wyrzucania elementów bezużytecznych jest uruchamiany zaraz po zakończeniu operacji wznawiania. Jeśli chcesz wykonać przywracanie z punktu odzyskiwania, który przekroczył datę wygaśnięcia, zaleca się wykonanie tej czynności przed wyzwoleniem operacji wznowienia.
-  
+ 
 #### <a name="can-i-delete-my-vault-if-there-are-soft-deleted-items-in-the-vault"></a>Czy mogę usunąć swój magazyn, jeśli w magazynie istnieją nietrwałe elementy usunięte?
 
 Nie można usunąć magazynu Recovery Services, jeśli w magazynie istnieją elementy kopii zapasowej w stanie nieusuniętym. Elementy usunięte nietrwałe są trwale usuwane po 14 dniach operacji usuwania. Magazyn można usunąć tylko po przeczyszczeniu wszystkich usuniętych elementów.  

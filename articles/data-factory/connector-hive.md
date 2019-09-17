@@ -12,18 +12,23 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 40f97c3b31a7e49c9a5ecc790e3cc762572ecaa3
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 120aed4277abfb2ea977670c107a4ee759bd3524
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276367"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71009138"
 ---
 # <a name="copy-data-from-hive-using-azure-data-factory"></a>Kopiowanie danych z programu Hive przy użyciu usługi Azure Data Factory 
 
 W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych z programu Hive. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
 
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
+
+Ten łącznik programu Hive jest obsługiwany dla następujących działań:
+
+- [Działanie kopiowania](copy-activity-overview.md) z [obsługiwaną macierzą źródłową](copy-activity-overview.md)
+- [Działanie Lookup](control-flow-lookup-activity.md)
 
 Możesz skopiować dane z programu Hive, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
@@ -46,14 +51,14 @@ Następujące właściwości są obsługiwane w przypadku gałęzi połączone u
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość Type musi mieć ustawioną wartość: **Hive** | Tak |
-| host | Adres IP lub hosta nazwę serwera programu Hive, rozdzielone znakiem ";" na wielu hostach, (tylko wtedy, gdy serviceDiscoveryMode jest włączona).  | Yes |
+| host | Adres IP lub nazwa hosta serwera Hive, oddzielona znakiem ";" dla wielu hostów (tylko po włączeniu funkcji ServiceDiscoveryMode).  | Tak |
 | port | Port TCP używany przez serwer programu Hive do nasłuchiwania połączeń klientów. Jeśli łączysz się Azure HDInsights, należy określić port ustawiony na 443. | Yes |
 | serverType | Typ serwera Hive. <br/>Dozwolone wartości to: **HiveServer1**, **serwera hiveserver2**, **HiveThriftServer** | Nie |
 | thriftTransportProtocol | Protokół transportu do użycia w warstwie Thrift. <br/>Dozwolone wartości to: **Binary**, **SASL**, **HTTP** | Nie |
 | authenticationType | Metoda uwierzytelniania używany do uzyskiwania dostępu do serwera programu Hive. <br/>Dozwolone wartości to: **Anonimowe**, **username**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Tak |
 | serviceDiscoveryMode | wartość true, aby wskazać, za pomocą usługi ZooKeeper false nie.  | Nie |
 | zooKeeperNameSpace | Przestrzeń nazw w dozorcy w ramach której Hive Server 2 dodawania węzłów.  | Nie |
-| useNativeQuery | Określa, czy sterownik używa zapytania natywne HiveQL, konwertuje je do formularza w HiveQL.  | Nie |
+| useNativeQuery | Określa, czy sterownik używa natywnych zapytań HiveQL, czy konwertuje je do równoważnej formy w HiveQL.  | Nie |
 | username | Nazwa użytkownika, który umożliwia dostęp do serwera programu Hive.  | Nie |
 | password | Hasło przypisana użytkownikowi. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
 | httpPath | Częściowe adres URL serwera programu Hive.  | Nie |
@@ -160,5 +165,10 @@ Aby skopiować dane z programu Hive, należy ustawić typ źródła w działaniu
 ]
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="lookup-activity-properties"></a>Właściwości działania Lookup
+
+Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (wyszukiwanie](control-flow-lookup-activity.md)).
+
+
+## <a name="next-steps"></a>Następne kroki
 Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

@@ -1,6 +1,6 @@
 ---
-title: Udostępnianie zawartości z usługi Azure Storage w systemie Linux — usługa App Service
-description: Jak konfigurować i obsługiwać zawartość z usługi Azure Storage w usłudze Azure App Service w systemie Linux.
+title: Obsługuj zawartość z usługi Azure Storage w systemie Linux — App Service
+description: Jak skonfigurować i zapewnić zawartość z usługi Azure Storage w Azure App Service w systemie Linux.
 author: msangapu
 manager: jeconnoc
 ms.service: app-service
@@ -8,31 +8,31 @@ ms.workload: web
 ms.topic: article
 ms.date: 2/04/2019
 ms.author: msangapu
-ms.openlocfilehash: 15cb31a3157b034089b1518a4e70eeb93ecc449e
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 97c03ad294bba1f8a0285fff4595991ca0acc8b5
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617093"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018277"
 ---
-# <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Udostępnianie zawartości z usługi Azure Storage w usłudze App Service w systemie Linux
+# <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Obsługuj zawartość z usługi Azure Storage w App Service w systemie Linux
 
-Ten przewodnik pokazuje, jak udostępniać zawartość statyczną w usłudze App Service w systemie Linux przy użyciu [usługi Azure Storage](/azure/storage/common/storage-introduction). Korzyści to m.in. zabezpieczonej zawartości, zawartość przenośności, dostęp do wielu aplikacji i na wiele sposobów przesyłania.
+W tym przewodniku pokazano, jak obsłużyć zawartość statyczną w App Service w systemie Linux przy użyciu [usługi Azure Storage](/azure/storage/common/storage-introduction). Korzyści obejmują bezpieczną zawartość, przenośność zawartości, magazyn trwały, dostęp do wielu aplikacji i wiele metod transferu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Istniejącej aplikacji sieci web (usługa App Service w systemie Linux lub Web App for Containers).
-- [Interfejs wiersza polecenia Azure](/cli/azure/install-azure-cli) (2.0.46 lub nowszej).
+- Istniejąca aplikacja sieci Web (App Service w systemie Linux lub Web App for Containers).
+- [Interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) (2.0.46 lub nowszy).
 
 ## <a name="create-azure-storage"></a>Tworzenie usługi Azure Storage
 
 > [!NOTE]
-> Usługa Azure Storage jest magazynem innych niż domyślne i rozliczane oddzielnie, nie jest dołączony do aplikacji sieci web.
+> Usługa Azure Storage jest magazynem innym niż domyślne i rozliczane oddzielnie, a nie z aplikacją sieci Web.
 >
-> Przynieś własny magazyn nie obsługuje konfiguracji zapory magazynu ze względu na ograniczenia infrastruktury.
+> Używanie własnego magazynu nie jest obsługiwane przy użyciu konfiguracji zapory magazynu z powodu ograniczeń infrastruktury.
 >
 
-Tworzenie platformy Azure [konta usługi Azure storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-cli).
+Utwórz konto usługi Azure [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-cli).
 
 ```azurecli
 #Create Storage Account
@@ -44,39 +44,39 @@ az storage container create --name <storage_container_name> --account-name <stor
 
 ## <a name="upload-files-to-azure-storage"></a>Przekazywanie plików do usługi Azure Storage
 
-Przekaż do katalogu lokalnego do konta magazynu, należy użyć [ `az storage blob upload-batch` ](https://docs.microsoft.com/cli/azure/storage/blob?view=azure-cli-latest#az-storage-blob-upload-batch) polecenia jak w poniższym przykładzie:
+Aby przekazać katalog lokalny do konta magazynu, użyj [`az storage blob upload-batch`](https://docs.microsoft.com/cli/azure/storage/blob?view=azure-cli-latest#az-storage-blob-upload-batch) polecenia, takiego jak Poniższy przykład:
 
 ```azurecli
 az storage blob upload-batch -d <full_path_to_local_directory> --account-name <storage_account_name> --account-key "<access_key>" -s <source_location_name>
 ```
 
-## <a name="link-storage-to-your-web-app-preview"></a>Magazyn Link do aplikacji sieci web (wersja zapoznawcza)
+## <a name="link-storage-to-your-web-app-preview"></a>Łączenie magazynu z aplikacją internetową (wersja zapoznawcza)
 
 > [!CAUTION]
-> Łączenie istniejącego katalogu, w aplikacji internetowej z kontem magazynu spowoduje usunięcie zawartości katalogu. Jeśli jesteś migrowanie plików dla istniejącej aplikacji, należy wykonać kopię zapasową aplikacji i jej zawartość przed przystąpieniem do wykonywania.
+> Połączenie istniejącego katalogu w aplikacji internetowej z kontem magazynu spowoduje usunięcie zawartości katalogu. Jeśli migrujesz pliki dla istniejącej aplikacji, Utwórz kopię zapasową aplikacji i jej zawartość przed rozpoczęciem.
 >
 
-Aby zainstalować konta magazynu do katalogu, w aplikacji usługi app Service, należy użyć [ `az webapp config storage-account add` ](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) polecenia. Typ magazynu można określić obiektu blob platformy Azure lub migracji. Możesz użyć obiektu blob platformy Azure dla tego kontenera.
+Aby zainstalować konto magazynu w katalogu w aplikacji App Service, użyj [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) polecenia. Typem magazynu może być AzureBlob lub migracji pamięci. Używasz AzureBlob dla tego kontenera.
 
 ```azurecli
 az webapp config storage-account add --resource-group <group_name> --name <app_name> --custom-id <custom_id> --storage-type AzureBlob --share-name <share_name> --account-name <storage_account_name> --access-key "<access_key>" --mount-path <mount_path_directory>
 ```
 
-Należy to zrobić w przypadku innych katalogów, który ma być połączony z kontem magazynu.
+Należy to zrobić dla wszystkich innych katalogów, które mają być połączone z kontem magazynu.
 
-## <a name="verify"></a>Weryfikuj
+## <a name="verify"></a>Sprawdź
 
-Gdy kontener magazynu jest połączony z aplikacji sieci web, można to sprawdzić, uruchamiając następujące polecenie:
+Po połączeniu kontenera magazynu z aplikacją internetową można to sprawdzić, uruchamiając następujące polecenie:
 
 ```azurecli
 az webapp config storage-account list --resource-group <resource_group> --name <app_name>
 ```
 
-## <a name="use-custom-storage-in-docker-compose"></a>Użyj magazynu niestandardowego w narzędzia Docker Compose
+## <a name="use-custom-storage-in-docker-compose"></a>Używanie magazynu niestandardowego w Docker Compose
 
-Usługa Azure Storage mogą być instalowane przy użyciu aplikacji obsługującej wiele kontenerów przy użyciu identyfikatora niestandardowe. Aby wyświetlić nazwę niestandardowego id, uruchom [ `az webapp config storage-account list --name <app_name> --resource-group <resource_group>` ](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list).
+Usługę Azure Storage można zainstalować za pomocą aplikacji wielokontenerowych przy użyciu identyfikatora niestandardowego. Aby wyświetlić nazwę niestandardowego ID, uruchom [`az webapp config storage-account list --name <app_name> --resource-group <resource_group>`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list)polecenie.
 
-W swojej *docker-compose.yml* plików, mapowanie `volumes` opcję `custom-id`. Na przykład:
+W pliku *Docker-Compose. yml* zamapuj `volumes` opcję na `custom-id`. Na przykład:
 
 ```yaml
 wordpress:
@@ -87,4 +87,4 @@ wordpress:
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Konfigurowanie aplikacji sieci web w usłudze Azure App Service](../configure-common.md).
+- [Skonfiguruj aplikacje sieci Web w Azure App Service](../configure-common.md).

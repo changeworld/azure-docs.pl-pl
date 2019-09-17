@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
-ms.openlocfilehash: 5671c3e36a49680b72b1f7b138cbd6e9c0bc4313
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 877d0a17b9ff06e9b9ac2c843c1847c9cb9726e4
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914861"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018717"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Wersja zapoznawcza — automatyczne skalowanie klastra w celu spełnienia wymagań aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -104,7 +104,7 @@ Utworzenie klastra i skonfigurowanie ustawień automatycznego skalowania klastra
 ## <a name="change-the-cluster-autoscaler-settings"></a>Zmień ustawienia automatycznego skalowania klastra
 
 > [!IMPORTANT]
-> Jeśli masz włączoną funkcję *wielu pul agentów* w ramach subskrypcji, przejdź do [sekcji Automatyczne skalowanie z wieloma pulami agentów](##use-the-cluster-autoscaler-with-multiple-node-pools-enabled). Klastry z obsługą wielu pul agentów wymagają użycia `az aks nodepool` zestawu poleceń, aby zmienić właściwości specyficzne dla puli węzłów `az aks`zamiast. W poniższych instrukcjach przyjęto założenie, że nie włączono wielu pul węzłów. Aby sprawdzić, czy jest włączona, uruchom `az feature  list -o table` i `Microsoft.ContainerService/multiagentpoolpreview`Wyszukaj.
+> Jeśli masz włączoną funkcję *wielu pul agentów* w ramach subskrypcji, przejdź do [sekcji Automatyczne skalowanie z wieloma pulami agentów](#use-the-cluster-autoscaler-with-multiple-node-pools-enabled). Klastry z obsługą wielu pul agentów wymagają użycia `az aks nodepool` zestawu poleceń, aby zmienić właściwości specyficzne dla puli węzłów `az aks`zamiast. W poniższych instrukcjach przyjęto założenie, że nie włączono wielu pul węzłów. Aby sprawdzić, czy jest włączona, uruchom `az feature  list -o table` i `Microsoft.ContainerService/multiagentpoolpreview`Wyszukaj.
 
 W poprzednim kroku, aby utworzyć klaster AKS lub zaktualizować istniejącą pulę węzłów, minimalna liczba węzłów w ramach automatycznego skalowania klastra została ustawiona na *1*, a maksymalna liczba węzłów została ustawiona na wartość *3*. Gdy aplikacja wymaga zmiany, może być konieczne dostosowanie liczby węzłów automatycznego skalowania klastra.
 

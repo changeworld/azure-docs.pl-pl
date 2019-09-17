@@ -1,0 +1,77 @@
+---
+title: 'Wyłącz zasady sieciowe dla źródłowego adresu IP usługi linku prywatnego platformy Azure '
+description: Dowiedz się, jak wyłączyć zasady sieciowe dla prywatnego linku platformy Azure
+services: virtual-network
+author: KumudD
+ms.service: virtual-network
+ms.topic: article
+ms.date: 09/16/2019
+ms.author: kumud
+ms.openlocfilehash: c7a0968d32418867d3e929786a42da9349806b2d
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018934"
+---
+# <a name="disable-network-policies-for-private-link-service-source-ip"></a>Wyłącz zasady sieciowe dla źródłowego adresu IP usługi linku prywatnego
+
+Aby można było wybrać źródłowy adres IP dla usługi linku prywatnego, w podsieci musi być wymagane `privateLinkServiceNetworkPolicies` jawne ustawienie Wyłącz. To ustawienie dotyczy tylko określonego prywatnego adresu IP, który został wybrany jako źródłowy adres IP usługi łącza prywatnego. W przypadku innych zasobów w podsieci dostęp jest kontrolowany na podstawie definicji reguł zabezpieczeń sieciowych grup zabezpieczeń (sieciowej grupy zabezpieczeń). 
+ 
+W przypadku korzystania z dowolnego klienta platformy Azure (środowiska PowerShell, interfejsu wiersza polecenia lub szablonów) do zmiany tej właściwości wymagany jest dodatkowy krok. Zasady można wyłączyć za pomocą usługi Cloud Shell z poziomu Azure Portal lub instalacji lokalnych Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub szablonów Azure Resource Manager.  
+ 
+Wykonaj poniższe kroki, aby wyłączyć zasady sieci usługi link prywatny dla sieci wirtualnej o nazwie *myVirtualNetwork* z *domyślną* podsiecią hostowaną w grupie zasobów o nazwie Moja *resourceName*. 
+
+## <a name="using-azure-powershell"></a>Korzystanie z programu Azure PowerShell
+W tej sekcji opisano, jak wyłączyć zasady prywatnego punktu końcowego podsieci przy użyciu Azure PowerShell.
+
+```azurepowershell
+$virtualNetwork= Get-AzVirtualNetwork `
+  -Name "myVirtualNetwork" ` 
+  -ResourceGroupName "myResourceGroup"  
+   
+($virtualNetwork ` 
+  | Select -ExpandProperty subnets ` 
+  | Where-Object  {$_.Name -eq 'default'} ).privateLinkServiceNetworkPolicies = "Disabled" 
+ 
+$virtualNetwork | Set-AzVirtualNetwork 
+```
+## <a name="using-azure-cli"></a>Korzystanie z interfejsu wiersza polecenia platformy Azure
+W tej sekcji opisano, jak wyłączyć zasady prywatnego punktu końcowego podsieci przy użyciu interfejsu wiersza polecenia platformy Azure.
+```azurecli
+az network vnet subnet update \ 
+  --name default \ 
+  --resource-group myResourceGroup \ 
+  --vnet-name myVirtualNetwork \ 
+  --disable-private-link-service-network-policies true 
+```
+## <a name="using-a-template"></a>Korzystanie z szablonu
+W tej sekcji opisano, jak wyłączyć zasady prywatnego punktu końcowego podsieci przy użyciu szablonu Azure Resource Manager.
+```json
+{ 
+    "name": "myVirtualNetwork", 
+    "type": "Microsoft.Network/virtualNetworks", 
+    "apiVersion": "2019-04-01", 
+    "location": "WestUS", 
+    "properties": { 
+        "addressSpace": { 
+            "addressPrefixes": [ 
+                "10.0.0.0/16" 
+             ] 
+        }, 
+        "subnets": [ 
+               { 
+                 "name": "default", 
+                 "properties": { 
+                        "addressPrefix": "10.0.0.0/24", 
+                        "privateLinkServiceNetworkPolicies": "Disabled" 
+                    } 
+                } 
+        ] 
+    } 
+} 
+ 
+```
+## <a name="next-steps"></a>Następne kroki
+- Dowiedz się więcej o [prywatnym punkcie końcowym platformy Azure](private-endpoint-overview.md)
+ 

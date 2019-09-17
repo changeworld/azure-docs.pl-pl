@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 29fd82eb0253f2f7f6b9bc8b6a84882e2372124c
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 388e676fbabf427801688cbfb47a1455444fd02e
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984967"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018990"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Różnice w języku T-SQL wystąpienia zarządzanego, ograniczenia i znane problemy
 
@@ -24,7 +24,7 @@ Ten artykuł zawiera podsumowanie i wyjaśnienie różnic między składnią i z
 
 ![Migracja](./media/sql-database-managed-instance/migration.png)
 
-Istnieją pewne ograniczenia PaaS wprowadzone w wystąpieniu zarządzanym, a niektóre zmiany zachowań są porównywane z SQL Server. Różnice są podzielone na następujące kategorie:<a name="Differences"></a>
+Istnieją pewne ograniczenia PaaS wprowadzane w wystąpieniu zarządzanym oraz zmiany zachowania w porównaniu z SQL Server. Różnice są podzielone na następujące kategorie:<a name="Differences"></a>
 
 - [Dostępność](#availability) obejmuje różnice w przypadku, gdy są [zawsze włączone](#always-on-availability) i [kopie zapasowe](#backup).
 - [Zabezpieczenia](#security) obejmują różnice między [inspekcjami](#auditing), [certyfikatami](#certificates), poświadczeniami, [dostawcami usług kryptograficznych](#cryptographic-providers), [logowania i użytkownikami](#logins-and-users)oraz [kluczem usługi i kluczem głównym usługi](#service-key-and-service-master-key). [](#credential)
@@ -339,14 +339,14 @@ Wystąpienie zarządzane nie może uzyskać dostępu do udziałów plików i fol
 - `ALTER ASSEMBLY`nie można odwoływać się do plików. Zobacz [ALTER Assembly](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
 
 ### <a name="database-mail-db_mail"></a>Poczta bazy danych (db_mail)
- - `sp_send_dbmail`nie można wysłać załączników @file_attachments przy użyciu parametru. W przypadku lokalnego systemu plików i udziałów Extertal lub magazynu obiektów blob platformy Azure ta procedura jest niedostępna.
+ - `sp_send_dbmail`nie można wysłać załączników @file_attachments przy użyciu parametru. Nie ma dostępu do lokalnego systemu plików ani udziałów zewnętrznych ani platformy Azure Blob Storage.
  - Zobacz znane problemy związane z `@query` parametrem i uwierzytelnianiem.
  
 ### <a name="dbcc"></a>DBCC
 
 Nieudokumentowane instrukcje DBCC, które są włączone w SQL Server nie są obsługiwane w wystąpieniach zarządzanych.
 
-- Obsługiwana jest tylko ograniczona liczba globalna `Trace flags` . Poziom `Trace flags` sesji nie jest obsługiwany. Zobacz [flagi śledzenia](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql).
+- Obsługiwana jest tylko ograniczona liczba globalnych flag śledzenia. Poziom `Trace flags` sesji nie jest obsługiwany. Zobacz [flagi śledzenia](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql).
 - [Polecenia DBCC TRACEOFF](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceoff-transact-sql) i [DBCC TRACEON](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) współpracują z ograniczoną liczbą globalnych flag śledzenia.
 - [Polecenia DBCC CHECKDB](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-checkdb-transact-sql) z opcjami REPAIR_ALLOW_DATA_LOSS, REPAIR_FAST i REPAIR_REBUILD nie mogą być używane, ponieważ nie można `SINGLE_USER` ustawić w trybie bazy danych — zobacz temat [ALTER DATABASE — różnice](#alter-database-statement). Potencjalne uszkodzenia bazy danych są obsługiwane przez zespół pomocy technicznej systemu Azure. Skontaktuj się z pomocą techniczną platformy Azure, jeśli obserwowanie się z uszkodzeniem bazy danych, które powinny zostać naprawione.
 
@@ -415,7 +415,7 @@ Tabele zewnętrzne odwołujące się do plików w systemie HDFS lub Azure Blob S
 Informacje o konfigurowaniu replikacji znajdują się w [samouczku](replication-with-sql-database-managed-instance.md)dotyczącym replikacji.
 
 
-Jeśli replikacja jest włączona w bazie danych w [grupie trybu failover](sql-database-auto-failover-group.md), administrator wystąpienia zarządzanego musi oczyścić wszystkie publikacje na starym serwerze podstawowym i ponownie skonfigurować je na nowym serwerze podstawowym po przejściu w tryb failover. W tym scenariuszu są niezbędne następujące działania:
+Jeśli replikacja jest włączona w bazie danych w [grupie trybu failover](sql-database-auto-failover-group.md), administrator wystąpienia zarządzanego musi oczyścić wszystkie publikacje na starym serwerze podstawowym i skonfigurować je ponownie na nowym serwerze podstawowym po przejściu w tryb failover. W tym scenariuszu są niezbędne następujące działania:
 
 1. Zatrzymaj wszystkie zadania replikacji uruchomione w bazie danych, jeśli istnieją.
 2. Porzuć metadane subskrypcji z wydawcą, uruchamiając następujący skrypt w bazie danych wydawcy:
@@ -479,8 +479,8 @@ Ograniczenia:
 - Przywracanie pliku bazy danych zawierającej jakiekolwiek ograniczenie opisane w tym dokumencie (na `FILESTREAM` przykład lub `FILETABLE` obiekty) nie może zostać przywrócone w wystąpieniu zarządzanym. `.BAK`
 - `.BAK`nie można przywrócić plików zawierających wiele zestawów kopii zapasowych. 
 - `.BAK`nie można przywrócić plików zawierających wiele plików dziennika.
-- Kopie zapasowe, które zawierają bazy danych o rozmiarze większym niż 8TB, aktywne obiekty OLTP w pamięci lub liczba plików, które przekroczą 280 plików na wystąpienie, nie mogą zostać przywrócone w wystąpieniu Ogólnego przeznaczenia. 
-- Kopie zapasowe zawierające bazy danych 4 TB lub obiektów OLTP w pamięci o łącznym rozmiarze większym niż rozmiar opisany w [limitach zasobów](sql-database-managed-instance-resource-limits.md) nie mogą zostać przywrócone w wystąpieniu krytyczne dla działania firmy.
+- Kopie zapasowe, które zawierają bazy danych o rozmiarze większym niż 8 TB, aktywne obiekty OLTP w pamięci lub liczba plików, które przekroczą 280 plików na wystąpienie, nie mogą zostać przywrócone na wystąpienie Ogólnego przeznaczenia. 
+- Kopie zapasowe, które zawierają bazy danych o rozmiarze większym niż 4 TB lub obiekty OLTP w pamięci o łącznym poziomie większym niż rozmiar opisany w [limitach zasobów](sql-database-managed-instance-resource-limits.md) , nie mogą zostać przywrócone w wystąpieniu krytyczne dla działania firmy.
 Aby uzyskać informacje na temat przywracania instrukcji, zobacz [przywracanie instrukcji](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql).
 
  > [!IMPORTANT]
@@ -544,6 +544,16 @@ Wystąpienie zarządzane umieszcza pełne informacje w dziennikach błędów. Is
 
 ## <a name="Issues"></a>Znane problemy
 
+### <a name="missing-validations-in-restore-process"></a>Brak walidacji w procesie przywracania
+
+**Dniu** Wrz 2019
+
+`RESTORE`Instrukcja i wbudowane przywracanie do punktu w czasie nie wykonują niektórych testów nessecary dla przywróconej bazy danych:
+- **Instrukcja DBCC CHECKDB**  -  `RESTORE` nie wykonuje`DBCC CHECKDB` operacji na przywróconej bazie danych. Jeśli oryginalna baza danych jest uszkodzona lub plik kopii zapasowej jest uszkodzony podczas kopiowania do usługi Azure Blob Storage, automatyczne kopie zapasowe nie zostaną wykonane, a pomoc techniczna platformy Azure skontaktuje się z klientem. 
+- Wbudowany proces przywracania do punktu w czasie nie sprawdza, czy automatyczne kopie zapasowe z wystąpienia Krytyczne dla działania firmy zawierają [obiekty OLTP w pamięci](sql-database-in-memory.md#in-memory-oltp). 
+
+**Obejście problemu**: Upewnij się, że wykonujesz `DBCC CHECKDB` w źródłowej bazie danych przed utworzeniem kopii zapasowej, `WITH CHECKSUM` i użyj opcji w kopii zapasowej, aby uniknąć potencjalnych uszkodzeń, które mogą zostać przywrócone w wystąpieniu zarządzanym. Upewnij się, że źródłowa baza danych nie zawiera [obiektów OLTP w pamięci](sql-database-in-memory.md#in-memory-oltp) , jeśli są przywracane w warstwie ogólnego przeznaczenia.
+
 ### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>Po przejściu w tryb failover może zajść konieczność ponownego skonfigurowania przyrządu zasobów na Krytyczne dla działania firmyej warstwie usług
 
 **Dniu** Wrz 2019
@@ -552,13 +562,13 @@ Funkcja [gubernatora zasobów](https://docs.microsoft.com/sql/relational-databas
 
 **Obejście problemu**: Uruchamiaj `ALTER RESOURCE GOVERNOR RECONFIGURE` okresowo lub jako część zadania programu SQL Agent, które wykonuje zadanie SQL, gdy wystąpienie zostanie uruchomione, jeśli używasz [prezesa zasobów](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor).
 
-### <a name="cannot-authenicate-to-external-mail-servers-using-secure-connection-ssl"></a>Nie można uwierzytelnienia karty inteligentnej do zewnętrznych serwerów poczty przy użyciu bezpiecznego połączenia (SSL)
+### <a name="cannot-authenticate-to-external-mail-servers-using-secure-connection-ssl"></a>Nie można uwierzytelnić na zewnętrznych serwerach poczty przy użyciu bezpiecznego połączenia (SSL)
 
 **Dniu** 2019 sie
 
 Poczta bazy danych [skonfigurowana przy użyciu bezpiecznego połączenia (SSL)](https://docs.microsoft.com/sql/relational-databases/database-mail/configure-database-mail) nie może być uwierzytelniana na niektórych serwerach poczty E-mail poza platformą Azure. Jest to problem z konfiguracją zabezpieczeń, który wkrótce zostanie rozwiązany.
 
-**Poprawkę** Tymczasowe usunięcie bezpiecznego połączenia (SSL) stanowi konfigurację poczty bazy danych do momentu rozwiązania problemu. 
+**Poprawkę** Tymczasowe usuwanie bezpiecznego połączenia (SSL) z konfiguracji poczty bazy danych do momentu rozwiązania problemu. 
 
 ### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>Okna dialogowe Service Broker między bazami danych muszą zostać zainicjowane po uaktualnieniu warstwy usług
 
@@ -592,7 +602,7 @@ Jeśli replikacja transakcyjna jest włączona w bazie danych w grupie autotrybu
 
 **Dniu** Sty 2019
 
-SQL Server Management Studio i SQL Server narzędzia danych nie fuly obsługi logowania do katalogu kont i użytkowników usługi Azure.
+Narzędzia SQL Server Management Studio i SQL Server Data Tools nie obsługują w pełni logowania i użytkowników usługi Azure Active Directory.
 - Korzystanie z usług Azure AD Server Principals (Logins) i użytkowników (publiczna wersja zapoznawcza) za pomocą narzędzi SQL Server Data Tools nie jest obecnie obsługiwane.
 - Obsługa skryptów dla podmiotów zabezpieczeń serwera usługi Azure AD (logowania) i użytkowników (publiczna wersja zapoznawcza) nie jest obsługiwana w SQL Server Management Studio.
 
@@ -612,7 +622,7 @@ Gdy baza danych jest przywracana w wystąpieniu zarządzanym, usługa Restore na
 
 Każde Ogólnego przeznaczenia wystąpienia zarządzanego ma do 35 TB pamięci zarezerwowanej dla miejsca na dysku w warstwie Premium. Każdy plik bazy danych jest umieszczany na osobnym dysku fizycznym. Rozmiary dysków mogą być 128 GB, 256 GB, 512 GB, 1 TB lub 4 TB. Nieużywane miejsce na dysku jest nieobciążone, ale całkowita suma rozmiarów dysków w warstwie Premium platformy Azure nie może przekroczyć 35 TB. W niektórych przypadkach wystąpienie zarządzane, które nie wymaga 8 TB w sumie, może przekroczyć limit 35 TB platformy Azure dla rozmiaru magazynu z powodu wewnętrznej fragmentacji.
 
-Na przykład wystąpienie zarządzane Ogólnego przeznaczenia może mieć jeden plik Big o rozmiarze 1,2 TB umieszczony na dysku o pojemności 4 TB. Może również mieć 248 plików o rozmiarze 1 GB, które są umieszczane na oddzielnych dyskach 128 GB. W tym przykładzie:
+Na przykład wystąpienie zarządzane Ogólnego przeznaczenia może mieć jeden duży plik o rozmiarze 1,2 TB na dysku z 4 TBm. Może również mieć 248 plików o rozmiarze 1 GB, które są umieszczane na oddzielnych dyskach 128 GB. W tym przykładzie:
 
 - Łączny rozmiar magazynu dyskowego to 1 x 4 TB + 248 x 128 GB = 35 TB.
 - Całkowite zarezerwowane miejsce dla baz danych w wystąpieniu to 1 x 1,2 TB + 248 x 1 GB = 1,4 TB.
@@ -629,7 +639,7 @@ W kilku widokach systemu, licznikach wydajności, komunikatach o błędach, XEve
 
 ### <a name="error-logs-arent-persisted"></a>Dzienniki błędów nie są utrwalone
 
-Dzienniki błędów dostępne w wystąpieniu zarządzanym nie są utrwalane, a ich rozmiar nie jest uwzględniony w maksymalnym limicie magazynu. Dzienniki błędów mogą być automatycznie wymazywane w przypadku przełączenia w tryb failover. W historii dzienników błędów mogą występować luki, ponieważ wystąpienie zarządzane zostało przesunięte kilka czasu na kilka maszyn wirtualnych.
+Dzienniki błędów dostępne w wystąpieniu zarządzanym nie są utrwalane, a ich rozmiar nie jest uwzględniony w maksymalnym limicie magazynu. Dzienniki błędów mogą być automatycznie wymazywane w przypadku przełączenia w tryb failover. W historii dzienników błędów mogą występować luki, ponieważ wystąpienie zarządzane zostało przeniesione kilka razy na kilka maszyn wirtualnych.
 
 ### <a name="transaction-scope-on-two-databases-within-the-same-instance-isnt-supported"></a>Zakres transakcji w dwóch bazach danych w tym samym wystąpieniu nie jest obsługiwany
 

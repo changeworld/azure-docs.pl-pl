@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 07/08/2019
+ms.date: 09/12/2019
 ms.author: mlearned
-ms.openlocfilehash: 580363973afd918351931edfb187a1a8d38d6985
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 045fcb3286c89097459a4a8405d22ee70e44c205
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "67665968"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018837"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dynamiczne tworzenie i używanie woluminu trwałego z Azure Files w usłudze Azure Kubernetes Service (AKS)
 
@@ -33,6 +33,7 @@ Klasa magazynu służy do definiowania sposobu tworzenia udziału plików platfo
 * *Standard_LRS* — standardowa Magazyn lokalnie nadmiarowy (LRS)
 * *Standard_GRS* — magazyn Geograficznie nadmiarowy (GRS)
 * *Standard_RAGRS* — standardowy magazyn Geograficznie nadmiarowy do odczytu (RA-GRS)
+* Magazyn lokalnie nadmiarowy *Premium_LRS* -Premium (LRS)
 
 > [!NOTE]
 > Azure Files obsługiwać usługę Premium Storage w klastrach AKS z systemem Kubernetes 1,13 lub nowszym.
@@ -52,6 +53,9 @@ mountOptions:
   - file_mode=0777
   - uid=1000
   - gid=1000
+  - mfsymlinks
+  - nobrl
+  - cache=none
 parameters:
   skuName: Standard_LRS
 ```
@@ -101,7 +105,7 @@ kubectl apply -f azure-pvc-roles.yaml
 
 ## <a name="create-a-persistent-volume-claim"></a>Tworzenie trwałego żądania woluminu
 
-Trwałego żądania woluminu (PVC) używa obiektu klasy Storage do dynamicznego inicjowania obsługi udziału plików platformy Azure. Poniższe YAML można użyć do utworzenia trwałego żądania woluminu *5 GB* w rozmiarze z dostępem *ReadWriteMany* . Aby uzyskać więcej informacji o trybach dostępu, zobacz dokumentację [Kubernetes trwałych woluminów][access-modes] .
+Trwałego żądania woluminu (PVC) używa obiektu klasy Storage do dynamicznego inicjowania obsługi udziału plików platformy Azure. Poniższe YAML można użyć do utworzenia trwałego zastrzeżenia woluminu o rozmiarze *5 GB* z dostępem do *ReadWriteMany* . Aby uzyskać więcej informacji o trybach dostępu, zobacz dokumentację [Kubernetes trwałych woluminów][access-modes] .
 
 Teraz Utwórz plik o nazwie `azure-file-pvc.yaml` i skopiuj w następującym YAML. Upewnij się, że *storageClassName* jest zgodna z klasą magazynu utworzoną w ostatnim kroku:
 
@@ -118,6 +122,9 @@ spec:
     requests:
       storage: 5Gi
 ```
+
+> [!NOTE]
+> W przypadku używania jednostki SKU *Premium_LRS* dla klasy magazynu minimalna wartość *magazynu* musi być równa *100Gi*.
 
 Utwórz wartość trwałego zastrzeżenia przy użyciu polecenia [polecenia kubectl Apply][kubectl-apply] :
 
@@ -138,7 +145,7 @@ azurefile   Bound     pvc-8436e62e-a0d9-11e5-8521-5a8664dc0477   5Gi        RWX 
 
 Poniższy YAML tworzy element, który używa trwałego zastrzeżenia woluminu *azurefile* do zainstalowania udziału plików platformy Azure w ścieżce */mnt/Azure* . W przypadku kontenerów systemu Windows Server (obecnie w wersji zapoznawczej w AKS) Określ *mountPath* przy użyciu konwencji ścieżki systemu Windows, takiej jak *'d: '* .
 
-Utwórz plik o nazwie `azure-pvc-files.yaml`i skopiuj go do poniższego YAML. Upewnij się, że  wartość claimname pasuje do obwodu PVC utworzonego w ostatnim kroku.
+Utwórz plik o nazwie `azure-pvc-files.yaml`i skopiuj go do poniższego YAML. Upewnij się, że wartość claimname pasuje do obwodu PVC utworzonego w ostatnim kroku.
 
 ```yaml
 kind: Pod
@@ -196,17 +203,7 @@ Volumes:
 
 ## <a name="mount-options"></a>Opcje instalacji
 
-Wartości  domyślne parametrów FileMode i *dirMode* różnią się od wersji Kubernetes, zgodnie z opisem w poniższej tabeli.
-
-| version | value |
-| ---- | ---- |
-| v1.6.x, v1.7.x | 0777 |
-| v1.8.0-v1.8.5 | 0700 |
-| 1\.8.6 lub nowszy | 0755 |
-| v1.9.0 | 0700 |
-| 1\.9.1 lub nowszy | 0755 |
-
-W przypadku korzystania z klastra w wersji 1.8.5 lub nowszej i dynamicznego tworzenia woluminu trwałego za pomocą klasy magazynu opcje instalacji można określić w obiekcie klasy magazynu. W poniższym przykładzie są ustawiane *0777*:
+Domyślna wartość *parametru FileMode* i *dirMode* to *0755* dla Kubernetes w wersji 1.9.1 lub nowszej. W przypadku używania klastra z Kuberetes w wersji 1.8.5 lub nowszej i dynamicznego tworzenia woluminu trwałego za pomocą klasy magazynu opcje instalacji można określić w obiekcie klasy magazynu. W poniższym przykładzie są ustawiane *0777*:
 
 ```yaml
 kind: StorageClass
@@ -219,6 +216,9 @@ mountOptions:
   - file_mode=0777
   - uid=1000
   - gid=1000
+  - mfsymlinks
+  - nobrl
+  - cache=none
 parameters:
   skuName: Standard_LRS
 ```
