@@ -104,6 +104,8 @@
               href: concepts-monitoring.md
             - name: Dzienniki serwera
               href: concepts-server-logs.md
+            - name: Dzienniki inspekcji
+              href: concepts-audit.md
             - name: Magazyn zapytań
               items:
                 - name: Magazyn zapytań
