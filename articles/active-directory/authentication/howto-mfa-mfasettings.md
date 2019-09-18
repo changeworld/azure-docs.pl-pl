@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9eab92f044f62a1ca32062753f824ea76a2726a8
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: cf732ec97a57a5bc1d2bcaa39e5fd14a305504d0
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860286"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71075498"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurowanie ustawień usługi Azure Multi-Factor Authentication
 
@@ -403,6 +403,8 @@ Funkcja zmniejsza liczbę uwierzytelnień w aplikacjach sieci Web, które zwykle
 >Funkcja **pamiętaj Multi-Factor Authentication** nie jest zgodna z funkcją nie wylogowuj **mnie w programie** AD FS, gdy użytkownicy wykonują weryfikację dwuetapową dla AD FS za pomocą usługi Azure serwer Multi-Factor Authentication lub wieloskładnikowego rozwiązania firmy Microsoft Rozwiązanie uwierzytelniania.
 >
 >Jeśli użytkownik wybierze opcję Nie wylogowuj **mnie** na AD FS, a także oznaczy urządzenie jako zaufane dla Multi-Factor Authentication, użytkownik nie zostanie automatycznie zweryfikowany po upływie następującej liczby dni dla opcji **Zapamiętaj uwierzytelnianie wieloskładnikowe** . Usługa Azure AD żąda nowej weryfikacji dwuetapowej, ale AD FS zwraca token z pierwotnym Multi-Factor Authenticationm i datą, a nie ponownie wykonuje weryfikacji dwuetapowej. **Ta reakcja ustawia pętlę weryfikacji między usługą Azure AD a AD FS.**
+>
+>Funkcja **pamiętaj Multi-Factor Authentication** nie jest zgodna z użytkownikami B2B i nie będzie widoczna dla użytkowników B2B podczas logowania się do zaproszonych dzierżawców.
 >
 
 ### <a name="enable-remember-multi-factor-authentication"></a>Włącz Multi-Factor Authentication Pamiętaj

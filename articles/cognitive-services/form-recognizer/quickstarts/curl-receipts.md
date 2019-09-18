@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/01/2019
 ms.author: pafarley
-ms.openlocfilehash: f8edb27e52d843d9a765aed8da9b75417cf357d1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: badd674030ec014f2e70050c3c45599a26b17882
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552557"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71073824"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>Szybki start: Wyodrębnij dane przyjęcia przy użyciu interfejsu API REST aparatu rozpoznawania formularzy z zwinięciem
 
@@ -26,7 +26,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 Aby ukończyć ten przewodnik Szybki Start, musisz dysponować:
 - Dostęp do programu rozpoznawania formularzy z ograniczonym dostępem. Aby uzyskać dostęp do wersji zapoznawczej, Wypełnij i Prześlij formularz [żądania dostępu do aparatu rozpoznawania formularza](https://aka.ms/FormRecognizerRequestAccess) .
 - zainstalowano [zwinięcie](https://curl.haxx.se/windows/) .
-- Adres URL obrazu potwierdzenia. Możesz użyć przykładowego [obrazu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-receipt.png?raw=true) dla tego przewodnika Szybki Start.
+- Adres URL obrazu potwierdzenia. Możesz użyć [przykładowego obrazu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-receipt.png?raw=true) dla tego przewodnika Szybki Start.
 
 ## <a name="create-a-form-recognizer-resource"></a>Tworzenie zasobu aparatu rozpoznawania formularza
 
@@ -36,7 +36,7 @@ Aby ukończyć ten przewodnik Szybki Start, musisz dysponować:
 
 Aby rozpocząć analizowanie paragonu, należy wywołać interfejs API **analizy paragonów** przy użyciu poniższego polecenia. Przed uruchomieniem polecenia wprowadź następujące zmiany:
 
-1. Zamień `<Endpoint>` na punkt końcowy uzyskany z klucza subskrypcji aparatu rozpoznawania formularza. Można go znaleźć na karcie **Przegląd** zasobów aparatu rozpoznawania formularza.
+1. Zamień `<Endpoint>` na punkt końcowy uzyskany za pomocą klucza subskrypcji aparatu rozpoznawania formularza. Można go znaleźć na karcie **Przegląd** zasobów aparatu rozpoznawania formularza.
 1. Zamień `<your receipt URL>` na adres URL obrazu paragonu.
 1. Zamień `<subscription key>` na klucz subskrypcji skopiowany z poprzedniego kroku.
 
