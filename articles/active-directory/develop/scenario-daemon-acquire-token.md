@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a5f15aa5264c0abf87cb15f0468e8a3a924e0b5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ef28520edd8500be0da52996e6484a0407fb03c8
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562352"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056439"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Aplikacja demona, która wywołuje interfejsy API sieci Web — pozyskiwanie tokenu
 
@@ -31,45 +31,44 @@ Po skonstruowaniu poufnej aplikacji klienckiej można uzyskać token dla aplikac
 
 Zakresem żądania dla przepływu poświadczeń klienta jest nazwa zasobu, po którym następuje `/.default`. Ta notacja nakazuje usłudze Azure AD używanie **uprawnień na poziomie aplikacji** , które są zadeklarowane statycznie podczas rejestrowania aplikacji. Podobnie jak wcześniej, te uprawnienia interfejsu API muszą zostać przyznane przez administratora dzierżawy
 
-### <a name="net"></a>.NET
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 ```CSharp
 ResourceId = "someAppIDURI";
 var scopes = new [] {  ResourceId+"/.default"};
 ```
 
-### <a name="python"></a>Python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 W MSAL. W języku Python plik konfiguracji będzie wyglądać podobnie do następującego fragmentu kodu:
 
-```Python
+```Json
 {
-    "authority": "https://login.microsoftonline.com/organizations",
-    "client_id": "your_client_id",
-    "secret": "This is a sample only. You better NOT persist your password."
-    "scope": ["https://graph.microsoft.com/.default"]
+    "scope": ["https://graph.microsoft.com/.default"],
 }
 ```
 
-### <a name="java"></a>Java
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 ```Java
-public final static String KEYVAULT_DEFAULT_SCOPE = "https://vault.azure.net/.default";
+final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default";
 ```
 
-### <a name="all"></a>Wszyscy
-
-Zakres używany na potrzeby poświadczeń klienta zawsze powinien być identyfikatorem resourceId + "/.default"
+---
 
 ### <a name="case-of-azure-ad-v10-resources"></a>Przypadek zasobów usługi Azure AD (v 1.0)
 
+Zakres używany na potrzeby poświadczeń klienta zawsze powinien być identyfikatorem resourceId + "/.default"
+
 > [!IMPORTANT]
-> W przypadku usługi MSAL (Microsoft Identity platform Endpoint) z prośbą o token dostępu dla zasobu akceptującego token dostępu w wersji 1.0 usługa Azure AD analizuje żądanych odbiorców od żądanego zakresu, pobierając wszystko przed ostatnim ukośnikiem i używając go jako identyfikatora zasobu.
+> W przypadku MSAL z prośbą o token dostępu dla zasobu akceptującego token dostępu w wersji 1.0 usługa Azure AD analizuje żądanych odbiorców od żądanego zakresu, pobierając wszystko przed ostatnim ukośnikiem i używając go jako identyfikatora zasobu.
 > W związku z tym, jeśli tak **https://database.windows.net** , jak Azure SQL (), zasób oczekuje odbiorców kończących się ukośnikiem ( `https://database.windows.net/` w przypadku usługi Azure SQL:), należy zażądać zakresu `https://database.windows.net//.default` (należy pamiętać o podwójnym ukośniku). Zobacz również [#747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)problemu MSAL.NET: Końcowy ukośnik adresu URL zasobu został pominięty, co spowodowało błąd uwierzytelniania SQL.
 
 ## <a name="acquiretokenforclient-api"></a>Interfejs API AcquireTokenForClient
 
-### <a name="net"></a>.NET
+Aby uzyskać token dla aplikacji, należy użyć `AcquireTokenForClient` lub odpowiedni odpowiednik w zależności od platform.
+
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 ```CSharp
 using Microsoft.Identity.Client;
@@ -98,13 +97,12 @@ catch (MsalServiceException ex) when (ex.Message.Contains("AADSTS70011"))
 }
 ```
 
-#### <a name="application-token-cache"></a>Pamięć podręczna tokenów aplikacji
-
-W programie MSAL.NET `AcquireTokenForClient` korzysta z **pamięci podręcznej tokenów aplikacji** (wszystkie inne metody AcquireTokenXX używają pamięci podręcznej `AcquireTokenSilent` tokenów `AcquireTokenForClient` użytkowników `AcquireTokenSilent` ), które nie są wywoływane przed wywołaniem jako używa pamięci podręcznej tokenów **użytkownika** `AcquireTokenForClient`sprawdza sam pamięć podręczną tokenu **aplikacji** i aktualizuje go.
-
-### <a name="python"></a>Python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 ```Python
+# The pattern to acquire a token looks like this.
+result = None
+
 # Firstly, looks up a token from cache
 # Since we are looking for token for the current app, NOT for an end user,
 # notice we give account parameter as None.
@@ -113,20 +111,42 @@ result = app.acquire_token_silent(config["scope"], account=None)
 if not result:
     logging.info("No suitable token exists in cache. Let's get a new one from AAD.")
     result = app.acquire_token_for_client(scopes=config["scope"])
+
+if "access_token" in result:
+    # Call a protected API with the access token
+    print(result["token_type"])
+    print(result["expires_in"])  # You don't normally need to care about this.
+                                 # It will be good for at least 5 minutes.
+else:
+    print(result.get("error"))
+    print(result.get("error_description"))
+    print(result.get("correlation_id"))  # You may need this when reporting a bug
 ```
 
-### <a name="java"></a>Java
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 ```Java
-ClientCredentialParameters parameters = ClientCredentialParameters
-        .builder(Collections.singleton(KEYVAULT_DEFAULT_SCOPE))
+ClientCredentialParameters clientCredentialParam = ClientCredentialParameters.builder(
+        Collections.singleton(GRAPH_DEFAULT_SCOPE))
         .build();
 
-CompletableFuture<AuthenticationResult> future = cca.acquireToken(parameters);
+CompletableFuture<IAuthenticationResult> future = app.acquireToken(clientCredentialParam);
 
-// You can complete the future in many different ways. Here we use .get() for simplicity
-AuthenticationResult result = future.get();
+BiConsumer<IAuthenticationResult, Throwable> processAuthResult = (res, ex) -> {
+    if (ex != null) {
+        System.out.println("Oops! We have an exception - " + ex.getMessage());
+    }
+    System.out.println("Returned ok - " + res);
+    System.out.println("ID Token - " + res.idToken());
+
+    /* call a protected API with res.accessToken() */
+};
+
+future.whenCompleteAsync(processAuthResult);
+future.join();
 ```
+
+---
 
 ### <a name="protocol"></a>Protocol
 
@@ -159,9 +179,11 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 &grant_type=client_credentials
 ```
 
-### <a name="learn-more-about-the-protocol"></a>Dowiedz się więcej o protokole
-
 Aby uzyskać więcej informacji, zobacz dokumentację protokołu: [Program Microsoft Identity platform i przepływ poświadczeń klienta OAuth 2,0](v2-oauth2-client-creds-grant-flow.md).
+
+## <a name="application-token-cache"></a>Pamięć podręczna tokenów aplikacji
+
+W programie MSAL.NET `AcquireTokenForClient` korzysta z **pamięci podręcznej tokenów aplikacji** (wszystkie inne metody AcquireTokenXX używają pamięci podręcznej `AcquireTokenSilent` tokenów użytkowników `AcquireTokenSilent` ), które nie są wywoływane przed wywołaniem `AcquireTokenForClient` jako używa pamięci podręcznej tokenów **użytkownika** `AcquireTokenForClient`sprawdza sam pamięć podręczną tokenu **aplikacji** i aktualizuje go.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 

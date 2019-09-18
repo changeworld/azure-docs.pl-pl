@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 07/10/2019
+ms.date: 09/17/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 17d1bd95067c15bd67f80f3713f0e497bff8a68d
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 3640d2d88fc679b78395472c667fcde39979728a
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516123"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71074348"
 ---
 # <a name="azure-storage-redundancy"></a>Nadmiarowość usługi Azure Storage
 
@@ -28,16 +28,16 @@ Usługa Azure Storage regularnie weryfikuje integralność danych przechowywanyc
 
 Podczas tworzenia konta magazynu można wybrać jedną z następujących opcji nadmiarowości:
 
-* [Magazyn lokalnie nadmiarowy (LRS)](storage-redundancy-lrs.md)
-* [Magazyn strefowo nadmiarowy (ZRS)](storage-redundancy-zrs.md)
-* [Magazyn geograficznie nadmiarowy (GRS)](storage-redundancy-grs.md)
-* [Magazyn geograficznie nadmiarowy dostępny do odczytu (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage)
-* [Magazyn Geograficznie nadmiarowy (GZRS)](storage-redundancy-gzrs.md)
-* [Strefa geograficzna z dostępem do odczytu — magazyn nadmiarowy (RA-GZRS)](storage-redundancy-gzrs.md)
+- [Magazyn lokalnie nadmiarowy (LRS)](storage-redundancy-lrs.md)
+- [Magazyn strefowo nadmiarowy (ZRS)](storage-redundancy-zrs.md)
+- [Magazyn geograficznie nadmiarowy (GRS)](storage-redundancy-grs.md)
+- [Magazyn geograficznie nadmiarowy dostępny do odczytu (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage)
+- [Magazyn Geograficznie nadmiarowy (GZRS)](storage-redundancy-gzrs.md)
+- [Strefa geograficzna z dostępem do odczytu — magazyn nadmiarowy (RA-GZRS)](storage-redundancy-gzrs.md)
 
 Poniższa tabela zawiera krótkie omówienie zakresu trwałości i dostępności poszczególnych strategii replikacji dla danego typu zdarzenia (lub zdarzenia podobnego wpływu).
 
-| Scenariusz                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                               |
+| Scenariusz                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS (wersja zapoznawcza)                              |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
 | Niedostępność węzła w centrum danych                                                                 | Tak                             | Yes                              | Yes                                  | Tak                                  |
 | Całe centrum danych (zona lub non-Zona) staną się niedostępne                                           | Nie                              | Yes                              | Yes                                  | Tak                                  |
@@ -45,7 +45,7 @@ Poniższa tabela zawiera krótkie omówienie zakresu trwałości i dostępności
 | Dostęp do odczytu do danych (w zdalnym, replikowanym regionie geograficznie) w przypadku niedostępności całego regionu | Nie                              | Nie                               | Tak (z RA-GRS)                                   | Tak (z RA-GZRS)                                 |
 | Zaprojektowano \_ w celu zapewnienia \_ trwałości obiektów w danym roku.                                          | co najmniej 99,999999999% (11 9) | co najmniej 99,9999999999% (12 9) | co najmniej 99.99999999999999% (16 9) | co najmniej 99.99999999999999% (16 9) |
 | Obsługiwane typy kont magazynu                                                                   | GPv2, GPv1, BLOB                | GPv2                             | GPv2, GPv1, BLOB                     | GPv2                     |
-| Umowa SLA dotycząca dostępności dla żądań odczytu | Co najmniej 99,9% (99% dla warstwy dostępu chłodnego) | Co najmniej 99,9% (99% dla warstwy dostępu chłodnego) | Co najmniej 99,9% (99% dla warstwy dostępu chłodnego) | Co najmniej 99,99% (99,9% dla warstwy dostępu chłodnego) |
+| Umowa SLA dotycząca dostępności dla żądań odczytu | Co najmniej 99,9% (99% dla warstwy dostępu chłodnego) | Co najmniej 99,9% (99% dla warstwy dostępu chłodnego) | Co najmniej 99,9% (99% dla warstwy dostępu chłodnego) dla GRS<br /><br />Co najmniej 99,99% (99,9% dla warstwy dostępu chłodnego) dla usługi RA-GRS | Co najmniej 99,9% (99% dla warstwy dostępu chłodnego) dla GZRS<br /><br />Co najmniej 99,99% (99,9% dla warstwy dostępu chłodnego) dla usługi RA-GZRS |
 | Umowa SLA dotycząca dostępności dla żądań zapisu | Co najmniej 99,9% (99% dla warstwy dostępu chłodnego) | Co najmniej 99,9% (99% dla warstwy dostępu chłodnego) | Co najmniej 99,9% (99% dla warstwy dostępu chłodnego) | Co najmniej 99,9% (99% dla warstwy dostępu chłodnego) |
 
 Wszystkie dane na koncie magazynu są replikowane, w tym blokowe obiekty blob i dołączanie obiektów blob, stronicowych obiektów blob, kolejek, tabel i plików. Wszystkie typy kont magazynu są replikowane, chociaż ZRS wymaga konta magazynu ogólnego przeznaczenia w wersji 2.
@@ -61,9 +61,9 @@ Aby uzyskać informacje na temat gwarancji usługi Azure Storage w zakresie trwa
 
 Strategię replikacji konta magazynu można zmienić przy użyciu [Azure Portal](https://portal.azure.com/), [programu Azure PowerShell](storage-powershell-guide-full.md), [interfejsu wiersza polecenia platformy](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)Azure lub jednej z [bibliotek klienckich usługi Azure Storage](https://docs.microsoft.com/azure/index#pivot=sdkstools). Zmiana typu replikacji konta magazynu nie spowoduje wyłączenia.
 
-   > [!NOTE]
-   > Obecnie nie można użyć Azure Portal lub bibliotek klienckich usługi Azure Storage do przekonwertowania Twojego konta na ZRS, GZRS lub RA-GZRS. Aby przeprowadzić migrację konta do ZRS, zobacz [Magazyn strefowo nadmiarowy (ZRS) służący do tworzenia aplikacji usługi Azure Storage o wysokiej](storage-redundancy-zrs.md) dostępności w celu uzyskania szczegółowych informacji. Aby przeprowadzić migrację GZRS lub RA-GZRS, zobacz Geograficznie nadmiarowy [Magazyn w celu zapewnienia wysokiej dostępności i maksymalnej trwałości (wersja zapoznawcza)](storage-redundancy-zrs.md) , aby uzyskać szczegółowe informacje.
-    
+> [!NOTE]
+> Obecnie nie można użyć Azure Portal lub bibliotek klienckich usługi Azure Storage do przekonwertowania Twojego konta na ZRS, GZRS lub RA-GZRS. Aby przeprowadzić migrację konta do ZRS, zobacz [Magazyn strefowo nadmiarowy (ZRS) służący do tworzenia aplikacji usługi Azure Storage o wysokiej](storage-redundancy-zrs.md) dostępności w celu uzyskania szczegółowych informacji. Aby przeprowadzić migrację GZRS lub RA-GZRS, zobacz [Geograficznie nadmiarowy magazyn w celu zapewnienia wysokiej dostępności i maksymalnej trwałości (wersja zapoznawcza)](storage-redundancy-zrs.md) , aby uzyskać szczegółowe informacje.
+
 ### <a name="are-there-any-costs-to-changing-my-accounts-replication-strategy"></a>Czy istnieją jakiekolwiek koszty zmiany strategii replikacji mojego konta?
 
 Jest to zależne od ścieżki konwersji. Określanie kolejności od najwyższego do najtańszych ofert nadmiarowości usługi Azure Storage LRS, ZRS, GRS, RA-GRS, GZRS i RA-GZRS. Na przykład przechodzenie *z* LRS do dowolnego innego typu replikacji wiąże się z dodatkowymi opłatami, ponieważ przenosisz do bardziej zaawansowanego poziomu nadmiarowości. Migrowanie *do* GRS lub RA-GRS spowoduje naliczenie opłaty za przepustowość ruchu wychodzącego, ponieważ dane (w regionie podstawowym) są replikowane do zdalnego regionu pomocniczego. Ta opłata jest naliczana jednorazowo podczas początkowej konfiguracji. Po skopiowaniu danych nie ma żadnych dodatkowych opłat związanych z migracją. Opłata jest naliczana tylko za replikowanie nowych lub aktualizacji istniejących danych. Aby uzyskać szczegółowe informacje o opłatach za przepustowość, zobacz [stronę z cennikiem usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).

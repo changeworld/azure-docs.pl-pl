@@ -1,5 +1,5 @@
 ---
-title: Zabezpieczanie internetowego interfejsu API za pomocą usługi Azure AD | Microsoft Docs
+title: 'Szybki start: zabezpieczanie internetowego interfejsu API za pomocą usługi Azure Active Directory'
 description: Dowiedz się, jak utworzyć internetowy interfejs API REST platformy Node.js, który integruje się z usługą Azure AD w celu uwierzytelniania.
 services: active-directory
 documentationcenter: nodejs
@@ -14,14 +14,14 @@ ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: ryanwi
-ms.custom: aaddev
+ms.custom: seo-javascript-september2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7dcbe10c08d581e2ec01e1616da49b7a1b31018d
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 7307afb2ce9e10326c42f96733d3f80979c4a4b3
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545974"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056536"
 ---
 # <a name="quickstart-secure-a-web-api-with-azure-active-directory"></a>Szybki start: zabezpieczanie internetowego interfejsu API za pomocą usługi Azure Active Directory
 
@@ -82,7 +82,7 @@ az ad app create --display-name node-aad-demo --homepage http://localhost --iden
 
 Do nawiązania połączenia z usługą Azure Active Directory potrzebne są następujące informacje:
 
-| Name (Nazwa)  | Opis | Nazwa zmiennej w pliku konfiguracji |
+| Name  | Opis | Nazwa zmiennej w pliku konfiguracji |
 | ------------- | ------------- | ------------- |
 | Nazwa dzierżawy  | [Nazwa dzierżawy](quickstart-create-new-tenant.md), która ma być używana do uwierzytelniania | `tenantName`  |
 | Identyfikator klienta  | Identyfikator klienta to termin dotyczący protokołu OAuth na potrzeby _identyfikatora aplikacji_ usługi AAD. |  `clientID`  |
@@ -251,7 +251,7 @@ Unauthorized
 
 Po utworzeniu bezpiecznego interfejsu API możesz zaimplementować klienta, za pomocą którego możliwe jest przekazywanie tokenów uwierzytelniania do interfejsu API.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Należy zaimplementować odpowiednik klienta w celu nawiązania połączenia z serwerem, który obsługuje logowanie, wylogowywanie i zarządzanie tokenami. Przykłady oparte na kodzie możesz znaleźć w aplikacjach klienckich w systemie [iOS](https://github.com/MSOpenTech/azure-activedirectory-library-for-ios) i [Android](https://github.com/MSOpenTech/azure-activedirectory-library-for-android).
 * Aby uzyskać samouczek krok po kroku, zobacz [Node.js web app sign-in and sign-out with Azure AD (Logowanie się do aplikacji internetowych Node.js i wylogowywanie się z nich za pomocą usługi Azure AD)](quickstart-v1-openid-connect-code.md).

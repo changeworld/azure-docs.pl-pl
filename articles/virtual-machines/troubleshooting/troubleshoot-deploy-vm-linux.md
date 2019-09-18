@@ -4,7 +4,7 @@ description: Rozwiązywanie problemów z wdrażaniem maszyn wirtualnych z system
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 4e383427-4aff-4bf3-a0f4-dbff5c6f0c81
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 6aed61f13da8f6a29c1c3fa619af58cb720ea8e1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 230319471dbf62bf64ee980d84c360807687ce17
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70089945"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058229"
 ---
 # <a name="troubleshoot-deploying-linux-virtual-machine-issues-in-azure"></a>Rozwiązywanie problemów z wdrażaniem maszyn wirtualnych z systemem Linux na platformie Azure
 
-Aby rozwiązać problemy z wdrażaniem maszyn wirtualnych na platformie Azure, zapoznaj [](#top-issues) się z najważniejszymi problemami dotyczącymi typowych awarii i rozwiązań.
+Aby rozwiązać problemy z wdrażaniem maszyn wirtualnych na platformie Azure, zapoznaj się z [najważniejszymi problemami](#top-issues) dotyczącymi typowych awarii i rozwiązań.
 
 Jeśli potrzebujesz więcej pomocy w dowolnym punkcie tego artykułu, możesz skontaktować się z ekspertami platformy Azure na [forach MSDN i Stack Overflow](https://azure.microsoft.com/support/forums/). Alternatywnie mogą zgłaszać zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej systemu Azure](https://azure.microsoft.com/support/options/) i wybierz pozycję **Uzyskaj pomoc techniczną**.
 
@@ -64,7 +64,7 @@ Aby skorzystać z możliwości procesora GPU dla maszyn wirtualnych serii N z sy
 
 ## <a name="is-n-series-vms-available-in-my-region"></a>Czy maszyny wirtualne z serii N są dostępne w moim regionie?
 
-Dostępność można sprawdzić w obszarze [produkty dostępne według regionów](https://azure.microsoft.com/regions/services)i cenniku. [](https://azure.microsoft.com/pricing/details/virtual-machines/series/#n-series)
+Dostępność można sprawdzić w obszarze [produkty dostępne według regionów](https://azure.microsoft.com/regions/services) [i cenniku](https://azure.microsoft.com/pricing/details/virtual-machines/series/#n-series).
 
 ## <a name="i-am-not-able-to-see-vm-size-family-that-i-want-when-resizing-my-vm"></a>Nie mogę wyświetlić rodziny rozmiaru maszyny wirtualnej, którą chcę zmienić podczas zmieniania rozmiaru maszyny wirtualnej.
 

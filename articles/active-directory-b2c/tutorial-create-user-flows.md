@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 130186af13b9207326cd52b46b880c1f13a16100
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 3633ffb09d71bd166cb7366f860662d9b91c7f07
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67848091"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063398"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Samouczek: Tworzenie przepływów użytkowników w Azure Active Directory B2C
 
-W aplikacjach mogą istnieć przepływy [użytkowników](active-directory-b2c-reference-policies.md) , które umożliwiają użytkownikom rejestrowanie się, logowanie lub Zarządzanie profilem. W razie konieczności można utworzyć wiele przepływów użytkowników różnych typów w dzierżawie usługi Azure Active Directory (Azure AD) B2C i używać ich w aplikacjach. Przepływy użytkowników mogą być ponownie używane między aplikacjami.
+W aplikacjach mogą istnieć przepływy [użytkowników](active-directory-b2c-reference-policies.md) , które umożliwiają użytkownikom rejestrowanie się, logowanie lub Zarządzanie profilem. Możesz tworzyć wiele przepływów użytkowników różnych typów w dzierżawie Azure Active Directory B2C (Azure AD B2C) i używać ich w aplikacjach zgodnie z potrzebami. Przepływy użytkowników mogą być ponownie używane między aplikacjami.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
@@ -41,7 +41,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 Przepływ użytkowników rejestracji i logowania obsługuje zarówno środowisko tworzenia konta, jak i logowania przy użyciu jednej konfiguracji. Użytkownicy Twojej aplikacji nie wyłączają właściwej ścieżki w zależności od kontekstu.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera Twojej dzierżawy.
+1. Upewnij się, że używasz katalogu, który zawiera dzierżawę Azure AD B2C, wybierając pozycję **katalog i subskrypcja** w górnym menu i wybierając katalog zawierający dzierżawcę.
 
     ![Filtr katalogu i subskrypcji z wybraną dzierżawą B2C](./media/tutorial-create-user-flows/switch-directories.PNG)
 

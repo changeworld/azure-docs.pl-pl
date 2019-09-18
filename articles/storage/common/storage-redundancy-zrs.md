@@ -9,12 +9,12 @@ ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: f4e36edf86823453e663ed875c7d5e4ffdc2e524
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: f7639eb2807654aab38a4e849c2e58d77f15bc31
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016439"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036253"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>Magazyn strefowo nadmiarowy (ZRS) do tworzenia aplikacji usługi Azure Storage o wysokiej dostępności
 
@@ -22,11 +22,11 @@ ms.locfileid: "69016439"
 
 ## <a name="support-coverage-and-regional-availability"></a>Zakres pomocy technicznej i dostępność regionalna
 
-ZRS obecnie obsługuje standardowe typy kont ogólnego przeznaczenia w wersji 2. Aby uzyskać więcej informacji dotyczących typów kont magazynu, zobacz temat [Przegląd konta usługi Azure Storage](storage-account-overview.md).
+ZRS obecnie obsługuje typy kont magazynu ogólnego przeznaczenia w wersji 2 i FileStorage. Aby uzyskać więcej informacji dotyczących typów kont magazynu, zobacz temat [Przegląd konta usługi Azure Storage](storage-account-overview.md).
 
 ZRS jest dostępny dla blokowych obiektów blob, niedyskowych obiektów blob, plików, tabel i kolejek.
 
-ZRS jest ogólnie dostępna w następujących regionach:
+W przypadku kont ogólnego przeznaczenia w wersji 2 ZRS jest ogólnie dostępna w następujących regionach:
 
 - Azja Południowo-Wschodnia
 - Europa Zachodnia
@@ -38,6 +38,10 @@ ZRS jest ogólnie dostępna w następujących regionach:
 - Wschodnie stany USA
 - Wschodnie stany USA 2
 - Zachodnie stany USA 2
+
+W przypadku kont FileStorage ZRS jest ogólnie dostępna w następujących regionach:
+
+- Europa Zachodnia
 
 Firma Microsoft nadal włącza ZRS w dodatkowych regionach świadczenia usługi Azure. Sprawdź regularnie informacje o nowych regionach na stronie [aktualizacji usługi platformy Azure](https://azure.microsoft.com/updates/) .
 
@@ -64,6 +68,9 @@ Dostępne są dwie podstawowe opcje migracji do ZRS:
 
 - Ręcznie Kopiuj lub Przenieś dane do nowego konta ZRS z istniejącego konta.
 - Zażądaj migracji na żywo.
+
+> [!IMPORTANT]
+> Migracja na żywo nie jest obecnie obsługiwana dla udziałów plików w warstwie Premium. Obecnie obsługiwane są tylko ręczne kopiowanie lub przeniesienie danych.
 
 Jeśli konieczna jest migracja do pełnej daty, należy rozważyć przeprowadzenie ręcznej migracji. Migracja ręczna zapewnia większą elastyczność niż migracja na żywo. W przypadku ręcznej migracji masz kontrolę nad chronometrażem.
 
@@ -94,7 +101,7 @@ Możesz zażądać migracji na żywo za pomocą [portalu pomocy technicznej syst
 4. Określ następujące wartości w sekcji **problem** : 
     - **Ważność**: Pozostaw wartość domyślną.
     - **Typ problemu**: Wybierz pozycję **migracja danych**.
-    - **Kategoria**: Wybierz pozycję **Migruj do ZRS w regionie**.
+    - **Kategoria**: Wybierz pozycję **Migruj do ZRS**.
     - **Tytuł**: Wpisz opisowy tytuł, na przykład **ZRS**.
     - **Szczegóły**: Wpisz dodatkowe szczegóły w polu **szczegóły** , na przykład chcę przeprowadzić migrację do ZRS z [LRS, GRS] w \_ \_ regionie. 
 5. Wybierz opcję **Dalej**.
@@ -141,7 +148,7 @@ ZRS klasyczny jest dostępny tylko dla **blokowych obiektów BLOB** w ramach kon
 
 Aby ręcznie przeprowadzić migrację danych konta ZRS do lub z konta LRS, ZRS klasycznego, GRS lub RA-GRS, użyj jednego z następujących narzędzi: AzCopy, Eksplorator usługi Azure Storage, Azure PowerShell lub interfejs wiersza polecenia platformy Azure. Możesz również utworzyć własne rozwiązanie migracji przy użyciu jednej z bibliotek klienckich usługi Azure Storage.
 
-Możesz również uaktualnić swoje klasyczne konta ZRS do ZRS w portalu lub za pomocą Azure PowerShell lub interfejsu wiersza polecenia platformy Azure w regionach, w których ZRS jest dostępny. Aby uaktualnić do ZRS w Azure Portal, przejdź do sekcji **Konfiguracja** konta i wybierz pozycję Uaktualnij:
+Możesz również uaktualnić swoje klasyczne konta ZRS do ZRS w portalu lub za pomocą Azure PowerShell lub interfejsu wiersza polecenia platformy Azure w regionach, w których ZRS jest dostępny. Aby uaktualnić do ZRS w Azure Portal, przejdź do sekcji **Konfiguracja** konta i wybierz pozycję **Uaktualnij**:
 
 ![Uaktualnij ZRS klasyczne do ZRS w portalu](media/storage-redundancy-zrs/portal-zrs-classic-upgrade.png)
 

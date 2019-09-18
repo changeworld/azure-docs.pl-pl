@@ -10,16 +10,16 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 339b118e48a01469312a40e6b0652a4ffb90291a
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: ec6b667dfc554c037d9b0a56e52bc8f212812812
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347128"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064725"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>Samouczek: udzielanie dostępu do internetowego interfejsu API platformy ASP.NET przy użyciu usługi Azure Active Directory B2C
 
-W tym samouczku pokazano, jak wywoływać chroniony zasób internetowego interfejsu API w usłudze Azure Active Directory (Azure AD) B2C z aplikacji internetowej platformy ASP.NET.
+W tym samouczku przedstawiono sposób wywoływania chronionego zasobu internetowego interfejsu API w programie Azure Active Directory B2C (Azure AD B2C) z aplikacji sieci Web ASP.NET.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -40,7 +40,7 @@ Wykonaj kroki i spełnij wymagania wstępne w [Samouczku: włączanie uwierzytel
 Należy zarejestrować zasoby internetowego interfejsu API w dzierżawie, zanim będzie on mógł akceptować i odpowiadać na żądania chronionych zasobów wysyłane przez aplikacje klienckie przedstawiające token dostępu.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Upewnij się, że używasz katalogu zawierającego Twoją dzierżawę usługi Azure AD B2C, klikając pozycję **Filtr katalogu i subskrypcji** w górnym menu i wybierając katalog zawierający Twoją dzierżawę.
+2. Upewnij się, że używasz katalogu, który zawiera dzierżawę Azure AD B2C, wybierając pozycję **katalog i subskrypcja** w górnym menu i wybierając katalog zawierający dzierżawcę.
 3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 4. Wybierz pozycję **Aplikacje**, a następnie wybierz polecenie **Dodaj**.
 5. Wprowadź nazwę aplikacji. Na przykład *webapi1*.
@@ -89,7 +89,7 @@ Przykładowe rozwiązanie zawiera następujące dwa projekty:
 
 1. Otwórz rozwiązanie **B2C-WebAPI-DotNet** w programie Visual Studio.
 2. Otwórz plik **Web.config** w projekcie **TaskWebApp**.
-3. Aby uruchomić interfejs API lokalnie, użyj ustawienia „localhost” dla wartości **api:TaskServiceUrl**. Zmień plik Web.config w następujący sposób: 
+3. Aby uruchomić interfejs API lokalnie, użyj ustawienia „localhost” dla wartości **api:TaskServiceUrl**. Zmień plik Web.config w następujący sposób:
 
     ```csharp
     <add key="api:TaskServiceUrl" value="https://localhost:44332/"/>
@@ -133,16 +133,16 @@ Przykładowe rozwiązanie zawiera następujące dwa projekty:
 
 ## <a name="run-the-sample"></a>Uruchamianie aplikacji przykładowej
 
-Należy uruchomić zarówno projekt **TaskWebApp**, jak i **TaskService**. 
+Należy uruchomić zarówno projekt **TaskWebApp**, jak i **TaskService**.
 
-1. W Eksploratorze rozwiązań kliknij rozwiązanie prawym przyciskiem myszy i wybierz pozycję **Ustaw projekty startowe...** . 
+1. W Eksploratorze rozwiązań kliknij rozwiązanie prawym przyciskiem myszy i wybierz pozycję **Ustaw projekty startowe...** .
 2. Wybierz pozycję **Ustawianie wielu projektów startowych**.
 3. Zmień ustawienie **Akcja** dla obu projektów na wartość **Uruchom**.
 4. Kliknij pozycję **OK**, aby zapisać konfigurację.
 5. Naciśnij klawisz **F5**, aby uruchomić obie aplikacje. Każda aplikacja zostanie otwarta na własnej karcie przeglądarki. `https://localhost:44316/` to aplikacja internetowa.
     `https://localhost:44332/` to internetowy interfejs API.
 
-6. W aplikacji internetowej kliknij pozycję **rejestracja/logowanie**, aby zalogować się do aplikacji internetowej. Użyj konta, które zostało wcześniej utworzone. 
+6. W aplikacji internetowej kliknij pozycję **rejestracja/logowanie**, aby zalogować się do aplikacji internetowej. Użyj konta, które zostało wcześniej utworzone.
 7. Po zalogowaniu kliknij pozycję **Lista zadań do wykonania** i utwórz element listy zadań do wykonania.
 
 Podczas tworzenia elementu listy zadań do wykonania aplikacja internetowa wysyła żądanie do internetowego interfejsu API, aby wygenerować element listy zadań do wykonania. Chroniona aplikacja internetowa wywołuje chroniony internetowy interfejs API w dzierżawie usługi Azure AD B2C.

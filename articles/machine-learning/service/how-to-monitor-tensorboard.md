@@ -1,6 +1,6 @@
 ---
 title: Wizualizowanie eksperymentów za pomocą rozwiązania TensorBoard
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Uruchom TensorBoard, aby wizualizować historie uruchamiania eksperymentu i zidentyfikować potencjalne obszary do dostrajania parametrów i przeszkolenia.
 services: machine-learning
 ms.service: machine-learning
@@ -9,16 +9,16 @@ ms.topic: conceptual
 author: maxluk
 ms.author: maxluk
 ms.date: 06/28/2019
-ms.openlocfilehash: 2e4527ba167076935505b668a7879e5f1446b25e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b96b80a735c0caee8a3aabaf19b04fd0e153ba6b
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856068"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034330"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>Wizualizuj przebiegi eksperymentu i metryki za pomocą TensorBoard i Azure Machine Learning
 
-Ten artykuł zawiera informacje na temat sposobu wyświetlania przebiegów eksperymentu i metryk w programie TensorBoard przy użyciu [ `tensorboard` pakietu](https://docs.microsoft.com/python/api/azureml-tensorboard/?view=azure-ml-py) w głównym zestawie SDK usługi Azure Machine Learning. Po sprawdzeniu przebiegów eksperymentów możesz lepiej dostosowywać i ponownie szkolić modele uczenia maszynowego.
+Ten artykuł zawiera informacje na temat sposobu wyświetlania przebiegów eksperymentu i metryk w programie TensorBoard przy użyciu [ `tensorboard` pakietu](https://docs.microsoft.com/python/api/azureml-tensorboard/?view=azure-ml-py) w głównym zestawie SDK Azure Machine Learning. Po sprawdzeniu przebiegów eksperymentów możesz lepiej dostosowywać i ponownie szkolić modele uczenia maszynowego.
 
 [TensorBoard](https://www.tensorflow.org/tensorboard/r1/overview) to pakiet aplikacji sieci Web służący do sprawdzania i analizowania struktury eksperymentów oraz wydajności.
 
@@ -37,13 +37,13 @@ Sposób uruchamiania programu TensorBoard z Azure Machine Learning eksperymenty 
 
         * Wykonaj kroki z artykułu [Samouczek: Zainstaluj środowisko i obszar](tutorial-1st-experiment-sdk-setup.md) roboczy, aby utworzyć dedykowany serwer notesu wstępnie załadowany z zestawem SDK i przykładowym repozytorium.
 
-        * W folderze Samples na serwerze notesu Znajdź dwa ukończone i rozwinięte notesy, przechodząc do tego katalogu: How to- **use-azure > Training-with-Learning**-uczenie.
+        * W folderze Samples na serwerze notesu Znajdź dwa ukończone i rozwinięte notesy, przechodząc do tego katalogu: How to- **use-azure > Training-with-Learning-uczenie**.
         * Export-Run-History-to-Run-History. ipynb
         * tensorboard. ipynb
 
     * Własny serwer notesu Juptyer
           * [Zainstaluj zestaw SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) z `tensorboard` dodatkowymi
-          * [Utwórz obszar roboczy usługi Azure Machine Learning](how-to-manage-workspace.md).  
+          * [Utwórz obszar roboczy Azure Machine Learning](how-to-manage-workspace.md).  
           * [Utwórz plik konfiguracji obszaru roboczego](how-to-configure-environment.md#workspace).
   
 <a name="direct"></a>
@@ -51,7 +51,7 @@ Sposób uruchamiania programu TensorBoard z Azure Machine Learning eksperymenty 
 
 Ta opcja działa w przypadku eksperymentów, które natywnie wyprowadzają pliki dzienników TensorBoard, takie jak PyTorch, Łańcucher i eksperymenty TensorFlow. Jeśli nie jest to przypadek eksperymentu, zamiast tego użyj [ `export_to_tensorboard()` metody](#export) .
 
-Poniższy przykładowy kod używa eksperymentu [demonstracyjnego mnist ręcznie](https://raw.githubusercontent.com/tensorflow/tensorflow/r1.8/tensorflow/examples/tutorials/mnist/mnist_with_summaries.py) z repozytorium TensorFlow w zdalnym miejscu docelowym obliczeń Azure Machine Learning COMPUTE. Następnie pouczymy nasz model z niestandardowym [TensorFlow szacowaniaem](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)zestawu SDK, a następnie Zacznijmy TensorBoard z tego eksperymentu TensorFlow, czyli eksperymentu, który natywnie wyprowadza pliki zdarzeń.
+Poniższy przykładowy kod używa [eksperymentu demonstracyjnego mnist ręcznie](https://raw.githubusercontent.com/tensorflow/tensorflow/r1.8/tensorflow/examples/tutorials/mnist/mnist_with_summaries.py) z repozytorium TensorFlow w zdalnym miejscu docelowym obliczeń Azure Machine Learning COMPUTE. Następnie pouczymy nasz model z niestandardowym [TensorFlow szacowaniaem](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)zestawu SDK, a następnie Zacznijmy TensorBoard z tego eksperymentu TensorFlow, czyli eksperymentu, który natywnie wyprowadza pliki zdarzeń.
 
 ### <a name="set-experiment-name-and-create-project-folder"></a>Ustawianie nazwy eksperymentu i tworzenie folderu projektu
 
@@ -71,7 +71,7 @@ if not path.exists(exp_dir):
 
 ### <a name="download-tensorflow-demo-experiment-code"></a>Pobierz kod eksperymentu demonstracyjnego TensorFlow
 
-Repozytorium TensorFlow zawiera demonstrację MNIST ręcznie z obszerną Instrumentacją TensorBoard. Nie musimy zmieniać żadnego z tych demonstracji kodu, aby działała z usługą Azure Machine Learning. W poniższym kodzie pobieramy kod MNIST ręcznie i zapisujemy go w nowo utworzonym folderze eksperymentów.
+Repozytorium TensorFlow zawiera demonstrację MNIST ręcznie z obszerną Instrumentacją TensorBoard. Nie musimy zmieniać żadnego kodu demonstracyjnego, aby móc współpracować z Azure Machine Learning. W poniższym kodzie pobieramy kod MNIST ręcznie i zapisujemy go w nowo utworzonym folderze eksperymentów.
 
 ```python
 import requests
@@ -282,7 +282,7 @@ Gdy skończysz, pamiętaj, aby wywołać metodę [stop ()](https://docs.microsof
 tb.stop()
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono dwa eksperymenty i zapoznaj się z informacjami na temat sposobu uruchamiania TensorBoard na ich historie, aby identyfikować obszary umożliwiające dostosowanie i przeszkolenie. 
 

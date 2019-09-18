@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: 4554214b74b4d09fa40e355270208bebda4076b7
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: ca8e13e322c3e192b697248f1252b65f6cbeda7f
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775262"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037222"
 ---
 # <a name="add-storage"></a>Dodawanie magazynu
 
@@ -27,13 +27,15 @@ Możesz dodać cele magazynu podczas tworzenia pamięci podręcznej platformy Az
 
 Użyj karty **cele magazynu** Kreatora tworzenia pamięci podręcznej, aby zdefiniować magazyn w tym samym czasie, gdy tworzysz wystąpienie pamięci podręcznej.
 
-![zrzut ekranu strony miejsca docelowe magazynu](media/create-targets.png)
+![zrzut ekranu strony miejsca docelowe magazynu](media/hpc-cache-storage-targets-pop.png)
 
 Kliknij link **Dodaj miejsce docelowe magazynu** , aby dodać magazyn.
 
 ## <a name="add-storage-targets-from-the-cache"></a>Dodaj cele magazynu z pamięci podręcznej
 
 W Azure Portal Otwórz wystąpienie pamięci podręcznej, a następnie kliknij pozycję **cele magazynu** na lewym pasku bocznym. Na stronie miejsce docelowe magazynu są wyświetlane wszystkie istniejące elementy docelowe i nadające się do dodania linku.
+
+![zrzut ekranu przedstawiający link miejsca do magazynowania na pasku bocznym w obszarze Konfigurowanie nagłówka, który jest między ustawieniami nagłówków kategorii i monitorowaniem](media/hpc-cache-storage-targets-sidebar.png)
 
 ## <a name="add-a-new-azure-blob-storage-target"></a>Dodaj nowy element docelowy usługi Azure Blob Storage
 
@@ -52,15 +54,13 @@ Aby zdefiniować kontener obiektów blob platformy Azure, wprowadź te informacj
 
 * **Ścieżka do przestrzeni nazw wirtualnych** — umożliwia ustawienie ścieżki docelowej dla tego miejsca docelowego magazynu. Przeczytaj temat [Konfigurowanie zagregowanej przestrzeni nazw](hpc-cache-namespace.md) , aby dowiedzieć się więcej o funkcji wirtualnej przestrzeni nazw.
 
-<!--  The namespace path value must end with a slash (``/``) and should not start with one.  -->
-
 Po zakończeniu kliknij przycisk **OK** , aby dodać miejsce docelowe magazynu.
 
 ### <a name="add-the-access-control-roles-to-your-account"></a>Dodaj role kontroli dostępu do swojego konta
 
 Pamięć podręczna Azure HPC używa [kontroli dostępu opartej na rolach (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/index) do autoryzacji aplikacji pamięci podręcznej w celu uzyskania dostępu do konta magazynu dla obiektów docelowych usługi Azure Blob Storage.
 
-Właściciel konta magazynu musi jawnie dodać współautor [konta magazynu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) i [współautora danych obiektów blob magazynu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) dla użytkownika "StorageCache Resource Provider".
+Właściciel konta magazynu musi jawnie dodać rolę współautor danych [współautor konta magazynu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) i [obiektu blob magazynu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) dla użytkownika "StorageCache Resource Provider".
 
 Można to zrobić wcześniej lub przez kliknięcie linku na stronie, w którym można dodać obiekt docelowy magazynu obiektów BLOB.
 

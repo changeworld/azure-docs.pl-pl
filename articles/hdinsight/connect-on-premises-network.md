@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 1ed722ad68280226387b98b3fefb77647f5cd825
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: ad43af0f6f9bd8d5d78cef78b26345436169c0fd
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918526"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034130"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>Łączenie usługi HDInsight z siecią lokalną
 
@@ -40,7 +40,7 @@ Ta konfiguracja zapewnia następujące zachowanie:
 
 Na poniższym diagramie zielonymi wierszami są żądania dotyczące zasobów kończących się na sufiksie DNS sieci wirtualnej. Niebieskie linie to żądania dotyczące zasobów w sieci lokalnej lub w publicznym Internecie.
 
-![Diagram przedstawiający sposób, w jaki żądania DNS są rozwiązywane w konfiguracji używanej w tym dokumencie](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
+![Diagram przedstawiający sposób, w jaki żądania DNS są rozwiązywane w konfiguracji](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -96,7 +96,7 @@ Poniższe kroki służą do tworzenia maszyny wirtualnej platformy Azure przy u�
     |Subnet | Wybierz domyślną podsieć dla utworzonej wcześniej sieci wirtualnej. __Nie__ wybieraj podsieci używanej przez bramę sieci VPN.|
     |Publiczny adres IP | Użyj autowypełnianej wartości.  |
 
-    ![Ustawienia sieci wirtualnej](./media/connect-on-premises-network/virtual-network-settings.png)
+    ![Ustawienia sieci wirtualnej usługi HDInsight](./media/connect-on-premises-network/virtual-network-settings.png)
 
     Pozostaw inne wpisy z wartościami domyślnymi, a następnie wybierz pozycję **Recenzja + Utwórz**.
 

@@ -1,7 +1,7 @@
 ---
 title: Konfigurowanie środowiska deweloperskiego języka Python
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak skonfigurować środowisko programistyczne podczas pracy z usługą Azure Machine Learning. W tym artykule dowiesz się, jak używać środowisk Conda, tworzyć pliki konfiguracji i konfigurować własny serwer notesu oparty na chmurze, notesy Jupyter, Azure Databricks, środowisk IDE, edytory kodu i Data Science Virtual Machine.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak skonfigurować środowisko programistyczne podczas pracy z Azure Machine Learning. W tym artykule dowiesz się, jak używać środowisk Conda, tworzyć pliki konfiguracji i konfigurować własny serwer notesu oparty na chmurze, notesy Jupyter, Azure Databricks, środowisk IDE, edytory kodu i Data Science Virtual Machine.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,16 +11,16 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 39daff8be5ac072479463dc10c9041cda6b7b628
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 933ae5b70d8e0485360a94ede1fff99c02f75a4c
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860577"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034869"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning
 
-W tym artykule dowiesz się, jak skonfigurować środowisko deweloperskie do pracy z usługą Azure Machine Learning. Usługa Azure Machine Learning jest platformą niezależny od. Jedynym wymaganiem twardym dla środowiska programistycznego jest Python 3. Zalecane jest również środowisko izolowane, takie jak Anaconda lub virtualenv.
+W tym artykule dowiesz się, jak skonfigurować środowisko deweloperskie do pracy z Azure Machine Learning. Azure Machine Learning jest platformą niezależny od. Jedynym wymaganiem twardym dla środowiska programistycznego jest Python 3. Zalecane jest również środowisko izolowane, takie jak Anaconda lub virtualenv.
 
 W poniższej tabeli przedstawiono wszystkie środowiska deweloperskie omówione w tym artykule wraz z specjalistami i wadami.
 
@@ -40,7 +40,7 @@ Ten artykuł zawiera również dodatkowe wskazówki dotyczące użycia następuj
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Obszar roboczy usługi Azure Machine Learning. Aby utworzyć obszar roboczy, zobacz [Tworzenie obszaru roboczego usługi Azure Machine Learning](how-to-manage-workspace.md). Obszar roboczy to wszystko, co jest potrzebne, aby rozpocząć pracę z własnym [serwerem notesu opartym na chmurze](#notebookvm), [DSVM](#dsvm)lub [Azure Databricks](#aml-databricks).
+Obszar roboczy usługi Azure Machine Learning. Aby utworzyć obszar roboczy, zobacz [Tworzenie obszaru roboczego Azure Machine Learning](how-to-manage-workspace.md). Obszar roboczy to wszystko, co jest potrzebne, aby rozpocząć pracę z własnym [serwerem notesu opartym na chmurze](#notebookvm), [DSVM](#dsvm)lub [Azure Databricks](#aml-databricks).
 
 Aby zainstalować środowisko zestawu SDK dla [komputera lokalnego](#local), [Jupyter Notebook serwerze](#jupyter) lub [Visual Studio Code](#vscode) , potrzebne są również następujące elementy:
 
@@ -70,7 +70,7 @@ Maszyna wirtualna notesu to:
   + Wybór platform uczenia głębokiego
 
 
-  Jeśli używasz kodu, maszyna wirtualna zawiera samouczki i przykłady ułatwiające eksplorowanie i Dowiedz się, jak korzystać z usługi Azure Machine Learning. Przykładowe notesy są przechowywane na koncie usługi Azure Blob Storage obszaru roboczego, dzięki czemu są one możliwe do udostępnienia między maszynami wirtualnymi. Po uruchomieniu mają również dostęp do magazynów danych i zasobów obliczeniowych obszaru roboczego.
+  Jeśli używasz kodu, maszyna wirtualna zawiera samouczki i przykłady ułatwiające eksplorowanie i Dowiedz się, jak korzystać z Azure Machine Learning. Przykładowe notesy są przechowywane na koncie usługi Azure Blob Storage obszaru roboczego, dzięki czemu są one możliwe do udostępnienia między maszynami wirtualnymi. Po uruchomieniu mają również dostęp do magazynów danych i zasobów obliczeniowych obszaru roboczego.
 
 + **Prosta konfiguracja**: Utwórz ją w dowolnym momencie w obszarze roboczym Azure Machine Learning. Podaj tylko nazwę i określ typ maszyny wirtualnej platformy Azure. Wypróbuj teraz ten [samouczek: Zainstaluj środowisko i obszar](tutorial-1st-experiment-sdk-setup.md)roboczy.
 
@@ -145,7 +145,7 @@ Aby użyć DSVM jako środowiska deweloperskiego, wykonaj następujące czynnoś
     print(azureml.core.VERSION)
     ```
 
-1. Aby skonfigurować DSVM do korzystania z obszaru roboczego usługi Azure Machine Learning, zapoznaj się z sekcją [Tworzenie pliku konfiguracji obszaru roboczego](#workspace) .
+1. Aby skonfigurować DSVM do korzystania z obszaru roboczego Azure Machine Learning, zapoznaj się z sekcją [Tworzenie pliku konfiguracji obszaru roboczego](#workspace) .
 
 Aby uzyskać więcej informacji, zobacz [Virtual Machines analizy danych](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/).
 
@@ -255,7 +255,7 @@ Procedura opisana w sekcji [komputer lokalny](#local) instaluje niezbędne skła
     sys.path
     ```
     
-1. Aby skonfigurować Jupyter Notebook do korzystania z obszaru roboczego usługi Azure Machine Learning, przejdź do sekcji [Tworzenie pliku konfiguracji obszaru roboczego](#workspace) .
+1. Aby skonfigurować Jupyter Notebook do korzystania z obszaru roboczego Azure Machine Learning, przejdź do sekcji [Tworzenie pliku konfiguracji obszaru roboczego](#workspace) .
 
 
 ### <a id="vscode"></a>Program Visual Studio Code
@@ -287,7 +287,7 @@ Aby użyć Visual Studio Code do opracowania, wykonaj następujące czynności:
 ## <a name="azure-databricks"></a>Azure Databricks
 Azure Databricks jest środowiskiem opartym na Apache Spark w chmurze platformy Azure. Udostępnia środowisko współpracy oparte na notesach z procesorem CPU lub klastrem obliczeniowym opartym na procesorach GPU.
 
-Jak Azure Databricks współpracuje z usługą Azure Machine Learning:
+Jak Azure Databricks współpracuje z Azure Machine Learning:
 + Możesz nauczyć model przy użyciu platformy Spark MLlib i wdrożyć model do ACI/AKS z poziomu Azure Databricks.
 + Możesz również użyć funkcji [automatycznego uczenia maszynowego](concept-automated-ml.md) w specjalnym zestawie SDK usługi Azure ML z Azure Databricks.
 + Azure Databricks jako obiekt docelowy obliczeń można użyć z potoku [Azure Machine Learning](concept-ml-pipelines.md).
@@ -355,7 +355,7 @@ Wypróbuj:
 
 ## <a id="workspace"></a>Utwórz plik konfiguracji obszaru roboczego
 
-Plik konfiguracji obszaru roboczego to plik JSON, który informuje zestaw SDK, jak komunikować się z obszarem roboczym usługi Azure Machine Learning. Plik ma nazwę *config. JSON*i ma następujący format:
+Plik konfiguracji obszaru roboczego to plik JSON, który informuje zestaw SDK, jak komunikować się z obszarem roboczym Azure Machine Learning. Plik ma nazwę *config. JSON*i ma następujący format:
 
 ```json
 {

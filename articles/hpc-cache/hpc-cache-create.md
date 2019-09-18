@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: tutorial
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: 479adf9419cdd6b04e50fa479d47b56762b2bdc6
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: e1b69f17d964647944f23f4d16a0a1a5f112b60d
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70774686"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037037"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Tworzenie pamięci podręcznej platformy Azure HPC
 
@@ -21,7 +21,7 @@ Użyj Azure Portal, aby utworzyć pamięć podręczną.
 
 ## <a name="define-basic-details"></a>Definiuj podstawowe szczegóły
 
-![zrzut ekranu strony szczegółów projektu w Azure Portal](media/create-1.png)
+![zrzut ekranu strony szczegółów projektu w Azure Portal](media/hpc-cache-create-basics.png)
 
 W obszarze **szczegóły projektu**wybierz subskrypcję i grupę zasobów, która będzie hostować pamięć podręczną platformy Azure HPC. Upewnij się, że subskrypcja znajduje się na liście [dostęp do wersji zapoznawczej](hpc-cache-prereqs.md#azure-subscription) .
 
@@ -47,7 +47,7 @@ Należy pamiętać, że Rzeczywista szybkość transferu danych zależy od obci�
 
 W przypadku pamięci podręcznej Azure HPC pamięć podręczna zarządza, które pliki są buforowane i wstępnie załadowane, aby zmaksymalizować szybkość trafień pamięci podręcznej. Zawartość pamięci podręcznej jest stale oceniana i pliki są przenoszone do magazynu długoterminowego, gdy są one rzadziej używane. Wybierz rozmiar pamięci podręcznej, który może wygodnie przechowywać aktywny zestaw plików roboczych z dodatkowym miejscem dla metadanych i innych obciążeń.
 
-![zrzut ekranu strony zmiany wielkości pamięci podręcznej](media/create-cache-iops.png)
+![zrzut ekranu strony zmiany wielkości pamięci podręcznej](media/hpc-cache-create-iops.png)
 
 ## <a name="add-storage-targets"></a>Dodaj cele magazynu
 
@@ -55,19 +55,21 @@ Cele magazynu to zaplecze i długoterminowe przechowywanie zawartości pamięci 
 
 Można zdefiniować miejsca docelowe magazynu podczas tworzenia pamięci podręcznej, ale można je również dodać później za pomocą linku w sekcji **Konfigurowanie** strony pamięci podręcznej w portalu.
 
-![zrzut ekranu strony miejsca docelowe magazynu](media/create-targets.png)
+![zrzut ekranu strony miejsca docelowe magazynu](media/hpc-cache-storage-targets-pop.png)
 
 Kliknij **link Dodaj miejsce docelowe magazynu** , aby zdefiniować systemy przechowywania zaplecza. Magazynem mogą być kontenery obiektów blob platformy Azure lub lokalne systemy plików NFS.
 
 Można zdefiniować maksymalnie dziesięć różnych miejsc docelowych magazynu.
 
-Aby uzyskać instrukcje krok po kroku dotyczące dodawania miejsca docelowego magazynu, przeczytaj artykuł [Dodawanie magazynu](hpc-cache-add-storage.md). Procedura różni się w zależności od usługi BLOB Storage lub eksportu systemu plików NFS.
+Instrukcje krok po kroku dotyczące dodawania miejsca docelowego magazynu znajdują się w temacie [Dodawanie magazynu](hpc-cache-add-storage.md). Procedura różni się w zależności od usługi BLOB Storage lub eksportu systemu plików NFS.
 
-W przypadku obu typów magazynów należy określić, jak znaleźć system magazynowania zaplecza (adres NFS lub nazwę kontenera obiektów BLOB) oraz ścieżkę przestrzeni nazw dostępną dla klienta.
+Oto kilka porad: 
 
-Podczas tworzenia obiektu docelowego magazynu obiektów BLOB upewnij się, że pamięć podręczna ma uprawnienia dostępu do konta magazynu, zgodnie z opisem w temacie [Dodawanie ról kontroli dostępu](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account). Jeśli nie masz pewności, że konfiguracja roli zakończy się pomyślnie, najpierw utwórz pamięć podręczną, a następnie ponownie Dodaj magazyn obiektów BLOB.
+* W przypadku obu typów magazynów należy określić, jak znaleźć system magazynowania zaplecza (adres NFS lub nazwę kontenera obiektów BLOB) oraz ścieżkę przestrzeni nazw dostępną dla klienta.
 
-Podczas tworzenia miejsca docelowego magazynu NFS należy określić [model użycia](hpc-cache-add-storage.md#choose-a-usage-model). Ustawienie model użycia ułatwia optymalizację przepływu pracy w pamięci podręcznej.
+* Podczas tworzenia obiektu docelowego magazynu obiektów BLOB upewnij się, że pamięć podręczna ma uprawnienia dostępu do konta magazynu, zgodnie z opisem w temacie [Dodawanie ról kontroli dostępu](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account). Jeśli nie masz pewności, że konfiguracja roli zakończy się pomyślnie, najpierw utwórz pamięć podręczną, a następnie ponownie Dodaj magazyn obiektów BLOB.
+
+* Podczas tworzenia miejsca docelowego magazynu NFS należy określić [model użycia](hpc-cache-add-storage.md#choose-a-usage-model). Ustawienie model użycia ułatwia optymalizację przepływu pracy w pamięci podręcznej.
 
 ## <a name="add-resource-tags-optional"></a>Dodaj Tagi zasobów (opcjonalnie)
 
@@ -77,11 +79,13 @@ Na stronie **Tagi** można dodać [Tagi zasobów](https://go.microsoft.com/fwlin
 
 Po skonfigurowaniu nowej pamięci podręcznej kliknij kartę **Recenzja + tworzenie** . Portal sprawdza poprawność wybranych opcji i pozwala przejrzeć wybrane opcje. Jeśli wszystko jest poprawne, kliknij przycisk **Utwórz**. 
 
-Tworzenie pamięci podręcznej zajmie około 10 minut. Postęp można śledzić w panelu powiadomienia Azure Portal. Po zakończeniu zostanie wyświetlone powiadomienie z linkiem do nowego wystąpienia pamięci podręcznej platformy Azure HPC. 
+Tworzenie pamięci podręcznej zajmie około 10 minut. Postęp można śledzić w panelu powiadomienia Azure Portal. 
 
-Pamięć podręczna jest również widoczna na liście **zasobów** subskrypcji. 
+![zrzut ekranu przedstawiający tworzenie stron "wdrażanie" i "powiadomienia" w portalu](media/hpc-cache-deploy-status.png)
 
-![zrzut ekranu wystąpienia pamięci podręcznej platformy Azure HPC w Azure Portal](media/finished-hpc-cache.png)
+Po zakończeniu tworzenia zostanie wyświetlone powiadomienie z linkiem do nowego wystąpienia usługi Azure HPC cache, a pamięć podręczna zostanie wyświetlona na liście **zasobów** subskrypcji. 
+
+![zrzut ekranu wystąpienia pamięci podręcznej platformy Azure HPC w Azure Portal](media/hpc-cache-new-overview.png)
 
 ## <a name="next-steps"></a>Następne kroki
 

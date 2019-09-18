@@ -1,7 +1,7 @@
 ---
 title: Jak wdrażać modele w usłudze Azure Kubernetes Service
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak wdrożyć modele usług Azure Machine Learning jako usługę sieci Web przy użyciu usługi Azure Kubernetes Service.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak wdrożyć modele Azure Machine Learning jako usługę sieci Web przy użyciu usługi Azure Kubernetes Service.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: 302fad84a2f0443fb639e57d7bb0cfddef4c3443
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: c32560f7bb182ac347e9e5a71b53b57cf80fac38
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858730"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034624"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Wdrażanie modelu w klastrze usługi Azure Kubernetes Service
 
-Dowiedz się, jak za pomocą usługi Azure Machine Learning wdrożyć model jako usługę sieci Web w usłudze Azure Kubernetes Service (AKS). Usługa Azure Kubernetes Service jest dobra w przypadku dużych wdrożeń produkcyjnych. Użyj usługi Azure Kubernetes Service, jeśli potrzebujesz co najmniej jednej z następujących możliwości:
+Dowiedz się, jak za pomocą Azure Machine Learning wdrożyć model jako usługę sieci Web w usłudze Azure Kubernetes Service (AKS). Usługa Azure Kubernetes Service jest dobra w przypadku dużych wdrożeń produkcyjnych. Użyj usługi Azure Kubernetes Service, jeśli potrzebujesz co najmniej jednej z następujących możliwości:
 
 - __Krótki czas odpowiedzi__.
 - __Skalowanie__ automatyczne wdrożonej usługi.
@@ -30,15 +30,15 @@ Dowiedz się, jak za pomocą usługi Azure Machine Learning wdrożyć model jako
 
 Podczas wdrażania w usłudze Azure Kubernetes należy wdrożyć klaster AKS, który jest __połączony z obszarem roboczym__. Istnieją dwa sposoby łączenia klastra AKS z obszarem roboczym:
 
-* Utwórz klaster AKS przy użyciu zestawu SDK usługi Azure Machine Learning, interfejsu wiersza polecenia Machine Learning, strony docelowej [Azure Portal](https://portal.azure.com) lub [obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com). Ten proces automatycznie łączy klaster z obszarem roboczym.
-* Dołącz istniejący klaster AKS do obszaru roboczego usługi Azure Machine Learning. Klaster może być dołączany przy użyciu zestawu SDK usługi Azure Machine Learning, Machine Learning interfejsu wiersza polecenia lub Azure Portal.
+* Utwórz klaster AKS przy użyciu zestawu SDK Azure Machine Learning, interfejsu wiersza polecenia Machine Learning, strony docelowej [Azure Portal](https://portal.azure.com) lub [obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com). Ten proces automatycznie łączy klaster z obszarem roboczym.
+* Dołącz istniejący klaster AKS do obszaru roboczego Azure Machine Learning. Klaster może być dołączany przy użyciu zestawu SDK Azure Machine Learning, Machine Learning interfejsu wiersza polecenia lub Azure Portal.
 
 > [!IMPORTANT]
 > Proces tworzenia lub załączników to zadanie jednorazowe. Gdy klaster AKS jest połączony z obszarem roboczym, można go użyć do wdrożeń. Możesz odłączyć lub usunąć klaster AKS, jeśli nie jest już potrzebny. Po detatched lub usunięciu nie będzie już można wdrażać w klastrze.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Obszar roboczy usługi Azure Machine Learning. Aby uzyskać więcej informacji, zobacz [Tworzenie obszaru roboczego usługi Azure Machine Learning](how-to-manage-workspace.md).
+- Obszar roboczy usługi Azure Machine Learning. Aby uzyskać więcej informacji, zobacz [Tworzenie obszaru roboczego Azure Machine Learning](how-to-manage-workspace.md).
 
 - Model uczenia maszynowego zarejestrowany w obszarze roboczym. Jeśli nie masz zarejestrowanego modelu, zapoznaj [się z tematem jak i gdzie wdrażać modele](how-to-deploy-and-where.md).
 
@@ -117,7 +117,7 @@ Aby uzyskać więcej informacji, zobacz [AZ ml computetarget Create pyta](https:
 Jeśli masz już klaster AKS w ramach subskrypcji platformy Azure i jest to wersja 1.12. # #, możesz użyć jej do wdrożenia obrazu.
 
 > [!TIP]
-> Istniejący klaster AKS może znajdować się w regionie platformy Azure niż obszar roboczy usługi Azure Machine Learning.
+> Istniejący klaster AKS może znajdować się w regionie świadczenia usługi Azure niż obszar roboczy Azure Machine Learning.
 >
 > Jeśli chcesz zabezpieczyć klaster AKS przy użyciu Virtual Network platformy Azure, musisz najpierw utworzyć sieć wirtualną. Aby uzyskać więcej informacji, zobacz temat [bezpieczne eksperymentowanie i wnioskowanie za pomocą usługi Azure Virtual Network](how-to-enable-virtual-network.md#aksvnet).
 
@@ -220,7 +220,7 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 Aby uzyskać więcej informacji, zobacz [AZ ml model Deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) Reference. 
 
-### <a name="using-vs-code"></a>Używanie VS Code
+### <a name="using-vs-code"></a>Korzystanie z programu VS Code
 
 Aby uzyskać informacje na temat korzystania z VS Code, zobacz [wdrażanie do AKS za pomocą rozszerzenia vs Code](how-to-vscode-tools.md#deploy-and-manage-models).
 

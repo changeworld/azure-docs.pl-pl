@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 751d5b47006f5c99a747503ad4f052b3e03a043c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 8ad2bdd0f12abad08515f0314b9c03cc971127cb
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882433"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059216"
 ---
 # <a name="analyze-apache-hadoop-logs-in-azure-hdinsight"></a>Analizowanie dzienników Apache Hadoop w usłudze Azure HDInsight
 
@@ -89,7 +89,7 @@ Teraz można użyć programu Excel do filtrowania i sortowania według potrzeb. 
 3. W programie **Cloud Explorer**wybierz pozycję **typy zasobów**.  Druga dostępna opcja to **grupy zasobów**.
 4. Rozwiń węzeł **konta magazynu**, domyślne konto magazynu dla klastra, a następnie wybierz pozycję **tabele**.
 5. Kliknij dwukrotnie pozycję **hadoopservicelog**.
-6. Dodaj filtr. Na przykład:
+6. Dodaj filtr. Przykład:
    
         TraceLevel eq 'ERROR'
    
@@ -110,7 +110,7 @@ Aby uzyskać więcej informacji o dziennikach aplikacji, zobacz [upraszczanie dz
 ### <a name="access-the-ambari-ui"></a>Dostęp do interfejsu użytkownika Ambari
 W Azure Portal kliknij nazwę klastra usługi HDInsight, aby otworzyć okienko klaster. W okienku klaster kliknij pozycję **pulpit nawigacyjny**.
 
-![Uruchom pulpit nawigacyjny klastra](./media/apache-hadoop-debug-jobs/hdi-debug-launch-dashboard.png)
+![Pulpit nawigacyjny uruchamiania klastra usługi HDInsight](./media/apache-hadoop-debug-jobs/hdi-debug-launch-dashboard.png)
 
 
 ### <a name="access-the-yarn-ui"></a>Dostęp do interfejsu użytkownika przędzy
@@ -120,7 +120,7 @@ Za pomocą interfejsu użytkownika PRZĘDZy można wykonać następujące czynno
 
 * **Pobieranie stanu klastra**. W okienku po lewej stronie rozwiń węzeł **klaster**, a następnie kliknij pozycję **informacje**. To obecne Szczegóły stanu klastra, takie jak całkowita przypisana pamięć, używane rdzenie, stan Menedżera zasobów klastra, wersja klastra i tak dalej.
   
-    ![Uruchom przędzę pulpitu nawigacyjnego klastra](./media/apache-hadoop-debug-jobs/hdi-debug-yarn-cluster-state.png "Uruchom przędzę pulpitu nawigacyjnego klastra")
+    ![Przędza pulpitu nawigacyjnego klastra uruchamiania usługi HDInsight](./media/apache-hadoop-debug-jobs/hdi-debug-yarn-cluster-state.png "Przędza pulpitu nawigacyjnego klastra uruchamiania usługi HDInsight")
 * **Pobierz stan węzła**. W okienku po lewej stronie rozwiń węzeł **klaster**, a następnie kliknij pozycję **węzły**. Spowoduje to wyświetlenie listy wszystkich węzłów w klastrze, adres HTTP każdego węzła, zasoby przydzielono do każdego węzła itd.
 * **Monitorowanie stanu zadania**. W okienku po lewej stronie rozwiń węzeł **klaster**, a następnie kliknij pozycję **aplikacje** , aby wyświetlić listę wszystkich zadań w klastrze. Jeśli chcesz przejrzeć zadania w określonym stanie (na przykład nowe, przesłane, uruchomione itp.), kliknij odpowiednie łącze w obszarze **aplikacje**. Możesz również kliknąć nazwę zadania, aby dowiedzieć się więcej na temat zadania, takiego jak dane wyjściowe, dzienniki itp.
 

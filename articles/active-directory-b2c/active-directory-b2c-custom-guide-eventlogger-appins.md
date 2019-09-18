@@ -10,18 +10,18 @@ ms.workload: identity
 ms.date: 10/12/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e18157c95dac0de90c50b4b7e8591e32c5b76aaf
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: c02757fb4b48ebf1220a5826bc9699741faa5170
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227228"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066185"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Śledzenie zachowania użytkowników w Azure Active Directory B2C przy użyciu Application Insights
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Gdy używasz usługi Azure Active Directory (Azure AD) B2C razem z usługą Azure Application Insights, możesz uzyskać szczegółowe i dostosowane dzienniki zdarzeń dla podróży użytkownika. W tym artykule omówiono sposób wykonywania następujących zadań:
+W przypadku korzystania z Azure Active Directory B2C (Azure AD B2C) razem z usługą Azure Application Insights można uzyskać szczegółowe i dostosowane dzienniki zdarzeń dla podróży użytkownika. W tym artykule omówiono sposób wykonywania następujących zadań:
 
 * Uzyskaj wgląd w zachowania użytkowników.
 * Rozwiązywanie problemów z własnymi zasadami w programowaniu lub w środowisku produkcyjnym.
@@ -45,7 +45,7 @@ Wykonaj kroki opisane w temacie Wprowadzenie [do zasad niestandardowych](active-
 Jeśli używasz Application Insights z Azure AD B2C, wystarczy utworzyć zasób i uzyskać klucz Instrumentacji.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
-2. Upewnij się, że używasz katalogu, który zawiera subskrypcję platformy Azure, a następnie kliknij pozycję **katalog i subskrypcja** w górnym menu i wybierz katalog, który zawiera subskrypcję. Ta dzierżawa nie jest dzierżawą Azure AD B2C.
+2. Upewnij się, że używasz katalogu, który zawiera subskrypcję platformy Azure, wybierając filtr **katalog + subskrypcja** w górnym menu i wybierając katalog zawierający twoją subskrypcję. Ta dzierżawa nie jest dzierżawą Azure AD B2C.
 3. Wybierz pozycję **Utwórz zasób** w lewym górnym rogu Azure Portal, a następnie wyszukaj i wybierz pozycję **Application Insights**.
 4. Kliknij przycisk **Utwórz**.
 5. Wprowadź **nazwę** zasobu.
@@ -111,10 +111,10 @@ Profile techniczne mogą być uznawane za funkcje w środowisku tożsamości Azu
 
 | Profil techniczny | Zadanie |
 | ----------------- | -----|
-| AzureInsights-Common | Tworzy wspólny zestaw parametrów do uwzględnienia we wszystkich profilach technicznych AzureInsights. | 
-| AzureInsights-SignInRequest | Tworzy zdarzenie logowania przy użyciu zestawu oświadczeń po odebraniu żądania logowania. | 
-| AzureInsights-UserSignup | Tworzy zdarzenie UserSignup, gdy użytkownik wyzwala opcję tworzenia konta w podróży/logowaniu. | 
-| AzureInsights-SignInComplete | Rejestruje pomyślne zakończenie uwierzytelniania po wysłaniu tokenu do aplikacji jednostki uzależnionej. | 
+| AzureInsights-Common | Tworzy wspólny zestaw parametrów do uwzględnienia we wszystkich profilach technicznych AzureInsights. |
+| AzureInsights-SignInRequest | Tworzy zdarzenie logowania przy użyciu zestawu oświadczeń po odebraniu żądania logowania. |
+| AzureInsights-UserSignup | Tworzy zdarzenie UserSignup, gdy użytkownik wyzwala opcję tworzenia konta w podróży/logowaniu. |
+| AzureInsights-SignInComplete | Rejestruje pomyślne zakończenie uwierzytelniania po wysłaniu tokenu do aplikacji jednostki uzależnionej. |
 
 Dodaj profile do pliku *TrustFrameworkExtensions. XML* z pakietu początkowego. Dodaj te elementy do elementu **ClaimsProviders** :
 
@@ -230,11 +230,11 @@ Zapisz i Przekaż plik *TrustFrameworkExtensions. XML* . Następnie należy wywo
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dodawanie typów i zdarzeń roszczeń do podróży użytkownika w celu dopasowania do Twoich potrzeb. Można użyć [resolverów oświadczeń](claim-resolver-overview.md) lub dowolnego typu oświadczenia ciągu, dodać oświadczenia poprzez dodanie elementu **oświadczenia wejściowego** do zdarzenia Application Insights lub do profilu technicznego AzureInsights-Common. 
+Dodawanie typów i zdarzeń roszczeń do podróży użytkownika w celu dopasowania do Twoich potrzeb. Można użyć [resolverów oświadczeń](claim-resolver-overview.md) lub dowolnego typu oświadczenia ciągu, dodać oświadczenia poprzez dodanie elementu **oświadczenia wejściowego** do zdarzenia Application Insights lub do profilu technicznego AzureInsights-Common.
 
 - **ClaimTypeReferenceId** jest odwołaniem do typu zgłoszenia.
-- **PartnerClaimType** to nazwa właściwości, która pojawia się w usłudze Azure Insights. Użyj składni `{property:NAME}`, gdzie `NAME` jest dodawana właściwość do zdarzenia. 
-- **Właściwość DefaultValue** używa dowolnej wartości ciągu lub mechanizmu rozwiązywania konfliktów. 
+- **PartnerClaimType** to nazwa właściwości, która pojawia się w usłudze Azure Insights. Użyj składni `{property:NAME}`, gdzie `NAME` jest dodawana właściwość do zdarzenia.
+- **Właściwość DefaultValue** używa dowolnej wartości ciągu lub mechanizmu rozwiązywania konfliktów.
 
 ```XML
 <InputClaim ClaimTypeReferenceId="app_session" PartnerClaimType="{property:app_session}" DefaultValue="{OAUTH-KV:app_session}" />

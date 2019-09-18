@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 3ff9a694dca0d2a205c27569a7c744f482b662ec
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3e954a6c714e525e5bbefe8f62c798cf8ac9a517
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100654"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036382"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurowanie SQL Server wystąpienia klastra trybu failover na platformie Azure Virtual Machines
 
@@ -177,7 +177,7 @@ Po spełnieniu tych wymagań wstępnych można kontynuować tworzenie klastra tr
    | Cel | TCP Port | Uwagi
    | ------ | ------ | ------
    | SQL Server | 1433 | Normalny port dla domyślnych wystąpień SQL Server. Jeśli obraz został użyty z galerii, ten port zostanie automatycznie otwarty.
-   | Sonda kondycji | 59999 | Dowolny otwarty port TCP. W późniejszym kroku należy skonfigurować sondę kondycji [](#probe) modułu równoważenia obciążenia oraz klaster, aby używać tego portu.  
+   | Sonda kondycji | 59999 | Dowolny otwarty port TCP. W późniejszym kroku należy skonfigurować [sondę kondycji](#probe) modułu równoważenia obciążenia oraz klaster, aby używać tego portu.  
 
 1. Dodaj magazyn do maszyny wirtualnej. Aby uzyskać szczegółowe informacje, zobacz [Dodawanie magazynu](../disks-types.md).
 
@@ -215,7 +215,7 @@ Następnym krokiem jest skonfigurowanie klastra trybu failover za pomocą funkcj
 
    Aby zainstalować funkcję Klaster trybu failover z interfejsu użytkownika, wykonaj następujące czynności na obu maszynach wirtualnych.
    - W **Menedżer serwera**kliknij pozycję **Zarządzaj**, a następnie kliknij pozycję **Dodaj role i funkcje**.
-   - W **Kreatorze dodawania ról i funkcji**kliknij przycisk **dalej** , aż wybierzesz **pozycję funkcje**.
+   - W **Kreatorze dodawania ról i funkcji**kliknij przycisk **dalej** , aż **wybierzesz pozycję funkcje**.
    - W obszarze **Wybieranie funkcji**kliknij pozycję **klaster trybu failover**. Dołącz wszystkie wymagane funkcje i narzędzia do zarządzania. Kliknij pozycję **Dodaj funkcje**.
    - Kliknij przycisk **dalej** , a następnie kliknij przycisk **Zakończ** , aby zainstalować funkcje.
 
@@ -267,11 +267,22 @@ Aby utworzyć klaster trybu failover, potrzebne są:
 - Nazwa klastra trybu failover
 - Adres IP klastra trybu failover. Można użyć adresu IP, który nie jest używany w tej samej sieci wirtualnej platformy Azure i podsieci co węzły klastra.
 
-Poniższy program PowerShell tworzy klaster trybu failover. Zaktualizuj skrypt przy użyciu nazw węzłów (nazw maszyn wirtualnych) i dostępnego adresu IP z sieci wirtualnej platformy Azure:
+#### <a name="windows-server-2008-2016"></a>System Windows Server 2008-2016
+
+Poniższy program PowerShell tworzy klaster trybu failover dla **systemu Windows Server 2008-2016**. Zaktualizuj skrypt przy użyciu nazw węzłów (nazw maszyn wirtualnych) i dostępnego adresu IP z sieci wirtualnej platformy Azure:
 
 ```powershell
 New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage
 ```   
+
+#### <a name="windows-server-2019"></a>Windows Server 2019
+
+Poniższy program PowerShell tworzy klaster trybu failover dla systemu Windows Server 2019.  Aby uzyskać więcej informacji, zapoznaj [się z klastrem trybu failover w blogu: Obiekt](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97)sieci klastra.  Zaktualizuj skrypt przy użyciu nazw węzłów (nazw maszyn wirtualnych) i dostępnego adresu IP z sieci wirtualnej platformy Azure:
+
+```powershell
+New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage -ManagementPointNetworkType Singleton 
+```
+
 
 ### <a name="create-a-cloud-witness"></a>Utwórz monitor w chmurze
 
@@ -394,7 +405,7 @@ Aby utworzyć moduł równoważenia obciążenia:
 
 1. Kliknij pozycję **+ Dodaj**.
 
-1. W bloku **Dodawanie sondy** kondycji <a name="probe"> </a>ustaw parametry sondy kondycji:
+1. W bloku **Dodawanie sondy kondycji** <a name="probe"> </a>ustaw parametry sondy kondycji:
 
    - **Nazwa**: Nazwa sondy kondycji.
    - **Protokół**: TCP.

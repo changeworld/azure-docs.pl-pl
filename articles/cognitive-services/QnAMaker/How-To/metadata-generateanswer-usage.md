@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: diberry
-ms.openlocfilehash: 18b901b429ee675726ef0e36535f1f97f4cdd076
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: c52455d69d027ff8802ef082453a3faaeee54743
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543001"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066725"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Uzyskaj odpowiedź przy użyciu interfejsu API GenerateAnswer i metadanych
 
@@ -129,12 +129,15 @@ using Microsoft.Bot.Builder.AI.QnA;
 var metadata = new Microsoft.Bot.Builder.AI.QnA.Metadata();
 var qnaOptions = new QnAMakerOptions();
 
+metadata.Name = Constants.MetadataName.Intent;
+metadata.Value = topIntent;
+qnaOptions.StrictFilters = new Microsoft.Bot.Builder.AI.QnA.Metadata[] { metadata };
 qnaOptions.Top = Constants.DefaultTop;
 qnaOptions.ScoreThreshold = 0.3F;
 var response = await _services.QnAServices[QnAMakerKey].GetAnswersAsync(turnContext, qnaOptions);
 ```
 
-Przykładem pomocy technicznej [](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-support/csharp_dotnetcore/Service/SupportBotService.cs#L418) bot jest ten kod.
+[Przykładem](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-support/csharp_dotnetcore/Service/SupportBotService.cs#L418) pomocy technicznej bot jest ten kod.
 
 ## <a name="use-qna-maker-with-a-bot-in-nodejs"></a>Używanie QnA Maker z bot w języku Node. js
 
@@ -152,7 +155,7 @@ var qnaMakerOptions = {
 var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOptions);
 ```
 
-Przykładem pomocy technicznej [](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-activelearning/javascript_nodejs/Helpers/dialogHelper.js#L36) bot jest ten kod.
+[Przykładem](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-activelearning/javascript_nodejs/Helpers/dialogHelper.js#L36) pomocy technicznej bot jest ten kod.
 
 <a name="metadata-example"></a>
 
@@ -243,7 +246,7 @@ Możesz przeszukiwać opublikowaną KB, używając `isTest=false`lub test KB prz
 
 ## <a name="next-steps"></a>Następne kroki
 
-Strona **Publikowanie** zawiera również informacje umożliwiające wygenerowanie odpowiedzi przy użyciu [](../Quickstarts/get-answer-from-kb-using-postman.md) elementu Poster i [zwinięcie](../Quickstarts/get-answer-from-kb-using-curl.md). 
+Strona **Publikowanie** zawiera również informacje umożliwiające wygenerowanie odpowiedzi przy użyciu elementu [Poster](../Quickstarts/get-answer-from-kb-using-postman.md) i [zwinięcie](../Quickstarts/get-answer-from-kb-using-curl.md). 
 
 > [!div class="nextstepaction"]
 > [Tworzenie bazy wiedzy](./create-knowledge-base.md)

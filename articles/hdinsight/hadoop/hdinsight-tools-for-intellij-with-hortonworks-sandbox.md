@@ -1,7 +1,7 @@
 ---
-title: Użyj zestaw narzędzi platformy Azure dla środowiska IntelliJ z Piaskownicą Hortonworks
-description: Dowiedz się, jak używać narzędzi HDInsight w zestaw narzędzi platformy Azure dla środowiska IntelliJ z Piaskownicą Hortonworks.
-keywords: narzędzia hadoop hive zapytania, intellij, piaskownicą hortonworks, zestaw narzędzi platformy azure dla środowiska intellij
+title: Używanie Azure Toolkit for IntelliJ z piaskownicą Hortonworks
+description: Dowiedz się, jak używać narzędzi HDInsight w Azure Toolkit for IntelliJ z piaskownicą Hortonworks.
+keywords: narzędzia Hadoop, zapytanie Hive, IntelliJ, Piaskownica Hortonworks, zestaw narzędzi platformy Azure dla IntelliJ
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,74 +9,74 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5234835f5fbfd5617e6b0440ff38fa900051470a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 783d7fc8bc26ce2c715c774e63ecf60c5b75a439
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450121"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076260"
 ---
-# <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Korzystaj z narzędzi HDInsight dla programu IntelliJ z Piaskownicą Hortonworks
+# <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Korzystanie z narzędzi HDInsight Tools for IntelliJ z piaskownicą Hortonworks
 
-Dowiedz się, jak narzędzia HDInsight Tools for IntelliJ umożliwia tworzenie aplikacji Apache Scala, a następnie przetestować aplikacje na [Piaskownicą Hortonworks](https://hortonworks.com/products/sandbox/) uruchomionych na danym komputerze. 
+Dowiedz się, jak tworzyć aplikacje Apache Scala przy użyciu narzędzi HDInsight Tools for IntelliJ, a następnie testować aplikacje na [Hortonworks piaskownicy](https://hortonworks.com/products/sandbox/) działającej na komputerze. 
 
-[IntelliJ IDEA](https://www.jetbrains.com/idea/) jest Java zintegrowanego środowiska programistycznego (IDE) do tworzenia oprogramowania. Po tworzenia i testowania swoich aplikacji na Piaskownicą Hortonworks, można przenieść aplikacje [Azure HDInsight](apache-hadoop-introduction.md).
+[Pomysł IntelliJ](https://www.jetbrains.com/idea/) to zintegrowane środowisko programistyczne (IDE) języka Java przeznaczone do tworzenia oprogramowania komputerowego. Po opracowaniu i przetestowaniu aplikacji w piaskownicy Hortonworks możesz przenieść aplikacje do [usługi Azure HDInsight](apache-hadoop-introduction.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed przystąpieniem do wykonywania w tym artykule, musi mieć następujące elementy:
+Przed rozpoczęciem pracy z tym artykułem należy dysponować następującymi elementami:
 
-- Hortonworks Data Platform (HDP) 2.4 na Piaskownicą Hortonworks uruchomiony na komputerze lokalnym. Aby skonfigurować HDP, zobacz [wprowadzenie do ekosystemu Apache Hadoop z piaskownicy usługi Hadoop na maszynie wirtualnej](apache-hadoop-emulator-get-started.md). 
+- Hortonworks Data Platform (HDP) 2,4 w piaskownicy Hortonworks działającej na komputerze lokalnym. Aby skonfigurować HDP, zobacz [wprowadzenie do ekosystemu Apache Hadoop przy użyciu piaskownicy usługi Hadoop na maszynie wirtualnej](apache-hadoop-emulator-get-started.md). 
     > [!NOTE]
-    > Narzędzia HDInsight Tools for IntelliJ zostało przetestowane tylko w przypadku HDP 2.4. Aby uzyskać HDP 2.4, rozwiń węzeł **archiwum piaskownica Hortonworks** na [witryny pobierania plików Piaskownicą Hortonworks](https://hortonworks.com/downloads/#sandbox).
+    > Narzędzia HDInsight Tools for IntelliJ zostały przetestowane tylko z HDP 2,4. Aby uzyskać HDP 2,4, rozwiń węzeł **archiwum piaskownicy Hortonworks** w [witrynie plików piaskownicy Hortonworks](https://hortonworks.com/downloads/#sandbox).
 
-- [Java Developer Kit (JDK) w wersji 1.8 lub nowszej](https://aka.ms/azure-jdks). Zestaw narzędzi platformy Azure dla środowiska IntelliJ wymaga zestawu JDK.
+- [Zestaw Java developer Kit (JDK) w wersji 1,8 lub nowszej](https://aka.ms/azure-jdks). Azure Toolkit for IntelliJ wymaga JDK.
 
-- [Wersja community środowiska IntelliJ IDEA](https://www.jetbrains.com/idea/download) z [Scala](https://plugins.jetbrains.com/idea/plugin/1347-scala) wtyczki i [Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij) wtyczki. Narzędzia HDInsight Tools for IntelliJ jest dostępna w ramach zestawu narzędzi platformy Azure dla środowiska IntelliJ. 
+- [INTELLIJ pomysł Community Edition](https://www.jetbrains.com/idea/download) z wtyczką [Scala](https://plugins.jetbrains.com/idea/plugin/1347-scala) i wtyczką [Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij) . Narzędzia HDInsight Tools for IntelliJ są dostępne w ramach Azure Toolkit for IntelliJ. 
 
-Aby zainstalować wtyczkę:
+Aby zainstalować wtyczki:
 
   1. Otwórz środowisko IntelliJ IDEA.
-  2. Na **powitalnej** wybierz opcję **Konfiguruj**, a następnie wybierz pozycję **wtyczek**.
-  3. W lewym dolnym rogu, wybierz **JetBrains Zainstaluj wtyczkę**.
-  4. Użyj funkcji wyszukiwania, aby wyszukać **Scala**, a następnie wybierz pozycję **zainstalować**.
-  5. Aby ukończyć instalację, wybierz pozycję **ponownego uruchomienia rozwiązania IntelliJ IDEA**.
-  6. Powtórz kroki 4 i 5, aby zainstalować **Azure Toolkit for IntelliJ**. Aby uzyskać więcej informacji, zobacz [zainstalować Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/azure-toolkit-for-intellij-installation).
+  2. Na stronie **powitalnej** wybierz pozycję **Konfiguruj**, a następnie wybierz pozycję **wtyczki**.
+  3. W lewym dolnym rogu wybierz pozycję **Zainstaluj wtyczkę JetBrains**.
+  4. Użyj funkcji wyszukiwania, aby wyszukać **Scala**, a następnie wybierz pozycję **Zainstaluj**.
+  5. Aby ukończyć instalację, wybierz pozycję **Uruchom ponownie INTELLIJ pomysł**.
+  6. Powtórz kroki 4 i 5, aby zainstalować **Azure Toolkit for IntelliJ**. Aby uzyskać więcej informacji, zobacz [Install Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/azure-toolkit-for-intellij-installation).
 
-## <a name="create-an-apache-spark-scala-application"></a>Tworzenie aplikacji Apache Spark Scala
+## <a name="create-an-apache-spark-scala-application"></a>Tworzenie Apache Spark aplikacji Scala
 
-W tej sekcji utworzysz przykładowy projekt Scala przy użyciu rozwiązania IntelliJ IDEA. W następnej sekcji opisano łączenie IntelliJ IDEA z Piaskownicą Hortonworks (emulatora) przed przesłaniem projektu.
+W tej sekcji utworzysz przykładowy projekt Scala za pomocą POMYSŁu IntelliJ. W następnej sekcji utworzysz IntelliJ pomysł do piaskownicy Hortonworks (emulator) przed przesłaniem projektu.
 
-1. Otwórz IntelliJ IDEA na komputerze. W **nowy projekt** okna dialogowego pole, wykonaj następujące kroki:
+1. Otwórz pomysł IntelliJ na komputerze. W oknie dialogowym **Nowy projekt** wykonaj następujące kroki:
 
    1. Wybierz pozycję **HDInsight** > **Spark w usłudze HDInsight (Scala)** .
-   2. W **narzędzia do kompilowania** listy, wybierz jedną z poniższych pozycji w oparciu o Twojego scenariusza:
+   2. Na liście **narzędzia kompilacji** wybierz jedną z następujących opcji, w zależności od scenariusza:
 
-      * **Narzędzie maven**: Kreator tworzenia projektu Scala pomocy technicznej.
-      * **SBT**: Zarządzanie zależnościami oraz kompilowanie projektu Scala.
+      * **Maven**: Do obsługi Kreatora tworzenia projektów Scala.
+      * **SBT**: Do zarządzania zależnościami i kompilowania dla projektu Scala.
 
-   ![Okno dialogowe Nowy projekt](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
+   ![IntelliJ Utwórz nowy projekt Scala](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
 
 2. Wybierz opcję **Dalej**.
-3. W ciągu następnych **nowy projekt** okna dialogowego pole, wykonaj następujące czynności:
+3. W następnym oknie dialogowym **Nowy projekt** wykonaj następujące czynności:
 
-   1. W **Nazwa projektu** wprowadź nazwę projektu.
-   2. W **lokalizacja projektu** wprowadź lokalizację projektu.
-   3. Obok pozycji **SDK projektu** listy rozwijanej wybierz **nowy**, wybierz opcję **JDK**, a następnie określ folder dla języka Java JDK w wersji 1.7 lub nowszej. Wybierz **Java 1.8** klastra Spark 2.x. Wybierz **środowiska Java 1.7** 1.x klastra Spark. Domyślna lokalizacja to C:\Program Files\Java\jdk1.8.x_xxx.
-   4. W **wersji platformy Spark** listy rozwijanej, Kreator tworzenia projektu w języku Scala integruje się poprawna wersja zestawu SDK platformy Spark i Scala zestawu SDK. Jeśli wersja klastra Spark jest starsza niż 2.0, wybierz wartość **Spark 1.x**. W przeciwnym razie wybierz **Spark2.x**. W tym przykładzie użyto platformy Spark 1.6.2 (Scala 2.10.5). Upewnij się, że korzystają repozytorium oznaczone **Scala 2.10.x**. Nie należy używać repozytorium oznaczone Scala 2.11.x.
+   1. W polu **Nazwa projektu** wprowadź nazwę projektu.
+   2. W polu **Lokalizacja projektu** wprowadź lokalizację projektu.
+   3. Obok listy rozwijanej **zestaw SDK projektu** wybierz pozycję **Nowy**, wybierz pozycję **JDK**, a następnie określ folder dla języka Java JDK w wersji 1,7 lub nowszej. Wybierz pozycję **Java 1,8** dla klastra Spark 2. x. Wybierz pozycję **Java 1,7** dla klastra Spark 1. x. Domyślna lokalizacja to C:\Program Files\Java\jdk1.8.x_xxx.
+   4. Z listy rozwijanej **wersja platformy Spark** Kreator tworzenia projektu Scala integruje poprawną wersję zestawu SDK Spark i zestawu SDK Scala. Jeśli wersja klastra Spark jest starsza niż 2.0, wybierz wartość **Spark 1.x**. W przeciwnym razie wybierz **Spark2.x**. W tym przykładzie jest stosowane rozwiązanie Spark 1.6.2 (Scala 2.10.5). Upewnij się, że używasz repozytorium oznaczonego jako **Scala 2.10. x**. Nie należy używać repozytorium oznaczonego jako Scala 2.11. x.
     
-      ![Tworzenie środowiska IntelliJ Scala właściwości projektu](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project-properties.png)
+      ![Tworzenie właściwości projektu IntelliJ Scala](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project-properties.png)
 
 
 4. Wybierz pozycję **Finish** (Zakończ).
-5. Jeśli **projektu** widoku nie jest jeszcze otwarty, naciśnij **Alt + 1** aby go otworzyć.
-6. W **Eksplorator projektów**, rozwiń projekt, a następnie wybierz **src**.
-7. Kliknij prawym przyciskiem myszy **src**, wskaż polecenie **New**, a następnie wybierz pozycję **klasy Scala**.
-8. W **nazwa** wprowadź nazwę. W **rodzaj** wybierz opcję **obiektu**. Następnie wybierz przycisk **OK**.
+5. Jeśli widok **projektu** nie jest jeszcze otwarty, naciśnij klawisze **Alt + 1** , aby go otworzyć.
+6. W **Eksploratorze projektów**rozwiń projekt, a następnie wybierz pozycję **src**.
+7. Kliknij prawym przyciskiem myszy pozycję **src**, wskaż polecenie **Nowy**, a następnie wybierz pozycję **Klasa Scala**.
+8. W polu **Nazwa** wprowadź nazwę. W polu **rodzaj** wybierz pozycję **obiekt**. Następnie wybierz przycisk **OK**.
 
-    ![Okno dialogowe Utwórz nową klasę Scala](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-new-scala-class.png)
+    ![Okno dialogowe Tworzenie nowej klasy Scala](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-new-scala-class.png)
 
-9. W pliku .scala Wklej następujący kod:
+9. W pliku. scala wklej następujący kod:
 
         import java.util.Random
         import org.apache.spark.{SparkConf, SparkContext}
@@ -112,50 +112,50 @@ W tej sekcji utworzysz przykładowy projekt Scala przy użyciu rozwiązania Inte
             }
         }
 
-10. Na **kompilacji** menu, wybierz opcję **kompilacji projektu**. Upewnij się, że kompilacja zakończy się pomyślnie.
+10. W menu **kompilacja** wybierz polecenie **Kompiluj projekt**. Upewnij się, że kompilacja zakończyła się pomyślnie.
 
 
-## <a name="link-to-the-hortonworks-sandbox"></a>Połącz z Piaskownicą Hortonworks
+## <a name="link-to-the-hortonworks-sandbox"></a>Link do piaskownicy Hortonworks
 
-Zanim możesz połączyć z Piaskownicą Hortonworks (emulatora), konieczne jest posiadanie istniejącej aplikacji IntelliJ.
+Aby można było połączyć się z piaskownicą Hortonworks (emulator), musisz mieć istniejącą aplikację IntelliJ.
 
-Aby połączyć się z emulatora:
+Aby utworzyć link do emulatora:
 
-1. Otwórz projekt w programie IntelliJ.
-2. Na **widoku** menu, wybierz opcję **narzędzia Windows**, a następnie wybierz pozycję **Eksploratora usługi Azure**.
-3. Rozwiń **Azure**, kliknij prawym przyciskiem myszy **HDInsight**, a następnie wybierz pozycję **Link Emulator**.
-4. W **łącze Nowy Emulator** okna dialogowego wprowadź hasło, ustawionego dla konta głównego z Piaskownicą Hortonworks. Następnie wprowadź wartości podobne do tych na następującym zrzucie ekranu. Następnie wybierz przycisk **OK**. 
+1. Otwórz projekt w IntelliJ.
+2. W menu **Widok** wybierz pozycję **narzędzia okna**, a następnie wybierz pozycję **Eksplorator platformy Azure**.
+3. Rozwiń węzeł **Azure**, kliknij prawym przyciskiem myszy pozycję **HDInsight**, a następnie wybierz pozycję **Połącz emulator**.
+4. W oknie dialogowym **łączenie nowego emulatora** wprowadź hasło, które zostało ustawione dla konta głównego piaskownicy Hortonworks. Następnie wprowadź wartości podobne do tych, które są używane na poniższym zrzucie ekranu. Następnie wybierz przycisk **OK**. 
 
-   ![Okno dialogowe Nowy Emulator Link](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-link-an-emulator.png)
+   ![Okno dialogowe łączenie nowego emulatora](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-link-an-emulator.png)
 
-5. Aby skonfigurować emulator, wybierz **tak**.
+5. Aby skonfigurować emulator, wybierz pozycję **tak**.
 
-Gdy nawiązano emulator emulator (Piaskownicą Hortonworks) znajduje się w węźle HDInsight.
+Po pomyślnym nawiązaniu połączenia emulatora (piaskownicy Hortonworks) zostanie wyświetlona w węźle usługi HDInsight.
 
-## <a name="submit-the-spark-scala-application-to-the-hortonworks-sandbox"></a>Przesyłanie aplikacji Spark Scala Piaskownicą Hortonworks
+## <a name="submit-the-spark-scala-application-to-the-hortonworks-sandbox"></a>Przesyłanie aplikacji platformy Spark Scala do piaskownicy Hortonworks
 
-Po połączeniu IntelliJ IDEA w emulatorze mogą przesyłać projektu.
+Po dołączeniu POMYSŁu IntelliJ do emulatora można przesłać projekt.
 
-Aby przesłać projekt w emulatorze:
+Aby przesłać projekt do emulatora:
 
-1. W **Eksplorator projektów**, kliknij prawym przyciskiem myszy projekt, a następnie wybierz **przesłać aplikację aparatu Spark na HDInsight**.
+1. W **Eksploratorze projektów**kliknij prawym przyciskiem myszy projekt, a następnie wybierz polecenie **Prześlij aplikację Spark do usługi HDInsight**.
 2. Wykonaj następujące czynności:
 
-    1. W **klastra Spark (tylko system Linux)** listy rozwijanej wybierz swoje lokalne Piaskownicą Hortonworks.
-    2. W **Nazwa klasy Main** wybierz lub wprowadź nazwę klasy głównego. W tym artykule jest nazwa **GroupByTest**.
+    1. Na liście rozwijanej **klaster Spark (tylko system Linux)** wybierz lokalną piaskownicę Hortonworks.
+    2. W polu **Nazwa klasy głównej** wybierz lub wprowadź nazwę klasy głównej. W tym artykule nazwa to **GroupByTest**.
 
-3. Wybierz **przesłać**. Dzienniki przesyłania zadań są wyświetlane w oknie narzędzia przesyłania platformy Spark.
+3. Wybierz **przesłać**. Dzienniki przesłania zadania są wyświetlane w oknie narzędzia do przesłaniania Spark.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się, jak [używać narzędzi HDInsight w Azure Toolkit for IntelliJ do tworzenia aplikacji platformy Apache Spark dla klastra usługi HDInsight Spark systemu Linux](../spark/apache-spark-intellij-tool-plugin.md).
+- Dowiedz się, jak za [pomocą narzędzi usługi HDInsight w Azure Toolkit for IntelliJ utworzyć aplikacje Apache Spark dla klastra usługi HDInsight Spark Linux](../spark/apache-spark-intellij-tool-plugin.md).
 
-- Wideo dotyczące narzędzi HDInsight dla programu IntelliJ, zobacz [wprowadzenia narzędzi HDInsight dla programu IntelliJ do tworzenia aplikacji platformy Apache Spark](https://www.youtube.com/watch?v=YTZzYVgut6c).
+- Film wideo dotyczący narzędzi HDInsight Tools for IntelliJ można znaleźć w temacie [wprowadzenie do narzędzia HDInsight Tools for IntelliJ for Apache Spark Development](https://www.youtube.com/watch?v=YTZzYVgut6c).
 
-- Dowiedz się, jak [zdalne debugowanie aplikacji platformy Apache Spark w klastrze usługi HDInsight przy użyciu zestawu narzędzi platformy Azure dla środowiska IntelliJ za pośrednictwem protokołu SSH](../spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md).
+- Dowiedz się, jak [zdalnie debugować aplikacje Apache Spark w klastrze usługi HDInsight przy użyciu Azure Toolkit for IntelliJ za pośrednictwem protokołu SSH](../spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md).
 
-- Dowiedz się, jak [debugowanie aplikacji platformy Apache Spark zdalnie w klastrze usługi HDInsight Spark systemu Linux przy użyciu narzędzi HDInsight w usłudze Azure Toolkit for IntelliJ](../spark/apache-spark-intellij-tool-plugin-debug-jobs-remotely.md).
+- Dowiedz się, jak za [pomocą narzędzi usługi HDInsight w Azure Toolkit for IntelliJ debugować aplikacje Apache Spark zdalnie w klastrze usługi HDInsight Spark Linux](../spark/apache-spark-intellij-tool-plugin-debug-jobs-remotely.md).
 
-- Dowiedz się, jak [korzystaj z narzędzi HDInsight w zestaw narzędzi platformy Azure dla środowiska Eclipse do tworzenia aplikacji platformy Apache Spark](../spark/apache-spark-eclipse-tool-plugin.md).
+- Dowiedz się, jak [tworzyć aplikacje Apache Spark przy użyciu narzędzi usługi HDInsight w Azure Toolkit for Eclipse](../spark/apache-spark-eclipse-tool-plugin.md).
 
-- Wideo dotyczące narzędzi HDInsight dla programu Eclipse, zobacz [korzystaj z narzędzi HDInsight dla programu Eclipse, tworzenie aplikacji Spark](https://mix.office.com/watch/1rau2mopb6fha).
+- Film wideo dotyczący narzędzi HDInsight Tools for zaćmienie znajduje się w temacie [Korzystanie z narzędzi HDInsight Tools for zaćmienie w celu tworzenia aplikacji platformy Spark](https://mix.office.com/watch/1rau2mopb6fha).

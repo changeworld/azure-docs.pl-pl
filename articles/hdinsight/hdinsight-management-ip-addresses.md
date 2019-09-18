@@ -3,16 +3,17 @@ title: Adresy IP zarządzania usługą Azure HDInsight
 description: Dowiedz się, które adresy IP należy zezwolić na ruch przychodzący z programu, w celu poprawnego skonfigurowania sieciowych grup zabezpieczeń i tras zdefiniowanych przez użytkownika dla sieci wirtualnych za pomocą usługi Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 0a41d1d57257db8f88481766e65eb8ee7569da87
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 3f0b31cd3d37c3040ff99a89c1a5201b413fd3fc
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479202"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076630"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>Adresy IP zarządzania usługą HDInsight
 
@@ -28,7 +29,7 @@ Jeśli używasz usługi DNS udostępnionej przez platformę Azure, Zezwól na do
 
 Zezwalaj na ruch z następujących adresów IP dla usług Azure HDInsight Health i Management Services, które mają zastosowanie do wszystkich regionów platformy Azure:
 
-| Źródłowy adres IP | Miejsce docelowe  | Direction |
+| Źródłowy adres IP | Destination  | Direction |
 | ---- | ----- | ----- |
 | 168.61.49.99 | \*:443 | Przychodzący |
 | 23.99.5.239 | \*:443 | Przychodzący |
@@ -81,6 +82,6 @@ Aby uzyskać więcej informacji, zobacz sekcję [sterowanie ruchem sieciowym](hd
 
 Jeśli używasz tras zdefiniowanych przez użytkownika (UDR), należy określić trasę i zezwolić na ruch wychodzący z sieci wirtualnej do powyższych adresów IP przy użyciu następnego przeskoku ustawionego na "Internet".
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Tworzenie sieci wirtualnych dla klastrów usługi Azure HDInsight](hdinsight-create-virtual-network.md)

@@ -1,7 +1,7 @@
 ---
 title: Co to jest obszar roboczy
-titleSuffix: Azure Machine Learning service
-description: Obszar roboczy jest zasobem najwyższego poziomu dla usługi Azure Machine Learning. Zachowuje historię wszystkich przebiegów szkoleniowych, w tym dzienników, metryk, danych wyjściowych i migawek skryptów. Te informacje służą do określenia, które uruchomienie szkoleniowe produkuje najlepszy model
+titleSuffix: Azure Machine Learning
+description: Obszar roboczy jest zasobem najwyższego poziomu dla Azure Machine Learning. Zachowuje historię wszystkich przebiegów szkoleniowych, w tym dzienników, metryk, danych wyjściowych i migawek skryptów. Te informacje służą do określenia, które uruchomienie szkoleniowe produkuje najlepszy model
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 08/06/2019
-ms.openlocfilehash: ef060c083109a7096b62ebb35f2b49bb37a371b8
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 84aad0f1a797bb7eccf1872bd291e72ecefa7eee
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860499"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035325"
 ---
-# <a name="what-is-an-azure-machine-learning-service-workspace"></a>Co to jest obszar roboczy usługi Azure Machine Learning?
+# <a name="what-is-an-azure-machine-learning-workspace"></a>Co to jest obszar roboczy Azure Machine Learning?
 
-Obszar roboczy jest zasobem najwyższego poziomu dla usługi Azure Machine Learning, co zapewnia scentralizowane miejsce do pracy ze wszystkimi artefaktami tworzonymi podczas korzystania z usługi Azure Machine Learning.  Obszar roboczy zachowuje historię wszystkich przebiegów szkoleniowych, w tym dzienników, metryk, danych wyjściowych i migawek skryptów. Te informacje służą do określenia, które uruchomienie szkoleniowe produkuje najlepszy model.  
+Obszar roboczy jest zasobem najwyższego poziomu dla Azure Machine Learning, co zapewnia scentralizowane miejsce do pracy ze wszystkimi artefaktami tworzonymi podczas korzystania z Azure Machine Learning.  Obszar roboczy zachowuje historię wszystkich przebiegów szkoleniowych, w tym dzienników, metryk, danych wyjściowych i migawek skryptów. Te informacje służą do określenia, które uruchomienie szkoleniowe produkuje najlepszy model.  
 
 Gdy masz model, możesz zarejestrować go w obszarze roboczym. Następnie można użyć zarejestrowanego modelu i skryptów oceniania w celu wdrożenia do Azure Container Instances, usługi Azure Kubernetes lub do nieprogramowalnej bramy polowej (FPGA) jako punkt końcowy HTTP oparty na protokole REST. Możesz również wdrożyć model na urządzeniu Azure IoT Edge jako moduł.
 
@@ -103,9 +103,9 @@ Gdy tworzysz nowy obszar roboczy, automatycznie tworzy kilka zasobów platformy 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby rozpocząć pracę z usługą Azure Machine Learning, zobacz:
+Aby rozpocząć pracę z Azure Machine Learning, zobacz:
 
-+ [Przegląd usługi Azure Machine Learning](overview-what-is-azure-ml.md)
++ [Przegląd Azure Machine Learning](overview-what-is-azure-ml.md)
 + [Tworzenie obszaru roboczego](how-to-manage-workspace.md)
 + [Zarządzanie obszarem roboczym](how-to-manage-workspace.md)
 + [Samouczek: trenowanie modelu](tutorial-train-models-with-aml.md)

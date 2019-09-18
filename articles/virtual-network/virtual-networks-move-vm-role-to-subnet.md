@@ -1,10 +1,10 @@
 ---
-title: Przenoszenie maszyny Wirtualnej (klasycznej) lub wystąpienie roli usług Cloud Services do innej podsieci - programu Azure PowerShell | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak przenieść maszyny wirtualne (klasyczne) i wystąpień roli usług Cloud Services do innej podsieci przy użyciu programu PowerShell.
+title: Przenieś maszynę wirtualną (klasyczną) lub Cloud Services wystąpienie roli do innej podsieci — Azure PowerShell | Microsoft Docs
+description: Dowiedz się, jak przenosić maszyny wirtualne (klasyczne) i Cloud Services wystąpienia roli do innej podsieci przy użyciu programu PowerShell.
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: tysonn
 ms.assetid: de4135c7-dc5b-4ffa-84cc-1b8364b7b427
 ms.service: virtual-network
@@ -15,31 +15,31 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 787a50a0cbf16089cd15f922b494cd12d680cb43
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 275d59a7bddd8b2b609169218afcd15e9a0ce913
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60640399"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058370"
 ---
-# <a name="move-a-vm-classic-or-cloud-services-role-instance-to-a-different-subnet-using-powershell"></a>Przenoszenie maszyny Wirtualnej (klasycznej) lub wystąpienie roli usług Cloud Services do innej podsieci przy użyciu programu PowerShell
-Można użyć programu PowerShell, aby przenieść maszyny wirtualne (klasyczne) z jednej podsieci do drugiego w tej samej sieci wirtualnej (VNet). Wystąpienia roli mogą być przenoszone przez edycję pliku CSCFG, a nie przy użyciu programu PowerShell.
+# <a name="move-a-vm-classic-or-cloud-services-role-instance-to-a-different-subnet-using-powershell"></a>Przenoszenie maszyny wirtualnej (klasycznej) lub Cloud Services wystąpienia roli do innej podsieci przy użyciu programu PowerShell
+Możesz użyć programu PowerShell do przenoszenia maszyn wirtualnych (klasycznych) z jednej podsieci do drugiej w tej samej sieci wirtualnej (VNet). Wystąpienia ról można przenosić przez edytowanie pliku CSCFG zamiast przy użyciu programu PowerShell.
 
 > [!NOTE]
-> W tym artykule opisano sposób przenoszenia maszyn wirtualnych wdrażanych za pośrednictwem klasycznego modelu wdrażania tylko.
+> W tym artykule wyjaśniono, jak przenieść maszyny wirtualne wdrożone tylko przy użyciu klasycznego modelu wdrażania.
 > 
 > 
 
-Dlaczego należy przenieść maszyny wirtualne do innej podsieci? Podsieci migracji jest przydatne, gdy starsze podsieci jest zbyt mała i nie może zostać rozszerzona ze względu na istniejące działających maszyn wirtualnych w tej podsieci. W takim przypadku można tworzyć nowe, większej podsieci i migracji maszyn wirtualnych do nowej podsieci, a następnie po zakończeniu migracji można usunąć starego pustą podsieć.
+Dlaczego należy przenieść maszyny wirtualne do innej podsieci? Migracja podsieci jest przydatna, gdy Starsza podsieć jest za mała i nie może być rozwinięta z powodu istniejących uruchomionych maszyn wirtualnych w tej podsieci. W takim przypadku można utworzyć nową, większą podsieć i przeprowadzić migrację maszyn wirtualnych do nowej podsieci, po zakończeniu migracji można usunąć starą pustą podsieć.
 
-## <a name="how-to-move-a-vm-to-another-subnet"></a>Jak przenieść Maszynę wirtualną do innej podsieci
-Aby przenieść Maszynę wirtualną, Uruchom polecenia cmdlet programu PowerShell Set-AzureSubnet, używając w poniższym przykładzie jako szablonu. W poniższym przykładzie mamy przechodzenia TestVM z jej obecny podsieci do podsieci-2. Pamiętaj edytować przykładu tak, aby odzwierciedlały dane środowisko. Należy pamiętać, że przy każdym uruchomieniu polecenia cmdlet Update-AzureVM jako część procedury zostanie ponownie uruchomiony maszynę Wirtualną jako część procesu aktualizacji.
+## <a name="how-to-move-a-vm-to-another-subnet"></a>Jak przenieść maszynę wirtualną do innej podsieci
+Aby przenieść maszynę wirtualną, uruchom polecenie cmdlet Set-AzureSubnet programu PowerShell, używając poniższego przykładu jako szablonu. W poniższym przykładzie przeniesiemy TestVM z jego obecnej podsieci do podsieci-2. Pamiętaj, aby edytować przykład w celu odzwierciedlenia Twojego środowiska. Należy pamiętać, że za każdym razem, gdy uruchamiasz polecenie cmdlet Update-AzureVM w ramach procedury, spowoduje to ponowne uruchomienie maszyny wirtualnej w ramach procesu aktualizacji.
 
     Get-AzureVM –ServiceName TestVMCloud –Name TestVM `
     | Set-AzureSubnet –SubnetNames Subnet-2 `
     | Update-AzureVM
 
-Jeśli określono wewnętrznej statyczny prywatny adres IP dla maszyny Wirtualnej, należy wyczyścić to ustawienie, przed można przenieść maszynę Wirtualną do nowej podsieci. W takim przypadku należy użyć następującego polecenia:
+Jeśli określono statyczny wewnętrzny prywatny adres IP dla maszyny wirtualnej, należy wyczyścić to ustawienie, aby można było przenieść maszynę wirtualną do nowej podsieci. W takim przypadku należy użyć następujących instrukcji:
 
     Get-AzureVM -ServiceName TestVMCloud -Name TestVM `
     | Remove-AzureStaticVNetIP `
@@ -48,8 +48,8 @@ Jeśli określono wewnętrznej statyczny prywatny adres IP dla maszyny Wirtualne
     | Set-AzureSubnet -SubnetNames Subnet-2 `
     | Update-AzureVM
 
-## <a name="to-move-a-role-instance-to-another-subnet"></a>Aby przenieść wystąpienia roli do innej podsieci
-Aby przenieść wystąpienia roli, przeprowadź edycję pliku CSCFG. W poniższym przykładzie mamy przenosisz "Role0" w sieci wirtualnej *VNETName* z jej obecny podsieci, aby *podsieci 2*. Ponieważ została już wdrożona w wystąpieniu roli, po prostu zmienisz nazwę podsieci = 2 podsieci. Pamiętaj edytować przykładu tak, aby odzwierciedlały dane środowisko.
+## <a name="to-move-a-role-instance-to-another-subnet"></a>Aby przenieść wystąpienie roli do innej podsieci
+Aby przenieść wystąpienie roli, edytuj plik CSCFG. W poniższym przykładzie przeniesiemy "Role0" w sieci wirtualnej *VNETName* z jej obecnej podsieci do *podsieci-2*. Ponieważ wystąpienie roli zostało już wdrożone, wystarczy zmienić nazwę podsieci = Subnet-2. Pamiętaj, aby edytować przykład w celu odzwierciedlenia Twojego środowiska.
 
     <NetworkConfiguration>
         <VirtualNetworkSite name="VNETName" />

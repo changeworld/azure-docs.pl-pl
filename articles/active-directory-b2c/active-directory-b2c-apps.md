@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 09cdc2fb5dba152e467164fd757225c7a9183264
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: b0472b10de3641f1575f7f9a5c223ab5032f0e16
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68369405"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066148"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>Typy aplikacji, które mogą być używane w Active Directory B2C
 
-Azure Active Directory (Azure AD) B2C obsługuje uwierzytelnianie dla różnych nowoczesnych architektur aplikacji. Wszystkie one są oparte na standardowych protokołach branżowych [OAuth 2.0](active-directory-b2c-reference-protocols.md) lub [OpenID Connect](active-directory-b2c-reference-protocols.md). W tym artykule opisano typy aplikacji, które można kompilować, niezależnie od preferowanego języka lub platformy. Pomaga również zrozumieć scenariusze wysokiego poziomu przed rozpoczęciem tworzenia aplikacji.
+Azure Active Directory B2C (Azure AD B2C) obsługuje uwierzytelnianie dla różnych nowoczesnych architektur aplikacji. Wszystkie one są oparte na standardowych protokołach branżowych [OAuth 2.0](active-directory-b2c-reference-protocols.md) lub [OpenID Connect](active-directory-b2c-reference-protocols.md). W tym artykule opisano typy aplikacji, które można kompilować, niezależnie od preferowanego języka lub platformy. Pomaga również zrozumieć scenariusze wysokiego poziomu przed rozpoczęciem tworzenia aplikacji.
 
 Każda aplikacja, która używa Azure AD B2C musi być zarejestrowana w [dzierżawie Azure AD B2C](active-directory-b2c-get-started.md) przy użyciu [Azure Portal](https://portal.azure.com/). Proces rejestracji aplikacji zbiera i przypisuje wartości, takie jak:
 
@@ -56,7 +56,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 }
 ```
 
-Dowiedz się więcej o typach tokenów i oświadczeń dostępnych dla aplikacji w odniesieniu do [tokenów Azure AD B2C](active-directory-b2c-reference-tokens.md).
+Dowiedz się więcej o typach tokenów i oświadczeń dostępnych dla aplikacji w [odniesieniu do tokenów Azure AD B2C](active-directory-b2c-reference-tokens.md).
 
 W aplikacji sieci Web każde wykonanie [zasad](active-directory-b2c-reference-policies.md) wykonuje następujące czynności:
 
@@ -132,13 +132,13 @@ Ten scenariusz obejmujący łańcuch interfejsów API sieci Web może być obsł
 
 Nie należy edytować Azure AD B2C aplikacji w następujący sposób:
 
-- W innych portalach zarządzania aplikacjami, takich jak [Portal rejestracji aplikacji](https://apps.dev.microsoft.com/).
+- W innych portalach zarządzania aplikacjami, takich jak [Portal rejestracji aplikacji](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade).
 - Przy użyciu interfejs API programu Graph lub programu PowerShell.
 
 Jeśli edytujesz aplikację Azure AD B2C poza Azure Portal, stanie się ona błędną aplikacją i nie będzie można jej używać w Azure AD B2C. Usuń aplikację i utwórz ją ponownie.
 
-Aby usunąć aplikację, przejdź do [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/) i Usuń aplikację. Aby aplikacja była widoczna, musisz być jej właścicielem (a nie tylko administratorem dzierżawy).
+Aby usunąć aplikację, przejdź do [portalu rejestracji aplikacji](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) i Usuń aplikację. Aby aplikacja była widoczna, musisz być jej właścicielem (a nie tylko administratorem dzierżawy).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej na temat wbudowanych zasad oferowanych przez [przepływy użytkowników w Azure Active Directory B2C](active-directory-b2c-reference-policies.md).

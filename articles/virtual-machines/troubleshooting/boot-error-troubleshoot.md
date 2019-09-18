@@ -4,7 +4,7 @@ description: Ten artykuł pomaga połączyć się z artykułami w celu rozwiązy
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
 ms.topic: troubleshooting
@@ -12,26 +12,26 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: genli
-ms.openlocfilehash: ce51b462b17a7082fa7951aea8790e28e517401e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 660c7fa0051654fd9b0012740ce7ed3ee1e91531
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70080496"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059185"
 ---
 # <a name="troubleshoot-azure-virtual-machines-boot-errors"></a>Rozwiązywanie problemów z błędami rozruchu usługi Azure Virtual Machines
 
-W tym artykule wymieniono typowe błędy rozruchowe, które mogą zostać wyświetlone podczas uruchamiania maszyny wirtualnej z systemem Windows w Microsoft Azure. Aby uzyskać więcej informacji o błędach, zobacz artykuły w sekcji **błędy i rozwiązania** rozruchowe.
+W tym artykule wymieniono typowe błędy rozruchowe, które mogą zostać wyświetlone podczas uruchamiania maszyny wirtualnej z systemem Windows w Microsoft Azure. Aby uzyskać więcej informacji o błędach, zobacz artykuły w sekcji **błędy i rozwiązania rozruchowe** .
 
 ## <a name="boot-errors-and-solutions"></a>Błędy i rozwiązania rozruchowe
 
-* [Błędy rozruchu funkcji BitLocker](troubleshoot-bitlocker-boot-error.md) 
-* [System Windows pokaże "sprawdzanie systemu plików" podczas rozruchu](troubleshoot-check-disk-boot-error.md)
+* [Błąd rozruchu funkcji BitLocker](troubleshoot-bitlocker-boot-error.md) 
+* [W systemie Windows jest wyświetlany komunikat „Sprawdzanie systemu plików” podczas rozruchu](troubleshoot-check-disk-boot-error.md)
 * [Błędy z błękitnym ekranem](troubleshoot-common-blue-screen-error.md)
-* [Uruchamianie maszyny wirtualnej jest zablokowane na "Trwa przygotowywanie systemu Windows](troubleshoot-vm-boot-configure-update.md)
-* [Błąd "niepowodzenie usługi KRYTYCZNEj" na niebieskim ekranie](troubleshoot-critical-service-failed-boot-error.md)
-* [Problem z pętlą ponownego uruchamiania](troubleshoot-reboot-loop.md)
-* [Uruchamianie maszyny wirtualnej jest zablokowane na etapie aktualizacji systemu Windows](troubleshoot-stuck-updating-boot-error.md)
+* [Uruchamianie maszyny wirtualnej zatrzymuje się na komunikacie „Przygotowywanie systemu Windows”](troubleshoot-vm-boot-configure-update.md)
+* [Błąd „NIEPOWODZENIE USŁUGI O ZNACZENIU KRYTYCZNYM” na niebieskim ekranie](troubleshoot-critical-service-failed-boot-error.md)
+* [Problem z ponownym uruchamianiem pętli](troubleshoot-reboot-loop.md)
+* [Proces uruchamiania maszyny wirtualnej zablokował się na etapie witryny Windows Update](troubleshoot-stuck-updating-boot-error.md)
 
 ## <a name="next-steps"></a>Następne kroki
 

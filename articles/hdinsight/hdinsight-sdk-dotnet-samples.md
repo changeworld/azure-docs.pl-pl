@@ -1,19 +1,20 @@
 ---
-title: 'Usługi Azure HDInsight: Przykłady dla platformy .NET'
-description: Znajdź C# przykłady dla platformy .NET w witrynie GitHub typowych zadań przy użyciu zestawu HDInsight SDK dla platformy .NET.
+title: 'Azure HDInsight: przykłady dla platformy .NET'
+description: Znajdź C# przykłady dla platformy .NET na potrzeby typowych zadań przy użyciu zestawu HDInsight SDK dla platformy .NET.
 author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
 ms.date: 04/15/2019
-ms.author: hrasheed
-ms.openlocfilehash: 3e2cb0768701196515ace3f6ef0d475f8e3b0f79
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c1365b39385a3dfb684628214765269ea3a225e9
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688104"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076882"
 ---
-# <a name="azure-hdinsight-net-samples"></a>Usługi Azure HDInsight: Przykłady dla platformy .NET
+# <a name="azure-hdinsight-net-samples"></a>Azure HDInsight: przykłady dla platformy .NET
 
 > [!div class="op_single_selector"]
 > * [Przykłady dla platformy .NET](hdinsight-sdk-dotnet-samples.md)
@@ -23,8 +24,8 @@ ms.locfileid: "64688104"
 
 Ten artykuł zawiera:
 
-* Zawiera łącza do przykładów dla zadania tworzenia klastra.
-* Zawiera łącza do zawartości referencyjnej dla innych zadań zarządzania.
+* Linki do przykładów dla zadań tworzenia klastra.
+* Linki do zawartości referencyjnej dla innych zadań zarządzania.
 
 Możesz [aktywować korzyści subskrybenta programu Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio): W ramach subskrypcji programu Visual Studio co miesiąc otrzymasz środki, które możesz przeznaczyć na płatne usługi platformy Azure.
 
@@ -32,17 +33,17 @@ Możesz [aktywować korzyści subskrybenta programu Visual Studio](https://azure
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- [Usługa Azure HDInsight zestawu SDK dla platformy .NET](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight#sdk-installation)
+- [Zestaw SDK usługi Azure HDInsight dla platformy .NET](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight#sdk-installation)
 
 ## <a name="cluster-management---creation"></a>Zarządzanie klastrem — tworzenie
 
 * [Tworzenie klastra Kafka](https://github.com/Azure-Samples/hdinsight-dotnet-sdk-samples/blob/master/Management/Microsoft.Azure.Management.HDInsight.Samples/Microsoft.Azure.Management.HDInsight.Samples/CreateKafkaClusterSample.cs)
 * [Tworzenie klastra Spark](https://github.com/Azure-Samples/hdinsight-dotnet-sdk-samples/blob/master/Management/Microsoft.Azure.Management.HDInsight.Samples/Microsoft.Azure.Management.HDInsight.Samples/CreateSparkClusterSample.cs)
-* [Tworzenie klastra Spark za pomocą usługi Azure Data Lake Storage Gen2](https://github.com/Azure-Samples/hdinsight-dotnet-sdk-samples/blob/master/Management/Microsoft.Azure.Management.HDInsight.Samples/Microsoft.Azure.Management.HDInsight.Samples/CreateHadoopClusterWithAdlsGen2Sample.cs)
-* [Tworzenie klastra Spark przy użyciu pakietu zabezpieczeń przedsiębiorstwa (ESP)](https://github.com/Azure-Samples/hdinsight-dotnet-sdk-samples/blob/master/Management/Microsoft.Azure.Management.HDInsight.Samples/Microsoft.Azure.Management.HDInsight.Samples/CreateEspClusterSample.cs)
+* [Tworzenie klastra Spark przy użyciu Azure Data Lake Storage Gen2](https://github.com/Azure-Samples/hdinsight-dotnet-sdk-samples/blob/master/Management/Microsoft.Azure.Management.HDInsight.Samples/Microsoft.Azure.Management.HDInsight.Samples/CreateHadoopClusterWithAdlsGen2Sample.cs)
+* [Tworzenie klastra Spark z pakiet Enterprise Security (ESP)](https://github.com/Azure-Samples/hdinsight-dotnet-sdk-samples/blob/master/Management/Microsoft.Azure.Management.HDInsight.Samples/Microsoft.Azure.Management.HDInsight.Samples/CreateEspClusterSample.cs)
 
-Możesz uzyskać te przykłady dla platformy .NET, klonowanie [hdinsight-dotnet-sdk-samples](https://github.com/Azure-Samples/hdinsight-dotnet-sdk-samples) repozytorium GitHub.
+Te przykłady dla platformy .NET można uzyskać, klonowanie repozytorium usługi [HDInsight-dotnet-SDK-Samples](https://github.com/Azure-Samples/hdinsight-dotnet-sdk-samples) w witrynie GitHub.
 
 [!INCLUDE [hdinsight-sdk-additional-functionality](../../includes/hdinsight-sdk-additional-functionality.md)]
 
-Fragmenty kodu dla tej dodatkowej funkcji zestawu SDK można znaleźć w [dokumentacji zestawu HDInsight SDK dla platformy .NET](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet).
+Fragmenty kodu dla tej dodatkowej funkcji zestawu SDK znajdują się w [dokumentacji referencyjnej usługi HDINSIGHT SDK dla platformy .NET](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet).

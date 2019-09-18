@@ -1,7 +1,7 @@
 ---
 title: Co to są FPGA — jak wdrożyć
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak wdrożyć usługę sieci Web z modelem działającym na FPGA za pomocą usługi Azure Machine Learning na potrzeby wnioskowania o bardzo małych opóźnieniach.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak wdrożyć usługę sieci Web z modelem działającym na FPGA z Azure Machine Learning na potrzeby wnioskowania o bardzo małych opóźnieniach.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.author: tedway
 author: tedway
 ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8f95846844f9ff498b1b99a0b7a375f1c883457d
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 929ca8e16db73be5cfa226b5d55a30dbb7b2bc99
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860466"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034465"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Co to są tablice z bramą programowalną w polu (FPGA) i sposób wdrażania
 
-Ten artykuł zawiera wprowadzenie do tablic opartych na programowalnych bramach (FPGA) i pokazuje, jak wdrożyć modele przy użyciu usługi Azure Machine Learning na platformie Azure FPGA. 
+Ten artykuł zawiera wprowadzenie do wielopolowych tablic bram (FPGA) oraz sposób wdrażania modeli przy użyciu Azure Machine Learning na platformie Azure FPGA. 
 
 FPGA zawierają tablicę programowalnych bloków logiki oraz hierarchię z ponownymi konfigurowalnymi połączeniami. Połączenia międzyłączne umożliwiają skonfigurowanie tych bloków na różne sposoby po zakończeniu produkcji. W porównaniu z innymi mikroukładami FPGA zapewniają kombinację programowania i wydajności.
 
@@ -28,7 +28,7 @@ FPGA zawierają tablicę programowalnych bloków logiki oraz hierarchię z ponow
 
 Na poniższym diagramie i tabeli przedstawiono sposób porównywania FPGA z innymi procesorami.
 
-![Diagram porównania usługi Azure Machine Learning Service FPGA](./media/concept-accelerate-with-fpgas/azure-machine-learning-fpga-comparison.png)
+![Diagram Azure Machine Learning porównania FPGA](./media/concept-accelerate-with-fpgas/azure-machine-learning-fpga-comparison.png)
 
 |Procesor||Opis|
 |---|:-------:|------|
@@ -89,7 +89,7 @@ Model można wdrożyć jako usługę sieci Web na FPGA z Modele z przyspieszanie
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-- Subskrypcja platformy Azure.  Jeśli nie masz takiego konta, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
+- Subskrypcja platformy Azure.  Jeśli nie masz takiego konta, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
 
 - Limit przydziału FPGA. Użyj interfejsu wiersza polecenia platformy Azure, aby sprawdzić, czy masz limit przydziału:
 
@@ -112,7 +112,7 @@ Model można wdrożyć jako usługę sieci Web na FPGA z Modele z przyspieszanie
 
     Jeśli nie masz przydziału, Prześlij żądanie na [https://aka.ms/accelerateAI](https://aka.ms/accelerateAI).
 
-- Obszar roboczy usługi Azure Machine Learning i Azure Machine Learning SDK dla język Python jest zainstalowany. Aby uzyskać więcej informacji, zobacz [Tworzenie obszaru roboczego](how-to-manage-workspace.md).
+- Zainstalowano obszar roboczy Azure Machine Learning i Azure Machine Learning SDK dla języka Python. Aby uzyskać więcej informacji, zobacz [Tworzenie obszaru roboczego](how-to-manage-workspace.md).
  
 - Zestaw SDK języka Python dla modeli przyspieszanych sprzętowo:
 

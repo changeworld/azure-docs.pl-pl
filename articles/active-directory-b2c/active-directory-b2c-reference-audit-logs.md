@@ -11,12 +11,12 @@ ms.date: 09/14/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: cbb748e9856b6de9004d57e4393e205ddfcfffb4
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c216512aef117a332d3aabfc83ec5615b70b202c
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70998845"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033830"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Uzyskiwanie dostępu do dzienników inspekcji Azure AD B2C
 
@@ -92,12 +92,13 @@ Aby zezwolić na dostęp skryptowy lub oparty na aplikacji do interfejsu API rap
 * Microsoft Graph
   * Aplikacja: Odczytaj wszystkie dane dziennika inspekcji
 
-Można włączyć te uprawnienia do istniejącej rejestracji aplikacji w ramach dzierżawy usługi B2C lub utworzyć nowy, przeznaczony do użycia z automatyzacją dzienników inspekcji.
+Możesz włączyć te uprawnienia dla istniejącej Azure Active Directory rejestracji aplikacji w ramach dzierżawy usługi B2C lub utworzyć nowy, przeznaczony do użycia z automatyzacją dzienników inspekcji.
 
 Aby utworzyć nową aplikację, przypisz wymagane uprawnienia interfejsu API i Utwórz klucz tajny klienta, wykonując następujące czynności:
 
-1. Zarejestruj aplikację
-    1. Zaloguj się do [Azure Portal](https://portal.azure.com), przejdź do katalogu, który zawiera dzierżawę Azure AD B2C, a następnie przejdź do **Azure AD B2C**.
+1. Zarejestruj aplikację w Azure Active Directory
+    1. Zaloguj się do [Azure Portal](https://portal.azure.com) i przejdź do katalogu, który zawiera dzierżawę Azure AD B2C.
+    1. Wybierz pozycję **Azure Active Directory** (*nie* Azure AD B2C) z menu po lewej stronie. Lub wybierz pozycję **wszystkie usługi**, a następnie wyszukaj i wybierz **Azure Active Directory**.
     1. W obszarze **Zarządzaj** w menu po lewej stronie wybierz pozycję **rejestracje aplikacji (starsza wersja)** .
     1. Wybierz pozycję **rejestracja nowej aplikacji**
     1. Wprowadź nazwę aplikacji. Na przykład *aplikacja dziennika inspekcji*.

@@ -3,7 +3,7 @@ title: Rozwiązywanie problemów i znanych problemów z platformą Azure monitor
 description: Znane problemy dotyczące monitor stanu v2 i rozwiązywania problemów. Monitorowanie wydajności witryny sieci Web bez ponownego wdrażania witryny sieci Web. Współpracuje z usługą ASP.NET Web Apps hostowaną lokalnie, na maszynach wirtualnych lub na platformie Azure.
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: TimothyMothra
 manager: alexklim
 ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: e34beba32eace370664893225dd85b6f4b79c886
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: c3e9bffaf3b533ef8fbe3e32c1dca671fb67c911
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424099"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058291"
 ---
 # <a name="troubleshooting-status-monitor-v2"></a>Rozwiązywanie problemów monitor stanu v2
 
@@ -79,12 +79,12 @@ Po uruchomieniu polecenia Enable wykonaj następujące czynności:
 ### <a name="iis-nested-applications"></a>Aplikacje zagnieżdżone usług IIS
 
 Nie instrumentuje zagnieżdżonych aplikacji w usługach IIS w wersji 1,0.
-Teraz śledzimy [ten problem.](https://github.com/microsoft/ApplicationInsights-Home/issues/369)
+[Teraz śledzimy ten problem.](https://github.com/microsoft/ApplicationInsights-Home/issues/369)
 
 ### <a name="advanced-sdk-configuration-isnt-available"></a>Zaawansowana konfiguracja zestawu SDK jest niedostępna.
 
 Konfiguracja zestawu SDK nie jest dostępna dla użytkownika końcowego w wersji 1,0.
-Teraz śledzimy [ten problem.](https://github.com/microsoft/ApplicationInsights-Home/issues/375)
+[Teraz śledzimy ten problem.](https://github.com/microsoft/ApplicationInsights-Home/issues/375)
 
     
     
@@ -160,7 +160,7 @@ Zapoznaj się z dokumentacją [interfejsu API](status-monitor-v2-api-get-status.
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Przejrzyj [odwołanie do interfejsu API](status-monitor-v2-overview.md#powershell-api-reference) , aby dowiedzieć się więcej na temat parametrów, które mogły zostać pominięte.
 - Jeśli wystąpi problem, którego nie ma na liście, możesz skontaktować się z nami w serwisie [GitHub](https://github.com/Microsoft/ApplicationInsights-Home/issues).

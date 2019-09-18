@@ -1,6 +1,6 @@
 ---
 title: Omówienie witryny Azure Portal | Microsoft Docs
-description: Rozpocznij pracę z platformą Azure, korzystając z przewodnika
+description: Skorzystaj z przewodnika Szybki Start platformy Azure, aby rozpocząć pracę z platformą Azure
 services: azure-portal
 keywords: ''
 author: kfollis
@@ -9,18 +9,18 @@ ms.date: 09/13/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 2dd34c11bc6a8d09c8a375cf73e5efad4fceff04
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 5086198a4e4efafe3ac05f1f182f7f09d867a709
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71004256"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076734"
 ---
 # <a name="get-started-with-the-azure-quickstart-center"></a>Wprowadzenie do centrum szybkiego startu platformy Azure
 
 Centrum szybkiego startu platformy Azure to środowisko z przewodnikiem Azure Portal dostępne dla każdego, kto chce ulepszyć swoją wiedzę na temat platformy Azure. W przypadku organizacji, które są nowością w systemie Azure, jest to najszybszy sposób, aby dołączyć i skonfigurować środowisko chmury.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Centrum szybkiego startu platformy Azure oferuje trzy opcje umożliwiające rozpoczęcie pracy:
 

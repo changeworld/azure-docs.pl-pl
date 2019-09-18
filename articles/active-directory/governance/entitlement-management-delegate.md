@@ -16,12 +16,12 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b631f078240821e79513c4bd944a33b4725bc52
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 6857697423e494c515bd052cb42af3ad1d9fe188
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207135"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057777"
 ---
 # <a name="delegate-tasks-in-azure-ad-entitlement-management-preview"></a>Delegowanie zadań w usłudze Azure AD uprawnień zarządzanie (wersja zapoznawcza)
 
@@ -42,7 +42,7 @@ Załóżmy, że Twoja organizacja ma pięć następujących użytkowników:
 
 | Użytkownik | Dział | Uwagi |
 | --- | --- | --- |
-| Alicja | it | Administrator globalny |
+| Alicja | IT | Administrator globalny |
 | Bob | Badania | Robert jest również właścicielem grupy badań |
 | Carole | Badania |  |
 | Dave | Marketing |  |
@@ -69,7 +69,7 @@ Zarządzanie prawami obejmuje następujące role, które są specyficzne dla zar
 
 | Role | Opis |
 | --- | --- |
-| Twórca katalogu | Utwórz wykazy i zarządzaj nimi. Zazwyczaj administrator IT, który nie jest administratorem globalnym lub właścicielem zasobu dla kolekcji zasobów. Osoba tworząca katalog automatycznie stanie się pierwszym właścicielem katalogu i może dodać dodatkowych właścicieli katalogu. |
+| Twórca katalogu | Utwórz wykazy i zarządzaj nimi. Zazwyczaj administrator IT, który nie jest administratorem globalnym lub właścicielem zasobu dla kolekcji zasobów. Osoba tworząca katalog automatycznie stanie się pierwszym właścicielem katalogu i może dodać dodatkowych właścicieli katalogu. Autor wykazu nie może zarządzać katalogami, które nie są właścicielami i nie mogą dodawać do nich zasobów. Jeśli twórca katalogu musi zarządzać innym wykazem lub dodać do nich zasoby, które nie są właścicielami, mogą zażądać od współwłaściciela tego katalogu lub zasobu. |
 | Właściciel katalogu | Edytuj istniejące wykazy i zarządzaj nimi. Zazwyczaj administrator IT lub właściciele zasobów lub użytkownik, który wyznaczył właściciela katalogu. |
 | Menedżer pakietów dostępu | Edytuj wszystkie istniejące pakiety dostępu i zarządzaj nimi w ramach wykazu. |
 
@@ -139,13 +139,21 @@ Jeśli chcesz delegować tworzenie wykazu, Dodaj użytkowników do roli twórcy 
 
 ## <a name="add-a-catalog-owner-or-an-access-package-manager"></a>Dodawanie właściciela katalogu lub Menedżera pakietów programu Access
 
-Aby delegować Zarządzanie wykazem lub pakietami dostępu do katalogu, należy dodać użytkowników do właściciela katalogu lub uzyskać dostęp do ról Menedżera pakietów. Użytkownik, który tworzy katalog, zostaje pierwszym właścicielem katalogu. Wykonaj następujące kroki, aby przypisać użytkownika do roli właściciela katalogu lub Menedżera pakietów dostępu.
+Aby delegować Zarządzanie wykazem lub pakietami dostępu do katalogu, należy dodać użytkowników do właściciela katalogu lub uzyskać dostęp do ról Menedżera pakietów. Użytkownik, który tworzy katalog, zostaje pierwszym właścicielem katalogu. 
+
+Przypisany właściciel wykazu lub Menedżer pakietów dostępu musi być zaznajomiony z projektem. Twórca katalogu powinien utworzyć pakiet dostępu, jeśli jest uwzględniony w codziennych operacjach projektu i wie o następujących informacjach:
+- Jakie zasoby są potrzebne
+- kto będzie potrzebować dostępu
+- kto musi zatwierdzić dostęp
+- jak długo projekt będzie ostatni
+
+Twórca katalogu powinien delegować zadanie do potencjalnego klienta projektu, który utworzy i zarządza pakietem dostępu, jeśli nie jest to związane z codziennymi operacjami projektu. Wykonaj następujące kroki, aby przypisać użytkownika do właściciela katalogu lub uzyskać dostęp do roli menedżera pakietów:
 
 **Rola wymagana wstępnie:** Administrator globalny, administrator użytkownika lub właściciel katalogu
 
 1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
-1. W menu po lewej stronie kliknij pozycję wykazy, a następnie otwórz wykaz, do którego chcesz dodać administratorów.
+1. W menu po lewej stronie kliknij pozycję **wykazy** , a następnie otwórz wykaz, do którego chcesz dodać administratorów.
 
 1. W menu po lewej stronie kliknij pozycję **role i Administratorzy**.
 

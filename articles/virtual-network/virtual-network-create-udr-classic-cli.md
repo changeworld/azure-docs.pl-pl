@@ -1,10 +1,10 @@
 ---
-title: Kontrolowanie routingu w sieci wirtualnej platformy Azure - CLI - Classic | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak kontrolować routingu w sieci wirtualnej w klasycznym modelu wdrażania przy użyciu wiersza polecenia platformy Azure
+title: Sterowanie routingiem w Virtual Network platformy Azure — interfejs wiersza polecenia — klasyczny | Microsoft Docs
+description: Dowiedz się, jak kontrolować Routing w programie sieci wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure w klasycznym modelu wdrażania
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-service-management
 ms.assetid: ca2b4638-8777-4d30-b972-eb790a7c804f
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: e1b8bb3544a08b60564ceb5bd7e1666214059e09
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1193145b315175e6394db4caf93ab2e76a942ed9
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60743925"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058785"
 ---
-# <a name="control-routing-and-use-virtual-appliances-classic-using-the-azure-cli"></a>Kontrolowanie, routingu i używaniu urządzeń wirtualnych (wersja klasyczna), przy użyciu wiersza polecenia platformy Azure
+# <a name="control-routing-and-use-virtual-appliances-classic-using-the-azure-cli"></a>Kontrolowanie routingu i używanie urządzeń wirtualnych (klasycznych) przy użyciu interfejsu wiersza polecenia platformy Azure
 
 > [!div class="op_single_selector"]
-> * [Program PowerShell](tutorial-create-route-table-powershell.md)
+> * [PowerShell](tutorial-create-route-table-powershell.md)
 > * [Interfejs wiersza polecenia platformy Azure](tutorial-create-route-table-cli.md)
 > * [PowerShell (klasyczny)](virtual-network-create-udr-classic-ps.md)
 > * [Interfejs wiersza polecenia (klasyczny)](virtual-network-create-udr-classic-cli.md)
@@ -34,18 +34,18 @@ ms.locfileid: "60743925"
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-W tym artykule opisano klasyczny model wdrażania. Możesz również [sterować routingiem i używaniu urządzeń wirtualnych w modelu wdrażania usługi Resource Manager](tutorial-create-route-table-cli.md).
+W tym artykule opisano klasyczny model wdrażania. Można również [kontrolować Routing i używać urządzeń wirtualnych w Menedżer zasobów model wdrażania](tutorial-create-route-table-cli.md).
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
 
-Poniższe przykładowe polecenia wiersza polecenia platformy Azure oczekują proste środowisko już utworzone w oparciu o powyższy scenariusz. Jeśli chcesz uruchamiać polecenia, ponieważ są one wyświetlane w tym dokumencie, należy utworzyć w środowisku pokazanym w [tworzenie sieci wirtualnej (klasycznej) przy użyciu wiersza polecenia platformy Azure](virtual-networks-create-vnet-classic-cli.md).
+Przykłady poleceń interfejsu wiersza polecenia platformy Azure poniżej oczekują prostego środowiska już utworzonego na podstawie powyższego scenariusza. Jeśli chcesz uruchomić polecenia w taki sposób, aby były wyświetlane w tym dokumencie, Utwórz środowisko widoczne w temacie [Tworzenie sieci wirtualnej (klasycznej) przy użyciu interfejsu wiersza polecenia platformy Azure](virtual-networks-create-vnet-classic-cli.md).
 
 [!INCLUDE [azure-cli-prerequisites-include.md](../../includes/azure-cli-prerequisites-include.md)]
 
-## <a name="create-the-udr-for-the-front-end-subnet"></a>Utwórz trasę zdefiniowaną przez użytkownika dla podsieci frontonu
-Aby utworzyć tabelę tras i trasy służące do podsieci frontonu, w oparciu o powyższy scenariusz, wykonaj następujące czynności.
+## <a name="create-the-udr-for-the-front-end-subnet"></a>Utwórz UDR dla podsieci frontonu
+Aby utworzyć tabelę tras i trasę wymaganą dla podsieci frontonu na podstawie powyższego scenariusza, wykonaj poniższe kroki.
 
-1. Uruchom następujące polecenie, aby przełączyć tryb na klasyczny:
+1. Uruchom następujące polecenie, aby przełączyć się do trybu klasycznego:
 
     ```azurecli
     azure config mode asm
@@ -72,9 +72,9 @@ Aby utworzyć tabelę tras i trasy służące do podsieci frontonu, w oparciu o 
    
     Parametry:
    
-   * **-l (lub --location)** . Region platformy Azure, w którym zostanie utworzona nowa sieciowa grupa zabezpieczeń. W naszym scenariuszu *westus*.
-   * **-n (lub --name)** . Nazwa nowej sieciowej grupy zabezpieczeń. W naszym scenariuszu *sieciowa grupa zabezpieczeń frontonu*.
-3. Uruchom następujące polecenie, aby tworzyć trasy w tabeli tras, aby wysłać cały ruch kierowany do podsieci zaplecza (192.168.2.0/24), aby **FW1** maszyny Wirtualnej (192.168.0.4):
+   * **-l (lub --location)** . Region świadczenia usługi Azure, w którym zostanie utworzony nowy sieciowej grupy zabezpieczeń. W naszym scenariuszu *zachodnie*.
+   * **-n (lub --name)** . Nazwa nowego sieciowej grupy zabezpieczeń. W naszym scenariuszu *sieciowej grupy zabezpieczeń-frontonu*.
+3. Uruchom następujące polecenie, aby utworzyć trasę w tabeli tras, aby wysłać cały ruch przychodzący do podsieci zaplecza (192.168.2.0/24) do maszyny wirtualnej **FW1** (192.168.0.4):
 
     ```azurecli
     azure network route-table route set -r UDR-FrontEnd -n RouteToBackEnd -a 192.168.2.0/24 -t VirtualAppliance -p 192.168.0.4
@@ -89,11 +89,11 @@ Aby utworzyć tabelę tras i trasy służące do podsieci frontonu, w oparciu o 
    
     Parametry:
    
-   * **-r (lub--nazwa tabeli tras)** . Nazwa tabeli tras, w której zostaną dodane trasy. W naszym scenariuszu *trasy zdefiniowanej przez użytkownika frontonu*.
-   * **-a (lub --address-prefix)** . Prefiks adresu podsieci, w których pakietów są przeznaczone do. W naszym scenariuszu *192.168.2.0/24*.
-   * **-t (lub--następnego przeskoku typu)** . Typ ruchu obiektu będą wysyłane do. Możliwe wartości to *VirtualAppliance*, *VirtualNetworkGateway*, *VNETLocal*, *Internet*, lub *Brak*.
-   * **-p (lub--ip adres, następnego przeskoku w-** ). Adres IP następnego przeskoku. W naszym scenariuszu *192.168.0.4*.
-4. Uruchom następujące polecenie, aby skojarzyć utworzony za pomocą tabeli tras **frontonu** podsieci:
+   * **-r (lub--Route-Table-Name)** . Nazwa tabeli tras, w której zostanie dodana trasa. W naszym scenariuszu *UDR-frontonu*.
+   * **-a (lub --address-prefix)** . Prefiks adresu podsieci, do której są przeznaczone pakiety. W naszym scenariuszu *192.168.2.0/24*.
+   * **-t (lub--następny-typ)** . Typ ruchu obiektów zostanie wysłany do. Możliwe wartości to *VirtualAppliance*, *VirtualNetworkGateway*, *VNETLocal*, *Internet*lub *none*.
+   * **-p (lub--Next-IP-Address**). Adres IP dla następnego przeskoku. W naszym scenariuszu *192.168.0.4*.
+4. Uruchom następujące polecenie, aby skojarzyć tabelę tras utworzoną z podsiecią **frontonu** :
 
     ```azurecli
     azure network vnet subnet route-table add -t TestVNet -n FrontEnd -r UDR-FrontEnd
@@ -114,11 +114,11 @@ Aby utworzyć tabelę tras i trasy służące do podsieci frontonu, w oparciu o 
    
     Parametry:
    
-   * **-t (lub--vnet-name)** . Nazwa sieci wirtualnej, w którym znajduje się podsieć. W naszym scenariuszu jest to *TestVNet*.
-   * **-n (lub--subnet-name**. Nazwa tabeli tras podsieci zostanie dodany do. W naszym scenariuszu jest to *FrontEnd*.
+   * **-t (lub--VNET-Name)** . Nazwa sieci wirtualnej, w której znajduje się podsieć. W naszym scenariuszu jest to *TestVNet*.
+   * **-n (lub--nazwa podsieci**. Nazwa podsieci, do której zostanie dodana tabela tras. W naszym scenariuszu jest to *FrontEnd*.
 
-## <a name="create-the-udr-for-the-back-end-subnet"></a>Utwórz trasę zdefiniowaną przez użytkownika dla podsieci zaplecza
-Aby utworzyć tabelę tras i trasy służące do podsieci zaplecza na podstawie scenariusza, wykonaj następujące czynności:
+## <a name="create-the-udr-for-the-back-end-subnet"></a>Utwórz UDR dla podsieci zaplecza
+Aby utworzyć tabelę tras i trasę wymaganą dla podsieci zaplecza na podstawie tego scenariusza, wykonaj następujące czynności:
 
 1. Uruchom następujące polecenie, aby utworzyć tabelę tras dla podsieci zaplecza:
 
@@ -126,13 +126,13 @@ Aby utworzyć tabelę tras i trasy służące do podsieci zaplecza na podstawie 
     azure network route-table create -n UDR-BackEnd -l uswest
     ```
 
-2. Uruchom następujące polecenie, aby tworzyć trasy w tabeli tras, aby wysłać cały ruch kierowany do podsieci frontonu (. 192.168.1.0/24), aby **FW1** maszyny Wirtualnej (192.168.0.4):
+2. Uruchom następujące polecenie, aby utworzyć trasę w tabeli tras, aby wysłać cały ruch przychodzący do podsieci frontonu (192.168.1.0/24) do maszyny wirtualnej **FW1** (192.168.0.4):
 
     ```azurecli
     azure network route-table route set -r UDR-BackEnd -n RouteToFrontEnd -a 192.168.1.0/24 -t VirtualAppliance -p 192.168.0.4
     ```
 
-3. Uruchom następujące polecenie, aby skojarzyć tabeli trasy z **zaplecza** podsieci:
+3. Uruchom następujące polecenie, aby skojarzyć tabelę tras z podsiecią **zaplecza** :
 
     ```azurecli
     azure network vnet subnet route-table add -t TestVNet -n BackEnd -r UDR-BackEnd

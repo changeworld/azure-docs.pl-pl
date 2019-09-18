@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.reviewer: ''
-ms.openlocfilehash: 04a2a3f2557ccef510a831a5c9fbf89bb62cb9a7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 959d959cd269884b3b75c4c23bfd0054ae64ced7
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812836"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033642"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Planowanie wdrożenia usługi Azure serwer proxy aplikacji usługi Azure AD
 
@@ -64,7 +64,7 @@ Następujące podstawowe wymagania muszą zostać spełnione, aby można było s
 
 *  Dołączanie do **platformy Azure**: Przed wdrożeniem serwera proxy aplikacji tożsamości użytkowników muszą być synchronizowane z katalogu lokalnego lub tworzone bezpośrednio w dzierżawach usługi Azure AD. Synchronizacja tożsamości umożliwia usłudze Azure AD wstępne uwierzytelnienie użytkowników przed udzieleniem im dostępu do opublikowanych aplikacji serwera proxy aplikacji i posiadanie informacji o identyfikatorze użytkownika w celu przeprowadzenia rejestracji jednokrotnej (SSO).
 
-* **Wymagania dotyczące dostępu warunkowego**: Nie zalecamy korzystania z serwera proxy aplikacji w celu uzyskania dostępu do sieci intranet, ponieważ powoduje to dodanie opóźnień, które będą mieć wpływ na użytkowników. Zalecamy używanie serwera proxy aplikacji z zasadami wstępnego uwierzytelniania i dostępu warunkowego dla dostępu zdalnego z Internetu.  Podejście do zapewnienia dostępu warunkowego do korzystania z intranetu polega na modernizacji aplikacji, aby umożliwić diretly uwierzytelniania przy użyciu usługi AAD. Aby uzyskać więcej informacji, zapoznaj się z [zasobami dotyczącymi migrowania aplikacji do usługi AAD](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources) . 
+* **Wymagania dotyczące dostępu warunkowego**: Nie zalecamy korzystania z serwera proxy aplikacji w celu uzyskania dostępu do sieci intranet, ponieważ powoduje to dodanie opóźnień, które będą mieć wpływ na użytkowników. Zalecamy używanie serwera proxy aplikacji z zasadami wstępnego uwierzytelniania i dostępu warunkowego dla dostępu zdalnego z Internetu.  Podejście do zapewnienia dostępu warunkowego do użytku w intranecie polega na modernizacji aplikacji, aby mogły one być bezpośrednio uwierzytelniane za pomocą usługi AAD. Aby uzyskać więcej informacji, zapoznaj się z [zasobami dotyczącymi migrowania aplikacji do usługi AAD](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources) . 
 
 * **Limity usługi**: Aby chronić przed zużyciem zasobów przez poszczególne dzierżawy, istnieją limity ograniczania ustawione dla poszczególnych aplikacji i dzierżawców. Aby sprawdzić te limity, odnoszą się do [limitów i ograniczeń usługi Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions). Te limity ograniczania są oparte na teście porównawczym znacznie powyżej typowego woluminu użycia i zapewniają szeroki bufor dla większości wdrożeń.
 
@@ -94,7 +94,7 @@ Kompiluj spis wszystkich aplikacji w zakresie, które są publikowane za pośred
 | Typ informacji| Informacje do zebrania |
 |---|---|
 | Typ usługi| Przykład: SharePoint, SAP, CRM, niestandardowa aplikacja sieci Web, interfejs API |
-| Platforma aplikacji | Na przykład: Windows IIS, Apache w systemie Linux, Tomcat, NGINX |
+| Platforma aplikacji | Przykład: Windows IIS, Apache w systemie Linux, Tomcat, NGINX |
 | Członkostwo w domenie| W pełni kwalifikowana nazwa domeny serwera sieci Web (FQDN) |
 | Lokalizacja aplikacji | Gdzie serwer sieci Web lub farma znajduje się w infrastrukturze |
 | Dostęp wewnętrzny | Dokładny adres URL używany podczas wewnętrznego uzyskiwania dostępu do aplikacji. <br> Jeśli w farmie jest używany typ równoważenia obciążenia? <br> Czy aplikacja rysuje zawartość ze źródeł innych niż sama.<br> Ustal, czy aplikacja działa za pośrednictwem obiektów WebSockets. |
@@ -239,7 +239,7 @@ Sprawdź, czy aplikacja jest dostępna za pośrednictwem serwera proxy aplikacji
 
 3. W polu **wstępnego uwierzytelniania** Użyj listy rozwijanej, aby wybrać **Azure Active Directory**, a następnie wybierz pozycję **Zapisz**.
 
-Po włączeniu wstępnego uwierzytelniania usługa Azure AD będzie najpierw sprawdzać użytkowników w celu uwierzytelnienia. Jeśli logowanie jednokrotne jest configued, aplikacja zaplecza sprawdzi również, czy użytkownik uzyska dostęp do aplikacji. Zmiana trybu wstępnego uwierzytelniania z przekazywania do usługi Azure AD powoduje również skonfigurowanie zewnętrznego adresu URL przy użyciu protokołu HTTPS, więc każda aplikacja początkowo skonfigurowana dla protokołu HTTP będzie teraz zabezpieczona przy użyciu protokołu HTTPS.
+Po włączeniu wstępnego uwierzytelniania usługa Azure AD będzie najpierw sprawdzać użytkowników w celu uwierzytelnienia. Jeśli skonfigurowano Logowanie jednokrotne, aplikacja zaplecza sprawdzi również, czy użytkownik uzyska dostęp do aplikacji. Zmiana trybu wstępnego uwierzytelniania z przekazywania do usługi Azure AD powoduje również skonfigurowanie zewnętrznego adresu URL przy użyciu protokołu HTTPS, więc każda aplikacja początkowo skonfigurowana dla protokołu HTTP będzie teraz zabezpieczona przy użyciu protokołu HTTPS.
 
 ### <a name="enable-single-sign-on"></a>Włącz logowanie jednokrotne
 
@@ -292,11 +292,11 @@ Jednak użytkownicy nadal muszą wykonać codzienne operacje uprzywilejowane, ab
 
 ### <a name="reporting-and-monitoring"></a>Raportowanie i monitorowanie
 
-Usługa Azure AD zapewnia dodatkowe informacje o użyciu aplikacji i kondycji operacyjnej w organizacji za pomocą [dzienników i raportów inspekcji](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-audit-logs). Serwer proxy aplikacji ułatwia również monitorowanie łączników z poziomu portalu usługi Azure AD i dzienników zdarzeń systemu Windows.
+Usługa Azure AD zapewnia dodatkowe informacje o użyciu aplikacji i kondycji operacyjnej w organizacji za pomocą [dzienników i raportów inspekcji](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). Serwer proxy aplikacji ułatwia również monitorowanie łączników z poziomu portalu usługi Azure AD i dzienników zdarzeń systemu Windows.
 
 #### <a name="application-audit-logs"></a>Dzienniki inspekcji aplikacji
 
-Te dzienniki zawierają szczegółowe informacje dotyczące logowań do aplikacji skonfigurowanych przy użyciu serwera proxy aplikacji oraz urządzenia i użytkownika, który uzyskują dostęp do aplikacji. [Dzienniki inspekcji](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-audit-logs) znajdują się w Azure Portal i w [interfejsie API inspekcji](https://docs.microsoft.com/graph/api/resources/directoryaudit?view=graph-rest-beta) do eksportowania. Ponadto dostępne są również [raporty dotyczące użycia i wglądu](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-usage-insights-report) w dane aplikacji.
+Te dzienniki zawierają szczegółowe informacje dotyczące logowań do aplikacji skonfigurowanych przy użyciu serwera proxy aplikacji oraz urządzenia i użytkownika, który uzyskują dostęp do aplikacji. [Dzienniki inspekcji](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) znajdują się w Azure Portal i w [interfejsie API inspekcji](https://docs.microsoft.com/graph/api/resources/directoryaudit?view=graph-rest-beta) do eksportowania. Ponadto dostępne są również [raporty dotyczące użycia i wglądu](../reports-monitoring/concept-usage-insights-report.md?context=azure/active-directory/manage-apps/context/manage-apps-context) w dane aplikacji.
 
 #### <a name="application-proxy-connector-monitoring"></a>Monitorowanie łącznika serwera proxy aplikacji
 

@@ -1,6 +1,6 @@
 ---
-title: Data przykłady przekształcania oświadczeń tożsamości środowisko Framework schematu z usługi Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Data oświadczeń przykłady przekształcania tożsamości środowisko Framework schematu z usługi Azure Active Directory B2C.
+title: Przykładowe przekształcenie oświadczeń dla schematu struktury obsługi tożsamości Azure Active Directory B2C | Microsoft Docs
+description: Date przykłady transformacji oświadczeń dla schematu struktury obsługi tożsamości Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,36 +10,36 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ad4c6c78556f98e2905b3583910e498055257c36
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 077915705c242805d3709b5d52d445288fa5336a
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511128"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064349"
 ---
-# <a name="date-claims-transformations"></a>Data oświadczeń przekształcenia
+# <a name="date-claims-transformations"></a>Przekształceń oświadczeń dat
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Ten artykuł zawiera przykłady dotyczące używania przekształcenia oświadczeń daty schematu, struktura środowiska tożsamości w usłudze Azure Active Directory (Azure AD) B2C. Aby uzyskać więcej informacji, zobacz [ClaimsTransformations](claimstransformations.md).
+W tym artykule przedstawiono przykłady zastosowania przekształceń oświadczeń dla schematu programu Identity Experience Framework w Azure Active Directory B2C (Azure AD B2C). Aby uzyskać więcej informacji, zobacz [ClaimsTransformations](claimstransformations.md).
 
 ## <a name="assertdatetimeisgreaterthan"></a>AssertDateTimeIsGreaterThan
 
-Sprawdza, czy jeden daty i godziny oświadczenia (string — typ danych) jest nowsza niż druga data i godzina oświadczeń (string — typ danych) i zgłasza wyjątek.
+Sprawdza, czy jedno wystąpienie daty i czasu (typu danych String) jest późniejsze niż drugie zdarzenie daty i godziny (typ danych String) i zgłasza wyjątek.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie InputClaim | leftOperand | string | Typ pierwszego oświadczenia, który powinien przypadać później niż drugi oświadczenia. |
-| Oświadczenie InputClaim | rightOperand | string | Drugi typ oświadczenia, który powinien być wcześniejszy niż pierwszego oświadczenia. |
-| InputParameter | AssertIfEqualTo | wartość logiczna | Określa, czy ta asercja należy przekazać, jeśli lewy operand jest równa prawy operand. |
-| InputParameter | AssertIfRightOperandIsNotPresent | wartość logiczna | Określa, czy ta asercja należy przekazywać, jeśli brakuje prawy operand. |
-| InputParameter | TreatAsEqualIfWithinMillseconds | int | Określa liczbę milisekund, aby umożliwić między tymi dwoma daty i godziny wziąć pod uwagę czas, w którym równe (na przykład konto dla zegara). |
+| Oświadczenie inputclaim | leftOperand | ciąg | Typ pierwszego wystąpienia, który powinien być późniejszy od drugiego żądania. |
+| Oświadczenie inputclaim | rightOperand | ciąg | Typ drugiego zgłoszenia, który powinien być wcześniejszy niż pierwszy z nich. |
+| InputParameter | AssertIfEqualTo | boolean | Określa, czy potwierdzenie powinno być przekazywane, jeśli lewy operand jest równy operandowi z prawej strony. |
+| InputParameter | AssertIfRightOperandIsNotPresent | boolean | Określa, czy potwierdzenie ma być przekazywane, jeśli brakuje prawego operandu. |
+| InputParameter | TreatAsEqualIfWithinMillseconds | int | Określa liczbę milisekund, które mają być dozwolone między dwiema datami czasu, aby uwzględnić czasy równe (na przykład w przypadku pochylenia zegara). |
 
-**AssertDateTimeIsGreaterThan** przekształcania oświadczeń jest zawsze wykonywana z [profilu technicznego weryfikacji](validation-technical-profile.md) który jest wywoływany [własnym potwierdzone profilu technicznego](self-asserted-technical-profile.md). **DateTimeGreaterThan** samodzielnie profilu technicznego określa profil techniczny wyświetlane dla użytkownika komunikat o błędzie.
+Przekształcenie oświadczeń **AssertDateTimeIsGreaterThan** jest zawsze wykonywane z poziomu [weryfikacji profilu technicznego](validation-technical-profile.md) , który jest wywoływany przez [własny profil techniczny](self-asserted-technical-profile.md). **DateTimeGreaterThan** z własnym profilem technicznym metadane są kontrolowane komunikat o błędzie, który zostanie wyświetlony przez profil techniczny.
 
-![AssertStringClaimsAreEqual execution](./media/date-transformations/assert-execution.png)
+![AssertStringClaimsAreEqual wykonywanie](./media/date-transformations/assert-execution.png)
 
-W poniższym przykładzie porównano `currentDateTime` oświadczenia `approvedDateTime` oświadczenia. Błąd jest generowany, jeśli `currentDateTime` jest późniejsza niż `approvedDateTime`. Transformacja traktuje wartości jako równe, jeśli są one w ciągu 5 minut (w milisekundach 30000) różnicę.
+Poniższy przykład porównuje `currentDateTime` `approvedDateTime` z tym roszczeń. Błąd jest zgłaszany, `currentDateTime` jeśli jest późniejszy `approvedDateTime`niż. Transformacja traktuje wartości jako równe, jeśli są one w ciągu 5 minut (30000 milisekund).
 
 ```XML
 <ClaimsTransformation Id="AssertApprovedDateTimeLaterThanCurrentDateTime" TransformationMethod="AssertDateTimeIsGreaterThan">
@@ -55,7 +55,7 @@ W poniższym przykładzie porównano `currentDateTime` oświadczenia `approvedDa
 </ClaimsTransformation>
 ```
 
-`login-NonInteractive` Wywołania profilu technicznego weryfikacji `AssertApprovedDateTimeLaterThanCurrentDateTime` przekształcania oświadczeń.
+`AssertApprovedDateTimeLaterThanCurrentDateTime` Profil techniczny `login-NonInteractive` weryfikacji wywołuje transformację oświadczeń.
 ```XML
 <TechnicalProfile Id="login-NonInteractive">
   ...
@@ -65,7 +65,7 @@ W poniższym przykładzie porównano `currentDateTime` oświadczenia `approvedDa
 </TechnicalProfile>
 ```
 
-Samodzielnie profilu technicznego wywołuje weryfikacji **logowania nieinterakcyjnego** profilu technicznego.
+Profil techniczny z własnym potwierdzeniem wywołuje profil techniczny **logowania weryfikacji — nieinteraktywny** .
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
@@ -80,21 +80,21 @@ Samodzielnie profilu technicznego wywołuje weryfikacji **logowania nieinterakcy
 
 ### <a name="example"></a>Przykład
 
-- Oświadczeń wejściowych:
+- Oświadczenia wejściowe:
     - **leftOperand**: 2018-10-01T15:00:00.0000000Z
     - **rightOperand**: 2018-10-01T14:00:00.0000000Z
-- Wynik: Zgłoszony błąd
+- Wynika Zgłoszono błąd
 
 ## <a name="convertdatetodatetimeclaim"></a>ConvertDateToDateTimeClaim
 
-Konwertuje **data** oświadczenia do **daty/godziny** typu oświadczenia. Przekształcanie oświadczeń konwertuje format czasu i dodaje 12:00:00 AM do daty.
+Konwertuje **datę oświadczenia daty** na element ClaimType **DateTime** . Transformacja oświadczeń konwertuje format czasu i dodaje 12:00:00 AM do daty.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie InputClaim | Oświadczenie InputClaim | date | Oświadczenia, który ma zostać przekonwertowany. |
-| oświadczenie outputClaim | oświadczenie outputClaim | Data i godzina | Typ oświadczenia, które są generowane po wywołaniu tego ClaimsTransformation. |
+| Oświadczenie inputclaim | Oświadczenie inputclaim | date | Wartość oświadczenia do przekonwertowania. |
+| Oświadczenie outputclaim | Oświadczenie outputclaim | Data i godzina | Wartość oświadczenia jest generowana po wywołaniu tego ClaimsTransformation. |
 
-W poniższym przykładzie pokazano konwersji oświadczenia `dateOfBirth` (Data — typ danych) do innego roszczenia `dateOfBirthWithTime` (typ danych Data/godzina).
+Poniższy przykład ilustruje konwersję (typ danych daty `dateOfBirth` ) żądania na inne zastrzeżenie `dateOfBirthWithTime` (typ danych DateTime).
 
 ```XML
   <ClaimsTransformation Id="ConvertToDateTime" TransformationMethod="ConvertDateToDateTimeClaim">
@@ -109,18 +109,18 @@ W poniższym przykładzie pokazano konwersji oświadczenia `dateOfBirth` (Data �
 
 ### <a name="example"></a>Przykład
 
-- Oświadczeń wejściowych:
-    - **inputClaim**: 2019-06-01
-- Oświadczeń danych wyjściowych:
-    - **oświadczenie outputClaim**: 1559347200 (1 czerwiec maja 2019 r 12:00:00 AM)
+- Oświadczenia wejściowe:
+    - **oświadczenie inputclaim**: 2019-06-01
+- Oświadczenia wyjściowe:
+    - **oświadczenie outputclaim**: 1559347200 (1 czerwca 2019 12:00:00 AM)
 
 ## <a name="getcurrentdatetime"></a>GetCurrentDateTime
 
-Pobierz bieżąca data i Godzina UTC i Dodaj wartość do typu oświadczenia.
+Pobierz bieżącą datę i godzinę UTC i Dodaj wartość do elementu ClaimType.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| oświadczenie outputClaim | currentDateTime | Data i godzina | Typ oświadczenia, które są generowane po wywołaniu tego ClaimsTransformation. |
+| Oświadczenie outputclaim | currentDateTime | Data i godzina | Wartość oświadczenia jest generowana po wywołaniu tego ClaimsTransformation. |
 
 ```XML
 <ClaimsTransformation Id="GetSystemDateTime" TransformationMethod="GetCurrentDateTime">
@@ -132,23 +132,23 @@ Pobierz bieżąca data i Godzina UTC i Dodaj wartość do typu oświadczenia.
 
 ### <a name="example"></a>Przykład
 
-* Oświadczeń danych wyjściowych:
-    * **currentDateTime**: 1534418820 (sierpień 16 2018 r. 11:27:00 AM)
+* Oświadczenia wyjściowe:
+    * **currentDateTime**: 1534418820 (16 sierpnia 2018 11:27:00 AM)
 
 ## <a name="datetimecomparison"></a>DateTimeComparison
 
-Określić, czy jeden daty/godziny jest, później, wcześniej lub równy innemu. Wynik jest nowe, logiczna boolean oświadczenia o wartości `true` lub `false`.
+Ustal, czy jedna wartość daty i godziny jest późniejsza, wcześniejsza lub równa innej. Wynik jest nową wartością logiczną typu Boolean, z wartością `true` lub. `false`
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie InputClaim | firstDateTime | Data i godzina | Pierwszą datę i godzinę do porównania, czy wcześniej lub później niż drugi daty/godziny. Wartość null zgłasza wyjątek. |
-| Oświadczenie InputClaim | secondDateTime | Data i godzina | Drugi daty/godziny do porównania, czy wcześniej lub późniejsza niż data i godzina pierwszego. Wartość null, jest traktowany jako bieżący datetTime. |
-| InputParameter | operator | string | Jedną z następujących wartości: ten sam, późniejsza niż lub wcześniejsza niż. |
-| InputParameter | timeSpanInSeconds | int | Dodaj zakres czasu do pierwszego daty/godziny. |
-| oświadczenie outputClaim | wynik | wartość logiczna | Typ oświadczenia, które są generowane po wywołaniu tego ClaimsTransformation. |
+| Oświadczenie inputclaim | firstDateTime | Data i godzina | Pierwszy element dateTime, aby porównać, czy jest on wcześniejszy, czy późniejszy niż drugi dateTime. Wartość null zgłasza wyjątek. |
+| Oświadczenie inputclaim | secondDateTime | Data i godzina | Druga data/godzina do porównania, czy jest wcześniejsza lub późniejsza niż pierwsza wartość daty i godziny. Wartość zerowa jest traktowana jako bieżąca datetTime. |
+| InputParameter | Zakład | ciąg | Jedna z następujących wartości: taka sama, późniejsza niż lub wcześniejsza niż. |
+| InputParameter | timeSpanInSeconds | int | Dodaj przedział czasu do pierwszej wartości daty i godziny. |
+| Oświadczenie outputclaim | wynik | boolean | Wartość oświadczenia jest generowana po wywołaniu tego ClaimsTransformation. |
 
-Użycie oświadczeń to przekształcenie, aby określić, czy dwa ClaimTypes są równe, nowsze lub wcześniejsza od siebie nawzajem. Na przykład mogą przechowywać czas ostatniego użytkownika zaakceptowano warunków użytkowania usługi (TOS). Po upływie 3 miesięcy możesz poprosić użytkownika o ponowne dostępu OT.
-Aby uruchomić przekształcania oświadczeń, należy najpierw uzyskać od bieżącej godziny i ostatniego użytkownika czasu akceptuje także OT.
+Użyj tej transformacji oświadczeń, aby określić, czy dwa oświadczenia są równe, nowsze czy starsze. Na przykład użytkownik może przechowywać ostatnio zaakceptowane warunki użytkowania usług (TOS) przez użytkownika. Po 3 miesiącach możesz polecić użytkownikowi ponowne uzyskanie dostępu do tych organizacji.
+Aby uruchomić transformację roszczeń, najpierw musisz uzyskać bieżącą wartość dateTime, a także godzinę, w której użytkownik ostatnio akceptuje te organizacje.
 
 ```XML
 <ClaimsTransformation Id="CompareLastTOSAcceptedWithCurrentDateTime" TransformationMethod="DateTimeComparison">
@@ -168,11 +168,11 @@ Aby uruchomić przekształcania oświadczeń, należy najpierw uzyskać od bież
 
 ### <a name="example"></a>Przykład
 
-- Oświadczeń wejściowych:
+- Oświadczenia wejściowe:
     - **firstDateTime**: 2018-01-01T00:00:00.100000Z
     - **secondDateTime**: 2018-04-01T00:00:00.100000Z
 - Parametry wejściowe:
-    - **operator**: późniejsza niż
+    - **operator**: nowszy niż
     - **timeSpanInSeconds**: 7776000 (90 dni)
-- Oświadczeń danych wyjściowych:
-    - **wynik**: true
+- Oświadczenia wyjściowe:
+    - **wynik**: prawda

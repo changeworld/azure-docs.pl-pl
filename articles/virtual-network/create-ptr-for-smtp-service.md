@@ -1,10 +1,11 @@
 ---
-title: Konfigurowanie strefy wyszukiwania wstecznego na potrzeby kontroli baneru SMTP na platformie Azure
+title: Konfigurowanie stref wyszukiwania wstecznego na potrzeby kontroli baneru SMTP na platformie Azure
 titlesuffix: Azure Virtual Network
-description: W tym artykule opisano sposób konfigurowania stref wyszukiwania wstecznego na potrzeby kontroli baneru SMTP na platformie Azure
+description: Opisuje sposób konfigurowania stref wyszukiwania wstecznego na potrzeby sprawdzania transparentu SMTP na platformie Azure
 services: virtual-network
 documentationcenter: virtual-network
 author: genlin
+manager: dcscontentpm
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -12,35 +13,35 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 203c3c5f371af7de891f0949a35378294bb50a0e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 084fdb7f850f3819738a982127fa98efab114197
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60713643"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059022"
 ---
-# <a name="configure-reverse-lookup-zones-for-an-smtp-banner-check"></a>Konfigurowanie strefy wyszukiwania wstecznego na potrzeby kontroli baneru SMTP
+# <a name="configure-reverse-lookup-zones-for-an-smtp-banner-check"></a>Skonfiguruj strefy wyszukiwania wstecznego na potrzeby kontroli baneru SMTP
 
-W tym artykule opisano sposób użycia strefy wyszukiwania wstecznego w usłudze Azure DNS i tworzenie rekordu odwrotnego DNS (PTR) dla Sprawdź baneru SMTP.
+W tym artykule opisano, jak używać strefy odwrotnej w Azure DNS i utworzyć rekord odwrotnej usługi DNS (PTR) dla sprawdzania transparentu SMTP.
 
 ## <a name="symptom"></a>Objaw
 
-Jeśli hostowany serwer SMTP w systemie Microsoft Azure, otrzymasz następujący komunikat o błędzie podczas wysyłania lub komunikat o błędzie z serwerów poczty zdalnej:
+W przypadku hostowania serwera SMTP w Microsoft Azure może zostać wyświetlony następujący komunikat o błędzie podczas wysyłania lub odbierania komunikatu z serwerów poczty zdalnej:
 
-**554: Żaden rekord PTR**
+**554: Brak rekordu PTR**
 
 ## <a name="solution"></a>Rozwiązanie
 
-Dla wirtualnego adresu IP na platformie Azure rekordami odwrotnego są tworzone w programie Microsoft należące do strefy domeny, domeny niestandardowej nie strefy.
+W przypadku wirtualnego adresu IP na platformie Azure rekordy odwrotne są tworzone w strefach domen należących do firmy Microsoft, a nie w strefach domen niestandardowych.
 
-Aby skonfigurować rekordów PTR w programie Microsoft należące do strefy, należy użyć właściwości — element ReverseFqdn zasobu publicznego adresu IP. Aby uzyskać więcej informacji, zobacz [Konfigurowanie odwrotnego systemu DNS dla usług hostowanych na platformie Azure](../dns/dns-reverse-dns-for-azure-services.md).
+Aby skonfigurować rekordy PTR w strefach należących do firmy Microsoft, użyj właściwości-ReverseFqdn zasobu PublicIpAddress. Aby uzyskać więcej informacji, zobacz [Konfigurowanie odwrotnego systemu DNS dla usług hostowanych na platformie Azure](../dns/dns-reverse-dns-for-azure-services.md).
 
-Po skonfigurowaniu rekordów PTR, upewnij się, że adres IP i odwrotnej nazwy FQDN należą do subskrypcji. Jeśli spróbujesz ustawić odwrotnej nazwy FQDN, który nie należy do subskrypcji, pojawi się następujący komunikat o błędzie:
+Podczas konfigurowania rekordów PTR upewnij się, że adres IP i odwrotna nazwa FQDN są własnością subskrypcji. Jeśli spróbujesz ustawić odwrotną nazwę FQDN, która nie należy do subskrypcji, zostanie wyświetlony następujący komunikat o błędzie:
 
     Set-AzPublicIpAddress : ReverseFqdn mail.contoso.com that PublicIPAddress ip01 is trying to use does not belong to subscription <Subscription ID>. One of the following conditions need to be met to establish ownership:
                         
-    1) Element ReverseFqdn pasuje do nazwy fqdn dowolnego zasobu z publicznym adresem ip w ramach subskrypcji;
-    2) Element ReverseFqdn jest rozpoznawany jako nazwy fqdn (poprzez łańcuch rekordów CName), dowolnego zasobu z publicznym adresem ip w ramach subskrypcji;
-    3) Jest on rozpoznawany jako adres ip zasobu statycznego publicznego adresu ip w ramach subskrypcji (poprzez łańcuch rekordów CName i A).
+    1) ReverseFqdn dopasowuje nazwę FQDN dowolnego publicznego zasobu IP w ramach subskrypcji;
+    2) ReverseFqdn jest rozpoznawana jako nazwa FQDN (za pomocą łańcucha rekordów CName) dowolnego publicznego zasobu IP w ramach subskrypcji;
+    3) Jest on rozpoznawany jako adres IP (za pomocą łańcucha CName i rekordu) statycznego publicznego adresu IP w ramach subskrypcji.
 
-Jeśli ręcznie zmienisz swoje baneru SMTP, aby dopasować domyślnego reverse nazwa FQDN, serwer poczty zdalnego może nadal się niepowodzeniem, ponieważ mogą oczekiwać, hosta transparent SMTP, aby dopasować rekord MX w domenie.
+Jeśli ręcznie zmienisz transparent SMTP w taki sposób, aby był zgodny z domyślną odwrotną nazwą FQDN, zdalny serwer poczty nadal może się nie powieść, ponieważ może oczekiwać, że host transparentu SMTP będzie pasował do rekordu MX dla domeny.

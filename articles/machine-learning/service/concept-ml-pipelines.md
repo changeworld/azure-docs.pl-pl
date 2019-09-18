@@ -1,6 +1,6 @@
 ---
 title: Co to są potoki ML
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Ten artykuł zawiera informacje na temat potoków, które można tworzyć z zestawem Azure Machine Learning SDK dla języka Python i zalety korzystania z potoków uczenia maszynowego. Machine learning (ML) potoki są używane przez analityków danych kompilacji, optymalizowanie i zarządzanie ich usługi machine learning przepływów pracy.
 services: machine-learning
 ms.service: machine-learning
@@ -11,16 +11,16 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2547ca3af3039af53cb5fd5b244669b9152c21b3
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 07efde7c3664ba1866e59f23c31b9c385ed9c366
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993284"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035487"
 ---
-# <a name="what-are-ml-pipelines-in-azure-machine-learning-service"></a>Co to są potoki ML w usłudze Azure Machine Learning?
+# <a name="what-are-ml-pipelines-in-azure-machine-learning"></a>Co to są potoki ML w Azure Machine Learning?
 
-Dowiedz się, jak można tworzyć potoki usługi Machine Learning i zarządzać nimi za pomocą usług Azure Machine Learning. 
+Dowiedz się, jak tworzyć potoki uczenia maszynowego i zarządzać nimi za pomocą Azure Machine Learning. 
 
 Za pomocą machine learning (ML) potoki, analitykami danych, inżynierami danych i informatycy mogą współpracować przy etapy:
 + Przygotowywanie danych, takich jak normalizations i przekształcenia
@@ -30,7 +30,7 @@ Za pomocą machine learning (ML) potoki, analitykami danych, inżynierami danych
 
 Dowiedz się, jak [Tworzenie pierwszego potoku](how-to-create-your-first-pipeline.md).
 
-![Potoki uczenia maszynowego w usłudze Azure Machine Learning](./media/concept-ml-pipelines/pipeline-flow.png)
+![Potoki uczenia maszynowego w Azure Machine Learning](./media/concept-ml-pipelines/pipeline-flow.png)
 
 <a name="compare"></a>
 ### <a name="which-azure-pipeline-technology-should-i-use"></a>Której technologii potoku platformy Azure należy używać?

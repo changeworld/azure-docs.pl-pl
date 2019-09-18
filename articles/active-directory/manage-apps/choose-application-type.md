@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 09/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ROBOTS: NOINDEX
-ms.openlocfilehash: fb2c49d6436a14e9b6cbb0a92eb0dfba077c8e4d
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: d5bd2397c345a4f670bde343f751cd69f825ecb9
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424262"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056062"
 ---
 # <a name="choosing-the-application-type-when-adding-an-application-in-azure-active-directory"></a>Wybieranie typu aplikacji podczas dodawania aplikacji w Azure Active Directory
 
@@ -35,7 +35,7 @@ Usługa Azure AD obsługuje cztery główne typy aplikacji, które można dodać
 
 - **Aplikacje serwera proxy aplikacji** — aplikacja działająca w środowisku lokalnym, która ma zapewnić bezpieczne logowanie jednokrotne do zewnętrznego.
 
-- **Aplikacje opracowane** niestandardowo — aplikacja, którą organizacja chce opracowywać na platformie tworzenia aplikacji usługi Azure AD, ale może jeszcze nie istnieć.
+- **Aplikacje opracowane niestandardowo** — aplikacja, którą organizacja chce opracowywać na platformie tworzenia aplikacji usługi Azure AD, ale może jeszcze nie istnieć.
 
 - **Aplikacje spoza galerii** — przenoszenie własnych aplikacji Dowolny link internetowy lub każda aplikacja, która renderuje pole nazwy użytkownika i hasła, obsługuje protokoły protokołu SAML lub OpenID Connect Connect lub obsługuje standard scim, które chcesz zintegrować z logowaniem jednokrotnym w usłudze Azure AD.
 
@@ -45,11 +45,11 @@ Następujące funkcje są obsługiwane przez którykolwiek z czterech powyższyc
 
 - **Szybki Start** — szybkie rozpoczynanie pracy z aplikacją przez wykonanie [prostych kroków wdrażania](https://docs.microsoft.com/azure/active-directory/active-directory-integrating-applications-getting-started)
 
-- **Ogólne zarządzanie właściwościami** — Uzyskaj [bezpośredni link](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) do aplikacji, [Dostosuj znakowanie](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-change-app-logo-user-azure-portal) aplikacji lub [Wyłącz aplikację](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal) dla wszystkich użytkowników.
+- **Ogólne zarządzanie właściwościami** — umożliwia uzyskanie [bezpośredniego linku](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) do aplikacji, [dostosowanie znakowania](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-change-app-logo-user-azure-portal) aplikacji lub [wyłączenie aplikacji](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal) dla wszystkich użytkowników.
 
 - **Zarządzanie użytkownikami i grupami** — [przypisywanie](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) lub [usuwanie](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-remove-assignment-azure-portal) użytkowników i grup do aplikacji oraz opcjonalnie przypisywanie określonych ról aplikacji, do których Ci użytkownicy i grupy mają dostęp
 
-- **Samoobsługowy dostęp do aplikacji** — umożliwia użytkownikom zażądanie samoobsługowego [dostępu](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) do aplikacji ze swoich paneli dostępu do aplikacji przez dodanie aplikacji bezpośrednio lub dołączenie do grupy z włączonymi samoobsługą. [ ](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management), opcjonalnie wymaganie zatwierdzenia biznesowego w sposób
+- **Samoobsługowy dostęp do aplikacji** — umożliwia użytkownikom zażądanie samoobsługowego [dostępu](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) do aplikacji ze swoich paneli dostępu do aplikacji przez dodanie aplikacji bezpośrednio lub [dołączenie do grupy z włączonymi samoobsługą. ](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management), opcjonalnie wymaganie zatwierdzenia biznesowego w sposób
 
 - **Dzienniki logowania** — zobacz [wszystkie logowania do aplikacji](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-sign-ins)lub wszystkie aplikacje
 
@@ -63,7 +63,7 @@ Następujące funkcje są obsługiwane przez którykolwiek z czterech powyższyc
 
 W poniższej tabeli opisano różne tryby logowania jednokrotnego i inicjowania obsługi administracyjnej obsługiwane przez poszczególne typy aplikacji. Za pomocą tej tabeli można zrozumieć, która aplikacja musi zostać dodana do obsługi określonego celu.
 
-  ![Tabela: Różne tryby logowania jednokrotnego i obsługi administracyjnej obsługiwane przez poszczególne typy aplikacji](./media/choose-application-type/table1.png)
+  ![Tabele Różne tryby logowania jednokrotnego i obsługi administracyjnej obsługiwane przez poszczególne typy aplikacji](./media/choose-application-type/table1.png)
 
 ## <a name="how-to-choose-a-single-sign-on-mode"></a>Jak wybrać tryb logowania jednokrotnego
 
@@ -71,16 +71,16 @@ Poniżej przedstawiono Obsługiwane tryby **logowania** jednokrotnego dla aplika
 
 - Logowanie jednokrotne **usługi Azure AD jest wyłączone** — wybierz opcję Logowanie jednokrotne w usłudze Azure AD w **trybie rejestracji** jednokrotnej, jeśli nie masz jeszcze gotowości do integracji tej aplikacji z logowaniem jednokrotnym za pomocą usługi Azure AD lub po prostu przetestowanie jej
 
-- **Połączenie połączone** — wybierz [](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) **tryb** logowania jednokrotnego logowania, jeśli masz aplikację, która jest już połączona z istniejącym rozwiązaniem rejestracji jednokrotnej lub jeśli chcesz po prostu opublikować proste łącze dla użytkowników w ich [ Panel dostępu do aplikacji](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) i [Uruchamianie aplikacji pakietu Office 365](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none)
+- **Połączenie połączone** — wybierz **tryb** logowania jednokrotnego [logowania,](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) Jeśli masz aplikację, która jest już połączona z istniejącym rozwiązaniem rejestracji jednokrotnej lub jeśli chcesz po prostu opublikować proste łącze dla użytkowników w ich [ Panel dostępu do aplikacji](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) i [Uruchamianie aplikacji pakietu Office 365](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none)
 
-- **Logowanie oparte** na hasłach — wybierz **tryb** logowania jednokrotnego opartego na hasłach, jeśli aplikacja renderuje pole nazwy użytkownika i hasła [w](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) formacie HTML i chcesz bezpiecznie zapisać tę nazwę użytkownika i hasło do Aplikacja później
+- **Logowanie oparte na hasłach** — wybierz **tryb** logowania jednokrotnego [opartego na hasłach](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) , jeśli aplikacja renderuje pole nazwy użytkownika i hasła w formacie HTML i chcesz bezpiecznie zapisać tę nazwę użytkownika i hasło do Aplikacja później
 
 - **Logowanie oparte** na protokole SAML — wybierz tryb logowania jednokrotnego [opartego na](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) protokole SAML, jeśli aplikacja obsługuje protokoły połączenia SAML lub OpenID Connect, lub chcesz mieć możliwość mapowania użytkowników do określonych ról aplikacji na podstawie reguł zdefiniowanych w elemencie SAML oświadczeń
 
   >[!NOTE]
   >Ta opcja jest niedostępna, gdy serwer proxy aplikacji jest skonfigurowany dla aplikacji.
 
-- **Logowanie oparte** na nagłówkach — wybierz tryb logowania [](application-proxy-configure-single-sign-on-with-ping-access.md) jednokrotnego opartego na nagłówkach, jeśli masz aplikację korzystającą z usługi PingAccess, która obsługuje uwierzytelnianie oparte na nagłówkach HTTP, w przypadku których chcesz wykonać logowanie jednokrotne do
+- **Logowanie oparte na nagłówkach** — wybierz tryb logowania jednokrotnego [opartego na nagłówkach](application-proxy-configure-single-sign-on-with-ping-access.md) , jeśli masz aplikację korzystającą z usługi PingAccess, która obsługuje uwierzytelnianie oparte na nagłówkach HTTP, w przypadku których chcesz wykonać logowanie jednokrotne do
 
   >[!NOTE]
   >Ta opcja jest dostępna tylko wtedy, gdy serwer proxy aplikacji i PingAccess jest skonfigurowany dla aplikacji.
@@ -124,9 +124,6 @@ Aby ustawić tryb logowania jednokrotnego aplikacji, wykonaj następujące instr
 - **Ręczna obsługa administracyjna** — wybierz tryb [ręcznego](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#provisioning-modes) inicjowania obsługi, jeśli masz już istniejące konta lub chcesz zarządzać kontami tej aplikacji poza usługą Azure AD.
 
 - **Automatyczne Inicjowanie obsługi** — wybierz tryb [automatycznej](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#configuring-automatic-user-account-provisioning) **aprowizacji** , jeśli chcesz włączyć automatyczne Inicjowanie obsługi oparte na interfejsie API i/lub anulowanie aprowizacji kont użytkowników w tej aplikacji 
-
-  >[!NOTE]
-  >Ta opcja jest dostępna tylko dla aplikacji w ramach **polecanej** kategorii [galerii aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-whats-new-azure-portal).
 
 - **Automatyczne Inicjowanie obsługi opartej na Standard scim** — umożliwia korzystanie z [funkcji automatycznego inicjowania obsługi opartej na Standard scim](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning) , jeśli aplikacja obsługuje protokół Standard scim na potrzeby wykrywania zmian dla użytkowników i grup, które są automatycznie emitowane pod kątem zmian w przypadku wszystkich zintegrowanych aplikacji. z usługą Azure AD 
 

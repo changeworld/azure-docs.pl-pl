@@ -1,6 +1,6 @@
 ---
-title: Problem z konfigurowaniem aprowizacji użytkowników do aplikacji galerii usługi Azure AD | Dokumentacja firmy Microsoft
-description: Jak rozwiązywać typowe problemy zmierzyła się z zespołem podczas konfigurowania aprowizacji użytkowników do aplikacji już wyświetlane w galerii aplikacji usługi Azure AD
+title: Wystąpił problem podczas konfigurowania aprowizacji użytkowników w aplikacji z galerii usługi Azure AD | Microsoft Docs
+description: Jak rozwiązywać typowe problemy związane z konfigurowaniem aprowizacji użytkowników w aplikacji już wymienionej w galerii aplikacji usługi Azure AD
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -12,63 +12,63 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2017
+ms.date: 09/03/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42bffdc1960a87c931e914896e8e36de45991bd4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9a8eaa46b46551f9b6075ec10b38de80f84c22a0
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65784129"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034148"
 ---
-# <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>Problem z konfigurowaniem aprowizacji użytkowników do aplikacji galerii usługi Azure AD
+# <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>Wystąpił problem podczas konfigurowania aprowizacji użytkowników w aplikacji z galerii usługi Azure AD
 
-Konfigurowanie [automatyczna aprowizacja użytkowników](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning) dla aplikacji (jeśli są obsługiwane), wymaga, aby uzyskać szczegółowe instrukcje występować do przygotowania aplikacji do automatycznej aprowizacji. Następnie można użyć witryny Azure portal, aby skonfigurować usługę aprowizacji, aby zsynchronizować konta użytkowników do aplikacji.
+Skonfigurowanie [automatycznej aprowizacji użytkowników](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning) dla aplikacji (jeśli jest obsługiwana), wymaga wprowadzenia określonych instrukcji w celu przygotowania aplikacji do automatycznej aprowizacji. Następnie można użyć Azure Portal, aby skonfigurować usługę aprowizacji do synchronizowania kont użytkowników z aplikacją.
 
-Zawsze należy zacząć, wyszukując samouczek ustawienia specyficzne dla konfiguracji aprowizacji dla aplikacji. Następnie wykonaj te kroki, aby skonfigurować aplikację i Azure AD, aby utworzyć połączenie inicjowania obsługi administracyjnej. Lista samouczków aplikacji znajduje się w temacie [listę samouczków dotyczących integracji aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list).
+Należy zawsze zacząć od znalezienia samouczka dotyczącego konfiguracji w celu skonfigurowania aprowizacji aplikacji. Następnie wykonaj te kroki, aby skonfigurować aplikację i usługę Azure AD w celu utworzenia połączenia aprowizacji. Listę samouczków dotyczących aplikacji można znaleźć na [liście samouczków dotyczących integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list).
 
-## <a name="how-to-see-if-provisioning-is-working"></a>Jak sprawdzić, czy działa inicjowania obsługi administracyjnej 
+## <a name="how-to-see-if-provisioning-is-working"></a>Jak sprawdzić, czy obsługa administracyjna działa 
 
-Po skonfigurowaniu usługi wgląd w większość operacji usługi mogą być wystawiane z dwóch miejsc:
+Po skonfigurowaniu usługi większość szczegółowych informacji o działaniu usługi może być narysowana z dwóch miejsc:
 
--   **Dzienniki inspekcji** — dzienniki inicjowania obsługi administracyjnej inspekcji wszystkich operacji wykonywanych przez usługę aprowizacji, łącznie z zapytań usługi Azure AD dla przypisanych użytkowników, którzy znajdują się w zakresie aprowizacji rekordu. Wyślij zapytanie do aplikacji docelowej, aby istnienie tych użytkowników, porównywanie obiektów użytkownika między systemem. Następnie dodaj, Aktualizuj lub wyłączyć konto użytkownika w systemie docelowym na podstawie porównania. Inicjowania obsługi dzienników inspekcji można uzyskać w witrynie Azure portal w **usługi Azure Active Directory &gt; aplikacje dla przedsiębiorstw &gt; \[Nazwa aplikacji\] &gt; dzienników inspekcji** kartę. Filtruj dzienniki na **Inicjowanie obsługi administracyjnej konta** kategorię, aby zobaczyć tylko inicjowania obsługi zdarzeń dla tej aplikacji.
+-   **Dzienniki aprowizacji (wersja zapoznawcza)** — [dzienniki aprowizacji](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) rejestrują wszystkie operacje wykonywane przez usługę aprowizacji, w tym kwerendy usługi Azure AD dla przypisanych użytkowników, którzy znajdują się w zakresie aprowizacji. Zbadaj aplikację docelową pod kątem istnienia tych użytkowników, porównując obiekty użytkownika między systemem. Następnie Dodaj, zaktualizuj lub Wyłącz konto użytkownika w systemie docelowym na podstawie porównania. Możesz uzyskać dostęp do dzienników aprowizacji w Azure Portal, wybierając pozycję **Azure Active Directory** &gt; dzienniki aprowizacji **aplikacji** &gt; w przedsiębiorstwie **(wersja zapoznawcza)** w sekcji **działanie** .
 
--   **Stan — aprowizacji** podsumowanie, ostatnie aprowizacji uruchamiania dla danej aplikacji będzie widoczne w **usługi Azure Active Directory &gt; aplikacje dla przedsiębiorstw &gt; \[Nazwa aplikacji\] &gt;Aprowizacji** sekcji w dolnej części ekranu, w obszarze Ustawienia usługi. Ta sekcja zawiera podsumowanie, ilu użytkowników (i/lub grupy) są obecnie synchronizowane między dwoma systemami, a jeśli wystąpiły żadne błędy. Szczegóły błędu znajdować się w dziennikach inspekcji. Należy pamiętać, że stan inicjowania obsługi administracyjnej nie można wypełnić ukończenie jedną pełną wstępna synchronizacja między usługą Azure AD i aplikacji.
+-   **Bieżący stan —** Podsumowanie dotyczące ostatniego uruchomienia aprowizacji danej aplikacji można znaleźć w sekcji  **&gt; Azure Active Directory aplikacje &gt; \[dla przedsiębiorstw — Inicjowanie obsługi nazwy\] &gt;aplikacji** w dolnej części na ekranie poniżej ustawień usługi. Bieżąca sekcja stanu pokazuje, czy cykl aprowizacji rozpoczął Inicjowanie obsługi kont użytkowników. Postęp cyklu można obejrzeć, sprawdzić, ilu użytkowników i grup została zainicjowana, i zobaczyć, ile ról zostało utworzonych. Jeśli występują błędy, szczegółowe informacje można znaleźć w [dziennikach aprowizacji (wersja zapoznawcza)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context).
 
-## <a name="general-problem-areas-with-provisioning-to-consider"></a>Obszary ogólny problem z zainicjowania obsługi administracyjnej należy wziąć pod uwagę
+## <a name="general-problem-areas-with-provisioning-to-consider"></a>Ogólne obszary problemów z obsługą administracyjną, które należy wziąć pod uwagę
 
-Poniżej znajduje się lista obszarów ogólny problem, które można rozwinąć Jeśli masz pomysł gdzie zacząć.
+Poniżej znajduje się lista ogólnych obszarów problemów, do których można przejść do szczegółów, jeśli masz pomysł, gdzie zacząć.
 
-* [Usługa aprowizacji nie rozpoczyna się](#provisioning-service-does-not-appear-to-start)
-* Nie można zapisać konfiguracji z powodu poświadczeń aplikacja nie działa
-* [Dzienniki inspekcji Załóżmy, że użytkownicy są "pominięto" i nie zainicjowano obsługi administracyjnej, nawet jeśli są przypisane](#audit-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned)
+* [Nie można uruchomić usługi aprowizacji](#provisioning-service-does-not-appear-to-start)
+* Nie można zapisać konfiguracji, ponieważ poświadczenia aplikacji nie działają
+* [Dzienniki aprowizacji mówią, że użytkownicy są pomijani i nie są administracyjni, nawet jeśli są przypisani](#provisioning-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned)
 
-## <a name="provisioning-service-does-not-appear-to-start"></a>Usługa aprowizacji nie rozpoczyna się
+## <a name="provisioning-service-does-not-appear-to-start"></a>Nie można uruchomić usługi aprowizacji
 
-Jeśli ustawisz **stanie aprowizacji** jako **na** w **usługi Azure Active Directory &gt; aplikacje dla przedsiębiorstw &gt; \[Nazwa aplikacji\] &gt;Aprowizacji** części witryny Azure portal. Jednak inne szczegóły stanu są wyświetlane na tej stronie, po kolejnych ponowne załadowanie. Istnieje prawdopodobieństwo, że usługa działa, ale jeszcze synchronizacji początkowej nie zostało ukończone. Sprawdź **dzienniki inspekcji** opisanych powyżej, aby określić, jakie operacje usługa działa, a jeśli wystąpiły żadne błędy.
+W przypadku ustawienia **stanu aprowizacji** na **włączony** w sekcji **Azure Active Directory &gt; aplikacje &gt; \[\] &gt;dla przedsiębiorstw** w Azure Portal . Na tej stronie nie są jednak wyświetlane żadne inne szczegóły stanu po kolejnych ponownych ładowaniach. Prawdopodobnie usługa jest uruchomiona, ale nie ukończyła jeszcze cyklu początkowego. Sprawdź **dzienniki aprowizacji** opisane powyżej, aby określić operacje wykonywane przez usługę, a także błędy.
 
 >[!NOTE]
->Początkowa synchronizacja może potrwać od 20 minut do kilku godzin, w zależności od rozmiaru katalogu usługi Azure AD i liczbę użytkowników w zakresie udostępniania. Kolejne synchronizacje po synchronizacji początkowej można szybciej, jak usługa aprowizowania magazyny znaki wodne, które reprezentują stanu obu systemów po początkowej synchronizacji, zwiększanie wydajności kolejne synchronizacje.
+>Cykl początkowy może zająć od 20 minut do kilku godzin, w zależności od rozmiaru katalogu usługi Azure AD i liczby użytkowników w zakresie aprowizacji. Kolejne synchronizacje po początkowym cyklu są szybsze, ponieważ usługa aprowizacji przechowuje znaki wodne, które reprezentują stan obu systemów po cyklu początkowym, co poprawia wydajność kolejnych synchronizacji.
 >
 >
 
-## <a name="cant-save-configuration-due-to-app-credentials-not-working"></a>Nie można zapisać konfiguracji z powodu poświadczeń aplikacja nie działa
+## <a name="cant-save-configuration-due-to-app-credentials-not-working"></a>Nie można zapisać konfiguracji, ponieważ poświadczenia aplikacji nie działają
 
-Aby Inicjowanie obsługi administracyjnej do pracy usługa Azure AD wymaga prawidłowe poświadczenia umożliwiające nawiązać połączenia z interfejsem API przez tę aplikację zarządzania użytkownikami. Jeśli te poświadczenia nie działają lub nie wiesz, czym są, sprawdź samouczek dotyczący konfigurowania tej aplikacji z wcześniejszym opisem.
+Aby można było zainicjować obsługę administracyjną, usługa Azure AD wymaga poprawnych poświadczeń, które umożliwiają nawiązywanie połączenia z interfejsem API zarządzania użytkownikami udostępnionym przez tę aplikację. Jeśli te poświadczenia nie działają lub nie wiesz, co się dzieje, zapoznaj się z samouczkiem dotyczącym konfigurowania tej aplikacji, opisanej wcześniej.
 
-## <a name="audit-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned"></a>Dzienniki inspekcji Załóżmy, że użytkownicy są pomijane i nie zainicjowano obsługi administracyjnej, nawet jeśli są przypisane
+## <a name="provisioning-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned"></a>Dzienniki aprowizacji mówią, że użytkownicy są pomijani i nie są administracyjni, nawet jeśli są przypisani
 
-Użytkownik jest wyświetlany jako "pominięto" w dziennikach inspekcji, jest bardzo ważne, aby przeczytać szczegółowe w wiadomości dziennika, aby ustalić przyczynę. Poniżej przedstawiono typowe przyczyny i rozwiązania:
+Gdy użytkownik wyświetla jako "pominięte" w dziennikach aprowizacji, bardzo ważne jest odczytywanie szczegółowych informacji w komunikacie dziennika w celu ustalenia przyczyny. Poniżej przedstawiono typowe przyczyny i rozwiązania:
 
-- **Skonfigurowano filtru określania zakresu** **, jest filtrowanie użytkownika na podstawie wartości atrybutu**. Aby uzyskać więcej informacji na temat określania zakresu filtrów, zobacz <https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters>.
+- **Skonfigurowano filtr zakresu** **jest to filtrowanie użytkownika na podstawie wartości atrybutu**. Aby uzyskać więcej informacji na temat określania zakresu <https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters>filtrów, zobacz.
 
-- **Użytkownik "nie jest skutecznie uprawnione".** Jeśli widzisz ten komunikat o błędzie określone, jest to, ponieważ wystąpił problem z rekordem przypisania użytkownika, które są przechowywane w usłudze Azure AD. Aby rozwiązać ten problem, Cofnij przypisanie użytkownika (lub grupy) z poziomu aplikacji, a następnie ponownie przypisać. Aby uzyskać więcej informacji na temat przypisania, zobacz <https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal>.
+- **Użytkownik jest "nieefektywnie uprawniony".** Jeśli zobaczysz ten konkretny komunikat o błędzie, przyczyną jest problem z rekordem przypisania użytkownika przechowywanym w usłudze Azure AD. Aby rozwiązać ten problem, Cofnij przypisanie użytkownika (lub grupy) z aplikacji i ponownie przypisz go. Aby uzyskać więcej informacji na temat przypisywania, zobacz <https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal>.
 
-- **Wymagany atrybut jest brak lub nie jest wypełnione dla użytkownika.** Ważne jest, aby uwzględnić podczas konfigurowania aprowizacji można przejrzeć i skonfigurować mapowania atrybutów i przepływów pracy, które określają, które użytkownik (lub grupy) właściwości przepływu z usługi Azure AD do aplikacji. Obejmuje to ustawienie "property pasującego" używany do jednoznacznego identyfikowania i dopasować użytkowników/grup między dwoma systemami. Aby uzyskać więcej informacji na temat tego procesu ważne, zobacz <https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings>.
+- **Brak wymaganego atrybutu lub nie został on wypełniony dla użytkownika.** Ważną kwestią do uwzględnienia podczas konfigurowania aprowizacji jest sprawdzenie i skonfigurowanie mapowań atrybutów i przepływów pracy, które definiują, które właściwości użytkownika (lub grupy) będą przepływać z usługi Azure AD do aplikacji. Obejmuje to ustawienie "dopasowania właściwości", który służy do jednoznacznego identyfikowania i dopasowywania użytkowników/grup między tymi dwoma systemami. Aby uzyskać więcej informacji na temat tego ważnego procesu <https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings>, zobacz.
 
-  * **Mapowania atrybutów dla grup:** Inicjowanie obsługi nazwy grupy i szczegóły grupy, oprócz członków, jeśli jest obsługiwany dla niektórych aplikacji. Można włączyć lub wyłączyć tę funkcję, włączając lub wyłączając **mapowanie** dla obiektów grupy wyświetlane w **aprowizacji** kartę. Jeśli Inicjowanie obsługi administracyjnej grupy jest włączona, należy przejrzeć mapowania atrybutów, aby upewnić się, że odpowiednie pole jest on używany do dopasowywania "ID". Może to być wyświetlaną nazwę lub alias e-mail), jak grupy i jej elementów członkowskich nie można zainicjować obsługi administracyjnej, jeśli właściwość dopasowania jest pusta lub nie jest wypełnione dla grupy w usłudze Azure AD.
+  * **Mapowania atrybutów dla grup:** Inicjowanie obsługi administracyjnej nazw grup i grup, oprócz członków, jeśli są obsługiwane w przypadku niektórych aplikacji. Tę funkcję można włączyć lub wyłączyć, włączając lub wyłączając **Mapowanie** dla obiektów grupy wyświetlanych na karcie **aprowizacji** . Jeśli włączono grupy aprowizacji, należy sprawdzić mapowania atrybutów, aby upewnić się, że odpowiednie pole jest używane dla "zgodnego identyfikatora". Może to być nazwa wyświetlana lub alias adresu e-mail, ponieważ Grupa i jej elementy członkowskie nie są obsługiwane, jeśli właściwość odpowiadająca jest pusta lub nie została wypełniona dla grupy w usłudze Azure AD.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 [Automatyzacja aprowizacji i cofania aprowizacji użytkowników dla aplikacji SaaS przy użyciu usługi Azure Active Directory](user-provisioning.md)

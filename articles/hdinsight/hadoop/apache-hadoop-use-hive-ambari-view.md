@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: 3ab2bf0334b58f3a5ac8ad4abacfcc45e0366240
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: da4d1ed7dec8b3b0bc61dd2959a868d03875039c
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70917740"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077012"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Korzystanie z widoku platformy Apache Ambari z usługą Apache Hadoop w usłudze HDInsight
 
@@ -34,7 +34,7 @@ Dowiedz się, jak uruchamiać zapytania programu Hive za pomocą widoku Hive w p
 
 3. Z listy widoki wybierz pozycję __Widok Hive__.
 
-    ![Wybrany widok Hive](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
+    ![Ambari wybierz widok Apache Hive Apache](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
 
     Strona widok programu Hive jest podobna do następującej:
 
@@ -98,25 +98,25 @@ Widok **objaśnienia wizualnego** zapytania może pomóc w zrozumieniu przepływ
 Aby wyświetlić interfejs użytkownika tez dla zapytania, wybierz kartę **interfejsu użytkownika tez** pod arkuszem.
 
 > [!IMPORTANT]  
-> Tez nie jest używany do rozpoznawania wszystkich zapytań. Można rozwiązać wiele zapytań bez używania tez. 
+> Tez nie jest używany do rozpoznawania wszystkich zapytań. Można rozwiązać wiele zapytań bez używania tez.
 
 ## <a name="view-job-history"></a>Wyświetlanie historii zadań
 
 Na karcie __zadania__ zostanie wyświetlona historia zapytań programu Hive.
 
-![Obraz historii zadania](./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png)
+![Historia karty Apache Hive widoku zadań](./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png)
 
 ## <a name="database-tables"></a>Tabele bazy danych
 
 Karta __tabele__ służy do pracy z tabelami w bazie danych programu Hive.
 
-![Obraz karty tabele](./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png)
+![Obraz karty Apache Hive tabele](./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png)
 
 ## <a name="saved-queries"></a>Zapisane zapytania
 
 Na karcie **zapytanie** można opcjonalnie zapisywać zapytania. Po zapisaniu zapytania można użyć go ponownie z karty __zapisane zapytania__ .
 
-![Obraz karty zapisane zapytania](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
+![Karta Apache Hive widoku zapisane zapytania](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
 
 > [!TIP]  
 > Zapisane zapytania są przechowywane w domyślnym magazynie klastra. Zapisane zapytania można znaleźć pod ścieżką `/user/<username>/hive/scripts`. Są one przechowywane jako pliki w postaci `.hql` zwykłego tekstu.
@@ -129,7 +129,7 @@ Gałąź można rozciągnąć za poorednictwem funkcji zdefiniowanych przez uży
 
 Zadeklaruj i Zapisz zestaw UDF przy użyciu karty **UDF** w górnej części widoku programu Hive. Te UDF mogą być używane z **edytorem zapytań**.
 
-![Obraz karty UDF](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
+![Wyświetlanie karty UDF w widoku Apache Hive](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
 
 Po dodaniu UDF do widoku programu Hive przycisk **Wstaw UDF** pojawia się u dołu **edytora zapytań**. Wybranie tej pozycji spowoduje wyświetlenie listy rozwijanej UDF zdefiniowanej w widoku programu Hive. Wybranie opcji UDF dodaje do zapytania instrukcje HiveQL, aby włączyć funkcję UDF.
 

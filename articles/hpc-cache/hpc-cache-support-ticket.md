@@ -4,42 +4,27 @@ description: Jak otworzyć żądanie pomocy dla pamięci podręcznej platformy A
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/12/2019
 ms.author: v-erkell
-ms.openlocfilehash: a252243ae84516fe06a89ef1119c4b4ce58dbeef
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: d845195940fdba81562acf4c0cfe9069245bd34c
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775626"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036912"
 ---
 # <a name="open-a-support-ticket-for-azure-hpc-cache"></a>Otwórz bilet pomocy technicznej dla usługi Azure HPC cache
 
 Użyj Azure Portal, aby otworzyć bilet pomocy technicznej. Przejdź do wystąpienia pamięci podręcznej, a następnie kliknij link **nowe żądanie obsługi** , który pojawia się u dołu paska bocznego.
 
-> [!NOTE]
-> W okresie zapoznawczym można również użyć [tego linku](<https://support.microsoft.com/supportforbusiness/productselection?sapId=6b415938-2927-0d9d-6c3c-fbacea64e42d>) , aby otworzyć sprawę pomocy technicznej dla produktu Azure HPC cache (wersja zapoznawcza).
+Aby otworzyć bilet, gdy nie masz aktywnej pamięci podręcznej, użyj głównej strony **pomocy i obsługi technicznej** w Azure Portal. Wybierz pozycję **nowe żądanie obsługi** i wybierz pozycję **techniczne** , aby uzyskać pomoc dotyczącą usługi Azure HPC cache.
 
-<!-- add screenshot of form with thing to select product etc. -->
+Wybierz swoją subskrypcję z listy.
 
-<!-- 
-[ xxx update procedure - this is copied from Azure FXT Edge Filer but Azure HPC Cache has context, you don't need to fill in everything xxx ]
+Aby znaleźć usługę Azure HPC cache Preview, kliknij przycisk **wszystkie usługi** i Wyszukaj pozycję HPC.
 
-1. Open the [Azure portal](https://portal.azure.com/) and sign in.
-1. In the left panel, scroll to the bottom and click **Help + support**.
-1. Click **New support request**. 
+![Zrzut ekranu przedstawiający kartę podstawowe żądania obsługi, częściowo wypełnione zgodnie z opisem](media/hpc-cache-support-request.png)
 
-   ![Screenshot of blank support request form](media/fxt-support-blank.png)
+Wypełnij pozostałe pola informacjami i preferencjami, a następnie Prześlij bilet, gdy wszystko będzie gotowe.
 
-1. Fill out the request form.  
-    1. In the **Basics** tab, choose the **Issue type** ``Technical``. 
-    1. Select your subscription. 
-    1. Under **Service**, select **Azure FXT Edge Filer**. You might need to click the **All services** filter control to find it. 
-    1. Enter a **Summary** and choose the **Problem type**. 
-    ![Screenshot of blank support request form](media/fxt-support-populated.png) 
-    1. Click **Next** to continue. 
-1. In the **Details** tab, add more information about the problem and how to contact you. You can upload a file related to the problem. 
-1. In **Review + create**, check the information and click the **Create** button to submit your request.
-
-After you submit the request, you will receive a confirmation email with a ticket number. A support staff member will contact you about the request.
--->
+Po przesłaniu żądania otrzymasz wiadomość e-mail z potwierdzeniem z numerem biletu. Członek personelu pomocy technicznej skontaktuje się z Tobą w sprawie żądania.

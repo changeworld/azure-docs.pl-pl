@@ -4,14 +4,14 @@ description: Jak połączyć klientów z usługą Azure HPC cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/12/2019
 ms.author: v-erkell
-ms.openlocfilehash: 0ccd256ed399fff7c364883ada45d2d15c75a120
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 46f221fd7c340b7f321d317f0e7493448d83177c
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775353"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036957"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>Instalowanie pamięci podręcznej platformy Azure HPC
 
@@ -19,13 +19,13 @@ Po utworzeniu pamięci podręcznej klienci systemu plików NFS mogą uzyskać do
 
 Użyj adresów instalacji wymienionych na stronie Przegląd pamięci podręcznej i ścieżki wirtualnego obszaru nazw ustawionych podczas tworzenia miejsca docelowego magazynu. 
 
-![zrzut ekranu strony Przegląd wystąpienia pamięci podręcznej platformy Azure HPC z wyróżnionym polem wyboru na liście adresy instalacji w prawym dolnym rogu](media/mount-addresses.png)
+![zrzut ekranu strony Przegląd wystąpienia pamięci podręcznej platformy Azure HPC z wyróżnionym polem wyboru na liście adresy instalacji w prawym dolnym rogu](media/hpc-cache-mount-addresses.png)
 
 > [!NOTE] 
 > Adresy instalacji pamięci podręcznej są zgodne z interfejsami sieciowymi w podsieci pamięci podręcznej. Te karty sieciowe są wyświetlane w grupie zasobów z nazwami `-cluster-nic-` kończącymi się na i numerami. Nie zmieniaj ani nie usuwaj tych interfejsów lub pamięć podręczna stanie się niedostępna.
 
-Ścieżki wirtualnych przestrzeni nazw są wyświetlane na stronie **miejsce docelowe magazynu** . 
-![zrzut ekranu przedstawiający panel docelowy magazynu pamięci podręcznej z ramką wyróżnienia wokół wpisu w kolumnie ścieżka tabeli.](media/storage-target-path.png)
+Ścieżki wirtualnych przestrzeni nazw są wyświetlane na stronie **miejsce docelowe magazynu** . Kliknij nazwę docelową, aby wyświetlić szczegóły, w tym zagregowaną ścieżkę przestrzeni nazw (lub ścieżki), z którą jest skojarzona. 
+![zrzut ekranu przedstawiający panel docelowy magazynu pamięci podręcznej z ramką wyróżnienia wokół wpisu w kolumnie ścieżka tabeli.](media/hpc-cache-view-namespace-paths.png)
 
 ## <a name="mount-command-syntax"></a>Składnia polecenia instalacji
 

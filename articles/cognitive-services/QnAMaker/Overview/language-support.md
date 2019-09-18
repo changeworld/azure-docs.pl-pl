@@ -1,7 +1,7 @@
 ---
 title: Obsługa języków — QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Język wiedzy ma wpływ na zdolność usługi QnA Maker automatycznie wyodrębnić pytań i odpowiedzi na podstawie źródła, a także przydatność wyników, udostępnia usługi QnA Maker w odpowiedzi na zapytania użytkowników. Lista kultury, naturalny języki obsługiwane przez narzędzie QnA Maker bazy wiedzy. Nie należy mieszać języki obsługiwane w tej samej bazie wiedzy knowledge base.
+description: Język bazy wiedzy ma wpływ na QnA Maker możliwość autowyodrębniania pytań i odpowiedzi ze źródeł, a także znaczenia QnA Maker wyników w odpowiedzi na zapytania użytkowników. Lista kultury, naturalny języki obsługiwane przez narzędzie QnA Maker bazy wiedzy. Nie należy mieszać języki obsługiwane w tej samej bazie wiedzy knowledge base.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: a543b17633b99bea63d72f46ba856a8b4593d16a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: bec09e5cd053774902083c6dd042c1ed4b293d20
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439555"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066677"
 ---
-# <a name="language-support-for-qna-maker"></a>Obsługa języka dla usługi QnA Maker
+# <a name="language-support-for-qna-maker"></a>Obsługa języka dla QnA Maker
 
 Język wiedzy ma wpływ na możliwości usługi QnA Maker automatycznie wyodrębnić pytań i odpowiedzi ze [źródeł](../Concepts/data-sources-supported.md), a także przydatność wyników w odpowiedzi na zapytania użytkowników zapewnia usługi QnA Maker.
 
@@ -33,28 +33,28 @@ Usługa QnA Maker obsługuje wyodrębnianie pytań i odpowiedzi na stronie dowol
 |Niemiecki|de-*|
 |Hiszpański|ES-*|
 
-## <a name="primary-language-detection"></a>Podstawowe wykrywanie języka
+## <a name="primary-language-detection"></a>Wykrywanie języka podstawowego
 
-Podstawowy język używany do wykrywania jest ustawiona dla zasobów usługi QnA Maker i wszystkich baz wiedzy utworzone na taki zasób, podczas pierwszego dokumentu lub adresu URL jest dodawany do pierwszego bazy wiedzy. Nie można zmienić język. 
+Język podstawowy używany do wykrywania jest ustawiany dla zasobu QnA Maker i wszystkich baz wiedzy utworzonych na tym zasobie, gdy pierwszy dokument lub adres URL zostanie dodany do pierwszej bazy wiedzy. Nie można zmienić języka. 
 
-Jeśli użytkownik planuje się obsługiwać wiele języków, muszą mieć nowy zasób usługi QnA Maker dla każdego języka. Dowiedz się, jak [tworzenie opartych na języku usługi QnA Maker wiedzy](../how-to/language-knowledge-base.md).  
+Jeśli użytkownik planuje obsługę wielu języków, muszą mieć nowy zasób QnA Maker dla każdego języka. Dowiedz się, jak [utworzyć bazę wiedzy QNA Maker opartej na języku](../how-to/language-knowledge-base.md).  
 
-Sprawdź, podstawowy język wykonując następujące kroki:
+Sprawdź język podstawowy, wykonując następujące czynności:
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).  
-1. Wyszukaj i wybierz zasób usługi Azure Search, utworzone w ramach zasobu usługi QnA Maker. Nazwa zasobu usługi Azure Search rozpocznie się o takiej samej nazwie, co zasób usługi QnA Maker i będzie miał typ **usługi wyszukiwania**. 
-1. Z **Przegląd** strony zasobu wyszukiwania, wybierz opcję **indeksów**. 
-1. Wybierz **testkb** indeksu.
-1. Wybierz **pola** kartę. 
-1. Widok **analizatora** kolumny **pytania** i **odpowiedzi** pola. 
+1. Wyszukaj i wybierz zasób Azure Search utworzony w ramach zasobu QnA Maker. Nazwa zasobu Azure Search będzie rozpoczynać się od tej samej nazwy co zasób QnA Maker i będzie miała typ **Usługa wyszukiwania**. Należy pamiętać, że tylko jeden zasób QnA Maker może być połączony z jednym Azure Search zasobem.
+1. Na stronie **Przegląd** zasobu wyszukiwania wybierz pozycję **indeksy**. 
+1. Wybierz indeks **testkb** .
+1. Wybierz kartę **pola** . 
+1. Wyświetl kolumnę **analizatora** dla pól **pytania** i **odpowiedzi** . 
 
 
 ## <a name="query-matching-and-relevance"></a>Zapytania pasujący i istotność
 Usługa QnA Maker jest zależna od [analizatory języka](https://docs.microsoft.com/rest/api/searchservice/language-support) w usłudze Azure search za dostarczanie wyników. Specjalne funkcje ponownie klasyfikacji są dostępne dla En-* języki, które umożliwiają lepsze istotności.
 
-Możliwości usługi Azure Search jest równoważny w obsługiwanych językach, usługa QnA Maker ma dodatkowe tematycznie znajdująca się nad wynikami wyszukiwania platformy Azure. W tym modelu oceniania używamy pewne specjalne funkcje semantycznego i opartego na programie word w en-*, które nie są jeszcze dostępne dla innych języków. Firma Microsoft nie udostępnić te funkcje, ponieważ należą one do wewnętrznego funkcjonowania usługi QnA Maker oceniania. 
+Możliwości usługi Azure Search jest równoważny w obsługiwanych językach, usługa QnA Maker ma dodatkowe tematycznie znajdująca się nad wynikami wyszukiwania platformy Azure. W tym modelu rangi używamy pewnych specjalnych funkcji semantycznych i opartych na programie Word w EN-*, które nie są jeszcze dostępne dla innych języków. Te funkcje nie są dostępne, ponieważ są one częścią wewnętrznej pracy rangi QnA Maker. 
 
-Usługa QnA Maker [automatycznie wykrywa język bazy wiedzy knowledge base](#primary-language-detection) podczas tworzenia i ustawia odpowiednio analizatora. Można utworzyć baz wiedzy w następujących językach. 
+QnA Maker [Autowykrywanie języka bazy wiedzy](#primary-language-detection) podczas tworzenia i odpowiednio ustawia Analizator. Można utworzyć baz wiedzy w następujących językach. 
 
 |Obsługiwane języki|
 |-----|

@@ -1,10 +1,11 @@
 ---
-title: Typy adresów IP na platformie Azure (wersja klasyczna)
+title: Typy adresów IP na platformie Azure (klasyczne)
 titlesuffix: Azure Virtual Network
-description: Więcej informacji na temat publicznych i prywatnych adresów IP (klasyczny) na platformie Azure.
+description: Dowiedz się więcej na temat publicznych i prywatnych adresów IP (klasycznych) na platformie Azure.
 services: virtual-network
 documentationcenter: na
 author: genlin
+manager: dcscontentpm
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -12,167 +13,167 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: genli
-ms.openlocfilehash: 9e7a5772dd1e10abf43eddf0548833d625ecfb24
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 207e728d25df9192f8a600b13d86330af8311700
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60742126"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058924"
 ---
-# <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>Typy adresów IP i metody alokacji (model klasyczny) na platformie Azure
-Do zasobów platformy Azure można przypisać adresy IP w celu komunikowania się z innymi zasobami platformy Azure, siecią lokalną i Internetem. Istnieją dwa typy adresów IP, można użyć na platformie Azure: prywatnych i publicznych.
+# <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>Typy adresów IP i metody alokacji (klasyczne) na platformie Azure
+Do zasobów platformy Azure można przypisać adresy IP w celu komunikowania się z innymi zasobami platformy Azure, siecią lokalną i Internetem. Istnieją dwa typy adresów IP, których można używać na platformie Azure: publiczne i prywatne.
 
-Publiczne adresy IP są używane do komunikacji z Internetem łącznie z usługami platformy Azure dostępnego publicznie.
+Publiczne adresy IP są używane do komunikacji z Internetem, w tym usług publicznych platformy Azure.
 
-Prywatne adresy IP są używane do komunikacji w obrębie sieci wirtualnej platformy Azure (VNet), usługi w chmurze i sieci lokalnej, gdy używasz bramy sieci VPN lub obwodu usługi ExpressRoute w celu rozszerzenia swojej sieci na platformie Azure.
+Prywatne adresy IP są używane do komunikacji w ramach sieci wirtualnej platformy Azure, usługi w chmurze i sieci lokalnej w przypadku korzystania z bramy sieci VPN lub obwodu ExpressRoute w celu rozbudowania sieci na platformę Azure.
 
 > [!IMPORTANT]
-> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi:  [model wdrażania przy użyciu usługi Resource Manager i model klasyczny](../resource-manager-deployment-model.md).  Ten artykuł dotyczy klasycznego modelu wdrożenia. Firma Microsoft zaleca się, że większości nowych wdrożeń korzystać usługi Resource Manager. Dowiedz się więcej o adresach IP w usłudze Resource Manager, zapoznając się [adresów IP](virtual-network-ip-addresses-overview-arm.md) artykułu.
+> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi:  [model wdrażania przy użyciu usługi Resource Manager i model klasyczny](../resource-manager-deployment-model.md).  Ten artykuł dotyczy klasycznego modelu wdrożenia. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń używać Menedżer zasobów. Dowiedz się więcej o adresach IP w Menedżer zasobów, odczytując artykuł dotyczący [adresów IP](virtual-network-ip-addresses-overview-arm.md) .
 
 ## <a name="public-ip-addresses"></a>Publiczne adresy IP
-Publiczne adresy IP umożliwiają zasobom platformy Azure do komunikowania się z Internetem a platformą Azure publicznymi usługami, takie jak [pamięci podręcznej Redis Azure](https://azure.microsoft.com/services/cache/), [usługi Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [baz danych SQL](../sql-database/sql-database-technical-overview.md), i [usługi Azure storage](../storage/common/storage-introduction.md).
+Publiczne adresy IP umożliwiają zasobom platformy Azure komunikowanie się z Internetem i publicznymi usługami platformy Azure, takimi jak [usługa Azure cache for Redis](https://azure.microsoft.com/services/cache/), [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [SQL](../sql-database/sql-database-technical-overview.md)Database i [Azure Storage](../storage/common/storage-introduction.md).
 
-Publiczny adres IP jest skojarzona z następujących zasobów:
+Publiczny adres IP jest skojarzony z następującymi typami zasobów:
 
 * Usługi w chmurze
-* Maszyny wirtualne IaaS (VM)
+* IaaS Virtual Machines (maszyny wirtualne)
 * Wystąpienia roli PaaS
 * Bramy sieci VPN
 * Bramy aplikacji
 
 ### <a name="allocation-method"></a>Metoda alokacji
-Publiczny adres IP musi być przypisany do zasobu platformy Azure, jest *dynamicznie* przydzielany z puli dostępnych w ramach lokalizacji zasób jest tworzony publiczny adres IP. Ten adres IP jest zwalniany, gdy zasób jest zatrzymana. Z usługą w chmurze tak się stanie po zatrzymaniu wszystkich wystąpień roli, które można uniknąć za pomocą *statyczne* (zastrzeżony) adres IP (zobacz [usług w chmurze](#cloud-services)).
+Jeśli publiczny adres IP musi zostać przypisany do zasobu platformy Azure, jest on *dynamicznie* przydzielany z puli dostępnych publicznych adresów IP w lokalizacji, w której jest tworzony zasób. Ten adres IP jest wydawany, gdy zasób zostanie zatrzymany. W przypadku usługi w chmurze dzieje się tak po zatrzymaniu wszystkich wystąpień roli, które można uniknąć przy użyciu statycznego (zastrzeżonego) adresu IP (zobacz [Cloud Services](#cloud-services)).
 
 > [!NOTE]
-> Lista zakresów adresów IP, z której publiczne adresy IP są przydzielane do zasobów platformy Azure, jest opublikowana w [zakresów adresów IP centrum danych Azure](https://www.microsoft.com/download/details.aspx?id=41653).
+> Lista zakresów adresów IP, z których publiczne adresy IP są przypisywane do zasobów platformy Azure, jest publikowana w [zakresach adresów IP centrum danych platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653).
 > 
 > 
 
 ### <a name="dns-hostname-resolution"></a>Rozpoznawanie nazw hostów DNS
-Podczas tworzenia usługi w chmurze lub Maszynie wirtualnej IaaS, musisz podać nazwę DNS usługi chmury, która jest unikatowa dla wszystkich zasobów na platformie Azure. To tworzy mapowanie na serwerach DNS zarządzanych platformy Azure dla *dnsname*. cloudapp.net publiczny adres IP zasobu. Na przykład po utworzeniu usługi w chmurze za pomocą nazwa DNS usługi w chmurze z **contoso**, w pełni kwalifikowana nazwa domeny (FQDN) **contoso.cloudapp.net** rozwiąże publiczny adres IP (VIP) chmury Usługa. Tej nazwy FQDN możesz użyć do utworzenia rekordu CNAME domeny niestandardowej wskazującego na publiczny adres IP na platformie Azure.
+Podczas tworzenia usługi w chmurze lub maszyny wirtualnej IaaS należy podać nazwę DNS usługi w chmurze, która jest unikatowa dla wszystkich zasobów na platformie Azure. Spowoduje to utworzenie mapowania na serwerach DNS zarządzanych przez platformę Azure dla *dnsname*. cloudapp.NET na publiczny adres IP zasobu. Na przykład podczas tworzenia usługi w chmurze z nazwą DNS usługi w chmurze **contoso**, w pełni kwalifikowana nazwa domeny (FQDN) **contoso.cloudapp.NET** zostanie rozwiązany jako publiczny adres IP (VIP) usługi w chmurze. Tej nazwy FQDN możesz użyć do utworzenia rekordu CNAME domeny niestandardowej wskazującego na publiczny adres IP na platformie Azure.
 
 ### <a name="cloud-services"></a>Usługi w chmurze
-Usługa w chmurze ma zawsze na publiczny adres IP, które są określone jako wirtualny adres IP (VIP). Możesz utworzyć punkty końcowe w usłudze w chmurze do skojarzenia z różnymi portami w adresów VIP do wewnętrznych portów na maszynach wirtualnych i wystąpień roli w ramach usługi w chmurze. 
+Usługa w chmurze zawsze ma publiczny adres IP, nazywany wirtualnym adresem IP (VIP). Można utworzyć punkty końcowe w usłudze w chmurze, aby skojarzyć różne porty w adresie VIP z portami wewnętrznymi na maszynach wirtualnych i wystąpieniach ról w ramach usługi w chmurze. 
 
-Usługa w chmurze może zawierać wiele maszyn wirtualnych IaaS lub wystąpień roli PaaS, wszystkie narażonych za pomocą tego samego adresu VIP usługi chmury. Można także przypisać [wielu adresów VIP do usługi w chmurze](../load-balancer/load-balancer-multivip.md), co pozwala wielu VIP scenariuszy, takich jak Środowisko wielodostępne z witrynami sieci Web z opartymi na protokole SSL.
+Usługa w chmurze może zawierać wiele maszyn wirtualnych IaaS lub PaaS wystąpień ról, które są udostępniane za pośrednictwem tego samego adresu VIP usługi w chmurze. Możesz również przypisać [wiele adresów VIP do usługi w chmurze](../load-balancer/load-balancer-multivip.md), która umożliwia scenariusze z wieloma adresami IP, takie jak środowisko wielodostępne z witrynami sieci Web opartymi na protokole SSL.
 
-Upewnij się publiczny adres IP usługi w chmurze pozostają takie same, nawet wtedy, gdy zostaną zatrzymane wszystkie wystąpienia roli, przy użyciu *statyczne* publiczny adres IP, nazywany [zastrzeżonego adresu IP](virtual-networks-reserved-public-ip.md). Można utworzyć zasób statyczny (zastrzeżony) adresu IP w określonej lokalizacji i przypisać ją do dowolnej usługi w chmurze w tej lokalizacji. Nie można określić rzeczywistego adresu IP dla zastrzeżonego adresu IP, jest on przydzielany z puli adresów IP dostępnych w lokalizacji, w którym zostały utworzone. Ten adres IP jest zwalniany dopiero jawnie usunąć.
+Można upewnić się, że publiczny adres IP usługi w chmurze pozostaje taki sam, nawet jeśli wszystkie wystąpienia roli zostaną zatrzymane, przy użyciu *statycznego* publicznego adresu IP, zwanego [zastrzeżony adres IP](virtual-networks-reserved-public-ip.md). Można utworzyć statyczny (zarezerwowany) zasób IP w określonej lokalizacji i przypisać go do dowolnej usługi w chmurze w tej lokalizacji. Nie można określić rzeczywistego adresu IP dla zastrzeżonego adresu IP, który jest przypisywany z puli dostępnych adresów IP w tworzonej lokalizacji. Ten adres IP nie jest wydawany, dopóki nie zostanie jawnie usunięty.
 
-Statyczny (zastrzeżony) publiczne adresy IP najczęściej są używane w scenariuszach, gdzie usługa w chmurze:
+Statyczne (zastrzeżone) publiczne adresy IP są często używane w scenariuszach, w których usługa w chmurze:
 
-* wymaga reguł zapory, które można skonfigurować przez użytkowników końcowych.
-* zależy od zewnętrznego rozpoznawania nazw DNS i dynamicznego adresu IP wymaga aktualizacji rekordów.
-* wykorzystuje zewnętrznych usług internetowych korzystających z modelu zabezpieczeń opartych na adresie IP.
-* korzysta z certyfikatów SSL połączonych z adresem IP.
+* Program wymaga, aby reguły zapory zostały skonfigurowane przez użytkowników końcowych.
+* zależy od zewnętrznego rozpoznawania nazw DNS, a dynamiczny adres IP wymagał aktualizacji rekordów.
+* korzysta z zewnętrznych usług sieci Web, które korzystają z modelu zabezpieczeń opartego na protokole IP.
+* używa certyfikatów SSL połączonych z adresem IP.
 
 > [!NOTE]
-> Po utworzeniu klasyczna maszyna wirtualna kontener *usługi w chmurze* jest tworzony przez platformę Azure, która ma wirtualnego adresu IP (VIP). Jeśli tworzenie odbywa się za pośrednictwem portalu, domyślna RDP lub SSH *punktu końcowego* jest skonfigurowany przez portal, aby połączyć z maszyną wirtualną za pośrednictwem adresu VIP usługi chmury. Można zastrzec adresu VIP usługi w tej chmurze, zapewniającą skutecznie zastrzeżonego adresu IP, aby nawiązać połączenie z maszyną Wirtualną. Możesz otworzyć dodatkowe porty, konfigurując dodatkowe punkty końcowe.
+> Podczas tworzenia klasycznej maszyny wirtualnej *Usługa kontenera usługi w chmurze* jest tworzona przez platformę Azure, która ma wirtualny adres IP (VIP). Gdy tworzenie odbywa się za pośrednictwem portalu, domyślny *punkt końcowy* protokołu RDP lub SSH jest konfigurowany przez portal, dzięki czemu można nawiązać połączenie z maszyną wirtualną za pośrednictwem adresu VIP usługi w chmurze. Ten adres VIP usługi w chmurze może być zarezerwowany, co efektywnie zapewnia zarezerwowany adres IP do łączenia się z maszyną wirtualną. Dodatkowe porty można otworzyć, konfigurując więcej punktów końcowych.
 > 
 > 
 
-### <a name="iaas-vms-and-paas-role-instances"></a>Maszyny wirtualne IaaS i PaaS wystąpień roli
-Publiczny adres IP można przypisać bezpośrednio do IaaS [maszyny Wirtualnej](../virtual-machines/virtual-machines-linux-about.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) lub wystąpienia roli PaaS w ramach usługi w chmurze. Jest to określane jako publiczny adres IP na poziomie wystąpienia ([ILPIP](virtual-networks-instance-level-public-ip.md)). Ten publiczny adres IP może być dynamiczny tylko.
+### <a name="iaas-vms-and-paas-role-instances"></a>IaaS maszyny wirtualne i wystąpienia roli PaaS
+Publiczny adres IP można przypisać bezpośrednio do IaaS [maszyny wirtualnej](../virtual-machines/virtual-machines-linux-about.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) lub wystąpienia roli PaaS w ramach usługi w chmurze. Jest to określane jako publiczny adres IP na poziomie wystąpienia ([ILPIP](virtual-networks-instance-level-public-ip.md)). Ten publiczny adres IP może być tylko dynamiczny.
 
 > [!NOTE]
-> To różni się od adresu VIP usługi w chmurze, który jest kontenerem dla maszyn wirtualnych IaaS lub PaaS wystąpień roli, ponieważ usługa w chmurze może zawierać wiele maszyn wirtualnych IaaS lub wystąpień roli PaaS, wszystkie dostępne za pośrednictwem tego samego adresu VIP usługi chmury.
+> Różni się to od adresu VIP usługi w chmurze, który jest kontenerem dla maszyn wirtualnych IaaS lub wystąpień roli PaaS, ponieważ usługa w chmurze może zawierać wiele maszyn wirtualnych IaaS lub PaaS wystąpienia roli, które są udostępniane za pośrednictwem tego samego adresu VIP usługi w chmurze.
 > 
 > 
 
 ### <a name="vpn-gateways"></a>Bramy sieci VPN
-A [bramy sieci VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) może służyć do łączenia z siecią wirtualną platformy Azure z innymi sieciami sieciami wirtualnymi platformy Azure lub lokalnie. Tworzenie bramy sieci VPN jest przypisany publiczny adres IP *dynamicznie*, która umożliwia komunikację z siecią zdalną.
+Za pomocą [bramy sieci VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) można połączyć sieć wirtualną platformy Azure z innymi sieciami Azure sieci wirtualnych lub lokalnymi. Do bramy sieci VPN jest przypisywany *dynamicznie*publiczny adres IP, który umożliwia komunikację z siecią zdalną.
 
 ### <a name="application-gateways"></a>Bramy aplikacji
-Azure [bramy Application gateway](../application-gateway/application-gateway-introduction.md) może służyć do Layer7 równoważenia obciążenia można kierować ruchem sieciowym na podstawie od protokołu HTTP. Usługa Application gateway jest przypisany publiczny adres IP *dynamicznie*, który służy jako adres VIP ze zrównoważonym obciążeniem.
+Usługa Azure [Application Gateway](../application-gateway/application-gateway-introduction.md) może służyć do równoważenia obciążenia warstwy 7 w celu kierowania ruchu sieciowego na podstawie protokołu HTTP. Brama aplikacji ma *dynamicznie*przypisany publiczny adres IP, który służy jako adres VIP ze zrównoważonym obciążeniem.
 
-### <a name="at-a-glance"></a>W skrócie
-W poniższej tabeli przedstawiono każdy typ zasobu z ewentualne metody alokacji (dynamiczne/statyczne), a także przypisać wiele publicznych adresów IP.
+### <a name="at-a-glance"></a>Błyskawicznie
+W poniższej tabeli przedstawiono każdy typ zasobu z możliwymi metodami alokacji (dynamiczną/statyczną) i możliwość przypisania wielu publicznych adresów IP.
 
 | Resource | Dynamiczne | Static | Wiele adresów IP |
 | --- | --- | --- | --- |
 | Usługa w chmurze |Tak |Yes |Tak |
-| Wystąpienia roli maszyny Wirtualnej IaaS lub PaaS |Yes |Nie |Nie |
+| IaaS maszyny wirtualnej lub wystąpienia roli PaaS |Tak |Nie |Nie |
 | Brama sieci VPN |Tak |Nie |Nie |
 | Brama aplikacji |Tak |Nie |Nie |
 
 ## <a name="private-ip-addresses"></a>Prywatne adresy IP
-Prywatne adresy IP umożliwiają zasobom platformy Azure komunikację z innymi zasobami w usłudze w chmurze lub [sieci wirtualnej](virtual-networks-overview.md)(VNet) lub między siecią lokalną (za pośrednictwem bramy sieci VPN lub obwodu usługi ExpressRoute), bez użycia Internet dostępny adres IP.
+Prywatne adresy IP umożliwiają zasobom platformy Azure komunikowanie się z innymi zasobami w usłudze w chmurze lub [sieci wirtualnej](virtual-networks-overview.md)(VNET) lub w sieci lokalnej (za pośrednictwem bramy sieci VPN lub obwodu usługi ExpressRoute) bez użycia adresu IP dostępnego z Internetu.
 
-W modelu klasycznym wdrożeniu platformy Azure prywatny adres IP można przypisać do następujących zasobów platformy Azure:
+W klasycznym modelu wdrażania platformy Azure prywatny adres IP można przypisać do następujących zasobów platformy Azure:
 
-* Maszyny wirtualne IaaS i PaaS wystąpień roli
+* IaaS maszyny wirtualne i wystąpienia roli PaaS
 * Wewnętrzny moduł równoważenia obciążenia
 * Brama aplikacji
 
-### <a name="iaas-vms-and-paas-role-instances"></a>Maszyny wirtualne IaaS i PaaS wystąpień roli
-Maszyny wirtualne (VM) utworzone za pomocą klasycznego modelu wdrażania są zawsze umieszczane w usłudze w chmurze, podobne do wystąpień roli PaaS. Ten sposób przypomina zachowanie prywatnych adresów IP dla tych zasobów.
+### <a name="iaas-vms-and-paas-role-instances"></a>IaaS maszyny wirtualne i wystąpienia roli PaaS
+Maszyny wirtualne utworzone przy użyciu klasycznego modelu wdrażania są zawsze umieszczane w usłudze w chmurze, podobnie jak wystąpienia roli PaaS. Zachowanie prywatnych adresów IP jest podobne do tych zasobów.
 
-Należy zauważyć, że usługa w chmurze można wdrożyć na dwa sposoby:
+Należy pamiętać, że usługa w chmurze może zostać wdrożona na dwa sposoby:
 
-* Jako *autonomiczny* usługą w chmurze, której nie znajduje się w sieci wirtualnej.
-* W ramach sieci wirtualnej.
+* Jako *autonomiczną* usługę w chmurze, w której nie znajduje się w sieci wirtualnej.
+* Jako część sieci wirtualnej.
 
 #### <a name="allocation-method"></a>Metoda alokacji
-W przypadku programu *autonomiczny* usługą w chmurze, get zasoby prywatny adres IP jest przydzielany *dynamicznie* z prywatnym adresem IP centrum danych platformy Azure z zakresu adresów. Może służyć tylko do komunikacji z innymi maszynami wirtualnymi w ramach jednej usługi w chmurze. Ten adres IP można zmienić, gdy zasób jest zatrzymana i uruchomiona.
+W przypadku autonomicznej usługi w chmurze zasoby otrzymują prywatny adres IP przydzielony *dynamicznie* z zakresu prywatnego adresu IP centrum danych platformy Azure. Może być używany tylko do komunikacji z innymi maszynami wirtualnymi w ramach tej samej usługi w chmurze. Ten adres IP może się zmieniać, gdy zasób jest zatrzymany i uruchomiony.
 
-W przypadku usługi w chmurze wdrożonej w ramach sieci wirtualnej zasoby Uzyskaj prywatne adresy IP, przydzielany z zakresu adresów skojarzone podsieci (jak określono w jego konfiguracji sieciowej). To prywatne adresy IP, może służyć do komunikacji między wszystkie maszyny wirtualne w sieci wirtualnej.
+W przypadku usługi w chmurze wdrożonej w ramach sieci wirtualnej zasoby otrzymują prywatne adresy IP przydzieloną z zakresu adresów skojarzonych podsieci (zgodnie z konfiguracją sieci). Te prywatne adresy IP mogą być używane do komunikacji między wszystkimi maszynami wirtualnymi w sieci wirtualnej.
 
-Ponadto w przypadku usług cloud services w sieci wirtualnej prywatny adres IP jest przydzielany *dynamicznie* (przy użyciu protokołu DHCP) domyślnie. Może zmienić, gdy zasób jest zatrzymana i uruchomiona. Aby upewnić się, adres IP pozostaje bez zmian, należy ustawić metodę alokacji *statyczne*i podaj prawidłowy adres IP do odpowiedniego zakresu adresów.
+Ponadto w przypadku usług w chmurze w sieci wirtualnej prywatny adres IP jest przydzielany *dynamicznie* (domyślnie przy użyciu protokołu DHCP). Może ona ulec zmianie, gdy zasób zostanie zatrzymany i uruchomiony. Aby zapewnić, że adres IP pozostaje taki sam, należy ustawić metodę alokacji na statycznąi podać prawidłowy adres IP w ramach odpowiedniego zakresu adresów.
 
 Statyczne prywatne adresy IP są powszechnie używane do:
 
 * Maszyn wirtualnych, które działają jako kontrolery domeny lub serwery DNS.
-* W przypadku maszyn wirtualnych, które wymagają reguł zapory przy użyciu adresów IP.
-* Maszyny wirtualne z usługami uzyskiwał dostęp do innych aplikacji za pomocą adresu IP.
+* Maszyny wirtualne, które wymagają reguł zapory przy użyciu adresów IP.
+* Maszyny wirtualne z usługami dostępnymi przez inne aplikacje za pośrednictwem adresu IP.
 
 #### <a name="internal-dns-hostname-resolution"></a>Wewnętrzne rozpoznawanie nazwy hosta DNS
-Wszystkie maszyny wirtualne platformy Azure i wystąpień roli PaaS są skonfigurowane przy użyciu [serwerami DNS zarządzanymi przez Azure](virtual-networks-name-resolution-for-vms-and-role-instances.md#azure-provided-name-resolution) domyślnie, chyba że jawnie skonfigurujesz niestandardowe serwery DNS. Te serwery DNS zapewniają rozpoznawanie nazw wewnętrznych dla maszyn wirtualnych i wystąpień roli, które znajdują się w tej samej sieci wirtualnej lub usługi w chmurze.
+Wszystkie maszyny wirtualne platformy Azure i wystąpienia roli PaaS są domyślnie konfigurowane przy użyciu [serwerów DNS zarządzanych przez platformę Azure](virtual-networks-name-resolution-for-vms-and-role-instances.md#azure-provided-name-resolution) , chyba że jawnie skonfigurujesz niestandardowe serwery DNS. Te serwery DNS zapewniają rozpoznawanie nazw wewnętrznych dla maszyn wirtualnych i wystąpień ról znajdujących się w ramach tej samej sieci wirtualnej lub usługi w chmurze.
 
-Podczas tworzenia maszyny wirtualnej mapowanie nazwy hosta na jego prywatny adres IP jest dodawane do serwerów DNS zarządzanych przez platformę Azure. Z maszyną Wirtualną z wieloma kartami nazwa hosta jest mapowana na prywatny adres IP podstawowej karty sieciowej. Informacje o mapowaniu jest jednak ograniczone do zasobów w ramach jednej usługi w chmurze lub sieci wirtualnej.
+Podczas tworzenia maszyny wirtualnej mapowanie nazwy hosta na jego prywatny adres IP jest dodawane do serwerów DNS zarządzanych przez platformę Azure. W przypadku maszyn wirtualnych z obsługą wiele kart nazwa hosta jest mapowana na prywatny adres IP podstawowej karty sieciowej. Jednak te informacje mapowania są ograniczone do zasobów w ramach tej samej usługi w chmurze lub sieci wirtualnej.
 
-W przypadku programu *autonomiczny* usługą w chmurze, będą mieć możliwość rozpoznania nazwy hostów wszystkich wystąpień maszyn wirtualnych/ról w ramach jednej usługi w chmurze tylko. W przypadku usługi w chmurze w ramach sieci wirtualnej można rozwiązać nazwy hostów wszystkich wystąpień maszyn wirtualnych/ról w ramach sieci wirtualnej.
+W przypadku autonomicznej usługi w chmurze będzie można rozpoznać nazwy hostów wszystkich maszyn wirtualnych/wystąpień ról tylko w ramach tej samej usługi w chmurze. W przypadku usługi w chmurze w sieci wirtualnej będzie można rozpoznać nazwy hostów wszystkich maszyn wirtualnych/wystąpień ról w ramach połączenia sieci wirtualnej.
 
 ### <a name="internal-load-balancers-ilb--application-gateways"></a>Wewnętrzne moduły równoważenia obciążenia (ILB) i bramy aplikacji
-Prywatny adres IP możesz przypisać do konfiguracji **frontonu** [wewnętrznego modułu równoważenia obciążenia platformy Azure](../load-balancer/load-balancer-internal-overview.md) (ILB) lub [bramy aplikacji platformy Azure](../application-gateway/application-gateway-introduction.md). Ten prywatny adres IP służy jako wewnętrzny punkt końcowy dostępny tylko dla zasobów w ramach jego sieci wirtualnej i sieci zdalnych podłączonych do sieci wirtualnej. Do konfiguracji frontonu możesz przypisać dynamiczny albo statyczny prywatny adres IP. Można także przypisać wiele prywatnych adresów IP adresu vip wielu scenariuszy.
+Prywatny adres IP możesz przypisać do konfiguracji **frontonu** [wewnętrznego modułu równoważenia obciążenia platformy Azure](../load-balancer/load-balancer-internal-overview.md) (ILB) lub [bramy aplikacji platformy Azure](../application-gateway/application-gateway-introduction.md). Ten prywatny adres IP służy jako wewnętrzny punkt końcowy dostępny tylko dla zasobów w ramach jego sieci wirtualnej i sieci zdalnych podłączonych do sieci wirtualnej. Do konfiguracji frontonu możesz przypisać dynamiczny albo statyczny prywatny adres IP. Możesz również przypisać wiele prywatnych adresów IP, aby umożliwić scenariusze z wieloma adresami VIP.
 
-### <a name="at-a-glance"></a>W skrócie
-W poniższej tabeli przedstawiono każdy typ zasobu z ewentualne metody alokacji (dynamiczne/statyczne), a także przypisać wiele prywatnych adresów IP.
+### <a name="at-a-glance"></a>Błyskawicznie
+W poniższej tabeli przedstawiono każdy typ zasobu z możliwymi metodami alokacji (dynamiczną/statyczną) i możliwość przypisania wielu prywatnych adresów IP.
 
 | Resource | Dynamiczne | Static | Wiele adresów IP |
 | --- | --- | --- | --- |
-| Maszyna wirtualna (w *autonomiczny* usług w chmurze lub sieci wirtualnej) |Yes |Yes |Tak |
-| Wystąpienia roli PaaS (w *autonomiczny* usług w chmurze lub sieci wirtualnej) |Tak |Nie |Nie |
-| Frontonu modułu równoważenia obciążenia wewnętrznego |Tak |Yes |Tak |
-| Fronton aplikacji bramy |Yes |Yes |Tak |
+| Maszyna wirtualna (w *autonomicznej* usłudze w chmurze lub sieci wirtualnej) |Tak |Yes |Tak |
+| Wystąpienie roli PaaS (w *autonomicznej* usłudze w chmurze lub sieci wirtualnej) |Tak |Nie |Nie |
+| Fronton wewnętrznego modułu równoważenia obciążenia |Tak |Yes |Tak |
+| Fronton bramy aplikacji |Tak |Yes |Tak |
 
-## <a name="limits"></a>Limits
-W poniższej tabeli przedstawiono limity dotyczące adresów IP adresowania na platformie Azure na subskrypcję. [Kontaktując się z pomocą techniczną](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade), możesz zwiększyć domyślne limity do maksimum w zależności od potrzeb biznesowych.
+## <a name="limits"></a>Limity
+W poniższej tabeli przedstawiono limity nałożone na adresowanie IP na platformie Azure na subskrypcję. [Kontaktując się z pomocą techniczną](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade), możesz zwiększyć domyślne limity do maksimum w zależności od potrzeb biznesowych.
 
 |  | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
-| Publiczne adresy IP (dynamiczne) |5 |kontakt z pomocą techniczną |
-| Zastrzeżone publiczne adresy IP |20 |kontakt z pomocą techniczną |
-| Publiczne adresy VIP na wdrożenie (usługi w chmurze) |5 |kontakt z pomocą techniczną |
-| Prywatnych adresów VIP (ILB) na wdrożenie (usługi w chmurze) |1 |1 |
+| Publiczne adresy IP (dynamiczne) |5 |Skontaktuj się z pomocą techniczną |
+| Zastrzeżone publiczne adresy IP |20 |Skontaktuj się z pomocą techniczną |
+| Publiczne adresy VIP na wdrożenie (usługa w chmurze) |5 |Skontaktuj się z pomocą techniczną |
+| Prywatny adres VIP (ILB) na wdrożenie (usługa w chmurze) |1 |1 |
 
-Upewnij się, przeczytaj pełny zestaw [limitów dla sieci](../azure-subscription-service-limits.md#networking-limits) na platformie Azure.
+Należy zapoznać się z pełnym zestawem [limitów sieci](../azure-subscription-service-limits.md#networking-limits) na platformie Azure.
 
 ## <a name="pricing"></a>Cennik
-W większości przypadków publiczne adresy IP są bezpłatne. Istnieje nominalna opłata za używania dodatkowych i/lub statycznych publicznych adresów IP. Upewnij się, że rozumiesz [struktury cen publicznych adresów IP](https://azure.microsoft.com/pricing/details/ip-addresses/).
+W większości przypadków publiczne adresy IP są bezpłatne. Istnieje nominalna opłata za używanie dodatkowych i/lub statycznych publicznych adresów IP. Upewnij się, że znasz [strukturę cenową publicznych adresów IP](https://azure.microsoft.com/pricing/details/ip-addresses/).
 
-## <a name="differences-between-resource-manager-and-classic-deployments"></a>Różnice między Menedżera zasobów i wdrożeniami klasycznymi
-Poniżej przedstawiono porównanie funkcji adresowania IP usługi Resource Manager i klasycznego modelu wdrażania.
+## <a name="differences-between-resource-manager-and-classic-deployments"></a>Różnice między wdrożeniami Menedżer zasobów i klasycznymi
+Poniżej znajduje się porównanie funkcji adresowania IP w Menedżer zasobów i klasycznym modelu wdrażania.
 
-|  | Resource | Wdrożenie klasyczne | Resource Manager |
+|  | Resource | Klasyczny | Resource Manager |
 | --- | --- | --- | --- |
-| **Publiczny adres IP** |***VM*** |Nazywane ILPIP (tylko dynamiczny) |Określane jako publiczny adres IP (dynamiczny lub statyczny) |
-|  ||Przypisane do maszyn wirtualnych IaaS lub wystąpień roli PaaS |Skojarzone z karty Sieciowej maszyny Wirtualnej |
-|  |***Moduł równoważenia obciążenia dostępnego z Internetu*** |Określone jako wirtualne adresy IP (dynamiczny) lub zastrzeżony adres IP (statyczne) |Określane jako publiczny adres IP (dynamiczny lub statyczny) |
-|  ||Przypisane do usługi w chmurze |Skojarzone z konfiguracji frontonu modułu równoważenia obciążenia |
+| **Publiczny adres IP** |***VM*** |Określany jako ILPIP (tylko dynamiczny) |Określany jako publiczny adres IP (dynamiczny lub statyczny) |
+|  ||Przypisane do maszyny wirtualnej IaaS lub wystąpienia roli PaaS |Skojarzone z kartą sieciową maszyny wirtualnej |
+|  |***Moduł równoważenia obciążenia połączony z Internetem*** |Określany jako adres VIP (dynamiczny) lub Zastrzeżony adres IP (statyczny) |Określany jako publiczny adres IP (dynamiczny lub statyczny) |
+|  ||Przypisane do usługi w chmurze |Skojarzone z konfiguracją frontonu modułu równoważenia obciążenia |
 |  | | | |
-| **Prywatny adres IP** |***VM*** |Nazywane DIP |Określane jako prywatny adres IP |
-|  ||Przypisane do maszyn wirtualnych IaaS lub wystąpień roli PaaS |Przypisane do karty Sieciowej maszyny Wirtualnej |
-|  |***Wewnętrzny moduł równoważenia obciążenia (ILB)*** |Przypisane do wewnętrznego modułu równoważenia obciążenia (dynamicznej lub statycznej) |Przypisane do konfiguracji frontonu modułem równoważenia obciążenia (dynamicznej lub statycznej) |
+| **Prywatny adres IP** |***VM*** |Określany jako DIP |Określany jako prywatny adres IP |
+|  ||Przypisane do maszyny wirtualnej IaaS lub wystąpienia roli PaaS |Przypisane do karty sieciowej maszyny wirtualnej |
+|  |***Wewnętrzny moduł równoważenia obciążenia (ILB)*** |Przypisane do ILB (dynamiczny lub statyczny) |Przypisane do konfiguracji frontonu ILB (dynamiczny lub statyczny) |
 
-## <a name="next-steps"></a>Kolejne kroki
-* [Wdrażanie maszyny Wirtualnej ze statycznym prywatnym adresem IP](virtual-networks-static-private-ip-classic-pportal.md) przy użyciu witryny Azure portal.
+## <a name="next-steps"></a>Następne kroki
+* [Wdróż maszynę wirtualną ze statycznym prywatnym adresem IP](virtual-networks-static-private-ip-classic-pportal.md) przy użyciu Azure Portal.
 
