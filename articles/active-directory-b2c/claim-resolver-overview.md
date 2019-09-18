@@ -1,6 +1,6 @@
 ---
-title: Około oświadczenia rozpoznawania nazw w zasadach niestandardowych usługi Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o rozwiązujący oświadczeń używanych w przypadku zasad niestandardowych w usłudze Azure Active Directory B2C.
+title: Informacje o resolverach roszczeń w Azure Active Directory B2C zasadach niestandardowych | Microsoft Docs
+description: Dowiedz się więcej na temat sposobu używania metod rozpoznawania oświadczeń w zasadach niestandardowych w Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,20 +10,20 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a13d4b0b44c51f78a068b1619fe083a08756af6b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f08c85cee2378f4a879daf197af7a2adf0c20f45
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511601"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064393"
 ---
-# <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Temat rozwiązujący oświadczenia w zasadach niestandardowych usługi Azure Active Directory B2C
+# <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Informacje o rozpoznawaniu roszczeń w Azure Active Directory B2C zasadach niestandardowych
 
-Oświadczenia rozpoznawania nazw w usłudze Azure Active Directory (Azure AD) B2C [zasady niestandardowe](active-directory-b2c-overview-custom.md) zapewnia informacje kontekstowe o żądanie autoryzacji, takich jak nazwa zasad, identyfikator korelacji żądania, język interfejsu użytkownika i.
+Mechanizmy rozpoznawania nazw w Azure Active Directory B2C (Azure AD B2C) [zasady niestandardowe](active-directory-b2c-overview-custom.md) zawierają informacje kontekstu dotyczące żądania autoryzacji, takie jak nazwa zasad, identyfikator korelacji żądania, język interfejsu użytkownika i inne.
 
-Aby użyć oświadczeń program rozpoznawania nazw w oświadczenie wejściowe i wyjściowe, należy zdefiniować ciąg **oświadczenia**w obszarze [ClaimsSchema](claimsschema.md) elementu, a następnie ustaw **DefaultValue** do oświadczeń Program rozpoznawania nazw w danych wejściowych lub wyjściowych oświadczeń elementu. Usługa Azure AD B2C odczytuje wartość oświadczenia programu rozpoznawania nazw i używa wartości w profilu technicznym. 
+Aby użyć mechanizmu rozwiązywania konfliktów w ramach oświadczenia wejściowego lub wychodzącego,należy zdefiniować element ClaimType typu String w elemencie [ClaimsSchema](claimsschema.md) , a następnie ustawić wartość **DefaultValue** na resolver oświadczenia w elemencie oświadczenia wejściowego lub wychodzącego. Azure AD B2C odczytuje wartość mechanizmu rozwiązywania konfliktów i używa wartości w profilu technicznym.
 
-W poniższym przykładzie typ oświadczenia o nazwie `correlationId` jest zdefiniowana za pomocą **DataType** z `string`.  
+W poniższym przykładzie typ wystąpienia `correlationId` `string`o nazwie jest zdefiniowany za pomocą typu **danych** .
 
 ```XML
 <ClaimType Id="correlationId">
@@ -33,83 +33,83 @@ W poniższym przykładzie typ oświadczenia o nazwie `correlationId` jest zdefin
 </ClaimType>
 ```
 
-W profilu technicznym rozpoznawania oświadczenia są mapowane na typ oświadczenia. Usługa Azure AD B2C, wypełnia wartości oświadczeń programu rozpoznawania nazw `{Context:CorrelationId}` w oświadczenie `correlationId` i wysyła oświadczenie do profilu technicznego.
+W profilu technicznym zamapuj mechanizm rozwiązywania konfliktów na typ zgłoszenia. Azure AD B2C wypełnia wartość programu rozpoznawania `{Context:CorrelationId}` roszczeń do roszczeń `correlationId` i wysyła je do profilu technicznego.
 
 ```XML
 <InputClaim ClaimTypeReferenceId="correlationId" DefaultValue="{Context:CorrelationId}" />
 ```
 
-## <a name="claim-resolver-types"></a>Mechanizm rozpoznawania typów oświadczeń
+## <a name="claim-resolver-types"></a>Typy mechanizmu rozwiązywania konfliktów
 
-W poniższych sekcjach wymieniono dostępne oświadczenia rozpoznawania nazw.
+W poniższych sekcjach znajduje się lista dostępnych elementów rozwiązywania problemów.
 
 ### <a name="culture"></a>Kultura
 
-| Claim | Opis | Przykład |
+| Oświadczenie | Opis | Przykład |
 | ----- | ----------- | --------|
-| {Culture:LanguageName} | Dwuliterowa kod ISO dla języka. | pl |
-| {Kultury: LCID}   | Identyfikator LCID kod języka. | 1033 |
-| {Kultury: RegionName} | Dwuliterowa kod ISO dla regionu. | USA |
-| {Culture:RFC5646} | Kod języka RFC5646. | en-US |
+| {Culture: LanguageName} | Dwuliterowy kod ISO dla języka. | pl-PL |
+| {Culture: LCID}   | Identyfikator LCID kodu języka. | 1033 |
+| {Culture: RegionName} | Dwuliterowy kod ISO dla regionu. | USA |
+| {Culture: RFC5646} | Kod języka RFC5646. | en-US |
 
 ### <a name="policy"></a>Zasady
 
-| Claim | Opis | Przykład |
+| Oświadczenie | Opis | Przykład |
 | ----- | ----------- | --------|
-| {Policy:PolicyId} | Nazwa jednostki uzależnionej zasad. | B2C_1A_signup_signin |
-| {Zasad: RelyingPartyTenantId} | Identyfikator dzierżawy jednostki uzależnionej zasad firmy. | Twój tenant.onmicrosoft.com |
-| {Zasad: TenantObjectId} | Identyfikator obiektu dzierżawy jednostki uzależnionej zasad firmy. | 00000000-0000-0000-0000-000000000000 |
-| {Zasad: TrustFrameworkTenantId} | Identyfikator dzierżawy w ramach relacji zaufania. | Twój tenant.onmicrosoft.com |
+| {Policy: PolicyId} | Nazwa zasad jednostki uzależnionej. | B2C_1A_signup_signin |
+| {Policy: RelyingPartyTenantId} | Identyfikator dzierżawy zasad jednostki uzależnionej. | your-tenant.onmicrosoft.com |
+| {Policy: TenantObjectId} | Identyfikator obiektu dzierżawy zasad jednostki uzależnionej. | 00000000-0000-0000-0000-000000000000 |
+| {Policy: TrustFrameworkTenantId} | Identyfikator dzierżawy struktury zaufania. | your-tenant.onmicrosoft.com |
 
 ### <a name="openid-connect"></a>OpenID Connect
 
-| Claim | Opis | Przykład |
+| Oświadczenie | Opis | Przykład |
 | ----- | ----------- | --------|
-| {OIDC:AuthenticationContextReferences} |`acr_values` Parametr ciągu zapytania. | ND |
-| {OIDC:ClientId} |`client_id` Parametr ciągu zapytania. | 00000000-0000-0000-0000-000000000000 |
-| {OIDC:DomainHint} |`domain_hint` Parametr ciągu zapytania. | facebook.com |
-| {OIDC:LoginHint} |  `login_hint` Parametr ciągu zapytania. | someone@contoso.com |
+| {OIDC: AuthenticationContextReferences} |Parametr `acr_values` ciągu zapytania. | ND |
+| {OIDC:ClientId} |Parametr `client_id` ciągu zapytania. | 00000000-0000-0000-0000-000000000000 |
+| {OIDC: DomainHint} |Parametr `domain_hint` ciągu zapytania. | facebook.com |
+| {OIDC: LoginHint} |  Parametr `login_hint` ciągu zapytania. | someone@contoso.com |
 | {OIDC:MaxAge} | `max_age`. | ND |
-| {OIDC:Nonce} |`Nonce` Parametr ciągu zapytania. | defaultNonce |
-| {OIDC:Prompt} | `prompt` Parametr ciągu zapytania. | logowanie |
-| {OIDC:Resource} |`resource` Parametr ciągu zapytania. | ND |
-| {OIDC:scope} |`scope` Parametr ciągu zapytania. | openid |
+| {OIDC: nonce} |Parametr `Nonce` ciągu zapytania. | defaultNonce |
+| {OIDC: Prompt} | Parametr `prompt` ciągu zapytania. | logowanie |
+| {OIDC: Resource} |Parametr `resource` ciągu zapytania. | ND |
+| {OIDC: Scope} |Parametr `scope` ciągu zapytania. | OpenID Connect |
 
 ### <a name="context"></a>Kontekst
 
-| Claim | Opis | Przykład |
+| Oświadczenie | Opis | Przykład |
 | ----- | ----------- | --------|
-| {Kontekstu: BuildNumber} | Wersja platformy środowiska tożsamości (numer kompilacji).  | 1.0.507.0 |
-| {Context:CorrelationId} | Identyfikator korelacji.  | 00000000-0000-0000-0000-000000000000 |
-| {Context:DateTimeInUtc} |Data Godzina w formacie UTC.  | 10 10 2018 12:00:00 PM |
-| {Kontekstu: DeploymentMode} |Tryb wdrożenia zasad.  | Produkcja |
-| {Kontekstu: IPAddress} | Adres IP użytkownika. | 11.111.111.11 |
+| {Context: BuildNumber} | Wersja struktury obsługi tożsamości (numer kompilacji).  | 1.0.507.0 |
+| {Context: identyfikator korelacji} | Identyfikator korelacji.  | 00000000-0000-0000-0000-000000000000 |
+| {Context:DateTimeInUtc} |Data i godzina w formacie UTC.  | 10/10/2018 12:00:00 PM |
+| {Context: DeploymentMode} |Tryb wdrażania zasad.  | Produkcja |
+| {Context: IPAddress} | Adres IP użytkownika. | 11.111.111.11 |
 
 
-### <a name="non-protocol-parameters"></a>Parametry non-protocol
+### <a name="non-protocol-parameters"></a>Parametry niebędące protokołem
 
-Nazwa parametru dołączone jako część żądania OIDC lub OAuth2 mogą zostać zmapowane do oświadczeń w podróży użytkownika. Na przykład żądania od aplikacji może zawierać parametr ciągu zapytania o nazwie `app_session`, `loyalty_number`, lub dowolnego niestandardowego ciągu zapytania.
+Wszelkie nazwy parametrów dołączone jako część żądania OIDC lub OAuth2 mogą być mapowane do roszczeń w podróży użytkownika. Na przykład żądanie z aplikacji może zawierać parametr ciągu zapytania z nazwą `app_session`, `loyalty_number`lub dowolnym niestandardowym ciągiem zapytania.
 
-| Claim | Opis | Przykład |
+| Oświadczenie | Opis | Przykład |
 | ----- | ----------------------- | --------|
-| {OAUTH-KV:campaignId} | Parametr ciągu zapytania. | Hawaje |
-| {OAUTH-KV:app_session} | Parametr ciągu zapytania. | A3C5R |
-| {OAUTH-KV:loyalty_number} | Parametr ciągu zapytania. | 1234 |
-| {OAUTH KV: dowolny ciąg zapytania niestandardowego} | Parametr ciągu zapytania. | ND |
+| {OAUTH-KV: campaignId} | Parametr ciągu zapytania. | Hawaje |
+| {OAUTH-KV: app_session} | Parametr ciągu zapytania. | A3C5R |
+| {OAUTH-KV: loyalty_number} | Parametr ciągu zapytania. | 1234 |
+| {OAUTH-KV: dowolny niestandardowy ciąg zapytania} | Parametr ciągu zapytania. | ND |
 
 ### <a name="oauth2"></a>OAuth2
 
-| Claim | Opis | Przykład |
+| Oświadczenie | Opis | Przykład |
 | ----- | ----------------------- | --------|
 | {oauth2:access_token} | Token dostępu. | ND |
 
-## <a name="how-to-use-claim-resolvers"></a>Jak używać oświadczeń rozpoznawania nazw
+## <a name="how-to-use-claim-resolvers"></a>Jak korzystać z resolverów roszczeń
 
-### <a name="restful-technical-profile"></a>Profil architektury REST Technical Preview
+### <a name="restful-technical-profile"></a>Profil techniczny RESTful
 
-W [zgodne ze specyfikacją REST](restful-technical-profile.md) profilu technicznego, możesz chcieć wysłać języka użytkownika, nazwę zasad, zakresu i identyfikator klienta. Na podstawie tych oświadczeń z interfejsu API REST można uruchomić niestandardowej logiki biznesowej i w razie potrzeby należy zgłosić zlokalizowany komunikat. 
+W profilu technicznym [RESTful](restful-technical-profile.md) może być konieczne wysłanie języka użytkownika, nazwy zasad, zakresu i identyfikatora klienta. Na podstawie tych oświadczeń interfejs API REST może uruchamiać niestandardową logikę biznesową i w razie potrzeby zgłaszać zlokalizowany komunikat o błędzie.
 
-Poniższy przykład przedstawia RESTful profilu technicznego:
+W poniższym przykładzie przedstawiono profil techniczny RESTful:
 
 ```XML
 <TechnicalProfile Id="REST">
@@ -132,13 +132,13 @@ Poniższy przykład przedstawia RESTful profilu technicznego:
 
 ### <a name="direct-sign-in"></a>Bezpośrednie logowanie
 
-Używanie elementów rozpoznawania oświadczenia, można wypełnić wstępnie nazwą logowania lub bezpośrednie logowanie do określonych społecznościowego dostawcy tożsamości, takich jak Facebook, LinkedIn lub konta Microsoft. Aby uzyskać więcej informacji, zobacz [skonfigurować bezpośrednie logowanie przy użyciu usługi Azure Active Directory B2C](direct-signin.md).
+Korzystając z resolverów roszczeń, można wstępnie wypełnić nazwę logowania lub bezpośrednio zalogować do określonego dostawcy tożsamości społecznościowej, takiego jak Facebook, LinkedIn lub konto Microsoft. Aby uzyskać więcej informacji, zobacz [Konfigurowanie bezpośredniego logowania przy użyciu Azure Active Directory B2C](direct-signin.md).
 
-### <a name="dynamic-ui-customization"></a>Dynamiczne Dostosowywanie interfejsu użytkownika
+### <a name="dynamic-ui-customization"></a>Dynamiczne dostosowywanie interfejsu użytkownika
 
-Usługa Azure AD B2C umożliwia przekazywanie parametrów ciągu zapytania do punktów końcowych definicji zawartości HTML, dzięki czemu mogą powodować dynamiczne renderowanie zawartości strony. Na przykład możesz zmienić obraz tła na stronie tworzenia konta lub logowania usługi Azure AD B2C na podstawie parametru niestandardowego, które przechodzą z sieci web lub aplikacji mobilnej. Aby uzyskać więcej informacji, zobacz [dynamicznego konfigurowania interfejsu użytkownika za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C](active-directory-b2c-ui-customization-custom-dynamic.md). Możesz również dostosować stronę HTML, na podstawie parametru języka lub zmienić zawartość, w oparciu o identyfikator klienta.
+Azure AD B2C umożliwia przekazywanie parametrów ciągu zapytania do punktów końcowych definicji zawartości HTML, dzięki czemu można dynamicznie renderować zawartość strony. Na przykład można zmienić obraz tła na stronie rejestracji lub logowania Azure AD B2C na podstawie parametru niestandardowego, który jest przekazywany z aplikacji sieci Web lub mobilnej. Aby uzyskać więcej informacji, zobacz [dynamiczne Konfigurowanie interfejsu użytkownika przy użyciu zasad niestandardowych w programie Azure Active Directory B2C](active-directory-b2c-ui-customization-custom-dynamic.md). Możesz również lokalizować stronę HTML na podstawie parametru języka lub można zmienić zawartość na podstawie identyfikatora klienta.
 
-Poniższy przykład przekazuje w ciągu zapytania parametr o nazwie **campaignId** o wartości `hawaii`, **języka** kod `en-US`, i **aplikacji** reprezentuje identyfikator klienta:
+Poniższy przykład przekazuje w ciągu zapytania parametr o nazwie **campaignId** z `hawaii`wartością, kod `en-US`języka i **aplikację** reprezentującą identyfikator klienta:
 
 ```XML
 <UserJourneyBehaviors>
@@ -150,15 +150,15 @@ Poniższy przykład przekazuje w ciągu zapytania parametr o nazwie **campaignId
 </UserJourneyBehaviors>
 ```
 
-W rezultacie usługi Azure AD B2C wysyła powyższych parametrów do zawartości strony HTML:
+W wyniku Azure AD B2C do strony zawartości HTML są wysyłane powyższe parametry:
 
 ```
 /selfAsserted.aspx?campaignId=hawaii&language=en-US&app=0239a9cc-309c-4d41-87f1-31288feb2e82
 ```
 
-### <a name="application-insights-technical-profile"></a>Profil usługi Application Insights Technical Preview
+### <a name="application-insights-technical-profile"></a>Profil techniczny Application Insights
 
-Za pomocą usługi Azure Application Insights i rozpoznawania nazw oświadczeń można uzyskiwanie szczegółowych informacji dotyczących zachowania użytkowników. W profilu technicznym usługi Application Insights wysyła do usługi Azure Application Insights oświadczeń wejściowych, które są zachowywane. Aby uzyskać więcej informacji, zobacz [podróży śledzenie zachowania użytkowników w usłudze Azure AD B2C przy użyciu usługi Application Insights](active-directory-b2c-custom-guide-eventlogger-appins.md). Poniższy przykład wysyła identyfikator zasad, identyfikator korelacji, języka i identyfikator klienta do usługi Azure Application Insights.
+Za pomocą usługi Azure Application Insights i rozwiązania do rozwiązywania problemów możesz uzyskiwać wgląd w zachowania użytkowników. W profilu technicznym Application Insights wysyłane są oświadczenia wejściowe, które są utrwalane w usłudze Azure Application Insights. Aby uzyskać więcej informacji, zobacz [śledzenie zachowania użytkowników w Azure AD B2C podróże przy użyciu Application Insights](active-directory-b2c-custom-guide-eventlogger-appins.md). Poniższy przykład wysyła identyfikator zasad, identyfikator korelacji, język i identyfikator klienta do usługi Azure Application Insights.
 
 ```XML
 <TechnicalProfile Id="AzureInsights-Common">

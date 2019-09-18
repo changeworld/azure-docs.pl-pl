@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 07/02/2019
 ms.author: hrasheed
-ms.openlocfilehash: be7ff67f07ed8eaeb3f04a15c6185191bf107cf2
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 33f70ba33168190577baf1757e9be0ece5d315ba
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918507"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066906"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-azure-portal"></a>Szybki start: Tworzenie klastra Apache Hadoop w usłudze Azure HDInsight przy użyciu Azure Portal
 
@@ -34,7 +34,7 @@ W tej sekcji utworzysz klaster usługi Hadoop w usłudze HDInsight przy użyciu 
 
 1. W Azure Portal przejdź do obszaru Tworzenie usługi**HDInsight** **Analiza** >  **zasobów** > .
 
-    ![Usługa Databricks w witrynie Azure Portal](./media/apache-hadoop-linux-create-cluster-get-started-portal/create-hdinsight-cluster.png "Usługa Databricks w witrynie Azure Portal")
+    ![Tworzenie klastra usługi HDInsight zasobów](./media/apache-hadoop-linux-create-cluster-get-started-portal/create-hdinsight-cluster.png "Tworzenie klastra usługi HDInsight zasobów")
 
 1. W obszarze**podstawy** **szybkiego tworzenia** > usługi **HDInsight** > wpisz lub wybierz następujące wartości:
 
@@ -101,7 +101,7 @@ W tej sekcji utworzysz klaster usługi Hadoop w usłudze HDInsight przy użyciu 
 
 3. Otwórz widok **Hive View** pokazany na poniższym zrzucie ekranu:
 
-    ![Wybieranie widoków Ambari](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdi-select-hive-view.png "Menu przeglądarki HDInsight Hive")
+    ![Wybieranie widoku Hive z Ambari](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdi-select-hive-view.png "Menu podglądu usługi HDInsight Hive")
 
 4. Na karcie **QUERY** (ZAPYTANIE) wklej poniższe instrukcje HiveQL do arkusza:
 
@@ -109,13 +109,13 @@ W tej sekcji utworzysz klaster usługi Hadoop w usłudze HDInsight przy użyciu 
     SHOW TABLES;
     ```
 
-    ![Widoki usługi HDInsight Hive](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdi-apache-hive-view1.png "Edytor zapytań widoku usługi HDInsight Hive")
+    ![Edytor zapytań widoku Hive usługi HDInsight](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdi-apache-hive-view1.png "Edytor zapytań widoku Hive usługi HDInsight")
 
 5. Wybierz pozycję **Wykonaj**. Poniżej karty **QUERY** (ZAPYTANIE) zostanie wyświetlona karta **RESULTS** (WYNIKI) z informacjami o zadaniu. 
 
     Po zakończeniu przetwarzania zapytania na karcie **QUERY** (ZAPYTANIE) są wyświetlane wyniki operacji. Powinna być widoczna jedna tabela o nazwie **hivesampletable**. Ta przykładowa tabela składnika Hive jest dostarczana z wszystkimi klastrami usługi HDInsight.
 
-    ![Wyniki widoku programu Hive] w usłudze HDInsight (./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-hive-views.png "Wyniki widoku programu Hive") w usłudze HDInsight
+    ![Wyniki widoku Apache Hive usługi HDInsight](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-hive-views.png "Wyniki widoku Apache Hive usługi HDInsight")
 
 6. Powtórz kroki 4 i 5, aby uruchomić następujące zapytanie:
 
@@ -125,7 +125,7 @@ W tej sekcji utworzysz klaster usługi Hadoop w usłudze HDInsight przy użyciu 
 
 7. Można także zapisać wyniki zapytania. Wybierz przycisk menu z prawej strony i określ, czy chcesz pobrać wyniki jako plik CSV, czy zapisać je na koncie magazynu skojarzonym z klastrem.
 
-    ![Zapisywanie wyniku zapytania programu Hive](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-linux-hive-view-save-results.png "Zapisywanie wyniku zapytania programu Hive")
+    ![Zapisz wynik zapytania Apache Hive](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-linux-hive-view-save-results.png "Zapisz wynik zapytania Apache Hive")
 
 Po zakończeniu zadania Hive można [wyeksportować wyniki do bazy danych Azure SQL Database lub bazy danych programu SQL Server](apache-hadoop-use-sqoop-mac-linux.md), można także [wizualizować wyniki za pomocą programu Excel](apache-hadoop-connect-excel-power-query.md). Aby uzyskać więcej informacji o korzystaniu z programu Hive w usłudze HDInsight, zobacz artykuł [Używanie Apache Hive i HiveQL z usługą Apache Hadoop w usłudze HDInsight do analizy przykładowego pliku Apache log4j](hdinsight-use-hive.md).
 
@@ -140,7 +140,7 @@ Po zakończeniu przewodnika Szybki Start możesz chcieć usunąć klaster. Dzię
 
 1. Wróć do karty przeglądarki, na której znajduje się witryna Azure Portal. Musisz mieć otwartą stronę omówienia klastra. Jeśli chcesz tylko usunąć klaster, zachowując domyślne konto magazynu, wybierz pozycję **Usuń**.
 
-    ![Usuwanie klastra usługi HDInsight](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-delete-cluster.png "Usuwanie klastra usługi HDInsight")
+    ![Usuwanie klastra usługi Azure HDInsight](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-delete-cluster.png "Usuwanie klastra usługi Azure HDInsight")
 
 2. Jeśli chcesz usunąć klaster oraz domyślne konto magazynu, wybierz nazwę grupy zasobów (wyróżnioną na poprzednim zrzucie ekranu), aby otworzyć stronę grupy zasobów.
 

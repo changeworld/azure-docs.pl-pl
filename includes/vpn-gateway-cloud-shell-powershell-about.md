@@ -8,25 +8,25 @@ ms.topic: include
 ms.date: 06/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 01358d13d30358a9950cbe35622df065fc5a6de5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fe7e617ae2263f1388feef3754f6cd16130ed436
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67133786"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059766"
 ---
-W tym artykule używa poleceń cmdlet programu PowerShell. Aby uruchomić polecenia cmdlet, można użyć usługi Azure Cloud Shell, środowisko interaktywnej powłoki hostowanych na platformie Azure i używać za pośrednictwem przeglądarki. Usługa Azure Cloud Shell jest powiązana z poleceń cmdlet programu PowerShell platformy Azure wstępnie zainstalowane.
+W tym artykule są stosowane polecenia cmdlet programu PowerShell. Aby uruchomić polecenia cmdlet, można użyć Azure Cloud Shell, interaktywnego środowiska powłoki hostowanego na platformie Azure i używanego przez przeglądarkę. Azure Cloud Shell jest dostarczany ze wstępnie zainstalowanymi poleceniami cmdlet Azure PowerShell.
 
-Aby uruchomić dowolny kod zawarty w tym artykule w usłudze Azure Cloud Shell, otwórz sesję usługi Cloud Shell, należy użyć **kopiowania** przycisku w bloku kodu, aby skopiować kod i wklej go do sesji usługi Cloud Shell za pomocą __Ctrl + Shift + V__ na Windows i Linux, lub __Cmd + Shift + V__ w systemie macOS. Wklejony tekst nie zostanie wykonany automatycznie, więc naciśnij **Enter** do uruchomienia kodu.
+Aby uruchomić dowolny kod zawarty w tym artykule na Azure Cloud Shell, Otwórz sesję Cloud Shell, użyj przycisku **Kopiuj** w bloku kodu, aby skopiować kod i wkleić go do sesji Cloud Shell przy użyciu __kombinacji klawiszy Ctrl + Shift + v__ w systemach Windows i Linux lub __cmd + Shift + v__ w witrynie macOS. Wklejony tekst nie jest automatycznie wykonywany, dlatego naciśnij klawisz **Enter** , aby uruchomić kod.
 
-Można uruchomić usługi Azure Cloud Shell przy użyciu:
+Azure Cloud Shell można uruchomić z:
 
 |  |   |
 |-----------------------------------------------|---|
-| Wybierz pozycję **Wypróbuj** w prawym górnym rogu bloku kodu. To __nie__ automatycznie skopiować tekst do usługi Cloud Shell. | ![Przykład Wypróbuj usługę Azure Cloud Shell](./media/cloud-shell-try-it/cli-try-it.png) |
-| Otwórz [shell.azure.com](https://shell.azure.com) w przeglądarce. | [![Uruchom usługę Azure Cloud Shell, przycisk](./media/cloud-shell-try-it/launchcloudshell.png)](https://shell.azure.com) |
-| Wybierz przycisk **Cloud Shell** w menu w prawym górnym rogu witryny [Azure Portal](https://portal.azure.com). | ![Przycisk Cloud Shell w witrynie Azure Portal](./media/cloud-shell-try-it/cloud-shell-menu.png) |
+| Wybierz pozycję **Wypróbuj** w prawym górnym rogu bloku kodu. __Nie powoduje__ to automatycznego kopiowania tekstu do Cloud Shell. | ![Przykład try dla Azure Cloud Shell](./media/cloud-shell-try-it/hdi-azure-cli-try-it.png) |
+| Otwórz [Shell.Azure.com](https://shell.azure.com) w przeglądarce. | [![Przycisk Azure Cloud Shell uruchamiania](./media/cloud-shell-try-it/hdi-launch-cloud-shell.png)](https://shell.azure.com) |
+| Wybierz przycisk **Cloud Shell** w menu w prawym górnym rogu witryny [Azure Portal](https://portal.azure.com). | ![Przycisk Cloud Shell w witrynie Azure Portal](./media/cloud-shell-try-it/hdi-cloud-shell-menu.png) |
 
 **Uruchamianie programu PowerShell lokalnie**
 
-Można również zainstalować i uruchomić polecenia cmdlet programu PowerShell platformy Azure lokalnie na komputerze. Polecenia cmdlet programu PowerShell są często aktualizowane. Jeśli nie używasz najnowszej wersji, wartości określonych w instrukcji może zakończyć się niepowodzeniem. Aby znaleźć wersji programu Azure PowerShell na komputerze zainstalowany, użyj `Get-Module -ListAvailable Az` polecenia cmdlet. Aby zainstalować lub zaktualizować, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps).
+Polecenia cmdlet Azure PowerShell można również zainstalować i uruchomić lokalnie na komputerze. Polecenia cmdlet programu PowerShell są często aktualizowane. Jeśli nie korzystasz z najnowszej wersji, wartości określone w instrukcjach mogą zakończyć się niepowodzeniem. Aby znaleźć wersje Azure PowerShell zainstalowanych na komputerze, użyj `Get-Module -ListAvailable Az` polecenia cmdlet. Aby zainstalować lub zaktualizować, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps).

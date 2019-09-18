@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: df47b4fc5b8048f76f94486e213285896dab9cb9
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 042c4fa18ce583f714bbe71f522b1f8f1af3dfdb
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874091"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066123"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Żądanie tokenu dostępu w Azure Active Directory B2C
 
-*Token dostępu* zawiera oświadczenia, których można użyć w Azure Active Directory (Azure AD) B2C do zidentyfikowania przyznanych uprawnień do interfejsów API. Podczas wywoływania serwera zasobów token dostępu musi znajdować się w żądaniu HTTP. Token dostępu jest oznaczany jako **access_token** w odpowiedziach z Azure AD B2C.
+*Token dostępu* zawiera oświadczenia, których można użyć w Azure Active Directory B2C (Azure AD B2C) do zidentyfikowania przyznanych uprawnień do interfejsów API. Podczas wywoływania serwera zasobów token dostępu musi znajdować się w żądaniu HTTP. Token dostępu jest oznaczany jako **access_token** w odpowiedziach z Azure AD B2C.
 
 W tym artykule pokazano, jak zażądać tokenu dostępu dla aplikacji sieci Web i internetowego interfejsu API. Aby uzyskać więcej informacji na temat tokenów w Azure AD B2C, zobacz [Omówienie tokenów w programie Azure Active Directory B2C](active-directory-b2c-reference-tokens.md).
 
@@ -35,7 +35,7 @@ W tym artykule pokazano, jak zażądać tokenu dostępu dla aplikacji sieci Web 
 
 Zakresy umożliwiają zarządzanie uprawnieniami do chronionych zasobów. Po zażądaniu tokenu dostępu aplikacja kliencka musi określić odpowiednie uprawnienia w parametrze **zakresu** żądania. Na przykład, aby określić `read` **wartość zakresu** dla interfejsu API, który ma `https://contoso.onmicrosoft.com/api` **Identyfikator URI aplikacji** , zakresem `https://contoso.onmicrosoft.com/api/read`będzie.
 
-Zakresy są używane przez internetowy interfejs API w celu implementowania kontroli dostępu opartej na zakresach. Na przykład użytkownicy internetowego interfejsu API mogą mieć dostęp zarówno do odczytu, jak i zapisu lub tylko dostęp do odczytu. Aby uzyskać wiele uprawnień w tym samym żądaniu, można dodać wiele wpisów w pojedynczym parametrze żądania, rozdzielone spacjami.
+Zakresy są używane przez internetowy interfejs API w celu implementowania kontroli dostępu opartej na zakresach. Na przykład użytkownicy internetowego interfejsu API mogą mieć dostęp zarówno do odczytu, jak i zapisu lub tylko dostęp do odczytu. Aby uzyskać wiele uprawnień w tym samym żądaniu, można dodać wiele wpisów **w pojedynczym** parametrze żądania, rozdzielone spacjami.
 
 W poniższym przykładzie przedstawiono zakresy zdekodowane w adresie URL:
 

@@ -8,24 +8,24 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
-ms.date: 07/01/2019
-ms.openlocfilehash: c6994127b504cba31df051c757295f3e575bc23f
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
-ms.translationtype: MT
+ms.date: 09/01/2019
+ms.openlocfilehash: 3a197ab8d8c44229328c63330bcbc99fb2e64f01
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931221"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077265"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Zainstaluj lokalną bramę danych dla Azure Logic Apps
 
-Przed [nawiązaniem połączenia z lokalnymi źródłami danych z Azure Logic Apps](../logic-apps/logic-apps-gateway-connection.md)Pobierz i zainstaluj lokalną bramę danych na komputerze lokalnym. Brama działa jako most, który zapewnia szybkie przesyłanie i szyfrowanie danych między źródłami danych w środowisku lokalnym i aplikacjami logiki. Możesz użyć tej samej instalacji bramy z innymi usługami w chmurze, takimi jak Power BI, Microsoft Flow, PowerApps i Azure Analysis Services. Aby uzyskać informacje o sposobach korzystania z bramy za pomocą tych usług, zobacz następujące artykuły:
+Przed [nawiązaniem połączenia z lokalnymi źródłami danych z Azure Logic Apps](../logic-apps/logic-apps-gateway-connection.md)Pobierz i zainstaluj lokalną [bramę danych](https://aka.ms/on-premises-data-gateway-installer) na komputerze lokalnym. Brama działa jako most, który zapewnia szybkie przesyłanie i szyfrowanie danych między źródłami danych w środowisku lokalnym i aplikacjami logiki. Możesz użyć tej samej instalacji bramy z innymi usługami w chmurze, takimi jak Power BI, Microsoft Flow, PowerApps i Azure Analysis Services. Aby uzyskać informacje o sposobach korzystania z bramy za pomocą tych usług, zobacz następujące artykuły:
 
 * [Lokalna Brama danych Power BI firmy Microsoft](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
 * [Microsoft PowerApps lokalnej bramy danych](https://powerapps.microsoft.com/tutorials/gateway-management/)
 * [Microsoft Flow lokalnej bramy danych](https://flow.microsoft.com/documentation/gateway-manage/)
 * [Azure Analysis Services lokalnej bramy danych](../analysis-services/analysis-services-gateway.md)
 
-W tym artykule pokazano, jak pobrać, zainstalować i skonfigurować lokalną bramę danych, aby można było uzyskać dostęp do lokalnych źródeł danych z Azure Logic Apps. Możesz również dowiedzieć się więcej o tym [, jak Brama danych działa](#gateway-cloud-service) w dalszej części tego tematu.
+W tym artykule pokazano, jak pobrać, zainstalować i skonfigurować lokalną bramę danych, aby można było uzyskać dostęp do lokalnych źródeł danych z Azure Logic Apps. Możesz również dowiedzieć się więcej o tym [, jak Brama danych działa](#gateway-cloud-service) w dalszej części tego tematu. Aby uzyskać więcej informacji na temat bramy, zobacz [co to jest brama lokalna](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)?
 
 <a name="requirements"></a>
 
@@ -264,8 +264,8 @@ Poniżej przedstawiono sposoby dopasowywania lokalnych kont Active Directory za 
 
 Aby uzyskać więcej informacji zobacz następujące tematy:
 
-* [Lokalna brama danych — często zadawane pytania](https://docs.microsoft.com/data-integration/service-gateway-onprem-faq)
-* [Rozwiązywanie problemów z lokalną bramą danych](https://docs.microsoft.com/data-integration/gateway-service-gateway-tshoot)
+* [Lokalna brama danych — często zadawane pytania](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
+* [Rozwiązywanie problemów z lokalną bramą danych](https://docs.microsoft.com/data-integration/gateway/gateway-service-gateway-tshoot)
 * [Monitorowanie i Optymalizowanie wydajności bramy](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
 
 ## <a name="next-steps"></a>Następne kroki

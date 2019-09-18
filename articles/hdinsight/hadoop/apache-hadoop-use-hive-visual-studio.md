@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: hrasheed
-ms.openlocfilehash: 129f200bc9f61d70f4403b1154978d57e09fee26
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 1e5e3854f0b132ede38e182f99435a569c04d49e
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70917471"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076282"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Uruchamianie zapytań Apache Hive przy użyciu narzędzi Data Lake Tools for Visual Studio
 
@@ -115,7 +115,7 @@ Zapytania ad hoc mogą być wykonywane w trybie **wsadowym** lub **interaktywnym
 
 6. Na pasku narzędzi wybierz klaster usługi **HDInsight** , który ma być używany dla tego zapytania. Wybierz pozycję **Prześlij** , aby uruchomić instrukcje jako zadanie Hive.
 
-   ![Pasek przesyłania](./media/apache-hadoop-use-hive-visual-studio/hdinsight-toolbar-submit.png)
+   ![Przesyłanie paska narzędzi usługi Azure HDInsight](./media/apache-hadoop-use-hive-visual-studio/hdinsight-toolbar-submit.png)
 
 7. Zostanie wyświetlone **Podsumowanie zadania programu Hive** zawierające informacje o uruchomionym zadaniu. Użyj linku **Odśwież** , aby odświeżyć informacje o zadaniu do momentu, aż **stan zadania** zmieni się na **zakończone**.
 

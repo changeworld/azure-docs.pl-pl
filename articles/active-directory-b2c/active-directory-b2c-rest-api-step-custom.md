@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 42129870c6ab2bb5e58bdf9aaa323a3d64b479f8
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 12ddbe9f43baf68f6c11c9b720a0f684316af46a
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69644924"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065316"
 ---
 # <a name="add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Dodawanie wymiany oświadczeń interfejsu API REST do zasad niestandardowych w Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Interakcję z interfejsem API RESTful można dodać do [zasad niestandardowych](active-directory-b2c-overview-custom.md) w Azure Active Directory (Azure AD) B2C. W tym artykule opisano sposób tworzenia Azure AD B2Cj podróży użytkowników, która współdziała z usługami RESTful Services.
+Interakcję z interfejsem API RESTful można dodać do [zasad niestandardowych](active-directory-b2c-overview-custom.md) w Azure Active Directory B2C (Azure AD B2C). W tym artykule opisano sposób tworzenia Azure AD B2Cj podróży użytkowników, która współdziała z usługami RESTful Services.
 
 Interakcja obejmuje wymianę informacji między oświadczeniami interfejsu API REST a Azure AD B2C. Wymiany oświadczeń mają następującą charakterystykę:
 

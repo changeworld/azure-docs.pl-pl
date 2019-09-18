@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: sstein
-ms.openlocfilehash: ed41ccea0754f3eeffdd0248bac567859db1492c
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 21f80a2be09302e47817ccfd4223207bdcdd0413
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001507"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066806"
 ---
 # <a name="sql-database-release-notes"></a>Informacje o wersji SQL Database
 
@@ -26,6 +26,7 @@ W tym artykule wymieniono SQL Database funkcje, które są obecnie dostępne w p
 
 | Cecha | Szczegóły |
 | ---| --- |
+| [Prywatny link do platformy Azure](https://azure.microsoft.com/updates/private-link-now-available-in-preview/)| Łącze prywatne upraszcza architekturę sieci i zabezpiecza połączenie między punktami końcowymi na platformie Azure, zachowując dane w sieci platformy Azure i eliminując ekspozycję z Internetu. Łącze prywatne pozwala też tworzyć i renderować własne usługi na platformie Azure. |
 | Szybsze odzyskiwanie bazy danych przy użyciu pojedynczych baz danych i pul elastycznych | Aby uzyskać więcej informacji, zobacz [przyspieszone odzyskiwanie bazy danych](sql-database-accelerated-database-recovery.md).|
 |Przybliżona liczba unikatowych|Aby uzyskać więcej informacji, zobacz [Przybliżona liczba odrębna](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#approximate-query-processing).|
 |Tryb wsadowy w magazynu wierszy (w obszarze poziom zgodności 150)|Aby uzyskać więcej informacji, zobacz [Tryb wsadowy w witrynie magazynu wierszy](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-on-rowstore).|
@@ -55,6 +56,24 @@ W tym artykule wymieniono SQL Database funkcje, które są obecnie dostępne w p
 | &nbsp; |
 
 ---
+
+## <a name="new-features"></a>Nowe funkcje
+
+### <a name="managed-instance-h2-2019-updates"></a>Zarządzane wystąpienie H2 2019 aktualizacje
+
+- Skonfiguruj zachowanie wystąpienia zarządzanego przy użyciu [globalnych flag śledzenia](https://azure.microsoft.com/updates/global-trace-flags-are-now-available-in-azure-sql-database-managed-instance/).
+
+### <a name="managed-instance-h1-2019-updates"></a>Wystąpienia zarządzane — aktualizacje 2019
+
+W modelu wdrażania wystąpienia zarządzanego w H1 2019 są włączone następujące funkcje:
+  - Obsługa subskrypcji za pomocą <a href="https://aka.ms/sql-mi-visual-studio-subscribers">miesięcznych środków na korzystanie z platformy Azure dla subskrybentów programu Visual Studio</a> i zwiększonych [granic regionalnych](sql-database-managed-instance-resource-limits.md#regional-resource-limitations).
+  - Obsługa <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019">programów SharePoint 2016 i SharePoint 2019</a> oraz <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance">usługi Dynamics 365 Business Central</a>
+  - Utwórz wystąpienia z wybranym <a href="https://aka.ms/managed-instance-collation">sortowaniem na poziomie serwera</a> i <a href="https://azure.microsoft.com/updates/managed-instance-time-zone-ga/">strefą czasową</a> .
+  - Zarządzane wystąpienia są teraz chronione za pomocą <a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">wbudowanej zapory</a>.
+  - Skonfiguruj wystąpienia do korzystania z [publicznych punktów końcowych](sql-database-managed-instance-public-endpoint-configure.md), połączenia [zastąpień serwera proxy](/sql-database-connectivity-architecture.md#connection-policy) w celu uzyskania lepszej wydajności sieci, <a href="https://aka.ms/four-cores-sql-mi-update">4 rdzeni wirtualnych na generowanie sprzętu 5 rdzeń</a> lub <a href="https://aka.ms/managed-instance-configurable-backup-retention">Skonfiguruj przechowywanie kopii zapasowych do 35 dni</a> w przypadku przywracania do punktu w czasie. Długoterminowe przechowywanie kopii zapasowych (do 10 lat) nadal nie jest włączone, aby można było użyć <a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">kopii zapasowych tylko do kopiowania</a> jako alternatywy.
+  - Nowe funkcje umożliwiają <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">przeprzywracanie geograficznej bazy danych do innego centrum danych przy użyciu programu PowerShell</a>, [zmiana nazwy bazy danych](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/), [usunięcie klastra wirtualnego](sql-database-managed-instance-delete-virtual-cluster.md).
+  - Nowa [rola współautor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor) wbudowanego wystąpienia umożliwia rozdzielenie cła (SOD) z zasadami zabezpieczeń i zgodności z normami przedsiębiorstwa.
+  - Wystąpienie zarządzane jest dostępne w następujących Azure Government regionach do GA (US Gov Teksas, US Gov Arizona), a także w Chiny Północne 2 i Chiny Wschodnie 2. Jest ona również dostępna w następujących regionach publicznych: Australia Środkowa, Australia Środkowa 2, Brazylia Południowa, Francja Południowa, Europa Zachodnia, Południowe Zjednoczone Emiraty Arabskie, Północna Republika Południowej Afryki, Zachodnia Republika Południowej Afryki.
 
 ## <a name="fixed-known-issues"></a>Naprawione znane problemy
 

@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: dacurwin
-ms.openlocfilehash: 6ac15e042f93befe406553d622c790eeabad7c2c
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 9f16a00bd8bc8e61aecbf6d6bd7f31e90f50140a
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70060706"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067101"
 ---
 # <a name="back-up-an-sap-hana-database-to-azure"></a>Tworzenie kopii zapasowej bazy danych SAP HANA na platformie Azure
 
@@ -27,7 +27,7 @@ ms.locfileid: "70060706"
 --- | ---
 **Obsługiwane obszary geograficzne** | Australia Południowo-Wschodnia, Australia Wschodnia <br> Brazylia Południowa <br> Kanada środkowa, Kanada Wschodnia <br> Azja Wschodnia Południowe, Azja Wschodnia <br> Wschodnie stany USA, Wschodnie stany USA 2, zachodnie stany USA, zachodnie stany USA, zachodnie stany USA 2, środkowe stany USA, środkowe stany USA, Południowo-środkowe stany USA<br> Indie Środkowe, Indie Południowe <br> Japonia, część wschodnia; Japonia, część zachodnia<br> Korea Środkowa, Korea Południowa <br> Europa Północna, Europa Zachodnia <br> Południowe Zjednoczone Królestwo, Zachodnie Zjednoczone Królestwo
 **Obsługiwane systemy operacyjne maszyn wirtualnych** | SLES 12 z dodatkiem SP2 lub dodatkiem SP3.
-**Obsługiwane wersje platformy HANA** | SDC na platformie HANA 1. x, MDC w systemie HANA 2. x < = SPS03
+**Obsługiwane wersje platformy HANA** | SDC na platformie HANA 1. x, MDC w systemie HANA 2. x < = SPS04 Rev 42
 
 ### <a name="current-limitations"></a>Bieżące ograniczenia
 

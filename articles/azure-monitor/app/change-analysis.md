@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: cawa
-ms.openlocfilehash: a08fc7d7822b4aeddafb588fdb73e86559ce2b12
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 84e423ac055c074028df217060a548b932823496
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68849165"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033379"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Korzystanie z analizy zmian aplikacji (wersja zapoznawcza) w Azure Monitor
 
@@ -87,59 +87,41 @@ W Azure Monitor Analiza zmian jest obecnie wbudowana w funkcję **diagnozowania 
 
 ### <a name="enable-change-analysis-at-scale"></a>Włącz analizę zmian na dużą skalę
 
-Jeśli Twoja subskrypcja obejmuje wiele aplikacji sieci Web, włączenie usługi na poziomie aplikacji sieci Web byłoby niewydajne. W takim przypadku postępuj zgodnie z tymi instrukcjami alternatywnymi.
+Jeśli Twoja subskrypcja obejmuje wiele aplikacji sieci Web, włączenie usługi na poziomie aplikacji sieci Web byłoby niewydajne. Uruchom następujący skrypt, aby włączyć wszystkie aplikacje sieci Web w ramach subskrypcji.
 
-### <a name="register-the-change-analysis-resource-provider-for-your-subscription"></a>Rejestrowanie dostawcy zasobów analizy zmian dla subskrypcji
+Wymagania wstępne:
+* PowerShell AZ module. Postępuj zgodnie z instrukcjami w [instalacji modułu Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-2.6.0)
 
-1. Zarejestruj flagę funkcji zmiany analizy (wersja zapoznawcza). Ponieważ flaga funkcji jest dostępna w wersji zapoznawczej, należy ją zarejestrować, aby była widoczna dla Twojej subskrypcji:
+Uruchom następujący skrypt:
 
-   1. Otwórz usługę [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/).
+```PowerShell
+# Log in to your Azure subscription
+Connect-AzAccount
 
-      ![Zrzut ekranu przedstawiający zmianę Cloud Shell](./media/change-analysis/cloud-shell.png)
+# Get subscription Id
+$SubscriptionId = Read-Host -Prompt 'Input your subscription Id'
 
-   1. Zmień typ powłoki na **PowerShell**.
+# Make Feature Flag visible to the subscription
+Set-AzContext -SubscriptionId $SubscriptionId
 
-      ![Zrzut ekranu przedstawiający zmianę Cloud Shell](./media/change-analysis/choose-powershell.png)
+# Register resource provider
+Register-AzResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis"
 
-   1. Uruchom następujące polecenie programu PowerShell:
 
-        ``` PowerShell
-        Set-AzContext -Subscription <your_subscription_id> #set script execution context to the subscription you are trying to enable
-        Get-AzureRmProviderFeature -ProviderNamespace "Microsoft.ChangeAnalysis" -ListAvailable #Check for feature flag availability
-        Register-AzureRmProviderFeature -FeatureName PreviewAccess -ProviderNamespace Microsoft.ChangeAnalysis #Register feature flag
-        ```
+# Enable each web app
+$webapp_list = Get-AzWebApp | Where-Object {$_.kind -eq 'app'}
+foreach ($webapp in $webapp_list)
+{
+    $tags = $webapp.Tags
+    $tags[“hidden-related:diagnostics/changeAnalysisScanEnabled”]=$true
+    Set-AzResource -ResourceId $webapp.Id -Tag $tags -Force
+}
 
-1. Zarejestruj dostawcę zasobów analizy zmian dla subskrypcji.
+```
 
-   - Przejdź do pozycji **subskrypcje**i wybierz subskrypcję, którą chcesz włączyć w usłudze zmiany. Następnie wybierz pozycję dostawcy zasobów:
 
-        ![Zrzut ekranu przedstawiający sposób rejestrowania dostawcy zasobów analizy zmian](./media/change-analysis/register-rp.png)
 
-       - Wybierz pozycję **Microsoft. ChangeAnalysis**. Następnie w górnej części strony wybierz pozycję **zarejestruj**.
-
-       - Po włączeniu dostawcy zasobów można ustawić tag ukryty w aplikacji sieci Web w celu wykrycia zmian na poziomie wdrożenia. Aby ustawić tag ukryty, postępuj zgodnie z instrukcjami w sekcji **nie można pobrać informacji o analizie zmian**.
-
-   - Alternatywnie można użyć skryptu programu PowerShell do zarejestrowania dostawcy zasobów:
-
-        ```PowerShell
-        Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState #Check if RP is ready for registration
-
-        Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis" #Register the Change Analysis RP
-        ```
-
-        Aby ustawić ukryty tag w aplikacji sieci Web przy użyciu programu PowerShell, uruchom następujące polecenie:
-
-        ```powershell
-        $webapp=Get-AzWebApp -Name <name_of_your_webapp>
-        $tags = $webapp.Tags
-        $tags[“hidden-related:diagnostics/changeAnalysisScanEnabled”]=$true
-        Set-AzResource -ResourceId <your_webapp_resourceid> -Tag $tag
-        ```
-
-     > [!NOTE]
-     > Po dodaniu ukrytego znacznika nadal może być konieczne odczekanie maksymalnie 4 godzin przed rozpoczęciem wyświetlania zmian. Wyniki są opóźnione, ponieważ analiza zmian skanuje aplikację sieci Web tylko co 4 godziny. Harmonogram 4-godzinny ogranicza wpływ na wydajność skanowania.
-
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Włącz Application Insights dla [aplikacji App Services platformy Azure](azure-web-apps.md).
 - Włącz Application Insights dla [maszyny wirtualnej platformy Azure i zestawu skalowania maszyn wirtualnych platformy Azure dla aplikacji hostowanych przez usługi IIS](azure-vm-vmss-apps.md).

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 487940bfb5d6e7c5eebf99f804f57c3e17709377
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 59e64b7c84e589da57ea28d6655c9305f4fdc101
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276498"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058340"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Wersja zapoznawcza — bezpieczny dostęp do serwera interfejsu API przy użyciu zakresów autoryzowanych adresów IP w usłudze Azure Kubernetes Service (AKS)
 
@@ -28,7 +28,7 @@ W tym artykule pokazano, jak używać zakresów adresów IP autoryzowanych przez
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W tym artykule przyjęto założenie, że pracujesz z klastrami korzystającymi z programu [korzystającą wtyczki kubenet] [korzystającą wtyczki kubenet].  W przypadku klastrów opartych na interfejsie [Azure Container Network Interface (CNI)] [CNI-Networking] nie będzie potrzebna tabela tras wymagana do zabezpieczenia dostępu.  Należy ręcznie utworzyć tabelę tras.  Aby uzyskać więcej informacji, zobacz [Zarządzanie tabelami tras](https://docs.microsoft.com/azure/virtual-network/manage-route-table) .
+W tym artykule założono, że pracujesz z klastrami korzystającymi z [korzystającą wtyczki kubenet][kubenet].  W przypadku klastrów opartych na [interfejsie Azure Container Network Interface (CNI)][cni-networking] nie będzie potrzebna tabela tras wymagana do zabezpieczenia dostępu.  Należy ręcznie utworzyć tabelę tras.  Aby uzyskać więcej informacji, zobacz [Zarządzanie tabelami tras](https://docs.microsoft.com/azure/virtual-network/manage-route-table) .
 
 Zakres adresów IP autoryzowanych przez serwer API działa tylko w przypadku nowych klastrów AKS utworzonych przez Ciebie. W tym artykule opisano sposób tworzenia klastra AKS przy użyciu interfejsu wiersza polecenia platformy Azure.
 
@@ -111,7 +111,7 @@ Aby upewnić się, że węzły w klastrze mogą niezawodnie komunikować się z 
 > [!WARNING]
 > Korzystanie z zapory platformy Azure może wiązać się ze znacznymi kosztami w ramach miesięcznego cyklu rozliczeniowego. Wymóg używania zapory platformy Azure powinien być konieczny tylko w tym okresie wstępnej wersji zapoznawczej. Aby uzyskać więcej informacji i planowanie kosztów, zobacz [Cennik usługi Azure firewall][azure-firewall-costs].
 >
-> Alternatywnie, Jeśli klaster korzysta ze [standardowego modułu równoważenia obciążenia SKU][standard-sku-lb], nie trzeba konfigurować zapory platformy Azure jako bramy wychodzącej. Użyj [AZ Network Public-IP list][az-network-public-ip-list] i określ grupę zasobów klastra AKS, która zwykle zaczyna się od *MC_* . Spowoduje to wyświetlenie publicznego adresu IP dla klastra, który można dozwolonych. Przykład:
+> Alternatywnie, Jeśli klaster korzysta ze [standardowego modułu równoważenia obciążenia SKU][standard-sku-lb], nie trzeba konfigurować zapory platformy Azure jako bramy wychodzącej. Użyj [AZ Network Public-IP list][az-network-public-ip-list] i określ grupę zasobów klastra AKS, która zwykle zaczyna się od *MC_* . Spowoduje to wyświetlenie publicznego adresu IP dla klastra, który można dozwolonych. Na przykład:
 >
 > ```azurecli-interactive
 > RG=$(az aks show --resource-group myResourceGroup --name myAKSClusterSLB --query nodeResourceGroup -o tsv)
@@ -256,6 +256,8 @@ Aby uzyskać więcej informacji, zobacz [pojęcia dotyczące zabezpieczeń aplik
 
 <!-- LINKS - external -->
 [azure-firewall-costs]: https://azure.microsoft.com/pricing/details/azure-firewall/
+[kubenet]: https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/#kubenet
+[cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md

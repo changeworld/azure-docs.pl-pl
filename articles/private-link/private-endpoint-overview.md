@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 031055dce66361cc128ed42a4d0c942ccb5a3b82
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: c2f26c1f672644edd4993010c64062ee4108ca40
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71017973"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057820"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co to jest prywatny punkt końcowy platformy Azure?
 
@@ -55,8 +55,8 @@ Zasób link prywatny jest docelowym miejscem docelowym danego prywatnego punktu 
 |**Usługa link prywatny** (Twoja usługa)   |  Microsoft. Network/privateLinkServices       | ciągiem |
 |**Azure SQL Database** | Microsoft.Sql/servers    |  Program SQL Server (sqlServer)        |
 |**Azure SQL Data Warehouse** | Microsoft.Sql/servers    |  Program SQL Server (sqlServer)        |
-|**Azure Storage**  | (Microsoft. Storage/storageAccounts)    |  Obiekt BLOB (BLOB, blob_secondary)<BR> Tabela (tabela, table_secondary)<BR> Kolejka (Queue, queue_secondary)<BR> Plik (plik, file_secondary)<BR> Sieć Web (sieć Web, web_secondary)        |
-|**Azure Data Lake Storage Gen2**  | (Microsoft. Storage/storageAccounts)    |  Obiekt BLOB (BLOB, blob_secondary)       |
+|**Azure Storage**  | Microsoft.Storage/storageAccounts    |  Obiekt BLOB (BLOB, blob_secondary)<BR> Tabela (tabela, table_secondary)<BR> Kolejka (Queue, queue_secondary)<BR> Plik (plik, file_secondary)<BR> Sieć Web (sieć Web, web_secondary)        |
+|**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  Obiekt BLOB (BLOB, blob_secondary)       |
  
  
 ## <a name="network-security-of-private-endpoints"></a>Zabezpieczenia sieciowe prywatnych punktów końcowych 

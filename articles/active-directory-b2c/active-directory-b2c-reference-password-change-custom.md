@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie zmiany hasła, za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak umożliwić użytkownikom zmienić swoje hasło, za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C.
+title: Konfigurowanie zmiany hasła przy użyciu zasad niestandardowych w Azure Active Directory B2C | Microsoft Docs
+description: Dowiedz się, jak umożliwić użytkownikom zmianę hasła przy użyciu zasad niestandardowych w programie Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,26 +10,26 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a49f62b6fc1ea00084266d4c5405f8bf96d034cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0775920e1d6572223253edbfc066123a515b5480
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509257"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065529"
 ---
-# <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurowanie zmiany hasła, za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C
+# <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurowanie zmiany hasła przy użyciu zasad niestandardowych w Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-W usłudze Azure Active Directory (Azure AD) B2C aby umożliwić użytkowników, którzy są podpisane za pomocą konta lokalnego zmiany hasła bez konieczności potwierdzenia autentyczności ich przez Weryfikacja adresu e-mail. Jeśli sesja wygaśnie przez razem, gdy użytkownik uzyskuje do hasła, zmień przepływ, otrzymuje monit Zaloguj się ponownie. W tym artykule dowiesz się, jak skonfigurować zmianę hasła w [zasady niestandardowe](active-directory-b2c-overview-custom.md). Istnieje również możliwość skonfigurowania [samoobsługowego resetowania haseł](active-directory-b2c-reference-sspr.md) przepływów użytkownika.
+W Azure Active Directory B2C (Azure AD B2C) można umożliwić użytkownikom zalogowanym przy użyciu konta lokalnego zmianę hasła bez konieczności potwierdzania autentyczności przez weryfikację poczty e-mail. Jeśli sesja wygaśnie przez czas, gdy użytkownik przyjdzie do przepływu zmiany hasła, zostanie wyświetlony monit o ponowne zalogowanie. W tym artykule opisano sposób konfigurowania zmiany hasła w [zasadach niestandardowych](active-directory-b2c-overview-custom.md). Istnieje również możliwość skonfigurowania [funkcji samoobsługowego resetowania haseł](active-directory-b2c-reference-sspr.md) dla przepływów użytkowników.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Wykonaj kroki [wprowadzenie do zasad niestandardowych w Active Directory B2C](active-directory-b2c-get-started-custom.md).
+Wykonaj kroki opisane w temacie Wprowadzenie [do zasad niestandardowych w Active Directory B2C](active-directory-b2c-get-started-custom.md).
 
-## <a name="add-the-elements"></a>Dodawanie elementów 
+## <a name="add-the-elements"></a>Dodaj elementy
 
-1. Otwórz swoje *TrustframeworkExtensions.xml* pliku i Dodaj następujący kod **oświadczenia** elementu z identyfikatorem `oldPassword` do [ClaimsSchema](claimsschema.md) elementu: 
+1. Otwórz plik *TrustframeworkExtensions. XML* i Dodaj następujący element **ClaimType** z identyfikatorem `oldPassword` do elementu [ClaimsSchema](claimsschema.md) :
 
     ```XML
     <BuildingBlocks>
@@ -44,7 +44,7 @@ Wykonaj kroki [wprowadzenie do zasad niestandardowych w Active Directory B2C](ac
     </BuildingBlocks>
     ```
 
-2. A [ClaimsProvider](claimsproviders.md) element zawiera profilu technicznego, który uwierzytelnia użytkownika. Dodaj następujące oświadczeń dostawców w celu **ClaimsProviders** elementu:
+2. Element [ClaimsProvider](claimsproviders.md) zawiera profil techniczny, który uwierzytelnia użytkownika. Dodaj następujących dostawców oświadczeń do elementu **ClaimsProviders** :
 
     ```XML
     <ClaimsProviders>
@@ -120,9 +120,9 @@ Wykonaj kroki [wprowadzenie do zasad niestandardowych w Active Directory B2C](ac
     </ClaimsProviders>
     ```
 
-    Zastąp `IdentityExperienceFrameworkAppId` z Identyfikatorem aplikacji w aplikacji IdentityExperienceFramework, który został utworzony w samouczka dotyczącego wymagań wstępnych. Zastąp `ProxyIdentityExperienceFrameworkAppId` identyfikatorem aplikacji również wcześniej utworzoną aplikację ProxyIdentityExperienceFramework.
+    Zamień `IdentityExperienceFrameworkAppId` na identyfikator aplikacji aplikacji IdentityExperienceFramework utworzonej w samouczku dotyczącym wymagań wstępnych. Zamień `ProxyIdentityExperienceFrameworkAppId` na identyfikator aplikacji aplikacji ProxyIdentityExperienceFramework, która została również utworzona wcześniej.
 
-3. [UserJourney](userjourneys.md) element Określa ścieżkę, który użytkownik przyjmuje podczas interakcji z aplikacją. Dodaj **podróży użytkowników** elementu, jeśli nie istnieje on **UserJourney** zidentyfikowane jako `PasswordChange`:
+3. Element [UserJourney](userjourneys.md) definiuje ścieżkę, którą użytkownik podejmuje podczas korzystania z aplikacji. Dodaj element **UserJourneys** , jeśli nie istnieje z **UserJourney** identyfikowanego jako `PasswordChange`:
 
     ```XML
     <UserJourneys>
@@ -150,35 +150,35 @@ Wykonaj kroki [wprowadzenie do zasad niestandardowych w Active Directory B2C](ac
     </UserJourneys>
     ```
 
-4. Zapisz *TrustFrameworkExtensions.xml* plik zasad.
-5. Kopiuj *ProfileEdit.xml* pliku pobrany z pakietu startowego, a następnie nadaj mu nazwę *ProfileEditPasswordChange.xml*.
-6. Otwórz nowy plik i zaktualizuj **PolicyId** atrybutu przy użyciu unikatowej wartości. Ta wartość jest nazwę swoich zasad. Na przykład *B2C_1A_profile_edit_password_change*.
-7. Modyfikowanie **ReferenceId** atrybutu w `<DefaultUserJourney>` aby dopasować identyfikator nowego podróży użytkownika, który został utworzony. Na przykład *PasswordChange*.
+4. Zapisz plik zasad *TrustFrameworkExtensions. XML* .
+5. Skopiuj pobrany plik *ProfileEdit. XML* z pakietem Starter i nadaj mu nazwę *ProfileEditPasswordChange. XML*.
+6. Otwórz nowy plik i zaktualizuj atrybut **PolicyId** z unikatową wartością. Ta wartość jest nazwą zasad. Na przykład *B2C_1A_profile_edit_password_change*.
+7. Zmodyfikuj atrybut **ReferenceId** w programie `<DefaultUserJourney>` , aby odpowiadał identyfikatorowi utworzonej przez Ciebie podróży użytkownika. Na przykład *PasswordChange*.
 8. Zapisz zmiany.
 
-Można znaleźć zasad przykładowe [tutaj](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change). 
+Przykładowe zasady można znaleźć [tutaj](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change).
 
 ## <a name="test-your-policy"></a>Testowanie zasad
 
-Podczas testowania aplikacji w usłudze Azure AD B2C, może być przydatne do ma tokenu usługi Azure AD B2C, powrót do `https://jwt.ms` aby mieć możliwość przejrzenia oświadczeń w nim.
+Podczas testowania aplikacji w Azure AD B2C może być przydatne, aby token `https://jwt.ms` Azure AD B2C był w stanie przejrzeć oświadczenia w nim.
 
 ### <a name="upload-the-files"></a>Przekaż pliki
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
-2. Upewnij się, że używasz katalogu zawierającego Twoją dzierżawę usługi Azure AD B2C, klikając pozycję **Filtr katalogu i subskrypcji** w górnym menu i wybierając katalog zawierający Twoją dzierżawę.
+2. Upewnij się, że używasz katalogu, który zawiera dzierżawę Azure AD B2C, wybierając pozycję **katalog i subskrypcja** w górnym menu i wybierając katalog zawierający dzierżawcę.
 3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
-4. Wybierz **struktura środowiska tożsamości**.
-5. Na stronie zasad niestandardowych kliknij **zasady przekazywania**.
-6. Wybierz **Zastąp zasady Jeśli istnieje**, a następnie wyszukaj i wybierz pozycję *TrustframeworkExtensions.xml* pliku.
+4. Wybierz pozycję **platforma obsługi tożsamości**.
+5. Na stronie zasady niestandardowe kliknij pozycję **Przekaż zasady**.
+6. Wybierz opcję **Zastąp zasady, jeśli istnieje**, a następnie wyszukaj i wybierz plik *TrustframeworkExtensions. XML* .
 7. Kliknij pozycję **Przekaż**.
-8. Powtórz kroki od 5 do 7 dla jednostki uzależnionej pliku innych firm, takich jak *ProfileEditPasswordChange.xml*.
+8. Powtórz kroki od 5 do 7 dla pliku jednostki uzależnionej, np. *ProfileEditPasswordChange. XML*.
 
-### <a name="run-the-policy"></a>Uruchamianie zasad
+### <a name="run-the-policy"></a>Uruchom zasady
 
-1. Otwórz zasady, który został zmodyfikowany. Na przykład *B2C_1A_profile_edit_password_change*.
-2. Aby uzyskać **aplikacji**, wybierz swoją aplikację, która została wcześniej zarejestrowana. Aby wyświetlić token, **adres URL odpowiedzi** powinien być wyświetlony `https://jwt.ms`.
-3. Kliknij pozycję **Uruchom teraz**. Zaloguj się przy użyciu acouunt wcześniej utworzony. Teraz masz możliwość zmiany hasła. 
+1. Otwórz zasady, które zostały zmienione. Na przykład *B2C_1A_profile_edit_password_change*.
+2. W przypadku **aplikacji**wybierz wcześniej zarejestrowaną aplikację. Aby wyświetlić token, należy `https://jwt.ms`wyświetlić **adres URL odpowiedzi** .
+3. Kliknij pozycję **Uruchom teraz**. Zaloguj się przy użyciu acouunt, który został wcześniej utworzony. Teraz należy mieć możliwość zmiany hasła.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o tym, jak [skonfigurowania złożoności hasła jako za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C](active-directory-b2c-reference-password-complexity-custom.md). 
+- Dowiedz się, jak [skonfigurować złożoność hasła przy użyciu zasad niestandardowych w programie Azure Active Directory B2C](active-directory-b2c-reference-password-complexity-custom.md).

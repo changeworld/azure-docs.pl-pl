@@ -3,16 +3,17 @@ title: Tworzenie sieci wirtualnych dla klastrów usługi Azure HDInsight
 description: Dowiedz się, jak utworzyć Virtual Network platformy Azure w celu połączenia usługi HDInsight z innymi zasobami w chmurze lub zasobami w centrum danych.
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 2fd4c20e5c1cd0a8e1ee6f7c36d4b4a8b99d37ea
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 6fd23e3d41dda15b1ec439c1e8b02073722b8871
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442003"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71073630"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>Tworzenie sieci wirtualnych dla klastrów usługi Azure HDInsight
 
@@ -329,7 +330,7 @@ Ten przykład wykonuje następujące założenia:
     };
     ```
 
-    Zastąp wartość sufiksem DNS innej sieci wirtualnej.  `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` Ten wpis kieruje żądania dotyczące sufiksu DNS sieci zdalnej do niestandardowego serwera DNS w tej sieci.
+    Zastąp wartość sufiksem DNS innej sieci wirtualnej. `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` Ten wpis kieruje żądania dotyczące sufiksu DNS sieci zdalnej do niestandardowego serwera DNS w tej sieci.
 
 3. Na niestandardowych serwerach DNS w obu sieciach wirtualnych Użyj następującego tekstu jako zawartości `/etc/bind/named.conf.options` pliku:
 

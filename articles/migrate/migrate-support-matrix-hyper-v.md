@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 97972be655a6a03cfe29d8589a144d1e027b86fc
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 0d0329be0b7f864edbfc3c2aabc08f1742359670
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376095"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066777"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Macierz obsługi dotycząca oceny i migracji środowiska funkcji Hyper-V
 
@@ -27,9 +27,9 @@ W tabeli zestawiono obsługiwane scenariusze dotyczące maszyn wirtualnych funkc
 **Wdrożenie** | **Uzyskać***
 --- | ---
 **Ocenianie lokalnych maszyn wirtualnych funkcji Hyper-V** | [Skonfiguruj](tutorial-prepare-hyper-v.md) swoją pierwszą ocenę.<br/><br/> [Uruchom](scale-hyper-v-assessment.md) ocenę na dużą skalę.
-**Migrowanie maszyn wirtualnych funkcji Hyper-V na platformę Azure** | [Wypróbuj](tutorial-migrate-hyper-v.md) migrację do platformy Azure. 
+**Migrowanie maszyn wirtualnych funkcji Hyper-V na platformę Azure** | [Wypróbuj](tutorial-migrate-hyper-v.md) migrację do platformy Azure.
 
-Migracja serwerów funkcji Hyper-V zarządzanych przy użyciu programu System Center Virtual Machine Manager (VMM) nie jest obsługiwana przez migrację serwera Azure Migrate. 
+Migracja serwerów funkcji Hyper-V zarządzanych przy użyciu programu System Center Virtual Machine Manager (VMM) nie jest obsługiwana przez migrację serwera Azure Migrate.
 
 ## <a name="azure-migrate-projects"></a>Projekty Azure Migrate
 
@@ -44,16 +44,19 @@ Współrzędne geograficzne | Możesz tworzyć Azure Migrate projekty w wielu lo
   Azure Government | Administracja USA — Wirginia
   Azja i Pacyfik | Azja Wschodnia lub Azja Południowo-Wschodnia
   Australia | Australia Wschodnia lub Australia Południowo-Wschodnia
+  Brazylia | Brazylia Południowa
   Kanada | Kanada środkowa lub Kanada Wschodnia
   Europa | Europa Północna lub Europa Zachodnia
+  Francja | Francja Środkowa
   Indie | Indie Środkowe lub Indie Południowe
   Japonia |  Japonia Wschodnia lub Japonia Zachodnia
+  Korea Południowa | Korea środkowa lub Korea Południowa
   Zjednoczone Królestwo | Południowe Zjednoczone Królestwo lub Zachodnie Zjednoczone Królestwo
   Stany Zjednoczone | Środkowe stany USA lub zachodnie stany USA 2
 
 
  > [!NOTE]
- > Obsługa Azure Government jest obecnie dostępna tylko dla [starszej wersji](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) programu Azure Migrate.
+ > Obsługa Azure Government jest obecnie dostępna tylko dla starszej [wersji](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) programu Azure Migrate.
 
 
 ## <a name="assessment-hyper-v-host-requirements"></a>Ocena — wymagania dotyczące hosta funkcji Hyper-V
@@ -87,7 +90,7 @@ W celu oceny Azure Migrate uruchamia lekkie urządzenie w celu odnajdywania masz
 | **Hosty funkcji Hyper-V**          | Urządzenie może połączyć się z maksymalnie 300 hostami funkcji Hyper-V.
 | **Odnajdowa**              | Pojedyncze urządzenie może wykryć do 5000 maszyn wirtualnych.
 | **Grupa oceny**       | Można dodać do 35 000 maszyn w jednej grupie.
-| **Stopnia**             | W ramach jednej oceny można ocenić do 35 000 maszyn wirtualnych.
+| **Ocena**             | W ramach jednej oceny można ocenić do 35 000 maszyn wirtualnych.
 
 
 

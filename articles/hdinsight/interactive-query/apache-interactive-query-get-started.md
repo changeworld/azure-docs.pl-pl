@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
-ms.date: 06/14/2019
-ms.openlocfilehash: 29b2a9378abaaa697d2d869145d5e912d6c06d6c
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.date: 09/17/2019
+ms.openlocfilehash: 3e0fddc03ad880d36876276827198b0ac180a00d
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811602"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076361"
 ---
 # <a name="what-is-interactive-query-in-azure-hdinsight"></a>Co to jest zapytanie interaktywne w usłudze Azure HDInsight
 
@@ -28,6 +28,9 @@ Można uzyskać dostęp do usługi Hive w klastrze zapytań interakcyjnych tylko
 ## <a name="create-an-interactive-query-cluster"></a>Utwórz interaktywny klaster zapytań
 
 Aby uzyskać informacje na temat tworzenia klastra usługi HDInsight, zobacz [Tworzenie klastrów Apache Hadoop w usłudze HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Wybierz typ klastra zapytań interaktywnych.
+
+> [!IMPORTANT]
+> Minimalny rozmiar węzła głównego klastrów zapytań interaktywnych to Standard_D13_v2. Aby uzyskać więcej informacji, zobacz [Wykres z rozmiarem maszyny wirtualnej platformy Azure](../../cloud-services/cloud-services-sizes-specs.md#dv2-series).
 
 ## <a name="execute-apache-hive-queries-from-interactive-query"></a>Wykonaj zapytania Apache Hive z zapytania interaktywnego
 

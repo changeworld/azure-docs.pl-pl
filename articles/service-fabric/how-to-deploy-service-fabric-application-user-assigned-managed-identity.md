@@ -7,12 +7,12 @@ ms.service: service-fabric
 ms.topic: article
 ms.date: 08/09/2019
 ms.author: atsenthi
-ms.openlocfilehash: f8dfaa39f02aefbdda1f34afa5011ce5fadbae49
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 0cc1e51a4d5f9ad54866066a4247e1588da381a6
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624915"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037483"
 ---
 # <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity-preview"></a>Wdróż aplikację Service Fabric przy użyciu tożsamości zarządzanej przypisanej przez użytkownika (wersja zapoznawcza)
 
@@ -27,7 +27,7 @@ Aby wdrożyć aplikację Service Fabric z tożsamością zarządzaną, aplikacja
 
 ## <a name="user-assigned-identity"></a>Tożsamość przypisana przez użytkownika
 
-Aby włączyć aplikację z tożsamością przypisaną przez użytkownika, należy najpierw dodać właściwość **Identity** do zasobu aplikacji z typem **userAssigned** i PRZYWOŁYWANYMI tożsamościami przypisanymi przez użytkownika. Następnie Dodaj sekcję **managedIdentities** w sekcji **Właściwości** zasobu **aplikacji** , która zawiera listę przyjaznych nazw mapowania principalId dla każdej tożsamości przypisanej do użytkownika.
+Aby włączyć aplikację z tożsamością przypisaną przez użytkownika, należy najpierw dodać właściwość **Identity** do zasobu aplikacji z typem **userAssigned** i PRZYWOŁYWANYMI tożsamościami przypisanymi przez użytkownika. Następnie Dodaj sekcję **managedIdentities** w sekcji **Właściwości** zasobu **aplikacji** , która zawiera listę przyjaznych nazw mapowania principalId dla każdej tożsamości przypisanej do użytkownika. Aby uzyskać więcej informacji na temat tożsamości przypisanych przez użytkownika [, zobacz Tworzenie, wyświetlanie listy lub usuwanie tożsamości zarządzanej przypisanej przez użytkownika](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell).
 
 ### <a name="application-template"></a>Szablon aplikacji
 
@@ -90,7 +90,7 @@ W powyższym przykładzie nazwa zasobu tożsamości przypisanej do użytkownika 
       </ServiceManifestImport>
     ```
 
-3. Zaktualizuj manifest usługi, aby dodać **ManagedIdentity** w sekcji Resources o `ServiceIdentityRef` nazwie zgodnej z elementem w `IdentityBindingPolicy` manifeście aplikacji:
+3. Zaktualizuj manifest usługi, aby dodać **ManagedIdentity** w sekcji **resources** o `ServiceIdentityRef` nazwie zgodnej z elementem w `IdentityBindingPolicy` manifeście aplikacji:
 
     **Servicemanifest. XML**
 

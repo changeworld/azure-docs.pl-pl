@@ -8,16 +8,17 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: bwren
-ms.openlocfilehash: 18e6e162764ce190a1953a4126e4f9ef2eb717f5
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 950768326228960192f48d99e5c5fa849b2c2bda
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899511"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076822"
 ---
 # <a name="get-started-with-log-analytics-in-azure-monitor"></a>Wprowadzenie do Log Analytics w Azure Monitor
 
-[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
+> [!NOTE]
+> Można to zrobić w Twoim środowisku, jeśli zbierasz dane z co najmniej jednej maszyny wirtualnej. Jeśli nie, użyj naszego [środowiska demonstracyjnego](https://portal.loganalytics.io/demo), co obejmuje wiele przykładowych danych.
 
 W tym samouczku dowiesz się, jak używać Log Analytics w Azure Portal do pisania zapytań dzienników Azure Monitor. Pouczysz się, jak:
 

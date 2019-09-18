@@ -1,6 +1,6 @@
 ---
 title: Utwórz klienta, aby korzystał z wdrożonej usługi sieci Web
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Dowiedz się, jak korzystać z usługi sieci Web, która została wygenerowana, gdy model został wdrożony z modelem Azure Machine Learning. Usługa sieci Web uwidacznia interfejs API REST. Tworzenie klientów dla tego interfejsu API przy użyciu wybranego języka programowania.
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5f57be9a1fc5d260ce580b969c8f92c87aea17a8
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: e005cf0860faeaad7010ea4da3ca1c5227ade14b
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279130"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034791"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Korzystanie z modelu usługi Azure Machine Learning, wdrożyć jako usługę sieci web
 
@@ -43,7 +43,7 @@ Klasa [Azure. Core. WebService](https://docs.microsoft.com/python/api/azureml-co
 * `auth_enabled`-Jeśli jest włączone `True`uwierzytelnianie klucza; `False`w przeciwnym razie.
 * `token_auth_enabled`-Jeśli uwierzytelnianie tokenu jest włączone, `True`w przeciwnym razie `False`,.
 * `scoring_uri` Adres interfejsu API REST.
-* `swagger_uri`-Adres specyfikacji OpenAPI. Ten identyfikator URI jest dostępny po włączeniu automatycznego generowania schematu. Aby uzyskać więcej informacji, zobacz [Wdrażanie modeli za pomocą usługi Azure Machine Learning](how-to-deploy-and-where.md#schema).
+* `swagger_uri`-Adres specyfikacji OpenAPI. Ten identyfikator URI jest dostępny po włączeniu automatycznego generowania schematu. Aby uzyskać więcej informacji, zobacz [Wdrażanie modeli przy użyciu Azure Machine Learning](how-to-deploy-and-where.md#schema).
 
 Istnieją trzy sposoby, aby pobrać te informacje dotyczące wdrożonymi usługami sieci web:
 

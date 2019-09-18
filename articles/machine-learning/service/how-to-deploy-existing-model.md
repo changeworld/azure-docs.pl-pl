@@ -1,7 +1,7 @@
 ---
 title: Używanie i wdrażanie istniejących modeli
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak używać usługi Azure Machine Learning z modelami, które zostały przeszkolone poza usługą. Można rejestrować modele utworzone poza usługą Azure Machine Learning, a następnie wdrożyć je jako usługę sieci Web lub moduł Azure IoT Edge.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak używać Azure Machine Learning z modelami, które zostały przeszkolone poza usługą. Można rejestrować modele utworzone poza Azure Machine Learning, a następnie wdrażać je jako usługę sieci Web lub moduł Azure IoT Edge.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,32 +10,32 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/19/2019
-ms.openlocfilehash: f30ac3d5e20b3f797e083972ac179fd29f6b1475
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 0de9284896900cb7430f42e1d0266a1c02fab20e
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182543"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034440"
 ---
-# <a name="use-an-existing-model-with-azure-machine-learning-service"></a>Korzystanie z istniejącego modelu z usługą Azure Machine Learning
+# <a name="use-an-existing-model-with-azure-machine-learning"></a>Użyj istniejącego modelu z Azure Machine Learning
 
-Dowiedz się, jak używać istniejącego modelu uczenia maszynowego z usługą Azure Machine Learning.
+Dowiedz się, jak używać istniejącego modelu uczenia maszynowego z Azure Machine Learning.
 
-Jeśli masz model uczenia maszynowego, który został przeszkolony poza usługą Azure Machine Learning, możesz nadal używać usługi do wdrażania modelu jako usługi sieci Web lub urządzenia IoT Edge. 
+Jeśli masz model uczenia maszynowego, który został przeszkolony poza Azure Machine Learning, możesz nadal używać usługi do wdrażania modelu jako usługi sieci Web lub urządzenia IoT Edge. 
 
 > [!TIP]
-> Ten artykuł zawiera podstawowe informacje dotyczące rejestrowania i wdrażania istniejącego modelu. Po wdrożeniu usługa Azure Machine Learning udostępnia monitorowanie dla modelu. Umożliwia także przechowywanie danych wejściowych wysyłanych do wdrożenia, które mogą być używane do analizy dryfowania danych lub do uczenia nowych wersji modelu.
+> Ten artykuł zawiera podstawowe informacje dotyczące rejestrowania i wdrażania istniejącego modelu. Po wdrożeniu Azure Machine Learning zapewnia monitorowanie modelu. Umożliwia także przechowywanie danych wejściowych wysyłanych do wdrożenia, które mogą być używane do analizy dryfowania danych lub do uczenia nowych wersji modelu.
 >
 > Aby uzyskać więcej informacji na temat pojęć i terminów używanych w tym miejscu, zobacz artykuł [Zarządzanie, wdrażanie i monitorowanie modeli uczenia maszynowego](concept-model-management-and-deployment.md).
 >
-> Aby uzyskać ogólne informacje na temat procesu wdrażania, zobacz [Wdrażanie modeli za pomocą usługi Azure Machine Learning](how-to-deploy-and-where.md).
+> Aby uzyskać ogólne informacje na temat procesu wdrażania, zobacz [Wdrażanie modeli przy użyciu Azure Machine Learning](how-to-deploy-and-where.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Obszar roboczy usługi Azure Machine Learning. Aby uzyskać więcej informacji, zobacz [Tworzenie obszaru roboczego](how-to-manage-workspace.md).
 
     > [!TIP]
-    > W przykładach w języku Python w tym artykule `ws` założono, że zmienna jest ustawiona na obszar roboczy usługi Azure Machine Learning.
+    > W przykładach w języku Python w tym artykule `ws` założono, że zmienna jest ustawiona na obszar roboczy Azure Machine Learning.
     >
     > Przykłady interfejsu wiersza polecenia wykorzystują symbol `myworkspace` zastępczy i `myresourcegroup`. Zamień je na nazwę obszaru roboczego i grupę zasobów, która ją zawiera.
 
@@ -46,7 +46,7 @@ Jeśli masz model uczenia maszynowego, który został przeszkolony poza usługą
 * Model szkolony. Model musi być utrwalony w co najmniej jednym pliku w środowisku deweloperskim.
 
     > [!NOTE]
-    > W celu zaprezentowania rejestrowania modelu przeszkolonego poza usługą Azure Machine Learning, przykładowe fragmenty kodu w tym artykule korzystają z modeli utworzonych przez projekt Paolo Ripamonti w serwisie [https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis)Twitter tonacji Analysis:.
+    > Aby zademonstrować rejestrowanie modelu przeszkolonego na Azure Machine Learning, przykładowe fragmenty kodu w tym artykule korzystają z modeli utworzonych przez projekt Paolo Ripamonti w serwisie Twitter [https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis)tonacji Analysis:.
 
 ## <a name="register-the-models"></a>Zarejestruj modele
 
@@ -58,7 +58,7 @@ from azureml.core.model import Model
 #      only some of the files from the directory
 model = Model.register(model_path = "./models",
                        model_name = "sentiment",
-                       description = "Sentiment analysis model trained outside Azure Machine Learning service",
+                       description = "Sentiment analysis model trained outside Azure Machine Learning",
                        workspace = ws)
 ```
 
@@ -79,7 +79,7 @@ Aby uzyskać więcej informacji na temat rejestracji modelu ogólnie, zobacz art
 Konfiguracja wnioskowania definiuje środowisko używane do uruchamiania wdrożonego modelu. Konfiguracja wnioskowania odwołuje się do następujących jednostek, które są używane do uruchamiania modelu podczas jego wdrażania:
 
 * Skrypt wejściowy. Ten plik (o `score.py`nazwie) ładuje model podczas uruchamiania wdrożonej usługi. Jest on również odpowiedzialny za otrzymywanie danych, przekazywanie go do modelu, a następnie zwracanie odpowiedzi.
-* [Środowisko](how-to-use-environments.md)usługi Azure Machine Learning. Środowisko definiuje zależności oprogramowania wymagające do uruchomienia modelu i skryptu wejścia.
+* [Środowisko](how-to-use-environments.md)Azure Machine Learning. Środowisko definiuje zależności oprogramowania wymagające do uruchomienia modelu i skryptu wejścia.
 
 Poniższy przykład pokazuje, jak utworzyć środowisko przy użyciu zestawu SDK, a następnie użyć go z konfiguracją wnioskowania:
 
@@ -135,7 +135,7 @@ dependencies:
     - keras
 ```
 
-Aby uzyskać więcej informacji na temat konfiguracji wnioskowania, zobacz [Deploying Models with Azure Machine Learning Service](how-to-deploy-and-where.md).
+Aby uzyskać więcej informacji na temat konfiguracji wnioskowania, zobacz [Wdrażanie modeli przy użyciu Azure Machine Learning](how-to-deploy-and-where.md).
 
 ### <a name="entry-script"></a>Skrypt wprowadzania
 
@@ -220,7 +220,7 @@ def predict(text, include_neutral=True):
        "elapsed_time": time.time()-start_at}  
 ```
 
-Aby uzyskać więcej informacji na temat skryptów wprowadzania, zobacz [Wdrażanie modeli za pomocą usługi Azure Machine Learning](how-to-deploy-and-where.md).
+Aby uzyskać więcej informacji na temat skryptów wprowadzania, zobacz [Wdrażanie modeli przy użyciu Azure Machine Learning](how-to-deploy-and-where.md).
 
 ## <a name="define-deployment"></a>Definiowanie wdrożenia
 

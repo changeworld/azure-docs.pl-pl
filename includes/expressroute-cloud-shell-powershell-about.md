@@ -8,23 +8,23 @@ ms.topic: include
 ms.date: 06/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 0074696fe61570b7595179cbf953308f75ed14bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8ba8f98268f076710b120166ccb3a4440307cfbf
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66730523"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059765"
 ---
-W tym artykule używa poleceń cmdlet programu PowerShell. Aby uruchomić polecenia cmdlet, można użyć usługi Azure Cloud Shell, środowisko interaktywnej powłoki hostowanych na platformie Azure i używać za pośrednictwem przeglądarki. Usługa Azure Cloud Shell jest powiązana z poleceń cmdlet programu PowerShell platformy Azure wstępnie zainstalowane.
+W tym artykule są stosowane polecenia cmdlet programu PowerShell. Aby uruchomić polecenia cmdlet, można użyć Azure Cloud Shell, interaktywnego środowiska powłoki hostowanego na platformie Azure i używanego przez przeglądarkę. Azure Cloud Shell jest dostarczany ze wstępnie zainstalowanymi poleceniami cmdlet Azure PowerShell.
 
-Aby uruchomić dowolny kod zawarty w tym artykule w usłudze Azure Cloud Shell, otwórz sesję usługi Cloud Shell, należy użyć **kopiowania** przycisku w bloku kodu, aby skopiować kod i wklej go do sesji usługi Cloud Shell za pomocą __Ctrl + Shift + V__ na Windows i Linux, lub __Cmd + Shift + V__ w systemie macOS. Wklejony tekst nie zostanie wykonany automatycznie, więc naciśnij **Enter** do uruchomienia kodu.
+Aby uruchomić dowolny kod zawarty w tym artykule na Azure Cloud Shell, Otwórz sesję Cloud Shell, użyj przycisku **Kopiuj** w bloku kodu, aby skopiować kod i wkleić go do sesji Cloud Shell przy użyciu __kombinacji klawiszy Ctrl + Shift + v__ w systemach Windows i Linux lub __cmd + Shift + v__ w witrynie macOS. Wklejony tekst nie jest automatycznie wykonywany, dlatego naciśnij klawisz **Enter** , aby uruchomić kod.
 
-Można uruchomić usługi Azure Cloud Shell przy użyciu:
+Azure Cloud Shell można uruchomić z:
 
 |  |   |
 |-----------------------------------------------|---|
-| Wybierz pozycję **Wypróbuj** w prawym górnym rogu bloku kodu. To __nie__ automatycznie skopiować tekst do usługi Cloud Shell. | ![Przykład Wypróbuj usługę Azure Cloud Shell](./media/cloud-shell-try-it/cli-try-it.png) |
-| Otwórz [shell.azure.com](https://shell.azure.com) w przeglądarce. | [![Uruchom usługę Azure Cloud Shell, przycisk](./media/cloud-shell-try-it/launchcloudshell.png)](https://shell.azure.com) |
-| Wybierz przycisk **Cloud Shell** w menu w prawym górnym rogu witryny [Azure Portal](https://portal.azure.com). | ![Przycisk Cloud Shell w witrynie Azure Portal](./media/cloud-shell-try-it/cloud-shell-menu.png) |
+| Wybierz pozycję **Wypróbuj** w prawym górnym rogu bloku kodu. __Nie powoduje__ to automatycznego kopiowania tekstu do Cloud Shell. | ![Przykład try dla Azure Cloud Shell](./media/cloud-shell-try-it/hdi-azure-cli-try-it.png) |
+| Otwórz [Shell.Azure.com](https://shell.azure.com) w przeglądarce. | [![Przycisk Azure Cloud Shell uruchamiania](./media/cloud-shell-try-it/hdi-launch-cloud-shell.png)](https://shell.azure.com) |
+| Wybierz przycisk **Cloud Shell** w menu w prawym górnym rogu witryny [Azure Portal](https://portal.azure.com). | ![Przycisk Cloud Shell w witrynie Azure Portal](./media/cloud-shell-try-it/hdi-cloud-shell-menu.png) |
 
-Jeśli nie chcesz używać usługi Azure Cloud Shell, zainstaluj program Azure PowerShell lokalnie zamiast tego. Pamiętaj zainstalować najnowszą wersję modułu Azure PowerShell Az, aby uzyskać aktualne funkcje. Aby uzyskać więcej informacji, zobacz [Instalowanie programu Azure PowerShell](/powershell/azure/overview).
+Jeśli nie chcesz używać Azure Cloud Shell, Zainstaluj Azure PowerShell lokalnie. Pamiętaj, aby zainstalować najnowszą wersję Azure PowerShell AZ module, aby uzyskać aktualną funkcjonalność. Aby uzyskać więcej informacji, zobacz [Install Azure PowerShell](/powershell/azure/overview).

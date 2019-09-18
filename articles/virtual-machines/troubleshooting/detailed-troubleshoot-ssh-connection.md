@@ -5,7 +5,7 @@ keywords: odmówiono połączenia SSH, błąd SSH, usługa Azure SSH, Niepowodze
 services: virtual-machines-linux
 documentationcenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: b8e8be5f-e8a6-489d-9922-9df8de32e839
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 41265973df21be289e63cbd6ed2703febc50cff2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3807f713065d16d4c6743c65f6a770d158ac7191
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090497"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058500"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Szczegółowe informacje na temat rozwiązywania problemów z maszyną wirtualną z systemem Linux na platformie Azure
 Istnieje wiele możliwych powodów, dla których klient SSH może nie mieć dostępu do usługi SSH na maszynie wirtualnej. Jeśli po wykonaniu bardziej [ogólnych kroków związanych z rozwiązywaniem problemów](troubleshoot-ssh-connection.md)z PROTOKOŁem SSH należy jeszcze bardziej rozwiązać problem z połączeniem. W tym artykule szczegółowo opisano kroki rozwiązywania problemów w celu ustalenia, gdzie połączenie SSH kończy się niepowodzeniem i jak rozwiązać ten problem.
@@ -102,7 +102,7 @@ Jeśli nie masz innej maszyny wirtualnej w tej samej sieci wirtualnej, możesz �
 
 Jeśli możesz utworzyć połączenie SSH z MASZYNą wirtualną w tej samej sieci wirtualnej, sprawdź następujące obszary:
 
-* **Konfiguracja punktu końcowego dla ruchu SSH na docelowej maszynie wirtualnej.** Prywatny port TCP punktu końcowego powinien być zgodny z portem TCP, na którym nasłuchuje usługa SSH na maszynie wirtualnej. (Domyślny numer portu to 22). Sprawdź numer portu TCP SSH wAzure Portal, wybierając pozycję **maszyny** > wirtualne**Ustawienia** > *nazw* > maszyn wirtualnych.
+* **Konfiguracja punktu końcowego dla ruchu SSH na docelowej maszynie wirtualnej.** Prywatny port TCP punktu końcowego powinien być zgodny z portem TCP, na którym nasłuchuje usługa SSH na maszynie wirtualnej. (Domyślny numer portu to 22). Sprawdź numer portu TCP SSH w Azure Portal, wybierając pozycję **maszyny** > wirtualne**Ustawienia** > *nazw* > maszyn wirtualnych **.**
 * **Lista ACL dla punktu końcowego ruchu SSH na docelowej maszynie wirtualnej.** Lista ACL pozwala określić dozwolony lub zabroniony ruch przychodzący z Internetu, na podstawie jego źródłowego adresu IP. Nieprawidłowo skonfigurowane listy ACL mogą zapobiegać przychodzącemu ruchowi SSH do punktu końcowego. Sprawdź listy kontroli dostępu, aby upewnić się, że ruch przychodzący z publicznych adresów IP serwera proxy lub innego serwera granicznego jest dozwolony. Aby uzyskać więcej informacji, zobacz [Informacje o listach kontroli dostępu do sieci (ACL)](../../virtual-network/virtual-networks-acl.md).
 
 Aby wyeliminować punkt końcowy jako źródło problemu, Usuń bieżący punkt końcowy, Utwórz inny punkt końcowy i określ nazwę SSH (port TCP 22 dla numeru portu publicznego i prywatnego). Aby uzyskać więcej informacji, zobacz [Konfigurowanie punktów końcowych na maszynie wirtualnej na platformie Azure](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).

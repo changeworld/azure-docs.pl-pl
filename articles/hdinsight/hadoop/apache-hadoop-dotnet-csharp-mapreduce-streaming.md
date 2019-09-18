@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 7f82ad65ecc805d5a45c78e8b190dd0eee4c340c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 5784fb4f4ab0f46d2db7e5e8cfe9deeafabb4e90
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882343"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066955"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>Używanie C# z usługą MapReduce streaming na Apache Hadoop w usłudze HDInsight
 
@@ -162,7 +162,7 @@ Po utworzeniu aplikacji Skompiluj ją, aby utworzyć `/bin/Debug/reducer.exe` pl
 
    * Jeśli używasz __konta usługi Azure Storage__, kliknij ikonę Przekaż, a następnie przejdź do folderu **bin\Debug** dla projektu **mapowania** . Na koniec wybierz plik **mapera. exe** i kliknij przycisk **OK**.
 
-        ![ikona przekazywania](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-upload-icon.png)
+        ![Ikona przekazywania do usługi HDInsight dla mapowania](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-upload-icon.png)
     
    * Jeśli używasz __Azure Data Lake Storage__, kliknij prawym przyciskiem myszy pusty obszar na liście plików, a następnie wybierz polecenie __Przekaż__. Na koniec wybierz plik **Maper. exe** , a następnie kliknij przycisk **Otwórz**.
 

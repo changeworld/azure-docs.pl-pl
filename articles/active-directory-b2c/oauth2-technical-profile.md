@@ -1,6 +1,6 @@
 ---
-title: Definiowanie profilu technicznego OAuth2 w zasadach niestandardowych w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: W przypadku zasad niestandardowych w usłudze Azure Active Directory B2C, należy zdefiniować profil techniczny OAuth2.
+title: Zdefiniuj profil techniczny OAuth2 w zasadach niestandardowych w Azure Active Directory B2C | Microsoft Docs
+description: Zdefiniuj profil techniczny OAuth2 w zasadach niestandardowych w Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,33 +10,33 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 80b196b34e8eee99ed77c3c8a914f89fa68d87b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 63500c057b5c9f497e59589286a852a4394059ec
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512953"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063970"
 ---
-# <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definiowanie profilu technicznego OAuth2 w zasadach niestandardowych usługi Azure Active Directory B2C
+# <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj profil techniczny OAuth2 w zasadach niestandardowych Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Usługa Azure Active Directory (Azure AD) B2C umożliwia dostawcy tożsamości protokołu OAuth2. OAuth2 jest podstawowy protokół autoryzacji i uwierzytelnianie delegowane. Aby uzyskać więcej informacji, zobacz [RFC 6749 OAuth 2.0 autoryzacji Framework](https://tools.ietf.org/html/rfc6749). Z profilu technicznego OAuth2 może tworzyć federacje ze dostawcę tożsamości na podstawie protokołu OAuth2, takie jak Facebook. Federowanie za pomocą dostawcy tożsamości umożliwia użytkownikom Zaloguj się przy użyciu istniejącej społecznościowych lub tożsamościami w przedsiębiorstwie.
+Azure Active Directory B2C (Azure AD B2C) zapewnia obsługę dostawcy tożsamości protokołu OAuth2. OAuth2 to podstawowy protokół do autoryzacji i uwierzytelniania delegowanego. Aby uzyskać więcej informacji, zobacz artykuł [RFC 6749 platformy autoryzacji OAuth 2,0](https://tools.ietf.org/html/rfc6749). Profil techniczny OAuth2 umożliwia sfederować z dostawcą tożsamości opartym na OAuth2, takim jak Facebook. Federowanie z dostawcą tożsamości umożliwia użytkownikom logowanie się przy użyciu istniejących tożsamości społecznościowych lub firmowych.
 
 ## <a name="protocol"></a>Protocol
 
-**Nazwa** atrybutu **protokołu** element musi być równa `OAuth2`. Na przykład protokół **uwierzytelniania Facebook OAUTH** profilu technicznego jest `OAuth2`:
+Atrybut **name** elementu **Protocol** musi być ustawiony na `OAuth2`. Na przykład protokół dla profilu `OAuth2`technicznego **Facebook-OAuth** :
 
 ```XML
 <TechnicalProfile Id="Facebook-OAUTH">
   <DisplayName>Facebook</DisplayName>
   <Protocol Name="OAuth2" />
-  ...    
+  ...
 ```
 
-## <a name="input-claims"></a>Oświadczeń wejściowych
+## <a name="input-claims"></a>Oświadczenia wejściowe
 
-**InputClaims** i **InputClaimsTransformations** elementy nie są wymagane. Ale możesz chcieć wysłać dodatkowe parametry do dostawcy tożsamości. W poniższym przykładzie dodano **domain_hint** parametr ciągu z wartością zapytania `contoso.com` żądania autoryzacji.
+Elementy **InputClaims** i **InputClaimsTransformations** nie są wymagane. Ale możesz chcieć wysłać dodatkowe parametry do dostawcy tożsamości. Poniższy przykład dodaje parametr ciągu zapytania **domain_hint** z wartością `contoso.com` do żądania autoryzacji.
 
 ```XML
 <InputClaims>
@@ -44,23 +44,23 @@ Usługa Azure Active Directory (Azure AD) B2C umożliwia dostawcy tożsamości p
 </InputClaims>
 ```
 
-## <a name="output-claims"></a>Oświadczeń danych wyjściowych
+## <a name="output-claims"></a>Oświadczenia wyjściowe
 
-**OutputClaims** element zawiera listę oświadczeń zwrócona przez dostawcę tożsamości protokołu OAuth2. Może być konieczne mapowania nazwy oświadczenia, zdefiniowane w zasadach do nazwy zdefiniowane w dostawcy tożsamości. Mogą również obejmować oświadczenia, które nie są zwracane przez dostawcę tożsamości, tak długo, jak można ustawić `DefaultValue` atrybutu.
+Element **OutputClaims** zawiera listę oświadczeń zwracanych przez dostawcę tożsamości OAuth2. Może być konieczne zamapowanie nazwy żądania zdefiniowanego w zasadach na nazwę zdefiniowaną w dostawcy tożsamości. Można również uwzględnić oświadczenia, które nie są zwracane przez dostawcę tożsamości, o ile ustawisz `DefaultValue` atrybut.
 
-**OutputClaimsTransformations** element może zawierać zbiór **OutputClaimsTransformation** elementy, które są używane do modyfikowania oświadczeń danych wyjściowych lub wygenerować nowe.
+Element **OutputClaimsTransformations** może zawierać kolekcję elementów **OutputClaimsTransformation** , które są używane do modyfikowania oświadczeń wyjściowych lub generowania nowych.
 
-Poniższy przykład przedstawia oświadczenia zwrócona przez dostawcę tożsamości usługi Facebook:
+W poniższym przykładzie przedstawiono oświadczenia zwrócone przez dostawcę tożsamości w usłudze Facebook:
 
-- **Imię** oświadczeń jest mapowany na **givenName** oświadczenia.
-- **Nazwisko** oświadczeń jest mapowany na **nazwisko** oświadczenia.
-- **DisplayName** oświadczenia bez mapowania nazw.
-- **E-mail** oświadczenia bez mapowania nazw.
+- **First_name** jest mapowany do **danego** wystąpienianame.
+- **Last_name** jest mapowany do żądania **nazwisko** .
+- Nazwa **wyświetlana** bez mapowania nazwy.
+- Bez mapowania nazwy.
 
-Profil techniczny zwraca również wartość oświadczenia, które nie są zwracane przez dostawcę tożsamości: 
+Profil techniczny zwraca również oświadczenia, które nie są zwracane przez dostawcę tożsamości:
 
-- **IdentityProvider** oświadczenia, który zawiera nazwę dostawcy tożsamości.
-- **AuthenticationSource** oświadczenie z wartością domyślną **socialIdpAuthentication**.
+- **IdentityProvider** , który zawiera nazwę dostawcy tożsamości.
+- **AuthenticationSource** z wartością domyślną **socialIdpAuthentication**.
 
 ```xml
 <OutputClaims>
@@ -79,40 +79,40 @@ Profil techniczny zwraca również wartość oświadczenia, które nie są zwrac
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
 | client_id | Tak | Identyfikator aplikacji dostawcy tożsamości. |
-| IdTokenAudience | Nie | Odbiorcy id_token. Jeśli zostanie określony, usługi Azure AD B2C sprawdza, czy token jest oświadczenie zwrócona przez dostawcę tożsamości i jest taki sam, jak określona. |
-| authorization_endpoint | Tak | Adres URL punktu końcowego autoryzacji, zgodnie z RFC 6749. |
-| AccessTokenEndpoint | Tak | Adres URL punktu końcowego tokenu zgodnie z RFC 6749. |  
-| ClaimsEndpoint | Tak | Adres URL punktu końcowego informacji użytkownika zgodnie z RFC 6749. | 
-| AccessTokenResponseFormat | Nie | Format wywołanie punktu końcowego tokenu dostępu. Na przykład Facebook wymaga metody HTTP GET, ale odpowiedzi tokenu dostępu jest w formacie JSON. |
-| AdditionalRequestQueryParameters | Nie | Żądanie dodatkowe parametry zapytania. Na przykład można wysłać dodatkowe parametry do dostawcy tożsamości. Może zawierać wiele parametrów przy użyciu ogranicznika przecinkami. | 
-| ClaimsEndpointAccessTokenName | Nie | Nazwa parametru ciągu zapytania tokenu dostępu. Niektórzy dostawcy tożsamości oświadczeń z punktami końcowymi obsługuje żądania GET HTTP. W tym przypadku tokenu elementu nośnego, są wysyłane przy użyciu parametru ciągu zapytania zamiast nagłówka autoryzacji. |
-| ClaimsEndpointFormatName | Nie | Nazwa parametru ciągu zapytania w formacie. Na przykład można ustawić nazwę jako `format` w tym usługi LinkedIn oświadczeń punktu końcowego `https://api.linkedin.com/v1/people/~?format=json`. | 
-| ClaimsEndpointFormat | Nie | Wartość parametru ciągu zapytania w formacie. Na przykład można ustawić wartość jako `json` w tym usługi LinkedIn oświadczeń punktu końcowego `https://api.linkedin.com/v1/people/~?format=json`. | 
+| IdTokenAudience | Nie | Odbiorcy id_token. Jeśli ta wartość jest określona, Azure AD B2C sprawdza, czy token znajduje się w ramach żądania zwróconego przez dostawcę tożsamości i jest równy określonemu. |
+| authorization_endpoint | Tak | Adres URL punktu końcowego autoryzacji zgodnie z dokumentem RFC 6749. |
+| AccessTokenEndpoint | Tak | Adres URL tokenu dla punktu końcowego w formacie RFC 6749. |
+| ClaimsEndpoint | Tak | Adres URL punktu końcowego informacji o użytkowniku zgodnie z dokumentem RFC 6749. |
+| AccessTokenResponseFormat | Nie | Format wywołania punktu końcowego tokenu dostępu. Na przykład serwis Facebook wymaga metody HTTP GET, ale odpowiedź tokenu dostępu jest w formacie JSON. |
+| AdditionalRequestQueryParameters | Nie | Dodatkowe parametry kwerendy żądania. Na przykład możesz chcieć wysłać dodatkowe parametry do dostawcy tożsamości. Można uwzględnić wiele parametrów przy użyciu ogranicznika przecinka. |
+| ClaimsEndpointAccessTokenName | Nie | Nazwa parametru ciągu zapytania tokenu dostępu. Niektórzy punkty końcowe oświadczeń dostawców tożsamości obsługują pobieranie żądania HTTP. W takim przypadku token okaziciela jest wysyłany przy użyciu parametru ciągu zapytania zamiast nagłówka autoryzacji. |
+| ClaimsEndpointFormatName | Nie | Nazwa parametru ciągu zapytania. Na przykład możesz ustawić nazwę jako `format` w tym punkcie końcowym `https://api.linkedin.com/v1/people/~?format=json`oświadczeń usługi LinkedIn. |
+| ClaimsEndpointFormat | Nie | Wartość parametru ciągu zapytania. Na przykład można ustawić wartość tak jak `json` w tym punkcie końcowym `https://api.linkedin.com/v1/people/~?format=json`oświadczeń usługi LinkedIn. |
 | ProviderName | Nie | Nazwa dostawcy tożsamości. |
-| response_mode | Nie | Metody, która używa dostawcy tożsamości w celu wysłania wynik z powrotem do usługi Azure AD B2C. Możliwe wartości: `query`, `form_post` (ustawienie domyślne) lub `fragment`. |
-| scope | Nie | Zakres żądania, który jest zdefiniowany zgodnie ze specyfikacją protokołu OAuth2 dostawcy tożsamości. Takie jak `openid`, `profile`, i `email`. |
-| HttpBinding | Nie | Oczekiwano powiązanie HTTP do tokenów i oświadczeń tokenu punkty końcowe dostępu. Możliwe wartości: `GET` lub `POST`.  |
-| ResponseErrorCodeParamName | Nie | Nazwa parametru, który zawiera komunikat o błędzie zwracany za pośrednictwem protokołu HTTP 200 (Ok). |
-| ExtraParamsInAccessTokenEndpointResponse | Nie | Zawiera dodatkowe parametry, które mogą zostać zwrócone w odpowiedzi z **AccessTokenEndpoint** przez niektórych dostawców tożsamości. Na przykład odpowiedź z **AccessTokenEndpoint** zawiera dodatkowy parametr, takie jak `openid`, który jest to parametr obowiązkowy, oprócz access_token w **ClaimsEndpoint** żądania zapytania ciąg. Wiele nazw parametr powinien być poprzedzone znakiem zmiany znaczenia i rozdzielonych przecinkami ',' ogranicznik. |
-| ExtraParamsInClaimsEndpointRequest | Nie | Zawiera dodatkowe parametry, które mogą być zwracane w **ClaimsEndpoint** żądania przez niektórych dostawców tożsamości. Wiele nazw parametr powinien być poprzedzone znakiem zmiany znaczenia i rozdzielonych przecinkami ',' ogranicznik. |
+| response_mode | Nie | Metoda wykorzystywana przez dostawcę tożsamości do wysyłania wyniku z powrotem do Azure AD B2C. Możliwe wartości: `query`, `form_post` (wartość domyślna), `fragment`lub. |
+| scope | Nie | Zakres żądania, który jest zdefiniowany zgodnie ze specyfikacją dostawcy tożsamości OAuth2. Takie jak `openid`, `profile`i. `email` |
+| HttpBinding | Nie | Oczekiwano powiązania HTTP z punktami końcowymi tokenu dostępu i tokenów oświadczeń. Możliwe wartości: `GET` lub `POST`.  |
+| ResponseErrorCodeParamName | Nie | Nazwa parametru, który zawiera komunikat o błędzie zwrócony za pośrednictwem protokołu HTTP 200 (ok). |
+| ExtraParamsInAccessTokenEndpointResponse | Nie | Zawiera dodatkowe parametry, które mogą być zwracane w odpowiedzi z **AccessTokenEndpoint** przez niektórych dostawców tożsamości. Na przykład odpowiedź z **AccessTokenEndpoint** zawiera dodatkowy parametr, taki jak `openid`, który jest obowiązkowym parametrem poza access_token w ciągu zapytania żądania **ClaimsEndpoint** . Nazwy wielu parametrów powinny być wyprowadzane i oddzielane przecinkami ",". |
+| ExtraParamsInClaimsEndpointRequest | Nie | Zawiera dodatkowe parametry, które mogą być zwracane w żądaniu **ClaimsEndpoint** przez niektórych dostawców tożsamości. Nazwy wielu parametrów powinny być wyprowadzane i oddzielane przecinkami ",". |
 
 ## <a name="cryptographic-keys"></a>Klucze kryptograficzne
 
-**CryptographicKeys** element zawiera następujący atrybut:
+Element **CryptographicKeys** zawiera następujący atrybut:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| client_secret | Tak | Klucz tajny klienta aplikacji dostawcy tożsamości. Klucz szyfrowania jest wymagany tylko wtedy, gdy **response_types** metadanych jest ustawiona na `code`. W tym przypadku usługi Azure AD B2C sprawia, że inne wywołanie wymienić kod autoryzacji do tokena dostępu. Jeśli ustawiono metadanych `id_token`, można pominąć klucz kryptograficzny. |  
+| client_secret | Tak | Klucz tajny klienta aplikacji dostawcy tożsamości. Klucz kryptograficzny jest wymagany tylko wtedy, gdy metadane **response_types** są ustawione na `code`. W takim przypadku Azure AD B2C wykonuje inne wywołanie wymiany kodu autoryzacji dla tokenu dostępu. Jeśli metadane są ustawione na `id_token`, można pominąć klucz kryptograficzny. |
 
 ## <a name="redirect-uri"></a>Identyfikator URI przekierowania
 
-Po skonfigurowaniu adres URL przekierowania dostawcy tożsamości, wprowadź `https://login.microsoftonline.com/te/tenant/policyId/oauth2/authresp`. Upewnij się zastąpić **dzierżawy** nazwą dzierżawy (na przykład contosob2c.onmicrosoft.com) i **policyId** o identyfikatorze zasady (na przykład b2c_1a_policy). Identyfikator URI przekierowania musi być zapisana w same małe litery.
+Podczas konfigurowania adresu URL przekierowania dostawcy tożsamości wprowadź `https://login.microsoftonline.com/te/tenant/policyId/oauth2/authresp`wartość. Pamiętaj o zamianie **dzierżawy** na nazwę dzierżawy (na przykład contosob2c.onmicrosoft.com) i **policyId** z identyfikatorem zasad (na przykład b2c_1a_policy). Identyfikator URI przekierowania musi zawierać tylko małe litery.
 
-Jeśli używasz **z usługi b2clogin.com** domeny zamiast **login.microsoftonline.com** upewnij się korzystać z usługi b2clogin.com zamiast login.microsoftonline.com.
+Jeśli używasz domeny **b2clogin.com** zamiast **login.microsoftonline.com** upewnij się, że używasz b2clogin.com zamiast login.microsoftonline.com.
 
 Przykłady:
 
-- [Dodaj Google + jako dostawcy tożsamości OAuth2 za pomocą zasad niestandardowych](active-directory-b2c-custom-setup-goog-idp.md)
+- [Dodaj firmę Google + jako dostawcę tożsamości OAuth2 przy użyciu zasad niestandardowych](active-directory-b2c-custom-setup-goog-idp.md)
 
 
 

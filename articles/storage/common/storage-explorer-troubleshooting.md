@@ -7,173 +7,171 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 3a95d52f2a0aa07094f91b0653fcb94ff1f88d44
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
-ms.translationtype: MT
+ms.openlocfilehash: 1a856fc3af3d0ebd53ca7de8d3df301207845107
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70958999"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036352"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Przewodnik rozwiązywania problemów Eksplorator usługi Azure Storage
 
-Eksplorator usługi Microsoft Azure Storage jest aplikacją autonomiczną, która umożliwia łatwe współdziałanie z danymi usługi Azure Storage w systemach Windows, macOS i Linux. Aplikacja może łączyć się z kontami magazynu hostowanymi na platformie Azure, chmurach narodowych i Azure Stack.
+Eksplorator usługi Microsoft Azure Storage jest aplikacją autonomiczną, która ułatwia współpracę z danymi usługi Azure Storage w systemach Windows, macOS i Linux. Aplikacja może łączyć się z kontami magazynu hostowanymi na platformie Azure, chmurach narodowych i Azure Stack.
 
-Ten przewodnik zawiera podsumowanie rozwiązań typowych problemów występujących w Eksplorator usługi Storage.
+Ten przewodnik zawiera podsumowanie rozwiązań dotyczących problemów, które są często spotykane w Eksplorator usługi Storage.
 
-## <a name="role-based-access-control-permission-issues"></a>Problemy z uprawnieniami Access Control opartych na rolach
+## <a name="rbac-permissions-issues"></a>Problemy z uprawnieniami RBAC
 
-[Kontrola dostępu oparta na rolach (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) zapewnia precyzyjne zarządzanie dostępem do zasobów platformy Azure przez łączenie zestawów uprawnień w _role_. Poniżej przedstawiono kilka sugestii, które można wykonać w celu uzyskania dostępu RBAC w Eksplorator usługi Storage.
+[Kontrola dostępu](https://docs.microsoft.com/azure/role-based-access-control/overview) oparta na rolach umożliwia wysoce szczegółowe zarządzanie zasobami platformy Azure przez łączenie zestawów uprawnień w _role_. Poniżej przedstawiono kilka strategii zapewniających optymalną pracę z usługą RBAC w Eksplorator usługi Storage.
 
-### <a name="what-do-i-need-to-see-my-resources-in-storage-explorer"></a>Co jest potrzebne, aby zobaczyć moje zasoby w Eksplorator usługi Storage?
+### <a name="how-do-i-access-my-resources-in-storage-explorer"></a>Jak mogę uzyskać dostęp do moich zasobów w Eksplorator usługi Storage?
 
-Jeśli masz problemy z uzyskaniem dostępu do zasobów magazynu przy użyciu RBAC, może to być spowodowane tym, że nie zostały przypisane odpowiednie role. W poniższych sekcjach opisano uprawnienia Eksplorator usługi Storage obecnie wymagane w celu uzyskania dostępu do zasobów magazynu.
+Jeśli masz problemy z uzyskaniem dostępu do zasobów magazynu za pomocą RBAC, być może nie masz przypisanych odpowiednich ról. W poniższych sekcjach opisano uprawnienia Eksplorator usługi Storage obecnie wymagane w celu uzyskania dostępu do zasobów magazynu. Jeśli nie masz pewności, czy masz odpowiednie role lub uprawnienia, skontaktuj się z administratorem konta platformy Azure.
 
-Jeśli nie masz pewności, czy masz odpowiednie role lub uprawnienia, skontaktuj się z administratorem konta platformy Azure.
+#### <a name="read-listget-storage-accounts-permissions-issue"></a>Przeczytaj Wyświetl/Pobierz konta magazynu "problem z uprawnieniami"
 
-#### <a name="read-listget-storage-accounts"></a>Przeczytaj Wyświetl/Pobierz konta magazynu
+Musisz mieć uprawnienia do wyświetlania listy kont magazynu. Aby uzyskać to uprawnienie, musisz mieć przypisaną rolę _czytelnik_ .
 
-Musisz mieć uprawnienia do wyświetlania listy kont magazynu. Uprawnienie to można uzyskać przez przypisaną rolę "czytelnik".
+#### <a name="list-storage-account-keys"></a>Wyświetl listę kluczy konta magazynu
 
-#### <a name="list-storage-account-keys"></a>Wyświetl klucze konta magazynu
-
-Do uwierzytelniania żądań Eksplorator usługi Storage można także użyć kluczy konta. Możesz uzyskać dostęp do kluczy z bardziej wydajnymi rolami, takimi jak rola "Współautor".
+Do uwierzytelniania żądań Eksplorator usługi Storage można także użyć kluczy konta. Dostęp do kluczy konta można uzyskać za pomocą bardziej zaawansowanych ról, takich jak rola _współautor_ .
 
 > [!NOTE]
-> Klucze dostępu udzielają nieograniczonych uprawnień osobom, które je przechowują. W związku z tym zazwyczaj nie zaleca się ich przekazanie do użytkowników konta. Jeśli musisz odwołać klucze dostępu, możesz je wygenerować ponownie w [witrynie Azure Portal](https://portal.azure.com/).
+> Klucze dostępu udzielają nieograniczonych uprawnień osobom, które je przechowują. W związku z tym nie zalecamy przekazywania tych kluczy do użytkowników konta. Jeśli musisz odwołać klucze dostępu, możesz je wygenerować ponownie z [Azure Portal](https://portal.azure.com/).
 
 #### <a name="data-roles"></a>Role danych
 
-Musisz mieć przypisaną co najmniej jedną rolę, która przyznaje dostęp do odczytu danych z zasobów. Jeśli na przykład chcesz wyświetlić lub pobrać obiekty blob, musisz mieć co najmniej rolę "czytnik danych obiektów blob magazynu".
+Musisz mieć przypisaną co najmniej jedną rolę, która przyznaje dostęp do odczytu danych z zasobów. Jeśli na przykład chcesz wyświetlić lub pobrać obiekty blob, musisz mieć co najmniej rolę _czytnika danych obiektów blob magazynu_ .
 
 ### <a name="why-do-i-need-a-management-layer-role-to-see-my-resources-in-storage-explorer"></a>Dlaczego do wyświetlania moich zasobów w Eksplorator usługi Storage jest potrzebna rola warstwy zarządzania?
 
 Usługa Azure Storage ma dwie warstwy dostępu: _Zarządzanie_ i _dane_. Do subskrypcji i kont magazynu uzyskuje się dostęp za pomocą warstwy zarządzania. Do kontenerów, obiektów blob i innych zasobów danych uzyskuje się dostęp za pomocą warstwy danych. Jeśli na przykład chcesz uzyskać listę kont magazynu z platformy Azure, Wyślij żądanie do punktu końcowego zarządzania. Jeśli potrzebujesz listy kontenerów obiektów BLOB na koncie, Wyślij żądanie do odpowiedniego punktu końcowego usługi.
 
-Role RBAC mogą zawierać uprawnienia do zarządzania lub dostępu do warstwy danych. Na przykład rola "czytelnik" przyznaje zasoby warstwy zarządzania dostępem tylko do odczytu.
+Role RBAC mogą zawierać uprawnienia do zarządzania lub dostępu do warstwy danych. Rola czytelnik, na przykład, umożliwia dostęp tylko do odczytu do zasobów warstwy zarządzania.
 
-Mówiąc ściślej, rola "czytelnik" nie zapewnia żadnych uprawnień do warstwy danych i nie jest konieczna do uzyskania dostępu do warstwy danych.
+Dokładnie mówiąc, rola czytelnika nie zapewnia żadnych uprawnień do warstwy danych i nie jest konieczna do uzyskania dostępu do warstwy danych.
 
-Eksplorator usługi Storage ułatwia uzyskiwanie dostępu do zasobów, zbierając informacje niezbędne do nawiązania połączenia z zasobami platformy Azure. Na przykład, aby wyświetlić kontenery obiektów blob, Eksplorator usługi Storage wysyła żądanie listy kontenerów do punktu końcowego usługi BLOB Service. Aby uzyskać ten punkt końcowy, Eksplorator usługi Storage przeszukuje listę subskrypcji i kont magazynu, do których masz dostęp. Jednak aby znaleźć subskrypcje i konta magazynu, Eksplorator usługi Storage wymaga również dostępu do warstwy zarządzania.
+Eksplorator usługi Storage ułatwia uzyskiwanie dostępu do zasobów, zbierając informacje niezbędne do nawiązania połączenia z zasobami platformy Azure. Na przykład aby wyświetlić kontenery obiektów blob, Eksplorator usługi Storage wysyła żądanie "list Containers" do punktu końcowego usługi BLOB Service. Aby uzyskać ten punkt końcowy, Eksplorator usługi Storage przeszukuje listę subskrypcji i kont magazynu, do których masz dostęp. Aby znaleźć subskrypcje i konta magazynu, Eksplorator usługi Storage wymaga również dostępu do warstwy zarządzania.
 
 Jeśli nie masz roli przyznającej uprawnienia do warstwy zarządzania, Eksplorator usługi Storage nie może pobrać informacji potrzebnych do nawiązania połączenia z warstwą danych.
 
 ### <a name="what-if-i-cant-get-the-management-layer-permissions-i-need-from-my-administrator"></a>Co zrobić, jeśli nie mogę uzyskać wymaganych uprawnień do warstwy zarządzania z mojego administratora?
 
-W tej chwili nie mamy jeszcze rozwiązania dotyczącego kontroli RBAC. Obejście tego problemu pozwala na zażądanie identyfikatora URI sygnatury dostępu współdzielonego w celu [dołączenia do zasobu](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-sas-uri).
+Obecnie nie mamy rozwiązania dotyczącego kontroli RBAC dla tego problemu. Obejście tego problemu pozwala na zażądanie identyfikatora URI sygnatury dostępu współdzielonego w celu [dołączenia do zasobu](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-sas-uri).
 
 ## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>Błąd: Certyfikat z podpisem własnym w łańcuchu certyfikatów (i podobne błędy)
 
-Błędy certyfikatów są spowodowane jedną z dwóch następujących sytuacji:
+Błędy certyfikatów zwykle występują w jednej z następujących sytuacji:
 
-1. Aplikacja jest połączona za pośrednictwem "przezroczystego serwera proxy", co oznacza, że serwer (na przykład serwer firmy) przechwytuje ruch HTTPS, odszyfrowuje go, a następnie szyfruje przy użyciu certyfikatu z podpisem własnym.
-2. Korzystasz z aplikacji, która wprowadza certyfikat SSL z podpisem własnym do odbieranych komunikatów HTTPS. Przykłady aplikacji, które wprowadzają certyfikaty, obejmują oprogramowanie chroniące przed wirusami i ruchem sieciowym.
+- Aplikacja jest połączona za pośrednictwem _przezroczystego serwera proxy_, co oznacza, że serwer (na przykład serwer firmy) przechwytuje ruch https, odszyfrowuje go, a następnie szyfruje przy użyciu certyfikatu z podpisem własnym.
+- Korzystasz z aplikacji, która wprowadza certyfikat SSL z podpisem własnym do odbieranych komunikatów HTTPS. Przykładami aplikacji, które wprowadzają certyfikaty, są oprogramowanie antywirusowe i program inspekcji ruchu sieciowego.
 
-Gdy Eksplorator usługi Storage widzi certyfikat z podpisem własnym lub niezaufany, nie może już wiedzieć, czy odebrany komunikat HTTPS został zmieniony. Jeśli masz kopię certyfikatu z podpisem własnym, możesz wydać Eksplorator usługi Storage zaufania, wykonując następujące czynności:
+Gdy Eksplorator usługi Storage widzi certyfikat z podpisem własnym lub niezaufany, nie wie, czy odebrany komunikat HTTPS został zmieniony. Jeśli masz kopię certyfikatu z podpisem własnym, możesz poinstruować Eksplorator usługi Storage, aby go ufa, wykonując następujące czynności:
 
-1. Uzyskaj kopię certyfikatu X. 509 z kodowaniem Base-64 (. cer)
-2. Kliknij pozycję **Edytuj** → **Certyfikaty SSL** → **Importuj certyfikaty**, a następnie użyj selektora plików, aby znaleźć, wybrać i otworzyć plik. cer
+1. Uzyskaj kopię certyfikatu X. 509 z kodowaniem Base-64 (CER).
+2. Przejdź do pozycji **Edytuj** > **Certyfikaty** > SSL**Importuj certyfikaty**, a następnie użyj selektora plików, aby znaleźć, wybrać i otworzyć plik. cer.
 
-Ten problem może być również wynikiem wielu certyfikatów (głównych i pośrednich). Aby można było przezwyciężyć błąd, należy dodać oba certyfikaty.
+Ten problem może również wystąpić, jeśli istnieje wiele certyfikatów (głównych i pośrednich). Aby naprawić ten błąd, należy dodać oba certyfikaty.
 
-Jeśli nie masz pewności, skąd pochodzi certyfikat, możesz wykonać następujące kroki, aby je znaleźć:
+Jeśli nie masz pewności, skąd pochodzi certyfikat, wykonaj następujące kroki, aby je znaleźć:
 
-1. Zainstaluj protokół Open SSL
-    * [System Windows](https://slproweb.com/products/Win32OpenSSL.html) (dowolna wersja oświetlenia powinna być wystarczająca)
-    * Komputery Mac i Linux: powinny być dołączone do systemu operacyjnego
-2. Uruchom protokół Open SSL
-    * Windows: Otwórz katalog instalacji, kliknij pozycję **/bin/** , a następnie kliknij dwukrotnie **plik OpenSSL. exe**.
-    * Mac i Linux: uruchamianie **OpenSSL** z terminalu.
-3. Wykonaj polecenie `s_client -showcerts -connect microsoft.com:443`
-4. Wyszukaj certyfikaty z podpisem własnym. Jeśli nie masz pewności, które certyfikaty są z podpisem własnym, sprawdź, czy każdy temat `("s:")` i wystawca `("i:")` są takie same.
-5. Po znalezieniu wszystkich certyfikatów z podpisem własnym dla każdej z nich skopiuj i Wklej wszystkie elementy z i, w tym **-----Rozpocznij certyfikat-----** , aby **-----końcowy-----certyfikatów** do nowego pliku. cer.
-6. Otwórz Eksplorator usługi Storage, kliknij przycisk Edytuj **Certyfikaty SSL** → → **zaimportować certyfikaty**, a następnie użyj selektora plików, aby znaleźć, wybrać i otworzyć utworzone pliki CER.
+1. Zainstaluj OpenSSL.
+    * [Windows](https://slproweb.com/products/Win32OpenSSL.html): Wszystkie wersje oświetlenia powinny być wystarczające.
+    * Komputery Mac i Linux: Powinien być dołączony do systemu operacyjnego.
+2. Uruchom OpenSSL.
+    * W systemie Windows: Otwórz katalog instalacji, wybierz pozycję **/bin/** , a następnie kliknij dwukrotnie **plik OpenSSL. exe**.
+    * Komputery Mac i Linux: Uruchom `openssl` z terminalu.
+3. Uruchom polecenie `s_client -showcerts -connect microsoft.com:443`.
+4. Wyszukaj certyfikaty z podpisem własnym. Jeśli nie masz pewności, które certyfikaty są z podpisem własnym, pamiętaj o tym, gdzie temat `("s:")` i wystawca `("i:")` są takie same.
+5. Po znalezieniu certyfikatów z podpisem własnym dla każdej z nich skopiuj i Wklej wszystko z (i włącznie z `-----BEGIN CERTIFICATE-----` ) `-----END CERTIFICATE-----` do nowego pliku. cer.
+6. Otwórz Eksplorator usługi Storage i przejdź do pozycji **Edytuj** > **Certyfikaty** > SSL**Importuj certyfikaty**. Następnie użyj selektora plików, aby znaleźć, wybrać i otworzyć utworzone pliki CER.
 
-Jeśli nie możesz znaleźć żadnych certyfikatów z podpisem własnym za pomocą powyższych kroków, skontaktuj się z nami za pomocą narzędzia opinii, aby uzyskać pomoc. Możesz również uruchomić Eksplorator usługi Storage z wiersza polecenia z `--ignore-certificate-errors` flagą. Po uruchomieniu z tą flagą Eksplorator usługi Storage zignoruje Błędy certyfikatów.
+Jeśli nie możesz znaleźć żadnych certyfikatów z podpisem własnym, wykonaj następujące kroki, aby skontaktować się z nami za pomocą narzędzia do przesyłania opinii. Możesz również otworzyć Eksplorator usługi Storage z wiersza polecenia przy użyciu `--ignore-certificate-errors` flagi. Po otwarciu z tą flagą Eksplorator usługi Storage ignoruje błędy certyfikatów.
 
 ## <a name="sign-in-issues"></a>Problemy dotyczące logowania
 
-### <a name="blank-sign-in-dialog"></a>Puste okno dialogowe logowania
+### <a name="blank-sign-in-dialog-box"></a>Puste okno dialogowe logowania
 
-Puste okna dialogowe logowania są najczęściej spowodowane przez usługi AD FS z prośbą o Eksplorator usługi Storage przekierowania, które nie są obsługiwane przez elektron. Aby obejść ten problem, możesz spróbować użyć przepływu kodu urządzenia do logowania. Aby to zrobić, wykonaj następujące czynności:
+Puste okna dialogowe logowania najczęściej występują, gdy Active Directory Federation Services (AD FS) poprosi Eksplorator usługi Storage o przeprowadzenie przekierowania, który jest nieobsługiwany przez elektron. Aby obejść ten problem, możesz spróbować użyć przepływu kodu urządzenia do logowania. Aby to zrobić, wykonaj następujące kroki:
 
-1. DodajMenu Wersja zapoznawcza — > "Użyj logowania przy użyciu kodu urządzenia".
-2. Otwórz okno dialogowe Połącz (za pomocą ikony wtyczki na lewym pasku pionowym lub "Dodaj konto" w panelu konta).
+1. W menu Przejdź do pozycji **Podgląd** > **Użyj logowania przy użyciu kodu urządzenia**.
+2. Otwórz okno dialogowe **łączenie** (za pomocą ikony wtyczki na pasku pionowym po lewej stronie lub wybierając pozycję **Dodaj konto** w panelu konta).
 3. Wybierz środowisko, do którego chcesz się zalogować.
-4. Kliknij przycisk "Zaloguj się".
+4. Wybierz pozycję **Zaloguj**.
 5. Postępuj zgodnie z instrukcjami wyświetlanymi na następnym panelu.
 
-Jeśli masz problemy z zalogowaniem się do konta, którego chcesz użyć, ponieważ domyślna przeglądarka została już zapisana na innym koncie, możesz:
+Jeśli nie możesz zalogować się do konta, którego chcesz użyć, ponieważ domyślna przeglądarka została już zarejestrowana na innym koncie, wykonaj jedną z następujących czynności:
 
-1. Ręcznie skopiuj link i kod do prywatnej sesji przeglądarki.
-2. Ręcznie skopiuj link i kod do innej przeglądarki.
+- Ręcznie skopiuj link i kod do prywatnej sesji przeglądarki.
+- Ręcznie skopiuj link i kod do innej przeglądarki.
 
 ### <a name="reauthentication-loop-or-upn-change"></a>Pętla ponownego uwierzytelniania lub zmiana nazwy UPN
 
-Jeśli jesteś w pętli ponownego uwierzytelniania lub zmieniono nazwę UPN jednego z kont, spróbuj wykonać następujące czynności:
+Jeśli jesteś w pętli ponownego uwierzytelniania lub zmieniono nazwę UPN jednego z kont, wykonaj następujące czynności:
 
-1. Usuń wszystkie konta, a następnie zamknij Eksplorator usługi Storage
+1. Usuń wszystkie konta, a następnie zamknij Eksplorator usługi Storage.
 2. Usuń. IdentityService z komputera. W systemie Windows folder znajduje się w `C:\users\<username>\AppData\Local`folderze. W przypadku systemów Mac i Linux można znaleźć folder w katalogu głównym katalogu użytkownika.
-3. Jeśli jesteś w systemie Mac lub Linux, musisz również usunąć wpis Microsoft. developer. IdentityService z magazynu kluczy systemu operacyjnego. Na komputerach Mac magazyn kluczy jest aplikacją "GNOME pęku". W przypadku systemu Linux aplikacja jest zazwyczaj nazywana "pęku kluczy", ale nazwa może się różnić w zależności od dystrybucji.
+3. W przypadku korzystania z systemu Mac lub Linux należy również usunąć wpis Microsoft. developer. IdentityService z magazynu kluczy używanego przez system operacyjny. Na komputerze Mac magazyn kluczy jest aplikacją GNOME z *łańcucha* . W systemie Linux aplikacja jest zazwyczaj nazywana _dzwonkiem_, ale nazwa może się różnić w zależności od dystrybucji.
 
 ### <a name="conditional-access"></a>Dostęp warunkowy
 
-Dostęp warunkowy nie jest obsługiwany, gdy Eksplorator usługi Storage jest używany w systemie Windows 10, Linux lub macOS. Wynika to z ograniczenia w bibliotece usługi AAD używanej przez Eksplorator usługi Storage.
+Z powodu ograniczenia w bibliotece usługi Azure AD używanej przez Eksplorator usługi Storage dostęp warunkowy nie jest obsługiwany, gdy Eksplorator usługi Storage jest używany w systemie Windows 10, Linux lub macOS.
 
 ## <a name="mac-keychain-errors"></a>Błędy łańcucha kluczy Mac
 
-MacOS pęku kluczy może czasami przejść w stan, który powoduje problemy z biblioteką uwierzytelniania Eksplorator usługi Storage. Aby uzyskać dostęp do łańcucha kluczy z tego stanu, spróbuj wykonać następujące czynności:
+MacOS pęku kluczy może czasami wprowadzić stan, który powoduje problemy z biblioteką uwierzytelniania Eksplorator usługi Storage. Aby uzyskać łańcuch kluczy z tego stanu, wykonaj następujące kroki:
 
 1. Zamknij Eksplorator usługi Storage.
-2. Otwórz łańcuch kluczy (**cmd + spacja**, wpisz w pęku kluczy, naciśnij klawisz ENTER).
+2. Otwórz pęku kluczy (naciśnij klawisze Command + Spacja, typ **pęku kluczy**i naciśnij klawisz ENTER).
 3. Wybierz łańcuch kluczy logowania.
-4. Kliknij ikonę kłódki, aby zablokować łańcuch łańcucha (kłódka zostanie podzielna na zablokowaną pozycję po zakończeniu, może upłynąć kilka sekund w zależności od tego, jakie aplikacje zostały otwarte).
+4. Wybierz ikonę kłódki, aby zablokować łańcucha kluczy. (Kłódka zostanie wyświetlona po zakończeniu procesu. Może to potrwać kilka sekund, w zależności od tego, jakie aplikacje zostały otwarte).
 
-    ![image](./media/storage-explorer-troubleshooting/unlockingkeychain.png)
+    ![Ikona kłódki](./media/storage-explorer-troubleshooting/unlockingkeychain.png)
 
-5. Uruchom Eksplorator usługi Storage.
-6. Wyskakujące okienko powinno wyglądać podobnie do tego, jak "centrum usług chce uzyskać dostęp do łańcucha kluczy". W takim przypadku wprowadź hasło konta administratora dla komputerów Mac i kliknij opcję **zawsze Zezwalaj** (lub **Zezwalaj** , jeśli **zawsze Zezwalaj** jest niedostępne).
+5. Otwórz Eksploratora usługi Storage.
+6. Zostanie wyświetlony monit z komunikatem "Usługa Service Hub chce uzyskać dostęp do łańcucha kluczy". Wprowadź hasło konta administratora dla komputerów Mac i wybierz opcję **zawsze Zezwalaj** (lub **Zezwalaj** , jeśli **zawsze Zezwalaj** jest niedostępne).
 7. Spróbuj się zalogować.
 
 ### <a name="general-sign-in-troubleshooting-steps"></a>Ogólne kroki rozwiązywania problemów z logowaniem
 
-* Jeśli jesteś w macOS, a okno logowania nigdy nie pojawia się w ciągu "Oczekiwanie na uwierzytelnienie..." , a następnie spróbuj wykonać [następujące czynności](#mac-keychain-errors)
-* Uruchom ponownie Eksplorator usługi Storage
+* Jeśli jesteś w macOS, a okno logowania nigdy nie pojawia się w oknie dialogowym **oczekiwanie na uwierzytelnienie** , spróbuj wykonać [poniższe czynności](#mac-keychain-errors).
+* Uruchom ponownie Eksplorator usługi Storage.
 * Jeśli okno uwierzytelniania jest puste, odczekaj co najmniej jedną minutę przed zamknięciem okna dialogowego uwierzytelnianie.
 * Upewnij się, że ustawienia serwera proxy i certyfikatu zostały prawidłowo skonfigurowane dla komputera i Eksplorator usługi Storage.
-* Jeśli jesteś w systemie Windows i masz dostęp do programu Visual Studio 2019 na tym samym komputerze i zaloguj się, spróbuj zalogować się do programu Visual Studio 2019. Po pomyślnym zalogowaniu się do programu Visual Studio 2019 możesz otworzyć Eksplorator usługi Storage i zobaczyć swoje konto w panelu konta.
+* Jeśli używasz systemu Windows i masz dostęp do programu Visual Studio 2019 na tym samym komputerze i poświadczenia logowania, spróbuj zalogować się do programu Visual Studio 2019. Po pomyślnym zalogowaniu się do programu Visual Studio 2019 możesz otworzyć Eksplorator usługi Storage i zobaczyć swoje konto w panelu konta.
 
-Jeśli żadna z tych metod nie zadziałała [, należy otworzyć problem w serwisie GitHub](https://github.com/Microsoft/AzureStorageExplorer/issues).
+Jeśli żadna z tych metod nie zostanie zadziałała, [Otwórz problem w usłudze GitHub](https://github.com/Microsoft/AzureStorageExplorer/issues).
 
 ### <a name="missing-subscriptions-and-broken-tenants"></a>Brakujące subskrypcje i uszkodzone dzierżawy
 
 Jeśli nie możesz pobrać subskrypcji po pomyślnym zalogowaniu, wypróbuj następujące metody rozwiązywania problemów:
 
 * Sprawdź, czy Twoje konto ma dostęp do oczekiwanych subskrypcji. Możesz sprawdzić dostęp, logując się do portalu dla środowiska platformy Azure, którego próbujesz użyć.
-* Upewnij się, że zalogowano się przy użyciu poprawnego środowiska platformy Azure (platformy Azure, platformy Azure z Chin, platformy Azure (Niemcy, platformy Azure dla instytucji rządowych USA lub środowiska niestandardowego).
+* Upewnij się, że zalogowano się za pomocą poprawnego środowiska platformy Azure (platformy Azure, platformy Azure z Chin, platformy Azure (Niemcy), platformy Azure dla instytucji rządowych USA lub środowiska niestandardowego.
 * Jeśli jesteś za serwerem proxy, upewnij się, że poprawnie skonfigurowano serwer proxy Eksplorator usługi Storage.
 * Spróbuj usunąć i ponownie dodać konto.
-* Jeśli istnieje link "więcej informacji", sprawdź i sprawdź, jakie komunikaty o błędach są raportowane dla dzierżawców, które kończą się niepowodzeniem. Jeśli you'ren't się, co należy zrobić z wyświetlonymi komunikatami o błędach, możesz [otworzyć problem w usłudze GitHub](https://github.com/Microsoft/AzureStorageExplorer/issues).
+* Jeśli istnieje łącze "więcej informacji", sprawdź, które komunikaty o błędach są raportowane dla dzierżawców, które kończą się niepowodzeniem. Jeśli nie masz pewności, jak odpowiedzieć na komunikaty o błędach, możesz [otworzyć problem w usłudze GitHub](https://github.com/Microsoft/AzureStorageExplorer/issues).
 
-## <a name="cant-remove-attached-account-or-storage-resource"></a>Nie można usunąć dołączonego konta lub zasobu magazynu
+## <a name="cant-remove-an-attached-account-or-storage-resource"></a>Nie można usunąć dołączonego konta lub zasobu magazynu
 
-Jeśli nie możesz usunąć dołączonego konta lub zasobu magazynu za pomocą interfejsu użytkownika, możesz ręcznie usunąć wszystkie dołączone zasoby, usuwając następujące foldery:
+Jeśli nie można usunąć dołączonego konta lub zasobu magazynu za pomocą interfejsu użytkownika, można ręcznie usunąć wszystkie dołączone zasoby, usuwając następujące foldery:
 
 * Windows: `%AppData%/StorageExplorer`
 * macOS: `/Users/<your_name>/Library/Application Support/StorageExplorer`
 * Linux: `~/.config/StorageExplorer`
 
 > [!NOTE]
-> Zamknij Eksplorator usługi Storage przed usunięciem powyższych folderów.
+> Zamknij Eksplorator usługi Storage przed usunięciem tych folderów.
 
 > [!NOTE]
-> Jeśli kiedykolwiek zaimportowano wszystkie certyfikaty SSL, Utwórz kopię zapasową `certs` zawartości katalogu. Później można użyć kopii zapasowej do zaimportowania certyfikatów SSL.
+> Jeśli kiedykolwiek zaimportowano wszystkie certyfikaty SSL, Utwórz kopię zapasową zawartości `certs` katalogu. Później można użyć kopii zapasowej do zaimportowania certyfikatów SSL.
 
 ## <a name="proxy-issues"></a>Problemy z serwerem proxy
 
-Najpierw upewnij się, że podane zostały poprawne następujące informacje:
+Najpierw upewnij się, że podane informacje są poprawne:
 
 * Adres URL serwera proxy i numer portu
-* Nazwa użytkownika i hasło, jeśli jest to wymagane przez serwer proxy
+* Nazwa użytkownika i hasło, jeśli są wymagane przez serwer proxy
 
 > [!NOTE]
 > Eksplorator usługi Storage nie obsługuje plików autokonfiguracji serwera proxy na potrzeby konfigurowania ustawień serwera proxy.
@@ -182,11 +180,11 @@ Najpierw upewnij się, że podane zostały poprawne następujące informacje:
 
 Jeśli nadal występują problemy, spróbuj wykonać następujące metody rozwiązywania problemów:
 
-* Jeśli możesz nawiązać połączenie z Internetem bez użycia serwera proxy, sprawdź, czy Eksplorator usługi Storage działa bez włączonych ustawień serwera proxy. W takim przypadku może wystąpić problem z ustawieniami serwera proxy. Skontaktuj się z administratorem serwera proxy, aby zidentyfikować problemy.
+* Jeśli możesz nawiązać połączenie z Internetem bez użycia serwera proxy, sprawdź, czy Eksplorator usługi Storage działa bez włączonych ustawień serwera proxy. W takim przypadku może wystąpić problem z ustawieniami serwera proxy. Skontaktuj się z administratorem, aby zidentyfikować problemy.
 * Sprawdź, czy inne aplikacje korzystające z serwera proxy działają zgodnie z oczekiwaniami.
-* Sprawdź, czy możesz nawiązać połączenie z portalem dla środowiska platformy Azure, którego próbujesz użyć
+* Sprawdź, czy możesz nawiązać połączenie z portalem dla środowiska platformy Azure, którego próbujesz użyć.
 * Sprawdź, czy można odbierać odpowiedzi z punktów końcowych usługi. Wprowadź jeden z adresów URL punktu końcowego do przeglądarki. Jeśli można nawiązać połączenie, należy odebrać InvalidQueryParameterValue lub podobną odpowiedź XML.
-* Jeśli ktoś inny używa również Eksplorator usługi Storage z serwerem proxy, sprawdź, czy mogą się z nim połączyć. Jeśli można nawiązać połączenie, może być konieczne skontaktowanie się z administratorem serwera proxy.
+* Jeśli ktoś inny używa również Eksplorator usługi Storage z serwerem proxy, sprawdź, czy mogą się z nim połączyć. Jeśli to możliwe, może być konieczne skontaktowanie się z administratorem serwera proxy.
 
 ### <a name="tools-for-diagnosing-issues"></a>Narzędzia do diagnozowania problemów
 
@@ -194,15 +192,17 @@ Jeśli masz narzędzia sieciowe, takie jak programu Fiddler for Windows, możesz
 
 * Jeśli trzeba będzie korzystać z serwera proxy, może być konieczne skonfigurowanie narzędzia sieci do łączenia się z serwerem proxy.
 * Sprawdź numer portu używany przez narzędzie sieciowe.
-* Wprowadź adres URL hosta lokalnego i numer portu Narzędzia sieciowego jako ustawienia serwera proxy w Eksplorator usługi Storage. Po poprawnym wykonaniu tego narzędzia sieciowego rozpocznie rejestrowanie żądań sieci wysyłanych przez Eksplorator usługi Storage do punktów końcowych zarządzania i usług. Na przykład wprowadź https://cawablobgrs.blob.core.windows.net/ dla punktu końcowego obiektu BLOB w przeglądarce i otrzymasz odpowiedź podobną do następującej, która sugeruje, że zasób istnieje, chociaż nie możesz uzyskać do niego dostępu.
+* Wprowadź adres URL hosta lokalnego i numer portu Narzędzia sieciowego jako ustawienia serwera proxy w Eksplorator usługi Storage. Po poprawnym wykonaniu tego narzędzia sieciowego rozpocznie rejestrowanie żądań sieci, które zostały wprowadzone przez Eksplorator usługi Storage do punktów końcowych zarządzania i usług. Na przykład wprowadź `https://cawablobgrs.blob.core.windows.net/` dla punktu końcowego obiektu BLOB w przeglądarce i otrzymasz odpowiedź podobną do następującej:
 
-![Przykładowy kod](./media/storage-explorer-troubleshooting/4022502_en_2.png)
+  ![Przykład kodu](./media/storage-explorer-troubleshooting/4022502_en_2.png)
+
+  Ta odpowiedź sugeruje, że zasób istnieje, nawet jeśli nie można uzyskać do niego dostępu.
 
 ### <a name="contact-proxy-server-admin"></a>Skontaktuj się z administratorem serwera proxy
 
-Jeśli ustawienia serwera proxy są poprawne, może być konieczne skontaktowanie się z administratorem serwera proxy i
+Jeśli ustawienia serwera proxy są poprawne, może być konieczne skontaktowanie się z administratorem serwera proxy, aby:
 
-* Upewnij się, że serwer proxy nie blokuje ruchu do usługi Azure Management lub punktów końcowych zasobów.
+* Upewnij się, że serwer proxy nie blokuje ruchu sieciowego do zarządzania platformą Azure lub punktów końcowych zasobów.
 * Sprawdź protokół uwierzytelniania używany przez serwer proxy. Eksplorator usługi Storage nie obsługuje obecnie proxy NTLM.
 
 ## <a name="unable-to-retrieve-children-error-message"></a>Komunikat o błędzie "nie można pobrać elementu podrzędnego"
@@ -211,18 +211,17 @@ Jeśli nawiązano połączenie z platformą Azure za pomocą serwera proxy, spra
 
 ## <a name="connection-string-doesnt-have-complete-configuration-settings"></a>Parametry połączenia nie mają pełnych ustawień konfiguracji
 
-Jeśli zostanie wyświetlony komunikat o błędzie, istnieje możliwość, że nie masz wymaganych uprawnień do uzyskania kluczy dla konta magazynu. Aby potwierdzić, że jest to przypadek, przejdź do portalu i Znajdź swoje konto magazynu. Możesz szybko to zrobić, klikając prawym przyciskiem myszy węzeł konta magazynu, a następnie klikając polecenie "Otwórz w portalu". Po wykonaniu tych czynności przejdź do bloku "klucze dostępu". Jeśli nie masz uprawnień do wyświetlania kluczy, zostanie wyświetlona strona z komunikatem "nie masz dostępu". Aby obejść ten problem, możesz uzyskać klucz konta od kogoś innego i dołączyć nazwę i klucz lub poprosił kogoś o sygnaturę dostępu współdzielonego z kontem magazynu i użyć go do dołączenia konta magazynu.
+Jeśli zostanie wyświetlony komunikat o błędzie, istnieje możliwość, że nie masz wystarczających uprawnień, aby uzyskać klucze dla konta magazynu. Aby upewnić się, że jest to przypadek, przejdź do portalu i Znajdź swoje konto magazynu. Aby to zrobić, kliknij prawym przyciskiem myszy węzeł konta magazynu i wybierz polecenie **Otwórz w portalu**. Następnie przejdź do bloku **klucze dostępu** . Jeśli nie masz uprawnień do wyświetlania kluczy, zobaczysz komunikat "nie masz dostępu". Aby obejść ten problem, możesz uzyskać klucz konta od kogoś innego i dołączyć nazwę i klucz lub poprosił kogoś o sygnaturę dostępu współdzielonego z kontem magazynu i użyć go do dołączenia konta magazynu.
 
-Jeśli zobaczysz klucze konta, wygeneruj problem w usłudze GitHub, aby pomóc Ci rozwiązać ten problem.
+Jeśli widzisz klucze konta, w usłudze GitHub prosimy o problem, aby pomóc w rozwiązaniu problemu.
 
 ## <a name="error-occurred-while-adding-new-connection-typeerror-cannot-read-property-version-of-undefined"></a>Wystąpił błąd podczas dodawania nowego połączenia: TypeError Nie można odczytać właściwości "Version" niezdefiniowanej
 
-Jeśli podczas próby dodania połączenia niestandardowego zostanie wyświetlony komunikat o błędzie, istnieje możliwość, że dane połączenia przechowywane w lokalnym Menedżerze poświadczeń są uszkodzone.
-Aby obejść ten problem, możesz spróbować usunąć uszkodzone połączenia lokalne, a następnie dodać je ponownie.
+Jeśli podczas próby dodania połączenia niestandardowego zostanie wyświetlony komunikat o błędzie, dane połączenia przechowywane w lokalnym Menedżerze poświadczeń mogą być uszkodzone. Aby obejść ten problem, spróbuj usunąć uszkodzone połączenia lokalne, a następnie dodaj je ponownie:
 
-1. Rozpocznij Eksplorator usługi Storage. W górnym menu Przejdź do pozycji pomoc → Przełącz Narzędzia deweloperskie.
-2. W otwartym oknie przejdź do pozycji karta aplikacji → Local Storage (lewa strona) → file://
-3. W zależności od typu połączeń, z którymi występuje problem, poszukaj jego klucza i skopiuj jego wartość do edytora tekstu. Wartość jest tablicą niestandardowych nazw połączeń.
+1. Rozpocznij Eksplorator usługi Storage. W menu Przejdź do pozycji **Pomoc** > i**Przełącz narzędzia deweloperskie**.
+2. W otwartym oknie na karcie **aplikacja** przejdź do obszaru **Magazyn lokalny** (po lewej stronie) > **File://** .
+3. W zależności od typu połączenia, z którym występuje problem, poszukaj jego klucza, a następnie skopiuj jego wartość do edytora tekstu. Wartość jest tablicą niestandardowych nazw połączeń, takich jak następujące:
     * Konta magazynu
         * `StorageExplorer_CustomConnections_Accounts_v1`
     * Kontenery obiektów blob
@@ -234,61 +233,61 @@ Aby obejść ten problem, możesz spróbować usunąć uszkodzone połączenia l
         * `StorageExplorer_CustomConnections_Queues_v1`
     * Tabele
         * `StorageExplorer_CustomConnections_Tables_v1`
-4. Po zapisaniu bieżących nazw połączeń ustaw wartość w Narzędzia deweloperskie `[]`.
+4. Po zapisaniu bieżących nazw połączeń ustaw wartość w Narzędzia deweloperskie na `[]`.
 
-Aby zachować połączenia, które nie są uszkodzone, można wykonać następujące kroki w celu zlokalizowania uszkodzonych połączeń. Jeśli nie chcesz utracić wszystkich istniejących połączeń, możesz pominąć poniższe kroki i postępować zgodnie z instrukcjami dotyczącymi konkretnej platformy, aby wyczyścić dane połączenia.
+Aby zachować połączenia, które nie są uszkodzone, można użyć poniższych kroków w celu zlokalizowania uszkodzonych połączeń. Jeśli nie chcesz utracić wszystkich istniejących połączeń, możesz pominąć te kroki i postępować zgodnie z instrukcjami dotyczącymi konkretnej platformy, aby wyczyścić dane połączenia.
 
-1. W edytorze tekstów ponownie Dodaj wszystkie nazwy połączeń z powrotem do Narzędzia deweloperskie i sprawdź, czy połączenie nadal działa.
-2. Jeśli połączenie działa prawidłowo, nie jest uszkodzone i można je bezpiecznie pozostawić. Jeśli połączenie nie działa, usuń jego wartość z Narzędzia deweloperskie i Zapisz je, aby można było dodać je ponownie później.
+1. W edytorze tekstów ponownie Dodaj nazwy poszczególnych połączeń do Narzędzia deweloperskie, a następnie sprawdź, czy połączenie nadal działa.
+2. Jeśli połączenie działa prawidłowo, nie jest uszkodzone i można je bezpiecznie pozostawić. Jeśli połączenie nie działa, usuń jego wartość z Narzędzia deweloperskie i Zapisz je tak, aby można było dodać je ponownie później.
 3. Powtarzaj do momentu zbadania wszystkich połączeń.
 
-Po przejściu przez wszystkie połączenia w przypadku wszystkich nazw połączeń, które nie zostały dodane z powrotem, należy wyczyścić ich uszkodzone dane (jeśli istnieją) i dodać je ponownie za pomocą zwykłych kroków przy użyciu Eksplorator usługi Storage.
+Po przejściu przez wszystkie połączenia w przypadku wszystkich nazw połączeń, które nie zostały dodane z powrotem, należy wyczyścić ich uszkodzone dane (jeśli istnieją) i dodać je z powrotem przy użyciu standardowych kroków w Eksplorator usługi Storage:
 
 # <a name="windowstabwindows"></a>[Windows](#tab/Windows)
 
-1. Otwórz okno "Menedżer poświadczeń", otwierając menu Start i wyszukując ciąg "Menedżer poświadczeń".
-2. W otwartym oknie przejdź do pozycji "poświadczenia systemu Windows".
-3. W obszarze "ogólne poświadczenia" Wyszukaj wpisy z kluczem `<connection_type_key>/<corrupted_connection_name>` (na `StorageExplorer_CustomConnections_Accounts_v1/account1`przykład).
-4. Usuń te wpisy i Dodaj połączenia ponownie.
+1. W menu **Start** Wyszukaj pozycję **Menedżer poświadczeń** i otwórz ją.
+2. Przejdź do **poświadczeń systemu Windows**.
+3. W obszarze **poświadczenia ogólne**Wyszukaj wpisy, które mają `<connection_type_key>/<corrupted_connection_name>` klucz `StorageExplorer_CustomConnections_Accounts_v1/account1`(na przykład).
+4. Usuń te wpisy i Dodaj je jeszcze raz.
 
 # <a name="macostabmacos"></a>[macOS](#tab/macOS)
 
-1. Otwórz centrum uwagi (pasek miejsca polecenia) i wyszukaj ciąg "dostęp do łańcucha kluczy".
-2. Wyszukaj wpisy z kluczem `<connection_type_key>/<corrupted_connection_name>` (na `StorageExplorer_CustomConnections_Accounts_v1/account1`przykład).
-3. Usuń te wpisy i Dodaj połączenia ponownie.
+1. Otwórz centrum uwagi (Command + SPACEBAR) i Wyszukaj **dostęp do łańcucha kluczy**.
+2. Wyszukaj wpisy, które mają `<connection_type_key>/<corrupted_connection_name>` klucz (na `StorageExplorer_CustomConnections_Accounts_v1/account1`przykład).
+3. Usuń te wpisy i Dodaj je jeszcze raz.
 
 # <a name="linuxtablinux"></a>[Linux](#tab/Linux)
 
 Lokalne zarządzanie poświadczeniami różni się w zależności od dystrybucji systemu Linux. Jeśli dystrybucja systemu Linux nie udostępnia wbudowanego interfejsu GUI do lokalnego zarządzania poświadczeniami, możesz zainstalować narzędzie innych firm, aby zarządzać poświadczeniami lokalnymi. Na przykład można użyć [Seahorse](https://wiki.gnome.org/Apps/Seahorse/), narzędzia interfejsu GUI open source do zarządzania poświadczeniami lokalnymi systemu Linux.
 
-1. Otwórz swoje lokalne narzędzie do zarządzania poświadczeniami, a następnie Znajdź zapisane poświadczenia.
-2. Wyszukaj wpisy z kluczem `<connection_type_key>/<corrupted_connection_name>` (na `StorageExplorer_CustomConnections_Accounts_v1/account1`przykład).
-3. Usuń te wpisy i Dodaj połączenia ponownie.
+1. Otwórz swoje lokalne narzędzie do zarządzania poświadczeniami i Znajdź zapisane poświadczenia.
+2. Wyszukaj wpisy, które mają `<connection_type_key>/<corrupted_connection_name>` klucz (na `StorageExplorer_CustomConnections_Accounts_v1/account1`przykład).
+3. Usuń te wpisy i Dodaj je jeszcze raz.
 ---
 
-Jeśli po wykonaniu tych kroków nadal występują te błędy, lub jeśli chcesz udostępnić dane, które Twoim zdaniem są uszkodzone, [Otwórz problem](https://github.com/microsoft/AzureStorageExplorer/issues) na naszej stronie usługi GitHub.
+Jeśli ten błąd będzie nadal występował po wykonaniu tych kroków lub jeśli chcesz udostępnić podejrzane informacje, zapoznaj [się z informacjami na naszej](https://github.com/microsoft/AzureStorageExplorer/issues) stronie usługi GitHub.
 
 ## <a name="issues-with-sas-url"></a>Problemy z adresem URL SAS
 
-Jeśli łączysz się z usługą przy użyciu adresu URL sygnatury dostępu współdzielonego i wystąpił następujący błąd:
+Jeśli łączysz się z usługą za pomocą adresu URL sygnatury dostępu współdzielonego i wystąpił błąd:
 
 * Sprawdź, czy adres URL zawiera niezbędne uprawnienia do odczytu lub wyświetlania zasobów.
 * Sprawdź, czy adres URL nie wygasł.
 * Jeśli adres URL SAS jest oparty na zasadach dostępu, sprawdź, czy zasady dostępu nie zostały odwołane.
 
-Jeśli przypadkowo dołączono przy użyciu nieprawidłowego adresu URL sygnatury dostępu współdzielonego i nie można odłączyć, wykonaj następujące kroki:
+Jeśli przypadkowo dołączono przy użyciu nieprawidłowego adresu URL sygnatury dostępu współdzielonego i teraz nie można odłączyć, wykonaj następujące kroki:
 
-1. Podczas uruchamiania Eksplorator usługi Storage naciśnij klawisz F12, aby otworzyć okno narzędzia deweloperskie.
-2. Kliknij kartę aplikacja, a następnie kliknij pozycję Magazyn lokalny > file://w drzewie po lewej stronie.
+1. Gdy korzystasz z programu Eksplorator usługi Storage, naciśnij klawisz F12, aby otworzyć okno Narzędzia deweloperskie.
+2. Na karcie **aplikacja** wybierz pozycję **Magazyn** > lokalny**File://** w drzewie po lewej stronie.
 3. Znajdź klucz skojarzony z typem usługi problematycznego identyfikatora URI sygnatury dostępu współdzielonego. Na przykład jeśli zły identyfikator URI sygnatury dostępu współdzielonego dotyczy kontenera obiektów blob, poszukaj `StorageExplorer_AddStorageServiceSAS_v1_blob`klucza o nazwie.
-4. Wartość klucza powinna być tablicą JSON. Znajdź obiekt skojarzony z nieprawidłowym identyfikatorem URI i usuń go.
+4. Wartość klucza powinna być tablicą JSON. Znajdź obiekt skojarzony z nieprawidłowym identyfikatorem URI, a następnie usuń go.
 5. Naciśnij klawisze CTRL + R, aby ponownie załadować Eksplorator usługi Storage.
 
 ## <a name="linux-dependencies"></a>Zależności systemu Linux
 
-Eksplorator usługi Storage 1.10.0 i nowsze są dostępne jako Przyciągaj z magazynu Snap. Eksplorator usługi Storage Snap automatycznie instaluje wszystkie zależności i aktualizuje, gdy dostępna jest nowa wersja przyciągania. Zalecaną metodą instalacji jest zainstalowanie przystawki Eksplorator usługi Storage.
+Eksplorator usługi Storage 1.10.0 i nowsze są dostępne jako Przyciągaj z magazynu Snap. Przystawka Eksplorator usługi Storage automatycznie instaluje wszystkie zależności i jest aktualizowana, gdy dostępna jest nowa wersja przyciągania. Zalecaną metodą instalacji jest zainstalowanie przystawki Eksplorator usługi Storage.
 
-Eksplorator usługi Storage wymaga użycia Menedżera haseł, co może wymagać ręcznego połączenia, zanim Eksplorator usługi Storage będzie działać poprawnie. Eksplorator usługi Storage można połączyć z menedżerem haseł systemu przy użyciu następującego polecenia:
+Eksplorator usługi Storage wymaga użycia Menedżera haseł, który może być konieczne nawiązanie połączenia ręcznie, zanim Eksplorator usługi Storage będzie działał poprawnie. Możesz połączyć Eksplorator usługi Storage z menedżerem haseł systemu, uruchamiając następujące polecenie:
 
 ```bash
 snap connect storage-explorer:password-manager-service :password-manager-service
@@ -297,7 +296,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 Możesz również pobrać aplikację jako plik tar. gz, ale musisz ręcznie zainstalować zależności.
 
 > [!IMPORTANT]
-> Eksplorator usługi Storage, zgodnie z opisem w pobraniu elementu. tar. gz, jest obsługiwana tylko dla dystrybucji Ubuntu. Inne dystrybucje nie zostały zweryfikowane i mogą wymagać alternatywnych lub dodatkowych pakietów.
+> Eksplorator usługi Storage, jak to podano w pobraniu elementu. tar. gz, jest obsługiwana tylko dla dystrybucji Ubuntu. Inne dystrybucje nie zostały zweryfikowane i mogą wymagać alternatywnych lub dodatkowych pakietów.
 
 Te pakiety stanowią najczęstsze wymagania dotyczące Eksplorator usługi Storage w systemie Linux:
 
@@ -307,7 +306,7 @@ Te pakiety stanowią najczęstsze wymagania dotyczące Eksplorator usługi Stora
 * `libgnome-keyring-common`
 
 > [!NOTE]
-> Eksplorator usługi Storage wersja 1.7.0 i wcześniejsze wymagają programu .NET Core 2,0. Jeśli masz zainstalowaną nowszą wersję programu .NET Core, musisz [poprawić Eksplorator usługi Storage](#patching-storage-explorer-for-newer-versions-of-net-core). Jeśli korzystasz z programu Eksplorator usługi Storage 1.8.0 lub nowszego, powinno być możliwe użycie do .NET Core 2,2. W tej chwili nie zweryfikowano wersji ponad 2,2.
+> Eksplorator usługi Storage wersja 1.7.0 i wcześniejsze wymagają programu .NET Core 2,0. Jeśli masz zainstalowaną nowszą wersję programu .NET Core, musisz [zastosować poprawkę Eksplorator usługi Storage](#patching-storage-explorer-for-newer-versions-of-net-core). Jeśli korzystasz z programu Eksplorator usługi Storage 1.8.0 lub nowszego, powinno być możliwe użycie do .NET Core 2,2. W tej chwili nie zweryfikowano wersji ponad 2,2.
 
 # <a name="ubuntu-1904tab1904"></a>[Ubuntu 19,04](#tab/1904)
 
@@ -329,7 +328,7 @@ Te pakiety stanowią najczęstsze wymagania dotyczące Eksplorator usługi Stora
 
 # <a name="ubuntu-1604tab1604"></a>[Ubuntu 16,04](#tab/1604)
 
-1. Pobierz Eksplorator usługi Storage
+1. Pobierz Eksplorator usługi Storage.
 2. Zainstaluj [środowisko uruchomieniowe programu .NET Core](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-current).
 3. Uruchom następujące polecenie:
    ```bash
@@ -338,7 +337,7 @@ Te pakiety stanowią najczęstsze wymagania dotyczące Eksplorator usługi Stora
 
 # <a name="ubuntu-1404tab1404"></a>[Ubuntu 14,04](#tab/1404)
 
-1. Pobierz Eksplorator usługi Storage
+1. Pobierz Eksplorator usługi Storage.
 2. Zainstaluj [środowisko uruchomieniowe programu .NET Core](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-current).
 3. Uruchom następujące polecenie:
    ```bash
@@ -348,7 +347,7 @@ Te pakiety stanowią najczęstsze wymagania dotyczące Eksplorator usługi Stora
 
 ### <a name="patching-storage-explorer-for-newer-versions-of-net-core"></a>Stosowanie poprawek Eksplorator usługi Storage w przypadku nowszych wersji platformy .NET Core
 
-W przypadku Eksplorator usługi Storage 1.7.0 lub starszej może być konieczne zainstalowanie wersji programu .NET Core używanej przez Eksplorator usługi Storage.
+W przypadku Eksplorator usługi Storage 1.7.0 lub starszych może być konieczne zainstalowanie wersji programu .NET Core używanej przez Eksplorator usługi Storage:
 
 1. Pobierz wersję 1.5.43 z StreamJsonRpc [z narzędzia NuGet](https://www.nuget.org/packages/StreamJsonRpc/1.5.43). Poszukaj linku "Pobierz pakiet" po prawej stronie strony.
 2. Po pobraniu pakietu zmień jego rozszerzenie z `.nupkg` na. `.zip`
@@ -358,9 +357,9 @@ W przypadku Eksplorator usługi Storage 1.7.0 lub starszej może być konieczne 
    * `StorageExplorer/resources/app/ServiceHub/Services/Microsoft.Developer.IdentityService/`
    * `StorageExplorer/resources/app/ServiceHub/Hosts/ServiceHub.Host.Core.CLR.x64/`
 
-## <a name="open-in-explorer-from-azure-portal-doesnt-work"></a>Otwórz w Eksploratorze z Azure Portal nie działa
+## <a name="open-in-explorer-from-the-azure-portal-doesnt-work"></a>"Otwórz w Eksploratorze" z Azure Portal nie działa
 
-Jeśli przycisk "Otwórz w Eksploratorze" na Azure Portal nie działa, upewnij się, że używasz zgodnej przeglądarki. Następujące przeglądarki zostały przetestowane pod kątem zgodności.
+Jeśli przycisk **Otwórz w Eksploratorze** na Azure Portal nie działa, upewnij się, że używasz zgodnej przeglądarki. Następujące przeglądarki zostały przetestowane pod kątem zgodności:
 * Microsoft Edge
 * Mozilla Firefox
 * Google Chrome
@@ -368,6 +367,6 @@ Jeśli przycisk "Otwórz w Eksploratorze" na Azure Portal nie działa, upewnij s
 
 ## <a name="next-steps"></a>Następne kroki
 
-Jeśli żadna z rozwiązań nie będzie dla Ciebie zadziałała, [Otwórz problem w usłudze GitHub](https://github.com/Microsoft/AzureStorageExplorer/issues). Możesz również szybko przejść do usługi GitHub za pomocą przycisku "Zgłoś problem do serwisu GitHub" w lewym dolnym rogu.
+Jeśli żadne z tych rozwiązań nie zadziałało, [Otwórz problem w usłudze GitHub](https://github.com/Microsoft/AzureStorageExplorer/issues). Możesz to zrobić, wybierając przycisk **Zgłoś problem do serwisu GitHub** w lewym dolnym rogu.
 
 ![Opinia](./media/storage-explorer-troubleshooting/feedback-button.PNG)

@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/06/2019
+ms.date: 09/16/2019
 ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cf3eead3a56297efa3bea90ef48eb464ad63da0
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: ba4beeff5484f774e801842f06d694af456c4e96
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898516"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033747"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Instrukcje: Wyświetlanie listy aplikacji w galerii aplikacji usługi Azure Active Directory
 
@@ -48,12 +48,7 @@ W tym artykule pokazano, jak wyświetlić listę aplikacji w galerii aplikacji u
 
 - W przypadku logowania jednokrotnego za pomocą hasła upewnij się, że aplikacja obsługuje uwierzytelnianie formularzy, aby można było utworzyć magazynowanie haseł w celu uzyskania obsługi logowania jednokrotnego zgodnie z oczekiwaniami.
 
-- W przypadku automatycznych żądań aprowizacji użytkowników aplikacja powinna być wyświetlana w galerii z włączoną funkcją logowania jednokrotnego przy użyciu protokołu SAML 2.0/WS-karmionego. Możesz poprosić o Logowanie jednokrotne i obsługę administracyjną użytkowników w portalu, jeśli nie zostały one jeszcze wymienione.
-
 - Potrzeba stałego konta do testowania z co najmniej 2 zarejestrowanymi użytkownikami.
-
-> [!NOTE]
-> Pracujemy z dużą liczbą żądań łącznika Standard scim, więc zatrzymamy nowe żądania w naszym portalu. Zaczekaj na żądania aż do dalszej uwagi. Przepraszamy za to opóźnienie i wszelkie powstałe niedogodności.
 
 ## <a name="submit-the-request-in-the-portal"></a>Prześlij żądanie w portalu
 

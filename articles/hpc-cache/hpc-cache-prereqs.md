@@ -4,14 +4,14 @@ description: Wymagania wstępne dotyczące korzystania z pamięci podręcznej pl
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: 7bd1268784df50168e03673ac809b3a5854e2be7
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 50c60e38b58815be04cfb892c3622b9579529e67
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775340"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036870"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Wymagania wstępne dotyczące usługi Azure HPC cache
 
@@ -22,7 +22,7 @@ Przed rozpoczęciem korzystania z Azure Portal tworzenia nowej pamięci podręcz
 Zalecana jest płatna subskrypcja.
 
 > [!NOTE]
-> W publicznej wersji zapoznawczej zespół pamięci podręcznej platformy Azure HPC musi dodać subskrypcję do listy dostępu, zanim będzie można jej użyć do utworzenia wystąpienia pamięci podręcznej. Ta procedura pomaga zapewnić, że każdy klient uzyskuje czas odpowiedzi o wysokiej jakości z ich pamięci podręcznej testów. Wypełnij [ten formularz](https://aka.ms/onboard-hpc-cache) , aby zażądać dostępu.
+> W wersji zapoznawczej zespół pamięci podręcznej platformy Azure HPC musi dodać subskrypcję do listy dostępu, zanim będzie można jej użyć do utworzenia wystąpienia pamięci podręcznej. Ta procedura pomaga zapewnić, że każdy klient uzyskuje czas odpowiedzi o wysokiej jakości z ich pamięci podręcznej testów. Wypełnij [ten formularz](https://aka.ms/onboard-hpc-cache) , aby zażądać dostępu.
 
 ## <a name="network-infrastructure"></a>Infrastruktura sieciowa
 

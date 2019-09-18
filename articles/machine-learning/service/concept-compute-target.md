@@ -1,7 +1,7 @@
 ---
 title: 'Cele obliczeniowe: gdzie można wyszkolić i wdrożyć modele'
-titleSuffix: Azure Machine Learning service
-description: Zdefiniuj, gdzie chcesz nauczyć lub wdrożyć model za pomocą usługi Azure Machine Learning.
+titleSuffix: Azure Machine Learning
+description: Zdefiniuj, gdzie chcesz nauczyć lub wdrożyć model przy użyciu Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/10/2019
-ms.openlocfilehash: b2e4c9160ccad66b04dd30979f0568da68836d76
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: fe60b740312ee49510ea931bba1346ceaef9f31a
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860593"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035530"
 ---
-#  <a name="what-are-compute-targets-in-azure-machine-learning-service"></a>Co to są cele obliczeniowe w usłudze Azure Machine Learning? 
+#  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Co to są cele obliczeniowe w Azure Machine Learning? 
 
 **Obiekt docelowy obliczeń** to wyznaczono zasób obliczeniowy/środowisko, w którym jest uruchamiany skrypt szkoleniowy lub hostowanie wdrożenia usługi. Ta lokalizacja może być maszyną lokalną lub zasobem obliczeniowym opartym na chmurze. Użycie obiektów docelowych obliczeń ułatwia późniejsze zmiany środowiska obliczeniowego bez konieczności zmiany kodu.  
 
@@ -29,7 +29,7 @@ Zasoby obliczeniowe używane dla obiektów docelowych obliczeń są dołączone 
 
 ## <a name="train"></a>Szkoleniowe cele obliczeniowe
 
-Usługa Azure Machine Learning ma różne wsparcie dla różnych zasobów obliczeniowych.  Możesz również dołączyć własny zasób obliczeniowy, chociaż obsługa różnych scenariuszy może się różnić.
+Azure Machine Learning ma różne wsparcie dla różnych zasobów obliczeniowych.  Możesz również dołączyć własny zasób obliczeniowy, chociaż obsługa różnych scenariuszy może się różnić.
 
 [!INCLUDE [aml-compute-target-train](../../../includes/aml-compute-target-train.md)]
 
@@ -46,7 +46,7 @@ Dowiedz się [, gdzie i jak wdrożyć model w miejscu docelowym obliczeń](how-t
 <a name="amlcompute"></a>
 ## <a name="azure-machine-learning-compute-managed"></a>Azure Machine Learning COMPUTE (zarządzane)
 
-Zarządzany zasób obliczeniowy jest tworzony i zarządzany przez usługę Azure Machine Learning. To obliczenie jest zoptymalizowane pod kątem obciążeń uczenia maszynowego. Obliczenia Azure Machine Learning są jedynymi zarządzanymi obliczeniami od 30 maja 2019. W przyszłości mogą zostać dodane dodatkowe zarządzane zasoby obliczeniowe.
+Zarządzany zasób obliczeniowy jest tworzony i zarządzany przez Azure Machine Learning. To obliczenie jest zoptymalizowane pod kątem obciążeń uczenia maszynowego. Obliczenia Azure Machine Learning są jedynymi zarządzanymi obliczeniami od 30 maja 2019. W przyszłości mogą zostać dodane dodatkowe zarządzane zasoby obliczeniowe.
 
 Azure Machine Learning obliczeń można użyć do szkolenia i usługi Batch inferencing (wersja zapoznawcza).  Ten zasób obliczeniowy posiada następujące:
 
@@ -59,7 +59,7 @@ Wystąpienia obliczeniowe Azure Machine Learning można tworzyć w Azure Portal 
 
 ## <a name="unmanaged-compute"></a>Obliczenia niezarządzane
 
-Niezarządzany cel obliczeń *nie* jest zarządzany przez usługę Azure Machine Learning. Ten typ elementu docelowego obliczeń można utworzyć poza Azure Machine Learning, a następnie dołączyć go do obszaru roboczego. Niezarządzane zasoby obliczeniowe mogą wymagać dodatkowych czynności, aby zachować lub zwiększyć wydajność obciążeń uczenia maszynowego.
+Niezarządzany cel obliczeń *nie* jest zarządzany przez Azure Machine Learning. Ten typ elementu docelowego obliczeń można utworzyć poza Azure Machine Learning, a następnie dołączyć go do obszaru roboczego. Niezarządzane zasoby obliczeniowe mogą wymagać dodatkowych czynności, aby zachować lub zwiększyć wydajność obciążeń uczenia maszynowego.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: hrasheed
-ms.openlocfilehash: bcc29902628f4e7051d6a838d2e9ac145df9e45e
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 533bd750056f2e961ca9239e995fbfc62b2381d0
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916910"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076681"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Autoryzowanie użytkowników na potrzeby widoków Apache Ambari
 
@@ -30,7 +30,7 @@ Jeśli jeszcze tego nie zrobiono, postępuj zgodnie z [tymi instrukcjami](./doma
 
 Aby przejść do **strony Ambari Management** w [interfejsie użytkownika sieci Web Apache Ambari](hdinsight-hadoop-manage-ambari.md), przejdź **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`** do. Wprowadź nazwę użytkownika i hasło administratora klastra zdefiniowane podczas tworzenia klastra. Następnie na pulpicie nawigacyjnym Ambari wybierz pozycję **Zarządzaj Ambari** pod menu **administrator** :
 
-![Zarządzanie Ambari](./media/hdinsight-authorize-users-to-ambari/manage-apache-ambari.png)
+![Zarządzanie pulpitem nawigacyjnym Apache Ambari](./media/hdinsight-authorize-users-to-ambari/manage-apache-ambari.png)
 
 ## <a name="grant-permissions-to-apache-hive-views"></a>Przyznawanie uprawnień do Apache Hive widoków
 
@@ -38,11 +38,11 @@ Ambari zawiera wystąpienia widoku dla [Apache Hive](https://hive.apache.org/) i
 
 1. Na stronie Zarządzanie wybierz link **widoki** w nagłówku menu **widoki** po lewej stronie.
 
-    ![Link widoki](./media/hdinsight-authorize-users-to-ambari/apache-ambari-views-link.png)
+    ![Linki widoku widoków Apache Ambari](./media/hdinsight-authorize-users-to-ambari/apache-ambari-views-link.png)
 
 2. Na stronie widoki Rozwiń wiersz **Hive** . Istnieje jeden domyślny widok programu Hive tworzony podczas dodawania usługi Hive do klastra. W razie konieczności można także utworzyć więcej wystąpień widoku programu Hive. Wybierz widok Hive:
 
-    ![Widoki — widok Hive](./media/hdinsight-authorize-users-to-ambari/views-apache-hive-view.png)
+    ![Widoki usługi HDInsight — widok Apache Hive](./media/hdinsight-authorize-users-to-ambari/views-apache-hive-view.png)
 
 3. Przewiń w dół strony widoku. W sekcji *uprawnienia* dostępne są dwie opcje przyznania użytkownikom domeny ich uprawnienia do widoku:
 
@@ -54,20 +54,20 @@ Ambari zawiera wystąpienia widoku dla [Apache Hive](https://hive.apache.org/) i
 
    * Zacznij wpisywać nazwę użytkownika i zobaczysz listę rozwijaną o wcześniej zdefiniowanych nazwach.
 
-     ![Autouzupełnianie użytkowników](./media/hdinsight-authorize-users-to-ambari/ambari-user-autocomplete.png)
+     ![Funkcja autouzupełniania użytkownika Apache Ambari](./media/hdinsight-authorize-users-to-ambari/ambari-user-autocomplete.png)
 
    * Wybierz lub Zakończ wpisywanie nazwy użytkownika. Aby dodać tę nazwę użytkownika jako nowego użytkownika, wybierz przycisk **Nowy** .
 
    * Aby zapisać zmiany, zaznacz **niebieskie pole wyboru**.
 
-     ![Wprowadzono użytkownika](./media/hdinsight-authorize-users-to-ambari/user-entered-permissions.png)
+     ![Przyznanie uprawnień użytkownika Apache Ambari](./media/hdinsight-authorize-users-to-ambari/user-entered-permissions.png)
 
 1. Aby dodać grupę, wybierz przycisk **Dodaj grupę** .
 
    * Zacznij wpisywać nazwę grupy. Proces wybierania istniejącej nazwy grupy lub dodawania nowej grupy jest taki sam jak w przypadku dodawania użytkowników.
    * Aby zapisać zmiany, zaznacz **niebieskie pole wyboru**.
 
-     ![Wprowadzona Grupa](./media/hdinsight-authorize-users-to-ambari/ambari-group-entered.png)
+     ![Uprawnienia do przyznawania Apache Ambari](./media/hdinsight-authorize-users-to-ambari/ambari-group-entered.png)
 
 Dodawanie użytkowników bezpośrednio do widoku jest przydatne, gdy chcesz przypisać uprawnienia użytkownikowi do korzystania z tego widoku, ale nie chcesz, aby były członkiem grupy, która ma dodatkowe uprawnienia. Aby zmniejszyć ilość narzutów administracyjnych, można uprościć przypisywanie uprawnień do grup.
 
@@ -77,7 +77,7 @@ Wystąpienia widoków [Apache tez](https://tez.apache.org/) umożliwiają użytk
 
 Aby przypisać użytkowników i grupy do wystąpienia widoku tez, rozwiń wiersz **tez** na stronie widoki, jak opisano wcześniej.
 
-![Widoki — widok tez](./media/hdinsight-authorize-users-to-ambari/views-apache-tez-view.png)
+![Widoki usługi HDInsight — widok Apache Tez](./media/hdinsight-authorize-users-to-ambari/views-apache-tez-view.png)
 
 Aby dodać użytkowników lub grupy, powtórz kroki 3-5 w poprzedniej sekcji.
 
@@ -93,11 +93,11 @@ Istnieją pięć ról zabezpieczeń dla użytkowników i grup, które są wymien
 
 Aby zarządzać rolami, przejdź do **strony zarządzania Ambari**, a następnie wybierz link **role** w grupie menu *klastry* po lewej stronie.
 
-![Link do menu role](./media/hdinsight-authorize-users-to-ambari/cluster-roles-menu-link.png)
+![Linki menu ról Apache Ambari](./media/hdinsight-authorize-users-to-ambari/cluster-roles-menu-link.png)
 
 Aby wyświetlić listę uprawnień przyznanych dla każdej roli, kliknij niebieski znak zapytania obok nagłówka tabeli **role** na stronie role.
 
-![Uprawnienia menu ról](./media/hdinsight-authorize-users-to-ambari/roles-menu-permissions.png "Uprawnienia menu ról")
+![Uprawnienia do menu ról Apache Ambari](./media/hdinsight-authorize-users-to-ambari/roles-menu-permissions.png "Uprawnienia do menu ról Apache Ambari")
 
 Na tej stronie istnieją dwa różne widoki, których można użyć do zarządzania rolami dla użytkowników i grup: Blok i lista.
 
@@ -105,7 +105,7 @@ Na tej stronie istnieją dwa różne widoki, których można użyć do zarządza
 
 Widok blok przedstawia każdą rolę we własnym wierszu i udostępnia opcje **Przypisz role do tych użytkowników** i **przypisuje role do tych grup** , jak opisano wcześniej.
 
-![Widok bloku ról](./media/hdinsight-authorize-users-to-ambari/ambari-roles-block-view.png)
+![Widok bloku ról Apache Ambari](./media/hdinsight-authorize-users-to-ambari/ambari-roles-block-view.png)
 
 ### <a name="list-view"></a>Widok listy
 
@@ -113,11 +113,11 @@ Widok listy umożliwia szybkie edytowanie funkcji w dwóch kategoriach: Użytkow
 
 * Kategoria użytkownicy w widoku listy wyświetla listę wszystkich użytkowników, co pozwala na wybranie roli dla każdego użytkownika z listy rozwijanej.
 
-    ![Widok listy ról — użytkownicy](./media/hdinsight-authorize-users-to-ambari/roles-list-view-users.png)
+    ![Widok listy ról Apache Ambari — użytkownicy](./media/hdinsight-authorize-users-to-ambari/roles-list-view-users.png)
 
 *  Kategoria grupy w widoku listy wyświetla wszystkie grupy i rolę przypisaną do każdej grupy. W naszym przykładzie lista grup jest synchronizowana z grup usługi Azure AD określonych we właściwości **dostęp do grupy użytkowników** w ustawieniach domeny klastra. Zobacz [Tworzenie klastra usługi HDInsight z włączoną funkcją ESP](./domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp).
 
-    ![Widok listy ról — grupy](./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png)
+    ![Widok listy ról Apache Ambari — grupy](./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png)
 
     Na powyższym obrazie Grupa "hiveusers" ma przypisaną rolę *użytkownika klastra* . Jest to rola tylko do odczytu, która umożliwia użytkownikom tej grupy wyświetlanie, ale nie Zmienianie konfiguracji usług i metryk klastra.
 
@@ -125,13 +125,13 @@ Widok listy umożliwia szybkie edytowanie funkcji w dwóch kategoriach: Użytkow
 
 Przypisano Ci uprawnienia użytkownika domeny usługi Azure AD "użytkownik hiveuser1" do widoków Hive i tez. Po uruchomieniu interfejsu użytkownika sieci Web Ambari i wprowadzeniu poświadczeń domeny tego użytkownika (nazwa użytkownika usługi Azure AD w formacie poczty e-mail i hasła) użytkownik zostanie przekierowany do strony widoków Ambari. W tym miejscu użytkownik może wybrać dowolny dostępny widok. Użytkownik nie może odwiedzić żadnej innej części witryny, w tym pulpitu nawigacyjnego, usług, hostów, alertów ani stron administracyjnych.
 
-![Użytkownik z tylko widokami](./media/hdinsight-authorize-users-to-ambari/ambari-user-views-only.png)
+![Użytkownik Apache Ambari z tylko widokami](./media/hdinsight-authorize-users-to-ambari/ambari-user-views-only.png)
 
 ## <a name="log-in-to-ambari-as-a-cluster-user"></a>Zaloguj się do Ambari jako użytkownik klastra
 
 Do roli *użytkownika klastra* przypisano użytkownika domeny usługi Azure AD "hiveuser2". Ta rola jest w stanie uzyskać dostęp do pulpitu nawigacyjnego i wszystkich elementów menu. Użytkownik klastra ma mniejszą liczbę dozwolonych opcji niż administrator. Na przykład hiveuser2 może wyświetlać konfiguracje dla każdej usługi, ale nie może ich edytować.
 
-![Użytkownik z rolą użytkownika klastra](./media/hdinsight-authorize-users-to-ambari/user-cluster-user-role.png)
+![Ekran pulpitu nawigacyjnego Apache Ambari](./media/hdinsight-authorize-users-to-ambari/user-cluster-user-role.png)
 
 ## <a name="next-steps"></a>Następne kroki
 

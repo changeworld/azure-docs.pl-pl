@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a3ded11ac6a68e82fba76e7551699f29f3cb6075
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 335b6c1a12f3786d7c0f1083f5b052aaac4beccb
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70998416"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065780"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Zasady niestandardowe w Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Zasady niestandardowe to pliki konfiguracji, które definiują zachowanie dzierżawy usługi Azure Active Directory (Azure AD) B2C. Przepływy użytkowników są wstępnie zdefiniowane w portalu Azure AD B2C dla najbardziej typowych zadań związanych z tożsamościami. Zasady niestandardowe mogą być w pełni edytowane przez dewelopera tożsamości w celu wykonywania wielu różnych zadań.
+Zasady niestandardowe to pliki konfiguracji, które definiują zachowanie dzierżawy Azure Active Directory B2C (Azure AD B2C). Przepływy użytkowników są wstępnie zdefiniowane w portalu Azure AD B2C dla najbardziej typowych zadań związanych z tożsamościami. Zasady niestandardowe mogą być w pełni edytowane przez dewelopera tożsamości w celu wykonywania wielu różnych zadań.
 
 ## <a name="comparing-user-flows-and-custom-policies"></a>Porównywanie przepływów użytkowników i zasad niestandardowych
 

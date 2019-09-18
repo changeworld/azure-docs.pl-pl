@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 706bcbed39ca2a3fe0a38eba864edb863c31b4ec
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 44a076ee6979e207ac3992f76d3b89cc188d53b8
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884045"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076296"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Używanie Data Lake narzędzi dla programu Visual Studio do nawiązywania połączenia z usługą Azure HDInsight i uruchamiania zapytań Apache Hive
 
@@ -83,7 +83,7 @@ Aby nawiązać połączenie z subskrypcją platformy Azure:
 
 4. Z Eksplorator serwera zostanie wyświetlona lista istniejących klastrów usługi HDInsight. W przypadku braku klastrów możesz go utworzyć za pomocą witryny Azure Portal, programu Azure PowerShell lub zestawu SDK usługi HDInsight. Więcej informacji można znaleźć w artykule [Create HDInsight clusters](../hdinsight-hadoop-provision-linux-clusters.md) (Tworzenie klastrów usługi HDInsight).
 
-   ![Zrzut ekranu listy klastrów Eksploratora serwera narzędzi Data Lake Tools for Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-server-explorer.png "Lista serwerów Eksploratora serwera narzędzi Data Lake Tools for Visual Studio")
+   ![Lista klastrów narzędzi Data Lake Tools for Visual Studio w programie Eksplorator serwera](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-server-explorer.png "Lista klastrów narzędzi Data Lake Tools for Visual Studio w programie Eksplorator serwera")
 
 5. Rozwiń węzeł klastra usługi HDInsight. Są wyświetlane **bazy danych programu Hive**, domyślne konto magazynu, połączone konta magazynu i **Dziennik usługi Hadoop** . Jednostki można rozwinąć.
 
@@ -113,11 +113,11 @@ Kliknij prawym przyciskiem myszy połączony klaster, wybierz opcję **Edytuj**,
 ## <a name="explore-linked-resources"></a>Eksplorowanie połączonych zasobów
 Z poziomu Eksploratora serwera można zobaczyć domyślne konto magazynu i wszystkie połączone konta magazynu. Po rozwinięciu domyślnego konta magazynu można wyświetlić kontenery konta magazynu. Domyślne konto magazynu i domyślny kontener są oznaczone. Kliknij prawym przyciskiem myszy dowolny kontener, aby wyświetlić jego zawartość.
 
-![Zrzut ekranu listy połączonych zasobów Eksploratora serwera narzędzi Data Lake Tools for Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-linked-resources.png "Wyświetlanie listy połączonych zasobów")
+![Data Lake narzędzia dla połączonych zasobów programu Visual Studio w programie Eksplorator serwera](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-linked-resources.png "Wyświetlanie listy połączonych zasobów")
 
 Po otwarciu kontenera można używać następujących przycisków do przekazywania, usuwania i pobierania obiektów blob:
 
-![Zrzut ekranu operacji obiektu blob narzędzi Data Lake Tools for Visual Studio w Eksploratorze serwera](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-blob-operations.png "Przekazywanie, usuwanie i pobieranie obiektów blob w Eksploratorze serwera")
+![Data Lake narzędzia dla operacji obiektów BLOB programu Visual Studio w programie Eksplorator serwera](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-blob-operations.png "Przekazywanie, usuwanie i pobieranie obiektów BLOB w Eksplorator serwera")
 
 ## <a name="run-interactive-apache-hive-queries"></a>Uruchamianie interakcyjnych zapytań Apache Hive
 [Apache Hive](https://hive.apache.org) to infrastruktura magazynu danych oparta na platformie Hadoop. Usługa Hive jest używana do wykonywania podsumowań danych, zapytań i analizy. Możesz użyć narzędzi Data Lake Tools for Visual Studio, aby uruchomić zapytania usługi Hive z poziomu programu Visual Studio. Aby uzyskać więcej informacji na temat programu Hive, zobacz [Korzystanie z Apache Hive z usługą HDInsight](hdinsight-use-hive.md).
@@ -201,7 +201,7 @@ Aby utworzyć i uruchomić zapytania ad hoc:
 
       Upewnij się, że została wybrana opcja **Partia zadań** , a następnie wybierz pozycję **Prześlij**.  W przypadku wybrania opcji przesyłania zaawansowanego Skonfiguruj **nazwę zadania**, **argumenty**, **dodatkowe konfiguracje**i **katalog stanu** dla skryptu.
 
-      ![Zrzut ekranu zapytania i partii](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-batch.png)  
+      ![Visual Studio — opcje zapytań i partii](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-batch.png)  
 
       ![Zrzut ekranu zapytania programu Hive w usłudze HDInsight Hadoop](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-submit-jobs-advanced.png "Przesłanie zapytań")
 
@@ -224,7 +224,7 @@ Tworzenie i uruchamianie rozwiązania Hive:
 
 Podsumowanie zadania różni się **nieco w zależności od trybu** **wsadowego** .
 
-![Podsumowanie zadania](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-summary.png "Podsumowanie zadania programu Hive")
+![Wyświetlanie karty podsumowania zadania Apache Hive](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-summary.png "Podsumowanie zadania programu Hive")
 
 Użyj przycisku **Odśwież** , aby zaktualizować stan do momentu, gdy stan zadania zmieni się na **zakończone**.  
 
@@ -232,7 +232,7 @@ Użyj przycisku **Odśwież** , aby zaktualizować stan do momentu, gdy stan zad
 
 * Aby uzyskać szczegółowe informacje o zadaniu w trybie **interaktywnym** , zobacz karty **dane wyjściowe** i **serwera hiveserver2 Output**.
 
-  ![szczegóły zadania](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-details.png "Szczegóły zadania programu Hive")
+  ![Szczegóły zadania Apache Hive programu Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-details.png "Szczegóły zadania programu Hive")
 
 ### <a name="view-job-graph"></a>Wyświetl wykres zadania
 
@@ -242,14 +242,13 @@ Aby zobaczyć wszystkie operatory wewnątrz wierzchołka, dwukrotnie kliknij wie
 
 Wykres zadania może się nie pojawić, nawet jeśli tez jest określony jako aparat wykonywania, jeśli nie zostanie uruchomiona żadna aplikacja tez.  Może się tak zdarzyć, ponieważ zadanie nie zawiera instrukcji DML lub Instrukcje DML mogą zwracać bez uruchamiania aplikacji tez. Na przykład `SELECT * FROM table1` program nie uruchomi aplikacji tez.
 
-![Wykres zadania](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-fast-path-hive-execution.png "Podsumowanie zadania programu Hive")
-
+![Graf zadania Apache Hive programu Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-fast-path-hive-execution.png "Podsumowanie zadania programu Hive")
 
 ### <a name="task-execution-detail"></a>Szczegóły wykonywania zadania
 
 Na wykresie zadania można wybrać **szczegóły wykonania zadania** , aby uzyskać informacje o strukturze i wizualizacji zadań Hive. Możesz też uzyskać więcej szczegółów zadania. Jeśli wystąpią problemy z wydajnością, możesz użyć widoku, aby uzyskać więcej szczegółów dotyczących problemu. Na przykład możesz uzyskać informacje o sposobie działania każdego zadania oraz szczegółowe informacje o każdym zadaniu (odczyt/zapis danych, czas zaplanowany/rozpoczęcia/zakończenia itp.). Skorzystaj z informacji, aby dostosować konfiguracje zadań lub architekturę systemu w oparciu o wizualizowane informacje.
 
-![Zrzut ekranu przedstawiający okno Widok wykonywania zadań narzędzi Data Lake Visual Studio Tools](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-task-execution-view.png "Widok wykonywania zadań")
+![Okno widoku wykonywania zadań Visual Studio Tools Data Lake](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-task-execution-view.png "Widok wykonywania zadań")
 
 
 ### <a name="view-hive-jobs"></a>Wyświetlanie zadań Hive

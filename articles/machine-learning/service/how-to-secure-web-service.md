@@ -1,7 +1,7 @@
 ---
 title: Zabezpieczanie usług sieci Web przy użyciu protokołu SSL
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak zabezpieczyć usługę sieci Web, która jest wdrażana za pośrednictwem usługi Azure Machine Learning, włączając protokół HTTPS. Protokół HTTPS zabezpiecza dane przez klientów przy użyciu protokołu TLS (Transport Layer Security), zastępując je warstwą Secure Sockets (SSL). Klienci używają również protokołu HTTPS do weryfikowania tożsamości usługi sieci Web.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak zabezpieczyć usługę sieci Web, która jest wdrażana za pośrednictwem Azure Machine Learning, włączając protokół HTTPS. Protokół HTTPS zabezpiecza dane przez klientów przy użyciu protokołu TLS (Transport Layer Security), zastępując je warstwą Secure Sockets (SSL). Klienci używają również protokołu HTTPS do weryfikowania tożsamości usługi sieci Web.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8805e065c92b42013c1e56f20b4a032d280cb8ac
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: ce60806c26359ae682f5ab468e4f4265d3572c87
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772520"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034373"
 ---
 # <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>Użyj protokołu SSL, aby zabezpieczyć usługę sieci Web za pośrednictwem Azure Machine Learning
 
-W tym artykule opisano sposób zabezpieczania usługi sieci Web, która jest wdrażana za pomocą usługi Azure Machine Learning.
+W tym artykule opisano sposób zabezpieczania usługi sieci Web, która jest wdrażana za pomocą Azure Machine Learning.
 
 Używasz [protokołu HTTPS](https://en.wikipedia.org/wiki/HTTPS) , aby ograniczyć dostęp do usług sieci Web i zabezpieczyć dane przesyłane przez klientów. Protokół HTTPS pomaga w zabezpieczeniu komunikacji między klientem a usługą sieci Web przez szyfrowanie komunikacji między nimi. Szyfrowanie używa [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security). Protokół TLS jest czasami nazywany *SSL* (SSL), który był POPRZEDNIKIEM protokołu TLS.
 
@@ -151,7 +151,7 @@ Następnie należy zaktualizować serwer DNS, aby wskazać usługę sieci web.
 
   Zaktualizuj serwer DNS publicznego adresu IP klastra AKS na karcie **Konfiguracja** w obszarze **Ustawienia** w okienku po lewej stronie. (Zobacz poniższy obraz). Publiczny adres IP to typ zasobu, który jest tworzony w ramach grupy zasobów zawierającej węzły agenta AKS i inne zasoby sieciowe.
 
-  [![Usługa Azure Machine Learning: Zabezpieczanie usług sieci Web przy użyciu protokołu SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
+  [![Azure Machine Learning: Zabezpieczanie usług sieci Web przy użyciu protokołu SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
 
 ## <a name="update-the-ssl-certificate"></a>Aktualizowanie certyfikatu SSL
 

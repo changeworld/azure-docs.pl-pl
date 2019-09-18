@@ -1,7 +1,7 @@
 ---
 title: Wykrywanie dryfowania danych (wersja zapoznawcza) na wdrożeniach AKS
-titleSuffix: Azure Machine Learning service
-description: Wykrywaj dryfowanie danych w modelach wdrożonych usługi Azure Kubernetes w usłudze Azure Machine Learning.
+titleSuffix: Azure Machine Learning
+description: Wykrywaj dryfy danych w ramach wdrożonych modeli usługi Azure Kubernetes w Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 09/13/2019
-ms.openlocfilehash: 80c5ad26150547263469c9f59366e270bf660335
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 59cce0b56a4e54208a454c9f71d9a4c8576b0a8b
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993217"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034352"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Wykrywaj dryfowanie danych (wersja zapoznawcza) dla modeli wdrożonych w usłudze Azure Kubernetes Service (AKS)
 
-W tym artykule dowiesz się, jak monitorować dryf danych między zestawem danych szkoleniowych i danymi wnioskowania wdrożonego modelu. W kontekście uczenia maszynowego, przeszkolone modele uczenia maszynowego mogą powodować spadek wydajności przewidywania z powodu dryfu. Za pomocą usługi Azure Machine Learning można monitorować dryf danych i usługa może wysłać do Ciebie alert e-mail po wykryciu dryfu.
+W tym artykule dowiesz się, jak monitorować dryf danych między zestawem danych szkoleniowych i danymi wnioskowania wdrożonego modelu. W kontekście uczenia maszynowego, przeszkolone modele uczenia maszynowego mogą powodować spadek wydajności przewidywania z powodu dryfu. Za pomocą Azure Machine Learning można monitorować dryfowanie danych, a usługa może wysłać do Ciebie alert e-mail po wykryciu dryfu.
 
 ## <a name="what-is-data-drift"></a>Co to jest dryfowanie danych?
 
@@ -27,7 +27,7 @@ Dryfowanie danych odbywa się, gdy dane dostarczane do modelu w środowisku prod
 
 ## <a name="what-can-i-monitor"></a>Co mogę monitorować?
 
-Za pomocą usługi Azure Machine Learning można monitorować dane wejściowe modelu wdrożonego w AKS i porównywać te dane z zestawem danych szkoleniowych dla modelu. W regularnych odstępach czasu dane wnioskowania są [migawki i](how-to-explore-prepare-data.md)profilowane, a następnie obliczane względem bazowego zestawu danych w celu utworzenia analizy dryfowania danych: 
+Za pomocą Azure Machine Learning można monitorować dane wejściowe modelu wdrożonego w AKS i porównywać je z zestawem danych szkoleniowym dla modelu. W regularnych odstępach czasu dane wnioskowania są [migawki i](how-to-explore-prepare-data.md)profilowane, a następnie obliczane względem bazowego zestawu danych w celu utworzenia analizy dryfowania danych: 
 
 + Mierzy wielkość dryfu danych o nazwie współczynnik dryfu.
 + Mierzy współudziały danych przez funkcję, informując o tym, które funkcje spowodowały dryfowanie danych.
@@ -38,20 +38,20 @@ Za pomocą usługi Azure Machine Learning można monitorować dane wejściowe mo
 > [!Note]
 > Ta usługa jest w wersji (wersja zapoznawcza) i jest ograniczona w opcjach konfiguracji. Szczegółowe informacje i aktualizacje można znaleźć w naszej [dokumentacji interfejsu API](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/?view=azure-ml-py) i [informacjach o wersji](azure-machine-learning-release-notes.md) . 
 
-### <a name="how-data-drift-is-monitored-in-azure-machine-learning-service"></a>Jak jest monitorowane przedryfowanie danych w usłudze Azure Machine Learning
+### <a name="how-data-drift-is-monitored-in-azure-machine-learning"></a>Sposób monitorowania dryfowania danych w Azure Machine Learning
 
-Przy użyciu usługi Azure Machine Learning, dryfowanie danych jest monitorowane za pośrednictwem zestawów danych lub wdrożeń. Aby monitorować do dryfowania danych, bazowy zestaw danych — zwykle jest to zestaw danych szkoleniowych dla modelu — jest określony. Drugi zestaw danych — zwykle dane wejściowe modelu zebrane z wdrożenia — są testowane względem bazowego zestawu danych. Oba zestawy danych są profilowane i są danymi wejściowymi do usługi monitorowania dryfowania danych. Model uczenia maszynowego jest szkolony w celu wykrywania różnic między dwoma zestawami danych. Wydajność modelu jest konwertowana na współczynnik dryfu, który mierzy wielkość dryfu między dwoma zestawami danych. Przy użyciu funkcji [interpretacji modelu](machine-learning-interpretability-explainability.md)są obliczane funkcje, które przyczyniają się do współczynnika dryfu. W profilu zestawu danych są śledzone informacje statystyczne dotyczące każdej funkcji. 
+Za pomocą Azure Machine Learning, dryfowanie danych jest monitorowane za pośrednictwem zestawów danych lub wdrożeń. Aby monitorować do dryfowania danych, bazowy zestaw danych — zwykle jest to zestaw danych szkoleniowych dla modelu — jest określony. Drugi zestaw danych — zwykle dane wejściowe modelu zebrane z wdrożenia — są testowane względem bazowego zestawu danych. Oba zestawy danych są profilowane i są danymi wejściowymi do usługi monitorowania dryfowania danych. Model uczenia maszynowego jest szkolony w celu wykrywania różnic między dwoma zestawami danych. Wydajność modelu jest konwertowana na współczynnik dryfu, który mierzy wielkość dryfu między dwoma zestawami danych. Przy użyciu funkcji [interpretacji modelu](machine-learning-interpretability-explainability.md)są obliczane funkcje, które przyczyniają się do współczynnika dryfu. W profilu zestawu danych są śledzone informacje statystyczne dotyczące każdej funkcji. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Subskrypcja platformy Azure. Jeśli go nie masz, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
+- Subskrypcja platformy Azure. Jeśli go nie masz, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
 
 - Azure Machine Learning zestawu SDK dla języka Python. Użyj instrukcji w [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) , aby wykonać następujące czynności:
 
     - Tworzenie środowiska Miniconda
     - Instalowanie zestawu SDK Azure Machine Learning dla języka Python
 
-- [Obszar roboczy usługi Azure Machine Learning](how-to-manage-workspace.md).
+- [Obszar roboczy Azure Machine Learning](how-to-manage-workspace.md).
 
 - [Plik konfiguracji](how-to-configure-environment.md#workspace)obszaru roboczego.
 
@@ -173,7 +173,7 @@ Aby wyświetlić wyniki w obszarze roboczym na [stronie docelowej obszaru robocz
 
 Ustawienie progu alertu dotyczącego współczynnika dryfu i podanie adresu e-mail powoduje automatyczne wysłanie alertu [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) e-mail za każdym razem, gdy współczynnik dryfu przekracza wartość progową. 
 
-Aby można było skonfigurować niestandardowe alerty i akcje, wszystkie metryki dotyczące dryfowania danych są przechowywane w zasobie [Application Insights](how-to-enable-app-insights.md) , który został utworzony wraz z obszarem roboczym usługi Azure Machine Learning. Możesz użyć linku w alercie e-mail do zapytania Application Insights.
+Aby można było skonfigurować niestandardowe alerty i akcje, wszystkie metryki dotyczące dryfowania danych są przechowywane w zasobie [Application Insights](how-to-enable-app-insights.md) , który został utworzony wraz z obszarem roboczym Azure Machine Learning. Możesz użyć linku w alercie e-mail do zapytania Application Insights.
 
 ![Alert E-mail z dryfem danych](media/how-to-monitor-data-drift/drift_email.png)
 

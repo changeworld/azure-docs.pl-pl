@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7286bf1fd51883587aa41dc69d5dae0a3e6fb824
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 158bb3b1329d2ad2cbd55ecf44f980966e2546e2
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622407"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065190"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Skonfiguruj konto usługi logowania i zaloguj się za pomocą konta Google przy użyciu Azure Active Directory B2C
 
 ## <a name="create-a-google-application"></a>Tworzenie aplikacji Google
 
-Aby użyć konta Google jako [dostawcy tożsamości](active-directory-b2c-reference-oauth-code.md) w usłudze Azure Active Directory (Azure AD) B2C, musisz utworzyć aplikację w swojej dzierżawie, która go reprezentuje. Jeśli nie masz jeszcze konta Google, możesz zarejestrować się w [https://accounts.google.com/SignUp](https://accounts.google.com/SignUp)usłudze.
+Aby użyć konta Google jako [dostawcy tożsamości](active-directory-b2c-reference-oauth-code.md) w Azure Active Directory B2C (Azure AD B2C), musisz utworzyć aplikację w swojej dzierżawie, która go reprezentuje. Jeśli nie masz jeszcze konta Google, możesz zarejestrować się w [https://accounts.google.com/SignUp](https://accounts.google.com/SignUp)usłudze.
 
 1. Zaloguj się do [konsoli usługi Google Developer](https://console.developers.google.com/) przy użyciu poświadczeń konta Google.
 1. W lewym górnym rogu strony wybierz listę projektu, a następnie wybierz pozycję **Nowy projekt**.

@@ -4,7 +4,7 @@ description: Przejrzyj szczegółowe kroki rozwiązywania problemów z pulpitem 
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 keywords: nie można nawiązać połączenia z pulpitem zdalnym, rozwiązywać problemów z pulpitem zdalnym, pulpit zdalny nie może nawiązać połączenia, błędy pulpitu zdalnego, rozwiązywanie problemów z pulpitem zdalnym
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: a0f4c4172661b0f041a30df2d4d63ba58f203e89
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 053a209829f30ea92d76b29f24d028d77ca732e7
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70080538"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058900"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Szczegółowe kroki rozwiązywania problemów z połączeniami pulpitu zdalnego z maszynami wirtualnymi z systemem Windows na platformie Azure
 Ten artykuł zawiera szczegółowe kroki rozwiązywania problemów w celu zdiagnozowania i rozwiązania złożonych błędów Pulpit zdalny dla maszyn wirtualnych platformy Azure opartych na systemie Windows.
@@ -39,7 +39,7 @@ Następujące składniki są objęte połączeniem RDP:
 
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_0.png)
 
-Przed kontynuowaniem może być pomocne sprawdzenie, co zmieniło się od czasu ostatniego pomyślnego nawiązania połączenia z maszyną wirtualną Pulpit zdalny. Na przykład:
+Przed kontynuowaniem może być pomocne sprawdzenie, co zmieniło się od czasu ostatniego pomyślnego nawiązania połączenia z maszyną wirtualną Pulpit zdalny. Przykład:
 
 * Publiczny adres IP maszyny wirtualnej lub usługi w chmurze zawierającej MASZYNę wirtualną (nazywany również wirtualnym adresem IP adresu [VIP](https://en.wikipedia.org/wiki/Virtual_IP_address)) został zmieniony. Awaria protokołu RDP może być spowodowana tym, że w pamięci podręcznej klienta DNS nadal jest zarejestrowany *stary adres IP* dla nazwy DNS. Opróżnij pamięć podręczną klienta DNS i spróbuj ponownie nawiązać połączenie z maszyną wirtualną. Lub spróbuj połączyć się bezpośrednio z nowym adresem VIP.
 * Używasz aplikacji innych firm do zarządzania połączeniami Pulpit zdalny, zamiast korzystać z połączenia wygenerowanego przez Azure Portal. Sprawdź, czy konfiguracja aplikacji zawiera poprawny port TCP dla ruchu Pulpit zdalny. Możesz sprawdzić ten port dla klasycznej maszyny wirtualnej w [Azure Portal](https://portal.azure.com), klikając ustawienia maszyny wirtualnej > punkty końcowe.
@@ -144,7 +144,7 @@ $vmName="<Name of the target virtual machine>"
 .\InstallWinRMCertAzureVM.ps1 -SubscriptionName $subscr -ServiceName $serviceName -Name $vmName
 ```
 
-Można uzyskać poprawną nazwę subskrypcji z właściwości Subscriptionname wyświetlania polecenia **Get-AzureSubscription** . Nazwę usługi w chmurze dla maszyny wirtualnej można uzyskać z kolumny ServiceName na ekranie polecenia **Get-AzureVM** .
+Można uzyskać poprawną nazwę subskrypcji z właściwości *subscriptionname* wyświetlania polecenia **Get-AzureSubscription** . Nazwę usługi w chmurze dla maszyny wirtualnej można uzyskać z kolumny *ServiceName* na ekranie polecenia **Get-AzureVM** .
 
 Sprawdź, czy masz nowy certyfikat. Otwórz przystawkę Certyfikaty dla bieżącego użytkownika i Wyszukaj w folderze **Zaufane główne certyfikaty certyfikacji\Certyfikaty** . Powinien zostać wyświetlony certyfikat z nazwą DNS usługi w chmurze w kolumnie wystawiony dla (przykład: cloudservice4testing.cloudapp.net).
 

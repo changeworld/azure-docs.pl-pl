@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 7683812c5ee98d21d5aa8191a88926669b2ed120
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6485b7c102977f4fb6963418084f4da050c68558
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102364"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036528"
 ---
 # <a name="tutorial-configure-always-on-availability-group-in-azure-vm-manually"></a>Samouczek: Ręczne konfigurowanie zawsze włączonych grup dostępności na maszynie wirtualnej platformy Azure
 
@@ -81,6 +81,9 @@ Po zakończeniu wymagań wstępnych pierwszym krokiem jest utworzenie klastra tr
    | Potwierdzenie |Użyj wartości domyślnych, chyba że używasz funkcji miejsca do magazynowania. Zapoznaj się z uwagą poniżej tej tabeli. |
 
 ### <a name="set-the-windows-server-failover-cluster-ip-address"></a>Ustaw adres IP klastra trybu failover systemu Windows Server
+
+  > [!NOTE]
+  > W systemie Windows Server 2019 klaster tworzy **rozproszoną nazwę serwera** zamiast **nazwy sieciowej klastra**. Jeśli używasz systemu Windows Server 2019, Pomiń wszystkie kroki odnoszące się do nazwy podstawowe klastra w tym samouczku. Nazwę sieci klastra można utworzyć przy użyciu [programu PowerShell](virtual-machines-windows-portal-sql-create-failover-cluster.md#windows-server-2019). Przejrzyj klaster trybu [failover w blogu: Obiekt](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97) sieci klastra, aby uzyskać więcej informacji. 
 
 1. W **Menedżer klastra trybu failover**przewiń w dół do **zasobów podstawowe klastra** i rozwiń Szczegóły klastra. Powinny pojawić się zarówno **nazwa** i **adres IP** **zasobów** w stanu. Nie można przełączyć zasobu adresu IP do trybu online, ponieważ klaster ma przypisany ten sam adres IP co komputer, w związku z czym jest to zduplikowany adres.
 
@@ -285,7 +288,7 @@ Teraz można przystąpić do konfigurowania grupy dostępności, wykonując nast
    >Baza danych spełnia wymagania wstępne dla grupy dostępności, ponieważ wykonano co najmniej jedną pełną kopię zapasową w zamierzonej replice podstawowej.
 
    ![Kreator nowej grupy, wybieranie baz danych](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/60-newagselectdatabase.png)
-4. Na stronie **Określanie replik** kliknij pozycję **Dodaj**replikę.
+4. Na stronie **Określanie replik** kliknij pozycję **Dodaj replikę**.
 
    ![Kreator nowej grupy, określanie replik](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/62-newagaddreplica.png)
 5. Zostanie wyświetlone okno dialogowe **łączenie z serwerem** . Wpisz nazwę drugiego serwera w polu **Nazwa serwera**. Kliknij przycisk **Połącz**.
@@ -395,7 +398,7 @@ Aby skonfigurować moduł równoważenia obciążenia, należy utworzyć pulę z
 
 ### <a name="set-the-probe"></a>Ustawianie sondy
 
-1. Kliknij pozycję Moduł równoważenia obciążenia, kliknijpozycję sondy kondycji, a następnie kliknij pozycję **+ Dodaj**.
+1. Kliknij pozycję Moduł równoważenia obciążenia, kliknij pozycję **sondy kondycji**, a następnie kliknij pozycję **+ Dodaj**.
 
 1. Ustaw sondę kondycji odbiornika w następujący sposób:
 
@@ -490,7 +493,7 @@ W SQL Server Management Studio Ustaw port odbiornika.
 
 1. Uruchom SQL Server Management Studio i Połącz się z repliką podstawową.
 
-1. Przejdź do funkcji AlwaysOn grup dostępności dla**grup** | dostępności **o wysokiej dostępności** | .
+1. Przejdź do funkcji AlwaysOn**grup dostępności**dla**grup** | dostępności **o wysokiej dostępności** | .
 
 1. Powinna zostać wyświetlona nazwa odbiornika utworzona w Menedżer klastra trybu failover. Kliknij prawym przyciskiem myszy nazwę odbiornika i kliknij polecenie **Właściwości**.
 

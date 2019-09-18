@@ -5,13 +5,14 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.date: 08/09/2019
-ms.openlocfilehash: 830e58e68ea84d70c581ea315ca15b2a03be59da
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 3d2ba5965fef19a36faa8b9bbef235fd4117c20f
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019631"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71071955"
 ---
 # <a name="authentication-issues-in-azure-hdinsight"></a>Problemy z uwierzytelnianiem w usłudze Azure HDInsight
 
@@ -153,7 +154,7 @@ Sposoby znajdowania `sAMAccountName`:
 
 * Jeśli możesz zalogować się do usługi Ambari przy użyciu lokalnego administratora usługi Ambari, zapoznaj się z listą użytkowników.
 
-* Jeśli masz przyłączoną do [domeny maszynę z systemem Windows](../../active-directory-domain-services/manage-domain.md), możesz użyć standardowych narzędzi Windows AD do przeglądania. Wymaga to konta działającego w domenie.
+* Jeśli masz [przyłączoną do domeny maszynę z systemem Windows](../../active-directory-domain-services/manage-domain.md), możesz użyć standardowych narzędzi Windows AD do przeglądania. Wymaga to konta działającego w domenie.
 
 * W węźle głównym można wyszukiwać za pomocą poleceń SAMBA. Wymaga to prawidłowej sesji protokołu Kerberos (pomyślne narzędzie kinit). Wyszukiwanie w usłudze net AD "(userPrincipalName = Robert *)"
 

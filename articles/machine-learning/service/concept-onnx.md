@@ -1,6 +1,6 @@
 ---
 title: Wysoka wydajność, wnioskowanie Międzyplatformowe z ONNX
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Dowiedz się więcej na temat ONNX i środowiska uruchomieniowego ONNX w celu przyspieszenia modeli
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1d97e2d2698c482b75f037dbd8cde1027c472125
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 4f6e9e6b44e4a8fcc52f6d8ae19af60d64972b3a
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534885"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035402"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX i Azure Machine Learning: Tworzenie i przyspieszenie modeli ML
 
@@ -28,14 +28,14 @@ Firma Microsoft i społeczność partnerów utworzyli ONNX jako otwarty standard
 
 [Środowisko uruchomieniowe ONNX](https://github.com/Microsoft/onnxruntime) to aparat wnioskowania o wysokiej wydajności służący do wdrażania modeli ONNX w środowisku produkcyjnym. Jest zoptymalizowany pod kątem chmury i brzegowej oraz działa w systemach Linux, Windows i Mac. Zapisywana C++w, zawiera również język C, Python i C# interfejsy API. Środowisko uruchomieniowe ONNX zapewnia obsługę wszystkich specyfikacji ONNX-ML i integruje się z akceleratorami na różnych urządzeniach, takich jak TensorRT na procesorach GPU NVidia.
 
-Środowisko uruchomieniowe ONNX jest używane w wysokiej skali usług firmy Microsoft, takich jak Bing, Office i Cognitive Services. Zyski wydajności są zależne od wielu czynników, ale te usługi firmy Microsoft miały __średni wzrost wydajności procesora CPU__. Środowisko uruchomieniowe ONNX jest również używane jako część systemu Windows ML na setkach milionów urządzeń. Środowiska uruchomieniowego można użyć w połączeniu z usługami Azure Machine Learning Services. Za pomocą środowiska uruchomieniowego ONNX można korzystać z zalet optymalizacji, testowania i ciągłego ulepszania klasy produkcyjnej.
+Środowisko uruchomieniowe ONNX jest używane w wysokiej skali usług firmy Microsoft, takich jak Bing, Office i Cognitive Services. Zyski wydajności są zależne od wielu czynników, ale te usługi firmy Microsoft miały __średni wzrost wydajności procesora CPU__. Środowisko uruchomieniowe ONNX jest również używane jako część systemu Windows ML na setkach milionów urządzeń. Środowiska uruchomieniowego można użyć z Azure Machine Learning. Za pomocą środowiska uruchomieniowego ONNX można korzystać z zalet optymalizacji, testowania i ciągłego ulepszania klasy produkcyjnej.
 
 [![Diagram przepływu ONNX przedstawiający szkolenia, konwertery i wdrażanie](media/concept-onnx/onnx.png)](./media/concept-onnx/onnx.png#lightbox)
 
 ## <a name="get-onnx-models"></a>Modele ONNX
 
 Możesz uzyskać modelami ONNX na kilka sposobów:
-+ Uczenie nowego modelu ONNX w usłudze Azure Machine Learning (Zobacz przykłady w dolnej części tego artykułu)
++ Uczenie nowego modelu ONNX w Azure Machine Learning (Zobacz przykłady w dolnej części tego artykułu)
 + Konwertuj istniejący model z innego formatu na ONNX (zobacz [samouczki](https://github.com/onnx/tutorials)) 
 + Pobierz wstępnie szkolony model ONNX z [modelu ONNX zoo](https://github.com/onnx/models) (Zobacz przykłady w dolnej części tego artykułu)
 + Generowanie dostosowane modelu ONNX z [Azure Custom Vision service](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/) 
@@ -44,7 +44,7 @@ Wiele modeli, w tym Klasyfikacja obrazu, wykrywanie obiektów i przetwarzanie te
 
 ## <a name="deploy-onnx-models-in-azure"></a>Wdrażaj modele ONNX na platformie Azure
 
-Za pomocą usługi Azure Machine Learning można wdrażać, zarządzanie i monitorowanie swoimi modelami ONNX. Przy użyciu standardu [przepływ pracy wdrażania](concept-model-management-and-deployment.md) i ONNX środowiska uruchomieniowego, można utworzyć punktu końcowego REST, hostowane w chmurze. Zobacz przykładowe notesy Jupyter na końcu tego artykułu, aby wypróbować je samodzielnie. 
+Za pomocą Azure Machine Learning można wdrażać i monitorować modele ONNX oraz zarządzać nimi. Przy użyciu standardu [przepływ pracy wdrażania](concept-model-management-and-deployment.md) i ONNX środowiska uruchomieniowego, można utworzyć punktu końcowego REST, hostowane w chmurze. Zobacz przykładowe notesy Jupyter na końcu tego artykułu, aby wypróbować je samodzielnie. 
 
 ### <a name="install-and-use-onnx-runtime-with-python"></a>Instalowanie i używanie środowiska uruchomieniowego ONNX z językiem Python
 

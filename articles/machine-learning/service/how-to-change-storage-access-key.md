@@ -1,7 +1,7 @@
 ---
 title: Zmień klucze dostępu do konta magazynu
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak zmienić klucze dostępu dla konta usługi Azure Storage używanego w obszarze roboczym. Usługa Azure Machine Learning używa konta usługi Azure Storage do przechowywania danych i modeli. W przypadku ponownego wygenerowania klucza dostępu dla konta magazynu należy zaktualizować usługę Azure Machine Learning, aby korzystała z nowych kluczy.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak zmienić klucze dostępu dla konta usługi Azure Storage używanego w obszarze roboczym. Azure Machine Learning używa konta usługi Azure Storage do przechowywania danych i modeli. W przypadku ponownego wygenerowania klucza dostępu dla konta magazynu należy zaktualizować Azure Machine Learning, aby użyć nowych kluczy.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/16/2019
-ms.openlocfilehash: e386e34a8326a51753631ee9ea4215d01ba7ceb3
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 6c87d4553c7b0fd34513d761558a06cd527c4e3b
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558232"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034965"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Ponowne generowanie kluczy dostępu do konta magazynu
 
-Dowiedz się, jak zmienić klucze dostępu dla kont usługi Azure Storage używanych przez usługę Azure Machine Learning. Azure Machine Learning mogą używać kont magazynu do przechowywania danych lub modeli szkoleniowych.
+Dowiedz się, jak zmienić klucze dostępu dla kont usługi Azure Storage używanych przez Azure Machine Learning. Azure Machine Learning mogą używać kont magazynu do przechowywania danych lub modeli szkoleniowych.
 
 Ze względów bezpieczeństwa może zajść potrzeba zmiany kluczy dostępu dla konta usługi Azure Storage. Po ponownym wygenerowaniu klucza dostępu Azure Machine Learning należy zaktualizować, aby użyć nowego klucza. Azure Machine Learning może korzystać z konta magazynu zarówno dla magazynu modelowego, jak i magazynu danych.
 
@@ -35,7 +35,7 @@ Ze względów bezpieczeństwa może zajść potrzeba zmiany kluczy dostępu dla 
 
 ## <a name="what-needs-to-be-updated"></a>Co należy zaktualizować
 
-Konta magazynu mogą być używane przez obszar roboczy usługi Azure Machine Learning (przechowywanie dzienników, modeli, migawek itp.) oraz magazynu danych. Proces aktualizowania obszaru roboczego to pojedyncze polecenie interfejsu wiersza polecenia platformy Azure, które można wykonać po zaktualizowaniu klucza magazynu. Proces aktualizowania magazynów danych jest większy i wymaga odnajdywania elementów, które są obecnie używane w ramach konta magazynu, a następnie ich ponownego rejestrowania.
+Konta magazynu mogą być używane przez obszar roboczy Azure Machine Learning (przechowywanie dzienników, modeli, migawek itp.) oraz magazynu danych. Proces aktualizowania obszaru roboczego to pojedyncze polecenie interfejsu wiersza polecenia platformy Azure, które można wykonać po zaktualizowaniu klucza magazynu. Proces aktualizowania magazynów danych jest większy i wymaga odnajdywania elementów, które są obecnie używane w ramach konta magazynu, a następnie ich ponownego rejestrowania.
 
 > [!IMPORTANT]
 > Zaktualizuj obszar roboczy przy użyciu interfejsu wiersza polecenia platformy Azure i magazynów danych przy użyciu języka Python w tym samym czasie. Aktualizowanie tylko jednej lub drugiej nie jest wystarczające i może spowodować błędy do momentu zaktualizowania obu tych wartości.
@@ -74,7 +74,7 @@ Jeśli istnieje wpis dla konta magazynu, w którym planujesz ponownie wygenerowa
 
 ## <a name="update-the-access-key"></a>Aktualizowanie klucza dostępu
 
-Aby zaktualizować usługę Azure Machine Learning w celu używania nowego klucza, wykonaj następujące czynności:
+Aby zaktualizować Azure Machine Learning, aby użyć nowego klucza, wykonaj następujące czynności:
 
 > [!IMPORTANT]
 > Wykonaj wszystkie kroki, zaktualizuj oba obszary robocze przy użyciu interfejsu wiersza polecenia i magazynów danych przy użyciu języka Python. Aktualizacja tylko jednego lub drugiego może spowodować błędy do momentu zaktualizowania obu tych metod.

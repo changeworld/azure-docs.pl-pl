@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d153238c58d72874ddbf7979e68423e21ea7c020
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 8784a06306f59015b95293d90ff5509dcfcae045
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073157"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057931"
 ---
 # <a name="back-up-your-app-in-azure"></a>Tworzenie kopii zapasowej aplikacji na platformie Azure
 Funkcja tworzenia kopii zapasowych i przywracania w [Azure App Service](overview.md) umożliwia łatwe tworzenie kopii zapasowych aplikacji ręcznie lub zgodnie z harmonogramem.  Kopie zapasowe można skonfigurować tak, aby były przechowywane przez czas nieokreślony. Możesz przywrócić aplikację do migawki poprzedniego stanu, zastępując istniejącą aplikację lub przywracając ją do innej aplikacji.
@@ -39,7 +39,7 @@ Następujące rozwiązania bazy danych są obsługiwane z funkcją tworzenia kop
    - [SQL Database](https://azure.microsoft.com/services/sql-database/)
    - [Azure Database for MySQL](https://azure.microsoft.com/services/mysql)
    - [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql)
-   - [MySQL w aplikacji](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
+   - [MySQL w aplikacji](https://azure.microsoft.com/en-us/blog/mysql-in-app-preview-app-service/)
  
 
 > [!NOTE]
@@ -147,7 +147,7 @@ Przekaż `_backup.filter` plik`D:\home\site\wwwroot\` do katalogu witryny przy u
 Uruchom kopie zapasowe w taki sam sposób, jak zwykle, [ręcznie](#create-a-manual-backup) lub [automatycznie](#configure-automated-backups). Teraz wszystkie pliki i foldery określone w programie `_backup.filter` są wykluczone z przyszłych kopii zapasowych zaplanowanych lub ręcznie zainicjowanych. 
 
 > [!NOTE]
-> Przywracasz częściowe kopie zapasowe witryny w taki sam sposób, w jaki [przywracasz zwykłe](web-sites-restore.md)kopie zapasowe. Proces przywracania wykonuje odpowiednie czynności.
+> Przywracasz częściowe kopie zapasowe witryny w taki sam sposób, w jaki [przywracasz zwykłe kopie zapasowe](web-sites-restore.md). Proces przywracania wykonuje odpowiednie czynności.
 > 
 > Po przywróceniu pełnej kopii zapasowej cała zawartość w lokacji zostanie zamieniona na kopię zapasową. Jeśli plik znajduje się w witrynie, ale nie w kopii zapasowej, zostanie usunięty. Jednak po przywróceniu częściowej kopii zapasowej każda zawartość znajdująca się w jednym z katalogów zabronionych lub dowolny plik zabroniony jest pozostawiony jako.
 > 

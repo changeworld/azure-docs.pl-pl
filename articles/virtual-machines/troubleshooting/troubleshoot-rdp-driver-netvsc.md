@@ -4,7 +4,7 @@ description: Dowiedz się, jak rozwiązywać problemy z protokołem RDP związan
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: v-jesits
 ms.service: virtual-machines-windows
 ms.topic: troubleshooting
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/19/2018
 ms.author: genli
-ms.openlocfilehash: 6e68aac07379de142968b85884e7dbd95e73195f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4c10a2dcd55c1605cfafe6c67cfefd9d8a3c5f9d
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103472"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057982"
 ---
 # <a name="cannot-connect-remotely-to-a-windows-10-or-windows-server-2016-vm-in-azure-because-of-netvscsys"></a>Nie można nawiązać zdalnego połączenia z maszyną wirtualną z systemem Windows 10 lub Windows Server 2016 na platformie Azure z powodu netvsc. sys
 
@@ -27,7 +27,7 @@ W tym artykule wyjaśniono, jak rozwiązać problem polegający na tym, że podc
 
 Nie można nawiązać połączenia z maszyną wirtualną z systemem Windows 10 lub Windows Server 2016 przy użyciu usługi Remote Desktop Protocol (RDP). W przypadku [diagnostyki rozruchu](boot-diagnostics.md)ekran przedstawia czerwoną skrzyżowanie za pośrednictwem karty interfejsu sieciowego (nic). Oznacza to, że maszyna wirtualna nie ma łączności po całkowitym załadowaniu systemu operacyjnego.
 
-Zazwyczaj ten problem występuje w kompilacjach systemu Windows [14393](https://support.microsoft.com/help/4093120/) i [kompilacji 15063](https://support.microsoft.com/help/4015583/). Jeśli wersja systemu operacyjnego jest nowsza niż ta wersja, ten artykuł nie dotyczy Twojego scenariusza. Aby sprawdzić wersję systemu, Otwórz sesję CMD w [funkcji konsola dostępu szeregowego](serial-console-windows.md), a następnie uruchom polecenie **Ver**.
+Zazwyczaj ten problem występuje w [kompilacjach](https://support.microsoft.com/help/4093120/) systemu Windows 14393 i [kompilacji 15063](https://support.microsoft.com/help/4015583/). Jeśli wersja systemu operacyjnego jest nowsza niż ta wersja, ten artykuł nie dotyczy Twojego scenariusza. Aby sprawdzić wersję systemu, Otwórz sesję CMD w [funkcji konsola dostępu szeregowego](serial-console-windows.md), a następnie uruchom polecenie **Ver**.
 
 ## <a name="cause"></a>Przyczyna
 

@@ -1,10 +1,10 @@
 ---
-title: Określanie ustawień DNS w pliku konfiguracji usługi | Dokumentacja firmy Microsoft
-description: Określanie niestandardowych ustawień DNS dla sieci wirtualnej przy użyciu pliku konfiguracji usługi
+title: Określanie ustawień DNS w pliku konfiguracji usługi | Microsoft Docs
+description: Określanie niestandardowych ustawień DNS przy użyciu pliku konfiguracji usługi dla sieci wirtualnej
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: tysonn
 ms.assetid: 467a4b99-8691-40b3-b640-e25e49675c71
 ms.service: virtual-network
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2016
 ms.author: genli
-ms.openlocfilehash: 0ac488a67d8b9debf6539d199395997cf44cf1e4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f27802d76a8b94a0d5f1eb0c35fd55c93712e557
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60232740"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059080"
 ---
 # <a name="specifying-dns-settings-in-a-service-configuration-file"></a>Określanie ustawień DNS w pliku konfiguracji usługi
 ## <a name="dns-elements"></a>Elementy DNS
-Plik konfiguracji usługi może zawierać element DnsServers z użyciem listy adresów IPv4 dla serwerów systemu nazw domen (DNS, Domain Name System), które będzie używane przez usługę. Ustawienia w pliku konfiguracji usługi mają pierwszeństwo przed ustawieniami w pliku konfiguracji sieci. Aby uzyskać więcej informacji, zobacz [schematu konfiguracji usługi platformy Azure (cscfg pliku)](https://msdn.microsoft.com/library/azure/ee758710.aspx).
+Plik konfiguracji usługi może zawierać element DnsServers z listą adresów IPv4 serwerów systemu nazw domen (DNS), które będą używane przez usługę. Ustawienia w pliku konfiguracji usługi mają pierwszeństwo przed ustawieniami w pliku konfiguracji sieci. Aby uzyskać więcej informacji, zobacz [Schemat konfiguracji usługi platformy Azure (plik cscfg)](https://msdn.microsoft.com/library/azure/ee758710.aspx).
 
-**Element Konfiguracja sieci**
+**NetworkConfiguration, element**
 
       <DnsServers>
         <DnsServer name="ID1" IPAddress="IPAddress1" />
@@ -34,16 +34,16 @@ Plik konfiguracji usługi może zawierać element DnsServers z użyciem listy ad
       </DnsServers>
 
 > [!WARNING]
-> **Nazwa** atrybutu w **serwer DNS** element jest używany tylko jako nazwy odwołania. Go nie reprezentuje nazwę hosta dla serwera DNS. Każdy **serwer DNS** wartość atrybutu musi być unikatowa dla całej subskrypcji Microsoft Azure.
+> Atrybut **name** w elemencie **serwer DNS** jest używany tylko jako Nazwa odwołania. Nie reprezentuje nazwy hosta serwera DNS. Każda wartość atrybutu **serwer DNS** musi być unikatowa w całej subskrypcji Microsoft Azure.
 > 
 > 
 
 ## <a name="see-also"></a>Zobacz też
 [Schemat konfiguracji usługi platformy Azure (cscfg)](https://msdn.microsoft.com/library/windowsazure/ee758710)
 
-[Schemat konfiguracji sieci wirtualnej platformy Azure](https://go.microsoft.com/fwlink/?LinkId=248093)
+[Schemat konfiguracji usługi Azure Virtual Network](https://go.microsoft.com/fwlink/?LinkId=248093)
 
-[Konfigurowanie sieci wirtualnej za pomocą plików konfiguracji sieci](https://go.microsoft.com/fwlink/?LinkId=248094)
+[Konfigurowanie Virtual Network przy użyciu plików konfiguracji sieci](https://go.microsoft.com/fwlink/?LinkId=248094)
 
-[Informacje o ustawieniach sieci wirtualnej w portalu zarządzania](https://go.microsoft.com/fwlink/?LinkId=248092)
+[Informacje o ustawieniach Virtual Network w portal zarządzania](https://go.microsoft.com/fwlink/?LinkId=248092)
 

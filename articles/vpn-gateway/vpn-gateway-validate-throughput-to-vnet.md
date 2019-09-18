@@ -3,18 +3,18 @@ title: Weryfikowanie przepływności sieci VPN do Microsoft Azure Virtual Networ
 description: Celem tego dokumentu jest ułatwienie użytkownikowi zweryfikowania przepływności sieci z zasobów lokalnych do maszyny wirtualnej platformy Azure.
 services: vpn-gateway
 author: cherylmc
-manager: jasmc
+manager: dcscontentpm
 ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 05/29/2019
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: 1531bbe97c842fbae2ffe7df41f19a3a7be689d5
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 9c2f50c49037305663330a3c455e40291b9e6242
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228334"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058799"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Jak zweryfikować przepływność sieci VPN do sieci wirtualnej
 
@@ -32,7 +32,7 @@ Połączenie bramy sieci VPN obejmuje następujące składniki:
 * Lokalne urządzenie sieci VPN (Wyświetlanie listy [zweryfikowanych urządzeń sieci VPN](vpn-gateway-about-vpn-devices.md#devicetable)).
 * Publiczny Internet
 * Brama sieci VPN platformy Azure
-* Maszyna wirtualna platformy Azure
+* Azure VM
 
 Na poniższym diagramie przedstawiono logiczne połączenie sieci lokalnej z siecią wirtualną platformy Azure za pośrednictwem sieci VPN.
 
@@ -260,7 +260,7 @@ Jeśli zauważysz duże opóźnienia w dowolnych przeskokach przed wprowadzeniem
 
 Jeśli duże, nietypowe opóźnienia są zauważalne z przeskoków w ciągu "msn.net", skontaktuj się z pomocą techniczną firmy Microsoft w celu uzyskania dalszych badań.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji i uzyskać pomoc, zapoznaj się z następującym łączem:
 

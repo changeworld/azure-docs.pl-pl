@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: c32803fec6107e39a0b8329adaee072e3e291575
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 998497d3e790ba501ac5cdeb4974bf7ee9ea6a54
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567069"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059259"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database"></a>Przykłady programu Azure PowerShell dla usługi Azure SQL Database
 
@@ -27,7 +27,7 @@ Usługa Azure SQL Database umożliwia konfigurowanie baz danych, wystąpień i p
 
 Jeśli zdecydujesz się zainstalować program PowerShell i używać go lokalnie, ten samouczek wymaga AZ PowerShell 1.4.0 lub nowszego. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure.
 
-## <a name="single-database-and-elastic-pools"></a>Pojedyncza baza danych i elastyczne pule
+## <a name="single-database-and-elastic-poolstabsingle-database"></a>[pojedyncza baza danych i pule elastyczne](#tab/single-database)
 
 Poniższa tabela zawiera linki do przykładowych skryptów programu Azure PowerShell dla usługi Azure SQL Database.
 
@@ -58,7 +58,7 @@ Poniższa tabela zawiera linki do przykładowych skryptów programu Azure PowerS
 
 Dowiedz się więcej o [interfejsie API programu Azure PowerShell pojedynczej bazy danych](sql-database-single-databases-manage.md#powershell-manage-sql-database-servers-and-single-databases).
 
-## <a name="managed-instance"></a>Wystąpienie zarządzane
+## <a name="managed-instancetabmanaged-instance"></a>[Wystąpienie zarządzane](#tab/managed-instance)
 
 Poniższa tabela zawiera linki do przykładowych skryptów programu Azure PowerShell dla wystąpienia zarządzanego usługi Azure SQL Database.
 
@@ -73,6 +73,8 @@ Poniższa tabela zawiera linki do przykładowych skryptów programu Azure PowerS
 |||
 
 Dowiedz się więcej o [interfejsie API programu Azure PowerShell wystąpienia zarządzanego](sql-database-managed-instance-create-manage.md#powershell-create-and-manage-managed-instances).
+
+---
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 

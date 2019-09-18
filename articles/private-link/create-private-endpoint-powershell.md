@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: f9a2bd4c4ec176e018948a7a5a01603d075a7ea2
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: ca3fec3dbb4fbe77a1d375c0329275b7b799d06b
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018012"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067850"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Tworzenie prywatnego punktu końcowego przy użyciu Azure PowerShell
 Prywatny punkt końcowy to podstawowy blok konstrukcyjny dla prywatnego linku na platformie Azure. Umożliwia ona korzystanie z zasobów platformy Azure, takich jak Virtual Machines (VM), w celu komunikacji z prywatnymi zasobami łączy prywatnych. 
@@ -182,25 +182,38 @@ mstsc /v:<publicIpAddress>
 2. Wprowadź nazwę użytkownika i hasło określone podczas tworzenia maszyny wirtualnej.
   > [!NOTE]
   > Może być konieczne wybranie pozycji więcej opcji, > użyć innego konta, aby określić poświadczenia wprowadzone podczas tworzenia maszyny wirtualnej. 
+  
 3. Wybierz **przycisk OK**. 
 4. Może zostać wyświetlone ostrzeżenie o certyfikacie. Jeśli to zrobisz, wybierz pozycję **tak** lub **Kontynuuj**. 
 
 ## <a name="access-sql-database-server-privately-from-the-vm"></a>Dostęp do serwera SQL Database prywatnie z poziomu maszyny wirtualnej
 
 1. W Pulpit zdalny myVM Otwórz program PowerShell.
-2. Enternslookup myserver.database.windows.net zostanie wyświetlony komunikat podobny do tego:  Serwer usługi Azure PowerShellCopy:  Nieznany adres:  odpowiedź Nieautorytatywna 168.63.129.16:  Nazwa: myserver.privatelink.database.windows.net adres:  aliasy 10.0.0.5: myserver.database.windows.net
-3. Zainstaluj SQL Server Management Studio
-4. W obszarze Połącz z serwerem wprowadź lub wybierz następujące informacje: Ustawianie typu serwera wartości wybierz pozycję aparat bazy danych.
-      Nazwa serwera wybierz pozycję myserver.database.windows.net Nazwa użytkownika wprowadź nazwę użytkownika podaną podczas tworzenia.
-      Hasło wprowadź hasło podane podczas tworzenia.
-      Pamiętaj hasło wybierz opcję tak.
-5. Wybierz pozycję Połącz.
-6. Przeglądaj bazy danych z menu po lewej stronie. 
-7. Zdefiniować Utwórz lub zapytaj informacje z bazy danych
-8. Zamknij połączenie pulpitu zdalnego z *myVM*. 
+2. Wprowadź `nslookup myserver.database.windows.net`. 
 
-## <a name="clean-up-resources"></a>Oczyszczanie zasobów 
-Gdy skończysz korzystać z prywatnego punktu końcowego, SQL Database serwera i maszyny wirtualnej, użyj polecenia [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) , aby usunąć grupę zasobów i wszystkie jej zasoby:
+    Zostanie wyświetlony komunikat podobny do tego:
+    ```azurepowershell
+    Server:  UnKnown
+    Address:  168.63.129.16
+    Non-authoritative answer:
+    Name:    myserver.privatelink.database.windows.net
+    Address:  10.0.0.5
+    Aliases:   myserver.database.windows.net
+3. Install SQL Server Management Studio
+4. In Connect to server, enter or select this information:
+    Setting Value
+      Server type   Select Database Engine.
+      Server name   Select myserver.database.windows.net
+      Username  Enter a username provided during creation.
+      Password  Enter a password provided during creation.
+      Remember password Select Yes.
+5. Select Connect.
+6. Browse Databases from left menu. 
+7. (Optionally) Create or query information from mydatabase
+8. Close the remote desktop connection to *myVM*. 
+
+## Clean up resources 
+When you're done using the private endpoint, SQL Database server and the VM, use [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) to remove the resource group and all the resources it has:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force

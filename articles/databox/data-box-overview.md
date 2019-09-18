@@ -7,14 +7,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 07/03/2019
+ms.date: 09/17/2019
 ms.author: alkohli
-ms.openlocfilehash: cd2a776988ba27add54c69b0feccbc3fce8337aa
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: a3e27cf427de3a33f71d6f4a0af9b1590abeb573
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551524"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066999"
 ---
 # <a name="what-is-azure-data-box"></a>Co to jest usługa Azure Data Box?
 
@@ -109,21 +109,14 @@ W trakcie tego procesu będziesz otrzymywać powiadomienia e-mail o wszystkich z
 
 ## <a name="region-availability"></a>Dostępność w danym regionie
 
-Urządzenie Data Box można transferu danych według regionu, w którym wdrożono usługę, kraj/region, z którym urządzenie jest dostarczane i docelowego konta magazynu platformy Azure, w którym transferu danych. 
+Urządzenie Data Box może transferować dane na podstawie regionu, w którym wdrożono usługę, kraju/regionu, do którego urządzenie jest dostarczane, oraz docelowego konta usługi Azure Storage, na którym są przesyłane dane. 
 
-- **Dostępność usługi** — w tej wersji usługa Data Box jest dostępna w następujących regionach:
-    - Wszystkie regiony w Stanach Zjednoczonych — Zachodnio-środkowe stany USA, Zachodnie stany USA 2, Zachodnie stany USA, Południowo-środkowe stany USA, Środkowe stany USA, Północno-środkowe stany USA, Wschodnie stany USA i Wschodnie stany USA 2.
-    - Unia Europejska — Europa Zachodnia i Europa Północna.
-    - Zjednoczone Królestwo — Południowe Zjednoczone Królestwo i Zachodnie Zjednoczone Królestwo.
-    - Francja — Francja Środkowa i Francja Południowa.
-    - Japonia, część — Japonia, część wschodnia i Japonia Zachodnia.
-    - Australia — Australia Wschodnia i Australia południowo-wschodnia.
-    - Kanada — Kanada Wschodnia i Kanada Środkowa.
+- **Dostępność usługi** — Aby uzyskać informacje na temat dostępności regionów, przejdź do pozycji [produkty platformy Azure dostępne według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Urządzenie Data Box można również wdrożyć w chmurze Azure Government. Aby uzyskać więcej informacji, zobacz [co to jest Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
 
 - **Docelowe konta magazynu** — konta magazynu do przechowywania danych są dostępne we wszystkich regionach świadczenia usługi Azure, w których ta usługa jest dostępna.  
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Przejrzyj [wymagania systemowe usługi Data Box](data-box-system-requirements.md).
 - Poznaj [ograniczenia usługi Data Box](data-box-limits.md).

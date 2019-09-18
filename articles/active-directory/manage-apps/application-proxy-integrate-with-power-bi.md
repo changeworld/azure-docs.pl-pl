@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb4486c889dec29f81b57605c3ccee510242f832
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: bdb1e26d9f10ae9b9549421e72a99f2c4e5341c2
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035140"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056083"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Włączanie dostępu zdalnego do Power BI Mobile przy użyciu usługi Azure serwer proxy aplikacji usługi Azure AD
 
@@ -69,7 +69,7 @@ Aby skonfigurować KCD, powtórz następujące kroki dla każdej maszyny łączn
 
 1. Zaloguj się do kontrolera domeny jako administrator domeny, a następnie otwórz **Active Directory Użytkownicy i komputery**.
 2. Znajdź komputera, na którym jest zasilany z łącznika.  
-3. Kliknij dwukrotnie komputer, a następnie wybierz kartę Delegowanie ****  .
+3. Kliknij dwukrotnie komputer, a następnie wybierz kartę **delegowanie** .
 4. Ustaw ustawienia delegowania, aby **ufać temu komputerowi w delegowaniu tylko do określonych usług**. Następnie wybierz opcję **Użyj dowolnego protokołu uwierzytelniania**.
 5. Wybierz pozycję **Dodaj**, a następnie wybierz pozycję **Użytkownicy lub komputery**.
 6. Wprowadź konto usługi używane dla usług Reporting Services. Jest to konto, do którego dodano nazwę SPN w ramach konfiguracji usług Reporting Services.
@@ -91,7 +91,7 @@ Teraz możesz przystąpić do konfigurowania serwer proxy aplikacji usługi Azur
 
 2. Po opublikowaniu aplikacji pojedynczego ustawień logowania jednokrotnego należy skonfigurować następujące czynności:
 
-   a. Na stronie aplikacji w portalu wybierz pozycję **Logowanie**jednokrotne.
+   a. Na stronie aplikacji w portalu wybierz pozycję **Logowanie jednokrotne**.
 
    b. W przypadku **trybu logowania**jednokrotnego wybierz pozycję **zintegrowane uwierzytelnianie systemu Windows**.
 
@@ -138,7 +138,7 @@ Aby aplikacja mobilna Power BI mogła łączyć się z usługami raportów i uzy
 ## <a name="step-5-configure-intune-policy-for-managed-devices-optional"></a>Krok 5. Konfigurowanie zasad usługi Intune dla urządzeń zarządzanych (opcjonalnie)
 
 > [!NOTE]
-> Ta funkcja będzie niedostępna do 7/31/19.
+> Ta funkcja jest obecnie dostępna tylko w systemie iOS.
 
 Za pomocą Microsoft Intune można zarządzać aplikacjami klienckimi używanymi przez pracowników firmy. Usługa Intune umożliwia korzystanie z takich funkcji, jak szyfrowanie danych i dodatkowe wymagania dotyczące dostępu. Aby dowiedzieć się więcej o zarządzaniu aplikacjami za poorednictwem usługi Intune, zobacz Zarządzanie aplikacjami w usłudze Intune. Aby umożliwić aplikacji mobilnej Power BI współpracują z zasadami usługi Intune, wykonaj następujące czynności.
 
@@ -153,7 +153,7 @@ Za pomocą Microsoft Intune można zarządzać aplikacjami klienckimi używanymi
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Jeśli aplikacja zwróci stronę błędu po próbie załadowania raportu przez więcej niż kilka minut, może zajść potrzeba zmiany ustawienia limitu czasu. Domyślnie serwer proxy aplikacji obsługuje aplikacje, które w odpowiedzi na żądanie zajmują do 85 sekund. Aby wydłużyć to ustawienie na 180 sekund, wybierz limit czasu zaplecza na stronie Ustawienia serwera proxy aplikacji dla aplikacji. Porady dotyczące tworzenia szybkich i niezawodnych raportów można znaleźć w temacie [Power BI raporty najlepsze rozwiązania](https://docs.microsoft.com/power-bi/power-bi-reports-performance).
+Jeśli aplikacja zwróci stronę błędu po próbie załadowania raportu przez więcej niż kilka minut, może zajść potrzeba zmiany ustawienia limitu czasu. Domyślnie serwer proxy aplikacji obsługuje aplikacje, które w odpowiedzi na żądanie zajmują do 85 sekund. Aby wydłużyć to ustawienie na 180 sekund, wybierz limit czasu zaplecza na **stronie** ustawienia serwera proxy aplikacji dla aplikacji. Porady dotyczące tworzenia szybkich i niezawodnych raportów można znaleźć w temacie [Power BI raporty najlepsze rozwiązania](https://docs.microsoft.com/power-bi/power-bi-reports-performance).
 
 ## <a name="next-steps"></a>Następne kroki
 

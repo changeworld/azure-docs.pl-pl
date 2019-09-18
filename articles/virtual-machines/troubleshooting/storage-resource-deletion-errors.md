@@ -1,103 +1,103 @@
 ---
-title: Rozwiązywanie problemów z błędami usuwania zasobów magazynu, na maszynach wirtualnych z systemem Linux na platformie Azure | Dokumentacja firmy Microsoft
-description: Jak rozwiązywać problemy podczas usuwania zasobów magazynu zawierające dołączonymi dyskami VHD.
+title: Rozwiązywanie problemów z błędami usuwania zasobów magazynu na maszynach wirtualnych systemu Linux na platformie Azure | Microsoft Docs
+description: Jak rozwiązywać problemy podczas usuwania zasobów magazynu zawierających dołączone wirtualne dyski twarde.
 keywords: ''
 services: virtual-machines
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.service: virtual-machines
 ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: a1eb946d3f1b18aaa86735dedcfbaa1fd6a89621
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 50ab4b0f1e676ffcba0ce69ab6aa957e4c77ab88
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60922649"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058155"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>Rozwiązywanie problemów z błędami usuwania zasobów magazynu
 
-W niektórych przypadkach może wystąpić jeden z następujących błędów podczas próby usunięcia konta magazynu platformy Azure, kontenera lub obiektu blob we wdrożeniu usługi Azure Resource Manager:
+W niektórych scenariuszach może wystąpić jeden z następujących błędów podczas próby usunięcia konta usługi Azure Storage, kontenera lub obiektu BLOB w ramach wdrożenia Azure Resource Manager:
 
-> **Nie można usunąć konta magazynu "StorageAccountName". Błąd: Nie można usunąć konta magazynu, ponieważ jego artefakty są nadal używane.**
+> **Nie można usunąć konta magazynu "StorageAccountName". Błąd: Nie można usunąć konta magazynu, ponieważ jego artefakty są w użyciu.**
 > 
-> **Nie można usunąć # poza # kontenerów:<br>wirtualne dyski twarde: Obecnie jest dzierżawy w kontenerze i identyfikator dzierżawy nie został określony w żądaniu.**
+> **Nie można usunąć # kontenerów:<br>VHD: Obecnie istnieje dzierżawa w kontenerze i w żądaniu nie określono identyfikatora dzierżawy.**
 > 
-> **Nie można usunąć # poza # obiektów blob:<br>BlobName.vhd: Obecnie jest dzierżawy w obiekcie blob i identyfikator dzierżawy nie został określony w żądaniu.**
+> **Nie można usunąć # z # BLOB:<br>blobname. VHD: Obecnie istnieje dzierżawa obiektu BLOB, a w żądaniu nie określono identyfikatora dzierżawy.**
 
-Wirtualne dyski twarde używane w maszynach wirtualnych platformy Azure to pliki VHD przechowywane jako stronicowe obiekty BLOB na koncie magazynu w warstwie standardowa lub premium na platformie Azure. Aby uzyskać więcej informacji o dyskach platformy Azure, zobacz nasze [wprowadzenie do usługi managed disks](../linux/managed-disks-overview.md).
+Wirtualne dyski twarde używane na maszynach wirtualnych platformy Azure to pliki VHD przechowywane jako stronicowe obiekty blob na koncie magazynu w warstwie Standardowa lub Premium na platformie Azure. Aby uzyskać więcej informacji na temat dysków platformy Azure, zobacz [wprowadzenie do usługi Managed disks](../linux/managed-disks-overview.md).
 
-Azure uniemożliwia usunięcie dysku, który jest dołączony do maszyny Wirtualnej w celu uniknięcia uszkodzenia. Uniemożliwia ona usunięcie kontenerów i kont magazynu, które mają stronicowych obiektów blob, który jest dołączony do maszyny Wirtualnej. 
+Platforma Azure uniemożliwia usunięcie dysku dołączonego do maszyny wirtualnej w celu zapobieżenia uszkodzeniu. Zapobiega to również usunięciu kontenerów i kont magazynu, które mają stronicowy obiekt BLOB dołączony do maszyny wirtualnej. 
 
-To proces, można usunąć konta magazynu, kontenera lub obiektu blob podczas odbierania jeden z następujących błędów: 
-1. Identyfikowanie obiektów blob dołączonych do maszyny Wirtualnej
-2. [Usuń maszyny wirtualne, za pomocą dołączonych **dysku systemu operacyjnego**](#step-2-delete-vm-to-detach-os-disk)
-3. [Odłącz wszystko **dyski danych** z pozostałych maszyn wirtualnych](#step-3-detach-data-disk-from-the-vm)
+Proces usuwania konta magazynu, kontenera lub obiektu BLOB w przypadku otrzymania jednego z tych błędów jest następujący: 
+1. Zidentyfikuj obiekty blob dołączone do maszyny wirtualnej
+2. [Usuwanie maszyn wirtualnych z dołączonym **dyskiem systemu operacyjnego**](#step-2-delete-vm-to-detach-os-disk)
+3. [Odłącz wszystkie **dyski danych** z pozostałych maszyn wirtualnych](#step-3-detach-data-disk-from-the-vm)
 
-Spróbuj ponownie, usuwanie konta magazynu, kontenera lub obiektu blob, po wykonaniu tych kroków.
+Ponów próbę usunięcia konta magazynu, kontenera lub obiektu BLOB po zakończeniu tych kroków.
 
-## <a name="step-1-identify-blob-attached-to-a-vm"></a>Krok 1: Identyfikowanie obiektu blob dołączonych do maszyny Wirtualnej
+## <a name="step-1-identify-blob-attached-to-a-vm"></a>Krok 1: Identyfikowanie obiektu BLOB dołączonego do maszyny wirtualnej
 
-### <a name="scenario-1-deleting-a-blob--identify-attached-vm"></a>Scenariusz 1: Trwa usuwanie obiektu blob — zidentyfikować dołączonych maszyny Wirtualnej
+### <a name="scenario-1-deleting-a-blob--identify-attached-vm"></a>Scenariusz 1: Usuwanie obiektu BLOB — identyfikowanie dołączonej maszyny wirtualnej
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. W menu Centrum wybierz **wszystkie zasoby**. Przejdź do konta magazynu, w obszarze **usługi obiektów Blob** wybierz **kontenerów**, a następnie przejdź do obiektu blob do usunięcia.
-3. Jeśli obiekt blob **stanu dzierżawy** jest **wydzierżawiony**, a następnie kliknij prawym przyciskiem myszy i wybierz **edytować metadane** aby otworzyć okienko metadanych obiektu Blob. 
+2. W menu Centrum wybierz pozycję **Wszystkie zasoby**. Przejdź do konta magazynu, a następnie wybierz pozycję **kontenery**w obszarze **usługi BLOB** i przejdź do obiektu BLOB, który ma zostać usunięty.
+3. Jeśli jest **dzierżawiony** **stan dzierżawy** obiektu BLOB, kliknij prawym przyciskiem myszy i wybierz polecenie **Edytuj metadane** , aby otworzyć okienko metadanych obiektu BLOB. 
 
-    ![Zrzut ekranu przedstawiający portal, z magazynu obiektów blob konta i kliknij prawym przyciskiem myszy > "Edytuj metadane" wyróżniony](./media/troubleshoot-vhds/utd-edit-metadata-sm.png)
+    ![Zrzut ekranu portalu z obiektami BLOB konta magazynu i kliknij prawym przyciskiem myszy > wyróżnione "Edytuj metadane"](./media/troubleshoot-vhds/utd-edit-metadata-sm.png)
 
-4. W okienku Metadane obiektu Blob, sprawdź i Zapisz wartość **MicrosoftAzureCompute_VMName**. Ta wartość jest nazwa maszyny Wirtualnej, wirtualny dysk twardy jest podłączony do. (Zobacz **ważne** Jeśli to pole nie istnieje)
-5. W okienku Metadane obiektu Blob, sprawdź i Zapisz wartość **MicrosoftAzureCompute_DiskType**. Identyfikuje tę wartość, jeśli dołączonym dysku systemu operacyjnego lub dysku z danymi (zobacz **ważne** Jeśli to pole nie istnieje). 
+4. W okienku Metadane obiektu BLOB zaznacz i Zapisz wartość dla **MicrosoftAzureCompute_VMName**. Ta wartość to nazwa maszyny wirtualnej, do której jest dołączony dysk VHD. (Zobacz **Ważne** , jeśli to pole nie istnieje)
+5. W okienku Metadane obiektu BLOB zaznacz i Zapisz wartość **MicrosoftAzureCompute_DiskType**. Ta wartość określa, czy dołączony dysk jest systemem operacyjnym, czy dyskiem danych (zobacz **Ważne** , jeśli to pole nie istnieje). 
 
-     ![Zrzut ekranu przedstawiający portal, otwórz okienko "Metadane obiektu Blob" magazynu](./media/troubleshoot-vhds/utd-blob-metadata-sm.png)
+     ![Zrzut ekranu portalu z otwartym okienkiem magazynu "metadane obiektów BLOB"](./media/troubleshoot-vhds/utd-blob-metadata-sm.png)
 
-6. Jeśli typ obiektu blob dysku **OSDisk** wykonaj [krok 2: Usuwanie maszyny Wirtualnej, aby odłączyć dysk systemu operacyjnego](#step-2-delete-vm-to-detach-os-disk). W przeciwnym razie, jeśli typ obiektu blob dysku **DataDisk** postępuj zgodnie z instrukcjami w [krok 3: Dołączanie dysku danych z maszyny Wirtualnej](#step-3-detach-data-disk-from-the-vm). 
+6. Jeśli typ dysku BLOB to **OSDisk** , postępuj zgodnie z [krok 2: Usuń maszynę wirtualną, aby](#step-2-delete-vm-to-detach-os-disk)odłączyć dysk systemu operacyjnego. W przeciwnym razie, jeśli typ dysku BLOB to **dysk** danych, wykonaj kroki [opisane w sekcji Krok 3. Odłącz dysk danych z maszyny wirtualnej](#step-3-detach-data-disk-from-the-vm). 
 
 > [!IMPORTANT]
-> Jeśli **MicrosoftAzureCompute_VMName** i **MicrosoftAzureCompute_DiskType** nie są wyświetlane w metadanych obiektu blob, oznacza to, że obiekt blob jest jawnie dzierżawiony i nie jest dołączony do maszyny Wirtualnej. Nie można usunąć obiektów blob dzierżawy bez przerywania pierwszy dzierżawy. Przerwij dzierżawę, kliknij prawym przyciskiem myszy w obiekcie blob i wybierz **Break lease**. Dzierżawy obiektów blob, które nie są dołączone do maszyny Wirtualnej zapobiec usunięciu obiektu blob, ale nie uniemożliwia usunięcie kontenera lub konta magazynu.
+> Jeśli **MicrosoftAzureCompute_VMName** i **MicrosoftAzureCompute_DiskType** nie są wyświetlane w metadanych obiektu BLOB, oznacza to, że obiekt BLOB jest jawnie dzierżawiony i nie jest podłączony do maszyny wirtualnej. Dzierżawcy obiektów BLOB nie można usunąć bez wcześniejszego podzielenia dzierżawy. Aby przerwać dzierżawę, kliknij prawym przyciskiem myszy obiekt BLOB i wybierz pozycję **Przerwij dzierżawę**. Dzierżawione obiekty blob, które nie są dołączone do maszyny wirtualnej, uniemożliwiają usunięcie obiektu BLOB, ale nie uniemożliwiają usuwania kontenera lub konta magazynu.
 
-### <a name="scenario-2-deleting-a-container---identify-all-blobs-within-container-that-are-attached-to-vms"></a>Scenariusz 2: Trwa usuwanie kontenera — zidentyfikować wszystkie obiekty BLOB w kontenerze, które są dołączone do maszyn wirtualnych
+### <a name="scenario-2-deleting-a-container---identify-all-blobs-within-container-that-are-attached-to-vms"></a>Scenariusz 2: Usuwanie kontenera — Zidentyfikuj wszystkie obiekty blob w kontenerze, które są dołączone do maszyn wirtualnych
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. W menu Centrum wybierz **wszystkie zasoby**. Przejdź do konta magazynu, w obszarze **usługę Blob Service** wybierz **kontenery**i Znajdź kontenera do usunięcia.
-3. Kliknij, aby otworzyć kontenera i zostanie wyświetlona lista obiektów blob wewnątrz niego. Zidentyfikuj wszystkie obiekty BLOB z typem obiektu Blob = **stronicowych obiektów blob** i stanu dzierżawy = **wydzierżawiony** z tej listy. Należy wykonać scenariusz 1 do identyfikowania maszyny Wirtualnej związany z każdą z tych obiektów blob.
+2. W menu Centrum wybierz pozycję **Wszystkie zasoby**. Przejdź do konta magazynu, w obszarze **Usługa BLOB** wybierz **kontenery**i Znajdź kontener do usunięcia.
+3. Kliknij, aby otworzyć kontener, a zostanie wyświetlona lista obiektów BLOB znajdujących się w nim. Zidentyfikuj wszystkie obiekty blob z typem obiektu BLOB = **Page BLOB** i State Lease = **wydzierżawione** z tej listy. Postępuj zgodnie z scenariuszem 1, aby zidentyfikować maszynę wirtualną skojarzoną z każdym z tych obiektów BLOB.
 
-    ![Zrzut ekranu przedstawiający portal, za pomocą obiektów blob konta magazynu i "Dzierżawy stanu" z "Wydzierżawiony" wyróżniony](./media/troubleshoot-vhds/utd-disks-sm.png)
+    ![Zrzut ekranu portalu z wyróżnionymi obiektami BLOB konta magazynu i "stanem dzierżawy" i "dzierżawa"](./media/troubleshoot-vhds/utd-disks-sm.png)
 
-4. Postępuj zgodnie z [kroku 2](#step-2-delete-vm-to-detach-os-disk) i [kroku 3](#step-3-detach-data-disk-from-the-vm) można usunąć maszyny wirtualne z **OSDisk** i odłączanie **DataDisk**. 
+4. Wykonaj [kroki krok 2](#step-2-delete-vm-to-detach-os-disk) i [3](#step-3-detach-data-disk-from-the-vm) , aby usunąć maszyny wirtualne z **OSDisk** i odłączyć **dysk**danych. 
 
-### <a name="scenario-3-deleting-storage-account---identify-all-blobs-within-storage-account-that-are-attached-to-vms"></a>Scenariusz 3: Usuwanie magazynu konta — zidentyfikować wszystkie obiekty BLOB w ramach konta magazynu, które są dołączone do maszyn wirtualnych
+### <a name="scenario-3-deleting-storage-account---identify-all-blobs-within-storage-account-that-are-attached-to-vms"></a>Scenariusz 3: Usuwanie konta magazynu — Zidentyfikuj wszystkie obiekty blob na koncie magazynu dołączonym do maszyn wirtualnych
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. W menu Centrum wybierz **wszystkie zasoby**. Przejdź do konta magazynu, w obszarze **usługę Blob Service** wybierz **obiektów blob**.
-3. W **kontenery** okienku zidentyfikować wszystkie kontenery gdzie **stanu dzierżawy** jest **wydzierżawiony** i postępuj zgodnie z [scenariuszu 2](#scenario-2-deleting-a-container---identify-all-blobs-within-container-that-are-attached-to-vms) dla każdego  **Dzierżawiony** kontenera.
-4. Postępuj zgodnie z [kroku 2](#step-2-delete-vm-to-detach-os-disk) i [kroku 3](#step-3-detach-data-disk-from-the-vm) można usunąć maszyny wirtualne z **OSDisk** i odłączanie **DataDisk**. 
+2. W menu Centrum wybierz pozycję **Wszystkie zasoby**. Przejdź do konta magazynu, a następnie wybierz pozycję **obiekty**BLOB w obszarze **usługi BLOB** .
+3. W okienku **kontenery** Zidentyfikuj wszystkie kontenery, w których jest **wydzierżawiony** **stan dzierżawy** , i postępuj zgodnie z [scenariuszem 2](#scenario-2-deleting-a-container---identify-all-blobs-within-container-that-are-attached-to-vms) dla każdego kontenera **dzierżawy** .
+4. Wykonaj [kroki krok 2](#step-2-delete-vm-to-detach-os-disk) i [3](#step-3-detach-data-disk-from-the-vm) , aby usunąć maszyny wirtualne z **OSDisk** i odłączyć **dysk**danych. 
 
-## <a name="step-2-delete-vm-to-detach-os-disk"></a>Krok 2: Usuwanie maszyny Wirtualnej, aby odłączyć dysk systemu operacyjnego
-Jeśli wirtualny dysk twardy jest dyskiem systemu operacyjnego, należy usunąć maszynę Wirtualną, przed usunięciem dołączonego dysku VHD. Wykonywać żadnych dodatkowych akcji jest wymagana w przypadku dysków danych podłączonych do tej samej maszyny Wirtualnej, po wykonaniu tych kroków:
-
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. W menu Centrum wybierz **maszyn wirtualnych**.
-3. Wybierz wirtualny dysk twardy dołączony do maszyny Wirtualnej.
-4. Upewnij się, że nic nie jest aktywnie przy użyciu maszyny wirtualnej i nie są już potrzebne maszyny wirtualnej.
-5. W górnej części **szczegóły maszyny wirtualnej** okienku wybierz **Usuń**, a następnie kliknij przycisk **tak** o potwierdzenie.
-6. Należy usunąć maszynę Wirtualną, ale mogą być zachowywane przez wirtualny dysk twardy. Jednak wirtualny dysk twardy powinien być już dołączony do maszyny Wirtualnej lub ma do niej dzierżawy. Może upłynąć kilka minut, zanim dzierżawy mogą być wprowadzane. Aby sprawdzić, czy dzierżawa zostanie zwolniona, przejdź do lokalizacji obiektu blob i w **właściwości obiektu Blob** okienku **stanu dzierżawy** powinien być **dostępne**.
-
-## <a name="step-3-detach-data-disk-from-the-vm"></a>Krok 3: Dołączanie dysku danych z maszyny Wirtualnej
-Jeśli wirtualny dysk twardy jest dyskiem danych, odłącz wirtualny dysk twardy z maszyny Wirtualnej, aby usunąć tę dzierżawę:
+## <a name="step-2-delete-vm-to-detach-os-disk"></a>Krok 2: Usuń maszynę wirtualną, aby odłączyć dysk systemu operacyjnego
+W przypadku dysku z systemem operacyjnym należy usunąć maszynę wirtualną przed usunięciem dołączonego wirtualnego dysku twardego. Po ukończeniu tych kroków nie będzie wymagana żadna dodatkowa akcja dla dysków danych podłączonych do tej samej maszyny wirtualnej:
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. W menu Centrum wybierz **maszyn wirtualnych**.
-3. Wybierz wirtualny dysk twardy dołączony do maszyny Wirtualnej.
-4. Wybierz **dysków** na **szczegóły maszyny wirtualnej** okienka.
-5. Wybierz dysk danych można usunąć wirtualny dysk twardy jest podłączony do. Można określić, które obiekt blob jest dołączony na dysku, sprawdzając adres URL wirtualnego dysku twardego.
-6. Możesz sprawdzić lokalizacji obiektu blob, klikając na dysku, aby zaewidencjonować ścieżkę **identyfikator URI dysku VHD** pola.
-7. Wybierz **Edytuj** w górnej części **dysków** okienka.
-8. Kliknij przycisk **odłączyć ikonę** dysku danych do usunięcia.
+2. W menu centrum wybierz pozycję **Virtual Machines**.
+3. Wybierz maszynę wirtualną, z którą jest dołączony dysk VHD.
+4. Upewnij się, że nic nie jest aktywnie używane, a maszyna wirtualna nie jest już potrzebna.
+5. W górnej części okienka **Szczegóły maszyny wirtualnej** wybierz pozycję **Usuń**, a następnie kliknij przycisk **tak** , aby potwierdzić.
+6. Należy usunąć maszynę wirtualną, ale można zachować dysk VHD. Jednak wirtualny dysk twardy nie powinien już być dołączony do maszyny wirtualnej ani dzierżawy. Zwolnienie dzierżawy może potrwać kilka minut. Aby sprawdzić, czy dzierżawa została wydana, przejdź do lokalizacji obiektu BLOB, a w okienku **właściwości obiektu BLOB** **stan dzierżawy** powinien być **dostępny**.
 
-     ![Zrzut ekranu przedstawiający portal, otwórz okienko "Metadane obiektu Blob" magazynu](./media/troubleshoot-vhds/utd-vm-disks-edit.png)
+## <a name="step-3-detach-data-disk-from-the-vm"></a>Krok 3: Odłączanie dysku danych z maszyny wirtualnej
+Jeśli wirtualny dysk twardy znajduje się na dysku z danymi, odłącz wirtualny dysk twardy od maszyny wirtualnej w celu usunięcia dzierżawy:
 
-9. Wybierz pozycję **Zapisz**. Dysk jest obecnie odłączona od maszyny Wirtualnej, i wirtualny dysk twardy nie jest już uzyska dzierżawę. Może upłynąć kilka minut, zanim dzierżawy mogą być wprowadzane. Aby sprawdzić, czy po udostępnieniu dzierżawy, przejdź do lokalizacji obiektu blob i w **właściwości obiektu Blob** okienku **stanu dzierżawy** . wartość powinna być **odblokowany** lub **Dostępne**.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+2. W menu centrum wybierz pozycję **Virtual Machines**.
+3. Wybierz maszynę wirtualną, z którą jest dołączony dysk VHD.
+4. Wybierz pozycję **dyski** w okienku **Szczegóły maszyny wirtualnej** .
+5. Wybierz dysk z danymi do usunięcia, do którego jest dołączony dysk VHD. Możesz określić, który obiekt BLOB jest dołączony do dysku, sprawdzając adres URL wirtualnego dysku twardego.
+6. Lokalizację obiektu BLOB można zweryfikować, klikając dysk, aby sprawdzić ścieżkę w polu **Identyfikator URI dysku VHD** .
+7. Wybierz pozycję **Edytuj** w górnej części okienka **dysków** .
+8. Kliknij przycisk **Odłącz ikonę** dysku z danymi, który ma zostać usunięty.
+
+     ![Zrzut ekranu portalu z otwartym okienkiem magazynu "metadane obiektów BLOB"](./media/troubleshoot-vhds/utd-vm-disks-edit.png)
+
+9. Wybierz pozycję **Zapisz**. Dysk jest teraz odłączony od maszyny wirtualnej, a wirtualny dysk twardy nie jest już dzierżawiony. Zwolnienie dzierżawy może potrwać kilka minut. Aby sprawdzić, czy dzierżawa została wydana, przejdź do lokalizacji obiektu BLOB i w okienku **właściwości obiektu BLOB** , wartość **stanu dzierżawy** powinna być **odblokowana** lub **dostępna**.
 
 [Storage deletion errors in Resource Manager deployment]: #storage-delete-errors-in-rm
 

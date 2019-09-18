@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: ecceb1177d7b7015afc92f10284a9372d0cfb4a2
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: a0ca483005cf1f5aaadcd7a6107b092d581d6773
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375316"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067766"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>Macierz obsługi dotycząca oceny i migracji środowiska VMware
 
@@ -43,16 +43,19 @@ W tabeli zestawiono obsługiwane scenariusze dotyczące maszyn wirtualnych VMwar
 Azure Government | Administracja USA — Wirginia
 Azja i Pacyfik | Azja Wschodnia lub Azja Południowo-Wschodnia
 Australia | Australia Wschodnia lub Australia Południowo-Wschodnia
+Brazylia | Brazylia Południowa
 Kanada | Kanada środkowa lub Kanada Wschodnia
 Europa | Europa Północna lub Europa Zachodnia
+Francja | Francja Środkowa
 Indie | Indie Środkowe lub Indie Południowe
 Japonia |  Japonia Wschodnia lub Japonia Zachodnia
+Korea Południowa | Korea środkowa lub Korea Południowa
 Zjednoczone Królestwo | Południowe Zjednoczone Królestwo lub Zachodnie Zjednoczone Królestwo
 Stany Zjednoczone | Środkowe stany USA lub zachodnie stany USA 2
 
 
  > [!NOTE]
- > Obsługa Azure Government jest obecnie dostępna tylko dla [starszej wersji](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) programu Azure Migrate.
+ > Obsługa Azure Government jest obecnie dostępna tylko dla starszej [wersji](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) programu Azure Migrate.
 
 
 ## <a name="assessment-vcenter-server-requirements"></a>Ocena — wymagania dotyczące vCenter Server
@@ -73,11 +76,11 @@ Azure Migrate uruchamia lekkie urządzenie w celu odnalezienia maszyn wirtualnyc
 
 **Pomoc techniczna** | **Szczegóły**
 --- | ---
-**Wdrażanie urządzenia** | Urządzenie jest wdrażane jako maszyna wirtualna VMware. Musisz mieć wystarczającą ilość zasobów na vCenter Server, aby przydzielić maszynę wirtualną z 32 GB pamięci RAM, 8 procesorów wirtualnych vCPU, około 80 GB miejsca na dysku i zewnętrznym przełączniku wirtualnym.<br/><br/> Urządzenie wymaga dostępu do Internetu, bezpośrednio lub za pomocą serwera proxy.<br/> Maszynę wirtualną urządzenia należy wdrożyć na hoście ESXi z systemem w wersji 5,5 lub nowszej. 
+**Wdrażanie urządzenia** | Urządzenie jest wdrażane jako maszyna wirtualna VMware. Musisz mieć wystarczającą ilość zasobów na vCenter Server, aby przydzielić maszynę wirtualną z 32 GB pamięci RAM, 8 procesorów wirtualnych vCPU, około 80 GB miejsca na dysku i zewnętrznym przełączniku wirtualnym.<br/><br/> Urządzenie wymaga dostępu do Internetu, bezpośrednio lub za pomocą serwera proxy.<br/> Maszynę wirtualną urządzenia należy wdrożyć na hoście ESXi z systemem w wersji 5,5 lub nowszej.
 **Projekt Azure Migrate** | Urządzenie może być skojarzone z pojedynczym projektem. <br/> Dowolna liczba urządzeń może być skojarzona z pojedynczym projektem.<br/> Można ocenić do 35 000 maszyn wirtualnych w projekcie.
 **Odnajdowa** | Urządzenie może wykryć do 10 000 maszyn wirtualnych VMware na vCenter Server.<br/> Urządzenie może połączyć się z pojedynczym vCenter Server.
 **Grupa oceny** | Można dodać do 35 000 maszyn w jednej grupie.
-**Stopnia** | W ramach jednej oceny można ocenić do 35 000 maszyn wirtualnych.
+**Ocena** | W ramach jednej oceny można ocenić do 35 000 maszyn wirtualnych.
 
 
 ## <a name="assessment-url-access-requirements"></a>Ocena — wymagania dotyczące dostępu do adresów URL

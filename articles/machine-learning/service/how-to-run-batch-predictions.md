@@ -1,7 +1,7 @@
 ---
 title: Uruchamianie prognoz wsadowych dotyczących dużych ilości danych przy użyciu potoków
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak prognozowania partii asynchronicznie na dużych ilości danych przy użyciu usługi Azure Machine Learning.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak wykonywać przewidywania wsadowe asynchronicznie w przypadku dużych ilości danych przy użyciu Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.reviewer: jmartens, garye
 ms.author: jordane
 author: jpe316
 ms.date: 07/12/2019
-ms.openlocfilehash: b0d8eef025efb6398f1d7c734ca558540b157fef
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 3997f327bd6512eeee2cb5e7a0af802f12d1727a
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128253"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034308"
 ---
 # <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-pipelines"></a>Uruchamianie prognoz wsadowych w dużych zestawach danych przy użyciu potoków Azure Machine Learning
 
-W tym artykule dowiesz się, jak wykonać prognozowanie dużej ilości danych asynchronicznie przy użyciu potoków ML z Azure Machine Learning usługą.
+W tym artykule dowiesz się, jak wykonać prognozowanie dużej ilości danych asynchronicznie przy użyciu potoków ML z Azure Machine Learning.
 
 Funkcja prognozowanie wsadowe (lub ocenianie partii) zapewnia ekonomiczną ocenę i niezrównaną przepływność dla aplikacji asynchronicznych. Potoki prognoz usługi Batch można skalować do wykonania wnioskowania pod kątem terabajtów danych produkcyjnych. Funkcja przewidywania wsadowe jest zoptymalizowana pod kątem wysokiej przepływności, nieprawidłowych prognoz i zapamiętania dla dużej ilości danych.
 
@@ -30,7 +30,7 @@ W poniższych krokach utworzysz [potok uczenia maszynowego](concept-ml-pipelines
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning Service](https://aka.ms/AMLFree).
+- Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree).
 
 - Konfigurowanie środowiska deweloperskiego, aby zainstalować zestaw SDK usługi Azure Machine Learning. Aby uzyskać więcej informacji, zobacz [Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning](how-to-configure-environment.md).
 

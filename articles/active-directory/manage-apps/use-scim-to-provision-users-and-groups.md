@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48eb36151948dc6e39edd4ae0fd863c63e83a52b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: b135838558a493cff0e28a8429d31f5a03a69857
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68741360"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033468"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Przy użyciu systemu dla Standard międzydomenowe zarządzania tożsamościami (SCIM), aby automatycznie aprowizować użytkowników i grup z usługi Azure Active Directory do aplikacji
 
@@ -32,7 +32,7 @@ Wiele aplikacji, dla których usługa Azure AD obsługuje [wstępnie zintegrowan
 Głównym celem tego artykułu jest profil Standard scim 2,0, który usługa Azure AD implementuje jako część ogólnego łącznika Standard scim dla aplikacji innych niż Galeria. Pomyślne testowanie aplikacji, która obsługuje standard scim za pomocą ogólnego łącznika usługi Azure AD, jest jednak krokiem do uzyskania aplikacji wymienionej w galerii usługi Azure AD w ramach obsługi aprowizacji użytkowników. Aby uzyskać więcej informacji na temat uzyskiwania aplikacji w galerii aplikacji usługi Azure AD, zobacz [How to: Utwórz listę aplikacji w galerii](../develop/howto-app-gallery-listing.md)aplikacji usługi Azure AD.
 
 > [!IMPORTANT]
-> Ostatnio Zaktualizowano zachowanie implementacji usługi Azure AD Standard scim w dniu 18 grudnia 2018. Aby uzyskać informacje na temat zmian, zobacz [zgodność protokołów standard scim 2,0 usługi Azure AD User](application-provisioning-config-problem-scim-compatibility.md)Provisioning.
+> Ostatnio Zaktualizowano zachowanie implementacji usługi Azure AD Standard scim w dniu 18 grudnia 2018. Aby uzyskać informacje na temat zmian, zobacz [zgodność protokołów standard scim 2,0 usługi Azure AD User Provisioning](application-provisioning-config-problem-scim-compatibility.md).
 
 ![Przedstawia Inicjowanie obsługi z usługi Azure AD do aplikacji lub magazynu tożsamości][0]<br/>
 *Rysunek 1: Inicjowanie obsługi z Azure Active Directory do aplikacji lub magazynu tożsamości implementującego Standard scim*
@@ -91,10 +91,10 @@ Aplikacje, które obsługują profile Standard SCIM opisane w tym artykule może
 1. Wybierz pozycję **Zapisz** , aby uruchomić usługę Azure AD Provisioning.
 1. W przypadku synchronizacji tylko przypisanych użytkowników i grup (zalecane) należy wybrać kartę **Użytkownicy i grupy** i przypisać użytkowników lub grupy, które mają zostać zsynchronizowane.
 
-Po uruchomieniu początkowej synchronizacji można wybrać opcję **dzienniki inspekcji** w lewym panelu, aby monitorować postęp, który pokazuje wszystkie akcje wykonywane przez usługę aprowizacji w aplikacji. Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](check-status-user-account-provisioning.md).
+Po rozpoczęciu pierwszego cyklu możesz wybrać opcję **dzienniki inspekcji** w lewym panelu, aby monitorować postęp, który pokazuje wszystkie akcje wykonywane przez usługę aprowizacji w aplikacji. Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](check-status-user-account-provisioning.md).
 
 > [!NOTE]
-> Synchronizacja początkowa trwa dłużej niż w przypadku późniejszej synchronizacji, która występuje około co 40 minut, o ile usługa jest uruchomiona.
+> Cykl początkowy trwa dłużej niż w przypadku późniejszej synchronizacji, który występuje około co 40 minut, o ile usługa jest uruchomiona.
 
 ## <a name="understanding-the-azure-ad-scim-implementation"></a>Omówienie implementacji usługi Azure AD Standard scim
 
@@ -693,7 +693,7 @@ Najłatwiejszym sposobem realizowania Standard SCIM punktu końcowego, który mo
 1. Wybierz pozycję **Zapisz** , aby uruchomić usługę Azure AD Provisioning.
 1. W przypadku synchronizacji tylko przypisanych użytkowników i grup (zalecane) należy wybrać kartę **Użytkownicy i grupy** i przypisać użytkowników lub grupy, które mają zostać zsynchronizowane.
 
-Po uruchomieniu początkowej synchronizacji można wybrać opcję **dzienniki inspekcji** w lewym panelu, aby monitorować postęp, który pokazuje wszystkie akcje wykonywane przez usługę aprowizacji w aplikacji. Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](check-status-user-account-provisioning.md).
+Po rozpoczęciu pierwszego cyklu możesz wybrać opcję **dzienniki inspekcji** w lewym panelu, aby monitorować postęp, który pokazuje wszystkie akcje wykonywane przez usługę aprowizacji w aplikacji. Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](check-status-user-account-provisioning.md).
 
 W ostatnim kroku weryfikacji próbki jest można otworzyć pliku TargetFile.csv w folderze \AzureAD-BYOA-Provisioning-Samples\ProvisioningAgent\bin\Debug na komputerze Windows. Po jego uruchomieniu procesu aprowizacji ten plik zawiera szczegółowe informacje o wszystkich przypisane i aprowizacji użytkowników i grup.
 
@@ -834,7 +834,7 @@ Aby hostować usługę w Internet Information Services, programista utworzy zest
 
 ### <a name="handling-endpoint-authentication"></a>Obsługa punktu końcowego uwierzytelniania
 
-Żądania z usługi Azure Active Directory zawierać tokenu elementu nośnego OAuth 2.0.   Każda usługa otrzymująca żądanie powinna uwierzytelniać wystawcę jako Azure Active Directory dla oczekiwanego Azure Active Directory dzierżawy, aby uzyskać dostęp do usługi sieci Web programu Azure Active Directory Graph.  W tokenie wystawca jest identyfikowany przez zgłoszenie ISS, takie jak "ISS": "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/ ".  W tym przykładzie adres podstawowy wartości https://sts.windows.net żądania, określa Azure Active Directory jako wystawca, natomiast segment adresu względnego, cbb1a5ac-f33b-45fa-9bf5-f37db0fed422, jest unikatowym identyfikatorem dzierżawy Azure Active Directory dla który token został wystawiony. Odbiorcy tokenu będą identyfikatorem szablonu aplikacji dla aplikacji w galerii. Identyfikator szablonu aplikacji dla wszystkich aplikacji niestandardowych to 8adf8e6e-67b2-4cf2-A259-e3dc5476c621. Identyfikator szablonu aplikacji dla każdej aplikacji w galerii jest różny. Prosimy o ProvisioningFeedback@microsoft.com kontakt z pytaniami dotyczącymi identyfikatora szablonu aplikacji dla aplikacji galerii. Każda aplikacja zarejestrowana w jednej dzierżawie może otrzymać to samo `iss` żądanie z żądaniami Standard scim.
+Żądania z usługi Azure Active Directory zawierać tokenu elementu nośnego OAuth 2.0.   Każda usługa otrzymująca żądanie powinna uwierzytelniać wystawcę jako Azure Active Directory dla oczekiwanego Azure Active Directory dzierżawy, aby uzyskać dostęp do usługi sieci Web programu Azure Active Directory Graph.  W tokenie wystawca jest identyfikowany przez zgłoszenie ISS, takie jak "ISS": "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/ ".  W tym przykładzie adres podstawowy wartości https://sts.windows.net żądania, określa Azure Active Directory jako wystawca, natomiast segment adresu względnego, cbb1a5ac-f33b-45fa-9bf5-f37db0fed422, jest unikatowym identyfikatorem dzierżawy Azure Active Directory dla który token został wystawiony. Odbiorcy tokenu będą IDENTYFIKATORem szablonu aplikacji dla aplikacji w galerii. Identyfikator szablonu aplikacji dla wszystkich aplikacji niestandardowych to 8adf8e6e-67b2-4cf2-A259-e3dc5476c621. Identyfikator szablonu aplikacji dla każdej aplikacji w galerii jest różny. Prosimy o ProvisioningFeedback@microsoft.com kontakt z pytaniami dotyczącymi identyfikatora szablonu aplikacji dla aplikacji galerii. Każda aplikacja zarejestrowana w jednej dzierżawie może otrzymać to samo `iss` żądanie z żądaniami Standard scim.
 
 Deweloperzy korzystający z bibliotek interfejsu wiersza polecenia dostarczonych przez firmę Microsoft do tworzenia usługi Standard scim mogą uwierzytelniać żądania z Azure Active Directory przy użyciu pakietu Microsoft. Owin. Security. ActiveDirectory, wykonując następujące czynności: 
 

@@ -1,10 +1,10 @@
 ---
-title: Określanie ustawień DNS w pliku konfiguracji sieci wirtualnej | Dokumentacja firmy Microsoft
+title: Określanie ustawień DNS w pliku konfiguracji sieci wirtualnej | Microsoft Docs
 description: Jak zmienić ustawienia serwera DNS w sieci wirtualnej przy użyciu pliku konfiguracji sieci wirtualnej w klasycznym modelu wdrażania
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: tysonn
 tags: azure-service-management
 ms.assetid: a8905927-92ac-42b5-8c33-8e42c000692c
@@ -15,28 +15,28 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: genli
-ms.openlocfilehash: 36f7ed9b02b66718327c1a05a6cf29eedf39e7a5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c15d73673c19383deabe15ef30026990dfd138b9
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60232858"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059094"
 ---
 # <a name="specifying-dns-settings-in-a-virtual-network-configuration-file"></a>Określanie ustawień DNS w pliku konfiguracji sieci wirtualnej
-Plik konfiguracji sieci ma dwa elementy, które służy do określania ustawień systemu nazw domen (DNS, Domain Name System): **DnsServers** i **DnsServerRef**. Możesz dodać listę serwerów DNS, określając ich adresy IP i odwoływać się do nazwy **DnsServers** elementu. Następnie można użyć **DnsServerRef** elementu, aby określić, które wpisami serwera DNS z elementu DnsServers służą do witryny innej sieci w ramach sieci wirtualnej.
+Plik konfiguracji sieci ma dwa elementy, których można użyć do określenia ustawień systemu nazw domen (DNS): **DnsServers** i **DnsServerRef**. Listę serwerów DNS można dodać, określając ich adresy IP i nazwy odwołań do elementu **DnsServers** . Następnie można użyć elementu **DnsServerRef** , aby określić, które wpisy serwera DNS z elementu DnsServers są używane dla różnych lokacji sieciowych w sieci wirtualnej.
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
 W tym artykule opisano klasyczny model wdrażania.
 
-Plik konfiguracji sieci może zawierać następujące elementy. Tytuł każdy element jest połączony do strony, która zapewnia dodatkowe informacje na temat ustawienia wartości elementu.
+Plik konfiguracji sieci może zawierać następujące elementy. Tytuł każdego elementu jest połączony ze stroną, która zawiera dodatkowe informacje o ustawieniach wartości elementu.
 
 > [!IMPORTANT]
-> Aby uzyskać informacje o sposobie konfigurowania pliku konfiguracji sieci, zobacz [Konfigurowanie wirtualnych sieci przy użyciu pliku konfiguracyjnego sieci](virtual-networks-using-network-configuration-file.md). Aby uzyskać informacji na temat każdego z elementów znajdujących się w pliku konfiguracji sieci, zobacz [schemat konfiguracji sieci wirtualnej platformy Azure](https://msdn.microsoft.com/library/azure/jj157100.aspx).
+> Informacje o sposobie konfigurowania pliku konfiguracji sieci znajdują się w temacie [konfigurowanie Virtual Network przy użyciu pliku konfiguracji sieci](virtual-networks-using-network-configuration-file.md). Aby uzyskać informacje na temat każdego elementu zawartego w pliku konfiguracji sieci, zobacz [Azure Virtual Network Configuration Schema](https://msdn.microsoft.com/library/azure/jj157100.aspx).
 > 
 > 
 
-[DNS Element](https://go.microsoft.com/fwlink/?LinkId=248093)
+[Element DNS](https://go.microsoft.com/fwlink/?LinkId=248093)
 
     <Dns>
       <DnsServers>
@@ -47,11 +47,11 @@ Plik konfiguracji sieci może zawierać następujące elementy. Tytuł każdy el
     </Dns>
 
 > [!WARNING]
-> **Nazwa** atrybutu w **serwer DNS** element jest używany tylko jako odniesienie do **DnsServerRef** elementu. Go nie reprezentuje nazwę hosta dla serwera DNS. Każdy **serwer DNS** wartość atrybutu musi być unikatowa dla całej subskrypcji Microsoft Azure
+> Atrybut **name** w elemencie **serwer DNS** jest używany tylko jako odwołanie do elementu **DnsServerRef** . Nie reprezentuje nazwy hosta serwera DNS. Każda wartość atrybutu **serwer DNS** musi być unikatowa w całej subskrypcji Microsoft Azure
 > 
 > 
 
-[Element Lokacje sieci wirtualnej](https://go.microsoft.com/fwlink/?LinkId=248093)
+[Virtual Network element Sitess](https://go.microsoft.com/fwlink/?LinkId=248093)
 
     <DnsServersRef>
       <DnsServerRef name="ID1" />
@@ -60,12 +60,12 @@ Plik konfiguracji sieci może zawierać następujące elementy. Tytuł każdy el
     </DnsServersRef>
 
 > [!NOTE]
-> Aby można było określić, to ustawienie dla elementu wirtualnego Lokacje sieciowe, jego musi być wcześniej zdefiniowany w elemencie DNS. DnsServerRef *nazwa* w lokacji sieci wirtualnej element musi odwoływać się do wartości nazw określona w elemencie DNS dla serwer DNS *nazwa*.
+> W celu określenia tego ustawienia dla elementu Virtual Network sites, musi być wcześniej zdefiniowany w elemencie DNS. *Nazwa* DnsServerRef w elemencie "Virtual Network sites" musi odwoływać się do wartości nazwy określonej w elemencie DNS dla *nazwy*serwer DNS.
 > 
 > 
 
-## <a name="next-steps"></a>Kolejne kroki
-* Zrozumienie [schemat konfiguracji sieci wirtualnej platformy Azure](https://go.microsoft.com/fwlink/?LinkId=248093).
-* Zrozumienie [schematu konfiguracji usługi platformy Azure](https://msdn.microsoft.com/library/windowsazure/ee758710).
-* [Konfigurowanie sieci wirtualnej za pomocą plików konfiguracji sieci](virtual-networks-using-network-configuration-file.md).
+## <a name="next-steps"></a>Następne kroki
+* Poznaj [Schemat konfiguracji usługi Azure Virtual Network](https://go.microsoft.com/fwlink/?LinkId=248093).
+* Informacje o [schemacie konfiguracji usługi platformy Azure](https://msdn.microsoft.com/library/windowsazure/ee758710).
+* [Skonfiguruj sieć wirtualną przy użyciu plików konfiguracji sieci](virtual-networks-using-network-configuration-file.md).
 

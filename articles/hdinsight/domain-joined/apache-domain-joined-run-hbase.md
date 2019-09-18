@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: 72e268628560618fb6fa47843f5125d9126a9f3e
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 5823bed08e0fc2ed67dbbf3c58c39982f3a1897e
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885158"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037269"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Samouczek: Konfigurowanie zasad Apache HBase w usłudze HDInsight przy użyciu pakiet Enterprise Security
 
@@ -88,7 +88,8 @@ Protokół SSH umożliwia połączenie z klastrami HBase, a następnie korzystan
     ```hbaseshell
     scan 'Contacts'
     ```
-    ![Powłoka HBase HDInsight Hadoop](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
+
+    ![Dane wyjściowe powłoki HBase usługi HDInsight Hadoop](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
 
 ## <a name="create-ranger-policies"></a>Tworzenie zasad platformy Ranger
 
@@ -96,7 +97,7 @@ Utwórz zasady platformy Ranger dla użytkowników **sales_user1** i **marketing
 
 1. Otwórz **interfejs użytkownika administratora platformy Ranger**. Kliknij pozycję **\<nazwa_klastra>_hbase** w obszarze **HBase**.
 
-   ![Interfejs użytkownika administratora platformy Apache Ranger](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
+   ![Interfejs użytkownika administratora usługi HDInsight Apache Ranger](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
 
 2. Na ekranie **Lista zasad** zostaną wyświetlone wszystkie zasady platformy Ranger utworzone dla tego klastra. Lista może zawierać tylko jedne wstępnie skonfigurowane zasady. Kliknij pozycję **Dodaj nowe zasady**.
 
@@ -202,14 +203,14 @@ Zgodnie ze skonfigurowanymi zasadami platformy Ranger użytkownik **sales_user1*
    kinit marketing_user1
    ```
 
-2. Otwórz powłokę HBase i Zeskanuj tabelę `Customers`:
+1. Otwórz powłokę HBase i Zeskanuj tabelę `Customers`:
 
     ```hbaseshell
     hbase shell
     scan `Customers`
     ```
 
-3. Zauważ, że użytkownik „marketing” może wyświetlić tylko pięć kolumn z rodziny kolumn `Contact`.
+1. Zauważ, że użytkownik „marketing” może wyświetlić tylko pięć kolumn z rodziny kolumn `Contact`.
 
     ```hbaseshell
     ROW                                COLUMN+CELL
@@ -226,9 +227,9 @@ Zgodnie ze skonfigurowanymi zasadami platformy Ranger użytkownik **sales_user1*
     2 row(s) in 0.0730 seconds
     ```
 
-9. Wyświetl zdarzenia dostępu inspekcji z poziomu interfejsu użytkownika platformy Ranger.
+1. Wyświetl zdarzenia dostępu inspekcji z poziomu interfejsu użytkownika platformy Ranger.
 
-   ![Inspekcja zasad interfejsu użytkownika platformy Ranger](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
+   ![Inspekcja zasad interfejsu użytkownika usługi HDInsight Ranger](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

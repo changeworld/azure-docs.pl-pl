@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: hrasheed
-ms.openlocfilehash: b1231a406ac20512e9ce92032379d697c3346af3
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: c81c0de98442f576145f2c2e12f0b2053b80e83a
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882830"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033601"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Łączenie programu Excel z Apache Hadoop w usłudze Azure HDInsight za pomocą sterownika Microsoft Hive ODBC
 
@@ -32,9 +32,11 @@ Przed rozpoczęciem pracy z tym artykułem należy dysponować następującymi e
 * Stacja robocza z pakietem Office 2010 Professional Plus lub nowszym albo programem Excel 2010 lub nowszym.
 
 ## <a name="install-microsoft-hive-odbc-driver"></a>Zainstaluj sterownik Microsoft Hive ODBC
+
 Pobierz i Zainstaluj wersję [Sterownik Microsoft Hive ODBC](https://go.microsoft.com/fwlink/?LinkID=286698) zgodną z wersją aplikacji, w której będziesz używać sterownika ODBC.  W tym artykule sterownik jest używany dla programu Office Excel.
 
 ## <a name="create-apache-hive-odbc-data-source"></a>Tworzenie źródła danych Apache Hive ODBC
+
 Poniższe kroki pokazują, jak utworzyć źródło danych ODBC Hive.
 
 1. W systemie Windows przejdź do menu Start, aby rozpocząć > Narzędzia administracyjne systemu Windows > źródła danych ODBC (32-bitowe)/(64-bitowe).  Spowoduje to otwarcie okna **administratora źródła danych ODBC** .
@@ -65,7 +67,7 @@ Poniższe kroki pokazują, jak utworzyć źródło danych ODBC Hive.
    |  Liczba pobranych wierszy na blok |Podczas pobierania dużej liczby rekordów dostrajanie tego parametru może być wymagane w celu zapewnienia optymalnej wydajności. |
    |  Domyślna długość kolumny ciągu, długość kolumny binarnej, skala kolumn dziesiętnych |Długości i precyzji typu danych mogą mieć wpływ na sposób zwracania danych. Powodują one zwrócenie nieprawidłowych informacji z powodu utraty dokładności i/lub obcięcia. |
 
-    ![Opcje zaawansowane](./media/apache-hadoop-connect-excel-hive-odbc-driver/hiveodbc-datasource-advancedoptions1.png "Zaawansowane opcje konfiguracji DSN")
+    ![Zaawansowane opcje konfiguracji DSN](./media/apache-hadoop-connect-excel-hive-odbc-driver/hiveodbc-datasource-advancedoptions1.png "Zaawansowane opcje konfiguracji DSN")
 
 1. Wybierz **test** , aby przetestować źródło danych. Gdy źródło danych jest prawidłowo skonfigurowane, wynik testu pokazuje **sukces!** .  
 
@@ -83,7 +85,7 @@ Poniższe kroki opisują sposób importowania danych z tabeli Hive do skoroszytu
 
 2. Na karcie **dane** przejdź do **pobierania danych** > **z innych źródeł** > **z ODBC** , aby uruchomić z okna **ODBC** .
 
-    ![Kreator otwierania połączenia danych](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-excel-dataconnection1.png "Kreator otwierania połączenia danych")
+    ![Otwórz Kreatora połączenia danych programu Excel](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-excel-dataconnection1.png "Otwórz Kreatora połączenia danych programu Excel")
 
 3. Z listy rozwijanej wybierz nazwę źródła danych utworzoną w ostatniej sekcji, a następnie wybierz przycisk **OK**.
 
@@ -91,7 +93,7 @@ Poniższe kroki opisują sposób importowania danych z tabeli Hive do skoroszytu
 
 5. Z **poziomu nawigatora**przejdź do**hivesampletable** **domyślnych** >  **gałęzi** > , a następnie wybierz pozycję **Załaduj**. Importowanie danych do programu Excel trwa kilka chwil.
 
-    ![Nawigator ODBC usługi HDInsight Hive](./media/apache-hadoop-connect-excel-hive-odbc-driver/hdinsight-hive-odbc-navigator.png "Kreator otwierania połączenia danych")
+    Usługa ![HDInsight Excel Hive ODBC — Nawigator] Usługa (./media/apache-hadoop-connect-excel-hive-odbc-driver/hdinsight-hive-odbc-navigator.png "HDInsight Excel Hive ODBC — Nawigator")
 
 ## <a name="next-steps"></a>Następne kroki
 

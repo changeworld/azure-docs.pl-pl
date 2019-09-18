@@ -4,14 +4,14 @@ description: Zawiera omówienie znanych problemów z usługą Azure Migrate, a t
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 16e0fe51137ce7e96cf98c0a8acf7c490e9087b3
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 49c43d393ef0722424088e0073942b56787f1bc7
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232406"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067809"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Rozwiązywanie problemów z usługą Azure Migrate
 
@@ -48,7 +48,7 @@ Jeśli projekt został utworzony w poprzedniej wersji Azure Migrate, wykonaj nas
 Utwórz nowy projekt Azure Migrate w następujący sposób:
 
 1. W [Azure Portal](https://portal.azure.com)wyszukaj ciąg **Azure Migrate**.
-2. Na Azure Migrate > pulpitu nawigacyjnego wybierz pozycję **Zmień** w prawym górnym rogu.
+2. Na **Azure Migrate > pulpitu**nawigacyjnego wybierz pozycję **Zmień** w prawym górnym rogu.
 
    ![Zmień projekt Azure Migrate](./media/troubleshooting-general/switch-project.png)
 
@@ -78,7 +78,7 @@ Aby usunąć projekt w bieżącej wersji Azure Migrate:
 2. Na stronie Grupa zasobów wybierz pozycję **Pokaż ukryte typy**.
 3. Wybierz projekt migracji, który chcesz usunąć. Typ zasobu to Microsoft. zmigrować/migrateprojects i usuwa go.
 
-Aby usunąć projekt w starszej wersji Azure Migrate: 
+Aby usunąć projekt w starszej wersji Azure Migrate:
 
 1. Otwórz grupę zasobów platformy Azure, w której projekt został utworzony.
 2. Wybierz projekt migracji, który chcesz usunąć. Typ zasobu to projekt migracji, a następnie jego usunięcie.
@@ -90,7 +90,7 @@ Przejdź do obszaru roboczego Log Analytics dołączonego do projektu.
 * Jeśli projekt Azure Migrate nie został usunięty, można znaleźć link do obszaru roboczego w**ocenie serwera** **Essentials** > .
        ![LA — obszar roboczy](./media/troubleshooting-general/loganalytics-workspace.png)
 
-     * If you've already deleted the Azure Migrate project, select **Resource Groups** in the left pane of the Azure portal. Locate the workspace in the relevant resources group, and [follow the instructions](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace) to delete it. 
+     * If you've already deleted the Azure Migrate project, select **Resource Groups** in the left pane of the Azure portal. Locate the workspace in the relevant resources group, and [follow the instructions](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace) to delete it.
 
 
 ## <a name="error-requests-must-contain-user-identity-headers"></a>Błąd "żądania muszą zawierać nagłówki tożsamości użytkownika"
@@ -153,7 +153,7 @@ Jeśli wystąpi błąd połączenia, może nie być możliwe nawiązanie połąc
 
 ## <a name="error-appliance-might-not-be-registered"></a>Błąd: Urządzenie może nie być zarejestrowane
 
-- Błąd 60052, "urządzenie mogło nie zostać pomyślnie zarejestrowane w projekcie Azure Migrate" występuje, jeśli konto platformy Azure użyte do zarejestrowania urządzenia ma niewystarczające uprawnienia. 
+- Błąd 60052, "urządzenie mogło nie zostać pomyślnie zarejestrowane w projekcie Azure Migrate" występuje, jeśli konto platformy Azure użyte do zarejestrowania urządzenia ma niewystarczające uprawnienia.
     - Upewnij się, że konto użytkownika platformy Azure używane do zarejestrowania urządzenia ma co najmniej uprawnienia współautora w ramach subskrypcji.
     - [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements) na temat wymaganych ról i uprawnień platformy Azure.
 - Błąd 60039, "urządzenie mogło nie zostać pomyślnie zarejestrowane w projekcie Azure Migrate" może wystąpić, jeśli rejestracja nie powiedzie się, ponieważ nie można odnaleźć projektu Azure Migrate użytego do rejestracji urządzenia.
@@ -162,7 +162,7 @@ Jeśli wystąpi błąd połączenia, może nie być możliwe nawiązanie połąc
 
 ## <a name="error-key-vault-management-operation-failed"></a>Błąd: Nie można wykonać operacji zarządzania Key Vault
 
-Jeśli zostanie wyświetlony błąd 60030 lub 60031, "Azure Key Vault operacji zarządzania nie powiodła się", wykonaj następujące czynności: 
+Jeśli zostanie wyświetlony błąd 60030 lub 60031, "Azure Key Vault operacji zarządzania nie powiodła się", wykonaj następujące czynności:
 - Upewnij się, że konto użytkownika platformy Azure używane do zarejestrowania urządzenia ma co najmniej uprawnienia współautora w ramach subskrypcji.
 - Upewnij się, że konto ma dostęp do magazynu kluczy określonego w komunikacie o błędzie, a następnie spróbuj ponownie wykonać operację.
 - Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną firmy Microsoft.
@@ -187,10 +187,10 @@ Błąd 60025: "Operacja usługi Azure AD nie powiodła się. Wystąpił błąd p
 
 ## <a name="discovered-vms-not-in-portal"></a>Odnalezione maszyny wirtualne nie są w portalu
 
-Po rozpoczęciu odnajdywania, aby **Ocena serwera** i **Migracja serwera** były wyświetlane **w toku**, ale nie są jeszcze wyświetlane maszyny wirtualne w portalu, należy zwrócić uwagę na następujące kwestie: 
+Po rozpoczęciu odnajdywania, aby **Ocena serwera** i **Migracja serwera** były wyświetlane **w toku**, ale nie są jeszcze wyświetlane maszyny wirtualne w portalu, należy zwrócić uwagę na następujące kwestie:
 
 - Po rozpoczęciu odnajdywania z urządzenia przez program VMware VM Discovery zajmie około 15 minut, a dla każdego dodanego hosta na potrzeby odnajdywania maszyn wirtualnych z funkcją Hyper-V może znajdować się co najmniej dwie minuty.
-- Jeśli odnajdywanie będzie nadal widoczne nawet po upływie tych okresów oczekujących, wybierz pozycję **Odśwież** na karcie **serwery** . Powinno to wskazywać liczbę odnalezionych serwerów w **ocenie serwera** i **migracji serwera**.
+- Jeśli **odnajdywanie** będzie nadal widoczne nawet po upływie tych okresów oczekujących, wybierz pozycję **Odśwież** na karcie **serwery** . Powinno to wskazywać liczbę odnalezionych serwerów w **ocenie serwera** i **migracji serwera**.
 
 
 ## <a name="deleted-vms-in-the-portal"></a>Usunięte maszyny wirtualne w portalu
@@ -202,7 +202,7 @@ Jeśli urządzenie zostało wdrożone w sposób ciągły do wykrywania środowis
 
     1. W obszarze **serwery** > **Azure Migrate oceny serwera**wybierz pozycję **Przegląd**.
     2. W obszarze **Zarządzaj**wybierz pozycję **Agent Health**
-    3. Wybierz pozycję **Odśwież agenta**. 
+    3. Wybierz pozycję **Odśwież agenta**.
     1. Poczekaj na zakończenie operacji odświeżania. Informacje powinny być teraz wyświetlane na bieżąco.
 
 ## <a name="vm-information-isnt-in-the-portal"></a>Informacje o maszynie wirtualnej nie są w portalu
@@ -212,7 +212,7 @@ Jeśli urządzenie zostało wdrożone w sposób ciągły do wykrywania środowis
 
     1. W obszarze **serwery** > **Azure Migrate oceny serwera**wybierz pozycję **Przegląd**.
     2. W obszarze **Zarządzaj**wybierz pozycję **Agent Health**
-    3. Wybierz pozycję **Odśwież agenta**. 
+    3. Wybierz pozycję **Odśwież agenta**.
     1. Poczekaj na zakończenie operacji odświeżania. Informacje powinny być teraz wyświetlane na bieżąco.
 
 
@@ -247,10 +247,10 @@ Wymaga subskrypcji Microsoft Visual Studio | Na komputerze jest uruchomiony syst
 Nie znaleziono maszyny wirtualnej wymaganej wydajności magazynu | Wydajność magazynu (operacje wejścia/wyjścia na sekundę [IOPS] i przepływność) wymagane dla maszyny przekraczają obsługę maszyny wirtualnej platformy Azure. Przed migracją Zmniejsz wymagania dotyczące magazynu maszyny.
 Nie znaleziono maszyny wirtualnej dla wymaganej wydajności sieci | Wydajność sieci (WE/wychodzącej) wymagana przez maszynę przekracza obsługę maszyny wirtualnej platformy Azure. Zmniejsz wymagania dotyczące sieci dla maszyny.
 Nie znaleziono maszyny wirtualnej w określonej lokalizacji | Użyj innej lokalizacji docelowej przed migracją.
-Znaleziono co najmniej jeden nieodpowiedni dysk | Co najmniej jeden dysk dołączony do maszyny wirtualnej nie spełnia wymagań platformy Azure. Z<br/><br/> Azure Migrate: Ocena serwera obecnie nie obsługuje SSD w warstwie Ultra dysków i ocenia dyski w oparciu o limity dysków dla dysków zarządzanych w warstwie Premium (32 TB).<br/><br/> Dla każdego dysku podłączonego do maszyny wirtualnej upewnij się, że rozmiar dysku to < 64 TB (obsługiwane przez dyski SSD w warstwie Ultra).<br/><br/> Jeśli tak nie jest, zmniejsz rozmiar dysku przed przeprowadzeniem migracji na platformę Azure lub Użyj wielu dysków [](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) na platformie Azure, aby uzyskać wyższe limity magazynu. Należy upewnić się, że wydajność (IOPS i przepustowość) wymagana przez poszczególne dyski są obsługiwane przez [maszyny wirtualne zarządzane](https://docs.microsoft.com/azure/azure-subscription-service-limits#storage-limits)przez platformę Azure.
+Znaleziono co najmniej jeden nieodpowiedni dysk | Co najmniej jeden dysk dołączony do maszyny wirtualnej nie spełnia wymagań platformy Azure. Z<br/><br/> Azure Migrate: Ocena serwera obecnie nie obsługuje SSD w warstwie Ultra dysków i ocenia dyski w oparciu o limity dysków dla dysków zarządzanych w warstwie Premium (32 TB).<br/><br/> Dla każdego dysku podłączonego do maszyny wirtualnej upewnij się, że rozmiar dysku to < 64 TB (obsługiwane przez dyski SSD w warstwie Ultra).<br/><br/> Jeśli tak nie jest, zmniejsz rozmiar dysku przed przeprowadzeniem migracji na platformę Azure lub Użyj wielu dysków [na platformie Azure, aby uzyskać](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) wyższe limity magazynu. Należy upewnić się, że wydajność (IOPS i przepustowość) wymagana przez poszczególne dyski są obsługiwane przez [maszyny wirtualne zarządzane](https://docs.microsoft.com/azure/azure-subscription-service-limits#storage-limits)przez platformę Azure.
 Co najmniej jedna nieodpowiednia karta sieciowa. | Przed migracją Usuń nieużywane karty sieciowe z maszyny.
 Liczba dysków przekracza limit | Usuń nieużywane dyski z maszyny przed migracją.
-Rozmiar dysku przekracza limit | Azure Migrate: Ocena serwera obecnie nie obsługuje SSD w warstwie Ultra dysków i ocenia dyski w oparciu o limity dysku Premium (32 TB).<br/><br/> Platforma Azure obsługuje jednak dyski o rozmiarze do 64 TB (obsługiwane przez dyski SSD w warstwie Ultra). Zmniejsz liczbę dysków do mniej niż 64 TB przed migracją lub Użyj wielu dysków na platformie [](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) Azure, aby uzyskać wyższe limity magazynu.
+Rozmiar dysku przekracza limit | Azure Migrate: Ocena serwera obecnie nie obsługuje SSD w warstwie Ultra dysków i ocenia dyski w oparciu o limity dysku Premium (32 TB).<br/><br/> Platforma Azure obsługuje jednak dyski o rozmiarze do 64 TB (obsługiwane przez dyski SSD w warstwie Ultra). Zmniejsz liczbę dysków do mniej niż 64 TB przed migracją lub Użyj wielu [dysków na platformie Azure, aby uzyskać](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) wyższe limity magazynu.
 Dysk niedostępny w określonej lokalizacji | Przed przeprowadzeniem migracji upewnij się, że dysk znajduje się w lokalizacji docelowej.
 Dysk niedostępny dla określonej nadmiarowości | Dysk powinien używać typu magazynu nadmiarowości zdefiniowanego w ustawieniach oceny (domyślnie LRS).
 Nie można określić przydatności dysku z powodu błędu wewnętrznego | Spróbuj utworzyć nową ocenę dla grupy.
@@ -258,10 +258,6 @@ Nie znaleziono maszyny wirtualnej z wymaganymi rdzeniami i pamięcią | Platform
 Nie można określić przydatności maszyny wirtualnej z powodu błędu wewnętrznego | Spróbuj utworzyć nową ocenę dla grupy.
 Nie można określić przydatności dla co najmniej jednego dysku z powodu błędu wewnętrznego | Spróbuj utworzyć nową ocenę dla grupy.
 Nie można określić przydatności dla co najmniej jednej karty sieciowej z powodu błędu wewnętrznego | Spróbuj utworzyć nową ocenę dla grupy.
-
-## <a name="cant-add-enterprise-agreement-ea-in-an-assessment"></a>Nie można dodać Umowa Enterprise (EA) do oceny
-
-Azure Migrate oceny serwera nie obsługuje obecnie cen Umowa Enterprise (EA). Aby obejść to ograniczenie, Użyj pozycji **płatność zgodnie z rzeczywistym** użyciem jako oferty platformy Azure, a następnie użyj właściwości **rabatu** , aby określić dowolny otrzymany rabat niestandardowy. [Dowiedz się](https://aka.ms/migrate/selfhelp/eapricing) , jak dostosować ocenę.
 
 ## <a name="linux-vms-are-conditionally-ready"></a>Maszyny wirtualne z systemem Linux są "warunkowo gotowe"
 
@@ -279,7 +275,7 @@ Ocena serwera Azure Migrate może zalecać jednostki SKU maszyny wirtualnej plat
 
 
 - Zalecenie dotyczące jednostki SKU maszyny wirtualnej zależy od właściwości oceny.
-- Ma to wpływ na typ oceny wykonywanej w ocenie serwera: *Oparta na wydajności*lub *w środowisku lokalnym*. 
+- Ma to wpływ na typ oceny wykonywanej w ocenie serwera: *Oparta na wydajności*lub *w środowisku lokalnym*.
 - W przypadku ocen opartych na wydajności Ocena serwera traktuje dane użycia lokalnych maszyn wirtualnych (procesora CPU, pamięci, dysku i wykorzystania sieci) w celu określenia odpowiedniej docelowej jednostki SKU maszyny wirtualnej dla lokalnych maszyn wirtualnych. Dodaje również współczynnik komfortu podczas określania efektywnego wykorzystania.
 - W przypadku lokalnego określania wielkości dane wydajności nie są brane pod uwagę, a docelowa jednostka SKU jest zalecana na podstawie przydziału lokalnego.
 
@@ -288,14 +284,14 @@ Aby pokazać, jak to może mieć wpływ na zalecenia, przyjrzyjmy się przykład
 Mamy lokalną maszynę wirtualną z czterema rdzeniami i 8 GB pamięci, z użyciem procesora CPU 50% i 50% wykorzystania pamięci, a określonym czynnikiem komfortu wynoszącym 1,3.
 
 -  Jeśli ocena jest przeprowadzana **lokalnie**, zaleca się używanie jednostki SKU maszyny wirtualnej platformy Azure z 4 rdzeniami i 8 GB pamięci.
-- Jeśli ocena jest oparta na wydajności, w oparciu o efektywne wykorzystanie procesora CPU i pamięci (50% z 4 rdzeniami * 1,3 = 2,6 rdzenie i 50% 8 GB pamięci * 1,3 = 5,3 GB pamięci), najtańszą jednostką SKU maszyny wirtualnej czterech rdzeni (najbliższą obsługiwaną liczbą rdzeni) i osiem GB pamięci (najbliższe obsługiwane rozmiar pamięci) jest zalecany. 
+- Jeśli ocena jest oparta na wydajności, w oparciu o efektywne wykorzystanie procesora CPU i pamięci (50% z 4 rdzeniami * 1,3 = 2,6 rdzenie i 50% 8 GB pamięci * 1,3 = 5,3 GB pamięci), najtańszą jednostką SKU maszyny wirtualnej czterech rdzeni (najbliższą obsługiwaną liczbą rdzeni) i osiem GB pamięci (najbliższe obsługiwane rozmiar pamięci) jest zalecany.
 - [Dowiedz się więcej](concepts-assessment-calculation.md#sizing) o ustalaniu wielkości ocen.
 
 ## <a name="azure-disk-skus-bigger-than-on-premises"></a>Jednostki SKU dysku platformy Azure większe niż lokalne
 
 Ocena serwera Azure Migrate może zalecić większy dysk na podstawie typu oceny.
 - Ustalanie rozmiarów dysków w ocenie serwera zależy od dwóch właściwości oceny: ustalania rozmiarów kryteriów i typu magazynu.
-- Jeśli kryterium ustalania wielkości jest **oparte na wydajności**, a typ magazynu jest ustawiony na **automatyczny**, wartości IOPS i przepływność dysku są brane pod uwagę podczas identyfikowania docelowego typu dysku (HDD w warstwie Standardowa, SSD w warstwie Standardowa lub Premium). Zalecana jest jednostka SKU dysku z typu dysku, a zalecenie uwzględnia wymagania dotyczące rozmiaru dysku lokalnego. 
+- Jeśli kryterium ustalania wielkości jest **oparte na wydajności**, a typ magazynu jest ustawiony na **automatyczny**, wartości IOPS i przepływność dysku są brane pod uwagę podczas identyfikowania docelowego typu dysku (HDD w warstwie Standardowa, SSD w warstwie Standardowa lub Premium). Zalecana jest jednostka SKU dysku z typu dysku, a zalecenie uwzględnia wymagania dotyczące rozmiaru dysku lokalnego.
 - Jeśli kryterium ustalania rozmiaru jest **oparte na wydajności**, a typ magazynu to **Premium**, zalecana jest jednostka SKU dysku Premium na platformie Azure na podstawie wymagań operacji we/wy na sekundę, przepływności i rozmiaru dysku lokalnego. Ta sama logika jest używana do przeprowadzania ustalania rozmiarów dysków, gdy kryteria ustalania wielkości są **jako lokalne** , a typ magazynu to **HDD w warstwie Standardowa**, **SSD w warstwie Standardowa**lub **Premium**.
 
 Jeśli na przykład masz dysk lokalny z 32 GB pamięci, ale zagregowane liczby operacji we/wy odczytu i zapisu dla dysku to 800 IOPS, Ocena serwera zaleca dysk w warstwie Premium (z powodu wyższych wymagań IOPS), a następnie zaleca użycie dysku SKU, który może obsługiwać język r wymagane i rozmiar operacji we/wy. Najbliższym dopasowaniem w tym przykładzie byłaby jednostka P15 (256 GB, 1100 operacji we/wy na sekundę). Mimo że rozmiar wymagany przez dysk lokalny to 32 GB, Ocena serwera zaleca większy dysk z powodu dużego wymagania IOPS dysku lokalnego.
@@ -386,7 +382,7 @@ Zbierz dzienniki w następujący sposób:
 4. Spróbuj odtworzyć błąd.
 5. Po napotkaniu błędu podczas rejestrowania, zatrzymywania rejestrowania i zapisywania kopii zapisanego działania:
    - W programie Chrome kliknij prawym przyciskiem myszy i wybierz pozycję **Zapisz jako Har z zawartością**. Ta akcja kompresuje i eksportuje dzienniki jako plik. HAR.
-   - W przeglądarce Microsoft Edge lub Internet Explorer wybierz opcję **Eksportuj ruch** przechwycony. Ta akcja kompresuje i eksportuje dziennik.
+   - W przeglądarce Microsoft Edge lub Internet Explorer wybierz opcję **Eksportuj ruch przechwycony** . Ta akcja kompresuje i eksportuje dziennik.
 6. Wybierz kartę **konsola** , aby sprawdzić, czy występują ostrzeżenia lub błędy. Aby zapisać dziennik konsoli:
    - W programie Chrome kliknij prawym przyciskiem myszy w dowolnym miejscu w dzienniku konsoli. Wybierz pozycję **Zapisz jako**, aby wyeksportować i zip log.
    - W przeglądarce Microsoft Edge lub Internet Explorer, kliknij prawym przyciskiem myszy błędy i wybierz polecenie **Kopiuj wszystko**.

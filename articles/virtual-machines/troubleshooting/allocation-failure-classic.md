@@ -1,10 +1,10 @@
 ---
-title: Rozwiązywanie problemów z błędami alokacji maszyny Wirtualnej platformy Azure w klasycznym modelu wdrażania | Dokumentacja firmy Microsoft
-description: Rozwiązywanie problemów z błędami alokacji występującymi podczas tworzenia lub ponownego uruchomienia lub zmienić rozmiar klasycznej maszyny Wirtualnej na platformie Azure
+title: Rozwiązywanie problemów z błędami alokacji maszyn wirtualnych platformy Azure w klasycznym modelu wdrażania | Microsoft Docs
+description: Rozwiązywanie problemów z błędami alokacji podczas tworzenia, ponownego uruchamiania lub zmiany rozmiaru klasycznej maszyny wirtualnej na platformie Azure
 services: azure-service-management
 documentationcenter: ''
 author: genlin
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue,azure-resource-manager,azure-service-management
 ms.assetid: bb939e23-77fc-4948-96f7-5037761c30e8
@@ -12,116 +12,116 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 7cd7897e3a0b940bbc636b2fbc3dbbc13b7cf540
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d43176e04337c2faf7be0bea682428056bc4ab46
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60505571"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059196"
 ---
-# <a name="troubleshooting-steps-specific-to-allocation-failure-scenarios-in-the-classic-deployment-model"></a>Rozwiązywanie problemów w określonych scenariuszy awarii alokacji w klasycznym modelu wdrażania
+# <a name="troubleshooting-steps-specific-to-allocation-failure-scenarios-in-the-classic-deployment-model"></a>Kroki rozwiązywania problemów specyficzne dla scenariuszy niepowodzeń alokacji w klasycznym modelu wdrażania
 
-Poniżej przedstawiono typowe scenariusze alokacji, które powodują wysłanie żądania alokacji do można przypiąć. Będziesz przejdziemy do każdego scenariusza w dalszej części tego artykułu.
+Poniżej przedstawiono typowe scenariusze alokacji, które powodują Przypinanie żądania alokacji. Szczegółowe się w każdym scenariuszu w dalszej części tego artykułu.
 
-- Zmień rozmiar maszyny Wirtualnej lub dodawanie maszyn wirtualnych lub wystąpień roli do istniejącej usługi w chmurze
+- Zmienianie rozmiaru maszyny wirtualnej lub Dodawanie maszyn wirtualnych lub wystąpień ról do istniejącej usługi w chmurze
 - Ponowne uruchomienie częściowo zatrzymanych maszyn wirtualnych (z cofniętą alokacją)
 - Ponowne uruchomienie w pełni zatrzymanych maszyn wirtualnych (z cofniętą alokacją)
-- Wdrożenia środowisk przejściowych i produkcyjnych (platforma jako usługa tylko)
-- Grupa koligacji (maszyna wirtualna lub usługa odległości między elementami)
-- Koligacja — na podstawie grupy sieci wirtualnej
+- Wdrożenia przejściowe i produkcyjne (tylko platforma jako usługa)
+- Grupa koligacji (bliskość maszyny wirtualnej lub usługi)
+- Koligacja — Sieć wirtualna oparta na grupach
 
-Gdy zostanie wyświetlony błąd alokacji, sprawdź, czy dowolny z wymienionych scenariuszy dotyczy błędu. Użyj błąd alokacji, który jest zwracany przez platformę Azure, aby zidentyfikować odpowiedni scenariusz. Jeśli Twoje żądanie jest przypięty, usuń niektóre ograniczenia przypinania, aby otworzyć żądanie do klastrów więcej, co zwiększa prawdopodobieństwo powodzenia alokacji.
-Ogólnie rzecz biorąc Jeśli błąd stanu, że "żądany rozmiar maszyny Wirtualnej nie jest obsługiwany", możesz zawsze ponowić próbę w późniejszym czasie. Jest to spowodowane za mało zasobów zostały zwolnione w klastrze, aby obsłużyć Twojego żądania. Jeśli problem polega na tym, że żądany rozmiar maszyny Wirtualnej nie jest obsługiwane, należy spróbować innego rozmiaru maszyny Wirtualnej. W przeciwnym razie jedyną opcją jest usunięcie przypinania ograniczenia.
+Po otrzymaniu błędu alokacji Sprawdź, czy którykolwiek z wymienionych scenariuszy ma zastosowanie do błędu. Użyj błędu alokacji zwracanego przez platformę Azure, aby zidentyfikować odpowiedni scenariusz. Jeśli Twoje żądanie jest przypięte, Usuń część ograniczeń przypinania, aby otworzyć żądanie do większej liczby klastrów, a tym samym zwiększyć szansę sukcesu alokacji.
+Ogólnie rzecz biorąc, jeśli błąd nie wskazuje, że "żądany rozmiar maszyny wirtualnej nie jest obsługiwany", zawsze można ponowić próbę później. Wynika to z faktu, że wystarczająca ilość zasobów została zwolniona w klastrze w celu uwzględnienia Twojego żądania. Jeśli problem nie jest obsługiwany przez żądany rozmiar maszyny wirtualnej, spróbuj użyć innego rozmiaru maszyny wirtualnej. W przeciwnym razie jedyną opcją jest usunięcie ograniczenia przypinania.
 
-Dwa typowych scenariuszy awarii odnoszą się do grupy koligacji. W przeszłości grupy koligacji został użyty do zapewnienia bliskim sąsiedztwie do maszyn wirtualnych i wystąpień usługi lub został on użyty w celu umożliwienia utworzenia sieci wirtualnej. Wraz z wprowadzeniem regionalnych sieci wirtualnych grup koligacji nie są już wymagane do utworzenia sieci wirtualnej. Zmniejszeniu opóźnienia sieci w infrastrukturze platformy Azure zmienił się zalecenie, aby używać grup koligacji dla maszyn wirtualnych lub usługi zbliżeniowe.
+Dwa typowe scenariusze awarii są powiązane z grupami koligacji. W przeszłości grupa koligacji została użyta w celu zapewnienia bliskiej bliskości maszynom wirtualnym i wystąpieniu usług lub została użyta do utworzenia sieci wirtualnej. Po wprowadzeniu regionalnych sieci wirtualnych grupy koligacji nie są już wymagane do utworzenia sieci wirtualnej. W przypadku zmniejszenia opóźnień sieci w infrastrukturze platformy Azure zaleca się użycie grup koligacji dla maszyn wirtualnych lub bliskości usługi.
 
-Na poniższym diagramie przedstawiono taksonomii scenariuszy alokacji (przypiętych). 
+Na poniższym diagramie przedstawiono taksonomię (przypiętą) scenariuszy alokacji. 
 
-![Taksonomia przypiętych alokacji](./media/virtual-machines-common-allocation-failure/Allocation3.png)
+![Przypięta Taksonomia alokacji](./media/virtual-machines-common-allocation-failure/Allocation3.png)
 
-## <a name="resize-a-vm-or-add-vms-or-role-instances-to-an-existing-cloud-service"></a>Zmień rozmiar maszyny Wirtualnej lub dodawanie maszyn wirtualnych lub wystąpień roli do istniejącej usługi w chmurze
+## <a name="resize-a-vm-or-add-vms-or-role-instances-to-an-existing-cloud-service"></a>Zmienianie rozmiaru maszyny wirtualnej lub Dodawanie maszyn wirtualnych lub wystąpień ról do istniejącej usługi w chmurze
 **Error**
 
 Upgrade_VMSizeNotSupported lub GeneralError
 
-**Przyczyny przypinanie klastra**
+**Przyczyna przypinania klastra**
 
-Żądanie, aby zmienić rozmiar maszyny Wirtualnej lub Dodaj Maszynę wirtualną lub wystąpieniem roli do istniejącej usługi w chmurze musi nastąpić w oryginalnego klastra, który jest hostem istniejącej usługi w chmurze. Tworzenie nowej usługi w chmurze umożliwia platformy Azure, aby znaleźć innego klastra, który bezpłatnymi zasobami lub obsługuje rozmiar maszyny Wirtualnej, którego zażądano.
+Żądanie zmiany rozmiaru maszyny wirtualnej lub dodanie maszyny wirtualnej lub wystąpienia roli do istniejącej usługi w chmurze musi być podejmowane w oryginalnym klastrze, który hostuje istniejącą usługę w chmurze. Utworzenie nowej usługi w chmurze umożliwi platformie Azure znalezienie innego klastra z bezpłatnymi zasobami lub obsługę żądanego rozmiaru maszyny wirtualnej.
 
 **Obejście problemu**
 
-Jeśli ten błąd jest Upgrade_VMSizeNotSupported *, należy spróbować innego rozmiaru maszyny Wirtualnej. Jeśli przy użyciu innego rozmiaru maszyny Wirtualnej nie jest opcjonalnym, ale można użyć różnych wirtualny adres IP (VIP), należy utworzyć nową usługę w chmurze do obsługi nowej maszyny Wirtualnej, a następnie dodaj nową usługę w chmurze do regionalnej sieci wirtualnej, w którym działają istniejących maszyn wirtualnych. Użycie istniejącej usługi w chmurze nie regionalnej sieci wirtualnej, możesz nadal tworzyć nową sieć wirtualną dla nowej usługi w chmurze, a następnie połącz swoje [istniejącą sieć wirtualną do nowej sieci wirtualnej](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). Zobacz więcej informacji o [regionalnych sieci wirtualnych](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
+Jeśli błąd to Upgrade_VMSizeNotSupported *, spróbuj użyć innego rozmiaru maszyny wirtualnej. Jeśli nie jest używana opcja innego rozmiaru maszyny wirtualnej, ale jeśli jest ona akceptowalna do użycia innego wirtualnego adresu IP (VIP), Utwórz nową usługę w chmurze do obsługi nowej maszyny wirtualnej i Dodaj nową usługę w chmurze do regionalnej sieci wirtualnej, w której są uruchomione istniejące maszyny wirtualne. Jeśli istniejąca usługa w chmurze nie używa regionalnej sieci wirtualnej, można nadal utworzyć nową sieć wirtualną dla nowej usługi w chmurze, a następnie połączyć [istniejącą sieć wirtualną z nową siecią wirtualną](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). Zobacz więcej na temat [regionalnych sieci wirtualnych](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
 
-Jeśli ten błąd jest GeneralError *, jest typ zasobu (np. określonego rozmiaru maszyny Wirtualnej) jest obsługiwana przez klaster, że klaster ma bezpłatne zasoby w tej chwili. Podobnie jak w powyższym scenariuszu Usługa Dodaj zasób obliczeniowy żądany przez proces tworzenia nowej usługi w chmurze (należy zauważyć, że nową usługę w chmurze ma używać innego adresu VIP) i użyć regionalnej sieci wirtualnej do połączenia usługi w chmurze.
+Jeśli błąd to GeneralError *, prawdopodobnie typ zasobu (na przykład określony rozmiar maszyny wirtualnej) jest obsługiwany przez klaster, ale w tej chwili klaster nie ma bezpłatnych zasobów. Podobnie jak w powyższym scenariuszu, Dodaj żądany zasób obliczeniowy za pomocą tworzenia nowej usługi w chmurze (należy pamiętać, że nowa usługa w chmurze musi używać innego adresu VIP) i używać regionalnej sieci wirtualnej do łączenia usług w chmurze.
 
 ## <a name="restart-partially-stopped-deallocated-vms"></a>Ponowne uruchomienie częściowo zatrzymanych maszyn wirtualnych (z cofniętą alokacją)
 **Error**
 
-GeneralError *
+GeneralError*
 
-**Przyczyny przypinanie klastra**
+**Przyczyna przypinania klastra**
 
-Częściowe dezalokacji oznacza, że zatrzymana (przydział zostanie cofnięty) jeden lub więcej, ale nie wszystkich maszyn wirtualnych w usłudze w chmurze. W chwili zatrzymania (Cofnij ich przydział) na maszynie Wirtualnej, są zwalniane, skojarzonych zasobów. Ponowne uruchomienie tej zatrzymano (cofnięto przydział) maszyny Wirtualnej jest zatem nowe żądanie alokacji. Ponowne uruchamianie maszyn wirtualnych w usłudze w chmurze częściowo cofnięcia przydziału jest równoważna do dodawania maszyn wirtualnych do istniejącej usługi w chmurze. Żądanie alokacji musi nastąpić w oryginalnego klastra, który jest hostem istniejącej usługi w chmurze. Tworzenie innej usługi w chmurze umożliwia platformy Azure, aby znaleźć innego klastra, który obsługuje rozmiar maszyny Wirtualnej, którego zażądano bezpłatny zasób lub.
+Częściowe cofanie alokacji oznacza, że zostało zatrzymane (cofnięto przydział) co najmniej jednej maszyny wirtualnej w usłudze w chmurze. Po zatrzymaniu (cofnięciu) maszyny wirtualnej skojarzone zasoby zostaną wydane. Ponowne uruchomienie maszyny wirtualnej zatrzymanej (z cofniętą alokacją) jest w związku z tym nowym żądaniem alokacji. Ponowne uruchamianie maszyn wirtualnych w częściowo cofniętej usłudze w chmurze jest równoznaczne z dodaniem maszyn wirtualnych do istniejącej usługi w chmurze. Żądanie alokacji musi być podejmowane w oryginalnym klastrze, który jest hostem istniejącej usługi w chmurze. Utworzenie innej usługi w chmurze pozwala platformie Azure znaleźć inny klaster, który ma bezpłatny zasób lub obsługuje żądany rozmiar maszyny wirtualnej.
 
 **Obejście problemu**
 
-Jeśli jest dopuszczalne, aby użyć innego adresu VIP, Usuń zatrzymano (cofnięto przydział) maszyn wirtualnych (zachowując skojarzone dyski) i Dodaj maszyny wirtualne z powrotem przez inną usługę w chmurze. Umożliwia łączenie usług w chmurze regionalnej sieci wirtualnej:
+Jeśli jest to możliwe, aby użyć innego adresu VIP, Usuń zatrzymane (cofnięte) maszyny wirtualne (ale przechowuj skojarzone dyski) i Dodaj maszyny wirtualne z powrotem za pośrednictwem innej usługi w chmurze. Połącz usługi w chmurze za pomocą regionalnej sieci wirtualnej:
 
-* Jeśli korzysta z istniejącej usługi w chmurze regionalnej sieci wirtualnej, po prostu Dodaj nową usługę w chmurze do tej samej sieci wirtualnej.
-* Użycie istniejącej usługi w chmurze nie regionalnej sieci wirtualnej, Utwórz nową sieć wirtualną dla nowej usługi w chmurze, a następnie [połączyć z istniejącej sieci wirtualnej do nowej sieci wirtualnej](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). Zobacz więcej informacji o [regionalnych sieci wirtualnych](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
+* Jeśli istniejąca usługa w chmurze używa regionalnej sieci wirtualnej, wystarczy dodać nową usługę w chmurze do tej samej sieci wirtualnej.
+* Jeśli istniejąca usługa w chmurze nie używa regionalnej sieci wirtualnej, Utwórz nową sieć wirtualną dla nowej usługi w chmurze, a następnie [Połącz istniejącą sieć wirtualną z nową siecią wirtualną](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). Zobacz więcej na temat [regionalnych sieci wirtualnych](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
 
 ## <a name="restart-fully-stopped-deallocated-vms"></a>Ponowne uruchomienie w pełni zatrzymanych maszyn wirtualnych (z cofniętą alokacją)
 **Error**
 
-GeneralError *
+GeneralError*
 
-**Przyczyny przypinanie klastra**
+**Przyczyna przypinania klastra**
 
-Oznacza pełną dezalokacji zostanie zatrzymana (cofnięty przydział) wszystkich maszyn wirtualnych z usługi w chmurze. Żądania alokacji, aby ponownie uruchomić te maszyny wirtualne muszą nastąpić w oryginalnym klastrze, który hostuje usługę w chmurze. Tworzenie nowej usługi w chmurze umożliwia platformy Azure, aby znaleźć innego klastra, który bezpłatnymi zasobami lub obsługuje rozmiar maszyny Wirtualnej, którego zażądano.
+Całkowite cofanie alokacji oznacza, że wszystkie maszyny wirtualne z usługi w chmurze zostały zatrzymane (cofnięte alokacje). Żądania alokacji dotyczące ponownego uruchomienia tych maszyn wirtualnych muszą być podejmowane w oryginalnym klastrze, który hostuje usługę w chmurze. Utworzenie nowej usługi w chmurze umożliwi platformie Azure znalezienie innego klastra z bezpłatnymi zasobami lub obsługę żądanego rozmiaru maszyny wirtualnej.
 
 **Obejście problemu**
 
-Jeśli jest dopuszczalne, aby użyć innego adresu VIP, Usuń oryginalne zatrzymania (przydział zostanie cofnięty) maszyn wirtualnych (zachowując skojarzone dyski) i usuń odpowiednie usługi w chmurze (zasoby obliczeniowe skojarzone już zostały wydane po użytkownik zatrzymał (cofnął przydział) maszyn wirtualnych). Utwórz nową usługę w chmurze do dodawania maszyn wirtualnych z powrotem.
+Jeśli jest to możliwe, aby użyć innego adresu VIP, należy usunąć oryginalne zatrzymane (bez przydziału) maszyny wirtualne (ale zachować skojarzone dyski) i usunąć odpowiednią usługę w chmurze (skojarzone zasoby obliczeniowe zostały już wydane po zatrzymaniu (cofnięciu przydziału) maszyn wirtualnych. Utwórz nową usługę w chmurze, aby ponownie dodać maszyny wirtualne.
 
-## <a name="stagingproduction-deployments-platform-as-a-service-only"></a>Wdrożenia przejściowego/produkcyjne (platforma jako usługa tylko)
+## <a name="stagingproduction-deployments-platform-as-a-service-only"></a>Wdrożenia przejściowe/produkcyjne (tylko platforma jako usługa)
 **Error**
 
 New_General * lub New_VMSizeNotSupported *
 
-**Przyczyny przypinanie klastra**
+**Przyczyna przypinania klastra**
 
-Wdrażania przejściowego i wdrożenie produkcyjne usługi w chmurze znajdują się w tym samym klastrze. Podczas dodawania drugie wdrożenie odpowiedniego żądania alokacji zostanie podjęta w tym samym klastrze, który jest hostem pierwszym wdrożeniu.
+Wdrożenie przejściowe oraz wdrożenie produkcyjne usługi w chmurze są hostowane w tym samym klastrze. Po dodaniu drugiego wdrożenia zostanie podjęta próba odpowiedniego żądania alokacji w tym samym klastrze, który hostuje pierwsze wdrożenie.
 
 **Obejście problemu**
 
-Usuń pierwsze wdrożenie i oryginalną usługę w chmurze, a następnie ponownie wdrożyć usługę w chmurze. Ta akcja może być przejście pierwszym wdrożeniu w klastrze, który ma wystarczającą ilość wolnego zasobów, aby dopasować oba wdrożenia lub w klastrze, w którym obsługuje rozmiarów maszyn wirtualnych, które zostały wybrane.
+Usuń pierwsze wdrożenie i oryginalną usługę w chmurze i ponownie Wdróż usługę w chmurze. Ta akcja może obsłużyć pierwsze wdrożenie w klastrze z wystarczającą ilością wolnego miejsca do wdrożenia lub w klastrze, który obsługuje żądane rozmiary maszyn wirtualnych.
 
-## <a name="affinity-group-vmservice-proximity"></a>Grupa koligacji (maszyny Wirtualnej/usługi zbliżeniowe)
+## <a name="affinity-group-vmservice-proximity"></a>Grupa koligacji (bliskość maszyny wirtualnej/usługi)
 **Error**
 
 New_General * lub New_VMSizeNotSupported *
 
-**Przyczyny przypinanie klastra**
+**Przyczyna przypinania klastra**
 
-Obliczeń dowolnego zasobu przypisane do grupy koligacji jest powiązany z jednego klastra. Nowy zasób obliczeniowy żądań, w tym, że grupa koligacji są próby w tym samym klastrze, w którym znajdują się istniejące zasoby. Jest to istotne, czy nowe zasoby są tworzone za pomocą nowej usługi w chmurze lub istniejącej usługi w chmurze.
+Wszystkie zasoby obliczeniowe przypisane do grupy koligacji są powiązane z jednym klastrem. Nowe żądania zasobów obliczeniowych w tej grupie koligacji są podejmowane w tym samym klastrze, w którym są hostowane istniejące zasoby. Jest to prawdziwe, czy nowe zasoby są tworzone za pomocą nowej usługi w chmurze, czy za pomocą istniejącej usługi w chmurze.
 
 **Obejście problemu**
 
-Jeśli grupy koligacji nie jest konieczne, nie używać grupy koligacji, lub grupować zasoby obliczeniowe w wielu grupach koligacji.
+Jeśli grupa koligacji nie jest konieczna, nie należy używać grupy koligacji ani grupować zasobów obliczeniowych w wielu grupach koligacji.
 
-## <a name="affinity-group-based-virtual-network"></a>Sieci wirtualne oparte na grupach koligacji
+## <a name="affinity-group-based-virtual-network"></a>Koligacja — Sieć wirtualna oparta na grupach
 **Error**
 
 New_General * lub New_VMSizeNotSupported *
 
-**Przyczyny przypinanie klastra**
+**Przyczyna przypinania klastra**
 
-Przed wprowadzeniem regionalnych sieci wirtualnych, trzeba skojarzyć sieć wirtualną z grupą koligacji. W wyniku obliczenia zasobów umieszczone w grupie koligacji są powiązane przez tego samego ograniczenia, zgodnie z opisem w temacie "alokacji scenariusza: Grupa koligacji (maszyny Wirtualnej/usługi zbliżeniowe) "powyższej sekcji. Zasoby obliczeniowe są powiązane z jednego klastra.
+Przed wprowadzeniem regionalnych sieci wirtualnych należy skojarzyć sieć wirtualną z grupą koligacji. W związku z tym zasoby obliczeniowe umieszczane w grupie koligacji są powiązane z tymi samymi ograniczeniami, co opisano w temacie "scenariusz alokacji: Grupa koligacji (bliskość maszyny wirtualnej/usługi) "powyżej. Zasoby obliczeniowe są powiązane z jednym klastrem.
 
 **Obejście problemu**
 
-Jeśli grupy koligacji nie jest konieczne, Utwórz nowe, regionalnej sieci wirtualnej dla nowych zasobów, w przypadku dodawania, a następnie [połączyć z istniejącej sieci wirtualnej do nowej sieci wirtualnej](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). Zobacz więcej informacji o [regionalnych sieci wirtualnych](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
+Jeśli nie potrzebujesz grupy koligacji, Utwórz nową regionalną sieć wirtualną dla nowych dodawanych zasobów, a następnie [Połącz istniejącą sieć wirtualną z nową siecią wirtualną](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). Zobacz więcej na temat [regionalnych sieci wirtualnych](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
 
-Możesz też [migrację sieci wirtualnej na podstawie grupy koligacji do regionalnej sieci wirtualnej](https://azure.microsoft.com/blog/2014/11/26/migrating-existing-services-to-regional-scope/), a następnie ponownie dodaj żądanych zasobów.
+Alternatywnie można [przeprowadzić migrację sieci wirtualnej opartej na grupach koligacji do regionalnej sieci wirtualnej](https://azure.microsoft.com/blog/2014/11/26/migrating-existing-services-to-regional-scope/), a następnie ponownie dodać wymagane zasoby.
 
 

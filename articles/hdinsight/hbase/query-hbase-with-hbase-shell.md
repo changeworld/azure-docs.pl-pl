@@ -1,7 +1,7 @@
 ---
-title: 'Szybki start: Zapytanie Apache HBase w usłudze Azure HDInsight — powłoki HBase'
-description: W tym przewodniku Szybki Start dowiesz się, jak uruchamiać zapytania bazy danych Apache HBase za pomocą powłoki HBase Apache.
-keywords: Usługa hdinsight, hadoop, HBase
+title: 'Szybki start: Kwerenda Apache HBase w usłudze Azure HDInsight — powłoka HBase'
+description: W tym przewodniku szybki start dowiesz się, jak używać powłoki Apache HBase do uruchamiania zapytań Apache HBase.
+keywords: HDInsight, Hadoop, HBase
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,62 +9,62 @@ ms.custom: hdinsightactive
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: d937e090895a5b02026c755b1efb7dd1e0b35000
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 033227f085cd23c5fa26313cb4a2816070676560
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67054302"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076427"
 ---
-# <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-hbase-shell"></a>Szybki start: Zapytanie bazy danych Apache HBase w usłudze Azure HDInsight przy użyciu powłoki HBase
+# <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-hbase-shell"></a>Szybki start: Zapytanie dotyczące platformy Apache HBase w usłudze Azure HDInsight przy użyciu powłoki HBase
 
-W tym przewodniku Szybki Start dowiesz się, jak korzystanie z powłoki HBase Apache do tworzenia tabel HBase, wstawiania danych i następnie utworzyć zapytanie względem tabeli.
+W tym przewodniku szybki start dowiesz się, jak za pomocą powłoki Apache HBase utworzyć tabelę HBase, wstawić dane, a następnie zbadać tabelę.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Klaster bazy danych Apache HBase. Zobacz [Utwórz klaster](../hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster) do tworzenia klastra usługi HDInsight.  Upewnij się, możesz wybrać **HBase** typ klastra.
+* Klaster Apache HBase. Zobacz [Tworzenie klastra](../hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster) , aby utworzyć klaster usługi HDInsight.  Upewnij się, że wybrano typ klastra **HBase** .
 
 * Klient SSH. Aby uzyskać więcej informacji, zobacz [Łączenie się z usługą HDInsight (Apache Hadoop) przy użyciu protokołu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="create-a-table-and-manipulate-data"></a>Utwórz tabelę i manipulowanie danymi
+## <a name="create-a-table-and-manipulate-data"></a>Tworzenie tabeli i manipulowanie danymi
 
 Dla większości użytkowników dane są wyświetlane w formacie tabelarycznym:
 
-![Dane tabelaryczne usługi HDInsight HBase](./media/query-hbase-with-hbase-shell/hdinsight-hbase-contacts-tabular.png)
+![Dane tabelaryczne usługi HDInsight Apache HBase](./media/query-hbase-with-hbase-shell/hdinsight-hbase-contacts-tabular.png)
 
-W bazie danych HBase (implementacja [BigTable chmury](https://cloud.google.com/bigtable/)), te same dane wygląda następująco:
+W HBase (implementacja BigTable w [chmurze](https://cloud.google.com/bigtable/)) te same dane wyglądają następująco:
 
-![Dane BigTable usługi HDInsight HBase](./media/query-hbase-with-hbase-shell/hdinsight-hbase-contacts-bigtable.png)
+![Dane usługi HDInsight Apache HBase BigTable](./media/query-hbase-with-hbase-shell/hdinsight-hbase-contacts-bigtable.png)
 
-Można połączyć się z klastrami HBase za pomocą protokołu SSH, a następnie korzystanie z powłoki HBase Apache do tworzenia tabel bazy danych HBase, wstawiania danych i zapytania o dane.
+Za pomocą protokołu SSH można łączyć się z klastrami HBase, a następnie używać powłoki Apache HBase do tworzenia tabel HBase, wstawiania danych i wykonywania zapytań dotyczących danych.
 
-1. Użyj `ssh` polecenie, aby nawiązać połączenie z klastrem HBase. Edytuj poniższe polecenie, zastępując `CLUSTERNAME` nazwą klastra, a następnie wpisz polecenie:
+1. Użyj `ssh` polecenia, aby nawiązać połączenie z klastrem HBase. Edytuj poniższe polecenie, zastępując `CLUSTERNAME` je nazwą klastra, a następnie wprowadź polecenie:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. Użyj `hbase shell` polecenia do uruchamiania interaktywnej powłoki HBase. Wprowadź następujące polecenie, w związku z protokołu SSH:
+2. Użyj `hbase shell` polecenia, aby uruchomić powłokę interaktywną HBase. Wprowadź następujące polecenie w połączeniu SSH:
 
     ```bash
     hbase shell
     ```
 
-3. Użyj `create` polecenie, aby utworzyć tabelę HBase z dwiema rodzinami kolumn. Wprowadź następujące polecenie:
+3. Użyj `create` polecenia, aby utworzyć tabelę HBase z rodziną dwóch kolumn. Wprowadź następujące polecenie:
 
     ```hbase
     create 'Contacts', 'Personal', 'Office'
     ```
 
-4. Użyj `list` polecenie, aby wyświetlić wszystkie tabele w bazie danych HBase. Wprowadź następujące polecenie:
+4. Użyj `list` polecenia, aby wyświetlić listę wszystkich tabel w HBase. Wprowadź następujące polecenie:
 
     ```hbase
     list
     ```
 
-5. Użyj `put` polecenie, aby wstawić wartości w określonej kolumnie w określonym wierszu określonej tabeli. Wprowadź następujące polecenie:
+5. Użyj `put` polecenia, aby wstawić wartości w określonej kolumnie w określonym wierszu w określonej tabeli. Wprowadź następujące polecenie:
 
     ```hbase
     put 'Contacts', '1000', 'Personal:Name', 'John Dole'
@@ -73,55 +73,55 @@ Można połączyć się z klastrami HBase za pomocą protokołu SSH, a następni
     put 'Contacts', '1000', 'Office:Address', '1111 San Gabriel Dr.'
     ```
 
-6. Użyj `scan` polecenia do skanowania i zwracać `Contacts` tabeli danych. Wprowadź następujące polecenie:
+6. Użyj `scan` polecenia, aby przeskanować `Contacts` i zwrócić dane tabeli. Wprowadź następujące polecenie:
 
     ```hbase
     scan 'Contacts'
     ```
 
-7. Użyj `get` polecenie, aby pobrać zawartość wiersza. Wprowadź następujące polecenie:
+7. Użyj `get` polecenia, aby pobrać zawartość wiersza. Wprowadź następujące polecenie:
 
     ```hbase
     get 'Contacts', '1000'
     ```
 
-    Zostaną wyświetlone wyniki podobne, używając `scan` polecenia, ponieważ istnieje tylko jeden wiersz.
+    Wyniki są wyświetlane podobnie jak przy użyciu `scan` polecenia, ponieważ istnieje tylko jeden wiersz.
 
-8. Użyj `delete` polecenie, aby usunąć wartość komórki w tabeli. Wprowadź następujące polecenie:
+8. Użyj `delete` polecenia, aby usunąć wartość komórki z tabeli. Wprowadź następujące polecenie:
 
     ```hbase
     delete 'Contacts', '1000', 'Office:Address'
     ```
 
-9. Użyj `disable` polecenie, aby wyłączyć w tabeli. Wprowadź następujące polecenie:
+9. Użyj `disable` polecenia, aby wyłączyć tabelę. Wprowadź następujące polecenie:
 
     ```hbase
     disable 'Contacts'
     ```
 
-10. Użyj `drop` polecenie, aby usunąć tabelę z bazy danych HBase. Wprowadź następujące polecenie:
+10. Użyj `drop` polecenia, aby usunąć tabelę z HBase. Wprowadź następujące polecenie:
 
     ```hbase
     drop 'Contacts'
     ```
 
-11. Użyj `exit` polecenie, aby zatrzymać interaktywnej powłoki HBase. Wprowadź następujące polecenie:
+11. Użyj `exit` polecenia, aby zatrzymać powłokę interaktywną HBase. Wprowadź następujące polecenie:
 
     ```hbase
     exit
     ```
 
-Aby uzyskać więcej informacji na temat schematu tabeli HBase, zobacz [wprowadzenie do projektu schematu HBase Apache](http://0b4af6cdc2f0c5998459-c0245c5c937c5dedcca3f1764ecc9b2f.r43.cf2.rackcdn.com/9353-login1210_khurana.pdf). Aby uzyskać więcej poleceń HBase, zobacz [podręczniku bazy danych Apache HBase](https://hbase.apache.org/book.html#quickstart).
+Aby uzyskać więcej informacji na temat schematu tabeli HBase, zobacz [wprowadzenie do projektu schematu Apache HBase](http://0b4af6cdc2f0c5998459-c0245c5c937c5dedcca3f1764ecc9b2f.r43.cf2.rackcdn.com/9353-login1210_khurana.pdf). Aby uzyskać więcej poleceń HBase, zobacz [Przewodnik dotyczący usługi Apache HBase](https://hbase.apache.org/book.html#quickstart).
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Po ukończeniu tego przewodnika Szybki Start możesz usunąć klaster. Dzięki usłudze HDInsight dane są przechowywane w usłudze Azure Storage, więc można bezpiecznie usunąć klaster, gdy nie jest używany. Opłaty za klaster usługi HDInsight są naliczane nawet wtedy, gdy nie jest używany. Ponieważ opłaty za klaster są wielokrotnie większe niż opłaty za magazyn, ze względów ekonomicznych warto usuwać klastry, gdy nie są używane.
+Po zakończeniu przewodnika Szybki Start możesz chcieć usunąć klaster. Dzięki usłudze HDInsight dane są przechowywane w usłudze Azure Storage, więc można bezpiecznie usunąć klaster, gdy nie jest używany. Opłaty za klaster usługi HDInsight są naliczane nawet wtedy, gdy nie jest używany. Ponieważ opłaty za klaster są wielokrotnie większe niż opłaty za magazyn, ze względów ekonomicznych warto usuwać klastry, gdy nie są używane.
 
-Aby usunąć klaster, zobacz [usunąć klaster usługi HDInsight przy użyciu przeglądarki, programu PowerShell lub interfejsu wiersza polecenia Azure](../hdinsight-delete-cluster.md).
+Aby usunąć klaster, zobacz [usuwanie klastra usługi HDInsight przy użyciu przeglądarki, programu PowerShell lub interfejsu wiersza polecenia platformy Azure](../hdinsight-delete-cluster.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki Start przedstawiono sposób korzystanie z powłoki HBase Apache do tworzenia tabel HBase, wstawiania danych i następnie utworzyć zapytanie względem tabeli. Aby dowiedzieć się więcej na temat danych przechowywanych w bazie danych HBase, następny artykuł będzie pokazują, jak można wykonać zapytania z platformy Apache Spark.
+W tym przewodniku szybki start pokazano, jak za pomocą powłoki Apache HBase utworzyć tabelę HBase, wstawić dane, a następnie zbadać tabelę. Aby dowiedzieć się więcej na temat danych przechowywanych w HBase, w następnym artykule przedstawiono sposób wykonywania zapytań przy użyciu Apache Spark.
 
 > [!div class="nextstepaction"]
-> [Platforma Apache Spark umożliwia odczytywanie i zapisywanie danych Apache HBase](../hdinsight-using-spark-query-hbase.md)
+> [Użyj Apache Spark, aby odczytywać i zapisywać dane Apache HBase](../hdinsight-using-spark-query-hbase.md)

@@ -16,12 +16,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13beafe9a6937b0404a58d3508a9aba9892ac04d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 50cb5a76c6b19668fc23147244d65a0d996ebf90
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073872"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033721"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect synchronizacji: Skonfiguruj preferowaną lokalizację danych dla zasobów pakietu Office 365
 W tym temacie opisano sposób konfigurowania atrybutu dla preferowanej lokalizacji danych w programie Azure Active Directory (Azure AD) Connect Sync. Gdy ktoś korzysta z funkcji wieloznacznych w pakiecie Office 365, ten atrybut służy do określania lokalizacji geograficznej danych pakietu Office 365 użytkownika. ( *Region* terminów i geograficznie są używane zamiennie).
@@ -64,7 +64,7 @@ Georegiony w pakiecie Office 365 dostępne dla wielogeograficzne:
 Azure AD Connect obsługuje synchronizację atrybutu **preferredDataLocation** dla obiektów **użytkownika** w wersji 1.1.524.0 i nowszych. W szczególności:
 
 * Schemat typu obiektu **użytkownika** w łączniku usługi Azure AD został rozszerzony w celu uwzględnienia atrybutu **preferredDataLocation** . Ten atrybut jest typu String o pojedynczej wartości.
-* Schemat typu obiektu w obiekcie Metaverse został rozszerzony tak, aby obejmował atrybut **preferredDataLocation** . Ten atrybut jest typu String o pojedynczej wartości.
+* Schemat **typu obiektu** w obiekcie Metaverse został rozszerzony tak, aby obejmował atrybut **preferredDataLocation** . Ten atrybut jest typu String o pojedynczej wartości.
 
 Domyślnie **preferredDataLocation** nie jest włączona na potrzeby synchronizacji. Ta funkcja jest przeznaczona dla dużych organizacji. Należy również określić atrybut do przechowywania geograficznego pakietu Office 365 dla użytkowników, ponieważ w Active Directory lokalnym nie ma atrybutu **preferredDataLocation** . Jest to różne dla każdej organizacji.
 
@@ -172,7 +172,7 @@ Reguła synchronizacji danych wychodzących zezwala na przepływ wartości atryb
     | sourceObjectType | WIĘKSZY | Użytkownik |
     | cloudMastered | NOTEQUAL | Prawda |
 
-    Filtr określania zakresu określa, do których obiektów usługi Azure AD jest stosowana ta reguła synchronizacji danych wychodzących. W tym przykładzie używamy tego samego filtru określania zakresu z reguły synchronizacji OOB (out-of-Box) w ramach usługi AD — tożsamość użytkownika. Uniemożliwia stosowanie reguły synchronizacji do obiektów **użytkownika** , które nie są zsynchronizowane z Active Directory lokalnych. Może być konieczne dostosowanie filtru określania zakresu zgodnie ze wdrożeniem Azure AD Connect.
+    Filtr określania zakresu określa, do których obiektów usługi Azure AD jest stosowana ta reguła synchronizacji danych wychodzących. W tym przykładzie używamy tego samego filtru określania zakresu od "out do Azure AD — tożsamość użytkownika" OOB (out-of-Box) reguły synchronizacji. Uniemożliwia stosowanie reguły synchronizacji do obiektów **użytkownika** , które nie są zsynchronizowane z Active Directory lokalnych. Może być konieczne dostosowanie filtru określania zakresu zgodnie ze wdrożeniem Azure AD Connect.
 
 6. Przejdź do karty **transformacja** i zaimplementuj następującą regułę przekształcania:
 

@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie logowania jednokrotnego i dostosowywanie tokenu za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o zarządzaniu logowania jednokrotnego i dostosowywanie tokenu za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C.
+title: Zarządzanie użyciem rejestracji jednokrotnej i tokenu przy użyciu zasad niestandardowych w Azure Active Directory B2C | Microsoft Docs
+description: Więcej informacji na temat zarządzania logowaniem jednokrotnym i użyciem tokenu przy użyciu zasad niestandardowych w programie Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,24 +10,24 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f3621b176e4bbfdfbd171339d6d01a1f91ed0ae7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 966386bfed5f94556f145afab1c665eb3c90546a
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509299"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065557"
 ---
-# <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Zarządzanie logowania jednokrotnego i dostosowywanie tokenu za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C
+# <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Zarządzanie użyciem rejestracji jednokrotnej i tokenu przy użyciu zasad niestandardowych w Azure Active Directory B2C
 
-Ten artykuł zawiera informacje o jak można zarządzać z tokenów, sesji i konfiguracji z logowania jednokrotnego (SSO) przy użyciu [zasady niestandardowe](active-directory-b2c-overview-custom.md) w usłudze Azure Active Directory (Azure AD) B2C.
+Ten artykuł zawiera informacje o sposobach zarządzania konfiguracją tokenu, sesji i logowania jednokrotnego (SSO) przy użyciu [zasad niestandardowych](active-directory-b2c-overview-custom.md) w programie Azure Active Directory B2C (Azure AD B2C).
 
-## <a name="token-lifetimes-and-claims-configuration"></a>Konfiguracja tokenu okresy istnienia i oświadczenia
+## <a name="token-lifetimes-and-claims-configuration"></a>Okresy istnienia tokenów i konfiguracja oświadczeń
 
-Aby zmienić ustawienia na Twoje okresów istnienia tokenu, można dodać [ClaimsProviders](claimsproviders.md) elementu w pliku strony jednostki uzależnionej zasady, które chcesz mieć wpływ na.  **ClaimsProviders** element jest elementem podrzędnym [elementu TrustFrameworkPolicy](trustframeworkpolicy.md) elementu. 
+Aby zmienić ustawienia dla okresów istnienia tokenu, należy dodać element [ClaimsProviders](claimsproviders.md) w pliku jednostki uzależnionej zasad, które mają mieć wpływ.  Element **ClaimsProviders** jest elementem podrzędnym elementu [TrustFrameworkPolicy](trustframeworkpolicy.md) .
 
-Wstaw element ClaimsProviders między elementem BasePolicy i element RelyingParty pliku strony jednostki uzależnionej.
+Wstaw element ClaimsProviders między elementem BasePolicy i elementem RelyingParty pliku jednostki uzależnionej.
 
-Wewnątrz należy umieścić informacje, które ma wpływ na Twoje okresów istnienia tokenu. Plik XML wygląda następująco:
+Wewnątrz programu należy umieścić informacje, które mają wpływ na okresy istnienia tokenu. KOD XML wygląda podobnie do tego przykładu:
 
 ```XML
 <ClaimsProviders>
@@ -49,47 +49,47 @@ Wewnątrz należy umieścić informacje, które ma wpływ na Twoje okresów istn
 </ClaimsProviders>
 ```
 
-Następujące wartości są ustawione w poprzednim przykładzie:
+Poniższe wartości są ustawiane w poprzednim przykładzie:
 
-- **Dostęp do okresów istnienia tokenu** — czas życia tokenu dostępu wartość została ustawiona za pomocą **token_lifetime_secs** elementu metadanych. Wartość domyślna to 3600 sekund (60 minut).
-- **Czas życia tokenu Identyfikatora** — czas życia tokenu Identyfikatora wartość została ustawiona za pomocą **id_token_lifetime_secs** elementu metadanych. Wartość domyślna to 3600 sekund (60 minut).
-- **Czas życia tokenu odświeżania** — czas życia tokenu odświeżania wartość została ustawiona za pomocą **refresh_token_lifetime_secs** elementu metadanych. Wartość domyślna to 1209600 sekund (14 dni).
-- **Czas życia okna przewijania tokenu odświeżania** — Jeśli chcesz Ustaw okres istnienia okna przewijania tokenu odświeżania, ustaw wartość **rolling_refresh_token_lifetime_secs** elementu metadanych. Wartość domyślna to 7776000 (90 dni). Jeśli nie chcesz wymusić okres istnienia okna przewijania, należy zastąpić element o `<Item Key="allow_infinite_rolling_refresh_token">True</Item>`.
-- **Oświadczenie wystawcy (iss)** -Oświadczenie wystawcy (iss) została ustawiona za pomocą **IssuanceClaimPattern** elementu metadanych. Odpowiednie wartości są `AuthorityAndTenantGuid` i `AuthorityWithTfp`.
-- **Ustawienie oświadczenie reprezentujące identyfikator zasad** — opcje ustawienie tej wartości są `TFP` (framework zasady zaufania) i `ACR` (odwołanie w kontekście uwierzytelniania). `TFP` jest to zalecana wartość. Ustaw **AuthenticationContextReferenceClaimPattern** z wartością `None`. 
+- **Okresy istnienia tokenu dostępu** — wartość okresu istnienia tokenu dostępu jest ustawiana za pomocą elementu metadanych **token_lifetime_secs** . Wartość domyślna to 3600 sekund (60 minut).
+- **Okres istnienia tokenu identyfikatora** — wartość okresu istnienia tokenu identyfikatora jest ustawiana za pomocą elementu metadanych **id_token_lifetime_secs** . Wartość domyślna to 3600 sekund (60 minut).
+- **Okres istnienia tokenu odświeżania** — wartość okresu istnienia tokenu odświeżania jest ustawiana za pomocą elementu metadanych **refresh_token_lifetime_secs** . Wartość domyślna to 1209600 sekund (14 dni).
+- **Okres istnienia przesuwanego okna tokenu odświeżania** — Jeśli chcesz ustawić okres istnienia ruchomego okna do tokenu odświeżania, ustaw wartość elementu metadanych **rolling_refresh_token_lifetime_secs** . Wartość domyślna to 7776000 (90 dni). Jeśli nie chcesz wymusić okresu istnienia ruchomego okna, Zastąp `<Item Key="allow_infinite_rolling_refresh_token">True</Item>`element pozycją.
+- **Claimname (ISS)** — w ramach żądania wystawcy (ISS) jest ustawiany element metadanych **IssuanceClaimPattern** . Odpowiednie wartości to `AuthorityAndTenantGuid` i `AuthorityWithTfp`.
+- **Ustawianie zgłoszenia reprezentującego identyfikator zasad** — opcje ustawiania tej wartości są `TFP` (zasady struktury zaufania) i `ACR` (odwołanie kontekstu uwierzytelniania). `TFP`jest to zalecana wartość. Ustaw **AuthenticationContextReferenceClaimPattern** z wartością `None`.
 
-    W **ClaimsSchema** elementu Dodawanie tego elementu: 
-    
+    W elemencie **ClaimsSchema** Dodaj następujący element:
+
     ```XML
     <ClaimType Id="trustFrameworkPolicy">
       <DisplayName>Trust framework policy name</DisplayName>
       <DataType>string</DataType>
     </ClaimType>
     ```
-    
-    W swojej **OutputClaims** elementu Dodawanie tego elementu:
-    
+
+    W elemencie **OutputClaims** Dodaj następujący element:
+
     ```XML
     <OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />
     ```
 
-    W przypadku rejestru Azure container Registry, usunąć **AuthenticationContextReferenceClaimPattern** elementu.
+    W przypadku ACR Usuń element **AuthenticationContextReferenceClaimPattern** .
 
-- **Oświadczenia podmiotu (pod)** — tę opcję, wartość domyślna to identyfikator obiektu, jeśli chcesz to ustawienie, aby przełączyć `Not Supported`, Zastąp ten wiersz: 
+- **Zastrzeżenie podmiotu (Sub)** — ta opcja domyślnie ma wartość objectid, jeśli chcesz zmienić to ustawienie na `Not Supported`, Zastąp ten wiersz:
 
     ```XML
     <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub" />
     ```
-    
-    w tym:
-    
+
+    z tym wierszem:
+
     ```XML
     <OutputClaim ClaimTypeReferenceId="sub" />
     ```
 
-## <a name="session-behavior-and-sso"></a>Zachowanie sesji i logowania jednokrotnego
+## <a name="session-behavior-and-sso"></a>Zachowanie sesji i logowanie jednokrotne
 
-Aby zmienić zachowanie sesji i logowania jednokrotnego konfiguracji, należy dodać **UserJourneyBehaviors** wewnątrz elementu [RelyingParty](relyingparty.md) elementu.  **UserJourneyBehaviors** element należy natychmiast wykonać **DefaultUserJourney**. Wewnątrz swojej **UserJourneyBehavors** element powinien wyglądać następująco:
+Aby zmienić zachowanie sesji i konfiguracje rejestracji jednokrotnej, należy dodać element **UserJourneyBehaviors** wewnątrz elementu [RelyingParty](relyingparty.md) .  Element **UserJourneyBehaviors** musi występować bezpośrednio po **DefaultUserJourney**. Wewnątrz elementu **UserJourneyBehavors** powinna wyglądać podobnie do tego przykładu:
 
 ```XML
 <UserJourneyBehaviors>
@@ -101,6 +101,6 @@ Aby zmienić zachowanie sesji i logowania jednokrotnego konfiguracji, należy do
 
 Następujące wartości są konfigurowane w poprzednim przykładzie:
 
-- **Jednokrotne logowanie jednokrotne (SSO)** — logowanie jednokrotne jest konfigurowana **SingleSignOn**. Odpowiednie wartości są `Tenant`, `Application`, `Policy`, i `Suppressed`. 
-- **Aplikacja sieci Web okres istnienia sesji (w minutach)** — sesji aplikacji sieci web okres istnienia została ustawiona za pomocą **SessionExpiryInSeconds** elementu. Wartość domyślna to 86400 sekund (1440 minut).
-- **Limit czasu sesji aplikacji sieci Web** — limit czasu można ustawić za pomocą sesji aplikacji sieci web **wartość SessionExpiryType** elementu. Odpowiednie wartości są `Absolute` i `Rolling`.
+- Logowanie jednokrotne **(SSO)** — Logowanie jednokrotne jest konfigurowane z **SingleSignon**. Odpowiednie `Tenant`wartości to `Application` `Suppressed`,,, i. `Policy`
+- **Okres istnienia sesji aplikacji sieci Web (w minutach)** — okres istnienia sesji aplikacji sieci Web jest ustawiany z elementem **SessionExpiryInSeconds** . Wartość domyślna to 86400 sekund (1440 minut).
+- Limit **czasu sesji aplikacji sieci Web** — limit czasu sesji aplikacji sieci Web jest ustawiany z elementem **SessionExpiryType** . Odpowiednie wartości to `Absolute` i `Rolling`.

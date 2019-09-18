@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 09/04/2019
+ms.date: 09/17/2019
 ms.author: dalek
-ms.openlocfilehash: f0a3930cfb3ff403e0ce9d9be308370810e2065a
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 62f2ea36468e30b20ef08bde21bfde961faae8f9
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277008"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067012"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Zarządzanie użyciem i kosztami Application Insights
 
@@ -151,7 +151,7 @@ W każdym zachowanym rekordzie `itemCount` wskazuje liczbę oryginalnych rekord�
 ## <a name="change-the-data-retention-period"></a>Zmienić okres przechowywania danych
 
 > [!NOTE]
-> Ta funkcja została tymczasowo usunięta podczas rozwiązywania problemu.  Będziemy z powrotem w połowie 2019 września.
+> Ta funkcja została tymczasowo usunięta podczas rozwiązywania problemu.  Będziemy ją z powrotem do pierwszego tygodnia w 2019 października.
 
 Domyślne przechowywanie dla zasobów Application Insights to 90 dni. Dla każdego zasobu Application Insights można wybrać różne okresy przechowywania. Pełny zestaw dostępnych okresów przechowywania to 30, 60, 90, 120, 180, 270, 365, 550 lub 730. 
 

@@ -4,40 +4,40 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: cephalin
-ms.openlocfilehash: 67b9c0ba2566206b0e70db51844b21e5d5d3c261
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: ddeb46a2c7bc7f24f55c22f446926529cee7b598
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183808"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059775"
 ---
-Po wykonaniu propagacji rekordów dla nazwy domeny, należy użyć przeglądarki, aby sprawdzić, czy nazwa domeny niestandardowej może służyć do dostępu do aplikacji sieci web w usłudze Azure App Service.
+Po rozpropagowaniu rekordów dla nazwy domeny należy mieć możliwość użycia przeglądarki, aby sprawdzić, czy nazwa domeny niestandardowej może być używana do uzyskiwania dostępu do aplikacji sieci Web w Azure App Service.
 
 > [!NOTE]
-> Upłynąć trochę czasu, Twoje CNAME Propagacja za pośrednictwem systemu DNS. Można użyć usługi, takie jak <a href="https://www.digwebinterface.com/"> https://www.digwebinterface.com/ </a> Aby sprawdzić, czy rekord CNAME jest dostępny.
+> Propagacja rekordu CNAME przez system DNS może zająć trochę czasu. Możesz użyć usługi, takiej jak <a href="https://www.digwebinterface.com/">https://www.digwebinterface.com/</a> , aby sprawdzić, czy rekord CNAME jest dostępny.
 > 
 > 
 
-Jeśli Twoja aplikacja sieci web nie jest już dodano jako punktu końcowego usługi Traffic Manager, należy to zrobić, aby rozpoznawanie nazw działa jako trasy nazwy domeny niestandardowej do usługi Traffic Manager. Usługa Traffic Manager, a następnie trasy do aplikacji sieci web. Skorzystaj z informacji w [apletu Dodaj lub Usuń punkty końcowe](../articles/traffic-manager/traffic-manager-endpoints.md) do dodania aplikacji sieci web jako punktu końcowego w profilu usługi Traffic Manager.
+Jeśli aplikacja sieci Web nie została jeszcze dodana jako punkt końcowy Traffic Manager, musisz to zrobić przed rozpoczęciem rozpoznawania nazw, ponieważ niestandardowa nazwa domeny ma Traffic Manager. Traffic Manager następnie kieruje trasy do aplikacji sieci Web. Użyj informacji w obszarze [punkty końcowe dodawania lub usuwania](../articles/traffic-manager/traffic-manager-endpoints.md) , aby dodać aplikację sieci Web jako punkt końcowy w profilu Traffic Manager.
 
 > [!NOTE]
-> Jeśli Twoja aplikacja sieci web nie jest wyświetlana podczas dodawania punktu końcowego, sprawdź, czy została ona skonfigurowana do **standardowa** tryb planu usługi App Service. Należy użyć **standardowa** tryb dla aplikacji sieci web w taki sposób, aby móc pracować z usługą Traffic Manager.
+> Jeśli aplikacja sieci Web nie jest wyświetlana na liście podczas dodawania punktu końcowego, sprawdź, czy jest ona skonfigurowana dla **standardowego** trybu planu App Service. Aby móc korzystać z Traffic Manager, musisz użyć trybu **standardowego** dla aplikacji sieci Web.
 > 
 > 
 
-1. Otwórz w przeglądarce, [witryny Azure Portal](https://portal.azure.com).
-2. W **aplikacji sieci Web** kliknij nazwę aplikacji sieci web, wybierz pozycję **ustawienia**, a następnie wybierz pozycję **domen niestandardowych**
+1. W przeglądarce Otwórz [Portal Azure](https://portal.azure.com).
+2. Na karcie **Web Apps** kliknij nazwę aplikacji sieci Web, wybierz pozycję **Ustawienia**, a następnie wybierz pozycję **domeny niestandardowe** .
    
     ![](./media/custom-dns-web-site/dncmntask-cname-6.png)
-3. W **domen niestandardowych** bloku kliknij **Dodaj nazwę hosta**.
-4. Użyj **Hostname** pola tekstowe, aby wprowadzić nazwę domeny usługi Traffic Manager do skojarzenia z tą aplikacją sieci web.
+3. W bloku **domeny niestandardowe** kliknij pozycję **Dodaj nazwę hosta**.
+4. Użyj pól tekstowych Nazwa **hosta** , aby wprowadzić niestandardową nazwę domeny, która ma zostać skojarzona z tą aplikacją sieci Web.
    
     ![](./media/custom-dns-web-site/dncmntask-cname-8.png)
-5. Kliknij przycisk **weryfikacji** można zapisać konfiguracji nazwę domeny.
-6. Po kliknięciu **weryfikacji** Azure będzie uruchamiał przepływu pracy weryfikacji domeny. Spowoduje to zaewidencjonowanie własność domeny, a także Powodzenie raport i dostępność nazwy hosta lub szczegółowy komunikat o błędzie z wskazówki na temat naprawić błąd.    
-7. Po pomyślnej weryfikacji **Dodaj nazwę hosta** przycisk stanie się aktywny i będzie można przypisać nazwy hosta. Teraz przejdź do swojej niestandardowej nazwy domeny w przeglądarce. Powinien zostać wyświetlony działającego aplikacji przy użyciu niestandardowej nazwy domeny. 
+5. Kliknij przycisk **Sprawdź poprawność** , aby zapisać konfigurację nazwy domeny.
+6. Po kliknięciu pozycji **Sprawdź poprawność** platformy Azure zostanie rozpoczęty przepływ pracy weryfikacji domeny. Spowoduje to sprawdzenie własności domeny, a także dostępności nazwy hosta i powodzenia raportu lub szczegółowego błędu wraz ze wskazówkami opisującymi, jak naprawić błąd.    
+7. Po pomyślnym zakończeniu walidacji przycisk **Dodaj nazwę hosta** stanie się aktywny, a będziesz mieć możliwość przypisania nazwy hosta. Teraz przejdź do niestandardowej nazwy domeny w przeglądarce. Twoja aplikacja powinna być teraz uruchomiona przy użyciu niestandardowej nazwy domeny. 
    
-   Po zakończeniu konfiguracji niestandardowej nazwy domeny zostaną wyświetlone w **nazw domen** części aplikacji sieci web.
+   Gdy konfiguracja zostanie ukończona, nazwa domeny niestandardowej zostanie wyświetlona w sekcji **nazwy domen** w aplikacji sieci Web.
 
-W tym momencie można wprowadzić nazwę domeny usługi Traffic Manager w przeglądarce i zobacz, że jej pomyślnie spowoduje przejście do aplikacji sieci web.
+W tym momencie należy mieć możliwość wprowadzenia nazwy domeny Traffic Manager w przeglądarce i sprawdzenia, czy pomyślnie nastąpi przejście do aplikacji sieci Web.
 

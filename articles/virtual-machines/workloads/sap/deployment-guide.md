@@ -13,14 +13,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/26/2018
+ms.date: 09/16/2019
 ms.author: sedusch
-ms.openlocfilehash: b9db5cbb9e65fc7bc8aa306a69a0889f29b61be3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 549fd8f4cb770d472eefd1c504e42837fa8230dd
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101353"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066867"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Wdrożenie Virtual Machines platformy Azure dla oprogramowania SAP NetWeaver
 
@@ -121,12 +121,12 @@ ms.locfileid: "70101353"
 [deployment-guide-4.4]:deployment-guide.md#c7cbb0dc-52a4-49db-8e03-83e7edc2927d (Pobieranie, Instalowanie i włączanie agenta maszyny wirtualnej platformy Azure)
 [deployment-guide-4.5.1]:deployment-guide.md#987cf279-d713-4b4c-8143-6b11589bb9d4 (Azure PowerShell)
 [deployment-guide-4.5.2]:deployment-guide.md#408f3779-f422-4413-82f8-c57a23b4fc2f (Interfejs wiersza polecenia platformy Azure)
-[deployment-guide-4.5]:deployment-guide.md#d98edcd3-f2a1-49f7-b26a-07448ceb60ca (Skonfiguruj rozszerzenie Azure Enhanced Monitoring dla oprogramowania SAP)
-[deployment-guide-5.1]:deployment-guide.md#bb61ce92-8c5c-461f-8c53-39f5e5ed91f2 (Sprawdzanie gotowości dla rozszerzonego monitorowania platformy Azure dla oprogramowania SAP)
-[deployment-guide-5.2]:deployment-guide.md#e2d592ff-b4ea-4a53-a91a-e5521edb6cd1 (Sprawdzenie kondycji infrastruktury monitorowania platformy Azure)
-[deployment-guide-5.3]:deployment-guide.md#fe25a7da-4e4e-4388-8907-8abc2d33cfd8 (Rozwiązywanie problemów z monitorowaniem platformy Azure dla oprogramowania SAP)
+[deployment-guide-4.5]:deployment-guide.md#d98edcd3-f2a1-49f7-b26a-07448ceb60ca (Skonfiguruj rozszerzenie platformy Azure dla oprogramowania SAP)
+[deployment-guide-5.1]:deployment-guide.md#bb61ce92-8c5c-461f-8c53-39f5e5ed91f2 (Sprawdzanie gotowości dla rozszerzenia platformy Azure dla oprogramowania SAP)
+[deployment-guide-5.2]:deployment-guide.md#e2d592ff-b4ea-4a53-a91a-e5521edb6cd1 (Sprawdzenie kondycji konfiguracji rozszerzenia platformy Azure dla oprogramowania SAP)
+[deployment-guide-5.3]:deployment-guide.md#fe25a7da-4e4e-4388-8907-8abc2d33cfd8 (Rozwiązywanie problemów z rozszerzeniem platformy Azure dla oprogramowania SAP)
 
-[deployment-guide-configure-monitoring-scenario-1]:deployment-guide.md#ec323ac3-1de9-4c3a-b770-4ff701def65b (Konfigurowanie monitorowania)
+[deployment-guide-configure-monitoring-scenario-1]:deployment-guide.md#ec323ac3-1de9-4c3a-b770-4ff701def65b (Konfigurowanie rozszerzenia maszyny wirtualnej)
 [deployment-guide-configure-proxy]:deployment-guide.md#baccae00-6f79-4307-ade4-40292ce4e02d (Konfigurowanie serwera proxy)
 [deployment-guide-figure-100]:media/virtual-machines-shared-sap-deployment-guide/100-deploy-vm-image.png
 [deployment-guide-figure-1000]:media/virtual-machines-shared-sap-deployment-guide/1000-service-properties.png
@@ -150,7 +150,7 @@ ms.locfileid: "70101353"
 [deployment-guide-figure-azure-cli-installed]:deployment-guide.md#402488e5-f9bb-4b29-8063-1c5f52a892d0
 [deployment-guide-figure-azure-cli-version]:deployment-guide.md#0ad010e6-f9b5-4c21-9c09-bb2e5efb3fda
 [deployment-guide-install-vm-agent-windows]:deployment-guide.md#b2db5c9a-a076-42c6-9835-16945868e866
-[deployment-guide-troubleshooting-chapter]:deployment-guide.md#564adb4f-5c95-4041-9616-6635e83a810b (Sprawdza i rozwiązywanie problemów w celu skonfigurowania kompleksowego monitorowania)
+[deployment-guide-troubleshooting-chapter]:deployment-guide.md#564adb4f-5c95-4041-9616-6635e83a810b (Sprawdza i rozwiązywanie problemów dotyczących kompleksowej zbierania danych dla agenta hosta SAP)
 
 [deploy-template-cli]:../../../resource-group-template-deploy-cli.md
 [deploy-template-portal]:../../../resource-group-template-deploy-portal.md
@@ -327,7 +327,7 @@ Aby zarządzać maszynami wirtualnymi z systemem Windows lub Linux, można uży�
 
 ### <a name="internet-connection"></a>Połączenie internetowe
 
-Aby pobrać i uruchomić narzędzia i skrypty wymagane do wdrożenia oprogramowania SAP, musisz mieć połączenie z Internetem. Maszyna wirtualna platformy Azure, na której działa rozszerzenie Azure Enhanced monitoring, musi również mieć dostęp do Internetu. Jeśli maszyna wirtualna platformy Azure jest częścią sieci wirtualnej platformy Azure lub domeny lokalnej, upewnij się, że ustawiono odpowiednie ustawienia serwera proxy, zgodnie z opisem w temacie [Konfigurowanie serwera proxy][deployment-guide-configure-proxy].
+Aby pobrać i uruchomić narzędzia i skrypty wymagane do wdrożenia oprogramowania SAP, musisz mieć połączenie z Internetem. Maszyna wirtualna platformy Azure, na której działa rozszerzenie platformy Azure dla oprogramowania SAP, musi również mieć dostęp do Internetu. Jeśli maszyna wirtualna platformy Azure jest częścią sieci wirtualnej platformy Azure lub domeny lokalnej, upewnij się, że ustawiono odpowiednie ustawienia serwera proxy, zgodnie z opisem w temacie [Konfigurowanie serwera proxy][deployment-guide-configure-proxy].
 
 ### <a name="microsoft-azure-subscription"></a>Subskrypcja platformy Microsoft Azure
 
@@ -440,7 +440,7 @@ Kreator przeprowadzi Cię przez proces konfigurowania wymaganych parametrów w c
      * **Sieć wirtualna** i **podsieć**: Aby zintegrować maszynę wirtualną z intranetem, wybierz sieć wirtualną, która jest połączona z siecią lokalną.
      * **Publiczny adres IP**: Wybierz publiczny adres IP, którego chcesz użyć, lub wprowadź parametry, aby utworzyć nowy publiczny adres IP. Aby uzyskać dostęp do maszyny wirtualnej za pośrednictwem Internetu, możesz użyć publicznego adresu IP. Upewnij się, że utworzono również sieciową grupę zabezpieczeń, która pomaga w zabezpieczaniu dostępu do maszyny wirtualnej.
      * **Sieciowa Grupa zabezpieczeń**: Aby uzyskać więcej informacji, zobacz [sterowanie przepływem ruchu sieciowego za pomocą sieciowych grup zabezpieczeń][virtual-networks-nsg].
-   * **Rozszerzenia**: Można zainstalować rozszerzenia maszyny wirtualnej, dodając je do wdrożenia. Nie musisz dodawać rozszerzeń w tym kroku. Rozszerzenia wymagane dla pomocy technicznej SAP są instalowane później. Zobacz rozdział [Konfigurowanie rozszerzenia Azure Enhanced Monitoring dla oprogramowania SAP][deployment-guide-4.5] w tym przewodniku.
+   * **Rozszerzenia**: Można zainstalować rozszerzenia maszyny wirtualnej, dodając je do wdrożenia. Nie musisz dodawać rozszerzeń w tym kroku. Rozszerzenia wymagane dla pomocy technicznej SAP są instalowane później. Zobacz rozdział [Konfigurowanie rozszerzenia platformy Azure dla oprogramowania SAP][deployment-guide-4.5] w tym przewodniku.
    * **Wysoka dostępność**: Wybierz zestaw dostępności lub wprowadź parametry, aby utworzyć nowy zestaw dostępności. Aby uzyskać więcej informacji, zobacz [zestawy dostępności platformy Azure][planning-guide-3.2.3].
    * **Monitorowanie**
      * **Diagnostyka rozruchu**: Można wybrać opcję **Wyłącz** dla diagnostyki rozruchu.
@@ -508,19 +508,19 @@ Agent maszyny wirtualnej platformy Azure jest wdrażany domyślnie przy użyciu 
 
 #### <a name="configure-proxy-settings"></a>Konfigurowanie ustawień serwera proxy
 
-W zależności od konfiguracji sieci lokalnej może być konieczne skonfigurowanie serwera proxy na maszynie wirtualnej. Jeśli maszyna wirtualna jest połączona z siecią lokalną za pośrednictwem sieci VPN lub ExpressRoute, maszyna wirtualna może nie być w stanie uzyskać dostępu do Internetu i nie będzie mogła pobierać wymaganych rozszerzeń ani zbierać danych monitorowania. Aby uzyskać więcej informacji, zobacz [Konfigurowanie serwera proxy][deployment-guide-configure-proxy].
+W zależności od konfiguracji sieci lokalnej może być konieczne skonfigurowanie serwera proxy na maszynie wirtualnej. Jeśli maszyna wirtualna jest połączona z siecią lokalną za pośrednictwem sieci VPN lub ExpressRoute, maszyna wirtualna może nie być w stanie uzyskać dostępu do Internetu i nie będzie mogła pobrać wymaganych rozszerzeń maszyn wirtualnych ani zbierać informacji o infrastrukturze platformy Azure dla agenta hosta SAP za pośrednictwem rozszerzenia SAP dla platformy Azure. Aby uzyskać więcej informacji, zobacz [Konfigurowanie serwera proxy][deployment-guide-configure-proxy].
 
 #### <a name="join-a-domain-windows-only"></a>Przyłącz do domeny (tylko system Windows)
 
-Jeśli wdrożenie platformy Azure jest połączone z lokalnym Active Directory lub wystąpieniem usługi DNS za pośrednictwem połączenia sieci VPN typu lokacja-lokacja lub usługi ExpressRoute (jest to nazywane krzyżowo na [platformie Azure Virtual Machines planowanie i wdrażanie oprogramowania SAP NetWeaver][planning-guide]), oczekuje się, że maszyna wirtualna przyłącza się do domeny lokalnej. Aby uzyskać więcej informacji na temat zagadnień dotyczących tego zadania, zobacz Dołączanie [maszyny wirtualnej do domeny lokalnej (tylko system Windows)][deployment-guide-4.3].
+Jeśli wdrożenie platformy Azure jest połączone z lokalnym Active Directory lub wystąpieniem usługi DNS za pośrednictwem połączenia sieci VPN typu lokacja-lokacja lub usługi ExpressRoute (jest to nazywane *krzyżowo* na [platformie Azure Virtual Machines planowanie i wdrażanie oprogramowania SAP NetWeaver][planning-guide]), oczekuje się, że maszyna wirtualna przyłącza się do domeny lokalnej. Aby uzyskać więcej informacji na temat zagadnień dotyczących tego zadania, zobacz [dołączanie maszyny wirtualnej do domeny lokalnej (tylko system Windows)][deployment-guide-4.3].
 
-#### <a name="ec323ac3-1de9-4c3a-b770-4ff701def65b"></a>Konfigurowanie monitorowania
+#### <a name="ec323ac3-1de9-4c3a-b770-4ff701def65b"></a>Konfigurowanie rozszerzenia maszyny wirtualnej
 
-Aby upewnić się, że SAP obsługuje Twoje środowisko, skonfiguruj rozszerzenie monitorowania platformy Azure dla oprogramowania SAP zgodnie z opisem w temacie [Konfigurowanie rozszerzenia rozszerzonego monitorowania platformy Azure dla oprogramowania SAP][deployment-guide-4.5]. Zapoznaj się z wymaganiami wstępnymi dotyczącymi monitorowania oprogramowania SAP oraz minimalnymi wersjami jądra SAP i agenta hosta SAP w zasobach wymienionych w obszarze [zasoby SAP][deployment-guide-2.2].
+Aby upewnić się, że SAP obsługuje Twoje środowisko, skonfiguruj rozszerzenie platformy Azure dla oprogramowania SAP zgodnie z opisem w temacie [Konfigurowanie rozszerzenia platformy Azure dla oprogramowania SAP][deployment-guide-4.5]. Zapoznaj się z wymaganiami wstępnymi dotyczącymi oprogramowania SAP oraz minimalnymi wersjami jądra SAP i agenta hosta SAP w zasobach wymienionych w obszarze [zasoby SAP][deployment-guide-2.2].
 
-#### <a name="monitoring-check"></a>Sprawdzenie monitorowania
+#### <a name="vm-extension-for-sap-check"></a>Sprawdzenie rozszerzenia maszyny wirtualnej dla oprogramowania SAP
 
-Sprawdź, czy monitorowanie działa, zgodnie z opisem w [temacie testy i rozwiązywanie problemów w celu skonfigurowania kompleksowego monitorowania][deployment-guide-troubleshooting-chapter].
+Sprawdź, czy rozszerzenie maszyny wirtualnej dla oprogramowania SAP działa, zgodnie z opisem w [temacie sprawdzanie i rozwiązywanie problemów z kompleksowym zbieraniem danych dla agenta hosta SAP][deployment-guide-troubleshooting-chapter].
 
 #### <a name="post-deployment-steps"></a>Kroki po wdrożeniu
 
@@ -579,7 +579,7 @@ Kreator przeprowadzi Cię przez proces konfigurowania wymaganych parametrów w c
      * **Sieć wirtualna** i **podsieć**: Aby zintegrować maszynę wirtualną z intranetem, wybierz sieć wirtualną, która jest połączona z siecią lokalną.
      * **Publiczny adres IP**: Wybierz publiczny adres IP, którego chcesz użyć, lub wprowadź parametry, aby utworzyć nowy publiczny adres IP. Aby uzyskać dostęp do maszyny wirtualnej za pośrednictwem Internetu, możesz użyć publicznego adresu IP. Upewnij się, że utworzono również sieciową grupę zabezpieczeń, która pomaga w zabezpieczaniu dostępu do maszyny wirtualnej.
      * **Sieciowa Grupa zabezpieczeń**: Aby uzyskać więcej informacji, zobacz [sterowanie przepływem ruchu sieciowego za pomocą sieciowych grup zabezpieczeń][virtual-networks-nsg].
-   * **Rozszerzenia**: Można zainstalować rozszerzenia maszyny wirtualnej, dodając je do wdrożenia. Nie musisz dodawać rozszerzenia w tym kroku. Rozszerzenia wymagane dla pomocy technicznej SAP są instalowane później. Zobacz rozdział [Konfigurowanie rozszerzenia Azure Enhanced Monitoring dla oprogramowania SAP][deployment-guide-4.5] w tym przewodniku.
+   * **Rozszerzenia**: Można zainstalować rozszerzenia maszyny wirtualnej, dodając je do wdrożenia. Nie musisz dodawać rozszerzenia w tym kroku. Rozszerzenia wymagane dla pomocy technicznej SAP są instalowane później. Zobacz rozdział [Konfigurowanie rozszerzenia platformy Azure dla oprogramowania SAP][deployment-guide-4.5] w tym przewodniku.
    * **Wysoka dostępność**: Wybierz zestaw dostępności lub wprowadź parametry, aby utworzyć nowy zestaw dostępności. Aby uzyskać więcej informacji, zobacz [zestawy dostępności platformy Azure][planning-guide-3.2.3].
    * **Monitorowanie**
      * **Diagnostyka rozruchu**: Można wybrać opcję **Wyłącz** dla diagnostyki rozruchu.
@@ -650,26 +650,26 @@ Aby można było używać szablonów opisanych w poprzedniej sekcji, Agent syste
 
 #### <a name="join-a-domain-windows-only"></a>Przyłącz do domeny (tylko system Windows)
 
-Jeśli wdrożenie platformy Azure jest połączone z lokalnym Active Directory lub wystąpieniem usługi DNS za pośrednictwem połączenia sieci VPN typu lokacja-lokacja lub platformy Azure ExpressRoute (jest to *oparte na wielu miejscach* na [platformie Azure Virtual Machines planowanie i wdrażanie oprogramowania SAP NetWeaver][planning-guide]), oczekuje się, że maszyna wirtualna przyłącza się do domeny lokalnej. Aby uzyskać więcej informacji na temat zagadnień dotyczących tego kroku, zobacz Dołączanie [maszyny wirtualnej do domeny lokalnej (tylko system Windows)][deployment-guide-4.3].
+Jeśli wdrożenie platformy Azure jest połączone z lokalnym Active Directory lub wystąpieniem usługi DNS za pośrednictwem połączenia sieci VPN typu lokacja-lokacja lub platformy Azure ExpressRoute (jest to *oparte na wielu miejscach* na [platformie Azure Virtual Machines planowanie i wdrażanie oprogramowania SAP NetWeaver][planning-guide]), oczekuje się, że maszyna wirtualna przyłącza się do domeny lokalnej. Aby uzyskać więcej informacji na temat zagadnień dotyczących tego kroku, zobacz [dołączanie maszyny wirtualnej do domeny lokalnej (tylko system Windows)][deployment-guide-4.3].
 
 #### <a name="configure-proxy-settings"></a>Konfigurowanie ustawień serwera proxy
 
-W zależności od konfiguracji sieci lokalnej może być konieczne skonfigurowanie serwera proxy na maszynie wirtualnej. Jeśli maszyna wirtualna jest połączona z siecią lokalną za pośrednictwem sieci VPN lub ExpressRoute, maszyna wirtualna może nie być w stanie uzyskać dostępu do Internetu i nie będzie mogła pobierać wymaganych rozszerzeń ani zbierać danych monitorowania. Aby uzyskać więcej informacji, zobacz [Konfigurowanie serwera proxy][deployment-guide-configure-proxy].
+W zależności od konfiguracji sieci lokalnej może być konieczne skonfigurowanie serwera proxy na maszynie wirtualnej. Jeśli maszyna wirtualna jest połączona z siecią lokalną za pośrednictwem sieci VPN lub ExpressRoute, maszyna wirtualna może nie być w stanie uzyskać dostępu do Internetu i nie będzie mogła pobrać wymaganych rozszerzeń maszyn wirtualnych ani zbierać informacji o infrastrukturze platformy Azure dla agenta hosta SAP za pośrednictwem rozszerzenia SAP w przypadku platformy Azure zobacz [Konfigurowanie serwera proxy][deployment-guide-configure-proxy].
 
-#### <a name="configure-monitoring"></a>Konfigurowanie monitorowania
+#### <a name="configure-azure-vm-extension-for-sap"></a>Konfigurowanie rozszerzenia maszyny wirtualnej platformy Azure dla oprogramowania SAP
 
-Aby upewnić się, że SAP obsługuje Twoje środowisko, skonfiguruj rozszerzenie monitorowania platformy Azure dla oprogramowania SAP zgodnie z opisem w temacie [Konfigurowanie rozszerzenia rozszerzonego monitorowania platformy Azure dla oprogramowania SAP][deployment-guide-4.5]. Zapoznaj się z wymaganiami wstępnymi dotyczącymi monitorowania oprogramowania SAP oraz minimalnymi wersjami jądra SAP i agenta hosta SAP w zasobach wymienionych w obszarze [zasoby SAP][deployment-guide-2.2].
+Aby upewnić się, że SAP obsługuje Twoje środowisko, skonfiguruj rozszerzenie platformy Azure dla oprogramowania SAP zgodnie z opisem w temacie [Konfigurowanie rozszerzenia platformy Azure dla oprogramowania SAP][deployment-guide-4.5]. Zapoznaj się z wymaganiami wstępnymi dotyczącymi oprogramowania SAP oraz minimalnymi wersjami jądra SAP i agenta hosta SAP w zasobach wymienionych w obszarze [zasoby SAP][deployment-guide-2.2].
 
-#### <a name="monitoring-check"></a>Sprawdzenie monitorowania
+#### <a name="sap-vm-extension-check"></a>Sprawdzenie rozszerzenia maszyny wirtualnej SAP
 
-Sprawdź, czy monitorowanie działa, zgodnie z opisem w [temacie testy i rozwiązywanie problemów w celu skonfigurowania kompleksowego monitorowania][deployment-guide-troubleshooting-chapter].
+Sprawdź, czy rozszerzenie maszyny wirtualnej dla oprogramowania SAP działa, zgodnie z opisem w [temacie sprawdzanie i rozwiązywanie problemów z kompleksowym zbieraniem danych dla agenta hosta SAP][deployment-guide-troubleshooting-chapter].
 
 
 ### <a name="a9a60133-a763-4de8-8986-ac0fa33aa8c1"></a>Scenariusz 3: Przemieszczanie lokalnej maszyny wirtualnej przy użyciu nieuogólnionego wirtualnego dysku twardego platformy Azure z oprogramowaniem SAP
 
 W tym scenariuszu planujesz przenieść określony system SAP ze środowiska lokalnego na platformę Azure. Można to zrobić przez przekazanie wirtualnego dysku twardego z systemem operacyjnym, plików binarnych SAP i ostatecznie plików binarnych systemu DBMS oraz dysków VHD z plikami danych i dziennika w systemie DBMS do platformy Azure. W przeciwieństwie do scenariusza opisanego [w scenariuszu 2: Wdrażanie maszyny wirtualnej przy użyciu obrazu niestandardowego dla oprogramowania][deployment-guide-3.3]SAP, w tym przypadku należy zachować nazwę hosta, identyfikator SID SAP i konta użytkowników SAP na maszynie wirtualnej platformy Azure, ponieważ zostały one skonfigurowane w środowisku lokalnym. Nie trzeba uogólniać systemu operacyjnego. Ten scenariusz występuje najczęściej w scenariuszach obejmujących wiele lokalizacji, w których część środowiska SAP w środowisku lokalnym działa na platformie Azure.
 
-W tym scenariuszu Agent maszyny wirtualnej **nie** jest automatycznie instalowany podczas wdrażania. Ponieważ agent maszyny wirtualnej i rozszerzenie Azure rozszerzonego monitorowania dla oprogramowania SAP są wymagane do uruchomienia oprogramowania SAP NetWeaver na platformie Azure, należy pobrać, zainstalować i włączyć oba składniki ręcznie po utworzeniu maszyny wirtualnej.
+W tym scenariuszu Agent maszyny wirtualnej **nie** jest automatycznie instalowany podczas wdrażania. Ponieważ agent maszyny wirtualnej i rozszerzenie platformy Azure dla oprogramowania SAP są wymagane do uruchomienia oprogramowania SAP NetWeaver na platformie Azure, należy pobrać, zainstalować i włączyć oba składniki ręcznie po utworzeniu maszyny wirtualnej.
 
 Aby uzyskać więcej informacji na temat agenta maszyny wirtualnej platformy Azure, zobacz następujące zasoby.
 
@@ -740,30 +740,30 @@ Jeśli nie używasz szablonów opisanych w poprzedniej sekcji, można także zai
 
 #### <a name="join-a-domain-windows-only"></a>Przyłącz do domeny (tylko system Windows)
 
-Jeśli wdrożenie platformy Azure jest połączone z lokalnym Active Directory lub wystąpieniem usługi DNS za pośrednictwem połączenia sieci VPN typu lokacja-lokacja lub usługi ExpressRoute (jest to nazywane krzyżowo na [platformie Azure Virtual Machines planowanie i wdrażanie oprogramowania SAP NetWeaver][planning-guide]), oczekuje się, że maszyna wirtualna przyłącza się do domeny lokalnej. Aby uzyskać więcej informacji na temat zagadnień dotyczących tego zadania, zobacz Dołączanie [maszyny wirtualnej do domeny lokalnej (tylko system Windows)][deployment-guide-4.3].
+Jeśli wdrożenie platformy Azure jest połączone z lokalnym Active Directory lub wystąpieniem usługi DNS za pośrednictwem połączenia sieci VPN typu lokacja-lokacja lub usługi ExpressRoute (jest to nazywane *krzyżowo* na [platformie Azure Virtual Machines planowanie i wdrażanie oprogramowania SAP NetWeaver][planning-guide]), oczekuje się, że maszyna wirtualna przyłącza się do domeny lokalnej. Aby uzyskać więcej informacji na temat zagadnień dotyczących tego zadania, zobacz [dołączanie maszyny wirtualnej do domeny lokalnej (tylko system Windows)][deployment-guide-4.3].
 
 #### <a name="configure-proxy-settings"></a>Konfigurowanie ustawień serwera proxy
 
-W zależności od konfiguracji sieci lokalnej może być konieczne skonfigurowanie serwera proxy na maszynie wirtualnej. Jeśli maszyna wirtualna jest połączona z siecią lokalną za pośrednictwem sieci VPN lub ExpressRoute, maszyna wirtualna może nie być w stanie uzyskać dostępu do Internetu i nie będzie mogła pobierać wymaganych rozszerzeń ani zbierać danych monitorowania. Aby uzyskać więcej informacji, zobacz [Konfigurowanie serwera proxy][deployment-guide-configure-proxy].
+W zależności od konfiguracji sieci lokalnej może być konieczne skonfigurowanie serwera proxy na maszynie wirtualnej. Jeśli maszyna wirtualna jest połączona z siecią lokalną za pośrednictwem sieci VPN lub ExpressRoute, maszyna wirtualna może nie być w stanie uzyskać dostępu do Internetu i nie będzie mogła pobrać wymaganych rozszerzeń maszyn wirtualnych ani zbierać informacji o infrastrukturze platformy Azure dla agenta hosta SAP za pośrednictwem rozszerzenia SAP w przypadku platformy Azure zobacz [Konfigurowanie serwera proxy][deployment-guide-configure-proxy].
 
-#### <a name="configure-monitoring"></a>Konfigurowanie monitorowania
+#### <a name="configure-azure-vm-extension-for-sap"></a>Konfigurowanie rozszerzenia maszyny wirtualnej platformy Azure dla oprogramowania SAP
 
-Aby upewnić się, że SAP obsługuje Twoje środowisko, skonfiguruj rozszerzenie monitorowania platformy Azure dla oprogramowania SAP zgodnie z opisem w temacie [Konfigurowanie rozszerzenia rozszerzonego monitorowania platformy Azure dla oprogramowania SAP][deployment-guide-4.5]. Zapoznaj się z wymaganiami wstępnymi dotyczącymi monitorowania oprogramowania SAP oraz minimalnymi wersjami jądra SAP i agenta hosta SAP w zasobach wymienionych w obszarze [zasoby SAP][deployment-guide-2.2].
+Aby upewnić się, że SAP obsługuje Twoje środowisko, skonfiguruj rozszerzenie platformy Azure dla oprogramowania SAP zgodnie z opisem w temacie [Konfigurowanie rozszerzenia platformy Azure dla oprogramowania SAP][deployment-guide-4.5]. Zapoznaj się z wymaganiami wstępnymi dotyczącymi oprogramowania SAP oraz minimalnymi wersjami jądra SAP i agenta hosta SAP w zasobach wymienionych w obszarze [zasoby SAP][deployment-guide-2.2].
 
-#### <a name="monitoring-check"></a>Sprawdzenie monitorowania
+#### <a name="sap-vm-check"></a>Sprawdzenie maszyn wirtualnych SAP
 
-Sprawdź, czy monitorowanie działa, zgodnie z opisem w [temacie testy i rozwiązywanie problemów w celu skonfigurowania kompleksowego monitorowania][deployment-guide-troubleshooting-chapter].
+Sprawdź, czy rozszerzenie maszyny wirtualnej dla oprogramowania SAP działa, zgodnie z opisem w [temacie sprawdzanie i rozwiązywanie problemów z kompleksowym zbieraniem danych dla agenta hosta SAP][deployment-guide-troubleshooting-chapter].
 
-## <a name="update-the-monitoring-configuration-for-sap"></a>Aktualizowanie konfiguracji monitorowania dla oprogramowania SAP
+## <a name="update-the-configuration-of-azure-extension-for-sap"></a>Aktualizowanie konfiguracji rozszerzenia platformy Azure dla oprogramowania SAP
 
-Zaktualizuj konfigurację monitorowania SAP w jednym z następujących scenariuszy:
-* Wspólny zespół firmy Microsoft/SAP rozszerza możliwości monitorowania i żąda więcej lub mniej liczników.
-* Firma Microsoft wprowadza nową wersję podstawowej infrastruktury platformy Azure, która dostarcza dane monitorowania, oraz rozszerzenie Azure Enhanced Monitoring dla oprogramowania SAP musi zostać dostosowane do tych zmian.
-* Instalowanie dodatkowych dysków danych na maszynie wirtualnej platformy Azure lub usuwanie dysku z danymi. W tym scenariuszu należy zaktualizować kolekcję danych związanych z magazynem. Zmiana konfiguracji przez dodanie lub usunięcie punktów końcowych lub przypisanie adresów IP do maszyny wirtualnej nie ma wpływu na konfigurację monitorowania.
+Zaktualizuj konfigurację rozszerzenia platformy Azure dla oprogramowania SAP w jednym z następujących scenariuszy:
+* Wspólny zespół firmy Microsoft/SAP rozszerza możliwości rozszerzenia maszyny wirtualnej i żąda więcej lub mniej liczników.
+* Firma Microsoft wprowadza nową wersję podstawowej infrastruktury platformy Azure, która dostarcza dane, a rozszerzenie platformy Azure dla oprogramowania SAP musi zostać dostosowane do tych zmian.
+* Instalowanie dodatkowych dysków danych na maszynie wirtualnej platformy Azure lub usuwanie dysku z danymi. W tym scenariuszu należy zaktualizować kolekcję danych związanych z magazynem. Zmiana konfiguracji przez dodanie lub usunięcie punktów końcowych lub przypisanie adresów IP do maszyny wirtualnej nie ma wpływu na konfigurację rozszerzenia.
 * Możesz zmienić rozmiar maszyny wirtualnej platformy Azure, na przykład z rozmiaru A5 na inny rozmiar maszyny wirtualnej.
 * Dodajesz nowe interfejsy sieciowe do maszyny wirtualnej platformy Azure.
 
-Aby zaktualizować ustawienia monitorowania, zaktualizuj infrastrukturę monitorowania, wykonując czynności opisane w sekcji [Konfigurowanie rozszerzenia rozszerzonego monitorowania platformy Azure dla oprogramowania SAP][deployment-guide-4.5].
+Aby zaktualizować ustawienia, zaktualizuj konfigurację rozszerzenia platformy Azure dla oprogramowania SAP, wykonując czynności opisane w sekcji [Konfigurowanie rozszerzenia platformy Azure dla oprogramowania SAP][deployment-guide-4.5].
 
 ## <a name="detailed-tasks-for-sap-software-deployment"></a>Szczegółowe zadania wdrażania oprogramowania SAP
 
@@ -925,15 +925,15 @@ Ustawienia serwera proxy w \\etc\\waagent. conf dotyczą również wymaganych ro
 
 Aby uzyskać więcej informacji o trasach zdefiniowanych przez użytkownika, zobacz [trasy zdefiniowane przez użytkownika i przekazywanie adresów IP][virtual-networks-udr-overview].
 
-### <a name="d98edcd3-f2a1-49f7-b26a-07448ceb60ca"></a>Skonfiguruj rozszerzenie Azure Enhanced Monitoring dla oprogramowania SAP
+### <a name="d98edcd3-f2a1-49f7-b26a-07448ceb60ca"></a>Skonfiguruj rozszerzenie platformy Azure dla oprogramowania SAP
 
-Po przygotowaniu maszyny wirtualnej zgodnie z opisem w [scenariuszach wdrażania maszyn wirtualnych dla oprogramowania SAP na platformie Azure][deployment-guide-3], Agent maszyny wirtualnej platformy Azure jest zainstalowany na tej maszynie. Następnym krokiem jest wdrożenie rozszerzenia Azure Enhanced Monitoring dla oprogramowania SAP, które jest dostępne w repozytorium rozszerzeń platformy Azure w globalnych centrach danych platformy Azure. Aby uzyskać więcej informacji, zobacz temat [Azure Virtual Machines Planning and implementation for SAP NetWeaver][planning-guide-9.1].
+Po przygotowaniu maszyny wirtualnej zgodnie z opisem w [scenariuszach wdrażania maszyn wirtualnych dla oprogramowania SAP na platformie Azure][deployment-guide-3], Agent maszyny wirtualnej platformy Azure jest zainstalowany na tej maszynie. Następnym krokiem jest wdrożenie rozszerzenia platformy Azure dla oprogramowania SAP, które jest dostępne w repozytorium rozszerzeń platformy Azure w globalnych centrach danych platformy Azure. Aby uzyskać więcej informacji, zobacz temat [Azure Virtual Machines Planning and implementation for SAP NetWeaver][planning-guide-9.1].
 
-Możesz użyć programu PowerShell lub interfejsu wiersza polecenia platformy Azure, aby zainstalować i skonfigurować rozszerzenie Azure Enhanced Monitoring dla oprogramowania SAP. Aby zainstalować rozszerzenie na maszynie wirtualnej z systemem Windows lub Linux przy użyciu komputera z systemem Windows, zobacz [Azure PowerShell][deployment-guide-4.5.1]. Aby zainstalować rozszerzenie na maszynie wirtualnej z systemem Linux przy użyciu pulpitu z systemem Linux, zobacz [interfejs wiersza polecenia platformy Azure][deployment-guide-4.5.2].
+Możesz użyć programu PowerShell lub interfejsu wiersza polecenia platformy Azure, aby zainstalować i skonfigurować rozszerzenie platformy Azure dla oprogramowania SAP. Aby zainstalować rozszerzenie na maszynie wirtualnej z systemem Windows lub Linux przy użyciu komputera z systemem Windows, zobacz [Azure PowerShell][deployment-guide-4.5.1]. Aby zainstalować rozszerzenie na maszynie wirtualnej z systemem Linux przy użyciu pulpitu z systemem Linux, zobacz [interfejs wiersza polecenia platformy Azure][deployment-guide-4.5.2].
 
 #### <a name="987cf279-d713-4b4c-8143-6b11589bb9d4"></a>Azure PowerShell dla maszyn wirtualnych z systemem Linux i Windows
 
-Aby zainstalować rozszerzenie Azure Enhanced Monitoring dla oprogramowania SAP przy użyciu programu PowerShell:
+Aby zainstalować rozszerzenie platformy Azure dla oprogramowania SAP przy użyciu programu PowerShell:
 
 1. Upewnij się, że zainstalowano najnowszą wersję polecenia cmdlet Azure PowerShell. Aby uzyskać więcej informacji, zobacz [wdrażanie Azure PowerShell poleceń cmdlet][deployment-guide-4.1].  
 1. Uruchom następujące polecenie programu PowerShell.
@@ -952,21 +952,21 @@ Aby uzyskać więcej informacji `Set-AzVMAEMExtension`na temat, zobacz [Set-AzVM
 
 ![Pomyślne wykonanie polecenia cmdlet platformy Azure określonego dla oprogramowania SAP — AzVMAEMExtension][deployment-guide-figure-900]
 
-`Set-AzVMAEMExtension` Konfiguracja wykonuje wszystkie kroki konfigurowania monitorowania hostów dla oprogramowania SAP.
+`Set-AzVMAEMExtension` Konfiguracja wykonuje wszystkie kroki konfigurowania zbierania danych hosta dla oprogramowania SAP.
 
 Dane wyjściowe skryptu zawierają następujące informacje:
 
-* Potwierdzenie monitorowania dysku systemu operacyjnego i wszystkich dodatkowych dysków z danymi.
+* Potwierdź, że skonfigurowano zbieranie danych dla dysku systemu operacyjnego i wszystkich dodatkowych dysków z danymi.
 * Poniższe dwa komunikaty potwierdzają konfigurację metryk magazynu dla określonego konta magazynu.
-* Jeden wiersz danych wyjściowych daje status rzeczywistej aktualizacji konfiguracji monitorowania.
+* Jeden wiersz danych wyjściowych daje status rzeczywistej aktualizacji rozszerzenia maszyny wirtualnej na potrzeby konfiguracji oprogramowania SAP.
 * Inny wiersz danych wyjściowych potwierdza, że konfiguracja została wdrożona lub zaktualizowana.
-* Ostatni wiersz danych wyjściowych jest informacyjny. Przedstawiono opcje testowania konfiguracji monitorowania.
-* Aby sprawdzić, czy wszystkie kroki rozszerzonego monitorowania na platformie Azure zostały wykonane pomyślnie, a infrastruktura platformy Azure udostępnia niezbędne dane, Kontynuuj sprawdzanie gotowości dla rozszerzenia rozszerzonego monitorowania platformy Azure dla oprogramowania SAP, zgodnie z opisem w [temacie. Sprawdzanie gotowości dla rozszerzonego monitorowania platformy Azure dla oprogramowania SAP][deployment-guide-5.1].
+* Ostatni wiersz danych wyjściowych jest informacyjny. Przedstawiono opcje testowania rozszerzenia maszyny wirtualnej dla konfiguracji SAP.
+* Aby sprawdzić, czy wszystkie kroki rozszerzenia maszyny wirtualnej platformy Azure dla konfiguracji oprogramowania SAP zostały wykonane pomyślnie, a infrastruktura platformy Azure udostępnia niezbędne dane, Kontynuuj sprawdzanie gotowości dla rozszerzenia platformy Azure dla oprogramowania SAP, zgodnie z opisem w temacie [sprawdzanie gotowości dla rozszerzenia platformy Azure dla oprogramowania SAP][deployment-guide-5.1].
 * Poczekaj 15-30 minut, aby Diagnostyka Azure zebrać odpowiednie dane.
 
 #### <a name="408f3779-f422-4413-82f8-c57a23b4fc2f"></a>Interfejs wiersza polecenia platformy Azure dla maszyn wirtualnych z systemem Linux
 
-Aby zainstalować rozszerzenie Azure Enhanced Monitoring dla oprogramowania SAP przy użyciu interfejsu wiersza polecenia platformy Azure:
+Aby zainstalować rozszerzenie platformy Azure dla oprogramowania SAP przy użyciu interfejsu wiersza polecenia platformy Azure:
 
    1. Zainstaluj klasyczny interfejs wiersza polecenia platformy Azure, zgodnie z opisem w artykule [Instalowanie klasycznego interfejsu wiersza polecenia platformy Azure][azure-cli].
    1. Zaloguj się przy użyciu konta platformy Azure:
@@ -981,7 +981,7 @@ Aby zainstalować rozszerzenie Azure Enhanced Monitoring dla oprogramowania SAP 
       azure config mode arm
       ```
 
-   1. Włącz usługę Azure Enhanced monitoring:
+   1. Włącz rozszerzenie platformy Azure dla oprogramowania SAP:
 
       ```
       azure vm enable-aem <resource-group-name> <vm-name>
@@ -1008,7 +1008,7 @@ Aby zainstalować rozszerzenie Azure Enhanced Monitoring dla oprogramowania SAP 
       az vm aem set -g <resource-group-name> -n <vm name>
       ```
 
-1. Sprawdź, czy rozszerzenie Azure Enhanced monitoring jest aktywne na maszynie wirtualnej platformy Azure z systemem Linux. Sprawdź, czy plik \\Var\\lib\\AzureEnhancedMonitor\\PerfCounters istnieje. Jeśli istnieje, w wierszu polecenia Uruchom to polecenie, aby wyświetlić informacje zbierane przez ulepszony monitor platformy Azure:
+1. Sprawdź, czy rozszerzenie platformy Azure dla oprogramowania SAP jest aktywne na maszynie wirtualnej platformy Azure z systemem Linux. Sprawdź, czy plik \\Var\\lib\\AzureEnhancedMonitor\\PerfCounters istnieje. Jeśli istnieje, w wierszu polecenia Uruchom to polecenie, aby wyświetlić informacje zbierane przez rozszerzenie platformy Azure dla oprogramowania SAP:
 
    ```
    cat /var/lib/AzureEnhancedMonitor/PerfCounters
@@ -1022,25 +1022,25 @@ Aby zainstalować rozszerzenie Azure Enhanced Monitoring dla oprogramowania SAP 
    ...
    ```
 
-## <a name="564adb4f-5c95-4041-9616-6635e83a810b"></a>Sprawdza i rozwiązywanie problemów z kompleksowym monitorowaniem
+## <a name="564adb4f-5c95-4041-9616-6635e83a810b"></a>Sprawdza i rozwiązywanie problemów dotyczących kompleksowej zbierania danych dla agenta hosta SAP
 
-Po wdrożeniu maszyny wirtualnej platformy Azure i skonfigurowaniu odpowiedniej infrastruktury monitorowania platformy Azure Sprawdź, czy wszystkie składniki rozszerzenia rozszerzonego monitorowania platformy Azure działają zgodnie z oczekiwaniami.
+Po wdrożeniu maszyny wirtualnej platformy Azure i skonfigurowaniu odpowiedniego rozszerzenia platformy Azure dla oprogramowania SAP Sprawdź, czy wszystkie składniki rozszerzenia działają zgodnie z oczekiwaniami.
 
-Uruchom sprawdzenie gotowości dla rozszerzenia Azure Enhanced monitoring Extension dla oprogramowania SAP zgodnie z opisem w temacie [sprawdzanie gotowości dla rozszerzenia rozszerzonego monitorowania platformy Azure dla oprogramowania SAP][deployment-guide-5.1]. Jeśli wszystkie wyniki kontroli gotowości są pozytywne i wszystkie odpowiednie liczniki wydajności pojawiają się prawidłowo, monitorowanie platformy Azure zostało pomyślnie skonfigurowane. Można kontynuować instalację agenta hosta SAP zgodnie z opisem w temacie SAP uwagi w temacie [zasoby SAP][deployment-guide-2.2]. Jeśli sprawdzenie gotowości wskazuje, że brakuje liczników, należy uruchomić kontrolę kondycji infrastruktury monitorowania platformy Azure, zgodnie z opisem w temacie [Sprawdzanie kondycji konfiguracji infrastruktury monitorowania platformy Azure][deployment-guide-5.2]. Aby uzyskać więcej opcji rozwiązywania problemów, zobacz [Rozwiązywanie problemów z monitorowaniem platformy Azure dla oprogramowania SAP][deployment-guide-5.3].
+Uruchom sprawdzenie gotowości dla rozszerzenia platformy Azure dla oprogramowania SAP zgodnie z opisem w temacie [gotowość sprawdza rozszerzenie platformy Azure dla oprogramowania SAP][deployment-guide-5.1]. Jeśli wszystkie wyniki kontroli gotowości są pozytywne i wszystkie odpowiednie liczniki wydajności pojawiają się prawidłowo, rozszerzenie platformy Azure dla oprogramowania SAP zostało pomyślnie skonfigurowane. Można kontynuować instalację agenta hosta SAP zgodnie z opisem w temacie SAP uwagi w temacie [zasoby SAP][deployment-guide-2.2]. Jeśli sprawdzenie gotowości wskazuje, że brakuje liczników, należy uruchomić kontrolę kondycji rozszerzenia platformy Azure dla oprogramowania SAP, zgodnie z opisem w temacie [Sprawdzanie kondycji dla rozszerzenia Azure Extension for SAP Configuration][deployment-guide-5.2]. Aby uzyskać więcej opcji rozwiązywania problemów, zobacz [Rozwiązywanie problemów z usługą Azure Extension dla oprogramowania SAP][deployment-guide-5.3].
 
-### <a name="bb61ce92-8c5c-461f-8c53-39f5e5ed91f2"></a>Sprawdzenie gotowości dla rozszerzenia rozszerzonego monitorowania platformy Azure dla oprogramowania SAP
+### <a name="bb61ce92-8c5c-461f-8c53-39f5e5ed91f2"></a>Sprawdzenie gotowości dla rozszerzenia platformy Azure dla oprogramowania SAP
 
-Ten test sprawdza, czy wszystkie metryki wydajności, które znajdują się w aplikacji SAP, są udostępniane przez podstawową infrastrukturę monitorowania platformy Azure.
+Ten test sprawdza, czy wszystkie metryki wydajności, które znajdują się w aplikacji SAP, są dostarczane przez bazowe rozszerzenie platformy Azure dla oprogramowania SAP.
 
 #### <a name="run-the-readiness-check-on-a-windows-vm"></a>Uruchamianie sprawdzania gotowości na maszynie wirtualnej z systemem Windows
 
 1. Zaloguj się do maszyny wirtualnej platformy Azure (przy użyciu konta administratora nie jest konieczne).
 1. Otwórz okno wiersza polecenia.
-1. W wierszu polecenia Zmień katalog na folder instalacyjny rozszerzenia rozszerzonego monitorowania platformy Azure dla oprogramowania SAP: C:\\pakiety\\\\dodatki\\Microsoft. AzureCAT. AzureEnhancedMonitoring. AzureCATExtensionHandler&lt;version >\\Drop
+1. W wierszu polecenia Zmień katalog na folder instalacyjny rozszerzenia platformy Azure dla oprogramowania SAP: C:\\pakiety\\\\dodatki\\Microsoft. AzureCAT. AzureEnhancedMonitoring. AzureCATExtensionHandler&lt;version >\\Drop
 
-   *Wersja* w ścieżce do rozszerzenia monitorowania może się różnić. Jeśli widzisz foldery dla wielu wersji rozszerzenia monitorowania w folderze instalacyjnym, sprawdź konfigurację usługi AzureEnhancedMonitoring systemu Windows, a następnie przejdź do folderu wskazanego jako *ścieżka do pliku wykonywalnego*.
+   *Wersja* w ścieżce do rozszerzenia może się różnić. Jeśli widzisz foldery dla wielu wersji rozszerzenia w folderze instalacyjnym, sprawdź konfigurację usługi AzureEnhancedMonitoring systemu Windows, a następnie przejdź do folderu wskazanego jako *ścieżka do pliku wykonywalnego*.
 
-   ![Właściwości usługi z rozszerzeniem rozszerzonego monitorowania platformy Azure dla oprogramowania SAP][deployment-guide-figure-1000]
+   ![Właściwości usługi uruchamiające rozszerzenie platformy Azure dla oprogramowania SAP][deployment-guide-figure-1000]
 
 1. W wierszu polecenia Uruchom program **azperflib. exe** bez żadnych parametrów.
 
@@ -1049,15 +1049,15 @@ Ten test sprawdza, czy wszystkie metryki wydajności, które znajdują się w ap
    >
    >
 
-Jeśli rozszerzenie Azure Enhanced monitoring nie jest zainstalowane lub usługa AzureEnhancedMonitoring nie jest uruchomiona, rozszerzenie nie zostało poprawnie skonfigurowane. Aby uzyskać szczegółowe informacje na temat sposobu wdrażania rozszerzenia, zobacz [Rozwiązywanie problemów z infrastrukturą monitorowania platformy Azure dla oprogramowania SAP][deployment-guide-5.3].
+Jeśli rozszerzenie platformy Azure dla oprogramowania SAP nie jest zainstalowane lub usługa AzureEnhancedMonitoring nie jest uruchomiona, rozszerzenie nie zostało poprawnie skonfigurowane. Aby uzyskać szczegółowe informacje na temat sposobu wdrażania rozszerzenia, zobacz [Rozwiązywanie problemów z rozszerzeniem platformy Azure dla oprogramowania SAP][deployment-guide-5.3].
 
 > [!NOTE]
-> Azperflib. exe jest składnikiem, który nie może być używany do celów własnych. Jest to składnik, który dostarcza dane monitorowania platformy Azure powiązane z maszyną wirtualną dla agenta hosta SAP.
+> Azperflib. exe jest składnikiem, który nie może być używany do celów własnych. Jest to składnik, który udostępnia dane infrastruktury platformy Azure związane z maszyną wirtualną wyłącznie dla agenta hosta SAP.
 > 
 
 ##### <a name="check-the-output-of-azperflibexe"></a>Sprawdź dane wyjściowe programu azperflib. exe
 
-Azperflib. exe output wyświetla wszystkie wypełnione liczniki wydajności platformy Azure dla SAP. W dolnej części listy zebranych liczników wskaźnik podsumowanie i kondycja przedstawia stan monitorowania platformy Azure.
+Azperflib. exe output wyświetla wszystkie wypełnione liczniki wydajności platformy Azure dla SAP. W dolnej części listy zebranych liczników wskaźnik podsumowanie i kondycja przedstawia stan rozszerzenia platformy Azure dla oprogramowania SAP.
 
 ![Dane wyjściowe kontroli kondycji przez wykonanie azperflib. exe, co oznacza, że nie istnieją żadne problemy][deployment-guide-figure-1100]
 <a name="figure-11"></a>
@@ -1066,20 +1066,20 @@ Sprawdź wynik zwrócony dla **liczników łącznych** danych wyjściowych, któ
 
 Interpretuj otrzymane wartości w następujący sposób:
 
-| Azperflib. exe — wartości wyniku | Stan kondycji monitorowania platformy Azure |
+| Azperflib. exe — wartości wyniku | Rozszerzenie platformy Azure dla stanu kondycji oprogramowania SAP |
 | --- | --- |
 | **Wywołania interfejsu API — niedostępne** | Niedostępne liczniki mogą nie dotyczyć konfiguracji maszyny wirtualnej lub są błędy. Zobacz **stan kondycji**. |
 | **Łączna liczba liczników — puste** |Następujące dwa liczniki magazynu platformy Azure mogą być puste: <ul><li>Serwer opóźnienia operacji odczytu magazynu (MS)</li><li>Opóźnienie operacji odczytu magazynu E2E MS</li></ul>Wszystkie inne liczniki muszą mieć wartości. |
 | **Stan kondycji** |Tylko OK, jeśli stan powrotu zostanie wyświetlony **OK**. |
 | **Diagnostyka** |Szczegółowe informacje o stanie kondycji. |
 
-Jeśli **stan kondycji** nie jest **prawidłowy**, postępuj zgodnie z instrukcjami podanymi w temacie [Sprawdzanie kondycji konfiguracji infrastruktury monitorowania platformy Azure][deployment-guide-5.2].
+Jeśli **stan kondycji** nie jest **prawidłowy**, postępuj zgodnie z instrukcjami w temacie [Sprawdzanie kondycji dla usługi Azure Extension for SAP Configuration][deployment-guide-5.2].
 
 #### <a name="run-the-readiness-check-on-a-linux-vm"></a>Uruchamianie sprawdzania gotowości na maszynie wirtualnej z systemem Linux
 
 1. Połącz się z maszyną wirtualną platformy Azure przy użyciu protokołu SSH.
 
-1. Sprawdź dane wyjściowe rozszerzenia rozszerzonego monitorowania platformy Azure.
+1. Sprawdź dane wyjściowe rozszerzenia platformy Azure dla oprogramowania SAP.
 
    a.  Uruchom `more /var/lib/AzureEnhancedMonitor/PerfCounters`
 
@@ -1087,7 +1087,7 @@ Jeśli **stan kondycji** nie jest **prawidłowy**, postępuj zgodnie z instrukcj
 
    b. Uruchom `cat /var/lib/AzureEnhancedMonitor/PerfCounters | grep Error`
 
-   **Oczekiwany wynik**: Zwraca jeden wiersz, w którym wystąpił błąd, naprzykład **3; config; Błąd;; 0; 0; Brak; 0; 1456416792; TST-servercs;**
+   **Oczekiwany wynik**: Zwraca jeden wiersz, w którym wystąpił **błąd, na**przykład **3; config; Błąd;; 0; 0; Brak; 0; 1456416792; TST-servercs;**
 
    c. Uruchom `more /var/lib/AzureEnhancedMonitor/LatestErrorRecord`
 
@@ -1105,11 +1105,11 @@ Jeśli poprzednie sprawdzenie zakończyło się niepowodzeniem, uruchom następu
 
    **Oczekiwany wynik**: Wyświetla jeden wpis podobny do:`python /usr/sbin/waagent -daemon`
 
-1. Upewnij się, że rozszerzenie Azure Enhanced monitoring jest zainstalowane i uruchomione.
+1. Upewnij się, że rozszerzenie platformy Azure dla oprogramowania SAP jest zainstalowane i uruchomione.
 
    a.  Uruchom `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'`
 
-   **Oczekiwany wynik**: Wyświetla zawartość katalogu rozszerzenia rozszerzonego monitorowania platformy Azure.
+   **Oczekiwany wynik**: Wyświetla zawartość rozszerzenia platformy Azure dla katalogu SAP.
 
    b. Uruchom `ps -ax | grep AzureEnhanced`
 
@@ -1125,11 +1125,11 @@ Jeśli poprzednie sprawdzenie zakończyło się niepowodzeniem, uruchom następu
 
 Jeśli masz już zainstalowany serwer aplikacji SAP NetWeaver ABAP, Otwórz transakcję ST06 i sprawdź, czy ulepszone monitorowanie jest włączone.
 
-Jeśli którykolwiek z tych sprawdzeń zakończy się niepowodzeniem i szczegółowe informacje o sposobie ponownego wdrażania rozszerzenia, zobacz [Rozwiązywanie problemów z infrastrukturą monitorowania platformy Azure dla oprogramowania SAP][deployment-guide-5.3].
+Jeśli którykolwiek z tych sprawdzeń zakończy się niepowodzeniem i szczegółowe informacje o sposobie ponownego wdrażania rozszerzenia, zobacz [Rozwiązywanie problemów z rozszerzeniem platformy Azure dla oprogramowania SAP][deployment-guide-5.3].
 
-### <a name="e2d592ff-b4ea-4a53-a91a-e5521edb6cd1"></a>Sprawdzenie kondycji konfiguracji infrastruktury monitorowania platformy Azure
+### <a name="e2d592ff-b4ea-4a53-a91a-e5521edb6cd1"></a>Sprawdzenie kondycji konfiguracji rozszerzenia platformy Azure dla oprogramowania SAP
 
-Jeśli niektóre dane monitorowania nie zostały prawidłowo dostarczone zgodnie z opisem w teście opisanym w temacie [gotowość do monitorowania na platformie Azure][deployment-guide-5.1], uruchom `Test-AzVMAEMExtension` polecenie cmdlet, aby sprawdzić, czy infrastruktura monitorowania platformy Azure i monitorowanie rozszerzenie dla oprogramowania SAP jest prawidłowo skonfigurowane.
+Jeśli niektóre dane infrastruktury nie zostały prawidłowo dostarczone zgodnie z opisem w teście opisanym w temacie [gotowość do sprawdzenia rozszerzenia platformy Azure dla oprogramowania SAP][deployment-guide-5.1], uruchom `Test-AzVMAEMExtension` polecenie cmdlet, aby sprawdzić, czy infrastruktura platformy Azure i rozszerzenie platformy Azure dla SAP są prawidłowo skonfigurowane.
 
 1. Upewnij się, że zainstalowano najnowszą wersję polecenia cmdlet Azure PowerShell, zgodnie z opisem w temacie [wdrażanie Azure PowerShell poleceń cmdlet][deployment-guide-4.1].
 1. Uruchom następujące polecenie programu PowerShell. Aby uzyskać listę dostępnych środowisk, uruchom polecenie cmdlet `Get-AzEnvironment`. Aby korzystać z globalnej platformy Azure, wybierz środowisko **AzureCloud** . W przypadku platformy Azure w Chinach wybierz pozycję **AzureChinaCloud**.
@@ -1146,21 +1146,21 @@ Jeśli niektóre dane monitorowania nie zostały prawidłowo dostarczone zgodnie
 
 1. Skrypt testuje konfigurację wybranej maszyny wirtualnej.
 
-   ![Wynik pomyślnego przetestowania infrastruktury monitorowania platformy Azure dla oprogramowania SAP][deployment-guide-figure-1300]
+   ![Wynik pomyślnego testowania rozszerzenia platformy Azure dla oprogramowania SAP][deployment-guide-figure-1300]
 
-Upewnij się, że każdy wynik kontroli kondycji jest **prawidłowy**. Jeśli niektóre sprawdzenia nie wyświetlają **przycisku OK**, uruchom polecenie cmdlet Update zgodnie z opisem w temacie [Configure the Azure Enhanced monitoring Extension for SAP][deployment-guide-4.5]. Poczekaj 15 minut, a następnie powtórz testy opisane w temacie gotowość do sprawdzenia, [czy usługa Azure Enhanced monitoring][deployment-guide-5.1] dla środowiska SAP i [kontroli kondycji dla konfiguracji infrastruktury monitorowania platformy Azure][deployment-guide-5.2]. Jeśli kontrole nadal wskazują na problem z niektórymi lub wszystkimi licznikami, zobacz [Rozwiązywanie problemów z infrastrukturą monitorowania platformy Azure dla oprogramowania SAP][deployment-guide-5.3].
+Upewnij się, że każdy wynik kontroli kondycji jest **prawidłowy**. Jeśli niektóre sprawdzenia nie wyświetlają **przycisku OK**, uruchom polecenie cmdlet Update zgodnie z opisem w temacie [Configure the Azure Extension for SAP][deployment-guide-4.5]. Poczekaj 15 minut i powtórz testy opisane w temacie [sprawdzanie gotowości dla rozszerzenia Azure dla oprogramowania SAP][deployment-guide-5.1] i [Health Check for Azure Extension for SAP Configuration][deployment-guide-5.2]. Jeśli kontrole nadal wskazują na problem z niektórymi lub wszystkimi licznikami, zobacz [Rozwiązywanie problemów z rozszerzeniem platformy Azure dla oprogramowania SAP][deployment-guide-5.3].
 
 > [!Note]
-> Niektóre ostrzeżenia można napotkać w przypadkach, w których używane są zarządzane standardowe dyski platformy Azure. Wyświetlane są ostrzeżenia zamiast testów zwracających wartość "OK". Jest to normalne i zamierzone w przypadku tego typu dysku. Zobacz też temat [Rozwiązywanie problemów z infrastrukturą monitorowania platformy Azure dla oprogramowania SAP][deployment-guide-5.3]
+> Niektóre ostrzeżenia można napotkać w przypadkach, w których używane są zarządzane standardowe dyski platformy Azure. Wyświetlane są ostrzeżenia zamiast testów zwracających wartość "OK". Jest to normalne i zamierzone w przypadku tego typu dysku. Zobacz też temat [Rozwiązywanie problemów z rozszerzeniem platformy Azure dla oprogramowania SAP][deployment-guide-5.3]
 > 
 
-### <a name="fe25a7da-4e4e-4388-8907-8abc2d33cfd8"></a>Rozwiązywanie problemów z infrastrukturą monitorowania platformy Azure dla oprogramowania SAP
+### <a name="fe25a7da-4e4e-4388-8907-8abc2d33cfd8"></a>Rozwiązywanie problemów z rozszerzeniem platformy Azure dla oprogramowania SAP
 
 #### <a name="windowslogo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Liczniki wydajności platformy Azure nie są wyświetlane w ogóle
 
 Usługa AzureEnhancedMonitoring systemu Windows zbiera metryki wydajności na platformie Azure. Jeśli usługa nie została prawidłowo zainstalowana lub nie jest uruchomiona na maszynie wirtualnej, nie można zbierać metryk wydajności.
 
-##### <a name="the-installation-directory-of-the-azure-enhanced-monitoring-extension-is-empty"></a>Katalog instalacyjny rozszerzenia usługi Azure Enhanced monitoring jest pusty
+##### <a name="the-installation-directory-of-the-azure-extension-for-sap-is-empty"></a>Katalog instalacyjny rozszerzenia platformy Azure dla oprogramowania SAP jest pusty
 
 ###### <a name="issue"></a>Problem
 
@@ -1170,7 +1170,7 @@ Katalog instalacyjny C:\\pakiety\\wtyczki\\Microsoft. AzureCAT. AzureEnhancedMon
 
 Rozszerzenie nie jest zainstalowane. Ustal, czy jest to problem z serwerem proxy (zgodnie z wcześniejszym opisem). Być może trzeba będzie ponownie uruchomić maszynę lub uruchomić `Set-AzVMAEMExtension` ponownie skrypt konfiguracji.
 
-##### <a name="service-for-azure-enhanced-monitoring-does-not-exist"></a>Usługa dla rozszerzonego monitorowania platformy Azure nie istnieje
+##### <a name="service-for-azure-extension-for-sap-does-not-exist"></a>Rozszerzenie usługi dla platformy Azure dla oprogramowania SAP nie istnieje
 
 ###### <a name="issue"></a>Problem
 
@@ -1178,16 +1178,16 @@ Usługa AzureEnhancedMonitoring systemu Windows nie istnieje.
 
 Azperflib. exe output zgłasza błąd:
 
-![Wykonanie programu azperflib. exe wskazuje, że usługa rozszerzenia rozszerzonego monitorowania platformy Azure dla oprogramowania SAP nie jest uruchomiona][deployment-guide-figure-1400]
+![Wykonanie programu azperflib. exe wskazuje, że usługa rozszerzenia platformy Azure dla oprogramowania SAP nie jest uruchomiona][deployment-guide-figure-1400]
 <a name="figure-14"></a>
 
 ###### <a name="solution"></a>Rozwiązanie
 
-Jeśli usługa nie istnieje, rozszerzenie Azure Enhanced Monitoring dla oprogramowania SAP nie zostało poprawnie zainstalowane. Wdróż ponownie rozszerzenie, wykonując kroki opisane w scenariuszu wdrażania w [scenariuszach wdrażania maszyn wirtualnych dla oprogramowania SAP na platformie Azure][deployment-guide-3].
+Jeśli usługa nie istnieje, rozszerzenie platformy Azure dla oprogramowania SAP nie zostało poprawnie zainstalowane. Wdróż ponownie rozszerzenie, wykonując kroki opisane w scenariuszu wdrażania w [scenariuszach wdrażania maszyn wirtualnych dla oprogramowania SAP na platformie Azure][deployment-guide-3].
 
 Po wdrożeniu rozszerzenia po upływie jednej godziny Sprawdź, czy liczniki wydajności platformy Azure są dostępne na maszynie wirtualnej platformy Azure.
 
-##### <a name="service-for-azure-enhanced-monitoring-exists-but-fails-to-start"></a>Usługa dla rozszerzonego monitorowania platformy Azure istnieje, ale nie można jej uruchomić
+##### <a name="service-for-azure-extension-for-sap-exists-but-fails-to-start"></a>Usługa dla rozszerzenia platformy Azure dla oprogramowania SAP istnieje, ale nie można jej uruchomić
 
 ###### <a name="issue"></a>Problem
 
@@ -1195,7 +1195,7 @@ Usługa AzureEnhancedMonitoring systemu Windows istnieje i jest włączona, ale 
 
 ###### <a name="solution"></a>Rozwiązanie
 
-Konfiguracja jest nieprawidłowa. Uruchom ponownie rozszerzenie monitorowania dla maszyny wirtualnej zgodnie z opisem w artykule [Konfigurowanie rozszerzenia rozszerzonego monitorowania platformy Azure dla oprogramowania SAP][deployment-guide-4.5].
+Konfiguracja jest nieprawidłowa. Uruchom ponownie rozszerzenie platformy Azure dla oprogramowania SAP na maszynie wirtualnej zgodnie z opisem w temacie [Konfigurowanie rozszerzenia platformy Azure dla oprogramowania SAP][deployment-guide-4.5].
 
 #### <a name="windowslogo_windows-some-azure-performance-counters-are-missing"></a>![Windows][Logo_Windows] Brakuje niektórych liczników wydajności platformy Azure
 
@@ -1207,11 +1207,11 @@ Jeśli Rozwiązywanie problemów przy użyciu uwagi SAP [1999351] nie rozwiąże
 
 Metryki wydajności na platformie Azure są zbierane przez demona. Jeśli Demon nie jest uruchomiony, nie można zbierać metryk wydajności.
 
-##### <a name="the-installation-directory-of-the-azure-enhanced-monitoring-extension-is-empty"></a>Katalog instalacyjny rozszerzenia usługi Azure Enhanced monitoring jest pusty
+##### <a name="the-installation-directory-of-the-azure-extension-for-sap-is-empty"></a>Katalog instalacyjny rozszerzenia platformy Azure dla oprogramowania SAP jest pusty
 
 ###### <a name="issue"></a>Problem
 
-\\Biblioteka Var\\lib\\waagentniemapodkatalogudlarozszerzeniarozszerzonegomonitorowaniaplatformyAzure.\\
+\\Biblioteka Var\\lib\\waagentniemapodkatalogudlarozszerzeniaplatformyAzuredlaoprogramowaniaSAP.\\
 
 ###### <a name="solution"></a>Rozwiązanie
 
@@ -1233,13 +1233,13 @@ Wykonanie azperfli. exe zgodnie z wcześniejszym opisem, możesz uzyskać wynik 
 
 ###### <a name="solution"></a>Rozwiązanie
 
-Komunikaty są spowodowane faktem, że standardowa Managed Disks nie dostarcza interfejsów API używanych przez rozszerzenie monitorowania do sprawdzania statystyk standardowych kont usługi Azure Storage. Nie jest to kwestia problemu. Przyczyna wprowadzenia monitorowania dla standardowych kont Disk Storage była ograniczeniem czasu we/wy, który wystąpił często. W przypadku dysków zarządzanych będzie możliwe uniknięcie tego ograniczenia przez ograniczenie liczby dysków na koncie magazynu. W związku z tym nie ma tego typu danych monitorowania nie są krytyczne.
+Komunikaty są spowodowane przez fakt, że standardowa Managed Disks nie dostarcza interfejsów API używanych przez rozszerzenie SAP dla SAP do sprawdzania statystyk standardowych kont usługi Azure Storage. Nie jest to kwestia problemu. Powód wprowadzenia danych zbierających dla standardowych kont Disk Storage było ograniczeniem czasu we/wy, który wystąpił często. W przypadku dysków zarządzanych będzie możliwe uniknięcie tego ograniczenia przez ograniczenie liczby dysków na koncie magazynu. W związku z tym ten typ danych nie jest krytyczny.
 
 
 #### <a name="linuxlogo_linux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux] Brakuje niektórych liczników wydajności platformy Azure
 
 Metryki wydajności na platformie Azure są zbierane przez demon, który pobiera dane z kilku źródeł. Niektóre dane konfiguracji są zbierane lokalnie, a niektóre metryki wydajności są odczytywane z Diagnostyka Azure. Liczniki magazynu pochodzą z dzienników w ramach subskrypcji magazynu.
 
-Aby zapoznać się z pełną i aktualną listą znanych problemów, zobacz temat SAP Note [1999351], który zawiera dodatkowe informacje dotyczące rozwiązywania problemów z ulepszonym monitorowaniem platformy Azure dla oprogramowania SAP.
+Aby zapoznać się z pełną i aktualną listą znanych problemów, zobacz temat SAP Note [1999351], który zawiera dodatkowe informacje dotyczące rozwiązywania problemów z rozszerzeniem platformy Azure dla oprogramowania SAP.
 
-Jeśli Rozwiązywanie problemów przy użyciu programu SAP Note [1999351] nie rozwiąże problemu `Set-AzVMAEMExtension` , uruchom ponownie skrypt konfiguracji zgodnie z opisem w temacie [Konfigurowanie rozszerzenia Azure Enhanced Monitoring dla oprogramowania SAP][deployment-guide-4.5]. Może być konieczne odczekanie na godzinę, ponieważ liczniki usługi Storage Analytics lub Diagnostics mogą nie zostać utworzone natychmiast po ich włączeniu. Jeśli problem będzie nadal występował, Otwórz komunikat obsługa klienta SAP na składniku BC-OP-NT-AZR dla systemu Windows lub BC-OP-LNX-AZR dla maszyny wirtualnej z systemem Linux.
+Jeśli Rozwiązywanie problemów przy użyciu programu SAP Note [1999351] nie rozwiąże problemu `Set-AzVMAEMExtension` , uruchom ponownie skrypt konfiguracji zgodnie z opisem w temacie [Konfigurowanie rozszerzenia platformy Azure dla oprogramowania SAP][deployment-guide-4.5]. Może być konieczne odczekanie na godzinę, ponieważ liczniki usługi Storage Analytics lub Diagnostics mogą nie zostać utworzone natychmiast po ich włączeniu. Jeśli problem będzie nadal występował, Otwórz komunikat obsługa klienta SAP na składniku BC-OP-NT-AZR dla systemu Windows lub BC-OP-LNX-AZR dla maszyny wirtualnej z systemem Linux.

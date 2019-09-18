@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9465c1991418c7ebef8c4eed825affc7b1d93492
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 41caa5807ce837e1ff00ceadd3fe5aef958d01b6
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68693346"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066052"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurowanie logowania za pomocą konta LinkedIn przy użyciu zasad niestandardowych w Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-W tym artykule opisano sposób włączania logowania dla użytkowników z konta LinkedIn przy użyciu [zasad niestandardowych](active-directory-b2c-overview-custom.md) w usłudze Azure Active Directory (Azure AD) B2C.
+W tym artykule opisano sposób włączania logowania dla użytkowników z konta LinkedIn przy użyciu [zasad niestandardowych](active-directory-b2c-overview-custom.md) w programie Azure Active Directory B2C (Azure AD B2C).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -60,7 +60,7 @@ Aby korzystać z serwisu LinkedIn jako dostawcy tożsamości w Azure AD B2C, mus
 Należy przechowywać klucz tajny klienta, który został wcześniej zarejestrowany w dzierżawie Azure AD B2C.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
-2. Upewnij się, że używasz katalogu zawierającego dzierżawcę Azure AD B2C. Wybierz pozycję **katalog i filtr subskrypcji** w górnym menu i wybierz katalog, który zawiera dzierżawcę.
+2. Upewnij się, że używasz katalogu zawierającego dzierżawcę Azure AD B2C. W górnym menu wybierz pozycję **katalog i subskrypcja** , a następnie wybierz katalog, w którym znajduje się Twoja dzierżawa.
 3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 4. Na stronie Przegląd wybierz pozycję **Struktura środowiska tożsamości**.
 5. Wybierz pozycję **klucze zasad** , a następnie wybierz pozycję **Dodaj**.
@@ -220,7 +220,7 @@ Teraz, gdy masz już przycisk, musisz połączyć go z akcją. W tym przypadku a
 Komunikacja z Azure AD B2C odbywa się za pomocą aplikacji utworzonej w dzierżawie. W tej sekcji przedstawiono kroki opcjonalne, które można wykonać, aby utworzyć aplikację testową, jeśli nie została jeszcze wykonana.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Upewnij się, że używasz katalogu zawierającego dzierżawcę Azure AD B2C. Wybierz pozycję **katalog i filtr subskrypcji** w górnym menu i wybierz katalog, który zawiera dzierżawcę.
+2. Upewnij się, że używasz katalogu zawierającego dzierżawcę Azure AD B2C. W górnym menu wybierz pozycję **katalog i subskrypcja** , a następnie wybierz katalog, w którym znajduje się Twoja dzierżawa.
 3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 4. Wybierz pozycję **Aplikacje**, a następnie wybierz polecenie **Dodaj**.
 5. Wprowadź nazwę aplikacji, na przykład *testapp1*.
@@ -251,7 +251,7 @@ W istniejącym elemencie **metadanych** **profilu technicznym**zaktualizuj nast�
 <Item Key="scope">r_emailaddress r_basicprofile</Item>
 ```
 
-Do:
+do
 
 ```XML
 <Item Key="ClaimsEndpoint">https://api.linkedin.com/v2/me</Item>
@@ -277,7 +277,7 @@ W istniejącej **OutputClaims** **profilu technicznym**, zaktualizuj następują
 <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="lastName" />
 ```
 
-Do:
+do
 
 ```XML
 <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="firstName.localized" />

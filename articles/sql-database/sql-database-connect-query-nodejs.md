@@ -1,5 +1,5 @@
 ---
-title: Korzystanie z narzędzia Node.js do wykonywania zapytań w bazie danych Azure SQL | Microsoft Docs
+title: 'Szybki start: Używanie środowiska Node. js do wykonywania zapytań Azure SQL Database'
 description: Sposób użycia narzędzia Node.js do utworzenia programu, który nawiązuje połączenie z bazą danych Azure SQL Database i wykonuje zapytania za pomocą instrukcji języka T-SQL.
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 03/25/2019
-ms.openlocfilehash: 72e509a9a7f820c26895bdfac9216b0373729f6c
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.custom: seo-javascript-september2019
+ms.openlocfilehash: b865bca5db11c4a34a1be4deb2e3145d73599e81
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947097"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059274"
 ---
 # <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>Szybki start: Korzystanie z narzędzia Node.js do wykonywania zapytań w bazie danych Azure SQL Database
 
@@ -31,7 +32,7 @@ Aby ukończyć ten przykład, upewnij się, że dysponujesz następującymi elem
   |:--- |:--- |:---|
   | Create| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
   || [Interfejs wiersza polecenia](scripts/sql-database-create-and-configure-database-cli.md) | [Interfejs wiersza polecenia](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [Program PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [Program PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
+  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | Konfigurowanie | [Reguła zapory bazująca na adresach IP na poziomie serwera](sql-database-server-level-firewall-rule.md)| [Łączność z maszyny wirtualnej](sql-database-managed-instance-configure-vm.md)|
   |||[Łączność ze środowiska lokalnego](sql-database-managed-instance-configure-p2s.md)
   |Ładuj dane|Ładowanie bazy danych Adventure Works na potrzeby samouczka Szybki start|[Przywracanie bazy danych Wide World Importers](sql-database-managed-instance-get-started-restore.md)

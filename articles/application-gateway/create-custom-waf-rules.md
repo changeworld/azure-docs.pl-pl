@@ -7,12 +7,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: a4cc11447686f81017332a3528019a54a5167c52
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 71f2357ba2c2d3e978e4f967ad09fee763586a7c
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231987"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058310"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules"></a>Tworzenie i używanie reguł niestandardowych zapory aplikacji sieci Web w wersji 2
 
@@ -179,7 +179,7 @@ Odpowiadająca reguła KSR:`SecRule REMOTE_ADDR "@ipMatch 192.168.5.0/24" "id:70
 
 ## <a name="example-3"></a>Przykład 3
 
-Na potrzeby tego przykładu chcesz zablokować *Evilbot*użytkownika-agenta i ruch z zakresu 192.168.5.0/24. Aby to osiągnąć, można utworzyć dwa oddzielne warunki dopasowania i umieścić je w jednej regule. Dzięki temu zarówno *evilbot* w nagłówku użytkownika, **jak i** adresy IP z zakresu 192.168.5.0/24 są blokowane.
+Na potrzeby tego przykładu chcesz zablokować *Evilbot*użytkownika-agenta i ruch z zakresu 192.168.5.0/24. Aby to osiągnąć, można utworzyć dwa oddzielne warunki dopasowania i umieścić je w jednej regule. Dzięki temu w przypadku dopasowania obu *evilbot* w nagłówku **i** adresie IP agenta użytkownika z zakresu 192.168.5.0/24 żądanie jest blokowane.
 
 Logika: p **i** q
 
@@ -251,7 +251,7 @@ Oto odpowiedni kod JSON:
 
 ## <a name="example-4"></a>Przykład 4
 
-Na potrzeby tego przykładu chcesz zablokować, jeśli żądanie jest spoza zakresu adresów IP *192.168.5.0/24*, lub ciąg agenta użytkownika nie jest wykończeniowy ( oznacza to, że użytkownik nie korzysta z przeglądarki Chrome). Ponieważ ta logika korzysta z **lub**, dwa warunki są w osobnych regułach, jak pokazano w poniższym przykładzie. *myrule1* i *myrule2* muszą być zgodne, aby blokować ruch.
+Na potrzeby tego przykładu chcesz zablokować, jeśli żądanie jest spoza zakresu adresów IP *192.168.5.0/24*, lub ciąg agenta użytkownika nie jest *wykończeniowy* (oznacza to, że użytkownik nie korzysta z przeglądarki Chrome). Ponieważ ta logika korzysta z **lub**, dwa warunki są w osobnych regułach, jak pokazano w poniższym przykładzie. *myrule1* i *myrule2* muszą być zgodne, aby blokować ruch.
 
 Logic: **not** (p **i** q) = **not** p **lub not** q.
 

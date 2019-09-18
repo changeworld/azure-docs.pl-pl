@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: a96c7bd3c461c70f3bdf5e3e12181dbc37008512
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f63648f63d6154b89f641cdc4d2657e0396a8c66
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092336"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036373"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Dołączanie dysku danych do maszyny wirtualnej z systemem Linux przy użyciu portalu 
 W tym artykule opisano sposób dołączania nowych i istniejących dysków do maszyny wirtualnej z systemem Linux za pomocą Azure Portal. Możesz również [dołączyć dysk danych do maszyny wirtualnej z systemem Windows w Azure Portal](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -29,7 +29,7 @@ Przed dołączeniem dysków do maszyny wirtualnej zapoznaj się z następującym
 
 * Rozmiar maszyny wirtualnej kontroluje liczbę dysków z danymi, które można dołączyć. Aby uzyskać szczegółowe informacje, zobacz [rozmiary maszyn wirtualnych](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * Dyski dołączone do maszyn wirtualnych są w rzeczywistości plikami VHD przechowywanymi na platformie Azure. Aby uzyskać szczegółowe informacje, zobacz [wprowadzenie do usługi Managed disks](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Po dołączeniu dysku musisz nawiązać [połączenie z maszyną wirtualną z systemem Linux, aby zainstalować nowy dysk](#connect-to-the-linux-vm-to-mount-the-new-disk).
+* Po dołączeniu dysku musisz [nawiązać połączenie z maszyną wirtualną z systemem Linux, aby zainstalować nowy dysk](#connect-to-the-linux-vm-to-mount-the-new-disk).
 
 
 ## <a name="find-the-virtual-machine"></a>Znajdź maszynę wirtualną
@@ -62,7 +62,7 @@ Przed dołączeniem dysków do maszyny wirtualnej zapoznaj się z następującym
 
 ## <a name="attach-an-existing-disk"></a>Dołączanie istniejącego dysku
 1. W okienku **dyski** kliknij pozycję **+ Dodaj dysk danych**.
-2. Kliknij menu rozwijane, aby wyświetlić listę istniejących dysków zarządzanych dostępnych dla Twojej subskrypcji platformy Azure. Wybierz dysk zarządzany do dołączenia:
+2. Kliknij menu rozwijane **, aby wyświetlić** listę istniejących dysków zarządzanych dostępnych dla Twojej subskrypcji platformy Azure. Wybierz dysk zarządzany do dołączenia:
 
    ![Dołącz istniejący dysk zarządzany platformy Azure](./media/attach-disk-portal/select-existing-md.png)
 
@@ -224,9 +224,9 @@ W tym przykładzie Użyj wartości UUID dla urządzenia */dev/sdc1* , które zos
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
 ```
-
+Po zakończeniu Zapisz plik */etc/fstab* i uruchom ponownie system.
 > [!NOTE]
-> Późniejsze usunięcie dysku z danymi bez edytowania fstab może spowodować niepowodzenie rozruchu maszyny wirtualnej. Większość dystrybucji oferuje opcje nofail i/lub *nobootwait* fstab. Te opcje umożliwiają rozruch systemu nawet wtedy, gdy instalacja dysku nie powiedzie się w czasie rozruchu. Aby uzyskać więcej informacji na temat tych parametrów, zapoznaj się z dokumentacją dystrybucji.
+> Późniejsze usunięcie dysku z danymi bez edytowania fstab może spowodować niepowodzenie rozruchu maszyny wirtualnej. Większość dystrybucji oferuje opcje *nofail* i/lub *nobootwait* fstab. Te opcje umożliwiają rozruch systemu nawet wtedy, gdy instalacja dysku nie powiedzie się w czasie rozruchu. Aby uzyskać więcej informacji na temat tych parametrów, zapoznaj się z dokumentacją dystrybucji.
 > 
 > Opcja *nofail* gwarantuje, że maszyna wirtualna jest uruchamiana, nawet jeśli system plików jest uszkodzony lub dysk nie istnieje w czasie rozruchu. Bez tej opcji może wystąpić sytuacja, zgodnie z opisem w artykule [nie można przeprowadzić protokołu SSH do maszyny wirtualnej z systemem Linux z powodu błędów fstab](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/)
 

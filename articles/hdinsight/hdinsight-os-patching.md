@@ -1,69 +1,70 @@
 ---
-title: Skonfiguruj harmonogram dla klastrów HDInsight opartych na systemie Linux — Azure stosowania poprawek systemu operacyjnego
-description: Dowiedz się, jak skonfigurować harmonogram dla klastrów HDInsight opartych na systemie Linux stosowania poprawek systemu operacyjnego.
+title: Konfigurowanie harmonogramu poprawek systemu operacyjnego dla klastrów usługi HDInsight opartych na systemie Linux — Azure
+description: Dowiedz się, jak skonfigurować harmonogram stosowania poprawek systemu operacyjnego dla klastrów usługi HDInsight opartych na systemie Linux.
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/01/2019
-ms.openlocfilehash: efe74618b269000749f7ba6c24d35903e540dcfb
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 06111ec35a127cf17fdcc77ff717de7a4bc7299f
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657056"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076854"
 ---
-# <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Skonfiguruj harmonogram dla klastrów HDInsight opartych na systemie Linux stosowania poprawek systemu operacyjnego 
+# <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Konfigurowanie harmonogramu poprawek systemu operacyjnego dla klastrów usługi HDInsight opartych na systemie Linux 
 
 > [!IMPORTANT]
-> Obrazy Ubuntu stają się dostępne dla tworzenia nowego klastra Azure HDInsight w ciągu trzech miesięcy od dnia publikacji. Począwszy od stycznia 2019 r uruchamianie klastrów nie są poprawiono automatycznie. Klienci, należy użyć akcji skryptu lub innych mechanizmów zastosowania poprawki względem działającego klastra. Nowo utworzony klastry mają zawsze najnowsze dostępne aktualizacje, w tym najnowsze poprawki zabezpieczeń.
+> Obrazy Ubuntu są dostępne dla nowego klastra usługi Azure HDInsight w ciągu trzech miesięcy od opublikowania. Począwszy od stycznia 2019, uruchomione klastry nie są stosowane do autopoprawek. Aby zastosować poprawki do działającego klastra, klienci muszą używać akcji skryptu lub innych mechanizmów. Nowo utworzone klastry będą zawsze miały najnowsze dostępne aktualizacje, w tym najnowsze poprawki zabezpieczeń.
 
-Od czasu do czasu należy ponownie uruchomić maszyny wirtualne (VM) w klastrze usługi HDInsight w taki sposób, aby zainstalować poprawki zabezpieczeń ważne.
+Czasami należy ponownie uruchomić maszyny wirtualne w klastrze usługi HDInsight w celu zainstalowania ważnych poprawek zabezpieczeń.
 
-Za pomocą akcji skryptu, opisane w tym artykule, można zmodyfikować systemu operacyjnego, harmonogram stosowania poprawek w następujący sposób:
+Za pomocą akcji skryptu opisanych w tym artykule można zmodyfikować harmonogram stosowania poprawek systemu operacyjnego w następujący sposób:
 
-1. Zainstaluj wszystkie aktualizacje, lub zainstaluj tylko jądra i aktualizacji zabezpieczeń lub aktualizacji jądra.
-2. Czy natychmiastowe ponowne uruchamianie lub Planowanie ponownego uruchomienia na maszynie Wirtualnej.
+1. Zainstaluj wszystkie aktualizacje lub Zainstaluj tylko aktualizacje jądra + zabezpieczenia lub aktualizacje jądra.
+2. Wykonaj natychmiastowe ponowne uruchomienie lub Zaplanuj ponowne uruchomienie maszyny wirtualnej.
 
 > [!NOTE]  
-> Akcje skryptu opisanych w tym artykule będzie działać wyłącznie przy użyciu klastrów HDInsight opartych na systemie Linux, utworzonych po 1 sierpnia 2016 r. Poprawki zaczynają obowiązywać dopiero po ponownym uruchamianiem maszyn wirtualnych.
-> Akcje skryptu nie będą automatycznie stosowane aktualizacje dla wszystkich cykli przyszłej aktualizacji. Uruchom skrypty za każdym razem, gdy nowe aktualizacje, które należy zastosować do zainstalowania aktualizacji, a następnie uruchom ponownie maszynę Wirtualną.
+> Akcje skryptu opisane w tym artykule będą działały tylko z klastrami usługi HDInsight opartymi na systemie Linux utworzonymi po 1 sierpnia 2016. Poprawki zaczynają obowiązywać dopiero po ponownym uruchomieniu maszyn wirtualnych.
+> Akcje skryptu nie będą automatycznie stosowały aktualizacji dla wszystkich przyszłych cykli aktualizacji. Uruchom skrypty za każdym razem, gdy trzeba zastosować nowe aktualizacje, aby zainstalować aktualizacje, a następnie uruchom ponownie maszynę wirtualną.
 
 ## <a name="add-information-to-the-script"></a>Dodawanie informacji do skryptu
 
-Za pomocą skryptu wymaga następujących informacji:
+Przy użyciu skryptu wymagane są następujące informacje:
 
-- Lokalizację skryptu install aktualizacje — harmonogram — ponowny rozruch: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/install-updates-schedule-reboots.sh.
+- Lokalizacja skryptu Install-Updates-Schedule-reboot: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/install-updates-schedule-reboots.sh.
     
-   HDInsight używa tego identyfikatora URI do znajdowania i uruchamiania skryptu na wszystkich maszynach wirtualnych w klastrze. Ten skrypt zawiera opcje do zainstalowania aktualizacji i ponownego uruchomienia maszyny Wirtualnej.
+   Usługa HDInsight używa tego identyfikatora URI do znajdowania i uruchamiania skryptu na wszystkich maszynach wirtualnych w klastrze. Ten skrypt zawiera opcje instalowania aktualizacji i ponownego uruchamiania maszyny wirtualnej.
   
-- Ponowne uruchamianie harmonogramu lokalizację skryptu: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/schedule-reboots.sh.
+- Lokalizacja skryptu harmonogram-ponowny rozruch: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/schedule-reboots.sh.
     
-   HDInsight używa tego identyfikatora URI do znajdowania i uruchamiania skryptu na wszystkich maszynach wirtualnych w klastrze. Ten skrypt powoduje ponowne uruchomienie maszyny Wirtualnej.
+   Usługa HDInsight używa tego identyfikatora URI do znajdowania i uruchamiania skryptu na wszystkich maszynach wirtualnych w klastrze. Ten skrypt uruchamia ponownie maszynę wirtualną.
   
-- Typy węzłów klastra, które skryptu są stosowane do to węzeł główny, workernode i zookeeper. Zastosuj skrypt do wszystkich typów węzłów w klastrze. Jeśli skrypt nie jest stosowany do typu węzła, maszyn wirtualnych dla tego typu węzła nie będą aktualizowane lub ponownego uruchomienia.
+- Typy węzłów klastra, do których zastosowano skrypt, to węzła głównego, workernode i dozorcy. Zastosuj skrypt do wszystkich typów węzłów w klastrze. Jeśli skrypt nie zostanie zastosowany do typu węzła, maszyny wirtualne dla tego typu węzła nie zostaną zaktualizowane ani uruchomione ponownie.
 
-- Skrypt instalacji — aktualizacje — harmonogram — ponowne uruchamianie akceptuje dwóch parametrów liczbowych:
+- Skrypt install-Updates-Schedule-reboot przyjmuje dwa parametry liczbowe:
 
     | Parametr | Definicja |
     | --- | --- |
-    | Zainstaluj tylko aktualizacji jądra / instalowanie wszystkich instalacji/aktualizacji jądra + security tylko aktualizacje|0, 1 lub 2. Wartość 0 zainstaluje tylko aktualizacje jądra. Wartość 1 instaluje wszystkie aktualizacje i 2 instaluje tylko jądra + aktualizacje zabezpieczeń. Jeśli parametr nie zostanie podany, wartość domyślna to 0. |
-    | Nie ponownego uruchomienia/Włącz harmonogram ponowny rozruch/Włącz natychmiastowego ponownego uruchomienia |0, 1 lub 2. Wartość 0 wyłącza ponowne uruchomienie. Wartość 1 umożliwia ponowne uruchomienie harmonogramu, a 2 umożliwia natychmiastowe ponowne uruchomienie. Jeśli parametr nie zostanie podany, wartość domyślna to 0. Użytkownik musi zmienić parametr wejściowy 1 do 2 parametr wejściowy. |
+    | Zainstaluj tylko aktualizacje jądra/Zainstaluj wszystkie aktualizacje/Zainstaluj tylko aktualizacje jądra +|0, 1 lub 2. Wartość 0 powoduje zainstalowanie tylko aktualizacji jądra. Wartość 1 powoduje zainstalowanie wszystkich aktualizacji, a 2 instaluje tylko aktualizacje jądra i zabezpieczeń. Jeśli parametr nie zostanie podany, wartość domyślna to 0. |
+    | Bez ponownego uruchamiania/Włącz planowanie ponownego uruchamiania/Włącz natychmiastowe ponowne uruchomienie |0, 1 lub 2. Wartość 0 powoduje wyłączenie ponownego uruchomienia. Wartość 1 włącza ponowne uruchomienie harmonogramu, a 2 włącza natychmiastowe ponowne uruchomienie. Jeśli parametr nie zostanie podany, wartość domyślna to 0. Użytkownik musi zmienić parametr wejściowy 1 na parametr wejściowy 2. |
    
- - Skrypt uruchamiany ponownie harmonogram akceptuje jednego parametru liczbowego:
+ - Skrypt harmonogram-ponowny rozruch akceptuje jeden parametr liczbowy:
 
     | Parametr | Definicja |
     | --- | --- |
-    | Włącz harmonogram ponownego uruchomienia/Włącz natychmiastowego ponownego uruchomienia |1 lub 2. Wartość 1 umożliwia ponowne uruchomienie harmonogramu (zaplanowane 12 – 24 godzin). Wartość 2 umożliwia natychmiastowe ponowne uruchomienie (w ciągu 5 minut). Jeśli parametr nie zostanie podany, wartość domyślna to 1. |  
+    | Włącz zaplanowane ponowne uruchomienie/włączenie natychmiastowego ponownego uruchomienia |1 lub 2. Wartość 1 włącza zaplanowanie ponownego uruchomienia (zaplanowane w 12-24 godzinach). Wartość 2 włącza natychmiastowe ponowne uruchomienie (w ciągu 5 minut). Jeśli parametr nie zostanie określony, wartość domyślna to 1. |  
 
 > [!NOTE]
-> Należy oznaczyć skrypt jako utrwalone po zastosowaniu do istniejącego klastra. W przeciwnym razie wszelkie nowe węzły utworzone za pośrednictwem operacji skalowania użyje domyślnej harmonogram stosowania poprawek. Jeśli zastosujesz skrypt jako część procesu tworzenia klastra zawiera utrwalone automatycznie.
+> Skrypt należy oznaczyć jako utrwalony po zastosowaniu go w istniejącym klastrze. W przeciwnym razie wszystkie nowe węzły utworzone za pomocą operacji skalowania będą używały domyślnego harmonogramu poprawek. Jeśli zastosujesz skrypt w ramach procesu tworzenia klastra, zostanie on utrwalony automatycznie.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby poznać konkretne kroki dotyczące za pomocą akcji skryptu, zobacz następujące sekcje w [HDInsight opartych na systemie Linux z Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md):
+Aby zapoznać się z konkretnymi krokami dotyczącymi używania akcji skryptu, zobacz następujące sekcje w temacie [Dostosowywanie klastrów usługi HDInsight opartych na systemie Linux przy użyciu akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md):
 
-* [Za pomocą akcji skryptu, podczas tworzenia klastra](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation)
-* [Stosowanie akcji skryptu do działającego klastra](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)
+* [Używanie akcji skryptu podczas tworzenia klastra](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation)
+* [Zastosuj akcję skryptu do działającego klastra](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)

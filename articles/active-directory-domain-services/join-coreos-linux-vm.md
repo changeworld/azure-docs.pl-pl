@@ -1,79 +1,95 @@
 ---
-title: 'Azure Active Directory Domain Services: Dołączanie do maszyny wirtualnej z systemem CoreOS Linux | Microsoft Docs'
-description: Przyłączanie maszyny wirtualnej z systemem CoreOS Linux do Azure AD Domain Services
+title: Przyłączanie maszyny wirtualnej CoreOS do Azure AD Domain Services | Microsoft Docs "
+description: Dowiedz się, jak skonfigurować maszynę wirtualną CoreOS i przyłączyć ją do domeny zarządzanej Azure AD Domain Services.
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 5db65f30-bf69-4ea3-9ea5-add1db83fdb8
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 09/14/2019
 ms.author: iainfou
-ms.openlocfilehash: dc76d9a0d492d8ef0e37c0c34173216ff4c75164
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: c0c298a9aa0b9d46ec2c7510cdb5c3ba1c8c84af
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69990569"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71075550"
 ---
-# <a name="join-a-coreos-linux-virtual-machine-to-a-managed-domain"></a>Przyłączanie maszyny wirtualnej z systemem CoreOS Linux do domeny zarządzanej
-W tym artykule opisano sposób przyłączania maszyny wirtualnej z systemem CoreOS Linux na platformie Azure do domeny zarządzanej Azure AD Domain Services.
+# <a name="join-a-coreos-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Przyłączanie maszyny wirtualnej CoreOS do domeny zarządzanej Azure AD Domain Services
 
-[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
+Aby umożliwić użytkownikom logowanie się do maszyn wirtualnych na platformie Azure przy użyciu jednego zestawu poświadczeń, można przyłączyć maszyny wirtualne do domeny zarządzanej Azure Active Directory Domain Services (AD DS). Po dołączeniu maszyny wirtualnej do domeny zarządzanej AD DS platformy Azure można użyć kont użytkowników i poświadczeń z domeny, aby zalogować się i zarządzać serwerami. Członkostwa w grupach z domeny zarządzanej AD DS platformy Azure są również stosowane w celu umożliwienia kontroli dostępu do plików lub usług na maszynie wirtualnej.
 
-## <a name="before-you-begin"></a>Przed rozpoczęciem
-Aby wykonać zadania wymienione w tym artykule, potrzebne są:
-1. Prawidłowa **subskrypcja platformy Azure**.
-2. **Katalog usługi Azure AD** — zsynchronizowany z katalogiem lokalnym lub katalogiem w chmurze.
-3. Należy włączyć **Azure AD Domain Services** dla katalogu usługi Azure AD. Jeśli nie zostało to zrobione, postępuj zgodnie ze wszystkimi zadaniami opisanymi w [przewodniku wprowadzenie](tutorial-create-instance.md).
-4. Upewnij się, że adresy IP domeny zarządzanej zostały skonfigurowane jako serwery DNS dla sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [jak zaktualizować ustawienia DNS dla sieci wirtualnej platformy Azure](tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network)
-5. Wykonaj kroki wymagane do [synchronizacji haseł do domeny zarządzanej Azure AD Domain Services](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds).
+W tym artykule opisano sposób przyłączania maszyny wirtualnej CoreOS do domeny zarządzanej AD DS platformy Azure.
 
+## <a name="prerequisites"></a>Wymagania wstępne
 
-## <a name="provision-a-coreos-linux-virtual-machine"></a>Inicjowanie obsługi administracyjnej maszyny wirtualnej z systemem CoreOS Linux
-Inicjowanie obsługi administracyjnej maszyny wirtualnej CoreOS na platformie Azure przy użyciu dowolnej z następujących metod:
+Do ukończenia tego samouczka potrzebne są następujące zasoby i uprawnienia:
+
+* Aktywna subskrypcja platformy Azure.
+    * Jeśli nie masz subskrypcji platformy Azure, [Utwórz konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Dzierżawa usługi Azure Active Directory skojarzona z subskrypcją, zsynchronizowana z katalogiem lokalnym lub katalogiem w chmurze.
+    * W razie konieczności [Utwórz dzierżawę Azure Active Directory][create-azure-ad-tenant] lub [skojarz subskrypcję platformy Azure z Twoim kontem][associate-azure-ad-tenant].
+* Azure Active Directory Domain Services zarządzana domena włączona i skonfigurowana w dzierżawie usługi Azure AD.
+    * W razie konieczności pierwszy samouczek [tworzy i konfiguruje wystąpienie Azure Active Directory Domain Services][create-azure-ad-ds-instance].
+* Konto użytkownika, które jest członkiem grupy *administratorów DC usługi Azure AD* w dzierżawie usługi Azure AD.
+
+## <a name="create-and-connect-to-a-coreos-linux-vm"></a>Tworzenie maszyny wirtualnej z systemem CoreOS Linux i nawiązywanie z nią połączenia
+
+Jeśli masz istniejącą maszynę wirtualną z systemem Linux CoreOS na platformie Azure, Połącz się z nią przy użyciu protokołu SSH, a następnie przejdź do następnego kroku, aby [rozpocząć konfigurowanie maszyny wirtualnej](#configure-the-hosts-file).
+
+Jeśli musisz utworzyć maszynę wirtualną z systemem Linux CoreOS lub chcesz utworzyć testową maszynę wirtualną do użycia z tym artykułem, możesz użyć jednej z następujących metod:
+
 * [Azure Portal](../virtual-machines/linux/quick-create-portal.md)
 * [Interfejs wiersza polecenia platformy Azure](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
-W tym artykule jest stosowany obraz maszyny wirtualnej z **systemem CoreOS Linux (stabilny)** na platformie Azure.
+Podczas tworzenia maszyny wirtualnej należy zwrócić uwagę na ustawienia sieci wirtualnej, aby upewnić się, że maszyna wirtualna może komunikować się z domeną zarządzaną platformy Azure AD DS:
 
-> [!IMPORTANT]
-> * Wdróż maszynę wirtualną w tej **samej sieci wirtualnej, w której włączono Azure AD Domain Services**.
-> * Wybierz **inną podsieć** niż ta, w której włączono Azure AD Domain Services.
->
+* Wdróż maszynę wirtualną w tej samej lub równorzędnej sieci wirtualnej, w której włączono Azure AD Domain Services.
+* Wdróż maszynę wirtualną w innej podsieci niż wystąpienie Azure AD Domain Services.
 
+Po wdrożeniu maszyny wirtualnej postępuj zgodnie z instrukcjami, aby nawiązać połączenie z maszyną wirtualną przy użyciu protokołu SSH.
 
-## <a name="connect-remotely-to-the-newly-provisioned-linux-virtual-machine"></a>Zdalne nawiązywanie połączenia z nowo zainicjowaną maszyną wirtualną z systemem Linux
-Maszyna wirtualna CoreOS została zainicjowana na platformie Azure. Następnym zadaniem jest zdalne nawiązywanie połączenia z maszyną wirtualną przy użyciu konta administratora lokalnego utworzonego podczas aprowizacji maszyny wirtualnej.
+## <a name="configure-the-hosts-file"></a>Konfigurowanie pliku hosts
 
-Postępuj zgodnie z instrukcjami w artykule [Jak zalogować się do maszyny wirtualnej z systemem Linux](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-
-
-## <a name="configure-the-hosts-file-on-the-linux-virtual-machine"></a>Konfigurowanie pliku Hosts na maszynie wirtualnej z systemem Linux
-W terminalu SSH Edytuj plik/etc/hosts i zaktualizuj adres IP i nazwę hosta maszyny.
+Aby upewnić się, że nazwa hosta maszyny wirtualnej jest prawidłowo skonfigurowana dla domeny zarządzanej, edytuj plik */etc/hosts* i Ustaw nazwę hosta:
 
 ```console
 sudo vi /etc/hosts
 ```
 
-W pliku hosts Wprowadź następującą wartość:
+W pliku *hosts* zaktualizuj adres *localhost* . W poniższym przykładzie:
+
+* *contoso.com* to nazwa domeny DNS domeny zarządzanej AD DS platformy Azure.
+* *CoreOS* jest nazwą hosta maszyny wirtualnej CoreOS, która jest dołączana do domeny zarządzanej.
+
+Zaktualizuj te nazwy przy użyciu własnych wartości:
 
 ```console
-127.0.0.1 contoso-coreos.contoso.com contoso-coreos
+127.0.0.1 coreos coreos.contoso.com
 ```
 
-W tym miejscu "contoso.com" jest nazwą domeny DNS domeny zarządzanej. "contoso-CoreOS" jest nazwą hosta maszyny wirtualnej CoreOS, do której jest przyłączany do domeny zarządzanej.
+Po zakończeniu Zapisz i wyjdź z pliku *hosts* za pomocą `:wq` polecenia edytora.
 
+## <a name="configure-the-sssd-service"></a>Konfigurowanie usługi SSSD
 
-## <a name="configure-the-sssd-service-on-the-linux-virtual-machine"></a>Konfigurowanie usługi SSSD na maszynie wirtualnej z systemem Linux
-Następnie zaktualizuj plik konfiguracji SSSD w programie ("/etc/SSSD/SSSD.conf"), aby pasował do poniższego przykładu:
+Zaktualizuj konfigurację */etc/SSSD/SSSD.conf* SSSD.
+
+```console
+sudo vi /etc/sssd/sssd.conf
+```
+
+Określ własną nazwę domeny zarządzanej AD DS platformy Azure dla następujących parametrów:
+
+* *domeny* w Wielkiej wielkości liter
+* *[domena/contoso]* gdzie contoso jest w Wielkiej litery
+* *ldap_uri*
+* *ldap_search_base*
+* *krb5_server*
+* *krb5_realm* WIELKImi literami
 
 ```console
 [sssd]
@@ -102,56 +118,61 @@ krb5_server = contoso.com
 krb5_realm = CONTOSO.COM
 ```
 
-Zamień element "CONTOSO. COM ' z nazwą domeny DNS domeny zarządzanej. Upewnij się, że w pliku conf określono nazwę domeny w przypadku wielkości liter.
+## <a name="join-the-vm-to-the-managed-domain"></a>Przyłączanie maszyny wirtualnej do domeny zarządzanej
 
+Po zaktualizowaniu pliku konfiguracji SSSD przyłączaj maszynę wirtualną do domeny zarządzanej.
 
-## <a name="join-the-linux-virtual-machine-to-the-managed-domain"></a>Przyłączanie maszyny wirtualnej z systemem Linux do domeny zarządzanej
-Teraz, gdy wymagane pakiety są zainstalowane na maszynie wirtualnej z systemem Linux, następne zadanie polega na przyłączeniu maszyny wirtualnej do domeny zarządzanej.
+1. Najpierw użyj `adcli info` polecenia, aby sprawdzić, czy widzisz informacje o domenie zarządzanej AD DS platformy Azure. Poniższy przykład pobiera informacje dla domeny *contoso.com*. Określ własną nazwę domeny zarządzanej przez usługę Azure AD DS w dowolnej wielkiej litery:
 
-```console
-sudo adcli join -D CONTOSO.COM -U bob@CONTOSO.COM -K /etc/krb5.keytab -H contoso-coreos.contoso.com -N coreos
-```
+    ```console
+    sudo adcli info CONTOSO.COM
+    ```
 
+   `adcli info` Jeśli polecenie nie może znaleźć domeny zarządzanej AD DS platformy Azure, zapoznaj się z następującymi krokami rozwiązywania problemów:
 
-> [!NOTE]
-> **Rozwiązywanie problemów:** Jeśli *adcli* nie może znaleźć Twojej domeny zarządzanej:
->   * Upewnij się, że domena jest dostępna z poziomu maszyny wirtualnej (Wypróbuj polecenie ping).
->   * Sprawdź, czy maszyna wirtualna rzeczywiście została wdrożona w tej samej sieci wirtualnej, w której jest dostępna domena zarządzana.
->   * Sprawdź, czy zostały zaktualizowane ustawienia serwera DNS dla sieci wirtualnej, aby wskazywały kontrolery domeny zarządzanej domeny.
+    * Upewnij się, że domena jest osiągalna z maszyny wirtualnej. Spróbuj `ping contoso.com` sprawdzić, czy jest zwracana pozytywna odpowiedź.
+    * Sprawdź, czy maszyna wirtualna jest wdrożona w tej samej lub równorzędnej sieci wirtualnej, w której jest dostępna domena zarządzana platformy Azure AD DS.
+    * Upewnij się, że ustawienia serwera DNS dla sieci wirtualnej zostały zaktualizowane w taki sposób, aby wskazywały kontrolery domeny w domenie zarządzanej platformy Azure AD DS.
 
-Uruchom usługę SSSD. W terminalu SSH wpisz następujące polecenie:
+1. Dołącz teraz maszynę wirtualną do domeny zarządzanej AD DS platformy Azure `adcli join` przy użyciu polecenia. Określ użytkownika, który należy do grupy *administratorów kontrolera domeny usługi AAD* . W razie potrzeby [Dodaj konto użytkownika do grupy w usłudze Azure AD](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
+
+    Ponownie nazwa domeny zarządzanej platformy Azure AD DS musi być wpisana WIELKImi LITERAmi. W poniższym przykładzie konto o nazwie `contosoadmin@contoso.com` jest używane do inicjowania protokołu Kerberos. Wprowadź własne konto użytkownika, które jest członkiem grupy *Administratorzy domeny usługi AAD* .
+
+    ```console
+    sudo adcli join -D CONTOSO.COM -U contosoadmin@CONTOSO.COM -K /etc/krb5.keytab -H coreos.contoso.com -N coreos
+    ```
+
+    `adcli join` Polecenie nie zwraca żadnych informacji w przypadku pomyślnego dołączenia maszyny wirtualnej do domeny zarządzanej AD DS platformy Azure.
+
+1. Aby zastosować konfigurację przyłączania do domeny, uruchom usługę SSSD:
   
-```console
-sudo systemctl start sssd.service
-```
-
-
-## <a name="verify-domain-join"></a>Weryfikuj przyłączanie do domeny
-Sprawdź, czy maszyna została pomyślnie przyłączona do domeny zarządzanej. Nawiąż połączenie z dołączoną do domeny maszyną wirtualną CoreOS przy użyciu innego połączenia SSH. Użyj konta użytkownika domeny, a następnie sprawdź, czy konto użytkownika jest prawidłowo rozwiązane.
-
-1. W terminalu SSH wpisz następujące polecenie, aby nawiązać połączenie z przyłączoną do domeny maszyną wirtualną CoreOS przy użyciu protokołu SSH. Użyj konta domeny, które należy do domeny zarządzanej (na przykład "bob@CONTOSO.COM" w tym przypadku).
-    
     ```console
-    ssh -l bob@CONTOSO.COM contoso-coreos.contoso.com
+    sudo systemctl start sssd.service
     ```
 
-2. W terminalu SSH wpisz następujące polecenie, aby sprawdzić, czy katalog macierzysty został zainicjowany prawidłowo.
-    
+## <a name="sign-in-to-the-vm-using-a-domain-account"></a>Logowanie się do maszyny wirtualnej przy użyciu konta domeny
+
+Aby sprawdzić, czy maszyna wirtualna została pomyślnie dołączona do domeny zarządzanej AD DS platformy Azure, uruchom nowe połączenie SSH przy użyciu konta użytkownika domeny. Upewnij się, że katalog macierzysty został utworzony, a członkostwo w grupie jest stosowane.
+
+1. Utwórz nowe połączenie SSH z poziomu konsoli. Użyj konta domeny, które należy do domeny zarządzanej przy użyciu `ssh -l` polecenia, na przykład `contosoadmin@contoso.com` , a następnie wprowadź adres maszyny wirtualnej, na przykład *CoreOS.contoso.com*. Jeśli używasz Azure Cloud Shell, użyj publicznego adresu IP maszyny wirtualnej, a nie wewnętrznej nazwy DNS.
+
     ```console
-    pwd
+    ssh -l contosoadmin@CONTOSO.com coreos.contoso.com
     ```
 
-3. W terminalu SSH wpisz następujące polecenie, aby sprawdzić, czy członkostwa w grupach są poprawnie rozwiązane.
-   
+1. Teraz sprawdź, czy członkostwa w grupach są poprawnie rozwiązane:
+
     ```console
     id
     ```
 
+    Członkostwa w grupach powinny być widoczne z domeny zarządzanej usługi Azure AD DS.
 
-## <a name="troubleshooting-domain-join"></a>Rozwiązywanie problemów z przyłączaniem domeny
-Zobacz artykuł [Rozwiązywanie problemów](join-windows-vm.md#troubleshoot-domain-join-issues) z przyłączaniem do domeny.
+## <a name="next-steps"></a>Następne kroki
 
-## <a name="related-content"></a>Powiązana zawartość
-* [Przewodnik po Wprowadzenie Azure AD Domain Services](tutorial-create-instance.md)
-* [Przyłączanie maszyny wirtualnej z systemem Windows Server do domeny zarządzanej Azure AD Domain Services](active-directory-ds-admin-guide-join-windows-vm.md)
-* [Jak zalogować się do maszyny wirtualnej z systemem Linux](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Jeśli masz problemy z połączeniem maszyny wirtualnej z domeną zarządzaną platformy Azure AD DS lub zalogowanie się przy użyciu konta domeny, zobacz [Rozwiązywanie problemów z przyłączaniem do domeny](join-windows-vm.md#troubleshoot-domain-join-issues).
+
+<!-- INTERNAL LINKS -->
+[create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
+[associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
+[create-azure-ad-ds-instance]: tutorial-create-instance.md

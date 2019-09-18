@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2ed1426bea920d1ef30fb28ff4a975d1268c12ff
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 83f8051fa31b6431d4a8515e2c0912cc1872a402
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846927"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064392"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Konfigurowanie tokenów w Azure Active Directory B2C
 
-W tym artykule dowiesz się, jak skonfigurować [okres istnienia i zgodność tokenu](active-directory-b2c-reference-tokens.md) w Azure Active Directory (Azure AD) B2C.
+W tym artykule dowiesz się, jak skonfigurować [okres istnienia i zgodność tokenu](active-directory-b2c-reference-tokens.md) w Azure Active Directory B2C (Azure AD B2C).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -30,7 +30,7 @@ W tym artykule dowiesz się, jak skonfigurować [okres istnienia i zgodność to
 Okres istnienia tokenu można skonfigurować w dowolnym przepływie użytkownika.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Upewnij się, że używasz katalogu zawierającego dzierżawcę Azure AD B2C. Wybierz pozycję **katalog i filtr subskrypcji** w górnym menu, a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
+2. Upewnij się, że używasz katalogu zawierającego dzierżawcę Azure AD B2C. W górnym menu wybierz pozycję **katalog i subskrypcja** , a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
 3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 4. Wybierz pozycję **przepływy użytkownika (zasady)** .
 5. Otwórz wcześniej utworzony przepływ użytkownika.

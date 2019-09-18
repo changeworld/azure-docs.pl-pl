@@ -10,16 +10,16 @@ ms.topic: overview
 ms.date: 02/20/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ca9d8a8373bd73d527862864d436319eb45b5f48
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: ca636079439f811a887d16b627473e7d73930799
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227163"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065711"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Co to jest usługa Azure Active Directory B2C?
 
-Azure Active Directory (Azure AD) B2C to usługa zarządzania tożsamościami między firmami. Usługa ta umożliwia dostosowywanie i kontrolowanie bezpiecznych interakcji użytkowników z aplikacjami internetowymi, klasycznymi, mobilnymi i jednostronicowymi. Za pomocą usługi Azure AD B2C użytkownicy mogą tworzyć konta, logować się, resetować hasła i edytować profile. W usłudze Azure AD B2C zaimplementowano formę protokołów OpenID Connect i OAuth 2.0. Kluczowym elementem implementacji tych protokołów są tokeny zabezpieczające i ich oświadczenia, które umożliwiają bezpieczny dostęp do zasobów.
+Azure Active Directory B2C (Azure AD B2C) to usługa zarządzania tożsamościami między firmami. Usługa ta umożliwia dostosowywanie i kontrolowanie bezpiecznych interakcji użytkowników z aplikacjami internetowymi, klasycznymi, mobilnymi i jednostronicowymi. Za pomocą usługi Azure AD B2C użytkownicy mogą tworzyć konta, logować się, resetować hasła i edytować profile. W usłudze Azure AD B2C zaimplementowano formę protokołów OpenID Connect i OAuth 2.0. Kluczowym elementem implementacji tych protokołów są tokeny zabezpieczające i ich oświadczenia, które umożliwiają bezpieczny dostęp do zasobów.
 
 *Podróż użytkownika* to żądanie, które określa zasady sterujące interakcjami użytkownika i aplikacji z usługą Azure AD B2C. Na potrzeby zdefiniowania podróży użytkownika w usłudze Azure AD B2C są dostępne Dwie ścieżki.
 
@@ -127,7 +127,7 @@ Do aplikacji w usłudze Azure AD B2C możesz dodać własny kod JavaScript po st
 
 Wiele typowych zadań zarządzania dzierżawy należy wykonywać programowo. Podstawowym tego przykładem jest zarządzanie użytkownikami. Konieczne może być migrowanie istniejącego magazynu użytkowników do dzierżawy usługi Azure AD B2C. Możesz zdecydować się na hostowanie rejestracji użytkowników na własnej stronie i tworzenie kont użytkowników w katalogu usługi Azure AD B2C w tle. Zadania tego typu wymagają możliwości tworzenia, odczytywania, aktualizowania i usuwania kont użytkowników. Można je wykonywać za pomocą [interfejsu API programu Graph usługi Azure AD](active-directory-b2c-devquickstarts-graph-dotnet.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Rozpocznij konfigurowanie aplikacji dla funkcji rejestracji i logowania, przechodząc do samouczka.
 

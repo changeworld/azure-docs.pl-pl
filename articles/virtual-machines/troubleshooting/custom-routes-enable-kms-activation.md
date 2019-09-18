@@ -4,7 +4,7 @@ description: Pokazuje, jak używać niestandardowych tras platformy Azure, aby w
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue, azure-resource-manager
 ms.service: virtual-machines-windows
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: 8c0c8f5543af425091c821f28d08fcab01118fd4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d554629c4a03b81ee3c04d27f6365c1a8734c952
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090446"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058192"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>Aktywacja systemu Windows kończy się niepowodzeniem w scenariuszu wymuszonego tunelowania
 
@@ -26,7 +26,7 @@ W tym artykule opisano sposób rozwiązywania problemu z aktywacją usługi KMS,
 
 ## <a name="symptom"></a>Objaw
 
-Wymuszone [tunelowanie](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) można włączyć w podsieciach sieci wirtualnej platformy Azure, aby skierować cały ruch związany z Internetem z powrotem do sieci lokalnej. W tym scenariuszu nie można aktywować systemu Windows na maszynach wirtualnych platformy Azure z systemem Windows.
+[Wymuszone tunelowanie](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) można włączyć w podsieciach sieci wirtualnej platformy Azure, aby skierować cały ruch związany z Internetem z powrotem do sieci lokalnej. W tym scenariuszu nie można aktywować systemu Windows na maszynach wirtualnych platformy Azure z systemem Windows.
 
 ## <a name="cause"></a>Przyczyna
 

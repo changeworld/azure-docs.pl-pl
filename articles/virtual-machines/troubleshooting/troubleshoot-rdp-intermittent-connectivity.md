@@ -4,7 +4,7 @@ description: Dowiedz się, jak rozwiązywać problemy z częstymi połączeniami
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
 ms.topic: troubleshooting
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/24/2018
 ms.author: genli
-ms.openlocfilehash: 16322b2cca4875f1ace89e29752608b95fe568ef
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: be563e39ed1bfa405830999a96d8630b6f8254bb
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103453"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057969"
 ---
 # <a name="remote-desktop-disconnects-frequently-in-azure-vm"></a>Pulpit zdalny rozłącza często z maszyną wirtualną platformy Azure
 
@@ -93,7 +93,7 @@ Aby rozwiązać ten problem, należy użyć kontrolki serial lub [naprawić masz
 2. Po dołączeniu dysku systemu operacyjnego do maszyny Wirtualnej odzyskiwania, upewnij się, że dysk jest oznaczone jako **Online** w konsoli Zarządzanie dyskami. Zanotuj literę dysku, która jest przypisana do dołączonym dysku systemu operacyjnego.
 3. Na dołączonym dysku systemu operacyjnego przejdź do folderu **\Windows\System32\Config** . Skopiuj wszystkie pliki w tym folderze jako kopię zapasową, w przypadku gdy wymagane jest wycofanie.
 4. Uruchom Edytor rejestru (regedit. exe).
-5. Wybierz klucz **HKEY_LOCAL_MACHINE** . Z menu wybierz pozycję Załaduj **plik** > **Hive**:
+5. Wybierz klucz **HKEY_LOCAL_MACHINE** . Z menu wybierz pozycję**Załaduj** **plik** > Hive:
 6. Przejdź do folderu **\windows\system32\config\SYSTEM** na dysku systemu operacyjnego, który został podłączony. W polu Nazwa gałęzi wpisz **BROKENSYSTEM**. Nowa gałąź rejestru zostanie wyświetlona w kluczu **HKEY_LOCAL_MACHINE** . Następnie załaduj **\windows\system32\config\SOFTWARE** Hive oprogramowania w kluczu **HKEY_LOCAL_MACHINE** . W polu Nazwa oprogramowania Hive wprowadź **BROKENSOFTWARE**. 
 7. Otwórz okno wiersza polecenia z podwyższonym poziomem uprawnień (**Uruchom jako administrator**) i uruchom polecenia w pozostałych krokach, aby zresetować konfiguracje protokołu RDP. 
 8. Obniż poziom warstwy zabezpieczeń protokołu RDP do wartości 0, aby komunikacja między serwerem a klientem była używana przez natywne szyfrowanie RDP:

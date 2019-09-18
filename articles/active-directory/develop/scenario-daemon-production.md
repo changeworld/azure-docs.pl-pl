@@ -1,6 +1,6 @@
 ---
-title: Wywołanie aplikacji demona internetowych interfejsów API (przenoszenie do środowiska produkcyjnego) — Platforma tożsamości firmy Microsoft
-description: Dowiedz się, jak utworzyć aplikację demona wywołuje interfejsy API (przenoszenie do środowiska produkcyjnego) sieci web
+title: Aplikacje demona wywołujące interfejsy API sieci Web (Przenieś do produkcji) — Microsoft Identity platform
+description: Dowiedz się, jak utworzyć aplikację demona, która wywołuje interfejsy API sieci Web (Przenieś do środowiska produkcyjnego)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -12,59 +12,62 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 627dab0cb23800664c5fb5b3df9c61f5071d4b87
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c509e061c43c81f72682fb428529a8e72b34066a
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545406"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056322"
 ---
-# <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Demon aplikacji, która wywołuje sieci web interfejsy API — przenoszenie do środowiska produkcyjnego
+# <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Aplikacja demona, która wywołuje interfejsy API sieci Web — Przenieś do środowiska produkcyjnego
 
-Teraz gdy wiesz, jak pobrać i używać tokenu dla wywołania do usługi, Dowiedz się, jak przenieść aplikację do środowiska produkcyjnego.
+Teraz, gdy wiesz już, jak uzyskać i używać tokenu dla wywołania Service to Service, Dowiedz się, jak przenieść aplikację do środowiska produkcyjnego.
 
-## <a name="deployment---case-of-multi-tenant-daemon-apps"></a>Wdrażanie — przypadek aplikacje demona z wieloma dzierżawami
+## <a name="deployment---case-of-multi-tenant-daemon-apps"></a>Wdrożenie — sprawa aplikacji demona wielodostępna
 
-Jeśli jesteś niezależnym dostawcą oprogramowania i tworzenie aplikacji demona, który można uruchomić w kilka dzierżaw, musisz upewnić się, że Administratorzy dzierżawy:
+Jeśli jesteś niezależnym dostawcą oprogramowania i utworzysz aplikację demona, która może być uruchamiana w kilku dzierżawcach, należy upewnić się, że administratorzy dzierżawy:
 
-- Aprowizuje nazwy głównej usługi dla aplikacji
-- Przyznaje zgoda na aplikację
+- Inicjuje obsługę nazwy głównej usługi dla aplikacji
+- Przyznaje zgodę na aplikację
 
-Konieczne będzie opisują klientom sposób wykonywania tych operacji. Aby uzyskać więcej informacji, zobacz [żądanie zgody na całej dzierżawie](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant).
+Należy wyjaśnić swoim klientom sposób wykonywania tych operacji. Aby uzyskać więcej informacji, zobacz [żądanie zgody dla całej dzierżawy](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant).
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Oto kilka linków, aby dowiedzieć się więcej:
 
-### <a name="net"></a>.NET
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-- Jeśli jeszcze tego nie zrobiono, spróbuj tego przewodnika Szybki Start [uzyskania tokenu i wywołania interfejsu API Microsoft Graph z poziomu aplikacji konsolowej przy użyciu tożsamości aplikacji](./quickstart-v2-netcore-daemon.md).
-- Dokumentacja referencyjna:
-  - Utworzenie wystąpienia [ConfidentialClientApplication](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder)
+- Jeśli jeszcze tego nie zrobiono, wypróbuj Szybki Start [token i Wywołaj interfejs API Microsoft Graph z aplikacji konsolowej przy użyciu tożsamości aplikacji](./quickstart-v2-netcore-daemon.md).
+- Dokumentacja referencyjna dla:
+  - Tworzenie wystąpienia [ConfidentialClientApplication](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder)
   - Wywoływanie [AcquireTokenForClient](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenforclientparameterbuilder)
 - Inne przykłady/samouczki:
-  - [Microsoft identity platformy konsoli demonów](https://github.com/Azure-Samples/microsoft-identity-platform-console-daemon) funkcji prostą aplikację do konsoli demona platformy .NET Core, która wyświetla użytkowników dzierżawy, wykonywania zapytań programu Microsoft Graph.
+  - [program Microsoft-Identity-platform-Console DAEMON](https://github.com/Azure-Samples/microsoft-identity-platform-console-daemon) oferuje prostą aplikację konsolową demona programu .NET Core, która wyświetla użytkowników dzierżawcy z przeszukiwaniem Microsoft Graph.
 
-    ![topology](media/scenario-daemon-app/daemon-app-sample.svg)
+    ![topologia](media/scenario-daemon-app/daemon-app-sample.svg)
 
-    Tej samej próbki ilustruje odmiany za pomocą certyfikatów.
+    Ten sam przykład ilustruje również zmiany z certyfikatami.
 
-    ![topology](media/scenario-daemon-app/daemon-app-sample-with-certificate.svg)
+    ![topologia](media/scenario-daemon-app/daemon-app-sample-with-certificate.svg)
 
-  - [Microsoft-Identity-platform-ASPNET-webapp-Daemon](https://github.com/Azure-Samples/microsoft-identity-platform-aspnet-webapp-daemon) funkcji aplikację sieci web platformy ASP.NET MVC, która synchronizuje dane z programu Microsoft Graph przy użyciu tożsamości aplikacji zamiast w imieniu użytkownika. Przykład ilustruje także procesu zgody administratora.
+  - [Microsoft-Identity-platform-ASPNET-webapp-demos](https://github.com/Azure-Samples/microsoft-identity-platform-aspnet-webapp-daemon) ASP.NET MVC Web Application, która synchronizuje dane z Microsoft Graph przy użyciu tożsamości aplikacji zamiast w imieniu użytkownika. Przykład ilustruje również proces wyrażania zgody administratora.
 
-    ![topology](media/scenario-daemon-app/damon-app-sample-web.svg)
+    ![topologia](media/scenario-daemon-app/damon-app-sample-web.svg)
 
-### <a name="python"></a>Python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
-Python Biblioteka MSAL jest obecnie dostępna w publicznej wersji zapoznawczej. Aby uzyskać więcej informacji, zobacz [przykładem w repozytorium poświadczeń klienta MSAL Python](https://github.com/AzureAD/azure-activedirectory-library-for-python/blob/dev/sample/client_credentials_sample.py).
+MSAL Python jest obecnie w publicznej wersji zapoznawczej.
+Aby uzyskać więcej informacji, zobacz [przykłady w repozytorium MSAL języka Python](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/dev/sample).
 
-### <a name="java"></a>Java
+# <a name="javatabjava"></a>[Java](#tab/java)
 
-Python Biblioteka MSAL jest obecnie dostępna w publicznej wersji zapoznawczej. Aby uzyskać więcej informacji, zobacz [MSAL Java w repozytorium przykładów](https://github.com/AzureAD/azure-activedirectory-library-for-java/tree/dev/src/samples).
+msal4j (MSAL. Java) jest obecnie w publicznej wersji zapoznawczej. Aby uzyskać więcej informacji, zobacz [MSAL Java in-Repository Samples](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples).
+
+---

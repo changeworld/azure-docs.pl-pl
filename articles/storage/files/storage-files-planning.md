@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4c13c0b7601257c120c46ec341156a8e8bba332f
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: da9ab6eef98a602635e5e92dca3bd5628846ce62
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967785"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036332"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 
@@ -95,7 +95,7 @@ Jeśli chcesz dowiedzieć się, jak utworzyć udział plików w warstwie Premium
 Obecnie nie można bezpośrednio konwertować między standardowym udziałem plików a udziałem plików w warstwie Premium. Jeśli chcesz przełączyć się do jednej z warstw, musisz utworzyć nowy udział plików w tej warstwie i ręcznie skopiować dane z oryginalnego udziału do utworzonego nowego udziału. Można to zrobić przy użyciu dowolnego Azure Files obsługiwanych narzędzi do kopiowania, takich jak Robocopy lub AzCopy.
 
 > [!IMPORTANT]
-> Udziały plików w warstwie Premium są dostępne tylko w programie LRS i są dostępne w większości regionów, które oferują konta magazynu. Aby dowiedzieć się, czy w Twoim regionie są obecnie dostępne udziały plików w warstwie Premium, zobacz stronę [dostępne według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=storage) na platformie Azure.
+> Udziały plików w warstwie Premium są dostępne z LRS w większości regionów, które oferują konta magazynu i ZRS w mniejszych podzestawach regionów. Aby dowiedzieć się, czy w Twoim regionie są obecnie dostępne udziały plików w warstwie Premium, zobacz stronę [dostępne według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=storage) na platformie Azure. Aby dowiedzieć się, które regiony obsługują ZRS, zobacz [zasięg pomocy technicznej i dostępność regionalna](../common/storage-redundancy-zrs.md#support-coverage-and-regional-availability).
 
 #### <a name="provisioned-shares"></a>Udostępnione udziały
 
@@ -157,7 +157,7 @@ Nowe udziały plików zaczynają się od pełnej liczby kredytów w swoim zasobn
 
 Azure Files udziały standardowe obsługują cztery opcje nadmiarowości danych: Magazyn lokalnie nadmiarowy (LRS), magazyn strefowo nadmiarowy (ZRS), magazyn Geograficznie nadmiarowy (GRS) i magazyn Geograficznie nadmiarowy (GZRS) (wersja zapoznawcza).
 
-Azure Files udziały w warstwie Premium obsługują tylko Magazyn lokalnie nadmiarowy (LRS).
+Azure Files udziały w warstwie Premium obsługują zarówno LRS, jak i ZRS, ZRS jest obecnie dostępne w mniejszych podzestawie regionów.
 
 W poniższych sekcjach opisano różnice między różnymi opcjami nadmiarowości:
 

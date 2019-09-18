@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6d42c961054927581e7cc43b6f467e5d3e23c4e
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 395957099a19d11d26fb5bdd2a1eecdd5590dd64
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996724"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056131"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw w Azure Portal
 
@@ -81,7 +81,7 @@ Obsługiwane dostosowania obejmują:
 
 Możesz uruchomić i zatrzymać usługę Azure AD Provisioning dla wybranej aplikacji w obszarze **Ustawienia** na ekranie **aprowizacji** . Możesz również wyczyścić pamięć podręczną aprowizacji i ponownie uruchomić usługę.
 
-Jeśli Inicjowanie obsługi jest włączane po raz pierwszy dla aplikacji, Włącz usługę, zmieniając **stan aprowizacji** na **włączone**. Ta zmiana powoduje, że usługa Azure AD Provisioning uruchamia synchronizację początkową. Odczytuje użytkowników przypisanych w sekcji **Użytkownicy i grupy** , wysyła zapytanie do aplikacji docelowej, a następnie uruchamia akcje aprowizacji zdefiniowane w sekcji **mapowania** usługi Azure AD. W trakcie tego procesu usługa aprowizacji przechowuje buforowane dane dotyczące kont użytkowników, którymi zarządza, dlatego nie ma to wpływu na konta niezarządzane w aplikacjach docelowych, które nigdy nie są objęte zakresem przydziału. Po synchronizacji początkowej usługa aprowizacji automatycznie synchronizuje obiekty użytkowników i grup w przedziale dziesięciu minut.
+Jeśli Inicjowanie obsługi jest włączane po raz pierwszy dla aplikacji, Włącz usługę, zmieniając **stan aprowizacji** na **włączone**. Ta zmiana powoduje, że usługa aprowizacji usługi Azure AD uruchamia cykl początkowy. Odczytuje użytkowników przypisanych w sekcji **Użytkownicy i grupy** , wysyła zapytanie do aplikacji docelowej, a następnie uruchamia akcje aprowizacji zdefiniowane w sekcji **mapowania** usługi Azure AD. W trakcie tego procesu usługa aprowizacji przechowuje buforowane dane dotyczące kont użytkowników, którymi zarządza, dlatego nie ma to wpływu na konta niezarządzane w aplikacjach docelowych, które nigdy nie są objęte zakresem przydziału. Po wstępnym cyklu usługa aprowizacji automatycznie synchronizuje obiekty użytkowników i grup w przedziale dziesięciu minut.
 
 Zmień **stan aprowizacji** na **wyłączony** , aby wstrzymać usługę aprowizacji. W tym stanie platforma Azure nie tworzy, nie aktualizuje ani nie usuwa żadnych obiektów użytkowników ani grup w aplikacji. Zmień stan z powrotem na **włączony** , a usługa odbiera w miejscu, w którym została przerwana.
 
@@ -89,6 +89,6 @@ Zaznacz pole wyboru **Wyczyść bieżący stan i ponownie uruchom synchronizacj�
 
 * Zatrzymaj usługę aprowizacji
 * Zrzuć dane przechowywane w pamięci podręcznej dotyczące kont, którymi zarządza usługa Azure AD
-* Uruchom ponownie usługi i ponownie uruchom synchronizację początkową
+* Uruchom ponownie usługi i ponownie uruchom cykl początkowy
 
 Ta opcja umożliwia administratorom ponowne uruchomienie procesu inicjowania obsługi administracyjnej.

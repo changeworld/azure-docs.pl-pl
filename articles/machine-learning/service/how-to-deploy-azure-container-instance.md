@@ -1,7 +1,7 @@
 ---
 title: Jak wdrażać modele w Azure Container Instances
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak wdrożyć modele usług Azure Machine Learning jako usługę sieci Web przy użyciu Azure Container Instances.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak wdrożyć modele Azure Machine Learning jako usługę sieci Web przy użyciu Azure Container Instances.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: cb80cb92ef93132aae3c57e74c108293da3a7834
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 27988edaf9d6fe70288352b0ba45945e32976d4d
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279141"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034649"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Wdróż model do Azure Container Instances
 
-Dowiedz się, jak za pomocą usługi Azure Machine Learning wdrożyć model jako usługę sieci Web na Azure Container Instances (ACI). Użyj Azure Container Instances, jeśli spełniony jest jeden z następujących warunków:
+Dowiedz się, jak za pomocą Azure Machine Learning wdrożyć model jako usługę sieci Web na Azure Container Instances (ACI). Użyj Azure Container Instances, jeśli spełniony jest jeden z następujących warunków:
 
 - Musisz szybko wdrażać i weryfikacja modelu. Nie ma potrzeby tworzenia kontenerów ACI przed czasem. Są one tworzone w ramach procesu wdrażania.
 - W przypadku testowania modelu, który jest w fazie projektowania. 
@@ -28,7 +28,7 @@ Aby uzyskać informacje dotyczące przydziału i dostępności regionów dla us�
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Obszar roboczy usługi Azure Machine Learning. Aby uzyskać więcej informacji, zobacz [Tworzenie obszaru roboczego usługi Azure Machine Learning](how-to-manage-workspace.md).
+- Obszar roboczy usługi Azure Machine Learning. Aby uzyskać więcej informacji, zobacz [Tworzenie obszaru roboczego Azure Machine Learning](how-to-manage-workspace.md).
 
 - Model uczenia maszynowego zarejestrowany w obszarze roboczym. Jeśli nie masz zarejestrowanego modelu, zapoznaj [się z tematem jak i gdzie wdrażać modele](how-to-deploy-and-where.md).
 
@@ -78,7 +78,7 @@ az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploy
 
 Aby uzyskać więcej informacji, zobacz [AZ ml model Deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) Reference. 
 
-## <a name="using-vs-code"></a>Używanie VS Code
+## <a name="using-vs-code"></a>Korzystanie z programu VS Code
 
 Zobacz [Wdrażanie modeli przy użyciu vs Code](how-to-vscode-tools.md#deploy-and-manage-models).
 

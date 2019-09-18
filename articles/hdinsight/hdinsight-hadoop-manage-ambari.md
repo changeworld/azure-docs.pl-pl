@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: 3ca9c12caa7fa9b54cd63c2655166d95477dffa2
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 5b97e577216f5e34cd0a5bdd66eea2cf2efa0fee
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885269"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035873"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Zarządzanie klastrami usługi HDInsight przy użyciu interfejsu użytkownika sieci Web Apache Ambari
 
@@ -47,7 +47,7 @@ Podczas nawiązywania połączenia z interfejsem użytkownika sieci Web Ambari z
 
 Gdy zostanie otwarta strona, zanotuj pasek u góry. Ten pasek zawiera następujące informacje i kontrolki:
 
-![Ambari — Nawigacja](./media/hdinsight-hadoop-manage-ambari/ambari-nav.png)
+![Ambari — Nawigacja](./media/hdinsight-hadoop-manage-ambari/apache-ambari-dashboard.png)
 
 |Element |Opis |
 |---|---|
@@ -80,7 +80,7 @@ Alerty są zorganizowane w kilka domyślnych grup, które mogą być wyświetlan
 
 Grupami można zarządzać za pomocą menu **Akcje** i wybierając pozycję **Zarządzaj grupami alertów**.
 
-![okno dialogowe Zarządzanie grupami alertów](./media/hdinsight-hadoop-manage-ambari/manage-alerts.png)
+![okno dialogowe Zarządzanie grupami alertów](./media/hdinsight-hadoop-manage-ambari/ambari-manage-alerts.png)
 
 Możesz również zarządzać metodami alertów i tworzyć powiadomienia o alertach z menu **Akcje** , wybierając pozycję __Zarządzaj powiadomieniami o alertach__. Wyświetlane są wszystkie bieżące powiadomienia. W tym miejscu możesz również utworzyć powiadomienia. Powiadomienia mogą być wysyłane za pośrednictwem **poczty e-mail** lub **SNMP** , gdy wystąpią określone kombinacje alertów/ważności. Na przykład możesz wysłać wiadomość e-mail, gdy dowolne z alertów w grupie **domyślnej przędzy** ma wartość **krytyczne**.
 
@@ -100,20 +100,20 @@ Na karcie **map cieplnych** są wyświetlane metryki jako kolorowe map cieplnych
 
 Aby uzyskać więcej informacji na temat węzłów w klastrze, wybierz pozycję **hosty**. Następnie wybierz konkretny wybrany węzeł.
 
-![Szczegóły hosta](./media/hdinsight-hadoop-manage-ambari/host-details.png)
+![Szczegóły hosta](./media/hdinsight-hadoop-manage-ambari/ambari-host-details1.png)
 
 ### <a name="services"></a>Usługi
 
 Pasek boczny **usług** na pulpicie nawigacyjnym zapewnia szybki wgląd w informacje o stanie usług uruchomionych w klastrze. Różne ikony są używane do wskazywania stanu lub akcji, które należy wykonać. Na przykład żółty symbol odtwarzania jest wyświetlany, jeśli usługa musi zostać odtworzona.
 
-![pasek boczny usług](./media/hdinsight-hadoop-manage-ambari/service-bar.png)
+![pasek boczny usług](./media/hdinsight-hadoop-manage-ambari/apache-ambari-service-bar.png)
 
 > [!NOTE]  
 > Wyświetlone usługi różnią się w zależności od typów i wersji klastra HDInsight. Wyświetlone w tym miejscu usługi mogą być inne niż usługi wyświetlane dla danego klastra.
 
 Wybranie usługi spowoduje wyświetlenie bardziej szczegółowych informacji na temat usługi.
 
-![informacje podsumowujące usługi](./media/hdinsight-hadoop-manage-ambari/service-details.png)
+![informacje podsumowujące usługi](./media/hdinsight-hadoop-manage-ambari/ambari-service-details.png)
 
 #### <a name="quick-links"></a>Szybkie linki
 
@@ -168,7 +168,7 @@ Na stronie **hosty** są wyświetlane wszystkie hosty w klastrze. Aby zarządza�
 
 Na stronie **pulpit nawigacyjny** lub **usługi** Użyj przycisku **Akcje** znajdującego się u dołu listy usług, aby zatrzymać i uruchomić wszystkie usługi.
 
-![akcje usługi](./media/hdinsight-hadoop-manage-ambari/service-actions.png)
+![akcje usługi](./media/hdinsight-hadoop-manage-ambari/ambari-service-actions.png)
 
 > [!WARNING]  
 > Podczas **dodawania usługi** w tym menu nie należy używać go do dodawania usług do klastra usługi HDInsight. Przed zainicjowaniem obsługi klastra należy dodać nowe usługi przy użyciu akcji skryptu. Aby uzyskać więcej informacji o korzystaniu z akcji skryptu, zobacz [Dostosowywanie klastrów usługi HDInsight za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md).
@@ -195,7 +195,7 @@ Aby skonfigurować usługę, wykonaj następujące czynności:
 
 2. Wybierz **Configs** kartę. Zostanie wyświetlona bieżąca konfiguracja. Zostanie również wyświetlona lista poprzednich konfiguracji.
 
-    ![komputerów](./media/hdinsight-hadoop-manage-ambari/service-configs.png)
+    ![komputerów](./media/hdinsight-hadoop-manage-ambari/ambari-service-configs.png)
 
 3. Użyj wyświetlanych pól, aby zmodyfikować konfigurację, a następnie wybierz pozycję **Zapisz**. Lub wybierz poprzednią konfigurację, a następnie wybierz pozycję **Ustaw jako bieżącą** , aby przywrócić poprzednie ustawienia.
 

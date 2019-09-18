@@ -3,17 +3,17 @@ title: Łączenie ogólnej aplikacji klienckiej Node. js z platformą Azure IoT 
 description: Jako deweloper urządzenia dołączają ogólne urządzenie Node. js do aplikacji IoT Central platformy Azure.
 author: dominicbetts
 ms.author: dobett
-ms.date: 06/14/2019
+ms.date: 09/12/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 3b73344a233182fe8366795cfa111b706c6d06ac
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 75b900ecb37ae8d092d4e37129b7f39f801c470d
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876256"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066444"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Łączenie ogólnej aplikacji klienckiej z aplikacją usługi Azure IoT Central (Node. js)
 
@@ -25,8 +25,8 @@ W tym artykule opisano sposób, w jaki deweloper urządzenia nawiązuje połącz
 
 Do wykonania kroków opisanych w tym artykule potrzebne są:
 
-1. Aplikacja IoT Central platformy Azure. Aby uzyskać więcej informacji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](quick-deploy-iot-central.md).
-1. Komputer deweloperski z zainstalowanym środowiskiem [Node. js](https://nodejs.org/) w wersji 4.0.0 lub nowszej. Aby sprawdzić swoją `node --version` wersję, można uruchomić polecenie w wierszu polecenia. Oprogramowanie Node.js jest dostępne dla różnych systemów operacyjnych.
+- Aplikacja IoT Central platformy Azure. Aby uzyskać więcej informacji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](quick-deploy-iot-central.md).
+- Komputer deweloperski z zainstalowanym środowiskiem [Node. js](https://nodejs.org/) w wersji 4.0.0 lub nowszej. Aby sprawdzić swoją `node --version` wersję, można uruchomić polecenie w wierszu polecenia. Oprogramowanie Node.js jest dostępne dla różnych systemów operacyjnych.
 
 ## <a name="create-a-device-template"></a>Tworzenie szablonu urządzenia
 
@@ -111,13 +111,13 @@ Na stronie **polecenia** Dodaj następujące polecenie:
 
 | Nazwa wyświetlana    | Nazwa pola     | Domyślny limit czasu | Typ danych |
 | --------------- | -------------- | --------------- | --------- |
-| Licz       | licz      | 30              | numer    |
+| Licz       | licz      | 30              | number    |
 
 Dodaj następujące pole wejściowe do polecenia odliczania:
 
 | Nazwa wyświetlana    | Nazwa pola     | Typ danych | Value |
 | --------------- | -------------- | --------- | ----- |
-| Liczba od      | countFrom      | numer    | 10    |
+| Liczba od      | countFrom      | number    | 10    |
 
 Wprowadź nazwy pól dokładnie tak, jak pokazano w tabelach w szablonie urządzenia. Jeśli nazwy pól nie są zgodne z nazwami właściwości w odpowiednim kodzie urządzenia, urządzenie nie może przetworzyć polecenia.
 
@@ -125,11 +125,13 @@ Wprowadź nazwy pól dokładnie tak, jak pokazano w tabelach w szablonie urządz
 
 W aplikacji IoT Central platformy Azure Dodaj rzeczywiste urządzenie do szablonu urządzenia utworzonego w poprzedniej sekcji.
 
-Następnie postępuj zgodnie z instrukcjami podanymi w samouczku "Dodawanie urządzenia", aby [wygenerować parametry połączenia dla rzeczywistego urządzenia](tutorial-add-device.md#generate-connection-string). Te parametry połączenia są używane w następującej sekcji:
+Zanotuj informacje o połączeniu urządzenia na stronie **połączenie urządzenia** : **Identyfikator zakresu**, **Identyfikator urządzenia**i **klucz podstawowy**. Te wartości można dodać w kodzie urządzenia w dalszej części tego przewodnika:
+
+![Informacje o połączeniu z urządzeniem](./media/howto-connect-nodejs/device-connection.png)
 
 ### <a name="create-a-nodejs-application"></a>Tworzenie aplikacji w języku Node.js
 
-Poniższe kroki pokazują, jak utworzyć aplikację kliencką, która implementuje rzeczywiste urządzenie dodane do aplikacji. W tym miejscu aplikacja Node. js reprezentuje rzeczywiste urządzenie. 
+Poniższe kroki pokazują, jak utworzyć aplikację kliencką, która implementuje rzeczywiste urządzenie dodane do aplikacji. W tym miejscu aplikacja Node. js reprezentuje rzeczywiste urządzenie.
 
 1. Utwórz folder o nazwie `connected-air-conditioner-adv` na maszynie. Przejdź do tego folderu w środowisku wiersza polecenia.
 
@@ -137,7 +139,7 @@ Poniższe kroki pokazują, jak utworzyć aplikację kliencką, która implementu
 
     ```cmd/sh
     npm init
-    npm install azure-iot-device azure-iot-device-mqtt --save
+    npm install azure-iot-device azure-iot-device-mqtt azure-iot-provisioning-device-mqtt azure-iot-security-symmetric-key --save
     ```
 
 1. Utwórz plik o nazwie **connectedAirConditionerAdv. js** w `connected-air-conditioner-adv` folderze.
@@ -148,22 +150,31 @@ Poniższe kroki pokazują, jak utworzyć aplikację kliencką, która implementu
     "use strict";
 
     // Use the Azure IoT device SDK for devices that connect to Azure IoT Central.
-    var clientFromConnectionString = require('azure-iot-device-mqtt').clientFromConnectionString;
+    var iotHubTransport = require('azure-iot-device-mqtt').Mqtt;
+    var Client = require('azure-iot-device').Client;
     var Message = require('azure-iot-device').Message;
-    var ConnectionString = require('azure-iot-device').ConnectionString;
+    var ProvisioningTransport = require('azure-iot-provisioning-device-mqtt').Mqtt;
+    var SymmetricKeySecurityClient = require('azure-iot-security-symmetric-key').SymmetricKeySecurityClient;
+    var ProvisioningDeviceClient = require('azure-iot-provisioning-device').ProvisioningDeviceClient;
     ```
 
 1. Dodaj następujące deklaracje zmiennych do pliku:
 
     ```javascript
-    var connectionString = '{your device connection string}';
+    var provisioningHost = 'global.azure-devices-provisioning.net';
+    var idScope = '{your Scope ID}';
+    var registrationId = '{your Device ID}';
+    var symmetricKey = '{your Primary Key};
+    var provisioningSecurityClient = new SymmetricKeySecurityClient(registrationId, symmetricKey);
+    var provisioningClient = ProvisioningDeviceClient.create(provisioningHost, idScope, new ProvisioningTransport(), provisioningSecurityClient);
+    var hubClient;
+
     var targetTemperature = 0;
     var locLong = -122.1215;
     var locLat = 47.6740;
-    var client = clientFromConnectionString(connectionString);
     ```
 
-    Zaktualizuj symbol zastępczy `{your device connection string}` za pomocą [parametrów połączenia urządzenia](tutorial-add-device.md#generate-connection-string). W tym przykładzie zainicjowano `targetTemperature` do zera, można użyć bieżącego odczytu z urządzenia lub wartości z sznurka urządzenia.
+    Aktualizowanie symboli zastępczych `{your Scope ID}`, `{your Device ID}`i `{your Primary Key}` z wartościami, które zostały wcześniej wykonane. W tym przykładzie zainicjowano `targetTemperature` do zera, można użyć bieżącego odczytu z urządzenia lub wartości z sznurka urządzenia.
 
 1. Aby wysyłać pomiary danych telemetrycznych, stanowych, zdarzeń i lokalizacji do aplikacji IoT Central platformy Azure, Dodaj następującą funkcję do pliku:
 
@@ -187,7 +198,7 @@ Poniższe kroki pokazują, jak utworzyć aplikację kliencką, która implementu
             lat: locationLat }
         });
       var message = new Message(data);
-      client.sendEvent(message, (err, res) => console.log(`Sent message: ${message.getData()}` +
+      hubClient.sendEvent(message, (err, res) => console.log(`Sent message: ${message.getData()}` +
         (err ? `; error: ${err.toString()}` : '') +
         (res ? `; status: ${res.constructor.name}` : '')));
     }
@@ -262,14 +273,14 @@ Poniższe kroki pokazują, jak utworzyć aplikację kliencką, która implementu
     // Handle countdown command
     function onCountdown(request, response) {
       console.log('Received call to countdown');
-
+    
       var countFrom = (typeof(request.payload.countFrom) === 'number' && request.payload.countFrom < 100) ? request.payload.countFrom : 10;
-
+    
       response.send(200, (err) => {
         if (err) {
           console.error('Unable to send method response: ' + err.toString());
         } else {
-          client.getTwin((err, twin) => {
+          hubClient.getTwin((err, twin) => {
             function doCountdown(){
               if ( countFrom >= 0 ) {
                 var patch = {
@@ -282,7 +293,7 @@ Poniższe kroki pokazują, jak utworzyć aplikację kliencką, która implementu
                 setTimeout(doCountdown, 2000 );
               }
             }
-
+    
             doCountdown();
           });
         }
@@ -301,13 +312,13 @@ Poniższe kroki pokazują, jak utworzyć aplikację kliencką, która implementu
         console.log('Device successfully connected to Azure IoT Central');
 
         // Create handler for countdown command
-        client.onDeviceMethod('countdown', onCountdown);
+        hubClient.onDeviceMethod('countdown', onCountdown);
 
         // Send telemetry measurements to Azure IoT Central every 1 second.
         setInterval(sendTelemetry, 1000);
 
         // Get device twin from Azure IoT Central.
-        client.getTwin((err, twin) => {
+        hubClient.getTwin((err, twin) => {
           if (err) {
             console.log(`Error getting device twin: ${err.toString()}`);
           } else {
@@ -325,8 +336,20 @@ Poniższe kroki pokazują, jak utworzyć aplikację kliencką, która implementu
       }
     };
 
-    // Start the device (connect it to Azure IoT Central).
-    client.open(connectCallback);
+    // Start the device (register and connect to Azure IoT Central).
+    provisioningClient.register((err, result) => {
+      if (err) {
+        console.log('Error registering device: ' + err);
+      } else {
+        console.log('Registration succeeded');
+        console.log('Assigned hub=' + result.assignedHub);
+        console.log('DeviceId=' + result.deviceId);
+        var connectionString = 'HostName=' + result.assignedHub + ';DeviceId=' + result.deviceId + ';SharedAccessKey=' + symmetricKey;
+        hubClient = Client.fromConnectionString(connectionString, iotHubTransport);
+
+        hubClient.open(connectCallback);
+      }
+    });
     ```
 
 ## <a name="run-your-nodejs-application"></a>Uruchamianie aplikacji node. js

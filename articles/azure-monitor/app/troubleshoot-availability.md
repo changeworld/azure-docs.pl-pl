@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów z testów dostępności usługi Azure Application Insights | Dokumentacja firmy Microsoft
-description: Rozwiązywanie problemów z testów sieci web w usłudze Azure Application Insights. Otrzymywanie alertów, kiedy witryna sieci Web staje się niedostępna lub wolno odpowiada.
+title: Rozwiązywanie problemów z testami dostępności usługi Azure Application Insights | Microsoft Docs
+description: Rozwiązywanie problemów z testami sieci Web w usłudze Azure Application Insights. Otrzymywanie alertów, kiedy witryna sieci Web staje się niedostępna lub wolno odpowiada.
 services: application-insights
 documentationcenter: ''
 author: lgayhardt
@@ -13,79 +13,79 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: 87bc87d7d105d581f0143e87044fb0337c0fd7f6
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: c3f3d9437a6e796cc91ff1782b3a0774382c5f8b
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67305097"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067073"
 ---
 # <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Ten artykuł pomoże rozwiązać typowe problemy, które mogą wystąpić, gdy za pomocą funkcji monitorowania dostępności.
+Ten artykuł pomoże w rozwiązywaniu typowych problemów, które mogą wystąpić podczas korzystania z monitorowania dostępności.
 
 ## <a name="ssltls-errors"></a>Błędy protokołu SSL/TLS
 
 |Objaw/komunikat o błędzie| Możliwe przyczyny|
 |--------|------|
-|Nie można utworzyć bezpiecznego kanału SSL/TLS  | Wersja protokołu SSL. Obsługiwane są tylko protokołu TLS 1.0, 1.1 i 1.2. **Protokół SSLv3 nie jest obsługiwane.**
-|TLSv1.2 Record Layer: Alert (poziom: Błąd krytyczny, opis: Nieprawidłowy rekord MAC)| Zobacz StackExchange wątku dla [informacji](https://security.stackexchange.com/questions/39844/getting-ssl-alert-write-fatal-bad-record-mac-during-openssl-handshake).
-|Adres URL, którego nie ma sieci CDN (Content Delivery Network) | Może to być spowodowane błędną konfiguracją w sieci CDN |  
+|Nie można utworzyć bezpiecznego kanału SSL/TLS  | Wersja protokołu SSL. Obsługiwane są tylko protokoły TLS 1,0, 1,1 i 1,2. **Protokół SSLv3 nie jest obsługiwana.**
+|Warstwa rekordu TLSv 1.2: Alert (poziom: Krytyczny, opis: Zły rekord MAC| Aby uzyskać [więcej informacji](https://security.stackexchange.com/questions/39844/getting-ssl-alert-write-fatal-bad-record-mac-during-openssl-handshake), zobacz wątek stackexchange.
+|Adres URL, który kończy się niepowodzeniem, to sieć CDN (Content Delivery Network) | Przyczyną może być niepodzielna konfiguracja w sieci CDN |  
 
-### <a name="possible-workaround"></a>Możliwym obejściem
+### <a name="possible-workaround"></a>Możliwe obejście
 
-* Jeśli adresy URL, na których występuje problem zawsze mają zasoby zależne, zalecane jest wyłączenie **Analizuj zależne żądania** testu sieci web.
+* Jeśli adresy URL, na których występuje problem, są zawsze zasobami zależnymi, zalecane jest wyłączenie **zależnych od analizy żądań** dla testu sieci Web.
 
-## <a name="test-fails-only-from-certain-locations"></a>Test nie powiedzie się tylko z określonych lokalizacji
-
-|Objaw/komunikat o błędzie| Możliwe przyczyny|
-|----|---------|
-|Próba połączenia nie powiodło się, ponieważ strona połączona nie odpowiedziała poprawnie po określonym czasie  | Agenci testowi w określonych lokalizacjach są blokowane przez zaporę.|
-|    |Przekierowywanie niektórych adresów IP odbywa się za pośrednictwem (usługi równoważenia obciążenia, Menedżery geograficznie traffic Manager, Azure Express Route.) 
-|    |Jeśli przy użyciu usługi Azure ExpressRoute, istnieją scenariusze, w której można porzuconych pakietów w przypadkach, gdzie [Routing asymetryczny występuje](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing).|
-
-## <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>Sporadyczne niepowodzenia testu z powodu błędu naruszenia protokołu
+## <a name="test-fails-only-from-certain-locations"></a>Test kończy się niepowodzeniem z określonych lokalizacji
 
 |Objaw/komunikat o błędzie| Możliwe przyczyny|
 |----|---------|
-Protokół naruszenie CR musi występować LF | Dzieje się tak, gdy źle sformułowane nagłówki są wykrywane. W szczególności niektóre nagłówki mogą nie być sygnalizowany znakiem CRLF do wskazania końca wiersza, co narusza specyfikację protokołu HTTP i w związku z tym zakończy się niepowodzeniem walidacji na poziomie żądania internetowego .NET WebRequest.
- || Może to również być spowodowane modułów równoważenia obciążenia lub sieci dostarczania zawartości.
+|Próba nawiązania połączenia nie powiodła się, ponieważ połączona Strona nie odpowiedziała prawidłowo po upływie czasu  | Agenci testowi w określonych lokalizacjach są blokowane przez zaporę.|
+|    |Przekierowywanie określonych adresów IP odbywa się za pośrednictwem usług równoważenia obciążenia, menedżerów ruchu geograficznego, trasy usługi Azure Express. 
+|    |W przypadku korzystania z usługi Azure ExpressRoute istnieją scenariusze, w których można porzucić pakiety w przypadkach, gdy [występuje Routing asymetryczny](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing).|
+
+## <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>Sporadyczny błąd testu z błędem naruszenia protokołu
+
+|Objaw/komunikat o błędzie| Możliwe przyczyny|
+|----|---------|
+po znaku CR naruszenia protokołu musi następować LF | Dzieje się tak w przypadku wykrycia źle sformułowanych nagłówków. W związku z tym niektóre nagłówki mogą nie używać CRLF, aby wskazać koniec wiersza, co narusza specyfikację protokołu HTTP i dlatego nie będzie można przeprowadzić walidacji na poziomie żądania programu .NET WebRequest.
+ || Może to być również spowodowane przez usługi równoważenia obciążenia lub sieci CDN.
 
 > [!NOTE]
-> Adres URL może nie zakończyć się niepowodzeniem w przeglądarkach mających bardziej swobodne reguły walidacji nagłówków HTTP. Zobacz ten wpis w blogu, aby uzyskać szczegółowe wyjaśnienie tego problemu: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
+> Adres URL może zakończyć się niepowodzeniem w przeglądarkach, które mają swobodną weryfikację nagłówków HTTP. Zobacz ten wpis w blogu, aby uzyskać szczegółowe wyjaśnienie tego problemu: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
 
 ## <a name="common-troubleshooting-questions"></a>Częste pytania dotyczące rozwiązywania problemów
 
-### <a name="site-looks-okay-but-i-see-test-failures-why-is-application-insights-alerting-me"></a>Witryna wygląda prawidłowo, ale występują niepowodzenia testów? Dlaczego usługa Application Insights jest ze mną alertów?
+### <a name="site-looks-okay-but-i-see-test-failures-why-is-application-insights-alerting-me"></a>Witryna wygląda dobrze, ale widzę niepowodzenia testów? Dlaczego Application Insights alerty?
 
-   * Ma test **Analizuj zależne żądania** włączone? Który skutkuje rygorystyczne kontrole zasoby, takie jak skrypty, obrazy itd. Tego rodzaju błędów może nie być widoczne w przeglądarce. Sprawdź wszystkie obrazy, skrypty, arkusze stylów i inne pliki ładowane przez stronę. Jeśli któryś z nich nie powiedzie się, test jest zgłoszony jako nieudany — nawet wtedy, gdy główna strona HTML ładuje się bez problemu. Aby desensitize test, aby awarie tych zasobów, usuń zaznaczenie pola analizy żądania zależne od konfiguracji testu.
+   * Czy test ma włączone **zależne żądania** ? Powoduje to ścisłą kontrolę nad zasobami, takimi jak skrypty, obrazy itp. Te typy błędów mogą nie być zauważalne w przeglądarce. Sprawdź wszystkie obrazy, skrypty, arkusze stylów i inne pliki ładowane przez stronę. Jeśli którekolwiek z nich nie powiedzie się, test zostanie zgłoszony jako zakończony niepowodzeniem, nawet jeśli główna strona HTML zostanie załadowana bez problemu. Aby desensitize test na takie błędy zasobów, po prostu usuń zaznaczenie opcji Analizuj zależne żądania z konfiguracji testu.
 
-   * Aby zmniejszyć ryzyko wystąpienia szumu z blips przejściowe problemy z siecią itp., upewnij się, Włącz ponawianie próby w przypadku niepowodzenia testów, które w konfiguracji. Można również testy z większej liczby lokalizacji i odpowiednio Zarządzanie próg reguły alertu, aby uniknąć niepotrzebnych alertów przez problemy specyficzne dla lokalizacji.
+   * Aby zmniejszyć szanse szumu z przejściowej Blips sieci itp. Upewnij się, że jest zaznaczone pole wyboru Włącz ponowną próbę konfiguracji błędów testów. Możesz również testować z większej liczby lokalizacji i odpowiednio zarządzać progiem reguły alertu, aby zapobiec problemom związanym z lokalizacją powodującym niewłaściwe alerty.
 
-   * Kliknij dowolny czerwonych kropek doświadczeniu dostępności lub jakiekolwiek niepowodzenie dostępności Eksploratora wyszukiwania, aby wyświetlić szczegóły Dlaczego mamy zgłosił błąd. Wynik testu, wraz z skorelowana telemetria po stronie serwera (jeśli jest włączona) powinno pomóc zrozumieć, dlaczego test nie powiódł się. Typowe przyczyny problemy przejściowe problemy z połączeniem sieciowym lub.
+   * Kliknij dowolną czerwoną kropkę ze względu na dostępność lub dowolny błąd dostępności z Eksploratora wyszukiwania, aby zobaczyć szczegóły przyczyny zgłoszenia błędu. Wynik testu wraz ze skorelowanej telemetrii po stronie serwera (jeśli jest włączony) powinien pomóc w zrozumieniu przyczyny niepowodzenia testu. Typowymi przyczynami problemów przejściowych są problemy z siecią lub połączeniem.
 
-   * Czy limit czasu testu? Firma Microsoft przerwać testów po 2 minuty. Jeśli Twoje polecenie ping lub test wieloetapowy trwa dłużej niż 2 minuty, firma Microsoft będzie zgłaszać jako błąd. Rozważ podzielenie testu na wiele migawek, które można wykonać w krótszych czasów trwania.
+   * Czy Przekroczono limit czasu testu? Przerywamy testy po 2 minutach. Jeśli test polecenia ping lub wieloetapowego trwa dłużej niż 2 minuty, raport zostanie wysłany jako błąd. Rozważ przerwanie testu do wielu, które mogą być wykonane w krótszych okresach.
 
-   * Wszystkie lokalizacje zgłosili awarii lub tylko niektóre z nich? Jeśli tylko niektóre zgłoszone błędy, może to być spowodowane problemy sieciowe/usługa CDN. Ponownie klikając czerwonych kropek powinna pomagać zrozumieć, dlaczego lokalizacji zgłoszone błędy.
+   * Czy wszystkie lokalizacje zgłaszają błąd lub tylko niektóre z nich? W przypadku niektórych zgłoszonych błędów może to być spowodowane problemami z siecią/usługą CDN. Ponownie klikając czerwoną kropkę, należy pomóc zrozumieć, dlaczego lokalizacja zgłasza błędy.
 
-### <a name="i-did-not-get-an-email-when-the-alert-triggered-or-resolved-or-both"></a>Nie pobrały I wiadomości e-mail, gdy alertu wyzwolona lub rozwiązane lub oba?
+### <a name="i-did-not-get-an-email-when-the-alert-triggered-or-resolved-or-both"></a>Nie otrzymałem wiadomości e-mail po wyzwoleniu lub rozwiązaniu alertu?
 
-Sprawdź konfigurację alertów klasycznych, aby potwierdzić swój adres e-mail znajduje się bezpośrednio lub listy dystrybucyjnej, które znajdują się na jest skonfigurowany do otrzymywać powiadomienia. Jeśli tak jest, sprawdź konfigurację listy dystrybucji, aby potwierdzić, że może ona odbierać wiadomości e-mail zewnętrznych. Również szybko sprawdzić, jeśli administrator poczty może mieć żadnych zasady skonfigurowane, które mogą być przyczyną tego problemu.
+Sprawdź konfigurację klasycznych alertów, aby potwierdzić, że poczta e-mail została wyświetlona bezpośrednio, lub listę dystrybucyjną, która jest skonfigurowana do odbierania powiadomień. Jeśli tak jest, sprawdź konfigurację listy dystrybucyjnej, aby potwierdzić, że może odbierać zewnętrzne wiadomości e-mail. Sprawdź również, czy administrator poczty mogą mieć skonfigurowane zasady, które mogą spowodować ten problem.
 
-### <a name="i-did-not-receive-the-webhook-notification"></a>Nie odebrał powiadomienie elementów webhook?
+### <a name="i-did-not-receive-the-webhook-notification"></a>Nie otrzymałem powiadomienia elementu webhook?
 
-Sprawdź aplikację odbieranie powiadomień elementu webhook jest dostępny i pomyślnie przetwarza żądania elementu webhook. Zobacz [to](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook) Aby uzyskać więcej informacji.
+Upewnij się, że aplikacja otrzymująca powiadomienie elementu webhook jest dostępna i pomyślnie przetwarza żądania elementu webhook. Aby uzyskać więcej informacji, zobacz [ten](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook) temat.
 
-### <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>Sporadyczne niepowodzenia testu z powodu błędu naruszenia protokołu?
+### <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>Sporadyczny błąd testu z błędem naruszenia protokołu?
 
-Błąd „Naruszenie protokołu (...) Po CR musi występować LF” oznacza problem związany z serwerem (lub zależnościami). Występuje w przypadku ustawienia nieprawidłowo sformułowanych nagłówków w odpowiedzi. Przyczyną mogą być moduły równoważenia obciążenia lub sieci dostarczania zawartości. W szczególności niektóre nagłówki mogą nie być sygnalizowany znakiem CRLF do wskazania końca wiersza, co narusza specyfikację protokołu HTTP i w związku z tym niepowodzenia walidacji na poziomie żądania internetowego .NET WebRequest. Sprawdź odpowiedź, aby znaleźć nagłówki, które mogą powodować naruszenie.
+Błąd „Naruszenie protokołu (...) Po CR musi występować LF” oznacza problem związany z serwerem (lub zależnościami). Występuje w przypadku ustawienia nieprawidłowo sformułowanych nagłówków w odpowiedzi. Przyczyną mogą być moduły równoważenia obciążenia lub sieci dostarczania zawartości. W związku z tym niektóre nagłówki mogą nie używać CRLF, aby wskazać koniec wiersza, co narusza specyfikację protokołu HTTP i dlatego nie można przeprowadzić walidacji na poziomie żądania programu .NET WebRequest. Zbadaj odpowiedzi na nagłówki, które mogą naruszać naruszenie.
 
 > [!NOTE]
-> Adres URL może nie zakończyć się niepowodzeniem w przeglądarkach mających bardziej swobodne reguły walidacji nagłówków HTTP. Zobacz ten wpis w blogu, aby uzyskać szczegółowe wyjaśnienie tego problemu: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
+> Adres URL może zakończyć się niepowodzeniem w przeglądarkach, które mają swobodną weryfikację nagłówków HTTP. Zobacz ten wpis w blogu, aby uzyskać szczegółowe wyjaśnienie tego problemu: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
 
-### <a name="i-dont-see-any-related-server-side-telemetry-to-diagnose-test-failures"></a>Nie widzisz powiązanych telemetrii po stronie serwera do diagnozowania niepowodzeń testów? *
+### <a name="i-dont-see-any-related-server-side-telemetry-to-diagnose-test-failures"></a>Nie widzę żadnej powiązanej telemetrii po stronie serwera w celu zdiagnozowania niepowodzeń testów? *
 
-Jeśli usługa Application Insights została skonfigurowana dla aplikacji po stronie serwera, może to być spowodowane trwaniem [próbkowania](../../azure-monitor/app/sampling.md). Wybierz wynik w różnych dostępności.
+Jeśli usługa Application Insights została skonfigurowana dla aplikacji po stronie serwera, może to być spowodowane trwaniem [próbkowania](../../azure-monitor/app/sampling.md). Wybierz inny wynik dostępności.
 
 ### <a name="can-i-call-code-from-my-web-test"></a>Czy mogę wywołać kod z mojego testu sieci Web?
 
@@ -101,11 +101,11 @@ Te dwa terminy mogą być używane zamiennie. Testy dostępności to bardziej og
    Istnieją dwa możliwe rozwiązania:
 
    * Skonfiguruj zaporę, aby zezwolić na żądania przychodzące z [adresów IP naszych agentów testów sieci Web](../../azure-monitor/app/ip-addresses.md).
-   * Napisz własny kod do okresowego testowania wewnętrznego serwera. Uruchom kod jako proces w tle na serwerze testowym za zaporą. Proces testowania może wysyłać wyniki do usługi Application Insights za pomocą interfejsu API [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) w podstawowym zestawie SDK. Wymaga to, aby serwer testowy miał dostęp do połączeń wychodzących punktu końcowego pozyskiwania usługi Application Insights, ale stanowi to dużo mniejsze zagrożenie bezpieczeństwa niż alternatywne dopuszczenie żądań przychodzących. Wyniki nie będą widoczne w blokach testów dostępności sieci Web, ale są wyświetlane jako wyniki dostępności w obszarach analizy, wyszukiwania i eksploratora metryk.
+   * Napisz własny kod do okresowego testowania wewnętrznego serwera. Uruchom kod jako proces w tle na serwerze testowym za zaporą. Proces testowania może wysyłać wyniki do usługi Application Insights za pomocą interfejsu API [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) w podstawowym zestawie SDK. Wymaga to, aby serwer testowy miał dostęp do połączeń wychodzących punktu końcowego pozyskiwania usługi Application Insights, ale stanowi to dużo mniejsze zagrożenie bezpieczeństwa niż alternatywne dopuszczenie żądań przychodzących. Wyniki pojawią się w blokach testów dostępności sieci Web, ale środowisko zostanie nieco uproszczone od tego, co jest dostępne dla testów utworzonych za pośrednictwem portalu. Niestandardowe testy dostępności będą również wyświetlane jako wyniki dostępności w obszarze Analiza, wyszukiwanie i metryki.
 
 ### <a name="uploading-a-multi-step-web-test-fails"></a>Przekazywanie wieloetapowego testu sieci web kończy się niepowodzeniem.
 
-Niektóre przyczyny może się to zdarzyć:
+Przyczyny mogą być następujące:
    * Limit rozmiaru to 300 KB.
    * Pętle nie są obsługiwane.
    * Odwołania do innych testów sieci Web nie są obsługiwane.
@@ -113,28 +113,28 @@ Niektóre przyczyny może się to zdarzyć:
 
 ### <a name="my-multi-step-test-doesnt-complete"></a>Mój test wieloetapowy nie jest wykonywany w całości
 
-Istnieje limit 100 żądań na test. Ponadto test zostanie zatrzymany, jeśli działa dłużej niż dwie minuty.
+Istnieje limit 100 żądań na test. Test zostanie zatrzymany, jeśli działa dłużej niż dwie minuty.
 
 ### <a name="how-can-i-run-a-test-with-client-certificates"></a>Jak uruchomić test z wykorzystaniem certyfikatów klienta?
 
-To nie jest obecnie obsługiwane.
+Nie jest to obecnie obsługiwane.
 
-## <a name="who-receives-the-classic-alert-notifications"></a>Kto otrzymuje powiadomienia o alertach (model klasyczny)?
+## <a name="who-receives-the-classic-alert-notifications"></a>Kto otrzymuje powiadomienia o alertach (klasyczny)?
 
-W tej sekcji dotyczą alertów klasycznych i tylko pomoże Ci zoptymalizować swoje powiadomień o alertach, aby upewnić się, że tylko przez adresatów żądaną otrzymywać powiadomienia. Aby dowiedzieć się więcej o różnicach między [alertów klasycznych](../platform/alerts-classic.overview.md)i nowego środowiska alertów odnoszą się do [artykuł z omówieniem alerty](../platform/alerts-overview.md). Do kontrolowania alert powiadomienia w nowych alertów środowiska użyj [grup akcji](../platform/action-groups.md).
+Ta sekcja ma zastosowanie tylko do klasycznych alertów i pomoże zoptymalizować swoje powiadomienia o alertach, aby upewnić się, że tylko żądani adresaci otrzymają powiadomienia. Aby dowiedzieć się więcej o różnicach między [klasycznymi alertami](../platform/alerts-classic.overview.md)i nowym działaniem alertów, zapoznaj się z [artykułem przegląd alertów](../platform/alerts-overview.md). Aby sterować powiadomieniami o alertach w nowych działaniach związanych z alertami, użyj [grup akcji](../platform/action-groups.md).
 
-* Firma Microsoft zaleca użycie określonych adresatów klasycznego powiadomień o alertach.
+* Zalecamy użycie określonych odbiorców w przypadku klasycznych powiadomień o alertach.
 
-* Dla alertów dotyczących błędów z X z Y lokalizacji **zbiorcze/grupę** pole wyboru opcji, jeśli włączona, wysyła do użytkowników przy użyciu ról Administrator/współadministrator.  Zasadniczo _wszystkich_ Administratorzy _subskrypcji_ będą otrzymywać powiadomienia.
+* W przypadku alertów dotyczących błędów z lokalizacji X poza Y, opcja **Zbiorcza/Grupa** pole wyboru, jeśli jest włączone, wysyła do użytkowników z rolami administratora/współadministratora.  Zasadniczo _Wszyscy_ Administratorzy _subskrypcji_ otrzymają powiadomienia.
 
-* Dla alertów dotyczących metryk dostępności **zbiorcze/grupę** pole wyboru opcji, jeśli włączona, wysyła do użytkowników przy użyciu właściciela, współautora lub czytelnika ról w ramach subskrypcji. W efekcie _wszystkich_ użytkowników z dostępem do subskrypcji zasobu usługi Application Insights znajdują się w zakresie i będą otrzymywać powiadomienia. 
+* W przypadku alertów dotyczących metryk dostępności opcja pola wyboru **Zbiorcza/Grupa** , jeśli jest włączona, wysyła do użytkowników z rolami właściciela, współautora lub czytelnika w subskrypcji. W efekcie _Wszyscy_ użytkownicy z dostępem do subskrypcji, w której znajduje się zasób Application Insights, znajdują się w zakresie i będą otrzymywać powiadomienia. 
 
 > [!NOTE]
-> Jeśli obecnie używasz **zbiorcze/grupę** pole wyboru opcji i go wyłączyć, nie można przywrócić zmianę.
+> Jeśli obecnie używasz opcji **zbiorczych/grupowych** pól wyboru i go wyłączysz, nie będzie można przywrócić zmiany.
 
-Jeśli chcesz powiadomić użytkowników na podstawie ich ról, należy użyć nowe alerty środowisko/niemal w czasie rzeczywistym. Za pomocą [grup akcji](../platform/action-groups.md), można skonfigurować powiadomienia e-mail do użytkowników z dowolną rolę właściciel/Współautor/reader (nie łączyć ze sobą jako pojedyncza opcja).
+Jeśli musisz powiadomić użytkowników na podstawie ich ról, Użyj nowego środowiska alertu/alertów w czasie rzeczywistym. Za pomocą [grup akcji](../platform/action-groups.md)można skonfigurować powiadomienia e-mail dla użytkowników z dowolnymi rolami współautor/właściciela/czytnika (nie razem ze sobą jako pojedynczą opcją).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Testowanie sieci web z wieloma krokami](availability-multistep.md)
-* [Testów ping adresu URL](monitor-web-app-availability.md)
+* [Wieloetapowe testowanie sieci Web](availability-multistep.md)
+* [Testy ping adresu URL](monitor-web-app-availability.md)

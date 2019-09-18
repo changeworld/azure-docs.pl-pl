@@ -1,10 +1,10 @@
 ---
-title: Kontrolowanie routingu w usłudze Azure Virtual Network - PowerShell — Model Klasyczny | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak kontrolować routingu w sieci wirtualnej przy użyciu programu PowerShell | Model Klasyczny
+title: Sterowanie routingiem w usłudze Azure Virtual Network — PowerShell — klasyczny | Microsoft Docs
+description: Dowiedz się, jak kontrolować Routing w programie sieci wirtualnych przy użyciu programu PowerShell | Motyw
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-service-management
 ms.assetid: d8d07c16-cbe5-4536-acd6-870269346fe3
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
-ms.openlocfilehash: 1441ee9a3d4a563ab35cd9b01e8347d8f51b827a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2f2c17740bd94629209c2bffb82689ecc931fc8
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60743411"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058765"
 ---
-# <a name="control-routing-and-use-virtual-appliances-classic-using-powershell"></a>Formant routingu i użyj urządzenia wirtualne (wersja klasyczna) przy użyciu programu PowerShell
+# <a name="control-routing-and-use-virtual-appliances-classic-using-powershell"></a>Kontrolowanie routingu i używanie urządzeń wirtualnych (klasycznych) przy użyciu programu PowerShell
 
 > [!div class="op_single_selector"]
-> * [Program PowerShell](tutorial-create-route-table-powershell.md)
+> * [PowerShell](tutorial-create-route-table-powershell.md)
 > * [Interfejs wiersza polecenia platformy Azure](tutorial-create-route-table-cli.md)
 > * [PowerShell (klasyczny)](virtual-network-create-udr-classic-ps.md)
 > * [Interfejs wiersza polecenia (klasyczny)](virtual-network-create-udr-classic-cli.md)
@@ -33,17 +33,17 @@ ms.locfileid: "60743411"
 [!INCLUDE [virtual-network-create-udr-intro-include.md](../../includes/virtual-network-create-udr-intro-include.md)]
 
 > [!IMPORTANT]
-> Przed rozpoczęciem pracy z zasobami platformy Azure, ważne jest zrozumienie, że platforma Azure ma obecnie dwa modele wdrażania: Usługa Azure Resource Manager i model klasyczny. Przed rozpoczęciem pracy z dowolnym zasobem Azure należy zapoznać się z [modelami i narzędziami wdrażania](../azure-resource-manager/resource-manager-deployment-model.md). Możesz wyświetlić dokumentację dotyczącą różnych narzędzi, wybierając odpowiednią opcję w górnej części tego artykułu. W tym artykule opisano klasyczny model wdrażania.
+> Przed rozpoczęciem pracy z zasobami platformy Azure należy pamiętać, że platforma Azure ma obecnie dwa modele wdrażania: Azure Resource Manager i klasyczny. Przed rozpoczęciem pracy z dowolnym zasobem Azure należy zapoznać się z [modelami i narzędziami wdrażania](../azure-resource-manager/resource-manager-deployment-model.md). Można wyświetlić dokumentację dla różnych narzędzi, wybierając opcję w górnej części tego artykułu. W tym artykule opisano klasyczny model wdrażania.
 > 
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
 
-Przykład programu Azure PowerShell poniższe polecenia oczekiwać proste środowisko, utworzonym na podstawie scenariusza powyżej. Jeśli chcesz uruchamiać polecenia, ponieważ są one wyświetlane w tym dokumencie, należy utworzyć w środowisku pokazanym w [tworzenie sieci wirtualnej (klasycznej) przy użyciu programu PowerShell](virtual-networks-create-vnet-classic-netcfg-ps.md).
+Przykładowe polecenia Azure PowerShell oczekiwano, że proste środowisko zostało już utworzone na podstawie powyższego scenariusza. Jeśli chcesz uruchomić polecenia w taki sposób, aby były wyświetlane w tym dokumencie, Utwórz środowisko widoczne w temacie [Tworzenie sieci wirtualnej (klasycznej) przy użyciu programu PowerShell](virtual-networks-create-vnet-classic-netcfg-ps.md).
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
-## <a name="create-the-udr-for-the-front-end-subnet"></a>Utwórz trasę zdefiniowaną przez użytkownika dla podsieci frontonu
-Aby utworzyć tabelę tras i trasy służące do podsieci frontonu, w oparciu o powyższy scenariusz, wykonaj następujące czynności.
+## <a name="create-the-udr-for-the-front-end-subnet"></a>Utwórz UDR dla podsieci frontonu
+Aby utworzyć tabelę tras i trasę wymaganą dla podsieci frontonu na podstawie powyższego scenariusza, wykonaj poniższe kroki.
 
 1. Uruchom następujące polecenie, aby utworzyć tabelę tras dla podsieci frontonu:
 
@@ -52,7 +52,7 @@ Aby utworzyć tabelę tras i trasy służące do podsieci frontonu, w oparciu o 
     -Label "Route table for front end subnet"
     ```
 
-2. Uruchom następujące polecenie, aby tworzyć trasy w tabeli tras, aby wysłać cały ruch kierowany do podsieci zaplecza (192.168.2.0/24), aby **FW1** maszyny Wirtualnej (192.168.0.4):
+2. Uruchom następujące polecenie, aby utworzyć trasę w tabeli tras, aby wysłać cały ruch przychodzący do podsieci zaplecza (192.168.2.0/24) do maszyny wirtualnej **FW1** (192.168.0.4):
 
     ```powershell
     Get-AzureRouteTable UDR-FrontEnd `
@@ -61,7 +61,7 @@ Aby utworzyć tabelę tras i trasy służące do podsieci frontonu, w oparciu o 
     -NextHopIpAddress 192.168.0.4
     ```
 
-3. Uruchom następujące polecenie, aby skojarzyć tabeli trasy z **frontonu** podsieci:
+3. Uruchom następujące polecenie, aby skojarzyć tabelę tras z podsiecią **frontonu** :
 
     ```powershell
     Set-AzureSubnetRouteTable -VirtualNetworkName TestVNet `
@@ -69,8 +69,8 @@ Aby utworzyć tabelę tras i trasy służące do podsieci frontonu, w oparciu o 
     -RouteTableName UDR-FrontEnd
     ```
 
-## <a name="create-the-udr-for-the-back-end-subnet"></a>Utwórz trasę zdefiniowaną przez użytkownika dla podsieci zaplecza
-Aby utworzyć tabelę tras i trasy służące do podsieci zaplecza na podstawie scenariusza, wykonaj następujące czynności:
+## <a name="create-the-udr-for-the-back-end-subnet"></a>Utwórz UDR dla podsieci zaplecza
+Aby utworzyć tabelę tras i trasę wymaganą dla podsieci zaplecza na podstawie tego scenariusza, wykonaj następujące czynności:
 
 1. Uruchom następujące polecenie, aby utworzyć tabelę tras dla podsieci zaplecza:
 
@@ -80,7 +80,7 @@ Aby utworzyć tabelę tras i trasy służące do podsieci zaplecza na podstawie 
     -Label "Route table for back end subnet"
     ```
 
-2. Uruchom następujące polecenie, aby tworzyć trasy w tabeli tras, aby wysłać cały ruch kierowany do podsieci frontonu (. 192.168.1.0/24), aby **FW1** maszyny Wirtualnej (192.168.0.4):
+2. Uruchom następujące polecenie, aby utworzyć trasę w tabeli tras, aby wysłać cały ruch przychodzący do podsieci frontonu (192.168.1.0/24) do maszyny wirtualnej **FW1** (192.168.0.4):
 
     ```powershell
     Get-AzureRouteTable UDR-BackEnd
@@ -91,7 +91,7 @@ Aby utworzyć tabelę tras i trasy służące do podsieci zaplecza na podstawie 
     -NextHopIpAddress 192.168.0.4
     ```
 
-3. Uruchom następujące polecenie, aby skojarzyć tabeli trasy z **zaplecza** podsieci:
+3. Uruchom następujące polecenie, aby skojarzyć tabelę tras z podsiecią **zaplecza** :
 
     ```powershell
     Set-AzureSubnetRouteTable -VirtualNetworkName TestVNet `
@@ -99,18 +99,18 @@ Aby utworzyć tabelę tras i trasy służące do podsieci zaplecza na podstawie 
     -RouteTableName UDR-BackEnd
     ```
 
-## <a name="enable-ip-forwarding-on-the-fw1-vm"></a>Włączanie przekazywania adresów IP na maszynie Wirtualnej FW1
+## <a name="enable-ip-forwarding-on-the-fw1-vm"></a>Włączanie przekazywania adresów IP na maszynie wirtualnej FW1
 
-Aby włączyć przekazywania na maszynie Wirtualnej FW1 adresu IP, wykonaj następujące czynności:
+Aby włączyć przekazywanie adresów IP na maszynie wirtualnej FW1, wykonaj następujące czynności:
 
-1. Uruchom następujące polecenie, aby sprawdzić stan przesyłania dalej IP:
+1. Uruchom następujące polecenie, aby sprawdzić stan przekazywania adresów IP:
 
     ```powershell
     Get-AzureVM -Name FW1 -ServiceName TestRGFW `
     | Get-AzureIPForwarding
     ```
 
-2. Uruchom następujące polecenie, aby włączyć przekazywanie IP *FW1* maszyny Wirtualnej:
+2. Uruchom następujące polecenie, aby włączyć przekazywanie adresów IP dla maszyny wirtualnej *FW1* :
 
     ```powershell
     Get-AzureVM -Name FW1 -ServiceName TestRGFW `

@@ -1,6 +1,6 @@
 ---
 title: Tworzenie i używanie obliczeniowych elementów docelowych do trenowania modelu
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Skonfiguruj środowiska szkoleniowe (cele obliczeniowe) dla szkolenia modelu uczenia maszynowego. Można łatwo przełączać się między środowiskami szkoleniowymi. Zacznij szkolenie lokalnie. Jeśli konieczne jest skalowanie w poziomie, przełącz się do elementu docelowego obliczeń opartego na chmurze.
 services: machine-learning
 author: heatherbshapiro
@@ -11,18 +11,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0a34ccf5201b81a2c74c2eccd0ec3f311a1158ab
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 7c3bae2fff9e20ed9427c72b5f5f632d975f9f94
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860543"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034414"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Skonfiguruj cele obliczeń i używaj ich do szkolenia modelu 
 
-Dzięki usłudze Azure Machine Learning można nauczyć model na różnych zasobach lub środowiskach, zbiorczo nazywanymi [__obiektami docelowymi obliczeń__](concept-azure-machine-learning-architecture.md#compute-targets). Obiekt docelowy obliczeń może być maszyną lokalną lub zasobem w chmurze, takim jak Azure Machine Learning COMPUTE, Azure HDInsight lub zdalną maszynę wirtualną.  Możesz również utworzyć cele obliczeniowe dla wdrożenia modelu, zgodnie z opisem w artykule ["gdzie i jak wdrażać modele"](how-to-deploy-and-where.md).
+Dzięki Azure Machine Learning można nauczyć model na różnych zasobach lub środowiskach, zbiorczo nazywanymi [__obiektami docelowymi obliczeń__](concept-azure-machine-learning-architecture.md#compute-targets). Obiekt docelowy obliczeń może być maszyną lokalną lub zasobem w chmurze, takim jak Azure Machine Learning COMPUTE, Azure HDInsight lub zdalną maszynę wirtualną.  Możesz również utworzyć cele obliczeniowe dla wdrożenia modelu, zgodnie z opisem w artykule ["gdzie i jak wdrażać modele"](how-to-deploy-and-where.md).
 
-Można utworzyć obiekt docelowy obliczeń i zarządzać nim przy użyciu zestawu SDK Azure Machine Learning, Azure Portal, strony docelowej obszaru roboczego (wersja zapoznawcza), interfejsu wiersza polecenia platformy Azure lub rozszerzenia VS Code Azure Machine Learning. Jeśli masz obliczeniowych elementów docelowych, które zostały utworzone za pomocą innej usługi (na przykład klastra usługi HDInsight), możesz ich używać, dołączanie ich do obszaru roboczego usługi Azure Machine Learning.
+Można utworzyć obiekt docelowy obliczeń i zarządzać nim przy użyciu zestawu SDK Azure Machine Learning, Azure Portal, strony docelowej obszaru roboczego (wersja zapoznawcza), interfejsu wiersza polecenia platformy Azure lub rozszerzenia VS Code Azure Machine Learning. Jeśli masz cele obliczeniowe, które zostały utworzone za pomocą innej usługi (na przykład klastra HDInsight), możesz ich użyć, dołączając je do obszaru roboczego Azure Machine Learning.
  
 W tym artykule dowiesz się, jak używać różnych obiektów docelowych obliczeń do uczenia modelu.  Kroki dla wszystkich obiektów docelowych obliczeń są zgodne z tym samym przepływem pracy:
 1. __Utwórz__ obiekt docelowy obliczeń, jeśli jeszcze go nie masz.
@@ -35,7 +35,7 @@ W tym artykule dowiesz się, jak używać różnych obiektów docelowych oblicze
 
 ## <a name="compute-targets-for-training"></a>Cele obliczeniowe dla szkolenia
 
-Usługa Azure Machine Learning ma różne wsparcie dla różnych obiektów docelowych obliczeń. Cykl projektowania modelu Typowa rozpoczyna się od dev/eksperymentów na niewielkiej ilości danych. Na tym etapie firma Microsoft zaleca używanie środowiska lokalnego. Na przykład komputera lokalnego lub maszyny Wirtualnej opartej na chmurze. Skalowanie w górę szkolenia na większych zestawów danych lub czy rozproszonego szkolenia, firma Microsoft zaleca obliczeniowego usługi Azure Machine Learning Tworzenie klastra przy użyciu jednego lub wielu node tego skalowania każdej próbie przesłania przebiegu. Można również dołączyć własnych zasobów obliczeniowych, mimo że obsługi różnych scenariuszy mogą się różnić zależnie z poniższym opisem:
+Azure Machine Learning ma różne wsparcie dla różnych obiektów docelowych obliczeń. Cykl projektowania modelu Typowa rozpoczyna się od dev/eksperymentów na niewielkiej ilości danych. Na tym etapie firma Microsoft zaleca używanie środowiska lokalnego. Na przykład komputera lokalnego lub maszyny Wirtualnej opartej na chmurze. Skalowanie w górę szkolenia na większych zestawów danych lub czy rozproszonego szkolenia, firma Microsoft zaleca obliczeniowego usługi Azure Machine Learning Tworzenie klastra przy użyciu jednego lub wielu node tego skalowania każdej próbie przesłania przebiegu. Można również dołączyć własnych zasobów obliczeniowych, mimo że obsługi różnych scenariuszy mogą się różnić zależnie z poniższym opisem:
 
 [!INCLUDE [aml-compute-target-train](../../../includes/aml-compute-target-train.md)]
 
@@ -45,7 +45,7 @@ Usługa Azure Machine Learning ma różne wsparcie dla różnych obiektów docel
 
 ## <a name="whats-a-run-configuration"></a>Co to jest Konfiguracja przebiegu?
 
-Podczas szkolenia często rozpoczyna się na komputerze lokalnym, a następnie uruchamia ten skrypt szkoleniowy na innym miejscu docelowym obliczeń. Za pomocą usługi Azure Machine Learning można uruchomić skrypt na różnych obiektach docelowych obliczeń bez konieczności zmiany skryptu.
+Podczas szkolenia często rozpoczyna się na komputerze lokalnym, a następnie uruchamia ten skrypt szkoleniowy na innym miejscu docelowym obliczeń. Za pomocą Azure Machine Learning można uruchomić skrypt na różnych obiektach docelowych obliczeń bez konieczności zmiany skryptu.
 
 Wystarczy zdefiniować środowisko dla każdego obiektu docelowego obliczeń w ramach **konfiguracji przebiegu**.  Następnie, gdy chcesz uruchomić eksperyment szkoleniowy w innym miejscu docelowym obliczeń, określ konfigurację uruchamiania dla tego obliczenia. Aby uzyskać szczegółowe informacje dotyczące określania środowiska i powiązania go z konfiguracją, zobacz [Tworzenie środowisk i zarządzanie nimi w celu szkolenia i wdrażania](how-to-use-environments.md).
 
@@ -143,7 +143,7 @@ Teraz, po dołączeniu obliczeń i skonfigurowaniu przebiegu, następnym krokiem
 
 ### <a id="vm"></a>Zdalne maszyny wirtualne
 
-Usługa Azure Machine Learning obsługuje również wprowadzenie własnych zasobów obliczeniowych i dołączania ich do obszaru roboczego. Jeden taki typ zasobu jest dowolną zdalną maszyną wirtualną, o ile jest dostępny z usługi Azure Machine Learning. Zasób może być maszyną wirtualną platformy Azure, serwerem zdalnym w organizacji lub lokalnym. W odniesieniu do adresów IP i poświadczeń (nazwy użytkownika i hasła lub klucza SSH) można użyć dowolnej dostępnej maszyny wirtualnej do zdalnego uruchomienia.
+Usługa Azure Machine Learning obsługuje również wprowadzenie własnych zasobów obliczeniowych i dołączania ich do obszaru roboczego. Jeden taki typ zasobu jest dowolną zdalną maszyną wirtualną, o ile jest dostępny z Azure Machine Learning. Zasób może być maszyną wirtualną platformy Azure, serwerem zdalnym w organizacji lub lokalnym. W odniesieniu do adresów IP i poświadczeń (nazwy użytkownika i hasła lub klucza SSH) można użyć dowolnej dostępnej maszyny wirtualnej do zdalnego uruchomienia.
 
 Można użyć środowiska conda tworzonym przez system, już istniejące środowisko Python lub kontenera Docker. Aby można było wykonać operację na kontenerze platformy Docker, na maszynie wirtualnej musi być uruchomiony aparat platformy Docker. Ta funkcja jest szczególnie przydatne w przypadku, gdy chcesz środowiska bardziej elastyczne, oparte na chmurze dev/eksperymentowanie w usłudze niż komputer lokalny.
 
@@ -327,7 +327,7 @@ Wykonaj poprzednie kroki, aby wyświetlić listę elementów docelowych oblicze�
 
 ### <a id="portal-reuse"></a>Dołącz cele obliczeń
 
-Aby używać obiektów docelowych obliczeń utworzonych poza obszarem roboczym usługi Azure Machine Learning, należy je dołączyć. Dołączenie obiektu docelowego obliczeń sprawia, że jest on dostępny dla Twojego obszaru roboczego.
+Aby używać obiektów docelowych obliczeń utworzonych poza obszarem roboczym Azure Machine Learning, należy je dołączyć. Dołączenie obiektu docelowego obliczeń sprawia, że jest on dostępny dla Twojego obszaru roboczego.
 
 Wykonaj kroki opisane wcześniej, aby wyświetlić listę elementów docelowych obliczeń. Następnie wykonaj następujące kroki, aby dołączyć obiekt docelowy obliczeń: 
 
@@ -356,7 +356,7 @@ Wykonaj kroki opisane wcześniej, aby wyświetlić listę elementów docelowych 
 
 ## <a name="set-up-with-cli"></a>Konfigurowanie przy użyciu interfejsu wiersza polecenia
 
-Możesz uzyskać dostęp do obiektów docelowych obliczeń skojarzonych z obszarem roboczym przy użyciu [rozszerzenia interfejsu wiersza polecenia](reference-azure-machine-learning-cli.md) dla usługi Azure Machine Learning.  Interfejsu wiersza polecenia można użyć do:
+Możesz uzyskać dostęp do obiektów docelowych obliczeń skojarzonych z obszarem roboczym przy użyciu [rozszerzenia interfejsu wiersza polecenia](reference-azure-machine-learning-cli.md) dla Azure Machine Learning.  Interfejsu wiersza polecenia można użyć do:
 
 * Tworzenie zarządzanego obiektu docelowego obliczeń
 * Aktualizowanie zarządzanego obiektu docelowego obliczeń
@@ -366,7 +366,7 @@ Aby uzyskać więcej informacji, zobacz [Zarządzanie zasobami](reference-azure-
 
 ## <a name="set-up-with-vs-code"></a>Konfiguracja przy użyciu VS Code
 
-Możesz uzyskiwać dostęp do obiektów docelowych obliczeń skojarzonych z obszarem roboczym i zarządzać nimi, korzystając z [rozszerzenia vs Code](how-to-vscode-tools.md#create-and-manage-compute-targets) dla usługi Azure Machine Learning.
+Możesz uzyskiwać dostęp do obiektów docelowych obliczeń skojarzonych z obszarem roboczym i zarządzać nimi, korzystając z [rozszerzenia VS Code](how-to-vscode-tools.md#create-and-manage-compute-targets) Azure Machine Learning.
 
 ## <a id="submit"></a>Prześlij uruchomienie szkolenia przy użyciu zestawu SDK Azure Machine Learning
 
@@ -515,4 +515,4 @@ Zobacz te notesy, aby poznać przykłady szkoleń z różnymi obiektami docelowy
 * Dowiedz się, jak [efektywnie dostrajać parametry](how-to-tune-hyperparameters.md) , aby tworzyć lepsze modele.
 * Po uzyskaniu przeszkolonego modelu Dowiedz się, [jak i gdzie wdrażać modele](how-to-deploy-and-where.md).
 * Wyświetl odwołanie do zestawu SDK [klasy RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) .
-* [Korzystanie z usługi Azure Machine Learning z sieciami wirtualnymi platformy Azure](how-to-enable-virtual-network.md)
+* [Używanie Azure Machine Learning z sieciami wirtualnymi platformy Azure](how-to-enable-virtual-network.md)

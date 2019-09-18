@@ -1,7 +1,7 @@
 ---
 title: Zabezpieczenia przedsiębiorstwa
-titleSuffix: Azure Machine Learning service
-description: 'Bezpiecznie Używaj usługi Azure Machine Learning: uwierzytelnianie, autoryzacja, zabezpieczenia sieci, szyfrowanie danych i monitorowanie.'
+titleSuffix: Azure Machine Learning
+description: 'Bezpiecznie używaj Azure Machine Learning: uwierzytelnianie, autoryzacja, zabezpieczenia sieci, szyfrowanie danych i monitorowanie.'
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/07/2019
-ms.openlocfilehash: e1029ad34a05d342e5aed5bb30407dee7c914f3c
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 309cef6ec058d8192bc7a6341b49a59c0000a305
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873558"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035562"
 ---
-# <a name="enterprise-security-for-the-azure-machine-learning-service"></a>Zabezpieczenia przedsiębiorstwa dla usługi Azure Machine Learning
+# <a name="enterprise-security-for-azure-machine-learning"></a>Zabezpieczenia przedsiębiorstwa dla Azure Machine Learning
 
-Ten artykuł zawiera informacje o funkcjach zabezpieczeń dostępnych dla usługi Azure Machine Learning.
+W tym artykule przedstawiono informacje o funkcjach zabezpieczeń dostępnych dla Azure Machine Learning.
 
 W przypadku korzystania z usługi w chmurze najlepszym rozwiązaniem jest ograniczenie dostępu tylko do użytkowników, którzy ich potrzebują. Zacznij od ustalenia modelu uwierzytelniania i autoryzacji używanego przez usługę. Możesz również ograniczyć dostęp do sieci lub bezpiecznie dołączać zasoby w sieci lokalnej do chmury. Szyfrowanie danych jest również niezbędne, zarówno w czasie spoczynku, jak i podczas przenoszenia danych między usługami. Na koniec należy mieć możliwość monitorowania usługi i tworzenia dziennika inspekcji dla wszystkich działań.
 
@@ -28,10 +28,10 @@ W przypadku korzystania z usługi w chmurze najlepszym rozwiązaniem jest ograni
 Uwierzytelnianie wieloskładnikowe jest obsługiwane, jeśli Azure Active Directory (Azure AD) jest skonfigurowany do korzystania z niego. Oto proces uwierzytelniania:
 
 1. Klient loguje się do usługi Azure AD i pobiera token Azure Resource Manager.  Nazwy główne użytkowników i usług są w pełni obsługiwane.
-1. Klient przedstawia token, aby Azure Resource Manager i wszystkie usługi Azure Machine Learning.
+1. Klient przedstawia token do Azure Resource Manager i wszystkich Azure Machine Learning.
 1. Usługa Machine Learning udostępnia token usługi Machine Learning dla elementu docelowego obliczeń użytkownika (na przykład środowisko obliczeniowe usługi Machine Learning). Ten token jest używany przez element docelowy obliczeń użytkownika do wywołania zwrotnego do usługi Machine Learning po zakończeniu przebiegu. Zakres jest ograniczony do obszaru roboczego.
 
-[![Uwierzytelnianie w usłudze Azure Machine Learning](./media/enterprise-readiness/authentication.png)](./media/enterprise-readiness/authentication-expanded.png)
+[![Uwierzytelnianie w Azure Machine Learning](./media/enterprise-readiness/authentication.png)](./media/enterprise-readiness/authentication-expanded.png)
 
 ### <a name="authentication-for-web-service-deployment"></a>Uwierzytelnianie dla wdrożenia usługi sieci Web
 
@@ -94,9 +94,9 @@ Możesz utworzyć wiele obszarów roboczych, a każdy obszar roboczy może być 
 * Współautor
 * Czytelnik
 
-W poniższej tabeli wymieniono niektóre główne operacje usługi Azure Machine Learning i role, które mogą je wykonać:
+W poniższej tabeli wymieniono niektóre główne operacje Azure Machine Learning i role, które mogą je wykonać:
 
-| Azure Machine Learning operacji usługi | Właściciel | Współautor | Czytelnik |
+| Operacja Azure Machine Learning | Właściciel | Współautor | Czytelnik |
 | ---- |:----:|:----:|:----:|
 | Tworzenie obszaru roboczego | ✓ | ✓ | |
 | Udostępnianie obszaru roboczego | ✓ | |  |
@@ -132,11 +132,11 @@ Aby uzyskać więcej informacji o tożsamościach zarządzanych, zobacz [zarząd
 
 Nie zaleca się, aby administratorzy mogli odwołać dostęp do tożsamości zarządzanej do zasobów wymienionych w powyższej tabeli. Dostęp można przywrócić przy użyciu operacji ponowna synchronizacja kluczy.
 
-Usługa Azure Machine Learning tworzy dodatkową aplikację (nazwa rozpoczyna się od `aml-` lub `Microsoft-AzureML-Support-App-`) z dostępem na poziomie współautora w ramach subskrypcji dla każdego regionu obszaru roboczego. Jeśli na przykład masz jeden obszar roboczy w regionie Wschodnie stany USA i inny obszar roboczy w Europie Północnej w tej samej subskrypcji, zobaczysz dwie z tych aplikacji. Te aplikacje umożliwiają usłudze Azure Machine Learning, która ułatwia zarządzanie zasobami obliczeniowymi.
+Azure Machine Learning tworzy dodatkową aplikację (nazwa rozpoczyna się od `aml-` lub `Microsoft-AzureML-Support-App-`) z dostępem na poziomie współautora w ramach subskrypcji dla każdego regionu obszaru roboczego. Jeśli na przykład masz jeden obszar roboczy w regionie Wschodnie stany USA i inny obszar roboczy w Europie Północnej w tej samej subskrypcji, zobaczysz dwie z tych aplikacji. Te aplikacje umożliwiają Azure Machine Learning ułatwiające zarządzanie zasobami obliczeniowymi.
 
 ## <a name="network-security"></a>Bezpieczeństwo sieci
 
-Usługa Azure Machine Learning opiera się na innych usługach platformy Azure dla zasobów obliczeniowych. Zasoby obliczeniowe (cele obliczeniowe) są używane do uczenia i wdrażania modeli. Te obiekty docelowe obliczeń można utworzyć w sieci wirtualnej. Na przykład możesz użyć usługi Azure Data Science Virtual Machine, aby szkolić model, a następnie wdrożyć model w AKS.  
+Azure Machine Learning opiera się na innych usługach platformy Azure dla zasobów obliczeniowych. Zasoby obliczeniowe (cele obliczeniowe) są używane do uczenia i wdrażania modeli. Te obiekty docelowe obliczeń można utworzyć w sieci wirtualnej. Na przykład możesz użyć usługi Azure Data Science Virtual Machine, aby szkolić model, a następnie wdrożyć model w AKS.  
 
 Aby uzyskać więcej informacji, zobacz [jak uruchamiać eksperymenty i wnioskowania w sieci wirtualnej](how-to-enable-virtual-network.md).
 
@@ -146,7 +146,7 @@ Aby uzyskać więcej informacji, zobacz [jak uruchamiać eksperymenty i wnioskow
 
 #### <a name="azure-blob-storage"></a>Azure Blob Storage
 
-Usługa Azure Machine Learning przechowuje migawki, dane wyjściowe i dzienniki na koncie magazynu obiektów blob platformy Azure, które jest powiązane z obszarem roboczym usługi Azure Machine Learning i subskrypcją. Wszystkie dane przechowywane w usłudze Azure Blob Storage są szyfrowane w stanie spoczynku przy użyciu kluczy zarządzanych przez firmę Microsoft.
+Azure Machine Learning przechowuje migawki, dane wyjściowe i dzienniki na koncie usługi Azure Blob Storage, które jest powiązane z obszarem roboczym Azure Machine Learning i subskrypcją. Wszystkie dane przechowywane w usłudze Azure Blob Storage są szyfrowane w stanie spoczynku przy użyciu kluczy zarządzanych przez firmę Microsoft.
 
 Aby uzyskać informacje na temat korzystania z własnych kluczy dla danych przechowywanych w usłudze Azure Blob Storage, zobacz [szyfrowanie usługi Azure Storage z kluczami zarządzanymi przez klienta w Azure Key Vault](https://docs.microsoft.com/azure/storage/common/storage-service-encryption-customer-managed-keys).
 
@@ -156,15 +156,15 @@ Aby uzyskać informacje o ponownym generowaniu kluczy dostępu dla kont usługi 
 
 #### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-Usługa Azure Machine Learning przechowuje metryki i metadane w wystąpieniu Azure Cosmos DB skojarzonym z subskrypcją firmy Microsoft zarządzaną przez usługę Azure Machine Learning. Wszystkie dane przechowywane w Azure Cosmos DB są szyfrowane w stanie spoczynku przy użyciu kluczy zarządzanych przez firmę Microsoft.
+Azure Machine Learning przechowuje metryki i metadane w wystąpieniu Azure Cosmos DB skojarzonym z subskrypcją firmy Microsoft zarządzaną przez Azure Machine Learning. Wszystkie dane przechowywane w Azure Cosmos DB są szyfrowane w stanie spoczynku przy użyciu kluczy zarządzanych przez firmę Microsoft.
 
 #### <a name="azure-container-registry"></a>Rejestr kontenerów platformy Azure
 
-Wszystkie obrazy kontenerów w rejestrze (Azure Container Registry) są szyfrowane w stanie spoczynku. Platforma Azure automatycznie szyfruje obraz przed jego zapisaniem i odszyfrowuje go na bieżąco, gdy usługa Azure Machine Learning pobiera obraz.
+Wszystkie obrazy kontenerów w rejestrze (Azure Container Registry) są szyfrowane w stanie spoczynku. Platforma Azure automatycznie szyfruje obraz przed jego zapisaniem i odszyfrowuje go na bieżąco, gdy Azure Machine Learning pobiera obraz.
 
 #### <a name="machine-learning-compute"></a>Środowisko obliczeniowe usługi Machine Learning
 
-Dysk systemu operacyjnego dla każdego węzła obliczeniowego przechowywanego w usłudze Azure Storage jest szyfrowany przy użyciu kluczy zarządzanych przez firmę Microsoft w ramach kont magazynu usługi Azure Machine Learning. Ten obiekt docelowy obliczeń jest nieulotny, a klastry są zwykle skalowane w dół, gdy żadne przebiegi nie są umieszczane w kolejce. Podstawowa maszyna wirtualna jest nieobsługiwana i dysk systemu operacyjnego zostanie usunięty. Azure Disk Encryption nie jest obsługiwana w przypadku dysku systemu operacyjnego.
+Dysk systemu operacyjnego dla każdego węzła obliczeniowego przechowywanego w usłudze Azure Storage jest szyfrowany przy użyciu kluczy zarządzanych przez firmę Microsoft w ramach kont magazynu Azure Machine Learning. Ten obiekt docelowy obliczeń jest nieulotny, a klastry są zwykle skalowane w dół, gdy żadne przebiegi nie są umieszczane w kolejce. Podstawowa maszyna wirtualna jest nieobsługiwana i dysk systemu operacyjnego zostanie usunięty. Azure Disk Encryption nie jest obsługiwana w przypadku dysku systemu operacyjnego.
 
 Każda maszyna wirtualna ma także lokalny dysk tymczasowy dla operacji systemu operacyjnego. Jeśli chcesz, możesz użyć dysku do przygotowania danych szkoleniowych. Dysk nie jest szyfrowany.
 Aby uzyskać więcej informacji na temat sposobu, w jaki szyfrowanie w spoczynku działa na platformie Azure, zobacz [szyfrowanie danych platformy Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest).
@@ -177,13 +177,13 @@ Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSL w celu zabezpi
 
 ### <a name="using-azure-key-vault"></a>Używanie Azure Key Vault
 
-Usługa Azure Machine Learning używa wystąpienia Azure Key Vault skojarzonego z obszarem roboczym do przechowywania poświadczeń różnych rodzajów:
+Azure Machine Learning używa wystąpienia Azure Key Vault skojarzonego z obszarem roboczym do przechowywania poświadczeń różnych rodzajów:
 
 * Powiązane parametry połączenia konta magazynu
 * Hasła do wystąpień repozytorium kontenerów platformy Azure
 * Parametry połączenia do magazynów danych
 
-Hasła i klucze SSH do obliczeń docelowych, takich jak usługa Azure HDInsight i maszyny wirtualne, są przechowywane w osobnym magazynie kluczy skojarzonym z subskrypcją firmy Microsoft. W usłudze Azure Machine Learning nie są przechowywane żadne hasła ani klucze udostępniane przez użytkowników. Zamiast tego generuje, autoryzuje i przechowuje własne klucze SSH do łączenia się z maszynami wirtualnymi i HDInsight w celu uruchamiania eksperymentów.
+Hasła i klucze SSH do obliczeń docelowych, takich jak usługa Azure HDInsight i maszyny wirtualne, są przechowywane w osobnym magazynie kluczy skojarzonym z subskrypcją firmy Microsoft. W Azure Machine Learning nie są przechowywane żadne hasła ani klucze udostępniane przez użytkowników. Zamiast tego generuje, autoryzuje i przechowuje własne klucze SSH do łączenia się z maszynami wirtualnymi i HDInsight w celu uruchamiania eksperymentów.
 
 Każdy obszar roboczy ma skojarzoną w systemie tożsamość zarządzaną, która ma taką samą nazwę jak obszar roboczy. Ta tożsamość zarządzana ma dostęp do wszystkich kluczy, wpisów tajnych i certyfikatów w magazynie kluczy.
 
@@ -191,7 +191,7 @@ Każdy obszar roboczy ma skojarzoną w systemie tożsamość zarządzaną, któr
 
 ### <a name="metrics"></a>Metryki
 
-Metryki Azure Monitor umożliwiają wyświetlanie i monitorowanie metryk dla obszaru roboczego usługi Azure Machine Learning. W [Azure Portal](https://portal.azure.com)wybierz swój obszar roboczy, a następnie wybierz pozycję **metryki**:
+Za pomocą metryk Azure Monitor można wyświetlać i monitorować metryki dla Azure Machine Learningego obszaru roboczego. W [Azure Portal](https://portal.azure.com)wybierz swój obszar roboczy, a następnie wybierz pozycję **metryki**:
 
 [![Zrzut ekranu przedstawiający przykładowe metryki dla obszaru roboczego](./media/enterprise-readiness/workspace-metrics.png)](./media/enterprise-readiness/workspace-metrics-expanded.png)
 
@@ -220,9 +220,9 @@ Szczegóły żądania oceniania są przechowywane w Application Insights. Applic
 
 Na poniższym diagramie przedstawiono przepływ pracy tworzenia obszaru roboczego.
 
-* Użytkownik loguje się do usługi Azure AD z jednego z obsługiwanych klientów usługi Azure Machine Learning (interfejs wiersza polecenia platformy Azure, zestaw SDK języka Python, Azure Portal) i żąda odpowiedniego tokenu Azure Resource Manager.
+* Użytkownik loguje się do usługi Azure AD z jednego z obsługiwanych klientów Azure Machine Learning (interfejs wiersza polecenia platformy Azure, zestaw SDK języka Python, Azure Portal) i żąda odpowiedniego tokenu Azure Resource Manager.
 * Użytkownik wywołuje Azure Resource Manager, aby utworzyć obszar roboczy. 
-* Azure Resource Manager skontaktować się z dostawcą zasobów usługi Azure Machine Learning w celu udostępnienia obszaru roboczego.
+* Azure Resource Manager skontaktować się z dostawcą zasobów Azure Machine Learning w celu udostępnienia obszaru roboczego.
 
 Dodatkowe zasoby są tworzone w ramach subskrypcji użytkownika podczas tworzenia obszaru roboczego:
 
@@ -239,7 +239,7 @@ Użytkownik może również udostępnić innym obiektom docelowym obliczeń, kt�
 
 Na poniższym diagramie przedstawiono przepływ pracy migawek kodu.
 
-Skojarzona z obszarem roboczym usługi Azure Machine Learning są katalogami (eksperymenty), które zawierają kod źródłowy (skrypty szkoleniowe). Te skrypty są przechowywane na komputerze lokalnym i w chmurze (w usłudze Azure Blob Storage w ramach subskrypcji). Migawki kodu są używane do wykonywania lub inspekcji inspekcji historycznej.
+Skojarzona z obszarem roboczym Azure Machine Learning to katalogi (eksperymenty), które zawierają kod źródłowy (skrypty szkoleniowe). Te skrypty są przechowywane na komputerze lokalnym i w chmurze (w usłudze Azure Blob Storage w ramach subskrypcji). Migawki kodu są używane do wykonywania lub inspekcji inspekcji historycznej.
 
 [![Przepływ pracy migawek kodu](./media/enterprise-readiness/code-snapshot.png)](./media/enterprise-readiness/code-snapshot-expanded.png)
 
@@ -247,10 +247,10 @@ Skojarzona z obszarem roboczym usługi Azure Machine Learning są katalogami (ek
 
 Na poniższym diagramie przedstawiono przepływ pracy szkoleniowej.
 
-* Usługa Azure Machine Learning jest wywoływana z IDENTYFIKATORem migawki dla migawki kodu zapisanej w poprzedniej sekcji.
-* Usługa Azure Machine Learning tworzy identyfikator uruchomienia (opcjonalnie) i token usługi Machine Learning, który jest później używany przez cele obliczeniowe, takie jak środowisko obliczeniowe usługi Machine Learning/VM, do komunikowania się z usługą Machine Learning.
+* Azure Machine Learning jest wywoływana z IDENTYFIKATORem migawki dla migawki kodu zapisanej w poprzedniej sekcji.
+* Azure Machine Learning tworzy identyfikator uruchomienia (opcjonalnie) i token usługi Machine Learning, który jest później używany przez cele obliczeniowe, takie jak środowisko obliczeniowe usługi Machine Learning/VM, do komunikowania się z usługą Machine Learning.
 * Aby uruchamiać zadania szkoleniowe, można wybrać zarządzany obiekt docelowy obliczeń (na przykład środowisko obliczeniowe usługi Machine Learning) lub niezarządzany obiekt docelowy obliczeń (na przykład maszyny wirtualne). Poniżej przedstawiono przepływy danych dla obu scenariuszy:
-   * Maszyny wirtualne/HDInsight, do których dostęp odbywa się przy użyciu poświadczeń SSH w magazynie kluczy w ramach subskrypcji firmy Microsoft. Usługa Azure Machine Learning uruchamia kod zarządzania w obiekcie docelowym obliczeń, który:
+   * Maszyny wirtualne/HDInsight, do których dostęp odbywa się przy użyciu poświadczeń SSH w magazynie kluczy w ramach subskrypcji firmy Microsoft. Azure Machine Learning uruchamia kod zarządzania w obiekcie docelowym obliczeń, który:
 
    1. Przygotowuje środowisko. (Docker to opcja dla maszyn wirtualnych i komputerów lokalnych. Aby dowiedzieć się, jak działają eksperymenty w kontenerach platformy Docker, zobacz następujące środowisko obliczeniowe usługi Machine Learning kroki.
    1. Pobiera kod.
@@ -266,7 +266,7 @@ Ponieważ środowisko obliczeniowe usługi Machine Learning jest zarządzanym el
 
 #### <a name="querying-runs-and-metrics"></a>Wykonywanie zapytań dotyczących przebiegów i metryk
 
-Na poniższym diagramie przepływu ten krok występuje, gdy obiekt docelowy obliczeń szkolenia zapisuje metryki uruchamiania z powrotem do usługi Azure Machine Learning z magazynu w bazie danych Cosmos DB. Klienci mogą wywoływać usługę Azure Machine Learning. Machine Learning spowoduje włączenie metryk ściągania z bazy danych Cosmos DB i zwrócenie ich z powrotem do klienta.
+Na poniższym diagramie przepływu ten krok występuje, gdy obiekt docelowy obliczeń szkolenia zapisuje metryki uruchamiania z powrotem do Azure Machine Learning z magazynu w bazie danych Cosmos DB. Klienci mogą wywoływać Azure Machine Learning. Machine Learning spowoduje włączenie metryk ściągania z bazy danych Cosmos DB i zwrócenie ich z powrotem do klienta.
 
 [![Przepływ pracy szkolenia](./media/enterprise-readiness/training-and-metrics.png)](./media/enterprise-readiness/training-and-metrics-expanded.png)
 
@@ -292,7 +292,7 @@ Oto szczegółowe informacje:
 * [Jak uruchomić prognoz usługi batch](how-to-run-batch-predictions.md)
 * [Monitoruj modele Azure Machine Learning przy użyciu Application Insights](how-to-enable-app-insights.md)
 * [Zbieranie danych dla modeli w środowisku produkcyjnym](how-to-enable-data-collection.md)
-* [Zestaw SDK usługi Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
-* [Korzystanie z usługi Azure Machine Learning z usługą Azure Virtual Network](how-to-enable-virtual-network.md)
+* [Zestaw SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
+* [Korzystanie z Azure Machine Learning z platformą Azure Virtual Network](how-to-enable-virtual-network.md)
 * [Najlepsze rozwiązania dotyczące kompilowania systemów rekomendacji](https://github.com/Microsoft/Recommenders)
 * [Kompilowanie interfejsu API rekomendacji w czasie rzeczywistym na platformie Azure](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/real-time-recommendation)

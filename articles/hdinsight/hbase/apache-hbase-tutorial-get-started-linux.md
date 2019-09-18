@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: tutorial
 ms.date: 06/25/2019
 ms.author: hrasheed
-ms.openlocfilehash: df216c4d634ac20365cc5a1cc6e26fbd78be7ab9
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: e43d2d64535085a9b22d2febc761fc7026498ba8
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70917406"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077153"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Samouczek: Korzystanie z bazy danych Apache HBase w usłudze Azure HDInsight
 
@@ -41,7 +41,7 @@ Poniższa procedura używa szablonu Azure Resource Manager, aby utworzyć klaste
 
 1. Wybierz Poniższy obraz, aby otworzyć szablon w Azure Portal. Szablon znajduje się w szablonach [szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/).
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-tutorial-get-started-linux/hdi-deploy-to-azure1.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-tutorial-get-started-linux/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
 2. W bloku **Wdrożenie niestandardowe** wprowadź następujące wartości:
 
@@ -68,11 +68,11 @@ Protokół SSH umożliwia połączenie z klastrami HBase, a następnie korzystan
 
 Dla większości użytkowników dane są wyświetlane w formacie tabelarycznym:
 
-![Dane tabelaryczne usługi HDInsight HBase](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png)
+![Dane tabelaryczne usługi HDInsight Apache HBase](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png)
 
 W HBase (implementacja BigTable w [chmurze](https://cloud.google.com/bigtable/)) te same dane wyglądają następująco:
 
-![Dane BigTable usługi HDInsight HBase](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-bigtable.png)
+![Dane usługi HDInsight Apache HBase BigTable](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-bigtable.png)
 
 **Aby użyć powłoki HBase**
 
@@ -115,7 +115,7 @@ W HBase (implementacja BigTable w [chmurze](https://cloud.google.com/bigtable/))
     scan 'Contacts'
     ```
 
-    ![Powłoka HBase HDInsight Hadoop](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-shell.png)
+    ![Usługa HDInsight Apache Hadoop HBase Shell](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-shell.png)
 
 1. Użyj `get` polecenia, aby pobrać zawartość wiersza. Wprowadź następujące polecenie:
 
@@ -284,7 +284,7 @@ Baza danych HBase w usłudze HDInsight jest dostarczana z interfejsem użytkowni
 
 1. W górnej części strony wybierz pozycję **szybkie linki** , wskaż pozycję Active Node dozorcy link, a następnie wybierz pozycję **interfejs użytkownika HBase Master**.  Interfejs użytkownika zostanie otwarty w innej karcie przeglądarki:
 
-   ![Główny interfejs użytkownika HDInsight HBase](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
+   ![Interfejs użytkownika usługi HDInsight Apache HBase serwera hmaster](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
 
    Główny interfejs użytkownika HBase zawiera następujące sekcje:
 

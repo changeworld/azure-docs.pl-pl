@@ -1,7 +1,7 @@
 ---
 title: Zarządzanie rolami w obszarze roboczym Azure Machine Learning
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak uzyskać dostęp do obszaru roboczego usługi Azure Machine Learning przy użyciu kontroli dostępu opartej na rolach (RBAC).
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak uzyskać dostęp do obszaru roboczego Azure Machine Learning przy użyciu kontroli dostępu opartej na rolach (RBAC).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0f28397717d5c89e5a5bcd5e7bdc17b4feb49577
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 22ce9ea44dde6da4d1194463fe266ed00c5a3f96
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467971"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067702"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Zarządzanie dostępem do obszaru roboczego Azure Machine Learning
 
@@ -41,7 +41,7 @@ Aby uzyskać więcej informacji na temat określonych ról wbudowanych, zobacz [
 
 Jeśli jesteś właścicielem obszaru roboczego, możesz dodawać i usuwać role dla obszaru roboczego. Możesz również przypisywać role do użytkowników. Skorzystaj z poniższych linków, aby dowiedzieć się, jak zarządzać dostępem:
 - [Interfejs użytkownika Azure Portal](/azure/role-based-access-control/role-assignments-portal)
-- [Program PowerShell](/azure/role-based-access-control/role-assignments-powershell)
+- [PowerShell](/azure/role-based-access-control/role-assignments-powershell)
 - [Interfejs wiersza polecenia platformy Azure](/azure/role-based-access-control/role-assignments-cli)
 - [REST API](/azure/role-based-access-control/role-assignments-rest)
 - [Szablony Azure Resource Manager](/azure/role-based-access-control/role-assignments-template)
@@ -107,11 +107,13 @@ Po wdrożeniu ta rola zostanie udostępniona w określonym obszarze roboczym. Te
 az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
 ```
 
+Aby uzyskać więcej informacji na temat ról niestandardowych, zobacz [role niestandardowe dla zasobów platformy Azure](/azure/role-based-access-control/custom-roles).
 
-Aby uzyskać więcej informacji, zobacz [role niestandardowe dla zasobów platformy Azure](/azure/role-based-access-control/custom-roles).
+Aby uzyskać więcej informacji o operacjach (działania), których można użyć z rolami niestandardowymi, zobacz [operacje dostawcy zasobów](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices).
 
 ## <a name="next-steps"></a>Następne kroki
 
 - [Omówienie zabezpieczeń przedsiębiorstwa](concept-enterprise-security.md)
 - [Bezpieczne uruchamianie eksperymentów i wnioskowania/wyniku w sieci wirtualnej](how-to-enable-virtual-network.md)
 - [Samouczek: Modele uczenia](tutorial-train-models-with-aml.md)
+- [Operacje dostawcy zasobów](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)

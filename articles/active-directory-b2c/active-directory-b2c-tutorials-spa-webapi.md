@@ -10,16 +10,16 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: b53ce30f4c49580bcd8ad3e259adf0300d8bd4a6
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 6d354ab25125b0df90ac3d6852d7eafe5d5aba46
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68369298"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064688"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>Samouczek: udzielanie dostępu do internetowego interfejsu API platformy ASP.NET Core z aplikacji jednostronicowej przy użyciu usługi Azure Active Directory B2C
 
-W tym samouczku pokazano, jak wyAzure Active Directory woływać zasób internetowego interfejsu API B2C (Azure AD) ASP.NET Core z aplikacji jednostronicowej.
+W tym samouczku pokazano, jak wywoływać zasób internetowego interfejsu API ASP.NET Core chronionych Azure Active Directory B2C (Azure AD B2C) z aplikacji jednostronicowej.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -41,7 +41,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 Należy zarejestrować zasoby internetowego interfejsu API w dzierżawie, zanim będzie on mógł akceptować i odpowiadać na żądania chronionych zasobów wysyłane przez aplikacje klienckie przedstawiające token dostępu.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Upewnij się, że używasz katalogu zawierającego Twoją dzierżawę usługi Azure AD B2C, klikając pozycję **Filtr katalogu i subskrypcji** w górnym menu i wybierając katalog zawierający Twoją dzierżawę.
+1. Upewnij się, że używasz katalogu, który zawiera dzierżawę Azure AD B2C, wybierając pozycję **katalog i subskrypcja** w górnym menu i wybierając katalog zawierający dzierżawcę.
 1. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 1. Wybierz pozycję **Aplikacje**, a następnie wybierz polecenie **Dodaj**.
 1. Wprowadź nazwę aplikacji. Na przykład *webapi1*.
@@ -180,7 +180,7 @@ W programie Visual Studio naciśnij klawisz **F5** , aby skompilować i debugowa
 
 Jeśli wolisz używać `dotnet` interfejsu wiersza polecenia zamiast programu Visual Studio:
 
-1. Otwórz okno konsoli i przejdź do katalogu zawierającego  *\*plik. csproj* . Przykład:
+1. Otwórz okno konsoli i przejdź do katalogu zawierającego  *\*plik. csproj* . Na przykład:
 
     `cd active-directory-b2c-dotnetcore-webapi/B2C-WebApi`
 

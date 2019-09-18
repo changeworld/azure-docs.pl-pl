@@ -5,17 +5,17 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 08/30/2019
+ms.date: 09/16/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 143da0374dbd38f96dd0d44e3e1d1bbe3339b58f
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: aa8d91b5b400525dfd0f0a2db32c3c66daa0b06f
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174646"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71032738"
 ---
-| Kategoria | Magazyn danych | Obsługiwany jako źródło | Obsługiwany jako ujście | Obsługiwane przez środowisko [Azure IR](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) | Obsługiwane przez samoobsługowe środowisko [IR](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) |
+| Kategoria | Magazyn danych | Obsługiwany jako źródło | Obsługiwany jako ujście | Obsługiwane przez środowisko [Azure IR](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) | Obsługiwane przez [samoobsługowe środowisko IR](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) |
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | **Azure** |[Azure Blob Storage](../articles/data-factory/connector-azure-blob-storage.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure Cosmos DB (interfejs API SQL)](../articles/data-factory/connector-azure-cosmos-db.md) |✓ |✓ |✓ |✓  |
@@ -25,7 +25,7 @@ ms.locfileid: "70174646"
 | &nbsp; |[Azure Data Lake Storage Gen2](../articles/data-factory/connector-azure-data-lake-storage.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure Database for MariaDB](../articles/data-factory/connector-azure-database-for-mariadb.md) |✓ | |✓ |✓  |
 | &nbsp; |[Azure Database for MySQL](../articles/data-factory/connector-azure-database-for-mysql.md) |✓ |✓ |✓ |✓  |
-| &nbsp; |[Azure Database for PostgreSQL](../articles/data-factory/connector-azure-database-for-postgresql.md) |✓ | |✓ |✓  |
+| &nbsp; |[Azure Database for PostgreSQL](../articles/data-factory/connector-azure-database-for-postgresql.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure File Storage](../articles/data-factory/connector-azure-file-storage.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure SQL Database](../articles/data-factory/connector-azure-sql-database.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Wystąpienie zarządzane usługi Azure SQL Database](../articles/data-factory/connector-azure-sql-database-managed-instance.md) |✓ |✓ |✓ |✓  |
@@ -101,4 +101,4 @@ ms.locfileid: "70174646"
 | &nbsp; |[Zoho (wersja zapoznawcza)](../articles/data-factory/connector-zoho.md) |✓ | |✓ |✓  |
 
 > [!NOTE]
-> Jeśli łącznik jest oznaczony jako *wersja*zapoznawcza, możesz go wypróbować i przekazać nam swoją opinię. Jeśli chcesz skorzystać z zależności od łączników w wersji zapoznawczej w rozwiązaniu, skontaktuj się z [pomocą techniczną platformy Azure](https://azure.microsoft.com/support/).
+> Jeśli łącznik jest oznaczony jako *wersja zapoznawcza*, możesz go wypróbować i przekazać nam swoją opinię. Jeśli chcesz skorzystać z zależności od łączników w wersji zapoznawczej w rozwiązaniu, skontaktuj się z [pomocą techniczną platformy Azure](https://azure.microsoft.com/support/).

@@ -1,6 +1,6 @@
 ---
-title: Skonfiguruj polecenie logowania za pomocą konta Amazon, za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Konfigurowanie logowania za pomocą konta Amazon w usłudze Azure Active Directory B2C przy użyciu zasad niestandardowych.
+title: Konfigurowanie logowania za pomocą konta Amazon przy użyciu zasad niestandardowych w Azure Active Directory B2C | Microsoft Docs
+description: Skonfiguruj logowanie się przy użyciu konta Amazon w Azure Active Directory B2C przy użyciu zasad niestandardowych.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,60 +10,60 @@ ms.topic: conceptual
 ms.date: 10/05/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 46b58aad8a5cb71744aca9baaa3a27d4d1efe8e2
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: bac37eed33535962ac0f1e6dbb34d8c396507682
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67655254"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063632"
 ---
-# <a name="set-up-sign-in-with-an-amazon-account-using-custom-policies-in-azure-active-directory-b2c"></a>Skonfiguruj polecenie logowania za pomocą konta Amazon, za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C
+# <a name="set-up-sign-in-with-an-amazon-account-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurowanie logowania za pomocą konta Amazon przy użyciu zasad niestandardowych w Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-W tym artykule pokazano, jak włączyć logowania dla użytkowników z konta Amazon, używając [zasady niestandardowe](active-directory-b2c-overview-custom.md) w usłudze Azure Active Directory (Azure AD) B2C.
+W tym artykule opisano sposób włączania logowania dla użytkowników z konta Amazon przy użyciu [zasad niestandardowych](active-directory-b2c-overview-custom.md) w programie Azure Active Directory B2C (Azure AD B2C).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Wykonaj kroki [wprowadzenie do zasad niestandardowych](active-directory-b2c-get-started-custom.md).
-- Jeśli nie masz jeszcze konta Amazon, utworzyć w [ https://www.amazon.com/ ](https://www.amazon.com/).
+- Wykonaj kroki opisane w temacie Wprowadzenie [do zasad niestandardowych](active-directory-b2c-get-started-custom.md).
+- Jeśli nie masz jeszcze konta Amazon, utwórz je pod adresem [https://www.amazon.com/](https://www.amazon.com/).
 
 ## <a name="register-the-application"></a>Rejestrowanie aplikacji
 
-Aby włączyć logowania dla użytkowników z konta Amazon, musisz utworzyć aplikację Amazon.
+Aby włączyć Logowanie użytkowników z konta Amazon, należy utworzyć aplikację Amazon.
 
-1. Zaloguj się do [Centrum deweloperów Amazon](https://login.amazon.com/) przy użyciu poświadczeń konta Amazon.
-2. Jeśli jeszcze tego nie zrobiono, kliknij przycisk **Zarejestruj**, postępuj zgodnie z instrukcjami rejestracji dla deweloperów i zaakceptować zasady.
-3. Wybierz **zarejestrować nową aplikację**.
-4. Wprowadź **nazwa**, **opis**, i **adres URL zasad zachowania powiadomienie**, a następnie kliknij przycisk **Zapisz**. Powiadomienie dotyczące prywatności jest strona, którą zarządzasz, która zawiera informacje o ochronie prywatności dla użytkowników.
-5. W **ustawień sieci Web** sekcji, skopiuj wartości z **identyfikator klienta**. Wybierz **wyświetlić wpis tajny** można pobrać klucza tajnego klienta, a następnie skopiuj go. Należy dysponować je, aby skonfigurować konto usługi Amazon jako dostawcy tożsamości w dzierżawie. **Klucz tajny klienta** jest ważnym poświadczeniem zabezpieczeń.
-6. W **ustawień sieci Web** zaznacz **Edytuj**, a następnie wprowadź `https://your-tenant-name.b2clogin.com` w **dozwolone źródła JavaScript** i `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` w **dozwolone Zwraca adresy URL**. Zastąp `your-tenant-name` nazwą Twojej dzierżawy. Podczas wprowadzania nazwa dzierżawy, nawet jeśli dzierżawa jest zdefiniowana z wielkich liter w usłudze Azure AD B2C, należy używać małych liter.
+1. Zaloguj się do [Centrum deweloperów Amazon](https://login.amazon.com/) przy użyciu poświadczeń konta usługi Amazon.
+2. Jeśli jeszcze tego nie zrobiono, kliknij pozycję **Utwórz konto**, postępuj zgodnie z procedurami rejestracji dla deweloperów i zaakceptuj zasady.
+3. Wybierz pozycję **zarejestruj nową aplikację**.
+4. Wprowadź **nazwę**, **Opis**i **adres URL informacji o ochronie prywatności**, a następnie kliknij przycisk **Zapisz**. Powiadomienie o zasadach zachowania poufności informacji to strona, którą można zarządzać, która zapewnia użytkownikom informacje o ochronie prywatności.
+5. W sekcji **Ustawienia sieci Web** Skopiuj wartości **Identyfikator klienta**. Wybierz pozycję **Pokaż klucz tajny** , aby uzyskać klucz tajny klienta, a następnie skopiuj go. Musisz mieć oba te elementy, aby skonfigurować konto Amazon jako dostawcę tożsamości w dzierżawie. **Klucz tajny klienta** jest ważnym poświadczeniem zabezpieczeń.
+6. W sekcji **Ustawienia sieci Web** wybierz pozycję **Edytuj**, a następnie wprowadź `https://your-tenant-name.b2clogin.com` w polu **dozwolone źródła języka JavaScript** i `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` w polu **dozwolone adresy URL**. Zamień `your-tenant-name` na nazwę dzierżawy. Podczas wprowadzania nazwa dzierżawy, nawet jeśli dzierżawa jest zdefiniowana z wielkich liter w usłudze Azure AD B2C, należy używać małych liter.
 7. Kliknij polecenie **Zapisz**.
 
-## <a name="create-a-policy-key"></a>Utwórz klucz zasad
+## <a name="create-a-policy-key"></a>Tworzenie klucza zasad
 
-Chcesz przechować klucz tajny klienta, który wcześniej zapisaną w dzierżawie usługi Azure AD B2C.
+Należy przechowywać klucz tajny klienta, który został wcześniej zarejestrowany w dzierżawie Azure AD B2C.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
-2. Upewnij się, że używasz katalogu zawierającego Twoją dzierżawę usługi Azure AD B2C, klikając pozycję **Filtr katalogu i subskrypcji** w górnym menu i wybierając katalog zawierający Twoją dzierżawę.
+2. Upewnij się, że używasz katalogu, który zawiera dzierżawę Azure AD B2C, wybierając pozycję **katalog i subskrypcja** w górnym menu i wybierając katalog zawierający dzierżawcę.
 3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
-4. Na stronie Przegląd wybierz **struktura środowiska tożsamości**.
-5. Wybierz **klucze zasad** , a następnie wybierz **Dodaj**.
-6. Aby uzyskać **opcje**, wybierz `Manual`.
-7. Wprowadź **nazwa** klucza zasad. Na przykład `AmazonSecret`. Prefiks `B2C_1A_` jest automatycznie dodawany do nazwy klucza.
-8. W **klucz tajny**, wprowadź klucz tajny klienta, który wcześniej zarejestrowane.
-9. Aby uzyskać **użycie klucza**, wybierz opcję `Signature`.
+4. Na stronie Przegląd wybierz pozycję **Struktura środowiska tożsamości**.
+5. Wybierz pozycję **klucze zasad** , a następnie wybierz pozycję **Dodaj**.
+6. W obszarze **Opcje**wybierz `Manual`opcję.
+7. Wprowadź **nazwę** klucza zasad. Na przykład `AmazonSecret`. Prefiks `B2C_1A_` jest automatycznie dodawany do nazwy klucza.
+8. W **kluczu tajnym**wprowadź wcześniej zarejestrowany klucz tajny klienta.
+9. W obszarze **użycie klucza**wybierz `Signature`opcję.
 10. Kliknij przycisk **Utwórz**.
 
 ## <a name="add-a-claims-provider"></a>Dodawanie dostawcy oświadczeń
 
-Użytkownikom na logowanie za pomocą konta Amazon, należy zdefiniować konto jako dostawcy oświadczeń, które usługi Azure AD B2C mogą się komunikować za pośrednictwem punktu końcowego. Punkt końcowy zawiera zestaw oświadczeń, które są używane przez usługę Azure AD B2C, aby sprawdzić, czy określony użytkownik jest uwierzytelniony.
+Jeśli chcesz, aby użytkownicy mogli się logować przy użyciu konta Amazon, musisz zdefiniować konto jako dostawcę oświadczeń, z którym Azure AD B2C może komunikować się za pośrednictwem punktu końcowego. Punkt końcowy zawiera zestaw oświadczeń, które są używane przez Azure AD B2C do sprawdzenia, czy określony użytkownik został uwierzytelniony.
 
-Konto Amazon można zdefiniować jako dostawcy oświadczeń, przez dodanie jej do **ClaimsProviders** elementu w pliku rozszerzenie zasad.
+Konto Amazon można zdefiniować jako dostawcę oświadczeń, dodając je do elementu **ClaimsProviders** w pliku rozszerzenia zasad.
 
 
-1. Otwórz *TrustFrameworkExtensions.xml*.
-2. Znajdź **ClaimsProviders** elementu. Jeśli nie istnieje, należy dodać go pod elementem głównym.
+1. Otwórz *plik TrustFrameworkExtensions. XML*.
+2. Znajdź element **ClaimsProviders** . Jeśli nie istnieje, Dodaj ją do elementu głównego.
 3. Dodaj nową **ClaimsProvider** w następujący sposób:
 
     ```xml
@@ -105,72 +105,72 @@ Konto Amazon można zdefiniować jako dostawcy oświadczeń, przez dodanie jej d
     </ClaimsProvider>
     ```
 
-4. Ustaw **client_id** do Identyfikatora aplikacji z rejestracji aplikacji.
+4. Ustaw **client_id** na identyfikator aplikacji z rejestracji aplikacji.
 5. Zapisz plik.
 
-### <a name="upload-the-extension-file-for-verification"></a>Przekaż plik rozszerzenia o weryfikację
+### <a name="upload-the-extension-file-for-verification"></a>Przekaż plik rozszerzenia w celu weryfikacji
 
-W razie skonfigurowano zasady tak, aby usługa Azure AD B2C wie, jak komunikować się z katalogiem usługi Azure AD. Spróbuj przekazać plik rozszerzenia swoich zasad, aby potwierdzić, że wszystkie problemy nie ma do tej pory.
+Teraz zasady zostały skonfigurowane tak, aby Azure AD B2C wie, jak komunikować się z katalogiem usługi Azure AD. Spróbuj przekazać plik rozszerzenia zasad tylko, aby upewnić się, że nie ma żadnych problemów do tej pory.
 
-1. Na **zasady niestandardowe** strony w swojej dzierżawie usługi Azure AD B2C, wybierz opcję **zasady przekazywania**.
-2. Włącz **Zastąp zasady Jeśli istnieje**, a następnie wyszukaj i wybierz pozycję *TrustFrameworkExtensions.xml* pliku.
+1. Na stronie **zasady niestandardowe** w dzierżawie Azure AD B2C wybierz pozycję **Przekaż zasady**.
+2. Włącz **Zastępowanie zasad, jeśli istnieje**, a następnie wyszukaj i wybierz plik *TrustFrameworkExtensions. XML* .
 3. Kliknij pozycję **Przekaż**.
 
-## <a name="register-the-claims-provider"></a>Zarejestruj dostawcę oświadczeń
+## <a name="register-the-claims-provider"></a>Rejestrowanie dostawcy oświadczeń
 
-W tym momencie skonfigurowano dostawcy tożsamości, ale nie jest dostępny w wszystkich ekranów konta-dokonywania/logowania. Aby udostępnić ją, utworzenie duplikatu istniejącego podróży użytkownika szablonu, a następnie zmodyfikuj go tak, aby w nim również Amazon dostawcy tożsamości.
+W tym momencie dostawca tożsamości został skonfigurowany, ale nie jest dostępny na żadnym z ekranów rejestracji/logowania. Aby można było go udostępnić, należy utworzyć duplikat istniejącej podróży użytkownika szablonu, a następnie zmodyfikować go tak, aby miał także dostawcę tożsamości Amazon.
 
-1. Otwórz *TrustFrameworkBase.xml* plik z pakietu startowego.
-2. Znajdź i skopiuj cała zawartość **UserJourney** element, który zawiera `Id="SignUpOrSignIn"`.
-3. Otwórz *TrustFrameworkExtensions.xml* i Znajdź **podróży użytkowników** elementu. Jeśli element nie istnieje, dodać.
-4. Wklej całą zawartość **UserJourney** element, który został skopiowany jako element podrzędny elementu **podróży użytkowników** elementu.
-5. Zmień nazwę identyfikator podróży użytkownika. Na przykład `SignUpSignInAmazon`.
+1. Otwórz plik *TrustFrameworkBase. XML* z pakietu początkowego.
+2. Znajdź i Skopiuj całą zawartość elementu **UserJourney** , który zawiera `Id="SignUpOrSignIn"`.
+3. Otwórz *plik TrustFrameworkExtensions. XML* i Znajdź element **UserJourneys** . Jeśli element nie istnieje, Dodaj go.
+4. Wklej całą zawartość elementu **UserJourney** , który został skopiowany jako element podrzędny elementu **UserJourneys** .
+5. Zmień nazwę identyfikatora podróży użytkownika. Na przykład `SignUpSignInAmazon`.
 
-### <a name="display-the-button"></a>Wyświetlanie przycisku
+### <a name="display-the-button"></a>Wyświetl przycisk
 
-**Elemencie ClaimsProviderSelection** element jest odpowiednikiem przycisk dostawcy tożsamości na ekranie konta-dokonywania/logowania. Jeśli dodasz **elemencie ClaimsProviderSelection** elementu konta Amazon, nowy przycisk pojawia się po użytkownik wyładowuje na stronie.
+Element **ClaimsProviderSelection** jest analogiczny do przycisku dostawcy tożsamości na ekranie rejestracji/logowania. Jeśli dodasz element **ClaimsProviderSelection** dla konta Amazon, zostanie wyświetlony nowy przycisk, gdy użytkownik zostanie wystawiony na stronie.
 
-1. Znajdź **OrchestrationStep** element, który zawiera `Order="1"` w podróży użytkownika, który został utworzony.
-2. W obszarze **ClaimsProviderSelects**, Dodaj następujący element. Ustaw wartość **TargetClaimsExchangeId** do odpowiedniej wartości, na przykład `AmazonExchange`:
+1. Znajdź element **OrchestrationStep** , który obejmuje `Order="1"` w podróży użytkownika.
+2. W obszarze **ClaimsProviderSelects**Dodaj następujący element. Ustaw wartość **TargetClaimsExchangeId** na odpowiednią wartość, na przykład `AmazonExchange`:
 
     ```XML
     <ClaimsProviderSelection TargetClaimsExchangeId="AmazonExchange" />
     ```
 
-### <a name="link-the-button-to-an-action"></a>Połącz przycisk akcji
+### <a name="link-the-button-to-an-action"></a>Połącz przycisk z akcją
 
-Teraz, gdy przycisk w miejscu, należy połączyć akcji. Akcja, w tym przypadku jest dla usługi Azure AD B2C do komunikowania się za pomocą konta Amazon do odbierania token.
+Teraz, gdy masz już przycisk, musisz połączyć go z akcją. W tym przypadku akcja w tym przypadku Azure AD B2C do komunikowania się z kontem Amazon w celu uzyskania tokenu.
 
-1. Znajdź **OrchestrationStep** zawierającej `Order="2"` w podróży użytkownika.
-2. Dodaj następujący kod **elementu ClaimsExchange** upewniając się, użyj tej samej wartości dla Identyfikatora, który był używany przez element **TargetClaimsExchangeId**:
+1. Znajdź **OrchestrationStep** obejmujący `Order="2"` w podróży użytkownika.
+2. Dodaj następujący element **ClaimsExchange** , aby upewnić się, że używasz tej samej wartości dla identyfikatora, który został użyty dla **TargetClaimsExchangeId**:
 
     ```XML
     <ClaimsExchange Id="AmazonExchange" TechnicalProfileReferenceId="Amazon-OAuth" />
     ```
 
-    Zaktualizuj wartość **TechnicalProfileReferenceId** identyfikator profilu technicznego została utworzona wcześniej. Na przykład `Amazon-OAuth`.
+    Zaktualizuj wartość **TechnicalProfileReferenceId** na identyfikator utworzonego wcześniej profilu technicznego. Na przykład `Amazon-OAuth`.
 
-3. Zapisz *TrustFrameworkExtensions.xml* plik i ponownie przekazać go do weryfikacji.
+3. Zapisz plik *TrustFrameworkExtensions. XML* i przekaż go ponownie w celu weryfikacji.
 
-## <a name="create-an-azure-ad-b2c-application"></a>Tworzenie aplikacji usługi Azure AD B2C
+## <a name="create-an-azure-ad-b2c-application"></a>Tworzenie aplikacji Azure AD B2C
 
-Za pomocą usługi Azure AD B2c odbywa się przy użyciu aplikacji utworzonej w dzierżawie. W tej sekcji przedstawiono kroki opcjonalne, które możesz wykonać, aby utworzyć aplikację testu, jeśli jeszcze tego nie zrobiłeś.
+Komunikacja z usługą Azure AD B2C odbywa się za pomocą aplikacji utworzonej w dzierżawie. W tej sekcji przedstawiono kroki opcjonalne, które można wykonać, aby utworzyć aplikację testową, jeśli nie została jeszcze wykonana.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Upewnij się, że używasz katalogu zawierającego Twoją dzierżawę usługi Azure AD B2C, klikając pozycję **Filtr katalogu i subskrypcji** w górnym menu i wybierając katalog zawierający Twoją dzierżawę.
+2. Upewnij się, że używasz katalogu, który zawiera dzierżawę Azure AD B2C, wybierając pozycję **katalog i subskrypcja** w górnym menu i wybierając katalog zawierający dzierżawcę.
 3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 4. Wybierz pozycję **Aplikacje**, a następnie wybierz polecenie **Dodaj**.
 5. Wprowadź nazwę aplikacji, na przykład *testapp1*.
-6. Dla **aplikacji sieci Web / interfejs API sieci Web**, wybierz opcję `Yes`, a następnie wprowadź `https://jwt.ms` dla **adres URL odpowiedzi**.
+6. W polu **aplikacja sieci Web/interfejs API sieci Web**wybierz `Yes`pozycję `https://jwt.ms` , a następnie wprowadź **adres URL odpowiedzi**.
 7. Kliknij przycisk **Utwórz**.
 
-## <a name="update-and-test-the-relying-party-file"></a>Aktualizowanie i przetestować go jednostki uzależnionej ze stron
+## <a name="update-and-test-the-relying-party-file"></a>Aktualizowanie i testowanie pliku jednostki uzależnionej
 
-Należy zaktualizować plik innych firm (RP) jednostki uzależnionej, która inicjuje podróży użytkownika, który został utworzony.
+Zaktualizuj plik jednostki uzależnionej (RP), który inicjuje utworzoną przez Ciebie podróż użytkownika.
 
-1. Utwórz kopię *SignUpOrSignIn.xml* w katalogu roboczym i zmień jego nazwę. Na przykład, zmień jej nazwę na *SignUpSignInAmazon.xml*.
-2. Otwórz nowy plik i zaktualizuj wartość **PolicyId** atrybutu dla **elementu TrustFrameworkPolicy** przy użyciu unikatowej wartości. Na przykład `SignUpSignInAmazon`.
-3. Zaktualizuj wartość **PublicPolicyUri** o identyfikatorze URI zasad. Na przykład`http://contoso.com/B2C_1A_signup_signin_amazon`
-4. Zaktualizuj wartość **ReferenceId** atrybutu w **DefaultUserJourney** aby dopasować identyfikator nowego podróży użytkownika utworzony (SignUpSignAmazon).
-5. Zapisz zmiany, Przekaż plik, a następnie wybierz nowe zasady na liście.
-6. Upewnij się, że zaznaczone jest aplikacja usługi Azure AD B2C, który został utworzony w **wybierz aplikację** pola, a następnie przetestuj go, klikając **Uruchom teraz**.
+1. Utwórz kopię *pliku SignUpOrSignIn. XML* w katalogu roboczym i zmień jego nazwę. Na przykład zmień nazwę na *SignUpSignInAmazon. XML*.
+2. Otwórz nowy plik i zaktualizuj wartość atrybutu **PolicyId** dla **TrustFrameworkPolicy** przy użyciu unikatowej wartości. Na przykład `SignUpSignInAmazon`.
+3. Zaktualizuj wartość **PublicPolicyUri** za pomocą identyfikatora URI dla zasad. Na przykład`http://contoso.com/B2C_1A_signup_signin_amazon`
+4. Zaktualizuj wartość atrybutu **ReferenceId** w **DefaultUserJourney** w taki sposób, aby odpowiadała identyfikatorowi nowej podróży użytkownika, która została utworzona (SignUpSignAmazon).
+5. Zapisz zmiany, Przekaż plik, a następnie wybierz nowe zasady z listy.
+6. Upewnij się, że utworzona aplikacja Azure AD B2C została wybrana w polu **Wybierz aplikację** , a następnie przetestuj ją, klikając polecenie **Uruchom teraz**.

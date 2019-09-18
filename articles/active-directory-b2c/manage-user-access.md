@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1ba36ece6b221908bfbaae58430a52b4753c2ed6
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 98d3fa50f405658b33f879ed8e7b95667cddcedf
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846775"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064127"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Zarządzanie dostępem użytkowników w Azure Active Directory B2C
 
-W tym artykule omówiono sposób zarządzania dostępem użytkowników do aplikacji przy użyciu usługi Azure Active Directory (Azure AD) B2C. Zarządzanie dostępem w aplikacji obejmuje następujące metody:
+W tym artykule omówiono sposób zarządzania dostępem użytkowników do aplikacji przy użyciu Azure Active Directory B2C (Azure AD B2C). Zarządzanie dostępem w aplikacji obejmuje następujące metody:
 
 - Identyfikowanie drobnych i kontrolowanie dostępu użytkowników do aplikacji.
 - Wymaganie zgody rodziców na niewielkie użycie aplikacji.
@@ -72,11 +72,11 @@ Poniższe kroki pokazują logikę, która jest używana do obliczania **grupy wi
 
     a. Oblicz datę, do której użytkownik musi zostać uznany za osobę dorosłą. Na przykład, jeśli bieżąca data to 14 marca 2015, a **MinorConsent** to 18, Data urodzenia nie może być późniejsza niż 14 marca 2000.
 
-    b. Porównaj minimalną datę urodzenia z rzeczywistą datą urodzenia. Jeśli minimalna Data urodzenia jest wcześniejsza niż data urodzenia użytkownika, obliczenie zwróci  wartość pomocniczą jako obliczenie grupy wiekowej.
+    b. Porównaj minimalną datę urodzenia z rzeczywistą datą urodzenia. Jeśli minimalna Data urodzenia jest wcześniejsza niż data urodzenia użytkownika, obliczenie zwróci wartość pomocniczą jako obliczenie grupy wiekowej.
 
 3. Jeśli węzeł **MinorNoConsentRequired** jest obecny w elemencie Country, powtórz kroki od 2A do 2b przy użyciu wartości z **MinorNoConsentRequired**. Wyjście 2b zwraca **MinorNoConsentRequired** , jeśli minimalna Data urodzenia jest wcześniejsza niż data urodzenia użytkownika.
 
-4. Jeśli żadna z obliczeń nie zwraca wartości true, obliczenia zwracają wartość dorosłą.
+4. Jeśli żadna z obliczeń nie zwraca wartości true,obliczenia zwracają wartość dorosłą.
 
 Jeśli aplikacja ma niezawodne dane DOB lub kraju/regionu według innych metod, aplikacja może używać interfejs API programu Graph do aktualizowania rekordu użytkownika przy użyciu tych informacji. Na przykład:
 
@@ -173,6 +173,6 @@ Poniżej znajduje się przykład zgody na wersje warunków użytkowania w ramach
 </ClaimsTransformations>
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby dowiedzieć się, jak usunąć i wyeksportować dane użytkowników, zobacz [Zarządzanie danymi użytkownika](manage-user-data.md).

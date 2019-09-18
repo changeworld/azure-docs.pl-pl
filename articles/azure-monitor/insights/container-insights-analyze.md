@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/06/2019
+ms.date: 09/17/2019
 ms.author: magoedte
-ms.openlocfilehash: c63feb02712447d2427061cbfabc525622107043
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 945dc6c35eacab99db28172703e1aebed10bd58a
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744590"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067083"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Zrozumienie wydajności klastra AKS przy użyciu usługi Azure Monitor dla kontenerów
 Za pomocą Azure Monitor dla kontenerów można użyć wykresów wydajności i stanu kondycji do monitorowania obciążenia klastrów usługi Azure Kubernetes Service (AKS) z dwóch perspektyw. Można monitorować bezpośrednio z klastra AKS lub monitorować wszystkie klastry AKS w ramach subskrypcji z Azure Monitor. Wyświetlanie Azure Container Instances jest również możliwe podczas monitorowania określonego klastra AKS.
@@ -170,9 +170,13 @@ Z rozwiniętego węzła możesz przejść do szczegółów z lub kontenera, któ
 
 Wybierz pozycję Kontrolery lub kontenery w górnej części strony, aby przejrzeć stan i wykorzystanie zasobów dla tych obiektów. Aby przejrzeć użycie pamięci, na liście rozwijanej **Metryka** wybierz pozycję **pamięć RSS** lub **zestaw roboczy pamięci**. **Pamięć RSS** jest obsługiwany tylko w przypadku rozwiązania Kubernetes w wersji 1.8 i nowszych. W przeciwnym razie do wyświetlania wartości **Min&nbsp; %**  jako *NaN&nbsp;%* , który jest wartość typu danych liczbowych, który reprezentuje niezdefiniowany lub wartość wyniku.
 
-**Zestaw roboczy pamięci** pokazuje zawartą pamięć i pamięć wirtualną (pamięć podręczną) oraz łączną zawartość używaną przez aplikację. W obszarze **RSS pamięci** jest wyświetlana tylko pamięć główna (czyli Nothing, ale w innych wyrazach). Ta Metryka przedstawia rzeczywistą pojemność dostępnej pamięci.
-
 ![Widok wydajności węzłów kontenerów](./media/container-insights-analyze/containers-node-metric-dropdown.png)
+
+**Zestaw roboczy pamięci** pokazuje zawartą pamięć i pamięć wirtualną (pamięć podręczną) oraz łączną zawartość używaną przez aplikację. W obszarze **RSS pamięci** jest wyświetlana tylko pamięć główna (czyli Nothing, ale w innych wyrazach). Ta Metryka przedstawia rzeczywistą pojemność dostępnej pamięci. Jaka jest różnica między pamięcią rezydentną a pamięcią wirtualną?
+
+- Pamięć rezydentna lub pamięć główna to rzeczywista ilość pamięci maszyny dostępna dla węzłów klastra.
+
+- Pamięć wirtualna jest zarezerwowaną ilością miejsca na dysku twardym (pamięć podręczna) używaną przez system operacyjny do wymiany danych z pamięci na dysk, gdy jest on używany, a następnie pobiera z powrotem do pamięci, jeśli jest to konieczne.
 
 Domyślnie dane wydajności bazują na ostatnich sześciu godzinach, ale można zmienić okno przy użyciu opcji **TimeRange** w lewym górnym rogu. Można również filtrować wyniki w zakresie czasu, wybierając wartość **min**, **AVG**, **pięćdziesiąt**, **90**, **używany 95.** i **Max** w selektorze percentylu. 
 

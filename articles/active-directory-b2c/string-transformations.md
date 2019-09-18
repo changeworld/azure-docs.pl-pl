@@ -1,6 +1,6 @@
 ---
-title: Ciąg przykłady przekształcania oświadczeń tożsamości środowisko Framework schematu z usługi Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Ciąg oświadczeń przykłady przekształcania tożsamości środowisko Framework schematu z usługi Azure Active Directory B2C.
+title: Przykłady transformacji oświadczeń ciągów dla schematu struktury środowiska tożsamości Azure Active Directory B2C | Microsoft Docs
+description: Przykłady transformacji oświadczeń ciągów dla schematu struktury środowiska tożsamości Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,34 +10,34 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a06447aaa6579052285e7e2cd93bf40183ed173f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 83379cc194f23ebff977babc7124a7bc90f4bc60
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512582"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063456"
 ---
-# <a name="string-claims-transformations"></a>Ciąg oświadczeń przekształcenia
+# <a name="string-claims-transformations"></a>Przekształcenia oświadczeń ciągów
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Ten artykuł zawiera przykłady dotyczące używania przekształcenia oświadczeń ciągu schematu, struktura środowiska tożsamości w usłudze Azure Active Directory (Azure AD) B2C. Aby uzyskać więcej informacji, zobacz [ClaimsTransformations](claimstransformations.md).
+W tym artykule przedstawiono przykłady użycia przekształceń oświadczeń w ramach programu Identity Experience Framework w Azure Active Directory B2C (Azure AD B2C). Aby uzyskać więcej informacji, zobacz [ClaimsTransformations](claimstransformations.md).
 
-## <a name="assertstringclaimsareequal"></a>AssertStringClaimsAreEqual 
+## <a name="assertstringclaimsareequal"></a>AssertStringClaimsAreEqual
 
-Porównaj dwa oświadczenia i zgłosić wyjątek, jeśli nie są równe, zgodnie z określonego porównania inputClaim1, inputClaim2 i stringComparison.
+Porównaj dwa oświadczenia i Zgłoś wyjątek, jeśli nie są one równe zgodnie z określonymi porównaniami inputClaim1, inputClaim2 i stringComparison.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie InputClaim | inputClaim1 | string | Typ pierwszego oświadczenia, który ma być porównane. |
-| Oświadczenie InputClaim | inputClaim2 | string | Drugi typ oświadczenia, który ma być porównane. |
-| InputParameter | stringComparison | string | porównania ciągów, jedna z wartości: Ordinal, OrdinalIgnoreCase. |
+| Oświadczenie inputclaim | inputClaim1 | ciąg | Typ pierwszego wystąpienia, który ma zostać porównany. |
+| Oświadczenie inputclaim | inputClaim2 | ciąg | Typ drugiego zgłoszenia, który ma zostać porównany. |
+| InputParameter | stringComparison | ciąg | porównanie ciągów, jedna z wartości: Liczba porządkowa, OrdinalIgnoreCase. |
 
-**AssertStringClaimsAreEqual** przekształcania oświadczeń jest zawsze wykonywana z [profilu technicznego weryfikacji](validation-technical-profile.md) który jest wywoływany [własnym potwierdzone profilu technicznego](self-asserted-technical-profile.md). **UserMessageIfClaimsTransformationStringsAreNotEqual** samodzielnie profilu technicznego kontroluje komunikat o błędzie, które są prezentowane użytkownikowi.
+Przekształcenie oświadczeń **AssertStringClaimsAreEqual** jest zawsze wykonywane z poziomu [weryfikacji profilu technicznego](validation-technical-profile.md) , który jest wywoływany przez [własny profil techniczny](self-asserted-technical-profile.md). Metadane profilu technicznego **UserMessageIfClaimsTransformationStringsAreNotEqual** z własnym potwierdzeń są kontrolowane przez komunikat o błędzie wyświetlany użytkownikowi.
 
-![AssertStringClaimsAreEqual execution](./media/string-transformations/assert-execution.png)
+![AssertStringClaimsAreEqual wykonywanie](./media/string-transformations/assert-execution.png)
 
-Można użyć oświadczeń to przekształcenie, aby upewnić się, dwa ClaimTypes mają taką samą wartość. W przeciwnym razie generowany jest komunikat o błędzie. Poniższy przykład sprawdza, czy **strongAuthenticationEmailAddress** oświadczenia jest równa **e-mail** typu oświadczenia. W przeciwnym razie generowany jest komunikat o błędzie. 
+Możesz użyć tej transformacji oświadczeń, aby upewnić się, że dwa oświadczenia muszą mieć tę samą wartość. Jeśli nie, zostanie zgłoszony komunikat o błędzie. Poniższy przykład sprawdza, czy element ClaimType **strongAuthenticationEmailAddress** jest równy elementowi ClaimType **poczty e-mail** . W przeciwnym razie zostanie zgłoszony komunikat o błędzie.
 
 ```XML
 <ClaimsTransformation Id="AssertEmailAndStrongAuthenticationEmailAddressAreEqual" TransformationMethod="AssertStringClaimsAreEqual">
@@ -52,7 +52,7 @@ Można użyć oświadczeń to przekształcenie, aby upewnić się, dwa ClaimType
 ```
 
 
-**Logowania nieinterakcyjnego** wywołania profilu technicznego weryfikacji **AssertEmailAndStrongAuthenticationEmailAddressAreEqual** przekształcania oświadczeń.
+Profil techniczny **nieinteraktywnego sprawdzania poprawności nazwy logowania** jest wywoływany przez **AssertEmailAndStrongAuthenticationEmailAddressAreEqual** transformację oświadczeń.
 ```XML
 <TechnicalProfile Id="login-NonInteractive">
   ...
@@ -62,7 +62,7 @@ Można użyć oświadczeń to przekształcenie, aby upewnić się, dwa ClaimType
 </TechnicalProfile>
 ```
 
-Samodzielnie profilu technicznego wywołuje weryfikacji **logowania nieinterakcyjnego** profilu technicznego.
+Profil techniczny z własnym potwierdzeniem wywołuje profil techniczny **logowania weryfikacji — nieinteraktywny** .
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
@@ -77,24 +77,24 @@ Samodzielnie profilu technicznego wywołuje weryfikacji **logowania nieinterakcy
 
 ### <a name="example"></a>Przykład
 
-- Oświadczeń wejściowych:
-  - **inputClaim1**: someone@contoso.com
-  - **inputClaim2**: someone@outlook.com
+- Oświadczenia wejściowe:
+  - **inputClaim1**:someone@contoso.com
+  - **inputClaim2**:someone@outlook.com
     - Parametry wejściowe:
   - **stringComparison**: ordinalIgnoreCase
-- Wynik: Zgłoszony błąd
+- Wynika Zgłoszono błąd
 
-## <a name="changecase"></a>ChangeCase 
+## <a name="changecase"></a>ChangeCase
 
-Zmienia wielkość liter w podanej oświadczenia do obniżenia lub wielkie litery, w zależności od operatora.
+Zmienia wielkość liter podanego żądania na niższą lub wielką literę w zależności od operatora.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie InputClaim | inputClaim1 | string | Typ oświadczenia, które można zmienić. |
-| InputParameter | toCase | string | Jedną z następujących wartości: `LOWER` lub `UPPER`. |
-| oświadczenie outputClaim | oświadczenie outputClaim | string | Typ oświadczenia, które są generowane po tym przekształcania oświadczeń zostało wywołane. |
+| Oświadczenie inputclaim | inputClaim1 | ciąg | Wartość oświadczenia, którą można zmienić. |
+| InputParameter | toCase | ciąg | Jedna z następujących wartości: `LOWER` lub. `UPPER` |
+| Oświadczenie outputclaim | Oświadczenie outputclaim | ciąg | Wartość oświadczenia, która jest generowana po wywołaniu tej transformacji oświadczeń. |
 
-Użyj tego przekształcania oświadczeń, aby zmienić dowolnego ciągu typu oświadczenia, aby obniżyć lub wielkie litery.  
+Ta transformacja oświadczenia umożliwia zmianę dowolnego typu oświadczenia ciągu na niski lub wielką literę.
 
 ```XML
 <ClaimsTransformation Id="ChangeToLower" TransformationMethod="ChangeCase">
@@ -112,23 +112,23 @@ Użyj tego przekształcania oświadczeń, aby zmienić dowolnego ciągu typu oś
 
 ### <a name="example"></a>Przykład
 
-- Oświadczeń wejściowych:
-  - **adres e-mail**: SomeOne@contoso.com
+- Oświadczenia wejściowe:
+  - **adres e-mail**:SomeOne@contoso.com
 - Parametry wejściowe:
     - **toCase**: LOWER
-- Oświadczeń danych wyjściowych:
-  - **adres e-mail**: someone@contoso.com
+- Oświadczenia wyjściowe:
+  - **adres e-mail**:someone@contoso.com
 
-## <a name="createstringclaim"></a>CreateStringClaim 
+## <a name="createstringclaim"></a>CreateStringClaim
 
-Tworzy oświadczenie ciągu z podanego parametru wejściowego w zasadach.
+Tworzy w zasadach ciąg z podanego parametru wejściowego.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 |----- | ----------------------- | --------- | ----- |
-| InputParameter | value | string | Ciąg do ustawienia |
-| oświadczenie outputClaim | createdClaim | string | Typ oświadczenia, które są generowane po tym przekształcania oświadczeń zostało wywołane, z wartością określoną w parametrze wejściowym. |
+| InputParameter | value | ciąg | Ciąg, który ma zostać ustawiony. |
+| Oświadczenie outputclaim | createdClaim | ciąg | Wartość oświadczenia, która jest generowana po wywołaniu tej transformacji oświadczeń, z wartością określoną w parametrze wejściowym. |
 
-Służy to oświadczeń przekształcenia, aby ustawić ciąg wartości oświadczenia.
+Użyj tej transformacji oświadczeń, aby ustawić wartość typu oświadczenia ciągu.
 
 ```XML
 <ClaimsTransformation Id="CreateTermsOfService" TransformationMethod="CreateStringClaim">
@@ -144,23 +144,23 @@ Służy to oświadczeń przekształcenia, aby ustawić ciąg wartości oświadcz
 ### <a name="example"></a>Przykład
 
 - Parametr wejściowy:
-    - **Wartość**: Contoso warunki użytkowania usługi...
-- Oświadczeń danych wyjściowych:
-    - **createdClaim**: Element ClaimType TOS zawiera wartość "Contoso warunki korzystania z usługi...".
+    - **wartość**: Warunki użytkowania usługi firmy Contoso...
+- Oświadczenia wyjściowe:
+    - **createdClaim**: Oświadczenia TOS zawiera "warunki korzystania z usługi firmy Contoso..." wartościami.
 
 ## <a name="compareclaims"></a>CompareClaims
 
-Ustal, czy jedno oświadczenie ciągu jest równy innemu. Wynik jest nowy logiczna typu oświadczenia o wartości `true` lub `false`.
+Ustal, czy jedno z nich jest równe innemu. Wynik jest nowym obiektem logicznym ClaimType z wartością `true` lub `false`.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie InputClaim | inputClaim1 | string | Najpierw oświadczenia typu, który ma być porównane. |
-| Oświadczenie InputClaim | inputClaim2 | string | Po drugie oświadczenia typu, który ma być porównane. |
-| InputParameter | operator | string | Możliwe wartości: `EQUAL` lub `NOT EQUAL`. |
-| InputParameter | ignoreCase | boolean | Określa, czy to porównanie powinien ignorować wielkość liter porównywane ciągi. |
-| oświadczenie outputClaim | oświadczenie outputClaim | boolean | Typ oświadczenia, które są generowane po tym przekształcania oświadczeń zostało wywołane. |
+| Oświadczenie inputclaim | inputClaim1 | ciąg | Typ pierwszego wystąpienia, który ma zostać porównany. |
+| Oświadczenie inputclaim | inputClaim2 | ciąg | Drugi typ zgłoszenia, który ma zostać porównany. |
+| InputParameter | Zakład | ciąg | Możliwe wartości: `EQUAL` lub `NOT EQUAL`. |
+| InputParameter | ignoreCase | boolean | Określa, czy to porównanie ma ignorować wielkość liter podczas porównywania ciągów. |
+| Oświadczenie outputclaim | Oświadczenie outputclaim | boolean | Wartość oświadczenia, która jest generowana po wywołaniu tej transformacji oświadczeń. |
 
-Użycie oświadczeń to przekształcenie, aby sprawdzić, czy roszczenie jest taki sam, do innego roszczenia. Na przykład, następujące oświadczeń kontroli przekształcenia, jeśli wartość **e-mail** oświadczeń jest równa **Verified.Email** oświadczenia.
+Ta transformacja oświadczeń służy do sprawdzania, czy oświadczenie jest równe innemu oświadczenia. Na przykład następujące przekształcenia oświadczeń sprawdzają, czy wartość oświadczenia **adresu e-mail** jest równa **Zweryfikowanemu oświadczenia adresu e-mail** .
 
 ```XML
 <ClaimsTransformation Id="CheckEmail" TransformationMethod="CompareClaims">
@@ -180,28 +180,28 @@ Użycie oświadczeń to przekształcenie, aby sprawdzić, czy roszczenie jest ta
 
 ### <a name="example"></a>Przykład
 
-- Oświadczeń wejściowych:
-  - **inputClaim1**: someone@contoso.com
-  - **inputClaim2**: someone@outlook.com
+- Oświadczenia wejściowe:
+  - **inputClaim1**:someone@contoso.com
+  - **inputClaim2**:someone@outlook.com
 - Parametry wejściowe:
-    - **Operator**:  NIE RÓWNA SIĘ
-    - **ignoreCase**: true
-- Oświadczeń danych wyjściowych:
-    - **oświadczenie outputClaim**: true
+    - **operator**:  NIE RÓWNA SIĘ
+    - **IgnoreCase**: true
+- Oświadczenia wyjściowe:
+    - **oświadczenie outputclaim**: true
 
 ## <a name="compareclaimtovalue"></a>CompareClaimToValue
 
-Określa, czy wartość oświadczenia jest równa wartości parametru wejściowego.
+Określa, czy wartość żądania jest równa wartości parametru wejściowego.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie InputClaim | inputClaim1 | string | Typ oświadczenia, który ma być porównane. |
-| InputParameter | operator | string | Możliwe wartości: `EQUAL` lub `NOT EQUAL`. |
-| InputParameter | Element compareTo | string | porównania ciągów, jedna z wartości: Ordinal, OrdinalIgnoreCase. |
-| InputParameter | ignoreCase | boolean | Określa, czy to porównanie powinien ignorować wielkość liter porównywane ciągi. |
-| oświadczenie outputClaim | oświadczenie outputClaim | boolean | Typ oświadczenia, które są generowane po tym przekształcania oświadczeń zostało wywołane. |
+| Oświadczenie inputclaim | inputClaim1 | ciąg | Typ zgłoszenia, który ma zostać porównany. |
+| InputParameter | Zakład | ciąg | Możliwe wartości: `EQUAL` lub `NOT EQUAL`. |
+| InputParameter | compareTo | ciąg | porównanie ciągów, jedna z wartości: Liczba porządkowa, OrdinalIgnoreCase. |
+| InputParameter | ignoreCase | boolean | Określa, czy to porównanie ma ignorować wielkość liter podczas porównywania ciągów. |
+| Oświadczenie outputclaim | Oświadczenie outputclaim | boolean | Wartość oświadczenia, która jest generowana po wywołaniu tej transformacji oświadczeń. |
 
-Możesz użyć tego oświadczenia przekształcenia, aby sprawdzić, czy roszczenie jest równa określonej wartości. Na przykład, następujące oświadczeń kontroli przekształcenia, jeśli wartość **termsOfUseConsentVersion** oświadczeń jest równa `v1`.
+Możesz użyć tej transformacji oświadczeń, aby sprawdzić, czy oświadczenie jest równe określonej wartości. Na przykład następujące przekształcenia oświadczeń sprawdzają, czy wartość oświadczenia **termsOfUseConsentVersion** jest równa `v1`.
 
 ```XML
 <ClaimsTransformation Id="IsTermsOfUseConsentRequiredForVersion" TransformationMethod="CompareClaimToValue">
@@ -220,29 +220,29 @@ Możesz użyć tego oświadczenia przekształcenia, aby sprawdzić, czy roszczen
 ```
 
 ### <a name="example"></a>Przykład
-- Oświadczeń wejściowych:
-    - **inputClaim1**: 1
+- Oświadczenia wejściowe:
+    - **inputClaim1**: V1
 - Parametry wejściowe:
-    - **Element compareTo**: Wersja 1
-    - **Operator**: RÓWNA SIĘ 
-    - **ignoreCase**: true
-- Oświadczeń danych wyjściowych:
-    - **oświadczenie outputClaim**: true
+    - **CompareTo**: Wersja 1
+    - **operator**: WIĘKSZY
+    - **IgnoreCase**: true
+- Oświadczenia wyjściowe:
+    - **oświadczenie outputclaim**: true
 
 ## <a name="createrandomstring"></a>CreateRandomString
 
-Tworzy losowy ciąg przy użyciu generator liczb losowych. Jeśli generator liczb losowych jest typu `integer`, opcjonalnie można podać parametr inicjatora i maksymalną liczbę. Parametr opcjonalny ciąg formatu zezwala sformatowane przy użyciu jego danych wyjściowych, a parametr opcjonalny base64 Określa, czy dane wyjściowe oświadczenie outputClaim randomGeneratorType [identyfikator guid, liczba całkowita] zakodowane w formacie base64 (ciąg).
+Tworzy losowy ciąg przy użyciu generatora liczb losowych. Jeśli generator liczb losowych jest typu `integer`, opcjonalnie można podać parametr inicjatora i maksymalną liczbę. Opcjonalny parametr formatu ciągu umożliwia formatowanie danych wyjściowych przy użyciu go, a opcjonalny parametr Base64 określa, czy dane wyjściowe są zakodowane w formacie base64 randomGeneratorType [GUID, Integer] oświadczenie outputclaim (ciąg).
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| InputParameter | randomGeneratorType | string | Określa wartość losowe wygenerowanie, `GUID` (unikatowy identyfikator globalny) lub `INTEGER` (liczba). |
-| InputParameter | stringFormat | string | [Opcjonalnie] Sformatuj wartości losowej. |
-| InputParameter | base64 | boolean | [Opcjonalnie] Konwertuj wartość losową base64. Jeśli zostanie zastosowany format ciągu, wartość po ciągu formatu jest zakodowany w formacie Base64. |
-| InputParameter | maximumNumber | int | [Opcjonalnie] Aby uzyskać `INTEGER` randomGeneratorType tylko. Określ maksymalną liczbę. |
-| InputParameter | Inicjator  | int | [Opcjonalnie] Aby uzyskać `INTEGER` randomGeneratorType tylko. Należy określić inicjatora dla wartości losowej. Uwaga: ten sam inicjatora daje tę samą sekwencję liczb losowych. |
-| oświadczenie outputClaim | oświadczenie outputClaim | string | Zostało wywołane ClaimTypes, które zostaną wygenerowane po tym przekształcania oświadczeń. Wartości losowej. |
+| InputParameter | randomGeneratorType | ciąg | Określa wartość losową do wygenerowania `GUID` (unikatowy identyfikator globalny) lub `INTEGER` (liczba). |
+| InputParameter | StringFormat — | ciąg | Obowiązkowe Sformatuj wartość losową. |
+| InputParameter | base64 | boolean | Obowiązkowe Konwertuj wartość losową na format Base64. Jeśli format ciągu jest stosowany, wartość po formacie ciągu jest zaszyfrowana do Base64. |
+| InputParameter | maximumNumber | int | Obowiązkowe Tylko `INTEGER` dla randomGeneratorType. Określ maksymalną liczbę. |
+| InputParameter | sadzenia  | int | Obowiązkowe Tylko `INTEGER` dla randomGeneratorType. Określ inicjator dla losowej wartości. Uwaga: ten sam inicjator zwraca tę samą sekwencję liczb losowych. |
+| Oświadczenie outputclaim | Oświadczenie outputclaim | ciąg | Oświadczenia są tworzone po wywołaniu tej transformacji oświadczeń. Wartość losowa. |
 
-Poniższy przykład generuje unikatowy identyfikator globalny. Oświadczeń to, że przekształcenie służy do tworzenia losowej nazwy UPN (główna nazwa użytkownika).
+Poniższy przykład generuje globalnie unikatowy identyfikator. Ta transformacja oświadczeń służy do tworzenia losowej nazwy UPN (główna nazwa użytkownika).
 
 ```XML
 <ClaimsTransformation Id="CreateRandomUPNUserName" TransformationMethod="CreateRandomString">
@@ -257,11 +257,11 @@ Poniższy przykład generuje unikatowy identyfikator globalny. Oświadczeń to, 
 ### <a name="example"></a>Przykład
 
 - Parametry wejściowe:
-    - **randomGeneratorType**: Identyfikator GUID
-- Oświadczeń danych wyjściowych: 
+    - **randomGeneratorType**: GUID
+- Oświadczenia wyjściowe:
     - **outputClaim**: bc8bedd2-aaa3-411e-bdee-2f1810b73dfc
 
-Poniższy przykład generuje losową wartość całkowitą od 0 do 1000. Wartość jest formatowane OTP_ {losową wartość}.
+Poniższy przykład generuje losową wartość całkowitą z zakresu od 0 do 1000. Wartość jest formatowana do OTP_ {Value Random}.
 
 ```XML
 <ClaimsTransformation Id="SetRandomNumber" TransformationMethod="CreateRandomString">
@@ -282,23 +282,23 @@ Poniższy przykład generuje losową wartość całkowitą od 0 do 1000. Wartoś
 - Parametry wejściowe:
     - **randomGeneratorType**: INTEGER
     - **maximumNumber**: 1000
-    - **stringFormat**: OTP_{0}
+    - **StringFormat —** : OTP_{0}
     - **Base64**: false
-- Oświadczeń danych wyjściowych: 
-    - **oświadczenie outputClaim**: OTP_853
+- Oświadczenia wyjściowe:
+    - **oświadczenie outputclaim**: OTP_853
 
 
 ## <a name="formatstringclaim"></a>FormatStringClaim
 
-Format oświadczenia zgodnie z podany ciąg formatu. Ta transformacja używa języka C# `String.Format` metody.
+Sformatuj wierzytelność zgodnie z podanym ciągiem formatu. Ta transformacja używa C# `String.Format` metody.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie InputClaim | Oświadczenie InputClaim |string |Typ oświadczenia, który działa jako format ciągu {0} parametru. |
-| InputParameter | stringFormat | string | Format ciągu, w tym {0} parametru. |
-| oświadczenie outputClaim | oświadczenie outputClaim | string | Typ oświadczenia, które są generowane po tym przekształcania oświadczeń zostało wywołane. |
+| Oświadczenie inputclaim | Oświadczenie inputclaim |ciąg |Wartość oświadczenia, która działa jako parametr {0} formatu ciągu. |
+| InputParameter | StringFormat — | ciąg | Format ciągu, łącznie z {0} parametrem. |
+| Oświadczenie outputclaim | Oświadczenie outputclaim | ciąg | Wartość oświadczenia, która jest generowana po wywołaniu tej transformacji oświadczeń. |
 
-Korzystanie z oświadczeń to przekształcenie do formatu dowolny ciąg znaków z jednego parametru {0}. Poniższy przykład tworzy **userPrincipalName**. Wszystkie tożsamości dla sieci społecznościowej dostawcy profile techniczne, takie jak `Facebook-OAUTH` wywołania **CreateUserPrincipalName** do generowania **userPrincipalName**.   
+Ta transformacja oświadczeń służy do formatowania dowolnego ciągu z jednym parametrem {0}. Poniższy przykład tworzy element **userPrincipalName**. Wszystkie profile techniczne dostawcy tożsamości społecznościowej, takie `Facebook-OAUTH` jak wywołanie elementu.
 
 ```XML
 <ClaimsTransformation Id="CreateUserPrincipalName" TransformationMethod="FormatStringClaim">
@@ -316,25 +316,25 @@ Korzystanie z oświadczeń to przekształcenie do formatu dowolny ciąg znaków 
 
 ### <a name="example"></a>Przykład
 
-- Oświadczeń wejściowych:
-    - **inputClaim**: 5164db16-3eee-4629-bfda-dcc3326790e9
+- Oświadczenia wejściowe:
+    - **oświadczenie inputclaim**: 5164db16-3eee-4629-bfda-dcc3326790e9
 - Parametry wejściowe:
-    - **stringFormat**: cpim_{0}@{RelyingPartyTenantId}
-- Oświadczeń danych wyjściowych:
-  - **oświadczenie outputClaim**: cpim_5164db16-3eee-4629-bfda-dcc3326790e9@b2cdemo.onmicrosoft.com
+    - **StringFormat —** : cpim_{0}@ {RelyingPartyTenantId}
+- Oświadczenia wyjściowe:
+  - **oświadczenie outputclaim**:cpim_5164db16-3eee-4629-bfda-dcc3326790e9@b2cdemo.onmicrosoft.com
 
 ## <a name="formatstringmultipleclaims"></a>FormatStringMultipleClaims
 
-Formatuj dwa oświadczenia zgodnie z podany ciąg formatu. Ta transformacja używa języka C# **String.Format** metody.
+Sformatuj dwa oświadczenia zgodnie z podanym ciągiem formatu. Ta transformacja używa C# metody **String. format** .
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie InputClaim | Oświadczenie InputClaim |string | Typ oświadczenia, który działa jako format ciągu {0} parametru. |
-| Oświadczenie InputClaim | Oświadczenie InputClaim | string | Typ oświadczenia, który działa jako format ciągu {1} parametru. |
-| InputParameter | stringFormat | string | Format ciągu, w tym {0} i {1} parametrów. |
-| oświadczenie outputClaim | oświadczenie outputClaim | string | Typ oświadczenia, które są generowane po tym przekształcania oświadczeń zostało wywołane. |
+| Oświadczenie inputclaim | Oświadczenie inputclaim |ciąg | Wartość oświadczenia, która działa jako parametr {0} formatu ciągu. |
+| Oświadczenie inputclaim | Oświadczenie inputclaim | ciąg | Wartość oświadczenia, która działa jako parametr {1} formatu ciągu. |
+| InputParameter | StringFormat — | ciąg | Format ciągu, łącznie z {0} parametrami i. {1} |
+| Oświadczenie outputclaim | Oświadczenie outputclaim | ciąg | Wartość oświadczenia, która jest generowana po wywołaniu tej transformacji oświadczeń. |
 
-Korzystanie z oświadczeń to przekształcenie do formatu dowolny ciąg, z dwoma parametrami {0} i {1}. Poniższy przykład tworzy **displayName** przy użyciu określonego formatu:
+Ta transformacja oświadczeń służy do formatowania dowolnego ciągu z dwoma parametrami {0} i {1}. Poniższy przykład tworzy **DisplayName** o określonym formacie:
 
 ```XML
 <ClaimsTransformation Id="CreateDisplayNameFromFirstNameAndLastName" TransformationMethod="FormatStringMultipleClaims">
@@ -353,24 +353,24 @@ Korzystanie z oświadczeń to przekształcenie do formatu dowolny ciąg, z dwoma
 
 ### <a name="example"></a>Przykład
 
-- Oświadczeń wejściowych:
-    - **inputClaim1**: Joe
+- Oświadczenia wejściowe:
+    - **inputClaim1**: Janusz
     - **inputClaim2**: Fernando
 - Parametry wejściowe:
-    - **stringFormat**: {0} {1}
-- Oświadczeń danych wyjściowych:
-    - **oświadczenie outputClaim**: Joe Fernando
+    - **StringFormat —** : {0}{1}
+- Oświadczenia wyjściowe:
+    - **oświadczenie outputclaim**: Jan Fernando
 
 ## <a name="getmappedvaluefromlocalizedcollection"></a>GetMappedValueFromLocalizedCollection
 
-Trwa wyszukiwanie elementu z oświadczenia **ograniczeń** kolekcji.
+Wyszukiwanie elementu z kolekcji **ograniczeń** dotyczących roszczeń.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie InputClaim | mapFromClaim | string | Oświadczenie, które zawiera tekst, który ma być wyszukiwana w **restrictionValueClaim** oświadczeń z **ograniczeń** kolekcji.  |
-| oświadczenie outputClaim | restrictionValueClaim | string | Oświadczenie, które zawiera **ograniczeń** kolekcji. Po wywołaniu przekształcania oświadczeń wartość tego oświadczenia zawiera wartość wybranego elementu. |
+| Oświadczenie inputclaim | mapFromClaim | ciąg | Oświadczenie zawierające tekst do wyszukania w oświadczeniach **restrictionValueClaim** z kolekcją **ograniczeń** .  |
+| Oświadczenie outputclaim | restrictionValueClaim | ciąg | Zastrzeżenie, które zawiera kolekcję **ograniczeń** . Po wywołaniu przekształcenia oświadczeń wartość tego oświadczenia zawiera wartość wybranego elementu. |
 
-Poniższy przykład pobiera opis komunikatu o błędzie na podstawie klucza błąd. **ResponseMsg** oświadczeń zawiera zbiór komunikaty o błędach, aby przedstawić użytkownikowi końcowemu lub do wysłania do jednostki uzależnionej.
+Poniższy przykład wyszukuje opis komunikatu o błędzie na podstawie klucza błędu. **ResponseMsg** zawiera kolekcję komunikatów o błędach, które mają być obecne dla użytkownika końcowego lub wysyłane do jednostki uzależnionej.
 
 ```XML
 <ClaimType Id="responseMsg">
@@ -384,7 +384,7 @@ Poniższy przykład pobiera opis komunikatu o błędzie na podstawie klucza bł�
   </Restriction>
 </ClaimType>
 ```
-Przekształcanie oświadczeń wyszukuje tekst elementu i zwraca jego wartość. Jeżeli ograniczenia są lokalizowane za pomocą `<LocalizedCollection>`, przekształcania oświadczeń zwraca zlokalizowaną wartość.
+Transformacja oświadczeń wyszukuje tekst elementu i zwraca jego wartość. Jeśli ograniczenie jest zlokalizowane przy użyciu `<LocalizedCollection>`, transformacja oświadczeń zwraca zlokalizowaną wartość.
 
 ```XML
 <ClaimsTransformation Id="GetResponseMsgMappedToResponseCode" TransformationMethod="GetMappedValueFromLocalizedCollection">
@@ -392,30 +392,30 @@ Przekształcanie oświadczeń wyszukuje tekst elementu i zwraca jego wartość. 
     <InputClaim ClaimTypeReferenceId="responseCode" TransformationClaimType="mapFromClaim" />
   </InputClaims>
   <OutputClaims>
-    <OutputClaim ClaimTypeReferenceId="responseMsg" TransformationClaimType="restrictionValueClaim" />         
+    <OutputClaim ClaimTypeReferenceId="responseMsg" TransformationClaimType="restrictionValueClaim" />        
   </OutputClaims>
 </ClaimsTransformation>
 ```
 
 ### <a name="example"></a>Przykład
 
-- Oświadczeń wejściowych:
+- Oświadczenia wejściowe:
     - **mapFromClaim**: B2C_V1_90001
-- Oświadczeń danych wyjściowych:
-    - **restrictionValueClaim**: Możesz niedomiaru zalogować, ponieważ jesteś pomocnicze.
+- Oświadczenia wyjściowe:
+    - **restrictionValueClaim**: Nie możesz się zalogować, ponieważ jesteś małym.
 
 ## <a name="lookupvalue"></a>LookupValue
 
-Wyszukaj wartość oświadczenia z listy na podstawie wartości oświadczenia innej wartości.
+Wyszukaj wartość roszczeń z listy wartości na podstawie wartości innego żądania.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie InputClaim | inputParameterId | string | Oświadczenie, które zawiera wartość wyszukiwania |
-| InputParameter | |string | Kolekcja inputParameters. |
-| InputParameter | errorOnFailedLookup | boolean | Kontrolowanie, czy błąd jest zwracany, gdy nie pasującego wyszukiwania. |
-| oświadczenie outputClaim | inputParameterId | string | Zostało wywołane ClaimTypes, które zostaną wygenerowane po tym przekształcania oświadczeń. Wartość identyfikatora dopasowania. |
+| Oświadczenie inputclaim | inputParameterId | ciąg | Zgłoszenie zawierające wartość wyszukiwania |
+| InputParameter | |ciąg | Kolekcja inputParameters. |
+| InputParameter | errorOnFailedLookup | boolean | Kontrolowanie, czy błąd jest zwracany w przypadku braku zgodnego wyszukiwania. |
+| Oświadczenie outputclaim | inputParameterId | ciąg | Oświadczenia są tworzone po wywołaniu tej transformacji oświadczeń. Wartość zgodnego identyfikatora. |
 
-Poniższy przykład pobiera nazwę domeny w jednej z kolekcji inputParameters. Przekształcanie oświadczeń wyszukuje nazwy domeny w identyfikatorze i zwraca jego wartość (identyfikator aplikacji).
+Poniższy przykład wyszukuje nazwę domeny w jednej z kolekcji inputParameters. Transformacja oświadczeń wyszukuje nazwę domeny w identyfikatorze i zwraca jej wartość (Identyfikator aplikacji).
 
 ```XML
  <ClaimsTransformation Id="DomainToClientId" TransformationMethod="LookupValue">
@@ -431,30 +431,30 @@ Poniższy przykład pobiera nazwę domeny w jednej z kolekcji inputParameters. P
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="domainAppId" TransformationClaimType="outputClaim" />
   </OutputClaims>
-</ClaimsTransformation> 
+</ClaimsTransformation>
 ```
 
 ### <a name="example"></a>Przykład
 
-- Oświadczeń wejściowych:
+- Oświadczenia wejściowe:
     - **inputParameterId**: test.com
 - Parametry wejściowe:
     - **contoso.com**: 13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
     - **microsoft.com**: 0213308f-17cb-4398-b97e-01da7bd4804e
     - **test.com**: c7026f88-4299-4cdb-965d-3f166464b8a9
-    - **errorOnFailedLookup**: false
-- Oświadczeń danych wyjściowych:
-    - **outputClaim**:  c7026f88-4299-4cdb-965d-3f166464b8a9
+    - **errorOnFailedLookup**: FAŁSZ
+- Oświadczenia wyjściowe:
+    - **oświadczenie outputclaim**: c7026f88-4299-4CDB-965d-3f166464b8a9
 
 ## <a name="nullclaim"></a>NullClaim
 
-Wyczyść wartość danego oświadczenia.
+Wyczyść wartość danego żądania.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| oświadczenie outputClaim | claim_to_null | string | Oświadczenie jej wartość na wartość NULL. |
+| Oświadczenie outputclaim | claim_to_null | ciąg | Wartość tego żądania jest równa NULL. |
 
-Usuń zbędne dane z zbiór właściwości oświadczenia za pomocą tego przekształcania oświadczeń. Tak pliku cookie sesji będzie mniejsza. Poniższy przykład usuwa wartość `TermsOfService` typ oświadczenia.
+Ta transformacja oświadczenia służy do usuwania zbędnych danych z zbioru właściwości oświadczeń. W związku z tym plik cookie sesji będzie mniejszy. Poniższy przykład usuwa wartość `TermsOfService` typu "typ".
 
 ```XML
 <ClaimsTransformation Id="SetTOSToNull" TransformationMethod="NullClaim">
@@ -464,10 +464,10 @@ Usuń zbędne dane z zbiór właściwości oświadczenia za pomocą tego przeksz
 </ClaimsTransformation>
 ```
 
-- Oświadczeń wejściowych:
-    - **oświadczenie outputClaim**: Zapraszamy do aplikacji firmy Contoso. Jeśli nadal Przeglądaj i korzystaj z tej witryny sieci Web, zgadzasz się do wykonania i być ograniczone przez następujące warunki i postanowienia...
-- Oświadczeń danych wyjściowych:
-    - **oświadczenie outputClaim**: NULL
+- Oświadczenia wejściowe:
+    - **oświadczenie outputclaim**: Witamy w aplikacji contoso. Jeśli będziesz kontynuować przeglądanie tej witryny sieci Web i korzystanie z niej, wyrażasz zgodę na przestrzeganie i powiąże się z następującymi warunkami i postanowieniami...
+- Oświadczenia wyjściowe:
+    - **oświadczenie outputclaim**: NULL
 
 ## <a name="parsedomain"></a>ParseDomain
 
@@ -475,10 +475,10 @@ Pobiera część domeny adresu e-mail.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie InputClaim | emailAddress | string | Typ oświadczenia, który zawiera adres e-mail. |
-| oświadczenie outputClaim | Domeny | string | Typ oświadczenia, które są generowane po tym przekształcania oświadczeń zostało wywołane — domeny. |
+| Oświadczenie inputclaim | emailAddress | ciąg | Wartość oświadczenia, która zawiera adres e-mail. |
+| Oświadczenie outputclaim | domena | ciąg | Wartość oświadczenia, która jest generowana po wywołaniu tej transformacji oświadczeń — domena. |
 
-Użyj oświadczeń to przekształcenie, które można przeanalizować nazwy domeny po symbolu użytkownika @. Może to być przydatne podczas usuwania identyfikowalne dane osobowe (PII) z danych inspekcji. Następujące przekształcania oświadczeń pokazuje, jak można przeanalizować nazwy domeny z **e-mail** oświadczenia.
+Użyj tej transformacji oświadczeń, aby przeanalizować nazwę domeny po znaku @ symbolu użytkownika. Może to być przydatne w przypadku usuwania informacji osobowych z danych inspekcji. Następująca transformacja oświadczeń pokazuje, jak przeanalizować nazwę domeny z oświadczenia **adresu e-mail** .
 
 ```XML
 <ClaimsTransformation Id="SetDomainName" TransformationMethod="ParseDomain">
@@ -493,27 +493,27 @@ Użyj oświadczeń to przekształcenie, które można przeanalizować nazwy dome
 
 ### <a name="example"></a>Przykład
 
-- Oświadczeń wejściowych:
-  - **emailAddress**: joe@outlook.com
-- Oświadczeń danych wyjściowych:
-    - **domeny**: outlook.com
+- Oświadczenia wejściowe:
+  - **EmailAddress**:joe@outlook.com
+- Oświadczenia wyjściowe:
+    - **domena**: Outlook.com
 
 ## <a name="setclaimsifstringsareequal"></a>SetClaimsIfStringsAreEqual
 
-Sprawdza, czy ciąg oświadczeń i `matchTo` parametr wejściowy są równe, i zestawy danych wyjściowych oświadczenia o wartości, które są obecne w `stringMatchMsg` i `stringMatchMsgCode` parametrów wraz z oświadczeń wychodzących wynik porównania, która ma być ustawiona jako wejściowych `true` lub `false` na podstawie wyniku porównania.
+Sprawdza, czy oświadczenie ciągu i `matchTo` parametr wejściowy są równe, a następnie ustawia oświadczenia danych wyjściowych z wartością `stringMatchMsg` obecną w parametrach i parametrów wejściowych oraz `stringMatchMsgCode` z oświadczeniem wyjściowym porównania wynik, `true` który ma zostać ustawiony jako lub `false` na podstawie wyniku porównania.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie InputClaim | Oświadczenie InputClaim | string | Typ oświadczenia należy porównać. |
-| InputParameter | matchTo | string | Ciąg, który ma zostać porównane z `inputClaim`. |
-| InputParameter | stringComparison | string | Możliwe wartości: `Ordinal` lub `OrdinalIgnoreCase`. |
-| InputParameter | stringMatchMsg | string | Pierwsza wartość do ustawienia, jeśli ciągi są równe. |
-| InputParameter | stringMatchMsgCode | string | Druga wartość do ustawienia, jeśli ciągi są równe. |
-| oświadczenie outputClaim | outputClaim1 | string | Jeśli ciągi są equals, to oświadczenie w danych wyjściowych zawiera wartość `stringMatchMsg` parametr wejściowy. |
-| oświadczenie outputClaim | outputClaim2 | string | Jeśli ciągi są equals, to oświadczenie w danych wyjściowych zawiera wartość `stringMatchMsgCode` parametr wejściowy. |
-| oświadczenie outputClaim | stringCompareResultClaim | boolean | Typ, który ma być ustawiony jako oświadczeń wychodzących wynik porównania `true` lub `false` na podstawie wyniku porównania. |
+| Oświadczenie inputclaim | Oświadczenie inputclaim | ciąg | Typ zgłoszenia, który ma zostać porównany. |
+| InputParameter | matchTo | ciąg | Ciąg, który ma zostać porównany z `inputClaim`. |
+| InputParameter | stringComparison | ciąg | Możliwe wartości: `Ordinal` lub `OrdinalIgnoreCase`. |
+| InputParameter | stringMatchMsg | ciąg | Pierwsza wartość, która ma być ustawiona, jeśli ciągi są równe. |
+| InputParameter | stringMatchMsgCode | ciąg | Druga wartość, która ma zostać ustawiona, jeśli ciągi są równe. |
+| Oświadczenie outputclaim | outputClaim1 | ciąg | Jeśli ciągi są równe, to zgłoszenie wyjściowe zawiera wartość `stringMatchMsg` parametru wejściowego. |
+| Oświadczenie outputclaim | outputClaim2 | ciąg | Jeśli ciągi są równe, to zgłoszenie wyjściowe zawiera wartość `stringMatchMsgCode` parametru wejściowego. |
+| Oświadczenie outputclaim | stringCompareResultClaim | boolean | Typ zgłoszenia wynikowego porównania, który ma zostać ustawiony jako `true` lub `false` w oparciu o wynik porównania. |
 
-Możesz użyć tego oświadczenia przekształcenia, aby sprawdzić, czy roszczenie jest równa określonej wartości. Na przykład, następujące oświadczeń kontroli przekształcenia, jeśli wartość **termsOfUseConsentVersion** oświadczeń jest równa `v1`. Jeśli tak, zmień wartość na `v2`. 
+Możesz użyć tej transformacji oświadczeń, aby sprawdzić, czy oświadczenie jest równe określonej wartości. Na przykład następujące przekształcenia oświadczeń sprawdzają, czy wartość oświadczenia **termsOfUseConsentVersion** jest równa `v1`. Jeśli tak, Zmień wartość na `v2`.
 
 ```XML
 <ClaimsTransformation Id="CheckTheTOS" TransformationMethod="SetClaimsIfStringsAreEqual">
@@ -535,32 +535,32 @@ Możesz użyć tego oświadczenia przekształcenia, aby sprawdzić, czy roszczen
 ```
 ### <a name="example"></a>Przykład
 
-- Oświadczeń wejściowych:
-    - **oświadczenie inputClaim**: 1
+- Oświadczenia wejściowe:
+    - **oświadczenie inputclaim**: V1
 - Parametry wejściowe:
     - **matchTo**: Wersja 1
-    - **stringComparison**: ordinalIgnoreCase 
+    - **stringComparison**: ordinalIgnoreCase
     - **stringMatchMsg**:  B2C_V1_90005
-    - **stringMatchMsgCode**:  OT została uaktualniona do wersji 2
-- Oświadczeń danych wyjściowych:
+    - **stringMatchMsgCode**:  OT jest uaktualniany do wersji 2
+- Oświadczenia wyjściowe:
     - **outputClaim1**: B2C_V1_90005
-    - **outputClaim2**: OT została uaktualniona do wersji 2
+    - **outputClaim2**: OT jest uaktualniany do wersji 2
     - **stringCompareResultClaim**: true
 
 ## <a name="setclaimsifstringsmatch"></a>SetClaimsIfStringsMatch
 
-Sprawdza, czy ciąg oświadczeń i `matchTo` parametr wejściowy są równe, i zestawy danych wyjściowych oświadczenia o wartości, które są obecne w `outputClaimIfMatched` parametr wejściowy, wraz z oświadczeń wychodzących wynik porównania, która ma być ustawiona jako `true` lub `false` na podstawie wynik porównania.
+Sprawdza, czy oświadczenie ciągu i `matchTo` parametr wejściowy są równe, a następnie ustawia oświadczenia danych wyjściowych z wartością `outputClaimIfMatched` obecną w parametrze wejściowym oraz z oświadczeniem wyjściowym porównania wynik, `true` które `false` ma zostać ustawione jako lub oparte na wynik porównania.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie InputClaim | claimToMatch | string | Typ oświadczenia należy porównać. |
-| InputParameter | matchTo | string | Ciąg, który ma zostać porównane z oświadczenie inputClaim. |
-| InputParameter | stringComparison | string | Możliwe wartości: `Ordinal` lub `OrdinalIgnoreCase`. |
-| InputParameter | outputClaimIfMatched | string | Wartość można ustawić, jeśli ciągi są równe. |
-| oświadczenie outputClaim | oświadczenie outputClaim | string | Jeśli ciągi są equals, to oświadczenie w danych wyjściowych zawiera wartość `outputClaimIfMatched` parametr wejściowy. Lub wartość null, jeśli ciągi są dopasowania. |
-| oświadczenie outputClaim | stringCompareResultClaim | boolean | Typ, który ma być ustawiony jako oświadczeń wychodzących wynik porównania `true` lub `false` na podstawie wyniku porównania. |
+| Oświadczenie inputclaim | claimToMatch | ciąg | Typ zgłoszenia, który ma zostać porównany. |
+| InputParameter | matchTo | ciąg | Ciąg, który będzie porównywany z oświadczenie inputclaim. |
+| InputParameter | stringComparison | ciąg | Możliwe wartości: `Ordinal` lub `OrdinalIgnoreCase`. |
+| InputParameter | outputClaimIfMatched | ciąg | Wartość, która ma zostać ustawiona, jeśli ciągi są równe. |
+| Oświadczenie outputclaim | Oświadczenie outputclaim | ciąg | Jeśli ciągi są równe, to zgłoszenie wyjściowe zawiera wartość `outputClaimIfMatched` parametru wejściowego. Lub wartość null, jeśli ciągi nie są zgodne. |
+| Oświadczenie outputclaim | stringCompareResultClaim | boolean | Typ zgłoszenia wynikowego porównania, który ma zostać ustawiony jako `true` lub `false` w oparciu o wynik porównania. |
 
-Na przykład, następujące oświadczeń kontroli przekształcenia, jeśli wartość **grupy wiekowej** oświadczeń jest równa `Minor`. Jeśli tak, zwróć wartość `B2C_V1_90001`. 
+Na przykład następujące przekształcenia oświadczeń sprawdzają, czy wartość oświadczenia **grupy wiekowej** jest równa `Minor`. Jeśli tak, zwróć wartość do `B2C_V1_90001`.
 
 ```XML
 <ClaimsTransformation Id="SetIsMinor" TransformationMethod="SetClaimsIfStringsMatch">
@@ -581,13 +581,13 @@ Na przykład, następujące oświadczeń kontroli przekształcenia, jeśli warto
 
 ### <a name="example"></a>Przykład
 
-- Oświadczeń wejściowych:
+- Oświadczenia wejściowe:
     - **claimToMatch**: Pomocnicza
 - Parametry wejściowe:
     - **matchTo**: Pomocnicza
-    - **stringComparison**: ordinalIgnoreCase 
+    - **stringComparison**: ordinalIgnoreCase
     - **outputClaimIfMatched**:  B2C_V1_90001
-- Oświadczeń danych wyjściowych:
+- Oświadczenia wyjściowe:
     - **isMinorResponseCode**: B2C_V1_90001
-    - **isMinor**: true
+    - **ismoll**: prawda
 

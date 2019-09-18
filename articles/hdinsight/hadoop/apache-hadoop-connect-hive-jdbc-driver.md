@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: hrasheed
-ms.openlocfilehash: 689926d0dbaebaaf56c8238e8fed7a691e8cacf4
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: cd8a6c7e7f5ddf781fcd63f3969eedd8f45424bc
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882507"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058615"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Wysyłanie zapytań do Apache Hive za pomocą sterownika JDBC w usłudze HDInsight
 
@@ -67,7 +67,7 @@ SQuirreL SQL to klient JDBC, za pomocą którego można zdalnie uruchamiać zapy
 
 4. Z ikon w górnej części okna dialogowego **sterowniki** wybierz **+** ikonę, aby utworzyć sterownik.
 
-    ![Ikony sterowników](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-driversicons.png)
+    ![Ikona sterowników aplikacji SQL SQuirreL](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-driversicons.png)
 
 5. W oknie dialogowym Dodawanie sterownika Dodaj następujące informacje:
 
@@ -76,13 +76,13 @@ SQuirreL SQL to klient JDBC, za pomocą którego można zdalnie uruchamiać zapy
     * **Dodatkowa ścieżka klasy**: Użyj przycisku **Dodaj** , aby dodać wszystkie pobrane wcześniej pliki jar
     * **Nazwa klasy**: org. Apache. Hive. JDBC. HiveDriver
 
-   ![okno dialogowe Dodawanie sterownika](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-add-driver.png)
+   ![okno dialogowe Dodawanie sterownika z parametrami](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-add-driver.png)
 
    Wybierz **przycisk OK** , aby zapisać te ustawienia.
 
 6. Po lewej stronie okna SQuirreL SQL Wybierz pozycję **aliasy**. Następnie wybierz ikonę **+** , aby utworzyć alias połączenia.
 
-    ![Dodaj nowy alias](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-new-aliases.png)
+    ![Okno dialogowe Dodawanie nowego aliasu w programie SQL SQuirreL](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-new-aliases.png)
 
 7. W oknie dialogowym **Dodawanie aliasu** należy użyć następujących wartości.
 
@@ -98,16 +98,16 @@ SQuirreL SQL to klient JDBC, za pomocą którego można zdalnie uruchamiać zapy
 
     * **Hasło**: Hasło do konta logowania do klastra.
 
-   ![okno dialogowe Dodawanie aliasu](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-addalias-dialog.png)
+   ![Dodaj okno dialogowe aliasu z parametrami](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-addalias-dialog.png)
 
-    > [!IMPORTANT] 
+    > [!IMPORTANT]
     > Użyj przycisku **Testuj** , aby sprawdzić, czy połączenie działa. Po **nawiązaniu połączenia z: Zostanie wyświetlone okno** dialogowe Hive w usłudze HDInsight, a następnie wybierz pozycję **Połącz** , aby wykonać test. Jeśli test zakończy się pomyślnie, zostanie wyświetlone okno dialogowe **pomyślne połączenie** . Jeśli wystąpi błąd, zobacz [Rozwiązywanie problemów](#troubleshooting).
 
     Aby zapisać alias połączenia, użyj przycisku **OK** u dołu okna dialogowego **Dodawanie aliasu** .
 
 8. Z listy rozwijanej **Połącz** z na początku SQuirreL SQL Wybierz pozycję **Hive w usłudze HDInsight**. Po wyświetleniu monitu wybierz **Connect**.
 
-    ![okno dialogowe połączenia](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-connect-dialog.png)
+    ![okno dialogowe połączenia z parametrami](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-connect-dialog.png)
 
 9. Po nawiązaniu połączenia wprowadź następujące zapytanie do okna dialogowego zapytania SQL, a następnie wybierz ikonę **Run** (uruchomiona osoba). Obszar wyników powinien zawierać wyniki zapytania.
 

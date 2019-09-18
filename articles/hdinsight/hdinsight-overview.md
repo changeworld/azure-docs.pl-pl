@@ -4,16 +4,17 @@ description: Wprowadzenie do usługi HDInsight oraz stosu i składników technol
 keywords: azure hadoop, hadoop azure, wprowadzenie do hadoop, wprowadzenie do usługi hadoop, stos technologii hadoop, wstęp do hadoop, wprowadzenie do platformy hadoop, co to jest klaster hadoop, co to są klastry hadoop, do czego służy usługa hadoop
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: overview
 ms.date: 06/11/2019
-ms.openlocfilehash: 42de6277449b51eb51a13148504e7e9a5f6f5270
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: f950d273e16dc7fc25f443fda58f9d6582085129
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208500"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076402"
 ---
 # <a name="what-is-azure-hdinsight"></a>Co to jest usługa Azure HDInsight?
 

@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie danymi użytkownika w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak usunąć lub eksportowanie danych użytkownika w usłudze Azure AD B2C.
+title: Zarządzanie danymi użytkowników w Azure Active Directory B2C | Microsoft Docs
+description: Dowiedz się, jak usunąć lub wyeksportować dane użytkowników w Azure AD B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -11,55 +11,55 @@ ms.date: 05/06/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4cbca467b50dd0e43132b6d09dc0785c501fca0f
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 78726620db119abf617be8a30cf03697b04e382b
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204675"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064083"
 ---
-# <a name="manage-user-data-in-azure-active-directory-b2c"></a>Zarządzanie danymi użytkownika w usłudze Azure Active Directory B2C
+# <a name="manage-user-data-in-azure-active-directory-b2c"></a>Zarządzanie danymi użytkowników w Azure Active Directory B2C
 
- W tym artykule opisano, jak możesz zarządzać danymi użytkownika w usłudze Azure Active Directory (Azure AD) B2C przy użyciu operacji, które są dostarczane przez [interfejsu API usługi Azure Active Directory Graph](/previous-versions/azure/ad/graph/api/api-catalog). Zarządzanie danymi użytkowników obejmuje usunięcie lub eksportowanie danych z dzienników inspekcji.
+ W tym artykule omówiono sposób zarządzania danymi użytkownika w programie Azure Active Directory B2C (Azure AD B2C) przy użyciu operacji dostarczonych przez [Azure Active Directory interfejs API programu Graph](/previous-versions/azure/ad/graph/api/api-catalog). Zarządzanie danymi użytkowników obejmuje usuwanie lub eksportowanie danych z dzienników inspekcji.
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
-## <a name="delete-user-data"></a>Usuń dane użytkownika
+## <a name="delete-user-data"></a>Usuwanie danych użytkownika
 
-Dane użytkownika są przechowywane w katalogu usługi Azure AD B2C i dzienników inspekcji. Wszystkie dane inspekcji użytkownika są przechowywane przez 7 dni w usłudze Azure AD B2C. Jeśli chcesz usunąć dane użytkownika w tym okresie 7 dni, możesz użyć [usunąć użytkownika](/previous-versions/azure/ad/graph/api/users-operations#DeleteUser) operacji. Operacja usuwania jest wymagana dla wszystkich dzierżaw usługi Azure AD B2C lokalizację danych. 
+Dane użytkownika są przechowywane w katalogu Azure AD B2C i w dziennikach inspekcji. Wszystkie dane inspekcji użytkownika są przechowywane przez 7 dni w Azure AD B2C. Jeśli chcesz usunąć dane użytkownika w tym 7-dniowym okresie, możesz użyć operacji [usuwania użytkownika](/previous-versions/azure/ad/graph/api/users-operations#DeleteUser) . Operacja usuwania jest wymagana dla każdej dzierżawy Azure AD B2C, w której mogą znajdować się dane.
 
-Każdy użytkownik w usłudze Azure AD B2C jest przypisany identyfikator obiektu. Identyfikator obiektu oferuje jednoznaczną identyfikator można ich używać do usuwania danych użytkownika w usłudze Azure AD B2C. W zależności od architektury, identyfikator obiektu może być identyfikator korelacji przydatne dla innych usług, takich jak finansowych, marketingu i bazy danych zarządzania relacji klientów. 
+Każdy użytkownik w Azure AD B2C ma przypisany identyfikator obiektu. Identyfikator obiektu zawiera niejednoznaczny identyfikator, który służy do usuwania danych użytkownika w Azure AD B2C. W zależności od architektury, identyfikator obiektu może być przydatnym identyfikatorem korelacji między innymi usługami, takimi jak finansowe, marketingowe i bazy danych zarządzania relacjami z klientami.
 
-Najdokładniejszych sposób, aby uzyskać identyfikator obiektu użytkownika jest uzyskać go jako część podróż uwierzytelniania w usłudze Azure AD B2C. Jeśli zostanie wyświetlony prawidłowy żądanie dotyczące danych przez użytkownika przy użyciu innych metod, proces w trybie offline, takich jak wyszukiwanie przez dział obsługi klienta agenta, może być konieczne Znajdź użytkownika, a następnie zanotuj identyfikator skojarzonego obiektu. 
+Najdokładniejszym sposobem uzyskania identyfikatora obiektu dla użytkownika jest uzyskanie go w ramach kursu uwierzytelniania z Azure AD B2C. Jeśli otrzymasz prawidłowe żądanie danych od użytkownika przy użyciu innych metod, proces offline, taki jak wyszukiwanie przez agenta obsługi klienta, może być konieczne, aby znaleźć użytkownika i zanotować identyfikator skojarzonego obiektu.
 
-Poniższy przykład przedstawia przepływ możliwości usunięcia danych:
+Poniższy przykład pokazuje możliwy przepływ usuwania danych:
 
-1. Użytkownik loguje się i wybiera **Usuń moje dane**.
-2. Aplikacja udostępnia opcję usuwania danych w administracyjnej części aplikacji.
-3. Aplikacja wymusza uwierzytelniania usługi Azure AD B2C. Usługa Azure AD B2C zapewnia token identyfikator obiektu użytkownika do aplikacji. 
-4. Token jest odbierany przez aplikację, a obiekt, który identyfikator służy do usuwania danych użytkownika za pomocą wywołania interfejsu API programu Graph usługi Azure AD. Interfejs API programu Graph usługi Azure AD usuwa danych użytkownika i zwraca kod stanu 200 OK.
-5. Aplikacja organizuje usuwania danych użytkownika w innych systemach organizacji, zgodnie z potrzebami przy użyciu Identyfikatora obiektu lub innych identyfikatorów.
-6. Aplikacja potwierdzi usunięcie danych i zapewnia kolejne kroki do użytkownika.
+1. Użytkownik loguje się i wybiera opcję **Usuń moje dane**.
+2. Aplikacja oferuje opcję usuwania danych w sekcji administracji aplikacji.
+3. Aplikacja wymusza uwierzytelnianie do Azure AD B2C. Azure AD B2C udostępnia token z IDENTYFIKATORem obiektu użytkownika z powrotem do aplikacji.
+4. Token jest odbierany przez aplikację, a identyfikator obiektu służy do usuwania danych użytkownika za pomocą wywołania usługi Azure AD interfejs API programu Graph. Usługa Azure AD interfejs API programu Graph usuwa dane użytkownika i zwraca kod stanu 200 OK.
+5. Aplikacja organizuje usuwanie danych użytkownika w innych systemach organizacyjnych w razie konieczności przy użyciu identyfikatora obiektu lub innych identyfikatorów.
+6. Aplikacja potwierdza usunięcie danych i udostępnia użytkownikowi następne kroki.
 
 ## <a name="export-customer-data"></a>Eksportowanie danych klienta
 
-Proces eksportowania danych klientów z usługi Azure AD B2C jest podobny do procesu usuwania.
+Proces eksportowania danych klienta z Azure AD B2C jest podobny do procesu usuwania.
 
-Dane użytkownika w usłudze Azure AD B2C jest ograniczone do:
+Azure AD B2C dane użytkownika są ograniczone do:
 
-- **Dane przechowywane w usłudze Azure Active Directory**: Można pobierać dane w podróży użytkownika uwierzytelniania usługi Azure AD B2C, przy użyciu Identyfikatora obiektu lub dowolnej nazwy logowania, takie jak adres e-mail lub nazwy użytkownika. 
-- **Raport dotyczący zdarzeń inspekcji specyficzne dla użytkownika**: Umożliwia indeksowanie danych przy użyciu identyfikatora obiektu.
+- **Dane przechowywane w Azure Active Directory**: Dane można pobrać w ramach Azure AD B2C użytkownika uwierzytelniania przy użyciu identyfikatora obiektu lub dowolnej nazwy logowania, na przykład adresu e-mail lub nazwy użytkownika.
+- **Raport dotyczący zdarzeń inspekcji specyficznych dla użytkownika**: Dane można indeksować przy użyciu identyfikatora obiektu.
 
-W poniższym przykładzie przepływ danych eksportu kroki, które są opisane jako wykonywanych przez aplikację można również przeprowadzić przez proces wewnętrznej bazy danych lub użytkownik mający rolę administratora w katalogu:
+W poniższym przykładzie przepływu danych eksportu kroki, które są opisane jako wykonywane przez aplikację, można także wykonać przez proces zaplecza lub użytkownika z rolą administratora w katalogu:
 
-1. Użytkownik loguje się do aplikacji. Usługa Azure AD B2C wymusza uwierzytelniania za pomocą usługi Azure Multi-Factor Authentication, jeśli to konieczne.
-2. Aplikacja używa poświadczeń użytkownika do wywołania operacji interfejsu API programu Graph usługi Azure AD, można pobrać atrybutów użytkownika. Interfejs API programu Graph usługi Azure AD udostępnia dane atrybutu w formacie JSON. W zależności od schematu można ustawić identyfikator zawartości tokenu do uwzględnienia wszystkich danych osobowych o użytkowniku.
-3. Aplikacja pobiera działania inspekcji użytkownika. Interfejs API programu Graph usługi Azure AD zapewnia dane zdarzeń, do aplikacji.
-4. Aplikacja agreguje dane i udostępnia go do użytkownika.
+1. Użytkownik loguje się do aplikacji. W razie konieczności Azure AD B2C wymusza uwierzytelnianie przy użyciu usługi Azure Multi-Factor Authentication.
+2. Aplikacja używa poświadczeń użytkownika w celu wywołania operacji interfejs API programu Graph usługi Azure AD w celu pobrania atrybutów użytkownika. Interfejs API programu Graph usługi Azure AD udostępnia dane atrybutów w formacie JSON. W zależności od schematu można ustawić zawartość tokenu identyfikatora, aby uwzględnić wszystkie dane osobowe użytkownika.
+3. Aplikacja pobiera działanie inspekcji użytkownika. Interfejs API programu Graph usługi Azure AD udostępnia dane zdarzenia do aplikacji.
+4. Aplikacja agreguje dane i udostępni je użytkownikowi.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby dowiedzieć się, jak zarządzać jak użytkownikom dostęp do Twoich aplikacji, zobacz [zarządzanie dostępem użytkowników](manage-user-access.md).
+- Aby dowiedzieć się, jak zarządzać dostępem użytkowników do aplikacji, zobacz [Zarządzanie dostępem użytkowników](manage-user-access.md).
 
 
 

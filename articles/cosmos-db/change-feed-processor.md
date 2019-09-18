@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 2f0f3d70d51ff35e37506eab1082fc07b16e711c
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 4074f26cdefd650c1b927293f422623841dfff7d
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018783"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71073687"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Zmień procesor kanału informacyjnego w Azure Cosmos DB 
 
@@ -95,5 +95,6 @@ Opłata jest naliczana za zużyte jednostek ru, ponieważ przenoszenie danych do
 Teraz można dowiedzieć się więcej o procesorze źródła zmian w następujących artykułach:
 
 * [Przegląd źródła zmian](change-feed.md)
+* [Jak przeprowadzić migrację z biblioteki procesora źródła zmian](how-to-migrate-from-change-feed-library.md)
 * [Korzystanie ze źródła zmian szacowania](how-to-use-change-feed-estimator.md)
 * [Czas rozpoczęcia procesora kanału informacyjnego](how-to-configure-change-feed-start-time.md)

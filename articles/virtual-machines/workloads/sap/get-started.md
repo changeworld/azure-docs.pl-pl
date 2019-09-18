@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/15/2019
+ms.date: 09/17/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 44ee910aa1a5f3c1a703b9ed4202d395359970cb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: dc1c6e4bf2e67d8945cf754aa47461b4ce8364a9
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099947"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066823"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Korzystanie z platformy Azure do hostowania i uruchamiania scenariuszy obciążeń SAP
 
@@ -120,6 +120,7 @@ Aby uzyskać informacje na temat integracji usług platformy Azure z składnikam
 
 
 ## <a name="change-log"></a>Dziennik zmian
+- 09/17/2019: Zmień w przewodniku planowania i wdrażania NetWeaver, aby ujednolicić warunki dotyczące rozszerzenia maszyny wirtualnej dla oprogramowania SAP
 - 08/22/2019: Zmiany dotyczące [konfigurowania Pacemaker SUSE Linux Enterprise Server na platformie Azure w](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) celu zaktualizowania adresów URL na potrzeby tworzenia ról niestandardowych  
 - 08/16/2019: Zmiany [Red Hat Enterprise Linux dotyczące konfigurowania Pacemaker na platformie Azure w](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) celu przypominania klientom o aktualizowaniu akcji w roli niestandardowej w przypadku aktualizowania nowej wersji agenta usługi Azure ogrodzenia  
 - 08/15/2019: Zmiany w [konfiguracjach magazynu maszyn wirtualnych platformy Azure SAP HANA](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) w celu odzwierciedlenia ogólnej dostępności Ultra Disk (dawniej SSD w warstwie Ultra)

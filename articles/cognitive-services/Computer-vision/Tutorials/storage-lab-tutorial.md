@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.author: pafarley
-ms.openlocfilehash: 8ecf5fb7d54e7c9411c1153610d3a637477285bf
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 7caf4493db32201a8e83ffb3722c80c5e9b41a8f
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382975"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057736"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Samouczek: generowanie metadanych obrazów w usłudze Azure Storage przy użyciu przetwarzania obrazów
 
@@ -46,7 +46,9 @@ Musisz utworzyć zasób przetwarzania obrazów dla swojego konta platformy Azure
 
 1. Następnie przejdź do menu dla swojej grupy zasobów i kliknij właśnie utworzoną subskrypcję interfejs API przetwarzania obrazów. Skopiuj adres URL z obszaru **Punkt końcowy** do miejsca, z którego będzie go można za chwilę łatwo uzyskać. Następnie kliknij pozycję **Pokaż klucze dostępu**.
 
-    ![Strona Azure Portal z połączonym](../Images/copy-vision-endpoint.png) adresem URL punktu końcowego i kluczami dostępu[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
+    ![Strona Azure Portal z połączonym adresem URL punktu końcowego i kluczami dostępu](../Images/copy-vision-endpoint.png)
+    
+    [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 
 1. W następnym oknie skopiuj wartość **KLUCZ 1** do schowka.

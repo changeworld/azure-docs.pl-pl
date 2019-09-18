@@ -4,7 +4,7 @@ description: W tym artykule opisano integrowanie uwierzytelniania RADIUS brama p
 services: vpn-gateway
 documentationcenter: na
 author: ahmadnyasin
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/31/2018
+ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: 8e10151cd117a3400893f94559b2c9892de9f3c7
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: ab152cca1d809d92803a3e50ea83da1cbcd8243c
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67666213"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058885"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Integrowanie uwierzytelniania RADIUS bramy sieci VPN platformy Azure za pomocą serwera NPS do uwierzytelniania wieloskładnikowego 
 
@@ -42,7 +42,7 @@ Aby włączyć uwierzytelnianie wieloskładnikowe, użytkownicy muszą być w us
 
     - **Typ bramy**: wybierz pozycję **VPN**.
     - **Typ sieci VPN**: wybierz pozycję **Oparte na trasach**.
-    - **SKU**: Wybierz typ jednostki SKU, w zależności od wymagań.
+    - **SKU**: Wybierz typ jednostki SKU zgodnie z wymaganiami.
     - **Sieć wirtualna**: Wybierz sieć wirtualną, w której utworzono podsieć bramy.
 
         ![Obraz dotyczący ustawień bramy sieci wirtualnej](./media/vpn-gateway-radiuis-mfa-nsp/create-vpn-gateway.png)
@@ -52,18 +52,18 @@ Aby włączyć uwierzytelnianie wieloskładnikowe, użytkownicy muszą być w us
 ### <a name="step-2-configure-the-nps-for-azure-mfa"></a>Krok 2 skonfiguruj serwer NPS dla usługi Azure MFA
 
 1. Na serwerze NPS [zainstalować rozszerzenia serwera NPS dla usługi Azure MFA](../active-directory/authentication/howto-mfa-nps-extension.md#install-the-nps-extension).
-2. Otwórz konsolę serwera NPS kliknij prawym przyciskiem myszy **klientów RADIUS**, a następnie wybierz pozycję **New**. Tworzenie klienta usługi RADIUS, określając następujące ustawienia:
+2. Otwórz konsolę serwera zasad sieciowych, kliknij prawym przyciskiem myszy pozycję **klienci usługi RADIUS**, a następnie wybierz pozycję **Nowy**. Utwórz klienta usługi RADIUS, określając następujące ustawienia:
 
     - **Przyjazna nazwa**: Wpisz dowolną nazwę.
-    - **Adres (IP lub DNS)** : Wpisz podsieć bramy, który został utworzony w kroku 1.
+    - **Adres (IP lub DNS)** : Wpisz podsieć bramy utworzoną w kroku 1.
     - **Wspólny klucz tajny**: wpisz wszelkie klucz tajny i Zapamiętaj je w celu późniejszego użycia.
 
-      ![Obraz informacje o ustawieniach klienta RADIUS](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client1.png)
+      ![Obraz dotyczący ustawień klienta usługi RADIUS](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client1.png)
 
  
 3.  Na **zaawansowane** karcie należy ustawić nazwę dostawcy **RADIUS Standard** i upewnij się, że **dodatkowe opcje** nie zaznaczono pole wyboru.
 
-    ![Obraz dotyczący Zaawansowane ustawienia klientów usługi RADIUS](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client2.png)
+    ![Obraz dotyczący ustawień zaawansowanych klienta usługi RADIUS](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client2.png)
 
 4. Przejdź do **zasady** > **zasad sieciowych**, kliknij dwukrotnie **połączenia z serwerem programu Microsoft Routing i dostęp zdalny** zasad, wybierz opcję  **Udzielanie dostępu**, a następnie kliknij przycisk **OK**.
 
@@ -73,8 +73,8 @@ Aby włączyć uwierzytelnianie wieloskładnikowe, użytkownicy muszą być w us
 2. Otwórz bramy sieci wirtualnej, który został utworzony. Upewnij się, że typ bramy jest ustawiona na **VPN** i czy typ sieci VPN jest **oparte na trasach**.
 3. Kliknij przycisk **wskaż konfigurację witryny** > **teraz skonfigurować**, a następnie określ następujące ustawienia:
 
-    - **Pula adresów**: Wpisz podsieć bramy, który został utworzony w kroku 1.
-    - **Typ uwierzytelniania**: Wybierz **uwierzytelnianie usługi RADIUS**.
+    - **Pula adresów**: Wpisz podsieć bramy utworzoną w kroku 1.
+    - **Typ uwierzytelniania**: Wybierz pozycję **uwierzytelnianie usługi RADIUS**.
     - **Adres IP serwera**: Wpisz adres IP serwera NPS.
 
       ![Obraz dotyczący wskaż Ustawienia witryny](./media/vpn-gateway-radiuis-mfa-nsp/configure-p2s.png)

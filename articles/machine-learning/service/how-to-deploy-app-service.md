@@ -1,7 +1,7 @@
 ---
 title: Wdróż modele ml do Azure App Service (wersja zapoznawcza)
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak za pomocą usługi Azure Machine Learning wdrożyć model w aplikacji sieci Web w programie Azure App Service.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak za pomocą Azure Machine Learning wdrożyć model w aplikacji sieci Web w programie Azure App Service.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,21 +10,21 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: 20a90a70c66310f6838b41a40aa945308bf338d4
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 24ec49a0f23516638d1f525341ea44e204653fea
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147907"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034594"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Wdróż model uczenia maszynowego w Azure App Service (wersja zapoznawcza)
 
-Dowiedz się, jak wdrożyć model z usługi Azure Machine Learning jako aplikację sieci Web w programie Azure App Service.
+Dowiedz się, jak wdrożyć model na podstawie Azure Machine Learning jako aplikacji sieci Web w programie Azure App Service.
 
 > [!IMPORTANT]
-> Chociaż usługa Azure Machine Learning i Azure App Service są ogólnie dostępne, możliwość wdrażania modelu z usługi Machine Learning na App Service jest w wersji zapoznawczej.
+> Chociaż obie Azure Machine Learning i Azure App Service są ogólnie dostępne, możliwość wdrażania modelu z usługi Machine Learning na App Service jest w wersji zapoznawczej.
 
-Za pomocą usługi Azure Machine Learning można tworzyć obrazy platformy Docker z szkoleń modeli uczenia maszynowego. Ten obraz zawiera usługę sieci Web, która odbiera dane, przesyła ją do modelu, a następnie zwraca odpowiedź. Azure App Service można użyć do wdrożenia obrazu i zapewnia następujące funkcje:
+Za pomocą Azure Machine Learning można tworzyć obrazy platformy Docker z przeszkolonych modeli uczenia maszynowego. Ten obraz zawiera usługę sieci Web, która odbiera dane, przesyła ją do modelu, a następnie zwraca odpowiedź. Azure App Service można użyć do wdrożenia obrazu i zapewnia następujące funkcje:
 
 * Zaawansowane [uwierzytelnianie](/azure/app-service/configure-authentication-provider-aad) na potrzeby zwiększonych zabezpieczeń. Metody uwierzytelniania obejmują zarówno Azure Active Directory, jak i uwierzytelnianie wieloskładnikowe.
 * [Skalowanie automatyczne](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json) bez konieczności ponownego wdrażania.
@@ -48,7 +48,7 @@ Aby uzyskać więcej informacji na temat funkcji zapewnianych przez Azure App Se
     > * `model`-Zarejestrowany model, który zostanie wdrożony.
     > * `inference_config`-Konfiguracja wnioskowania dla modelu.
     >
-    > Aby uzyskać więcej informacji na temat ustawiania tych zmiennych, zobacz [Wdrażanie modeli za pomocą usługi Azure Machine Learning](how-to-deploy-and-where.md).
+    > Aby uzyskać więcej informacji na temat ustawiania tych zmiennych, zobacz [Deploying Models with Azure Machine Learning](how-to-deploy-and-where.md).
 
 ## <a name="prepare-for-deployment"></a>Przygotowanie do wdrożenia
 
@@ -66,7 +66,7 @@ Przed wdrożeniem należy zdefiniować, co jest potrzebne do uruchomienia modelu
     >
     > Kolejną alternatywą, która może posłużyć do danego scenariusza, są [przewidywania wsadowe](how-to-run-batch-predictions.md), które zapewniają dostęp do magazynów danych podczas oceniania.
 
-    Aby uzyskać więcej informacji na temat skryptów wprowadzania, zobacz [Wdrażanie modeli za pomocą usługi Azure Machine Learning](how-to-deploy-and-where.md).
+    Aby uzyskać więcej informacji na temat skryptów wprowadzania, zobacz [Wdrażanie modeli przy użyciu Azure Machine Learning](how-to-deploy-and-where.md).
 
 * **Zależności**, takie jak skrypty pomocnika lub pakiety Python/Conda wymagane do uruchomienia skryptu lub modelu wprowadzania
 
@@ -89,7 +89,7 @@ Te jednostki są hermetyzowane w __konfiguracji wnioskowania__. Konfiguracja wni
 
 Aby uzyskać więcej informacji o środowiskach, zobacz [Tworzenie środowisk i zarządzanie nimi na potrzeby szkolenia i wdrażania](how-to-use-environments.md).
 
-Aby uzyskać więcej informacji na temat konfiguracji wnioskowania, zobacz [Wdrażanie modeli za pomocą usługi Azure Machine Learning](how-to-deploy-and-where.md).
+Aby uzyskać więcej informacji na temat konfiguracji wnioskowania, zobacz [Wdrażanie modeli przy użyciu Azure Machine Learning](how-to-deploy-and-where.md).
 
 > [!IMPORTANT]
 > Podczas wdrażania programu w celu Azure App Service nie trzeba tworzyć __konfiguracji wdrożenia__.
@@ -99,7 +99,7 @@ Aby uzyskać więcej informacji na temat konfiguracji wnioskowania, zobacz [Wdra
 Aby utworzyć obraz platformy Docker wdrożony w Azure App Service, użyj [modelu model. Package](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config--generate-dockerfile-false-). Poniższy fragment kodu przedstawia sposób tworzenia nowego obrazu z konfiguracji modelu i wnioskowania:
 
 > [!NOTE]
-> W fragmencie kodu założono `model` , że zawiera zarejestrowany model `inference_config` i zawiera konfigurację środowiska wnioskowania. Aby uzyskać więcej informacji, zobacz [Wdrażanie modeli za pomocą usługi Azure Machine Learning](how-to-deploy-and-where.md).
+> W fragmencie kodu założono `model` , że zawiera zarejestrowany model `inference_config` i zawiera konfigurację środowiska wnioskowania. Aby uzyskać więcej informacji, zobacz [Wdrażanie modeli przy użyciu Azure Machine Learning](how-to-deploy-and-where.md).
 
 ```python
 from azureml.core import Model
@@ -153,7 +153,7 @@ Gdy `show_output=True`są wyświetlane dane wyjściowe procesu kompilacji platfo
     W tym przykładzie jest używana __podstawowa__ warstwa cenowa`--sku B1`().
 
     > [!IMPORTANT]
-    > Obrazy utworzone przez usługę Azure Machine Learning korzystają z systemu Linux, dlatego należy użyć `--is-linux` parametru.
+    > Obrazy utworzone przez Azure Machine Learning używają systemu Linux, dlatego należy użyć `--is-linux` parametru.
 
 1. Aby utworzyć aplikację sieci Web, użyj następującego polecenia. Zamień `<app-name>` na nazwę, której chcesz użyć. Zamień `<acrinstance>` `package.location` i `<imagename>` na wartości zwracane wcześniej:
 

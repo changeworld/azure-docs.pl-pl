@@ -1,7 +1,7 @@
 ---
 title: Dostęp do danych w usługach Azure Storage
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak używać magazynów danych do uzyskiwania dostępu do usług Azure Storage podczas szkolenia przy użyciu usługi Azure Machine Learning
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak używać magazynów danych do uzyskiwania dostępu do usług Azure Storage podczas uczenia się z Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 08/2/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7b800a7ef38624dbe89a61dd04e2bd97b02066bb
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: eaed6e7b0ea044ba39a1055ad14de13d5deb9b05
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191917"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035309"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Dostęp do danych w usługach Azure Storage
 
@@ -232,7 +232,7 @@ run_config.source_directory_data_store = "workspaceblobstore"
 
 ## <a name="access-data-during-scoring"></a>Uzyskiwanie dostępu do danych podczas oceniania
 
-Usługa Azure Machine Learning oferuje kilka sposobów na korzystanie z modeli do oceniania. Niektóre z tych metod nie zapewniają dostępu do magazynów danych. Skorzystaj z poniższej tabeli, aby zrozumieć, które metody umożliwiają dostęp do magazynów danych podczas oceniania:
+Azure Machine Learning oferuje kilka sposobów na korzystanie z modeli do oceniania. Niektóre z tych metod nie zapewniają dostępu do magazynów danych. Skorzystaj z poniższej tabeli, aby zrozumieć, które metody umożliwiają dostęp do magazynów danych podczas oceniania:
 
 | Metoda | Dostęp do magazynu danych | Opis |
 | ----- | :-----: | ----- |

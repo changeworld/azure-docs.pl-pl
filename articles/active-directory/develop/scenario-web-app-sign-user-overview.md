@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95aeeacfd85dd79453bff4e365e5b050039f77b9
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
-ms.translationtype: MT
+ms.openlocfilehash: 7b898a93b87811fa5139e148a3273d7051af851b
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852467"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056289"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>Scenariusz: Aplikacja internetowa z możliwością logowania użytkowników
 
@@ -42,7 +42,7 @@ Jeśli wolisz pozostać z ASP.NET, wypróbuj następujący samouczek:
 > [!div class="nextstepaction"]
 > [Szybki start: Aplikacja internetowa ASP.NET, która loguje użytkowników](quickstart-v2-aspnet-webapp.md)
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Należy dodać uwierzytelnianie do aplikacji sieci Web, aby umożliwić użytkownikom logowanie się. Dodanie uwierzytelniania umożliwia aplikacji sieci Web uzyskanie dostępu do ograniczonych informacji o profilu, a na przykład dostosowanie środowiska, które oferuje jego użytkownicy. Aplikacje sieci Web uwierzytelniają użytkownika w przeglądarce internetowej. W tym scenariuszu aplikacja sieci Web kieruje przeglądarkę użytkownika do podpisania ich w usłudze Azure AD. Usługa Azure AD zwraca odpowiedź logowania za pomocą przeglądarki użytkownika, która zawiera oświadczenia dotyczące użytkownika w tokenie zabezpieczającym. Logowanie użytkowników przy użyciu protokołu [Open ID Connect](./v2-protocols-oidc.md) Standard jest uproszczone przez użycie [bibliotek](scenario-web-app-sign-user-app-configuration.md#libraries-used-to-protect-web-apps)pośredniczących.
 
@@ -55,7 +55,7 @@ W drugiej fazie można także umożliwić aplikacji wywoływanie interfejsów AP
 
 ## <a name="specifics"></a>Szczegółowych informacji
 
-- Podczas rejestracji aplikacji należy podać jedną lub kilka (Jeśli aplikacja jest wdrażana w kilku lokalizacjach) identyfikatorów URI odpowiedzi. W niektórych przypadkach (ASP.NET/ASP.NET rdzeń) należy włączyć IDToken. Na koniec należy skonfigurować identyfikator URI, aby aplikacja działała w celu wylogowania użytkowników.
+- Podczas rejestracji aplikacji należy podać jedną lub kilka (Jeśli aplikacja jest wdrażana w kilku lokalizacjach) identyfikatorów URI odpowiedzi. W niektórych przypadkach (ASP.NET/ASP.NET rdzeń) musisz włączyć token identyfikatora. Na koniec należy skonfigurować identyfikator URI, aby aplikacja działała w celu wylogowania użytkowników.
 - W kodzie aplikacji należy podać uprawnienia do logowania delegatów aplikacji sieci Web. Możesz chcieć dostosować sprawdzanie poprawności tokenów (w szczególności w scenariuszach niezależnych dostawców oprogramowania).
 - Aplikacje sieci Web obsługują wszystkie typy kont. Aby uzyskać więcej informacji, zobacz [obsługiwane typy kont](v2-supported-account-types.md).
 

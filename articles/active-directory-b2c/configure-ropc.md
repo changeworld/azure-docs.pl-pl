@@ -1,6 +1,6 @@
 ---
-title: Konfiguruj przepływ poświadczeń hasła właściciela zasobu w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować przepływ poświadczeń hasła właściciela zasobu w usłudze Azure AD B2C.
+title: Konfigurowanie przepływu poświadczeń hasła właściciela zasobu w Azure Active Directory B2C | Microsoft Docs
+description: Dowiedz się, jak skonfigurować przepływ poświadczeń hasła właściciela zasobu w Azure AD B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,76 +10,76 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e8de1d27d92ac57f478b7615144dba166f420d27
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 69924674fba44595e4f5a9702607579d8c7a8bc8
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807225"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064466"
 ---
-# <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Konfiguruj przepływ poświadczeń hasła właściciela zasobu w usłudze Azure AD B2C
+# <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Konfigurowanie przepływu poświadczeń hasła właściciela zasobu w Azure AD B2C
 
-Zasób przepływ poświadczeń hasła właściciela (ROPC) jest przepływ standardowego uwierzytelniania OAuth, gdzie aplikacji, znany także jako podmiotu zależnego wymienia prawidłowe poświadczenia, takie jak nazwa użytkownika i hasło dla tokenu identyfikator, token dostępu i token odświeżania. 
+Przepływ poświadczeń hasła właściciela zasobu (ROPC) to standardowy przepływ uwierzytelniania OAuth, w którym aplikacja, nazywana również jednostką uzależnioną, wymienia prawidłowe poświadczenia, takie jak UserID i hasło dla tokenu identyfikatora, tokenu dostępu i tokenu odświeżania.
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-W usłudze Azure Active Directory (Azure AD) B2C obsługiwane są następujące opcje:
+W Azure Active Directory B2C (Azure AD B2C) obsługiwane są następujące opcje:
 
-- **Natywny klient**: Interakcja z użytkownikiem podczas uwierzytelniania się dzieje, gdy kod jest uruchamiany na urządzeniu po stronie użytkownika. Urządzenie może być aplikację mobilną, która jest uruchomiona w macierzystym systemu operacyjnego, takich jak Android, lub korzystania z przeglądarki, takich jak JavaScript.
-- **Przepływ publicznych klienta**: Tylko poświadczenia użytkownika, zebranych przez aplikację, są wysyłane w wywołaniu interfejsu API. Poświadczenia aplikacji nie są wysyłane.
-- **Dodawanie nowych oświadczeń**: Do dodawania nowych oświadczeń, można zmienić Identyfikatora zawartości tokenu. 
+- **Klient natywny**: Interakcja użytkownika podczas uwierzytelniania występuje, gdy kod jest uruchamiany na urządzeniu po stronie użytkownika. Urządzenie może być aplikacją mobilną, która działa w natywnym systemie operacyjnym, takim jak Android lub działa w przeglądarce, takiej jak JavaScript.
+- **Publiczny przepływ klienta**: W wywołaniu interfejsu API są wysyłane tylko poświadczenia użytkownika zebrane przez aplikację. Poświadczenia aplikacji nie są wysyłane.
+- **Dodaj nowe oświadczenia**: Zawartość tokenu identyfikatora można zmienić, aby dodać nowe oświadczenia.
 
 Następujące przepływy nie są obsługiwane:
 
-- **Serwer serwer**: System ochrony tożsamości musi niezawodne adres IP zgromadzone od elementu wywołującego (natywny klient) w ramach interakcji. W wywołaniu interfejsu API po stronie serwera jest używany tylko adres IP serwera. Przekroczeniu progu dynamicznego nieudanych uwierzytelnień systemu ochrony tożsamości może zidentyfikować dopuszczalnych adresów IP jako osoba atakująca.
-- **Przepływ poufne klienta**: Identyfikator klienta aplikacji jest weryfikowane, ale nie zostanie zweryfikowana klucz tajny aplikacji.
+- **Serwer-** serwer: System ochrony tożsamości musi mieć niezawodny adres IP zebrany od wywołującego (natywnego klienta) w ramach interakcji. W wywołaniu interfejsu API po stronie serwera jest używany tylko adres IP serwera. Jeśli zostanie przekroczony dynamiczny próg nieudanych uwierzytelnień, system ochrony tożsamości może zidentyfikować powtórzony adres IP jako osobę atakującą.
+- **Poufny przepływ klienta**: Identyfikator klienta aplikacji jest zweryfikowany, ale wpis tajny aplikacji nie jest zweryfikowany.
 
-##  <a name="create-a-resource-owner-user-flow"></a>Utwórz przepływ użytkownika właściciela zasobu
+##  <a name="create-a-resource-owner-user-flow"></a>Tworzenie przepływu użytkownika właściciela zasobu
 
-1. Zaloguj się do witryny Azure portal jako administrator globalny dzierżawy usługi Azure AD B2C.
-2. Aby przełączyć się do dzierżawy usługi Azure AD B2C, wybierz katalog usługi B2C w prawym górnym rogu portalu.
-3. Kliknij przycisk **przepływy użytkownika**i wybierz **nowy przepływ użytkownika**.
-4. Kliknij przycisk **wszystkich** kartę, a następnie wybierz pozycję **Zaloguj się przy użyciu ROPC**.
-5. Podaj nazwę przepływu użytkownika, takie jak *ROPC_Auth*.
-6. W obszarze **oświadczeń aplikacji**, kliknij przycisk **Pokaż więcej**.
-7. Wybrać oświadczenia aplikacji, które są potrzebne dla aplikacji, takich jak nazwy wyświetlanej, adresu E-mail i dostawcy tożsamości.
+1. Zaloguj się do Azure Portal jako Administrator globalny dzierżawy Azure AD B2C.
+2. Aby przełączyć się do dzierżawy Azure AD B2C, wybierz katalog B2C w prawym górnym rogu portalu.
+3. Kliknij pozycję **przepływy użytkownika**, a następnie wybierz pozycję **Nowy przepływ użytkownika**.
+4. Kliknij kartę **wszystkie** i wybierz pozycję **Zaloguj się przy użyciu ROPC**.
+5. Podaj nazwę przepływu użytkownika, na przykład *ROPC_Auth*.
+6. W obszarze **oświadczenia aplikacji**kliknij przycisk **Pokaż więcej**.
+7. Wybierz oświadczenia aplikacji, które są potrzebne dla aplikacji, takie jak nazwa wyświetlana, adres E-mail i dostawca tożsamości.
 8. Wybierz przycisk **OK**, a następnie wybierz pozycję **Utwórz**.
-9. Kliknij przycisk **uruchomić przepływ użytkownika**.
+9. Kliknij pozycję **Uruchom przepływ użytkownika**.
 
-   Następnie zobaczysz punkt końcowy, np. w tym przykładzie:
+   Następnie zobaczysz punkt końcowy, na przykład:
 
    `https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_ROPC_Auth`
 
 
-## <a name="register-an-application"></a>Rejestrowanie aplikacji
+## <a name="register-an-application"></a>Zarejestruj aplikację
 
-1. W ustawieniach usługi B2C należy wybrać **aplikacje**, a następnie wybierz pozycję **Dodaj**.
-2. Wprowadź nazwę aplikacji, taką jak *ROPC_Auth_app*.
-3. Wybierz **nie** dla **interfejsu API sieci Web i aplikacji sieci Web**, a następnie wybierz pozycję **tak** dla **Native client**.
-4. Pozostaw inne wartości, ponieważ są, a następnie wybierz **Utwórz**.
-5. Wybierz nową aplikację i Zanotuj identyfikator aplikacji na potrzeby późniejszego użycia.
+1. W ustawieniach B2C wybierz pozycję **aplikacje**, a następnie wybierz pozycję **Dodaj**.
+2. Wprowadź nazwę aplikacji, na przykład *ROPC_Auth_app*.
+3. Wybierz pozycję **nie** dla **aplikacji sieci Web/internetowego interfejsu API**, a następnie wybierz pozycję **tak** dla **klienta natywnego**.
+4. Pozostaw wszystkie inne wartości, jeśli są, a następnie wybierz pozycję **Utwórz**.
+5. Wybierz nową aplikację i zanotuj identyfikator aplikacji do późniejszego użycia.
 
 ## <a name="test-the-user-flow"></a>Testowanie przepływu użytkownika
 
-Generowanie wywołanie interfejsu API za pomocą ulubionego interfejsu API aplikacji rozwoju i zapoznać się z odpowiedzią, aby debugować przepływ użytkownika. Utworzyć takie wywołanie z informacjami w poniższej tabeli jako treść żądania POST:
-- Zastąp  *\<yourtenant.onmicrosoft.com >* nazwą dzierżawy usługi B2C.
-- Zastąp  *\<B2C_1A_ROPC_Auth >* pełną nazwą zasady poświadczeń hasła właściciela zasobu.
-- Zastąp  *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3 >* identyfikatorem aplikacji z Twojej rejestracji.
+Użyj ulubionej aplikacji do programowania interfejsów API do wygenerowania wywołania interfejsu API i przejrzyj odpowiedź, aby debugować przepływ użytkownika. Utwórz wywołanie podobne do tego z informacjami w poniższej tabeli jako treść żądania POST:
+- Zastąp  *\<yourtenant. onmicrosoft. com >* nazwą dzierżawy B2C.
+- Zastąp  *\<B2C_1A_ROPC_Auth >* pełną nazwą zasad poświadczeń hasła właściciela zasobu.
+- Zastąp  *\<ciąg bef2222d56-552f-4a5b-b90a-1988a7d634c3 >* identyfikatorem aplikacji z rejestracji.
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| Klucz | Wartość |
+| Klucz | Value |
 | --- | ----- |
 | username | leadiocl@outlook.com |
 | password | Passxword1 |
 | grant_type | password |
-| scope | openid \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > offline_access |
+| scope | OpenID Connect \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > offline_access |
 | client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | response_type | id_token tokenu |
 
-*Client_id* jest wartością zanotowaną wcześniej jako identyfikator aplikacji. *Offline_access* jest opcjonalne, jeśli chcesz otrzymywać token odświeżania. Nazwa użytkownika i hasło, którego używasz, musi być poświadczeń istniejącego użytkownika w dzierżawie usługi Azure AD B2C.
+*Client_id* jest wartością zanotowaną wcześniej jako identyfikator aplikacji. *Offline_access* jest opcjonalne, jeśli chcesz otrzymać token odświeżenia. Używana nazwa użytkownika i hasło muszą być poświadczeniami istniejącego użytkownika w dzierżawie Azure AD B2C.
 
-Rzeczywiste żądanie POST wygląda podobnie do poniższego:
+Rzeczywiste żądanie POST wygląda następująco:
 
 ```
 POST /yourtenant.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth HTTP/1.1
@@ -90,21 +90,21 @@ username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=o
 ```
 
 
-Pomyślnej odpowiedzi z dostęp w trybie offline będzie wyglądać następująco:
+Pomyślna odpowiedź z dostępem w trybie offline wygląda podobnie do poniższego przykładu:
 
 ```json
-{ 
-    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik9YQjNhdTNScWhUQWN6R0RWZDM5djNpTmlyTWhqN2wxMjIySnh6TmgwRlkifQ.eyJpc3MiOiJodHRwczovL3RlLmNwaW0ud2luZG93cy5uZXQvZjA2YzJmZTgtNzA5Zi00MDMwLTg1ZGMtMzhhNGJmZDllODJkL3YyLjAvIiwiZXhwIjoxNTEzMTMwMDc4LCJuYmYiOjE1MTMxMjY0NzgsImF1ZCI6ImJlZjIyZDU2LTU1MmYtNGE1Yi1iOTBhLTE5ODhhN2Q2MzRjZSIsIm9pZCI6IjNjM2I5NjljLThjNDktNGUxMS1hNGVmLWZkYjJmMzkyZjA0OSIsInN1YiI6Ik5vdCBzdXBwb3J0ZWQgY3VycmVudGx5LiBVc2Ugb2lkIGNsYWltLiIsImF6cCI6ImJlZjIyZDU2LTU1MmYtNGE1Yi1iOTBhLTE5ODhhN2Q2MzRjZSIsInZlciI6IjEuMCIsImlhdCI6MTUxMzEyNjQ3OH0.MSEThYZxCS4SevBw3-3ecnVLUkucFkehH-gH-P7SFcJ-MhsBeQEpMF1Rzu_R9kUqV3qEWKAPYCNdZ3_P4Dd3a63iG6m9TnO1Vt5SKTETuhVx3Xl5LYeA1i3Slt9Y7LIicn59hGKRZ8ddrQzkqj69j723ooy01amrXvF6zNOudh0acseszt7fbzzofyagKPerxaeTH0NgyOinLwXu0eNj_6RtF9gBfgwVidRy9OzXUJnqm1GdrS61XUqiIUtv4H04jYxDem7ek6E4jsH809uSXT0iD5_4C5bDHrpO1N6pXSasmVR9GM1XgfXA_IRLFU4Nd26CzGl1NjbhLnvli2qY4A", 
-    "token_type": "Bearer", 
-    "expires_in": "3600", 
-    "refresh_token": "eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3REVk1EVFBLbUJLb0FUcWQ1ZWFja1hBIiwidmVyIjoiMS4wIiwiemlwIjoiRGVmbGF0ZSIsInNlciI6IjEuMCJ9.aJ_2UW14dh4saWTQ0jLJ7ByQs5JzIeW_AU9Q_RVFgrrnYiPhikEc68ilvWWo8B20KTRB_s7oy_Eoh5LACsqU6Oz0Mjnh0-DxgrMblUOTAQ9dbfAT5WoLZiCBJIz4YT5OUA_RAGjhBUkqGwdWEumDExQnXIjRSeaUBmWCQHPPguV1_5wSj8aW2zIzYIMbofvpjwIATlbIZwJ7ufnLypRuq_MDbZhJkegDw10KI4MHJlJ40Ip8mCOe0XeJIDpfefiJ6WQpUq4zl06NO7j8kvDoVq9WALJIao7LYk_x9UIT-3d0W0eDBHGSRcNgtMYpymaN9ltx6djcEesXNn4CFnWG3g.y6KKeA9EcsW9zW-g.TrTSgn4WBt18gezegxihBla9SLSTC3YfDROQsL9K4yX4400FKlTlf-2l9CnpGTEdWXVi7sIMHCl8S4oUiXd-rvY2mn_NfDrbbVJfgKp1j7Nnq9FFyeJEFcP_FtUXgsNTG9iwfzWox04B1d845qNRWiS9N8BhAAAIdz5N0ChHuOxsVOC0Y_Ly3DNe-JQyXcq964M6-jp3cgi4UqMxT837L6pLY5Ih_iPsSfyHzstsFeqyUIktnzt1MpTlyW-_GDyFK1S-SyV8PPQ7phgFouw2jho1iboHX70RlDGYyVmP1CfQzKE_zWxj3rgaCZvYMWN8fUenoiatzhvWkUM7dhqKGjofPeL8rOMkhl6afLLjObzhUg3PZFcMR6guLjQdEwQFufWxGjfpvaHycZSKeWu6-7dF8Hy_nyMLLdBpUkdrXPob_5gRiaH72KvncSIFvJLqhY3NgXO05Fy87PORjggXwYkhWh4FgQZBIYD6h0CSk2nfFjR9uD9EKiBBWSBZj814S_Jdw6HESFtn91thpvU3hi3qNOi1m41gg1vt5Kh35A5AyDY1J7a9i_lN4B7e_pknXlVX6Z-Z2BYZvwAU7KLKsy5a99p9FX0lg6QweDzhukXrB4wgfKvVRTo.mjk92wMk-zUSrzuuuXPVeg", 
-    "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik9YQjNhdTNScWhUQWN6R0RWZDM5djNpTmlyTWhqN2wxMjIySnh6TmgwRlkifQ.eyJleHAiOjE1MTMxMzAwNzgsIm5iZiI6MTUxMzEyNjQ3OCwidmVyIjoiMS4wIiwiaXNzIjoiaHR0cHM6Ly90ZS5jcGltLndpbmRvd3MubmV0L2YwNmMyZmU4LTcwOWYtNDAzMC04NWRjLTM4YTRiZmQ5ZTgyZC92Mi4wLyIsInN1YiI6Ik5vdCBzdXBwb3J0ZWQgY3VycmVudGx5LiBVc2Ugb2lkIGNsYWltLiIsImF1ZCI6ImJlZjIyZDU2LTU1MmYtNGE1Yi1iOTBhLTE5ODhhN2Q2MzRjZSIsImFjciI6ImIyY18xYV9yZXNvdXJjZW93bmVydjIiLCJpYXQiOjE1MTMxMjY0NzgsImF1dGhfdGltZSI6MTUxMzEyNjQ3OCwib2lkIjoiM2MzYjk2OWMtOGM0OS00ZTExLWE0ZWYtZmRiMmYzOTJmMDQ5IiwiYXRfaGFzaCI6Ikd6QUNCTVJtcklwYm9OdkFtNHhMWEEifQ.iAJg13cgySsdH3cmoEPGZB_g-4O8KWvGr6W5VzRXtkrlLoKB1pl4hL6f_0xOrxnQwj2sUgW-wjsCVzMc_dkHSwd9QFZ4EYJEJbi1LMGk2lW-PgjsbwHPDU1mz-SR1PeqqJgvOqrzXo0YHXr-e07M4v4Tko-i_OYcrdJzj4Bkv7ZZilsSj62lNig4HkxTIWi5Ec2gD79bPKzgCtIww1KRnwmrlnCOrMFYNj-0T3lTDcXAQog63MOacf7OuRVUC5k_IdseigeMSscrYrNrH28s3r0JoqDhNUTewuw1jx0X6gdqQWZKOLJ7OF_EJMP-BkRTixBGK5eW2YeUUEVQxsFlUg" 
-} 
+{
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik9YQjNhdTNScWhUQWN6R0RWZDM5djNpTmlyTWhqN2wxMjIySnh6TmgwRlkifQ.eyJpc3MiOiJodHRwczovL3RlLmNwaW0ud2luZG93cy5uZXQvZjA2YzJmZTgtNzA5Zi00MDMwLTg1ZGMtMzhhNGJmZDllODJkL3YyLjAvIiwiZXhwIjoxNTEzMTMwMDc4LCJuYmYiOjE1MTMxMjY0NzgsImF1ZCI6ImJlZjIyZDU2LTU1MmYtNGE1Yi1iOTBhLTE5ODhhN2Q2MzRjZSIsIm9pZCI6IjNjM2I5NjljLThjNDktNGUxMS1hNGVmLWZkYjJmMzkyZjA0OSIsInN1YiI6Ik5vdCBzdXBwb3J0ZWQgY3VycmVudGx5LiBVc2Ugb2lkIGNsYWltLiIsImF6cCI6ImJlZjIyZDU2LTU1MmYtNGE1Yi1iOTBhLTE5ODhhN2Q2MzRjZSIsInZlciI6IjEuMCIsImlhdCI6MTUxMzEyNjQ3OH0.MSEThYZxCS4SevBw3-3ecnVLUkucFkehH-gH-P7SFcJ-MhsBeQEpMF1Rzu_R9kUqV3qEWKAPYCNdZ3_P4Dd3a63iG6m9TnO1Vt5SKTETuhVx3Xl5LYeA1i3Slt9Y7LIicn59hGKRZ8ddrQzkqj69j723ooy01amrXvF6zNOudh0acseszt7fbzzofyagKPerxaeTH0NgyOinLwXu0eNj_6RtF9gBfgwVidRy9OzXUJnqm1GdrS61XUqiIUtv4H04jYxDem7ek6E4jsH809uSXT0iD5_4C5bDHrpO1N6pXSasmVR9GM1XgfXA_IRLFU4Nd26CzGl1NjbhLnvli2qY4A",
+    "token_type": "Bearer",
+    "expires_in": "3600",
+    "refresh_token": "eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3REVk1EVFBLbUJLb0FUcWQ1ZWFja1hBIiwidmVyIjoiMS4wIiwiemlwIjoiRGVmbGF0ZSIsInNlciI6IjEuMCJ9.aJ_2UW14dh4saWTQ0jLJ7ByQs5JzIeW_AU9Q_RVFgrrnYiPhikEc68ilvWWo8B20KTRB_s7oy_Eoh5LACsqU6Oz0Mjnh0-DxgrMblUOTAQ9dbfAT5WoLZiCBJIz4YT5OUA_RAGjhBUkqGwdWEumDExQnXIjRSeaUBmWCQHPPguV1_5wSj8aW2zIzYIMbofvpjwIATlbIZwJ7ufnLypRuq_MDbZhJkegDw10KI4MHJlJ40Ip8mCOe0XeJIDpfefiJ6WQpUq4zl06NO7j8kvDoVq9WALJIao7LYk_x9UIT-3d0W0eDBHGSRcNgtMYpymaN9ltx6djcEesXNn4CFnWG3g.y6KKeA9EcsW9zW-g.TrTSgn4WBt18gezegxihBla9SLSTC3YfDROQsL9K4yX4400FKlTlf-2l9CnpGTEdWXVi7sIMHCl8S4oUiXd-rvY2mn_NfDrbbVJfgKp1j7Nnq9FFyeJEFcP_FtUXgsNTG9iwfzWox04B1d845qNRWiS9N8BhAAAIdz5N0ChHuOxsVOC0Y_Ly3DNe-JQyXcq964M6-jp3cgi4UqMxT837L6pLY5Ih_iPsSfyHzstsFeqyUIktnzt1MpTlyW-_GDyFK1S-SyV8PPQ7phgFouw2jho1iboHX70RlDGYyVmP1CfQzKE_zWxj3rgaCZvYMWN8fUenoiatzhvWkUM7dhqKGjofPeL8rOMkhl6afLLjObzhUg3PZFcMR6guLjQdEwQFufWxGjfpvaHycZSKeWu6-7dF8Hy_nyMLLdBpUkdrXPob_5gRiaH72KvncSIFvJLqhY3NgXO05Fy87PORjggXwYkhWh4FgQZBIYD6h0CSk2nfFjR9uD9EKiBBWSBZj814S_Jdw6HESFtn91thpvU3hi3qNOi1m41gg1vt5Kh35A5AyDY1J7a9i_lN4B7e_pknXlVX6Z-Z2BYZvwAU7KLKsy5a99p9FX0lg6QweDzhukXrB4wgfKvVRTo.mjk92wMk-zUSrzuuuXPVeg",
+    "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik9YQjNhdTNScWhUQWN6R0RWZDM5djNpTmlyTWhqN2wxMjIySnh6TmgwRlkifQ.eyJleHAiOjE1MTMxMzAwNzgsIm5iZiI6MTUxMzEyNjQ3OCwidmVyIjoiMS4wIiwiaXNzIjoiaHR0cHM6Ly90ZS5jcGltLndpbmRvd3MubmV0L2YwNmMyZmU4LTcwOWYtNDAzMC04NWRjLTM4YTRiZmQ5ZTgyZC92Mi4wLyIsInN1YiI6Ik5vdCBzdXBwb3J0ZWQgY3VycmVudGx5LiBVc2Ugb2lkIGNsYWltLiIsImF1ZCI6ImJlZjIyZDU2LTU1MmYtNGE1Yi1iOTBhLTE5ODhhN2Q2MzRjZSIsImFjciI6ImIyY18xYV9yZXNvdXJjZW93bmVydjIiLCJpYXQiOjE1MTMxMjY0NzgsImF1dGhfdGltZSI6MTUxMzEyNjQ3OCwib2lkIjoiM2MzYjk2OWMtOGM0OS00ZTExLWE0ZWYtZmRiMmYzOTJmMDQ5IiwiYXRfaGFzaCI6Ikd6QUNCTVJtcklwYm9OdkFtNHhMWEEifQ.iAJg13cgySsdH3cmoEPGZB_g-4O8KWvGr6W5VzRXtkrlLoKB1pl4hL6f_0xOrxnQwj2sUgW-wjsCVzMc_dkHSwd9QFZ4EYJEJbi1LMGk2lW-PgjsbwHPDU1mz-SR1PeqqJgvOqrzXo0YHXr-e07M4v4Tko-i_OYcrdJzj4Bkv7ZZilsSj62lNig4HkxTIWi5Ec2gD79bPKzgCtIww1KRnwmrlnCOrMFYNj-0T3lTDcXAQog63MOacf7OuRVUC5k_IdseigeMSscrYrNrH28s3r0JoqDhNUTewuw1jx0X6gdqQWZKOLJ7OF_EJMP-BkRTixBGK5eW2YeUUEVQxsFlUg"
+}
 ```
 
-## <a name="redeem-a-refresh-token"></a>Realizowanie tokenu odświeżania
+## <a name="redeem-a-refresh-token"></a>Zrealizuj token odświeżania
 
-Utworzyć wywołanie metody POST, tak jak pokazano tutaj z informacjami w poniższej tabeli jako treść żądania:
+Utwórz wywołanie POST podobne do przedstawionego tutaj z informacjami w poniższej tabeli jako treść żądania:
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
@@ -116,9 +116,9 @@ Utworzyć wywołanie metody POST, tak jak pokazano tutaj z informacjami w poniż
 | resource | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | refresh_token | eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3... |
 
-*Client_id* i *zasobów* są wartościami, które zanotowaną wcześniej jako identyfikator aplikacji. *Refresh_token* jest token, który trafiła uwierzytelniającego wymienionych wcześniej.
+*Client_id* i *Resource* to wartości, które zostały wcześniej zanotowane jako identyfikator aplikacji. *Refresh_token* to token otrzymany wcześniej w wywołaniu uwierzytelniania.
 
-Odpowiedź oznaczająca Powodzenie będzie wyglądać następująco:
+Pomyślna odpowiedź wygląda podobnie do poniższego przykładu:
 
 ```json
 {
@@ -136,13 +136,13 @@ Odpowiedź oznaczająca Powodzenie będzie wyglądać następująco:
 }
 ```
 > [!NOTE]
-> Podczas tworzenia użytkowników za pośrednictwem interfejsu API programu Graph, aplikacja musi mieć uprawnienia "profil" programu Microsoft Graph, "offline_access" i "openid".
+> Podczas tworzenia użytkowników za pośrednictwem interfejs API programu Graph aplikacja musi mieć uprawnienia "OpenID Connect", "offline_access" i "Profile" z Microsoft Graph.
 
-## <a name="implement-with-your-preferred-native-sdk-or-use-app-auth"></a>Wdrożenia przy użyciu preferowanego natywnym zestawem SDK lub Użyj uwierzytelniania aplikacji
+## <a name="implement-with-your-preferred-native-sdk-or-use-app-auth"></a>Implementowanie przy użyciu preferowanego natywnego zestawu SDK lub korzystanie z aplikacji App-auth
 
-Wdrożenie usługi Azure AD B2C spełnia standardy poświadczenia hasła właściciela zasobu publicznych klienta OAuth 2.0 i powinien być zgodny z większość zestawów SDK klienta. Przetestowaliśmy ten przepływ w szerokim zakresie, w środowisku produkcyjnym za pomocą AppAuth dla systemu iOS i AppAuth dla systemu Android. Aby uzyskać najnowsze informacje, zobacz [natywnego zestawu SDK aplikacji OAuth 2.0 i OpenID Connect, implementacja nowoczesnych najlepsze rozwiązania](https://appauth.io/).
+Implementacja Azure AD B2C spełnia standardy protokołu OAuth 2,0 dla poświadczeń hasła właściciela publicznego zasobu klienta i powinny być zgodne z większością zestawów SDK klienta. Ten przepływ został przetestowany w środowisku produkcyjnym z AppAuth dla systemów iOS i AppAuth dla systemu Android. Najnowsze informacje znajdują się w temacie [Native App SDK for OAuth 2,0 i OpenID Connect Connect implementujące nowoczesne najlepsze rozwiązania](https://appauth.io/).
 
-Pobierz przykłady pracy, które zostały skonfigurowane do użycia z usługą Azure AD B2C z serwisu GitHub, [dla systemu Android](https://aka.ms/aadb2cappauthropc) i [dla systemu iOS](https://aka.ms/aadb2ciosappauthropc).
+Pobierz przykłady robocze, które zostały skonfigurowane do użycia z Azure AD B2C z usługi GitHub [dla systemów Android](https://aka.ms/aadb2cappauthropc) i [iOS](https://aka.ms/aadb2ciosappauthropc).
 
 
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/17/2019
 ms.author: mlearned
-ms.openlocfilehash: 30587af098b5ced7962dc45d6a059184f8b5f319
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 8e00053d5ce7c481b026d2fe0ce590d7b8799d8a
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914896"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71075453"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Wersja zapoznawcza — Tworzenie kontenera systemu Windows Server w klastrze usługi Azure Kubernetes Service (AKS) przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -149,7 +149,7 @@ az aks create \
 > Jeśli zostanie wyświetlony komunikat o błędzie weryfikacji hasła, spróbuj utworzyć grupę zasobów w innym regionie.
 > Następnie spróbuj utworzyć klaster przy użyciu nowej grupy zasobów.
 
-Po kilku minutach polecenie zostanie wykonane i zwróci informacje o klastrze w formacie JSON.
+Po kilku minutach polecenie zostanie wykonane i zwróci informacje o klastrze w formacie JSON. Czasami klaster może trwać dłużej niż kilka minut. W takich przypadkach Zezwalaj na maksymalnie 10 minut. 
 
 ## <a name="add-a-windows-server-node-pool"></a>Dodawanie puli węzłów systemu Windows Server
 
@@ -264,7 +264,7 @@ service/sample created
 
 ## <a name="test-the-application"></a>Testowanie aplikacji
 
-Podczas uruchamiania aplikacji usługa Kubernetes uwidacznia fronton aplikacji w Internecie. Ten proces może potrwać kilka minut.
+Podczas uruchamiania aplikacji usługa Kubernetes uwidacznia fronton aplikacji w Internecie. Ten proces może potrwać kilka minut. Czasami usługa może potrwać dłużej niż kilka minut. W takich przypadkach Zezwalaj na maksymalnie 10 minut.
 
 Aby monitorować postęp, użyj polecenia [kubectl get-service][kubectl-get] z argumentem `--watch`.
 

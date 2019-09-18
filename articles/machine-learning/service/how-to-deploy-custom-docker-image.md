@@ -1,7 +1,7 @@
 ---
 title: Wdrażanie modeli przy użyciu niestandardowego obrazu platformy Docker
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak używać niestandardowego obrazu podstawowego platformy Docker podczas wdrażania modeli usług Azure Machine Learning. Podczas wdrażania przeszkolonego modelu obraz podstawowego kontenera jest wdrażany w celu uruchomienia modelu do wnioskowania. Gdy usługa Azure Machine Learning udostępnia domyślny obraz podstawowy, można również użyć własnego obrazu podstawowego.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak używać niestandardowego obrazu podstawowego platformy Docker podczas wdrażania modeli Azure Machine Learning. Podczas wdrażania przeszkolonego modelu obraz podstawowego kontenera jest wdrażany w celu uruchomienia modelu do wnioskowania. Gdy Azure Machine Learning udostępnia domyślny obraz podstawowy, można również użyć własnego obrazu podstawowego.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,20 +10,20 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: 753f0bece5b8b52ebb50ab2a6e93056ce209cfbc
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 04d81f8e16a3f34f7abf15c9606833002fafb39c
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183564"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034530"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Wdrażanie modelu przy użyciu niestandardowego obrazu platformy Docker
 
-Dowiedz się, jak używać niestandardowego obrazu podstawowego platformy Docker podczas wdrażania przeszkolonych modeli przy użyciu usługi Azure Machine Learning.
+Dowiedz się, jak używać niestandardowego obrazu podstawowego platformy Docker podczas wdrażania przeszkolonych modeli przy użyciu Azure Machine Learning.
 
 W przypadku wdrożenia przeszkolonego modelu do usługi sieci Web lub IoT Edge urządzenia tworzony jest pakiet zawierający serwer sieci Web obsługujący żądania przychodzące.
 
-Usługa Azure Machine Learning udostępnia domyślny obraz podstawowy platformy Docker, dzięki czemu nie trzeba martwić się o tworzenie go. Możesz również użyć __środowiska__ usługi Azure Machine Learning, aby wybrać konkretny obraz podstawowy lub użyć podanego niestandardowego.
+Azure Machine Learning udostępnia domyślny obraz podstawowy platformy Docker, dzięki czemu nie trzeba martwić się o tworzenie go. Możesz również użyć __środowiska__ Azure Machine Learning do wybrania określonego obrazu podstawowego lub użyć podanego niestandardowego.
 
 Obraz podstawowy jest używany jako punkt wyjścia podczas tworzenia obrazu dla wdrożenia. Udostępnia on podstawowy system operacyjny i składniki. Następnie proces wdrażania dodaje do obrazu dodatkowe składniki, takie jak model, środowisko Conda i inne zasoby, przed jego wdrożeniem.
 
@@ -42,7 +42,7 @@ Ten dokument jest podzielony na dwie sekcje:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Grupa robocza usługi Azure Machine Learning. Aby uzyskać więcej informacji, zobacz artykuł [Tworzenie obszaru roboczego](how-to-manage-workspace.md) .
+* Azure Machine Learning grupy roboczej. Aby uzyskać więcej informacji, zobacz artykuł [Tworzenie obszaru roboczego](how-to-manage-workspace.md) .
 * [Zestaw SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py). 
 * [Wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 * [Rozszerzenie interfejsu wiersza polecenia dla Azure Machine Learning](reference-azure-machine-learning-cli.md).
@@ -51,9 +51,9 @@ Ten dokument jest podzielony na dwie sekcje:
 
 ## <a name="create-a-custom-base-image"></a>Tworzenie niestandardowego obrazu podstawowego
 
-Informacje w tej sekcji założono, że używasz Azure Container Registry do przechowywania obrazów platformy Docker. Podczas planowania tworzenia obrazów niestandardowych dla usługi Azure Machine Learning należy użyć poniższej listy kontrolnej:
+Informacje w tej sekcji założono, że używasz Azure Container Registry do przechowywania obrazów platformy Docker. Podczas planowania tworzenia obrazów niestandardowych dla Azure Machine Learning Użyj poniższej listy kontrolnej:
 
-* Czy używasz Azure Container Registry utworzonego dla obszaru roboczego usługi Azure Machine Learning lub autonomicznej Azure Container Registry?
+* Czy będziesz używać Azure Container Registry utworzonych dla obszaru roboczego Azure Machine Learning lub autonomicznej Azure Container Registry?
 
     W przypadku używania obrazów przechowywanych w __rejestrze kontenerów dla obszaru roboczego__nie trzeba uwierzytelniać się w rejestrze. Uwierzytelnianie jest obsługiwane przez obszar roboczy.
 
@@ -70,7 +70,7 @@ Informacje w tej sekcji założono, że używasz Azure Container Registry do prz
 
 * Informacje o Azure Container Registry i obrazie: Podaj nazwę obrazu dla każdej osoby, która musi go używać. Na przykład obraz o nazwie `myimage`przechowywane w rejestrze o nazwie `myregistry`jest przywoływany w `myregistry.azurecr.io/myimage` przypadku użycia obrazu do wdrożenia modelu
 
-* Wymagania dotyczące obrazu: Usługa Azure Machine Learning obsługuje tylko obrazy platformy Docker, które udostępniają następujące oprogramowanie:
+* Wymagania dotyczące obrazu: Azure Machine Learning obsługuje tylko obrazy platformy Docker, które udostępniają następujące oprogramowanie:
 
     * Ubuntu 16,04 lub nowszy.
     * Conda 4.5. # lub nowszej.
@@ -80,12 +80,12 @@ Informacje w tej sekcji założono, że używasz Azure Container Registry do prz
 
 ### <a name="get-container-registry-information"></a>Pobierz informacje o rejestrze kontenera
 
-W tej sekcji dowiesz się, jak uzyskać nazwę Azure Container Registry dla obszaru roboczego usługi Azure Machine Learning.
+W tej sekcji dowiesz się, jak uzyskać nazwę Azure Container Registry dla obszaru roboczego Azure Machine Learning.
 
 > [!WARNING]
 > Azure Container Registry dla obszaru roboczego jest __tworzony podczas pierwszego uczenia lub wdrożenia modelu__ przy użyciu obszaru roboczego. Jeśli utworzono nowy obszar roboczy, ale nie został przeszkolony ani utworzony model, w obszarze roboczym nie będą dostępne żadne Azure Container Registry.
 
-Jeśli modele zostały już przeszkolone lub wdrożone przy użyciu usługi Azure Machine Learning, dla Twojego obszaru roboczego utworzono rejestr kontenerów. Aby znaleźć nazwę tego rejestru kontenerów, wykonaj następujące czynności:
+Jeśli modele zostały już przeszkolone lub wdrożone przy użyciu Azure Machine Learning, dla Twojego obszaru roboczego został utworzony rejestr kontenerów. Aby znaleźć nazwę tego rejestru kontenerów, wykonaj następujące czynności:
 
 1. Otwórz nową powłokę lub wiersz polecenia i użyj następującego polecenia, aby uwierzytelnić się w ramach subskrypcji platformy Azure:
 
@@ -95,7 +95,7 @@ Jeśli modele zostały już przeszkolone lub wdrożone przy użyciu usługi Azur
 
     Postępuj zgodnie z monitami, aby uwierzytelnić się w subskrypcji.
 
-2. Użyj poniższego polecenia, aby wyświetlić listę rejestrów kontenerów dla obszaru roboczego. Zamień `<myworkspace>` na nazwę obszaru roboczego usługi Azure Machine Learning. Zamień `<resourcegroup>` na grupę zasobów platformy Azure, która zawiera obszar roboczy:
+2. Użyj poniższego polecenia, aby wyświetlić listę rejestrów kontenerów dla obszaru roboczego. Zamień `<myworkspace>` na nazwę obszaru roboczego Azure Machine Learning. Zamień `<resourcegroup>` na grupę zasobów platformy Azure, która zawiera obszar roboczy:
 
     ```azurecli-interactive
     az ml workspace show -w <myworkspace> -g <resourcegroup> --query containerRegistry
@@ -182,7 +182,7 @@ Firma Microsoft udostępnia kilka obrazów platformy Docker w publicznie dostęp
 
 | Image | Opis |
 | ----- | ----- |
-| `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Podstawowa ilustracja dotycząca usługi Azure Machine Learning |
+| `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Obraz podstawowy dla Azure Machine Learning |
 | `mcr.microsoft.com/azureml/onnxruntime:v0.4.0` | Zawiera środowisko uruchomieniowe ONNX. |
 | `mcr.microsoft.com/azureml/onnxruntime:v0.4.0-cuda10.0-cudnn7` | Zawiera składniki środowiska uruchomieniowego ONNX i CUDA. |
 | `mcr.microsoft.com/azureml/onnxruntime:v0.4.0-tensorrt19.03` | Zawiera środowisko uruchomieniowe ONNX i TensorRT. |
@@ -193,7 +193,7 @@ Firma Microsoft udostępnia kilka obrazów platformy Docker w publicznie dostęp
 > [!IMPORTANT]
 > Obrazy firmy Microsoft korzystające z CUDA lub TensorRT muszą być używane tylko w przypadku usług Microsoft Azure Services.
 
-Aby uzyskać więcej informacji, zobacz [Azure Machine Learning kontenery usług](https://github.com/Azure/AzureML-Containers).
+Aby uzyskać więcej informacji, zobacz [Azure Machine Learning Containers](https://github.com/Azure/AzureML-Containers).
 
 > [!TIP]
 >__Jeśli model jest szkolony na Azure Machine Learning obliczeń__przy użyciu __wersji 1.0.22 lub nowszej__ Azure Machine Learning SDK, obraz jest tworzony podczas uczenia. Aby odnaleźć nazwę tego obrazu, użyj `run.properties["AzureML.DerivedImageName"]`. Poniższy przykład ilustruje sposób użycia tego obrazu:
@@ -248,7 +248,7 @@ service.wait_for_deployment(show_output = True)
 print(service.state)
 ```
 
-Aby uzyskać więcej informacji na temat wdrażania, zobacz [Wdrażanie modeli za pomocą usługi Azure Machine Learning](how-to-deploy-and-where.md).
+Aby uzyskać więcej informacji na temat wdrażania, zobacz [Wdrażanie modeli przy użyciu Azure Machine Learning](how-to-deploy-and-where.md).
 
 ### <a name="use-an-image-with-the-machine-learning-cli"></a>Korzystanie z obrazu za pomocą interfejsu wiersza polecenia Machine Learning
 
@@ -276,7 +276,7 @@ Ten plik jest używany z `az ml model deploy` poleceniem. Ten `--ic` parametr s�
 az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json --ct akscomputetarget
 ```
 
-Aby uzyskać więcej informacji na temat wdrażania modelu przy użyciu interfejsu wiersza polecenia ML, zobacz sekcję "Rejestracja modelu, profilowanie i wdrażanie" w artykule [rozszerzenie interfejsu wiersza polecenia dla usługi Azure Machine Learning](reference-azure-machine-learning-cli.md#model-registration-profiling-deployment) .
+Aby uzyskać więcej informacji na temat wdrażania modelu przy użyciu interfejsu wiersza polecenia ML, zobacz sekcję "Rejestracja modelu, profilowanie i wdrażanie" [rozszerzenia interfejsu wiersza polecenia dla Azure Machine Learning](reference-azure-machine-learning-cli.md#model-registration-profiling-deployment) artykułu.
 
 ## <a name="next-steps"></a>Następne kroki
 

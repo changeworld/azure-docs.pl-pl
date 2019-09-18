@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/07/2019
 ms.author: azfuncdf
-ms.openlocfilehash: c81eccaa2b3a4335f034b9667f6e7be317635f43
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 094ae511337556ef0c67c86f6d8692cae005430a
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933387"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033969"
 ---
 # <a name="http-api-reference"></a>Dokumentacja interfejsu API protokołu HTTP
 
@@ -28,7 +28,7 @@ Wszystkie interfejsy API HTTP implementowane przez rozszerzenie wymagają nastę
 | **`connection`** | Ciąg zapytania    | **Nazwa** parametrów połączenia dla konta magazynu. Jeśli nie zostanie określony, przyjmuje się domyślne parametry połączenia dla aplikacji funkcji. |
 | **`systemKey`**  | Ciąg zapytania    | Klucz autoryzacji wymagany do wywołania interfejsu API. |
 
-`systemKey`jest kluczem autoryzacji automatycznie generowanym przez hosta Azure Functions. Zapewnia ona specjalny dostęp do interfejsów API rozszerzenia zadania trwałego i można nimi zarządzać w taki sam sposób jak [inne klucze autoryzacji](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API). Najprostszym sposobem odnajdowania `systemKey` wartości jest `CreateCheckStatusResponse` użycie interfejsu API wymienionego wcześniej.
+`systemKey`jest kluczem autoryzacji automatycznie generowanym przez hosta Azure Functions. Zapewnia ona specjalny dostęp do interfejsów API rozszerzenia zadania trwałego i można nimi zarządzać w taki sam sposób jak [inne klucze autoryzacji](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API). Można generować adresy URL, które zawierają prawidłowe `taskHub`wartości `connection`ciągu zapytania `systemKey` ,, i, przy użyciu interfejsów API `CreateCheckStatusResponse` [powiązania klienta aranżacji](durable-functions-bindings.md#orchestration-client) , `createCheckStatusResponse` takie `CreateHttpManagementPayload` jak interfejsy API i i `createHttpManagementPayload` Interfejsy API w języku JavaScript.
 
 W następnych sekcjach znajdują się określone interfejsy API protokołu HTTP obsługiwane przez rozszerzenie i przedstawiono przykłady ich użycia.
 
@@ -637,7 +637,7 @@ Parametry żądania dla tego interfejsu API obejmują domyślnie wymieniony wcze
 |-------------------|-----------------|-------------|
 | **`entityType`**  | URL             | Typ jednostki. |
 | **`entityKey`**   | URL             | Unikatowa nazwa jednostki. |
-| **`op`**          | Ciąg zapytania    | Opcjonalny. Nazwa operacji zdefiniowanej przez użytkownika do wywołania. |
+| **`op`**          | Ciąg zapytania    | Opcjonalna. Nazwa operacji zdefiniowanej przez użytkownika do wywołania. |
 | **`{content}`**   | Żądaj zawartości | Ładunek zdarzenia w formacie JSON. |
 
 Oto przykładowe żądanie, które wysyła zdefiniowany przez użytkownika komunikat "Dodaj" do `Counter` jednostki o nazwie. `steps` Zawartość wiadomości jest wartością `5`. Jeśli jednostka jeszcze nie istnieje, zostanie utworzona przez to żądanie:

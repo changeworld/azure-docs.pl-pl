@@ -11,18 +11,18 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/04/2019
-ms.openlocfilehash: 81f3e4beb29f21f1b752a876827e9b35856c713a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c501bed9220c08013d44836066e46df92cf69eaa
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566891"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037434"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database"></a>Szablony usługi Azure Resource Manager dla usługi Azure SQL Database
 
 Szablony usługi Azure Resource Manager pozwalają zdefiniować Twoją infrastrukturę jako kod, a następnie wdrożyć Twoje rozwiązania w chmurze platformy Azure.
 
-## <a name="single-database--elastic-pool"></a>Pojedyncza baza danych i elastyczna pula
+## <a name="single-database--elastic-pooltabsingle-database"></a>[Jedna baza danych & elastyczna Pula](#tab/single-database)
 
 Poniższa tabela zawiera linki do szablonów usługi Azure Resource Manager dla usługi Azure SQL Database.
 
@@ -41,7 +41,7 @@ Poniższa tabela zawiera linki do szablonów usługi Azure Resource Manager dla 
 | [Klaster HDInsight z usługą SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-with-sql-database) | Ten szablon umożliwia tworzenie klastra HDInsight, serwera usługi SQL Database, bazy danych usługi SQL Database i dwóch tabel. Ten szablon jest używany przez artykuł [Używanie składnika Sqoop z usługą Hadoop w usłudze HDInsight](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-use-sqoop) |
 | [Aplikacja logiki platformy Azure, która uruchamia procedurę składowaną SQL zgodnie z harmonogramem](https://github.com/Azure/azure-quickstart-templates/tree/master/101-logic-app-sql-proc) | Ten szablon umożliwia tworzenie aplikacji logiki, która będzie uruchamiać procedurę składowaną SQL zgodnie z harmonogramem. Wszelkie argumenty dla procedury można umieścić w sekcji treści szablonu.|
 
-## <a name="managed-instance"></a>Wystąpienie zarządzane
+## <a name="managed-instancetabmanaged-instance"></a>[Wystąpienie zarządzane](#tab/managed-instance)
 
 Poniższa tabela zawiera linki do szablonów usługi Azure Resource Manager dla usługi Azure SQL Database — wystąpienie zarządzane.
 
@@ -51,3 +51,5 @@ Poniższa tabela zawiera linki do szablonów usługi Azure Resource Manager dla 
 | [Środowisko sieciowe dla wystąpienia zarządzanego](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) | To wdrożenie utworzy skonfigurowaną sieć wirtualną platformy Azure z dwiema podsieciami — jedną, która będzie przeznaczona do Twoich wystąpień zarządzanych, i drugą, gdzie można umieścić inne zasoby (na przykład maszyny wirtualne, środowiska usługi App Service, itd.). Ten szablon utworzy prawidłowo skonfigurowane środowisko sieciowe, w którym możesz wdrożyć wystąpienia zarządzane. |
 | [Wystąpienie zarządzane z połączeniem P2S](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-point-to-site-vpn) | To wdrożenie utworzy sieć wirtualną platformy Azure z dwiema podsieciami `ManagedInstance` i `GatewaySubnet`. Wystąpienie zarządzane będzie wdrażane w podsieci ManagedInstance. Brama sieci wirtualnej zostanie utworzona w podsieci `GatewaySubnet` i skonfigurowana dla połączenia sieci VPN typu punkt-lokacja. |
 | [Wystąpienie zarządzane z maszyną wirtualną](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-jumpbox) | To wdrożenie utworzy sieć wirtualną platformy Azure z dwiema podsieciami `ManagedInstance` i `Management`. Wystąpienie zarządzane zostanie wdrożone w podsieci `ManagedInstance`. Maszyna wirtualna z najnowszą wersją programu SQL Server Management Studio (SSMS) zostanie wdrożona w podsieci `Management`. |
+
+---

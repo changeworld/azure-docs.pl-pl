@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: da7ec020b6f3f4a3b1890695a78fb6bdb363d233
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 69279da93197bcaaf1bf600bc9406287253d74bb
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849379"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063278"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Samouczek: Dostosowywanie interfejsu środowiska użytkownika w Azure Active Directory B2C
 
-Aby zapoznać się z bardziej typowymi środowiskami użytkowników, takimi jak rejestrowanie, logowanie i edytowanie profilów, można użyć [przepływów użytkowników](active-directory-b2c-reference-policies.md) w usłudze Azure Active Directory (Azure AD) B2C. Informacje przedstawione w tym samouczku ułatwiają zapoznanie się z informacjami na temat [dostosowywania interfejsu użytkownika](customize-ui-overview.md) do tych środowisk przy użyciu własnych plików HTML i CSS.
+Aby zapoznać się z bardziej typowymi środowiskami użytkowników, takimi jak rejestrowanie, logowanie i edytowanie profilów, można użyć [przepływów użytkowników](active-directory-b2c-reference-policies.md) w Azure Active Directory B2C (Azure AD B2C). Informacje przedstawione w tym samouczku ułatwiają zapoznanie się z informacjami na temat [dostosowywania interfejsu użytkownika](customize-ui-overview.md) do tych środowisk przy użyciu własnych plików HTML i CSS.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
@@ -43,7 +43,7 @@ Tworzysz konto usługi Azure Storage i kontener, a następnie umieścisz podstaw
 Chociaż pliki można przechowywać na wiele sposobów, w tym samouczku można je przechowywać w [usłudze Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md).
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Upewnij się, że używasz katalogu, który zawiera subskrypcję platformy Azure. Wybierz pozycję **katalog i filtr subskrypcji** w górnym menu, a następnie wybierz katalog, który zawiera twoją subskrypcję. Ten katalog jest inny niż ten, który zawiera dzierżawę usługi Azure B2C.
+2. Upewnij się, że używasz katalogu, który zawiera subskrypcję platformy Azure. W górnym menu wybierz pozycję **katalog i subskrypcja** , a następnie wybierz katalog, który zawiera twoją subskrypcję. Ten katalog jest inny niż ten, który zawiera dzierżawę usługi Azure B2C.
 3. Wybierz pozycję Wszystkie usługi w lewym górnym rogu Azure Portal, Wyszukaj i wybierz pozycję **konta magazynu**.
 4. Wybierz pozycję **Dodaj**.
 5. W obszarze **Grupa zasobów**wybierz pozycję **Utwórz nową**, wprowadź nazwę nowej grupy zasobów, a następnie kliknij przycisk **OK**.

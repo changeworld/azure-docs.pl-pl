@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: jak korzystać z usługi Azure Cache for Redis w środowisku Node.js | Microsoft Docs'
+title: 'Szybki start: Korzystanie z usługi Azure cache for Redis za pomocą środowiska Node. js'
 description: W tym przewodniku Szybki start dowiesz się, jak używać usługi Azure Cache for Redis w środowisku Node.js oraz node_redis.
 services: cache
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 05/21/2018
 ms.author: yegu
-ms.custom: mvc
-ms.openlocfilehash: dc427620b8aa64b9eae7a35f81c02ae5016153f9
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.custom: mvc, seo-javascript-september2019
+ms.openlocfilehash: f46a4771f1db5e4040cb23b1a9236c91699b6ad5
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542798"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057862"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>Szybki start: Korzystanie z usługi Azure cache for Redis za pomocą środowiska Node. js
 

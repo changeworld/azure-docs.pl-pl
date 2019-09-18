@@ -7,12 +7,12 @@ ms.author: shthota
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/09/2019
-ms.openlocfilehash: 4357a91a87648885def69d8e75e19e38a5a3f751
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 87ecf534fa7d4f3609882f5f18b314c246e388bd
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993715"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036643"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Analiza komercyjnego portalu Marketplace w centrum partnerskim
 
@@ -250,7 +250,7 @@ Otrzymasz powiadomienie wyskakujące i wiadomość e-mail zawierającą link **d
 | Imię klienta| Odbiorcy| Nazwa podana przez klienta. Nazwa może różnić się od nazwy podanej w subskrypcji platformy Azure klienta.| |
 | Identyfikator klienta | Klient, zamówienie | Unikatowy identyfikator przypisany do klienta. Klient może mieć zero lub więcej subskrypcji portalu Azure Marketplace.|  |
 | Kod pocztowy klienta  | Odbiorcy| Kod pocztowy dostarczony przez klienta. Kod może być inny niż kod pocztowy podany w subskrypcji platformy Azure klienta.| |
-| Stan klienta| Odbiorcy| Stan (adres) dostarczony przez klienta. Stan może być inny niż nazwisko podane w subskrypcji platformy Azure klienta.| |
+| Stan klienta| Odbiorcy| Stan (adres) dostarczony przez klienta. Stan może być inny niż stan podany w subskrypcji platformy Azure klienta.| |
 | Data pozyskania| Odbiorcy| Pierwszy dzień zakupionej oferty przez klienta.| |
 | Data utraty| Odbiorcy| Ostatnia data anulowania ostatniego zakupionej oferty przez klienta.||
 | Jest nowym klientem  | Zamówienie| Wartość będzie identyfikować nowego klienta przejmującego jedną lub większą liczbę ofert po raz pierwszy (lub nie). Wartość będzie równa "yes", jeśli w ramach tego samego miesiąca kalendarzowego dla "Data pozyskania". Wartość będzie równa "No", jeśli klient kupił dowolne oferty przed zgłoszonym miesiącem kalendarzowym. |

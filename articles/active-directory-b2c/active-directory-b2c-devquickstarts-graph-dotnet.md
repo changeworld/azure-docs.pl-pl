@@ -10,19 +10,19 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 11a9fc521a7b17ae0ff2f579f173f4d43383bdd5
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: c7fcbbbfcc2192160ca852538c015a365518e448
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70880094"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065943"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Korzystanie z interfejsu API Graph usługi Azure AD
 
 >[!NOTE]
 > Aby zarządzać użytkownikami w katalogu Azure AD B2C, należy użyć [interfejs API programu Graph usługi Azure AD](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-operations-overview) . Różni się to od interfejsu API Microsoft Graph. Więcej informacji można znaleźć [tutaj](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/).
 
-Dzierżawy B2C (Azure AD) mogą być bardzo duże. Azure Active Directory Oznacza to, że wiele typowych zadań zarządzania dzierżawcami należy wykonać programowo. Podstawowym tego przykładem jest zarządzanie użytkownikami. Może być konieczne przeprowadzenie migracji istniejącego magazynu użytkownika do dzierżawy B2C. Możesz zdecydować się na hostowanie rejestracji użytkowników na własnej stronie i tworzenie kont użytkowników w katalogu usługi Azure AD B2C w tle. Zadania tego typu wymagają możliwości tworzenia, odczytywania, aktualizowania i usuwania kont użytkowników. Te zadania można wykonać przy użyciu interfejs API programu Graph usługi Azure AD.
+Dzierżawy Azure Active Directory B2C (Azure AD B2C) mogą być bardzo duże. Oznacza to, że wiele typowych zadań zarządzania dzierżawcami należy wykonać programowo. Podstawowym tego przykładem jest zarządzanie użytkownikami. Może być konieczne przeprowadzenie migracji istniejącego magazynu użytkownika do dzierżawy B2C. Możesz zdecydować się na hostowanie rejestracji użytkowników na własnej stronie i tworzenie kont użytkowników w katalogu usługi Azure AD B2C w tle. Zadania tego typu wymagają możliwości tworzenia, odczytywania, aktualizowania i usuwania kont użytkowników. Te zadania można wykonać przy użyciu interfejs API programu Graph usługi Azure AD.
 
 W przypadku dzierżawców B2C istnieją dwa podstawowe tryby komunikacji z interfejs API programu Graph.
 
@@ -43,10 +43,10 @@ Po utworzeniu dzierżawy usługi B2C należy zarejestrować aplikację przy uży
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Wybierz dzierżawę Azure AD B2C, wybierając swoje konto w prawym górnym rogu strony.
 3. W okienku nawigacji po lewej stronie wybierz pozycję **wszystkie usługi**, kliknij pozycję **rejestracje aplikacji**, a następnie kliknij pozycję **Nowa rejestracja**.
-4. Postępuj zgodnie z monitami i utwórz nową aplikację. 
+4. Postępuj zgodnie z monitami i utwórz nową aplikację.
     1. Dodaj odpowiednią nazwę
     2. Wybierz **konta tylko w tym katalogu organizacji**
-    3. Wybierz pozycję **Sieć Web** jako typ aplikacji, a następnie podaj **adres URL logowania** (np `https://B2CGraphAPI`.), ponieważ nie dotyczy tego przykładu.  
+    3. Wybierz pozycję **Sieć Web** jako typ aplikacji, a następnie podaj **adres URL logowania** (np `https://B2CGraphAPI`.), ponieważ nie dotyczy tego przykładu.
     4. Kliknij pozycję Zarejestruj.
 5. Aplikacja zostanie teraz wyświetlona na liście aplikacji, kliknij ją, aby uzyskać **Identyfikator aplikacji** (znany również jako identyfikator klienta). Skopiuj ją tak, jak będzie potrzebna w dalszej części.
 6. W menu Ustawienia kliknij pozycję **certyfikaty & wpisy tajne**.
@@ -65,8 +65,8 @@ Masz teraz aplikację, która ma uprawnienia do tworzenia, odczytywania i aktual
 
 > [!NOTE]
 > Przyznanie uprawnień może potrwać kilka minut.
-> 
-> 
+>
+>
 
 ## <a name="configure-delete-or-update-password-permissions-for-your-application"></a>Konfigurowanie uprawnień do usuwania lub aktualizowania hasła dla aplikacji
 Obecnie uprawnienia do *odczytu i zapisu danych katalogu* **nie** obejmują możliwości usuwania użytkowników ani aktualizowania haseł użytkowników. Jeśli chcesz, aby aplikacja mogła usuwać użytkowników lub aktualizować hasła, musisz wykonać te dodatkowe kroki, które obejmują program PowerShell. w przeciwnym razie możesz przejść do następnej sekcji.
@@ -132,8 +132,8 @@ Każde żądanie do interfejs API programu Graph wymaga tokenu dostępu do uwier
 
 > [!NOTE]
 > Ten przykładowy kod używa biblioteki ADAL v2 w celu komunikowania się z interfejs API programu Graph.  Aby uzyskać tokeny dostępu, które mogą być używane z interfejs API programu Graph usługi Azure AD, należy użyć biblioteki ADAL v2 lub v3.
-> 
-> 
+>
+>
 
 Po `B2CGraphClient` uruchomieniu tworzy wystąpienie `B2CGraphClient` klasy. Konstruktor dla tej klasy konfiguruje szkielet uwierzytelniania ADAL:
 
@@ -260,8 +260,8 @@ Można zobaczyć, jak jest konstruowany `B2CGraphClient.SendGraphPostRequest(...
 
 > [!NOTE]
 > Jeśli konta, które mają zostać zmigrowane z istniejącego magazynu użytkowników, mają niższą siłę hasła niż [siła silnego hasła wymuszonego przez Azure AD B2C](/previous-versions/azure/jj943764(v=azure.100)), można wyłączyć wymaganie silnego hasła przy `DisableStrongPassword` użyciu wartości z `passwordPolicies`właściwość. Na przykład można zmodyfikować poniższe żądanie utworzenia użytkownika: `"passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"`.
-> 
-> 
+>
+>
 
 ### <a name="update-consumer-user-accounts"></a>Aktualizowanie kont użytkowników indywidualnych
 Podczas aktualizacji obiektów użytkownika proces jest podobny do tego, który jest używany do tworzenia obiektów użytkownika. Ale ten proces używa metody http `PATCH` :

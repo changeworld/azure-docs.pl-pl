@@ -3,7 +3,7 @@ title: 'Dokumentacja interfejsu API platformy Azure monitor stanu v2: Pobierz st
 description: Dokumentacja interfejsu API monitor stanu v2. Get-ApplicationInsightsMonitoringStatus. Monitorowanie wydajności witryny sieci Web bez ponownego wdrażania witryny sieci Web. Działa z aplikacjami internetowymi platformy ASP.NET hostowanymi lokalnie na maszynach wirtualnych lub platformie Azure.
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: TimothyMothra
 manager: alexklim
 ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 50703ede205b42032e9618c1b16b0de2bd7f3a23
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: c3982e7eb78c1113c73a8e7e9d7b00ad403ac486
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424128"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058254"
 ---
 # <a name="status-monitor-v2-api-get-applicationinsightsmonitoringstatus"></a>Interfejs API monitor stanu v2: Get-ApplicationInsightsMonitoringStatus
 
@@ -202,7 +202,7 @@ Jeśli ten proces nie powiedzie się z jakiegokolwiek powodu, można uruchomić 
 **Opcjonalnie**. Używane tylko z InspectProcess. Użyj tego przełącznika, aby pominąć monit użytkownika, który pojawia się przed pobraniem dodatkowych narzędzi.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
  Więcej informacji o monitor stanu v2:
  - Skorzystaj z naszego przewodnika, aby [rozwiązywać problemy z](status-monitor-v2-troubleshoot.md) Monitor stanu v2.

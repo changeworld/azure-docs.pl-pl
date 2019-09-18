@@ -1,7 +1,7 @@
 ---
 title: Co to jest zautomatyzowany ML/automl
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, w jaki sposób usługa Azure Machine Learning może automatycznie wybierać algorytm i generować z niego model, aby zaoszczędzić czas, korzystając z podanych przez Ciebie parametrów i kryteriów, aby wybrać najlepszy algorytm dla modelu.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, w jaki sposób Azure Machine Learning automatycznie wybierać algorytm i generować z niego model, aby zaoszczędzić czas, korzystając z parametrów i kryteriów, które podajesz, aby wybrać najlepszy algorytm dla modelu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: b7347be086cd9e85dda7b8271548ccb44e8114ff
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 32ff1ba599f4f95cc413bc2bb2c3bbc442405022
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882037"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035705"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co to jest automatyczna usługi machine learning?
 
@@ -39,7 +39,7 @@ Analitycy danych, analitykowie i deweloperzy w różnych branżach mogą używa�
 
 ## <a name="how-automated-ml-works"></a>Jak działa zautomatyzowany ML
 
-Korzystając z **usługi Azure Machine Learning**, można projektować i uruchamiać zautomatyzowane eksperymenty szkoleniowe z użyciem następujących kroków:
+Korzystając z **Azure Machine Learning**, można projektować i uruchamiać zautomatyzowane eksperymenty szkoleniowe ml z następującymi krokami:
 
 1. **Określ problem związany z ml** , który ma zostać rozwiązany: Klasyfikacja, prognozowanie lub regresja
 
@@ -53,7 +53,7 @@ Korzystając z **usługi Azure Machine Learning**, można projektować i urucham
 
   ![Automatyczne Uczenie maszynowe](./media/how-to-automated-ml/automl-concept-diagram2.png)
 
-Podczas szkolenia usługa Azure Machine Learning tworzy wiele równoległych potoków, które wypróbuje różne algorytmy i parametry. Zostanie ona zatrzymana po trafieniu kryteriów zakończenia zdefiniowanych w eksperymentie.
+Podczas uczenia Azure Machine Learning tworzy wiele potoków równoległych, które wypróbuje różne algorytmy i parametry. Zostanie ona zatrzymana po trafieniu kryteriów zakończenia zdefiniowanych w eksperymentie.
 
 Możesz również sprawdzić zarejestrowane informacje o uruchomieniu, które [zawierają metryki](how-to-understand-automated-ml.md) zebrane podczas uruchamiania. Uruchomienie szkoleniowe powoduje utworzenie serializowanego obiektu języka`.pkl` Python (plik) zawierającego model i przetwarzanie wstępne przetwarzania danych.
 

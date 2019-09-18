@@ -4,7 +4,7 @@ description: Dowiedz się, jak zainstalować agenta maszyny wirtualnej platformy
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 018f27999c4f69c0868e2a8fde6535346c7d0377
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 438143d3253f1cab1afb958a90f427dcba59a98e
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090365"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059253"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>Zainstaluj agenta maszyny wirtualnej platformy Azure w trybie offline 
 
@@ -39,7 +39,7 @@ Wykonaj następujące kroki, aby zainstalować agenta maszyny wirtualnej w trybi
 
 1. Utwórz migawkę dysku systemu operacyjnego z zaatakowaną maszyną wirtualną, Stwórz dysk na podstawie migawki, a następnie Dołącz dysk do maszyny wirtualnej rozwiązywania problemów. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z maszyną wirtualną z systemem Windows przez dołączenie dysku systemu operacyjnego do maszyny wirtualnej odzyskiwania przy użyciu Azure Portal](troubleshoot-recovery-disks-portal-windows.md). W przypadku klasycznej maszyny wirtualnej Usuń maszynę wirtualną i Zachowaj dysk systemu operacyjnego, a następnie Dołącz dysk systemu operacyjnego do maszyny wirtualnej Rozwiązywanie problemów.
 
-2.  Połącz się z maszyną wirtualną narzędzia do rozwiązywania problemów. Otwórz przystawkę Zarządzanie > **dyskami** **Zarządzanie komputerem**. Upewnij się, że dysk systemu operacyjnego jest w trybie online i że litery dysku są przypisane do partycji dysku.
+2.  Połącz się z maszyną wirtualną narzędzia do rozwiązywania problemów. Otwórz przystawkę Zarządzanie**dyskami** **Zarządzanie** > komputerem. Upewnij się, że dysk systemu operacyjnego jest w trybie online i że litery dysku są przypisane do partycji dysku.
 
 ### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>Krok 2: Modyfikowanie dysku systemu operacyjnego w celu zainstalowania agenta maszyny wirtualnej platformy Azure
 
@@ -49,7 +49,7 @@ Wykonaj następujące kroki, aby zainstalować agenta maszyny wirtualnej w trybi
 
 3.  Uruchom **Edytor rejestru** (regedit. exe).
 
-4.  Wybierz klucz **HKEY_LOCAL_MACHINE** . Z menu wybierz pozycję Załaduj **plik** > **Hive**:
+4.  Wybierz klucz **HKEY_LOCAL_MACHINE** . Z menu wybierz pozycję**Załaduj** **plik** > Hive:
 
     ![Ładowanie gałęzi](./media/install-vm-agent-offline/load-hive.png)
 
@@ -94,9 +94,9 @@ Wykonaj następujące kroki, aby zainstalować agenta maszyny wirtualnej w trybi
 
              ![Kopiuj folder GuestAgent](./media/install-vm-agent-offline/copy-files.png)
 
-9.  Wybierz pozycję **BROKENSYSTEM**. Z menu wybierz pozycję Zwolnij **plik** > **Hive**.
+9.  Wybierz pozycję **BROKENSYSTEM**. Z menu wybierz pozycję**Zwolnij** **plik** > Hive.
 
-10.  Wybierz pozycję **BROKENSOFTWARE**. Z menu wybierz pozycję Zwolnij **plik** > **Hive**.
+10.  Wybierz pozycję **BROKENSOFTWARE**. Z menu wybierz pozycję**Zwolnij** **plik** > Hive.
 
 11.  Odłącz dysk systemu operacyjnego, a następnie [Zmień dysk systemu operacyjnego dla maszyny wirtualnej, której to dotyczy](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm). Dla klasycznej maszyny wirtualnej Utwórz nową maszynę wirtualną przy użyciu naprawionego dysku systemu operacyjnego.
 

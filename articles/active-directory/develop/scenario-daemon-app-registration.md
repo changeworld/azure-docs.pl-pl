@@ -1,6 +1,6 @@
 ---
-title: Demon aplikacji wywoływania interfejsów API sieci web (rejestracji aplikacji) — Platforma tożsamości firmy Microsoft
-description: Dowiedz się, jak utworzyć aplikację demona, który wywołuje interfejsy API sieci web — rejestrowanie aplikacji
+title: Aplikacja demona wywołująca interfejsy API sieci Web (Rejestracja aplikacji) — platforma tożsamości firmy Microsoft
+description: Dowiedz się, jak utworzyć aplikację demona, która wywołuje interfejsy API sieci Web — Rejestracja aplikacji
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -12,45 +12,45 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79a355ab226e56a3dde1df5369deda5142d47848
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f590010a655fb01529a4a59b5540cc03068f2b8
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65076243"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056474"
 ---
-# <a name="daemon-app-that-calls-web-apis---app-registration"></a>Demon aplikacji czy interfejsy API — rejestrowanie aplikacji sieci web wywołania
+# <a name="daemon-app-that-calls-web-apis---app-registration"></a>Aplikacja demona, która wywołuje interfejsy API sieci Web — Rejestracja aplikacji
 
-W przypadku aplikacji demona Oto się, co należy wiedzieć podczas rejestrowania aplikacji.
+Poniżej przedstawiono informacje o tym, co należy wiedzieć podczas rejestrowania aplikacji.
 
-## <a name="supported-account-types"></a>Obsługiwane typy konta
+## <a name="supported-account-types"></a>Obsługiwane typy kont
 
-Biorąc pod uwagę, że demon aplikacji tylko ma sensu w dzierżawie usługi Azure AD podczas tworzenia aplikacji należy wybrać:
+Uwzględniając, że aplikacje demona mają sens tylko w dzierżawie usługi Azure AD, podczas tworzenia aplikacji należy wybrać następujące opcje:
 
-- albo **kont w tym katalogu organizacji tylko**. Ten wybór jest najbardziej typowych przypadkach jako demon aplikacji są zwykle pisane przez line-of-business (LOB) deweloperów.
-- lub **kont w dowolnym katalogu organizacji**. Jeśli jesteś niezależnym dostawcą oprogramowania i zapewniając narzędzia narzędzie do klientów, będzie dokonać tego wyboru. Należy zatwierdzić administratorom dzierżawy klienta.
+- **tylko konta w tym katalogu organizacji**. Jest to najbardziej typowy przypadek, ponieważ aplikacje demona są zwykle zapisywane przez deweloperów branżowych.
+- lub **konta w dowolnym katalogu organizacyjnym**. Możesz wybrać tę opcję, jeśli jesteś dostawcą niezależnego dostawcy oprogramowania. Aby to zatwierdzić, będziesz potrzebować administratorów dzierżawy klienta.
 
-## <a name="authentication---no-reply-uri-needed"></a>Uwierzytelnianie — nie potrzeby identyfikator URI odpowiedzi
+## <a name="authentication---no-reply-uri-needed"></a>Uwierzytelnianie — nie jest wymagany identyfikator URI odpowiedzi
 
-W przypadku, gdy aplikacja poufne klienta używa **tylko** przepływ poświadczeń klienta, adres URL odpowiedzi nie musi być zarejestrowana. Nie ma potrzebne do konfiguracji/budowy aplikacji. Przepływ poświadczeń klienta nie używa go.
+W przypadku, gdy poufna aplikacja kliencka używa **tylko** przepływu poświadczeń klienta, adres URL odpowiedzi nie musi być zarejestrowany. Nie jest to konieczne w przypadku konfiguracji/konstrukcji aplikacji. Przepływ poświadczeń klienta nie używa tego programu.
 
-## <a name="api-permissions---app-permissions-and-admin-consent"></a>Uprawnienia do interfejsu API — uprawnienia aplikacji i zgody administratora
+## <a name="api-permissions---app-permissions-and-admin-consent"></a>Uprawnienia interfejsu API — uprawnienia aplikacji i zgoda administratora
 
-Aplikacji demona może żądać jedynie uprawnień aplikacji do interfejsów API (bez delegowania uprawnień). W **uprawnień interfejsu API** strony rejestracji aplikacji, po wybraniu **Dodaj uprawnienia** i wybrana rodzina interfejsu API, wybierz **uprawnienia aplikacji**, a następnie wybierz swoje uprawnienia
+Aplikacja demona może żądać uprawnień aplikacji tylko do interfejsów API (nie delegowanych uprawnień). Na stronie **uprawnienia interfejsu API** do rejestracji aplikacji po wybraniu opcji **Dodaj uprawnienie** i wybraniu rodziny interfejsów API wybierz pozycję **uprawnienia aplikacji**, a następnie wybierz swoje uprawnienia.
 
-![Uprawnienia aplikacji i zgody administratora](media/scenario-daemon-app/app-permissions-and-admin-consent.png)
+![Uprawnienia aplikacji i zgoda administratora](media/scenario-daemon-app/app-permissions-and-admin-consent.png)
 
-Demon aplikacje wymagają mają administratora dzierżawy, wstępnie wyrazić zgodę na aplikacja wywołuje internetowy interfejs API. To wyrażenie zgody znajduje się w tej samej **uprawnień interfejsu API** strony przez wybranie administratora dzierżawy **udzielić zgody administratora, aby *naszej organizacji***
+Aplikacje demona wymagają, aby administrator dzierżawy wstępnie wyraził zgodę na aplikację wywołującą internetowy interfejs API. Ta zgoda jest świadczona na tej samej stronie **uprawnień interfejsu API** , przez administratora dzierżawy, wybierając pozycję **Udziel zgody administratorowi na swoją *organizację***
 
-Jeśli jesteś niezależnym dostawcą oprogramowania i tworzenie aplikacji z wieloma dzierżawami, czy chcesz sprawdzić [wdrażanie — wielkość liter w aplikacji wielodostępnej demona](scenario-daemon-production.md#deployment---case-of-multi-tenant-daemon-apps) akapitu.
+Jeśli jesteś niezależnym dostawcą oprogramowania, Kompilując aplikację z wieloma dzierżawcami, warto sprawdzić, czy w [przypadku wdrożenia aplikacji z wieloma dzierżawcami](scenario-daemon-production.md#deployment---case-of-multi-tenant-daemon-apps) jest używany akapit.
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-registration-client-secrets.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Demon aplikacji — konfiguracji kodu aplikacji](./scenario-daemon-app-configuration.md)
+> [Aplikacja demona — konfiguracja kodu aplikacji](./scenario-daemon-app-configuration.md)

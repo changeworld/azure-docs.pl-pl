@@ -1,6 +1,6 @@
 ---
-title: Definiowanie profilu technicznego usługi Azure Active Directory w przypadku zasad niestandardowych w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: W przypadku zasad niestandardowych w usłudze Azure Active Directory B2C, należy zdefiniować profil techniczny usługi Azure Active Directory.
+title: Zdefiniuj profil techniczny Azure Active Directory w zasadach niestandardowych w Azure Active Directory B2C | Microsoft Docs
+description: Zdefiniuj profil techniczny Azure Active Directory w zasadach niestandardowych w programie Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,35 +10,35 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8b8bbe540d9e296b0f6a0c11a62d3b861e0115d3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4383980953147560b9e51e4ccab3032dd8173dd4
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66507446"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064618"
 ---
-# <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definiowanie profilu technicznego usługi Azure Active Directory w zasadach niestandardowych usługi Azure Active Directory B2C
+# <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj profil techniczny Azure Active Directory w Azure Active Directory B2C zasadach niestandardowych
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Usługa Azure Active Directory (Azure AD) B2C umożliwia zarządzanie użytkownikami w usłudze Azure Active Directory. W tym artykule opisano szczegóły profilu technicznego do interakcji z dostawcy oświadczeń, który obsługuje ten standardowy protokół.
+Azure Active Directory B2C (Azure AD B2C) zapewnia obsługę Azure Active Directory zarządzania użytkownikami. W tym artykule opisano szczegóły dotyczące profilu technicznego dotyczącego współpracy z dostawcą oświadczeń obsługującym ten standardowy protokół.
 
 ## <a name="protocol"></a>Protocol
 
-**Nazwa** atrybutu **protokołu** element musi być równa `Proprietary`. **Obsługi** atrybutu musi zawierać w pełni kwalifikowana nazwa zestawu programu obsługi protokołu `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`.
+Atrybut **name** elementu **Protocol** musi być ustawiony na `Proprietary`. Atrybut **programu obsługi** musi zawierać w pełni kwalifikowaną nazwę zestawu `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`programu obsługi protokołu.
 
-Obejmują wszystkie profile techniczne usługi Azure AD **typowe usługi AAD** profilu technicznego. Następujące profile techniczne nie określenie protokołu, ponieważ protokół jest skonfigurowany w **typowe usługi AAD** profilu technicznego:
+Wszystkie profile techniczne usługi Azure AD obejmują wspólny profil techniczny w **usłudze AAD** . Następujące profile techniczne nie określają protokołu, ponieważ protokół jest skonfigurowany w profilu technicznym usługi **AAD — typowy** :
 
-- **Usługi AAD UserReadUsingAlternativeSecurityId** i **AAD-UserReadUsingAlternativeSecurityId — brak błędu** — poszukaj Konfigurowanie konta społecznościowego w katalogu.
-- **AAD — UserWriteUsingAlternativeSecurityId** — Tworzenie nowego konta społecznościowego.
-- **Usługi AAD UserReadUsingEmailAddress** — Szukaj w górę konto lokalne w katalogu. 
-- **AAD — UserWriteUsingLogonEmail** — Utwórz nowe konto lokalne.
-- **AAD — UserWritePasswordUsingObjectId** -aktualizacji hasła konta lokalnego.
-- **AAD — UserWriteProfileUsingObjectId** — aktualizowanie profilu użytkownika konta lokalnego lub społecznościowych.
-- **AAD — UserReadUsingObjectId** — odczytuj profil użytkownika konta lokalnego lub społecznościowych.
-- **AAD — UserWritePhoneNumberUsingObjectId** -zapisu numer telefonu uwierzytelniania Wieloskładnikowego konto lokalne lub społecznościowych
+- **AAD-UserReadUsingAlternativeSecurityId** i **AAD-UserReadUsingAlternativeSecurityId-NOERROR** — wyszukiwanie konta społecznościowego w katalogu.
+- **AAD-UserWriteUsingAlternativeSecurityId** — Tworzenie nowego konta społecznościowego.
+- **AAD-UserReadUsingEmailAddress** — wyszukiwanie konta lokalnego w katalogu.
+- **AAD-UserWriteUsingLogonEmail** — Tworzenie nowego konta lokalnego.
+- **AAD-UserWritePasswordUsingObjectId** — aktualizuje hasło do konta lokalnego.
+- **AAD-UserWriteProfileUsingObjectId** — aktualizowanie profilu użytkownika konta lokalnego lub społecznościowego.
+- **AAD-UserReadUsingObjectId** — odczytywanie profilu użytkownika konta lokalnego lub społecznościowego.
+- **AAD-UserWritePhoneNumberUsingObjectId** — Napisz numer telefonu MFA konta lokalnego lub społecznościowego
 
-W poniższym przykładzie przedstawiono **typowe usługi AAD** profilu technicznego:
+W poniższym przykładzie przedstawiono profil techniczny usługi **AAD-Common** :
 
 ```XML
 <TechnicalProfile Id="AAD-Common">
@@ -55,29 +55,29 @@ W poniższym przykładzie przedstawiono **typowe usługi AAD** profilu techniczn
 </TechnicalProfile>
 ```
 
-## <a name="input-claims"></a>Oświadczeń wejściowych
+## <a name="input-claims"></a>Oświadczenia wejściowe
 
-Następujące profile techniczne zawierają **InputClaims** kont społecznościowych i lokalnym:
+Następujące profile techniczne obejmują **InputClaims** kont społecznościowych i lokalnych:
 
-- Profile techniczne konta społecznościowego **AAD UserReadUsingAlternativeSecurityId** i **AAD UserWriteUsingAlternativeSecurityId** obejmuje **AlternativeSecurityId** oświadczenia. To oświadczenie zawiera identyfikator użytkownika konta w sieci społecznościowej.
-- Profile techniczne konta lokalnego **AAD UserReadUsingEmailAddress** i **UserWriteUsingLogonEmail usługi AAD** obejmuje **e-mail** oświadczenia. To oświadczenie zawiera nazwę logowania konta lokalnego.
-- Ujednolicone profile techniczne (lokalne i społecznościowych) **AAD UserReadUsingObjectId**, **AAD UserWritePasswordUsingObjectId**, **AAD UserWriteProfileUsingObjectId**, i **AAD UserWritePhoneNumberUsingObjectId** obejmuje **objectId** oświadczenia. Unikatowy identyfikator konta.
+- Profile techniczne konta społeczności **AAD-UserReadUsingAlternativeSecurityId** i **AAD-UserWriteUsingAlternativeSecurityId** zawierają zgłoszenie **AlternativeSecurityId** . To zgłoszenie zawiera identyfikator użytkownika konta społecznościowego.
+- Profile techniczne dla konta lokalnego **AAD-UserReadUsingEmailAddress** i **AAD-UserWriteUsingLogonEmail** zawierają takie wnioski. To zgłoszenie zawiera nazwę logowania konta lokalnego.
+- Ujednolicone (lokalne i społecznościowe) profile techniczne **AAD-UserReadUsingObjectId**, **AAD-UserWritePasswordUsingObjectId**, **AAD-UserWriteProfileUsingObjectId**i **AAD-UserWritePhoneNumberUsingObjectId** obejmują identyfikator obiektu. Unikatowy identyfikator konta.
 
-**InputClaimsTransformations** element może zawierać zbiór **InputClaimsTransformation** elementy, które są używane do modyfikowania danych wejściowych oświadczeń lub wygenerować nowe.
+Element **InputClaimsTransformations** może zawierać kolekcję elementów **InputClaimsTransformation** , które są używane do modyfikowania oświadczeń wejściowych lub generowania nowych.
 
-## <a name="output-claims"></a>Oświadczeń danych wyjściowych
+## <a name="output-claims"></a>Oświadczenia wyjściowe
 
-**OutputClaims** element zawiera listę oświadczenia zwrócone przez profil techniczny usługi Azure AD. Może być konieczne mapowania nazwy oświadczenia, zdefiniowane w zasadach do nazwy zdefiniowane w usłudze Azure Active Directory. Możesz również uwzględnić oświadczenia, które nie są zwracane przez usługę Azure Active Directory, tak długo, jak można ustawić `DefaultValue` atrybutu.
+Element **OutputClaims** zawiera listę oświadczeń zwracanych przez profil techniczny usługi Azure AD. Może być konieczne zamapowanie nazwy żądania zdefiniowanego w zasadach na nazwę zdefiniowaną w Azure Active Directory. Można również uwzględnić oświadczenia, które nie są zwracane przez Azure Active Directory, o ile atrybut ten `DefaultValue` jest ustawiony.
 
-**OutputClaimsTransformations** element może zawierać zbiór **OutputClaimsTransformation** elementy, które są używane do modyfikowania oświadczeń danych wyjściowych lub wygenerować nowe.
+Element **OutputClaimsTransformations** może zawierać kolekcję elementów **OutputClaimsTransformation** , które są używane do modyfikowania oświadczeń wyjściowych lub generowania nowych.
 
-Na przykład **AAD UserWriteUsingLogonEmail** profilu technicznego tworzy konta lokalnego i zwraca następujące oświadczeń:
+Na przykład profil techniczny usługi **AAD-UserWriteUsingLogonEmail** tworzy konto lokalne i zwraca następujące oświadczenia:
 
-- **Identyfikator obiektu**, czyli identyfikator nowego konta
-- **newUser**, która wskazuje, czy użytkownik ma nowy
-- **authenticationSource**, która ustawia uwierzytelniania `localAccountAuthentication`
-- **userPrincipalName**, czyli nazwę główną użytkownika nowego konta
-- **signInNames.emailAddress**, który jest logowania nazwa konta, podobnie jak **e-mail** oświadczeń przychodzących
+- **objectid**, który jest identyfikatorem nowego konta
+- **newUser**, który wskazuje, czy użytkownik jest nowy
+- **authenticationSource**, w którym są ustawiane uwierzytelnianie`localAccountAuthentication`
+- **userPrincipalName**, czyli główna nazwa użytkownika nowego konta
+- **signInNames. EmailAddress**, czyli nazwa logowania do konta, podobna do dodanego **adresu e-mail**
 
 ```xml
 <OutputClaims>
@@ -91,9 +91,9 @@ Na przykład **AAD UserWriteUsingLogonEmail** profilu technicznego tworzy konta 
 
 ## <a name="persistedclaims"></a>PersistedClaims
 
-**PersistedClaims** element zawiera wszystkie wartości, które powinny zostać utrwalone przez usługę Azure AD przy użyciu informacji o mapowaniu możliwe między typem oświadczenia już zdefiniowane w sekcji ClaimsSchema w ramach zasad oraz atrybut usługi Azure AD Nazwa. 
+Element **PersistedClaims** zawiera wszystkie wartości, które powinny być utrwalane przez usługę Azure AD, z możliwymi do mapowania informacjami o typie już zdefiniowanym w sekcji ClaimsSchema w zasadach i nazwie atrybutu usługi Azure AD.
 
-**AAD UserWriteUsingLogonEmail** profilu technicznego, co powoduje utworzenie nowego konta lokalnego, będzie nadal występować po oświadczeń:
+Profil techniczny usługi **AAD-UserWriteUsingLogonEmail** , który tworzy nowe konto lokalne, utrzymuje następujące oświadczenia:
 
 ```XML
   <PersistedClaims>
@@ -109,22 +109,22 @@ Na przykład **AAD UserWriteUsingLogonEmail** profilu technicznego tworzy konta 
   </PersistedClaims>
 ```
 
-Nazwy oświadczenia jest nazwą atrybutu usługi Azure AD, chyba że **PartnerClaimType** atrybut jest określony, który zawiera nazwę usługi Azure AD.
+Nazwa tego żądania jest nazwą atrybutu usługi Azure AD, chyba że określono atrybut **PartnerClaimType** , który zawiera nazwę atrybutu usługi Azure AD.
 
-## <a name="requirements-of-an-operation"></a>Wymagania dotyczące operacji
+## <a name="requirements-of-an-operation"></a>Wymagania operacji
 
-- Musi zawierać dokładnie jeden **oświadczenie InputClaim** elementu w zbiorze oświadczeń we wszystkich profilach techniczne usługi Azure AD. 
-- Jeśli operacja się `Write` lub `DeleteClaims`, a następnie musi być w **PersistedClaims** elementu.
-- Wartość **userPrincipalName** oświadczenia musi być w formacie `user@tenant.onmicrosoft.com`.
-- **DisplayName** oświadczeń jest wymagana i nie może być pustym ciągiem.
+- W zbiorze oświadczeń musi być dokładnie jeden element **oświadczenie inputclaim** dla wszystkich profilów technicznych usługi Azure AD.
+- Jeśli operacja jest `Write` lub `DeleteClaims`, to musi także występować w elemencie **PersistedClaims** .
+- Wartość żądania **userPrincipalName** musi mieć format `user@tenant.onmicrosoft.com`.
+- Żądanie **DisplayName** jest wymagane i nie może być pustym ciągiem.
 
-## <a name="azure-ad-technical-provider-operations"></a>Operacji techniczne dostawcy w usłudze Azure AD
+## <a name="azure-ad-technical-provider-operations"></a>Operacje związane z dostawcą technicznym usługi Azure AD
 
 ### <a name="read"></a>Odczyt
 
-**Odczytu** operacji odczytuje dane dotyczące jednego konta użytkownika. Do odczytywania danych użytkownika, należy podać klucz jako oświadczenie wejściowe, takie jak **objectId**, **userPrincipalName**, **signInNames** (dowolnego typu, nazwy użytkownika i konto e-mail, na podstawie) lub **alternativeSecurityId**.  
+Operacja **odczytu** odczytuje dane dotyczące jednego konta użytkownika. Aby odczytać dane użytkownika, należy podać klucz jako rolę wejściową, na przykład **objectid**, **userPrincipalName**, **signInNames** (dowolny typ, nazwa użytkownika i konto e-mail) lub **alternativeSecurityId**.
 
-Poniższy profil techniczny odczytuje dane dotyczące konta użytkownika, za pomocą identyfikator obiektu użytkownika:
+Poniższy profil techniczny odczytuje dane dotyczące konta użytkownika przy użyciu identyfikatora obiektu użytkownika:
 
 ```XML
 <TechnicalProfile Id="AAD-UserReadUsingObjectId">
@@ -152,11 +152,11 @@ Poniższy profil techniczny odczytuje dane dotyczące konta użytkownika, za pom
 </TechnicalProfile>
 ```
 
-### <a name="write"></a>Zapisywanie
+### <a name="write"></a>Zapis
 
-**Zapisu** operacja tworzy lub aktualizuje jednego konta użytkownika. Można zapisać konta użytkownika, należy podać klucz jako oświadczenie wejściowe, takie jak **objectId**, **userPrincipalName**, **signInNames.emailAddress**, lub  **alternativeSecurityId**.  
+Operacja **zapisu** tworzy lub aktualizuje pojedyncze konto użytkownika. Aby napisać konto użytkownika, należy podać klucz jako rolę wejściową, taką jak **objectid**, **userPrincipalName**, **signInNames. EmailAddress**lub **alternativeSecurityId**.
 
-Poniższy profil techniczny powoduje utworzenie nowego konta społecznościowego:
+Poniższy profil techniczny tworzy nowe konto społecznościowe:
 
 ```XML
 <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
@@ -196,9 +196,9 @@ Poniższy profil techniczny powoduje utworzenie nowego konta społecznościowego
 
 ### <a name="deleteclaims"></a>DeleteClaims
 
-**DeleteClaims** operacja usuwa informacje z podanej listy oświadczeń. Do usuwania informacji z oświadczeń, należy podać klucz jako oświadczenie wejściowe, takie jak **objectId**, **userPrincipalName**, **signInNames.emailAddress** lub **alternativeSecurityId**.  
+Operacja **DeleteClaims** czyści informacje z podanej listy oświadczeń. Aby usunąć informacje z oświadczeń, należy podać klucz jako oświadczenie wejściowe, takie jak **objectid**, **userPrincipalName**, **signInNames. EmailAddress** lub **alternativeSecurityId**.
 
-Poniższy profil techniczny usuwa oświadczeń:
+Poniższy profil techniczny usuwa oświadczenia:
 
 ```XML
 <TechnicalProfile Id="AAD-DeleteClaimsUsingObjectId">
@@ -219,9 +219,9 @@ Poniższy profil techniczny usuwa oświadczeń:
 
 ### <a name="deleteclaimsprincipal"></a>DeleteClaimsPrincipal
 
-**DeleteClaimsPrincipal** operacja usuwa pojedyncze konto użytkownika z katalogu. Aby usunąć konto użytkownika, należy podać klucz jako oświadczenie wejściowe, takie jak **objectId**, **userPrincipalName**, **signInNames.emailAddress** lub  **alternativeSecurityId**.  
+Operacja **DeleteClaimsPrincipal** usuwa jedno konto użytkownika z katalogu. Aby usunąć konto użytkownika, należy podać klucz jako rolę wejściową, taką jak **objectid**, **userPrincipalName**, **signInNames. EmailAddress** lub **alternativeSecurityId**.
 
-Poniższy profil techniczny Usuwa konto użytkownika z katalogu przy użyciu głównej nazwy użytkownika:
+Poniższy profil techniczny usuwa konto użytkownika z katalogu przy użyciu głównej nazwy użytkownika:
 
 ```XML
 <TechnicalProfile Id="AAD-DeleteUserUsingObjectId">
@@ -236,7 +236,7 @@ Poniższy profil techniczny Usuwa konto użytkownika z katalogu przy użyciu gł
 </TechnicalProfile>
 ```
 
-Poniższy profil techniczny powoduje usunięcie konta społecznościowe użytkownika przy użyciu **alternativeSecurityId**:
+Poniższy profil techniczny usuwa konto użytkownika społecznościowego przy użyciu **alternativeSecurityId**:
 
 ```XML
 <TechnicalProfile Id="AAD-DeleteUserUsingAlternativeSecurityId">
@@ -254,13 +254,13 @@ Poniższy profil techniczny powoduje usunięcie konta społecznościowe użytkow
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Operacja | Yes | Operacja do wykonania. Możliwe wartości: `Read`, `Write`, `DeleteClaims`, lub `DeleteClaimsPrincipal`. | 
-| RaiseErrorIfClaimsPrincipalDoesNotExist | Nie | Zgłoś błąd, jeśli obiekt użytkownika nie istnieje w katalogu. Możliwe wartości: `true` lub `false`. | 
-| UserMessageIfClaimsPrincipalDoesNotExist | Nie | Jeśli błąd ma zostać wywołane (zobacz opis atrybutu RaiseErrorIfClaimsPrincipalDoesNotExist), określ wiadomość wyświetlana użytkownikowi, jeśli obiekt użytkownika nie istnieje. Wartość może być [zlokalizowane](localization.md).| 
-| RaiseErrorIfClaimsPrincipalAlreadyExists | Nie | Zgłoś błąd, jeśli obiekt użytkownika już istnieje. Możliwe wartości: `true` lub `false`.| 
-| UserMessageIfClaimsPrincipalAlreadyExists | Nie | Jeśli błąd ma zostać wywołane (zobacz opis atrybutu RaiseErrorIfClaimsPrincipalAlreadyExists), określ komunikat do wyświetlenia dla użytkownika, jeśli obiekt użytkownika już istnieje. Wartość może być [zlokalizowane](localization.md).| 
-| ApplicationObjectId | Nie | Identyfikator obiektu aplikacji rozszerzeń atrybuty. Wartość: Identyfikator obiektu aplikacji. Aby uzyskać więcej informacji, zobacz [Użyj atrybutów niestandardowych w niestandardowym profilu Edytuj zasady](active-directory-b2c-create-custom-attributes-profile-edit-custom.md). | 
-| ClientId | Nie | Identyfikator klienta do uzyskania dostępu do dzierżawy jako osobę trzecią. Aby uzyskać więcej informacji, zobacz [Użyj atrybutów niestandardowych w niestandardowym profilu edytowanie zasad](active-directory-b2c-create-custom-attributes-profile-edit-custom.md) | 
+| Operacja | Tak | Operacja do wykonania. Możliwe wartości: `Read`, `Write`, `DeleteClaims`lub. `DeleteClaimsPrincipal` |
+| RaiseErrorIfClaimsPrincipalDoesNotExist | Nie | Zgłoś błąd, jeśli obiekt użytkownika nie istnieje w katalogu. Możliwe wartości: `true` lub `false`. |
+| UserMessageIfClaimsPrincipalDoesNotExist | Nie | Jeśli błąd ma zostać podniesiony (zobacz Opis atrybutu RaiseErrorIfClaimsPrincipalDoesNotExist), określ komunikat, który ma być wyświetlany użytkownikowi, jeśli obiekt użytkownika nie istnieje. Wartość może być [zlokalizowana](localization.md).|
+| RaiseErrorIfClaimsPrincipalAlreadyExists | Nie | Zgłoś błąd, jeśli obiekt użytkownika już istnieje. Możliwe wartości: `true` lub `false`.|
+| UserMessageIfClaimsPrincipalAlreadyExists | Nie | Jeśli błąd ma zostać podniesiony (zobacz Opis atrybutu RaiseErrorIfClaimsPrincipalAlreadyExists), określ komunikat, który ma być wyświetlany użytkownikowi, jeśli obiekt użytkownika już istnieje. Wartość może być [zlokalizowana](localization.md).|
+| ApplicationObjectId | Nie | Identyfikator obiektu aplikacji dla atrybutów rozszerzenia. Wartość: Identyfikator obiektu aplikacji. Aby uzyskać więcej informacji, zobacz [Używanie atrybutów niestandardowych w niestandardowych zasadach edytowania profilu](active-directory-b2c-create-custom-attributes-profile-edit-custom.md). |
+| ClientId | Nie | Identyfikator klienta służący do uzyskiwania dostępu do dzierżawy jako osoba trzecia. Aby uzyskać więcej informacji, zobacz [Używanie atrybutów niestandardowych w niestandardowych zasadach edytowania profilu](active-directory-b2c-create-custom-attributes-profile-edit-custom.md) |
 
 
 

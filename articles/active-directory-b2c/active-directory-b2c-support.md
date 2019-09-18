@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.date: 12/06/2016
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a4bb82665ecd9d04c097a127f46814bb7198f393
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: f7f2217677b81c6f3e87eaa2612880adf3b499c2
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227192"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064937"
 ---
 # <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C: Żądania obsługi plików
-Żądania obsługi plików Azure Active Directory (Azure AD) można uzyskać w Azure Portal, wykonując następujące czynności:
+Żądania obsługi plików dla Azure Active Directory B2C (Azure AD B2C) można uzyskać w Azure Portal, wykonując następujące czynności:
 
 1. Przełącz się z dzierżawy B2C do innej dzierżawy, z którą skojarzona jest subskrypcja platformy Azure. Zwykle jest to Twoja dzierżawa pracownika lub domyślna dzierżawa utworzona dla Ciebie podczas rejestrowania się w celu uzyskania subskrypcji platformy Azure. Aby dowiedzieć się więcej, zobacz [jak subskrypcja platformy Azure jest powiązana z usługą Azure AD](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 

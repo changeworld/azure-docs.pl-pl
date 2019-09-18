@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 41947de18ae27b41d046fd4358f0039a1b56374d
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 6f9094a52ff3558fa8d1f2fee1d80ed8eb09a416
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347912"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076323"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Szybki start: Dodawanie flag funkcji do aplikacji ASP.NET Core
 
@@ -36,9 +36,9 @@ Biblioteki zarządzania funkcjami platformy .NET Core poszerzają platformę Dzi
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Wybierz pozycję **Menedżer** > funkcji **+ Utwórz** , aby dodać następujące flagi funkcji:
+6. Wybierz pozycję **Menedżer** > funkcji **+ Dodaj** , aby dodać następujące flagi funkcji:
 
-    | Klucz | Stan |
+    | Klucz | State |
     |---|---|
     | Wersja beta | Wyłączone |
 
@@ -81,10 +81,11 @@ Dodaj do projektu [Narzędzie do zarządzania kluczami tajnymi](https://docs.mic
 
 ## <a name="connect-to-an-app-configuration-store"></a>Nawiązywanie połączenia z magazynem konfiguracji aplikacji
 
-1. Dodaj odwołanie do `Microsoft.Azure.AppConfiguration.AspNetCore` pakietu NuGet, uruchamiając następujące polecenie:
+1. Dodaj odwołanie do `Microsoft.Azure.AppConfiguration.AspNetCore` `Microsoft.FeatureManagement.AspNetCore` i pakiety NuGet, uruchamiając następujące polecenia:
 
     ```
-    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009200001-7
+    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009470001-12
+    dotnet add package Microsoft.FeatureManagement.AspNetCore --version 1.0.0-preview-009000001-1251
     ```
 
 1. Uruchom następujące polecenie, aby przywrócić pakiety dla projektu:
@@ -199,7 +200,7 @@ Dodaj do projektu [Narzędzie do zarządzania kluczami tajnymi](https://docs.mic
     @addTagHelper *, Microsoft.FeatureManagement.AspNetCore
     ```
 
-1. Otwórz *_Layout. cshtml* w udostępnionym katalogu *widoki*\\ i Zastąp `<nav>` kod paska pod `<body>`  >  `<header>` następującym kodem:
+1. Otwórz *_Layout. cshtml* w*udostępnionym* `<nav>` katalogu *widoki*\\i Zastąp kod paska pod `<body>`  >  `<header>` następującym kodem:
 
     ```html
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -262,9 +263,11 @@ Dodaj do projektu [Narzędzie do zarządzania kluczami tajnymi](https://docs.mic
 
 1. Wybierz pozycję **Menedżer funkcji**, a następnie Zmień stan klucza **beta** **na:**
 
-    | Klucz | Stan |
+    | Klucz | State |
     |---|---|
     | Wersja beta | Włączone |
+
+1. Uruchom ponownie aplikację, przełączając się z powrotem do wiersza `Ctrl-C` polecenia i naciskając klawisz `dotnet` , aby anulować uruchomiony proces, `dotnet run`a następnie ponownie uruchomić program.
 
 1. Odśwież stronę przeglądarki, aby zobaczyć nowe ustawienia konfiguracji.
 
@@ -274,10 +277,11 @@ Dodaj do projektu [Narzędzie do zarządzania kluczami tajnymi](https://docs.mic
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku szybki start utworzono nowy magazyn konfiguracji aplikacji, który będzie używany do zarządzania funkcjami w ASP.NET Core aplikacji sieci Web za pośrednictwem [bibliotek zarządzania](https://go.microsoft.com/fwlink/?linkid=2074664)funkcjami.
 
 - Dowiedz się więcej o [zarządzaniu funkcjami](./concept-feature-management.md).
 - [Zarządzaj flagami funkcji](./manage-feature-flags.md).
 - [Użyj flag funkcji w aplikacji ASP.NET Core](./use-feature-flags-dotnet-core.md).
+- [Używanie konfiguracji dynamicznej w aplikacji ASP.NET Core](./enable-dynamic-configuration-aspnet-core.md)

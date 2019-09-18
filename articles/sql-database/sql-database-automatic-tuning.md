@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/06/2019
-ms.openlocfilehash: 3ddee3dabd51d95f230f0178dfb647f8e297b3d4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9aa9ea1fc8632671ac9ed2c045230b92edaf879d
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569387"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066965"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Dostrajanie automatyczne w Azure SQL Database
 
@@ -75,7 +75,7 @@ Dostrajanie automatyczneidentyfikuje indeksowanie, **Drop index**i WYmuszanie na
 
 Możesz ręcznie zastosować zalecenia strojenia przy użyciu portalu lub zezwolić na automatyczne dostosowywanie w sposób autonomiczny. Korzyści wynikające z zapewnienia, że system autonomicznie stosują zalecenia dostosowawcze, są automatycznie sprawdzane, czy istnieje pozytywny wzrost wydajności obciążeń i czy nie wykryto znaczącej poprawy wydajności. automatycznie Przywróć zalecenie dostrajania. Należy pamiętać, że w przypadku zapytań, na które mają wpływ zalecenia strojenia, które nie są wykonywane często, faza weryfikacji może trwać do 72 godzin.
 
-W przypadku ręcznego stosowania zaleceń dostrajania, automatyczne sprawdzanie poprawności wydajności i mechanizmy odwrócenia nie są dostępne. Ponadto ręcznie zastosowane rekomendacje pozostaną aktywne i wyświetlone na liście zaleceń dla 24-48 godzin. przed automatycznym wycofaniem ich przez system. Jeśli chcesz usunąć zalecenie wcześniej, możesz je ręcznie odrzucić.
+W przypadku ręcznego stosowania zaleceń dostrajania przy użyciu języka T-SQL, automatyczne sprawdzanie poprawności wydajności i mechanizmy odwrócenia nie są dostępne. Ponadto ręcznie zastosowane rekomendacje pozostaną aktywne i wyświetlone na liście zaleceń dla 24-48 godzin. przed automatycznym wycofaniem ich przez system. Jeśli chcesz usunąć zalecenie wcześniej, możesz je ręcznie odrzucić.
 
 Opcje dostrajania automatycznego mogą być niezależnie włączane lub wyłączane na bazę danych albo mogą być konfigurowane na serwerach SQL Database i stosowane do każdej bazy danych, która dziedziczy ustawienia z serwera. Serwery SQL Database mogą dziedziczyć wartości domyślne platformy Azure dla ustawień dostrajania automatycznego. Domyślne ustawienia platformy Azure w tym momencie są ustawione na FORCE_LAST_GOOD_PLAN, CREATE_INDEX jest włączona, a DROP_INDEX jest wyłączone.
 
@@ -87,5 +87,5 @@ Skonfigurowanie opcji dostrajania automatycznego na serwerze i dziedziczenie ust
 - Aby ręcznie przejrzeć i zastosować zalecenia dotyczące dostrajania automatycznego, zobacz [Znajdowanie i stosowanie zaleceń dotyczących wydajności](sql-database-advisor-portal.md).
 - Aby dowiedzieć się, jak używać języka T-SQL do stosowania i wyświetlania zaleceń dotyczących dostrajania automatycznego, zobacz [Manage Automatic Tuning in T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/).
 - Aby dowiedzieć się więcej o tworzeniu powiadomień e-mail dotyczących zaleceń dotyczących dostrajania automatycznego, zobacz [powiadomienia e-mail dotyczące dostrajania automatycznego](sql-database-automatic-tuning-email-notifications.md).
-- Aby dowiedzieć się więcej na temat wbudowanej analizy używanej do dostrajania automatycznego, zobacz sztuczna inteligencja — [Dostraja bazy danych Azure SQL](https://azure.microsoft.com/blog/artificial-intelligence-tunes-azure-sql-databases/)Database.
+- Aby dowiedzieć się więcej na temat wbudowanej analizy używanej do dostrajania automatycznego, zobacz [sztuczna inteligencja — Dostraja bazy danych Azure SQL](https://azure.microsoft.com/blog/artificial-intelligence-tunes-azure-sql-databases/)Database.
 - Aby dowiedzieć się, jak działa dostrajanie automatyczne w Azure SQL Database i SQL Server 2017, zobacz [SQL Server dostrajania automatycznego](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning).

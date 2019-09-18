@@ -1,50 +1,50 @@
 ---
-title: Przykłady programu Azure analizy dziennika zapory
-description: Przykłady programu Azure analizy dziennika zapory
+title: Przykłady analizy dzienników zapory platformy Azure
+description: Przykłady analizy dzienników zapory platformy Azure
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 2/15/2019
+ms.date: 09/17/2019
 ms.author: victorh
-ms.openlocfilehash: 3f329d3dd4af1faef8f77d08db655cc7d6ef79fd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a4ab1263abac67714357594e5bd87a4b910953b1
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60461538"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033983"
 ---
-# <a name="azure-firewall-log-analytics-samples"></a>Przykłady programu Azure analizy dziennika zapory
+# <a name="azure-firewall-log-analytics-samples"></a>Przykłady analizy dzienników zapory platformy Azure
 
-Poniższe przykłady dzienników usługi Azure Monitor może służyć do analizowania dzienników zapory usługi Azure. Przykładowy plik jest wbudowana w Projektant widoków w usłudze Azure Monitor [Projektant widoków w usłudze Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer) artykuł zawiera więcej informacji na temat koncepcji Wyświetl projekt.
+Poniższe przykłady dzienników Azure Monitor mogą służyć do analizowania dzienników zapory platformy Azure. Przykładowy plik jest wbudowany w projektanta widoków w Azure Monitor, [Projektant widoków w Azure monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer) artykule zawiera więcej informacji na temat koncepcji projektowej widoku.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="azure-monitor-logs-view"></a>Usługa Azure Monitor rejestruje widoku
+## <a name="azure-monitor-logs-view"></a>Widok dzienników Azure Monitor
 
-Oto, jak można skonfigurować przykład wizualizacji dzienników usługi Azure Monitor. Możesz pobrać przykład wizualizacji z [azure-docs-json-samples](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-firewall/AzureFirewall.omsview) repozytorium. Najprostszym sposobem jest kliknij prawym przyciskiem myszy hiperłącze na tej stronie, a następnie wybierz *Zapisz jako* i podaj nazwę, takich jak **AzureFirewall.omsview**. 
+Oto jak można skonfigurować przykładową wizualizację dzienników Azure Monitor. Przykładową wizualizację można pobrać z repozytorium [Azure-docs-JSON-Samples](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-firewall/AzureFirewall.omsview) . Najprostszym sposobem jest kliknięcie prawym przyciskiem myszy hiperłącza na tej stronie i wybranie polecenia *Zapisz jako* i podanie nazwy, takiej jak **AzureFirewall. omsview**. 
 
-Wykonaj poniższe kroki, aby dodać widok do obszaru roboczego usługi Log Analytics:
+Wykonaj następujące kroki, aby dodać widok do obszaru roboczego Log Analytics:
 
-1. Otwórz obszar roboczy usługi Log Analytics w witrynie Azure Portal.
-2. Otwórz **wyświetlić projektanta** poniżej **ogólne**.
+1. Otwórz obszar roboczy Log Analytics w witrynie Azure Portal.
+2. Otwórz **projektanta widoków** poniżej **ogólnego**.
 3. Kliknij przycisk **importu**.
-4. Wyszukaj i wybierz **AzureFirewall.omsview** plik został pobrany przed.
-5. Kliknij pozycję **Zapisz**.
+4. Przeglądaj i wybierz pobrany wcześniej plik **AzureFirewall. omsview** .
+5. Kliknij polecenie **Zapisz**.
 
-Poniżej przedstawiono wygląd widoku danych dziennika reguły aplikacji:
+Oto jak widok wyszukuje dane dziennika reguły aplikacji:
 
 ![Dane dziennika reguły aplikacji](./media/log-analytics-samples/azurefirewall-applicationrulelogstats.png)
 
-I za dane dziennika reguły sieci:
+I dla danych dziennika reguły sieci:
 
-![Dane dziennika reguł sieci]( ./media/log-analytics-samples/azurefirewall-networkrulelogstats.png)
+![Dane dziennika reguły sieci]( ./media/log-analytics-samples/azurefirewall-networkrulelogstats.png)
 
-Azure dzienniki zapory dane poniżej AzureDiagnostics z kategorią jako **AzureFirewallApplicationRule** lub **AzureFirewallNetworkRule**. Dane zawierające szczegółowe informacje są przechowywane w polu msg_s. Za pomocą [przeanalizować](https://docs.microsoft.com/azure/kusto/query/parseoperator) operatora, firma Microsoft można wyodrębnić różne interesujące właściwości pola msg_s. Poniższych zapytań wyodrębnienia informacji dla obu kategorii.
+Zapora platformy Azure rejestruje dane poniżej AzureDiagnostics z kategorią jako **AzureFirewallApplicationRule** lub **AzureFirewallNetworkRule**. Dane zawierające szczegóły są przechowywane w polu msg_s. Za pomocą operatora [analizy](https://docs.microsoft.com/azure/kusto/query/parseoperator) możemy wyodrębnić różne interesujące właściwości z pola msg_s. Poniższe zapytania wyodrębniają informacje dla obu kategorii.
 
-## <a name="application-rules-log-data-query"></a>Zapytanie danych dziennika reguły aplikacji
+## <a name="application-rules-log-data-query"></a>Zapytanie o dane dziennika reguł aplikacji
 
-Poniższe zapytanie analizuje dane dziennika reguły aplikacji. W różnych wierszach komentarz istnieje pewne wskazówki dotyczące sposobu zapytanie zostało utworzone:
+Poniższe zapytanie analizuje dane dziennika reguły aplikacji. W różnych wierszach komentarzy istnieją pewne wskazówki dotyczące sposobu tworzenia zapytania:
 
 ```Kusto
 AzureDiagnostics
@@ -70,7 +70,7 @@ SourcePort = tostring(SourcePortInt)
 TargetPort = tostring(TargetPortInt)
 | extend
 //make sure we only have Allowed / Deny in the Action Field
-Action1 = case(Action1 == "denied","Deny","Unknown Action")
+Action1 = case(Action1 == "Deny","Deny","Unknown Action")
 | extend
     Action = case(Action2 == "",Action1,Action2),
     Rule = case(Rule2a == "",case(Rule1 == "",case(Rule2b == "","N/A", Rule2b),Rule1),Rule2a), 
@@ -80,7 +80,7 @@ Action1 = case(Action1 == "denied","Deny","Unknown Action")
 | project TimeGenerated, msg_s, Protocol, SourceIP, SourcePort, FQDN, TargetPort, Action ,RuleCollection, Rule
 ```
 
-Tego samego zapytania w formacie bardziej Skondensowana:
+To samo zapytanie w bardziej zagęszczonym formacie:
 
 ```Kusto
 AzureDiagnostics
@@ -92,15 +92,15 @@ AzureDiagnostics
 | parse TempDetails with * "Deny." RuleCollection2b ". Proceeding with" Rule2b
 | extend SourcePort = tostring(SourcePortInt)
 | extend TargetPort = tostring(TargetPortInt)
-| extend Action1 = case(Action1 == "denied","Deny","Unknown Action")
+| extend Action1 = case(Action1 == "Deny","Deny","Unknown Action")
 | extend Action = case(Action2 == "",Action1,Action2),Rule = case(Rule2a == "", case(Rule1 == "",case(Rule2b == "","N/A", Rule2b),Rule1),Rule2a), 
 RuleCollection = case(RuleCollection2b == "",case(RuleCollection2a == "","No rule matched",RuleCollection2a), RuleCollection2b),FQDN = case(FQDN == "", "N/A", FQDN),TargetPort = case(TargetPort == "", "N/A", TargetPort)
 | project TimeGenerated, msg_s, Protocol, SourceIP, SourcePort, FQDN, TargetPort, Action ,RuleCollection, Rule
 ```
 
-## <a name="network-rules-log-data-query"></a>Zapytanie danych dziennika reguł sieci
+## <a name="network-rules-log-data-query"></a>Zapytanie o dane dziennika reguł sieciowych
 
-Następujące zapytanie analizuje dane dziennika reguły sieci. W różnych wierszach komentarz istnieje pewne wskazówki dotyczące sposobu zapytanie zostało utworzone:
+Poniższe zapytanie analizuje dane dziennika reguł sieci. W różnych wierszach komentarzy istnieją pewne wskazówki dotyczące sposobu tworzenia zapytania:
 
 ```Kusto
 AzureDiagnostics
@@ -137,7 +137,7 @@ TargetPort = tostring(TargetPortInt)
 | project TimeGenerated, msg_s, Protocol, SourceIP,SourcePort,TargetIP,TargetPort,Action, NatDestination
 ```
 
-Tego samego zapytania w formacie bardziej Skondensowana:
+To samo zapytanie w bardziej zagęszczonym formacie:
 
 ```Kusto
 AzureDiagnostics
@@ -151,7 +151,7 @@ AzureDiagnostics
 | project TimeGenerated, msg_s, Protocol, SourceIP,SourcePort,TargetIP,TargetPort,Action, NatDestination
 ```
 
-## <a name="threat-intelligence-log-data-query"></a>Zapytanie danych dziennika analizy zagrożeń
+## <a name="threat-intelligence-log-data-query"></a>Zapytanie o dane dziennika analizy zagrożeń
 
 Następujące zapytanie analizuje dane dziennika reguły analizy zagrożeń:
 
@@ -166,6 +166,6 @@ AzureDiagnostics
 | sort by TimeGenerated desc | project TimeGenerated, msg_s, Protocol, SourceIP,SourcePort,TargetIP,TargetPort,Action,Message
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się o zapory usługi Azure, monitorowania i diagnostyki, zobacz [samouczka: Monitoruj dzienniki zapory platformy Azure i metryk](tutorial-diagnostics.md).
+Aby dowiedzieć się więcej na temat monitorowania i diagnostyki [zapory platformy Azure, zobacz Samouczek: Monitoruj dzienniki i metryki](tutorial-diagnostics.md)zapory platformy Azure.
