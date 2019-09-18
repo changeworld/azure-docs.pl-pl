@@ -1,6 +1,6 @@
 ---
-title: Kupowanie rezerwacji platformy Azure z góry lub miesięczną płatnością
-description: Dowiedz się, jak kupić rezerwacje platformy Azure przy użyciu płatności z góry lub miesięcznie.
+title: Kupowanie rezerwacji platformy Azure przy użyciu przedpłat lub płatności miesięcznych
+description: Dowiedz się, jak można kupować rezerwacje platformy Azure przy użyciu przedpłat lub płatności miesięcznych.
 services: billing
 author: bandersmsft
 manager: yashar
@@ -9,73 +9,73 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: banders
 ms.openlocfilehash: d211334ad2aa760cd63b98c6827fb2512811a1d3
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "70806950"
 ---
-# <a name="purchase-reservations-with-monthly-payments"></a>Zakup rezerwacji z płatnościami miesięcznymi
+# <a name="purchase-reservations-with-monthly-payments"></a>Kupowanie rezerwacji platformy Azure przy użyciu płatności miesięcznych
 
-Do tej pory rezerwacja platformy Azure wymagała przedpłaty. Teraz możesz uiścić płatność za rezerwacje miesięczne. W przeciwieństwie do zakupu z góry, gdy płacisz pełną kwotę, miesięczna opcja płatności dzieli łączny koszt rezerwacji równomiernie w każdym miesiącu w danym okresie. Łączny koszt z góry i miesięcznych rezerwacji jest taki sam, a opłaty za nie są naliczane, gdy użytkownik zdecyduje się płacić miesięcznie.
+Do tej pory rezerwacje platformy Azure wymagały przedpłat. Teraz można płacić za rezerwacje przy użyciu płatności miesięcznych. W przeciwieństwie do zakupu z góry, gdy płacisz pełną kwotę, opcja płatności miesięcznych umożliwia równe podzielenie łącznego kosztu rezerwacji między wszystkie miesiące w danym okresie. Łączny koszt rezerwacji w przypadku płatności z góry i miesięcznych rat jest taki sam, a wybór płatności miesięcznych nie pociąga za sobą dodatkowych opłat.
 
-Miesięczna kwota płatności może się różnić w zależności od stawki tytułu rynkowego bieżącego miesiąca dla waluty lokalnej.
+Miesięczna kwota płatności może różnić się w zależności od obowiązującego w danym miesiącu rynkowego kursu wymiany waluty lokalnej.
 
-Miesięczne płatności są dostępne dla:
+Miesięczne płatności są dostępne w przypadku następujących rozwiązań:
 
 - Maszyny wirtualne
 - SQL Database
 - SQL Data Warehouse
 - Cosmos DB
-- Opłata za sygnaturę App Service
+- App Service — podatek od czynności cywilnoprawnych
 
-Kup rezerwacje w [Azure Portal](https://portal.azure.com/?Microsoft_Azure_Reservations_EnableMultiCart=true&amp;paymentPlan=true#blade/Microsoft_Azure_Reservations/CreateBlade).
+Rezerwacje można kupować w witrynie [Azure Portal](https://portal.azure.com/?Microsoft_Azure_Reservations_EnableMultiCart=true&amp;paymentPlan=true#blade/Microsoft_Azure_Reservations/CreateBlade).
 
 ![Przykład przedstawiający zakup rezerwacji](./media/billing-monthly-payments-reservations/purchase-reservation.png)
 
 Podczas zakupu rezerwacji można wyświetlić harmonogram płatności. Kliknij pozycję **Wyświetl pełny harmonogram płatności**.
 
-![Przykład przedstawiający harmonogram płatności rezerwacji](./media/billing-monthly-payments-reservations/prepurchase-schedule.png)
+![Przykład przedstawiający harmonogram płatności za rezerwację](./media/billing-monthly-payments-reservations/prepurchase-schedule.png)
 
-Aby wyświetlić harmonogram płatności po zakupie, wybierz rezerwację, kliknij **Identyfikator zamówienia rezerwacji**, a następnie kliknij kartę **płatności** .
+Aby wyświetlić harmonogram płatności po zakupie, wybierz rezerwację, kliknij pozycję **Identyfikator zamówienia rezerwacji**, a następnie kliknij kartę **Płatności**.
 
-## <a name="view-payments-made"></a>Wyświetl płatności
+## <a name="view-payments-made"></a>Wyświetlanie dokonanych płatności
 
-Możesz wyświetlić płatności, które zostały wprowadzone przy użyciu interfejsów API, danych użycia i analizy kosztów. W przypadku rezerwacji płaconych miesięcznie wartość częstotliwości jest pokazywana jako **cykliczne** w przypadku danych użycia i interfejsu API opłat za rezerwację. W przypadku rezerwacji zapłaconych na początku wartość jest wyświetlana jako **jednorazowej**.
+Możesz wyświetlić płatności, które zostały dokonane przy użyciu interfejsów API, danych użycia i analizy kosztów. W przypadku rezerwacji płaconych miesięcznie wartość częstotliwości jest pokazywana jako **cykliczne** w przypadku danych użycia i interfejsu API opłat za rezerwację. W przypadku rezerwacji zapłaconych z góry wartość jest wyświetlana jako **jednorazowa**.
 
-Analiza kosztów pokazuje miesięczne zakupy w widoku domyślnym. Zastosuj filtr **zakupu** dla **typu opłaty** i **cyklicznie** dla **częstotliwości** , aby wyświetlić wszystkie zakupy. Aby wyświetlić tylko rezerwacje, Zastosuj filtr dla **rezerwacji**.
+Analiza kosztów pokazuje w widoku domyślnym zakupy miesięczne. Zastosuj filtr **zakup** w polu **Typ opłaty** i **cykliczne** w polu **Częstotliwość**, aby zobaczyć wszystkie zakupy. Aby wyświetlić tylko rezerwacje, zastosuj filtr **Rezerwacja**.
 
 ![Przykład przedstawiający koszty zakupu rezerwacji w analizie kosztów](./media/billing-monthly-payments-reservations/cost-analysis.png)
 
-## <a name="switch-to-monthly-payments-at-renewal"></a>Przełączanie na miesięczne raty przy odnowieniu
+## <a name="switch-to-monthly-payments-at-renewal"></a>Przełączanie na raty miesięczne przy odnowieniu
 
-W przypadku odnowienia rezerwacji można zmienić częstotliwość rozliczeń na wartość miesięczną.
+Podczas odnawiania rezerwacji można zmienić częstotliwość rozliczeń na miesięczną.
 
 ## <a name="exchange-and-refunds"></a>Wymiana i zwroty
 
-Podobnie jak w przypadku innych rezerwacji, można refundować rezerwacje lub zakupione w ramach rozliczeń miesięcznych. Obecnie możesz przesłać żądanie pomocy technicznej, aby rozpocząć wymianę lub refundę dla rezerwacji zakupionej przy comiesięcznym rozliczeniach.
+Podobnie jak w przypadku innych rezerwacji, można uzyskiwać zwroty rezerwacji zakupionych w ramach rozliczeń miesięcznych lub wymieniać te rezerwacje. Obecnie możesz przesłać wniosek o pomoc techniczną, aby rozpocząć wymianę lub zwrot dla rezerwacji zakupionej w ramach rozliczeń miesięcznych.
 
-Podczas wymiany rezerwacji, która jest płatna miesięcznie, łączny koszt okresu istnienia nowego zakupu powinien być większy niż pozostałe płatności, które są anulowane dla zwróconej rezerwacji. Nie istnieją żadne inne limity ani opłaty za wymianę. Możesz wymienić rezerwację płatną na potrzeby zakupu nowej rezerwacji, która jest rozliczana miesięcznie. Jednak wartość okresu istnienia nowej rezerwacji powinna być większa niż proporcjonalna wartość zwracanej rezerwacji.
+Podczas wymiany rezerwacji opłacanej miesięcznie łączny koszt okresu istnienia nowego zakupu powinien być większy niż pozostałe płatności, które są anulowane dla zwróconej rezerwacji. Nie istnieją inne limity ani opłaty dotyczące wymian. Możesz wymienić rezerwację płatną z góry, aby kupić nową rezerwację, która jest rozliczana miesięcznie. Jednak wartość okresu istnienia nowej rezerwacji powinna być większa niż proporcjonalna wartość zwracanej rezerwacji.
 
-Jeśli anulujesz rezerwację płatną miesięcznie, firma Microsoft może zastosować opłatę za anulowanie do przyszłych zatwierdzonych płatności, które zostały anulowane. Pozostałe zatwierdzone płatności naliczane są do limitu $50 000 USD.
+Jeśli anulujesz rezerwację płatną miesięcznie, firma Microsoft może zastosować opłatę za anulowanie do przyszłych zatwierdzonych płatności, które zostaną anulowane. Pozostałe płatności w ramach zobowiązania są naliczane do limitu wynoszącego 50 000 USD.
 
-Aby uzyskać więcej informacji na temat wymiany i zwrotów, zobacz samoobsługowe [wymianę i zwroty za Azure Reservations](billing-azure-reservations-self-service-exchange-and-refund.md).
+Aby uzyskać więcej informacji o wymianach i zwrotach, zobacz temat [Self-service exchanges and refunds for Azure Reservations](billing-azure-reservations-self-service-exchange-and-refund.md) (Samoobsługowe wymiany i zwroty kosztów dla rezerwacji platformy Azure).
 
 ## <a name="faq"></a>Często zadawane pytania
 
-PYTANIE: Czy platforma Azure oferuje "częściowe rezerwacje z góry"?<br>
-A. Nie. Ze względu na to, że koszty rezerwacji na początku i miesięcznie są takie same, firma Microsoft nie obsługuje częściowych płatności z góry.
+PYTANIE: Czy platforma Azure oferuje „rezerwacje płatne częściowo z góry”?<br>
+A. Nie. Ze względu na to, że koszty rezerwacji płatnych z góry i miesięcznie są takie same, firma Microsoft nie obsługuje częściowych płatności z góry.
 
-PYTANIE: Czy dla programu Microsoft Cloud dostawcy rozwiązań (CSP) są dostępne miesięczne płatności?<br>
-A. Tak. partnerzy mogą kupować rezerwacje dla klientów korzystających z programu CSP w Azure Portal. Możliwość zakupu rezerwacji z miesięcznymi rozliczeniami nie jest dostępna w centrum partnerskim.
+PYTANIE: Czy płatności miesięczne są dostępne dla programu Microsoft Cloud Solution Provider (CSP)?<br>
+A. Tak, partnerzy mogą kupować rezerwacje dla klientów korzystających z programu CSP w witrynie Azure Portal. Możliwość zakupu rezerwacji z rozliczeniami miesięcznymi nie jest dostępna w centrum partnerskim.
 
-PYTANIE: Jestem Azure Government klienta, czy mogę uregulować zakupy rezerwacji miesięcznie?<br>
+PYTANIE: Jestem klientem platformy Azure Government (USA), czy mogę płacić za zakupy rezerwacji miesięcznie?<br>
 A. Obecnie nie.
 
-PYTANIE: Kiedy mogę wymienić lub refundować w Azure Portal, zamiast tworzyć bilet pomocy technicznej?<br>
-A. Obecnie nie. Żądania dotyczące programu Exchange i rezerwacji zwrotnych z miesięcznymi opłatami są obsługiwane przez pomoc techniczną platformy Azure.
+PYTANIE: Kiedy można będzie samodzielnie wymienić lub uzyskać zwrot w witrynie Azure Portal, zamiast tworzyć bilet pomocy technicznej?<br>
+A. Obecnie nie. Żądania dotyczące wymiany i zwrotu rezerwacji z płatnościami miesięcznymi są obsługiwane przez dział pomocy technicznej platformy Azure.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby dowiedzieć się więcej na temat rezerwacji, zobacz [co to są Azure Reservations?](billing-save-compute-costs-reservations.md)
-- Aby dowiedzieć się więcej o zadaniach, które należy wykonać przed zakupem rezerwacji, zobacz [Określanie odpowiedniego rozmiaru maszyny wirtualnej przed zakupem](../virtual-machines/windows/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy)
+- Aby dowiedzieć się więcej o rezerwacjach, zobacz temat [Co to są rezerwacje platformy Azure?](billing-save-compute-costs-reservations.md)
+- Aby dowiedzieć się więcej o zadaniach, które należy wykonać przed zakupem rezerwacji, zobacz sekcję dotyczącą [określania odpowiedniego rozmiaru maszyny wirtualnej przed zakupem](../virtual-machines/windows/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy)

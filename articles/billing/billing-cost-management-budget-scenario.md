@@ -1,6 +1,6 @@
 ---
-title: Scenariusz dotyczący rozliczeń i kosztów zarządzania kosztami platformy Azure | Microsoft Docs
-description: Dowiedz się, jak zamknąć maszyny wirtualne na podstawie określonych progów budżetu przy użyciu usługi Azure Automation.
+title: Scenariusz dotyczący budżetów rozliczeń i zarządzania kosztami na platformie Azure | Microsoft Docs
+description: Dowiedz się, jak zamykać maszyny wirtualne w oparciu o określone progi budżetu przy użyciu usługi Azure Automation.
 services: billing
 documentationcenter: ''
 author: bandersmsft
@@ -16,319 +16,319 @@ ms.workload: billing
 ms.date: 03/13/2019
 ms.author: banders
 ms.openlocfilehash: 37f129526cb184a2eeee9e36028e8f00b5bbc247
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "68443476"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Zarządzanie kosztami przy użyciu budżetów platformy Azure
 
-Kontrola kosztów jest istotnym składnikiem do maksymalizowania wartości inwestycji w chmurę. Istnieje kilka scenariuszy, w których widoczność kosztów, raportowanie i aranżacja oparta na kosztach ma kluczowe znaczenie dla kontynuowania operacji. [Interfejsy api Azure Cost Management](https://docs.microsoft.com/rest/api/consumption/) udostępniają zestaw interfejsów API do obsługi każdego z tych scenariuszy. Interfejsy API zapewniają szczegółowe informacje dotyczące użycia, co pozwala na wyświetlanie szczegółowych kosztów na poziomie wystąpienia.
+Kontrola kosztów to kluczowy składnik umożliwiający maksymalizowanie wartości inwestycji w chmurze. Istnieje kilka scenariuszy, w których widoczność kosztów, raportowanie i aranżacja oparta na kosztach mają kluczowe znaczenie dla zachowania ciągłości operacji biznesowych. [Interfejsy API usługi Azure Cost Management](https://docs.microsoft.com/rest/api/consumption/) udostępniają zestaw interfejsów API do obsługi każdego z tych scenariuszy. Interfejsy API udostępniają szczegółowe informacje dotyczące użycia, co pozwala na wyświetlanie szczegółowych kosztów na poziomie wystąpienia.
 
-Budżety są często używane jako część kontroli kosztów. Budżety mogą być objęte zakresem na platformie Azure. Na przykład możesz zawęzić widok budżetu na podstawie subskrypcji, grup zasobów lub kolekcji zasobów. Oprócz korzystania z interfejsu API budżetów do powiadamiania użytkownika za pośrednictwem poczty e-mail, gdy osiągnięty jest próg budżetu, można użyć [grup akcji Azure monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) , aby wyzwolić zorganizowany zestaw akcji w wyniku zdarzenia budżetu.
+Budżety są często używane jako część kontroli kosztów. Budżety mogą być objęte zakresem na platformie Azure. Na przykład możesz zawęzić widok budżetu na podstawie subskrypcji, grup zasobów lub kolekcji zasobów. Oprócz używania interfejsu API budżetów do powiadamiania użytkownika za pośrednictwem poczty e-mail, gdy próg budżetu zostanie osiągnięty, można użyć [grup akcji usługi Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) do wyzwolenia zorganizowanego zestawu akcji w wyniku zdarzenia budżetu.
 
-Typowy scenariusz budżetów dla klienta działającego niekrytycznego obciążenia może wystąpić, gdy chcą zarządzać budżetem, a także uzyskać dostęp do przewidywalnego kosztu podczas przeglądania faktury miesięcznej. Ten scenariusz wymaga pewnego kosztu aranżacji zasobów, które są częścią środowiska platformy Azure. W tym scenariuszu jest ustawiony miesięczny budżet $1000 dla subskrypcji. Ponadto Progi powiadomień są ustawiane tak, aby wyzwalać kilka aranżacji. Ten scenariusz rozpoczyna się od wartości progowej kosztów 80%, co spowoduje zatrzymanie wszystkich maszyn wirtualnych w **grupie zasobów**. Następnie w progu kosztu 100% wszystkie wystąpienia maszyn wirtualnych zostaną zatrzymane.
-Aby skonfigurować ten scenariusz, wykonaj następujące czynności, wykonując czynności opisane w poszczególnych sekcjach tego samouczka.
+Typowy scenariusz budżetów dla klienta uruchamiającego obciążenie inne niż krytyczne może wystąpić, gdy chce on zarządzać budżetem, a także uzyskać informacje o przewidywalnym koszcie podczas przeglądania faktury miesięcznej. Ten scenariusz wymaga opartej na kosztach aranżacji zasobów, które są częścią środowiska platformy Azure. W tym scenariuszu ustawiono miesięczny budżet dla subskrypcji wynoszący 1000 USD. Ponadto progi powiadomień zostały ustawione tak, aby wyzwalać kilka aranżacji. Ten scenariusz rozpoczyna się od progu kosztów wynoszącego 80%, co spowoduje zatrzymanie wszystkich maszyn wirtualnych w grupie zasobów **Opcjonalna**. Następnie przy progu kosztów wynoszącym 100% wszystkie wystąpienia maszyn wirtualnych zostaną zatrzymane.
+Aby skonfigurować ten scenariusz, wykonaj następujące akcje opisane w poszczególnych sekcjach tego samouczka.
 
-Te działania zawarte w tym samouczku umożliwiają:
+Akcje opisane w tym samouczku umożliwiają:
 
-- Utwórz Azure Automation element Runbook, aby zatrzymać maszyny wirtualne za pomocą elementów webhook.
-- Utwórz aplikację logiki platformy Azure, która ma być wyzwalana na podstawie wartości progu budżetu i Wywołaj element Runbook z właściwymi parametrami.
-- Utwórz Azure Monitor grupę akcji, która zostanie skonfigurowana do wyzwalania aplikacji logiki platformy Azure, gdy zostanie osiągnięty próg budżetu.
-- Utwórz budżet platformy Azure z żądanymi progami i połącz go z grupą akcji.
+- Tworzenie elementu runbook usługi Azure Automation w celu zatrzymywania maszyn wirtualnych za pomocą elementów webhook.
+- Tworzenie aplikacji logiki platformy Azure, która ma być wyzwalana na podstawie wartości progu budżetu, i wywoływanie elementu runbook z właściwymi parametrami.
+- Tworzenie grupy akcji usługi Azure Monitor, która zostanie skonfigurowana do wyzwalania aplikacji logiki platformy Azure po osiągnięciu progu budżetu.
+- Tworzenie budżetu platformy Azure z żądanymi progami i łączenie go z grupą akcji.
 
-## <a name="create-an-azure-automation-runbook"></a>Tworzenie elementu Runbook Azure Automation
+## <a name="create-an-azure-automation-runbook"></a>Tworzenie elementu runbook usługi Azure Automation
 
-[Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) to usługa, która umożliwia tworzenie skryptów większości zadań związanych z zarządzaniem zasobami i wykonywanie tych zadań zgodnie z harmonogramem lub na żądanie. W ramach tego scenariusza utworzysz [Azure Automation element Runbook](https://docs.microsoft.com/azure/automation/automation-runbook-types) , który będzie używany do zatrzymywania maszyn wirtualnych. W celu skompilowania tego scenariusza będziesz używać graficznego elementu Runbook [maszyn wirtualnych platformy Azure v2](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) z [galerii](https://docs.microsoft.com/azure/automation/automation-runbook-gallery) . Importując ten element Runbook do konta platformy Azure i publikując go, będzie można zatrzymać maszyny wirtualne po osiągnięciu progu budżetu.
+[Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) to usługa, która umożliwia tworzenie skryptów do obsługi większości zadań zarządzania zasobami oraz uruchamianie tych zadań zgodnie z harmonogramem lub na żądanie. W ramach tego scenariusza utworzysz [element runbook usługi Azure Automation](https://docs.microsoft.com/azure/automation/automation-runbook-types), który będzie używany do zatrzymywania maszyn wirtualnych. W celu skompilowania tego scenariusza użyjesz graficznego elementu runbook [Zatrzymaj maszyny wirtualne platformy Azure w wersji 2](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) z [galerii](https://docs.microsoft.com/azure/automation/automation-runbook-gallery). Po zaimportowaniu elementu runbook do konta platformy Azure i jego opublikowaniu będziesz mieć możliwość zatrzymywania maszyn wirtualnych po osiągnięciu progu budżetu.
 
 ### <a name="create-an-azure-automation-account"></a>Tworzenie konta usługi Azure Automation
 
 1. Zaloguj się do [witryny Azure Portal](https://portal.azure.com/) przy użyciu poświadczeń konta Azure.
-2. Kliknij przycisk **Utwórz zasób** znajdujący się w lewym górnym rogu systemu Azure.
-3. Wybierz kolejno pozycje **Narzędzia** > do zarządzania**Automatyzacja**.
+2. Kliknij przycisk **Utwórz zasób** znajdujący się w lewym górnym rogu witryny Azure Portal.
+3. Wybierz pozycję **Narzędzia do zarządzania** > **Automation**.
    > [!NOTE]
-   > Jeśli nie masz konta platformy Azure, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free/).
-4. Wprowadź informacje o koncie. W obszarze **Utwórz konto Uruchom jako platformy Azure**wybierz pozycję **tak** , aby automatycznie włączyć ustawienia, które są konieczne do uproszczenia uwierzytelniania na platformie Azure.
+   > Jeśli nie masz jeszcze konta platformy Azure, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free/).
+4. Wprowadź informacje o koncie. W obszarze **Utwórz konto Uruchom jako platformy Azure** wybierz pozycję **Tak**, aby ustawienia wymagane do uproszczenia uwierzytelniania na platformie Azure zostały automatycznie włączone.
 5. Po zakończeniu kliknij przycisk **Utwórz**, aby rozpocząć wdrażanie konta usługi Automation.
 
-### <a name="import-the-stop-azure-v2-vms-runbook"></a>Zaimportuj element Runbook Zatrzymaj maszynę wirtualną platformy Azure v2
+### <a name="import-the-stop-azure-v2-vms-runbook"></a>Importowanie elementu runbook Zatrzymaj maszyny wirtualne platformy Azure w wersji 2
 
-Korzystając z [Azure Automation elementu Runbook](https://docs.microsoft.com/azure/automation/automation-runbook-types), zaimportuj graficzny element Runbook [maszyn wirtualnych platformy Azure v2](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) z galerii.
+Używając [elementu runbook usługi Azure Automation runbook](https://docs.microsoft.com/azure/automation/automation-runbook-types), zaimportuj graficzny element runbook [Zatrzymaj maszyny wirtualne platformy Azure w wersji 2](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) z galerii.
 
 1.  Zaloguj się do [witryny Azure Portal](https://portal.azure.com/) przy użyciu poświadczeń konta Azure.
-2.  Otwórz konto usługi Automation, wybierając pozycję **wszystkie konta usługi** > **Automation**. Następnie wybierz swoje konto usługi Automation.
-3.  Kliknij pozycję **Galeria elementów Runbook** w sekcji **Automatyzacja procesu** .
-4.  Ustaw **Źródło galerii** na **Centrum skryptów** , a następnie wybierz **przycisk OK**.
-5.  Znajdź i zaznacz element Galeria [Zatrzymaj maszyny wirtualne platformy Azure v2](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) w ramach Azure Portal.
-6.  Kliknij przycisk **Importuj** , aby wyświetlić blok **Importuj** , a następnie wybierz pozycję **OK**. Zostanie wyświetlony blok przegląd elementów Runbook.
-7.  Gdy element Runbook ukończy proces importowania, wybierz opcję **Edytuj** , aby wyświetlić graficzny Edytor elementów Runbook i opcję publikowania.
+2.  Otwórz konto usługi Automation, wybierając pozycję **Wszystkie usługi** > **Konta usługi Automation**. Następnie wybierz swoje konto usługi Automation.
+3.  Kliknij pozycję **Galeria elementów Runbook** w sekcji **Automatyzacja procesu**.
+4.  Ustaw **źródło galerii** na **Centrum skryptów** i wybierz przycisk **OK**.
+5.  Znajdź i wybierz element galerii [Zatrzymaj maszyny wirtualne platformy Azure w wersji 2](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) w witrynie Azure Portal.
+6.  Kliknij przycisk **Importuj**, aby wyświetlić blok **Import**, i wybierz przycisk **OK**. Zostanie wyświetlony blok omówienia elementów runbook.
+7.  Gdy element runbook ukończy proces importowania, wybierz pozycję **Edytuj**, aby wyświetlić edytor graficznych elementów runbook i opcję publikowania.
 
-    ![Azure — edytowanie graficznego elementu Runbook](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-01.png)
-8.  Kliknij przycisk **Publikuj** , aby opublikować element Runbook, a następnie wybierz opcję **tak** po wyświetleniu monitu. Opublikowanie elementu Runbook powoduje zastąpienie istniejącej wersji opublikowanej wersją roboczą. W tym przypadku nie masz opublikowanej wersji, ponieważ element Runbook został utworzony.
+    ![Azure — edytowanie graficznych elementów runbook](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-01.png)
+8.  Kliknij przycisk **Opublikuj**, aby opublikować element runbook, a następnie wybierz pozycję **Tak** po wyświetleniu monitu. Podczas publikowania elementu runbook można zastąpić istniejącą wersję opublikowaną wersją roboczą. W tym przypadku nie ma jeszcze wersji opublikowanej, ponieważ element runbook został utworzony.
 
-    Aby uzyskać więcej informacji o publikowaniu elementu Runbook, zobacz [Tworzenie graficznego elementu Runbook](https://docs.microsoft.com/azure/automation/automation-first-runbook-graphical).
+    Aby uzyskać więcej informacji o publikowaniu elementu runbook, zobacz sekcję dotyczącą [tworzenia graficznego elementu runbook](https://docs.microsoft.com/azure/automation/automation-first-runbook-graphical).
 
-## <a name="create-webhooks-for-the-runbook"></a>Tworzenie elementów webhook dla elementu Runbook
+## <a name="create-webhooks-for-the-runbook"></a>Tworzenie elementów webhook dla elementu runbook
 
-Przy użyciu graficznego elementu Runbook programu [Zatrzymaj maszynę wirtualną platformy Azure v2](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) utworzysz dwa elementy webhook, aby uruchomić element runbook w Azure Automation za pośrednictwem pojedynczego żądania HTTP. Pierwszy element webhook wywoła element Runbook w 80% próg budżetu z nazwą grupy zasobów jako parametrem, umożliwiając zatrzymanie opcjonalnych maszyn wirtualnych. Następnie drugi element webhook wywoła element Runbook bez parametrów (o 100%), który zatrzyma wszystkie pozostałe wystąpienia maszyn wirtualnych.
+Przy użyciu graficznego elementu runbook [Zatrzymaj maszyny wirtualne platformy Azure w wersji 2](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) utworzysz dwa elementy webhook, aby uruchomić element runbook w usłudze Azure Automation za pośrednictwem pojedynczego żądania HTTP. Pierwszy element webhook wywoła element runbook przy progu budżetu wynoszącym 80% z nazwą grupy zasobów jako parametrem, umożliwiając zatrzymanie opcjonalnych maszyn wirtualnych. Następnie drugi element webhook wywoła element runbook bez parametrów (przy wartości 100%), co spowoduje zatrzymanie wszystkich pozostałych wystąpień maszyn wirtualnych.
 
-1. Na stronie **elementy Runbook** w [Azure Portal](https://portal.azure.com/)kliknij element Runbook **StopAzureV2Vm** , który wyświetla blok przegląd elementu Runbook.
-2. Kliknij pozycję **element webhook** w górnej części strony, aby otworzyć blok **Dodawanie elementu webhook** .
-3. Kliknij pozycję **Utwórz nowy element webhook** , aby otworzyć blok **Utwórz nowy element webhook** .
-4. Ustaw **nazwę** elementu webhook na opcjonalną . Właściwość **Enabled** musi mieć **wartość yes**. Nie  trzeba zmieniać wartości wygaśnie. Aby uzyskać więcej informacji na temat właściwości elementu webhook, zobacz [szczegóły](https://docs.microsoft.com/azure/automation/automation-webhooks#details-of-a-webhook)elementu webhook.
+1. Na stronie **Elementy runbook** w witrynie [Azure Portal](https://portal.azure.com/) kliknij element runbook **StopAzureV2Vm**, który wyświetla blok omówienia elementu runbook.
+2. Kliknij opcję **Element webhook** u góry strony, aby otworzyć blok **Dodawanie elementu webhook**.
+3. Kliknij pozycję **Utwórz nowy element webhook**, aby otworzyć blok **Tworzenie nowego elementu webhook**.
+4. Ustaw **nazwę** elementu webhook na **Optional** (Opcjonalne). Właściwość **Włączono** musi mieć wartość **Tak**. Wartości **Wygasa** nie trzeba zmieniać. Aby uzyskać więcej informacji na temat właściwości elementu webhook, zobacz sekcję [Szczegóły elementu webhook](https://docs.microsoft.com/azure/automation/automation-webhooks#details-of-a-webhook).
 5. Obok wartości adresu URL kliknij ikonę kopiowania, aby skopiować adres URL elementu webhook.
    > [!IMPORTANT]
-   > Zapisz adres URL elementu webhook o nazwie **Optional** w bezpiecznym miejscu. Będziesz używać adresu URL w dalszej części tego samouczka. Ze względów bezpieczeństwa po utworzeniu elementu webhook nie można ponownie wyświetlić ani pobrać adresu URL.
-6. Kliknij przycisk **OK** , aby utworzyć nowy element webhook.
-7. Kliknij przycisk **Konfiguruj parametry i Uruchom ustawienia** , aby wyświetlić wartości parametrów dla elementu Runbook.
+   > Zapisz adres URL elementu webhook o nazwie **Optional** (Opcjonalne) w bezpiecznym miejscu. Ten adres URL zostanie użyty w dalszej części tego samouczka. Ze względów bezpieczeństwa po utworzeniu elementu webhook nie można ponownie wyświetlić ani pobrać adresu URL.
+6. Kliknij przycisk **OK**, aby utworzyć nowy element webhook.
+7. Kliknij pozycję **Skonfiguruj parametry i parametry uruchomieniowe**, aby wyświetlić wartości parametrów dla elementu runbook.
    > [!NOTE]
-   > Jeśli element Runbook ma obowiązkowe parametry, nie można utworzyć elementu webhook, chyba że zostaną podane wartości.
-8. Kliknij przycisk **OK** , aby zaakceptować wartości parametrów elementu webhook.
-9. Kliknij przycisk **Utwórz** , aby utworzyć element webhook.
-10. Następnie postępuj zgodnie z powyższymi krokami, aby utworzyć drugi element webhook o nazwie **Complete**.
+   > Jeśli element runbook ma parametry obowiązkowe, nie można utworzyć elementu webhook, chyba że zostaną podane wartości.
+8. Kliknij przycisk **OK**, aby zaakceptować wartości parametrów elementu webhook.
+9. Kliknij pozycję **Utwórz**, aby utworzyć element webhook.
+10. Następnie wykonaj powyższe kroki, aby utworzyć drugi element webhook o nazwie **Complete** (Ukończenie).
     > [!IMPORTANT]
-    > Pamiętaj, aby zapisać adresy URL elementu webhook do użycia w dalszej części tego samouczka. Ze względów bezpieczeństwa po utworzeniu elementu webhook nie można ponownie wyświetlić ani pobrać adresu URL.
+    > Pamiętaj, aby zapisać obydwa adresy URL elementu webhook do użycia w dalszej części tego samouczka. Ze względów bezpieczeństwa po utworzeniu elementu webhook nie można ponownie wyświetlić ani pobrać adresu URL.
 
-Teraz należy mieć dwie skonfigurowane elementy webhook, które są dostępne przy użyciu zapisanych adresów URL.
+Teraz powinny istnieć dwa skonfigurowane elementy webhook dostępne przy użyciu zapisanych adresów URL.
 
-![Elementy webhook — opcjonalne i kompletne](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-02.png)
+![Elementy webhook — Optional (Opcjonalne) i Complete (Ukończone)](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-02.png)
 
-Teraz możesz wykonać Azure Automation konfigurację. Możesz przetestować elementy webhook z prostym testem post, aby sprawdzić, czy element webhook działa. Następnie musisz utworzyć aplikację logiki dla aranżacji.
+Konfiguracja usługi Azure Automation została zakończona. Możesz przetestować elementy webhook przy użyciu prostego testu Postman, aby sprawdzić, czy element webhook działa. Następnie musisz utworzyć aplikację logiki na potrzeby aranżacji.
 
-## <a name="create-an-azure-logic-app-for-orchestration"></a>Tworzenie aplikacji logiki platformy Azure dla aranżacji
+## <a name="create-an-azure-logic-app-for-orchestration"></a>Tworzenie aplikacji logiki platformy Azure na potrzeby aranżacji
 
-Logic Apps pomóc w tworzeniu, planowaniu i automatyzowaniu procesów jako przepływów pracy, dzięki czemu można zintegrować aplikacje, dane, systemy i usługi między przedsiębiorstwami lub organizacjami. W tym scenariuszu utworzona [aplikacja logiki](https://docs.microsoft.com/azure/logic-apps/) wykona nieco więcej niż tylko wywołanie utworzonego elementu webhook usługi Automation.
+Usługa Logic Apps ułatwia tworzenie, planowanie i automatyzowanie procesów jako przepływów pracy, aby można było integrować aplikacje, dane, systemy i usługi między przedsiębiorstwami i organizacjami. W tym scenariuszu tworzona [aplikacja logiki](https://docs.microsoft.com/azure/logic-apps/) wykona więcej pracy niż tylko wywołanie utworzonego elementu webhook usługi Automation.
 
-Można skonfigurować budżety, aby wyzwolić powiadomienie po spełnieniu określonego progu. Można podać wiele progów, które mają być powiadamiane, a aplikacja logiki będzie demonstrować możliwość wykonywania różnych akcji na podstawie progu spełnione. W tym przykładzie zostanie skonfigurowany scenariusz, w którym uzyskasz kilka powiadomień, pierwsze powiadomienie jest dostępne po osiągnięciu 80% budżetu, a drugie powiadomienie, gdy 100% budżetu został osiągnięty. Aplikacja logiki zostanie użyta do zamknięcia wszystkich maszyn wirtualnych w grupie zasobów. Po pierwsze próg **opcjonalny** zostanie osiągnięty o 80%, a następnie drugi próg zostanie osiągnięty, gdy wszystkie maszyny wirtualne w subskrypcji zostaną zamknięte.
+Można skonfigurować budżety, aby wyzwolić powiadomienie po osiągnięciu określonego progu. Można określić wiele progów w celu otrzymywania powiadomień, a aplikacja logiki będzie demonstrować zdolność wykonywania różnych akcji w oparciu o osiągnięty próg. W tym przykładzie zostanie skonfigurowany scenariusz, w którym otrzymasz kilka powiadomień: pierwsze powiadomienie będzie dostępne po osiągnięciu 80% budżetu, a drugie powiadomienie po osiągnięciu 100% budżetu. Aplikacja logiki zostanie użyta do zamknięcia wszystkich maszyn wirtualnych w grupie zasobów. Najpierw próg **opcjonalny** zostanie osiągnięty przy wartości 80%, a następnie drugi próg zostanie osiągnięty, gdy wszystkie maszyny wirtualne w subskrypcji zostaną zamknięte.
 
-Aplikacje logiki umożliwiają dostarczenie przykładowego schematu dla wyzwalacza HTTP, ale wymaga ustawienia nagłówka **Content-Type** . Ponieważ Grupa akcji nie ma niestandardowych nagłówków dla elementu webhook, należy przeanalizować ładunek w osobnym kroku. Zostanie użyta akcja **Analizuj** i przekazanie jej przy użyciu przykładowego ładunku.
+Aplikacje logiki umożliwiają dostarczenie przykładowego schematu dla wyzwalacza HTTP, ale wymagają ustawienia nagłówka **Content-Type**. Ponieważ grupa akcji nie ma niestandardowych nagłówków dla elementu webhook, musisz przeanalizować ładunek w osobnym kroku. Użyjesz akcji **Przeanalizuj** i zastosujesz dla niej przykładowy ładunek.
 
 ### <a name="create-the-logic-app"></a>Tworzenie aplikacji logiki
 
-Aplikacja logiki wykona kilka akcji. Poniższa lista zawiera zestaw akcji, które zostaną wykonane przez aplikację logiki:
-- Rozpoznaje po odebraniu żądania HTTP
-- Przeanalizuj dane w formacie JSON w celu określenia wartości progowej, która została osiągnięta
-- Użyj instrukcji warunkowej, aby sprawdzić, czy kwota progu osiągnęła 80% lub więcej zakresu budżetu, ale nie więcej niż 100%.
-    - Jeśli ta kwota progowa została osiągnięta, Wyślij wpis HTTP przy użyciu elementu webhook o nazwie **Optional**. Ta akcja spowoduje zamknięcie maszyn wirtualnych w grupie "opcjonalna".
-- Użyj instrukcji warunkowej, aby sprawdzić, czy kwota progu osiągnęła lub przekroczyła 100% wartości budżetu.
-    - Jeśli osiągnięto wartość progową, Wyślij wpis HTTP przy użyciu elementu webhook o nazwie **Complete**. Ta akcja spowoduje zamknięcie wszystkich pozostałych maszyn wirtualnych.
+Aplikacja logiki wykona kilka akcji. Poniższa lista zawiera ogólny zestaw akcji, które wykona aplikacja logiki:
+- Rozpoznanie momentu odebrania żądania HTTP
+- Przeanalizowanie przekazanych danych JSON w celu określenia wartości progowej, która została osiągnięta
+- Użycie instrukcji warunkowej w celu sprawdzenia, czy wielkość progowa osiągnęła co najmniej 80% zakresu budżetu, ale nie więcej niż 100%.
+    - Jeśli ta wielkość progowa została osiągnięta, instrukcja HTTP POST jest wysyłana przy użyciu elementu webhook o nazwie **Optional** (Opcjonalne). Ta akcja spowoduje zamknięcie maszyn wirtualnych w grupie „Opcjonalne”.
+- Użycie instrukcji warunkowej w celu sprawdzenia, czy wielkość progu osiągnęła lub przekroczyła 100% wartości budżetu.
+    - Jeśli ta wielkość progowa została osiągnięta, instrukcja HTTP POST jest wysyłana przy użyciu elementu webhook o nazwie **Complete** (Ukończone). Ta akcja spowoduje zamknięcie wszystkich pozostałych maszyn wirtualnych.
 
 Następujące kroki są niezbędne do utworzenia aplikacji logiki, która będzie wykonywać powyższe czynności:
 
 1.  W witrynie [Azure Portal](https://portal.azure.com/) wybierz pozycję **Utwórz zasób** > **Integracja** > **Aplikacja logiki**.
 
-    ![Azure — Wybieranie zasobu aplikacji logiki](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-03.png)
-2.  W bloku **Tworzenie aplikacji logiki** Podaj szczegóły potrzebne do utworzenia aplikacji logiki, wybierz pozycję **Przypnij do pulpitu nawigacyjnego**, a następnie kliknij pozycję **Utwórz**.
+    ![Azure — wybieranie zasobu Aplikacja logiki](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-03.png)
+2.  W bloku **Tworzenie aplikacji logiki** podaj szczegóły niezbędne do utworzenia aplikacji logiki, wybierz pozycję **Przypnij do pulpitu nawigacyjnego** i kliknij pozycję **Utwórz**.
 
     ![Azure — Tworzenie aplikacji logiki](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-03a.png)
 
-Po wdrożeniu aplikacji logiki przez platformę Azure zostanie otwarty **projektant Logic Apps** i zostanie wyświetlony blok z wprowadzeniem wideo i najczęściej używanymi wyzwalaczami.
+Gdy platforma Azure wdroży aplikację logiki, zostanie otwarty **Projektant aplikacji usługi Logic Apps** wyświetlający blok z wprowadzającym filmem wideo i najczęściej używanymi wyzwalaczami.
 
-### <a name="add-a-trigger"></a>Dodaj wyzwalacz
+### <a name="add-a-trigger"></a>Dodawanie wyzwalacza
 
 Każda aplikacja logiki musi rozpoczynać się od wyzwalacza, który jest aktywowany w momencie wystąpienia konkretnego zdarzenia lub spełnienia określonego warunku. Po każdym aktywowaniu wyzwalacza aparat usługi Logic Apps tworzy wystąpienie aplikacji logiki uruchamiającej i wykonującej przepływ pracy. akcje to wszystkie kroki wykonywane po aktywowaniu wyzwalacza.
 
-1.  W obszarze **Szablony** bloku **Logic Apps Designer** wybierz pozycję **pusta aplikacja logiki**.
-2.  Dodaj [wyzwalacz](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts) , wprowadzając "żądanie HTTP" w polu wyszukiwania **Logic Apps projektanta** , aby znaleźć i wybrać wyzwalacz o nazwie **Request — po odebraniu żądania HTTP**.
+1.  W obszarze **Szablony** bloku **Projektant aplikacji usługi Logic Apps** wybierz pozycję **Pusta aplikacja logiki**.
+2.  Dodaj [wyzwalacz](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts), wprowadzając ciąg „Żądanie HTTP” w polu wyszukiwania **Projektanta aplikacji usługi Logic Apps**, aby znaleźć i wybrać wyzwalacz o nazwie **Żądanie — po odebraniu żądania HTTP**.
 
-    ![Azure-Logic App-wyzwalacz http](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-04.png)
-3.  Wybierz pozycję **nowy krok** > **Dodaj akcję**.
+    ![Azure — Aplikacja logiki — Wyzwalacz HTTP](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-04.png)
+3.  Wybierz pozycję **Nowy krok** > **Dodaj akcję**.
 
-    ![Azure — nowy krok — Dodawanie akcji](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-05.png)
-4.  Wyszukaj ciąg "Analizuj kod JSON" w polu wyszukiwania programu **Logic Apps Designer** , aby znaleźć i wybrać [akcję](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts) **JSON analizowanie danych** .
+    ![Azure — Nowy krok — Dodaj akcję](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-05.png)
+4.  Wyszukaj ciąg „Przeanalizuj kod JSON” w polu wyszukiwania **Projektanta aplikacji usługi Logic Apps**, aby znaleźć i wybrać [akcję](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts) **Operacje na danych — Przeanalizuj dane JSON**.
 
-    ![Azure-Logic App — Dodaj akcję JSON analizy](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-06.png)
-5.  Wprowadź "ładunek" jako nazwę **zawartości** dla ładunku JSON analizy lub Użyj tagu "Body" z zawartości dynamicznej.
-6.  Wybierz opcję **Użyj przykładowego ładunku do wygenerowania schematu** w polu **Analiza JSON** .
+    ![Azure — Aplikacja logiki — Dodawanie akcji analizy danych JSON](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-06.png)
+5.  Wprowadź „Ładunek” jako nazwę **zawartości** dla ładunku Przeanalizuj dane JSON” użyj tagu „Treść” z zawartości dynamicznej.
+6.  Wybierz opcję **Użyj przykładowego ładunku do wygenerowania schematu** w polu **Przeanalizuj dane JSON**.
 
-    ![Azure-Logic App — Użyj przykładowych danych JSON w celu wygenerowania schematu](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-07.png)
-7.  Wklej następujący przykładowy ładunek JSON do pola tekstowego:`{"schemaId":"AIP Budget Notification","data":{"SubscriptionName":"CCM - Microsoft Azure Enterprise - 1","SubscriptionId":"<GUID>","SpendingAmount":"100","BudgetStartDate":"6/1/2018","Budget":"50","Unit":"USD","BudgetCreator":"email@contoso.com","BudgetName":"BudgetName","BudgetType":"Cost","ResourceGroup":"","NotificationThresholdAmount":"0.8"}}`
+    ![Azure — Aplikacja logiki — Używanie przykładowych danych JSON w celu wygenerowania schematu](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-07.png)
+7.  Wklej następujący przykładowy ładunek JSON w polu tekstowym: `{"schemaId":"AIP Budget Notification","data":{"SubscriptionName":"CCM - Microsoft Azure Enterprise - 1","SubscriptionId":"<GUID>","SpendingAmount":"100","BudgetStartDate":"6/1/2018","Budget":"50","Unit":"USD","BudgetCreator":"email@contoso.com","BudgetName":"BudgetName","BudgetType":"Cost","ResourceGroup":"","NotificationThresholdAmount":"0.8"}}`
 
     Pole tekstowe będzie wyglądać następująco:
 
-    ![Azure-Logic App — przykładowy ładunek JSON](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-08.png)
+    ![Azure — Aplikacja logiki — Przykładowy ładunek JSON](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-08.png)
 8.  Kliknij przycisk **Gotowe**.
 
-### <a name="add-the-first-conditional-action"></a>Dodaj pierwszą akcję warunkową
+### <a name="add-the-first-conditional-action"></a>Dodawanie pierwszej akcji warunkowej
 
-Użyj instrukcji warunkowej, aby sprawdzić, czy kwota progu osiągnęła 80% lub więcej zakresu budżetu, ale nie więcej niż 100%. Jeśli ta kwota progowa została osiągnięta, Wyślij wpis HTTP przy użyciu elementu webhook o nazwie **Optional**. Ta akcja spowoduje wyłączenie maszyn wirtualnych w grupie **opcjonalnej** .
+Użycie instrukcji warunkowej w celu sprawdzenia, czy wielkość progowa osiągnęła co najmniej 80% zakresu budżetu, ale nie więcej niż 100%. Jeśli ta wielkość progowa została osiągnięta, instrukcja HTTP POST jest wysyłana przy użyciu elementu webhook o nazwie **Optional** (Opcjonalne). Ta akcja spowoduje zamknięcie maszyn wirtualnych w grupie **Opcjonalne**.
 
-1.  Wybierz pozycję **nowy krok** > **Dodaj warunek**.
+1.  Wybierz pozycję **Nowy krok** > **Dodaj warunek**.
 
-    ![Aplikacja logiki Azure — Dodawanie warunku](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-09.png)
-2.  W **warunku** kliknij pole tekstowe zawierające **Wybierz wartość** , aby wyświetlić listę dostępnych wartości.
+    ![Azure — Aplikacja logiki — Dodaj warunek](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-09.png)
+2.  W polu **Warunek** kliknij pole tekstowe zawierające frazę **Wybierz wartość**, aby wyświetlić listę dostępnych wartości.
 
-    ![Azure — aplikacja logiki — pole warunku](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-10.png)
+    ![Azure — Aplikacja logiki — pole Warunek](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-10.png)
 
-3.  Kliknij pozycję **wyrażenie** w górnej części listy i wprowadź następujące wyrażenie w edytorze wyrażeń:`float()`
+3.  Kliknij pozycję **Wyrażenie** w górnej części listy i wprowadź następujące wyrażenie w edytorze wyrażeń: `float()`
 
-    ![Azure — wyrażenie aplikacji logiki — zmiennoprzecinkowe](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-11.png)
+    ![Azure — Aplikacja logiki — Wyrażenie float](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-11.png)
 
-4.  Wybierz pozycję **zawartość dynamiczna**, umieść kursor wewnątrz nawiasu () i wybierz pozycję **NotificationThresholdAmount** z listy, aby wypełnić wyrażenie kompletne.
+4.  Wybierz pozycję **Zawartość dynamiczna**, umieść kursor wewnątrz nawiasu () i wybierz pozycję **NotificationThresholdAmount** z listy, aby wypełnić ukończone wyrażenie.
 
-    Wyrażenie będzie następujące:<br>
+    Wyrażenie będzie wyglądać następująco:<br>
     `float(body('Parse_JSON')?['data']?['NotificationThresholdAmount'])`
 
-5.  Wybierz **przycisk OK** , aby ustawić wyrażenie.
-6.  Opcja Select **jest większa lub równa wartości** w polu listy rozwijanej **warunek**.
-7.  W polu **Wybierz wartość** wprowadź `.8`warunek.
+5.  Wybierz przycisk **OK**, aby ustawić wyrażenie.
+6.  Wybierz pozycję **jest większe lub równe** w polu listy rozwijanej **Warunek**.
+7.  W polu **Wybierz wartość** warunku wprowadź `.8`.
 
-    ![Azure-Logic App-float Expression z wartością](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-12.png)
+    ![Azure — Aplikacja logiki — Wyrażenie float z wartością](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-12.png)
 
-8.  Kliknij przycisk **Dodaj** > **Dodaj wiersz** w polu warunek, aby dodać dodatkową część warunku.
-9.  W **warunku** kliknij pole tekstowe zawierające **Wybierz wartość**.
-10. Kliknij pozycję **wyrażenie** w górnej części listy i wprowadź następujące wyrażenie w edytorze wyrażeń:`float()`
-11. Wybierz pozycję **zawartość dynamiczna**, umieść kursor wewnątrz nawiasu () i wybierz pozycję **NotificationThresholdAmount** z listy, aby wypełnić wyrażenie kompletne.
-12. Wybierz **przycisk OK** , aby ustawić wyrażenie.
-13. Opcja Wybierz **jest mniejsza niż** w polu listy rozwijanej **warunek**.
-14. W polu **Wybierz wartość** wprowadź `1`warunek.
+8.  Kliknij pozycję **Dodaj** > **Dodaj wiersz** w polu Warunek, aby dodać dodatkową część warunku.
+9.  W polu **Warunek** kliknij pole tekstowe zawierające frazę **Wybierz wartość**.
+10. Kliknij pozycję **Wyrażenie** w górnej części listy i wprowadź następujące wyrażenie w edytorze wyrażeń: `float()`
+11. Wybierz pozycję **Zawartość dynamiczna**, umieść kursor wewnątrz nawiasu () i wybierz pozycję **NotificationThresholdAmount** z listy, aby wypełnić ukończone wyrażenie.
+12. Wybierz przycisk **OK**, aby ustawić wyrażenie.
+13. Wybierz pozycję **jest mniejsze niż** w polu listy rozwijanej **Warunek**.
+14. W polu **Wybierz wartość** warunku wprowadź `1`.
 
-    ![Azure-Logic App-float Expression z wartością](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-13.png)
+    ![Azure — Aplikacja logiki — Wyrażenie float z wartością](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-13.png)
 
-15. W polu **Jeśli prawda** wybierz pozycję **Dodaj akcję**. Zostanie dodana akcja POST protokołu HTTP, która spowoduje wyłączenie opcjonalnych maszyn wirtualnych.
+15. W polu **W przypadku wartości true** wybierz pozycję **Dodaj akcję**. Zostanie dodana akcja HTTP POST, która spowoduje wyłączenie opcjonalnych maszyn wirtualnych.
 
-    ![Azure — aplikacja logiki — Dodawanie akcji](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-14.png)
+    ![Azure — Aplikacja logiki — Dodaj akcję](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-14.png)
 
-16. Wprowadź wartość **http** , aby wyszukać akcję http i wybrać akcję **http – http** .
+16. Wprowadź **HTTP**, aby wyszukać akcję HTTP, i wybierz akcję **HTTP — HTTP**.
 
-    ![Azure-Logic App — Dodawanie akcji HTTP](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-15.png)
+    ![Azure — Aplikacja logiki — Dodaj akcję HTTP](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-15.png)
 
-17. Wybierz pozycję **post** jako wartość **metody** .
-18. Wprowadź adres URL elementu webhook o nazwie **Optional** , który został utworzony wcześniej w tym samouczku jako wartość **identyfikatora URI** .
+17. Wybierz pozycję **Post** jako wartość pola **Metoda**.
+18. Wprowadź adres URL elementu webhook o nazwie **Optional** (Opcjonalne), który został utworzony wcześniej w tym samouczku, jako wartość identyfikatora **URI**.
 
-    ![Azure-Logic App — identyfikator URI akcji HTTP](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-16.png)
+    ![Azure — Aplikacja logiki — Identyfikator URI akcji HTTP](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-16.png)
 
-19. Wybierz pozycję **Dodaj akcję** w polu **Jeśli prawda** . Dodasz akcję poczty e-mail, która spowoduje wysłanie wiadomości e-mail z powiadomieniem odbiorcy o wyłączeniu opcjonalnych maszyn wirtualnych.
-20. Wyszukaj ciąg "Wyślij wiadomość e-mail" i wybierz akcję *Wyślij wiadomość e-mail* na podstawie używanej usługi poczty e-mail.
+19. Wybierz pozycję **Dodaj akcję** w polu **W przypadku wartości true**. Dodasz akcję poczty e-mail, która spowoduje wysłanie wiadomości e-mail z powiadomieniem odbiorcy o wyłączeniu opcjonalnych maszyn wirtualnych.
+20. Wyszukaj ciąg „wyślij wiadomość e-mail” i wybierz akcję *wyślij wiadomość e-mail* na podstawie używanej usługi poczty e-mail.
 
-    ![Azure-Logic App — akcja wysyłania wiadomości e-mail](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-17.png)
+    ![Azure — Aplikacja logiki — Akcja Wyślij wiadomość e-mail](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-17.png)
 
     W przypadku osobistych kont Microsoft wybierz pozycję **Outlook.com**. W przypadku kont służbowych platformy Azure wybierz pozycję **Office 365 Outlook**. Jeśli nie masz jeszcze połączenia, pojawi się monit o zalogowanie się do swojego konta poczty e-mail. Usługa Logic Apps utworzy połączenie z kontem e-mail.
 
-    Musisz zezwolić aplikacji logiki na dostęp do informacji e-mail.
+    Musisz zezwolić aplikacji logiki na dostęp do informacji w poczcie e-mail.
 
-    ![Azure-Logic App-informacje o dostępie](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-18.png)
+    ![Azure — Aplikacja logiki — Informacje o dostępie](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-18.png)
 
-21. Dodaj **do**, **temat**i tekst **treści** wiadomości e-mail, która powiadamia odbiorcę o wyłączeniu opcjonalnych maszyn wirtualnych. Użyj wartości **budżetname** i zawartość dynamiczna **NotificationThresholdAmount** , aby wypełnić pola temat i treść.
+21. Dodaj tekst w polach **Do**, **Temat** i **Treść** wiadomości e-mail, która powiadamia o adresata o zamknięciu opcjonalnych maszyn wirtualnych. Użyj nazwy **BudgetName** i zawartości dynamicznej **NotificationThresholdAmount** do wypełnienia pól tematu i treści.
 
-    ![Azure-Logic App — Szczegóły wiadomości E-mail](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-19.png)
+    ![Azure — Aplikacja logiki — Szczegóły wiadomości E-mail](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-19.png)
 
-### <a name="add-the-second-conditional-action"></a>Dodaj drugą akcję warunkową
+### <a name="add-the-second-conditional-action"></a>Dodawanie drugiej akcji warunkowej
 
-Użyj instrukcji warunkowej, aby sprawdzić, czy kwota progu osiągnęła lub przekroczyła 100% wartości budżetu. Jeśli osiągnięto wartość progową, Wyślij wpis HTTP przy użyciu elementu webhook o nazwie **Complete**. Ta akcja spowoduje zamknięcie wszystkich pozostałych maszyn wirtualnych.
+Użycie instrukcji warunkowej w celu sprawdzenia, czy wielkość progu osiągnęła lub przekroczyła 100% wartości budżetu. Jeśli ta wielkość progowa została osiągnięta, instrukcja HTTP POST jest wysyłana przy użyciu elementu webhook o nazwie **Complete** (Ukończone). Ta akcja spowoduje zamknięcie wszystkich pozostałych maszyn wirtualnych.
 
-1.  Wybierz pozycję **nowy krok** > **Dodaj warunek**.
+1.  Wybierz pozycję **Nowy krok** > **Dodaj warunek**.
 
-    ![Azure — aplikacja logiki — Dodawanie akcji](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-20.png)
+    ![Azure — Aplikacja logiki — Dodaj akcję](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-20.png)
 
-2.  W **warunku** kliknij pole tekstowe zawierające **Wybierz wartość** , aby wyświetlić listę dostępnych wartości.
-3.  Kliknij pozycję **wyrażenie** w górnej części listy i wprowadź następujące wyrażenie w edytorze wyrażeń:`float()`
-4.  Wybierz pozycję **zawartość dynamiczna**, umieść kursor wewnątrz nawiasu () i wybierz pozycję **NotificationThresholdAmount** z listy, aby wypełnić wyrażenie kompletne.
+2.  W polu **Warunek** kliknij pole tekstowe zawierające frazę **Wybierz wartość**, aby wyświetlić listę dostępnych wartości.
+3.  Kliknij pozycję **Wyrażenie** w górnej części listy i wprowadź następujące wyrażenie w edytorze wyrażeń: `float()`
+4.  Wybierz pozycję **Zawartość dynamiczna**, umieść kursor wewnątrz nawiasu () i wybierz pozycję **NotificationThresholdAmount** z listy, aby wypełnić ukończone wyrażenie.
 
-    Wyrażenie będzie następujące:<br>
+    Wyrażenie będzie wyglądać następująco:<br>
     `float(body('Parse_JSON')?['data']?['NotificationThresholdAmount'])`
 
-5.  Wybierz **przycisk OK** , aby ustawić wyrażenie.
-6.  Opcja Select **jest większa lub równa wartości** w polu listy rozwijanej **warunek**.
-7.  W **polu Wybierz wartość** wprowadź `1`warunek.
+5.  Wybierz przycisk **OK**, aby ustawić wyrażenie.
+6.  Wybierz pozycję **jest większe lub równe** w polu listy rozwijanej **Warunek**.
+7.  W polu **Wybierz wartość** warunku wprowadź `1`.
 
-    ![Azure-Logic App-Ustawianie wartości warunku](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-21.png)
+    ![Azure — Aplikacja logiki — Ustawianie wartości warunku](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-21.png)
 
-8.  W polu **Jeśli prawda** wybierz pozycję **Dodaj akcję**. Zostanie dodana akcja POST protokołu HTTP, która spowoduje zamknięcie wszystkich pozostałych maszyn wirtualnych.
+8.  W polu **W przypadku wartości true** wybierz pozycję **Dodaj akcję**. Zostanie dodana akcja HTTP POST, która spowoduje wyłączenie wszystkich pozostałych maszyn wirtualnych.
 
-    ![Azure — aplikacja logiki — Dodawanie akcji](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-22.png)
+    ![Azure — Aplikacja logiki — Dodaj akcję](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-22.png)
 
-9.  Wprowadź wartość **http** , aby wyszukać akcję http i wybrać akcję **http – http** .
-10. Wybierz pozycję **post** jako wartość **metody** .
-11. Wprowadź adres URL elementu webhook o nazwie **Complete** utworzonego wcześniej w tym samouczku jako wartość **identyfikatora URI** .
+9.  Wprowadź **HTTP**, aby wyszukać akcję HTTP, i wybierz akcję **HTTP — HTTP**.
+10. Wybierz pozycję **Post** jako wartość pola **Metoda**.
+11. Wprowadź adres URL elementu webhook o nazwie **Complete** (Ukończone), który został utworzony wcześniej w tym samouczku, jako wartość identyfikatora **URI**.
 
-    ![Azure — aplikacja logiki — Dodawanie akcji](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-23.png)
+    ![Azure — Aplikacja logiki — Dodaj akcję](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-23.png)
 
-12. Wybierz pozycję **Dodaj akcję** w polu **Jeśli prawda** . Dodasz akcję poczty e-mail, która spowoduje wysłanie wiadomości e-mail z powiadomieniem odbiorcy o wyłączeniu pozostałych maszyn wirtualnych.
-13. Wyszukaj ciąg "Wyślij wiadomość e-mail" i wybierz akcję *Wyślij wiadomość e-mail* na podstawie używanej usługi poczty e-mail.
-14. Dodaj **do**, **temat**i tekst **treści** wiadomości e-mail, która powiadamia odbiorcę o wyłączeniu opcjonalnych maszyn wirtualnych. Użyj wartości **budżetname** i zawartość dynamiczna **NotificationThresholdAmount** , aby wypełnić pola temat i treść.
+12. Wybierz pozycję **Dodaj akcję** w polu **W przypadku wartości true**. Dodasz akcję poczty e-mail, która spowoduje wysłanie wiadomości e-mail z powiadomieniem odbiorcy o wyłączeniu pozostałych maszyn wirtualnych.
+13. Wyszukaj ciąg „wyślij wiadomość e-mail” i wybierz akcję *wyślij wiadomość e-mail* na podstawie używanej usługi poczty e-mail.
+14. Dodaj tekst w polach **Do**, **Temat** i **Treść** wiadomości e-mail, która powiadamia o adresata o zamknięciu opcjonalnych maszyn wirtualnych. Użyj nazwy **BudgetName** i zawartości dynamicznej **NotificationThresholdAmount** do wypełnienia pól tematu i treści.
 
-    ![Azure-Logic App — Szczegóły wysyłania wiadomości e-mail](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-24.png)
+    ![Azure — Aplikacja logiki — Szczegóły wysyłanej wiadomości e-mail](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-24.png)
 
-15. Kliknij pozycję **Zapisz** w górnej części bloku **projektanta aplikacji logiki** .
+15. Kliknij przycisk **Zapisz** w górnej części bloku **Projektant aplikacji logiki**.
 
 ### <a name="logic-app-summary"></a>Podsumowanie aplikacji logiki
 
-Oto, jak Twoja aplikacja logiki będzie wyglądać po zakończeniu. W najbardziej typowych scenariuszach, w których nie jest potrzebna jakakolwiek aranżacja oparta na progach, można bezpośrednio wywołać skrypt automatyzacji od **monitora** i pominąć krok **aplikacji logiki** .
+Oto jak aplikacja logiki będzie wyglądać po wykonaniu wszystkich czynności. W najbardziej typowych scenariuszach, w których nie jest potrzebna jakakolwiek aranżacja oparta na progach, można bezpośrednio wywołać skrypt automatyzacji z usługi **Monitor** i pominąć krok **Aplikacja logiki**.
 
-   ![Azure — aplikacja logiki — widok kompletny](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-25.png)
+   ![Azure — Aplikacja logiki — Kompletny widok](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-25.png)
 
-Po zapisaniu aplikacji logiki został wygenerowany adres URL, który będzie można wywołać. Ten adres URL zostanie użyty w następnej sekcji tego samouczka.
+Po zapisaniu aplikacji logiki został wygenerowany adres URL, który będzie można wywołać. Tego adresu URL będziesz potrzebować w kolejnej sekcji tego samouczka.
 
-## <a name="create-an-azure-monitor-action-group"></a>Tworzenie grupy akcji Azure Monitor
+## <a name="create-an-azure-monitor-action-group"></a>Tworzenie grupy akcji usługi Azure Monitor
 
-Grupa akcji to kolekcja preferencji powiadomień zdefiniowanych przez użytkownika. Po wyzwoleniu alertu określona grupa akcji może odebrać alert przez powiadomienie. Alert platformy Azure aktywnie zgłasza powiadomienie na podstawie określonych warunków i zapewnia możliwość podjęcia działania. Alert może używać danych z wielu źródeł, w tym metryk i dzienników.
+Grupa akcji to kolekcja preferencji powiadomień zdefiniowanych przez użytkownika. Po wyzwoleniu alertu określona grupa akcji może odebrać alert za pośrednictwem powiadomienia. Alert platformy Azure aktywnie zgłasza powiadomienie na podstawie określonych warunków i zapewnia możliwość podjęcia akcji. Alert może używać danych z wielu źródeł, m.in. metryk i dzienników.
 
-Grupy akcji to jedyny punkt końcowy, który zostanie zintegrowany z budżetem. Możesz skonfigurować powiadomienia w wielu kanałach, ale w tym scenariuszu zobaczysz aplikację logiki utworzoną wcześniej w tym samouczku.
+Grupy akcji to jedyny punkt końcowy, który zostanie zintegrowany z budżetem. Możesz skonfigurować powiadomienia w wielu kanałach, ale w tym scenariuszu skoncentrujesz się na aplikacji logiki utworzonej wcześniej w tym samouczku.
 
-### <a name="create-an-action-group-in-azure-monitor"></a>Tworzenie grupy akcji w Azure Monitor
+### <a name="create-an-action-group-in-azure-monitor"></a>Tworzenie grupy akcji w usłudze Azure Monitor
 
-Po utworzeniu grupy akcji należy wskazać aplikację logiki utworzoną wcześniej w tym samouczku.
+Podczas tworzenia grupy akcji wskażesz aplikację logiki utworzoną wcześniej w tym samouczku.
 
-1.  Jeśli jeszcze nie zalogowano się do [Azure Portal](https://portal.azure.com/), zaloguj się i wybierz pozycję **wszystkie usługi** > **monitor**.
-2.  Wybierz pozycję **grupy akcji** z sekcji **ustawienie** .
-3.  Wybierz pozycję **Dodaj grupę akcji** z bloku **grupy akcji** .
-4.  Dodaj i sprawdź następujące elementy:
+1.  Jeśli jeszcze nie zalogowano się do witryny [Azure Portal](https://portal.azure.com/), zaloguj się i wybierz pozycję **wszystkie usługi** > **Monitor**.
+2.  Wybierz pozycję **Grupy akcji** z sekcji **Ustawienie**.
+3.  Wybierz pozycję **Dodaj grupę akcji** w bloku **Grupy akcji**.
+4.  Dodaj i zweryfikuj następujące elementy:
     - Nazwa grupy akcji
     - Krótka nazwa
-    - Subscription
-    - Resource group
+    - Subskrypcja
+    - Grupa zasobów
 
-    ![Azure — aplikacja logiki — Dodaj grupę akcji](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-26.png)
+    ![Azure — Aplikacja logiki — Dodaj grupę akcji](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-26.png)
 
-5.  W okienku **Dodaj grupę akcji** Dodaj akcję LogicApp. Nazwij akcję **budżet-BudgetLA**. W okienku **aplikacja logiki** wybierz subskrypcję i  **grupę zasobów**. Następnie wybierz **aplikację logiki** utworzoną wcześniej w tym samouczku.
-6.  Kliknij przycisk **OK** , aby ustawić aplikację logiki. Następnie wybierz przycisk **OK** w okienku **Dodaj grupę akcji** , aby utworzyć grupę akcji.
+5.  W okienku **Dodaj grupę akcji** dodaj akcję LogicApp. Nadaj akcji nazwę **Budget-BudgetLA**. W okienku **Aplikacja logiki** wybierz pozycje **Subskrypcja** i **Grupa zasobów**. Następnie wybierz **aplikację logiki** utworzoną wcześniej w tym samouczku.
+6.  Kliknij przycisk **OK**, aby ustawić aplikację logiki. Następnie wybierz przycisk **OK** w okienku **Dodaj grupę akcji**, aby utworzyć grupę akcji.
 
 Wszystkie składniki pomocnicze potrzebne do efektywnego organizowania budżetu są gotowe. Teraz wystarczy utworzyć budżet i skonfigurować go tak, aby korzystał z utworzonej grupy akcji.
 
 ## <a name="create-the-azure-budget"></a>Tworzenie budżetu platformy Azure
 
-Budżet można utworzyć w Azure Portal przy użyciu [funkcji budżet](../cost-management/tutorial-acm-create-budgets.md) w programie Cost Management. Można też utworzyć budżet przy użyciu interfejsów API REST, poleceń cmdlet programu PowerShell lub interfejsu wiersza polecenia. Poniższa procedura używa interfejsu API REST. Przed wywołaniem interfejsu API REST wymagany jest Token autoryzacji. Aby utworzyć token autoryzacji, można użyć projektu [ARMClient](https://github.com/projectkudu/ARMClient) . **ARMClient** umożliwia samodzielną identyfikację w Azure Resource Manager i uzyskanie tokenu wywołującego interfejsy API.
+Budżet można utworzyć w witrynie Azure Portal przy użyciu [funkcji budżetu](../cost-management/tutorial-acm-create-budgets.md) w usłudze Cost Management. Można też utworzyć budżet przy użyciu interfejsów API REST, poleceń cmdlet programu Powershell lub interfejsu wiersza polecenia. Poniższa procedura używa interfejsu API REST. Przed wywołaniem interfejsu API REST będzie potrzebny token autoryzacji. Aby utworzyć token autoryzacji, możesz użyć projektu [ARMClient](https://github.com/projectkudu/ARMClient). Projekt **ARMClient** umożliwia samodzielne uwierzytelnianie w usłudze Azure Resource Manager i pobieranie tokenu na potrzeby wywoływania interfejsów API.
 
 ### <a name="create-an-authentication-token"></a>Tworzenie tokenu uwierzytelniania
 
 1.  Przejdź do projektu [ARMClient](https://github.com/projectkudu/ARMClient) w witrynie GitHub.
 2.  Sklonuj repozytorium, aby uzyskać kopię lokalną.
 3.  Otwórz projekt w programie Visual Studio i skompiluj go.
-4.  Gdy kompilacja zakończy się pomyślnie, plik wykonywalny powinien znajdować się w folderze *\bin\debug* .
-5.  Uruchom ARMClient. Otwórz wiersz polecenia i przejdź do folderu *\bin\debug* w katalogu głównym projektu.
-6.  Aby zalogować się i uwierzytelnić, wprowadź następujące polecenie w wierszu polecenia:<br>
+4.  Gdy kompilacja zakończy się pomyślnie, plik wykonywalny powinien znajdować się w folderze *\bin\debug*.
+5.  Uruchom projekt ARMClient. Otwórz wiersz polecenia i przejdź do folderu *\bin\debug* w katalogu głównym projektu.
+6.  Aby zalogować i uwierzytelnić się, wprowadź następujące polecenie w wierszu polecenia:<br>
     `ARMClient login prod`
-7.  Skopiuj **Identyfikator GUID subskrypcji** z danych wyjściowych.
-8.  Aby skopiować Token autoryzacji do schowka, wprowadź następujące polecenie w wierszu polecenia, ale pamiętaj, aby użyć skopiowanego identyfikatora subskrypcji z powyższego kroku: <br>
+7.  Skopiuj **identyfikator GUID subskrypcji** z danych wyjściowych.
+8.  Aby skopiować token autoryzacji do schowka, wprowadź następujące polecenie w wierszu polecenia, ale pamiętaj, aby użyć skopiowanego identyfikatora subskrypcji z powyższego kroku: <br>
     `ARMClient token <subscription GUID from previous step>`
 
-    Po ukończeniu kroku powyżej zobaczysz następujące elementy:<br>
-    **Pomyślnie skopiowano token do Schowka.**
+    Po ukończeniu powyższego kroku zobaczysz następujący komunikat:<br>
+    **Token został pomyślnie skopiowany do schowka.**
 9.  Zapisz token, który ma być używany na potrzeby kroków w następnej sekcji tego samouczka.
 
-### <a name="create-the-budget"></a>Utwórz budżet
+### <a name="create-the-budget"></a>Tworzenie budżetu
 
-Następnie skonfigurujesz program **pocztowy** do tworzenia budżetu, wywołując interfejsy API REST użycia platformy Azure. Poster to środowisko deweloperskie interfejsu API. Pliki środowiska i kolekcji zostaną zaimportowane do programu Poster. Kolekcja zawiera zgrupowane definicje żądań HTTP, które wywołują interfejsy API REST użycia platformy Azure. Plik środowiska zawiera zmienne, które są używane przez kolekcję.
+Następnie skonfigurujesz rozwiązanie **Postman** w celu tworzenia budżetu, wywołując interfejsy API REST użycia platformy Azure. Postman to środowisko deweloperskie interfejsu API. Pliki środowiska i kolekcji zostaną zaimportowane do rozwiązania Postman. Kolekcja zawiera zgrupowane definicje żądań HTTP, które wywołują interfejsy API REST użycia platformy Azure. Plik środowiska zawiera zmienne, które są używane przez kolekcję.
 
-1.  Pobierz i Otwórz [klienta REST](https://www.getpostman.com/) programu Poster w celu wykonania interfejsów API REST.
-2.  W programie Poster Utwórz nowe żądanie.
+1.  Pobierz i otwórz [klienta REST rozwiązania Postman](https://www.getpostman.com/) w celu wykonania interfejsów API REST.
+2.  W środowisku Postman utwórz nowe żądanie.
 
-    ![Poster — Utwórz nowe żądanie](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-27.png)
+    ![Postman — Tworzenie nowego żądania](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-27.png)
 
-3.  Zapisz nowe żądanie jako kolekcję, tak aby nowe żądanie nie miało nic na nim.
+3.  Zapisz nowe żądanie jako kolekcję, tak aby nie zawierało żadnych danych.
 
-    ![Poster — Zapisz nowe żądanie](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-28.png)
+    ![Postman — Zapisywanie nowego żądania](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-28.png)
 
-4.  Zmień żądanie z `Get` `Put` na akcję.
-5.  Zmodyfikuj następujący adres URL, zastępując `{subscriptionId}` go **identyfikatorem subskrypcji** użytym w poprzedniej sekcji tego samouczka. Ponadto zmodyfikuj adres URL, tak aby zawierał wartość "SampleBudget", dla `{budgetName}`:`https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Consumption/budgets/{budgetName}?api-version=2018-03-31`
-6.  Wybierz kartę **nagłówki** w programie Poster.
-7.  Dodaj nowy **klucz** o nazwie "Autoryzacja".
-8.  Ustaw **wartość** na token, który został utworzony przy użyciu ArmClient na końcu ostatniej sekcji.
-9.  Wybierz kartę **treść** w programie Poster.
-10. Wybierz opcję **pierwotnego** przycisku.
-11. W polu tekstowym wklej do poniższego przykładowej definicji budżetu, należy jednak zastąpić parametry **subskrypcji**, **budżetuname**i **actiongroupname** identyfikatorem subskrypcji, unikatową nazwą budżetu i nazwą grupy akcji utworzono zarówno w adresie URL, jak i w treści żądania:
+4.  Zmień żądanie z `Get` na akcję `Put`.
+5.  Zmodyfikuj następujący adres URL, zastępując element `{subscriptionId}` **identyfikatorem subskrypcji** użytym w poprzedniej sekcji tego samouczka. Ponadto zmodyfikuj adres URL, tak aby zawierał wartość „SampleBudget” jako wartość elementu `{budgetName}`: `https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Consumption/budgets/{budgetName}?api-version=2018-03-31`
+6.  Wybierz kartę **Headers** (Nagłówki) w narzędziu Postman.
+7.  Dodaj nowy **klucz** o nazwie „Authorization” (Autoryzacja).
+8.  Ustaw **wartość** na token, który został utworzony przy użyciu projektu ArmClient na końcu ostatniej sekcji.
+9.  Wybierz kartę **Body** (Treść) w narzędziu Postman.
+10. Wybierz opcję przycisku **raw**.
+11. W polu tekstowym wklej poniższą przykładową definicję budżetu. Musisz zastąpić parametry **subscriptionid**, **budgetname** i **actiongroupname** identyfikatorem subskrypcji, unikatową nazwą budżetu i nazwą grupy akcji, które zostały utworzone zarówno w adresie URL, jak i w treści żądania:
 
     ```
         {
@@ -365,25 +365,25 @@ Następnie skonfigurujesz program **pocztowy** do tworzenia budżetu, wywołują
             }
         }
     ```
-12. Naciśnij przycisk **Wyślij** , aby wysłać żądanie.
+12. Naciśnij przycisk **Send** (Wyślij), aby wysłać żądanie.
 
-Masz teraz wszystkie elementy potrzebne do wywołania [interfejsu API budżetów](https://docs.microsoft.com/rest/api/consumption/budgets). Dokumentacja interfejsu API budżetów zawiera dodatkowe szczegóły dotyczące konkretnych żądań, w tym następujące:
-    - **budżetname** — obsługiwane są wiele budżetów.  Nazwy budżetów muszą być unikatowe.
-    - **Kategoria** — musi być **kosztem** lub **zużyciem**. Interfejs API obsługuje zarówno budżety kosztów, jak i użycia.
-    - **timeGrain** — miesięczny, kwartalny lub roczny budżet. Kwota jest resetowana na koniec okresu.
-    - **filtry** — Filtry umożliwiają zawężenie budżetu do określonego zestawu zasobów w ramach wybranego zakresu. Na przykład filtr może być zbiorem grup zasobów dla budżetu poziomu subskrypcji.
-    - **powiadomienia** — określa szczegóły i progi powiadomień. Można skonfigurować wiele progów i podać adres e-mail lub grupę akcji, aby otrzymać powiadomienie.
+Masz teraz wszystkie elementy potrzebne do wywołania [interfejsu API budżetów](https://docs.microsoft.com/rest/api/consumption/budgets). Dokumentacja interfejsu API budżetów zawiera dodatkowe szczegóły dotyczące konkretnych żądań, w tym:
+    - **budgetName** — można obsługiwać wiele budżetów.  Nazwy budżetów muszą być unikatowe.
+    - **category** — musi mieć wartość **Cost** (Koszt) lub **Usage** (Użycie). Interfejs API obsługuje zarówno budżety kosztów, jak i użycia.
+    - **timeGrain** — budżet miesięczny, kwartalny lub roczny. Kwota jest resetowana na końcu okresu.
+    - **filters** — filtry umożliwiają zawężenie budżetu do określonego zestawu zasobów w ramach wybranego zakresu. Filtr może być na przykład kolekcją grup zasobów dla budżetu na poziomie subskrypcji.
+    - **notifications** — określa szczegóły i progi powiadomień. Można skonfigurować wiele progów i podać adres e-mail lub grupę akcji, aby otrzymać powiadomienie.
 
 ## <a name="summary"></a>Podsumowanie
 
-Postępując zgodnie z tym samouczkiem, przedstawiono następujące informacje:
-- Jak utworzyć element Runbook Azure Automation, aby zatrzymać maszyny wirtualne.
-- Jak utworzyć aplikację logiki platformy Azure, która jest wyzwalana na podstawie wartości progowych budżetu i wywoływać powiązane elementy Runbook z właściwymi parametrami.
-- Jak utworzyć Azure Monitor grupę akcji, która zostanie skonfigurowana do wyzwalania aplikacji logiki platformy Azure, gdy zostanie spełniony próg budżetu.
+Po wykonaniu czynności z tego samouczka wiesz:
+- Jak utworzyć element runbook usługi Azure Automation w celu zatrzymywania maszyn wirtualnych.
+- Jak utworzyć aplikację logiki platformy Azure, która ma być wyzwalana na podstawie wartości progu budżetu, i wywoływać element runbook z właściwymi parametrami.
+- Jak utworzyć grupę akcji usługi Azure Monitor, która zostanie skonfigurowana do wyzwalania aplikacji logiki platformy Azure po osiągnięciu progu budżetu.
 - Jak utworzyć budżet platformy Azure z żądanymi progami i połączyć go z grupą akcji.
 
-Teraz masz w pełni funkcjonalny budżet dla subskrypcji, która spowoduje wyłączenie maszyn wirtualnych po osiągnięciu skonfigurowanych progów budżetu.
+Masz teraz w pełni funkcjonalny budżet dla subskrypcji, który spowoduje wyłączenie maszyn wirtualnych po osiągnięciu skonfigurowanych progów budżetu.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby uzyskać więcej informacji na temat scenariuszy rozliczania na platformie Azure, zobacz scenariusze dotyczące rozliczeń [i zarządzania kosztami](billing-cost-management-automation-scenarios.md).
+- Aby uzyskać więcej informacji na temat scenariuszy rozliczania na platformie Azure, zobacz [Billing and cost management automation scenarios](billing-cost-management-automation-scenarios.md) (Scenariusze automatyzacji dotyczące rozliczeń i zarządzania kosztami).
