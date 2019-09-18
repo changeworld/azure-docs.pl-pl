@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: b14d6f70f4c4163f16c8275f4e071da6a9e0bc78
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 3513dc0a1928168d6313e9d49a8f3d5d27aca781
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019821"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066345"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Podłączanie urządzenia Windows IoT Core do aplikacji IoT Central platformy Azure
 
@@ -25,7 +25,7 @@ W tym artykule opisano sposób, w jaki deweloper urządzenia nawiązuje połącz
 
 Do wykonania kroków opisanych w tym artykule potrzebne są:
 
-- Aplikacja IoT Central platformy Azure utworzona na podstawie przykładowego szablonu aplikacji **Devkits** . Aby uzyskać więcej informacji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](quick-deploy-iot-central.md).
+- Aplikacja IoT Central platformy Azure utworzona na podstawie **przykładowego** szablonu aplikacji Devkits. Aby uzyskać więcej informacji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](quick-deploy-iot-central.md).
 
 - Urządzenie z systemem operacyjnym Windows 10 IoT Core. Aby uzyskać więcej informacji, zobacz [Konfigurowanie urządzenia Windows 10 IoT Core](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup).
 
@@ -33,7 +33,7 @@ Do wykonania kroków opisanych w tym artykule potrzebne są:
 
 ## <a name="the-sample-devkits-application"></a>Przykładowa aplikacja Devkits
 
-Aplikacja utworzona na podstawie przykładowego szablonu aplikacji **Devkits** zawiera szablon urządzenia **Windows IoT Core** o następujących cechach:
+Aplikacja utworzona na podstawie **przykładowego** szablonu aplikacji Devkits zawiera szablon urządzenia **Windows IoT Core** o następujących cechach:
 
 - Pomiary telemetrii dla urządzenia: **Wilgotność**, **temperatura**i **ciśnienie**.
 - Ustawienie sterujące **szybkością wentylatora**.
@@ -43,13 +43,27 @@ Aby uzyskać szczegółowe informacje na temat konfiguracji szablonu urządzenia
 
 ## <a name="add-a-real-device"></a>Dodawanie rzeczywistego urządzenia
 
-W aplikacji IoT Central platformy Azure Użyj strony **Device Explorer** , aby dodać rzeczywiste urządzenie z szablonu urządzenia **Windows 10 IoT Core** . Zanotuj szczegóły połączenia urządzenia (**Identyfikator zakresu**, **Identyfikator urządzenia**i **klucz podstawowy**). Aby uzyskać więcej informacji, zobacz [Uzyskiwanie informacji o połączeniu](howto-generate-connection-string.md#get-connection-information).
+W aplikacji IoT Central platformy Azure Użyj strony **Device Explorer** , aby dodać rzeczywiste urządzenie z szablonu urządzenia **Windows 10 IoT Core** . Zanotuj szczegóły połączenia urządzenia (**Identyfikator zakresu**, **Identyfikator urządzenia**i **klucz podstawowy**).
 
 ## <a name="prepare-the-device"></a>Przygotowywanie urządzenia
 
-Aby urządzenie łączyło się z IoT Central, potrzebuje parametrów połączenia.
+Aby urządzenie łączyło się z IoT Central, potrzebuje parametrów połączenia:
 
-[!INCLUDE [iot-central-howto-connection-string](../../includes/iot-central-howto-connection-string.md)]
+1. Użyj narzędzia `dps-keygen` wiersza polecenia, aby wygenerować parametry połączenia:
+
+    Aby zainstalować [Narzędzie Generator kluczy](https://github.com/Azure/dps-keygen), uruchom następujące polecenie:
+
+    ```cmd/sh
+    npm i -g dps-keygen
+    ```
+
+1. Aby wygenerować parametry połączenia, uruchom następujące polecenie, korzystając z zanotowanych wcześniej szczegółów połączenia:
+
+    ```cmd/sh
+    dps-keygen -di:<Device ID> -dk:<Primary or Secondary Key> -si:<Scope ID>
+    ```
+
+1. Skopiuj parametry połączenia z `dps-keygen` danych wyjściowych do użycia w kodzie urządzenia.
 
 Aby kod urządzenia mógł uzyskać dostęp do parametrów połączenia, Zapisz go w pliku o nazwie **Connection. String. iothub** w folderze `C:\Data\Users\DefaultAccount\Documents\` na urządzeniu z systemem Windows 10 IoT Core.
 
@@ -76,7 +90,7 @@ Po kilku minutach można wyświetlić dane telemetryczne z urządzenia w aplikac
 [Portal urządzeń z systemem Windows](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal) zawiera narzędzia, których można użyć do rozwiązywania problemów z urządzeniem:
 
 - Strona **Menedżer aplikacji** pozwala kontrolować aplikacje działające na urządzeniu.
-- Jeśli nie masz monitora połączonego z urządzeniem, możesz użyć strony **ustawień urządzenia** , aby przechwycić zrzuty ekranu z urządzenia. Przykład:
+- Jeśli nie masz monitora połączonego z urządzeniem, możesz użyć strony **ustawień urządzenia** , aby przechwycić zrzuty ekranu z urządzenia. Na przykład:
 
     ![Zrzut ekranu aplikacji](media/howto-connect-windowsiotcore/iot-hub-foreground-client.png)
 
@@ -86,7 +100,7 @@ Jeśli chcesz eksplorować i modyfikować kod źródłowy aplikacji klienckiej, 
 
 ## <a name="device-template-details"></a>Szczegóły szablonu urządzenia
 
-Aplikacja utworzona na podstawie przykładowego szablonu aplikacji **Devkits** zawiera szablon urządzenia **Windows IoT Core** o następujących cechach:
+Aplikacja utworzona na podstawie **przykładowego** szablonu aplikacji Devkits zawiera szablon urządzenia **Windows IoT Core** o następujących cechach:
 
 ### <a name="telemetry-measurements"></a>Pomiary telemetrii
 
@@ -108,7 +122,7 @@ Ustawienia liczbowe
 
 | Type            | Nazwa wyświetlana | Nazwa pola | Typ danych |
 | --------------- | ------------ | ---------- | --------- |
-| Właściwość urządzenia | Numer struktury   | dieNumber  | numer    |
+| Właściwość urządzenia | Numer struktury   | dieNumber  | number    |
 | Text            | Location     | location   | ND       |
 
 ## <a name="next-steps"></a>Następne kroki

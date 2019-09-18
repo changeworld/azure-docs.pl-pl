@@ -10,18 +10,67 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 26d66dad1e9953ddcbdbe0fd3b495bb3e418b3e7
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 5191f8b565762e9377f3718cc147c96e491f5a0d
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993428"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067730"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Informacje o wersji Azure Machine Learning
 
 W tym artykule dowiesz się więcej na temat wydań Azure Machine Learning.  Aby uzyskać pełną zawartość referencyjną SDK, odwiedź stronę referencyjną [**głównego zestawu sdk Azure Machine Learning dla języka Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) . 
 
 Zobacz [listę znanych problemów](resource-known-issues.md) informacje na temat znanych błędów i rozwiązania problemu.
+
+## <a name="2019-09-16"></a>2019-09-16
+
+### <a name="azure-machine-learning-sdk-for-python-v1062"></a>Zestaw Azure Machine Learning SDK dla języka Python v 1.0.62
+
++ **Nowe funkcje**
+  + Wprowadzono cechę szeregów czasowych w TabularDataset. Ta cecha umożliwia łatwe filtrowanie znaczników czasu dla danych TabularDataset, takich jak pobieranie wszystkich danych między zakresem czasu a najnowszymi danymi. Aby dowiedzieć się więcej na temat tej cechy szeregów czasowych na TabularDataset https://aka.ms/azureml-data , zapoznaj https://aka.ms/azureml-tsd-notebook się z dokumentacją lub przykładowym notesem. 
+  + Włączono szkolenia z TabularDataset i FileDataset. https://aka.ms/dataset-tutorial Zapoznaj się z przykładowym notesem. 
+  
+  + **azureml-train-core**
+    + Dodano obsługę Nccl i Gloo w PyTorch szacowania
+  
++ **Poprawki i ulepszenia błędów**
+  + **Azure-automl-Core**
+    + Przestarzałe ustawienie AutoML "lag_length" i LaggingTransformer.
+    + Naprawiono poprawną weryfikację danych wejściowych, jeśli są one określone w formacie przepływu danych
+    + Zmodyfikowano fit_pipeline. PR, aby wygenerować kod JSON grafu i przekazać go do artefaktów. 
+    + Renderowanie grafu w obszarze userrun przy użyciu Cytoscape.
+  + **azureml-core**
+    + Oglądany obsługę wyjątków w kodzie ADB i Wprowadzaj zmiany zgodnie z nową obsługą błędów
+    + Dodano automatyczne uwierzytelnianie MSI dla maszyn wirtualnych notesu.
+    + Naprawia usterkę, w przypadku której można przekazać uszkodzone lub puste modele z powodu nieudanych ponownych prób.
+    + Naprawiono usterkę, której `DataReference` nazwa zmienia się w `DataReference` przypadku zmiany trybu ( `as_upload`np. podczas `as_mount`wywoływania, `as_download`lub).
+    + Wprowadź `mount_point` i `target_path` opcjonalnie dla `FileDataset.mount` i .`FileDataset.download`
+    + Wyjątek, że nie można odnaleźć kolumny sygnatur czasowych, zostanie zgłoszony, jeśli interfejs API związany z połączeniami szeregowymi jest wywoływany bez określonej kolumny sygnatury czasowej lub że przypisane kolumny sygnatur czasowych zostaną usunięte.
+    + Kolumny szeregów czasowych powinny być przypisane do kolumny, której typem jest Date, w przeciwnym razie oczekiwany jest wyjątek
+    + Kolumny szeregów czasowych przypisujące interfejs API "with_timestamp_columns" może przyjmować niedokładną/grubą nazwę kolumny znaczników czasu, co spowoduje wyczyszczenie wcześniej przypisanych kolumn sygnatur czasowych.
+    + Wyjątek zostanie wygenerowany, gdy kolumna "Gruba ziarnista" lub "Szczegółowa sygnatura czasowa" zostanie porzucona z oznaczeniem dla użytkownika, który może zostać wykonany po wykluczeniu kolumny sygnatur czasowych lub wywoływać with_time_stamp bez wartości none do sygnatury czasowej zwolnienia Columns
+    + Wyjątek zostanie wygenerowany, gdy kolumna "grube" lub "Szczegółowa sygnatura czasowa" nie zostanie uwzględniona w liście Zachowaj kolumny z oznaczeniem dla użytkownika, który będzie można wykonać po dołączeniu kolumny sygnatur czasowych w polu Zachowaj listę kolumn lub wywołać with_time_stamp bez wartość, aby zwolnić kolumny sygnatur czasowych.
+    + Dodano rejestrowanie dla rozmiaru zarejestrowanego modelu.
+  + **azureml-explain-model**
+    + Naprawiono ostrzeżenie w konsoli, gdy nie zainstalowano pakietu języka Python "pakowanie": "Używanie starszej niż obsługiwanej wersji programu lightgbm, Uaktualnij do wersji nowszej niż 2.2.1"
+    + Stałe wyjaśnienie modelu pobierania z fragmentowania dla globalnych wyjaśnień z wieloma funkcjami
+    + Brak przykładów inicjalizacji w wyjaśnieniu danych wyjściowych dla nierozwiązanego śladu
+    + Naprawiono niezmienny błąd na właściwościach ustawionych podczas przekazywania z wyjaśnieniem klienta przy użyciu dwóch różnych typów modeli
+    + Dodano get_raw PARAM do oceny oceniania. Wyjaśnij (), aby jeden z objaśnień oceniania mógł zwrócić wartości opracowane i pierwotne.
+  + **azureml-train-automl**
+    + Wprowadzono publiczne interfejsy API z AutoML w celu obsługi wyjaśnień z zestawu SDK — nowszego w celu obsługi wyjaśnień AutoML poprzez rozdzielenie AutoML cechowania i wyjaśnienie zestawu SDK zintegrowane z niestandardowym objaśnieniem z usługi Azure przykładów.
+    + Usuwanie z usługi Azure Defaults z zdalnych środowisk szkoleniowych.
+    + Zmieniono domyślną lokalizację magazynu pamięci podręcznej z plik filecachestore na jeden, aby AzureFileCacheStore jeden dla AutoML na ścieżce kodu AzureDatabricks.
+    + Naprawiono poprawną weryfikację danych wejściowych, jeśli są one określone w formacie przepływu danych
+  + **azureml-train-core**
+    + Cofnięto wycofanie source_directory_data_store.
+    + Dodano możliwość przesłonięcia wersji pakietu z zainstalowanym usługą Azure. 
+    + Dodano obsługę pliku dockerfile w `environment_definition` parametrze w szacowania.
+    + Uproszczone dystrybuowanie parametrów szkoleniowych w szacowania.
+         ```py 
+        from azureml.train.dnn import TensorFlow, Mpi, ParameterServer 
+        ```
 
 ## <a name="2019-09-09"></a>2019-09-09
 

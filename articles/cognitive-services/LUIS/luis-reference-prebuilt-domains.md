@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: b840f1ce42c9d7e4af8854a2c6bd7fd26f5b88e9
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: f5810a813b6c54f190d95061e79914457f51d19c
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307440"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067614"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>Wstępnie skompilowane odwołanie do domeny dla aplikacji LUIS
 Ta dokumentacja zawiera informacje na temat [ze wstępnie utworzonych domen](luis-how-to-use-prebuilt-domains.md), które są wstępnie utworzonych kolekcji intencje i podmioty, które są oferowane usługi LUIS.
@@ -27,7 +27,7 @@ Ta dokumentacja zawiera informacje na temat [ze wstępnie utworzonych domen](lui
 
 W poniższej tabeli zestawiono aktualnie obsługiwane domeny. Obsługa języka angielskiego jest zwykle większa niż inne. 
 
-| Typ jednostki       | PL-US      | ZH-CN   | DE    | PW     | ES    | it      | PT-BR |  JP  |      KO |        NL |    TR |
+| Typ jednostki       | PL-US      | ZH-CN   | DE    | PW     | ES    | IT      | PT-BR |  JP  |      KO |        NL |    TR |
 |:-----------------:|:-------:|:-------:|:-----:|:------:|:-----:|:-------:| :-------:| :-------:| :-------:| :-------:|  :-------:| 
 | [Kalendarz](#calendar)    | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | [Zawiadomienia](#communication)   | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
@@ -54,10 +54,10 @@ W kalendarzu znajdują się informacje o spotkaniach osobistych i terminach, a n
 Nazwa celu | Opis | Przykłady
 ---------|----------|---------------
  AcceptEventEntry | Zaakceptuj (n) termin/spotkanie/wydarzenie w kalendarzu. | Zaakceptuj termin. <br> Zaakceptuj zdarzenie <br> Zaakceptuj Dzisiejsze spotkanie.
- Cancel | Anuluj trwającą akcję przez asystenta wirtualnego, na przykład anulując proces tworzenia spotkania. <br> ***Uwaga**: Ten cel obejmuje głównie akcję "Anuluj" w scenariuszu kalendarza. Jeśli potrzebujesz wyrażenia ogólnego dla "Cancel", Skorzystaj z zamiaru "Anuluj" w domenie **narzędzi** . * | Po prostu Anuluj zdarzenie. <br> Nie, po prostu anuluję termin.
+ Cancel | Anuluj trwającą akcję przez asystenta wirtualnego, na przykład anulując proces tworzenia spotkania. <br> _**Uwaga**: Ten cel obejmuje głównie akcję "Anuluj" w scenariuszu kalendarza. Jeśli potrzebujesz wyrażenia ogólnego dla "Cancel", Skorzystaj z opcji "Anuluj" w domenie **narzędzi** ._ | Po prostu Anuluj zdarzenie. <br> Nie, po prostu anuluję termin.
  ChangeCalendarEntry | Zmień lub ponownie Zaplanuj wpis kalendarza. | Zaplanuj moje 6 godzin termin "jutro do 2" <br> Zmień harmonogram terminu lekarza dla 5 PM <br> Ponownie Zaplanuj obiad z pracownik3 Olson do piątku. <br> Zmień czas zdarzenia.
  CheckAvailability | Znajdź dostępne dla terminu lub spotkania na kalendarz użytkownika lub inną osobę kalendarz. | Gdy jest dostępne w celu spełnienia Jim? <br> Pokaż, gdy Karoliny jest dostępny jutro. <br> Chris jest bezpłatne w sobotę?
- Potwierdź | Potwierdź, czy wykonać operację/akcję na podstawie poprzedniego zamiaru. <br> ***Uwaga**: Ten cel obejmuje głównie akcję "Potwierdź" dla scenariusza kalendarza. Jeśli potrzebujesz bardziej ogólnych wyrażeń w "Confirm", Skorzystaj z opcji "Potwierdź" w domenie **narzędzi** . *| To poprawne, Utwórz spotkanie <br> Tak, Dziękujemy, Połącz się ze spotkaniem.
+ Potwierdź | Potwierdź, czy wykonać operację/akcję na podstawie poprzedniego zamiaru. <br> _**Uwaga**: Ten cel obejmuje głównie akcję "Potwierdź" dla scenariusza kalendarza. Jeśli potrzebujesz bardziej ogólnych wyrażeń w "Confirm", Skorzystaj z opcji "Potwierdź" w domenie **narzędzi** ._| To poprawne, Utwórz spotkanie <br> Tak, Dziękujemy, Połącz się ze spotkaniem.
  ConnectToMeeting | Połącz się ze spotkaniem. | Połącz do 11:00 rozmowy konferencyjnej z Adam. <br> Zaakceptuj połączenie z budżetem.
  ContactMeetingAttendees | Skontaktuj się z uczestnikami spotkania. | Poinformuj o spotkaniu, które jest uruchomione z opóźnieniem do 3:00. <br> Powiadom współpracowników o 8 spotkaniach, które muszą zostać uruchomione o godzinie 8:30.
  CreateCalendarEntry | Dodaj nowy element jednorazowe do kalendarza. | Utwórz spotkanie dotyczące omawiania problemów. <br> Utwórz spotkanie zabc@microsoft.com
@@ -69,17 +69,17 @@ Nazwa celu | Opis | Przykłady
  FindCalendarDetail | Sprawdź i Pokaż szczegóły harmonogramu. | Chcę podać mi szczegółowe informacje o spotkaniu, które zaplanowali z moim współpracownikem.
  FindDuration | Sprawdź czas trwania. | Ile czasu potrzeba na pobranie artykułów spożywczych? <br> Jak długo mam korzystać z obiadu?
  FindMeetingRoom | Znajdź dostępne pokoje spotkań. | Co to są moje pokoje? <br> Nowa lokalizacja spotkania, Znajdź ją.
- GoBack | Wróć do ostatniego kroku lub elementu.  <br> ***Uwaga**: Zapoznaj się z domeną **Utilities** , aby uzyskać więcej GoBack ogólnych wyrażenia długości. * | Poprzedni <br> Powrót do ostatniej wiadomości e-mail.
- Reject | Użytkownik odrzuca proponowany asystenta wirtualnego. <br> ***Uwaga**: Aby uzyskać więcej informacji, zapoznaj się z domeną **Narzędzia** wyrażenia długości. * | Nie trzeba ustawiać zdarzenia. <br> Mam inne rzeczy, które należy wykonać w tym czasie.
-ShowNext | Sprawdź następne zdarzenie. <br> ***Uwaga**: Zapoznaj się z domeną **Utilities** , aby uzyskać więcej ShowNext ogólnych wyrażenia długości. * | Podaj moje następne wydarzenie. <br> Co dalej w kalendarzu?
- ShowPrevious | Sprawdź poprzednie zdarzenie. <br> ***Uwaga**: Zapoznaj się z domeną **Utilities** , aby uzyskać więcej ShowPrevious ogólnych wyrażenia długości. * | Co to jest harmonogram przed tym?
+ GoBack | Wróć do ostatniego kroku lub elementu.  <br> _**Uwaga**: Zapoznaj się z domeną **Utilities** , aby uzyskać więcej GoBack ogólnych wyrażenia długości._ | Poprzedni <br> Powrót do ostatniej wiadomości e-mail.
+ Reject | Użytkownik odrzuca proponowany asystenta wirtualnego. <br> _**Uwaga**: Zapoznaj się z domeną **Narzędzia** spisu treści, aby uzyskać więcej informacji o wyrażenia długości ogólnej._ | Nie trzeba ustawiać zdarzenia. <br> Mam inne rzeczy, które należy wykonać w tym czasie.
+ShowNext | Sprawdź następne zdarzenie. <br> _**Uwaga**: Zapoznaj się z domeną **Utilities** , aby uzyskać więcej ShowNext ogólnych wyrażenia długości._ | Podaj moje następne wydarzenie. <br> Co dalej w kalendarzu?
+ ShowPrevious | Sprawdź poprzednie zdarzenie. <br> _**Uwaga**: Zapoznaj się z domeną **Utilities** , aby uzyskać więcej ShowPrevious ogólnych wyrażenia długości._ | Co to jest harmonogram przed tym?
  TimeRemaining | Sprawdź pozostały czas do następnego zdarzenia. | Wyświetlaj, ile czasu mam przed spotkaniem. <br> Wyświetlaj ilość czasu, jaki mam przed rozpoczęciem następnego spotkania.
  
 ### <a name="entities"></a>**Obiekty**
 Nazwa encji | Typ jednostki | Opis | Przykłady | Gniazda
 -------|-----------------------|-------------|---------|--------
 Nazwa kontaktu | personName | Imię i nazwisko osoby kontaktowej lub uczestnika spotkania. | Poznaj z **Betsy**. <br>  Zapoznaj się z **Aubrey** dnia 3 lipca o godzinie 7 | Betsy <br> Aubrey <br> Amy 
-DestinationCalendar | ułatwia | Nazwa kalendarza docelowego. | obiad ze swoją usługą MOM wtorek 12 **Personal** <br> Użyj mojego kalendarza **Google** jako mojego kalendarza domyślnego. <br> Aktualizowanie klasy Yoga do Mon wed o godzinie 3 Lista w kalendarzu **osobistym** . | Google <br> tytuł <br> firmy <br> główną
+DestinationCalendar | ułatwia | Nazwa kalendarza docelowego. | obiad ze swoją usługą MOM wtorek 12 **Personal** <br> Użyj mojego kalendarza **Google** jako mojego kalendarza domyślnego. <br> Aktualizowanie klasy Yoga do Mon wed o godzinie 3 Lista w kalendarzu **osobistym** . | Google <br> Tytuł <br> firmy <br> główną
 Duration | datetime | Czas trwania spotkania, terminu lub pozostałego czasu. | Dodaj do spotkania kalendarzowego z obserwują, aby omówić szczegóły Scholarship jutro o godzinie 11 na **20 minut**. <br> Dodaj do kalendarza zdarzenie o godzinie Subway w piątek I będzie jedzenia z Thomasem na **godzinę o godz** . 9 | godzina <br> 2 dni <br> 20 minut 
 EndDate | datetime | Data zakończenia spotkania lub terminu. | Dodawanie uzgodnienia kalendarza w korytarzu o niskich, Maria od trzeciego do **Mary piąty** | Jan piąty  
 Godzina zakończenia | datetime | Godzina zakończenia spotkania lub terminu. | może być od 2 30 do **trzech** | trzy 
@@ -152,7 +152,7 @@ Nazwa encji | Typ jednostki | Opis | Przykłady | Gniazda
 Attachment | ułatwia | Załącznik, który użytkownik chce wysłać pocztą SMS lub wiadomość e-mail. | Wyślij **plik** pocztą e-mail z programu OneNote. <br> Wyślij mój **dokument** dla gospodarstw domowych do Katie. | plik <br> usługę
 AudioDeviceType | ułatwia | Typ urządzenia audio (głośnik, słuchawki, mikrofon itp.). | Odpowiedz przy użyciu **rąk bezpłatnych**. <br> Ponownie wybierz numer **telefonu osoby mówiącej**. | mówc <br> bezpłatnie <br> Moduły
 Kategoria | ułatwia | Kategoria wiadomości lub wiadomości e-mail musi mieć jasno zdefiniowaną definicję w systemie poczty e-mail, na przykład "nieprzeczytane", "flaga". Opis z nieprawidłowym definicją, na przykład "New" i "ostatnich", nie są kategoriami. | Oznacz wszystkie wiadomości e-mail jako **przeczytane**  <br> Nowa wiadomość e-mail **o wysokim priorytecie** dla Paul | ważne <br> wysoki priorytet <br> odczyt
-ContactAttribute | ułatwia | Atrybut kontaktu z informacjami o użytkowniku.| Jakie **urodziny** należy wiedzieć w następnym miesiącu? | dat urodzenia <br> adres <br> numer telefonu
+ContactAttribute | ułatwia | Atrybut kontaktu z informacjami o użytkowniku.| Jakie **urodziny** należy wiedzieć w następnym miesiącu? | dat urodzenia <br> adres <br> Numer telefonu
 Nazwa kontaktu | personName  | Nazwa odbiorcy kontaktu lub komunikatu. | Wyślij wiadomość e-mail do **Stevens** | Stevens
 Date/Time | datetime | Data i godzina odebrania wiadomości e-mail. | Przeczytaj **dzisiejszą**wiadomość e-mail <br> Kto **dzisiaj**wysłać wiadomość e-mail? <br> kto jest telefonem o godzinie **17:00**? | dzisiaj <br> jutro
 DestinationPhone | ułatwia | Użytkownik docelowy chce wywołać lub wysłać tekst do. | Utwórz połączenie z **domem** <br> Wyślij wiadomość tekstową do **strony głównej** | Rodzinny <br> strona główna
@@ -163,8 +163,8 @@ Kreska | ułatwia | Wiersz użytkownik chce użyć do wysłania wiadomości e-ma
 SenderName | personName | Nazwa nadawcy. | Odczytaj wiadomość e-mail z firmy **David** <br> Wiadomości e-mail z Chanda | David <br> Chanda
 FromRelationshipName | ułatwia | Nazwa relacji nadawcy. | Odczytaj wiadomość od **DAD**. <br> Czy można czytać wszystkie wiadomości SMS z programu **MOM**? | Tato <br> Program 
 Message | prosty, wzorzec. Ile |  Komunikat do wysłania jako wiadomość e-mail lub tekstu.  | Wyślij wiadomość e-mail z informacją "**jestem zajęty**". | Jestem zajęty
-OrderReference | ułatwia | Numer porządkowy lub względną pozycja na liście identyfikacji elementu do pobrania. | Jaki był **ostatnio** wysłany komunikat? <br> Przeczytaj **najnowszą** wiadomość e-mail Nokia. <br> Odczytuj **nowe** wiadomości tekstowe. | ostatniego <br> najnowsza <br> aktualne <br> najnowszych
-Kontener positionreference | prosta, porządkowa | Numer porządkowy lub względną pozycja na liście identyfikacji elementu do pobrania.| Jaki był **pierwszy** wysłany komunikat? <br> **Trzecia** .| Pierwsza <br> trzeciej
+OrderReference | ułatwia | Numer porządkowy lub względną pozycja na liście identyfikacji elementu do pobrania. | Jaki był **ostatnio** wysłany komunikat? <br> Przeczytaj **najnowszą** wiadomość e-mail Nokia. <br> Odczytuj **nowe** wiadomości tekstowe. | ostatniego <br> najnowsza <br> Aktualne <br> najnowszych
+Kontener positionreference | prosta, porządkowa | Numer porządkowy lub względną pozycja na liście identyfikacji elementu do pobrania.| Jaki był **pierwszy** wysłany komunikat? <br> **Trzecia** .| Pierwsze <br> trzeciej
 phoneNumber | phoneNumber | Użytkownik numeru telefonu chce zadzwonić lub wysłać tekst do. | Wyślij tekst do **4 1 5 6 8 4 5 2 8 4** | 3525214446
 RelationshipName obiektu | ułatwia | Nazwa relacji osoby kontaktowej lub odbiorcy wiadomości. | Wyślij wiadomość e-mail do mojego **żona** | żona
 SearchTexts | prosta, wzorzec. any | Teksty używane do filtrowania wiadomości e-mail lub wiadomości | Przeszukaj wszystkie wiadomości e-mail zawierające ciąg "**Surface Pro**" | Surface Pro
@@ -203,8 +203,8 @@ SenderName | personName | Nazwa nadawcy. | Odczytaj wiadomość e-mail z firmy *
 FromRelationshipName | ułatwia | Nazwa relacji nadawcy. | Odczytaj wiadomość od **DAD**. <br> Czy można czytać wszystkie wiadomości SMS z programu **MOM**? | Tato <br> Program 
 Message | prosty, wzorzec. Ile |  Komunikat do wysłania jako wiadomość e-mail lub tekstu.  | Wyślij wiadomość e-mail z informacją "**jestem zajęty**". | Jestem zajęty
 Kategoria | ułatwia | Kategoria wiadomości lub wiadomości e-mail musi mieć jasno zdefiniowaną definicję w systemie poczty e-mail, na przykład "nieprzeczytane", "flaga". Opis z nieprawidłowym definicją, na przykład "New" i "ostatnich", nie są kategoriami. | Oznacz wszystkie wiadomości e-mail jako **przeczytane**  <br> Nowa wiadomość e-mail **o wysokim priorytecie** dla Paul | ważne <br> wysoki priorytet <br> odczyt
-OrderReference | ułatwia | Numer porządkowy lub względną pozycja na liście identyfikacji elementu do pobrania. | Jaki był **ostatnio** wysłany komunikat? <br> Przeczytaj **najnowszą** wiadomość e-mail Nokia. <br> Odczytuj **nowe** wiadomości tekstowe. | ostatniego <br> najnowsza <br> aktualne <br> najnowszych
-Kontener positionreference | prosta, porządkowa | Numer porządkowy lub względną pozycja na liście identyfikacji elementu do pobrania.| Jaki był **pierwszy** wysłany komunikat? <br> **Trzecia** .| Pierwsza <br> trzeciej
+OrderReference | ułatwia | Numer porządkowy lub względną pozycja na liście identyfikacji elementu do pobrania. | Jaki był **ostatnio** wysłany komunikat? <br> Przeczytaj **najnowszą** wiadomość e-mail Nokia. <br> Odczytuj **nowe** wiadomości tekstowe. | ostatniego <br> najnowsza <br> Aktualne <br> najnowszych
+Kontener positionreference | prosta, porządkowa | Numer porządkowy lub względną pozycja na liście identyfikacji elementu do pobrania.| Jaki był **pierwszy** wysłany komunikat? <br> **Trzecia** .| Pierwsze <br> trzeciej
 RelationshipName obiektu | ułatwia | Nazwa relacji osoby kontaktowej lub odbiorcy wiadomości. | Wyślij wiadomość e-mail do mojego **żona** | żona
 Time | datetime | Time | Wyślij wiadomość e-mail **Tonight**. | tonight
 SearchTexts | prosta, wzorzec. any | Teksty używane do filtrowania wiadomości e-mail lub wiadomości | Przeszukaj wszystkie wiadomości e-mail zawierające ciąg "**Surface Pro**" | Surface Pro 
@@ -238,7 +238,7 @@ DeviceName | List | Tekst zdefiniowany przez użytkownika dla swoich urządzeń.
 DeviceType | List | Obsługiwane urządzenia. | Uliczne <br> Warunek klimatyzacyjny <br> nightlight
 Location | ułatwia | Lokalizacja lub pomieszczenie, w której znajduje się urządzenie. | Zlew<br> Downstairs <br> Bedroom
 NumericalChange | ułatwia | Kwota, przez którą ustawienie jest zwiększane lub zmniejszane. <br> <br> _Miejsce pojawia się tylko z intencjami turn_up i turn_down._ | 3<br> 50%<br>
-OrderReference | ordinal | Celem tego gniazda jest przechwycenie zaznaczenia elementów. Wskazuje pozycję elementu na liście. | Pierwsza<br> 2\.
+OrderReference | ordinal | Celem tego gniazda jest przechwycenie zaznaczenia elementów. Wskazuje pozycję elementu na liście. | Pierwsze<br> 2\.
 Kwantyfikator | List | Kwantyfikator wskazuje liczbę wystąpień określonej jednostki. Na przykład "wszystkie", "co" itd. | Wszyscy<br> Co<br> Wszystko
 Ustawienie | Proste | Ustawienie, dla którego użytkownik chce ustawić swoje urządzenie, w tym sceny, poziom, intensywność, kolor, tryb, temperatura, stan urządzenia. | Niebieski<br> 72 <br> Odczytu 
 Nazwy | List | Ustawienie urządzenia, którego dotyczy użytkownik. | Temperatura<br> 
@@ -268,7 +268,7 @@ Nazwa encji | Typ jednostki | Opis | Przykłady
 Text | prosty, wzorzec. Ile | Tekst notatki lub przypomnienia. | Rozciąganie przed zalet <br> jutro perspektywie.
 Tytuł | prosty, wzorzec. Ile | Tytuł notatki. | artykuły spożywcze <br> osoby do wywołania <br> do wykonania
 CreationDate | datetimeV2 | To miejsce jest przeznaczone, gdy użytkownik pyta o uwagi utworzone w określonym oknie daty/godziny. | 
-Kwantyfikator | List | Gdy użytkownik prosi o wykonanie akcji dla elementu "All", "co" lub "any" lub całego tekstu w notatce. | Wszystko <br> dowolne <br> co
+Kwantyfikator | List | Gdy użytkownik prosi o wykonanie akcji dla elementu "All", "co" lub "any" lub całego tekstu w notatce. | all <br> Ile <br> co
 OrderReference | ordinal | Użytkownik chce wykonać akcje z elementami "First", "Last", "Next" itp. Items. | pierwszego <br> ostatniego
 
 
@@ -305,7 +305,7 @@ PlaceName | ułatwia | Nazwa miejsca docelowego, które jest biznesowych, restau
 PlaceType | ułatwia | Typ lokalizacji docelowej, która jest lokalnych firmach, restauracji, publiczne przyciągania lub instytucji. | Restauracji <br> Opera <br> kinowych | **kina** w Cambridge <br> Czy **w pobliżu** ?
 PriceRange | ułatwia | Zakres cenowy produktów lub usług w miejscu. | czynsz <br> koszt ekonomiczny <br> zabiera | Znajdowanie **przystępnej** naprawy urządzenia <br> Co to jest **tanie** miejsce Pizza, które jest teraz otwarte?
 Produkt | ułatwia | Produkt, oferowane przez miejsce. | Odzież <br> telewizorach | Gdzie jest najlepsze miejsce do pobrania **żywności**? <br> Znajdź Wschodnie Kilbride szukające **telewizji**.
-Ocena | ułatwia | Ocena miejsca. | 5 gwiazdek <br> top <br> aukcj | Czy istnieją **dobre** miejsca do wychodzenia i Eat jutro <br> **najlepsze** Amsterdam Restauracje <br> Wystaw trzy **pierwsze** sklepy Pizza.
+Ocena | ułatwia | Ocena miejsca. | 5 gwiazdek <br> top <br> Aukcj | Czy istnieją **dobre** miejsca do wychodzenia i Eat jutro <br> **najlepsze** Amsterdam Restauracje <br> Wystaw trzy **pierwsze** sklepy Pizza.
 
 
 ## <a name="restaurantreservation"></a>**RestaurantReservation**
@@ -385,8 +385,8 @@ Nazwa celu | Opis | Przykłady
 Jednostka LUIS | Typ jednostki | Opis | Przykłady
 ------------|-------------|-------------|---------
 ordinal | ordinal | Porządkowa lub numeryczne odwołanie do elementu. | **Drugi** . <br> **Dalej** .
-numer | numer | Liczba elementów, które użytkownik chce | Następne **3** elementy
-DirectionalReference | ułatwia | Punkt odniesienia, w którym znajduje się element na ekranie. | Z prawej strony <br> prawym górnym
+number | number | Liczba elementów, które użytkownik chce | Następne **3** elementy
+DirectionalReference | ułatwia | Punkt odniesienia, w którym znajduje się element na ekranie. | Z prawej strony <br> Prawym górnym
 
 ## <a name="weather"></a>**Meteorologiczn**
 Domena pogody koncentruje się na sprawdzaniu warunków pogodowych i klasyfikatorów z lokalizacją i czasem lub sprawdzaniem czasu według warunków pogodowych.
@@ -402,14 +402,14 @@ Nazwa celu | Opis | Przykłady
 ### <a name="entities"></a>**Obiekty**
 Jednostka LUIS | Typ jednostki | Opis | Przykłady
 ------------|-------------|-------------|---------
-Location | geograficzne | Bezwzględna lub niejawna lokalizacja żądania pogody. | Palo Alto<br>Szanghaj<br>Seattle<br>Delvina<br>
+Location | Geograficzne | Bezwzględna lub niejawna lokalizacja żądania pogody. | Palo Alto<br>Szanghaj<br>Seattle<br>Delvina<br>
 Date/Time   | datetime | Data i godzina trwania zapytania o Pogoda. | Listopad<br>co godzinę<br>Dobry<br>Ten weekend<br>10 dni<br>
-AdditionalWeatherCondition | list | Dodatkowy wyraz opisujący Pogoda, taki jak szybkość lub kierunek wiatru. | direction<br>Szybko<br>pasażerski
+AdditionalWeatherCondition | list | Dodatkowy wyraz opisujący Pogoda, taki jak szybkość lub kierunek wiatru. | direction<br>Szybko<br>Pasażerski
 Znaczeniu | ułatwia | Opis słów historycznych warunków pogodowych, w tym przeciętnych przypadków przygranicznych Joomla w poprzednim okresie czasu. | zatrudnienia<br>historyczne/historia<br>chyleń<br>najlepszy czas<br>kiedykolwiek nagrane
 PrecipitationUnit | wymiar | Opady dla śniegu lub deszczu. | 5 cali<br>6 cm
 SuitableFor | ułatwia | Opis działania człowieka w warunkach pogodowych, który jest typowy, gdy użytkownicy wykonują zapytania dotyczące działań, które są zależne od warunków pogodowych. | okładki<br>macierzyst<br>basen
 TemperatureUnit |temperature | temperature | 18 c<br>7 Kelvin stopni
-WeatherRange | ułatwia | Określony stan temperatury, wiatru i innych warunków pogodowych w danym okresie czasu | maksymalnie<br>wysokowydajn<br>niska<br>Średnia wysoka<br>Najwyższa
+WeatherRange | ułatwia | Określony stan temperatury, wiatru i innych warunków pogodowych w danym okresie czasu | maksymalnie<br>Wysokowydajn<br>niska<br>Średnia wysoka<br>Najwyższa
 WeatherCondition | ułatwia | Opis warunku pogodowego | Sunny<br>fartuch<br>Opady<br>temperature<br>Krab<br>gorąca
 WindDirectionUnit | list | Słowa kierunku wiatru | szerokości<br>Południowe<br>gracz<br>Zachodni<br>północny
 

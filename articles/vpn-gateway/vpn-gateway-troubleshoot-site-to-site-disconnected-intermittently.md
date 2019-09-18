@@ -1,10 +1,10 @@
 ---
-title: Rozwiązywanie problemów z usługi Azure VPN lokacja-lokacja jest sporadycznie rozłączane | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak rozwiązać problem, w którym połączenie sieci VPN typu lokacja-lokacja rozłączona regularnie.
+title: Rozwiązywanie problemów z siecią VPN typu lokacja-lokacja na platformie Azure sporadycznie | Microsoft Docs
+description: Dowiedz się, jak rozwiązać problem polegający na tym, że połączenie sieci VPN typu lokacja-lokacja jest regularnie rozłączone.
 services: vpn-gateway
 documentationcenter: na
 author: chadmath
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: vpn-gateway
@@ -14,64 +14,64 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 2fdd82c2f0c96b3bd20231911bb88cf54c172931
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 394062257f09bb0b8cfa6875795b88d35404f87c
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60457770"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058833"
 ---
-# <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>Rozwiązywanie problemów: Usługa Azure VPN lokacja-lokacja jest sporadycznie rozłączane
+# <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>Rozwiązywanie problemów z Połączenie sieci VPN typu lokacja-lokacja jest sporadycznie rozłączane
 
-Może wystąpić problem, że nowe lub istniejące połączenie VPN lokacja-lokacja Microsoft Azure nie jest stabilna lub odłącza się regularnie. Ten artykuł zawiera Rozwiązywanie problemów z kroki, aby ułatwić identyfikację i rozwiązywanie przyczyny problemu. 
+Może wystąpić problem polegający na tym, że nowe lub istniejące Microsoft Azure połączenie sieci VPN typu lokacja-lokacja nie jest stabilne lub rozłączane regularnie. W tym artykule opisano kroki rozwiązywania problemów, które ułatwiają zidentyfikowanie i rozwiązanie przyczyny problemu. 
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="troubleshooting-steps"></a>Kroki rozwiązywania problemów
 
-### <a name="prerequisite-step"></a>Kroku wymagań wstępnych
+### <a name="prerequisite-step"></a>Etap wymagań wstępnych
 
 Sprawdź typ bramy sieci wirtualnej platformy Azure:
 
-1. Przejdź do [witryny Azure portal](https://portal.azure.com).
-2. Sprawdź **Przegląd** stronę bramy sieci wirtualnej, aby uzyskać informacje o typie.
+1. Przejdź do [Azure Portal](https://portal.azure.com).
+2. Sprawdź stronę **Przegląd** bramy sieci wirtualnej, aby uzyskać informacje o typie.
     
     ![Omówienie bramy](media/vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently/gatewayoverview.png)
 
-### <a name="step-1-check-whether-the-on-premises-vpn-device-is-validated"></a>Krok 1 Sprawdź, czy lokalne urządzenie sieci VPN jest weryfikowana.
+### <a name="step-1-check-whether-the-on-premises-vpn-device-is-validated"></a>Krok 1 Sprawdź, czy lokalne urządzenie sieci VPN zostało zweryfikowane
 
-1. Sprawdź, czy używasz [zweryfikowane urządzenia sieci VPN i wersję systemu operacyjnego](vpn-gateway-about-vpn-devices.md#devicetable). Jeśli urządzenie sieci VPN nie zostanie zweryfikowana, może być konieczne skontaktuj się z producentem urządzenia, aby sprawdzić, czy jest dowolnym problem ze zgodnością.
-2. Upewnij się, że urządzenie sieci VPN została poprawnie skonfigurowana. Aby uzyskać więcej informacji, zobacz [edytowanie przykładów konfiguracji urządzenia](vpn-gateway-about-vpn-devices.md#editing).
+1. Należy sprawdzić, czy używane jest [zweryfikowane urządzenie sieci VPN i wersja systemu operacyjnego](vpn-gateway-about-vpn-devices.md#devicetable). Jeśli urządzenie sieci VPN nie jest zweryfikowane, może być konieczne skontaktowanie się z producentem urządzenia, aby sprawdzić, czy wystąpił problem ze zgodnością.
+2. Upewnij się, że urządzenie sieci VPN jest prawidłowo skonfigurowane. Aby uzyskać więcej informacji, zobacz [Edytowanie przykładów konfiguracji urządzeń](vpn-gateway-about-vpn-devices.md#editing).
 
-### <a name="step-2-check-the-security-association-settingsfor-policy-based-azure-virtual-network-gateways"></a>Krok 2, sprawdź ustawienia oferty skojarzeń zabezpieczeń (w przypadku bramy oparte na zasadach sieci wirtualnej platformy Azure)
+### <a name="step-2-check-the-security-association-settingsfor-policy-based-azure-virtual-network-gateways"></a>Krok 2 Sprawdź ustawienia skojarzeń zabezpieczeń (w przypadku bram sieci wirtualnej platformy Azure opartych na zasadach)
 
-1. Upewnij się, że sieci wirtualnej, podsieci i zakresy w **bramy sieci lokalnej** definicji w systemie Microsoft Azure są takie same jak konfiguracji lokalnego urządzenia sieci VPN.
-2. Upewnij się, że ustawienia skojarzenia zabezpieczeń są takie same.
+1. Upewnij się, że sieć wirtualna, podsieci i zakresy w definicji **bramy sieci lokalnej** w Microsoft Azure są takie same jak konfiguracja na lokalnym urządzeniu sieci VPN.
+2. Sprawdź, czy ustawienia skojarzeń zabezpieczeń są zgodne.
 
-### <a name="step-3-check-for-user-defined-routes-or-network-security-groups-on-gateway-subnet"></a>Krok 3 Sprawdź trasy zdefiniowane przez użytkownika lub grupy zabezpieczeń sieci w ramach bramy podsieci
+### <a name="step-3-check-for-user-defined-routes-or-network-security-groups-on-gateway-subnet"></a>Krok 3. Sprawdzanie tras zdefiniowanych przez użytkownika lub sieciowych grup zabezpieczeń w podsieci bramy
 
-Trasa zdefiniowana przez użytkownika, w ramach bramy podsieci może być ograniczenie część ruchu i umożliwiając pozostałe rodzaje ruchu. Dzięki temu pojawiają się, że połączenie sieci VPN jest zawodne dla niektórych ruchu i dobre dla innych użytkowników. 
+Trasa zdefiniowana przez użytkownika w podsieci bramy może ograniczać ruch i zezwalać na ruch. Sprawia to, że połączenie sieci VPN jest zawodne dla pewnego ruchu i dobre dla innych. 
 
-### <a name="step-4-check-the-one-vpn-tunnel-per-subnet-pair-setting-for-policy-based-virtual-network-gateways"></a>Krok 4 Sprawdź "Jeden tunel VPN za parę podsieci" (dla bramy sieci wirtualnej na podstawie zasad)
+### <a name="step-4-check-the-one-vpn-tunnel-per-subnet-pair-setting-for-policy-based-virtual-network-gateways"></a>Krok 4. sprawdzenie ustawienia "jeden tunel VPN na parę podsieci" (w przypadku bram sieci wirtualnej opartych na zasadach)
 
-Upewnij się, że lokalne urządzenie sieci VPN jest ustawiona na mają **jeden tunel VPN za parę podsieci** dla bram sieci wirtualnej na podstawie zasad.
+Upewnij się, że lokalne urządzenie sieci VPN jest ustawione tak, aby miało **jeden tunel VPN na parę podsieci** dla bram sieci wirtualnych opartych na zasadach.
 
-### <a name="step-5-check-for-security-association-limitation-for-policy-based-virtual-network-gateways"></a>Krok 5 Sprawdzanie ograniczenia skojarzenia zabezpieczeń (w przypadku bram sieci wirtualnej na podstawie zasad)
+### <a name="step-5-check-for-security-association-limitation-for-policy-based-virtual-network-gateways"></a>Krok 5 sprawdzanie ograniczenia skojarzenia zabezpieczeń (w przypadku bram sieci wirtualnej opartych na zasadach)
 
-Brama sieci wirtualnej na podstawie zasad ma limit równy 200 pary oferty skojarzeń zabezpieczeń w podsieci. Jeśli liczba podsieci sieci wirtualnej platformy Azure oraz razy liczba lokalne podsieci jest większy niż 200, zobacz sporadyczne podsieci odłączanie.
+Brama sieci wirtualnej oparta na zasadach ma limit 200 par skojarzeń zabezpieczeń podsieci. Jeśli liczba podsieci sieci wirtualnej platformy Azure pomnożona przez liczbę podsieci lokalnych jest większa niż 200, widoczne są sporadyczne podsieci.
 
-### <a name="step-6-check-on-premises-vpn-device-external-interface-address"></a>Krok 6 wyboru w środowisku lokalnym adres interfejsu zewnętrznego urządzenia sieci VPN
+### <a name="step-6-check-on-premises-vpn-device-external-interface-address"></a>Krok 6 Sprawdź adres interfejsu zewnętrznego lokalnego urządzenia sieci VPN
 
-- Jeśli adres IP urządzenia sieci VPN z Internetem znajduje się w **bramy sieci lokalnej** definicji na platformie Azure, możesz napotkać sporadyczne odłączenia.
-- Interfejs zewnętrzny urządzenia musi być bezpośrednio w Internecie. Powinna istnieć nie translacji adresów sieciowych (NAT) lub zapory między Internetem a urządzenia.
--  Jeśli skonfigurujesz zapory klastra mają wirtualnego adresu IP, należy przerwać klastra i narazić urządzenie sieci VPN bezpośrednio na interfejs publiczny, który bramy może współpracować z usługą.
+- Jeśli adres IP połączony z Internetem urządzenia sieci VPN zostanie uwzględniony w definicji **bramy sieci lokalnej** na platformie Azure, mogą wystąpić sporadyczne rozłączenia.
+- Interfejs zewnętrzny urządzenia musi być bezpośrednio w Internecie. Między Internetem i urządzeniem nie powinna istnieć żadna translator adresów sieciowych ani zapora.
+-  W przypadku skonfigurowania klastrowania zapory w celu posiadania wirtualnego adresu IP należy przerwać klaster i uwidocznić urządzenie sieci VPN bezpośrednio do interfejsu publicznego, z którym Brama może być interfejsem.
 
-### <a name="step-7-check-whether-the-on-premises-vpn-device-has-perfect-forward-secrecy-enabled"></a>Krok 7 sprawdzanie, czy lokalne urządzenie sieci VPN ma Perfect Forward Secrecy włączone
+### <a name="step-7-check-whether-the-on-premises-vpn-device-has-perfect-forward-secrecy-enabled"></a>Krok 7 Sprawdź, czy lokalne urządzenie sieci VPN ma włączone doskonałe utajnienie przekazywania
 
-**Perfect Forward Secrecy** funkcji może spowodować problemy rozłączenia. Jeśli na urządzeniu sieci VPN jest **doskonała utajnienie** włączyć, wyłączyć funkcję. Następnie [aktualizacji zasad protokołu IPsec bramy sieci wirtualnej](vpn-gateway-ipsecikepolicy-rm-powershell.md#managepolicy).
+Funkcja **doskonałe utajnienie przekazywania dalej** może spowodować problemy z połączeniem. Jeśli urządzenie sieci VPN ma włączone **doskonałe utajnienie przekazywania** , wyłącz tę funkcję. Następnie [zaktualizuj zasady protokołu IPSec bramy sieci wirtualnej](vpn-gateway-ipsecikepolicy-rm-powershell.md#managepolicy).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Konfigurowanie połączenia lokacja-lokacja z siecią wirtualną](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+- [Konfigurowanie połączenia typu lokacja-lokacja z siecią wirtualną](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 - [Konfigurowanie zasad protokołu IPsec/IKE dla połączeń sieci VPN typu lokacja-lokacja](vpn-gateway-ipsecikepolicy-rm-powershell.md)
 

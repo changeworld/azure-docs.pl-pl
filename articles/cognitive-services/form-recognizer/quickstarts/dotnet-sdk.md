@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: pafarley
-ms.openlocfilehash: ada570196c916a8101e8e968d284a3b280199cf3
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: ce1cdadcdc69fb5539394aa9bf402aa9463311e9
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142821"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057657"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>Szybki start: Biblioteka klienta aparatu rozpoznawania formularzy dla platformy .NET
 
@@ -22,9 +22,11 @@ Wprowadzenie do biblioteki klienta aparatu rozpoznawania formularzy dla platform
 
 Biblioteka klienta aparatu rozpoznawania w programie .NET umożliwia:
 
-* Uczenie niestandardowego modelu aparatu rozpoznawania formularzy
-* Analizowanie formularzy przy użyciu modelu niestandardowego
-* Pobieranie listy modeli niestandardowych
+* [Uczenie niestandardowego modelu aparatu rozpoznawania formularzy](#train-a-custom-model)
+* [Pobierz listę wyodrębnionych kluczy](#get-a-list-of-extracted-keys)
+* [Analizowanie formularzy przy użyciu modelu niestandardowego](#analyze-forms-with-a-custom-model)
+* [Pobieranie listy modeli niestandardowych](#get-a-list-of-custom-models)
+* [Usuwanie modelu niestandardowego](#delete-a-custom-model)
 
 [](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview) | Pakiet[kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.FormRecognizer)[](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.FormRecognizer/) źródłowego biblioteki dokumentacji referencyjnej (NuGet) | 
 
@@ -68,14 +70,7 @@ Build succeeded.
 
 W katalogu projektu Otwórz plik _program.cs_ w preferowanym edytorze lub w środowisku IDE. Dodaj następujące instrukcje `using`:
 
-```csharp
-using Microsoft.Azure.CognitiveServices.FormRecognizer;
-using Microsoft.Azure.CognitiveServices.FormRecognizer.Models;
-
-using System;
-using System.IO;
-using System.Threading.Tasks;
-```
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_using)]
 
 Następnie Dodaj następujący kod w metodzie **głównej** aplikacji. To zadanie asynchroniczne zostanie zdefiniowane później.
 
@@ -115,10 +110,12 @@ Te fragmenty kodu przedstawiają sposób wykonywania następujących zadań za p
 
 * [Uwierzytelnianie klienta](#authenticate-the-client)
 * [Uczenie niestandardowego modelu aparatu rozpoznawania formularzy](#train-a-custom-model)
+* [Pobierz listę wyodrębnionych kluczy](#get-a-list-of-extracted-keys)
 * [Analizowanie formularzy przy użyciu modelu niestandardowego](#analyze-forms-with-a-custom-model)
 * [Pobieranie listy modeli niestandardowych](#get-a-list-of-custom-models)
+* [Usuwanie modelu niestandardowego](#delete-a-custom-model)
 
-### <a name="define-variables"></a>Definiowanie zmiennych
+## <a name="define-variables"></a>Definiowanie zmiennych
 
 Przed zdefiniowaniem jakichkolwiek metod Dodaj następujące definicje zmiennych na początku klasy **programu** . Należy samodzielnie wypełnić niektóre zmienne. 
 
@@ -127,13 +124,13 @@ Przed zdefiniowaniem jakichkolwiek metod Dodaj następujące definicje zmiennych
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_variables)]
 
-### <a name="authenticate-the-client"></a>Uwierzytelnianie klienta
+## <a name="authenticate-the-client"></a>Uwierzytelnianie klienta
 
 Poniżej metody Zdefiniuj zadanie, `Main`do którego odwołuje się. `Main` W tym miejscu można uwierzytelnić obiekt klienta przy użyciu zdefiniowanych powyżej zmiennych subskrypcji. Pozostałe metody zostaną zdefiniowane później.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_maintask)]
 
-### <a name="train-a-custom-model"></a>Trenowanie modelu niestandardowego
+## <a name="train-a-custom-model"></a>Trenowanie modelu niestandardowego
 
 W poniższej metodzie obiekt klienta aparatu rozpoznawania formularzy jest używany do uczenia nowego modelu rozpoznawania w dokumentach przechowywanych w kontenerze obiektów blob platformy Azure. Używa metody pomocnika, aby wyświetlić informacje o nowo przeszkolonym modelu (reprezentowane przez obiekt [ModelResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.modelresult?view=azure-dotnet-preview) ) i zwraca identyfikator modelu.
 
@@ -143,9 +140,18 @@ W poniższej metodzie pomocnika są wyświetlane informacje o modelu aparatu roz
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_displaymodel)]
 
-### <a name="analyze-forms-with-a-custom-model"></a>Analizowanie formularzy przy użyciu modelu niestandardowego
+## <a name="get-a-list-of-extracted-keys"></a>Pobierz listę wyodrębnionych kluczy
+
+Po zakończeniu szkolenia model niestandardowy będzie przechowywać listę kluczy wyodrębnionych z dokumentów szkoleniowych. Oczekuje się, że przyszłe dokumenty formularza zawierają te klucze i wyodrębni odpowiednie wartości w operacji analizy. Użyj następującej metody, aby pobrać listę wyodrębnionych kluczy i wydrukować ją w konsoli programu. Jest to dobry sposób, aby sprawdzić, czy proces uczenia był skuteczny.
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_getkeys)]
+
+## <a name="analyze-forms-with-a-custom-model"></a>Analizowanie formularzy przy użyciu modelu niestandardowego
 
 Ta metoda używa klienta aparatu rozpoznawania formularzy i identyfikatora modelu do analizy dokumentu PDF i wyodrębnienia danych klucza/wartości. Używa metody pomocnika, aby wyświetlić wyniki (reprezentowane przez obiekt [AnalyzeResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.analyzeresult?view=azure-dotnet-preview) ).
+
+> [!NOTE]
+> Poniższa metoda analizuje formularz PDF. Podobne metody służące do analizowania formularzy JPEG i PNG można znaleźć w pełnym przykładowym kodzie w witrynie [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/FormRecognizer).
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_analyzepdf)]
 
@@ -153,11 +159,17 @@ W poniższej metodzie pomocnika są wyświetlane informacje o operacji analizy.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_displayanalyze)]
 
-### <a name="get-a-list-of-custom-models"></a>Pobieranie listy modeli niestandardowych
+## <a name="get-a-list-of-custom-models"></a>Pobieranie listy modeli niestandardowych
 
 Można zwrócić listę wszystkich przeszkolonych modeli należących do Twojego konta i można pobrać informacje o tym, kiedy zostały utworzone. Lista modeli jest reprezentowana przez obiekt [ModelsResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.modelsresult?view=azure-dotnet-preview) .
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_getmodellist)]
+
+## <a name="delete-a-custom-model"></a>Usuwanie modelu niestandardowego
+
+Jeśli chcesz usunąć niestandardowy model z konta, użyj następującej metody:
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_deletemodel)]
 
 ## <a name="run-the-application"></a>Uruchamianie aplikacji
 
@@ -174,9 +186,7 @@ Jeśli chcesz wyczyścić i usunąć subskrypcję Cognitive Services, możesz us
 * [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Interfejs wiersza polecenia platformy Azure](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-Ponadto, jeśli został przeszkolony model niestandardowy, który chcesz usunąć z konta, użyj następującej metody:
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_deletemodel)]
+Ponadto, jeśli przeszkolony model niestandardowy, który ma zostać usunięty z konta, należy uruchomić metodę w obszarze [usuwanie modelu niestandardowego](#delete-a-custom-model).
 
 ## <a name="next-steps"></a>Następne kroki
 
