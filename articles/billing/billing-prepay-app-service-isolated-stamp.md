@@ -1,6 +1,6 @@
 ---
-title: Oszczędność kosztów Azure App Servicej opłaty za wyizolowaną sygnaturę z zarezerwowaną pojemnością
-description: Dowiedz się, w jaki sposób można zaoszczędzić koszty Azure App Servicej opłaty za wydzieloną sygnaturę z zarezerwowaną pojemnością.
+title: Oszczędzanie kosztów w przypadku podatku od czynności cywilnoprawnych za korzystanie z usługi Azure App Service w izolowanym środowisku za pomocą wydajności rezerwowej
+description: Dowiedz się, jak możesz zaoszczędzić koszty w przypadku podatku od czynności cywilnoprawnych za korzystanie z usługi Azure App Service w izolowanym środowisku za pomocą wydajności rezerwowej.
 services: billing
 author: yashesvi
 manager: yashar
@@ -9,72 +9,72 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
 ms.openlocfilehash: 5161f18499c082b7064eec2be612557ba09eec97
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "70806358"
 ---
-# <a name="save-costs-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>Oszczędność kosztów Azure App Servicej opłaty za wyizolowaną sygnaturę z zarezerwowaną pojemnością
+# <a name="save-costs-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>Oszczędzanie kosztów w przypadku podatku od czynności cywilnoprawnych za korzystanie z usługi Azure App Service w izolowanym środowisku za pomocą wydajności rezerwowej
 
-Możesz zaoszczędzić pieniądze na Azure App Service odizolowanych opłat za sygnaturę, przekazując do rezerwacji za użycie sygnatury przez trzy lata. Aby kupić zastrzeżoną pojemność opłaty za pieczęć, należy wybrać region platformy Azure, w którym zostanie wdrożona sygnatura, oraz liczbę sygnatur do zakupu.
+Możesz zaoszczędzić pieniądze na podatku od czynności cywilnoprawnych za korzystanie z usługi Azure App Service w izolowanym środowisku, zobowiązując się do użycia zarezerwowanych sygnatur przez okres trzech lat. Aby kupić wydajność rezerwową objętą podatkiem od czynności cywilnoprawnych w izolowanym środowisku, należy wybrać region świadczenia usługi Azure, w którym zostanie wdrożona sygnatura, oraz liczbę kupowanych sygnatur.
 
-W przypadku zakupienia rezerwacji użycie opłaty za sygnaturę odizolowaną, która jest zgodna z atrybutami rezerwacji, nie jest już naliczana według stawek płatność zgodnie z rzeczywistym użyciem. Rezerwacja jest stosowana automatycznie do liczby wyizolowanych sygnatur, które pasują do zakresu i regionu zarezerwowanej pojemności. Nie musisz przypisywać rezerwacji do wydzielonej sygnatury. Rezerwacja nie dotyczy procesów roboczych, więc opłaty za inne zasoby skojarzone z sygnaturą są naliczane oddzielnie.
+Gdy wykupisz rezerwację, za użycie w ramach podatku od czynności cywilnoprawnych w izolowanym środowisku zgodne z atrybutami rezerwacji nie będą naliczane opłaty po stawkach płatności zgodnie z rzeczywistym użyciem. Rezerwacja jest stosowana automatycznie do izolowanych sygnatur, które są zgodne z zakresem i regionem wydajności rezerwowej. Nie musisz przypisywać rezerwacji do izolowanej sygnatury. Rezerwacja nie dotyczy procesów roboczych, dlatego opłaty za inne zasoby związane z sygnaturą są naliczane oddzielnie.
 
-Po wygaśnięciu zarezerwowanej pojemności nadal działają odizolowane sygnatury, ale opłaty są naliczane według stawki płatności zgodnie z rzeczywistym użyciem. Rezerwacje nie są automatycznie odnawiane.
+Gdy wydajność rezerwowa wygaśnie, izolowane sygnatury nadal będą działać, ale będą za nie naliczane opłaty po stawkach płatności zgodnie z rzeczywistym użyciem. Rezerwacje nie są odnawiane automatycznie.
 
-## <a name="determine-the-right-reservation-to-purchase"></a>Określanie odpowiedniej rezerwacji do zakupu
+## <a name="determine-the-right-reservation-to-purchase"></a>Określanie odpowiedniej rezerwacji do kupienia
 
-Zakup rezerwacji polega na tym, że w ciągu następnych trzech lat zobowiązuje się do korzystania z zarezerwowanych ilości. Sprawdź dane dotyczące użycia, aby określić, ile izolowana usługa App Service sygnatur, z których korzystasz, i które mogą być używane w przyszłości.
+Kupując rezerwację, zobowiązujesz się, że w ciągu kolejnych trzech lat będziesz używać ilości zarezerwowanych. Sprawdź dane dotyczące użycia, aby określić, ilu izolowanych sygnatur usługi App Service stale używasz i ilu możesz używać w przyszłości.
 
-Ponadto upewnij się, że wiesz, jak wydzielona sygnatura emituje system Linux lub Windows.
+Ponadto upewnij się, że wiesz, jak izolowana sygnatura emituje miernik systemu Linux lub Windows.
 
-- Domyślnie pusta sygnatura odizolowana emituje licznik sygnatur systemu Windows. Na przykład bez wdrożonych procesów roboczych. Ten licznik jest nadal emitowany, jeśli procesy robocze systemu Windows są wdrożone w sygnaturze.
-- Licznik jest zmieniany na miernik sygnatury systemu Linux w przypadku wdrożenia procesu roboczego systemu Linux.
-- W przypadku wdrożenia zarówno procesów roboczych z systemem Linux, jak i Windows, sygnatura emituje licznik systemu Windows.
+- Pusta izolowana sygnatura domyślnie emituje miernik sygnatur systemu Windows. Na przykład bez wdrożonych procesów roboczych. W dalszym ciągu emituje ten miernik, jeśli procesy robocze systemu Windows są wdrożone w sygnaturze.
+- Miernik zostaje zmieniony na miernik sygnatur systemu Linux w przypadku wdrożenia procesu roboczego systemu Linux.
+- Jeśli wdrożone są zarówno procesy robocze systemu Linux, jak i Windows, sygnatura emituje miernik systemu Windows.
 
-W związku z tym licznik sygnatur może ulec zmianie między oknami i Linux w czasie trwania sygnatury.
+Zatem w czasie trwania sygnatury miernik sygnatur może być zmieniany na miernik systemu Windows lub na miernik systemu Linux.
 
-Kup rezerwacje sygnatur systemu Windows, jeśli masz co najmniej jednego pracownika systemu Windows w sygnaturze. Jedyną chwilą zakupu rezerwacji sygnatury systemu Linux jest zaplanowanie _tylko_ procesów roboczych systemu Linux na sygnaturze.
+Jeśli masz co najmniej jeden proces roboczy systemu Windows w sygnaturze, kup rezerwacje sygnatur systemu Windows. Jedyna sytuacja, w której należy kupić rezerwację sygnatury systemu Linux ma miejsce, gdy planujesz mieć w sygnaturze _tylko_ procesy robocze systemu Linux.
 
-## <a name="buy-isolated-stamp-reserved-capacity"></a>Kupowanie zarezerwowanej sygnatury pojemności
+## <a name="buy-isolated-stamp-reserved-capacity"></a>Kupowanie wydajności rezerwowej izolowanej sygnatury
 
-Możesz kupić wyizolowaną pojemność zastrzeżoną dla [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D). Płatność za rezerwację z [góry lub miesięczna płatność](billing-monthly-payments-reservations.md). Aby kupić zastrzeżoną pojemność, musisz mieć rolę właściciela dla co najmniej jednej subskrypcji przedsiębiorstwa lub pojedynczej subskrypcji z stawką płatność zgodnie z rzeczywistym użyciem.
+Wydajność rezerwową izolowanej sygnatury można kupić w witrynie [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D). Płatność za rezerwację jest wnoszona [z góry lub w ratach miesięcznych](billing-monthly-payments-reservations.md). Do zakupu wydajności rezerwowej potrzebna jest rola właściciela co najmniej w jednej subskrypcji Enterprise lub w subskrypcji indywidualnej z ratami płatności zgodnie z rzeczywistym użyciem.
 
-- W przypadku subskrypcji przedsiębiorstwa w [portalu EA](https://ea.azure.com/)należy włączyć opcję **Dodaj wystąpienia zarezerwowane** . Jeśli to ustawienie jest wyłączone, musisz być administratorem EA.
-- W przypadku programu Cloud Solution Provider (CSP) tylko agenci administracyjni lub agenci sprzedaży mogą zakupić SQL Data Warehouse zarezerwowaną pojemność.
+- W przypadku subskrypcji Enterprise w witrynie [EA portal](https://ea.azure.com/) musi być włączona opcja **Dodaj wystąpienia zarezerwowane**. Jeśli to ustawienie jest wyłączone, musisz być administratorem EA.
+- W przypadku programu Cloud Solution Provider (CSP) wydajność rezerwową usługi SQL Data Warehouse mogą kupić tylko agenci administracyjni lub agenci sprzedaży.
 
-**Aby kupić:**
+**Aby dokonać zakupu:**
 
-1. Przejdź do [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D).
-1. Wybierz subskrypcję. Użyj listy **subskrypcja** , aby wybrać subskrypcję, która jest używana do regulowania zarezerwowanej pojemności. Metoda płatności za subskrypcję jest naliczana za koszt zarezerwowanej pojemności. Typ subskrypcji musi być umową Enterprise Agreement (numery ofert: MS-AZR-0017P lub MS-AZR-0148P) lub płatność zgodnie z rzeczywistym użyciem (numery ofert: MS-AZR-0003P lub MS-AZR-0023P) lub z subskrypcją dostawcy usług kryptograficznych.
+1. Przejdź do witryny [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D).
+1. Wybierz subskrypcję. Z listy **Subskrypcja** wybierz subskrypcję, w ramach której jest opłacana wydajność rezerwowa. Kosztami wydajności rezerwowej jest obciążana forma płatności subskrypcji. Wymagany typ subskrypcji to Enterprise Agreement (numery ofert: MS-AZR-0017P lub MS-AZR-0148P) albo Płatność zgodnie z rzeczywistym użyciem (numer ofert: MS-AZR-0003P lub MS-AZR-0023P) lub Subskrypcja CSP.
     - W przypadku subskrypcji Enterprise opłaty są odliczane od salda zobowiązania pieniężnego rejestracji lub naliczane jako nadwyżka.
     - W przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem opłaty obciążają kartę kredytową lub metodę płatności faktury powiązaną z subskrypcją.
-1. Wybierz **zakres** , aby wybrać zakres subskrypcji.
-    - **Zakres pojedynczej grupy zasobów** — stosuje rabat rezerwacji do zasobów pasujących tylko w wybranej grupie zasobów.
-    - **Zakres pojedynczej subskrypcji** — stosuje rabat rezerwacji do pasujących zasobów w wybranej subskrypcji.
-    - **Zakres udostępniony** — stosuje rabat rezerwacji do pasujących zasobów w uprawnionych subskrypcjach, które znajdują się w kontekście rozliczeń. W przypadku klientów Umowa Enterprise, kontekst rozliczania to rejestracja. W przypadku indywidualnych subskrypcji z płatnością zgodnie z rzeczywistym użyciem zakres rozliczeń to wszystkie kwalifikujące się subskrypcje utworzone przez administratora konta.
-1. Wybierz **region** , aby wybrać region platformy Azure objęty zarezerwowaną pojemnością i dodać rezerwację do koszyka.
-1. Wybierz typ planu izolowanego, a następnie kliknij przycisk **Wybierz**.  
-    ![Przyklad](./media/billing-prepay-app-service-isolated-stamp/app-service-isolated-stamp-select.png)
-1. Wprowadź liczbę sygnatur izolowana usługa App Service, które mają zostać zarezerwowane. Na przykład, liczba trzech zarezerwowanych oznacza region. Kliknij pozycję **Next: Przejrzyj i Kup**.
+1. Za pomocą listy **Zakres** wybierz zakres subskrypcji.
+    - **Zakres pojedynczej grupy zasobów** — rabat na rezerwację jest stosowany do odpowiednich zasobów tylko w wybranej grupie zasobów.
+    - **Zakres pojedynczej subskrypcji** — rabat na rezerwację jest stosowany do odpowiednich zasobów w wybranej subskrypcji.
+    - **Zakres udostępniony** — rabat na rezerwację jest stosowany do odpowiednich zasobów w kwalifikujących się subskrypcjach w ramach kontekstu rozliczeń. W przypadku klientów korzystających z umowy Enterprise Agreement kontekstem rozliczeń jest rejestracja. W przypadku indywidualnych subskrypcji ze stawkami płatności zgodnie z rzeczywistym użyciem kontekst rozliczeń stanowią wszystkie kwalifikujące się subskrypcje utworzone przez administratora konta.
+1. Wybierz pozycję **Region**, aby wskazać region świadczenia usługi Azure, którego ma dotyczyć wydajność rezerwowa.
+1. Wybierz typ Plan izolowany, a następnie kliknij pozycję **Wybierz**.  
+    ![Przykład ](./media/billing-prepay-app-service-isolated-stamp/app-service-isolated-stamp-select.png)
+1. Wprowadź liczbę izolowanych sygnatur usługi App Service, które mają zostać zarezerwowane. Na przykład liczba trzy daje trzy zarezerwowane sygnatury na region. Kliknij pozycję **Next: Przejrzyj i kup**.
 1. Przejrzyj i kliknij pozycję **Kup teraz**.
 
-Po zakupie przejdź do pozycji [rezerwacje](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) , aby wyświetlić stan zakupu i monitorować go w dowolnym momencie.
+Po zakupie przejdź do pozycji [Rezerwacje](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade), aby wyświetlić stan zakupu i monitorować go w dowolnym momencie.
 
-## <a name="cancel-exchange-or-refund-reservations"></a>Anulowanie, wymiana lub zastrzeżenia zwrotne
+## <a name="cancel-exchange-or-refund-reservations"></a>Anulowanie, wymiana lub zwrot kosztów rezerwacji
 
-Można anulować, wymienić lub refundować rezerwacje z pewnymi ograniczeniami. Aby uzyskać więcej informacji, zobacz samoobsługowe [weksle i zwroty dla Azure Reservations](billing-azure-reservations-self-service-exchange-and-refund.md).
+Rezerwacje można anulować, wymieniać lub zwracać, jednak obowiązują przy tym pewne ograniczenia. Aby uzyskać więcej informacji, zobacz temat [Samoobsługowe wymiany i zwroty kosztów dla rezerwacji platformy Azure](billing-azure-reservations-self-service-exchange-and-refund.md).
 
-## <a name="discount-application-shown-in-usage-data"></a>Aplikacja rabatowa wyświetlana w danych użycia
+## <a name="discount-application-shown-in-usage-data"></a>Zastosowanie rabatu widoczne w danych dotyczących użycia
 
-Dane użycia mają rzeczywistą cenę równą zero za użycie, które pobiera rabat rezerwacji. Dane użycia przedstawiają rabat rezerwacji dla każdego wystąpienia sygnatury w każdej rezerwacji.
+Dane użycia mają wynikową cenę równą zero za użycie, którego dotyczy rabat rezerwacji. Dane użycia pokazują rabat rezerwacji dla każdego wystąpienia sygnatury w każdej rezerwacji.
 
-Aby uzyskać więcej informacji na temat sposobu, w jaki rabat związany z rezerwacją jest wyświetlany w danych użycia, zobacz [pobierz Umowa Enterprise koszty rezerwacji i użycie](billing-understand-reserved-instance-usage-ea.md) , jeśli jesteś klientem Umowa Enterprise (EA). W przeciwnym razie zobacz temat [użycie usługi Azure Reservation dla indywidualnej subskrypcji z stawką płatność zgodnie z rzeczywistym użyciem](billing-understand-reserved-instance-usage.md).
+Aby uzyskać więcej informacji na temat tego, jak jest wyświetlany rabat rezerwacji w danych użycia, zobacz [Pobieranie kosztów i użycia rezerwacji w ramach umowy Enterprise Agreement](billing-understand-reserved-instance-usage-ea.md), jeśli jesteś klientem z umową Enterprise Agreement (EA). W przeciwnym razie zobacz [Informacje na temat użycia rezerwacji platformy Azure dla indywidualnej subskrypcji z płatnością zgodnie z rzeczywistym użyciem](billing-understand-reserved-instance-usage.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby dowiedzieć się więcej na temat Azure Reservations, zobacz następujące artykuły:
-  - [Co to są Azure Reservations?](billing-save-compute-costs-reservations.md)
-  - [Dowiedz się, w jaki sposób jest stosowany rabat związany z zarezerwowaną sygnaturą Azure App Service](billing-reservation-discount-app-service-isolated-stamp.md)
+- Aby dowiedzieć się więcej na temat rezerwacji na platformie Azure, zobacz następujące artykuły:
+  - [Czym są rezerwacje platformy Azure?](billing-save-compute-costs-reservations.md)
+  - [Omówienie sposobu stosowania rabatu rezerwacji izolowanej sygnatury usługi Azure App Service](billing-reservation-discount-app-service-isolated-stamp.md)
   - [Understand reservation usage for your Enterprise enrollment (Informacje na temat użycia wystąpień zarezerwowanych w przypadku rejestracji Enterprise)](billing-understand-reserved-instance-usage-ea.md)

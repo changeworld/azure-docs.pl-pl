@@ -1,6 +1,6 @@
 ---
 title: Automatyczne odnawianie rezerwacji platformy Azure
-description: Dowiedz się, jak można automatycznie odnawiać rezerwacje platformy Azure, aby kontynuować pobieranie rabatów rezerwacji.
+description: Dowiedz się, jak można automatycznie odnawiać rezerwacje platformy Azure, aby kontynuować korzystanie z rabatów na rezerwację.
 services: billing
 author: bandersmsft
 manager: yashar
@@ -9,87 +9,87 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: banders
 ms.openlocfilehash: c19c6af68bcde753ec9bed990e08aa81eabdd37d
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "68679460"
 ---
 # <a name="automatically-renew-reservations"></a>Automatyczne odnawianie rezerwacji
 
-Możesz odnowić rezerwacje, aby automatycznie zakupić zastąpienie w przypadku wygaśnięcia istniejącej rezerwacji. Automatyczne odnawianie umożliwia łatwe uzyskiwanie rabatów rezerwacji. Pozwala również na dokładne monitorowanie wygaśnięcia rezerwacji. Dzięki automatycznemu odnawianiu nie ma konieczności ręcznego odnawiania oszczędności. Ustawienie odnowienia jest domyślnie wyłączone. Włącz lub wyłącz ustawienie odnawiania w dowolnym momencie, aż do wygaśnięcia istniejącej rezerwacji.
+Możesz odnowić rezerwacje, aby automatycznie zakupić zastąpienie w przypadku wygaśnięcia istniejącej rezerwacji. Automatyczne odnawianie umożliwia łatwe uzyskiwanie rabatów na rezerwacje. Eliminuje również konieczność dokładnego monitorowania terminów wygaśnięcia rezerwacji. Dzięki automatycznemu odnawianiu można zapobiec utracie oszczędności, ponieważ nie jest konieczne ręczne odnawianie. Ustawienie odnowienia jest domyślnie wyłączone. Ustawienie odnowienia można włączyć lub wyłączyć w dowolnym momencie, aż do wygaśnięcia istniejącej rezerwacji.
 
-Odnowienie rezerwacji powoduje utworzenie nowej rezerwacji po wygaśnięciu istniejącej rezerwacji. Nie powoduje to poszerzenia okresu istniejącej rezerwacji.
+Odnowienie rezerwacji powoduje utworzenie nowej rezerwacji po wygaśnięciu istniejącej. Nie powoduje to przedłużenia okresu istniejącej rezerwacji.
 
-Zezwól na automatyczne odnawianie w dowolnym momencie. Cena odnowienia jest dostępna 30 dni przed wygaśnięciem istniejącej rezerwacji. Po włączeniu odnowienia więcej niż 30 dni przed wygaśnięciem rezerwacji zostanie wysłana wiadomość e-mail z informacjami o kosztach odnowienia przez 30 dni przed wygaśnięciem. Cena rezerwacji może ulec zmianie między czasem zablokowania ceny odnowienia i czasem odnowienia. W takim przypadku koszt odnowienia będzie niższy z dwóch kosztów. Można wprowadzać zmiany w ilości rezerwacji. W takim przypadku odnowienie zostanie zaktualizowane do korzystania z zestawu cen na rynku w momencie zmiany ilości.
+Zezwól na automatyczne odnawianie w dowolnym momencie. Cena odnowienia jest dostępna 30 dni przed wygaśnięciem istniejącej rezerwacji. Jeśli włączysz odnowienie przed tym terminem, 30 dni przed wygaśnięciem rezerwacji otrzymasz wiadomość e-mail z informacjami o kosztach odnowienia. Cena rezerwacji może ulec zmianie między terminem zablokowania ceny odnowienia a terminem odnowienia. W takim przypadku jako koszt odnowienia zostanie zastosowana niższa z tych dwóch wartości. Można wprowadzać zmiany w ilości rezerwacji. W takim przypadku odnowienie zostanie zaktualizowane z użyciem ceny rynkowej obowiązującej w momencie zmiany ilości.
 
-Nie ma obowiązku odnowienia i można zrezygnować z odnowienia w dowolnym momencie przed wygaśnięciem istniejącej rezerwacji.
+Korzystanie z odnowienia nie jest obowiązkowe i można z niego zrezygnować w dowolnym momencie przed wygaśnięciem istniejącej rezerwacji.
 
-## <a name="set-up-renewal"></a>Konfigurowanie odnawiania
+## <a name="set-up-renewal"></a>Konfigurowanie odnowienia
 
-Przejdź do Azure Portal > **rezerwacje**.
+Przejdź do witryny Azure Portal > **Rezerwacje**.
 
 1. Wybierz rezerwację.
-2. Kliknijpozycję odnowienie.
-3. Wybierz pozycję **automatycznie Kup nową rezerwację po wygaśnięciu**.  
+2. Kliknij pozycję **Odnawianie**.
+3. Wybierz pozycję **Automatycznie kup nową rezerwację po wygaśnięciu**.  
   ![Przykład przedstawiający odnowienie rezerwacji](./media/billing-reservation-renew/reservation-renewal.png)
 
 ## <a name="if-you-dont-renew"></a>Jeśli nie odnowisz
 
-Usługi nadal działają normalnie. Po wygaśnięciu rezerwacji opłaty są naliczone według stawek płatnych zgodnie z rzeczywistym użyciem.
+Usługi nadal działają normalnie. Po wygaśnięciu rezerwacji opłaty są naliczane według stawek płatności zgodnie z rzeczywistym użyciem.
 
-## <a name="required-renewal-permissions"></a>Wymagane uprawnienia do odnawiania
+## <a name="required-renewal-permissions"></a>Uprawnienia wymagane do odnawiania
 
-Do odnowienia rezerwacji wymagane są następujące warunki:
+W celu odnowienia rezerwacji trzeba spełnić następujące warunki:
 
 - Musisz być właścicielem istniejącej rezerwacji.
 - Jeśli rezerwacja obejmuje zakres pojedynczej subskrypcji lub grupy zasobów, musisz być właścicielem subskrypcji.
 - Musisz być właścicielem subskrypcji, jeśli ma ona zakres udostępniony.
 
-## <a name="default-renewal-settings"></a>Domyślne ustawienia odnawiania
+## <a name="default-renewal-settings"></a>Domyślne ustawienia odnowienia
 
-Domyślnie odnowienie dziedziczy wszystkie właściwości z zastrzeżenia, które wygasa. Zakup odnowienia rezerwacji ma taką samą jednostkę SKU, region, zakres, subskrypcję rozliczeń, termin i ilość.
+Domyślnie odnowienie dziedziczy wszystkie właściwości z wygasającej rezerwacji. Zakup odnowienia rezerwacji dotyczy takiej samej jednostki SKU, regionu, zakresu, subskrypcji rozliczeniowej, okresu i ilości.
 
-Można jednak zaktualizować ilość zakupu rezerwacji odnowienia, aby zoptymalizować oszczędności.
+Można jednak zaktualizować ilość zakupu odnowienia rezerwacji, aby zoptymalizować oszczędności.
 
-## <a name="when-the-new-reservation-is-purchased"></a>Po zakupie nowej rezerwacji
+## <a name="when-the-new-reservation-is-purchased"></a>Termin zakupu nowej rezerwacji
 
-Nowe rezerwacje są kupowane, gdy istniejąca rezerwacja wygaśnie. Staramy się zapobiec wszelkim opóźnieniem między obiema rezerwacjami. Ciągłość zapewnia przewidywalność kosztów i nadal uzyskuje rabaty.
+Zakup nowej rezerwacji jest realizowany, gdy istniejąca rezerwacja wygaśnie. Staramy się zapobiec wszelkim opóźnieniem między obiema rezerwacjami. Ciągłość zapewnia przewidywalność kosztów i nieprzerwane korzystanie z rabatów.
 
 ## <a name="changing-parent-reservation-after-setting-renewal"></a>Zmiana rezerwacji nadrzędnej po ustawieniu odnowienia
 
-Jeśli wprowadzisz dowolną z następujących zmian w rezerwacji wygasania, odnowienie rezerwacji zostanie anulowane:
+Jeśli w wygasającej rezerwacji wprowadzisz jakąkolwiek z następujących zmian, odnowienie rezerwacji zostanie anulowane:
 
-- Podziel
-- Scal
-- Przenoszenie rezerwacji z jednego konta do innego
-- Przenoszenie rezerwacji z subskrypcji usługi WebDirect do subskrypcji umowy Enterprise Agreement (EA) lub dowolnej innej metody zakupu
-- Odnów rejestrację
+- Podział
+- Merge
+- Przeniesienie rezerwacji z jednego konta na inne
+- Przeniesienie rezerwacji z subskrypcji usługi WebDirect do subskrypcji umowy Enterprise Agreement (EA) lub dowolnej innej metody zakupu
+- Odnowienie rejestracji
 
-Nowa rezerwacja dziedziczy ustawienie elastyczność rozmiaru zakresu i wystąpienia z rezerwy, która wygasa podczas odnawiania.
+Podczas odnawiania nowa rezerwacja dziedziczy zakres i ustawienie elastyczności rozmiaru wystąpienia z rezerwacji wygasającej.
 
-## <a name="new-reservation-permissions"></a>Nowe uprawnienia do rezerwacji
+## <a name="new-reservation-permissions"></a>Uprawnienia do nowej rezerwacji
 
-Na platformie Azure są kopiowane uprawnienia z ważnością zastrzeżeń do nowej rezerwacji. Ponadto administrator konta subskrypcji w ramach zakupu rezerwacji ma dostęp do nowej rezerwacji.
+Na platformie Azure uprawnienia z wygasającej rezerwacji są kopiowane do nowej rezerwacji. Ponadto dostęp do nowej rezerwacji ma administrator konta subskrypcji użytego do zakupu rezerwacji.
 
 ## <a name="potential-renewal-problems"></a>Potencjalne problemy z odnowieniem
 
-Platforma Azure może nie przetwarzać odnowienia, jeśli:
+Platforma Azure może nie przetworzyć odnowienia, jeśli:
 
-- Nie można zebrać płatności
+- Nie można pobrać płatności
 - Wystąpił błąd systemu podczas odnawiania
 - Wygasające jednostki SKU nie są aktywne podczas odnawiania
-- Umowa EA jest odnawiana na inną EA
+- Umowa EA jest odnawiana z użyciem innej umowy EA
 
-Otrzymasz powiadomienie e-mail, jeśli wystąpi którykolwiek z powyższych warunków, a odnowienie zostanie zdezaktywowane.
+Jeśli wystąpi którykolwiek z powyższych warunków i odnowienie zostanie dezaktywowane, otrzymasz powiadomienie e-mail.
 
 ## <a name="renewal-notification"></a>Powiadomienie o odnowieniu
 
 Wiadomości e-mail są wysyłane do różnych osób w zależności od metody zakupu:
 
-- Klienci z umowami EA — wiadomości E-mail są wysyłane do kontaktów powiadomień ustawionych w portalu EA.
-- Klienci indywidualnych subskrypcji z stawką płatność zgodnie z rzeczywistym użyciem — wiadomości E-mail są wysyłane do użytkowników, którzy są konfigurowani jako administratorzy konta.
-- Klienci dostawcy rozwiązań w chmurze — wiadomości E-mail są wysyłane do kontaktu z powiadomieniem partnera.
+- Klienci z umowami EA — wiadomości e-mail są wysyłane do kontaktów dla powiadomień ustawionych w portalu EA.
+- Klienci korzystający z indywidualnych subskrypcji ze stawkami płatności zgodnie z rzeczywistym użyciem — wiadomości e-mail są wysyłane do użytkowników skonfigurowanych jako administratorzy konta.
+- Klienci z subskrypcją dostawcy rozwiązań w chmurze — wiadomości e-mail są wysyłane do kontaktu dla powiadomień partnera.
 
 ## <a name="next-steps"></a>Następne kroki
-- Aby dowiedzieć się więcej na temat Azure Reservations, zobacz [co to są Azure Reservations?](billing-save-compute-costs-reservations.md)
+- Aby dowiedzieć się więcej na temat rezerwacji platformy Azure, zobacz temat [Co to jest Azure Reservations?](billing-save-compute-costs-reservations.md)

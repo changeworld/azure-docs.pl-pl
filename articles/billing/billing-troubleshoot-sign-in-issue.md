@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów z logowaniem do subskrypcji platformy Azure
-description: Pomaga w rozwiązywaniu problemów, w których nie można zalogować się na koncie Azure Portal lub centrum konta platformy Azure.
+title: Rozwiązywanie problemów z logowaniem w przypadku subskrypcji platformy Azure
+description: Pomaga w rozwiązywaniu problemów, gdy nie można zalogować się do witryny Azure Portal lub centrum konta platformy Azure.
 author: v-miegge
 manager: na
 editor: na
@@ -13,70 +13,70 @@ ms.workload: na
 ms.date: 08/12/2019
 ms.author: v-miegge
 ms.openlocfilehash: ca641813e8b01a39d31a56e3730424b0fa1d6436
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "69657049"
 ---
-# <a name="troubleshoot-azure-subscription-sign-in-issues"></a>Rozwiązywanie problemów z logowaniem do subskrypcji platformy Azure
+# <a name="troubleshoot-azure-subscription-sign-in-issues"></a>Rozwiązywanie problemów z logowaniem w przypadku subskrypcji platformy Azure
 
-Ten przewodnik pomaga w rozwiązywaniu problemów, w których nie można zalogować się do konta Azure Portal lub centrum kont platformy Azure. 
+Ten przewodnik pomaga w rozwiązywaniu problemów, gdy nie można zalogować się do witryny Azure Portal lub Centrum konta platformy Azure. 
 
 ## <a name="issues"></a>Problemy
 
 ### <a name="page-hangs-in-the-loading-status"></a>Strona zawiesza się w stanie ładowania
 
-Jeśli strona przeglądarki internetowej się zawiesza, spróbuj wykonać następujące czynności, aby uzyskać dostęp do Azure Portal.
+Jeśli strona przeglądarki internetowej się zawiesza, spróbuj wykonać każdą z następujących czynności, aż uda się przejść do witryny Azure Portal.
 
 - Odśwież stronę.
 - Użyj innej przeglądarki internetowej.
-- Użyj trybu przeglądania prywatnego dla przeglądarki. Dla programu Internet Explorer: Kliknij kolejno pozycje **Narzędzia** > **zabezpieczenia** > **InPrivate przeglądanie**, a następnie Przeglądaj i zaloguj się [Azure Portal](https://portal.azure.com/) do [centrum konta platformy Azure](https://account.azure.com/Subscriptions).
+- Użyj prywatnego trybu przeglądania w przeglądarce. W programie Internet Explorer: Kliknij kolejno pozycje **Narzędzia** > **Bezpieczeństwo** > **Przeglądanie InPrivate**, a następnie przejdź do witryny [Azure Portal](https://portal.azure.com/) lub [Centrum konta platformy Azure](https://account.azure.com/Subscriptions) i zaloguj się.
 
-### <a name="you-are-automatically-signed-in-as-a-different-user"></a>Użytkownik jest automatycznie zalogowany jako inny użytkownik
+### <a name="you-are-automatically-signed-in-as-a-different-user"></a>Użytkownik jest automatycznie logowany jako inny użytkownik
 
 Ten problem może wystąpić, jeśli w przeglądarce internetowej używasz więcej niż jednego konta użytkownika.
 
-Aby rozwiązać ten problem, wypróbuj jedną z następujących metod:
+Aby rozwiązać ten problem, wypróbuj jedną z poniższych metod:
 
-- Wyczyść pamięć podręczną i Usuń pliki cookie z Internetu. W programie Internet Explorer kliknij kolejno pozycje **Narzędzia** > **Opcje** > internetowe**Usuń**. Upewnij się, że zaznaczone są pola wyboru dla plików tymczasowych, plików cookie, hasła i historii przeglądania, a następnie kliknij przycisk Usuń.
-- Zresetuj ustawienia programu Internet Explorer, aby przywrócić wszystkie ustawienia osobiste, które zostały wprowadzone. Kliknij kolejno pozycje **Narzędzia** > **Opcje** > internetowe**Zaawansowane** > zaznacz pole **Usuń ustawienia osobiste** > **Zresetuj**.
-- Użyj trybu przeglądania prywatnego dla przeglądarki. Dla programu Internet Explorer:  Kliknij kolejno pozycje **Narzędzia** > **zabezpieczenia** > **InPrivate przeglądanie**, a następnie Przeglądaj i zaloguj się [Azure Portal](https://portal.azure.com/) do [centrum konta platformy Azure](https://account.azure.com/Subscriptions).
+- Wyczyść pamięć podręczną i usuń internetowe pliki cookie. W programie Internet Explorer kliknij kolejno pozycje **Narzędzia** > **Opcje internetowe** > **Usuń**. Upewnij się, że zaznaczone są pola wyboru plików tymczasowych, plików cookie, hasła i historii przeglądania, a następnie kliknij przycisk Usuń.
+- Zresetuj ustawienia programu Internet Explorer, aby przywrócić wszystkie ustawienia osobiste, które zostały wprowadzone. Kliknij kolejno pozycje **Narzędzia** > **Opcje internetowe** > **Zaawansowane** > zaznacz pole **Usuń ustawienia osobiste** > **Resetuj**.
+- Użyj prywatnego trybu przeglądania w przeglądarce. W programie Internet Explorer:  Kliknij kolejno pozycje **Narzędzia** > **Bezpieczeństwo** > **Przeglądanie InPrivate**, a następnie przejdź do witryny [Azure Portal](https://portal.azure.com/) lub [Centrum konta platformy Azure](https://account.azure.com/Subscriptions) i zaloguj się.
 
-### <a name="i-can-sign-in-but-i-see-no-subscriptions-found"></a>Mogę się zalogować, ale *nie znaleziono żadnych subskrypcji*
+### <a name="i-can-sign-in-but-i-see-no-subscriptions-found"></a>Mogę się zalogować, ale widzę komunikat *Nie odnaleziono żadnych subskrypcji*
 
-Ten problem występuje w przypadku wybrania niewłaściwego katalogu, czy Twoje konto nie ma wystarczających uprawnień.
+Ten problem występuje, jeśli wybrano niewłaściwy katalog lub jeśli konto nie ma wystarczających uprawnień.
 
-**Scenariusz 1:** W [Azure Portal](https://portal.azure.com/) zostanie wyświetlony komunikat o błędzie
+**Scenariusz 1:** Komunikat o błędzie zostaje wyświetlony w witrynie [Azure Portal](https://portal.azure.com/)
 
 Aby rozwiązać ten problem:
 
-- Upewnij się, że wybrano prawidłowy katalog usługi Azure, klikając swoje konto w prawym górnym rogu.
-- Jeśli wybrano odpowiedni katalog platformy Azure, ale nadal pojawia się komunikat o błędzie, Twoje konto zostało [dodane jako właściciel](billing-add-change-azure-subscription-administrator.md).
+- Upewnij się, że wybrano prawidłowy katalog platformy Azure, klikając swoje konto w prawym górnym rogu.
+- Jeśli wybrano właściwy katalog platformy Azure, ale nadal pojawia się komunikat o błędzie, poproś [o dodanie konta jako właściciel](billing-add-change-azure-subscription-administrator.md).
 
-**Scenariusz 2:** W [centrum konta platformy Azure](https://account.windowsazure.com/Subscriptions) zostanie wyświetlony komunikat o błędzie
+**Scenariusz 2:** Komunikat o błędzie zostaje wyświetlony w [Centrum konta platformy Azure](https://account.windowsazure.com/Subscriptions)
 
-Sprawdź, czy konta, którego użyto jest administratora konta. Aby sprawdzić, kim jest Administrator konta, wykonaj następujące kroki:
+Sprawdź, czy użyte konto jest administratorem konta. Aby sprawdzić, kto jest administratorem konta, wykonaj następujące czynności:
 
-1. Zaloguj się do [subskrypcje wyświetlić w witrynie Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
+1. Zaloguj się do [widoku Subskrypcje w witrynie Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 
-2. Wybierz subskrypcję, aby sprawdzić, a następnie sprawdź w obszarze **ustawienia**.
+2. Wybierz subskrypcję, którą chcesz sprawdzić, a następnie przejrzyj **Ustawienia**.
 
-3. Wybierz **właściwości**. Administrator konta subskrypcji są wyświetlane w **administrator konta** pole.
+3. Wybierz pozycję **Właściwości**. Administrator konta subskrypcji jest wyświetlany w polu **Administrator konta**.
 
 ## <a name="additional-help-resources"></a>Dodatkowe zasoby pomocy
 
-Inne artykuły dotyczące rozwiązywania problemów dotyczących rozliczeń i subskrypcji platformy Azure
+Inne artykuły dotyczące rozwiązywania problemów z rozliczeniami i subskrypcjami platformy Azure
 
 - [Odrzucona karta](billing-troubleshoot-declined-card.md)
-- [Problemy z rejestracją subskrypcji](billing-troubleshoot-azure-sign-up.md)
+- [Subscription sign-up issues (Problemy z rejestrowaniem subskrypcji)](billing-troubleshoot-azure-sign-up.md)
 - [No subscriptions found (Nie odnaleziono żadnych subskrypcji)](billing-no-subscriptions-found.md)
 - [Wyłączony widok kosztów przedsiębiorstwa](billing-enterprise-mgmt-grp-troubleshoot-cost-view.md)
 
 ## <a name="contact-us-for-help"></a>Skontaktuj się z nami, aby uzyskać pomoc
 
-Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Jeśli masz pytania lub potrzebujesz pomocy, [utwórz wniosek o pomoc techniczną](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Dokumentacja dotycząca rozliczeń platformy Azure](index.md)
+- [Dokumentacja rozliczeń platformy Azure](index.md)

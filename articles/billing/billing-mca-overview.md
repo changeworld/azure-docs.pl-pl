@@ -1,6 +1,6 @@
 ---
-title: Wprowadzenie do konta rozliczeniowego umowy klienta firmy Microsoft — Azure
-description: Zrozumienie umowy klienta firmy Microsoft, konto rozliczeniowe
+title: Wprowadzenie do konta rozliczeniowego w ramach Umowy klienta firmy Microsoft — Azure
+description: Omówienie konta rozliczeniowego w ramach Umowy klienta firmy Microsoft
 author: bandersmsft
 manager: amberbhargava
 ms.service: billing
@@ -8,87 +8,87 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2019
+ms.date: 09/10/2019
 ms.author: banders
-ms.openlocfilehash: 87483c967641489e9548f38c99eebbf121d0d252
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.openlocfilehash: 835686d639679cca7e9a83b5297b365953835e47
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490748"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70880742"
 ---
-# <a name="get-started-with-your-microsoft-customer-agreement-billing-account"></a>Rozpoczynanie pracy z kontem rozliczeniowym umowy klienta firmy Microsoft
+# <a name="get-started-with-your-microsoft-customer-agreement-billing-account"></a>Wprowadzenie do konta rozliczeniowego w ramach Umowy klienta firmy Microsoft
 
-Konto rozliczeniowe powstaje po zarejestrowaniu się za pomocą platformy Azure. Użyj konta rozliczeniowego do faktury, płatności, zarządzania i śledzenie kosztów. Masz dostęp do wielu kont rozliczeń. Na przykład może być zarejestrowaniu się na platformie Azure dla Twoich projektów osobistych. Może również mieć dostęp do platformy Azure za pośrednictwem umowy Enterprise Agreement lub umowy klienta firmy Microsoft Twojej organizacji. Dla każdego z tych scenariuszy trzeba oddzielnego konta rozliczeniowego.
+Konto rozliczeniowe jest tworzone podczas rejestrowania się w celu korzystania z platformy Azure. Konta rozliczeniowego można używać do zarządzania fakturami i płatnościami oraz do śledzenia kosztów. Możesz mieć dostęp do wielu kont rozliczeniowych. Możesz na przykład utworzyć konto platformy Azure w celu pracy z projektami osobistymi. Dostęp do platformy Azure można również uzyskiwać w ramach zawartej przez organizację umowy Enterprise Agreement lub Umowy klienta firmy Microsoft. W każdym z tych scenariuszy używane jest oddzielne konto rozliczeniowe.
 
-Ten artykuł dotyczy konta rozliczeniowego dla umowy klienta firmy Microsoft. [Sprawdź, czy dostęp do umowy klienta Microsoft](#check-access-to-a-microsoft-customer-agreement).
+Ten artykuł dotyczy konta rozliczeniowego w ramach Umowy klienta firmy Microsoft. [Sprawdź, czy masz dostęp do Umowy klienta firmy Microsoft](#check-access-to-a-microsoft-customer-agreement).
 
 ## <a name="your-billing-account"></a>Konto rozliczeniowe
 
-Konto rozliczeniowe dla umowy klienta firmy Microsoft zawiera co najmniej jeden profil rozliczeń, które pozwalają zarządzać metodami płatności i faktur. Każdy profil rozliczeniowy zawiera jeden lub więcej sekcji faktur, które umożliwiają organizowanie koszty, faktury profil rozliczeniowy.
+Konto rozliczeniowe w ramach Umowy klienta firmy Microsoft zawiera co najmniej jeden profil rozliczeniowy, który umożliwia zarządzanie fakturami i formami płatności. Każdy profil rozliczeniowy zawiera co najmniej jedną sekcję faktury, w której można organizować koszty na fakturze profilu rozliczeniowego.
 
-Na poniższym diagramie przedstawiono relację między sekcjach faktury, rozliczeń profile i konta rozliczeniowego.
+Na poniższym diagramie przedstawiono relację między kontem rozliczeniowym, profilami rozliczeniowymi i sekcjami faktury.
 
-![Diagram przedstawiający hierarchii rozliczeniowy z umowy klienta firmy Microsoft](./media/billing-mca-overview/mca-billing-hierarchy.png)
+![Diagram przedstawiający hierarchię rozliczeń w Umowie klienta firmy Microsoft](./media/billing-mca-overview/mca-billing-hierarchy.png)
 
-Role na konto rozliczeniowe mają najwyższy poziom uprawnień. Domyślnie tylko użytkownik, który utworzył konto na potrzeby platformy Azure pobiera dostęp do konta rozliczeniowego. Tych ról powinny być przypisane do użytkowników, których potrzebuje do wyświetlania faktur i śledzenie kosztów dla całej organizacji, takich jak finansowego lub przekazać wyższym kierownikom IT. Aby uzyskać więcej informacji, zobacz [rozliczenia konta role i zadania](billing-understand-mca-roles.md#billing-account-roles-and-tasks).
+Role na koncie rozliczeniowym mają najwyższy poziom uprawnień. Domyślnie tylko użytkownik, który utworzył konto platformy Azure, uzyskuje dostęp do konta rozliczeniowego. Role te powinny być przypisywane do użytkowników, którzy muszą wyświetlać faktury i śledzić koszty całej organizacji, takich jak menedżerowie działu finansów lub IT. Aby uzyskać więcej informacji, zobacz sekcję [Zadania i role konta rozliczeniowego](billing-understand-mca-roles.md#billing-account-roles-and-tasks).
 
-## <a name="billing-profiles"></a>Profile rozliczeń
+## <a name="billing-profiles"></a>Profile rozliczeniowe
 
-Profil rozliczeniowy umożliwia zarządzanie metody faktury i płatności. Miesięcznej fakturze jest generowany po rozpoczęciu miesiąca dla każdego profilu rozliczeń na koncie. Faktura zawiera odpowiednie opłaty za wszystkie subskrypcje systemu Azure i innych zakupy z poprzedniego miesiąca.
+Profil rozliczeniowy służy do zarządzania fakturami i metodami płatności. Dla każdego profilu rozliczeniowego na koncie na początku miesiąca jest generowana faktura miesięczna. Faktura zawiera odpowiednie opłaty za wszystkie subskrypcje platformy Azure i inne zakupy w poprzednim miesiącu.
 
-Profil rozliczeniowy automatycznie jest tworzony dla swojego konta rozliczeniowego. Domyślnie zawiera jedną sekcję faktury. Możesz utworzyć dodatkowe sekcje łatwe śledzenie i organizowanie kosztów, w zależności od potrzeb tego, czy jest na projekt, działu lub tworzenia środowiska. Poniższe sekcje zostaną wyświetlone na fakturze profil rozliczeniowy odzwierciedlający użytkowania każdej subskrypcji i zakupów, przypisanej do niego.
+Profil rozliczeniowy jest automatycznie tworzony dla konta rozliczeniowego. Domyślnie zawiera on jedną sekcję faktury. Możesz utworzyć dodatkowe sekcje, aby łatwo śledzić i organizować koszty zgodnie z wymaganiami danego projektu, działu lub środowiska deweloperskiego. Sekcje na fakturze profilu rozliczeniowego odzwierciedlają użycie poszczególnych subskrypcji i przypisanych do nich zakupów.
 
-Role na rozliczeń profile mają uprawnienia do wyświetlania i zarządzania faktury i metody płatności. Przypisz te role do użytkowników, którzy płaci faktur, takich jak członkowie zespołu ewidencjonowania aktywności w Twojej organizacji. Aby uzyskać więcej informacji, zobacz [rozliczeń profilu role i zadania](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
+Role w profilach rozliczeniowych mają uprawnienia do wyświetlania faktur i metod płatności oraz zarządzania nimi. Role te należy przypisywać do użytkowników płacących faktury, takich jak członkowie zespołu księgowego w organizacji. Aby uzyskać więcej informacji, zobacz sekcję [Zadania i role profilu rozliczeniowego](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
 
-### <a name="each-billing-profile-gets-a-monthly-invoice"></a>Każdy profil rozliczeniowy pobiera miesięcznej fakturze
+### <a name="each-billing-profile-gets-a-monthly-invoice"></a>Każdy profil rozliczeniowy otrzymuje fakturę miesięczną
 
-Miesięcznej fakturze jest generowany po rozpoczęciu miesiąca dla każdego profilu rozliczeń. Faktura zawiera wszystkie opłaty z poprzedniego miesiąca.
+Dla każdego profilu rozliczeniowego na początku miesiąca jest generowana faktura miesięczna. Faktura zawiera wszystkie opłaty z poprzedniego miesiąca.
 
-Możesz wyświetlić faktury, pobierania dokumentów i zmienić ustawienie, aby uzyskać przyszłe faktury za pośrednictwem poczty e-mail w witrynie Azure portal. Aby uzyskać więcej informacji, zobacz [pobierać faktury dla umowy klienta Microsoft](billing-download-azure-invoice-daily-usage-date.md#download-invoices-for-a-microsoft-customer-agreement).
+W witrynie Azure Portal możesz wyświetlić fakturę, pobrać dokumenty i zmienić ustawienie, aby otrzymywać przyszłe faktury za pośrednictwem poczty e-mail. Aby uzyskać więcej informacji, zobacz sekcję dotyczącą [pobierania faktur w ramach Umowy klienta firmy Microsoft](billing-download-azure-invoice-daily-usage-date.md#download-invoices-for-a-microsoft-customer-agreement).
 
-### <a name="invoice-payment-methods"></a>Metodami płatności faktury
+### <a name="invoice-payment-methods"></a>Fakturowanie form płatności
 
-Każdy profil rozliczeniowy ma swoje własne metody płatności, które są używane do płacenia jego faktur. Obsługiwane są następujące formy płatności:
+Każdy profil rozliczeniowy ma swoje formy płatności za faktury. Obsługiwane są następujące formy płatności:
 
 | Typ             | Definicja  |
 |------------------|-------------|
-|Kredytów systemu Azure    |  Środki są automatycznie stosowane do kwalifikujących się opłat na fakturze, skracając, który trzeba płacić. Aby uzyskać więcej informacji, zobacz [śledzić salda środków platformy Azure dla swojego profilu rozliczeń](billing-mca-check-azure-credits-balance.md). |
-|Sprawdź/przewodowy transferu | Jeśli Twoje konto zostanie zatwierdzona do płatności za pośrednictwem wyboru/przelew bankowy. Można płacić, kwota należności fakturę za pośrednictwem wyboru/przelew bankowy. Instrukcje dotyczące płatności są podane na fakturze |
-|Karta kredytowa | Klienci, którzy utworzą konto na platformie Azure za pośrednictwem witryny internetowej platformy Azure można płacić za pomocą karty kredytowej. |
+|Środki na korzystanie z platformy Azure    |  Środki są automatycznie stosowane do kwalifikujących się opłat na fakturze, co zmniejsza wymaganą kwotę do zapłacenia. Aby uzyskać więcej informacji, zobacz temat [Track Azure credit balance for your billing profile](billing-mca-check-azure-credits-balance.md) (Śledzenie salda środków na korzystanie z platformy Azure dla profilu rozliczeniowego). |
+|Czek / przelew bankowy | Jeśli konto zostało zatwierdzone do dokonywania płatności przy użyciu czeku/przelewu bankowego. Możesz zapłacić kwotę należną za fakturę za pomocą czeku lub przelewu bankowego. Instrukcje dotyczące płatności są podane na fakturze |
+|Karta kredytowa | Klienci, którzy rejestrują się na platformie Azure za pomocą witryny internetowej tej platformy, mogą płacić przy użyciu karty kredytowej. |
 
-### <a name="apply-policies-to-control-purchases"></a>Stosować zasady umożliwiające kontrolowanie zakupów
+### <a name="apply-policies-to-control-purchases"></a>Stosowanie zasad w celu kontrolowania zakupów
 
-Stosowanie zasad do kontroli portalu Azure Marketplace i zakup rezerwacji przy użyciu profilu rozliczeń. Można ustawić zasady, aby wyłączyć zakupu rezerwacji platformy Azure i produkty w portalu Marketplace. Gdy zasady są stosowane, subskrypcją rozliczaną w taki sposób, aby profil rozliczeniowy nie może służyć do tych zakupów.
+Zasady można stosować w celu kontrolowania zakupów w portalu Azure Marketplace i zakupów rezerwacji przy użyciu profilu rozliczeniowego. Można ustawić zasady, aby wyłączyć możliwość zakupu rezerwacji platformy Azure i produktów z witryny Marketplace. Po zastosowaniu zasad subskrypcje rozliczane w profilu rozliczeniowym nie mogą być używane do dokonywania tych zakupów.
 
-### <a name="azure-plans-determine-pricing-and-service-level-agreement-for-subscriptions"></a>Azure plany określić cen i usługi umowy dotyczącej poziomu subskrypcji
+### <a name="azure-plans-determine-pricing-and-service-level-agreement-for-subscriptions"></a>Plany platformy Azure określają ceny i umowę dotyczącą poziomu usług dla subskrypcji
 
-Plany usługi Azure określania ceny i umowami dotyczącymi poziomu dla subskrypcji platformy Azure. Są one włączane automatycznie podczas tworzenia profilu rozliczeń. Wszystkie sekcje faktury, które są skojarzone z profilem rozliczeń można użyć tych planów. Użytkownicy z dostępem do sekcji faktury Użyj plany, aby utworzyć subskrypcje platformy Azure. Następujące plany usługi Azure są obsługiwane w rozliczeniach kont do umowy klienta firmy Microsoft:
+Plany platformy Azure określają ceny i umowę dotyczącą poziomu usług dla subskrypcji platformy Azure. Są one automatycznie włączane podczas tworzenia profilu rozliczeniowego. Wszystkie sekcje faktury skojarzone z profilem rozliczeniowym mogą korzystać z tych planów. Użytkownicy z dostępem do sekcji faktury używają planów do tworzenia subskrypcji platformy Azure. Następujące plany platformy Azure są obsługiwane na kontach rozliczeniowych w przypadku Umowy klienta firmy Microsoft:
 
 | Planowanie             | Definicja  |
 |------------------|-------------|
-|Plan platformy Microsoft Azure   | Zezwalaj użytkownikom na tworzenie subskrypcji, które można uruchomić żadnych obciążeń. Aby uzyskać więcej informacji, zobacz [Plan usługi Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0017g/) |
-|Plan platformy Microsoft Azure — tworzenie i testowanie | Zezwalaj na subskrybentów programu Visual Studio do utworzenia subskrypcji, które są ograniczone do tworzenia lub testowania obciążenia. Te subskrypcje korzyści takie jak niższe stawki oraz dostęp do obrazów maszyn wirtualnych wyłączności w witrynie Azure portal. Aby uzyskać więcej informacji, zobacz [Microsoft Azure planowanie DevTest](https://azure.microsoft.com/offers/ms-azr-0148g/)|
+|Plan platformy Microsoft Azure   | Zezwól użytkownikom na tworzenie subskrypcji, w których można uruchamiać dowolne obciążenia.  |
+|Plan platformy Microsoft Azure na potrzeby tworzenia i testowania | Zezwól subskrybentom programu Visual Studio na tworzenie subskrypcji, które są ograniczone do obsługi obciążeń programistycznych lub testowych. Te subskrypcje uzyskują korzyści, takie jak niższe stawki i dostęp do wyłącznego obrazu maszyn wirtualnych w witrynie Azure Portal. |
 
 ## <a name="invoice-sections"></a>Sekcje faktury
 
-Tworzenie sekcji faktur do organizowania kosztów na fakturze. Na przykład może być konieczne pojedynczej faktury dla Twojej organizacji, ale chcesz organizować koszty według działu, zespołu lub projektu. W tym scenariuszu masz jeden profil rozliczeniowym, w której utworzono sekcję faktury dla każdego działu, zespołu lub projektu.
+Sekcje faktury można tworzyć w celu organizowania kosztów na fakturze. Możesz na przykład potrzebować jednej faktury dla organizacji, ale chcesz zorganizować koszty według działu, zespołu lub projektu. W tym scenariuszu istnieje pojedynczy profil rozliczeniowy, w którym jest tworzona sekcja faktury dla każdego działu, zespołu lub projektu.
 
-Po utworzeniu faktury sekcji, można zezwolić innym tworzyć subskrypcje platformy Azure, które są rozliczane w sekcji. Wszelkie opłaty za użycie i zakupów dla subskrypcji, następnie są rozliczane w sekcji.
+Po utworzeniu sekcji faktury możesz nadać innym użytkownikom uprawnienia do tworzenia subskrypcji platformy Azure, które są rozliczane w ramach sekcji. Wszelkie opłaty za użycie i zakupy dla subskrypcji są następnie rozliczane w ramach sekcji.
 
-Role w sekcji faktury mają uprawnienia do kontroli, który tworzy subskrypcji platformy Azure. Przypisz te role do użytkowników, którzy konfigurowania środowiska platformy Azure dla zespołów w naszej organizacji, takich jak inżynierów potencjalnych klientów i architektów Technical Preview. Aby uzyskać więcej informacji, zobacz [faktury sekcji role i zadania](billing-understand-mca-roles.md#invoice-section-roles-and-tasks).
+Role w sekcji faktury mają uprawnienia do kontrolowania, kto tworzy subskrypcje platformy Azure. Przypisz te role do użytkowników, którzy konfigurują środowisko platformy Azure dla zespołów w naszej organizacji, np. liderów zespołów inżynierów i architektów technicznych. Aby uzyskać więcej informacji, zobacz sekcję [Zadania i role sekcji faktur](billing-understand-mca-roles.md#invoice-section-roles-and-tasks).
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>Sprawdź dostęp do umowy klienta firmy Microsoft
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>Sprawdzanie dostępu do Umowy klienta firmy Microsoft
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną.
 
-Jeśli potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem.
+Jeśli potrzebujesz pomocy, [skontaktuj się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), aby szybko rozwiązać problem.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zobacz następujące artykuły, aby dowiedzieć się więcej na temat konta rozliczeniowego:
+Zapoznaj się z następującymi artykułami, aby dowiedzieć się więcej na temat konta rozliczeniowego:
 
-- [Zrozumienie umowy klienta Microsoft ról administracyjnych na platformie Azure](billing-understand-mca-roles.md)
-- [Należy utworzyć dodatkową subskrypcję platformy Azure dla umowy klienta firmy Microsoft](billing-mca-create-subscription.md)
-- [Tworzenie sekcji na fakturze w taki sposób, aby zorganizować koszty](billing-mca-section-invoice.md)
+- [Understand Microsoft Customer Agreement administrative roles in Azure](billing-understand-mca-roles.md) (Omówienie ról administracyjnych dla Umowy klienta firmy Microsoft na platformie Azure)
+- [Tworzenie dodatkowej subskrypcji platformy Azure dla Umowy klienta firmy Microsoft](billing-mca-create-subscription.md)
+- [Tworzenie sekcji na fakturze w celu organizacji kosztów](billing-mca-section-invoice.md)

@@ -1,7 +1,7 @@
 ---
-title: Zapłacić rachunku dla systemu Microsoft Azure | Dokumentacja firmy Microsoft
-description: Opisuje sposób zapłaty faktury w witrynie Azure portal
-keywords: rozliczenia, upłynął termin, saldo, opłaty za teraz
+title: Opłacanie rachunku za korzystanie z platformy Microsoft Azure | Microsoft Docs
+description: W tym artykule opisano, jak opłacić fakturę w witrynie Azure Portal
+keywords: rozliczenie, zaległe, saldo, zapłać teraz,
 services: billing
 documentationcenter: ''
 author: jureid
@@ -16,43 +16,43 @@ ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: banders
 ms.openlocfilehash: acb361cb2fd261265339fddca83c4f1b2e59a1c5
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67495547"
 ---
-# <a name="how-to-pay-your-bill-for-microsoft-azure"></a>Jak zapłacić rachunku dla systemu Microsoft Azure
+# <a name="how-to-pay-your-bill-for-microsoft-azure"></a>Jak zapłacić rachunek za korzystanie z platformy Microsoft Azure
 
-Ten artykuł dotyczy klientów z umową klienta firmy Microsoft, którzy utworzyli konto platformy Azure za pośrednictwem witryny internetowej platformy Azure. [Sprawdź swój dostęp do umowy klienta Microsoft](#check-access-to-a-microsoft-customer-agreement).
+Ten artykuł dotyczy klientów z Umową klienta firmy Microsoft, którzy zarejestrowali się, aby korzystać z platformy Azure, za pośrednictwem witryny internetowej platformy Azure. [Sprawdź dostęp do Umowy klienta firmy Microsoft](#check-access-to-a-microsoft-customer-agreement).
 
-Domyślnej metody płatności rozliczeń profilu można kartą kredytową lub wyboru/podczas transferu. Jeśli masz kredytów systemu Azure, te są automatycznie stosowane do fakturze każdego okresu rozliczeniowego. Aby czerpać informacje dotyczące płatności za wyboru/polecenie przelewu bankowego, zobacz [jak przy użyciu faktury](billing-how-to-pay-by-invoice.md).
+Domyślną metodą płatności Twojego profilu rozliczania może być karta kredytowa lub czek/przelew bankowy. Jeśli masz środki na korzystanie z systemu Azure, są one automatycznie stosowane do faktury w każdym okresie rozliczeniowym. Aby zakwalifikować się do płatności za pomocą czeku/przelewu bankowego, zobacz [jak płacić na podstawie faktury](billing-how-to-pay-by-invoice.md).
 
-Domyślnej metody płatności w przypadku wyboru/polecenie przelewu bankowego, można wysyłać płatności pod adresem podanym na dole faktury. Alternatywnie możesz zapłacić online za pomocą karty kredytowej w witrynie Azure portal.
+Jeśli domyślna forma płatności to czek/przelew bankowy, możesz wysłać płatność na adres wymieniony w dolnej części faktury. Możesz także zapłacić online za pomocą karty kredytowej w witrynie Azure Portal.
 
-Jeśli domyślnej metody płatności kartą kredytową, będą automatycznie opłaty karty kredytowej każdego okresu rozliczeniowego, po wygenerowaniu faktury. Możesz również zapłacić online w witrynie Azure portal, jeśli chcesz użyć innej karty kredytowej lub Jeśli automatyczne opłaty nie powiedzie się.
+Jeśli domyślną formą płatności jest karta kredytowa, automatycznie obciążymy Twoją kartę kredytową w każdym okresie rozliczeniowym po wygenerowaniu faktury. Jeśli chcesz użyć innej karty kredytowej lub opłata automatyczna nie powiedzie się, możesz zapłacić online w witrynie Azure Portal.
 
-## <a name="pay-now-in-the-azure-portal"></a>Płatność natychmiastowa w witrynie Azure portal
+## <a name="pay-now-in-the-azure-portal"></a>Opcja Zapłać teraz w witrynie Azure Portal
 
-Musi być rozliczeń właściciela profilu, współautora lub Menedżer faktur do zapłacenia za faktur w witrynie Azure portal.
+Aby opłacać faktury w witrynie Azure Portal, musisz być właścicielem, współautorem lub menedżerem faktur dla profilu rozliczeniowego.
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com).
-1. Wyszukiwanie **Cost Management + rozliczenia**.
-1. W **Przegląd** bloku kliknij *Podsumowanie* kartę.
+1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
+1. W bloku **Przegląd** kliknij kartę *Podsumowanie*.
 
-    ![Zrzut ekranu pokazujący karta Podsumowanie](./media/billing-how-to-pay-bill/billing-account-overview.png)
+    ![zrzut ekranu przedstawiający kartę Podsumowanie](./media/billing-how-to-pay-bill/billing-account-overview.png)
 
-1. W przypadku płatności lub Zaległa faktury, zobaczysz łączna kwota.
-1. Kliknij niebieski **płatność natychmiastowa** przycisku.
+1. Jeśli masz bieżące lub zaległe faktury, zobaczysz łączną należną kwotę.
+1. Kliknij niebieski przycisk **Zapłać teraz**.
 
-    ![Zrzut ekranu przedstawiający przycisk Zapłać teraz](./media/billing-how-to-pay-bill/paynow-button-overview.png)
+    ![zrzut ekranu przedstawiający przycisk Zapłać teraz](./media/billing-how-to-pay-bill/paynow-button-overview.png)
 
-1. W nowym bloku kliknij **Wybierz formę płatności** wybierz istniejącej karty kredytowej lub dodać nowe konto.<!-- screenshot of select payment method link -->
-1. Po wybraniu metody płatności, kliknij przycisk **płatność natychmiastowa**.
+1. W nowym bloku kliknij pozycję **Wybierz metodę płatności**, aby wybrać istniejącą kartę kredytową lub dodać nową.<!-- screenshot of select payment method link -->
+1. Po wybraniu metody płatności kliknij pozycję **Zapłać teraz**.
 
-Będzie można zaktualizować stanu faktury zwrócić w bloku faktur. 
+W bloku faktur stan faktury zostanie zmieniony na opłacony. 
 
 <!-- pay now from invoice blade -->
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>Sprawdź dostęp do umowy klienta firmy Microsoft
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>Sprawdzanie dostępu do umowy klienta firmy Microsoft
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
