@@ -35,8 +35,6 @@
   items:
     - name: Łączenie urządzeń
       items:
-        - name: Generowanie parametrów połączenia urządzenia
-          href: howto-generate-connection-string.md
         - name: Przygotowywanie i łączenie aplikacji Node.js (ogólnej)
           href: howto-connect-nodejs.md
         - name: Przygotowywanie i łączenie zestawu deweloperskiego IoT MXChip
