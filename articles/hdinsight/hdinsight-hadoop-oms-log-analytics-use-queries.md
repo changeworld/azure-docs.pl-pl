@@ -2,18 +2,18 @@
 title: Wykonywanie zapytań dotyczących dzienników Azure Monitor do monitorowania klastrów usługi Azure HDInsight
 description: Dowiedz się, jak uruchamiać zapytania dotyczące dzienników Azure Monitor, aby monitorować zadania uruchomione w klastrze usługi HDInsight.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/05/2018
-ms.author: hrasheed
-ms.openlocfilehash: 031879ac1d0d2dd1148c0c37ee72c60d093f8a7d
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 51344ff7381b6392870b1fd0e331eed38a33915d
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70809382"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103517"
 ---
 # <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Wykonywanie zapytań dotyczących dzienników Azure Monitor do monitorowania klastrów usługi HDInsight
 
@@ -27,38 +27,38 @@ Zapoznaj się z podstawowymi scenariuszami dotyczącymi używania dzienników Az
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Należy skonfigurować klaster usługi HDInsight do używania dzienników Azure Monitor i dodać do obszaru roboczego usługi rejestrowania Azure Monitor specyficzne dla klastra usługi HDInsight. Aby uzyskać instrukcje, zobacz [Korzystanie z dzienników Azure monitor z klastrami usługi HDInsight](hdinsight-hadoop-oms-log-analytics-tutorial.md).
+Należy skonfigurować klaster usługi HDInsight do używania dzienników Azure Monitor i dodać do obszaru roboczego usługi rejestrowania Azure Monitor specyficzne dla klastra usługi HDInsight. Aby uzyskać instrukcje, zobacz [Korzystanie z dzienników Azure monitor z klastrami usługi HDInsight](hdinsight-hadoop-oms-log-analytics-tutorial.md).
 
 ## <a name="analyze-hdinsight-cluster-metrics"></a>Analizowanie metryk klastra usługi HDInsight
 
 Dowiedz się, jak szukać określonych metryk dla klastra usługi HDInsight.
 
 1. Otwórz obszar roboczy Log Analytics, który jest skojarzony z klastrem usługi HDInsight z Azure Portal.
-2. Wybierz kafelek **przeszukiwanie dzienników** .
-3. Wpisz następujące zapytanie w polu wyszukiwania, aby wyszukać wszystkie metryki dla wszystkich dostępnych metryk dla wszystkich klastrów usługi HDInsight skonfigurowanych do korzystania z dzienników Azure Monitor, a następnie wybierz pozycję **Uruchom**.
+1. Wybierz kafelek **przeszukiwanie dzienników** .
+1. Wpisz następujące zapytanie w polu wyszukiwania, aby wyszukać wszystkie metryki dla wszystkich dostępnych metryk dla wszystkich klastrów usługi HDInsight skonfigurowanych do korzystania z dzienników Azure Monitor, a następnie wybierz pozycję **Uruchom**.
 
         search *
 
-    ![Przeszukaj wszystkie metryki](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics.png "Przeszukaj wszystkie metryki")
+    ![Wyszukiwanie w usłudze Apache Ambari Analytics — wszystkie metryki](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics.png "Przeszukaj wszystkie metryki")
 
     Dane wyjściowe wyglądają następująco:
 
-    ![Przeszukaj wszystkie dane wyjściowe metryk](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics-output.png "Przeszukaj wszystkie dane wyjściowe metryk")
+    ![Wyszukaj wszystkie metryki w usłudze log Analytics](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics-output.png "Przeszukaj wszystkie dane wyjściowe metryk")
 
-5. W lewym okienku w obszarze **Typ**wybierz metrykę, do której chcesz Dig, a następnie wybierz pozycję **Zastosuj**. Poniższy zrzut ekranu przedstawia `metrics_resourcemanager_queue_root_default_CL` wybrany typ.
+1. W lewym okienku w obszarze **Typ**wybierz metrykę, do której chcesz Dig, a następnie wybierz pozycję **Zastosuj**. Poniższy zrzut ekranu przedstawia `metrics_resourcemanager_queue_root_default_CL` wybrany typ.
 
     > [!NOTE]  
     > Może być konieczne wybranie przycisku **[+] więcej** , aby znaleźć szukaną metrykę. Ponadto przycisk **Zastosuj** znajduje się u dołu listy, więc musisz przewinąć w dół, aby go zobaczyć.
 
     Zwróć uwagę, że zapytanie w polu tekstowym zmieni się na jedno pokazane w wyróżnionym polu na poniższym zrzucie ekranu:
 
-    ![Wyszukaj określone metryki](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-metrics.png "Wyszukaj określone metryki")
+    ![metryki wyszukiwania dla usługi log Analytics](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-metrics.png "Wyszukaj określone metryki")
 
-6. Aby Dig bardziej szczegółowy pomiar. Na przykład można uściślić istniejące dane wyjściowe w oparciu o średnią liczbę zasobów używanych w 10-minutowych interwałach w kategorii według nazwy klastra, korzystając z następującej kwerendy:
+1. Aby Dig bardziej szczegółowy pomiar. Na przykład można uściślić istniejące dane wyjściowe w oparciu o średnią liczbę zasobów używanych w 10-minutowych interwałach w kategorii według nazwy klastra, korzystając z następującej kwerendy:
 
         search in (metrics_resourcemanager_queue_root_default_CL) * | summarize AggregatedValue = avg(UsedAMResourceMB_d) by ClusterName_s, bin(TimeGenerated, 10m)
 
-7. Zamiast rafinacji na podstawie średniej używanych zasobów, można użyć następującego zapytania, aby uściślić wyniki w zależności od tego, kiedy zostały użyte maksymalne zasoby (a także 90 i używany 95. percentyl) w 10-minutowych oknach:
+1. Zamiast rafinacji na podstawie średniej używanych zasobów, można użyć następującego zapytania, aby uściślić wyniki w zależności od tego, kiedy zostały użyte maksymalne zasoby (a także 90 i używany 95. percentyl) w 10-minutowych oknach:
 
         search in (metrics_resourcemanager_queue_root_default_CL) * | summarize ["max(UsedAMResourceMB_d)"] = max(UsedAMResourceMB_d), ["pct95(UsedAMResourceMB_d)"] = percentile(UsedAMResourceMB_d, 95), ["pct90(UsedAMResourceMB_d)"] = percentile(UsedAMResourceMB_d, 90) by ClusterName_s, bin(TimeGenerated, 10m)
 
@@ -68,15 +68,16 @@ Dowiedz się, jak wyszukiwać komunikaty o błędach w określonym przedziale cz
 
 1. Otwórz obszar roboczy Log Analytics, który jest skojarzony z klastrem usługi HDInsight z Azure Portal.
 2. Wybierz kafelek **przeszukiwanie dzienników** .
-3. Wpisz następujące zapytanie, aby wyszukać wszystkie komunikaty o błędach dla wszystkich klastrów usługi HDInsight skonfigurowanych do korzystania z dzienników Azure Monitor, a następnie wybierz pozycję **Uruchom**. 
+3. Wpisz następujące zapytanie, aby wyszukać wszystkie komunikaty o błędach dla wszystkich klastrów usługi HDInsight skonfigurowanych do korzystania z dzienników Azure Monitor, a następnie wybierz pozycję **Uruchom**.
 
          search "Error"
 
     Zostaną wyświetlone dane wyjściowe podobne do następujących:
 
-    ![Przeszukaj wszystkie błędy wyjściowe](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-errors-output.png "Przeszukaj wszystkie błędy wyjściowe")
+    ![Błędy przeszukiwania dzienników Azure Portal](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-errors-output.png "Przeszukaj wszystkie błędy wyjściowe")
 
 4. W okienku po lewej stronie w obszarze **Typ** kategorii wybierz typ błędu, który ma być Dig głębokiego, a następnie wybierz pozycję **Zastosuj**.  Zauważ, że wyniki są rafinowane, aby pokazać tylko błąd wybranego typu.
+
 5. Można Dig bardziej szczegółową listę błędów, używając opcji dostępnych w lewym okienku. Na przykład:
 
     - Aby wyświetlić komunikaty o błędach z określonego węzła procesu roboczego:

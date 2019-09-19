@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 09/18/2019
 ms.author: dapine
-ms.openlocfilehash: a2f743b2b7e63df8b81a1024b20e3e27a3f247a9
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 4a961080bc124e53a8c5fe4dcc5f3cd6f21e9e5c
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932991"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71102570"
 ---
-# <a name="configure-anomaly-detector-containers"></a>Konfigurowanie kontenerów wykrywania anomalii
+# <a name="configure-anomaly-detector-containers"></a>Konfigurowanie kontenerów narzędzia do wykrywania anomalii
 
 Środowisko uruchomieniowe kontenera **wykrywania anomalii** jest konfigurowane przy użyciu `docker run` argumentów polecenia. Ten kontener ma kilka wymaganych ustawień oraz kilka opcjonalnych ustawień. Kilka [przykłady](#example-docker-run-commands) polecenia są dostępne. Ustawienia dotyczące rozliczeń dotyczą tylko kontenera. 
 
@@ -88,7 +88,7 @@ Kontenery wykrywania anomalii nie używają instalacji danych wejściowych lub w
 
 Dokładna składnia lokalizację instalacji hosta różni się zależnie od systemu operacyjnego hosta. Ponadto lokalizacja instalacji [komputera hosta](anomaly-detector-container-howto.md#the-host-computer)może być niedostępna z powodu konfliktu między uprawnieniami używanymi przez konto usługi platformy Docker i uprawnieniami lokalizacji instalacji hosta. 
 
-|Optional| Name (Nazwa) | Typ danych | Opis |
+|Optional| Name | Typ danych | Opis |
 |-------|------|-----------|-------------|
 |Niedozwolone| `Input` | String | Kontenery wykrywania anomalii nie używają tego.|
 |Optional| `Output` | String | Miejsce docelowe instalacji danych wyjściowych. Wartość domyślna to `/output`. Jest to Lokalizacja dzienników. Dotyczy to również dzienników kontenerów. <br><br>Przykład:<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -104,8 +104,10 @@ Zastąp wartość w nawiasach `{}`, z własnymi wartościami:
 
 | Symbol zastępczy | Wartość | Format lub przykład |
 |-------------|-------|---|
-|{API_KEY} | Klucz punktu końcowego zasobu wykrywania anomalii. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{ENDPOINT_URI} | Wartość punktu końcowego rozliczenia włącznie z regionem.|`https://westus2.api.cognitive.microsoft.com`|
+| **{API_KEY}** | Klucz `Anomaly Detector` punktu końcowego zasobu na stronie kluczy platformy Azure `Anomaly Detector` . | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | Wartość punktu końcowego rozliczenia jest dostępna na stronie `Anomaly Detector` przegląd platformy Azure.| Zobacz [zbieranie wymaganych parametrów](anomaly-detector-container-howto.md#gathering-required-parameters) dla jawnych przykładów. |
+
+[!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
 > `Eula`, `Billing`, I `ApiKey` opcje muszą być określone w celu uruchomienia kontenera; w przeciwnym razie nie uruchamia się kontener.  Aby uzyskać więcej informacji, zobacz [rozliczeń](anomaly-detector-container-howto.md#billing).

@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 09/18/2019
 ms.author: dapine
-ms.openlocfilehash: 0c2ff2c745ebed8385df0d351c6d43faf5ab1b9d
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 339aab3ffe228d306738d3c17394bd322ab5e06c
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050059"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103773"
 ---
-# <a name="install-and-run-anomaly-detector-containers"></a>Instalowanie i uruchamianie kontenerów wykrywania anomalii
+# <a name="install-and-run-anomaly-detector-containers"></a>Instalowanie i uruchamianie kontenerów narzędzia do wykrywania anomalii
 
 Detektor anomalii ma następujący kontener: 
 
@@ -39,6 +39,8 @@ Przed użyciem kontenerów wykrywania anomalii należy spełnić następujące w
 |Aparat platformy Docker| Aparat platformy Docker musi być zainstalowany na [komputerze-hoście](#the-host-computer). Platforma Docker zawiera pakiety, które konfigurują środowisko platformy Docker w systemach [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)i [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Aby uzyskać podstawowe informacje na temat platformy Docker i kontenerów, zobacz [Docker — omówienie](https://docs.docker.com/engine/docker-overview/).<br><br> Docker należy skonfigurować w taki sposób, aby umożliwić kontenerów, aby nawiązać połączenie z, a następnie wysyłać danych dotyczących rozliczeń do platformy Azure. <br><br> **W systemie Windows**program Docker musi być również skonfigurowany do obsługi kontenerów systemu Linux.<br><br>|
 |Znajomość platformy Docker | Należy dysponować podstawową wiedzą na temat pojęć platformy Docker, takich jak rejestry, repozytoria, kontenery i obrazy kontenerów, a także znajomość `docker` podstawowych poleceń.| 
 |Zasób wykrywania anomalii |Aby można było korzystać z tych kontenerów, musisz mieć:<br><br>Zasób _wykrywania anomalii_ platformy Azure w celu pobrania skojarzonego klucza interfejsu API i identyfikatora URI punktu końcowego. Obie wartości są dostępne na stronach omówienie i klucze **wykrywania anomalii** Azure Portal i są wymagane do uruchomienia kontenera.<br><br>**{API_KEY}** : Jeden z dwóch dostępnych kluczy zasobów na stronie **klucze**<br><br>**{ENDPOINT_URI}** : Punkt końcowy zgodnie z opisem na stronie **Przegląd**|
+
+[!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
 ## <a name="request-access-to-the-container-registry"></a>Zażądaj dostępu do rejestru kontenerów
 
@@ -80,7 +82,6 @@ For a full description of available tags, such as `latest` used in the preceding
 -->
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
-
 ### <a name="docker-pull-for-the-anomaly-detector-container"></a>Wypychanie platformy Docker dla kontenera wykrywania anomalii
 
 ```Docker
@@ -96,14 +97,9 @@ Gdy kontener znajduje się na [komputerze hosta](#the-host-computer), użyj nast
 
 ## <a name="run-the-container-with-docker-run"></a>Uruchom kontener za pomocą`docker run`
 
-Użyj polecenia [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) , aby uruchomić jeden z trzech kontenerów. Polecenie używa następujących parametrów:
+Użyj polecenia [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) , aby uruchomić kontener. Zapoznaj się z tematem [zbieranie wymaganych parametrów](#gathering-required-parameters) `{ENDPOINT_URI}` , aby uzyskać szczegółowe `{API_KEY}` informacje na temat sposobu pobierania wartości i.
 
-| Symbol zastępczy | Value |
-|-------------|-------|
-|{API_KEY} | Ten klucz jest używany do uruchamiania kontenera i jest dostępny na stronie klucze wykrywania anomalii Azure Portal.  |
-|{ENDPOINT_URI} | Wartość identyfikatora URI punktu końcowego rozliczenia jest dostępna na stronie omówienia wykrywania anomalii Azure Portal.|
-
-Zastąp te parametry własnymi wartościami w poniższym przykładowym `docker run` poleceniu.
+Przykłady polecenia są dostępne. [](anomaly-detector-container-configuration.md#example-docker-run-commands) `docker run`
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
@@ -168,7 +164,7 @@ Użyj hosta, http://localhost:5000, dla interfejsów API kontenerów.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Jeśli uruchamiasz kontener z instalacją wyjściową [](anomaly-detector-container-configuration.md#mount-settings) i włączono rejestrowanie, kontener generuje pliki dziennika, które są przydatne do rozwiązywania problemów występujących podczas uruchamiania lub uruchamiania kontenera. 
+Jeśli uruchamiasz kontener z [instalacją wyjściową](anomaly-detector-container-configuration.md#mount-settings) i włączono rejestrowanie, kontener generuje pliki dziennika, które są przydatne do rozwiązywania problemów występujących podczas uruchamiania lub uruchamiania kontenera. 
 
 ## <a name="billing"></a>Rozliczenia
 

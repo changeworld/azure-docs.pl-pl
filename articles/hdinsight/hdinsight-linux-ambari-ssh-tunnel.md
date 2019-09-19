@@ -2,18 +2,18 @@
 title: Korzystanie z tunelowania SSH do uzyskiwania dostępu do usługi Azure HDInsight
 description: Dowiedz się, jak bezpiecznie przeglądać zasoby internetowe hostowane w węzłach usługi HDInsight opartej na systemie Linux przy użyciu tunelu SSH.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.author: hrasheed
-ms.openlocfilehash: cad2988a9b6d6cdf557eeabee7cc93e0bbba9267
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: d976826fe90946697a32c5b1edb9dd323b01cc1c
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879602"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105469"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>Używanie tunelowania SSH do uzyskiwania dostępu do interfejsu użytkownika, JobHistory, NameNode, Apache Oozie i innych interfejsów użytkownika
 
@@ -90,19 +90,19 @@ Po zakończeniu wykonywania polecenia ruch wysyłany do portu 9876 na komputerze
 
 1. Wybierz **Zapisz**
 
-    ![Utwórz sesję SSH](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-create-putty-session.png)
+    ![Sesja tworzenia usługi HDInsight](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-create-putty-session.png)
 
 1. W sekcji **Kategoria** po lewej stronie okna dialogowego rozwiń węzeł **połączenie**, rozwiń węzeł **SSH**, a następnie wybierz pozycję **tunele**.
 
 1. Podaj następujące informacje na temat **opcji kontrolujących formularz przekazywania portów SSH** :
-   
+
    * **Source port** (Port źródłowy) — port na komputerze klienckim, który ma być przekierowany. Na przykład **9876**.
 
    * **Miejsce docelowe** — adres SSH dla klastra usługi HDInsight. Na przykład **mójklaster-ssh.azurehdinsight.net**.
 
    * **Dynamic** (Dynamiczny) — umożliwia dynamiczny routing serwera proxy SOCKS.
-     
-     ![obraz opcji tunelowania](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-putty-tunnel.png)
+
+     ![Opcje tunelowania konfiguracji.](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-putty-tunnel.png)
 
 1. Wybierz pozycję **Dodaj** , aby dodać ustawienia, a następnie kliknij przycisk **Otwórz** , aby otworzyć połączenie SSH.
 
@@ -114,9 +114,9 @@ Po zakończeniu wykonywania polecenia ruch wysyłany do portu 9876 na komputerze
 > Kroki opisane w tej sekcji korzystają z przeglądarki Mozilla FireFox, ponieważ udostępniają one te same ustawienia serwera proxy na wszystkich platformach. Inne nowoczesne przeglądarki, takie jak Google Chrome, mogą wymagać rozszerzenia, takiego jak FoxyProxy, aby móc korzystać z tunelu.
 
 1. Skonfiguruj przeglądarkę do używania **hosta lokalnego** i portu użytego podczas tworzenia tunelu jako serwera proxy **SOCKS v5** . Oto, jak wyglądają ustawienia w przeglądarce Firefox. Jeśli użyto innego portu niż 9876, zmień port na używany przez Ciebie:
-   
-    ![obraz ustawień programu Firefox](./media/hdinsight-linux-ambari-ssh-tunnel/firefox-proxy-settings.png)
-   
+
+    ![Ustawienia serwera proxy przeglądarki Firefox](./media/hdinsight-linux-ambari-ssh-tunnel/firefox-proxy-settings.png)
+
    > [!NOTE]  
    > Wybranie opcji **zdalny serwer DNS** rozwiązuje żądania systemu nazw domen (DNS) za pomocą klastra usługi HDInsight. To ustawienie umożliwia rozwiązanie systemu DNS przy użyciu węzła głównego klastra.
 
@@ -133,7 +133,7 @@ Po ustanowieniu klastra wykonaj następujące kroki, aby sprawdzić, czy można 
 
 2. Z poziomu interfejsu użytkownika sieci Web Ambari wybierz opcję HDFS z listy znajdującej się po lewej stronie.
 
-    ![Obraz z wybranym systemem HDFS](./media/hdinsight-linux-ambari-ssh-tunnel/hdfs-service-selected.png)
+    ![Wybrana usługa Apache Ambari HDFS](./media/hdinsight-linux-ambari-ssh-tunnel/hdfs-service-selected.png)
 
 3. Po wyświetleniu informacji o usłudze HDFS wybierz pozycję **szybkie linki**. Zostanie wyświetlona lista węzłów głównych klastra. Wybierz jeden z węzłów głównych, a następnie wybierz pozycję **interfejs użytkownika NameNode**.
 
@@ -146,7 +146,7 @@ Po ustanowieniu klastra wykonaj następujące kroki, aby sprawdzić, czy można 
 
 4. Zostanie wyświetlona strona podobna do następującej:
 
-    ![Obraz interfejsu użytkownika NameNode](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-namenode-ui.png)
+    ![Obraz interfejsu użytkownika usługi Hadoop NameNode](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-namenode-ui.png)
 
     > [!NOTE]  
     > Zwróć uwagę na adres URL tej strony; powinien być podobny do `http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster`. Ten identyfikator URI używa wewnętrznej w pełni kwalifikowanej nazwy domeny (FQDN) węzła i jest dostępny tylko w przypadku korzystania z tunelu SSH.

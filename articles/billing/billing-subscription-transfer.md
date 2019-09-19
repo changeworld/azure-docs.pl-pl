@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 09/18/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1e4496e2b5d2b21fd878ef68665b8e5b06fa6cc5
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 325de36f3aa480847bc647827260f7f65765b5d7
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70012539"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103747"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Przeniesienie własności rozliczeń subskrypcji platformy Azure na inne konto
 
@@ -38,7 +38,7 @@ Jeśli jesteś klientem z Umową Enterprise (EA), administratorzy w Twoim przeds
 
 1. Wybierz pozycję **Subskrypcje** w okienku po lewej stronie. W zależności od dostępu może być konieczne wybranie zakresu rozliczeniowego, a następnie **subskrypcji** lub **subskrypcji platformy Azure**.
 
-1. Wybierz pozycję **Przenieś własność rozliczeń subskrypcji** dla subskrypcji, którą chcesz przenieść. 
+1. Wybierz pozycję **Przenieś własność rozliczeń subskrypcji** dla subskrypcji, którą chcesz przenieść.
 
    ![Wybierz subskrypcję do przeniesienia](./media/billing-subscription-transfer/billing-select-subscription-to-transfer.png)
 
@@ -49,7 +49,7 @@ Jeśli jesteś klientem z Umową Enterprise (EA), administratorzy w Twoim przeds
     > [!IMPORTANT]
     >
     > Jeśli przeniesiesz subskrypcję do konta w innej dzierżawie usługi Azure AD, wszystkie [przypisania kontroli dostępu opartej na rolach (RBAC)](../role-based-access-control/overview.md) do zarządzania zasobami w ramach subskrypcji zostaną trwale usunięte. Tylko użytkownik nowego konta, akceptujący żądanie przeniesienia, będzie miał dostęp do zarządzania zasobami w ramach subskrypcji. Więcej informacji — zobacz [Przenoszenie subskrypcji do użytkownika w innej dzierżawie usługi Azure AD](../active-directory/managed-identities-azure-resources/known-issues.md). Alternatywnie możesz usunąć zaznaczenie pola dzierżawy usługi Azure AD subskrypcji w celu przeniesienia własności rozliczeń bez przeniesienia subskrypcji do dzierżawy nowego konta. W takim przypadku istniejące uprawnienia RBAC do zarządzania zasobami platformy Azure zostaną zachowane.
-  
+
     ![Strona wysyłania przeniesienia](./media/billing-subscription-transfer/billing-send-transfer-request.PNG)
 
 1. Wybierz opcję **Wyślij żądanie przeniesienia**.
@@ -58,7 +58,7 @@ Jeśli jesteś klientem z Umową Enterprise (EA), administratorzy w Twoim przeds
 
    ![Wiadomość e-mail dotycząca przeniesienia subskrypcji wysłana do adresata](./media/billing-subscription-transfer/billing-receiver-email.png)
 
-1. Aby zatwierdzić żądanie przeniesienia, użytkownik wybiera link w wiadomości e-mail i postępuje zgodnie z instrukcjami. Użytkownik musi wybrać formę płatności, która będzie używana do płacenia za subskrypcję. Ponadto, jeśli użytkownik nie ma konta platformy Azure, może być konieczne zarejestrowanie się w celu uzyskania nowego konta. 
+1. Aby zatwierdzić żądanie przeniesienia, użytkownik wybiera link w wiadomości e-mail i postępuje zgodnie z instrukcjami. Użytkownik musi wybrać formę płatności, która będzie używana do płacenia za subskrypcję. Ponadto, jeśli użytkownik nie ma konta platformy Azure, może być konieczne zarejestrowanie się w celu uzyskania nowego konta.
 
    ![Pierwsza strona sieci Web przeniesienia subskrypcji](./media/billing-subscription-transfer/billing-accept-ownership-step1.png)
 
@@ -79,7 +79,7 @@ Jeśli przenosisz własność rozliczeń subskrypcji do konta w innej dzierżawi
 
 ## <a name="transferring-visual-studio-mpn-and-pay-as-you-go-devtest-subscriptions"></a>Przenoszenie subskrypcji tworzenia i testowania programu Visual Studio, Microsoft Partner Network (MPN) i płatności zgodnie z rzeczywistym użyciem
 
-Subskrypcje programu Visual Studio i Microsoft Partner Network zawierają comiesięczne, powiązane z nimi środki na korzystanie z platformy Azure. Po przeniesieniu tych subskrypcji środki nie są dostępne na docelowym koncie rozliczeniowym. Subskrypcja używa kredytu na docelowym koncie rozliczeniowym. Jeśli na przykład Robert przeniesie subskrypcję Visual Studio Enterprise na konto Janiny 9 września, a Janina zaakceptuje przeniesienie, po zakończeniu przeniesienia subskrypcja zacznie korzystać z kredytu na koncie Janiny. Środki będą resetowane 9 dnia każdego miesiąca. 
+Subskrypcje programu Visual Studio i Microsoft Partner Network zawierają comiesięczne, powiązane z nimi środki na korzystanie z platformy Azure. Po przeniesieniu tych subskrypcji środki nie są dostępne na docelowym koncie rozliczeniowym. Subskrypcja używa kredytu na docelowym koncie rozliczeniowym. Jeśli na przykład Robert przeniesie subskrypcję Visual Studio Enterprise na konto Janiny 9 września, a Janina zaakceptuje przeniesienie, po zakończeniu przeniesienia subskrypcja zacznie korzystać z kredytu na koncie Janiny. Środki będą resetowane 9 dnia każdego miesiąca.
 
 
 <a id="EA"></a>
@@ -107,9 +107,9 @@ Przenoszenie subskrypcji w witrynie Azure Portal jest dostępne dla typów subsk
 
 - [Umowa Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)\*
 - [Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p/)  
-- [Subskrybenci programu Visual Studio Enterprise (MPN)](https://azure.microsoft.com/offers/ms-azr-0029p/) 
+- [Subskrybenci programu Visual Studio Enterprise (MPN)](https://azure.microsoft.com/offers/ms-azr-0029p/)
 - [Platformy MSDN](https://azure.microsoft.com/offers/ms-azr-0062p/)  
-- [Płatność zgodnie z rzeczywistym użyciem](https://azure.microsoft.com/offers/ms-azr-0003p/) 
+- [Płatność zgodnie z rzeczywistym użyciem](https://azure.microsoft.com/offers/ms-azr-0003p/)
 - [Płatność zgodnie z rzeczywistym użyciem — tworzenie i testowanie](https://azure.microsoft.com/offers/ms-azr-0023p/)
 - [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/)
 - [Visual Studio Enterprise: BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p/)
@@ -119,7 +119,7 @@ Przenoszenie subskrypcji w witrynie Azure Portal jest dostępne dla typów subsk
 
 \* [Za pośrednictwem portalu EA](#EA).
 
-\*\* Obsługiwane tylko w przypadku kont utworzonych podczas tworzenia konta w witrynie sieci Web platformy Azure. 
+\*\* Obsługiwane tylko w przypadku kont utworzonych podczas tworzenia konta w witrynie sieci Web platformy Azure.
 
 <a id="faq"></a>
 
@@ -134,8 +134,14 @@ Administrator rozliczeń to osoba, która ma uprawnienia do zarządzania rozlicz
 Aby zidentyfikować konta, dla których jesteś administratorem rozliczeń, wykonaj następujące czynności:
 
 1. Przejdź do strony [Zarządzanie kosztami i rozliczenia w witrynie Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/Overview).
-1. Zaznacz **Wszystkie zakresy rozliczeniowe** w okienku po lewej stronie. 
+1. Zaznacz **Wszystkie zakresy rozliczeniowe** w okienku po lewej stronie.
 1. Na stronie Subskrypcje są wyświetlane wszystkie subskrypcje, dla których jesteś administratorem rozliczeń.
+
+Jeśli nie wiesz, kto jest administratorem konta dla subskrypcji, wykonaj poniższe kroki, aby to sprawdzić.
+
+1. Odwiedź [stronę Subskrypcje w witrynie Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
+1. Wybierz subskrypcję, którą chcesz sprawdzić, a następnie przejrzyj **Ustawienia**.
+1. Wybierz pozycję **Właściwości**. Administrator konta subskrypcji jest wyświetlany w polu **Administrator konta**.
 
 ### <a name="does-everything-transfer-including-resource-groups-vms-disks-and-other-running-services"></a>Czy wszystko jest przenoszone? Również grupy zasobów, maszyny wirtualne, dyski i inne uruchomione usługi?
 
@@ -201,13 +207,13 @@ Tak. Akceptując żądanie przeniesienia, możesz wybrać istniejącą formę p�
 
 ### <a id="no-button"></a> Czemu nie widzę przycisku „Przenieś subskrypcję”?
 
-Samoobsługowe przeniesienie subskrypcji nie jest dostępne w przypadku Twojego konta rozliczeniowego. Obecnie nie obsługujemy przenoszenia własności rozliczeń subskrypcji na kontach Umowy Enterprise (EA) w witrynie Portalu Azure. Również konta Umowy klienta firmy Microsoft utworzone podczas pracy z przedstawicielem Microsoft nie obsługują przenoszenia własności rozliczeń. 
+Samoobsługowe przeniesienie subskrypcji nie jest dostępne w przypadku Twojego konta rozliczeniowego. Obecnie nie obsługujemy przenoszenia własności rozliczeń subskrypcji na kontach Umowy Enterprise (EA) w witrynie Portalu Azure. Również konta Umowy klienta firmy Microsoft utworzone podczas pracy z przedstawicielem Microsoft nie obsługują przenoszenia własności rozliczeń.
 
-### <a id="no-button"></a> Dlaczego mój typ subskrypcji nie obsługuje przenoszenia? 
+### <a id="no-button"></a> Dlaczego mój typ subskrypcji nie obsługuje przenoszenia?
 
 Nie wszystkie typy subskrypcji obsługują przenoszenie własności rozliczeń. Aby zobaczyć listę typów subskrypcji obsługujących przenoszenie, zobacz [Obsługiwane typy subskrypcji](#supported-subscription-types).
 
-### <a id="no-button"></a> Dlaczego podczas próby przeniesienia własności rozliczeń subskrypcji widzę komunikat o błędzie odmowy dostępu? 
+### <a id="no-button"></a> Dlaczego podczas próby przeniesienia własności rozliczeń subskrypcji widzę komunikat o błędzie odmowy dostępu?
 
 Ten komunikat jest wyświetlany, jeśli użytkownik próbuje przenieść subskrypcję planu platformy Microsoft Azure bez wymaganych uprawnień. Aby przenieść subskrypcję planu platformy Microsoft Azure, musisz być właścicielem lub współautorem w sekcji faktury dotyczącej subskrypcji. Więcej informacji — zobacz [Sekcja Zarządzanie subskrypcjami dla celów rozliczeniowych](billing-understand-mca-roles.md#manage-subscriptions-for-invoice-section).
 

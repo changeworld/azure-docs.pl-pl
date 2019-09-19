@@ -11,12 +11,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: dapine
-ms.openlocfilehash: 3cc61798fb5e5ecba91fef93a743b492dce75211
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 893beb479ee42f5de39d6e2e52251ab4113e3e43
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70966773"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105072"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Instalowanie i uruchamianie kontenerów analiza tekstu
 
@@ -112,7 +112,7 @@ Gdy kontener znajduje się na [komputerze hosta](#the-host-computer), użyj nast
 
 ## <a name="run-the-container-with-docker-run"></a>Uruchom kontener za pomocą`docker run`
 
-Użyj polecenia [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) , aby uruchomić jeden z trzech kontenerów. Zapoznaj się z tematem [zbieranie wymaganych parametrów](#gathering-required-parameters) `{Endpoint_URI}` , aby uzyskać szczegółowe `{API_Key}` informacje na temat sposobu pobierania wartości i.
+Użyj polecenia [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) , aby uruchomić jeden z trzech kontenerów. Zapoznaj się z tematem [zbieranie wymaganych parametrów](#gathering-required-parameters) `{ENDPOINT_URI}` , aby uzyskać szczegółowe `{API_KEY}` informacje na temat sposobu pobierania wartości i.
 
 Przykłady polecenia są dostępne. [](../text-analytics-resource-container-config.md#example-docker-run-commands) `docker run`
 

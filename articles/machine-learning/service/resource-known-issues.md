@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: ffbc919333c43c04f461498a513d098ce8fe628f
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 81eabadba70a2d5334fab43157f17d24c41d97ec
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996596"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103413"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Znane problemy i rozwiązywanie problemów Azure Machine Learning
 
@@ -174,3 +174,43 @@ Na przykład, jeśli spróbujesz utworzyć lub dołączyć obiekt docelowy oblic
 Jeśli wystąpi błąd `Unable to upload project files to working directory in AzureFile because the storage is overloaded`, zastosuj następujące obejścia.
 
 Jeśli używasz udziału plików dla innych obciążeń, takich jak transfer danych, zalecenie polega na użyciu obiektów blob, dzięki czemu udział plików jest bezpłatny do użycia na potrzeby przesyłania przebiegów. Obciążenie można także podzielić między dwa różne obszary robocze.
+
+## <a name="webservices-in-azure-kubernetes-service-failures"></a>Awarie usług WebServices w usłudze Azure Kubernetes 
+
+Wiele błędów sieci Web w usłudze Azure Kubernetes można debugować, łącząc się z klastrem przy użyciu `kubectl`programu. Możesz uzyskać dostęp `kubeconfig.json` do klastra usługi Azure Kubernetes Service, uruchamiając
+
+```bash
+az aks get-credentials -g <rg> -n <aks cluster name>
+```
+
+## <a name="updating-azure-machine-learning-components-in-aks-cluster"></a>Aktualizowanie składników Azure Machine Learning w klastrze AKS
+
+Należy ręcznie zastosować aktualizacje Azure Machine Learning składników zainstalowanych w klastrze usługi Azure Kubernetes. Możesz zastosować te klastry, odłączając klaster od obszaru roboczego Azure Machine Learning, a następnie ponownie dołączając klaster do obszaru roboczego. Jeśli w klastrze jest włączony protokół SSL, podczas ponownego dołączania klastra należy podać certyfikat SSL i klucz prywatny. 
+
+```python
+compute_target = ComputeTarget(workspace=ws, name=clusterWorkspaceName)
+compute_target.detach()
+compute_target.wait_for_completion(show_output=True)
+
+attach_config = AksCompute.attach_configuration(resource_group=resourceGroup, cluster_name=kubernetesClusterName)
+
+## If SSL is enabled.
+attach_config.enable_ssl(
+    ssl_cert_pem_file="cert.pem",
+    ssl_key_pem_file="key.pem",
+    ssl_cname=sslCname)
+
+attach_config.validate_configuration()
+
+compute_target = ComputeTarget.attach(workspace=ws, name=args.clusterWorkspaceName, attach_configuration=attach_config)
+compute_target.wait_for_completion(show_output=True)
+```
+
+Jeśli certyfikat SSL i klucz prywatny nie są już używane lub używasz certyfikatu wygenerowanego przez Azure Machine Learning, możesz pobrać pliki przed odłączeniem klastra, łącząc się z klastrem przy użyciu `kubectl` i pobierając klucz tajny `azuremlfessl`.
+
+```bash
+kubectl get secret/azuremlfessl -o yaml
+```
+
+>[!Note]
+>Kubernetes przechowuje wpisy tajne w zakodowanym formacie Base-64. Przed udostępnieniem tych `key.pem` elementów tajnych należy oprzeć `cert.pem` na Base-64. `attach_config.enable_ssl` 

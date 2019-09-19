@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c07a978004ee8d2e25772f0d393529cbb509380a
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: d0ac86dcdb698c554c40325d6a20d6d27de908f8
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967221"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104387"
 ---
 # <a name="tutorial-integrate-apptio-with-azure-active-directory"></a>Samouczek: Integruj Apptio z Azure Active Directory
 
@@ -67,7 +67,7 @@ Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pom
 1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
     1. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
     1. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
-2. **[Skonfiguruj logowanie](#configure-apptio-sso)** jednokrotne w usłudze Apptio, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+2. **[Skonfiguruj Logowanie jednokrotne](#configure-apptio-sso)** w usłudze Apptio, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
     1. **[Utwórz użytkownika testowego Apptio](#create-apptio-test-user)** , aby dysponować odpowiednikiem B. Simon w Apptio, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
 3. **[Przetestuj logowanie](#test-sso)** jednokrotne — aby sprawdzić, czy konfiguracja działa.
 
@@ -75,7 +75,7 @@ Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pom
 
 Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
 
-1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **Apptio** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie**jednokrotne.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **Apptio** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie jednokrotne**.
 1. Na stronie **Wybierz metodę logowania** jednokrotnego wybierz pozycję **SAML**.
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
 
@@ -85,7 +85,7 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
     W polu tekstowym **Identyfikator** wpisz wartość: `urn:federation:apptio`
 
-5. Aplikacja Apptio oczekuje potwierdzeń SAML w określonym formacie, co wymaga dodania niestandardowych mapowań atrybutów do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij ikonę  **Edytuj** , aby otworzyć okno dialogowe Atrybuty użytkownika.
+5. Aplikacja Apptio oczekuje potwierdzeń SAML w określonym formacie, co wymaga dodania niestandardowych mapowań atrybutów do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe Atrybuty użytkownika.
 
     ![image](common/edit-attribute.png)
 
@@ -94,7 +94,7 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
 6. Oprócz powyższych, aplikacja Apptio oczekuje kilku atrybutów do przekazania z powrotem w odpowiedzi SAML. W sekcji oświadczenia użytkownika w oknie dialogowym atrybuty użytkownika wykonaj następujące kroki, aby dodać atrybut tokenu SAML, jak pokazano w poniższej tabeli: 
 
-    | Name (Nazwa) |  Atrybut źródłowy|
+    | Name |  Atrybut źródłowy|
     | -------------- | -------------------- |
     | fullname (pełna nazwa)       | user.displayname |
     | mail (poczta)           | user.mail |
@@ -156,7 +156,7 @@ Aby skonfigurować logowanie jednokrotne po stronie aplikacji **Apptio**, musisz
 
 ### <a name="create-apptio-test-user"></a>Tworzenie użytkownika testowego aplikacji Apptio
 
-W tej sekcji utworzysz użytkownika o nazwie B. Simon w Apptio. Aby dodać użytkowników na platformie aplikacji Apptio, współpracuj z  [zespołem pomocy technicznej aplikacji Apptio](https://www.apptio.com/about/contact). Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie B. Simon w Apptio. Aby dodać użytkowników na platformie Apptio, Pracuj z [zespołem pomocy technicznej Apptio](https://www.apptio.com/about/contact) . Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
 ## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
 

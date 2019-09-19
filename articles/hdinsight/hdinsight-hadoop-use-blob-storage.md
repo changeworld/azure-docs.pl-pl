@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 5d287165e77597943d298178689c216497361570
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: e9ecc34566e6e534b7489c934c0d5fa3b34e219b
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879638"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104478"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Korzystanie z usługi Azure Storage w połączeniu z klastrami usługi Azure HDInsight
 
@@ -45,7 +45,7 @@ Jeśli wybierzesz opcję zabezpieczenia konta magazynu za pomocą ograniczeń **
 ## <a name="hdinsight-storage-architecture"></a>Architektura magazynu usługi HDInsight
 Na poniższym diagramie przedstawiono schemat architektury magazynu usługi HDInsight dotyczący korzystania z usługi Azure Storage:
 
-![Klastry Hadoop używają interfejsu API systemu plików HDFS w celu dostępu do danych strukturalnych i bez struktury oraz przechowywania ich w usłudze Blob Storage.](./media/hdinsight-hadoop-use-blob-storage/storage-architecture.png "Architektura usługi DHInsight Storage")
+![Klastry Hadoop używają interfejsu API systemu plików HDFS do uzyskiwania dostępu do danych w usłudze BLOB Storage i ich przechowywania](./media/hdinsight-hadoop-use-blob-storage/storage-architecture.png "Architektura HDInsight Storage")
 
 Usługa HDInsight zapewnia dostęp do rozproszonego systemu plików, który jest lokalnie dołączony do węzłów obliczeniowych. Dostęp do tego systemu plików można uzyskać przy użyciu w pełni kwalifikowanego identyfikatora URI, na przykład:
 
@@ -73,6 +73,7 @@ Wiele zadań WebHCat, w tym Apache Hive, MapReduce, Apache Hadoop streaming i Ap
 Obiekty blob mogą być używane z danymi ze strukturą i bez niej. Kontenery obiektów blob przechowują dane jako pary klucz/wartość, bez hierarchii katalogów. Jednak wewnątrz nazwy klucza można użyć znaku ukośnika (/), co sprawi, że będzie wyglądała, jakby plik był przechowywany w ramach struktury katalogów. Na przykład klucz obiektu blob może mieć postać *input/log1.txt*. Katalog *input* w rzeczywistości nie istnieje, ale z powodu obecności znaku ukośnika w nazwie klucza, klucz ma wygląd ścieżki do pliku.
 
 ## <a id="benefits"></a>Korzyści z usługi Azure Storage
+
 Niejawny koszt wydajności nielokalizowania klastrów obliczeniowych i zasobów magazynu jest zmniejszany przez sposób, w jaki tworzone są Klastry obliczeniowe w pobliżu zasobów konta magazynu w regionie świadczenia usługi Azure, gdzie sieć o dużej szybkości jest wydajna dla węzły obliczeniowe umożliwiające dostęp do danych w usłudze Azure Storage.
 
 Przechowywanie danych w usłudze Azure Storage zamiast w systemie plików HDFS ma wiele zalet:
@@ -93,6 +94,7 @@ Niektóre zadania i pakiety MapReduce mogą tworzyć wyniki pośrednie, których
 > Większość poleceń systemu plików HDFS (na `ls`przykład `copyFromLocal` , `mkdir`i) nadal działają zgodnie z oczekiwaniami. Tylko polecenia specyficzne dla natywnej implementacji systemu plików HDFS (zwanej systemem DFS), takie jak `fschk` i `dfsadmin`, pokazują inne zachowanie w usłudze Azure Storage.
 
 ## <a name="address-files-in-azure-storage"></a>Adresowanie plików w usłudze Azure Storage
+
 Schemat identyfikatora URI do uzyskiwania dostępu do plików w usłudze Azure Storage z usługi HDInsight to:
 
 ```config
@@ -125,6 +127,7 @@ example/jars/hadoop-mapreduce-examples.jar
 > Podczas pracy z obiektami blob poza usługą HDInsight, większość narzędzi nie rozpoznaje formatu WASB i zamiast tego oczekuje podstawowego formatu ścieżki, takiego jak `example/jars/hadoop-mapreduce-examples.jar`.
 
 ##  <a name="blob-containers"></a>Kontenery obiektów blob
+
 Aby użyć obiektów blob, należy najpierw utworzyć [konto usługi Azure Storage](../storage/common/storage-create-storage-account.md). W ramach tego procesu należy wskazać region świadczenia usługi Azure, w którym zostanie utworzone konto magazynu. Klaster i konto magazynu muszą być hostowane w tym samym regionie. Baza danych magazyn metadanych Hive SQL Server Database i Apache Oozie baza danych SQL Server muszą również znajdować się w tym samym regionie.
 
 Wszędzie tam, gdzie go umieszczono, każdy utworzony obiekt blob należy do kontenera na koncie usługi Azure Storage. Ten kontener może być istniejącym obiektem blob utworzonym poza usługą HDInsight lub może być kontenerem, który jest tworzony dla klastra usługi HDInsight.

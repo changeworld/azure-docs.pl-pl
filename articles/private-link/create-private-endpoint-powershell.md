@@ -1,18 +1,18 @@
 ---
 title: Tworzenie prywatnego punktu końcowego platformy Azure przy użyciu Azure PowerShell | Microsoft Docs
 description: Dowiedz się więcej o usłudze Azure Private link
-services: virtual-network
+services: private-link
 author: KumudD
-ms.service: virtual-network
+ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: ca3fec3dbb4fbe77a1d375c0329275b7b799d06b
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 5aa9201e969d9224527d0deea333dc61bda8e444
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067850"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104769"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Tworzenie prywatnego punktu końcowego przy użyciu Azure PowerShell
 Prywatny punkt końcowy to podstawowy blok konstrukcyjny dla prywatnego linku na platformie Azure. Umożliwia ona korzystanie z zasobów platformy Azure, takich jak Virtual Machines (VM), w celu komunikacji z prywatnymi zasobami łączy prywatnych. 

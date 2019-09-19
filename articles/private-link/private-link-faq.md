@@ -1,18 +1,18 @@
 ---
 title: Prywatne linki na platformie Azure — często zadawane pytania
 description: Dowiedz się więcej o usłudze Azure Private link.
-services: virtual-network
+services: private-link
 author: KumudD
-ms.service: virtual-network
+ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 7e08c91636089abf25e46e1303097fc27b2d75b1
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 32e570e098c9a3f95dfc5393348cccb1ebe1fb60
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037507"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104586"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Prywatne linki na platformie Azure — często zadawane pytania
 
@@ -23,7 +23,7 @@ ms.locfileid: "71037507"
 - **[Prywatny punkt końcowy platformy Azure](private-endpoint-overview.md)** : Prywatny punkt końcowy platformy Azure to interfejs sieciowy, który nawiązuje połączenie prywatnie i bezpiecznie z usługą obsługiwanej przez link prywatny platformy Azure. Możesz użyć prywatnych punktów końcowych, aby nawiązać połączenie z usługą Azure PaaS, która obsługuje link prywatny lub do własnej usługi linku prywatnego.
 - **[Usługa prywatnego połączenia platformy Azure](private-link-service-overview.md)** : Usługa link prywatny platformy Azure to usługa utworzona przez dostawcę usług. Obecnie usługa linku prywatnego może być dołączona do konfiguracji adresu IP frontonu usługa Load Balancer w warstwie Standardowa. 
 
-### <a name="how-is-traffic-being-send-when-using-private-link"></a>Jak jest wysyłany ruch w przypadku korzystania z prywatnego linku?
+### <a name="how-is-traffic-being-sent-when-using-private-link"></a>Jak jest wysyłany ruch w przypadku korzystania z prywatnego linku?
 Ruch jest wysyłany prywatnie przy użyciu sieci szkieletowej firmy Microsoft. Nie przechodzi ona przez Internet.  
  
 ### <a name="what-is-the-difference-between-a-service-endpoints-and-a-private-endpoints"></a>Jaka jest różnica między punktami końcowymi usługi i prywatnymi punktami końcowymi?

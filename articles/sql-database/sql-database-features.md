@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 3cad1a73dd98928ed12748e2acffaea158dc5924
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 594edab4e6a69edb49c8a1ce407c9fd943d11f2b
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010301"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103151"
 ---
 # <a name="azure-sql-database-features"></a>Funkcje Azure SQL Database
 
@@ -114,8 +114,8 @@ Platforma Azure udostępnia wiele możliwości PaaS, które są dodawane jako do
 
 | **Funkcja platformy** | **Pojedyncze bazy danych i pule elastyczne** | **Wystąpienia zarządzane i pule wystąpień** |
 | --- | --- | --- |
-| [Aktywna replikacja geograficzna](sql-database-active-geo-replication.md) | Tak — wszystkie warstwy usług inne niż skalowanie | Nie, zobacz [grupy autofailover (wersja zapoznawcza)](sql-database-auto-failover-group.md) jako alternatywę |
-| [Grupy automatycznego trybu failover](sql-database-auto-failover-group.md) | Tak — wszystkie warstwy usług inne niż skalowanie | Tak, w [publicznej wersji](sql-database-auto-failover-group.md) zapoznawczej|
+| [Aktywna replikacja geograficzna](sql-database-active-geo-replication.md) | Tak — wszystkie warstwy usług inne niż skalowanie | Nie, zobacz [grupy autotrybu failover](sql-database-auto-failover-group.md) jako alternatywę |
+| [Grupy automatycznego trybu failover](sql-database-auto-failover-group.md) | Tak — wszystkie warstwy usług inne niż skalowanie | Tak, zobacz [grupy autotrybu failover](sql-database-auto-failover-group.md)|
 | Automatyczne skalowanie | Tak, ale tylko w [modelu bez serwera](sql-database-serverless.md). W modelu bez serwera zmiana warstwy usług (zmiana rdzeń wirtualny, magazyn lub DTU) jest szybka i w trybie online. Zmiana warstwy usług wymaga minimalnej lub nieprzerwanego przestoju. | Nie, należy wybrać zarezerwowane obliczenia i magazyn. Zmiana warstwy usług (rdzeń wirtualny lub Max Storage) jest w trybie online i wymaga niewielkiego czasu przestoju. |
 | [Automatyczne kopie zapasowe](sql-database-automated-backups.md) | Tak. Pełne kopie zapasowe są wykonywane co 7 dni, różnicowanie 12 godzin i wykonywanie kopii zapasowych dziennika co 5-10 min. | Tak. Pełne kopie zapasowe są wykonywane co 7 dni, różnicowanie 12 godzin i wykonywanie kopii zapasowych dziennika co 5-10 min. |
 | [Dostrajanie automatyczne (indeksy)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [Tak](sql-database-automatic-tuning.md)| Nie |
@@ -169,9 +169,9 @@ Do przenoszenia danych między bazami danych SQL Server, pojedyncza baza danych 
 
 | **Element źródłowy** | **Pojedyncza baza danych i Pula elastyczna** | **Wystąpienia zarządzane i pule wystąpień** |
 | --- | --- | --- |
-| SQL Server (Premium, AzureVM, Amazon RDS) | **Sieci** [Usługa migracji danych (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [replikacja transakcyjna](sql-database-managed-instance-transactional-replication.md) <br/> **Stanie** [Plik BACPAC (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), bcp | **Sieci** [Usługa migracji danych (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [replikacja transakcyjna](sql-database-managed-instance-transactional-replication.md) <br/> **Stanie** Natywna kopia zapasowa/przywracanie, [plik BACPAC (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), bcp, [replikacja migawek](sql-database-managed-instance-transactional-replication.md) |
+| SQL Server (Premium, AzureVM, Amazon RDS) | **Tryb online:** [Usługa migracji danych (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [replikacja transakcyjna](sql-database-managed-instance-transactional-replication.md) <br/> **Stanie** [Plik BACPAC (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), bcp | **Tryb online:** [Usługa migracji danych (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [replikacja transakcyjna](sql-database-managed-instance-transactional-replication.md) <br/> **Stanie** Natywna kopia zapasowa/przywracanie, [plik BACPAC (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), bcp, [replikacja migawek](sql-database-managed-instance-transactional-replication.md) |
 | Pojedyncza baza danych | **Stanie** [Plik BACPAC (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), bcp | **Stanie** [Plik BACPAC (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), bcp |
-| Wystąpienie zarządzane | **Sieci** [Replikacja transakcyjna](sql-database-managed-instance-transactional-replication.md) <br/> **Stanie** [Plik BACPAC (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), bcp, [replikacja migawek](sql-database-managed-instance-transactional-replication.md) | **Sieci** [Replikacja transakcyjna](sql-database-managed-instance-transactional-replication.md) <br/> **Stanie** Przywracanie do punktu w czasie między wystąpieniami ([Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase?#examples) lub [interfejs wiersza polecenia platformy Azure](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Cross-instance-point-in-time-restore-in-Azure-SQL-Database/ba-p/386208)), [natywne kopie zapasowe/przywracanie](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore), [plik BACPAC (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), bcp, [replikacja migawek](sql-database-managed-instance-transactional-replication.md) |
+| Wystąpienie zarządzane | **Tryb online:** [Replikacja transakcyjna](sql-database-managed-instance-transactional-replication.md) <br/> **Stanie** [Plik BACPAC (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), bcp, [replikacja migawek](sql-database-managed-instance-transactional-replication.md) | **Tryb online:** [Replikacja transakcyjna](sql-database-managed-instance-transactional-replication.md) <br/> **Stanie** Przywracanie do punktu w czasie między wystąpieniami ([Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase?#examples) lub [interfejs wiersza polecenia platformy Azure](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Cross-instance-point-in-time-restore-in-Azure-SQL-Database/ba-p/386208)), [natywne kopie zapasowe/przywracanie](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore), [plik BACPAC (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), bcp, [replikacja migawek](sql-database-managed-instance-transactional-replication.md) |
 
 ## <a name="next-steps"></a>Następne kroki
 

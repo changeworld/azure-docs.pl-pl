@@ -1,18 +1,18 @@
 ---
 title: Tworzenie usługi Azure Private link przy użyciu interfejsu wiersza polecenia platformy Azure
 description: Dowiedz się, jak utworzyć usługę prywatnego połączenia platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure
-services: virtual-network
+services: private-link
 author: KumudD
-ms.service: virtual-network
+ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 6955e1147bbe7b3e777ce4f06ac64901b0392f42
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 87d0f08d67dbbe6a0fa1725aba850c8d9b6c5619
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018077"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104702"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>Tworzenie prywatnej usługi linkowej przy użyciu interfejsu wiersza polecenia platformy Azure
 W tym artykule opisano sposób tworzenia usługi linku prywatnego na platformie Azure przy użyciu interfejsu wiersza polecenia platformy Azure.
@@ -20,7 +20,7 @@ W tym artykule opisano sposób tworzenia usługi linku prywatnego na platformie 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia platformy Azure i korzystać z niego lokalnie, ten przewodnik Szybki Start wymaga użycia najnowszej wersji interfejsu wiersza polecenia platformy Azure. Aby dowiedzieć się, jaka wersja jest zainstalowana, uruchom polecenie `az --version`. Aby uzyskać informacje na temat instalacji i uaktualnienia, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
-## <a name="create-a-private-link-service"></a>Tworzenie usługi linku prywatnego
+## <a name="create-a-private-link-service"></a>Tworzenie usługi łącza prywatnego
 ### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 Przed utworzeniem sieci wirtualnej należy utworzyć grupę zasobów, która będzie hostowała tę sieć wirtualną. Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group). Ten przykład tworzy grupę zasobów o nazwie Moja *zasobów* w lokalizacji *westcentralus* :
@@ -88,7 +88,7 @@ Usługa link prywatny wymaga adresu IP z dowolnej podsieci wybranej w ramach sie
 az network vnet subnet update --resource-group myResourceGroup --vnet-name myVirtualNetwork --name mySubnet --disable-private-link-service-network-policies true 
 ```
  
-## <a name="create-a-private-link-service"></a>Tworzenie usługi linku prywatnego  
+## <a name="create-a-private-link-service"></a>Tworzenie usługi łącza prywatnego  
  
 Utwórz usługę linku prywatnego przy użyciu konfiguracji adresu IP frontonu usługa Load Balancer w warstwie Standardowa za pomocą polecenia [AZ Network Private-Link-Service Create](/cli/azure/network/az-network-private-link-service-create). W tym przykładzie tworzona jest usługa linku prywatnego o nazwie *myPLS* przy użyciu usługa Load Balancer w warstwie Standardowa o nazwie *myLoadBalancer* w grupie zasobów o nazwie Moja *resourceName*. 
  

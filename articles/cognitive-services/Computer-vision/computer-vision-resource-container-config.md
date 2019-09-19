@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 09/18/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 3e1dc68ec67e8a7a24c3459519df80a8faf2fc01
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 186f2f60aad15b336265114d7c85c757e0dd333f
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565656"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71102287"
 ---
 # <a name="configure-recognize-text-docker-containers"></a>Konfigurowanie Rozpoznawanie tekstu kontenerów platformy Docker
 
@@ -43,7 +43,7 @@ To ustawienie można znaleźć w następujących miejscach:
 
 ## <a name="billing-configuration-setting"></a>Ustawienie konfiguracji rozliczeń
 
-Ustawienie określa identyfikator URI punktu końcowego zasobu Cognitive Services na platformie Azure używany do mierzenia informacji rozliczeniowych dla kontenera.  `Billing` Należy określić wartość tego ustawienia konfiguracji, a wartość musi być prawidłowym identyfikatorem URI punktu końcowego dla zasobu _Cognitive Services_ na platformie Azure. Kontener zgłasza użycie co 10 do 15 minut.
+Ustawienie określa identyfikator URI punktu końcowego zasobu Cognitive Services na platformie Azure używany do mierzenia informacji rozliczeniowych dla kontenera. `Billing` Należy określić wartość tego ustawienia konfiguracji, a wartość musi być prawidłowym identyfikatorem URI punktu końcowego dla zasobu _Cognitive Services_ na platformie Azure. Kontener zgłasza użycie co 10 do 15 minut.
 
 To ustawienie można znaleźć w następujących miejscach:
 
@@ -79,7 +79,7 @@ Kontenery przetwarzanie obrazów nie używają instalacji danych wejściowych lu
 
 Dokładna składnia lokalizację instalacji hosta różni się zależnie od systemu operacyjnego hosta. Ponadto lokalizacja instalacji [komputera hosta](computer-vision-how-to-install-containers.md#the-host-computer)może być niedostępna z powodu konfliktu między uprawnieniami używanymi przez konto usługi platformy Docker i uprawnieniami lokalizacji instalacji hosta. 
 
-|Optional| Name (Nazwa) | Typ danych | Opis |
+|Optional| Name | Typ danych | Opis |
 |-------|------|-----------|-------------|
 |Niedozwolone| `Input` | String | Kontenery przetwarzanie obrazów nie używają tego.|
 |Optional| `Output` | String | Miejsce docelowe instalacji danych wyjściowych. Wartość domyślna to `/output`. Jest to Lokalizacja dzienników. Dotyczy to również dzienników kontenerów. <br><br>Przykład:<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -97,8 +97,10 @@ Zastąp {_argument_name_} własnymi wartościami:
 
 | Symbol zastępczy | Wartość | Format lub przykład |
 |-------------|-------|---|
-|{API_KEY} | Klucz punktu końcowego zasobu Cognitive Services. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{ENDPOINT_URI} | Wartość punktu końcowego rozliczenia włącznie z regionem.|`https://westcentralus.api.cognitive.microsoft.com/vision/v1.0`|
+| **{API_KEY}** | Klucz `Computer Vision` punktu końcowego zasobu na stronie kluczy platformy Azure `Computer Vision` . | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | Wartość punktu końcowego rozliczenia jest dostępna na stronie `Computer Vision` przegląd platformy Azure.| Zobacz [zbieranie wymaganych parametrów](computer-vision-how-to-install-containers.md#gathering-required-parameters) dla jawnych przykładów. |
+
+[!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
 > `Eula`, `Billing`, I `ApiKey` opcje muszą być określone w celu uruchomienia kontenera; w przeciwnym razie nie uruchamia się kontener.  Aby uzyskać więcej informacji, zobacz [rozliczeń](computer-vision-how-to-install-containers.md#billing).

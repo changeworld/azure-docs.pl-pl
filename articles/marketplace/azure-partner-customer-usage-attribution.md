@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: pabutler
-ms.openlocfilehash: 40170540458b7bc7ddb30f88117d472858937e8c
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 0bbe0e9718a25fdff76e591bf388bf829518502e
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962932"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105614"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Udział partnera w zakresie użycia platformy Azure przez klienta
 
@@ -166,43 +166,28 @@ Identyfikatory GUID można także śledzić na bardziej szczegółowym poziomie,
 
 Identyfikatory GUID muszą być zarejestrowane w celu włączenia przypisywania do użycia przez klienta.
 
-Wszystkie rejestracje dla identyfikatorów GUID szablonu są wykonywane za pośrednictwem witryny Azure Marketplace portal Cloud Partner (CPP).
+Wszystkie rejestracje identyfikatorów GUID szablonu są wykonywane w centrum partnerskim.
 
-Po dodaniu identyfikatora GUID do szablonu lub w agencie użytkownika i zarejestrowaniu identyfikatora GUID w CPP wszystkie wdrożenia są śledzone.
+Po dodaniu identyfikatora GUID do szablonu lub w agencie użytkownika i zarejestrowaniu identyfikatora GUID w centrum partnerskim wszystkie wdrożenia są śledzone.
 
-1. Zastosuj do [witryny Azure Marketplace](https://aka.ms/listonazuremarketplace) i uzyskaj dostęp do programu CPP.
+1. Zarejestruj się jako [komercyjny wydawca portalu Marketplace](https://aka.ms/JoinMarketplace).
 
-   * Partnerzy muszą [mieć profil w programie CPP](https://docs.microsoft.com/azure/marketplace/become-publisher). Zachęcamy do korzystania z oferty w witrynie Azure Marketplace lub AppSource.
+   * Partnerzy muszą [mieć profil w centrum partnerskim](https://docs.microsoft.com/azure/marketplace/become-publisher). Zachęcamy do korzystania z oferty w witrynie Azure Marketplace lub AppSource.
    * Partnerzy mogą rejestrować wiele identyfikatorów GUID.
    * Partnerzy mogą zarejestrować identyfikator GUID dla szablonów rozwiązań i ofert spoza witryny Marketplace.
 
-1. Zaloguj się do [Portal Cloud partner](https://cloudpartner.azure.com/).
+1. Zaloguj się do [Centrum partnerskiego](https://partner.microsoft.com/dashboard).
 
-1. W prawym górnym rogu wybierz ikonę konta, a następnie wybierz pozycję **profil wydawcy**.
+1. W prawym górnym rogu wybierz ikonę koła zębatego ustawienia, a następnie wybierz pozycję **Ustawienia dewelopera**.
 
-   ![Wybierz profil wydawcy](media/marketplace-publishers-guide/guid-image-for-lu.png)
+1. Na **stronie Ustawienia konta**wybierz pozycję **Dodaj identyfikator GUID śledzenia.**
 
-1. Na **stronie profil**wybierz pozycję **Dodaj identyfikator GUID śledzenia.**
-
-   ![Wybierz pozycję Dodaj identyfikator GUID śledzenia](media/marketplace-publishers-guide/guid-how-to-add-tracking.png)
-
-1. W polu **Identyfikator GUID śledzenia** wprowadź identyfikator GUID śledzenia. Wprowadź tylko identyfikator GUID bez prefiksu **PID** . W polu **niestandardowy opis** wprowadź nazwę lub opis oferty.
-
-   ![Strona profilu](media/marketplace-publishers-guide/guid-dev-center-login.png)
-
-   ![Wprowadź identyfikator GUID i opis oferty](media/marketplace-publishers-guide/guid-dev-center-example.png)
+1. W polu **GUID** wprowadź identyfikator GUID śledzenia. Wprowadź tylko identyfikator GUID bez prefiksu **PID** . W polu **Opis** wprowadź nazwę lub opis oferty.
 
 1. Aby zarejestrować więcej niż jeden identyfikator GUID, ponownie wybierz pozycję **Dodaj identyfikator GUID śledzenia** . Na stronie są wyświetlane dodatkowe pola.
 
-   ![Ponownie wybierz pozycję Dodaj identyfikator GUID śledzenia](media/marketplace-publishers-guide/guid-dev-center-example-add.png)
-
-   ![Wprowadź inny identyfikator GUID i opis oferty](media/marketplace-publishers-guide/guid-dev-center-example-description.png)
-
 1. Wybierz pozycję **Zapisz**.
 
-   ![Wybierz pozycję Zapisz](media/marketplace-publishers-guide/guid-dev-center-save.png)
-
-Po dodaniu identyfikatora GUID do szablonu lub w agencie użytkownika i zarejestrowaniu identyfikatora GUID w CPP wszystkie wdrożenia są śledzone.
 
 ## <a name="verify-the-guid-deployment"></a>Weryfikowanie wdrożenia identyfikatora GUID
 

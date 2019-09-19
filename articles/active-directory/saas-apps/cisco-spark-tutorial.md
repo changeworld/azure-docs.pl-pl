@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/09/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99e6839443a75376224fe6a1007802b6b948a395
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 503de723894388a198abbb687221cb1403a6fa84
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989459"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104430"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex"></a>Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z programem Cisco WebEx
 
@@ -66,13 +66,13 @@ Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pom
     1. **[Przypisz użytkownika testowego usługi Azure AD,](#assign-the-azure-ad-test-user)** aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego usługi Azure AD.
 2. **[Skonfiguruj Cisco WebEx](#configure-cisco-webex)** , aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
     1. **[Utwórz użytkownika testowego Cisco WebEx](#create-cisco-webex-test-user)** , aby miał odpowiednik B. Simon w Cisco WebEx połączony z reprezentacją użytkownika w usłudze Azure AD.
-3. **[Przetestuj logowanie](#test-sso)** jednokrotne, aby sprawdzić, czy konfiguracja działa.
+3. **[Przetestuj Logowanie jednokrotne](#test-sso)** , aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
 Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
 
-1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **Cisco WebEx** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie**jednokrotne.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **Cisco WebEx** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie jednokrotne**.
 1. Na stronie **Wybierz metodę logowania** jednokrotnego wybierz pozycję **SAML**.
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
 
@@ -91,13 +91,13 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
     W polu tekstowym **adres URL logowania** wklej wartość **adresu URL odpowiedzi**, który zostanie wypełniony autowypełniany przez przekazywanie plików metadanych Sp.
 
-5. Aplikacja Cisco WebEx oczekuje potwierdzeń SAML w określonym formacie, co wymaga dodania niestandardowych mapowań atrybutów do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij ikonę  **Edytuj** , aby otworzyć okno dialogowe Atrybuty użytkownika.
+5. Aplikacja Cisco WebEx oczekuje potwierdzeń SAML w określonym formacie, co wymaga dodania niestandardowych mapowań atrybutów do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe Atrybuty użytkownika.
 
     ![image](common/edit-attribute.png)
 
 6. Oprócz powyższych aplikacja Cisco Webex oczekuje jeszcze kilku atrybutów, które powinny zostać przekazane w odpowiedzi SAML. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** wykonaj następujące czynności, aby dodać atrybut tokenu SAML, jak pokazano w poniższej tabeli:
     
-    | Name (Nazwa) |  Atrybut źródłowy|
+    | Name |  Atrybut źródłowy|
     | ---------------|--------- |
     | Identyfikator UID | user.userprincipalname |
 

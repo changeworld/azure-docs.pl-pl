@@ -4,14 +4,14 @@ description: Jak wypełnić usługę Azure Blob Storage do użycia z pamięcią 
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/18/2019
 ms.author: v-erkell
-ms.openlocfilehash: 07a97b1afa8049ace97f1589393cd76c24f21368
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 0a71efdc0479a69aed8fecc22a6c89c506279d57
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775652"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105312"
 ---
 # <a name="move-data-to-azure-blob-storage-for-azure-hpc-cache"></a>Przenoszenie danych do usługi Azure Blob Storage dla pamięci podręcznej platformy Azure HPC
 
@@ -31,15 +31,17 @@ Jeśli nie chcesz używać narzędzia ładowania lub chcesz dodać zawartość d
 
 ## <a name="pre-load-data-in-blob-storage-with-clfsload"></a>Wstępne ładowanie danych w magazynie obiektów BLOB za pomocą CLFSLoad
 
-Za pomocą narzędzia [avere CLFSLoad](https://aka.ms/avere-clfsload) można skopiować dane do nowego kontenera magazynu obiektów BLOB przed dodaniem go jako miejsca docelowego magazynu. To narzędzie jest uruchamiane na maszynie wirtualnej z systemem Linux i zapisuje dane w formacie własnościowym wymaganym przez pamięć podręczną platformy Azure HPC. Jest to najbardziej wydajny sposób wypełniania kontenera magazynu obiektów BLOB do użycia z pamięcią podręczną.
+Możesz użyć <!--[Avere CLFSLoad](https://aka.ms/avere-clfsload)--> Avere CLFSLoad narzędzie do kopiowania danych do nowego kontenera magazynu obiektów BLOB przed dodaniem go jako miejsca docelowego magazynu. To narzędzie działa w ramach jednego systemu Linux i zapisuje dane w formacie zastrzeżonym wymaganym przez pamięć podręczną platformy Azure HPC. CLFSLoad to najbardziej wydajny sposób wypełniania kontenera magazynu obiektów BLOB do użycia z pamięcią podręczną.
+
+Narzędzie avere CLFSLoad jest dostępne przez żądanie od zespołu pamięci podręcznej platformy Azure HPC. Poproś o kontakt z zespołem lub Otwórz bilet pomocy technicznej, aby uzyskać pomoc.
 
 Ta opcja działa tylko z nowymi pustymi kontenerami. Utwórz kontener przed użyciem avere CLFSLoad.
 
-Szczegółowe informacje znajdują się w [pliku Readme avere CLFSLoad](https://github.com/microsoft/Avere-CLFSLoad/blob/master/README.md). <!-- caution literal link -->
+Szczegółowe informacje znajdują się w dystrybucji CLFSLoad avere, która jest dostępna na żądanie od zespołu pamięci podręcznej platformy Azure HPC. <!-- [Avere CLFSLoad readme](https://github.com/microsoft/Avere-CLFSLoad/blob/master/README.md). --><!-- caution literal link -->
 
 Ogólny przegląd procesu:
 
-1. Przygotuj system Linux (fizyczny lub VM) przy użyciu języka Python w wersji 3,6 lub nowszej. (W celu uzyskania lepszej wydajności zalecamy środowisko Python 3,7).
+1. Przygotuj system Linux (maszyna wirtualna lub fizyczna) przy użyciu języka Python w wersji 3,6 lub nowszej. (W celu uzyskania lepszej wydajności zalecamy środowisko Python 3,7).
 1. Zainstaluj oprogramowanie avere-CLFSLoad w systemie Linux.
 1. Wykonaj transfer z wiersza polecenia systemu Linux.
 
@@ -50,7 +52,7 @@ Narzędzie avere CLFSLoad potrzebuje następujących informacji:
 * Token sygnatury dostępu współdzielonego (SAS), który umożliwia narzędziu zapis do kontenera
 * Ścieżka lokalna do źródła danych — katalog lokalny zawierający dane do skopiowania lub ścieżka lokalna do zainstalowanego systemu zdalnego z danymi.
 
-Wymagania zostały szczegółowo omówione w [pliku Readme avere CLFSLoad](https://aka.ms/avere-clfsload).
+<!-- The requirements are explained in detail in the [Avere CLFSLoad readme](https://aka.ms/avere-clfsload). -->
 
 ## <a name="copy-data-through-the-azure-hpc-cache"></a>Kopiowanie danych za pomocą pamięci podręcznej platformy Azure HPC
 

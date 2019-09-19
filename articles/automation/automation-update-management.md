@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2a2b62cc0548b0bbedae35f6a0d72ac327723e60
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 20d8106f06b708527fc60e025a19c6b07656acb3
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743835"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71102653"
 ---
 # <a name="update-management-solution-in-azure"></a>Update Management rozwiązanie na platformie Azure
 
@@ -75,7 +75,7 @@ W poniższej tabeli przedstawiono listę obsługiwanych systemów operacyjnych:
 
 |System operacyjny  |Uwagi  |
 |---------|---------|
-|Windows Server 2019 (Datacenter/Datacenter/standard)<br><br>Windows Server 2016 (Datacenter/Datacenter/standard)<br><br>Windows Server 2012 R2 (Datacenter/standard)<br><br>Windows Server 2008 R2 (wersja RTM i SP1 standard)|**Oceny aktualizacji**: Obsługiwane<br><br>**Stosowanie poprawek**: Wymaga hybrydowego procesu roboczego elementu Runbook. Zobacz [wymagania hybrydowego procesu roboczego elementu Runbook](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker)|
+|Windows Server 2019 (Datacenter/Datacenter/standard)<br><br>Windows Server 2016 (Datacenter/Datacenter/standard)<br><br>Windows Server 2012 R2 (Datacenter/standard)<br><br>Windows Server 2012<br><br>Windows Server 2008 R2 (wersja RTM i SP1 standard)|**Oceny aktualizacji**: Obsługiwane<br><br>**Stosowanie poprawek**: Wymaga hybrydowego procesu roboczego elementu Runbook. Zobacz [wymagania hybrydowego procesu roboczego elementu Runbook](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker)|
 |CentOS 6 (x86/x64) i 7 (x64)      | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji. Stosowanie poprawek opartych na klasyfikacji wymaga, aby element "yum" zwracał dane zabezpieczeń, które nie znajdują się w polu CentOS. Aby uzyskać więcej informacji na temat stosowania poprawek opartych na klasyfikacji na CentOS, zobacz [Aktualizacja klasyfikacji w systemie Linux](#linux-2)          |
 |Red Hat Enterprise 6 (x86/x64) i 7 (x64)     | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) i 12 (x64)     | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.        |
@@ -108,7 +108,7 @@ Agenci systemu Windows muszą być skonfigurowani do komunikowania się z serwer
 
 #### <a name="linux"></a>Linux
 
-W przypadku systemu Linux komputer musi mieć dostęp do repozytorium aktualizacji. Repozytorium aktualizacji może być prywatne lub publiczne. Do współdziałania z Update Managementami wymagany jest protokół TLS 1,1 lub TLS 1,2. Agent Log Analytics dla systemu Linux skonfigurowany do raportowania do więcej niż jednego Log Analytics obszarów roboczych nie jest obsługiwany w tym rozwiązaniu.
+W przypadku systemu Linux komputer musi mieć dostęp do repozytorium aktualizacji. Repozytorium aktualizacji może być prywatne lub publiczne. Do współdziałania z Update Managementami wymagany jest protokół TLS 1,1 lub TLS 1,2. Agent Log Analytics dla systemu Linux skonfigurowany do raportowania do więcej niż jednego Log Analytics obszarów roboczych nie jest obsługiwany w tym rozwiązaniu.  Na komputerze musi być zainstalowany język Python 2. x.
 
 Aby uzyskać informacje na temat sposobu instalowania agenta Log Analytics dla systemu Linux i pobierania najnowszej wersji, zobacz [log Analytics Agent dla systemu Linux](https://github.com/microsoft/oms-agent-for-linux). Aby uzyskać informacje na temat sposobu instalowania agenta Log Analytics dla systemu Windows, zobacz [Microsoft Monitoring Agent dla systemu Windows](../log-analytics/log-analytics-windows-agent.md).
 
@@ -124,7 +124,7 @@ Rozwiązanie składa się z następujących zasobów. Zasoby są dodawane do kon
 
 Po włączeniu tego rozwiązania każdy komputer z systemem Windows, który jest bezpośrednio połączony z obszarem roboczym Log Analytics, zostanie automatycznie skonfigurowany jako hybrydowy proces roboczy elementu Runbook w celu obsługi elementów Runbook uwzględnionych w tym rozwiązaniu.
 
-Każdy komputer z systemem Windows, który jest zarządzany przez rozwiązanie, znajduje się w okienku **grupy hybrydowych procesów roboczych** jako **Grupa hybrydowych procesów roboczych systemu** dla konta usługi Automation. Rozwiązania używają konwencji nazewnictwa *hostname FQDN_GUID*. Nie można kierować tymi grupami do elementów Runbook na Twoim koncie. Jeśli spróbujesz, nie powiodą się. Te grupy mają na celu obsługę tylko rozwiązania do zarządzania.
+Każdy komputer z systemem Windows, który jest zarządzany przez rozwiązanie, znajduje się w okienku **grupy hybrydowych procesów roboczych** jako Grupa hybrydowych procesów **roboczych systemu** dla konta usługi Automation. Rozwiązania używają konwencji nazewnictwa *hostname FQDN_GUID*. Nie można kierować tymi grupami do elementów Runbook na Twoim koncie. Jeśli spróbujesz, nie powiodą się. Te grupy mają na celu obsługę tylko rozwiązania do zarządzania.
 
 Komputery z systemem Windows można dodać do grupy hybrydowych procesów roboczych elementu Runbook na koncie usługi Automation w celu obsługi elementów Runbook usługi Automation, jeśli używasz tego samego konta zarówno dla tego rozwiązania, jak i dla członkostwa w grupie hybrydowych procesów roboczych elementu Runbook. Ta funkcja została dodana w wersji 7.2.12024.0 hybrydowego procesu roboczego elementu Runbook.
 
@@ -216,7 +216,7 @@ Na koncie usługi Automation wybierz pozycję **Update Management** , aby wyświ
 
 Ten widok zawiera informacje dotyczące maszyn, brakujących aktualizacji, wdrożeń aktualizacji i zaplanowanych wdrożeń aktualizacji. W **kolumnie zgodność**można zobaczyć czas ostatniego oceny maszyny. W kolumnie **Aktualizowanie gotowości agenta** można sprawdzić, czy kondycja agenta aktualizacji jest poprzednia. Jeśli wystąpił problem, wybierz link, aby przejść do dokumentacji dotyczącej rozwiązywania problemów, która może ułatwić zapoznanie się z krokami, które należy podjąć w celu rozwiązania problemu.
 
-Aby uruchomić wyszukiwanie w dzienniku, które zwraca informacje o komputerze, aktualizacji lub wdrożeniu, wybierz element z listy. Zostanie otwarte okienko **przeszukiwania dzienników** z zapytaniem dotyczącym wybranego elementu:
+Aby uruchomić wyszukiwanie w dzienniku, które zwraca informacje o komputerze, aktualizacji lub wdrożeniu, wybierz element z listy. Zostanie otwarte okienko przeszukiwania **dzienników** z zapytaniem dotyczącym wybranego elementu:
 
 ![Update Management widoku domyślnego](media/automation-update-management/update-management-view.png)
 
@@ -242,7 +242,7 @@ Aby utworzyć nowe wdrożenie aktualizacji, wybierz pozycję **Zaplanuj wdrożen
 | Grupy do zaktualizowania |W przypadku maszyn platformy Azure Zdefiniuj zapytanie w oparciu o kombinację subskrypcji, grup zasobów, lokalizacji i tagów, aby utworzyć dynamiczną grupę maszyn wirtualnych platformy Azure, które mają zostać uwzględnione we wdrożeniu. </br></br>W przypadku maszyn spoza platformy Azure Wybierz istniejące zapisane wyszukiwanie, aby wybrać grupę maszyn nienależących do platformy Azure, które mają zostać uwzględnione we wdrożeniu. </br></br>Aby dowiedzieć się więcej, zobacz [Grupy dynamiczne](automation-update-management.md#using-dynamic-groups)|
 | Maszyny do zaktualizowania |Wybierz zapisane wyszukiwanie bądź zaimportowaną grupę lub wybierz maszynę z listy rozwijanej, a następnie wybierz poszczególne maszyny. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**.</br> Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w dziennikach usługi Azure Monitor, zobacz [Computer groups in Azure Monitor logs (Grupy komputerów w dziennikach usługi Azure Monitor)](../azure-monitor/platform/computer-groups.md) |
 |Aktualizuj klasyfikacje|Wybierz wszystkie wymagane klasyfikacje aktualizacji|
-|Uwzględnij/Wyklucz aktualizacje|Spowoduje to otwarcie strony **dołączania/wykluczania** . Aktualizacje, które mają zostać uwzględnione lub wykluczone, znajdują się na osobnych kartach. Aby uzyskać więcej informacji na temat sposobu obsługi dołączania, zobacz [zachowanie dołączania](automation-update-management.md#inclusion-behavior) |
+|Uwzględnij/Wyklucz aktualizacje|Spowoduje to otwarcie strony dołączania **/** wykluczania. Aktualizacje, które mają zostać uwzględnione lub wykluczone, znajdują się na osobnych kartach. Aby uzyskać więcej informacji na temat sposobu obsługi dołączania, zobacz [zachowanie dołączania](automation-update-management.md#inclusion-behavior) |
 |Ustawienia harmonogramu|Wybierz godzinę do uruchomienia, a następnie wybierz jedno lub cykliczne dla cyklu|
 | Skrypty przed skryptami + po skrypcie|Wybierz skrypty do uruchomienia przed i po wdrożeniu|
 | Okno obsługi |Liczba minut ustawiona dla aktualizacji. Wartość nie może być mniejsza niż 30 minut i nie więcej niż 6 godzin |
@@ -276,7 +276,7 @@ New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -Automa
 
 ## <a name="view-missing-updates"></a>Wyświetl brakujące aktualizacje
 
-Wybierz pozycję **brakujące aktualizacje** , aby wyświetlić listę aktualizacji, których brakuje na Twoich komputerach. Każda aktualizacja jest wyświetlana i można ją wybrać. Informacje o liczbie maszyn, które wymagają aktualizacji, systemu operacyjnego i linku, aby uzyskać więcej informacji. W okienku **przeszukiwania dzienników** są wyświetlane szczegółowe informacje o aktualizacjach.
+Wybierz pozycję **brakujące aktualizacje** , aby wyświetlić listę aktualizacji, których brakuje na Twoich komputerach. Każda aktualizacja jest wyświetlana i można ją wybrać. Informacje o liczbie maszyn, które wymagają aktualizacji, systemu operacyjnego i linku, aby uzyskać więcej informacji. W okienku przeszukiwania **dzienników** są wyświetlane szczegółowe informacje o aktualizacjach.
 
 ## <a name="view-update-deployments"></a>Wyświetl wdrożenia aktualizacji
 
@@ -324,7 +324,7 @@ Update Management polega na Windows Update do pobrania i zainstalowania aktualiz
 
 ### <a name="pre-download-updates"></a>Pobierz wstępnie aktualizacje
 
-Aby skonfigurować automatyczne pobieranie aktualizacji w zasady grupy, można ustawić [ustawienie Konfiguruj aktualizacje automatyczne](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates) na **3**. Spowoduje to pobranie aktualizacji wymaganych w tle, ale nie ich zainstalowanie. Pozwala to zachować Update Management kontrolę nad harmonogramami, ale umożliwia pobieranie aktualizacji poza oknem obsługi Update Management. Może to uniemożliwić **przekroczenie przez okno obsługi** błędów w Update Management.
+Aby skonfigurować automatyczne pobieranie aktualizacji w zasady grupy, można ustawić [ustawienie Konfiguruj aktualizacje automatyczne](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates) na **3**. Spowoduje to pobranie aktualizacji wymaganych w tle, ale nie ich zainstalowanie. Pozwala to zachować Update Management kontrolę nad harmonogramami, ale umożliwia pobieranie aktualizacji poza oknem obsługi Update Management. Może to uniemożliwić przekroczenie przez **okno obsługi** błędów w Update Management.
 
 Możesz również ustawić ten program przy użyciu programu PowerShell, uruchom następujące polecenie programu PowerShell w systemie, który ma pobierać aktualizacje do pobrania.
 
@@ -382,7 +382,7 @@ Postępuj zgodnie z instrukcjami w temacie [Connect Computers bez dostępu do In
 
 ## <a name="search-logs"></a>Przeszukiwanie dzienników
 
-Oprócz szczegółów, które są dostępne w Azure Portal, można przeszukiwać dzienniki. Na stronie rozwiązania wybierz pozycję **log Analytics**. Zostanie otwarte okienko **przeszukiwania dzienników** .
+Oprócz szczegółów, które są dostępne w Azure Portal, można przeszukiwać dzienniki. Na stronie rozwiązania wybierz pozycję **log Analytics**. Zostanie otwarte okienko przeszukiwania **dzienników** .
 
 Możesz również dowiedzieć się, jak dostosować zapytania lub użyć ich od różnych klientów i więcej, odwiedzając:  [Dokumentacja](
 https://dev.loganalytics.io/)interfejsu API wyszukiwania log Analytics.
@@ -642,7 +642,7 @@ W poniższych sekcjach wyjaśniono potencjalne problemy z poprawkami systemu Lin
 
 W przypadku niektórych wariantów systemu Linux, takich jak Red Hat Enterprise Linux, uaktualnienia na poziomie OS mogą odbywać się za pośrednictwem pakietów. Może to prowadzić do Update Management uruchamiania w przypadku zmiany numeru wersji systemu operacyjnego. Ponieważ Update Management używa tych samych metod do aktualizacji pakietów, których administrator może używać lokalnie na komputerze z systemem Linux, to zachowanie jest zamierzone.
 
-Aby uniknąć aktualizacji wersji systemu operacyjnego za pomocą Update Management uruchamiania, użyj funkcji **wykluczania** .
+Aby uniknąć aktualizacji wersji systemu operacyjnego za pomocą Update Management uruchamiania, użyj funkcji wykluczania.
 
 W Red Hat Enterprise Linux nazwa pakietu do wykluczenia to RedHat-Release-Server. x86_64.
 

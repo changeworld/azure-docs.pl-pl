@@ -1,18 +1,18 @@
 ---
 title: Tworzenie prywatnego punktu końcowego platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure | Microsoft Docs
 description: Informacje o prywatnym punkcie końcowym platformy Azure
-services: virtual-network
+services: private-link
 author: KumudD
-ms.service: virtual-network
+ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 7d27cb58bfbe0669bf1e6d0e0f0d696e3e85d38a
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 33383f42c3731d8a5aefdcde5008d706d5a9eed8
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71017960"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104795"
 ---
 # <a name="create-a-private-endpoint-using-azure-cli"></a>Tworzenie prywatnego punktu końcowego przy użyciu interfejsu wiersza polecenia platformy Azure
 Prywatny punkt końcowy to podstawowy blok konstrukcyjny dla prywatnego linku na platformie Azure. Dzięki temu zasoby platformy Azure, takie jak maszyny wirtualne, mogą komunikować się prywatnie z zasobami łączy prywatnych. W tym przewodniku szybki start dowiesz się, jak utworzyć MASZYNę wirtualną w sieci wirtualnej, SQL Database serwerze z prywatnym punktem końcowym przy użyciu interfejsu wiersza polecenia platformy Azure. Następnie można uzyskać dostęp do maszyny wirtualnej i bezpiecznie uzyskać dostęp do prywatnego zasobu linku (w tym przykładzie do prywatnego serwera Azure SQL Database). 

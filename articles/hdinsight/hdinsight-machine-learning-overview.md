@@ -2,18 +2,18 @@
 title: Omówienie uczenia maszynowego — Azure HDInsight
 description: Omówienie opcji uczenia maszynowego dla danych Big Data dla klastrów w usłudze Azure HDInsight.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.author: hrasheed
-ms.openlocfilehash: 0fecb41c3417d5b43e0638815d6a7d274ba461b0
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 139d82079b5946b0628760f5b05bb08d208cae6f
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70961964"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105414"
 ---
 # <a name="machine-learning-on-hdinsight"></a>Uczenie maszynowe w usłudze HDInsight
 
@@ -39,7 +39,7 @@ Za pomocą usługi ML w usłudze HDInsight z platformą Spark można zrównolegl
 
 Azure Machine Learning udostępnia narzędzia do modelowania analizy predykcyjnej, a także w pełni zarządzaną usługę, z której można korzystać w celu wdrażania modeli predykcyjnych jako gotowych do użycia usług sieci Web. Azure Machine Learning to kompletne rozwiązanie do analizy predykcyjnej w chmurze, za pomocą którego można tworzyć, testować i operacjonalizować modele predykcyjne oraz zarządzać nimi. Wybierz jedną z wielu bibliotek algorytmów, użyj programu Studio opartego na sieci Web do tworzenia modeli i łatwo Wdrażaj model jako usługę sieci Web.
 
-![Tworzenie zaawansowanych analiz dostępnych dla platformy Hadoop za pomocą Microsoft Azure Machine Learning](./media/hdinsight-machine-learning-overview/azure-machine-learning.png)
+![Microsoft Azure omówienie uczenia maszynowego](./media/hdinsight-machine-learning-overview/azure-machine-learning.png)
 
 Tworzenie funkcji dla danych w klastrze usługi HDInsight Hadoop przy użyciu [zapytań programu Hive](../machine-learning/team-data-science-process/create-features-hive.md). *Inżynieria funkcji* próbuje zwiększyć predykcyjne algorytmy uczenia, tworząc funkcje z danych pierwotnych, które ułatwiają proces uczenia się. Za pomocą [modułu Importuj dane](../machine-learning/studio/import-data.md)można uruchamiać zapytania HiveQL z Azure Machine Learning Studio i uzyskiwać dostęp do danych przetworzonych w usłudze Hive i przechowywanych w usłudze BLOB Storage.
 

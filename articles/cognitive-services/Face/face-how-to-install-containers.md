@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 09/18/2019
 ms.author: dapine
-ms.openlocfilehash: 7dba929101a928f0bbcb8553d6dd3b3043d74853
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: fbfc3f48bed5a4772573dcf2ab168cd3498a4cac
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114848"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71102013"
 ---
 # <a name="install-and-run-face-containers"></a>Instalowanie i uruchamianie kontenerów frontu
 
@@ -32,7 +32,9 @@ Przed użyciem kontenerów interfejs API rozpoznawania twarzy należy spełnić 
 |--|--|
 |Aparat platformy Docker| Aparat platformy Docker musi być zainstalowany na [komputerze-hoście](#the-host-computer). Platforma Docker zawiera pakiety, które konfigurują środowisko platformy Docker w systemach [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)i [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Aby uzyskać podstawowe informacje na temat platformy Docker i kontenerów, zobacz [Docker — omówienie](https://docs.docker.com/engine/docker-overview/).<br><br> Docker należy skonfigurować w taki sposób, aby umożliwić kontenerów, aby nawiązać połączenie z, a następnie wysyłać danych dotyczących rozliczeń do platformy Azure. <br><br> W systemie Windows program Docker musi być również skonfigurowany do obsługi kontenerów systemu Linux.<br><br>|
 |Znajomość platformy Docker | Potrzebna jest podstawowa znajomość pojęć platformy Docker, takich jak rejestry, repozytoria, kontenery i obrazy kontenerów. Trzeba również znać podstawowe `docker` polecenia.| 
-|Zasób czołowy |Aby używać kontenera, musisz mieć:<br><br>Zasób platformy Azure i skojarzony klucz interfejsu API oraz identyfikator URI punktu końcowego. Obie wartości są dostępne na stronach **Przegląd** i **klucze** dla zasobu. Są one wymagane do uruchomienia kontenera.<br><br>**{API_KEY}** : Jeden z dwóch dostępnych kluczy zasobów na stronie **klucze**<br><br>**{ENDPOINT_URI}** : Punkt końcowy zgodnie z opisem na stronie **Przegląd**
+|Zasób czołowy |Aby używać kontenera, musisz mieć:<br><br>**Zasób platformy** Azure i skojarzony klucz interfejsu API oraz identyfikator URI punktu końcowego. Obie wartości są dostępne na stronach **Przegląd** i **klucze** dla zasobu. Są one wymagane do uruchomienia kontenera.<br><br>**{API_KEY}** : Jeden z dwóch dostępnych kluczy zasobów na stronie **klucze**<br><br>**{ENDPOINT_URI}** : Punkt końcowy zgodnie z opisem na stronie **Przegląd**
+
+[!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
 ## <a name="request-access-to-the-private-container-registry"></a>Poproś o dostęp do prywatnego rejestru kontenerów
 
@@ -80,16 +82,9 @@ Gdy kontener znajduje się na [komputerze hosta](#the-host-computer), użyj nast
 
 ## <a name="run-the-container-with-docker-run"></a>Uruchamianie kontenera przy użyciu uruchomienia platformy Docker
 
-Użyj polecenia [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) , aby uruchomić jeden z trzech kontenerów. Polecenie używa następujących parametrów.
+Użyj polecenia [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) , aby uruchomić kontener. Zapoznaj się z tematem [zbieranie wymaganych parametrów](#gathering-required-parameters) `{ENDPOINT_URI}` , aby uzyskać szczegółowe `{API_KEY}` informacje na temat sposobu pobierania wartości i.
 
-| Symbol zastępczy | Value |
-|-------------|-------|
-|{API_KEY} | Ten klucz jest używany do uruchamiania kontenera i jest dostępny na stronie **kluczy** platformy `Cognitive Services` Azure. |
-|{ENDPOINT_URI} | Wartość identyfikatora URI punktu końcowego rozliczenia jest dostępna na `Cognitive Services` stronie **Przegląd** platformy Azure. Może to być na przykład `https://westus.api.cognitive.microsoft.com/face/v1.0`.|
-
-`face/v1.0` Dodaj Routing do identyfikatora URI punktu końcowego, jak pokazano w poprzednim przykładzie ENDPOINT_URI. 
-
-Zastąp te parametry własnymi wartościami w następującym `docker run` przykładzie polecenia:
+Przykłady polecenia są dostępne. [](face-resource-container-config.md#example-docker-run-commands) `docker run`
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
@@ -131,7 +126,7 @@ Użyj hosta, `http://localhost:5000`, dla interfejsów API kontenerów.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-W przypadku uruchomienia kontenera z instalacją wyjściową [](./face-resource-container-config.md#mount-settings) i włączeniu rejestrowania kontener generuje pliki dziennika, które są przydatne do rozwiązywania problemów występujących podczas uruchamiania lub uruchamiania kontenera. 
+W przypadku uruchomienia kontenera z [instalacją wyjściową](./face-resource-container-config.md#mount-settings) i włączeniu rejestrowania kontener generuje pliki dziennika, które są przydatne do rozwiązywania problemów występujących podczas uruchamiania lub uruchamiania kontenera. 
 
 
 ## <a name="billing"></a>Rozliczenia

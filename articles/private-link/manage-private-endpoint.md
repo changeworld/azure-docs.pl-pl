@@ -1,18 +1,18 @@
 ---
 title: Zarządzanie połączeniem prywatnego punktu końcowego na platformie Azure
 description: Dowiedz się, jak zarządzać połączeniami prywatnego punktu końcowego na platformie Azure
-services: virtual-network
+services: private-link
 author: KumudD
-ms.service: virtual-network
+ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 16654662665607f86aa08d1f9c5638daf2cbc251
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 012b236e997ef9144eaab43862f5f4dd2b324fff
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018915"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104633"
 ---
 # <a name="manage-a-private-endpoint-connection"></a>Zarządzanie połączeniem prywatnego punktu końcowego
 Łącze prywatne platformy Azure działa w modelu przepływu wywołań zatwierdzania, w którym odbiorca usługi linku prywatnego może zażądać połączenia z dostawcą usług w celu korzystania z usługi. Dostawca usług może następnie zdecydować, czy zezwolić konsumentowi na nawiązanie połączenia. Link prywatny platformy Azure umożliwia dostawcom usług Zarządzanie połączeniem prywatnego punktu końcowego w swoich zasobach. Ten artykuł zawiera instrukcje dotyczące zarządzania połączeniami prywatnego punktu końcowego.

@@ -7,12 +7,12 @@ ms.date: 07/30/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 0fe893ae95b31b1b676a982a60166041a0ad964d
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: cc827f52d227ee36620bd215dfcba96b433804d3
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015902"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103051"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Często zadawane pytania dotyczące Azure Files
 [Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem standardowego [protokołu bloku komunikatów serwera (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Udziały plików platformy Azure można instalować jednocześnie w chmurze lub lokalnych wdrożeniach systemów Windows, Linux i macOS. Możesz również buforować udziały plików platformy Azure na maszynach z systemem Windows Server, używając Azure File Sync, aby szybko uzyskać dostęp do miejsca, w którym są używane dane.
@@ -22,7 +22,7 @@ W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące 
 1. Sekcja komentarzy w tym artykule.
 2. [Forum usługi Azure Storage](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata).
 3. [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files). 
-4. pomocą techniczną firmy Microsoft. Aby utworzyć nowe żądanie obsługi, w Azure Portal na karcie **Pomoc** wybierz przycisk **Pomoc i obsługa techniczna** , a następnie wybierz pozycję **nowe żądanie obsługi**.
+4. Pomoc techniczna firmy Microsoft. Aby utworzyć nowe żądanie obsługi, w Azure Portal na karcie **Pomoc** wybierz przycisk **Pomoc i obsługa techniczna** , a następnie wybierz pozycję **nowe żądanie obsługi**.
 
 ## <a name="general"></a>Ogólne
 * <a id="why-files-useful"></a>
@@ -75,7 +75,7 @@ W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące 
     Azure Files obsługuje dwie warstwy magazynowania: Premium i Standard. Standardowe udziały plików są tworzone na kontach magazynu ogólnego przeznaczenia (GPv1 lub GPv2), a udziały plików w warstwie Premium są tworzone na kontach magazynu FileStorage. Dowiedz się więcej na temat tworzenia [standardowych udziałów plików](storage-how-to-create-file-share.md) i [udziałów plików w warstwie Premium](storage-how-to-create-premium-fileshare.md). 
     
     > [!NOTE]
-    > Nie można tworzyć udziałów plików platformy Azure z kont magazynu obiektów blob lub ogólnego przeznaczenia (GPv1 lub GPv2) w *warstwie Premium* . Standardowe udziały plików platformy Azure muszą zostać utworzone wyłącznie w ramach *standardowych* kont ogólnego przeznaczenia, a udziały plików platformy Azure w warstwie Premium muszą zostać utworzone tylko na kontach magazynu FileStorage. Konta magazynu ogólnego przeznaczenia (GPv1 i GPv2) są przeznaczone tylko dla stron sieci Web w warstwie Premium. 
+    > Nie można tworzyć udziałów plików platformy Azure z kont magazynu obiektów blob lub ogólnego przeznaczenia (GPv1 lub GPv2) w *warstwie Premium* . Standardowe udziały plików platformy Azure muszą zostać utworzone wyłącznie w ramach *standardowych* kont ogólnego przeznaczenia, a udziały plików platformy Azure w warstwie Premium muszą zostać utworzone tylko na kontach magazynu FileStorage. Konta magazynu ogólnego przeznaczenia (GPv1 i GPv2) są przeznaczone tylko dla stron sieci Web *w warstwie Premium* . 
 
 * <a id="give-us-feedback"></a>
   **Chcemy zobaczyć konkretną funkcję dodaną do Azure Files. Czy można je dodać?**  
@@ -100,7 +100,7 @@ W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące 
    
     \<FileNameWithoutExtension\>MachineName-.\>\<\[-#\]\< EXT\>  
 
-    Na przykład pierwszy konflikt CompanyReport. docx stanie się CompanyReport-CentralServer. docx, jeśli CentralServer jest miejsce, w którym wystąpił starszy zapis. Drugi konflikt zostałby nazwany CompanyReport-CentralServer-1. docx.
+    Na przykład pierwszy konflikt CompanyReport. docx stanie się CompanyReport-CentralServer. docx, jeśli CentralServer jest miejsce, w którym wystąpił starszy zapis. Drugi konflikt zostałby nazwany CompanyReport-CentralServer-1. docx. Azure File Sync obsługuje pliki konfliktów 100 na plik. Po osiągnięciu maksymalnej liczby plików konfliktów plik nie zostanie zsynchronizowany, dopóki liczba plików konfliktów nie będzie mniejsza niż 100.
 
 * <a id="afs-storage-redundancy"></a>
   **Czy Azure File Sync jest magazyn Geograficznie nadmiarowy?**  
@@ -278,7 +278,7 @@ W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące 
 
 * <a id="snapshot-cost"></a>
 **Ile kosztuje udział migawek?**  
-    Do migawki są stosowane standardowe transakcje i standardowe opłaty za magazyn. Migawki mają charakter przyrostowy. Podstawową migawką jest sam udział. Wszystkie kolejne migawki są przyrostowe i będą przechowywać różnice z poprzedniej migawki. Oznacza to, że zmiany różnicowe, które będą widoczne na rachunku, będą minimalne, jeśli obciążenie obciążeń jest minimalne. Informacje o cenach standardowych Azure Files można znaleźć na [stronie](https://azure.microsoft.com/pricing/details/storage/files/) z cennikiem. Dzisiaj, aby zobaczyć rozmiar używany przez migawkę udziału, można porównać rozliczane zdolności produkcyjne z zużywaną pojemnością. Pracujemy nad narzędziami, aby usprawnić raportowanie.
+    Do migawki są stosowane standardowe transakcje i standardowe opłaty za magazyn. Migawki mają charakter przyrostowy. Podstawową migawką jest sam udział. Wszystkie kolejne migawki są przyrostowe i będą przechowywać różnice z poprzedniej migawki. Oznacza to, że zmiany różnicowe, które będą widoczne na rachunku, będą minimalne, jeśli obciążenie obciążeń jest minimalne. Informacje o cenach standardowych Azure Files można znaleźć na [stronie z cennikiem](https://azure.microsoft.com/pricing/details/storage/files/) . Dzisiaj, aby zobaczyć rozmiar używany przez migawkę udziału, można porównać rozliczane zdolności produkcyjne z zużywaną pojemnością. Pracujemy nad narzędziami, aby usprawnić raportowanie.
 
 * <a id="ntfs-acls-snaphsots"></a>
 **Czy listy ACL systemu NTFS dotyczą katalogów i plików utrwalonych w migawkach udziałów?**  
@@ -335,7 +335,7 @@ W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące 
 **Ile kosztuje udział migawek?**  
      W trakcie okresu zapoznawczego nie ma opłat za pojemność migawki udziału. Obowiązują standardowe dane wyjściowe magazynu i koszty transakcji. Po uzyskaniu ogólnej dostępności subskrypcje będą obciążane opłatami za zasoby i transakcje na migawek udziałów.
      
-     Migawki udziałów mają charakter przyrostowy. Migawką udziału podstawowego jest sam udział. Wszystkie kolejne migawki udziałów są przyrostowe i przechowują tylko różnice z poprzedniej migawki udziału. Opłaty są naliczane tylko za zmienioną zawartość. Jeśli masz udział z 100 GiB danych, ale tylko 5 GiB uległo zmianie od czasu ostatniej migawki udziału, migawka udziału wykorzystuje tylko 5 dodatkowych GiB, a opłaty są naliczane za 105 GiB. Aby uzyskać więcej informacji na temat transakcji i standardowych opłat wychodzących, zobacz [stronę](https://azure.microsoft.com/pricing/details/storage/files/)z cennikiem.
+     Migawki udziałów mają charakter przyrostowy. Migawką udziału podstawowego jest sam udział. Wszystkie kolejne migawki udziałów są przyrostowe i przechowują tylko różnice z poprzedniej migawki udziału. Opłaty są naliczane tylko za zmienioną zawartość. Jeśli masz udział z 100 GiB danych, ale tylko 5 GiB uległo zmianie od czasu ostatniej migawki udziału, migawka udziału wykorzystuje tylko 5 dodatkowych GiB, a opłaty są naliczane za 105 GiB. Aby uzyskać więcej informacji na temat transakcji i standardowych opłat wychodzących, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/storage/files/).
 
 ## <a name="scale-and-performance"></a>Skalowanie i wydajność
 * <a id="files-scale-limits"></a>

@@ -4,19 +4,19 @@ description: W tym artykule opisano sposób użycia ponownego partycjonowania w 
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.date: 07/26/2019
+ms.date: 09/19/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 9c802e6d23daf502da351549c66a7dae1247c068
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 82e4a225d26bac04ed4754169cc4a79e0a8f9b32
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517438"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71101510"
 ---
 # <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>Użyj ponownego partycjonowania, aby zoptymalizować przetwarzanie za pomocą Azure Stream Analytics
 
-W tym artykule pokazano, jak za pomocą ponownego partycjonowania skalować zapytanie Azure Stream Analytics w scenariuszach, które nie mogą być [](stream-analytics-scale-jobs.md)w pełni równoległe.
+W tym artykule pokazano, jak za pomocą ponownego partycjonowania skalować zapytanie Azure Stream Analytics w scenariuszach, które nie mogą być w pełni [równoległe](stream-analytics-scale-jobs.md).
 
 Nie można używać [przetwarzanie równoległe](stream-analytics-parallelization.md) , jeśli:
 
@@ -54,10 +54,20 @@ Eksperymentuj i Obserwuj użycie zasobów zadania, aby określić dokładną lic
 
 ## <a name="repartitions-for-sql-output"></a>Podział na partycje dla danych wyjściowych SQL
 
-Gdy zadanie korzysta z usługi SQL Database na potrzeby danych wyjściowych, należy użyć jawnego ponownego partycjonowania, aby dopasować optymalną liczbę partycji. Ze względu na to, że program SQL działa najlepiej z ośmioma składnikami zapisywania, należy ponownie podzielić przepływ na osiem przed użyciem operacji opróżniania lub w innym miejscu, w którym można skorzystać z wydajności zadań. Aby uzyskać więcej informacji, zobacz [Azure Stream Analytics danych wyjściowych Azure SQL Database](stream-analytics-sql-output-perf.md).
+Gdy zadanie korzysta z usługi SQL Database na potrzeby danych wyjściowych, należy użyć jawnego ponownego partycjonowania, aby dopasować optymalną liczbę partycji. Ze względu na to, że program SQL działa najlepiej z ośmioma składnikami zapisywania, należy ponownie podzielić przepływ na osiem przed użyciem operacji opróżniania lub w innym miejscu, w którym można skorzystać z wydajności zadań. 
+
+Jeśli istnieje więcej niż 8 partycji wejściowych, dziedziczenie schematu partycjonowania danych wejściowych może nie być odpowiednią opcją. Rozważ użycie polecenia [into](/stream-analytics-query/into-azure-stream-analytics.md#into-shard-count) w zapytaniu, aby jawnie określić liczbę składników zapisywania danych wyjściowych. 
+
+Poniższy przykład odczytuje dane wejściowe, bez względu na to, że są w naturalny sposób partycjonowane i ponownie dzieli dziesięciokrotny strumienia zgodnie z wymiarem DeviceID i opróżnia dane do danych wyjściowych. 
+
+```sql
+SELECT * INTO [output] FROM [input] PARTITION BY DeviceID INTO 10
+```
+
+Aby uzyskać więcej informacji, zobacz [Azure Stream Analytics danych wyjściowych Azure SQL Database](stream-analytics-sql-output-perf.md).
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Wprowadzenie do Azure Stream Analytics](stream-analytics-introduction.md)
 * [Korzystanie z przetwarzanie równoległe zapytań w Azure Stream Analytics](stream-analytics-parallelization.md)

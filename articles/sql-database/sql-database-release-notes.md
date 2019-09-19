@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: sstein
-ms.openlocfilehash: 21f80a2be09302e47817ccfd4223207bdcdd0413
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 232f8b13174aed19477ee0b139c83fba439049ac
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066806"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71101548"
 ---
 # <a name="sql-database-release-notes"></a>Informacje o wersji SQL Database
 
@@ -48,7 +48,6 @@ W tym artykule wymieniono SQL Database funkcje, które są obecnie dostępne w p
 | ---| --- |
 | <a href="/azure/sql-database/sql-database-instance-pools">Pule wystąpień</a> | Wygodny i ekonomiczny sposób migracji mniejszych wystąpień SQL do chmury. |
 | <a href="https://aka.ms/managed-instance-tde-byok">Transparent Data Encryption (TDE) z Bring Your Own Key (BYOK)</a> |Aby uzyskać więcej informacji [, zobacz Usługa Azure SQL transparent Data Encryption z kluczami zarządzanymi przez klienta w programie Azure Key Vault: Obsługa](transparent-data-encryption-byok-azure-sql.md)Bring Your Own Key.|
-| <a href="https://aka.ms/managed-instance-failover-groups">Rozproszone geograficznie grupy trybu failover</a> | Zachowaj kopię wystąpienia w innym regionie i upewnij się, że dane będą dostępne nawet w regionalnym scenariuszu awarii. |
 | <a href="https://aka.ms/managed-instance-aadlogins">Nazwy główne serwera usługi Azure AD na poziomie wystąpienia (logowania)</a> | Utwórz nazwy logowania na poziomie serwera przy użyciu instrukcji <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN from External Provider</a> . |
 | [Replikacja transakcyjna](sql-database-managed-instance-transactional-replication.md) | Replikowanie zmian z tabel do innych baz danych umieszczonych w wystąpieniach zarządzanych, pojedynczych bazach danych lub wystąpieniach SQL Server lub aktualizowanie tabel w przypadku zmiany niektórych wierszy w innych wystąpieniach zarządzanych lub wystąpieniu SQL Server. Aby uzyskać więcej informacji, zobacz [Konfigurowanie replikacji w Azure SQL Database bazie danych wystąpienia zarządzanego](replication-with-sql-database-managed-instance.md). |
 | Wykrywanie zagrożeń |Aby uzyskać więcej informacji, zobacz [Konfigurowanie wykrywania zagrożeń w Azure SQL Database wystąpienia zarządzanego](sql-database-managed-instance-threat-detection.md).|

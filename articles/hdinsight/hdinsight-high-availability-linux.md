@@ -1,20 +1,20 @@
 ---
 title: Wysoka dostępność dla usługi Hadoop — Azure HDInsight
 description: Dowiedz się, jak klastry usługi HDInsight zwiększają niezawodność i dostępność przy użyciu dodatkowego węzła głównego. Dowiedz się, w jaki sposób to wpływa na usługi Hadoop, takie jak Ambari i Hive, a także jak łączyć się indywidualnie z każdym węzłem głównym przy użyciu protokołu SSH.
-ms.reviewer: jasonh
 author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 keywords: Wysoka dostępność usługi Hadoop
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: hrasheed
-ms.openlocfilehash: 1828efb410849677e859d341e4e16e4f5d4ca681
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 615b1e4c5684084b6c5f88d26293b993c1efbf1f
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68405996"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104423"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Dostępność i niezawodność klastrów Apache Hadoop w usłudze HDInsight
 
@@ -106,7 +106,7 @@ Interfejs użytkownika sieci Web Ambari jest wyświetlany `https://CLUSTERNAME.a
 
 Po nadejściu na stronie Ambari zainstalowane usługi są wyświetlane po lewej stronie.
 
-![Zainstalowane usługi](./media/hdinsight-high-availability-linux/services.png)
+![Zainstalowane usługi Apache Ambari](./media/hdinsight-high-availability-linux/hdinsight-installed-services.png)
 
 Istnieje szereg ikon, które mogą pojawić się obok usługi, aby wskazać stan. Wszystkie alerty związane z usługą można wyświetlić za pomocą linku **alerty** w górnej części strony.  Ambari oferuje kilka wstępnie zdefiniowanych alertów.
 
@@ -155,11 +155,11 @@ Możesz wybrać każdą usługę, aby wyświetlić więcej informacji na jej tem
 
 Gdy strona usługi zawiera informacje o stanie i konfiguracji każdej usługi, nie zawiera informacji na temat węzła głównego, na którym działa usługa. Aby wyświetlić te informacje, Użyj linku **hosty** w górnej części strony. Na tej stronie są wyświetlane hosty w klastrze, w tym węzły główne.
 
-![Lista hostów](./media/hdinsight-high-availability-linux/hosts.png)
+![Lista hostów Apache Ambari węzła głównego](./media/hdinsight-high-availability-linux/hdinsight-hosts-list.png)
 
 Wybranie linku dla jednego z węzłów głównych spowoduje wyświetlenie usług i składników uruchomionych w tym węźle.
 
-![Stan składnika](./media/hdinsight-high-availability-linux/nodeservices.png)
+![Stan składnika Apache Ambari](./media/hdinsight-high-availability-linux/hdinsight-node-services.png)
 
 Aby uzyskać więcej informacji na temat korzystania z programu Ambari, zobacz [monitorowanie i zarządzanie usługą HDInsight przy użyciu interfejsu użytkownika sieci Web Apache Ambari](hdinsight-hadoop-manage-ambari.md).
 
@@ -175,7 +175,7 @@ Aby sprawdzić stan usługi za pomocą interfejsu API REST Ambari, można użyć
 * Zamień ciąg **CLUSTERNAME** na nazwę klastra.
 * Zastąp wartość **ServiceName** nazwą usługi, dla której chcesz sprawdzić stan.
 
-Na przykład aby sprawdzić stan usługi **HDFS** w klastrze o nazwie Moje klastry zhasłem **hasła**, użyj następującego polecenia:
+Na przykład aby sprawdzić stan usługi **HDFS** w klastrze o nazwie Moje **klastry**z hasłem **hasła**, użyj następującego polecenia:
 
     curl -u admin:password https://mycluster.azurehdinsight.net/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state
 
@@ -241,17 +241,17 @@ Aby uzyskać listę dostępnych poleceń, wpisz `help` `sftp>` w wierszu polecen
 
 W interfejsie użytkownika sieci Web Ambari wybierz usługę, dla której chcesz wyświetlić dzienniki (na przykład PRZĘDZę). Następnie użyj opcji **szybkie linki** , aby wybrać węzeł główny, dla którego mają być wyświetlone dzienniki.
 
-![Używanie szybkich linków do wyświetlania dzienników](./media/hdinsight-high-availability-linux/viewlogs.png)
+![Używanie szybkich linków do wyświetlania dzienników](./media/hdinsight-high-availability-linux/quick-links-view-logs.png)
 
 ## <a name="how-to-configure-the-node-size"></a>Jak skonfigurować rozmiar węzła
 
-Rozmiar węzła można wybrać tylko podczas tworzenia klastra. Listę różnych rozmiarów maszyn wirtualnych dostępnych dla usługi HDInsight można znaleźć na stronie z cennikiem usługi [HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
+Rozmiar węzła można wybrać tylko podczas tworzenia klastra. Listę różnych rozmiarów maszyn wirtualnych dostępnych dla usługi HDInsight można znaleźć na [stronie z cennikiem usługi HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
 Podczas tworzenia klastra można określić rozmiar węzłów. Poniższe informacje zawierają wskazówki dotyczące sposobu określania rozmiaru przy użyciu [Azure Portal][preview-portal], [Azure PowerShell module AZ][azure-powershell]i [interfejsu wiersza polecenia platformy Azure][azure-cli]:
 
 * **Azure Portal**: Podczas tworzenia klastra można ustawić rozmiar węzłów używanych przez klaster:
 
-    ![Obraz Kreatora tworzenia klastra z wybranym rozmiarem węzła](./media/hdinsight-high-availability-linux/headnodesize.png)
+    ![Obraz Kreatora tworzenia klastra z wybranym rozmiarem węzła](./media/hdinsight-high-availability-linux/hdinsight-headnodesize.png)
 
 * **Interfejs wiersza polecenia platformy Azure**: Korzystając z polecenia [AZ HDInsight Create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) , można ustawić rozmiar węzłów głowy, procesu roboczego i dozorcy przy użyciu `--headnode-size`parametrów, `--workernode-size`i `--zookeepernode-size` .
 

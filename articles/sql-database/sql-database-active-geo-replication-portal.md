@@ -11,18 +11,18 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
-ms.openlocfilehash: 058afdbc4aa134b5b3c4c8cc5e9e2f2ae6f53084
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 049122b97a26e63188142dd5494927c2ae71d852
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569637"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103225"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Skonfiguruj aktywną replikację geograficzną dla Azure SQL Database w Azure Portal i zainicjuj pracę w trybie failover
 
 W tym artykule opisano sposób konfigurowania [aktywnej replikacji geograficznej dla jednej i puli baz danych](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities) w Azure SQL Database przy użyciu [Azure Portal](https://portal.azure.com) i inicjowania trybu failover.
 
-Aby uzyskać informacje na temat grup autotrybu failover z bazami danych o pojedynczej i puli, zobacz [najlepsze rozwiązania dotyczące korzystania z grup trybu failover z pojedynczymi bazami danych w puli](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools). Aby uzyskać informacje na temat grup autotrybu failover z wystąpieniami zarządzanymi (wersja zapoznawcza), zobacz [najlepsze rozwiązania dotyczące korzystania z grup trybu failover z wystąpieniami zarządzanymi](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-managed-instances).
+Aby uzyskać informacje na temat grup autotrybu failover z bazami danych o pojedynczej i puli, zobacz [najlepsze rozwiązania dotyczące korzystania z grup trybu failover z pojedynczymi bazami danych w puli](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools). Aby uzyskać informacje na temat grup Autotryb failover z wystąpieniami zarządzanymi, zobacz [najlepsze rozwiązania dotyczące korzystania z grup trybu failover z wystąpieniami zarządzanymi](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-managed-instances).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -95,4 +95,4 @@ Ta operacja trwale kończy replikację do pomocniczej bazy danych i zmienia rol�
 
 * Aby dowiedzieć się więcej o aktywnej replikacji geograficznej, zobacz [aktywną replikację geograficzną](sql-database-active-geo-replication.md).
 * Aby dowiedzieć się więcej o grupach autostartu trybu failover, zobacz [grupy autotrybu failover](sql-database-auto-failover-group.md)
-* Aby zapoznać się z omówieniem i scenariuszami ciągłości działania, zobacz temat ciągłość działania [— Omówienie](sql-database-business-continuity.md).
+* Aby zapoznać się z omówieniem i scenariuszami ciągłości działania, zobacz temat [ciągłość działania — Omówienie](sql-database-business-continuity.md).

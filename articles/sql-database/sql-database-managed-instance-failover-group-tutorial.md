@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 06/27/2019
-ms.openlocfilehash: 3e5b96cf4227e933aa99b37469410276a775dbed
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 04802b8b25ca21cc0099874e5a9ea69748868f6e
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103078"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103209"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Samouczek: Dodawanie SQL Database wystąpienia zarządzanego do grupy trybu failover
 
@@ -31,7 +31,7 @@ Dodaj wystąpienie zarządzane SQL Database do grupy trybu failover. W tym artyk
   > [!NOTE]
   > - Korzystając z tego samouczka, należy się upewnić, że skonfigurowano zasoby z [wymaganiami wstępnymi dotyczącymi konfigurowania grup trybu failover dla wystąpienia zarządzanego](sql-database-auto-failover-group.md#enabling-geo-replication-between-managed-instances-and-their-vnets). 
   > - Tworzenie wystąpienia zarządzanego może zająć dużo czasu. W związku z tym ten samouczek może trwać kilka godzin. Aby uzyskać więcej informacji o czasach udostępniania, zobacz [operacje zarządzania wystąpieniami zarządzanymi](sql-database-managed-instance.md#managed-instance-management-operations). 
-  > - Korzystanie z grup trybu failover z wystąpieniami zarządzanymi jest obecnie dostępne w wersji zapoznawczej. 
+
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -124,7 +124,7 @@ Aby utworzyć dodatkowe wystąpienie zarządzane, wykonaj następujące kroki:
 
    ![Pomocnicza sieć MI](media/sql-database-managed-instance-failover-group-tutorial/networking-settings-for-secondary-mi.png)
 
-1. Na karcie **Ustawienia dodatkowe** na potrzeby **replikacji**geograficznej wybierz opcję **tak** , aby _użyć jej jako pomocniczej pracy w trybie failover_. Wybierz z listy rozwijanej podstawowe wystąpienie zarządzane. 
+1. Na karcie **Ustawienia dodatkowe** na potrzeby **replikacji geograficznej**wybierz opcję **tak** , aby _użyć jej jako pomocniczej pracy w trybie failover_. Wybierz z listy rozwijanej podstawowe wystąpienie zarządzane. 
     1. Upewnij się, że sortowanie i strefa czasowa są zgodne z podstawowym wystąpieniem zarządzanym. Główne wystąpienie zarządzane utworzone w tym samouczku użyło domyślnego `SQL_Latin1_General_CP1_CI_AS` sortowania `(UTC) Coordinated Universal Time` i strefy czasowej. 
 
    ![Pomocnicza sieć MI](media/sql-database-managed-instance-failover-group-tutorial/secondary-mi-failover.png)
@@ -192,7 +192,7 @@ Powtórz kroki opisane w poprzedniej sekcji, aby utworzyć podsieć i bramę sie
    ![Ustawienia bramy dodatkowej](media/sql-database-managed-instance-failover-group-tutorial/settings-for-secondary-gateway.png)
 
 ## <a name="6---connect-the-gateways"></a>6 — łączenie bram
-W tym kroku utworzysz połączenie między bramami. Połączenie musi zostać ustanowione z poziomu podstawowego do bramy pomocniczej, a następnie należy nawiązać oddzielne połączenie między lokacją pomocniczą a bramą podstawową. Pamiętaj, aby podczas konfigurowania łączności między bramami korzystać z tego samego **klucza** współużytkowanego. 
+W tym kroku utworzysz połączenie między bramami. Połączenie musi zostać ustanowione z poziomu podstawowego do bramy pomocniczej, a następnie należy nawiązać oddzielne połączenie między lokacją pomocniczą a bramą podstawową. Pamiętaj, aby podczas konfigurowania łączności między bramami korzystać z tego samego **klucza współużytkowanego** . 
 
 Aby skonfigurować połączenie, wykonaj następujące kroki:
 
@@ -264,7 +264,7 @@ W tym samouczku skonfigurowano grupę trybu failover między dwoma wystąpieniam
 Przejdź do następnego przewodnika Szybki Start dotyczącego sposobu nawiązywania połączenia z wystąpieniem zarządzanym i sposobu przywracania bazy danych do wystąpienia zarządzanego: 
 
 > [!div class="nextstepaction"]
-> [Nawiązywanie połączenia](sql-database-managed-instance-configure-vm.md)
-> z wystąpieniem zarządzanym[przywracanie bazy danych do wystąpienia zarządzanego](sql-database-managed-instance-get-started-restore.md)
+> [Nawiązywanie połączenia z wystąpieniem](sql-database-managed-instance-configure-vm.md)
+> zarządzanym[przywracanie bazy danych do wystąpienia zarządzanego](sql-database-managed-instance-get-started-restore.md)
 
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: mlearned
-ms.openlocfilehash: 5dabbb6458d0d0d4af51490bea0c3f38a7c5c41d
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 26f1544cab5cf5be2edd52f97c758d46eb835514
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542895"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103786"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Integracja Azure Active Directory z usługą Azure Kubernetes Service
 
@@ -64,7 +64,7 @@ Pierwsza aplikacja usługi Azure AD jest stosowana w celu uzyskania członkostwa
 
     ![Aktualizuj członkostwo grupy do wszystkich](media/aad-integration/edit-manifest.png)
 
-3. W lewym okienku aplikacji usługi Azure AD wybierz pozycję **certyfikaty &** wpisy tajne.
+3. W lewym okienku aplikacji usługi Azure AD wybierz pozycję **certyfikaty & wpisy tajne**.
 
     a. Wybierz pozycję **+ nowy klucz tajny klienta**.
 
@@ -86,13 +86,13 @@ Pierwsza aplikacja usługi Azure AD jest stosowana w celu uzyskania członkostwa
 
     e. Wybierz pozycję **Dodaj uprawnienia** , aby zapisać aktualizacje.
 
-    f. W obszarze **wyrażanie zgody**wybierz pozycję **Udziel zgody administratora**. Ten przycisk nie jest dostępny, jeśli bieżące konto nie jest administratorem dzierżawy.
+    f. W obszarze **wyrażanie zgody**wybierz pozycję **Udziel zgody administratora**. Ten przycisk nie jest dostępny. bieżące używane konto nie jest wyświetlane jako Administrator dzierżawy.
 
     Po pomyślnym udzieleniu uprawnień w portalu zostanie wyświetlone następujące powiadomienie:
 
    ![Powiadomienie o pomyślnym przyznanych uprawnieniach](media/aad-integration/permissions-granted.png)
 
-5. W lewym okienku aplikacji usługi Azure AD wybierz opcję Uwidocznij **interfejs API**, a następnie wybierz pozycję **+ Dodaj zakres**.
+5. W lewym okienku aplikacji usługi Azure AD wybierz opcję **Uwidocznij interfejs API**, a następnie wybierz pozycję **+ Dodaj zakres**.
     
     a. Wprowadź **nazwę zakresu**, **nazwę wyświetlaną zgody administratora**, a następnie **Opis zgody administratora** , taki jak *AKSAzureADServer*.
 

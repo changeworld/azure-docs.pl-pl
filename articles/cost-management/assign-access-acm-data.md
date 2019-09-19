@@ -5,35 +5,35 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/04/2019
+ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: 946a9bd7595692dddd157d01945fd15bdf1ab965
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 332ec3930a7654fd5aecf1fc71ccb55c16df127f
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66493750"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105117"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Przypisywanie dostępu do danych rozwiązania Cost Management
 
-Dla użytkowników z umów Enterprise platformy Azure kombinacji uprawnienia udzielone w witrynie Azure portal i portalu przedsiębiorstwa (EA), należy określić poziom dostępu użytkownika z danymi usługi Azure Cost Management. Na użytkowników z innych typów konta platformy Azure, poziom dostępu do danych rozwiązania Cost Management jest prostsza. Ten artykuł przeprowadzi przypisywanie dostępu do danych rozwiązania Cost Management. Po przypisaniu kombinację uprawnień dane użytkownika widoków w Cost Management na podstawie zakresu dostępu i na zakres, wybierają w witrynie Azure portal.
+W przypadku użytkowników korzystających z umów Enterprise Agreement w ramach usługi Azure Portal i portalu Enterprise (EA) można zdefiniować poziom dostępu do Azure Cost Management danych. W przypadku użytkowników z innymi typami kont platformy Azure poziom dostępu użytkownika jest łatwiejszy Cost Management danych. Ten artykuł przeprowadzi przypisywanie dostępu do danych rozwiązania Cost Management. Po przypisaniu kombinację uprawnień dane użytkownika widoków w Cost Management na podstawie zakresu dostępu i na zakres, wybierają w witrynie Azure portal.
 
 Zakres, który użytkownik wybierze jest używana w całej Cost Management, zapewnienie konsolidacji danych i kontrolować dostęp do informacji o kosztach. Podczas korzystania z zakresów, użytkownicy nie zaznacz je. Zamiast tego wybierz większy zakres, który zakresy podrzędne Przywracanie do, a następnie ich filtru w celu mają być wyświetlane. Konsolidacja danych ważne jest, aby zrozumieć, ponieważ niektórzy użytkownicy nie powinien mieć dostęp do zakresu nadrzędnego, który zakresy podrzędne Przywracanie do.
 
-Obejrzyj [sposób przydzielania dostępu w usłudze Azure Cost Management](https://www.youtube.com/watch?v=J997ckmwTa8) wideo, aby dowiedzieć się więcej na temat przypisywania uprawnień do wyświetlania, koszty i opłaty za pomocą kontroli dostępu opartej na rolach na platformie Azure.
+Obejrzyj informacje o [sposobie przypisywania dostępu Azure Cost Management](https://www.youtube.com/watch?v=J997ckmwTa8) wideo, aby dowiedzieć się więcej o przypisaniu dostępu do wyświetlania kosztów i opłat za pomocą kontroli dostępu opartej na rolach na platformie Azure.
 
 >[!VIDEO https://www.youtube.com/embed/J997ckmwTa8]
 
 ## <a name="cost-management-scopes"></a>Usługa Cost Management zakresów
 
-Usługa Cost management obsługuje wiele różnych typów kont platformy Azure. Aby wyświetlić pełną listę obsługiwanych typów kont, zobacz [Omówienie danych usługi Cost Management](understand-cost-mgt-data.md). Typ konta określa dostępnych zakresów.
+Zarządzanie kosztami obsługuje różne typy kont platformy Azure. Aby wyświetlić pełną listę obsługiwanych typów kont, zobacz [Omówienie danych usługi Cost Management](understand-cost-mgt-data.md). Typ konta określa dostępne zakresy.
 
-### <a name="azure-ea-subscription-scopes"></a>Zakresy subskrypcji Azure EA
+### <a name="azure-ea-subscription-scopes"></a>Zakresy subskrypcji platformy Azure EA
 
-Aby wyświetlić dane kosztów dla subskrypcji EA platformy Azure, użytkownik musi mieć co najmniej odczytu dostęp do co najmniej jeden z następujących zakresów.
+Aby wyświetlić dane dotyczące kosztów dla subskrypcji EA platformy Azure, użytkownik musi mieć co najmniej jeden dostęp do odczytu do co najmniej jednego z następujących zakresów.
 
 | **Zakres** | **Lokalizacja definicji** | **Wymagany dostęp do wyświetlania danych** | **Wstępnie wymagane ustawienie umowy EA** | **Konsoliduje dane** |
 | --- | --- | --- | --- | --- |
@@ -48,21 +48,21 @@ Aby wyświetlić dane kosztów dla subskrypcji EA platformy Azure, użytkownik m
 
 <sup>2</sup> konta rejestracji jest również określany jako właściciel konta.
 
-Na poniższym diagramie przedstawiono relację między zakresami Cost Management przy użyciu ról i ustawienia portalu EA.
+Na poniższym diagramie przedstawiono relację między zakresami Cost Management przy użyciu ról i ustawień portalu EA.
 
-![Diagram przedstawiający relację między zakresami Cost Management przy użyciu ról i ustawienia portalu EA](./media/assign-access-acm-data/scope-access-relationship-diagram.png)
+![Diagram przedstawiający relację między zakresami Cost Management przy użyciu ról i ustawień portalu EA](./media/assign-access-acm-data/scope-access-relationship-diagram.png)
 
-Gdy **DA Wyświetl opłaty** są wyłączone w witrynie EA portal zostanie wyświetlony komunikat z informacją *kosztów są wyłączone przez Twoją organizację* podczas próby wyświetlenia koszty dla kont i działów.
+Gdy w portalu EA są wyłączone **opłaty za usługę DirectAccess** , zobaczysz komunikat z informacją *o kosztach wyłączonych dla Twojej organizacji* , gdy spróbujesz wyświetlić koszty dla działów i kont.
 
-Podobnie, gdy **AO Wyświetl opłaty** są wyłączone w witrynie EA portal zostanie wyświetlony komunikat z informacją *kosztów są wyłączone przez Twoją organizację* podczas próby wyświetlenia koszty dla kont rejestracji, grupy zarządzania subskrypcji i grupy zasobów.
+Podobnie, gdy w portalu EA są wyłączone **opłaty za wyświetlanie Ao** , zobaczysz komunikat informujący o *kosztach wyłączonych dla Twojej organizacji* podczas próby wyświetlenia kosztów kont rejestracji, grup zarządzania, subskrypcji i grup zasobów.
 
-## <a name="other-azure-account-scopes"></a>Inne zakresy konta platformy Azure
+## <a name="other-azure-account-scopes"></a>Inne zakresy kont platformy Azure
 
-Aby wyświetlić dane kosztów dla innych subskrypcji platformy Azure, użytkownik musi mieć co najmniej odczytu dostęp do co najmniej jeden z następujących zakresów:
+Aby wyświetlić dane dotyczące kosztów dla innych subskrypcji platformy Azure, użytkownik musi mieć co najmniej jeden dostęp do odczytu do jednego lub kilku z następujących zakresów:
 
 - Konto platformy Azure
 - Grupa zarządzania
-- Grupa zasobów
+- Resource group
 
 ## <a name="enable-access-to-costs-in-the-ea-portal"></a>Zapewnianie dostępu do kosztów w witrynie EA portal
 
@@ -129,7 +129,7 @@ Po wykonaniu powyższych kroków, konto użytkownika, staje się kontem rejestra
 
 ## <a name="assign-management-group-scope-access"></a>Przypisz dostęp do zakresu grupy zarządzania
 
-Dostęp do zakresu grupy zarządzania wymaga co najmniej uprawnienia czytnika zarządzania kosztami (lub czytnika). Można skonfigurować uprawnienia dla grupy zarządzania, w witrynie Azure portal. Masz co najmniej uprawnienia administratora dostępu użytkowników (lub właściciela) dla grupy zarządzania włączyć dostęp do innych użytkowników. Oraz kont do Umowy EA platformy Azure, musisz również włączyć **AO Wyświetl opłaty** ustawienie w portalu EA.
+Dostęp do widoku zakres grupy zarządzania wymaga co najmniej uprawnienia czytelnik Cost Management (lub czytelnik). Można skonfigurować uprawnienia dla grupy zarządzania, w witrynie Azure portal. Masz co najmniej uprawnienia administratora dostępu użytkowników (lub właściciela) dla grupy zarządzania włączyć dostęp do innych użytkowników. W przypadku kont EA platformy Azure należy również włączyć ustawienie **Ao Wyświetl opłaty** w portalu EA.
 
 1. Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 2. Wybierz **wszystkich usług** na pasku bocznym, wyszukaj _grup zarządzania_, a następnie wybierz **grup zarządzania**.
@@ -145,7 +145,7 @@ Dostęp do zakresu grupy zarządzania wymaga co najmniej uprawnienia czytnika za
 
 ## <a name="assign-subscription-scope-access"></a>Przypisywanie subskrypcji zakresu dostępu
 
-Dostęp do subskrypcji wymaga co najmniej uprawnienia czytnika zarządzania kosztami (lub czytnika). Można skonfigurować uprawnienia do subskrypcji, w witrynie Azure portal. Masz co najmniej uprawnienia administratora dostępu użytkowników (lub właściciela) dla subskrypcji włączyć dostęp do innych użytkowników. Oraz kont do Umowy EA platformy Azure, musisz również włączyć **AO Wyświetl opłaty** ustawienie w portalu EA.
+Dostęp do subskrypcji wymaga co najmniej uprawnienia czytnika zarządzania kosztami (lub czytnika). Można skonfigurować uprawnienia do subskrypcji, w witrynie Azure portal. Masz co najmniej uprawnienia administratora dostępu użytkowników (lub właściciela) dla subskrypcji włączyć dostęp do innych użytkowników. W przypadku kont EA platformy Azure należy również włączyć ustawienie **Ao Wyświetl opłaty** w portalu EA.
 
 1. Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 2. Wybierz **wszystkich usług** na pasku bocznym, wyszukaj _subskrypcje_, a następnie wybierz **subskrypcje**.
@@ -159,7 +159,7 @@ Dostęp do subskrypcji wymaga co najmniej uprawnienia czytnika zarządzania kosz
 
 ## <a name="assign-resource-group-scope-access"></a>Przypisz dostęp do zakresu grupy zasobów
 
-Dostęp do grupy zasobów wymaga co najmniej uprawnienia czytnika zarządzania kosztami (lub czytnika). Można skonfigurować uprawnienia do grupy zasobów, w witrynie Azure portal. Masz co najmniej uprawnienia administratora dostępu użytkowników (lub właściciela) dla grupy zasobów włączyć dostęp do innych użytkowników. Oraz kont do Umowy EA platformy Azure, musisz również włączyć **AO Wyświetl opłaty** ustawienie w portalu EA.
+Dostęp do grupy zasobów wymaga co najmniej uprawnienia czytnika zarządzania kosztami (lub czytnika). Można skonfigurować uprawnienia do grupy zasobów, w witrynie Azure portal. Masz co najmniej uprawnienia administratora dostępu użytkowników (lub właściciela) dla grupy zasobów włączyć dostęp do innych użytkowników. W przypadku kont EA platformy Azure należy również włączyć ustawienie **Ao Wyświetl opłaty** w portalu EA.
 
 1. Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 2. Wybierz **wszystkich usług** na pasku bocznym, wyszukaj _grup zasobów_, a następnie wybierz **grup zasobów**.
@@ -169,15 +169,15 @@ Dostęp do grupy zasobów wymaga co najmniej uprawnienia czytnika zarządzania k
 6. W obszarze **roli**, wybierz opcję **Cost Management czytnika**.
 7. W obszarze **Przypisz dostęp do**, wybierz opcję **użytkownika usługi Azure AD, grupa lub aplikacja**.
 8. Aby przypisać dostęp, wyszukiwania, a następnie wybierz użytkownika.
-9. Kliknij pozycję **Zapisz**.
+9. Kliknij polecenie **Zapisz**.
 
-## <a name="cross-tenant-authentication-issues"></a>Problemy z uwierzytelnianiem międzydzierżawowe
+## <a name="cross-tenant-authentication-issues"></a>Problemy z uwierzytelnianiem między dzierżawcami
 
-Obecnie usługa Azure Cost Management ma ograniczoną obsługę uwierzytelniania w wielu dzierżawach. W pewnych okolicznościach podczas próby uwierzytelnienia dla dzierżaw, może zostać wyświetlony **odmowa dostępu** wystąpił błąd podczas analizy kosztów. Ten problem może wystąpić, jeśli Konfigurowanie kontroli dostępu opartej na rolach (RBAC) do innej dzierżawy subskrypcji, a następnie spróbuj wyświetlanie danych kosztów.
+Obecnie Azure Cost Management ma ograniczoną obsługę uwierzytelniania między dzierżawcami. W niektórych sytuacjach podczas próby uwierzytelnienia w dzierżawach może zostać wyświetlony komunikat o błędzie **odmowy dostępu** w analizie kosztów. Ten problem może wystąpić, jeśli skonfigurujesz kontrolę dostępu opartą na rolach (RBAC) w ramach subskrypcji innej dzierżawy, a następnie spróbujesz wyświetlić dane dotyczące kosztów.
 
-*Aby obejść ten problem*: Po skonfigurowaniu funkcji RBAC w wielu dzierżawach, zaczekaj godzinę. Następnie spróbuj wyświetlić koszty analizy kosztów lub udzielić dostępu Cost Management dla użytkowników w obu dzierżaw.  
+*Aby obejść ten problem*: Po skonfigurowaniu RBAC międzydzierżawców należy poczekać godzinę. Następnie spróbuj wyświetlić koszty w analizie kosztów lub przyznać Cost Management dostęp do użytkowników w obu dzierżawcach.  
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Jeśli nie została już zakończona pierwszym przewodniku Szybki Start usługi Cost Management, zapoznaj się z adresem [zacząć analizować koszty](quick-acm-cost-analysis.md).

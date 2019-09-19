@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 09/18/2019
 ms.author: dapine
-ms.openlocfilehash: 7708133fcba0d594ecd420afd8da1b2881055aa7
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 4b8ea102c7acc55acec05234303ff4c215a4bc0f
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241014"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105158"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Instalowanie i uruchamianie kontenerów usługi mowy
 
@@ -39,6 +39,8 @@ Przed użyciem kontenerów mowy należy spełnić następujące wymagania wstęp
 |Aparat platformy Docker| Aparat platformy Docker musi być zainstalowany na [komputerze-hoście](#the-host-computer). Platforma Docker zawiera pakiety, które konfigurują środowisko platformy Docker w systemach [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)i [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Aby uzyskać podstawowe informacje na temat platformy Docker i kontenerów, zobacz [Docker — omówienie](https://docs.docker.com/engine/docker-overview/).<br><br> Docker należy skonfigurować w taki sposób, aby umożliwić kontenerów, aby nawiązać połączenie z, a następnie wysyłać danych dotyczących rozliczeń do platformy Azure. <br><br> **W systemie Windows**program Docker musi być również skonfigurowany do obsługi kontenerów systemu Linux.<br><br>|
 |Znajomość platformy Docker | Należy dysponować podstawową wiedzą na temat pojęć platformy Docker, takich jak rejestry, repozytoria, kontenery i obrazy kontenerów, a także znajomość `docker` podstawowych poleceń.| 
 |Zasób mowy |Aby można było korzystać z tych kontenerów, musisz mieć:<br><br>Zasób usługi Azure _Speech_ do pobrania skojarzonego klucza interfejsu API i identyfikatora URI punktu końcowego. Obie wartości są dostępne na stronach przeglądów **mowy** i kluczy Azure Portal. Są one wymagane do uruchomienia kontenera.<br><br>**{API_KEY}** : Jeden z dwóch dostępnych kluczy zasobów na stronie **klucze**<br><br>**{ENDPOINT_URI}** : Punkt końcowy zgodnie z opisem na stronie **Przegląd**|
+
+[!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
 ## <a name="request-access-to-the-container-registry"></a>Zażądaj dostępu do rejestru kontenerów
 
@@ -174,16 +176,12 @@ Gdy kontener znajduje się na [komputerze hosta](#the-host-computer), użyj nast
 
 ## <a name="run-the-container-with-docker-run"></a>Uruchom kontener za pomocą`docker run`
 
-Użyj polecenia [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) , aby uruchomić jeden z trzech kontenerów. Polecenie używa następujących parametrów:
+Użyj polecenia [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) , aby uruchomić kontener. Zapoznaj się z tematem [zbieranie wymaganych parametrów](#gathering-required-parameters) `{ENDPOINT_URI}` , aby uzyskać szczegółowe `{API_KEY}` informacje na temat sposobu pobierania wartości i.
 
-W trakcie korzystania z **wersji zapoznawczej**ustawienia rozliczeń muszą być prawidłowe, aby można było uruchomić kontener, ale nie są naliczane opłaty za użycie.
+Przykłady polecenia są dostępne. [](speech-container-configuration.md#example-docker-run-commands) `docker run`
 
-| Symbol zastępczy | Value |
-|-------------|-------|
-|{API_KEY} | Ten klucz jest używany do uruchamiania kontenera i jest dostępny na stronie klucze mowy Azure Portal.  |
-|{ENDPOINT_URI} | Wartość identyfikatora URI punktu końcowego rozliczenia jest dostępna na stronie Przegląd mowy Azure Portal.|
-
-Zastąp te parametry własnymi wartościami w poniższym przykładowym `docker run` poleceniu.
+> [!NOTE]
+> W trakcie korzystania z **wersji**zapoznawczej ustawienia rozliczeń muszą być prawidłowe, aby można było uruchomić kontener, ale nie są naliczane opłaty za użycie.
 
 ### <a name="text-to-speech"></a>Zamiana tekstu na mowę
 

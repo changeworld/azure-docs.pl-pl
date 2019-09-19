@@ -2,18 +2,18 @@
 title: Używanie Azure Data Lake Storage Gen2 z klastrami usługi Azure HDInsight
 description: Dowiedz się, jak używać Azure Data Lake Storage Gen2 z klastrami usługi Azure HDInsight.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.author: hrasheed
-ms.openlocfilehash: bd459998568287db767e98a2094d6f80a126ccde
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: f6bee53268ea99e99d79e218eaf7a5ae9fcb1d05
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077111"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104462"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Używanie Azure Data Lake Storage Gen2 z klastrami usługi Azure HDInsight
 
@@ -90,9 +90,9 @@ Przypisz zarządzaną tożsamość do roli **właściciela danych obiektów blob
         ![Ustawienia magazynu na potrzeby używania Data Lake Storage Gen2 z usługą Azure HDInsight](./media/hdinsight-hadoop-use-data-lake-storage-gen2/primary-storage-type-adls-gen2.png)
     
     * W obszarze **tożsamość**Wybierz poprawną subskrypcję i nowo utworzoną tożsamość zarządzaną przez użytkownika.
-        
-        ![Ustawienia tożsamości na potrzeby używania Data Lake Storage Gen2 z usługą Azure HDInsight](./media/hdinsight-hadoop-use-data-lake-storage-gen2/managed-identity-cluster-creation.png)
-        
+
+        ![Ustawienia tożsamości dotyczące korzystania z Data Lake Storage Gen2 z usługą HDInsight](./media/hdinsight-hadoop-use-data-lake-storage-gen2/managed-identity-cluster-creation.png)
+
 > [!Note]
 > Aby dodać konto Data Lake Storage Gen2 pomocniczego, na poziomie konta magazynu wystarczy przypisać zarządzaną tożsamość utworzoną wcześniej do nowego konta magazynu Data Lake Storage Gen2, które chcesz dodać. Upewnij się, że Dodawanie konta Data Lake Storage Gen2 pomocniczego za pośrednictwem bloku "dodatkowe konta magazynu" w usłudze HDInsight nie jest obsługiwane. 
 

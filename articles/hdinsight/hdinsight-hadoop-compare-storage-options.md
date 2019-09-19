@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: 5cb3b5c2d36707875c87bd589e3d96c0a2f4f939
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: d036e56a4ccf826ccd19fb7424b7b76568839b23
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885194"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104531"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Porównanie opcji magazynu do użycia z klastrami usługi Azure HDInsight
 
@@ -34,7 +34,7 @@ Poniższa tabela zawiera podsumowanie usług Azure Storage, które są obsługiw
 |Azure Storage| Blob Storage * * | Object | Blokowy obiekt blob | Standardowa (Standard) | Gorąca, chłodna, archiwalna | Wszyscy | Wszyscy |
 |Azure Data Lake Storage Gen1| ND | Hierarchiczny (system plików) | ND | ND | ND | tylko 3,6 | Wszystkie z wyjątkiem HBase |
 
-\* * W przypadku klastrów usługi HDInsight tylko konta magazynu pomocniczego mogą być typu BlobStorage.
+\* * W przypadku klastrów usługi HDInsight tylko konta magazynu pomocniczego mogą być typu BlobStorage, a obiekt BLOB nie jest obsługiwaną opcją magazynu.
 
 Aby uzyskać więcej informacji na temat typów kont usługi Azure Storage, zobacz temat [konto usługi Azure Storage — Omówienie](../storage/common/storage-account-overview.md)
 
@@ -129,7 +129,7 @@ Jeśli wybierzesz opcję zabezpieczenia konta magazynu za pomocą ograniczeń **
 
 Na poniższym diagramie przedstawiono abstrakcyjny widok architektury usługi HDInsight w usłudze Azure Storage:
 
-![Diagram przedstawiający sposób, w jaki klastry usługi Hadoop używają interfejsu API systemu plików HDFS do uzyskiwania dostępu do danych strukturalnych i bez struktury oraz przechowywania ich w usłudze BLOB Storage](./media/hdinsight-hadoop-compare-storage-options/storage-architecture.png "Architektura HDInsight Storage")
+![Architektura HDInsight Storage](./media/hdinsight-hadoop-compare-storage-options/storage-architecture.png "Architektura HDInsight Storage")
 
 Usługa HDInsight zapewnia dostęp do rozproszonego systemu plików, który jest lokalnie dołączony do węzłów obliczeniowych. Dostęp do tego systemu plików można uzyskać przy użyciu w pełni kwalifikowanego identyfikatora URI, na przykład:
 

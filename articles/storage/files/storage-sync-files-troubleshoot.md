@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 78e113f881d1f62c9848ba40f039fa19eeb09055
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: e07d154ce5dae8a461bf9db19303db685f8a4152
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996449"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103081"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Rozwiązywanie problemów z usługą Azure File Sync
 Użyj Azure File Sync, aby scentralizować udziały plików w organizacji w Azure Files, utrzymując elastyczność, wydajność i zgodność lokalnego serwera plików. Funkcja Azure File Sync przekształca system Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego protokołu, który jest dostępny w systemie Windows Server, aby uzyskać dostęp do danych lokalnie, w tym SMB, NFS i FTPS. Na całym świecie możesz mieć dowolną liczbę pamięci podręcznych.
@@ -293,6 +293,7 @@ Aby wyświetlić te błędy, uruchom skrypt programu PowerShell **FileSyncErrors
 | 0x8000ffff | -2147418113 | E_UNEXPECTED | Nie można zsynchronizować pliku z powodu nieoczekiwanego błędu. | Jeśli błąd będzie się powtarzać przez kilka dni, Otwórz przypadek pomocy technicznej. |
 | 0x80070020 | -2147024864 | ERROR_SHARING_VIOLATION | Nie można zsynchronizować pliku, ponieważ jest on używany. Plik zostanie zsynchronizowany, gdy nie jest już używany. | Nie jest wymagana żadna akcja. |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Plik został zmieniony podczas synchronizacji, więc musi zostać ponownie zsynchronizowany. | Nie jest wymagana żadna akcja. |
+| 0x80c80200 | -2134375936 | ECS_E_SYNC_CONFLICT_NAME_EXISTS | Nie można zsynchronizować pliku, ponieważ osiągnięto maksymalną liczbę plików konfliktów. Azure File Sync obsługuje pliki konfliktów 100 na plik. Aby dowiedzieć się więcej na temat konfliktów plików, zobacz Azure File Sync [często zadawane pytania](https://docs.microsoft.com/azure/storage/files/storage-files-faq#afs-conflict-resolution). | Aby rozwiązać ten problem, zmniejsz liczbę plików konfliktów. Plik zostanie zsynchronizowany, gdy liczba plików konfliktów jest mniejsza niż 100. |
 
 #### <a name="handling-unsupported-characters"></a>Obsługa nieobsługiwanych znaków
 Jeśli skrypt programu PowerShell **FileSyncErrorsReport. ps1** zawiera niepowodzenia z powodu nieobsługiwanych znaków (kod błędu 0x8007007B lub 0x80c80255), należy usunąć lub zmienić nazwy znaków z odpowiednich nazw plików. Program PowerShell prawdopodobnie drukuje te znaki jako znaki zapytania lub puste prostokąty, ponieważ większość z tych znaków nie ma standardowego kodowania wizualnego. [Narzędzie do oceny](storage-sync-files-planning.md#evaluation-cmdlet) może służyć do identyfikowania znaków, które nie są obsługiwane.

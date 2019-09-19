@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 413df402d5acc878130a47821efd5fa3a512257d
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 9b74491c76747bd635547f6f22964fe792dbf01a
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931932"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104084"
 ---
 # <a name="baseline-policy-block-legacy-authentication-preview"></a>Zasady linii bazowej: Blokuj starsze uwierzytelnianie (wersja zapoznawcza)
 
@@ -106,11 +106,11 @@ Zasady linii **bazowej zasad: Blok starszego uwierzytelniania (wersja** zapoznaw
 
 Aby włączyć te zasady i chronić organizację:
 
-1. Zaloguj się do **Azure Portal** jako Administrator globalny, administrator zabezpieczeń lub administrator dostępu warunkowego.
+1. Zaloguj się do **Azure Portal** jako Administrator globalny, administrator zabezpieczeń lub administrator dostępu warunkowego.
 1. Przejdź do **Azure Active Directory** > **dostęp warunkowy**.
 1. Na liście zasad wybierz pozycję **zasady linii bazowej: Blokuj starsze uwierzytelnianie (wersja zapoznawcza)** .
 1. Ustaw opcję **Włącz zasady** , aby od **razu używać zasad**.
-1. Kliknij przycisk **Zapisz**.
+1. Kliknij polecenie **Zapisz**.
 
 ## <a name="next-steps"></a>Następne kroki
 

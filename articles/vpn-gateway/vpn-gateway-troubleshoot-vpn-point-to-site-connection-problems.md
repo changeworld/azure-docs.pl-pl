@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/31/2019
 ms.author: genli
-ms.openlocfilehash: 37c2cf5ffb5e6eaf8b8da6e7bc9259cfa101c796
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 0a32f9a9fde0983a5b97f7342a111d40ef01c686
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058822"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104814"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Rozwiązywanie problemów z Problemy z połączeniem punkt-lokacja platformy Azure
 
@@ -48,8 +48,7 @@ Aby rozwiązać ten problem, wykonaj następujące kroki:
     | Certyfikat | Location |
     | ------------- | ------------- |
     | AzureClient.pfx  | Bieżący User\Personal\Certificates |
-    | Azuregateway-*GUID*.cloudapp.net  | Bieżące główne urzędy certyfikacji User\Trusted|
-    | AzureGateway-*GUID*.cloudapp.net, AzureRoot.cer    | Główne urzędy certyfikacji Computer\Trusted lokalnego|
+    | AzureRoot. cer    | Główne urzędy certyfikacji Computer\Trusted lokalnego|
 
 3. Przejdź do pozycji\<C:\Users username >\<identyfikator GUID \AppData\Roaming\Microsoft\Network\Connections\Cm >, ręcznie Zainstaluj certyfikat (plik *. cer) w sklepie użytkownika i komputera.
 

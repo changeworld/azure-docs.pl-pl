@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/20/2018
 ms.author: atsenthi
-ms.openlocfilehash: 123e63fb79ba966e4e17b0c55440049a79add905
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d8925f1c31b7a0c8f45e65e783077e8f5e2b0add
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931184"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103240"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Usługa DNS na platformie Azure Service Fabric
 Usługa DNS to opcjonalna usługa systemowa, którą można włączyć w klastrze w celu odnajdywania innych usług przy użyciu protokołu DNS. 
@@ -73,16 +73,16 @@ Po utworzeniu szablonu można włączyć usługę DNS, wykonując następujące 
 
    - Aby włączyć usługę DNS z ustawieniami domyślnymi, należy dodać ją do `addonFeatures` sekcji `properties` w sekcji, jak pokazano w następującym przykładzie:
 
-       ```json
-           "properties": {
-              ...
-
-              "addonFeatures": [
-                "DnsService"
+        ```json
+          "properties": {
+            ...
+            "addonFeatures": [
+              "DnsService"
               ],
-              ...
-           }
-       ```
+            ...
+          }
+        ```
+
    - Aby włączyć usługę inną niż ustawienia domyślne, Dodaj `DnsService` sekcję `fabricSettings` do sekcji w `properties` sekcji. W takim przypadku nie trzeba dodawać DnsService do `addonFeatures`. Aby dowiedzieć się więcej na temat właściwości, które można ustawić dla usługi DNS, zobacz [Ustawienia usługi DNS](./service-fabric-cluster-fabric-settings.md#dnsservice).
 
        ```json
@@ -111,7 +111,10 @@ Po utworzeniu szablonu można włączyć usługę DNS, wykonując następujące 
               ]
             }
        ```
-1. Po zaktualizowaniu szablonu klastra przy użyciu zmian zastosuj je i pozwól na zakończenie uaktualniania. Po zakończeniu uaktualniania usługa systemu DNS uruchamia się w klastrze. Nazwa usługi to `fabric:/System/DnsService`i można ją znaleźć w sekcji usługa systemowa w Eksploratorze Service Fabric. 
+3. Po zaktualizowaniu szablonu klastra przy użyciu zmian zastosuj je i pozwól na zakończenie uaktualniania. Po zakończeniu uaktualniania usługa systemu DNS uruchamia się w klastrze. Nazwa usługi to `fabric:/System/DnsService`i można ją znaleźć w sekcji usługa systemowa w Eksploratorze Service Fabric. 
+
+> [!NOTE]
+> Podczas uaktualniania usługi DNS z wyłączone do włączonej, Service Fabric Explorer może nie odzwierciedlać nowego stanu. Aby rozwiązać ten problem, uruchom ponownie węzły, modyfikując UpgradePolicy w szablonie Azure Resource Manager. Więcej informacji można znaleźć w temacie [Service Fabric Template Reference](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/2019-03-01/clusters/applications) .
 
 
 ## <a name="setting-the-dns-name-for-your-service"></a>Ustawianie nazwy DNS usługi

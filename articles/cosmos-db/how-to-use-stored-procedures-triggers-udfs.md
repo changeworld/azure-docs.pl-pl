@@ -4,18 +4,18 @@ description: Dowiedz się, jak rejestrować i wywoływać procedury składowane,
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 09/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: 7732039ff2494ef16fda5afe384a824ec786a8cf
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3cc144c1b8748710f0500b6ca2a418cd8bf5a2b7
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092926"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104826"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Jak rejestrować procedury składowane, wyzwalacze i funkcje zdefiniowane przez użytkownika oraz jak ich używać w usłudze Azure Cosmos DB
 
-Interfejs API SQL w usłudze Azure Cosmos DB obsługuje rejestrowanie i wywoływanie procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika (UDF) napisanych w języku JavaScript. Aby zarejestrować i wywołać procedury składowane, można użyć interfejsów API SQL, .NET [Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript](sql-api-sdk-node.md), [Node. js](sql-api-sdk-node.md)lub [Python](sql-api-sdk-python.md) SDK. [](sql-api-sdk-dotnet.md) Po zdefiniowaniu kilku procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika można je załadować i wyświetlić w witrynie [Azure Portal](https://portal.azure.com/) za pomocą Eksploratora danych.
+Interfejs API SQL w usłudze Azure Cosmos DB obsługuje rejestrowanie i wywoływanie procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika (UDF) napisanych w języku JavaScript. Aby zarejestrować i wywołać procedury składowane, można [użyć interfejsów API](sql-api-sdk-dotnet.md)SQL, .NET [Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript](sql-api-sdk-node.md), [Node. js](sql-api-sdk-node.md)lub [Python](sql-api-sdk-python.md) SDK. Po zdefiniowaniu kilku procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika można je załadować i wyświetlić w witrynie [Azure Portal](https://portal.azure.com/) za pomocą Eksploratora danych.
 
 ## <a id="stored-procedures"></a>Jak uruchamiać procedury składowane
 
@@ -26,9 +26,9 @@ Poniższe przykłady pokazują, jak zarejestrować i wywoływać procedurę skł
 > [!NOTE]
 > W przypadku kontenerów podzielonych na partycje podczas wykonywania procedury składowanej w opcjach żądania należy podać wartość klucza partycji. Procedury składowane są zawsze ograniczone do klucza partycji. Elementy, które mają inną wartość klucza partycji, nie będą widoczne dla procedury składowanej. Ma to również zastosowanie do wyzwalaczy.
 
-### <a name="stored-procedures---net-sdk"></a>Procedury składowane — zestaw SDK platformy .NET
+### <a name="stored-procedures---net-sdk-v2"></a>Procedury składowane — zestaw SDK dla platformy .NET V2
 
-Poniższy przykład pokazuje, jak zarejestrować procedurę składowaną przy użyciu zestawu SDK platformy .NET:
+Poniższy przykład pokazuje, jak zarejestrować procedurę składowaną przy użyciu zestawu .NET SDK V2:
 
 ```csharp
 string storedProcedureId = "spCreateToDoItem";
@@ -42,7 +42,7 @@ var response = await client.CreateStoredProcedureAsync(containerUri, newStoredPr
 StoredProcedure createdStoredProcedure = response.Resource;
 ```
 
-Poniższy kod pokazuje, jak wywołać procedurę składowaną przy użyciu zestawu SDK platformy .NET:
+Poniższy kod przedstawia sposób wywoływania procedury składowanej przy użyciu zestawu .NET SDK V2:
 
 ```csharp
 dynamic newItem = new
@@ -56,7 +56,32 @@ dynamic newItem = new
 Uri uri = UriFactory.CreateStoredProcedureUri("myDatabase", "myContainer", "spCreateToDoItem");
 RequestOptions options = new RequestOptions { PartitionKey = new PartitionKey("Personal") };
 var result = await client.ExecuteStoredProcedureAsync<string>(uri, options, newItem);
-var id = result.Response;
+```
+
+### <a name="stored-procedures---net-sdk-v3"></a>Procedury składowane — zestaw SDK dla platformy .NET v3
+
+Poniższy przykład pokazuje, jak zarejestrować procedurę składowaną przy użyciu zestawu .NET SDK v3:
+
+```csharp
+StoredProcedureResponse storedProcedureResponse = await client.GetContainer("database", "container").Scripts.CreateStoredProcedureAsync(new StoredProcedureProperties
+{
+    Id = "spCreateToDoItem",
+    Body = File.ReadAllText(@"..\js\spCreateToDoItem.js")
+});
+```
+
+Poniższy kod przedstawia sposób wywoływania procedury składowanej przy użyciu zestawu .NET SDK v3:
+
+```csharp
+dynamic newItem = new
+{
+    category = "Personal",
+    name = "Groceries",
+    description = "Pick up strawberries",
+    isComplete = false
+};
+
+var result = await client.GetContainer("database", "container").Scripts.ExecuteStoredProcedureAsync<string>("spCreateToDoItem", new PartitionKey("Personal"), newItem);
 ```
 
 ### <a name="stored-procedures---java-sdk"></a>Procedury składowane — zestaw SDK platformy Java
@@ -176,9 +201,9 @@ Podczas wykonywania wyzwalacze wywoływane przed operacją są przekazywane w ob
 > [!NOTE]
 > Mimo że nazwa wyzwalacza jest przekazywana jako lista, nadal można wykonywać tylko jeden wyzwalacz na operację.
 
-### <a name="pre-triggers---net-sdk"></a>Wyzwalacze wykonywane przed operacją — zestaw SDK platformy .NET
+### <a name="pre-triggers---net-sdk-v2"></a>Wyzwalacze wstępne — zestaw SDK dla platformy .NET V2
 
-Poniższy kod pokazuje, jak zarejestrować wyzwalacz wykonywany przed operacją przy użyciu zestawu SDK platformy .NET:
+Poniższy kod przedstawia sposób rejestrowania wstępnego wyzwalacza przy użyciu zestawu .NET SDK V2:
 
 ```csharp
 string triggerId = "trgPreValidateToDoItemTimestamp";
@@ -193,7 +218,7 @@ Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myConta
 await client.CreateTriggerAsync(containerUri, trigger);
 ```
 
-Poniższy kod pokazuje, jak wywołać wyzwalacz wykonywany przed operacją przy użyciu zestawu SDK platformy .NET:
+Poniższy kod przedstawia sposób wywołania wstępnego wyzwalacza przy użyciu zestawu .NET SDK V2:
 
 ```csharp
 dynamic newItem = new
@@ -207,6 +232,34 @@ dynamic newItem = new
 Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
 RequestOptions requestOptions = new RequestOptions { PreTriggerInclude = new List<string> { "trgPreValidateToDoItemTimestamp" } };
 await client.CreateDocumentAsync(containerUri, newItem, requestOptions);
+```
+
+### <a name="pre-triggers---net-sdk-v3"></a>Wyzwalacze wstępne — zestaw SDK dla platformy .NET v3
+
+Poniższy kod przedstawia sposób rejestrowania wstępnego wyzwalacza przy użyciu zestawu .NET SDK v3:
+
+```csharp
+await client.GetContainer("database", "container").Scripts.CreateTriggerAsync(new TriggerProperties
+{
+    Id = "trgPreValidateToDoItemTimestamp",
+    Body = File.ReadAllText("@..\js\trgPreValidateToDoItemTimestamp.js"),
+    TriggerOperation = TriggerOperation.Create,
+    TriggerType = TriggerType.Pre
+});
+```
+
+Poniższy kod przedstawia sposób wywołania wstępnego wyzwalacza przy użyciu zestawu .NET SDK v3:
+
+```csharp
+dynamic newItem = new
+{
+    category = "Personal",
+    name = "Groceries",
+    description = "Pick up strawberries",
+    isComplete = false
+};
+
+await client.GetContainer("database", "container").CreateItemAsync(newItem, null, new ItemRequestOptions { PreTriggers = new List<string> { "trgPreValidateToDoItemTimestamp" } });
 ```
 
 ### <a name="pre-triggers---java-sdk"></a>Wyzwalacze wykonywane przed operacją — zestaw SDK platformy Java
@@ -301,9 +354,9 @@ client.CreateItem(container_link, item, {
 
 Poniższe przykłady pokazują, jak zarejestrować wyzwalacz uruchamiany po operacji przy użyciu zestawów SDK usługi Azure Cosmos DB. Zapoznaj się z [przykładem wyzwalacza wywoływanego po operacji](how-to-write-stored-procedures-triggers-udfs.md#post-triggers), ponieważ źródło tego wyzwalacza jest zapisane jako `trgPostUpdateMetadata.js`.
 
-### <a name="post-triggers---net-sdk"></a>Wyzwalacze wykonywane po operacji — zestaw SDK platformy .NET
+### <a name="post-triggers---net-sdk-v2"></a>Wyzwalacze końcowe — zestaw SDK dla platformy .NET V2
 
-Poniższy kod pokazuje, jak zarejestrować wyzwalacz wykonywany po operacji przy użyciu zestawu SDK platformy .NET:
+Poniższy kod przedstawia sposób rejestrowania wyzwalacza końcowego przy użyciu zestawu .NET SDK V2:
 
 ```csharp
 string triggerId = "trgPostUpdateMetadata";
@@ -318,7 +371,7 @@ Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myConta
 await client.CreateTriggerAsync(containerUri, trigger);
 ```
 
-Poniższy kod pokazuje, jak wywołać wyzwalacz wykonywany po operacji przy użyciu zestawu SDK platformy .NET:
+Poniższy kod przedstawia sposób wywołania wyzwalacza końcowego przy użyciu zestawu .NET SDK V2:
 
 ```csharp
 var newItem = { 
@@ -330,6 +383,32 @@ var newItem = {
 RequestOptions options = new RequestOptions { PostTriggerInclude = new List<string> { "trgPostUpdateMetadata" } };
 Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
 await client.createDocumentAsync(containerUri, newItem, options);
+```
+
+### <a name="post-triggers---net-sdk-v3"></a>Wyzwalacze końcowe — zestaw SDK dla platformy .NET v3
+
+Poniższy kod przedstawia sposób rejestrowania wyzwalacza końcowego przy użyciu zestawu .NET SDK v3:
+
+```csharp
+await client.GetContainer("database", "container").Scripts.CreateTriggerAsync(new TriggerProperties
+{
+    Id = "trgPostUpdateMetadata",
+    Body = File.ReadAllText(@"..\js\trgPostUpdateMetadata.js"),
+    TriggerOperation = TriggerOperation.Create,
+    TriggerType = TriggerType.Post
+});
+```
+
+Poniższy kod przedstawia sposób wywołania wyzwalacza końcowego przy użyciu zestawu .NET SDK v3:
+
+```csharp
+var newItem = { 
+    name: "artist_profile_1023",
+    artist: "The Band",
+    albums: ["Hellujah", "Rotators", "Spinning Top"]
+};
+
+await client.GetContainer("database", "container").CreateItemAsync(newItem, null, new ItemRequestOptions { PostTriggers = new List<string> { "trgPostUpdateMetadata" } });
 ```
 
 ### <a name="post-triggers---java-sdk"></a>Wyzwalacze wykonywane po operacji — zestaw SDK platformy Java
@@ -422,16 +501,16 @@ client.CreateItem(container_link, item, {
 
 Poniższe przykłady pokazują, jak zarejestrować funkcję zdefiniowaną przez użytkownika przy użyciu zestawów SDK usługi Azure Cosmos DB. Zapoznaj się z tym [przykładem funkcji zdefiniowanej przez użytkownika](how-to-write-stored-procedures-triggers-udfs.md#udfs), ponieważ źródło tego wyzwalacza jest zapisane jako `udfTax.js`.
 
-### <a name="user-defined-functions---net-sdk"></a>Funkcje zdefiniowane przez użytkownika — zestaw SDK platformy .NET
+### <a name="user-defined-functions---net-sdk-v2"></a>Funkcje zdefiniowane przez użytkownika — zestaw SDK dla platformy .NET V2
 
-Poniższy kod pokazuje, jak zarejestrować funkcję zdefiniowaną przez użytkownika przy użyciu zestawu SDK platformy .NET:
+Poniższy kod przedstawia sposób rejestrowania funkcji zdefiniowanej przez użytkownika przy użyciu zestawu .NET SDK V2:
 
 ```csharp
 string udfId = "Tax";
 var udfTax = new UserDefinedFunction
 {
     Id = udfId,
-    Body = File.ReadAllText($@"..\js\{udfId}.js"),
+    Body = File.ReadAllText($@"..\js\{udfId}.js")
 };
 
 Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
@@ -439,7 +518,7 @@ await client.CreateUserDefinedFunctionAsync(containerUri, udfTax);
 
 ```
 
-Poniższy kod pokazuje, jak wywołać funkcję zdefiniowaną przez użytkownika przy użyciu zestawu SDK platformy .NET:
+Poniższy kod przedstawia sposób wywoływania funkcji zdefiniowanej przez użytkownika przy użyciu zestawu .NET SDK V2:
 
 ```csharp
 Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
@@ -448,6 +527,32 @@ var results = client.CreateDocumentQuery<dynamic>(containerUri, "SELECT * FROM I
 foreach (var result in results)
 {
     //iterate over results
+}
+```
+
+### <a name="user-defined-functions---net-sdk-v3"></a>Funkcje zdefiniowane przez użytkownika — zestaw SDK dla platformy .NET v3
+
+Poniższy kod przedstawia sposób rejestrowania funkcji zdefiniowanej przez użytkownika przy użyciu zestawu .NET SDK v3:
+
+```csharp
+await client.GetContainer("database", "container").Scripts.CreateUserDefinedFunctionAsync(new UserDefinedFunctionProperties
+{
+    Id = "Tax",
+    Body = File.ReadAllText(@"..\js\Tax.js")
+});
+```
+
+Poniższy kod przedstawia sposób wywoływania funkcji zdefiniowanej przez użytkownika przy użyciu zestawu .NET SDK v3:
+
+```csharp
+var iterator = client.GetContainer("database", "container").GetItemQueryIterator<dynamic>("SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000");
+while (iterator.HasMoreResults)
+{
+    var results = await iterator.ReadNextAsync();
+    foreach (var result in results)
+    {
+        //iterate over results
+    }
 }
 ```
 

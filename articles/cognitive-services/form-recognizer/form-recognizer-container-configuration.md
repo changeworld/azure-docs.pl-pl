@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 09/18/2019
 ms.author: dapine
-ms.openlocfilehash: 4a490e8a9f111985df9c9e8c9f73bc36d686cc2a
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: af30719ead8464d0420734818203b8070eb5d145
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348691"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105105"
 ---
 # <a name="configure-form-recognizer-containers"></a>Konfigurowanie kontenerów aparatów rozpoznawania formularzy
 
@@ -74,10 +74,10 @@ Kontener rozpoznawania formularzy wymaga instalacji wejściowej i instalacji wyj
 
 Dokładna składnia lokalizację instalacji hosta różni się zależnie od systemu operacyjnego hosta. Ponadto lokalizacja instalacji [komputera hosta](form-recognizer-container-howto.md#the-host-computer) może być niedostępna z powodu konfliktu między uprawnieniami konta usługi platformy Docker a uprawnieniami do lokalizacji instalacji hosta.
 
-|Optional| Name (Nazwa) | Typ danych | Opis |
+|Optional| Name | Typ danych | Opis |
 |-------|------|-----------|-------------|
 |Wymagane| `Input` | String | Miejsce docelowe instalacji danych wejściowych. Wartość domyślna to `/input`.    <br><br>Przykład:<br>`--mount type=bind,src=c:\input,target=/input`|
-|Wymagane| `Output` | Ciąg | Miejsce docelowe instalacji danych wyjściowych. Wartość domyślna to `/output`.  <br><br>Przykład:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Wymagane| `Output` | String | Miejsce docelowe instalacji danych wyjściowych. Wartość domyślna to `/output`.  <br><br>Przykład:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Przykład platformy docker, Uruchom polecenia
 
@@ -90,16 +90,17 @@ Zastąp {_argument_name_} w poniższej tabeli własnymi wartościami:
 
 | Symbol zastępczy | Value |
 |-------------|-------|
-|{FORM_RECOGNIZER_API_KEY} | Klucz, który służy do uruchamiania kontenera. Jest ona dostępna na stronie klucze aparatu rozpoznawania Azure Portal formularza.  |
-|{FORM_RECOGNIZER_ENDPOINT_URI} | Wartość identyfikatora URI punktu końcowego rozliczenia jest dostępna na stronie Omówienie aparatu rozpoznawania Azure Portal formularza.|
-|{COMPUTER_VISION_API_KEY}| Klucz jest dostępny na stronie klucze interfejs API przetwarzania obrazów Azure Portal.|
-|{COMPUTER_VISION_ENDPOINT_URI}|Punkt końcowy rozliczeń. Jeśli używasz zasobu przetwarzanie obrazów opartego na chmurze, wartość identyfikatora URI jest dostępna na stronie Przegląd Azure Portal interfejs API przetwarzania obrazów. Jeśli używasz kontenera " *poznawcze-Services-rozpoznaje-Text* ", użyj adresu URL punktu końcowego rozliczenia, który jest przesyłany do kontenera `docker run` w poleceniu.|
+| **{FORM_RECOGNIZER_API_KEY}** | Klucz, który służy do uruchamiania kontenera. Jest ona dostępna na stronie klucze aparatu rozpoznawania Azure Portal formularza. |
+| **{FORM_RECOGNIZER_ENDPOINT_URI}** | Wartość identyfikatora URI punktu końcowego rozliczenia jest dostępna na stronie Omówienie aparatu rozpoznawania Azure Portal formularza.|
+| **{COMPUTER_VISION_API_KEY}** | Klucz jest dostępny na stronie klucze interfejs API przetwarzania obrazów Azure Portal.|
+| **{COMPUTER_VISION_ENDPOINT_URI}** | Punkt końcowy rozliczeń. Jeśli używasz zasobu przetwarzanie obrazów opartego na chmurze, wartość identyfikatora URI jest dostępna na stronie Przegląd Azure Portal interfejs API przetwarzania obrazów. Jeśli używasz kontenera " *poznawcze-Services-rozpoznaje-Text* ", użyj adresu URL punktu końcowego rozliczenia, który jest przesyłany do kontenera `docker run` w poleceniu. |
+
+Aby uzyskać szczegółowe informacje na temat sposobu uzyskiwania tych wartości, zobacz [zbieranie wymaganych parametrów](form-recognizer-container-howto.md#gathering-required-parameters) .
+
+[!INCLUDE [cognitive-services-custom-subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
 > Aby uruchomić kontener, określ `Eula`opcje, `Billing`i `ApiKey` ; w przeciwnym razie kontener nie zostanie uruchomiony. Aby uzyskać więcej informacji, zobacz [rozliczeń](#billing-configuration-setting).
-
-> [!NOTE] 
-> Wartość ApiKey jest **kluczem** ze strony klucze zasobów aparatu rozpoznawania formularzy platformy Azure.
 
 ## <a name="form-recognizer-container-docker-examples"></a>Przykłady platformy Docker kontenera aparatu rozpoznawania formularzy
 

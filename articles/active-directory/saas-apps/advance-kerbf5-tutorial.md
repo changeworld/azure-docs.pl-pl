@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e8e6a9eb50d15e6e4eb788fefe13d7e5983a834
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 1411d64a6adc6f340b3ad49ca38ca30136bdef47
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70166058"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104553"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Samouczek: Azure Active Directory Integracja z logowaniem jednokrotnym (SSO) przy użyciu klawisza F5
 
@@ -81,8 +81,8 @@ Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pom
 
 Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
 
-1. W [Azure Portal](https://portal.azure.com/)na stronie integracja z aplikacją **F5** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie**jednokrotne.
-1. Na stronie **Wybierz metodę logowania** jednokrotnego wybierz pozycję **SAML**.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja z aplikacją **F5** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie jednokrotne**.
+1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
@@ -279,15 +279,15 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 | eb46b6b6. Session. SAML. Last. assertionID | _9a4e4ddd-148f-45c4-b959-f4d148172e00 |
 | eb46b6b6. Session. SAML. Last. assertionIssueInstant  | 2019-06-16T19:18:03.054 Z |
 | eb46b6b6. Session. SAML. Last. assertionIssuer | `https://sts.windows.net/<TENANT ID>`/ |
-| eb46b6b6.session.saml.last.attr.name. http://schemas.microsoft.com/claims/authnmethodsreferences | `http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/password` |
-| eb46b6b6.session.saml.last.attr.name. http://schemas.microsoft.com/identity/claims/displayname | user0 |
-| eb46b6b6.session.saml.last.attr.name. http://schemas.microsoft.com/identity/claims/identityprovider | `https://sts.windows.net/<TENANT ID>/` |
-| eb46b6b6.session.saml.last.attr.name. http://schemas.microsoft.com/identity/claims/objectidentifier | 90d5f0e5-8f46-4bfd-b40f-ec973d00fcb7 |
-| eb46b6b6.session.saml.last.attr.name. http://schemas.microsoft.com/identity/claims/tenantid | e6abffcf-4d23-4388-91c2-bfdfcbb1530c |
-| eb46b6b6.session.saml.last.attr.name. http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress | user0@superdemo.live |
-| eb46b6b6.session.saml.last.attr.name. http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname | user0 |
-| eb46b6b6.session.saml.last.attr.name. http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name | user0@superdemo.live |
-| eb46b6b6.session.saml.last.attr.name. http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname | 0 |
+| eb46b6b6. Session. SAML. Last. ATTR. Name. http:\//schemas.Microsoft.com/Claims/authnmethodsreferences | `http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/password` |
+| eb46b6b6. Session. SAML. Last. ATTR. Name. http:\//schemas.Microsoft.com/identity/claims/DisplayName | user0 |
+| eb46b6b6. Session. SAML. Last. ATTR. Name. http:\//schemas.Microsoft.com/identity/claims/IdentityProvider | `https://sts.windows.net/<TENANT ID>/` |
+| eb46b6b6. Session. SAML. Last. ATTR. Name. http:\//schemas.Microsoft.com/identity/claims/objectidentifier | 90d5f0e5-8f46-4bfd-b40f-ec973d00fcb7 |
+| eb46b6b6. Session. SAML. Last. ATTR. Name. http:\//schemas.Microsoft.com/identity/claims/tenantid | e6abffcf-4d23-4388-91c2-bfdfcbb1530c |
+| eb46b6b6. Session. SAML. Last. ATTR. Name. http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/EmailAddress | user0@superdemo.live |
+| eb46b6b6. Session. SAML. Last. ATTR. Name. http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/givenName | user0 |
+| eb46b6b6. Session. SAML. Last. ATTR. Name. http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/Name | user0@superdemo.live |
+| eb46b6b6. Session. SAML. Last. ATTR. Name. http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/surname | 0 |
 | eb46b6b6. Session. SAML. Last. odbiorca | `https://kerbapp.superdemo.live` |
 | eb46b6b6. Session. SAML. Last. authNContextClassRef | urn: języka Oasis: names: TC: SAML: 2.0: AC: klasy: hasło |
 | eb46b6b6. Session. SAML. Last. authNInstant | 2019-06-16T19:18:00.318 Z |

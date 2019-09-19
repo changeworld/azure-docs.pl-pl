@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5fa47e029434b70166403b8603c820d611690f2
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: c88457653d73931600c37f5e332cc4327dc7957a
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68975983"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71102883"
 ---
 # <a name="tutorial-integrate-shmoop-for-schools-with-azure-active-directory"></a>Samouczek: Integruj Shmoop dla szkół z Azure Active Directory
 
@@ -68,7 +68,7 @@ Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pom
 1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
     1. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
     1. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
-2. **[Skonfiguruj Shmoop dla szkół logowanie](#configure-shmoop-for-schools-sso)** jednokrotne — w celu skonfigurowania ustawień logowania jednokrotnego na stronie aplikacji.
+2. **[Skonfiguruj Shmoop dla szkół Logowanie jednokrotne](#configure-shmoop-for-schools-sso)** — w celu skonfigurowania ustawień logowania jednokrotnego na stronie aplikacji.
     1. **[Utwórz Shmoop dla szkół użytkownika testowego](#create-shmoop-for-schools-test-user)** , aby uzyskać odpowiedniki B. Simon w Shmoop dla szkół, które są połączone z reprezentacją użytkownika w usłudze Azure AD.
 3. **[Przetestuj logowanie](#test-sso)** jednokrotne — aby sprawdzić, czy konfiguracja działa.
 
@@ -76,7 +76,7 @@ Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pom
 
 Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
 
-1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **Shmoop dla szkół** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie**jednokrotne.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **Shmoop dla szkół** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie jednokrotne**.
 1. Na stronie **Wybierz metodę logowania** jednokrotnego wybierz pozycję **SAML**.
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
 
@@ -91,16 +91,16 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
     > [!NOTE]
     > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z [zespołem pomocy technicznej Shmoop dla szkół](mailto:support@shmoop.com) , aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-5. Aplikacja Shmoop dla szkół oczekuje potwierdzenia SAML w określonym formacie, co wymaga dodania niestandardowych mapowań atrybutów do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij ikonę  **Edytuj** , aby otworzyć okno dialogowe  **Atrybuty użytkownika** .
+5. Aplikacja Shmoop dla szkół oczekuje potwierdzenia SAML w określonym formacie, co wymaga dodania niestandardowych mapowań atrybutów do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij przycisk **Edytuj** ikonę, aby otworzyć okno dialogowe **atrybuty użytkownika** .
 
     ![image](common/edit-attribute.png)
 
     > [!NOTE]
     > Shmoop dla szkoły obsługuje dwie role dla użytkowników: **Nauczyciel** i **student**. Skonfiguruj te role w usłudze Azure AD, aby użytkownicy mogli przypisywać odpowiednie role. Aby dowiedzieć się, jak skonfigurować role w usłudze Azure AD, zobacz [tutaj](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management).
 
-6. Oprócz powyższych, aplikacja Shmoop for szkół oczekuje kilku atrybutów do przekazania z powrotem do odpowiedzi SAML. W sekcji **oświadczenia** użytkownika w oknie dialogowym **atrybuty** użytkownika wykonaj następujące kroki, aby dodać atrybut tokenu SAML, jak pokazano w poniższej tabeli: 
+6. Oprócz powyższych, aplikacja Shmoop for szkół oczekuje kilku atrybutów do przekazania z powrotem do odpowiedzi SAML. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** wykonaj następujące czynności, aby dodać atrybut tokenu SAML, jak pokazano w poniższej tabeli: 
 
-    | Name (Nazwa) |  Atrybut źródłowy|
+    | Name |  Atrybut źródłowy|
     | --------- | --------------- |
     | rola      | user.assignedroles |
 
@@ -165,7 +165,7 @@ Aby skonfigurować Logowanie jednokrotne na stronie **Shmoop dla szkół** , mus
 W tej sekcji użytkownik o nazwie B. Simon został utworzony w Shmoop dla szkół. Shmoop dla szkół obsługuje funkcję aprowizacji użytkowników just-in-Time, która jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik nie istnieje jeszcze w Shmoop dla szkół, zostanie utworzony nowy po uwierzytelnieniu.
 
 > [!NOTE]
-> Jeśli musisz ręcznie utworzyć użytkownika, skontaktuj się z zespołem [pomocy technicznej Shmoop for szkół](mailto:support@shmoop.com).
+> Jeśli musisz ręcznie utworzyć użytkownika, skontaktuj się z [zespołem pomocy technicznej Shmoop for szkół](mailto:support@shmoop.com).
 
 ## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
 

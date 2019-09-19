@@ -11,19 +11,19 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: a80e1d0e4aa243d46efa79173af3fc5d774eb46f
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.openlocfilehash: 6f5d865b5a12ce8989631deee7ebda49dbe1ab12
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806594"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103198"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Używanie grup z obsługą trybu failover w celu zapewnienia przezroczystej i skoordynowanej pracy w trybie failover wielu baz danych
 
-Grupy autotrybu failover są funkcją SQL Database, która umożliwia zarządzanie replikacją i trybem failover grupy baz danych na serwerze SQL Database lub wszystkich baz danych w wystąpieniu zarządzanym w innym regionie. Jest to deklaratywne streszczenie na istniejącej funkcji [aktywnej replikacji geograficznej](sql-database-active-geo-replication.md) , zaprojektowane w celu uproszczenia wdrażania geograficznie replikowanych baz danych i zarządzania nimi na dużą skalę. Możesz zainicjować tryb failover ręcznie lub można delegować go do usługi SQL Database na podstawie zasad zdefiniowanych przez użytkownika. Ta ostatnia opcja umożliwia automatyczne odzyskanie wielu pokrewnych baz danych w regionie pomocniczym po katastrofalnym błędzie lub innym nieplanowanym zdarzeniu, które powoduje całkowite lub częściowe utratę dostępności usługi SQL Database w regionie podstawowym. Grupa trybu failover może zawierać jedną lub wiele baz danych, zwykle używanych przez tę samą aplikację. Ponadto można użyć dodatkowych baz danych z możliwością odczytu, aby odciążać obciążenia zapytań służących tylko do odczytywania. Ponieważ grupy autotrybu failover obejmują wiele baz danych, te bazy danych muszą być skonfigurowane na serwerze podstawowym. Grupy autotrybu failover obsługują replikację wszystkich baz danych w grupie tylko do jednego serwera pomocniczego w innym regionie.
+Grupy autotrybu failover są funkcją SQL Database, która umożliwia zarządzanie replikacją i trybem failover grupy baz danych na serwerze SQL Database lub wszystkich baz danych w wystąpieniu zarządzanym w innym regionie. Jest to deklaratywne streszczenie na istniejącej funkcji aktywnej [replikacji](sql-database-active-geo-replication.md) geograficznej, zaprojektowane w celu uproszczenia wdrażania geograficznie replikowanych baz danych i zarządzania nimi na dużą skalę. Możesz zainicjować tryb failover ręcznie lub można delegować go do usługi SQL Database na podstawie zasad zdefiniowanych przez użytkownika. Ta ostatnia opcja umożliwia automatyczne odzyskanie wielu pokrewnych baz danych w regionie pomocniczym po katastrofalnym błędzie lub innym nieplanowanym zdarzeniu, które powoduje całkowite lub częściowe utratę dostępności usługi SQL Database w regionie podstawowym. Grupa trybu failover może zawierać jedną lub wiele baz danych, zwykle używanych przez tę samą aplikację. Ponadto można użyć dodatkowych baz danych z możliwością odczytu, aby odciążać obciążenia zapytań służących tylko do odczytywania. Ponieważ grupy autotrybu failover obejmują wiele baz danych, te bazy danych muszą być skonfigurowane na serwerze podstawowym. Grupy autotrybu failover obsługują replikację wszystkich baz danych w grupie tylko do jednego serwera pomocniczego w innym regionie.
 
 > [!NOTE]
-> Podczas pracy z pojedynczymi lub w puli baz danych na serwerze SQL Database i potrzebujesz wielu serwerów pomocniczych w tym samym lub różnych regionach, użyj [aktywnej replikacji geograficznej](sql-database-active-geo-replication.md). 
+> Podczas pracy z pojedynczymi lub w puli baz danych na serwerze SQL Database i potrzebujesz wielu serwerów pomocniczych w tym samym lub różnych regionach, użyj [aktywnej replikacji](sql-database-active-geo-replication.md)geograficznej. 
 
 W przypadku korzystania z grup automatycznych trybu failover z automatycznymi zasadami trybu failover każda awaria wpływająca na jedną lub kilka baz danych w grupie powoduje automatyczne przejście w tryb failover. Zazwyczaj są to zdarzenia, które nie mogą być nieznacznie ograniczane przez wbudowane operacje automatycznej wysokiej dostępności. Przykładowe wyzwalacze trybu failover obejmują zdarzenie spowodowane przez pierścień dzierżawy lub sterowanie, które nie uległy awarii z powodu wycieku pamięci jądra systemu operacyjnego w kilku węzłach obliczeniowych lub zdarzenia spowodowane przez co najmniej jeden pierścień dzierżawy, ponieważ niewłaściwy kabel sieciowy został wycięty podczas przetwarzania typu ro likwidowanie sprzętu utine.  Aby uzyskać więcej informacji, zobacz [SQL Database wysoka dostępność](sql-database-high-availability.md).
 
@@ -37,7 +37,7 @@ W przypadku korzystania z grup automatycznych trybu failover z automatycznymi za
 
 Po przejściu w tryb failover upewnij się, że wymagania dotyczące uwierzytelniania dla serwera i bazy danych są skonfigurowane na nowym serwerze podstawowym. Aby uzyskać szczegółowe informacje, zobacz [SQL Database zabezpieczenia po odzyskiwaniu po awarii](sql-database-geo-replication-security-config.md).
 
-Aby osiągnąć prawdziwą ciągłość biznesową, Dodawanie nadmiarowości bazy danych między centrami elementów jest tylko częścią rozwiązania. Odzyskiwanie aplikacji (usługi) od końca do końca po katastrofalnym błędzie wymaga odzyskania wszystkich składników wchodzących w skład usługi i usług zależnych. Przykładowe składniki obejmują oprogramowanie klienta (na przykład przeglądarkę z niestandardowym językiem JavaScript), frontony sieci Web, magazyn i system DNS. Należy pamiętać, że wszystkie składniki są odporne na te same awarie i stają się dostępne w ramach celu czasu odzyskiwania (RTO) aplikacji. W związku z tym należy zidentyfikować wszystkie usługi zależne i zrozumieć gwarancje i funkcje, które zapewnia. Następnie należy wykonać odpowiednie czynności, aby upewnić się, że usługa działa w trybie failover usług, na których jest ona zależna. Aby uzyskać więcej informacji na temat projektowania rozwiązań na potrzeby odzyskiwania po awarii, zobacz [projektowanie rozwiązań w chmurze na potrzeby odzyskiwania po awarii przy użyciu aktywnej replikacji geograficznej](sql-database-designing-cloud-solutions-for-disaster-recovery.md).
+Aby osiągnąć prawdziwą ciągłość biznesową, Dodawanie nadmiarowości bazy danych między centrami elementów jest tylko częścią rozwiązania. Odzyskiwanie aplikacji (usługi) od końca do końca po katastrofalnym błędzie wymaga odzyskania wszystkich składników wchodzących w skład usługi i usług zależnych. Przykładowe składniki obejmują oprogramowanie klienta (na przykład przeglądarkę z niestandardowym językiem JavaScript), frontony sieci Web, magazyn i system DNS. Należy pamiętać, że wszystkie składniki są odporne na te same awarie i stają się dostępne w ramach celu czasu odzyskiwania (RTO) aplikacji. W związku z tym należy zidentyfikować wszystkie usługi zależne i zrozumieć gwarancje i funkcje, które zapewnia. Następnie należy wykonać odpowiednie czynności, aby upewnić się, że usługa działa w trybie failover usług, na których jest ona zależna. Aby uzyskać więcej informacji na temat projektowania rozwiązań na potrzeby odzyskiwania po awarii, zobacz [projektowanie rozwiązań w chmurze na potrzeby odzyskiwania po awarii przy użyciu aktywnej replikacji](sql-database-designing-cloud-solutions-for-disaster-recovery.md)geograficznej.
 
 ## <a name="auto-failover-group-terminology-and-capabilities"></a>Terminologia i możliwości grupy z obsługą trybu failover
 
@@ -172,9 +172,6 @@ Podczas projektowania usługi z zachowaniem ciągłości działania postępuj zg
   > Pule elastyczne z 800 lub mniej DTU i więcej niż 250 baz danych korzystających z replikacji geograficznej mogą napotkać problemy, w tym dłuższe planowane przełączanie w tryb failover i wydajność o obniżonej wydajności.  Te problemy mogą wystąpić w przypadku obciążeń intensywnie korzystających z zapisu, gdy punkty końcowe replikacji geograficznej są szeroko oddzielane przez geografię lub gdy dla każdej bazy danych są używane wiele pomocniczych punktów końcowych.  Objawy tych problemów są wskazywane, gdy opóźnienie replikacji geograficznej rośnie wraz z upływem czasu.  Te opóźnienia można monitorować przy użyciu [sys. DM _geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).  Jeśli te problemy wystąpią, środki zaradcze obejmują zwiększenie liczby DTU puli lub zmniejszenie liczby replikowanych geograficznie baz danych w tej samej puli.
 
 ## <a name="best-practices-of-using-failover-groups-with-managed-instances"></a>Najlepsze rozwiązania dotyczące korzystania z grup trybu failover z wystąpieniami zarządzanymi
-
-> [!IMPORTANT]
-> Grupy autotrybu failover dla wystąpienia zarządzanego są w publicznej wersji zapoznawczej.
 
 Grupa autotrybu failover musi być skonfigurowana w wystąpieniu podstawowym i nawiązać połączenie z wystąpieniem pomocniczym w innym regionie świadczenia usługi Azure.  Wszystkie bazy danych w wystąpieniu zostaną zreplikowane do wystąpienia pomocniczego. 
 
@@ -365,7 +362,7 @@ Jak wspomniano wcześniej, grupy autotrybu failover i aktywnej replikacji geogra
 | [Aktualizuj grupę trybu failover](https://docs.microsoft.com/rest/api/sql/failovergroups/update) | Aktualizuje grupę trybu failover. |
 |  | |
 
-### <a name="rest-api-manage-failover-groups-with-managed-instances-preview"></a>INTERFEJS API REST: Zarządzanie grupami trybu failover z wystąpieniami zarządzanymi (wersja zapoznawcza)
+### <a name="rest-api-manage-failover-groups-with-managed-instances"></a>INTERFEJS API REST: Zarządzanie grupami trybu failover z wystąpieniami zarządzanymi
 
 | interfejs API | Opis |
 | --- | --- |
@@ -386,7 +383,7 @@ Jak wspomniano wcześniej, grupy autotrybu failover i aktywnej replikacji geogra
   - [Używanie programu PowerShell do konfigurowania aktywnej replikacji geograficznej dla pojedynczej bazy danych w Azure SQL Database](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
   - [Użyj programu PowerShell, aby skonfigurować aktywną replikację geograficzną dla bazy danych w puli w Azure SQL Database](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
   - [Dodawanie Azure SQL Database pojedynczej bazy danych do grupy trybu failover przy użyciu programu PowerShell](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
-- Aby zapoznać się z omówieniem i scenariuszami ciągłości działania, zobacz temat [ciągłość działania — Omówienie](sql-database-business-continuity.md)
+- Aby zapoznać się z omówieniem i scenariuszami ciągłości działania, zobacz temat ciągłość działania [— Omówienie](sql-database-business-continuity.md)
 - Aby dowiedzieć się więcej o Azure SQL Database zautomatyzowanych kopii zapasowych, zobacz [SQL Database zautomatyzowane kopie zapasowe](sql-database-automated-backups.md).
 - Aby dowiedzieć się więcej o korzystaniu z automatycznych kopii zapasowych na potrzeby odzyskiwania, zobacz [przywracanie bazy danych z kopii zapasowych inicjowanych przez usługę](sql-database-recovery-using-backups.md).
 - Aby dowiedzieć się więcej o wymaganiach dotyczących uwierzytelniania dla nowego serwera podstawowego i bazy danych, zobacz [SQL Database zabezpieczenia po odzyskiwaniu po awarii](sql-database-geo-replication-security-config.md).

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: b4ee4ca2ede2e0a2d6d1af906cc34051c76353bd
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9bbd62bc05e03641c2abe9308d9238bef23877c2
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073755"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104963"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Jak zapisać i skonfigurować konfigurację usługi API Management przy użyciu narzędzia Git
 
@@ -99,7 +99,7 @@ git clone https://username:password@{name}.scm.azure-api.net/
 Jeśli wystąpi błąd, spróbuj zakodować adres URL części polecenia. Aby to zrobić, należy otworzyć program Visual Studio i wydać następujące polecenie w **oknie bezpośrednim**. Aby otworzyć **okno bezpośrednie**, Otwórz dowolne rozwiązanie lub projekt w programie Visual Studio (lub Utwórz nową pustą aplikację konsolową) i wybierz **pozycję Windows**, **natychmiastowe** z menu **Debuguj** .
 
 ```
-?System.NetWebUtility.UrlEncode("password from the Azure portal")
+?System.Net.WebUtility.UrlEncode("password from the Azure portal")
 ```
 
 Użyj zakodowanego hasła wraz z nazwą użytkownika i lokalizacją repozytorium, aby skonstruować polecenie git.
@@ -212,7 +212,7 @@ Kolejne cztery`DelegationEnabled`ustawienia (, `DelegationUrl`, `DelegatedSubscr
 
 | Ustawienie delegowania | Mapuje do |
 | --- | --- |
-| DelegationEnabled |Pole wyboru delegowania logowania **& logowania** |
+| DelegationEnabled |Pole wyboru **delegowania logowania & logowania** |
 | DelegationUrl |Pole tekstowe **adresu URL punktu końcowego delegowania** |
 | DelegatedSubscriptionEnabled |Pole wyboru **delegowania subskrypcji produktu** |
 | DelegationValidationKey |Pole tekstowe **delegowania klucza weryfikacji** |

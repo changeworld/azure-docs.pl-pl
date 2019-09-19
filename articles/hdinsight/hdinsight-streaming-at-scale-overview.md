@@ -8,22 +8,20 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: e18203162229e6c3db24a5f76b65de61d572f96a
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 76d1947ae6fbdf7577cc9b8db9d902dc55350b7f
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076792"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105337"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Przesyłanie strumieniowe na dużą skalę w usłudze HDInsight
 
 Rozwiązania do obsługi dużych ilości danych w czasie rzeczywistym działają na danych, które są w ruchu. Zazwyczaj te dane są najbardziej cenne w momencie przybycia. Jeśli strumień danych przychodzących stanie się większy niż może być obsługiwany w tym momencie, może być konieczne ograniczenie zasobów. Alternatywnie klaster usługi HDInsight można skalować w górę, aby spełniał Twoje rozwiązanie przesyłania strumieniowego, dodając węzły na żądanie.
 
-
 W aplikacji przesyłania strumieniowego co najmniej jedno źródło danych generuje zdarzenia (czasami w milionach na sekundę), które należy szybko pozyskiwać bez porzucania jakichkolwiek użytecznych informacji. Zdarzenia przychodzące są obsługiwane za pomocą *buforowania strumienia*, nazywanego również *kolejką zdarzeń*, przez usługę, taką jak [Apache Kafka](kafka/apache-kafka-introduction.md) lub [Event Hubs](https://azure.microsoft.com/services/event-hubs/). Po zebraniu zdarzeń można analizować dane przy użyciu systemu analizy w czasie rzeczywistym w ramach warstwy *przetwarzania strumienia* , takiej jak [Apache Storm](storm/apache-storm-overview.md) lub [Apache Spark Streaming](spark/apache-spark-streaming-overview.md). Przetworzone dane mogą być przechowywane w systemach przechowywania długoterminowego, takich jak [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)i wyświetlane w czasie rzeczywistym na pulpicie nawigacyjnym analizy biznesowej, takim jak [Power BI](https://powerbi.microsoft.com), Tableau lub niestandardowa strona sieci Web.
 
-
-![Wzorce przesyłania strumieniowego HDInsight](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
+![Wzorce przesyłania strumieniowego usługi Azure HDInsight](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
 
 ## <a name="apache-kafka"></a>Apache Kafka
 

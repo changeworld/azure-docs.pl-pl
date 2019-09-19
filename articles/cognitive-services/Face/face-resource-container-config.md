@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/18/2019
 ms.author: dapine
-ms.openlocfilehash: 752613becb92711866d520e6fcd46ed3a320353f
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: a07f088f7f5699a2698c0ea8fb0e853b3d287572
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860273"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71101955"
 ---
 # <a name="configure-face-docker-containers"></a>Konfigurowanie kontenerów platformy Docker
 
@@ -138,8 +138,8 @@ Zastąp {_argument_name_} własnymi wartościami:
 
 | Symbol zastępczy | Wartość | Format lub przykład |
 |-------------|-------|---|
-|{API_KEY} | Klucz punktu końcowego zasobu Cognitive Services. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{ENDPOINT_URI} | Wartość adresu URL punktu końcowego.|`https://myresourcename.cognitive.microsoft.com/face/v1.0`|
+| **{API_KEY}** | Klucz `Face` punktu końcowego zasobu na stronie kluczy platformy Azure `Face` . | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | Wartość punktu końcowego rozliczenia jest dostępna na stronie `Face` przegląd platformy Azure.| Zobacz [zbieranie wymaganych parametrów](face-how-to-install-containers.md#gathering-required-parameters) dla jawnych przykładów. |
 
 [!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 

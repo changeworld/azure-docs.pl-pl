@@ -6,12 +6,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 9cf15595270e0a0040e565be8319c13e3f5da306
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
-ms.translationtype: HT
+ms.openlocfilehash: eda0d6e8fe56b985c3b29fa80cee880444d63741
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092224"
+ms.locfileid: "71105291"
 ---
 # <a name="move-azure-external-load-balancer-to-another-region-using-the-azure-portal"></a>Przenoszenie zewnętrznych Load Balancer platformy Azure do innego regionu przy użyciu Azure Portal
 
@@ -179,7 +179,7 @@ Poniższe kroki pokazują, jak przygotować zewnętrzny moduł równoważenia ob
 
     ```
 
-6.  Aby edytować wartość docelowego publicznego adresu IP, który został przeniesiony powyżej, należy najpierw uzyskać identyfikator zasobu, a następnie skopiować go i wkleić do pliku **parametrów. JSON** .  Aby uzyskać identyfikator:
+6.  Aby edytować wartość docelowego publicznego adresu IP, który został przeniesiony powyżej, należy najpierw uzyskać identyfikator zasobu, a następnie skopiować go i wkleić do pliku **Parameters. JSON** . Aby uzyskać identyfikator:
     
     1. Zaloguj się do**grup zasobów** [Azure Portal](http://portal.azure.com) > w innej karcie lub oknie przeglądarki.
     2. Znajdź docelową grupę zasobów zawierającą przeniesiony publiczny adres IP z powyższych kroków i kliknij ją.
@@ -187,19 +187,19 @@ Poniższe kroki pokazują, jak przygotować zewnętrzny moduł równoważenia ob
     4. W bloku po prawej stronie zaznacz **Identyfikator zasobu** i skopiuj go do Schowka.  Alternatywnie możesz kliknąć przycisk **Kopiuj do schowka** z prawej strony ścieżki **identyfikatora zasobu** .
     5. Wklej identyfikator zasobu do właściwości **wartość** w edytorze **edycji parametrów** otwartym w innym oknie przeglądarki lub karcie:
 
-    ```json
-       ```json
-       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-       "contentVersion": "1.0.0.0",
-       "parameters": {
-          "loadBalancers_myLoadbalancer_ext_name": {
-          "value": "<target-external-lb-name>"
-    },
-          "publicIPAddresses_myPubIP_in_externalid": {
-          "value": "<target-publicIP-resource-ID>"
-    },
+        ```json
+           ```json
+           "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+           "contentVersion": "1.0.0.0",
+           "parameters": {
+              "loadBalancers_myLoadbalancer_ext_name": {
+              "value": "<target-external-lb-name>"
+        },
+              "publicIPAddresses_myPubIP_in_externalid": {
+              "value": "<target-publicIP-resource-ID>"
+        },
 
-    ```
+        ```
     6. Kliknij przycisk **Zapisz** w edytorze online.
    
 

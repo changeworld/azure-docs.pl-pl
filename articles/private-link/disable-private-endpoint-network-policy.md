@@ -1,18 +1,18 @@
 ---
 title: Wyłączanie zasad sieciowych dla prywatnych punktów końcowych na platformie Azure
 description: Dowiedz się, jak wyłączyć zasady sieciowe dla prywatnych punktów końcowych.
-services: virtual-network
+services: private-link
 author: KumudD
-ms.service: virtual-network
+ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 8b5e989db46bce3fdf652a0b64db86cdcc16f9f1
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: b510b697fbf8b53e9e55e96f60b27967f90893f1
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71017999"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104622"
 ---
 # <a name="disable-network-policies-for-private-endpoints"></a>Wyłączanie zasad sieciowych dla prywatnych punktów końcowych
 
