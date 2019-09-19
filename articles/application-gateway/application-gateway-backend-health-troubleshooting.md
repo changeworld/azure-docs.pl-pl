@@ -7,17 +7,17 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: surmb
-ms.openlocfilehash: ce1d0542530c4f190ace52d45e2369d6ecc18772
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 1fd4e9156e29133b1db4fe9ab9a0825eb1aa3b55
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70384088"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097577"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Rozwiązywanie problemów z kondycją zaplecza w Application Gateway
 ==================================================
 
-<a name="overview"></a>Przegląd
+<a name="overview"></a>Omówienie
 --------
 
 Application Gateway domyślnie sonduje serwery zaplecza, aby sprawdzić ich stan kondycji i czy są gotowe do obsłużenia żądań. Użytkownicy mogą tworzyć niestandardowe sondy, a także wspominać o nazwie hosta, ścieżce do sondowania oraz kodów stanu, które mają być akceptowane w dobrej kondycji. W obu przypadkach, jeśli serwer zaplecza nie odpowiada prawidłowo, Application Gateway oznaczy serwer jako w złej kondycji i zatrzyma przekazywanie żądania do serwera. Po pomyślnym rozpoczęciu odpowiedzi serwer zostanie wznowiony.
@@ -81,10 +81,10 @@ Gdy stan serwera wewnętrznej bazy danych zostanie wyświetlony jako zła kondyc
 Komunikat wyświetlany w kolumnie szczegóły karty kondycja zaplecza zawiera bardziej szczegółowe informacje o problemie i na podstawie tych informacji można rozpocząć rozwiązywanie problemu.
 
 > [!NOTE]
-> Domyślne żądanie sondowania jest wysyłane w formacie <protocol>://127.0.0.1:<port> <http://127.0.0.1/> /, na przykład w przypadku sondy http na porcie 80 i traktuje tylko odpowiedzi kodów stanu HTTP 200-399 jako w dobrej kondycji. Protokół i port docelowy są dziedziczone z ustawień HTTP. Jeśli chcesz, aby Application Gateway badanie przy użyciu innego protokołu, nazwy hosta lub ścieżki i zaakceptowania inny kod stanu w dobrej kondycji, skonfiguruj sondę niestandardową i skojarz ją z ustawieniami protokołu HTTP.
+> Domyślne żądanie sondowania jest wysyłane w formacie \<protokołu\>://127.0.0.1:\<port\>/, na przykład <http://127.0.0.1/> w przypadku sondy http na porcie 80 i uwzględnia tylko odpowiedź kodów stanu HTTP 200-399 jako odpowiedź w dobrej kondycji. Protokół i port docelowy są dziedziczone z ustawień HTTP. Jeśli chcesz, aby Application Gateway badanie przy użyciu innego protokołu, nazwy hosta lub ścieżki i zaakceptowania inny kod stanu w dobrej kondycji, skonfiguruj sondę niestandardową i skojarz ją z ustawieniami protokołu HTTP.
 
-### <a name="error-messages"></a>Komunikaty o błędach
-
+<a name="error-messages"></a>Komunikaty o błędach
+------------------------
 #### <a name="backend-server-timeout"></a>Limit czasu serwera wewnętrznej bazy danych
 
 **Komunikat:** Czas reakcji zaplecza na sondę kondycji bramy\'aplikacji jest większy niż próg limitu czasu w ustawieniu sondy.
@@ -158,7 +158,7 @@ Sprawdź również, czy jakakolwiek sieciowej grupy zabezpieczeń/UDR/zapora blo
     e.  Otwórz wiersz polecenia (Win + R-\> cmd) i wprowadź netstat i naciśnij klawisz ENTER
 
     f.  Sprawdź, czy serwer nasłuchuje na skonfigurowanym porcie.
-        Na przykład:
+        Przykład:
     ```
             Proto Local Address Foreign Address State PID
             TCP 0.0.0.0:80 0.0.0.0:0 LISTENING 4

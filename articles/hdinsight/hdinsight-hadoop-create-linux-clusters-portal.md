@@ -2,51 +2,53 @@
 title: Tworzenie klastrów Apache Hadoop przy użyciu przeglądarki sieci Web, usługa Azure HDInsight
 description: Dowiedz się, jak tworzyć klastry Apache Hadoop, Apache HBase, Apache Storm lub Apache Spark w systemie Linux dla usługi HDInsight przy użyciu przeglądarki sieci Web i portalu Azure w wersji zapoznawczej.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.author: hrasheed
-ms.openlocfilehash: d4593cd3602c5324e9cffd5eff8564c09aceaf46
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: b2a5168cbda209d1d975db5e5f1c810a798ddb97
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68406279"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098709"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Tworzenie klastrów opartych na systemie Linux w usłudze HDInsight przy użyciu Azure Portal
+
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
 Azure Portal to oparte na sieci Web narzędzie do zarządzania usługami i zasobami hostowanymi w chmurze Microsoft Azure. W tym artykule dowiesz się, jak tworzyć klastry usługi Azure HDInsight oparte na systemie Linux przy użyciu portalu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 * **Subskrypcja platformy Azure**. Zobacz [, jak uzyskać bezpłatną wersję próbną platformy Azure do testowania usługi Hadoop w usłudze HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * **Nowoczesnej przeglądarki sieci Web**. Azure Portal używa HTML5 i JavaScript. Może nie działać poprawnie w starszych przeglądarkach sieci Web.
 
 ## <a name="create-clusters"></a>Tworzenie klastrów
+
 Azure Portal uwidacznia większość właściwości klastra. Za pomocą szablonów Azure Resource Manager można ukryć wiele szczegółów. Aby uzyskać więcej informacji, zobacz [Tworzenie klastrów Apache Hadoop w usłudze HDInsight przy użyciu szablonów Menedżer zasobów](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
-
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 1. W menu po lewej stronie wybierz pozycję **+ Utwórz zasób**.
 
-1.  W obszarze **Azure Marketplace**wybierz pozycję **Analiza**.
+1. W obszarze **Azure Marketplace**wybierz pozycję **Analiza**.
 
-1.  W obszarze **Polecane** wybierz pozycję **HDInsight**.
-   
+1. W obszarze **Polecane** wybierz pozycję **HDInsight**.
+
     ![Utwórz nowy klaster w Azure Portal](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster.png "Tworzenie nowego klastra w Azure Portal")
 
 1. Na stronie **HDInsight** wybierz pozycję **niestandardowe (rozmiar, ustawienia, aplikacje)** .
 
 1. Wybierz **1 podstawowe**elementy. Następnie wprowadź poniższe informacje.
 
-    ![Skonfiguruj ustawienia podstawowe](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-basics.png "Tworzenie nowego klastra w Azure Portal")
+    ![Podstawowe informacje dotyczące tworzenia klastra usługi HDInsight](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-basics.png "Tworzenie nowego klastra w Azure Portal")
 
     * Wprowadź **nazwę klastra**. Ta nazwa musi być unikatowa w skali globalnej.
 
@@ -75,10 +77,9 @@ Azure Portal uwidacznia większość właściwości klastra. Za pomocą szablon�
 
     Wybierz pozycję **dalej** , aby przejść do następnej strony.
 
-
 5. W obszarze **3 magazynu**Określ, czy chcesz, aby usługa Azure storage lub Azure Data Lake Storage jako magazyn domyślny. Aby uzyskać więcej informacji, zobacz poniższą tabelę.
 
-     ![Ustawianie ustawień magazynu](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-storage.png "Tworzenie nowego klastra w Azure Portal")
+     ![Magazyn tworzenia klastra usługi HDInsight](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-storage.png "Tworzenie nowego klastra w Azure Portal")
 
      | Magazyn                                      | Opis |
      |----------------------------------------------|-------------|
@@ -91,21 +92,19 @@ Azure Portal uwidacznia większość właściwości klastra. Za pomocą szablon�
 
      Wybierz pozycję **dalej** , aby przejść do następnej strony.
 
-
 6. Z **4 aplikacji (opcjonalnie)** wybierz wszystkie aplikacje, które chcesz. Firma Microsoft, niezależni dostawcy oprogramowania (ISV) lub mogą opracowywać te aplikacje. Aby uzyskać więcej informacji, zobacz [Instalowanie aplikacji podczas tworzenia klastra](hdinsight-apps-install-applications.md#install-applications-during-cluster-creation).
 
     Wybierz pozycję **dalej** , aby przejść do następnej strony.
 
-
 6. **5 rozmiar klastra** wyświetla informacje o węzłach, które są używane dla tego klastra. Ustaw liczbę węzłów procesu roboczego, które są potrzebne w klastrze. Zostanie również wyświetlony szacowany koszt uruchomienia klastra.
-   
-    ![Określanie warstw cenowych węzła](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-nodes.png "Określ liczbę węzłów klastra")
-   
+
+    ![Tworzenie węzłów klastra usługi HDInsight](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-nodes.png "Określ liczbę węzłów klastra")
+
    > [!IMPORTANT]  
-   > Jeśli planujesz więcej niż 32 węzłów procesu roboczego, wybierz rozmiar węzła głównego z co najmniej 8 rdzeniami i 14 GB pamięci RAM. Planowanie węzłów podczas tworzenia klastra lub skalowanie klastra po utworzeniu. 
-   > 
+   > Jeśli planujesz więcej niż 32 węzłów procesu roboczego, wybierz rozmiar węzła głównego z co najmniej 8 rdzeniami i 14 GB pamięci RAM. Planowanie węzłów podczas tworzenia klastra lub skalowanie klastra po utworzeniu.
+   >
    > Aby uzyskać więcej informacji na temat rozmiarów węzłów i skojarzonych z nimi kosztów, zobacz [Cennik usługi Azure HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
-   
+
     Wybierz pozycję **dalej** , aby przejść do następnej strony.
 
 8. Z **6 akcji skryptu**można dostosować klaster, aby zainstalować składniki niestandardowe. Ta opcja działa, jeśli chcesz użyć niestandardowego skryptu w celu dostosowania klastra podczas tworzenia klastra. Aby uzyskać więcej informacji na temat akcji skryptu, zobacz [Dostosowywanie klastrów usługi HDInsight opartych na systemie Linux za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md).
@@ -114,29 +113,29 @@ Azure Portal uwidacznia większość właściwości klastra. Za pomocą szablon�
 
 9. W **podsumowaniu 7**Sprawdź wprowadzone wcześniej informacje. Następnie wybierz przycisk **Utwórz**.
 
-     ![Potwierdź konfiguracje](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-summary.png "Określ liczbę węzłów klastra")
+     ![Podsumowanie tworzenia klastra usługi HDInsight](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-summary.png "Określ liczbę węzłów klastra")
     
     > [!NOTE]  
     > Tworzenie klastra zajmuje trochę czasu, zwykle około 20 minut. Monitoruj **powiadomienia** , aby sprawdzić proces aprowizacji.
 
-10. Po zakończeniu procesu tworzenia wybierz pozycję **Przejdź do zasobu** w ramach powiadomienia o pomyślnym **wdrożeniu** . Okno klaster zawiera poniższe informacje.
-    
-    ![Interfejs klastra](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-completed.png "Właściwości klastra")
-    
+10. Po zakończeniu procesu tworzenia wybierz pozycję **Przejdź do zasobu** w ramach powiadomienia o **pomyślnym wdrożeniu** . Okno klaster zawiera poniższe informacje.
+
+    ![HDI klaster Azure Portal — Omówienie](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-completed.png "Właściwości klastra")
+
     Ikony w oknie są wyjaśnione w następujący sposób:
-    
+
     * Karta **Przegląd** zawiera wszystkie podstawowe informacje o klastrze. Przykładami są nazwa, Grupa zasobów, do której należy, lokalizacja, system operacyjny i adres URL pulpitu nawigacyjnego klastra.
     * **Pulpit nawigacyjny** kieruje Cię do portalu Ambari skojarzonego z klastrem.
     * **Secure Shell** zapewnia informacje konieczne do uzyskania dostępu do klastra przy użyciu protokołu SSH.
     * Korzystając ze **skalowania klastra**, można zwiększyć liczbę węzłów procesu roboczego skojarzonych z klastrem.
     * **Delete** usuwa klaster usługi HDInsight.
-    
 
 ## <a name="customize-clusters"></a>Dostosowywanie klastrów
 * [Dostosowywanie klastrów usługi HDInsight przy użyciu narzędzia Bootstrap](hdinsight-hadoop-customize-cluster-bootstrap.md)
 * [Dostosowywanie klastrów usługi HDInsight opartych na systemie Linux za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md)
 
 ## <a name="delete-the-cluster"></a>Usuwanie klastra
+
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
@@ -144,23 +143,28 @@ Azure Portal uwidacznia większość właściwości klastra. Za pomocą szablon�
 W razie problemów podczas tworzenia klastrów usługi HDInsight zapoznaj się z [wymaganiami dotyczącymi kontroli dostępu](hdinsight-hadoop-create-linux-clusters-portal.md).
 
 ## <a name="next-steps"></a>Następne kroki
+
 Klaster usługi HDInsight został pomyślnie utworzony. Teraz Dowiedz się, jak korzystać z klastra.
 
 ### <a name="apache-hadoop-clusters"></a>Klastry Apache Hadoop
+
 * [Korzystanie z Apache Hive z usługą HDInsight](hadoop/hdinsight-use-hive.md)
 * [Korzystanie z Apache świni z usługą HDInsight](hadoop/hdinsight-use-pig.md)
 * [Korzystanie z MapReduce z usługą HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Klastry Apache HBase
+
 * [Wprowadzenie do platformy Apache HBase w usłudze HDInsight](hbase/apache-hbase-tutorial-get-started-linux.md)
 * [Tworzenie aplikacji Java dla platformy Apache HBase w usłudze HDInsight](hbase/apache-hbase-build-java-maven-linux.md)
 
 ### <a name="apache-storm-clusters"></a>Klastry Apache Storm
+
 * [Tworzenie topologii języka Java dla Apache Storm w usłudze HDInsight](storm/apache-storm-develop-java-topology.md)
 * [Używanie składników języka Python w Apache Storm w usłudze HDInsight](storm/apache-storm-develop-python-topology.md)
 * [Wdrażanie i monitorowanie topologii za pomocą Apache Storm w usłudze HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md)
 
 ### <a name="apache-spark-clusters"></a>Klastry Apache Spark
+
 * [Tworzenie aplikacji autonomicznej za pomocą Scala](spark/apache-spark-create-standalone-application.md)
 * [Zdalne uruchamianie zadań w klastrze Apache Spark przy użyciu oprogramowania Apache usługi Livy](spark/apache-spark-livy-rest-interface.md)
 * [Apache Spark z usługą BI: Przeprowadzanie interaktywnej analizy danych przy użyciu platformy Spark w usłudze HDInsight przy użyciu narzędzi analizy biznesowej](spark/apache-spark-use-bi-tools.md)

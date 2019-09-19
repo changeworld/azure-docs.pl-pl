@@ -2,18 +2,18 @@
 title: Data Lake Tools for Visual Studio z piaskownicą Hortonworks — Azure HDInsight
 description: Dowiedz się, jak używać narzędzi Azure Data Lake Tools for Visual Studio z piaskownicą Hortonworks działającą na lokalnej maszynie wirtualnej. Za pomocą tych narzędzi możesz tworzyć i uruchamiać zadania Hive i świńskie w piaskownicy oraz wyświetlać dane wyjściowe i historyczne zadań.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.author: hrasheed
-ms.openlocfilehash: a80cc44dbc4be0728ad632eefd8b9ed62f7f86b1
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 1edab776ec93f057ebf7e37ac887747f86a27db9
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962258"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098772"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>Korzystanie z Azure Data Lake narzędzi dla programu Visual Studio z piaskownicą Hortonworks
 
@@ -41,7 +41,7 @@ Upewnij się, że piaskownica Hortonworks jest uruchomiona. Następnie wykonaj k
 
 2. W **Eksplorator serwera**kliknij prawym przyciskiem myszy wpis usługi **HDInsight** , a następnie wybierz pozycję **Połącz z emulatorem usługi HDInsight**.
 
-    ![Zrzut ekranu przedstawiający Eksplorator serwera, z wyróżnionym emulatorem usługi HDInsight](./media/hdinsight-hadoop-emulator-visual-studio/connect-hdinsight-emulator.png)
+    ![Eksplorator serwera, z wyróżnionym emulatorem usługi HDInsight](./media/hdinsight-hadoop-emulator-visual-studio/connect-hdinsight-emulator.png)
 
 3. W oknie dialogowym **łączenie z emulatorem usługi HDInsight** wprowadź hasło skonfigurowane do Ambari.
 
@@ -112,7 +112,7 @@ Program Hive udostępnia język zapytań przypominający SQL (HiveQL) do pracy z
     > [!NOTE]  
     > Informacje są takie same, które są dostępne w linku **dziennika zadań** po zakończeniu zadania.
 
-    ![Zrzut ekranu przedstawiający dziennik danych wyjściowych](./media/hdinsight-hadoop-emulator-visual-studio/hiveserver2-output-box.png)
+    ![Zrzut ekranu przedstawiający dane wyjściowe serwera hiveserver2](./media/hdinsight-hadoop-emulator-visual-studio/hiveserver2-output-box.png)
 
 ## <a name="create-a-hive-project"></a>Tworzenie projektu Hive
 
@@ -122,7 +122,7 @@ Można również utworzyć projekt, który zawiera wiele skryptów Hive. Użyj p
 
 2. Z listy projektów rozwiń węzeł **Szablony**, rozwiń węzeł **Azure Data Lake**, a następnie wybierz pozycję **Hive (HDInsight)** . Z listy szablonów wybierz pozycję **przykład Hive**. Wprowadź nazwę i lokalizację, a następnie wybierz przycisk **OK**.
 
-    ![Zrzut ekranu przedstawiający okno nowego projektu, z Azure Data Lake, HIVE, przykładem Hive i przyciskiem OK](./media/hdinsight-hadoop-emulator-visual-studio/new-apache-hive-project.png)
+    ![Okno nowego projektu, z Azure Data Lake, przykładem Hive i OK](./media/hdinsight-hadoop-emulator-visual-studio/new-apache-hive-project.png)
 
 **Przykładowy projekt Hive** zawiera dwa skrypty, **WebLogAnalysis. HQL** i **SensorDataAnalysis. HQL**. Można przesłać te skrypty za pomocą tego samego przycisku **Prześlij** w górnej części okna.
 
@@ -179,7 +179,7 @@ Narzędzia Data Lake umożliwiają również łatwe wyświetlanie informacji o z
 
 2. Rozwinięcie tabeli Wyświetla kolumny dla tej tabeli. Aby szybko wyświetlić dane, kliknij prawym przyciskiem myszy tabelę, a następnie wybierz pozycję **Wyświetl pierwszych 100 wierszy**.
 
-    ![Zrzut ekranu przedstawiający Eksplorator serwera przy użyciu rozszerzonej tabeli i wyświetlenie pierwszych 100 wierszy](./media/hdinsight-hadoop-emulator-visual-studio/hdi-view-top-100-rows.png)
+    ![Eksplorator serwera, w przypadku wybrania tabeli rozwiniętej i wyświetlenia pierwszych 100 wierszy](./media/hdinsight-hadoop-emulator-visual-studio/hdi-view-top-100-rows.png)
 
 ### <a name="database-and-table-properties"></a>Właściwości bazy danych i tabeli
 

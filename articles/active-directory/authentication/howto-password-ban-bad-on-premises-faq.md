@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82fe917f911be45d7f68662e956fe3bd14f92267
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 74f81cb1f9b62755d2dd2707518b828466e9ed1b
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959878"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097571"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Ochrona hasłem w usłudze Azure AD — często zadawane pytania
 
@@ -136,6 +136,10 @@ Nie.
 **Pyt.: Dlaczego usługa Azure AD nadal odrzuca słabe hasła, mimo że skonfigurowano zasady tak, aby były w trybie inspekcji?**
 
 Tryb inspekcji jest obsługiwany tylko w środowisku lokalnym Active Directory. Usługa Azure AD jest niejawnie zawsze w trybie "Wymuś" podczas obliczania haseł.
+
+**Pyt.: W przypadku odrzucenia hasła przez ochronę hasłem usługi Azure AD użytkownicy widzą tradycyjny komunikat o błędzie systemu Windows. Czy można dostosować ten komunikat o błędzie, aby użytkownicy wiedzieli, co naprawdę się stało?**
+
+Nie. Komunikat o błędzie wyświetlany przez użytkowników w przypadku odrzucenia hasła przez kontroler domeny jest kontrolowany przez komputer kliencki, a nie przez kontroler domeny. To zachowanie występuje niezależnie od tego, czy hasło jest odrzucane przez domyślne zasady haseł Active Directory, czy przez rozwiązanie oparte na filtrze hasła, takie jak ochrona hasłem usługi Azure AD.
 
 ## <a name="additional-content"></a>Dodatkowa zawartość
 

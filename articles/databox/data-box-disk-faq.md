@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 08/15/2019
+ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 1ac91853c78a33645c0ccb234437e3cabc188f88
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: eee33a2e1f5d081c1394368152d0d9afb7091e34
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70076897"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098824"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: Często zadawane pytania
 
@@ -88,6 +88,24 @@ A.  Stan zamówienia urządzenia Data Box Disk możesz śledzić w witrynie Azur
 
 ### <a name="q-how-do-i-return-the-disks"></a>PYTANIE: Jak mogę zwrócić dyski? 
 A.  Firma Microsoft dołącza etykietę wysyłkową do przesyłki z urządzeniami Data Box Disk. Przyklej etykietę do opakowania wysyłkowego i dostarcz zapieczętowaną paczkę do firmy przewozowej. Jeśli etykieta została uszkodzona lub zgubiona, wybierz pozycję **Przegląd > Pobierz etykietę wysyłkową** i pobierz nową zwrotną etykietę wysyłkową.
+
+### <a name="can-i-pick-up-my-data-box-disk-order-myself-can-i-return-the-disks-via-a-carrier-that-i-choose"></a>Czy mogę wybrać moją Data Box Disk zamówienie samodzielnie? Czy mogę przywrócić dyski za pośrednictwem wybranego przez siebie operatora?
+A. Tak. Firma Microsoft oferuje również samozarządzaną wysyłkę wyłącznie w US Gov regionie. Podczas umieszczania kolejności Data Box Disk można wybrać opcję samozarządzanej wysyłki. Aby wybrać zamówienie Data Box Disk, wykonaj następujące czynności:
+    
+1. Po złożeniu zamówienia zamówienie jest przetwarzane i dyski są przygotowywane. Otrzymasz powiadomienie za pośrednictwem wiadomości e-mail, że zamówienie jest gotowe do odbioru. 
+2. Gdy zamówienie będzie gotowe do pobrania, przejdź do zamówienia w Azure Portal i przejdź do bloku **Przegląd** . 
+3. Zobaczysz powiadomienie z kodem w Azure Portal. Wyślij wiadomość e-mail do [zespołu operacji Azure Data Box](mailto:adbops@microsoft.com) i podaj kod. Zespół dostarczy lokalizację i zaplanował datę i godzinę pobrania. Po otrzymaniu powiadomienia e-mail należy zadzwonić do zespołu w ciągu 5 dni roboczych.
+
+Po zakończeniu kopiowania i weryfikacji danych wykonaj następujące kroki, aby zwrócić dysk:
+
+1. Po zakończeniu sprawdzania poprawności danych odłącz dyski. Odłącz kable połączeniowe.
+2. Zapakuj wszystkie dyski i kable połączeniowe w folię bąbelkową, a następnie umieść w opakowaniu wysyłkowym. W przypadku braku akcesoriów mogą zostać naliczone opłaty.
+
+    - Ponownie użyj opakowania z pierwotnej wysyłki. Zalecamy zabezpieczenie dysków przy użyciu folii bąbelkowej.
+    - Upewnij się, że wszystko jest dopasowane i żaden element nie przemieszcza się w opakowaniu.
+3. Przejdź do **bloku przegląd** dla zamówienia w Azure Portal. Powinno zostać wyświetlone powiadomienie z kodem.
+4. Użyj tego kodu i Wyślij wiadomość e-mail do [zespołu operacji Azure Data Box](mailto:adbops@microsoft.com) i podaj kod. Dostarczą informacje o tym, gdzie i kiedy należy porzucić dyski.
+
 
 ## <a name="migrate-data"></a>Migrowanie danych
 

@@ -6,14 +6,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 09/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 025052a5005702232eb9eaf255e6aac2c58fec98
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 0e8dacb97b6ccfb57573fc21c3a4df3694cc7ec8
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68735568"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098402"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Zarządzanie kopiami zapasowymi maszyn wirtualnych platformy Azure za pomocą usługi Azure Backup
 
@@ -49,7 +49,7 @@ Aby wyświetlić maszyny wirtualne na pulpicie nawigacyjnym magazynu:
 
     ![Otwórz kafelek elementy kopii zapasowej](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-6. W bloku **elementy** kopii zapasowej można wyświetlić listę chronionych maszyn wirtualnych. W tym przykładzie magazyn chroni jedną maszynę wirtualną: demobackup.  
+6. W bloku **elementy kopii zapasowej**można wyświetlić listę chronionych maszyn wirtualnych. W tym przykładzie magazyn chroni jedną maszynę wirtualną: demobackup.  
 
     ![Wyświetlanie bloku elementów kopii zapasowej](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
@@ -66,7 +66,7 @@ Aby zarządzać zasadami tworzenia kopii zapasowych:
 
     ![Otwórz kafelek elementy kopii zapasowej](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-3. W bloku **elementy** kopii zapasowej można wyświetlić listę chronionych maszyn wirtualnych i stan ostatniej kopii zapasowej z najnowszym czasem punktów przywracania.
+3. W bloku **elementy kopii zapasowej**można wyświetlić listę chronionych maszyn wirtualnych i stan ostatniej kopii zapasowej z najnowszym czasem punktów przywracania.
 
     ![Wyświetlanie bloku elementów kopii zapasowej](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
@@ -165,7 +165,7 @@ Istnieją dwa sposoby usuwania danych kopii zapasowej maszyny wirtualnej:
   > [!NOTE]
   > Usunięcie danych kopii zapasowej powoduje usunięcie wszystkich skojarzonych punktów odzyskiwania. Nie można wybrać określonych punktów odzyskiwania do usunięcia.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - Dowiedz się, jak [utworzyć kopię zapasową maszyn wirtualnych platformy Azure z ustawień maszyny wirtualnej](backup-azure-vms-first-look-arm.md).
 - Dowiedz się, jak [przywrócić maszyny wirtualne](backup-azure-arm-restore-vms.md).
 - Dowiedz się, jak [monitorować kopie zapasowe maszyn wirtualnych platformy Azure](backup-azure-monitor-vms.md).
