@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/06/2019
-ms.openlocfilehash: 9922d347fae154a3a9b1c37e813014225c28442d
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: d782c2d9dff45dc152cab2246c95dda063bfd900
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103178"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130386"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Dostrajanie automatyczne w Azure SQL Database
 
@@ -75,7 +75,7 @@ Dostrajanie automatyczneidentyfikuje indeksowanie, **Drop index**i WYmuszanie na
 
 Możesz ręcznie zastosować zalecenia strojenia przy użyciu portalu lub zezwolić na automatyczne dostosowywanie w sposób autonomiczny. Korzyści wynikające z zapewnienia, że system autonomicznie stosują zalecenia dostosowawcze, są automatycznie sprawdzane, czy istnieje pozytywny wzrost wydajności obciążeń i czy nie wykryto znaczącej poprawy wydajności. automatycznie Przywróć zalecenie dostrajania. Należy pamiętać, że w przypadku zapytań, na które mają wpływ zalecenia strojenia, które nie są wykonywane często, faza weryfikacji może trwać do 72 godzin.
 
-W przypadku stosowania zaleceń dotyczących dostrajania przy użyciu języka T-SQL, automatyczne sprawdzanie poprawności wydajności i mechanizmy odwrócenia nie są dostępne. Zalecenia zastosowane w ten sposób pozostaną aktywne i wyświetlone na liście zaleceń dotyczących dostrajania dla 24-48 godzin. przed automatycznym wycofaniem ich przez system. Jeśli chcesz usunąć zalecenie z tej listy wcześniej, możesz je odrzucić z Azure Portal.
+W przypadku stosowania zaleceń dotyczących dostrajania przy użyciu języka T-SQL, automatyczne sprawdzanie poprawności wydajności i mechanizmy odwrócenia nie są dostępne. Zalecenia zastosowane w ten sposób pozostaną aktywne i wyświetlone na liście zaleceń dotyczących dostrajania dla 24-48 godzin. przed automatycznym wycofaniem ich przez system. Jeśli chcesz usunąć zalecenie wcześniej, możesz je odrzucić z Azure Portal.
 
 Opcje dostrajania automatycznego mogą być niezależnie włączane lub wyłączane na bazę danych albo mogą być konfigurowane na serwerach SQL Database i stosowane do każdej bazy danych, która dziedziczy ustawienia z serwera. Serwery SQL Database mogą dziedziczyć wartości domyślne platformy Azure dla ustawień dostrajania automatycznego. Domyślne ustawienia platformy Azure w tym momencie są ustawione na FORCE_LAST_GOOD_PLAN, CREATE_INDEX jest włączona, a DROP_INDEX jest wyłączone.
 

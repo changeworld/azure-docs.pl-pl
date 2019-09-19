@@ -1,6 +1,6 @@
 ---
-title: Łączenie się z punktami końcowymi HTTP lub HTTPS z Azure Logic Apps
-description: Monitoruj punkty końcowe HTTP lub HTTPS w zautomatyzowanych zadaniach, procesach i przepływach pracy przy użyciu Azure Logic Apps
+title: Wywoływanie punktów końcowych HTTP i HTTPS — Azure Logic Apps
+description: Wysyłaj żądania wychodzące do punktów końcowych HTTP i HTTPS za pomocą Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,16 +10,18 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/05/2019
 tags: connectors
-ms.openlocfilehash: 04d9beaef29e76d40c0bb3f9dcf0bb6f4fe3152d
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: df856e0d76dbd5903964bc80aa01b97b7461128a
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234363"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122696"
 ---
-# <a name="call-http-or-https-endpoints-by-using-azure-logic-apps"></a>Wywoływanie punktów końcowych HTTP lub HTTPS za pomocą Azure Logic Apps
+# <a name="send-outgoing-calls-to-http-or-https-endpoints-by-using-azure-logic-apps"></a>Wysyłaj wywołania wychodzące do punktów końcowych HTTP lub HTTPS za pomocą Azure Logic Apps
 
-Za pomocą [Azure Logic Apps](../logic-apps/logic-apps-overview.md) i wbudowanego łącznika http można zautomatyzować przepływy pracy, które regularnie wywołują dowolny punkt końcowy HTTP lub https, tworząc Aplikacje logiki. Na przykład można monitorować punkt końcowy usługi dla witryny sieci Web, sprawdzając ten punkt końcowy zgodnie z określonym harmonogramem. Gdy w tym punkcie końcowym wystąpi określone zdarzenie, takie jak witryna sieci Web, zdarzenie wyzwala przepływ pracy aplikacji logiki i uruchamia określone akcje.
+Za pomocą [Azure Logic Apps](../logic-apps/logic-apps-overview.md) i wbudowanego wyzwalacza http lub akcji można tworzyć automatyczne zadania i przepływy pracy, które regularnie wysyłają żądania do dowolnego punktu końcowego http lub https. Aby w zamian odbierać przychodzące wywołania HTTP lub HTTPS i odpowiadać na nie, użyj wbudowanego [wyzwalacza lub akcji odpowiedzi](../connectors/connectors-native-reqres.md).
+
+Na przykład można monitorować punkt końcowy usługi dla witryny sieci Web, sprawdzając ten punkt końcowy zgodnie z określonym harmonogramem. Gdy w tym punkcie końcowym wystąpi określone zdarzenie, takie jak witryna sieci Web, zdarzenie wyzwala przepływ pracy aplikacji logiki i uruchamia określone akcje.
 
 Aby sprawdzić lub *sondować* punkt końcowy zgodnie z regularnym harmonogramem, można użyć wyzwalacza http jako pierwszego kroku w przepływie pracy. Dla każdego sprawdzenia wyzwalacz wysyła wywołanie lub *żądanie* do punktu końcowego. Odpowiedź punktu końcowego określa, czy przepływ pracy aplikacji logiki zostanie uruchomiony. Wyzwalacz przekazuje zawartość z odpowiedzi na akcje w aplikacji logiki.
 
@@ -149,14 +151,14 @@ Poniżej znajduje się więcej informacji na temat danych wyjściowych wyzwalacz
 | Nazwa właściwości | Type | Opis |
 |---------------|------|-------------|
 | Nagłówka | object | Nagłówki żądania |
-| jednostce | object | Obiekt JSON | Obiekt z zawartością treści z żądania |
+| treść | object | Obiekt JSON | Obiekt z zawartością treści z żądania |
 | Kod stanu | int | Kod stanu z żądania |
 |||
 
 | Kod stanu | Opis |
 |-------------|-------------|
 | 200 | OK |
-| 202 | Przyjmować |
+| 202 | Zaakceptowany |
 | 400 | Nieprawidłowe żądanie |
 | 401 | Brak autoryzacji |
 | 403 | Zabroniony |
@@ -164,6 +166,6 @@ Poniżej znajduje się więcej informacji na temat danych wyjściowych wyzwalacz
 | 500 | Wewnętrzny błąd serwera. Wystąpił nieznany błąd. |
 |||
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Dowiedz się więcej na temat innych [łączników Logic Apps](../connectors/apis-list.md)

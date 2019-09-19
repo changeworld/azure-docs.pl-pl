@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 20d8106f06b708527fc60e025a19c6b07656acb3
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: f4816ea2dc67df717e46df61c955d6d156b14d7e
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71102653"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129683"
 ---
 # <a name="update-management-solution-in-azure"></a>Update Management rozwiązanie na platformie Azure
 
@@ -83,7 +83,7 @@ W poniższej tabeli przedstawiono listę obsługiwanych systemów operacyjnych:
 
 > [!NOTE]
 > Zestawy skalowania maszyn wirtualnych platformy Azure mogą być zarządzane za pomocą Update Management. Update Management działa na samych wystąpieniach, a nie na obrazie podstawowym. Należy zaplanować aktualizacje w sposób przyrostowy, co nie spowoduje jednoczesnego zaktualizowania wszystkich wystąpień maszyn wirtualnych.
-> Węzły VMSS można dodawać, wykonując czynności opisane w sekcji [onbaord a poza platformą Azure](automation-tutorial-installed-software.md#onboard-a-non-azure-machine).
+> Węzły VMSS można dodawać, wykonując czynności opisane w sekcji Dołączanie [maszyny spoza platformy Azure](automation-tutorial-installed-software.md#onboard-a-non-azure-machine).
 
 ### <a name="unsupported-client-types"></a>Typy klientów nieobsługiwanych
 

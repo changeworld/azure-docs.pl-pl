@@ -5,18 +5,18 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 09/18/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 28cfbc7183628b00c463f1c3a8a954ba4074409b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e522c7ea306667f675af4bbe7486e25fb7f4ec9f
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65415958"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122801"
 ---
-# <a name="expressroute-global-reach"></a>Globalny zasięg usługi ExpressRoute
-Usługa ExpressRoute jest prywatny i odporne na błędy sposób łączenia sieci lokalnej Microsoft Cloud. Wiele usług w chmurze firmy Microsoft, takich jak Azure, Office 365 i Dynamics 365 dostęp z Twojego Centrum danych prywatnych lub sieci firmowej. Na przykład masz oddziału w San Francisco z obwodem usługi ExpressRoute w Dolinie Krzemowej i innego oddziału firmy w Londynie z obwodem usługi ExpressRoute, w tym samym mieście. Obu biur oddziałów mogą mieć łączność o dużej szybkości do zasobów platformy Azure w zachodnich stanach USA i Południowe Zjednoczone Królestwo. Jednak oddziałów nie wymiany danych bezpośrednio ze sobą. Innymi słowy 10.0.1.0/24 może wysyłać dane do 10.0.3.0/24 i 10.0.4.0/24, ale nie do 10.0.2.0/24.
+# <a name="expressroute-global-reach"></a>ExpressRoute Global Reach
+Usługa ExpressRoute jest prywatny i odporne na błędy sposób łączenia sieci lokalnej Microsoft Cloud. Możesz uzyskać dostęp do wielu usług w chmurze firmy Microsoft, takich jak Azure, i pakietu Office 365 z prywatnego centrum danych lub sieci firmowej. Na przykład masz oddziału w San Francisco z obwodem usługi ExpressRoute w Dolinie Krzemowej i innego oddziału firmy w Londynie z obwodem usługi ExpressRoute, w tym samym mieście. Obu biur oddziałów mogą mieć łączność o dużej szybkości do zasobów platformy Azure w zachodnich stanach USA i Południowe Zjednoczone Królestwo. Jednak oddziałów nie wymiany danych bezpośrednio ze sobą. Innymi słowy 10.0.1.0/24 może wysyłać dane do 10.0.3.0/24 i 10.0.4.0/24, ale nie do 10.0.2.0/24.
 
 ![Bez][1]
 
@@ -39,7 +39,7 @@ Zasięgu globalnym usługi ExpressRoute jest obecnie obsługiwane w następując
 * SRA Hongkong
 * Irlandia
 * Japonia
-* Korea
+* Korea Południowa
 * Holandia
 * Singapur
 * Szwajcaria

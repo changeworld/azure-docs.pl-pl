@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: e6c815b317e60d7a65a2f26249782451bc917097
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 04e3881b553f639bb2df948b6ad1154f86f1c9da
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993463"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123087"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL Database bezserwerowe (wersja zapoznawcza)
 
@@ -160,6 +160,12 @@ Tworzenie nowej bazy danych lub przeniesienie istniejącej bazy danych do warstw
    |GP_S_Gen5_1|Ogólne zastosowanie|5\. generacji|1|
    |GP_S_Gen5_2|Ogólne zastosowanie|5\. generacji|2|
    |GP_S_Gen5_4|Ogólne zastosowanie|5\. generacji|4|
+   |GP_S_Gen5_6|Ogólne zastosowanie|5\. generacji|6|
+   |GP_S_Gen5_8|Ogólne zastosowanie|5\. generacji|8|
+   |GP_S_Gen5_10|Ogólne zastosowanie|5\. generacji|10|
+   |GP_S_Gen5_12|Ogólne zastosowanie|5\. generacji|12|
+   |GP_S_Gen5_14|Ogólne zastosowanie|5\. generacji|14|
+   |GP_S_Gen5_16|Ogólne zastosowanie|5\. generacji|16|
 
 2. Opcjonalnie można określić opóźnienie rdzeni wirtualnych i pauzę, aby zmienić wartości domyślne. W poniższej tabeli przedstawiono dostępne wartości tych parametrów.
 
@@ -282,7 +288,7 @@ Get-AzSqlDatabase `
 
 ## <a name="resource-limits"></a>Limity zasobów
 
-W przypadku limitów zasobów zapoznaj się z tematem [warstwa obliczeń Bezserwerowych](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute).
+W przypadku limitów zasobów zapoznaj się z tematem [warstwa obliczeń bezserwerowych](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute).
 
 ## <a name="billing"></a>Rozliczenia
 

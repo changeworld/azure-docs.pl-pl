@@ -14,16 +14,16 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: e4f2d4f0e7dd9380ba708d84dfe7588043fd4a68
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 08caf4b78b1042d5753dba2bc73e93fa3a250a17
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236704"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122389"
 ---
 # <a name="cli-example-create-and-submit-a-job"></a>Przykład użycia interfejsu wiersza polecenia: Tworzenie i przesyłanie zadania
 
-W przypadku usługi Media Services 3 po przesłaniu zadań w celu przetworzenia wideo należy poinformować usługę Media Services o tym, gdzie można znaleźć wejściowe wideo. Jedną z opcji jest określenie adresu URL HTTPS jako zadanie, dane wejściowe (jak pokazano w tym artykule). 
+W przypadku usługi Media Services 3 po przesłaniu zadań w celu przetworzenia wideo należy poinformować usługę Media Services o tym, gdzie można znaleźć wejściowe wideo. Jedną z opcji jest określenie adresu URL HTTPS jako dane wejściowe zadania (jak pokazano w tym artykule). 
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 
@@ -85,6 +85,6 @@ Uzyskasz odpowiedź podobną do następującej:
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Przegląd usługi Media Services](media-services-overview.md)
+[AZ AMS Job (CLI)](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)

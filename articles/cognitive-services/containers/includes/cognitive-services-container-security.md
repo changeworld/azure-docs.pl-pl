@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/13/2019
 ms.author: dapine
-ms.openlocfilehash: d8d069dddbce6ab6ddb541db460634ad3f6fa067
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 0e9fa9146292bf7dabbbf06d3bb436aa6cd2e6e2
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70994950"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71124094"
 ---
 ## <a name="azure-cognitive-services-container-security"></a>Zabezpieczenia kontenera Cognitive Services platformy Azure
 
@@ -30,6 +30,23 @@ Na poniższym diagramie przedstawiono domyślne i **niebezpieczne** podejście:
 Jako alternatywne i *bezpieczne* podejście, odbiorcy Cognitive Services kontenerów mogą rozszerzyć kontener z składnikiem czołowym, utrzymując punkt końcowy kontenera jako prywatny. Rozważmy scenariusz, w którym korzystamy z [Istio][istio] jako bramy transferu danych przychodzących. Istio obsługuje uwierzytelnianie przy użyciu protokołu HTTPS/SSL i certyfikatu klienta. W tym scenariuszu fronton Istio uwidacznia dostęp do kontenera, który przedstawia certyfikat klienta, który jest listy dozwolonych wcześniej z Istio.
 
 [Nginx][nginx] jest innym popularnym wyborem w tej samej kategorii. Zarówno Istio, jak i Nginx działają jako siatka usługi i oferują dodatkowe funkcje, takie jak równoważenie obciążenia, Routing i sterowanie szybkością.
+
+### <a name="container-networking"></a>Sieć kontenerów
+
+Kontenery Cognitive Services są wymagane do przesyłania informacji o pomiarach dotyczących rozliczeń. Jedynym wyjątkiem jest *kontenery w trybie offline* , ponieważ są one zgodne z inną metodą rozliczania. Niezezwolenie na wyświetlanie listy różnych kanałów sieciowych, na których zależą Cognitive Services kontenery, uniemożliwi pracę kontenera.
+
+#### <a name="allow-list-cognitive-services-domains-and-ports"></a>Zezwalaj na wyświetlanie listy domen i portów Cognitive Services
+
+Host powinien zezwalać na listę **portów 443** i następujących domen:
+
+* `*.cognitive.microsoft.com`
+* `*.cognitiveservices.azure.com`
+
+#### <a name="disable-deep-packet-inspection"></a>Wyłącz dokładną inspekcję pakietów
+
+> [Szczegółowa inspekcja pakietów](https://en.wikipedia.org/wiki/Deep_packet_inspection) (DPI) to typ przetwarzania danych, który sprawdza szczegółowe dane przesyłane przez sieć komputerową, a zazwyczaj wykonuje akcję przez zablokowanie, ponowne kierowanie lub zarejestrowanie odpowiednio.
+
+Wyłącz wartość DPI w bezpiecznych kanałach, które kontenery Cognitive Services tworzyć na serwerach firmy Microsoft. Niewykonanie tej czynności uniemożliwi poprawne działanie kontenera.
 
 [istio]: https://istio.io/
 [nginx]: https://www.nginx.com

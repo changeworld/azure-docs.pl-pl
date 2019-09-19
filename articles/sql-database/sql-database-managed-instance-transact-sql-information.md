@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 388e676fbabf427801688cbfb47a1455444fd02e
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: dc01f8556fb1c88899cae1a8767cb23d6b6041eb
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018990"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128882"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Różnice w języku T-SQL wystąpienia zarządzanego, ograniczenia i znane problemy
 
@@ -543,6 +543,14 @@ Maksymalny rozmiar `tempdb` pliku nie może być większy niż 24 GB na rdzeń w
 Wystąpienie zarządzane umieszcza pełne informacje w dziennikach błędów. Istnieje wiele wewnętrznych zdarzeń systemowych, które są rejestrowane w dzienniku błędów. Użyj niestandardowej procedury, aby odczytać dzienniki błędów, które filtrują pewne nieistotne wpisy. Aby uzyskać więcej informacji, zobacz [wystąpienie zarządzane — sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
 
 ## <a name="Issues"></a>Znane problemy
+
+### <a name="change-service-tier-and-create-instance-operations-are-blocked-by-ongioing-database-restore"></a>Zmiana warstwy usługi i wykonywanie operacji tworzenia wystąpienia są blokowane przez Przywracanie bazy danych ongioing
+
+**Dniu** Wrz 2019
+
+Ciągła `RESTORE` instrukcja, proces migracji usługi migracji danych oraz wbudowane przywracanie do punktu w czasie zablokują aktualizację warstwy usług lub zmiany rozmiaru istniejącego wystąpienia, a następnie tworzy nowe wystąpienia do momentu zakończenia procesu przywracania. Proces przywracania spowoduje zablokowanie tych operacji na zarządzanych wystąpieniach i pulach wystąpień w tej samej podsieci, w której jest uruchomiony proces przywracania. Nie ma to żadnego oddziaływania na wystąpienia w pulach wystąpień. Operacje tworzenia lub zmiany warstwy usług nie będą kończyć się niepowodzeniem lub przekroczenia limitu czasu — będą one działać po ukończeniu lub anulowaniu procesu przywracania.
+
+**Obejście problemu**: Zaczekaj na zakończenie procesu przywracania lub Anuluj proces przywracania, jeśli operacja tworzenia lub aktualizacji warstwy usługi ma wyższy priorytet.
 
 ### <a name="missing-validations-in-restore-process"></a>Brak walidacji w procesie przywracania
 

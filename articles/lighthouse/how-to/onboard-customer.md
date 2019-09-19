@@ -4,15 +4,15 @@ description: Dowiedz się, jak dołączyć klienta do zarządzania zasobami dele
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 08/29/2019
+ms.date: 09/19/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: dabee74dc757a8ccdc4384662f5c9bc09a1e5fbe
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 402f82059f939de204e489bb36c2c2b82f816a19
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165043"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105271"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Dołączanie klienta do zarządzania zasobami delegowanymi na platformie Azure
 
@@ -20,7 +20,7 @@ W tym artykule wyjaśniono, jak usługodawca może dołączyć klienta do zarzą
 
 Ten proces można powtórzyć, Jeśli zarządzasz zasobami dla wielu klientów. Następnie, gdy autoryzowany użytkownik loguje się do dzierżawy, ten użytkownik może być autoryzowany w zakresach dzierżawy klienta w celu wykonywania operacji zarządzania bez konieczności logowania się do każdej dzierżawy klienta.
 
-Możesz skojarzyć swój identyfikator Microsoft Partner Network (MPN) z subskrypcjami dołączanymi, aby śledzić wpływ klientów i na otrzymywanie rozpoznawania. Aby uzyskać więcej informacji, zobacz [łączenie identyfikatora partnera z kontami platformy Azure](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started). Należy pamiętać, że należy wykonać to skojarzenie osobno dla każdej dzierżawy klienta, w której zarządzane są zasoby. 
+Możesz skojarzyć swój identyfikator Microsoft Partner Network (MPN) z subskrypcjami dołączanymi, aby śledzić wpływ klientów i na otrzymywanie rozpoznawania. Aby uzyskać więcej informacji, zobacz [łączenie identyfikatora partnera z kontami platformy Azure](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started). Zwróć uwagę, że musisz wykonać to skojarzenie w dzierżawie dostawcy usług.
 
 > [!NOTE]
 > Po zakupieniu oferty usług zarządzanych (publicznej lub prywatnej) opublikowanej w portalu Azure Marketplace klienci mogą być automatycznie dołączani. Aby uzyskać więcej informacji, zobacz temat [Publikowanie usług zarządzanych w witrynie Azure Marketplace](publish-managed-services-offers.md). Możesz również użyć procesu dołączania opisanego tutaj z ofertą opublikowaną w witrynie Azure Marketplace.
@@ -71,7 +71,7 @@ Jako dostawca usług możesz chcieć użyć wielu ofert z pojedynczym klientem, 
 Aby ułatwić zarządzanie, zalecamy korzystanie z grup użytkowników usługi Azure AD dla każdej roli, co pozwala na dodawanie lub usuwanie poszczególnych użytkowników do grupy zamiast przypisywania uprawnień bezpośrednio do tego użytkownika. Możesz również przypisać role do jednostki usługi. Upewnij się, że przestrzegasz zasad najniższych uprawnień, aby użytkownicy mieli tylko uprawnienia potrzebne do ukończenia swoich zadań, pomagając w zmniejszeniu ryzyka wystąpienia błędów. Aby uzyskać więcej informacji, zobacz [zalecane praktyki dotyczące zabezpieczeń](../concepts/recommended-security-practices.md).
 
 > [!NOTE]
-> Przypisania ról muszą używać [wbudowanych ról](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)kontroli dostępu opartej na ROLACH (RBAC). Wszystkie wbudowane role są obecnie obsługiwane przez delegowane zarządzanie zasobami platformy Azure z wyjątkiem właściciela i wszelkich wbudowanych ról z uprawnieniem [](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) dataactions. Wbudowana rola administratora dostępu użytkowników jest obsługiwana w przypadku ograniczonego użycia, zgodnie z poniższym opisem. Role niestandardowe i [role administratora klasycznej subskrypcji](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) nie są również obsługiwane.
+> Przypisania ról muszą używać [wbudowanych ról](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)kontroli dostępu opartej na ROLACH (RBAC). Wszystkie wbudowane role są obecnie obsługiwane przez delegowane zarządzanie zasobami platformy Azure z wyjątkiem właściciela i wszelkich wbudowanych ról z uprawnieniem [Dataactions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) . Wbudowana rola administratora dostępu użytkowników jest obsługiwana w przypadku ograniczonego użycia, zgodnie z poniższym opisem. Role niestandardowe i [role administratora klasycznej subskrypcji](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) nie są również obsługiwane.
 
 Aby zdefiniować autoryzacje, musisz znać wartości identyfikatora dla każdego użytkownika, grupy użytkowników lub nazwy głównej usługi, do której chcesz udzielić dostępu. Wymagany jest również identyfikator definicji roli dla każdej wbudowanej roli, która ma zostać przypisana. Jeśli ich nie masz, możesz je pobrać w jeden z następujących sposobów.
 

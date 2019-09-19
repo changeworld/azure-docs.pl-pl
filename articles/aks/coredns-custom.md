@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: jenoller
-ms.openlocfilehash: 909b32890ea7ff33d6b5b5db3bb55f36f7007c6b
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: b4c771b406d635410c22db5c1c4687a34a2e6eb0
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018659"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130016"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>Dostosowywanie CoreDNS za pomocą usługi Azure Kubernetes Service
 
@@ -20,7 +20,7 @@ Usługa Azure Kubernetes Service (AKS) używa projektu [CoreDNS][coredns] do zar
 
 Ponieważ AKS jest usługą zarządzaną, nie można modyfikować konfiguracji głównej dla CoreDNS ( *CoreFile*). Zamiast tego należy użyć Kubernetes *ConfigMap* , aby zastąpić ustawienia domyślne. Aby wyświetlić domyślny AKS CoreDNS ConfigMaps, użyj `kubectl get configmaps --namespace=kube-system coredns -o yaml` polecenia.
 
-W tym artykule pokazano, jak używać ConfigMaps do podstawowych opcji dostosowania CoreDNS w programie AKS.
+W tym artykule pokazano, jak używać ConfigMaps do podstawowych opcji dostosowania CoreDNS w programie AKS. Takie podejście różni się od konfigurowania CoreDNS w innych kontekstach, takich jak korzystanie z CoreFile. Sprawdź, czy wersja CoreDNS jest uruchomiona, ponieważ wartości konfiguracji mogą ulec zmianie między wersjami.
 
 > [!NOTE]
 > `kube-dns`oferowane są różne [Opcje dostosowywania][kubednsblog] za pośrednictwem mapy konfiguracji Kubernetes. CoreDNS **nie** jest wstecznie zgodna z polecenia-DNS. Wszystkie poprzednio używane dostosowania należy zaktualizować do użytku z programem CoreDNS.
@@ -31,7 +31,7 @@ W tym artykule przyjęto założenie, że masz istniejący klaster AKS. Jeśli p
 
 ## <a name="what-is-supportedunsupported"></a>Co to jest obsługiwane/nieobsługiwane
 
-Obsługiwane są wszystkie wbudowane wtyczki CoreDNS. Nie są obsługiwane wtyczki dodatków/innych firm. 
+Obsługiwane są wszystkie wbudowane wtyczki CoreDNS. Nie są obsługiwane wtyczki dodatków/innych firm.
 
 ## <a name="rewrite-dns"></a>Zapisz ponownie system DNS
 

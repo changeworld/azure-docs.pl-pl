@@ -6,12 +6,12 @@ ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: d3d09d466e05c97de215542c66987aa6b723afce
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 9b78c18547ef61b388a56a1272b5621cada43806
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827989"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71120489"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Przydziały usługi Azure Cosmos DB
 
@@ -30,6 +30,7 @@ Po utworzeniu konta usługi Azure Cosmos w ramach subskrypcji możesz zarządza�
 | Maksymalna liczba różnych (logicznych) kluczy partycji | Nieograniczona liczba |
 | Maksymalny rozmiar magazynu na kontener | Nieograniczona liczba |
 | Maksymalny rozmiar magazynu na bazę danych | Nieograniczona liczba |
+| Maksymalny rozmiar załączników na konto (funkcja załącznika jest amortyzowana) | 2 GB | 
 
 > [!NOTE]
 > Najlepsze rozwiązania związane z zarządzaniem obciążeniami, które mają klucze partycji wymagające wyższych limitów dotyczących magazynu lub przepływności, można znaleźć w temacie [projektowanie kluczy partycji na gorąco](synthetic-partition-keys.md)
@@ -178,7 +179,7 @@ Wypróbuj Cosmos DB obsługuje dystrybucję globalną tylko w regionach Środkow
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat [ogólnej dystrybucji](distribute-data-globally.md) i [partycjonowania](partitioning-overview.md) podstawowych [](request-units.md)pojęć dotyczących Cosmos DB.
+Dowiedz się więcej na temat [ogólnej dystrybucji](distribute-data-globally.md) i [partycjonowania](partitioning-overview.md) podstawowych pojęć dotyczących [Cosmos DB.](request-units.md)
 
 Rozpocznij pracę z usługą Azure Cosmos DB, korzystając z jednego z naszych przewodników:
 

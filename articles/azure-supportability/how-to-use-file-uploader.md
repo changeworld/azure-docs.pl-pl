@@ -1,10 +1,10 @@
 ---
-title: Żądanie obsługi nowych Microsoft Azure, przekazywanie plików wskazówki dotyczące narzędzia | Dokumentacja firmy Microsoft
-description: Wskazówki, korzystając z nowe żądanie pomocy technicznej przekazywanie plików do narzędzia Microsoft Azure
+title: Microsoft Azure nowe wskazówki dotyczące narzędzia do przekazywania plików żądania obsługi | Microsoft Docs
+description: Zawiera opis wytycznych dotyczących korzystania z Microsoft Azure nowym narzędziu do przekazywania plików żądania obsługi
 services: ''
 documentationcenter: ''
 author: genlin
-manager: ''
+manager: dcscontentpm
 editor: ''
 tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
@@ -15,56 +15,56 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 949d6b00b4e04921ea745dd4efa1b8a58c49f534
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 088835f6983814bbe47afeeec210ac41964e7863
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60995657"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121176"
 ---
-# <a name="microsoft-azure-new-support-request-file-upload-utility-guidelines"></a>Przekazywanie plików wskazówki dotyczące narzędzia żądania obsługi nowego Microsoft Azure
-Gdy użytkownik [Utwórz żądanie obsługi](https://portal.azure.com/#create/Microsoft.Support), narzędzie przekazywania plików mogą ułatwić przekazywania plików diagnostycznych lub innych plików, które uważasz za istotne zdarzenia.  
+# <a name="microsoft-azure-new-support-request-file-upload-utility-guidelines"></a>Microsoft Azure nowe wskazówki dotyczące narzędzia do przekazywania plików żądania obsługi
+Po [utworzeniu żądania obsługi](https://portal.azure.com/#create/Microsoft.Support)narzędzie do przekazywania plików może pomóc w łatwym przekazywaniu plików diagnostycznych lub wszelkich innych plików, które Twoim zdaniem są istotne dla zdarzenia.  
 
 > [!NOTE]
-> Aby chronić swoją prywatność, nie dołączaj żadnych informacji osobistych w przekazywanie.
+> Aby chronić prywatność, nie dołączaj żadnych informacji osobistych do przekazywania.
 >
 >
 
-Za pomocą narzędzia przekazywania plików, należy przestrzegać następujących wytycznych:
+W przypadku korzystania z narzędzia przekazywania plików postępuj zgodnie z poniższymi wskazówkami:
 
-* Wszystkie pliki muszą mieć rozszerzenie nazwy pliku, takie jak docx lub xlsx. Znajdują się w tabeli, aby uzyskać listę rozszerzeń nazw plików dozwolonych.
-* Nazwa pliku musi być dłuższy niż 110 znaków.
-* Nie można przekazać więcej niż jeden plik.
-* Plików nie może być większy niż 4 MB.
+* Wszystkie pliki muszą mieć rozszerzenie nazwy pliku, na przykład docx lub xlsx. Zapoznaj się z tabelą, aby uzyskać listę dozwolonych rozszerzeń nazw plików.
+* Nazwa pliku nie może być dłuższa niż 110 znaków.
+* Nie można przekazać więcej niż jednego pliku.
+* Pliki nie mogą być większe niż 4 MB.
 
-## <a name="table-of-the-allowed-file-name-extensions"></a>Tabela rozszerzeń nazw plików dozwolonych
+## <a name="table-of-the-allowed-file-name-extensions"></a>Tabela dozwolonych rozszerzeń nazw plików
 | 0-9, A-C    | D-G   | H-M         | N-P   | R-T      | U-W        | X-Z     |
 |-------------|-------|-------------|-------|----------|------------|---------|
-| .7z         | .dat  | .hwl        | .odx  | .RAR     | .tdb       | .xlam   |
-| .a          | .db   | ICS        | .oft  | .rdl     | .tdf       | .xlr    |
-| .abc        | .DMP  | .ini        | .old  | .rdlc    | .Text      | xls    |
-| adm.        | .do_  | .java       | one  | .re_     | .thmx      | .xlsb   |
-| .aspx       | .doc  | .jpg        | .osd  | reg     | .tif       | .xlsm   |
-| .ATF        | docm | .LDF        | . OUT  | .Remove  | TRC       | .xlsx   |
-| .b          | .docx | .letterhead | .p1   | .ren     | .TTD       | .xlt    |
-| .ba_        | .dotm | .lnk        | .pcap | .rename  | .tx_       | .xltx   |
-| .bak        | dotx | .lo_        | .pdb  | .rft     | .txt       | .xml    |
-| bat        | .dtsx | .log        | .pdf  | rpt     | .uccapilog | .xmla   |
-| .blg        | .EDS  | lpk        | .piz  | .RTE     | .uccplog   | XPS    |
-| .CA_        | .emf  | Manifest   | .pmls | .rtf     | .udcx      | XSD    |
-| .CAB        | .eml  | .Master     | .png  | .Run     | .vb_       | xsn    |
-| Cap        | .emz  | .mdmp       | potx | .saz     | .vbs_      | .xxx    |
-| .catx       | .err —  | .mof        | ppt  | .sql     | .vcf       | .z_     |
-| .CFG        | .etl  | .mp3        | .pptm | .sqlplan | VSD       | .z01    |
-| .Compressed | .evt  | .mpg        | .pptx | .stp     | .wdb       | .z02    |
-| . Config     | .evtx | .ms_        | prn  | .svclog  | .wks       | .zi     |
-| .cpk        | .EX   | .msg        | .psf  |   -       | .wma       | .zi_    |
-| .cpp        | .ex_  | .msi        | .pst  |  -        | .wmv       | .zip    |
-| .cs         | .ex0  | .mso        | .pub  | -         | .wmz       | .zip_   |
-| .CSV        | .FRD  | .msu        | -      |-          | wps       | .zipp   |
-| .cvr        | .gif  | .nfo        | -      |-          | wpt zostanie zmienione       | .zipped |
-| -            | .GUID | -            | -      | -         | .wsdl      | .zippy  |
-| -            | .gz   | -            | -      | -         | .wsp       | .zipx   |
+| .7z         | .dat  | .hwl        | . ODX  | . rar     | .tdb       | .xlam   |
+| .a          | .db   | . ICS        | . oft  | . rdl     | .tdf       | .xlr    |
+| .abc        | .DMP  | .ini        | . old  | . rdlc    | . Text      | xls    |
+| . adm        | .do_  | .java       | . one  | .re_     | .thmx      | .xlsb   |
+| .aspx       | . doc  | .jpg        | .osd  | . reg     | . tif       | . xlsm   |
+| . ATF        | . docm | .LDF        | . OKREŚLONĄ  | . Usuń  | . trc       | .xlsx   |
+| .b          | . docx | . nagłówek list | .p1   | . Ren     | .TTD       | . xlt    |
+| .ba_        | . dotm | .lnk        | .pcap | . Zmień nazwę  | .tx_       | .xltx   |
+| .bak        | . dotx | .lo_        | . pdb  | .rft     | . txt       | .xml    |
+| . bat        | .dtsx | .log        | .pdf  | . rpt     | .uccapilog | .xmla   |
+| .blg        | . EDS  | . lpk        | .piz  | .rte     | .uccplog   | . XPS    |
+| .CA_        | .emf  | . manifest   | .pmls | .rtf     | .udcx      | . xsd    |
+| .CAB        | .eml  | . Master     | .png  | . Uruchom     | .vb_       | . xsn    |
+| . Cap        | .emz  | .mdmp       | . potx | .saz     | .vbs_      | .xxx    |
+| .catx       | . błąd  | .mof        | . ppt  | .sql     | .vcf       | .z_     |
+| .CFG        | .etl  | .mp3        | .pptm | .sqlplan | . vsd       | .z01    |
+| . skompresowane | . evt  | .mpg        | .pptx | .stp     | .wdb       | .z02    |
+| . Sygnatur     | . evtx | .ms_        | . prn  | .svclog  | . WKS       | .zi     |
+| .cpk        | . UPRZEDNI   | .msg        | .psf  |   -       | .wma       | .zi_    |
+| .cpp        | .ex_  | .msi        | . pst  |  -        | .wmv       | .zip    |
+| . cs         | .ex0  | .mso        | . pub  | -         | .wmz       | .zip_   |
+| .CSV        | .FRD  | .msu        | -      |-          | . WPS       | .zipp   |
+| .cvr        | .gif  | .nfo        | -      |-          | .wpt       | . spakowane |
+| -            | . GUID | -            | -      | -         | . WSDL      | .zippy  |
+| -            | .gz   | -            | -      | -         | . wsp       | .zipx   |
 | -            | -      | -            | -      | -         | .wtl       | .zit    |
 | -            | -      | -            | -      | -         |     -       | .zix    |
 | -            | -      | -            | -      | -         |  -          | .zzz    |

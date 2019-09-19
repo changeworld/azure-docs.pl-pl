@@ -1,19 +1,19 @@
 ---
 title: Nawiązywanie połączenia z usługą Kafka przy użyciu sieci wirtualnych — usługa Azure HDInsight
 description: Dowiedz się, jak bezpośrednio łączyć się z usługą Kafka w usłudze HDInsight za pomocą Virtual Network platformy Azure. Dowiedz się, jak nawiązać połączenie z usługą Kafka od klientów programistycznych przy użyciu bramy sieci VPN lub z klientów w sieci lokalnej przy użyciu urządzenia bramy sieci VPN.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: ab5f8c35334b6b6c56b0ebe8714d04ad5c7c8084
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 66bb054ab75c5a4e387995bc64dbc026c073413f
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960434"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122619"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Łączenie się z usługą Apache Kafka w usłudze HDInsight za pomocą usługi Azure Virtual Network
 
@@ -252,7 +252,7 @@ Domyślnie Apache dozorcy zwraca nazwę domeny brokerów Kafka do klientów. Ta 
 
 3. Aby wyświetlić konfigurację Kafka __, wybierz pozycję__ konfiguracje w górnej części.
 
-    ![Linki konfiguracji dla Kafka](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
+    ![Konfiguracja usług Apache Ambari Services](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
 
 4. Aby znaleźć konfigurację __Kafka-ENV__ , wprowadź `kafka-env` w polu __filtru__ w prawym górnym rogu.
 
@@ -274,7 +274,7 @@ Domyślnie Apache dozorcy zwraca nazwę domeny brokerów Kafka do klientów. Ta 
 
 8. Aby zapisać zmiany konfiguracji, użyj przycisku __Zapisz__ . Wprowadź wiadomość tekstową opisującą zmiany. Po zapisaniu zmian wybierz __przycisk OK__ .
 
-    ![Przycisk Zapisz konfigurację](./media/apache-kafka-connect-vpn-gateway/save-configuration-button.png)
+    ![Konfiguracja oprogramowania Apache Ambari](./media/apache-kafka-connect-vpn-gateway/save-configuration-button.png)
 
 9. Aby zapobiec błędom podczas ponownego uruchamiania Kafka, użyj przycisku __Akcje usługi__ i wybierz pozycję __Włącz tryb konserwacji__. Wybierz przycisk OK, aby ukończyć tę operację.
 

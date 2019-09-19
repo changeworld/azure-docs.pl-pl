@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: c49d8000888d4094ea1df47920c1927747927f5c
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 5339d963b84c5922138d53e44abe9340d55b4dde
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035041"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130230"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Autouczenie modelu prognozowania szeregów czasowych
 
@@ -95,10 +95,10 @@ W przypadku zadań prognozowania automatyczne Uczenie maszynowe korzysta z krok�
 |`time_column_name`|Służy do określania kolumny DateTime w danych wejściowych używanych do kompilowania szeregów czasowych i wywnioskowania jej częstotliwości.|✓|
 |`grain_column_names`|Nazwy definiujące poszczególne grupy serii w danych wejściowych. Jeśli ziarno nie jest zdefiniowane, zakłada się, że zestaw danych jest jedną serią czasową.||
 |`max_horizon`|Definiuje maksymalny żądany zakres prognozy w jednostkach częstotliwości szeregów czasowych. Jednostki są oparte na przedziale czasu na dane szkoleniowe, np. co miesiąc, co tydzień prognozy powinien przewidzieć.|✓|
-|`target_lags`|*n* okresy do przodu — wartości docelowe opóźnienia przed modelem szkoleń.||
+|`target_lags`|Liczba wierszy do rozłożeniu wartości docelowych na podstawie częstotliwości danych. Jest to reprezentowane jako lista lub jedna liczba całkowita.||
 |`target_rolling_window_size`|*n* okresy historyczne używane do generowania prognozowanych wartości, < = rozmiar zestawu szkoleniowego. W przypadku pominięcia *n* to pełny rozmiar zestawu szkoleniowego.||
 
-Utwórz ustawienia szeregów czasowych jako obiekt słownika. Ustaw wartość `time_column_name` `day_datetime` na pole w zestawie danych. Zdefiniuj parametr, aby upewnić się, że dla danych są tworzone **dwie osobne grupy szeregów czasowych** ; jeden dla sklepu a i B. na `max_horizon` koniec ustaw wartość na 50, aby przewidzieć cały zestaw testów. `grain_column_names` Ustaw okno prognozy na 10 okresów z `target_rolling_window_size`i zwłokj wartości docelowe 2 okresy `target_lags` z parametrem.
+Utwórz ustawienia szeregów czasowych jako obiekt słownika. Ustaw wartość `time_column_name` `day_datetime` na pole w zestawie danych. Zdefiniuj parametr, aby upewnić się, że dla danych są tworzone **dwie osobne grupy szeregów czasowych** ; jeden dla sklepu a i B. na `max_horizon` koniec ustaw wartość na 50, aby przewidzieć cały zestaw testów. `grain_column_names` Ustaw okno prognozy na 10 okresów `target_rolling_window_size`, a następnie określ pojedyncze opóźnienie na wartościach docelowych dla 2 okresów `target_lags` wraz z parametrem.
 
 ```python
 time_series_settings = {
@@ -111,8 +111,14 @@ time_series_settings = {
 }
 ```
 
+
+
 > [!NOTE]
 > Zautomatyzowane kroki wstępnego przetwarzania w usłudze Machine Learning (normalizacja funkcji, obsługa brakujących danych, konwertowanie tekstu na liczbowe itp.) staje się częścią modelu źródłowego. Przy użyciu modelu dla prognoz te same kroki przetwarzania wstępnego zastosowane podczas uczenia są automatycznie stosowane do danych wejściowych.
+
+Definiując `grain_column_names` w powyższym fragmencie kodu, AutoML utworzy dwie osobne grupy szeregów czasowych, znane także jako wiele szeregów czasowych. Jeśli nie zdefiniowano żadnego ziarna, AutoML założenie, że zestaw danych jest pojedynczą serią czasową. Aby dowiedzieć się więcej o pojedynczych seriach czasowych, zobacz [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand).
+
+
 
 Teraz można utworzyć obiekt `AutoMLConfig` standardowy, `forecasting` określić typ zadania i przesłać eksperyment. Po zakończeniu działania modelu Pobierz iterację najlepszego przebiegu.
 

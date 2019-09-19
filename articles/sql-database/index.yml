@@ -93,7 +93,7 @@ sections:
           - href: /azure/sql-database/sql-database-instance-pools
             html: '<p>Pul wystąpień zarządzanych można używać jako prostego i ekonomicznego rozwiązania do wdrażania wielu wystąpień zarządzanych, które współużytkują zasoby i zapewniają szybką skalowalność.</p>'
             image:
-              src: media/index/i_instancepool.png
+              src: media/index/i-instancepools.svg
             title: Pula wystąpień
   - title: 5-minutowe przewodniki Szybki start
     items:

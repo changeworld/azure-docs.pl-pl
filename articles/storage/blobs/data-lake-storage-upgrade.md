@@ -8,12 +8,12 @@ ms.date: 02/07/2019
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: rugopala
-ms.openlocfilehash: 7c018ad15ee653bcdc903492028ec5ed058dbd14
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 4c01cd36d489d8e7128bed645c8cb1127c6c0c25
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992235"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130410"
 ---
 # <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-storage-gen1-to-azure-data-lake-storage-gen2"></a>Uaktualnij rozwiązania do analizy danych Big Data z Azure Data Lake Storage Gen1 do Azure Data Lake Storage Gen2
 
@@ -249,7 +249,7 @@ Głównym zadaniem w tym miejscu jest przetłumaczenie identyfikatora URI, któr
 
 Schemat identyfikatora URI Data Lake Storage Gen1 mowa [tutaj](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-store) w szczegóły, ale ogólnie rzecz biorąc, zaleca się *adl://mydatalakestore.azuredatalakestore.net/\<file_path\>.*
 
-Schemat identyfikatora URI służący do uzyskiwania dostępu do plików Data Lake Storage Gen2 jest wyjaśniony [tutaj](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md) szczegółowo, ale ogólnie `abfss://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.widows.net/<PATH>`mówiąc, jest to.
+Schemat identyfikatora URI służący do uzyskiwania dostępu do plików Data Lake Storage Gen2 jest wyjaśniony [tutaj](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md) szczegółowo, ale ogólnie `abfss://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>`mówiąc, jest to.
 
 Musisz przejść przez istniejące aplikacje i upewnić się, że zmiany zostały wprowadzone identyfikatory URI odpowiednio wskaż Data Lake Storage Gen2 te. Ponadto należy dodać odpowiednie poświadczenia. Na koniec jak wycofywanie oryginalnej aplikacji i Zamień na nową aplikację należy ściśle wyrównywana strategii ogólną uaktualnienia.
 

@@ -1,19 +1,19 @@
 ---
-title: 'Przepływy pracy configuration obwód - usługi ExpressRoute: Azure| Microsoft Docs'
+title: 'Przepływy pracy konfiguracji obwodu — ExpressRoute: Azure| Microsoft Docs'
 description: Ta strona zawiera przepływy pracy do skonfigurowania obwodu usługi ExpressRoute i połączeń komunikacji równorzędnej
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/18/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 3ffcc5ac2193e607573ceb93717258f5349d1f15
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e0f4d356bb6addf735bf148a80e6be3ca550c8f
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60883202"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123377"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>Przepływy pracy ExpressRoute dla aprowizacji obwodu i stanów obwodu
 Ta strona przeprowadzi Cię przez usługę aprowizacji i routing konfiguracji przepływów pracy na wysokim poziomie.
@@ -29,7 +29,7 @@ Poniższa ilustracja i odpowiadające jej kroki pokazują zadania, które należ
    
    * Włączanie prywatnej komunikacji równorzędnej Azure — Włącz tę komunikację równorzędną można nawiązać połączenie z maszynami wirtualnymi / wdrożonego w ramach sieci wirtualnych usługi w chmurze.
 
-   * Włączenie komunikacji równorzędnej firmy Microsoft — Włącz to dostęp do usługi Office 365 i Dynamics 365. Ponadto wszystkie usługi PaaS platformy Azure są dostępne za pośrednictwem komunikacji równorzędnej firmy Microsoft.
+   * Włącz komunikację równorzędną firmy Microsoft — Włącz tę opcję, aby uzyskać dostęp do pakietu Office 365. Ponadto wszystkie usługi PaaS platformy Azure są dostępne za pośrednictwem komunikacji równorzędnej firmy Microsoft.
      
      > [!IMPORTANT]
      > Upewnij się, że używasz serwera proxy oddzielne / urządzeniami brzegowymi w celu łączenia z firmą Microsoft w niż ta, można użyć do korzystania z Internetu. Przy użyciu tej samej granicy dla usługi ExpressRoute oraz sieci Internet będzie powodować routingu asymetrycznego i powodować awarie łączności dla sieci.

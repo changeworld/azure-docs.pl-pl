@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 0c1599e61bbc92f6f81cfb17e35ffd0bf04721f9
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 2d486a5e181e9131ef7a1e91f52018fb2be82dc1
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883512"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105243"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>Szybki start: Tworzenie aplikacji Java na Azure App Service w systemie Linux
 
@@ -31,7 +31,7 @@ Usługa [App Service w systemie Linux](app-service-linux-intro.md) oferuje wysoc
 >
 > Ten sam element można także wykonać przy użyciu popularnych środowisk IDE, takich jak IntelliJ i zaćmienie. Zapoznaj się z naszymi dokumentami w [Azure Toolkit for IntelliJ przewodniku szybki start](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app) lub [Azure Toolkit for Eclipse przewodnika Szybki Start](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app).
 >
-![Przykładowa aplikacja działająca na platformie Azure](media/quickstart-java/java-hello-world-in-browser.png)
+![Przykładowa aplikacja działająca w Azure App Service](media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -137,7 +137,7 @@ mvn package azure-webapp:deploy
 
 Po zakończeniu wdrażania w przeglądarce internetowej przejdź do wdrożonej aplikacji, używając następującego adresu URL, na przykład `http://<webapp>.azurewebsites.net`. 
 
-![Przykładowa aplikacja działająca na platformie Azure](media/quickstart-java/java-hello-world-in-browser.png)
+![Przykładowa aplikacja działająca w Azure App Service](media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 
 **Gratulacje!** Udało Ci się wdrożyć pierwszą własną aplikację w języku Java w usłudze App Service w systemie Linux.
 

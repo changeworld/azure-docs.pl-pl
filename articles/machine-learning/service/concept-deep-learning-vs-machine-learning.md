@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 08/07/2019
-ms.openlocfilehash: cff31916f837141ae54f3c14dd125be6a92a5008
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 791566dc65b41bf3124e84544390d7d843e51273
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035504"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123143"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>Uczenie głębokie a uczenie maszynowe
 
@@ -37,7 +37,7 @@ Rozważ następujące definicje, aby zrozumieć głębokie uczenie i uczenie mas
 
 - **Sztuczna inteligencja (AI)** to technika, która umożliwia komputerom naśladowanie analizy ludzkiej. Obejmuje to uczenie maszynowe. 
  
-Ważne jest zrozumienie relacji między AI, uczeniem maszynowym i uczeniem głębokiego. Uczenie maszynowe to sposób na osiągnięcie sztucznej analizy. Korzystając z technik uczenia maszynowego i uczenia głębokiego, można tworzyć systemy komputerowe i aplikacje, które wykonują zadania, które są często powiązane z inteligencją ludzką. Te zadania obejmują postrzeganie wizualne, rozpoznawanie mowy, podejmowanie decyzji i tłumaczenie języka.
+Ważne jest zrozumienie relacji między AI, uczeniem maszynowym i uczeniem głębokiego. Uczenie maszynowe to sposób na osiągnięcie sztucznej analizy. Korzystając z technik uczenia maszynowego i uczenia głębokiego, można tworzyć systemy komputerowe i aplikacje, które wykonują zadania, które są często powiązane z inteligencją ludzką. Te zadania obejmują rozpoznawanie obrazu, rozpoznawanie mowy i tłumaczenie języka.
 
 ## <a name="techniques-of-deep-learning-vs-machine-learning"></a>Techniki uczenia głębokiego a uczenie maszynowe 
 
@@ -47,12 +47,12 @@ Poniższa tabela zawiera porównanie dwóch technik w bardziej szczegółowy spo
 
 | |Wszystkie Uczenie maszynowe |Tylko uczenie głębokie|
 |---|---|---|
-|  **Liczba punktów danych** | Może korzystać z małych ilości danych udostępnianych przez użytkowników. | Wymaga dużej ilości danych szkoleniowych, aby wykonywać zwięzłe wnioski. |
+|  **Liczba punktów danych** | Można używać małych ilości danych do prognozowania. | Do prognozowania należy używać dużej ilości danych szkoleniowych. |
 |  **Zależności sprzętowe** | Może współpracować z maszynami z niską końcówką. Nie wymaga to dużej ilości mocy obliczeniowej. | Zależy od maszyn wysokiej klasy. Jest to z założenia wiele operacji mnożenia macierzy. Procesor GPU może efektywnie zoptymalizować te operacje. |
 |  **Proces cechowania** | Wymaga, aby funkcje były dokładnie identyfikowane i tworzone przez użytkowników. | Poznaj funkcje wysokiego poziomu z danych i tworzenie nowych funkcji. |
-|  **Podejście szkoleniowe** | Dzieli zadania na małe fragmenty, a następnie łączy otrzymane wyniki w jeden wniosek. | Rozwiązuje problem na całej trasie. |
-|  **Czas wykonywania** | Trwa znacznie nieco więcej czasu na wyuczenie, w zakresie od kilku sekund do kilku godzin. | Trwa zbyt długo, aby uczenie się, ponieważ algorytm uczenia głębokiego obejmuje wiele parametrów. |
-|  **Dane wyjściowe** | Dane wyjściowe są zwykle wartościami liczbowymi, takimi jak wynik lub Klasyfikacja. | Wynikiem może być tekst, wynik, element lub dźwięk. |
+|  **Podejście szkoleniowe** | Dzieli proces uczenia na mniejsze kroki. Następnie łączy wyniki każdego kroku w jedno wyjście. | Przechodzi przez proces uczenia, rozwiązując problem na całej trasie. |
+|  **Czas wykonywania** | Trwa znacznie nieco więcej czasu na wyuczenie, w zakresie od kilku sekund do kilku godzin. | Szkolenie zwykle trwa długo, ponieważ algorytm uczenia głębokiego obejmuje wiele warstw. |
+|  **Dane wyjściowe** | Dane wyjściowe są zwykle wartościami liczbowymi, takimi jak wynik lub Klasyfikacja. | Dane wyjściowe mogą mieć wiele formatów, takich jak tekst, wynik lub dźwięk. |
 
 ## <a name="deep-learning-use-cases"></a>Przypadki użycia głębokiego uczenia
 
@@ -62,7 +62,7 @@ Niektóre z najpopularniejszych aplikacji do uczenia głębokiego są opisane w 
 
 ### <a name="named-entity-recognition"></a>Rozpoznawanie jednostek nazwanych
 
-Jednym z nich jest rozpoznawanie jednostek nazwanych, które jest sposobem wyodrębnienia pewnych typów informacji z danych bez struktury i nieoznaczonych etykietami. Te informacje mogą być osobami, miejscami, firmami lub elementami. Informacje mogą być następnie przechowywane w schemacie strukturalnym, aby utworzyć listę adresów lub służyć jako wzorzec dla aparatu weryfikacji tożsamości.
+Rozpoznawanie jednostek nazwanych to metoda uczenia głębokiego, która przyjmuje fragment tekstu jako dane wejściowe i przekształca je w wstępnie określoną klasę. Nowe informacje mogą być kodem pocztowym, datą i IDENTYFIKATORem produktu. Informacje mogą być następnie przechowywane w schemacie strukturalnym, aby utworzyć listę adresów lub służyć jako wzorzec dla aparatu weryfikacji tożsamości.
 
 ### <a name="object-detection"></a>Wykrywanie obiektów
 
@@ -72,17 +72,21 @@ Wykrywanie obiektów jest już używane w branżach, takich jak gry, handel deta
 
 ### <a name="image-caption-generation"></a>Generowanie podpisu obrazu
 
-Podobnie jak w przypadku rozpoznawania obrazów, w przypadku obrazków obrazów dla danego obrazu system musi wygenerować podpis opisujący zawartość obrazu. Gdy można wykryć i oznaczyć obiekty na fotografiach, następnym krokiem jest przekształcenie tych etykiet w opisowe, spójne zdania. Ogólnie rzecz biorąc, systemy podpisów obrazów używają bardzo dużych splotowychych sieci neuronowych do wykrywania obiektów w fotografiach, a następnie używania reaktualnej sieci neuronowych (RNN) do przekształcania etykiet na spójne zdania.
+Podobnie jak w przypadku rozpoznawania obrazów, w przypadku obrazków obrazów dla danego obrazu system musi wygenerować podpis opisujący zawartość obrazu. Aby wykryć i oznaczyć obiekty na fotografiach, następnym krokiem jest przekształcenie tych etykiet w zdania opisowe. 
+
+Zwykle aplikacje do podpisania obrazów używają splotowych neuronowych Networks do identyfikowania obiektów w obrazie, a następnie używania reaktualnej sieci neuronowych do przekształcania etykiet w spójne zdania.
 
 ### <a name="machine-translation"></a>Tłumaczenie maszynowe
 
-Tłumaczenie maszynowe przyjmuje słowa, frazy lub zdania z jednego języka i automatycznie tłumaczy je na inny język. Automatyczne tłumaczenie maszynowe było wykonywane przez długi czas, ale uczenie głębokie realizuje imponujące wyniki w dwóch określonych obszarach: automatyczne tłumaczenie tekstu (oraz Tłumaczenie mowy na tekst) i automatyczne tłumaczenie obrazów. 
+Tłumaczenie maszynowe przyjmuje słowa lub zdania z jednego języka i automatycznie tłumaczy je na inny język. Tłumaczenie maszynowe było przez długi czas, ale głębokie uczenie realizuje imponujące wyniki w dwóch określonych obszarach: automatyczne tłumaczenie tekstu (oraz Tłumaczenie mowy na tekst) i automatyczne tłumaczenie obrazów.
 
-Dzięki prawidłowej transformacji danych w sieci głębokiej można zrozumieć sygnały tekstowe, dźwiękowe i wizualne. Tłumaczenie maszynowe może służyć do identyfikowania fragmentów dźwięku w większych plikach audio i transkrypcja wymawianego wyrazu lub obrazu jako tekstu.
+Dzięki odpowiedniej transformacji danych sieć neuronowych może zrozumieć sygnały tekstowe, dźwiękowe i wizualne. Tłumaczenie maszynowe może służyć do identyfikowania fragmentów dźwięku w większych plikach audio i transkrypcja wymawianego wyrazu lub obrazu jako tekstu.
 
 ### <a name="text-analytics"></a>Analiza tekstu
 
-Jednym z ważnych zadań uczenia głębokiego jest odnajdywanie elektroniczne. Firmy używają analizy tekstu, która opiera się na głębokiej uczeniu do wykrywania handlu niejawnego i zgodności z przepisami obowiązującymi w instytucji rządowych. Fundusze żywopłotów używają analizy tekstu, aby przejść do szczegółowych repozytoriów dokumentów w celu uzyskania wglądu w przyszłą wydajność inwestycji i tonacji rynku. Przypadek użycia dla analizy tekstu oparty na głębokiej uczeniu jest przeznaczony do analizowania ogromnych ilości danych tekstowych i wykonywania analiz lub do agregacji.
+Analiza tekstu oparta na metodach uczenia głębokiego polega na analizowaniu dużych ilości danych tekstowych (na przykład dokumentów medycznych lub przyjęć wydatków), rozpoznawaniu wzorców oraz tworzeniu zorganizowanych i zwięzłych informacji.
+
+Firmy wykorzystują głębokie uczenie do przeprowadzania analizy tekstu w celu wykrywania handlu niejawnego i zgodności z przepisami obowiązującymi w instytucji rządowych. Innym typowym przykładem jest oszustwo ubezpieczeniowe: Analiza tekstu często została użyta do przeanalizowania dużych ilości dokumentów w celu rozpoznania szans oszustw związanych z ubezpieczeniem. 
 
 ## <a name="artificial-neural-networks"></a>Sztuczne sieci neuronowych
 
@@ -92,17 +96,17 @@ W poniższych sekcjach opisano najpopularniejsze Popularne sieci sztucznej neuro
 
 ### <a name="feedforward-neural-network"></a>Sieć feedforward neuronowych
 
-Sieć feedforward neuronowych jest najbardziej podstawowym typem sztucznej sieci neuronowych. W sieci feedforward informacje są przesyłane tylko jeden kierunek z warstwy wejściowej do warstwy wyjściowej. Feedforward sieci neuronowych przekształcają dane wejściowe, umieszczając je w szeregu ukrytych warstw. Każda warstwa składa się z zestawu neurons, a każda warstwa jest w pełni podłączona do wszystkich neurons w warstwie. Ostatnia w pełni łączona warstwa (warstwa wyjściowa) reprezentuje wygenerowane prognozy.
+Sieć feedforward neuronowych jest najbardziej podstawowym typem sztucznej sieci neuronowych. W sieci feedforward informacje są przenoszone tylko jeden kierunek z warstwy wejściowej do warstwy wyjściowej. Feedforward sieci neuronowych przekształcają dane wejściowe, umieszczając je w szeregu ukrytych warstw. Każda warstwa składa się z zestawu neurons, a każda warstwa jest w pełni podłączona do wszystkich neurons w warstwie. Ostatnia w pełni łączona warstwa (warstwa wyjściowa) reprezentuje wygenerowane prognozy.
 
 ### <a name="recurrent-neural-network"></a>Rebieżąca sieć neuronowych
 
-Recurrent neuronowych Networks to szeroko wykorzystywana sieć sztuczna neuronowych. Te sieci zapisują dane wyjściowe warstwy i odsyłają ją z powrotem do warstwy wejściowej w celu ułatwienia przewidywania wyniku warstwy. Neuronowych sieci mają doskonałe możliwości uczenia się. Są one szeroko używane do wykonywania złożonych zadań, takich jak uczenie pisma ręcznego i rozpoznawanie języka.
+Recurrent neuronowych Networks to szeroko wykorzystywana sieć sztuczna neuronowych. Te sieci zapisują dane wyjściowe warstwy i odsyłają ją z powrotem do warstwy wejściowej w celu ułatwienia przewidywania wyniku warstwy. Neuronowych sieci mają doskonałe możliwości uczenia się. Są one szeroko używane do wykonywania złożonych zadań, takich jak prognozowanie szeregów czasowych, uczenie pisma ręcznego i rozpoznawanie języka.
 
 ### <a name="convolutional-neural-networks"></a>Splotowych neuronowych sieci
 
 Sieć splotowych neuronowych to szczególnie skuteczna sztuczna sieć neuronowych, która przedstawia unikatową architekturę. Warstwy są zorganizowane w trzy wymiary: Szerokość, Wysokość i głębokość. Neurons w jednej warstwie nie łączy się ze wszystkimi neurons w następnej warstwie, ale tylko do małego regionu neurons warstwy. Końcowe dane wyjściowe są skracane do jednego wektora wyników prawdopodobieństwa, zorganizowane wzdłuż wymiaru głębokości. 
 
-Splotowych neuronowych sieci są używane w takich obszarach jak rozpoznawanie i Klasyfikacja obrazu.
+Sieci neuronowych splotowych są używane w takich obszarach jak rozpoznawanie wideo, rozpoznawanie obrazów i systemy zalecające.
 
 ## <a name="next-steps"></a>Następne kroki
 

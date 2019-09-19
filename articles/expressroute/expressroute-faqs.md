@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 09/18/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 9a5e5dc414d487efd5f6762c89cecb77da74e3d5
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 6e3045ba8363965fcfc198356ed68447a187308d
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68592062"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123429"
 ---
 # <a name="expressroute-faq"></a>Usługa ExpressRoute — często zadawane pytania
 
@@ -55,11 +55,23 @@ Aby uzyskać informacje, zobacz [umowa SLA usługi ExpressRoute](https://azure.m
 
 ## <a name="supported-services"></a>Obsługiwane usługi
 
-Usługa ExpressRoute obsługuje [trzy domeny routingu](expressroute-circuit-peerings.md) dla różnych typów usług.
+ExpressRoute obsługuje [trzy domeny routingu](expressroute-circuit-peerings.md) dla różnych typów usług: prywatnej komunikacji równorzędnej, komunikacji równorzędnej firmy Microsoft i publicznej komunikacji równorzędnej.
 
 ### <a name="private-peering"></a>Prywatna komunikacja równorzędna
 
 * Sieci wirtualne, w tym wszystkich maszyn wirtualnych i usług w chmurze
+
+### <a name="microsoft-peering"></a>Komunikacja równorzędna firmy Microsoft
+
+* [Office 365](https://aka.ms/ExpressRouteOffice365)
+* Power BI — dostępne za pośrednictwem społeczności regionalnej platformy Azure, zobacz [tutaj](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located) , jak sprawdzić region dzierżawy Power BI.
+* Usługa Azure Active Directory
+* [Usługa Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (społeczność globalne usługi platformy Azure)
+* Większość usług platformy Azure są obsługiwane. Sprawdź, czy bezpośrednio z usługą, który chcesz użyć, aby sprawdzić, pomocy technicznej.<br><br>**Następujące usługi nie są obsługiwane**:
+    * CDN
+    * Azure Front Door
+    * Multi-Factor Authentication
+    * Traffic Manager
 
 ### <a name="public-peering"></a>Publiczna komunikacja równorzędna
 
@@ -68,26 +80,17 @@ Usługa ExpressRoute obsługuje [trzy domeny routingu](expressroute-circuit-peer
 >
 
 * Power BI
-* Dynamics 365 for Finance and Operations (wcześniej znane jako Dynamics AX Online)
 * Większość usług platformy Azure są obsługiwane. Sprawdź, czy bezpośrednio z usługą, który chcesz użyć, aby sprawdzić, pomocy technicznej.<br><br>
   **Następujące usługi nie są obsługiwane**:
     * CDN
-    * Moje drzwi platformy Azure
+    * Azure Front Door
     * Multi-Factor Authentication
     * Traffic Manager
 
-### <a name="microsoft-peering"></a>Komunikacja równorzędna firmy Microsoft
+### <a name="is-dynamics-365-supported-on-expressroute"></a>Czy Dynamics 365 jest obsługiwany w ExpressRoute?
 
-* [Office 365](https://aka.ms/ExpressRouteOffice365)
-* Dynamics 365 
-* Power BI — dostępne za pośrednictwem społeczności regionalnej platformy Azure, zobacz [tutaj](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located) , jak sprawdzić region dzierżawy Power BI. 
-* Usługa Azure Active Directory
-* [Usługa Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (społeczność globalne usługi platformy Azure)
-* Większość usług platformy Azure są obsługiwane. Sprawdź, czy bezpośrednio z usługą, który chcesz użyć, aby sprawdzić, pomocy technicznej.<br><br>**Następujące usługi nie są obsługiwane**:
-    * CDN
-    * Moje drzwi platformy Azure
-    * Multi-Factor Authentication
-    * Traffic Manager
+Środowiska Dynamics 365 i Common Data Service (CD) są hostowane na platformie Azure, dlatego klienci korzystają z podstawowej obsługi ExpressRoute zasobów platformy Azure. Można nawiązać połączenie z punktami końcowymi usługi, jeśli filtr routera obejmuje regiony platformy Azure, w których są hostowane środowiska usługi Dynamics 365/CD.
+
 
 ## <a name="data-and-connections"></a>Połączeń i danych
 
@@ -262,7 +265,7 @@ ExpressRoute premium jest kolekcją następujące funkcje:
 
 * Zwiększono routingu limit tabeli z tras 4000 do 10 000 tras do prywatnej komunikacji równorzędnej.
 * Zwiększenie liczby połączeń sieci wirtualne i usługi ExpressRoute zasięgu globalnym, które można włączyć dla obwodu usługi ExpressRoute (wartość domyślna to 10). Aby uzyskać więcej informacji, zobacz [limity usługi ExpressRoute](#limits) tabeli.
-* Łączność z usługi Office 365 i Dynamics 365.
+* Łączność z pakietem Office 365
 * Globalna łączność między za pośrednictwem sieci podstawowej firmy Microsoft. Teraz można połączyć sieć wirtualną w jednym regionie geopolitycznym obwodu usługi ExpressRoute w innym regionie.<br>
     **Przykłady:**
 
@@ -332,7 +335,7 @@ ExpressRoute Local jest dostępny w lokalizacjach komunikacji równorzędnej, w 
 > 
 > 
 
-### <a name="can-my-existing-expressroute-circuits-support-connectivity-to-office-365-services-and-dynamics-365"></a>Czy moje istniejące obwodów usługi ExpressRoute może obsługiwać łączność z usługami Office 365 i Dynamics 365?
+### <a name="can-my-existing-expressroute-circuits-support-connectivity-to-office-365-services"></a>Czy istniejące obwody usługi ExpressRoute obsługują łączność z usługami Office 365?
 
 Tak. Istniejący obwód usługi ExpressRoute można skonfigurować do obsługi łączności z usługami Office 365. Upewnij się, że masz wystarczająco duże, aby połączyć się z usługami Office 365 i włączeniu dodatku premium. [Planowanie sieci i dostrajanie wydajności dla usługi Office 365](https://aka.ms/tune/) musi pomaga zaplanować łączności. Zobacz też [tworzenie i modyfikowanie obwodu ExpressRoute](expressroute-howto-circuit-classic.md).
 
@@ -369,13 +372,9 @@ Nie będą widzieć wszystkie trasy. Musisz dołączyć filtru tras do obwodu mo
 
 Korzystając z filtrów tras, każdy klient można włączyć komunikację równorzędną firmy Microsoft. Jednak co umożliwia korzystanie z usługi Office 365, nadal musisz uzyskać autoryzowane przez usługę Office 365.
 
-### <a name="do-i-need-to-get-authorization-for-turning-on-dynamics-365-over-microsoft-peering"></a>Należy uzyskać pozwolenie na włączenie Dynamics 365 za pośrednictwem komunikacji równorzędnej firmy Microsoft?
-
-Nie, nie trzeba autoryzacji dla Dynamics 365. Można utworzyć regułę, a następnie wybierz społeczności Dynamics 365, bez autoryzacji.
-
 ### <a name="i-enabled-microsoft-peering-prior-to-august-1-2017-how-can-i-take-advantage-of-route-filters"></a>Czy włączono komunikacji równorzędnej przed 1 sierpnia 2017 r., jak skorzystać z filtrów tras firmy Microsoft?
 
-Twój istniejący obwód będzie nadal anonsowania prefiksów dla usługi Office 365 i Dynamics 365. Jeśli chcesz dodać anonse prefiksy publiczne platformy Azure za pośrednictwem tego samego komunikacji równorzędnej firmy Microsoft, można utworzyć filtru tras, wybierz usługi, których potrzebujesz anonsowane (w tym usługi Office 365, czego potrzebujesz i Dynamics 365) i dołączyć filtr do firmy Microsoft komunikacji równorzędnej. Aby uzyskać instrukcje, zobacz [Konfigurowanie filtrów tras dla komunikacji równorzędnej firmy Microsoft](how-to-routefilter-powershell.md).
+Istniejący obwód będzie nadal ogłaszał prefiksy dla pakietu Office 365. Jeśli chcesz dodać anonse publicznych prefiksów platformy Azure za pośrednictwem tej samej komunikacji równorzędnej firmy Microsoft, możesz utworzyć filtr tras, wybrać usługi, które są anonsowane (w tym usługi Office 365), i dołączyć filtr do komunikacji równorzędnej firmy Microsoft. Aby uzyskać instrukcje, zobacz [Konfigurowanie filtrów tras dla komunikacji równorzędnej firmy Microsoft](how-to-routefilter-powershell.md).
 
 ### <a name="i-have-microsoft-peering-at-one-location-now-i-am-trying-to-enable-it-at-another-location-and-i-am-not-seeing-any-prefixes"></a>Mam komunikacji równorzędnej w jednej lokalizacji firmy Microsoft, a teraz próbuję włączyć ją w innej lokalizacji i nie widzę żadnych prefiksów.
 

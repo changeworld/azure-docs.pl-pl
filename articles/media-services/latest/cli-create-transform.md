@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: 86f455f25bb41833774bb7ad7d81688aad812b5a
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 7fea8d997d25d6075e30620e7fd3527003c6a8bb
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236823"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128792"
 ---
 # <a name="cli-example-create-a-transform"></a>Przykład użycia interfejsu wiersza polecenia: Tworzenie przekształcenia
 
@@ -31,10 +31,15 @@ Skrypt interfejsu wiersza polecenia platformy Azure w tym artykule pokazuje spos
 
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 
+> [!NOTE]
+> Można określić tylko ścieżkę do niestandardowego pliku JSON domyślnego kodera dla [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset), zobacz przykład [kodowania z niestandardowym przekształceniem](custom-preset-cli-howto.md) .
+>
+> Nie można przekazać nazwy pliku podczas korzystania z [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset).
+
 ## <a name="example-script"></a>Przykładowy skrypt
 
 [!code-azurecli-interactive[main](../../../cli_scripts/media-services/create-transform/Create-Transform.sh "Create a transform")]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Przegląd usługi Media Services](media-services-overview.md)
+[AZ AMS Transform (CLI)](https://docs.microsoft.com/cli/azure/ams/transform?view=azure-cli-latest)

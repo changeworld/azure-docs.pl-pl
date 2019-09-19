@@ -1,19 +1,19 @@
 ---
 title: Konfigurowanie Apache Kafka w usłudze HDInsight przy użyciu Azure PowerShell — Szybki Start
 description: W tym przewodniku Szybki start dowiesz się, jak utworzyć klaster platformy Apache Kafka w usłudze Azure HDInsight przy użyciu programu Azure PowerShell. Zdobędziesz także informacje o tematach, subskrybentach i odbiorcach platformy Kafka.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: c47df581edafbb2a378e7c5e75516a44fafcab71
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 79224879dc0f23c7ad022134c6add087b90304b7
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779507"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123166"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>Szybki start: Tworzenie klastra Apache Kafka w usłudze Azure HDInsight przy użyciu programu PowerShell
 

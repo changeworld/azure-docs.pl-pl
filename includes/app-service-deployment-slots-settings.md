@@ -2,14 +2,14 @@
 author: cephalin
 ms.service: app-service
 ms.topic: include
-ms.date: 06/18/2019
+ms.date: 09/18/2019
 ms.author: cephalin
-ms.openlocfilehash: 0691b1a531ffebbb2c368bdb37dd4d8025fb4a4e
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: e00db06346b19ef85eb77626eb2ed169d2224b6c
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623705"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129689"
 ---
 W przypadku klonowania konfiguracji z innego miejsca wdrożenia sklonowana konfiguracja jest edytowalna. Niektóre elementy konfiguracji są zgodne z zawartością w wymianie (nie w konkretnym gnieździe), podczas gdy inne elementy konfiguracji pozostają w tym samym miejscu po wymianie (specyficzne dla miejsca). Poniższe listy pokazują ustawienia, które zmieniają się w przypadku wymiany miejsc.
 
@@ -19,7 +19,6 @@ W przypadku klonowania konfiguracji z innego miejsca wdrożenia sklonowana konfi
 * Ustawienia aplikacji (można skonfigurować do nalepki do miejsca)
 * Parametry połączenia (można je skonfigurować do nawiązania połączenia z gniazdem)
 * Mapowania procedur obsługi
-* Ustawienia monitorowania i diagnostyki
 * Certyfikaty publiczne
 * Zawartość zadań WebJob
 * Połączenia hybrydowe *
@@ -27,19 +26,20 @@ W przypadku klonowania konfiguracji z innego miejsca wdrożenia sklonowana konfi
 * Punkty końcowe usługi *
 * Azure Content Delivery Network *
 
-Funkcje oznaczone gwiazdką (*) są planowane do wprowadzenia do gniazda. 
+Funkcje oznaczone gwiazdką (*) są planowane jako niezamienione. 
 
 **Ustawienia, które nie zostały zamienione**:
 
 * Publikowanie punktów końcowych
 * Nazwy domen niestandardowych
-* Certyfikaty prywatne i powiązania SSL
+* Certyfikaty inne niż publiczne i ustawienia protokołu TLS/SSL
 * Ustawienia skalowania
 * Harmonogramy zadań WebJob
 * Ograniczenia adresów IP
 * Zawsze włączone
-* Ustawienia protokołu (HTTPS, wersja protokołu TLS, certyfikaty klienta)
 * Ustawienia dziennika diagnostycznego
 * Współużytkowanie zasobów między źródłami (CORS)
 
-<!-- VNET and hybrid connections not yet sticky to slot -->
+> [!NOTE]
+> Niektóre ustawienia aplikacji, które mają zastosowanie do niewymienianych ustawień, również nie są zamieniane. Na przykład, ponieważ ustawienia dziennika diagnostycznego nie są zamieniane, powiązane ustawienia aplikacji `WEBSITE_HTTPLOGGING_RETENTION_DAYS` , `DIAGNOSTICS_AZUREBLOBRETENTIONDAYS` takie jak i, również nie są zamieniane, nawet jeśli nie są wyświetlane jako ustawienia gniazda.
+>

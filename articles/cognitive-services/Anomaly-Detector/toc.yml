@@ -16,12 +16,14 @@
           href: quickstarts/detect-data-anomalies-java.md
         - name: Korzystanie z języka Python
           href: quickstarts/detect-data-anomalies-python.md
-    - name: Klient
+    - name: Biblioteka kliencka
       items:
         - name: 'Przy użyciu języka C#'
           href: quickstarts/detect-data-anomalies-csharp-sdk.md
         - name: Korzystanie z języka Python
           href: quickstarts/detect-data-anomalies-python-sdk.md
+        - name: Używanie środowiska Node.js
+          href: quickstarts/detect-data-anomalies-nodejs-sdk.md
 - name: Samouczki
   items:
     - name: Wizualizowanie anomalii jako zadań wsadowych za pomocą usługi Power BI

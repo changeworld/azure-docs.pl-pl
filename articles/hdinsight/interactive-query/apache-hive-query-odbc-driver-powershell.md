@@ -1,30 +1,30 @@
 ---
-title: Zapytanie Apache Hive za pomocą sterownika ODBC i program PowerShell — usługa Azure HDInsight
-description: Użyj sterownika Microsoft Hive ODBC i programu PowerShell do wykonywania zapytań, klastry Apache Hive w usłudze Azure HDInsight.
-keywords: hive, hive odbc i programu powershell
+title: Apache Hive zapytań za pomocą sterownika ODBC i programu PowerShell — Azure HDInsight
+description: Użyj sterownika Microsoft Hive ODBC i programu PowerShell, aby wysyłać zapytania do Apache Hive klastrów w usłudze Azure HDInsight.
+keywords: Hive, Hive ODBC, PowerShell
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
-ms.author: hrasheed
-ms.openlocfilehash: b02c865e953861b5ac396538fdd0f0623b0e5428
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 04771ddc633c210ce8c7b3c42a9e46cb2f1ed349
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67486102"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122171"
 ---
-# <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>Samouczek: Zapytanie Apache Hive ODBC i programu PowerShell
+# <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>Samouczek: Apache Hive zapytań za pomocą ODBC i programu PowerShell
 
-Sterowniki ODBC firmy Microsoft zapewniają elastyczny sposób interakcji z różnych rodzajów źródeł danych, w tym Apache Hive. Pisanie kodu w językach skryptów, jak program PowerShell, które Użyj sterowników ODBC, aby nawiązać połączenie z klastrem Hive, przekazać wybrane zapytanie i wyświetlić wyniki.
+Sterowniki ODBC firmy Microsoft zapewniają elastyczny sposób współpracy z różnymi rodzajami źródeł danych, w tym Apache Hive. Możesz napisać kod w językach skryptów, takich jak program PowerShell korzystający ze sterowników ODBC, aby otworzyć połączenie z klastrem Hive, przekazać wybrane zapytanie i wyświetlić wyniki.
 
 W tym samouczku wykonasz następujące zadania:
 
 > [!div class="checklist"]
-> * Pobieranie i instalowanie sterownika Hive ODBC firmy Microsoft
-> * Tworzenie źródła danych programu Apache Hive ODBC, połączony z klastrem
-> * Zapytanie przykładowe informacje z klastrem przy użyciu programu PowerShell
+> * Pobieranie i Instalowanie sterownika Microsoft Hive ODBC
+> * Tworzenie źródła danych Apache Hive ODBC połączonego z klastrem
+> * Badanie przykładowych informacji z klastra przy użyciu programu PowerShell
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -32,57 +32,57 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Przed przystąpieniem do wykonywania kroków opisanych w tym samouczku musisz mieć poniższe:
 
-* Klaser zapytania interaktywnego HDInsight. Aby go utworzyć, zobacz [Rozpoczynanie pracy z usługą Azure HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Wybierz **Interactive Query** jako typ klastra.
+* Interaktywny klaster zapytań w usłudze HDInsight. Aby go utworzyć, zobacz [Rozpoczynanie pracy z usługą Azure HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Wybierz **zapytanie interaktywne** jako typ klastra.
 
-## <a name="install-microsoft-hive-odbc-driver"></a>Zainstaluj sterownik Hive ODBC firmy Microsoft
+## <a name="install-microsoft-hive-odbc-driver"></a>Zainstaluj sterownik Microsoft Hive ODBC
 
-Pobierz i zainstaluj [sterownika Microsoft Hive ODBC](https://go.microsoft.com/fwlink/?LinkID=286698).
+Pobierz i zainstaluj [Sterownik Microsoft Hive ODBC](https://go.microsoft.com/fwlink/?LinkID=286698).
 
-## <a name="create-apache-hive-odbc-data-source"></a>Utwórz źródło danych Apache Hive ODBC
+## <a name="create-apache-hive-odbc-data-source"></a>Tworzenie źródła danych Apache Hive ODBC
 
-Poniższe kroki pokazują sposób tworzenia źródła danych ODBC usługi Apache Hive.
+Poniższe kroki przedstawiają sposób tworzenia źródła danych Apache Hive ODBC.
 
-1. W Windows, przejdź do **Start** > **narzędzia administracyjne Windows** > **źródeł danych ODBC (32-bit)/(64-bit)** .  **Administrator źródła danych ODBC** zostanie otwarte okno.
+1. W systemie Windows przejdź do menu **Start** > **Narzędzia** > administracyjne systemu Windows**źródła danych ODBC (32-bitowe)/(64-bitowe)** .  Otworzy się okno **Administrator źródła danych ODBC** .
 
-    ![Administrator źródła danych OBDC](./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png "skonfigurować przy użyciu Administratora źródła danych ODBC DSN")
+    ![Administrator źródła danych OBDC](./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png "Konfigurowanie DSN przy użyciu administratora źródła danych ODBC")
 
-1. Z **DSN użytkownika** zaznacz **Dodaj** otworzyć **Utwórz nowe źródło danych** okna.
+1. Na karcie **DSN użytkownika** wybierz pozycję **Dodaj** , aby otworzyć okno **Utwórz nowe źródło danych** .
 
-1. Wybierz **sterownika Microsoft Hive ODBC**, a następnie wybierz pozycję **Zakończ** otworzyć **Hive ODBC Driver DSN Instalator programu Microsoft** okna.
+1. Wybierz pozycję **Sterownik Microsoft Hive ODBC**, a następnie wybierz pozycję **Zakończ** , aby otworzyć okno **instalacji sterownik Microsoft Hive ODBC DSN** .
 
 1. Wpisz lub wybierz poniższe wartości:
 
    | Właściwość | Opis |
    | --- | --- |
    |  Data Source Name (Nazwa źródła danych) |Nadaj nazwę źródła danych. |
-   |  Hostami |Wprowadź polecenie `CLUSTERNAME.azurehdinsight.net`. Na przykład: `myHDICluster.azurehdinsight.net` |
+   |  Hosty |Wprowadź polecenie `CLUSTERNAME.azurehdinsight.net`. Na przykład: `myHDICluster.azurehdinsight.net` |
    |  Port |Użyj portu **443**.|
-   |  Database (Baza danych) |Użyj **domyślne**. |
-   |  Mechanism (Mechanizm) |Wybierz **Windows, usługa Azure HDInsight** |
-   |  Nazwa użytkownika |Wprowadź username użytkownika HTTP klastra HDInsight. Domyślna nazwa użytkownika to **admin**. |
-   |  Hasło |Wprowadź hasło użytkownika klastra HDInsight. Zaznacz pole wyboru **Zapisz hasła (zaszyfrowane)** .|
+   |  Database (Baza danych) |Użyj **domyślnego**. |
+   |  Mechanizm |Wybieranie **usługi HDInsight systemu Windows Azure** |
+   |  Nazwa użytkownika |Wprowadź nazwę użytkownika HTTP klastra usługi HDInsight. Domyślna nazwa użytkownika to **admin**. |
+   |  Hasło |Wprowadź hasło użytkownika klastra usługi HDInsight. Zaznacz pole wyboru **Zapisz hasło (zaszyfrowane)** .|
 
-1. Opcjonalnie: Wybierz **zaawansowane opcje**.  
+1. Opcjonalnie: Wybierz **Opcje zaawansowane**.  
 
    | Parametr | Opis |
    | --- | --- |
-   |  Użyj zapytania natywne |Jeśli wybrano, sterownik ODBC nie podejmuje próby konwertować TSQL HiveQL. Użyj tej opcji tylko wtedy, gdy masz 100% się upewnić, że wysyłasz czystego instrukcje HiveQL. Podczas nawiązywania połączenia programu SQL Server lub usługi Azure SQL Database, należy pozostawić nie zaznaczone. |
-   |  Pobrano następującą liczbę na blok wierszy |Podczas pobierania dużą liczbę rekordów, dostrajanie ten parametr może być konieczne zapewnienia optymalnej wydajności. |
-   |  Domyślna długość kolumny ciąg, długość kolumny binarne, skala dziesiętną kolumny |Typ danych długości i opisie może mieć wpływ na sposób dane są zwracane. Spowodują niepoprawne informacje, które mają zostać zwrócone ze względu na utratę dokładności i obcięcie. |
+   |  Użyj zapytania natywnego |Po wybraniu tego sterownika ODBC nie próbuje skonwertować TSQL na HiveQL. Użyj tej opcji tylko wtedy, gdy masz 100% pewności, że przesyłasz czyste instrukcje HiveQL. W przypadku nawiązywania połączenia z usługą SQL Server lub Azure SQL Database należy pozostawić zaznaczenie pola wyboru. |
+   |  Liczba pobranych wierszy na blok |Podczas pobierania dużej liczby rekordów dostrajanie tego parametru może być wymagane w celu zapewnienia optymalnej wydajności. |
+   |  Domyślna długość kolumny ciągu, długość kolumny binarnej, skala kolumn dziesiętnych |Długości i precyzji typu danych mogą mieć wpływ na sposób zwracania danych. Powodują one zwrócenie nieprawidłowych informacji ze względu na utratę dokładności i obcinanie. |
 
-    ![Zaawansowane opcje](./media/apache-hive-query-odbc-driver-powershell/odbc-data-source-advanced-options.png "DSN zaawansowane opcje konfiguracji")
+    ![Zaawansowane opcje konfiguracji DSN](./media/apache-hive-query-odbc-driver-powershell/odbc-data-source-advanced-options.png "Zaawansowane opcje konfiguracji DSN")
 
-1. Wybierz **Test** do testowania źródła danych. Gdy źródło danych jest skonfigurowany poprawnie, wynik testu pokazuje **Powodzenie**.  
+1. Wybierz **test** , aby przetestować źródło danych. Gdy źródło danych jest prawidłowo skonfigurowane, wynik testu pokazuje **powodzenie**.  
 
-1. Wybierz **OK** zamknięcie okna testów.  
+1. Wybierz **przycisk OK** , aby zamknąć okno testowe.  
 
-1. Wybierz **OK** zamknąć **Hive ODBC Driver DSN Instalator programu Microsoft** okna.  
+1. Wybierz **przycisk OK** , aby zamknąć okno **instalacji sterownik Microsoft Hive ODBC DSN** .  
 
-1. Wybierz **OK** zamknąć **Administrator źródła danych ODBC** okna.  
+1. Wybierz **przycisk OK** , aby zamknąć okno **Administrator źródła danych ODBC** .  
 
-## <a name="query-data-with-powershell"></a>Wykonywanie zapytań o dane przy użyciu programu PowerShell
+## <a name="query-data-with-powershell"></a>Wykonywanie zapytań dotyczących danych za pomocą programu PowerShell
 
-Poniższy skrypt programu PowerShell jest funkcją przez ODBC do wykonywania zapytań Hive klastra.
+Poniższy skrypt programu PowerShell to funkcja ODBC do klastra Hive.
 
 ```powershell
 function Get-ODBC-Data {
@@ -109,7 +109,7 @@ function Get-ODBC-Data {
 }
 ```
 
-Poniższy fragment kodu używa funkcji powyżej, można wykonać zapytania na to klastra zapytania interakcyjnego, który został utworzony na początku tego samouczka. Zastąp `DATASOURCENAME` z **nazwa źródła danych** , którą podano na **Hive ODBC Driver DSN Instalator programu Microsoft** ekranu. Po wyświetleniu monitu o poświadczenia, wprowadź nazwę użytkownika i hasło wprowadzone w ramach **nazwa użytkownika logowania klastra** i **hasło logowania klastra** podczas tworzenia klastra.
+Poniższy fragment kodu używa funkcji powyżej, aby wykonać zapytanie w klastrze zapytań interaktywnych, który został utworzony na początku samouczka. Zamień `DATASOURCENAME` na **nazwę źródła danych** określoną na ekranie **instalacji sterownik Microsoft Hive ODBC DSN** . Gdy zostanie wyświetlony monit o podanie poświadczeń, wprowadź nazwę użytkownika i hasło wprowadzone w obszarze **Nazwa użytkownika logowania klastra** i **hasło logowania klastra** podczas tworzenia klastra.
 
 ```powershell
 
@@ -122,11 +122,11 @@ Get-ODBC-Data -query $query -dsn $dsn
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie są już potrzebne, Usuń grupę zasobów, klaster HDInsight i konta magazynu. Aby to zrobić, wybierz grupę zasobów, w której został utworzony klaster, a następnie kliknij przycisk **Usuń**.
+Gdy grupa zasobów, klaster usługi HDInsight i konto magazynu nie są już potrzebne, usuń je. W tym celu wybierz grupę zasobów, w której klaster został utworzony, a następnie kliknij pozycję **Usuń**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób używania sterownika Microsoft Hive ODBC i programu PowerShell do pobierania danych z klastra usługi Azure HDInsight interakcyjnych zapytań.
+W tym samouczku pokazano, jak za pomocą sterownika Microsoft Hive ODBC i programu PowerShell pobrać dane z klastra interakcyjnych zapytań usługi Azure HDInsight.
 
 > [!div class="nextstepaction"]
 > [Łączenie programu Excel z Apache Hive przy użyciu interfejsu ODBC](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)

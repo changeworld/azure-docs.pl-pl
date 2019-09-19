@@ -1,18 +1,18 @@
 ---
 title: Korzystanie z przepływów pracy Oozie usługi Hadoop w usłudze Azure HDInsight opartej na systemie Linux
 description: Korzystanie z usługi Hadoop Oozie w usłudze HDInsight opartej na systemie Linux. Dowiedz się, jak zdefiniować przepływ pracy Oozie i przesłać zadanie Oozie.
-ms.service: hdinsight
 author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: b21847d27dc7f444afaf1b73efa19b0b0087cfe4
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: c24370c91c7164786503cdd8e3c44de60abc8370
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811681"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122492"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Korzystanie z usługi Apache Oozie z usługą Apache Hadoop do definiowania i uruchamiania przepływu pracy w usłudze Azure HDInsight opartej na systemie Linux
 
@@ -39,12 +39,11 @@ Można również użyć Oozie do planowania zadań specyficznych dla systemu, ta
 
 * [Schemat identyfikatora URI](./hdinsight-hadoop-linux-information.md#URI-and-scheme) magazynu podstawowego klastrów. Będzie to możliwe `wasb://` w przypadku usługi Azure `abfs://` Storage, Azure Data Lake Storage Gen2 `adl://` lub Azure Data Lake Storage Gen1. W przypadku włączenia bezpiecznego transferu dla usługi Azure Storage lub Data Lake Storage Gen2, identyfikator URI może `wasbs://` być `abfss://`lub, odpowiednio, zobacz również [bezpieczny transfer](../storage/common/storage-require-secure-transfer.md).
 
-
 ## <a name="example-workflow"></a>Przykładowy przepływ pracy
 
 Przepływ pracy używany w tym dokumencie zawiera dwie akcje. Akcje to definicje zadań, takich jak uruchamianie programu Hive, Sqoop, MapReduce lub innych procesów:
 
-![Diagram przepływu pracy][img-workflow-diagram]
+![Diagram przepływu pracy Oozie usługi HDInsight](./media/hdinsight-use-oozie-linux-mac/oozie-workflow-diagram.png)
 
 1. Akcja Hive uruchamia skrypt HiveQL, aby wyodrębnić rekordy z `hivesampletable` dołączonego do usługi HDInsight. Każdy wiersz danych zawiera opis odwiedzania z określonego urządzenia przenośnego. Format rekordu wygląda podobnie do następującego tekstu:
 
@@ -510,29 +509,29 @@ Aby uzyskać dostęp do interfejsu użytkownika sieci Web Oozie, wykonaj następ
 
 3. W lewej części strony wybierz pozycję **Oozie** > **szybkie linki** > **Oozie interfejs użytkownika sieci Web**.
 
-    ![Obraz menu](./media/hdinsight-use-oozie-linux-mac/ooziewebuisteps.png)
+    ![Kroki interfejsu użytkownika sieci Web Apache Ambari Oozie](./media/hdinsight-use-oozie-linux-mac/hdi-oozie-web-ui-steps.png)
 
 4. Interfejs użytkownika sieci Web Oozie domyślnie wyświetla uruchomione zadania przepływu pracy. Aby wyświetlić wszystkie zadania przepływu pracy, wybierz pozycję **wszystkie zadania**.
 
-    ![Wszystkie wyświetlone zadania](./media/hdinsight-use-oozie-linux-mac/ooziejobs.png)
+    ![Zadania przepływu pracy konsoli sieci Web Oozie](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-jobs.png)
 
 5. Aby wyświetlić więcej informacji o zadaniu, wybierz zadanie.
 
-    ![Informacje o stanowisku](./media/hdinsight-use-oozie-linux-mac/jobinfo.png)
+    ![Informacje o zadaniu usługi HDInsight Apache Oozie](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-info.png)
 
 6. Na karcie **Informacje o zadaniu** można zobaczyć podstawowe informacje o zadaniu oraz poszczególne akcje w ramach zadania. Za pomocą kart w górnej części strony można wyświetlić **definicję zadania**, **konfigurację zadania**, uzyskać dostęp do **dziennika zadań**lub wyświetlić ukierunkowany wykres o wartościach (DAG) zadania w obszarze **zadanie DAG**.
 
    * **Dziennik zadania**: Wybierz przycisk **Pobierz dzienniki** , aby pobrać wszystkie dzienniki zadania, lub użyj pola **Wypełnij filtr wyszukiwania** , aby odfiltrować dzienniki.
 
-       ![Dziennik zadań](./media/hdinsight-use-oozie-linux-mac/joblog.png)
+       ![Dziennik zadań usługi HDInsight Apache Oozie](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-log.png)
 
    * **DAG zadania**: DAG jest graficznym przeglądem ścieżek danych wykonanych za pomocą przepływu pracy.
 
-       ![DAG zadania](./media/hdinsight-use-oozie-linux-mac/jobdag.png)
+       ![Usługa HDInsight Apache Oozie Job Dag](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-dag.png)
 
 7. W przypadku wybrania jednej z akcji na karcie **Informacje o zadaniu** zostanie wystawiona informacja dotycząca akcji. Na przykład wybierz akcję **RunSqoopExport** .
 
-    ![Informacje o akcji](./media/hdinsight-use-oozie-linux-mac/action.png)
+    ![Informacje o akcji zadania Oozie usługi HDInsight](./media/hdinsight-use-oozie-linux-mac/oozie-job-action-info.png)
 
 8. Możesz zobaczyć szczegóły akcji, na przykład link do **adresu URL konsoli**. Użyj tego linku, aby wyświetlić informacje o śledzeniu zadania dla tego zadania.
 
@@ -632,18 +631,18 @@ Można użyć koordynatora, aby określić częstotliwość uruchamiania, zakoń
 
 7. Jeśli przejdziesz do interfejsu użytkownika sieci Web Oozie i wybierzesz kartę **zadania koordynatora** , zobaczysz informacje takie jak na poniższej ilustracji:
 
-    ![Karta zadania koordynatora](./media/hdinsight-use-oozie-linux-mac/coordinatorjob.png)
+    ![Karta zadania koordynatora konsoli sieci Web Oozie](./media/hdinsight-use-oozie-linux-mac/coordinator-jobs-tab.png)
 
     **Następny wpis materializację** zawiera czas następnego uruchomienia zadania.
 
 8. Podobnie jak w przypadku wcześniejszego zadania przepływu pracy, w przypadku wybrania wpisu zadania w interfejsie użytkownika sieci Web zostaną wyświetlone informacje o zadaniu:
 
-    ![Informacje o zadaniach koordynatora](./media/hdinsight-use-oozie-linux-mac/coordinatorjobinfo.png)
+    ![Informacje o zadaniach koordynatora Apache Oozie](./media/hdinsight-use-oozie-linux-mac/coordinator-job-info.png)
 
     > [!NOTE]  
     > Ten obraz pokazuje tylko pomyślne uruchomienia zadania, a nie poszczególne akcje w ramach zaplanowanego przepływu pracy. Aby wyświetlić poszczególne akcje, wybierz jeden z wpisów **akcji** .
 
-    ![Informacje o akcji koordynatora](./media/hdinsight-use-oozie-linux-mac/coordinatoractionjob.png)
+    ![Karta informacje o zadaniach konsoli sieci Web OOzie](./media/hdinsight-use-oozie-linux-mac/coordinator-action-job.png)
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
@@ -747,7 +746,6 @@ W tym artykule przedstawiono sposób definiowania przepływu pracy Oozie oraz ur
 
 [cindygross-hive-tables]: https://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 
-[img-workflow-diagram]: ./media/hdinsight-use-oozie-linux-mac/HDI.UseOozie.Workflow.Diagram.png
 [img-preparation-output]: ./media/hdinsight-use-oozie-linux-mac/HDI.UseOozie.Preparation.Output1.png
 [img-runworkflow-output]: ./media/hdinsight-use-oozie/HDI.UseOozie.RunWF.Output.png
 

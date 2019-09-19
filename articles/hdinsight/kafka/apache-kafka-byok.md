@@ -1,18 +1,18 @@
 ---
 title: Przenoszenie własnego klucza do Apache Kafka w usłudze Azure HDInsight
 description: W tym artykule opisano sposób używania własnego klucza z Azure Key Vault do szyfrowania danych przechowywanych w Apache Kafka w usłudze Azure HDInsight.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: hrasheed
+ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 15638d90fe24938a45f6d4cce156e998f1f9afc2
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: ba49944011546db45d25cc87c2c4b93c8b99502a
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000095"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122679"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Przenoszenie własnego klucza do Apache Kafka w usłudze Azure HDInsight
 
@@ -22,7 +22,7 @@ Wszystkie dyski zarządzane w usłudze HDInsight są chronione za pomocą usług
 
 Szyfrowanie BYOK to proces jednoetapowy obsługiwany podczas tworzenia klastra bez dodatkowych kosztów. Wszystko, co musisz zrobić, to Rejestracja usługi HDInsight jako tożsamości zarządzanej przy użyciu Azure Key Vault i dodanie klucza szyfrowania podczas tworzenia klastra.
 
-Wszystkie komunikaty do klastra Kafka (w tym repliki obsługiwane przez Kafka) są zaszyfrowane za pomocą klucza szyfrowania danych symetrycznych. Klucz szyfrowania danych jest chroniony przy użyciu klucza szyfrowanie klucza (KEK) z magazynu kluczy. Procesy szyfrowania i odszyfrowywania są obsługiwane całkowicie przez usługę Azure HDInsight. 
+Wszystkie komunikaty do klastra Kafka (w tym repliki obsługiwane przez Kafka) są zaszyfrowane za pomocą klucza szyfrowania danych symetrycznych. Klucz szyfrowania danych jest chroniony przy użyciu klucza szyfrowanie klucza (KEK) z magazynu kluczy. Procesy szyfrowania i odszyfrowywania są obsługiwane całkowicie przez usługę Azure HDInsight.
 
 Możesz użyć Azure Portal lub interfejsu wiersza polecenia platformy Azure, aby bezpiecznie obrócić klucze w magazynie kluczy. Gdy klucz zostanie obrócony, klaster usługi HDInsight Kafka rozpocznie korzystanie z nowego klucza w ciągu kilku minut. Włącz funkcje ochrony kluczy "nietrwałego usuwania", aby chronić je przed scenariuszami oprogramowania wymuszającego okup i przypadkowym usunięciem. Magazyny kluczy bez tej funkcji ochrony nie są obsługiwane.
 
@@ -46,6 +46,7 @@ Aby utworzyć klaster Kafka z obsługą BYOK, wykonaj następujące czynności:
    1. Aby utworzyć nowy magazyn kluczy, postępuj zgodnie z [Azure Key Vault](../../key-vault/key-vault-overview.md) przewodnika Szybki Start. Aby uzyskać więcej informacji o importowaniu istniejących kluczy, odwiedź stronę [dotyczącą kluczy, wpisów tajnych i certyfikatów](../../key-vault/about-keys-secrets-and-certificates.md).
 
    2. Włącz opcję "nietrwałe usuwanie" w magazynie kluczy za pomocą polecenia [AZ Key magazynu Update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) CLI.
+
         ```Azure CLI
         az keyvault update --name <Key Vault Name> --enable-soft-delete
         ```
@@ -58,16 +59,16 @@ Aby utworzyć klaster Kafka z obsługą BYOK, wykonaj następujące czynności:
 
         b. Ustaw **Opcje** w celu **wygenerowania** klucza i nadaj mu nazwę.
 
-        ![Generuj nazwę klucza](./media/apache-kafka-byok/apache-kafka-create-key.png "Generuj nazwę klucza")
+        ![Apache Kafka — generowanie nazwy klucza](./media/apache-kafka-byok/apache-kafka-create-key.png "Generuj nazwę klucza")
 
         c. Wybierz utworzony klucz z listy kluczy.
 
-        ![Lista kluczy Azure Key Vault](./media/apache-kafka-byok/kafka-key-vault-key-list.png)
+        ![Lista kluczy magazynu kluczy Apache Kafka](./media/apache-kafka-byok/kafka-key-vault-key-list.png)
 
         d. W przypadku używania własnego klucza do szyfrowania klastra Kafka należy podać identyfikator URI klucza. Skopiuj **Identyfikator klucza** i Zapisz go w dowolnym miejscu do momentu, aż wszystko będzie gotowe do utworzenia klastra.
 
-        ![Kopiuj identyfikator klucza](./media/apache-kafka-byok/kafka-get-key-identifier.png)
-   
+        ![Apache Kafka — uzyskiwanie identyfikatora klucza](./media/apache-kafka-byok/kafka-get-key-identifier.png)
+
     4. Dodaj zarządzaną tożsamość do zasad dostępu magazynu kluczy.
 
         a. Utwórz nowe zasady dostępu Azure Key Vault.
@@ -99,6 +100,7 @@ Aby utworzyć klaster Kafka z obsługą BYOK, wykonaj następujące czynności:
    Podczas tworzenia klastra Podaj pełny adres URL klucza, w tym wersję klucza. Na przykład `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Należy również przypisać zarządzaną tożsamość do klastra i podać identyfikator URI klucza.
 
 ## <a name="rotating-the-encryption-key"></a>Obracanie klucza szyfrowania
+
    Mogą wystąpić sytuacje, w których warto zmienić klucze szyfrowania używane przez klaster Kafka po jego utworzeniu. Można to łatwo zrobić za pośrednictwem portalu. W przypadku tej operacji klaster musi mieć dostęp zarówno do bieżącego klucza, jak i do zamierzonego nowego klucza. w przeciwnym razie operacja zamiany klucza zakończy się niepowodzeniem.
 
    Aby obrócić klucz, musisz mieć pełny adres URL nowego klucza (zobacz krok 3 [instalacji Key Vault i kluczy](#setup-the-key-vault-and-keys)). Po wykonaniu tej opcji przejdź do sekcji Właściwości klastra Kafka w portalu, a następnie kliknij pozycję **Zmień klucz** w obszarze **adres URL klucza szyfrowania dysku**. Wprowadź adres URL nowego klucza i prześlij go, aby obrócić klucz.
@@ -122,7 +124,7 @@ Aby utworzyć klaster Kafka z obsługą BYOK, wykonaj następujące czynności:
 **Co się stanie, Jeśli klaster utraci dostęp do magazynu kluczy lub klucza?**
 Jeśli klaster utraci dostęp do klucza, ostrzeżenia będą wyświetlane w portalu Apache Ambari. W tym stanie operacja **zmiany klucza** zakończy się niepowodzeniem. Po przywróceniu dostępu do klucza Ambari ostrzeżenia i operacje, takie jak rotacja kluczy, mogą zostać wykonane pomyślnie.
 
-   ![Alert Ambari dostępu do klucza Kafka](./media/apache-kafka-byok/kafka-byok-ambari-alert.png)
+   ![Apache Kafka alert Ambari dostępu do klucza](./media/apache-kafka-byok/kafka-byok-ambari-alert.png)
 
 **Jak odzyskać klaster, jeśli klucze są usuwane?**
 

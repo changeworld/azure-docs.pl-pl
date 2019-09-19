@@ -1,5 +1,5 @@
 ---
-title: 'Konfigurowanie filtrów tras dla komunikacji równorzędnej firmy Microsoft: Usługa Azure ExpressRoute — Portal | Dokumentacja firmy Microsoft'
+title: 'Konfigurowanie filtrów tras dla komunikacji równorzędnej firmy Microsoft: Azure ExpressRoute — Portal | Microsoft Docs'
 description: W tym artykule opisano sposób konfigurowania filtrów tras dla komunikacji równorzędnej firmy Microsoft przy użyciu witryny Azure portal.
 services: expressroute
 author: ganesr
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/01/2019
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 55b5207e4c05712b4d96d4272f9ae193cc4c1720
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: c49b1fa1e2e8421146f5d5012de983c14934c23c
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508608"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122936"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Konfigurowanie filtrów tras dla komunikacji równorzędnej firmy Microsoft: Azure Portal
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ ms.locfileid: "67508608"
 
 Filtry tras to sposób na korzystanie z podzestawu obsługiwanych usług przy użyciu komunikacji równorzędnej firmy Microsoft. Kroki, które w tym artykule ułatwiają konfigurowanie i zarządzanie nimi filtrów tras dla obwodów usługi ExpressRoute.
 
-Usługi Dynamics 365 i usługi Office 365, takich jak Exchange Online, SharePoint Online i Skype dla firm i usług platformy Azure, takie jak storage i bazy danych SQL są dostępne za pośrednictwem komunikacji równorzędnej firmy Microsoft. W przypadku skonfigurowania komunikacji równorzędnej firmy Microsoft w obwodzie usługi ExpressRoute, wszystkie prefiksy, które dotyczą te usługi są anonsowane za pośrednictwem sesji protokołu BGP, które są ustalane. Wartość atrybutu Community protokołu BGP jest dołączana do każdego prefiksu w celu zidentyfikowania usługi oferowanej za pośrednictwem prefiksu. Aby uzyskać listę wartości społeczności BGP i usług mapowania ich na zobacz [społeczności BGP](expressroute-routing.md#bgp).
+Usługi Office 365, takie jak Exchange Online, SharePoint Online i Skype dla firm, oraz usługi platformy Azure, takie jak Storage i SQL DB, są dostępne za pomocą komunikacji równorzędnej firmy Microsoft. W przypadku skonfigurowania komunikacji równorzędnej firmy Microsoft w obwodzie usługi ExpressRoute, wszystkie prefiksy, które dotyczą te usługi są anonsowane za pośrednictwem sesji protokołu BGP, które są ustalane. Wartość atrybutu Community protokołu BGP jest dołączana do każdego prefiksu w celu zidentyfikowania usługi oferowanej za pośrednictwem prefiksu. Aby uzyskać listę wartości społeczności BGP i usług mapowania ich na zobacz [społeczności BGP](expressroute-routing.md#bgp).
 
 Jeśli potrzebujesz łączności z wszystkich usług, dużej liczby prefiksy są anonsowane za pośrednictwem protokołu BGP. To znacznie zwiększa rozmiar tabel tras, obsługiwane przez routery w sieci. Jeśli planujesz korzystanie z podzestawu usługi oferowane za pośrednictwem komunikacji równorzędnej firmy Microsoft, można zmniejszyć rozmiar tabelach tras na dwa sposoby. Możesz:
 
@@ -36,9 +36,9 @@ Jeśli potrzebujesz łączności z wszystkich usług, dużej liczby prefiksy są
 
 W przypadku skonfigurowania komunikacji równorzędnej firmy Microsoft na obwód usługi ExpressRoute, routery graniczne firmy Microsoft ustanowić pary sesji protokołu BGP z routerami granicznymi (należy do Ciebie lub dostawcą połączenia). Żadne trasy nie są ogłaszane w sieci. Aby włączyć ogłaszanie tras w sieci, należy skojarzyć filtr tras.
 
-Filtr tras umożliwia zidentyfikowanie usług, które mają być używane za pośrednictwem komunikacji równorzędnej firmy Microsoft w ramach obwodu usługi ExpressRoute. Jest zasadniczo lista wszystkich protokołu BGP społeczności wartości, które chcesz zezwolić. Gdy zasób filtru tras jest zdefiniowany i dołączony do obwodu usługi ExpressRoute, wszystkie prefiksy zamapowane do wartości atrybutu Community protokołu BGP są ogłaszane w sieci.
+Filtr tras umożliwia zidentyfikowanie usług, które mają być używane za pośrednictwem komunikacji równorzędnej firmy Microsoft w ramach obwodu usługi ExpressRoute. Zasadniczo jest to lista wszystkich wartości społeczności protokołu BGP, które mają być dozwolone. Gdy zasób filtru tras jest zdefiniowany i dołączony do obwodu usługi ExpressRoute, wszystkie prefiksy zamapowane do wartości atrybutu Community protokołu BGP są ogłaszane w sieci.
 
-Aby móc Dołącz filtry tras z usługami Office 365 na nich musi mieć zezwolenie na korzystanie z usług Office 365 za pośrednictwem usługi ExpressRoute. Jeśli nie masz uprawnień do korzystania z usług Office 365 za pośrednictwem usługi ExpressRoute, Dołącz filtry tras operacja kończy się niepowodzeniem. Aby uzyskać więcej informacji na temat procesu autoryzacji, zobacz [usługi Azure ExpressRoute dla usługi Office 365](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd). Łączność z usługi Dynamics 365 nie wymaga dowolnego pozwoleniu.
+Aby móc Dołącz filtry tras z usługami Office 365 na nich musi mieć zezwolenie na korzystanie z usług Office 365 za pośrednictwem usługi ExpressRoute. Jeśli nie masz uprawnień do korzystania z usług Office 365 za pośrednictwem usługi ExpressRoute, Dołącz filtry tras operacja kończy się niepowodzeniem. Aby uzyskać więcej informacji na temat procesu autoryzacji, zobacz [usługi Azure ExpressRoute dla usługi Office 365](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd).
 
 > [!IMPORTANT]
 > Obwodów usługi ExpressRoute, które zostały skonfigurowane przed 1 sierpnia 2017 r. komunikacji równorzędnej firmy Microsoft będzie miał wszystkie prefiksy usługi anonsowanego za pośrednictwem komunikacji równorzędnej firmy Microsoft, nawet jeśli nie zdefiniowano filtry tras. Komunikacja równorzędna firmy Microsoft obwodów usługi ExpressRoute, skonfigurowanych po 1 sierpnia 2017 r. nie będzie miał wszelkie prefiksy anonsowane do czasu podłączenia filtru tras do obwodu.
@@ -79,9 +79,9 @@ Wartości społeczności BGP skojarzone z usługami za pośrednictwem komunikacj
 
 ### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. Tworzenie listy wartości, które chcesz użyć
 
-Sporządź listę [wartości społeczności BGP](expressroute-routing.md#bgp) chcesz użyć do filtru trasy. 
+Utwórz listę [wartości społeczności protokołu BGP](expressroute-routing.md#bgp) , które mają być używane w filtrze tras. 
 
-## <a name="filter"></a>Krok 2. Tworzenie filtru tras i regułę filtru
+## <a name="filter"></a>Krok 2. Tworzenie filtru tras i reguły filtrowania
 
 Filtr trasy może mieć tylko jedną regułę, a reguła musi być typu "Zezwalaj". Ta zasada może mieć listę wartości społeczności BGP skojarzonych z nim.
 
@@ -101,14 +101,14 @@ Można dodawać i zaktualizuj zasady, wybierając kartę Zarządzaj reguły filt
 ![Tworzenie filtru tras](./media/how-to-routefilter-portal/ManageRouteFilter.png)
 
 
-Można wybrać usługi, który chcesz nawiązać połączenie z listy rozwijanej i zapisać regułę po zakończeniu.
+Z listy rozwijanej można wybrać usługi, z którymi chcesz nawiązać połączenie, i zapisać regułę po zakończeniu.
 
 ![Tworzenie filtru tras](./media/how-to-routefilter-portal/AddRouteFilterRule.png)
 
 
-## <a name="attach"></a>Krok 3. Dołącz filtru tras do obwodu usługi ExpressRoute
+## <a name="attach"></a>Krok 3. Dołącz filtr trasy do obwodu ExpressRoute
 
-Wybierając przycisk "Dodaj obwód" i wybierając obwód usługi ExpressRoute z listy rozwijanej, można dołączyć filtru tras do obwodu.
+Filtr tras można dołączyć do obwodu, wybierając przycisk "Dodaj obwód" i wybierając obwód ExpressRoute z listy rozwijanej.
 
 ![Tworzenie filtru tras](./media/how-to-routefilter-portal/AddCktToRouteFilter.png)
 
@@ -137,7 +137,7 @@ Możesz zaktualizować listę wartości społeczności BGP dołączone do obwodu
 
 ### <a name="detach"></a>Aby odłączyć filtr tras z obwodem usługi ExpressRoute
 
-Aby odłączyć obwodu z filtru tras, kliknij prawym przyciskiem myszy w ramach obwodu, a następnie kliknij pozycję "Usuń skojarzenie".
+Aby odłączyć obwód od filtra trasy, kliknij prawym przyciskiem myszy obwód i kliknij pozycję "Usuń skojarzenie".
 
 ![Tworzenie filtru tras](./media/how-to-routefilter-portal/DetachRouteFilter.png) 
 
@@ -152,4 +152,4 @@ Możesz usunąć filtru tras, wybierając przycisk Usuń.
 
 * Więcej informacji na temat usługi ExpressRoute znajduje się w artykule [ExpressRoute FAQ](expressroute-faqs.md) (Usługa ExpressRoute — często zadawane pytania).
 
-* Aby uzyskać informacji na temat przykłady konfiguracji routera, zobacz [przykłady konfiguracji routera, aby skonfigurować routingu oraz zarządzanie nim](expressroute-config-samples-routing.md). 
+* Aby uzyskać informacje na temat przykładów konfiguracji routera, zobacz [przykłady konfiguracji routera w celu skonfigurowania routingu i zarządzania nim](expressroute-config-samples-routing.md). 

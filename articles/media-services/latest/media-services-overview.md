@@ -13,17 +13,17 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 05/13/2019
+ms.date: 09/17/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: b07675e25c0380921e24059ff0107fcfe1bb3873
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: a752d7759386828e916f68e5903115220812f3e0
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65602095"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123038"
 ---
-# <a name="azure-media-services-v3-overview"></a>Omówienie usługi Azure Media Services v3
+# <a name="azure-media-services-v3-overview"></a>Azure Media Services wersja 3 — Omówienie
 
 Azure Media Services to oparta na chmurze platforma umożliwiająca tworzenie rozwiązań pozwalających na osiąganie jakości odpowiedniej do emisji w przypadku przesyłania strumieniowego wideo, zwiększanie dostępności i dystrybucji, analizowanie zawartości i wykonywanie wielu innych operacji. Niezależnie od tego, czy jesteś deweloperem aplikacji, biurem obsługi, agencją rządową, czy też firmą rozrywkową, usługa Media Services pomaga tworzyć aplikacje, które zapewniają środowisko multimedialne o najwyższej jakości dużej liczbie odbiorców na obecnie najpopularniejszych urządzeniach przenośnych i przeglądarkach. 
 
@@ -49,42 +49,46 @@ Usługa Media Services umożliwia tworzenie różnych przepływów pracy multime
 Dowiedz się, jak kodować zawartość i tworzyć jej pakiety, przesyłać strumieniowo wideo na żądanie, prowadzić emisję na żywo i analizować wideo za pomocą usługi Media Services w wersji 3. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiające sposób zapewnienia bezpiecznej transmisji strumieniowej materiałów wideo lub audio na żywo lub na żądanie, którą można skalować na potrzeby milionów użytkowników.
 
 > [!TIP]
-> Sprawdź przed rozpoczęciem tworzenia:<br/>* [Podstawowe pojęcia](concepts-overview.md) (incudes ważnych pojęć: pakowanie, kodowania, ochrona, itp.)<br/>* [Tworzenie aplikacji za pomocą usługi Media Services v3 API](media-services-apis-overview.md) (w tym informacji na temat uzyskiwania dostępu do interfejsów API, konwencje nazewnictwa, itp.)
+> Przed rozpoczęciem opracowywania, przejrzyj:<br/>* [Podstawowe pojęcia](concepts-overview.md) (incudes ważne pojęcia: pakowanie, kodowanie, ochrona itp.)<br/>* [Programowanie przy użyciu interfejsów api Media Services v3](media-services-apis-overview.md) (obejmuje informacje dotyczące uzyskiwania dostępu do interfejsów API, konwencji nazewnictwa itp.)
 
 ### <a name="quickstarts"></a>Przewodniki Szybki start  
 
-Szybki Start pokazano, podstawowe instrukcje 1 dzień nowi klienci będą mogli szybko wypróbować usługę Media Services.
+Przewodniki Szybki Start pokazują podstawowe instrukcje dotyczące pierwszego dnia dla nowych klientów, aby szybko wypróbować Media Services.
 
-* [Pliki wideo Stream — .NET](stream-files-dotnet-quickstart.md)
-* [Pliki wideo Stream — interfejs wiersza polecenia](stream-files-cli-quickstart.md)
-* [Pliki wideo Stream — Node.js](stream-files-nodejs-quickstart.md)
+* [Przesyłanie strumieniowe plików wideo — .NET](stream-files-dotnet-quickstart.md)
+* [Pliki wideo strumieniowego — interfejs wiersza polecenia](stream-files-cli-quickstart.md)
+* [Przesyłanie strumieniowe plików wideo — Node. js](stream-files-nodejs-quickstart.md)
     
 ### <a name="tutorials"></a>Samouczki 
 
-W samouczkach pokazano oparte na scenariuszach procedury dla niektóre z najważniejszych zadań usługi Media Services.
+W samouczkach przedstawiono procedury oparte na scenariuszu dla niektórych najważniejszych zadań Media Services.
 
-* [Kodowanie pliku zdalnego i przesyłanie strumieniowe wideo — REST](stream-files-tutorial-with-rest.md)
+* [Kodowanie zdalnego pliku i wideo strumieniowego — REST](stream-files-tutorial-with-rest.md)
 * [Kodowanie przekazanego pliku i strumienia wideo — .NET](stream-files-tutorial-with-api.md)
-* [Stream na żywo — .NET](stream-live-tutorial-with-api.md)
-* [Analizowanie filmu wideo — .NET](analyze-videos-tutorial-with-api.md)
-* [Szyfrowanie AES-128 - .NET](protect-with-aes128.md)
+* [Przesyłanie strumieniowe na żywo — .NET](stream-live-tutorial-with-api.md)
+* [Analizowanie wideo — .NET](analyze-videos-tutorial-with-api.md)
+* [Szyfrowanie dynamiczne AES-128 — .NET](protect-with-aes128.md)
     
+### <a name="samples"></a>Przykłady
+
+Użyj [tej przeglądarki przykładów](https://docs.microsoft.com/samples/browse/?products=azure-media-services) do przeglądania przykładów kodu Azure Media Services.
+
 ### <a name="how-to-guides"></a>Przewodniki z instrukcjami
 
-Artykuły zawierają przykłady kodu, które pokazują sposób wykonania zadania. W tej sekcji znajdziesz wiele przykładów, poniżej przedstawiono kilka z nich:
+Artykuły zawierają przykłady kodu, które pokazują, jak wykonać zadanie. W tej sekcji znajdziesz wiele przykładów, Oto kilka z nich:
 
 * [Tworzenie konta — interfejs wiersza polecenia](create-account-cli-how-to.md)
 * [Dostęp do interfejsów API — interfejs wiersza polecenia](access-api-cli-how-to.md)
-* [Kodowanie za pomocą protokołu HTTPS jako dane wejściowe — zadanie platformy .NET](job-input-from-http-how-to.md)  
-* [Monitor zdarzeń — Portal](monitor-events-portal-how-to.md)
-* [Dynamiczne szyfrowanie przy użyciu technologii multi-DRM — .NET](protect-with-drm.md) 
-* [Jak kodować z przekształcenie niestandardowe — interfejs wiersza polecenia](custom-preset-cli-howto.md)
+* [Koduj przy użyciu protokołu HTTPS jako dane wejściowe zadania — .NET](job-input-from-http-how-to.md)  
+* [Monitorowanie zdarzeń — Portal](monitor-events-portal-how-to.md)
+* [Szyfrowanie dynamiczne za pomocą technologii wielowątkowości platformy .NET](protect-with-drm.md) 
+* [Jak kodować przy użyciu niestandardowego przekształcenia interfejsu wiersza polecenia](custom-preset-cli-howto.md)
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Zadawaj pytania, Prześlij opinię i pobieranie aktualizacji
+## <a name="ask-questions-give-feedback-get-updates"></a>Zadawaj pytania, Przekaż opinię, uzyskaj aktualizacje
 
-Zapoznaj się z [społeczności usługi Azure Media Services](media-services-community.md) artykuł, aby wyświetlić różne sposoby zadawaj pytania, Prześlij opinię i pobrać aktualizacje o usłudze Media Services.
+Zapoznaj się z artykułem [community Azure Media Services](media-services-community.md) , aby zobaczyć różne sposoby zadawania pytań, przekazać Opinie i uzyskać aktualizacje dotyczące Media Services.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Dowiedz się więcej o podstawowych pojęciach](concepts-overview.md)
+[Poznaj podstawowe koncepcje](concepts-overview.md)
 

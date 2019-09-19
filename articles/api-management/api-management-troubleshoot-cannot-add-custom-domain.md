@@ -4,7 +4,7 @@ description: Dowiedz się, jak rozwiązać problem polegający na tym, że nie m
 services: api-management
 documentationcenter: ''
 author: genlin
-manager: cfowler
+manager: dcscontentpm
 editor: ''
 ms.service: api-management
 ms.workload: mobile
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/19/2019
 ms.author: tehnoonr
-ms.openlocfilehash: 30dfd864c6c237024c72325da813691ac5043bd0
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 5d31ec21e341c46c2f2d0ab49fdb2d4302c29dc6
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072094"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121531"
 ---
 # <a name="failed-to-update-api-management-service-hostnames"></a>Nie można zaktualizować nazw hostów usługi API Management
 
@@ -39,14 +39,14 @@ Aby rozwiązać ten problem, wykonaj poniższe czynności:
 
 1. Przejdź do [Azure Portal](Https://portal.azure.com), wybierz wystąpienie API Management, a następnie wybierz pozycję **zarządzane tożsamości**. Upewnij się, że opcja **register with Azure Active Directory** ma wartość **Yes (tak**). 
     ![Rejestrowanie w usłudze Azure Active Directory](./media/api-management-troubleshoot-cannot-add-custom-domain/register-with-aad.png)
-1. W Azure Portal Otwórz usługę magazyny **kluczy** i wybierz magazyn kluczy, którego próbujesz użyć dla domeny niestandardowej.
+1. W Azure Portal Otwórz usługę **magazyny kluczy** i wybierz magazyn kluczy, którego próbujesz użyć dla domeny niestandardowej.
 1. Wybierz pozycję **zasady dostępu**i sprawdź, czy istnieje jednostka usługi odpowiadająca nazwie wystąpienia usługi API Management. Jeśli istnieje, wybierz jednostkę usługi i upewnij się, że ma ona uprawnienie **Get** wymienione w obszarze **uprawnienia klucza tajnego**.  
     ![Dodawanie zasad dostępu dla jednostki usługi](./media/api-management-troubleshoot-cannot-add-custom-domain/access-policy.png)
 1. Jeśli usługa API Management nie znajduje się na liście, wybierz pozycję **Dodaj zasady dostępu**, a następnie Utwórz następujące zasady dostępu:
     - **Konfiguruj z szablonu**: Brak
     - **Wybierz podmiot zabezpieczeń**: Wyszukaj nazwę usługi API Management, a następnie wybierz ją z listy.
     - **Uprawnienia klucza**: Brak
-    - **Uprawnienia klucza tajnego**: Pobierz
+    - **Uprawnienia klucza tajnego**: Get
     - **Uprawnienia certyfikatów**: Brak
 1. Wybierz **przycisk OK** , aby utworzyć zasady dostępu.
 1. Wybierz **Zapisz** Aby zapisać zmiany.

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/24/2019
-ms.openlocfilehash: 8565ee03ddff67afb3700aa1cda91ae696a0fc93
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 270bc5401e58f4e5c99cae3c5ab06b4f03ae9543
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960235"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123239"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>Korzystanie z narzędzia MirrorMaker do replikowania tematów Apache Kafka z Kafka w usłudze HDInsight
 
@@ -81,15 +81,15 @@ Ta architektura zawiera dwa klastry w różnych grupach zasobów i sieci wirtual
 1. Utwórz wirtualne sieci równorzędne. Ten krok spowoduje utworzenie dwóch komunikacji równorzędnych: jeden z **Kafka-Primary-VNET** - **Kafka-------** ------------------------- **--**
     1. Wybierz sieć wirtualną **Kafka-Primary-VNET** .
     1. Kliknij pozycję **Komunikacja równorzędna** w obszarze **Ustawienia**.
-    1. Kliknij przycisk **Dodaj**.
+    1. Kliknij pozycję **Dodaj**.
     1. Na ekranie **Dodawanie komunikacji równorzędnej** wprowadź szczegóły, jak pokazano na poniższym zrzucie ekranu.
 
-        ![Dodawanie komunikacji równorzędnej sieci wirtualnej](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
+        ![Usługa HDInsight Kafka Dodawanie komunikacji równorzędnej sieci wirtualnej](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
 
 1. Skonfiguruj anonsowanie adresów IP:
     1. Przejdź do pulpitu nawigacyjnego Ambari dla klastra podstawowego: `https://PRIMARYCLUSTERNAME.azurehdinsight.net`.
     1. Kliknij pozycję **usługi** > **Kafka**. Kliknij kartę **konfiguracje** .
-    1. Dodaj następujące wiersze konfiguracji do dolnej sekcji **szablonu Kafka-ENV** . Kliknij polecenie **Zapisz**.
+    1. Dodaj następujące wiersze konfiguracji do dolnej sekcji **szablonu Kafka-ENV** . Kliknij pozycję **Zapisz**.
     
         ```
         # Configure Kafka to advertise IP addresses instead of FQDN
@@ -104,18 +104,18 @@ Ta architektura zawiera dwa klastry w różnych grupach zasobów i sieci wirtual
     1. Kliknij przycisk **OK** na stronie **Zapisywanie zmian konfiguracji**.
     1. Kliknij pozycję **Uruchom ponownie** > **Uruchom ponownie wszystkie, których dotyczy** powiadomienie **wymagane do ponownego uruchomienia** . Kliknij przycisk **Potwierdź ponowne uruchomienie wszystkich**.
 
-        ![Uruchom ponownie węzły Kafka](./media/apache-kafka-mirroring/ambari-restart-notification.png)
+        ![System Apache Ambari](./media/apache-kafka-mirroring/ambari-restart-notification.png)
 
 1. Skonfiguruj Kafka do nasłuchiwania na wszystkich interfejsach sieciowych.
     1. Pozostań na **karcie konfiguracje w** obszarze **usługi** > **Kafka**. W sekcji **brokera Kafka** ustaw właściwość **detektory** na `PLAINTEXT://0.0.0.0:9092`.
-    1. Kliknij polecenie **Zapisz**.
+    1. Kliknij pozycję **Zapisz**.
     1. Kliknij przycisk **Uruchom ponownie**, a następnie **Potwierdź ponowne uruchomienie wszystkich**.
 
 1. Rejestruj adresy IP brokera i adresy dozorcy dla klastra podstawowego.
     1. Kliknij pozycję **hosty** na pulpicie nawigacyjnym Ambari.
     1. Zanotuj adresy IP dla brokerów i Dozorcami. Węzły brokera mają wartość **WN** jako pierwsze dwie litery nazwy hosta, a węzły dozorcy mają **ZK** jako pierwsze dwie litery nazwy hosta.
 
-        ![Wyświetl adresy IP](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
+        ![Adresy IP węzłów widoku Apache Ambari](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
 
 1. Powtórz poprzednie trzy kroki dla drugiego klastra **Kafka-dodatkowy**klaster: Skonfiguruj anonsowanie adresów IP, ustaw odbiorniki i zanotuj adresy IP brokera i dozorcy.
 
@@ -251,7 +251,7 @@ Ta architektura zawiera dwa klastry w różnych grupach zasobów i sieci wirtual
         6. Zmień wartość `auto.create.topics.enable` na true, a następnie wybierz pozycję __Zapisz__. Dodaj notatkę, a następnie wybierz pozycję __Zapisz__ ponownie.
         7. Wybierz usługę __Kafka__ , wybierz pozycję __Uruchom ponownie__, a następnie wybierz pozycję __Uruchom ponownie wszystkie uwzględnione__. Po wyświetleniu monitu wybierz pozycję __Potwierdź ponowne uruchomienie wszystkich__.
 
-        ![Konfigurowanie autotworzenia tematu](./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png)
+        ![Kafka Włącz tematy AutoCreate](./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png)
 
 ## <a name="start-mirrormaker"></a>Uruchom narzędzia MirrorMaker
 

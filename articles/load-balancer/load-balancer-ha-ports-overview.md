@@ -11,14 +11,14 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/11/2018
+ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: 89deedd3ef99ba76d0bb133bac37c0acee0a9f73
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 350c6ae2e62a88477ce67132b56d9253166d13ec
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275017"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130444"
 ---
 # <a name="high-availability-ports-overview"></a>Omówienie portów wysokiej dostępności
 
@@ -26,7 +26,7 @@ Standardowa usługa równoważenia obciążenia Azure pomaga w przepływy TCP i 
 
 Reguła równoważenia obciążenia portów o wysokiej dostępności (HA) jest wariantem reguły równoważenia obciążenia skonfigurowanej w wewnętrznej usługa Load Balancer w warstwie Standardowa. Korzystanie z usługi równoważenia obciążenia można uprościć, podając jedną regułę równoważenia obciążenia, wszystkie protokoły TCP i UDP przepływy, pojawiające się na wszystkich portach wewnętrznego standardowego modułu równoważenia obciążenia. Decyzja równoważenia obciążenia składa się na przepływ. Ta akcja jest oparta na następującym połączeniu z pięcioma kolekcjami: źródłowy adres IP, port źródłowy, docelowy adres IP, port docelowy i protokół
 
-Reguły równoważenia obciążenia portów HA ułatwiają scenariusze krytyczne, takie jak wysoka dostępność i skalowanie dla wirtualnych urządzeń sieciowych (urządzeń WUS) wewnątrz sieci wirtualnych. Ta funkcja może również pomóc w przypadku dużej liczby portów muszą być ze zrównoważonym obciążeniem. 
+Reguły równoważenia obciążenia portów HA ułatwiają scenariusze krytyczne, takie jak wysoka dostępność i skalowanie dla wirtualnych urządzeń sieciowych (urządzeń WUS) w sieciach wirtualnych. Ta funkcja może również pomóc w przypadku dużej liczby portów muszą być ze zrównoważonym obciążeniem. 
 
 Reguły równoważenia obciążenia portów HA są konfigurowane podczas ustawiania portów frontonu i zaplecza na **0** i protokołu do **wszystkich**. Następnie zasób wewnętrznego modułu równoważenia obciążenia równoważy wszystkie przepływy TCP i UDP niezależnie od numeru portu
 
@@ -94,16 +94,14 @@ Można skonfigurować *jeden* zasób publicznego standardowego modułu równowa�
 
 ## <a name="limitations"></a>Ograniczenia
 
-- Zaświadczanie o kondycji konfiguracji portów jest dostępna tylko dla wewnętrznych modułów równoważenia obciążenia. Nie jest dostępna dla publiczne moduły równoważenia obciążenia.
-
+- Reguły równoważenia obciążenia portów HA są dostępne tylko dla wewnętrznych usługa Load Balancer w warstwie Standardowa.
 - Łączenie z wysokiej dostępności portów reguły równoważenia obciążenia i porty bez wysokiej dostępności, reguły równoważenia obciążenia nie jest obsługiwane.
+- Istniejące fragmenty adresów IP będą przekazywane przez reguły równoważenia obciążenia portów HA do tego samego miejsca docelowego, co pierwszy pakiet.  Fragmentacja IP pakietu UDP lub TCP nie jest obsługiwana.
+- Reguły równoważenia obciążenia portów HA nie są dostępne dla protokołu IPv6.
+- Mechanizm symetrii przepływów (głównie dla scenariuszy urządzenie WUS) jest obsługiwany z wystąpieniem zaplecza i jedną kartą sieciową (i konfiguracją pojedynczego adresu IP) tylko wtedy, gdy jest używana jak pokazano na powyższym diagramie i przy użyciu zasad równoważenia obciążenia portów HA. Nie jest ona dostępna w żadnym innym scenariuszu. Oznacza to, że co najmniej dwa zasoby Load Balancer i ich odpowiednie zasady podejmują niezależne decyzje i nigdy nie są koordynowane. Zobacz opis i diagram dla [sieciowych urządzeń wirtualnych](#nva). W przypadku korzystania z wielu kart sieciowych lub urządzenie WUSi między publiczną i wewnętrzną Load Balancer, symetria przepływu jest niedostępna.  Możliwe jest obejście tego problemu ze źródłem NAT'ing przepływ transferu danych przychodzących do adresu IP urządzenia, aby umożliwić odpowiedzi na te same urządzenie WUS.  Jednak zdecydowanie zalecamy korzystanie z jednej karty sieciowej i używanie architektury referencyjnej pokazanej na powyższym diagramie.
 
-- Funkcja portów wysokiej dostępności jest niedostępna dla protokołu IPv6.
 
-- Mechanizm symetrii przepływów (głównie dla scenariuszy urządzenie WUS) jest obsługiwany z wystąpieniem zaplecza i pojedynczą konfiguracją kart sieciowych (i konfiguracji pojedynczego adresu IP) tylko wtedy, gdy jest używany, jak pokazano na powyższym diagramie i przy użyciu reguł równoważenia obciążenia portów HA. Nie jest ona dostępna w żadnym innym scenariuszu. Oznacza to, że co najmniej dwa zasoby Load Balancer i ich odpowiednie zasady podejmują niezależne decyzje i nigdy nie są koordynowane. Zobacz opis i diagram dla [sieciowych urządzeń wirtualnych](#nva). Gdy korzystasz z wielu kart sieciowych lub z urządzenie WUSą między publiczną i wewnętrzną Load Balancer, symetria przepływu jest niedostępna.  Możliwe jest obejście tego problemu ze źródłem NAT'ing przepływ transferu danych przychodzących do adresu IP urządzenia, aby umożliwić odpowiedzi na te same urządzenie WUS.  Jednak zdecydowanie zalecamy korzystanie z jednej karty sieciowej i używanie architektury referencyjnej pokazanej na powyższym diagramie.
-
-
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Konfigurowanie portów wysokiej dostępności na wewnętrznego standardowego modułu równoważenia obciążenia](load-balancer-configure-ha-ports.md)
 - [Dowiedz się więcej o standardowego modułu równoważenia obciążenia](load-balancer-standard-overview.md)

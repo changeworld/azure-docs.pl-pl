@@ -12,14 +12,14 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 09/19/2019
 ms.author: cephalin
-ms.openlocfilehash: b86f08fbcb661ae4266658016de7aa92da785bf9
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 35618b80dc4731f4d679bab9f035987af50730e8
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070597"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129717"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Konfigurowanie środowisk przejściowych w Azure App Service
 <a name="Overview"></a>
@@ -39,7 +39,7 @@ Aby skalować aplikację do innej warstwy, upewnij się, że warstwa docelowa ob
 <a name="Add"></a>
 
 ## <a name="add-a-slot"></a>Dodaj miejsce
-Aplikacja musi być uruchomiona w warstwie **standardowa**, **Premium**lub izolowanej , aby można było włączyć wiele miejsc wdrożenia.
+Aplikacja musi być uruchomiona w warstwie **standardowa**, **Premium**lub **izolowanej** , aby można było włączyć wiele miejsc wdrożenia.
 
 1. W [Azure Portal](https://portal.azure.com/)Otwórz [stronę zasobów](../azure-resource-manager/manage-resources-portal.md#manage-resources)aplikacji.
 
@@ -48,7 +48,7 @@ Aplikacja musi być uruchomiona w warstwie **standardowa**, **Premium**lub izolo
     ![Dodaj nowe miejsce wdrożenia](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
    
    > [!NOTE]
-   > Jeśli aplikacja nie jest jeszcze w warstwie **standardowa**, **Premium**lub **izolowana** , zostanie wyświetlony komunikat z informacją o obsługiwanych warstwach umożliwiających publikowanie etapowe. W tym momencie możesz wybrać opcję Uaktualnij i przejść do karty **Skala** aplikacji przed kontynuowaniem.
+   > Jeśli aplikacja nie jest jeszcze w warstwie **standardowa**, **Premium**lub **izolowana** , zostanie wyświetlony komunikat z informacją o obsługiwanych warstwach umożliwiających publikowanie etapowe. W tym momencie możesz wybrać opcję **Uaktualnij** i przejść do karty **Skala** aplikacji przed kontynuowaniem.
    > 
 
 3. W oknie dialogowym **Dodaj gniazdo** Nadaj nazwę gnieździe i wybierz, czy chcesz sklonować konfigurację aplikacji z innego miejsca wdrożenia. Wybierz pozycję **Dodaj** , aby kontynuować.
@@ -88,7 +88,7 @@ W przypadku wymiany dwóch gniazd (zwykle z miejsca przejściowego w gnieździe 
 
 1. Jeśli [lokalna pamięć podręczna](overview-local-cache.md) jest włączona, Wyzwalaj inicjalizację lokalnej pamięci podręcznej, wysyłając żądanie HTTP do głównego katalogu aplikacji ("/") w każdym wystąpieniu miejsca źródłowego. Poczekaj, aż każde wystąpienie zwróci odpowiedź HTTP. Inicjalizacja lokalnej pamięci podręcznej powoduje inne ponowne uruchomienie każdego wystąpienia.
 
-1. Jeśli [Funkcja autoswap](#Auto-Swap) jest włączona [](#Warm-up)z niestandardowym rozruchem, wyzwól [INICJOWANIE aplikacji](https://docs.microsoft.com/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) , wysyłając żądanie HTTP do głównego katalogu aplikacji ("/") w każdym wystąpieniu miejsca źródłowego.
+1. Jeśli [Funkcja autoswap](#Auto-Swap) jest włączona z [niestandardowym rozruchem](#Warm-up), wyzwól [INICJOWANIE aplikacji](https://docs.microsoft.com/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) , wysyłając żądanie HTTP do głównego katalogu aplikacji ("/") w każdym wystąpieniu miejsca źródłowego.
 
     Jeśli `applicationInitialization` nie jest określony, wyzwól żądanie HTTP do katalogu głównego aplikacji w gnieździe źródłowym dla każdego wystąpienia. 
     
@@ -124,7 +124,7 @@ Aby wymienić miejsca wdrożenia:
    
     ![Przycisk zamiany](./media/web-sites-staged-publishing/SwapButtonBar.png)
 
-    Okno dialogowe Zamiana zawiera ustawienia w wybranych źródłowej i docelowej gnieździe, które zostaną zmienione.
+    Okno dialogowe **Zamiana** zawiera ustawienia w wybranych źródłowej i docelowej gnieździe, które zostaną zmienione.
 
 2. Wybierz żądane miejsce **źródłowe** i **docelowe** . Zwykle miejscem docelowym jest miejsce produkcyjne. Zaznacz również karty **zmiany źródła** i **docelowe zmiany** , a następnie sprawdź, czy zmiany konfiguracji są oczekiwane. Po zakończeniu możesz zamienić miejsca bezpośrednio, wybierając pozycję **Zamień**.
 
@@ -151,7 +151,7 @@ W przypadku anulowania zamiany App Service ponowne stosowanie elementów konfigu
 
 Aby zamienić z podglądem:
 
-1. Postępuj zgodnie z instrukcjami w [miejsc wdrożenia wymiany](#Swap) , ale wybierz pozycję Przeprowadź **wymianę z podglądem**.
+1. Postępuj zgodnie z instrukcjami w [miejsc wdrożenia wymiany](#Swap) , ale wybierz pozycję **Przeprowadź wymianę z podglądem**.
 
     ![Zamień z podglądem](./media/web-sites-staged-publishing/SwapWithPreview.png)
 
@@ -219,6 +219,9 @@ Możesz również dostosować zachowanie rozgrzewania, korzystając z jednego lu
 
 - `WEBSITE_SWAP_WARMUP_PING_PATH`: Ścieżka do polecenia ping do rozgrzewania lokacji. Dodaj to ustawienie aplikacji, określając ścieżkę niestandardową rozpoczynającą się od ukośnika jako wartość. Może to być na przykład `/statuscheck`. Wartość domyślna to `/`. 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Prawidłowe kody odpowiedzi HTTP dla operacji rozgrzewania. Dodaj to ustawienie aplikacji z rozdzieloną przecinkami listą kodów HTTP. Przykładem jest `200,202` . Jeśli zwrócony kod stanu nie znajduje się na liście, operacje rozgrzewania i swap są zatrzymane. Domyślnie wszystkie kody odpowiedzi są prawidłowe.
+
+> [!NOTE]
+> `<applicationInitialization>`jest częścią każdego uruchomienia aplikacji, gdzie te dwa ustawienia aplikacji mają zastosowanie tylko do zamian w gnieździe.
 
 Jeśli masz jakieś problemy, zobacz [Rozwiązywanie problemów z wymianą](#troubleshoot-swaps).
 
@@ -350,7 +353,7 @@ Poniżej przedstawiono niektóre typowe błędy wymiany:
 
 - Inicjowanie lokalnej pamięci podręcznej może zakończyć się niepowodzeniem, gdy zawartość aplikacji przekracza limit przydziału dysku lokalnego określonego dla lokalnej pamięci podręcznej. Aby uzyskać więcej informacji, zobacz [lokalna pamięć podręczna — Omówienie](overview-local-cache.md).
 
-- Podczas [](#Warm-up)niestandardowej rozgrzewania żądania HTTP są wykonywane wewnętrznie (bez przechodzenia przez zewnętrzny adres URL). Mogą oni zakończyć się niepowodzeniem z określonymi regułami ponownego zapisywania adresów URL w *pliku Web. config*. Na przykład reguły przekierowania nazw domen lub wymuszania protokołu HTTPS mogą uniemożliwiać rozgrzane żądania docierające do kodu aplikacji. Aby obejść ten problem, zmodyfikuj reguły ponownego zapisu, dodając następujące dwa warunki:
+- Podczas [niestandardowej rozgrzewania](#Warm-up)żądania HTTP są wykonywane wewnętrznie (bez przechodzenia przez zewnętrzny adres URL). Mogą oni zakończyć się niepowodzeniem z określonymi regułami ponownego zapisywania adresów URL w *pliku Web. config*. Na przykład reguły przekierowania nazw domen lub wymuszania protokołu HTTPS mogą uniemożliwiać rozgrzane żądania docierające do kodu aplikacji. Aby obejść ten problem, zmodyfikuj reguły ponownego zapisu, dodając następujące dwa warunki:
 
     ```xml
     <conditions>
@@ -368,6 +371,8 @@ Poniżej przedstawiono niektóre typowe błędy wymiany:
     </conditions>
     ```
 - Niektóre [reguły ograniczeń adresów IP](app-service-ip-restrictions.md) mogą uniemożliwiać operacji zamiany wysyłanie żądań HTTP do aplikacji. Zakresy adresów IPv4, które zaczynają `100.` się od `10.` i są wewnętrzne dla Twojego wdrożenia. Należy zezwolić im na łączenie się z Twoją aplikacją.
+
+- Po wymianie gniazd może wystąpić nieoczekiwane ponowne uruchomienie aplikacji. Jest to spowodowane tym, że po wymianie Konfiguracja powiązania nazwy hosta nie jest zsynchronizowana, co nie powoduje ponownego uruchomienia. Jednak niektóre bazowe zdarzenia magazynu (takie jak przełączanie awaryjne woluminu magazynu) mogą wykryć te rozbieżności i wymusić ponowne uruchomienie wszystkich procesów roboczych. Aby zminimalizować te typy ponownych uruchomień, należy ustawić [ `WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1` ustawienie aplikacji](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig) na *wszystkie gniazda*. To ustawienie aplikacji *nie działa jednak* z aplikacjami Windows Communication Foundation (WCF).
 
 ## <a name="next-steps"></a>Następne kroki
 [Blokuj dostęp do gniazd nieprodukcyjnych](app-service-ip-restrictions.md)

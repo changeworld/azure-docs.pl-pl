@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: aahi
-ms.openlocfilehash: efac8755be8435ae7929fdcb2ecedb4959c363b9
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 953699793d81485e3828b9fb46de8523d2b7674e
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097139"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129998"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Obsługa języka i regionu dla interfejs API analizy tekstu
 
@@ -32,10 +32,10 @@ Jeśli masz zawartość wyrażoną w rzadziej używanym języku, możesz spróbo
 ## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>Analiza tonacji, wyodrębnianie kluczowych fraz i nazwanego rozpoznawania jednostek
 
 W przypadku analizy tonacji, wyodrębniania kluczowych fraz i rozpoznawania jednostek Lista obsługiwanych języków jest bardziej selektywna, ponieważ analizatory są udoskonalane w celu uwzględnienia reguł lingwistycznych dodatkowych języków. Obsługa pełnego zestawu [typów jednostek](how-tos/text-analytics-how-to-entity-linking.md#supported-types-for-named-entity-recognition) jest obecnie ograniczona do następujących języków: 
-* Angielski
+* Polski
 * Chiński (uproszczony)
 * Francuski
-* niemiecki
+* Niemiecki
 * Hiszpański
 
 Tylko jednostki i`Organization`nazwane są zwracane dla innych języków. `Location` `Person`
@@ -49,13 +49,13 @@ Obsługa języka jest początkowo wdrażana w wersji zapoznawczej, z stopniowani
 | Arabski      | `ar`          |           |             | ✔ \*                     | |
 | Czeski       | `cs`          |           |             | ✔ \*                     | |
 | Chiński (uproszczony) | `zh-hans`| ✔ \***     |             | ✔         |    |
-| Chiński (tradycyjny) | `zh-hant`| ✔ \***     |             | ✔         |    |
+| Chiński (tradycyjny) | `zh-hant`| ✔ \***     |             |          |    |
 | Duński      | `da`          | ✔ \*     | ✔           | ✔ \*            |     |
 | Holenderski       | `nl`          | ✔ \*     | ✔          |  ✔ \*           |     |
-| Angielski     | `en`          | ✔ \***       | ✔           |  ✔ \*\*     |      |
+| Polski     | `en`          | ✔ \***       | ✔           |  ✔ \*\*     |      |
 | Fiński     | `fi`          | ✔ \*     | ✔           |  ✔ \*           |     |
 | Francuski      | `fr`          | ✔ \***       | ✔           |  ✔            |     |
-| niemiecki      | `de`          | ✔ \*     | ✔           |  ✔           |     |
+| Niemiecki      | `de`          | ✔ \*     | ✔           |  ✔           |     |
 | Grecki       | `el`          | ✔ \*     |             |            |     |
 | Węgierski   | `hu`          |           |             |  ✔ \*          |     | 
 | Włoski     | `it`          | ✔ \***     | ✔           |  ✔ \*           |     |

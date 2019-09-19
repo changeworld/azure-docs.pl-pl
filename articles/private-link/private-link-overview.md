@@ -1,20 +1,20 @@
 ---
-title: Co to jest połączenie prywatne platformy Azure?
-description: Dowiedz się więcej o usłudze Azure Private link.
-services: virtual-network
+title: Co to jest łącze prywatne platformy Azure?
+description: Dowiedz się, jak korzystać z prywatnego linku platformy Azure, aby uzyskiwać dostęp do usług Azure PaaS Services (na przykład Azure Storage i SQL Database) oraz hostowanych usług klienta i partnerskich platformy Azure za pośrednictwem prywatnego punktu końcowego w sieci wirtualnej.
+services: private-link
 author: KumudD
-ms.service: virtual-network
+ms.service: private-link
 ms.topic: overview
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 9b7dea0507d4434274d78546b98961b008ea8cd8
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: fc3ae87ce5c4547526ae50f371684ac14dfcf266
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71017892"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104658"
 ---
-# <a name="what-is-azure-private-link-preview"></a>Co to jest połączenie prywatne platformy Azure? (Wersja zapoznawcza)
+# <a name="what-is-azure-private-link-preview"></a>Co to jest łącze prywatne platformy Azure? (Wersja zapoznawcza)
 Link prywatny platformy Azure umożliwia dostęp do usług Azure PaaS Services (na przykład Azure Storage i SQL Database) oraz hostowanych usług klienta i partnerskich platformy Azure za pośrednictwem [prywatnego punktu końcowego](private-endpoint-overview.md) w sieci wirtualnej. Ruch między siecią wirtualną a usługą odbywa się za pośrednictwem sieci szkieletowej firmy Microsoft, eliminując ekspozycję z publicznego Internetu. Możesz również utworzyć własną [prywatną usługę linku](private-link-service-overview.md) w sieci wirtualnej (VNET) i dostarczyć ją prywatnie do klientów. Środowisko instalacji i użycia korzystające z prywatnego linku platformy Azure jest spójne w przypadku usługi Azure PaaS, należącej do klienta i udostępnionych usług partnerskich.
 
 > [!IMPORTANT]

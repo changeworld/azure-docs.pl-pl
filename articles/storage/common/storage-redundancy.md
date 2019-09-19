@@ -9,12 +9,12 @@ ms.date: 09/17/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 3640d2d88fc679b78395472c667fcde39979728a
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 6a598ad3f68c613a745fd56f3b368e309afeb8b6
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71074348"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122979"
 ---
 # <a name="azure-storage-redundancy"></a>Nadmiarowość usługi Azure Storage
 
@@ -28,12 +28,7 @@ Usługa Azure Storage regularnie weryfikuje integralność danych przechowywanyc
 
 Podczas tworzenia konta magazynu można wybrać jedną z następujących opcji nadmiarowości:
 
-- [Magazyn lokalnie nadmiarowy (LRS)](storage-redundancy-lrs.md)
-- [Magazyn strefowo nadmiarowy (ZRS)](storage-redundancy-zrs.md)
-- [Magazyn geograficznie nadmiarowy (GRS)](storage-redundancy-grs.md)
-- [Magazyn geograficznie nadmiarowy dostępny do odczytu (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage)
-- [Magazyn Geograficznie nadmiarowy (GZRS)](storage-redundancy-gzrs.md)
-- [Strefa geograficzna z dostępem do odczytu — magazyn nadmiarowy (RA-GZRS)](storage-redundancy-gzrs.md)
+[!INCLUDE [azure-storage-redundancy](../../../includes/azure-storage-redundancy.md)]
 
 Poniższa tabela zawiera krótkie omówienie zakresu trwałości i dostępności poszczególnych strategii replikacji dla danego typu zdarzenia (lub zdarzenia podobnego wpływu).
 
@@ -55,7 +50,7 @@ Aby uzyskać informacje o cenach dla każdej opcji nadmiarowości, zobacz [Cenni
 Aby uzyskać informacje na temat gwarancji usługi Azure Storage w zakresie trwałości i dostępności, zobacz umowę SLA dotyczącą [usługi Azure Storage](https://azure.microsoft.com/support/legal/sla/storage/).
 
 > [!NOTE]
-> Usługa Azure Premium Storage obsługuje tylko Magazyn lokalnie nadmiarowy (LRS).
+> Usługa Azure Premium Storage obecnie obsługuje tylko Magazyn lokalnie nadmiarowy (LRS).
 
 ## <a name="changing-replication-strategy"></a>Zmiana strategii replikacji
 

@@ -4,7 +4,7 @@ description: Poniżej przedstawiono niektóre typowe przyczyny niepowodzenia uru
 services: cloud-services
 documentationcenter: ''
 author: simonxjx
-manager: felixwu
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 674b2faf-26d7-4f54-99ea-a9e02ef0eb2f
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 9e1ae9ca6106a6a55e0cfc933ad47a5944ed5abb
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 869453d92f536a62aacc2be52598223158566ae0
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945393"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122728"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>Rozwiązywanie problemów z rolami usługi w chmurze, których nie można uruchomić
 Poniżej przedstawiono niektóre typowe problemy i rozwiązania dotyczące ról Cloud Services platformy Azure, których nie można uruchomić.
@@ -75,7 +75,7 @@ Przechodzenie do witryny sieci Web spowoduje teraz zwrócenie bardziej jawnych k
 
 * Błąd serwera w aplikacji "/".
 * Opis: Wystąpił nieobsługiwany wyjątek podczas wykonywania bieżącego żądania sieci Web. Przejrzyj ślad stosu, aby uzyskać więcej informacji o błędzie i o tym, skąd pochodzi w kodzie.
-* Szczegóły wyjątku: System.IO.FIleNotFoundException: Nie można załadować pliku lub zestawu "Microsoft. WindowsAzure. StorageClient, Version = 1.1.0.0, Culture = neutral, PublicKeyToken = 31bf856ad364e35" lub jednej z jego zależności. W systemie nie można odnaleźć określonego pliku.
+* Szczegóły wyjątku: System.IO.FIleNotFoundException: Nie można załadować pliku lub zestawu "Microsoft. WindowsAzure. StorageClient, Version = 1.1.0.0, Culture = neutral, PublicKeyToken = 31bf856ad364e35" lub jednej z jego zależności. System nie może znaleźć określonego pliku.
 
 Na przykład:
 

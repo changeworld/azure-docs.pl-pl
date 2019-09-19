@@ -1,63 +1,63 @@
 ---
-title: Wysyłanie i odbieranie wiadomości za pomocą Azure Service Bus-Azure Logic Apps | Microsoft Docs
-description: Konfigurowanie obsługi komunikatów w chmurze dla przedsiębiorstw przy użyciu Azure Service Bus w Azure Logic Apps
+title: Wysyłanie i odbieranie komunikatów przy użyciu Azure Service Bus-Azure Logic Apps
+description: Konfigurowanie obsługi komunikatów w chmurze przedsiębiorstwa przy użyciu Azure Service Bus i Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
+ms.topic: conceptual
+ms.date: 09/19/2019
 ms.assetid: d6d14f5f-2126-4e33-808e-41de08e6721f
-ms.topic: article
 tags: connectors
-ms.date: 08/25/2018
-ms.openlocfilehash: 944bac44c1fc6504dfe1a93df5760ccf4ee46fa0
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: f2034686e4a8de5e1ccc246f49337a6600bf441f
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982209"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71120879"
 ---
-# <a name="exchange-messages-in-the-cloud-with-azure-service-bus-and-azure-logic-apps"></a>Wymiana komunikatów w chmurze przy użyciu Azure Service Bus i Azure Logic Apps
+# <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-with-azure-service-bus"></a>Wymiana komunikatów w chmurze przy użyciu Azure Logic Apps z Azure Service Bus
 
-Dzięki usłudze Azure Logic Apps i łącznikowi usługi Azure Service Bus możesz tworzyć automatyczne zadania i przepływy pracy, które przesyłają dane, takie jak zamówienia sprzedaży i zakupu, dzienniki oraz przesunięcia magazynowe między aplikacjami w organizacji. Łącznik nie tylko monitoruje, wysyła i zarządza komunikatami, ale wykonuje także akcje z kolejkami, sesjami, tematami, subskrypcjami i tak dalej, na przykład:
+Za pomocą [Azure Logic Apps](../logic-apps/logic-apps-overview.md) i łącznika [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) można tworzyć automatyczne zadania i przepływy pracy, które przesyłają dane, takie jak zamówienia sprzedaży i zakupu, dzienniki i przesunięcia spisu między aplikacjami w organizacji. Łącznik nie tylko monitoruje, wysyła i zarządza komunikatami, ale wykonuje także akcje z kolejkami, sesjami, tematami, subskrypcjami i tak dalej, na przykład:
 
-* Monitoruj po nadejściu wiadomości (Autouzupełnianie) lub odebraniu (wgląd-blokada) w kolejkach, tematach i subskrypcjach tematów. 
+* Monitoruj po nadejściu wiadomości (Autouzupełnianie) lub odebraniu (wgląd-blokada) w kolejkach, tematach i subskrypcjach tematów.
 * Wysyłanie komunikatów.
 * Tworzenie i usuwanie subskrypcji tematu.
 * Zarządzanie komunikatami w kolejkach i subskrypcjami tematów, na przykład pobieranie, pobieranie odroczone, pełne, odkładanie, porzucanie i martwe.
 * Odnów blokady komunikatów i sesji w kolejkach i subskrypcjach tematów.
 * Zamknij sesje w kolejkach i tematach.
 
-Można użyć wyzwalaczy, które pobierają odpowiedzi z Service Bus i udostępnić dane wyjściowe innym akcjom w usłudze Logic Apps. Możesz również mieć inne akcje, które używają danych wyjściowych z Service Bus akcji. Jeśli dopiero zaczynasz Service Bus i Logic Apps, zapoznaj [się z tematem co to jest Azure Service Bus?](../service-bus-messaging/service-bus-messaging-overview.md) [co to jest Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+Można użyć wyzwalaczy, które pobierają odpowiedzi z Service Bus i udostępnić dane wyjściowe innym akcjom w usłudze Logic Apps. Możesz również mieć inne akcje, które używają danych wyjściowych z Service Bus akcji. Jeśli dopiero zaczynasz Service Bus i Logic Apps, sprawdź, [co to jest Azure Service Bus?](../service-bus-messaging/service-bus-messaging-overview.md) i [co to jest Azure Logic Apps](../logic-apps/logic-apps-overview.md)?
+
+[!INCLUDE [Warning about creating infinite loops](../../includes/connectors-infinite-loops.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/). 
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
 
-* Service Bus przestrzeń nazw i jednostki obsługi komunikatów, takie jak kolejka. Jeśli nie masz tych elementów, Dowiedz się, jak [utworzyć Service Bus przestrzeń nazw i kolejkę](../service-bus-messaging/service-bus-create-namespace-portal.md). 
-
-  Te elementy muszą znajdować się w tej samej subskrypcji platformy Azure co Aplikacje logiki, które używają tych elementów.
+* Service Bus przestrzeń nazw i jednostki obsługi komunikatów, takie jak kolejka. Te elementy i aplikacja logiki muszą używać tej samej subskrypcji platformy Azure. Jeśli nie masz tych elementów, Dowiedz się, jak [utworzyć Service Bus przestrzeń nazw i kolejkę](../service-bus-messaging/service-bus-create-namespace-portal.md).
 
 * Podstawowa wiedza [na temat tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Aplikacja logiki, w której ma być używana Service Bus. Twoja aplikacja logiki musi znajdować się w tej samej subskrypcji platformy Azure co Usługa Service Bus. Aby rozpocząć pracę z wyzwalaczem Service Bus, [Utwórz pustą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Aby użyć akcji Service Bus, uruchom aplikację logiki z innym wyzwalaczem, na przykład wyzwalaczem **cyklu** .
+* Aplikacja logiki, w której jest używana Service Bus przestrzeni nazw i jednostki obsługi komunikatów. Twoja aplikacja logiki i Usługa Service Bus muszą korzystać z tej samej subskrypcji platformy Azure. Aby uruchomić przepływ pracy z wyzwalaczem Service Bus, [Utwórz pustą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Aby użyć akcji Service Bus w przepływie pracy, uruchom aplikację logiki z innym wyzwalaczem, na przykład [wyzwalaczem cyklu](../connectors/connectors-native-recurrence.md).
 
 <a name="permissions-connection-string"></a>
 
 ## <a name="check-permissions"></a>Sprawdź uprawnienia
 
-Upewnij się, że aplikacja logiki ma uprawnienia do uzyskiwania dostępu do przestrzeni nazw Service Bus. 
+Upewnij się, że aplikacja logiki ma uprawnienia do uzyskiwania dostępu do przestrzeni nazw Service Bus.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). 
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-2. Przejdź do *przestrzeni nazw*Service Bus. Na stronie przestrzeń nazw w obszarze **Ustawienia**wybierz pozycję **zasady dostępu**współdzielonego. W obszarze **oświadczenia**Sprawdź, czy masz uprawnienia do **zarządzania** tą przestrzenią nazw
+1. Przejdź do *przestrzeni nazw*Service Bus. Na stronie przestrzeń nazw w obszarze **Ustawienia**wybierz pozycję **zasady dostępu współdzielonego**. W obszarze **oświadczenia**Sprawdź, czy masz uprawnienia do **zarządzania** tą przestrzenią nazw.
 
-   ![Zarządzanie uprawnieniami dla przestrzeni nazw Service Bus](./media/connectors-create-api-azure-service-bus/azure-service-bus-namespace.png)
+   ![Zarządzaj uprawnieniami dla Service Bus przestrzeni nazw](./media/connectors-create-api-azure-service-bus/azure-service-bus-namespace.png)
 
-3. Pobierz parametry połączenia dla przestrzeni nazw Service Bus. Ten ciąg jest potrzebny, gdy wprowadzisz informacje o połączeniu w aplikacji logiki.
+1. Pobierz parametry połączenia dla przestrzeni nazw Service Bus. Ten ciąg jest potrzebny, gdy podajesz informacje o połączeniu w aplikacji logiki.
 
-   1. Wybierz **RootManageSharedAccessKey**. 
+   1. W okienku **zasady dostępu współdzielonego** wybierz pozycję **RootManageSharedAccessKey**.
    
    1. Obok podstawowych parametrów połączenia wybierz przycisk Kopiuj. Zapisz parametry połączenia do późniejszego użycia.
 
@@ -66,70 +66,93 @@ Upewnij się, że aplikacja logiki ma uprawnienia do uzyskiwania dostępu do prz
    > [!TIP]
    > Aby sprawdzić, czy parametry połączenia są skojarzone z przestrzenią nazw Service Bus, czy z jednostką obsługi komunikatów, taką jak kolejka, Wyszukaj parametry `EntityPath`połączenia dla  parametru. Jeśli ten parametr zostanie znaleziony, ciąg połączenia jest przeznaczony dla określonej jednostki i nie jest poprawnym ciągiem używanym z aplikacją logiki.
 
-## <a name="add-trigger-or-action"></a>Dodaj wyzwalacz lub akcję
+## <a name="add-service-bus-trigger"></a>Dodaj wyzwalacz Service Bus
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com)i Otwórz aplikację logiki w Projektancie aplikacji logiki, jeśli nie jest jeszcze otwarta.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com)i Otwórz pustą aplikację logiki w Projektancie aplikacji logiki.
 
-1. Aby dodać *wyzwalacz* do pustej aplikacji logiki, w polu wyszukiwania wprowadź ciąg "Azure Service Bus" jako filtr. Na liście Wyzwalacze wybierz wyzwalacz, który chcesz. 
+1. W polu wyszukiwania wprowadź ciąg "Azure Service Bus" jako filtr. Z listy Wyzwalacze wybierz wyzwalacz, który chcesz.
 
-   Na przykład, aby wyzwolić aplikację logiki, gdy nowy element zostanie wysłany do kolejki Service Bus, wybierz ten wyzwalacz: **Po odebraniu komunikatu w kolejce (Autouzupełnianie)**
+   Na przykład, aby wyzwolić aplikację logiki, gdy nowy element zostanie wysłany do kolejki Service Bus, wybierz opcję **po odebraniu komunikatu w kolejce (Autouzupełnianie)** .
 
    ![Wybierz wyzwalacz Service Bus](./media/connectors-create-api-azure-service-bus/select-service-bus-trigger.png)
 
-   > [!NOTE]
-   > Niektóre wyzwalacze mogą zwrócić jeden lub komunikaty, na przykład wyzwalacz, **gdy co najmniej jeden komunikat dociera do kolejki (Autouzupełnianie)** . Kiedy te wyzwalacze są wyzwalane, zwracają między jedną i liczbę komunikatów określonych przez właściwość **maksymalnej liczby komunikatów** wyzwalacza.
+   Wszystkie wyzwalacze Service Bus są wyzwalaczami *długiego sondowania* . Ten opis oznacza, że podczas uruchamiania wyzwalacza, wyzwalacz przetwarza wszystkie komunikaty, a następnie czeka 30 sekund, aby więcej komunikatów pojawiło się w ramach subskrypcji kolejki lub tematu. Jeśli w ciągu 30 sekund nie pojawią się żadne komunikaty, uruchomienie wyzwalacza zostanie pominięte. W przeciwnym razie wyzwalacz będzie kontynuował odczytywanie wiadomości do momentu, gdy subskrypcja kolejki lub tematu nie jest pusta. Sonda następnego wyzwalacza zależy od interwału cyklu określonego we właściwościach wyzwalacza.
 
-   *Wszystkie wyzwalacze Service Bus są wyzwalaczami o długim sondowaniu*, co oznacza, że wyzwalany jest wyzwalacz, wyzwalacz przetwarza wszystkie komunikaty, a następnie czeka 30 sekund, aby więcej komunikatów pojawiło się w kolejce lub subskrypcji tematu. 
-   Jeśli w ciągu 30 sekund nie pojawią się żadne komunikaty, uruchomienie wyzwalacza zostanie pominięte. 
-   W przeciwnym razie wyzwalacz będzie kontynuował odczytywanie wiadomości do momentu, gdy subskrypcja kolejki lub tematu nie jest pusta. Sonda następnego wyzwalacza zależy od interwału cyklu określonego we właściwościach wyzwalacza.
+   Niektóre wyzwalacze, takie jak **po nadejściu co najmniej jednego komunikatu w kolejce (AutoComplete)** , mogą zwracać jeden lub komunikaty. Kiedy te wyzwalacze są wyzwalane, zwracają między jedną i liczbę komunikatów, które są określone przez wartość właściwości **Maksymalna liczba komunikatów** wyzwalacza.
 
-1. Aby dodać *akcję* do istniejącej aplikacji logiki, wykonaj następujące kroki: 
-
-   1. W ostatnim kroku, w którym chcesz dodać akcję, wybierz pozycję **nowy krok**. 
-
-      Aby dodać akcję między krokami, przesuń wskaźnik myszy nad strzałkę między krokami. 
-      Wybierz wyświetlony znak plus ( **+** ), a następnie wybierz pozycję **Dodaj akcję**.
-
-   1. W polu wyszukiwania wprowadź ciąg "Azure Service Bus" jako filtr. 
-   Na liście Akcje wybierz żądaną akcję. 
- 
-      Na przykład wybierz tę akcję: **Wyślij wiadomość**
-
-      ![Wybierz akcję Service Bus](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
-
-1. Jeśli łączysz aplikację logiki z przestrzenią nazw Service Bus po raz pierwszy, projektant aplikacji logiki będzie teraz monitował o informacje o połączeniu. 
+1. Jeśli wyzwalacz nawiązuje połączenie z przestrzenią nazw Service Bus po raz pierwszy, wykonaj następujące kroki, gdy projektant aplikacji logiki monituje o informacje o połączeniu.
 
    1. Podaj nazwę połączenia i wybierz swoją przestrzeń nazw Service Bus.
 
-      ![Utwórz połączenie Service Bus, część 1](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-1.png)
+      ![Utwórz połączenie Service Bus, część 1](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-1.png)
 
-      Aby zamiast tego wprowadzić parametry połączenia, wybierz pozycję **ręcznie wprowadź informacje o połączeniu**. 
-      Jeśli nie masz parametrów połączenia, Dowiedz się, [jak znaleźć parametry połączenia](#permissions-connection-string).
+      Aby zamiast tego wprowadzić parametry połączenia, wybierz pozycję **ręcznie wprowadź informacje o połączeniu**. Jeśli nie masz parametrów połączenia, Dowiedz się, [jak znaleźć parametry połączenia](#permissions-connection-string).
 
-   1. Wybierz zasady Service Bus a następnie wybierz pozycję **Utwórz**.
+   1. Wybierz zasady Service Bus i wybierz pozycję **Utwórz**.
 
-      ![Utwórz połączenie Service Bus, część 2](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-2.png)
+      ![Utwórz połączenie Service Bus, część 2](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-2.png)
 
-1. Na potrzeby tego przykładu wybierz żądaną jednostkę obsługi komunikatów, na przykład kolejkę lub temat. W tym przykładzie wybierz kolejkę Service Bus. 
+   1. Wybierz żądaną jednostkę obsługi komunikatów, na przykład kolejkę lub temat. Na potrzeby tego przykładu wybierz kolejkę Service Bus.
    
-   ![Wybierz kolejkę Service Bus](./media/connectors-create-api-azure-service-bus/service-bus-select-queue.png)
+      ![Wybierz kolejkę Service Bus](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-trigger.png)
 
-1. Podaj niezbędne szczegóły wyzwalacza lub akcji. Na potrzeby tego przykładu postępuj zgodnie z odpowiednimi instrukcjami dla wyzwalacza lub akcji: 
+1. Podaj informacje niezbędne do wybranego wyzwalacza. Aby dodać inne dostępne właściwości do akcji, Otwórz listę **Dodaj nowy parametr** i wybierz żądane właściwości.
 
-   * **Dla wyzwalacza przykładu**: Ustawianie interwału sondowania i częstotliwości sprawdzania kolejki.
+   Dla wyzwalacza tego przykładu wybierz interwał sondowania i częstotliwość sprawdzania kolejki.
 
-     ![Konfigurowanie interwału sondowania](./media/connectors-create-api-azure-service-bus/service-bus-trigger-details.png)
+   ![Konfigurowanie interwału sondowania](./media/connectors-create-api-azure-service-bus/service-bus-trigger-details.png)
 
-     Gdy wszystko będzie gotowe, Kontynuuj tworzenie przepływu pracy aplikacji logiki, dodając odpowiednie akcje. Na przykład możesz dodać akcję, która wysyła wiadomość e-mail po nadejściu nowej wiadomości.
-     Gdy wyzwalacz sprawdzi swoją kolejkę i odnajdzie nowy komunikat, aplikacja logiki uruchamia wybrane akcje dla znalezionego komunikatu.
+   Aby uzyskać więcej informacji o dostępnych wyzwalaczach i właściwościach, zobacz [stronę odwołania](/connectors/servicebus/)łącznika.
 
-   * **Dla przykładowej akcji**: Wprowadź treść wiadomości i inne szczegóły. 
+1. Kontynuuj tworzenie aplikacji logiki, dodając odpowiednie akcje.
 
-     ![Podaj zawartość wiadomości i szczegóły](./media/connectors-create-api-azure-service-bus/service-bus-send-message-details.png)
+   Na przykład możesz dodać akcję, która wysyła wiadomość e-mail po nadejściu nowej wiadomości. Gdy wyzwalacz sprawdzi swoją kolejkę i odnajdzie nowy komunikat, aplikacja logiki uruchamia wybrane akcje dla znalezionego komunikatu.
 
-     Gdy wszystko będzie gotowe, Kontynuuj tworzenie przepływu pracy aplikacji logiki, dodając inne żądane akcje. Na przykład można dodać akcję, która wysyła wiadomość e-mail z potwierdzeniem wysłania wiadomości.
+## <a name="add-service-bus-action"></a>Dodaj akcję Service Bus
+
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
+
+1. Zaloguj się do [Azure Portal](https://portal.azure.com)i Otwórz aplikację logiki w Projektancie aplikacji logiki.
+
+1. W kroku, w którym chcesz dodać akcję, wybierz pozycję **nowy krok**.
+
+   Aby dodać akcję między krokami, przesuń wskaźnik myszy nad strzałkę między tymi krokami. Wybierz wyświetlony znak plus ( **+** ), a następnie wybierz pozycję **Dodaj akcję**.
+
+1. W obszarze **Wybierz akcję**w polu wyszukiwania wprowadź ciąg "Azure Service Bus" jako filtr. Z listy Akcje wybierz żądaną akcję. 
+
+   Na potrzeby tego przykładu wybierz akcję **Wyślij wiadomość** .
+
+   ![Wybierz akcję Service Bus](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
+
+1. Jeśli akcja nawiązuje połączenie z przestrzenią nazw Service Bus po raz pierwszy, wykonaj następujące kroki, gdy projektant aplikacji logiki monituje o informacje o połączeniu.
+
+   1. Podaj nazwę połączenia i wybierz swoją przestrzeń nazw Service Bus.
+
+      ![Utwórz połączenie Service Bus, część 1](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-1.png)
+
+      Aby zamiast tego wprowadzić parametry połączenia, wybierz pozycję **ręcznie wprowadź informacje o połączeniu**. Jeśli nie masz parametrów połączenia, Dowiedz się, [jak znaleźć parametry połączenia](#permissions-connection-string).
+
+   1. Wybierz zasady Service Bus i wybierz pozycję **Utwórz**.
+
+      ![Utwórz połączenie Service Bus, część 2](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-2.png)
+
+   1. Wybierz żądaną jednostkę obsługi komunikatów, na przykład kolejkę lub temat. Na potrzeby tego przykładu wybierz kolejkę Service Bus.
+
+      ![Wybierz kolejkę Service Bus](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-action.png)
+
+1. Podaj niezbędne szczegóły wybranej akcji. Aby dodać inne dostępne właściwości do akcji, Otwórz listę **Dodaj nowy parametr** i wybierz żądane właściwości.
+
+   Na przykład wybierz **zawartość** i właściwości **typu zawartości** , aby dodać je do akcji. Następnie określ zawartość wiadomości, która ma zostać wysłana.
+
+   ![Podaj zawartość wiadomości i szczegóły](./media/connectors-create-api-azure-service-bus/service-bus-send-message-details.png)
+
+   Aby uzyskać więcej informacji o dostępnych akcjach i ich właściwościach, zobacz [stronę odwołania](/connectors/servicebus/)łącznika.
+
+1. Kontynuuj tworzenie aplikacji logiki, dodając wszystkie inne akcje.
+
+   Na przykład możesz dodać akcję, która wysyła wiadomość e-mail, aby potwierdzić, że wiadomość została wysłana.
 
 1. Zapisz aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
 

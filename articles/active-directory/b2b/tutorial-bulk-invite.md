@@ -1,140 +1,110 @@
 ---
-title: Samouczek dotyczący masowych zapraszanie użytkowników we współpracy B2B — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+title: Samouczek zbiorczy zapraszania użytkowników współpracy B2B — Azure Active Directory | Microsoft Docs
 description: Z tego samouczka dowiesz się, jak wysyłać zaproszenia zbiorcze do zewnętrznych użytkowników współpracy w usłudze Azure AD B2B za pomocą programu PowerShell i pliku CSV.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: tutorial
-ms.date: 08/14/2018
+ms.date: 9/19/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3bd02afa1fe1aaba6602201f839468a58673c29
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: ec1a6ea8f363f2ddd4a9568700d5bff3330443c0
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277998"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128721"
 ---
-# <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>Samouczek: zbiorcze zapraszanie użytkowników współpracy B2B w usłudze Azure AD
+# <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users-preview"></a>Samouczek: Zbiorcze Zapraszanie użytkowników współpracy B2B usługi Azure AD (wersja zapoznawcza)
 
-Jeśli używasz funkcji współpracy B2B w usłudze Azure Active Directory (Azure AD) do pracy z partnerami zewnętrznymi, możesz równocześnie zapraszać wielu użytkowników-gości do swojej organizacji. Z tego samouczka dowiesz się, jak wysyłać zaproszenia zbiorcze do użytkowników zewnętrznych za pomocą programu PowerShell. W szczególności należy wykonać następujące czynności:
+|     |
+| --- |
+| W tym artykule opisano publiczną funkcję w wersji zapoznawczej programu Azure Active Directory. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz temat [Dodatkowe warunki użytkowania dotyczące wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
+|     |
+
+
+Jeśli używasz funkcji współpracy B2B w usłudze Azure Active Directory (Azure AD) do pracy z partnerami zewnętrznymi, możesz równocześnie zapraszać wielu użytkowników-gości do swojej organizacji. W ramach tego samouczka nauczysz się używać Azure Portal do wysyłania zaproszeń zbiorczych do użytkowników zewnętrznych. W szczególności należy wykonać następujące czynności:
 
 > [!div class="checklist"]
-> * Przygotowanie pliku wartości rozdzielanych przecinkami (CSV) z informacjami o użytkownikach
-> * Uruchomienie skryptu programu PowerShell w celu wysłania zaproszeń
+> * Użyj **zbiorczych zaproszonych użytkowników (wersja zapoznawcza)** w celu przygotowania pliku z wartościami rozdzielanymi przecinkami (CSV) za pomocą preferencji informacji o użytkowniku i zaproszenia
+> * Przekazywanie pliku CSV do usługi Azure AD
 > * Sprawdzenie, czy użytkownicy zostali dodani do katalogu
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+Jeśli nie masz Azure Active Directory, przed rozpoczęciem Utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) . 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-### <a name="install-the-latest-azureadpreview-module"></a>Zainstalowanie najnowszego modułu AzureADPreview
-Upewnij się, że masz zainstalowaną najnowszą wersję modułu Azure AD PowerShell dla programu Graph (AzureADPreview). 
-
-Najpierw sprawdź, które moduły zostały zainstalowane. Otwórz program Windows PowerShell jako użytkownik z podwyższonym poziomem uprawnień (Uruchom jako administrator) i uruchom następujące polecenie:
- 
-```powershell  
-Get-Module -ListAvailable AzureAD*
-```
-
-W zależności od rezultatu wykonaj jedną z następujących czynności:
-
-- Jeśli żadne wyniki nie zostaną zwrócone, uruchom następujące polecenie, aby zainstalować moduł AzureADPreview:
-  
-   ```powershell  
-   Install-Module AzureADPreview
-   ```
-- Jeśli w wynikach jest wyświetlany tylko moduł AzureAD, uruchom następujące polecenia, aby zainstalować moduł AzureADPreview: 
-
-   ```powershell 
-   Uninstall-Module AzureAD 
-   Install-Module AzureADPreview 
-   ```
-- Jeśli w wynikach jest wyświetlany tylko moduł AzureADPreview, ale pojawia się komunikat informujący o tym, że istnieje nowsza wersja, uruchom następujące polecenia, aby zaktualizować moduł: 
-
-   ```powershell 
-   Uninstall-Module AzureADPreview 
-   Install-Module AzureADPreview 
-  ```
-
-Może zostać wyświetlony monit z informacją, że instalujesz moduł z niezaufanego repozytorium. Dzieje się tak w sytuacji, gdy repozytorium PSGallery nie zostało ustawione wcześniej jako zaufane. Naciśnij klawisz **Y**, aby zainstalować moduł.
-
-### <a name="get-test-email-accounts"></a>Uzyskiwanie testowych kont e-mail
-
 Potrzebujesz co najmniej dwóch testowych kont e-mail, na które będzie można wysłać zaproszenia. Konta muszą być spoza Twojej organizacji. Możesz użyć dowolnego typu konta, w tym kont społecznościowych z adresem w domenie gmail.com lub outlook.com.
 
-## <a name="prepare-the-csv-file"></a>Przygotowywanie pliku CSV
+## <a name="invite-guest-users-in-bulk"></a>Zapraszanie użytkowników-Gości w trybie zbiorczym
 
-W programie Microsoft Excel utwórz plik CSV zawierający listę nazw użytkownika i adresów e-mail zapraszanych osób. Upewnij się, że nagłówki kolumn **Name** i **InvitedUserEmailAddress** zostały uwzględnione. 
+1. Zaloguj się do Azure Portal przy użyciu konta, które jest administratorem użytkownika w organizacji.
+2. W okienku nawigacji wybierz pozycję **Azure Active Directory**.
+3. W obszarze **Zarządzanie**wybierz pozycję **Użytkownicy** > **zaproszeni zbiorczy**.
+4. Na stronie **Zaproś użytkowników (wersja zapoznawcza)** wybierz pozycję **Pobierz** , aby pobrać prawidłowy plik CSV z właściwościami zaproszenia.
 
-Na przykład utwórz arkusz w następującym formacie:
+    ![Przycisk pobierania zaproszeń zbiorczych](media/tutorial-bulk-invite/bulk-invite-button.png)
 
+5. Otwórz plik CSV i Dodaj wiersz dla każdego użytkownika-gościa. Wymagane wartości to:
 
-![Dane wyjściowe w programie PowerShell przedstawiające oczekiwanie na zaakceptowanie przez użytkownika](media/tutorial-bulk-invite/AddUsersExcel.png)
+   * **Adres e-mail do zaproszenia** — użytkownik, który otrzyma zaproszenie
 
-Zapisz plik jako **C:\BulkInvite\Invitations.csv**. 
+   * **Adres URL przekierowania** — adres URL, do którego zostanie przekazany zaproszony użytkownik po zaakceptowaniu zaproszenia
 
-Jeśli nie masz programu Excel, możesz utworzyć plik CSV w dowolnym edytorze tekstów, takim jak Notatnik. Oddziel poszczególne wartości przecinkami, a poszczególne wiersze znakami nowego wiersza. 
+    ![Przykładowy plik CSV z wprowadzonymi użytkownikami gościa](media/tutorial-bulk-invite/bulk-invite-csv.png)
 
-## <a name="sign-in-to-your-tenant"></a>Logowanie do dzierżawy
+   > [!NOTE]
+   > Nie używaj przecinków w **dostosowywanym komunikacie zaproszenia** , ponieważ uniemożliwi to pomyślne przeanalizowanie komunikatu.
 
-Uruchom następujące polecenie, aby połączyć się z domeną dzierżawy:
+6. Zapisz plik.
+7. Na stronie **zbiorcze Zapraszanie użytkowników (wersja zapoznawcza)** w obszarze **Przekaż plik CSV**przejdź do pliku. Po wybraniu pliku zostanie uruchomiony Walidacja pliku CSV. 
+8. Gdy zawartość pliku zostanie sprawdzona, zostanie wyświetlony **plik przekazany pomyślnie**. Jeśli występują błędy, należy je usunąć przed przesłaniem zadania.
+9. Gdy plik zostanie pomyślnie zweryfikowany, wybierz pozycję **Prześlij** , aby rozpocząć operację zbiorczą platformy Azure, która dodaje zaproszenia. 
+10. Aby wyświetlić stan zadania, wybierz **pozycję kliknij tutaj, aby wyświetlić stan każdej operacji**. Można też wybrać pozycję **wyniki operacji zbiorczej (wersja zapoznawcza)** w sekcji **działanie** . Aby uzyskać szczegółowe informacje na temat każdego elementu wiersza w ramach operacji zbiorczej, wybierz wartości w kolumnach **# Success**, **# Failure**lub **Total Requests** . Jeśli wystąpią błędy, zostaną wyświetlone przyczyny niepowodzenia.
 
-```powershell
-Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
-```
-Na przykład `Connect-AzureAD -TenantDomain "contoso.onmicrosoft.com"`.
+    ![Przykład wyników operacji zbiorczej](media/tutorial-bulk-invite/bulk-operation-results.png)
 
-Po wyświetleniu monitu wprowadź poświadczenia.
+11. Po zakończeniu zadania zobaczysz powiadomienie, że operacja zbiorcza zakończyła się pomyślnie.
 
-## <a name="send-bulk-invitations"></a>Zbiorcze wysyłanie zaproszeń
+## <a name="verify-guest-users-in-the-directory"></a>Weryfikowanie użytkowników-Gości w katalogu
 
-Aby wysłać zaproszenia, uruchom następujący skrypt programu PowerShell (gdzie **c:\bulkinvite\invitations.csv** to ścieżka do pliku CSV): 
+Sprawdź, czy dodani użytkownicy-Goście znajdują się w katalogu w Azure Portal lub przy użyciu programu PowerShell.
 
-```powershell
-$invitations = import-csv c:\bulkinvite\invitations.csv
-   
-$messageInfo = New-Object Microsoft.Open.MSGraph.Model.InvitedUserMessageInfo
-   
-$messageInfo.customizedMessageBody = "Hello. You are invited to the Contoso organization."
-   
-foreach ($email in $invitations) 
-   {New-AzureADMSInvitation `
-      -InvitedUserEmailAddress $email.InvitedUserEmailAddress `
-      -InvitedUserDisplayName $email.Name `
-      -InviteRedirectUrl https://myapps.microsoft.com `
-      -InvitedUserMessageInfo $messageInfo `
-      -SendInvitationMessage $true
-   }
-```
-Skrypt wysyła zaproszenie na adresy e-mail podane w pliku Invitations.csv. Dla każdego użytkownika powinny zostać wyświetlone dane wyjściowe podobne do następujących:
+### <a name="view-guest-users-in-the-azure-portal"></a>Wyświetlanie użytkowników-Gości w Azure Portal
 
-![Dane wyjściowe w programie PowerShell przedstawiające oczekiwanie na zaakceptowanie przez użytkownika](media/tutorial-bulk-invite/B2BBulkImport.png)
+1. Zaloguj się do Azure Portal przy użyciu konta, które jest administratorem użytkownika w organizacji.
+2. W okienku nawigacji wybierz pozycję **Azure Active Directory**.
+3. W obszarze **Zarządzaj** wybierz pozycję **Użytkownicy**.
+4. W obszarze **Pokaż**wybierz pozycję **tylko użytkownicy-Goście** i sprawdź, czy dodano użytkowników.
 
-## <a name="verify-users-exist-in-the-directory"></a>Sprawdzanie, czy użytkownicy istnieją w katalogu
+### <a name="view-guest-users-with-powershell"></a>Wyświetlanie użytkowników-Gości przy użyciu programu PowerShell
 
-Aby sprawdzić, czy zaproszeni użytkownicy zostali dodani do usługi Azure AD, uruchom następujące polecenie:
+Uruchom następujące polecenie:
+
 ```powershell
  Get-AzureADUser -Filter "UserType eq 'Guest'"
 ```
-Powinien zostać wyświetlony, użytkownicy, którzy zaproszeni wyświetlany na liście, główną nazwę użytkownika (UPN) w formacie *emailaddress*EXT #\@*domeny*. Na przykład *lstokes_fabrikam.com#EXT#\@contoso.onmicrosoft.com*, gdzie contoso.onmicrosoft.com jest organizacji, z którego są wysyłane zaproszeń.
+
+Zobaczysz użytkowników, którzy zaprosił, z główną nazwą użytkownika (UPN) w formacie *EmailAddress*#EXT #\@*Domain*. Na przykład *lstokes_fabrikam. com #\@EXT # contoso.onmicrosoft.com*, gdzie contoso.onmicrosoft.com jest organizacją, z której wysłano zaproszenia.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Testowe konta użytkowników możesz usunąć z katalogu, gdy nie będą już potrzebne. Uruchom następujące polecenie, aby usunąć konto użytkownika:
+Gdy nie jest już potrzebne, możesz usunąć konta użytkowników testowych z katalogu w Azure Portal na stronie użytkownicy, zaznaczając pole wyboru obok pola Gość użytkownika, a następnie wybierając pozycję **Usuń**. 
+
+Możesz też uruchomić następujące polecenie programu PowerShell, aby usunąć konto użytkownika:
 
 ```powershell
  Remove-AzureADUser -ObjectId "<UPN>"
 ```
+
 Na przykład: `Remove-AzureADUser -ObjectId "lstokes_fabrikam.com#EXT#@contoso.onmicrosoft.com"`
 
+## <a name="next-steps"></a>Następne kroki
 
-## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku wysłano zaproszenia zbiorcze do użytkowników-gości spoza organizacji. Następnie dowiesz się, jak działa proces realizacji zaproszenia.
 
 > [!div class="nextstepaction"]
 > [Dowiedz się więcej na temat procesu realizacji zaproszenia do współpracy B2B w usłudze Azure AD](redemption-experience.md)
-

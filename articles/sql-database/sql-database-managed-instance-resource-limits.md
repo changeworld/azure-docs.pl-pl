@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 09/16/2019
-ms.openlocfilehash: 7f7faf11ed18fa2a85587c193376a3e4ce905fd2
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: d0356ff61ec8073e7fe69c3b09cbbdd8845fb787
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010188"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128910"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Przegląd Azure SQL Database limitów zasobów wystąpienia zarządzanego
 
@@ -52,18 +52,18 @@ Wystąpienie zarządzane ma dwie warstwy usług: [Ogólnego przeznaczenia](sql-d
 | **Funkcja** | **Ogólnego przeznaczenia** | **Krytyczne dla działania firmy** |
 | --- | --- | --- |
 | Liczba rdzeni wirtualnych\* | Obliczenia 8, 16, 24<br/>5 rdzeń 4, 8, 16, 24, 32, 40, 64, 80 | Obliczenia 8, 16, 24 <br/> 5 rdzeń 4, 8, 16, 24, 32, 40, 64, 80 |
-| Maksymalna pamięć | Obliczenia 56 GB – 168 GB (7GB/rdzeń wirtualny)<br/>5 rdzeń 40,8 GB – 408 GB (5.1 GB/rdzeń wirtualny)<br/>Aby uzyskać więcej pamięci, Dodaj więcej rdzeni wirtualnych. | Obliczenia 56 GB – 168 GB (7GB/rdzeń wirtualny)<br/>5 rdzeń 40,8 GB – 408 GB (5.1 GB/rdzeń wirtualny)<br/>Aby uzyskać więcej pamięci, Dodaj więcej rdzeni wirtualnych. |
-| Maksymalny rozmiar zarezerwowanego wystąpienia magazynu | -2 TB dla 4 rdzeni wirtualnych (tylko 5 rdzeń)<br/>-8 TB dla innych rozmiarów | Obliczenia 1 TB <br/> 5 rdzeń <br/>-1 TB dla 4, 8, 16 rdzeni wirtualnych<br/>-2 TB przez 24 rdzeni wirtualnych<br/>-4 TB dla 32, 40, 64, 80 rdzeni wirtualnych |
-| Maksymalny rozmiar bazy danych | 8 TB | 4 TB |
-| Maksymalna liczba baz danych na wystąpienie | 100 | 100 |
-| Maksymalna liczba plików bazy danych na wystąpienie | Do 280 | 32 767 plików na bazę danych |
-| Maksymalny rozmiar pliku | 8 TB | 4 TB |
-| Maksymalny rozmiar pliku dziennika | 2 TB | 2 TB |
+| Maksymalna pamięć | Obliczenia 56 GB – 168 GB (7GB/rdzeń wirtualny)<br/>5 rdzeń 20,4 GB – 408 GB (5.1 GB/rdzeń wirtualny)<br/>Aby uzyskać więcej pamięci, Dodaj więcej rdzeni wirtualnych. | Obliczenia 56 GB – 168 GB (7GB/rdzeń wirtualny)<br/>5 rdzeń 20,4 GB – 408 GB (5.1 GB/rdzeń wirtualny)<br/>Aby uzyskać więcej pamięci, Dodaj więcej rdzeni wirtualnych. |
+| Maksymalny rozmiar magazynu wystąpienia (zarezerwowany) | -2 TB dla 4 rdzeni wirtualnych (tylko 5 rdzeń)<br/>-8 TB dla innych rozmiarów | Obliczenia 1 TB <br/> 5 rdzeń <br/>-1 TB dla 4, 8, 16 rdzeni wirtualnych<br/>-2 TB przez 24 rdzeni wirtualnych<br/>-4 TB dla 32, 40, 64, 80 rdzeni wirtualnych |
+| Maksymalny rozmiar bazy danych | Do aktualnie dostępnego rozmiaru wystąpienia (maksymalnie 2 TB – 8 TB w zależności od liczby rdzeni wirtualnych). | Do aktualnie dostępnego rozmiaru wystąpienia (maksymalnie 1 TB — 4 TB w zależności od liczby rdzeni wirtualnych). |
+| Maksymalny rozmiar bazy danych tempDB | Ograniczone do 24 GB/rdzeń wirtualny (96 – 1 920 GB) i aktualnie dostępnego rozmiaru wystąpienia.<br/>Dodaj więcej rdzeni wirtualnych, aby uzyskać więcej przestrzeni TempDB. | Do aktualnie dostępnego rozmiaru wystąpienia. Rozmiar pliku dziennika bazy danych TempDB jest obecnie ograniczony do 24GB/rdzeń wirtualny. |
+| Maksymalna liczba baz danych na wystąpienie | 100, chyba że osiągnięto limit rozmiaru magazynu wystąpień. | 100, chyba że osiągnięto limit rozmiaru magazynu wystąpień. |
+| Maksymalna liczba plików bazy danych na wystąpienie | Do 280, o ile nie osiągnięto rozmiaru magazynu wystąpienia lub limitu [przestrzeni dyskowej usługi Azure Premium](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files) . | 32 767 plików na bazę danych, o ile nie osiągnięto limitu rozmiaru magazynu wystąpień. |
+| Maksymalny rozmiar pliku | Ograniczone do 8 TB, obecnie dostępnego rozmiaru wystąpienia (maksymalnie 2 TB-8 TB) i [miejsca alokacji dysku Azure Premium Storage](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files). | Ograniczone do 4 TB i aktualnie dostępnego rozmiaru wystąpienia (do 1 TB – 4 TB). |
+| Maksymalny rozmiar pliku dziennika | Ograniczone do 2 TB, obecnie dostępnego rozmiaru wystąpienia i [przestrzeni dyskowej usługi Azure Premium Storage](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files). | Ograniczone do 2 TB i aktualnie dostępnego rozmiaru wystąpienia. |
 | Operacje we/wy danych/dziennika (przybliżone) | 500 – 7 500 za plik<br/>\*[Zwiększ rozmiar pliku, aby uzyskać więcej operacji we/wy na sekundę](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 5,5 k – 110 K (1375/rdzeń wirtualny)<br/>Dodaj więcej rdzeni wirtualnych, aby uzyskać lepszą wydajność operacji we/wy. |
-| Limit przepływności zapisu dziennika | 3 MB/s na rdzeń wirtualny<br/>Maks. 22 MB/s na wystąpienie | 4 MB/s na rdzeń wirtualny<br/>Maks 48 MB/s na wystąpienie|
-| Przepływność danych (przybliżona) | 100 – 250 MB/s na plik<br/>\*[Zwiększ rozmiar pliku, aby uzyskać lepszą wydajność we/wy](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | ND |
+| Limit przepływności zapisu dziennika (na wystąpienie) | 3 MB/s na rdzeń wirtualny<br/>Maks. 22 MB/s | 4 MB/s na rdzeń wirtualny<br/>Maks 48 MB/s |
+| Przepływność danych (przybliżona) | 100 – 250 MB/s na plik<br/>\*[Zwiększ rozmiar pliku, aby uzyskać lepszą wydajność we/wy](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | Nieograniczone. |
 | Opóźnienie operacji we/wy magazynu (w przybliżeniu) | 5-10 ms | 1-2 MS |
-| Maksymalny rozmiar bazy danych tempDB | 192 – 1 920 GB (24 GB na rdzeń wirtualny)<br/>Dodaj więcej rdzeni wirtualnych, aby uzyskać więcej przestrzeni TempDB. | Ograniczone przez maksymalny rozmiar magazynu wystąpienia. Rozmiar pliku dziennika bazy danych TempDB jest obecnie ograniczony do 24GB/rdzeń wirtualny. |
 | Przetwarzanie OLTP danych w pamięci | Nieobsługiwane | Dostępne |
 | Maksymalna liczba sesji | 30000 | 30000 |
 | [Repliki tylko do odczytu](sql-database-read-scale-out.md) | 0 | 1 (wliczone w cenę) |
@@ -93,10 +93,10 @@ Wystąpienie zarządzane obecnie obsługuje tylko wdrożenie następujących typ
 
 ## <a name="regional-resource-limitations"></a>Ograniczenia zasobów regionalnych
 
-Obsługiwane typy subskrypcji mogą zawierać ograniczoną liczbę zasobów na region. Wystąpienie zarządzane ma dwa domyślne limity dla regionu platformy Azure, w zależności od typu subskrypcji:
+Obsługiwane typy subskrypcji mogą zawierać ograniczoną liczbę zasobów na region. Wystąpienie zarządzane ma dwa domyślne limity dla regionu platformy Azure (które można zwiększyć na żądanie, tworząc specjalne [żądanie pomocy technicznej w Azure Portal), w](#obtaining-a-larger-quota-for-sql-managed-instance)zależności od typu subskrypcji:
 
 - **Limit podsieci**: Maksymalna liczba podsieci, w których wystąpienia zarządzane są wdrażane w jednym regionie.
-- **Limit rdzeń wirtualny**: Maksymalna liczba rdzeni wirtualnych, które mogą zostać wdrożone we wszystkich wystąpieniach w jednym regionie. Łączna liczba wystąpień nie jest ograniczona, o ile mieści się w limicie rdzeń wirtualny.
+- **limit jednostek rdzeń wirtualny**: Maksymalna liczba jednostek rdzeń wirtualny, które mogą zostać wdrożone we wszystkich wystąpieniach w jednym regionie. Jedna z zasad GP rdzeń wirtualny korzysta z jednej jednostki rdzeń wirtualny, a jedna z nich ma rdzeń wirtualny rdzeń wirtualny jednostek. Łączna liczba wystąpień nie jest ograniczona, o ile mieści się w limicie jednostek rdzeń wirtualny.
 
 > [!Note]
 > Te limity to ustawienia domyślne, a nie ograniczenia techniczne. Limity można zwiększyć na żądanie, tworząc specjalne [żądanie pomocy technicznej w Azure Portal,](#obtaining-a-larger-quota-for-sql-managed-instance) Jeśli potrzebujesz więcej wystąpień zarządzanych w bieżącym regionie. Alternatywnie można tworzyć nowe wystąpienia zarządzane w innym regionie świadczenia usługi Azure bez wysyłania żądań pomocy technicznej.
@@ -149,7 +149,7 @@ Aby zainicjować proces uzyskiwania większego przydziału:
 
 5. Kliknij przycisk **Dalej**.
 6. Na karcie Informacje kontaktowe dla nowego żądania obsługi wprowadź preferowaną metodę kontaktu (adres e-mail lub telefon) i szczegóły kontaktu.
-7. Kliknij przycisk **Utwórz**.
+7. Kliknij pozycję **Utwórz**.
 
 ## <a name="next-steps"></a>Następne kroki
 

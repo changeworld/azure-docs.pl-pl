@@ -1,30 +1,31 @@
 ---
 title: Uaktualnianie klastra usługi HDInsight do nowszej wersji — Azure
 description: Poznaj wskazówki dotyczące uaktualniania klastra usługi Azure HDInsight do nowszej wersji.
-ms.service: hdinsight
 author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: a62da0d27d21589f7b75a89cc184ce9f456f1fed
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 808e592a01bca2066b7d3d37a5fdfa697d739d4b
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960707"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122452"
 ---
 # <a name="upgrade-hdinsight-cluster-to-a-newer-version"></a>Uaktualnianie klastra usługi HDInsight do nowszej wersji
+
 Aby skorzystać z najnowszych funkcji usługi HDInsight, zalecamy uaktualnienie klastrów usługi HDInsight do najnowszej wersji. Postępuj zgodnie z poniższymi wskazówkami, aby uaktualnić wersje klastra usługi HDInsight.
 
 > [!NOTE]  
 > Aby uzyskać informacje dotyczące obsługiwanych wersji usługi HDInsight, zobacz [wersje składników usługi HDInsight](hdinsight-component-versioning.md#supported-hdinsight-versions).
 
 ## <a name="upgrade-tasks"></a>Zadania uaktualniania
-Przepływ pracy uaktualniania klastra usługi HDInsight jest następujący:.
 
-![Diagram przepływu pracy uaktualniania](./media/hdinsight-upgrade-cluster/upgrade-workflow-diagram.png)
+Przepływ pracy uaktualniania klastra usługi HDInsight jest następujący:.
+![Diagram przepływu pracy uaktualniania usługi HDInsight](./media/hdinsight-upgrade-cluster/upgrade-workflow-diagram.png)
 
 1. Przeczytaj każdą z sekcji tego dokumentu, aby poznać zmiany, które mogą być wymagane podczas uaktualniania klastra usługi HDInsight.
 2. Utwórz klaster jako środowisko testu/jakości. Aby uzyskać więcej informacji na temat tworzenia klastra, zobacz [informacje na temat tworzenia klastrów usługi HDInsight opartych na systemie Linux](hdinsight-hadoop-provision-linux-clusters.md)
@@ -40,7 +41,7 @@ Po zweryfikowaniu, że wszystko działa zgodnie z oczekiwaniami, Zaplanuj przest
 5.  Uruchom zadania/Kontynuuj przetwarzanie przy użyciu nowego klastra.
 
 ## <a name="next-steps"></a>Następne kroki
+
 * [Dowiedz się, jak tworzyć klastry usługi HDInsight oparte na systemie Linux](hdinsight-hadoop-provision-linux-clusters.md)
 * [Łączenie się z usługą HDInsight przy użyciu protokołu SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 * [Zarządzanie klastrem opartym na systemie Linux przy użyciu usługi Apache Ambari](hdinsight-hadoop-manage-ambari.md)
-

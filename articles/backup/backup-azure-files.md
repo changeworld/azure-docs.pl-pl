@@ -7,12 +7,12 @@ ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: d5702576b3353bbc779601c7a5fe91417d73c7a1
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 44a2b0feab19d042de58359a7ea13814415e6c9e
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624351"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129564"
 ---
 # <a name="back-up-and-restore-azure-file-shares"></a>Tworzenie kopii zapasowej i przywracanie udziałów plików platformy Azure
 W tym artykule opisano sposób tworzenia kopii zapasowej i przywracania [udziałów plików platformy Azure](../storage/files/storage-files-introduction.md) przy użyciu witryny Azure Portal.
@@ -86,13 +86,15 @@ W pewnych okolicznościach może zaistnieć potrzeba wygenerowania migawki kopii
 
    ![Klikanie pozycji Utwórz kopię zapasową, aby skojarzyć udział plików platformy Azure z magazynem](./media/backup-file-shares/list-of-azure-files-backup-items.png)
 
-3. Z listy udziałów plików platformy Azure wybierz żądany udział plików. Zostanie otwarte menu elementu kopii zapasowej dla wybranego udziału plików.
+3. Z listy udziałów plików platformy Azure wybierz żądany udział plików. Pojawią się szczegóły **elementu kopia zapasowa** . W menu **elementu kopia zapasowa** kliknij pozycję **Utwórz kopię zapasową teraz**. Ponieważ jest to zadanie tworzenia kopii zapasowej na żądanie, nie istnieją żadne zasady przechowywania skojarzone z punktem odzyskiwania.
 
    ![Klikanie pozycji Utwórz kopię zapasową, aby skojarzyć udział plików platformy Azure z magazynem](./media/backup-file-shares/backup-item-menu.png)
 
-4. W menu Element kopii zapasowej kliknij pozycję **Utwórz kopię zapasową teraz**. Ponieważ jest to zadanie tworzenia kopii zapasowej na żądanie, nie istnieją żadne zasady przechowywania skojarzone z punktem odzyskiwania. Zostanie otwarte okno dialogowe **Utwórz kopię zapasową teraz**. Określ ostatni dzień zachowywania punktu odzyskiwania.
+4. Zostanie otwarte okno dialogowe **Utwórz kopię zapasową teraz**. Określ ostatni dzień zachowywania punktu odzyskiwania.
 
    ![Klikanie pozycji Utwórz kopię zapasową, aby skojarzyć udział plików platformy Azure z magazynem](./media/backup-file-shares/backup-now-menu.png)
+
+5. Kliknij przycisk **OK** , aby potwierdzić zadanie tworzenia kopii zapasowej na żądanie.
 
 ## <a name="restore-from-backup-of-azure-file-share"></a>Przywracanie z kopii zapasowej udziału plików platformy Azure
 Jeśli chcesz przywrócić cały udział plików bądź pojedyncze pliki lub foldery z punktu przywracania, przejdź do elementu kopii zapasowej zgodnie z opisem w poprzedniej sekcji. Wybierz pozycję **Przywróć udział plików**, aby przywrócić cały udział plików z żądanego punktu w czasie. Z wyświetlonej listy Punkty przywracania wybierz punkt przywracania, aby możliwe było zastąpienie bieżącego udziału plików lub przywrócenie go do alternatywnego udziału plików w tym samym regionie.

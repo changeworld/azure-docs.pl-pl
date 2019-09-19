@@ -2,17 +2,17 @@
 title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: logic-apps
-author: ecfan
 ms.service: logic-apps
-ms.topic: include
-ms.date: 05/14/2018
+author: ecfan
 ms.author: estfan
+ms.topic: include
+ms.date: 09/18/2019
 ms.custom: include file
-ms.openlocfilehash: 6594031aeccae4b9f0ea843e2d72cb01a67d492d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 1fbf8a8d83871fa4cbed3fa79d3c19d66406329d
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67182987"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71120885"
 ---
-Zanim aplikacja logiki może uzyskać dostęp do dowolnej usługi, musisz utworzyć *połączenia* między aplikacją logiki i usługi. Jeśli wcześniej nie utworzono to połączenie, zostanie wyświetlony monit o informacje o połączeniu podczas dodawania wyzwalacza lub akcji dla tej usługi do aplikacji logiki. Projektant aplikacji logiki zapewnia łatwy sposób utworzyć to połączenie bezpośrednio z poziomu aplikacji logiki.
+W przypadku użycia wyzwalacza lub akcji, która uzyskuje dostęp do usługi po raz pierwszy, Projektant Logic Apps będzie monitowany o utworzenie *połączenia* z tą usługą. Następnie można udostępnić wymagane informacje o połączeniu bezpośrednio z poziomu aplikacji logiki w projektancie.

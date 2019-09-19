@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: juliako
-ms.openlocfilehash: 8158611678acc23d89bab377c170759c6bf9677f
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: ac31a2945e59df3b57000a0ffdcbca8344e44c18
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962630"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122287"
 ---
 # <a name="animated-character-detection-preview"></a>Wykrywanie znaków animowanych (wersja zapoznawcza)
 
@@ -91,7 +91,11 @@ Jeśli masz konto płatne Video Indexer, musisz najpierw połączyć konto Custo
     1. Po wpisaniu nowej nazwy kliknij ikonę wyboru obok nowej nazwy. Spowoduje to zapisanie nowej nazwy w modelu w Video Indexer.
     1. Po zakończeniu edycji wszystkich żądanych nazw musisz nauczyć się modelu.
 
-        Otwórz stronę Dostosowywanie i kliknij kartę **animowane znaki** . W przypadku odpowiedniego modelu kliknij link **Edytuj w Custom Vision** . Następnie zostanie przekierowany do strony modelu w Custom Vision. Kliknij przycisk **uczenie** , aby szkolić model. 
+        Otwórz stronę Dostosowywanie i kliknij kartę **animowane znaki** . Jeśli masz płatne konto, możesz kliknąć link **Zarządzaj modelami w programie Customer Vision** (jak pokazano poniżej). Następnie zostanie przekierowany do strony modelu w Custom Vision. Kliknij przycisk **uczenie** , aby szkolić model. 
+        
+        ![Dostosowywanie modelu zawartości](./media/animated-characters-recognition/content-model-customization-tab.png)
+
+        Jeśli masz konto w wersji próbnej, łącze **Zarządzaj modelami w programie Customer Vision** nie będzie obecne. W takim przypadku można nacisnąć pozycję **pociąg** bezpośrednio na stronie **dostosowywania modelu zawartości** .
     1. Po przeszkoleniu wszystkie filmy wideo, które będą indeksowane lub ponownego indeksowania przy użyciu tego modelu, będą rozpoznawać przeszkolone znaki. 
     Płatne konta, które mają dostęp do konta Custom Vision, mogą zobaczyć modele i obrazy otagowane. Dowiedz się więcej o [ulepszaniu klasyfikatora w Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier).
 

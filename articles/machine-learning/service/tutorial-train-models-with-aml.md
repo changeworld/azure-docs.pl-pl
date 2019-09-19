@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5c7396baa745196e054c6cb49d349bf7684cd899
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 8f3277d76709fe14a5eaa28cc0f562d95c1e4004
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001665"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128948"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Samouczek: Uczenie modeli klasyfikacji obrazów przy użyciu MNIST ręcznie danych i scikit — uczenie się za pomocą Azure Machine Learning
 
@@ -143,11 +143,11 @@ Teraz masz pakiety i zasoby obliczeniowe niezbędne do przeprowadzenia uczenia m
 
 ## <a name="explore-data"></a>Eksplorowanie danych
 
-Zanim nauczysz model, musisz zrozumieć dane używane na potrzeby uczenia. Musisz też skopiować dane do chmury, aby były one dostępne dla Twojego środowiska uczenia w chmurze. W tej sekcji dowiesz się, jak wykonać następujące czynności:
+Zanim nauczysz model, musisz zrozumieć dane używane na potrzeby uczenia. Musisz również przekazać dane do chmury przy użyciu usługi, aby można było uzyskać do niej dostęp w środowisku szkoleniowym chmury. W tej sekcji dowiesz się, jak wykonać następujące czynności:
 
 * Pobieranie zestawu danych MNIST
 * Wyświetlanie przykładowych obrazów
-* Przekazywanie danych do chmury
+* Przekaż dane do obszaru roboczego w chmurze.
 
 ### <a name="download-the-mnist-dataset"></a>Pobieranie zestawu danych MNIST
 
@@ -209,18 +209,29 @@ Zostanie wyświetlona losowa próbka obrazów:
 
 Teraz wiesz już, jak wyglądają te obrazy i jakie są oczekiwane wyniki przewidywania.
 
-### <a name="upload-data-to-the-cloud"></a>Przekazywanie danych do chmury
+### <a name="create-a-filedataset"></a>Utwórz FileDataset
 
-Dane szkoleniowe zostały pobrane i użyte na komputerze, na którym działa Twój Notes.  W następnej sekcji nastąpi przeszkolenie modelu w ramach obliczeń Azure Machine Learning zdalnego.  Zdalny zasób obliczeniowy będzie również wymagał dostępu do Twoich danych. Aby zapewnić dostęp, Przekaż dane do scentralizowanego magazynu danych skojarzonego z Twoim obszarem roboczym. Ten magazyn danych zapewnia szybki dostęp do Twoich potrzeb w przypadku używania zdalnych obiektów docelowych obliczeń w chmurze, które znajdują się w centrum danych platformy Azure.
-
-Przekaż pliki mnist ręcznie do katalogu o nazwie `mnist` w katalogu głównym magazynu danych. Aby uzyskać więcej informacji, zobacz [Uzyskiwanie dostępu do danych z przechowywanych magazynów](how-to-access-data.md) .
+`FileDataset` Obiekt odwołuje się do co najmniej jednego pliku w magazynie danych obszaru roboczego lub publicznych adresów URL. Pliki mogą być w dowolnym formacie, a Klasa oferuje możliwość pobierania lub instalowania plików do obliczeń. Tworząc `FileDataset`, Utwórz odwołanie do lokalizacji źródła danych. Jeśli zastosowano jakiekolwiek przekształcenia do zestawu danych, zostaną one zapisane również w zestawie danych. Dane pozostają w istniejącej lokalizacji, więc nie są naliczane żadne dodatkowe koszty związane z magazynem. Aby uzyskać więcej informacji, `Dataset` [Zobacz przewodnik po tym pakiecie](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-create-register-datasets) .
 
 ```python
-ds = ws.get_default_datastore()
-print(ds.datastore_type, ds.account_name, ds.container_name)
+from azureml.core.dataset import Dataset
 
-ds.upload(src_dir=data_folder, target_path='mnist',
-          overwrite=True, show_progress=True)
+web_paths = [
+            'http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz',
+            'http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz',
+            'http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz',
+            'http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz'
+            ]
+dataset = Dataset.File.from_files(path=web_paths)
+```
+
+`register()` Użyj metody, aby zarejestrować zestaw danych w obszarze roboczym, aby można było udostępnić go innym osobom, ponownie używać w różnych eksperymentach i określać nazwę w skrypcie szkoleniowym.
+
+```python
+dataset = dataset.register(workspace=ws,
+                           name='mnist dataset',
+                           description='training and test dataset',
+                           create_new_version=True)
 ```
 
 Masz teraz wszystko, czego potrzebujesz, aby rozpocząć uczenie modelu.
@@ -253,6 +264,7 @@ Aby przesłać zadanie do klastra, najpierw utwórz skrypt uczenia. Uruchom poni
 import argparse
 import os
 import numpy as np
+import glob
 
 from sklearn.linear_model import LogisticRegression
 from sklearn.externals import joblib
@@ -260,7 +272,7 @@ from sklearn.externals import joblib
 from azureml.core import Run
 from utils import load_data
 
-# let user feed in 2 parameters, the location of the data files (from datastore), and the regularization rate of the logistic regression model
+# let user feed in 2 parameters, the dataset to mount or download, and the regularization rate of the logistic regression model
 parser = argparse.ArgumentParser()
 parser.add_argument('--data-folder', type=str, dest='data_folder', help='data folder mounting point')
 parser.add_argument('--regularization', type=float, dest='reg', default=0.01, help='regularization rate')
@@ -271,10 +283,10 @@ print('Data folder:', data_folder)
 
 # load train and test set into numpy arrays
 # note we scale the pixel intensity values to 0-1 (by dividing it with 255.0) so the model can converge faster.
-X_train = load_data(os.path.join(data_folder, 'train-images.gz'), False) / 255.0
-X_test = load_data(os.path.join(data_folder, 'test-images.gz'), False) / 255.0
-y_train = load_data(os.path.join(data_folder, 'train-labels.gz'), True).reshape(-1)
-y_test = load_data(os.path.join(data_folder, 'test-labels.gz'), True).reshape(-1)
+X_train = load_data(glob.glob(os.path.join(data_folder, '**/train-images-idx3-ubyte.gz'), recursive=True)[0], False) / 255.0
+X_test = load_data(glob.glob(os.path.join(data_folder, '**/t10k-images-idx3-ubyte.gz'), recursive=True)[0], False) / 255.0
+y_train = load_data(glob.glob(os.path.join(data_folder, '**/train-labels-idx1-ubyte.gz'), recursive=True)[0], True).reshape(-1)
+y_test = load_data(glob.glob(os.path.join(data_folder, '**/t10k-labels-idx1-ubyte.gz'), recursive=True)[0], True).reshape(-1)
 print(X_train.shape, y_train.shape, X_test.shape, y_test.shape, sep = '\n')
 
 # get hold of the current run
@@ -322,19 +334,31 @@ Obiekt [skryptu sklearn szacowania](https://docs.microsoft.com/python/api/azurem
 * Nazwa skryptu uczenia, **train.py**.
 * Wymagane parametry skryptu uczenia.
 
-W tym samouczku elementem docelowym jest usługa AmlCompute. Wszystkie pliki w folderze skryptów są przekazywane do węzłów klastra w celu uruchomienia. Folder danych **data_folder** ustawiono w celu używania magazynu danych — `ds.path('mnist').as_mount()`:
+W tym samouczku elementem docelowym jest usługa AmlCompute. Wszystkie pliki w folderze skryptów są przekazywane do węzłów klastra w celu uruchomienia. **Data_folder** jest ustawiony na używanie zestawu danych. Najpierw Utwórz obiekt środowiska, który określa zależności wymagane do szkolenia. 
+
+```python
+from azureml.core.environment import Environment
+from azureml.core.conda_dependencies import CondaDependencies
+
+env = Environment('my_env')
+cd = CondaDependencies.create(pip_packages=['azureml-sdk','scikit-learn','azureml-dataprep[pandas,fuse]>=1.1.14'])
+env.python.conda_dependencies = cd
+```
+
+Następnie utwórz szacowania z poniższym kodem.
 
 ```python
 from azureml.train.sklearn import SKLearn
 
 script_params = {
-    '--data-folder': ds.path('mnist').as_mount(),
+    '--data-folder': dataset.as_named_input('mnist').as_mount(),
     '--regularization': 0.5
 }
 
 est = SKLearn(source_directory=script_folder,
               script_params=script_params,
               compute_target=compute_target,
+              environment_definition=env, 
               entry_script='train.py')
 ```
 

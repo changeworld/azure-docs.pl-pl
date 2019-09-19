@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/19/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 9d4822d07a95fcdec32c0c4146562884302fa4f8
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 9bc0d1b31ebeaecce8b4be8699cf87811047b6f9
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308316"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123258"
 ---
 # <a name="expressroute-routing-requirements"></a>Wymagania dotyczące routingu w usłudze ExpressRoute
 Aby połączyć się z usługami w chmurze firmy Microsoft przy użyciu usługi ExpressRoute, konieczne będzie skonfigurowanie routingu oraz zarządzanie nim. Niektórzy dostawcy połączenia oferują konfigurowanie routingu oraz zarządzanie nim jako usługą zarządzaną. Skontaktuj się z dostawcą połączenia, aby sprawdzić, czy taka usługa jest oferowana. Jeśli nie, musisz spełnić wymagania opisane poniżej:
@@ -84,7 +84,7 @@ Do konfigurowania sesji protokołu BGP należy użyć posiadanych publicznych ad
 Do prywatnej komunikacji równorzędnej można używać publicznych lub prywatnych adresów IPv4. Zapewniamy kompleksową izolację ruchu, w związku z czym w warunkach prywatnej komunikacji równorzędnej nie ma możliwości, aby adresy się nakładały. Te adresy nie są anonsowane w Internecie. 
 
 ### <a name="microsoft-peering"></a>Komunikacja równorzędna firmy Microsoft
-Ścieżki komunikacji równorzędnej firmy Microsoft umożliwia łączenie z usługami chmurowymi firmy Microsoft. Lista usług obejmuje usługi Office 365, takie jak Exchange Online, SharePoint Online, Skype dla firm, Microsoft Teams i Dynamics 365. Firma Microsoft zapewnia obsługę dwukierunkowej łączności w oparciu o komunikację równorzędną firmy Microsoft. Ruch skierowany do usług w chmurze firmy Microsoft musi uzyskać prawidłowe publiczne adresy IPv4, zanim wejdzie do sieci firmy Microsoft.
+Ścieżki komunikacji równorzędnej firmy Microsoft umożliwia łączenie z usługami chmurowymi firmy Microsoft. Lista usług obejmuje usługi Office 365, takie jak Exchange Online, SharePoint Online, Skype dla firm i Microsoft Teams. Firma Microsoft zapewnia obsługę dwukierunkowej łączności w oparciu o komunikację równorzędną firmy Microsoft. Ruch skierowany do usług w chmurze firmy Microsoft musi uzyskać prawidłowe publiczne adresy IPv4, zanim wejdzie do sieci firmy Microsoft.
 
 Zadbaj o to, aby adres IP i numer AS zostały zarejestrowane na Ciebie w jednym z następujących rejestrów:
 
@@ -218,7 +218,6 @@ Oprócz tego firma Microsoft oznaczy również prefiksy w oparciu o usługę, do
 | Exchange Online | 12076:5010 |
 | SharePoint Online | 12076:5020 |
 | Skype dla firm Online | 12076:5030 |
-| Dynamics 365 | 12076:5040 |
 | Usługa Azure globalnego usług * | 12076:5050 |
 | Inne usługi online Office 365 | 12076:5100 |
 
@@ -249,7 +248,6 @@ Oprócz tego firma Microsoft oznaczy również prefiksy w oparciu o usługę, do
 | Exchange Online |12076:5110 |
 | SharePoint Online |12076:5120 |
 | Skype dla firm Online |12076:5130 |
-| Dynamics 365 |12076:5140 |
 | Inne usługi online Office 365 |12076:5200 |
 
 ## <a name="next-steps"></a>Kolejne kroki

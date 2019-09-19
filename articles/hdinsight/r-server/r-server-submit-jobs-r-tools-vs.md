@@ -1,19 +1,19 @@
 ---
 title: Przesyłanie zadań z R Tools for Visual Studio — Azure HDInsight
 description: Przesyłaj zadania R z lokalnej maszyny programu Visual Studio do klastra usługi HDInsight.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 2d53f1bfc6eade535bfb1b3bb07d5115ffe5fc80
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 1323e46d734d047f68652d0b21902e03182e6b62
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967942"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130254"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Przesyłanie zadań z narzędzi R Tools for Visual Studio
 
@@ -41,7 +41,7 @@ RTVS ulepsza przepływ pracy w języku R, oferując narzędzia, takie jak [okno 
 
    2. Przejdź do elementu menu **Narzędzia języka R** , a następnie wybierz pozycję **nauka o danych — ustawienia...** .
 
-       ![Nauka o danych — ustawienia...](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
+       ![Nauka o danych — ustawienia programu Visual Studio](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
 
       > [!NOTE]  
       > Korzystając z metody w kroku 1, można również zapisać i przywrócić spersonalizowany układ Analityka danych, zamiast powtarzać **nauka o danych — ustawienia** polecenie.
@@ -56,11 +56,11 @@ RTVS ulepsza przepływ pracy w języku R, oferując narzędzia, takie jak [okno 
 6. Zaczynając od góry pliku, naciśnij klawisze CTRL + ENTER, aby wysłać każdy wiersz pojedynczo do okna R Interactive. Niektóre wiersze mogą chwilę potrwać, ponieważ zainstalują pakiety.
     * Alternatywnie możesz wybrać wszystkie wiersze w pliku R (Ctrl + A), a następnie wykonać wszystkie (Ctrl + Enter) lub wybrać ikonę Execute Interactive na pasku narzędzi.
 
-        ![Wykonaj interaktywnie](./media/r-server-submit-jobs-r-tools-vs/execute-interactive1.png)
+        ![Program Visual Studio Execute Interactive](./media/r-server-submit-jobs-r-tools-vs/execute-interactive1.png)
 
 7. Po uruchomieniu wszystkich wierszy w skrypcie powinny zostać wyświetlone dane wyjściowe podobne do tego:
 
-    ![Obszar roboczy](./media/r-server-submit-jobs-r-tools-vs/visual-studio-workspace.png)
+    ![Visual Studio obszar roboczy narzędzia R Tools](./media/r-server-submit-jobs-r-tools-vs/visual-studio-workspace.png)
 
 ## <a name="submit-jobs-to-an-hdinsight-ml-services-cluster"></a>Przesyłanie zadań do klastra usługi HDInsight ML
 
@@ -96,7 +96,7 @@ Za pomocą ml Server lub Microsoft R Client firmy Microsoft z komputera z system
     rxSetComputeContext(mySparkCluster)
     ```
 
-   ![Ustawianie kontekstu Spark](./media/r-server-submit-jobs-r-tools-vs/apache-spark-context.png)
+   ![Platforma Apache Spark — Ustawianie kontekstu](./media/r-server-submit-jobs-r-tools-vs/apache-spark-context.png)
 
 1. W oknie R Interactive wykonaj następujące polecenia:
 
@@ -113,17 +113,17 @@ Za pomocą ml Server lub Microsoft R Client firmy Microsoft z komputera z system
 
     1. W okienku klastra usługi HDInsight ML na platformie Azure wybierz pozycję **konta magazynu** z menu po lewej stronie.
 
-        ![Konta magazynu](./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png)
+        ![Konta usługi Azure HDInsight Storage](./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png)
 
     2. Wybierz domyślne konto magazynu dla klastra, pamiętając o nazwie kontenera/katalogu.
 
     3. Wybierz pozycję **kontenery** z menu po lewej stronie w okienku konto magazynu.
 
-        ![Containers](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
+        ![Kontenery usługi Azure HDInsight Storage](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
 
     4. Wybierz nazwę kontenera klastra, przejdź do folderu **User** (może być konieczne kliknięcie przycisku *Załaduj więcej* w dolnej części listy), a następnie wybierz pozycję *RevoShare*, a następnie **newUser**. Plik powinien być wyświetlony `newUser` w folderze. `people.json`
 
-        ![Skopiowano plik](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
+        ![Lokalizacja folderu skopiowanego pliku usługi HDInsight](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
 
 1. Po zakończeniu korzystania z bieżącego kontekstu Apache Spark należy go zatrzymać. Nie można uruchamiać wielu kontekstów jednocześnie.
 
@@ -135,4 +135,3 @@ Za pomocą ml Server lub Microsoft R Client firmy Microsoft z komputera z system
 
 * [Opcje kontekstu obliczeniowego dla usług ML w usłudze HDInsight](r-server-compute-contexts.md)
 * [Łączenie skalowania i platformy Spark](../hdinsight-hadoop-r-scaler-sparkr.md) zawiera przykład prognoz opóźnień lotów dla linii lotniczych.
-

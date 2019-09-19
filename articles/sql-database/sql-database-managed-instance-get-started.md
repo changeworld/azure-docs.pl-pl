@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: cacd67e26b13df8ef456ac8f1391e4396f5bdd96
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 0344fc834cb1ef29c91bc52239d1df2706d1ca81
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873891"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71101672"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Szybki start: Tworzenie wystąpienia zarządzanego usługi Azure SQL Database
 
@@ -60,7 +60,7 @@ Poniższe kroki przedstawiają sposób tworzenia wystąpienia zarządzanego.
 
    ![Formularz wystąpienia zarządzanego](./media/sql-database-managed-instance-get-started/managed-instance-create-form.png)
 
-5. Aby użyć wystąpienia zarządzanego jako pomocniczej grupy trybu failover wystąpienia, zaznacz pole wyboru i określ wystąpienie zarządzane DnsAzurePartner. Ta funkcja jest w wersji zapoznawczej i nie jest pokazana na poniższym zrzucie ekranu.
+5. Aby użyć wystąpienia zarządzanego jako pomocniczej grupy trybu failover wystąpienia, zaznacz pole wyboru i określ wystąpienie zarządzane DnsAzurePartner. 
 6. Wybierz pozycję **warstwa cenowa** , aby zmienić rozmiar zasobów obliczeniowych i magazynu oraz przejrzeć opcje warstwy cenowej. Wartość domyślna to warstwa cenowa Ogólnego przeznaczenia z 32 GB pamięci i 16 rdzeniami wirtualnymi.
 7. Użyj suwaków lub pól tekstowych, aby określić ilość pamięci i liczbę rdzeni wirtualnych.
 8. Po zakończeniu wybierz pozycję **Zastosuj** , aby zapisać swój wybór. 

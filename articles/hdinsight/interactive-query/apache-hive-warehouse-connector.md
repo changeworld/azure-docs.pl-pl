@@ -1,18 +1,18 @@
 ---
 title: Integrowanie Apache Spark i Apache Hive z łącznikiem magazynu Hive
 description: Dowiedz się, jak zintegrować Apache Spark i Apache Hive z łącznikiem magazynu Hive w usłudze Azure HDInsight.
-ms.service: hdinsight
 author: nakhanha
 ms.author: nakhanha
 ms.reviewer: hrasheed
+ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: 068dc76112db39ad8db118062656013e20cfc2ab
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 8a946a75a2dbd487494d70d0fd195a5becf5bd5a
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811661"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122208"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Integrowanie Apache Spark i Apache Hive z łącznikiem magazynu Hive
 
@@ -22,7 +22,7 @@ ms.locfileid: "70811661"
 
 Apache Spark ma interfejs API przesyłania strumieniowego ze strukturą, który zapewnia funkcje przesyłania strumieniowego, które nie są dostępne w Apache Hive. Począwszy od usługi HDInsight 4,0, Apache Spark 2.3.1 i Apache Hive 3.1.0 mają oddzielne magazyny metadanych, co może utrudnić współdziałanie. Łącznik magazynu Hive ułatwia korzystanie z platformy Spark i Hive. Biblioteka obsługiwane ładuje dane z demonów LLAP do równoległych modułów wykonujących testy, co zwiększa efektywność i skalowalność niż przy użyciu standardowego połączenia JDBC z platformy Spark do Hive.
 
-![Architektura](./media/apache-hive-warehouse-connector/hive-warehouse-connector-architecture.png)
+![Architektura łącznika magazynu Hive](./media/apache-hive-warehouse-connector/hive-warehouse-connector-architecture.png)
 
 Niektóre operacje obsługiwane przez łącznik magazynu Hive są następujące:
 
@@ -42,14 +42,14 @@ Wykonaj następujące kroki, aby skonfigurować łącznik magazynu Hive między 
 1. Utwórz klaster programu HDInsight Interactive Query (LLAP) 4,0 przy użyciu Azure Portal z tym samym kontem magazynu i siecią wirtualną platformy Azure co klaster Spark.
 1. Skopiuj zawartość `/etc/hosts` pliku na headnode0 klastra interakcyjnego zapytania `/etc/hosts` do pliku w headnode0 klastra Spark. Ten krok umożliwi klastrowi Spark rozpoznawanie adresów IP węzłów w klastrze zapytań interaktywnych. Wyświetl zawartość zaktualizowanego pliku w programie `cat /etc/hosts`. Dane wyjściowe powinny wyglądać podobnie do przedstawionego na poniższym zrzucie ekranu.
 
-    ![Wyświetlanie pliku hosts](./media/apache-hive-warehouse-connector/hive-warehouse-connector-hosts-file.png)
+    ![plik hosts łącznika magazynu Hive](./media/apache-hive-warehouse-connector/hive-warehouse-connector-hosts-file.png)
 
 1. Skonfiguruj ustawienia klastra Spark, wykonując następujące czynności: 
     1. Przejdź do Azure Portal, wybierz pozycję Klastry usługi HDInsight, a następnie kliknij nazwę klastra.
     1. Po prawej stronie w obszarze **pulpity nawigacyjne klastra**wybierz pozycję **Ambari Home**.
     1. W interfejsie użytkownika sieci Web Ambari kliknij pozycję **SPARK2** > **configs** > **Custom SPARK2-Defaults (ustawienia domyślne**).
 
-        ![Konfiguracja Spark2 Ambari](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
+        ![Konfiguracja oprogramowania Apache Ambari Spark2](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
 
     1. Ustaw `spark.hadoop.hive.llap.daemon.service.hosts` tę samą wartość, co Właściwość **Hive. llap. Demon. Service. hosty** w obszarze * * Advanced Hive-Interactive-site * *. Na przykład: `@llap0`
 
@@ -59,7 +59,7 @@ Wykonaj następujące kroki, aby skonfigurować łącznik magazynu Hive między 
         jdbc:hive2://LLAPCLUSTERNAME.azurehdinsight.net:443/;user=admin;password=PWD;ssl=true;transportMode=http;httpPath=/hive2
         ```
 
-        >[!Note] 
+        > [!Note]
         > Adres URL JDBC powinien zawierać poświadczenia służące do nawiązywania połączenia z serwera hiveserver2, w tym nazwę użytkownika i hasło.
 
     1. Ustaw `spark.datasource.hive.warehouse.load.staging.dir` odpowiedni katalog przemieszczania zgodny z systemem plików HDFS. Jeśli istnieją dwa różne klastry, katalog przemieszczania powinien być folderem w katalogu przemieszczania konta magazynu klastra LLAP, dzięki czemu serwera hiveserver2 ma do niego dostęp. Na przykład, `wasb://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp` gdzie `STORAGE_ACCOUNT_NAME` to nazwa konta magazynu używanego przez klaster i `STORAGE_CONTAINER_NAME` jest nazwą kontenera magazynu.
@@ -159,14 +159,14 @@ Platforma Spark nie obsługuje natywnego zapisywania w tabelach z zarządzanym K
     ```
 
 2. Odfiltruj `hivesampletable` tabelę, w `state` której `Colorado`jest równa kolumna. To zapytanie tabeli Hive jest zwracane jako ramka Dataframe. Następnie ramka danych jest zapisywana w tabeli `sampletable_colorado` programu Hive `write` przy użyciu funkcji.
-    
+
     ```scala
     hive.table("hivesampletable").filter("state = 'Colorado'").write.format(HiveWarehouseSession.HIVE_WAREHOUSE_CONNECTOR).option("table","sampletable_colorado").save()
     ```
 
 Można wyświetlić poniższą tabelę na poniższym zrzucie ekranu.
 
-![Pokaż tabelę będącą wynikiem](./media/apache-hive-warehouse-connector/hive-warehouse-connector-show-hive-table.png)
+![Łącznik magazynu Hive pokazuje tabelę programu Hive](./media/apache-hive-warehouse-connector/hive-warehouse-connector-show-hive-table.png)
 
 ### <a name="structured-streaming-writes"></a>Zapisy przesyłania strumieniowego strukturalnego
 
@@ -185,7 +185,9 @@ Postępuj zgodnie z poniższymi instrukcjami, aby utworzyć przykład łącznika
     1. Otwórz inny terminal w tym samym klastrze Spark.
     1. W wierszu polecenia wpisz `nc -lk 9999`polecenie. To polecenie używa narzędzia netcat do wysyłania danych z wiersza polecenia do określonego portu.
     1. Wpisz wyrazy, które mają być pozyskiwane przez strumień platformy Spark, a następnie znak powrotu karetki.
-        ![dane wejściowe do strumienia Spark](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark-stream-data-input.png)
+
+        ![dane wejściowe do strumienia Apache Spark](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark-stream-data-input.png)
+
 1. Utwórz nową tabelę programu Hive służącą do przechowywania danych przesyłanych strumieniowo. W powłoce Spark wpisz następujące polecenia:
 
     ```scala
@@ -230,8 +232,11 @@ Postępuj zgodnie z poniższymi instrukcjami, aby utworzyć przykład łącznika
     1. Przejdź do interfejsu użytkownika administratora Ranger pod `https://CLUSTERNAME.azurehdinsight.net/ranger/`adresem.
     1. Kliknij usługę Hive dla klastra w obszarze **Hive**.
         ![Ranger Service Manager](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-service-manager.png)
-    1. Kliknij kartę **maskowanie** , a następnie **Dodaj nową** ![listę zasad Hive zasad](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
-    1. Podaj żądaną nazwę zasad. Wybierz bazę danych: **Default**, tabela programu Hive: **Demonstracja**, kolumna Hive: **name**, User: **rsadmin2**, typy dostępu: **SELECT**i **maska częściowa: Pokaż ostatnie 4** z menu **opcji wybierz maskowanie** . Kliknij przycisk **Dodaj**.
+    1. Kliknij kartę **maskowanie** , a następnie **Dodaj nowe zasady**
+
+        ![Lista zasad Hive Ranger łącznika magazynu Hive](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
+
+    a. Podaj żądaną nazwę zasad. Wybierz bazę danych: **Default**, tabela programu Hive: **Demonstracja**, kolumna Hive: **name**, User: **rsadmin2**, typy dostępu: **SELECT**i **maska częściowa: Pokaż ostatnie 4** z menu **opcji wybierz maskowanie** . Kliknij pozycję **Dodaj**.
                 ![Utwórz zasady](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
 1. Ponownie Wyświetl zawartość tabeli. Po zastosowaniu zasad Ranger można zobaczyć tylko cztery ostatnie znaki w kolumnie.
 

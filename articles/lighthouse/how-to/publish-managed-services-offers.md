@@ -4,15 +4,15 @@ description: Dowiedz się, jak opublikować ofertę usługi zarządzanej, która
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 08/29/2019
+ms.date: 09/19/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: c0c2ccf03292434b3f23b26857ec0d2b3fc3ceed
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 4a1adf1be8798f4bb21b89ff0654287a2958146e
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165263"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105261"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Publikowanie oferty usług zarządzanych w witrynie Azure Marketplace
 
@@ -71,7 +71,7 @@ Na koniec Wypełnij sekcję **szczegóły manifestu** . Spowoduje to utworzenie 
   - **Identyfikator obiektu usługi Azure AD**: Identyfikator usługi Azure AD użytkownika, grupy użytkowników lub aplikacji, do której zostaną przyznane określone uprawnienia (zgodnie z opisem w definicji roli) do zasobów klientów.
   - **Nazwa wyświetlana obiektu usługi Azure AD**: Przyjazna nazwa ułatwiająca klientowi zrozumienie celu tej autoryzacji. Klient zobaczy tę nazwę podczas delegowania zasobów.
   - **Definicja roli**: Wybierz jedną z dostępnych wbudowanych ról usługi Azure AD z listy. Ta rola określi uprawnienia, które użytkownik w polu **Identyfikator obiektu usługi Azure AD** będzie mieć w zasobach klientów. Aby uzyskać informacje na temat tych ról, zobacz [role wbudowane](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
-  - **Role**, które można przypisać: Jeśli wybrano opcję administrator dostępu użytkowników w **definicji roli** dla tej autoryzacji, można dodać do niej co najmniej jedną przypisaną rolę. Użytkownik w polu **Identyfikator obiektu usługi Azure AD** będzie mógł przypisać te role, które można **przypisać** do [zarządzanych tożsamości](https://docs.microsoft.com/azure/managed-applications/publish-managed-identity). Należy pamiętać, że żadne inne uprawnienia zwykle skojarzone z rolą administratora dostępu użytkowników będą stosowane dla tego użytkownika. (Jeśli nie wybrano administratora dostępu użytkowników dla definicji roli tego użytkownika, to pole nie ma żadnego efektu).
+  - **Role**, które można przypisać: Jest to wymagane tylko wtedy, gdy w **definicji roli** dla tej autoryzacji został wybrany administrator dostępu użytkowników. Jeśli tak, należy dodać co najmniej jedną przypisaną rolę w tym miejscu. Użytkownik w polu **Identyfikator obiektu usługi Azure AD** będzie mógł przypisać te role, które można **przypisać** do [zarządzanych tożsamości](https://docs.microsoft.com/azure/managed-applications/publish-managed-identity). Należy pamiętać, że żadne inne uprawnienia zwykle skojarzone z rolą administratora dostępu użytkowników będą stosowane dla tego użytkownika. Jeśli nie wybierzesz w tym miejscu co najmniej jednej roli, przesyłanie nie zostanie przekazane do certyfikacji. (Jeśli nie wybrano administratora dostępu użytkowników dla definicji roli tego użytkownika, to pole nie ma żadnego efektu).
 
 > [!TIP]
 > W większości przypadków użytkownik chce przypisać uprawnienia do grupy użytkowników usługi Azure AD lub nazwy głównej usług, a nie do serii poszczególnych kont użytkowników. Pozwala to na dodawanie lub usuwanie dostępu dla poszczególnych użytkowników bez konieczności aktualizacji i ponownego publikowania planu, gdy zmienią się wymagania dotyczące dostępu.
@@ -130,7 +130,7 @@ Gdy będziesz zadowolony ze wszystkich dostarczonych informacji, następnym krok
 
 ## <a name="the-customer-onboarding-process"></a>Proces dołączania klienta
 
-Po dodaniu oferty przez klienta będzie można [delegować jedną lub więcej określonych subskrypcji lub grup zasobów](view-manage-service-providers.md#delegate-resources) , które zostaną następnie dołączone do zarządzania zasobami delegowanymi przez platformę Azure. Jeśli klient zaakceptuje ofertę, ale nie oddelegowano jeszcze żadnych zasobów, w górnej części strony dostawcy [**usług**](view-manage-service-providers.md) w Azure Portal zostanie wyświetlona Uwaga.
+Po dodaniu oferty przez klienta będzie można [delegować jedną lub więcej określonych subskrypcji lub grup zasobów](view-manage-service-providers.md#delegate-resources) , które zostaną następnie dołączone do zarządzania zasobami delegowanymi przez platformę Azure. Jeśli klient zaakceptuje ofertę, ale nie oddelegowano jeszcze żadnych zasobów, w górnej części **strony dostawcy** [**usług**](view-manage-service-providers.md) w Azure Portal zostanie wyświetlona Uwaga.
 
 Aby można było dołączyć subskrypcję (lub grupy zasobów w ramach subskrypcji), subskrypcja musi być autoryzowana do dołączenia przez ręczne zarejestrowanie dostawcy zasobów **Microsoft. ManagedServices** . Użytkownik w dzierżawie klienta z rolą współautor lub właściciela może wykonać tę czynność, wykonując czynności opisane w temacie [dostawcy zasobów platformy Azure i typy](../../azure-resource-manager/resource-manager-supported-services.md).
 

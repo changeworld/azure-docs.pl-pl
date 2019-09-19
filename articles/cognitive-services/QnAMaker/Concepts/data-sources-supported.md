@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.author: diberry
-ms.openlocfilehash: 5175dee24542c716b3d087412864ae7e6f056d18
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 4e24246ec4ed30ec93bf8e113d659bc5e3600913
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615980"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130116"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Źródła danych dla zawartości usługi QnA Maker
 
@@ -28,7 +28,7 @@ Poniższa tabela zawiera podsumowanie typów formaty zawartości i plików, któ
 |Typ źródła|Typ zawartości| Przykłady|
 |--|--|--|
 |URL|Często zadawane pytania<br> (Płaski, z sekcjami lub z stroną główną tematów)<br>Strony pomocy technicznej <br> (Artykuły z artykułami z artykułu z jedną stroną, rozwiązywanie problemów itp.)|[Zwykłe często zadawane pytania](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs), <br>[Często zadawane pytania dotyczące linków](https://www.microsoft.com/software-download/faq),<br> [Często zadawane pytania dotyczące strony głównej tematów](https://www.microsoft.com/Licensing/servicecenter/Help/Faq.aspx)<br>[Artykuł pomocy technicznej](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/best-practices)|
-|PLIK PDF / DOC|Najczęściej<br> Podręcznik produktu,<br> Broszury,<br> Drukowane<br> Zasady ulotek,<br> Przewodnik pomocy technicznej,<br> QnA strukturalne,<br> itd.|[Strukturalny QNA. doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Przykładowy produkt. PDF](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf),<br> [Przykład semi-Structured. doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Przykładowy dokument. PDF](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf)|
+|PLIK PDF / DOC|Najczęściej<br> Podręcznik produktu,<br> broszury,<br> Drukowane<br> Zasady ulotek,<br> Przewodnik pomocy technicznej,<br> QnA strukturalne,<br> Itd.|[Strukturalny QNA. doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Przykładowy produkt. PDF](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf),<br> [Przykład semi-Structured. doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Przykładowy dokument. PDF](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf)|
 |Excel|Ze strukturą pliku pytań i odpowiedzi<br> (w tym RTF, obsługa HTML)|[Przykładowy FAQ.xls pytań i odpowiedzi](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
 |TXT/TSV|Ze strukturą pliku pytań i odpowiedzi|[Przykładowe chit-chat.tsv](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Scenario_Responses_Friendly.tsv)|
 
@@ -202,6 +202,15 @@ Nowy wiersz między 2 zdaniami.|`\n\n`|`How can I create a bot with \n\n QnA Mak
 |Listy zagnieżdżone|`\n * Parent1 \n\t * Child1 \n\t * Child2 \n * Parent2`<br><br>`\n * Parent1 \n\t 1. Child1 \n\t * Child2 \n 1. Parent2`<br><br>Uporządkowane i nieuporządkowane listy można zagnieżdżać razem. Karta, `\t`,, wskazuje poziom wcięcia elementu podrzędnego.|`This is an unordered list: \n * List item 1 \n\t * Child1 \n\t * Child2 \n * List item 2`<br><br>`This is an ordered nested list: \n 1. Parent1 \n\t 1. Child1 \n\t 1. Child2 \n 1. Parent2`|![Format zagnieżdżonej listy nieuporządkowanej](../media/qnamaker-concepts-datasources/format-nested-unordered-list.png)<br>![Format zagnieżdżonej listy uporządkowanej](../media/qnamaker-concepts-datasources/format-nested-ordered-list.png)|
 
 \* QnA Maker nie przetwarza obrazu w jakikolwiek sposób. Jest to rola aplikacji klienckiej do renderowania obrazu. 
+
+Jeśli chcesz dodać zawartość przy użyciu funkcji aktualizacji/zastępowania interfejsów API bazy danych, a zawartość/plik zawiera Tagi HTML, możesz zachować kod HTML w pliku, upewniając się, że otwierając i zamykając Tagi są konwertowane w zakodowanym formacie.
+
+| Zachowaj kod HTML  | Reprezentacja w żądaniu interfejsu API  | Reprezentacja w KB |
+|-----------|---------|-------------------------|
+| Tak | \&lt; br\&gt; | &lt;br&gt; |
+| Tak | \&lt; H3\&gt; nagłówek\&lt;/H3\&gt; | &lt;/H3&gt;nagłówka&lt;H3&gt; |
+
+Ponadto znak CR LF (\r\n) jest konwertowany na \n w KB. Znaki LF (\n) są utrzymywane w postaci, w jakiej jest. Jeśli chcesz wypróbować dowolną sekwencję ucieczki, taką jak \t lub \n, możesz użyć ukośnika odwrotnego\\,\\na przykład: "\\\\r\\n" i "\\t"
 
 ## <a name="editing-your-knowledge-base-locally"></a>Lokalne edytowanie bazy wiedzy
 

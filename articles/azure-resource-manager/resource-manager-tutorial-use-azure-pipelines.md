@@ -1,6 +1,6 @@
 ---
-title: Ciągła Integracja z usługą Azure potoki | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak stale tworzenia, testowania i wdrażania szablonów usługi Azure Resource Manager.
+title: Ciągła integracja z usługą Azure Pipelines | Microsoft Docs
+description: Dowiedz się, jak ciągle kompilować, testować i wdrażać szablony Azure Resource Manager.
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -13,32 +13,32 @@ ms.devlang: na
 ms.date: 06/12/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 85dc0476da12bea64610b6910b0682fef00f4b5a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 462d9cd6d2a911e660221621ebde5829e928cf00
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057792"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122225"
 ---
-# <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Samouczek: Ciągła integracja szablonów usługi Azure Resource Manager za pomocą potoków usługi Azure
+# <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Samouczek: Ciągła integracja szablonów Azure Resource Manager z Azure Pipelines
 
-Dowiedz się, jak za pomocą potoków Azure ciągłe tworzenie i wdrażanie projektów szablonu usługi Azure Resource Manager.
+Dowiedz się, jak używać Azure Pipelines do ciągłego kompilowania i wdrażania projektów szablonu Azure Resource Manager.
 
-DevOps platformy Azure udostępnia usługi dla deweloperów do obsługi zespołów do planowania pracy, współpraca nad tworzenia kodu i tworzenia i wdrażania aplikacji. Deweloperzy mogą pracować w chmurze dzięki usługom DevOps platformy Azure. DevOps platformy Azure udostępnia zintegrowane funkcje, które mogą uzyskać dostęp przez przeglądarkę sieci web lub klienta środowiska IDE. Potok usługi Azure jest jednym z tych funkcji. Potoki usługi Azure jest w pełni wyposażone, ciągłej integracji (CI) i ciągłe dostarczanie (CD). Przy użyciu preferowanego dostawcy Git i lepiej można wdrożyć na większość ważniejszych usług w chmurze. Następnie można zautomatyzować, kompilacji, testowania i wdrażania kodu do Microsoft Azure, Google Cloud Platform i usług Amazon Web Services.
+Usługa Azure DevOps zapewnia usługi deweloperskie do obsługi zespołów do planowania pracy, współpracy nad programowaniem kodu oraz kompilowania i wdrażania aplikacji. Deweloperzy mogą korzystać z chmury, korzystając z Azure DevOps Services. Usługa Azure DevOps udostępnia zintegrowany zestaw funkcji, do których można uzyskać dostęp za pomocą przeglądarki sieci Web lub klienta IDE. Potok platformy Azure jest jedną z tych funkcji. Azure Pipelines to w pełni oferowana usługa ciągłej integracji (CI) i ciągłe dostarczanie (CD). Współpracuje z preferowanym dostawcą usługi git i można wdrożyć w większości najważniejszych usług w chmurze. Następnie można zautomatyzować kompilowanie, testowanie i wdrażanie kodu w celu Microsoft Azure, Google Cloud Platform lub Amazon Web Services.
 
-Ten samouczek jest przeznaczony dla usługi Azure Resource Manager szablon deweloperów, którzy są nowe usługom DevOps platformy Azure i potoków usługi Azure. Jeśli już znasz z usług GitHub i metodyki DevOps, możesz przejść do [utworzyć potok](#create-a-pipeline).
+Ten samouczek jest przeznaczony dla deweloperów szablonów Azure Resource Manager, którzy są nowymi Azure DevOps Services i Azure Pipelines. Jeśli znasz już usługi GitHub i DevOps, możesz pominąć, aby [utworzyć potok](#create-a-pipeline).
 
 > [!NOTE]
-> Wybierz nazwę projektu. Podczas wykonywania kroków samouczka, należy zamienić dowolną **AzureRmPipeline** z Twoją nazwą projektu.
+> Wybierz nazwę projektu. Podczas przechodzenia przez samouczek Zastąp dowolną **AzureRmPipeline** nazwą projektu.
 
 Ten samouczek obejmuje następujące zadania:
 
 > [!div class="checklist"]
 > * Przygotowywanie repozytorium GitHub
 > * Tworzenie projektu DevOps platformy Azure
-> * Instrukcje tworzenia potoku usługi Azure
-> * Weryfikacja wdrożenia potoku
-> * Aktualizowanie szablonu i ponowne wdrażanie
+> * Tworzenie potoku platformy Azure
+> * Weryfikowanie wdrożenia potoku
+> * Zaktualizuj szablon i Wdróż ponownie
 > * Oczyszczanie zasobów
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
@@ -47,38 +47,38 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
 
-* **Konto usługi GitHub**, której użyjesz go do utworzenia repozytorium szablonów. Jeśli nie masz, możesz to zrobić [utworzyć jedno za darmo](https://github.com). Aby uzyskać więcej informacji o korzystaniu z repozytoriów GitHub, zobacz [repozytoriów GitHub kompilacji](/azure/devops/pipelines/repos/github).
-* **Zainstaluj oprogramowanie Git**. Korzysta z tego samouczka instrukcji *powłoki Git Bash* lub *powłoki Git Shell*. Aby uzyskać instrukcje, zobacz [zainstalować Git]( https://www.atlassian.com/git/tutorials/install-git).
-* **Organizacja DevOps platformy Azure**. Jeśli nie masz, możesz go utworzyć za darmo. Zobacz [tworzenie organizacji lub kolekcji projektów]( https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops).
-* **[Visual Studio Code](https://code.visualstudio.com/) z rozszerzeniem Narzędzia Menedżera zasobów**. Zobacz [Instalowanie rozszerzenia](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
+* **Konto usługi GitHub**, za pomocą którego można utworzyć repozytorium dla szablonów. Jeśli go nie masz, możesz [utworzyć go bezpłatnie](https://github.com). Aby uzyskać więcej informacji o korzystaniu z repozytoriów usługi GitHub, zobacz [Tworzenie repozytoriów GitHub](/azure/devops/pipelines/repos/github).
+* **Zainstaluj oprogramowanie Git**. W tej instrukcji samouczka jest stosowana funkcja *git bash* lub *powłoka git*. Aby uzyskać instrukcje, zobacz [Instalowanie usługi git]( https://www.atlassian.com/git/tutorials/install-git).
+* **Organizacja usługi Azure DevOps**. Jeśli go nie masz, możesz utworzyć go bezpłatnie. Zobacz [Tworzenie organizacji lub kolekcji projektów]( https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops).
+* **[Visual Studio Code](https://code.visualstudio.com/) z rozszerzeniem narzędzi Menedżer zasobów Tools**. Zobacz [Instalowanie rozszerzenia](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
 
 ## <a name="prepare-a-github-repository"></a>Przygotowywanie repozytorium GitHub
 
-GitHub jest używany do przechowywania kodem źródłowym projektu, łącznie z szablonów usługi Resource Manager. W przypadku innych obsługiwanych repozytoriów, zobacz [repozytoriów obsługiwane przez usługi Azure DevOps](/azure/devops/pipelines/repos/?view=azure-devops#supported-repository-types).
+GitHub służy do przechowywania kodu źródłowego projektu, w tym Menedżer zasobów szablonów. W przypadku innych obsługiwanych repozytoriów zobacz [repozytoria obsługiwane przez usługę Azure DevOps](/azure/devops/pipelines/repos/?view=azure-devops#supported-repository-types).
 
-### <a name="create-a-github-repository"></a>Tworzenie repozytorium usługi GitHub
+### <a name="create-a-github-repository"></a>Tworzenie repozytorium GitHub
 
-Jeśli nie masz konta usługi GitHub, zobacz [wymagania wstępne](#prerequisites).
+Jeśli nie masz konta usługi GitHub, zapoznaj się z tematem [wymagania wstępne](#prerequisites).
 
-1. Zaloguj się do [GitHub](https://github.com).
-2. Wybierz obraz konta w prawym górnym rogu, a następnie wybierz **repozytoriów**.
+1. Zaloguj się do usługi [GitHub](https://github.com).
+2. Wybierz swój obraz konta w prawym górnym rogu, a następnie wybierz **swoje repozytoria**.
 
-    ![Platformy Azure potoków Azure metodyki DevOps Azure Resource Manager utworzyć repozytorium GitHub](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-github-repository.png)
+    ![Azure Resource Manager Azure DevOps Azure Pipelines Tworzenie repozytorium GitHub](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-github-repository.png)
 
-1. Wybierz **New**, zielony przycisk.
-1. W **nazwę repozytorium**, wprowadź nazwę repozytorium.  Na przykład **repozytorium AzureRmPipeline**. Pamiętaj, aby zamienić dowolną **AzureRmPipeline** z Twoją nazwą projektu. Możesz wybrać opcję **publicznych** lub **prywatnej** dla pośrednictwa w tym samouczku. A następnie wybierz **tworzenia repozytorium**.
-1. Zanotuj adres URL. Adres URL repozytorium jest następujący format:
+1. Wybierz pozycję **Nowy**, zielony przycisk.
+1. W polu **Nazwa repozytorium**wprowadź nazwę repozytorium.  Na przykład **AzureRmPipeline-repozytorium**. Pamiętaj, aby zastąpić dowolną **AzureRmPipeline** nazwą projektu. Możesz wybrać opcję **publiczny** lub **prywatny** do przechodzenia przez ten samouczek. A następnie wybierz pozycję **Utwórz repozytorium**.
+1. Zapisz adres URL. Adres URL repozytorium ma następujący format:
 
     ```url
     https://github.com/[YourAccountName]/[YourRepositoryName]
     ```
 
-To repozytorium jest określany jako *repozytorium zdalnego*. Każdy z deweloperów o tym samym projekcie można sklonować swoje własne *lokalnego repozytorium*i scalania zmian do repozytorium zdalnego.
+To repozytorium jest określane jako *zdalne repozytorium*. Każdy deweloper tego samego projektu może sklonować własne *repozytorium lokalne*i scalić zmiany w repozytorium zdalnym.
 
-### <a name="clone-the-remote-repository"></a>Klonowanie zdalnego repozytorium
+### <a name="clone-the-remote-repository"></a>Klonowanie repozytorium zdalnego
 
-1. Otwórz program powłoki Git Shell lub powłoki Git Bash.  Zobacz [Wymagania wstępne](#prerequisites).
-1. Sprawdź bieżącego folderu **github**.
+1. Otwórz powłokę Git lub narzędzie git bash.  Zobacz [Wymagania wstępne](#prerequisites).
+1. Sprawdź, czy bieżący folder jest w serwisie **GitHub**.
 1. Uruchom następujące polecenie:
 
     ```bash
@@ -89,34 +89,34 @@ To repozytorium jest określany jako *repozytorium zdalnego*. Każdy z deweloper
     pwd
     ```
 
-    Zastąp **[YourAccountName]** nazwa konta usługi GitHub i Zastąp **[YourGitHubRepositoryName]** nazwę repozytorium utworzony w poprzedniej procedurze.
+    Zastąp ciąg **[YourAccountName]** nazwą konta usługi GitHub i Zastąp ciąg **[YourGitHubRepositoryName]** nazwą swojego repozytorium utworzoną w poprzedniej procedurze.
 
-    Poniższych zrzutach ekranu przedstawiono przykład.
+    Na poniższym zrzucie ekranu przedstawiono przykład.
 
-    ![Platformy Azure potoków Azure metodyki DevOps Azure Resource Manager utworzyć powłoki bash w usłudze GitHub](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-github-bash.png)
+    ![Azure Resource Manager Azure DevOps Azure Pipelines tworzenia witryny GitHub bash](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-github-bash.png)
 
-**CreateAzureStorage** folder to folder, w którym jest przechowywany szablon. **Pwd** polecenie wyświetla w ścieżce folderu. Ścieżka jest, gdzie zapisać szablon, aby w poniższej procedurze.
+Folder **CreateAzureStorage** jest folderem, w którym przechowywany jest szablon. **PWD** polecenie wyświetla ścieżkę folderu. Ścieżka służy do zapisywania szablonu w poniższej procedurze.
 
 ### <a name="download-a-quickstart-template"></a>Pobierz szablon szybkiego startu
 
-Zamiast tworzenia szablonu, możesz pobrać [szablon szybkiego startu]( https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json). Ten szablon tworzy konto usługi Azure Storage.
+Zamiast tworzenia szablonu można pobrać [szablon szybkiego startu]( https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json). Ten szablon służy do tworzenia konta usługi Azure Storage.
 
-1. Otwórz program Visual Studio code. Zobacz [Wymagania wstępne](#prerequisites).
-2. Otwórz szablon przy użyciu następującego adresu URL:
+1. Otwórz program Visual Studio Code. Zobacz [Wymagania wstępne](#prerequisites).
+2. Otwórz szablon z następującym adresem URL:
 
     ```URL
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
 
-3. Zapisz plik jako **azuredeploy.json** do **CreateAzureStorage** folderu. Nazwa folderu i nazwa pliku są używane, są one w potoku.  Jeśli zmienisz te nazwy, należy zaktualizować nazwy używane w potoku.
+3. Zapisz plik jako **azuredeploy. JSON** w folderze **CreateAzureStorage** . Nazwa folderu i nazwa pliku są używane, ponieważ znajdują się w potoku.  W przypadku zmiany tych nazw należy zaktualizować nazwy używane w potoku.
 
-### <a name="push-the-template-to-the-remote-repository"></a>Szablon wypychania do repozytorium zdalnego
+### <a name="push-the-template-to-the-remote-repository"></a>Wypychanie szablonu do repozytorium zdalnego
 
-Azuredeploy.json dodano w repozytorium lokalnym. Następnie Przekaż szablon do repozytorium zdalnego.
+Plik azuredeploy. JSON został dodany do repozytorium lokalnego. Następnie Przekaż szablon do zdalnego repozytorium.
 
-1. Otwórz *powłoki Git Shell* lub *powłoki Git Bash*, jeśli nie jest otwarty.
+1. Otwórz *powłokę git* lub *git bash*, jeśli nie jest ona otwarta.
 1. Zmień katalog na folder CreateAzureStorage w lokalnym repozytorium.
-1. Sprawdź **azuredeploy.json** plik znajduje się w folderze.
+1. Sprawdź, czy plik **azuredeploy. JSON** znajduje się w folderze.
 1. Uruchom następujące polecenie:
 
     ```bash
@@ -125,61 +125,61 @@ Azuredeploy.json dodano w repozytorium lokalnym. Następnie Przekaż szablon do 
     git push origin master
     ```
 
-    Możesz otrzymać ostrzeżenie dotyczące LF. Możesz zignorować to ostrzeżenie. **główny** to gałąź główna.  Zwykle tworzysz gałąź dla każdej aktualizacji. Aby uprościć samouczka, możesz użyć głównej gałęzi bezpośrednio.
-1. Przejdź do repozytorium GitHub z poziomu przeglądarki.  Adres URL jest  **https://github.com/ [YourAccountName] / [YourGitHubRepository]** . Zostanie wyświetlona **CreateAzureStorage** folder i **Azuredeploy.json** wewnątrz folderu.
+    Może pojawić się ostrzeżenie dotyczące LF. Możesz zignorować to ostrzeżenie. **główny** jest gałęzią główną.  Tworzona jest zwykle gałąź dla każdej aktualizacji. Aby uprościć samouczek, należy bezpośrednio użyć gałęzi głównej.
+1. Przejdź do repozytorium GitHub z przeglądarki.  Adres URL to  **https://github.com/ [YourAccountName]/[YourGitHubRepository]** . W folderze jest widoczny folder **CreateAzureStorage** i plik **Azuredeploy. JSON** .
 
-Do tej pory zostały utworzone z repozytorium GitHub i przekazany szablon do repozytorium.
+Do tej pory utworzono repozytorium GitHub i przekazano szablon do repozytorium.
 
-## <a name="create-a-devops-project"></a>Utwórz projekt DevOps
+## <a name="create-a-devops-project"></a>Tworzenie projektu DevOps
 
-Organizacja DevOps jest wymagana, przed przejściem do następnej procedury.  Jeśli nie masz, zobacz [wymagania wstępne](#prerequisites).
+Aby można było wykonać następną procedurę, wymagana jest organizacja DevOps.  Jeśli go nie masz, zobacz [wymagania wstępne](#prerequisites).
 
-1. Zaloguj się do [Azure DevOps](https://dev.azure.com).
+1. Zaloguj się do [usługi Azure DevOps](https://dev.azure.com).
 1. Wybierz organizację DevOps z lewej strony.
 
-    ![Platformy Azure potoków Azure metodyki DevOps Azure Resource Manager, Utwórz projekt DevOps platformy Azure](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-create-devops-project.png)
+    ![Azure Resource Manager Azure DevOps Azure Pipelines tworzenia projektu DevOps platformy Azure](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-create-devops-project.png)
 
-1. Wybierz pozycję **Create project** (Utwórz projekt). Jeśli nie masz żadnych projektów, Utwórz stronę projektu zostanie automatycznie otwarty.
+1. Wybierz pozycję **Create project** (Utwórz projekt). Jeśli nie masz żadnych projektów, Strona Tworzenie projektu zostanie otwarta automatycznie.
 1. Wprowadź następujące wartości:
 
-    * **Nazwa projektu**: Wprowadź nazwę projektu. Można użyć nazwy projektu, wybrany przez Ciebie na początku tego samouczka.
-    * **Kontrola wersji**: Wybierz **Git**. Może być konieczne rozwinąć **zaawansowane** się **kontroli wersji**.
+    * **Nazwa projektu**: Wprowadź nazwę projektu. Możesz użyć nazwy projektu, która została pobrana na początku samouczka.
+    * **Kontrola wersji**: Wybierz pozycję **git**. Może być konieczne rozszerzenie **Zaawansowane** , aby zobaczyć **kontrolę wersji**.
 
     Użyj wartości domyślnej dla innych właściwości.
 1. Wybierz pozycję **Create project** (Utwórz projekt).
 
-Tworzenie połączenia z usługą, który służy do wdrażania projektów na platformie Azure.
+Utwórz połączenie usługi używane do wdrażania projektów na platformie Azure.
 
-1. Wybierz **ustawienia projektu** u dołu menu po lewej stronie.
-1. Wybierz **obsługują połączenia** w obszarze **potoki**.
-1. Wybierz **połączenia nowej usługi**, a następnie wybierz pozycję **AzureResourceManager**.
+1. Wybierz pozycję **Ustawienia projektu** w dolnej części menu po lewej stronie.
+1. Wybierz pozycję **połączenia usługi** w obszarze **potoki**.
+1. Wybierz pozycję **nowe połączenie usługi**, a następnie wybierz pozycję **AzureResourceManager**.
 1. Wprowadź następujące wartości:
 
-    * **Nazwa połączenia**: Wprowadź nazwę połączenia. Na przykład **połąc AzureRmPipeline**. Zanotuj tę nazwę, potrzebna jest nazwa podczas tworzenia potoku.
-    * **Zakres poziom**: Wybierz **subskrypcji**.
-    * **Subskrypcja**: Wybierz swoją subskrypcję.
+    * **Nazwa połączenia**: Wprowadź nazwę połączenia. Na przykład **AzureRmPipeline-poł**. Zapisz tę nazwę, podczas tworzenia potoku musisz mieć nazwę.
+    * **Poziom zakresu**: Wybierz **subskrypcję**.
+    * **Subskrypcja**: wybierz subskrypcję.
     * **Grupa zasobów**: Pozostaw to pole puste.
-    * **Zezwalaj na wszystkie potoki, aby korzystać z tego połączenia**. (wybrane)
+    * **Zezwalaj wszystkim potokom na korzystanie z tego połączenia**. niezaznaczone
 1. Kliknij przycisk **OK**.
 
 ## <a name="create-a-pipeline"></a>Tworzenie potoku
 
-Do tej pory zostały wykonane następujące zadania.  Jeśli pominiesz przedstawione w poprzednich sekcjach, ponieważ jesteś zaznajomiony z usługi GitHub i metodyki DevOps, należy wykonać zadania przed kontynuowaniem.
+Do tej pory zostały wykonane następujące zadania.  Jeśli pominiesz poprzednie sekcje, ponieważ znasz już usługi GitHub i DevOps, musisz wykonać zadania przed kontynuowaniem.
 
-- Tworzenie repozytorium usługi GitHub, a następnie Zapisz [ten szablon](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) do **CreateAzureStorage** folderu w repozytorium.
-- Utwórz projekt DevOps i tworzenie połączenia z usługą Azure Resource Manager.
+- Utwórz repozytorium GitHub i Zapisz [ten szablon](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) w folderze **CreateAzureStorage** w repozytorium.
+- Utwórz projekt DevOps i Utwórz połączenie z usługą Azure Resource Manager.
 
-Aby utworzyć potok, kończąc je krokiem wdrażania szablonu:
+Aby utworzyć potok z krokiem do wdrożenia szablonu:
 
-1. Wybierz **potoki** menu po lewej stronie.
-1. Wybierz **nowy potok**.
-1. Z **Connect** zaznacz **GitHub**. Jeśli pojawi się monit, wprowadź swoje poświadczenia usługi GitHub, a następnie postępuj zgodnie z instrukcjami. Jeśli zostanie wyświetlony następujący ekran, wybierz **tylko wybranym repozytoriów**i sprawdź repozytorium znajduje się na liście przed wybraniem **zatwierdzić i zainstaluj**.
+1. Wybierz pozycję **potoki** w menu po lewej stronie.
+1. Wybierz pozycję **Nowy potok**.
+1. Na karcie **połączenie** wybierz pozycję **GitHub**. Jeśli zostanie wyświetlony monit, wprowadź swoje poświadczenia usługi GitHub, a następnie postępuj zgodnie z instrukcjami. Jeśli widzisz Poniższy ekran, wybierz opcję **tylko wybierz repozytoria**i sprawdź, czy repozytorium znajduje się na liście przed wybraniem opcji **Zatwierdź & Zainstaluj**.
 
-    ![Platformy Azure potoków Azure metodyki DevOps Azure Resource Manager do wybrania repozytoriów](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-only-select-repositories.png)
+    ![Azure Resource Manager Azure DevOps Azure Pipelines wybierz tylko repozytoria](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-only-select-repositories.png)
 
-1. Z **wybierz** , a następnie wybierz repozytorium.  Nazwa domyślna to **[YourAccountName] / [YourGitHubRepositoryName]** .
-1. Z **Konfiguruj** zaznacz **potoku Starter**. Pokazuje **azure pipelines.yml** plik potoku z dwóch etapów skryptu.
-1. Zastąp **kroki** sekcji przy użyciu poniższego kodu YAML:
+1. Na karcie **Wybierz** wybierz repozytorium.  Nazwa domyślna to **[YourAccountName]/[YourGitHubRepositoryName]** .
+1. Na karcie **Konfiguracja** wybierz pozycję **potok początkowy**. Pokazuje plik potoku **Azure-Pipelines. yml** z dwoma krokami skryptu.
+1. Zastąp sekcję **kroki** następującym YAML:
 
     ```yaml
     steps:
@@ -194,46 +194,46 @@ Aby utworzyć potok, kończąc je krokiem wdrażania szablonu:
         deploymentMode: 'Incremental'
     ```
 
-    Jest ona wyglądać następująco:
+    Powinien wyglądać następująco:
 
-    ![Usługa Azure yaml potoków metodyki DevOps platformy Azure Resource Manager w platformy Azure](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-yml.png)
+    ![Azure Resource Manager Azure DevOps Azure Pipelines YAML](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-yml.png)
 
     Wprowadź następujące zmiany:
 
-    * **azureSubscription**: Zaktualizuj wartość za pomocą połączenia z usługą utworzony w poprzedniej procedurze.
-    * **Akcja**: **utworzyć lub zaktualizować grupy zasobów** Akcja wykonuje akcje 2 - 1. Utwórz grupę zasobów, jeśli podano nazwę nowej grupy zasobów; 2. Wdróż szablon określony.
-    * **resourceGroupName**: Określ nazwę nowej grupy zasobów. Na przykład **AzureRmPipeline-rg**.
+    * **azureSubscription**: zaktualizuj wartość przy użyciu połączenia usługi utworzonego w poprzedniej procedurze.
+    * **Akcja**: Akcja **Utwórz lub Zaktualizuj grupę zasobów** wykonuje 2 akcje — 1. Utwórz grupę zasobów, jeśli podano nową nazwę grupy zasobów; dwóch. Wdróż określony szablon.
+    * **resourceGroupName**: Określ nową nazwę grupy zasobów. Na przykład **AzureRmPipeline-RG**.
     * **Lokalizacja**: Określ lokalizację grupy zasobów.
-    * **templateLocation**: gdy **połączony artefakt** jest określony, zadanie szuka pliku szablonu, bezpośrednio z połączonych repozytorium.
-    * **csmFile** jest ścieżka do pliku szablonu. Nie trzeba określać plik parametrów szablonu, ponieważ wszystkie parametry zdefiniowane w szablonie mają przypisane wartości domyślne.
+    * **templateLocation**: po określeniu **połączonego artefaktu** zadanie szuka pliku szablonu bezpośrednio z połączonego repozytorium.
+    * **csmFile** jest ścieżką do pliku szablonu. Nie musisz określać pliku parametrów szablonu, ponieważ wszystkie parametry zdefiniowane w szablonie mają wartości domyślne.
 
-    Aby uzyskać więcej informacji o zadaniu, zobacz [zadania wdrożenia grupy zasobów platformy Azure](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment)
+    Aby uzyskać więcej informacji o zadaniu, zobacz [zadanie wdrażania grupy zasobów platformy Azure](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment)
 1. Wybierz polecenie **Zapisz i uruchom**.
-1. Wybierz **Zapisz i uruchom** ponownie. Kopia pliku YAML, są zapisywane w repozytorium połączonych. Widać pliku YAML, przejdź do repozytorium.
-1. Upewnij się, że potok jest wykonywane pomyślnie.
+1. Wybierz pozycję **Zapisz i uruchom** ponownie. Kopia pliku YAML jest zapisywana w połączonym repozytorium. Plik YAML można zobaczyć, przechodzenie do repozytorium.
+1. Sprawdź, czy potok został pomyślnie wykonany.
 
-    ![Usługa Azure yaml potoków metodyki DevOps platformy Azure Resource Manager w platformy Azure](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-status.png)
+    ![Azure Resource Manager Azure DevOps Azure Pipelines YAML](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-status.png)
 
 ## <a name="verify-the-deployment"></a>Weryfikowanie wdrożenia
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Otwórz grupę zasobów. Nazwa jest określona w pliku YAML potoku.  Zostanie wyświetlona jedno konto magazynu utworzone.  Nazwa konta magazynu, który rozpoczyna się od **przechowywania**.
+1. Otwórz grupę zasobów. Nazwa jest określona w pliku YAML potoku.  Zobaczysz jedno utworzone konto magazynu.  Nazwa konta magazynu rozpoczyna się od **zapisania**.
 1. Wybierz nazwę konta magazynu, aby go otworzyć.
-1. Wybierz **właściwości**. Zwróć uwagę **jednostki SKU** jest **Standard_LRS**.
+1. Wybierz **właściwości**. Zwróć uwagę, że **jednostka SKU** to **Standard_LRS**.
 
-    ![Usługa Azure potoków metodyki DevOps platformy Azure Resource Manager w Azure portalu weryfikacji.](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-portal-verification.png)
+    ![Azure Resource Manager weryfikacji portalu usługi Azure DevOps Azure Pipelines](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-portal-verification.png)
 
-## <a name="update-and-redeploy"></a>Aktualizacja i ponowne wdrażanie
+## <a name="update-and-redeploy"></a>Aktualizowanie i ponowne wdrażanie
 
-Podczas aktualizacji szablonu, a następnie Wypchnij zmiany do repozytorium zdalnego, potok automatycznie aktualizuje zasobów, konto magazynu w tym przypadku.
+Gdy aktualizujesz szablon i wypychasz zmiany do repozytorium zdalnego, potok automatycznie zaktualizuje zasoby, konto magazynu w tym przypadku.
 
-1. Otwórz **azuredeploy.json** ze swojego lokalnego repozytorium w programie Visual Studio Code.
-1. Aktualizacja **defaultValue** z **storageAccountType** do **Standard_GRS**. Zobacz poniższy zrzut ekranu:
+1. Otwórz plik **azuredeploy. JSON** z lokalnego repozytorium w Visual Studio Code.
+1. Zaktualizuj wartość **DefaultValue** elementu **storageAccountType** na **Standard_GRS**. Zobacz poniższy zrzut ekranu:
 
-    ![Platformy Azure potoków Azure metodyki DevOps Azure Resource Manager zaktualizować yaml](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-update-yml.png)
+    ![Azure Resource Manager usługi Azure DevOps Azure Pipelines Update YAML](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-update-yml.png)
 
 1. Zapisz zmiany.
-1. Wypchnij zmiany do repozytorium zdalnego, uruchamiając następujące polecenia z usługi Git/powłoki Bash.
+1. Wypchnij zmiany do repozytorium zdalnego, uruchamiając następujące polecenia z narzędzia Git bash/Shell.
 
     ```bash
     git pull origin master
@@ -242,11 +242,11 @@ Podczas aktualizacji szablonu, a następnie Wypchnij zmiany do repozytorium zdal
     git push origin master
     ```
 
-    Pierwsze polecenie synchronizuje lokalnego repozytorium z repozytorium zdalnym. Należy pamiętać, że plik YAML potoku została dodana do repozytorium zdalnego.
+    Pierwsze polecenie synchronizuje repozytorium lokalne ze zdalnym repozytorium. Zapamiętaj, że plik potoku YAML został dodany do zdalnego repozytorium.
 
-    Z głównej gałęzi repozytorium zdalnego zaktualizowane potok jest uruchamiany ponownie.
+    Po zaktualizowaniu głównej gałęzi repozytorium zdalnego potok jest uruchamiany ponownie.
 
-Aby sprawdzić zmiany, możesz sprawdzić jednostki SKU konta magazynu.  Zobacz [Weryfikacja wdrożenia](#verify-the-deployment).
+Aby sprawdzić zmiany, można sprawdzić jednostkę SKU konta magazynu.  Zobacz [weryfikacja wdrożenia](#verify-the-deployment).
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -257,11 +257,11 @@ Gdy zasoby platformy Azure nie będą już potrzebne, wyczyść wdrożone zasoby
 3. Wybierz nazwę grupy zasobów.
 4. Wybierz pozycję **Usuń grupę zasobów** z górnego menu.
 
-Można również usunąć repozytorium GitHub i projekt DevOps platformy Azure.
+Możesz również chcieć usunąć repozytorium GitHub i projekt usługi Azure DevOps.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku utworzysz potok DevOps platformy Azure do wdrożenia szablonu usługi Azure Resource Manager. Aby dowiedzieć się, jak wdrażać zasoby platformy Azure w wielu regionach i jak stosować praktyki bezpiecznego wdrażania, zobacz
+W tym samouczku utworzysz potok usługi Azure DevOps w celu wdrożenia szablonu Azure Resource Manager. Aby dowiedzieć się, jak wdrażać zasoby platformy Azure w wielu regionach i jak stosować praktyki bezpiecznego wdrażania, zobacz
 
 > [!div class="nextstepaction"]
-> [Używanie usługi Azure Deployment Manager](./resource-manager-tutorial-deploy-vm-extensions.md)
+> [Korzystanie z praktyk bezpiecznego wdrażania](./deployment-manager-tutorial.md)

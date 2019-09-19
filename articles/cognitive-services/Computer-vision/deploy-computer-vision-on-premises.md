@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 8/22/2019
+ms.date: 09/18/2019
 ms.author: dapine
-ms.openlocfilehash: 1627aea958707eaaef6ee79908a17afc2e8f7b45
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 7560f2395447e81dcd01e1d3e092b39b129b4ce3
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70068967"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129832"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>Używanie kontenera przetwarzanie obrazów z Kubernetes i Helm
 
-Jedną z opcji zarządzania kontenerami przetwarzanie obrazów w środowisku lokalnym jest użycie Kubernetes i Helm. Korzystając z Kubernetes i Helm do definiowania obrazu kontenera Rozpoznawanie tekstu, utworzymy pakiet Kubernetes. Ten pakiet zostanie wdrożony w klastrze Kubernetes lokalnie. Na koniec zapoznaj się z tematem testowanie wdrożonych usług. Aby uzyskać więcej informacji na temat uruchamiania kontenerów platformy Docker bez aranżacji Kubernetes, zobacz [Install and run rozpoznawanie tekstu Containers](computer-vision-how-to-install-containers.md).
+Jedną z opcji zarządzania kontenerami przetwarzanie obrazów w środowisku lokalnym jest użycie Kubernetes i Helm. Korzystając z Kubernetes i Helm do definiowania obrazu kontenera przetwarzanie obrazów, utworzymy pakiet Kubernetes. Ten pakiet zostanie wdrożony w klastrze Kubernetes lokalnie. Na koniec zapoznaj się z tematem testowanie wdrożonych usług. Aby uzyskać więcej informacji na temat uruchamiania kontenerów platformy Docker bez aranżacji Kubernetes, zobacz [Install and run przetwarzanie obrazów Containers](computer-vision-how-to-install-containers.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -30,7 +30,7 @@ Poniższe wymagania wstępne przed użyciem kontenerów przetwarzanie obrazów l
 | Azure Account | Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto][free-azure-account]. |
 | Dostęp Container Registry | Aby Kubernetes do ściągania obrazów platformy Docker do klastra, będzie potrzebny dostęp do rejestru kontenerów. Musisz najpierw zażądać [dostępu do rejestru kontenerów][vision-preview-access] . |
 | Interfejs wiersza polecenia Kubernetes | [Interfejs wiersza polecenia Kubernetes][kubernetes-cli] jest wymagany do zarządzania poświadczeniami udostępnionymi z rejestru kontenerów. Kubernetes jest również wymagany przed Helm, który jest menedżerem pakietów Kubernetes. |
-| Interfejs wiersza polecenia Helm | W ramach instalacji [interfejsu wiersza polecenia Helm][helm-install] trzeba również zainicjować Helm, który zainstaluje system. [][tiller-install] |
+| Interfejs wiersza polecenia Helm | W ramach instalacji [interfejsu wiersza polecenia Helm][helm-install] trzeba również zainicjować Helm, który zainstaluje [System.][tiller-install] |
 | Zasób przetwarzanie obrazów |Aby można było używać kontenera, musisz mieć:<br><br>Zasób usługi Azure **Przetwarzanie obrazów** i skojarzony klucz interfejsu API dla identyfikatora URI punktu końcowego. Obie wartości są dostępne na stronach przeglądów i kluczy dla zasobu i są wymagane do uruchomienia kontenera.<br><br>**{API_KEY}** : Jeden z dwóch dostępnych kluczy zasobów na stronie **klucze**<br><br>**{ENDPOINT_URI}** : Punkt końcowy zgodnie z opisem na stronie **Przegląd**|
 
 [!INCLUDE [Gathering required parameters](../containers/includes/container-gathering-required-parameters.md)]
@@ -89,6 +89,86 @@ containerpreview      kubernetes.io/dockerconfigjson        1         30s
 ```
 
 ## <a name="configure-helm-chart-values-for-deployment"></a>Konfigurowanie wartości wykresu Helm na potrzeby wdrożenia
+
+# <a name="readtabread"></a>[Odczyt](#tab/read)
+
+Zacznij od utworzenia folderu o nazwie *Read*, a następnie wklej następującą zawartość YAML do nowego pliku o nazwie *Chart. yml*.
+
+```yaml
+apiVersion: v1
+name: read
+version: 1.0.0
+description: A Helm chart to deploy the microsoft/cognitive-services-read to a Kubernetes cluster
+```
+
+Aby skonfigurować wartości domyślne wykresu Helm, skopiuj i wklej następujący YAML do pliku o nazwie `values.yaml`. Zastąp Komentarze `# {API_KEY}`ikomentarz własnymi wartościami. `# {ENDPOINT_URI}`
+
+```yaml
+# These settings are deployment specific and users can provide customizations
+
+read:
+  enabled: true
+  image:
+    name: cognitive-services-read
+    registry: containerpreview.azurecr.io/
+    repository: microsoft/cognitive-services-read
+    tag: latest
+    pullSecret: containerpreview # Or an existing secret
+    args:
+      eula: accept
+      billing: # {ENDPOINT_URI}
+      apikey: # {API_KEY}
+```
+
+> [!IMPORTANT]
+> Jeśli wartości `apikey` i nie zostaną podane, usługi wygasną po 15 minutach. `billing` Podobnie weryfikacja nie powiedzie się, ponieważ usługi nie będą dostępne.
+
+Utwórz folder *szablonów* w katalogu *Read* . Skopiuj i wklej następujący YAML do pliku o nazwie `deployment.yaml`. `deployment.yaml` Plik będzie używany jako szablon Helm.
+
+> Szablony generują pliki manifestu, które są YAMLmi opisami zasobów, które Kubernetes mogą zrozumieć. [— Przewodnik po szablonach wykresu Helm][chart-template-guide]
+
+```yaml
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: read
+spec:
+  template:
+    metadata:
+      labels:
+        app: read-app
+    spec:
+      containers:
+      - name: {{.Values.read.image.name}}
+        image: {{.Values.read.image.registry}}{{.Values.read.image.repository}}
+        ports:
+        - containerPort: 5000
+        env:
+        - name: EULA
+          value: {{.Values.read.image.args.eula}}
+        - name: billing
+          value: {{.Values.read.image.args.billing}}
+        - name: apikey
+          value: {{.Values.read.image.args.apikey}}
+      imagePullSecrets:
+      - name: {{.Values.read.image.pullSecret}}
+
+--- 
+apiVersion: v1
+kind: Service
+metadata:
+  name: read
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 5000
+  selector:
+    app: read-app
+```
+
+Szablon określa usługę modułu równoważenia obciążenia oraz wdrożenie kontenera/obrazu do odczytu.
+
+# <a name="recognize-texttabrecognize-text"></a>[Rozpoznawanie tekstu](#tab/recognize-text)
 
 Zacznij od utworzenia folderu o nazwie *Text-rozpoznającego*, skopiuj i wklej następującą zawartość YAML do nowego pliku o nazwie `Chart.yml`.
 
@@ -166,15 +246,73 @@ spec:
 
 Szablon określa usługę modułu równoważenia obciążenia oraz wdrożenie kontenera/obrazu na potrzeby rozpoznawania tekstu.
 
+***
+
 ### <a name="the-kubernetes-package-helm-chart"></a>Pakiet Kubernetes (wykres Helm)
 
 *Wykres Helm* zawiera konfigurację, którą obrazy platformy Docker pobrać z `containerpreview.azurecr.io` rejestru kontenerów.
 
 > [Wykres Helm][helm-charts] to zbiór plików, które opisują powiązany zestaw zasobów Kubernetes. Pojedynczy wykres może służyć do wdrażania bardzo prostego, takiego jak Memcached pod lub złożonego, takiego jak pełny stos aplikacji sieci Web z serwerami HTTP, bazami danych, pamięciami podręcznymi i tak dalej.
 
-Dostarczone *wykresy Helm* pobierają obrazy platformy Docker usługi przetwarzanie obrazów i rozpoznają usługi tekstowe z `containerpreview.azurecr.io` rejestru kontenerów.
+Dostarczone *wykresy Helm* pobierają obrazy platformy Docker usługi przetwarzanie obrazów i odpowiadające im usługi z `containerpreview.azurecr.io` rejestru kontenerów.
 
 ## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>Instalowanie wykresu Helm w klastrze Kubernetes
+
+# <a name="readtabread"></a>[Odczyt](#tab/read)
+
+Aby zainstalować *Wykres Helm*, należy wykonać [`helm install`][helm-install-cmd] polecenie. Upewnij się, że polecenie Install jest wykonane z katalogu znajdującego się powyżej `read` folderu.
+
+```console
+helm install read --name read
+```
+
+Oto przykładowe dane wyjściowe, które mogą być widoczne w przypadku pomyślnego wykonania instalacji:
+
+```console
+NAME: read
+LAST DEPLOYED: Thu Sep 04 13:24:06 2019
+NAMESPACE: default
+STATUS: DEPLOYED
+
+RESOURCES:
+==> v1/Pod(related)
+NAME                    READY  STATUS             RESTARTS  AGE
+read-57cb76bcf7-45sdh   0/1    ContainerCreating  0         0s
+
+==> v1/Service
+NAME     TYPE          CLUSTER-IP    EXTERNAL-IP  PORT(S)         AGE
+read     LoadBalancer  10.110.44.86  localhost    5000:31301/TCP  0s
+
+==> v1beta1/Deployment
+NAME    READY  UP-TO-DATE  AVAILABLE  AGE
+read    0/1    1           0          0s
+```
+
+Wdrożenie Kubernetes może potrwać kilka minut. Aby upewnić się, że oba typy i usługi są poprawnie wdrożone i dostępne, wykonaj następujące polecenie:
+
+```console
+kubectl get all
+```
+
+Powinieneś oczekiwać, że zobaczysz coś podobnego do następującego:
+
+```console
+λ kubectl get all
+NAME                        READY   STATUS    RESTARTS   AGE
+pod/read-57cb76bcf7-45sdh   1/1     Running   0          17s
+
+NAME                   TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
+service/kubernetes     ClusterIP      10.96.0.1      <none>        443/TCP          45h
+service/read           LoadBalancer   10.110.44.86   localhost     5000:31301/TCP   17s
+
+NAME                   READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/read   1/1     1            1           17s
+
+NAME                              DESIRED   CURRENT   READY   AGE
+replicaset.apps/read-57cb76bcf7   1         1         1       17s
+```
+
+# <a name="recognize-texttabrecognize-text"></a>[Rozpoznawanie tekstu](#tab/recognize-text)
 
 Aby zainstalować *Wykres Helm*, należy wykonać [`helm install`][helm-install-cmd] polecenie. Upewnij się, że polecenie Install jest wykonane z katalogu znajdującego się powyżej `text-recognizer` folderu.
 
@@ -227,6 +365,8 @@ deployment.apps/text-recognizer   1/1     1            1           17s
 NAME                                         DESIRED   CURRENT   READY   AGE
 replicaset.apps/text-recognizer-57cb76bcf7   1         1         1       17s
 ```
+
+***
 
 <!--  ## Validate container is running -->
 

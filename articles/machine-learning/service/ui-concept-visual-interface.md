@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/15/2019
-ms.openlocfilehash: 65daf1468d27825d9904a14e42e43796d3985321
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: f560887a48ce4754b26a54ef0e18093c5577af34
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996519"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128806"
 ---
 # <a name="what-is-the-visual-interface-for-azure-machine-learning"></a>Co to jest interfejs wizualny dla Azure Machine Learning? 
 
@@ -95,8 +95,8 @@ Aby dowiedzieć się, jak wdrożyć model, [zobacz Samouczek: Wdróż model ucze
 
 * Poznaj podstawy analizy predykcyjnej i uczenia maszynowego przy [użyciu samouczka: Przewidywanie ceny samochodów za pomocą interfejsu wizualnego](ui-tutorial-automobile-price-train-score.md)
 * Użyj jednego z przykładów i zmodyfikuj, aby wymusić Twoje potrzeby:
-    * [Przykład 1 — regresja: Przewidywana cena](ui-sample-regression-predict-automobile-price-basic.md)
-    * [Przykład 2 — Regresja: Przewidywanie cen i porównywanie algorytmów](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
-    * [Przykład 3 — Klasyfikacja: Przewidywanie ryzyka kredytowego](ui-sample-classification-predict-credit-risk-basic.md)
-    * [Przykład 4 — Klasyfikacja: Przewidywanie ryzyka kredytowego (z uwzględnieniem kosztów)](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
-    * [Przykład 5 — Klasyfikacja: Przewidywanie zmian, pragnienie i kupowanie](ui-sample-classification-predict-churn.md)
+    * [Przykład 1 — regresja: Przewidywana cena](how-to-ui-sample-regression-predict-automobile-price-basic.md)
+    * [Przykład 2 — Regresja: Przewidywanie cen i porównywanie algorytmów](how-to-ui-sample-regression-predict-automobile-price-compare-algorithms.md)
+    * [Przykład 3 — Klasyfikacja: Przewidywanie ryzyka kredytowego](how-to-ui-sample-classification-predict-credit-risk-basic.md)
+    * [Przykład 4 — Klasyfikacja: Przewidywanie ryzyka kredytowego (z uwzględnieniem kosztów)](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)
+    * [Przykład 5 — Klasyfikacja: Przewidywanie zmian, pragnienie i kupowanie](how-to-ui-sample-classification-predict-churn.md)

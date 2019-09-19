@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 09/20/2019
 ms.author: victorh
-ms.openlocfilehash: 4b258df1711aa51ed4edee6ecd209fa39c7fde27
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: cb5b8bbb322dc401c7a8b057418d392120ef68e3
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018849"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130222"
 ---
 # <a name="azure-firewall-faq"></a>Często zadawane pytania dotyczące zapory platformy Azure
 
@@ -163,3 +163,7 @@ Zapora platformy Azure musi obsługiwać więcej wystąpień maszyn wirtualnych 
 ## <a name="does-the-firewall-subnet-size-need-to-change-as-the-service-scales"></a>Czy rozmiar podsieci zapory musi ulec zmianie w miarę skalowania usługi?
 
 Nie. Zapora platformy Azure nie potrzebuje podsieci większej niż/26.
+
+## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Czy Zapora platformy Azure domyślnie zezwala na dostęp do Active Directory?
+
+Nie. Zapora systemu Azure domyślnie blokuje dostęp Active Directory. Aby zezwolić na dostęp, skonfiguruj tag usługi usługi azureactivedirectory. Aby uzyskać więcej informacji, zobacz [Tagi usługi Zapora platformy Azure](service-tags.md).

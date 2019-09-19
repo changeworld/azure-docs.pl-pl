@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 0e8dacb97b6ccfb57573fc21c3a4df3694cc7ec8
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 9e7d6a027a60590396446479aecf1644ef753ecf
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098402"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130167"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Zarządzanie kopiami zapasowymi maszyn wirtualnych platformy Azure za pomocą usługi Azure Backup
 
@@ -164,6 +164,13 @@ Istnieją dwa sposoby usuwania danych kopii zapasowej maszyny wirtualnej:
 
   > [!NOTE]
   > Usunięcie danych kopii zapasowej powoduje usunięcie wszystkich skojarzonych punktów odzyskiwania. Nie można wybrać określonych punktów odzyskiwania do usunięcia.
+
+### <a name="backup-item-where-primary-data-source-no-longer-exists"></a>Element kopii zapasowej, w którym podstawowe źródło danych już nie istnieje
+
+- Jeśli maszyny wirtualne platformy Azure skonfigurowane dla usługi Azure Backup zostaną usunięte lub przeniesione bez zatrzymywania ochrony, wówczas zarówno zaplanowane zadania tworzenia kopii zapasowej, jak i zadania tworzenia kopii zapasowych na żądanie (ad hoc) zakończą się niepowodzeniem z powodu błędu UserErrorVmNotFoundV2. Wstępne sprawdzanie kopii zapasowej będzie wyświetlane jako krytyczne tylko dla niezakończonych zadań tworzenia kopii zapasowych ad hoc (zakończone niepowodzeniem zaplanowane zadania nie są wyświetlane). 
+- Te elementy kopii zapasowej pozostają aktywne w systemie zgodnie z zasadami tworzenia kopii zapasowych i przechowywania ustawionych przez użytkownika. Dane kopii zapasowej dla tych maszyn wirtualnych platformy Azure będą przechowywane zgodnie z zasadami przechowywania. Wygasłe punkty odzyskiwania (z wyjątkiem ostatniego punktu odzyskiwania) są czyszczone zgodnie z zakresem przechowywania określonym w zasadach tworzenia kopii zapasowych.
+- Użytkownicy są zalecani do usunięcia elementów kopii zapasowych, w których pierwotne źródło danych już nie istnieje, aby uniknąć dodatkowego kosztu, jeśli element kopii zapasowej/dane dla zasobów usuwania nie są już wymagane, ponieważ ostatni punkt odzyskiwania jest zachowywany w nieskończoność, a użytkownik jest obciążany jako według cennika kopii zapasowych.
+
 
 ## <a name="next-steps"></a>Następne kroki
 - Dowiedz się, jak [utworzyć kopię zapasową maszyn wirtualnych platformy Azure z ustawień maszyny wirtualnej](backup-azure-vms-first-look-arm.md).

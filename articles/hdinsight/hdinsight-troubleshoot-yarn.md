@@ -1,18 +1,18 @@
 ---
 title: Rozwiązywanie problemów z usługi YARN w usłudze Azure HDInsight
 description: Uzyskaj odpowiedzi na często zadawane pytania na temat pracy z usługą Apache Hadoop YARN i Azure HDInsight.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 107230a4d8c2e0427c2fcf2a8862559c707831a1
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: a0eb0d15d931cf1b2f71740c7a9359cf16205481
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076565"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122530"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z Apache Hadoop PRZĘDZą przy użyciu usługi Azure HDInsight
 
@@ -34,24 +34,24 @@ W tym przykładzie dwie istniejącej kolejki (**domyślne** i **thriftsvr**) są
 
 1. Wybierz **widoków Ambari** ikonę, a następnie wybierz wzorca siatki. Następnie wybierz pozycję **menedżera kolejki YARN**.
 
-    ![Wybierz ikonę widoków Ambari](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
+    ![Menedżer kolejki PRZĘDZy Ambari pulpitu nawigacyjnego Apache](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
 2. Wybierz **domyślne** kolejki.
 
-    ![Wybierz kolejkę domyślne](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
+    ![Apache Ambari — wybór kolejki domyślnej](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
 3. Dla **domyślne** kolejki i zmienić **pojemności** z 50%, 25%. Aby uzyskać **thriftsvr** kolejki, zmień **pojemności** 25%.
 
     ![Zmienianie pojemności do 25% domyślnej i thriftsvr kolejek](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
 4. Aby utworzyć nową kolejkę, wybierz **Dodaj kolejkę**.
 
-    ![Wybierz opcję Dodaj kolejkę](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
+    ![Kolejka dodawania pulpitu nawigacyjnego PRZĘDZy Ambari Apache](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
 
 5. Nazwa nowej kolejki.
 
-    ![Nazwa kolejki platformy Spark](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
+    ![Kolejka nazw pulpitu nawigacyjnego PRZĘDZy Ambari](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
 
 6. Pozostaw **pojemności** wartości na 50%, a następnie wybierz **akcje** przycisku.
 
-    ![Wybierz przycisk Akcje](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
+    ![Akcja wybierania nici Ambari Apache](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
 7. Wybierz **Zapisz i Odśwież kolejek**.
 
     ![Wybierz pozycję Zapisz i Odśwież kolejek](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png)  
@@ -64,7 +64,7 @@ Te zmiany są widoczne od razu po Interfejsie użytkownika YARN harmonogramu.
 
 ## <a name="how-do-i-download-yarn-logs-from-a-cluster"></a>Jak pobrać dzienniki platformy YARN z klastra?
 
-### <a name="resolution-steps"></a>Kroki rozwiązywania problemów 
+### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
 1. Nawiąż połączenie z klastrem HDInsight przy użyciu klienta Secure Shell (SSH). Aby uzyskać więcej informacji, zobacz [dodatkowe materiały](#additional-reading-2).
 

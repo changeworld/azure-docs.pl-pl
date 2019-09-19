@@ -4,18 +4,18 @@ summary: Łącze prywatne platformy Azure umożliwia dostęp do usług PaaS plat
 metadata:
   title: Dokumentacja łącza prywatnego — przewodniki Szybki start, przewodniki, referencyjna dokumentacja interfejsów API
   description: Dowiedz się, jak korzystać z usługi łącza prywatnego platformy Azure. W przewodnikach Szybki start i samouczkach pokazano, jak wdrożyć usługę łącza prywatnego.
-  ms.service: virtual-network
+  ms.service: private-link
   ms.topic: landing-page
   ms.collection: collection
   author: KumudD
   ms.author: kumud
   ms.date: 09/16/2019
-  ms.openlocfilehash: 867c20b96f8a48aeb52e455d718057e686ddfcbe
-  ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+  ms.openlocfilehash: 24b6d3ce2514ef25a015182e4a4fcd641ac76d50
+  ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 09/16/2019
-  ms.locfileid: "71020215"
+  ms.lasthandoff: 09/18/2019
+  ms.locfileid: "71104603"
 landingContent:
 - title: Informacje o łączu prywatnym platformy Azure
   linkLists:

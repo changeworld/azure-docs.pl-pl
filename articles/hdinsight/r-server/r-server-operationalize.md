@@ -1,19 +1,19 @@
 ---
 title: Usługi operacjonalizować ML w usłudze HDInsight — Azure
 description: Dowiedz się, jak operacjonalizować model danych, aby dokonać prognoz przy użyciu usług ML w usłudze Azure HDInsight.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 4980b4d3a4ec7165a4aba3d02561f6c666150924
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: a05bcdef2b7456fbab852e9728c156e57f847f57
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967665"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123566"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Klaster usług operacjonalizować ML w usłudze Azure HDInsight
 
@@ -50,31 +50,31 @@ Po użyciu klastra usług ML w usłudze HDInsight w celu ukończenia modelowania
 
 1. Zostaną wyświetlone opcje do wyboru. Wybierz pierwszą opcję, jak pokazano na poniższym zrzucie ekranu, aby **skonfigurować ml Server dla operacjonalizacji**.
 
-    ![jedno pole OP1](./media/r-server-operationalize/admin-util-one-box-1.png)
+    ![Wybór narzędzi administracyjnych programu R Server](./media/r-server-operationalize/admin-util-one-box-1.png)
 
 1. Zostanie wyświetlona opcja wyboru, w jaki sposób chcesz operacjonalizować ML Server. Z przedstawionych opcji wybierz pierwszy z nich, **wprowadzając.**
 
-    ![jedno pole OP2](./media/r-server-operationalize/admin-util-one-box-2.png)
+    ![Operacjonalizować narzędzi administracyjnych programu R Server](./media/r-server-operationalize/admin-util-one-box-2.png)
 
 1. Po wyświetleniu monitu wprowadź hasło administratora lokalnego i wprowadź je ponownie.
 
 1. Powinny zostać wyświetlone dane wyjściowe z sugestią, że operacja zakończyła się pomyślnie. Zostanie również wyświetlony monit o wybranie innej opcji z menu. Wybierz pozycję E, aby wrócić do menu głównego.
 
-    ![jedno pole OP3](./media/r-server-operationalize/admin-util-one-box-3.png)
+    ![Powodzenie narzędzia administracyjnego programu R Server](./media/r-server-operationalize/admin-util-one-box-3.png)
 
 1. Opcjonalnie można przeprowadzić kontrolę diagnostyczną, uruchamiając test diagnostyczny w następujący sposób:
 
     a. Z menu głównego wybierz **6** , aby uruchomić testy diagnostyczne.
 
-    ![diagnostic1](./media/r-server-operationalize/hdinsight-diagnostic1.png)
+    ![Diagnostyka narzędzi administracyjnych programu R Server](./media/r-server-operationalize/hdinsight-diagnostic1.png)
 
     b. Z menu testy **diagnostyczne wybierz pozycję**. Po wyświetleniu monitu wprowadź hasło podane dla użytkownika administratora lokalnego.
 
-    ![diagnostic2](./media/r-server-operationalize/hdinsight-diagnostic2.png)
+    ![Test narzędzi administracyjnych programu R Server](./media/r-server-operationalize/hdinsight-diagnostic2.png)
 
     c. Sprawdź, czy dane wyjściowe pokazują, że ogólna kondycja jest przebiegu.
 
-    ![diagnostic3](./media/r-server-operationalize/hdinsight-diagnostic3.png)
+    ![Przebieg narzędzia administracyjnego programu R Server](./media/r-server-operationalize/hdinsight-diagnostic3.png)
 
     d. W wyświetlonych opcjach menu Wprowadź wartość **E** , aby powrócić do menu głównego, a następnie wprowadź **8** , aby wyjść z narzędzia administracyjnego.
 
@@ -148,7 +148,7 @@ Wykonaj następujące kroki, aby zlikwidować węzły procesu roboczego:
 
 1. Kliknij kolejno pozycje **Akcje** > **wybrane hosty** >  > **Włącz tryb konserwacji**. Na przykład na poniższej ilustracji węzły wn3 i wn4 są przeznaczone do likwidacji.  
 
-   ![likwidowanie węzłów procesu roboczego](./media/r-server-operationalize/get-started-operationalization.png)  
+   ![Apache Ambari Włącz tryb konserwacji](./media/r-server-operationalize/get-started-operationalization.png)  
 
 * Wybierz pozycję **Akcje** > **wybrane hosty** > **datanodes** > kliknij pozycję **likwidowanie**.
 * Wybierz pozycję **Akcje** > **wybrane hosty** > **NodeManagers** > kliknij pozycję **likwidowanie**.

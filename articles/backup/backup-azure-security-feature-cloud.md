@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: 4fb88cbed4e73a7cea2b0ccf01b1429a3ff321f3
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: b882b8ee08c38b6313558916ab46f80ce9dd5130
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018177"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129335"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Funkcje zabezpieczeń pomagające w ochronie obciążeń w chmurze korzystających z Azure Backup
 
@@ -122,9 +122,9 @@ Cofnięcie usunięcia po wykonaniu operacji Wznów spowoduje ponowne włączenie
 
 Nie można usunąć magazynu Recovery Services, jeśli w magazynie istnieją elementy kopii zapasowej w stanie nieusuniętym. Elementy usunięte nietrwałe są trwale usuwane po 14 dniach operacji usuwania. Magazyn można usunąć tylko po przeczyszczeniu wszystkich usuniętych elementów.  
 
-#### <a name="how-can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>Jak mogę usunąć dane przed usunięciem z okresu usuwania nietrwałego z 14 dni?
+#### <a name="can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>Czy mogę usunąć dane przed usunięciem z okresu usuwania nietrwałego z 14 dni?
 
-Nie ma możliwości przeczyszczenia danych przed 14 dni po usunięciu. Jeśli jest to zablokowany lub problem ze zgodnością, skontaktuj się z pomocą techniczną firmy Microsoft.
+Nie. Nie można wymusić usunięcia nieusuniętych elementów, zostaną one automatycznie usunięte po 14 dniach. Ta funkcja zabezpieczeń umożliwia ochronę danych kopii zapasowych przed przypadkowym lub złośliwym usunięciem.  Przed wykonaniem jakiejkolwiek innej akcji na maszynie wirtualnej należy poczekać 14 dni.  Elementy usunięte nietrwale nie będą obciążane opłatami.  Jeśli potrzebujesz ponownie chronić maszyny wirtualne oznaczone do usunięcia nietrwałego w ciągu 14 dni do nowego magazynu, skontaktuj się z pomocą techniczną firmy Microsoft.
 
 #### <a name="can-soft-delete-operations-be-performed-in-powershell-or-cli"></a>Czy można wykonywać operacje usuwania nietrwałego w programie PowerShell lub interfejsie wiersza polecenia?
 

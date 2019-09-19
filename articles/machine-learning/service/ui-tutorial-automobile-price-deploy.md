@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/11/2019
-ms.openlocfilehash: 22d5c41e8b815fd99450962cb63d11e9560c787f
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 9378c6a14c3b755a6456ef68ecd73730cb77fc79
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997011"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128985"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Samouczek: Wdrażanie modelu uczenia maszynowego za pomocą interfejsu wizualnego
 
@@ -130,4 +130,4 @@ Te modele i wdrożenia można również znaleźć w sekcjach **modele** i **punk
 W tym samouczku przedstawiono podstawowe kroki tworzenia, wdrażania i zużywania modelu uczenia maszynowego w interfejsie wizualizacji. Aby dowiedzieć się więcej o sposobach rozwiązywania innych rodzajów problemów za pomocą interfejsu wizualnego, zobacz nasze inne Przykładowe eksperymenty.
 
 > [!div class="nextstepaction"]
-> [Przykład klasyfikacji ryzyka kredytowego](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
+> [Przykład klasyfikacji ryzyka kredytowego](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)

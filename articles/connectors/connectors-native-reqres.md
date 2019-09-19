@@ -1,6 +1,6 @@
 ---
-title: Odpowiadanie na żądania HTTP — Azure Logic Apps
-description: Reagowanie na zdarzenia w czasie rzeczywistym za pośrednictwem protokołu HTTP przy użyciu Azure Logic Apps
+title: Odbieranie wywołań HTTPS i odpowiadanie na nie Azure Logic Apps
+description: Obsługa żądań HTTPS i zdarzeń w czasie rzeczywistym przy użyciu Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -12,20 +12,22 @@ ms.assetid: 566924a4-0988-4d86-9ecd-ad22507858c0
 ms.topic: article
 ms.date: 09/06/2019
 tags: connectors
-ms.openlocfilehash: 07f143b261d0cff9eba0d4b1803753446c311818
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 668e815f1dc1ead0ad38264bdc71fc3c315b751c
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914334"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122711"
 ---
-# <a name="respond-to-http-requests-by-using-azure-logic-apps"></a>Odpowiadanie na żądania HTTP przy użyciu Azure Logic Apps
+# <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>Odbieraj przychodzące wywołania HTTPS i odpowiadaj na nie przy użyciu Azure Logic Apps
 
-Za pomocą [Azure Logic Apps](../logic-apps/logic-apps-overview.md) i wbudowanego wyzwalacza żądań lub akcji odpowiedzi można tworzyć automatyczne zadania i przepływy pracy, które odbierają i reagują w czasie rzeczywistym na żądania HTTP. Na przykład możesz mieć aplikację logiki:
+Za pomocą [Azure Logic Apps](../logic-apps/logic-apps-overview.md) i wbudowanego wyzwalacza żądań lub akcji odpowiedzi można tworzyć automatyczne zadania i przepływy pracy, które odbierają i reagują na przychodzące żądania HTTPS. Na przykład możesz mieć aplikację logiki:
 
-* Odpowiedz na żądanie HTTP dotyczące danych w lokalnej bazie danych.
+* Odbieraj żądania HTTPS dotyczące danych i odpowiadaj na nie w lokalnej bazie danych.
 * Wyzwalanie przepływu pracy po wystąpieniu zewnętrznego zdarzenia elementu webhook.
-* Wywołaj aplikację logiki z poziomu innej aplikacji logiki.
+* Odbieraj i odpowiadaj na wywołanie HTTPS z innej aplikacji logiki.
+
+Wyzwalacz żądania obsługuje *tylko* protokół https. Aby zamiast tego wychodzące wywołania HTTP lub HTTPS, użyj wbudowanego [wyzwalacza http lub akcji](../connectors/connectors-native-http.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -35,15 +37,15 @@ Za pomocą [Azure Logic Apps](../logic-apps/logic-apps-overview.md) i wbudowaneg
 
 <a name="add-request"></a>
 
-## <a name="add-a-request-trigger"></a>Dodawanie wyzwalacza żądania
+## <a name="add-request-trigger"></a>Dodaj wyzwalacz żądania
 
-Ten wbudowany wyzwalacz tworzy ręcznie możliwy do przełączenia punkt końcowy, który może odbierać przychodzące żądanie HTTP. Po wystąpieniu tego zdarzenia wyzwalacz uruchamia i uruchamia aplikację logiki. Aby uzyskać więcej informacji na temat podstawowej definicji JSON wyzwalacza i sposobu wywoływania tego wyzwalacza, zobacz [Typ wyzwalacza żądania](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) oraz [przepływy pracy wywołania, wyzwalacza lub zagnieżdżania z punktami końcowymi http w Azure Logic Apps](../logic-apps/logic-apps-http-endpoint.md)
+Ten wbudowany wyzwalacz tworzy ręcznie możliwy do przełączenia punkt końcowy HTTPS, który może odbierać *tylko* przychodzące żądania HTTPS. Po wystąpieniu tego zdarzenia wyzwalacz uruchamia i uruchamia aplikację logiki. Aby uzyskać więcej informacji na temat podstawowej definicji JSON wyzwalacza i sposobu wywoływania tego wyzwalacza, zobacz [Typ wyzwalacza żądania](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) oraz [przepływy pracy wywołania, wyzwalacza lub zagnieżdżania z punktami końcowymi http w Azure Logic Apps](../logic-apps/logic-apps-http-endpoint.md).
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Tworzenia pustej aplikacji logiki.
 
 1. Gdy zostanie otwarty projektant aplikacji logiki, w polu wyszukiwania wprowadź ciąg "żądanie HTTP" jako filtr. Z listy Wyzwalacze wybierz wyzwalacz **po odebraniu żądania HTTP** , który jest pierwszym krokiem w przepływie pracy aplikacji logiki.
 
-   ![Wybieranie wyzwalacza żądania HTTP](./media/connectors-native-reqres/select-request-trigger.png)
+   ![Wybierz wyzwalacz żądania](./media/connectors-native-reqres/select-request-trigger.png)
 
    Wyzwalacz żądania zawiera następujące właściwości:
 
@@ -52,10 +54,10 @@ Ten wbudowany wyzwalacz tworzy ręcznie możliwy do przełączenia punkt końcow
    | Nazwa właściwości | Nazwa właściwości JSON | Wymagane | Opis |
    |---------------|--------------------|----------|-------------|
    | **ADRES URL POST PROTOKOŁU HTTP** | dawaj | Tak | Adres URL punktu końcowego, który jest generowany po zapisaniu aplikacji logiki i jest używany do wywoływania aplikacji logiki |
-   | **Schemat JSON treści żądania** | `schema` | Nie | Schemat JSON, który opisuje właściwości i wartości w przychodzącej treści żądania HTTP |
+   | **Schemat JSON treści żądania** | `schema` | Nie | Schemat JSON, który opisuje właściwości i wartości w treści żądania przychodzącego |
    |||||
 
-1. W polu **schemat JSON treści żądania** opcjonalnie wprowadź schemat JSON, który opisuje treść żądania HTTP w żądaniu przychodzącym, na przykład:
+1. W polu **schemat JSON treści żądania** opcjonalnie wprowadź schemat JSON, który opisuje treść w żądaniu przychodzącym, na przykład:
 
    ![Przykładowy schemat JSON](./media/connectors-native-reqres/provide-json-schema.png)
 
@@ -190,7 +192,7 @@ Poniżej znajduje się więcej informacji na temat danych wyjściowych wyzwalacz
 
 ## <a name="add-a-response-action"></a>Dodaj akcję odpowiedzi
 
-Możesz użyć akcji odpowiedzi, aby odpowiedzieć na ładunek (dane) na przychodzące żądanie HTTP, ale tylko w aplikacji logiki, która jest wyzwalana przez żądanie HTTP. Akcję odpowiedzi można dodać w dowolnym momencie w przepływie pracy. Aby uzyskać więcej informacji na temat podstawowej definicji JSON dla tego wyzwalacza, zobacz [Typ akcji odpowiedź](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action).
+Możesz użyć akcji odpowiedzi, aby odpowiedzieć na ładunek (dane) do przychodzącego żądania HTTPS, ale tylko w aplikacji logiki, która jest wyzwalana przez żądanie HTTPS. Akcję odpowiedzi można dodać w dowolnym momencie w przepływie pracy. Aby uzyskać więcej informacji na temat podstawowej definicji JSON dla tego wyzwalacza, zobacz [Typ akcji odpowiedź](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action).
 
 Aplikacja logiki utrzymuje otwarte żądanie przychodzące tylko przez jedną minutę. Przy założeniu, że przepływ pracy aplikacji logiki zawiera akcję odpowiedzi, jeśli aplikacja logiki nie zwróci odpowiedzi po upływie tego czasu, aplikacja logiki zwróci `504 GATEWAY TIMEOUT` obiekt wywołujący. W przeciwnym razie, jeśli aplikacja logiki nie zawiera akcji odpowiedzi, aplikacja logiki natychmiast zwróci `202 ACCEPTED` odpowiedź do obiektu wywołującego.
 
@@ -224,7 +226,7 @@ Aplikacja logiki utrzymuje otwarte żądanie przychodzące tylko przez jedną mi
 
    | Nazwa właściwości | Nazwa właściwości JSON | Wymagane | Opis |
    |---------------|--------------------|----------|-------------|
-   | **Kod stanu** | `statusCode` | Tak | Kod stanu HTTP do zwrócenia w odpowiedzi |
+   | **Kod stanu** | `statusCode` | Tak | Kod stanu do zwrócenia w odpowiedzi |
    | **Nagłówki** | `headers` | Nie | Obiekt JSON, który opisuje jeden lub więcej nagłówków do uwzględnienia w odpowiedzi |
    | **Body** | `body` | Nie | Treść odpowiedzi |
    |||||

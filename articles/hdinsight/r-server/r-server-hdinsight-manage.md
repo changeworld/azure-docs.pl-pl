@@ -1,19 +1,19 @@
 ---
 title: Zarządzanie klastrem usługi ML w usłudze HDInsight — Azure
 description: Dowiedz się, jak zarządzać różnymi zadaniami w klastrze usług ML w usłudze Azure HDInsight.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: d31eb9ccb5df9137bebb877cce169cf657113d30
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: e0ce8b97df6f2d6e95255d3f4dfc9f76fa08a594
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967758"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123555"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Zarządzanie klastrem usług ML w usłudze Azure HDInsight
 
@@ -23,22 +23,20 @@ W tym artykule dowiesz się, jak zarządzać istniejącym klastrem usług w usł
 
 * Klaster usługi ML w usłudze HDInsight. Zobacz [Tworzenie klastrów Apache Hadoop przy użyciu Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) i wybierz pozycję **usługi ml** dla **typu klastra**.
 
-
 * Klient Secure Shell (SSH): Klient SSH jest używany do zdalnego łączenia się z klastrem usługi HDInsight i uruchamiania poleceń bezpośrednio w klastrze. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH z usługą HDInsight.](../hdinsight-hadoop-linux-use-ssh-unix.md)
-
 
 ## <a name="enable-multiple-concurrent-users"></a>Włączanie obsługi równoczesnych użytkowników
 
 Można włączyć wielu współbieżnych użytkowników klastra usługi ML w usłudze HDInsight, dodając więcej użytkowników do węzła brzegowego, na którym działa wersja Community RStudio. Podczas tworzenia klastra usługi HDInsight musisz podać dwóch użytkowników: użytkownika HTTP i użytkownika SSH:
 
-![Równoczesny użytkownik 1](./media/r-server-hdinsight-manage/hdi-concurrent-users1.png)
+![HDI Azure Portal parametry logowania](./media/r-server-hdinsight-manage/hdi-concurrent-users1.png)
 
 - **Nazwa użytkownika logowania klastra**: użytkownik HTTP uwierzytelniany za pośrednictwem bramy HDInsight, która umożliwia ochronę utworzonych klastrów usługi HDInsight. Ten użytkownik HTTP służy do uzyskiwania dostępu do interfejsu użytkownika Apache Ambari, Apache Hadoop interfejsu użytkownika PRZĘDZy oraz innych składników interfejsu użytkownika.
 - **Nazwa użytkownika protokołu SSH (Secure Shell)** : użytkownik SSH zapewniający dostęp do klastra za pośrednictwem protokołu Secure Shell. Jest to użytkownik systemu Linux, który ma dostęp do wszystkich węzłów głównych, węzłów procesu roboczego oraz węzłów krawędzi. Pozwala to na korzystanie z dowolnego węzła klastra zdalnego za pomocą protokołu Secure Shell.
 
 Wersja społeczności programu R Studio Server używana w klastrze usługi ML w usłudze HDInsight akceptuje tylko nazwę użytkownika systemu Linux i hasło jako mechanizm logowania. Przekazywanie tokenów nie jest obsługiwane. W przypadku próby uzyskania dostępu do programu R Studio po raz pierwszy w klastrze usługi ML należy zalogować się dwukrotnie.
 
-- Najpierw Zaloguj się przy użyciu poświadczeń użytkownika HTTP za pośrednictwem bramy usługi HDInsight. 
+- Najpierw Zaloguj się przy użyciu poświadczeń użytkownika HTTP za pośrednictwem bramy usługi HDInsight.
 
 - Następnie zaloguj się do RStudio przy użyciu poświadczeń użytkownika protokołu SSH.
   
@@ -66,7 +64,7 @@ Aby dodać użytkownika do węzła krawędzi, uruchom te polecenia:
 
 Poniższy zrzut ekranu przedstawia dane wyjściowe.
 
-![Równoczesny użytkownik 3](./media/r-server-hdinsight-manage/hdi-concurrent-users2.png)
+![zrzut ekranu danych wyjściowych współbieżnych użytkowników](./media/r-server-hdinsight-manage/hdi-concurrent-users2.png)
 
 Po wyświetleniu monitu o podanie "bieżące hasło protokołu Kerberos:" naciśnij klawisz **Enter** , aby go zignorować. Podanie opcji `-m` w poleceniu `useradd` powoduje, że system utworzy folder macierzysty użytkownika, wymagany przez program RStudio Community.
 
@@ -205,11 +203,9 @@ Aby zainstalować pakiety języka R na węzłach procesu roboczego klastra, musi
    > [!NOTE]
    > 1. Domyślnie wszystkie pakiety języka R są instalowane z migawki repozytorium programu Microsoft MRAN spójne z zainstalowaną wersją programu ML Server. Jeśli chcesz zainstalować nowsze wersje pakietów, musisz uwzględnić pewne ryzyko niezgodności. Jednak możesz to zrobić za pomocą parametru `useCRAN` użytego jako pierwszy element listy pakietów, na przykład `useCRAN bitops, stringr, arules`.  
    > 2. Niektóre pakiety R wymagają dodatkowych bibliotek systemu Linux. Dla wygody usługi HDInsight ML są wstępnie instalowane z zależnościami wymaganymi przez najpopularniejsze 100 najpopularniejszych pakietów R. Jednak jeśli instalowane pakiety R wymagają jeszcze innych bibliotek, musisz pobrać skrypt podstawowy użyty tutaj i dodać kroki instalowania bibliotek systemowych. Następnie musisz przekazać zmodyfikowany skrypt do publicznego kontenera obiektów blob w usłudze Azure Storage i użyć zmodyfikowanego skryptu do zainstalowania pakietów.
-   >    Aby uzyskać informacje na temat tworzenia akcji skryptu, zobacz [Script Action development](../hdinsight-hadoop-script-actions-linux.md) (Tworzenie akcji skryptu).  
-   >
-   >
+   >    Aby uzyskać informacje na temat tworzenia akcji skryptu, zobacz [Script Action development](../hdinsight-hadoop-script-actions-linux.md) (Tworzenie akcji skryptu).
 
-   ![Dodawanie akcji skryptu](./media/r-server-hdinsight-manage/submit-script-action.png)
+   ![Azure Portal akcji przesyłania skryptu](./media/r-server-hdinsight-manage/submit-script-action.png)
 
 4. Wybierz polecenie **Utwórz**, aby uruchomić skrypt. Po zakończeniu działania skryptu pakiety R będą dostępne we wszystkich węzłach procesu roboczego.
 

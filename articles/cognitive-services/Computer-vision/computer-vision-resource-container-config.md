@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 186f2f60aad15b336265114d7c85c757e0dd333f
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: aba846ade9e2b5e19304df87ea3e29713aacf4ba
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71102287"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129961"
 ---
-# <a name="configure-recognize-text-docker-containers"></a>Konfigurowanie Rozpoznawanie tekstu kontenerów platformy Docker
+# <a name="configure-computer-vision-docker-containers"></a>Konfigurowanie przetwarzanie obrazów kontenerów platformy Docker
 
-Środowisko uruchomieniowe kontenera **rozpoznawanie tekstu** jest konfigurowane przy użyciu `docker run` argumentów polecenia. Ten kontener ma kilka wymaganych ustawień oraz kilka opcjonalnych ustawień. Kilka [przykłady](#example-docker-run-commands) polecenia są dostępne. Ustawienia dotyczące rozliczeń dotyczą tylko kontenera. 
+Środowisko uruchomieniowe kontenera przetwarzanie obrazów można skonfigurować za pomocą `docker run` argumentów polecenia. Ten kontener ma kilka wymaganych ustawień oraz kilka opcjonalnych ustawień. Kilka [przykłady](#example-docker-run-commands) polecenia są dostępne. Ustawienia dotyczące rozliczeń dotyczą tylko kontenera. 
 
 ## <a name="configuration-settings"></a>Ustawienia konfiguracji
 
@@ -63,9 +63,9 @@ Pamiętaj, aby dodać `vision/v1.0` Routing do identyfikatora URI punktu końcow
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
-## <a name="http-proxy-credentials-settings"></a>Ustawienia poświadczeń serwera proxy http
+## <a name="http-proxy-credentials-settings"></a>Ustawienia poświadczeń serwera proxy HTTP
 
-[!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
+[!INCLUDE [Container shared configuration HTTP proxy settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
 ## <a name="logging-settings"></a>Ustawienia rejestrowania
  
@@ -84,14 +84,12 @@ Dokładna składnia lokalizację instalacji hosta różni się zależnie od syst
 |Niedozwolone| `Input` | String | Kontenery przetwarzanie obrazów nie używają tego.|
 |Optional| `Output` | String | Miejsce docelowe instalacji danych wyjściowych. Wartość domyślna to `/output`. Jest to Lokalizacja dzienników. Dotyczy to również dzienników kontenerów. <br><br>Przykład:<br>`--mount type=bind,src=c:\output,target=/output`|
 
-## <a name="example-docker-run-commands"></a>Przykład platformy docker, Uruchom polecenia 
+## <a name="example-docker-run-commands"></a>Przykład platformy docker, Uruchom polecenia
 
 W poniższych przykładach używane ustawienia konfiguracji, aby zilustrować, jak pisać i użyj `docker run` poleceń.  Po uruchomieniu kontenera będzie działać do momentu [zatrzymać](computer-vision-how-to-install-containers.md#stop-the-container) go.
 
 * **Znak kontynuacji wiersza**: Polecenia platformy Docker w poniższych sekcjach używają ukośnika odwrotnego `\`, jako znaku kontynuacji wiersza. Zamień lub Usuń ten na podstawie wymagań systemu operacyjnego hosta. 
 * **Kolejność argumentów**: Nie zmieniaj kolejności argumentów, o ile nie znasz już kontenerów platformy Docker.
-
-Pamiętaj, aby dodać `vision/v1.0` Routing do identyfikatora URI punktu końcowego, jak pokazano w poniższej tabeli. 
 
 Zastąp {_argument_name_} własnymi wartościami:
 
@@ -104,17 +102,19 @@ Zastąp {_argument_name_} własnymi wartościami:
 
 > [!IMPORTANT]
 > `Eula`, `Billing`, I `ApiKey` opcje muszą być określone w celu uruchomienia kontenera; w przeciwnym razie nie uruchamia się kontener.  Aby uzyskać więcej informacji, zobacz [rozliczeń](computer-vision-how-to-install-containers.md#billing).
-> Wartość ApiKey jest **kluczem** ze strony klucze zasobów platformy `Cognitive Services` Azure. 
+> Wartość ApiKey jest **kluczem** ze strony klucze zasobów platformy `Cognitive Services` Azure.
 
-## <a name="recognize-text-container-docker-examples"></a>Rozpoznaj przykłady dotyczące platformy Docker kontenera tekstu
+## <a name="container-docker-examples"></a>Przykłady kontenera Docker
 
-Poniższe przykłady platformy Docker dotyczą kontenera rozpoznawania tekstu. 
+#### <a name="readtabread"></a>[Odczyt](#tab/read)
 
-### <a name="basic-example"></a>Podstawowy przykład 
+Poniższe przykłady platformy Docker dotyczą kontenera odczyt.
+
+### <a name="basic-example"></a>Podstawowy przykład
 
   ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
+  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
+  containerpreview.azurecr.io/microsoft/cognitive-services-read \
   Eula=accept \
   Billing={ENDPOINT_URI} \
   ApiKey={API_KEY} 
@@ -123,7 +123,32 @@ Poniższe przykłady platformy Docker dotyczą kontenera rozpoznawania tekstu.
 ### <a name="logging-example"></a>Przykład rejestrowania 
 
   ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
+  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
+  containerpreview.azurecr.io/microsoft/cognitive-services-read \
+  Eula=accept \
+  Billing={ENDPOINT_URI} \
+  ApiKey={API_KEY} \
+  Logging:Console:LogLevel:Default=Information
+  ```
+
+#### <a name="recognize-texttabrecognize-text"></a>[Rozpoznawanie tekstu](#tab/recognize-text)
+
+Poniższe przykłady platformy Docker dotyczą kontenera Rozpoznawanie tekstu.
+
+### <a name="basic-example"></a>Podstawowy przykład
+
+  ```
+  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
+  containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
+  Eula=accept \
+  Billing={ENDPOINT_URI} \
+  ApiKey={API_KEY} 
+  ```
+
+### <a name="logging-example"></a>Przykład rejestrowania
+
+  ```
+  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
   containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
   Eula=accept \
   Billing={ENDPOINT_URI} \
@@ -131,6 +156,8 @@ Poniższe przykłady platformy Docker dotyczą kontenera rozpoznawania tekstu.
   Logging:Console:LogLevel:Default=Information
   ```
 
+***
+
 ## <a name="next-steps"></a>Następne kroki
 
-* Przegląd [sposobu instalowania i uruchamiania kontenerów](computer-vision-how-to-install-containers.md)
+* Zapoznaj [się z tematem Instalowanie i uruchamianie kontenerów](computer-vision-how-to-install-containers.md).

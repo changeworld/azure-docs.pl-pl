@@ -1,19 +1,19 @@
 ---
 title: Konfigurowanie Apache Kafka w usłudze HDInsight przy użyciu Azure Portal — Szybki Start
 description: W tym przewodniku Szybki start dowiesz się, jak utworzyć klaster platformy Apache Kafka w usłudze Azure HDInsight przy użyciu witryny Azure Portal. Zdobędziesz także informacje o tematach, subskrybentach i odbiorcach platformy Kafka.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: e0a2eecaa4b2f03fa12353854e75b9fda097675d
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: b66306de6b2afa1e39a91ba3b3981aec4b440e1a
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960324"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123580"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Szybki start: Tworzenie klastra Apache Kafka w usłudze Azure HDInsight przy użyciu Azure Portal
 
@@ -38,8 +38,8 @@ Aby utworzyć klaster platformy Apache Kafka w usłudze HDInsight, wykonaj nast�
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 2. W menu po lewej stronie przejdź do **+ Tworzenie** > usługi**HDInsight** **analizy** > zasobów.
-   
-    ![Tworzenie klastra usługi HDInsight](./media/apache-kafka-get-started/create-hdinsight-cluster.png)
+
+    ![Azure Portal utworzyć usługi HDInsight zasobów](./media/apache-kafka-get-started/create-hdinsight-cluster.png)
 
 3. W bloku **Podstawowe** wprowadź lub wybierz następujące informacje:
 
@@ -47,9 +47,9 @@ Aby utworzyć klaster platformy Apache Kafka w usłudze HDInsight, wykonaj nast�
     | --- | --- |
     | Nazwa klastra | Unikatowa nazwa klastra usługi HDInsight. |
     | Subskrypcja | Wybierz subskrypcję. |
-    
+
    Wybierz pozycję __Typ klastra__, aby wyświetlić okno **Konfiguracja klastra**.
-   
+
    ![Konfiguracja podstawowa klastra platformy Apache Kafka w usłudze HDInsight](./media/apache-kafka-get-started/custom-basics-kafka1.png)
 
 4. W obszarze __Konfiguracja klastra__wybierz następujące wartości:
@@ -61,7 +61,7 @@ Aby utworzyć klaster platformy Apache Kafka w usłudze HDInsight, wykonaj nast�
 
     Wybierz pozycję **Wybierz** , aby zapisać ustawienia typu klastra i wrócić do __podstaw__.
 
-    ![Wybierz typ klastra](./media/apache-kafka-get-started/apache-kafka-cluster-type.png)
+    ![Typ klastra Apache Kafka usługi HDInsight](./media/apache-kafka-get-started/apache-kafka-cluster-type.png)
 
 5. W bloku __Podstawowe__ wprowadź lub wybierz następujące informacje:
 
@@ -77,7 +77,7 @@ Aby utworzyć klaster platformy Apache Kafka w usłudze HDInsight, wykonaj nast�
 
     Aby zapewnić wysoką dostępność danych, wybierz region (lokalizację), który zawiera __trzy domeny błędów__. Aby uzyskać informacje dotyczące liczby domen błędów w regionie, zobacz dokument [Availability of Linux virtual machines (Dostępność maszyn wirtualnych z systemem Linux)](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
 
-   ![Wybieranie subskrypcji](./media/apache-kafka-get-started/hdinsight-basic-configuration-2.png)
+   ![Podstawowe informacje Azure Portal tworzenia klastra](./media/apache-kafka-get-started/hdinsight-basic-configuration-2.png)
 
     Wybierz pozycję __dalej__ , aby zakończyć konfigurację podstawową.
 
@@ -105,7 +105,7 @@ Aby utworzyć klaster platformy Apache Kafka w usłudze HDInsight, wykonaj nast�
 
 11. W bloku **Podsumowanie** przejrzyj konfigurację klastra. Zmień niepoprawne ustawienia przy użyciu linków __Edytuj__. Na koniec wybierz pozycję **Utwórz** , aby utworzyć klaster.
 
-    ![Podsumowanie konfiguracji klastra](./media/apache-kafka-get-started/kafka-configuration-summary.png)
+    ![Podsumowanie konfiguracji klastra Kafka](./media/apache-kafka-get-started/kafka-configuration-summary.png)
 
     Tworzenie klastra może potrwać do 20 minut.
 

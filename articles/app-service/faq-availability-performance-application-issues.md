@@ -4,7 +4,7 @@ description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące dostępno
 services: app-service\web
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 2b9689eeecb0549fae9f7131dd424e15c040b042
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9cd529424a022edfa64f9053a53cbbe9f756637e
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073177"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122069"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Często zadawane pytania dotyczące wydajności aplikacji dla Web Apps na platformie Azure
 
@@ -46,7 +46,7 @@ W niektórych dużych scenariuszach zużycia pamięci aplikacja może naprawdę 
 
 ## <a name="how-do-i-automate-app-service-web-apps-by-using-powershell"></a>Jak mogę Automatyzowanie App Service aplikacji sieci Web przy użyciu programu PowerShell?
 
-Za pomocą poleceń cmdlet programu PowerShell można zarządzać App Service aplikacjami sieci Web i obsługiwać je. W naszym wpisie w blogu [Automatyzowanie aplikacji sieci Web hostowanych w Azure App Service przy użyciu programu PowerShell](https://blogs.msdn.microsoft.com/puneetgupta/2016/03/21/automating-webapps-hosted-in-azure-app-service-through-powershell-arm-way/)opisujemy sposób używania poleceń cmdlet programu PowerShell opartych na Azure Resource Manager do automatyzowania typowych zadań. Wpis w blogu zawiera również przykładowy kod dla różnych zadań zarządzania aplikacjami sieci Web. Opisy i składnia wszystkich poleceń cmdlet App Service Web Apps można znaleźć w temacie [AZ.](/powershell/module/az.websites)websites.
+Za pomocą poleceń cmdlet programu PowerShell można zarządzać App Service aplikacjami sieci Web i obsługiwać je. W naszym wpisie w blogu [Automatyzowanie aplikacji sieci Web hostowanych w Azure App Service przy użyciu programu PowerShell](https://blogs.msdn.microsoft.com/puneetgupta/2016/03/21/automating-webapps-hosted-in-azure-app-service-through-powershell-arm-way/)opisujemy sposób używania poleceń cmdlet programu PowerShell opartych na Azure Resource Manager do automatyzowania typowych zadań. Wpis w blogu zawiera również przykładowy kod dla różnych zadań zarządzania aplikacjami sieci Web. Opisy i składnia wszystkich poleceń cmdlet App Service Web Apps można znaleźć w temacie [AZ. websites](/powershell/module/az.websites).
 
 ## <a name="how-do-i-view-my-web-apps-event-logs"></a>Jak mogę wyświetlić dzienniki zdarzeń aplikacji sieci Web?
 
@@ -189,7 +189,7 @@ Ten błąd występuje zazwyczaj, gdy wychodzące połączenia TCP w wystąpieniu
 
 Ten błąd może również wystąpić, jeśli próbujesz uzyskać dostęp do adresu lokalnego z aplikacji. Aby uzyskać więcej informacji, zobacz [żądania adresów lokalnych](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#local-address-requests).
 
-Aby uzyskać więcej informacji o połączeniach wychodzących w aplikacji sieci Web, zobacz wpis w blogu dotyczący [połączeń wychodzących z usługą Azure](https://www.freekpaans.nl/2015/08/starving-outgoing-connections-on-windows-azure-web-sites/)websites.
+Aby uzyskać więcej informacji o połączeniach wychodzących w aplikacji sieci Web, zobacz wpis w blogu dotyczący [połączeń wychodzących z usługą Azure Websites](https://www.freekpaans.nl/2015/08/starving-outgoing-connections-on-windows-azure-web-sites/).
 
 ## <a name="how-do-i-use-visual-studio-to-remote-debug-my-app-service-web-app"></a>Jak mogę użyć programu Visual Studio do zdalnego debugowania mojej aplikacji internetowej App Service?
 

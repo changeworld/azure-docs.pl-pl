@@ -1,10 +1,10 @@
 ---
-title: Rozwiązywanie problemów z bramy aplikacji na platformie Azure — środowisko ASE z wewnętrznym modułem równoważenia obciążenia | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak rozwiązywać problemy z bramą aplikacji przy użyciu wewnętrznego modułu równoważenia obciążenia za pomocą środowiska usługi App Service na platformie Azure
+title: Rozwiązywanie problemów z Application Gateway na platformie Azure — ILB ASE | Microsoft Docs
+description: Dowiedz się, jak rozwiązywać problemy z bramą aplikacji przy użyciu wewnętrznego Load Balancer z App Service Environment na platformie Azure
 services: vpn-gateway
 documentationCenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: vpn-gateway
@@ -14,62 +14,62 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2018
 ms.author: genli
-ms.openlocfilehash: baed2b23a321c53a614303d3085fbb3a4bf6ad0b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9c3216af283ebd9d84a5469d4d50d18c19f67534
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60831099"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121951"
 ---
-# <a name="back-end-server-certificate-is-not-whitelisted-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>Certyfikat serwera zaplecza nie jest umieszczona na białej liście dla bramy aplikacji przy użyciu wewnętrznego modułu równoważenia obciążenia w środowisku usługi App Service
+# <a name="back-end-server-certificate-is-not-whitelisted-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>Certyfikat serwera zaplecza nie jest listy dozwolonych dla bramy aplikacji przy użyciu wewnętrznego Load Balancer z App Service Environment
 
-Ten artykuł pomaga w rozwiązaniu następujący problem: Certyfikat nie jest umieszczona na białej liście, podczas tworzenia bramy aplikacji przy użyciu wewnętrznego obciążenia Balancer (ILB) wraz z App Service Environment (ASE) na zapleczu, korzystając z protokołu SSL end-to-end na platformie Azure.
+Ten artykuł rozwiązuje następujący problem: Certyfikat nie jest listy dozwolonych podczas tworzenia bramy aplikacji przy użyciu wewnętrznego Load Balancer (ILB) wraz z App Service Environment (ASE) na zapleczu w przypadku korzystania z kompleksowego protokołu SSL na platformie Azure.
 
 ## <a name="symptoms"></a>Objawy
 
-Po utworzeniu bramy aplikacji przy użyciu wewnętrznego modułu równoważenia obciążenia środowiska ASE na zapleczu serwera zaplecza może stać się złej kondycji. Ten problem występuje, jeśli certyfikat uwierzytelniania usługi application gateway nie jest zgodny skonfigurowany certyfikat na serwerze zaplecza. Na przykład, zobacz następujący scenariusz:
+Po utworzeniu bramy aplikacji przy użyciu ILB z środowiskiem ASE na zapleczu serwer zaplecza może stać się w złej kondycji. Ten problem występuje, jeśli certyfikat uwierzytelniania bramy aplikacji nie jest zgodny ze skonfigurowanym certyfikatem na serwerze zaplecza. Zapoznaj się z poniższym scenariuszem:
 
-**Konfiguracja bramy aplikacji:**
+**Konfiguracja Application Gateway:**
 
-- **Odbiornik:** Połączenia obejmujące wiele lokacji
+- **Odbiornik:** Wiele lokacji
 - **Port:** 443
 - **Nazwa hosta:** test.appgwtestase.com
 - **Certyfikat SSL:** CN=test.appgwtestase.com
 - **Pula zaplecza:** Adres IP lub nazwa FQDN
 - **Adres IP:** : 10.1.5.11
-- **Ustawienia HTTP:** HTTPS
+- **Ustawienia protokołu HTTP:** HTTPS
 - **Port:** : 443
-- **Niestandardowe sondy:** Hostname – test.appgwtestase.com
-- **Certyfikat uwierzytelniania:** cer test.appgwtestase.com
-- **Kondycja wewnętrznej bazy danych:** Zła — certyfikatu serwera wewnętrznej bazy danych nie jest na liście dozwolonych usługi Application Gateway.
+- **Sonda niestandardowa:** Nazwa hosta — test.appgwtestase.com
+- **Certyfikat uwierzytelniania:** cer z test.appgwtestase.com
+- **Kondycja zaplecza:** Zła kondycja — certyfikat serwera zaplecza nie jest listy dozwolonych z Application Gateway.
 
-**Konfigurowanie środowiska ASE:**
+**Konfiguracja środowiska ASE:**
 
-- **ADRES IP WEWNĘTRZNEGO MODUŁU RÓWNOWAŻENIA OBCIĄŻENIA:** 10.1.5.11
+- **ILB IP:** 10.1.5.11
 - **Nazwa domeny:** appgwtestase.com
-- **Usługa App Service:** test.appgwtestase.com
-- **Powiązania SSL:** SNI SSL – CN=test.appgwtestase.com
+- **App Service:** test.appgwtestase.com
+- **Powiązanie SSL:** SNI SSL – CN = test. appgwtestase. com
 
-Gdy uzyskujesz dostęp do bramy aplikacji, otrzymasz następujący komunikat o błędzie, ponieważ serwer zaplecza jest w złej kondycji:
+Gdy uzyskujesz dostęp do bramy aplikacji, zostanie wyświetlony następujący komunikat o błędzie, ponieważ serwer zaplecza jest w złej kondycji:
 
-**502 — Serwer sieci web odebrał nieprawidłową odpowiedź, działając jako brama lub serwer proxy.**
+**502 — serwer sieci Web odebrał nieprawidłową odpowiedź, działając jako brama lub serwer proxy.**
 
 ## <a name="solution"></a>Rozwiązanie
 
-Gdy nazwa hosta nie umożliwia dostęp do witryny sieci Web protokołu HTTPS, serwerów zaplecza zwróci skonfigurowany certyfikat w domyślnej witrynie sieci Web, w przypadku, gdy SNI jest wyłączona. Środowisko ASE z wewnętrznym modułem równoważenia obciążenia, aby uzyskać domyślny certyfikat pochodzi z certyfikatu wewnętrznego modułu równoważenia obciążenia. Jeśli nie ma żadnych certyfikatów skonfigurowanych dla wewnętrznego modułu równoważenia obciążenia, certyfikat pochodzi z certyfikatu usługi App środowiska ASE.
+Jeśli nie używasz nazwy hosta w celu uzyskania dostępu do witryny sieci Web HTTPS, serwer zaplecza zwróci skonfigurowany certyfikat w domyślnej witrynie sieci Web, w przypadku gdy SNI jest wyłączone. W przypadku środowiska ILB ASE certyfikat domyślny pochodzi z certyfikatu ILB. Jeśli dla ILB nie ma skonfigurowanych certyfikatów, certyfikat pochodzi z certyfikatu aplikacji środowiska ASE.
 
-Gdy używasz w pełni kwalifikowaną nazwę domeny (FQDN) na dostęp do wewnętrznego modułu równoważenia obciążenia serwerów zaplecza zwróci poprawny certyfikat, który jest przekazywany w ustawieniach protokołu HTTP. Jeśli to znaczy nie tak, należy wziąć pod uwagę następujące opcje:
+W przypadku używania w pełni kwalifikowanej nazwy domeny (FQDN) do uzyskiwania dostępu do ILB serwer zaplecza zwróci poprawny certyfikat, który został przekazany w ustawieniach protokołu HTTP. Jeśli tak nie jest, weź pod uwagę następujące opcje:
 
-- Użyj nazwy FQDN w puli zaplecza bramy aplikacji, aby wskazywał na adres IP wewnętrznego modułu równoważenia obciążenia. Tej opcji tylko wtedy, gdy masz prywatnej strefy DNS lub niestandardowy serwer DNS skonfigurowany. W przeciwnym razie należy utworzyć rekord "A" na publiczną usługą DNS.
+- Użyj nazwy FQDN w puli zaplecza bramy aplikacji, aby wskazać adres IP ILB. Ta opcja działa tylko w przypadku, gdy masz prywatną strefę DNS lub skonfigurowaną niestandardową usługę DNS. W przeciwnym razie należy utworzyć rekord "A" dla publicznego systemu DNS.
 
-- W systemie przekazany certyfikat wewnętrznego modułu równoważenia obciążenia lub domyślnego certyfikatu (certyfikat wewnętrznego modułu równoważenia obciążenia) w ustawieniach protokołu HTTP. Application gateway pobiera certyfikat, gdy uzyskuje dostęp do IP wewnętrznego modułu równoważenia obciążenia firmy sondowania.
+- Użyj przekazanego certyfikatu ILB lub domyślnego certyfikatu (ILB Certificate) w ustawieniach protokołu HTTP. Brama aplikacji pobiera certyfikat, gdy uzyskuje dostęp do adresu IP ILB dla sondy.
 
-- W systemie certyfikat wieloznaczny wewnętrznego modułu równoważenia obciążenia i serwerów zaplecza, aby dla wszystkich witryn internetowych, certyfikat jest wspólne. Jednak to rozwiązanie jest możliwe tylko w przypadku domen podrzędnych i nie, jeśli każdej z witryn sieci Web wymagają różnych nazw hostów.
+- Użyj certyfikatu wieloznacznego na ILB i serwerze zaplecza, tak aby dla wszystkich witryn sieci Web był powszechny certyfikat. To rozwiązanie jest jednak możliwe tylko w przypadku poddomen, a nie jeśli każda z witryn sieci Web wymaga innych nazw hostów.
 
-- Wyczyść **usługi App service na użytek** opcji dla usługi application gateway, w przypadku, gdy używasz adres IP wewnętrznego modułu równoważenia obciążenia.
+- Wyczyść opcję **Użyj dla usługi App Service** dla bramy aplikacji na wypadek użycia adresu IP ILB.
 
-Aby zmniejszyć obciążenie, możesz przekazać certyfikat wewnętrznego modułu równoważenia obciążenia w ustawieniach protokołu HTTP, aby ścieżka sondy pracy. (Ten krok jest tylko na potrzeby umieszczania na białej liście. Nie będzie używany do komunikacji SSL.) Możesz pobrać certyfikat wewnętrznego modułu równoważenia obciążenia, uzyskując dostęp do wewnętrznego modułu równoważenia obciążenia przy użyciu jego adresu IP, z poziomu przeglądarki przy użyciu protokołu HTTPS, a następnie eksportowanie certyfikatu protokołu SSL w Base-64 kodowany w formacie CER i przekazywanie certyfikatu na odpowiednie ustawienia protokołu HTTP.
+Aby zmniejszyć obciążenie, można przekazać certyfikat ILB w ustawieniach protokołu HTTP, aby umożliwić działanie ścieżki sondy. (Ten krok dotyczy tylko listy dozwolonych. Nie będzie używany do komunikacji SSL. Certyfikat ILB można pobrać, uzyskując dostęp do ILB przy użyciu jego adresu IP z przeglądarki przy użyciu protokołu HTTPS, a następnie eksportując certyfikat SSL w formacie CER z kodowaniem Base-64 i przekazując certyfikat do odpowiednich ustawień protokołu HTTP.
 
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną
 
-Jeśli nadal potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem.
+Jeśli nadal potrzebujesz pomocy, [skontaktuj się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), aby szybko rozwiązać problem.

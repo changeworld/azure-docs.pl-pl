@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/06/2019
-ms.openlocfilehash: 951d5bb10fbeeac090a1edb510b7214855477eac
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 3f64bce34a1bdb11bdbebb99fe28cdf3ff16dfb8
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515351"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128708"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Często zadawane pytania dotyczące baz danych usługi Azure SQL Database
 
@@ -54,7 +54,7 @@ Warstwy usług oparte na rdzeń wirtualny są szczególnie zróżnicowane w zale
 | | Wystąpienie zarządzane  | 32 GB – 8 TB | ND | 32 GB – 4 TB |
 | **Przepływność we/wy** | Pojedyncza baza danych * * | 500 operacji we/wy na sekundę z 7000 maksymalną liczbą IOPS | Skalowanie jest architekturą wielowarstwową z buforowaniem na wielu poziomach. Efektywne operacje we/wy będą zależeć od obciążenia. | 5000 operacji we/wy z maksymalną liczbą IOPS 200 000|
 | | Wystąpienie zarządzane | Zależy od rozmiaru pliku | ND | Wystąpienie zarządzane: Zależy od rozmiaru pliku|
-|**Dostępność**|Wszyscy|1 replika, brak skali do odczytu, brak lokalnej pamięci podręcznej | Wiele replik, do 15-skali odczytu, częściowej lokalnej pamięci podręcznej | 3 repliki, 1 Skala odczytu, strefa nadmiarowa HA, pełna lokalna pamięć podręczna |
+|**Dostępność**|Wszyscy|1 replika, brak skali do odczytu, brak lokalnej pamięci podręcznej | Wiele replik, do 4 częściowej lokalnej pamięci podręcznej | 3 repliki, 1 Skala odczytu, strefa nadmiarowa HA, pełna lokalna pamięć podręczna |
 |**Kopii zapasowych**|Wszyscy|RA-GRS, 7-35 dni (domyślnie 7 dni)| RA-GRS, 7 dni, stałe odzyskiwanie do czasu w czasie (kopie) | RA-GRS, 7-35 dni (domyślnie 7 dni) |
 
 \*Pule elastyczne nie są obsługiwane w warstwie usługi w ramach skalowania
@@ -72,7 +72,7 @@ Warstwa usługi do skalowania jest przeznaczona głównie dla klientów, którzy
 
 ### <a name="what-regions-currently-support-hyperscale"></a>Które regiony obsługują teraz skalowanie
 
-Warstwa wieloskalowania Azure SQL Database jest obecnie dostępna w regionach wymienionych w sekcji [Azure SQL Database](sql-database-service-tier-hyperscale.md#regions)preskalowanie.
+Warstwa wieloskalowania Azure SQL Database jest obecnie dostępna w regionach wymienionych w sekcji [Azure SQL Database preskalowanie](sql-database-service-tier-hyperscale.md#regions).
 
 ### <a name="can-i-create-multiple-hyperscale-databases-per-logical-server"></a>Czy można utworzyć wiele baz danych na jednym serwerze logicznym
 
@@ -201,7 +201,7 @@ Tak
 
 ### <a name="if-i-have-a-huge-table-does-my-table-data-get-spread-out-across-multiple-data-files"></a>Jeśli mam ogromną tabelę, dane tabeli są rozłożone na wiele plików danych
 
-Tak. Strony danych skojarzone z daną tabelą mogą kończyć się wieloma plikami danych, które są częścią tej samej grupy plików. SQL Server używa [strategii](https://docs.microsoft.com/sql/relational-databases/databases/database-files-and-filegroups#file-and-filegroup-fill-strategy) wypełniania proporcjonalnego do dystrybuowania danych za pośrednictwem plików danych.
+Tak. Strony danych skojarzone z daną tabelą mogą kończyć się wieloma plikami danych, które są częścią tej samej grupy plików. SQL Server używa [strategii wypełniania proporcjonalnego](https://docs.microsoft.com/sql/relational-databases/databases/database-files-and-filegroups#file-and-filegroup-fill-strategy) do dystrybuowania danych za pośrednictwem plików danych.
 
 ## <a name="data-migration-questions"></a>Pytania dotyczące migracji danych
 

@@ -1,10 +1,10 @@
 ---
-title: Błąd RequestDisallowedByPolicy zasady zasobów platformy Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano przyczyny tego błędu RequestDisallowedByPolicy.
+title: Błąd RequestDisallowedByPolicy z zasadami zasobów platformy Azure | Microsoft Docs
+description: Opisuje przyczynę błędu RequestDisallowedByPolicy.
 services: azure-resource-manager
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: azure-resource-manager
 ms.workload: multiple
@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: c160fe39b02d8adf6c12e3736307cf7f9688b0c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e862637c688fd473b112fdfc0ee197da0444d02f
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66128453"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121230"
 ---
-# <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>Błąd RequestDisallowedByPolicy zasady zasobów platformy Azure
+# <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>Błąd RequestDisallowedByPolicy z zasadami zasobów platformy Azure
 
-W tym artykule opisano przyczyny tego błędu RequestDisallowedByPolicy, również udostępnia rozwiązanie dla tego błędu.
+W tym artykule opisano przyczynę błędu RequestDisallowedByPolicy i przedstawiono w nim również rozwiązanie tego błędu.
 
 ## <a name="symptom"></a>Objaw
 
-Podczas wdrażania, może pojawić się **RequestDisallowedByPolicy** błąd, który uniemożliwia tworzenie zasobów. Poniższy przykład pokazuje błąd:
+Podczas wdrażania może zostać wyświetlony błąd **RequestDisallowedByPolicy** , który uniemożliwia tworzenie zasobów. Poniższy przykład pokazuje błąd:
 
 ```json
 {
@@ -39,13 +39,13 @@ Podczas wdrażania, może pojawić się **RequestDisallowedByPolicy** błąd, kt
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Aby uzyskać szczegółowe informacje o zasadach, które zablokowały wdrożenia, użyj następujących metod:
+Aby pobrać szczegóły dotyczące zasad, które zablokowały wdrożenie, należy użyć jednej z następujących metod:
 
 ### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-W programie PowerShell, podaj identyfikator zasad jako `Id` parametru, aby pobrać szczegóły dotyczące zasad, które zablokowały wdrożenia.
+W programie PowerShell podaj identyfikator zasad jako `Id` parametr, aby pobrać szczegóły dotyczące zasad, które zablokowały wdrożenie.
 
 ```powershell
 (Get-AzPolicyDefinition -Id "/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/regionPolicyDefinition").Properties.policyRule | ConvertTo-Json
@@ -53,7 +53,7 @@ W programie PowerShell, podaj identyfikator zasad jako `Id` parametru, aby pobra
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-W interfejsie wiersza polecenia platformy Azure należy podać nazwę definicji zasad:
+W interfejsie wiersza polecenia platformy Azure Podaj nazwę definicji zasad:
 
 ```azurecli
 az policy definition show --name regionPolicyAssignment
@@ -61,10 +61,10 @@ az policy definition show --name regionPolicyAssignment
 
 ## <a name="solution"></a>Rozwiązanie
 
-Pod kątem bezpieczeństwa ani zgodności administratorów subskrypcji może przypisywać zasady, które ograniczają sposób wdrożenia zasobów. Na przykład Twoja subskrypcja może mieć zasady, które uniemożliwiają tworzenie trasy zdefiniowane przez użytkownika adresów sieciowych grup zabezpieczeń, publiczny adres IP lub tabele tras. Komunikat o błędzie w **objawy** sekcja zawiera nazwę zasad.
-Aby rozwiązać ten problem, przejrzyj zasady zasobów i dowiedzieć się, jak wdrażać zasoby, które są zgodne z tymi zasadami.
+Aby zapewnić bezpieczeństwo lub zgodność, Administratorzy subskrypcji mogą przypisywać zasady ograniczające sposób wdrażania zasobów. Na przykład Twoja subskrypcja może mieć zasady, które uniemożliwiają tworzenie publicznych adresów IP, sieciowych grup zabezpieczeń, tras zdefiniowanych przez użytkownika lub tabel tras. Komunikat o błędzie w sekcji **objawy** zawiera nazwę zasad.
+Aby rozwiązać ten problem, przejrzyj zasady zasobów i określ sposób wdrażania zasobów, które są zgodne z tymi zasadami.
 
 Aby uzyskać więcej informacji zobacz następujące artykuły:
 
-- [Co to jest usługa Azure Policy?](../governance/policy/overview.md)
+- [Co to jest Azure Policy?](../governance/policy/overview.md)
 - [Tworzenie zasad i zarządzanie nimi w celu wymuszania zgodności](../governance/policy/tutorials/create-and-manage.md)

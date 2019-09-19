@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 939097ccca844e505819f5aad405d6322941b526
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: cceb1814089436efe4d4f9352f40f24d6eae790d
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309178"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123596"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>Tworzenie replik odczytu i zarządzanie nimi w Azure Database for MariaDB przy użyciu Azure Portal
 
@@ -34,7 +34,7 @@ Serwer repliki odczytu można utworzyć, wykonując następujące czynności:
 
 3. Wybierz opcję **replikacja** z menu, w obszarze **Ustawienia**.
 
-4. Wybierz pozycję **Dodaj replikę**.
+4. Wybierz pozycję **Dodaj**replikę.
 
    ![Azure Database for MariaDB — replikacja](./media/howto-read-replica-portal/add-replica.png)
 
@@ -47,7 +47,7 @@ Serwer repliki odczytu można utworzyć, wykonując następujące czynności:
     ![Azure Database for MariaDB — lokalizacja repliki](./media/howto-read-replica-portal/replica-location.png)
 
    > [!NOTE]
-   > Aby dowiedzieć się więcej na temat regionów, w których można utworzyć replikę, zapoznaj się z [artykułem dotyczącym pojęć dotyczących repliki](concepts-read-replicas.md). 
+   > Replikacja między regionami jest w wersji zapoznawczej. Aby dowiedzieć się więcej na temat regionów, w których można utworzyć replikę, zapoznaj się z [artykułem dotyczącym pojęć dotyczących repliki](concepts-read-replicas.md). 
 
 7. Wybierz **przycisk OK** , aby potwierdzić utworzenie repliki.
 
@@ -93,7 +93,7 @@ Aby usunąć serwer repliki odczytu z Azure Portal, wykonaj następujące czynno
 
    ![Azure Database for MariaDB — usuwanie repliki wybierz serwer](./media/howto-read-replica-portal/delete-replica-select.png)
 
-4. Wybierz pozycję **Usuń replikę**
+4. Wybierz pozycję **Usuń** replikę
 
    ![Azure Database for MariaDB-Usuń replikę](./media/howto-read-replica-portal/delete-replica.png)
 

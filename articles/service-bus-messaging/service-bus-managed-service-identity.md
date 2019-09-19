@@ -13,25 +13,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: aschhab
-ms.openlocfilehash: 139ebe02727bab8cc80f6f0c6bbbd2156f025c21
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: a35ad4f8d480b0f95f4dc782aa06734e33bc54f8
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70992303"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130308"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Uwierzytelnianie zarządzanej tożsamości za pomocą Azure Active Directory w celu uzyskania dostępu do zasobów Azure Service Bus
 [Zarządzane tożsamości dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md) jest funkcją między platformą Azure, która pozwala na tworzenie bezpieczna tożsamość skojarzonym z wdrożeniem w ramach którego działa kod aplikacji. Następnie można skojarzyć z tą tożsamością z rolami kontroli dostępu, które udzielić uprawnień niestandardowych na potrzeby uzyskiwania dostępu do określonych zasobów platformy Azure wymaganych przez aplikację.
 
 Za pomocą tożsamości zarządzanych platformy Azure zarządza tą tożsamością środowiska uruchomieniowego. Nie trzeba przechowywać i chronić klucze dostępu w kodzie aplikacji albo konfiguracji dla tożsamości, sama lub za zasoby, których chcesz uzyskać dostęp. Aplikacja kliencka Service Bus uruchomiona w aplikacji Azure App Service lub na maszynie wirtualnej z włączonymi jednostkami zarządzanymi dla obsługi zasobów platformy Azure nie musi obsługiwać reguł i kluczy SAS ani żadnych innych tokenów dostępu. Aplikacja kliencka wymaga tylko adresu punktu końcowego przestrzeni nazw wiadomości Service Bus. Gdy aplikacja nawiązuje połączenie, Service Bus powiązać kontekstu jednostki zarządzanej z klientem w operacji, która jest wyświetlana w przykładzie w dalszej części tego artykułu. Po skojarzeniu jej z tożsamością zarządzaną klient Service Bus może wykonać wszystkie autoryzowane operacje. Autoryzacja jest przyznawana przez skojarzenie jednostki zarządzanej z rolami Service Bus. 
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Gdy podmiot zabezpieczeń (użytkownik, Grupa lub aplikacja) próbuje uzyskać dostęp do jednostki Service Bus, żądanie musi być autoryzowane. W przypadku usługi Azure AD dostęp do zasobu jest procesem dwuetapowym. 
 
  1. Najpierw jest uwierzytelniana tożsamość podmiotu zabezpieczeń i zwracany jest token OAuth 2,0. Nazwa zasobu do żądania tokenu to `https://servicebus.azure.net`.
  1. Następnie token jest przesyłany w ramach żądania do usługi Service Bus, aby autoryzować dostęp do określonego zasobu.
 
-Krok uwierzytelniania wymaga, aby żądanie aplikacji zawierało token dostępu OAuth 2,0 w czasie wykonywania. Jeśli aplikacja jest uruchomiona w ramach jednostki platformy Azure, takiej jak maszyna wirtualna platformy Azure, zestaw skalowania maszyn wirtualnych lub aplikacja funkcji platformy Azure, może używać tożsamości zarządzanej do uzyskiwania dostępu do zasobów. Aby dowiedzieć się, jak uwierzytelniać żądania wysyłane przez zarządzaną tożsamość do usługi Service Bus, zobacz [uwierzytelnianie dostępu do zasobów Azure Service Bus za pomocą Azure Active Directory i zarządzanych tożsamości dla zasobów platformy Azure](service-bus-managed-service-identity.md). 
+Krok uwierzytelniania wymaga, aby żądanie aplikacji zawierało token dostępu OAuth 2,0 w czasie wykonywania. Jeśli aplikacja jest uruchomiona w ramach jednostki platformy Azure, takiej jak maszyna wirtualna platformy Azure, zestaw skalowania maszyn wirtualnych lub aplikacja funkcji platformy Azure, może używać tożsamości zarządzanej do uzyskiwania dostępu do zasobów. 
 
 Krok autoryzacji wymaga, aby co najmniej jedna rola RBAC była przypisana do podmiotu zabezpieczeń. Azure Service Bus oferuje role RBAC, które obejmują zestawy uprawnień dla Service Bus zasobów. Role, które są przypisane do podmiotu zabezpieczeń, określają uprawnienia, które będą miały. Aby dowiedzieć się więcej na temat przypisywania ról RBAC do Azure Service Bus, zobacz [wbudowane role RBAC dla Azure Service Bus](#built-in-rbac-roles-for-azure-service-bus). 
 

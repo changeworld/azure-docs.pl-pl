@@ -9,17 +9,17 @@ ms.subservice: cognitive-search
 ms.topic: overview
 ms.date: 08/02/2019
 ms.author: heidist
-ms.openlocfilehash: f4308cf0309725fc0ba3b5feb047d04af2ebbe66
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 6177f5821efe74fdf3a6aba7fe52f41e9db22728
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638181"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123100"
 ---
 # <a name="what-is-knowledge-store-in-azure-search"></a>Co to jest sklep merytoryczny w Azure Search?
 
 > [!Note]
-> Magazyn wiedzy jest w wersji zapoznawczej i nie jest przeznaczony do użycia w środowisku produkcyjnym. [Interfejs API REST w wersji 2019-05-06 —](search-api-preview.md) wersja zapoznawcza zawiera tę funkcję. W tej chwili nie ma obsługi zestawu SDK platformy .NET.
+> Magazyn wiedzy jest w wersji zapoznawczej i nie jest przeznaczony do użycia w środowisku produkcyjnym. [Interfejs API REST w wersji 2019-05-06 — wersja zapoznawcza](search-api-preview.md) zawiera tę funkcję. W tej chwili nie ma obsługi zestawu SDK platformy .NET.
 >
 
 Magazyn wiedzy to funkcja Azure Search, która zapisuje wzbogacone dokumenty i metadane utworzone przez potok indeksowania oparty na AI [(wyszukiwanie poznawcze)](cognitive-search-concept-intro.md). Wzbogacony dokument to dane wyjściowe potoku, utworzone na podstawie zawartości wyodrębnionej, strukturalnej i analizowanej przy użyciu zasobów w Cognitive Services. W standardowym potoku opartym na formacie AI, wzbogacone dokumenty są przejściowe, używane tylko podczas indeksowania, a następnie odrzucane. W sklepie z bazami danych dokumenty są zapisywane do późniejszej oceny, eksploracji i mogą stać się danymi wejściowymi w obciążeniu do nauki z danymi podrzędnymi. 
@@ -42,7 +42,7 @@ Mimo że warto zobaczyć, co może wyprodukować potok indeksowania oparty na fo
 
 Wyliczane są korzyści z używania sklepu z bazami danych:
 
-+ Korzystaj z ulepszonych dokumentów w narzędziach do [analizy i raportowania](#tools-and-apps) innych niż wyszukiwanie. Power BI z Power Query jest atrakcyjnym wyborem, ale dowolne narzędzie lub aplikacja, która może łączyć się z usługą Azure Storage, może pobierać z utworzonego przez siebie magazynu wiedzy.
++ Korzystaj z ulepszonych dokumentów w [narzędziach do analizy i raportowania](#tools-and-apps) innych niż wyszukiwanie. Power BI z Power Query jest atrakcyjnym wyborem, ale dowolne narzędzie lub aplikacja, która może łączyć się z usługą Azure Storage, może pobierać z utworzonego przez siebie magazynu wiedzy.
 
 + Uściślij potok indeksowania AI podczas debugowania kroków i definicji zestawu umiejętności. Magazyn wiedzy przedstawia produkt definicji zestawu umiejętności w potoku indeksowania systemu AI. Możesz użyć tych wyników, aby zaprojektować lepszy zestawu umiejętności, ponieważ można zobaczyć dokładnie, jak wyglądają wzbogacenia. Możesz użyć [Eksplorator usługi Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) w usłudze Azure Storage, aby wyświetlić zawartość sklepu z bazami wiedzy.
 
@@ -132,7 +132,7 @@ Dane lub dokumenty, które chcesz wzbogacić, muszą istnieć w źródle danych 
 
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 
-[Usługi Azure Table Storage](search-howto-indexing-azure-tables.md) można używać na potrzeby danych wychodzących w sklepie z bazami informacji, ale nie można ich używać jako zasobu danych przychodzących do potoku indeksowania opartego na AI.
+* [Azure Table storage](search-howto-indexing-azure-tables.md)
 
 ### <a name="2---azure-search-service"></a>2 — usługa Azure Search
 
@@ -149,7 +149,7 @@ Azure Search udostępnia funkcję indeksatora, a Indeksatory są używane do kie
 
 ### <a name="3---cognitive-services"></a>3 — Cognitive Services
 
-Wzbogacania określone w zestawu umiejętności są oparte na przetwarzanie obrazów i funkcjach języka w Cognitive Services. Funkcja Cognitive Services jest używana podczas indeksowania przez zestawu umiejętności. Zestawu umiejętności to skład umiejętności, a umiejętności są powiązane z konkretnymi funkcjami przetwarzanie obrazów i języka. Aby zintegrować Cognitive Services, dołączysz [zasób Cognitive Services](cognitive-search-attach-cognitive-services.md) do zestawu umiejętności.
+Wzbogacania określone w zestawu umiejętności są oparte na przetwarzanie obrazów i funkcjach języka w Cognitive Services. Funkcja Cognitive Services jest używana podczas indeksowania przez zestawu umiejętności. Zestawu umiejętności to skład umiejętności, a umiejętności są powiązane z konkretnymi funkcjami przetwarzanie obrazów i języka. Aby zintegrować Cognitive Services, [dołączysz zasób Cognitive Services](cognitive-search-attach-cognitive-services.md) do zestawu umiejętności.
 
 ### <a name="4---storage-account"></a>4 — konto magazynu
 
