@@ -58,7 +58,7 @@ Ten artykuł zawiera kod niestandardowy, który można użyć w warstwach poza a
 
 | Właściwość | Wymagane | Typ | Opis |
 | --- | --- | --- | --- |
-| sourceType | Yes |   | Typ uruchamiania źródła. Dozwolone wartości to **Microsoft.Logic/workflows** i **niestandardowe**. |
+| sourceType | Yes |   | Typ uruchamiania źródła. Dozwolone wartości to **Microsoft.Logic/workflows** i **custom**. |
 | source | Yes |   | Jeśli typ źródła jest **Microsoft.Logic/workflows**, informacje o źródle musi wykonać tego schematu. Jeśli typ źródła jest **niestandardowe**, schemat jest JToken. |
 | systemId | Tak | String | Identyfikator logiki aplikacji systemu. |
 | runId | Tak | String | Identyfikator przebiegu aplikacji logiki |
