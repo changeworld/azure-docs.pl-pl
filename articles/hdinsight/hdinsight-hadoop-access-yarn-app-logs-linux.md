@@ -2,18 +2,18 @@
 title: Dostęp do Apache Hadoop dzienników aplikacji PRZĘDZy w usłudze HDInsight opartej na systemie Linux — Azure
 description: Dowiedz się, jak uzyskać dostęp do dzienników aplikacji PRZĘDZy w klastrze usługi HDInsight opartego na systemie Linux (Apache Hadoop) przy użyciu wiersza polecenia i przeglądarki sieci Web.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.author: hrasheed
-ms.openlocfilehash: 2b230f91b9d6b169b89b125bdd0394c2c7ecd96f
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 6eb24e85d1d7ffa4f3377d4c2fe8b168303c15f0
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879873"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091508"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Dostęp do Apache Hadoop dzienników aplikacji PRZĘDZy w usłudze HDInsight opartej na systemie Linux
 
@@ -62,11 +62,11 @@ Interfejs użytkownika programu ResourceManager jest uruchamiany w klastrze węz
 1. W przeglądarce sieci Web przejdź do https://CLUSTERNAME.azurehdinsight.net. Zastąp wartość CLUSTERname nazwą klastra usługi HDInsight.
 2. Z listy usług po lewej stronie wybierz pozycję **przędza**.
 
-    ![Wybrana usługa przędzy](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)
+    ![Wybrano usługę Apache Ambari przędzę](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)
 
 3. Z listy rozwijanej **szybkie linki** wybierz jeden z węzłów głównych klastra, a następnie wybierz pozycję **Dziennik ResourceManager**.
 
-    ![Szybkie linki do przędzy](./media/hdinsight-hadoop-access-yarn-app-logs-linux/hdi-yarn-quick-links.png)
+    ![Szybkie linki do przędzy w usłudze Apache Ambari](./media/hdinsight-hadoop-access-yarn-app-logs-linux/hdi-yarn-quick-links.png)
 
     Zostanie wyświetlona lista linków do dzienników PRZĘDZy.
 

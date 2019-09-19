@@ -14,11 +14,11 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54e0648ff9aab12ad6a579fc7f6e45b98a9d6d03
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: c2eff9c0edf6797c08d0ef9732c903a81a6c764a
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
+ms.lasthandoff: 09/18/2019
 ms.locfileid: "70861161"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Uprawnienia roli administratora w Azure Active Directory
@@ -78,12 +78,6 @@ Rola Administrator uwierzytelniania jest obecnie w publicznej wersji zapoznawcze
 * Grupa zabezpieczeń i właściciele grupy Office 365, którzy mogą zarządzać członkostwem w grupie. Te grupy mogą udzielić dostępu do poufnych lub prywatnych informacji lub konfiguracji krytycznej w usłudze Azure AD i w innym miejscu.
 * Administratorzy w innych usługach poza usługą Azure AD, np. Exchange Online, Centrum zabezpieczeń i zgodności pakietu Office oraz systemy kadr.
 * Użytkownicy niebędący administratorami, w tym członkowie kierownictwa, prawnik prawny i pracownicy działu kadr, którzy mogą mieć dostęp do poufnych lub prywatnych informacji.
-
-### <a name="azure-devops-administratorazure-devops-administrator-permissions"></a>[Administrator usługi Azure DevOps](#azure-devops-administrator-permissions)
-
-Użytkownicy z tą rolą mogą zarządzać zasadami usługi Azure DevOps, aby ograniczyć tworzenie nowych organizacji usługi Azure DevOps do zestawu konfigurowalnych użytkowników/grup AAD. Użytkownicy w tej roli mogą zarządzać tymi zasadami za pomocą dowolnej organizacji usługi Azure DevOps, która jest poddana kopii zapasowej usługi Azure AD firmy.
-
-W przyszłości wszystkie zasady usługi Azure DevOps dla przedsiębiorstw będą zarządzane przez użytkowników w tej roli.
 
 ### <a name="azure-information-protection-administratorazure-information-protection-administrator-permissions"></a>[Azure Information Protection administrator](#azure-information-protection-administrator-permissions)
 
@@ -497,19 +491,6 @@ Zezwolenie na wyświetlanie, ustawianie i Resetowanie informacji o metodach uwie
 | microsoft.office365.serviceHealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
 | Microsoft. Directory/Users/hasło/aktualizacja | Aktualizowanie haseł dla wszystkich użytkowników w organizacji pakietu Office 365. Zobacz dokumentację online, aby uzyskać więcej szczegółów. |
-
-### <a name="azure-devops-administrator-permissions"></a>Uprawnienia administratora usługi Azure DevOps
-
-Może zarządzać zasadami i ustawieniami organizacji usługi Azure DevOps.
-
-> [!NOTE]
-> Ta rola ma dodatkowe uprawnienia poza Azure Active Directory. Aby uzyskać więcej informacji, zobacz [Opis roli](#azure-devops-administrator) powyżej.
->
->
-
-| **Akcje** | **Opis** |
-| --- | --- |
-| Microsoft. Azure. devOps/allEntities/allTasks | Odczytaj i skonfiguruj usługę Azure DevOps. |
 
 ### <a name="azure-information-protection-administrator-permissions"></a>Uprawnienia administratora Azure Information Protection
 
@@ -1515,7 +1496,6 @@ Nazwa wyświetlana wykresu | Nazwa wyświetlana Azure Portal | directoryRoleTemp
 Administrator aplikacji | Administrator aplikacji | 9B895D92-2CD3-44C7-9D02-A6AC2D5EA5C3
 Deweloper aplikacji | Deweloper aplikacji | CF1C38E5-3621-4004-A7CB-879624DCED7C
 Administrator uwierzytelniania | Administrator uwierzytelniania | c4e39bd9-1100-46d3-8c65-fb160da0071f
-Administrator usługi Azure DevOps | Administrator usługi Azure DevOps | e3973bdf-4987-49ae-837a-ba8e231c7286
 Azure Information Protection administrator | Azure Information Protection administrator | 7495fdc4-34c4-4d15-a289-98788ce399fd
 Administrator przepływu użytkownika B2C | Administrator przepływu użytkownika B2C | 6e591065-9bad-43ed-90f3-e9424366d2f0
 administrator atrybutów przepływów użytkownika B2C | administrator atrybutów przepływów użytkownika B2C | 0f971eea-41eb-4569-a71e-57bb8a3eff1e

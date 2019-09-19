@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8095b4fa6e52b7c34cedaea35b129ab68dddc65
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 06b3a3f12b2955ae97c43b0caf6a4ac13c9b770a
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532959"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086727"
 ---
 # <a name="baseline-policy-require-mfa-for-service-management-preview"></a>Zasady linii bazowej: Wymagaj uwierzytelniania wieloskładnikowego dla zarządzania usługami (wersja zapoznawcza)
 
@@ -50,7 +50,7 @@ Jeśli interfejs wiersza polecenia może otworzyć Twoją domyślną przeglądar
 
 ## <a name="deployment-considerations"></a>Zagadnienia dotyczące wdrażania
 
-Ze względu na to, że zasady **Wymagaj usługi MFA na potrzeby zarządzania usługami** mają zastosowanie do wszystkich Azure Resource Manager użytkowników, należy wprowadzić kilka kwestii w celu zapewnienia bezproblemowego wdrożenia. Te zagadnienia obejmują Identyfikowanie użytkowników i zasad usługi w usłudze Azure AD, które nie mogą ani nie powinny wykonywać uwierzytelniania MFA, a także aplikacje i klientów używane przez organizację, które nie obsługują nowoczesnego uwierzytelniania.
+Zasady **Wymagaj uwierzytelniania wieloskładnikowego dla usługi Service Management** dotyczą wszystkich użytkowników Azure Resource Manager.
 
 ## <a name="enable-the-baseline-policy"></a>Włączanie zasad linii bazowej
 

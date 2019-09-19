@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: fc01a20a077a1c624ed490600db919fe3197556c
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 68d4f55d4a382f59386e72779a5f60cfc2a65338
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901765"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091103"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Rozwiązywanie problemów dotyczących komunikacji równorzędnej sieci wirtualnych
 
@@ -58,7 +58,7 @@ Aby uzyskać więcej informacji, zobacz [wymagania i ograniczenia](https://docs.
 Aby skonfigurować komunikację równorzędną sieci wirtualnych dla sieci wirtualnych w różnych subskrypcjach lub Active Directory dzierżawców, wykonaj kroki opisane w temacie [Tworzenie komunikacji równorzędnej w różnych subskrypcjach interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions#cli).
 
 > [!Note]
-> Aby skonfigurować komunikację równorzędną sieci, musisz mieć uprawnienia **współautora sieci** w obu subskrypcjach. Aby uzyskać więcej informacji, zobacz [uprawnienia komunikacji równorzędnej](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering%23permissions).
+> Aby skonfigurować komunikację równorzędną sieci, musisz mieć uprawnienia **współautora sieci** w obu subskrypcjach. Aby uzyskać więcej informacji, zobacz [uprawnienia komunikacji równorzędnej](virtual-network-manage-peering.md#permissions).
 
 ## <a name="scenario-2-configure-virtual-network-peering-with-hub-spoke-topology-that-uses-on-premises-resources"></a>Scenariusz 2: Konfigurowanie komunikacji równorzędnej sieci wirtualnej z topologią gwiazdy, która korzysta z zasobów lokalnych
 
@@ -104,7 +104,7 @@ Aby dowiedzieć się więcej o globalnych wymaganiach dotyczących komunikacji r
 
 ## <a name="scenario-4-i-have-a-connectivity-issue-between-two-peered-virtual-networks"></a>Scenariusz 4: Mam problem z łącznością między dwiema równorzędnymi sieciami wirtualnymi
 
-Zaloguj się do [Azure Portal](https://portal.azure.com/) przy użyciu konta, które ma wymagane [role i uprawnienia](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#roles-permissions). Wybierz sieć wirtualną, wybierz pozycję **Komunikacja równorzędna**, a następnie sprawdź pole **stan** . Jaki jest stan?
+Zaloguj się do [Azure Portal](https://portal.azure.com/) przy użyciu konta, które ma wymagane [role i uprawnienia](virtual-network-manage-peering.md#permissions). Wybierz sieć wirtualną, wybierz pozycję **Komunikacja równorzędna**, a następnie sprawdź pole **stan** . Jaki jest stan?
 
 ### <a name="connection-type-1-the-peering-status-shows-connected"></a>Typ połączenia 1: Stan komunikacji równorzędnej pokazuje "Połączono"
 

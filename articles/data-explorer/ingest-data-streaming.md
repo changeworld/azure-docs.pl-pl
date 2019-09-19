@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 5aa2d694c2c74b493a7fd1a2a89d39866928d1d4
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 712273ddfb8b6f781627e2cc7915a1f538f57b4d
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70843859"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090629"
 ---
 # <a name="streaming-ingestion-preview"></a>Pozyskiwanie strumieniowe (wersja zapoznawcza)
 
@@ -41,8 +41,9 @@ Użyj operacji pozyskiwania klasycznego (zbiorczego) zamiast pozyskiwania strumi
  
 1. W [interfejsie użytkownika sieci Web](https://dataexplorer.azure.com/)Zdefiniuj zasady pozyskiwania [strumieniowego](/azure/kusto/concepts/streamingingestionpolicy) dla tabel lub baz danych, które będą odbierać dane przesyłane strumieniowo. 
 
-    > [!TIP]
-    > Jeśli zasady są zdefiniowane na poziomie bazy danych, wszystkie tabele w bazie danych są włączone na potrzeby pozyskiwania strumieniowego.
+    > [!NOTE]
+    > * Jeśli zasady są zdefiniowane na poziomie bazy danych, wszystkie tabele w bazie danych są włączone na potrzeby pozyskiwania strumieniowego.
+    > * Zastosowane zasady mogą odwoływać się tylko do nowo wprowadzonych danych, a nie innych tabel w bazie danych.
 
 ## <a name="use-streaming-ingestion-to-ingest-data-to-your-cluster"></a>Wykorzystywanie pozyskiwania strumieniowego do pozyskiwania danych do klastra
 

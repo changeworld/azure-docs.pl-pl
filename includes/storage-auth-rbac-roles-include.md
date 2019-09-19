@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/25/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 4f9a828e5233c88db2106bc648c07578927e0d29
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: c2b409f0eefe5efa389432cbb007cc08e0c6ae1e
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514869"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71078269"
 ---
 Platforma Azure udostępnia następujące wbudowane role RBAC do autoryzowania dostępu do danych obiektów blob i kolejek przy użyciu usługi Azure AD i uwierzytelniania OAuth:
 
@@ -26,4 +26,6 @@ Platforma Azure udostępnia następujące wbudowane role RBAC do autoryzowania d
 - [Nadawca komunikatu o danych kolejki magazynu](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-sender): Służy do przyznawania uprawnień do dodawania do komunikatów w kolejkach usługi Azure Storage.
 
 > [!NOTE]
-> Należy pamiętać, że propagacja ról RBAC może potrwać do 5 minut.
+> Propagowanie przypisań ról RBAC może potrwać do 5 minut.
+>
+> Tylko role jawnie zdefiniowane na potrzeby dostępu do danych zezwalają podmiotowi zabezpieczeń na dostęp do danych obiektu BLOB lub kolejki. Role, takie jak **właściciel**, **współautor**i **współautor konta magazynu** , umożliwiają podmiotowi zabezpieczeń Zarządzanie kontem magazynu, ale nie zapewniają dostępu do danych obiektu BLOB lub kolejki w ramach tego konta.

@@ -8,14 +8,14 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/07/2019
 ms.author: rajanaki
-ms.openlocfilehash: 907a698a675a039dfdc852210adecb94c7bfab25
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 1905d6afb023b1bed15f1359fed8477d815acb45
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68886899"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087701"
 ---
-# <a name="customize-networking-configurations-of-the-target-azure-vm"></a>Dostosuj konfiguracje sieciowe docelowej maszyny wirtualnej platformy Azure
+# <a name="customize-networking-configurations-of-the-target-azure-vm"></a>Dostosowywanie konfiguracji sieci dla docelowej maszyny wirtualnej platformy Azure
 
 Ten artykuł zawiera wskazówki dotyczące dostosowywania konfiguracji sieci na docelowej maszynie wirtualnej platformy Azure podczas replikowania i odzyskiwania maszyn wirtualnych platformy Azure z jednego regionu do innego przy użyciu [Azure Site Recovery](site-recovery-overview.md).
 
@@ -23,13 +23,16 @@ Ten artykuł zawiera wskazówki dotyczące dostosowywania konfiguracji sieci na 
 
 Dowiedz się, jak Site Recovery zapewnia odzyskiwanie po awarii w [tym scenariuszu](azure-to-azure-architecture.md).
 
-## <a name="support-networking-resources"></a>Obsługa zasobów sieciowych
+## <a name="supported-networking-resources"></a>Obsługiwane zasoby sieciowe
 
 Podczas replikowania maszyn wirtualnych platformy Azure można dostarczyć następujące konfiguracje zasobów kluczy dla maszyny wirtualnej trybu failover.
 
 - [Wewnętrzny moduł równoważenia obciążenia](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview#what-is-standard-load-balancer)
 - [Publiczny adres IP](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses)
 - [Grupa zabezpieczeń sieci](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group) dla podsieci i karty sieciowej
+
+ > [!IMPORTANT]
+  > Te ustawienia są obsługiwane tylko w ramach operacji przełączania do trybu failover, a nie do testowania pracy w trybie failover.
 
 ## <a name="pre-requisites"></a>Wymagania wstępne
 

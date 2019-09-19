@@ -5,6 +5,7 @@ description: Dowiedz się, jak utworzyć wewnętrzny moduł równoważenia obci�
 services: load-balancer
 documentationcenter: na
 author: genlin
+manager: dcscontentpm
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: genli
-ms.openlocfilehash: ef6aac0d97c38798f826304475779ea8059875c7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b864a4bf352c547779bb368650971fa8b805fca7
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60848561"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090964"
 ---
 # <a name="get-started-creating-an-internal-load-balancer-classic-using-powershell"></a>Wprowadzenie do tworzenia wewnętrznego modułu równoważenia obciążenia (klasycznego) przy użyciu programu PowerShell
 
@@ -59,7 +60,7 @@ Add-AzureInternalLoadBalancer -ServiceName $svc -InternalLoadBalancerName $ilb �
 
 Należy zauważyć, że to polecenie cmdlet [Add-AzureEndpoint](https://msdn.microsoft.com/library/dn495300.aspx) programu Windows PowerShell korzysta z zestawu parametrów DefaultProbe. Aby uzyskać więcej informacji na temat dodatkowych zestawów parametrów, zobacz artykuł [Add-AzureEndpoint](https://msdn.microsoft.com/library/dn495300.aspx).
 
-### <a name="step-2-add-endpoints-to-the-internal-load-balancing-instance"></a>Krok 2: Dodaj punkty końcowe do wystąpienia wewnętrznego równoważenia obciążenia
+### <a name="step-2-add-endpoints-to-the-internal-load-balancing-instance"></a>Krok 2: Dodawanie punktów końcowych do wystąpienia wewnętrznego równoważenia obciążenia
 
 Oto przykład:
 
@@ -75,7 +76,7 @@ $ilb="ilbset"
 Get-AzureVM –ServiceName $svc –Name $vmname | Add-AzureEndpoint -Name $epname -Lbset $lbsetname -Protocol $prot -LocalPort $locport -PublicPort $pubport –DefaultProbe -InternalLoadBalancerName $ilb | Update-AzureVM
 ```
 
-### <a name="step-3-configure-your-servers-to-send-their-traffic-to-the-new-internal-load-balancing-endpoint"></a>Krok 3: Skonfiguruj serwery tak, aby wysyłały ruch na nowy punkt końcowy wewnętrznego równoważenia obciążenia
+### <a name="step-3-configure-your-servers-to-send-their-traffic-to-the-new-internal-load-balancing-endpoint"></a>Krok 3: Skonfiguruj serwery do wysyłania ruchu do nowego punktu końcowego wewnętrznego równoważenia obciążenia
 
 Musisz skonfigurować serwery, których obciążenie ruchu ma być równoważone, aby korzystały z nowego adresu IP (VIP) wystąpienia wewnętrznego równoważenia obciążenia. Jest to adres, na którym nasłuchuje wystąpienie wewnętrznego równoważenia obciążenia. W większości przypadków należy po prostu dodać lub zmodyfikować rekord DNS dla adresu VIP wystąpienia wewnętrznego równoważenia obciążenia.
 

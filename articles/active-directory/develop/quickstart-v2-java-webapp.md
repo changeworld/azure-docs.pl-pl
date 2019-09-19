@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/11/2019
 ms.author: sagonzal
 ms.custom: aaddev
-ms.openlocfilehash: f1ceae17195c08af380a7448dd4dbf3bfa3f9de2
-ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
+ms.openlocfilehash: 22d65d20220bfda821fe255e08dd056b761a828d
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70211874"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086992"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Szybki start: Dodawanie logowania do aplikacji sieci Web w języku Java firmy Microsoft
 
@@ -32,10 +32,11 @@ Po ukończeniu tego przewodnika aplikacja będzie akceptować logowania do osobi
 
 ![Pokazuje sposób działania przykładowej aplikacji wygenerowanej przez ten przewodnik Szybki Start](media/quickstart-v2-java-webapp/java-quickstart.svg)
 
-> ## <a name="prerequisites"></a>Wymagania wstępne
-> Do uruchomienia tego przykładu potrzebne są: 
-> - Zestaw Java Development Kit (JDK) 8 lub nowszy i Maven.
->
+## <a name="prerequisites"></a>Wymagania wstępne
+
+Do uruchomienia tego przykładu potrzebne są: 
+- Zestaw Java Development Kit (JDK) 8 lub nowszy i Maven.
+
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Rejestrowanie i pobieranie aplikacji Szybki start
 > Dostępne są dwie opcje uruchomienia aplikacji szybkiego startu: Express (opcja 1) lub ręczne (opcja 2)
@@ -73,9 +74,9 @@ Po ukończeniu tego przewodnika aplikacja będzie akceptować logowania do osobi
 > 1. Znajdź wartość **identyfikatora aplikacji (klienta)** aplikacji. Zaktualizuj wartość `Enter_the_Application_Id_here` w pliku *Application. Properties* .
 > 1. Znajdź wartość **identyfikatora katalogu (dzierżawy)** aplikacji. Zaktualizuj wartość `Enter_the_Tenant_Info_Here` w pliku *Application. Properties* . 
 > 1. Wybierz menu **Uwierzytelnianie**, a następnie dodaj następujące informacje:
->    - W obszarze **identyfikatory URI**przekierowania `https://localhost:8080/msal4jsamples/graph/users`Dodaj `http://localhost:8080/msal4jsamples/secure/aad` i.
+>    - W obszarze **identyfikatory URI przekierowania**Dodaj `http://localhost:8080/msal4jsamples/secure/aad` i `https://localhost:8080/msal4jsamples/graph/users`.
 >    - Wybierz pozycję **Zapisz**.
-> 1. W menu po lewej stronie wybierz pozycję **certyfikaty &** wpisy tajne i kliknij pozycję **Nowy wpis tajny klienta** w sekcji wpisy **tajne klienta** :
+> 1. W menu po lewej stronie wybierz pozycję **certyfikaty & wpisy tajne** i kliknij pozycję **Nowy wpis tajny klienta** w sekcji wpisy **tajne klienta** :
 >     
 >    - Wpisz opis klucza (dla wpisu tajnego aplikacji wystąpienia).
 >    - Wybierz kluczowy czas trwania wynoszący **1 rok**.
@@ -105,7 +106,7 @@ Po ukończeniu tego przewodnika aplikacja będzie akceptować logowania do osobi
 > 1. Zamień właściwości aplikacji.
 >   1. Znajdź `aad.clientId` i zaktualizuj `Enter_the_Application_Id_here` wartość przy użyciu wartości **identyfikatora aplikacji (klienta)** zarejestrowanej aplikacji. 
 >   1. Znajdź `aad.authority` i zaktualizuj `Enter_the_Tenant_Name_Here` wartość z wartością **identyfikatora katalogu (dzierżawa)** zarejestrowanej aplikacji.
->   1. Znajdź `aad.secretKey` i zaktualizuj `Enter_the_Client_Secret_Here` wartość przy użyciu **klucza tajnego klienta** utworzonego w obszarze **Certyfikaty &** wpisy tajne dla zarejestrowanej aplikacji.
+>   1. Znajdź `aad.secretKey` i zaktualizuj `Enter_the_Client_Secret_Here` wartość przy użyciu **klucza tajnego klienta** utworzonego w obszarze **Certyfikaty & wpisy tajne** dla zarejestrowanej aplikacji.
 
 #### <a name="step-4-run-the-code-sample"></a>Krok 4: Uruchamianie przykładu kodu
 1. Uruchom przykładowy kod, a następnie otwórz przeglądarkę i przejdź do *http://localhost:8080* .

@@ -10,12 +10,12 @@ ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5f271f75a4faa7067f8a52d63a34772780c6448
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 37eba245933bc94e9fb631abd3b4ff495f8c6d67
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959908"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087594"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Usługi obsługujące zarządzane tożsamości dla zasobów platformy Azure
 
@@ -220,7 +220,7 @@ Zapoznaj się z poniższą listą, aby skonfigurować dostęp do Azure Resource 
 | Chmura | Identyfikator zasobu | State |
 |--------|------------|--------|
 | Globalne platformy Azure | `https://servicebus.azure.net`  | Dostępne |
-| Azure Government |  | Niedostępna |
+| Azure Government |  | Dostępne |
 | Azure (Niemcy) |   | Niedostępna |
 | Azure w Chinach — 21Vianet |  | Niedostępna |
 

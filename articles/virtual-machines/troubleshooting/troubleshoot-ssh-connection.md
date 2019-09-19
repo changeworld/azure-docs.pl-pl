@@ -5,7 +5,7 @@ keywords: odmówiono połączenia SSH, błąd SSH, usługa Azure SSH, Niepowodze
 services: virtual-machines-linux
 documentationcenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: dcb82e19-29b2-47bb-99f2-900d4cfb5bbb
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: fd3c40d56e0ba9cdb50847832051606f81d0e952
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 006dbbe1b7472982a894691d019eb88ef2041dac
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677670"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088263"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Rozwiązywanie problemów z połączeniami SSH z maszyną wirtualną platformy Azure z systemem Linux, która kończy się niepowodzeniem, zawiera błędy lub
 Ten artykuł ułatwia znajdowanie i rozwiązywanie problemów występujących w związku z błędami Secure Shell (SSH), niepowodzeń połączeń SSH lub odrzucanie protokołu SSH podczas próby nawiązania połączenia z maszyną wirtualną z systemem Linux. Możesz Azure Portal użyć rozszerzenia dostępu do interfejsu wiersza polecenia platformy Azure dla systemu Linux w celu rozwiązywania problemów z połączeniami i ich rozwiązywania.
@@ -49,7 +49,7 @@ Kontynuuj odczytywanie, aby zapoznać się z bardziej szczegółowymi krokami ro
 Możesz zresetować poświadczenia lub konfigurację protokołu SSH przy użyciu jednej z następujących metod:
 
 * [Azure Portal](#use-the-azure-portal) — doskonały, jeśli chcesz szybko zresetować konfigurację SSH lub klucz SSH i nie masz zainstalowanych narzędzi platformy Azure.
-* [Konsola szeregowa maszyny wirtualnej platformy Azure](https://aka.ms/serialconsolelinux) — konsola szeregowa maszyny wirtualnej będzie działała niezależnie od konfiguracji SSH i zapewnia interaktywną konsolę dla maszyny wirtualnej. W rzeczywistości sytuacje, w których zaprojektowano konsolę szeregową, aby pomóc w rozwiązaniu problemu. Więcej szczegółów poniżej.
+* [Konsola szeregowa maszyny wirtualnej platformy Azure](https://aka.ms/serialconsolelinux) — konsola szeregowa maszyny wirtualnej będzie działała niezależnie od konfiguracji SSH i zapewnia interaktywną konsolę dla maszyny wirtualnej. W rzeczywistości sytuacje, w których zaprojektowano konsolę szeregową, aby pomóc w rozwiązaniu problemu. Więcej szczegółów można znaleźć poniżej.
 * [Interfejs wiersza polecenia platformy Azure](#use-the-azure-cli) — Jeśli jesteś już w wierszu poleceń, szybko Zresetuj konfigurację SSH lub poświadczenia. Jeśli pracujesz z klasyczną maszyną wirtualną, możesz użyć [klasycznego interfejsu wiersza polecenia platformy Azure](#use-the-azure-classic-cli).
 * [Rozszerzenie VMAccessForLinux platformy Azure](#use-the-vmaccess-extension) — tworzenie i ponowne używanie plików definicji JSON w celu zresetowania konfiguracji SSH lub poświadczeń użytkownika.
 
@@ -76,7 +76,7 @@ Użyj [weryfikacji przepływu IP](../../network-watcher/network-watcher-check-ip
 
 ### <a name="check-routing"></a>Sprawdzanie routingu
 
-Użyj funkcji [następnego](../../network-watcher/network-watcher-check-next-hop-portal.md) przeskoku Network Watcher, aby upewnić się, że trasa nie uniemożliwia kierowania ruchu do lub z maszyny wirtualnej. Możesz również przejrzeć obowiązujące trasy, aby zobaczyć wszystkie efektywne trasy dla interfejsu sieciowego. Aby uzyskać więcej informacji, zobacz [Korzystanie z efektywnych tras w celu rozwiązywania problemów z przepływem ruchu maszyn wirtualnych](../../virtual-network/diagnose-network-routing-problem.md).
+Użyj funkcji [następnego przeskoku](../../network-watcher/network-watcher-check-next-hop-portal.md) Network Watcher, aby upewnić się, że trasa nie uniemożliwia kierowania ruchu do lub z maszyny wirtualnej. Możesz również przejrzeć obowiązujące trasy, aby zobaczyć wszystkie efektywne trasy dla interfejsu sieciowego. Aby uzyskać więcej informacji, zobacz [Korzystanie z efektywnych tras w celu rozwiązywania problemów z przepływem ruchu maszyn wirtualnych](../../virtual-network/diagnose-network-routing-problem.md).
 
 ## <a name="use-the-azure-vm-serial-console"></a>Korzystanie z konsoli szeregowej maszyny wirtualnej platformy Azure
 [Konsola szeregowa maszyny wirtualnej platformy Azure](./serial-console-linux.md) zapewnia dostęp do konsoli opartej na tekście dla maszyn wirtualnych z systemem Linux. Konsoli programu można użyć do rozwiązywania problemów z połączeniem SSH w interakcyjnej powłoki. Upewnij się, że spełniono [wymagania wstępne](./serial-console-linux.md#prerequisites) dotyczące korzystania z konsoli szeregowej, i spróbuj użyć poniższych poleceń, aby jeszcze bardziej rozwiązać problemy z łącznością SSH.

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 92d8c6fb1bfa1689475774bbc4f62cd9ab38268f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: d06cf74b2a29af3fea2c24facac2899d09a0a84f
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321835"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090786"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Samouczek: uruchamianie równoległego obciążenia w usłudze Azure Batch przy użyciu interfejsu API Python
 
@@ -123,7 +123,7 @@ W poniższych sekcjach przykładowa aplikacja została podzielona na kroki wykon
 
 ### <a name="authenticate-blob-and-batch-clients"></a>Uwierzytelnianie klientów obiektów blob i usługi Batch
 
-Aby nawiązać interakcję z kontem magazynu, aplikacja używa pakietu [azure-storage-blob](https://pypi.python.org/pypi/azure-storage-blob) do utworzenia obiektu [BlockBlobService](/python/api/azure.storage.blob.blockblobservice.blockblobservice).
+Aby nawiązać interakcję z kontem magazynu, aplikacja używa pakietu [azure-storage-blob](https://pypi.python.org/pypi/azure-storage-blob) do utworzenia obiektu [BlockBlobService](/python/api/azure-storage-blob/azure.storage.blob.blockblobservice.blockblobservice).
 
 ```python
 blob_client = azureblob.BlockBlobService(
@@ -144,7 +144,7 @@ batch_client = batch.BatchServiceClient(
 
 ### <a name="upload-input-files"></a>Przekazywanie plików wejściowych
 
-W aplikacji odwołanie `blob_client` jest używane do utworzenia kontenera magazynu dla plików wejściowych w formacie MP4 oraz kontenera dla danych wyjściowych zadań podrzędnych. Następnie wywoływana jest funkcja `upload_file_to_container` w celu przekazania plików MP4 z lokalnego katalogu `InputFiles` do kontenera. Pliki w magazynie są definiowane jako obiekty [ResourceFile](/python/api/azure.batch.models.resourcefile) usługi Batch, które następnie mogą być pobierane przez tę usługę do węzłów obliczeniowych.
+W aplikacji odwołanie `blob_client` jest używane do utworzenia kontenera magazynu dla plików wejściowych w formacie MP4 oraz kontenera dla danych wyjściowych zadań podrzędnych. Następnie wywoływana jest funkcja `upload_file_to_container` w celu przekazania plików MP4 z lokalnego katalogu `InputFiles` do kontenera. Pliki w magazynie są definiowane jako obiekty [ResourceFile](/python/api/azure-batch/azure.batch.models.resourcefile) usługi Batch, które następnie mogą być pobierane przez tę usługę do węzłów obliczeniowych.
 
 ```python
 blob_client.create_container(input_container_name, fail_on_exist=False)
@@ -165,13 +165,13 @@ input_files = [
 
 ### <a name="create-a-pool-of-compute-nodes"></a>Tworzenie puli węzłów obliczeniowych
 
-Następnie w przykładzie tworzona jest pula węzłów obliczeniowych na koncie usługi Batch z wywołaniem funkcji `create_pool`. Ta zdefiniowana funkcja określa liczbę węzłów, rozmiar maszyny wirtualnej i konfigurację puli za pomocą klasy [PoolAddParameter](/python/api/azure.batch.models.pooladdparameter) usługi Batch. W tym przypadku obiekt [VirtualMachineConfiguration](/python/api/azure.batch.models.virtualmachineconfiguration) określa parametr [ImageReference](/python/api/azure.batch.models.imagereference) z odwołaniem do obrazu systemu Ubuntu Server 18.04 LTS opublikowanego w witrynie Azure Marketplace. Usługa Batch obsługuje szeroki zakres obrazów maszyn wirtualnych z witryny Azure Marketplace oraz niestandardowe obrazy maszyn wirtualnych.
+Następnie w przykładzie tworzona jest pula węzłów obliczeniowych na koncie usługi Batch z wywołaniem funkcji `create_pool`. Ta zdefiniowana funkcja określa liczbę węzłów, rozmiar maszyny wirtualnej i konfigurację puli za pomocą klasy [PoolAddParameter](/python/api/azure-batch/azure.batch.models.pooladdparameter) usługi Batch. W tym przypadku obiekt [VirtualMachineConfiguration](/python/api/azure-batch/azure.batch.models.virtualmachineconfiguration) określa parametr [ImageReference](/python/api/azure-batch/azure.batch.models.imagereference) z odwołaniem do obrazu systemu Ubuntu Server 18.04 LTS opublikowanego w witrynie Azure Marketplace. Usługa Batch obsługuje szeroki zakres obrazów maszyn wirtualnych z witryny Azure Marketplace oraz niestandardowe obrazy maszyn wirtualnych.
 
 Liczba węzłów i rozmiar maszyny wirtualnej są ustawiane przy użyciu zdefiniowanych stałych. Usługa Batch obsługuje węzły dedykowane oraz [węzły o niskim priorytecie](batch-low-pri-vms.md). W puli możesz użyć dowolnego z tych typów węzłów lub obu. Węzły dedykowane są zarezerwowane dla Twojej puli. Węzły o niskim priorytecie są oferowane w obniżonej cenie i korzystają z nadwyżek pojemności maszyn wirtualnych na platformie Azure. Węzły o niskim priorytecie staną się niedostępne, jeśli pojemność platformy Azure będzie niewystarczająca. Domyślnie przykładowa aplikacja tworzy pulę zawierającą tylko 5 węzłów o niskim priorytecie i rozmiarze *Standardowa_A1_v2*. 
 
-Oprócz fizycznych właściwości węzłów konfiguracja puli zawiera również obiekt [StartTask](/python/api/azure.batch.models.starttask). Funkcja StartTask jest wykonywana w każdym węźle, gdy tylko ten węzeł zostanie dołączony do puli, oraz za każdym razem, gdy węzeł będzie uruchamiany ponownie. W tym przykładzie obiekt StartTask uruchamia polecenia powłoki Bash w celu zainstalowania pakietu ffmpeg i jego zależności w węzłach.
+Oprócz fizycznych właściwości węzłów konfiguracja puli zawiera również obiekt [StartTask](/python/api/azure-batch/azure.batch.models.starttask). Funkcja StartTask jest wykonywana w każdym węźle, gdy tylko ten węzeł zostanie dołączony do puli, oraz za każdym razem, gdy węzeł będzie uruchamiany ponownie. W tym przykładzie obiekt StartTask uruchamia polecenia powłoki Bash w celu zainstalowania pakietu ffmpeg i jego zależności w węzłach.
 
-Metoda [pool.add](/python/api/azure.batch.operations.pooloperations) przesyła pulę do usługi Batch.
+Metoda [pool.add](/python/api/azure-batch/azure.batch.operations.pooloperations) przesyła pulę do usługi Batch.
 
 ```python
 new_pool = batch.models.PoolAddParameter(
@@ -201,7 +201,7 @@ batch_service_client.pool.add(new_pool)
 
 ### <a name="create-a-job"></a>Tworzenie zadania
 
-Zadanie usługi Batch określa pulę, w której będą uruchamiane zadania podrzędne, wraz z ustawieniami opcjonalnymi, takimi jak priorytet i harmonogram pracy. Przykładowa aplikacja tworzy zadanie z wywołaniem `create_job`. Ta zdefiniowana funkcja tworzy zadanie w puli za pomocą klasy [JobAddParameter](/python/api/azure.batch.models.jobaddparameter). Metoda [job.add](/python/api/azure.batch.operations.joboperations) przesyła pulę do usługi Batch. Początkowo zadanie nie zawiera zadań podrzędnych.
+Zadanie usługi Batch określa pulę, w której będą uruchamiane zadania podrzędne, wraz z ustawieniami opcjonalnymi, takimi jak priorytet i harmonogram pracy. Przykładowa aplikacja tworzy zadanie z wywołaniem `create_job`. Ta zdefiniowana funkcja tworzy zadanie w puli za pomocą klasy [JobAddParameter](/python/api/azure-batch/azure.batch.models.jobaddparameter). Metoda [job.add](/python/api/azure-batch/azure.batch.operations.joboperations) przesyła pulę do usługi Batch. Początkowo zadanie nie zawiera zadań podrzędnych.
 
 ```python
 job = batch.models.JobAddParameter(
@@ -213,11 +213,11 @@ batch_service_client.job.add(job)
 
 ### <a name="create-tasks"></a>Tworzenie zadań podrzędnych
 
-Aplikacja tworzy zadania podrzędne w ramach zadania przy użyciu wywołania funkcji `add_tasks`. Ta zdefiniowana funkcja tworzy listę obiektów zadań podrzędnych przy użyciu klasy [TaskAddParameter](/python/api/azure.batch.models.taskaddparameter). Każde zadanie podrzędne uruchamia narzędzie ffmpeg w celu przetworzenia wejściowego obiektu `resource_files` za pomocą parametru `command_line`. Narzędzie ffmpeg zostało już zainstalowane na wszystkich węzłach podczas tworzenia puli. Tutaj wiersz polecenia jest używany do uruchomienia narzędzia ffmpeg w celu przekonwertowania każdego z plików wejściowych w formacie MP4 (wideo) na format MP3 (audio).
+Aplikacja tworzy zadania podrzędne w ramach zadania przy użyciu wywołania funkcji `add_tasks`. Ta zdefiniowana funkcja tworzy listę obiektów zadań podrzędnych przy użyciu klasy [TaskAddParameter](/python/api/azure-batch/azure.batch.models.taskaddparameter). Każde zadanie podrzędne uruchamia narzędzie ffmpeg w celu przetworzenia wejściowego obiektu `resource_files` za pomocą parametru `command_line`. Narzędzie ffmpeg zostało już zainstalowane na wszystkich węzłach podczas tworzenia puli. Tutaj wiersz polecenia jest używany do uruchomienia narzędzia ffmpeg w celu przekonwertowania każdego z plików wejściowych w formacie MP4 (wideo) na format MP3 (audio).
 
-Przykładowa aplikacja tworzy obiekt [OutputFile](/python/api/azure.batch.models.outputfile) dla pliku MP3 po uruchomieniu wiersza polecenia. Pliki wyjściowe z każdego zadania podrzędnego (w tym przypadku jeden plik) są przekazywane do kontenera na połączonym koncie magazynu przy użyciu właściwości `output_files` w tym zadaniu podrzędnym.
+Przykładowa aplikacja tworzy obiekt [OutputFile](/python/api/azure-batch/azure.batch.models.outputfile) dla pliku MP3 po uruchomieniu wiersza polecenia. Pliki wyjściowe z każdego zadania podrzędnego (w tym przypadku jeden plik) są przekazywane do kontenera na połączonym koncie magazynu przy użyciu właściwości `output_files` w tym zadaniu podrzędnym.
 
-Następnie aplikacja dodaje zadania podrzędne do zadania za pomocą metody [task.add_collection](/python/api/azure.batch.operations.taskoperations), która tworzy kolejkę zadań podrzędnych do uruchomienia w węzłach obliczeniowych. 
+Następnie aplikacja dodaje zadania podrzędne do zadania za pomocą metody [task.add_collection](/python/api/azure-batch/azure.batch.operations.taskoperations), która tworzy kolejkę zadań podrzędnych do uruchomienia w węzłach obliczeniowych. 
 
 ```python
 tasks = list()
@@ -247,7 +247,7 @@ batch_service_client.task.add_collection(job_id, tasks)
 
 Po dodaniu zadań podrzędnych do zadania usługa Batch automatycznie dodaje je do kolejki i planuje ich wykonanie w węzłach obliczeniowych powiązanej puli. Na podstawie określonych przez użytkownika ustawień usługa Batch obsługuje dodawanie zadań podrzędnych do kolejki, ich planowanie, ponawianie prób ich wykonania oraz inne czynności administracyjne. 
 
-Istnieje wiele sposobów, w jakie można monitorować wykonanie podzadań. Funkcja `wait_for_tasks_to_complete` w tym przykładzie zawiera obiekt [TaskState](/python/api/azure.batch.models.taskstate) używany do monitorowania zadań podrzędnych pod kątem określonego stanu, w tym przypadku ukończenia, w wybranym limicie czasu.
+Istnieje wiele sposobów, w jakie można monitorować wykonanie podzadań. Funkcja `wait_for_tasks_to_complete` w tym przykładzie zawiera obiekt [TaskState](/python/api/azure-batch/azure.batch.models.taskstate) używany do monitorowania zadań podrzędnych pod kątem określonego stanu, w tym przypadku ukończenia, w wybranym limicie czasu.
 
 ```python
 while datetime.datetime.now() < timeout_expiration:
@@ -267,7 +267,7 @@ while datetime.datetime.now() < timeout_expiration:
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Po wykonaniu zadań podrzędnych aplikacja automatycznie usuwa utworzony wejściowy kontener magazynu, a opcjonalnie także pulę i zadanie usługi Batch. Dla obu klas [JobOperations](/python/api/azure.batch.operations.joboperations) i [PoolOperations](/python/api/azure.batch.operations.pooloperations) klienta BatchClient istnieją metody usuwania, które są wywoływane, jeśli potwierdzisz usunięcie. Mimo że nie są naliczane opłaty za same zadania i zadania podrzędne, są naliczane opłaty za węzły obliczeniowe. W związku z tym zaleca się przydzielanie pul stosownie do potrzeb. W przypadku usunięcia puli usuwane są również wszystkie dane wyjściowe zadań podrzędnych w węzłach. Pliki wejściowe i wyjściowe pozostają jednak na koncie magazynu.
+Po wykonaniu zadań podrzędnych aplikacja automatycznie usuwa utworzony wejściowy kontener magazynu, a opcjonalnie także pulę i zadanie usługi Batch. Dla obu klas [JobOperations](/python/api/azure-batch/azure.batch.operations.joboperations) i [PoolOperations](/python/api/azure-batch/azure.batch.operations.pooloperations) klienta BatchClient istnieją metody usuwania, które są wywoływane, jeśli potwierdzisz usunięcie. Mimo że nie są naliczane opłaty za same zadania i zadania podrzędne, są naliczane opłaty za węzły obliczeniowe. W związku z tym zaleca się przydzielanie pul stosownie do potrzeb. W przypadku usunięcia puli usuwane są również wszystkie dane wyjściowe zadań podrzędnych w węzłach. Pliki wejściowe i wyjściowe pozostają jednak na koncie magazynu.
 
 Gdy grupa zasobów, konto usługi Batch i konto magazynu nie będą już potrzebne, usuń je. W tym celu w witrynie Azure Portal zaznacz grupę zasobów konta usługi Batch i kliknij pozycję **Usuń grupę zasobów**.
 

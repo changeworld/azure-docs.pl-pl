@@ -1,5 +1,5 @@
 ---
-title: Instalowanie i Konfigurowanie Terraform do użycia z platformą Azure | Microsoft Docs
+title: Instalowanie i Konfigurowanie Terraform w celu udostępniania zasobów platformy Azure | Microsoft Docs
 description: Dowiedz się, jak zainstalować i skonfigurować Terraform do tworzenia zasobów platformy Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -12,16 +12,16 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/19/2018
-ms.author: gwallace
-ms.openlocfilehash: 105b3805e1297f796e0353f9328044896248aaa0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.date: 09/17/2019
+ms.author: tarcher
+ms.openlocfilehash: cd6052db1328fce5ef1a846fbab94fd7066079f6
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081754"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090732"
 ---
-# <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>Instalowanie i Konfigurowanie Terraform w celu aprowizacji maszyn wirtualnych i innych infrastruktury na platformie Azure
+# <a name="install-and-configure-terraform-to-provision-azure-resources"></a>Instalowanie i Konfigurowanie Terraform w celu udostępniania zasobów platformy Azure
  
 Terraform zapewnia łatwy sposób definiowania, podglądu i wdrażania infrastruktury chmurowej przy użyciu [prostego języka tworzenia szablonów](https://www.terraform.io/docs/configuration/syntax.html). W tym artykule opisano kroki niezbędne do udostępnienia zasobów na platformie Azure za pomocą Terraform.
 

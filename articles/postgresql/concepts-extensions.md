@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/23/2019
-ms.openlocfilehash: 04b17d2e3acba7f003325ca7fdef2107108aea4d
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.date: 09/10/2019
+ms.openlocfilehash: 383f5acb9f106bb4697433be99c53bb78d00b396
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013410"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091145"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Rozszerzenia PostgreSQL w Azure Database for PostgreSQL — pojedynczy serwer
 PostgreSQL zapewnia możliwość rozszerzenia funkcjonalności bazy danych przy użyciu rozszerzeń. Rozszerzenia rozszerzają wiele powiązanych obiektów SQL razem w jednym pakiecie, który można załadować lub usunąć z bazy danych za pomocą jednego polecenia. Po załadowaniu do bazy danych programu rozszerzenia działają jak wbudowane funkcje.
@@ -44,6 +44,7 @@ Następujące rozszerzenia są dostępne na serwerach Azure Database for Postgre
 > |[jest](https://www.postgresql.org/docs/11/isn.html)                          | 1.2             | typy danych dla międzynarodowych standardów numerowania produktów|
 > |[ltree](https://www.postgresql.org/docs/11/ltree.html)                        | 1.1             | Typ danych dla struktur hierarchicznych, takich jak drzewa|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | Funkcje i operatory, które emulują podzestaw funkcji i pakietów z RDBMS komercyjnych|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.3             | zapewnia funkcje inspekcji|
 > |[pgcrypto](https://www.postgresql.org/docs/11/pgcrypto.html)                     | 1.3             | funkcje kryptograficzne|
 > |[pgrouting](https://pgrouting.org/)                    | 2.6.2           | Rozszerzenie pgRouting|
 > |[pgrowlocks](https://www.postgresql.org/docs/11/pgrowlocks.html)                   | 1.2             | Pokaż informacje o blokowaniu na poziomie wiersza|
@@ -88,6 +89,7 @@ Następujące rozszerzenia są dostępne na serwerach Azure Database for Postgre
 > |[jest](https://www.postgresql.org/docs/10/isn.html)                          | 1.1             | typy danych dla międzynarodowych standardów numerowania produktów|
 > |[ltree](https://www.postgresql.org/docs/10/ltree.html)                        | 1.1             | Typ danych dla struktur hierarchicznych, takich jak drzewa|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | Funkcje i operatory, które emulują podzestaw funkcji i pakietów z RDBMS komercyjnych|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.3             | zapewnia funkcje inspekcji|
 > |[pgcrypto](https://www.postgresql.org/docs/10/pgcrypto.html)                     | 1.3             | funkcje kryptograficzne|
 > |[pgrouting](https://pgrouting.org/)                    | 2.5.2           | Rozszerzenie pgRouting|
 > |[pgrowlocks](https://www.postgresql.org/docs/10/pgrowlocks.html)                   | 1.2             | Pokaż informacje o blokowaniu na poziomie wiersza|
@@ -133,6 +135,7 @@ Następujące rozszerzenia są dostępne na serwerach Azure Database for Postgre
 > |[jest](https://www.postgresql.org/docs/9.6/isn.html)                          | 1.1             | typy danych dla międzynarodowych standardów numerowania produktów|
 > |[ltree](https://www.postgresql.org/docs/9.6/ltree.html)                        | 1.1             | Typ danych dla struktur hierarchicznych, takich jak drzewa|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | Funkcje i operatory, które emulują podzestaw funkcji i pakietów z RDBMS komercyjnych|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.3             | zapewnia funkcje inspekcji|
 > |[pgcrypto](https://www.postgresql.org/docs/9.6/pgcrypto.html)                     | 1.3             | funkcje kryptograficzne|
 > |[pgrouting](https://pgrouting.org/)                    | 2.3.2           | Rozszerzenie pgRouting|
 > |[pgrowlocks](https://www.postgresql.org/docs/9.6/pgrowlocks.html)                   | 1.2             | Pokaż informacje o blokowaniu na poziomie wiersza|
@@ -178,6 +181,7 @@ Następujące rozszerzenia są dostępne na serwerach Azure Database for Postgre
 > |[jest](https://www.postgresql.org/docs/9.5/isn.html)                          | 1.0             | typy danych dla międzynarodowych standardów numerowania produktów|
 > |[ltree](https://www.postgresql.org/docs/9.5/ltree.html)                        | 1.0             | Typ danych dla struktur hierarchicznych, takich jak drzewa|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | Funkcje i operatory, które emulują podzestaw funkcji i pakietów z RDBMS komercyjnych|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.3             | zapewnia funkcje inspekcji|
 > |[pgcrypto](https://www.postgresql.org/docs/9.5/pgcrypto.html)                     | 1.2             | funkcje kryptograficzne|
 > |[pgrouting](https://pgrouting.org/)                    | 2.3.0           | Rozszerzenie pgRouting|
 > |[pgrowlocks](https://www.postgresql.org/docs/9.5/pgrowlocks.html)                   | 1.1             | Pokaż informacje o blokowaniu na poziomie wiersza|
@@ -212,6 +216,9 @@ Obecnie połączenia wychodzące z Azure Database for PostgreSQL nie są obsług
 ## <a name="uuid"></a>uuid
 Jeśli planujesz użyć `uuid_generate_v4()` z rozszerzenia UUID-OSSP, rozważ porównanie z `gen_random_uuid()` rozszerzeniem pgcrypto w celu uzyskania korzyści z wydajności.
 
+
+## <a name="pgaudit"></a>pgAudit
+Rozszerzenie pgAudit zapewnia rejestrowanie inspekcji sesji i obiektu. Aby dowiedzieć się, jak używać tego rozszerzenia w Azure Database for PostgreSQL, zapoznaj się z [artykułem pojęcia dotyczące inspekcji](concepts-audit.md). 
 
 ## <a name="timescaledb"></a>TimescaleDB
 TimescaleDB to baza danych szeregów czasowych spakowana jako rozszerzenie dla PostgreSQL. TimescaleDB zapewnia funkcje analityczne zorientowane czasowo, optymalizacje oraz skaluje Postgres dla obciążeń szeregów czasowych.

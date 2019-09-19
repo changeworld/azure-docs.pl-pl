@@ -1,11 +1,10 @@
 ---
-title: Połączenie danych usługi Azure Information Protection przez wartownika platformy Azure w wersji zapoznawczej | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak połączyć dane z usługi Azure Information Protection w przez wartownika platformy Azure.
+title: Łączenie danych Azure Information Protection z wersją zapoznawczą platformy Azure Microsoft Docs
+description: Dowiedz się, jak połączyć Azure Information Protection dane na platformie Azure — wskaźnik.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: cabailey
 manager: rkarlin
-editor: ''
 ms.assetid: bfa2eca4-abdc-49ce-b11a-0ee229770cdd
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
@@ -13,51 +12,63 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
-ms.author: rkarlin
-ms.openlocfilehash: 3edfdca16141726ea591c8473528fc23ee076c53
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.date: 09/15/2019
+ms.author: cabailey
+ms.openlocfilehash: 0614d24b19ef39cebdf4cb47fdd2d44470ea59c0
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620600"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067742"
 ---
-# <a name="connect-data-from-azure-information-protection"></a>Połącz dane z usługi Azure Information Protection
+# <a name="connect-data-from-azure-information-protection"></a>Łączenie danych z Azure Information Protection
 
 > [!IMPORTANT]
-> Wartownik platformy Azure jest obecnie dostępna w publicznej wersji zapoznawczej.
+> W publicznej wersji zapoznawczej jest obecnie dostępna usługa Azure.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Można przesyłać strumieniowo dzienniki z [usługi Azure Information Protection](https://docs.microsoft.com/azure/information-protection/reports-aip) do platformy Azure przez wartownika za pomocą jednego kliknięcia. Usługa Azure Information Protection pomaga chronić dane, czy jest on przechowywany w chmurze, jak i w infrastrukturze lokalnej i sterowania i pomocy dotyczące zabezpieczania poczty e-mail, dokumenty i dane poufne, które są udostępniane poza firmę. Od łatwej klasyfikacji po osadzone etykiety i uprawnienia ochrona danych działa przez cały czas za pomocą usługi Azure Information Protection. Po połączeniu usługi Azure Information Protection do platformy Azure przez wartownika, możesz strumienia wszystkie alerty z usługi Azure Information Protection do platformy Azure przez wartownika.
+Informacje o rejestrowaniu można przesyłać z [Azure Information Protection](https://azure.microsoft.com/services/information-protection/) do kontrolki Azure wskaźnikowej przez skonfigurowanie łącznika danych Azure Information Protection. Azure Information Protection pomaga kontrolować i zabezpieczać poufne dane, niezależnie od tego, czy są przechowywane w chmurze, czy lokalnie.
 
+Jeśli [centralne raportowanie dla Azure Information Protection](https://docs.microsoft.com/azure/information-protection/reports-aip) jest już skonfigurowane, tak aby informacje o rejestrowaniu z tej usługi były przechowywane w tym samym log Analytics obszarze roboczym, co obecnie wybrane dla platformy Azure, możesz pominąć konfigurację programu ten łącznik danych. Informacje o rejestrowaniu z Azure Information Protection są już dostępne dla usługi Azure wskaźnikowej.
+
+Jeśli jednak rejestrowanie informacji z Azure Information Protection przechodzi do innego obszaru roboczego Log Analytics niż ten, który jest aktualnie wybrany dla platformy Azure, wykonaj jedną z następujących czynności:
+
+- Zmień obszar roboczy wybrany na platformie Azure — wskaźnik.
+
+- Zmień obszar roboczy dla Azure Information Protection, co możesz zrobić przez skonfigurowanie tego łącznika danych.
+    
+    Jeśli zmienisz obszar roboczy, nowe dane raportowania dla Azure Information Protection będą teraz przechowywane w obszarze roboczym, który jest używany przez wskaźnik kontroli platformy Azure, a dane historyczne nie są dostępne dla platformy Azure. Ponadto, jeśli poprzedni obszar roboczy jest skonfigurowany dla zapytań niestandardowych, alertów lub interfejsów API REST, należy je ponownie skonfigurować dla obszaru roboczego wskaźnikowego platformy Azure, jeśli chcesz korzystać z nich na potrzeby Azure Information Protection. Dla klientów i usług używających Azure Information Protection nie jest wymagana żadna ponowna konfiguracja.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Użytkownik mający administratora globalnego, administratora zabezpieczeń lub uprawnienia do ochrony informacji
+- Jedna z następujących ról administratora usługi Azure AD dla dzierżawy: Azure Information Protection administrator, administrator zabezpieczeń lub Administrator globalny.
+    
+    > [!NOTE]
+    > Nie można użyć roli administratora Azure Information Protection, jeśli dzierżawa znajduje się na [ujednoliconej platformie etykietowania](https://docs.microsoft.com/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform).
 
+- Uprawnienia do odczytu i zapisu w obszarze roboczym Log Analytics używanym do oceniania i Azure Information Protection.
 
-## <a name="connect-to-azure-information-protection"></a>Nawiązać połączenie z usługi Azure Information Protection
+- Do Azure Portal dodano Azure Information Protection. Jeśli potrzebujesz pomocy dotyczącej tego kroku, zobacz [dodawanie Azure Information Protection do Azure Portal](https://docs.microsoft.com/azure/information-protection/quickstart-viewpolicy#add-azure-information-protection-to-the-azure-portal).
 
-Jeśli masz już usługę Azure Information Protection, upewnij się, że jest [włączone w sieci](https://docs.microsoft.com/azure/information-protection/activate-service).
-Jeśli wdrożono usługę Azure Information Protection i pobieranie danych, dane alertu można łatwo przesyłane strumieniowo do usługi Azure przez wartownika.
+## <a name="connect-to-azure-information-protection"></a>Połącz z Azure Information Protection
 
+Jeśli nie skonfigurowano obszaru roboczego Log Analytics dla Azure Information Protection, należy skorzystać z poniższych instrukcji lub zmienić obszar roboczy, w którym są przechowywane Azure Information Protection informacje o rejestrowaniu. 
 
-1. Na platformie Azure przez wartownika, wybierz **łączników danych** a następnie kliknij przycisk **usługi Azure Information Protection** kafelka.
+1. W obszarze wskaźnik platformy Azure wybierz pozycję **Łączniki danych**, a następnie **Azure Information Protection**.
 
-2. Przejdź do [portalu usługi Azure Information Protection](https://portal.azure.com/?ScannerConfiguration=true&EndpointDiscovery=true#blade/Microsoft_Azure_InformationProtection/DataClassGroupEditBlade/quickstartBlade) 
+2. W bloku **Azure Information Protection** wybierz pozycję **Otwórz stronę łącznika**.
 
-3. W obszarze **połączenia**, skonfiguruj przesyłanie strumieniowe dzienników z usługi Azure Information Protection do platformy Azure przez wartownika, klikając [Skonfiguruj analizę](https://portal.azure.com/#blade/Microsoft_Azure_InformationProtection/DataClassGroupEditBlade/analyticsOnboardBlade)
+3. W następnym bloku w sekcji **Konfiguracja** wybierz pozycję **Azure Information Protection** , aby przejść do **Azure Information Protection Analytics**.
 
-4. Wybierz obszar roboczy, w którym została wdrożona, przez wartownika platformy Azure. 
+4. Z listy dostępnych obszarów roboczych wybierz obszar roboczy, który jest obecnie używany do oceniania platformy Azure. W przypadku wybrania innego obszaru roboczego dane raportowania z Azure Information Protection nie będą dostępne dla platformy Azure.
 
-5. Kliknij przycisk **OK**.
+5. Po wybraniu obszaru roboczego wybierz pozycję **OK** , a **stan** łącznika powinien teraz zostać zmieniony na **połączono**.
 
-6. Aby użyć odpowiednich schematu w usłudze Log Analytics dla alertów usługi Azure Information Protection, możesz wyszukać **InformationProtectionLogs_CL**.
-
-
-
+6. Dane raportowania z Azure Information Protection są przechowywane w tabeli **InformationProtectionLogs_CL** w wybranym obszarze roboczym. 
+    
+    Aby użyć odpowiedniego schematu w Azure Monitor dla tych danych raportowania, wyszukaj ciąg **InformationProtectionEvents**. Informacje o tych funkcjach zdarzeń znajdują się w sekcji [przyjazne informacje o schemacie dla funkcji zdarzeń](https://docs.microsoft.com/azure/information-protection/reports-aip#friendly-schema-reference-for-event-functions) z dokumentacji Azure Information Protection.
 
 ## <a name="next-steps"></a>Następne kroki
-W tym dokumencie przedstawiono sposób łączenia usługi Azure Information Protection do platformy Azure przez wartownika. Aby dowiedzieć się więcej na temat platformy Azure przez wartownika, zobacz następujące artykuły:
-- Dowiedz się, jak [Uzyskaj wgląd w dane i potencjalne zagrożenia](quickstart-get-visibility.md).
-- Rozpoczynanie pracy [wykrywanie zagrożeń za pomocą platformy Azure przez wartownika](tutorial-detect-threats.md).
+W tym dokumencie przedstawiono sposób nawiązywania połączenia Azure Information Protection z platformą Azure — wskaźnikiem. Aby dowiedzieć się więcej na temat platformy Azure, zobacz następujące artykuły:
+- Dowiedz się [, jak uzyskać wgląd w dane oraz potencjalne zagrożenia](quickstart-get-visibility.md).
+- Rozpocznij [wykrywanie zagrożeń za pomocą platformy Azure — wskaźnik](tutorial-detect-threats.md).

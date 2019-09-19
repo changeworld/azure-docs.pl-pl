@@ -10,16 +10,16 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: b4b70ddfe6ea2baf42227cc83ed0cc14969b3e92
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 75469d4522cea2914e0f69d5aa1850e468cb0d50
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66508100"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064841"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Samouczek: Udzielanie dostępu do internetowego interfejsu API platformy Node.js z aplikacji klasycznej przy użyciu usługi Azure Active Directory B2C
 
-W tym samouczku pokazano, jak wywoływać zasób internetowego interfejsu API środowiska Node.js chroniony przez usługę Azure Active Directory (Azure AD) B2C z aplikacji klasycznej systemu Windows Presentation Foundation (WPF).
+W tym samouczku pokazano, jak wywoływać zasób internetowego interfejsu API środowiska Node. js Azure Active Directory B2C (Azure AD B2C) z aplikacji klasycznej środowiska Windows Presentation Foundation (WPF).
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -37,17 +37,17 @@ Wykonaj kroki i spełnij wymagania wstępne w [Samouczku: włączanie uwierzytel
 
 ## <a name="add-a-web-api-application"></a>Dodawanie aplikacji internetowego interfejsu API
 
-Należy zarejestrować zasoby internetowego interfejsu API w dzierżawie, zanim będzie on mógł akceptować i odpowiadać na żądania chronionych zasobów wysyłane przez aplikacje klienckie przedstawiające token dostępu. 
+Należy zarejestrować zasoby internetowego interfejsu API w dzierżawie, zanim będzie on mógł akceptować i odpowiadać na żądania chronionych zasobów wysyłane przez aplikacje klienckie przedstawiające token dostępu.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Upewnij się, że używasz katalogu zawierającego Twoją dzierżawę usługi Azure AD B2C, klikając pozycję **Filtr katalogu i subskrypcji** w górnym menu i wybierając katalog zawierający Twoją dzierżawę.
+2. Upewnij się, że używasz katalogu, który zawiera dzierżawę Azure AD B2C, wybierając pozycję **katalog i subskrypcja** w górnym menu i wybierając katalog zawierający dzierżawcę.
 3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 4. Wybierz pozycję **Aplikacje**, a następnie wybierz polecenie **Dodaj**.
 5. Wprowadź nazwę aplikacji. Na przykład *webapi1*.
 6. Dla pozycji **Uwzględnij aplikację internetową/internetowy interfejs API** i **Zezwalaj na niejawny przepływ** wybierz wartość **Tak**.
 7. Dla pozycji **Adres URL odpowiedzi** wprowadź punkt końcowy, w którym usługa Azure AD B2C powinna zwracać wszelkie tokeny żądane przez Twoją aplikację. W tym samouczku przykładowa aplikacja jest uruchamiana lokalnie i nasłuchuje na `https://localhost:5000`.
 8. Dla pozycji **Identyfikator URI identyfikatora aplikacji** wprowadź identyfikator używany na potrzeby internetowego interfejsu API. Zostanie wygenerowany pełny identyfikator URI łącznie z domeną. Na przykład `https://contosotenant.onmicrosoft.com/api`.
-9. Kliknij pozycję **Utwórz**.
+9. Kliknij przycisk **Utwórz**.
 10. Na stronie właściwości zapisz identyfikator aplikacji, który będzie używany podczas konfigurowania aplikacji internetowej.
 
 ## <a name="configure-scopes"></a>Konfigurowanie zakresów
@@ -58,7 +58,7 @@ Zakresy umożliwiają zarządzanie dostępem do chronionych zasobów. Zakresy s�
 2. Wybierz pozycję **Opublikowane zakresy**.
 3. Dla pozycji **zakres** wprowadź `Hello.Read`, a dla opisu wprowadź `Read access to hello`.
 4. Dla pozycji **zakres** wprowadź `Hello.Write`, a dla opisu wprowadź `Write access to hello`.
-5. Kliknij pozycję **Zapisz**.
+5. Kliknij polecenie **Zapisz**.
 
 Opublikowane zakresy umożliwiają udzielenie aplikacji klienckiej uprawnień do internetowego interfejsu API.
 
@@ -76,14 +76,14 @@ Użytkownik uwierzytelnia się w usłudze Azure AD B2C, aby korzystać z klasycz
 
 ## <a name="configure-the-sample"></a>Konfigurowanie przykładu
 
-Po zarejestrowaniu internetowego interfejsu API i zdefiniowaniu zakresów konfigurujesz kod internetowego interfejsu API w celu skorzystania ze swojej dzierżawy usługi Azure AD B2C. W tym samouczku skonfigurujesz przykładową aplikację internetową platformy Node.js, którą można pobrać z witryny GitHub. 
+Po zarejestrowaniu internetowego interfejsu API i zdefiniowaniu zakresów konfigurujesz kod internetowego interfejsu API w celu skorzystania ze swojej dzierżawy usługi Azure AD B2C. W tym samouczku skonfigurujesz przykładową aplikację internetową platformy Node.js, którą można pobrać z witryny GitHub.
 
 [Pobierz plik zip](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi/archive/master.zip) lub sklonuj przykładową aplikację internetową z usługi GitHub.
 
 ```
 git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi.git
 ```
-Przykładowy internetowy interfejs API platformy Node.js korzysta z biblioteki Passport.js, aby umożliwić usłudze Azure AD B2C ochronę wywołań do interfejsu API. 
+Przykładowy internetowy interfejs API platformy Node.js korzysta z biblioteki Passport.js, aby umożliwić usłudze Azure AD B2C ochronę wywołań do interfejsu API.
 
 1. Otwórz plik `index.js`.
 2. Skonfiguruj przykład obejmujący informacje na temat rejestracji dzierżawy usługi Azure AD B2C. Zmień następujące wiersze kodu:
@@ -111,11 +111,11 @@ Przykładowy internetowy interfejs API platformy Node.js korzysta z biblioteki P
 1. Otwórz rozwiązanie **active-directory-b2c-wpf** w programie Visual Studio.
 2. Naciśnij klawisz **F5**, aby uruchomić aplikację klasyczną.
 3. Zaloguj się przy użyciu adresu e-mail i hasła użytego w [samouczku dotyczącym uwierzytelniania użytkowników za pomocą usługi Azure Active Directory B2C w aplikacji klasycznej](active-directory-b2c-tutorials-desktop-app.md).
-4. Kliknij przycisk **Wywołaj interfejs API**. 
+4. Kliknij przycisk **Wywołaj interfejs API**.
 
 Aplikacja klasyczna zgłasza żądanie do internetowego interfejsu API i uzyskuje odpowiedź z nazwą wyświetlaną zalogowanego użytkownika. Chroniona aplikacja klasyczna wywołuje chroniony internetowy interfejs API w dzierżawie usługi Azure AD B2C.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

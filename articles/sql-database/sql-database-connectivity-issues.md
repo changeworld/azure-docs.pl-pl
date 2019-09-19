@@ -9,15 +9,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: dalechen
+manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 06/14/2019
-ms.openlocfilehash: da2107a0573fafd10394931be21fb446f83fd5f2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: eb34395e0a9ec881c2f5e303383555fa6544369d
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569061"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090899"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>Praca z SQL Database problemami z połączeniem i błędami przejściowymi
 
@@ -90,7 +91,7 @@ Aby przetestować logikę ponowień, należy symulować lub spowodować błąd, 
 Jednym ze sposobów przetestowania logiki ponawiania jest odłączenie komputera klienckiego od sieci, gdy program jest uruchomiony. Błąd to:
 
 - **SqlException. Number** = 11001
-- Wiadomość: "Host nie jest znany"
+- Komunikat: "Host nie jest znany"
 
 W ramach pierwszej ponowienia próby można ponownie połączyć komputer kliencki z siecią, a następnie podjąć próbę nawiązania połączenia.
 
@@ -108,7 +109,7 @@ Aby ten test był praktyczny, Odłącz komputer od sieci przed uruchomieniem pro
 Program może przeznaczenie nazwy użytkownika przed rozpoczęciem pierwszej próby połączenia. Błąd to:
 
 - **SqlException. Number** = 18456
-- Wiadomość: "Nie można zalogować użytkownika" WRONG_MyUserName "."
+- Komunikat: "Nie można zalogować użytkownika" WRONG_MyUserName "."
 
 W ramach pierwszej ponowienia próby program może poprawić błąd pisowni, a następnie podjąć próbę nawiązania połączenia.
 
@@ -124,7 +125,7 @@ Aby ten test był praktyczny, program rozpoznaje parametr środowiska uruchomien
 
 ## <a name="net-sqlconnection-parameters-for-connection-retry"></a>Parametry .NET SqlConnection dla ponowienia połączenia
 
-Jeśli program kliencki nawiązuje połączenie z SQL Database przy użyciu klasy .NET Framework **System. Data. SqlClient.** SqlConnection, użyj programu .NET 4.6.1 lub nowszego (lub platformy .NET Core), aby można było użyć funkcji ponawiania połączenia. Aby uzyskać więcej informacji na temat tej funkcji, zobacz [Tę stronę sieci Web](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection).
+Jeśli program kliencki nawiązuje połączenie z SQL Database przy użyciu klasy .NET Framework **System. Data. SqlClient. SqlConnection**, użyj programu .NET 4.6.1 lub nowszego (lub platformy .NET Core), aby można było użyć funkcji ponawiania połączenia. Aby uzyskać więcej informacji na temat tej funkcji, zobacz [Tę stronę sieci Web](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection).
 
 <!--
 2015-11-30, FwLink 393996 points to dn632678.aspx, which links to a downloadable .docx related to SqlClient and SQL Server 2014.
@@ -310,7 +311,7 @@ ORDER BY
 ;
 ```
 
-#### <a name="a-few-returned-rows-from-sysfnxetelemetryblobtargetreadfile"></a>Kilka zwracanych wierszy z tabeli sys. fn_xe_telemetry_blob_target_read_file
+#### <a name="a-few-returned-rows-from-sysfn_xe_telemetry_blob_target_read_file"></a>Kilka zwracanych wierszy z tabeli sys. fn_xe_telemetry_blob_target_read_file
 
 Poniższy przykład pokazuje, jak może wyglądać zwrócony wiersz. Wyświetlane wartości null często nie mają wartości null w innych wierszach.
 

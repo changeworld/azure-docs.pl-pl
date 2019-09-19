@@ -1,19 +1,19 @@
 ---
-title: Szybki start — tworzenie klastra usługi Azure Kubernetes Service (AKS)
+title: 'Szybki start: Wdrażanie klastra usługi Azure Kubernetes Service'
 description: Dowiedz się, jak szybko utworzyć klaster Kubernetes, wdrożyć aplikację i monitorować wydajność w usłudze Azure Kubernetes Service (AKS) przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 05/20/2019
+ms.date: 09/13/2019
 ms.author: mlearned
-ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 8a5fb9313fca2a8d787d0fbde47401f6d3e1d229
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.custom: H1Hack27Feb2017, mvc, devcenter, seo-javascript-september2019
+ms.openlocfilehash: 0ad1bb4acf27ff542b94b2e6f4aef82705f4b46a
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68880681"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097984"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Szybki start: Wdrażanie klastra usługi Azure Kubernetes Service (AKS) przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -30,6 +30,9 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten przewodnik Szybki Start będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.64 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
+
+> [!Note]
+> W przypadku uruchamiania poleceń w tym przewodniku szybki start lokalnie (zamiast Azure Cloud Shell) Upewnij się, że polecenia są uruchamiane jako administrator.
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
@@ -58,15 +61,10 @@ Następujące przykładowe dane wyjściowe przedstawiają pomyślnie utworzoną 
 
 ## <a name="create-aks-cluster"></a>Tworzenie klastra AKS
 
-Użyj polecenia [AZ AKS Create][az-aks-create] , aby utworzyć klaster AKS. W poniższym przykładzie pokazano tworzenie klastra o nazwie *myAKSCluster* z jednym węzłem. Usługę Azure Monitor dla kontenerów można również włączyć przy użyciu parametru *--enable-addons monitoring*.
+Użyj polecenia [AZ AKS Create][az-aks-create] , aby utworzyć klaster AKS. W poniższym przykładzie pokazano tworzenie klastra o nazwie *myAKSCluster* z jednym węzłem. Usługę Azure Monitor dla kontenerów można również włączyć przy użyciu parametru *--enable-addons monitoring*.  Wykonanie tej czynności potrwa kilka minut.
 
 ```azurecli-interactive
-az aks create \
-    --resource-group myResourceGroup \
-    --name myAKSCluster \
-    --node-count 1 \
-    --enable-addons monitoring \
-    --generate-ssh-keys
+az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --enable-addons monitoring --generate-ssh-keys
 ```
 
 Po kilku minutach polecenie zostanie wykonane i zwróci informacje o klastrze w formacie JSON.
@@ -234,30 +232,11 @@ Aby wyświetlić działającą aplikację Azure Vote, otwórz zewnętrzny adres 
 
 ![Obraz przedstawiający przechodzenie do aplikacji Azure Vote](media/container-service-kubernetes-walkthrough/azure-vote.png)
 
-## <a name="monitor-health-and-logs"></a>Monitorowanie kondycji i dzienników
-
-Podczas tworzenia klastra usługi AKS włączono usługę Azure Monitor dla kontenerów, aby przechwycić metryki kondycji dla zasobników i węzłów klastra. Te metryki kondycji są dostępne w witrynie Azure Portal.
-
-Aby sprawdzić bieżący stan, czas przestoju i użycie zasobów na potrzeby usługi Azure głosowania, wykonaj następujące czynności:
-
-1. Otwórz przeglądarkę sieci Web na Azure Portal [https://portal.azure.com][azure-portal].
-1. Wybierz grupę zasobów, taką jak *myResourceGroup*, a następnie wybierz klaster AKS, taki jak *myAKSCluster*.
-1. W obszarze **monitorowanie** po lewej stronie wybierz pozycję **szczegółowe informacje**.
-1. W górnej części wybierz pozycję **+ Dodaj filtr**.
-1. Wybierz *przestrzeń nazw* jako właściwość, a następnie wybierz  *\<pozycję Wszystkie, ale\>polecenia-system*.
-1. Wybierz **kontenery**.
-
-Zostaną wyświetlone kontenery *azure-vote-back* i *azure-vote-front*, jak pokazano w poniższym przykładzie:
-
-![Wyświetlanie kondycji uruchomionych kontenerów w usłudze AKS](media/kubernetes-walkthrough/monitor-containers.png)
-
-Aby wyświetlić dzienniki dla obszaru `azure-vote-back` pod, wybierz opcję **wyświetlania w analizie**, a następnie wybierz link **Wyświetl dzienniki kontenerów** po prawej stronie listy kontenerów. Dzienniki te obejmują strumienie *stdout* i *stderr* z kontenera.
-
-![Wyświetlanie dzienników kontenerów w usłudze AKS](media/kubernetes-walkthrough/monitor-container-logs.png)
+Po utworzeniu klastra AKS [Azure monitor dla kontenerów](../azure-monitor/insights/container-insights-overview.md) umożliwił przechwycenie metryk kondycji zarówno dla węzłów klastra, jak i dla każdego z nich. Te metryki kondycji są dostępne w witrynie Azure Portal.
 
 ## <a name="delete-the-cluster"></a>Usuwanie klastra
 
-Gdy klaster nie jest już wymagany, użyj polecenia [AZ Group Delete][az-group-delete] , aby usunąć grupę zasobów, usługę kontenera i wszystkie powiązane zasoby.
+Aby uniknąć naliczania opłat za platformę Azure, należy wyczyścić zasoby niepotrzebne.  Gdy klaster nie jest już wymagany, użyj polecenia [AZ Group Delete][az-group-delete] , aby usunąć grupę zasobów, usługę kontenera i wszystkie powiązane zasoby.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait

@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Tworzenie potoku ciągłej integracji/ciągłego wdrażania dla środowiska Node.js w usłudze Azure DevOps Projects'
+title: Tworzenie potoku ciągłej integracji/ciągłego wdrażania dla środowiska Node. js za pomocą Azure DevOps Projects
 description: Usługa DevOps Projects ułatwia rozpoczęcie pracy na platformie Azure. Umożliwia uruchomienie aplikacji w wybranej usłudze platformy Azure w kilku prostych krokach.
 ms.prod: devops
 ms.technology: devops-cicd
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 07/09/2018
 ms.author: mlearned
-ms.custom: mvc
+ms.custom: mvc, seo-javascript-september2019
 monikerRange: vsts
-ms.openlocfilehash: 407b0a270e667e195a6b9e8dbcd3753fb71b9699
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: c59df73e7fa1d19db4c83a1c9a317f9b69ec8a37
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899618"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091171"
 ---
 #  <a name="create-a-cicd-pipeline-for--nodejs-with-azure-devops-projects"></a>Tworzenie potoku ciągłej integracji/ciągłego wdrażania dla środowiska Node.js w usłudze Azure DevOps Projects 
 

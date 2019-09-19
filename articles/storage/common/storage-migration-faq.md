@@ -3,17 +3,18 @@ title: Migracja magazynu Azure — często zadawane pytania | Microsoft Docs
 description: Odpowiedzi na często zadawane pytania dotyczące migrowania usługi Azure Storage
 services: storage
 author: genlin
+manager: dcscontentpm
 ms.service: storage
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 2ba09496ed8c110e3bf0e431da20f09c82d5ea0b
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 250cdedaa5155f1487cb842be492acd82c0f26b3
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985584"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090819"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Często zadawane pytania dotyczące migracji usługi Azure Storage
 
@@ -280,7 +281,7 @@ Aby umożliwić innym osobom dostęp do zasobów magazynu:
      
       https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd
 
-    - **Token sygnatury**dostępu współdzielonego: Użyj tokenu sygnatury dostępu współdzielonego, aby uzyskać dostęp do danych z punktu końcowego. Aby uzyskać więcej informacji, zobacz [Używanie sygnatur dostępu](storage-sas-overview.md)współdzielonego.
+    - **Token sygnatury dostępu współdzielonego**: Użyj tokenu sygnatury dostępu współdzielonego, aby uzyskać dostęp do danych z punktu końcowego. Aby uzyskać więcej informacji, zobacz [Używanie sygnatur dostępu współdzielonego](storage-sas-overview.md).
 
 **Jak mogę użyć domeny niestandardowej protokołu HTTPS z kontem magazynu? Na przykład jak utworzyć "https:\//mystorageaccountname.blob.Core.Windows.net/images/Image.gif" jako "https:\//www.contoso.com/images/Image.gif"?**
 
@@ -291,7 +292,7 @@ Można jednak używać domen niestandardowych innych niż HTTPS. Aby uzyskać wi
 
 Nie ma możliwości uzyskania dostępu do konta magazynu bezpośrednio przy użyciu protokołu FTP. Można jednak skonfigurować maszynę wirtualną platformy Azure, a następnie zainstalować na niej serwer FTP. Serwer FTP może przechowywać pliki w udziale Azure Files lub na dysku z danymi, który jest dostępny dla maszyny wirtualnej.
 
-Jeśli chcesz tylko pobrać dane bez konieczności używania Eksplorator usługi Storage lub podobnej aplikacji, może być możliwe użycie tokenu SAS. Aby uzyskać więcej informacji, zobacz [Używanie sygnatur dostępu](storage-sas-overview.md)współdzielonego.
+Jeśli chcesz tylko pobrać dane bez konieczności używania Eksplorator usługi Storage lub podobnej aplikacji, może być możliwe użycie tokenu SAS. Aby uzyskać więcej informacji, zobacz [Używanie sygnatur dostępu współdzielonego](storage-sas-overview.md).
 
 **Jak mogę Migrowanie obiektów blob z jednego konta magazynu do innego?**
 

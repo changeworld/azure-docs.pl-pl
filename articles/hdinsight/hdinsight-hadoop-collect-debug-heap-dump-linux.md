@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 68be0d7d13785c9631044766a290eec93637ea64
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 5df6ab47c45a64077a39974a30c65fe13f3c851d
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879966"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091498"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Włączanie zrzutów sterty dla usług Apache Hadoop w usłudze HDInsight opartej na systemie Linux
 
@@ -94,11 +94,11 @@ Aby zmodyfikować konfigurację usługi, wykonaj następujące czynności:
 
 3. Korzystając z wpisu **Filter...** **, wpisz polecenie**. Wyświetlane są tylko elementy zawierające ten tekst.
 
-    ![Filtrowana lista](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdinsight-filter-list.png)
+    ![Lista przefiltrowanych konfiguracji oprogramowania Apache Ambari](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdinsight-filter-list.png)
 
 4. Znajdź wpis opcji dla usługi, dla której chcesz włączyć Zrzuty sterty, i Dodaj opcje, które chcesz włączyć.  **\* \_** Na poniższej ilustracji dodaliśmy `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` do wpisu NAMENODE **\_\_usługi HADOOP** :
 
-    ![HADOOP_NAMENODE_OPTS with-XX: + HeapDumpOnOutOfMemoryError-XX: HeapDumpPath =/tmp/](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hadoop-namenode-opts.png)
+    ![Apache Ambari Hadoop-namenode-](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hadoop-namenode-opts.png)
 
    > [!NOTE]  
    > Podczas włączania zrzutów sterty dla mapy lub Zmniejsz proces podrzędny należy poszukać pól o nazwach **MapReduce. admin. map. Child. Java** .
@@ -111,11 +111,11 @@ Aby zmodyfikować konfigurację usługi, wykonaj następujące czynności:
 
 6. Wybierz każdą usługę, która wymaga ponownego uruchomienia, a następnie użyj przycisku **Akcje usługi** , aby **włączyć tryb konserwacji**. Tryb konserwacji uniemożliwia generowanie alertów z usługi po jej ponownym uruchomieniu.
 
-    ![Włącz menu trybu konserwacji](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-maintenance-mode.png)
+    ![Włącz menu Tryb konserwacji HDI](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-maintenance-mode.png)
 
 7. Po włączeniu trybu konserwacji Użyj przycisku **Uruchom ponownie** , aby **ponownie uruchomić** usługę.
 
-    ![Uruchom ponownie wszystkie uwzględnione wpisy](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-restart-all-button.png)
+    ![Apache Ambari uruchamia ponownie wszystkie uwzględnione wpisy](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-restart-all-button.png)
 
    > [!NOTE]  
    > Wpisy dla przycisku **Uruchom ponownie** mogą się różnić w zależności od innych usług.

@@ -1,5 +1,5 @@
 ---
-title: Używanie narzędzia Terraform z usługą Azure Cloud Shell
+title: Konfigurowanie Azure Cloud Shell Terraform
 description: Korzystając z narzędzia Terraform z usługą Azure Cloud Shell, można uprościć uwierzytelnianie i konfigurowanie szablonów.
 services: terraform
 ms.service: azure
@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/19/2017
-ms.openlocfilehash: ab2fd0c7fa546201d6eb19f727053a9ac54fa854
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 19a828abfee780dd757d0575f94a0358c12088cd
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66169923"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087736"
 ---
 # <a name="terraform-cloud-shell-development"></a>Programowanie za pomocą narzędzia Terraform w usłudze Cloud Shell 
 
@@ -48,7 +48,7 @@ Pliki i stany powłoki pozostają w usłudze Azure Storage między sesjami usłu
 W usłudze Cloud Shell jest dostępny interfejs wiersza polecenia platformy Azure, który stanowi doskonałe narzędzie do testowania konfiguracji i kontrolowania pracy po wykonaniu polecenia `terraform apply` lub `terraform destroy`.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Tworzenie niewielkiego klastra maszyn wirtualnych za pomocą rejestru modułu](terraform-create-vm-cluster-module.md)
 [Tworzenie niewielkiego klastra maszyn wirtualnych za pomocą niestandardowego języka HCL](terraform-create-vm-cluster-with-infrastructure.md)

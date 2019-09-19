@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 11/27/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 8b35d2441db654278f9d66f3cbb4e7a79d70e835
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 77ccfc1a67fabca7fde47edac9094c6a68191f0f
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128051"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090761"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Szybki start: uruchamianie pierwszego zadania usługi Batch za pomocą interfejsu API języka Python
 
@@ -116,7 +116,7 @@ Aby uzyskać szczegółowe informacje, zapoznaj się z plikiem `python_quickstar
 
 ### <a name="preliminaries"></a>Akcje wstępne
 
-Aby nawiązać interakcję z kontem magazynu, aplikacja używa pakietu [azure-storage-blob](https://pypi.python.org/pypi/azure-storage-blob) do utworzenia obiektu [BlockBlobService](/python/api/azure.storage.blob.blockblobservice.blockblobservice).
+Aby nawiązać interakcję z kontem magazynu, aplikacja używa pakietu [azure-storage-blob](https://pypi.python.org/pypi/azure-storage-blob) do utworzenia obiektu [BlockBlobService](/python/api/azure-storage-blob/azure.storage.blob.blockblobservice.blockblobservice).
 
 ```python
 blob_client = azureblob.BlockBlobService(
@@ -124,7 +124,7 @@ blob_client = azureblob.BlockBlobService(
     account_key=config._STORAGE_ACCOUNT_KEY)
 ```
 
-Za pomocą odwołania `blob_client` aplikacja tworzy kontener w ramach konta magazynu i przekazuje pliki danych do kontenera. Pliki w magazynie są definiowane jako obiekty [ResourceFile](/python/api/azure.batch.models.resourcefile) usługi Batch, które następnie mogą być pobierane przez tę usługę do węzłów obliczeniowych.
+Za pomocą odwołania `blob_client` aplikacja tworzy kontener w ramach konta magazynu i przekazuje pliki danych do kontenera. Pliki w magazynie są definiowane jako obiekty [ResourceFile](/python/api/azure-batch/azure.batch.models.resourcefile) usługi Batch, które następnie mogą być pobierane przez tę usługę do węzłów obliczeniowych.
 
 ```python
 input_file_paths = [os.path.join(sys.path[0], 'taskdata0.txt'),
@@ -149,11 +149,11 @@ batch_client = batch.BatchServiceClient(
 
 ### <a name="create-a-pool-of-compute-nodes"></a>Tworzenie puli węzłów obliczeniowych
 
-Aby utworzyć pulę usługi Batch, aplikacja ustawia liczbę węzłów, rozmiar maszyny wirtualnej i konfigurację puli za pomocą klasy [PoolAddParameter](/python/api/azure.batch.models.pooladdparameter). W tym przypadku obiekt [VirtualMachineConfiguration](/python/api/azure.batch.models.virtualmachineconfiguration) określa parametr [ImageReference](/python/api/azure.batch.models.imagereference) z odwołaniem do obrazu systemu Ubuntu Server 18.04 LTS opublikowanego w witrynie Azure Marketplace. Usługa Batch obsługuje szeroki zakres obrazów systemów Linux i Windows Server pochodzących z witryny Azure Marketplace, a także niestandardowe obrazy maszyn wirtualnych.
+Aby utworzyć pulę usługi Batch, aplikacja ustawia liczbę węzłów, rozmiar maszyny wirtualnej i konfigurację puli za pomocą klasy [PoolAddParameter](/python/api/azure-batch/azure.batch.models.pooladdparameter). W tym przypadku obiekt [VirtualMachineConfiguration](/python/api/azure-batch/azure.batch.models.virtualmachineconfiguration) określa parametr [ImageReference](/python/api/azure-batch/azure.batch.models.imagereference) z odwołaniem do obrazu systemu Ubuntu Server 18.04 LTS opublikowanego w witrynie Azure Marketplace. Usługa Batch obsługuje szeroki zakres obrazów systemów Linux i Windows Server pochodzących z witryny Azure Marketplace, a także niestandardowe obrazy maszyn wirtualnych.
 
 Liczba węzłów (`_POOL_NODE_COUNT`) i rozmiar maszyny wirtualnej (`_POOL_VM_SIZE`) to zdefiniowane stałe. Domyślnie przykładowa aplikacja tworzy pulę składającą się z 2 węzłów o rozmiarze *Standard_A1_v2*. Sugerowany rozmiar oferuje dobry kompromis między wydajnością a kosztem na potrzeby tego krótkiego przykładu.
 
-Metoda [pool.add](/python/api/azure.batch.operations.pooloperations) przesyła pulę do usługi Batch.
+Metoda [pool.add](/python/api/azure-batch/azure.batch.operations.pooloperations) przesyła pulę do usługi Batch.
 
 ```python
 new_pool = batch.models.PoolAddParameter(
@@ -174,7 +174,7 @@ batch_service_client.pool.add(new_pool)
 
 ### <a name="create-a-batch-job"></a>Tworzenie zadania usługi Batch
 
-Zadanie usługi Batch to logiczna grupa zawierająca co najmniej jedno zadanie podrzędne. Zadanie uwzględnia wspólne ustawienia zadań podrzędnych, takie jak priorytet i pula, w której zadania podrzędne mają być uruchamiane. Aplikacja tworzy zadanie w puli za pomocą klasy [JobAddParameter](/python/api/azure.batch.models.jobaddparameter). Metoda [Job. Add](/python/api/azure.batch.operations.joboperations) dodaje zadanie do określonego konta wsadowego. Początkowo zadanie nie zawiera zadań podrzędnych.
+Zadanie usługi Batch to logiczna grupa zawierająca co najmniej jedno zadanie podrzędne. Zadanie uwzględnia wspólne ustawienia zadań podrzędnych, takie jak priorytet i pula, w której zadania podrzędne mają być uruchamiane. Aplikacja tworzy zadanie w puli za pomocą klasy [JobAddParameter](/python/api/azure-batch/azure.batch.models.jobaddparameter). Metoda [Job. Add](/python/api/azure-batch/azure.batch.operations.joboperations) dodaje zadanie do określonego konta wsadowego. Początkowo zadanie nie zawiera zadań podrzędnych.
 
 ```python
 job = batch.models.JobAddParameter(
@@ -185,9 +185,9 @@ batch_service_client.job.add(job)
 
 ### <a name="create-tasks"></a>Tworzenie zadań podrzędnych
 
-Aplikacja tworzy listę obiektów zadań podrzędnych przy użyciu klasy [TaskAddParameter](/python/api/azure.batch.models.taskaddparameter). Każde zadanie podrzędne przetwarza wejściowy obiekt `resource_files` przy użyciu parametru `command_line`. W tym przykładzie wiersz polecenia uruchamia polecenie `cat` powłoki Bash, aby wyświetlić plik tekstowy. To polecenie to prosty przykład dla celów demonstracyjnych. Podczas korzystania z usługi Batch aplikację lub skrypt określa się w wierszu polecenia. Usługa Batch udostępnia kilka sposobów wdrażania aplikacji i skryptów w węzłach obliczeniowych.
+Aplikacja tworzy listę obiektów zadań podrzędnych przy użyciu klasy [TaskAddParameter](/python/api/azure-batch/azure.batch.models.taskaddparameter). Każde zadanie podrzędne przetwarza wejściowy obiekt `resource_files` przy użyciu parametru `command_line`. W tym przykładzie wiersz polecenia uruchamia polecenie `cat` powłoki Bash, aby wyświetlić plik tekstowy. To polecenie to prosty przykład dla celów demonstracyjnych. Podczas korzystania z usługi Batch aplikację lub skrypt określa się w wierszu polecenia. Usługa Batch udostępnia kilka sposobów wdrażania aplikacji i skryptów w węzłach obliczeniowych.
 
-Następnie aplikacja dodaje zadania podrzędne do zadania za pomocą metody [task.add_collection](/python/api/azure.batch.operations.taskoperations), która tworzy kolejkę zadań podrzędnych do uruchomienia w węzłach obliczeniowych. 
+Następnie aplikacja dodaje zadania podrzędne do zadania za pomocą metody [task.add_collection](/python/api/azure-batch/azure.batch.operations.taskoperations), która tworzy kolejkę zadań podrzędnych do uruchomienia w węzłach obliczeniowych. 
 
 ```python
 tasks = list()

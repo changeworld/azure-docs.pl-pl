@@ -1,7 +1,7 @@
 ---
 title: Uczenie sieci neuronowych uczenie głębokie z modułem łańcucha
 titleSuffix: Azure Machine Learning
-description: Dowiedz się, jak uruchamiać skrypty szkoleniowe PyTorch na skalę przedsiębiorstwa Azure Machine Learning przy użyciu klasy szacowania w łańcuchu kluczy.  Przykładowy skrypt classifis obrazy cyfrowo, aby zbudować sieć neuronowych uczenia głębokiego przy użyciu biblioteki języka Python w łańcuchu, która działa w oparciu o numpy.
+description: Dowiedz się, jak uruchamiać skrypty szkoleniowe PyTorch na skalę przedsiębiorstwa Azure Machine Learning przy użyciu klasy szacowania w łańcuchu kluczy.  Przykładowy skrypt klasyfikuje obrazy cyfr pisanych ręcznie, aby utworzyć sieć neuronowych uczenia głębokiego przy użyciu biblioteki języka Python w łańcuchu, która działa w oparciu o numpy.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: 91e638793d77a6d38f9813345829720d98545293
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 79c0cadc1b266a6d160cd36fc21dcaf36637a2b1
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002717"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076423"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning"></a>Uczenie i rejestrowanie modeli łańcucha na dużą skalę za pomocą Azure Machine Learning
 
@@ -84,7 +84,7 @@ W tym samouczku skrypt szkoleniowy **chainer_mnist. PR** został już udostępni
 
 Aby korzystać z funkcji śledzenia i metryk platformy Azure ML, Dodaj niewielką ilość kodu platformy Azure ML w skrypcie szkoleniowym.  Skrypt szkoleniowy **chainer_mnist. PR** pokazuje, jak rejestrować pewne metryki do przebiegu w usłudze Azure `Run` ml przy użyciu obiektu w skrypcie.
 
-Dostarczony skrypt szkoleniowy używa przykładowych danych z `datasets.mnist.get_mnist` funkcji łańcucha.  W przypadku własnych danych może być konieczne wykonanie kroków takich jak [przekazywanie zestawu danych i skryptów](how-to-train-keras.md#upload-dataset-and-scripts) w celu udostępnienia danych podczas szkoleń.
+Dostarczony skrypt szkoleniowy używa przykładowych danych z `datasets.mnist.get_mnist` funkcji łańcucha.  W przypadku własnych danych może być konieczne wykonanie kroków takich jak [przekazywanie zestawu danych i skryptów](how-to-train-keras.md) w celu udostępnienia danych podczas szkoleń.
 
 Skopiuj skrypt szkoleniowy **chainer_mnist. PR** do katalogu projektu.
 

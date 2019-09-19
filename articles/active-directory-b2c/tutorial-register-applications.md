@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 08/23/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 651c15c8206f7956bb35520f9c5837cb0c9308f9
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 06b2c273f41bfa74ee968b6fd6676e83767ce8b2
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69980706"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063270"
 ---
 # <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>Samouczek: Rejestrowanie aplikacji w Azure Active Directory B2C
 
-Aby [aplikacje](active-directory-b2c-apps.md) mogły korzystać z usługi Azure Active Directory (Azure AD) B2C, muszą być zarejestrowane w dzierżawie, którą zarządzasz. W tym samouczku pokazano, jak zarejestrować aplikację sieci Web przy użyciu Azure Portal.
+Aby [aplikacje](active-directory-b2c-apps.md) mogły korzystać z Azure Active Directory B2C (Azure AD B2C), należy je zarejestrować w dzierżawie, którą zarządzasz. W tym samouczku pokazano, jak zarejestrować aplikację sieci Web przy użyciu Azure Portal.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
@@ -31,11 +31,11 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Jeśli nie utworzono jeszcze własnej dzierżawy [Azure AD B2C](tutorial-create-tenant.md), utwórz ją teraz. Możesz użyć istniejącej dzierżawy Azure AD B2C.
+Jeśli nie utworzono jeszcze własnej [dzierżawy Azure AD B2C](tutorial-create-tenant.md), utwórz ją teraz. Możesz użyć istniejącej dzierżawy Azure AD B2C.
 
 ## <a name="register-a-web-application"></a>Rejestrowanie aplikacji internetowej
 
-1. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera Twojej dzierżawy.
+1. Upewnij się, że używasz katalogu, który zawiera dzierżawę Azure AD B2C, wybierając pozycję **katalog i subskrypcja** w górnym menu i wybierając katalog zawierający dzierżawcę.
 1. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 1. Wybierz pozycję **Aplikacje**, a następnie wybierz polecenie **Dodaj**.
 1. Wprowadź nazwę aplikacji. Na przykład *webapp1*.

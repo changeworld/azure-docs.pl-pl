@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: atsenthi
-ms.openlocfilehash: f2621abcb2bac55ff123a11efa0ae9a082a1acbd
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 467b202cf6b981969316a2646aac99f788f7a2f4
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70968261"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091198"
 ---
 # <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>Udzielanie zarządzanej tożsamości aplikacji Service Fabric do zasobów platformy Azure (wersja zapoznawcza)
 
@@ -40,9 +40,14 @@ Podobnie jak w przypadku uzyskiwania dostępu do magazynu, można wykorzystać z
 
 ![Zasady dostępu Key Vault](../key-vault/media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
 
-Poniższy przykład ilustruje udzielanie dostępu do magazynu za pośrednictwem wdrożenia szablonu; Dodaj poniższy fragment kodu jako inny wpis pod `resources` elementem szablonu.
+Poniższy przykład ilustruje udzielanie dostępu do magazynu za pośrednictwem wdrożenia szablonu; Dodaj fragmenty kodu poniżej jako inny wpis pod `resources` elementem szablonu. W przykładzie pokazano, jak uzyskać dostęp do zarówno typów tożsamości przypisanych przez użytkownika, jak i przypisanych do systemu, a także wybrać odpowiednie.
 
 ```json
+    # under 'variables':
+  "variables": {
+        "userAssignedIdentityResourceId" : "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('userAssignedIdentityName'))]",
+    }
+    # under 'resources':
     {
         "type": "Microsoft.KeyVault/vaults/accessPolicies",
         "name": "[concat(parameters('keyVaultName'), '/add')]",
@@ -64,6 +69,42 @@ Poniższy przykład ilustruje udzielanie dostępu do magazynu za pośrednictwem 
             ]
         }
     },
+```
+I dla tożsamości zarządzanych przypisanych przez system:
+```json
+    # under 'variables':
+  "variables": {
+        "sfAppSystemAssignedIdentityResourceId": "[concat(resourceId('Microsoft.ServiceFabric/clusters/applications/', parameters('clusterName'), parameters('applicationName')), '/providers/Microsoft.ManagedIdentity/Identities/default')]"
+    }
+    # under 'resources':
+    {
+        "type": "Microsoft.KeyVault/vaults/accessPolicies",
+        "name": "[concat(parameters('keyVaultName'), '/add')]",
+        "apiVersion": "2018-02-14",
+        "properties": {
+            "accessPolicies": [
+            {
+                    "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'))]",
+                    "tenantId": "[reference(variables('sfAppSystemAssignedIdentityResourceId'), '2018-11-30').tenantId]",
+                    "objectId": "[reference(variables('sfAppSystemAssignedIdentityResourceId'), '2018-11-30').principalId]",
+                    "dependsOn": [
+                        "[variables('sfAppSystemAssignedIdentityResourceId')]"
+                    ],
+                    "permissions": {
+                        "secrets": [
+                            "get",
+                            "list"
+                        ],
+                        "certificates": 
+                        [
+                            "get", 
+                            "list"
+                        ]
+                    }
+            },
+        ]
+        }
+    }
 ```
 
 Aby uzyskać więcej informacji, zobacz temat [magazyny — aktualizacje zasad dostępu](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy).

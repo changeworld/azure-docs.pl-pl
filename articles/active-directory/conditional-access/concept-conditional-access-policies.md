@@ -1,0 +1,134 @@
+---
+title: Tworzenie zasad dostępu warunkowego — Azure Active Directory
+description: Jakie są wszystkie opcje dostępne w przypadku tworzenia zasad dostępu warunkowego i ich znaczenia?
+services: active-directory
+ms.service: active-directory
+ms.subservice: conditional-access
+ms.topic: conceptual
+ms.date: 09/17/2019
+ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
+ms.reviewer: calebb
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 87f3e815f541ad4cfabc22d917ca9cecba47b50f
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077609"
+---
+# <a name="building-a-conditional-access-policy"></a>Tworzenie zasad dostępu warunkowego
+
+Zgodnie z opisem w artykule [co to jest dostęp warunkowy](overview.md), zasady dostępu warunkowego to instrukcja if-then, **przypisań** i **kontroli dostępu**. Zasady dostępu warunkowego oferują sygnały ze sobą, aby podejmować decyzje i wymuszać zasady organizacyjne.
+
+Jak organizacja tworzy te zasady? Co jest wymagane?
+
+![Dostęp warunkowy (sygnały + decyzje + wymuszanie = zasady)](./media/concept-conditional-access-policies/conditional-access-signal-decision-enforcement.png)
+
+## <a name="assignments"></a>Przypisania
+
+Część przypisania kontroluje osoby, co i gdzie zasady dostępu warunkowego.
+
+### <a name="users-and-groups"></a>Użytkownicy i grupy
+
+Użytkownicy i grupy mogą przypisywać osoby, które te zasady uwzględnią lub wykluczają. To przypisanie może obejmować wszystkich użytkowników, określonych grup użytkowników, ról katalogów lub użytkowników zewnętrznych Gości. 
+
+### <a name="cloud-apps-or-actions"></a>Aplikacje w chmurze lub akcje
+
+Aplikacje w chmurze lub akcje mogą zawierać lub wykluczać aplikacje w chmurze lub akcje użytkownika, które będą podlegać zasadom.
+
+### <a name="conditions"></a>Warunki
+
+Zasady mogą zawierać wiele warunków.
+
+#### <a name="sign-in-risk"></a>Ryzyko związane z logowaniem
+
+W przypadku organizacji z [Azure AD Identity Protection](../identity-protection/overview.md)wykryte wykrycia ryzyka mogą mieć wpływ na zasady dostępu warunkowego.
+
+#### <a name="device-platforms"></a>Platformy urządzeń
+
+Organizacje z wieloma platformami systemu operacyjnego urządzeń mogą wymuszać określone zasady na różnych platformach. 
+
+Informacje używane do obliczania platformy urządzenia pochodzą z niezweryfikowanych źródeł, takich jak ciągi agenta użytkownika, które można zmienić.
+
+#### <a name="locations"></a>Lokalizacje
+
+Dane lokalizacji są udostępniane przez dane geolokalizacji IP. Administratorzy mogą określić lokalizacje i określić, że będą one uznawane za zaufane, takie jak te w lokalizacjach sieciowych organizacji.
+
+#### <a name="client-apps"></a>Aplikacje klienckie
+
+Domyślnie zasady dostępu warunkowego są stosowane do aplikacji przeglądarki, aplikacji mobilnych i klientów klasycznych obsługujących nowoczesne uwierzytelnianie. 
+
+Ten warunek przypisania umożliwia zasadom dostępu warunkowego kierowanie określonych aplikacji klienckich, które nie korzystają z nowoczesnego uwierzytelniania. Te aplikacje obejmują klientów programu Exchange ActiveSync, starsze aplikacje pakietu Office, które nie korzystają z nowoczesnego uwierzytelniania, oraz protokoły poczty, takie jak IMAP, MAPI, POP i SMTP.
+
+#### <a name="device-state"></a>Stan urządzenia
+
+Ta kontrolka służy do wykluczania urządzeń, które są dołączone do hybrydowej usługi Azure AD lub oznaczone jako zgodne w usłudze Intune. To wykluczenie można wykonać w celu zablokowania urządzeń niezarządzanych. 
+
+## <a name="access-controls"></a>Kontrole dostępu
+
+Część kontroli dostępu w zasadach dostępu warunkowego steruje sposobem wymuszania zasad.
+
+### <a name="grant"></a>Udziel
+
+#### <a name="block-access"></a>Blokuj dostęp
+
+Blokuj dostęp to po prostu, że będzie blokować dostęp w określonych przypisaniach. Formant bloku jest zaawansowany i powinien być wielded z odpowiednią wiedzą.
+
+#### <a name="grant-access"></a>Przyznaj dostęp
+
+Formant Grant może wyzwalać wymuszanie jednej lub więcej kontrolek. 
+
+- Wymagaj uwierzytelniania wieloskładnikowego (Azure Multi-Factor Authentication)
+- Wymagaj, aby urządzenie było oznaczone jako zgodne (Intune)
+- Wymagaj hybrydowego urządzenia dołączonego do usługi Azure AD
+- Wymagaj zatwierdzonej aplikacji klienckiej
+- Wymagaj zasad ochrony aplikacji
+
+Administratorzy mogą wybrać, aby wymagać jednej z powyższych kontrolek lub wszystkich wybranych kontrolek przy użyciu poniższych opcji. Wartością domyślną dla wielu kontrolek jest wymaganie wszystkie.
+
+- Wymagaj wszystkich zaznaczonych kontrolek (kontrolka i kontrola)
+- Wymagaj jednej z wybranych kontrolek (kontrolki lub kontrolka)
+
+### <a name="session"></a>Sesja
+
+Kontrolki sesji mogą ograniczyć środowisko 
+
+- Użyj ograniczeń wymuszonych przez aplikację
+   - Obecnie działa tylko z usługami Exchange Online i SharePoint Online.
+      - Przekazuje informacje o urządzeniach, aby umożliwić kontrolę nad zapewnianiem pełnego lub ograniczonego dostępu.
+- Użyj Kontroli dostępu warunkowego aplikacji
+   - Używa sygnałów z Microsoft Cloud App Security, aby wykonać następujące czynności: 
+      - Blokuj pobieranie, wycinanie, kopiowanie i drukowanie poufnych dokumentów.
+      - Monitoruj ryzykowne zachowanie sesji.
+      - Wymagaj etykietowania poufnych plików.
+- Częstotliwość logowania
+   - Możliwość zmiany domyślnej częstotliwości logowania dla nowoczesnego uwierzytelniania.
+- Trwała sesja przeglądarki
+   - Umożliwia użytkownikom zalogowanie się po zamknięciu i ponownym otwarciu okna przeglądarki.
+
+## <a name="simple-policies"></a>Zasady proste
+
+Zasady dostępu warunkowego muszą zawierać co najmniej następujące elementy, które mają zostać wymuszone:
+
+- **Nazwa** zasad.
+- **Przypisania**
+   - **Użytkownicy i/lub grupy** , do których mają być stosowane zasady.
+   - **Aplikacje w chmurze lub akcje** , do których mają zostać zastosowane zasady.
+- **Kontrola dostępu**
+   - **Udziel** lub **Blokuj** kontrolki
+
+![Puste zasady dostępu warunkowego](./media/concept-conditional-access-policies/conditional-access-blank-policy.png)
+
+## <a name="next-steps"></a>Następne kroki
+
+[Symulowanie zachowania logowania za pomocą narzędzia What If dostępu warunkowego](troubleshoot-conditional-access-what-if.md)
+
+[Typowe zasady dostępu warunkowego](concept-conditional-access-policy-common.md)
+
+[Planowanie wdrożenia usługi Azure Multi-Factor Authentication opartej na chmurze](../authentication/howto-mfa-getstarted.md)
+
+[Zarządzanie zgodnością urządzeń z usługą Intune](https://docs.microsoft.com/intune/device-compliance-get-started)
+
+[Microsoft Cloud App Security i dostęp warunkowy](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
