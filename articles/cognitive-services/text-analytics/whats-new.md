@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: aahi
-ms.openlocfilehash: 4c6499cd0e105e28954b6d4df667c71a51b9ccff
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 432d81b4282e45bc2f33d098e618f2edd152628b
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71017759"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098024"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Co nowego w interfejsie API analizy tekstu?
 
@@ -28,7 +28,7 @@ Następna wersja analiza tonacji jest teraz dostępna w publicznej wersji zapozn
 * Automatyczne etykietowanie dla różnych mową w tekście.
 * Tonacji analizę i dane wyjściowe na poziomie dokumentu i zdania. 
 
-Obsługuje język angielski, japoński i chiński uproszczony i jest dostępny w następujących regionach `Australia East`: `Southeast Asia` `Central Canada` `Central US`, `North Europe` `East US 2` `East Asia` `East US`,,,,,,, `South Central US` , `UK South`, `West Europe`i .`West US 2`
+Obsługuje język angielski, francuski, włoski, japoński, chiński (uproszczony) i chiński (tradycyjny) i jest dostępny w następujących regionach `Australia East`: `Central Canada` `Central US`, `East US 2` `East Asia` `East US` `North Europe` ,,,, , `Southeast Asia` ,`South Central US` ,,`West US 2`i. `UK South` `West Europe`
 
 > [!div class="nextstepaction"]
 > [Dowiedz się więcej o analiza tonacji wersji 3](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-v3-public-preview)

@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: f35a3567ae4ae7c3e2d59f776d3a3bc00ec2be3e
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: ed466b072a771c3aa288a96fa4a0037c31b875f9
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142381"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091990"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Rozwiązywanie problemów Azure Data Factory
 
@@ -25,98 +25,660 @@ W przypadku problemów dotyczących łącznika, np. Napotkano błąd przy użyci
 
 ## <a name="azure-databricks"></a>Azure Databricks
 
-| Kod błędu | Komunikat o błędzie                                          | Opis                             | Zalecenie                             |
-| -------------- | ----------------------------------------------------- | --------------------------------------------------------------| :----------------------------------------------------------- |
-| 3200           | Błąd 403.                                                    | Token dostępu do datakostki wygasł.                         | Domyślnie token dostępu do datakostki jest ważny przez 90 dni.  Utwórz nowy token i zaktualizuj połączoną usługę. |
-| 3201           | Brak wymaganego pola: Settings. Task. notebook_task. notebook_path | Nieprawidłowe tworzenie: Ścieżka notesu nie została określona poprawnie. | Określ ścieżkę notesu w działaniu datakosteks. |
-| 3201           | Klaster... nie istnieje.                                 | Błąd tworzenia: Klaster datakostki nie istnieje lub został usunięty. | Sprawdź, czy klaster datakostki istnieje. |
-| 3201           | Nieprawidłowy identyfikator URI pliku języka Python... Zapoznaj się z podręcznikiem użytkownika dla obsługiwanych schematów URI. | Nieprawidłowe tworzenie.                                                | Określ ścieżki bezwzględne dla schematów adresów obszaru roboczego lub `dbfs:/folder/subfolder/foo.py` dla plików przechowywanych w systemie plików datakostki. |
-| 3201           | {0}LinkedService powinny mieć domenę i accessToken jako wymagane właściwości. | Nieprawidłowe tworzenie.                                                | Sprawdź [definicję połączonej usługi](compute-linked-services.md#azure-databricks-linked-service). |
-| 3201           | {0}LinkedService powinien określać istniejący identyfikator klastra lub nowe informacje o klastrze do utworzenia. | Nieprawidłowe tworzenie.                                                | Sprawdź [definicję połączonej usługi](compute-linked-services.md#azure-databricks-linked-service). |
-| 3201           | Typ węzła Standard_D16S_v3 nie jest obsługiwany. Obsługiwane typy węzłów:   Standard_DS3_v2, Standard_DS4_v2, Standard_DS5_v2, Standard_D8s_v3, Standard_D16s_v3, Standard_D32s_v3, Standard_D64s_v3, Standard_D3_v2, Standard_D8_v3, Standard_D16_v3, Standard_D32_v3, Standard_D64_v3, Standard_D12_v2, Standard_D13_v2, Standard_D14_v2, Standard_D15_v2, Standard_DS12_v2, Standard_DS13_v2, Standard_DS14_v2, Standard_DS15_v2, Standard_E8s_v3, Standard_E16s_v3, Standard_E32s_v3, Standard_E64s_v3, Standard_L4s, Standard_L8s, Standard_L16s, Standard_L32s, Standard_F4s, Standard_F8s, Standard_F16s, Standard_H16, Standard_F4s_v2, Standard_F8s_v2, Standard_F16s_v2, Standard_F32s_v2, Standard_F64s_v2, Standard_F72s_v2, Standard_NC12, Standard_NC24, Standard_NC6s_v3, Standard_NC12s_v3, Standard_ NC24s_v3, Standard_L8s_v2, Standard_L16s_v2, Standard_L32s_v2, Standard_L64s_v2, Standard_L80s_v2. | Nieprawidłowe tworzenie.                                                | Zapoznaj się z komunikatem o błędzie.                                          |
-| 3201           | Nieprawidłowy notebook_path:... Obecnie obsługiwane są tylko ścieżki bezwzględne. Ścieżki muszą zaczynać się od znaku "/". | Nieprawidłowe tworzenie.                                                | Zapoznaj się z komunikatem o błędzie.                                          |
-| 3202           | W ciągu ostatnich 3600 sekund utworzono już 1000 zadań, które przekraczają limit szybkości:   1000 tworzenia zadań na 3600 sekund. | Zbyt wiele kostek datakostks jest wykonywanych w ciągu godziny.                         | Sprawdź wszystkie potoki korzystające z tego obszaru roboczego datakosteks w celu ich tempa tworzenia zadań.  Jeśli potoki uruchomiły zbyt wiele kostek datakostków, Migruj niektóre potoki do nowego obszaru roboczego. |
-| 3202           | Nie można przeanalizować obiektu żądania: Oczekiwano wartości "Key" i "value" dla pola mapy JSON base_parameters, otrzymano "Key:"... "" INSTEAD. | Błąd tworzenia: Nie podano wartości dla parametru.         | Sprawdź kod JSON potoku i upewnij się, że wszystkie parametry w notesie baseParameters określają niepustą wartość. |
-| 3202           | Użytkownik: `SimpleUserContext{userId=..., name=user@company.com, orgId=...}` nie ma uprawnień dostępu do klastra. | Użytkownik, który wygenerował token dostępu, nie może uzyskać dostępu do klastra datakostks określonego w połączonej usłudze. | Upewnij się, że użytkownik ma wymagane uprawnienia w obszarze roboczym.   |
-| 3203           | Klaster jest w stanie przerwania, nie jest dostępny do odbierania zadań. Popraw klaster lub spróbuj ponownie później. | Klaster został przerwany.    W przypadku klastrów interaktywnych może to być sytuacja wyścigu. | Najlepszym sposobem uniknięcia tego błędu jest użycie klastrów zadań.             |
-| 3204           | Wykonanie zadania nie powiodło się.  | Komunikaty o błędach wskazują różne problemy, takie jak nieoczekiwany stan klastra lub określone działanie. W ogóle nie jest wyświetlany żaden komunikat o błędzie.                                                          | ND                                                          |
+### <a name="error-code--3200"></a>Kod błędu:  3200
 
+- **Komunikat**: Błąd 403.
+
+- **Przyczyna**:`The Databricks access token has expired.`
+
+- **Zalecenie**: Domyślnie token dostępu Azure Databricks jest ważny przez 90 dni. Utwórz nowy token i zaktualizuj połączoną usługę.
+
+
+### <a name="error-code--3201"></a>Kod błędu:  3201
+
+- **Komunikat**:`Missing required field: settings.task.notebook_task.notebook_path.`
+
+- **Przyczyna**:`Bad authoring: Notebook path not specified correctly.`
+
+- **Zalecenie**: Określ ścieżkę notesu w działaniu datakosteks.
+
+<br/>
+
+- **Komunikat**:`Cluster   ... does not exist.`
+
+- **Przyczyna**:`Authoring error: Databricks cluster does not exist or has been deleted.`
+
+- **Zalecenie**: Sprawdź, czy klaster datakostki istnieje.
+
+<br/>
+
+- **Komunikat**:`Invalid Python file URI.... Please visit Databricks user guide for supported URI schemes.`
+
+- **Przyczyna**:`Bad authoring.`
+
+- **Zalecenie**: Określ ścieżki bezwzględne dla schematów adresów obszaru roboczego lub `dbfs:/folder/subfolder/foo.py` dla plików przechowywanych w systemie plików datakostki.
+
+<br/>
+
+- **Komunikat**:`{0} LinkedService should have domain and accessToken as required properties.`
+
+- **Przyczyna**:`Bad authoring.`
+
+- **Zalecenie**: Sprawdź [definicję połączonej usługi](compute-linked-services.md#azure-databricks-linked-service).
+
+<br/>
+
+- **Komunikat**:`{0} LinkedService should specify either existing cluster ID or new cluster information for creation.`
+
+- **Przyczyna**:`Bad authoring.`
+
+- **Zalecenie**: Sprawdź [definicję połączonej usługi](compute-linked-services.md#azure-databricks-linked-service).
+
+<br/>
+
+- **Komunikat**:`Node type Standard_D16S_v3 is not supported. Supported node types:   Standard_DS3_v2, Standard_DS4_v2, Standard_DS5_v2, Standard_D8s_v3,   Standard_D16s_v3, Standard_D32s_v3, Standard_D64s_v3, Standard_D3_v2,   Standard_D8_v3, Standard_D16_v3, Standard_D32_v3, Standard_D64_v3,   Standard_D12_v2, Standard_D13_v2, Standard_D14_v2, Standard_D15_v2,   Standard_DS12_v2, Standard_DS13_v2, Standard_DS14_v2, Standard_DS15_v2,   Standard_E8s_v3, Standard_E16s_v3, Standard_E32s_v3, Standard_E64s_v3,   Standard_L4s, Standard_L8s, Standard_L16s, Standard_L32s, Standard_F4s,   Standard_F8s, Standard_F16s, Standard_H16, Standard_F4s_v2, Standard_F8s_v2,   Standard_F16s_v2, Standard_F32s_v2, Standard_F64s_v2, Standard_F72s_v2,   Standard_NC12, Standard_NC24, Standard_NC6s_v3, Standard_NC12s_v3,   Standard_NC24s_v3, Standard_L8s_v2, Standard_L16s_v2, Standard_L32s_v2,   Standard_L64s_v2, Standard_L80s_v2.`
+
+- **Przyczyna**:`Bad authoring.`
+
+- **Zalecenie**: Zapoznaj się z komunikatem o błędzie. 
+
+<br/>
+
+### <a name="error-code--3202"></a>Kod błędu:  3202
+
+- **Komunikat**:`There were already 1000 jobs created in past 3600 seconds, exceeding rate limit:   1000 job creations per 3600 seconds.`
+
+- **Przyczyna**:`Too many Databricks runs in an hour.`
+
+- **Zalecenie**: Sprawdź wszystkie potoki korzystające z tego obszaru roboczego datakosteks w celu ich tempa tworzenia zadań.  Jeśli potoki uruchomiły zbyt wiele kostek datakostków, Migruj niektóre potoki do nowego obszaru roboczego.
+
+<br/>
+
+- **Komunikat**:`Could not parse request object: Expected 'key' and 'value' to be set for JSON map field base_parameters, got 'key: "..."' instead.`
+
+- **Przyczyna**:`Authoring error: No value provided for the parameter.`
+
+- **Zalecenie**: Sprawdź kod JSON potoku i upewnij się, że wszystkie parametry w notesie baseParameters określają niepustą wartość.
+
+<br/>
+
+- **Komunikat**: `User: `SimpleUserContext {userId =..., Name =user@company.com, orgId =...}` is not   authorized to access cluster.`
+
+- **Przyczyna**: Użytkownik, który wygenerował token dostępu, nie może uzyskać dostępu do klastra datakostks określonego w połączonej usłudze.
+
+- **Zalecenie**: Upewnij się, że użytkownik ma wymagane uprawnienia w obszarze roboczym.
+
+
+### <a name="error-code--3203"></a>Kod błędu:  3203
+
+- **Komunikat**:`The cluster is in Terminated state, not available to receive jobs. Please fix the cluster or retry later.`
+
+- **Przyczyna**: Klaster został przerwany. W przypadku klastrów interaktywnych może to być sytuacja wyścigu.
+
+- **Zalecenie**: Najlepszym sposobem uniknięcia tego błędu jest użycie klastrów zadań.
+
+
+### <a name="error-code--3204"></a>Kod błędu:  3204
+
+- **Komunikat**:`Job execution failed.`
+
+- **Przyczyna**:  Komunikaty o błędach wskazują różne problemy, takie jak nieoczekiwany stan klastra lub określone działanie. W ogóle nie jest wyświetlany żaden komunikat o błędzie. 
+
+- **Zalecenie**: ND
 
 
 ## <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
 
 Poniższa tabela dotyczy języka U-SQL.
 
-| Kod błędu         | Komunikat o błędzie                                                | Opis                                          | Zalecenie                            |
-| -------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 2709                 | Token dostępu pochodzi od niewłaściwej dzierżawy.                    | Nieprawidłowa dzierżawa usługi Azure Active Directory (Azure AD).                                         | Nazwa główna usługi służąca do uzyskiwania dostępu do Azure Data Lake Analytics należy do innej dzierżawy usługi Azure AD. Utwórz nową nazwę główną usługi w tej samej dzierżawie co konto Data Lake Analytics. |
-| 2711,   2705,   2704 | Zabrania. Weryfikacja listy kontroli dostępu nie powiodła się. Zasób nie istnieje lub użytkownik nie ma uprawnień do wykonywania żądanych operacji.<br/><br/>Użytkownik nie może uzyskać dostępu do Data Lake Store.  <br/><br/>Użytkownik nie ma uprawnień do używania Data Lake Analytics. | Nazwa główna usługi lub certyfikat nie ma dostępu do pliku w magazynie. | Upewnij się, że jednostka usługi lub certyfikat udostępniany przez użytkownika dla zadań Data Lake Analytics ma dostęp do konta Data Lake Analytics i domyślnego wystąpienia Data Lake Storage z folderu głównego. |
-| 2711                 | Nie można znaleźć pliku lub folderu "Azure Data Lake Store".       | Ścieżka do pliku U-SQL jest niepoprawna lub poświadczenia połączonej usługi nie mają dostępu. | Sprawdź ścieżkę i poświadczenia podane w połączonej usłudze. |
-| 2707                 | Nie można rozpoznać konta AzureDataLakeAnalytics. Sprawdź "AccountName" i "DataLakeAnalyticsUri". | Konto Data Lake Analytics w połączonej usłudze jest nieprawidłowe.                  | Sprawdź, czy odpowiednie konto zostało podane.             |
-| 2703                 | Identyfikator błędu: E_CQO_SYSTEM_INTERNAL_ERROR (lub dowolny błąd zaczynający się od "Identyfikator błędu:"). | Błąd pochodzi z Data Lake Analytics.                                    | Błąd podobny do przykładu oznacza, że zadanie zostało przesłane do Data Lake Analytics, a skrypt zakończył się niepowodzeniem. Zbadaj w Data Lake Analytics. W portalu przejdź do konta Data Lake Analytics i Wyszukaj zadanie przy użyciu identyfikatora uruchomienia działania Data Factory (nie identyfikatora uruchomienia potoku). Zadanie zawiera więcej informacji o błędzie i pomaga w rozwiązywaniu problemów. Jeśli rozwiązanie nie jest wyczyszczone, skontaktuj się z zespołem pomocy technicznej Data Lake Analytics i podaj adres URL zadania, który zawiera nazwę konta i identyfikator zadania. |
-| 2709                 | W tej chwili nie możemy zaakceptować Twojego zadania. Maksymalna liczba zadań w kolejce dla konta to 200. | Ten błąd jest spowodowany przez ograniczenie wydajności Data Lake Analytics.                                           | Zmniejsz liczbę przesłanych zadań do Data Lake Analytics, zmieniając wyzwalacze Data Factory i ustawienia współbieżności w działaniach. Lub Zwiększ limity Data Lake Analytics. |
-| 2709                 | To zadanie zostało odrzucone, ponieważ wymaga 24 jednostek. Zasady zdefiniowane przez administratora konta uniemożliwiają użycie więcej niż 5 jednostek. | Ten błąd jest spowodowany przez ograniczenie wydajności Data Lake Analytics.                                           | Zmniejsz liczbę przesłanych zadań do Data Lake Analytics, zmieniając wyzwalacze Data Factory i ustawienia współbieżności w działaniach. Lub Zwiększ limity Data Lake Analytics. |
+
+### <a name="error-code--2709"></a>Kod błędu:  2709
+
+- **Komunikat**:`The access token is from the wrong tenant.`
+
+- **Przyczyna**:  Nieprawidłowa dzierżawa usługi Azure Active Directory (Azure AD).
+
+- **Zalecenie**: Nieprawidłowa dzierżawa usługi Azure Active Directory (Azure AD).
+
+<br/>
+
+- **Komunikat**:`We cannot accept your job at this moment. The maximum number of queued jobs for   your account is 200. `
+
+- **Przyczyna**:  Ten błąd jest spowodowany przez ograniczenie wydajności Data Lake Analytics.
+
+- **Zalecenie**: Zmniejsz liczbę przesłanych zadań do Data Lake Analytics, zmieniając wyzwalacze Data Factory i ustawienia współbieżności w działaniach. Lub Zwiększ limity Data Lake Analytics.
+
+<br/>
+
+- **Komunikat**:`This job was rejected because it requires 24 AUs. This account's administrator-defined policy prevents a job from using more than 5 AUs.`
+
+- **Przyczyna**:  Ten błąd jest spowodowany przez ograniczenie wydajności Data Lake Analytics. 
+
+- **Zalecenie**: Zmniejsz liczbę przesłanych zadań do Data Lake Analytics, zmieniając wyzwalacze Data Factory i ustawienia współbieżności w działaniach. Lub Zwiększ limity Data Lake Analytics.
+
+
+### <a name="error-code--2705"></a>Kod błędu:  2705
+
+- **Komunikat**:`Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.<br/><br/>User is   not able to access Data Lake Store.  <br/><br/>User is  not authorized to use Data Lake Analytics.`
+
+- **Przyczyna**:  Nazwa główna usługi lub certyfikat nie ma dostępu do pliku w magazynie.
+
+- **Zalecenie**: Upewnij się, że jednostka usługi lub certyfikat udostępniany przez użytkownika dla zadań Data Lake Analytics ma dostęp do konta Data Lake Analytics i domyślnego wystąpienia Data Lake Storage z folderu głównego.
+
+
+### <a name="error-code--2711"></a>Kod błędu:  2711
+
+- **Komunikat**:`Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.<br/><br/>User is   not able to access Data Lake Store.  <br/><br/>User is  not authorized to use Data Lake Analytics.`
+
+- **Przyczyna**:  Nazwa główna usługi lub certyfikat nie ma dostępu do pliku w magazynie.
+
+- **Zalecenie**: Upewnij się, że jednostka usługi lub certyfikat udostępniany przez użytkownika dla zadań Data Lake Analytics ma dostęp do konta Data Lake Analytics i domyślnego wystąpienia Data Lake Storage z folderu głównego.
+
+<br/>
+
+- **Komunikat**:`Cannot find the 'Azure Data Lake Store' file or folder.`
+
+- **Przyczyna**:  Ścieżka do pliku U-SQL jest niepoprawna lub poświadczenia połączonej usługi nie mają dostępu.
+
+- **Zalecenie**: Sprawdź ścieżkę i poświadczenia podane w połączonej usłudze.
+
+
+### <a name="error-code--2704"></a>Kod błędu:  2704
+
+- **Komunikat**:`Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.<br/><br/>User is   not able to access Data Lake Store.  <br/><br/>User is  not authorized to use Data Lake Analytics.`
+
+- **Przyczyna**:  Nazwa główna usługi lub certyfikat nie ma dostępu do pliku w magazynie.
+
+- **Zalecenie**: Upewnij się, że jednostka usługi lub certyfikat udostępniany przez użytkownika dla zadań Data Lake Analytics ma dostęp do konta Data Lake Analytics i domyślnego wystąpienia Data Lake Storage z folderu głównego.
+
+
+### <a name="error-code--2707"></a>Kod błędu:  2707
+
+- **Komunikat**:`Cannot resolve the account of AzureDataLakeAnalytics. Please check 'AccountName' and   'DataLakeAnalyticsUri'.`
+
+- **Przyczyna**:  Konto Data Lake Analytics w połączonej usłudze jest nieprawidłowe.
+
+- **Zalecenie**: Sprawdź, czy odpowiednie konto zostało podane.
+
+
+### <a name="error-code--2703"></a>Kod błędu:  2703
+
+- **Komunikat**:`Error Id: E_CQO_SYSTEM_INTERNAL_ERROR (or any error that starts with "Error   Id:").`
+
+- **Przyczyna**:  Błąd pochodzi z Data Lake Analytics. 
+
+- **Zalecenie**: Błąd podobny do przykładu oznacza, że zadanie zostało przesłane do Data Lake Analytics, a skrypt zakończył się niepowodzeniem. Zbadaj w Data Lake Analytics. W portalu przejdź do konta Data Lake Analytics i Wyszukaj zadanie przy użyciu identyfikatora uruchomienia działania Data Factory (nie identyfikatora uruchomienia potoku). Zadanie zawiera więcej informacji o błędzie i pomaga w rozwiązywaniu problemów. Jeśli rozwiązanie nie jest wyczyszczone, skontaktuj się z zespołem pomocy technicznej Data Lake Analytics i podaj adres URL zadania, który zawiera nazwę konta i identyfikator zadania.
 
 
 
 ## <a name="azure-functions"></a>Azure Functions
 
-| Kod błędu | Komunikat o błędzie                           | Opis                                                  | Zalecenie                           |
-| ------------ | --------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 3600         | Zawartość odpowiedzi nie jest prawidłowym JObject. | Wywołana funkcja platformy Azure nie zwróciła ładunku JSON w odpowiedzi. Działanie funkcji platformy Azure w Data Factory obsługuje tylko zawartość odpowiedzi JSON. | Zaktualizuj funkcję platformy Azure, aby zwracała prawidłowy ładunek JSON. Na przykład C# funkcja może zwrócić `(ActionResult)new<OkObjectResult("{` \"identyfikator\":\"123.\"`}");` |
-| 3600         | Nieprawidłowy HttpMethod: "...".               | Metoda HTTP określona w ładunku działania nie jest obsługiwana przez działanie funkcji platformy Azure. | Użyj obsługiwanej metody HTTP, takiej jak PUT, POST, GET, DELETE, OPTIONS, szef lub TRACE. |
+### <a name="error-code--3602"></a>Kod błędu:  3602
 
+- **Komunikat**:`Invalid HttpMethod: {method}.`
+
+- **Przyczyna**: Metoda http określona w ładunku działania nie jest obsługiwana przez działanie funkcji platformy Azure. 
+
+- **Zalecenie**: Obsługiwane metody http to PUT, POST, GET, DELETE, OPTIONS, NAGŁÓWKowy i TRACE.
+
+
+### <a name="error-code--3603"></a>Kod błędu:  3603
+
+- **Komunikat**:`Response content is not a valid JObject.`
+
+- **Przyczyna**: Wywołana funkcja platformy Azure nie zwróciła ładunku JSON w odpowiedzi. Działanie funkcji platformy Azure w Data Factory obsługuje tylko zawartość odpowiedzi JSON. 
+
+- **Zalecenie**: Zaktualizuj funkcję platformy Azure, aby zwracała prawidłowy ładunek JSON. Na przykład C# funkcja może zwrócić `(ActionResult)new<OkObjectResult("{` \"identyfikator\":\"123.\"`}");`
+
+
+### <a name="error-code--3606"></a>Kod błędu:  3606
+
+- **Komunikat**:`Azure function activity missing function key.`
+
+- **Przyczyna**: Definicja działania funkcji platformy Azure nie została ukończona. 
+
+- **Zalecenie**: Sprawdź, czy wprowadzona definicja JSON działania AzureFunction ma właściwość o nazwie "functionKey".
+
+
+### <a name="error-code--3607"></a>Kod błędu:  3607
+
+- **Komunikat**:`Azure function activity missing function name.`
+
+- **Przyczyna**: Definicja działania funkcji platformy Azure nie została ukończona. 
+
+- **Zalecenie**: Sprawdź, czy wprowadzona definicja JSON działania AzureFunction ma właściwość o nazwie "FunctionName".
+
+
+### <a name="error-code--3608"></a>Kod błędu:  3608
+
+- **Komunikat**:`Call to provided Azure function '{FunctionName}' failed with status-'{statusCode}' and message - '{message}'.` 
+
+- **Przyczyna**: Szczegóły funkcji platformy Azure w definicji działania mogą być nieprawidłowe. 
+
+- **Zalecenie**: Popraw Szczegóły funkcji platformy Azure i spróbuj ponownie.
+
+
+### <a name="error-code--3609"></a>Kod błędu:  3609
+
+- **Komunikat**:`Azure function activity missing functionAppUrl.` 
+
+- **Przyczyna**: Definicja działania funkcji platformy Azure nie została ukończona. 
+
+- **Zalecenie**: Sprawdź, czy wprowadzona definicja JSON działania AzureFunction ma właściwość o nazwie "functionAppUrl".
+
+
+### <a name="error-code--3610"></a>Kod błędu:  3610
+
+- **Komunikat**:`There was an error while calling endpoint.`
+
+- **Przyczyna**: Adres URL funkcji może być nieprawidłowy.
+
+- **Zalecenie**: Upewnij się, że wartość parametru "functionAppUrl" w kodzie JSON działania jest poprawna, i spróbuj ponownie.
+
+
+### <a name="error-code--3611"></a>Kod błędu:  3611
+
+- **Komunikat**:`Azure function activity missing Method in JSON.` 
+
+- **Przyczyna**: Definicja działania funkcji platformy Azure nie została ukończona.
+
+- **Zalecenie**: Sprawdź, czy wprowadzona definicja JSON działania AzureFunction ma właściwość o nazwie "Method".
+
+
+### <a name="error-code--3612"></a>Kod błędu:  3612
+
+- **Komunikat**:`Azure function activity missing LinkedService definition in JSON.`
+
+- **Przyczyna**: Definicja działania funkcji platformy Azure nie może zostać ukończona.
+
+- **Zalecenie**: Sprawdź szczegóły wprowadzonej usługi w formacie JSON działania AzureFunction.
+
+
+## <a name="azure-machine-learning"></a>Azure Machine Learning
+
+
+### <a name="error-code--4101"></a>Kod błędu:  4101
+
+- **Komunikat**:`AzureMLExecutePipeline activity '%activityName;' has invalid value for property '%propertyName;'.`
+
+- **Przyczyna**: Zły format lub Brak definicji właściwości.
+
+- **Zalecenie**:  Sprawdź, czy działanie jest zdefiniowane z prawidłowymi danymi.
+
+
+### <a name="error-code--4110"></a>Kod błędu:  4110
+
+- **Komunikat**: Brak definicji LinkedService w AzureMLExecutePipeline w formacie JSON.
+
+- **Przyczyna**: Definicja działania AzureMLExecutePipeline nie została ukończona.
+
+- **Zalecenie**:  Sprawdź, czy dane wejściowe w formacie JSON działania AzureMLExecutePipeline zawierają szczegóły połączonej usługi.
+
+
+### <a name="error-code--4111"></a>Kod błędu:  4111
+
+- **Komunikat**:`AzureMLExecutePipeline activity has wrong LinkedService type in JSON. Expected LinkedService type: '%expectedLinkedServiceType;', current LinkedService type: Expected LinkedService type: '%currentLinkedServiceType;'.`
+
+- **Przyczyna**: Nieprawidłowa definicja działania.
+
+- **Zalecenie**:  Sprawdź, czy wprowadzona definicja JSON działania AzureMLExecutePipeline zawiera poprawne szczegóły połączonej usługi.
+
+
+### <a name="error-code--4112"></a>Kod błędu:  4112
+
+- **Komunikat**:`AzureMLService linked service has invalid value for property '%propertyName;'.`
+
+- **Przyczyna**: Zły format lub Brak definicji właściwości.
+
+- **Zalecenie**:  Sprawdź, czy definicja połączonej usługi ma poprawne dane.
+
+
+### <a name="error-code--4121"></a>Kod błędu:  4121
+
+- **Komunikat**:`Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+
+- **Przyczyna**: Poświadczenie używane do uzyskiwania dostępu do usługi Azure ML wygasło.
+
+- **Zalecenie**:  Sprawdź poprawność poświadczeń i ponów próbę
+
+
+### <a name="error-code--4122"></a>Kod błędu:  4122
+
+- **Komunikat**:`Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+
+- **Przyczyna**: Poświadczenie podane w połączonej usłudze platformy Azure jest nieprawidłowe lub nie ma uprawnień do wykonania tej operacji.
+
+- **Zalecenie**:  Upewnij się, że poświadczenie w połączonej usłudze jest prawidłowe i ma uprawnienia dostępu do usługi Azure.
+
+
+### <a name="error-code--4123"></a>Kod błędu:  4123
+
+- **Komunikat**:`Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+
+- **Przyczyna**:`Properties of the activity such as pipelineParamters are invalid for the Azure ML pipeline.`
+
+- **Zalecenie**:  Sprawdź wartości właściwości działania, aby dopasować oczekiwany ładunek opublikowanego potoku usługi Azure ML określony w połączonej usłudze.
+
+
+### <a name="error-code--4124"></a>Kod błędu:  4124
+
+- **Komunikat**:`Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+
+- **Przyczyna**: Opublikowany punkt końcowy potoku platformy Azure ML nie istnieje.
+
+- **Zalecenie**:  Sprawdź, czy opublikowany punkt końcowy potoku Azure ML określony w połączonej usłudze istnieje w usłudze Azure ML.
+
+
+### <a name="error-code--4125"></a>Kod błędu:  4125
+
+- **Komunikat**:`Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+
+- **Przyczyna**: Błąd serwera w usłudze Azure ML.
+
+- **Zalecenie**:  Spróbuj ponownie później. Skontaktuj się z zespołem usługi Azure ML, aby uzyskać pomoc w przypadku pozostawania problemu.
+
+
+### <a name="error-code--4126"></a>Kod błędu:  4126
+
+- **Komunikat**:`AzureML pipeline run failed with status: '%amlPipelineRunStatus;'. Azure ML pipeline run Id: '%amlPipelineRunId;'. Please check in AzureMLService for more error loggings.`
+
+- **Przyczyna**: Uruchomienie potoku Azure nie powiodło się.
+
+- **Zalecenie**:  Zapoznaj się z AzureMLService, aby uzyskać więcej dzienników błędów i naprawić potok ML
 
 
 ## <a name="custom"></a>Niestandardowa
 
 Poniższa tabela ma zastosowanie do Azure Batch.
 
-| Kod błędu | Komunikat o błędzie                                                | Opis                                                  | Zalecenie                          |
-| ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 2500         | Wystąpił nieoczekiwany wyjątek i wykonywanie nie powiodło się.             | Nie można uruchomić polecenia lub program zwrócił kod błędu. | Upewnij się, że plik wykonywalny istnieje. Jeśli program został uruchomiony, upewnij się, że *stdout. txt* i *stderr. txt* zostały przekazane do konta magazynu. Dobrym sposobem jest wyemitujenie dzienników copious w kodzie w celu debugowania. |
-| 2501         | Nie można uzyskać dostępu do konta partii użytkownika; Sprawdź ustawienia konta w usłudze Batch. | Nieprawidłowy klucz dostępu do partii lub Nazwa puli.            | Sprawdź nazwę puli i klucz dostępu do usługi Batch w połączonej usłudze. |
-| 2502         | Nie można uzyskać dostępu do konta magazynu użytkownika; Sprawdź ustawienia konta magazynu. | Niepoprawna nazwa konta magazynu lub klucz dostępu.       | Sprawdź nazwę konta magazynu i klucz dostępu w połączonej usłudze. |
-| 2504         | Operacja zwróciła nieprawidłowy kod stanu "nieprawidłowego żądania".     | Zbyt wiele plików w folderPath aktywności niestandardowej. Łączny rozmiar elementu resourceFiles nie może być większy niż 32 768 znaków. | Usuń niepotrzebne pliki. Lub Dodaj do nich polecenie rozpakować, aby je wyodrębnić. Na przykład użyj`powershell.exe -nologo -noprofile   -command "& { Add-Type -A 'System.IO.Compression.FileSystem';   [IO.Compression.ZipFile]::ExtractToDirectory($zipFile, $folder); }" ;  $folder\yourProgram.exe` |
-| 2505         | Nie można utworzyć sygnatury dostępu współdzielonego, jeśli nie są używane poświadczenia klucza konta. | Działania niestandardowe obsługują tylko konta magazynu używające klucza dostępu. | Zapoznaj się z opisem błędu.                                            |
-| 2507         | Ścieżka folderu nie istnieje lub jest pusta:....            | Żadne pliki nie znajdują się na koncie magazynu w określonej ścieżce.       | Ścieżka folderu musi zawierać pliki wykonywalne, które chcesz uruchomić. |
-| 2508         | Folder zasobów zawiera zduplikowane pliki.               | Wiele plików o tej samej nazwie znajduje się w różnych podfolderach folderPath. | Działania niestandardowe Spłaszcz strukturę folderów w obszarze folderPath.  Jeśli potrzebujesz zachować strukturę folderów, pliki zip i Wyodrębnij je w Azure Batch przy użyciu polecenia Rozpakuj. Na przykład użyj`powershell.exe -nologo -noprofile   -command "& { Add-Type -A 'System.IO.Compression.FileSystem';   [IO.Compression.ZipFile]::ExtractToDirectory($zipFile, $folder); }" ;   $folder\yourProgram.exe` |
-| 2509         | Adres URL partii... jest nieprawidłowy; musi być w formacie identyfikatora URI.         | Adresy URL partii muszą być podobne do`https://mybatchaccount.eastus.batch.azure.com` | Zapoznaj się z opisem błędu.                                            |
-| 2510         | Wystąpił błąd podczas wysyłania żądania.               | Adres URL partii jest nieprawidłowy.                                         | Sprawdź adres URL partii.                                            |
+
+### <a name="error-code--2500"></a>Kod błędu:  2500
+
+- **Komunikat**:`Hit unexpected exception and execution failed.`
+
+- **Przyczyna**:`Can't launch command, or the program returned an error code.`
+
+- **Zalecenie**:  Upewnij się, że plik wykonywalny istnieje. Jeśli program został uruchomiony, upewnij się, że *stdout. txt* i *stderr. txt* zostały przekazane do konta magazynu. Dobrym sposobem jest wyemitujenie dzienników copious w kodzie w celu debugowania.
+
+
+### <a name="error-code--2501"></a>Kod błędu:  2501
+
+- **Komunikat**:`Cannot access user batch account; please check batch account settings.`
+
+- **Przyczyna**: Nieprawidłowy klucz dostępu do partii lub Nazwa puli.
+
+- **Zalecenie**: Sprawdź nazwę puli i klucz dostępu do usługi Batch w połączonej usłudze.
+
+
+### <a name="error-code--2502"></a>Kod błędu:  2502
+
+- **Komunikat**:`Cannot access user storage account; please check storage account settings.`
+
+- **Przyczyna**: Niepoprawna nazwa konta magazynu lub klucz dostępu.
+
+- **Zalecenie**: Sprawdź nazwę konta magazynu i klucz dostępu w połączonej usłudze.
+
+
+### <a name="error-code--2504"></a>Kod błędu:  2504
+
+- **Komunikat**:`Operation returned an invalid status code 'BadRequest'.` 
+
+- **Przyczyna**: Zbyt wiele plików w folderPath aktywności niestandardowej. Łączny rozmiar elementu resourceFiles nie może być większy niż 32 768 znaków.
+
+- **Zalecenie**: Usuń niepotrzebne pliki. Lub Dodaj do nich polecenie rozpakować, aby je wyodrębnić. Na przykład użyj`powershell.exe -nologo -noprofile   -command "& { Add-Type -A 'System.IO.Compression.FileSystem';   [IO.Compression.ZipFile]::ExtractToDirectory($zipFile, $folder); }" ;  $folder\yourProgram.exe`
+
+
+### <a name="error-code--2505"></a>Kod błędu:  2505
+
+- **Komunikat**:`Cannot create Shared Access Signature unless Account Key credentials are used.`
+
+- **Przyczyna**: Działania niestandardowe obsługują tylko konta magazynu używające klucza dostępu.
+
+- **Zalecenie**: Zapoznaj się z opisem błędu.
+
+
+### <a name="error-code--2507"></a>Kod błędu:  2507
+
+- **Komunikat**:`The folder path does not exist or is empty: ....`
+
+- **Przyczyna**: Żadne pliki nie znajdują się na koncie magazynu w określonej ścieżce.
+
+- **Zalecenie**: Ścieżka folderu musi zawierać pliki wykonywalne, które chcesz uruchomić.
+
+
+### <a name="error-code--2508"></a>Kod błędu:  2508
+
+- **Komunikat**:`There are duplicate files in the resource folder.`
+
+- **Przyczyna**: Wiele plików o tej samej nazwie znajduje się w różnych podfolderach folderPath.
+
+- **Zalecenie**: Działania niestandardowe Spłaszcz strukturę folderów w obszarze folderPath.  Jeśli potrzebujesz zachować strukturę folderów, pliki zip i Wyodrębnij je w Azure Batch przy użyciu polecenia Rozpakuj. Na przykład użyj`powershell.exe -nologo -noprofile   -command "& { Add-Type -A 'System.IO.Compression.FileSystem';   [IO.Compression.ZipFile]::ExtractToDirectory($zipFile, $folder); }" ;   $folder\yourProgram.exe`
+
+
+### <a name="error-code--2509"></a>Kod błędu:  2509
+
+- **Komunikat**:`Batch   url ... is invalid; it must be in Uri format.` 
+
+- **Przyczyna**: Adresy URL partii muszą być podobne do`https://mybatchaccount.eastus.batch.azure.com`
+
+- **Zalecenie**: Zapoznaj się z opisem błędu.
+
+
+### <a name="error-code--2510"></a>Kod błędu:  2510
+
+- **Komunikat**:`An   error occurred while sending the request.`
+
+- **Przyczyna**: Adres URL partii jest nieprawidłowy. 
+
+- **Zalecenie**: Sprawdź adres URL partii.
+
 
 ## <a name="hdinsight"></a>HDInsight
 
 Poniższa tabela ma zastosowanie do przesyłania strumieniowego platformy Spark, Hive, MapReduce, trzody chlewnej i usługi Hadoop.
 
-| Kod błędu | Komunikat o błędzie                                                | Opis                                                  | Zalecenie                           |
-| ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 2300,   2310 | Nie można przesłać zadania usługi Hadoop. Błąd: Nie można rozpoznać nazwy zdalnej. <br/><br/>Nie można odnaleźć klastra. | Podany identyfikator URI klastra jest nieprawidłowy.                              | Upewnij się, że klaster nie został usunięty i że podany identyfikator URI jest prawidłowy. Po otwarciu identyfikatora URI w przeglądarce powinien zostać wyświetlony interfejs użytkownika Ambari. Jeśli klaster znajduje się w sieci wirtualnej, identyfikator URI powinien być prywatnym identyfikatorem URI. Aby go otworzyć, użyj maszyny wirtualnej, która jest częścią tej samej sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [bezpośrednie łączenie się z usługami Apache Hadoop Services](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network#directly-connect-to-apache-hadoop-services). |
-| 2300         | Nie można przesłać zadania usługi Hadoop. Zadanie:..., klaster:.../. Błąd: Zadanie zostało anulowane. | Przekroczono limit czasu podczas przekazywania zadania.                         | Przyczyną problemu może być ogólna łączność z usługą HDInsight lub łączność sieciowa. Najpierw upewnij się, że interfejs użytkownika usługi HDInsight Ambari jest dostępny z dowolnej przeglądarki. Upewnij się, że poświadczenia są nadal ważne. Jeśli używasz własnego środowiska uruchomieniowego (IR), upewnij się, że jest to możliwe z maszyny wirtualnej lub maszyny, na której zainstalowano samoobsługowe środowisko IR. Następnie spróbuj ponownie przesłać zadanie z Data Factory. Jeśli nadal się nie powiedzie, skontaktuj się z zespołem Data Factory, aby uzyskać pomoc techniczną. |
-| 2300         | Próby   Nazwa użytkownika Ambari lub hasło są niepoprawne  <br/><br/>Próby   Administrator użytkownika jest zablokowany w Ambari.   <br/><br/>403 — Dostęp zabroniony: Odmowa dostępu. | Poświadczenia usługi HDInsight są nieprawidłowe lub wygasły. | Popraw poświadczenia i ponownie Wdróż połączoną usługę. Najpierw upewnij się, że poświadczenia działają w usłudze HDInsight, otwierając identyfikator URI klastra w dowolnej przeglądarce i próbując się zalogować. Jeśli poświadczenia nie działają, możesz je zresetować z poziomu Azure Portal. |
-| 2300,   2310 | 502 — Serwer sieci Web odebrał nieprawidłową odpowiedź, działając jako brama lub serwer proxy.       <br/>Zła brama. | Ten błąd pochodzi z usługi HDInsight.                               | Ten błąd pochodzi z klastra usługi HDInsight. Aby uzyskać więcej informacji, zobacz [AMBARI UI 502 Error](https://hdinsight.github.io/ambari/ambari-ui-502-error.html), [502 błędy połączenia z serwerem spark Thrift](https://hdinsight.github.io/spark/spark-thriftserver-errors.html), [502 błędy połączenia z serwerem Spark Thrift](https://hdinsight.github.io/spark/spark-thriftserver-errors.html)i [Rozwiązywanie problemów z błędami bramy w Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-troubleshooting-502). |
-| 2300         | Nie można przesłać zadania usługi Hadoop. Zadanie:..., klaster:... Błąd: {\"error\":\"nie można obsłużyć żądania przesłania zadania, ponieważ usługa Templeton jest zajęta zbyt wiele żądań przesłania zadania. Poczekaj przez jakiś czas przed ponowieniem próby wykonania operacji. Zapoznaj się z konfiguracją Templeton. parallellism. job. Submit, aby skonfigurować współbieżne żądania.  <br/><br/>Nie można przesłać zadania usługi Hadoop. Zleceń 161da5d4-6fa8-4ef4-a240-6b6428c5ae2f, klaster: `https://abc-analytics-prod-hdi-hd-trax-prod01.azurehdinsight.net/`.   Błąd: {\"error\":\"Java. IO. IOException: org. Apache. Hadoop. przędzy. Exceptions. przędzexception: Nie można przesłać application_1561147195099_3730 do PRZĘDZy: org. Apache. Hadoop. Security. AccessControlException: Element główny kolejki. joblauncher ma już 500 aplikacji, nie można zaakceptować przesłania aplikacji: application_1561147195099_3730 \ | Zbyt wiele zadań jest przesyłanych do usługi HDInsight w tym samym czasie. | Rozważ ograniczenie liczby współbieżnych zadań przesyłanych do usługi HDInsight. Zapoznaj się z Data Factory współbieżności działań, jeśli zadania są przesyłane przez to samo działanie. Zmień Wyzwalacze w celu rozłożenia współbieżnych uruchomień potoków w czasie. Zapoznaj się z dokumentacją usługi `templeton.parallellism.job.submit` HDInsight, aby dostosować ją w miarę sugerowania błędu. |
-| 2303, 2347 | Zadanie usługi Hadoop nie powiodło się z kodem zakończenia "5". Aby uzyskaćwasbs://adfjobs@adftrialrun.blob.core.windows.net/StreamingJobs/da4afc6d-7836-444e-bbd5-635fce315997/18_06_2019_05_36_05_050/stderrwięcej informacji, zobacz "".  <br/><br/>Wykonanie programu Hive nie powiodło się z kodem błędu "UserErrorHiveOdbcCommandExecutionFailure".   Aby uzyskaćwasbs://adfjobs@eclsupplychainblobd.blob.core.windows.net/HiveQueryJobs/16439742-edd5-4efe-adf6-9b8ff5770beb/18_06_2019_07_37_50_477/Status/hive.outwięcej informacji, zobacz "". | Zadanie zostało przesłane do usługi HDInsight i nie powiodło się w usłudze HDInsight. | Zadanie zostało pomyślnie przesłane do usługi HDInsight. W klastrze nie powiodło się. Otwórz zadanie i dzienniki w interfejsie użytkownika usługi HDInsight Ambari lub Otwórz plik z magazynu, który sugeruje komunikat o błędzie. Plik zawiera szczegóły błędu. |
-| 2328         | Wystąpił wewnętrzny błąd serwera podczas przetwarzania żądania. Spróbuj ponownie wykonać żądanie lub skontaktuj się z pomocą techniczną. | Ten błąd występuje na żądanie w usłudze HDInsight.                              | Ten błąd pochodzi z usługi HDInsight, gdy inicjowanie obsługi usługi HDInsight kończy się niepowodzeniem. Skontaktuj się z zespołem usługi HDInsight i podaj nazwę klastra na żądanie. |
-| 2310         | java.lang.NullPointerException                               | Ten błąd występuje, gdy zadanie zostanie przesłane do klastra Spark.      | Ten wyjątek pochodzi z usługi HDInsight. Powoduje ukrycie rzeczywistego problemu. Skontaktuj się z zespołem usługi HDInsight, aby uzyskać pomoc techniczną. Podaj nazwę klastra i zakres czasu wykonywania działania. |
-|              | Wszystkie inne błędy                                             |                                                              | Rozwiązywanie [problemów przy użyciu usługi HDInsight](../hdinsight/hdinsight-troubleshoot-guide.md) i usługi [HDInsight — często zadawane pytania](https://hdinsight.github.io/). |
+
+### <a name="error-code--2300"></a>Kod błędu:  2300
+
+- **Komunikat**:`Hadoop job submission failed. Error: The remote name could not be resolved. <br/><br/>The cluster is not found.`
+
+- **Przyczyna**: Podany identyfikator URI klastra jest nieprawidłowy. 
+
+- **Zalecenie**:  Upewnij się, że klaster nie został usunięty i że podany identyfikator URI jest prawidłowy. Po otwarciu identyfikatora URI w przeglądarce powinien zostać wyświetlony interfejs użytkownika Ambari. Jeśli klaster znajduje się w sieci wirtualnej, identyfikator URI powinien być prywatnym identyfikatorem URI. Aby go otworzyć, użyj maszyny wirtualnej, która jest częścią tej samej sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [bezpośrednie łączenie się z usługami Apache Hadoop Services](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network#directly-connect-to-apache-hadoop-services).
+
+<br/>
+
+- **Komunikat**:`Hadoop job submission failed. Job: …, Cluster: …/. Error: A task was canceled.`
+
+- **Przyczyna**: Przekroczono limit czasu podczas przekazywania zadania. 
+
+- **Zalecenie**: Przyczyną problemu może być ogólna łączność z usługą HDInsight lub łączność sieciowa. Najpierw upewnij się, że interfejs użytkownika usługi HDInsight Ambari jest dostępny z dowolnej przeglądarki. Upewnij się, że poświadczenia są nadal ważne. Jeśli używasz własnego środowiska uruchomieniowego (IR), upewnij się, że jest to możliwe z maszyny wirtualnej lub maszyny, na której zainstalowano samoobsługowe środowisko IR. Następnie spróbuj ponownie przesłać zadanie z Data Factory. Jeśli nadal się nie powiedzie, skontaktuj się z zespołem Data Factory, aby uzyskać pomoc techniczną.
+
+
+- **Komunikat**:`Unauthorized: Ambari user name or password is incorrect  <br/><br/>Unauthorized: User admin is locked out in Ambari.   <br/><br/>403 - Forbidden: Access is denied.`
+
+- **Przyczyna**: Poświadczenia usługi HDInsight są nieprawidłowe lub wygasły.
+
+- **Zalecenie**: Popraw poświadczenia i ponownie Wdróż połączoną usługę. Najpierw upewnij się, że poświadczenia działają w usłudze HDInsight, otwierając identyfikator URI klastra w dowolnej przeglądarce i próbując się zalogować. Jeśli poświadczenia nie działają, możesz je zresetować z poziomu Azure Portal.
+
+<br/>
+
+- **Komunikat**:`502 - Web server received an invalid response while acting as a gateway or proxy server. <br/>Bad gateway.`
+
+- **Przyczyna**: Ten błąd pochodzi z usługi HDInsight.
+
+- **Zalecenie**: Ten błąd pochodzi z klastra usługi HDInsight. Aby uzyskać więcej informacji, zobacz [AMBARI UI 502 Error](https://hdinsight.github.io/ambari/ambari-ui-502-error.html), [502 błędy połączenia z serwerem spark Thrift](https://hdinsight.github.io/spark/spark-thriftserver-errors.html), [502 błędy połączenia z serwerem Spark Thrift](https://hdinsight.github.io/spark/spark-thriftserver-errors.html)i [Rozwiązywanie problemów z błędami bramy w Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-troubleshooting-502).
+
+<br/>
+
+- **Komunikat**:`Hadoop job submission failed. Job: …, Cluster: ... Error:   {\"error\":\"Unable to service the submit job request as   templeton service is busy with too many submit job requests. Please wait for some time before retrying the operation. Please refer to the config   templeton.parallellism.job.submit to configure concurrent requests. <br/><br/>Hadoop job submission failed. Job: xx, Cluster: name.   Error: {\"error\":\"java.io.IOException:   org.apache.hadoop.yarn.exceptions.YarnException: Failed to submit   application_1561147195099_3730 to YARN :   org.apache.hadoop.security.AccessControlException: Queue root.joblauncher already has 500 applications, cannot accept submission of application:   application_1561147195099_3730\`
+
+- **Przyczyna**: Zbyt wiele zadań jest przesyłanych do usługi HDInsight w tym samym czasie.
+
+- **Zalecenie**: Rozważ ograniczenie liczby współbieżnych zadań przesyłanych do usługi HDInsight. Zapoznaj się z Data Factory współbieżności działań, jeśli zadania są przesyłane przez to samo działanie. Zmień Wyzwalacze w celu rozłożenia współbieżnych uruchomień potoków w czasie. Zapoznaj się z dokumentacją usługi `templeton.parallellism.job.submit` HDInsight, aby dostosować ją w miarę sugerowania błędu.
+
+
+### <a name="error-code--2303"></a>Kod błędu:  2303
+
+- **Komunikat**:`Hadoop job failed with exit code '5'. See   'wasbs://adfjobs@xx.blob.core.windows.net/StreamingJobs/da4afc6d-7836-444e-bbd5-635fce315997/18_06_2019_05_36_05_050/stderr' for more details. <br/><br/>Hive execution failed with error code 'UserErrorHiveOdbcCommandExecutionFailure'.   See 'wasbs://adfjobs@xx.blob.core.windows.net/HiveQueryJobs/16439742-edd5-4efe-adf6-9b8ff5770beb/18_06_2019_07_37_50_477/Status/hive.out' for more details.`
+
+- **Przyczyna**: Zadanie zostało przesłane do usługi HDInsight i nie powiodło się w usłudze HDInsight.
+
+- **Zalecenie**: Zadanie zostało pomyślnie przesłane do usługi HDInsight. W klastrze nie powiodło się. Otwórz zadanie i dzienniki w interfejsie użytkownika usługi HDInsight Ambari lub Otwórz plik z magazynu, który sugeruje komunikat o błędzie. Plik zawiera szczegóły błędu.
+
+
+### <a name="error-code--2310"></a>Kod błędu:  2310
+
+- **Komunikat**:`Hadoop job submission failed. Error: The remote name could not be resolved. <br/><br/>The cluster is not found.`
+
+- **Przyczyna**: Podany identyfikator URI klastra jest nieprawidłowy. 
+
+- **Zalecenie**:  Upewnij się, że klaster nie został usunięty i że podany identyfikator URI jest prawidłowy. Po otwarciu identyfikatora URI w przeglądarce powinien zostać wyświetlony interfejs użytkownika Ambari. Jeśli klaster znajduje się w sieci wirtualnej, identyfikator URI powinien być prywatnym identyfikatorem URI. Aby go otworzyć, użyj maszyny wirtualnej, która jest częścią tej samej sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [bezpośrednie łączenie się z usługami Apache Hadoop Services](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network#directly-connect-to-apache-hadoop-services).
+
+<br/>
+
+- **Komunikat**:`502 - Web server received an invalid response while acting as a gateway or proxy server. <br/>Bad gateway.`
+
+- **Przyczyna**: Ten błąd pochodzi z usługi HDInsight.
+
+- **Zalecenie**: Ten błąd pochodzi z klastra usługi HDInsight. Aby uzyskać więcej informacji, zobacz [AMBARI UI 502 Error](https://hdinsight.github.io/ambari/ambari-ui-502-error.html), [502 błędy połączenia z serwerem spark Thrift](https://hdinsight.github.io/spark/spark-thriftserver-errors.html), [502 błędy połączenia z serwerem Spark Thrift](https://hdinsight.github.io/spark/spark-thriftserver-errors.html)i [Rozwiązywanie problemów z błędami bramy w Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-troubleshooting-502).
+
+<br/>
+
+- **Komunikat**:`java.lang.NullPointerException`
+
+- **Przyczyna**: Ten błąd występuje, gdy zadanie zostanie przesłane do klastra Spark. 
+
+- **Zalecenie**: Ten wyjątek pochodzi z usługi HDInsight. Powoduje ukrycie rzeczywistego problemu. Skontaktuj się z zespołem usługi HDInsight, aby uzyskać pomoc techniczną. Podaj nazwę klastra i zakres czasu wykonywania działania.
+
+
+### <a name="error-code--2347"></a>Kod błędu:  2347
+
+- **Komunikat**:`Hadoop job failed with exit code '5'. See 'wasbs://adfjobs@xx.blob.core.windows.net/StreamingJobs/da4afc6d-7836-444e-bbd5-635fce315997/18_06_2019_05_36_05_050/stderr' for more details. <br/><br/>Hive execution failed with error code 'UserErrorHiveOdbcCommandExecutionFailure'.   See 'wasbs://adfjobs@xx.blob.core.windows.net/HiveQueryJobs/16439742-edd5-4efe-adf6-9b8ff5770beb/18_06_2019_07_37_50_477/Status/hive.out' for more details.`
+
+- **Przyczyna**: Zadanie zostało przesłane do usługi HDInsight i nie powiodło się w usłudze HDInsight.
+
+- **Zalecenie**: Zadanie zostało pomyślnie przesłane do usługi HDInsight. W klastrze nie powiodło się. Otwórz zadanie i dzienniki w interfejsie użytkownika usługi HDInsight Ambari lub Otwórz plik z magazynu, który sugeruje komunikat o błędzie. Plik zawiera szczegóły błędu.
+
+
+### <a name="error-code--2328"></a>Kod błędu:  2328
+
+- **Komunikat**:`Internal server error occurred while processing the request. Please retry the request or contact support. `
+
+- **Przyczyna**: Ten błąd występuje na żądanie w usłudze HDInsight.
+
+- **Zalecenie**: Ten błąd pochodzi z usługi HDInsight, gdy inicjowanie obsługi usługi HDInsight kończy się niepowodzeniem. Skontaktuj się z zespołem usługi HDInsight i podaj nazwę klastra na żądanie.
 
 
 
 ## <a name="web-activity"></a>Działanie internetowe
 
-| Kod błędu | Komunikat o błędzie                                                | Opis                                                  | Zalecenie                          |
-| ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 2108         | Nieprawidłowy HttpMethod: "...".                                    | Działanie sieci Web nie obsługuje metody HTTP określonej w ładunku działania. | Obsługiwane metody HTTP to PUT, POST, GET i DELETE. |
-| 2108         | Nieprawidłowy błąd serwera 500.                                     | Błąd wewnętrzny w punkcie końcowym.                               | Użyj programu Fiddler lub Ogłoś, aby sprawdzić funkcjonalność adresu URL. |
-| 2108         | Nieautoryzowane 401.                                             | Brak prawidłowego uwierzytelniania w żądaniu.                      | Token mógł wygasnąć. Podaj prawidłową metodę uwierzytelniania. Użyj programu Fiddler lub Ogłoś, aby sprawdzić funkcjonalność adresu URL. |
-| 2108         | Zabronione 403.                                                | Brak wymaganych uprawnień.                                 | Sprawdź uprawnienia użytkownika do dostępnego zasobu. Użyj programu Fiddler lub Ogłoś, aby sprawdzić funkcjonalność adresu URL.  |
-| 2108         | Złe żądanie 400.                                              | Nieprawidłowe żądanie HTTP.                                         | Sprawdź adres URL, czasownik i treść żądania. Aby zweryfikować żądanie, użyj programu Fiddler lub programu Poster.  |
-| 2108         | Nie znaleziono 404.                                                | Nie znaleziono zasobu.                                       | Aby zweryfikować żądanie, użyj programu Fiddler lub programu Poster.  |
-| 2108         | Usługa jest niedostępna.                                          | Usługa jest niedostępna.                                       | Aby zweryfikować żądanie, użyj programu Fiddler lub programu Poster.  |
-| 2108         | Nieobsługiwany typ nośnika.                                       | Typ zawartości jest niezgodny z treścią działania sieci Web.           | Określ typ zawartości zgodny z formatem ładunku. Aby zweryfikować żądanie, użyj programu Fiddler lub programu Poster. |
-| 2108         | Zasób, którego szukasz, został usunięty, ma zmienioną nazwę lub jest tymczasowo niedostępna. | Zasób nie jest dostępny.                                | Aby sprawdzić punkt końcowy, użyj programu Fiddler lub programu Poster. |
-| 2108         | Szukana Strona nie może zostać wyświetlona, ponieważ jest używana nieprawidłowa Metoda (czasownik HTTP). | W żądaniu określono niepoprawną metodę działania sieci Web.   | Aby sprawdzić punkt końcowy, użyj programu Fiddler lub programu Poster. |
-| 2108         | invalid_payload                                              | Treść działania sieci Web jest niepoprawna.                       | Aby sprawdzić punkt końcowy, użyj programu Fiddler lub programu Poster. |
+### <a name="error-code--2108"></a>Kod błędu:  2108
+
+- **Komunikat**:`Invalid HttpMethod: '...'.`
+
+- **Przyczyna**: Działanie sieci Web nie obsługuje metody HTTP określonej w ładunku działania.
+
+- **Zalecenie**:  Obsługiwane metody HTTP to PUT, POST, GET i DELETE.
+
+<br/>
+
+- **Komunikat**:`Invalid Server Error 500.`
+
+- **Przyczyna**: Błąd wewnętrzny w punkcie końcowym.
+
+- **Zalecenie**:  Użyj programu Fiddler lub Ogłoś, aby sprawdzić funkcjonalność adresu URL.
+
+<br/>
+
+- **Komunikat**:`Unauthorized 401.`
+
+- **Przyczyna**: Brak prawidłowego uwierzytelniania w żądaniu.
+
+- **Zalecenie**:  Token mógł wygasnąć. Podaj prawidłową metodę uwierzytelniania. Użyj programu Fiddler lub Ogłoś, aby sprawdzić funkcjonalność adresu URL.
+
+<br/>
+
+- **Komunikat**:`Forbidden 403.`
+
+- **Przyczyna**: Brak wymaganych uprawnień.
+
+- **Zalecenie**:  Sprawdź uprawnienia użytkownika do dostępnego zasobu. Użyj programu Fiddler lub Ogłoś, aby sprawdzić funkcjonalność adresu URL.
+
+<br/>
+
+- **Komunikat**:`Bad Request 400.`
+
+- **Przyczyna**: Nieprawidłowe żądanie HTTP.
+
+- **Zalecenie**:   Sprawdź adres URL, czasownik i treść żądania. Aby zweryfikować żądanie, użyj programu Fiddler lub programu Poster.
+
+<br/>
+
+- **Komunikat**:`Not found 404.` 
+
+- **Przyczyna**: Nie znaleziono zasobu.   
+
+- **Zalecenie**:  Aby zweryfikować żądanie, użyj programu Fiddler lub programu Poster.
+
+<br/>
+
+- **Komunikat**:`Service unavailable.`
+
+- **Przyczyna**: Usługa jest niedostępna.
+
+- **Zalecenie**:  Aby zweryfikować żądanie, użyj programu Fiddler lub programu Poster.
+
+<br/>
+
+- **Komunikat**:`Unsupported Media Type.`
+
+- **Przyczyna**: Typ zawartości jest niezgodny z treścią działania sieci Web.
+
+- **Zalecenie**:  Określ typ zawartości zgodny z formatem ładunku. Aby zweryfikować żądanie, użyj programu Fiddler lub programu Poster.
+
+<br/>
+
+- **Komunikat**:`The resource you are looking for has been removed, has had its name changed, or is temporarily unavailable.`
+
+- **Przyczyna**: Zasób nie jest dostępny. 
+
+- **Zalecenie**:  Aby sprawdzić punkt końcowy, użyj programu Fiddler lub programu Poster.
+
+<br/>
+
+- **Komunikat**:`The page you are looking for cannot be displayed because an invalid method (HTTP verb) is being used.`
+
+- **Przyczyna**: W żądaniu określono niepoprawną metodę działania sieci Web.
+
+- **Zalecenie**:  Aby sprawdzić punkt końcowy, użyj programu Fiddler lub programu Poster.
+
+<br/>
+
+- **Komunikat**:`invalid_payload`
+
+- **Przyczyna**: Treść działania sieci Web jest niepoprawna.
+
+- **Zalecenie**:  Aby sprawdzić punkt końcowy, użyj programu Fiddler lub programu Poster.
+
+
+### <a name="error-code--2208"></a>Kod błędu:  2208
+
+- **Komunikat**:`Invoking Web Activity failed with HttpStatusCode - {0}.`
+
+- **Przyczyna**: Usługa docelowa zwróciła stan niepowodzenia.
+
+- **Zalecenie**:  Użyj programu Fiddler/Poster, aby sprawdzić poprawność żądania.
+
+
+### <a name="error-code--2308"></a>Kod błędu:  2308
+
+- **Komunikat**:`No response from the endpoint. Possible causes: network connectivity, DNS failure, server certificate validation or timeout.`
+
+- **Przyczyna**: Może istnieć wiele przyczyn tego błędu, takich jak łączność sieciowa, błąd DNS, weryfikacja certyfikatu serwera lub przekroczenie limitu czasu.
+
+- **Zalecenie**:  Użyj programu Fiddler/Poster, aby sprawdzić poprawność żądania.
+
 
 Aby użyć programu Fiddler do utworzenia sesji HTTP monitorowanej aplikacji sieci Web:
 

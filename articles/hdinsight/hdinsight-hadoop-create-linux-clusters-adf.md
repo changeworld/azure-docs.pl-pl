@@ -2,17 +2,17 @@
 title: 'Samouczek: Klastry Apache Hadoop na żądanie w usłudze Azure HDInsight — Data Factory'
 description: Samouczek — informacje na temat tworzenia klastrów Apache Hadoop na żądanie w usłudze HDInsight przy użyciu Azure Data Factory.
 author: hrasheed-msft
-ms.reviewer: jasonh
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 04/18/2019
-ms.openlocfilehash: de12725952a2bac6a0b86b1d2e239428c0eaa709
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 0b3062e14873ec971163c125fccd6852d8662663
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736182"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098720"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Samouczek: Tworzenie klastrów Apache Hadoop na żądanie w usłudze HDInsight przy użyciu Azure Data Factory
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -203,7 +203,7 @@ W tym artykule opisano konfigurowanie działania programu Hive w celu utworzenia
 
 6. Wybierz pozycję **utwórz & monitor** , aby uruchomić Azure Data Factory Portal tworzenia i monitorowania.
 
-    ![Przegląd Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "Przegląd Azure Data Factory")
+    ![Omówienie portalu Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "Przegląd Azure Data Factory")
 
 ## <a name="create-linked-services"></a>Tworzenie połączonych usług
 
@@ -352,7 +352,7 @@ Alternatywnie możesz usunąć całą grupę zasobów utworzoną dla tego samouc
 1. Na kafelku **zasoby** masz domyślne konto magazynu i fabrykę danych, o ile nie zostanie udostępniona Grupa zasobów z innymi projektami.
 1. Wybierz pozycję **Usuń grupę zasobów**. Spowoduje to usunięcie konta magazynu i danych przechowywanych na koncie magazynu.
 
-    ![Usuń grupę zasobów](./media/hdinsight-hadoop-create-linux-clusters-adf/delete-resource-group.png "Usuń grupę zasobów")
+    ![Azure Portal usunąć grupy zasobów](./media/hdinsight-hadoop-create-linux-clusters-adf/delete-resource-group.png "Usuń grupę zasobów")
 
 1. Wprowadź nazwę grupy zasobów, aby potwierdzić usunięcie, a następnie wybierz pozycję **Usuń**.
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: 1cc2849ffe55fff737993140a1d0f18182820eff
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3683c9fa7810083d26527275a1235df5336d1c65
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68498567"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097821"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Konfigurowanie sieci Azure CNI w usłudze Azure Kubernetes Service (AKS)
 
@@ -118,7 +118,7 @@ Najpierw Pobierz identyfikator zasobu podsieci dla istniejącej podsieci, do kt�
 $ az network vnet subnet list \
     --resource-group myVnet \
     --vnet-name myVnet \
-    --query [].id --output tsv
+    --query "[0].id" --output tsv
 
 /subscriptions/<guid>/resourceGroups/myVnet/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/default
 ```
@@ -169,7 +169,7 @@ Poniższe pytania i odpowiedzi dotyczą konfiguracji sieci **usługi Azure CNI**
 
   Nie jest to zalecane, ale ta konfiguracja jest możliwa. Zakres adresów usługi to zestaw wirtualnych adresów IP (VIP), które Kubernetes przypisuje do usług wewnętrznych w klastrze. Sieć platformy Azure nie ma wglądu w zakres adresów IP usługi klastra Kubernetes. Ze względu na brak widoczności w zakresie adresów usługi klastra można później utworzyć nową podsieć w sieci wirtualnej klastra, która pokrywa się z zakresem adresów usługi. W takim przypadku Kubernetes może przypisać usługę, która jest już używana przez inny zasób w podsieci, powodując nieprzewidywalne zachowanie lub błędy. Dzięki zapewnieniu użycia zakresu adresów poza siecią wirtualną klastra można uniknąć nakładania się ryzyka.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o sieci w AKS w następujących artykułach:
 

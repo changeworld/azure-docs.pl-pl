@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 5d618f12b2a83b0aee145470aff900e26241b705
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 80a38767121f5c54afe51a7d4d788716fe9547e2
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147285"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091362"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>Informacje o rozszerzonych możliwościach trybu offline dla urządzeń IoT Edge, modułów i urządzeń podrzędnych
 
@@ -110,7 +110,7 @@ Jednym ze sposobów tworzenia tej relacji zaufania jest szczegółowo opisany w 
 
 ## <a name="specify-dns-servers"></a>Określ serwery DNS 
 
-W celu zwiększenia niezawodności należy określić adresy serwerów DNS używane w danym środowisku. Aby [ustawić serwer DNS w artykule dotyczącym rozwiązywania problemów,](troubleshoot.md#resolution-7)Zobacz dwie opcje.
+W celu zwiększenia niezawodności należy określić adresy serwerów DNS używane w danym środowisku. Aby ustawić serwer DNS dla IoT Edge, zobacz rozwiązanie dla agenta programu [Edge stale raportuje pusty plik konfiguracji i nie uruchamia żadnych modułów na urządzeniu w artykule dotyczącym](troubleshoot.md#edge-agent-module-continually-reports-empty-config-file-and-no-modules-start-on-the-device) rozwiązywania problemów.
 
 ## <a name="optional-offline-settings"></a>Opcjonalne ustawienia w trybie offline
 
@@ -191,9 +191,9 @@ Lub można skonfigurować magazyn lokalny bezpośrednio w manifeście wdrożenia
 
 Zamień `<HostStoragePath>` i`<ModuleStoragePath>` na ścieżkę magazynu hosta i modułu; obie wartości muszą być ścieżką bezwzględną. 
 
-Na przykład oznacza `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` , że katalog **/etc/iotedge/Storage** w systemie hosta jest mapowany do katalogu **/iotedge/Storage/** w kontenerze. Inny przykład dla systemów Windows oznacza, `"Binds":["C:\\temp:C:\\contemp"]` że katalog **c:\\temp** w systemie hosta jest mapowany do katalogu **c\\:** na tymczasowej sekcji kontenera. 
+Na przykład oznacza `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` , że katalog **/etc/iotedge/Storage** w systemie hosta jest mapowany do katalogu **/iotedge/Storage/** w kontenerze. Inny przykład dla systemów Windows oznacza, `"Binds":["C:\\temp:C:\\contemp"]` że katalog **c\\: temp** w systemie hosta jest mapowany do katalogu **c\\: na tymczasowej** sekcji kontenera. 
 
-Na urządzeniach z systemem Linux upewnij się, że profil użytkownika Centrum IoT Edge, identyfikator UID 1000, ma uprawnienia Odczyt, zapis i wykonywanie do katalogu systemu hosta. Te uprawnienia są niezbędne, aby Centrum IoT Edge mogły przechowywać wiadomości w katalogu i pobierać je później. (Agent IoT Edge działa jako element główny, więc nie potrzebuje dodatkowych uprawnień). Istnieje kilka sposobów zarządzania uprawnieniami katalogu w systemach Linux, w tym za pomocą `chown` programu, zmienić właściciela katalogu, a `chmod` następnie zmienić uprawnienia. Przykład:
+Na urządzeniach z systemem Linux upewnij się, że profil użytkownika Centrum IoT Edge, identyfikator UID 1000, ma uprawnienia Odczyt, zapis i wykonywanie do katalogu systemu hosta. Te uprawnienia są niezbędne, aby Centrum IoT Edge mogły przechowywać wiadomości w katalogu i pobierać je później. (Agent IoT Edge działa jako element główny, więc nie potrzebuje dodatkowych uprawnień). Istnieje kilka sposobów zarządzania uprawnieniami katalogu w systemach Linux, w tym za pomocą `chown` programu, zmienić właściciela katalogu, a `chmod` następnie zmienić uprawnienia. Na przykład:
 
 ```bash
 sudo chown 1000 <HostStoragePath>

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/28/2018
 ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: ae3e45ece1bd53846ab7728c29c0da1b709fe42c
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: eab6e7e0fb834447a55b67dfc9a17c470e9e3361
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915946"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091777"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Przegląd alertów w Microsoft Azure 
 
@@ -27,7 +27,7 @@ Alerty z wyprzedzeniem powiadamiają Cię, gdy w danych monitorowania zostaną z
 
 W tym artykule omówiono ujednolicone środowisko alertów w Azure Monitor, w tym alerty, które były wcześniej zarządzane przez Log Analytics i Application Insights. [Poprzednie środowisko alertów](alerts-classic.overview.md) i typy alertów są nazywane *alertami klasycznymi*. Możesz wyświetlić te starsze środowisko i starszy typ alertu, wybierając pozycję **Wyświetl klasyczne alerty** w górnej części strony alertu. 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Poniższy diagram przedstawia przepływ alertów. 
 
@@ -202,9 +202,9 @@ Następujące przykładowe żądanie do interfejsu API zwraca liczbę alertów w
   }
 }
 ```
-W celu uzyskania [odpowiednich pól można](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#essentials-fields) wysyłać zapytania do alertów.
+W celu uzyskania [odpowiednich pól można](alerts-common-schema-definitions.md#essentials) wysyłać zapytania do alertów.
 
-Użyj [interfejsu API REST alert Management](https://aka.ms/alert-management-api) , aby uzyskać więcej informacji na temat określonych alertów, w tym ich pól [kontekstu alertu](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields) .
+Użyj [interfejsu API REST alert Management](https://aka.ms/alert-management-api) , aby uzyskać więcej informacji na temat określonych alertów, w tym ich pól [kontekstu alertu](alerts-common-schema-definitions.md#alert-context) .
 
 ## <a name="next-steps"></a>Następne kroki
 

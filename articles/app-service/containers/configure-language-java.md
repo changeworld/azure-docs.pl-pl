@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: f0cbb8d19d2a7d60fdfd3c10a8c9914ffa79e0a3
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 8e47365f74668ba2b93bad2b65a9dc9e83080832
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034902"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098122"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurowanie aplikacji Java dla systemu Linux dla Azure App Service
 
@@ -49,11 +49,11 @@ Raporty o wydajności, wizualizacje ruchu i narzędzia dla kondycji są dostępn
 
 [!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
 
-Aby uzyskać więcej informacji, zobacz [dzienniki przesyłania strumieniowego za pomocą interfejsu wiersza polecenia platformy Azure](../troubleshoot-diagnostic-logs.md#streaming-with-azure-cli).
+Aby uzyskać więcej informacji, zobacz [przesyłanie strumieniowe dzienników w Cloud Shell](../troubleshoot-diagnostic-logs.md#in-cloud-shell).
 
 ### <a name="app-logging"></a>Rejestrowanie aplikacji
 
-Włącz [Rejestrowanie aplikacji](../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#enablediag) za pomocą Azure Portal lub [interfejsu wiersza polecenia platformy Azure](/cli/azure/webapp/log#az-webapp-log-config) w celu skonfigurowania App Service zapisywania strumieni błędów konsoli standardowej i standardowego programu na potrzeby aplikacji w lokalnym systemie plików lub BLOB Storage platformy Azure. Rejestrowanie w lokalnym wystąpieniu systemu plików App Service jest wyłączone 12 godzin od jego skonfigurowania. Jeśli potrzebujesz już przechowywania, skonfiguruj aplikację do zapisywania danych wyjściowych do kontenera magazynu obiektów BLOB. Dzienniki aplikacji Java i Tomcat można znaleźć w katalogu */Home/LogFiles/Application/* .
+Włącz [Rejestrowanie aplikacji](../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#enable-application-logging-windows) za pomocą Azure Portal lub [interfejsu wiersza polecenia platformy Azure](/cli/azure/webapp/log#az-webapp-log-config) w celu skonfigurowania App Service zapisywania strumieni błędów konsoli standardowej i standardowego programu na potrzeby aplikacji w lokalnym systemie plików lub BLOB Storage platformy Azure. Rejestrowanie w lokalnym wystąpieniu systemu plików App Service jest wyłączone 12 godzin od jego skonfigurowania. Jeśli potrzebujesz już przechowywania, skonfiguruj aplikację do zapisywania danych wyjściowych do kontenera magazynu obiektów BLOB. Dzienniki aplikacji Java i Tomcat można znaleźć w katalogu */Home/LogFiles/Application/* .
 
 Jeśli aplikacja korzysta z [Logback](https://logback.qos.ch/) lub [Log4J](https://logging.apache.org/log4j) do śledzenia, można przekazać te ślady do przeglądu na platformie Azure Application Insights przy użyciu instrukcji konfiguracyjnych platformy rejestrowania w temacie [Eksplorowanie dzienników śledzenia Java w Application Insights ](/azure/application-insights/app-insights-java-trace-logs).
 
@@ -655,7 +655,7 @@ Aby włączyć fasolę opartą na komunikatach przy użyciu Service Bus jako mec
 
 Można skonfigurować Tomcat do korzystania z zewnętrznego magazynu sesji, takiego jak [pamięć podręczna platformy Azure dla Redis](/azure/azure-cache-for-redis/). Dzięki temu można zachować stan sesji użytkownika (na przykład dane koszyka zakupów), gdy użytkownik zostanie przetransferowany do innego wystąpienia aplikacji, na przykład w przypadku automatycznego skalowania, ponownego uruchomienia lub przejścia w tryb failover.
 
-Aby użyć Tomcat z Redis, musisz skonfigurować aplikację tak, aby korzystała [](http://tomcat.apache.org/tomcat-8.5-doc/config/manager.html) z implementacji trwałego elementumanager. Poniższe kroki wyjaśniają ten proces za pomocą [Menedżera sesji Pivot: Redis — magazyn](https://github.com/pivotalsoftware/session-managers/tree/master/redis-store) jako przykład.
+Aby użyć Tomcat z Redis, musisz skonfigurować aplikację tak, aby korzystała z implementacji [trwałego](http://tomcat.apache.org/tomcat-8.5-doc/config/manager.html) elementumanager. Poniższe kroki wyjaśniają ten proces za pomocą [Menedżera sesji Pivot: Redis — magazyn](https://github.com/pivotalsoftware/session-managers/tree/master/redis-store) jako przykład.
 
 1. Otwórz Terminal bash i Użyj `export <variable>=<value>` , aby ustawić każdą z następujących zmiennych środowiskowych.
 
@@ -696,7 +696,7 @@ Aby użyć Tomcat z Redis, musisz skonfigurować aplikację tak, aby korzystała
 
 3. Za pomocą protokołu FTP Przekaż plik JAR Menedżera sesji do wystąpienia App Service, umieszczając je w katalogu */Home/Tomcat/lib* . Aby uzyskać więcej informacji, zobacz [wdrażanie aplikacji do Azure App Service przy użyciu protokołu FTP/S](https://docs.microsoft.com/azure/app-service/deploy-ftp).
 
-4. Wyłącz [plik cookie koligacji sesji](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/) dla wystąpienia App Service. Można to zrobić w Azure Portal, przechodząc do aplikacji, a następnie ustawiając **Ustawienia ogólne > konfiguracji > koligacja ARR** . Alternatywnie można użyć następującego polecenia:
+4. Wyłącz [plik cookie koligacji sesji](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/) dla wystąpienia App Service. Można to zrobić w Azure Portal, przechodząc **do aplikacji**, a następnie ustawiając **Ustawienia ogólne > konfiguracji > koligacja ARR** . Alternatywnie można użyć następującego polecenia:
 
     ```azurecli
     az webapp update -g <resource group> -n <webapp name> --client-affinity-enabled false
@@ -765,7 +765,7 @@ Aby użyć Tomcat z Redis, musisz skonfigurować aplikację tak, aby korzystała
 
 Twoja aplikacja będzie teraz korzystać z pamięci podręcznej Redis na potrzeby zarządzania sesją.
 
-Aby zapoznać się z przykładem, którego można użyć do przetestowania tych instrukcji, zobacz repozytorium skalowanie- [stanowe-Java-Web-App-on-Azure](https://github.com/Azure-Samples/scaling-stateful-java-web-app-on-azure) w serwisie GitHub.
+Aby zapoznać się z przykładem, którego można użyć do przetestowania tych instrukcji, zobacz repozytorium [skalowanie-stanowe-Java-Web-App-on-Azure](https://github.com/Azure-Samples/scaling-stateful-java-web-app-on-azure) w serwisie GitHub.
 
 ## <a name="docker-containers"></a>Kontenerów Docker
 

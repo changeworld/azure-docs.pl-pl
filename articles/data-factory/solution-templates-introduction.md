@@ -11,12 +11,12 @@ ms.date: 01/04/2019
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: c4a3fc20e806ec91ed2646e6131f682bf5c80e38
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: eb7a7eb8e1bdacae4b74e3a0019a376c440fe4d5
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140838"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091975"
 ---
 # <a name="templates"></a>Szablony
 
@@ -56,7 +56,7 @@ Data Factory używa szablonów Azure Resource Manager do zapisywania szablonów 
 
     -   Kopiuj z \<lokalizacji\> źródłowej do \<docelowej\>
 
-        -   Z usługi Amazon S3 do Azure Data Lake Store generacji 2
+        -   [Z usługi Amazon S3 do Azure Data Lake Store generacji 2](solution-template-migration-s3-azure.md)
 
         -   Z usługi Google Big Query do Azure Data Lake Store Gen 2
 
@@ -72,7 +72,7 @@ Data Factory używa szablonów Azure Resource Manager do zapisywania szablonów 
 
 -   Szablony usług SSIS
 
-    -   Planowanie Azure-SSIS Integration Runtime wykonywania pakietów SSIS
+    -   Zaplanuj Integration Runtime platformy Azure — SSIS do wykonywania pakietów SSIS
 
 -   Przekształć szablony
 

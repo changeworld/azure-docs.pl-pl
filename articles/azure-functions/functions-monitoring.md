@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
-ms.openlocfilehash: 7220c72625697490d9c42dab7e18ca4bf64d3f43
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8092108ef13f4b86f20cf5a8a0b41b49d75aa626
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085625"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098680"
 ---
 # <a name="monitor-azure-functions"></a>Monitorowanie usługi Azure Functions
 
@@ -610,7 +610,7 @@ Podczas tworzenia aplikacji często zachodzi potrzeba zapisywania w dziennikach 
 
 Istnieją dwa sposoby wyświetlania strumienia plików dziennika generowanych przez wykonania funkcji.
 
-* **Wbudowane przesyłanie strumieniowe dzienników**: platforma App Service umożliwia wyświetlenie strumienia plików dziennika aplikacji. Jest to równoznaczne z danymi wyjściowymi wyświetlanymi podczas debugowania funkcji podczas [lokalnego tworzenia](functions-develop-local.md) i korzystania z karty **test** w portalu. Wyświetlane są wszystkie informacje oparte na dzienniku. Aby uzyskać więcej informacji, zobacz [jak przesyłać dzienniki strumieniowo](../app-service/troubleshoot-diagnostic-logs.md#streamlogs). Ta metoda przesyłania strumieniowego obsługuje tylko jedno wystąpienie i nie może być używana z aplikacją działającą w systemie Linux w planie zużycia.
+* **Wbudowane przesyłanie strumieniowe dzienników**: platforma App Service umożliwia wyświetlenie strumienia plików dziennika aplikacji. Jest to równoznaczne z danymi wyjściowymi wyświetlanymi podczas debugowania funkcji podczas [lokalnego tworzenia](functions-develop-local.md) i korzystania z karty **test** w portalu. Wyświetlane są wszystkie informacje oparte na dzienniku. Aby uzyskać więcej informacji, zobacz [dzienniki przesyłania strumieniowego](../app-service/troubleshoot-diagnostic-logs.md#stream-logs). Ta metoda przesyłania strumieniowego obsługuje tylko jedno wystąpienie i nie może być używana z aplikacją działającą w systemie Linux w planie zużycia.
 
 * **Live Metrics Stream**: gdy aplikacja funkcji jest [połączona z Application Insights](#enable-application-insights-integration), można wyświetlać dane dziennika i inne metryki w czasie niemal rzeczywistym w Azure Portal przy użyciu [Live Metrics Stream](../azure-monitor/app/live-stream.md). Użyj tej metody, gdy funkcje monitorowania działają w wielu wystąpieniach lub w systemie Linux w planie zużycia. Ta metoda używa [danych próbkowanych](#configure-sampling).
 
@@ -634,7 +634,7 @@ Spowoduje to połączenie aplikacji z usługą przesyłania strumieniowego dzien
 
 Aby wyświetlić Live Metrics Stream aplikacji, wybierz kartę **Przegląd** aplikacji funkcji. Gdy Application Insights włączasz, zobaczysz link **Application Insights** w obszarze **skonfigurowane funkcje**. Ten link prowadzi do strony Application Insights Twojej aplikacji.
 
-W Application Insights wybierz pozycję **Live Metrics Stream**. [Przykładowe wpisy dziennika](#configure-sampling) są wyświetlane w obszarze **przykładowe**dane telemetryczne.
+W Application Insights wybierz pozycję **Live Metrics Stream**. [Przykładowe wpisy dziennika](#configure-sampling) są wyświetlane w obszarze **przykładowe dane telemetryczne**.
 
 ![Wyświetlanie Live Metrics Stream w portalu](./media/functions-monitoring/live-metrics-stream.png) 
 

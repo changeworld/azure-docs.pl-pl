@@ -1,6 +1,6 @@
 ---
-title: Operacje ochrony hasłem usługi AD platformy Azure i raportowanie — usługi Azure Active Directory
-description: Operacji po wdrożeniu na platformie Azure AD ochrony hasłem i raportowanie
+title: Operacje i raportowanie ochrony hasłem usługi Azure AD — Azure Active Directory
+description: Operacje wdrażania i raportowania w usłudze Azure AD Password Protection
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,54 +11,57 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca85007bb016cc98d1be61ce08865945e699ad4a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b5ff7f0bbf1bf474a611ae033165bca6dfaac676
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60358200"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097631"
 ---
-# <a name="azure-ad-password-protection-operational-procedures"></a>Usługa Azure AD ochrony hasłem procedury operacyjne
+# <a name="azure-ad-password-protection-operational-procedures"></a>Procedury operacyjne ochrony hasłem usługi Azure AD
 
-Po ukończeniu [instalacji ochrony haseł usługi Azure AD](howto-password-ban-bad-on-premises-deploy.md) w środowisku lokalnym, istnieje kilka elementów, które muszą być skonfigurowane w witrynie Azure portal.
+Po zakończeniu [instalacji ochrony hasłem usługi Azure AD](howto-password-ban-bad-on-premises-deploy.md) lokalnie istnieje kilka elementów, które muszą zostać skonfigurowane w Azure Portal.
 
-## <a name="configure-the-custom-banned-password-list"></a>Skonfiguruj listę niestandardowych zakazanych haseł
+## <a name="configure-the-custom-banned-password-list"></a>Skonfiguruj niestandardową listę wykluczonych haseł
 
-Postępuj zgodnie ze wskazówkami w artykule [Konfigurowanie listy zakazanych haseł w niestandardowych](howto-password-ban-bad-configure.md) dla czynności związanych z dostosowaniem listy zakazanych haseł dla Twojej organizacji.
+Postępuj zgodnie ze wskazówkami zawartymi w artykule [Konfigurowanie listy niestandardowo zakazanych haseł](howto-password-ban-bad-configure.md) , aby dostosowywać listę wykluczonych haseł dla organizacji.
 
-## <a name="enable-password-protection"></a>Włączanie ochrony hasłem
+## <a name="enable-password-protection"></a>Włącz ochronę hasłem
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) i przejdź do **usługi Azure Active Directory**, **metod uwierzytelniania**, następnie **ochrony hasłem**.
-1. Ustaw **włączenia ochrony haseł usługi Active Directory systemu Windows Server** do **tak**
-1. Jak wspomniano w [przewodnik wdrażania](howto-password-ban-bad-on-premises-deploy.md#deployment-strategy), zalecane jest początkowo ustawiona **tryb** do **inspekcji**
-   * Po masz doświadczenia z tej funkcji, można przełączać się **tryb** do **wymuszone**
+1. Zaloguj się do [Azure Portal](https://portal.azure.com) i przejdź do **Azure Active Directory**, **metody uwierzytelniania**, a następnie **Ochrona hasłem**.
+1. Ustaw **opcję Włącz ochronę hasłem w systemie Windows Server Active Directory** na **wartość tak**
+1. Jak wspomniano w [Podręczniku wdrażania](howto-password-ban-bad-on-premises-deploy.md#deployment-strategy)zaleca się wstępne ustawienie **trybu** **inspekcji**
+   * Po dodaniu tej funkcji możesz przełączyć **tryb** na **wymuszony**
 1. Kliknij polecenie **Zapisz**.
 
-![Włączanie składników ochrony haseł usługi Azure AD w witrynie Azure portal](./media/howto-password-ban-bad-on-premises-operations/authentication-methods-password-protection-on-prem.png)
+![Włączanie składników ochrony hasłem usługi Azure AD w Azure Portal](./media/howto-password-ban-bad-on-premises-operations/authentication-methods-password-protection-on-prem.png)
 
 ## <a name="audit-mode"></a>Tryb inspekcji
 
-Tryb inspekcji ma służyć jako możliwość uruchamiania oprogramowania w trybie "what if". Każda usługa agenta DC oblicza hasło do poczty przychodzącej zgodnie z zasadami aktualnie aktywne. Jeśli bieżące zasady jest skonfigurowany w trybie inspekcji, hasła "złe" wynik w komunikatach w dzienniku zdarzeń, ale są akceptowane. Jest to jedyna różnica między trybem inspekcji i wymuszania; wszystkie inne operacje, uruchom takie same.
+Tryb inspekcji jest przeznaczony do uruchamiania oprogramowania w trybie "co jeśli". Każda usługa agenta DC szacuje hasło przychodzące zgodnie z aktualnie aktywnymi zasadami. Jeśli bieżące zasady zostały skonfigurowane do obsługi trybu inspekcji, hasła "złe" powodują, że komunikaty dziennika zdarzeń są akceptowane. Jest to jedyna różnica między trybami inspekcji i wymuszania. wszystkie inne operacje działają tak samo.
 
 > [!NOTE]
-> Firma Microsoft zaleca się, że początkowego wdrażania i testowania zawsze rozpoczyna pracę w trybie inspekcji. Następnie należy monitorować zdarzenia w dzienniku zdarzeń w celu przewidywania, czy wszystkie istniejące procesy operacyjne będzie zakłóceń, gdy tryb wymuszania jest włączony.
+> Firma Microsoft zaleca, aby początkowe wdrożenie i testy były zawsze uruchamiane w trybie inspekcji. Zdarzenia w dzienniku zdarzeń powinny być następnie monitorowane w celu zaplanowania, czy jakiekolwiek istniejące procesy operacyjne byłyby zakłócone po włączeniu trybu wymuszania.
 
-## <a name="enforce-mode"></a>Tryb wymuszania
+## <a name="enforce-mode"></a>Wymuszaj tryb
 
-Wymusić tryb jest przeznaczony jako konfiguracji końcowej. Tak jak w trybie inspekcji powyżej każda usługa agenta DC ocenia przychodzące hasła zgodnie z zasadami aktualnie aktywne. Jeśli jednak jest włączony tryb wymuszania, hasła, który jest uważany za niebezpieczne zgodnie z zasadami jest odrzucane.
+Tryb wymuszania jest zamierzony jako Konfiguracja końcowa. Podobnie jak w przypadku trybu inspekcji powyżej, każda usługa agenta kontrolera domeny szacuje hasła przychodzące zgodnie z aktualnie aktywnymi zasadami. Jeśli Tryb wymuszania jest włączony, hasło, które jest uznawane za niezabezpieczone zgodnie z zasadami, jest odrzucane.
 
-Gdy hasło zostanie odrzucona w trybie wymuszania przez agenta ochrony kontrolera domeny haseł usługi Azure AD, widoczne wpływ widoczne dla użytkownika końcowego jest identyczna co zobaczą będzie, jeśli ich hasła zostało odrzucone przez wymuszanie złożoności hasła tradycyjnych lokalnych. Na przykład użytkownik może zostać wyświetlony następujący komunikat o błędzie tradycyjnych, na ekranie hasła logon\change Windows:
+Jeśli hasło zostanie odrzucone w trybie wymuszania przez agenta usługi Azure AD Password Protection, widoczny wpływ widoczny dla użytkownika końcowego jest identyczny jak w przypadku odrzucenia hasła przez tradycyjne wymuszanie złożoności hasła. Na przykład użytkownik może zobaczyć następujący tradycyjny komunikat o błędzie na ekranie hasła logon\change systemu Windows:
 
 `Unable to update the password. The value provided for the new password does not meet the length, complexity, or history requirements of the domain.`
 
-Ten komunikat jest tylko jeden przykład kilku możliwych wartości. Komunikat o błędzie może się różnić w zależności od rzeczywistej oprogramowania lub scenariusz, który próbuje ustawić hasło niezabezpieczonych.
+Ten komunikat to tylko jeden przykład z kilku możliwych wyników. Konkretny komunikat o błędzie może się różnić w zależności od rzeczywistego oprogramowania lub scenariusza, który podejmuje próbę ustawienia niezabezpieczonego hasła.
 
-Narażeni użytkownicy końcowi może być konieczne do pracy z ich personelu IT, aby poznać nowe wymagania i bardziej umożliwia wybranie opcji bezpiecznych haseł.
+Użytkownicy końcowi, którzy mają problemy, mogą potrzebować współpracy z pracownikami IT w celu zrozumienia nowych wymagań i zapewnienia dodatkowych haseł.
 
-## <a name="enable-mode"></a>Włącz tryb
+> [!NOTE]
+> Ochrona hasłem w usłudze Azure AD nie kontroluje określonego komunikatu o błędzie wyświetlanego przez komputer kliencki w przypadku odrzucenia słabego hasła.
 
-To ustawienie, zazwyczaj powinna pozostać w stanie domyślnym włączone (tak). Skonfigurowanie tego ustawienia na wyłączone (nie) spowoduje, że wszystkie wdrożonych agentów DC ochronę haseł usługi Azure AD przejść do trybu spoczynku, gdzie wszystkie hasła będzie akceptowane jako-, a żadne działania sprawdzania poprawności zostanie wykonane jakiejkolwiek (na przykład, nawet zdarzeń inspekcji będzie obliczanie).
+## <a name="enable-mode"></a>Tryb włączania
 
-## <a name="next-steps"></a>Kolejne kroki
+To ustawienie powinno pozostać w domyślnym stanie włączony (tak). Skonfigurowanie tego ustawienia na wyłączone (nie) spowoduje, że wszystkie wdrożone Agenty usługi Azure AD Password Protection będą działać w trybie quiescent, w którym wszystkie hasła są akceptowane jako-is, a żadne działania weryfikacyjne nie będą wykonywane w żadnym przypadku (na przykład nierówne zdarzenia inspekcji zostanie wyemitowany).
 
-[Monitorowanie ochrony haseł usługi Azure AD](howto-password-ban-bad-on-premises-monitor.md)
+## <a name="next-steps"></a>Następne kroki
+
+[Monitorowanie ochrony hasłem usługi Azure AD](howto-password-ban-bad-on-premises-monitor.md)

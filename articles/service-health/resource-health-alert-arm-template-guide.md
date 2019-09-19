@@ -1,62 +1,62 @@
 ---
-title: Konfigurowanie alertów dotyczących kondycji zasobów platformy Azure przy użyciu szablonów usługi Resource Manager | Dokumentacja firmy Microsoft
-description: Tworzenie alertów programowe, które powiadomienie, gdy zasoby platformy Azure staną się niedostępne.
+title: Konfigurowanie alertów usługi Azure Resource Health przy użyciu szablonów Menedżer zasobów | Microsoft Docs
+description: Programowe tworzenie alertów powiadamiających o stanie niedostępności zasobów platformy Azure.
 author: stephbaron
 ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 9/4/2018
-ms.openlocfilehash: e552b90a4c98eff7b04cbeaef26aa10749ce672c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7ccd84042d11b586d524d4eb76eba03111e0b3c5
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66493396"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71099007"
 ---
-# <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurowanie alertów dotyczących kondycji zasobów przy użyciu szablonów usługi Resource Manager
+# <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurowanie alertów dotyczących kondycji zasobów przy użyciu szablonów Menedżer zasobów
 
-W tym artykule pokazano sposób tworzenia zasobów kondycji alertów dziennika aktywności programowo przy użyciu szablonów usługi Azure Resource Manager i programu Azure PowerShell.
+W tym artykule opisano sposób tworzenia alertów dziennika aktywności Resource Health programowo przy użyciu szablonów Azure Resource Manager i Azure PowerShell.
 
-Usługa Azure Resource Health przechowuje, poinformowani o bieżące i historyczne kondycja zasobów platformy Azure. Alerty usługi Azure Resource Health może generować powiadomienia w niemal w czasie rzeczywistym, gdy te zasoby mają zmianę stanu kondycji. Tworzenie Resource Health alerty programowo pozwalają użytkownikom na tworzenie i Dostosowywanie alertów w trybie zbiorczym.
+Azure Resource Health informuje o aktualnym i historycznym stanie kondycji zasobów platformy Azure. Alerty Azure Resource Health mogą powiadamiać niemal w czasie rzeczywistym o zmianie stanu kondycji tych zasobów. Tworzenie alertów Resource Health programowo pozwala użytkownikom na tworzenie i dostosowywanie alertów zbiorczo.
 
 > [!NOTE]
-> Alerty dotyczące kondycji zasobów są obecnie dostępne w wersji zapoznawczej.
+> Alerty Resource Health są obecnie dostępne w wersji zapoznawczej.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Postępuj zgodnie z instrukcjami na tej stronie, należy wcześniej skonfigurować kilka ustawień:
+Aby postępować zgodnie z instrukcjami na tej stronie, musisz skonfigurować kilka rzeczy z wyprzedzeniem:
 
-1. Musisz zainstalować [modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)
-2. Musisz [tworzenia lub ponownego użycia grupy akcji](../azure-monitor/platform/action-groups.md) skonfigurowane powiadomienia użytkownika
+1. Należy zainstalować [moduł Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)
+2. Należy [utworzyć lub ponownie użyć grupy akcji](../azure-monitor/platform/action-groups.md) skonfigurowanej do powiadamiania użytkownika
 
 ## <a name="instructions"></a>Instrukcje
-1. Przy użyciu programu PowerShell, zaloguj się do platformy Azure przy użyciu swojego konta i wybierz subskrypcję, której ma nastąpić interakcja
+1. Korzystając z programu PowerShell, zaloguj się do platformy Azure przy użyciu swojego konta i wybierz subskrypcję, z którą chcesz korzystać
 
         Login-AzAccount
         Select-AzSubscription -Subscription <subscriptionId>
 
-    > Możesz użyć `Get-AzSubscription` listę subskrypcji możesz mieć możliwość.
+    > Możesz użyć `Get-AzSubscription` , aby wyświetlić listę subskrypcji, do których masz dostęp.
 
-2. Znajdź, a następnie zapisz pełny identyfikator usługi Azure Resource Manager dla grupy akcji
+2. Znajdź i Zapisz pełny identyfikator Azure Resource Manager dla grupy akcji
 
         (Get-AzActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
 
-3. Utwórz i Zapisz szablon usługi Resource Manager dla alertów dotyczących kondycji zasobu jako `resourcehealthalert.json` ([Zobacz szczegóły poniżej](#resource-manager-template-options-for-resource-health-alerts))
+3. Utwórz i Zapisz szablon Menedżer zasobów dla alertów Resource Health AS `resourcehealthalert.json` ([Zobacz szczegóły poniżej](#resource-manager-template-options-for-resource-health-alerts))
 
-4. Utwórz nowe wdrożenie usługi Azure Resource Manager przy użyciu tego szablonu
+4. Utwórz nowe wdrożenie Azure Resource Manager przy użyciu tego szablonu
 
         New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <resourceGroup> -TemplateFile <path\to\resourcehealthalert.json>
 
-5. Zostanie wyświetlony monit o wpisanie nazwy alertu i skopiowane wcześniej identyfikator zasobu grupy akcji:
+5. Zostanie wyświetlony monit o wpisanie nazwy alertu i identyfikatora zasobu grupy akcji skopiowanego wcześniej:
 
         Supply values for the following parameters:
         (Type !? for Help.)
         activityLogAlertName: <Alert Name>
         actionGroupResourceId: /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.insights/actionGroups/<actionGroup>
 
-6. Jeśli wszystko działało pomyślnie, otrzymasz potwierdzenie w programie PowerShell
+6. Jeśli wszystko działało prawidłowo, otrzymasz potwierdzenie w programie PowerShell
 
         DeploymentName          : ExampleDeployment
         ResourceGroupName       : <resourceGroup>
@@ -74,13 +74,13 @@ Postępuj zgodnie z instrukcjami na tej stronie, należy wcześniej skonfigurowa
         Outputs                 :
         DeploymentDebugLogLevel :
 
-Należy pamiętać, że jeśli planowane jest w pełni automatyzując ten proces, po prostu musisz edytować szablon usługi Resource Manager, nie monit o podanie wartości w kroku 5.
+Należy pamiętać, że jeśli planujesz w pełni automatyzowanie tego procesu, wystarczy edytować szablon Menedżer zasobów, aby nie monitował o wartości w kroku 5.
 
-## <a name="resource-manager-template-options-for-resource-health-alerts"></a>Opcje szablonu usługi Resource Manager dla alertów dotyczących kondycji zasobu
+## <a name="resource-manager-template-options-for-resource-health-alerts"></a>Opcje szablonu Menedżer zasobów dla alertów Resource Health
 
-Tego podstawowego szablonu jako punktu wyjścia służy do tworzenia alertów dotyczących kondycji zasobu. Ten szablon będzie działać zgodnie z zapisane i będą Zarejestruj możesz otrzymywać alerty dla zdarzenia dotyczące kondycji wszystkich zasobów nowo aktywowanego wszystkich zasobów w ramach subskrypcji.
+Tego szablonu podstawowego można użyć jako punktu wyjścia do tworzenia alertów Resource Health. Ten szablon będzie działał jako zapisany i zostanie zasubskrybowany w celu otrzymywania alertów dotyczących wszystkich nowo aktywowanych zdarzeń dotyczących kondycji zasobów dla wszystkich zasobów w ramach subskrypcji.
 
-> W dolnej części tego artykułu wprowadzono również bardziej złożony szablon alertu, w którym należy zwiększyć sygnał szum alerty dotyczące kondycji zasobów w porównaniu do tego szablonu.
+> W dolnej części tego artykułu Dodaliśmy również bardziej skomplikowany szablon alertu, który powinien zwiększyć współczynnik hałasu dla Resource Health alertów w porównaniu z tym szablonem.
 
 ```json
 {
@@ -137,26 +137,26 @@ Tego podstawowego szablonu jako punktu wyjścia służy do tworzenia alertów do
 }
 ```
 
-Jednak szeroką alert podobny do poniższego ogólnie nie jest zalecane. Dowiedz się, jak ustawić szczegółów tego alertu, aby skoncentrować się na zdarzenia, które Dbamy o poniżej.
+Jednak szeroki alert, taki jak ten, zazwyczaj nie jest zalecany. Dowiedz się, w jaki sposób można określić zakres tego alertu, aby skoncentrować się na zdarzeniach, które są poniżej.
 
-### <a name="adjusting-the-alert-scope"></a>Dostosowując zakres alertu
+### <a name="adjusting-the-alert-scope"></a>Dostosowywanie zakresu alertu
 
-Można skonfigurować alerty dotyczące kondycji zasobów w celu monitorowania zdarzeń w trzech różnych zakresów:
+Alerty Resource Health można skonfigurować do monitorowania zdarzeń w trzech różnych zakresach:
 
  * Poziom subskrypcji
- * Poziomie grupy zasobów
+ * Poziom grupy zasobów
  * Poziom zasobu
 
-Szablon alertu jest skonfigurowana na poziomie subskrypcji, ale jeśli chcesz skonfigurować alert tylko Powiadomimy Cię o niektórych zasobów lub zasobów w grupie zasobów, po prostu musisz zmodyfikować `scopes` sekcji powyżej szablon.
+Szablon alertu jest skonfigurowany na poziomie subskrypcji, ale jeśli chcesz skonfigurować alert w taki sposób, aby powiadamiał tylko o określonych zasobach lub zasobach należących do określonej grupy zasobów, wystarczy zmodyfikować `scopes` sekcję w powyższej sekcji formularza.
 
-Dla zakresu poziomu grupy zasobów w sekcji zakresy powinien wyglądać:
+W przypadku zakresu poziomu grupy zasobów sekcja zakresy powinna wyglądać następująco:
 ```json
 "scopes": [
     "/subscriptions/<subscription id>/resourcegroups/<resource group>"
 ],
 ```
 
-I poziomu zakresu zasobów, w sekcji zakres powinien wyglądać następująco:
+W przypadku zakresu poziomu zasobów sekcja Scope powinna wyglądać następująco:
 
 ```json
 "scopes": [
@@ -166,11 +166,11 @@ I poziomu zakresu zasobów, w sekcji zakres powinien wyglądać następująco:
 
 Na przykład: `"/subscriptions/d37urb3e-ed41-4670-9c19-02a1d2808ff9/resourcegroups/myRG/providers/microsoft.compute/virtualmachines/myVm"`
 
-> Można przejść do witryny Azure Portal i spójrz na adres URL, podczas wyświetlania swoich zasobów platformy Azure, aby uzyskać ten ciąg.
+> Możesz przejść do witryny Azure Portal i przyjrzeć się adresowi URL podczas wyświetlania zasobu platformy Azure, aby uzyskać ten ciąg.
 
-### <a name="adjusting-the-resource-types-which-alert-you"></a>Dopasowywanie zasobów typy, które wysyłania alertów
+### <a name="adjusting-the-resource-types-which-alert-you"></a>Dostosowywanie typów zasobów, które alertu
 
-Alerty na poziomie grupy zasobów lub subskrypcji mogą mieć różnych rodzajów zasobów. Jeśli chcesz ograniczyć alerty pochodzić tylko z podzbioru typów zasobów, można zdefiniować w `condition` części szablonu w następujący sposób:
+Alerty na poziomie subskrypcji lub grupy zasobów mogą mieć różne rodzaje zasobów. Jeśli chcesz ograniczyć alerty tylko do określonego podzestawu typów zasobów, możesz zdefiniować te wartości w `condition` sekcji szablonu, takiej jak:
 
 ```json
 "condition": {
@@ -195,12 +195,12 @@ Alerty na poziomie grupy zasobów lub subskrypcji mogą mieć różnych rodzajó
 },
 ```
 
-W tym miejscu użyjemy `anyOf` otoki, aby umożliwić alertu kondycji zasobów do dopasowania którykolwiek z warunków określamy, co zapewnia alerty, przeznaczonych dla określonych typów zasobów.
+W tym miejscu użyto `anyOf` otoki, aby umożliwić Alertowi kondycji zasobu dopasowanie do dowolnego z określonych przez nas warunków, co pozwala na alerty dotyczące określonych typów zasobów.
 
-### <a name="adjusting-the-resource-health-events-that-alert-you"></a>Dostosowywanie zdarzenia kondycji zasobów, które alert
-Gdy zasobów podlegają zdarzenie kondycji, może przejść przez serię etapów, który reprezentuje stan zdarzenie kondycji: `Active`, `InProgress`, `Updated`, i `Resolved`.
+### <a name="adjusting-the-resource-health-events-that-alert-you"></a>Dostosowywanie zdarzeń Resource Health, które wysyłają alert
+Gdy zasoby podlegają zdarzeniom dotyczącym kondycji, mogą przejść przez serię etapów, która reprezentuje stan zdarzenia kondycji `InProgress`: `Updated` `Active`,, `Resolved`i.
 
-Może być tylko chcesz otrzymywać powiadomienia, gdy zasób staje się nieprawidłowy, w którym to przypadku chcesz skonfigurować alertu można tylko Powiadom mnie, kiedy `status` jest `Active`. Jednak jeśli chcesz otrzymywać powiadomienia na inne etapy, można dodać te informacje w następujący sposób:
+Możesz otrzymywać powiadomienia tylko wtedy, gdy zasób ulegnie złej kondycji, w tym przypadku chcesz skonfigurować alert tak, aby był powiadamiany tylko wtedy, gdy `status` jest `Active`to. Jeśli jednak chcesz również otrzymywać powiadomienia o innych etapach, możesz dodać te szczegóły, takie jak:
 
 ```json
 "condition": {
@@ -230,13 +230,13 @@ Może być tylko chcesz otrzymywać powiadomienia, gdy zasób staje się niepraw
 }
 ```
 
-Jeśli chcesz otrzymać powiadomienie o wszystkich czterech etapów zdarzenia dotyczące kondycji, możesz usunąć ten warunek wszystko ze sobą i alert wyświetli powiadomienie, niezależnie od `status` właściwości.
+Jeśli chcesz otrzymywać powiadomienia o wszystkich czterech etapach zdarzeń dotyczących kondycji, możesz usunąć ten warunek ze sobą, a alert będzie powiadamiany niezależnie od `status` właściwości.
 
-### <a name="adjusting-the-resource-health-alerts-to-avoid-unknown-events"></a>Dostosowywanie alertów dotyczących kondycji zasobów, aby uniknąć zdarzenia "Nieznany"
+### <a name="adjusting-the-resource-health-alerts-to-avoid-unknown-events"></a>Dopasowywanie alertów Resource Health, aby uniknąć "nieznanych" zdarzeń
 
-Funkcja kondycji zasobów platformy Azure może raportować do możesz najnowsze kondycji zasobów, nieustannie monitorując je przy użyciu test Runner. Stany odpowiednie kondycji zgłaszane są: "Dostępne", "Niedostępne" i "Negatywny wpływ na dostępność". Jednak w sytuacjach, w których moduł uruchamiający testy i zasobów platformy Azure, mają nie może komunikować się zgłaszane stan kondycji "Nieznany" dla zasobu, i która jest traktowana jako zdarzenie kondycji "Aktywny".
+Azure Resource Health może zgłosić najnowszą kondycję zasobów przez ciągłe monitorowanie ich przy użyciu modułu uruchamiającego testy. Odpowiednie zgłaszane Stany kondycji są następujące: "Dostępne", "niedostępne" i "obniżona wydajność". Jednak w sytuacjach, gdy moduł uruchamiający i zasób platformy Azure nie są w stanie komunikować się, dla zasobu jest raportowany stan kondycji "Nieznane", który jest uznawany za "aktywne" zdarzenie kondycji.
 
-Jednak gdy zasób zgłosi "Nieznana", jest prawdopodobne, że jej stan kondycji nie zmienił się od ostatniego raportu dokładne. Jeśli chcesz wyeliminować alertów dotyczących zdarzeń "Nieznany", można określić tej logiki w szablonie:
+Niemniej jednak, gdy zasób zawiera raport "Nieznane", prawdopodobnie jego stan kondycji nie zmienił się od ostatniego dokładnego raportu. Jeśli chcesz wyeliminować alerty dotyczące zdarzeń "Nieznane", możesz określić tę logikę w szablonie:
 
 ```json
 "condition": {
@@ -284,15 +284,15 @@ Jednak gdy zasób zgłosi "Nieznana", jest prawdopodobne, że jej stan kondycji 
 },
 ```
 
-W tym przykładzie są możemy tylko powiadomienia dotyczące zdarzeń, gdy stan kondycji bieżących i wcześniejszych nie ma "Nieznane". Ta zmiana może być dodanie przydatne, gdy alerty są wysyłane bezpośrednio na telefon komórkowy lub adres e-mail. 
+W tym przykładzie powiadamiamy tylko o zdarzeniach, w których bieżący i poprzedni stan kondycji nie ma "nieznany". Ta zmiana może być przydatna, jeśli alerty są wysyłane bezpośrednio do telefonu komórkowego lub wiadomości e-mail. 
 
-Należy zauważyć, że możliwe jest właściwości currentHealthStatus i previousHealthStatus mieć wartości null w niektóre zdarzenia. Na przykład, gdy zaktualizowano wystąpi zdarzenie jest prawdopodobne, że stan kondycji zasobu nie zmienił się od ostatniego raportu tylko tego dodatkowe informacje dotyczące zdarzenia są dostępne (np. Przyczyna główna). W związku z tym, za pomocą klauzuli powyżej może spowodować niektóre alerty nie są wyzwalane, ponieważ wartości properties.currentHealthStatus i properties.previousHealthStatus zostanie ustawiona na wartość null.
+Należy pamiętać, że w niektórych zdarzeniach właściwości currentHealthStatus i previousHealthStatus mają wartość null. Na przykład w przypadku wystąpienia zaktualizowanego zdarzenia istnieje duże ryzyko, że stan kondycji zasobu nie zmienił się od ostatniego raportu. dostępne są tylko dodatkowe informacje o zdarzeniu (np. przyczyna). W związku z tym użycie klauzuli powyżej może spowodować niewyzwalanie niektórych alertów, ponieważ wartości właściwości. currentHealthStatus i Properties. previousHealthStatus będą mieć wartość null.
 
-### <a name="adjusting-the-alert-to-avoid-user-initiated-events"></a>Dostosowywanie alert, aby uniknąć użytkownik zainicjował zdarzenia
+### <a name="adjusting-the-alert-to-avoid-user-initiated-events"></a>Dostosowanie alertu w celu uniknięcia zdarzeń inicjowanych przez użytkownika
 
-Zdarzenia dotyczące kondycji zasobów może być wyzwalacza przez platformę, inicjowane i zdarzenia zainicjowanego przez użytkownika. Rozsądne może okazać się tylko wysłanie powiadomienia, gdy zdarzenie kondycji jest spowodowany przez platformę Azure.
+Zdarzenia Resource Health mogą być wyzwalane przez zainicjowane platformy i zdarzenia zainicjowane przez użytkownika. W przypadku, gdy zdarzenie kondycji jest spowodowane przez platformę Azure, warto wysłać powiadomienie.
 
-Jest łatwa do skonfigurowania alertu w taki sposób, aby filtrować pod kątem tego rodzaju zdarzenia:
+Można łatwo skonfigurować alert, aby filtrować tylko te rodzaje zdarzeń:
 
 ```json
 "condition": {
@@ -306,11 +306,11 @@ Jest łatwa do skonfigurowania alertu w taki sposób, aby filtrować pod kątem 
     ]
 }
 ```
-Należy pamiętać, że jest możliwe dla pola Przyczyna, aby mieć wartości null w niektóre zdarzenia. Oznacza to przejścia kondycji odbywa się (np. dostępne na niedostępne), a zdarzenie jest rejestrowane, natychmiast, aby zapobiec powiadomień opóźnienia. W związku z tym, za pomocą klauzuli powyżej może spowodować wywołaniu alertu nie, ponieważ wartość właściwości properties.clause zostanie ustawiona na wartość null.
+Należy zauważyć, że w niektórych zdarzeniach pole przyczyna będzie miało wartość null. Oznacza to, że przejście do kondycji odbywa się (np. dostępne do niedostępności), a zdarzenie jest rejestrowane natychmiast, aby zapobiec opóźnieniu powiadomień. W związku z tym użycie klauzuli powyżej może spowodować, że alert nie zostanie wyzwolony, ponieważ wartość właściwości Property. klauzula zostanie ustawiona na wartość null.
 
-## <a name="complete-resource-health-alert-template"></a>Pełny szablon alertu kondycji zasobu
+## <a name="complete-resource-health-alert-template"></a>Ukończ szablon alertu Resource Health
 
-Przy użyciu różnych dostosowania opisane w poprzedniej sekcji, poniżej przedstawiono przykładowy szablon, który jest skonfigurowany w celu zmaksymalizowania sygnału szum. Należy pamiętać zastrzeżenia, o których wspomniano powyżej, gdzie currentHealthStatus previousHealthStatus i wartości właściwości Przyczyna może być wartość null. w niektórych zdarzeń.
+Korzystając z różnych korekt opisanych w poprzedniej sekcji, poniżej przedstawiono przykładowy szablon, który jest skonfigurowany do maksymalizowania sygnałów do współczynnika szumu. Weź pod uwagę zastrzeżenia wymienione powyżej, gdzie wartości właściwości currentHealthStatus, previousHealthStatus i Przyczyna mogą mieć wartość null w niektórych zdarzeniach.
 
 ```json
 {
@@ -434,15 +434,15 @@ Przy użyciu różnych dostosowania opisane w poprzedniej sekcji, poniżej przed
 }
 ```
 
-Będzie jednak najlepiej wiedzieć, jakie konfiguracje zaczynają obowiązywać dla Ciebie, więc użyć narzędzia prowadzone użytkownikowi w tej dokumentacji się własne dostosowania.
+Należy jednak wiedzieć, jakie konfiguracje są efektywne dla Ciebie, dlatego należy użyć narzędzia do pracy w tej dokumentacji, aby wprowadzić własne dostosowanie.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat kondycji zasobu:
--  [Omówienie usługi Azure Resource Health](Resource-health-overview.md)
+Dowiedz się więcej o Resource Health:
+-  [Przegląd Azure Resource Health](Resource-health-overview.md)
 -  [Typy zasobów i kontrole kondycji dostępne w usłudze Azure Resource Health](resource-health-checks-resource-types.md)
 
 
-Utwórz alerty dotyczące kondycji usługi:
--  [Konfigurowanie alertów w programie Service Health](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 
--  [Usługa Azure schemat zdarzeń dziennika aktywności](../azure-monitor/platform/activity-log-schema.md)
+Utwórz alerty Service Health:
+-  [Konfigurowanie alertów dla Service Health](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 
+-  [Schemat zdarzeń dziennika aktywności platformy Azure](../azure-monitor/platform/activity-log-schema.md)

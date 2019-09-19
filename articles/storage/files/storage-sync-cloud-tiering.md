@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 078582b98bca2137a7d25fa3a0833a4707565170
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 36b09ce8ece010ff24345ddb96654f75542cc9a5
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699373"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098962"
 ---
 # <a name="cloud-tiering-overview"></a>Omówienie obsługi warstw w chmurze
 Obsługa warstw w chmurze jest opcjonalną funkcją Azure File Sync, w której często używane pliki są buforowane lokalnie na serwerze, podczas gdy wszystkie inne pliki są warstwami do Azure Files na podstawie ustawień zasad. Gdy plik jest warstwowy, filtr systemu plików Azure File Sync (StorageSync. sys) zastępuje plik lokalnie za pomocą wskaźnika lub punktu ponownej analizy. Punkt ponownej analizy reprezentuje adres URL pliku w Azure Files. Plik warstwowy ma zarówno atrybut "offline", jak i atrybut FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS ustawiony w systemie plików NTFS, aby aplikacje innych firm mogły bezpiecznie identyfikować pliki warstwowe.
@@ -100,10 +100,10 @@ Najprostszym sposobem odwoływania pliku na dysk jest otwarcie pliku. Filtr syst
 
 Można też użyć programu PowerShell, aby wymusić oddzwonienie pliku. Ta opcja może być przydatna, jeśli chcesz odwołać wiele plików jednocześnie, takich jak wszystkie pliki w folderze. Otwórz sesję programu PowerShell w węźle serwera, na którym zainstalowano Azure File Sync, a następnie uruchom następujące polecenia programu PowerShell:
     
-    ```powershell
-    Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-    Invoke-StorageSyncFileRecall -Path <file-or-directory-to-be-recalled>
-    ```
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+Invoke-StorageSyncFileRecall -Path <file-or-directory-to-be-recalled>
+```
 
 <a id="sizeondisk-versus-size"></a>
 ### <a name="why-doesnt-the-size-on-disk-property-for-a-file-match-the-size-property-after-using-azure-file-sync"></a>Dlaczego rozmiar właściwości *dysku* dla pliku jest zgodny z właściwością *size* po użyciu Azure File Sync? 
@@ -113,10 +113,10 @@ Eksplorator plików systemu Windows udostępnia dwie właściwości, aby repreze
 ### <a name="how-do-i-force-a-file-or-directory-to-be-tiered"></a>Jak mogę wymusić przeprowadzenie warstwowego pliku lub katalogu?
 Po włączeniu funkcji obsługi warstw w chmurze usługa Cloud warstws automatycznie warstwuje pliki na podstawie ostatniego dostępu i modyfikuje czasy, aby osiągnąć procent wolnego miejsca na woluminie określony w punkcie końcowym w chmurze. Czasami może być konieczne ręczne wymuszenie pliku w warstwie. Może to być przydatne, jeśli zapiszesz duży plik, którego nie zamierzasz ponownie używać przez dłuższy czas, i chcesz, aby wolne miejsce na woluminie było teraz używane dla innych plików i folderów. Można wymusić obsługę warstw przy użyciu następujących poleceń programu PowerShell:
 
-    ```powershell
-    Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-    Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
-    ```
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
+```
 
 ## <a name="next-steps"></a>Następne kroki
 * [Planowanie wdrożenia Azure File Sync](storage-sync-files-planning.md)

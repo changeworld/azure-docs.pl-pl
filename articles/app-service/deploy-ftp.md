@@ -11,16 +11,16 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/30/2018
+ms.date: 09/18/2019
 ms.author: cephalin
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: f239fb4464d2e7f67b91a2d18c21b089ffd52b27
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 6e8a6820b3cf3031f11ab04d9baf4a7888491c81
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070499"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098055"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Wdrażanie aplikacji do Azure App Service przy użyciu protokołu FTP/S
 
@@ -72,9 +72,9 @@ Zalecamy użycie **poświadczeń aplikacji** do wdrożenia aplikacji, ponieważ 
 
 Aby zapewnić większe bezpieczeństwo, należy zezwalać tylko na protokół FTP za pośrednictwem protokołu SSL. Jeśli nie korzystasz z wdrażania FTP, możesz również wyłączyć zarówno protokół FTP, jak i FTPS.
 
-Na stronie zasobów aplikacji w [Azure Portal](https://portal.azure.com)wybierz pozycję **Ustawienia aplikacji** w lewym okienku nawigacji.
+Na stronie zasobów aplikacji w obszarze [Azure Portal](https://portal.azure.com)wybierz pozycję **Konfiguracja** > **Ogólne ustawienia** w lewym okienku nawigacji.
 
-Aby wyłączyć nieszyfrowany protokół FTP, wybierz opcję **tylko FTPS**. Aby całkowicie wyłączyć protokół FTP i FTPS, wybierz pozycję **Wyłącz**. Po skończeniu kliknij przycisk **Zapisz**. W przypadku korzystania z **FTPS** należy wymusić TLS 1,2 lub wyższą, przechodząc do bloku **Ustawienia protokołu SSL** aplikacji sieci Web. Protokoły TLS 1,0 i 1,1 nie są obsługiwane **tylko**w przypadku FTPS.
+Aby wyłączyć nieszyfrowane FTP, wybierz pozycję **FTPS tylko** w polu **stan FTP**. Aby całkowicie wyłączyć protokół FTP i FTPS, wybierz pozycję **wyłączone**. Po skończeniu kliknij przycisk **Zapisz**. W przypadku używania **tylko FTPS**należy wymusić TLS 1,2 lub nowszy, przechodząc do bloku **Ustawienia protokołu TLS/SSL** w aplikacji sieci Web. Protokoły TLS 1,0 i 1,1 nie są obsługiwane **tylko**w przypadku FTPS.
 
 ![Wyłącz FTP/S](./media/app-service-deploy-ftp/disable-ftp.png)
 

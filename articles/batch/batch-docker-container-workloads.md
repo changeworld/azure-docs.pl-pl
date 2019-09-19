@@ -10,12 +10,12 @@ ms.workload: na
 ms.date: 08/09/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: c8fc8e7d5888f9a0b080c0ca1d24e53068b543be
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c9e24924472e0bb8dbd0e529b739263469b631fb
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095172"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090754"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Uruchamianie aplikacji kontenera na Azure Batch
 
@@ -89,7 +89,7 @@ Dodatkowe zagadnienia dotyczące korzystania z niestandardowego obrazu systemu L
 
 ## <a name="container-configuration-for-batch-pool"></a>Konfiguracja kontenera dla puli usługi Batch
 
-Aby umożliwić puli wsadowej uruchamianie obciążeń kontenera, należy określić ustawienia [ContainerConfiguration](/dotnet/api/microsoft.azure.batch.containerconfiguration) w obiekcie [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) puli. (Ten artykuł zawiera linki do dokumentacji interfejsu API programu .NET usługi Batch. Odpowiednie ustawienia znajdują się w interfejsie API usługi [Batch Python](/python/api/azure.batch) .
+Aby umożliwić puli wsadowej uruchamianie obciążeń kontenera, należy określić ustawienia [ContainerConfiguration](/dotnet/api/microsoft.azure.batch.containerconfiguration) w obiekcie [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) puli. (Ten artykuł zawiera linki do dokumentacji interfejsu API programu .NET usługi Batch. Odpowiednie ustawienia znajdują się w interfejsie API usługi [Batch Python](/python/api/overview/azure/batch) .
 
 Można utworzyć pulę z obsługą kontenerów z wstępnie pobranymi obrazami kontenerów, jak pokazano w poniższych przykładach. Proces ściągania (lub pobierania z wyprzedzeniem) umożliwia wstępne ładowanie obrazów kontenerów z koncentratora platformy Docker lub innego rejestru kontenerów w Internecie. Aby uzyskać najlepszą wydajność, użyj [usługi Azure Container Registry](../container-registry/container-registry-intro.md) w tym samym regionie, w którym jest to konto usługi Batch.
 

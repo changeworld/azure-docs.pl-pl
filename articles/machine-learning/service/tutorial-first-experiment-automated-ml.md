@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/09/2019
-ms.openlocfilehash: f8b9876680899a5d8e87f8a49a0b4ed6c113fb45
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 2422a4525c94f3997dd0a9a0859135e9acf59ffa
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001848"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71092002"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Samouczek: Tworzenie pierwszego modelu klasyfikacji przy użyciu automatycznej uczenia maszynowego
 
@@ -67,7 +67,7 @@ Zobaczysz ekran **wprowadzenie** , ponieważ jest to pierwszy eksperyment z auto
 
 1. Wprowadź **My-1-automl-eksperyment** jako nazwę eksperymentu.
 
-1. Wybierz pozycję **Utwórz nowe obliczenie**. 
+1. Wybierz pozycję **Utwórz nowe obliczenie**. Obliczenia to lokalne lub oparte na chmurze środowisko zasobów używane do uruchamiania skryptu szkoleniowego lub hostowania wdrożenia usługi. Na potrzeby tego eksperymentu używamy obliczeń opartych na chmurze. 
 
     1. Skonfiguruj kontekst obliczeniowy dla tego eksperymentu.
         
@@ -147,9 +147,9 @@ W miarę postępu eksperymentu ekran aktualizuje **Wykres iteracji** i **listę 
 
 ## <a name="deploy-the-model"></a>Wdrażanie modelu
 
-Za pomocą funkcji automatycznego uczenia maszynowego na stronie docelowej obszaru roboczego można wdrożyć najlepszy model jako usługę sieci Web, aby przewidzieć nowe dane i zidentyfikować potencjalne obszary szansy sprzedaży. W przypadku tego eksperymentu wdrożenie oznacza, że instytucja finansowa ma teraz iteracyjne i skalowalne rozwiązanie do identyfikowania potencjalnych klientów z krótkoterminowymi wpłatami.
+Za pomocą funkcji automatycznego uczenia maszynowego na stronie docelowej obszaru roboczego można wdrożyć najlepszy model jako usługę sieci Web w kilku krokach. Wdrożenie to integracja modelu, dzięki czemu można przewidzieć nowe dane i identyfikować potencjalne obszary szans sprzedaży. W przypadku tego eksperymentu wdrożenie do usługi sieci Web oznacza, że instytucja finansowa ma teraz iteracyjne i skalowalne rozwiązanie sieci Web służące do identyfikowania potencjalnych klientów z krótkoterminowymi wpłatami. 
 
-W tym kontekście eksperymentu **VotingEnsemble** jest uznawany za najlepszy model w oparciu o metrykę **AUC_weighted** .  Wdrażamy ten model, ale zaleca się wdrożenie trwa około 20 minut.
+W tym kontekście eksperymentu **VotingEnsemble** jest uznawany za najlepszy model w oparciu o metrykę **AUC_weighted** .  Wdrażamy ten model, ale zaleca się wdrożenie trwa około 20 minut. Proces wdrażania obejmuje kilka czynności, takich jak rejestrowanie modelu, Generowanie zasobów i konfigurowanie ich dla usługi sieci Web.
 
 1. Na stronie **szczegóły uruchamiania** wybierz przycisk **Wdróż najlepszy model** w prawym górnym rogu.
 
@@ -162,7 +162,7 @@ W tym kontekście eksperymentu **VotingEnsemble** jest uznawany za najlepszy mod
     Skrypt oceniania| Automatyczne generowanie
     Skrypt środowiska| Automatyczne generowanie
     
-1. Wybierz pozycję **Wdróż**.
+1. Wybierz pozycję **Wdróż**.  
 
     Po pomyślnym zakończeniu wdrażania zostanie wyświetlony komunikat o ukończeniu wdrożenia.
     

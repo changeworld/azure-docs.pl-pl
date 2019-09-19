@@ -7,14 +7,14 @@ manager: carmonm
 keywords: Przywróć kopię zapasową; Jak przywrócić; punkt odzyskiwania;
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/08/2019
+ms.date: 09/17/2019
 ms.author: dacurwin
-ms.openlocfilehash: 3d7497b7afd44a05f3691d3e3094e84c3dd73747
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: c479249a3a09b625e37fb80e7b73dcc8a1268622
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983915"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098363"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Przywracanie danych maszyny wirtualnej platformy Azure w Azure Portal
 
@@ -188,7 +188,27 @@ Po przywróceniu maszyny wirtualnej można pamiętać o kilku kwestiach:
 - Jeśli kopia zapasowa maszyny wirtualnej ma statyczny adres IP, przywrócona maszyna wirtualna będzie mieć dynamiczny adres IP, aby uniknąć konfliktu. [Do przywróconej maszyny wirtualnej można dodać statyczny adres IP](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm).
 - Przywrócona maszyna wirtualna nie ma zestawu dostępności. Jeśli używasz opcji Przywróć dysk, możesz [określić zestaw dostępności](../virtual-machines/windows/tutorial-availability-sets.md) podczas tworzenia maszyny wirtualnej na podstawie dysku przy użyciu podanego szablonu lub programu PowerShell.
 - Jeśli używasz dystrybucji systemu Linux opartej na chmurze, takiej jak Ubuntu, ze względów bezpieczeństwa hasło jest blokowane po przywróceniu. Aby [zresetować hasło](../virtual-machines/linux/reset-password.md), użyj rozszerzenia VMAccess na PRZYWRÓCONEJ maszynie wirtualnej. Zalecamy używanie kluczy SSH w tych dystrybucjach, więc nie trzeba resetować hasła po przywróceniu.
+- Jeśli nie możesz uzyskać dostępu do maszyny wirtualnej po przywróceniu ze względu na nieprawidłową relację z kontrolerem domeny, wykonaj następujące kroki, aby wyświetlić maszynę wirtualną:
+    - Dołącz dysk systemu operacyjnego jako dysk danych do odzyskiwanej maszyny wirtualnej.
+    - Ręcznie Zainstaluj agenta maszyny wirtualnej, jeśli usługa Azure Agent nie odpowiada, wykonując ten [link](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline).
+    - Włącz dostęp do konsoli szeregowej na maszynie wirtualnej, aby zezwolić na dostęp do wiersza polecenia do maszyny wirtualnej
+    
+  ```
+    bcdedit /store <drive letter>:\boot\bcd /enum
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /set {bootmgr} displaybootmenu yes
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /set {bootmgr} timeout 5
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /set {bootmgr} bootems yes
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<<BOOT LOADER IDENTIFIER>>} ON
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200
+    ```
+    - Po odbudowaniu maszyny wirtualnej Użyj Azure Portal resetowania konta i hasła administratora lokalnego
+    - Użyj Konsola szeregowa dostępu i polecenia CMD, aby odłączyć maszynę wirtualną od domeny
 
+    ```
+    cmd /c "netdom remove <<MachineName>> /domain:<<DomainName>> /userD:<<DomainAdminhere>> /passwordD:<<PasswordHere>> /reboot:10 /Force" 
+    ```
+
+- Po rozłączeniu i ponownym uruchomieniu maszyny wirtualnej będzie można pomyślnie włączyć protokół RDP na maszynie wirtualnej z poświadczeniami administratora lokalnego i ponownie dołączyć maszynę wirtualną do domeny.
 
 ## <a name="backing-up-restored-vms"></a>Tworzenie kopii zapasowej przywróconych maszyn wirtualnych
 

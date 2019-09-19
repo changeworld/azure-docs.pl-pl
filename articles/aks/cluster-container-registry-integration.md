@@ -6,43 +6,28 @@ author: mlearned
 manager: gwallace
 ms.service: container-service
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/17/2018
 ms.author: mlearned
-ms.openlocfilehash: 3c11367945b74db9be20ade86c7bc26901440e4d
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: ab744efd205d826cb7ae2c3eda7bba28f4a9bee0
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70305163"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097804"
 ---
-# <a name="preview---authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Wersja zapoznawcza — uwierzytelnianie za pomocą Azure Container Registry z usługi Azure Kubernetes
+# <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Uwierzytelnianie za pomocą Azure Container Registry z usługi Azure Kubernetes
 
 W przypadku korzystania z Azure Container Registry (ACR) z usługą Azure Kubernetes Service (AKS) należy nawiązać mechanizm uwierzytelniania. W tym artykule opisano zalecane konfiguracje uwierzytelniania między tymi dwiema usługami platformy Azure.
 
 Za pomocą interfejsu wiersza polecenia platformy Azure można skonfigurować AKS do integracji z ACR w kilku prostych poleceniach.
-
-> [!IMPORTANT]
-> Funkcja AKS w wersji zapoznawczej to samoobsługowe uczestnictwo. Wersje zapoznawcze są udostępniane w postaci "AS-IS" i "jako dostępne" i są wyłączone z umów dotyczących poziomu usług i ograniczonej rękojmi. Wersje zapoznawcze AKS są częściowo objęte obsługą klienta w oparciu o najlepszy nakład pracy. W związku z tym te funkcje nie są przeznaczone do użytku produkcyjnego. Aby dowiedzieć się więcej, zobacz następujące artykuły pomocy technicznej:
->
-> * [Zasady pomocy technicznej AKS](support-policies.md)
-> * [Pomoc techniczna platformy Azure — często zadawane pytania](faq.md)
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
 Wymagane są następujące elementy:
 
 * Rola **właściciela** lub **administratora konta platformy Azure** w **subskrypcji platformy Azure**
-* Potrzebujesz także interfejsu wiersza polecenia platformy Azure w wersji 2.0.70 lub nowszej oraz rozszerzenia AKS-Preview 0.4.8
+* Potrzebujesz także interfejsu wiersza polecenia platformy Azure w wersji 2.0.73 lub nowszej
 * Na kliencie musi być [zainstalowany program Docker](https://docs.docker.com/install/) i potrzebny jest dostęp do [centrum platformy Docker](https://hub.docker.com/)
-
-## <a name="install-latest-aks-cli-preview-extension"></a>Zainstaluj rozszerzenie najnowszej wersji zapoznawczej interfejsu wiersza polecenia AKS
-
-Potrzebujesz rozszerzenia **AKS-Preview 0.4.13** lub nowszego.
-
-```azurecli
-az extension remove --name aks-preview 
-az extension add -y --name aks-preview
-```
 
 ## <a name="create-a-new-aks-cluster-with-acr-integration"></a>Utwórz nowy klaster AKS z integracją ACR
 
@@ -52,7 +37,7 @@ az login
 az acr create -n myContainerRegistry -g myContainerRegistryResourceGroup --sku basic [in case you do not have an existing ACR]
 az aks create -n myAKSCluster -g myResourceGroup --attach-acr <acr-name-or-resource-id>
 ```
-\* * Identyfikator zasobu ACR ma następujący format: 
+**Identyfikator zasobu ACR ma następujący format:** 
 
 /subscriptions/< Subscription-d >/resourceGroups/< Resource-Group-Name > 
   

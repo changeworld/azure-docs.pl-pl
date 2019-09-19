@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: 4fc34ed5cdd53977aa20bef84200ba2bf5386979
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: d2d7508b4f0a2789a0eae5d6c6205475b5795e36
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899492"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097837"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Opcje skalowania dla aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -27,7 +27,7 @@ W tym artykule przedstawiono podstawowe pojęcia, które ułatwiają skalowanie 
 
 ## <a name="manually-scale-pods-or-nodes"></a>Ręczne skalowanie z podziałów lub węzłów
 
-W celu przetestowania, w jaki sposób aplikacja reaguje na zmianę w dostępnych zasobach i stanie, można ręcznie skalować repliki (na podst.) i węzły. Ręczne skalowanie zasobów pozwala także zdefiniować określoną ilość zasobów do użycia w celu utrzymania stałego kosztu, takiego jak liczba węzłów. Aby ręcznie skalować, należy zdefiniować replikę lub liczbę węzłów oraz harmonogramy interfejsu API Kubernetes w celu utworzenia dodatkowych węzłów lub ich opróżniania.
+W celu przetestowania, w jaki sposób aplikacja reaguje na zmianę w dostępnych zasobach i stanie, można ręcznie skalować repliki (na podst.) i węzły. Ręczne skalowanie zasobów pozwala także zdefiniować określoną ilość zasobów do użycia w celu utrzymania stałego kosztu, takiego jak liczba węzłów. Aby ręcznie skalować, należy zdefiniować replikę lub liczbę węzłów. Interfejs API Kubernetes następnie tworzy harmonogram tworzenia dodatkowych węzłów lub opróżniania w oparciu o tę replikę lub liczbę węzłów.
 
 Aby rozpocząć pracę z ręcznym skalowaniem i węzłami, zobacz [skalowanie aplikacji w AKS][aks-scale].
 
@@ -43,15 +43,15 @@ Aby rozpocząć pracę z skalowaniem w poziomie, w AKS, zobacz [Skalowanie autom
 
 ### <a name="cooldown-of-scaling-events"></a>Cooldown zdarzeń skalowania
 
-Ponieważ funkcja automatycznego skalowania w poziomie nie sprawdza interfejsu API metryk co 30 sekund, poprzednie zdarzenia skalowania mogą nie zostać pomyślnie zakończone przed innym sprawdzaniem. Takie zachowanie może spowodować, że automatyczne skalowanie w poziomie na zmianę liczby replik przed upływem wcześniejszego zdarzenia skalowania było w stanie odebrać obciążenie aplikacji, a wymagania dotyczące zasobów odpowiednio dostosować.
+Ponieważ funkcja automatycznego skalowania w poziomie nie sprawdza interfejsu API metryk co 30 sekund, poprzednie zdarzenia skalowania mogą nie zostać pomyślnie zakończone przed innym sprawdzaniem. Takie zachowanie może spowodować, że funkcja automatycznego skalowania w poziomie nie zmienia liczby replik przed upływem poprzedniego zdarzenia skalowania, które może odebrać obciążenie aplikacji, a wymagania dotyczące zasobów odpowiednio dostosować.
 
-Aby zminimalizować te zdarzenia wyścigu, ustawiane są wartości cooldown lub opóźnienia. Te wartości definiują, jak długo skalowanie w poziomie może czekać po zdarzeniu skalowania, zanim będzie możliwe wyzwolenie innego zdarzenia skalowania. Takie zachowanie umożliwia uwzględnienie nowej liczby replik, a interfejs API metryk odzwierciedla rozproszone obciążenie. Domyślnie opóźnienie zdarzeń skalowania w górę wynosi 3 minuty, a opóźnienie dla zdarzeń skalowania w dół wynosi 5 minut.
+Aby zminimalizować te zdarzenia wyścigu, ustawiane są wartości cooldown lub opóźnienia. Te wartości definiują, jak długo skalowanie w poziomie może czekać po zdarzeniu skalowania, zanim będzie możliwe wyzwolenie innego zdarzenia skalowania. Takie zachowanie umożliwia uwzględnienie nowej liczby replik i interfejsu API metryk w celu odzwierciedlenia rozproszonego obciążenia. Domyślnie opóźnienie zdarzeń skalowania w górę wynosi 3 minuty, a opóźnienie dla zdarzeń skalowania w dół wynosi 5 minut.
 
 Obecnie nie można dostosowywać tych wartości cooldown z domyślnego.
 
 ## <a name="cluster-autoscaler"></a>Automatyczne skalowanie klastra
 
-Aby odpowiedzieć na zmieniające się zapotrzebowanie na żądanie, Kubernetes ma automatyczne skalowanie klastra (obecnie w wersji zapoznawczej w AKS), które dostosowuje liczbę węzłów na podstawie żądanych zasobów obliczeniowych w puli węzłów. Domyślnie Automatyczne skalowanie klastra sprawdza serwer interfejsu API metryk co 10 sekund dla wszystkich wymaganych zmian w liczniku węzłów. Jeśli automatyczne skalowanie klastra ustali, że wymagana jest zmiana, liczba węzłów w klastrze AKS zostaje odpowiednio zwiększona lub obniżona. Automatyczne skalowanie klastra współpracuje z klastrami AKS z włączoną funkcją RBAC, które działają w Kubernetes 1.10. x lub nowszym.
+Aby odpowiedzieć na zmieniające się zapotrzebowanie na żądanie, Kubernetes ma automatyczne skalowanie klastra, który jest obecnie w wersji zapoznawczej w AKS, który dostosowuje liczbę węzłów na podstawie żądanych zasobów obliczeniowych w puli węzłów. Domyślnie Automatyczne skalowanie klastra sprawdza serwer interfejsu API metryk co 10 sekund dla wszystkich wymaganych zmian w liczniku węzłów. Jeśli automatyczne skalowanie klastra ustali, że wymagana jest zmiana, liczba węzłów w klastrze AKS zostaje odpowiednio zwiększona lub obniżona. Automatyczne skalowanie klastra współpracuje z klastrami AKS z włączoną funkcją RBAC, które działają w Kubernetes 1.10. x lub nowszym.
 
 ![Automatyczne skalowanie klastra Kubernetes](media/concepts-scale/cluster-autoscaler.png)
 
@@ -65,13 +65,13 @@ Aby rozpocząć pracę z automatycznym skalowaniem klastra w programie AKS, zoba
 
 Jeśli węzeł nie ma wystarczających zasobów obliczeniowych do uruchomienia żądanego elementu, to nie może postępować przez proces planowania. Nie można uruchomić programu pod warunkiem, że dodatkowe zasoby obliczeniowe nie są dostępne w ramach puli węzłów.
 
-Gdy automatyczne skalowanie klastra zostanie powiadomione o tym, że nie można zaplanować ich ze względu na ograniczenia zasobów puli węzłów, liczba węzłów w puli węzłów zostanie zwiększona, aby zapewnić dodatkowe zasoby obliczeniowe. Jeśli te dodatkowe węzły zostały pomyślnie wdrożone i dostępne do użycia w puli węzłów, zostaną zaplanowane do uruchomienia na nich.
+Gdy automatyczne skalowanie klastra zostanie powiadomione o tym, że nie można zaplanować wystąpienia ograniczeń zasobów puli węzłów, liczba węzłów w puli węzłów zostanie zwiększona, aby zapewnić dodatkowe zasoby obliczeniowe. Jeśli te dodatkowe węzły zostały pomyślnie wdrożone i dostępne do użycia w puli węzłów, zostaną zaplanowane do uruchomienia na nich.
 
 Jeśli aplikacja wymaga szybkiego skalowania, niektóre zasobniki mogą pozostać w stanie oczekującym na zaplanowanie do momentu, aż dodatkowe węzły wdrożone przez automatyczne skalowanie klastra będą mogły akceptować zaplanowane zasobniki. W przypadku aplikacji, które mają duże wymagania dotyczące serii, można skalować z węzłami wirtualnymi i Azure Container Instances.
 
 ### <a name="scale-down-events"></a>Skaluj zdarzenia w dół
 
-Automatyczne skalowanie klastra monitoruje również stan planowania pod kątem węzłów, które nie otrzymały ostatnio nowych żądań planowania. Ten scenariusz wskazuje, że Pula węzłów ma więcej zasobów obliczeniowych niż jest wymagane, i że liczba węzłów można zmniejszyć.
+Automatyczne skalowanie klastra monitoruje również stan planowania pod kątem węzłów, które nie otrzymały ostatnio nowych żądań planowania. Ten scenariusz wskazuje, że Pula węzłów ma więcej zasobów obliczeniowych niż jest wymagane, i liczbę węzłów można zmniejszyć.
 
 Węzeł, który przekazuje próg nie jest już wymagany przez 10 minut, jest domyślnie zaplanowany do usunięcia. Gdy wystąpi taka sytuacja, planowane jest uruchomienie w innych węzłach w puli węzłów, a automatyczne skalowanie klastra zmniejsza liczbę węzłów.
 

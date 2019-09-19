@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 08/21/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: f9afd3ae1d1d5d6235cf8bd0a6350a782ea6afbe
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 8dbdbe39f613bb8895be6ae21d8aa29b766781cd
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142930"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098805"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Często zadawane pytania
 
@@ -180,8 +180,19 @@ A.  Tak. Z urządzeniem Data Box obsługiwanych jest maksymalnie 10 kont magazyn
 ### <a name="q-my-device-was-delivered-but-the-device-seems-to-be-damaged-what-should-i-do"></a>PYTANIE: Urządzenie zostało dostarczone, ale wydaje się być uszkodzone. Co mam zrobić?
 A. Jeśli urządzenie zostało dostarczone uszkodzone lub istnieje dowód manipulowania przy nim, nie należy go używać. [Skontaktuj się z działem pomocy technicznej firmy Microsoft](data-box-disk-contact-microsoft-support.md) i jak najszybciej zwróć urządzenie. Aby otrzymać urządzenie zastępcze, można także utworzyć nowe zamówienie na urządzenie Data Box. W tym przypadku opłata za urządzenie zastępcze nie zostanie naliczona.
 
-### <a name="q-can-i-use-my-own-shipping-carrier-to-ship-data-box"></a>PYTANIE: Czy mogę wysłać urządzenie Data Box za pośrednictwem własnej firmy przewozowej?
-A. W ramach usługi Data Box firma Microsoft obsługuje wysyłkę do i z centrum danych platformy Azure. Jeśli chcesz skorzystać z usług własnego przewoźnika, możesz skorzystać z usługi Azure Import/Export. Aby uzyskać więcej informacji, przejdź do tematu [Co to jest usługa Azure Import/Export?](../storage/common/storage-import-export-service.md)
+### <a name="q-can-i-pick-up-my-data-box-order-myself-can-i-return-the-data-box-via-a-carrier-that-i-choose"></a>PYTANIE: Czy mogę wybrać moją urządzenie Data Box zamówienie samodzielnie? Czy mogę zwrócić urządzenie Data Box za pośrednictwem wybranego przez siebie operatora?
+A. Tak. Firma Microsoft oferuje również samozarządzaną wysyłkę wyłącznie w US Gov regionie. Podczas umieszczania kolejności urządzenie Data Box można wybrać opcję samozarządzanej wysyłki. Aby wybrać urządzenie urządzenie Data Box, wykonaj następujące czynności:
+    
+1. Po złożeniu zamówienia zamówienie jest przetwarzane i urządzenie Data Box jest przygotowywane. Otrzymasz powiadomienie za pośrednictwem wiadomości e-mail, że zamówienie jest gotowe do odbioru. 
+2. Gdy zamówienie będzie gotowe do pobrania, przejdź do zamówienia w Azure Portal i przejdź do bloku **Przegląd** . 
+3. Zobaczysz powiadomienie z kodem w Azure Portal. Wyślij wiadomość e-mail do [zespołu operacji Azure Data Box](mailto:adbops@microsoft.com) i podaj kod. Zespół dostarczy lokalizację i zaplanował datę i godzinę pobrania. Po otrzymaniu powiadomienia e-mail należy zadzwonić do zespołu w ciągu 5 dni roboczych.
+
+Po zakończeniu kopiowania danych wykonaj następujące kroki, aby zwrócić urządzenie:
+
+1. Po zakończeniu kopiowania danych bez błędów Uruchom **przygotowanie do wysłania**. Po zakończeniu przygotowania otrzymasz kod w lokalnym interfejsie użytkownika sieci Web urządzenia. Skopiuj i Zapisz kod.
+2. Wyłącz urządzenie i Usuń kable łączące.
+3. Zwiń przewód zasilający dostarczony wraz z urządzeniem i umieść go bezpiecznie z tyłu urządzenia.
+4. Wyślij wiadomość e-mail do [zespołu operacji Azure Data Box](mailto:adbops@microsoft.com) i podaj kod, który został wcześniej zapisany. Udostępnimy informacje o tym, gdzie i kiedy należy odrzucić urządzenie.
 
 ### <a name="q-will-my-data-box-devices-cross-country-borders-during-shipping"></a>PYTANIE: Czy moje urządzenie Data Box urządzenia będą przecinać granice kraju podczas wysyłki?
 A. Wszystkie urządzenia urządzenie Data Box są wysyłane z tego samego kraju, w jakim się znajdują, i nie przechodzą poza granice międzynarodowe. Jedyny wyjątek dotyczy zamówień w Unii Europejskiej (UE), gdzie urządzenia mogą być dostarczane do i z dowolnego kraju UE. Dotyczy to zarówno urządzeń urządzenie Data Box, jak i Data Box Heavy.

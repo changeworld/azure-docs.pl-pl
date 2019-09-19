@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: 226a3b0ffa4b770d1738e69fd04592476b9f4075
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: df9e6e3a9116b9a4490d8847e9a9d3e9e112f4f7
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935259"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098793"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Dostosowywanie klastrów usługi Azure HDInsight za pomocą akcji skryptu
 
@@ -45,11 +45,11 @@ Uzyskaj więcej informacji na temat pracy z zarządzaniem dostępem:
 Akcja skryptu to skrypt bash, który działa w węzłach klastra usługi HDInsight. Właściwości i funkcje skryptu są następujące:
 
 * Musi być przechowywany w identyfikatorze URI dostępnym z klastra usługi HDInsight. Możliwe są następujące lokalizacje magazynu:
-    
+
     * W przypadku regularnych klastrów:
-    
+
       * ADLS Gen1: Główna Usługa HDInsight używa do uzyskiwania dostępu do Data Lake Storage musi mieć dostęp do odczytu do skryptu. Format identyfikatora URI dla skryptów przechowywanych w Data Lake Storage Gen1 to `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file`.
-      
+
       * Obiekt BLOB na koncie magazynu platformy Azure, który jest podstawowym lub dodatkowym kontem magazynu dla klastra usługi HDInsight. Usługa HDInsight ma dostęp do obu typów kont magazynu podczas tworzenia klastra.
 
         > [!IMPORTANT]  
@@ -60,9 +60,9 @@ Akcja skryptu to skrypt bash, który działa w węzłach klastra usługi HDInsig
         Przykładowo identyfikatory URI, zobacz [przykładowe skrypty akcji skryptu](#example-script-action-scripts).
 
      * W przypadku klastrów z partycją ESP:
-         
+
          * Obsługiwane są wasb://lub wasbs://lub http [s]://URI.
-            
+
 * Mogą być ograniczone do uruchamiania tylko dla określonych typów węzłów. Przykłady to węzły główne lub węzły procesu roboczego.
 
 * Mogą być utrwalone lub ad hoc.
@@ -107,14 +107,12 @@ Skrypt jest uruchamiany podczas konfigurowania usługi HDInsight. Skrypt jest ur
 > [!NOTE]  
 > Można wykonywać operacje, takie jak zatrzymywanie i uruchamianie usług, w tym usługi związane z Apache Hadoop. Jeśli zatrzymasz usługi, upewnij się, że usługa Ambari i inne usługi związane z usługą Hadoop są uruchomione przed zakończeniem działania skryptu. Te usługi są wymagane, aby pomyślnie określić kondycję i stan klastra podczas jego tworzenia.
 
-
 Podczas tworzenia klastra można używać wielu akcji skryptów jednocześnie. Te skrypty są wywoływane w kolejności, w jakiej zostały określone.
 
 > [!IMPORTANT]  
 > Akcje skryptu muszą zakończyć się w ciągu 60 minut lub przekroczyć limit czasu. Podczas aprowizacji klastra skrypt jest uruchamiany współbieżnie z innymi procesami instalacji i konfiguracji. Konkurencja zasobów, takich jak czas procesora CPU lub przepustowość sieci, może spowodować, że wykonanie skryptu trwa dłużej niż w środowisku deweloperskim.
 >
 > Aby zminimalizować czas potrzebny na uruchomienie skryptu, należy unikać zadań, takich jak pobieranie i kompilowanie aplikacji ze źródła. Wstępne Kompilowanie aplikacji i przechowywanie plików binarnych w usłudze Azure Storage.
-
 
 ### <a name="script-action-on-a-running-cluster"></a>Akcja skryptu w uruchomionym klastrze
 
@@ -161,13 +159,13 @@ W tej sekcji opisano różne sposoby używania akcji skryptu podczas tworzenia k
 
 1. Rozpocznij tworzenie klastra zgodnie z opisem w temacie [Konfigurowanie klastrów w usłudze HDInsight z Apache Hadoop, Apache Spark, Apache Kafka i nie tylko](hdinsight-hadoop-provision-linux-clusters.md). Podczas tworzenia klastra docierasz do strony __podsumowania klastra__ . Na stronie __Podsumowanie klastra__ wybierz łącze __Edytuj__ __Ustawienia zaawansowane__.
 
-    ![Link ustawień zaawansowanych](./media/hdinsight-hadoop-customize-cluster-linux/advanced-settings-link.png)
+    ![Ustawienia zaawansowane klastra Azure Portal](./media/hdinsight-hadoop-customize-cluster-linux/advanced-settings-link.png)
 
-3. W sekcji __Ustawienia zaawansowane__ wybierz pozycję __Akcje skryptu__. W sekcji __Akcje skryptu__ wybierz pozycję __+ Prześlij nowe__.
+1. W sekcji __Ustawienia zaawansowane__ wybierz pozycję __Akcje skryptu__. W sekcji __Akcje skryptu__ wybierz pozycję __+ Prześlij nowe__.
 
-    ![Prześlij nową akcję skryptu](./media/hdinsight-hadoop-customize-cluster-linux/add-new-script-action.png)
+    ![Akcje skryptu portalu Prześlij nowe](./media/hdinsight-hadoop-customize-cluster-linux/add-new-script-action.png)
 
-4. Użyj wpisu __skryptu__ , aby wybrać utworzony skrypt. Aby użyć niestandardowego skryptu, wybierz opcję __niestandardowy__. Podaj __nazwę__ i __Identyfikator URI skryptu bash__ dla skryptu.
+1. Użyj wpisu __skryptu__ , aby wybrać utworzony skrypt. Aby użyć niestandardowego skryptu, wybierz opcję __niestandardowy__. Podaj __nazwę__ i __Identyfikator URI skryptu bash__ dla skryptu.
 
     ![Dodawanie skryptu w formularzu wybierania skryptu](./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png)
 
@@ -183,13 +181,13 @@ W tej sekcji opisano różne sposoby używania akcji skryptu podczas tworzenia k
 
     Aby upewnić się, że skrypt jest stosowany podczas operacji skalowania, należy użyć wpisu __akcji Utrwalaj ten skrypt__ .
 
-5. Wybierz pozycję __Utwórz__ , aby zapisać skrypt. Następnie możesz użyć __+ Prześlij nowy__ , aby dodać kolejny skrypt.
+1. Wybierz pozycję __Utwórz__ , aby zapisać skrypt. Następnie możesz użyć __+ Prześlij nowy__ , aby dodać kolejny skrypt.
 
-    ![Wiele akcji skryptu](./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts-actions.png)
+    ![Operacje wielu skryptów usługi HDInsight](./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts-actions.png)
 
     Po zakończeniu dodawania skryptów wybierz przycisk __Wybierz__ , a następnie przycisk __dalej__ , aby powrócić do sekcji __Podsumowanie klastra__ .
 
-3. Aby utworzyć klaster, wybierz pozycję __Utwórz__ na podstawie __podsumowania klastra__ .
+1. Aby utworzyć klaster, wybierz pozycję __Utwórz__ na podstawie __podsumowania klastra__ .
 
 ### <a name="use-a-script-action-from-azure-resource-manager-templates"></a>Używanie akcji skryptu z szablonów Azure Resource Manager
 
@@ -249,7 +247,7 @@ Przejdź do [Azure Portal](https://portal.azure.com):
 
     ![Dodawanie skryptu do działającego klastra](./media/hdinsight-hadoop-customize-cluster-linux/add-script-running-cluster.png)
 
-4. Użyj wpisu __skryptu__ , aby wybrać utworzony skrypt. Aby użyć niestandardowego skryptu, wybierz opcję __niestandardowy__. Podaj __nazwę__ i __Identyfikator URI skryptu bash__ dla skryptu.
+1. Użyj wpisu __skryptu__ , aby wybrać utworzony skrypt. Aby użyć niestandardowego skryptu, wybierz opcję __niestandardowy__. Podaj __nazwę__ i __Identyfikator URI skryptu bash__ dla skryptu.
 
     ![Dodawanie skryptu w formularzu wybierania skryptu](./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png)
 
@@ -265,7 +263,7 @@ Przejdź do [Azure Portal](https://portal.azure.com):
 
     Użyj wpisu __Akcja Utrwalaj ten skrypt__ , aby upewnić się, że skrypt jest stosowany podczas operacji skalowania.
 
-5. Na koniec wybierz przycisk **Utwórz** , aby zastosować skrypt do klastra.
+1. Na koniec wybierz przycisk **Utwórz** , aby zastosować skrypt do klastra.
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-azure-powershell"></a>Zastosuj akcję skryptu do działającego klastra z Azure PowerShell
 
@@ -346,17 +344,17 @@ Aby zapoznać się z przykładem użycia zestawu SDK platformy .NET do zastosowa
 
 1. W widoku domyślnym w obszarze **Ustawienia**wybierz pozycję **Akcje skryptu**.
 
-4. Historia skryptów dla tego klastra jest wyświetlana w sekcji Akcje skryptu. Te informacje obejmują listę utrwalonych skryptów. Poniższy zrzut ekranu pokazuje, że skrypt Solr został uruchomiony w tym klastrze. Zrzut ekranu nie pokazuje żadnych utrwalonych skryptów.
+1. Historia skryptów dla tego klastra jest wyświetlana w sekcji Akcje skryptu. Te informacje obejmują listę utrwalonych skryptów. Poniższy zrzut ekranu pokazuje, że skrypt Solr został uruchomiony w tym klastrze. Zrzut ekranu nie pokazuje żadnych utrwalonych skryptów.
 
-    ![Działania skryptu](./media/hdinsight-hadoop-customize-cluster-linux/script-action-history.png)
+    ![Historia przesyłania akcji skryptu portalu](./media/hdinsight-hadoop-customize-cluster-linux/script-action-history.png)
 
-5. Wybierz skrypt z historii, aby wyświetlić sekcję **Właściwości** tego skryptu. W górnej części ekranu możesz ponownie uruchomić skrypt lub go podwyższyć.
+1. Wybierz skrypt z historii, aby wyświetlić sekcję **Właściwości** tego skryptu. W górnej części ekranu możesz ponownie uruchomić skrypt lub go podwyższyć.
 
-    ![Akcje skryptu, właściwości](./media/hdinsight-hadoop-customize-cluster-linux/promote-script-actions.png)
+    ![Podwyższanie poziomu właściwości akcji skryptu](./media/hdinsight-hadoop-customize-cluster-linux/promote-script-actions.png)
 
-6. Możesz również wybrać wielokropek, **...** , na prawo od wpisów w sekcji Akcje skryptu, aby wykonać akcje.
+1. Możesz również wybrać wielokropek, **...** , na prawo od wpisów w sekcji Akcje skryptu, aby wykonać akcje.
 
-    ![Akcje skryptu, wielokropek](./media/hdinsight-hadoop-customize-cluster-linux/hdi-delete-promoted-sa.png)
+    ![Usuwanie akcji utrwalonego skryptu](./media/hdinsight-hadoop-customize-cluster-linux/hdi-delete-promoted-sa.png)
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -414,7 +412,7 @@ W usłudze HDInsight są dostępne dwa typy składników typu "open source":
 > [!WARNING]  
 > Składniki dostarczane z klastrem usługi HDInsight są w pełni obsługiwane. Pomoc techniczna firmy Microsoft pomaga wyizolować i rozwiązać problemy związane z tymi składnikami.
 >
-> Składniki niestandardowe otrzymują komercyjnie uzasadnioną pomoc techniczną, aby ułatwić dalsze Rozwiązywanie problemu. Pomoc techniczna firmy Microsoft może być w stanie rozwiązać ten problem. Mogą też zadawać pytania o zaangażowanie dostępnych kanałów dla technologii open source, w przypadku których zostanie znaleziona Szczegółowa wiedza dla tej technologii. Można użyć wielu witryn społeczności. Przykłady to [forum MSDN dotyczące usługi HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) i [Stack Overflow](https://stackoverflow.com). 
+> Składniki niestandardowe otrzymują komercyjnie uzasadnioną pomoc techniczną, aby ułatwić dalsze Rozwiązywanie problemu. Pomoc techniczna firmy Microsoft może być w stanie rozwiązać ten problem. Mogą też zadawać pytania o zaangażowanie dostępnych kanałów dla technologii open source, w przypadku których zostanie znaleziona Szczegółowa wiedza dla tej technologii. Można użyć wielu witryn społeczności. Przykłady to [forum MSDN dotyczące usługi HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) i [Stack Overflow](https://stackoverflow.com).
 >
 > Projekty Apache zawierają również witryny projektu w [witrynie Apache](https://apache.org). Przykładem jest usługa [Hadoop](https://hadoop.apache.org/).
 
@@ -442,7 +440,7 @@ Za pomocą interfejsu użytkownika sieci Web Ambari można wyświetlać informac
 
 3. Znajdź w kolumnie **operacje** wpisy **z\_uruchomioną customscriptactioną** . Te wpisy są tworzone po uruchomieniu akcji skryptu.
 
-    ![Zrzut ekranu operacji](./media/hdinsight-hadoop-customize-cluster-linux/ambari-script-action.png)
+    ![Operacje akcji skryptu Apache Ambari](./media/hdinsight-hadoop-customize-cluster-linux/ambari-script-action.png)
 
     Aby wyświetlić dane wyjściowe **stdout** i **stderr** , wybierz wpis **run\customscriptaction** i przejdź do szczegółów przez linki. Ta wartość wyjściowa jest generowana, gdy skrypt jest uruchamiany i może mieć przydatne informacje.
 

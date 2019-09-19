@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: glenga
-ms.openlocfilehash: 43fee2ce25e358bbcff915d2fbef96bf4b7c1a0c
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 590757f78086be894cdc2384bb4a4df380e91c27
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233108"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098599"
 ---
 # <a name="deploy-python-to-azure-functions-with-visual-studio-code"></a>Wdrażanie języka Python w celu Azure Functions z Visual Studio Code
 
@@ -45,7 +45,7 @@ Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się teraz](https://az
 
 Zainstaluj następujące oprogramowanie:
 
-- Środowisko Python 3.6. x wymagane przez Azure Functions. [3.6.8 języka Python](https://www.python.org/downloads/release/python-368/) to Najnowsza wersja wersji 3.6. x.
+- Środowisko Python 3.6. x wymagane przez Azure Functions. [3.6.9 języka Python](https://www.python.org/downloads/release/python-369/) to Najnowsza wersja wersji 3.6. x.
 - [Program Visual Studio Code](https://code.visualstudio.com/)
 - [Rozszerzenie Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) zgodnie z opisem w [samouczku Visual Studio Code Python — wymagania wstępne](https://code.visualstudio.com/docs/python/python-tutorial).
 - [Rozszerzenie Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions). Aby uzyskać ogólne informacje, odwiedź [repozytorium GitHub programu vscode-azurefunctions](https://github.com/Microsoft/vscode-azurefunctions).
@@ -207,7 +207,7 @@ Ważne części kodu są następujące:
 
 ## <a name="debug-locally"></a>Debuguj lokalnie
 
-1. Podczas tworzenia projektu Functions rozszerzenie Visual Studio Code tworzy również konfigurację uruchamiania w programie `.vscode/launch.json` , która zawiera pojedynczą konfigurację o nazwie dołączanie **do funkcji języka Python**. Ta konfiguracja oznacza, że można po prostu wybrać **F5** lub użyć Eksploratora debugowania do uruchomienia projektu:
+1. Podczas tworzenia projektu Functions rozszerzenie Visual Studio Code tworzy również konfigurację uruchamiania w programie `.vscode/launch.json` , która zawiera pojedynczą konfigurację o nazwie **dołączanie do funkcji języka Python**. Ta konfiguracja oznacza, że można po prostu wybrać **F5** lub użyć Eksploratora debugowania do uruchomienia projektu:
 
     ![Eksplorator debugowania pokazujący konfigurację uruchamiania funkcji](media/tutorial-vs-code-serverless-python/launch-configuration.png)
 
@@ -444,6 +444,18 @@ W tej sekcji dodasz powiązanie magazynu do funkcji HttpExample utworzonej wcze�
           "queueName": "outqueue",
           "connection": "AzureWebJobsStorage"
         }
+    ```
+
+1. Zastąp zawartość pliku *host. JSON* następującymi informacjami, dodając [odwołanie do pakietów rozszerzenia](functions-bindings-register.md#extension-bundles).
+
+    ```json
+    {
+        "version": "2.0",
+        "extensionBundle": {
+            "id": "Microsoft.Azure.Functions.ExtensionBundle",
+            "version": "[1.*, 2.0.0)"
+        }
+    }
     ```
 
 1. Teraz, po skonfigurowaniu powiązania, można użyć go w kodzie funkcji. Nowo zdefiniowane powiązanie pojawia się w kodzie jako `main` argument funkcji w  *\_ \_\_init\_. PR*. Na przykład można `msg` zmodyfikować  *\_ \_plik\_init\_. PR* w HttpExample, aby pasował do poniższego, który pokazuje przy użyciu argumentu, aby napisać komunikat z sygnaturą czasową o nazwie użytej w żądając. Komentarze wyjaśniają określone zmiany:

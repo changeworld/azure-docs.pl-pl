@@ -5,7 +5,7 @@ keywords: Błąd pulpitu zdalnego, błąd połączenia pulpitu zdalnego, nie mo�
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: 5feb1d64-ee6f-4907-949a-a7cffcbc6153
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: eb9929c66275959ed64ab66517f8b38190f1bdbd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 851c5eb4ebfee4e4a4836a07b51578dd2b0c68cd
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70089662"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088188"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Rozwiązywanie problemów z określonymi komunikatami o błędach RDP na maszynie wirtualnej z systemem Windows
 W przypadku korzystania z Pulpit zdalny połączenia z maszyną wirtualną z systemem Windows na platformie Azure może zostać wyświetlony konkretny komunikat o błędzie. W tym artykule opisano niektóre typowe komunikaty o błędach, a także kroki rozwiązywania problemów. Jeśli masz problemy z nawiązywaniem połączenia z maszyną wirtualną przy użyciu protokołu RDP, ale nie napotkasz określonego komunikatu o błędzie, zobacz [Przewodnik rozwiązywania problemów dla Pulpit zdalny](troubleshoot-rdp-connection.md).

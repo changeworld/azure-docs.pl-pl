@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jlian
-ms.openlocfilehash: 948cdb2ab1af3fe93566497186c025f7f8f39b2e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: f0bcf12a43a4732b371dd2d64c0b174a0087bea9
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877091"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098938"
 ---
 # <a name="understand-iot-hub-metrics"></a>Informacje o metrykach IoT Hub
 
@@ -81,7 +81,7 @@ IoT Hub zawiera kilka metryk, które umożliwiają przedstawienie informacji o k
 |c2d<br>. metody<br>. Niepowodzenie|Nieudane wywołania metody bezpośredniej|Count|Łącznie|Liczba wszystkich wywołań metod bezpośrednich zakończonych niepowodzeniem.|Nie wymiarów|
 |c2d<br>. metody<br>.requestSize|Rozmiar żądania wywołań metody bezpośredniej|Bajty|Average|Średnia, minimum i maksimum wszystkich pomyślnych żądań metody bezpośredniej.|Nie wymiarów|
 |c2d<br>. metody<br>.responseSize|Rozmiar odpowiedzi wywołań metody bezpośredniej|Bajty|Average|Średnia, minimum i maksimum wszystkich zakończonych powodzeniem odpowiedzi metody bezpośredniej.|Nie wymiarów|
-|c2d<br>. sznurki<br>. Przeczytaj<br>. powodzenie|Pomyślne odczyty sznurów z zaplecza|Count|Łącznie|Liczba wszystkich zakończonych powodzeniem odczytów dwuosiowych zainicjowanych z powrotem.|Nie wymiarów|
+|c2d<br>. sznurki<br>. Przeczytaj<br>. powodzenie|Pomyślne odczyty sznurów z zaplecza|Count|Łącznie|Liczba wszystkich zakończonych powodzeniem odczytów dwuosiowych zainicjowanych z powrotem. Ta liczba nie obejmuje odczytów bliźniaczych inicjowanych z zapytań bliźniaczych.|Nie wymiarów|
 |c2d<br>. sznurki<br>. Przeczytaj<br>. Niepowodzenie|Nieudane odczyty sznurów z zaplecza|Count|Łącznie|Liczba wszystkich zakończonych niepowodzeniem odczytów dwuosiowych zainicjowanych z powrotem.|Nie wymiarów|
 |c2d<br>. sznurki<br>. Przeczytaj<br>. rozmiar|Rozmiar odpowiedzi na odwrocie od zaplecza|Bajty|Average|Średnia, minimum i maksimum wszystkich udanych zainicjowanych z powrotem sznurów danych.|Nie wymiarów|
 |c2d<br>. sznurki<br>. Update<br>. powodzenie|Pomyślne aktualizacje bliźniaczych z zaplecza|Count|Łącznie|Liczba wszystkich pomyślnych aktualizacji typu bliźniaczych zainicjowanych z powrotem.|Nie wymiarów|
@@ -106,7 +106,7 @@ IoT Hub zawiera kilka metryk, które umożliwiają przedstawienie informacji o k
 |dailyMessage<br>QuotaUsed|Całkowita liczba użytych komunikatów|Count|Average|Całkowita liczba użytych komunikatów. Jest to skumulowana wartość, która jest resetowana do zera o godzinie 00:00 czasu każdego dnia.|Nie wymiarów|
 |deviceDataUsage|Całkowite użycie danych urządzenia|Bajty|Łącznie|Bajty przesłane do i z dowolnych urządzeń podłączonych do usługi IotHub|Nie wymiarów|
 |totalDeviceCount|Łączna liczba urządzeń (wersja zapoznawcza)|Count|Average|Liczba urządzeń zarejestrowanych w usłudze IoT Hub|Nie wymiarów|
-|łączona<br>Liczba urządzeń|Podłączone urządzenia (wersja zapoznawcza)|Count|Average|Liczba urządzeń podłączonych do centrum IoT Hub|Nie wymiarów|
+|Łączona<br>Liczba urządzeń|Podłączone urządzenia (wersja zapoznawcza)|Count|Average|Liczba urządzeń podłączonych do centrum IoT Hub|Nie wymiarów|
 |komputerów|Metryki konfiguracji|Count|Łącznie|Metryki dla operacji konfiguracji|Nie wymiarów|
 
 ## <a name="next-steps"></a>Następne kroki

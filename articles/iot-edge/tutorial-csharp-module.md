@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 7fca5709a1c7c3ecae11a5fc7de2109f1b20645e
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
-ms.translationtype: MT
+ms.openlocfilehash: e2bfc65ad8fafa07de6e3727d651fccabaddc90e
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839580"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077250"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>Samouczek: Opracowywanie C# modułu IoT Edge dla urządzeń z systemem Linux
 
@@ -36,7 +36,7 @@ Utworzony w tym samouczku moduł usługi IoT Edge filtruje dane temperatury gene
 
 W tym samouczku przedstawiono sposób tworzenia modułu w **C#** programie przy użyciu **Visual Studio Code**i sposobu wdrażania go na **urządzeniu z systemem Linux**. Jeśli tworzysz moduły dla urządzeń z systemem Windows, przejdź do [obszaru C# opracowywanie modułu IoT Edge dla urządzeń z systemem Windows](tutorial-csharp-module-windows.md) .
 
-Skorzystaj z poniższej tabeli, aby poznać opcje tworzenia i wdrażania modułów C w systemie Linux: 
+Skorzystaj z poniższej tabeli, aby poznać opcje tworzenia i wdrażania C# modułów w systemie Linux: 
 
 | C# | Visual Studio Code | Visual Studio | 
 | -- | ------------------ | ------------- |

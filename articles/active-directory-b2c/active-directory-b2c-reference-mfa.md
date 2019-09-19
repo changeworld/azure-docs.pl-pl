@@ -1,6 +1,6 @@
 ---
-title: Uwierzytelnianie wieloskładnikowe w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Jak włączyć uwierzytelnianie wieloskładnikowe w aplikacjach udostępnianych klientom zabezpieczonej przez usługi Azure Active Directory B2C.
+title: Multi-Factor Authentication w Azure Active Directory B2C | Microsoft Docs
+description: Jak włączyć Multi-Factor Authentication w aplikacjach przeznaczonych dla konsumentów zabezpieczonych przez Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,42 +10,42 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a14c648e55c25c6244f1ba09d5b73bf31e5f7337
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0b872fcfbc2ead2cebdd32ff718b582c13af314e
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509313"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065576"
 ---
-# <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Włączanie uwierzytelniania wieloskładnikowego w usłudze Azure Active Directory B2C
+# <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Włączanie uwierzytelniania wieloskładnikowego w Azure Active Directory B2C
 
-Usługa Azure Active Directory (Azure AD) B2C jest zintegrowany bezpośrednio z [usługi Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) tak, aby dodać drugą warstwę zabezpieczeń do środowiska rejestracji i logowania w aplikacjach. Możesz włączyć uwierzytelnianie wieloskładnikowe, bez konieczności pisania nawet jednego wiersza kodu. Jeśli utworzono już logowanie się i przepływy użytkownika do logowania, nadal można włączyć uwierzytelnianie wieloskładnikowe.
+Azure Active Directory B2C (Azure AD B2C) integruje się bezpośrednio z [platformą Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) w celu dodania drugiej warstwy zabezpieczeń do tworzenia kont i logowania w aplikacjach. Uwierzytelnianie wieloskładnikowe można włączyć bez konieczności pisania pojedynczego wiersza kodu. Jeśli utworzono już przepływy rejestracji i logowania użytkowników, nadal możesz włączyć uwierzytelnianie wieloskładnikowe.
 
-Ta funkcja pomaga obsługiwać scenariusze takie jak następujące:
+Ta funkcja ułatwia aplikacjom obsługę scenariuszy, takich jak następujące:
 
-- Nie wymaga uwierzytelniania wieloskładnikowego, dostępu do jednej aplikacji, ale potrzebujesz dostępu do innego. Na przykład klient może zalogować się do aplikacji ubezpieczenia automatycznie za pomocą kont społecznościowych lub lokalnym, ale należy zweryfikować numer telefonu, zanim uzyskujących dostęp do głównego aplikacji ubezpieczeniowe zarejestrowane w tym samym katalogu.
-- Nie wymaga uwierzytelniania wieloskładnikowego, uzyskać dostęp do aplikacji, ogólnie rzecz biorąc, ale potrzebujesz dostępu do poufnych fragmenty w nim. Na przykład klient zalogować się do aplikacji bankowości z ubezpieczenia lub konta lokalnego i sprawdź saldo, ale należy zweryfikować numer telefonu przed podjęciem próby wykonania polecenie przelewu bankowego.
+- Nie musisz wymagać uwierzytelniania wieloskładnikowego, aby uzyskać dostęp do jednej aplikacji, ale musisz uzyskać do niej dostęp. Klient może na przykład zalogować się do aplikacji z branży ubezpieczeniowej przy użyciu konta społecznościowego lub lokalnego, ale musi zweryfikować numer telefonu przed uzyskaniem dostępu do aplikacji ubezpieczenia domowego zarejestrowanej w tym samym katalogu.
+- Nie musisz wymagać uwierzytelniania wieloskładnikowego, aby uzyskać dostęp do aplikacji Ogólnie, ale wymagasz, aby uzyskać dostęp do poufnych części w tym miejscu. Klient może na przykład zalogować się do aplikacji bankowej przy użyciu konta społecznościowego lub lokalnego i sprawdzić saldo konta, ale przed podjęciem próby przeniesienia połączenia należy zweryfikować numer telefonu.
 
-## <a name="set-multi-factor-authentication"></a>Uwierzytelnianie wieloskładnikowe zestawu
+## <a name="set-multi-factor-authentication"></a>Ustawianie uwierzytelniania wieloskładnikowego
 
-Po utworzeniu przepływu użytkownika, masz opcję, aby włączyć uwierzytelnianie wieloskładnikowe.
+Podczas tworzenia przepływu użytkownika można włączyć opcję Uwierzytelnianie wieloskładnikowe.
 
-![Uwierzytelnianie wieloskładnikowe zestawu](./media/active-directory-b2c-reference-mfa/add-policy.png)
+![Ustawianie uwierzytelniania wieloskładnikowego](./media/active-directory-b2c-reference-mfa/add-policy.png)
 
-Ustaw **uwierzytelnianie wieloskładnikowe** do **włączone**.
+Ustaw **uwierzytelnianie wieloskładnikowe** na **włączone**.
 
-Możesz użyć **uruchomić przepływ użytkownika** Aby sprawdzić środowisko. Upewnij się, następujący scenariusz:
+Aby sprawdzić środowisko, można użyć funkcji **Uruchom przepływ użytkownika** . Potwierdź następujący scenariusz:
 
-Konto klienta jest tworzony w Twojej dzierżawie, przed występuje w kroku uwierzytelniania wieloskładnikowego. Podczas wykonywania kroku klienta jest proszony o podanie numeru telefonu i weryfikować ją. Jeśli weryfikacja zakończy się pomyślnie, numer telefonu jest dołączony do konta w celu późniejszego użycia. Nawet jeśli klient anuluje lub umieszcza, klient może pojawić się monit Sprawdź numer telefonu ponownie podczas następnego logowania z włączonym uwierzytelnianiem wieloskładnikowym.
+Konto klienta jest tworzone w dzierżawie przed wykonaniem kroku usługi uwierzytelnianie wieloskładnikowe. W ramach tego kroku klient zostanie poproszony o podanie numeru telefonu i zweryfikowanie go. Jeśli weryfikacja zakończy się pomyślnie, numer telefonu jest dołączany do konta w celu późniejszego użycia. Nawet jeśli klient zostanie anulowany lub odrzuca, klient może zostać poproszony o ponowne zweryfikowanie numeru telefonu podczas kolejnego logowania z włączonym uwierzytelnianiem wieloskładnikowym.
 
-## <a name="add-multi-factor-authentication"></a>Dodawanie usługi Multi-Factor authentication
+## <a name="add-multi-factor-authentication"></a>Dodawanie uwierzytelniania wieloskładnikowego
 
-Istnieje możliwość włączyć uwierzytelnianie wieloskładnikowe na przepływ użytkownika, która została wcześniej utworzona. 
+Istnieje możliwość włączenia uwierzytelniania wieloskładnikowego w przepływie użytkownika, który został wcześniej utworzony.
 
 Aby włączyć uwierzytelnianie wieloskładnikowe:
 
-1. Otwórz przepływ użytkownika, a następnie wybierz pozycję **właściwości**. 
-2. Obok pozycji **uwierzytelnianie wieloskładnikowe**, wybierz opcję **włączone**.
+1. Otwórz przepływ użytkownika, a następnie wybierz pozycję **Właściwości**.
+2. Obok pozycji **uwierzytelnianie wieloskładnikowe**wybierz pozycję **włączone**.
 3. Kliknij przycisk **Zapisz** w górnej części strony.
 
 

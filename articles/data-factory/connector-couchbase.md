@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 9908ecdab389b429667b5e3da1abac5d2ca422ed
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: d1b9a2a151ee73a060e65dc7df631d3e4955504d
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71009855"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090422"
 ---
 # <a name="copy-data-from-couchbase-using-azure-data-factory-preview"></a>Kopiowanie danych z Couchbase przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -30,7 +30,7 @@ W tym artykule opisano sposób używania działania kopiowania w usłudze Azure 
 
 Ten łącznik Couchbase jest obsługiwany dla następujących działań:
 
-- [Działanie kopiowania](copy-activity-overview.md) z [obsługiwaną macierzą źródłową](copy-activity-overview.md)
+- [Działanie kopiowania](copy-activity-overview.md) z [obsługiwaną macierzą źródłową/ujścia](copy-activity-overview.md)
 - [Działanie Lookup](control-flow-lookup-activity.md)
 
 Możesz skopiować dane z Couchbase, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.

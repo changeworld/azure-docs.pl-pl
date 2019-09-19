@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: raynew
-ms.openlocfilehash: 75a8207cd214a63258ddb167b887fe83b7aa032a
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 784bf15a58e25ba4cba18494adc295343d0c175a
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71008830"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098890"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Macierz obsługi odzyskiwania po awarii lokalnych maszyn wirtualnych funkcji Hyper-V na platformie Azure
 
@@ -132,7 +132,7 @@ Obiekty BLOB typu Block | Nie | Nie
 Szyfrowanie w spoczynku (SSE)| Tak | Tak
 Premium Storage | Tak | Tak
 Usługa importu/eksportu | Nie | Nie
-Konta usługi Azure Storage z włączoną zaporą | Nie  | Tak. Dla magazynu docelowego i pamięci podręcznej.
+Konta usługi Azure Storage z włączoną zaporą | Tak. Dla magazynu docelowego i pamięci podręcznej. | Tak. Dla magazynu docelowego i pamięci podręcznej.
 Modyfikowanie konta magazynu | Nie. Nie można zmodyfikować docelowego konta usługi Azure Storage po włączeniu replikacji. Aby zmodyfikować, Wyłącz, a następnie włącz ponownie funkcję odzyskiwania po awarii. | Nie
 
 
