@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów z widokami kosztów platformy Azure w przedsiębiorstwach
-description: Dowiedz się, jak rozwiązać wszelkie problemy, które może być za pomocą widoków koszt organizacji w witrynie Azure portal.
+title: Rozwiązywanie problemów z widokami kosztów przedsiębiorstwa na platformie Azure
+description: Dowiedz się, jak rozwiązywać problemy z widokami kosztów organizacyjnych w witrynie Azure Portal.
 author: bandersmsft
 manager: amberb
 ms.service: billing
@@ -12,38 +12,38 @@ ms.date: 07/01/2019
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 83f7f424b265582a3830c02973cbbb9962ddfbfb
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67491275"
 ---
-# <a name="troubleshoot-enterprise-cost-views"></a>Rozwiązywanie problemów z widoki kosztów przedsiębiorstwa
+# <a name="troubleshoot-enterprise-cost-views"></a>Rozwiązywanie problemów z widokami kosztów przedsiębiorstwa
 
-W ramach rejestracji enterprise istnieje kilka ustawień, które może spowodować, że użytkownicy nie zobaczyć koszty w ramach rejestracji.  Te ustawienia są zarządzane przez administratora rejestracji. Lub, jeśli rejestracja nie jest bezpośrednio przez firmę Microsoft, ustawienia będą zarządzane przez partnera.  Ten artykuł pomaga zrozumieć, co to są ustawienia oraz ich wpływ na rejestracji. Te ustawienia są niezależne od ról kontroli dostępu opartej na rolach platformy Azure.
+W ramach rejestracji przedsiębiorstwa istnieje kilka ustawień, które mogą powodować, że użytkownicy w ramach rejestracji nie będą widzieć kosztów.  Te ustawienia są zarządzane przez administratora rejestracji. Jeśli rejestracja nie zostanie zakupiona bezpośrednio od firmy Microsoft, te ustawienia są zarządzane przez partnera.  W tym artykule wyjaśniono działanie tych ustawień oraz ich wpływ na rejestrację. Te ustawienia są niezależne od ról kontroli dostępu opartej na rolach (RBAC) platformy Azure.
 
-## <a name="enable-access-to-costs"></a>Zapewnianie dostępu do kosztów
+## <a name="enable-access-to-costs"></a>Włączanie dostępu do kosztów
 
-Widzisz komunikat bez autoryzacji, lub *"widoki kosztów są wyłączone w Twojej rejestracji".* Jeśli szukasz informacji o koszcie?
-![Zrzut ekranu pokazujący "Brak autoryzacji" w polu Koszt dla bieżącego dla subskrypcji.](media/billing-enterprise-mgmt-groups/unauthorized.png)
+Czy widzisz komunikat „Bez autoryzacji” lub *„Widoki kosztów są wyłączone w Twojej rejestracji”* , kiedy wyświetlasz informacje o kosztach?
+![Zrzut ekranu przedstawiający komunikat „Bez autoryzacji” w polu Bieżący koszt subskrypcji.](media/billing-enterprise-mgmt-groups/unauthorized.png)
 
-Może to być jeden z następujących powodów:
+Takie zachowanie może mieć jedną z następujących przyczyn:
 
-1. Azure zostały zakupione w ramach partnera usługi enterprise, a partnera nie release jeszcze cen. Skontaktuj się z partnerem, aby zaktualizować ceny ustawienie w [witryny Enterprise portal](https://ea.azure.com).
-2. Jeśli jesteś klientem z bezpośrednimi umowami EA, istnieje kilka możliwości:
-    * Jesteś właścicielem konta i Administrator rejestracji wyłączone **AO Wyświetl opłaty** ustawienie.  
-    * Jesteś administratorem działu i administratorem rejestracji wyłączone **DA Wyświetl opłaty** ustawienie.
-    * Skontaktuj się z administratorem rejestracji, aby uzyskać dostęp. Administrator rejestracji może też zaktualizować ustawienia w [witryny Enterprise portal](https://ea.azure.com/manage/enrollment).
+1. Platformę Azure zakupiono za pośrednictwem partnera przedsiębiorstwa, który nie opublikował jeszcze cennika. Skontaktuj się z partnerem, aby zaktualizował ustawienie cennika w witrynie [Enterprise Portal](https://ea.azure.com).
+2. Jeśli jesteś klientem z bezpośrednią umową EA, masz kilka możliwości:
+    * Jesteś właścicielem konta, ale administrator rejestracji wyłączył ustawienie **AO view charges** (Wyświetlanie opłat przez właściciela konta).  
+    * Jesteś administratorem działu, ale administrator rejestracji wyłączył ustawienie **DA view charges** (Wyświetlanie opłat przez administratora działu).
+    * Skontaktuj się z administratorem rejestracji, aby uzyskać dostęp. Administrator rejestracji może zaktualizować te ustawienia w witrynie [Enterprise Portal](https://ea.azure.com/manage/enrollment).
 
-      ![Zrzut ekranu pokazujący ustawienia portalu Enterprise opłaty widoku.](media/billing-enterprise-mgmt-groups/ea-portal-settings.png)
+      ![Zrzut ekranu pokazujący ustawienia witryny Enterprise Portal sterujące wyświetlaniem opłat.](media/billing-enterprise-mgmt-groups/ea-portal-settings.png)
 
 ## <a name="asset-is-unavailable"></a>Zasób jest niedostępny
 
-Jeśli otrzymasz komunikat o błędzie informujący **ten zasób jest niedostępny** podczas próby uzyskania dostępu do subskrypcji lub grupy zarządzania, nie masz odpowiednią rolę, aby wyświetlić ten element.  
+Jeśli podczas próby uzyskania dostępu do subskrypcji lub grupy zarządzania zostanie wyświetlony komunikat o błędzie **Zasób jest niedostępny**, oznacza to, że nie masz poprawnej roli umożliwiającej wyświetlenie tego elementu.  
 
-![Zrzut ekranu pokazujący wiadomość "zasobu jest niedostępna".](media/billing-enterprise-mgmt-groups/asset-not-found.png)
+![Zrzut ekranu przedstawiający komunikat „Zasób jest niedostępny”.](media/billing-enterprise-mgmt-groups/asset-not-found.png)
 
-Poproś Azure subskrypcji lub zarządzania grupy administratora dostępu. Aby uzyskać więcej informacji, zobacz [zarządzanie dostępem przy użyciu RBAC i witryny Azure portal](../role-based-access-control/role-assignments-portal.md).
+Poproś administratora subskrypcji platformy Azure lub administratora grupy zarządzania o udzielenie dostępu. Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem przy użyciu kontroli RBAC i witryny Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
-## <a name="next-steps"></a>Kolejne kroki
-- Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).
+## <a name="next-steps"></a>Następne kroki
+- Jeśli masz pytania lub potrzebujesz pomocy, [utwórz wniosek o pomoc techniczną](https://go.microsoft.com/fwlink/?linkid=2083458).

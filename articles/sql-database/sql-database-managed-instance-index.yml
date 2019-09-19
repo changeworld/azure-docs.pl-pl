@@ -44,6 +44,9 @@ sections:
           - title: Integracja z siecią wirtualną
             href: /azure/sql-database/sql-database-managed-instance-connectivity-architecture
             html: <p>Zabezpieczona usługa umieszczona w prywatnej sieci wirtualnej platformy Azure z prywatnymi adresami IP.</p>
+          - href: /azure/sql-database/sql-database-instance-pools
+            html: '<p>Ekonomiczne rozwiązanie do wdrażania wielu wystąpień zarządzanych, które współużytkują zasoby.</p>'
+            title: Pule wystąpień
           - title: Łatwa migracja
             href: /azure/sql-database/sql-database-managed-instance-get-started-restore
             html: <p>Łatwa migracja lokalnych baz danych do chmury platformy Azure przy użyciu funkcji natywnego przywracania.</p>
@@ -59,9 +62,6 @@ sections:
           - title: Warstwy usług
             href: /azure/sql-database/sql-database-service-tiers-general-purpose-business-critical
             html: <p>Wybierz między warstwą usługi Ogólnego przeznaczenia a Krytyczne dla działania firmy w zależności od potrzeb biznesowych.</p>
-          - title: Zaawansowane zabezpieczenia
-            href: /azure/sql-database/sql-database-security-index
-            html: <p>Zabezpiecz swoje wystąpienie i bazy danych za pomocą wbudowanych funkcji zabezpieczeń usługi Azure SQL Database.<p>
   - title: 5-minutowe przewodniki Szybki start
     items:
       - type: paragraph
@@ -93,6 +93,12 @@ sections:
               - href: null
               - href: 'https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44'
               - href: '/powershell/module/az.sql/set-azsqlinstance#examples'
+              - href: null
+          - title: Tworzenie nowej puli wystąpień
+            values:
+              - href: null
+              - href: null
+              - href: '/azure/sql-database/sql-database-instance-pools-how-to#create-an-instance-pool'
               - href: null
           - title: Konfigurowanie środowiska sieciowego platformy Azure
             values:

@@ -1,6 +1,6 @@
 ---
-title: Eksportuj Twojej subskrypcji platformy Azure informacji najwyższego poziomu | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak można wyświetlić wszystkich subskrypcji platformy Azure identyfikatorów skojarzonych z Twoim kontem.
+title: Eksportowanie informacji najwyższego poziomu dotyczących subskrypcji platformy Azure | Microsoft Docs
+description: Opisuje sposób wyświetlania wszystkich identyfikatorów subskrypcji platformy Azure skojarzonych z Twoim kontem.
 keywords: ''
 services: billing
 documentationcenter: ''
@@ -16,23 +16,23 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
 ms.openlocfilehash: 8a3d1a3a6b1dce1d729942715bbe5962837ff093
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "60918803"
 ---
-# <a name="export-and-view-your-top-level-subscription-information"></a>Eksportowanie i wyświetlić najwyższego poziomu informacji o subskrypcji
-Jeśli chcesz wyświetlić zestaw subskrypcji identyfikatorów skojarzonych z poświadczeń użytkownika [Pobierz plik JSON, informacje o subskrypcji z Centrum kont Azure](https://account.azure.com/subscriptions/download).
+# <a name="export-and-view-your-top-level-subscription-information"></a>Eksportowanie i wyświetlanie informacji najwyższego poziomu dotyczących subskrypcji
+Jeśli chcesz wyświetlić zestaw identyfikatorów subskrypcji skojarzonych z poświadczeniami użytkownika, [pobierz plik JSON z informacjami o subskrypcji z Centrum konta platformy Azure](https://account.azure.com/subscriptions/download).
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-Plik JSON pobranych zawiera następujące informacje:
-- Email: Adres e-mail skojarzony z Twoim kontem.
-- Identyfikator PUID: Unikatowy identyfikator skojarzony z kontem rozliczeniowym.
-- SubscriptionIds: Lista subskrypcji należących do swojego konta, wymienionych według identyfikatora subskrypcji.
+Pobrany plik JSON zawiera następujące informacje:
+- Adres e-mail: Adres e-mail skojarzony z Twoim kontem.
+- Identyfikator PUID: Unikatowy identyfikator skojarzony z Twoim kontem rozliczeniowym.
+- Identyfikatory subskrypcji: Lista subskrypcji należących do Twojego konta uporządkowane według identyfikatora subskrypcji.
 
-### <a name="subscriptionsjson-sample"></a>Przykładowe Subscriptions.JSON
+### <a name="subscriptionsjson-sample"></a>Przykładowy plik subscriptions.json
 
 ```json
 {

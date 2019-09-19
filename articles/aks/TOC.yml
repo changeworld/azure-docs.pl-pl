@@ -100,6 +100,8 @@
       href: acs-aks-migration.md
     - name: Obsługiwana wersja platformy Kubernetes
       href: supported-kubernetes-versions.md
+    - name: Wzmacnianie zabezpieczeń w systemie operacyjnym hosta
+      href: security-hardened-vm-host-image.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Operacje klastra
@@ -116,7 +118,7 @@
         - name: Usuwanie klastra AKS
           href: '/cli/azure/aks#az-aks-delete'
           maintainContext: true
-        - name: Tworzenie rekordu ACR przy użyciu klastra AKS (wersja zapoznawcza)
+        - name: Tworzenie rekordu ACR przy użyciu klastra AKS
           href: cluster-container-registry-integration.md
         - name: Tworzenie węzłów wirtualnych
           items:

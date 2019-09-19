@@ -1,6 +1,6 @@
 ---
-title: Omówienie usługi Azure opłat za usługi zewnętrzne | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o rozliczeniach za korzystanie z usług zewnętrznych, znana wcześniej jako witryny Marketplace, opłat na platformie Azure.
+title: Informacje o opłatach za usługi zewnętrzne na platformie Azure | Microsoft Docs
+description: Dowiedz się więcej na temat rozliczeń za usługi zewnętrzne, nazywane dawniej usługami platformy Marketplace, na platformie Azure.
 author: jureid
 manager: jureid
 tags: billing
@@ -13,23 +13,23 @@ ms.date: 07/01/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 278e873d01eb3dd7d614d771e5b50b8fe624800a
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67490354"
 ---
-# <a name="understand-your-azure-external-services-charges"></a>O opłatach za usługi platformy Azure usługi zewnętrzne
-Usługi zewnętrzne są publikowane przez producentów oprogramowania innych firm w witrynie Azure marketplace. Na przykład SendGrid to usługa zewnętrznych można zakupić w systemie Azure, ale nie został opublikowany przez firmę Microsoft. Niektóre produkty firmy Microsoft są sprzedawane za pośrednictwem witryny Azure marketplace, zbyt.
+# <a name="understand-your-azure-external-services-charges"></a>Informacje o opłatach za usługi zewnętrzne na platformie Azure
+Usługi zewnętrzne są publikowane przez zewnętrznych dostawców oprogramowania na platformie Azure Marketplace. Na przykład SendGrid to usługa zewnętrzna, którą można zakupić na platformie Azure, ale która nie jest publikowana przez firmę Microsoft. Także niektóre produkty firmy Microsoft są sprzedawane na platformie Azure Marketplace.
 
-## <a name="how-external-services-are-billed"></a>Jak są rozliczane usług zewnętrznych
+## <a name="how-external-services-are-billed"></a>Jak są rozliczane usługi zewnętrzne
 
-- Jeśli masz [umowy klienta Microsoft](#check-access), opłaty za usługi innych firm są naliczane z pozostałą częścią usługi platformy Azure.
+- Jeśli masz [umowę klienta firmy Microsoft](#check-access), usługi innych firm są rozliczane łącznie z pozostałymi usługami platformy Azure.
 - Jeśli nie masz umowy klienta firmy Microsoft, usługi zewnętrzne są rozliczane oddzielnie od usług platformy Azure.
-- Każda usługa zewnętrznych ma inny model rozliczeń. Niektóre usługi są rozliczane w sposób zgodnie z rzeczywistym użyciem, natomiast inne mają stałe opłaty miesięczne.
-- Nie można używać miesięcznych środków na korzystanie z bezpłatnych usług zewnętrznych. Jeśli używasz subskrypcji platformy Azure, która obejmuje [bezpłatne środki na korzystanie z](https://azure.microsoft.com/pricing/spending-limits/), nie można zastosować do opłat z usług zewnętrznych. Podczas aprowizacji nowej zewnętrznej usługi lub zasobu, zostanie wyświetlone ostrzeżenie:
+- Każda usługa zewnętrzna ma inny model rozliczeń. Niektóre usługi są rozliczane na zasadzie płatności zgodnie z rzeczywistym użyciem, a inne mają stałe opłaty miesięczne.
+- Za usługi zewnętrzne nie można płacić przy użyciu otrzymywanych co miesiąc bezpłatnych środków. Jeśli korzystasz z subskrypcji platformy Azure, w ramach której otrzymujesz [bezpłatne środki](https://azure.microsoft.com/pricing/spending-limits/), nie możesz użyć tych środków do opłacenia usług zewnętrznych. Podczas aprowizacji nowych usług i zasobów zewnętrznych jest wyświetlane ostrzeżenie:
 
-    ![Portal Marketplace zakupu ostrzeżenie](./media/billing-understand-your-azure-marketplace-charges/credit-warning.png)
+    ![Ostrzeżenie dotyczące zakupu w witrynie Marketplace](./media/billing-understand-your-azure-marketplace-charges/credit-warning.png)
 
 <!-- ## View external service spending and history in the Azure portal
 You can view a list of the external services that are on each subscription within the [Azure portal](https://portal.azure.com/):
@@ -50,31 +50,31 @@ You can view a list of the external services that are on each subscription withi
 
 ## <a name="view-and-download-invoices"></a>Wyświetlanie i pobieranie faktur
 
-Jeśli masz [umowy klienta Microsoft](#check-access), opłaty za usługi innych firm znajdują się na tym samym faktur jako platformy Azure opłaty. Dowiedz się, jak [wyświetlić i pobrać fakturę Azure](billing-download-azure-invoice.md) z witryny Azure portal, aby wyświetlić opłat innych firm.
+Jeśli masz [umowę klienta firmy Microsoft](#check-access), opłaty za usługi innych firm są uwzględniane na fakturze za korzystanie z platformy Azure. Dowiedz się, [jak wyświetlać i pobierać faktury](billing-download-azure-invoice.md) dotyczące platformy Azure z witryny Azure Portal, i jak znaleźć na nich opłaty za usługi innych firm.
 
-Jeśli nie masz umowy klienta firmy Microsoft, masz faktur oddzielne opłaty innych firm. Można wyświetlić i pobrać fakturach witryny Azure Marketplace w witrynie Azure portal, wykonując następujące czynności:
-
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Wyszukaj **Cost Management + rozliczenia**.
-1. W menu po lewej stronie wybierz **faktur**.
-1. Kliknij pozycję **portalu Azure Marketplace i zastrzeżenia** kartę.  ![Obraz Azure marketplace i zastrzeżenia karty](./media/billing-understand-your-azure-marketplace-charges/invoice-tabs.png)
-1. W subskrypcji listy rozwijanej wybierz subskrypcję, która zawiera usług zewnętrznych, aby wyświetlić faktury dla.
-
-## <a name="external-spending-for-ea-customers"></a>Zewnętrzne wydatków dla klientów z umową EA
-
-Klienci z umowami EA można wyświetlić, wydatków usługi zewnętrznej i pobieranie raportów w witrynie EA portal. Zobacz [portalu Azure Marketplace klienci z umowami EA](https://ea.azure.com/helpdocs/azureMarketplace) na rozpoczęcie pracy.
-
-## <a name="manage-payment-for-external-services"></a>Zarządzanie płatności za usługi zewnętrzne
-
-Przy zakupie usługi zewnętrznej, możesz wybrać subskrypcję platformy Azure dla zasobu. Formy płatności dla wybranej subskrypcji platformy Azure staje się metodę płatności dla usługi zewnętrznej. Aby zmienić metodę płatności dla usługi zewnętrznej, należy najpierw [Zmień formę płatności subskrypcji platformy Azure](billing-how-to-change-credit-card.md) związany z zewnętrznej usługi. Można określić subskrypcję, która jest powiązane zamówienia zewnętrznej usługi wykonaj następujące czynności:
+Jeśli nie masz umowy klienta firmy Microsoft, otrzymasz oddzielne faktury za usługi innych firm. Możesz wyświetlać i pobierać faktury za usługi z platformy Azure Marketplace w witrynie Azure Portal, wykonując następujące czynności:
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Kliknij pozycję **wszystkie zasoby** w menu nawigacji po lewej stronie.
-     ![Zrzut ekranu przedstawiający wszystkie elementy menu zasobów](./media/billing-understand-your-azure-marketplace-charges/all-resources.png)
-1. Wyszukiwanie usługi zewnętrznej.
-1. Wyszukaj nazwę subskrypcji w **subskrypcji** kolumny.
-    ![Zrzut ekranu przedstawiający nazwę subskrypcji dla zasobów](./media/billing-understand-your-azure-marketplace-charges/sub-selected.png)
-1. Kliknij nazwę subskrypcji i [zaktualizować metodę płatności active](billing-how-to-change-credit-card.md).
+1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
+1. W menu po lewej stronie wybierz pozycję **Faktury**.
+1. Kliknij kartę **Azure Marketplace i rezerwacje**.  ![Obraz przedstawiający kartę Azure Marketplace i rezerwacje](./media/billing-understand-your-azure-marketplace-charges/invoice-tabs.png)
+1. Z listy rozwijanej subskrypcji wybierz subskrypcję zawierającą usługi zewnętrzne, za które chcesz wyświetlić faktury.
+
+## <a name="external-spending-for-ea-customers"></a>Wydatki zewnętrzne dla klientów z umowami EA
+
+Klienci z umowami EA mogą wyświetlać wydatki na usługi zewnętrzne i pobierać raporty w witrynie EA Portal. Aby dowiedzieć się, jak zacząć pracę, zobacz [Azure Marketplace dla klientów z umowami EA](https://ea.azure.com/helpdocs/azureMarketplace).
+
+## <a name="manage-payment-for-external-services"></a>Zarządzanie płatnościami za usługi zewnętrzne
+
+Podczas zakupu usługi zewnętrznej należy wybrać subskrypcję platformy Azure, w której zostaną utworzone jej zasoby. Metoda płatności skojarzona z wybraną subskrypcją platformy Azure zostanie użyta do płatności za usługę zewnętrzną. Aby zmienić metodę płatności za usługę zewnętrzną, należy [zmienić metodę płatności za subskrypcję platformy Azure ](billing-how-to-change-credit-card.md) powiązaną z tą usługą zewnętrzną. Aby określić, z którą subskrypcją jest powiązane zamówienie usługi zewnętrznej, wykonaj następujące czynności:
+
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Kliknij pozycję **Wszystkie zasoby** w menu nawigacji po lewej stronie.
+     ![Zrzut ekranu przedstawiający element menu Wszystkie zasoby](./media/billing-understand-your-azure-marketplace-charges/all-resources.png)
+1. Wyszukaj usługę zewnętrzną.
+1. Wyszukaj nazwę subskrypcji w kolumnie **Subskrypcja**.
+    ![Zrzut ekranu przedstawiający nazwę subskrypcji powiązanej z zasobem](./media/billing-understand-your-azure-marketplace-charges/sub-selected.png)
+1. Kliknij nazwę subskrypcji i [zaktualizuj aktywną metodę płatności](billing-how-to-change-credit-card.md).
 
 <!-- Update your payment methods for external service orders from the [Account Center](https://account.windowsazure.com/).
 
@@ -94,26 +94,26 @@ Przy zakupie usługi zewnętrznej, możesz wybrać subskrypcję platformy Azure 
 
     ![Select edit info](./media/billing-understand-your-azure-marketplace-charges/edit-info.png) -->
 
-## <a name="cancel-an-external-service-order"></a>Anulowanie zamówienia zewnętrznej usługi
-Jeśli chcesz anulować zamówienie usługi zewnętrznej, Usuń zasób w [witryny Azure portal](https://portal.azure.com).
+## <a name="cancel-an-external-service-order"></a>Anulowanie zamówienia usługi zewnętrznej
+Jeśli chcesz anulować zamówienie usługi zewnętrznej, usuń odpowiedni zasób w witrynie [Azure Portal](https://portal.azure.com).
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Kliknij pozycję **wszystkie zasoby** w menu nawigacji po lewej stronie.
-    ![Zrzut ekranu przedstawiający wszystkie elementy menu zasobów](./media/billing-understand-your-azure-marketplace-charges/all-resources.png)
-1. Wyszukiwanie usługi zewnętrznej.
-1. Zaznacz pole obok zasobów, które chcesz usunąć.
-1. Wybierz **Usuń** na pasku poleceń.
+1. Kliknij pozycję **Wszystkie zasoby** w menu nawigacji po lewej stronie.
+    ![Zrzut ekranu przedstawiający element menu Wszystkie zasoby](./media/billing-understand-your-azure-marketplace-charges/all-resources.png)
+1. Wyszukaj usługę zewnętrzną.
+1. Zaznacz pole wyboru obok zasobu, który chcesz usunąć.
+1. Na pasku poleceń wybierz pozycję **Usuń**.
     ![Zrzut ekranu przedstawiający przycisk Usuń](./media/billing-understand-your-azure-marketplace-charges/delete-button.png)
-1. Typ *"Yes"* w bloku potwierdzenia.
-    ![Usuń zasób](./media/billing-understand-your-azure-marketplace-charges/delete-resource.PNG)
-1. Kliknij przycisk **Usuń**.
+1. W bloku potwierdzenia wpisz *Yes* (Tak).
+    ![Usuwanie zasobu](./media/billing-understand-your-azure-marketplace-charges/delete-resource.PNG)
+1. Kliknij polecenie **Usuń**.
 
-## <a name="check-access"></a>Sprawdź dostęp
+## <a name="check-access"></a>Sprawdzanie dostępu
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 
-Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).
+Jeśli masz pytania lub potrzebujesz pomocy, [utwórz wniosek o pomoc techniczną](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - [Rozpoczęcie analizy kosztów](../cost-management/quick-acm-cost-analysis.md)

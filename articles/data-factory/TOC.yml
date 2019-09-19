@@ -584,6 +584,8 @@
           href: solution-template-bulk-copy-with-control-table.md
         - name: Kopiowanie różnicowe z bazy danych
           href: solution-template-delta-copy-with-control-table.md
+        - name: Migrowanie danych z usługi Amazon S3 do usługi Azure Storage
+          href: solution-template-migration-s3-azure.md
         - name: Przenoszenie plików
           href: solution-template-move-files.md
         - name: Przekształcanie danych za pomocą usługi Databricks

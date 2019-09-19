@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 09/11/2019
 ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: b982e0bcd87a60e29b11c7123fbe5d675ab017b3
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 03ca6163b4f788d50f7f27a2fcaf2c9b6c02d84c
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390406"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910114"
 ---
 ::: zone target="chromeless"
 
@@ -52,7 +52,7 @@ Przed rozpoczęciem upewnij się, że zostały wykonane kroki opisane w artykule
 
 Następne czynności są zależne od lokalizacji, z której zwracasz urządzenie. Instrukcje są różne dla Stanów Zjednoczonych / Kanady, Unii Europejskiej (UE), Australii oraz krajów azjatyckich.
 
-### <a name="pick-up-in-us-canada"></a>Odbiór w Stanach Zjednoczonych i Kanadzie
+### <a name="in-us-or-canadatabin-us-or-canada"></a>[W Stanach Zjednoczonych lub Kanadzie](#tab/in-us-or-canada)
 
 W przypadku zwrotu urządzenia w Stanach Zjednoczonych lub Kanadzie wykonaj następujące czynności.
 
@@ -68,7 +68,7 @@ W przypadku zwrotu urządzenia w Stanach Zjednoczonych lub Kanadzie wykonaj nast
     - Jeśli nie podasz numeru śledzenia, firma UPS będzie wymagała uiszczenia dodatkowej opłaty podczas odbioru.
     - Zamiast planowania odbioru możesz także dostarczyć urządzenie Data Box Disk do najbliższego punktu UPS.
 
-### <a name="pick-up-in-europe"></a>Odbiór w Europie
+### <a name="in-europetabin-europe"></a>[W Europie](#tab/in-europe)
 
 W przypadku zwrotu urządzenia w Europie wykonaj następujące czynności.
 
@@ -81,7 +81,7 @@ W przypadku zwrotu urządzenia w Europie wykonaj następujące czynności.
 4. Przejdź do lokalnej witryny internetowej firmy DHL Express i wybierz pozycję **Utwórz przesyłkę zwrotną**.    
 3. Podaj numer listu przewozowego i kliknij przycisk **Zamówienie kuriera**, aby zaplanować odebranie przesyłki.
 
-### <a name="pick-up-in-australia"></a>Odbiór w Australii
+### <a name="in-australiatabin-australia"></a>[W Australii](#tab/in-australia)
 
 W przypadku centrów danych w Australii obowiązuje dodatkowe zabezpieczenie. Zabezpieczenie to polega na powiadamianiu z wyprzedzeniem o wszystkich przesyłkach przychodzących. Wykonaj następujące czynności, aby zaplanować odbiór w Australii.
 
@@ -89,9 +89,9 @@ W przypadku centrów danych w Australii obowiązuje dodatkowe zabezpieczenie. Za
 3. Umieść etykietę na opakowaniu. 
 4. Zarezerwuj odbiór online, korzystając z linku https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference. 
 
-### <a name="pick-up-in-asia"></a>Odbiór w Azji
+### <a name="in-japan-koreatabin-japan-korea"></a>[W Japonii i Korei](#tab/in-japan-korea)
 
-Instrukcje dotyczące odbioru są różne dla Japonii, Korei i Singapuru.
+Poniżej przedstawiono instrukcje dotyczące odbioru dla Japonii i Korei.
 
 #### <a name="pick-up-in-japan"></a>Odbiór w Japonii
 
@@ -134,7 +134,8 @@ W razie konieczności możesz skontaktować się z pomocą techniczną firmy Qua
     3. Jeśli kurier nie zjawi się po odbiór przesyłki, zadzwoń na infolinię firmy *Quantium Solutions International*, aby zaplanować odbiór alternatywny. 
     4. W przypadku rozmowy telefonicznej otrzymasz słowne potwierdzenie.
 
-#### <a name="pick-up-in-singapore"></a>Odbiór w Singapurze
+
+### <a name="in-singaporetabin-singapore"></a>[W Singapurze](#tab/in-singapore)
 
 1. Wydrukuj etykietę wysyłkową i umieść ją na opakowaniu. Jeśli etykieta została uszkodzona lub utracona:
     - Przejdź do pozycji **Przegląd > Pobierz etykietę wysyłkową** i pobierz zwrotną etykietę wysyłkową.

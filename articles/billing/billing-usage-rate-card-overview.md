@@ -1,6 +1,6 @@
 ---
-title: Pobierz użycie platformy Azure przy użyciu interfejsów API rozliczeń platformy Azure | Dokumentacja firmy Microsoft
-description: Informacje na temat użycia rozliczeń platformy Azure i interfejsów API usługi RateCard, które są używane do zapewniają wgląd w wykorzystanie zasobów platformy Azure i trendów.
+title: Pobieranie użycia platformy Azure za pomocą interfejsów API rozliczeń platformy Azure | Microsoft Docs
+description: Dowiedz się więcej na temat interfejsów API usługi RateCard i użycia rozliczeń platformy Azure, które służą do udostępniania szczegółowych informacji o wykorzystaniu zasobów platformy Azure i trendach.
 services: ''
 documentationcenter: ''
 author: tonguyen
@@ -17,54 +17,54 @@ ms.date: 5/10/2018
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 4756c7abcb354e0b72c8a95c9d2df4bb3a14671a
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "68443034"
 ---
-# <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Użyj interfejsów API rozliczeń platformy Azure, aby programowo uzyskać wgląd w użycie platformy Azure
-Użyj interfejsów API rozliczeń platformy Azure do pobierania danych użycia i zasobów do narzędzia do analizy danych preferowany. Interfejsy API usługi RateCard i użycia zasobów platformy Azure mogą ułatwić dokładne przewidywanie kosztów i zarządzanie nimi. Interfejsy API są zaimplementowane jako dostawcy zasobów i częścią rodziny interfejsach API udostępnianych przez usługę Azure Resource Manager.  
+# <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Wykorzystanie interfejsów API rozliczeń platformy Azure do uzyskiwania szczegółowych informacji o użyciu platformy Azure
+Użyj interfejsów API rozliczeń platformy Azure, aby pobrać dane dotyczących użycia i zasobów do preferowanych narzędzi do analizy danych. Interfejsy API usługi RateCard i użycia zasobów platformy Azure mogą ułatwić dokładne przewidywanie kosztów i zarządzanie nimi. Interfejsy API są implementowane jako dostawca zasobów i należą do rodziny interfejsów API uwidacznianych przez usługę Azure Resource Manager.  
 
 ## <a name="azure-invoice-download-api-preview"></a>Interfejs API pobierania faktur platformy Azure (wersja zapoznawcza)
-Raz [zgody zostało ukończone](billing-manage-access.md#opt-in), pobierania faktur za pomocą wersji zapoznawczej [API faktury](/rest/api/billing). Funkcje obejmują:
+Po [wyrażeniu zgody na uczestnictwo](billing-manage-access.md#opt-in) pobieraj faktury, korzystając z wersji zapoznawczej [interfejsu API faktur](/rest/api/billing). Dostępne funkcje to:
 
-* **Azure Role-based Access Control** — Konfigurowanie zasad dostępu na [witryny Azure portal](https://portal.azure.com) lub za pomocą [poleceń cmdlet programu Azure PowerShell](/powershell/azure/overview) określić użytkowników lub aplikacji, które mogą uzyskać dostęp do dane użycia dla subskrypcji. Obiekty wywołujące musi używać standardowych tokenów usługi Azure Active Directory do uwierzytelniania. Dodaj obiekt wywołujący do roli Czytelnik rozliczenia, Czytelnik, właściciel albo współautora do uzyskania dostępu do danych użycia dla określonej subskrypcji platformy Azure.
-* **Filtrowanie dat** — użyj `$filter` parametru, aby pobrać wszystkie faktury w odwrotnej kolejności chronologicznej według daty zakończenia okresu faktury.
+* **Kontrola dostępu oparta na rolach na platformie Azure** — konfiguruj zasady dostępu w witrynie [Azure Portal](https://portal.azure.com) lub przy użyciu [poleceń cmdlet programu Azure PowerShell](/powershell/azure/overview), aby określić, którzy użytkownicy lub które aplikacje mogą mieć dostęp do danych użycia subskrypcji. Obiekty wywołujące muszą używać standardowych tokenów usługi Azure Active Directory na potrzeby uwierzytelniania. Dodaj obiekt wywołujący do roli Czytelnik rozliczeń, Czytelnik, Właściciel lub Współautor, aby uzyskać dostęp do danych użycia dla określonej subskrypcji platformy Azure.
+* **Filtrowanie dat** — użyj parametru `$filter`, aby pobrać wszystkie faktury w odwrotnym porządku chronologicznym według daty końcowej okresu fakturowania.
 
 > [!NOTE]
-> Ta funkcja jest w pierwszej wersji zapoznawczej i mogą paść ofiarą zmiany niekompatybilne z poprzednimi wersjami. Obecnie nie jest dostępna w przypadku niektórych ofert subskrypcji (umowy EA, dostawcy usług Kryptograficznych, AIO nieobsługiwane) i Azure (Niemcy).
+> Ta funkcja jest w pierwszej wersji zapoznawczej i może podlegać zmianom, które będą niezgodne z poprzednimi wersjami. Obecnie nie jest ona dostępna w przypadku niektórych ofert subskrypcji (umowy EA, CSP i AIO nie są obsługiwane) i platformy Azure (Niemcy).
 
-## <a name="azure-resource-usage-api-preview"></a>Interfejs API (wersja zapoznawcza) użycia zasobów platformy Azure
-Skorzystaj z Kalkulatora [interfejs API użycia zasobów](/previous-versions/azure/reference/mt219003(v=azure.100)) można pobrać danych Szacowane użycie platformy Azure. Ten interfejs API obejmuje:
+## <a name="azure-resource-usage-api-preview"></a>Interfejs API użycia zasobów platformy Azure (wersja zapoznawcza)
+Użyj [interfejsu API użycia zasobów ](/previous-versions/azure/reference/mt219003(v=azure.100)) platformy Azure, aby uzyskać szacowane dane użycia platformy Azure. Ten interfejs API zawiera następujące składniki:
 
-* **Azure Role-based Access Control** — Konfigurowanie zasad dostępu na [witryny Azure portal](https://portal.azure.com) lub za pomocą [poleceń cmdlet programu Azure PowerShell](/powershell/azure/overview) określić użytkowników lub aplikacji, które mogą uzyskać dostęp do dane użycia dla subskrypcji. Obiekty wywołujące musi używać standardowych tokenów usługi Azure Active Directory do uwierzytelniania. Dodaj obiekt wywołujący do roli Czytelnik rozliczenia, Czytelnik, właściciel albo współautora do uzyskania dostępu do danych użycia dla określonej subskrypcji platformy Azure.
-* **Co godzinę lub agregacje codzienne** — obiekty wywołujące można określić, czy mają swoje dane użycia platformy Azure godzinowo przedziałów lub codziennie przedziałów. Wartość domyślna to dzienny.
-* **Wystąpienie metadanych (w tym tagi zasobów)** — Pobierz szczegóły na poziomie wystąpienia takich jak identyfikator uri zasobu w pełni kwalifikowana (/subscriptions/ {identyfikator subskrypcji} /...), informacje o grupie zasobów i tagi zasobów. Te metadane pomaga także jednoznacznie i programowo przydzielić użycia według tagów, przypadki użycia, takich jak ładowania wielu.
-* **Metadane zasobu** — szczegóły zasobów, takie jak nazwa miernika, kategoria licznika, podkategoria licznika, jednostki i region zapewniają obiekt wywołujący lepiej co został wykorzystany. Pracujemy także wyrównać terminologii metadanych zasobów w witrynie Azure portal, Azure użycia woluminów CSV, EA rozliczeń CSV i inne środowiska publicznego umożliwiają korelowanie danych środowiska.
-* **Użycia dla typów inną ofertę** — dane użycia są dostępne dla typów ofert, takie jak płatność za rzeczywiste użycie, MSDN, w ramach zobowiązań pieniężnych, środki pieniężne i umowy EA, z wyjątkiem [dostawcy usług Kryptograficznych](https://docs.microsoft.com/azure/cloud-solution-provider/billing/azure-csp-invoice#retrieve-usage-data-for-a-specific-subscription).
+* **Kontrola dostępu oparta na rolach na platformie Azure** — konfiguruj zasady dostępu w witrynie [Azure Portal](https://portal.azure.com) lub przy użyciu [poleceń cmdlet programu Azure PowerShell](/powershell/azure/overview), aby określić, którzy użytkownicy lub które aplikacje mogą mieć dostęp do danych użycia subskrypcji. Obiekty wywołujące muszą używać standardowych tokenów usługi Azure Active Directory na potrzeby uwierzytelniania. Dodaj obiekt wywołujący do roli Czytelnik rozliczeń, Czytelnik, Właściciel lub Współautor, aby uzyskać dostęp do danych użycia dla określonej subskrypcji platformy Azure.
+* **Agregacje godzinowe i dzienne** — obiekty wywołujące mogą określać, czy dane dotyczące użycia platformy Azure powinny być w przedziałach godzinowych, czy dziennych. Ustawieniem domyślnym są przedziały dzienne.
+* **Metadane wystąpienia (w tym tagi zasobów)** — uzyskaj szczegóły na poziomie wystąpienia, na przykład w pełni kwalifikowany identyfikator URI zasobu (/subscriptions/{subscription-id}/..), informacje o grupie zasobów i tagi zasobów. Te metadane pomagają jednoznacznie i programowo przydzielać użycie według tagów w takich przypadkach użycia jak opłaty krzyżowe.
+* **Metadane zasobu** — szczegóły zasobu, takie jak nazwa miernika, kategoria miernika, podkategoria miernika, jednostka i region, umożliwiają obiektowi wywołującemu lepszy wgląd w to, co zostało zużyte. Pracujemy również nad dopasowaniem terminologii dotyczącej metadanych zasobów w witrynie Azure Portal, pliku CSV użycia platformy Azure, pliku CSV rozliczeń umów EA i innych elementach publicznych, aby umożliwić skorelowanie danych między tymi elementami.
+* **Użycie dla różnych typów ofert** — dane użycia są dostępne dla typów ofert, takich jak płatność zgodnie z rzeczywistym użyciem, MSDN, zobowiązanie pieniężne, oferta kredytowo-finansowa i umowa EA, z wyjątkiem [CSP](https://docs.microsoft.com/azure/cloud-solution-provider/billing/azure-csp-invoice#retrieve-usage-data-for-a-specific-subscription).
 
-## <a name="azure-resource-ratecard-api-preview"></a>RateCard zasobów platformy Azure, interfejsu API (wersja zapoznawcza)
-Użyj [interfejsu API RateCard zasobów Azure](/previous-versions/azure/reference/mt219005(v=azure.100)) można pobrać listy dostępnych zasobów platformy Azure oraz informacje o cenach Szacowana dla każdego. Ten interfejs API obejmuje:
+## <a name="azure-resource-ratecard-api-preview"></a>Interfejs API usługi RateCard zasobów platformy Azure (wersja zapoznawcza)
+Użyj [interfejsu API usługi RateCard zasobów platformy Azure](/previous-versions/azure/reference/mt219005(v=azure.100)), aby uzyskać listę dostępnych zasobów platformy Azure oraz informacje o szacowanych cenach dla każdego z nich. Ten interfejs API zawiera następujące składniki:
 
-* **Azure Role-based Access Control** — Konfigurowanie zasad dostępu na [witryny Azure portal](https://portal.azure.com) lub za pomocą [poleceń cmdlet programu Azure PowerShell](/powershell/azure/overview) określić użytkowników lub aplikacji, które mogą uzyskać dostęp do Dane usługi RateCard. Obiekty wywołujące musi używać standardowych tokenów usługi Azure Active Directory do uwierzytelniania. Dodaj obiekt wywołujący do roli Czytelnik, właściciela lub współautora do uzyskania dostępu do danych użycia dla określonej subskrypcji systemu Azure.
-* **Obsługa płatność za rzeczywiste użycie, MSDN, w ramach zobowiązań pieniężnych i ofert kredytowo (umowy EA i [dostawcy usług Kryptograficznych](https://docs.microsoft.com/azure/cloud-solution-provider/billing/azure-csp-pricelist#get-prices-by-using-the-azure-rate-card) nieobsługiwane)** — ten interfejs API zawiera informacje za platformę Azure poziomu oferty.  Obiekt wywołujący ten interfejs API musi przekazać informacje oferty, aby uzyskać szczegółowe informacje o zasobie i kursów. Obecnie nie możemy zapewniają stawki umowy EA, ponieważ EA ofert dostosowanych stawki dla rejestracji.
+* **Kontrola dostępu oparta na rolach na platformie Azure** — konfiguruj zasady dostępu w witrynie [Azure Portal](https://portal.azure.com) lub przy użyciu [poleceń cmdlet programu Azure PowerShell](/powershell/azure/overview), aby określić, którzy użytkownicy lub które aplikacje mogą mieć dostęp do danych usługi RateCard. Obiekty wywołujące muszą używać standardowych tokenów usługi Azure Active Directory na potrzeby uwierzytelniania. Dodaj obiekt wywołujący do roli Czytelnik, Właściciel lub Współautor, aby uzyskać dostęp do danych użycia dla konkretnej subskrypcji platformy Azure.
+* **Obsługa płatności zgodnie z rzeczywistym użyciem, MSDN, zobowiązania pieniężnego i ofert kredytowo-finansowych (umowy EA i [CSP](https://docs.microsoft.com/azure/cloud-solution-provider/billing/azure-csp-pricelist#get-prices-by-using-the-azure-rate-card) nie są obsługiwane)** — ten interfejs API zapewnia informacje o stawkach na poziomie ofert platformy Azure.  Obiekt wywołujący ten interfejs API musi przekazać informacje o ofercie w celu uzyskania stawek i szczegółów zasobów. Obecnie nie jesteśmy w stanie udostępniać stawek dla umów EA, ponieważ oferty EA mają niestandardowe stawki obowiązujące dla konkretnych rejestracji.
 
 ## <a name="scenarios"></a>Scenariusze
-Poniżej przedstawiono scenariusze, które są możliwe przy użyciu połączenia API RateCard i użycie:
+Poniżej przedstawiono niektóre scenariusze, które są możliwe za pomocą kombinacji interfejsów API użycia i usługi RateCard:
 
-* **Wydatki na platformę Azure w miesiącu** — użyj kombinacji użycia i RateCard interfejsów API, aby uzyskać lepszy wgląd w chmurze wydatki w miesiącu. Możesz analizować przedziały co godzinę i codzienne szacuje użycie i opłat.
-* **Konfigurowanie alertów** — umożliwia API RateCard i użycie chmury Szacowane użycie i opłat i skonfigurować alerty oparte na zasobach lub pieniężnych na podstawie.
-* **Przewidywanie rachunku** — pobieranie Szacowane użycie i w chmurze wydatków i zastosować algorytmów uczenia maszynowego w celu przewidywania, rachunek będzie na końcu okresu rozliczeniowego.
-* **Użycie wstępnego analiza kosztów** — przewidywanie, ile na rachunku będzie oczekiwanego użycia podczas przenoszenia obciążeń do platformy Azure za pomocą interfejsu API RateCard. Jeśli masz istniejące obciążenia w innych chmurach lub chmur prywatnych, można również mapować użycia z platformą Azure poświęcić kursów, które można pobrać lepiej oszacować platformy Azure. Te dane szacunkowe daje możliwość przestawnego na oferty i porównywanie i zestawianie między typami inną ofertę poza płatności, np. w ramach zobowiązań pieniężnych i środków pieniężnych. Interfejs API także zapewnia możliwość wyświetlania różnic kosztów według regionu i pozwoli to wykonywać analizy warunkowej kosztów, ułatwiające podjęcie decyzji dotyczących wdrożenia.
+* **Wydatki na platformę Azure w miesiącu** — użyj kombinacji interfejsów API użycia i usługi RateCard, aby uzyskać bardziej szczegółowe informacje o wydatkach na chmurę w danym miesiącu. Można analizować godzinowe i dzienne przedziały użycia oraz oszacowania opłat.
+* **Konfigurowanie alertów** — użyj interfejsów API użycia i usługi RateCard, aby uzyskać szacowane wykorzystanie chmury i opłaty oraz skonfigurować alerty oparte na zasobach lub środkach pieniężnych.
+* **Przewidywanie rachunku** — uzyskaj szacowane wykorzystanie i wydatki na chmurę, a następnie zastosuj algorytmy uczenia maszynowego, aby przewidzieć, jak będzie wyglądać rachunek na koniec cyklu rozliczeniowego.
+* **Analiza kosztów przed wykorzystaniem** — użyj interfejsu API usługi RateCard, aby przewidzieć wysokość rachunku za oczekiwane użycie po przeniesieniu obciążeń na platformę Azure. W przypadku istniejących obciążeń w innych chmurach lub chmurach prywatnych można również zamapować użycie na stawki platformy Azure, aby otrzymać lepsze oszacowanie wydatków na platformę Azure. To oszacowanie pozwala analizować oferty, a także porównywać i zestawiać ze sobą inne typy ofert niż płatność zgodnie z rzeczywistym użyciem, jak na przykład zobowiązanie pieniężne i oferta kredytowo-finansowa. Interfejs API umożliwia również wyświetlanie różnic kosztowych według regionów i pozwala wykonać analizę warunkową kosztów w celu ułatwienia podejmowania decyzji dotyczących wdrażania.
 * **Analiza warunkowa** -
 
-  * Można określić, czy jest to bardziej ekonomiczne do uruchamiania obciążeń w innym regionie lub w innej konfiguracji zasobów platformy Azure. Koszty zasobów platformy Azure może się różnić w zależności na region platformy Azure, z którego korzystasz.
-  * Można również określić, jeśli inny typ oferty platformy Azure zapewnia lepszą szybkość w obrębie zasobu platformy Azure.
+  * Możesz określić, czy tańsze jest uruchamianie obciążeń w innym regionie, czy też przy użyciu innej konfiguracji zasobów platformy Azure. Koszty zasobów platformy Azure mogą się różnić w zależności od regionu platformy Azure, z którego korzystasz.
+  * Możesz również określić, czy inny typ oferty platformy Azure oferuje lepszą stawkę za zasób platformy Azure.
 
 
-## <a name="next-steps"></a>Kolejne kroki
-* Zapoznaj się z przykładów kodu w serwisie GitHub:
+## <a name="next-steps"></a>Następne kroki
+* Zapoznaj się z przykładami kodu w usłudze GitHub:
   * [Przykład kodu dla interfejsu API faktur](https://go.microsoft.com/fwlink/?linkid=845124)
 
   * [Przykład kodu dla interfejsu API użycia](https://github.com/Azure-Samples/billing-dotnet-usage-api)

@@ -1,5 +1,5 @@
 ---
-title: Omówienie usługi Azure faktury | Dokumentacja firmy Microsoft
+title: Opis zawartości faktury za platformę Azure | Microsoft Docs
 description: Dowiedz się, jak czytać i zrozumieć dane użycia oraz rachunek dotyczące subskrypcji platformy Azure
 services: ''
 documentationcenter: ''
@@ -15,105 +15,105 @@ ms.workload: na
 ms.date: 08/31/2017
 ms.author: banders
 ms.openlocfilehash: 77c1a85136b2117af7396b8eec2d8b92b335d61d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "60369966"
 ---
-# <a name="understand-terms-on-your-microsoft-azure-invoice"></a>Zrozumienie warunki na fakturze Microsoft Azure
+# <a name="understand-terms-on-your-microsoft-azure-invoice"></a>Omówienie terminów występujących na fakturze za platformę Microsoft Azure
 
-Faktura zawiera podsumowanie opłat i instrukcje dotyczące płatności. Jest dostępna do pobrania w Portable Document Format (PDF) z [witryny Azure portal](https://portal.azure.com/) lub mogą być wysyłane za pośrednictwem poczty e-mail. Aby uzyskać więcej informacji, zobacz [sposobu uzyskania usługi Azure billing faktury i dane dziennego użycia](billing-download-azure-invoice-daily-usage-date.md).
+Faktura zawiera podsumowanie opłat i instrukcje dotyczące płatności. Można ją pobrać w formacie PDF (Portable Document Format) z witryny [Azure Portal](https://portal.azure.com/) lub otrzymać w wiadomości e-mail. Aby uzyskać więcej informacji, zobacz [Jak otrzymać fakturę rozliczeniową za platformę Azure i dane dziennego użycia](billing-download-azure-invoice-daily-usage-date.md).
 
-Kilka kwestii, które należy zwrócić uwagę:
+Kilka kwestii, na które warto zwrócić uwagę:
 
--   Jeśli używasz bezpłatnej subskrypcji próbnej, można uzyskać informacje o szczegółowym zestawieniem użycia w witrynie Azure portal, ale nie masz faktury.
+-   Jeśli korzystasz z subskrypcji bezpłatnej wersji próbnej, możesz uzyskać szczegółowe informacje o użyciu z witryny Azure Portal, ale nie masz faktury.
 
--   Maksymalnie 24 godziny użycia na końcu poprzedniego okresu rozliczeniowego może być wyświetlane w Twojej bieżącej faktury.
+-   Na bieżącej fakturze mogą zostać wykazane dane użycia z maksymalnie 24 godzin z końca poprzedniego okresu rozliczeniowego.
 
 -   Opłaty wymienione na rozliczeniach dla klientów międzynarodowych służą jedynie do oszacowania kosztów. Banki mogą stosować różne kursy wymiany.
 
 >[!VIDEO https://www.youtube.com/embed/jWG1lyJe3Mg]
 
-## <a name="detailed-terms-and-descriptions-of-your-invoice"></a>Szczegółowy opis warunków wraz z opisami faktury
-W poniższych sekcjach wymieniono ważne pojęcia, które widzisz na faktury i opisy dla każdego okresu.
+## <a name="detailed-terms-and-descriptions-of-your-invoice"></a>Szczegółowe opisy terminów znajdujących się na fakturze
+W poniższych sekcjach wymieniono ważne terminy występujące na fakturze i ich opisy.
 
 ### <a name="account-information"></a>Informacje o koncie
 
-Sekcja informacji o koncie faktury znajduje się na szczycie pierwszej strony i zawiera informacje o profilu i subskrypcji.
+W górnej części pierwszej strony faktury znajduje się sekcja z informacjami o koncie. Zawiera ona informacje o profilu i subskrypcji.
 
-![Sekcja informacji o koncie faktury](./media/billing-understand-your-invoice/1.png)
+![Sekcja faktury z informacjami o koncie](./media/billing-understand-your-invoice/1.png)
 
 | Termin | Opis |
 | --- | --- |
-| Nr zamówienia klienta |Numer zamówienia zakupu opcjonalne przypisanych przez użytkownika do śledzenia |
-| Nr faktury |Unikatowe, numer faktury Microsoft generowane używanych na potrzeby śledzenia |
-| Cykl rozliczeń |Zakres dat, która obejmuje faktury |
-| Data faktury |Data wygenerowania faktury, zwykle dzień po zakończeniu cyklu rozliczeniowym |
+| Numer zamówienia zakupu klienta |Opcjonalny numer zamówienia zakupu przypisany do Ciebie na potrzeby śledzenia |
+| Nr faktury |Unikatowy, wygenerowany przez firmę Microsoft numer faktury używany na potrzeby śledzenia |
+| Cykl rozliczeń |Zakres dat, który obejmuje ta faktura |
+| Data faktury |Data wygenerowania faktury. Zazwyczaj jest to jeden dzień po zakończeniu okresu rozliczeniowego |
 | Metoda płatności |Typ płatności używany na koncie (faktura lub karta kredytowa) |
-| Rachunek dla |Adres do faktury, który znajduje się na konto |
-| Subskrypcję oferty ("płatność za rzeczywiste użycie") |Typ oferty subskrypcji, które zostało zakupione (płatność za rzeczywiste użycie, BizSpark Plus, Azure — dostęp próbny itp.). Aby uzyskać więcej informacji, zobacz [typów ofert Azure](https://azure.microsoft.com/support/legal/offer-details/). |
-| Adres e-mail właściciela konta | Adres e-mail konta, w ramach którego zarejestrowane jest konto platformy Microsoft Azure. <br /><br />Aby zmienić adres e-mail, zobacz [jak zmienić informacje o profilu konta platformy Azure, takich jak kontaktowy adres e-mail, adres i numer telefonu](billing-how-to-change-azure-account-profile.md). |
+| Rachunek dla |Adres na potrzeby rozliczeń przypisany do konta |
+| Oferta subskrypcji („płatność zgodnie z rzeczywistym użyciem”) |Typ zakupionej oferty subskrypcji (płatność zgodnie z rzeczywistym użyciem, BizSpark Plus, Azure — dostęp próbny itp.). Aby uzyskać więcej informacji, zobacz [Typy ofert platformy Azure](https://azure.microsoft.com/support/legal/offer-details/). |
+| Adres e-mail właściciela konta | Adres e-mail konta, w ramach którego zarejestrowane jest konto platformy Microsoft Azure. <br /><br />Aby zmienić adres e-mail, zobacz [Jak zmienić informacje o profilu konta platformy Azure, takie jak kontaktowy adres e-mail, adres i numer telefonu](billing-how-to-change-azure-account-profile.md). |
 
 ### <a name="understand-the-invoice-summary"></a>Opis sekcji podsumowania faktury
-**Podsumowanie faktury** sekcji faktury wyświetla kwoty łączna liczba transakcji od ostatniego okresu rozliczeniowego oraz opłat za bieżące użycie.
+Sekcja **Podsumowanie faktury** zawiera łączne kwoty transakcji od ostatniego okresu rozliczeniowego oraz bieżące opłaty za użycie.
 
-![Sekcja Podsumowanie faktury](./media/billing-understand-your-invoice/2.png)
+![Sekcja podsumowania faktury](./media/billing-understand-your-invoice/2.png)
 
-Nazwa subskrypcji ("produkcji Magazyn") jest nazwą subskrypcji dla tej faktury.
+Nazwa subskrypcji („Magazyn produkcyjny”) to nazwa subskrypcji dla tej faktury.
 
-#### <a name="understand-the-previous-charges"></a>Informacje o opłatach poprzedniej
-Poprzednie saldo, płatności i zaległego salda sekcji faktury zawiera podsumowanie transakcji od ostatniego okresu rozliczeniowego.
+#### <a name="understand-the-previous-charges"></a>Omówienie poprzednich opłat
+Sekcje faktury dotyczące poprzedniego salda, płatności i zaległego salda podsumowują transakcje od ostatniego okresu rozliczeniowego.
 
 | Termin | Opis |
 | --- | --- |
 | Poprzednie saldo |Łączna kwota należności z ostatniego okresu rozliczeniowego |
 | Płatności |Łączne płatności i kredyty zastosowane do ostatniego okresu rozliczeniowego |
-| Zaległe saldo (od poprzedniego cyklu rozliczeń) |Środki na korzystanie z dowolnej pozostałe saldo w ramach Twojego konta od ostatniego okresu rozliczeniowego |
+| Zaległe saldo (od poprzedniego cyklu rozliczeń) |Wszelkie kredyty lub pozostałe saldo na koncie od czasu ostatniego okresu rozliczeniowego |
 
 #### <a name="understand-the-current-charges"></a>Opis sekcji opłat bieżących
-Faktury sekcja opłaty bieżące zawiera szczegóły dotyczące Twoich miesięcznych opłat dla bieżącego okresu rozliczeniowego.
+Sekcja Opłaty bieżące faktury zawiera szczegółowe informacje o opłatach miesięcznych za bieżący okres rozliczeniowy.
 
 | Termin | Opis |
 | --- | --- |
 | Opłaty za zużycie |Opłaty za zużycie to łączne miesięczne opłaty za subskrypcję dla bieżącego okresu rozliczeniowego|
-| Rabaty |Rabaty na usługi stosowane do bieżącego okresu rozliczeniowego|
-| Korekty |Różne środki (bezpłatnego użycia, środki na korzystanie z itp.) lub opłaty zaległe stosowane do bieżącego okresu rozliczeniowego.<br/><br/>Na przykład w przypadku Visual Studio Enterprise z oferty MSDN zobaczysz miesięcznych środków. Jeśli anulujesz subskrypcję, możesz zobaczyć wszystkie miesięczne opłaty za użycie przekraczające miesięczną ilość środków, której można korzystać z oferty subskrypcji. Opłaty są naliczane na początku bieżącego okresu rozliczeniowego do daty anulowania subskrypcji. |
+| Rabaty |Rabaty dotyczące usług zastosowane do bieżącego okresu rozliczeniowego|
+| Korekty |Różne kredyty (bezpłatne użycie, środki itp.) lub opłaty zaległe stosowane do bieżącego okresu rozliczeniowego.<br/><br/>Jeśli na przykład korzystasz z oferty Visual Studio Enterprise z subskrypcją MSDN, w tym miejscu jest wyświetlany miesięczny kredyt. Jeśli anulujesz subskrypcję, zobaczysz miesięczne opłaty za użycie, które przekraczają miesięczny kredyt uzyskany w ramach oferty subskrypcji. Opłaty są naliczane na początku bieżącego okresu rozliczeniowego do daty anulowania subskrypcji. |
 
-#### <a name="sold-to-and-payment-instructions"></a>Sprzedano dla i instrukcje dokonywania płatności
+#### <a name="sold-to-and-payment-instructions"></a>Informacje o nabywcy i instrukcje dotyczące płatności
 
-W poniższej tabeli opisano sold się i instrukcje dokonywania płatności na drugiej stronie fakturze.
-
-| Termin |Opis |
-| --- | --- |
-| Sprzedano dla |Adres profil, który znajduje się na konto. <br/><br/>Jeśli musisz zmienić adres, zobacz [jak zmienić informacje o profilu konta platformy Azure, takich jak kontaktowy adres e-mail, adres i numer telefonu](billing-how-to-change-azure-account-profile.md).|
-| Instrukcje dokonywania płatności |Instrukcje na temat sposobu zapłaty w zależności od metody płatności (takie jak przez środki karty lub przy użyciu faktury). |
-
-#### <a name="usage-charges"></a>Opłaty za zużycie
-
-Sekcja opłaty za użycie faktury Wyświetla informacje poziomu miernika opłat.
-
-![Sekcja opłaty za użycie](./media/billing-understand-your-invoice/3.png)
-
-W poniższej tabeli opisano nagłówki kolumn opłaty za użycie na fakturze.
+W poniższej tabeli opisano widoczną na drugiej stronie faktury sekcję z informacjami o nabywcy oraz instrukcjami dotyczącymi płatności.
 
 | Termin |Opis |
 | --- | --- |
-| Name (Nazwa) |Określa usługę najwyższego poziomu do użycia |
+| Sprzedano dla |Adres profilu wymieniony na koncie. <br/><br/>Aby zmienić adres, zobacz [Jak zmienić informacje o profilu konta platformy Azure, takie jak kontaktowy adres e-mail, adres i numer telefonu](billing-how-to-change-azure-account-profile.md).|
+| Instrukcje dokonywania płatności |Instrukcje dotyczące sposobu dokonywania płatności w zależności od formy płatności (na przykład za pomocą karty kredytowej lub na podstawie faktury). |
+
+#### <a name="usage-charges"></a>Opłaty za użycie
+
+W sekcji Opłaty za użycie faktury są wyświetlane informacje dotyczące opłat na poziomie miernika.
+
+![Sekcja opłat za użycie](./media/billing-understand-your-invoice/3.png)
+
+W poniższej tabeli opisano nagłówki kolumn opłat za użycie wyświetlane na fakturze.
+
+| Termin |Opis |
+| --- | --- |
+| Name (Nazwa) |Określa użycie dla usługi najwyższego poziomu |
 | Typ |Definiuje typ usługi platformy Azure, który może wpływać na stawkę |
-| Resource |Określa jednostkę miary dla mierników, są używane |
+| Zasób |Określa jednostkę miary wykorzystywanego miernika |
 | Region |Określa lokalizację centrum danych pewnych usług, które są wyceniane na podstawie lokalizacji centrum danych |
-| Zużyte |Ilość miernika, używany w trakcie okresu rozliczeniowego |
-| Dołączono |Wartość licznika, który jest dołączony, bez dodatkowych opłat w trakcie bieżącego okresu rozliczeniowego |
-| Płatne |Przedstawiono różnice między użytej ilości i ilość uwzględnione. Wyświetlany jest wystawiany na tę kwotę. W przypadku ofert płatności użyciem bez żadnej kwoty wliczonej w ofertę ta jest taka sama jak użytej ilości |
-| Stawka |Szybkość, z którą są naliczane za naliczaną na jednostkę |
-| Wartość |Wyświetla wynik mnożenia wartości z kolumny ilość nadwyżkowe użycie przez wartość z kolumny stawka. Jeśli ilość zużyte nie przekracza ilość uwzględnione, nie ma opłat w tej kolumnie. |
-| Sumy częściowej |Suma wszystkich Twoje opłaty przed opodatkowaniem dla tego okresu rozliczeniowego |
-| Suma końcowa |Suma opłat po opodatkowaniu dla tego okresu rozliczeniowego |
+| Zużyte |Ilość miernika użyta w okresie rozliczeniowym |
+| Dołączono |Niepłatna ilość miernika w trakcie bieżącego okresu rozliczeniowego |
+| Płatne |Pokazuje różnicę między zużytą ilością a uwzględnioną ilością. Rachunek jest wystawiany na tę kwotę. W przypadku ofert płatności zgodnie z rzeczywistym użyciem bez żadnej kwoty wliczonej w ofertę ta wartość jest taka sama jak wartość Zużyta ilość |
+| Stawka |Określa stawkę naliczaną na jednostkę płatną |
+| Wartość |Zawiera wynik mnożenia wartości z kolumny Ilość nadwyżkowego użycia przez wartość z kolumny Stawka. Jeśli zużyta ilość nie przekracza uwzględnionej ilości, ta kolumna nie zawiera żadnych opłat. |
+| Suma częściowa |Suma wszystkich opłat naliczanych przed opodatkowaniem dla tego okresu rozliczeniowego |
+| Suma końcowa |Suma wszystkich opłat naliczanych po opodatkowaniu dla tego okresu rozliczeniowego |
 
-## <a name="how-do-i-make-sure-that-the-charges-in-my-invoice-are-correct"></a>Jak upewnić się, że opłaty w mojej fakturze są poprawne?
-Jeśli na który chcesz uzyskać więcej informacji znajduje się na fakturze jest opłaty, zobacz [opis zawartości rachunku dla systemu Microsoft Azure.](billing-understand-your-bill.md)
+## <a name="how-do-i-make-sure-that-the-charges-in-my-invoice-are-correct"></a>Jak mogę się upewnić, że opłaty na mojej fakturze są poprawne?
+Jeśli na fakturze znajduje się opłata, na temat której chcesz uzyskać więcej informacji, zobacz [Opis zawartości rachunku za korzystanie z platformy Microsoft Azure](billing-understand-your-bill.md).
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 
-Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).
+Jeśli masz pytania lub potrzebujesz pomocy, [utwórz wniosek o pomoc techniczną](https://go.microsoft.com/fwlink/?linkid=2083458).

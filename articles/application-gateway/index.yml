@@ -1,69 +1,69 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentacja usługi Application Gateway
+### YamlMime:Landing
+title: Dokumentacja usługi Azure Application Gateway
+summary: Dowiedz się, jak tworzyć bramy aplikacji. Ta dokumentacja ułatwia planowanie, wdrażanie i zarządzanie w przypadku ruchu internetowego do zasobów platformy Azure.
 metadata:
-  title: Dokumentacja usługi Azure Application Gateway — samouczki i dokumentacja interfejsu API
-  meta.description: 'Learn how to create application gateways. Documentation helps you plan, deploy, and manage web traffic to your Azure resources.'
+  title: Dokumentacja usługi Azure Application Gateway
+  description: Dowiedz się, jak wdrożyć usługę Azure Firewall — opartą na chmurze usługę zabezpieczeń sieci.
   services: application-gateway
-  author: vhorne
   ms.service: application-gateway
   ms.topic: landing-page
-  ms.date: 5/20/2019
+  author: vhorne
   ms.author: victorh
-abstract:
-  description: 'Dowiedz się, jak wdrożyć usługę Application Gateway, kontrolera dostarczania aplikacji (ADC, Application Deliver Controller), jako usługę. W samouczkach, dokumentacji interfejsu API i innych dokumentach pokazano, jak skonfigurować usługi routingu i równoważenia obciążenia na poziomie aplikacji, które pozwalają tworzyć skalowalne frontony sieci Web o wysokiej dostępności.'
-sections:
-  - title: 5-minutowe przewodniki Szybki start
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak zarządzać ruchem internetowym do zasobów przy użyciu usługi Application Gateway:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/application-gateway/media/index/portal.svg'
-            text: Azure Portal
-            href: 'https://docs.microsoft.com/azure/application-gateway/quick-create-portal'
-          - image:
-              src: 'https://docs.microsoft.com/azure/application-gateway/media/index/logo_powershell.svg'
-            text: Azure PowerShell
-            href: 'https://docs.microsoft.com/azure/application-gateway/quick-create-powershell'
-          - image:
-              src: 'https://docs.microsoft.com/azure/application-gateway/media/index/cli.svg'
-            text: Interfejs wiersza polecenia platformy Azure
-            href: 'https://docs.microsoft.com/azure/application-gateway/quick-create-cli'
-  - title: Samouczki krok po kroku
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak wdrażać i monitorować bramy aplikacji na platformie Azure oraz zarządzać nimi'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/application-gateway/application-gateway-web-application-firewall-portal">Tworzenie bramy aplikacji za pomocą zapory aplikacji internetowej</a>
-          - html: <a href="/azure/application-gateway/create-ssl-portal">Konfigurowanie bramy aplikacji z terminacją SSL</a>
-          - html: <a href="/azure/application-gateway/create-multiple-sites-portal">Tworzenie i konfigurowanie bramy aplikacji hostującej wiele witryn internetowych</a>
-          - html: <a href="/azure/application-gateway/create-url-route-portal">Tworzenie bramy aplikacji za pomocą reguł routingu bazujących na ścieżce</a>
-          - html: <a href="/azure/application-gateway/tutorial-url-redirect-cli">Tworzenie bramy aplikacji z przekierowywaniem na podstawie ścieżki URL</a>
-          - html: '<a href="/azure/application-gateway/tutorial-autoscale-ps">Tworzenie bramy aplikacji, która usprawnia dostęp do aplikacji internetowych</a>'
-  - title: Przykłady
-    items:
-      - type: paragraph
-        text: Zarządzanie ruchem internetowym przy użyciu bramy aplikacji.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/application-gateway/cli-samples">Interfejs wiersza polecenia platformy Azure</a>
-          - html: <a href="/azure/application-gateway/powershell-samples">Azure PowerShell</a>
-  - title: Dokumentacja
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Wiersz polecenia
-            html: <p><a href="/powershell/resourcemanager">Azure PowerShell</a></p><p><a href="/cli/azure/network/application-gateway">Interfejs wiersza polecenia platformy Azure</a></p>
-          - title: Języki
-            html: '<p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p><p><a href="/javascript/api/azure-arm-network/ApplicationGateways">Node.js</a></p><p><a href="https://docs.microsoft.com/python/api/azure-mgmt-network/azure.mgmt.network.v2018_08_01.operations.applicationgatewaysoperations">Python</a></p>'
-          - title: REST
-            html: '<p><a href="https://msdn.microsoft.com/library/mt684941">Pełna dokumentacja interfejsu API REST</a></p>'
+  ms.date: 09/18/2019
+  ms.openlocfilehash: ff940f474c6d5d6fd96a03c45be18de39f065b97
+  ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 09/17/2019
+  ms.locfileid: "71076031"
+landingContent:
+- title: Dowiedz się więcej o usłudze Application Gateway
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest Azure Application Gateway?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Często zadawane pytania
+      url: application-gateway-faq.md
+- title: Wdrażanie bramy aplikacji
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Bezpośredni ruch internetowy w usłudze Azure Application Gateway
+      url: quick-create-portal.md
+- title: Wdrażanie z kończeniem żądań protokołu SSL
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Kończenie żądań protokołu SSL i kompleksowa łączność SSL przy użyciu usługi Application Gateway
+      url: ssl-overview.md
+    - text: Omówienie zasad protokołu SSL
+      url: application-gateway-ssl-policy-overview.md
+  - linkListType: tutorial
+    links:
+    - text: Konfigurowanie bramy aplikacji z kończeniem żądań protokołu
+      url: create-ssl-portal.md
+- title: Skalowanie automatyczne i strefowo nadmiarowe bramy aplikacji
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Skalowanie automatyczne i strefowo nadmiarowa brama aplikacji (wersja 2)
+      url: application-gateway-autoscaling-zone-redundant.md
+  - linkListType: tutorial
+    links:
+    - text: Tworzenie bramy aplikacji, która usprawnia dostęp do aplikacji internetowych
+      url: tutorial-autoscale-ps.md
+- title: Rozwiązywanie problemów z usługą Application Gateway
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Omówienie usługi Resource Health w usłudze Application Gateway
+      url: resource-health-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Używanie usługi Log Analytics do badania dzienników zapory aplikacji internetowej usługi Application Gateway
+      url: log-analytics.md
+    - text: Problemy z kondycją zaplecza w usłudze Application Gateway
+      url: application-gateway-backend-health-troubleshooting.md

@@ -10,13 +10,13 @@ metadata:
   author: nitinme
   ms.author: nitinme
   manager: nitinme
-  ms.date: 09/12/2019
-  ms.openlocfilehash: 2bb26de076096ff47d38ddb12b1bc17f4aeafb34
-  ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+  ms.date: 09/16/2019
+  ms.openlocfilehash: f762586bf04ceab8cd0c81880a86df7d43507038
+  ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 09/13/2019
-  ms.locfileid: "70965458"
+  ms.lasthandoff: 09/18/2019
+  ms.locfileid: "71087552"
 highlightedContent:
   items:
   - title: Co to są usługi Cognitive Services?
@@ -53,7 +53,7 @@ conceptualContent:
       text: Rozpoznawanie twarzy
     - url: ./form-recognizer/index.yml
       itemType: overview
-      text: Rozpoznawanie form (wersja zapoznawcza)
+      text: Rozpoznawanie formularzy (wersja zapoznawcza)
     - url: ./ink-recognizer/index.yml
       itemType: overview
       text: Rozpoznawanie pisma odręcznego (wersja zapoznawcza)
@@ -93,7 +93,7 @@ conceptualContent:
     - url: ./translator-speech/overview.md
       itemType: overview
       text: Tłumaczenie mowy w usłudze Translator (w trakcie wycofywania)
-  - title: Usługi ułatwiające podejmowanie decyzji
+  - title: Decyzja
     summary: Twórz aplikacje wyświetlające rekomendacje pozwalające skuteczniej podejmować lepsze decyzje.
     links:
     - url: ./anomaly-detector/index.yml
@@ -138,12 +138,12 @@ conceptualContent:
     - url: ./bing-web-search/index.yml
       itemType: overview
       text: Wyszukiwanie w Internecie
-  - title: Containers
+  - title: Kontenery usługi Cognitive Service
     summary: Obsługa kontenerów w usługach Azure Cognitive Services umożliwia deweloperom używanie tych samych zaawansowanych interfejsów API dostępnych na platformie Azure oraz zapewnia elastyczność w zakresie wdrażania i hostowania usług dostępnych z kontenerami platformy Docker.
     links:
     - url: ./cognitive-services-container-support.md
       itemType: overview
-      text: Kontenery usług Cognitive Services
+      text: Kontenery usługi Cognitive Service
     - url: ./containers/container-reuse-recipe.md
       itemType: overview
       text: Tworzenie kontenerów do ponownego użycia

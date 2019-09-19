@@ -1,6 +1,6 @@
 ---
-title: Jak jest stosowany rabat w wysokości zakupu z góry usługi Azure Databricks
-description: Dowiedz się, jak Rabat zakupu z góry usługi Azure Databricks ma zastosowanie do użycia.
+title: W jaki sposób jest stosowany rabat za wcześniejszy zakup usługi Azure Databricks
+description: Dowiedz się, w jaki sposób rabat za wcześniejszy zakup usługi Azure Databricks zostanie zastosowany do Twojego użycia.
 services: billing
 author: yashesvi
 manager: yashar
@@ -9,50 +9,50 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: banders
 ms.openlocfilehash: 7c1855b587ab1d603e9c6ac24a67b0f50065361f
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67827635"
 ---
-# <a name="how-azure-databricks-pre-purchase-discount-is-applied"></a>Jak jest stosowany rabat w wysokości zakupu z góry usługi Azure Databricks
+# <a name="how-azure-databricks-pre-purchase-discount-is-applied"></a>W jaki sposób jest stosowany rabat za wcześniejszy zakup usługi Azure Databricks
 
-W dowolnym momencie w ciągu okresu zakupu, można użyć wstępnie zakupionych jednostek zatwierdzania usługi Azure Databricks (DBCU). Wszystkie usługi Azure Databricks to wykorzystania odejmuje automatycznie z DBCUs kupowane wcześniej.
+Możesz korzystać z zakupionych wcześniej jednostek zatwierdzeń usługi Azure Databricks (DBCU) w dowolnym momencie w okresie zakupu. Każde użycie usługi Azure Databricks powoduje automatyczne odjęcie wcześniej zakupionych jednostek DBCU.
 
-W przeciwieństwie do maszyn wirtualnych, wstępnie zakupionych jednostek nie wygasa w systemie godzinowym. Można je w dowolnym momencie w ciągu okresu zakupu. Aby uzyskać rabaty w ramach zakupu z góry, nie trzeba ponownie wdrażać ani przypisać kupowane wcześniej plan do obszarów roboczych usługi Azure Databricks za użycie.
+W odróżnieniu od maszyn wirtualnych wcześniej zakupione jednostki nie wygasają co godzinę. Można z nich skorzystać w dowolnym momencie w okresie zakupu. Nie trzeba ponownie wdrażać ani przypisywać wcześniej zakupionego planu do obszarów roboczych usługi Azure Databricks na potrzeby użycia, aby uzyskać rabaty za wcześniejszy zakup.
 
-Rabat zakupu z góry ma zastosowanie tylko do usługi Azure Databricks (DBU) jednostki użycia. Inne opłaty, takich jak wystąpienia obliczeniowe, Magazyn i sieć, są rozliczane osobno.
+Rabat za wcześniejszy zakup dotyczy tylko użycia jednostek usługi Azure Databricks (DBU). Pozostałe opłaty, na przykład za obliczenia, magazyn i sieć, są naliczane osobno.
 
-## <a name="pre-purchase-discount-application"></a>Wstępny zakup stosowania rabatów
+## <a name="pre-purchase-discount-application"></a>Stosowanie rabatu za wcześniejszy zakup
 
-Zakupu z góry usługi Databricks ma zastosowanie do wszystkich obciążeń usługi Databricks i warstw. Można potraktować zakupu z góry jako pula przedpłacony jednostek zatwierdzania usługi Databricks. Użycie jest odejmowany od puli, niezależnie od tego, czy obciążenie lub warstwy. Użycie jest odejmowany współczynnik następujące:
+Wcześniejszy zakup w usłudze Databricks jest stosowany do wszystkich obciążeń i warstw usługi Databricks. Można traktować tę opcję jako pulę opłaconych z góry jednostek zatwierdzeń usługi Databricks. Użycie jest odejmowane od tej puli niezależnie od obciążenia i warstwy. Użycie jest odejmowane zgodnie z poniższym współczynnikiem:
 
-| **Obciążenie** | **Współczynnik aplikacji jednostek DBU — warstwa standardowa** | **Współczynnik aplikacji jednostek DBU — warstwa Premium** |
+| **Obciążenie** | **Współczynnik naliczania jednostek DBU — warstwa Standardowa** | **Współczynnik naliczania jednostek DBU — warstwa Premium** |
 | --- | --- | --- |
-| Analiza danych | 0.4 | 0.55 |
-| Inżynieria danych | 0.15 | 0.30 |
-| Inżynieria danych (lekka) | 0,07 | 0.22 |
+| Analiza danych | 0,4 | 0,55 |
+| Inżynieria danych | 0,15 | 0,30 |
+| Inżynieria danych (lekka) | 0,07 | 0,22 |
 
-Na przykład gdy ilość analizy danych — warstwa standardowa jest używane, wstępnie zakupionych jednostek usługi Databricks w zatwierdzenia jest odejmowany przez 0,4 jednostki. Po ilość światła Inżynieria danych — warstwa standardowa jest używany, kupowane wcześniej jednostka Databricks w zatwierdzenia jest odejmowany przez 0,07 jednostki
+Na przykład w przypadku użycia obciążenia Analiza danych w warstwie Standardowa od zakupionych wcześniej jednostek zatwierdzeń usługi Databricks odejmuje się 0,4 jednostki. W przypadku użycia obciążenia Inżynieria danych (lekka) w warstwie Standardowa od zakupionych wcześniej jednostek zatwierdzeń usługi Databricks odejmuje się 0,07 jednostki.
 
-## <a name="determine-plan-use"></a>Określanie zastosowania planu
+## <a name="determine-plan-use"></a>Określanie użycia planu
 
-Aby ustalić użytkowanie DBCU planu, przejdź do witryny Azure portal > **rezerwacje** i kliknij przycisk zakupionego planu usługi Databricks. Twoje użycie do daty jest wyświetlany za pomocą wszelkie pozostałe jednostki. Aby uzyskać więcej informacji na temat określania rezerwacji, zobacz [Zobacz użycie rezerwacji](billing-reservation-apis.md#see-reservation-usage) artykułu.
+Aby określić użycie planu jednostek DBCU, w witrynie Azure Portal przejdź do obszaru **Rezerwacje** i kliknij zakupiony plan usługi Databricks. Zostanie wyświetlone dotychczasowe użycie i liczba pozostałych jednostek. Aby uzyskać więcej informacji na temat określania użycia wystąpień zarezerwowanych, zobacz artykuł [Wyświetlanie użycia wystąpień zarezerwowanych](billing-reservation-apis.md#see-reservation-usage).
 
-## <a name="how-discount-application-shows-in-usage-data"></a>Sposób stosowania rabatów dotyczących pokazuje użycie danych
+## <a name="how-discount-application-shows-in-usage-data"></a>Jak zastosowanie rabatu jest wyświetlane w danych dotyczących użycia
 
-Gdy rabat zakupu z góry dotyczy użycia usługi Databricks, na żądanie, opłaty są traktowane jako zero w danych użycia. Aby uzyskać więcej informacji na temat rezerwacji kosztów i użycia, zobacz [koszty rezerwacji Pobierz umowy Enterprise Agreement i użycie](billing-understand-reserved-instance-usage-ea.md).
+Jeśli do Twojego użycia usługi Databricks jest stosowany rabat za wcześniejszy zakup, w danych dotyczących użycia są wyświetlane zerowe opłaty za użycie na żądanie. Aby uzyskać więcej informacji na temat kosztów i użycia wystąpień zarezerwowanych, zobacz [Pobieranie kosztów i użycia wystąpień zarezerwowanych w ramach umowy Enterprise Agreement](billing-understand-reserved-instance-usage-ea.md).
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 
-Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Jeśli masz pytania lub potrzebujesz pomocy, [utwórz wniosek o pomoc techniczną](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby dowiedzieć się, jak zarządzać rezerwacji, zobacz [Zarządzanie zastrzeżeniami Azure](billing-manage-reserved-vm-instance.md).
-- Aby dowiedzieć się więcej na temat wstępnie kupując usługi Azure Databricks w celu zaoszczędzenia pieniędzy, zobacz [usługi Azure Databricks zoptymalizować koszty przy użyciu zakupu z góry](billing-prepay-databricks-reserved-capacity.md).
-- Aby dowiedzieć się więcej na temat rezerwacji Azure, zobacz następujące artykuły:
-  - [Co to jest Azure rezerwacje?](billing-save-compute-costs-reservations.md)
-  - [Zarządzanie zastrzeżeniami na platformie Azure](billing-manage-reserved-vm-instance.md)
-  - [Opis zastrzeżenia dla subskrypcji przy użyciu stawki](billing-understand-reserved-instance-usage.md)
-  - [Opis zastrzeżenia dla Twojej rejestracji Enterprise](billing-understand-reserved-instance-usage-ea.md)
+- Aby dowiedzieć się, jak zarządzać wystąpieniem zarezerwowanym, zobacz [Zarządzanie rejestracjami platformy Azure](billing-manage-reserved-vm-instance.md).
+- Aby dowiedzieć się więcej na temat oszczędności związanych z wcześniejszym zakupem usługi Azure Databricks, zobacz [Optymalizowanie kosztów usługi Azure Databricks dzięki wcześniejszemu zakupowi](billing-prepay-databricks-reserved-capacity.md).
+- Aby dowiedzieć się więcej na temat rezerwacji platformy Azure, zobacz następujące artykuły:
+  - [Co to są rezerwacje platformy Azure?](billing-save-compute-costs-reservations.md)
+  - [Zarządzanie rejestracjami platformy Azure](billing-manage-reserved-vm-instance.md)
+  - [Informacje na temat użycia wystąpień zarezerwowanych w przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem](billing-understand-reserved-instance-usage.md)
+  - [Understand reservation usage for your Enterprise enrollment (Informacje na temat użycia wystąpień zarezerwowanych w przypadku rejestracji Enterprise)](billing-understand-reserved-instance-usage-ea.md)

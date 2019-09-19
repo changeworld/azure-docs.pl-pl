@@ -1,6 +1,6 @@
 ---
-title: Warunki plików użycia i opłat platformy Azure do umowy klienta firmy Microsoft
-description: Dowiedz się, jak czytać i zrozumieć sekcje użycia platformy Azure i opłaty za CSV dla swojego profilu rozliczeń.
+title: Terminy w pliku użycia i opłat platformy Azure dla umowy klienta firmy Microsoft
+description: Dowiedz się, jak interpretować sekcje pliku CSV dotyczącego użycia i opłat platformy Azure dla Twojego profilu rozliczeniowego.
 author: bandersmsft
 manager: jureid
 tags: billing
@@ -12,120 +12,120 @@ ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: d11e31366ea5aa15cf7a790eaee800fa2ea6dabe
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67490628"
 ---
-# <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Warunki plików użycia i opłat platformy Azure do umowy klienta firmy Microsoft
+# <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Terminy w pliku użycia i opłat platformy Azure dla umowy klienta firmy Microsoft
 
-Ten artykuł dotyczy konta rozliczeniowego dla umowy klienta firmy Microsoft. [Sprawdź, czy dostęp do umowy klienta Microsoft](#check-access-to-a-microsoft-customer-agreement).
+Ten artykuł dotyczy konta rozliczeniowego związanego z umową klienta firmy Microsoft. [Sprawdź, czy masz dostęp do umowy klienta firmy Microsoft](#check-access-to-a-microsoft-customer-agreement).
 
-Azure użycia i opłat plik CSV zawiera opłaty za użycie dzienne i poziom licznika dla bieżącego okresu rozliczeniowego.
+Plik CSV dotyczący użycia i opłat platformy Azure zawiera dzienne oraz powiązane z miernikiem opłaty za użycie dla bieżącego okresu rozliczeniowego.
 
-Aby uzyskać plików platformy Azure użycia i opłat, zobacz [opłat za umowy klienta firmy Microsoft i Pobierz użycie platformy Azure i widoku](billing-download-azure-daily-usage.md). Jest ona dostępna w formacie wartości rozdzielanych przecinkami (CSV), który można otworzyć w aplikacji arkusza kalkulacyjnego.
+Aby uzyskać plik użycia i opłat platformy Azure, zobacz [Wyświetlanie i pobieranie użycia i opłat platformy Azure dla umowy klienta firmy Microsoft](billing-download-azure-daily-usage.md). Jest on dostępny w formacie pliku z wartościami rozdzielanymi przecinkami (CSV), który można otworzyć w aplikacji obsługującej arkusze kalkulacyjne.
 
-Opłaty za zużycie to suma **miesięczne** opłaty za subskrypcję. Opłaty za użycie nie brać pod uwagę wszystkie środki na korzystanie z ani rabatów.
+Opłaty za użycie to całkowite opłaty **miesięczne** w ramach subskrypcji. Opłaty za użycie nie uwzględniają żadnych środków na korzystanie ani rabatów.
 
-## <a name="changes-from-azure-ea-usage-and-charges"></a>Zmiany w porównaniu z umowy EA platformy Azure, użycia i opłat
+## <a name="changes-from-azure-ea-usage-and-charges"></a>Zmiany w stosunku do użycia i opłat dla umowy EA platformy Azure
 
-Gdyby klientem z umową EA, zauważysz, że warunki Azure pliku CSV rozliczania użycia profilu różnią się od warunków w pliku CSV użycia umowy EA platformy Azure. Poniżej przedstawiono mapowanie EA warunki korzystania z rozliczeniami — warunki użytkowania profilu:
+Jeśli jesteś klientem z umową EA, możesz zauważyć, że terminy w pliku CSV użycia profilu rozliczeniowego platformy Azure różnią się od terminów w pliku CSV użycia dla umowy EA platformy Azure. Oto mapowanie terminów dotyczących użycia dla umowy EA na terminy dotyczące użycia w profilu rozliczeniowym:
 
-| Użycie platformy Azure EA CSV | Microsoft Azure umowy klienta użycia i opłat CSV |
+| Plik CSV użycia dla umowy EA platformy Azure | Plik CSV użycia i opłat dla umowy klienta firmy Microsoft |
 | --- | --- |
 | Date | date |
-| Miesiąc| date |
-| Dzień | date |
-| Rok | date |
+| Month| date |
+| Day | date |
+| Year | date |
 | Product (Produkt) | product |
 | MeterId | meterID |
-| meterCategory | MeterCategory |
+| MeterCategory | meterCategory |
 | MeterSubCategory | meterSubCategory |
 | MeterRegion | meterRegion |
 | MeterName | meterName |
-| ConsumedQuantity | Ilość |
+| ConsumedQuantity | quantity |
 | ResourceRate | effectivePrice |
 | ExtendedCost | cost |
-| resourceLocation | resourceLocation |
+| ResourceLocation | resourceLocation |
 | ConsumedService | consumedService |
 | InstanceId | instanceId |
-| ServiceInfo1 | ServiceInfo1 |
+| ServiceInfo1 | serviceInfo1 |
 | ServiceInfo2 | serviceInfo2 |
-| AdditionalInfo | AdditionalInfo |
-| `Tags` | tags |
-| StoreServiceIdentifier | ND |
-| Nazwa działu | invoiceSection |
+| AdditionalInfo | additionalInfo |
+| Tagi | tags |
+| StoreServiceIdentifier | Nie dotyczy |
+| DepartmentName | invoiceSection |
 | CostCenter | costCenter |
 | UnitOfMeasure | unitofMeasure |
 | ResourceGroup | resourceGroup |
 | ChargesBilledSeparately | isAzureCreditEligible |
 
-## <a name="detailed-terms-and-descriptions"></a>Szczegółowy opis warunków wraz z opisami
+## <a name="detailed-terms-and-descriptions"></a>Szczegółowe terminy i opisy
 
-Poniższe terminy są wyświetlane w plików platformy Azure, użycia i opłat.
+Poniższe terminy są wyświetlane w pliku użycia i opłat platformy Azure.
 
 Termin | Opis
 --- | ---
-invoiceId | Identyfikator unikatowy dokumentu na fakturze PDF
-previousInvoiceId | Odwołanie do oryginalnej faktury w przypadku tej pozycji zwrot pieniędzy
-billingAccountName | Nazwa konta, rozliczeń
-billingAccountId | Unikatowy identyfikator dla głównego konto rozliczeniowe
-billingProfileId | Nazwa profilu rozliczeń, która opłaty, które są fakturowane
-billingProfileName | Unikatowy identyfikator opłaty, które są fakturowane profil rozliczeniowy
-invoiceSectionId | Unikatowy identyfikator dla sekcji faktury
+invoiceId | Unikatowy identyfikator dokumentu w pliku PDF faktury
+previousInvoiceId | Odwołanie do oryginalnej faktury, jeśli ten element wiersza to zwrot kosztów
+billingAccountName | Nazwa konta rozliczeniowego
+billingAccountId | Unikatowy identyfikator głównego konta rozliczeniowego
+billingProfileId | Nazwa profilu rozliczeniowego, który nalicza fakturowane opłaty
+billingProfileName | Unikatowy identyfikator profilu rozliczeniowego, który nalicza fakturowane opłaty
+invoiceSectionId | Unikatowy identyfikator sekcji faktury
 invoiceSectionName | Nazwa sekcji faktury
-costCenter | Centrum kosztów, zdefiniowane w ramach subskrypcji dla śledzenia kosztów (dostępne tylko dla okresów rozliczeniowych open)
-billingPeriodStartDate | Data rozpoczęcia okresu rozliczeniowego, dla którego jest generowany faktury
-billingPeriodEndDate | Data zakończenia okresu rozliczeniowego, dla którego jest generowany faktury
-servicePeriodStartDate | Data rozpoczęcia okresu oceny który zdefiniowane i zablokowane, cennik usługi użyte lub zakupionych
-servicePeriodEndDate | Data zakończenia okresu oceny który zdefiniowane i zablokowane, cennik usługi użyte lub zakupionych
-date | Na platformie Azure i Portal Marketplace opartej na użyciu opłaty za jest to Data klasyfikacji. Jednorazowe zakupów (rezerwacje, portalu Marketplace) lub stałej opłaty cykliczne (oferty pomocy technicznej) jest to data zakupu.
-serviceFamily | Rodzina usługi, której należy usługa
+costCenter | Centrum kosztów zdefiniowane w ramach subskrypcji na potrzeby śledzenia kosztów (dostępne tylko w otwartych okresach rozliczeniowych)
+billingPeriodStartDate | Data rozpoczęcia okresu rozliczeniowego, dla którego generowana jest faktura
+billingPeriodEndDate | Data zakończenia okresu rozliczeniowego, dla którego generowana jest faktura
+servicePeriodStartDate | Data rozpoczęcia okresu oceny, który ma zdefiniowany i zablokowany cennik dla użytej lub zakupionej usługi
+servicePeriodEndDate | Data zakończenia okresu oceny, który ma zdefiniowany i zablokowany cennik dla użytej lub zakupionej usługi
+date | W przypadku opłat za użycie platformy Azure i portalu Marketplace jest to data oceny. W przypadku zakupów jednorazowych (usługa Reservations, portal Marketplace) lub stałych opłat cyklicznych (oferty pomocy technicznej) jest to data zakupu.
+serviceFamily | Rodzina usług, do której należy usługa
 productOrderId | Unikatowy identyfikator zamówienia produktu
-productOrderName | Unikatową nazwę dla zamówienia produktu
-consumedService | Nazwa użyta usługa
+productOrderName | Unikatowa nazwa zamówienia produktu
+consumedService | Nazwa użytej usługi
 meterId | Unikatowy identyfikator miernika
-meterName | Nazwa licznika
-MeterCategory | Nazwa kategorii klasyfikacji dla licznika. Na przykład *usług w chmurze*, *sieć*itp.
-meterSubCategory | Nazwa kategorii klasyfikacji podrzędnych miernika
-meterRegion | Nazwa regionu, w których mierniku usługi jest dostępny. Określa lokalizację centrum danych pewnych usług, które są wyceniane na podstawie lokalizacji centrum danych.
-oferty | Nazwa oferty zakupu
-productId | Unikatowy identyfikator produktu opłaty
-product | Nazwa produktu, opłaty
-Identyfikator subskrypcji | Unikatowy identyfikator subskrypcji opłaty
-subscriptionName | Nazwa subskrypcji opłaty
-reservationId | Unikatowy identyfikator wystąpienia zakupionej rezerwacji
-reservationName | Nazwa wystąpienia zakupionej rezerwacji
-publisherType | Typ wydawcy (wartości: firstParty thirdPartyReseller, thirdPartyAgency)
-publisherName | Wydawcy dla usług witryny Marketplace
-resourceGroupId | Unikatowy identyfikator dla grupy zasobów, skojarzone z zasobem
-resourceGroupName | Nazwa grupy zasobów, skojarzone z zasobem
+meterName | Nazwa miernika
+meterCategory | Nazwa kategorii klasyfikacji dla miernika. Na przykład *Usługi w chmurze*, *Sieć* itp.
+meterSubCategory | Nazwa kategorii klasyfikacji podrzędnej miernika
+meterRegion | Nazwa regionu, w którym jest dostępny miernik usługi. Określa lokalizację centrum danych pewnych usług, które są wyceniane na podstawie lokalizacji centrum danych.
+offer | Nazwa zakupionej oferty
+productId | Unikatowy identyfikator produktu, za który naliczane są opłaty
+product | Nazwa produktu, za który naliczane są opłaty
+subscription ID | Unikatowy identyfikator subskrypcji, za którą naliczane są opłaty
+subscriptionName | Nazwa subskrypcji, za którą naliczane są opłaty
+reservationId | Unikatowy identyfikator zakupionego wystąpienia rezerwacji
+reservationName | Nazwa zakupionego wystąpienia rezerwacji
+publisherType | Typ wydawcy (wartości: firstParty, thirdPartyReseller, thirdPartyAgency)
+publisherName | Wydawca dla usług Marketplace
+resourceGroupId | Unikatowy identyfikator grupy zasobów skojarzonej z zasobem
+resourceGroupName | Nazwa grupy zasobów skojarzonej z zasobem
 resourceId | Unikatowy identyfikator wystąpienia zasobu
 resourceType | Typ wystąpienia zasobu
-resourceLocation | Określa lokalizację centrum danych, w którym jest uruchamiany zasób.
-location | Znormalizowana lokalizację zasobu, jeśli inny zasób lokalizacje są skonfigurowane dla tych samych regionach
-Ilość | Liczbę jednostek zakupionych lub wykorzystali
-unitOfMeasure | Jednostka miary dla rozliczeń dla usługi. Na przykład usługi obliczeniowe są rozliczane godzinowo.
-chargeType | Typ opłaty. Wartości: <ul><li>AsCharged-Usage: Opłaty naliczane na podstawie użycia usługi platformy Azure. W tym użycie względem maszyn wirtualnych, które nie są naliczane z powodu wystąpienia zarezerwowane.</li><li>AsCharged-PurchaseMarketplace: Jednorazowe lub stałej opłaty cykliczne z zakupów w portalu Marketplace</li><li>AsCharged-UsageMarketplace: Opłaty za usługi w portalu Marketplace, które są naliczane na podstawie jednostek zużycia</li></ul>
-isAzureCreditEligible | Flaga, która wskazuje, czy opłata za korzystająca z usługi jest uprawniona do zapłaty za pomocą środków platformy Azure (wartości: True, False)
-ServiceInfo1 | Metadane właściwe dla usługi
-serviceInfo2 | Starszego pole, które zawiera opcjonalne metadane właściwe dla usługi
-AdditionalInfo | Dodatkowe metadane specyficzne dla usługi.
-tags | Tagi, które można przypisać do zasobu
+resourceLocation | Określa lokalizację centrum danych, w którym jest uruchomiany zasób.
+location | Znormalizowana lokalizacja zasobu, jeśli dla tych samych regionów skonfigurowano różne lokalizacje zasobów
+quantity | Liczba jednostek zakupionych lub użytych
+unitOfMeasure | Jednostka miary dla rozliczeń usługi. Na przykład opłaty za usługi obliczeniowe są naliczane godzinowo.
+chargeType | Typ opłaty. Wartości: <ul><li>AsCharged-Usage: opłaty naliczane na podstawie użycia usługi platformy Azure. Obejmuje to użycie w odniesieniu do maszyn wirtualnych, za które nie są naliczane opłaty z powodu wystąpień zarezerwowanych.</li><li>AsCharged-PurchaseMarketplace: Jednorazowe lub stałe opłaty cykliczne za zakupy w portalu Azure Marketplace</li><li>AsCharged-UsageMarketplace: Opłaty za usługi w portalu Azure Marketplace, które są rozliczane na podstawie jednostek użycia</li></ul>
+isAzureCreditEligible | Flaga wskazująca, czy opłata za usługę kwalifikuje się do zapłaty przy użyciu środków na korzystanie z platformy Azure (wartości: True, False)
+serviceInfo1 | Metadane dotyczące konkretnej usługi
+serviceInfo2 | Starsze pole, które zawiera opcjonalne metadane właściwe dla usługi
+additionalInfo | Dodatkowe metadane dotyczące konkretnej usługi.
+tags | Tagi, które przypisujesz do zasobu
 
 ### <a name="make-sure-that-charges-are-correct"></a>Upewnij się, że opłaty są poprawne
 
-Jeśli chcesz upewnić się, że opłaty w szczegółowym zestawieniem użycia pliku są poprawne, możesz je sprawdzić. Zobacz [informacje o opłatach na fakturze profil rozliczeniowy](billing-mca-understand-your-bill.md)
+Jeśli chcesz się upewnić, że opłaty w szczegółowym pliku użycia są poprawne, możesz je sprawdzić. Zobacz [Informacje o opłatach na fakturze w profilu rozliczeniowym](billing-mca-understand-your-bill.md)
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>Sprawdź dostęp do umowy klienta firmy Microsoft
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>Sprawdzanie dostępu do umowy klienta firmy Microsoft
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 
-Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).
+Jeśli masz pytania lub potrzebujesz pomocy, [utwórz wniosek o pomoc techniczną](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Wyświetl i Pobierz fakturę usługi Microsoft Azure](billing-download-azure-invoice.md)
-- [Przeglądanie i pobieranie usługi Microsoft Azure użycia i opłat](billing-download-azure-daily-usage.md)
+- [Wyświetlanie i pobieranie faktury platformy Microsoft Azure](billing-download-azure-invoice.md)
+- [Wyświetlanie i pobieranie danych na temat użycia i opłat na platformie Microsoft Azure](billing-download-azure-daily-usage.md)

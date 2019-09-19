@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie dostępem do rozliczenia platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak udzielić dostępu do informacji rozliczeniowych platformy Azure dla członków zespołu.
+title: Zarządzanie dostępem do rozliczeń platformy Azure | Microsoft Docs
+description: Dowiedz się, jak zapewnić członkom zespołu dostęp do informacji rozliczeniowych platformy Azure.
 services: ''
 documentationcenter: ''
 author: vikramdesai01
@@ -17,103 +17,103 @@ ms.date: 11/02/2018
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 6726c876d0895f9488aa2ae5c225a6b2ac19e69f
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67490998"
 ---
-# <a name="manage-access-to-billing-information-for-azure"></a>Zarządzanie dostępem do informacji dotyczących rozliczeń dla platformy Azure
+# <a name="manage-access-to-billing-information-for-azure"></a>Zarządzanie dostępem do informacji rozliczeniowych dla platformy Azure
 
-Można zapewnić dostęp do informacje rozliczeniowe innych dla swojego konta w witrynie Azure portal. Typ rozliczeń ról i instrukcje, aby zapewnić dostęp do informacje rozliczeniowe zależą od rodzaju konta rozliczeniowego. Aby określić typ konta rozliczeniowego, zobacz [Sprawdź typ konta rozliczeniowego](#check-the-type-of-your-billing-account).
+Możesz zapewnić innym użytkownikom dostęp do informacji rozliczeniowych dla Twojego konta w witrynie Azure Portal. Typ ról rozliczeniowych oraz instrukcje zapewniające dostęp do informacji rozliczeniowych różnią się w zależności od typu konta rozliczeniowego. Aby określić typ swojego konta rozliczeniowego, zobacz [Sprawdzanie typu konta rozliczeniowego](#check-the-type-of-your-billing-account).
 
-Artykuł ma zastosowanie do klientów przy użyciu kont programu usług Microsoft Online Services. Jeśli jesteś klientem Azure z Enterprise Agreement (EA) i Administratorzy przedsiębiorstwa, należy nadać uprawnienia administratorom działów i właścicieli kont z odpowiednimi w witrynie Enterprise portal. Aby uzyskać więcej informacji, zobacz [Enterprise Agreement platformy Azure zrozumienie ról administracyjnych na platformie Azure](billing-understand-ea-roles.md). Jeśli jesteś klientem z umową klienta firmy Microsoft, znajduje się pozycja [ról administracyjnych zrozumienie umowy klienta firmy Microsoft na platformie Azure](billing-understand-mca-roles.md). 
+Artykuł dotyczy klientów z kontami usługi online firmy Microsoft. Jeśli jesteś klientem platformy Azure z umową Enterprise Agreement (EA) i jesteś administratorem przedsiębiorstwa, możesz udzielić uprawnień administratorom działu i właścicielom konta w witrynie Enterprise Portal. Aby uzyskać więcej informacji, zobacz [Omówienie ról administracyjnych dla umowy Azure Enterprise Agreement na platformie Azure](billing-understand-ea-roles.md). Jeśli jesteś klientem z umową klienta firmy Microsoft, zobacz [Omówienie ról administracyjnych dla umowy klienta firmy Microsoft na platformie Azure](billing-understand-mca-roles.md). 
 
-## <a name="account-administrators-for-microsoft-online-service-program-accounts"></a>Administratorzy konta dla konta programu usług Microsoft Online Services
+## <a name="account-administrators-for-microsoft-online-service-program-accounts"></a>Administratorzy konta dla kont usługi online firmy Microsoft
 
-Administrator konta jest tylko właściciel konta rozliczeniowego programu usług Microsoft Online Service. Rola jest przypisywana do osoby, który utworzył konto na platformie Azure. Administratorzy konta mają uprawnienia do wykonywania różnych zadań rozliczeń, jak tworzyć subskrypcje, wyświetlanie faktur lub zmienić rozliczeń dla subskrypcji.
+Administrator konta jest jedynym właścicielem konta rozliczeniowego usługi online firmy Microsoft. Rola jest przypisywana do osoby, która zarejestrowała się na platformie Azure. Administratorzy konta są uprawnieni do wykonywania różnych zadań rozliczeniowych, takich jak tworzenie subskrypcji, wyświetlanie faktur lub zmiana rozliczeń dla subskrypcji.
 
-## <a name="give-others-access-to-view-billing-information"></a>Zezwól na dostęp do wyświetlania informacji dotyczących rozliczeń
+## <a name="give-others-access-to-view-billing-information"></a>Przyznawanie innym osobom dostępu do wyświetlania informacji dotyczących rozliczeń
 
-Administrator konta można przyznać osobom dostęp do informacji dotyczących rozliczeń platformy Azure, przypisując jedną z następujących ról w ramach subskrypcji na jego koncie.
+Administrator konta może udzielać innym osobom dostępu do informacji rozliczeniowych platformy Azure, przypisując jedną z następujących ról w ramach subskrypcji na swoim koncie.
 
 - Administrator usługi
 - Współadministrator
 - Właściciel
 - Współautor
 - Czytelnik
-- Czytelnik rozliczenia
+- Czytelnik rozliczeń
 
-Te role mają dostęp do informacji dotyczących rozliczeń w [witryny Azure portal](https://portal.azure.com/). Osoby, które są przypisane te role można również użyć [interfejsów API rozliczeń](billing-usage-rate-card-overview.md) programowo pobrać faktury i szczegółów użycia.
+Role te mają dostęp do informacji dotyczących rozliczeń w witrynie [Azure Portal](https://portal.azure.com/). Osoby, którym przypisano te role, mogą również używać [interfejsów API](billing-usage-rate-card-overview.md) do programistycznego uzyskiwania informacji o fakturach i użyciu.
 
-Aby przypisać role, zobacz [zarządzanie dostępem przy użyciu RBAC i witryny Azure portal](../role-based-access-control/role-assignments-portal.md).
+Aby przypisać role, zobacz [Zarządzanie dostępem przy użyciu kontroli dostępu opartej na rolach i witryny Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
-** Jeśli jesteś klientem z umową EA, właściciel konta można przypisać rolę powyżej innym użytkownikom ich zespołu. Jednak dla tych użytkowników do wyświetlania informacji dotyczących rozliczeń, Administrator przedsiębiorstwa musi włączyć AO Wyświetl opłaty w witrynie Enterprise portal.
+** Jeśli jesteś klientem z umową EA, właściciel konta może przypisać powyższą rolę innym użytkownikom w zespole. Jednak aby użytkownicy mogli wyświetlać informacje dotyczące rozliczeń, administrator przedsiębiorstwa musi włączyć wyświetlanie opłat przez właściciela konta w witrynie Enterprise Portal.
 
 
-### <a name="opt-in"></a> Zezwalaj użytkownikom na pobieranie faktur
+### <a name="opt-in"></a> Zezwalanie użytkownikom na pobieranie faktur
 
-Po administrator konta ma przypisane odpowiednie role, do innych użytkowników, należy włączyć dostęp do uprawnień umożliwiających pobieranie faktur w witrynie Azure portal. Faktury starsze niż grudnia 2016 są dostępne tylko do konta administratora.
+Po przypisaniu przez administratora konta odpowiednich ról innym użytkownikom muszą oni włączyć dostęp do pobierania faktur w witrynie Azure Portal. Faktury z datą starszą niż grudzień 2016 r. są dostępne tylko dla administratora konta.
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/), jako Administrator konta
+1. Zaloguj się w [witrynie Azure Portal](https://portal.azure.com/) jako administrator konta.
 
-1. Wyszukiwanie **Cost Management + rozliczenia**.
+1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 
-    ![Zrzut ekranu pokazujący usługi Azure search w portalu](./media/billing-manage-access/billing-search-cost-management-billing.png)
+    ![Zrzut ekranu przedstawiający wyszukiwanie w witrynie Azure Portal](./media/billing-manage-access/billing-search-cost-management-billing.png)
  
-1. Wybierz **subskrypcje** z okienka po lewej stronie. W zależności od dostęp, może być konieczne wybierz zakres rozliczeń, a następnie wybierz pozycję **subskrypcje**.
+1. Wybierz pozycję **Subskrypcje** w okienku po lewej stronie. W zależności od dostępu może być konieczne wybranie zakresu rozliczeniowego, a następnie wybranie pozycji **Subskrypcje**.
  
-    ![Zrzut ekranu przedstawia Wybieranie subskrypcji](./media/billing-manage-access/billing-select-subscriptions.png)
+    ![Zrzut ekranu pokazujący wybieranie subskrypcji](./media/billing-manage-access/billing-select-subscriptions.png)
 
-1. Wybierz **faktur** i następnie **dostęp do faktury**.
+1. Wybierz pozycję **Faktury**, a następnie pozycję **Dostęp do faktury**.
 
-    ![Zrzut ekranu pokazuje, jak można delegować dostępu do faktury](./media/billing-manage-access/AA-optin.png)
+    ![Zrzut ekranu przedstawia sposób delegowania dostępu do faktur](./media/billing-manage-access/AA-optin.png)
 
-1. Wybierz **na** i Zapisz.
+1. Wybierz pozycję **Włączone** i zapisz.
 
-    ![Zrzut ekranu przedstawia wł. / wył można delegować dostępu do faktury](./media/billing-manage-access/AA-optinAllow.png)
+    ![Zrzut ekranu przedstawia włączanie i wyłączanie delegowania dostępu do faktury](./media/billing-manage-access/AA-optinAllow.png)
 
 Administrator konta można również skonfigurować wysyłanie faktur pocztą e-mail. Aby dowiedzieć się więcej, zobacz [Get your invoice in email](billing-download-azure-invoice-daily-usage-date.md) (Pobieranie faktur za pomocą poczty e-mail).
 
-## <a name="give-read-only-access-to-billing"></a>Zapewnić dostęp tylko do odczytu do rozliczeń
+## <a name="give-read-only-access-to-billing"></a>Przyznawanie dostępu tylko do odczytu do rozliczeń
 
-Przypisz rolę Czytelnik rozliczenia osobie, która musi mieć dostęp tylko do odczytu do informacji o rozliczeń subskrypcji, ale nie zdolność do tworzenie usług systemu Azure i zarządzanie nim. Ta rola jest odpowiednia dla użytkowników w organizacji, którzy są odpowiedzialni za zarządzanie finansowe i koszty dla subskrypcji platformy Azure.
+Przypisz rolę Czytelnik rozliczeń do osoby, która potrzebuje dostępu tylko do odczytu do informacji rozliczeniowych subskrypcji, ale nie musi mieć możliwości zarządzania usługami platformy Azure ani ich tworzenia. Ta rola jest odpowiednia dla użytkowników w organizacji, którzy są odpowiedzialni za zarządzanie finansami i kosztami subskrypcji platformy Azure.
 
-Funkcja Czytelnik rozliczenia jest w wersji zapoznawczej i nie obsługuje jeszcze nieglobalnych chmury.
+Funkcja czytelnika rozliczeń jest dostępna w wersji zapoznawczej i nie obsługuje jeszcze chmur nieglobalnych.
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/), jako Administrator konta
+1. Zaloguj się w [witrynie Azure Portal](https://portal.azure.com/) jako administrator konta.
 
-1. Wyszukiwanie **Cost Management + rozliczenia**.
+1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 
-    ![Zrzut ekranu pokazujący usługi Azure search w portalu](./media/billing-manage-access/billing-search-cost-management-billing.png)
+    ![Zrzut ekranu przedstawiający wyszukiwanie w witrynie Azure Portal](./media/billing-manage-access/billing-search-cost-management-billing.png)
 
-1. Wybierz **subskrypcje** z okienka po lewej stronie. W zależności od dostęp, może być konieczne wybierz zakres rozliczeń, a następnie wybierz pozycję **subskrypcje**.
+1. Wybierz pozycję **Subskrypcje** w okienku po lewej stronie. W zależności od dostępu może być konieczne wybranie zakresu rozliczeniowego, a następnie wybranie pozycji **Subskrypcje**.
  
-    ![Zrzut ekranu przedstawia Wybieranie subskrypcji](./media/billing-manage-access/billing-select-subscriptions.png)
+    ![Zrzut ekranu pokazujący wybieranie subskrypcji](./media/billing-manage-access/billing-select-subscriptions.png)
 
-1. Wybierz **kontrola dostępu (IAM)** .
-1. Wybierz **Dodaj** w górnej części strony.
+1. Wybierz pozycję **Kontrola dostępu (IAM)** .
+1. Wybierz pozycję **Dodaj** w górnej części strony.
 
-    ![Zrzut ekranu pokazujący, klikając przycisk Dodaj przypisanie roli](./media/billing-manage-access/billing-click-add-role-assignment.png)
+    ![Zrzut ekranu pokazujący kliknięcie pozycji Dodaj przypisanie roli](./media/billing-manage-access/billing-click-add-role-assignment.png)
 
-1. W **roli** listy rozwijanej wybierz **Czytelnik rozliczenia**.
-1. W **wybierz** polu tekstowym wpisz nazwę lub poczty e-mail dla użytkownika, które chcesz dodać.
+1. Z listy rozwijanej **Rola** wybierz pozycję **Czytelnik rozliczeń**.
+1. W polu tekstowym **Wybierz** wpisz nazwę lub adres e-mail dla użytkownika, którego chcesz dodać.
 1. Wybierz użytkownika.
 1. Wybierz pozycję **Zapisz**.
-    ![Zrzut ekranu pokazujący, klikając przycisk Dodaj przypisanie roli](./media/billing-manage-access/billing-save-role-assignment.png)
+    ![Zrzut ekranu pokazujący kliknięcie pozycji Dodaj przypisanie roli](./media/billing-manage-access/billing-save-role-assignment.png)
 
-1. Po kilku chwilach użytkownik przypisany do roli Czytelnik rozliczenia dla subskrypcji.
+1. Po kilku chwilach użytkownikowi zostanie przypisana rola czytelnika rozliczeń dla subskrypcji.
 
-** Jeśli jesteś klientem z umową EA, właściciel konta lub administratora działu można przypisać roli Czytelnik rozliczenia dla innych członków zespołu. Ale dla tej Czytelnik rozliczenia do wyświetlania informacji dotyczących rozliczeń dla działu lub konta, Administrator przedsiębiorstwa musi włączyć **AO Wyświetl opłaty** lub **DA Wyświetl opłaty** zasady w witrynie Enterprise portal.
+** Jeśli jesteś klientem z umową EA, właściciel konta lub administrator działu może przypisać rolę Czytelnik rozliczeń członkom zespołu. Jednak aby czytelnik rozliczeń mógł wyświetlać informacje dotyczące rozliczeń dla działu lub konta, administrator przedsiębiorstwa musi włączyć zasady **Wyświetlanie opłat przez właściciela konta** lub **Wyświetlanie opłat przez właściciela działu** w witrynie Enterprise Portal.
 
-## <a name="check-the-type-of-your-billing-account"></a>Sprawdź typ konta rozliczeniowego
+## <a name="check-the-type-of-your-billing-account"></a>Sprawdzanie typu konta rozliczeniowego
 [!INCLUDE [billing-check-account-type](../../includes/billing-check-account-type.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Użytkowników w innych ról, takich jak właściciela lub współautora, można uzyskać dostęp do informacji nie tylko rozliczeniowych, ale także w przypadku usług platformy Azure. Aby zarządzać tymi rolami, zobacz [zarządzanie dostępem przy użyciu RBAC i witryny Azure portal](../role-based-access-control/role-assignments-portal.md).
-- Aby uzyskać więcej informacji na temat ról, zobacz [wbudowane role zasobów platformy Azure](../role-based-access-control/built-in-roles.md).
+- Użytkownicy z innymi rolami, takimi jak Właściciel lub Współautor, mogą uzyskać dostęp nie tylko do informacji rozliczeniowych, ale również do usług platformy Azure. Aby zarządzać tymi rolami, zobacz [Zarządzanie dostępem przy użyciu kontroli dostępu opartej na rolach i witryny Azure Portal](../role-based-access-control/role-assignments-portal.md).
+- Aby uzyskać więcej informacji na temat ról, zobacz [Wbudowane role dla zasobów platformy Azure](../role-based-access-control/built-in-roles.md).
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 
-Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).
+Jeśli masz pytania lub potrzebujesz pomocy, [utwórz wniosek o pomoc techniczną](https://go.microsoft.com/fwlink/?linkid=2083458).

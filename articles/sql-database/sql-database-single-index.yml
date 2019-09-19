@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: 'Azure SQL Database: Pojedyncza baza danych'
+title: 'Usługa Azure SQL Database: Pojedyncza baza danych'
 metadata:
   document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
-  title: Dokumentacja bazy danych SQL platformy Azure — samouczki i dokumentacja interfejsu API
+  title: Dokumentacja usługi Azure SQL Database — samouczki i dokumentacja interfejsu API
   meta.description: Learn how to use Azure SQL databases.
   services: sql-database
   requires-business-manager-approval: false
@@ -16,7 +16,7 @@ metadata:
   manager: craigg
   ms.date: 04/26/2019
 abstract:
-  description: 'Azure SQL Database to relacyjna baza danych jako usługa (DBaaS), na podstawie najnowszej stabilnej wersji aparatu bazy danych programu Microsoft SQL Server. SQL Database to wysokiej wydajności, łatwy w użyciu, niezawodną i bezpiecznej bazie danych używanej do tworzenia nowych aplikacji, witryn sieci Web i mikrousług w wybranym języku programowania bez konieczności zarządzania infrastrukturą. Dowiedz się, jak używać usługi SQL Database, korzystając z przewodników Szybki Start, samouczków i przykładów.'
+  description: 'Azure SQL Database to relacyjna baza danych jako usługa (DBaaS) oparta na najnowszej stabilnej wersji aparatu bazy danych programu Microsoft SQL Server. Usługa SQL Database to wysokowydajna, łatwa w użyciu, niezawodna i bezpieczna baza danych, za pomocą której można tworzyć nowe aplikacje, witryny internetowe i mikrousługi w wybranym języku programowania, bez zarządzania infrastrukturą. Dowiedz się, jak używać usługi SQL Database, korzystając z przewodników Szybki Start, samouczków i przykładów.'
   aside:
     image:
       alt: null
@@ -40,52 +40,39 @@ sections:
               src: media/index/i_elasticpool.svg
           - title: Serwer usługi SQL Database
             href: /azure/sql-database/sql-database-servers
-            html: '<p>Serwer bazy danych SQL Database to centralne miejsce administracji do konfigurowania zabezpieczeń, dostosowywania, zasady tworzenia kopii zapasowych i innych właściwości konfiguracji na zbiór jednego lub pulami baz danych na serwerze.</p>'
+            html: '<p>Serwer SQL Database to centralny punkt administracji służący do konfigurowania zabezpieczeń, dostrajania, zasad kopii zapasowych i innych właściwości konfiguracji w zestawie baz danych (osobnych lub połączonych w pulę) na serwerze.</p>'
             image:
               src: media/index/i_mi.svg
-          - title: Ceny i usługi
+          - title: Cena i warstwy usług
             href: /azure/sql-database/sql-database-service-tiers
-            html: '<p>Dostosowywanie stosunek ceny do wydajności do Twoich potrzeb, przy użyciu warstwy usług elastyczne, rozpiętości od niedrogie 5 USD miesięcznie do zaawansowanych 80 podstawowej bazy danych.</p>'
+            html: '<p>Dopasuj stosunek ceny do wydajności zgodnie ze swoimi potrzebami dzięki elastycznym warstwom usług obejmującym szeroki zakres opcji, od przystępnych cenowo (5 USD miesięcznie) po zaawansowane (bazy danych korzystające z 80 rdzeni).</p>'
             image:
               src: media/index/i_perftier.svg
           - title: Skalowalność
             href: /azure/sql-database/sql-database-scale-resources
-            html: <p>Łatwo Skaluj w górę bazy danych w celu poprawy wydajności aplikacji.</p>
+            html: '<p>Łatwo skaluj bazę danych w górę, aby zwiększyć wydajność aplikacji.</p>'
             image:
               src: media/index/i_scale.svg
           - title: Platforma jako usługa
             href: /azure/sql-database/sql-database-paas
-            html: '<p>Wbudowana wysoka dostępność, automatyczne kopie zapasowe i replikacja geograficzna może pomóc w zabezpieczeniu operacji konserwacji, awarii infrastruktury lub awarie sprzętowe zatrzymanie Twojej firmy.</p>'
+            html: '<p>Wbudowana wysoka dostępność, automatyczne kopie zapasowe i replikacja geograficzna pozwalają łatwiej zapewnić, że operacje konserwacji czy awarie infrastruktury lub sprzętu nie zatrzymają Twojej firmy.</p>'
             image:
               src: media/index/gear.svg
           - title: Zaawansowane zabezpieczenia
             href: /azure/sql-database/sql-database-security-index
-            html: '<p>Zabezpieczanie bazy danych przy użyciu uwierzytelniania usługi Azure AD, sieciami wirtualnymi, zapory i są zawsze szyfrowane połączeń. Identyfikowanie zagrożeń i luk w zabezpieczeniach za pomocą wbudowanych zabezpieczeń.</p>'
+            html: '<p>Zabezpiecz bazę danych przy użyciu uwierzytelniania usługi Azure AD, sieci wirtualnych, zapór i zawsze szyfrowanych połączeń. Identyfikowanie zagrożeń i luk w zabezpieczeniach za pomocą wbudowanych zabezpieczeń.</p>'
             image:
               src: media/index/i_security.svg
-  - title: Nowe i funkcje w wersji zapoznawczej
-    items:
-      - type: paragraph
-        text: 'Nieustannie poprawiamy bazy danych SQL za pomocą nowych funkcji i chcielibyśmy poznać Twoją opinię na temat następujące nowe funkcje:'
-      - type: list
-        style: unordered
-        items:
-          - html: '(Wersja zapoznawcza) <a href="sql-database-service-tier-hyperscale">Hiperskali</a> warstwę, która obsługuje maksymalnie 100 TB baz danych i wiele replik z możliwością odczytu.'
-          - html: '(Wersja zapoznawcza) Nowy program SQL Server 2019 <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">przetwarzania zapytań inteligentnych</a> funkcje, takie jak <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#table-variable-deferred-compilation">zmiennej tabeli odroczone kompilacji</a>, <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#batch-mode-on-rowstore">tryb usługi batch w tabelach magazynu wierszy</a>, i <a href="https://docs.microsoft.com/sql/relational-databases/user-defined-functions/scalar-udf-inlining?view=azuresqldb-current&toc=%2Fazure%2Fsql-database%2Ftoc.json"> skalarne funkcji zdefiniowanej przez użytkownika ze śródwierszowaniem</a>.'
-          - html: '(Wersja zapoznawcza) Nowe funkcje języka Transact-SQL, takich jak <a href="https://docs.microsoft.com/sql/t-sql/functions/approx-count-distinct-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">agregacji APPROX_COUNT_DISTINCT</a> i <a href="https://docs.microsoft.com/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">zbiorcze importowanie z usługi Azure Blob storage</a>.'
-          - html: '(Wersja zapoznawcza) Nowe Online programu SQL Server 2019 <a href="https://docs.microsoft.com/sql/t-sql/statements/create-columnstore-index-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#online--on--off">kompilacji</a> i skompiluj ponownie operacje indeksów klastrowanego magazynu kolumn.'
-          - html: '(Wersja zapoznawcza) Nowe <a href="https://docs.microsoft.com/azure/sql-database/sql-database-machine-learning-services-overview">usługi Azure SQL Database usługi Machine Learning (przy użyciu języka R)</a>.'
-          - html: '(Wersja zapoznawcza) Nowe <a href="https://docs.microsoft.com/azure/sql-database/sql-database-serverless">warstwy bezserwerowe środowisko obliczeniowe</a> zapewnia obliczeń automatycznego skalowania i rachunków na sekundę użytych zasobów obliczeniowych.'
   - title: Pięciominutowe przewodniki Szybki start
     items:
       - type: paragraph
-        text: 'Usługa Azure SQL Database można wykonywać podstawowe zadania zarządzania przy użyciu witryny Azure portal, interfejsu wiersza polecenia platformy Azure i programu Azure PowerShell. Dowiedz się, jak wykonywać podstawowe zadania zarządzania, korzystając z poniższych przykładów Szybki Start:'
+        text: 'Usługa Azure SQL Database pozwala wykonywać podstawowe zadania zarządzania przy użyciu witryny Azure Portal, interfejsu wiersza polecenia platformy Azure i programu Azure PowerShell. Dowiedz się, jak wykonywać podstawowe zadania zarządzania dzięki przykładom z poniższych przewodników Szybki start:'
       - type: table
         style: dataMatrix
         columns:
           - image:
               src: media/index/portal.svg
-            title: Azure Portal
+            title: Portal Azure
           - image:
               src: media/index/cli.svg
             title: Interfejs wiersza polecenia platformy Azure
@@ -122,15 +109,15 @@ sections:
   - title: Samouczki krok po kroku
     items:
       - type: paragraph
-        text: 'Informacje o sposobie tworzenia, zarządzania i migrować bazy danych za pomocą usługi Azure SQL Database.'
+        text: 'Dowiedz się, jak tworzyć i migrować bazy danych oraz zarządzać nimi za pomocą usługi Azure SQL Database.'
       - type: list
         style: ordered
         items:
-          - html: Tworzenie i projektowanie schematu dla nowej bazy danych SQL za pomocą <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> lub <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a>.
-          - html: Migrowanie istniejącej bazy danych na platformę Azure za pomocą <a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Asystenta migracji bazy danych</a> lub <a href="/azure/sql-database/sql-database-import">Importowanie pliku BACPAC</a>.
-          - html: <a href="/azure/sql-database/sql-database-security-tutorial">Zabezpieczanie usługi SQL database</a>.
-          - html: Globalna dystrybucja danych przy użyciu <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">rozproszonej geograficznie bazy danych</a>.
-          - html: 'Znajdź więcej <a href="sql-database-howto-single-database.md">przewodniki z instrukcjami</a> konfiguracji bazy danych, może pomóc.'
+          - html: Tworzenie i projektowanie schematu dla nowej bazy danych SQL przy użyciu platformy <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> lub <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a>.
+          - html: Migrowanie istniejącej bazy danych do platformy Azure za pomocą <a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Asystenta migracji bazy danych</a> lub <a href="/azure/sql-database/sql-database-import">funkcji importowania pliku BACPAC</a>.
+          - html: <a href="/azure/sql-database/sql-database-security-tutorial">Zabezpieczanie bazy danych SQL</a>.
+          - html: Globalne dystrybuowanie danych przy użyciu <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">rozproszonej geograficznie bazy danych</a>.
+          - html: 'Znajdź więcej <a href="sql-database-howto-single-database.md">przewodników z instrukcjami</a>, które ułatwią skonfigurowanie bazy danych.'
   - title: Przykłady
     items:
       - type: paragraph

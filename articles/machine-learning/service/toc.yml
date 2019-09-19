@@ -152,6 +152,9 @@
         - name: Dodawanie i rejestrowanie zestawów danych
           displayName: 'data, dataset'
           href: how-to-create-register-datasets.md
+        - name: Szkolenie przy użyciu zestawów danych
+          displayName: 'data, dataset'
+          href: how-to-train-with-datasets.md
     - name: Szkolenie modeli
       items:
         - name: Konfigurowanie środowisk szkoleniowych

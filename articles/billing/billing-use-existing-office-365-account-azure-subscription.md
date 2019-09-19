@@ -1,6 +1,6 @@
 ---
-title: Konta na platformie Azure przy użyciu konta usługi Office 365 | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak tworzyć subskrypcji platformy Azure przy użyciu konta usługi Office 365
+title: Rejestracja na platformie Azure przy użyciu konta usługi Office 365 | Microsoft Docs
+description: Dowiedz się, jak utworzyć subskrypcję platformy Azure przy użyciu konta usługi Office 365
 services: ''
 documentationcenter: ''
 author: JiangChen79
@@ -16,45 +16,45 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
 ms.openlocfilehash: 44ff08c84b3e95a5b598ebf4279fc2ffc46313e3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "60369524"
 ---
-# <a name="sign-up-for-an-azure-subscription-with-your-office-365-account"></a>Zamów subskrypcję platformy Azure przy użyciu konta usługi Office 365
-Jeśli masz subskrypcję usługi Office 365, można użyć konta usługi Office 365, aby utworzyć subskrypcję usługi Azure. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) przy użyciu usługi Office 365, nazwę użytkownika i hasło. Jeśli chcesz skonfigurować maszyn wirtualnych lub innych usług platformy Azure, należy zasubskrybować subskrypcji platformy Azure. Twoja subskrypcja platformy Azure można udostępniać innym osobom i [zarządzanie dostępem do zasobów i subskrypcji platformy Azure za pomocą kontroli dostępu opartej na rolach](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+# <a name="sign-up-for-an-azure-subscription-with-your-office-365-account"></a>Rejestracja przy użyciu konta usługi Office 365 w celu uzyskania subskrypcji platformy Azure
+Jeśli masz subskrypcję usługi Office 365, możesz utworzyć subskrypcję platformy Azure za pomocą swojego konta usługi Office 365. Zaloguj się do witryny [Azure Portal](https://portal.azure.com/) przy użyciu nazwy użytkownika i hasła do konta usługi Office 365. Jeśli chcesz skonfigurować maszyny wirtualne lub użyć innych usług platformy Azure, musisz zarejestrować się w celu uzyskania subskrypcji platformy Azure. Subskrypcję platformy Azure można udostępniać innym osobom i [korzystać z kontroli dostępu opartej na rolach w celu zarządzania dostępem do subskrypcji i zasobów platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
-Jeśli masz już konto usługi Office 365 i subskrypcję platformy Azure, zobacz [kojarzenie dzierżawy usługi Office 365 w ramach subskrypcji platformy Azure](billing-add-office-365-tenant-to-azure-subscription.md).
+Jeśli masz już konto usługi Office 365 i subskrypcję platformy Azure, zobacz [Kojarzenie dzierżawy usługi Office 365 z subskrypcją platformy Azure](billing-add-office-365-tenant-to-azure-subscription.md).
 
-## <a name="get-an-azure-subscription-using-your-office-365-account"></a>Uzyskiwanie subskrypcji platformy Azure przy użyciu swojego konta usługi Office 365
+## <a name="get-an-azure-subscription-using-your-office-365-account"></a>Uzyskiwanie subskrypcji platformy Azure przy użyciu konta usługi Office 365
 
-Oszczędzaj czas i uniknąć rozprzestrzenianie konta rejestracji na platformie Azure przy użyciu usługi Office 365, nazwę użytkownika i hasło. 
+Oszczędzaj czas i unikaj tworzenia nadmiernej liczby kont, rejestrując się na platformie Azure przy użyciu nazwy użytkownika i hasła do konta usługi Office 365. 
 
-1. Zarejestruj się pod adresem [Azure.com](https://account.azure.com/signup?offer=MS-AZR-0044p&appId=docs). 
-2. Zaloguj się przy użyciu usługi Office 365 nazwa użytkownika i hasło. Konto, którego używasz, nie musi mieć uprawnienia administratora. Jeśli masz więcej niż jedno konto usługi Office 365, upewnij się, że używasz poświadczeń dla konta usługi Office 365, które chcesz skojarzyć z subskrypcją platformy Azure. 
+1. Zarejestruj się w witrynie [Azure.com](https://account.azure.com/signup?offer=MS-AZR-0044p&appId=docs). 
+2. Zaloguj się przy użyciu swojej nazwy użytkownika i hasła do konta usługi Office 365. Używane konto nie musi mieć uprawnień administratora. Jeśli masz więcej niż jedno konto usługi Office 365, upewnij się, że używasz poświadczeń dla konta usługi Office 365, które chcesz skojarzyć z subskrypcją platformy Azure. 
 
    ![Zrzut ekranu przedstawiający stronę logowania.](./media/billing-use-existing-office-365-account-azure-subscription/billing-sign-in-with-office-365-account.png)
 
-3. Wprowadź wymagane informacje i ukończyć proces rejestracji. Niektóre informacje mogą być wymagane, jeśli masz już konto usługi Office 365.
+3. Wprowadź wymagane informacje i doprowadź do końca proces rejestracji. Niektóre informacje mogą nie być wymagane, jeśli masz już konto usługi Office 365.
 
     ![Zrzut ekranu pokazujący formularz rejestracji.](./media/billing-use-existing-office-365-account-azure-subscription/billing-azure-sign-up-fill-information.png)
 
-- Jeśli potrzebujesz dodać inne osoby w Twojej organizacji do subskrypcji platformy Azure, zobacz [wprowadzenie do zarządzania dostępem w witrynie Azure portal](../role-based-access-control/overview.md). 
+- Jeśli musisz dodać inne osoby z organizacji do subskrypcji platformy Azure, zobacz [Wprowadzenie do zarządzania dostępem w witrynie Azure Portal](../role-based-access-control/overview.md). 
 
 ## <a id="more-about-subs">Więcej informacji o subskrypcjach platformy Azure i usługi Office 365</a>
-Usługi Office 365 i platformą Azure usługa Azure AD do zarządzania użytkownikami i subskrypcjami. Usługi Azure directory przypomina kontenera, w którym można pogrupować użytkowników i subskrypcji. Aby użyć tych samych kont użytkowników dla subskrypcji platformy Azure i usługi Office 365, należy się upewnić, że subskrypcji platformy Azure są tworzone w tym samym katalogu co w przypadku subskrypcji usługi Office 365. Mieć na uwadze następujące kwestie:
+Zarządzanie użytkownikami oraz subskrypcjami usługi Office 365 i platformy Azure odbywa się za pomocą usługi Azure AD. Katalog platformy Azure jest podobny do kontenera, w którym można grupować użytkowników i subskrypcje. Aby korzystać z tych samych kont użytkowników w przypadku subskrypcji platformy Azure i usługi Office 365, należy się upewnić, że subskrypcje platformy Azure są tworzone w tym samym katalogu co subskrypcje usługi Office 365. Należy pamiętać o następujących kwestiach:
 
-* Subskrypcja zostanie utworzona w katalogu
+* Subskrypcja jest tworzona w katalogu
 * Użytkownicy należą do katalogów
-* Subskrypcja znajdzie się w katalogu użytkownika, który tworzy subskrypcję. Dlatego subskrypcji usługi Office 365 jest powiązany do tego samego konta, co subskrypcja systemu Azure.
-* Subskrypcje platformy Azure należą do poszczególnych użytkowników w katalogu
-* Subskrypcje usługi Office 365 są własnością sam katalog. Użytkownicy mający odpowiednie uprawnienia w katalogu mogą zarządzać tych subskrypcji.
+* Subskrypcja jest umieszczana w katalogu użytkownika, który ją tworzy. Dzięki temu subskrypcja usługi Office 365 jest powiązana z tym samym kontem co subskrypcja platformy Azure.
+* Subskrypcje platformy Azure są własnością poszczególnych użytkowników w katalogu
+* Subskrypcje usługi Office 365 są własnością samego katalogu. Użytkownicy z odpowiednimi uprawnieniami w katalogu mogą zarządzać tymi subskrypcjami.
 
-![Zrzut ekranu pokazujący relacji katalogu, użytkownikami i subskrypcjami.](./media/billing-use-existing-office-365-account-azure-subscription/19-background-information.png)
+![Zrzut ekranu przedstawiający relację katalogu, użytkowników i subskrypcji.](./media/billing-use-existing-office-365-account-azure-subscription/19-background-information.png)
 
-Aby uzyskać więcej informacji, zobacz [jak subskrypcje platformy Azure są skojarzone z usługą Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
+Aby uzyskać więcej informacji, zobacz [Jak subskrypcje platformy Azure są kojarzone z usługą Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 
-Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).
+Jeśli masz pytania lub potrzebujesz pomocy, [utwórz wniosek o pomoc techniczną](https://go.microsoft.com/fwlink/?linkid=2083458).

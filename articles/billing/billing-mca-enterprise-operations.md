@@ -1,6 +1,6 @@
 ---
-title: Wykonywanie zadań umowy Enterprise Agreement, umowy klienta firmy Microsoft — Azure
-description: Dowiedz się, jak wykonać zadania z umową Enterprise Agreement do konta rozliczeniowego.
+title: Wykonywanie zadań umowy Enterprise Agreement w umowie klienta firmy Microsoft — Azure
+description: Dowiedz się, jak wykonywać zadania umowy Enterprise Agreement na nowym koncie rozliczeniowym.
 author: amberbhargava
 manager: amberb
 editor: banders
@@ -13,144 +13,144 @@ ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: 9404908b7c486801480474c5a2c9ff7688e1de48
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67490708"
 ---
-# <a name="complete-enterprise-agreement-tasks-in-your-billing-account-for-a-microsoft-customer-agreement"></a>Wykonywanie zadań umowy Enterprise Agreement do konta rozliczeniowego dla umowy klienta firmy Microsoft
+# <a name="complete-enterprise-agreement-tasks-in-your-billing-account-for-a-microsoft-customer-agreement"></a>Wykonywanie zadań umowy Enterprise Agreement na koncie rozliczeniowym dla umowy klienta firmy Microsoft
 
-Jeśli Twoja organizacja zarejestrowała umowy klienta firmy Microsoft, aby odnowić rejestrację umowy Enterprise Agreement, nowe konto rozliczeniowe zostanie utworzony dla umowy. Rozliczenia w nowym kontem jest zorganizowana inaczej niż w ramach umowy Enterprise Agreement. W tym artykule opisano, jak można użyć nowego konta rozliczeniowego do wykonywania zadań, które były wykonywane w ramach umowy Enterprise Agreement.
+Jeśli w Twojej organizacji podpisano umowę klienta firmy Microsoft umożliwiającą odnowienie rejestracji Enterprise Agreement, dla tej umowy zostało utworzone nowe konto rozliczeniowe. Rozliczenia na nowym koncie wyglądają inaczej niż w przypadku umowy Enterprise Agreement. W tym artykule opisano, jak wykonywać zadania umowy Enterprise Agreement na nowym koncie rozliczeniowym.
 
-## <a name="billing-organization-in-the-new-account"></a>Rozliczenia w nowe konto organizacji
+## <a name="billing-organization-in-the-new-account"></a>Organizacja rozliczeń na nowym koncie
 
-Na poniższym diagramie przedstawiono, jak rozliczenia jest zorganizowana w konta rozliczeniowego.
+Na poniższym schemacie pokazano organizację rozliczeń w ramach nowego konta rozliczeniowego.
 
-![Obraz przedstawiający ea mca-post przejścia hierarchii](./media/billing-mca-setup-account/mca-post-transition-hierarchy.png)
+![Obraz elementu ea-mca-post-transition-hierarchy](./media/billing-mca-setup-account/mca-post-transition-hierarchy.png)
 
 | Enterprise Agreement   | Umowa klienta firmy Microsoft    |
 |------------------------|--------------------------------------------------------|
-| Rejestracja            | Profil rozliczeniowy umożliwia zarządzanie rozliczeń dla całej organizacji, podobnie jak rejestrację umowy Enterprise Agreement. Administratorzy przedsiębiorstwa usług stają się właścicieli profil rozliczeniowy. Aby dowiedzieć się więcej na temat rozliczeń profilów, zobacz [zrozumieć profile rozliczeń](billing-mca-overview.md#billing-profiles).
-| Dział            | Sekcja faktury umożliwia organizowanie koszty, podobnie jak działom w rejestrację umowy Enterprise Agreement. Dział staje się sekcje faktury, a dział Administratorzy stają się właścicieli sekcje odpowiednich faktury. Aby uzyskać więcej informacji na temat sekcje faktury, zobacz [sekcje faktury omówienie](billing-mca-overview.md#invoice-sections). |
-| Konto               | Konta, które zostały utworzone w ramach umowy Enterprise Agreement, nie są obsługiwane przez nowe konta rozliczeniowego. Subskrypcje dla konta należą do sekcji faktury odpowiednie dla swojego wydziału. Właściciele kont można tworzyć i zarządzać subskrypcji dla ich sekcji faktury. |
+| Rejestracja            | Profil rozliczeniowy służy do zarządzania rozliczeniami w organizacji, podobnie jak w przypadku rejestracji umowy Enterprise Agreement. Administratorzy przedsiębiorstwa stają się właścicielami profilu rozliczeniowego. Aby dowiedzieć się więcej o profilach rozliczeniowych, zobacz [Omówienie profilów rozliczeniowych](billing-mca-overview.md#billing-profiles).
+| Dział            | Sekcja faktur służy do organizowania kosztów, podobnie jak w przypadku działów w rejestracji umowy Enterprise Agreement. Działy stają się sekcjami faktur, a administratorzy działów stają się właścicielami odpowiednich sekcji faktur. Aby dowiedzieć się więcej na temat sekcji faktur, zobacz [Omówienie sekcji faktur](billing-mca-overview.md#invoice-sections). |
+| Konto               | Konta utworzone w ramach umowy Enterprise Agreement nie są obsługiwane na nowym koncie rozliczeniowym. Subskrypcje konta należą do sekcji faktur odpowiedniej dla ich działu. Właściciele konta mogą tworzyć subskrypcje dla swoich sekcji faktur i zarządzać nimi. |
 
-## <a name="changes-for-enterprise-administrators"></a>Zmiany dotyczące Administratorzy przedsiębiorstwa
+## <a name="changes-for-enterprise-administrators"></a>Zmiany dla administratorów przedsiębiorstwa
 
-Następujące zmiany dotyczą Administratorzy przedsiębiorstwa w umowy Enterprise Agreement, która otrzymała odnowienia umowy klienta firmy Microsoft.
+Poniższe zmiany dotyczą administratorów przedsiębiorstwa, w którym umowa Enterprise Agreement została odnowiona do umowy klienta firmy Microsoft.
 
-- Profil rozliczeniowy jest tworzona dla Twojej rejestracji. Profil rozliczeniowy będzie używać do zarządzania rozliczeniami dla całej organizacji, takich jak rejestrację umowy Enterprise Agreement. Aby dowiedzieć się więcej o profilach rozliczeń [zrozumieć profile rozliczeń](billing-mca-overview.md#billing-profiles).
-- Sekcja faktura jest tworzony dla każdego działu w rejestrację umowy Enterprise Agreement. Użyjesz sekcje faktury Zarządzanie działy usługi. Można tworzyć nowe sekcje faktury, aby skonfigurować dodatkowe działów. Aby uzyskać więcej informacji na temat sekcje faktury, zobacz [zrozumienie faktury sekcje](billing-mca-overview.md#invoice-sections).
-- Korzystając z roli Twórca subskrypcji platformy Azure faktury sekcje udostępniania uprawnień do utworzenia subskrypcji platformy Azure, takich jak konta, które zostały utworzone w rejestracji umowy Enterprise Agreement.
-- Użyjesz [witryny Azure portal](https://portal.azure.com) do zarządzania rozliczeniami dla całej organizacji, zamiast portalu Azure EA.
+- Dla rejestracji jest tworzony profil rozliczeniowy. Służy on do zarządzania rozliczeniami w organizacji, podobnie jak w przypadku rejestracji umowy Enterprise Agreement. Aby dowiedzieć się więcej o profilach rozliczeniowych, zobacz [Omówienie profilów rozliczeniowych](billing-mca-overview.md#billing-profiles).
+- Dla każdego działu w ramach rejestracji umowy Enterprise Agreement tworzona jest sekcja faktur. Sekcje faktur umożliwiają zarządzanie działami. Można skonfigurować dodatkowe działy, tworząc nowe sekcje faktur. Aby dowiedzieć się więcej na temat sekcji faktur, zobacz [omówienie sekcji faktur](billing-mca-overview.md#invoice-sections).
+- Za pomocą roli twórcy subskrypcji platformy Azure używanej w sekcjach faktury można nadawać innym osobom uprawnienie do tworzenia subskrypcji platformy Azure, podobnie jak w przypadku kont utworzonych w ramach rejestracji umowy Enterprise Agreement.
+- Zarządzanie rozliczeniami w organizacji odbywa się w witrynie [Azure Portal](https://portal.azure.com), a nie witrynie Azure EA Portal.
 
-Następujące role są podane na nowe konto rozliczeniowe:
+Na nowym koncie rozliczeniowym są nadawane następujące role:
 
-**Rozliczenia właściciela profilu** — są przypisywane rozliczeń Rola właściciela profilu na profil rozliczeniowy, który został utworzony po podpisaniu umowy. Rola umożliwia zarządzanie rozliczeń dla Twojej organizacji. Można wyświetlić opłat i faktur, organizowanie koszty, faktury, Zarządzaj metodami płatności i kontrolować dostęp do rozliczeń w organizacji.
+**Właściciel profilu rozliczeniowego** — masz przypisaną rolę właściciela profilu rozliczeniowego, który został utworzony przy podpisywaniu umowy. Rola ta umożliwia zarządzanie rozliczeniami w organizacji. Możesz wyświetlać opłaty i faktury, organizować koszty na fakturze, zarządzać formami płatności i kontrolować dostęp do rozliczeń w organizacji.
 
-**Właściciel sekcji faktury** — masz przypisaną rolę właściciela sekcji faktury na wszystkie sekcje faktury, które są tworzone dla działów w rejestrację umowy Enterprise Agreement. Rola pozwala na kontrolowanie, kto może tworzyć subskrypcje platformy Azure i nabywać produkty innych.
+**Właściciel sekcji faktury** — masz przypisaną rolę właściciela sekcji faktury dla wszystkich sekcji faktury utworzonych dla działów w ramach rejestracji umowy Enterprise Agreement. Rola ta pozwala kontrolować, kto może tworzyć subskrypcje platformy Azure i kupować inne produkty.
 
-### <a name="view-charges-and-credits-balance-for-your-organization"></a>Wyświetl opłaty i środki na korzystanie z saldo dla Twojej organizacji
+### <a name="view-charges-and-credits-balance-for-your-organization"></a>Wyświetlanie opłat i salda środków dla organizacji
 
-Twój profil rozliczeń umożliwia śledzenie opłaty i Saldo środków platformy Azure dla Twojej organizacji, które są podobne do Twojej rejestracji Enterprise Agreement.
+Śledzenie opłat i salda środków na korzystanie z platformy Azure odbywa się za pomocą profilu rozliczeniowego, podobnie jak w przypadku rejestracji umowy Enterprise Agreement.
 
-Aby dowiedzieć się, jak wyświetlić salda środków dla profil rozliczeniowy, zobacz [śledzić salda środków platformy Azure dla swojego profilu rozliczeń](billing-mca-check-azure-credits-balance.md).
+Aby dowiedzieć się, jak wyświetlić saldo środków dla profilu rozliczeniowego, zobacz [Śledzenie salda środków na korzystanie z platformy Azure dla profilu rozliczeniowego](billing-mca-check-azure-credits-balance.md).
 
-Aby dowiedzieć się, jak wyświetlić opłat za profil rozliczeniowy, zobacz [informacje o opłatach na fakturze umowy klienta Microsoft](billing-mca-understand-your-bill.md).
+Aby dowiedzieć się, jak wyświetlić opłaty dla profilu rozliczeniowego, zobacz [Informacje o opłatach na fakturze dla umowy klienta firmy Microsoft](billing-mca-understand-your-bill.md).
 
-### <a name="view-charges-for-a-department"></a>Wyświetl opłaty dla działu
+### <a name="view-charges-for-a-department"></a>Wyświetlanie opłat dla działu
 
-Sekcja faktura jest tworzony dla każdego działu, jaką miał w ramach umowy Enterprise Agreement. Opłaty za części faktury można wyświetlić w witrynie Azure portal. Aby uzyskać więcej informacji, zobacz [wyświetlać transakcje w sekcjach faktury](billing-mca-understand-your-bill.md#view-transactions-by-invoice-sections).
+Dla każdego działu w ramach umowy Enterprise Agreement tworzona jest sekcja faktur. Opłaty dla sekcji faktury można sprawdzić w witrynie Azure Portal. Aby uzyskać więcej informacji, zobacz [Wyświetlanie transakcji według sekcji faktury](billing-mca-understand-your-bill.md#view-transactions-by-invoice-sections).
 
-### <a name="view-charges-for-an-account"></a>Wyświetl opłaty za konto
+### <a name="view-charges-for-an-account"></a>Wyświetlanie opłat dla konta
 
-Konta, które zostały utworzone w rejestrację umowy Enterprise Agreement, nie są obsługiwane w nowe konta rozliczeniowego. Subskrypcje dla konta należą do sekcji faktury odpowiednie dla swojego wydziału. Właściciele kont można tworzyć i zarządzać subskrypcji dla ich sekcji faktury.
+Konta utworzone w ramach rejestracji umowy Enterprise Agreement nie są obsługiwane na nowym koncie rozliczeniowym. Subskrypcje konta należą do sekcji faktur odpowiedniej dla ich działu. Właściciele konta mogą tworzyć subskrypcje dla swoich sekcji faktur i zarządzać nimi.
 
-Aby wyświetlić łączny koszt subskrypcje należące do konta usługi, należy ustawić Centrum kosztów dla każdej subskrypcji. Następnie przy użyciu platformy Azure pliku csv użycia i opłat do filtrowania subskrypcji przez Centrum kosztów.
+Aby wyświetlić zagregowany koszt dla subskrypcji należących do konta, musisz ustawić centrum kosztu dla każdej subskrypcji. Następnie możesz odfiltrować subskrypcje według centrum kosztu za pomocą pliku CSV zawierającego opłaty i dane użycia platformy Azure.
 
-### <a name="download-usage-and-charges-csv-price-sheet-and-tax-documents"></a>Pobieranie pliku csv użycia i opłat, Arkusz cen i dokumenty podatku
+### <a name="download-usage-and-charges-csv-price-sheet-and-tax-documents"></a>Pobieranie pliku CSV zawierającego opłaty i dane użycia, arkusza cen i dokumentów podatkowych
 
-Miesięcznej fakturze jest generowany dla każdego profilu rozliczeń w ramach Twojego konta rozliczeniowego. Na każdej fakturze można pobrać plików csv użycia i opłat platformy Azure, Arkusz cen i dokument podatku (jeśli dotyczy). Można również pobrać Azure użycia i opłat plik csv dla bieżącego miesiąca opłaty.
+Dla każdego profilu rozliczeniowego na koncie jest generowana faktura miesięczna. Dla każdej faktury można pobrać plik CSV zawierający opłaty i dane użycia platformy Azure, arkusz cen i dokument podatkowy (jeśli dotyczy). Można również pobrać plik CSV zawierający dane użycia platformy Azure i opłaty w bieżącym miesiącu.
 
-Aby dowiedzieć się, jak pobrać plik csv Azure użycia i opłat, zobacz [Pobierz dane użycia dla umowy klienta Microsoft](billing-download-azure-daily-usage.md#download-usage-for-your-microsoft-customer-agreement).
+Aby dowiedzieć się, jak pobrać plik CSV zawierający opłaty i dane użycia platformy Azure, zobacz [Pobieranie zestawienia użycia dotyczącego umowy klienta firmy Microsoft](billing-download-azure-daily-usage.md#download-usage-for-your-microsoft-customer-agreement).
 
-Aby dowiedzieć się, jak pobrać arkusz cen, zobacz [pobrać cen dla umowy klienta Microsoft](billing-ea-pricing.md#microsoft-customer-agreement-pricing).
+Aby dowiedzieć się, jak pobrać arkusz cen, zobacz [Pobieranie cennika dotyczącego umowy klienta firmy Microsoft](billing-ea-pricing.md#microsoft-customer-agreement-pricing).
 
-Informacje na temat pobierania podatków dokumentów, zobacz [wyświetlić dokumenty podatku umowy klienta Microsoft](billing-mca-download-tax-document.md#view-and-download-tax-documents).
+Aby dowiedzieć się, jak pobrać dokumenty podatkowe, zobacz [Wyświetlanie dokumentów podatkowych dotyczących umowy klienta firmy Microsoft](billing-mca-download-tax-document.md#view-and-download-tax-documents).
 
-### <a name="add-an-additional-enterprise-administrator"></a>Dodaj administratora przedsiębiorstwa
+### <a name="add-an-additional-enterprise-administrator"></a>Dodawanie administratora przedsiębiorstwa
 
-Dostęp użytkowników do rozliczeń profilu, aby umożliwić im widoku i zarządzają rozliczeniami dla Twojej organizacji. Możesz użyć **kontrola dostępu (IAM)** strony w witrynie Azure portal, aby udzielić dostępu.  Aby dowiedzieć się więcej na temat rozliczeń rolami profilów, zobacz [rozliczeń profilu role i zadania](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
+Aby umożliwić użytkownikom wyświetlanie rozliczeń organizacji i zarządzanie nimi, przyznaj im dostęp do profilu rozliczeniowego. Dostęp możesz przyznać na stronie **Kontrola dostępu (zarządzanie dostępem i tożsamościami)** w witrynie Azure Portal.  Aby dowiedzieć się więcej o rolach profilu rozliczeniowego, zobacz [Zadania i role profilu rozliczeniowego](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
 
-Aby dowiedzieć się, jak Podaj, dostęp do Twojego profilu rozliczeń, zobacz [Zarządzanie rolami rozliczeń w witrynie Azure portal](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
+Aby dowiedzieć się, jak zapewnić dostęp do profilu rozliczeniowego, zobacz [Zarządzanie rolami rozliczeniowymi w witrynie Azure Portal](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
 
-### <a name="create-a-new-department"></a>Utwórz nowy dział
+### <a name="create-a-new-department"></a>Tworzenie nowego działu
 
-Utwórz sekcję faktur do organizowania kosztów na podstawie własnych potrzeb, takich jak działom w rejestrację umowy Enterprise Agreement. Nowa sekcja faktury można utworzyć w witrynie Azure portal. Aby dowiedzieć się więcej, zobacz [Tworzenie sekcji na fakturze w taki sposób, aby zorganizować koszty](billing-mca-section-invoice.md).
+Po utworzeniu sekcji faktury można organizować koszty zgodnie z potrzebami, podobnie jak w przypadku działów w rejestracji umowy Enterprise Agreement. Nową sekcję faktury można utworzyć w witrynie Azure Portal. Aby dowiedzieć się więcej, zobacz [Tworzenie sekcji na fakturze w celu organizacji kosztów](billing-mca-section-invoice.md).
 
-### <a name="create-a-new-account"></a>Utwórz nowe konto
+### <a name="create-a-new-account"></a>Tworzenie nowego konta
 
-Przypisywanie użytkowników roli Twórca subskrypcji platformy Azure na fakturze sekcji, aby nadać im uprawnienia do tworzenia subskrypcji platformy Azure, takich jak konta, które są tworzone w rejestracji umowy Enterprise Agreement. Aby uzyskać więcej informacji, zobacz [daje uprawnienia do tworzenia subskrypcji platformy Azure](billing-mca-create-subscription.md#give-others-permission).
+Przypisując użytkownikom rolę twórcy subskrypcji platformy Azure w sekcjach faktury, można nadawać im uprawnienie do tworzenia subskrypcji platformy Azure, podobnie jak w przypadku kont utworzonych w ramach rejestracji umowy Enterprise Agreement. Aby uzyskać więcej informacji, zobacz [Nadawanie innym użytkownikom uprawnień do tworzenia subskrypcji platformy Azure](billing-mca-create-subscription.md#give-others-permission).
 
-## <a name="changes-for-department-administrators"></a>Zmiany dotyczące działu administratorów
+## <a name="changes-for-department-administrators"></a>Zmiany dla administratorów działów
 
-Następujące zmiany są stosowane do administratorów dział na umowę Enterprise Agreement, która otrzymała odnowienia umowy klienta firmy Microsoft.
+Poniższe zmiany dotyczą administratorów działów, w których umowa Enterprise Agreement została odnowiona do umowy klienta firmy Microsoft.
 
-- Sekcja faktura jest tworzony dla każdego działu w rejestrację umowy Enterprise Agreement. Użyjesz pliku faktury Zarządzanie działy usługi. Aby uzyskać więcej informacji na temat sekcje faktury, zobacz [zrozumienie faktury sekcje](billing-mca-overview.md#invoice-sections).
-- Korzystając z roli Twórca subskrypcji platformy Azure w sekcji faktury udostępniania uprawnień do utworzenia subskrypcji platformy Azure, takich jak konta, które są tworzone w rejestracji umowy Enterprise Agreement.
-- Użyjesz witryny Azure portal do zarządzania rozliczeniami dla całej organizacji, zamiast portalu Azure EA.
+- Dla każdego działu w ramach rejestracji umowy Enterprise Agreement tworzona jest sekcja faktur. Sekcje faktur umożliwiają zarządzanie działami. Aby dowiedzieć się więcej na temat sekcji faktur, zobacz [omówienie sekcji faktur](billing-mca-overview.md#invoice-sections).
+- Za pomocą roli twórcy subskrypcji platformy Azure używanej w sekcjach faktury można nadawać innym osobom uprawnienie do tworzenia subskrypcji platformy Azure, podobnie jak w przypadku kont utworzonych w ramach rejestracji umowy Enterprise Agreement.
+- Zarządzanie rozliczeniami w organizacji odbywa się w witrynie Azure Portal, a nie witrynie Azure EA Portal.
 
-Następujące role są podane na nowe konto rozliczeniowe:
+Na nowym koncie rozliczeniowym są nadawane następujące role:
 
-**Właściciel sekcji faktury** — masz przypisaną rolę właściciela sekcji faktury w sekcji faktury, które są tworzone dla działy, gdyby w umowy Enterprise Agreement. Rola pozwala przeglądania i opłaty śledzenia i kontrolowania mogących tworzyć subskrypcje platformy Azure i zakupu innych produktów w sekcji faktury.
+**Właściciel sekcji faktury** — masz przypisaną rolę właściciela sekcji faktury dla sekcji faktury utworzonej dla działów w ramach umowy Enterprise Agreement. Rola ta pozwala wyświetlać i śledzić opłaty oraz kontrolować, kto może tworzyć subskrypcje platformy Azure i kupować inne produkty w sekcji faktury.
 
-### <a name="view-charges-for-your-department"></a>Wyświetl opłaty dla Twojego działu
+### <a name="view-charges-for-your-department"></a>Wyświetlanie opłat dla działu
 
-Można wyświetlić opłat za sekcji faktury, który jest tworzony dla działu, w witrynie Azure portal [Zarządzanie kosztami i rozliczenia strony](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/Overview).
+Opłaty w sekcji faktury utworzonej dla działu można wyświetlić na stronie [Zarządzanie kosztami i rozliczenia](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/Overview) w witrynie Azure Portal.
 
-### <a name="add-an-additional-department-administrator"></a>Dodaj administratora działu dodatkowe
+### <a name="add-an-additional-department-administrator"></a>Dodawanie administratora działu
 
-Sekcja faktura jest tworzony dla każdego działu, jaką miał w ramach umowy Enterprise Agreement. Możesz użyć **Control(IAM) dostępu** strony w witrynie Azure portal, Zezwól na dostęp do wyświetlania i zarządzania sekcji faktury. Aby dowiedzieć się więcej o rolach sekcji faktury, zobacz [faktury sekcji role i zadania](billing-understand-mca-roles.md#invoice-section-roles-and-tasks).
+Dla każdego działu w ramach umowy Enterprise Agreement tworzona jest sekcja faktur. Korzystając ze strony **Kontrola dostępu (zarządzanie dostępem i tożsamościami)**  w witrynie Azure Portal, można umożliwić innym osobom wyświetlanie sekcji faktury i zarządzanie nią. Aby dowiedzieć się więcej o rolach sekcji faktury, zobacz [Zadania i role sekcji faktur](billing-understand-mca-roles.md#invoice-section-roles-and-tasks).
 
-Aby dowiedzieć się, jak Podaj, dostęp do sekcji faktury, zobacz [Zarządzanie rolami rozliczeń w witrynie Azure portal](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
+Aby dowiedzieć się, jak zapewnić dostęp do sekcji faktury, zobacz [Zarządzanie rolami rozliczeniowymi w witrynie Azure Portal](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
 
-### <a name="create-a-new-account-in-your-department"></a>Utwórz nowe konto w Twoim dziale
+### <a name="create-a-new-account-in-your-department"></a>Tworzenie nowego konta w dziale
 
-Przypisywanie użytkowników roli Twórca subskrypcji platformy Azure w sekcji faktur, które są tworzone dla działu. Aby uzyskać więcej informacji, zobacz [daje uprawnienia do tworzenia subskrypcji platformy Azure](billing-mca-create-subscription.md#give-others-permission).
+Przypisz użytkownikom rolę twórcy subskrypcji platformy Azure w sekcji faktury, która została utworzona dla działu. Aby uzyskać więcej informacji, zobacz [Nadawanie innym użytkownikom uprawnień do tworzenia subskrypcji platformy Azure](billing-mca-create-subscription.md#give-others-permission).
 
-### <a name="view-charges-for-accounts-in-your-departments"></a>Wyświetl opłaty dla kont w działu
+### <a name="view-charges-for-accounts-in-your-departments"></a>Wyświetlanie opłat dla kont w działach
 
-Konta, które zostały utworzone w rejestrację umowy Enterprise Agreement, nie są obsługiwane w nowe konta rozliczeniowego. Subskrypcje dla konta należą do sekcji faktury odpowiednie dla swojego wydziału. Właściciele kont można tworzyć i zarządzać subskrypcji dla ich sekcji faktury.
+Konta utworzone w ramach rejestracji umowy Enterprise Agreement nie są obsługiwane na nowym koncie rozliczeniowym. Subskrypcje konta należą do sekcji faktur odpowiedniej dla ich działu. Właściciele konta mogą tworzyć subskrypcje dla swoich sekcji faktur i zarządzać nimi.
 
-Aby wyświetlić łączny koszt subskrypcje należące do konta w Twoim dziale, należy ustawić Centrum kosztów dla każdej subskrypcji. Następnie przy użyciu plików platformy Azure, użycia i opłat do filtrowania subskrypcji przez Centrum kosztów.
+Aby wyświetlić zagregowany koszt dla subskrypcji należących do konta w dziale, musisz ustawić centrum kosztu dla każdej subskrypcji. Następnie możesz odfiltrować subskrypcje według centrum kosztu za pomocą pliku zawierającego opłaty i dane użycia platformy Azure.
 
-## <a name="changes-for-account-owners"></a>Zmiany dla właścicieli kont z odpowiednimi
+## <a name="changes-for-account-owners"></a>Zmiany dla właścicieli kont
 
-Właściciele kont z umowami Enterprise Agreement uzyskać uprawnienia do tworzenia subskrypcji platformy Azure na nowe konto rozliczeniowe. Istniejącej subskrypcji platformy Azure należą do sekcji faktury, który jest tworzony dla działu. Jeśli Twoje konto nie należy do działu, Twoje subskrypcje należą do sekcji faktury o nazwie domyślnej sekcji faktury.
+Właściciele kont w ramach umowy Enterprise Agreement zyskują uprawnienie do tworzenia subskrypcji platformy Azure na nowym koncie rozliczeniowym. Istniejące subskrypcje platformy Azure należą do sekcji faktury utworzonej dla działu. Jeśli konto nie należy do działu, subskrypcje należą do sekcji faktury o nazwie Domyślna sekcja faktury.
 
-Aby utworzyć dodatkowe subskrypcje platformy Azure, podano następującą rolę na nowe konto rozliczeniowe.
+Na nowym koncie rozliczeniowym masz przypisaną następującą rolę, która umożliwia tworzenie dodatkowych subskrypcji platformy Azure.
 
-**Twórca subskrypcji platformy Azure** -przypisano rolę twórca subskrypcji platformy azure w sekcji faktury, który jest tworzony dla Twojego działu w umowy Enterprise Agreement. Jeśli Twoje konto nie należy do działu, otrzymasz roli Twórca subskrypcji platformy Azure w sekcji o nazwie domyślnej sekcji faktury. Rola pozwala tworzyć subskrypcje platformy Azure dla sekcji faktury.
+**Twórca subskrypcji platformy Azure** — masz przypisaną rolę twórcy subskrypcji platformy Azure w sekcji faktury utworzonej dla działu w umowie Enterprise Agreement. Jeśli konto nie należy do działu, otrzymujesz rolę twórcy subskrypcji platformy Azure w sekcji o nazwie Domyślna sekcja faktury. Rola ta umożliwia tworzenie subskrypcji platformy Azure dla sekcji faktury.
 
 ### <a name="create-an-azure-subscription"></a>Tworzenie subskrypcji platformy Azure
 
-Sekcji faktury w witrynie Azure portal można utworzyć subskrypcji platformy Azure. Aby uzyskać więcej informacji, zobacz [należy utworzyć dodatkową subskrypcję platformy Azure dla umowy klienta firmy Microsoft](billing-mca-create-subscription.md)
+Subskrypcje platformy Azure dla sekcji faktury można utworzyć w witrynie Azure Portal. Aby uzyskać więcej informacji, zobacz [Tworzenie dodatkowej subskrypcji platformy Azure dla umowy klienta firmy Microsoft](billing-mca-create-subscription.md).
 
-### <a name="view-charges-for-your-account"></a>Wyświetl opłaty dla swojego konta
+### <a name="view-charges-for-your-account"></a>Wyświetlanie opłat dla konta
 
-Aby wyświetlić opłaty za subskrypcje należące do konta, przejdź do [strony subskrypcje](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) w witrynie Azure portal. Na stronie subskrypcje są wyświetlane opłaty dla Twojej subskrypcji.
+Aby wyświetlić opłaty za subskrypcje należące do konta, przejdź do [strony subskrypcji](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) w witrynie Azure Portal. Na stronie subskrypcji są wyświetlane opłaty za wszystkie subskrypcje.
 
-### <a name="view-charges-for-a-subscription"></a>Wyświetl opłaty w przypadku subskrypcji
+### <a name="view-charges-for-a-subscription"></a>Wyświetlanie opłat za subskrypcję
 
-Opłaty za subskrypcję można wyświetlić albo na [strony subskrypcje](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) lub na platformie Azure, analiza kosztów. Aby uzyskać więcej informacji na temat analizy kosztów platformy Azure, zobacz [badanie i analizowanie kosztów za pomocą analizy kosztów](../cost-management/quick-acm-cost-analysis.md).
+Opłaty za subskrypcję można wyświetlić na [stronie subskrypcji](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) lub stronie analizy kosztów platformy Azure. Aby uzyskać więcej informacji na temat analizy kosztów na platformie Azure, zobacz [Poznawanie i analizowanie kosztów za pomocą funkcji Analiza kosztów](../cost-management/quick-acm-cost-analysis.md).
 
-## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną
+## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Kontakt z pomocą techniczną
 
-Jeśli potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem.
+Jeśli potrzebujesz pomocy, [skontaktuj się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), aby szybko rozwiązać problem.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Opis konta rozliczeniowego dla umowy klienta firmy Microsoft](billing-mca-overview.md)
-- [Zrozumienie faktury](billing-understand-your-bill.md)
+- [Omówienie konta rozliczeniowego umowy klienta firmy Microsoft](billing-mca-overview.md)
+- [Opis zawartości faktury](billing-understand-your-bill.md)
 - [Opis zawartości rachunku](billing-understand-your-invoice.md)
-- [Pobierz rozliczeń własności subskrypcji platformy Azure od innych użytkowników](billing-mca-request-billing-ownership.md)
+- [Uzyskiwanie własności rozliczeń subskrypcji platformy Azure od innych użytkowników](billing-mca-request-billing-ownership.md)

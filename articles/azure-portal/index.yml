@@ -1,45 +1,77 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentacja witryny Azure Portal
+summary: Witryna Azure Portal to ujednolicona, oparta na sieci Web konsola, która stanowi alternatywę dla narzędzi wiersza polecenia. Przy użyciu witryny Azure Portal można zarządzać subskrypcją platformy Azure. Twórz i monitoruj zarówno proste aplikacje internetowe, jak i złożone wdrożenia w chmurze oraz zarządzaj nimi. Twórz niestandardowe pulpity nawigacyjne, aby zorganizować widok zasobów i skonfigurować opcje ułatwień dostępu w celu zapewnienia najlepszego środowiska.
 metadata:
-  description: 'Dowiedz się, jak używać witryny Azure Portal i tworzyć niestandardowe pulpity nawigacyjne.'
-  services: azure portal
-  documentationcenter: ''
-  author: kfollis
-  manager: mtillman
-  editor: ''
-  ms.assetid: 3e12c488-9c8c-4d0d-9b07-e018dec42fc6
+  title: Dokumentacja witryny Azure Portal
+  description: Dowiedz się, jak zarządzać subskrypcją i zasobami platformy Azure za pomocą konsoli internetowej Azure Portal.
+  services: Azure portal
   ms.service: azure-portal
-  ms.devlang: na
+  ms.subservice: 
   ms.topic: landing-page
-  ms.tgt_pltfrm: na
-  ms.workload: na
-  ms.date: 10/08/2018
+  ms.collection: collection
+  author: kfollis
   ms.author: kfollis
-abstract:
-  description: Witryna Azure Portal to ujednolicona konsola internetowa umożliwiająca tworzenie i monitorowanie wszelkiego rodzaju aplikacji — od prostych aplikacji internetowych po złożone aplikacje w chmurze — oraz zarządzanie nimi. Obejmuje ona dostosowywalny pulpit nawigacyjny oraz opcje ułatwień dostępu.
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/azure-preview-portal-supported-browsers-devices
-            html: <p>Witryna Azure Portal działa na wszystkich nowoczesnych komputerach i tabletach oraz w nowoczesnych przeglądarkach.</p>
-            title: Obsługiwane przeglądarki i urządzenia
-          - href: /azure/azure-portal/azure-portal-change-theme-high-contrast
-            html: <p>Zmień kontrast lub schemat kolorów w witrynie Azure Portal.</p>
-            title: Włączanie wysokiego kontrastu
-          - href: /azure/azure-portal/azure-portal-keyboard-shortcuts
-            html: '<p>Więcej informacji na temat skrótów klawiaturowych, które działają w całej witrynie Azure Portal.</p>'
-            title: Skróty klawiaturowe
-          - href: /azure/azure-portal/azure-portal-dashboards
-            html: '<p>Twórz wiele pulpitów nawigacyjnych i udostępniaj je innym osobom, które mają dostęp do Twoich subskrypcji platformy Azure.</p>'
-            title: Tworzenie i udostępnianie pulpitów nawigacyjnych platformy Azure
-          - href: /azure/azure-portal/azure-portal-dashboard-share-access
-            html: <p>Opublikuj pulpit nawigacyjny i udostępnij go innym użytkownikom w Twojej organizacji.</p>
-            title: Udostępnianie pulpitów nawigacyjnych przy użyciu kontroli RBAC
-          - href: /azure/azure-portal/azure-portal-dashboards-create-programmatically
-            html: <p>Programowe tworzenie i publikowanie pulpitów nawigacyjnych dla organizacji</p>
-            title: Programowe tworzenie pulpitów nawigacyjnych platformy Azure
+  ms.date: 09/17/2019
+  ms.openlocfilehash: 7fdd6f95ee2f84abc151f5c6e6e7929df2bc57a1
+  ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 09/17/2019
+  ms.locfileid: "71076651"
+landingContent:
+- title: Informacje o witrynie Azure Portal
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest witryna Azure Portal?
+      url: azure-portal-overview.md
+    - text: Obsługiwane przeglądarki i urządzenia
+      url: azure-portal-supported-browsers-devices.md
+- title: Dostosowywanie witryny Azure Portal
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Tworzenie i udostępnianie niestandardowych pulpitów nawigacyjnych
+      url: azure-portal-dashboards.md
+    - text: Zarządzanie elementami ulubionymi
+      url: azure-portal-add-remove-sort-favorites.md
+- title: Zarządzanie dostępem do witryny Azure Portal
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Dodawanie adresów URL witryny Azure Portal do listy bezpiecznych adresów
+      url: azure-portal-safelist-urls.md
+    - text: Kontrola dostępu oparta na rolach dla pulpitów nawigacyjnych
+      url: azure-portal-dashboard-share-access.md
+  - linkListType: learn
+    links:
+    - text: Zarządzanie zasobami na platformie Azure
+      url: /learn/paths/manage-resources-in-azure/
+    - text: Ochrona zasobów platformy Azure za pomocą kontroli dostępu na podstawie ról (RBAC)
+      url: /learn//modules/secure-azure-resources-with-rbac/
+- title: Rozpoczęcie pracy
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Rozpoczynanie pracy przy użyciu Centrum Szybki start platformy Azure
+      url: azure-portal-quickstart-center.md
+  - linkListType: how-to-guide
+    links:
+    - text: Seria instruktażowych wideo dla witryny Azure Portal
+      url: azure-portal-video-series.md
+  - linkListType: learn
+    links:
+    - text: Podstawy platformy Azure
+      url: /learn/paths/azure-fundamentals/
+    - text: Pojęcia dotyczące chmury — reguły przetwarzania w chmurze
+      url: /learn/modules/principles-cloud-computing/
+- title: Korzystanie z opcji ułatwień dostępu
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Skróty klawiaturowe
+      url: azure-portal-keyboard-shortcuts.md
+  - linkListType: how-to-guide
+    links:
+    - text: Włączanie wysokiego kontrastu
+      url: azure-portal-change-theme-high-contrast.md

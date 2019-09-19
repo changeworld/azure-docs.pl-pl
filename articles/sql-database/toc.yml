@@ -164,7 +164,7 @@
           href: sql-database-reserved-capacity.md
         - name: Migracja z warstwy usługi Premium RS
           href: sql-database-service-tiers-prs.md
-    - name: Obliczenia i magazyn
+    - name: Warstwy usług
       items:
         - name: Omówienie
           href: sql-database-service-tiers-general-purpose-business-critical.md
@@ -302,6 +302,8 @@
                   href: sql-database-vnet-service-endpoint-rule-overview.md
                 - name: Punkty końcowe sieci wirtualnej — PowerShell
                   href: sql-database-vnet-service-endpoint-rule-powershell.md
+            - name: Link prywatny
+              href: sql-database-private-endpoint-overview.md
         - name: Kontrola dostępu
           items:
             - name: Kontrola dostępu

@@ -123,6 +123,14 @@
       href: load-balancer-query-metrics-rest-api.md
     - name: Konfigurowanie portów wysokiej dostępności dla wewnętrznego modułu równoważenia obciążenia
       href: load-balancer-configure-ha-ports.md
+    - name: Przechodzenie między regionami
+      items:
+        - name: Zewnętrzne równoważenie obciążenia — portal
+          href: move-across-regions-external-load-balancer-portal.md
+        - name: Zewnętrzne równoważenie obciążenia — program PowerShell
+          href: move-across-regions-external-load-balancer-powershell.md
+        - name: Wewnętrzne równoważenie obciążenia — program PowerShell
+          href: move-across-regions-internal-load-balancer-powershell.md
     - name: Rozwiązywanie problemów
       items:
         - name: Rozwiązywanie problemów z usługą Azure Load Balancer

@@ -1,6 +1,6 @@
 ---
-title: Opis rabatu Azure Reserved VM Instancesowego | Microsoft Docs
-description: Dowiedz się, jak rabat wystąpienia zarezerwowanych maszyn wirtualnych platformy Azure jest stosowany do uruchamiania maszyn wirtualnych.
+title: Objaśnienie rabatu na wystąpienia usługi Azure Reserved VM Instances | Microsoft Docs
+description: Dowiedz się, jak rabat na wystąpienie zarezerwowane maszyny wirtualnej platformy Azure jest stosowany do uruchamiania maszyn wirtualnych.
 author: yashesvi
 manager: yashar
 ms.service: billing
@@ -11,79 +11,79 @@ ms.workload: na
 ms.date: 07/11/2019
 ms.author: banders
 ms.openlocfilehash: 191160035f516d818d5537c5c47f9604998c46f7
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67849991"
 ---
-# <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Jak obowiązuje rabat w ramach rezerwacji platformy Azure dla maszyn wirtualnych
+# <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Jak rabat na rezerwację platformy Azure jest stosowany do maszyn wirtualnych
 
-Po zakupie wystąpienia zarezerwowanego maszyny wirtualnej platformy Azure rabat rezerwacji jest automatycznie stosowany do maszyn wirtualnych, które pasują do atrybutów i ilości rezerwacji. Rezerwacja obejmuje koszty obliczeniowe maszyn wirtualnych.
+Po zakupie wystąpienia zarezerwowanego maszyny wirtualnej platformy Azure rabat na rezerwację jest automatycznie stosowany do maszyn wirtualnych pasujących do atrybutów i ilości rezerwacji. Rezerwacja obejmuje koszty zasobów obliczeniowych maszyn wirtualnych.
 
-Rabat związany z rezerwacją dotyczy podstawowych maszyn wirtualnych zakupionych w portalu Azure Marketplace.
+Rabat na rezerwację dotyczy podstawowych maszyn wirtualnych zakupionych w witrynie Azure Marketplace.
 
-Aby uzyskać SQL Database zarezerwowaną pojemność, zobacz [Opis rabatu zarezerwowanych na platformie Azure](billing-understand-reservation-charges.md).
+Aby uzyskać informacje o wydajności rezerwowej usługi SQL Database, zobacz [Objaśnienie rabatu na wystąpienia zarezerwowane platformy Azure](billing-understand-reservation-charges.md).
 
-W poniższej tabeli przedstawiono koszty związane z maszyną wirtualną po zakupie wystąpienia zarezerwowanych maszyn wirtualnych. We wszystkich przypadkach opłata jest naliczana za magazyn i sieć według normalnych stawek.
+W poniższej tabeli przedstawiono koszty używania maszyny wirtualnej po zakupie wystąpienia zarezerwowanego maszyny wirtualnej. We wszystkich przypadkach opłaty za magazyn i sieć są naliczane według normalnych stawek.
 
-| Typ maszyny wirtualnej  | Naliczanie opłat za pomocą wystąpienia zastrzeżonej maszyny wirtualnej |
+| Typ maszyny wirtualnej  | Opłaty z wystąpieniem zarezerwowanym maszyny wirtualnej |
 |-----------------------|--------------------------------------------|
-|Maszyny wirtualne z systemem Linux bez dodatkowego oprogramowania | Rezerwacja obejmuje koszty związane z infrastrukturą maszyn wirtualnych.|
+|Maszyny wirtualne z systemem Linux bez dodatkowego oprogramowania | Rezerwacja obejmuje koszty infrastruktury maszyn wirtualnych.|
 |Maszyny wirtualne z systemem Linux z opłatami za oprogramowanie (na przykład Red Hat) | Rezerwacja obejmuje koszty związane z infrastrukturą. Opłata jest naliczana za dodatkowe oprogramowanie.|
 |Maszyny wirtualne z systemem Windows bez dodatkowego oprogramowania |Rezerwacja obejmuje koszty związane z infrastrukturą. Opłata jest naliczana za oprogramowanie systemu Windows.|
-|Maszyny wirtualne z systemem Windows z dodatkowym oprogramowaniem (na przykład SQL Server) | Rezerwacja obejmuje koszty związane z infrastrukturą. Opłata jest naliczana za oprogramowanie systemu Windows i dodatkowe oprogramowanie.|
-|Maszyny wirtualne z systemem Windows z [korzyść użycia hybrydowego platformy Azure](../virtual-machines/windows/hybrid-use-benefit-licensing.md) | Rezerwacja obejmuje koszty związane z infrastrukturą. Koszty oprogramowania systemu Windows są objęte Korzyść użycia hybrydowego platformy Azure. Każde dodatkowe oprogramowanie jest obciążane osobno.|
+|Maszyny wirtualne z systemem Windows z dodatkowym oprogramowaniem (na przykład programem SQL Server) | Rezerwacja obejmuje koszty związane z infrastrukturą. Opłata jest naliczana za oprogramowanie systemu Windows i dodatkowe oprogramowanie.|
+|Maszyny wirtualne z systemem Windows z [korzyścią użycia hybrydowego platformy Azure](../virtual-machines/windows/hybrid-use-benefit-licensing.md) | Rezerwacja obejmuje koszty związane z infrastrukturą. Koszty używania oprogramowania systemu Windows są zawarte w korzyści użycia hybrydowego platformy Azure. Za używanie dodatkowego oprogramowania są naliczane oddzielne opłaty.|
 
-## <a name="how-reservation-discount-is-applied"></a>Jak jest naliczany rabat rezerwacji
+## <a name="how-reservation-discount-is-applied"></a>Jak jest naliczany rabat za rezerwację
 
-Rabat rezerwacji to "*Użyj go lub*". Jeśli więc nie masz pasujących zasobów przez żadną godzinę, utracisz ilość rezerwacji dla tej godziny. Nie można przenieść nieużywanych godzin zarezerwowanych do przodu.
+Rabat na rezerwację jest dostępny na zasadzie „*wykorzystaj lub strać*”. Zatem jeśli w ciągu jakiejś godziny nie będziesz mieć pasujących zasobów, utracisz ilość rezerwacji dla tej godziny. Niewykorzystanych godzin zarezerwowanych nie można przenieść na później.
 
-Po wyłączeniu zasobu rabat rezerwacji automatycznie stosuje się do innego pasującego zasobu w określonym zakresie. Jeśli w określonym zakresie nie znaleziono pasujących zasobów, zarezerwowanych godzin zostaną *utracone*.
+Po wyłączeniu zasobu rabat za rezerwację automatycznie stosuje się do innego pasującego zasobu w określonym zakresie. Jeśli w określonym zakresie nie uda się znaleźć pasujących zasobów, zarezerwowane godziny zostaną *utracone*.
 
-## <a name="reservation-discount-for-non-windows-vms"></a>Rabat rezerwacji dla maszyn wirtualnych z systemem innym niż Windows
+## <a name="reservation-discount-for-non-windows-vms"></a>Rabat na rezerwację dla maszyn wirtualnych z systemem innym niż Windows
 
- Rabat w ramach rezerwacji platformy Azure jest stosowany do uruchamiania wystąpień maszyn wirtualnych co godzinę. Zakupione rezerwacje są dopasowywane do użycia emitowanego przez uruchomione maszyny wirtualne w celu zastosowania rabatu rezerwacji. W przypadku maszyn wirtualnych, które mogą nie działać w pełnej godzinie, rezerwacja zostanie wypełniona z innych maszyn wirtualnych, które nie używają rezerwacji, w tym współbieżnie uruchomionych maszyn wirtualnych. Na koniec godziny aplikacja rezerwacji dla maszyn wirtualnych w godzinie jest zablokowana. W przypadku, gdy maszyna wirtualna nie jest uruchamiana dla godzin lub współbieżnych maszyn wirtualnych w ciągu godziny, nie wypełniaj godziny rezerwacji, rezerwacja jest bezterminowo wykorzystywana przez daną godzinę. Poniższy wykres ilustruje zastosowanie rezerwacji do rozliczanego użycia maszyn wirtualnych. Ilustracja jest oparta na jednym zakupie rezerwacji i dwóch zgodnych wystąpieniach maszyn wirtualnych.
+ Rabat na rezerwację platformy Azure jest stosowany do uruchomionych wystąpień maszyn wirtualnych co godzinę. Stosowanie rabatu na rezerwację polega na dopasowywaniu zakupionych rezerwacji do użycia emitowanego przez uruchomione maszyny wirtualne. W przypadku maszyn wirtualnych, które nie działają przez pełną godzinę, rezerwacja jest wypełniana innymi maszynami, również tymi, które są uruchomione równocześnie. Po upływie godziny stosowanie rezerwacji dla maszyn wirtualnych z tej godziny jest blokowane. Jeśli maszyna wirtualna nie pozostaje uruchomiona przez godzinę lub równocześnie uruchomione maszyny wirtualne nie wypełniają godziny rezerwacji, rezerwacja nie jest w pełni wykorzystywana. Poniższa ilustracja przedstawia zastosowanie rezerwacji do płatnego użycia maszyn wirtualnych. Ilustracja jest oparta na jednym zakupie rezerwacji i dwóch zgodnych wystąpieniach maszyn wirtualnych.
 
-![Zrzut ekranu dotyczący jednej zastosowanej rezerwacji i dwóch zgodnych wystąpień maszyn wirtualnych](./media/billing-reserved-vm-instance-application/billing-reserved-vm-instance-application.png)
+![Zrzut ekranu przedstawiający jedną zastosowaną rezerwację i dwa zgodne wystąpienia maszyn wirtualnych](./media/billing-reserved-vm-instance-application/billing-reserved-vm-instance-application.png)
 
-1. Każde użycie powyżej wiersza rezerwacji będzie obciążane opłatami według zwykłych stawek płatność zgodnie z rzeczywistym użyciem. Nie jest naliczana opłata za żadne użycie poniżej wiersza rezerwacji, ponieważ została już zapłacona jako część zakupu rezerwacji.
-2. W godzinie 1 działa wystąpienie 1 przez 0,75 godzin i wystąpienie 2 działa przez 0,5 godzin. Całkowite użycie dla godziny 1 to 1,25 godzin. Opłaty są naliczone według stawek płatność zgodnie z rzeczywistym użyciem przez pozostałe 0,25 godzin.
-3. W przypadku godzin 2 i 3, oba wystąpienia były uruchamiane przez 1 godzinę każdego. Jedno wystąpienie jest objęte rezerwacją, a druga opłata jest naliczana według stawek płatność zgodnie z rzeczywistym użyciem.
-4. Za godzinę 4, wystąpienie 1 jest uruchamiane przez 0,5 godzin i wystąpienie 2 jest uruchamiane przez 1 godzinę. Wystąpienie 1 jest w pełni objęte rezerwacji i podano 0,5 godzin wystąpienia 2. Opłata jest naliczana według stawki płatność zgodnie z rzeczywistym użyciem przez pozostałe 0,5 godzin.
+1. Każde użycie przekraczające limit rezerwacji jest obciążane opłatami według zwykłych stawek płatności zgodnie z rzeczywistym użyciem. Za użycie poniżej limitu rezerwacji opłaty nie są naliczane — zostało ono opłacone w ramach zakupu rezerwacji.
+2. W godzinie 1 wystąpienie 1 działa przez 0,75 godz., a wystąpienie 2 działa przez 0,5 godz. Łączne użycie w godzinie 1 to 1,25 godz. Za pozostałe 0,25 godz. opłaty są naliczane według stawek płatności zgodnie z rzeczywistym użyciem.
+3. W godzinie 2 i godzinie 3 oba wystąpienia były uruchomione przez 1 godzinę. Jedno wystąpienie jest objęte rezerwacją, a drugie jest obciążane opłatami według stawek płatności zgodnie z rzeczywistym użyciem.
+4. W godzinie 4 wystąpienie 1 działa przez 0,5 godz., a wystąpienie 2 działa przez 1 godz. Wystąpienie 1 jest w pełni objęte rezerwacją. W wystąpieniu 2 rezerwacją jest objęte 0,5 godz. Za pozostałe 0,5 godz. opłaty są naliczane według stawek płatności zgodnie z rzeczywistym użyciem.
 
-Aby zrozumieć i wyświetlić aplikację Azure Reservations w raportach dotyczących użycia rozliczeń, zobacz [Opis użycia zastrzeżenia](billing-understand-reserved-instance-usage-ea.md).
+Aby poznać zastosowanie swoich rezerwacji platformy Azure w raportach rozliczeń użycia i przejrzeć je, zobacz [Omówienie użycia rezerwacji](billing-understand-reserved-instance-usage-ea.md).
 
-## <a name="reservation-discount-for-windows-vms"></a>Rabat rezerwacji dla maszyn wirtualnych z systemem Windows
+## <a name="reservation-discount-for-windows-vms"></a>Rabat na rezerwację dla maszyn wirtualnych z systemem Windows
 
-W przypadku uruchamiania wystąpień maszyn wirtualnych z systemem Windows rezerwacja jest stosowana w celu pokrycia kosztów infrastruktury. Zastosowanie rezerwacji do kosztów infrastruktury maszyny wirtualnej dla maszyn wirtualnych z systemem Windows jest takie samo jak w przypadku maszyn wirtualnych z systemem innym niż Windows. Opłata jest naliczana osobno dla oprogramowania systemu Windows na podstawie vCPU. Zobacz [koszty oprogramowania systemu Windows z rezerwacjami](billing-reserved-Instance-windows-software-costs.md). Koszt licencjonowania systemu Windows można obsłużyć [korzyść użycia hybrydowego platformy Azure dla systemu Windows Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
+W przypadku uruchamiania wystąpień maszyn wirtualnych z systemem Windows rezerwacja jest stosowana w celu pokrycia kosztów infrastruktury. Stosowanie rezerwacji do kosztów infrastruktury maszyn wirtualnych z systemem Windows wygląda tak samo jak w przypadku maszyn wirtualnych z systemem innym niż Windows. Za używanie oprogramowania systemu Windows jest naliczana oddzielna opłata, która zależy od liczby procesorów wirtualnych. Zobacz [Koszty oprogramowania systemu Windows z usługą Reservations](billing-reserved-Instance-windows-software-costs.md). Koszty licencjonowania systemu Windows można objąć [korzyścią użycia hybrydowego platformy Azure dla systemu Windows Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
 
-## <a name="discount-can-apply-to-different-sizes"></a>Rabat może dotyczyć różnych rozmiarów
+## <a name="discount-can-apply-to-different-sizes"></a>Rabat może być stosowany do różnych rozmiarów
 
-W przypadku zakupu wystąpienia zarezerwowanego maszyny wirtualnej w przypadku wybrania opcji **Optymalizacja** **rozmiaru wystąpienia**, pokrycie rabatu zależy od wybranego rozmiaru maszyny wirtualnej. Rezerwacja może dotyczyć rozmiarów maszyn wirtualnych w tej samej grupie serii rozmiarów. Aby uzyskać więcej informacji, zobacz [elastyczność rozmiaru maszyny wirtualnej z wystąpieniami zarezerwowanych maszyn wirtualnych](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
+Po zakupieniu wystąpienia zarezerwowanego maszyny wirtualnej i wybraniu opcji **Zoptymalizowane pod kątem**: **elastyczność rozmiaru wystąpienia** zastosowanie rabatu zależy od wybranego rozmiaru maszyny wirtualnej. Rezerwacja może dotyczyć rozmiarów maszyn wirtualnych w tej samej grupie serii rozmiarów. Aby uzyskać więcej informacji, zobacz artykuł [Elastyczność rozmiaru maszyny wirtualnej z zarezerwowanymi wystąpieniami maszyn wirtualnych](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
 
-## <a name="discount-applies-to-matching-servicetype-only"></a>Rabat dotyczy tylko pasujących ServiceType
+## <a name="discount-applies-to-matching-servicetype-only"></a>Rabat jest stosowany tylko w przypadku pasującej wartości ServiceType
 
-Rabat związany z rezerwacją dotyczy tylko użycia maszyny wirtualnej, `ServiceType` gdzie wartość `AdditionalInfo` w jest równa zakupionej rezerwacji. Aplikacja rabatu rezerwacji ignoruje licznik używany dla maszyn wirtualnych i tylko `ServiceType`oblicza. Informacje o typie usług, dla których zakupiono maszynę wirtualną. Możesz wymienić rezerwację maszyny wirtualnej magazynu innej niż Premium dla rezerwacji magazynu w warstwie Premium lub odwrotnie.
+Rabat na rezerwację dotyczy tylko użycia maszyny wirtualnej, w którym wartość `ServiceType` w obszarze `AdditionalInfo` odpowiada zakupionej rezerwacji. Przy stosowaniu rabatu na rezerwację miernik używany dla maszyn wirtualnych jest ignorowany i uwzględniana jest tylko wartość `ServiceType`. Należy zwrócić uwagę na typ usługi, dla którego zakupiono maszynę wirtualną. Rezerwację maszyny wirtualnej w warstwie magazynu innej niż Premium można wymienić na rezerwację w warstwie Premium (lub odwrotnie).
 
-## <a name="services-that-get-vm-reservation-discounts"></a>Usługi pobierające rabaty rezerwacji maszyn wirtualnych
+## <a name="services-that-get-vm-reservation-discounts"></a>Usługi, dla których są stosowane rabaty na rezerwacje maszyn wirtualnych
 
-Rezerwacje maszyn wirtualnych mogą dotyczyć użycia maszyn wirtualnych emitowanych z wielu usług — nie tylko dla wdrożeń maszyn wirtualnych. Zasoby pobierające rabaty rezerwacji zmieniają się w zależności od ustawienia elastyczności rozmiaru wystąpienia.
+Rezerwacje maszyn wirtualnych mogą dotyczyć użycia maszyn wirtualnych emitowanego przez różne usługi — nie tylko w przypadku wdrożeń maszyn wirtualnych. Zasoby, dla których są stosowane rabaty na rezerwację, zmieniają się w zależności od ustawienia elastyczności rozmiaru wystąpienia.
 
 ### <a name="instance-size-flexibility-setting"></a>Ustawienie elastyczności rozmiaru wystąpienia
 
-Ustawienie elastyczność rozmiaru wystąpienia określa, które usługi pobierają rabaty wystąpień zarezerwowanych.
+Ustawienie elastyczności rozmiaru wystąpienia określa, dla których usług są stosowane rabaty na wystąpienia zarezerwowane.
 
-Niezależnie od tego, czy to ustawienie jest włączone, czy wyłączone, rabaty rezerwacji są `Microsoft.Compute`automatycznie stosowane do wszystkich pasujących użycia maszyn wirtualnych, gdy *ConsumedService* . Sprawdź dane użycia dla wartości *ConsumedService* . Oto niektóre przykłady:
+Niezależnie od tego, czy to ustawienie jest włączone czy wyłączone, rabaty na rezerwację są automatycznie stosowane do każdego pasującego użycia maszyn wirtualnych, dla którego wartość *ConsumedService* to `Microsoft.Compute`. Należy zatem sprawdzić dane użycia dla wartości *ConsumedService*. Oto niektóre przykłady:
 
 - Maszyny wirtualne
 - Zestawy skalowania maszyn wirtualnych
 - Usługa kontenera
-- Wdrożenia Azure Batch (w trybie subskrypcji użytkownika)
+- Wdrożenia usługi Azure Batch (w trybie subskrypcji użytkownika)
 - Azure Kubernetes Service (AKS)
 - Service Fabric
 
-Gdy to ustawienie jest włączone, rabaty rezerwacji automatycznie stosują się do dopasowywania użycia maszyn wirtualnych, gdy *ConsumedService* jest dowolnym z następujących elementów:
+Jeśli to ustawienie jest włączone, rabaty na rezerwację są automatycznie stosowane do pasującego użycia maszyn wirtualnych, które ma dowolną z następujących wartości *ConsumedService*:
 
 - Microsoft.Compute
 - Microsoft.ClassicCompute
@@ -91,24 +91,24 @@ Gdy to ustawienie jest włączone, rabaty rezerwacji automatycznie stosują się
 - Microsoft.MachineLearningServices
 - Microsoft.Kusto
 
-Sprawdź wartość *ConsumedService* w danych użycia, aby określić, czy użycie kwalifikuje się do rabatu rezerwacji.
+Sprawdź wartość *ConsumedService* w danych użycia, aby ustalić, czy użycie kwalifikuje się do zastosowania rabatów na rezerwację.
 
-Aby uzyskać więcej informacji o elastyczności rozmiaru wystąpienia, zobacz [elastyczność rozmiaru maszyny wirtualnej z wystąpieniami zarezerwowanymi maszyn wirtualnych](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
+Aby uzyskać więcej informacji o elastyczności rozmiaru wystąpienia, zobacz artykuł [Elastyczność rozmiaru maszyny wirtualnej z zarezerwowanymi wystąpieniami maszyn wirtualnych](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
 
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami
 
-Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie pomocy technicznej](https://go.microsoft.com/fwlink/?linkid=2083458).
+Jeśli masz pytania lub potrzebujesz pomocy, [utwórz wniosek o pomoc techniczną](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat Azure Reservations, zobacz następujące artykuły:
+Aby dowiedzieć się więcej na temat rezerwacji platformy Azure, zobacz następujące artykuły:
 
-- [Co to są rezerwacje dla systemu Azure?](billing-save-compute-costs-reservations.md)
+- [Co to są rezerwacje platformy Azure?](billing-save-compute-costs-reservations.md)
 - [Prepay for Virtual Machines with Azure Reserved VM Instances (Opłacanie maszyn wirtualnych z góry przy użyciu usługi Azure Reserved VM Instances)](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Prepay for SQL Database compute resources with Azure SQL Database reserved capacity (Opłacanie zasobów obliczeniowych usługi SQL Database z góry przy użyciu zarezerwowanej pojemności usługi Azure SQL Database)](../sql-database/sql-database-reserved-capacity.md)
-- [Zarządzanie rezerwacjami dla platformy Azure](billing-manage-reserved-vm-instance.md)
-- [Informacje na temat użycia rezerwacji dla subskrypcji z opcją płatność zgodnie z rzeczywistym użyciem](billing-understand-reserved-instance-usage.md)
-- [Informacje na temat użycia rezerwacji na potrzeby rejestracji w przedsiębiorstwie](billing-understand-reserved-instance-usage-ea.md)
-- [Informacje o użyciu rezerwacji dla subskrypcji CSP](/partner-center/azure-reservations)
-- [Koszty oprogramowania systemu Windows, które nie są objęte rezerwacjami](billing-reserved-instance-windows-software-costs.md)
+- [Zarządzanie rezerwacjami platformy Azure](billing-manage-reserved-vm-instance.md)
+- [Understand reservation usage for your Pay-As-You-Go subscription (Informacje na temat użycia wystąpień zarezerwowanych w przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem)](billing-understand-reserved-instance-usage.md)
+- [Understand reservation usage for your Enterprise enrollment (Informacje na temat użycia wystąpień zarezerwowanych w przypadku rejestracji Enterprise)](billing-understand-reserved-instance-usage-ea.md)
+- [Understand reservation usage for CSP subscriptions (Informacje na temat użycia wystąpień zarezerwowanych w przypadku rejestracji CSP)](/partner-center/azure-reservations)
+- [Koszty oprogramowania systemu Windows nieuwzględniane w przypadku wystąpień zarezerwowanych](billing-reserved-instance-windows-software-costs.md)

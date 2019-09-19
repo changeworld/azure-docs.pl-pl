@@ -1,6 +1,6 @@
 ---
-title: Informacje o rachunku Azure enterprise
-description: Dowiedz się, jak czytać i zrozumieć użycia i rachunek dla umów Enterprise Agreement platformy Azure.
+title: Omówienie rachunku za usługę Azure Enterprise
+description: Dowiedz się, jak czytać i rozumieć dane użycia oraz rachunek za umowę Enterprise platformy Azure.
 author: adpick
 manager: dougeby
 tags: billing
@@ -12,124 +12,124 @@ ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: 02ddaf4878367524291ce54a4e12fc9b4fee4cd2
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67490281"
 ---
-# <a name="understand-your-azure-enterprise-agreement-bill"></a>Opis zawartości rachunku Enterprise Agreement platformy Azure
+# <a name="understand-your-azure-enterprise-agreement-bill"></a>Omówienie rachunku za umowę Enterprise platformy Azure
 
-Klienci platformy Azure z umową Enterprise Agreement otrzymywanie faktury przekraczają środków w organizacji lub korzystania z usług, które nie są objęte środków.
+Klienci mający umowę Enterprise platformy Azure otrzymują fakturę w przypadku przekroczenia dostępnych środków w organizacji lub korzystania z usług, które nie są pokrywane z tych środków.
 
-Środki do Twojej organizacji obejmuje zobowiązania pieniężnego. Zobowiązanie pieniężne to Twoja organizacja płatną z góry za użycie usług platformy Azure. Kontaktując się z kierownikiem firmy Microsoft lub odsprzedawcy, można dodać środków zobowiązania pieniężnego do umowy Enterprise Agreement.  
+Środki dostępne w organizacji obejmują jej zobowiązanie pieniężne. Zobowiązanie pieniężne to kwota zapłacona z góry przez organizację na poczet korzystania z usług platformy Azure. Można dodać środki ze zobowiązania pieniężnego do umowy Enterprise, kontaktując się z kierownikiem ds. klientów w firmie Microsoft lub odsprzedawcą.  
 
 ## <a name="invoices-for-most-customers"></a>Faktury dla większości klientów
 
-W tej sekcji nie ma zastosowania do klientów platformy Azure w Australii, Japonia, część lub Singapurze. Jeśli jesteś w jednej z tych krajów/regionów, zobacz [faktur pozostali klienci powinni](#invoices-for-other-customers).
+Ta sekcja nie dotyczy klientów platformy Azure w Australii, Japonii i Singapurze. Jeśli znajdujesz się w jednym z tych krajów/regionów, zobacz [Faktury dla pozostałych klientów](#invoices-for-other-customers).
 
-Faktury platformy Azure jest wyświetlany, gdy wystąpi jedno z następujących cyklu rozliczeniowego:
+Otrzymasz fakturę za korzystanie z platformy Azure, jeśli w okresie rozliczeniowym nastąpi jedno z poniższych zdarzeń:
 
-- **Nadwyżka usługi**: Opłaty za użycie Twoja organizacja może przekroczyć Saldo środków.
-- **Opłaty są naliczane oddzielnie**: Usługi organizacji używane nie są objęte środków. Niezależnie od tego, Saldo środków, są fakturowane dla następujących usług:
+- **Nadwyżkowe użycie usług**: Opłaty za użycie w organizacji przekraczają saldo dostępnych środków.
+- **Opłaty rozliczane oddzielnie**: Niektóre usługi używane przez organizację nie są pokrywane z dostępnych środków. Niezależnie od salda środków otrzymasz faktury za następujące usługi:
     - Canonical
     - Citrix XenApp Essentials
     - Citrix XenDesktop
-    - Zarejestrowany użytkownik
+    - Registered User
     - Openlogic
-    - Dostęp zdalny praw usługa XenApp Essentials zarejestrowany użytkownik
+    - Remote Access Rights XenApp Essentials Registered User
     - Ubuntu Advantage
-    - Visual Studio Enterprise (co miesiąc)
-    - Visual Studio Enterprise (roczna)
-    - Visual Studio Professional (miesięcznie)
-    - Visual Studio Professional (roczna)
-- **Opłatach w portalu Marketplace**: Zakupy w portalu Marketplace i obciążenie Azure nie są objęte środków Twojej organizacji. Są więc zafakturowane dla opłatach w portalu Marketplace, niezależnie od tego, Saldo środków. W witrynie Enterprise Portal administratora przedsiębiorstwa można włączać i wyłączać zakupów w portalu Marketplace.
+    - Visual Studio Enterprise (miesięczny)
+    - Visual Studio Enterprise (roczny)
+    - Visual Studio Professional (miesięczny)
+    - Visual Studio Professional (roczny)
+- **Opłaty z platformy Marketplace**: Zakup i korzystanie z usług z platformy Azure Marketplace nie są pokrywane ze środków organizacji. Dlatego niezależnie od salda środków otrzymasz faktury za opłaty z platformy Marketplace. W witrynie Enterprise Portal administrator przedsiębiorstwa może włączać i wyłączać zakupy na platformie Marketplace.
 
-## <a name="review-charges-for-most-customers"></a>Przejrzyj opłaty dla większości klientów
-W tej sekcji nie ma zastosowania do klientów platformy Azure w Australii, Japonia, część lub Singapurze. Jeśli jesteś w jednej z tych krajów, zobacz [Przejrzyj opłaty pozostali klienci powinni](#review-charges-for-other-customers).
+## <a name="review-charges-for-most-customers"></a>Przeglądanie opłat dla większości klientów
+Ta sekcja nie dotyczy klientów platformy Azure w Australii, Japonii i Singapurze. Jeśli znajdujesz się w jednym z tych krajów/regionów, zobacz [Przeglądanie opłat dla pozostałych klientów](#review-charges-for-other-customers).
 
-Aby przejrzeć i sprawdzić opłat na fakturze, musi być administratorem przedsiębiorstwa. Aby uzyskać więcej informacji, zobacz [Enterprise Agreement platformy Azure zrozumienie ról administracyjnych na platformie Azure](billing-understand-ea-roles.md). Jeśli nie wiesz, będącego przez administratora przedsiębiorstwa dla całej organizacji, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Aby przejrzeć i zweryfikować opłaty uwzględnione na fakturze, musisz być administratorem przedsiębiorstwa. Aby uzyskać więcej informacji, zobacz [Omówienie ról administracyjnych dla umowy Azure Enterprise Agreement na platformie Azure](billing-understand-ea-roles.md). Jeśli nie wiesz, kto jest administratorem przedsiębiorstwa w Twojej organizacji, [skontaktuj się z zespołem pomocy technicznej](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-Twoja faktura pokazuje wszystkie użycia platformy Azure, następuje opłatach w portalu Marketplace. Jeśli saldo środków, zostanie zastosowany do użycia platformy Azure.
+Na fakturze wykazane jest całe użycie platformy Azure, a następnie wszelkie opłaty z platformy Marketplace. Jeśli masz dostępne saldo środków, zostanie ono wykorzystane do pokrycia opłat za użycie platformy Azure.
 
-Porównaj połączone łączna kwota wyświetlane w portalu dla przedsiębiorstw w **raporty** > **Podsumowanie użycia** przy użyciu faktury platformy Azure. Kwoty w **Podsumowanie użycia** nie zawierają podatku.
+Możesz porównać łączną kwotę widoczną w obszarze **Raporty** > **Podsumowanie użycia** w witrynie Enterprise Portal z kwotą na fakturze za platformę Azure. Kwoty w raporcie **Podsumowanie użycia** nie zawierają podatku.
 
-1. Zaloguj się do [witryny Enterprise portal](https://ea.azure.com).
-1. Wybierz **raporty**.
-1. W prawym górnym rogu karty, Przełącz widok z **M** do **C** i sprostania szczytowemu okres na fakturze.  
-    ![Zrzut ekranu pokazujący M + opcji C w podsumowaniu użycia.](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)
-1. Łączna ilość **całkowite użycie** i **portalu Azure Marketplace** powinny odpowiadać **łącznej kwoty rozszerzone** na fakturze.
-1. Aby uzyskać więcej szczegółów na temat opłat, przejdź do **Pobierz dane użycia**.  
-    ![Zrzut ekranu przedstawiający kartę Pobierz dane użycia](./media/billing-understand-your-bill-ea/ea-portal-download-usage.png)
+1. Zaloguj się w witrynie [Enterprise Portal](https://ea.azure.com).
+1. Wybierz pozycję **Raporty**.
+1. W prawym górnym rogu karty przełącz widok z **M** na **C** i dopasuj okres na fakturze.  
+    ![Zrzut ekranu przedstawiający opcje M i C w raporcie Podsumowanie użycia.](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)
+1. Suma kwot **Łączne użycie** i **Azure Marketplace** powinna odpowiadać **łącznej wartości** na fakturze.
+1. Aby uzyskać więcej informacji na temat opłat, wybierz pozycję **Pobierz zestawienie użycia**.  
+    ![Zrzut ekranu przedstawiający kartę Pobierz zestawienie użycia](./media/billing-understand-your-bill-ea/ea-portal-download-usage.png)
 
-## <a name="invoices-for-other-customers"></a>Faktury dla innych klientów
+## <a name="invoices-for-other-customers"></a>Faktury dla pozostałych klientów
 
-Ta sekcja dotyczy tylko klientów platformy Azure w Australii, Japonia, część lub Singapur.
+Ta sekcja dotyczy tylko klientów platformy Azure w Australii, Japonii lub Singapurze.
 
-Pojawi się jeden lub więcej faktury platformy Azure w następujących przypadkach:
+Otrzymasz co najmniej jedną fakturę za korzystanie z platformy Azure, jeśli nastąpi jedno z poniższych zdarzeń:
 
-- **Nadwyżka usługi**: Opłaty za użycie Twoja organizacja może przekroczyć Saldo środków.
-- **Opłaty są naliczane oddzielnie**: Usługi organizacji używane nie są objęte środków. Niezależnie od tego, Saldo środków, są fakturowane dla następujących usług:
+- **Nadwyżkowe użycie usług**: Opłaty za użycie w organizacji przekraczają saldo dostępnych środków.
+- **Opłaty rozliczane oddzielnie**: Niektóre usługi używane przez organizację nie są pokrywane z dostępnych środków. Niezależnie od salda środków otrzymasz faktury za następujące usługi:
     - Canonical
     - Citrix XenApp Essentials
     - Citrix XenDesktop
-    - Zarejestrowany użytkownik
+    - Registered User
     - Openlogic
-    - Dostęp zdalny praw usługa XenApp Essentials zarejestrowany użytkownik
+    - Remote Access Rights XenApp Essentials Registered User
     - Ubuntu Advantage
-    - Visual Studio Enterprise (co miesiąc)
-    - Visual Studio Enterprise (roczna)
-    - Visual Studio Professional (miesięcznie)
-    - Visual Studio Professional (roczna)
-- **Opłatach w portalu Marketplace**: Azure zakupów w portalu Marketplace i użycia nie są objęte środków Twojej organizacji i są rozliczane osobno. W witrynie Enterprise Portal administratora przedsiębiorstwa można włączać i wyłączać zakupów w portalu Marketplace.
+    - Visual Studio Enterprise (miesięczny)
+    - Visual Studio Enterprise (roczny)
+    - Visual Studio Professional (miesięczny)
+    - Visual Studio Professional (roczny)
+- **Opłaty z platformy Marketplace**: Zakup i korzystanie z usług z platformy Azure Marketplace nie są pokrywane ze środków organizacji i są fakturowane osobno. W witrynie Enterprise Portal administrator przedsiębiorstwa może włączać i wyłączać zakupy na platformie Marketplace.
 
-Jeśli masz opłat należnych za dodatkowe transakcje usługi i opłaty, które są rozliczane osobno w trakcie okresu rozliczeniowego, otrzymasz jedną fakturę. Zawiera opłaty za oba typy. Opłaty za pośrednictwem platform handlowych zawsze są fakturowane oddzielnie.
+Jeśli w okresie rozliczeniowym zostaną naliczone opłaty za nadwyżkowe użycie usług oraz opłaty rozliczane oddzielnie, otrzymasz jedną fakturę. Będzie ona zawierać oba typy opłat. Opłaty z platformy Marketplace są zawsze fakturowane osobno.
 
-## <a name="review-charges-for-other-customers"></a>Przejrzyj opłaty dla innych klientów
+## <a name="review-charges-for-other-customers"></a>Przeglądanie opłat dla pozostałych klientów
 
-Ta sekcja dotyczy tylko, jeśli znajdują się w Australii, Japonia, część lub Singapur.
+Ta sekcja ma zastosowanie tylko w przypadku klientów w Australii, Japonii lub Singapurze.
 
-Aby przejrzeć i sprawdzić opłat na fakturze, musi być administratorem przedsiębiorstwa. Aby uzyskać więcej informacji, zobacz [Enterprise Agreement platformy Azure zrozumienie ról administracyjnych na platformie Azure](billing-understand-ea-roles.md). Jeśli nie wiesz, będącego przez administratora przedsiębiorstwa dla całej organizacji, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Aby przejrzeć i zweryfikować opłaty uwzględnione na fakturze, musisz być administratorem przedsiębiorstwa. Aby uzyskać więcej informacji, zobacz [Omówienie ról administracyjnych dla umowy Azure Enterprise Agreement na platformie Azure](billing-understand-ea-roles.md). Jeśli nie wiesz, kto jest administratorem przedsiębiorstwa w Twojej organizacji, [skontaktuj się z zespołem pomocy technicznej](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-### <a name="review-service-overage-invoice"></a>Przegląd usługi nadwyżkowe faktury
+### <a name="review-service-overage-invoice"></a>Przeglądanie faktury za nadwyżkowe użycie usług
 
-Porównaj z kwoty całkowite użycie w witrynie Enterprise portal w **raporty** > **Podsumowanie użycia** za pomocą usługi fakturze za użycie nadmiarowe. Faktury za użycie nadmiarowe usługi obejmuje użycie przekraczające środki Twojej organizacji i/lub usług, które nie są objęte środków. Kwoty **Podsumowanie użycia** nie zawierają podatku.
+Możesz porównać łączną kwotę za użycie widoczną w obszarze **Raporty** > **Podsumowanie użycia** w witrynie Enterprise Portal z kwotą na fakturze za użycie nadwyżkowe. Faktura za użycie nadwyżkowe uwzględnia opłaty za użycie przekraczające dostępne środki organizacji oraz za użycie usług, które nie są pokrywane z dostępnych środków. Kwoty w raporcie **Podsumowanie użycia** nie zawierają podatku.
 
-1. Zaloguj się do [witryny Enterprise portal](https://ea.azure.com).
-1. Wybierz **raporty**.
-1. W prawym górnym rogu karty, Przełącz widok z **M** do **C** i sprostania szczytowemu okres na fakturze.  
-    ![Zrzut ekranu pokazujący M + opcji C w podsumowaniu użycia.](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)
-1. **Całkowite użycie** wielkość powinna odpowiadać **łącznej kwoty rozszerzone** na fakturze za użycie nadmiarowe usługi.  
-1. Aby uzyskać więcej informacji na temat opłat, przejdź do **Pobierz dane użycia** > **pobieranie raportu zaawansowanego**. Raport nie obejmuje podatków lub opłat za rezerwacji lub opłatach w portalu marketplace.  
-      ![Pobierz zrzut ekranu przedstawiający raport Zaawansowane na karcie użycie pobierania.](./media/billing-understand-your-bill-ea/ea-portal-download-usage-advanced.png)
+1. Zaloguj się w witrynie [Enterprise Portal](https://ea.azure.com).
+1. Wybierz pozycję **Raporty**.
+1. W prawym górnym rogu karty przełącz widok z **M** na **C** i dopasuj okres na fakturze.  
+    ![Zrzut ekranu przedstawiający opcje M i C w raporcie Podsumowanie użycia.](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)
+1. Kwota **Łączne użycie** powinna odpowiadać **łącznej wartości** na fakturze za nadwyżkowe użycie usług.  
+1. Aby uzyskać więcej informacji o opłatach, przejdź do pozycji **Pobierz zestawienie użycia** > **Pobierz raport zaawansowany**. Ten raport nie obejmuje podatków, opłat za rezerwacje ani opłat z platformy Marketplace.  
+      ![Zrzut ekranu przedstawiający pozycję Pobierz raport zaawansowany na karcie Pobierz zestawienie użycia.](./media/billing-understand-your-bill-ea/ea-portal-download-usage-advanced.png)
 
-W poniższej tabeli wymieniono warunki i opisy umieszczone na fakturze i na **Podsumowanie użycia** w witrynie Enterprise portal:
+W poniższej tabeli przedstawiono i wyjaśniono terminy używane na fakturze oraz w raporcie **Podsumowanie użycia** w witrynie Enterprise Portal:
 
-|Termin faktury|Termin Podsumowanie użycia|Opis|
+|Termin na fakturze|Termin w raporcie Podsumowanie użycia|Opis|
 |---|---|---|
-|Łączna liczba rozszerzonych kwota|Łączne użycie|Łączne użycie przed opodatkowaniem opłata za okres przed zastosowaniem środków.|
-|Zobowiązań|Zobowiązań|Środki, zastosowane w tym określonym okresie.|
-|Łączna sprzedaż|Łączna nadwyżka|Opłaty całkowite użycie przekraczające kwotę środków. Ta kwota nie zawierają podatku.|
-|Kwota podatku|Nie dotyczy|Podatku, która dotyczy kwota łączna sprzedaż dla określonego okresu.|
-|Łączna kwota|Nie dotyczy|Kwota należności faktur, po zastosowaniu kredytu i podatek zostanie dodany.|
+|Łączna wartość|Łączne użycie|Łączna opłata za użycie w danym okresie przed zastosowaniem środków, bez uwzględnienia podatku.|
+|Użycie zobowiązania|Użycie zobowiązania|Środki zastosowane w danym okresie.|
+|Łączna sprzedaż|Łączna nadwyżka|Łączna opłata za użycie przekraczające kwotę dostępnych środków. Ta kwota nie obejmuje podatku.|
+|Kwota podatku|Nie dotyczy|Podatek naliczony od łącznej kwoty sprzedaży w danym okresie.|
+|Łączna kwota|Nie dotyczy|Kwota do zapłaty z tytułu faktury, po zastosowaniu środków i uwzględnieniu podatku.|
 
-### <a name="marketplace-invoice"></a>Fakturach witryny Marketplace
+### <a name="marketplace-invoice"></a>Faktura dotycząca platformy Marketplace
 
-Ta sekcja dotyczy tylko, jeśli znajdują się w Australii, Japonia, część lub Singapur.
+Ta sekcja ma zastosowanie tylko w przypadku klientów w Australii, Japonii lub Singapurze.
 
-Porównaj całkowitą na Azure Marketplace **raporty** > **Podsumowanie użycia** w witrynie Enterprise portal, za pomocą usługi fakturach witryny marketplace. Faktura witryny Marketplace dotyczy tylko zakupów w witrynie Azure Marketplace i jej użycia. Kwoty **Podsumowanie użycia** nie zawierają podatku.
+Porównaj sumę opłat z platformy Azure Marketplace w sekcji **Raporty** > **Podsumowanie użycia** w witrynie Enterprise Portal z fakturą dotyczącą platformy Marketplace. Faktura witryny Marketplace dotyczy tylko zakupów w witrynie Azure Marketplace i jej użycia. Kwoty w raporcie **Podsumowanie użycia** nie zawierają podatku.
 
-1. Zaloguj się do [witryny Enterprise portal](https://ea.azure.com).
-1. Wybierz **raporty**.
-1. W prawym górnym rogu karty, Przełącz widok z **M** do **C** i sprostania szczytowemu okres na fakturze.  
-     ![Zrzut ekranu pokazujący M + C opcji na podsumowanie użycia.](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)  
-1. **Portalu Azure Marketplace** łącznie powinny odpowiadać **łączna sprzedaż** na fakturze portalu marketplace.
-1. Aby uzyskać więcej informacji na temat opłat na podstawie użycia, przejdź do **Pobierz dane użycia**. W obszarze **opłatach w portalu Marketplace**, wybierz opcję **Pobierz**. Ten raport nie uwzględnia podatków ani jednorazowych zakupów.  
-     ![Zrzut ekranu pokazujący Pobierz opcję w obszarze opłatach w portalu Marketplace.](./media/billing-understand-your-bill-ea/ea-portal-download-usage-marketplace.png)
+1. Zaloguj się w witrynie [Enterprise Portal](https://ea.azure.com).
+1. Wybierz pozycję **Raporty**.
+1. W prawym górnym rogu karty przełącz widok z **M** na **C** i dopasuj okres na fakturze.  
+     ![Zrzut ekranu przedstawiający opcje M i C w raporcie Podsumowanie użycia.](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)  
+1. Łączna kwota w polu **Azure Marketplace** powinna odpowiadać **łącznej sprzedaży** na fakturze dotyczącej platformy Marketplace.
+1. Aby uzyskać więcej informacji o opłatach za użycie, przejdź do pozycji **Pobierz zestawienie użycia**. W obszarze **Opłaty za korzystanie z witryny Marketplace** wybierz pozycję **Pobierz**. Ten raport nie uwzględnia podatków ani jednorazowych zakupów.  
+     ![Zrzut ekranu przedstawiający opcję pobierania w obszarze opłat za korzystanie z witryny Marketplace.](./media/billing-understand-your-bill-ea/ea-portal-download-usage-marketplace.png)
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 
-Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).
+Jeśli masz pytania lub potrzebujesz pomocy, [utwórz wniosek o pomoc techniczną](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Kolejne kroki
-- [Przeglądanie i pobieranie swoje użycie platformy Azure oraz opłaty](billing-download-azure-daily-usage.md)
+## <a name="next-steps"></a>Następne kroki
+- [Wyświetlanie i pobieranie danych na temat użycia i opłat na platformie Azure](billing-download-azure-daily-usage.md)

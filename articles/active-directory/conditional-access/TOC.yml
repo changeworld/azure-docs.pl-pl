@@ -19,10 +19,10 @@
 - name: Pojęcia
   expanded: false
   items:
-    - name: Wdrażanie dostępu warunkowego
-      href: howto-conditional-access-adoption-kit.md
     - name: Typowe zasady dostępu warunkowego
       href: concept-conditional-access-policy-common.md
+    - name: Składniki zasad dostępu warunkowego
+      href: concept-conditional-access-policies.md
     - name: Warunki
       href: conditions.md
     - name: Warunki lokalizacji

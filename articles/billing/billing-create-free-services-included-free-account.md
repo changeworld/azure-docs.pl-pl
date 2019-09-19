@@ -1,6 +1,6 @@
 ---
 title: Tworzenie bezpłatnych usług przy użyciu bezpłatnego konta platformy Azure
-description: Dowiedz się, jak tworzenie usług uwzględnionych w bezpłatnego konta platformy Azure.
+description: Dowiedz się, jak tworzyć usługi uwzględnione w ramach bezpłatnego konta platformy Azure.
 author: amberbhargava
 manager: amberb
 ms.service: billing
@@ -11,31 +11,31 @@ ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: fdeb60ea28df1dd5a4dee43d26069f60eacfda76
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67491388"
 ---
-# <a name="create-services-included-with-azure-free-account"></a>Tworzenie usług uwzględnionych w bezpłatnego konta platformy Azure
+# <a name="create-services-included-with-azure-free-account"></a>Tworzenie usług uwzględnionych w ramach bezpłatnego konta platformy Azure
 
-Bezpłatne konto platformy Azure obejmuje ograniczoną ilość bezpłatnych usług przez 12 miesięcy. Aby uzyskać więcej informacji, zobacz [co to jest bezpłatne konto platformy Azure](https://azure.microsoft.com/free/free-account-faq/). Platforma Azure pozwala śledzić użycia poszczególnych usług i nie Ci żadnych opłat, chyba że zostaną przekroczone. W tych granicach bezpłatnego konta platformy Azure zapewnia większą elastyczność w zakresie różne konfiguracje usługi do własnych potrzeb.
+W ramach bezpłatnego konta platformy Azure można korzystać z ograniczonej liczby bezpłatnych usług przez 12 miesięcy. Aby uzyskać więcej informacji, zobacz [Co to jest bezpłatne konto platformy Azure](https://azure.microsoft.com/free/free-account-faq/). Platforma Azure śledzi użycie każdej usługi i nie nalicza opłat, o ile nie zostaną przekroczone limity. W ramach tych limitów bezpłatne konto platformy Azure zapewnia elastyczność korzystania z różnych konfiguracji usług dopasowanych do Twoich potrzeb.
 
-## <a name="create-free-services-in-the-azure-portal"></a>Utwórz bezpłatne usługi w witrynie Azure portal
-Zalecane jest użycie [strony bezpłatna usługa](https://go.microsoft.com/fwlink/?linkid=859151) do tworzenia nowych usług. Lub możesz zalogować się do [witryny Azure portal](https://portal.azure.com), wybierz opcję **wszystkich usług** po lewej i wyszukaj **bezpłatnych usług**.
+## <a name="create-free-services-in-the-azure-portal"></a>Tworzenie bezpłatnych usług w witrynie Azure Portal
+Nowe usługi zalecamy tworzyć przy użyciu [strony Usługi bezpłatne](https://go.microsoft.com/fwlink/?linkid=859151). Możesz też zalogować się do witryny [Azure Portal](https://portal.azure.com), wybrać pozycję **Wszystkie usługi** po lewej stronie i wyszukać **bezpłatne usługi**.
 
-## <a name="services-can-be-created-in-any-region"></a>Usługi mogą być tworzone w dowolnym regionie
-Tak długo, jak jesteś w granicach usługi można utworzyć bezpłatnie w dowolnym regionie, gdzie są dostępne. Na przykład otrzymasz 750 godzin maszynę wirtualną Windows B1S bezpłatne każdego miesiąca przy użyciu bezpłatnego konta platformy Azure. W dowolnym regionie, w której seria B maszyn wirtualnych są dostępne, można utworzyć maszyny wirtualnej. Azure nie opłaty, chyba że przekraczać 750 godzin. Na przykład klientów w Stanach Zjednoczonych można aprowizować maszynę wirtualną Windows B1S w regionie Europa Zachodnia i bezpłatne korzystanie przez 750 godzin.
+## <a name="services-can-be-created-in-any-region"></a>Usługi można tworzyć w dowolnym regionie
+O ile nie przekraczasz limitów, możesz bezpłatnie tworzyć usługi w dowolnym regionie, w którym te usługi są dostępne. Na przykład mając bezpłatne konto platformy Azure, możesz co miesiąc skorzystać z bezpłatnych 750 godzin maszyny wirtualnej B1S z systemem Windows. Tę maszynę wirtualną możesz utworzyć w dowolnym regionie, w którym są dostępne maszyny wirtualne z serii B. Opłaty nie są naliczane za platformę Azure, dopóki nie zostanie przekroczony limit 750 godzin. Na przykład klient ze Stanów Zjednoczonych może zaaprowizować maszynę wirtualną B1S z systemem Windows w Europie Zachodniej i bezpłatnie korzystać z niej przez 750 godzin.
 
-Aby dowiedzieć się więcej na temat dostępności usług platformy Azure według regionów, zobacz [dostępność produktów według regionów](https://azure.microsoft.com/regions/services/).
+Aby dowiedzieć się więcej o dostępności usług platformy Azure w konkretnym regionie, zobacz [Dostępność produktów według regionów](https://azure.microsoft.com/regions/services/).
 
-## <a name="create-multiple-service-instances-in-allowed-limits"></a>Tworzenie wielu wystąpień usługi w dozwolone limity
-Można utworzyć wiele wystąpień usługi bezpłatnie, tak długo, jak Suma użycia mieści się w limitu użycia. Na przykład otrzymasz 750 godzin maszynę wirtualną Windows B1S bezpłatne każdego miesiąca przy użyciu bezpłatnego konta platformy Azure. 750 godzin można użyć w dowolnej kombinacji, który ma. Na przykład można tworzyć maszyny wirtualne, 5 B1S Windows i używać ich do 150 godzin.
+## <a name="create-multiple-service-instances-in-allowed-limits"></a>Tworzenie wielu wystąpień usług w ramach dozwolonych limitów
+Możesz bezpłatnie utworzyć wiele wystąpień usług, o ile suma ich użycia mieści się w limicie użycia. Na przykład mając bezpłatne konto platformy Azure, możesz co miesiąc skorzystać z bezpłatnych 750 godzin maszyny wirtualnej B1S z systemem Windows. Z tego 750-godzinnego limitu możesz korzystać w dowolnej kombinacji. Możesz na przykład utworzyć 5 maszyn wirtualnych B1S z systemem Windows i korzystać z każdej z nich przez 150 godzin.
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 
-Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).
+Jeśli masz pytania lub potrzebujesz pomocy, [utwórz wniosek o pomoc techniczną](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się, jak [uniknąć opłat za bezpłatne konto platformy Azure](billing-avoid-charges-free-account.md).
+- Dowiedz się, jak [uniknąć naliczania opłat za bezpłatne konto platformy Azure](billing-avoid-charges-free-account.md).

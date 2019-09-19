@@ -255,8 +255,18 @@
           href: manage-public-ip-address-prefix.md
     - name: Przechodzenie między regionami
       items:
+        - name: Sieciowe grupy zabezpieczeń — portal
+          href: move-across-regions-nsg-portal.md
+        - name: Sieciowe grupy zabezpieczeń — program PowerShell
+          href: move-across-regions-nsg-powershell.md
         - name: Sieci wirtualne — portal
           href: virtual-network-azure-to-azure-migrate-vnet-portal.md
+        - name: Sieci wirtualne — program PowerShell
+          href: virtual-network-azure-to-azure-migrate-vnet-powershell.md
+        - name: Publiczne adresy IP — portal
+          href: move-across-regions-publicip-portal.md
+        - name: Publiczne adresy IP — program PowerShell
+          href: move-across-regions-publicip-powershell.md
     - name: Rozwiązywanie problemów
       items:
         - name: Rozwiązywanie problemów dotyczących komunikacji równorzędnej sieci wirtualnych

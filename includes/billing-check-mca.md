@@ -5,25 +5,25 @@ ms.topic: include
 ms.date: 02/28/2019
 ms.author: amberb
 ms.openlocfilehash: d163c88469ec767c8e0d18f5978ecb61f7997c8b
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67490343"
 ---
-Sprawdź typ umowy, aby ustalić, czy masz dostęp do konta rozliczeniowego dla umowy klienta firmy Microsoft.
+Sprawdź typ umowy, aby określić, czy masz dostęp do konta rozliczeniowego umowy klienta firmy Microsoft.
  
 1. Zaloguj się w witrynie [Azure Portal]( http://portal.azure.com).
  
-2. Wyszukiwanie **Cost Management + rozliczenia**.
+2. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
  
-   ![Zrzut ekranu pokazujący usługi Azure search w portalu](./media/billing-check-mca/billing-search-cost-management-billing.png)
+   ![Zrzut ekranu przedstawiający wyszukiwanie w witrynie Azure Portal](./media/billing-check-mca/billing-search-cost-management-billing.png)
  
-3. Jeśli masz dostęp do tylko jednego zakresu rozliczeń, wybierz opcję **właściwości** z po lewej stronie. Mieć dostęp do konta rozliczeniowego dla umowy klienta firmy Microsoft, jeśli jest typem konta rozliczeniowego **umowy klienta Microsoft**.
+3. Jeśli masz dostęp tylko do jednego zakresu rozliczeniowego, wybierz pozycję **Właściwości** po lewej stronie. Masz dostęp do konta rozliczeniowego umowy klienta firmy Microsoft, jeśli typ konta rozliczeniowego to **Umowa klienta firmy Microsoft**.
  
-    ![Zrzut ekranu pokazujący umowy klienta firmy microsoft na stronie właściwości](./media/billing-check-mca/billing-mca-property.png)
+    ![Zrzut ekranu przedstawiający umowę klienta firmy Microsoft na stronie właściwości](./media/billing-check-mca/billing-mca-property.png)
  
-4. Jeśli masz dostęp do wielu zakresu rozliczeń, sprawdź typ w kolumnie konta rozliczeniowego. Mieć dostęp do konta rozliczeniowego dla umowy klienta firmy Microsoft, jeśli jest typem konta rozliczeniowego dla żadnego z zakresów **umowy klienta Microsoft**.
+4. Jeśli masz dostęp do wielu zakresów rozliczeń, sprawdź typ w kolumnie Konto rozliczeniowe. Masz dostęp do konta rozliczeniowego umowy klienta firmy Microsoft, jeśli typ konta rozliczeniowego w dowolnym z Twoich zakresów to **Umowa klienta firmy Microsoft**.
  
-    ![Zrzut ekranu pokazujący umowy klienta firmy microsoft w stronę rozliczeń listy kont](./media/billing-check-mca/billing-mca-in-the-list.png)
+    ![Zrzut ekranu przedstawiający umowę klienta firmy Microsoft na stronie listy kont rozliczeniowych](./media/billing-check-mca/billing-mca-in-the-list.png)
  

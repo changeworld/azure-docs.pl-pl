@@ -1,6 +1,6 @@
 ---
-title: Wyświetl konta rozliczeniowego w witrynie Azure portal | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wyświetlać konta rozliczeniowego w witrynie Azure portal.
+title: Wyświetlanie kont rozliczeniowych w witrynie Azure Portal | Microsoft Docs
+description: Dowiedz się, jak wyświetlać konta rozliczeniowe w witrynie Azure Portal.
 services: ''
 documentationcenter: ''
 author: amberbhargava
@@ -15,69 +15,69 @@ ms.workload: na
 ms.date: 05/11/2018
 ms.author: banders
 ms.openlocfilehash: 36430e9b0a4554761d53b537d3c32fa57068eabb
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67490216"
 ---
-# <a name="view-billing-accounts-in-azure-portal"></a>Wyświetlić konta rozliczeniowego w witrynie Azure portal  
+# <a name="view-billing-accounts-in-azure-portal"></a>Wyświetlanie kont rozliczeniowych w witrynie Azure Portal  
 
-Konto rozliczeniowe powstaje po zarejestrowaniu się za pomocą platformy Azure. Użyj konta rozliczeniowego na fakturach płatności, zarządzania i śledzenie kosztów. Masz dostęp do wielu kont rozliczeń. Na przykład może być zarejestrowaniu się na platformie Azure dla Twoich projektów osobistych. Może również mieć dostęp za pośrednictwem umowy Enterprise Agreement lub umowy klienta firmy Microsoft Twojej organizacji. Dla każdego z tych scenariuszy trzeba oddzielnego konta rozliczeniowego.
+Konto rozliczeniowe jest tworzone podczas rejestrowania się w celu korzystania z platformy Azure. Konta rozliczeniowego można używać do zarządzania fakturami i płatnościami oraz do śledzenia kosztów. Możesz mieć dostęp do wielu kont rozliczeniowych. Możesz na przykład zarejestrować się na platformie Azure, aby móc pracować nad projektami osobistymi. Dostęp jest również możliwy w ramach zawartej przez organizację umowy Enterprise Agreement lub Umowy klienta firmy Microsoft. W każdym z tych scenariuszy używane jest oddzielne konto rozliczeniowe.
 
-Azure portal obsługuje obecnie następującego typu konta rozliczeniowego:
+W witrynie Azure Portal są obecnie obsługiwane następujące typy kont rozliczeniowych:
 
-- **Microsoft Online Services Program**: Konto rozliczeniowe dla programu Microsoft Online Services powstaje po zarejestrowaniu się na platformie Azure za pośrednictwem witryny internetowej platformy Azure. Na przykład podczas rejestrowania się w celu [bezpłatnego konta platformy Azure](https://azure.microsoft.com/offers/ms-azr-0044p/), [konta przy użyciu stawki](https://azure.microsoft.com/offers/ms-azr-0003p/) lub jako [subskrybent programu Visual studio](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/).
+- **Microsoft Online Services Program**: Konto rozliczeniowe dla programu Microsoft Online Services Program jest tworzone podczas rejestrowania się na platformie Azure za pomocą witryny internetowej Azure. Na przykład po zarejestrowaniu się w celu uzyskania [bezpłatnego konta platformy Azure](https://azure.microsoft.com/offers/ms-azr-0044p/), [konta ze stawkami płatności zgodnie z rzeczywistym użyciem](https://azure.microsoft.com/offers/ms-azr-0003p/) lub jako [subskrybent programu Visual Studio](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/).
 
-- **Umowa Enterprise Agreement**: Konto rozliczeniowe dla umowy Enterprise Agreement jest tworzony, gdy organizacja rejestruje [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) za pomocą platformy Azure.
+- **Umowa Enterprise Agreement**: Konto rozliczeniowe dla umowy Enterprise Agreement jest tworzone, gdy organizacja podpisuje [umowę Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) w celu korzystania z platformy Azure.
 
-- **Umowy klienta Microsoft**: Konto rozliczeniowe dla umowy klienta firmy Microsoft jest tworzony, podczas Twoja organizacja pracuje się z przedstawicielem firmy Microsoft do podpisania umowy klienta firmy Microsoft. Niektórzy klienci w wybranych regionach, którzy utworzą konto przy użyciu witrynie internetowej platformy Azure dla [konta przy użyciu stawki](https://azure.microsoft.com/offers/ms-azr-0003p/) lub uaktualnić ich [bezpłatnego konta platformy Azure](https://azure.microsoft.com/offers/ms-azr-0044p/) może mieć konta rozliczeniowego dla Customer firmy Microsoft Umowa dotycząca także. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie korzystania z konta rozliczeniowego dla umowy klienta Microsoft](billing-mca-overview.md).
+- **Umowa klienta firmy Microsoft**: Konto rozliczeniowe dla umowy klienta firmy Microsoft jest tworzone, gdy organizacja współpracuje z przedstawicielem firmy Microsoft w celu podpisania umowy klienta firmy Microsoft. Niektórzy klienci w wybranych regionach, którzy zarejestrują się za pomocą witryny internetowej Azure w celu [utworzenia konta ze stawkami płatności zgodnie z rzeczywistym użyciem](https://azure.microsoft.com/offers/ms-azr-0003p/) lub dokonają podwyższenia poziomu swojego [bezpłatnego konta platformy Azure](https://azure.microsoft.com/offers/ms-azr-0044p/), mogą mieć również konto rozliczeniowe do umowy klienta firmy Microsoft. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z kontem rozliczeniowym do umowy klienta firmy Microsoft](billing-mca-overview.md).
 
 <!--Todo Add section to identify the type of accounts -->
 
-## <a name="scopes-for-billing-accounts"></a>Zakresy dla kont rozliczeniowych
-Zakres jest węzłem w ramach konta rozliczeniowego, używanego przez użytkowników do wyświetlania i zarządzania rozliczeniami. Gdzie użytkownicy Zarządzanie danych dotyczących rozliczeń, płatności, faktury i postępowania Zarządzanie kontem ogólnego jest. 
+## <a name="scopes-for-billing-accounts"></a>Zakresy kont rozliczeniowych
+Zakres to węzeł w ramach konta rozliczeniowego, za pomocą którego użytkownicy wyświetlają rozliczenia i zarządzają nimi. Jest to miejsce, w którym użytkownicy zarządzają danymi rozliczeniowymi, płatnościami i fakturami oraz przeprowadzają ogólne czynności dotyczące zarządzania kontami. 
 
 ### <a name="microsoft-online-services-program"></a>Microsoft Online Services Program
 
-|Scope  |Definicja  |
+|Zakres  |Definicja  |
 |---------|---------|
-|Konto billingowe     | Reprezentuje pojedynczy właściciela (konto administrator) dla co najmniej jedną subskrypcję platformy Azure. Administrator konta jest autoryzowany do wykonywania różnych zadań rozliczeń, jak tworzyć subskrypcje, wyświetlanie faktur lub zmienić rozliczeń dla subskrypcji.  |
-|Subskrypcja     |  Reprezentuje grupę zasobów platformy Azure. Faktura jest generowany w tym zakresie. Ma swoje własne metody płatności, które są używane do płacenia jego faktury.|
+|Konto billingowe     | Reprezentuje pojedynczego właściciela (administratora konta) co najmniej jednej subskrypcji platformy Azure. Administrator konta jest autoryzowany do wykonywania różnych zadań rozliczeniowych, takich jak tworzenie subskrypcji, wyświetlanie faktur lub zmiana rozliczeń dla subskrypcji.  |
+|Subskrypcja     |  Reprezentuje zgrupowanie zasobów platformy Azure. W tym zakresie jest generowana faktura. Ma swoje formy płatności za faktury.|
 
 
 ### <a name="enterprise-agreement"></a>Enterprise Agreement
 
-|Scope  |Definicja  |
+|Zakres  |Definicja  |
 |---------|---------|
-|Konto billingowe    | Reprezentuje umowy Enterprise Agreement. Faktura jest generowany w tym zakresie. Struktury, przy użyciu konta rejestracji i działów.  |
-|Dział     |  Opcjonalnie grupa kont rejestracji.      |
-|Konto rejestracji     |  Reprezentuje właściciela jednego konta. Subskrypcje platformy Azure są tworzone w ramach tego zakresu.  |
+|Konto billingowe    | Reprezentuje rejestrację umów Enterprise Agreement. W tym zakresie jest generowana faktura. W skład jego struktury wchodzą działy i konta rejestracji.  |
+|Dział     |  Opcjonalne zgrupowanie kont rejestracji.      |
+|Konto rejestracji     |  Reprezentuje pojedynczego właściciela konta. W tym zakresie są tworzone subskrypcje platformy Azure.  |
 
 
 ### <a name="microsoft-customer-agreement"></a>Umowa klienta firmy Microsoft
 
-|Scope  |Zadania  |
+|Zakres  |Zadania  |
 |---------|---------|
-|Konto billingowe     |   Reprezentuje umowy klienta w wielu usług i produktów firmy Microsoft. Struktury, przy użyciu profilów rozliczeń i sekcje faktury.   |
-|Karta profilu     |  Reprezentuje faktury i jego metody płatności. Faktura jest generowany w tym zakresie. Może mieć wiele sekcji faktury.      |
-|Sekcja faktury     |   Reprezentuje grupę kosztów w faktury. Subskrypcje i innych zakupy są skojarzone z tego zakresu.    |
+|Konto billingowe     |   Reprezentuje umowę klienta dla wielu produktów i usług firmy Microsoft. W skład jego struktury wchodzą profile rozliczeniowe i sekcje faktur.   |
+|Profil rozliczeniowy     |  Reprezentuje fakturę i formy płatności za nią. W tym zakresie jest generowana faktura. Może zawierać wiele sekcji faktur.      |
+|Sekcja faktury     |   Reprezentuje grupę kosztów na fakturze. Z tym zakresem są skojarzone subskrypcje i inne zakupy.    |
 
 
-## <a name="switch-billing-scope-in-the-azure-portal"></a>Przełącz zakres rozliczeń w witrynie Azure portal
+## <a name="switch-billing-scope-in-the-azure-portal"></a>Przełączanie zakresu rozliczeniowego w witrynie Azure Portal
 
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-2. Wyszukaj **Cost Management + rozliczenia**.
+2. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 
-   ![Zrzut ekranu pokazujący usługi Azure search w portalu](./media/billing-view-all-accounts/billing-search-cost-management-billing.png)
+   ![Zrzut ekranu przedstawiający wyszukiwanie w witrynie Azure Portal](./media/billing-view-all-accounts/billing-search-cost-management-billing.png)
 
-3. Wybierz **wszystkie zakresy rozliczeń** z po lewej stronie.
+3. Po lewej stronie wybierz pozycję **Wszystkie zakresy rozliczeń**.
 
-   ![Zrzut ekranu przedstawiający wszystkie zakresy rozliczeń](./media/billing-view-all-accounts/billing-list-of-accounts.png)
+   ![Zrzut ekranu przedstawiający wszystkie zakresy rozliczeniowe](./media/billing-view-all-accounts/billing-list-of-accounts.png)
 
-   ** Nie będzie mógł przeglądać **wszystkie zakresy rozliczeń** Jeśli masz tylko dostęp do jednego zakresu.
+   ** Pozycja **Wszystkie zakresy rozliczeń** nie jest widoczna, jeśli masz dostęp tylko do jednego zakresu.
 
 4. Wybierz zakres, aby wyświetlić szczegóły.
 
@@ -85,7 +85,7 @@ Zakres jest węzłem w ramach konta rozliczeniowego, używanego przez użytkowni
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 
-Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).
+Jeśli masz pytania lub potrzebujesz pomocy, [utwórz wniosek o pomoc techniczną](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się, jak uruchomić [analizując koszty](../cost-management/quick-acm-cost-analysis.md).
+## <a name="next-steps"></a>Następne kroki
+- Dowiedz się, jak rozpocząć [analizowanie kosztów](../cost-management/quick-acm-cost-analysis.md).

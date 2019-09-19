@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 8/27/2019
+ms.date: 09/10/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 5b78dc8b815802502cda5baf2bf5e9646922d671
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 194b90ab27d02c1fa3eb05bb3ddd78395d351599
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70241429"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898175"
 ---
 ::: zone target="docs"
 
@@ -77,7 +77,7 @@ Upewnij się, że kopiowanie danych na urządzenie zostało ukończone, a **przy
 
 ::: zone-end
 
-## <a name="ship-in-us-canada-europe"></a>Wysyłka w Stanach Zjednoczonych, Kanadzie, Europie
+## <a name="in-us-canada-europetabin-us-canada-europe"></a>[W Stanach Zjednoczonych, Kanadzie i Europie](#tab/in-us-canada-europe)
 
 W przypadku zwrotu urządzenia w Stanach Zjednoczonych, Kanadzie lub Europie wykonaj następujące czynności.
 
@@ -94,7 +94,7 @@ W przypadku zwrotu urządzenia w Stanach Zjednoczonych, Kanadzie lub Europie wyk
 4. Po odebraniu urządzenia Data Box i zeskanowaniu go przez kuriera stan zamówienia w portalu zostanie zmieniony na **Pobrane**. Będzie też wyświetlany identyfikator śledzenia przesyłki.
 
 
-## <a name="ship-in-australia"></a>Wysyłka w Australii
+## <a name="in-australiatabin-australia"></a>[W Australii](#tab/in-australia)
 
 W przypadku centrów danych w Australii obowiązuje dodatkowe zabezpieczenie. Zabezpieczenie to polega na powiadamianiu z wyprzedzeniem o wszystkich przesyłkach przychodzących. Wykonaj poniższe kroki w przypadku wysyłki w Australii.
 
@@ -126,7 +126,7 @@ Aby zgłosić zapytanie dotyczące zamówienia przez telefon:
 - Wyślij najpierw wiadomość e-mail dotyczącą odbioru.
 - Podaj nazwę zamówienia za pomocą telefonu.
 
-## <a name="ship-in-japan"></a>Wysyłka w Japonii 
+## <a name="in-japantabin-japan"></a>[W Japonii](#tab/in-japan) 
 
 1. Zachowaj oryginalne pudełko użyte do wysłania urządzenia na potrzeby wysyłki zwrotnej.
 2. Wyłącz urządzenie i odłącz kable.

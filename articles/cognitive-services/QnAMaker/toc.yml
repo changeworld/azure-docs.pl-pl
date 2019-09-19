@@ -225,3 +225,5 @@
       href: 'https://docs.microsoft.com/search/index?search=QnAMaker'
     - name: Blog
       href: 'https://blog.botframework.com/category/QnAMaker/'
+- name: Portal usługi QnA Maker
+  href: 'https://www.qnamaker.ai'
