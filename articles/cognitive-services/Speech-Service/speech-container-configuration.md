@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: dapine
-ms.openlocfilehash: c4598e5e99012694a798e44c0d37e9578486751b
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: f7e2e95b553039b88267f730787fbbac82099948
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932105"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105182"
 ---
 # <a name="configure-speech-service-containers"></a>Konfigurowanie kontenerów usługi mowy
 
@@ -78,7 +78,7 @@ Kontenery mowy nie używają instalacji wejścia lub wyjścia do przechowywania 
 
 Dokładna składnia lokalizację instalacji hosta różni się zależnie od systemu operacyjnego hosta. Ponadto [komputerze-hoście](speech-container-howto.md#the-host-computer)w lokalizacji instalacji może być niedostępna z powodu konfliktu między uprawnienia użyte dla konta usługi docker i hosta instalacji uprawnienia do lokalizacji. 
 
-|Optional| Name (Nazwa) | Typ danych | Opis |
+|Optional| Name | Typ danych | Opis |
 |-------|------|-----------|-------------|
 |Niedozwolone| `Input` | String | Kontenery mowy nie używają tego programu.|
 |Optional| `Output` | String | Miejsce docelowe instalacji danych wyjściowych. Wartość domyślna to `/output`. Jest to Lokalizacja dzienników. Dotyczy to również dzienników kontenerów. <br><br>Przykład:<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -90,12 +90,14 @@ W poniższych przykładach używane ustawienia konfiguracji, aby zilustrować, j
 * **Znak kontynuacji wiersza**: Polecenia platformy Docker w poniższych sekcjach używają ukośnika odwrotnego `\`, jako znaku kontynuacji wiersza. Zamień lub Usuń ten na podstawie wymagań systemu operacyjnego hosta. 
 * **Kolejność argumentów**: Nie zmieniaj kolejności argumentów, o ile nie znasz już kontenerów platformy Docker.
 
-Zastąp { _} własnymi wartościami:
+Zastąp {_argument_name_} własnymi wartościami:
 
 | Symbol zastępczy | Wartość | Format lub przykład |
 |-------------|-------|---|
-|{API_KEY} | Klucz interfejsu API zasobu mowy. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{ENDPOINT_URI} | Wartość punktu końcowego włącznie z regionem.|`https://westus.api.cognitive.microsoft.com/sts/v1.0`|
+| **{API_KEY}** | Klucz `Speech` punktu końcowego zasobu na stronie kluczy platformy Azure `Speech` . | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | Wartość punktu końcowego rozliczenia jest dostępna na stronie `Speech` przegląd platformy Azure.| Zobacz [zbieranie wymaganych parametrów](speech-container-howto.md#gathering-required-parameters) dla jawnych przykładów. |
+
+[!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
 > `Eula`, `Billing`, I `ApiKey` opcje muszą być określone w celu uruchomienia kontenera; w przeciwnym razie nie uruchamia się kontener.  Aby uzyskać więcej informacji, zobacz [rozliczeń](#billing-configuration-setting).

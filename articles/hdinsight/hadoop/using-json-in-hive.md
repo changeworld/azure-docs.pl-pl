@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: dd1c9f5b10583e886c0357ce64bdf9d8bdc6c4c8
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 629a7c98a7b46b470470445cc56a6f53d9e4f4b4
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883387"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077215"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Przetwarzanie i analizowanie dokumentów JSON przy użyciu Apache Hive w usłudze Azure HDInsight
 
@@ -91,7 +91,7 @@ Instrukcja **SELECT** zwraca tylko jeden wiersz.
 
 Oto dane wyjściowe instrukcji **SELECT** :
 
-![Spłaszczanie dokumentu JSON](./media/using-json-in-hive/hdinsight-flatten-json.png)
+![Spłaszczanie dokumentu JSON przy użyciu usługi HDInsight](./media/using-json-in-hive/hdinsight-flatten-json.png)
 
 ## <a name="analyze-json-documents-in-hive"></a>Analizowanie dokumentów JSON w usłudze Hive
 Program Hive oferuje trzy różne mechanizmy uruchamiania zapytań w dokumentach JSON lub można napisać własne:
@@ -115,7 +115,7 @@ FROM StudentsOneLine;
 
 Oto dane wyjściowe po uruchomieniu tego zapytania w oknie konsoli:
 
-![get_json_object UDF](./media/using-json-in-hive/hdinsight-get-json-object.png)
+![Apache Hive pobrać elementu UDF obiektu JSON](./media/using-json-in-hive/hdinsight-get-json-object.png)
 
 Istnieją ograniczenia dotyczące get_json_object UDF:
 
@@ -136,7 +136,7 @@ LATERAL VIEW JSON_TUPLE(jt.json_body, 'StudentId', 'Grade') q1
 
 Dane wyjściowe tego skryptu w konsoli programu Hive:
 
-![json_tuple UDF](./media/using-json-in-hive/hdinsight-json-tuple.png)
+![Apache Hive wyniki zapytania JSON](./media/using-json-in-hive/hdinsight-json-tuple.png)
 
 Json_tuple UDF używa składni [widoku bocznego](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) w Hive, co umożliwia spójność notacji JSON\_w celu utworzenia tabeli wirtualnej przez zastosowanie funkcji UDT do każdego wiersza oryginalnej tabeli. Złożone dane JSON stają się zbyt nieporęczny z powodu wielokrotnego użycia **widoku bocznego**. Ponadto **JSON_TUPLE** nie może obsłużyć ZAGNIEŻDŻONych notacji JSON.
 

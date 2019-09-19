@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: a9e84210427612143bffe33efe4a5da5364b7a22
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 091c1a4c9e6adae69ec1c8b3e507624b9f5e6a96
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68310441"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057498"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Samouczek: Kompilowanie obrazów kontenera w chmurze przy użyciu usługi Azure Container Registry Tasks
 
@@ -75,7 +75,7 @@ Polecenia w tym samouczku zostały sformatowane pod kątem powłoki programu Bas
 
 Teraz, gdy kod źródłowy został pobrany do komputera, wykonaj następujące kroki, aby utworzyć rejestr kontenerów i skompilować obraz kontenera przy użyciu usługi ACR Tasks.
 
-Aby wykonywanie przykładowych poleceń było łatwiejsze, w tej serii samouczków używaj zmiennych środowiskowych powłoki. Uruchom następujące polecenie, aby ustawić zmienną `ACR_NAME`. Zastąp element **\<registry-name\>** unikatową nazwą nowego rejestru kontenerów. Nazwa rejestru musi być unikatowa w obrębie platformy Azure i może zawierać od 5 do 50 znaków alfanumerycznych. Inne zasoby tworzone w tym samouczku opierają się na tej nazwie, dlatego konieczne powinno być zmodyfikowanie tylko tej pierwszej zmiennej.
+Aby wykonywanie przykładowych poleceń było łatwiejsze, w tej serii samouczków używaj zmiennych środowiskowych powłoki. Uruchom następujące polecenie, aby ustawić zmienną `ACR_NAME`. Zastąp element **\<registry-name\>** unikatową nazwą nowego rejestru kontenerów. Nazwa rejestru musi być unikatowa na platformie Azure, zawierać tylko małe litery i zawierać 5-50 znaków alfanumerycznych. Inne zasoby tworzone w tym samouczku opierają się na tej nazwie, dlatego konieczne powinno być zmodyfikowanie tylko tej pierwszej zmiennej.
 
 ```azurecli-interactive
 ACR_NAME=<registry-name>
