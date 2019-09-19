@@ -16,12 +16,12 @@ ms.date: 05/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e491815f25f3744d839efc09ce34793d80d9943a
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: ce66c0239eee3f31695a942a586766694525fbad
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983548"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097595"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Program Azure AD Connect: Historia wersji
 Zespół Azure Active Directory (Azure AD) regularnie aktualizuje Azure AD Connect za pomocą nowych funkcji i funkcji. Nie wszystkie dodatki są stosowane dla wszystkich odbiorców.
@@ -44,6 +44,9 @@ W trakcie tego procesu numer wersji wersji będzie wyświetlany jako "X" w pozyc
 Nie wszystkie wersje Azure AD Connect będą udostępniane do autouaktualniania. Stan wersji wskazuje, czy wersja jest udostępniona do autouaktualnienia, czy tylko do pobrania. Jeśli automatyczne uaktualnianie zostało włączone na serwerze Azure AD Connect, serwer zostanie automatycznie uaktualniony do najnowszej wersji Azure AD Connect wydanej na potrzeby automatycznego uaktualniania. Należy pamiętać, że nie wszystkie konfiguracje Azure AD Connect mogą być stosowane do autouaktualnienia. Skorzystaj z tego linku, aby dowiedzieć się więcej na temat [autouaktualniania](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)
 
 ## <a name="14x0"></a>1.4. X. 0
+
+>[!IMPORTANT]
+>Wcześniej w pewnych okolicznościach komputery niższego poziomu systemu Windows przyłączone do usługi AD Premium zostały nieprawidłowo zsynchronizowane z chmurą. Na przykład wartość atrybutu userCertificate dla urządzeń niskiego poziomu systemu Windows w usłudze AD jest wypełniana. Jednak takie urządzenia w usłudze Azure AD zawsze pozostają w stanie "oczekiwanie", ponieważ te wersje systemu operacyjnego nie zostały zaprojektowane do rejestracji w usłudze Azure AD za pośrednictwem AAD Sync. W tej wersji programu Azure AD Connect AAD Sync zatrzyma synchronizowanie komputerów z systemem Windows niższego poziomu z usługą Azure AD, a także usunie wcześniej niepoprawnie zsynchronizowane urządzenia niskiego poziomu systemu Windows z usługi Azure AD. Należy pamiętać, że ta zmiana nie spowoduje usunięcia wszystkich urządzeń niższego poziomu systemu Windows, które zostały poprawnie zarejestrowane w usłudze Azure AD za pomocą pakietu MSI. Te urządzenia będą nadal działały zgodnie z oczekiwaniami na potrzeby dostępu warunkowego opartego na urządzeniach. Niektórzy klienci mogą zobaczyć, że niektóre lub wszystkie urządzenia niskiego poziomu systemu Windows znikną z usługi Azure AD. Nie jest to przyczyną problemu, ponieważ te tożsamości urządzeń nigdy nie były używane przez usługę Azure AD podczas autoryzacji dostępu warunkowego. Tacy klienci mogą wymagać ponownego odwiedzania https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan i zarejestrowania urządzeń niskiego poziomu systemu Windows w celu zapewnienia, że te urządzenia mogą w pełni uczestniczyć w dostępie warunkowym opartym na urządzeniach. Należy pamiętać, że jeśli zostaną wyświetlone te usunięcia obiektów niskiego poziomu komputera/urządzenia w usłudze Azure AD przekraczających próg usuwania eksportu, zaleca się, aby te operacje usuwania zostały przechodzące przez klienta.
 
 ### <a name="release-status"></a>Stan wydania
 9/10/2019: Wydano tylko do uaktualnienia
@@ -792,7 +795,7 @@ CBool(
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
     |CertVersion|CertSignatureAlgorithmOid|Wybierz|
     |CertKeyAlgorithmParams|CertHashString|Gdzie|
-    |||Z|
+    |||Zawiera|
 
 * Wprowadzono następujące zmiany schematu, które umożliwiają klientom tworzenie niestandardowych reguł synchronizacji w celu przepływu zasad sAMAccountName, domainNetBios i domainFQDN dla obiektów grup, a także nazwy odróżnionyname dla obiektów użytkownika:
 

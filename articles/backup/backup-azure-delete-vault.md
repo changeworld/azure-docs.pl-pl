@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: dacurwin
-ms.openlocfilehash: a49449f799696ce6962afea6bdc212f658c660bd
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 719f7f1c30a79b9057f25d6137423451cc606bfa
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860374"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088415"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Usuwanie magazynu Recovery Services Azure Backup
 
@@ -300,7 +300,7 @@ Aby usunąć istniejący magazyn usługi Recovery Services, wykonaj następując
                              [--yes] 
     ```
 
-    Aby uzyskać więcej informacji, zapoznaj się z tym [artykułem](https://docs.microsoft.com/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-disable.). 
+    Aby uzyskać więcej informacji, zapoznaj się z tym [artykułem](/cli/azure/backup/protection#az-backup-protection-disable). 
 
 - Usuń istniejący magazyn usług Recovery Services: 
 

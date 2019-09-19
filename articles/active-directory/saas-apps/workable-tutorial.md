@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1341f0def306a1167e1e4876365c70901cf89cd2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5fc1f6434bea8f75c7bcc7859c6f90d7abdd031b
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67087002"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091035"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workable"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Workable
 
@@ -142,7 +142,7 @@ Aby włączyć logowanie jednokrotne w aplikacji Workable, skontaktuj się z ded
 
 3. Adres URL wylogowywania
 
-Logowanie jednokrotne zostało włączone, zwiększą menedżerem powiadomi Cię o tym i można użyć [strony logowania jednokrotnego w Workable](https://id.workable.com/sso/signin) logować się za pomocą usługi poddomeny zwiększą konta.
+Gdy Logowanie jednokrotne zostało włączone, Menedżer kont, który będzie się z nim informować, i można użyć w ten sposób do logowania się z użyciem domeny [logowania jednokrotnego](https://help.workable.com/hc/en-us/articles/360000067753-Single-Sign-on-SSO-Overview-Pro) , aby zalogować się za pomocą poddomeny konta usługi
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -162,7 +162,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola `brittasimon\@yourcompanydomain.extension`. Na przykład BrittaSimon@contoso.com.
+    b. W polu **Nazwa użytkownika** wpisz `brittasimon\@yourcompanydomain.extension`. Na przykład BrittaSimon@contoso.com.
 
     c. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
@@ -210,4 +210,4 @@ Po kliknięciu kafelka Workable w panelu dostępu powinno nastąpić automatyczn
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: e444d6254b575ead4b5d436a4b92f960c61b1d1c
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 171a1141670e55814474390c59ae8d514491edbd
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802877"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088090"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Foodee na potrzeby automatycznego aprowizacji użytkowników
 
@@ -36,7 +36,7 @@ Celem tego samouczka jest przedstawienie czynności, które należy wykonać w F
 Scenariusz opisany w tym samouczku założono, że masz już następujące wymagania wstępne:
 
 * Dzierżawa usługi Azure AD.
-* [Dzierżawa Foodee](https://Foodee.com/pricing/)
+* [Dzierżawa Foodee](https://www.food.ee/about/)
 * Konto użytkownika w Foodee z uprawnieniami administratora.
 
 ## <a name="assigning-users-to-foodee"></a>Przypisywanie użytkowników do Foodee 
@@ -142,7 +142,7 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 
     ![Foodee atrybuty użytkownika](media/Foodee-provisioning-tutorial/groupattribute.png)
 
-12. Aby skonfigurować filtry określania zakresu, zapoznaj się z poniższymi instrukcjami w [samouczku dotyczącym filtru określania zakresu](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+12. Aby skonfigurować filtry określania zakresu, zapoznaj się z poniższymi instrukcjami w samouczku dotyczącym [filtru określania zakresu](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
 13. Aby włączyć usługę Azure AD Provisioning dla Foodee, Zmień **stan aprowizacji** na **włączone** w sekcji **Ustawienia** .
 

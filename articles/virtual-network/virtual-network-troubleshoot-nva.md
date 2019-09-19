@@ -1,10 +1,10 @@
 ---
-title: Rozwiązywanie problemów urządzenie wirtualne sieci na platformie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak rozwiązywać problemy z wirtualnego urządzenia sieciowego na platformie Azure.
+title: Rozwiązywanie problemów z urządzeniami wirtualnymi w sieci na platformie Azure | Microsoft Docs
+description: Dowiedz się, jak rozwiązywać problemy z sieciowym urządzeniami wirtualnymi na platformie Azure.
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-network
@@ -14,65 +14,65 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: 00393395745ca96ae14269ae80e4f3d25673fbfa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b998043bc7d896989590ac21db5f309a81cc02bd
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64723010"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056833"
 ---
-# <a name="network-virtual-appliance-issues-in-azure"></a>Problemy z urządzenia wirtualnego sieci na platformie Azure
+# <a name="network-virtual-appliance-issues-in-azure"></a>Problemy z sieciowym urządzeniem wirtualnym na platformie Azure
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Możesz napotkać maszyny Wirtualnej lub problemy z połączeniem sieci VPN i błędy podczas korzystania z innego podmiotu z wirtualnego urządzenia sieciowego (WUS) w systemie Microsoft Azure. Ten artykuł zawiera podstawowe kroki, aby pomóc podczas weryfikowania podstawowych wymagań platformy Azure w przypadku konfiguracji urządzenia WUS.
+Problemy z łącznością maszyn wirtualnych lub sieci VPN mogą wystąpić w przypadku korzystania z zewnętrznego urządzenia sieciowego (urządzenie WUS) innej firmy w Microsoft Azure. W tym artykule przedstawiono podstawowe kroki, które ułatwiają Weryfikowanie podstawowych wymagań platformy Azure dla konfiguracji urządzenie WUS.
 
-Pomoc techniczna dla urządzeń WUS innych firm i ich integracji z platformą Azure jest świadczona przez producenta urządzenia WUS.
+Pomoc techniczna dla urządzeń WUS innych firm oraz integracja z platformą Azure jest świadczona przez dostawcę urządzenie WUS.
 
 > [!NOTE]
-> Jeśli masz połączenie lub problemu z routingiem, która obejmuje NVA należy [skontaktuj się z dostawcą urządzenia WUS](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines) bezpośrednio.
+> Jeśli występuje problem z łącznością lub routingiem, który obejmuje urządzenie WUS, należy [skontaktować się bezpośrednio z dostawcą urządzenie WUS](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines) .
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="checklist-for-troubleshooting-with-nva-vendor"></a>Lista kontrolna dotycząca rozwiązywania problemów z dostawcą urządzenia WUS
+## <a name="checklist-for-troubleshooting-with-nva-vendor"></a>Lista kontrolna dotycząca rozwiązywania problemów z dostawcą urządzenie WUS
 
-- Aktualizacje oprogramowania dla oprogramowania maszyna wirtualna urządzenia WUS
-- Konfiguracja konta usługi i funkcje
-- Trasy zdefiniowane przez użytkownika (Udr) w podsieciach sieci wirtualnej, które kierować ruch do wirtualnego urządzenia Sieciowego
-- Tras zdefiniowanych przez użytkownika w podsieci sieci wirtualnej, które kierować ruch z urządzenia WUS
-- Routing tabel i reguły urządzenia WUS (na przykład z NIC1 do NIC2)
-- Śledzenie na kartach interfejsu sieciowego urządzenia WUS, aby sprawdzić, odbierania i wysyłania ruchu sieciowego
-- Korzystając z standardowej jednostki SKU i publicznych adresów IP, musi istnieć sieciowa grupa zabezpieczeń utworzona i jawne reguły zezwalające na ruch można kierować do urządzenia NVA.
+- Aktualizacje oprogramowania dla maszyny wirtualnej urządzenie WUS
+- Konfiguracja i funkcjonalność konta usługi
+- Trasy zdefiniowane przez użytkownika (UDR) w podsieciach sieci wirtualnej, które kierują ruch do urządzenie WUS
+- UDR w podsieciach sieci wirtualnej, które kierują ruch z urządzenie WUS
+- Tabele i reguły routingu w ramach urządzenie WUS (na przykład z NIC1 do NIC2)
+- Śledzenie na kartach sieciowych urządzenie WUS, aby zweryfikować odbieranie i wysyłanie ruchu sieciowego
+- Korzystając ze standardowej jednostki SKU i publicznych adresów IP, musi istnieć sieciowej grupy zabezpieczeń i jawna reguła zezwalająca na kierowanie ruchu do urządzenie WUS.
 
 ## <a name="basic-troubleshooting-steps"></a>Podstawowe kroki rozwiązywania problemów
 
-- Sprawdzanie podstawowej konfiguracji
-- Sprawdź wydajność urządzenia WUS
-- Rozwiązywanie problemów z siecią zaawansowane
+- Sprawdź konfigurację podstawową
+- Sprawdź wydajność urządzenie WUS
+- Zaawansowane rozwiązywanie problemów z siecią
 
-## <a name="check-the-minimum-configuration-requirements-for-nvas-on-azure"></a>Sprawdzanie wymagań dotyczących minimalnej konfiguracji dla urządzeń WUS na platformie Azure
+## <a name="check-the-minimum-configuration-requirements-for-nvas-on-azure"></a>Sprawdź wymagania dotyczące minimalnej konfiguracji programu urządzeń WUS na platformie Azure
 
-Każde urządzenie WUS ma wymagania konfiguracji podstawowej do poprawnego działania na platformie Azure. W poniższej sekcji przedstawiono kroki, aby sprawdzić te konfiguracje podstawowe. Aby uzyskać więcej informacji [skontaktuj się z dostawcą urządzenia WUS](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
+Każdy urządzenie WUS ma podstawowe wymagania dotyczące konfiguracji, które działają poprawnie na platformie Azure. W poniższej sekcji przedstawiono kroki, które należy wykonać, aby sprawdzić te podstawowe konfiguracje. Aby uzyskać więcej informacji, [skontaktuj się z dostawcą urządzenie WUS](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
 
-**Sprawdź, czy przesyłanie dalej IP jest włączone na urządzeniu WUS**
+**Sprawdź, czy funkcja przekazywania adresów IP jest włączona w urządzenie WUS**
 
 Korzystanie z witryny Azure Portal
 
-1. Znajdź zasób urządzenia WUS w [witryny Azure portal](https://portal.azure.com)wybierz sieć, a następnie wybierz interfejs sieciowy.
-2. Na stronie interfejsu sieciowego wybierz konfigurację adresu IP.
-3. Upewnij się, że jest włączone przekazywanie adresów IP.
+1. Znajdź zasób urządzenie WUS w [Azure Portal](https://portal.azure.com)wybierz pozycję Sieć, a następnie wybierz interfejs sieciowy.
+2. Na stronie interfejs sieciowy wybierz pozycję Konfiguracja protokołu IP.
+3. Upewnij się, że włączono przekazywanie adresów IP.
 
 Korzystanie z programu PowerShell
 
-1. Otwórz program PowerShell, a następnie zaloguj się do konta platformy Azure.
-2. Uruchom następujące polecenie (Zastąp wartości w nawiasach kwadratowych z informacjami o):
+1. Otwórz program PowerShell, a następnie zaloguj się do swojego konta platformy Azure.
+2. Uruchom następujące polecenie (Zastąp wartości w nawiasach klamrowymi informacjami):
 
    ```powershell
    Get-AzNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NicName>
    ```
 
-3. Sprawdź **EnableIPForwarding** właściwości.
-4. Jeśli nie jest włączone przekazywanie adresów IP, uruchom następujące polecenia, aby ją włączyć:
+3. Sprawdź Właściwość **EnableIPForwarding** .
+4. Jeśli przekazywanie adresów IP nie jest włączone, uruchom następujące polecenia, aby je włączyć:
 
    ```powershell
    $nic2 = Get-AzNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NicName>
@@ -83,23 +83,23 @@ Korzystanie z programu PowerShell
    NetworkSecurityGroup : null
    ```
 
-**Sprawdź dla sieciowej grupy zabezpieczeń, korzystając z IP Pubilc w warstwie standardowa jednostka SKU** przy użyciu standardowej jednostki SKU i publicznych adresów IP, musi istnieć sieciowa grupa zabezpieczeń utworzona i jawne reguły, aby zezwolić na ruch do urządzenia WUS.
+**Wyszukaj sieciowej grupy zabezpieczeń w przypadku korzystania ze standardowego SKU PUBILC IP** W przypadku korzystania ze standardowej jednostki SKU i publicznych adresów IP, musi istnieć sieciowej grupy zabezpieczeń i jawna reguła zezwalająca na ruch do urządzenie WUS.
 
-**Sprawdź, czy można kierować ruch do urządzenia NVA**
+**Sprawdź, czy ruch może być kierowany do urządzenie WUS**
 
-1. Na [witryny Azure portal](https://portal.azure.com), otwórz **usługi Network Watcher**, wybierz opcję **następnego skoku**.
-2. Określ maszynę Wirtualną, która jest skonfigurowana, aby przekierować ruch do urządzenia WUS i docelowy adres IP, na którym chcesz wyświetlić następny przeskok. 
-3. Jeśli urządzenie WUS nie jest wymieniony jako **miejsca docelowego następnego skoku**, sprawdź, jak i aktualizacja tabel tras platformy Azure.
+1. Na [Azure Portal](https://portal.azure.com)Otwórz **Network Watcher**, wybierz **Następny przeskok**.
+2. Określ maszynę wirtualną skonfigurowaną do przekierowywania ruchu do urządzenie WUS i docelowy adres IP, pod którym ma być wyświetlany następny przeskok. 
+3. Jeśli urządzenie WUS nie jest wymieniony w **następnym przeskoku**, sprawdź i zaktualizuj tabele tras platformy Azure.
 
-**Sprawdź, czy ruch może uzyskać dostęp do urządzenia NVA**
+**Sprawdź, czy ruch może dotrzeć do urządzenie WUS**
 
-1. W [witryny Azure portal](https://portal.azure.com), otwórz **usługi Network Watcher**, a następnie wybierz pozycję **zweryfikować przepływ IP**. 
-2. Określ maszynę Wirtualną i adres IP urządzenia NVA, a następnie sprawdź, czy ruch jest blokowany przez wszystkie grupy zabezpieczeń sieci (NSG).
-3. W przypadku regułę sieciowej grupy zabezpieczeń, która blokuje ruch zlokalizować sieciowej grupy zabezpieczeń w **efektywnym elementem systemu zabezpieczeń** reguły, a następnie zaktualizuj go, aby zezwolić na ruch do przekazania. Następnie uruchom **zweryfikować przepływ IP** ponownie i użyj **Rozwiązywanie problemów z połączeniami** do testowania łączności TCP z maszyny Wirtualnej na wewnętrzny lub zewnętrzny adres IP.
+1. W [Azure Portal](https://portal.azure.com)Otwórz **Network Watcher**, a następnie wybierz pozycję **Weryfikuj przepływ IP**. 
+2. Określ maszynę wirtualną i adres IP urządzenie WUS, a następnie sprawdź, czy ruch jest blokowany przez wszystkie sieciowe grupy zabezpieczeń (sieciowej grupy zabezpieczeń).
+3. Jeśli istnieje reguła sieciowej grupy zabezpieczeń, która blokuje ruch, zlokalizuj sieciowej grupy zabezpieczeń w **skutecznych** regułach zabezpieczeń, a następnie zaktualizuj je, aby zezwolić na przekazywanie ruchu. Następnie ponownie uruchom **weryfikację przepływu IP** i Użyj **rozwiązywania problemów z połączeniami** , aby przetestować komunikację TCP z maszyny wirtualnej na wewnętrzny lub zewnętrzny adres IP.
 
-**Sprawdź, czy urządzenie WUS i maszyny wirtualne nasłuchują oczekiwanego natężenia ruchu**
+**Sprawdź, czy urządzenie WUS i maszyny wirtualne nasłuchują oczekiwanego ruchu**
 
-1. Łączenie z urządzenia WUS za pomocą protokołu RDP lub SSH, a następnie uruchom następujące polecenie:
+1. Połącz się z usługą urządzenie WUS przy użyciu protokołu RDP lub SSH, a następnie uruchom następujące polecenie:
 
     W przypadku systemu Windows:
 
@@ -108,38 +108,38 @@ Korzystanie z programu PowerShell
     Dla systemu Linux:
 
         netstat -an | grep -i listen
-2. Jeśli nie widzisz port TCP używany przez urządzenie WUS oprogramowania, który znajduje się w wynikach należy skonfigurować aplikację na urządzenie WUS i maszynę Wirtualną, aby nasłuchiwać i odpowiadać na ruch przychodzący, która będzie działać na te porty. [Skontaktuj się z dostawcą urządzenia WUS w celu uzyskania pomocy zgodnie z potrzebami](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
+2. Jeśli nie widzisz portu TCP, który jest używany przez oprogramowanie urządzenie WUS wymienione w wynikach, musisz skonfigurować aplikację na urządzenie WUS i maszynie wirtualnej, aby nasłuchiwać i odpowiadać na ruch, który dociera do tych portów. [Skontaktuj się z dostawcą urządzenie WUS, aby uzyskać pomoc w razie potrzeby](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
 
-## <a name="check-nva-performance"></a>Sprawdź wydajność urządzenia WUS
+## <a name="check-nva-performance"></a>Sprawdź wydajność urządzenie WUS
 
-### <a name="validate-vm-cpu"></a>Sprawdź poprawność Procesora maszyny Wirtualnej
+### <a name="validate-vm-cpu"></a>Weryfikuj procesor maszyny wirtualnej
 
-Jeśli użycie procesora CPU pobiera bliskie 100 procent, mogą wystąpić problemy, które mają wpływ na sieć pakietów docelowych. Raporty maszyny Wirtualnej średni procesora CPU dla przedział czasu określonego w witrynie Azure portal. Podczas wzrost użycia Procesora Zbadaj, który proces na gościa maszyny Wirtualnej powoduje wysokie użycie procesora CPU i rozwiązać go, jeśli jest to możliwe. Należy również zmienić rozmiar maszyny Wirtualnej na większy rozmiar jednostki SKU lub, w przypadku zestawu skalowania maszyn wirtualnych, zwiększ liczbę wystąpień lub zestawu skalowania automatycznego, użycie procesora CPU. Dla jednej z tych problemów [skontaktuj się z dostawcą urządzenia WUS w celu uzyskania pomocy](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines), zgodnie z potrzebami.
+Jeśli użycie procesora CPU zostanie zbliżone do 100%, mogą wystąpić problemy, które mają wpływ na porzucanie pakietów sieciowych. Maszyna wirtualna raportuje średni procesor CPU dla określonego przedziału czasu w Azure Portal. Podczas przechodzenia przez procesor CPU Sprawdź, który proces na maszynie wirtualnej gościa powoduje duże wykorzystanie procesora CPU, i Ogranicz go, jeśli to możliwe. Może być również konieczne zmianę rozmiaru maszyny wirtualnej na większy rozmiar jednostki SKU lub, w przypadku zestawu skalowania maszyn wirtualnych, zwiększenia liczby wystąpień lub ustawienia skalowania automatycznego przy użyciu procesora. W razie potrzeby należy [skontaktować się z dostawcą urządzenie WUS w celu uzyskania pomocy](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
 
-### <a name="validate-vm-network-statistics"></a>Sprawdź poprawność statystykę sieci maszyny Wirtualnej
+### <a name="validate-vm-network-statistics"></a>Weryfikowanie statystyk sieci maszyn wirtualnych
 
-Jeśli używasz sieci maszyny Wirtualnej gwałtowne wzrosty lub pokazuje okresami wysokiego użycia, również może być konieczne zwiększenie rozmiaru jednostki SKU maszyny Wirtualnej w celu uzyskania wyższej przepływności możliwości. Można także wdrożyć ponownie maszyny Wirtualnej, dzięki przyspieszonej sieci włączona. Aby sprawdzić, czy urządzenie WUS obsługuje funkcję przyspieszonej sieci, [skontaktuj się z dostawcą urządzenia WUS w celu uzyskania pomocy](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines), zgodnie z potrzebami.
+Jeśli w sieci maszyny wirtualnej używane są skoki lub przedstawiono okresy wysokiego użycia, może być również konieczne zwiększenie rozmiaru jednostki SKU maszyny wirtualnej w celu uzyskania większej przepływności. Możesz również ponownie wdrożyć maszynę wirtualną, korzystając z włączonej przyspieszonej sieci. Aby sprawdzić, czy urządzenie WUS obsługuje funkcję przyspieszonej sieci, należy [skontaktować się z dostawcą urządzenie WUS w celu uzyskania pomocy](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
 
-## <a name="advanced-network-administrator-troubleshooting"></a>Administrator sieci Zaawansowane rozwiązywanie problemów z
+## <a name="advanced-network-administrator-troubleshooting"></a>Zaawansowane rozwiązywanie problemów z administratorem sieci
 
-### <a name="capture-network-trace"></a>Przechwytywania śledzenia sieci
-Przechwytywanie, Śledzenie sieci na źródłowej maszynie Wirtualnej urządzenie WUS i docelowej maszyny Wirtualnej podczas uruchamiania **[PsPing](https://docs.microsoft.com/sysinternals/downloads/psping)** lub **Nmap**, a następnie Zatrzymaj śledzenie.
+### <a name="capture-network-trace"></a>Przechwyć śledzenie sieci
+Przechwyć jednoczesne śledzenie sieci na źródłowej maszynie wirtualnej, urządzenie WUS i docelowej maszynie wirtualnej podczas uruchamiania **[PsPing](https://docs.microsoft.com/sysinternals/downloads/psping)** lub **Nmap**, a następnie Zatrzymaj śledzenie.
 
-1. Do przechwytywania śladu sieci, uruchom następujące polecenie:
+1. Aby przechwycić jednoczesne śledzenie sieci, uruchom następujące polecenie:
 
-   **Dla Windows**
+   **Dla systemu Windows**
 
-   netsh trace start capture = yes tracefile=c:\adres_ip_serwera.etl scenario = netconnection
+   Śledzenie śledzenia rozpoczęcia przechwytywania = Yes TraceFile = c:\server_IP.etl scenariusz = NetConnection
 
-   **For Linux**
+   **Dla systemu Linux**
 
-   sudo tcpdump -s0 -i eth0 -X -w vmtrace.cap
+   sudo tcpdump-S0-i eth0-X-w vmtrace. Cap
 
-2. Użyj **PsPing** lub **Nmap** ze źródłowej maszyny Wirtualnej do lokalizacji docelowej maszyny Wirtualnej (na przykład: `PsPing 10.0.0.4:80` lub `Nmap -p 80 10.0.0.4`).
-3. Otwórz dane śledzenia sieci z docelowej maszyny Wirtualnej przy użyciu [Network Monitor](https://www.microsoft.com/download/details.aspx?id=4865) lub tcpdump. Zastosuj filtr wyświetlania dla adresu IP maszyny wirtualnej źródłowego uruchomiono **PsPing** lub **Nmap** , takich jak `IPv4.address==10.0.0.4 (Windows netmon)` lub `tcpdump -nn -r vmtrace.cap src or dst host 10.0.0.4` (Linux).
+2. Użyj **PsPing** lub **Nmap** ze źródłowej maszyny wirtualnej na docelowej maszynie wirtualnej (na przykład `PsPing 10.0.0.4:80` : `Nmap -p 80 10.0.0.4`lub).
+3. Otwórz ślad sieci z docelowej maszyny wirtualnej przy użyciu [Monitor sieci](https://www.microsoft.com/download/details.aspx?id=4865) lub tcpdump. Zastosuj filtr wyświetlania dla adresu IP źródłowej maszyny wirtualnej `IPv4.address==10.0.0.4 (Windows netmon)` , z której uruchomiono **PsPing** lub **Nmap** , na przykład `tcpdump -nn -r vmtrace.cap src or dst host 10.0.0.4` lub (Linux).
 
-### <a name="analyze-traces"></a>Analizowanie danych śledzenia
+### <a name="analyze-traces"></a>Analizowanie śladów
 
-Jeśli pakiety przychodzące do danych śledzenia maszyny Wirtualnej zaplecza nie jest widoczny, prawdopodobnie jest sieciowa grupa zabezpieczeń lub trasa zdefiniowana przez użytkownika zakłóca lub tabele routingu urządzenia WUS są niepoprawne.
+Jeśli pakiety przychodzące do śladu maszyny wirtualnej wewnętrznej bazy danych nie są widoczne, prawdopodobnie sieciowej grupy zabezpieczeń lub UDR się z nieprawidłowymi tabelami routingu urządzenie WUS.
 
-Jeśli pakiety przychodzące są widoczne, ale brak jest odpowiedzi, być może musisz rozwiązać problem z zaporą lub aplikacją maszyny wirtualnej. Dla jednej z tych problemów [skontaktuj się z dostawcą urządzenia WUS w celu uzyskania pomocy zgodnie z potrzebami](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
+Jeśli pakiety przychodzące są widoczne, ale brak jest odpowiedzi, być może musisz rozwiązać problem z zaporą lub aplikacją maszyny wirtualnej. W przypadku każdego z tych problemów należy [skontaktować się z dostawcą urządzenie WUS, aby uzyskać pomoc w razie potrzeby](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).

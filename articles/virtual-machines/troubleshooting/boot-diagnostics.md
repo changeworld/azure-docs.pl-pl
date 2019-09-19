@@ -1,29 +1,29 @@
 ---
-title: Diagnostyka rozruchu dla maszyn wirtualnych na platformie Azure | Microsoft docs
-description: Przegląd debugowania funkcji dwóch maszyn wirtualnych na platformie Azure
+title: Diagnostyka rozruchu dla maszyn wirtualnych na platformie Azure | Microsoft doc
+description: Przegląd dwóch funkcji debugowania dla maszyn wirtualnych na platformie Azure
 services: virtual-machines
 author: Deland-Han
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: 7796d24b88ccc531b8042bfadf9d87f0072a2994
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: d34182e09bf453dbec1e9592f131cb9b3b78a086
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709861"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086485"
 ---
-# <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>Jak rozwiązywać problemy z maszyn wirtualnych na platformie Azure przy użyciu diagnostyki rozruchu
+# <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>Jak rozwiązywać problemy z maszynami wirtualnymi na platformie Azure przy użyciu diagnostyki rozruchu
 
-Może istnieć wiele przyczyn, że maszyna wirtualna przechodzi do stanu uniemożliwiającego. Aby rozwiązać problemy z przy użyciu maszyn wirtualnych utworzonych za pomocą modelu wdrażania usługi Resource Manager, można użyć następujących funkcji debugowania: Dane wyjściowe konsoli i tworzenia zrzutów ekranu pomocy technicznej dla maszyn wirtualnych platformy Azure. 
+Może istnieć wiele powodów, w których maszyna wirtualna przechodzi w stan rozruchowy. Aby rozwiązać problemy z maszynami wirtualnymi utworzonymi za pomocą Menedżer zasobów model wdrażania, można użyć następujących funkcji debugowania: Obsługa danych wyjściowych konsoli i zrzutu ekranu dla maszyn wirtualnych platformy Azure. 
 
-W przypadku maszyn wirtualnych systemu Linux można wyświetlić dane wyjściowe konsoli dziennika z poziomu portalu. Dla maszyn wirtualnych systemów Windows i Linux system Azure umożliwia wyświetlenie zrzutu ekranu maszyny Wirtualnej z funkcji hypervisor. Obie funkcje są obsługiwane dla maszyn wirtualnych platformy Azure we wszystkich regionach. Należy pamiętać, że może minąć do 10 minut, zanim zrzuty ekranu i dane wyjściowe pojawią się na koncie magazynu.
+W przypadku maszyn wirtualnych z systemem Linux można wyświetlić dane wyjściowe dziennika konsoli z portalu. W przypadku maszyn wirtualnych z systemami Windows i Linux platforma Azure umożliwia wyświetlenie zrzutu ekranu maszyny wirtualnej z funkcji hypervisor. Obie funkcje są obsługiwane w przypadku maszyn wirtualnych platformy Azure we wszystkich regionach. Należy pamiętać, że może minąć do 10 minut, zanim zrzuty ekranu i dane wyjściowe pojawią się na koncie magazynu.
 
-Możesz wybrać **diagnostykę rozruchu** opcję, aby wyświetlić dziennik i zrzutu ekranu.
+Możesz wybrać opcję **Diagnostyka rozruchu** , aby wyświetlić dziennik i zrzut ekranu.
 
 ![Resource Manager](./media/virtual-machines-common-boot-diagnostics/screenshot1.png)
 
@@ -45,19 +45,19 @@ Możesz wybrać **diagnostykę rozruchu** opcję, aby wyświetlić dziennik i zr
 
 ## <a name="enable-diagnostics-on-a-virtual-machine-created-using-the-azure-portal"></a>Włączanie diagnostyki na maszynie wirtualnej utworzonej przy użyciu witryny Azure Portal
 
-Poniższa procedura dotyczy maszyny wirtualnej utworzonej przy użyciu modelu wdrażania usługi Resource Manager.
+Poniższa procedura dotyczy maszyny wirtualnej utworzonej przy użyciu modelu wdrażania Menedżer zasobów.
 
-Na **zarządzania** na karcie **monitorowanie** sekcji, upewnij się, że **diagnostykę rozruchu** jest włączona. Z **konto magazynu diagnostyki** listę rozwijaną, wybierz konto magazynu, w której chcesz umieścić pliki diagnostyczne na liście.
+Na karcie **Zarządzanie** w sekcji **monitorowanie** upewnij się, że **Diagnostyka rozruchu** jest włączona. Z listy rozwijanej **konto magazynu diagnostyki** wybierz konto magazynu, w którym mają zostać umieszczone pliki diagnostyczne.
  
-![Tworzenie maszyny wirtualnej](./media/virtual-machines-common-boot-diagnostics/enable-boot-diagnostics-vm.png)
+![Utwórz maszynę wirtualną](./media/virtual-machines-common-boot-diagnostics/enable-boot-diagnostics-vm.png)
 
 > [!NOTE]
-> Funkcja diagnostyki rozruchu nie obsługuje konta magazynu premium storage. Jeśli używasz konta usługi premium storage dla diagnostyki rozruchu po uruchomieniu maszyny Wirtualnej można otrzymać błąd StorageAccountTypeNotSupported.
+> Funkcja diagnostyki rozruchu nie obsługuje konta magazynu w warstwie Premium. Jeśli używasz konta usługi Premium Storage na potrzeby diagnostyki rozruchu, podczas uruchamiania maszyny wirtualnej może zostać wyświetlony błąd StorageAccountTypeNotSupported.
 >
 
-### <a name="deploying-from-an-azure-resource-manager-template"></a>Wdrażanie przy użyciu szablonu usługi Azure Resource Manager
+### <a name="deploying-from-an-azure-resource-manager-template"></a>Wdrażanie przy użyciu szablonu Azure Resource Manager
 
-Jeśli wykonujesz wdrożenie z szablonu usługi Azure Resource Manager, przejdź do zasobu maszyny wirtualnej i Dołącz sekcję profilu diagnostyki. Ustaw nagłówka wersji interfejsu API "2015-06-15" lub nowszej. Najnowsza wersja to "2018-10-01".
+W przypadku wdrażania z szablonu Azure Resource Manager przejdź do zasobu maszyny wirtualnej i Dołącz sekcję Profil diagnostyki. Ustaw nagłówek wersja interfejsu API na wartość "2015-06-15" lub nowszą. Najnowsza wersja to "2018-10-01".
 
 ```json
 {
@@ -79,22 +79,22 @@ Profil diagnostyki umożliwia wybranie konta magazynu, na którym chcesz umieśc
 }
 ```
 
-Aby uzyskać więcej informacji na temat wdrażania zasobów za pomocą szablonów, zobacz [Szybki Start: Tworzenie i wdrażanie szablonów usługi Azure Resource Manager przy użyciu witryny Azure Portal](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md).
+Aby uzyskać więcej informacji na temat wdrażania zasobów przy użyciu [szablonów, zobacz Szybki Start: Tworzenie i wdrażanie szablonów usługi Azure Resource Manager przy użyciu witryny Azure Portal](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md).
 
-## <a name="enable-boot-diagnostics-on-existing-virtual-machine"></a>Włącz diagnostykę rozruchu na istniejącej maszyny wirtualnej 
+## <a name="enable-boot-diagnostics-on-existing-virtual-machine"></a>Włącz diagnostykę rozruchu na istniejącej maszynie wirtualnej 
 
-Aby włączyć diagnostykę rozruchu na istniejącej maszyny wirtualnej, wykonaj następujące kroki:
+Aby włączyć diagnostykę rozruchu na istniejącej maszynie wirtualnej, wykonaj następujące kroki:
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com), a następnie wybierz maszynę wirtualną.
-2. W **pomoc techniczna i rozwiązywanie problemów z** zaznacz **diagnostykę rozruchu**, a następnie wybierz **ustawienia** kartę.
-3. W **diagnostykę rozruchu** ustawienia, zmienić stan **na**i z **konta magazynu** listy rozwijanej wybierz konto magazynu. 
+1. Zaloguj się do [Azure Portal](https://portal.azure.com), a następnie wybierz maszynę wirtualną.
+2. W sekcji **Pomoc techniczna i rozwiązywanie problemów** wybierz pozycję **Diagnostyka rozruchu**, a następnie wybierz kartę **Ustawienia** .
+3. W obszarze Ustawienia **diagnostyki rozruchu** Zmień stan na **włączone**, a na liście rozwijanej **konto magazynu** wybierz konto magazynu. 
 4. Zapisz zmianę.
 
     ![Aktualizowanie istniejącej maszyny wirtualnej](./media/virtual-machines-common-boot-diagnostics/enable-for-existing-vm.png)
 
-Należy ponownie uruchomić maszynę wirtualną, aby zmiana zaczęła obowiązywać.
+Aby zmiana zaczęła obowiązywać, należy ponownie uruchomić maszynę wirtualną.
 
-### <a name="enable-boot-diagnostics-using-the-azure-cli"></a>Włącz diagnostykę rozruchu przy użyciu wiersza polecenia platformy Azure
+### <a name="enable-boot-diagnostics-using-the-azure-cli"></a>Włączanie diagnostyki rozruchu przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Aby włączyć diagnostykę rozruchu na istniejącej maszynie wirtualnej platformy Azure, można użyć wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zobacz [diagnostyki rozruchu az vm](
-https://docs.microsoft.com/cli/azure/vm/boot-diagnostics?view=azure-cli-latest).
+Za pomocą interfejsu wiersza polecenia platformy Azure można włączyć diagnostykę rozruchu na istniejącej maszynie wirtualnej platformy Azure. Aby uzyskać więcej informacji, [Zobacz AZ VM Boot-](
+https://docs.microsoft.com/cli/azure/vm/boot-diagnostics?view=azure-cli-latest)Diagnostics.

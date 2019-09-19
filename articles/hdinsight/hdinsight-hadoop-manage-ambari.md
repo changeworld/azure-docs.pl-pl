@@ -2,18 +2,18 @@
 title: Monitorowanie usługi Azure HDInsight i zarządzanie nią za pomocą interfejsu użytkownika sieci Web Ambari
 description: Dowiedz się, jak używać Ambari do monitorowania klastrów usługi HDInsight opartych na systemie Linux i zarządzania nimi. W tym dokumencie dowiesz się, jak korzystać z interfejsu użytkownika sieci Web Ambari dołączonego do klastrów usługi HDInsight.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.author: hrasheed
-ms.openlocfilehash: 5b97e577216f5e34cd0a5bdd66eea2cf2efa0fee
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 2f46f90edcdd1c4cdf7583c7e628aee205b312e1
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035873"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098661"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Zarządzanie klastrami usługi HDInsight przy użyciu interfejsu użytkownika sieci Web Apache Ambari
 
@@ -47,7 +47,7 @@ Podczas nawiązywania połączenia z interfejsem użytkownika sieci Web Ambari z
 
 Gdy zostanie otwarta strona, zanotuj pasek u góry. Ten pasek zawiera następujące informacje i kontrolki:
 
-![Ambari — Nawigacja](./media/hdinsight-hadoop-manage-ambari/apache-ambari-dashboard.png)
+![Pulpit nawigacyjny Apache Ambari — Omówienie](./media/hdinsight-hadoop-manage-ambari/apache-ambari-dashboard.png)
 
 |Element |Opis |
 |---|---|
@@ -76,15 +76,15 @@ Alerty inne niż **OK** powodują wyświetlenie liczby alertów w pozycji **# al
 
 Alerty są zorganizowane w kilka domyślnych grup, które mogą być wyświetlane na stronie **alerty** .
 
-![Strona alerty](./media/hdinsight-hadoop-manage-ambari/hdinsight-alerts-page.png)
+![Podsumowanie strony alertów Apache Ambari](./media/hdinsight-hadoop-manage-ambari/hdinsight-alerts-page.png)
 
 Grupami można zarządzać za pomocą menu **Akcje** i wybierając pozycję **Zarządzaj grupami alertów**.
 
-![okno dialogowe Zarządzanie grupami alertów](./media/hdinsight-hadoop-manage-ambari/ambari-manage-alerts.png)
+![Zarządzanie grupami alertów w usłudze Apache Ambari](./media/hdinsight-hadoop-manage-ambari/ambari-manage-alerts.png)
 
 Możesz również zarządzać metodami alertów i tworzyć powiadomienia o alertach z menu **Akcje** , wybierając pozycję __Zarządzaj powiadomieniami o alertach__. Wyświetlane są wszystkie bieżące powiadomienia. W tym miejscu możesz również utworzyć powiadomienia. Powiadomienia mogą być wysyłane za pośrednictwem **poczty e-mail** lub **SNMP** , gdy wystąpią określone kombinacje alertów/ważności. Na przykład możesz wysłać wiadomość e-mail, gdy dowolne z alertów w grupie **domyślnej przędzy** ma wartość **krytyczne**.
 
-![Okno dialogowe tworzenia alertu](./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png)
+![Powiadomienie o utworzeniu alertu dotyczącego oprogramowania Apache Ambari](./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png)
 
 Na koniec wybranie opcji __Zarządzaj ustawieniami alertów__ z menu __Akcje__ pozwala określić, ile razy alert musi nastąpić przed wysłaniem powiadomienia. Tego ustawienia można użyć, aby uniemożliwić powiadomienia dotyczące błędów przejściowych.
 
@@ -92,28 +92,28 @@ Na koniec wybranie opcji __Zarządzaj ustawieniami alertów__ z menu __Akcje__ p
 
 Karta **metryki** pulpitu nawigacyjnego zawiera serię elementów widget, które ułatwiają szybkie monitorowanie stanu klastra. Kilka widżetów, takich jak **użycie procesora CPU**, udostępnia dodatkowe informacje po kliknięciu.
 
-![Pulpit nawigacyjny z metrykami](./media/hdinsight-hadoop-manage-ambari/hdi-metrics-dashboard.png)
+![Pulpit nawigacyjny Apache Ambari z metrykami](./media/hdinsight-hadoop-manage-ambari/hdi-metrics-dashboard.png)
 
 Na karcie **map cieplnych** są wyświetlane metryki jako kolorowe map cieplnych, które przechodzą z koloru zielonego na czerwony.
 
-![Pulpit nawigacyjny z map cieplnych](./media/hdinsight-hadoop-manage-ambari/hdi-heatmap-dashboard.png)
+![Pulpit nawigacyjny Apache Ambari z map cieplnych](./media/hdinsight-hadoop-manage-ambari/hdi-heatmap-dashboard.png)
 
 Aby uzyskać więcej informacji na temat węzłów w klastrze, wybierz pozycję **hosty**. Następnie wybierz konkretny wybrany węzeł.
 
-![Szczegóły hosta](./media/hdinsight-hadoop-manage-ambari/ambari-host-details1.png)
+![Szczegóły podsumowania hosta Apache Ambari](./media/hdinsight-hadoop-manage-ambari/ambari-host-details1.png)
 
 ### <a name="services"></a>Usługi
 
 Pasek boczny **usług** na pulpicie nawigacyjnym zapewnia szybki wgląd w informacje o stanie usług uruchomionych w klastrze. Różne ikony są używane do wskazywania stanu lub akcji, które należy wykonać. Na przykład żółty symbol odtwarzania jest wyświetlany, jeśli usługa musi zostać odtworzona.
 
-![pasek boczny usług](./media/hdinsight-hadoop-manage-ambari/apache-ambari-service-bar.png)
+![Pasek boczny usług Apache Ambari Services](./media/hdinsight-hadoop-manage-ambari/apache-ambari-service-bar.png)
 
 > [!NOTE]  
 > Wyświetlone usługi różnią się w zależności od typów i wersji klastra HDInsight. Wyświetlone w tym miejscu usługi mogą być inne niż usługi wyświetlane dla danego klastra.
 
 Wybranie usługi spowoduje wyświetlenie bardziej szczegółowych informacji na temat usługi.
 
-![informacje podsumowujące usługi](./media/hdinsight-hadoop-manage-ambari/ambari-service-details.png)
+![Informacje podsumowania usługi Apache Ambari](./media/hdinsight-hadoop-manage-ambari/ambari-service-details.png)
 
 #### <a name="quick-links"></a>Szybkie linki
 
@@ -142,7 +142,7 @@ Praca z użytkownikami, grupami i uprawnieniami jest obsługiwana w przypadku ko
 
 Na stronie **hosty** są wyświetlane wszystkie hosty w klastrze. Aby zarządzać hostami, wykonaj następujące kroki.
 
-![Strona hosts](./media/hdinsight-hadoop-manage-ambari/hdinsight-hosts-page.png)
+![Strona hostów Apache Ambari — Omówienie](./media/hdinsight-hadoop-manage-ambari/hdinsight-hosts-page.png)
 
 > [!NOTE]  
 > Dodawanie, likwidowanie i relikwidowanie hosta nie powinno być używane z klastrami usługi HDInsight.
@@ -168,7 +168,7 @@ Na stronie **hosty** są wyświetlane wszystkie hosty w klastrze. Aby zarządza�
 
 Na stronie **pulpit nawigacyjny** lub **usługi** Użyj przycisku **Akcje** znajdującego się u dołu listy usług, aby zatrzymać i uruchomić wszystkie usługi.
 
-![akcje usługi](./media/hdinsight-hadoop-manage-ambari/ambari-service-actions.png)
+![Lista akcji usługi Apache Ambari](./media/hdinsight-hadoop-manage-ambari/ambari-service-actions.png)
 
 > [!WARNING]  
 > Podczas **dodawania usługi** w tym menu nie należy używać go do dodawania usług do klastra usługi HDInsight. Przed zainicjowaniem obsługi klastra należy dodać nowe usługi przy użyciu akcji skryptu. Aby uzyskać więcej informacji o korzystaniu z akcji skryptu, zobacz [Dostosowywanie klastrów usługi HDInsight za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md).
@@ -179,7 +179,7 @@ Po kliknięciu przycisku **Akcje** można uruchomić ponownie wszystkie usługi,
 
 2. W górnej części karty **Podsumowanie** Użyj przycisku **Akcje usługi** i wybierz akcję do wykonania. Spowoduje to ponowne uruchomienie usługi we wszystkich węzłach.
 
-    ![Akcja usługi](./media/hdinsight-hadoop-manage-ambari/individual-service-actions.png)
+    ![Akcje poszczególnych usług Apache Ambari](./media/hdinsight-hadoop-manage-ambari/individual-service-actions.png)
 
    > [!NOTE]  
    > Ponowne uruchamianie niektórych usług, gdy klaster jest uruchomiony, może generować alerty. Aby uniknąć alertów, można użyć przycisku **Akcje usługi** , aby włączyć **tryb konserwacji** dla usługi przed ponownym uruchomieniem.
@@ -195,7 +195,7 @@ Aby skonfigurować usługę, wykonaj następujące czynności:
 
 2. Wybierz **Configs** kartę. Zostanie wyświetlona bieżąca konfiguracja. Zostanie również wyświetlona lista poprzednich konfiguracji.
 
-    ![komputerów](./media/hdinsight-hadoop-manage-ambari/ambari-service-configs.png)
+    ![Konfiguracja usługi Apache Ambari](./media/hdinsight-hadoop-manage-ambari/ambari-service-configs.png)
 
 3. Użyj wyświetlanych pól, aby zmodyfikować konfigurację, a następnie wybierz pozycję **Zapisz**. Lub wybierz poprzednią konfigurację, a następnie wybierz pozycję **Ustaw jako bieżącą** , aby przywrócić poprzednie ustawienia.
 

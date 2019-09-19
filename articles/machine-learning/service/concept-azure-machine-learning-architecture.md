@@ -1,7 +1,7 @@
 ---
 title: Architektura & kluczowe pojęcia
-titleSuffix: Azure Machine Learning service
-description: Poznaj architekturę, terminy, koncepcje i przepływy pracy wchodzące w skład usługi Azure Machine Learning.
+titleSuffix: Azure Machine Learning
+description: Poznaj architekturę, terminy, koncepcje i przepływy pracy, które składają się Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,18 +10,18 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4e953ad732852f9ee99c7830997e2d1dc29b8f84
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 91c747b8b4ca58e7714dc101777bad51f9f0286f
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845013"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035595"
 ---
-# <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Jak działa usługa Azure Machine Learning: Architektura i pojęcia
+# <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Jak działa Azure Machine Learning: Architektura i pojęcia
 
-Poznaj architekturę, koncepcje i przepływ pracy dla usługi Azure Machine Learning. Główne składniki usługi i ogólny przepływ pracy związane z korzystaniem z usługi są pokazane na poniższym diagramie:
+Poznaj architekturę, koncepcje i przepływ pracy dla Azure Machine Learning. Główne składniki usługi i ogólny przepływ pracy związane z korzystaniem z usługi są pokazane na poniższym diagramie:
 
-![Architektura usługi Azure Machine Learning i przepływ pracy](./media/concept-azure-machine-learning-architecture/workflow.png)
+![Azure Machine Learning architektura i przepływ pracy](./media/concept-azure-machine-learning-architecture/workflow.png)
 
 ## <a name="workflow"></a>Przepływ pracy
 
@@ -47,10 +47,10 @@ Użyj tych narzędzi dla Azure Machine Learning:
 +  Korzystanie z usługi w dowolnym środowisku języka Python z [zestawem SDK Azure Machine Learning dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 + Automatyzuj działania uczenia maszynowego za pomocą [interfejsu wiersza polecenia Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli).
 + Napisz kod w Visual Studio Code z [rozszerzeniem Azure Machine Learning vs Code](how-to-vscode-tools.md)
-+ Użyj [interfejsu wizualizacji (wersja zapoznawcza) usługi Azure Machine Learning](ui-concept-visual-interface.md) , aby wykonać etapy przepływu pracy bez pisania kodu.
++ Użyj [interfejsu wizualizacji (wersja zapoznawcza), aby uzyskać Azure Machine Learning](ui-concept-visual-interface.md) wykonywania kroków przepływu pracy bez pisania kodu.
 
 > [!NOTE]
-> Chociaż w tym artykule opisano warunki i pojęcia używane przez usługę Azure Machine Learning, nie definiujemy warunków i koncepcji dla platformy Azure. Aby uzyskać więcej informacji na temat terminologii platformy Azure, zobacz [słownik Microsoft Azure](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology).
+> Chociaż w tym artykule opisano warunki i pojęcia używane przez Azure Machine Learning, nie zdefiniowano warunków i koncepcji dla platformy Azure. Aby uzyskać więcej informacji na temat terminologii platformy Azure, zobacz [słownik Microsoft Azure](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology).
 
 ## <a name="glossary"></a>Słownik
 
@@ -75,7 +75,7 @@ Użyj tych narzędzi dla Azure Machine Learning:
 
 ### <a name="workspaces"></a>Obszary robocze
 
-[Obszar roboczy](concept-workspace.md) jest zasobem najwyższego poziomu dla usługi Azure Machine Learning. Zapewnia centralne miejsce do pracy ze wszystkimi artefaktami tworzonymi podczas korzystania z usługi Azure Machine Learning. Obszar roboczy można udostępniać innym osobom. Aby uzyskać szczegółowy opis obszarów roboczych, zobacz [co to jest obszar roboczy Azure Machine Learning?](concept-workspace.md)
+[Obszar roboczy](concept-workspace.md) jest zasobem najwyższego poziomu dla Azure Machine Learning. Zapewnia centralne miejsce do pracy ze wszystkimi artefaktami tworzonymi podczas korzystania z Azure Machine Learning. Obszar roboczy można udostępniać innym osobom. Aby uzyskać szczegółowy opis obszarów roboczych, zobacz [co to jest obszar roboczy Azure Machine Learning?](concept-workspace.md)
 
 ### <a name="experiments"></a>Eksperymenty
 
@@ -87,13 +87,13 @@ Przykład korzystania z eksperymentu można znaleźć [w samouczku: Uczenie swoj
 
 W najprostszym modelem jest fragmentem kodu, który przyjmuje dane wejściowe i generuje dane wyjściowe. Tworzenie modelu uczenia maszynowego obejmuje algorytmu, wybierając dostarczanie danych i dostosowywanie hiperparametrów. Szkolenie jest procesem iteracyjnym, tworzącego trenowanego modelu, który hermetyzuje, jakie zakorzenione podczas procesu uczenia modelu.
 
-Model jest generowany przez uruchomienie w usłudze Azure Machine Learning. Można również użyć modelu, który jest przeszkolony poza Azure Machine Learning. Model można zarejestrować w obszarze roboczym usługi Azure Machine Learning.
+Model jest generowany przez uruchomienie w usłudze Azure Machine Learning. Można również użyć modelu, który jest przeszkolony poza Azure Machine Learning. Model można zarejestrować w obszarze roboczym Azure Machine Learning.
 
-Usługa Azure Machine Learning jest platformą niezależny od. Podczas tworzenia modelu można użyć dowolnej popularnej platformy uczenia maszynowego, takiej jak Scikit-Learning, XGBoost, PyTorch, TensorFlow i łańcucha.
+Azure Machine Learning to struktura niezależny od. Podczas tworzenia modelu można użyć dowolnej popularnej platformy uczenia maszynowego, takiej jak Scikit-Learning, XGBoost, PyTorch, TensorFlow i łańcucha.
 
-Aby zapoznać się z przykładem szkoleń dotyczących modelu przy użyciu Scikit — uczenie i [szacowania, zobacz Samouczek: uczenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning](tutorial-train-models-with-aml.md).
+Aby zapoznać się z przykładem szkoleń dotyczących modelu przy użyciu Scikit — uczenie i [szacowania, zobacz Samouczek: Uczenie modelu klasyfikacji obrazów przy użyciu](tutorial-train-models-with-aml.md)Azure Machine Learning.
 
-**Rejestr modelu** śledzi wszystkie modele w obszarze roboczym usługi Azure Machine Learning.
+**Rejestr modelu** śledzi wszystkie modele w obszarze roboczym Azure Machine Learning.
 
 Modele są identyfikowane przez nazwę i wersję. Za każdym razem, gdy rejestrujesz model o takiej samej nazwie jak istniejący, rejestr założono, że jest to nowa wersja. Wersja jest zwiększana, a nowy model jest zarejestrowany pod tą samą nazwą.
 
@@ -124,8 +124,8 @@ Aby uzyskać więcej informacji zobacz następujące artykuły:
 
 * [Uczenie modeli ml z szacowania](how-to-train-ml-models.md).
 * [Pytorch modele uczenia głębokiego na dużą skalę w Azure Machine Learning](how-to-train-pytorch.md).
-* [Uczenie i rejestrowanie modeli TensorFlow na dużą skalę dzięki usłudze Azure Machine Learning](how-to-train-tensorflow.md).
-* [Uczenie i rejestrowanie modeli łańcucha na dużą skalę dzięki usłudze Azure Machine Learning](how-to-train-chainer.md).
+* [Uczenie i rejestrowanie modeli TensorFlow na dużą skalę przy użyciu Azure Machine Learning](how-to-train-tensorflow.md).
+* [Uczenie i rejestrowanie modeli łańcucha na dużą skalę przy użyciu Azure Machine Learning](how-to-train-chainer.md).
 
 ### <a name="datasets-and-datastores"></a>Zestawy danych i magazyny datastores
 
@@ -147,7 +147,7 @@ Dowiedz się więcej o [dostępnych celach obliczeniowych na potrzeby szkolenia 
 
 Do nauczenia modelu, można określić katalog, który zawiera skrypt szkolenia i skojarzone pliki. Należy również określić nazwę eksperymentu, która jest używana do przechowywania informacji zebranych podczas szkolenia. Podczas szkolenia cały katalog jest kopiowany do środowiska szkoleniowego (elementu docelowego obliczeń), a skrypt określony przez konfigurację uruchamiania jest uruchamiany. Migawka katalogu znajduje się również w obszarze eksperymentu, w obszarze roboczym.
 
-Przykład — patrz [Tutorial: uczenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning](tutorial-train-models-with-aml.md).
+Przykład — patrz [Tutorial: Uczenie modelu klasyfikacji obrazów przy użyciu](tutorial-train-models-with-aml.md)Azure Machine Learning.
 
 ### <a name="runs"></a>Przebiegi
 
@@ -193,7 +193,7 @@ Azure Machine Learning można utworzyć dwa typy obrazów:
 * **Obraz FPGA**: Używane podczas wdrażania do tablicy opartej na trybie programowalnym dla pól na platformie Azure.
 * **Obraz platformy Docker**: Używane podczas wdrażania do elementów docelowych obliczeń innych niż FPGA. Przykłady to Azure Container Instances i usługa Azure Kubernetes.
 
-Usługa Azure Machine Learning udostępnia obraz podstawowy, który jest używany domyślnie. Możesz również udostępnić własne obrazy niestandardowe.
+Azure Machine Learning udostępnia obraz podstawowy, który jest używany domyślnie. Możesz również udostępnić własne obrazy niestandardowe.
 
 ### <a name="image-registry"></a>Rejestru obrazów
 
@@ -239,8 +239,8 @@ Podczas opracowywania rozwiązania Użyj zestawu SDK języka Python Azure Machin
 
 ### <a name="next-steps"></a>Następne kroki
 
-Aby rozpocząć pracę z usługą Azure Machine Learning, zobacz:
+Aby rozpocząć pracę z Azure Machine Learning, zobacz:
 
-* [Co to jest usługa Azure Machine Learning?](overview-what-is-azure-ml.md)
+* [Co to jest Azure Machine Learning?](overview-what-is-azure-ml.md)
 * [Tworzenie obszaru roboczego usługi Azure Machine Learning](how-to-manage-workspace.md)
 * [Samouczek (część 1): trenowanie modelu](tutorial-train-models-with-aml.md)

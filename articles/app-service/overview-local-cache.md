@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 03/04/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 9102d6f3ce3be44107268419517dc9ebe434ac7a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bfb66789df3236c096ea00bcc83ddc435e87f047
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098459"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097662"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Omówienie lokalnej pamięci podręcznej Azure App Service
 
@@ -49,7 +49,7 @@ Funkcja lokalnej pamięci podręcznej Azure App Service udostępnia widok roli s
 * Lokalna pamięć podręczna zawiera jednorazową kopię folderów _/Konfiguracja_ i _/siteextensions_ magazynu zawartości udostępnionej odpowiednio w _D:\home\site_ i _D:\home\siteextensions_. Pliki są kopiowane do lokalnej pamięci podręcznej podczas uruchamiania aplikacji. Rozmiar dwóch folderów dla każdej aplikacji jest domyślnie ograniczony do 300 MB, ale można go zwiększyć do 2 GB.
 * Lokalna pamięć podręczna to odczyt i zapis. Jednak jakakolwiek modyfikacja zostanie odrzucona, gdy aplikacja przenosi maszyny wirtualne lub zostanie uruchomiona ponownie. Nie należy używać lokalnej pamięci podręcznej dla aplikacji, które przechowują dane o kluczowym znaczeniu w magazynie zawartości.
 * _D:\home\LogFiles_ i _D:\home\Data_ zawierają pliki dziennika i dane aplikacji. Dwa podfoldery są przechowywane lokalnie w wystąpieniu maszyny wirtualnej i są kopiowane do magazynu zawartości udostępnionej okresowo. Aplikacje mogą utrwalać pliki i dane dziennika, pisząc je w tych folderach. Kopiowanie do magazynu zawartości udostępnionej jest jednak najlepszym rozwiązaniem, więc możliwe jest utratę plików dziennika i danych z powodu nagłej awarii wystąpienia maszyny wirtualnej.
-* Jest to wpływ na [przesyłanie strumieniowe dzienników](troubleshoot-diagnostic-logs.md#streamlogs) . W dziennikach przesyłanych strumieniowo można obserwować maksymalnie jedną minutę.
+* Jest to wpływ na [przesyłanie strumieniowe dzienników](troubleshoot-diagnostic-logs.md#stream-logs) . W dziennikach przesyłanych strumieniowo można obserwować maksymalnie jedną minutę.
 * W magazynie zawartości udostępnionej istnieje zmiana struktury folderów _plików dziennika_ i folderów _danych_ dla aplikacji korzystających z lokalnej pamięci podręcznej. Istnieją teraz podfoldery, które są zgodne ze wzorcem nazewnictwa "unikatowy identyfikator" + sygnatura czasowa. Każdy z podfolderów odnosi się do wystąpienia maszyny wirtualnej, w której uruchomiona jest aplikacja lub została uruchomiona.
 * Inne foldery w _D:\home_ pozostają w lokalnej pamięci podręcznej i nie zostaną skopiowane do magazynu zawartości udostępnionej.
 * Wdrażanie aplikacji za pomocą dowolnej obsługiwanej metody publikuje się bezpośrednio w magazynie trwałych zawartości udostępnionej. Aby odświeżyć foldery _D:\home\site_ i _D:\home\siteextensions_ w lokalnej pamięci podręcznej, należy ponownie uruchomić aplikację. Aby zapewnić bezproblemowe cykl życia, zapoznaj się z informacjami w dalszej części tego artykułu.
@@ -101,7 +101,7 @@ Zalecamy używanie lokalnej pamięci podręcznej w połączeniu z funkcją [śro
 * Dodaj ustawienie `WEBSITE_LOCAL_CACHE_OPTION` aplikacji Sticky Notes z wartością `Always` do miejsca **produkcyjnego** . Jeśli używasz programu `WEBSITE_LOCAL_CACHE_SIZEINMB`, Dodaj go również jako ustawienie programu Sticky Notes do miejsca produkcyjnego.
 * Utwórz miejsce **przejściowe** i Opublikuj je w miejscu przejściowym. Zazwyczaj nie ustawia się miejsca przejściowego na używanie lokalnej pamięci podręcznej, aby umożliwić bezproblemowe cykle kompilowania wdrożeń na potrzeby testowania dla miejsca przejściowego, jeśli masz zalety lokalnej pamięci podręcznej w miejscu produkcyjnym.
 * Przetestuj lokację względem miejsca przejściowego.  
-* Gdy wszystko będzie gotowe, wystaw [operację wymiany](../app-service/deploy-staging-slots.md#Swap) między miejscami przejściowymi i produkcyjnymi.  
+* Gdy wszystko będzie gotowe, wystaw [operację wymiany między miejscami](../app-service/deploy-staging-slots.md#Swap) przejściowymi i produkcyjnymi.  
 * Ustawienia programu Sticky Notes obejmują nazwę i program Sticky Notes w gnieździe. Tak więc gdy miejsce przejściowe zostanie zamienione na środowisko produkcyjne, dziedziczy ustawienia lokalnej pamięci podręcznej. Nowo zamienione miejsce produkcyjne będzie uruchamiane w lokalnej pamięci podręcznej po kilku minutach i zostanie rozgrzane jako część gniazda rozgrzewania po wymianie. W związku z tym po zakończeniu wymiany gniazd miejsce produkcyjne jest uruchamiane względem lokalnej pamięci podręcznej.
 
 ## <a name="frequently-asked-questions-faq"></a>Często zadawane pytania

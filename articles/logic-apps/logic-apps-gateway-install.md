@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 09/01/2019
-ms.openlocfilehash: 3a197ab8d8c44229328c63330bcbc99fb2e64f01
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
-ms.translationtype: HT
+ms.openlocfilehash: a070b224b0cb1378f0ba6729af33840715dc0a29
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077265"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087726"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Zainstaluj lokalną bramę danych dla Azure Logic Apps
 
@@ -264,9 +264,9 @@ Poniżej przedstawiono sposoby dopasowywania lokalnych kont Active Directory za 
 
 Aby uzyskać więcej informacji zobacz następujące tematy:
 
-* [Lokalna brama danych — często zadawane pytania](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
-* [Rozwiązywanie problemów z lokalną bramą danych](https://docs.microsoft.com/data-integration/gateway/gateway-service-gateway-tshoot)
-* [Monitorowanie i Optymalizowanie wydajności bramy](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
+* [Lokalna brama danych — często zadawane pytania](/data-integration/gateway/service-gateway-onprem-faq)
+* [Rozwiązywanie problemów z lokalną bramą danych](/data-integration/gateway/service-gateway-tshoot)
+* [Monitorowanie i Optymalizowanie wydajności bramy](/data-integration/gateway/service-gateway-performance)
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -8,15 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: dalechen
+manager: dcscontentpm
 ms.author: daleche
 ms.reviewer: jrasnik
 ms.date: 01/25/2019
-ms.openlocfilehash: 6dccfca256239f922c2243e2ebfab5c26835ee98
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: cd0ab6d89d88c594d283dc0718c0f58ebb98bf43
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566305"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090798"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>Rozwiązywanie problemów z połączeniem do Azure SQL Database
 
@@ -77,7 +78,7 @@ Jeśli aplikacja trwale nie może nawiązać połączenia z Azure SQL Database, 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Kroki rozwiązywania problemów z łącznością trwałą
 1. Skonfiguruj [reguły zapory](sql-database-configure-firewall-settings.md) w taki sposób, aby zezwalały na adres IP klienta. W celach tymczasowych należy skonfigurować regułę zapory przy użyciu adresu 0.0.0.0 jako początkowy zakres adresów IP i przy użyciu wartości 255.255.255.255 jako końcowego zakresu adresów IP. Spowoduje to otwarcie serwera do wszystkich adresów IP. Jeśli spowoduje to rozwiązanie problemu z łącznością, Usuń tę regułę i Utwórz regułę zapory dla odpowiednio ograniczonego adresu IP lub zakresu adresów. 
 2. Na wszystkich zaporach między klientem a Internetem upewnij się, że port 1433 jest otwarty dla połączeń wychodzących. Zapoznaj się z tematem [Konfigurowanie zapory systemu Windows w celu zezwalania na dostęp do SQL Server](https://msdn.microsoft.com/library/cc646023.aspx) oraz [portów i protokołów wymaganych](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-ports) przez usługi, aby uzyskać dodatkowe wskaźniki związane z dodatkowymi portami, które należy otworzyć na potrzeby uwierzytelniania Azure Active Directory.
-3. Sprawdź parametry połączenia i inne ustawienia połączenia. Zobacz sekcję parametry połączenia w [temacie problemy](sql-database-connectivity-issues.md#connections-to-sql-database)z łącznością.
+3. Sprawdź parametry połączenia i inne ustawienia połączenia. Zobacz sekcję parametry połączenia w [temacie problemy z łącznością](sql-database-connectivity-issues.md#connections-to-sql-database).
 4. Sprawdź kondycję usługi na pulpicie nawigacyjnym. Jeśli uważasz, że wystąpi awaria regionalna, zapoznaj się z tematem [odzyskiwanie po awarii](sql-database-disaster-recovery.md) w celu wykonania czynności do odzyskania w nowym regionie.
 
 ## <a name="next-steps"></a>Następne kroki

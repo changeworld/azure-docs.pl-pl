@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 0b78b05e30185487df0b06d861b60b63741dc938
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 217601a430b40772eaf1f24c8e1501bc4b4fcae5
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073200"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71055307"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Często zadawane pytania dotyczące konfiguracji i zarządzania dla Web Apps na platformie Azure
 
@@ -71,7 +71,7 @@ Aby ustawić strefę czasową serwera dla aplikacji sieci Web:
     * Wartość = *wybrana strefa czasowa*
 3. Wybierz pozycję **Zapisz**.
 
-Zaakceptowane wartości można znaleźć w kolumnie **strefa** czasowa w artykule [default Time Zones](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) .
+W przypadku usług aplikacji działających w systemie Windows Zapoznaj się z kolumną **strefa** czasowa w artykule [strefy czasowe](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) dla zaakceptowanych wartości. W przypadku usług App Services działających w systemie Linux jako wartość strefy czasowej należy ustawić [nazwę bazy danych](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) . Oto przykład nazwy bazy danych: Ameryka/Adak.
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>Dlaczego moje ciągłe zadania WebJob czasami kończą się niepowodzeniem?
 
@@ -82,11 +82,11 @@ Domyślnie aplikacje sieci Web są zwalniane, jeśli są bezczynne przez określ
 Aby uzyskać listę wychodzących adresów IP dla aplikacji sieci Web:
 
 1. W Azure Portal, w bloku aplikacji sieci Web, przejdź do menu **Właściwości** .
-2. Wyszukaj wychodzące **adresy IP**.
+2. Wyszukaj **wychodzące adresy IP**.
 
 Zostanie wyświetlona lista wychodzących adresów IP.
 
-Aby dowiedzieć się, jak uzyskać wychodzący adres IP, jeśli witryna sieci Web jest hostowana w App Service Environment, zobacz [adresy sieci](environment/app-service-app-service-environment-network-architecture-overview.md#outbound-network-addresses)wychodzące.
+Aby dowiedzieć się, jak uzyskać wychodzący adres IP, jeśli witryna sieci Web jest hostowana w App Service Environment, zobacz [adresy sieci wychodzące](environment/app-service-app-service-environment-network-architecture-overview.md#outbound-network-addresses).
 
 ## <a name="how-do-i-get-a-reserved-or-dedicated-inbound-ip-address-for-my-web-app"></a>Jak mogę uzyskać zastrzeżony lub dedykowany adres IP ruchu przychodzącego dla mojej aplikacji sieci Web?
 
@@ -96,7 +96,7 @@ Należy pamiętać, że aby użyć dedykowanego lub zastrzeżony adres IP dla wy
 
 ## <a name="can-i-export-my-app-service-certificate-to-use-outside-azure-such-as-for-a-website-hosted-elsewhere"></a>Czy mogę wyeksportować certyfikat App Service, który ma być używany poza platformą Azure, na przykład w przypadku witryny sieci Web hostowanej w innym miejscu? 
 
-Certyfikaty App Service są uznawane za zasoby platformy Azure. Nie są one przeznaczone do użycia poza usługami platformy Azure. Nie można eksportować ich do użycia poza platformą Azure. Aby uzyskać więcej informacji, zobacz [często zadawane pytania dotyczące App Service certyfikatów i domen niestandardowych](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview).
+Tak, możesz wyeksportować je do użycia poza platformą Azure. Aby uzyskać więcej informacji, zobacz [często zadawane pytania dotyczące App Service certyfikatów i domen niestandardowych](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview).
 
 ## <a name="can-i-export-my-app-service-certificate-to-use-with-other-azure-cloud-services"></a>Czy mogę wyeksportować certyfikat App Service, który ma być używany z innymi usługami w chmurze Azure?
 
@@ -111,7 +111,7 @@ Typową przyczyną niepowodzenia tworzenia kopii zapasowej jest to, że niektór
 
 ## <a name="how-do-i-remove-a-header-from-the-http-response"></a>Jak mogę usunąć nagłówka z odpowiedzi HTTP?
 
-Aby usunąć nagłówki z odpowiedzi HTTP, zaktualizuj plik Web. config witryny. Aby uzyskać więcej informacji, zobacz [usuwanie standardowych nagłówków serwera w usłudze Azure](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/)websites.
+Aby usunąć nagłówki z odpowiedzi HTTP, zaktualizuj plik Web. config witryny. Aby uzyskać więcej informacji, zobacz [usuwanie standardowych nagłówków serwera w usłudze Azure Websites](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/).
 
 ## <a name="is-app-service-compliant-with-pci-standard-30-and-31"></a>Czy jest App Service zgodne ze standardami PCI 3,0 i 3,1?
 
@@ -159,8 +159,8 @@ Aby dodać regułę ponownego zapisywania adresu URL, Utwórz plik Web. config z
 
 Na poziomie witryny dostępne są dwie opcje kontrolowania ruchu przychodzącego do App Service:
 
-* Włącz ograniczenia dynamicznego adresu IP. Aby dowiedzieć się, jak włączyć ograniczenia dynamicznego adresu IP, zobacz [Ograniczenia adresów IP i domen dla usługi Azure](https://azure.microsoft.com/blog/ip-and-domain-restrictions-for-windows-azure-web-sites/)websites.
-* Włącz zabezpieczenia modułu. Aby dowiedzieć się, jak włączyć zabezpieczenia modułu, zobacz [zapory ModSecurity Web Application Firewall in Azure](https://azure.microsoft.com/blog/modsecurity-for-azure-websites/)websites.
+* Włącz ograniczenia dynamicznego adresu IP. Aby dowiedzieć się, jak włączyć ograniczenia dynamicznego adresu IP, zobacz [Ograniczenia adresów IP i domen dla usługi Azure Websites](https://azure.microsoft.com/blog/ip-and-domain-restrictions-for-windows-azure-web-sites/).
+* Włącz zabezpieczenia modułu. Aby dowiedzieć się, jak włączyć zabezpieczenia modułu, zobacz [zapory ModSecurity Web Application Firewall in Azure Websites](https://azure.microsoft.com/blog/modsecurity-for-azure-websites/).
 
 Jeśli używasz App Service Environment, możesz użyć [zapory Barracuda](https://azure.microsoft.com/blog/configuring-barracuda-web-application-firewall-for-azure-app-service-environment/).
 
@@ -199,7 +199,7 @@ Aby wyświetlić plik HAR, można użyć [przeglądarki Har](https://www.softwar
 
 Jeśli spróbujesz połączyć aplikację sieci Web platformy Azure z siecią wirtualną, która jest połączona z usługą Azure ExpressRoute, zakończy się niepowodzeniem. Zostanie wyświetlony następujący komunikat: "Brama nie jest bramą sieci VPN".
 
-Obecnie nie można mieć połączeń sieci VPN typu punkt-lokacja z siecią wirtualną, która jest połączona z usługą ExpressRoute. Sieć VPN typu punkt-lokacja i ExpressRoute nie mogą współistnieć w tej samej sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [limity i ograniczenia połączeń sieci VPN ExpressRoute i](../expressroute/expressroute-howto-coexist-classic.md#limits-and-limitations)lokacja-lokacja.
+Obecnie nie można mieć połączeń sieci VPN typu punkt-lokacja z siecią wirtualną, która jest połączona z usługą ExpressRoute. Sieć VPN typu punkt-lokacja i ExpressRoute nie mogą współistnieć w tej samej sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [limity i ograniczenia połączeń sieci VPN ExpressRoute i lokacja-lokacja](../expressroute/expressroute-howto-coexist-classic.md#limits-and-limitations).
 
 ## <a name="how-do-i-connect-an-app-service-web-app-to-a-virtual-network-that-has-a-static-routing-policy-based-gateway"></a>Jak mogę połączyć aplikację sieci Web App Service z siecią wirtualną, która ma bramę routingu statycznego (oparta na zasadach)
 

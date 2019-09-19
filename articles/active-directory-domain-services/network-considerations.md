@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.author: iainfou
-ms.openlocfilehash: 506967fc4cecd322c694d31789cf09bec22ad3d4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: e18f990885a25b7e130dfeb5a0a3425530ee11e6
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617323"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086584"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Zagadnienia dotyczące projektowania sieci wirtualnej i opcje konfiguracji Azure AD Domain Services
 
@@ -36,7 +36,7 @@ Podczas projektowania sieci wirtualnej dla usługi Azure AD DS są stosowane nas
     * Aby zminimalizować opóźnienie, należy utrzymać podstawowe aplikacje w pobliżu lub w tym samym regionie, w którym znajduje się podsieć sieci wirtualnej dla domeny zarządzanej platformy Azure AD DS. Między sieciami wirtualnymi platformy Azure można używać połączeń równorzędnych sieci wirtualnych lub wirtualnych sieci prywatnych (VPN).
 * Sieć wirtualna nie może polegać na usługach DNS innych niż udostępniane przez usługę Azure AD DS.
     * Usługa Azure AD DS udostępnia własną usługę DNS. Sieć wirtualna musi być skonfigurowana do używania tych adresów usługi DNS. Rozpoznawanie nazw dla dodatkowych przestrzeni nazw można wykonać przy użyciu usług przesyłania dalej warunkowego.
-    * Nie można użyć niestandardowych ustawień serwera DNS, aby skierować zapytania do innych serwerów DNS, w tym na maszynach wirtualnych. Zasoby w sieci wirtualnej muszą korzystać z usługi DNS dostępnej w usłudze Azure AD DS.
+    * Nie można użyć niestandardowych ustawień serwera DNS, aby kierować zapytania z innych serwerów DNS, w tym na maszynach wirtualnych. Zasoby w sieci wirtualnej muszą korzystać z usługi DNS dostępnej w usłudze Azure AD DS.
 
 > [!IMPORTANT]
 > Po włączeniu usługi nie można przenieść AD DS platformy Azure do innej sieci wirtualnej.
@@ -105,7 +105,7 @@ W przypadku domeny zarządzanej AD DS platformy Azure tworzone są pewne zasoby 
 
 Następujące reguły sieciowej grupy zabezpieczeń są wymagane dla usługi Azure AD DS, aby zapewnić uwierzytelnianie i usługi zarządzania. Nie Edytuj ani nie usuwaj tych reguł sieciowej grupy zabezpieczeń dla podsieci sieci wirtualnej, w której wdrożono domenę zarządzaną platformy Azure AD DS.
 
-| Numer portu | Protocol | Obiekt źródłowy                             | Miejsce docelowe | Action | Wymagane | Cel |
+| Numer portu | Protocol | Obiekt źródłowy                             | Destination | Action | Wymagane | Cel |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
 | 443         | TCP      | AzureActiveDirectoryDomainServices | Any         | Allow  | Tak      | Synchronizacja z dzierżawą usługi Azure AD. |
 | 3389        | TCP      | CorpNetSaw                         | Any         | Allow  | Tak      | Zarządzanie domeną. |

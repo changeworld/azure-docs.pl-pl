@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/27/2019
-ms.openlocfilehash: 66e0654162d3d0ac68d8fc1622358b36268569cf
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 3767ea10d777a0ea7ad88a2ffa4793e866ffbe6c
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916518"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091483"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>Architektura platformy Apache Hadoop w usłudze HDInsight
 
@@ -45,7 +45,7 @@ NodeManagers uruchamia zadania wchodzące w skład aplikacji, a następnie rapor
 
 Wszystkie typy klastrów usługi HDInsight wdrażają PRZĘDZę. Program ResourceManager został wdrożony w celu zapewnienia wysokiej dostępności z wystąpieniem podstawowym i pomocniczym, które działa odpowiednio do pierwszego i drugiego węzła głównego w klastrze. Tylko jedno wystąpienie obiektu ResourceManager jest aktywne w danym momencie. Wystąpienia Nodemanager działają w ramach dostępnych węzłów procesu roboczego w klastrze.
 
-![PRZĘDZa w usłudze HDInsight](./media/hdinsight-hadoop-architecture/apache-yarn-on-hdinsight.png)
+![Usługa Apache PRZĘDZ w usłudze Azure HDInsight](./media/hdinsight-hadoop-architecture/apache-yarn-on-hdinsight.png)
 
 ## <a name="next-steps"></a>Następne kroki
 

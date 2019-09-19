@@ -1,10 +1,10 @@
 ---
-title: Wyłącz gościa Zapora systemu operacyjnego na maszynie Wirtualnej platformy Azure | Dokumentacja firmy Microsoft
+title: Wyłączanie zapory systemu operacyjnego gościa na maszynie wirtualnej platformy Azure | Microsoft Docs
 description: ''
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: a8856bd46f516aa3c64965648d4f23b9ba665b1b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9ae8620b803fa9a911f44840a5fff5d190a316a1
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60505465"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086531"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Wyłączanie zapory systemu operacyjnego gościa na maszynie wirtualnej platformy Azure
 
-Ten artykuł zawiera odwołanie do sytuacji, w których istnieje podejrzenie, że Zapora systemu operacyjnego gościa jest filtrowanie ruchu częściowego lub ukończone z maszyną wirtualną (VM). To może wystąpić, jeśli celowo wprowadzono zmiany do zapory, która spowodowała połączenia RDP nie powiedzie się.
+Ten artykuł zawiera informacje dotyczące sytuacji, w których można podejrzewać, że Zapora systemu operacyjnego gościa filtruje częściowy lub kompletny ruch do maszyny wirtualnej. Taka sytuacja może wystąpić, jeśli zostały celowo wprowadzone zmiany w zaporze, która spowodowała niepowodzenie połączeń RDP.
 
 ## <a name="solution"></a>Rozwiązanie
 
-Proces, który jest opisany w tym artykule jest przeznaczona do użycia jako obejście tego problemu, dzięki czemu można skupić się nad rozwiązaniem problemu rzeczywistego problemu, czyli jak prawidłowo skonfigurować reguły zapory. S It\rquote najlepszym rozwiązaniem firmy Microsoft, aby mieć włączony składnik zapory Windows. Jak skonfigurować \cf3 reguły zapory zależy od poziomu dostępu do s that\rquote maszyn wirtualnych, które są wymagane.
+Proces opisany w tym artykule jest przeznaczony do użycia jako obejście, aby można było skupić się na rozwiązywaniu rzeczywistego problemu, co umożliwia poprawne skonfigurowanie reguł zapory. It\rquote s najlepszym rozwiązaniem firmy Microsoft do włączenia składnika Zapora systemu Windows. Sposób konfigurowania reguł zapory \cf3 zależy od poziomu dostępu do wymaganego that\rquote maszyny wirtualnej.
 
-### <a name="online-solutions"></a>Rozwiązania w trybie online 
+### <a name="online-solutions"></a>Rozwiązania online 
 
-Jeśli maszyna wirtualna jest w trybie online i jest dostępny w innej maszyny Wirtualnej w tej samej sieci wirtualnej, możesz tworzyć te środki zaradcze, przy użyciu innej maszyny Wirtualnej.
+Jeśli maszyna wirtualna jest w trybie online i jest dostępna na innej maszynie wirtualnej w tej samej sieci wirtualnej, można wykonać te środki zaradcze przy użyciu innej maszyny wirtualnej.
 
-#### <a name="mitigation-1-custom-script-extension-or-run-command-feature"></a>Ograniczenie 1: Niestandardowe rozszerzenie skryptu lub uruchom polecenie funkcji
+#### <a name="mitigation-1-custom-script-extension-or-run-command-feature"></a>Środki zaradcze 1: Niestandardowe rozszerzenie skryptu lub funkcja polecenia uruchamiania
 
-Jeśli masz już działający agenta platformy Azure, możesz użyć [rozszerzenia niestandardowego skryptu](../extensions/custom-script-windows.md) lub [uruchamianie poleceń](../windows/run-command.md) funkcję (tylko maszyny wirtualne usługi Resource Manager), aby zdalnie korzystać z poniższych skryptów.
+Jeśli korzystasz z działającego agenta platformy Azure, możesz użyć [niestandardowego rozszerzenia skryptu](../extensions/custom-script-windows.md) lub funkcji [Run Commands](../windows/run-command.md) (tylko Menedżer zasobów VM), aby zdalnie uruchamiać następujące skrypty.
 
 > [!Note]
 > * Jeśli Zapora jest ustawiona lokalnie, uruchom następujący skrypt:
@@ -45,18 +45,18 @@ Jeśli masz już działający agenta platformy Azure, możesz użyć [rozszerzen
 >   Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\Standardprofile' -name "EnableFirewall" -Value 0 
 >   Restart-Service -Name mpssvc
 >   ```
-> * Jeśli Zapora jest ustawiona przy użyciu zasad usługi Active Directory, możesz użyć Uruchom następujący skrypt do tymczasowego dostępu. 
+> * Jeśli Zapora jest ustawiona za pomocą zasad Active Directory, możesz użyć następującego skryptu, aby uzyskać tymczasowy dostęp. 
 >   ```
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile' -name "EnableFirewall" -Value 0
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile' -name "EnableFirewall" -Value 0
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile' name "EnableFirewall" -Value 0
 >   Restart-Service -Name mpssvc
 >   ```
->   Jednak zaraz po ponownym zastosowaniem zasady będzie można się z sesji zdalnej. Trwałe rozwiązanie tego problemu jest do modyfikowania zasad, które są stosowane na tym komputerze.
+>   Jednak zaraz po ponownym zastosowaniu zasad zostanie rozpoczęta Sesja zdalna. Nieodwracalna poprawka tego problemu polega na zmodyfikowaniu zasad, które są stosowane na tym komputerze.
 
-#### <a name="mitigation-2-remote-powershell"></a>Ograniczenie 2: Zdalnego programu PowerShell
+#### <a name="mitigation-2-remote-powershell"></a>Środki zaradcze 2: Zdalne środowisko PowerShell
 
-1.  Łączenie z maszyną Wirtualną, która znajduje się w tej samej sieci wirtualnej co maszyna wirtualna, która nie można nawiązać połączenia przy użyciu połączenia RDP.
+1.  Połącz się z MASZYNą wirtualną znajdującą się w tej samej sieci wirtualnej co maszyna wirtualna, której nie można połączyć przy użyciu połączenia RDP.
 
 2.  Otwórz okno konsoli programu PowerShell.
 
@@ -70,13 +70,13 @@ Jeśli masz już działający agenta platformy Azure, możesz użyć [rozszerzen
     ```
 
 > [!Note]
-> Jeśli Zapora jest ustawiona za pomocą obiektu zasad grupy, ta metoda może nie działać, ponieważ to polecenie powoduje zmianę tylko wpisy rejestru lokalnego. Jeśli zasady są spełnione, zastąpią tę zmianę. 
+> Jeśli Zapora jest ustawiona za pomocą obiektu zasady grupy, ta metoda może nie zadziałać, ponieważ to polecenie zmienia tylko lokalne wpisy rejestru. Jeśli zasady są stosowane, ta zmiana zostanie zastąpiona. 
 
-#### <a name="mitigation-3-pstools-commands"></a>Ograniczenie 3: Polecenia PSTools
+#### <a name="mitigation-3-pstools-commands"></a>Środki zaradcze 3: Polecenia program PsTools
 
-1.  Na maszyny Wirtualnej rozwiązywania problemów pobrać [PSTools](https://docs.microsoft.com/sysinternals/downloads/pstools).
+1.  Na maszynie wirtualnej Rozwiązywanie problemów Pobierz [program PsTools](https://docs.microsoft.com/sysinternals/downloads/pstools).
 
-2.  Otwórz wystąpienie CMD, a następnie dostęp do maszyny Wirtualnej przy użyciu jego adresu DIP.
+2.  Otwórz wystąpienie programu CMD, a następnie uzyskaj dostęp do maszyny wirtualnej za pomocą jej adresu DIP.
 
 3.  Uruchom następujące polecenia:
 
@@ -86,13 +86,13 @@ Jeśli masz już działający agenta platformy Azure, możesz użyć [rozszerzen
     psservice restart mpssvc
     ```
 
-#### <a name="mitigation-4-remote-registry"></a>Ograniczenie 4: Rejestr zdalny 
+#### <a name="mitigation-4-remote-registry"></a>Środki zaradcze 4: Rejestr zdalny 
 
-Wykonaj następujące kroki, aby użyć [Rejestr zdalny](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry).
+Wykonaj następujące kroki, aby użyć [rejestru zdalnego](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry).
 
-1.  W przypadku maszyny Wirtualnej rozwiązywania problemów Uruchom Edytor rejestru, a następnie przejdź do **pliku** > **rejestru połączenia sieciowego**.
+1.  Na maszynie wirtualnej Rozwiązywanie problemów Uruchom Edytor rejestru, a następnie przejdź do **pliku** > **Connect Network Registry**.
 
-2.  Otwórz *maszyna docelowa*\SYSTEM gałęzi, a następnie określ następujące wartości:
+2.  Otwórz gałąź \System *maszyny docelowej*i określ następujące wartości:
 
     ```
     <TARGET MACHINE>\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\DomainProfile\EnableFirewall           -->        0 
@@ -100,39 +100,39 @@ Wykonaj następujące kroki, aby użyć [Rejestr zdalny](https://support.microso
     <TARGET MACHINE>\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\EnableFirewall         -->        0
     ```
 
-3.  Uruchom ponownie usługę. Ponieważ nie możesz tego zrobić za pomocą Rejestr zdalny, należy użyć konsoli Usuń usługi.
+3.  Uruchom ponownie usługę. Ponieważ nie można tego zrobić za pomocą rejestru zdalnego, należy użyć polecenia Usuń konsolę usługi.
 
-4.  Otwórz wystąpienie **Services.msc**.
+4.  Otwórz wystąpienie programu **Services. msc**.
 
-5.  Kliknij przycisk **usługi (lokalne)** .
+5.  Kliknij pozycję **usługi (lokalne)** .
 
-6.  Wybierz **Podłącz do innego komputera**.
+6.  Wybierz pozycję **Połącz z innym komputerem**.
 
-7.  Wprowadź **prywatny adres IP (DIP)**  problemu maszyny Wirtualnej.
+7.  Wprowadź **prywatny adres IP (DIP)**  maszyny wirtualnej problemu.
 
-8.  Uruchom ponownie zasady lokalne zapory.
+8.  Uruchom ponownie lokalne zasady zapory.
 
-9.  Spróbuj ponownie nawiąż połączenie z maszyną wirtualną za pośrednictwem protokołu RDP z komputera lokalnego.
+9.  Spróbuj ponownie nawiązać połączenie z maszyną wirtualną za pośrednictwem protokołu RDP z komputera lokalnego.
 
 ### <a name="offline-solutions"></a>Rozwiązania w trybie offline 
 
-W przypadku sytuacji, w którym maszyna wirtualna nie można osiągnąć przez dowolną metodę rozszerzenia niestandardowego skryptu zakończy się niepowodzeniem, a trzeba będzie pracować w trybie OFFLINE dzięki pracy bezpośrednio w ramach dysku systemowego. W tym celu wykonaj następujące kroki:
+Jeśli masz sytuację, w której nie można nawiązać połączenia z maszyną wirtualną za pomocą żadnej metody, rozszerzenie niestandardowego skryptu zakończy się niepowodzeniem i będzie trzeba pracować w trybie OFFLINE, pracując bezpośrednio na dysku systemowym. W tym celu wykonaj następujące kroki:
 
 1.  [Dołącz dysk systemu do odzyskiwania maszyny Wirtualnej](troubleshoot-recovery-disks-portal-windows.md).
 
 2.  Rozpocznij połączenie pulpitu zdalnego do maszyny Wirtualnej odzyskiwania.
 
-3.  Upewnij się, że dysk zostanie oflagowana jako w trybie Online w konsoli Zarządzanie dyskami. Należy pamiętać, literę dysku, która jest przypisana do dysku systemowego dołączone.
+3.  Upewnij się, że dysk jest oflagowany jako online w konsoli Zarządzanie dyskami. Zanotuj literę dysku przypisaną do dołączonego dysku systemowego.
 
-4.  Przed wprowadzeniem zmiany należy utworzyć kopię folderu \windows\system32\config w przypadku, gdy konieczne jest wycofanie zmian.
+4.  Przed wprowadzeniem jakichkolwiek zmian Utwórz kopię folderu \Windows\System32\Config w przypadku, gdy konieczne jest wycofanie zmian.
 
-5.  Na maszyny Wirtualnej rozwiązywania problemów Uruchom Edytor rejestru (regedit.exe). 
+5.  Na maszynie wirtualnej Rozwiązywanie problemów Uruchom Edytor rejestru (regedit. exe). 
 
-6.  Do wykonania tej procedury rozwiązywania problemów firma Microsoft instalacji gałęzi jako BROKENSYSTEM i BROKENSOFTWARE.
+6.  W ramach tej procedury rozwiązywania problemów instalujemy gałęzie jako BROKENSYSTEM i BROKENSOFTWARE.
 
-7.  Zaznacz w kluczu HKEY_LOCAL_MACHINE, a następnie wybierz pozycję Plik > Załaduj gałąź rejestru z menu.
+7.  Zaznacz klucz HKEY_LOCAL_MACHINE, a następnie wybierz pozycję Plik > Załaduj gałąź z menu.
 
-8.  Zlokalizuj plik \windows\system32\config\SYSTEM na dołączonym dysku.
+8.  Zlokalizuj plik \windows\system32\config\SYSTEM na dołączonym dysku systemowym.
 
 9.  Otwórz wystąpienie programu PowerShell z podwyższonym poziomem uprawnień, a następnie uruchom następujące polecenia:
 
