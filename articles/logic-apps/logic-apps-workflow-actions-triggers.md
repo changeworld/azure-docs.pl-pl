@@ -63,10 +63,10 @@ Wyzwalacze mają te elementy najwyższego poziomu, chociaż niektóre są opcjon
 
 | Value | Type | Opis | 
 |-------|------|-------------| 
-| <*Tablica — warunki*> | Array | Tablica, która zawiera jeden lub więcej [warunków](#trigger-conditions) , które określają, czy należy uruchomić przepływ pracy. Dostępne tylko dla wyzwalaczy. | 
-| <*środowisko uruchomieniowe-config-opcje*> | Obiekt JSON | Można zmienić zachowanie uruchamiania wyzwalacza przez ustawienie `runtimeConfiguration` właściwości. Aby uzyskać więcej informacji, zobacz [Ustawienia konfiguracji środowiska uruchomieniowego](#runtime-config-options). | 
+| <*array-with-conditions*> | Array | Tablica, która zawiera jeden lub więcej [warunków](#trigger-conditions) , które określają, czy należy uruchomić przepływ pracy. Dostępne tylko dla wyzwalaczy. | 
+| <*runtime-config-options*> | Obiekt JSON | Można zmienić zachowanie uruchamiania wyzwalacza przez ustawienie `runtimeConfiguration` właściwości. Aby uzyskać więcej informacji, zobacz [Ustawienia konfiguracji środowiska uruchomieniowego](#runtime-config-options). | 
 | <*splitOn-expression*> | String | Dla wyzwalaczy, które zwracają tablicę, można określić wyrażenie dzielące [lub ](#split-on-debatch) departia elementów tablicowych na wiele wystąpień przepływu pracy do przetworzenia. | 
-| <*Operation — opcja*> | String | Zachowanie domyślne można zmienić, ustawiając `operationOptions` właściwość. Aby uzyskać więcej informacji, zobacz [Opcje operacji](#operation-options). | 
+| <*operation-option*> | String | Zachowanie domyślne można zmienić, ustawiając `operationOptions` właściwość. Aby uzyskać więcej informacji, zobacz [Opcje operacji](#operation-options). | 
 |||| 
 
 ## <a name="trigger-types-list"></a>Lista typów wyzwalaczy
