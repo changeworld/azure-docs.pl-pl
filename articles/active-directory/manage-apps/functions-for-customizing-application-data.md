@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec23d3f08fb22f73618c27443bcd8b72c43a9862
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: cd7abdeef7c13c272a0e4bbf2075c6eda8f73a07
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70113560"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162397"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Pisanie wyrażeń do mapowania atrybutów w usłudze Azure Active Directory
 Podczas konfigurowania, inicjowania obsługi administracyjnej aplikacji SaaS, jest jeden z typów mapowania atrybutów, które można określić mapowanie wyrażenia. W tym przypadku trzeba napisać wyrażenia podobne do skryptu, która pozwala na przekształcanie danych użytkowników w formatach, które są bardziej akceptowalne dla aplikacji SaaS.
@@ -29,13 +29,13 @@ Składnia wyrażeń do mapowania atrybutów jest przypominający języka Visual 
 
 * Całe wyrażenie musi być zdefiniowany w zakresie funkcji, które składają się z nazwy argumentów w nawiasach: <br>
   *FunctionName (`<<argument 1>>`,`<<argument N>>`)*
-* Może być zagnieżdżony funkcji w ramach siebie nawzajem. Przykład: <br> *FunctionOne(FunctionTwo(`<<argument1>>`))*
+* Może być zagnieżdżony funkcji w ramach siebie nawzajem. Na przykład: <br> *FunctionOne(FunctionTwo(`<<argument1>>`))*
 * Trzy różne rodzaje argumenty można przekazać do funkcji:
   
   1. Atrybuty, które muszą być ujęte w nawiasy kwadratowe. Na przykład: [attributeName]
   2. Stałe typu String, które muszą być ujęte w cudzysłów. Na przykład: "Stany Zjednoczone"
   3. Inne funkcje. Na przykład: FunctionOne (`<<argument1>>`, FunctionTwo (`<<argument2>>`))
-* Dla stałych ciągów Jeśli potrzebujesz kreski ułamkowej odwróconej (\) lub cudzysłowu (") w ciągu go należy użyć znaków ucieczki symbolem kreski ułamkowej odwróconej (\). Przykład: "Nazwa firmy: \\"Contoso\\" "
+* Dla stałych ciągów Jeśli potrzebujesz kreski ułamkowej odwróconej (\) lub cudzysłowu (") w ciągu go należy użyć znaków ucieczki symbolem kreski ułamkowej odwróconej (\). Na przykład: "Nazwa firmy: \\"Contoso\\" "
 
 ## <a name="list-of-functions"></a>Lista funkcji
 [Dołącz](#append) [](#join) [FormatDateTime](#formatdatetime) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [](#mid) &nbsp; [Nie](#not) [](#normalizediacritics) NormalizeDiacritics Mid &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Zastąp&nbsp; [SelectUniqueValue](#selectuniquevalue) [](#replace) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [ SingleAppRoleAssignment](#singleapproleassignment) &nbsp; SplitStripSpaces&nbsp; [](#stripspaces) [](#split)&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; PrzełączToLower&nbsp; [](#tolower) [](#switch) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [ToUpper](#toupper)
@@ -163,9 +163,10 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
 **Opis:**<br> Wymaga co najmniej dwa argumenty, które są definiowane przy użyciu wyrażeń zasad generowania unikatową wartość. Funkcja ocenia każdą regułę, a następnie sprawdza wartość generowane unikatowość w katalogu/aplikacji docelowej. Pierwszy unikatową wartość znalezione, zostanie zwrócony jeden. Jeśli wszystkie wartości już istnieje w docelowej, wpis będzie pobrać zdeponowane i przyczynę pobiera rejestrowane w dziennikach inspekcji. Nie ma żadnych górnej granicy liczby argumentów, które mogą być podane.
 
 > [!NOTE]
->1. To jest funkcja najwyższego poziomu, nie mogą być zagnieżdżone.
->2. Nie można zastosować tej funkcji do atrybutów, które mają pasujące pierwszeństwo.  
->3. Ta funkcja jest przeznaczone tylko do użytku z Tworzenie wpisu. Podczas korzystania z atrybutem, ustaw **zastosować mapowanie** właściwości **tylko podczas tworzenia obiektu**.
+> - To jest funkcja najwyższego poziomu, nie mogą być zagnieżdżone.
+> - Nie można zastosować tej funkcji do atrybutów, które mają pasujące pierwszeństwo.  
+> - Ta funkcja jest przeznaczone tylko do użytku z Tworzenie wpisu. Podczas korzystania z atrybutem, ustaw **zastosować mapowanie** właściwości **tylko podczas tworzenia obiektu**.
+> - Ta funkcja jest obecnie obsługiwana tylko w przypadku "Workday, Active Directory aprowizacji użytkowników". Nie można jej używać z innymi aplikacjami aprowizacji. 
 
 
 **Parametry:**<br> 
@@ -191,7 +192,7 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
 ### <a name="split"></a>Podziel
 **Funkcja:**<br> Split (Źródło, ogranicznik)
 
-**Opis:**<br> Dzieli ciąg na tablicę wartości Mulit przy użyciu określonego znaku ogranicznika.
+**Opis:**<br> Dzieli ciąg na tablicę wielowartościową przy użyciu określonego znaku ogranicznika.
 
 **Parametry:**<br> 
 
@@ -228,10 +229,10 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
 | **value** |Wymagane |Ciąg |Wartość zastąpienia dla **źródła** pasujący do klucza. |
 
 ---
-### <a name="tolower"></a>ToLower
+### <a name="tolower"></a>toLower
 **Funkcja:**<br> ToLower (Źródło, kultura)
 
-**Opis:**<br> Pobiera wartość ciągu *źródłowego* i konwertuje ją na małe litery przy użyciu określonych reguł kultury. Jeśli nie określono informacji o kulturze, będzie ona używać niezmiennej kultury.
+**Opis:**<br> Pobiera wartość ciągu *źródłowego* i konwertuje ją na małe litery przy użyciu określonych reguł kultury. Jeśli nie określono informacji o *kulturze* , będzie ona używać niezmiennej kultury.
 
 **Parametry:**<br> 
 
@@ -241,10 +242,10 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
 | **dziedzinie** |Optional |String |Format nazwy kultury opartej na dokumencie RFC 4646 to *languagecode2-Country/regioncode2*, gdzie *languagecode2* to kod języka dwuliterowego i *kraj/regioncode2* to kod podkultury dwuliterowej. Przykłady obejmują ja-JP dla języka japońskiego (Japonia) i EN-US dla języka angielskiego (Stany Zjednoczone). W przypadkach, gdy kod języka dwuliterowego nie jest dostępny, używany jest trzyliterowy kod pochodzący z normy ISO 639-2.|
 
 ---
-### <a name="toupper"></a>ToUpper
+### <a name="toupper"></a>toUpper
 **Funkcja:**<br> ToUpper (Źródło, kultura)
 
-**Opis:**<br> Pobiera wartość ciągu *źródłowego* i konwertuje ją na wielkie litery przy użyciu określonych reguł kultury. Jeśli nie określono informacji o kulturze, będzie ona używać niezmiennej kultury.
+**Opis:**<br> Pobiera wartość ciągu *źródłowego* i konwertuje ją na wielkie litery przy użyciu określonych reguł kultury. Jeśli nie określono informacji o *kulturze* , będzie ona używać niezmiennej kultury.
 
 **Parametry:**<br> 
 

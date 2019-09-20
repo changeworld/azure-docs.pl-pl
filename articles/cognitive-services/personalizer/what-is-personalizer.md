@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 09/03/2019
+ms.date: 09/19/2019
 ms.author: diberry
-ms.openlocfilehash: 3132d31e9e45718fa95c39a1b8160ea303ded25d
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: ee17e204082389db19e1ebe463352a40d7ecd5ae
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883664"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155252"
 ---
 # <a name="what-is-personalizer"></a>Co to jest usługa Personalizacja?
 
@@ -39,7 +39,7 @@ Personalizacja korzysta z modeli uczenia maszynowego w celu ustalenia, jakie dzi
 1. Utwórz i skonfiguruj wystąpienie usługi personalizacji w Azure Portal. Każde wystąpienie jest pętlą personalizacji.
 1. Użyj zestawu SDK do wywołania narzędzia personalizacji z informacjami (_funkcjami_) dotyczącymi użytkowników i zawartością (_Akcje_). Nie musisz podawać czystych danych z etykietami przed użyciem narzędzia Personalizacja. 
 1. W aplikacji klienckiej Pokaż użytkownika akcję wybraną przez program Personalizujer.
-1. Użyj zestawu SDK, aby przekazać informacje zwrotne do personalizacji wskazujące, czy użytkownik wybrał akcję Personalizuj. Jest to _wynik nagrody_, zazwyczaj z zakresu od-1 do 1.
+1. Użyj zestawu SDK, aby przekazać Opinie do personalizacji wskazujące, czy użytkownik zaznaczył akcję Personalizuj. To jest _[wynik nagrody](concept-rewards.md)_ .
 1. Wyświetl analizę w Azure Portal, aby oszacować, jak działa system oraz jak dane pomagają w personalizacji.
 
 ## <a name="where-can-i-use-personalizer"></a>Gdzie mogę używać personalizacji?
@@ -60,7 +60,7 @@ Program personalizujer nie jest usługą do utrwalania informacji o profilu uży
 Usługa personalizacji ma dwa interfejsy API:
 
 * Wysyłaj informacje (_funkcje_) dotyczące użytkowników i zawartość (_Akcje_) do personalizacji. Personalizacja reaguje na górną akcję.
-* Wyślij opinię do programu Personalizowanie o tym, jak dobrze Klasyfikacja działała jako liczba zazwyczaj z zakresu od 0 do 1 (poprzednia sekcja-1 i 1). 
+* Wyślij opinię do programu Personalizowanie o tym, jak dobrze Klasyfikacja działała jako [wynik nagrody](concept-rewards.md). 
 
 ![Podstawowa sekwencja zdarzeń dla personalizacji](media/what-is-personalizer/personalization-intro.png)
 

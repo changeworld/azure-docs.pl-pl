@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 120b5606dd6b6f4451b563843f112bd614341eac
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 94c2ac1d662851b5a0b44ec475becb5f5e0403c4
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914790"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146395"
 ---
 # <a name="bulk-download-members-of-a-group-preview-in-azure-active-directory"></a>Zbiorcze pobieranie elementów członkowskich grupy (wersja zapoznawcza) w Azure Active Directory
 
@@ -26,10 +26,6 @@ Korzystając z portalu usługi Azure Active Directory (Azure AD), można zbiorcz
 
 > [!NOTE]
 > Operacje zbiorcze usługi Azure AD są publiczną funkcją w wersji zapoznawczej usługi Azure AD i są dostępne z dowolnym płatnym planem licencjonowania usługi Azure AD. Aby uzyskać więcej informacji na temat terminów korzystania z wersji zapoznawczej, zobacz [dodatkowe warunki użytkowania programu Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)wersjach zapoznawczych.
-
-## <a name="bulk-download-service-limits"></a>Limity usługi pobierania zbiorczego
-
-Każde działanie zbiorcze służące do pobierania listy członków grupy może być uruchamiane przez maksymalnie jedną godzinę. Pozwala to na pobranie listy co najmniej 500 000 członków.
 
 ## <a name="to-bulk-download-group-membership"></a>Do pobierania zbiorczego członkostwa w grupie
 
@@ -45,6 +41,10 @@ Każde działanie zbiorcze służące do pobierania listy członków grupy może
 Stan wszystkich oczekujących żądań zbiorczych można zobaczyć na stronie **wyniki operacji zbiorczej (wersja zapoznawcza)** .
 
    ![Na stronie wyniki operacji zbiorczych jest wyświetlany stan zbiorczego żądania](./media/groups-bulk-download-members/bulk-center.png)
+
+## <a name="bulk-download-service-limits"></a>Limity usługi pobierania zbiorczego
+
+Każde działanie zbiorcze służące do pobierania listy członków grupy może być uruchamiane przez maksymalnie jedną godzinę. Dzięki temu można pobrać listę co najmniej 500 000 członków.
 
 ## <a name="next-steps"></a>Następne kroki
 

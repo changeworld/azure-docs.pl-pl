@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: juliako
-ms.openlocfilehash: 64bf8f5c8de5f56ee1140e91d0472a33b35570cf
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: d8cb8fdebb5a7e4bcbc9f979c98085e90ebd4c68
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68878799"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147156"
 ---
 # <a name="handling-event-grid-events"></a>Obsługa zdarzeń usługi Event Grid
 
@@ -39,7 +39,10 @@ Aplikacje, które obsługują zdarzenia Media Services, powinny spełniać kilka
 * Ignoruj pola, które nie są zrozumiałe.  Ta metoda pomaga w zachowaniu odporności na nowe funkcje, które mogą zostać dodane w przyszłości.
 * Użyj prefiksu "podmiot" i dopasowania sufiksu, aby ograniczyć zdarzenia do określonego zdarzenia.
 
-## <a name="next-steps"></a>Kolejne kroki
+> [!NOTE]
+> Zdarzenia podlegają [Umowa dotycząca poziomu usług Event Grid (SLA)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/). Jeśli chcesz otrzymywać powiadomienia o zdarzeniach przy użyciu interfejsów API, zobacz przykłady użycia zdarzeń przy użyciu [zestawu .NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/ContentProtection/BasicAESClearKey) lub [zestawu Java SDK](https://github.com/Azure-Samples/media-services-v3-java/tree/master/ContentProtection/BasicAESClearKey).
+
+## <a name="next-steps"></a>Następne kroki
 
 * [Monitorowanie zdarzeń — Portal](monitor-events-portal-how-to.md)
 * [Monitorowanie zdarzeń — interfejs wiersza polecenia](job-state-events-cli-how-to.md)

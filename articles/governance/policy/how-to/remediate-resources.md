@@ -1,22 +1,22 @@
 ---
 title: Korygowanie niezgodnych zasobów
-description: Niniejszy instruktaż przeprowadzi Cię przez czynności naprawcze zasobów, które nie są zgodne z zasadami, usługa Azure Policy.
+description: Ten przewodnik przeprowadzi Cię przez korygowanie zasobów, które są niezgodne z zasadami w Azure Policy.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 09/09/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 40658412f19c444cfa06f5663f567a78453c7e9a
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: d6ca7827200815cf9b9b1c7ac697d06f9c6b306d
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241133"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147048"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Korygowanie niezgodnych zasobów przy użyciu usługi Azure Policy
 
-Zasoby, które nie są zgodne na **deployIfNotExists** zasad można umieścić w stanu zgodności za pośrednictwem **korygowania**. Korygowanie jest realizowane przez poinstruuj Azure Policy, aby **deployIfNotExists** efekt przypisanych zasad do istniejących zasobów. W tym artykule przedstawiono kroki niezbędne do zrozumienia i wykonania korygowania Azure Policy.
+Zasoby, które są niezgodne z zasadami **deployIfNotExistsymi** lub **modyfikacjami** , mogą zostać umieszczone w stanie zgodnym przez **skorygowanie**. Korygowanie jest realizowane przez poinstruuj Azure Policy, aby uruchomić efekt **deployIfNotExists** lub Tagi **operacji** przypisanych zasad w istniejących zasobach. W tym artykule przedstawiono kroki niezbędne do zrozumienia i wykonania korygowania Azure Policy.
 
 ## <a name="how-remediation-security-works"></a>Jak działają zabezpieczenia korygowania
 
@@ -26,11 +26,11 @@ Azure Policy tworzy tożsamość zarządzaną dla każdego przydziału, ale musi
 ![Tożsamość zarządzana — Brak roli](../media/remediate-resources/missing-role.png)
 
 > [!IMPORTANT]
-> Jeśli zasób jest modyfikowany przez **deployIfNotExists** jest poza zasięgiem szablonu lub przypisania zasad we właściwościach uzyskuje dostęp do zasobów spoza zakresu przypisania zasad, przydział tożsamość zarządzaną musi być [ręcznie uprawnienia](#manually-configure-the-managed-identity) lub wdrożenie korygowania zakończy się niepowodzeniem.
+> Jeśli zasób zmodyfikowany przez **deployIfNotExists** lub **Modyfikuj** znajduje się poza zakresem przypisania zasad lub szablon uzyskuje dostęp do właściwości zasobów poza zakresem przypisania zasad, tożsamość zarządzana przypisania musi być [ ręcznie udzielenie dostępu](#manually-configure-the-managed-identity) lub wdrożenie korygowania zakończy się niepowodzeniem.
 
 ## <a name="configure-policy-definition"></a>Skonfiguruj definicję zasad
 
-Pierwszym krokiem jest zdefiniowanie ról, **deployIfNotExists** musi w definicji zasad, aby pomyślnie wdrożyć zawartość dołączone szablonu. W obszarze **szczegóły** właściwości, Dodaj **roleDefinitionIds** właściwości. Ta właściwość jest tablicą ciągów, które odpowiadają ról w danym środowisku. Aby uzyskać pełny przykład, zobacz [przykład deployIfNotExists](../concepts/effects.md#deployifnotexists-example).
+Pierwszym krokiem jest zdefiniowanie ról, które **deployIfNotExists** i **modyfikują** potrzeby w definicji zasad, aby pomyślnie wdrożyć zawartość dołączonego szablonu. W obszarze **szczegóły** właściwości, Dodaj **roleDefinitionIds** właściwości. Ta właściwość jest tablicą ciągów, które odpowiadają ról w danym środowisku. Aby zapoznać się z pełnymi przykładami, zobacz [przykład deployIfNotExists](../concepts/effects.md#deployifnotexists-example) lub [Modify przykłady](../concepts/effects.md#modify-examples).
 
 ```json
 "details": {
@@ -42,7 +42,7 @@ Pierwszym krokiem jest zdefiniowanie ról, **deployIfNotExists** musi w definicj
 }
 ```
 
-**roleDefinitionIds** używa identyfikatora wszystkich zasobów i nie w krótkim **roleName** roli. Aby uzyskać identyfikator dla roli "Współautor" w danym środowisku, należy użyć następującego kodu:
+Właściwość **roleDefinitionIds** używa pełnego identyfikatora zasobu i nie przyjmuje krótkie **rolename** roli. Aby uzyskać identyfikator dla roli "Współautor" w danym środowisku, należy użyć następującego kodu:
 
 ```azurecli-interactive
 az role definition list --name 'Contributor'
@@ -126,7 +126,7 @@ Aby dodać rolę przydział tożsamość zarządzaną, wykonaj następujące kro
 
 ### <a name="create-a-remediation-task-through-portal"></a>Tworzenie zadania korygującego za pomocą portalu
 
-Podczas obliczania wartości, przypisanie zasad o **deployIfNotExists** efekt Określa, czy istnieją niezgodne zasoby. Gdy zostaną odnalezione niezgodnych zasobów, szczegółowe informacje znajdują się na **korygowania** strony. Wraz z listy zasad, które mają niezgodne zasoby to opcja umożliwiająca wyzwalanie **zadań korygowania**. Ta opcja jest, co tworzy wdrożenie z **deployIfNotExists** szablonu.
+Podczas obliczania przypisanie zasad z **deployIfNotExists** lub **modyfikowaniem** efektów określa, czy istnieją niezgodne zasoby. Gdy zostaną odnalezione niezgodnych zasobów, szczegółowe informacje znajdują się na **korygowania** strony. Wraz z listy zasad, które mają niezgodne zasoby to opcja umożliwiająca wyzwalanie **zadań korygowania**. Ta opcja polega na utworzeniu wdrożenia z szablonu **deployIfNotExists** lub operacji **modyfikowania** .
 
 Aby utworzyć **zadań korygowania**, wykonaj następujące kroki:
 
@@ -138,7 +138,7 @@ Aby utworzyć **zadań korygowania**, wykonaj następujące kroki:
 
    ![Wybieranie opcji korygowania na stronie zasad](../media/remediate-resources/select-remediation.png)
 
-1. Wszystkie **deployIfNotExists** przypisania zasad za pomocą niezgodnych zasobów znajdują się w **zasad w celu korygowania** kartę i tabelę danych. Kliknij zasady z zasobami, które są niezgodne. **Nowe zadanie korygowania** zostanie otwarta strona.
+1. Wszystkie przypisania zasad **deployIfNotExists** i **Modify** z niezgodnymi zasobami są zawarte w **zasadach do korygowania** kart i tabeli danych. Kliknij zasady z zasobami, które są niezgodne. **Nowe zadanie korygowania** zostanie otwarta strona.
 
    > [!NOTE]
    > Alternatywny sposób, aby otworzyć **zadań korygowania** strony jest znalezienie i kliknij zasady, które z **zgodności** stronie, a następnie kliknij przycisk **Utwórz zadanie korygowania** przycisku.
@@ -161,7 +161,7 @@ Zasoby wdrożone za pośrednictwem **zadań korygowania** są dodawane do **wdro
 
 ### <a name="create-a-remediation-task-through-azure-cli"></a>Tworzenie zadania korygującego za pomocą interfejsu wiersza polecenia platformy Azure
 
-Aby utworzyć **zadanie korygowania** przy użyciu interfejsu wiersza polecenia platformy Azure `az policy remediation` , Użyj poleceń. Zastąp `{subscriptionId}` ciąg identyfikatorem subskrypcji `{myAssignmentId}` i identyfikatorem przydziału zasad **deployIfNotExists** .
+Aby utworzyć **zadanie korygowania** przy użyciu interfejsu wiersza polecenia platformy Azure `az policy remediation` , Użyj poleceń. Zastąp `{subscriptionId}` ciąg identyfikatorem subskrypcji `{myAssignmentId}` i identyfikatorem przydziału **deployIfNotExists** lub **zmodyfikuj** zasady.
 
 ```azurecli-interactive
 # Login first with az login if not using Cloud Shell
@@ -174,7 +174,7 @@ Aby poznać inne polecenia i przykłady korygowania, zobacz [AZ Policy korygowan
 
 ### <a name="create-a-remediation-task-through-azure-powershell"></a>Utwórz zadanie korygujące za pośrednictwem Azure PowerShell
 
-Aby utworzyć **zadanie korygowania** przy użyciu Azure PowerShell, użyj `Start-AzPolicyRemediation` poleceń. Zastąp `{subscriptionId}` ciąg identyfikatorem subskrypcji `{myAssignmentId}` i identyfikatorem przydziału zasad **deployIfNotExists** .
+Aby utworzyć **zadanie korygowania** przy użyciu Azure PowerShell, użyj `Start-AzPolicyRemediation` poleceń. Zastąp `{subscriptionId}` ciąg identyfikatorem subskrypcji `{myAssignmentId}` i identyfikatorem przydziału **deployIfNotExists** lub **zmodyfikuj** zasady.
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell

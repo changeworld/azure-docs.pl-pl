@@ -1,20 +1,20 @@
 ---
-title: Tworzenie strefy prywatnej usługi Azure DNS przy użyciu programu Azure PowerShell
+title: Szybki Start — tworzenie prywatnej strefy DNS platformy Azure przy użyciu Azure PowerShell
 description: W tym artykule opisano tworzenie i testowanie prywatnej strefy i rekordu DNS w Azure DNS. W tym szczegółowym przewodniku pokazano, jak po raz pierwszy utworzyć strefę prywatną i rekord DNS przy użyciu programu Azure PowerShell oraz zarządzać nimi.
 services: dns
 author: vhorne
 ms.service: dns
-ms.topic: article
-ms.date: 06/14/2019
+ms.topic: quickstart
+ms.date: 09/20/2019
 ms.author: victorh
-ms.openlocfilehash: 6603929fa7b4c597a846fc299577a9682d8f54e0
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: cf9ca1070461effc69d67614a11b1abd05363310
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854131"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162125"
 ---
-# <a name="create-an-azure-dns-private-zone-using-azure-powershell"></a>Tworzenie strefy prywatnej usługi Azure DNS przy użyciu programu Azure PowerShell
+# <a name="quickstart-create-an-azure-private-dns-zone-using-azure-powershell"></a>Szybki start: Tworzenie prywatnej strefy DNS platformy Azure przy użyciu Azure PowerShell
 
 [!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
 
@@ -27,7 +27,7 @@ Strefa DNS jest używana do hostowania rekordów DNS dla określonej domeny. Aby
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
-> * Tworzenie strefy prywatnej DNS
+> * Tworzenie prywatnej strefy DNS
 > * Tworzenie testowych maszyn wirtualnych
 > * Tworzenie dodatkowego rekordu DNS
 > * Testowanie strefy prywatnej
@@ -36,7 +36,7 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-Jeśli wolisz, możesz wykonać tę procedurę za pomocą [interfejsu wiersza polecenia platformy Azure](private-dns-getstarted-cli.md).
+Jeśli wolisz, możesz ukończyć ten przewodnik Szybki Start przy użyciu [interfejsu wiersza polecenia platformy Azure](private-dns-getstarted-cli.md).
 
 ## <a name="create-the-resource-group"></a>Tworzenie grupy zasobów
 
@@ -46,7 +46,7 @@ Najpierw utwórz grupę zasobów, która będzie zawierać strefę DNS:
 New-AzResourceGroup -name MyAzureResourceGroup -location "eastus"
 ```
 
-## <a name="create-a-dns-private-zone"></a>Tworzenie strefy prywatnej DNS
+## <a name="create-a-private-dns-zone"></a>Tworzenie prywatnej strefy DNS
 
 Strefa DNS jest tworzona za pomocą polecenia cmdlet `New-AzPrivateDnsZone`.
 
@@ -209,7 +209,5 @@ Remove-AzResourceGroup -Name MyAzureResourceGroup
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym artykule wdrożono prywatną strefę DNS, utworzono rekord DNS i przetestowano strefę.
-Następnie możesz dowiedzieć się więcej na temat stref prywatnych DNS.
-
-* [Używanie usługi Azure DNS na potrzeby domen prywatnych](private-dns-overview.md)
+> [!div class="nextstepaction"]
+> [Scenariusze Azure DNS Private Zones](private-dns-scenarios.md)

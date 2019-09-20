@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1d0f94e9cf9b91bc365586dafc147dc73b17876
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 76aafa978732b3f4bae82f8ad3c09e67caf297ae
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914756"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146288"
 ---
 # <a name="bulk-download-a-list-of-groups-preview-in-azure-active-directory"></a>Pobierz zbiorczo listę grup (wersja zapoznawcza) w Azure Active Directory
 
@@ -26,10 +26,6 @@ Korzystając z portalu usługi Azure Active Directory (Azure AD), można zbiorcz
 
 > [!NOTE]
 > Operacje zbiorcze usługi Azure AD są publiczną funkcją w wersji zapoznawczej usługi Azure AD i są dostępne z dowolnym płatnym planem licencjonowania usługi Azure AD. Aby uzyskać więcej informacji na temat terminów korzystania z wersji zapoznawczej, zobacz [dodatkowe warunki użytkowania programu Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)wersjach zapoznawczych.
-
-## <a name="bulk-download-service-limits"></a>Limity usługi pobierania zbiorczego
-
-Każde działanie zbiorcze do pobrania listy grup można uruchomić przez maksymalnie godzinę. Pozwala to na pobranie listy co najmniej 300 000 grup.
 
 ## <a name="to-download-a-list-of-groups"></a>Aby pobrać listę grup
 
@@ -44,6 +40,10 @@ Każde działanie zbiorcze do pobrania listy grup można uruchomić przez maksym
 Stan wszystkich oczekujących żądań zbiorczych można zobaczyć na stronie **wyniki operacji zbiorczej (wersja zapoznawcza)** .
 
    ![Na stronie wyniki operacji zbiorczych jest wyświetlany stan zbiorczego żądania](./media/groups-bulk-download/bulk-center.png)
+
+## <a name="bulk-download-service-limits"></a>Limity usługi pobierania zbiorczego
+
+Każde działanie zbiorcze do pobrania listy grup można uruchomić przez maksymalnie godzinę. Pozwala to na pobranie listy co najmniej 300 000 grup.
 
 ## <a name="next-steps"></a>Następne kroki
 

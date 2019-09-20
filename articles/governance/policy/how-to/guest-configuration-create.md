@@ -7,16 +7,16 @@ ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: ee8a17846495a122f7432e66c3e343a00dd0a015
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 0c1c3470ae18b2a600af0d5e930b6fc114123728
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194626"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71161929"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Jak utworzyć zasady konfiguracji gościa
 
-Konfiguracja gościa używa modułu zasobów [Konfiguracja żądanego stanu](/powershell/dsc) (DSC) do tworzenia konfiguracji inspekcji maszyn platformy Azure. Konfiguracja DSC definiuje warunek, w którym maszyna powinna znajdować się w programie. Jeśli Ocena konfiguracji nie powiedzie się, zostanie wyzwolony efekt zasad **auditIfNotExists** i maszyna zostanie uznanaza niezgodną.
+Konfiguracja gościa używa modułu zasobów [Konfiguracja żądanego stanu](/powershell/dsc) (DSC) do tworzenia konfiguracji inspekcji maszyn platformy Azure. Konfiguracja DSC definiuje warunek, w którym maszyna powinna znajdować się w programie. Jeśli Ocena konfiguracji nie powiedzie się, zostanie wyzwolony efekt zasad **auditIfNotExists** i maszyna zostanie uznana za **niezgodną**.
 
 [Azure Policy konfiguracja gościa](/azure/governance/policy/concepts/guest-configuration) może być używana tylko do inspekcji ustawień wewnątrz maszyn. Korygowanie ustawień wewnątrz maszyn nie jest jeszcze dostępne.
 
@@ -54,9 +54,47 @@ Konfiguracja gościa używa modułu zasobów **GuestConfiguration** do tworzenia
    Get-Command -Module 'GuestConfiguration'
    ```
 
-## <a name="create-custom-guest-configuration-configuration"></a>Utwórz niestandardową konfigurację gościa
+## <a name="create-custom-guest-configuration-configuration-and-resources"></a>Utwórz niestandardową konfigurację i zasoby konfiguracji gościa
 
 Pierwszym krokiem tworzenia zasad niestandardowych dla konfiguracji gościa jest utworzenie konfiguracji DSC. Omówienie pojęć i terminologii DSC można znaleźć w temacie [Omówienie DSC programu PowerShell](/powershell/dsc/overview/overview).
+
+Jeśli konfiguracja wymaga tylko zasobów, które są wbudowane z instalacją agenta konfiguracji gościa, wystarczy tylko utworzyć plik MOF konfiguracji. Jeśli konieczne jest uruchomienie dodatkowego skryptu, należy utworzyć niestandardowy moduł zasobów.
+
+### <a name="requirements-for-guest-configuration-custom-resources"></a>Wymagania dotyczące zasobów niestandardowych konfiguracji gościa
+
+Gdy konfiguracja gościa przeprowadza inspekcję maszyny, najpierw `Test-TargetResource` uruchamia się, aby określić, czy jest w prawidłowym stanie.  Wartość logiczna zwrócona przez funkcję określa, czy stan Azure Resource Manager dla przypisania gościa powinien być zgodny/niezgodny.  Jeśli wartość logiczna jest `$false` dla dowolnego zasobu w konfiguracji, zostanie uruchomiony `Get-TargetResource`dostawca.
+Jeśli wartość logiczna `$true` `Get-TargetResource` nie jest wywoływana.
+
+Funkcja `Get-TargetResource` ma specjalne wymagania dotyczące konfiguracji gościa, która nie jest wymagana w przypadku konfiguracji żądanego stanu systemu Windows.
+
+- Zwracana tablica skrótów musi zawierać właściwość o nazwie **powody**.
+- Właściwość przyczyn musi być tablicą.
+- Każdy element w tablicy powinien być tablicą skrótów z kluczami o nazwie **Code** i **phrase**.
+
+Właściwość powody jest używana przez usługę do standaryzacji sposobu prezentowania informacji, gdy maszyna nie jest zgodna.
+Każdy element może być uważany za "powód", że zasób nie jest zgodny. Właściwość jest tablicą, ponieważ zasób może być niezgodny z więcej niż jedną przyczyną.
+
+**Kod** właściwości i **frazy** są oczekiwane przez usługę. Podczas tworzenia zasobu niestandardowego Ustaw tekst (zazwyczaj stdout), który ma być pokazywany jako powód, w którym zasób nie jest zgodny jako wartość **frazy**.  **Kod** ma określone wymagania dotyczące formatowania, dlatego raportowanie może jasno wyświetlić informacje o zasobie, który został użyty do przeprowadzenia inspekcji. To rozwiązanie sprawia, że konfiguracja gościa jest rozszerzalna. Każde polecenie można uruchomić w celu inspekcji maszyny, o ile dane wyjściowe mogą być przechwytywane i zwracane jako wartość ciągu dla właściwości **phrase** .
+
+- **Kod** (ciąg): Nazwa zasobu, powtórzona i krótka nazwa bez spacji jako identyfikator przyczyny.  Te trzy wartości powinny być rozdzielane średnikami bez spacji.
+    - Przykładem może być "Registry: Registry: keynotpresent".
+- **Fraza** (ciąg): Czytelny dla człowieka tekst wyjaśniający, dlaczego ustawienie nie jest zgodne.
+    - Przykładem może być "klucz rejestru $key nie istnieje na komputerze".
+
+```powershell
+$reasons = @()
+$reasons += @{
+  Code = 'Name:Name:ReasonIdentifer'
+  Phrase = 'Explain why the setting is not compliant'
+}
+return @{
+    reasons = $reasons
+}
+```
+
+#### <a name="scaffolding-a-guest-configuration-project"></a>Tworzenie szkieletu projektu konfiguracji gościa
+
+Dla deweloperów, którzy chcą skrócić proces rozpoczynania pracy i korzystania z przykładowego kodu, projekt społecznościowy o nazwie " **Projekt konfiguracji gościa** " istnieje jako szablon modułu [gips](https://github.com/powershell/plaster) PowerShell.  To narzędzie może służyć do tworzenia szkieletu projektu, w tym konfiguracji roboczej i przykładowego zasobu, oraz zestawu testów [szkodników](https://github.com/pester/pester) do sprawdzania poprawności projektu.  Szablon zawiera również moduły uruchamiające zadania dla Visual Studio Code do automatyzacji kompilowania i weryfikowania pakietu konfiguracji gościa. Aby uzyskać więcej informacji, zobacz [Projekt konfiguracji gościa](https://github.com/microsoft/guestconfigurationproject)projektu GitHub.
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Konfiguracja niestandardowej konfiguracji gościa w systemie Linux
 
@@ -133,7 +171,7 @@ New-GuestConfigurationPackage -Name '{PackageName}' -Configuration '{PathToMOF}'
 - **Ścieżka**: Ścieżka folderu wyjściowego. Ten parametr jest opcjonalny. Jeśli nie zostanie określony, pakiet zostanie utworzony w bieżącym katalogu.
 - **ChefProfilePath**: Pełna ścieżka do profilu INSPEC. Ten parametr jest obsługiwany tylko podczas tworzenia zawartości do inspekcji systemu Linux.
 
-Ukończony pakiet musi być przechowywany w lokalizacji dostępnej dla zarządzanych maszyn wirtualnych. Przykłady obejmują repozytoria GitHub, repozytorium platformy Azure lub usługę Azure Storage. Jeśli wolisz nie udostępniać pakietu publicznie, możesz dołączyć [token sygnatury](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md) dostępu współdzielonego w adresie URL. Można również zaimplementować [punkt końcowy usługi](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) dla maszyn w sieci prywatnej, chociaż ta konfiguracja ma zastosowanie tylko do uzyskiwania dostępu do pakietu i nie komunikuje się z usługą.
+Ukończony pakiet musi być przechowywany w lokalizacji dostępnej dla zarządzanych maszyn wirtualnych. Przykłady obejmują repozytoria GitHub, repozytorium platformy Azure lub usługę Azure Storage. Jeśli wolisz nie udostępniać pakietu publicznie, możesz dołączyć [token sygnatury dostępu współdzielonego](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md) w adresie URL. Można również zaimplementować [punkt końcowy usługi](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) dla maszyn w sieci prywatnej, chociaż ta konfiguracja ma zastosowanie tylko do uzyskiwania dostępu do pakietu i nie komunikuje się z usługą.
 
 ### <a name="working-with-secrets-in-guest-configuration-packages"></a>Praca z wpisami tajnymi w pakietach konfiguracji gościa
 
@@ -141,10 +179,10 @@ W Azure Policy konfiguracji gościa najlepszym sposobem zarządzania kluczami ta
 
 Najpierw utwórz tożsamość zarządzaną przypisaną przez użytkownika na platformie Azure. Tożsamość jest używana przez maszyny do uzyskiwania dostępu do wpisów tajnych przechowywanych w Key Vault. Aby uzyskać szczegółowe instrukcje, zobacz [Tworzenie, wyświetlanie listy lub usuwanie tożsamości zarządzanej przypisanej przez użytkownika przy użyciu Azure PowerShell](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
 
-Następnie Utwórz wystąpienie Key Vault. Aby uzyskać szczegółowe instrukcje, zobacz [Ustawianie i pobieranie wpisu tajnego — PowerShell](../../../key-vault/quick-create-powershell.md).
+Utwórz wystąpienie Key Vault. Aby uzyskać szczegółowe instrukcje, zobacz [Ustawianie i pobieranie wpisu tajnego — PowerShell](../../../key-vault/quick-create-powershell.md).
 Przypisz uprawnienia do wystąpienia, aby przyznać tożsamości przypisanej użytkownikowi dostęp do wpisów tajnych przechowywanych w Key Vault. Aby uzyskać szczegółowe instrukcje, zobacz [Ustawianie i pobieranie wpisu tajnego platformy .NET](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault).
 
-Następnie przypisz do komputera tożsamość przypisaną przez użytkownika. Aby uzyskać szczegółowe instrukcje, zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej platformy Azure przy użyciu programu PowerShell](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity).
+Przypisz do komputera tożsamość przypisaną przez użytkownika. Aby uzyskać szczegółowe instrukcje, zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej platformy Azure przy użyciu programu PowerShell](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity).
 Na dużą skalę Przypisz tę tożsamość przy użyciu Azure Resource Manager za pośrednictwem Azure Policy. Aby uzyskać szczegółowe instrukcje, zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej platformy Azure przy użyciu szablonu](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm).
 
 Na koniec w ramach zasobu niestandardowego Użyj identyfikatora klienta wygenerowanego powyżej, aby uzyskać dostęp do Key Vault przy użyciu tokenu dostępnego na komputerze. Adres URL i do wystąpienia Key Vault można przesłać do zasobu jako właściwości, więc nie trzeba aktualizować zasobu dla wielu środowisk lub należy zmienić wartości. [](/powershell/dsc/resources/authoringresourcemof#creating-the-mof-schema) `client_id`
@@ -334,7 +372,7 @@ Po przeprowadzeniu konwersji zawartości należy wykonać kroki opisane powyżej
 
 ## <a name="optional-signing-guest-configuration-packages"></a>OBOWIĄZKOWE Podpisywanie pakietów konfiguracji gościa
 
-Zasady niestandardowe konfiguracji gościa domyślnie używają skrótu SHA256, aby sprawdzić, czy pakiet zasad nie został zmieniony od momentu opublikowania na serwerze, który jest poddany inspekcji.
+Zasady niestandardowe konfiguracji gościa domyślnie używają skrótu SHA256, aby sprawdzić, czy pakiet zasad nie został zmieniony z momentu, gdy został on opublikowany przez serwer, który jest poddany inspekcji.
 Opcjonalnie klienci mogą również używać certyfikatu do podpisywania pakietów i wymuszania rozszerzenia konfiguracji gościa, aby zezwalać tylko na podpisaną zawartość.
 
 Aby włączyć ten scenariusz, należy wykonać dwa kroki. Uruchom polecenie cmdlet, aby podpisać pakiet zawartości, i Dołącz tag do maszyn, które powinny wymagać podpisania kodu.
@@ -377,6 +415,6 @@ Aby uzyskać więcej informacji na temat poleceń cmdlet w tym narzędziu, użyj
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej na [](../concepts/guest-configuration.md)temat inspekcji maszyn wirtualnych z konfiguracją gościa.
+- Dowiedz się więcej na temat inspekcji maszyn wirtualnych z [konfiguracją gościa](../concepts/guest-configuration.md).
 - Dowiedz się, jak [programowo utworzyć zasady](programmatically-create.md).
 - Dowiedz się, jak [uzyskać dane zgodności](getting-compliance-data.md).

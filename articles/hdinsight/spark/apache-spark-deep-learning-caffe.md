@@ -8,19 +8,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: bb234e5b34bd8046c4e65d7cc6812cde0db3b5b2
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: e0490913029efc17d12139378369646c286a276c
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995622"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71145705"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>Użyj Caffe na Azure HDInsight Spark na potrzeby rozproszonej uczenia głębokiego
 
-
 ## <a name="introduction"></a>Wprowadzenie
 
-Uczenie głębokie ma wpływ na wszystko z opieki zdrowotnej na transport do produkcji i nie tylko. Firmy mają na celu uczenie się w celu rozwiązania problemów twardych, takich jak [Klasyfikacja obrazu](https://blogs.microsoft.com/next/2015/12/10/microsoft-researchers-win-imagenet-computer-vision-challenge/), [rozpoznawanie mowy](https://googleresearch.blogspot.jp/2015/08/the-neural-networks-behind-google-voice.html), rozpoznawanie obiektów i tłumaczenie maszynowe. 
+Uczenie głębokie ma wpływ na wszystko z opieki zdrowotnej na transport do produkcji i nie tylko. Firmy mają na celu uczenie się w celu rozwiązania problemów twardych, takich jak [Klasyfikacja obrazu](https://blogs.microsoft.com/next/2015/12/10/microsoft-researchers-win-imagenet-computer-vision-challenge/), [rozpoznawanie mowy](https://googleresearch.blogspot.jp/2015/08/the-neural-networks-behind-google-voice.html), rozpoznawanie obiektów i tłumaczenie maszynowe.
 
 Istnieje [wiele popularnych struktur](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software), w tym [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/), [Tensorflow](https://www.tensorflow.org/), [Apache MXNet](https://mxnet.apache.org/), Theano itd. [Caffe](https://caffe.berkeleyvision.org/) to jedna z najbardziej sławęych, niesymbolicznych (autonomicznych) platform sieci neuronowych i szeroko wykorzystywana w wielu obszarach, w tym o wizji komputerowych. Ponadto [CaffeOnSpark](https://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) łączy Caffe z Apache Spark. w takim przypadku można łatwo korzystać z uczenia głębokiego w istniejącym klastrze usługi Hadoop. Możesz użyć głębokiej uczenia się z potokami ETL usługi Spark, zmniejszając złożoność systemu i opóźnić pełną naukę rozwiązań.
 
@@ -59,7 +58,6 @@ Aby rozpocząć, musisz zainstalować zależności. Lokacja Caffe i [Witryna Caf
     sudo ldconfig
     echo "protobuf installation done"
 
-
 Akcja skryptu obejmuje dwa etapy. Pierwszym krokiem jest zainstalowanie wszystkich wymaganych bibliotek. Te biblioteki obejmują biblioteki niezbędne do obu kompilacji Caffe (na przykład GFlags, glog) i uruchomione Caffe (takie jak numpy). używasz libatlas na potrzeby optymalizacji procesora CPU, ale zawsze możesz skorzystać z witryny typu wiki CaffeOnSpark na potrzeby instalowania innych bibliotek optymalizacji, takich jak MKL lub CUDA (dla procesora GPU).
 
 Drugim krokiem jest pobranie, skompilowanie i zainstalowanie protobuf 2.5.0 dla Caffe w czasie wykonywania. Protobuf 2.5.0 [jest wymagana](https://github.com/yahoo/CaffeOnSpark/issues/87), ale ta wersja nie jest dostępna jako pakiet w Ubuntu 16, dlatego należy skompilować ją z kodu źródłowego. W Internecie znajduje się również kilka zasobów, na których można ją skompilować. Aby uzyskać więcej informacji, zobacz [tutaj](https://jugnu-life.blogspot.com/2013/09/install-protobuf-25-on-ubuntu.html).
@@ -68,10 +66,9 @@ Aby rozpocząć, można po prostu uruchomić tę akcję skryptu względem klastr
 
 ![Akcje skryptu do instalacji zależności](./media/apache-spark-deep-learning-caffe/submit-script-action.png)
 
-
 ## <a name="step-2-build-caffe-on-apache-spark-for-hdinsight-on-the-head-node"></a>Krok 2: Kompiluj Caffe na Apache Spark dla usługi HDInsight w węźle głównym
 
-Drugim krokiem jest skompilowanie Caffe w węzła głównego, a następnie dystrybuowanie skompilowanych bibliotek do wszystkich węzłów procesu roboczego. W tym kroku trzeba będzie [SSH do węzła głównego](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix). Następnie należy postępować zgodnie z [procesem kompilacji CaffeOnSpark](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn). Poniżej znajduje się skrypt, którego można użyć do kompilowania CaffeOnSpark z kilkoma dodatkowymi krokami. 
+Drugim krokiem jest skompilowanie Caffe w węzła głównego, a następnie dystrybuowanie skompilowanych bibliotek do wszystkich węzłów procesu roboczego. W tym kroku trzeba będzie [SSH do węzła głównego](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix). Następnie należy postępować zgodnie z [procesem kompilacji CaffeOnSpark](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn). Poniżej znajduje się skrypt, którego można użyć do kompilowania CaffeOnSpark z kilkoma dodatkowymi krokami.
 
     #!/bin/bash
     git clone https://github.com/yahoo/CaffeOnSpark.git --recursive
@@ -115,7 +112,6 @@ Może być konieczne wykonanie więcej niż dokumentacji CaffeOnSpark. Zmiany s�
 - Umieść zestawy danych w magazynie obiektów BLOB, który jest lokalizacją udostępnioną dostępną dla wszystkich węzłów procesu roboczego w celu późniejszego użycia.
 - Umieść skompilowane biblioteki Caffe w usłudze BLOB Storage, a następnie skopiuj te biblioteki do wszystkich węzłów za pomocą akcji skryptu, aby uniknąć dodatkowego czasu kompilacji.
 
-
 ### <a name="troubleshooting-an-ant-buildexception-has-occurred-exec-returned-2"></a>Rozwiązywanie problemów z Wystąpił ANT Buildexception: zwrócono element exec: 2
 
 Podczas pierwszej próby kompilacji CaffeOnSpark, czasami mówi
@@ -134,7 +130,6 @@ Czasami Maven nadaje błąd limitu czasu połączenia, podobny do następująceg
     INFO: I/O exception (java.net.SocketException) caught when processing request to {s}->https://repo.maven.apache.org:443: Connection timed out (Read failed)
 
 Musisz ponowić próbę za kilka minut.
-
 
 ### <a name="troubleshooting-test-failure-for-caffe"></a>Rozwiązywanie problemów z Niepowodzenie testu dla Caffe
 
@@ -167,7 +162,7 @@ Caffe korzysta z "architektury" i ", gdzie można utworzyć model, wystarczy zde
 
 Model, który jest pociągiem, to przykładowy model szkolenia MNIST ręcznie. MNIST ręcznie baza danych cyfr odręcznych zawiera zestaw szkoleniowy 60 000 przykładów oraz zestaw testów 10 000 przykładów. Jest to podzestaw większego zestawu dostępnego z NIST. Liczba cyfr została znormalizowana i wyśrodkowana w obrazie o stałym rozmiarze. CaffeOnSpark zawiera pewne skrypty do pobrania zestawu danych i przekonwertowania go w prawidłowy format.
 
-CaffeOnSpark zawiera przykład topologii sieci dla szkolenia MNIST ręcznie. Jest to świetny projekt podziału architektury sieci (topologii sieci) i optymalizacji. W takim przypadku wymagane są dwa pliki: 
+CaffeOnSpark zawiera przykład topologii sieci dla szkolenia MNIST ręcznie. Jest to świetny projekt podziału architektury sieci (topologii sieci) i optymalizacji. W takim przypadku wymagane są dwa pliki:
 
 plik "Solver" ($ {CAFFE_ON_SPARK}/Data/lenet_memory_solver.prototxt) służy do nadzorowania optymalizacji i generowania aktualizacji parametrów. Na przykład określa, czy używany jest procesor CPU, czy procesor GPU, jaki jest czas, ile iteracji jest itp. Definiuje również, która topologia sieci neuron powinna być używana przez program (który jest potrzebny drugi plik). Aby uzyskać więcej informacji na temat dodatku Solver, zobacz [dokumentację Caffe](https://caffe.berkeleyvision.org/tutorial/solver.html).
 
@@ -176,7 +171,7 @@ W tym przykładzie, ponieważ korzystasz z procesora CPU zamiast GPU, należy zm
     # solver mode: CPU or GPU
     solver_mode: CPU
 
-![Caffe Config1](./media/apache-spark-deep-learning-caffe/caffe-configuration1.png
+![Przykład konfiguracji Caffe usługi HDInsight](./media/apache-spark-deep-learning-caffe/caffe-configuration1.png
 )
 
 W razie konieczności można zmienić inne wiersze.
@@ -186,7 +181,7 @@ Drugi plik ($ {CAFFE_ON_SPARK}/Data/lenet_memory_train_test.prototxt) definiuje,
 - Zmień wartość "File:/Users/Mridul/bigml/demodl/mnist_train_lmdb" na "wasb:///projects/machine_learning/image_dataset/mnist_train_lmdb"
 - Zmień wartość "File:/Users/Mridul/bigml/demodl/mnist_test_lmdb/" na "wasb:///projects/machine_learning/image_dataset/mnist_test_lmdb"
 
-![Caffe Config2](./media/apache-spark-deep-learning-caffe/caffe-configuration2.png)
+![Przykład konfiguracji Caffe usługi HDInsight](./media/apache-spark-deep-learning-caffe/caffe-configuration2.png)
 
 Aby uzyskać więcej informacji na temat sposobu definiowania sieci, zapoznaj się z [dokumentacją Caffe w zestawie danych mnist ręcznie](https://caffe.berkeleyvision.org/gathered/examples/mnist.html)
 
@@ -202,19 +197,19 @@ Ponieważ jest używany tryb klastra PRZĘDZy, w tym przypadku sterownik Spark z
 
     17/02/01 23:22:16 INFO Client: Application report for application_1485916338528_0015 (state: RUNNING)
 
-Jeśli chcesz wiedzieć, co się stało, zazwyczaj musisz uzyskać dziennik sterownika platformy Spark, który zawiera więcej informacji. W takim przypadku należy przejść do interfejsu użytkownika PRZĘDZy, aby znaleźć odpowiednie dzienniki PRZĘDZy. Interfejs użytkownika PRZĘDZy można uzyskać według tego adresu URL: 
+Jeśli chcesz wiedzieć, co się stało, zazwyczaj musisz uzyskać dziennik sterownika platformy Spark, który zawiera więcej informacji. W takim przypadku należy przejść do interfejsu użytkownika PRZĘDZy, aby znaleźć odpowiednie dzienniki PRZĘDZy. Interfejs użytkownika PRZĘDZy można uzyskać według tego adresu URL:
 
     https://yourclustername.azurehdinsight.net/yarnui
-   
-![INTERFEJS UŻYTKOWNIKA PRZĘDZY](./media/apache-spark-deep-learning-caffe/apache-yarn-window-1.png)
+
+![Widok przeglądarki usługi Apache przędzy](./media/apache-spark-deep-learning-caffe/apache-yarn-window-1.png)
 
 Zapoznaj się z liczbą zasobów dla tej konkretnej aplikacji. Możesz kliknąć link "Scheduler", a następnie zobaczyć, że dla tej aplikacji będzie uruchomionych dziewięć kontenerów. należy zażądać PRZĘDZy, aby zapewnić osiem wykonawców, a inny kontener dla procesu sterownika. 
 
-![Harmonogram PRZĘDZy](./media/apache-spark-deep-learning-caffe/apache-yarn-scheduler.png)
+![Widok harmonogramu HDI Apache PRZĘDZy](./media/apache-spark-deep-learning-caffe/apache-yarn-scheduler.png)
 
 Jeśli wystąpią błędy, warto sprawdzić dzienniki sterowników lub dzienniki kontenerów. W przypadku dzienników sterowników można kliknąć pozycję Identyfikator aplikacji w interfejsie użytkownika PRZĘDZy, a następnie kliknąć przycisk "dzienniki". Dzienniki sterowników są zapisywane w stderr.
 
-![INTERFEJS UŻYTKOWNIKA PRZĘDZY 2](./media/apache-spark-deep-learning-caffe/apache-yarn-window-2.png)
+![Widok przeglądarki Apache przędzy](./media/apache-spark-deep-learning-caffe/apache-yarn-window-2.png)
 
 Na przykład może zostać wyświetlony następujący błąd z dzienników sterowników, wskazujący, że przydzieli zbyt wiele wykonawców.
 
@@ -262,7 +257,6 @@ z węzła głównego. Po sprawdzeniu awarii kontenera jest on spowodowany przez 
     WARNING: Logging before InitGoogleLogging() is written to STDERR
     F0201 07:10:48.309725 11624 common.cpp:79] Cannot use GPU in CPU-only Caffe: check mode.
 
-
 ## <a name="getting-results"></a>Pobieranie wyników
 
 Ponieważ przydzielasz 8 programów wykonujących, a topologia sieci jest prosta, wykonanie wyniku powinno trwać około 30 minut. W wierszu polecenia można zobaczyć, że należy umieścić model do wasb:///mnist.model i umieścić wyniki w folderze o nazwie wasb:///mnist_features_result.
@@ -285,19 +279,19 @@ a wynik wygląda następująco:
 
 SampleID reprezentuje identyfikator w zestawie danych MNIST ręcznie, a etykieta jest numerem identyfikowanym przez model.
 
-
-## <a name="conclusion"></a>Wniosek
+## <a name="conclusion"></a>Podsumowanie
 
 W tej dokumentacji podjęto próbę instalacji CaffeOnSpark z uruchomionym prostym przykładem. HDInsight to w pełni zarządzana platforma obliczeniowa w chmurze, która jest najlepszym miejscem do obsługi obciążeń maszynowych i zaawansowanych analiz w dużych zestawach danych, a w przypadku rozproszonej uczenia głębokiego można użyć Caffe w usłudze HDInsight Spark, aby przeprowadzić uczenie głębokie widoku.
 
-
 ## <a name="seealso"></a>Zobacz też
+
 * [Podsumowanie Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scenariusze
+
 * [Apache Spark z Machine Learning: Korzystanie z platformy Spark w usłudze HDInsight do analizowania temperatury kompilacji przy użyciu danych HVAC](apache-spark-ipython-notebook-machine-learning.md)
 * [Apache Spark z Machine Learning: Korzystanie z platformy Spark w usłudze HDInsight do przewidywania wyników inspekcji żywności](apache-spark-machine-learning-mllib-ipython.md)
 
-### <a name="manage-resources"></a>Zarządzanie zasobami
-* [Zarządzanie zasobami klastra Apache Spark w usłudze Azure HDInsight](apache-spark-resource-manager.md)
+### <a name="manage-resources"></a>Zarządzaj zasobami
 
+* [Zarządzanie zasobami klastra Apache Spark w usłudze Azure HDInsight](apache-spark-resource-manager.md)

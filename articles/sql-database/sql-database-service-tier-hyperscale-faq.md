@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/06/2019
-ms.openlocfilehash: 3f64bce34a1bdb11bdbebb99fe28cdf3ff16dfb8
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 8c35877c7de2fa89a8fe7a94c11787814183df9e
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128708"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162251"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Często zadawane pytania dotyczące baz danych usługi Azure SQL Database
 
@@ -361,6 +361,11 @@ Domyślnie tworzymy 2 repliki dla baz danych. Jeśli chcesz dostosować liczbę 
 ### <a name="how-do-i-connect-to-these-secondary-compute-nodes"></a>Jak mogę połączyć się z tymi dodatkowymi węzłami obliczeniowymi
 
 Można połączyć się z tymi dodatkowymi węzłami obliczeniowymi tylko do odczytu `ApplicationIntent` przez ustawienie argumentu parametrów połączenia na `readonly`. Wszystkie połączenia oznaczone za `readonly` pomocą są automatycznie kierowane do jednego z dodatkowych węzłów obliczeniowych tylko do odczytu.  
+
+### <a name="how-do-i-validate-if-i-have-successfully-connected-to-secondary-compute-node-using-ssms--other-client-tools"></a>Jak mogę sprawdzić, czy pomyślnie nawiązano połączenie z dodatkowym węzłem obliczeniowym przy użyciu narzędzia SSMS/other Client Tools?
+
+Poniższe zapytanie T-SQL można wykonać za pomocą narzędzia SSMS/other Client Tools: `SELECT DATABASEPROPERTYEX ( '<database_name>' , 'updateability' )`.
+Wynikiem tego jest `READ_ONLY` to, że połączenie wskazuje węzeł pomocniczy tylko do odczytu lub `READ_WRITE` Jeśli połączenie wskazuje węzeł podstawowy.
 
 ### <a name="can-i-create-a-dedicated-endpoint-for-the-read-scale-replica"></a>Czy można utworzyć dedykowany punkt końcowy dla repliki w skali odczytu
 

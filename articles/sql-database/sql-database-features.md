@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 594edab4e6a69edb49c8a1ce407c9fd943d11f2b
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 36bcb8f7a3ee75794741b44f91956950179e5544
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103151"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162284"
 ---
 # <a name="azure-sql-database-features"></a>Funkcje Azure SQL Database
 
@@ -105,7 +105,7 @@ Poniższa tabela zawiera listę głównych funkcji SQL Server i zawiera informac
 | [Flagi śledzenia](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql) | Nie | Tak, ale tylko ograniczony zbiór globalnych flag śledzenia. Zobacz [różnice](sql-database-managed-instance-transact-sql-information.md#dbcc) w programie DBCC |
 | [Replikacja transakcyjna](sql-database-managed-instance-transactional-replication.md) | Tak, [tylko subskrybent replikacji transakcyjnej i migawek](sql-database-single-database-migrate.md) | Tak, w [publicznej wersji](https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance)zapoznawczej. Zobacz ograniczenia w [tym miejscu](sql-database-managed-instance-transact-sql-information.md#replication). |
 | [Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | Tak — Ogólnego przeznaczenia i Krytyczne dla działania firmy warstwy usługi| [Tak](transparent-data-encryption-azure-sql.md) |
-| Uwierzytelnianie systemu Windows | Nie | Nie |
+| Uwierzytelnianie Windows | Nie | Nie |
 | [Klaster trybu failover z systemem Windows Server](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server) | Nie. Inne techniki zapewniające [wysoką dostępność](sql-database-high-availability.md) są zawarte w każdej bazie danych. Odzyskiwanie po awarii zostało omówione w [omówieniu ciągłości działania w Azure SQL Database](sql-database-business-continuity.md) | Nie. Inne techniki zapewniające [wysoką dostępność](sql-database-high-availability.md) są zawarte w każdej bazie danych. Odzyskiwanie po awarii zostało omówione w [omówieniu ciągłości działania w Azure SQL Database](sql-database-business-continuity.md) |
 
 ## <a name="platform-capabilities"></a>Możliwości platformy
@@ -161,7 +161,7 @@ Usługa Azure SQL Database obsługuje różne narzędzia danych, które mogą po
 | [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) | Tak | Tak [w wersji 18,0 lub nowszej](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
 | [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | Tak | Tak |
 | [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | Nie — zobacz [zdarzenia rozszerzone](sql-database-xevent-db-diff-from-svr.md) | Tak |
-| [System Center Operations Manager — SCOM](https://docs.microsoft.com/system-center/scom/welcome) | [Tak](https://www.microsoft.com/download/details.aspx?id=38829) | Nie |
+| [System Center Operations Manager — SCOM](https://docs.microsoft.com/system-center/scom/welcome) | [Tak](https://www.microsoft.com/download/details.aspx?id=38829) | Tak, [w wersji zapoznawczej](https://www.microsoft.com/download/details.aspx?id=100306) |
 
 ## <a name="migration-methods"></a>Metody migracji
 

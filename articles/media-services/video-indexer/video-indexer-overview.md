@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/17/2019
 ms.author: juliako
-ms.openlocfilehash: a30fa858ea7befa2363e0ac2742e16d46037d0e0
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
-ms.translationtype: HT
+ms.openlocfilehash: a4b7ccf6ece8ed40d6f6c6a22410d4bbe99e590a
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123506"
+ms.locfileid: "71146470"
 ---
 # <a name="what-is-video-indexer"></a>Co to jest Video Indexer?
 
@@ -54,10 +54,13 @@ Poniżej znajduje się lista szczegółowych informacji, które można pobrać z
 * **Wykrywanie czarnej ramki**: Identyfikuje czarne ramki prezentowane w klipie wideo.
 * **Wyodrębnianie klatek kluczowych**: Wykrywa stabilne ramki kluczowe w filmie wideo.
 * **Kredyty kroczące**: Zidentyfikuj początkową i końcową kredyty kroczące na końcu programów telewizyjnych i filmów.
+* **Wykrywanie znaków animowanych** (wersja zapoznawcza): wykrywanie, grupowanie i rozpoznawanie znaków w animowanej zawartości poprzez integrację z [Cognitive Services wzrokiem niestandardowym](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/). Aby uzyskać więcej informacji, zobacz [wykrywanie znaków animowanych](animated-characters-recognition.md).
+* **Wykrywanie typu zrzutu redakcyjnego**: wypełnianie zrzutów na podstawie ich typu (na przykład szerokiego zrzutu, średniej zrzutu, zamknięcia, ekstremalnego zamknięcia, dwóch zastrzelonych, wielu osób, na zewnątrz i wewnątrz, itp.). Aby uzyskać więcej informacji, zobacz [wykrywanie typów zrzutów redakcyjnych](scenes-shots-keyframes.md#editorial-shot-type-detection).
 
 ### <a name="audio-insights"></a>Szczegółowe informacje o usłudze audio
 
 * **Automatyczne wykrywanie języka**: Automatycznie identyfikuje dominujący język. Obsługiwane języki to angielski, hiszpański, francuski, niemiecki, włoski, chiński (uproszczony), japoński, rosyjski i portugalski (Brazylia). Jeśli nie można zidentyfikować języka z pewnością, Video Indexer zakłada, że język mówiony jest w języku angielskim. Aby uzyskać więcej informacji, zobacz [Language Identification model](language-identification-model.md).
+* **Identyfikacja i transkrypcja mowy w wielu językach** (wersja zapoznawcza): Automatycznie identyfikuje język mówiony w różnych segmentach z audio, wysyłając każdy segment pliku nośnika do uzyskanego i połączyć transkrypcję z powrotem do jednego ujednoliconego transkrypcji. Aby uzyskać więcej informacji, zobacz [Automatyczne identyfikowanie i transkrypcja zawartości w wielu językach](multi-language-identification-transcription.md).
 * **Transkrypcja audio**: Konwertuje mowę na tekst w 12 językach i zezwala na rozszerzenia. Obsługiwane języki to angielski, hiszpański, francuski, niemiecki, włoski, chiński (uproszczony), japoński, arabski, rosyjski, portugalski (Brazylia), hindi i koreański.
 * **Napisy kodowane**: Tworzy napisy w trzech formatach: VTT, TTML, NARZĘDZIA SRT.
 * **Przetwarzanie dwóch kanałów**: Wykrywa automatyczne wykrywanie, oddzielne transkrypcje i scalanie do pojedynczej osi czasu.
@@ -75,6 +78,7 @@ Poniżej znajduje się lista szczegółowych informacji, które można pobrać z
 Gdy indeksowanie według jednego kanału częściowy wynik dla tych modeli będzie dostępne
 
 * **Wyodrębnianie słów kluczowych**: Wyodrębnia słowa kluczowe z mowy i tekstu wizualnego.
+* **Wyodrębnianie nazwanych jednostek**: Wyodrębnianie marek, lokalizacji i osób z mowy i tekstu wizualnego za pośrednictwem przetwarzania języka naturalnego (NLP).
 * **Wyodrębnianie marek**: Wyodrębnia marki z mowy i tekstu wizualnego.
 * **Wnioskowanie dotyczące tematu**: Wykonuje wnioskowanie głównych tematów z transkrypcji. Dołączona jest Taksonomia IPTC pierwszego poziomu.
 * **Artefakty**: Wyodrębnia bogaty zestaw artefaktów "Next Level of details" dla każdego z modeli.

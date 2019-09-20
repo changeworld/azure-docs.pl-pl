@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 5/31/2019
 ms.author: victorh
-ms.openlocfilehash: 5f7fd47a096ddd57150a466f85fabcfc2f7045d9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 725b284fa58296aea310f618c000e77d9a0fb4c9
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564864"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146620"
 ---
 # <a name="what-is-azure-application-gateway"></a>Co to jest Azure Application Gateway?
 
@@ -35,7 +35,7 @@ Brama Application Gateway obsługuje zakończenie protokołu SSL/TLS w bramie, p
 
 ## <a name="autoscaling"></a>Skalowanie automatyczne
 
-Wdrożenia Application Gateway lub WAF w ramach jednostki SKU Standard_v2 lub WAF_v2 obsługują Skalowanie automatyczne i można skalować w górę lub w dół w zależności od zmiany wzorców obciążenia ruchu sieciowego. Dzięki skalowaniu automatycznemu nie trzeba również wybierać rozmiaru wdrożenia ani liczby wystąpień podczas aprowizowania usługi. Aby uzyskać więcej informacji na temat Application Gateway funkcji standard_v2 i WAF_v2, zobacz [skalowanie jednostki SKU w wersji 2](application-gateway-autoscaling-zone-redundant.md).
+Wdrożenia Application Gateway lub WAF w ramach jednostki SKU Standard_v2 lub WAF_v2 obsługują Skalowanie automatyczne i można skalować w górę lub w dół w zależności od zmiany wzorców obciążenia ruchu sieciowego. Dzięki skalowaniu automatycznemu nie trzeba również wybierać rozmiaru wdrożenia ani liczby wystąpień podczas aprowizowania usługi. Aby uzyskać więcej informacji na temat Application Gateway funkcji Standard_v2 i WAF_v2, zobacz [skalowanie jednostki SKU w wersji 2](application-gateway-autoscaling-zone-redundant.md).
 
 ## <a name="zone-redundancy"></a>Nadmiarowość stref
 
@@ -47,11 +47,11 @@ Adres VIP bramy aplikacji w jednostce SKU Standard_v2 lub WAF_v2 obsługuje wył
 
 ## <a name="web-application-firewall"></a>Zapora aplikacji internetowej
 
-Zapora aplikacji internetowej (WAF) to funkcja usługi Application Gateway, która zapewnia scentralizowaną ochronę aplikacji internetowych przed typowymi programami wykorzystującymi luki i lukami w zabezpieczeniach. Zapora aplikacji internetowych zapewnia ochronę na podstawie reguł z [podstawowych zestawów reguł OWASP (Open Web Application Security Project)](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) w wersji 3.0 lub 2.2.9. 
+Zapora aplikacji internetowej (WAF) to funkcja usługi Application Gateway, która zapewnia scentralizowaną ochronę aplikacji internetowych przed typowymi programami wykorzystującymi luki i lukami w zabezpieczeniach. WAF opiera się na regułach z [OWASP (Open Web Application Security Project) podstawowych zestawów reguł](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3,1 (tylko WAF_v2), 3,0 i 2.2.9. 
 
 Aplikacje internetowe coraz częściej stają się obiektami złośliwych ataków wykorzystujących znane luki w zabezpieczeniach. Wśród nich często zdarzają się np. ataki polegające na iniekcji SQL i ataki z użyciem skryptów wykorzystywanych w wielu witrynach. Zapobieganie takim atakom z poziomu kodu aplikacji może być trudne. Może też wymagać rygorystycznego przestrzegania harmonogramu konserwacji, poprawek i monitorowania na wielu warstwach topologii aplikacji. Scentralizowana zapora aplikacji internetowej ułatwia zarządzanie zabezpieczeniami oraz zapewnia lepszą ochronę administratorów aplikacji przed zagrożeniami i intruzami. Zapora aplikacji internetowej może reagować na zagrożenia bezpieczeństwa szybciej — poprzez wdrażanie poprawek zapobiegających wykorzystaniu znanych luk w zabezpieczeniach w centralnej lokalizacji zamiast w poszczególnych aplikacjach internetowych. Istniejące bramy Application Gateway można łatwo przekonwertować na bramę Application Gateway obsługującą zaporę aplikacji internetowej.
 
-Aby uzyskać więcej informacji, zobacz [Zapora aplikacji sieci Web (WAF) w Application Gateway](https://docs.microsoft.com/azure/application-gateway/waf-overview)).
+Aby uzyskać więcej informacji, zobacz [Zapora aplikacji sieci Web (WAF) w Application Gateway](https://docs.microsoft.com/azure/application-gateway/waf-overview).
 
 ## <a name="url-based-routing"></a>Routing oparty na adresach URL
 
@@ -63,7 +63,7 @@ Aby uzyskać więcej informacji, zobacz [routing oparty na adresach URL za pomoc
 
 ## <a name="multiple-site-hosting"></a>Hostowanie wielu witryn
 
-Hostowanie wielu witryn pozwala na skonfigurowanie więcej niż jednej witryny internetowej w tym samym wystąpieniu bramy aplikacji. Ta funkcja umożliwia skonfigurowanie bardziej wydajnej topologii dla wdrożeń przez dodanie maksymalnie 100 witryn internetowych do jednej bramy aplikacji. Każdą witrynę internetową można skierować do jej własnej puli. Na przykład brama aplikacji może obsługiwać ruch dla witryn `contoso.com` i `fabrikam.com` z dwóch pul serwerów o nazwie ContosoServerPool i FabrikamServerPool.
+Hostowanie wielu witryn pozwala na skonfigurowanie więcej niż jednej witryny internetowej w tym samym wystąpieniu bramy aplikacji. Ta funkcja umożliwia skonfigurowanie bardziej wydajnej topologii dla wdrożeń przez dodanie do 100 witryn sieci Web do jednego Application Gateway lub 40 dla WAF (w celu uzyskania optymalnej wydajności). Każdą witrynę internetową można skierować do jej własnej puli. Na przykład brama aplikacji może obsługiwać ruch dla witryn `contoso.com` i `fabrikam.com` z dwóch pul serwerów o nazwie ContosoServerPool i FabrikamServerPool.
 
 Żądania dotyczące adresu `http://contoso.com` są kierowane do puli ContosoServerPool, a żądania dotyczące adresu `http://fabrikam.com` — do puli FabrikamServerPool.
 
@@ -107,7 +107,9 @@ Aby uzyskać więcej informacji, zobacz [Azure Application Gateway Ingress Contr
 
 Opróżnianie połączeń umożliwia bezproblemowe usunięcie członków puli zaplecza podczas planowanych aktualizacji usługi. To ustawienie jest włączane za pośrednictwem ustawienia http zaplecza i można je zastosować do wszystkich członków puli zaplecza podczas tworzenia reguły. Po włączeniu Application Gateway zapewnia wszystkie żądania wyrejestrowania puli zaplecza nie otrzymają żadnego nowego żądania, zezwalając na ukończenie istniejących żądań w skonfigurowanym limicie czasu. Dotyczy to zarówno wystąpień zaplecza, które są jawnie usuwane z puli zaplecza przez wywołanie interfejsu API, jak i wystąpienia zaplecza, które są zgłaszane jako w złej kondycji określone przez sondy kondycji.
 
-## <a name="custom-error-pages"></a>Niestandardowe strony błędów
+Aby uzyskać więcej informacji, zobacz sekcję opróżnianie połączenia w temacie [Omówienie konfiguracji Application Gateway](https://docs.microsoft.com/azure/application-gateway/configuration-overview#connection-draining).
+
+## <a name="custom-error-pages"></a>Strony błędów niestandardowych
 
 Usługa Application Gateway umożliwia tworzenie niestandardowych stron błędów wyświetlanych zamiast domyślnych strony błędów. W przypadku niestandardowych stron błędów możesz użyć własnych oznakowań i układu.
 
@@ -127,13 +129,13 @@ Aby uzyskać więcej informacji, zobacz [Zapisywanie nagłówków HTTP](rewrite-
 
 ## <a name="sizing"></a>Zmiany rozmiaru
 
-Jednostki SKU Application Gateway Standard_v2 i WAF_v2 można skonfigurować na potrzeby wdrożeń skalowania automatycznego lub stałego rozmiaru. Te jednostki SKU nie oferują różnych rozmiarów wystąpień.
+Jednostki SKU Application Gateway Standard_v2 i WAF_v2 można skonfigurować na potrzeby wdrożeń skalowania automatycznego lub stałego rozmiaru. Te jednostki SKU nie oferują różnych rozmiarów wystąpień. Aby uzyskać więcej informacji na temat wydajności i cen w wersji 2, zobacz Automatyczne [skalowanie jednostki SKU w wersji 2](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#pricing).
 
 Jednostka SKU Application Gateway Standard i WAF jest obecnie oferowana w trzech rozmiarach: małym (**Small**), średnim (**Medium**) i dużym (**Large**). Rozmiary małych wystąpień są przeznaczone na potrzeby programowania i scenariuszy testowania.
 
 Pełna lista limitów usługi Application Gateway znajduje się na stronie [ograniczeń usługi Application Gateway](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
 
-W poniższej tabeli przedstawiono przepływność przy średniej wydajności dla każdego wystąpienia bramy aplikacji z włączonym obciążeniem SSL:
+W poniższej tabeli przedstawiono średnią przepływność wydajności dla każdego wystąpienia usługi Application Gateway V1 z włączonym odciążeniem SSL:
 
 | Średni rozmiar odpowiedzi strony zaplecza | Małe | Średni | Duże |
 | --- | --- | --- | --- |

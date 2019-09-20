@@ -1,6 +1,6 @@
 ---
-title: Automatyzowanie raporty niestandardowe z danymi usługi Azure Application Insights
-description: Automatyzacja raportów niestandardowych codziennie/tydzień/miesiąc z danymi usługi Azure Application Insights
+title: Automatyzowanie niestandardowych raportów za pomocą usługi Azure Application Insights Data
+description: Automatyzowanie niestandardowych raportów codziennych/cotygodniowych/miesięcznych przy użyciu usługi Azure Application Insights Data
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -12,41 +12,41 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: f22cb620bf8cf56110bec60a4dd809066393a8ff
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3becf5ef579acdc52a51f9ad618e37460491c2ec
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067657"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146745"
 ---
-# <a name="automate-custom-reports-with-azure-application-insights-data"></a>Automatyzowanie raporty niestandardowe z danymi usługi Azure Application Insights
+# <a name="automate-custom-reports-with-azure-application-insights-data"></a>Automatyzowanie niestandardowych raportów za pomocą usługi Azure Application Insights Data
 
-Sprawozdania okresowe pomaga w zapewnieniu zespołu, informacje o przebiegu operacji ich krytycznych usług biznesowych. Deweloperzy, zespoły DevOps/SRE i ich menedżerami może być produktywność za pomocą raportów automatycznych, niezawodne dostarczanie szczegółowych informacji bez konieczności uświadomić im i zaloguj się w portalu. Raporty takie może pomóc w identyfikacji stopniowy wzrost w opóźnienia, obciążenie lub awaria kursów, które nie mogą wyzwalać dowolne reguły alertów.
+Raporty okresowe ułatwiają zespołowi informowanie o tym, jak działają usługi o krytycznym znaczeniu dla firmy. Deweloperzy, zespoły DevOps/SRE i ich menedżerów mogą wydajnie pracować dzięki automatycznym raportom niezawodnym dostarczającym szczegółowe informacje bez konieczności logowania się do portalu. Takie raporty mogą również pomóc w identyfikowaniu stopniowego wzrostu opóźnień, obciążenia lub częstotliwości niepowodzeń, które mogą nie wyzwalać żadnych reguł alertów.
 
-Każde przedsiębiorstwo ma unikatowe potrzeby raportowania, takie jak: 
+Każde przedsiębiorstwo ma swoje unikatowe potrzeby związane z raportowaniem, na przykład: 
 
-* Percentyl określonej agregacji metryk lub metryki niestandardowe w raporcie.
-* Mają różne raporty dla codziennych, cotygodniowych i comiesięcznych rzutowania danych dla różnych grup odbiorców.
-* Segmentacji według atrybutów niestandardowych, takich jak regionu lub środowiska. 
-* Zgrupować niektóre zasoby sztucznej Inteligencji w ramach jednego raportu, nawet jeśli mogą być w różnych subskrypcjach lub zasób grupy itd.
-* Oddzielne raporty zawierające poufne metryki wysyłane do odbiorców selektywnego.
-* Raporty do uczestników projektu, którzy nie mają dostępu do zasobów w portalu.
+* Określone agregacja percentylu metryk lub metryki niestandardowe w raporcie.
+* Różne raporty codziennie, co tydzień i miesięczne zestawienie danych dla różnych odbiorców.
+* Segmentacja według atrybutów niestandardowych, takich jak region lub środowisko. 
+* Grupowanie zasobów AI w jednym raporcie, nawet jeśli mogą znajdować się w różnych subskrypcjach lub grupach zasobów itd.
+* Oddzielne raporty zawierające poufne metryki wysyłane do selektywnych odbiorców.
+* Raporty do uczestników projektu, którzy mogą nie mieć dostępu do zasobów portalu.
 
 > [!NOTE] 
-> Cotygodniowe wiadomości e-mail szyfrowanego usługi Application Insights nie zezwala na dostosowywanie i nie będzie już dostępna na rzecz niestandardowe opcje, które są wymienione poniżej. Ostatnie cotygodniowe wiadomości e-mail szyfrowane będą wysyłane 11 czerwca 2018 r. Skonfiguruj jeden z poniższych opcji, aby uzyskać podobne raporty niestandardowe (Użyj zapytania sugerowane poniżej).
+> Cotygodniowa poczta e-mail Application Insights Digest nie zezwolił na dostosowanie i zostanie wycofana na korzyść opcji niestandardowych wymienionych poniżej. Ostatnia tygodniowa wiadomość e-mail z podsumowaniem zostanie wysłana od 11 czerwca 2018. Skonfiguruj jedną z następujących opcji, aby uzyskać podobne niestandardowe raporty (Użyj zapytania z sugestią poniżej).
 
-## <a name="to-automate-custom-report-emails"></a>Aby zautomatyzować niestandardowy raport w wiadomości e-mail
+## <a name="to-automate-custom-report-emails"></a>Aby zautomatyzować wiadomości e-mail dotyczące raportów niestandardowych
 
-Możesz [programowo wykonać zapytanie dotyczące usługi Application Insights](https://dev.applicationinsights.io/) danych, aby generować raporty niestandardowe, zgodnie z harmonogramem. Może to pomóc szybko rozpoczniesz pracę następujące opcje:
+Można [programowo wykonywać zapytania dotyczące Application Insights](https://dev.applicationinsights.io/) danych, aby generować raporty niestandardowe zgodnie z harmonogramem. Następujące opcje mogą pomóc szybko rozpocząć pracę:
 
-* [Automatyzowanie raporty w usłudze Microsoft Flow](automate-with-flow.md)
-* [Automatyzowanie raporty w usłudze Logic Apps](automate-with-logic-apps.md)
-* Użyj "Podsumowanie zaplanowanych usługi Application Insights" [funkcji platformy Azure](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function) szablonu w tym scenariuszu monitorowanie. Ta funkcja korzysta z usługi SendGrid do dostarczania wiadomości e-mail. 
+* [Automatyzowanie raportów za pomocą Microsoft Flow](automate-with-flow.md)
+* [Automatyzowanie raportów za pomocą Logic Apps](automate-with-logic-apps.md)
+* Użyj szablonu [funkcji platformy Azure](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function) "Application Insights zaplanowanego skrótu" w scenariuszu monitorowania. Ta funkcja używa SendGrid do dostarczania wiadomości e-mail. 
 
     ![Szablon funkcji platformy Azure](./media/automate-custom-reports/azure-function-template.png)
 
-## <a name="sample-query-for-a-weekly-digest-email"></a>Przykładowe zapytanie dla tygodniowy wiadomość e-mail z podsumowaniem
-Następujące zapytanie pokazuje, łączenie między wiele zestawów danych dla cotygodniowe wiadomości e-mail szyfrowanego jak raport. Dostosowuj go zgodnie z potrzebami i używać go z jedną z opcji wymienionych powyżej w celu zautomatyzowania Raport tygodniowy.   
+## <a name="sample-query-for-a-weekly-digest-email"></a>Przykładowe zapytanie dla cotygodniowej wiadomości e-mail
+Poniższe zapytanie pokazuje sprzężenie wielu zestawów danych w celu uzyskania cotygodniowej wiadomości e-mail zawierającej podsumowanie. Dostosuj ją zgodnie z potrzebami i użyj jej w celu zautomatyzowania cotygodniowego raportu.   
 
 ```AIQL
 let period=7d;
@@ -76,93 +76,95 @@ availabilityResults
 | project TotalRequests, FailedRequests, RequestsDuration, TotalDependencies, FailedDependencies, DependenciesDuration, TotalViews, TotalExceptions, OverallAvailability, AvailabilityDuration
 ```
 
-## <a name="application-insights-scheduled-digest-report"></a>Raport Podsumowanie zaplanowanych szczegółowych informacji w aplikacji
+## <a name="application-insights-scheduled-digest-report"></a>Raport Application Insights zaplanowanego podsumowania
 
-1. W witrynie Azure portal, wybierz **Utwórz zasób** > **obliczenia** > **aplikacji funkcji**.
+1. W Azure Portal wybierz pozycję **Utwórz zasób** > **aplikacja funkcji** **obliczeniowy** > .
 
-   ![Utwórz zrzut ekranu aplikacji funkcji zasobów platformy Azure](./media/automate-custom-reports/function-app-01.png)
+   ![Tworzenie zrzutu ekranu aplikacja funkcji zasobów platformy Azure](./media/automate-custom-reports/function-app-01.png)
 
-2. Wprowadź odpowiednie informacje o aplikacji i wybierz _Utwórz_. (Usługa application Insights _na_ jest wymagany tylko wtedy, gdy chcesz monitorować nową aplikację funkcji przy użyciu usługi Application Insights)
+2. Wprowadź odpowiednie informacje dla aplikacji i wybierz pozycję _Utwórz_. (Application Insights jest wymagane tylko wtedy, gdy chcesz monitorować nowy aplikacja funkcji za pomocą Application Insights)
 
-   ![Utwórz zrzut ekranu ustawień aplikacji funkcji zasobów platformy Azure](./media/automate-custom-reports/function-app-02.png)
+   ![Utwórz zrzut ekranu ustawień aplikacja funkcji zasobów platformy Azure](./media/automate-custom-reports/function-app-02.png)
 
-3. Po ukończeniu wdrażania nowej aplikacji funkcji wybierz **przejdź do zasobu**.
+3. Po zakończeniu wdrażania nowego aplikacja funkcji wybierz pozycję **Przejdź do zasobu**.
 
-4. Wybierz **nową funkcję**.
+4. Wybierz pozycję **Nowa funkcja**.
 
-   ![Tworzenie nowego zrzutu ekranu — funkcja](./media/automate-custom-reports/function-app-03.png)
+   ![Utwórz nowy zrzut ekranu funkcji](./media/automate-custom-reports/function-app-03.png)
 
-5. Wybierz  **_usługi Application Insights zaplanowane podsumowanie szablonu_** .
+5. Wybierz **_szablon Application Insights zaplanowanego podsumowania_** .
 
      > [!NOTE]
-     > Domyślnie aplikacje funkcji są tworzone za pomocą środowiska uruchomieniowego w wersji 2.x. Należy najpierw [docelowa wersja środowiska uruchomieniowego usługi Azure Functions](https://docs.microsoft.com/azure/azure-functions/set-runtime-version) 1.x do użycia w usłudze Application Insights zaplanowane podsumowanie szablonu.
+     > Domyślnie aplikacje funkcji są tworzone przy użyciu wersji 2. x środowiska uruchomieniowego. Musisz mieć [Azure Functions środowiska uruchomieniowego w wersji](https://docs.microsoft.com/azure/azure-functions/set-runtime-version) **1. x** , aby użyć szablonu Application Insights zaplanowanego podsumowania.  ![zrzut ekranu środowiska uruchomieniowego](./../../../includes/media/functions-view-update-version-portal/function-app-view-version.png)
 
-   ![Nowy szablon usługi Insights aplikacji funkcji zrzut ekranu](./media/automate-custom-reports/function-app-04.png)
 
-6. Wprowadź adres e-mail adresata odpowiedni raport i wybierz **Utwórz**.
 
-   ![Zrzut ekranu ustawień — funkcja](./media/automate-custom-reports/function-app-05.png)
+   ![Zrzut ekranu szablonu nowej funkcji Application Insights](./media/automate-custom-reports/function-app-04.png)
 
-7. Wybierz swoje **aplikacji funkcji** > **funkcje platformy** > **ustawienia aplikacji**.
+6. Wprowadź odpowiedni adres e-mail odbiorcy dla raportu i wybierz pozycję **Utwórz**.
 
-    ![Usługa Azure zrzut ekranu ustawień aplikacji funkcji](./media/automate-custom-reports/function-app-07.png)
+   ![Zrzut ekranu ustawień funkcji](./media/automate-custom-reports/function-app-05.png)
 
-8. Utwórz trzy nowe ustawienia aplikacji odpowiednimi wartościami odpowiednich ``AI_APP_ID``, ``AI_APP_KEY``, i ``SendGridAPI``. Wybierz pozycję **Zapisz**.
+7.  > Wybierz**Ustawienia aplikacji** **platformy** >  **aplikacja funkcji**.
 
-     ![Zrzut ekranu: interfejs integracji — funkcja](./media/automate-custom-reports/function-app-08.png)
+    ![Zrzut ekranu ustawień aplikacji funkcji platformy Azure](./media/automate-custom-reports/function-app-07.png)
+
+8. Utwórz trzy nowe ustawienia aplikacji z odpowiednimi odpowiednimi wartościami ``AI_APP_ID``, ``AI_APP_KEY``i ``SendGridAPI``. Wybierz pozycję **Zapisz**.
+
+     ![Zrzut ekranu interfejsu integracji funkcji](./media/automate-custom-reports/function-app-08.png)
     
-    (Wartości AI_ znajdują się w ramach dostępu do interfejsu API dla zasobu usługi Application Insights chcesz sporządzić raport na temat. Jeśli nie masz klucza interfejsu API usługi Application Insights jest możliwość **Utwórz klucz interfejsu API**.)
+    (Wartości AI_ można znaleźć w obszarze dostęp do interfejsu API dla zasobu Application Insights, na którym chcesz utworzyć raport. Jeśli nie masz klucza interfejsu API Application Insights, istnieje możliwość **utworzenia klucza interfejsu API**.
     
    * AI_APP_ID = identyfikator aplikacji
    * AI_APP_KEY = klucz interfejsu API
-   * SendGridAPI = klucz interfejsu API usługi SendGrid
+   * SendGridAPI = SendGrid — klucz interfejsu API
 
      > [!NOTE]
-     > Jeśli nie masz konta usługi SendGrid można go utworzyć. Dokumentacja usługi SendGrid dla usługi Azure Functions jest [tutaj](https://docs.microsoft.com/azure/azure-functions/functions-bindings-sendgrid). Jeśli jest to po prostu chcesz minimalny wyjaśnienie sposobu instalacji usługi SendGrid i wygeneruj klucz interfejsu API, który został dostarczony na końcu tego artykułu. 
+     > Jeśli nie masz konta SendGrid, możesz go utworzyć. Dokumentacja usługi SendGrid dla Azure Functions jest [tutaj](https://docs.microsoft.com/azure/azure-functions/functions-bindings-sendgrid). Jeśli chcesz tylko określić, jak skonfigurować SendGrid, i wygenerować klucz interfejsu API, który jest dostępny na końcu tego artykułu. 
 
-9. Wybierz **integracja** i w obszarze danych wyjściowych kliknij **SendGrid ($return)** .
+9. Wybierz pozycję **integracja** i w obszarze wyjściowe kliknij pozycję **SendGrid ($Return)** .
 
-     ![Zrzut ekranu danych wyjściowych](./media/automate-custom-reports/function-app-09.png)
+     ![Zrzut ekranu wyjściowego](./media/automate-custom-reports/function-app-09.png)
 
-10. W obszarze **ustawienia aplikacji klucz SendGridAPI**, wybierz nowo utworzony ustawienie aplikacji w taki sposób, aby uzyskać **SendGridAPI**.
+10. W obszarze **Ustawienia aplikacji klucza SendGridAPI**wybierz nowo utworzone ustawienie aplikacji dla **SendGridAPI**.
 
-     ![Uruchom zrzut ekranu aplikacji funkcji](./media/automate-custom-reports/function-app-010.png)
+     ![Uruchom aplikacja funkcji zrzut ekranu](./media/automate-custom-reports/function-app-010.png)
 
-11. Uruchom i przetestuj swoją aplikację funkcji.
+11. Uruchom i przetestuj aplikacja funkcji.
 
      ![Zrzut ekranu testu](./media/automate-custom-reports/function-app-11.png)
 
-12. Sprawdź, aby upewnić się, że komunikat pomyślnie wysłać/odebrać poczty e-mail.
+12. Sprawdź wiadomość e-mail, aby upewnić się, że wiadomość została wysłana/odebrana pomyślnie.
 
-     ![Zrzut ekranu wiersza tematu wiadomości e-mail](./media/automate-custom-reports/function-app-12.png)
+     ![Zrzut ekranu z wierszem tematu wiadomości E-mail](./media/automate-custom-reports/function-app-12.png)
 
-## <a name="sendgrid-with-azure"></a>Usługa SendGrid z platformą Azure
+## <a name="sendgrid-with-azure"></a>SendGrid z platformą Azure
 
-Te kroki mają zastosowanie, jeśli nie masz jeszcze konta SendGrid, skonfigurowane.
+Te kroki mają zastosowanie tylko wtedy, gdy nie masz jeszcze skonfigurowanego konta SendGrid.
 
-1. W usłudze Azure portal wybierz pozycję **Utwórz zasób** Wyszukaj **dostarczanie wiadomości E-mail usługi SendGrid** > kliknij **Utwórz** > i wypełnić tworzyć instrukcje dotyczące usługi SendGrid. 
+1. W Azure Portal wybierz pozycję **Utwórz zasób** wyszukiwanie **SendGrid poczty E-mail** > kliknij pozycję **Utwórz** > i wypełnij instrukcje tworzenia określonych SendGrid. 
 
-     ![Tworzenie zasobu usługi SendGrid zrzut ekranu](./media/automate-custom-reports/function-app-13.png)
+     ![Utwórz zrzut ekranu zasobów SendGrid](./media/automate-custom-reports/function-app-13.png)
 
-2. Po utworzeniu w ramach kont usługi SendGrid wybierz **Zarządzaj**.
+2. Po utworzeniu konta w obszarze SendGrid wybierz pozycję **Zarządzaj**.
 
-     ![Zrzut ekranu klucz interfejsu API ustawienia](./media/automate-custom-reports/function-app-14.png)
+     ![Zrzut ekranu klucza interfejsu API ustawień](./media/automate-custom-reports/function-app-14.png)
 
-3. Spowoduje to uruchomienie witryny SendGrid. Wybierz **ustawienia** > **klucze interfejsu API**.
+3. Spowoduje to uruchomienie witryny SendGrid. Wybierz pozycję **Ustawienia** > **klucze interfejsu API**.
 
-     ![Można tworzyć i wyświetlać zrzut ekranu aplikacji klucz interfejsu API](./media/automate-custom-reports/function-app-15.png)
+     ![Tworzenie i Wyświetlanie zrzutu ekranu aplikacji klucza interfejsu API](./media/automate-custom-reports/function-app-15.png)
 
-4. Utwórz klucz interfejsu API > Wybierz **widoku & Utwórz** (można znaleźć w dokumentacji usługi SendGrid na ograniczony dostęp do ustalenia, jaki poziom uprawnień jest odpowiedni klucz interfejsu API. Pełny dostęp jest wybrane w tym miejscu tylko w celach demonstracyjnych.)
+4. Utwórz klucz interfejsu API > wybierz pozycję **utwórz & widok** (Przejrzyj dokumentację usługi SendGrid w sprawie ograniczonego dostępu, aby określić, jaki poziom uprawnień jest odpowiedni dla klucza interfejsu API. Pełny dostęp jest wybierany tutaj tylko do celów.
 
-   ![Zrzut ekranu z pełnym dostępem](./media/automate-custom-reports/function-app-16.png)
+   ![Zrzut ekranu pełnego dostępu](./media/automate-custom-reports/function-app-16.png)
 
-5. Skopiuj cały klucz, wartość ta jest potrzebne w ustawieniach aplikacji funkcji z wartością dla SendGridAPI
+5. Skopiuj cały klucz, ta wartość jest wymagana w ustawieniach aplikacja funkcji jako wartość SendGridAPI
 
    ![Kopiuj zrzut ekranu klucza interfejsu API](./media/automate-custom-reports/function-app-17.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Dowiedz się więcej na temat tworzenia [zapytań analitycznych](../../azure-monitor/log-query/get-started-queries.md).
-* Dowiedz się więcej o [programowe wykonywanie zapytań o dane usługi Application Insights](https://dev.applicationinsights.io/)
+* Dowiedz się więcej na temat [programowo przeszukiwania danych Application Insights](https://dev.applicationinsights.io/)
 * Dowiedz się więcej na temat usługi [Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps).
 * Dowiedz się więcej o [Microsoft Flow](https://ms.flow.microsoft.com).

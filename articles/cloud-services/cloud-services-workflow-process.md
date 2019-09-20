@@ -4,7 +4,7 @@ description: Ten artykuł zawiera omówienie procesów przepływu pracy podczas 
 services: cloud-services
 documentationcenter: ''
 author: genlin
-manager: Willchen
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 9f2af8dd-2012-4b36-9dd5-19bf6a67e47d
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 04/08/2019
 ms.author: kwill
-ms.openlocfilehash: 383f4d26d44871936ccc910f15575db5aec3ec8c
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 5dd57a87658554bf59acf5cee1b6daf67b8692b8
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945324"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162148"
 ---
 #    <a name="workflow-of-windows-azure-classic-vm-architecture"></a>Przepływ pracy architektury klasycznej maszyny wirtualnej platformy Microsoft Azure 
 Ten artykuł zawiera omówienie procesów przepływu pracy, które są wykonywane podczas wdrażania lub aktualizowania zasobu platformy Azure, takiego jak maszyna wirtualna. 
@@ -37,15 +37,16 @@ Na poniższym diagramie przedstawiono architekturę zasobów platformy Azure.
 
 **B**. Kontroler sieci szkieletowej jest odpowiedzialny za utrzymywanie i monitorowanie wszystkich zasobów w centrum danych. Komunikuje się z agentami hosta sieci szkieletowej w systemie operacyjnym sieci szkieletowej wysyłającym informacje, takie jak wersja systemu operacyjnego gościa, pakiet usługi, konfiguracja usługi i stan usługi.
 
-**C**. Agent hosta znajduje się na OSsystem hosta i jest odpowiedzialny za skonfigurowanie systemu operacyjnego gościa i komunikowanie się z agentem gościa (WindowsAzureGuestAgent) w celu zaktualizowania roli do zamierzonego stanu celu i przetestowania pulsu z agentem gościa. Jeśli Agent hosta nie odbiera odpowiedzi pulsu przez 10 minut, Agent hosta uruchamia ponownie system operacyjny gościa.
+**C**. Agent hosta znajduje się w systemie operacyjnym hosta i jest odpowiedzialny za skonfigurowanie systemu operacyjnego gościa i komunikowanie się z agentem gościa (WindowsAzureGuestAgent) w celu zaktualizowania roli w celu zamierzonego stanu celu i sprawdzenia pulsu z agentem gościa. Jeśli Agent hosta nie odbiera odpowiedzi pulsu przez 10 minut, Agent hosta uruchamia ponownie system operacyjny gościa.
 
 **C2**. WaAppAgent jest odpowiedzialny za Instalowanie, Konfigurowanie i aktualizowanie programu WindowsAzureGuestAgent. exe.
 
 **D**.  WindowsAzureGuestAgent jest odpowiedzialny za następujące:
 
-1. Konfigurowanie systemu operacyjnego gościa, w tym zapory, list ACL, zasobów LocalStorage, pakietu usługi i konfiguracji oraz certyfikatów. Skonfigurowanie identyfikatora SID dla konta użytkownika, w ramach którego zostanie uruchomiona rola.
-2. Komunikacja stanu roli z siecią szkieletową.
-3. Uruchamianie WaHostBootstrapper i monitorowanie go w celu upewnienia się, że rola jest w stanie celu.
+1. Konfigurowanie systemu operacyjnego gościa, w tym zapory, list ACL, zasobów LocalStorage, pakietu usługi i konfiguracji oraz certyfikatów.
+2. Skonfigurowanie identyfikatora SID dla konta użytkownika, w ramach którego zostanie uruchomiona rola.
+3. Komunikacja stanu roli z siecią szkieletową.
+4. Uruchamianie WaHostBootstrapper i monitorowanie go w celu upewnienia się, że rola jest w stanie celu.
 
 **E**. WaHostBootstrapper jest odpowiedzialny za:
 
@@ -76,7 +77,7 @@ Na poniższym diagramie przedstawiono architekturę zasobów platformy Azure.
 
 ## <a name="workflow-processes"></a>Procesy przepływu pracy
 
-1. Użytkownik wysyła żądanie, takie jak przekazywanie plików. cspkg i. cscfg, poinformowanie zasobu o konieczności zatrzymania lub zmiany konfiguracji itd. Można to zrobić za pomocą Azure Portal lub narzędzia korzystającego z interfejs API zarządzania usługami, takiego jak funkcja publikacji programu Visual Studio. To żądanie przechodzi przez fronton reddog do wszystkich zadań związanych z subskrypcją, a następnie przekazuje żądanie do FFE. Pozostałe kroki tych kroków przepływu pracy to wdrożenie nowego pakietu i jego uruchomienie.
+1. Użytkownik wysyła żądanie, takie jak przekazywanie plików ". cspkg" i ". cscfg", informujących o zatrzymywaniu lub wprowadzeniu zmiany konfiguracji itd. Można to zrobić za pomocą Azure Portal lub narzędzia korzystającego z interfejs API zarządzania usługami, takiego jak funkcja publikacji programu Visual Studio. To żądanie przechodzi przez fronton reddog do wszystkich zadań związanych z subskrypcją, a następnie przekazuje żądanie do FFE. Pozostałe kroki tych kroków przepływu pracy to wdrożenie nowego pakietu i jego uruchomienie.
 2. FFE znajduje poprawną pulę maszyn (na podstawie danych wejściowych klienta, takich jak grupa koligacji lub lokalizacja geograficzna oraz dane wejściowe z sieci szkieletowej, takie jak dostępność maszyny) i komunikują się z kontrolerem głównej sieci szkieletowej w tej puli maszyn.
 3. Kontroler sieci szkieletowej odnajduje hosta, który ma dostępne rdzenie procesora CPU (lub uruchamia nowy host). Pakiet i konfiguracja usługi są kopiowane do hosta, a kontroler sieci szkieletowej komunikuje się z agentem hosta w systemie operacyjnym hosta, aby wdrożyć pakiet (skonfigurować DIP, porty, system operacyjny gościa itd.).
 4. Agent hosta uruchamia system operacyjny gościa i komunikuje się z agentem gościa (WindowsAzureGuestAgent). Host wysyła pulsy do gościa, aby upewnić się, że rola działa do stanu docelowego.

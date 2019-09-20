@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 32fafaeb6332ca0e76dbc8d72f11872a82ca1cbe
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 1cdea358daa3bd0f9e738a0454613ea774a0e6dc
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779151"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146648"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Tworzenie autonomicznego konta usługi Azure Automation
 
@@ -28,7 +28,6 @@ Po utworzeniu konta usługi Automation w Azure Portal te konta są tworzone auto
   * Tworzy nazwę główną usługi w Azure Active Directory (Azure AD).
   * Tworzy certyfikat.
   * Przypisuje Access Control opartych na rolach współautor (RBAC), które zarządzają Azure Resource Manager zasobami przy użyciu elementów Runbook.
-* **Klasyczne konto Uruchom jako**. To konto służy do przekazywania certyfikatu zarządzania. Certyfikat zarządza zasobami klasycznymi przy użyciu elementów Runbook.
 
 Dzięki tym kontom można szybko rozpocząć Kompilowanie i wdrażanie elementów Runbook w celu obsługi Twoich potrzeb dotyczących automatyzacji.
 
@@ -97,14 +96,13 @@ Po pomyślnym utworzeniu konta usługi Automation automatycznie zostanie utworzo
 | AzureRunAsCertificate |Zasób certyfikatu tworzony automatycznie podczas tworzenia konta usługi Automation lub przy użyciu skryptu programu PowerShell dla istniejącego konta. Certyfikat jest uwierzytelniany na platformie Azure, aby można było zarządzać zasobami Azure Resource Manager z elementów Runbook. Ten certyfikat ma roczny okres obowiązywania. |
 | AzureRunAsConnection |Zasób połączenia, który jest tworzony automatycznie podczas tworzenia konta usługi Automation lub przy użyciu skryptu programu PowerShell dla istniejącego konta. |
 
-Poniższa tabela zawiera podsumowanie zasobów dla klasycznego konta Uruchom jako.
+## <a name="classic-run-as-accounts"></a>Klasyczne konta Uruchom jako
 
-| Resource | Opis |
-| --- | --- |
-| AzureClassicAutomationTutorial Runbook |Przykładowy graficzny element Runbook. Element Runbook pobiera wszystkie klasyczne maszyny wirtualne w subskrypcji przy użyciu klasycznego konta Uruchom jako (certyfikatu). Następnie zostaną wyświetlone nazwy maszyn wirtualnych i stan. |
-| AzureClassicAutomationTutorial Script Runbook |Przykładowy element Runbook programu PowerShell. Element Runbook pobiera wszystkie klasyczne maszyny wirtualne w subskrypcji przy użyciu klasycznego konta Uruchom jako (certyfikatu). Następnie zostaną wyświetlone nazwy maszyn wirtualnych i stan. |
-| AzureClassicRunAsCertificate |Zasób certyfikatu, który został utworzony automatycznie. Certyfikat jest uwierzytelniany na platformie Azure, aby można było zarządzać klasycznymi zasobami platformy Azure z poziomu elementów Runbook. Ten certyfikat ma roczny okres obowiązywania. |
-| AzureClassicRunAsConnection |Zasób połączenia, który jest tworzony automatycznie. Zasób jest uwierzytelniany na platformie Azure, aby można było zarządzać klasycznymi zasobami platformy Azure z poziomu elementów Runbook. |
+Klasyczne konta Uruchom jako nie są już tworzone, domyślnie podczas tworzenia konta Azure Automation. Jeśli nadal potrzebujesz klasycznego konta Uruchom jako, wykonaj następujące czynności.
+
+1. Na stronie **konto usługi Automation** wybierz pozycję **konta Uruchom jako** w obszarze **Ustawienia konta**.
+2. Wybierz **klasyczne konto Uruchom jako platformy Azure**.
+3. Kliknij przycisk **Utwórz** , aby kontynuować tworzenie klasycznego konta Uruchom jako.
 
 ## <a name="next-steps"></a>Następne kroki
 

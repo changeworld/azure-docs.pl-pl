@@ -1,29 +1,30 @@
 ---
-title: Przykłady programu Azure PowerShell dla usługi Azure Cosmos DB — interfejs API tabel
-description: Przykłady programu Azure PowerShell dla usługi Azure Cosmos DB — interfejs API tabel
+title: Przykłady Azure PowerShell dla Azure Cosmos DB interfejs API tabel
+description: Przykłady Azure PowerShell dla Azure Cosmos DB interfejs API tabel
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 07/03/2019
+ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: d908dc47b9f8724c5c760c290056a77550cb8058
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 95cd55bd3f87ddb4d37bfc527c8dcd28bdfa42da
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67566259"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155197"
 ---
-# <a name="azure-powershell-samples-for-azure-cosmos-db---table-api"></a>Przykłady programu Azure PowerShell dla usługi Azure Cosmos DB — interfejs API tabel
+# <a name="azure-powershell-samples-for-azure-cosmos-db---table-api"></a>Przykłady Azure PowerShell dla Azure Cosmos DB interfejs API tabel
 
-Poniższa tabela zawiera linki do przykładowych skryptów programu Azure PowerShell dla usługi Azure Cosmos DB dla interfejsu API tabel.
+Poniższa tabela zawiera linki do przykładowych skryptów Azure PowerShell dla Azure Cosmos DB interfejs API tabel.
 
 | | |
 |---|---|
-|[Tworzenie konta usługi i tabeli](scripts/powershell/table/ps-table-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tworzy konto usługi Azure Cosmos i tabeli. |
-|[Wyświetl listę lub Pobierz tabele](scripts/powershell/table/ps-table-list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Wyświetl listę lub Pobierz tabele. |
-|[Pobieranie jednostek RU/s](scripts/powershell/table/ps-table-ru-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Uzyskiwanie jednostek RU/s dla tabeli. |
-|[Aktualizacja jednostek RU/s](scripts/powershell/table/ps-table-ru-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Aktualizowanie jednostek RU/s dla tabeli. |
-|[Dodawanie regionu](scripts/powershell/common/ps-account-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Konto usługi Azure Cosmos i dodawanie regionu do listy lokalizacji. |
-|[Zmień priorytet trybu failover](scripts/powershell/common/ps-account-failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Zmień priorytet trybu failover z konta usługi Azure Cosmos za pomocą wyzwalacza ręcznego przełączania trybu failover. |
-|[Konto połączenia i klucze parametry zadania](scripts/powershell/common/ps-account-keys-connection-strings.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Pobierz parametry połączenia dla konta usługi Azure Cosmos. Pobierz klucze podstawowe i pomocnicze konta usługi Azure Cosmos. Ponowne generowanie klucza konta. |
+|[Tworzenie konta i tabeli](scripts/powershell/table/ps-table-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tworzy konto i tabelę platformy Azure Cosmos. |
+|[Wyświetlanie listy lub Pobieranie tabel](scripts/powershell/table/ps-table-list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Wyświetl listę lub Pobierz tabele. |
+|[Pobierz RU/s](scripts/powershell/table/ps-table-ru-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Pobierz RU/s dla tabeli. |
+|[Aktualizowanie RU/s](scripts/powershell/table/ps-table-ru-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Zaktualizuj RU/s dla tabeli. |
+|[Aktualizowanie konta lub Dodawanie regionu](scripts/powershell/common/ps-account-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Dodaj region do konta Cosmos. Można również użyć do modyfikacji innych właściwości konta, ale muszą one być oddzielone od zmian w regionach. |
+|[Zmiana priorytetu trybu failover lub wyzwolenie trybu failover](scripts/powershell/common/ps-account-failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Zmień priorytet pracy w trybie failover dla konta usługi Azure Cosmos lub Wyzwól ręczną pracę awaryjną. |
+|[Klucze kont lub parametry połączenia](scripts/powershell/common/ps-account-keys-connection-strings.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Pobierz klucze podstawowe i pomocnicze, parametry połączenia lub ponownie Wygeneruj klucz konta dla konta usługi Azure Cosmos. |
+|[Tworzenie konta Cosmos za pomocą zapory IP](scripts/powershell/common/ps-account-firewall-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Utwórz konto usługi Azure Cosmos z włączoną zaporą IP. |
 |||

@@ -5,7 +5,7 @@ description: Rozwiązywanie znanych problemów z usługą Azure Load Balancer
 services: load-balancer
 documentationcenter: na
 author: chadmath
-manager: cshepard
+manager: dcscontentpm
 ms.custom: seodoc18
 ms.service: load-balancer
 ms.devlang: na
@@ -14,122 +14,122 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: c5f92d564a93823fd9c0f932fa95f20d4e827761
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4e0e3cf6067467947bcb799a915a93d1bb342ea1
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60734479"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154921"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Rozwiązywanie problemów z usługą Azure Load Balancer
 
 [!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
-Ta strona zawiera informacje dotyczące rozwiązywania problemów dla typowych pytań usługi Azure Load Balancer. Gdy łączność z modułu równoważenia obciążenia są niedostępne, objawy najczęściej są następujące: 
-- Maszyny wirtualne za modułem równoważenia obciążenia nie odpowiadają sond kondycji 
-- Maszyny wirtualne za modułem równoważenia obciążenia nie odpowiadają na ruch na porcie skonfigurowanym
+Ta strona zawiera informacje dotyczące rozwiązywania problemów dotyczących typowych pytań Azure Load Balancer. Gdy Load Balancer łączność jest niedostępna, Najczęstsze objawy są następujące: 
+- Maszyny wirtualne znajdujące się za Load Balancer nie odpowiadają na sondy kondycji 
+- Maszyny wirtualne znajdujące się za Load Balancer nie odpowiadają na ruch na skonfigurowanym porcie
 
-## <a name="symptom-vms-behind-the-load-balancer-are-not-responding-to-health-probes"></a>Objaw: Maszyny wirtualne za modułem równoważenia obciążenia nie odpowiadają sond kondycji
-W przypadku serwerów wewnętrznej bazy danych do udziału w zestawu modułu równoważenia obciążenia muszą przekazać wyboru sondowania. Aby uzyskać więcej informacji na temat sond kondycji, zobacz [sondy modułu równoważenia obciążenia w interpretacji](load-balancer-custom-probe-overview.md). 
+## <a name="symptom-vms-behind-the-load-balancer-are-not-responding-to-health-probes"></a>Objawów Maszyny wirtualne znajdujące się za Load Balancer nie odpowiadają na sondy kondycji
+W przypadku serwerów zaplecza, które mają być uwzględnione w zestawie modułu równoważenia obciążenia, muszą one przekazywać sprawdzanie sondy. Aby uzyskać więcej informacji o sondach kondycji, zobacz [Opis sond Load Balancer](load-balancer-custom-probe-overview.md). 
 
-Puli zaplecza modułu równoważenia obciążenia maszyn wirtualnych może nie odpowiadać na sondy ze względu na jedną z następujących powodów: 
-- Puli zaplecza modułu równoważenia obciążenia maszyny Wirtualnej jest w złej kondycji 
-- Ładowanie puli zaplecza modułu równoważenia, których maszyna wirtualna nie nasłuchuje na porcie sondowania 
-- Zapora lub grupę zabezpieczeń sieci blokuje port w puli zaplecza modułu równoważenia obciążenia maszyn wirtualnych 
-- Inne błędy konfiguracji modułu równoważenia obciążenia
+Maszyny wirtualne puli zaplecza Load Balancer mogą nie odpowiadać na sondy z jednego z następujących powodów: 
+- Maszyna wirtualna puli zaplecza Load Balancer jest w złej kondycji 
+- Maszyna wirtualna puli zaplecza Load Balancer nie nasłuchuje na porcie sondy 
+- Zapora lub sieciowa Grupa zabezpieczeń blokuje port na maszynach wirtualnych puli zaplecza Load Balancer 
+- Inne niezgodne konfiguracje w Load Balancer
 
-### <a name="cause-1-load-balancer-backend-pool-vm-is-unhealthy"></a>Przyczyny 1: Puli zaplecza modułu równoważenia obciążenia maszyny Wirtualnej jest w złej kondycji 
+### <a name="cause-1-load-balancer-backend-pool-vm-is-unhealthy"></a>Przyczyna 1: Maszyna wirtualna puli zaplecza Load Balancer jest w złej kondycji 
 
-**Sprawdzanie poprawności i rozwiązania**
+**Sprawdzanie poprawności i rozwiązywanie problemów**
 
-Aby rozwiązać ten problem, zaloguj się do uczestniczących w programie maszyn wirtualnych, sprawdź, czy stan maszyny Wirtualnej jest w dobrej kondycji i mogą odpowiadać na **PsPing** lub **TCPing** z innej maszyny Wirtualnej w puli. Jeśli maszyna wirtualna jest w złej kondycji lub jest w stanie odpowiadać na sondy, należy rozwiązać problem i uzyskać maszynę Wirtualną do stanu dobrej kondycji, zanim będą mogły uczestniczyć w programie Równoważenie obciążenia.
+Aby rozwiązać ten problem, zaloguj się do uczestniczących maszyn wirtualnych i sprawdź, czy stan maszyny wirtualnej jest w dobrej kondycji i czy można odpowiedzieć na **PsPing** lub **TCPing** z innej maszyny wirtualnej w puli. Jeśli maszyna wirtualna jest w złej kondycji lub nie może odpowiedzieć na sondę, należy rozwiązać problem i odzyskać maszynę wirtualną do stanu dobrej kondycji, zanim będzie ona mogła uczestniczyć w równoważeniu obciążenia.
 
-### <a name="cause-2-load-balancer-backend-pool-vm-is-not-listening-on-the-probe-port"></a>Przyczyny 2: Ładowanie puli zaplecza modułu równoważenia, których maszyna wirtualna nie nasłuchuje na porcie sondowania
-Jeśli maszyna wirtualna jest w dobrej kondycji, ale nie odpowiada na żądania sondowania, następnie jedną z możliwych przyczyn może być, że port sondy nie jest otwarty na udział maszyny Wirtualnej lub maszyny Wirtualnej nie nasłuchuje na tym porcie.
+### <a name="cause-2-load-balancer-backend-pool-vm-is-not-listening-on-the-probe-port"></a>Przyczyna 2: Maszyna wirtualna puli zaplecza Load Balancer nie nasłuchuje na porcie sondy
+Jeśli maszyna wirtualna jest w dobrej kondycji, ale nie odpowiada na sondę, może to oznaczać, że port sondy nie jest otwarty na uczestniczącej maszynie wirtualnej lub maszyna wirtualna nie nasłuchuje na tym porcie.
 
-**Sprawdzanie poprawności i rozwiązania**
+**Sprawdzanie poprawności i rozwiązywanie problemów**
 
-1. Zaloguj się do wewnętrznej bazy danych maszyny Wirtualnej. 
-2. Otwórz wiersz polecenia i uruchom następujące polecenie do sprawdzania poprawności jest aplikacja nasłuchuje na porcie sondowania:   
-            polecenie netstat -
-3. Jeśli stan portu nie jest wymieniony jako **LISTENING**, konfigurowania właściwej portu. 
-4. Można także wybrać inny port, który jest wymieniony jako **LISTENING**i zaktualizuj odpowiednio załadować konfiguracji modułu równoważenia.              
+1. Zaloguj się do maszyny wirtualnej zaplecza. 
+2. Otwórz wiersz polecenia i uruchom następujące polecenie, aby sprawdzić, czy aplikacja nasłuchuje na porcie sondy:   
+            netstat-an
+3. Jeśli stan portu nie jest wyświetlany na liściejako nasłuchiwanie, skonfiguruj właściwy port. 
+4. Alternatywnie możesz wybrać inny port, który jest wyświetlany jakonasłuchiwanie i odpowiednio zaktualizować konfigurację modułu równoważenia obciążenia.              
 
-### <a name="cause-3-firewall-or-a-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vms"></a>Przyczyny 3: Zapora lub grupę zabezpieczeń sieci blokuje port w puli zaplecza modułu równoważenia obciążenia maszyn wirtualnych  
-Jeśli zapora na maszynie Wirtualnej blokuje port sondy lub co najmniej jeden sieciowe grupy zabezpieczeń skonfigurowane w tej podsieci lub na maszynie Wirtualnej, nie zezwala na sondy dotrzeć do portu, maszyna wirtualna jest w stanie odpowiadać na sondy kondycji.          
+### <a name="cause-3-firewall-or-a-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vms"></a>Przyczyna 3: Zapora lub sieciowa Grupa zabezpieczeń blokuje port na maszynach wirtualnych puli zaplecza modułu równoważenia obciążenia  
+Jeśli Zapora na maszynie wirtualnej blokuje port sondy lub co najmniej jedna sieciowa Grupa zabezpieczeń skonfigurowana w podsieci lub na maszynie wirtualnej, nie zezwala na sondowanie do połączenia z portem, maszyna wirtualna nie może odpowiedzieć na sondę kondycji.          
 
-**Sprawdzanie poprawności i rozwiązania**
+**Sprawdzanie poprawności i rozwiązywanie problemów**
 
-* Jeśli jest włączona zapora, sprawdź, czy skonfigurowano zezwalająca na porcie sondowania. Jeśli nie, należy skonfigurować zaporę do zezwalania na ruch na porcie sondowania i ponownie przetestuj. 
-* Z listy grup zabezpieczeń sieci Sprawdź, czy ruch przychodzący lub wychodzący na porcie sondowania ma zakłóceń. 
-* Ponadto sprawdź, czy **Odmów wszystkiego** reguły sieciowych grup zabezpieczeń, na karcie interfejsu Sieciowego maszyny Wirtualnej lub podsieci, który ma wyższy priorytet niż domyślna reguła umożliwiająca sondy modułu równoważenia obciążenia i ruchu (sieciowe grupy zabezpieczeń muszą zezwalać na adres IP modułu równoważenia obciążenia 168.63.129.16). 
-* Jeśli dowolny z tych reguł blokuje ruch sondowania, Usuń i ponownie skonfigurować reguły zezwalające na ruch sondowania.  
-* Należy sprawdzić, czy maszyna wirtualna ma teraz uruchomiona, odpowiadać na sondy kondycji. 
+* Jeśli Zapora jest włączona, sprawdź, czy jest ona skonfigurowana do zezwalania na port sondy. W przeciwnym razie Skonfiguruj zaporę tak, aby zezwalała na ruch na porcie sondowania, i ponownie przetestuj. 
+* Z listy grup zabezpieczeń sieci Sprawdź, czy ruch przychodzący lub wychodzący na porcie sondy ma zakłócenia. 
+* Sprawdź również, czy reguła **Odmów wszystkich** grup zabezpieczeń sieci na karcie sieciowej maszyny wirtualnej lub podsieci o wyższym priorytecie niż reguła domyślna zezwalająca na sondy lb & ruchem (sieciowe grupy zabezpieczeń muszą zezwalać na Load Balancer IP 168.63.129.16). 
+* Jeśli dowolna z tych reguł blokuje ruch sondy, Usuń i ponownie skonfiguruj reguły, aby zezwolić na ruch sondy.  
+* Sprawdź, czy maszyna wirtualna rozpoczęła teraz reagowanie na sondy kondycji. 
 
-### <a name="cause-4-other-misconfigurations-in-load-balancer"></a>Przyczyna 4: Inne błędy konfiguracji modułu równoważenia obciążenia
-Jeśli poprzedni przyczyny wydaje się, że sprawdzane i poprawnie rozpoznać i na maszynie Wirtualnej zaplecza nadal nie odpowie na sondę kondycji, a następnie ręcznie przetestować łączność i zbierać ślady, niektóre zrozumienie łączność.
+### <a name="cause-4-other-misconfigurations-in-load-balancer"></a>Przyczyna 4: Inne niezgodne konfiguracje w Load Balancer
+Jeśli wszystkie poprzednie przyczyny są sprawdzane poprawnie i są prawidłowo rozwiązywane, a maszyna wirtualna zaplecza nadal nie odpowiada na sondę kondycji, należy ręcznie przetestować łączność i zebrać niektóre ślady w celu zrozumienia łączności.
 
-**Sprawdzanie poprawności i rozwiązania**
+**Sprawdzanie poprawności i rozwiązywanie problemów**
 
-* Użyj **Psping** z jednej z maszyn wirtualnych w ramach sieci wirtualnej, aby przetestować odpowiedzi port sondy (przykład: 10.0.0.4:3389 -t.\psping.exe) i Zarejestruj wyniki. 
-* Użyj **TCPing** z jednej z maszyn wirtualnych w ramach sieci wirtualnej, aby przetestować odpowiedzi port sondy (przykład:.\tcping.exe 10.0.0.4 3389) i Zarejestruj wyniki. 
-* Jeśli odpowiedź nie zostanie odebrana w tych testów ping następnie
-    - Uruchom jednoczesnych Netsh trace w puli zaplecza docelowej maszyny Wirtualnej oraz innej, testowej maszyny Wirtualnej z tej samej sieci wirtualnej. Teraz uruchom test PsPing przez pewien czas, zbieranie niektórych danych śledzenia sieci, a następnie Zatrzymaj test. 
-    - Analizowanie przechwytywania sieci i sprawdzić, czy są pakietów przychodzących i wychodzących, związane z zapytaniem ping. 
-        - Nie pakiety przychodzące są przestrzegane na maszynie Wirtualnej w puli zaplecza, czy potencjalnie sieciowych grup zabezpieczeń lub niewłaściwa konfiguracja trasy zdefiniowanej przez użytkownika blokuje ruch. 
-        - Jeśli nie wychodzących pakietów na maszynie Wirtualnej w puli zaplecza, maszyna wirtualna musi być sprawdzane pod kątem problemów niepowiązane (na przykład aplikacja blokuje port sondy). 
-    - Upewnij się, jeśli pakiety sondy są być zmuszonym do innego miejsca docelowego (prawdopodobnie przez ustawienia trasy zdefiniowanej przez użytkownika) przed dotarciem do modułu równoważenia obciążenia. Może to spowodować, że ruch nigdy nie dotrzeć do wewnętrznej bazy danych maszyny Wirtualnej. 
-* Zmień typ sondowania, na przykład HTTP (TCP), a następnie skonfiguruj odpowiedni port w sieciowych grup zabezpieczeń listy kontroli dostępu i zapory, aby sprawdzić, czy problem dotyczy konfiguracji sondy odpowiedzi. Aby uzyskać więcej informacji na temat konfiguracji sondy kondycji, zobacz [równoważenia obciążenia punktu końcowego konfiguracji sondy kondycji](https://blogs.msdn.microsoft.com/mast/2016/01/26/endpoint-load-balancing-heath-probe-configuration-details/).
+* Użyj **Psping** z jednej z pozostałych maszyn wirtualnych w sieci wirtualnej, aby przetestować odpowiedź portu sondy (przykład: .\psping.exe-t 10.0.0.4:3389) i zapisać wyniki. 
+* Użyj **TCPing** z jednej z pozostałych maszyn wirtualnych w sieci wirtualnej, aby przetestować odpowiedź portu sondy (przykład: .\tcping.exe 10.0.0.4 3389) i zapisać wyniki. 
+* Jeśli w tych testach ping nie otrzymano odpowiedzi,
+    - Uruchom jednoczesne śledzenie netsh na maszynie wirtualnej docelowej puli zaplecza i innej testowej maszynie wirtualnej z tej samej sieci wirtualnej. Teraz uruchom test PsPing przez jakiś czas, Zbierz dane śledzenia sieci, a następnie Zatrzymaj test. 
+    - Przeanalizuj przechwytywanie sieci i sprawdź, czy istnieją pakiety przychodzące i wychodzące powiązane z kwerendą ping. 
+        - Jeśli na maszynie wirtualnej puli zaplecza nie zaobserwowano żadnych pakietów przychodzących, istnieje potencjalnie Grupa zabezpieczeń sieci lub UDR nieprawidłowo skonfigurowany ruch. 
+        - Jeśli na maszynie wirtualnej puli zaplecza nie zaobserwowano żadnych pakietów wychodzących, maszyna wirtualna musi być sprawdzona pod kątem wszelkich niepowiązanych problemów (na przykład aplikacja blokująca port sondy). 
+    - Sprawdź, czy pakiety sondy są wymuszane w innym miejscu docelowym (prawdopodobnie za pośrednictwem ustawień UDR) przed osiągnięciem modułu równoważenia obciążenia. Może to spowodować, że ruch nigdy nie dociera do maszyny wirtualnej zaplecza. 
+* Zmień typ sondy (na przykład HTTP na TCP) i skonfiguruj odpowiedni port na listach ACL sieciowych grup zabezpieczeń i zaporze, aby sprawdzić, czy problem dotyczy konfiguracji odpowiedzi sondy. Aby uzyskać więcej informacji na temat konfiguracji sondowania kondycji, zobacz [Konfiguracja sondy kondycji równoważenia obciążenia punktu końcowego](https://blogs.msdn.microsoft.com/mast/2016/01/26/endpoint-load-balancing-heath-probe-configuration-details/).
 
-## <a name="symptom-vms-behind-load-balancer-are-not-responding-to-traffic-on-the-configured-data-port"></a>Objaw: Maszyny wirtualne za modułem równoważenia obciążenia nie odpowiadają na ruch na porcie skonfigurowanym danych
+## <a name="symptom-vms-behind-load-balancer-are-not-responding-to-traffic-on-the-configured-data-port"></a>Objawów Maszyny wirtualne znajdujące się za Load Balancer nie odpowiadają na ruch na skonfigurowanym porcie danych
 
-Jeśli pula zaplecza maszyny Wirtualnej znajduje się w dobrej kondycji i odpowiada sond kondycji, ale nadal nie uczestniczy w równoważeniu obciążenia lub nie odpowiada na ruch danych, może to być spowodowane jedną z następujących powodów: 
-* Których maszyna wirtualna nie nasłuchuje na porcie danych w puli zaplecza modułu równoważenia obciążenia 
-* Sieciowa grupa zabezpieczeń blokuje port w puli zaplecza modułu równoważenia obciążenia maszyn wirtualnych  
-* Uzyskiwanie dostępu do modułu równoważenia obciążenia z tej samej maszyny Wirtualnej i karty Sieciowej 
-* Uzyskiwanie dostępu do frontonu internetowego modułu równoważenia obciążenia z uczestniczących w programie puli zaplecza modułu równoważenia obciążenia maszyn wirtualnych 
+Jeśli maszyna wirtualna puli zaplecza jest wyświetlana jako dobra kondycja i reaguje na sondy kondycji, ale nadal nie uczestniczy w równoważeniu obciążenia lub nie odpowiada na ruch danych, może to być spowodowane jedną z następujących przyczyn: 
+* Maszyna wirtualna puli zaplecza Load Balancer nie nasłuchuje na porcie danych 
+* Sieciowa Grupa zabezpieczeń blokuje port na maszynie wirtualnej puli zaplecza Load Balancer  
+* Uzyskiwanie dostępu do Load Balancer z tej samej maszyny wirtualnej i karty sieciowej 
+* Uzyskiwanie dostępu do Internetu Load Balancer frontonu z poziomu maszyny wirtualnej puli zaplecza Load Balancer 
 
-### <a name="cause-1-load-balancer-backend-pool-vm-is-not-listening-on-the-data-port"></a>Przyczyny 1: Ładowanie puli zaplecza modułu równoważenia, których maszyna wirtualna nie nasłuchuje na porcie danych 
-Jeśli maszyny Wirtualnej nie odpowiada na ruch danych, może to być spowodowane port docelowy nie jest otwarty na uczestnicząca maszyna wirtualna lub maszyna wirtualna nie nasłuchuje na tym porcie. 
+### <a name="cause-1-load-balancer-backend-pool-vm-is-not-listening-on-the-data-port"></a>Przyczyna 1: Maszyna wirtualna puli zaplecza Load Balancer nie nasłuchuje na porcie danych 
+Jeśli maszyna wirtualna nie odpowiada na ruch danych, może to być spowodowane tym, że port docelowy nie jest otwarty na danej maszynie wirtualnej lub maszyna wirtualna nie nasłuchuje na tym porcie. 
 
-**Sprawdzanie poprawności i rozwiązania**
+**Sprawdzanie poprawności i rozwiązywanie problemów**
 
-1. Zaloguj się do wewnętrznej bazy danych maszyny Wirtualnej. 
-2. Otwórz wiersz polecenia i uruchom następujące polecenie, aby zweryfikować istnieje, to aplikacja nasłuchuje na porcie danych:  netstat - 
-3. Jeśli port nie ma na liście ze stanem "NASŁUCHIWANIA" Konfigurowanie portu odpowiedniego odbiornika 
-4. Jeśli port jest oznaczony jako Listening, sprawdź aplikacji docelowej, na tym porcie wszelkie problemy. 
+1. Zaloguj się do maszyny wirtualnej zaplecza. 
+2. Otwórz wiersz polecenia i uruchom następujące polecenie, aby sprawdzić, czy aplikacja nasłuchuje na porcie danych:  netstat-a 
+3. Jeśli port nie jest wyświetlany w stanie "nasłuchiwanie", skonfiguruj odpowiedni port odbiornika 
+4. Jeśli port jest oznaczony jako nasłuch, Sprawdź aplikację docelową na tym porcie, aby uzyskać ewentualne problemy. 
 
-### <a name="cause-2-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vm"></a>Przyczyny 2: Sieciowa grupa zabezpieczeń blokuje port w puli zaplecza modułu równoważenia obciążenia maszyn wirtualnych  
+### <a name="cause-2-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vm"></a>Przyczyna 2: Sieciowa Grupa zabezpieczeń blokuje port na maszynie wirtualnej puli zaplecza Load Balancer  
 
-Jeśli co najmniej jedną grupę zabezpieczeń sieci skonfigurowane w tej podsieci lub na maszynie Wirtualnej, blokuje źródłowy adres IP lub portu, a następnie maszyna wirtualna jest w stanie udzielić odpowiedzi.
+Jeśli co najmniej jedna sieciowa Grupa zabezpieczeń skonfigurowana w podsieci lub na maszynie wirtualnej blokuje źródłowy adres IP lub port, maszyna wirtualna nie będzie mogła odpowiedzieć.
 
-* Lista grupy zabezpieczeń sieci skonfigurowane na maszynie Wirtualnej zaplecza. Aby uzyskać więcej informacji, zobacz [Zarządzanie grupami zabezpieczeń sieci](../virtual-network/manage-network-security-group.md).
+* Wyświetl listę grup zabezpieczeń sieci skonfigurowanych na maszynie wirtualnej zaplecza. Aby uzyskać więcej informacji, zobacz [Zarządzanie sieciowymi grupami zabezpieczeń](../virtual-network/manage-network-security-group.md).
 * Z listy grup zabezpieczeń sieci Sprawdź, czy:
-    - przychodzący lub wychodzący ruch na porcie danych ma zakłóceń. 
-    - **Odmów wszystkiego** reguły grupy zabezpieczeń na karcie interfejsu Sieciowego maszyny Wirtualnej lub podsieci, która ma wyższy priorytet, który sondy reguły domyślnej, który umożliwia modułu równoważenia obciążenia sieciowego i ruchu (sieciowe grupy zabezpieczeń muszą zezwalać na IP modułu równoważenia obciążenia z adresu 168.63.129.16, jest to port sondy) 
-* Jeśli dowolne zasady blokują ruch, Usuń i ponownie skonfigurować te reguły zezwalające na ruch danych.  
-* Sprawdź, czy maszyna wirtualna zostało teraz odpowiadać na sondy kondycji.
+    - ruch przychodzący lub wychodzący na porcie danych ma zakłócenia. 
+    - reguła **odmowa wszystkich** sieci sieciowej grupy zabezpieczeń na karcie sieciowej maszyny wirtualnej lub podsieci o wyższym priorytecie, która zezwala na Load Balancer sondy i ruch (sieciowe grupy zabezpieczeń muszą zezwalać na Load Balancer IP 168.63.129.16, który jest port sondy) 
+* Jeśli którakolwiek z reguł blokuje ruch, Usuń i skonfiguruj ponownie te reguły, aby zezwolić na ruch danych.  
+* Sprawdź, czy maszyna wirtualna została teraz uruchomiona, aby odpowiedzieć na sondy kondycji.
 
-### <a name="cause-3-accessing-the-load-balancer-from-the-same-vm-and-network-interface"></a>Przyczyny 3: Uzyskiwanie dostępu do modułu równoważenia obciążenia z tego samego interfejsu maszyny Wirtualnej i sieci 
+### <a name="cause-3-accessing-the-load-balancer-from-the-same-vm-and-network-interface"></a>Przyczyna 3: Uzyskiwanie dostępu do Load Balancer z tej samej maszyny wirtualnej i interfejsu sieciowego 
 
-Jeśli aplikacja hostowana w wewnętrznej bazie danych maszyny Wirtualnej z modułu równoważenia obciążenia próbuje uzyskać dostęp innej aplikacji hostowanej w tej samej maszynie Wirtualnej zaplecza za pośrednictwem tego samego interfejsu sieciowego, jest to nieobsługiwany scenariusz i zakończy się niepowodzeniem. 
+Jeśli aplikacja hostowana na maszynie wirtualnej zaplecza Load Balancer próbuje uzyskać dostęp do innej aplikacji hostowanej w ramach tej samej maszyny wirtualnej zaplecza za pośrednictwem tego samego interfejsu sieciowego, jest to nieobsługiwany scenariusz i zakończy się niepowodzeniem. 
 
-**Rozpoznawanie** może rozwiązać ten problem, przy użyciu jednej z następujących metod:
-* Konfigurowanie puli zaplecza osobne maszyny wirtualne na aplikację. 
-* Konfigurowanie aplikacji na maszynach wirtualnych z dwóch kart Sieciowych, więc każda aplikacja używała swój własny interfejs sieciowy i adres IP. 
+**Rozwiązanie** Ten problem można rozwiązać, korzystając z jednej z następujących metod:
+* Skonfiguruj oddzielne maszyny wirtualne puli zaplecza dla każdej aplikacji. 
+* Skonfiguruj aplikację na maszynach wirtualnych z dwoma KARTAmi sieciowymi, aby każda aplikacja była używana przez własny interfejs sieciowy i adres IP. 
 
-### <a name="cause-4-accessing-the-internal-load-balancer-frontend-from-the-participating-load-balancer-backend-pool-vm"></a>Przyczyna 4: Uzyskiwanie dostępu do wewnętrznych frontonu modułu równoważenia obciążenia z uczestniczących w programie puli zaplecza modułu równoważenia obciążenia maszyn wirtualnych
+### <a name="cause-4-accessing-the-internal-load-balancer-frontend-from-the-participating-load-balancer-backend-pool-vm"></a>Przyczyna 4: Uzyskiwanie dostępu do wewnętrznego frontonu Load Balancer z poziomu maszyny wirtualnej puli zaplecza Load Balancer
 
-Jeśli wewnętrznego modułu równoważenia obciążenia jest konfigurowana wewnątrz sieci wirtualnej, a jedną z maszyn wirtualnych zaplecza uczestnika próbuje uzyskać dostęp wewnętrznych frontonu modułu równoważenia obciążenia, błędów może wystąpić, gdy przepływ jest mapowany na źródłowej maszynie Wirtualnej. Ten scenariusz nie jest obsługiwany. Przegląd [ograniczenia](load-balancer-overview.md#limitations) szczegółowe omówienie.
+Jeśli wewnętrzny Load Balancer jest skonfigurowany wewnątrz sieci wirtualnej, a jedna z maszyn wirtualnych zaplecza uczestnika próbuje uzyskać dostęp do wewnętrznej frontonu Load Balancer, mogą wystąpić błędy, gdy przepływ jest mapowany na źródłową maszynę wirtualną. Ten scenariusz nie jest obsługiwany. Przejrzyj [ograniczenia](load-balancer-overview.md#limitations) dotyczące szczegółowej dyskusji.
 
-**Rozpoznawanie** istnieje kilka sposobów, aby odblokować ten scenariusz, w tym o korzystaniu z serwera proxy. Ocena bramy aplikacji lub inne 3 firm serwery proxy (na przykład serwer nginx lub haproxy). Aby uzyskać więcej informacji na temat usługi Application Gateway, zobacz [Przegląd bramy Application Gateway](../application-gateway/application-gateway-introduction.md)
+**Rozwiązanie** Istnieje kilka sposobów odblokowania tego scenariusza, w tym za pomocą serwera proxy. Oceń Application Gateway lub inne serwery proxy innych firm (na przykład Nginx lub haproxy). Aby uzyskać więcej informacji na temat Application Gateway, zobacz [omówienie Application Gateway](../application-gateway/application-gateway-introduction.md)
 
-## <a name="additional-network-captures"></a>Dodatkowe sieci
-Jeśli zdecydujesz otworzyć zgłoszenie do pomocy technicznej, Zbierz następujące informacje dotyczące rozpoznawanie szybciej. Wybierz pojedynczego zaplecza maszyny Wirtualnej w celu wykonania następujących testów:
-- Użycie programu psping od jednego z wewnętrznej bazy danych maszyn wirtualnych w sieci wirtualnej testowanie odpowiedzi port sondy (przykład: psping 10.0.0.4:3389) i Zarejestruj wyniki. 
-- Jeśli odpowiedź nie zostanie odebrana w tych testów ping, należy uruchomić jednoczesnych Netsh trace na maszynie Wirtualnej zaplecza i testowej sieci wirtualnej maszyny Wirtualnej podczas uruchamiania PsPing następnie Zatrzymaj śledzenie Netsh. 
+## <a name="additional-network-captures"></a>Dodatkowe przechwycenia sieci
+Jeśli zdecydujesz się otworzyć zgłoszenie do pomocy technicznej, Zbierz poniższe informacje w celu szybszego rozwiązania problemu. Wybierz pojedynczą maszynę wirtualną zaplecza, aby wykonać następujące testy:
+- Użyj Psping z jednej z maszyn wirtualnych zaplecza w sieci wirtualnej, aby przetestować odpowiedź portu sondy (przykład: Psping 10.0.0.4:3389) i zapisać wyniki. 
+- Jeśli nie otrzymasz odpowiedzi w tych testach ping, uruchom jednoczesne śledzenie netsh na maszynie wirtualnej zaplecza i testowej maszynie wirtualnej podczas uruchamiania PsPing, a następnie Zatrzymaj śledzenie netsh. 
   
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Jeśli poprzednie kroki nie rozwiązują ten problem, otwórz [bilet pomocy technicznej](https://azure.microsoft.com/support/options/).
+Jeśli powyższe kroki nie rozwiążą problemu, Otwórz [bilet pomocy technicznej](https://azure.microsoft.com/support/options/).
 

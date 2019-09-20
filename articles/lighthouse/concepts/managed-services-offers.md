@@ -1,46 +1,46 @@
 ---
-title: Zarządzane oferty usług w witrynie Azure Marketplace
-description: Zarządzane usługi, które oferuje umożliwiają dostawcom usług sprzedaży zasobów zarządzania ofert dla klientów w witrynie Azure Marketplace.
+title: Oferty usług zarządzanych w witrynie Azure Marketplace
+description: Dzięki usługom zarządzanym dostawcy usług mogą sprzedawać oferty zarządzania zasobami klientom w portalu Azure Marketplace.
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 07/11/2019
+ms.date: 09/19/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: a6fcf5f1d0ac194d60f834fb8d26db019c538410
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 0a6371a1020182650d83d5e7ec9bb2378b44b557
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67809876"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155272"
 ---
-# <a name="managed-services-offers-in-azure-marketplace"></a>Zarządzane oferty usług w witrynie Azure Marketplace
+# <a name="managed-services-offers-in-azure-marketplace"></a>Oferty usług zarządzanych w witrynie Azure Marketplace
 
-W tym artykule opisano nowe **usług zarządzanych** typ w oferty [portalu Azure Marketplace](https://azuremarketplace.microsoft.com). Zarządzane usługi, które oferuje pozwalają klientom usług zarządzania zasobów za pomocą funkcji zarządzania usługi Azure resource delegowanego. Możesz udostępnić te oferty do wszystkich potencjalnych klientów lub tylko do jednego lub więcej określonych odbiorców. Ponieważ obciążana płatnościami za klientów bezpośrednio koszty związane z tych usług zarządzanych, nie istnieją żadne opłaty naliczane przez firmę Microsoft.
+W tym artykule opisano typ oferty nowych **usług zarządzanych** w [witrynie Azure Marketplace](https://azuremarketplace.microsoft.com). Oferty usług zarządzanych umożliwiają oferowanie klientom usług zarządzania zasobami przy użyciu delegowanych zasobów platformy Azure. Oferty te można udostępnić wszystkim potencjalnym klientom lub tylko jednemu lub wielu konkretnym klientom. Ze względu na to, że opłaty są naliczane bezpośrednio za koszty związane z tymi usługami zarządzanymi, firma Microsoft nie pobiera żadnych opłat.
 
-## <a name="understand-managed-services-offers"></a>Zrozumienie oferty usług zarządzanych
+## <a name="understand-managed-services-offers"></a>Opis ofert usług zarządzanych
 
-Oferty usług zarządzanych usprawnić proces dołączania klientów dla usługi Azure delegowane zarządzanie zasobami. Gdy klient zakupi oferty w portalu Azure Marketplace, będziesz mieć możliwość subskrypcji i/lub grup zasobów powinien być dołączona tak, aby określić użytkowników w organizacji mogą wykonywać zadania administracyjne dla klienta z poziomu usługi dzierżawy organizacji.
+Usługi zarządzane oferują uproszczony proces dołączania klientów do zarządzania zasobami delegowanymi przez platformę Azure. Gdy klient kupuje ofertę w portalu Azure Marketplace, będzie mógł określić, które subskrypcje i/lub grupy zasobów powinny zostać dołączone. Należy pamiętać, że subskrypcja musi być najpierw autoryzowana do dołączenia przez ręczne zarejestrowanie dostawcy zasobów **Microsoft. ManagedServices** .
 
-Po tym żadne dalsze działania jest wymagane przez klienta lub dostawcy usług umożliwiające rejestrację klienta. Jest to spowodowane podczas definiowania oferty w [portalu Cloud Partner](https://cloudpartner.azure.com/), tworzenie manifestu, który określa użytkowników usługi Azure AD, grup i zasad usługi, które będą miały dostęp do zasobów klientów korzystających z platformy Azure delegowane zasobów Zarządzanie. wraz z ról, które określają poziom dostępu. Przypisując uprawnienia do grupy usługi Azure AD, a nie szereg poszczególnych użytkowników i kont aplikacji, można dodawać lub usuwać pojedynczych użytkowników, gdy zmienią się Twoje wymagania dotyczące dostępu.
+Następnie użytkownicy w organizacji będą mogli wykonywać zadania administracyjne dotyczące tych zasobów z dzierżawy w organizacji, zgodnie z dostępem zdefiniowanym podczas tworzenia oferty w [Portal Cloud partner](https://cloudpartner.azure.com/). Jest to realizowane za pośrednictwem manifestu, który określa użytkowników usługi Azure AD, grupy i jednostki usługi, które będą miały dostęp do zasobów klienta przy użyciu funkcji zarządzania zasobami delegowanych przez platformę Azure, wraz z rolami, które definiują poziom dostępu. Przypisując uprawnienia do grupy usługi Azure AD, a nie serii poszczególnych kont użytkowników lub aplikacji, można dodawać lub usuwać poszczególnych użytkowników, gdy zmienią się wymagania dotyczące dostępu.
 
-## <a name="public-and-private-offers"></a>Oferty publicznych i prywatnych
+## <a name="public-and-private-offers"></a>Oferty publiczne i prywatne
 
-Każda oferta usługi zarządzane zawiera co najmniej jeden plan. Te plany mogą być prywatnej lub publicznej.
+Każda oferta usług zarządzanych obejmuje jeden lub więcej planów. Te plany mogą być prywatne lub publiczne.
 
-Jeśli chcesz ograniczyć oferty do konkretnych klientów, możesz opublikować planu prywatnych. Jeśli tak zrobisz, plan można kupić tylko dla konkretnych] identyfikatory, które należy podać subskrypcji. Aby uzyskać więcej informacji, zobacz [oferty prywatne](https://docs.microsoft.com/azure/marketplace/private-offers).
+Jeśli chcesz ograniczyć ofertę do określonych klientów, możesz opublikować plan prywatny. Po wykonaniu tej czynności plan można kupić tylko dla określonych identyfikatorów subskrypcji, które podano. Aby uzyskać więcej informacji, zobacz [prywatne oferty](https://docs.microsoft.com/azure/marketplace/private-offers).
 
-Plany publiczne pozwalają podwyższanie poziomu usług dla nowych klientów. Są to zazwyczaj bardziej odpowiednie, gdy jest potrzebna tylko ograniczony dostęp do dzierżawy klienta. Po utworzeniu relacji z klientem, jeśli postanowią do udzielania dostępu dodatkowe Twojej organizacji, możesz to zrobić poprzez publikowanie nowy plan prywatnej tylko tego klienta lub przez [dołączania ich do dalszego dostępu za pomocą platformy Azure Szablony usługi Resource Manager](../how-to/onboard-customer.md).
+Plany publiczne umożliwiają podwyższenie poziomu usług do nowych klientów. Są one zazwyczaj bardziej odpowiednie, gdy wymagany jest tylko ograniczony dostęp do dzierżawy klienta. Po ustanowieniu relacji z klientem, jeśli zdecydują się udzielić dodatkowej dostępu do organizacji, możesz to zrobić przez opublikowanie nowego planu prywatnego tylko dla tego klienta lub przez dołączenie [ich do dodatkowego dostępu przy użyciu zasobu platformy Azure Szablony Menedżera](../how-to/onboard-customer.md).
 
-Należy pamiętać o tym, gdy plan został opublikowany jako publiczne, nie możesz zmienić ją na prywatną. Ponadto nie można ograniczyć dostępność publiczny plan dla niektórych klientów, a nawet pewną liczbę klientów, mimo że można zatrzymać całkowicie sprzedaży planie, jeśli chcesz to zrobić.
+Należy pamiętać, że po opublikowaniu planu jako publicznego nie można zmienić go na prywatny. Ponadto nie można ograniczyć dostępu do planu publicznego do określonych klientów, a nawet do określonej liczby klientów, ale możesz zrezygnować z całkowitego sprzedaży planu w przypadku wybrania tej opcji.
 
-Jeśli to stosowne, można dołączyć prywatnych i publicznych planów w ramach tej samej oferty.
+W razie potrzeby można uwzględnić zarówno plany publiczne, jak i prywatne w tej samej ofercie.
 
-## <a name="publish-managed-service-offers"></a>Publikowanie oferty usług zarządzanych
+## <a name="publish-managed-service-offers"></a>Publikuj oferty usługi zarządzanej
 
-Aby dowiedzieć się, jak opublikować ofertę usług zarządzanych, zobacz [publikowanie oferty usług zarządzanych w portalu Azure Marketplace](../how-to/publish-managed-services-offers.md). Aby uzyskać ogólne informacje na temat publikowania w portalu Azure Marketplace przy użyciu portalu Cloud Partner, zobacz [portalu Azure Marketplace i AppSource Podręcznik publikowania](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) i [zarządzania platformy Azure i usługi AppSource w portalu Marketplace oferty](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers).
+Aby dowiedzieć się, jak opublikować ofertę usług zarządzanych, zobacz temat [Publikowanie oferty usług zarządzanych w witrynie Azure Marketplace](../how-to/publish-managed-services-offers.md). Ogólne informacje o publikowaniu w portalu Azure Marketplace przy użyciu portal Cloud Partner można znaleźć w witrynie [Azure Marketplace i podręczniku publikowania AppSource](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) oraz [zarządzać ofertami platformy Azure i AppSource Marketplace](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o [Azure delegowane zarządzanie zasobami](azure-delegated-resource-management.md) i [międzydzierżawowa środowiska zarządzania](cross-tenant-management-experience.md).
-- [Publikowanie oferty usług zarządzanych](../how-to/publish-managed-services-offers.md) portalu Azure Marketplace.
+- Dowiedz się więcej na temat funkcji [zarządzania zasobami delegowanymi przez platformę Azure](azure-delegated-resource-management.md) i [zarządzania wieloma dzierżawcami](cross-tenant-management-experience.md).
+- [Publikowanie usług zarządzanych jest dostępne](../how-to/publish-managed-services-offers.md) w witrynie Azure Marketplace.

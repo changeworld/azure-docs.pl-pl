@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/20/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 5a3ffcc75ac37dac1284d0ffb5af234fd2f376cd
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: ac4d78147820c2cf56549abbec7e1fbc873ea260
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310458"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146942"
 ---
 # <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Samouczek: Wdrażanie aplikacji internetowej z rejestru kontenerów platformy Azure z replikacją geograficzną
 
@@ -55,7 +55,11 @@ W oknie usługi **Web App for Containers** wyświetlonym po wybraniu polecenia �
 | **Nazwa witryny** | Globalnie unikatowa nazwa aplikacji internetowej. W tym przykładzie używamy formatu `<acrName>-westus`, aby łatwo zidentyfikować rejestr i region, z których jest wdrażana aplikacja internetowa. |
 | **Grupa zasobów** | **Użyj istniejącej** > `myResourceGroup` |
 | **Plan usługi App Service/lokalizacja** | Utwórz nowy plan o nazwie `plan-westus` w regionie **Zachodnie stany USA**. |
-| **Obraz** | `acr-helloworld:v1`
+| **Obraz** | `acr-helloworld:v1` |
+| **System operacyjny** | Linux |
+
+> [!NOTE]
+> Po utworzeniu nowego planu usługi App Service w celu wdrożenia aplikacji z kontenerem zostanie automatycznie wybrany plan domyślny do hostowania aplikacji. Plan domyślny zależy od ustawienia systemu operacyjnego.
 
 Wybierz pozycję **Utwórz**, aby aprowizować aplikację internetową w regionie *Zachodnie stany USA*.
 
@@ -84,7 +88,8 @@ Wdróż drugą aplikację internetową w regionie *Wschodnie stany USA*, używaj
 | **Nazwa witryny** | Globalnie unikatowa nazwa aplikacji internetowej. W tym przykładzie używamy formatu `<acrName>-eastus`, aby łatwo zidentyfikować rejestr i region, z których jest wdrażana aplikacja internetowa. |
 | **Grupa zasobów** | **Użyj istniejącej** > `myResourceGroup` |
 | **Plan usługi App Service/lokalizacja** | Utwórz nowy plan o nazwie `plan-eastus` w regionie **Wschodnie stany USA**. |
-| **Obraz** | `acr-helloworld:v1`
+| **Obraz** | `acr-helloworld:v1` |
+| **System operacyjny** | Linux |
 
 Wybierz pozycję **Utwórz**, aby aprowizować aplikację internetową w regionie *Wschodnie stany USA*.
 

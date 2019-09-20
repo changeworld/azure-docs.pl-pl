@@ -14,19 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 20fa8945f01a3431d2fd78d545c43d6215c83f56
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: e29c32c27e7f6c62eb2c6a9cbe2e4d3f1294f038
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "66110301"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155162"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Monitorowanie wydajności za pomocą rozszerzenia Diagnostyka Azure systemu Windows
 
 W tym dokumencie opisano kroki wymagane do skonfigurowania kolekcji liczników wydajności za pomocą rozszerzenia Diagnostyka Azure systemu Windows (funkcji wad) dla klastrów systemu Windows. W przypadku klastrów systemu Linux Skonfiguruj [agenta log Analytics](service-fabric-diagnostics-oms-agent.md) , aby zbierać liczniki wydajności dla węzłów. 
 
  > [!NOTE]
-> Rozszerzenie funkcji wad należy wdrożyć w klastrze, aby wykonać te kroki. Jeśli nie jest on skonfigurowany, przejdź do agregacji [zdarzeń i kolekcji przy użyciu Diagnostyka Azure systemu Windows](service-fabric-diagnostics-event-aggregation-wad.md).  
+> Rozszerzenie funkcji wad należy wdrożyć w klastrze, aby wykonać te kroki. Jeśli nie jest on skonfigurowany, przejdź do [agregacji zdarzeń i kolekcji przy użyciu Diagnostyka Azure systemu Windows](service-fabric-diagnostics-event-aggregation-wad.md).  
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -50,7 +50,7 @@ Aby zbierać liczniki wydajności za pośrednictwem funkcji wad, należy odpowie
 
 3. Dodaj liczniki wydajności, które chcesz zebrać do `PerformanceCounterConfiguration` obiektu, który został zadeklarowany w poprzednim kroku. Każdy licznik, `counterSpecifier`który ma być zbierany, jest definiowany przy użyciu, `annotation` `sampleRate`, `unit`,, i `sinks`wszelkie odpowiednie.
 
-Poniżej znajduje się przykład konfiguracji z licznikiem dla *łącznego czasu procesora* (czas używany przez procesor CPU do przetwarzania operacji) oraz *Service Fabric wywołań metod aktora na sekundę*, jednego z Service Fabric niestandardowych Liczniki wydajności. Zapoznaj się z niezawodnymi licznikami [wydajności aktora](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters) i niezawodnymi [licznikami wydajności usługi](service-fabric-reliable-serviceremoting-diagnostics.md#list-of-performance-counters) , aby uzyskać pełną listę niestandardowych liczników wydajności Service Fabric.
+Poniżej znajduje się przykład konfiguracji z licznikiem dla *łącznego czasu procesora* (czas używany przez procesor CPU do przetwarzania operacji) oraz *Service Fabric wywołań metod aktora na sekundę*, jednego z Service Fabric niestandardowych Liczniki wydajności. Zapoznaj się z [niezawodnymi licznikami wydajności aktora](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters) i [niezawodnymi licznikami wydajności usługi](service-fabric-reliable-serviceremoting-diagnostics.md#list-of-performance-counters) , aby uzyskać pełną listę niestandardowych liczników wydajności Service Fabric.
 
  ```json
  "WadCfg": {
@@ -191,9 +191,6 @@ Poniżej znajduje się przykład konfiguracji z licznikiem dla *łącznego czasu
       },
 ....
 ```
-
- >[!NOTE]
- >Mimo że można użyć `*` , aby określić grupy liczników wydajności, które są nazywane analogicznie, wysyłanie wszelkich liczników za pośrednictwem ujścia (do Application Insights) wymaga, aby zostały indywidualnie zadeklarowane. 
 
 1. Po dodaniu odpowiednich liczników wydajności, które mają być zbierane, należy uaktualnić zasób klastra, aby te zmiany zostały odzwierciedlone w uruchomionym klastrze. Zapisz zmodyfikowany `template.json` i Otwórz program PowerShell. Klaster można uaktualnić przy użyciu programu `New-AzResourceGroupDeployment`. Wywołanie wymaga nazwy grupy zasobów, zaktualizowanego pliku szablonu i pliku parametrów i zostanie wyświetlony komunikat z prośbą o wprowadzenie odpowiednich zmian w zaktualizowanych zasobach Menedżer zasobów. Po zalogowaniu się na konto i w odpowiedniej subskrypcji Użyj następującego polecenia, aby uruchomić uaktualnienie:
 

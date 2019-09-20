@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d4a0f00c8bcf511f220d3e0df81adac1e9ff0d4
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 49658e3e57748ffb7542508530940aa5331f5db1
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995188"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162406"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Rozwiązywanie problemów z przyłączonymi urządzeniami hybrydowymi Azure Active Directory 
 
@@ -110,7 +110,7 @@ Przejdź do następnych kroków w celu dalszego rozwiązywania problemów.
 
 #### <a name="windows-10-1803-and-above"></a>Windows 10 1803 i nowsze
 
-Wyszukaj podsekcję "poprzednia rejestracja" w sekcji "dane diagnostyczne" danych wyjściowych stanu sprzężenia.
+Wyszukaj podsekcję "poprzednia rejestracja" w sekcji "dane diagnostyczne" danych wyjściowych stanu sprzężenia. Ta sekcja jest wyświetlana tylko wtedy, gdy urządzenie jest przyłączone do domeny i nie może wykonać hybrydowego sprzężenia usługi Azure AD.
 W polu "faza błędu" jest wskazywana faza błędu sprzężenia, podczas gdy "kod błędu klienta" oznacza kod błędu operacji JOIN.
 
 ```
@@ -181,7 +181,7 @@ Aby znaleźć kod błędu dla kodu błędu odnajdowania, należy użyć jednej z
 
 ##### <a name="windows-10-1803-and-above"></a>Windows 10 1803 i nowsze
 
-Wyszukaj "DRS Discovery test" w sekcji "dane diagnostyczne" w danych wyjściowych stanu sprzężenia.
+Wyszukaj "DRS Discovery test" w sekcji "dane diagnostyczne" w danych wyjściowych stanu sprzężenia. Ta sekcja jest wyświetlana tylko wtedy, gdy urządzenie jest przyłączone do domeny i nie może wykonać hybrydowego sprzężenia usługi Azure AD.
 
 ```
 +----------------------------------------------------------------------+
@@ -305,7 +305,7 @@ Znajdź Typ rejestracji i wyszukaj kod błędu z poniższej listy.
 
 #### <a name="windows-10-1803-and-above"></a>Windows 10 1803 i nowsze
 
-Wyszukaj podsekcję "poprzednia rejestracja" w sekcji "dane diagnostyczne" danych wyjściowych stanu sprzężenia.
+Wyszukaj podsekcję "poprzednia rejestracja" w sekcji "dane diagnostyczne" danych wyjściowych stanu sprzężenia. Ta sekcja jest wyświetlana tylko wtedy, gdy urządzenie jest przyłączone do domeny i nie może wykonać hybrydowego sprzężenia usługi Azure AD.
 Pole "typ rejestracji" oznacza typ wykonanego sprzężenia.
 
 ```

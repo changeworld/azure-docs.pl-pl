@@ -1,29 +1,30 @@
 ---
-title: Przykłady programu Azure PowerShell dla usługi Azure Cosmos DB — interfejs API Gremlin
-description: Przykłady programu Azure PowerShell dla usługi Azure Cosmos DB — interfejs API Gremlin
+title: Przykłady Azure PowerShell dla interfejsu API Azure Cosmos DB Gremlin
+description: Przykłady Azure PowerShell dla interfejsu API Azure Cosmos DB Gremlin
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 07/03/2019
+ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: 4183137c6066dd8862f7e9f56e11b99390f4559b
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: b8b986facc01a963d2ca87121337988c4c650ba1
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67566199"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154780"
 ---
-# <a name="azure-powershell-samples-for-azure-cosmos-db-gremlin-api"></a>Przykłady programu Azure PowerShell dla usługi Azure Cosmos DB — interfejs API Gremlin
+# <a name="azure-powershell-samples-for-azure-cosmos-db-gremlin-api"></a>Przykłady Azure PowerShell dla interfejsu API usługi Azure Cosmos DB Gremlin
 
-Poniższa tabela zawiera linki do przykładowych skryptów programu Azure PowerShell dla usługi Azure Cosmos DB dla interfejsu API języka Gremlin.
+Poniższa tabela zawiera linki do przykładowych skryptów Azure PowerShell dla interfejsu API Azure Cosmos DB for Gremlin.
 
 | | |
 |---|---|
-|[Utwórz konto, bazę danych i grafu](scripts/powershell/gremlin/ps-gremlin-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tworzy konto usługi Azure Cosmos, bazy danych i wykres. |
-|[Wyświetl listę lub Pobierz baz danych lub wykresów](scripts/powershell/gremlin/ps-gremlin-list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Wyświetl listę, lub Pobierz bazy danych lub grafu. |
-|[Pobieranie jednostek RU/s](scripts/powershell/gremlin/ps-gremlin-ru-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Pobierz jednostek RU/s dla bazy danych lub grafu. |
-|[Aktualizacja jednostek RU/s](scripts/powershell/gremlin/ps-gremlin-ru-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Aktualizacja jednostek RU/s dla bazy danych lub grafu. |
-|[Dodawanie regionu](scripts/powershell/common/ps-account-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Konto usługi Azure Cosmos i dodawanie regionu do listy lokalizacji. |
-|[Zmień priorytet trybu failover](scripts/powershell/common/ps-account-failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Zmień priorytet trybu failover z konta usługi Azure Cosmos za pomocą wyzwalacza ręcznego przełączania trybu failover. |
-|[Konto połączenia i klucze parametry zadania](scripts/powershell/common/ps-account-keys-connection-strings.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Pobierz parametry połączenia dla konta usługi Azure Cosmos. Pobierz klucze podstawowe i pomocnicze konta usługi Azure Cosmos. Ponowne generowanie klucza konta. |
+|[Tworzenie konta, bazy danych i grafu](scripts/powershell/gremlin/ps-gremlin-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tworzy konto usługi Azure Cosmos, bazę danych i Graf. |
+|[Wyświetlanie listy lub pobieranie baz danych lub wykresów](scripts/powershell/gremlin/ps-gremlin-list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Wyświetl lub Pobierz bazę danych lub Graf. |
+|[Pobierz RU/s](scripts/powershell/gremlin/ps-gremlin-ru-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Pobierz RU/s dla bazy danych lub grafu. |
+|[Aktualizowanie RU/s](scripts/powershell/gremlin/ps-gremlin-ru-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Zaktualizuj RU/s dla bazy danych lub grafu. |
+|[Aktualizowanie konta lub Dodawanie regionu](scripts/powershell/common/ps-account-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Dodaj region do konta Cosmos. Można również użyć do modyfikacji innych właściwości konta, ale muszą one być oddzielone od zmian w regionach. |
+|[Zmiana priorytetu trybu failover lub wyzwolenie trybu failover](scripts/powershell/common/ps-account-failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Zmień priorytet pracy w trybie failover dla konta usługi Azure Cosmos lub Wyzwól ręczną pracę awaryjną. |
+|[Klucze kont lub parametry połączenia](scripts/powershell/common/ps-account-keys-connection-strings.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Pobierz klucze podstawowe i pomocnicze, parametry połączenia lub ponownie Wygeneruj klucz konta dla konta usługi Azure Cosmos. |
+|[Tworzenie konta Cosmos za pomocą zapory IP](scripts/powershell/common/ps-account-firewall-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Utwórz konto usługi Azure Cosmos z włączoną zaporą IP. |
 |||

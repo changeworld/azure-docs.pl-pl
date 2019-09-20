@@ -1,5 +1,5 @@
 ---
-title: Importowanie zbiorcze w celu dodania użytkowników (wersja zapoznawcza) w portalu Azure Active Directory | Microsoft Docs
+title: Tworzenie zbiorcze użytkowników (wersja zapoznawcza) w portalu Azure Active Directory | Microsoft Docs
 description: Dodaj użytkowników zbiorczo w centrum administracyjnym usługi Azure AD w Azure Active Directory
 services: active-directory
 author: curtand
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a22052117448cdb71bbc16e1df7899e6d3eb764e
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 87c62cbe71f2e02c6f2c09620a8470a97ae57392
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901492"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146315"
 ---
-# <a name="bulk-import-users-preview-in-azure-active-directory"></a>Użytkownicy importu zbiorczego (wersja zapoznawcza) w Azure Active Directory
+# <a name="bulk-create-users-preview-in-azure-active-directory"></a>Tworzenie zbiorcze użytkowników (wersja zapoznawcza) w Azure Active Directory
 
 Azure Active Directory (Azure AD) obsługuje operacje tworzenia i usuwania użytkowników zbiorczych, zaproszenia zbiorcze dla Gości i obsługują pobieranie list użytkowników, grup i członków grupy.
 
@@ -37,6 +37,9 @@ Aby można było tworzyć zbiorczo użytkowników w portalu administracyjnym, u�
 1. [Zaloguj się do swojej organizacji usługi Azure AD](https://aad.portal.azure.com) przy użyciu konta, które jest administratorem użytkownika w organizacji.
 1. W usłudze Azure AD wybierz pozycję **Użytkownicy** > **Tworzenie zbiorcze**.
 1. Na stronie **Tworzenie zbiorczego użytkownika** wybierz pozycję **Pobierz** , aby otrzymać prawidłowy plik wartości rozdzielanych przecinkami (CSV) właściwości użytkownika, a następnie Dodaj nowych użytkowników.
+
+   ![Plik CSV zawiera nazwy i identyfikatory użytkowników do utworzenia](./media/users-bulk-add/add-csv-file.png)
+
 1. Po zakończeniu edytowania pliku CSV lub jeśli masz jeden z elementów gotowych do przekazania, wybierz plik w obszarze **Przekaż plik CSV** do zweryfikowania.
 
    ![Wybierz lokalny plik CSV, w którym chcesz wyświetlić listę użytkowników, których chcesz dodać](./media/users-bulk-add/upload-button.png)

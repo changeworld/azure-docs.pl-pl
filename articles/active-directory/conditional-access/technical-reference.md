@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 216316249197071bdd7a175dfc5339caeddee50a
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 2d56b1f800c71a5bbef7ffb1155d05e096113e2c
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086844"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162431"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory informacje o ustawieniach dostępu warunkowego
 
@@ -171,7 +171,7 @@ To ustawienie ma wpływ na próby dostępu wykonane z następujących aplikacji 
 | --- | --- | --- |
 | Aplikacja Dynamics CRM | Dynamics CRM | Windows 10, Windows 8.1, iOS i Android |
 | Aplikacja poczty/kalendarza/osoby, Outlook 2016, Outlook 2013 (z nowoczesnego uwierzytelniania)| Office 365 Exchange Online | Windows 10 |
-| Zasady usługi MFA i lokalizacji dla aplikacji. Zasady oparte na urządzeniach nie są obsługiwane.| Wszystkie aplikacje my App Service| Android i iOS |
+| Zasady usługi MFA i lokalizacji dla aplikacji. Zasady oparte na urządzeniach nie są obsługiwane.| Wszystkie aplikacje my App Service| Systemy Android i iOS |
 | Usługi Microsoft Teams — kontroluje wszystkie usługi obsługujące Microsoft Teams i wszystkie jej aplikacje klienckie — Windows Desktop, iOS, Android, WP i klient sieci Web | Microsoft Teams | Windows 10, Windows 8.1, Windows 7, iOS, Android i macOS |
 | Aplikacje pakietu Office 2016, pakiet Office 2013 (z nowoczesnego uwierzytelniania), klient synchronizacji usługi OneDrive (zobacz [uwagi](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)) | Pakiet Office 365 SharePoint Online | Windows 8.1, Windows 7 |
 | Aplikacje pakietu Office 2016, uniwersalne aplikacje biurowe, pakiet Office 2013 (z nowoczesnego uwierzytelniania), klient synchronizacji usługi OneDrive (zobacz [uwagi](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), Obsługa grup pakietu Office jest planowana w przyszłości, obsługa aplikacji programu SharePoint jest planowana w przyszłości. | Pakiet Office 365 SharePoint Online | Windows 10 |
@@ -246,7 +246,6 @@ W zasadach dostępu warunkowego można wymagać, aby zasady ochrony aplikacji by
 To ustawienie dotyczy następujących aplikacji klienckich:
 
 - Microsoft Cortana
-- Microsoft Edge
 - Microsoft OneDrive
 - Program Microsoft Outlook
 - Microsoft Planner

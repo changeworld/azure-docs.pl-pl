@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 03b279e6193c55141b80a5fadc9d39c7c1681006
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: f62698cc736bb7df51d013199d3054b25598240e
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915149"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147397"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Samouczek: Tworzenie modułów usługi IoT Edge dla urządzeń z systemem Windows
 
@@ -299,7 +299,7 @@ Kod IotEdgeModule1 odbiera wiadomości za pomocą swojej kolejki wejściowej i p
 
 3. Obejrzyj sekcję **dane wyjściowe** w programie Visual Studio, aby wyświetlić komunikaty docierające do centrum IoT. 
 
-   Uruchomienie obu modułów może potrwać kilka minut. Środowisko uruchomieniowe IoT Edge musi otrzymać nowy manifest wdrożenia, ściągnąć obrazy modułów z środowiska uruchomieniowego kontenera, a następnie uruchomić każdy nowy moduł. Jeśli użytkownik 
+   Uruchomienie obu modułów może potrwać kilka minut. Środowisko uruchomieniowe IoT Edge musi otrzymać nowy manifest wdrożenia, ściągnąć obrazy modułów z środowiska uruchomieniowego kontenera, a następnie uruchomić każdy nowy moduł. 
 
    ![Wyświetlanie komunikatów przychodzących na urządzeniach w chmurze](./media/tutorial-develop-for-windows/view-d2c-messages.png)
 

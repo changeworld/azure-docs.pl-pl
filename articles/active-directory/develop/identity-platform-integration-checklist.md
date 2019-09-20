@@ -16,12 +16,12 @@ ms.date: 09/11/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 4e7b89fbb4b6343db62cf3476f3c35220b12649b
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 1f4afe1c31ae964aab82664de12144185069af5a
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104044"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71145657"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Najlepsze rozwiązania i zalecenia dotyczące platformy tożsamości firmy Microsoft
 
@@ -68,7 +68,7 @@ Użyj poniższej listy kontrolnej, aby upewnić się, że aplikacja jest efektyw
 | ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Upewnij się, że aplikacja żąda najniższych uprawnień. Tylko Poproś o uprawnienia wymagane przez aplikację i tylko wtedy, gdy są one potrzebne. Zapoznaj się z różnymi [rodzajami uprawnień](v1-permissions-and-consent.md#types-of-permissions). W razie potrzeby używaj uprawnień aplikacji; Użyj uprawnień delegowanych, jeśli jest to możliwe. Aby uzyskać pełną listę uprawnień Microsoft Graph, zobacz to [odwołanie do uprawnień](https://docs.microsoft.com/graph/permissions-reference). |
 | ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | W przypadku zabezpieczania interfejsu API przy użyciu platformy tożsamości firmy Microsoft należy uważnie zastanowić się nad uprawnieniami, które powinien ujawnić. Weź pod uwagę, jaki jest poziom szczegółowości rozwiązania i jakie uprawnienia wymagają zgody administratora. Przed podjęciem decyzji o autoryzacji Sprawdź, czy w tokenach przychodzących są oczekiwane uprawnienia. |
 
-## <a name="implementation"></a>Implementacja
+## <a name="implementation"></a>Wdrażanie
 
 |   |   |
 |---|---|
@@ -78,6 +78,7 @@ Użyj poniższej listy kontrolnej, aby upewnić się, że aplikacja jest efektyw
 | ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) |  W przypadku aplikacji mobilnych skonfiguruj każdą platformę przy użyciu środowiska rejestracji aplikacji. Aby aplikacja mogła korzystać z Microsoft Authenticator lub Microsoft Portal firmy do logowania jednokrotnego, aplikacja wymaga skonfigurowanego "identyfikatora URI przekierowania brokera". Dzięki temu firma Microsoft może zwrócić kontrolę do aplikacji po uwierzytelnieniu. Podczas konfigurowania każdej platformy środowisko rejestracji aplikacji przeprowadzi Cię przez proces. Aby pobrać przykład pracy, Skorzystaj z przewodnika Szybki Start. W systemie iOS należy używać brokerów i systemu WebView, gdy jest to możliwe.|
 | ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) |  W obszarze aplikacje sieci Web lub interfejsy API sieci Web Zachowaj jedną pamięć podręczną tokenów dla każdego konta.  W przypadku usługi Web Apps bufor tokenów powinien być poprzedzony IDENTYFIKATORem konta.  W przypadku interfejsów API sieci Web konto powinno być poprzedzone przez skrót tokenu używanego do wywoływania interfejsu API. MSAL.NET udostępnia niestandardową serializację pamięci podręcznej tokeny w podplatformach .NET Framework i .NET Core. Ze względu na bezpieczeństwo i wydajność nasze zalecenia polegają na serializacji jednej pamięci podręcznej na użytkownika. Aby uzyskać więcej informacji, Przeczytaj o [serializacji pamięci podręcznej tokenu](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application).|
 | ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Jeśli dane wymagane przez aplikację są dostępne za pośrednictwem [Microsoft Graph](https://developer.microsoft.com/graph), zażądaj uprawnień dla tych danych przy użyciu punktu końcowego Microsoft Graph, a nie do poszczególnych interfejsów API. |
+| ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) |Nie sprawdzaj wartości tokenu dostępu lub spróbuj przeanalizować ją jako klienta.  Mogą zmieniać wartości, formaty lub nawet być szyfrowane bez ostrzeżenia — zawsze używaj id_token, jeśli klient musi poznać coś o użytkowniku lub wywoływać Microsoft Graph.  Tylko interfejsy API sieci Web powinny analizować tokeny dostępu (ponieważ są one definiowane przy użyciu formatowania i ustawiania kluczy szyfrowania). |
 
 ## <a name="end-user-experience"></a>Środowisko użytkownika końcowego
 

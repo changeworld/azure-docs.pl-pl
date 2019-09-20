@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 09/19/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: c3f3d9437a6e796cc91ff1782b3a0774382c5f8b
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: ee64a8af35f938def94e369bdb400fed6e2798c0
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067073"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146597"
 ---
 # <a name="troubleshooting"></a>Rozwiązywanie problemów
 
@@ -46,10 +46,9 @@ Ten artykuł pomoże w rozwiązywaniu typowych problemów, które mogą wystąpi
 
 ## <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>Sporadyczny błąd testu z błędem naruszenia protokołu
 
-|Objaw/komunikat o błędzie| Możliwe przyczyny|
-|----|---------|
-po znaku CR naruszenia protokołu musi następować LF | Dzieje się tak w przypadku wykrycia źle sformułowanych nagłówków. W związku z tym niektóre nagłówki mogą nie używać CRLF, aby wskazać koniec wiersza, co narusza specyfikację protokołu HTTP i dlatego nie będzie można przeprowadzić walidacji na poziomie żądania programu .NET WebRequest.
- || Może to być również spowodowane przez usługi równoważenia obciążenia lub sieci CDN.
+|Objaw/komunikat o błędzie| Możliwe przyczyny| Możliwe rozwiązania |
+|----|---------|-----|
+|Serwer zatwierdził naruszenie protokołu. Sekcja = ResponseHeader detail = CR musi następować LF | Dzieje się tak w przypadku wykrycia źle sformułowanych nagłówków. W związku z tym niektóre nagłówki mogą nie używać CRLF do wskazania końca wiersza, co narusza specyfikację protokołu HTTP. Application Insights wymusza tę specyfikację protokołu HTTP i niepowodzenia odpowiedzi z nieprawidłowymi nagłówkami.| a. Skontaktuj się z dostawcą dostawcy usług sieci Web/dostawcy usługi CDN w celu rozwiązania uszkodzonych serwerów. <br> b. W przypadku nieudanych żądań są zasoby (np. pliki stylów, obrazy, skrypty), dlatego można rozważyć wyłączenie analizy zależnych żądań. Należy pamiętać, że w takim przypadku utracisz możliwość monitorowania dostępności tych plików.
 
 > [!NOTE]
 > Adres URL może zakończyć się niepowodzeniem w przeglądarkach, które mają swobodną weryfikację nagłówków HTTP. Zobacz ten wpis w blogu, aby uzyskać szczegółowe wyjaśnienie tego problemu: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  

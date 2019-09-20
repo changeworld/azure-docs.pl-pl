@@ -1,6 +1,6 @@
 ---
-title: Utwórz role sieć web i procesu roboczego platformy Azure dla języka PHP
-description: Podręcznik tworzenia ról sieć web i proces roboczy języka PHP w usłudze w chmurze platformy Azure w celu konfigurowania środowiska uruchomieniowego języka PHP.
+title: Tworzenie ról sieci Web i procesu roboczego platformy Azure dla języka PHP
+description: Przewodnik dotyczący tworzenia ról sieci Web i procesów roboczych języka PHP w usłudze w chmurze platformy Azure oraz konfigurowania środowiska uruchomieniowego PHP.
 services: ''
 documentationcenter: php
 author: msangapu
@@ -13,59 +13,59 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 83834104dd73e4381947903196ad35c3497b64a1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 82bb5f153a2c70d3b26f295925f8e48693bc49b9
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60337565"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146864"
 ---
 # <a name="create-php-web-and-worker-roles"></a>Tworzenie roli internetowej i procesu roboczego PHP
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
-Tym przewodniku pokazano sposób tworzenia ról sieć web i proces roboczy języka PHP w środowisku programowania Windows, wybierz określoną wersję programu PHP z wersji "wbudowane", która jest dostępna, zmiany konfiguracji PHP, Włącz rozszerzenia i na koniec wdrażanie na platformie Azure. On również zawiera opis sposobu konfigurowania roli sieci web lub proces roboczy do użycia środowiska uruchomieniowego języka PHP (przy użyciu niestandardowej konfiguracji i rozszerzenia) przez Ciebie.
+W tym przewodniku opisano sposób tworzenia ról sieci Web lub procesów roboczych języka PHP w środowisku deweloperskim systemu Windows. Wybierz określoną wersję środowiska PHP z dostępnych wersji "wbudowane", Zmień konfigurację PHP, Włącz rozszerzenia i na koniec Wdróż ją na platformie Azure. Opisano w nim również sposób konfigurowania roli sieci Web lub procesu roboczego w celu używania środowiska uruchomieniowego PHP (z niestandardowymi rozszerzeniami), które zapewniasz.
 
-Platforma Azure udostępnia trzy modele obliczeniowe na potrzeby uruchamiania aplikacji: Usługa Azure App Service, usługa Azure Virtual Machines i usług Azure Cloud Services. Wszystkie trzy modele obsługują PHP. Oferuje usługi w chmurze, które obejmują role sieć web i proces roboczy, *platforma jako usługa (PaaS)* . W ramach usługi w chmurze rola internetowa zapewnia dedykowany serwer sieci web usług Internet Information Services (IIS) do hostowania aplikacji frontonu sieci web. Rola procesu roboczego, można uruchomić asynchroniczne, długotrwałe lub ciągłe zadania niezależne od interakcji z użytkownikiem lub danych wejściowych.
+Platforma Azure udostępnia trzy modele obliczeniowe na potrzeby uruchamiania aplikacji: Azure App Service, Azure Virtual Machines i Azure Cloud Services. Wszystkie trzy modele obsługują język PHP. Cloud Services, która obejmuje role sieci Web i procesu roboczego, zapewnia *platformę jako usługę (PaaS)* . W ramach usługi w chmurze rola sieci Web zapewnia dedykowany serwer sieci Web Internet Information Services (IIS) do hostowania aplikacji sieci Web frontonu. Rola procesu roboczego może uruchamiać asynchroniczne, długotrwałe lub nieograniczone zadania niezależne od interakcji z użytkownikiem lub danych wejściowych.
 
-Aby uzyskać więcej informacji o tych opcjach, zobacz [udostępnianych przez platformę Azure opcji hostowania obliczeń](cloud-services/cloud-services-choose-me.md).
+Aby uzyskać więcej informacji na temat tych opcji, zobacz [Opcje hostingu obliczeń udostępniane przez platformę Azure](cloud-services/cloud-services-choose-me.md).
 
 ## <a name="download-the-azure-sdk-for-php"></a>Pobierz zestaw Azure SDK dla języka PHP
 
-[Zestawu Azure SDK dla języka PHP](php-download-sdk.md) składa się z kilku składników. W tym artykule użyje dwa z nich: Program Azure PowerShell i emulatory systemu Azure. Te dwa składniki można zainstalować za pomocą Instalatora platformy sieci Web firmy Microsoft. Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
+[Zestaw Azure SDK dla języka PHP](https://github.com/Azure/azure-sdk-for-php) zawiera kilka składników. W tym artykule zostaną użyte dwa z nich: Azure PowerShell i emulatory platformy Azure. Te dwa składniki można zainstalować za pośrednictwem Instalator platformy Microsoft Web. Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
 
-## <a name="create-a-cloud-services-project"></a>Tworzenie projektu usługi w chmurze
+## <a name="create-a-cloud-services-project"></a>Tworzenie projektu Cloud Services
 
-Pierwszym krokiem w tworzeniu rola sieć web lub proces roboczy języka PHP jest utworzenie projektu usługi platformy Azure. projekt usługi Azure służy jako kontener logiczny dla ról sieć web i procesu roboczego i zawiera projektu [usługi (csdef) definicji] i [Konfiguracja usługi (cscfg)] plików.
+Pierwszym krokiem tworzenia roli sieci Web lub procesu roboczego w języku PHP jest utworzenie projektu usługi platformy Azure. Projekt usługi platformy Azure służy jako kontener logiczny dla ról Sieć Web i proces roboczy oraz zawiera pliki [Definicja usługi (. csdef)] i [Konfiguracja usługi (. cscfg)] .
 
-Aby utworzyć nowy projekt usługi Azure, uruchomić programu Azure PowerShell jako administrator i uruchom następujące polecenie:
+Aby utworzyć nowy projekt usługi platformy Azure, uruchom Azure PowerShell jako administrator i wykonaj następujące polecenie:
 
     PS C:\>New-AzureServiceProject myProject
 
-To polecenie spowoduje utworzenie nowego katalogu (`myProject`) do którego można dodać ról sieć web i proces roboczy.
+To polecenie spowoduje utworzenie nowego katalogu (`myProject`), do którego można dodać role sieci Web i procesu roboczego.
 
-## <a name="add-php-web-or-worker-roles"></a>Dodawanie ról sieć web i proces roboczy języka PHP
+## <a name="add-php-web-or-worker-roles"></a>Dodaj role sieci Web lub procesów roboczych języka PHP
 
-Aby dodać rolę sieci web języka PHP do projektu, uruchom następujące polecenie w katalogu głównym projektu:
+Aby dodać rolę sieci Web w języku PHP do projektu, uruchom następujące polecenie w katalogu głównym projektu:
 
     PS C:\myProject> Add-AzurePHPWebRole roleName
 
-Dla roli procesu roboczego Użyj tego polecenia:
+Dla roli proces roboczy Użyj tego polecenia:
 
     PS C:\myProject> Add-AzurePHPWorkerRole roleName
 
 > [!NOTE]
-> `roleName` Parametr jest opcjonalny. Jeśli zostanie pominięty, nazwa roli zostanie wygenerowany automatycznie. Będzie pierwsza rola sieci web utworzone `WebRole1`, drugi będzie `WebRole2`i tak dalej. Będzie pierwsza rola proces roboczy utworzony `WorkerRole1`, drugi będzie `WorkerRole2`i tak dalej.
+> `roleName` Parametr jest opcjonalny. W przypadku pominięcia zostanie wygenerowana automatycznie nazwa roli. Pierwsza utworzona `WebRole1`rola sieci Web to, drugi `WebRole2`, i tak dalej. Zostanie `WorkerRole1`utworzona pierwsza rola procesu roboczego, a druga `WorkerRole2`to i tak dalej.
 >
 >
 
-## <a name="specify-the-built-in-php-version"></a>Określ wbudowanych wersji języka PHP
+## <a name="specify-the-built-in-php-version"></a>Określ wbudowaną wersję języka PHP
 
-Po dodaniu roli sieci web lub proces roboczy języka PHP do projektu, pliki konfiguracji projektu są modyfikowane, aby PHP zostanie zainstalowany na każdym wystąpieniu sieci web lub proces roboczy w aplikacji podczas jej wdrażania. Aby sprawdzić wersję programu PHP, które będą instalowane domyślnie, uruchom następujące polecenie:
+Po dodaniu roli sieci Web lub procesu roboczego w języku PHP do projektu pliki konfiguracji projektu są modyfikowane, dzięki czemu program PHP zostanie zainstalowany w każdym wystąpieniu sieci Web lub procesu roboczego aplikacji podczas jej wdrażania. Aby wyświetlić wersję języka PHP, która zostanie zainstalowana domyślnie, uruchom następujące polecenie:
 
     PS C:\myProject> Get-AzureServiceProjectRoleRuntime
 
-Dane wyjściowe polecenia powyżej będzie wyglądać podobnie do przedstawionego poniżej. W tym przykładzie `IsDefault` flaga jest ustawiona na `true` dla języka PHP 5.3.17, wskazujący, że będzie ona domyślną wersję języka PHP zainstalowane.
+Dane wyjściowe powyższego polecenia będą wyglądać podobnie do przedstawionego poniżej. W tym przykładzie `IsDefault` flaga jest ustawiona na `true` wartość for PHP 5.3.17, co oznacza, że będzie to domyślna wersja języka PHP.
 
 ```
 Runtime Version     PackageUri                      IsDefault
@@ -79,47 +79,47 @@ PHP 5.3.17          http://nodertncu.blob.core...   True
 PHP 5.4.0           http://nodertncu.blob.core...   False
 ```
 
-Można ustawić wersji środowiska uruchomieniowego języka PHP do dowolnej wersji języka PHP, które są wyświetlane. Na przykład Ustawianie wersji języka PHP (dla roli o nazwie `roleName`) do 5.4.0, użyj następującego polecenia:
+Wersję środowiska uruchomieniowego PHP można ustawić na dowolną z wymienionych wersji języka PHP. Na przykład aby ustawić wersję języka PHP (dla roli o nazwie `roleName`) na 5.4.0, użyj następującego polecenia:
 
     PS C:\myProject> Set-AzureServiceProjectRole roleName php 5.4.0
 
 > [!NOTE]
-> Dostępne wersje PHP mogą ulec zmianie w przyszłości.
+> Dostępne wersje języka PHP mogą ulec zmianie w przyszłości.
 >
 >
 
-## <a name="customize-the-built-in-php-runtime"></a>Dostosowywanie wbudowane środowiska uruchomieniowego języka PHP
+## <a name="customize-the-built-in-php-runtime"></a>Dostosowywanie wbudowanego środowiska uruchomieniowego PHP
 
-Masz pełną kontrolę nad konfiguracją środowiska uruchomieniowego języka PHP, który jest instalowany, gdy wykonujesz powyższe kroki, w tym modyfikowanie `php.ini` ustawienia i włączania rozszerzeń.
+Masz pełną kontrolę nad konfiguracją środowiska uruchomieniowego php, które jest instalowane po wykonaniu powyższych czynności, w tym modyfikacji `php.ini` ustawień i włączaniu rozszerzeń.
 
-Aby dostosować wbudowane środowiska uruchomieniowego języka PHP, wykonaj następujące kroki:
+Aby dostosować wbudowane środowisko uruchomieniowe PHP, wykonaj następujące kroki:
 
-1. Dodaj nowy folder o nazwie `php`, `bin` katalogu roli sieci web. Dla roli procesu roboczego należy go dodać do roli katalogu głównego.
-2. W `php` folderze utwórz inny folder o nazwie `ext`. Umieszczaj żadnego `.dll` rozszerzenia plików (np. `php_mongo.dll`), którą chcesz włączyć w tym folderze.
-3. Dodaj `php.ini` plik `php` folderu. Włącz jakichkolwiek rozszerzeń niestandardowych, a następnie ustaw wszystkie dyrektywy języka PHP w tym pliku. Na przykład, jeśli chcesz włączyć `display_errors` na i włączyć `php_mongo.dll` rozszerzenia, zawartość swojej `php.ini` pliku będzie następująca:
+1. Dodaj nowy folder o nazwie `php` `bin` do katalogu roli sieci Web. W przypadku roli proces roboczy Dodaj go do katalogu głównego roli.
+2. W folderze Utwórz inny folder o nazwie `ext`. `php` Umieść wszystkie `.dll` pliki rozszerzeń (np `php_mongo.dll`.), które chcesz włączyć w tym folderze.
+3. `php.ini` Dodaj plik`php` do folderu. Włącz wszelkie rozszerzenia niestandardowe i ustaw wszelkie dyrektywy PHP w tym pliku. Na przykład jeśli chcesz włączyć `display_errors` i `php_mongo.dll` włączyć rozszerzenie `php.ini` , zawartość pliku będzie następująca:
 
         display_errors=On
         extension=php_mongo.dll
 
 > [!NOTE]
-> Wszystkie ustawienia, które nie została jawnie ustawiona w `php.ini` pliku zapewniają zostanie automatycznie można ustawić wartości domyślne. Jednak należy pamiętać o tym, że można dodawać kompletna `php.ini` pliku.
+> Wszystkie ustawienia, które nie są jawnie ustawione w `php.ini` określonym pliku, zostaną automatycznie ustawione na wartości domyślne. Należy jednak pamiętać, że można dodać cały `php.ini` plik.
 >
 >
 
-## <a name="use-your-own-php-runtime"></a>Użyj własnego środowiska uruchomieniowego języka PHP
+## <a name="use-your-own-php-runtime"></a>Korzystanie z własnego środowiska uruchomieniowego PHP
 
-W niektórych przypadkach zamiast wybierając wbudowanych środowiska uruchomieniowego języka PHP i skonfigurowanie go zgodnie z opisem powyżej można podać własne środowiska uruchomieniowego języka PHP. Na przykład można użyć tego samego środowiska uruchomieniowego języka PHP w roli sieci web lub proces roboczy, używanego w środowisku programistycznym. Ułatwia zapewnienie, że aplikacja nie spowoduje zmiany zachowania w środowisku produkcyjnym.
+W niektórych przypadkach zamiast wybierać wbudowane środowisko uruchomieniowe PHP i skonfigurować je zgodnie z powyższym opisem, warto udostępnić własne środowisko uruchomieniowe PHP. Na przykład można użyć tego samego środowiska uruchomieniowego PHP w roli sieci Web lub procesu roboczego, która jest używana w środowisku programistycznym. Ułatwia to zapewnienie, że aplikacja nie będzie zmieniać zachowania w środowisku produkcyjnym.
 
-### <a name="configure-a-web-role-to-use-your-own-php-runtime"></a>Skonfiguruj rolę sieci web, aby użyć własnego środowiska uruchomieniowego języka PHP
+### <a name="configure-a-web-role-to-use-your-own-php-runtime"></a>Konfigurowanie roli sieci Web do używania własnego środowiska uruchomieniowego PHP
 
-Aby skonfigurować rolę sieci web, aby użyć środowiska uruchomieniowego języka PHP, który podasz, wykonaj następujące kroki:
+Aby skonfigurować rolę sieci Web do używania środowiska uruchomieniowego PHP, które jest podane, wykonaj następujące kroki:
 
-1. Tworzenie projektu usługi Azure i Dodaj rolę sieci web PHP, jak opisano wcześniej w tym temacie.
-2. Tworzenie `php` folderu w `bin` folder, który znajduje się w katalogu głównym roli sieci web, a następnie dodaj swoje środowiska uruchomieniowego języka PHP (wszystkie pliki binarne, pliki konfiguracji, podfoldery itp.), aby `php` folderu.
-3. (OPCJONALNIE) Jeśli Twoje środowisko uruchomieniowe języka PHP [Drivers firmy Microsoft dla programów PHP i SQL Server][sqlsrv drivers], musisz skonfigurować roli sieci web, aby zainstalować [programu SQL Server Native Client 2012] [ sql native client] po jej zaaprowizowaniu. Aby to zrobić, Dodaj [Instalatora sqlncli.msi x64] do `bin` folder w katalogu głównym roli sieci web. Skrypt uruchamiania opisany w następnym kroku zostanie dyskretnie uruchom Instalatora, po zaaprowizowaniu roli. Jeśli Twoje środowiska uruchomieniowego języka PHP nie korzysta z Drivers firmy Microsoft dla programu PHP dla programu SQL Server, należy usunąć następujący wiersz w skrypcie pokazano w następnym kroku:
+1. Utwórz projekt usługi platformy Azure i dodaj rolę sieci Web w języku PHP, jak opisano wcześniej w tym temacie.
+2. Utwórz folder w folderze, który znajduje się w katalogu głównym roli sieci Web, a następnie Dodaj do `php` folderu środowisko uruchomieniowe php (wszystkie dane binarne, pliki konfiguracji, podfoldery itp.). `bin` `php`
+3. OBOWIĄZKOWE Jeśli środowisko uruchomieniowe PHP korzysta ze [sterowników firmy Microsoft dla języka PHP dla SQL Server][sqlsrv drivers], należy skonfigurować rolę sieci Web w celu zainstalowania [SQL Server Native Client 2012][sql native client] po zainicjowaniu obsługi administracyjnej. W tym celu należy dodać [Instalatora sqlncli. msi x64] do `bin` folderu w katalogu głównym roli sieci Web. Skrypt uruchamiania opisany w następnym kroku uruchomi Instalatora w trybie dyskretnym, gdy rola zostanie zainicjowana. Jeśli środowisko uruchomieniowe PHP nie korzysta ze sterowników firmy Microsoft dla języka PHP dla SQL Server, można usunąć następujący wiersz ze skryptu pokazanego w następnym kroku:
 
         msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
-4. Zdefiniuj zadania uruchamiania, który konfiguruje [Internet Information Services (IIS)] [ iis.net] na potrzeby obsługi żądań dla Twojego środowiska uruchomieniowego języka PHP `.php` stron. Aby to zrobić, otwórz `setup_web.cmd` pliku (w `bin` plik katalogu głównego roli sieci web) w edytorze tekstów i zastąp jego zawartość za pomocą następującego skryptu:
+4. Zdefiniuj zadanie uruchamiania, które konfiguruje [Internet Information Services (IIS)][iis.net] do używania środowiska uruchomieniowego php do obsługi `.php` żądań stron. Aby to zrobić, Otwórz `setup_web.cmd` plik ( `bin` w pliku katalogu głównego roli sieci Web) w edytorze tekstów i Zastąp jego zawartość następującym skryptem:
 
     ```cmd
     @ECHO ON
@@ -138,24 +138,24 @@ Aby skonfigurować rolę sieci web, aby użyć środowiska uruchomieniowego jęz
     %WINDIR%\system32\inetsrv\appcmd.exe set config -section:system.webServer/handlers /+"[name='PHP',path='*.php',verb='GET,HEAD,POST',modules='FastCgiModule',scriptProcessor='%PHP_FULL_PATH%',resourceType='Either',requireAccess='Script']" /commit:apphost
     %WINDIR%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi /"[fullPath='%PHP_FULL_PATH%'].queueLength:50000"
     ```
-5. Dodawania plików aplikacji do katalogu głównego roli sieci web. Jest to katalog główny serwera sieci web.
-6. Publikuj swoje aplikacje, zgodnie z opisem w [publikować aplikację](#publish-your-application) poniższej sekcji.
+5. Dodaj pliki aplikacji do katalogu głównego roli sieci Web. Będzie to katalog główny serwera sieci Web.
+6. Opublikuj aplikację zgodnie z opisem w sekcji [publikowanie aplikacji](#publish-your-application) poniżej.
 
 > [!NOTE]
-> `download.ps1` Skryptu (w `bin` folder katalogu głównego roli sieci web) mogą być usuwane po należy wykonać czynności opisane powyżej, aby przy użyciu własnego środowiska uruchomieniowego języka PHP.
+> `download.ps1` Skrypt (`bin` w folderze katalogu głównego roli sieci Web) można usunąć po wykonaniu czynności opisanych powyżej przy użyciu własnego środowiska uruchomieniowego php.
 >
 >
 
-### <a name="configure-a-worker-role-to-use-your-own-php-runtime"></a>Konfigurowanie roli procesu roboczego, aby użyć własnego środowiska uruchomieniowego języka PHP
+### <a name="configure-a-worker-role-to-use-your-own-php-runtime"></a>Konfigurowanie roli procesu roboczego do korzystania z własnego środowiska uruchomieniowego PHP
 
-Aby skonfigurować rolę procesu roboczego do użycia środowiska uruchomieniowego języka PHP, które podasz, wykonaj następujące kroki:
+Aby skonfigurować rolę procesu roboczego do korzystania z środowiska uruchomieniowego PHP, które zapewniasz, wykonaj następujące kroki:
 
-1. Tworzenie projektu usługi Azure, a następnie dodaj rolę procesu roboczego języka PHP, jak opisano wcześniej w tym temacie.
-2. Tworzenie `php` folder w katalogu głównym roli procesu roboczego, a następnie dodaj swoje środowiska uruchomieniowego języka PHP (wszystkie pliki binarne, pliki konfiguracji, podfoldery itp.) do `php` folderu.
-3. (OPCJONALNIE) Jeśli Twoje środowisko uruchomieniowe języka PHP [Drivers firmy Microsoft dla programów PHP i SQL Server][sqlsrv drivers], musisz skonfigurować swojej roli procesu roboczego, aby zainstalować [programu SQL Server Native Client 2012] [ sql native client] po jej zaaprowizowaniu. Aby to zrobić, Dodaj [Instalatora sqlncli.msi x64] do katalogu głównego roli procesu roboczego. Skrypt uruchamiania opisany w następnym kroku zostanie dyskretnie uruchom Instalatora, po zaaprowizowaniu roli. Jeśli Twoje środowiska uruchomieniowego języka PHP nie korzysta z Drivers firmy Microsoft dla programu PHP dla programu SQL Server, należy usunąć następujący wiersz w skrypcie pokazano w następnym kroku:
+1. Utwórz projekt usługi platformy Azure i dodaj rolę procesu roboczego PHP, jak opisano wcześniej w tym temacie.
+2. Utwórz folder w katalogu głównym roli proces roboczy, a następnie Dodaj do tego `php` folderu środowisko uruchomieniowe php (wszystkie dane binarne, pliki konfiguracji, podfoldery itp.). `php`
+3. OBOWIĄZKOWE Jeśli środowisko uruchomieniowe PHP używa [sterowników firmy Microsoft dla języka PHP dla SQL Server][sqlsrv drivers], należy skonfigurować rolę procesu roboczego w celu zainstalowania [SQL Server Native Client 2012][sql native client] po zainicjowaniu obsługi administracyjnej. W tym celu należy dodać [Instalatora sqlncli. msi x64] do katalogu głównego roli procesu roboczego. Skrypt uruchamiania opisany w następnym kroku uruchomi Instalatora w trybie dyskretnym, gdy rola zostanie zainicjowana. Jeśli środowisko uruchomieniowe PHP nie korzysta ze sterowników firmy Microsoft dla języka PHP dla SQL Server, można usunąć następujący wiersz ze skryptu pokazanego w następnym kroku:
 
         msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
-4. Zdefiniuj zadania uruchamiania, który dodaje swoje `php.exe` pliku wykonywalnego do zmiennej środowiskowej PATH roli procesu roboczego po zaaprowizowaniu roli. Aby to zrobić, otwórz `setup_worker.cmd` pliku (w katalogu głównym roli proces roboczy) w edytorze tekstów i zastąp jego zawartość za pomocą następującego skryptu:
+4. Zdefiniuj zadanie uruchamiania, które dodaje `php.exe` plik wykonywalny do zmiennej środowiskowej PATH procesu roboczego, gdy rola jest inicjowana. W tym celu Otwórz `setup_worker.cmd` plik (w katalogu głównym roli proces roboczy) w edytorze tekstów i Zastąp jego zawartość następującym skryptem:
 
     ```cmd
     @echo on
@@ -183,16 +183,16 @@ Aby skonfigurować rolę procesu roboczego do użycia środowiska uruchomieniowe
     echo FAILED
     exit /b -1
     ```
-5. Dodawania plików aplikacji do katalogu głównego swojej roli procesu roboczego.
-6. Publikuj swoje aplikacje, zgodnie z opisem w [publikować aplikację](#publish-your-application) poniższej sekcji.
+5. Dodaj pliki aplikacji do katalogu głównego roli procesu roboczego.
+6. Opublikuj aplikację zgodnie z opisem w sekcji [publikowanie aplikacji](#publish-your-application) poniżej.
 
-## <a name="run-your-application-in-the-compute-and-storage-emulators"></a>Uruchom aplikację w emulatorach zasobów obliczeniowych i magazynu
+## <a name="run-your-application-in-the-compute-and-storage-emulators"></a>Uruchamianie aplikacji w emulatorach obliczeniowych i magazynowych
 
-Emulatory systemu Azure zapewnia środowisku lokalnym, można przetestować aplikację platformy Azure, przed wdrożeniem jej w chmurze. Istnieją pewne różnice między emulatorów i środowisko platformy Azure. Aby lepiej zrozumieć to, zobacz [korzystanie z emulatora usługi Azure storage do programowania i testowania](storage/common/storage-use-emulator.md).
+Emulatory platformy Azure udostępniają lokalne środowisko, w którym można testować aplikację platformy Azure przed wdrożeniem jej w chmurze. Istnieją pewne różnice między emulatorami i środowiskiem platformy Azure. Aby to lepiej zrozumieć, zobacz [Używanie emulatora usługi Azure Storage do programowania i testowania](storage/common/storage-use-emulator.md).
 
-Należy pamiętać, że użytkownik musi mieć zainstalowane lokalnie na korzystanie z emulatora obliczeń w języku PHP. Emulator obliczeń użyje lokalnej instalacji języka PHP do uruchamiania aplikacji.
+Należy pamiętać, że program PHP jest zainstalowany lokalnie, aby można było korzystać z emulatora obliczeń. Emulator obliczeń będzie używać lokalnej instalacji języka PHP do uruchamiania aplikacji.
 
-Aby uruchomić projekt w emulatorów, uruchom następujące polecenie z katalogu głównego projektu:
+Aby uruchomić projekt w emulatorach, wykonaj następujące polecenie w katalogu głównym projektu:
 
     PS C:\MyProject> Start-AzureEmulator
 
@@ -203,24 +203,24 @@ Zostaną wyświetlone dane wyjściowe podobne do tego:
     Role is running at http://127.0.0.1:81
     Started
 
-Możesz zobaczyć działanie aplikacji w emulatorze, należy otworzyć przeglądarkę sieci web i przejście do adresów lokalnych w danych wyjściowych (`http://127.0.0.1:81` w przykładowych danych wyjściowych powyżej).
+Twoja aplikacja jest uruchamiana w emulatorze, otwierając przeglądarkę internetową i przechodząc do adresu lokalnego wyświetlanego w danych wyjściowych`http://127.0.0.1:81` (w przykładowych danych wyjściowych powyżej).
 
-Aby zatrzymać emulatorów, należy wykonać to polecenie:
+Aby zatrzymać emulatory, wykonaj następujące polecenie:
 
     PS C:\MyProject> Stop-AzureEmulator
 
 ## <a name="publish-your-application"></a>Publikowanie aplikacji
 
-Aby opublikować aplikację, należy najpierw zaimportować swoje ustawienia publikowania za pomocą [AzurePublishSettingsFile importu](https://docs.microsoft.com/powershell/module/servicemanagement/azure/import-azurepublishsettingsfile) polecenia cmdlet. Następnie można opublikować aplikację za pomocą [Publish-AzureServiceProject](https://docs.microsoft.com/powershell/module/servicemanagement/azure/publish-azureserviceproject) polecenia cmdlet. Aby dowiedzieć się, jak logowania, zobacz [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview).
+Aby opublikować aplikację, należy najpierw zaimportować ustawienia publikowania za pomocą polecenia cmdlet [Import-AzurePublishSettingsFile](https://docs.microsoft.com/powershell/module/servicemanagement/azure/import-azurepublishsettingsfile) . Następnie można opublikować aplikację przy użyciu polecenia cmdlet [Publish-AzureServiceProject](https://docs.microsoft.com/powershell/module/servicemanagement/azure/publish-azureserviceproject) . Informacje o logowaniu można znaleźć w temacie [How to Install and configure Azure PowerShell](/powershell/azure/overview).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji, zobacz [Centrum deweloperów języka PHP](https://azure.microsoft.com/develop/php/).
 
 [install ps and emulators]: https://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409
-[usługi (csdef) definicji]: https://msdn.microsoft.com/library/windowsazure/ee758711.aspx
-[Konfiguracja usługi (cscfg)]: https://msdn.microsoft.com/library/windowsazure/ee758710.aspx
+[Definicja usługi (. csdef)]: https://msdn.microsoft.com/library/windowsazure/ee758711.aspx
+[Konfiguracja usługi (. cscfg)]: https://msdn.microsoft.com/library/windowsazure/ee758710.aspx
 [iis.net]: https://www.iis.net/
 [sql native client]: https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation
 [sqlsrv drivers]: https://php.net/sqlsrv
-[Instalatora sqlncli.msi x64]: https://go.microsoft.com/fwlink/?LinkID=239648
+[Instalatora sqlncli. msi x64]: https://go.microsoft.com/fwlink/?LinkID=239648

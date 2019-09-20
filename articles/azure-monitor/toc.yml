@@ -1142,7 +1142,7 @@
     - name: Analiza systemu Windows
       href: 'https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics'
     - name: Dostępność regionalna
-      href: 'https://azure.microsoft.com/regions/services/'
+      href: 'https://azure.microsoft.com/regions/services/?products=monitor&regions=all'
     - name: Filmy wideo
       href: 'https://azure.microsoft.com/resources/videos/index/?services=monitor'
     - name: Szablony szybkiego startu

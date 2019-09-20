@@ -1,19 +1,19 @@
 ---
-title: Skrypt programu Azure PowerShell — usługa Azure Cosmos DB tworzyć bazy danych interfejsu API SQL (podstawowe) i kontenera
-description: Skrypt programu Azure PowerShell — usługa Azure Cosmos DB tworzyć bazy danych interfejsu API SQL (podstawowe) i kontenera
+title: Skrypt Azure PowerShell — Azure Cosmos DB tworzenia bazy danych i kontenera interfejsu API SQL (rdzeń)
+description: Skrypt Azure PowerShell — Azure Cosmos DB tworzenia bazy danych i kontenera interfejsu API SQL (rdzeń)
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/18/2019
+ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: b8b8b30f178ba068bc800103f16adde43cf5dcb1
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 29b0e81dd6eac62a18307788bb023ac3d802f11a
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602215"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154851"
 ---
-# <a name="create-a-database-and-container-for-azure-cosmos-db---sql-core-api"></a>Tworzenie bazy danych i kontenerów usługi Azure Cosmos DB - SQL (rdzenie) interfejsu API
+# <a name="create-a-database-and-container-for-azure-cosmos-db---sql-core-api"></a>Tworzenie bazy danych i kontenera dla interfejsu API Azure Cosmos DB-SQL (rdzeń)
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -21,7 +21,9 @@ ms.locfileid: "67602215"
 
 ## <a name="sample-script"></a>Przykładowy skrypt
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-create.ps1 "Create a database and container for SQL (Core) API")]
+Ten skrypt tworzy konto Cosmos dla interfejsu API języka SQL (rdzeń) w dwóch regionach z spójnością poziomu sesji, bazą danych o udostępnionej przepływności i kontenerem z kluczem partycji, niestandardowymi zasadami indeksowania, unikatowymi zasadami kluczy, czasem wygaśnięcia, dedykowaną przepływność i ostatnim składnikiem zapisywania. zasady rozwiązywania konfliktów z niestandardową ścieżką rozwiązywania konfliktów, `multipleWriteLocations=true`która będzie używana w przypadku.
+
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-create.ps1 "Create an account, database, and container for SQL (Core) API")]
 
 ## <a name="clean-up-deployment"></a>Czyszczenie wdrożenia
 
@@ -38,12 +40,12 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | Polecenie | Uwagi |
 |---|---|
 |**Zasoby platformy Azure**| |
-| [Nowe AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Tworzy zasób. |
+| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Tworzy zasób. |
 |**Grupy zasobów platformy Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 |||
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat programu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](https://docs.microsoft.com/powershell/).
 

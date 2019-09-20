@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 4986f888abca94549e921bfe5400d68f6d28c01f
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: bc2be73f85ebec7785b9aa06d6152447eee7e33e
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876693"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147286"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Usługi doradcze dla portalu Azure Marketplace i AppSource
 Usługi doradcze w witrynie Azure Marketplace i AppSource zapewniają partnerom firmy Microsoft cel łączenia się klientów z usługami w celu wspierania i zwiększania użycia platformy Azure i celów firmowych. 
@@ -24,15 +24,17 @@ Te oferty konsultingowe usług są zobowiązaniami specyficznymi dla klienta. Wy
 ## <a name="consulting-services-in-azure-marketplace-vs-appsource-storefront"></a>Usługi doradcze w witrynie Azure Marketplace vs AppSource
 Witryny sklepu Marketplace są wyrównane z odbiorcami i produktami w chmurze firmy Microsoft, aby ułatwić klientom znalezienie potrzebnych informacji. Każda witryna sklepu oferuje wyspecjalizowane opcje publikowania, które ułatwiają zmaksymalizowanie inwestycji w publikowanie. Poniższa tabela zawiera podsumowanie następujących opcji:
 
-|         |Azure Marketplace  |AppSource |
+|         |Azure Marketplace  |Microsoft AppSource |
 |---------|---------|---------|
 |**Publiczn**   |**Informatycy i deweloperzy rozwiązań w chmurze**|**Użytkownicy biznesowi/przedsiębiorcy podejmujące decyzje biznesowe**|
 |Istotność rozwiązania     |Aplikacje techniczne skompilowane lub utworzone na platformie Azure|Aplikacje biznesowe, które wykorzystują/rozszerzającą D365, Power BI, O365 i platformę Azure. (Dodatek lub gotowe aplikacje)|
-|Opcje publikowania     |Skontaktuj się z nami, z wersji próbnej, Transact lub usług konsultingowych|Skontaktuj się z nami, wersjami próbnymi lub usługami konsultingowymi|
+|Opcje publikowania     |Kontakt ze mną, wersja próbna, usługa Transact lub usługi dla platformy Azure|Skontaktuj się z nami, wersją próbną lub usługami dla systemu Dynamics 365 i Power BI|
 |W środowisku produktu      |Portal zarządzania platformy Azure|Dynamics 365, Office 365, aplikacje klienckie pakietu Office| 
-|Inne      |Publikowanie lokalne za pośrednictwem Azure Stack|Usługi doradcze dla systemu Dynamics i Power BI|
+|Inne      |Publikowanie lokalne za pośrednictwem Azure Stack, usług konsultingowych dla platformy Azure, usług zarządzanych dla platformy Azure|Usługi doradcze dla systemu Dynamics i Power BI|
 
-Oferty usługi oparte na systemach Microsoft Dynamics 365, Office 365 i Power BI mogą być wymienione w witrynie AppSource. Aby uzyskać więcej informacji, zobacz artykuł [Microsoft AppSource Information Services — wskazówki](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf). 
+Oferty usług doradczych opartych na systemie Microsoft Dynamics 365 i Power BI mogą być wymienione na Microsoft AppSource. Aby uzyskać więcej informacji, zobacz artykuł [Microsoft AppSource Information Services — wskazówki](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf). 
+
+Usługi konsultingowe i oferty usług zarządzanych, które są oparte na Microsoft Azure mogą być wymienione w witrynie Azure Marketplace. Aby uzyskać więcej informacji, zobacz artykuły dotyczące [publikowania usługi Azure Consulting Service](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) i [Publikowanie oferty usług zarządzanych w witrynie Azure Marketplace](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers).
 
 > [!Note]
 > Usługi doradcze w witrynie Azure Marketplace powinny wykorzystywać oferty skierowane do użytkowników technicznych * *, którzy koncentrują się na *rozwiązaniach i usługach technicznych platformy Azure.* \* * Usługi doradcze w usłudze AppSource powinny korzystać z ofert w celu uzyskania wiedzy w zakresie dostarczania rozwiązań dotyczących jakości dla systemu Dynamics 365, Power BI lub PowerApps, aby wyświetlić listę ofert usług konsultingowych w witrynie AppSource
@@ -62,7 +64,7 @@ Partnerzy muszą mieć **kompetencje Silver lub Gold** w odpowiednim obszarze dl
 |Dynamics 365 dla finansów i operacji, wersja Enterprise  |  Kompetencja [planowania zasobów](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) w przedsiębiorstwie Silver lub Gold oraz minimalny przychód z $25K w operacjach w chmurze w ciągu 12 miesięcy.       |
 |Dynamics 365 dla finansów i operacji, wersja Business  |  ObDPOR jako [dostawcę usług w chmurze (CSP)](https://partner.microsoft.com/cloud-solution-provider) lub [Digital Partnering](https://partner.microsoft.com/membership/digital-partner-of-record) dla co najmniej jednego klienta      |
 |Power BI, Power BI wizualizacje niestandardowe | Spełnij [kryteria partnera rozwiązań](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=/Hosted%20Documents/BI%20Partner%20Program%20Overview%20%26%20Incentives.pdf).|
-|PowerApps | Zaprezentuj rozwiązanie z opublikowanym [partnerem](https://appsource.microsoft.com/partners)
+|Aplikacje PowerApp | Zaprezentuj rozwiązanie z opublikowanym [partnerem](https://appsource.microsoft.com/partners)
 
 <b>Aby uzyskać więcej informacji, zobacz [kompetencje za Microsoft Partner Network](https://partner.microsoft.com/membership/competencies).</b>
  
@@ -128,7 +130,7 @@ Oferty muszą mieć jeden z następujących pięciu typów usług (można wyświ
 * **Weryfikacja koncepcji**: Implementacja ograniczonej zakresu, aby określić, czy rozwiązanie spełnia wymagania klientów. 
 * **Warsztat**: Interaktywne zaangażowanie, które jest wykonywane w lokalu klienta. Może to dotyczyć szkoleń, wyliczeń, ocen lub pokazów, które są oparte na danych lub środowisku klienta. 
 
-**Uwaga:** Z wyjątkiem typu  usługi krótkiej usługi konsultingowe mogą być oferowane w osobie, która jest w siedzibie klienta w lokalizacji lub w obiekcie partnera lub praktycznie (czyli przez telekonferencje, konferencje internetowe lub implementację zdalną). Krótkie oferty muszą być oferowane w osobie.
+**Uwaga:** Z wyjątkiem typu usługi krótkiej usługi konsultingowe mogą być oferowane w osobie, która jest w siedzibie klienta w lokalizacji lub w obiekcie partnera lub praktycznie (czyli przez telekonferencje, konferencje internetowe lub implementację zdalną). Krótkie oferty muszą być oferowane w osobie.
 
 Po skonfigurowaniu wymaganych elementów wymienionych powyżej zespół ds. zawartości sprawdzi, czy opis oferty jest w sposób informacyjny i kompletny dla docelowych odbiorców. 
 
@@ -151,7 +153,7 @@ Podczas przeglądania opisów oferty i podsumowań oferty zespół będzie stoso
 
 |Typ oferty  |Wymagane |Zalecane  |
 |---------|---------|---------|
-|**Stopnia**    |   Zapoznaj się ze szczegółowym porządkiem ocen obejmujących wiele dni lub wielotygodniowe i ideach, których elementów dostarcza klient może oczekiwać      |    Optymalizacja podsumowania oferty przy użyciu najważniejszych słów kluczowych optymalizacji aparatu wyszukiwania     |
+|**Ocena**    |   Zapoznaj się ze szczegółowym porządkiem ocen obejmujących wiele dni lub wielotygodniowe i ideach, których elementów dostarcza klient może oczekiwać      |    Optymalizacja podsumowania oferty przy użyciu najważniejszych słów kluczowych optymalizacji aparatu wyszukiwania     |
 |**Briefing**    |   Ideach, którego elementu dostarcza klient może oczekiwać. Pamiętaj, aby zapamiętać, że krótka osoba musi być oferowana. Jeśli dostarczasz usługę wirtualną, wybierz inny typ oferty    |  Optymalizacja podsumowania oferty przy użyciu najważniejszych słów kluczowych optymalizacji aparatu wyszukiwania       |
 |**Realizacji**    |  Zapoznaj się ze szczegółowym terminarzem dla wielodniowych lub wielotygodniowych implementacji i ideach zmiany inżynierów, artefakty techniczne lub inne artefakty, których klient może oczekiwać jako rezultatów zaangażowania       |    Optymalizacja podsumowania oferty przy użyciu najważniejszych słów kluczowych optymalizacji aparatu wyszukiwania     |
 |**Weryfikacja koncepcji**    |    Ideach zmiany inżynierów, artefakty techniczne lub inne artefakty, których klient może oczekiwać jako rezultatu zaangażowania     | Optymalizacja podsumowania oferty przy użyciu najważniejszych słów kluczowych optymalizacji aparatu wyszukiwania        |
@@ -169,7 +171,7 @@ W portal Cloud Partner możesz dodać formatowanie do swojej listy, używając [
 * \* Podsumowanie oferty z kursywą
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Jeśli jeszcze tego nie zrobiono, 
 

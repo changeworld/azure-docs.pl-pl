@@ -1,5 +1,5 @@
 ---
-title: Twórz i wdrażaj środowiska oraz zarządzaj nimi, aby korzystać z szkoleń i wdrażania modelu
+title: Utwórz środowiska ML wielokrotnego użytku
 titleSuffix: Azure Machine Learning
 description: Twórz środowiska i zarządzaj nimi, aby uzyskać model szkoleń i wdrożeń. Zarządzaj pakietami języka Python i innymi ustawieniami środowiska.
 services: machine-learning
@@ -9,16 +9,15 @@ ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 08/16/2019
-ms.custom: seodec18
-ms.openlocfilehash: 242f3cec0ac766e537bd0483725ba51685bb7ced
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.date: 09/16/2019
+ms.openlocfilehash: b46ca59bc93477c338001009ff7eeeddc7248684
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996616"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147329"
 ---
-# <a name="create-and-manage-environments-for-training-and-deployment"></a>Twórz środowiska szkoleniowe i wdrażaj i zarządzaj nimi
+# <a name="create-and-manage-reusable-environments-for-training-and-deployment-with-azure-machine-learning"></a>Twórz środowiska wielokrotnego użytku i zarządzaj nimi w celu szkolenia i wdrażania za pomocą Azure Machine Learning.
 
 W tym artykule dowiesz się, jak tworzyć [środowiska](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) Azure Machine Learning i zarządzać nimi, aby umożliwić śledzenie i odtwarzanie zależności oprogramowania w trakcie ich rozwoju.
 

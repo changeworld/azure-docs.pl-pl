@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 09/20/2019
 ms.author: dacurwin
-ms.openlocfilehash: 719f7f1c30a79b9057f25d6137423451cc606bfa
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 5f10bb2062d7c805b485d5cfbfe8989a6aee0995
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088415"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162206"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Usuwanie magazynu Recovery Services Azure Backup
 
@@ -33,6 +33,9 @@ Nie można usunąć magazynu Recovery Services z zależnościami, takimi jak ser
 
   ![Usuń błąd serwera chronionego.](./media/backup-azure-delete-vault/error-message.jpg)
 
+- Jeśli pojawi się komunikat ostrzegawczy, elementy kopii zapasowej znajdują się w stanie nietrwałego usunięcia, a użytkownik będzie musiał odczekać, aż zostanie trwale usunięty. Aby uzyskać więcej informacji, zapoznaj się z tym [artykułem](https://aka.ms/SoftDeleteCloudWorkloads).
+
+   ![Usuń błąd magazynu.](./media/backup-azure-delete-vault/error-message-soft-delete.png)
   
 Aby usunąć magazyn, wybierz scenariusz zgodny z konfiguracją i wykonaj zalecane czynności:
 

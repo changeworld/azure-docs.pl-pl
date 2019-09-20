@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 09/03/2019
+ms.date: 09/20/2019
 ms.author: arjay
 ms.reviewer: arjay
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0e2860f563be788166ffbee7cf02fcab1b3b0e7
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.openlocfilehash: a1a5fa79f953a2e8105af425cc089c5a48d63447
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806314"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162374"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>Nazwy produktów i identyfikatory planów usług na potrzeby licencjonowania
 
@@ -34,9 +34,9 @@ Podczas zarządzania licencjami w [Azure Portal](https://portal.azure.com/#blade
 - **Uwzględnione plany usług (przyjazne nazwy)** : Lista planów usług (przyjaznych nazw) w produkcie, który odpowiada IDENTYFIKATORowi ciągu i identyfikatorowi GUID
 
 >[!NOTE]
->Te informacje są dokładne od 03 września 2019.
+>Te informacje są dokładne od 20 września 2019.
 
-| Nazwa produktu | Identyfikator ciągu | Identyfikator GUID | Uwzględnione plany usług | Uwzględnione plany usług (przyjazne nazwy) |
+| Nazwa produktu | Identyfikator ciągu | GUID | Uwzględnione plany usług | Uwzględnione plany usług (przyjazne nazwy) |
 | --- | --- | --- |--- |
 | KONFERENCJE AUDIO | MCOMEETADV | 0c266dff-15dd-4b49-8397-2bb16070ed52 |MCOMEETADV (3e26ee1f-8a5f-4d52-aee2-b81ce45c8f40) | KONFERENCJe AUDIO (3e26ee1f-8a5f-4d52-aee2-b81ce45c8f40) |
 | AZURE ACTIVE DIRECTORY — PODSTAWOWE  | AAD_BASIC | 2b9c8e7c-319c-43a2-a2a0-48c5c6161de7  | AAD_BASIC (c4da7f8a-5ee2-4c99-a7e1-87d2df57f6fe) | MICROSOFT AZURE ACTIVE DIRECTORY BASIC(c4da7f8a-5ee2-4c99-a7e1-87d2df57f6fe) |
@@ -69,7 +69,6 @@ Podczas zarządzania licencjami w [Azure Portal](https://portal.azure.com/#blade
 | Microsoft 365 F1 | SPE_F1 | 66b55226-6b4f-492c-910c-a3b7a3c9d993 | AAD_PREMIUM (41781fb2-bc02-4b7c-bd55-b576c07bb09d)<br/>RMS_S_PREMIUM (6c57d4b6-3b23-47a5-9bc9-69f17b4947b3)<br/>ADALLOM_S_DISCOVERY (932ad362-64a8-4783-9106-97849a1a30b9)<br/>EXCHANGE_S_DESKLESS (4a82b400-a79f-41a4-b4e2-e94f5787b113)<br/>FLOW_O365_S1 (bd91b1a4-9f94-4ecf-b45b-3a65e5c8128a)<br/>RMS_S_ENTERPRISE (bea4c11e-220a-4e6d-8eb8-8ea15d019f90)<br/>MFA_PREMIUM (8a256a2b-b617-496d-b51b-e76466e88db0)<br/>FORMS_PLAN_K (f07046bd-2a3c-4b96-b0be-dea79d7cbfb8)<br/>INTUNE_A (c1ec4a95-1f05-45b3-a911-aa3fa01094f5)<br/>KAIZALA_O365_P1 (73b2a583-6a59-42e3-8e83-54db46bc3278)<br/>MICROSOFT_SEARCH (94065c59-bc8e-4e8b-89e5-5138d471eaff)<br/>Deskless (8c7d2df8-86f0-4902-b2ed-a0458298f3b3)<br/>STREAM_O365_K (3ffba0d2-38e5-4d5e-8ec0-98f2b05c09d9)<br/>TEAMS1 (57ff2da0-773e-42df-b2af-ffb7a2317929)<br/>INTUNE_O365 (882e1d05-acd1-4ccb-8708-6ee03664b117)<br/>OFFICEMOBILE_SUBSCRIPTION (c63d4d19-e8cb-460e-b37c-4d6c34603745)<br/>SHAREPOINTWAC (e95bec33-7c88-4a70-8e19-b10bd9d0c014)<br/>POWERAPPS_O365_S1 (e0287f9f-e222-4f98-9a83-f379e249159a)<br/>SHAREPOINTDESKLESS (902b47e5-dcb2-4fdc-858b-c63a90a2bdb9)<br/>MCOIMP (afc06cb0-b4f4-4473-8286-d644f70d8faf)<br/>SWAY (a23b959c-7ce8-4e57-9140-b90eb88a9e97)<br/>BPOS_S_TODO_FIRSTLINE (80873e7a-cd2a-4e67-b061-1b5381a676a5)<br/>WHITEBOARD_FIRSTLINE1 (36b29273-c6d0-477a-aca6-6fbe24f538e3)<br/>WIN10_ENT_LOC_F1 (e041597c-9c7f-4ed9-99b0-2663301576f7)<br/>YAMMER_ENTERPRISE (7547a3fe-08ee-4ccb-b430-5077c5041653) | Azure Active Directory — wersja Premium P1 (41781fb2-bc02-4b7c-bd55-b576c07bb09d)<br/>Azure Information Protection Premium P1 (6c57d4b6-3b23-47a5-9bc9-69f17b4947b3)<br/>Odnajdywanie Cloud App Security (932ad362-64a8-4783-9106-97849a1a30b9)<br/>Kiosk usługi Exchange Online (4a82b400-a79f-41a4-b4e2-e94f5787b113)<br/>Flow dla pakietu Office 365 K1 (bd91b1a4-9f94-4ecf-B45b-3a65e5c8128a)<br/>Prawa Microsoft Azure Active Directory (bea4c11e-220a-4e6d-8eb8-8ea15d019f90)<br/>Microsoft Azure Multi-Factor Authentication (8a256a2b-b617-496d-b51b-e76466e88db0)<br/>Microsoft Forms (plan K) (f07046bd-2a3c-4b96-b0bE-dea79d7cbfb8)<br/>Microsoft Intune (c1ec4a95-1f05-45b3-a911-aa3fa01094f5)<br/>Microsoft usługi kaizala Pro plan 1 (73b2a583-6a59-42e3-8e83-54db46bc3278)<br/>Microsoft Search (94065c59-bc8e-4e8b-89e5-5138d471eaff)<br/>Microsoft usłudze staffhub (8c7d2df8-86f0-4902-b2ed-a0458298f3b3)<br/>Microsoft Stream dla jednostki SKU usługi O365 K (3ffba0d2-38e5-4d5e-8ec0-98f2b05c09d9)<br/>Microsoft Teams (57ff2da0-773e-42df-b2af-ffb7a2317929)<br/>Zarządzanie urządzeniami przenośnymi dla pakietu Office 365 (882e1d05-acd1-4ccb-8708-6ee03664b117)<br/>Pakiet Office Mobile Apps dla pakietu Office 365 (c63d4d19-e8cb-460E-b37c-4d6c34603745)<br/>Office Online (e95bec33-7c88-4a70-8e19-b10bd9d0c014)<br/>PowerApps dla Office 365 K1 (e0287f9f-E222-4f98-9a83-f379e249159a)<br/>Kiosk usługi SharePoint Online (902b47e5-dcb2-4fdc-858b-c63a90a2bdb9)<br/>Skype dla firm Online (plan 1) (afc06cb0-b4f4-4473-8286-d644f70d8faf)<br/>SWAY (a23b959c-7ce8-4e57-9140-b90eb88a9e97)<br/>Do-do (Firstline) (80873e7a-cd2a-4e67-b061-1b5381a676a5)<br/>Tablica (Firstline) (36b29273-c6d0-477a-aca6-6fbe24f538e3)<br/>Windows 10 Enterprise E3 (tylko lokalne) (e041597c-9C7F-4ed9-99b0-2663301576f7)<br/>Yammer Enterprise (7547a3fe-08ee-4ccb-B430-5077c5041653) |
 | MICROSOFT DYNAMICS CRM ONLINE — PODSTAWOWE   | CRMPLAN2  | 906af65a-2970-46d5-9b58-4e9aa50f0657  | CRMPLAN2 (bf36ca64-95c6-4918-9275-eb9f4ce2c04f)<br/>FLOW_DYN_APPS (7e6d7d78-73de-46ba-83b1-6d25117334ba)<br/>POWERAPPS_DYN_APPS (874fc546-6efe-4d22-90b8-5c4e7aa59f4b) | MICROSOFT DYNAMICS CRM ONLINE BASIC (bf36ca64-95c6-4918-9275-eb9f4ce2c04f)<br/>PRZEPŁYW dla systemu DYNAMICS 365 (7e6d7d78-73de-46ba-83b1-6d25117334ba)<br/>Usługa POWERAPPS dla systemu DYNAMICS 365 (874fc546-6efe-4d22-90b8-5c4e7aa59f4b) |
 | MICROSOFT DYNAMICS CRM ONLINE | CRMSTANDARD   | d17b27af-3f49-4822-99f9-56a661538792  | CRMSTANDARD (f9646fb2-e3b2-4309-95de-dc4833737456)<br/>FLOW_DYN_APPS (7e6d7d78-73de-46ba-83b1-6d25117334ba)<br/>MDM_SALES_COLLABORATION (3413916e-ee66-4071-be30-6f94d4adfeda)<br/>NBPROFESSIONALFORCRM (3e58e97c-9abe-ebab-cd5f-d543d1529634)<br/>POWERAPPS_DYN_APPS (874fc546-6efe-4d22-90b8-5c4e7aa59f4b) | MICROSOFT DYNAMICS CRM ONLINE PROFESSIONAL (f9646fb2-e3b2-4309-95de-dc4833737456)<br/>PRZEPŁYW dla systemu DYNAMICS 365 (7e6d7d78-73de-46ba-83b1-6d25117334ba)<br/>Współpraca w zakresie współpracy z firmą MICROSOFT DYNAMICS MARKETING — kryteria KWALIFIKOWANIa (3413916e-ee66-4071-be30-6f94d4adfeda)<br/>MICROSOFT SOCIAL ENGAGEMENT PROFESSIONAL — kryteria KWALIFIKACYJNe mają zastosowanie (3e58e97c-9abe-ebab-cd5f-d543d1529634)<br/>Usługa POWERAPPS dla systemu DYNAMICS 365 (874fc546-6efe-4d22-90b8-5c4e7aa59f4b) |
-| USŁUGA MICROSOFT INTUNE A DIRECT | INTUNE_A  | 061f9ace-7d42-4136-88ac-31dc755f143f  | INTUNE_A (c1ec4a95-1f05-45b3-a911-aa3fa01094f5) | MICROSOFT INTUNE (c1ec4a95-1f05-45b3-a911-aa3fa01094f5) |
 | MS WYOBRAŹ ACADEMY    | IT_ACADEMY_AD | ba9a34de-4489-469d-879c-0f0f145321cd  | IT_ACADEMY_AD (d736def0-1fde-43f0-a5be-e3f8b2de6e41) | MS Wyobraź ACADEMY (d736def0-1fde-43f0-a5be-e3f8b2de6e41) |
 | PAKIET OFFICE 365 BUSINESS   | O365_BUSINESS | cdd28e44-67e3-425e-be4c-737fab2899d3  | FORMS_PLAN_E1 (159f4cd6-e380-449f-a816-af1a9ef76344)<br/>OFFICE_BUSINESS (094e7854-93fc-4d55-b2c0-3ab5369ebdc1)<br/>ONEDRIVESTANDARD (13696edf-5a08-49f6-8134-03083ed8ba30)<br/>SHAREPOINTWAC (e95bec33-7c88-4a70-8e19-b10bd9d0c014)<br/>SWAY (a23b959c-7ce8-4e57-9140-b90eb88a9e97) | MICROSOFT FORMS (PLAN E1) (159f4cd6-e380-449f-a816-af1a9ef76344)<br/>OFFICE 365 BUSINESS (094e7854-93fc-4d55-b2c0-3ab5369ebdc1)<br/>ONEDRIVESTANDARD (13696edf-5a08-49f6-8134-03083ed8ba30)<br/>OFFICE ONLINE (e95bec33-7c88-4a70-8e19-b10bd9d0c014)<br/>SWAY (a23b959c-7ce8-4e57-9140-b90eb88a9e97) |
 | PAKIET OFFICE 365 BUSINESS   | SMB_BUSINESS  | b214fe43-f5a3-4703-beeb-fa97188220fc  | FORMS_PLAN_E1 (159f4cd6-e380-449f-a816-af1a9ef76344)<br/>OFFICE_BUSINESS (094e7854-93fc-4d55-b2c0-3ab5369ebdc1)<br/>ONEDRIVESTANDARD (13696edf-5a08-49f6-8134-03083ed8ba30)<br/>SHAREPOINTWAC (e95bec33-7c88-4a70-8e19-b10bd9d0c014)<br/>SWAY (a23b959c-7ce8-4e57-9140-b90eb88a9e97) | MICROSOFT FORMS (PLAN E1) (159f4cd6-e380-449f-a816-af1a9ef76344)<br/>OFFICE 365 BUSINESS (094e7854-93fc-4d55-b2c0-3ab5369ebdc1)<br/>ONEDRIVESTANDARD (13696edf-5a08-49f6-8134-03083ed8ba30)<br/>OFFICE ONLINE (e95bec33-7c88-4a70-8e19-b10bd9d0c014)<br/>SWAY (a23b959c-7ce8-4e57-9140-b90eb88a9e97) |
@@ -106,13 +105,13 @@ Podczas zarządzania licencjami w [Azure Portal](https://portal.azure.com/#blade
 | PBX USŁUGA SKYPE DLA FIRM W CHMURZE  | MCOEV | e43b5b99-8dfb-405f-9987-dc307f34bcbd  | MCOEV (4828c8ec-dc2e-4779-B502-87ac9ce28ab7) | SYSTEM TELEFONii (4828c8ec-dc2e-4779-B502-87ac9ce28ab7) |
 | SKYPE DLA FIRM ONLINE (PLAN 1)    | MCOIMP    | b8b749f8-a4ef-4887-9539-c95b1eaa5db7  | MCOIMP (afc06cb0-b4f4-4473-8286-d644f70d8faf) | SKYPE dla firm ONLINE (PLAN 1) (afc06cb0-b4f4-4473-8286-d644f70d8faf) |
 | SKYPE DLA FIRM ONLINE (PLAN 2)    | MCOSTANDARD   | d42c793f-6c78-4f43-92ca-e8f6a02b035f  | MCOSTANDARD (0feaeb32-d00e-4d66-bd5a-43b5b83db82c) | SKYPE dla firm ONLINE (PLAN 2) (0feaeb32-d00e-4d66-bd5a-43b5b83db82c) |
-| KONFERENCJE W USŁUDZE SKYPE DLA FIRM PSTN  | MCOMEETADV    | 0c266dff-15dd-4b49-8397-2bb16070ed52  | MCOMEETADV (3e26ee1f-8a5f-4d52-aee2-b81ce45c8f40) | KONFERENCJe AUDIO (3e26ee1f-8a5f-4d52-aee2-b81ce45c8f40) |
 | SKYPE DLA FIRM PSTN — POŁĄCZENIE KRAJOWE I MIĘDZYNARODOWE    | MCOPSTN2  | d3b4fe1f-9992-4930-8acb-ca6ec609365e  | MCOPSTN2 (5a10155d-f5c1-411a-a8ec-e99aae125390) | KRAJOWY i Międzynarodowy PLAN WYWOŁUJĄCy (5a10155d-f5c1-411a-a8ec-e99aae125390) |
 | SKYPE DLA FIRMOWA SIEĆ PSTN — WYWOŁANIA KRAJOWE  | MCOPSTN1  | 0dab259f-bf13-4952-b7f8-7db8f131b28d  | MCOPSTN1 (4ed3ff63-69d7-4fb7-b984-5aec7f605ca8) | KRAJOWY PLAN WYWOŁYWANIA (4ed3ff63-69d7-4fb7-b984-5aec7f605ca8) |
 | TELEFONowanie wewnętrzne usługi SKYPE dla firm PSTN (120 minut)| MCOPSTN5 | 54a152dc-90de-4996-93d2-bc47e670fc06  | MCOPSTN5 (54a152dc-90de-4996-93d2-bc47e670fc06) | KRAJOWY PLAN WYWOŁYWANIA (54a152dc-90de-4996-93d2-bc47e670fc06) |
 | VISIO ONLINE — PLAN 1   | VISIOONLINE_PLAN1 | 4b244418-9658-4451-a2b8-b5e2b364e9bd  | ONEDRIVE_BASIC (da792a53-cbc0-4184-a10d-e544dd34b3c1)<br/>VISIOONLINE (2bdbaf8f-738f-4ac7-9234-3c3ee2ce7d0f) | ONEDRIVE_BASIC (da792a53-cbc0-4184-a10d-e544dd34b3c1)<br/>VISIOONLINE (2bdbaf8f-738f-4ac7-9234-3c3ee2ce7d0f) |
 | VISIO Online — plan 2   | VISIOCLIENT   | c5928f49-12ba-48f7-ada3-0d743a3601d5  | ONEDRIVE_BASIC (da792a53-cbc0-4184-a10d-e544dd34b3c1)<br/>VISIO_CLIENT_SUBSCRIPTION (663a804f-1c30-4ff0-9915-9db84f0d1cea)<br/>VISIOONLINE (2bdbaf8f-738f-4ac7-9234-3c3ee2ce7d0f) | ONEDRIVE_BASIC (da792a53-cbc0-4184-a10d-e544dd34b3c1)<br/>VISIO_CLIENT_SUBSCRIPTION (663a804f-1c30-4ff0-9915-9db84f0d1cea)<br/>VISIOONLINE (2bdbaf8f-738f-4ac7-9234-3c3ee2ce7d0f) |
-| WINDOWS 10 ENTERPRISE E3  | WIN10_PRO_ENT_SUB | cb10e6cd-9da4-4992-867b-67546b1db821  | WIN10_PRO_ENT_SUB (21b439ba-a0ca-424f-a6cc-52f954a5b111) | WINDOWS 10 ENTERPRISE (21b439ba-a0ca-424f-a6cc-52f954a5b111)
+| WINDOWS 10 ENTERPRISE E3  | WIN10_PRO_ENT_SUB | cb10e6cd-9da4-4992-867b-67546b1db821  | WIN10_PRO_ENT_SUB (21b439ba-a0ca-424f-a6cc-52f954a5b111) | WINDOWS 10 ENTERPRISE (21b439ba-a0ca-424f-a6cc-52f954a5b111) |
+| Windows 10 Enterprise E5 | WIN10_VDA_E5 | 488ba24a-39a9-4473-8ee5-19291e71b002 | EXCHANGE_S_FOUNDATION (113feb6c-3fe4-4440-bddc-54d774bf0318)<br/>WINDEFATP (871d91ec-ec1a-452b-a83f-bd76c7d770ef)<br/>Prawa do wirtualizacji dla systemu Windows 10 (E3/E5 + VDA) (e7c91390-7625-45BE-94e0-e16907e03118) | Exchange Foundation (113feb6c-3fe4-4440-bddc-54d774bf0318)<br/>Microsoft Defender Advanced Threat Protection (871d91ec-EC1A-452b-a83f-bd76c7d770ef)<br/>Windows 10 Enterprise (NOWOŚĆ) (e7c91390-7625-45BE-94e0-e16907e03118)
 
 ## <a name="service-plans-that-cannot-be-assigned-at-the-same-time"></a>Plany usług, których nie można przypisać w tym samym czasie
 
@@ -134,7 +133,7 @@ Ta sekcja zawiera listę najbardziej typowych planów usług, które wzajemnie s
 
 Następujące plany usług nie mogą być przypisane razem:
 
-| Nazwa planu usługi | Identyfikator GUID |
+| Nazwa planu usługi | GUID |
 | --- | --- |
 | CRMPLAN1  | 119cf168-b6cf-41fb-b82e-7fee7bae5814 |
 | CRMPLAN2  | bf36ca64-95c6-4918-9275-eb9f4ce2c04f |
@@ -150,7 +149,7 @@ Następujące plany usług nie mogą być przypisane razem:
 
 Następujące plany usług nie mogą być przypisane razem:
 
-| Nazwa planu usługi | Identyfikator GUID |
+| Nazwa planu usługi | GUID |
 | --- | --- |
 | EXCHANGE_B_STANDARD   | 90927877-dcff-4af6-b346-2332c0b15bb7 |
 | EXCHANGE_L_STANDARD   | d42bdbd6-c335-4231-ab3d-c8f348d5aff5 |
@@ -165,7 +164,7 @@ Następujące plany usług nie mogą być przypisane razem:
 
 Następujące plany usług nie mogą być przypisane razem:
 
-| Nazwa planu usługi | Identyfikator GUID |
+| Nazwa planu usługi | GUID |
 | --- | --- |
 | INTUNE_A  | c1ec4a95-1f05-45b3-a911-aa3fa01094f5 |
 | INTUNE_A_VL   | 3e170737-c728-4eae-bbb9-3f3360f7184c |
@@ -175,7 +174,7 @@ Następujące plany usług nie mogą być przypisane razem:
 
 Następujące plany usług nie mogą być przypisane razem:
 
-| Nazwa planu usługi | Identyfikator GUID |
+| Nazwa planu usługi | GUID |
 | --- | --- |
 | ONEDRIVEENTERPRISE    | afcafa6a-d966-4462-918c-ec0b4e0fe642 |
 | SHAREPOINT_S_DEVELOPER    | a361d6e2-509e-4e25-a8ad-950060064ef4 |
@@ -192,7 +191,7 @@ Następujące plany usług nie mogą być przypisane razem:
 
 Następujące plany usług nie mogą być przypisane razem:
 
-| Nazwa planu usługi | Identyfikator GUID |
+| Nazwa planu usługi | GUID |
 | --- | --- |
 | MCOIMP    | afc06cb0-b4f4-4473-8286-d644f70d8faf |
 | MCOSTANDARD_MIDMARKET | b2669e95-76ef-4e7e-a367-002f60a39f3e |
@@ -201,7 +200,7 @@ Następujące plany usług nie mogą być przypisane razem:
 
 Następujące plany usług nie mogą być przypisane razem:
 
-| Nazwa planu usługi | Identyfikator GUID |
+| Nazwa planu usługi | GUID |
 | --- | --- |
 | MCOPSTN1  | 4ed3ff63-69d7-4fb7-b984-5aec7f605ca8 |
 | MCOPSTN2  | 5a10155d-f5c1-411a-a8ec-e99aae125390 |
@@ -211,7 +210,7 @@ Następujące plany usług nie mogą być przypisane razem:
 
 Następujące plany usług nie mogą być przypisane razem:
 
-| Nazwa planu usługi | Identyfikator GUID |
+| Nazwa planu usługi | GUID |
 | --- | --- |
 | YAMMER_ENTERPRISE | 7547a3fe-08ee-4ccb-b430-5077c5041653 |
 | YAMMER_EDU    | 2078e8df-cff6-4290-98cb-5408261a760a |

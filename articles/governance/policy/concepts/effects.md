@@ -1,18 +1,18 @@
 ---
 title: Informacje o działaniu efektów
-description: Definicja zasad platformy Azure ma różne efekty, określające sposób zarządzania i podać zgodności.
+description: Definicje Azure Policy mają różne skutki, które określają sposób zarządzania i zgłaszania zgodności.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/29/2019
+ms.date: 09/17/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 1ac0e70700b4b093fad09b4d10c6bdcf2e06adac
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 06a5ffbef2b841acc7ea7ecc82d05dfccbc0cab1
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231532"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146997"
 ---
 # <a name="understand-azure-policy-effects"></a>Omówienie usługi Azure Policy efekty
 
@@ -27,13 +27,14 @@ Te efekty są obecnie obsługiwane w definicji zasad:
 - [DeployIfNotExists](#deployifnotexists)
 - [Disabled (Wyłączone)](#disabled)
 - [EnforceRegoPolicy](#enforceregopolicy) przeglądania
+- [Zmodyfikować](#modify)
 
 ## <a name="order-of-evaluation"></a>Kolejność obliczania
 
 Żądania utworzenia lub zaktualizowania zasobu za pomocą Azure Resource Manager są oceniane przez Azure Policy pierwsze. Azure Policy tworzy listę wszystkich przypisań, które są stosowane do zasobu, a następnie szacuje zasób dla każdej definicji. Azure Policy przetwarza kilka efektów przed przekazaniem żądania do odpowiedniego dostawcy zasobów. Wykonanie tej czynności zapobiega niepotrzebnemu przetwarzaniu przez dostawcę zasobów, gdy zasób nie spełnia zaprojektowanych kontrolek ładu Azure Policy.
 
 - **Wyłączone** jest najpierw sprawdzane w celu określenia, jeśli powinna być oceniana reguła zasad.
-- **Dołącz** jest następnie oceniany. Ponieważ Dołącz może zmienić żądania, zmiany wprowadzone przez dołączanie może uniemożliwić inspekcji lub odmówić efekt wraz z.
+- Następnie są **oceniane i** **modyfikowane** . Ponieważ może on zmienić żądanie, wprowadzona zmiana może uniemożliwić wywoływanie inspekcji lub skutków odmowy.
 - **Odmów** jest następnie oceniany. Oceniając odmówić przed inspekcji, double rejestrowanie niepożądane zasobów nie będzie mógł.
 - **Inspekcja** jest następnie oceniany przed żądaniem, przechodząc do dostawcy zasobów.
 
@@ -47,7 +48,10 @@ Efekt jest przydatna do testowania sytuacji lub gdy definicja zasad ma sparametr
 
 ## <a name="append"></a>Append
 
-Dołącz służy do dodania kolejnych pól do żądanego zasobu podczas jej tworzenia lub aktualizacji. Typowym przykładem jest dodawanie tagów do zasobów, takich jak costCenter lub określając dozwolone adresy IP dla zasobów magazynu.
+Dołącz służy do dodania kolejnych pól do żądanego zasobu podczas jej tworzenia lub aktualizacji. Typowym przykładem jest określenie dozwolonych adresów IP dla zasobu magazynu.
+
+> [!IMPORTANT]
+> Dołączenie jest przeznaczone do użycia z właściwościami niebędącymi tagami. Podczas gdy Dołączanie może dodawać Tagi do zasobu w trakcie żądania utworzenia lub aktualizacji, zaleca się użycie zamiast nich efektów [modyfikacji](#modify) dla tagów.
 
 ### <a name="append-evaluation"></a>Dołącz oceny
 
@@ -61,36 +65,7 @@ Ma jedynie wpływ dołączania **szczegóły** tablicy, która jest wymagana. Ja
 
 ### <a name="append-examples"></a>Dołącz przykłady
 
-Przykład 1: Para pojedynczych **pól/wartości** w celu dołączenia tagu.
-
-```json
-"then": {
-    "effect": "append",
-    "details": [{
-        "field": "tags.myTag",
-        "value": "myTagValue"
-    }]
-}
-```
-
-Przykład 2: Dwie pary **pól/wartości** w celu dołączenia zestawu tagów.
-
-```json
-"then": {
-    "effect": "append",
-    "details": [{
-            "field": "tags.myTag",
-            "value": "myTagValue"
-        },
-        {
-            "field": "tags.myOtherTag",
-            "value": "myOtherTagValue"
-        }
-    ]
-}
-```
-
-Przykład 3: Para pojedynczych **pól/wartości** przy użyciu [aliasu](definition-structure.md#aliases) innego niż **[\*]** z **wartością** tablicy, aby ustawić reguły adresów IP na koncie magazynu. Gdy alias "non **-\*[]** " jest tablicą, efekt dodaje **wartość** jako całą tablicę. Jeśli tablica już istnieje, zdarzenie odmowy występuje z powodu konfliktu.
+Przykład 1: Para pojedynczych **pól/wartości** przy użyciu [aliasu](definition-structure.md#aliases) innego niż **[\*]** z **wartością** tablicy, aby ustawić reguły adresów IP na koncie magazynu. Gdy alias "non **-\*[]** " jest tablicą, efekt dodaje **wartość** jako całą tablicę. Jeśli tablica już istnieje, zdarzenie odmowy występuje z powodu konfliktu.
 
 ```json
 "then": {
@@ -105,7 +80,7 @@ Przykład 3: Para pojedynczych **pól/wartości** przy użyciu [aliasu](definiti
 }
 ```
 
-Przykład 4: Para pojedynczego **pola/wartości** przy użyciu [aliasu](definition-structure.md#aliases) **[\*]** z **wartością** tablicy do ustawiania reguł IP na koncie magazynu. Korzystając z aliasu **\*[]** , efekt dołącza **wartość** do potencjalnie istniejącej tablicy. Jeśli tablica jeszcze nie istnieje, zostanie utworzona.
+Przykład 2: Para pojedynczego **pola/wartości** przy użyciu [aliasu](definition-structure.md#aliases) **[\*]** z **wartością** tablicy do ustawiania reguł IP na koncie magazynu. Korzystając z aliasu **\*[]** , efekt dołącza **wartość** do potencjalnie istniejącej tablicy. Jeśli tablica jeszcze nie istnieje, zostanie utworzona.
 
 ```json
 "then": {
@@ -117,6 +92,122 @@ Przykład 4: Para pojedynczego **pola/wartości** przy użyciu [aliasu](definiti
             "action": "Allow"
         }
     }]
+}
+```
+
+## <a name="modify"></a>Modyfikuj
+
+Modyfikowanie służy do dodawania, aktualizowania lub usuwania tagów w zasobie podczas tworzenia lub aktualizowania. Typowym przykładem jest aktualizowanie tagów w zasobach, takich jak costCenter. Zasady modyfikowania powinny zawsze mieć `mode` ustawioną wartość _Indexed_. Istniejące niezgodne zasoby można skorygować przy użyciu [zadania korygowania](../how-to/remediate-resources.md).
+Pojedyncza reguła modyfikowania może zawierać dowolną liczbę operacji.
+
+> [!IMPORTANT]
+> Modyfikacja jest obecnie tylko do użytku z tagami. Jeśli zarządzasz tagami, zaleca się korzystanie z funkcji Modify zamiast Dołącz jako Modyfikuj udostępnia dodatkowe typy operacji i możliwość korygowania istniejących zasobów. Jednakże zaleca się dołączenie, jeśli nie można utworzyć tożsamości zarządzanej.
+
+### <a name="modify-evaluation"></a>Modyfikuj ocenę
+
+Modyfikacja jest szacowana przed przetworzeniem żądania przez dostawcę zasobów podczas tworzenia lub aktualizowania zasobu. Modyfikuj Dodawanie lub aktualizowanie tagów w zasobie, gdy spełniony **jest warunek reguły** zasad.
+
+Gdy definicja zasad używająca efektu Modyfikuj jest uruchamiana w ramach cyklu oceny, nie wprowadza zmian do już istniejących zasobów. Zamiast tego oznacza dowolnego zasobu, który spełnia **Jeśli** warunek jako niezgodne.
+
+### <a name="modify-properties"></a>Modyfikuj właściwości
+
+Właściwość **Details** efektu Modyfikuj ma wszystkie właściwości, które definiują uprawnienia, które są konieczne do korygowania, oraz **operacje** , które służą do dodawania, aktualizowania lub usuwania wartości tagów.
+
+- **roleDefinitionIds** [wymagane]
+  - Ta właściwość musi zawierać tablicę ciągów, które jest zgodny z Identyfikatorem roli kontroli dostępu opartej na rolach dostępna w subskrypcji. Aby uzyskać więcej informacji, zobacz [korygowania — konfigurowanie definicji zasad](../how-to/remediate-resources.md#configure-policy-definition).
+  - Zdefiniowana rola musi obejmować wszystkie operacje przyznane do roli [współautor](../../../role-based-access-control/built-in-roles.md#contributor) .
+- **operacje** potrzeb
+  - Tablica wszystkich operacji tagów do wykonania na pasujących zasobach.
+  - Właściwości:
+    - **operacja** potrzeb
+      - Definiuje akcję, która ma zostać podjęta względem pasującego zasobu. Dostępne opcje to: _addOrReplace_, _Add_, _Remove_. _Dodaj_ zachowania podobne do efektu [dołączania](#append) .
+    - **pole** potrzeb
+      - Tag do dodania, zastępowania lub usunięcia. Nazwy tagów muszą być zgodne z tą samą konwencją nazewnictwa dla innych [pól](./definition-structure.md#fields).
+    - **wartość** obowiązkowe
+      - Wartość, dla której ma zostać ustawiony tag.
+      - Ta właściwość jest wymagana, jeśli **operacja** jest _addOrReplace_ lub _Dodaj_.
+
+### <a name="modify-operations"></a>Modyfikuj operacje
+
+Tablica właściwości **operacji** umożliwia zmianę kilku tagów na różne sposoby z jednej definicji zasad. Każda operacja składa się z właściwości **operacji**, **pola**i **wartości** . Operacja określa, jakie działanie ma wykonać zadanie korygowania tagów, pole określa, który znacznik jest modyfikowany, a wartość definiuje nowe ustawienie dla tego tagu. Poniższy przykład powoduje zmianę następujących tagów:
+
+- `environment` Ustawia tag na "test", nawet jeśli istnieje już z inną wartością.
+- Usuwa tag `TempResource`.
+- Ustawia tag dla parametru zasad deptname skonfigurowany w przypisaniu zasad. `Dept`
+
+```json
+"details": {
+    ...
+    "operations": [
+        {
+            "operation": "addOrReplace",
+            "field": "tags['environment']",
+            "value": "Test"
+        },
+        {
+            "operation": "Remove",
+            "field": "tags['TempResource']",
+        },
+        {
+            "operation": "addOrReplace",
+            "field": "tags['Dept']",
+            "field": "[parameters('DeptName')]"
+        }
+    ]
+}
+```
+
+Właściwość **Operation** ma następujące opcje:
+
+|Operacja |Opis |
+|-|-|
+|addOrReplace |Dodaje zdefiniowany tag i wartość do zasobu, nawet jeśli tag już istnieje z inną wartością. |
+|Add |Dodaje zdefiniowany tag i wartość do zasobu. |
+|Usuń |Usuwa zdefiniowany tag z zasobu. |
+
+### <a name="modify-examples"></a>Modyfikuj przykłady
+
+Przykład 1: Dodaj tag i Zastąp istniejące `environment` Tagi "test": `environment`
+
+```json
+"then": {
+    "effect": "modify",
+    "details": {
+        "roleDefinitionIds": [
+            "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+        ],
+        "operations": [
+            {
+                "operation": "addOrReplace",
+                "field": "tags['environment']",
+                "value": "Test"
+            }
+        ]
+    }
+}
+```
+
+Przykład 2: Usuń tag i `environment` Dodaj tag lub Zastąp istniejące `environment` Tagi wartością sparametryzowane: `env`
+
+```json
+"then": {
+    "effect": "modify",
+    "details": {
+        "roleDefinitionIds": [
+            "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+        ],
+        "operations": [
+            {
+                "operation": "Remove",
+                "field": "tags['env']"
+            },
+            {
+                "operation": "addOrReplace",
+                "field": "tags['environment']",
+                "value": "[parameters('tagValue')]"
+            }
+        ]
+    }
 }
 ```
 
@@ -234,7 +325,7 @@ Przykład: Oblicza Virtual Machines, aby określić, czy rozszerzenie ochrony pr
 
 ## <a name="deployifnotexists"></a>DeployIfNotExists
 
-Podobnie jak AuditIfNotExists, wdrożenie szablonu wykonuje DeployIfNotExists, gdy warunek jest spełniony.
+Podobnie jak w przypadku AuditIfNotExists, definicja zasad DeployIfNotExists wykonuje wdrożenie szablonu po spełnieniu warunku.
 
 > [!NOTE]
 > [Zagnieżdżone szablony](../../../azure-resource-manager/resource-group-linked-templates.md#nested-template) są obsługiwane w przypadku **deployIfNotExists**, ale [połączone szablony](../../../azure-resource-manager/resource-group-linked-templates.md) nie są obecnie obsługiwane.
@@ -247,7 +338,7 @@ Podczas cyklu oszacowania definicji zasad z efektem DeployIfNotExists, dopasowyw
 
 ### <a name="deployifnotexists-properties"></a>Właściwości DeployIfNotExists
 
-**Szczegóły** właściwość efekty DeployIfNotExists ma wszystkie właściwości, które definiują powiązane zasoby do dopasowania i wdrożenie szablonu do wykonania.
+Właściwość **Details** efektu DeployIfNotExists ma wszystkie właściwości, które definiują powiązane zasoby do dopasowania oraz wdrożenie szablonu do wykonania.
 
 - **Typ** [wymagane]
   - Określa typ powiązanego zasobu do dopasowania.
@@ -341,7 +432,7 @@ Przykład: Oblicza SQL Server baz danych, aby określić, czy transparentDataEnc
 
 ## <a name="enforceregopolicy"></a>EnforceRegoPolicy
 
-Ten efekt jest używany z `Microsoft.ContainerService.Data`trybem definicji zasad. Służy do przekazywania reguł kontroli przyjęcia zdefiniowanych za pomocą [rego](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego) , aby [otworzyć agenta zasad](https://www.openpolicyagent.org/) (Nieprzez) w [usłudze Azure Kubernetes](../../../aks/intro-kubernetes.md).
+Ten efekt jest używany z *trybem* `Microsoft.ContainerService.Data`definicji zasad. Służy do przekazywania reguł kontroli przyjęcia zdefiniowanych za pomocą [rego](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego) , aby [otworzyć agenta zasad](https://www.openpolicyagent.org/) (Nieprzez) w [usłudze Azure Kubernetes](../../../aks/intro-kubernetes.md).
 
 > [!NOTE]
 > [Azure Policy Kubernetes](rego-for-aks.md) jest w publicznej wersji zapoznawczej i obsługuje tylko wbudowane definicje zasad.
@@ -353,7 +444,7 @@ Co 5 minut jest wykonywane pełne skanowanie klastra i wyniki zgłoszone do Azur
 
 ### <a name="enforceregopolicy-properties"></a>Właściwości EnforceRegoPolicy
 
-Właściwość Details efektu EnforceRegoPolicy ma właściwości SubProperties opisujące regułę rego Admission Control.
+Właściwość **Details** efektu EnforceRegoPolicy ma właściwości SubProperties opisujące regułę rego Admission Control.
 
 - **policyId** potrzeb
   - Unikatowa nazwa przenoszona jako parametr do reguły rego Admission Control.

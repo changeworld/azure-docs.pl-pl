@@ -13,23 +13,26 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c2204c572ca1f74f8060d0b6176df69359fe69a
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: eb01b46d61b6ba99c3ec9c537dccc350074f5e05
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901713"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146425"
 ---
 # <a name="bulk-delete-users-preview-in-azure-active-directory"></a>Zbiorcze usuwanie użytkowników (wersja zapoznawcza) w Azure Active Directory
 
-Azure Active Directory (Azure AD) obsługuje operacje tworzenia i usuwania użytkowników zbiorczych, zaproszenia zbiorcze dla Gości i obsługują pobieranie list użytkowników, grup i członków grupy.
+Za pomocą portalu usługi Azure Active Directory (Azure AD) można usunąć dużą liczbę elementów członkowskich do grupy przy użyciu pliku wartości rozdzielanych przecinkami (CSV) do zbiorczego usuwania użytkowników.
 
 ## <a name="to-bulk-delete-users"></a>Aby usunąć zbiorczo użytkowników
 
 1. Zaloguj się do swojej organizacji usługi Azure AD przy użyciu konta, które jest administratorem użytkownika w organizacji.
 1. W usłudze Azure AD wybierz pozycję **Użytkownicy** > **zbiorczo usuwać**.
 1. Na stronie **usuwania zbiorczego użytkownika** wybierz pozycję **Pobierz** , aby otrzymać prawidłowy plik CSV właściwości użytkownika, a następnie Dodaj użytkowników, których chcesz usunąć.
-1. Po zakończeniu edytowania pliku CSV lub jeśli masz jeden z elementów gotowych do przekazania, wybierz plik w obszarze **Przekaż plik CSV** do zweryfikowania.
+
+   ![Plik CSV zawiera nazwy i identyfikatory użytkowników do usunięcia](./media/users-bulk-delete/delete-csv-file.png)
+
+1. Po zakończeniu edytowania pliku CSV wybierz plik w obszarze **Przekaż plik CSV** do zweryfikowania.
 
    ![Wybierz lokalny plik CSV, w którym chcesz wyświetlić listę użytkowników do usunięcia](./media/users-bulk-delete/bulk-delete.png)
 

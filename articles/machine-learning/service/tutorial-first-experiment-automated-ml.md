@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/09/2019
-ms.openlocfilehash: 2422a4525c94f3997dd0a9a0859135e9acf59ffa
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 8d91768d46d3e4a793982418da91f2d1877c5a79
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092002"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162544"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Samouczek: Tworzenie pierwszego modelu klasyfikacji przy użyciu automatycznej uczenia maszynowego
 
@@ -65,93 +65,93 @@ Zobaczysz ekran **wprowadzenie** , ponieważ jest to pierwszy eksperyment z auto
 
 1. Wybierz pozycję **Utwórz eksperyment**. 
 
-1. Wprowadź **My-1-automl-eksperyment** jako nazwę eksperymentu.
+1. Wprowadź nazwę tego eksperymentu:`my-1st-automl-experiment`
 
-1. Wybierz pozycję **Utwórz nowe obliczenie**. Obliczenia to lokalne lub oparte na chmurze środowisko zasobów używane do uruchamiania skryptu szkoleniowego lub hostowania wdrożenia usługi. Na potrzeby tego eksperymentu używamy obliczeń opartych na chmurze. 
+1. Wybierz pozycję **Utwórz nowe obliczenie** i skonfiguruj obiekt docelowy obliczeń. Obiekt docelowy obliczeń to lokalne lub oparte na chmurze środowisko zasobów używane do uruchamiania skryptu szkoleniowego lub hostowania wdrożenia usługi. Na potrzeby tego eksperymentu używamy obliczeń opartych na chmurze. 
 
-    1. Skonfiguruj kontekst obliczeniowy dla tego eksperymentu.
-        
-        Pole | Value
-        ----|---
-        Nazwa środowiska obliczeniowego |  Wprowadź unikatową nazwę identyfikującą kontekst obliczeniowy. W tym przykładzie należy użyć **automl-COMPUTE**.
-        Rozmiar maszyny wirtualnej| Wybierz rozmiar maszyny wirtualnej dla obliczenia. Użyj domyślnej **Standard_DS12_V2**.
-        Ustawienia dodatkowe| *Minimalny węzeł*: 1. Aby włączyć Profilowanie danych, musisz mieć co najmniej jeden węzeł. <br> *Maksymalny węzeł*: 6.
- 
-    1. Aby utworzyć nowe obliczenie, wybierz pozycję **Utwórz**. Wykonanie tej czynności może zająć kilka minut. 
+   Pole | Opis | Wartość dla samouczka
+   ----|---|---
+   Nazwa obliczeń |Unikatowa nazwa identyfikująca kontekst obliczeniowy.|automl — obliczenia
+   Rozmiar&nbsp;maszyny&nbsp;wirtualnej| Wybierz rozmiar maszyny wirtualnej dla obliczenia.|Standard_DS12_V2
+   Minimalna/Maksymalna liczba węzłów (w ustawieniach zaawansowanych)| Aby profilować dane, musisz określić co najmniej jeden węzeł.|Minimalna liczba węzłów: 1<br>Maksymalna liczba węzłów: 6
 
-    1. Po zakończeniu tworzenia wybierz nowe obliczenie z listy rozwijanej, a następnie wybierz przycisk **dalej**.
+   >[!NOTE]
+   >W ramach tego samouczka będziesz używać domyślnego konta magazynu i kontenera utworzonego przy użyciu nowego obliczenia. Wypełniają one automatycznie w formularzu.
+    
+1. Wybierz pozycję **Utwórz** , aby uzyskać obiekt docelowy obliczeń. 
+   **Wykonanie tej czynności może zająć kilka minut.** 
 
-    >[!NOTE]
-    >W ramach tego samouczka będziesz używać domyślnego konta magazynu i kontenera utworzonego przy użyciu nowego obliczenia. Wypełniają one automatycznie w formularzu.
+1. Po utworzeniu wybierz nowe miejsce docelowe obliczeń z listy rozwijanej i wybierz pozycję **dalej**.
 
-1. Wybierz pozycję **Przekaż z pliku lokalnego**. W tym miejscu utworzysz nowy zestaw danych z plikiem **bankmarketing_train. csv** , który został wcześniej pobrany dla tego samouczka. 
+1. Wybierz pozycję **Przekaż z pliku lokalnego** , aby rozpocząć tworzenie nowego zestawu danych. 
 
-    1. Wybierz pozycję **Przeglądaj** , a następnie wybierz plik **bankmarketing_train. csv** na komputerze lokalnym. 
+    1. Wybierz pozycję **Przeglądaj**.
+    
+    1. Wybierz plik **bankmarketing_train. csv** na komputerze lokalnym. Jest to plik pobrany jako [warunek wstępny](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv).
 
     1. Nadaj zestawowi danych unikatową nazwę i podaj opcjonalny opis. 
 
-    1. Wybierz pozycję **dalej** , aby przekazać ją do domyślnego kontenera, który został automatycznie skonfigurowany podczas tworzenia obszaru roboczego. Publiczna wersja zapoznawcza obsługuje tylko lokalne operacje przekazywania plików. 
+    1. Wybierz pozycję **dalej** w lewym dolnym rogu, aby przekazać ją do domyślnego kontenera, który został automatycznie skonfigurowany podczas tworzenia obszaru roboczego. Publiczna wersja zapoznawcza obsługuje tylko lokalne operacje przekazywania plików. 
 
     1. Po zakończeniu przekazywania **Ustawienia i formularz podglądu** są inteligentnie wypełniane na podstawie typu pliku. Upewnij się, że formularz jest wypełniony w następujący sposób.
         
         Pole|Value
         ---|---
-        Format pliku| Lista
+        Format pliku| Rozdzielane
         Ogranicznik| Przecinek
         Kodowanie| UTF-8
         Nagłówki kolumn| Wszystkie pliki mają te same nagłówki
         Pomiń wiersze | Brak
 
-        >[!NOTE]
-        > W przypadku zaktualizowania dowolnego z ustawień w tym formularzu wersja zapoznawcza będzie odpowiednio aktualizowana.
-
         Wybierz opcję **Dalej**.
     
-
     1. Formularz **schematu** umożliwia dalsze Konfigurowanie danych na potrzeby tego eksperymentu. Na potrzeby tego przykładu wybierz przełącznik przełącznika dla funkcji **day_of_week** , tak aby nie obejmował go dla tego eksperymentu. Wybierz pozycję **gotowe**, aby zakończyć przekazywanie plików i tworzenie zestawu danych dla eksperymentu.
 
         ![Konfiguracja karty podglądu](media/tutorial-1st-experiment-automated-ml/schema-tab-config.gif)
 
-        
 1. Wybierz pozycję **Klasyfikacja** jako zadanie przewidywania.
 
 1. Zaznacz opcję **y** jako kolumnę docelową, którą chcesz przewidzieć. Ta kolumna wskazuje, czy klient subskrybuje termin depozytowy.
 
 1. Rozwiń pozycję **Ustawienia zaawansowane** i wypełnij pola w następujący sposób.
 
-    Ustawienia zaawansowane|Value
-    ------|------
-    Metryka podstawowa| AUC_weighted 
-    Kryteria wyjścia| Po spełnieniu któregokolwiek z tych kryteriów zadanie szkolenia zostanie zakończone przed ukończeniem ukończenia: <br> *Czas zadania szkoleniowego (minuty)* : 5  <br> *Maksymalna liczba iteracji*: 10 
-    Przetwarzania wstępnego| Umożliwia przetwarzanie wstępne wykonywane przez automatyczne Uczenie maszynowe. Obejmuje to automatyczne czyszczenie danych, przygotowanie i transformację do generowania funkcji syntetycznych.
-    Weryfikacja| Wybierz pozycję K — złóż krzyżowe sprawdzanie poprawności i **2** , aby uzyskać liczbę operacji krzyżowych. 
-    Współbieżność| Wybierz **5** dla liczby maksymalnych współbieżnych iteracji.
-
    >[!NOTE]
-   > Dla tego eksperymentu nie ustawisz metryki lub maksymalna liczba rdzeni na wartość progową iteracji. Nie można też blokować przetestowanie algorytmów.
+   > Dla tego eksperymentu nie ustawiono oceny metryki ani maksymalnej liczby rdzeni na wartość progową iteracji. Nie można też blokować przetestowanie algorytmów.
+   
+    Ustawienia&nbsp;zaawansowane|Opis|Wartość&nbsp;dla&nbsp;samouczka
+    ------|---------|---
+    Metryka podstawowa| Metryka oceny, według której będzie mierzony algorytm uczenia maszynowego.|**AUC_weighted** 
+    Kryteria wyjścia| W przypadku spełnienia dowolnego z tych kryteriów zadanie szkolenia kończy się nawet wtedy, gdy nie zostało w pełni ukończone. |Czas&nbsp;zadania&nbsp;szkoleniowego (minuty):&nbsp; **5000**  <br> <br> Maksymalna&nbsp;liczba#iteracji10&#58; &nbsp;&nbsp; 
+    Przetwarzania wstępnego| Umożliwia przetwarzanie wstępne wykonywane przez automatyczne Uczenie maszynowe. Obejmuje to automatyczne czyszczenie danych, przygotowanie i transformację do generowania funkcji syntetycznych.| Włączenie
+    Sprawdzanie poprawności| Typ walidacji i liczba testów. | **K — złożenie** krzyżowego sprawdzania poprawności<br><br>  Walidacja krzyżowa: **2** 
+    Współbieżność| Maksymalna liczba współbieżnych iteracji.|**5**
 
-1. Wybierz pozycję **Rozpocznij** , aby uruchomić eksperyment.
+1. Wybierz pozycję **Rozpocznij** , aby uruchomić eksperyment. Po rozpoczęciu przygotowania eksperymentu zostanie wyświetlony ekran z komunikatem o stanie.
 
-   Po rozpoczęciu eksperymentu na początku zobaczysz pusty ekran z komunikatem o stanie.
+>[!IMPORTANT]
+> Przygotowanie eksperymentu trwa do **10-15 minut** . Po uruchomieniu usługi zajmiemy **2-3 minut więcej czasu dla każdej iteracji**.  
+>
+> W środowisku produkcyjnym najkorzystniej można wyszukać trochę. Jednak w tym samouczku zalecamy rozpoczęcie eksplorowania wyników iteracji po ich zakończeniu, gdy nadal działają pozostałe. 
 
-Proces przygotowywania eksperymentu trwa kilka minut. Po zakończeniu tego procesu **zostanie uruchomiony**komunikat o stanie.
+##  <a name="explore-iteration-results"></a>Eksploruj wyniki iteracji
 
-##  <a name="view-experiment-details"></a>Wyświetl szczegóły eksperymentu
+W miarę postępu eksperymentu ekran aktualizuje **Wykres iteracji** i **listę iteracji** przy użyciu różnych iteracji (modeli) utworzonych w miarę ich ukończenia i porządkuje je według wyniku pomiaru. Domyślnie model, który ocenia najwyższy poziom w oparciu o wybraną metrykę **AUC_weighted** , znajduje się w górnej części listy.
 
-W miarę postępu eksperymentu ekran aktualizuje **Wykres iteracji** i **listę iteracji** przy użyciu różnych iteracji (modeli), które są uruchamiane. Lista iteracji jest uporządkowana według oceny metryki. Domyślnie model, który ocenia najwyższy poziom w oparciu o metrykę **AUC_weighted** , znajduje się w górnej części listy.
+Podczas oczekiwania na zakończenie wszystkich iteracji eksperymentów wybierz **nazwę** ukończonej iteracji, aby poznać jej szczegóły wydajności. 
+   
+Poniżej przedstawiono wykresy i uruchomienia metryk generowanych dla każdej iteracji, takich jak krzywa odwołania z dokładnością, niepodzielna macierz, oceny ważonej dokładności itd. 
 
->[!WARNING]
-> Zadania szkoleniowe Poświęć kilka minut na zakończenie działania każdego potoku.
-
-[![Pulpit nawigacyjny szczegółów uruchamiania](media/tutorial-1st-experiment-automated-ml/run-details.png)](media/tutorial-1st-experiment-automated-ml/run-details-expanded.png#lightbox)
+![Szczegóły przebiegu iteracji](media/tutorial-1st-experiment-automated-ml/run-detail.gif)
 
 ## <a name="deploy-the-model"></a>Wdrażanie modelu
 
-Za pomocą funkcji automatycznego uczenia maszynowego na stronie docelowej obszaru roboczego można wdrożyć najlepszy model jako usługę sieci Web w kilku krokach. Wdrożenie to integracja modelu, dzięki czemu można przewidzieć nowe dane i identyfikować potencjalne obszary szans sprzedaży. W przypadku tego eksperymentu wdrożenie do usługi sieci Web oznacza, że instytucja finansowa ma teraz iteracyjne i skalowalne rozwiązanie sieci Web służące do identyfikowania potencjalnych klientów z krótkoterminowymi wpłatami. 
+Automatyczne Uczenie maszynowe na stronie docelowej obszaru roboczego umożliwia wdrożenie najlepszego modelu jako usługi sieci Web w kilku krokach. Wdrożenie to integracja modelu, dzięki czemu można przewidzieć nowe dane i identyfikować potencjalne obszary szans sprzedaży. W przypadku tego eksperymentu wdrożenie do usługi sieci Web oznacza, że instytucja finansowa ma teraz iteracyjne i skalowalne rozwiązanie sieci Web służące do identyfikowania potencjalnych klientów z krótkoterminowymi wpłatami. 
+
+Po zakończeniu przebiegu Wróć do strony szczegółów **wykresu iteracji** i **iteracji** . 
 
 W tym kontekście eksperymentu **VotingEnsemble** jest uznawany za najlepszy model w oparciu o metrykę **AUC_weighted** .  Wdrażamy ten model, ale zaleca się wdrożenie trwa około 20 minut. Proces wdrażania obejmuje kilka czynności, takich jak rejestrowanie modelu, Generowanie zasobów i konfigurowanie ich dla usługi sieci Web.
 
-1. Na stronie **szczegóły uruchamiania** wybierz przycisk **Wdróż najlepszy model** w prawym górnym rogu.
+1. Wybierz przycisk **Wdróż najlepszy model** w prawym górnym rogu.
 
 1. Wypełnij okienko **Wdróż najlepszy model** w następujący sposób:
 

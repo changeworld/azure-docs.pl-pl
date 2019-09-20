@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 7cd7bcd4bd10152ecd2fa60e4e8418f17db16b61
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: affd62bd7cae0103b7d2510022fc12a66d26c865
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967831"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155581"
 ---
 # <a name="use-service-bus-topics-and-subscriptions-with-java"></a>Korzystanie z Service Bus tematów i subskrypcji w języku Java
 
@@ -41,7 +41,7 @@ W tym przewodniku szybki start napiszesz kod w języku Java służący do wysył
 ## <a name="configure-your-application-to-use-service-bus"></a>Skonfiguruj aplikację do używania Service Bus
 Przed skompilowaniem tego przykładu upewnij się, że zainstalowano [zestaw Azure SDK dla języka Java][Azure SDK for Java] . W przypadku korzystania z programu zaćmienie można zainstalować [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] zawierający zestaw Azure SDK dla języka Java. Następnie można dodać **biblioteki Microsoft Azure dla języka Java** do projektu:
 
-![Biblioteki w ścieżce kompilacji w wersji Zaćmieniej](media/service-bus-java-how-to-use-topics-subscriptions/eclipselibs.png)
+![Dodaj biblioteki Microsoft Azure dla języka Java do projektu przezaćmienia](media/service-bus-java-how-to-use-topics-subscriptions/eclipse-azure-libraries-java.png)
 
 Należy również dodać następujący JARs do ścieżki kompilacji Java:
 

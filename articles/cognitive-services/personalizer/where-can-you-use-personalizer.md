@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 09/19/2019
 ms.author: diberry
-ms.openlocfilehash: 87065709b16a5a0c7076584e8fc33c3830319e4f
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 246e76a0ab94624945723b500ef136e038ab40ec
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999645"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155230"
 ---
 # <a name="where-can-you-use-personalizer"></a>Gdzie można używać usługi Personalizacja?
 
@@ -33,7 +33,7 @@ Można zastosować personalizację w sytuacjach, w których:
 * Najlepszym wyborem może być i powinna być uczenie się od rozłącznych zachowań użytkowników i łącznego wyniku.
 * Korzystanie z uczenia maszynowego na potrzeby personalizacji odbywa się zgodnie z [właściwymi wskazówkami dotyczącymi użycia](ethics-responsible-use.md) .
 * Decyzja kontekstowa może być wyrażona jako Klasyfikacja najlepszej opcji (Akcja) z ograniczonego zestawu opcji.
-* Sposób, w jaki zamierzone wybór działa dla aplikacji, można określić przez zmierzenie pewnego aspektu zachowania użytkownika i wyrażanie go w _wyniku nagrody_. Jest to liczba z przedziału od-1 do 1.
+* Sposób, w jaki zamierzone wybór działa dla aplikacji, można określić przez zmierzenie pewnego aspektu zachowania użytkownika i wyrażanie go w _[wyniku nagrody](concept-rewards.md)_ .
 * Wynik nagrody nie powoduje zbyt wielu lub zewnętrznych czynników. Czas trwania eksperymentu jest niski, ponieważ wynik nagrody może być obliczany, gdy nadal ma zastosowanie.
 * Kontekst dla rangi można wyrazić jako listę co najmniej 5 [funkcji](concepts-features.md) , które można uznać za właściwy wybór i który nie zawiera informacji umożliwiających identyfikację użytkownika. (PII).
 * Istnieją informacje o każdej wybranej zawartości, _akcji_, jako lista co najmniej 5 [funkcji](concepts-features.md) , które należy wziąć pod uwagę, aby ułatwić sobie wybranie.

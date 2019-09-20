@@ -7,12 +7,12 @@ ms.topic: sample
 ms.date: 08/05/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: e8f943ebaa5dfc06e0bfb04dc1097d6794ec6d05
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 5b041fecfaa5a84ed5a04a3a8c53de10b9efd65b
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616825"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155372"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>Zarządzanie Azure Cosmos DB zasobami interfejsu API SQL przy użyciu programu PowerShell
 
@@ -43,6 +43,7 @@ W poniższych sekcjach pokazano, jak zarządzać kontem usługi Azure Cosmos, w 
 * [Ponowne generowanie kluczy dla konta usługi Azure Cosmos](#regenerate-keys)
 * [Wyświetlanie listy parametrów połączenia dla konta usługi Azure Cosmos](#list-connection-strings)
 * [Modyfikowanie priorytetu trybu failover dla konta usługi Azure Cosmos](#modify-failover-priority)
+* [Wyzwalanie ręcznego przełączania do trybu failover dla konta usługi Azure Cosmos](#trigger-manual-failover)
 
 ### <a id="create-account"></a>Utwórz konto usługi Azure Cosmos
 
@@ -121,7 +122,9 @@ To polecenie umożliwia zaktualizowanie właściwości konta bazy danych Azure C
 * Włączanie wielu wzorców
 
 > [!NOTE]
-> To polecenie umożliwia dodanie i usunięcie regionów, ale nie pozwala na modyfikowanie priorytetów trybu failover ani Zmienianie regionu przy użyciu `failoverPriority=0`. Aby zmodyfikować priorytet trybu failover, zobacz [Modyfikowanie priorytetu trybu failover dla konta usługi Azure Cosmos](#modify-failover-priority).
+> Nie można jednocześnie dodawać i usuwać regionów `locations` oraz zmieniać innych właściwości dla konta usługi Azure Cosmos. Modyfikowanie regionów musi być wykonywane jako oddzielna operacja niż jakakolwiek inna zmiana w zasobie konta.
+> [!NOTE]
+> To polecenie pozwala dodawać i usuwać regiony, ale nie pozwala na modyfikowanie priorytetów trybu failover ani wyzwalanie ręcznej pracy awaryjnej. Zobacz [Modyfikowanie priorytetu trybu failover](#modify-failover-priority) i [wyzwalanie ręcznego przełączania do trybu failover](#trigger-manual-failover).
 
 ```azurepowershell-interactive
 # Get an Azure Cosmos Account (assume it has two regions currently West US 2 and East US 2) and add a third region
@@ -238,23 +241,55 @@ Select-Object $keys
 
 ### <a id="modify-failover-priority"></a>Modyfikowanie priorytetu trybu failover
 
-W przypadku wieloregionowych kont baz danych można zmienić kolejność, w której konto Cosmos będzie wspierać pomocnicze repliki do odczytu, jeśli w podstawowej replice zapisu występuje regionalna praca awaryjna. Modyfikowanie `failoverPriority=0` może również służyć do inicjowania testowania odzyskiwania po awarii w celu zaplanowania odzyskiwania po awarii.
+W przypadku kont skonfigurowanych z automatycznym trybem failover można zmienić kolejność, w jakiej Cosmos replikę pomocniczą na podstawową, gdyby podstawowy stał się niedostępny.
 
-W poniższym przykładzie Załóżmy, że konto ma bieżący priorytet `West US 2 = 0` trybu failover i `East US 2 = 1` i przerzuca regiony.
+W poniższym przykładzie przyjęto założenie bieżącego priorytetu `West US 2 = 0` `East US 2 = 1`trybu failover, `South Central US = 2`,,.
 
 > [!CAUTION]
 > Zmiana `locationName` dla`failoverPriority=0` zostanie wyzwolona ręczny tryb failover dla konta usługi Azure Cosmos. Wszystkie inne zmiany priorytetów nie będą wyzwalać trybu failover.
 
 ```azurepowershell-interactive
 # Change the failover priority for an Azure Cosmos Account
-# Assume existing priority is "West US 2" = 0 and "East US 2" = 1
+# Assume existing priority is "West US 2" = 0, "East US 2" = 1, "South Central US" = 2
 
 $resourceGroupName = "myResourceGroup"
 $accountName = "mycosmosaccount"
 
 $failoverRegions = @(
-    @{ "locationName"="East US 2"; "failoverPriority"=0 },
-    @{ "locationName"="West US 2"; "failoverPriority"=1 }
+    @{ "locationName"="West US 2"; "failoverPriority"=0 },
+    @{ "locationName"="South Central US"; "failoverPriority"=1 },
+    @{ "locationName"="East US 2"; "failoverPriority"=2 }
+)
+
+$failoverPolicies = @{
+    "failoverPolicies"= $failoverRegions
+}
+
+Invoke-AzResourceAction -Action failoverPriorityChange `
+    -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" `
+    -ResourceGroupName $resourceGroupName -Name $accountName -Parameters $failoverPolicies
+```
+
+### <a id="trigger-manual-failover"></a>Wyzwalanie ręcznego przełączania do trybu failover
+
+W przypadku kont skonfigurowanych z ręcznym trybem failover można przełączyć do `failoverPriority=0`trybu failover i podnieść każdą replikę pomocniczą do podstawowej, modyfikując polecenie. Ta operacja może służyć do inicjowania testowania odzyskiwania po awarii w celu zaplanowania odzyskiwania po awarii.
+
+W poniższym przykładzie Załóżmy, że konto ma bieżący priorytet `West US 2 = 0` trybu failover i `East US 2 = 1` i przerzuca regiony.
+
+> [!CAUTION]
+> Zmiana `locationName` dla`failoverPriority=0` zostanie wyzwolona ręczny tryb failover dla konta usługi Azure Cosmos. Jakakolwiek inna zmiana priorytetu nie spowoduje wyzwolenia trybu failover.
+
+```azurepowershell-interactive
+# Change the failover priority for an Azure Cosmos Account
+# Assume existing priority is "West US 2" = 0, "East US 2" = 1, "South Central US" = 2
+
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+
+$failoverRegions = @(
+    @{ "locationName"="South Central US"; "failoverPriority"=0 },
+    @{ "locationName"="East US 2"; "failoverPriority"=1 },
+    @{ "locationName"="West US 2"; "failoverPriority"=2 }
 )
 
 $failoverPolicies = @{

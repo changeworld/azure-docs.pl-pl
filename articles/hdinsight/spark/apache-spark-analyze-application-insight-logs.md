@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
-ms.openlocfilehash: 846239c0122f3f2cadc40e7965ae690d4ba3e538
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 737b049aa94ede2ffb0c1035b4cadfbed32d7dc4
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899844"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71145593"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>Analizowanie Application Insights dzienników telemetrii za pomocą Apache Spark w usłudze HDInsight
 
@@ -39,7 +39,7 @@ Podczas opracowywania i testowania tego dokumentu użyto następujących zasobó
 
 Na poniższym diagramie przedstawiono architekturę usług tego przykładu:
 
-![Diagram przedstawiający dane przepływające z Application Insights do magazynu obiektów blob, a następnie przetwarzane przez platformę Spark w usłudze HDInsight](./media/apache-spark-analyze-application-insight-logs/application-insights.png)
+![Dane przepływające z Application Insights do magazynu obiektów blob, a następnie platformy Spark](./media/apache-spark-analyze-application-insight-logs/application-insights.png)
 
 ### <a name="azure-storage"></a>Azure Storage
 
@@ -72,7 +72,7 @@ Aby dodać konto usługi Azure Storage do istniejącego klastra, użyj informacj
 
 1. Z [Azure Portal](https://portal.azure.com)wybierz klaster Spark w usłudze HDInsight. W sekcji **szybkie linki** wybierz pozycję **pulpity nawigacyjne klastra**, a następnie wybierz pozycję **Jupyter Notebook** z sekcji Dashboard__ klastra.
 
-    ![Pulpity nawigacyjne klastra](./media/apache-spark-analyze-application-insight-logs/hdi-cluster-dashboards.png)
+    ![Pyspark pulpitu nawigacyjnego klastra Azure Portal](./media/apache-spark-analyze-application-insight-logs/hdi-cluster-dashboards.png)
 
 2. W prawym górnym rogu strony Jupyter, wybierz pozycję **Nowy**, a następnie **PySpark**. Zostanie otwarta nowa karta przeglądarki zawierająca Jupyter Notebook oparty na języku Python.
 
@@ -215,7 +215,8 @@ Aby dodać konto usługi Azure Storage do istniejącego klastra, użyj informacj
 
 1. Z [Azure Portal](https://portal.azure.com)wybierz klaster Spark w usłudze HDInsight. W sekcji **szybkie linki** wybierz pozycję **pulpity nawigacyjne klastra**, a następnie wybierz pozycję **Jupyter Notebook** z sekcji Dashboard__ klastra.
 
-    ![Pulpity nawigacyjne klastra](./media/apache-spark-analyze-application-insight-logs/hdi-cluster-dashboards.png)
+    ![Scala pulpitu nawigacyjnego klastra Azure Portal](./media/apache-spark-analyze-application-insight-logs/hdi-cluster-dashboards.png)
+
 2. W prawym górnym rogu strony Jupyter, wybierz pozycję **Nowy**, a następnie **Scala**. Zostanie wyświetlona nowa karta przeglądarki zawierająca Jupyter Notebook oparty na Scala.
 3. W pierwszym polu (zwanym **komórką**) na stronie Wprowadź następujący tekst:
 

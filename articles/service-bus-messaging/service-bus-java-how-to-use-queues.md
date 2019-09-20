@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: b85099605d7f660b792186f7e17b0ed4ea43ef04
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 19cfd2c5dd4229e4687fcb1a3286509c9b768d7a
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967852"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155496"
 ---
 # <a name="use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Wysyłanie i odbieranie komunikatów za pomocą kolejek Azure Service Bus przy użyciu języka Java
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -42,7 +42,7 @@ W ramach tego samouczka nauczysz się tworzyć aplikacje Java do wysyłania komu
 ## <a name="configure-your-application-to-use-service-bus"></a>Skonfiguruj aplikację do używania Service Bus
 Przed skompilowaniem tego przykładu upewnij się, że zainstalowano [zestaw Azure SDK dla języka Java][Azure SDK for Java] . W przypadku korzystania z programu zaćmienie można zainstalować [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] zawierający zestaw Azure SDK dla języka Java. Następnie można dodać **biblioteki Microsoft Azure dla języka Java** do projektu:
 
-![Zrzut ekranu przedstawiający kartę biblioteki, w której można dodawać biblioteki](./media/service-bus-java-how-to-use-queues/eclipselibs.png)
+![Dodaj biblioteki Microsoft Azure dla języka Java do projektu przezaćmienia](./media/service-bus-java-how-to-use-queues/eclipse-azure-libraries-java.png)
 
 Dodaj następujące `import` instrukcje na początku pliku Java:
 

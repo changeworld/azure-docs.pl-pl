@@ -7,12 +7,12 @@ ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 2b36e7c333521e9438e76bfbe53a26dce23c2e8a
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: a0faaeee369a2227f6018141e5aa5d18c9037e9d
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194671"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71161981"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Ustalanie przyczyn niezgodności
 
@@ -20,7 +20,7 @@ Jeśli zasób platformy Azure jest określony jako niezgodny z regułą zasad, w
 
 > [!div class="checklist"]
 > - [Szczegóły zgodności](#compliance-details)
-> - [Historia zmian (wersja zapoznawcza)](#change-history-preview)
+> - [Historia zmian (wersja zapoznawcza)](#change-history)
 
 ## <a name="compliance-details"></a>Szczegóły zgodności
 
@@ -31,7 +31,7 @@ Jeśli zasób nie jest zgodny, szczegóły zgodności dla tego zasobu są dostę
 - Lista _przyczyn_ braku zgodności zasobów
 
 > [!IMPORTANT]
-> Ponieważ szczegóły zgodności dla niezgodnego zasobu przedstawiają bieżącą wartość właściwości tego zasobu, użytkownik musi mieć operację **odczytu** do **typu** zasobu. Na przykład jeśli niezgodny zasób to **Microsoft. COMPUTE/virtualMachines** , użytkownik musi mieć operację **Microsoft. COMPUTE/virtualMachines/Read** . Jeśli użytkownik nie ma wymaganej operacji, zostanie wyświetlony komunikat o błędzie dostępu.
+> Ponieważ szczegóły zgodności dla _niezgodnego_ zasobu przedstawiają bieżącą wartość właściwości tego zasobu, użytkownik musi mieć operację **odczytu** do **typu** zasobu. Na przykład jeśli _niezgodny_ zasób to **Microsoft. COMPUTE/virtualMachines** , użytkownik musi mieć operację **Microsoft. COMPUTE/virtualMachines/Read** . Jeśli użytkownik nie ma wymaganej operacji, zostanie wyświetlony komunikat o błędzie dostępu.
 
 Aby wyświetlić szczegóły zgodności, wykonaj następujące kroki:
 
@@ -39,7 +39,7 @@ Aby wyświetlić szczegóły zgodności, wykonaj następujące kroki:
 
 1. Na stronie **Przegląd** lub **zgodność** wybierz zasady w **stanie zgodności** , które _nie są zgodne_.
 
-1. Na karcie **zgodność zasobów** na stronie **zgodność z zasadami** kliknij prawym przyciskiem myszy lub wybierz wielokropek zasobu w **stanie zgodności** , który jest niezgodny. Następnie wybierz pozycję **Wyświetl szczegóły zgodności**.
+1. Na karcie **zgodność zasobów** na stronie **zgodność z zasadami** kliknij prawym przyciskiem myszy lub wybierz wielokropek zasobu w **stanie zgodności** , który jest _niezgodny_. Następnie wybierz pozycję **Wyświetl szczegóły zgodności**.
 
    ![Wyświetl szczegóły zgodności](../media/determine-non-compliance/view-compliance-details.png)
 
@@ -47,7 +47,7 @@ Aby wyświetlić szczegóły zgodności, wykonaj następujące kroki:
 
    ![Okienko Szczegóły zgodności i przyczyny braku zgodności](../media/determine-non-compliance/compliance-details-pane.png)
 
-   W przypadku definicji zasad **auditIfNotExists** lub **deployIfNotExists** szczegóły obejmują Właściwość Details **. Type** i wszelkie opcjonalne właściwości. Aby uzyskać listę, zobacz [Właściwości auditIfNotExists](../concepts/effects.md#auditifnotexists-properties) i [deployIfNotExists](../concepts/effects.md#deployifnotexists-properties). **Ostatni szacowany zasób** jest powiązanym zasobem z sekcji **szczegółów** definicji.
+   W przypadku definicji zasad **auditIfNotExists** lub **deployIfNotExists** szczegóły obejmują Właściwość **details. Type** i wszelkie opcjonalne właściwości. Aby uzyskać listę, zobacz [Właściwości auditIfNotExists](../concepts/effects.md#auditifnotexists-properties) i [deployIfNotExists](../concepts/effects.md#deployifnotexists-properties). **Ostatni szacowany zasób** jest powiązanym zasobem z sekcji **szczegółów** definicji.
 
    Przykładowa częściowa definicja **deployIfNotExists** :
 
@@ -77,13 +77,13 @@ Aby wyświetlić szczegóły zgodności, wykonaj następujące kroki:
    ![Okienko Szczegóły zgodności-* ifNotExists](../media/determine-non-compliance/compliance-details-pane-existence.png)
 
 > [!NOTE]
-> Aby chronić dane, gdy wartość właściwości jest tajna , bieżąca wartość Wyświetla gwiazdki.
+> Aby chronić dane, gdy wartość właściwości jest _tajna_ , bieżąca wartość Wyświetla gwiazdki.
 
-Te szczegóły wyjaśniają, dlaczego zasób jest obecnie niezgodny, ale nie powinien być wyświetlany, gdy zmiana została wprowadzona w zasobie, która spowodowała niezgodność. Aby uzyskać te informacje, zobacz sekcję [Zmień historię (wersja zapoznawcza)](#change-history-preview) poniżej.
+Te szczegóły wyjaśniają, dlaczego zasób jest obecnie niezgodny, ale nie powinien być wyświetlany, gdy zmiana została wprowadzona w zasobie, która spowodowała niezgodność. Aby uzyskać te informacje, zobacz sekcję [Zmień historię (wersja zapoznawcza)](#change-history) poniżej.
 
 ### <a name="compliance-reasons"></a>Przyczyny zgodności
 
-Poniższa macierz odwzorowuje każdy możliwy _powód_ do warunku [](../concepts/definition-structure.md#conditions) odpowiedzialnego w definicji zasad:
+Poniższa macierz odwzorowuje każdy możliwy _powód_ do [warunku](../concepts/definition-structure.md#conditions) odpowiedzialnego w definicji zasad:
 
 |Reason | Warunek |
 |-|-|
@@ -94,10 +94,10 @@ Poniższa macierz odwzorowuje każdy możliwy _powód_ do warunku [](../concepts
 |Bieżąca wartość musi być większa lub równa wartości docelowej. |greaterOrEquals lub **nie** mniej |
 |Bieżąca wartość musi być większa niż wartość docelowa. |większe lub **nie** lessOrEquals |
 |Bieżąca wartość nie może być większa niż wartość docelowa. |lessOrEquals lub **nie jest** większa |
-|Bieżąca wartość musi istnieć. |istniejący |
-|Bieżąca wartość musi należeć do wartości docelowej. |w programie lub notIn |
-|Bieżąca wartość musi być taka sama jak wartość docelowa. |Podobnie jak notLike |
-|Bieżąca wartość musi uwzględniać wielkość liter, dopasowując wartość docelową. |dopasowanie lub notMatch |
+|Bieżąca wartość musi istnieć. |Istniejący |
+|Bieżąca wartość musi należeć do wartości docelowej. |w programie **lub notIn** |
+|Bieżąca wartość musi być taka sama jak wartość docelowa. |Podobnie jak **notLike** |
+|Bieżąca wartość musi uwzględniać wielkość liter, dopasowując wartość docelową. |dopasowanie lub **notMatch** |
 |Bieżąca wartość musi uwzględniać wielkość liter, dopasowując wartość docelową. |matchInsensitively lub **nie** notMatchInsensitively |
 |Bieżąca wartość nie może zawierać wartości docelowej jako klucza. |notContainsKey lub **nie** ContainsKey —|
 |Bieżąca wartość nie może zawierać wartości docelowej. |notContains lub **nie** zawiera |
@@ -111,7 +111,7 @@ Poniższa macierz odwzorowuje każdy możliwy _powód_ do warunku [](../concepts
 
 ## <a name="compliance-details-for-guest-configuration"></a>Szczegóły zgodności dla konfiguracji gościa
 
-W przypadku zasad auditIfNotExistsymi w kategorii _Konfiguracja gościa_ może istnieć wiele ustawień ocenianych wewnątrz maszyny wirtualnej i trzeba będzie wyświetlić szczegółowe informacje na temat ustawień. Na przykład jeśli przeprowadzasz inspekcję listy zasad haseł, a tylko jeden z nich ma stan niezgodny, musisz wiedzieć, które zasady haseł _nie są zgodne_i dlaczego.
+W przypadku zasad _auditIfNotExistsymi_ w kategorii _Konfiguracja gościa_ może istnieć wiele ustawień ocenianych wewnątrz maszyny wirtualnej i trzeba będzie wyświetlić szczegółowe informacje na temat ustawień. Na przykład jeśli przeprowadzasz inspekcję listy zasad haseł, a tylko jeden z nich ma stan _niezgodny_, musisz wiedzieć, które zasady haseł nie są zgodne i dlaczego.
 
 Użytkownik może również nie mieć dostępu do bezpośredniego logowania się do maszyny wirtualnej, ale należy zgłosić, dlaczego maszyna wirtualna nie jest _zgodna_.
 
@@ -123,7 +123,7 @@ W okienku **szczegóły zgodności** kliknij pozycję Połącz **ostatnio oblicz
 
    ![Wyświetl szczegóły definicji auditIfNotExists](../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png)
 
-Na stronie **przypisanie gościa** są wyświetlane wszystkie dostępne szczegóły zgodności. Każdy wiersz w widoku reprezentuje ocenę, która została wykonana w ramach maszyny. W kolumnie **Przyczyna** jest wyświetlana fraza opisująca dlaczego przypisanie gościa jest niezgodne. Na przykład w przypadku inspekcji zasad haseł w kolumnie **Przyczyna** zostanie wyświetlony tekst zawierający bieżącą wartość dla każdego ustawienia.
+Na stronie **przypisanie gościa** są wyświetlane wszystkie dostępne szczegóły zgodności. Każdy wiersz w widoku reprezentuje ocenę, która została wykonana w ramach maszyny. W kolumnie **Przyczyna** jest wyświetlana fraza opisująca dlaczego przypisanie gościa jest _niezgodne_ . Na przykład w przypadku inspekcji zasad haseł w kolumnie **Przyczyna** zostanie wyświetlony tekst zawierający bieżącą wartość dla każdego ustawienia.
 
 ![Wyświetl szczegóły zgodności.](../media/determine-non-compliance/guestconfig-compliance-details.png)
 
@@ -194,7 +194,7 @@ Audit that an application is installed inside Windows VMs                 NonCom
 
 ## <a name="a-namechange-historychange-history-preview"></a><a name="change-history"/>Historia zmian (wersja zapoznawcza)
 
-W ramach nowej **publicznej wersji**zapoznawczej historia zmian jest dostępna dla wszystkich zasobów platformy Azure, które obsługują [usuwanie w trybie pełnym](../../../azure-resource-manager/complete-mode-deletion.md). Historia zmian zawiera szczegółowe informacje o tym, kiedy wykryto zmianę i różnicą wizualną dla każdej zmiany. Wykrywanie zmian jest wyzwalane po dodaniu, usunięciu lub zmianie Menedżer zasobów właściwości.
+W ramach nowej **publicznej wersji zapoznawczej**historia zmian jest dostępna dla wszystkich zasobów platformy Azure, które obsługują [usuwanie w trybie pełnym](../../../azure-resource-manager/complete-mode-deletion.md). Historia zmian zawiera szczegółowe informacje o tym, kiedy wykryto zmianę i _różnicą wizualną_ dla każdej zmiany. Wykrywanie zmian jest wyzwalane po dodaniu, usunięciu lub zmianie Menedżer zasobów właściwości.
 
 1. Uruchom usługę Azure Policy w witrynie Azure Portal, klikając pozycję **Wszystkie usługi**, a następnie wyszukując i wybierając opcję **Zasady**.
 

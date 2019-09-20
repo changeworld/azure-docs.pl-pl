@@ -4,7 +4,7 @@ description: Ten artykuł zawiera listę często zadawanych pytań dotyczących 
 services: cloud-services
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: eef99c7d7a108618b570988dd5d7ec9c2fdb8db4
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: c6d470b9c14f53558d09e6876701cb25ddc15183
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68941747"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154874"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problemy z łącznością i siecią dla Cloud Services platformy Azure: Często zadawane pytania
 
@@ -103,7 +103,7 @@ Aby upewnić się, że publiczny adres IP usługi w chmurze (znany również jak
 - [Zarezerwuj adres IP istniejącej usługi w chmurze](../virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
 - [Kojarzenie zastrzeżonego adresu IP z usługą w chmurze przy użyciu pliku konfiguracji usługi](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
-Jeśli masz więcej niż jedno wystąpienie dla ról, skojarzenie protokołu RIP z usługą w chmurze nie powinno powodować przestojów. Alternatywnie możesz dozwolonych zakres adresów IP centrum danych platformy Azure. Wszystkie zakresy adresów IP platformy Azure można znaleźć w [Centrum pobierania Microsoft](https://www.microsoft.com/en-us/download/details.aspx?id=41653).
+Jeśli masz więcej niż jedno wystąpienie dla ról, skojarzenie protokołu RIP z usługą w chmurze nie powinno powodować przestojów. Alternatywnie możesz dodać zakres adresów IP centrum danych platformy Azure do listy dozwolonych. Wszystkie zakresy adresów IP platformy Azure można znaleźć w [Centrum pobierania Microsoft](https://www.microsoft.com/en-us/download/details.aspx?id=41653).
 
 Ten plik zawiera zakresy adresów IP (w tym obliczenia, SQL i zakresy magazynu) używane w centrach danych platformy Azure. Zaktualizowany plik jest publikowany co tydzień, co odzwierciedla aktualnie wdrożone zakresy i wszystkie nadchodzące zmiany w zakresach adresów IP. Nowe zakresy, które pojawiają się w pliku nie są używane w centrach danych przez co najmniej jeden tydzień. Pobierz nowy plik XML co tydzień i wykonaj niezbędne zmiany w witrynie, aby prawidłowo identyfikować usługi działające na platformie Azure. Użytkownicy usługi Azure ExpressRoute mogą zauważyć, że ten plik służy do aktualizowania anonsu usługi Azure Space w pierwszym tygodniu każdego miesiąca.
 

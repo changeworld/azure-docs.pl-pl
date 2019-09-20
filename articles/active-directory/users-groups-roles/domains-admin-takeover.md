@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c05e1dc720f49eb190ccdbe1826a1a347fba7fa1
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 00753ee8d7d128222e9fb773f00a23720813a237
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914775"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146461"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Przejmowanie niezarządzanego katalogu jako administrator w Azure Active Directory
 
@@ -88,14 +88,11 @@ Po sprawdzeniu własności nazwy domeny usługa Azure AD usuwa nazwę domeny z n
 ### <a name="support-for-external-admin-takeover"></a>Obsługa przejęcia przez administratora zewnętrznego
 Przejęcie przez administratora zewnętrznego jest obsługiwane przez następujące Usługi online:
 
-- Power BI
 - Azure Rights Management
 - Exchange Online
 
 Obsługiwane plany usługi obejmują:
 
-- Power BI bezpłatnie
-- Power BI Pro
 - Usługa PowerApps bezpłatnie
 - PowerFlow bezpłatnie
 - Usługi RMS dla użytkowników indywidualnych
@@ -114,14 +111,10 @@ Klucza i szablonów nie są przenoszone, gdy niezarządzana dzierżawa znajduje 
 
 Mimo że usługi RMS dla użytkowników indywidualnych są przeznaczone do obsługi uwierzytelniania usługi Azure AD w celu otwierania chronionej zawartości, nie uniemożliwiają one również ochrony zawartości. Jeśli użytkownicy przeprowadzili ochronę zawartości za pomocą subskrypcji usługi RMS dla użytkowników indywidualnych, a klucze i szablony nie zostały przeniesione przez program, zawartość nie jest dostępna po przejęciu domeny.
 
-#### <a name="more-information-about-power-bi"></a>Więcej informacji na temat Power BI
-
-Podczas przeprowadzania przejęcia zewnętrznego Power BI zawartość, która została utworzona przed przejęciem, zostanie umieszczona w [Power BI zarchiwizowanego obszaru roboczego](/power-bi/service-admin-power-bi-archived-workspace). Należy ręcznie migrować dowolną zawartość, która ma być używana w nowej dzierżawie.
-
 ### <a name="azure-ad-powershell-cmdlets-for-the-forcetakeover-option"></a>Polecenia cmdlet programu PowerShell dla usługi Azure AD dla opcji ForceTakeover
 Można wyświetlić te polecenia cmdlet używane w [przykładowym programie PowerShell](#powershell-example).
 
-Parametr | Użycie
+Parametr | Sposób użycia
 ------- | -------
 `connect-msolservice` | Po wyświetleniu monitu zaloguj się do zarządzanej dzierżawy.
 `get-msoldomain` | Wyświetla nazwy domen skojarzone z bieżącą dzierżawą.
@@ -168,7 +161,7 @@ Parametr | Użycie
     Confirm-MsolEmailVerifiedDomain -DomainName *your_domain_name*
    ```
   
-   Przykład:
+   Na przykład:
   
    ```powershell
     Confirm-MsolEmailVerifiedDomain -DomainName contoso.com

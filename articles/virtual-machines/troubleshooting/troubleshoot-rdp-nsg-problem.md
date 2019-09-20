@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: 27f86660de4f37142829114780ab9c198cb1858d
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 5f95b42fd17aec4e3ec6b7b8fac1965772fefa67
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088506"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162590"
 ---
 #  <a name="cannot-connect-remotely-to-a-vm-because-rdp-port-is-not-enabled-in-nsg"></a>Nie można nawiązać zdalnego połączenia z maszyną wirtualną, ponieważ port RDP nie jest włączony w sieciowej grupy zabezpieczeń
 
@@ -42,9 +42,8 @@ Aby włączyć port RDP w sieciowej grupy zabezpieczeń, wykonaj następujące k
 4. W **regułach portów ruchu przychodzącego**Sprawdź, czy port RDP jest ustawiony prawidłowo. Poniżej przedstawiono przykładową konfigurację: 
 
     **Priorytet**: 300 </br>
-    **Port**: 3389 </br>
     **Nazwa**: Port_3389 </br>
-    **Port**: 3389 </br>
+    **Port (miejsce docelowe)** : 3389 </br>
     **Protokół**: TCP </br>
     **Źródło**: Any </br>
     **Miejsca docelowe**: Any </br>

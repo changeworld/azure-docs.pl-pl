@@ -4,7 +4,7 @@ description: ''
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 0a0da446385c592bfeda2e01e209ef1fb75b7de3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e90b164fac4ea1123f5f9a43eea1169d93d9a04
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711575"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154037"
 ---
 # <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Blokuje ruch przychodzący zaporę systemu operacyjnego gościa maszyny Wirtualnej platformy Azure
 
@@ -112,8 +112,8 @@ Połączyć się z [konsoli szeregowej, a następnie otwórz wystąpienie progra
 
     > [!Note]
     > Poniższe wskazówki dotyczą zasad zapory, w zależności od tego, jak to skonfigurować:
-    >    * *BlockInbound*: Cały ruch przychodzący będzie blokowany, chyba że masz regułę obowiązuje zezwalającą na ruch.
-    >    * *BlockInboundAlways*: Wszystkie reguły zapory zostanie zignorowany, a cały ruch będzie blokowany.
+    >    * *BlockInbound*: Cały ruch przychodzący zostanie zablokowany, chyba że zostanie wykorzystana reguła zezwalająca na ten ruch.
+    >    * *BlockInboundAlways*: Wszystkie reguły zapory zostaną zignorowane i cały ruch zostanie zablokowany.
 
 2.  Edytuj *DefaultInboundAction* ustawić te profile **Zezwalaj** ruchu. Aby to zrobić, uruchom następujące polecenie:
 
@@ -142,7 +142,7 @@ Połączyć się z [konsoli szeregowej, a następnie otwórz wystąpienie progra
 
 #### <a name="mitigation-1"></a>Środki zaradcze 1
 
-Zobacz [sposób włączenia i wyłączenia zapory reguły w systemie operacyjnym gościa](enable-disable-firewall-rule-guest-os.md).
+Zobacz [jak włączyć-wyłączyć regułę zapory w systemie operacyjnym gościa](enable-disable-firewall-rule-guest-os.md).
 
 #### <a name="mitigation-2"></a>Środki zaradcze 2
 

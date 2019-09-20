@@ -3,16 +3,16 @@ title: Szczegóły struktury definicji zasad
 description: W tym artykule opisano, jak zasobu definicji zasad jest używany przez usługę Azure Policy do ustanawiania konwencje dla zasobów w Twojej organizacji, poprzez opisanie, gdy zasady są wymuszane i wpływ, jaki do wykonania.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/13/2019
+ms.date: 09/09/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 1999a47d18fd3ce6388d6177be85c7debd3c1e97
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: d7e264bda62753693cdd2333625313cf213f142a
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70239181"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71145583"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -398,6 +398,7 @@ Azure Policy obsługuje następujące typy efektów:
 - **DeployIfNotExists**: wdraża zasobu, jeśli jeszcze nie istnieje.
 - **Wyłączone**: nie szacuje zasoby pod kątem zgodności z regułą zasad
 - **EnforceRegoPolicy**: konfiguruje kontroler "Open Policy Agent Admission Control" w usłudze Azure Kubernetes Service (wersja zapoznawcza)
+- **Modyfikowanie**: dodaje, aktualizuje lub usuwa zdefiniowane znaczniki z zasobu
 
 Aby uzyskać **Dołącz**, należy podać następujące informacje:
 
@@ -424,6 +425,8 @@ Wartość może być ciąg lub obiekt do formatu JSON.
     ]
 }
 ```
+
+Podobnie **Modyfikacja** wymaga właściwości **zduplikowanych** w części **szczegółów** reguły zasad dla [zadania korygowania](../how-to/remediate-resources.md). **Modyfikacja** wymaga również tablicy **operacji** , aby zdefiniować akcje do wykonania względem tagów zasobów.
 
 Aby uzyskać szczegółowe informacje na temat każdego efektu, kolejności oceny, właściwości i przykładów, zobacz [opis efektów Azure Policy](effects.md).
 

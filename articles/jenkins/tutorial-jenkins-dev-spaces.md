@@ -7,12 +7,12 @@ ms.service: jenkins
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/31/2019
-ms.openlocfilehash: 10ff8f4645ee1e7023c96174236243a3b85de938
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 3d5e8ba8a29481a6f37ffd10f577d354fc5fbf0a
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679121"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71161497"
 ---
 <!-- GMinchAQ, 06/18/19 -->
 
@@ -30,7 +30,7 @@ W tym samouczku wykonasz następujące zadania:
 > * Przygotowywanie serwera Jenkins
 > * Użyj wtyczki Azure Dev Spaces w potoku Jenkins, aby wyświetlić podgląd zmian w kodzie przed scaleniem ich do projektu
 
-W tym samouczku przyjęto założenie pośredniej wiedzy na temat podstawowych usług platformy [](https://jenkins.io/doc/book/pipeline/) Azure, AKS, ACR, Azure dev Spaces i potoków Jenkins oraz dodatków plug-in i GitHub. Przydatna jest znajomość podstawowej znajomości narzędzi pomocniczych, takich jak polecenia kubectl i Helm.
+W tym samouczku przyjęto założenie pośredniej wiedzy na temat podstawowych usług platformy Azure, AKS, ACR, Azure Dev Spaces i [potoków](https://jenkins.io/doc/book/pipeline/) Jenkins oraz dodatków plug-in i GitHub. Przydatna jest znajomość podstawowej znajomości narzędzi pomocniczych, takich jak polecenia kubectl i Helm.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -53,7 +53,7 @@ W tym samouczku przyjęto założenie pośredniej wiedzy na temat podstawowych u
 
 W tej sekcji utworzysz zasoby platformy Azure:
 
-* Grupa zasobów zawierająca wszystkie zasoby Azure dla tego samouczka.
+* Grupa zasobów zawierająca wszystkie zasoby platformy Azure dla tego samouczka.
 * Klaster [usługi Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/) (AKS).
 * [Usługa Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) (ACR) do kompilowania (przy użyciu zadań ACR) i przechowywania obrazów platformy Docker.
 
@@ -84,7 +84,7 @@ W tej sekcji utworzysz zasoby platformy Azure:
 
 ## <a name="deploy-sample-apps-to-the-aks-cluster"></a>Wdrażanie przykładowych aplikacji w klastrze AKS
 
-W tej sekcji skonfigurujesz miejsce do tworzenia i wdrożono przykładową aplikację w klastrze AKS utworzonym w ostatniej sekcji. Aplikacja składa się z dwóch części , webfrontonu i *mywebapi*. Oba składniki są wdrażane w obszarze dev. W dalszej części tego samouczka zostanie przesłane żądanie ściągnięcia do mywebapi, aby wyzwolić potok CI w Jenkins.
+W tej sekcji skonfigurujesz miejsce do tworzenia i wdrożono przykładową aplikację w klastrze AKS utworzonym w ostatniej sekcji. Aplikacja składa się z dwóch części, *webfrontonu* i *mywebapi*. Oba składniki są wdrażane w obszarze dev. W dalszej części tego samouczka zostanie przesłane żądanie ściągnięcia do mywebapi, aby wyzwolić potok CI w Jenkins.
 
 Aby uzyskać więcej informacji na temat korzystania z Azure Dev Spaces i tworzenia wielu usług za pomocą Azure Dev Spaces, zobacz artykuł Rozpoczynanie [pracy w systemie Azure dev Spaces przy użyciu języka Java](https://docs.microsoft.com/azure/dev-spaces/get-started-java)i [Tworzenie wielu usług za pomocą Azure dev Spaces](https://docs.microsoft.com/azure/dev-spaces/multi-service-java). Te samouczki zawierają dodatkowe informacje w tle, które nie zostały uwzględnione w tym miejscu.
 
@@ -173,7 +173,7 @@ W tej sekcji przygotowano serwer Jenkins do uruchamiania przykładowego potoku C
 
 * Zainstaluj wtyczki
 * Instalowanie interfejsu wiersza polecenia Helm i Kubernetes
-* Dodawanie poświadczeń
+* Dodaj poświadczenia
 
 ### <a name="install-plug-ins"></a>Zainstaluj wtyczki
 
@@ -184,7 +184,7 @@ W tej sekcji przygotowano serwer Jenkins do uruchamiania przykładowego potoku C
     * [Wtryskiwacz środowiska](https://plugins.jenkins.io/envinject)
     * [Integracja z usługą GitHub](https://plugins.jenkins.io/github-pullrequest)
 
-    Jeśli te wtyczki nie są wyświetlane na liście, sprawdź zainstalowaną kartę, aby sprawdzić, czy są już zainstalowane.
+    Jeśli te wtyczki nie są wyświetlane na liście, sprawdź **zainstalowaną** kartę, aby sprawdzić, czy są już zainstalowane.
 
 3. Aby zainstalować wtyczki, wybierz pozycję **Pobierz teraz i zainstaluj po ponownym uruchomieniu**.
 
@@ -306,7 +306,7 @@ Konfiguracja potoku Jenkins i fragmenty definiują etapy w potoku CI. Ten schema
 8. W obszarze **SCM**wybierz pozycję **git** , a następnie wprowadź adres URL repozytorium.
 9. W polu **specyfikator gałęzi**wprowadź `refs/remotes/origin/${GITHUB_PR_SOURCE_BRANCH}`.
 10. Wprowadź adres URL repozytorium SCM i ścieżkę skryptu "fragmenty".
-11. Należy sprawdzić uproszczone wyewidencjonowanie.
+11. Należy sprawdzić **uproszczone wyewidencjonowanie** .
 
 ## <a name="create-a-pull-request-to-trigger-the-pipeline"></a>Utwórz żądanie ściągnięcia, aby wyzwolić potok
 
@@ -339,7 +339,7 @@ Aby wykonać krok 3 w tej sekcji, należy dodać komentarz do części fragmenty
     }
 ```
 
-1. Wprowadź zmiany `mywebapi/src/main/java/com/ms/sample/mywebapi/Application.java`, a następnie Utwórz żądanie ściągnięcia. Przykład:
+1. Wprowadź zmiany `mywebapi/src/main/java/com/ms/sample/mywebapi/Application.java`, a następnie Utwórz żądanie ściągnięcia. Na przykład:
 
     ```java
     public String index() {

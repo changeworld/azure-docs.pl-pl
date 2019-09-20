@@ -4,7 +4,7 @@ description: Ten artykuł zawiera listę często zadawanych pytań dotyczących 
 services: cloud-services
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: fff70cc0c80d26d5454e54e43a6ef6c0b39b5cac
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 2ffa6d7b1cf0550c97a60614f3f00ddc4b955218
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68941722"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154797"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problemy z wdrażaniem Cloud Services platformy Azure: Często zadawane pytania
 
@@ -32,22 +32,22 @@ Jeśli usługa w chmurze ma wdrożenie w dowolnym miejscu, cała usługa w chmur
 
 Błędy alokacji występują, gdy klaster, w którym znajduje się usługa w chmurze, nie ma wystarczającej ilości fizycznych zasobów obliczeniowych do zaspokojenia Twojego żądania wdrożenia.
 
-Aby uzyskać pomoc w zapobieganiu takich niepowodzeń [alokacji, zobacz niepowodzenie alokacji usługi w chmurze: Rozwiązania](cloud-services-allocation-failures.md#solutions).
+Aby uzyskać pomoc w rozwiązywaniu takich błędów alokacji, [Zobacz niepowodzenie alokacji usługi w chmurze: Rozwiązania](cloud-services-allocation-failures.md#solutions).
 
 ## <a name="why-does-scaling-up-or-scaling-out-a-cloud-service-deployment-sometimes-result-in-allocation-failure"></a>Dlaczego skalowanie w górę lub skalowanie wdrożenia usługi w chmurze czasami powoduje niepowodzenie alokacji?
 Gdy usługa w chmurze jest wdrażana, zazwyczaj jest przypięta do określonego klastra. Oznacza to, że skalowanie w górę/w górę istniejącej usługi w chmurze musi przydzielić nowe wystąpienia w tym samym klastrze. Jeśli klaster zbliża się do pojemności lub żądany rozmiar i typ maszyny wirtualnej nie są dostępne, żądanie może zakończyć się niepowodzeniem.
 
-Aby uzyskać pomoc w zapobieganiu takich niepowodzeń [alokacji, zobacz niepowodzenie alokacji usługi w chmurze: Rozwiązania](cloud-services-allocation-failures.md#solutions).
+Aby uzyskać pomoc w rozwiązywaniu takich błędów alokacji, [Zobacz niepowodzenie alokacji usługi w chmurze: Rozwiązania](cloud-services-allocation-failures.md#solutions).
 
 ## <a name="why-does-deploying-a-cloud-service-into-an-affinity-group-sometimes-result-in-allocation-failure"></a>Dlaczego wdrożenie usługi w chmurze w grupie koligacji czasami powoduje niepowodzenie alokacji?
 Nowe wdrożenie do pustej usługi w chmurze może być przydzielone przez sieć szkieletową w dowolnym klastrze w tym regionie, chyba że usługa w chmurze jest przypięta do grupy koligacji. W tym samym klastrze podjęto próbę wdrożenia w tej samej grupie koligacji. Jeśli klaster zbliża się do pojemności, żądanie może zakończyć się niepowodzeniem.
 
-Aby uzyskać pomoc w zapobieganiu takich niepowodzeń [alokacji, zobacz niepowodzenie alokacji usługi w chmurze: Rozwiązania](cloud-services-allocation-failures.md#solutions).
+Aby uzyskać pomoc w rozwiązywaniu takich błędów alokacji, [Zobacz niepowodzenie alokacji usługi w chmurze: Rozwiązania](cloud-services-allocation-failures.md#solutions).
 
 ## <a name="why-does-changing-vm-size-or-adding-a-new-vm-to-an-existing-cloud-service-sometimes-result-in-allocation-failure"></a>Dlaczego zmiana rozmiaru maszyny wirtualnej lub dodanie nowej maszyny wirtualnej do istniejącej usługi w chmurze czasami powoduje niepowodzenie alokacji?
-Klastry w centrum danych mogą mieć różne konfiguracje typów maszyn (np. serii, serii Av2, serii D, serii Dv2, serii G, serii H itp.). Ale nie wszystkie klastry muszą mieć wszystkie rodzaje maszyn wirtualnych. Na przykład jeśli spróbujesz dodać maszynę wirtualną z serii D do usługi w chmurze, która została już wdrożona w klastrze tylko z serii, wystąpi błąd alokacji. Taka sytuacja występuje również w przypadku próby zmiany rozmiarów jednostki SKU maszyny wirtualnej (na przykład przełączenia z serii do serii D).
+Klastry w centrum danych mogą mieć różne konfiguracje typów maszyn (na przykład serii, serii Av2, serii D, serii Dv2, serii G, serii H itp.). Ale nie wszystkie klastry muszą mieć wszystkie rodzaje maszyn wirtualnych. Na przykład jeśli spróbujesz dodać maszynę wirtualną z serii D do usługi w chmurze, która została już wdrożona w klastrze tylko z serii, wystąpi błąd alokacji. Taka sytuacja występuje również w przypadku próby zmiany rozmiarów jednostki SKU maszyny wirtualnej (na przykład przełączenia z serii do serii D).
 
-Aby uzyskać pomoc w zapobieganiu takich niepowodzeń [alokacji, zobacz niepowodzenie alokacji usługi w chmurze: Rozwiązania](cloud-services-allocation-failures.md#solutions).
+Aby uzyskać pomoc w rozwiązywaniu takich błędów alokacji, [Zobacz niepowodzenie alokacji usługi w chmurze: Rozwiązania](cloud-services-allocation-failures.md#solutions).
 
 Aby sprawdzić dostępne rozmiary w Twoim regionie, zobacz [Microsoft Azure: Dostępne produkty według regionów](https://azure.microsoft.com/regions/services).
 
@@ -73,7 +73,7 @@ Ponieważ usługa w chmurze jest zasobem klasycznym, który nie jest bezpośredn
   
 - Wdrażanie za [Azure Portal](https://portal.azure.com).
 
-    Ta wartość będzie działała z [Azure Portal](https://portal.azure.com) , gdy połączenie przechodzi przez serwer proxy/podkładkę, która umożliwia komunikację między zasobami Azure Resource Manager i klasycznymi. 
+    Będzie to [Azure Portal](https://portal.azure.com) możliwe, gdy połączenie przechodzi przez serwer proxy/podkładkę, która umożliwia komunikację między zasobami Azure Resource Manager i klasycznymi. 
  
 ## <a name="why-does-azure-portal-require-me-to-provide-a-storage-account-for-deployment"></a>Dlaczego Azure Portal wymaga podania konta magazynu na potrzeby wdrożenia? 
 

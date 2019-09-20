@@ -1,10 +1,10 @@
 ---
-title: Możliwość obsługi dodawania maszyny wirtualne platformy Azure do istniejącego dostępności zestawu | Dokumentacja firmy Microsoft
-description: Możliwość obsługi dodawania maszyny wirtualne platformy Azure do istniejącego zestawu dostępności.
+title: Obsługa dodawania maszyn wirtualnych platformy Azure do istniejącego zestawu dostępności | Microsoft Docs
+description: Obsługa dodawania maszyn wirtualnych platformy Azure do istniejącego zestawu dostępności.
 services: virtual-machines-linux
 documentationcenter: ''
 author: Deland-Han
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 7a5e97b66fec040b4ec32caa8d58cf9b50169a33
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3954df389516aa7199022d713dc63d62dda961ae
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60443708"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155459"
 ---
-# <a name="supportability-of-adding-azure-vms-to-an-existing-availability-set"></a>Możliwość obsługi dodawania maszyny wirtualne platformy Azure do istniejącego zestawu dostępności
+# <a name="supportability-of-adding-azure-vms-to-an-existing-availability-set"></a>Obsługa dodawania maszyn wirtualnych platformy Azure do istniejącego zestawu dostępności
 
-Można czasami napotkać ograniczenia podczas dodawania nowych maszyn wirtualnych (VM) do istniejącego zestawu dostępności. Poniższej tabeli przedstawiono serię maszyn wirtualnych, które można łączyć w tym samym zestawie dostępności.
+Czasami mogą wystąpić ograniczenia podczas dodawania nowych maszyn wirtualnych do istniejącego zestawu dostępności. Poniższy wykres zawiera szczegółowe informacje o serii maszyn wirtualnych, które można mieszać w tym samym zestawie dostępności.
 
-Oto macierzy obsługi, aby łączyć różne rodzaje maszyn wirtualnych:
+Oto macierz obsługi do mieszania różnych typów maszyn wirtualnych:
 
-Serie i zestaw dostępności|Drugą maszynę Wirtualną|A|Av2|D|Dv2|Dv3|
+Zestaw dostępności & serii|Druga maszyna wirtualna|A|Av2|D|Dv2|Dv3|
 |---|---|---|---|---|---|---|
 |Pierwsza maszyna wirtualna|||||||
 |A||OK|OK|OK|OK|OK|
@@ -36,6 +36,6 @@ Serie i zestaw dostępności|Drugą maszynę Wirtualną|A|Av2|D|Dv2|Dv3|
 |Dv2||OK|OK|OK|OK|OK|
 |Dv3||OK|OK|OK|OK|OK|
 
-Innych serii nie można w tym samym dostępności, ponieważ wymagają one określonego sprzętu.
+Wszystkie inne serie nie mogą znajdować się w tym samym zestawie dostępności, ponieważ wymagają określonego sprzętu.
 
-Rozmiar maszyny Wirtualnej a8/A9 nie mogą być mieszane ze względu na wymagania na dedykowana sieć zaplecza RDMA.
+Nie można mieszać A8/A9 maszyny wirtualnej ze względu na wymaganie dedykowanej sieci zaplecza RDMA.

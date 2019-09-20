@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: b3607f0b462efceab322e6eaf616268a34b02fb0
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 2c63d63e57a23963f17b6773f244973b051b57eb
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142081"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162454"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Pracuj z poprzednią wersją Azure Migrate
 
@@ -78,7 +78,7 @@ Widok gotowości platformy Azure w ocenie przedstawia stan gotowości każdej ma
 
 **Gotowości** | **State** | **Szczegóły**
 --- | --- | ---
-Gotowa na platformę Azure | Brak problemów ze zgodnością. Maszynę można zmigrować na platformę Azure, a jej uruchomienie na platformie Azure spowoduje pełną pomoc techniczną platformy Azure. | W przypadku maszyn wirtualnych, które są gotowe do migracji, usługa Azure Migrate wyświetla zalecany rozmiar maszyny wirtualnej na platformie Azure.
+Gotowa na platformę Azure | Brak problemów ze zgodnością. Maszynę można migrować na platformę Azure i uruchamiać ją na platformie Azure z pełną pomocą techniczną platformy Azure. | W przypadku maszyn wirtualnych, które są gotowe do migracji, usługa Azure Migrate wyświetla zalecany rozmiar maszyny wirtualnej na platformie Azure.
 Warunkowo gotowa na platformę Azure | Komputer może przeprowadzić rozruch na platformie Azure, ale może nie mieć pełnej pomocy technicznej platformy Azure. Na przykład maszyna ze starszą wersją systemu Windows Server, która nie jest obsługiwana na platformie Azure. | Azure Migrate objaśnia problemy z gotowością i zawiera czynności zaradcze.
 Brak gotowości na platformę Azure |  Maszyna wirtualna nie zostanie przeprowadzony na platformie Azure. Na przykład jeśli maszyna wirtualna ma dysk o pojemności ponad 4 TB, nie może być hostowana na platformie Azure. | Azure Migrate objaśnia problemy z gotowością i zawiera czynności zaradcze.
 Gotowość nieznana | Azure Migrate nie może zidentyfikować gotowości platformy Azure, zwykle ponieważ dane nie są dostępne.
@@ -91,7 +91,7 @@ Gotowość uwzględnia wiele właściwości maszyn wirtualnych, aby określić, 
 **Property** | **Szczegóły** | **Gotowości**
 --- | --- | ---
 **Typ rozruchu** | Obsługiwane przez system BIOS. Interfejs UEFI nie jest obsługiwany. | Warunkowo gotowe, jeśli typ rozruchu to UEFI.
-**Rdzeni** | Komputery Core < = Maksymalna liczba rdzeni (128) obsługiwana przez maszynę wirtualną platformy Azure.<br/><br/> Jeśli historia wydajności jest dostępna, Azure Migrate traktuje wykorzystane rdzenie.<br/>Jeśli <br/>czynnik komfortu jest określony w ustawieniach oceny, Liczba użytych rdzeni jest mnożona przez współczynnik komfortu.<br/><br/> Jeśli nie ma historii wydajności, Azure Migrate używa przyznanych rdzeni, bez zastosowania współczynnika komfortu. | Gotowe, jeśli jest mniejsze lub równe limitom.
+**Rdzeni** | Komputery Core < = Maksymalna liczba rdzeni (128) obsługiwana przez maszynę wirtualną platformy Azure.<br/><br/> Jeśli historia wydajności jest dostępna, Azure Migrate traktuje wykorzystane rdzenie.<br/>Jeśli czynnik komfortu jest określony w ustawieniach oceny, Liczba użytych rdzeni jest mnożona przez współczynnik komfortu.<br/><br/> Jeśli nie ma historii wydajności, Azure Migrate używa przyznanych rdzeni, bez zastosowania współczynnika komfortu. | Gotowe, jeśli jest mniejsze lub równe limitom.
 **Pamięć** | Rozmiar pamięci maszyny < = Maksymalna ilość pamięci (3892 GB na platformie Azure M Series Standard_M128m&nbsp;<sup>2</sup>) dla maszyny wirtualnej platformy Azure. [Dowiedz się więcej](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Jeśli historia wydajności jest dostępna, Azure Migrate uważa wykorzystanie pamięci.<br/><br/>W przypadku określenia współczynnika komfortu wykorzystanie pamięci jest mnożone przez współczynnik komfortu.<br/><br/> Jeśli nie ma historii, przydzieloną pamięć jest używana, bez zastosowania współczynnika komfortu.<br/><br/> | Gotowe, jeśli w ramach limitów.
 **Dysk magazynu** | Przydzielony rozmiar dysku musi mieć wartość 4 TB (4096 GB) lub mniejszą.<br/><br/> Liczba dysków dołączonych do maszyny musi być 65 lub mniejsza, łącznie z dyskiem systemu operacyjnego. | Gotowe, jeśli w ramach limitów.
 **Sieć** | Maszyna musi mieć dołączoną 32 lub mniej kart sieciowych. | Gotowe, jeśli w ramach limitów.
@@ -142,7 +142,7 @@ Szacunkowe koszty przedstawiają łączny koszt obliczeń i magazynu na potrzeby
 
 Każda Ocena oparta na wydajności jest skojarzona z oceną zaufania.
 
-- Klasyfikacja zaufania mieści się w zakresie od jednej gwiazdki do pięciu gwiazdek (jeden początek jest najniższy i pięć — Rozpocznij najwyższy).
+- Klasyfikacja zaufania mieści się w zakresie od jednej gwiazdki do pięciu gwiazdek (jedna gwiazdka to najniższy i pięć gwiazdek).
 - Ocena zaufania jest przypisana do oceny na podstawie dostępności punktów danych potrzebnych do obliczenia oceny.
 - Ocena zaufania do oceny pomaga oszacować niezawodność zaleceń dotyczących rozmiaru określanych przez usługę Azure Migrate.
 - Ocena zaufania jest niedostępna dla "AS-IS" w przypadku ocen lokalnych.
@@ -216,7 +216,7 @@ Po skonfigurowaniu obszaru roboczego należy pobrać i zainstalować agentów na
 4. Skopiuj identyfikator i klucz obszaru roboczego. Są one potrzebne po zainstalowaniu MMA na maszynie lokalnej.
 
 > [!NOTE]
-> Aby zautomatyzować instalację agentów, można użyć narzędzia do wdrażania, takiego jak System Center Configuration Manager lub narzędzia partnerskiego, takiego jak [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration), orovides rozwiązanie do wdrażania agentów Azure Migrate.
+> Aby zautomatyzować instalację agentów, można użyć narzędzia do wdrażania, takiego jak System Center Configuration Manager lub narzędzia partnerskiego, takiego jak [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration), które zapewnia rozwiązanie do wdrażania agentów dla Azure Migrate.
 
 
 #### <a name="install-the-mma-agent-on-a-windows-machine"></a>Instalowanie agenta MMA na komputerze z systemem Windows

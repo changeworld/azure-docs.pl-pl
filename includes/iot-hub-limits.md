@@ -4,12 +4,12 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 104849557a8580e16fa1860b7919d1c0252debe9
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 689322614e2cea4e59a5a573b72bfeb2aafda847
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67183626"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71148464"
 ---
 W poniższej tabeli wymieniono limity związane z różnymi warstwami usług S1, S2, S3 i F1. Aby uzyskać informacje o kosztach poszczególnych *jednostek* w poszczególnych warstwach, zobacz [cennik usługi Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
 
@@ -38,6 +38,7 @@ W poniższej tabeli wymieniono limity dotyczące zasobów IoT Hub.
 | Maksymalny rozmiar komunikatu przesyłanego z chmury do urządzenia |64 KB |
 | Maksymalny czas wygaśnięcia komunikatu przesyłanego z chmury do urządzenia |2 dni |
 | Maksymalna liczba dostarczonych komunikatów przesyłanych <br/> z chmury do urządzenia |100 |
+| Maksymalna głębokość kolejki z chmury do urządzenia dla urządzenia |50 |
 | Maksymalna liczba dostarczonych komunikatów zwrotnych <br/> w odpowiedzi na komunikaty przesłane z chmury do urządzenia |100 |
 | Maksymalny czas wygaśnięcia komunikatów zwrotnych <br/> w odpowiedzi na komunikaty przesłane z chmury do urządzenia |2 dni |
 | [Maksymalny rozmiar sznurka urządzenia](../articles/iot-hub/iot-hub-devguide-device-twins.md#device-twin-size) <br/> (tagi, zgłoszone właściwości i żądane właściwości) | 8 KB |

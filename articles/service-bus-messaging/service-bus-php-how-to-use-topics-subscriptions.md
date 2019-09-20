@@ -1,6 +1,6 @@
 ---
-title: Jak używać tematów usługi Service Bus za pomocą języka PHP | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać tematów usługi Service Bus za pomocą języka PHP na platformie Azure.
+title: Jak używać tematów Service Bus w języku PHP | Microsoft Docs
+description: Dowiedz się, jak używać tematów Service Bus w języku PHP na platformie Azure.
 services: service-bus-messaging
 documentationcenter: php
 author: axisc
@@ -14,46 +14,46 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 18aeaccef724ba94a9c18240fb77ea33897e8d26
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eba2c0aeb37f2bc2283e7afb108bb4578981120e
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063872"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147223"
 ---
-# <a name="how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Jak korzystać z subskrypcji i tematów usługi Service Bus za pomocą języka PHP
+# <a name="how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Jak używać tematów Service Bus i subskrypcji w języku PHP
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-W tym artykule pokazano, jak używać tematów usługi Service Bus i subskrypcji. Przykłady są zapisywane w języku PHP i użyj [zestawu Azure SDK dla języka PHP](../php-download-sdk.md). Omówione scenariusze obejmują:
+W tym artykule pokazano, jak używać tematów i subskrypcji Service Bus. Przykłady są zapisywane w języku PHP i korzystają z [zestawu Azure SDK dla języka PHP](https://github.com/Azure/azure-sdk-for-php). Omówione scenariusze obejmują:
 
 - Tworzenie tematów i subskrypcji 
 - Tworzenie filtrów subskrypcji 
 - Wysyłanie komunikatów do tematu 
-- Odbieranie komunikatów z subskrypcji
+- Otrzymywanie komunikatów z subskrypcji
 - Usuwanie tematów i subskrypcji
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-1. Subskrypcja platformy Azure. Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Możesz aktywować swoje [korzyści dla subskrybentów programu Visual Studio i MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) lub zarejestrować się w celu [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-2. Wykonaj czynności opisane w [Szybki Start: Użyj witryny Azure portal do utworzenia tematu usługi Service Bus i subskrypcji do tematu](service-bus-quickstart-topics-subscriptions-portal.md) do utworzenia usługi Service Bus **przestrzeni nazw** i Uzyskaj **parametry połączenia**.
+1. Subskrypcja platformy Azure. Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Możesz aktywować korzyści dla [subskrybentów programu Visual Studio lub MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Wykonaj kroki opisane w [przewodniku szybki start: Użyj Azure Portal, aby utworzyć temat Service Bus i subskrypcje w temacie](service-bus-quickstart-topics-subscriptions-portal.md) w celu utworzenia **przestrzeni nazw** Service Bus i pobrania **parametrów połączenia**.
 
     > [!NOTE]
-    > Utworzysz **tematu** i **subskrypcji** do tematu przy użyciu **PHP** w tym przewodniku Szybki Start. 
+    > W tym przewodniku szybki start utworzysz **temat** i **subskrypcję** tematu przy użyciu języka **php** . 
 
 ## <a name="create-a-php-application"></a>Tworzenie aplikacji języka PHP
-Jedynym wymaganiem dla tworzenia aplikacji w języku PHP, który uzyskuje dostęp do usługi Azure Blob to odwoływać się do klas w [zestawu Azure SDK dla języka PHP](../php-download-sdk.md) z w obrębie kodu. Można użyć dowolnego narzędzia programistyczne do tworzenia aplikacji lub Notatnik.
+Jedynym wymaganiem do tworzenia aplikacji w języku PHP, która uzyskuje dostęp do Blob service platformy Azure, jest odwołanie do klas w [zestawie Azure SDK dla języka PHP](https://github.com/Azure/azure-sdk-for-php) z poziomu kodu. Możesz użyć dowolnych narzędzi programistycznych do utworzenia aplikacji lub Notatnika.
 
 > [!NOTE]
-> Instalacja PHP musi mieć również [rozszerzenia OpenSSL](https://php.net/openssl) zainstalowane i włączone.
+> W instalacji PHP musi być zainstalowane i włączone [rozszerzenie OpenSSL](https://php.net/openssl) .
 > 
 > 
 
-W tym artykule opisano, jak korzystać z funkcji usługi, które mogą być wywoływane w ramach aplikacji PHP lokalnie lub w kodzie, w ramach roli sieci web platformy Azure, rola procesu roboczego lub witryny sieci Web.
+W tym artykule opisano sposób korzystania z funkcji usługi, które mogą być wywoływane lokalnie w aplikacji w języku PHP lub w kodzie uruchomionym w ramach roli sieci Web, roli procesu roboczego lub witryny internetowej platformy Azure.
 
-## <a name="get-the-azure-client-libraries"></a>Pobierz biblioteki klienta usługi Azure
+## <a name="get-the-azure-client-libraries"></a>Pobierz biblioteki klienckie platformy Azure
 
-### <a name="install-via-composer"></a>Instalowanie za pomocą Composer (kompozytor)
-1. Utwórz plik o nazwie **composer.json** w katalogu głównym projektu i dodać do niego następujący kod:
+### <a name="install-via-composer"></a>Instalowanie przez układacz
+1. Utwórz plik o nazwie **Composer. JSON** w katalogu głównym projektu i Dodaj do niego następujący kod:
    
     ```json
     {
@@ -62,23 +62,23 @@ W tym artykule opisano, jak korzystać z funkcji usługi, które mogą być wywo
       }
     }
     ```
-2. Pobierz **[composer.phar] [composer phar]** w katalogu głównym projektu.
-3. Otwórz wiersz polecenia i uruchom następujące polecenie w katalogu głównym projektu
+2. Pobierz **[Composer. PHAR] [Composer-PHAR]** w katalogu głównym projektu.
+3. Otwórz wiersz polecenia i wykonaj następujące polecenie w katalogu głównym projektu
    
     ```
     php composer.phar install
     ```
 
-## <a name="configure-your-application-to-use-service-bus"></a>Konfigurowanie aplikacji do użycia usługi Service Bus
-Aby użyć interfejsów API usługi Service Bus:
+## <a name="configure-your-application-to-use-service-bus"></a>Skonfiguruj aplikację do używania Service Bus
+Aby używać interfejsów API Service Bus:
 
-1. Odwołanie do automatycznej ładowarki pliku przy użyciu [require_once] [ require-once] instrukcji.
-2. Odwoływać się do dowolnej klasy, których można użyć.
+1. Odwołuje się do pliku automatycznej ładowarki przy użyciu instrukcji [require_once][require-once] .
+2. Odwołuje się do dowolnych klas, które mogą być używane.
 
-Poniższy przykład pokazuje, jak to plik automatycznej ładowarki i odwołania **ServiceBusService** klasy.
+Poniższy przykład pokazuje, jak uwzględnić plik automatycznej ładowarki i odwołać się do klasy **ServiceBusService** .
 
 > [!NOTE]
-> W tym przykładzie (i inne przykłady w tym artykule) przyjęto założenie, że zainstalowano biblioteki klienckie PHP na platformie Azure za pośrednictwem Composer (kompozytor). Po zainstalowaniu bibliotek ręcznie lub jako pakiet GRUSZKI, użytkownik musi odwoływać się **WindowsAzure.php** automatycznej ładowarki pliku.
+> W tym przykładzie (i innych przykładach w tym artykule) założono, że zainstalowano biblioteki klienckie PHP dla systemu Azure przez układacz. Jeśli biblioteki zostały zainstalowane ręcznie lub jako pakiet php, należy odwołać się do pliku automatycznej ładowarki **windowsazure. php** .
 > 
 > 
 
@@ -87,22 +87,22 @@ require_once 'vendor/autoload.php';
 use WindowsAzure\Common\ServicesBuilder;
 ```
 
-W poniższych przykładach `require_once` instrukcji jest zawsze widoczne, ale są wywoływane tylko klasy konieczne na przykład do wykonania.
+W poniższych przykładach `require_once` instrukcja jest zawsze wyświetlana, ale przywoływane są tylko klasy niezbędne do wykonania tego przykładu.
 
-## <a name="set-up-a-service-bus-connection"></a>Konfigurowanie połączenia usługi Service Bus
-Do utworzenia wystąpienia klienta usługi Service Bus, musisz mieć prawidłowe parametry połączenia w następującym formacie:
+## <a name="set-up-a-service-bus-connection"></a>Skonfiguruj połączenie Service Bus
+Aby utworzyć wystąpienie klienta Service Bus, należy najpierw dysponować prawidłowymi parametrami połączenia w tym formacie:
 
 ```
 Endpoint=[yourEndpoint];SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[Primary Key]
 ```
 
-Gdzie `Endpoint` ma zazwyczaj format `https://[yourNamespace].servicebus.windows.net`.
+Gdzie `Endpoint` jest zazwyczaj format `https://[yourNamespace].servicebus.windows.net`.
 
-Aby utworzyć dowolny klient usługi platformy Azure, należy użyć `ServicesBuilder` klasy. Możesz:
+Aby utworzyć dowolnego klienta usługi platformy Azure, należy użyć `ServicesBuilder` klasy. Możesz:
 
-* Przekaż parametry połączenia do niego bezpośrednio.
-* Użyj **CloudConfigurationManager (CCM)** do sprawdzenia wiele źródeł zewnętrznych dla parametrów połączenia:
-  * Domyślnie pochodzi z obsługą jednego źródła zewnętrznego — zmienne środowiskowe.
+* Przekaż parametry połączenia bezpośrednio do niego.
+* Użyj **CloudConfigurationManager (CCM)** , aby sprawdzić wiele zewnętrznych źródeł parametrów połączenia:
+  * Domyślnie jest on dostarczany z obsługą jednego zewnętrznego źródła — zmienne środowiskowe.
   * Możesz dodać nowe źródła, rozszerzając klasę `ConnectionStringSource`.
 
 W przedstawionych tutaj przykładach parametry połączenia są przekazywane bezpośrednio.
@@ -118,9 +118,9 @@ $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($
 ```
 
 ## <a name="create-a-topic"></a>Tworzenie tematu
-Można wykonywać operacje zarządzania dla tematów usługi Service Bus za pośrednictwem `ServiceBusRestProxy` klasy. A `ServiceBusRestProxy` obiekt jest konstruowany przy użyciu `ServicesBuilder::createServiceBusService` metoda fabryki parametrami odpowiednie połączenie, który hermetyzuje tokenu uprawnieniami do zarządzania nim.
+Można wykonywać operacje zarządzania dla Service Bus tematów za pośrednictwem `ServiceBusRestProxy` klasy. Obiekt jest konstruowany `ServicesBuilder::createServiceBusService` za pośrednictwem metody fabryki z odpowiednimi parametrami połączenia, które hermetyzują uprawnienia tokenu do zarządzania nim. `ServiceBusRestProxy`
 
-Poniższy przykład pokazuje, jak utworzyć wystąpienie `ServiceBusRestProxy` i wywołać `ServiceBusRestProxy->createTopic` Aby utworzyć temat o nazwie `mytopic` w ramach `MySBNamespace` przestrzeni nazw:
+Poniższy przykład pokazuje `ServiceBusRestProxy` , jak utworzyć wystąpienie obiektu i wywołać `ServiceBusRestProxy->createTopic` , aby utworzyć temat o `mytopic` nazwie w `MySBNamespace` przestrzeni nazw:
 
 ```php
 require_once 'vendor/autoload.php';
@@ -148,15 +148,15 @@ catch(ServiceException $e){
 ```
 
 > [!NOTE]
-> Możesz użyć `listTopics` metody `ServiceBusRestProxy` obiekty do sprawdzenia, czy temat o określonej nazwie już istnieje w przestrzeni nazw usługi.
+> Możesz użyć `listTopics` metody dla `ServiceBusRestProxy` obiektów, aby sprawdzić, czy temat o określonej nazwie już istnieje w przestrzeni nazw usługi.
 > 
 > 
 
 ## <a name="create-a-subscription"></a>Tworzenie subskrypcji
-Subskrypcje tematu są również tworzone przy użyciu `ServiceBusRestProxy->createSubscription` metody. Subskrypcje są nazywane i mogą zawierać opcjonalny filtr, który ogranicza zestaw komunikatów przesyłany do wirtualnej kolejki subskrypcji.
+Subskrypcje tematów są również tworzone za pomocą `ServiceBusRestProxy->createSubscription` metody. Subskrypcje są nazywane i mogą zawierać opcjonalny filtr, który ogranicza zestaw komunikatów przesyłany do wirtualnej kolejki subskrypcji.
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Tworzenie subskrypcji z filtrem domyślnym (MatchAll)
-Jeśli po utworzeniu nowej subskrypcji został określony żaden filtr **MatchAll** filtr (ustawienie domyślne) jest używany. Gdy **MatchAll** filtr jest stosowany, wszystkie komunikaty opublikowane do tematu są umieszczane w wirtualnej kolejce subskrypcji. Poniższy przykład tworzy subskrypcję o nazwie `mysubscription` i używa domyślnego **MatchAll** filtru.
+Jeśli podczas tworzenia nowej subskrypcji nie zostanie określony żaden filtr, zostanie użyty filtr **MatchAll** (domyślnie). Gdy filtr **MatchAll** jest używany, wszystkie komunikaty opublikowane w temacie są umieszczane w kolejce wirtualnej subskrypcji. Poniższy przykład tworzy subskrypcję o nazwie `mysubscription` i używa domyślnego filtru **MatchAll** .
 
 ```php
 require_once 'vendor/autoload.php';
@@ -184,14 +184,14 @@ catch(ServiceException $e){
 ```
 
 ### <a name="create-subscriptions-with-filters"></a>Tworzenie subskrypcji z filtrami
-Można również ustawiać filtry pozwalające określić, które komunikaty wysyłane do tematu powinny znajdować się w subskrypcji określonego tematu. Najbardziej elastycznym typem filtru obsługiwanym przez subskrypcje jest [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter), która implementuje podzbiór standardu SQL92. Filtry SQL działają na właściwościach komunikatów, które są publikowane do tematu. Aby uzyskać więcej informacji na temat SqlFilters zobacz [właściwość SqlFilter.SqlExpression][sqlfilter].
+Można również ustawiać filtry pozwalające określić, które komunikaty wysyłane do tematu powinny znajdować się w subskrypcji określonego tematu. Najbardziej elastycznym typem filtru obsługiwanym przez subskrypcje jest obiekt [sqlfilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter), który IMPLEMENTUJE podzestaw standardu SQL92. Filtry SQL działają na właściwościach komunikatów, które są publikowane do tematu. Aby uzyskać więcej informacji na temat elementu sqlfilters, zobacz [sqlfilter. Sqlexpression Property][sqlfilter].
 
 > [!NOTE]
-> Każda reguła w ramach subskrypcji przetwarza komunikaty przychodzące niezależnie, dodając ich wiadomości wynik do subskrypcji. Ponadto każda nowa subskrypcja ma domyślny **reguły** obiektu za pomocą filtru, który dodaje wszystkie komunikaty z tematu do subskrypcji. Aby odbierać tylko komunikaty z pasujących do Twojego filtru, należy usunąć reguły domyślnej. Możesz usunąć domyślną regułę przy użyciu `ServiceBusRestProxy->deleteRule` metody.
+> Każda reguła w ramach subskrypcji przetwarza niezależnie wiadomości przychodzące, dodając do niej komunikaty wynikowe. Ponadto każda nowa subskrypcja ma obiekt **reguły** domyślnej z filtrem, który dodaje wszystkie komunikaty z tematu do subskrypcji. Aby odbierać tylko komunikaty zgodne z filtrem, należy usunąć regułę domyślną. Można usunąć regułę domyślną przy użyciu `ServiceBusRestProxy->deleteRule` metody.
 > 
 > 
 
-Poniższy przykład tworzy subskrypcję o nazwie `HighMessages` z **SqlFilter** wybiera tylko komunikaty o niestandardowej `MessageNumber` właściwość wyższej niż 3. Zobacz [wysyłanie komunikatów do tematu](#send-messages-to-a-topic) informacje dotyczące dodawania właściwości niestandardowych do wiadomości.
+Poniższy przykład tworzy subskrypcję o nazwie `HighMessages` przy użyciu **sqlfilter** , który wybiera tylko komunikaty o właściwości niestandardowej `MessageNumber` większej niż 3. Zobacz [wysyłanie komunikatów do tematu,](#send-messages-to-a-topic) Aby uzyskać informacje na temat dodawania właściwości niestandardowych do komunikatów.
 
 ```php
 $subscriptionInfo = new SubscriptionInfo("HighMessages");
@@ -206,7 +206,7 @@ $ruleResult = $serviceBusRestProxy->createRule("mytopic", "HighMessages", $ruleI
 
 Ten kod wymaga użycia dodatkowej przestrzeni nazw: `WindowsAzure\ServiceBus\Models\SubscriptionInfo`.
 
-Podobnie poniższy przykład tworzy subskrypcję o nazwie `LowMessages` z `SqlFilter` wybiera tylko komunikaty, które mają `MessageNumber` właściwość mniejszą lub równą 3.
+Podobnie Poniższy przykład tworzy subskrypcję o nazwie `LowMessages` `SqlFilter` , która tylko `MessageNumber` wybiera komunikaty o właściwości mniejszej lub równej 3.
 
 ```php
 $subscriptionInfo = new SubscriptionInfo("LowMessages");
@@ -219,10 +219,10 @@ $ruleInfo->withSqlFilter("MessageNumber <= 3");
 $ruleResult = $serviceBusRestProxy->createRule("mytopic", "LowMessages", $ruleInfo);
 ```
 
-Teraz, gdy komunikat jest wysyłany do `mytopic` tematu, zawsze jest dostarczany do odbiorców mających `mysubscription` subskrypcji i selektywnie dostarczany do odbiorców mających subskrypcję `HighMessages` i `LowMessages` subskrypcje (w zależności od zawartości komunikatu).
+Teraz, gdy wiadomość `mytopic` jest wysyłana do tematu, jest zawsze dostarczana do odbiorców, którzy zasubskrybują `mysubscription` subskrypcję, i wybiórczo dostarczane do nadawców subskrybowanych przez `HighMessages` subskrypcje `LowMessages` i (w zależności od po treści wiadomości).
 
 ## <a name="send-messages-to-a-topic"></a>Wysyłanie komunikatów do tematu
-Aby wysłać komunikat do tematu usługi Service Bus, wywołania aplikacji `ServiceBusRestProxy->sendTopicMessage` metody. Poniższy kod pokazuje, jak można wysłać wiadomości do `mytopic` utworzone wcześniej w temacie `MySBNamespace` przestrzeni nazw usługi.
+Aby wysłać komunikat do Service Bus tematu, aplikacja wywołuje `ServiceBusRestProxy->sendTopicMessage` metodę. Poniższy kod przedstawia sposób wysyłania komunikatu do `mytopic` tematu utworzonego wcześniej `MySBNamespace` w przestrzeni nazw usługi.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -252,7 +252,7 @@ catch(ServiceException $e){
 }
 ```
 
-Komunikaty wysyłane do tematów usługi Service Bus są wystąpieniami [BrokeredMessage][BrokeredMessage] klasy. [BrokeredMessage][BrokeredMessage] obiekty mają zestaw właściwości standardowych i metody, a także właściwości, które mogą służyć do przechowywania niestandardowych właściwości specyficzne dla aplikacji. Poniższy przykład przedstawia sposób wysyłania pięciu testowych komunikatów do `mytopic` wcześniej utworzony temat. `setProperty` Metoda służy do dodawania właściwości niestandardowych (`MessageNumber`) do każdej wiadomości. `MessageNumber` Różni się w wartości właściwości dla każdej wiadomości (tej wartości można użyć, aby określić subskrypcje, które otrzymają, jak pokazano na [Utwórz subskrypcję](#create-a-subscription) sekcji):
+Komunikaty wysyłane do tematów usługi Service Bus są wystąpieniami klasy [BrokeredMessage][BrokeredMessage]. Obiekty [BrokeredMessage][BrokeredMessage] mają zestaw standardowych właściwości i metod, a także właściwości, których można użyć do przechowywania niestandardowych właściwości specyficznych dla aplikacji. Poniższy przykład pokazuje, `mytopic` jak wysłać pięć wiadomości testowych do tematu utworzonego wcześniej. Metoda jest używana do dodawania niestandardowej właściwości (`MessageNumber`) do poszczególnych komunikatów. `setProperty` Wartość właściwości różni się w zależności od poszczególnych komunikatów (można użyć tej wartości, aby określić, które subskrypcje otrzymują, jak pokazano w sekcji [Tworzenie subskrypcji](#create-a-subscription) ): `MessageNumber`
 
 ```php
 for($i = 0; $i < 5; $i++){
@@ -268,16 +268,16 @@ for($i = 0; $i < 5; $i++){
 }
 ```
 
-Tematy usługi Service Bus obsługują maksymalny rozmiar komunikatu 256 KB w [warstwie Standardowa](service-bus-premium-messaging.md) i 1 MB w [warstwie Premium](service-bus-premium-messaging.md). Nagłówek, który zawiera standardowe i niestandardowe właściwości aplikacji, może mieć maksymalny rozmiar 64 KB. Nie ma żadnego limitu liczby komunikatów w temacie, ale jest ograniczenie całkowitego rozmiaru komunikatów przechowywanych przez temat. Ta górny limit na rozmiar tematu jest 5 GB. Aby uzyskać więcej informacji na temat limitów przydziału, zobacz [przydziały usługi Service Bus][Service Bus quotas].
+Tematy usługi Service Bus obsługują maksymalny rozmiar komunikatu 256 KB w [warstwie Standardowa](service-bus-premium-messaging.md) i 1 MB w [warstwie Premium](service-bus-premium-messaging.md). Nagłówek, który zawiera standardowe i niestandardowe właściwości aplikacji, może mieć maksymalny rozmiar 64 KB. Nie ma żadnego limitu liczby komunikatów w temacie, ale jest ograniczenie całkowitego rozmiaru komunikatów przechowywanych przez temat. Górny limit rozmiaru tematu wynosi 5 GB. Aby uzyskać więcej informacji na temat przydziałów, zobacz [Service Bus przydziały][Service Bus quotas].
 
 ## <a name="receive-messages-from-a-subscription"></a>Odbieranie komunikatów z subskrypcji
-Najlepszym sposobem na odbieranie komunikatów z subskrypcji jest użycie `ServiceBusRestProxy->receiveSubscriptionMessage` metody. Komunikaty mogą być odbierane w dwóch różnych trybach: [*ReceiveAndDelete* i *PeekLock*](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode). Ustawienie domyślne to **PeekLock**.
+Najlepszym sposobem odbierania komunikatów z subskrypcji jest użycie `ServiceBusRestProxy->receiveSubscriptionMessage` metody. Komunikaty mogą być odbierane w dwóch różnych trybach: [ *ReceiveAndDelete* i *PeekLock*](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode). Ustawienie domyślne to **PeekLock**.
 
-W przypadku używania trybu [ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) odbieranie jest operacją pojedynczego zrzutu. Oznacza to, że kiedy usługa Service Bus odbiera żądanie odczytu komunikatu w subskrypcji, oznacza komunikat jako wykorzystywany i zwraca go do aplikacji. [ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) * tryb jest najprostszym modelem i działa najlepiej w scenariuszach, w których aplikacja może tolerować nieprzetworzenie komunikatu w razie niepowodzenia. Aby to zrozumieć, rozważmy scenariusz, w którym konsument wystawia żądanie odbioru, a następnie ulega awarii przed jego przetworzeniem. Usługa Service Bus oznaczyła komunikat jako wykorzystany, następnie gdy aplikacja zostanie ponownie uruchomiona i ponownie rozpocznie korzystanie z komunikatów, jego ma utracony komunikat, który został wykorzystany przed awarią.
+W przypadku używania trybu [ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) odbieranie jest operacją pojedynczego zrzutu. Oznacza to, że kiedy usługa Service Bus odbiera żądanie odczytu komunikatu w subskrypcji, oznacza komunikat jako wykorzystywany i zwraca go do aplikacji. Tryb [ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) * jest najprostszym modelem i najlepiej sprawdza się w scenariuszach, w których aplikacja może tolerować nieprzetwarzanie komunikatu w przypadku wystąpienia błędu. Aby to zrozumieć, rozważmy scenariusz, w którym konsument wystawia żądanie odbioru, a następnie ulega awarii przed jego przetworzeniem. Ponieważ Service Bus oznaczył komunikat jako używany, wtedy, gdy aplikacja zostanie ponownie uruchomiona i rozpocznie korzystanie z komunikatów, zostanie pominięty komunikat, który był używany przed awarią.
 
-W domyślnym [PeekLock](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) trybie odebranie komunikatu staje się operacją dwuetapowy, co umożliwia obsługę aplikacji, które nie tolerują brakujących komunikatów. Gdy usługa Service Bus odbiera żądanie, znajduje następny komunikat do wykorzystania, blokuje go w celu uniemożliwienia innym klientom odebrania go i zwraca go do aplikacji. Po skopiowaniu aplikacja zakończy przetwarzanie komunikatu (lub niezawodnie zapisze go w celu przyszłego przetwarzania), wykonuje drugi etap procesu odbierania przez przekazanie odebranego komunikatu do `ServiceBusRestProxy->deleteMessage`. Gdy Usługa Service Bus widzi `deleteMessage` wywołanie, jego oznacza komunikat jako wykorzystany i usuń go z kolejki.
+W domyślnym trybie [PeekLock](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) otrzymywanie komunikatu staje się operacją dwuetapową, co umożliwia obsługę aplikacji, które nie mogą tolerować brakujących komunikatów. Gdy usługa Service Bus odbiera żądanie, znajduje następny komunikat do wykorzystania, blokuje go w celu uniemożliwienia innym klientom odebrania go i zwraca go do aplikacji. Gdy aplikacja zakończy przetwarzanie komunikatu (lub zapisuje ją w sposób niezawodny w przyszłości), kończy drugi etap procesu odbierania, przekazując odebrany komunikat do `ServiceBusRestProxy->deleteMessage`. Gdy Service Bus widzi `deleteMessage` wywołanie, oznacza komunikat jako używany i usunąć go z kolejki.
 
-Poniższy przykład pokazuje, jak odbierać i przetwarzać komunikat przy użyciu [PeekLock](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) mode (tryb domyślny). 
+Poniższy przykład pokazuje, jak odbierać i przetwarzać komunikat przy użyciu trybu [PeekLock](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) (tryb domyślny). 
 
 ```php
 require_once 'vendor/autoload.php';
@@ -318,17 +318,17 @@ catch(ServiceException $e){
 }
 ```
 
-## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Porady: Obsługa awarii aplikacji i komunikatów niemożliwych do odczytania
-Usługa Service Bus zapewnia funkcję ułatwiającą bezpieczne odzyskiwanie w razie błędów w aplikacji lub trudności z przetwarzaniem komunikatu. Jeśli aplikacja odbiorcy nie może przetworzyć komunikatu z jakiegoś powodu, wówczas może wywołać `unlockMessage` metody dla odebranego komunikatu (zamiast `deleteMessage` metody). Powoduje to odblokowanie komunikatu w kolejce i udostępnić go do ponownego odbioru, tę samą lub inną odbierającą aplikację usługę Service Bus.
+## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Instrukcje: obsługa awarii aplikacji i nieczytelnych komunikatów
+Usługa Service Bus zapewnia funkcję ułatwiającą bezpieczne odzyskiwanie w razie błędów w aplikacji lub trudności z przetwarzaniem komunikatu. Jeśli aplikacja odbiornika nie może przetworzyć komunikatu z jakiegoś powodu, może wywołać `unlockMessage` metodę dla odebranego komunikatu (zamiast `deleteMessage` metody). Powoduje Service Bus odblokowywanie komunikatu w kolejce i udostępnienie go do odebrania przez tę samą aplikację wykorzystującą lub przez inną aplikację, która korzysta z aplikacji.
 
-Istnieje również limit czasu skojarzony z komunikatem zablokowanym w kolejce i jeśli aplikacja nie może przetworzyć komunikatu przed limit czasu blokady upływem (na przykład jeśli wystąpiła awaria aplikacji), Usługa Service Bus automatycznie odblokowuje komunikat i przypisz ją dostępne do ponownego odbioru.
+Istnieje również limit czasu skojarzony z komunikatem zablokowanym w kolejce i jeśli aplikacja nie może przetworzyć komunikatu przed upływem limitu czasu blokady (na przykład jeśli aplikacja ulega awarii), a następnie Service Bus odblokować komunikat automatycznie i uczynić go dostępne do ponownego odebrania.
 
-W przypadku, gdy aplikacja przestaje działać po przetworzeniu komunikatu, lecz przed `deleteMessage` wystawić żądania, a następnie wiadomości są przed przeniesieniem do aplikacji po jej ponownym uruchomieniu. Tego rodzaju przetwarzania jest często nazywane *co najmniej raz* oznacza, że przetwarzanie; każdy komunikat jest przetwarzany co najmniej raz, ale w pewnych sytuacjach ten sam komunikat może być dostarczony ponownie. Jeśli scenariusz nie Toleruje dwukrotnego przetwarzania, deweloperzy aplikacji powinni dodać dodatkową logikę do aplikacji do obsługi dwukrotnego dostarczania komunikatów. Jest często osiągane przy użyciu `getMessageId` metoda wiadomości, która pozostaje stała między kolejnymi próbami dostarczenia.
+W przypadku awarii aplikacji po przetworzeniu komunikatu, ale przed `deleteMessage` wystawieniem żądania, komunikat zostanie ponownie dostarczony do aplikacji po jej ponownym uruchomieniu. Ten typ przetwarzania jest często wywoływany *co najmniej raz podczas* przetwarzania; oznacza to, że każdy komunikat jest przetwarzany co najmniej raz, ale w pewnych sytuacjach może zostać ponownie dostarczony ten sam komunikat. Jeśli w scenariuszu nie można tolerować zduplikowanego przetwarzania, deweloperzy aplikacji powinni dodać do aplikacji dodatkową logikę obsługującą duplikowanie komunikatów. Jest to często osiągane przy `getMessageId` użyciu metody komunikatu, która pozostaje stała między kolejnymi próbami dostarczenia.
 
 ## <a name="delete-topics-and-subscriptions"></a>Usuwanie tematów i subskrypcji
-Aby usunąć tematu lub subskrypcji, użyj `ServiceBusRestProxy->deleteTopic` lub `ServiceBusRestProxy->deleteSubscripton` metod, odpowiednio. Usunięcie tematu powoduje również usunięcie subskrypcji, które są zarejestrowane z tematem.
+Aby usunąć temat lub subskrypcję, użyj `ServiceBusRestProxy->deleteTopic` odpowiednio `ServiceBusRestProxy->deleteSubscripton` metod lub. Usunięcie tematu powoduje również usunięcie subskrypcji, które są zarejestrowane z tematem.
 
-Poniższy przykład pokazuje sposób usuwania tematu o nazwie `mytopic` i jego zarejestrowanej subskrypcji.
+Poniższy przykład pokazuje, jak usunąć temat o nazwie `mytopic` i jego zarejestrowanych subskrypcjach.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -354,16 +354,16 @@ catch(ServiceException $e){
 }
 ```
 
-Za pomocą `deleteSubscription` metody, można usunąć subskrypcję niezależnie:
+Korzystając z `deleteSubscription` metody, można niezależnie usunąć subskrypcję:
 
 ```php
 $serviceBusRestProxy->deleteSubscription("mytopic", "mysubscription");
 ```
 
 > [!NOTE]
-> Możesz zarządzać zasobami usługi Service Bus przy użyciu [Eksploratora usługi Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/). Eksplorator usługi Service Bus pozwala użytkownikom na łączenie do przestrzeni nazw usługi Service Bus i administrować jednostek obsługi komunikatów w łatwy sposób. To narzędzie zawiera zaawansowane funkcje, takie jak funkcja Importuj/Eksportuj lub możliwość testowania tematu, kolejek, subskrypcji, usługi przekazywania, usługi notification hubs i centrów zdarzeń. 
+> Za pomocą [eksploratora Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/)można zarządzać zasobami Service Bus. Eksplorator Service Bus umożliwia użytkownikom łączenie się z przestrzenią nazw Service Bus i administrowanie jednostkami obsługi komunikatów w prosty sposób. Narzędzie zapewnia zaawansowane funkcje, takie jak funkcja importowania/eksportowania lub możliwość testowania tematów, kolejek, subskrypcji, usług przekazywania, centrów powiadomień i centrów zdarzeń. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby uzyskać więcej informacji, zobacz [kolejki, tematy i subskrypcje][Queues, topics, and subscriptions].
 
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: aa56cfafdcca163d3bdb3f339f84ceeaa37f3dc5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1980ee0bdea1316f6117d9deb7d2adb9df941768
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079927"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162610"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Jak nawiązać połączenie i zalogować się do maszyny wirtualnej platformy Azure z systemem Windows
 Korzystając z przycisku **Połącz** w witrynie Azure Portal, uruchomisz sesję pulpitu zdalnego z poziomu pulpitu systemu Windows. Najpierw Nawiąż połączenie z maszyną wirtualną, a następnie zaloguj się.
@@ -49,7 +49,7 @@ Aby nawiązać połączenie z maszyną wirtualną z systemem Windows z komputera
 
 
    > [!TIP]
-   > Jeśli przycisk **Połącz** w portalu jest wyszarzony i nie nawiązano połączenia z platformą Azure za pośrednictwem usługi [Express Route](../../expressroute/expressroute-introduction.md) lub [sieci VPN typu lokacja](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) -lokacja, przed użyciem protokołu RDP należy utworzyć i przypisać maszynę wirtualną jako publiczny adres IP. Aby uzyskać więcej informacji, zobacz [publiczne adresy IP na platformie Azure](../../virtual-network/virtual-network-ip-addresses-overview-arm.md).
+   > Jeśli przycisk **Połącz** w portalu jest wyszarzony i nie nawiązano połączenia z platformą Azure za pośrednictwem usługi [Express Route](../../expressroute/expressroute-introduction.md) lub [sieci VPN typu lokacja-lokacja](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) , przed użyciem protokołu RDP należy utworzyć i przypisać maszynę wirtualną jako publiczny adres IP. Aby uzyskać więcej informacji, zobacz [publiczne adresy IP na platformie Azure](../../virtual-network/virtual-network-ip-addresses-overview-arm.md).
    > 
    > 
 
@@ -57,7 +57,7 @@ Aby nawiązać połączenie z maszyną wirtualną z systemem Windows z komputera
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Jeśli używasz programu PowerShell i zainstalowano moduł Aure PowerShell, możesz również nawiązać połączenie za `Get-AzRemoteDesktopFile` pomocą polecenia cmdlet, jak pokazano poniżej.
+Jeśli używasz programu PowerShell i masz zainstalowany moduł Azure PowerShell, możesz również nawiązać połączenie za pomocą `Get-AzRemoteDesktopFile` polecenia cmdlet, jak pokazano poniżej.
 
 W tym przykładzie natychmiast zostanie uruchomione połączenie RDP, przechodząc przez podobne polecenia zgodnie z powyższymi instrukcjami.
 

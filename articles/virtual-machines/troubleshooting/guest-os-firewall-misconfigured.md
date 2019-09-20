@@ -4,7 +4,7 @@ description: ''
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: fcea5e4e6bb108f1a8d8036e51a5dae8a9e6431b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8f04d943e1db49beed13c183fbd06e401546fc03
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711020"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71153890"
 ---
 # <a name="azure-vm-guest-os-firewall-is-misconfigured"></a>Usługa Azure zapory systemu operacyjnego gościa maszyny Wirtualnej jest błędnie skonfigurowane
 
@@ -49,13 +49,13 @@ Połączyć się z [konsoli szeregowej, a następnie otwórz wystąpienie progra
 
 Następujące reguły można edytować, albo umożliwiające dostęp do maszyny Wirtualnej (za pośrednictwem protokołu RDP) lub w celu udostępnienia środowiska łatwiejsze do rozwiązywania problemów:
 
-*   Pulpit zdalny (ruch przychodzący TCP): Jest to standardowy regułę, która zapewnia dostępu do maszyny Wirtualnej, umożliwiając protokołu RDP na platformie Azure.
+*   Pulpit zdalny (ruch przychodzący TCP): Jest to standardowa reguła, która zapewnia podstawowy dostęp do maszyny wirtualnej przez umożliwienie protokołu RDP na platformie Azure.
 
-*   Zdalnego zarządzania Windows (ruch przychodzący HTTP): Dzięki temu reguły można nawiązać połączenia z maszyną Wirtualną przy użyciu programu PowerShell. W przypadku platformy Azure, tego rodzaju dostępu pozwala za pomocą skryptów aspekt skryptów zdalnym i rozwiązywanie problemów.
+*   Windows Remote Management (ruch przychodzący HTTP): Ta reguła umożliwia nawiązanie połączenia z maszyną wirtualną za pomocą programu PowerShell. na platformie Azure ten rodzaj dostępu umożliwia korzystanie z aspektów skryptów zdalnych skryptów i rozwiązywania problemów.
 
-*   Udostępnianie plików i drukarek (ruch przychodzący SMB): Ta reguła umożliwia dostęp do udziału sieciowego jako opcji rozwiązywania problemów.
+*   Udostępnianie plików i drukarek (ruch przychodzący SMB): Ta reguła umożliwia dostęp do udziału sieciowego jako opcję rozwiązywania problemów.
 
-*   Udostępnianie plików i drukarek (żądanie echa — ICMPv4-In): Ta reguła umożliwia wysłać polecenie ping maszyny Wirtualnej.
+*   Udostępnianie plików i drukarek (żądanie echa — ICMPv4-in): Ta reguła umożliwia wysyłanie polecenia ping do maszyny wirtualnej.
 
 W przypadku dostępu do konsoli szeregowej można tworzyć zapytania bieżący stan reguły zapory.
 
@@ -98,7 +98,7 @@ W przypadku dostępu do konsoli szeregowej można tworzyć zapytania bieżący s
 
 ### <a name="offline-mitigations"></a>Środki zaradcze w trybie offline
 
-1.  Aby włączyć lub wyłączyć reguły zapory, zapoznaj się [włączyć lub wyłączyć regułę zapory w systemie operacyjnym gościa maszyny Wirtualnej platformy Azure](enable-disable-firewall-rule-guest-os.md).
+1.  Aby włączyć lub wyłączyć reguły zapory, zapoznaj się z tematem [Włączanie lub wyłączanie reguły zapory w systemie operacyjnym gościa maszyny wirtualnej platformy Azure](enable-disable-firewall-rule-guest-os.md).
 
 2.  Sprawdź, czy znajdują się w [blokowania scenariusz ruchu przychodzącego zapory systemu operacyjnego gościa](guest-os-firewall-blocking-inbound-traffic.md).
 

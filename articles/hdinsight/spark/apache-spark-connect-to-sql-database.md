@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: c262d3841acd3497667c00a9deee04b304ddae76
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 74bff4059442c85cfcde589c5a6cc7ab36472881
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984809"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147040"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Odczytywanie i zapisywanie danych w usłudze Azure SQL Database za pomocą klastra Spark
 
@@ -38,7 +38,7 @@ Zacznij od utworzenia [Jupyter Notebook](https://jupyter.org/) skojarzonej z kla
 1. W [Azure Portal](https://portal.azure.com/)Otwórz klaster.
 1. Wybierz pozycję **Jupyter Notes** poniżej **pulpitów nawigacyjnych klastra** po prawej stronie.  Jeśli nie widzisz **pulpitów nawigacyjnych klastra**, wybierz pozycję **Przegląd** z menu po lewej stronie. Jeśli zostanie wyświetlony monit, wprowadź poświadczenia administratora klastra.
 
-    ![Notes Jupyter na platformie Spark](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Notes Jupyter na platformie Spark")
+    ![Jupyter Notes na Apache Spark](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Notes Jupyter na platformie Spark")
    
    > [!NOTE]  
    > Możesz również uzyskać dostęp do notesu Jupyter w klastrze Spark, otwierając następujący adres URL w przeglądarce. Zastąp ciąg **CLUSTERNAME** nazwą klastra:
@@ -182,7 +182,7 @@ W tej sekcji przesyłamy strumieniowo dane do tabeli **HVAC** , która została 
 
 1. Dane wyjściowe pokazują Schemat pliku **HVAC. csv**. Ten sam schemat jest również w formacie **HVAC** . W danych wyjściowych znajdują się kolumny w tabeli.
 
-    ![Schemat tabeli](./media/apache-spark-connect-to-sql-database/hdinsight-schema-table.png "Schemat tabeli")
+    ![tabela schematu Apache Spark usługi HDInsight](./media/apache-spark-connect-to-sql-database/hdinsight-schema-table.png "Schemat tabeli")
 
 1. Na koniec użyj poniższego fragmentu kodu, aby odczytać dane z pliku HVAC. csv i przesłać je strumieniowo do pliku **HVAC** w usłudze Azure SQL Database. Wklej ten fragment w komórce kodu, Zastąp wartości symboli zastępczych wartościami dla bazy danych SQL Azure, a następnie naciśnij klawisze **SHIFT + ENTER** , aby uruchomić.
 
