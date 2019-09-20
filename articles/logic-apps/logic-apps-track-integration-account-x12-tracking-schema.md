@@ -348,7 +348,7 @@ Aby ułatwić sukcesu monitora, błędy i właściwości wiadomości dla transak
 | respondingfunctionalGroupControlNumber | String | Numer kontrolny grupy oryginalnego funkcjonalnej. (Opcjonalnie) |
 | respondingFunctionalGroupId | String | Mapuje do AK101 w grupie funkcjonalnej potwierdzania identyfikatora. (Opcjonalnie) |
 | isMessageFailed | Boolean | Czy X12 wiadomości nie powiodło się. (Obowiązkowe) |
-| statusCode | Enum | Kod stanu potwierdzenia. Dozwolone wartości to **zaakceptowano**, **odrzucony**, i **AcceptedWithErrors**. (Obowiązkowe) |
+| statusCode | Enum | Kod stanu potwierdzenia. Dozwolone wartości to **Accepted**, **Rejected**, i **AcceptedWithErrors**. (Obowiązkowe) |
 | processingStatus | Enum | Stan przetwarzania potwierdzenia. Dozwolone wartości to **odebrane**, **Generated**, i **wysłane**. (Obowiązkowe) |
 | ak903 | String | Liczba zestawów transakcji odebrane. (Opcjonalnie) |
 | ak904 | String | Akceptowane liczby zestawów transakcji w grupie funkcjonalnej zidentyfikowane. (Opcjonalnie) |
