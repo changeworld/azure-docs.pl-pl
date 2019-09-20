@@ -151,7 +151,7 @@
           href: howto-data-in-replication.md
         - name: Tworzenie replik do odczytu w witrynie Azure Portal
           href: howto-read-replicas-portal.md
-        - name: Tworzenie replik do odczytu za pomocą interfejsu wiersza polecenia platformy Azure
+        - name: 'Tworzenie replik do odczytu (interfejs wiersza polecenia platformy Azure, interfejs API REST)'
           href: howto-read-replicas-cli.md
     - name: Rozwiązywanie problemów
       items:

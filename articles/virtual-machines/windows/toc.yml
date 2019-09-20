@@ -102,6 +102,8 @@
         - name: Poprzednie generacje
           href: sizes-previous-gen.md
           displayName: D-series Ds-series A-series Basic
+        - name: Rozmiary izolowane
+          href: isolation.md
         - name: Jednostki obliczeniowe platformy Azure (ACU)
           href: acu.md
         - name: Wyniki testów porównawczych

@@ -129,6 +129,8 @@
           href: move-across-regions-external-load-balancer-portal.md
         - name: Zewnętrzne równoważenie obciążenia — program PowerShell
           href: move-across-regions-external-load-balancer-powershell.md
+        - name: Wewnętrzne równoważenie obciążenia — portal
+          href: move-across-regions-internal-load-balancer-portal.md
         - name: Wewnętrzne równoważenie obciążenia — program PowerShell
           href: move-across-regions-internal-load-balancer-powershell.md
     - name: Rozwiązywanie problemów

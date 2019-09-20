@@ -89,6 +89,8 @@
           href: authentication-scenarios.md
         - name: Przepływy uwierzytelniania i scenariusze aplikacji
           href: authentication-flows-app-scenarios.md
+        - name: Najlepsze rozwiązania dotyczące platformy tożsamości
+          href: identity-platform-integration-checklist.md
         - name: Scenariusze aplikacji
           items:
             - name: Logowanie odbiorców
@@ -217,8 +219,6 @@
                   href: scenario-mobile-call-api.md
                 - name: Przenoszenie do środowiska produkcyjnego
                   href: scenario-mobile-production.md
-            - name: Lista kontrolna integracji
-              href: identity-platform-integration-checklist.md
         - name: Biblioteka uwierzytelniania firmy Microsoft (MSAL)
           items:
             - name: Omówienie

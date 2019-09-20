@@ -103,6 +103,8 @@
           href: sizes-hpc.md
         - name: Poprzednie generacje
           href: sizes-previous-gen.md
+        - name: Rozmiary izolowane
+          href: isolation.md
         - name: Jednostki obliczeniowe platformy Azure (ACU)
           href: acu.md
         - name: Limity przydziału procesorów wirtualnych

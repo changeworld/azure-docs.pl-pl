@@ -5,6 +5,8 @@
     - name: Informacje na temat usługi Azure AD B2C
       expanded: true
       href: active-directory-b2c-overview.md
+    - name: Informacje techniczne i omówienie funkcji
+      href: technical-overview.md
 - name: Przewodniki Szybki start
   expanded: true
   items:

@@ -1,113 +1,133 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentacja usługi Language Understanding (LUIS)
+summary: Dowiedz się, jak używać usługi Language Understanding, aby umożliwić aplikacji rozpoznawanie poleceń wydawanych naturalnymi słowami.
 metadata:
-  document_id: null
-  title: 'Language Understanding (LUIS) — samouczki, przewodniki Szybki start, dokumentacja interfejsu API'
-  description: 'Dowiedz się, jak używać usługi Language Understanding, aby umożliwić aplikacji rozpoznawanie poleceń wydawanych naturalnymi słowami.'
+  ms.topic: landing-page
+  ms.date: 09/19/2019
+  ms.author: nitinme
   author: nitinme
-  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: language-understanding
-  ms.topic: landing-page
-  ms.date: 01/23/2019
-  ms.author: nitinme
-abstract:
-  description: 'Usługa Language Understanding (LUIS) umożliwia aplikacji rozpoznawanie poleceń wydawanych naturalnymi słowami. Usługa LUIS korzysta z uczenia maszynowego, aby umożliwić deweloperom tworzenie aplikacji odbierających dane wejściowe użytkownika w języku naturalnym i wyodrębniających ich znaczenie.'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ../media/index/luis-landing-page-video.png
-      width: 250
-    title: 'Co nowego w usłudze LUIS (18:28)'
-    href: 'https://azure.microsoft.com/resources/videos/whats-new-with-language-understanding-service-luis'
-    width: 250
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/luis/what-is-luis
-            html: <p>Informacje na temat usługi Language Understanding (LUIS).</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Co to jest usługa LUIS?
-          - href: /azure/cognitive-services/luis/luis-how-plan-your-app
-            html: <p>Przygotuj konspekt intencji i jednostek związanych z Twoją aplikacją.</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Planowanie aplikacji usługi LUIS
-          - href: /azure/cognitive-services/luis/luis-concept-best-practices
-            html: <p>Skorzystaj z tych najlepszych rozwiązań podczas tworzenia aplikacji usługi LUIS.</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Najlepsze rozwiązania dotyczące aplikacji usługi LUIS
-  - title: 5-minutowe przewodniki Szybki start
-    items:
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: media/index/logo_csharp.svg
-          - image:
-              src: media/index/logo_java.svg
-          - image:
-              src: media/index/logo_nodejs.svg
-          - image:
-              src: media/index/logo_python.svg
-        rows:
-          - title: Interfejs API punktu końcowego
-            values:
-              - href: luis-get-started-cs-get-intent
-              - href: luis-get-started-java-get-intent
-              - href: luis-get-started-node-get-intent
-              - href: luis-get-started-python-get-intent
-          - title: Interfejs API tworzenia aplikacji
-            values:
-              - href: luis-get-started-cs-add-utterance
-              - href: luis-get-started-java-add-utterance
-              - href: luis-get-started-node-add-utterance
-              - href: luis-get-started-python-add-utterance
-  - title: Samouczki krok po kroku
-    items:
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="luis-quickstart-intents-only">Tworzenie aplikacji dla domeny działu kadr</a>
-          - html: <a href="luis-tutorial-prebuilt-intents-entities">Dodawanie wstępnie utworzonych intencji i jednostek</a>
-          - html: <a href="luis-quickstart-intents-regex-entity">Dodawanie jednostki wyrażenia regularnego</a>
-          - html: <a href="luis-quickstart-intent-and-list-entity">Dodawanie jednostki listy</a>
-          - html: <a href="tutorial-entity-roles">Używanie ról jednostek</a>
-          - html: <a href="luis-quickstart-primary-and-secondary-data">Dodawanie jednostki prostej i listy fraz</a>
-          - html: <a href="luis-quickstart-intent-and-key-phrase">Dodawanie jednostki keyPhrase</a>
-          - html: <a href="luis-quickstart-intent-and-sentiment-analysis">Dodawanie analizy tonacji</a>
-  - title: Przykłady
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://aka.ms/luis-code-samples">Przykłady w serwisie GitHub</a><br/>'
-  - title: Filmy wideo
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player" > Piątek z Azure podczas konferencji Build 2018 — Cognitive Services — Language (LUIS)</a>'
-          - html: '<a href="https://channel9.msdn.com/events/Build/2018/BRK3208" >Sesja konferencji Build 2018 — inteligencja botów, możliwości rozpoznawania mowy i najlepsze rozwiązania dotyczące NLU</a>'
-  - title: Dokumentacja
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Interfejsy API REST v2
-            html: '<p><a href="https://go.microsoft.com/fwlink/?linkid=2092356"> Interfejs API punktu końcowego</a></p><p><a href="https://go.microsoft.com/fwlink/?linkid=2092087"> Interfejs API tworzenia aplikacji</a></p>'
-          - title: Zestawy SDK
-            html: '<p><a href="https://aka.ms/luis-endpoint-sdk"> Zestaw SDK punktu końcowego platformy .NET</a></p><p><a href="https://aka.ms/luis-authoring-sdk"> Zestaw SDK tworzenia aplikacji na platformie .NET</a></p>'
-          - title: PowerShell
-            html: '<p><a href=https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: Interfejs wiersza polecenia
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices">Interfejs wiersza polecenia platformy Azure</a></p>'
+  services: cognitive-services
+  title: Dokumentacja usługi Language Understanding (LUIS)
+  titleSuffix: Azure Cognitive Services
+  description: Usługa Language Understanding (LUIS) umożliwia aplikacji rozpoznawanie poleceń wydawanych naturalnymi słowami. Usługa LUIS korzysta z uczenia maszynowego, aby umożliwić deweloperom tworzenie aplikacji odbierających dane wejściowe użytkownika w języku naturalnym i wyodrębniających ich znaczenie.
+  ms.openlocfilehash: 2191d2b3efebe1439f9f6180540929dc83027846
+  ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 09/19/2019
+  ms.locfileid: "71129264"
+landingContent:
+- title: Informacje o usłudze Language Understanding (LUIS)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest rozumienie języka?
+      url: what-is-luis.md
+    - text: Co nowego
+      url: whats-new.md
+    - text: Portal usługi LUIS
+      url: https://www.luis.ai
+  - linkListType: concept
+    links:
+    - text: Planowanie aplikacji
+      url: luis-how-plan-your-app.md
+    - text: Cykl tworzenia aplikacji
+      url: luis-concept-app-iteration.md
+  - linkListType: video
+    links:
+    - text: 'Pokaz sztucznej inteligencji: LUIS'
+      url: https://azure.microsoft.com/resources/videos/whats-new-with-language-understanding-service-luis
+- title: Tworzenie intencji, jednostek i funkcji
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Intencje
+      url: luis-concept-intent.md
+    - text: Jednostki
+      url: luis-concept-entity-types.md
+    - text: Dobra przykładowa wypowiedź
+      url: luis-concept-utterance.md
+    - text: Funkcje list fraz
+      url: luis-concept-feature.md
+  - linkListType: quickstart
+    links:
+    - text: 'Portal: Tworzenie nowej aplikacji usługi LUIS'
+      url: get-started-portal-build-app.md
+    - text: Korzystanie z zestawu SDK języka C#
+      url: sdk-python-quickstart-authoring-app.md
+    - text: Korzystanie z zestawu SDK języka Python
+      url: sdk-python-quickstart-authoring-app.md
+  - linkListType: how-to-guide
+    links:
+    - text: Tworzenie nowej aplikacji usługi LUIS
+      url: luis-how-to-start-new-app.md
+    - text: Dodawanie intencji z przykładowymi wypowiedziami
+      url: luis-how-to-add-intents.md
+    - text: Dodawanie jednostek
+      url: luis-how-to-add-example-utterances.md
+    - text: Funkcja dodawania listy fraz
+      url: luis-how-to-add-features.md
+- title: Tworzenie wersji, trenowanie, testowanie i publikowanie
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Obsługa wersji
+      url: luis-concept-version.md
+    - text: Testowanie interakcyjne
+      url: luis-concept-test.md
+    - text: Testowanie wsadowe
+      url: luis-concept-batch-test.md
+  - linkListType: quickstart
+    links:
+    - text: 'Portal: Wdrażanie aplikacji w punkcie końcowym przewidywania'
+      url: get-started-portal-deploy-app.md
+    - text: Korzystanie z zestawu SDK języka C#
+      url: sdk-python-quickstart-authoring-app.md#train-the-app
+    - text: Korzystanie z zestawu SDK języka Python
+      url: sdk-python-quickstart-authoring-app.md#train-the-app
+  - linkListType: how-to-guide
+    links:
+    - text: Przechowywanie wersji aplikacji
+      url: luis-how-to-manage-versions.md
+    - text: Testowanie interakcyjne
+      url: luis-interactive-test.md
+    - text: Testowanie wsadowe
+      url: luis-how-to-batch-test.md
+    - text: Trenowanie aplikacji
+      url: luis-how-to-train.md
+    - text: Publikowanie w celu używania punktu końcowego przewidywania
+      url: luis-how-to-publish-app.md
+- title: Pobieranie przewidywania z punktu końcowego
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Za pomocą zestawu SDK języka C# dla platformy .NET
+      url: sdk-csharp-quickstart-query-prediction-endpoint.md
+  - linkListType: quickstart
+    links:
+    - text: Za pomocą języka C# i usługi REST
+      url: luis-get-started-cs-get-intent.md
+    - text: Za pomocą języka Go i usługi REST
+      url: luis-get-started-go-get-intent.md
+    - text: Za pomocą języka Java i usługi REST
+      url: luis-get-started-java-get-intent.md
+    - text: Za pomocą środowiska Node.js i usługi REST
+      url: luis-get-started-node-get-intent.md
+    - text: Za pomocą języka Python i usługi REST
+      url: luis-get-started-python-get-intent.md
+- title: Dokumentacja
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Zasoby deweloperów
+      url: developer-reference-resource.md
+    - text: Limity aplikacji
+      url: luis-boundaries.md
+    - text: Wstępnie utworzone jednostki
+      url: luis-reference-prebuilt-entities.md
+    - text: Jednostki niestandardowe
+      url: luis-concept-entity-types.md#types-of-entities
+    - text: Wstępnie utworzone domeny
+      url: luis-reference-prebuilt-domains.md

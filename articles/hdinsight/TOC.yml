@@ -271,6 +271,14 @@
           href: ./spark/apache-spark-ipython-notebook-machine-learning.md
         - name: Tworzenie aplikacji platformy Apache Spark w programie IntelliJ
           href: ./spark/apache-spark-create-standalone-application.md
+    - name: Pojęcia
+      items:
+        - name: Najlepsze rozwiązania dla platformy Spark w usłudze HDInsight
+          href: ./spark/spark-best-practices.md
+        - name: Konfigurowanie ustawień platformy Apache Spark
+          href: ./spark/apache-spark-settings.md
+        - name: Optymalizowanie zadań platformy Apache Spark
+          href: ./spark/apache-spark-perf.md
     - name: Instrukcje
       items:
         - name: Używanie narzędzi
@@ -323,10 +331,6 @@
               href: ./spark/apache-spark-resource-manager.md
             - name: Zarządzanie aplikacjami platformy Apache Spark przy użyciu rozszerzonego serwera historii
               href: ./spark/apache-azure-spark-history-server.md
-            - name: Konfigurowanie ustawień platformy Apache Spark
-              href: ./spark/apache-spark-settings.md
-            - name: Optymalizowanie zadań platformy Apache Spark
-              href: ./spark/apache-spark-perf.md
             - name: Włączanie buforowania za pomocą pamięci podręcznej we/wy
               href: ./spark/apache-spark-improve-performance-iocache.md
             - name: Korzystanie z notesów z usługą Apache Spark

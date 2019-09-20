@@ -7,16 +7,16 @@ ms.service: governance
 ms.date: 04/22/2019
 ms.author: rithorn
 ms.topic: overview
-ms.openlocfilehash: c9bc02959c64baecf11e2d1651051cd9bdda61d7
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: dba6334815f0c86a800b38ad09487f719857f993
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70060623"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104231"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Organizowanie zasobów przy użyciu grup zarządzania platformy Azure
 
-Jeśli Twoja organizacja ma wiele subskrypcji, możesz potrzebować sposobu na wydajne zarządzanie dostępem, zasadami i zgodnością dla tych subskrypcji. Grupy zarządzania platformy Azure zapewniają poziom zakresu powyżej subskrypcji. Subskrypcje są organizowane w kontenerach nazywanych „grupami zarządzania”, do których należy zastosować swoje warunki nadzoru. Wszystkie subskrypcje w grupie zarządzania automatycznie dziedziczą warunki zastosowane do tej grupy zarządzania. Grupy zarządzania umożliwiają zarządzanie klasy korporacyjnej na dużą skalę niezależnie od typu subskrypcji.
+Jeśli Twoja organizacja ma wiele subskrypcji, możesz potrzebować sposobu na wydajne zarządzanie dostępem, zasadami i zgodnością dla tych subskrypcji. Grupy zarządzania platformy Azure zapewniają poziom zakresu powyżej subskrypcji. Subskrypcje są organizowane w kontenerach nazywanych „grupami zarządzania”, do których należy zastosować swoje warunki nadzoru. Wszystkie subskrypcje w grupie zarządzania automatycznie dziedziczą warunki zastosowane do tej grupy zarządzania. Grupy zarządzania umożliwiają zarządzanie klasy korporacyjnej na dużą skalę niezależnie od typu subskrypcji. Wszystkie subskrypcje w ramach jednej grupy zarządzania muszą ufać tej samej dzierżawie usługi Azure Active Directory.
 
 Na przykład możesz zastosować do grupy zarządzania zasady ograniczające regiony dostępne na potrzeby tworzenia maszyny wirtualnej. Te zasady będą stosowane do wszystkich grup zarządzania, subskrypcji i zasobów w ramach tej grupy zarządzania, zezwalając na tworzenie maszyn wirtualnych tylko w tym regionie.
 

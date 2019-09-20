@@ -232,7 +232,7 @@
       items:
         - name: Zarządzanie replikami do odczytu w witrynie Azure Portal
           href: howto-read-replicas-portal.md
-        - name: Zarządzanie replikami do odczytu w interfejsie wiersza polecenia platformy Azure
+        - name: 'Zarządzanie replikami do odczytu (interfejs wiersza polecenia platformy Azure, interfejs API REST)'
           href: howto-read-replicas-cli.md
 - name: Dokumentacja
   items:

@@ -128,12 +128,18 @@
           href: dealing-with-duplicates.md
     - name: Monitorowanie
       items:
+        - name: Monitorowanie pozyskiwania przy użyciu dzienników diagnostycznych
+          href: using-diagnostic-logs.md
         - name: Monitorowanie kondycji klastra przy użyciu metryk
           href: using-metrics.md
     - name: Integracja z innymi narzędziami
       items:
-        - name: Zbiorcze kopiowanie danych za pomocą szablonu usługi Azure Data Factory
-          href: data-factory-template.md
+        - name: Azure Data Factory
+          items:
+            - name: Zbiorcze kopiowanie danych za pomocą szablonu usługi Azure Data Factory
+              href: data-factory-template.md
+            - name: Uruchamianie poleceń sterujących przy użyciu usługi Azure Data Factory
+              href: data-factory-command-activity.md
         - name: Łącznik Apache Spark
           href: spark-connector.md
         - name: Łączenie z usługi Databricks za pomocą języka Python

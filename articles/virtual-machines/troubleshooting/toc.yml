@@ -187,3 +187,9 @@
   href: understand-vm-reboot.md
 - name: Narzędzia do zdalnego rozwiązywania problemów
   href: remote-tools-troubleshoot-azure-vm-issues.md
+- name: Naprawianie maszyny wirtualnej
+  items:
+    - name: Naprawianie maszyny wirtualnej z systemem Windows za pomocą poleceń naprawiania maszyny wirtualnej platformy Azure
+      href: repair-windows-vm-using-azure-virtual-machine-repair-commands.md
+    - name: Naprawianie maszyny wirtualnej z systemem Linux za pomocą poleceń naprawiania maszyny wirtualnej platformy Azure
+      href: repair-linux-vm-using-azure-virtual-machine-repair-commands.md

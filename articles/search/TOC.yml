@@ -239,17 +239,17 @@
           href: cognitive-search-concept-troubleshooting.md
         - name: Linki do dokumentacji
           href: cognitive-search-resources-documentation.md
-    - name: Magazyn wiedzy (wersja zapoznawcza)
-      items:
-        - name: Tworzenie magazynu wiedzy w witrynie Azure Portal
-          href: knowledge-store-create-portal.md
-        - name: Tworzenie przy użyciu rozwiązań REST i Postman
-          href: knowledge-store-howto.md
-        - name: Wyświetlanie przy użyciu Eksploratora usługi Storage
-          href: knowledge-store-view-storage-explorer.md
-        - name: Łączenie z usługą Power BI
-          href: knowledge-store-connect-power-bi.md
-    - name: Zapytania o dane
+        - name: Magazyn wiedzy (wersja zapoznawcza)
+          items:
+            - name: Tworzenie magazynu wiedzy w witrynie Azure Portal
+              href: knowledge-store-create-portal.md
+            - name: Tworzenie przy użyciu rozwiązań REST i Postman
+              href: knowledge-store-howto.md
+            - name: Wyświetlanie przy użyciu Eksploratora usługi Storage
+              href: knowledge-store-view-storage-explorer.md
+            - name: Łączenie z usługą Power BI
+              href: knowledge-store-connect-power-bi.md
+    - name: Dokumenty z zapytaniami
       items:
         - name: Tworzenie podstawowego zapytania
           href: search-query-overview.md
@@ -265,7 +265,7 @@
           href: search-query-lucene-examples.md
         - name: moreLikeThis (wersja zapoznawcza)
           href: search-more-like-this.md
-    - name: Używanie filtrów
+    - name: Stosowanie filtrów
       items:
         - name: Omówienie filtrów
           href: search-filters.md
@@ -283,18 +283,14 @@
       items:
         - name: Funkcje związane ze stronami
           href: search-pagination-page-layout.md
-    - name: Dostrajanie trafności
-      items:
-        - name: Dodawanie profili oceniania
+        - name: Dostrajanie trafności (profile oceniania)
           href: index-add-scoring-profiles.md
-    - name: Administracja
+    - name: Zarządzanie i monitorowanie
       items:
         - name: Administracja przy użyciu portalu
           href: search-manage.md
         - name: Administracja przy użyciu programu PowerShell
           href: search-manage-powershell.md
-    - name: Monitorowanie
-      items:
         - name: Działanie monitorowania i rejestrowanie
           href: search-monitor-usage.md
         - name: Analiza ruchu wyszukiwania
