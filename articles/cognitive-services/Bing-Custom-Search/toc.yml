@@ -31,6 +31,8 @@
               href: sdk-csharp-quick-start.md
             - name: Korzystanie z języka Python
               href: sdk-python-quickstart.md
+            - name: Korzystanie z języka Java
+              href: sdk-java-quickstart.md
 - name: Samouczki
   items:
     - name: Tworzenie strony internetowej z funkcją wyszukiwania niestandardowego
