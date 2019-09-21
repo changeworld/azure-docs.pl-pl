@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 08/29/2019
+ms.date: 09/20/2019
 ms.author: helohr
-ms.openlocfilehash: 03a8e8063f1a66b929311f09bf8e20cd4b951e43
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: f919ff1efcb094dec4c810f51a1810f2383ea09d
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163295"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71174135"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Tworzenie dzierżawy i puli hosta
 
@@ -26,9 +26,9 @@ Obecnie nie zajmują się pomocą techniczną, gdy pulpit wirtualny systemu Wind
 
 Postępuj zgodnie z tymi instrukcjami, jeśli masz problemy z przyłączaniem maszyn wirtualnych do domeny.
 
-- Ręcznie Dołącz maszynę wirtualną przy użyciu procesu w przyłączeniu [maszyny wirtualnej z systemem Windows Server do domeny zarządzanej](https://docs.microsoft.com/azure/active-directory-domain-services/Active-directory-ds-admin-guide-join-windows-vm-portal) lub za pomocą szablonu dołączania do [domeny](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).
+- Ręcznie Dołącz maszynę wirtualną przy użyciu procesu w [przyłączeniu maszyny wirtualnej z systemem Windows Server do domeny zarządzanej](https://docs.microsoft.com/azure/active-directory-domain-services/Active-directory-ds-admin-guide-join-windows-vm-portal) lub za pomocą [szablonu dołączania do domeny](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).
 - Spróbuj wysłać polecenie ping do nazwy domeny z wiersza polecenia na maszynie wirtualnej.
-- Przejrzyj listę komunikatów o błędach dołączania do domeny w [temacie Rozwiązywanie problemów z](https://social.technet.microsoft.com/wiki/contents/articles/1935.troubleshooting-domain-join-error-messages.aspx)przyłączaniem do domeny.
+- Przejrzyj listę komunikatów o błędach dołączania do domeny w [temacie Rozwiązywanie problemów z przyłączaniem do domeny](https://social.technet.microsoft.com/wiki/contents/articles/1935.troubleshooting-domain-join-error-messages.aspx).
 
 ### <a name="error-incorrect-credentials"></a>Błąd: Nieprawidłowe poświadczenia
 
@@ -38,7 +38,7 @@ Postępuj zgodnie z tymi instrukcjami, jeśli masz problemy z przyłączaniem ma
 
 - Ręcznie Dodaj maszyny wirtualne do domeny.
 - Wdróż ponownie szablon po potwierdzeniu poświadczeń. Zobacz [Tworzenie puli hostów przy użyciu programu PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
-- Przyłączanie maszyn wirtualnych do domeny przy użyciu szablonu z przyłączaniem [istniejącej maszyny wirtualnej z systemem Windows do domeny usługi AD](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).
+- Przyłączanie maszyn wirtualnych do domeny przy użyciu szablonu z [przyłączaniem istniejącej maszyny wirtualnej z systemem Windows do domeny usługi AD](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).
 
 ### <a name="error-timeout-waiting-for-user-input"></a>Błąd: Przekroczono limit czasu oczekiwania na dane wejściowe użytkownika
 
@@ -296,17 +296,76 @@ Jeśli używany system operacyjny to Microsoft Windows 10, wykonaj poniższe ins
 
 16. Po zakończeniu działania poleceń cmdlet Uruchom ponownie maszynę wirtualną z nieprawidłowym stosem Side-by-side.
 
-## <a name="remote-licensing-model-is-not-configured"></a>Nie skonfigurowano modelu licencjonowania zdalnego
+## <a name="remote-licensing-model-isnt-configured"></a>Model licencjonowania zdalnego nie jest skonfigurowany
 
-Jeśli zalogujesz się do wielosesyjnego systemu Windows 10 Enterprise przy użyciu konta administracyjnego, możesz otrzymać powiadomienie informujące o tym, że Pulpit zdalny tryb licencjonowania nie jest skonfigurowany, Usługi pulpitu zdalnego przestanie działać w ciągu X dni. Na serwerze brokera połączeń użyj Menedżer serwera, aby określić tryb licencjonowania Pulpit zdalny ". Jeśli zobaczysz ten komunikat, oznacza to, że trzeba ręcznie skonfigurować tryb licencjonowania na **użytkownika**.
+Jeśli zalogujesz się do wielosesyjnego systemu Windows 10 Enterprise przy użyciu konta administracyjnego, możesz otrzymać powiadomienie informujące o tym, że Pulpit zdalny tryb licencjonowania nie jest skonfigurowany, Usługi pulpitu zdalnego przestanie działać w ciągu X dni. Na serwerze brokera połączeń użyj Menedżer serwera, aby określić tryb licencjonowania Pulpit zdalny ".
 
-Aby ręcznie skonfigurować tryb licencjonowania:  
+W przypadku upływu limitu czasu zostanie wyświetlony komunikat o błędzie "Sesja zdalna została rozłączona, ponieważ dla tego komputera nie ma Pulpit zdalny licencji dostępu klienta".
 
-1. Przejdź do pola wyszukiwania **menu Start** , a następnie Znajdź i Otwórz **gpedit. msc** , aby uzyskać dostęp do edytora zasady grupy lokalnego. 
-2. Przejdź do **pozycji Konfiguracja** > komputera**Szablony administracyjne** > **składniki** > systemu Windows**usługi pulpitu zdalnego** > **pulpit zdalny hosta sesji**  >  **Licencjonowanie**. 
-3. Wybierz pozycję **Ustaw tryb licencjonowania pulpit zdalny** i zmień go na **na użytkownika**.
+Jeśli zostanie wyświetlony jeden z tych komunikatów, należy otworzyć Edytor zasady grupy i ręcznie skonfigurować tryb licencjonowania na **użytkownika**. Proces konfiguracji ręcznej jest inny w zależności od wersji systemu Windows 10 Enterprise wielosesyjnej, której używasz. W poniższych sekcjach wyjaśniono, jak sprawdzić numer wersji i co należy zrobić dla każdego z nich.
 
-Obecnie przeszukiwane są problemy z limitem czasu powiadomień i okresu prolongaty oraz zaplanowano ich rozwiązanie w przyszłej aktualizacji. 
+>[!NOTE]
+>Pulpit wirtualny systemu Windows wymaga tylko licencji dostępu klienta RDS (CAL), gdy pula hostów zawiera hosty sesji systemu Windows Server. Aby dowiedzieć się, jak skonfigurować RDS CAL, zobacz [Licencjonowanie wdrożenia usług pulpitu zdalnego z licencjami dostępu klienta](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-client-access-license).
+
+### <a name="identify-which-version-of-windows-10-enterprise-multi-session-youre-using"></a>Określ, która wersja wielosesyjnej usługi Windows 10 Enterprise jest używana
+
+Aby sprawdzić, która wersja systemu Windows 10 Enterprise ma wiele sesji:
+
+1. Zaloguj się przy użyciu konta administratora.
+2. Wprowadź "informacje" na pasku wyszukiwania obok menu Start.
+3. Wybierz pozycję **Informacje o**komputerze.
+4. Sprawdź liczbę obok pozycji "wersja". Liczba powinna mieć wartość "1809" lub "1903", jak pokazano na poniższej ilustracji.
+   
+    ![Zrzut ekranu przedstawiający okno specyfikacji systemu Windows. Numer wersji jest wyróżniony kolorem niebieskim.](media/windows-specifications.png)
+
+Teraz, gdy znasz numer wersji, przejdź do odpowiedniej sekcji.
+
+### <a name="version-1809"></a>Wersja 1809
+
+Jeśli numer wersji jest taki sam jak "1809", można przeprowadzić uaktualnienie do wielu sesji systemu Windows 10 Enterprise, wersja 1903 lub ponownie wdrożyć pulę hostów przy użyciu najnowszego obrazu.
+
+Aby przeprowadzić uaktualnienie do systemu Windows 10 w wersji 1903:
+
+1. Jeśli jeszcze tego nie zrobiono, Pobierz i zainstaluj [aktualizację systemu Windows 10 maja 2019](https://support.microsoft.com/help/4028685/windows-10-get-the-update).
+2. Zaloguj się na komputerze przy użyciu konta administratora.
+3. Uruchom **gpedit. msc** , aby otworzyć Edytor zasady grupy.
+4. W obszarze Konfiguracja komputera przejdź do **pozycji Szablony administracyjne** > **składniki** > systemu Windows**usługi pulpitu zdalnego** > pulpit zdalny Licencjonowanie**hosta sesji** > .
+5. Wybierz pozycję **Ustaw tryb licencjonowania pulpit zdalny**.
+6. W otwartym oknie, najpierw wybierz opcję **włączone**, a następnie w obszarze Opcje Określ tryb licencjonowania dla serwera hosta sesji usług pulpitu zdalnego na **użytkownika**, jak pokazano na poniższej ilustracji.
+    
+    ![Zrzut ekranu przedstawiający okno "Ustawianie trybu licencjonowania Pulpit zdalny" skonfigurowany zgodnie z instrukcjami w kroku 6.](media/group-policy-editor-per-user.png)
+
+7. Wybierz przycisk **Zastosuj**.
+8. Kliknij przycisk **OK**.
+9.  Uruchom ponownie komputer.
+
+Aby ponownie wdrożyć pulę hostów przy użyciu najnowszego obrazu:
+
+1. Postępuj zgodnie z instrukcjami w temacie [Tworzenie puli hostów przy użyciu witryny Azure Marketplace](create-host-pools-azure-marketplace.md) , dopóki nie zostanie wyświetlony monit o wybranie wersji systemu operacyjnego obrazu. Możesz wybrać opcję wiele sesji systemu Windows 10 Enterprise z lub bez ProPlus usługi Office 365.
+2. Zaloguj się na komputerze przy użyciu konta administratora.
+3. Uruchom **gpedit. msc** , aby otworzyć Edytor zasady grupy.
+4. W obszarze Konfiguracja komputera przejdź do **pozycji Szablony administracyjne** > **składniki** > systemu Windows**usługi pulpitu zdalnego** > pulpit zdalny Licencjonowanie**hosta sesji** > .
+5. Wybierz pozycję **Ustaw tryb licencjonowania pulpit zdalny**.
+6. W otwartym oknie, najpierw wybierz opcję **włączone**, a następnie w obszarze Opcje Określ tryb licencjonowania dla serwera hosta sesji usług pulpitu zdalnego dla **danego użytkownika**.
+7. Wybierz przycisk **Zastosuj**.
+8. Kliknij przycisk **OK**.
+9.  Uruchom ponownie komputer.
+
+### <a name="version-1903"></a>Wersja 1903
+
+Jeśli numer wersji to "1903", postępuj zgodnie z następującymi instrukcjami:
+
+1. Zaloguj się na komputerze przy użyciu konta administratora.
+2. Uruchom **gpedit. msc** , aby otworzyć Edytor zasady grupy.
+3. W obszarze Konfiguracja komputera przejdź do **pozycji Szablony administracyjne** > **składniki** > systemu Windows**usługi pulpitu zdalnego** > pulpit zdalny Licencjonowanie**hosta sesji** > .
+4. Wybierz pozycję **Ustaw tryb licencjonowania pulpit zdalny**.
+6. W otwartym oknie, najpierw wybierz opcję **włączone**, a następnie w obszarze Opcje Określ tryb licencjonowania dla serwera hosta sesji usług pulpitu zdalnego na **użytkownika**, jak pokazano na poniższej ilustracji.
+    
+    ![Zrzut ekranu przedstawiający okno "Ustawianie trybu licencjonowania Pulpit zdalny" skonfigurowany zgodnie z instrukcjami w kroku 6.](media/group-policy-editor-per-user.png)
+
+7. Wybierz przycisk **Zastosuj**.
+8. Kliknij przycisk **OK**.
+9.  Uruchom ponownie komputer.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -2,28 +2,28 @@
 title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: virtual-machines-windows, virtual-machines-linux
-author: dlepow
+author: cynthn
 ms.service: multiple
 ms.topic: include
 ms.date: 10/09/2018
-ms.author: danlep
+ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 50d71a3967e61e5d531f4bfeae3582b56230a0d2
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 98d765e2f6909f00f8dfe76d06aef017aad67adf
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183224"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71174977"
 ---
 ## <a name="terminology"></a>Terminologia
 
-Obraz z witryny Marketplace na platformie Azure ma następujące atrybuty:
+Obraz portalu Marketplace na platformie Azure ma następujące atrybuty:
 
 * **Wydawca**: Organizacja, która utworzyła obraz. Przykłady: Canonical, MicrosoftWindowsServer
-* **Oferty**: Nazwa grupy powiązanych obrazów utworzonych przez wydawcę. Przykłady: UbuntuServer, WindowsServer
-* **SKU**: Wystąpienie oferty, na przykład główna wersja dystrybucji. Przykłady: 18.04-LTS, 2019-Datacenter
-* **Wersja**: Numer wersji obrazu jednostki SKU. 
+* **Oferta**: Nazwa grupy powiązanych obrazów utworzonych przez wydawcę. Przykłady: UbuntuServer, WindowsServer
+* **SKU**: Wystąpienie oferty, na przykład główna wersja dystrybucji. Przykłady: 18,04 – LTS, 2019 — Datacenter
+* **Wersja**: Numer wersji jednostki SKU obrazu. 
 
-Aby zidentyfikować obrazu z witryny Marketplace, podczas wdrażania maszyny Wirtualnej programowo, należy podać te wartości indywidualnie jako parametry. Niektóre narzędzia zaakceptować obrazu *URN*, który łączy te wartości, który jest oddzielony znakiem dwukropka (:): *Wydawca*:*oferują*:*jednostki Sku*:*wersji*. W nazwa URN można zastąpić numer wersji za pomocą "latest", co spowoduje wybranie najnowszej wersji obrazu. 
+Aby zidentyfikować obraz z witryny Marketplace podczas programistycznego wdrażania maszyny wirtualnej, należy podać te wartości osobno jako parametry. Niektóre narzędzia akceptują *nazwę URN*obrazu, która łączy te wartości, rozdzielając je średnikiem (:) Opis *Wydawca*:*Oferta*:*SKU*:*wersja*. W nazwie URN można zastąpić numer wersji "najnowszy", co spowoduje wybranie najnowszej wersji obrazu. 
 
-Jeśli wydawca obrazu udostępnia dodatkową licencję i warunki zakupu, należy zaakceptować te warunki i włączyć wdrożenia programowe. Należy także podać *zakupić plan* parametrów podczas wdrażania maszyny Wirtualnej programowo. Zobacz [wdrażanie obrazu z warunkami witryny Marketplace](#deploy-an-image-with-marketplace-terms).
+Jeśli Wydawca obrazu udostępni dodatkowe warunki licencji i zakupu, należy zaakceptować te warunki i włączyć wdrażanie programistyczne. Należy również podać parametry *planu zakupu* przy programistycznym wdrażaniu maszyny wirtualnej. Zobacz [wdrażanie obrazu z warunkami witryny Marketplace](#deploy-an-image-with-marketplace-terms).

@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 91c747b8b4ca58e7714dc101777bad51f9f0286f
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 85ca03bee728ec075383566be14d2484dd7431af
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035595"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170436"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Jak działa Azure Machine Learning: Architektura i pojęcia
 
@@ -63,10 +63,10 @@ Użyj tych narzędzi dla Azure Machine Learning:
 + <a href="#compute-targets">Cele obliczeń</a>
 + <a href="#training-scripts">Skrypt szkoleniowy</a>
 + <a href="#runs">Run</a>
++ <a href="#environments">Wiejski</a>
 + <a href="#github-tracking-and-integration">Śledzenie git</a>
 + <a href="#snapshots">Zdjęcie</a>
 + <a href="#activities">Aktywność</a>
-+ <a href="#images">Obraz</a>
 + <a href="#deployment">Wdrożenie</a>
 + <a href="#web-service-deployments">Usługi sieci Web</a>
 + <a href="#iot-module-deployments">Moduły IoT</a>
@@ -180,28 +180,15 @@ Działanie reprezentuje długotrwałej operacji. Następujące operacje są przy
 
 Działania mogą udostępniać powiadomienia za pomocą zestawu SDK lub internetowego interfejsu użytkownika, dzięki czemu można łatwo monitorować postęp tych operacji.
 
-### <a name="images"></a>Obrazy
+### <a name="environments"></a>Środowiska
 
-Obrazy umożliwiają niezawodne Wdrażanie modelu wraz ze wszystkimi składnikami, które są potrzebne do korzystania z modelu. Obraz zawiera następujące elementy:
+Środowiska usługi Azure ML służą do określania konfiguracji (Docker/Python/Spark/itp.) służącej do tworzenia odtwarzalnego środowiska na potrzeby przygotowywania danych, szkolenia modeli i modelowania. Są one zarządzane i obsługiwane przez program w obszarze roboczym Azure Machine Learning, które umożliwiają powtarzalny, z inspekcją i przenośne przepływy pracy uczenia maszynowego między różnymi obiektami docelowymi obliczeniowymi.
 
-* Model.
-* Do oceniania skryptu lub aplikacji. Za pomocą skryptu można przekazać dane wejściowe do modelu i zwrócić dane wyjściowe modelu.
-* Zależności, które są wymagane przez model lub skrypt oceniający lub aplikację. Na przykład mogą obejmować plik środowiska Conda, który zawiera listę zależności pakietu języka Python.
+Możesz użyć obiektu środowiska na lokalnym obliczeniu do opracowania skryptu szkoleniowego i ponownie użyć tego samego środowiska na Azure Machine Learning obliczeń dla szkolenia modeli w dużej skali, a nawet wdrożyć model przy użyciu tego samego środowiska. 
 
-Azure Machine Learning można utworzyć dwa typy obrazów:
+Dowiedz się [, jak utworzyć i zarządzać środowiskiem ml wielokrotnego użytku](how-to-use-environments.md) na potrzeby szkolenia i wnioskowania.
 
-* **Obraz FPGA**: Używane podczas wdrażania do tablicy opartej na trybie programowalnym dla pól na platformie Azure.
-* **Obraz platformy Docker**: Używane podczas wdrażania do elementów docelowych obliczeń innych niż FPGA. Przykłady to Azure Container Instances i usługa Azure Kubernetes.
 
-Azure Machine Learning udostępnia obraz podstawowy, który jest używany domyślnie. Możesz również udostępnić własne obrazy niestandardowe.
-
-### <a name="image-registry"></a>Rejestru obrazów
-
-Obrazy są umieszczane w katalogu w **rejestrze obrazu** w obszarze roboczym. Możesz podać dodatkowe Tagi metadanych podczas tworzenia obrazu, aby można było wykonać zapytania do nich, aby później znaleźć obraz.
-
-Aby zapoznać się z przykładem tworzenia obrazu, zobacz [Wdrażanie modelu klasyfikacji obrazów w Azure Container Instances](tutorial-deploy-models-with-aml.md).
-
-Aby zapoznać się z przykładem wdrażania modelu przy użyciu obrazu niestandardowego, zobacz [jak wdrożyć model przy użyciu niestandardowego obrazu platformy Docker](how-to-deploy-custom-docker-image.md).
 
 ### <a name="deployment"></a>Wdrożenie
 

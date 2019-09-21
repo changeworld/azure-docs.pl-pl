@@ -1,34 +1,34 @@
 ---
-title: Używać usługi Azure Storage jako zaplecza programu Terraform
-description: Wprowadzenie do przechowywania stanu programu Terraform w usłudze Azure Storage.
+title: Korzystanie z usługi Azure Storage jako zaplecza Terraform
+description: Wprowadzenie do przechowywania stanu Terraform w usłudze Azure Storage.
 services: terraform
 author: tomarchermsft
 ms.service: azure
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 09/20/2019
 ms.author: tarcher
-ms.openlocfilehash: a88ad25e335026d5172c7997f62629d5ada46f6e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e9b447f4f4dc9d0ee090da9729e483cc17ac7c15
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66693298"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169946"
 ---
-# <a name="store-terraform-state-in-azure-storage"></a>Stan programu Terraform Store w usłudze Azure Storage
+# <a name="store-terraform-state-in-azure-storage"></a>Przechowywanie stanu Terraform w usłudze Azure Storage
 
-Stan programu Terraform służy do uzgodnienia wdrożonych zasobów przy użyciu programu Terraform konfiguracji. Przy użyciu stanu, Terraform wie, których zasobów platformy Azure, aby dodać, zaktualizować lub usunąć. Domyślnie stan programu Terraform jest przechowywany lokalnie, podczas uruchamiania *zastosować Terraform*. Ta konfiguracja nie jest idealnym rozwiązaniem dla kilka możliwych przyczyn:
+Stan Terraform służy do uzgadniania wdrożonych zasobów z konfiguracjami Terraform. Użycie stanu Terraform wie, jakie zasoby platformy Azure dodać, zaktualizować lub usunąć. Domyślnie stan Terraform jest przechowywany lokalnie podczas działania *Terraform Apply*. Ta konfiguracja nie jest idealna z kilku powodów:
 
-- Stan lokalnego nie działa dobrze w zespół lub środowisko współpracy
-- Stan programu Terraform mogą zawierać poufne informacje
-- Przechowywanie stanu lokalnie zwiększa prawdopodobieństwo przypadkowego usunięcia
+- Stan lokalny nie działa dobrze w zespole ani środowisku współpracy
+- Stan Terraform może zawierać informacje poufne
+- Przechowywanie stanu lokalnie zwiększa szansę przypadkowego usunięcia
 
-Terraform obejmuje koncepcję stan wewnętrznej bazy danych, czyli Magazyn zdalny Terraform stanu. Korzystając z zaplecza stanu, plik stanu jest przechowywany w magazynie danych, takich jak Azure Storage. W tym dokumencie szczegółowo opisuje sposób konfigurowania i używania usługi Azure Storage jako zaplecza programu Terraform stanu.
+Terraform obejmuje koncepcję zaplecza stanu, czyli Magazyn zdalny dla stanu Terraform. W przypadku korzystania z zaplecza stanu plik stanu jest przechowywany w magazynie danych, takim jak usługa Azure Storage. Ten dokument zawiera szczegółowe informacje dotyczące konfigurowania usługi Azure Storage i używania jej jako zaplecza stanu Terraform.
 
-## <a name="configure-storage-account"></a>Konfigurowanie konta magazynu
+## <a name="configure-storage-account"></a>Skonfiguruj konto magazynu
 
-Przed rozpoczęciem korzystania z usługi Azure Storage jako zaplecza, można utworzyć konta magazynu. Konto magazynu można utworzyć za pomocą witryny Azure portal, programu PowerShell, interfejsu wiersza polecenia platformy Azure lub programu Terraform, sam. Użyj poniższego przykładu, aby skonfigurować konto magazynu przy użyciu wiersza polecenia platformy Azure.
+Przed rozpoczęciem korzystania z usługi Azure Storage jako zaplecza należy utworzyć konto magazynu. Konto magazynu można utworzyć przy użyciu Azure Portal, programu PowerShell, interfejsu wiersza polecenia platformy Azure lub samego Terraform. Użyj poniższego przykładu, aby skonfigurować konto magazynu za pomocą interfejsu wiersza polecenia platformy Azure.
 
-```azurecli-interactive
+```azurecli
 #!/bin/bash
 
 RESOURCE_GROUP_NAME=tstate
@@ -52,36 +52,36 @@ echo "container_name: $CONTAINER_NAME"
 echo "access_key: $ACCOUNT_KEY"
 ```
 
-Zanotuj nazwę konta magazynu, nazwy kontenera i klucz dostępu do magazynu. Te wartości są wymagane podczas konfigurowania zdalnego stanu.
+Zanotuj nazwę konta magazynu, nazwę kontenera i klucz dostępu do magazynu. Te wartości są odpowiednie podczas konfigurowania stanu zdalnego.
 
-## <a name="configure-state-backend"></a>Skonfiguruj stan wewnętrznej bazy danych
+## <a name="configure-state-backend"></a>Konfigurowanie zaplecza stanu
 
-Stan programu Terraform wewnętrznej bazy danych jest skonfigurowane, podczas uruchamiania *Terraform init*. Aby skonfigurować stan wewnętrznej bazy danych, wymagane są następujące dane.
+Zaplecze stanu Terraform jest konfigurowane podczas uruchamiania *Terraform init*. Aby można było skonfigurować zaplecze stanu, wymagane są następujące dane.
 
-- storage_account_name - nazwa konta usługi Azure Storage.
-- container_name — nazwa kontenera obiektów blob.
-- klucz: Nazwa stanu przechowywania pliku ma zostać utworzony.
-- access_key - klucz dostępu do magazynu.
+- storage_account_name — nazwa konta usługi Azure Storage.
+- container_name — nazwa kontenera obiektów BLOB.
+- Key — nazwa pliku magazynu Stanów, który ma zostać utworzony.
+- access_key — klucz dostępu do magazynu.
 
-Każda z tych wartości można określić w pliku konfiguracyjnym programu Terraform lub w wierszu polecenia, jednak zalecane jest użycie zmiennej środowiskowej, aby uzyskać `access_key`. Za pomocą zmiennej środowiskowej uniemożliwia klucza zapisywana na dysku.
+Każdą z tych wartości można określić w pliku konfiguracji Terraform lub w wierszu polecenia, jednak zaleca się użycie zmiennej środowiskowej dla programu `access_key`. Użycie zmiennej środowiskowej uniemożliwia zapisanie klucza na dysku.
 
-Utwórz zmienną środowiskową o nazwie `ARM_ACCESS_KEY` z wartością klucza dostępu do magazynu Azure.
+Utwórz zmienną środowiskową o `ARM_ACCESS_KEY` nazwie przy użyciu wartości klucza dostępu do usługi Azure Storage.
 
-```console
+```bash
 export ARM_ACCESS_KEY=<storage access key>
 ```
 
-Aby dodatkowo zabezpieczyć klucz dostępu konta magazynu platformy Azure, zapisz go w usłudze Azure Key Vault. Następnie można ustawić zmienną środowiskową przy użyciu polecenia podobnego do następującego. Aby uzyskać więcej informacji na temat usługi Azure Key Vault, zobacz [dokumentacji usługi Azure Key Vault][azure-key-vault].
+Aby dodatkowo chronić klucz dostępu do konta usługi Azure Storage, Zapisz go w Azure Key Vault. Zmienną środowiskową można następnie ustawić przy użyciu polecenia podobnego do poniższego. Aby uzyskać więcej informacji na temat Azure Key Vault, zobacz [dokumentację Azure Key Vault][azure-key-vault].
 
-```console
+```bash
 export ARM_ACCESS_KEY=$(az keyvault secret show --name terraform-backend-key --vault-name myKeyVault --query value -o tsv)
 ```
 
-Aby skonfigurować narzędzie Terraform w celu użycia wewnętrznej bazy danych, należy dołączyć *zaplecza* konfiguracji o typie *azurerm* wewnątrz konfiguracji programu Terraform. Dodaj *storage_account_name*, *container_name*, i *klucz* wartości do bloku konfiguracji.
+Aby skonfigurować Terraform do korzystania z zaplecza, należy uwzględnić konfigurację zaplecza z typem *Azurerm* wewnątrz konfiguracji Terraform. Dodaj wartości *storage_account_name*, *container_name*i *Key* do bloku Configuration.
 
-Poniższy przykład umożliwia skonfigurowanie programu Terraform w wewnętrznej bazie danych i tworzy grupę zasobów platformy Azure. Zastąp wartości wartościami z używanego środowiska.
+Poniższy przykład umożliwia skonfigurowanie zaplecza Terraform i utworzenie grupy zasobów platformy Azure. Zastąp wartości wartościami ze środowiska.
 
-```json
+```hcl
 terraform {
   backend "azurerm" {
     storage_account_name  = "tstate09762"
@@ -96,25 +96,25 @@ resource "azurerm_resource_group" "state-demo-secure" {
 }
 ```
 
-Teraz zainicjować konfiguracji z *Terraform init* , a następnie uruchom konfigurację z *zastosować Terraform*. Po zakończeniu można znaleźć pliku stanu w usłudze Azure Blob Storage.
+Teraz zainicjuj konfigurację przy użyciu *Terraform init* , a następnie uruchom konfigurację z *Terraform Apply*. Po zakończeniu można znaleźć plik stanu w Azure Storage Blob.
 
-## <a name="state-locking"></a>Stan blokowania
+## <a name="state-locking"></a>Blokowanie stanu
 
-Korzystając z usługi Azure Storage Blob do przechowywania stanów, obiekt blob zostanie automatycznie zablokowane przed dowolną operacją, która zapisuje stan. Taka konfiguracja zapobiega wiele operacji współbieżnych stanu, co może powodować uszkodzenie. Aby uzyskać więcej informacji, zobacz [stan blokowania] [ terraform-state-lock] o dokumentacji programu Terraform.
+W przypadku korzystania z Azure Storage Blob dla magazynu Stanów obiekt BLOB jest automatycznie blokowany przed jakąkolwiek operacją, która zapisuje stan. Ta konfiguracja uniemożliwia wiele współbieżnych operacji na stanie, co może spowodować uszkodzenie. Aby uzyskać więcej informacji, zobacz [blokowanie stanu][terraform-state-lock] w dokumentacji Terraform.
 
-Blokady są widoczne podczas badania obiektów blob za pośrednictwem witryny Azure portal lub inne narzędzie do zarządzania platformy Azure.
+Blokadę można zobaczyć podczas badania obiektu BLOB za pomocą Azure Portal lub innych narzędzi do zarządzania platformy Azure.
 
-![Obiektów blob platformy Azure z blokadą](media/terraform-backend/lock.png)
+![Obiekt blob platformy Azure z blokadą](media/terraform-backend/lock.png)
 
 ## <a name="encryption-at-rest"></a>Szyfrowanie w spoczynku
 
-Domyślnie dane przechowywane w usłudze Azure Blob są szyfrowane przed są utrwalane w infrastrukturze magazynu. Gdy Terraform musi stanu, jest pobierana z wewnętrznej bazy danych i przechowywane w pamięci w systemie deweloperskim. W tej konfiguracji stan jest zabezpieczone w usłudze Azure Storage i nie są zapisywane na dysku lokalnym.
+Domyślnie dane przechowywane w obiekcie blob platformy Azure są szyfrowane przed utrwaleniem do infrastruktury magazynu. Gdy Terraform wymaga stanu, zostanie pobrany z zaplecza i zapisany w pamięci w systemie deweloperskim. W tej konfiguracji stan jest zabezpieczany w usłudze Azure Storage i nie jest zapisywana na dysku lokalnym.
 
-Aby uzyskać więcej informacji o szyfrowaniu usługi Azure Storage, zobacz [szyfrowanie usługi Azure Storage dla danych magazynowanych][azure-storage-encryption].
+Aby uzyskać więcej informacji na temat szyfrowania usługi Azure Storage, zobacz [szyfrowanie usługi Storage platformy Azure dla danych][azure-storage-encryption]przechowywanych.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat narzędzia Terraform w wewnętrznej bazie danych konfiguracji w [dokumentacji wewnętrznej bazy danych programu Terraform][terraform-backend].
+Dowiedz się więcej o konfiguracji zaplecza Terraform w [dokumentacji zaplecza Terraform][terraform-backend].
 
 <!-- LINKS - internal -->
 [azure-key-vault]: ../key-vault/quick-create-cli.md

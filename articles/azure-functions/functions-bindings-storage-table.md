@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: d647a643dafe50a5768261c2b09bf8c4154be469
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 464c1a8ab27f6615fdffd8efa6ab20d75e10a7c1
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086242"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71171185"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Powiązania usługi Azure Table Storage dla Azure Functions
 
@@ -507,7 +507,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**partitionKey** | **PartitionKey** |Opcjonalny. Klucz partycji jednostki tabeli do odczytania. Zapoznaj się z sekcją [użycie](#input---usage) , aby uzyskać wskazówki dotyczące sposobu korzystania z tej właściwości.| 
 |**rowKey** |**RowKey** | Opcjonalny. Klucz wiersza jednostki tabeli, który ma zostać odczytany. Zapoznaj się z sekcją [użycie](#input---usage) , aby uzyskać wskazówki dotyczące sposobu korzystania z tej właściwości.| 
 |**take** |**Take** | Opcjonalny. Maksymalna liczba jednostek do odczytania w języku JavaScript. Zapoznaj się z sekcją [użycie](#input---usage) , aby uzyskać wskazówki dotyczące sposobu korzystania z tej właściwości.| 
-|**filtru** |**Filtr** | Opcjonalna. Wyrażenie filtru OData dla danych wejściowych tabeli w języku JavaScript. Zapoznaj się z sekcją [użycie](#input---usage) , aby uzyskać wskazówki dotyczące sposobu korzystania z tej właściwości.| 
+|**filtru** |**Filtr** | Opcjonalny. Wyrażenie filtru OData dla danych wejściowych tabeli w języku JavaScript. Zapoznaj się z sekcją [użycie](#input---usage) , aby uzyskać wskazówki dotyczące sposobu korzystania z tej właściwości.| 
 |**połączenia** |**połączenia** | Nazwa ustawienia aplikacji, które zawiera parametry połączenia magazynu, które będą używane dla tego powiązania. Jeśli nazwa ustawienia aplikacji zaczyna się od "AzureWebJobs", w tym miejscu możesz określić tylko resztę nazwy. Jeśli na przykład ustawisz `connection` opcję "Moja magazyn", środowisko uruchomieniowe funkcji wyszukuje ustawienie aplikacji o nazwie "AzureWebJobsMyStorage". Jeśli pozostawisz `connection` puste, środowisko uruchomieniowe funkcji używa domyślnych parametrów połączenia magazynu w ustawieniu aplikacji o nazwie `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -529,7 +529,7 @@ Powiązanie danych wejściowych magazynu tabel obsługuje następujące scenariu
 
 * **Odczytaj jeden lub więcej wierszy w języku JavaScript**
 
-  Ustaw właściwości `take`i. `filter` Nie `partitionKey` ustawiaj `rowKey`ani. Uzyskaj dostęp do jednostki tabeli wejściowej (lub jednostek `context.bindings.<name>`) za pomocą. Deserializowane obiekty mają `RowKey` właściwości i `PartitionKey` .
+  Ustaw właściwości `take`i. `filter` Nie `partitionKey` ustawiaj `rowKey`ani. Uzyskaj dostęp do jednostki tabeli wejściowej (lub jednostek `context.bindings.<BINDING_NAME>`) za pomocą. Deserializowane obiekty mają `RowKey` właściwości i `PartitionKey` .
 
 ## <a name="output"></a>Output
 
@@ -786,7 +786,7 @@ Powiązanie danych wyjściowych magazynu tabel obsługuje następujące scenariu
 
 * **Napisz jeden lub więcej wierszy w języku JavaScript**
 
-  W funkcjach języka JavaScript Uzyskuj dostęp do tabeli `context.bindings.<name>`wyjściowej przy użyciu polecenia.
+  W funkcjach języka JavaScript Uzyskuj dostęp do tabeli `context.bindings.<BINDING_NAME>`wyjściowej przy użyciu polecenia.
 
 ## <a name="exceptions-and-return-codes"></a>Wyjątki i kody powrotne
 

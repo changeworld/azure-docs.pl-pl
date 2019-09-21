@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 3da22d11dce1e535763476d906ac45f3da22bc8d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 01e932caf5edc91d5556b60d33e4d100574f93f5
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141284"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170035"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>Przykład: Zapoznanie z aplikacją do przetwarzania obrazów z językiem C#
 
@@ -80,7 +80,7 @@ Możesz uruchomić przykładową aplikację, aby zobaczyć sposób jej interakcj
    ![Strona Zarządzanie kluczami subskrypcji](../Images/Vision_UI_Subscription.PNG)  
 1. Wprowadź swój klucz subskrypcji w polu **Klucz subskrypcji**.
 1. Wprowadź adres URL punktu końcowego w **punkcie końcowym**.  
-   Jeśli na przykład używasz klucza subskrypcji z przetwarzanie obrazów bezpłatnej wersji próbnej, wprowadź następujący adres URL punktu końcowego:`https://westcentralus.api.cognitive.microsoft.com`
+   Jeśli na przykład używasz klucza subskrypcji z przetwarzanie obrazów bezpłatnej wersji próbnej, wprowadź następujący adres URL punktu końcowego:`https://westcentralus.api.cognitive.microsoft.com`  
    [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 1. Jeśli nie chcesz wprowadzać klucza subskrypcji ani adresu URL punktu końcowego przy następnym uruchomieniu przykładowej aplikacji, wybierz pozycję **Zapisz ustawienie**, aby zapisać klucz subskrypcji i adres URL punktu końcowego na komputerze. Jeśli chcesz usunąć uprzednio zapisany klucz subskrypcji i adres URL punktu końcowego, wybierz pozycję **Usuń ustawienie**.
 

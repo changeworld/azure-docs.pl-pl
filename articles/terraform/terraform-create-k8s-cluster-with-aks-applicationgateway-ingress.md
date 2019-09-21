@@ -8,13 +8,13 @@ author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 1/10/2019
-ms.openlocfilehash: 477b2ec1af4c52f51c3ab20ac2ddf7ef043dfcc7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 09/20/2019
+ms.openlocfilehash: 0373b254a900fd34232bb6863c93802fa7b51aab
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60885478"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169955"
 ---
 # <a name="create-a-kubernetes-cluster-with-application-gateway-ingress-controller-using-azure-kubernetes-service-and-terraform"></a>Tworzenie klastra Kubernetes z kontrolerem ruchu przychodzącego Application Gateway za pomocą usług Azure Kubernetes Service i Terraform
 Usługa [Azure Kubernetes Service (AKS)](/azure/aks/) zarządza hostowanym środowiskiem Kubernetes. Usługa AKS umożliwia szybkie i łatwe wdrażanie konteneryzowanych aplikacji i zarządzanie nimi bez specjalistycznej wiedzy z zakresu aranżacji kontenerów. Eliminuje to również uciążliwości związane z bieżącą obsługą i konserwacją dzięki aprowizowaniu, aktualizowaniu i skalowaniu zasobów na żądanie bez przełączania aplikacji do trybu offline.
@@ -38,7 +38,7 @@ W tym samouczku dowiesz się, jak wykonywać następujące zadania podczas tworz
 - **Jednostka usługi platformy Azure**: postępuj zgodnie z instrukcjami w sekcji dotyczącej **tworzenia jednostki usługi** artykułu [Tworzenie jednostki usługi platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest). Zapisz wartości pozycji appId, displayName i password.
   - Zanotuj wartość pozycji Object ID jednostki usługi, uruchamiając następujące polecenie.
 
-    ```bash
+    ```azurecli
     az ad sp list --display-name <displayName>
     ```
 
@@ -82,7 +82,7 @@ Utwórz plik konfiguracji narzędzia Terraform zawierający deklarację dostawcy
 
 1. Wklej następujący kod do edytora:
 
-    ```JSON
+    ```hcl
     provider "azurerm" {
         version = "~>1.18"
     }
@@ -99,17 +99,21 @@ Utwórz plik konfiguracji narzędzia Terraform zawierający deklarację dostawcy
     ```bash
     :wq
     ```
-   ## <a name="define-input-variables"></a>Definiowanie zmiennych wejściowych
-   Tworzenie pliku konfiguracji narzędzia Terraform z listą wszystkich zmiennych wymaganych podczas tego wdrożenia
-1. W usłudze Cloud Shell utwórz plik o nazwie `variables.tf`
+
+## <a name="define-input-variables"></a>Definiowanie zmiennych wejściowych
+Utwórz plik konfiguracji Terraform, który zawiera listę wszystkich zmiennych wymaganych dla tego wdrożenia.
+
+1. W usłudze Cloud Shell utwórz plik o nazwie `variables.tf`.
+
     ```bash
     vi variables.tf
     ```
+
 1. Przejdź do trybu wstawiania, naciskając klawisz I.
 
-2. Wklej następujący kod do edytora:
+1. Wklej następujący kod do edytora:
     
-    ```JSON
+    ```hcl
     variable "resource_group_name" {
       description = "Name of the resource group already created."
     }
@@ -254,9 +258,9 @@ Utwórz plik konfiguracji narzędzia Terraform używany do utworzenia wszystkich
 
 1. Wklej następujące bloki kodu do edytora:
 
-    a. Tworzenie bloków lokalnych dla zmiennych obliczanych do ponownego użycia
+    a. Utwórz blok lokalnych dla zmiennych obliczanych, które mają być używane ponownie.
 
-    ```JSON
+    ```hcl
     # # Locals block for hardcoded names. 
     locals {
         backend_address_pool_name      = "${azurerm_virtual_network.test.name}-beap"
@@ -268,8 +272,10 @@ Utwórz plik konfiguracji narzędzia Terraform używany do utworzenia wszystkich
         app_gateway_subnet_name = "appgwsubnet"
     }
     ```
-    b. Tworzenie źródła danych dla pozycji Grupa zasobów, Tożsamość nowego użytkownika
-    ```JSON
+
+    b. Utwórz źródło danych dla grupy zasobów i nowej tożsamości użytkownika.
+
+    ```hcl
     data "azurerm_resource_group" "rg" {
       name = "${var.resource_group_name}"
     }
@@ -284,8 +290,10 @@ Utwórz plik konfiguracji narzędzia Terraform używany do utworzenia wszystkich
       tags = "${var.tags}"
     }
     ```
-    c. Tworzenie podstawowych zasobów sieciowych
-   ```JSON
+
+    c. Utwórz podstawowe zasoby sieciowe.
+
+    ```hcl
     resource "azurerm_virtual_network" "test" {
       name                = "${var.virtual_network_name}"
       location            = "${data.azurerm_resource_group.rg.location}"
@@ -328,8 +336,10 @@ Utwórz plik konfiguracji narzędzia Terraform używany do utworzenia wszystkich
       tags = "${var.tags}"
     }
     ```
-    d. Tworzenie zasobu usługi Application Gateway
-    ```JSON
+
+    d. Utwórz zasób Application Gateway.
+
+    ```hcl
     resource "azurerm_application_gateway" "network" {
       name                = "${var.app_gateway_name}"
       resource_group_name = "${data.azurerm_resource_group.rg.name}"
@@ -393,8 +403,10 @@ Utwórz plik konfiguracji narzędzia Terraform używany do utworzenia wszystkich
       depends_on = ["azurerm_virtual_network.test", "azurerm_public_ip.test"]
     }
     ```
-    e. Tworzenie przypisań roli
-    ```JSON
+
+    e. Tworzenie przypisań ról.
+
+    ```hcl
     resource "azurerm_role_assignment" "ra1" {
       scope                = "${data.azurerm_subnet.kubesubnet.id}"
       role_definition_name = "Network Contributor"
@@ -424,8 +436,10 @@ Utwórz plik konfiguracji narzędzia Terraform używany do utworzenia wszystkich
       depends_on           = ["azurerm_user_assigned_identity.testIdentity", "azurerm_application_gateway.network"]
     }
     ```
-    f. Tworzenie klastra Kubernetes
-    ```JSON
+
+    f. Utwórz klaster Kubernetes.
+
+    ```hcl
     resource "azurerm_kubernetes_cluster" "k8s" {
       name       = "${var.aks_name}"
       location   = "${data.azurerm_resource_group.rg.location}"
@@ -502,7 +516,7 @@ Utwórz plik konfiguracji narzędzia Terraform używany do utworzenia wszystkich
 
 1. Wklej następujący kod do edytora:
 
-    ```JSON
+    ```hcl
     output "client_key" {
         value = "${azurerm_kubernetes_cluster.k8s.kube_config.0.client_key}"
     }
@@ -559,7 +573,7 @@ Narzędzie Terraform śledzi stan lokalnie za pośrednictwem pliku `terraform.tf
 
 1. W usłudze Cloud Shell utwórz kontener na koncie usługi Azure Storage (zamień symbole zastępcze &lt;YourAzureStorageAccountName> i &lt;YourAzureStorageAccountAccessKey> na wartości odpowiednie dla Twojego konta usługi Azure Storage).
 
-    ```bash
+    ```azurecli
     az storage container create -n tfstate --account-name <YourAzureStorageAccountName> --account-key <YourAzureStorageAccountKey>
     ```
 
@@ -586,7 +600,7 @@ W tej sekcji dowiesz się, jak za pomocą polecenia `terraform init` utworzyć z
 
 1. Wklej następujące wcześniej utworzone zmienne do edytora:
 
-    ```JSON
+    ```hcl
       resource_group_name = <Name of the Resource Group already created>
 
       location = <Location of the Resource Group>
@@ -674,7 +688,7 @@ Nowo utworzony klaster można sprawdzić za pomocą narzędzi usługi Kubernetes
     ![Narzędzie kubectl umożliwia sprawdzenie kondycji klastra Kubernetes](./media/terraform-k8s-cluster-appgw-with-tf-aks/kubectl-get-nodes.png)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym artykule przedstawiono sposób tworzenia klastra Kubernetes przy użyciu narzędzia Terraform i usługi AKS. Poniżej przedstawiono kilka dodatkowych zasobów zawierających więcej informacji na temat narzędzia Terraform na platformie Azure.
  
  > [!div class="nextstepaction"] 

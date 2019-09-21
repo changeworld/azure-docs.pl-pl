@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 85c2607ae163ab2d29a53440cd65672bdbe0fddf
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 6ed6e21f16287148c8764dd98bda378451440e58
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70985352"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172792"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Dostrajanie wydajności w widokach z materiałami 
 Widoki z materiałami w Azure SQL Data Warehouse zapewniają niską metodę konserwacji dla złożonych zapytań analitycznych w celu uzyskania szybkiej wydajności bez żadnej zmiany w zapytaniu. W tym artykule omówiono ogólne wskazówki dotyczące korzystania z widoków z materiałami.
@@ -34,7 +34,7 @@ Większość wymagań dotyczących widoku standardowego nadal stosuje się do wi
 
 | Porównanie                     | Widok                                         | Zmaterializowany widok             
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------| 
-|Wyświetl definicję                 | Przechowywane w usłudze Azure Data Warehouse.              | Przechowywane w usłudze Azure Data Warehouse.    
+|Definicja widoku                 | Przechowywane w usłudze Azure Data Warehouse.              | Przechowywane w usłudze Azure Data Warehouse.    
 |Wyświetl zawartość                    | Generowane za każdym razem, gdy widok jest używany.   | Wstępnie przetworzone i przechowywane w usłudze Azure Data Warehouse podczas tworzenia widoku. Zaktualizowano w miarę dodawania danych do tabel bazowych.                                             
 |Odświeżanie danych                    | Zawsze aktualizowane                               | Zawsze aktualizowane                          
 |Szybkość pobierania danych widoku z złożonych zapytań     | opóźnienie                                         | Szybko  
@@ -84,19 +84,21 @@ Poniżej przedstawiono ogólne wskazówki dotyczące korzystania z widoków z ma
 
 **Projektowanie dla obciążenia**
 
-- Przed rozpoczęciem tworzenia wyspecjalizowanych widoków należy mieć dogłębne zrozumienie obciążeń związanych ze wzorcami zapytań, ważnością, częstotliwością i rozmiarem danych uzyskanych.  
+Przed rozpoczęciem tworzenia wyspecjalizowanych widoków należy mieć dogłębne zrozumienie obciążeń związanych ze wzorcami zapytań, ważnością, częstotliwością i rozmiarem danych uzyskanych.  
 
-- Użytkownicy mogą uruchomić wyjaśnienie WITH_RECOMMENDATIONS < SQL_statement > dla widoków z materiałami zalecanymi przez optymalizator zapytań.  Ponieważ te zalecenia są specyficzne dla zapytań, widok z materiałami, który korzysta z pojedynczego zapytania, może nie być optymalny dla innych zapytań w tym samym obciążeniu.  Oceń te zalecenia z uwzględnieniem potrzeb związanych z obciążeniem.  Idealnymi widokami materiałowymi są te, które korzystają z wydajności obciążeń.  
+Użytkownicy mogą uruchomić wyjaśnienie WITH_RECOMMENDATIONS < SQL_statement > dla widoków z materiałami zalecanymi przez optymalizator zapytań.  Ponieważ te zalecenia są specyficzne dla zapytań, widok z materiałami, który korzysta z pojedynczego zapytania, może nie być optymalny dla innych zapytań w tym samym obciążeniu.  Oceń te zalecenia z uwzględnieniem potrzeb związanych z obciążeniem.  Idealnymi widokami materiałowymi są te, które korzystają z wydajności obciążeń.  
 
 **Weź pod uwagę kompromis między szybszymi zapytaniami i kosztem** 
 
-- Dla każdego widoku z materiałami jest koszt magazynu i koszt konserwacji widoku przez program do przenoszenia spójnej kolekcji. Istnieje jeden element przenoszenia spójnej kolekcji na wystąpienie serwera Azure SQL Data Warehouse.  Gdy jest zbyt wiele widoków z wieloma materiałami, obciążenie obszaru przenoszenia spójnej kolekcji zostanie zwiększone, a wydajność zapytań wykorzystujących widoki z materiałami może zostać obniżona, jeśli funkcja przenoszenia krotek nie może przenieść danych do segmentów indeksów wystarczająco szybko.  Użytkownicy powinni sprawdzić, czy koszt ponoszony ze wszystkich widoków z materiałami może być przesunięty przez wzrost wydajności zapytania.  Uruchom to zapytanie, aby wyświetlić listę przykładowego widoku w bazie danych: 
+Dla każdego widoku z materiałami istnieje koszt magazynowania danych i koszt utrzymania widoku.  Wraz ze zmianami danych w tabelach podstawowych rozmiar widoku z materiałami wzrasta i jego struktura fizyczna również ulega zmianie.  Aby uniknąć obniżenia wydajności zapytań, każdy widok z materiałami jest obsługiwany oddzielnie przez aparat magazynu danych, w tym przeniesienie wierszy z magazynu różnicowego do segmentów indeksu magazynu kolumn i konsolidowanie zmian danych.  Obciążenie pracą konserwacyjną jest wyższe, gdy liczba widoków z materiałami i zmianami w tabeli podstawowej rośnie.   Użytkownicy powinni sprawdzić, czy koszt ponoszony ze wszystkich widoków z materiałami może być przesunięty przez wzrost wydajności zapytania.  
+
+To zapytanie można uruchomić, aby wyświetlić listę przykładowego widoku w bazie danych: 
 
 ```sql
 SELECT V.name as materialized_view, V.object_id 
 FROM sys.views V 
 JOIN sys.indexes I ON V.object_id= I.object_id AND I.index_id < 2;
-```
+``` 
 
 Opcje zmniejszania liczby widoków z materiałami: 
 

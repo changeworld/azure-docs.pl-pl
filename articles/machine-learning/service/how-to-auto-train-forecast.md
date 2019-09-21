@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: 5339d963b84c5922138d53e44abe9340d55b4dde
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 03c5d46221dc385a390e840381270c01c40bdc6d
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130230"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170410"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Autouczenie modelu prognozowania szeregów czasowych
 
@@ -95,8 +95,10 @@ W przypadku zadań prognozowania automatyczne Uczenie maszynowe korzysta z krok�
 |`time_column_name`|Służy do określania kolumny DateTime w danych wejściowych używanych do kompilowania szeregów czasowych i wywnioskowania jej częstotliwości.|✓|
 |`grain_column_names`|Nazwy definiujące poszczególne grupy serii w danych wejściowych. Jeśli ziarno nie jest zdefiniowane, zakłada się, że zestaw danych jest jedną serią czasową.||
 |`max_horizon`|Definiuje maksymalny żądany zakres prognozy w jednostkach częstotliwości szeregów czasowych. Jednostki są oparte na przedziale czasu na dane szkoleniowe, np. co miesiąc, co tydzień prognozy powinien przewidzieć.|✓|
-|`target_lags`|Liczba wierszy do rozłożeniu wartości docelowych na podstawie częstotliwości danych. Jest to reprezentowane jako lista lub jedna liczba całkowita.||
-|`target_rolling_window_size`|*n* okresy historyczne używane do generowania prognozowanych wartości, < = rozmiar zestawu szkoleniowego. W przypadku pominięcia *n* to pełny rozmiar zestawu szkoleniowego.||
+|`target_lags`|Liczba wierszy do rozłożeniu wartości docelowych na podstawie częstotliwości danych. Jest to reprezentowane jako lista lub jedna liczba całkowita. Zwłoki należy używać, gdy relacja między zmiennymi niezależnymi i zmienną zależną nie są zgodne ani nie są domyślnie skorelowane. Na przykład podczas próby prognozowania zapotrzebowania na produkt zapotrzebowanie w dowolnym miesiącu może zależeć od ceny określonych cen w ciągu 3 miesięcy. W tym przykładzie możesz chcieć zażądać negatywnego opóźnienia (popytu) przez 3 miesiące, aby model był szkoleniowy dla poprawnej relacji.||
+|`target_rolling_window_size`|*n* okresy historyczne używane do generowania prognozowanych wartości, < = rozmiar zestawu szkoleniowego. W przypadku pominięcia *n* to pełny rozmiar zestawu szkoleniowego. Określ ten parametr, jeśli chcesz wziąć pod uwagę tylko określoną ilość historii podczas uczenia modelu.||
+
+Aby uzyskać więcej informacji, zobacz [dokumentację referencyjną](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py) .
 
 Utwórz ustawienia szeregów czasowych jako obiekt słownika. Ustaw wartość `time_column_name` `day_datetime` na pole w zestawie danych. Zdefiniuj parametr, aby upewnić się, że dla danych są tworzone **dwie osobne grupy szeregów czasowych** ; jeden dla sklepu a i B. na `max_horizon` koniec ustaw wartość na 50, aby przewidzieć cały zestaw testów. `grain_column_names` Ustaw okno prognozy na 10 okresów `target_rolling_window_size`, a następnie określ pojedyncze opóźnienie na wartościach docelowych dla 2 okresów `target_lags` wraz z parametrem.
 

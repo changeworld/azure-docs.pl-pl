@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: 9392cfc9c789a757c3ad533a3dbd4719f5292be5
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 809d76791522fa135932baaf6e237570ab0af35a
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931352"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172167"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>Samouczek: Tworzenie zautomatyzowanych, cyklicznych przepływów pracy opartych na harmonogramach przy użyciu Azure Logic Apps
 
@@ -235,7 +235,7 @@ Następnie dodaj warunek, który sprawdzi, czy aktualny czas podróży jest dłu
 
 1. W obszarze Poprzednia Akcja wybierz pozycję **nowy krok**.
 
-1. W obszarze **Wybierz akcję**wybierz pozycję **wbudowane**i wyszukaj ciąg "warunek", a następnie wybierz akcję **warunek** .
+1. W obszarze **Wybierz akcję**wybierz pozycję **wbudowane**. W polu wyszukiwania wprowadź wartość "warunek" jako filtr. Z listy Akcje wybierz akcję **warunek** .
 
    ![Wybierz akcję "warunek"](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-condition-action.png)
 
@@ -243,19 +243,19 @@ Następnie dodaj warunek, który sprawdzi, czy aktualny czas podróży jest dłu
 
 1. Kompiluj warunek, który sprawdza, czy wartość właściwości **travelTime** przekracza określony limit, zgodnie z opisem i pokazanym tutaj:
 
-   1. Wewnątrz warunku kliknij wewnątrz pola **Wybierz wartość** po lewej stronie warunku.
+   1. W warunku kliknij wewnątrz pola **Wybierz wartość** po lewej stronie warunku.
 
-   1. Gdy zostanie wyświetlona lista zawartości dynamicznej, w obszarze **zmienne**wybierz właściwość **travelTime** .
+   1. Z wyświetlonej listy zawartości dynamicznej w obszarze **zmienne**wybierz właściwość **travelTime** .
 
       ![Po lewej stronie warunku kompilacji](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-left-side.png)
 
-   1. W polu porównania wybierz operator **większe niż**
+   1. W środkowym polu porównania wybierz operator **jest większy niż** .
 
    1. W polu **Wybierz wartość** z prawej strony warunku wprowadź następujący limit:`15`
 
       Gdy wszystko będzie gotowe, warunek będzie wyglądać podobnie do tego przykładu:
 
-      ![Kompilowanie warunku](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-check-travel-time.png)
+      ![Ukończony warunek](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-check-travel-time.png)
 
 1. Zapisz aplikację logiki.
 

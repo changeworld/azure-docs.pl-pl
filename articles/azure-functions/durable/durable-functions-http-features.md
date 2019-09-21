@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: b909918ff4f9abc1dd64d4c7e5ccb35954b233f7
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 5a9143643b1a1cabb32903933dbd68d665d0424f
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935796"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71171128"
 ---
 # <a name="http-features"></a>Funkcje HTTP
 
@@ -205,7 +205,7 @@ Wbudowana obsługa wywoływania interfejsów API protokołu HTTP jest wygodną f
 Jeśli którykolwiek z tych ograniczeń może mieć wpływ na przypadek użycia, rozważ użycie funkcji działania i bibliotek klienckich protokołu HTTP specyficznych dla języka, aby wychodzące wywołania HTTP.
 
 > [!NOTE]
-> Jeśli jesteś deweloperem platformy .NET, możesz zastanawiać się, dlaczego ta funkcja `DurableHttpRequest` używa `DurableHttpResponse` i typ zamiast wbudowanego oprogramowania .NET `HttpRequestMessage` i `HttpResponseMessage`. Ten wybór projektu zamierzone. Główną przyczyną jest to, że typy niestandardowe pomagają zapewnić, że użytkownicy nie będą wprowadzać nieprawidłowych założeń dotyczących obsługiwanych zachowań wewnętrznego klienta HTTP. Typy o trwałej charakterystyce umożliwiają również uproszczenie projektowania interfejsu API i łatwiejszym w użyciu funkcji specjalnych, takich jak [integracja tożsamości zarządzanej](#managed-identities) i wzorzec dla [odbiorców sondowania](#http-202-handling).
+> Jeśli jesteś deweloperem platformy .NET, możesz zastanawiać się, dlaczego ta funkcja `DurableHttpRequest` używa `DurableHttpResponse` i typ zamiast wbudowanego oprogramowania .NET `HttpRequestMessage` i `HttpResponseMessage`. Ten wybór projektu zamierzone. Głównym powodem jest to, że typy niestandardowe pomagają zapewnić, że użytkownicy nie będą wprowadzać nieprawidłowych założeń dotyczących obsługiwanych zachowań wewnętrznego klienta HTTP. Typy o trwałej charakterystyce umożliwiają również uproszczenie projektowania interfejsu API i łatwiejszym w użyciu funkcji specjalnych, takich jak [integracja tożsamości zarządzanej](#managed-identities) i wzorzec dla [odbiorców sondowania](#http-202-handling).
 
 ## <a name="next-steps"></a>Następne kroki
 

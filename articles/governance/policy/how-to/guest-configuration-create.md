@@ -3,16 +3,16 @@ title: Jak utworzyć zasady konfiguracji gościa
 description: Dowiedz się, jak utworzyć Azure Policy zasady konfiguracji gościa dla maszyn wirtualnych z systemem Windows lub Linux.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 07/26/2019
+ms.date: 09/20/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 0c1c3470ae18b2a600af0d5e930b6fc114123728
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 8fd50ed571e42a1eb6673c56a61314d2adfe27f2
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/20/2019
-ms.locfileid: "71161929"
+ms.locfileid: "71172453"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Jak utworzyć zasady konfiguracji gościa
 
@@ -58,12 +58,11 @@ Konfiguracja gościa używa modułu zasobów **GuestConfiguration** do tworzenia
 
 Pierwszym krokiem tworzenia zasad niestandardowych dla konfiguracji gościa jest utworzenie konfiguracji DSC. Omówienie pojęć i terminologii DSC można znaleźć w temacie [Omówienie DSC programu PowerShell](/powershell/dsc/overview/overview).
 
-Jeśli konfiguracja wymaga tylko zasobów, które są wbudowane z instalacją agenta konfiguracji gościa, wystarczy tylko utworzyć plik MOF konfiguracji. Jeśli konieczne jest uruchomienie dodatkowego skryptu, należy utworzyć niestandardowy moduł zasobów.
+Jeśli konfiguracja wymaga tylko zasobów, które są wbudowane z instalacją agenta konfiguracji gościa, wystarczy tylko utworzyć plik MOF konfiguracji. Jeśli musisz uruchomić dodatkowy skrypt, musisz utworzyć niestandardowy moduł zasobów.
 
 ### <a name="requirements-for-guest-configuration-custom-resources"></a>Wymagania dotyczące zasobów niestandardowych konfiguracji gościa
 
-Gdy konfiguracja gościa przeprowadza inspekcję maszyny, najpierw `Test-TargetResource` uruchamia się, aby określić, czy jest w prawidłowym stanie.  Wartość logiczna zwrócona przez funkcję określa, czy stan Azure Resource Manager dla przypisania gościa powinien być zgodny/niezgodny.  Jeśli wartość logiczna jest `$false` dla dowolnego zasobu w konfiguracji, zostanie uruchomiony `Get-TargetResource`dostawca.
-Jeśli wartość logiczna `$true` `Get-TargetResource` nie jest wywoływana.
+Gdy konfiguracja gościa przeprowadza inspekcję maszyny, najpierw `Test-TargetResource` uruchamia się, aby określić, czy jest w prawidłowym stanie. Wartość logiczna zwrócona przez funkcję określa, czy stan Azure Resource Manager dla przypisania gościa powinien być zgodny/niezgodny. Jeśli wartość logiczna jest `$false` dla dowolnego zasobu w konfiguracji, zostanie uruchomiony `Get-TargetResource`dostawca. Jeśli wartość logiczna `Get-TargetResource` nie `$true` jest wywoływana.
 
 Funkcja `Get-TargetResource` ma specjalne wymagania dotyczące konfiguracji gościa, która nie jest wymagana w przypadku konfiguracji żądanego stanu systemu Windows.
 
@@ -71,15 +70,14 @@ Funkcja `Get-TargetResource` ma specjalne wymagania dotyczące konfiguracji goś
 - Właściwość przyczyn musi być tablicą.
 - Każdy element w tablicy powinien być tablicą skrótów z kluczami o nazwie **Code** i **phrase**.
 
-Właściwość powody jest używana przez usługę do standaryzacji sposobu prezentowania informacji, gdy maszyna nie jest zgodna.
-Każdy element może być uważany za "powód", że zasób nie jest zgodny. Właściwość jest tablicą, ponieważ zasób może być niezgodny z więcej niż jedną przyczyną.
+Właściwość powody jest używana przez usługę do standaryzacji sposobu prezentowania informacji, gdy maszyna nie jest zgodna. Każdy element może być uważany za "powód", że zasób nie jest zgodny. Właściwość jest tablicą, ponieważ zasób może być niezgodny z więcej niż jedną przyczyną.
 
-**Kod** właściwości i **frazy** są oczekiwane przez usługę. Podczas tworzenia zasobu niestandardowego Ustaw tekst (zazwyczaj stdout), który ma być pokazywany jako powód, w którym zasób nie jest zgodny jako wartość **frazy**.  **Kod** ma określone wymagania dotyczące formatowania, dlatego raportowanie może jasno wyświetlić informacje o zasobie, który został użyty do przeprowadzenia inspekcji. To rozwiązanie sprawia, że konfiguracja gościa jest rozszerzalna. Każde polecenie można uruchomić w celu inspekcji maszyny, o ile dane wyjściowe mogą być przechwytywane i zwracane jako wartość ciągu dla właściwości **phrase** .
+**Kod** właściwości i **frazy** są oczekiwane przez usługę. Podczas tworzenia zasobu niestandardowego Ustaw tekst (zazwyczaj stdout), który ma być pokazywany jako powód, w którym zasób nie jest zgodny jako wartość **frazy**. **Kod** ma określone wymagania dotyczące formatowania, dlatego raportowanie może jasno wyświetlić informacje o zasobie, który został użyty do przeprowadzenia inspekcji. To rozwiązanie sprawia, że konfiguracja gościa jest rozszerzalna. Każde polecenie można uruchomić w celu inspekcji maszyny, o ile dane wyjściowe mogą być przechwytywane i zwracane jako wartość ciągu dla właściwości **phrase** .
 
-- **Kod** (ciąg): Nazwa zasobu, powtórzona i krótka nazwa bez spacji jako identyfikator przyczyny.  Te trzy wartości powinny być rozdzielane średnikami bez spacji.
-    - Przykładem może być "Registry: Registry: keynotpresent".
+- **Kod** (ciąg): Nazwa zasobu, powtórzona i krótka nazwa bez spacji jako identyfikator przyczyny. Te trzy wartości powinny być rozdzielane średnikami bez spacji.
+  - Przykładem może być`registry:registry:keynotpresent`
 - **Fraza** (ciąg): Czytelny dla człowieka tekst wyjaśniający, dlaczego ustawienie nie jest zgodne.
-    - Przykładem może być "klucz rejestru $key nie istnieje na komputerze".
+  - Przykładem może być`The registry key $key is not present on the machine.`
 
 ```powershell
 $reasons = @()
@@ -94,7 +92,7 @@ return @{
 
 #### <a name="scaffolding-a-guest-configuration-project"></a>Tworzenie szkieletu projektu konfiguracji gościa
 
-Dla deweloperów, którzy chcą skrócić proces rozpoczynania pracy i korzystania z przykładowego kodu, projekt społecznościowy o nazwie " **Projekt konfiguracji gościa** " istnieje jako szablon modułu [gips](https://github.com/powershell/plaster) PowerShell.  To narzędzie może służyć do tworzenia szkieletu projektu, w tym konfiguracji roboczej i przykładowego zasobu, oraz zestawu testów [szkodników](https://github.com/pester/pester) do sprawdzania poprawności projektu.  Szablon zawiera również moduły uruchamiające zadania dla Visual Studio Code do automatyzacji kompilowania i weryfikowania pakietu konfiguracji gościa. Aby uzyskać więcej informacji, zobacz [Projekt konfiguracji gościa](https://github.com/microsoft/guestconfigurationproject)projektu GitHub.
+Dla deweloperów, którzy chcą skrócić proces rozpoczynania pracy i korzystania z przykładowego kodu, projekt społecznościowy o nazwie " **Projekt konfiguracji gościa** " istnieje jako szablon modułu [gips](https://github.com/powershell/plaster) PowerShell. To narzędzie może służyć do tworzenia szkieletu projektu, w tym konfiguracji roboczej i przykładowego zasobu, oraz zestawu testów [szkodników](https://github.com/pester/pester) do sprawdzania poprawności projektu. Szablon zawiera również moduły uruchamiające zadania dla Visual Studio Code do automatyzacji kompilowania i weryfikowania pakietu konfiguracji gościa. Aby uzyskać więcej informacji, zobacz [Projekt konfiguracji gościa](https://github.com/microsoft/guestconfigurationproject)projektu GitHub.
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Konfiguracja niestandardowej konfiguracji gościa w systemie Linux
 
@@ -177,15 +175,23 @@ Ukończony pakiet musi być przechowywany w lokalizacji dostępnej dla zarządza
 
 W Azure Policy konfiguracji gościa najlepszym sposobem zarządzania kluczami tajnymi używanymi w czasie wykonywania jest przechowywanie ich w Azure Key Vault. Ten projekt jest implementowany w ramach niestandardowych zasobów DSC.
 
-Najpierw utwórz tożsamość zarządzaną przypisaną przez użytkownika na platformie Azure. Tożsamość jest używana przez maszyny do uzyskiwania dostępu do wpisów tajnych przechowywanych w Key Vault. Aby uzyskać szczegółowe instrukcje, zobacz [Tworzenie, wyświetlanie listy lub usuwanie tożsamości zarządzanej przypisanej przez użytkownika przy użyciu Azure PowerShell](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
+1. Najpierw utwórz tożsamość zarządzaną przypisaną przez użytkownika na platformie Azure.
 
-Utwórz wystąpienie Key Vault. Aby uzyskać szczegółowe instrukcje, zobacz [Ustawianie i pobieranie wpisu tajnego — PowerShell](../../../key-vault/quick-create-powershell.md).
-Przypisz uprawnienia do wystąpienia, aby przyznać tożsamości przypisanej użytkownikowi dostęp do wpisów tajnych przechowywanych w Key Vault. Aby uzyskać szczegółowe instrukcje, zobacz [Ustawianie i pobieranie wpisu tajnego platformy .NET](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault).
+   Tożsamość jest używana przez maszyny do uzyskiwania dostępu do wpisów tajnych przechowywanych w Key Vault. Aby uzyskać szczegółowe instrukcje, zobacz [Tworzenie, wyświetlanie listy lub usuwanie tożsamości zarządzanej przypisanej przez użytkownika przy użyciu Azure PowerShell](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
 
-Przypisz do komputera tożsamość przypisaną przez użytkownika. Aby uzyskać szczegółowe instrukcje, zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej platformy Azure przy użyciu programu PowerShell](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity).
-Na dużą skalę Przypisz tę tożsamość przy użyciu Azure Resource Manager za pośrednictwem Azure Policy. Aby uzyskać szczegółowe instrukcje, zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej platformy Azure przy użyciu szablonu](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm).
+1. Utwórz wystąpienie Key Vault.
 
-Na koniec w ramach zasobu niestandardowego Użyj identyfikatora klienta wygenerowanego powyżej, aby uzyskać dostęp do Key Vault przy użyciu tokenu dostępnego na komputerze. Adres URL i do wystąpienia Key Vault można przesłać do zasobu jako właściwości, więc nie trzeba aktualizować zasobu dla wielu środowisk lub należy zmienić wartości. [](/powershell/dsc/resources/authoringresourcemof#creating-the-mof-schema) `client_id`
+   Aby uzyskać szczegółowe instrukcje, zobacz [Ustawianie i pobieranie wpisu tajnego — PowerShell](../../../key-vault/quick-create-powershell.md).
+   Przypisz uprawnienia do wystąpienia, aby przyznać tożsamości przypisanej użytkownikowi dostęp do wpisów tajnych przechowywanych w Key Vault. Aby uzyskać szczegółowe instrukcje, zobacz [Ustawianie i pobieranie wpisu tajnego platformy .NET](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault).
+
+1. Przypisz do komputera tożsamość przypisaną przez użytkownika.
+
+   Aby uzyskać szczegółowe instrukcje, zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej platformy Azure przy użyciu programu PowerShell](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity).
+   Na dużą skalę Przypisz tę tożsamość przy użyciu Azure Resource Manager za pośrednictwem Azure Policy. Aby uzyskać szczegółowe instrukcje, zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej platformy Azure przy użyciu szablonu](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm).
+
+1. Na koniec w ramach zasobu niestandardowego Użyj identyfikatora klienta wygenerowanego powyżej, aby uzyskać dostęp do Key Vault przy użyciu tokenu dostępnego na komputerze.
+
+   Adres URL i do wystąpienia Key Vault można przesłać do zasobu jako właściwości, więc nie trzeba aktualizować zasobu dla wielu środowisk lub należy zmienić wartości. [](/powershell/dsc/resources/authoringresourcemof#creating-the-mof-schema) `client_id`
 
 Następujący przykładowy kod może być używany w zasobie niestandardowym w celu pobierania wpisów tajnych z Key Vault przy użyciu tożsamości przypisanej do użytkownika. Wartość zwrócona przez żądanie do Key Vault jest zwykłym tekstem. Najlepszym rozwiązaniem jest zapisanie go w ramach obiektu Credential.
 
@@ -264,8 +270,7 @@ Jeśli chcesz użyć tego polecenia do tworzenia szkieletu niestandardowego proj
 
 Konfiguracja gościa obsługuje Zastępowanie właściwości konfiguracji w czasie wykonywania. Ta funkcja oznacza, że wartości w pliku MOF w pakiecie nie muszą być uznawane za statyczne. Wartości przesłonięć są udostępniane za pomocą Azure Policy i nie mają wpływu na sposób tworzenia lub kompilowania konfiguracji.
 
-Polecenia cmdlet `New-GuestConfigurationPolicy` i `Test-GuestConfigurationPolicyPackage` zawierają parametr o nazwie **Parameters**.
-Ten parametr przyjmuje definicję obiektu Hashtable obejmującą wszystkie szczegóły każdego z parametrów i automatycznie tworzy wszystkie wymagane sekcje plików użytych do utworzenia każdej definicji Azure Policy.
+Polecenia cmdlet `New-GuestConfigurationPolicy` i `Test-GuestConfigurationPolicyPackage` zawierają parametr o nazwie **Parameters**. Ten parametr przyjmuje definicję obiektu Hashtable obejmującą wszystkie szczegóły każdego z parametrów i automatycznie tworzy wszystkie wymagane sekcje plików użytych do utworzenia każdej definicji Azure Policy.
 
 Poniższy przykład tworzy Azure Policy do inspekcji usługi, gdzie użytkownik wybiera z listy usług w momencie przypisywania zasad.
 
@@ -294,7 +299,7 @@ New-GuestConfigurationPolicy
     -Verbose
 ```
 
-W przypadku zasad systemu Linux Uwzględnij `AttributesYmlContent` właściwość w konfiguracji i Zastąp odpowiednie wartości. Agent konfiguracji gościa automatycznie tworzy plik YaML używany przez specyfikację do przechowywania atrybutów. Zobacz przykład poniżej.
+W przypadku zasad systemu Linux Uwzględnij Właściwość **AttributesYmlContent** w konfiguracji i Zastąp odpowiednie wartości. Agent konfiguracji gościa automatycznie tworzy plik YaML używany przez specyfikację do przechowywania atrybutów. Zobacz przykład poniżej.
 
 ```azurepowershell-interactive
 Configuration FirewalldEnabled {
@@ -356,18 +361,14 @@ W przypadku definicji zasad i inicjatyw utworzonych na platformie Azure ostatni 
 
 Po opublikowaniu niestandardowego Azure Policy przy użyciu niestandardowego pakietu zawartości istnieją dwa pola, które należy zaktualizować, jeśli chcesz opublikować nową wersję.
 
-- **Wersja**: Po uruchomieniu `New-GuestConfigurationPolicy` polecenia cmdlet należy określić numer wersji większy niż aktualnie opublikowany.  Właściwość aktualizuje wersję przypisania konfiguracji gościa w nowym pliku zasad, więc rozszerzenie rozpozna, że pakiet został zaktualizowany.
-- **contentHash**: Ta właściwość jest automatycznie aktualizowana przez `New-GuestConfigurationPolicy` polecenie cmdlet.  Jest to wartość skrótu pakietu utworzonego przez `New-GuestConfigurationPackage`.  Właściwość musi być poprawna dla `.zip` publikowanych plików.  Jeśli zostanie zaktualizowana tylko `contentUri` właściwość, na przykład w przypadku, gdy ktoś może wprowadzić ręczną zmianę definicji zasad z portalu, rozszerzenie nie zaakceptuje pakietu zawartości.
+- **Wersja**: Po uruchomieniu `New-GuestConfigurationPolicy` polecenia cmdlet należy określić numer wersji większy niż aktualnie opublikowany. Właściwość aktualizuje wersję przypisania konfiguracji gościa w nowym pliku zasad, więc rozszerzenie rozpozna, że pakiet został zaktualizowany.
+- **contentHash**: Ta właściwość jest automatycznie aktualizowana przez `New-GuestConfigurationPolicy` polecenie cmdlet. Jest to wartość skrótu pakietu utworzonego przez `New-GuestConfigurationPackage`. Właściwość musi być poprawna dla `.zip` publikowanych plików. Jeśli zostanie zaktualizowana tylko właściwość **contentUri** , na przykład w przypadku, gdy ktoś mógłby wprowadzić ręczną zmianę definicji zasad z portalu, rozszerzenie nie zaakceptuje pakietu zawartości.
 
-Najprostszym sposobem zwolnienia zaktualizowanego pakietu jest powtórzenie procesu opisanego w tym artykule i udostępnienie zaktualizowanego numeru wersji.
-Ten proces gwarantuje, że wszystkie właściwości zostały prawidłowo zaktualizowane.
+Najprostszym sposobem zwolnienia zaktualizowanego pakietu jest powtórzenie procesu opisanego w tym artykule i udostępnienie zaktualizowanego numeru wersji. Ten proces gwarantuje, że wszystkie właściwości zostały prawidłowo zaktualizowane.
 
 ## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>Konwertowanie zawartości systemu Windows zasady grupy na konfigurację Azure Policy gościa
 
-Konfiguracja gościa podczas inspekcji maszyn z systemem Windows jest implementacją składni konfiguracji żądanego stanu programu PowerShell.
-Społeczność DSC opublikowała narzędzia do konwertowania wyeksportowanych szablonów zasady grupy w formacie DSC.
-Korzystając z tego narzędzia wraz z poleceniami cmdlet konfiguracji gościa opisanymi powyżej, można skonwertować zawartość systemu Windows zasady grupy i pakiet/opublikować ją Azure Policy do inspekcji.
-Aby uzyskać szczegółowe informacje na temat korzystania z tego narzędzia [, zobacz artykuł Szybki Start: Przekonwertuj zasady grupy na](/powershell/dsc/quickstarts/gpo-quickstart)DSC.
+Konfiguracja gościa podczas inspekcji maszyn z systemem Windows jest implementacją składni konfiguracji żądanego stanu programu PowerShell. Społeczność DSC opublikowała narzędzia do konwertowania wyeksportowanych szablonów zasady grupy w formacie DSC. Korzystając z tego narzędzia wraz z poleceniami cmdlet konfiguracji gościa opisanymi powyżej, można skonwertować zawartość systemu Windows zasady grupy i pakiet/opublikować ją Azure Policy do inspekcji. Aby uzyskać szczegółowe informacje na temat korzystania z tego narzędzia [, zobacz artykuł Szybki Start: Przekonwertuj zasady grupy na](/powershell/dsc/quickstarts/gpo-quickstart)DSC.
 Po przeprowadzeniu konwersji zawartości należy wykonać kroki opisane powyżej, aby utworzyć pakiet i opublikować go jako Azure Policy będzie taka sama jak w przypadku dowolnej zawartości DSC.
 
 ## <a name="optional-signing-guest-configuration-packages"></a>OBOWIĄZKOWE Podpisywanie pakietów konfiguracji gościa
@@ -403,15 +404,13 @@ $Cert | Export-Certificate -FilePath "$env:temp\DscPublicKey.cer" -Force
 
 Odpowiednie informacje na temat tworzenia kluczy GPG do użycia z maszynami z systemem Linux są dostępne w artykule w witrynie GitHub, [generując nowy klucz GPG](https://help.github.com/en/articles/generating-a-new-gpg-key).
 
-Po opublikowaniu zawartości Dodaj tag o nazwie `GuestConfigPolicyCertificateValidation` i wartości `enabled` do wszystkich maszyn wirtualnych, na których powinno być wymagane podpisywanie kodu. Ten tag można dostarczyć na dużą skalę przy użyciu Azure Policy. Zapoznaj się z przykładem [Zastosuj tag i jego wartość domyślną](../samples/apply-tag-default-value.md) .
-Po zastosowaniu tego tagu definicja zasad wygenerowana przy użyciu `New-GuestConfigurationPolicy` polecenia cmdlet włącza wymaganie za pośrednictwem rozszerzenia konfiguracji gościa.
+Po opublikowaniu zawartości Dodaj tag o nazwie `GuestConfigPolicyCertificateValidation` i wartości `enabled` do wszystkich maszyn wirtualnych, na których powinno być wymagane podpisywanie kodu. Ten tag można dostarczyć na dużą skalę przy użyciu Azure Policy. Zapoznaj się z przykładem [Zastosuj tag i jego wartość domyślną](../samples/apply-tag-default-value.md) . Po zastosowaniu tego tagu definicja zasad wygenerowana przy użyciu `New-GuestConfigurationPolicy` polecenia cmdlet włącza wymaganie za pośrednictwem rozszerzenia konfiguracji gościa.
 
 ## <a name="preview-troubleshooting-guest-configuration-policy-assignments"></a>PRZEGLĄDANIA Rozwiązywanie problemów z przypisaniami zasad konfiguracji gościa
 
-Narzędzie jest dostępne w wersji zapoznawczej, aby pomóc w rozwiązywaniu problemów z przypisaniami konfiguracji gościa Azure Policy.
-Narzędzie jest w wersji zapoznawczej i zostało opublikowane w Galeria programu PowerShell jako nazwa modułu [Narzędzia do rozwiązywania problemów z konfiguracją gościa](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/).
+Narzędzie jest dostępne w wersji zapoznawczej, aby pomóc w rozwiązywaniu problemów z przypisaniami konfiguracji gościa Azure Policy. Narzędzie jest w wersji zapoznawczej i zostało opublikowane w Galeria programu PowerShell jako nazwa modułu [Narzędzia do rozwiązywania problemów z konfiguracją gościa](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/).
 
-Aby uzyskać więcej informacji na temat poleceń cmdlet w tym narzędziu, użyj polecenia Get-Help w programie PowerShell, aby wyświetlić wbudowane wskazówki.  Ponieważ narzędzie pobiera częste aktualizacje, to najlepszy sposób uzyskiwania najnowszych informacji.
+Aby uzyskać więcej informacji na temat poleceń cmdlet w tym narzędziu, użyj polecenia Get-Help w programie PowerShell, aby wyświetlić wbudowane wskazówki. Ponieważ narzędzie pobiera częste aktualizacje, to najlepszy sposób uzyskiwania najnowszych informacji.
 
 ## <a name="next-steps"></a>Następne kroki
 

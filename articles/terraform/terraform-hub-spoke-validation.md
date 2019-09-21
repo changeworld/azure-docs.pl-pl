@@ -1,45 +1,45 @@
 ---
-title: Sprawdź poprawność gwiazdy sieci przy użyciu programu Terraform na platformie Azure
-description: Samouczka, aby zweryfikować sieci topologia gwiazdy z wszystkie sieci wirtualne są połączone ze sobą.
+title: Weryfikowanie sieci gwiazdy i satelity za pomocą Terraform na platformie Azure
+description: Samouczek dotyczący weryfikowania topologii sieci Hub i szprychy ze wszystkimi sieciami wirtualnymi połączonymi ze sobą.
 services: terraform
 ms.service: azure
-keywords: terraform, gwiazdy, sieci, sieci hybrydowych, metodyki devops, maszyna wirtualna, azure, wirtualne sieci równorzędne,
+keywords: Terraform, Hub i szprych, sieci, sieci hybrydowe, DevOps, maszyna wirtualna, Azure, Komunikacja równorzędna VNET,
 author: VaijanathB
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
-ms.date: 03/01/2019
-ms.openlocfilehash: 157be65a19a1f790b911aa9d861c5f18fc8c0813
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.date: 09/20/2019
+ms.openlocfilehash: e35af0fcf4a8f1f8f0446be44fe5b0bb6eeec693
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128263"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169715"
 ---
-# <a name="tutorial-validate-a-hub-and-spoke-network-with-terraform-in-azure"></a>Samouczek: Sprawdź poprawność gwiazdy sieci przy użyciu programu Terraform na platformie Azure
+# <a name="tutorial-validate-a-hub-and-spoke-network-with-terraform-in-azure"></a>Samouczek: Weryfikowanie sieci gwiazdy i satelity za pomocą Terraform na platformie Azure
 
-W tym artykule możesz wykonać pliki terraform, utworzone w poprzednim artykule w tej serii. Wynik jest weryfikacji łączności między sieciami wirtualnymi w wersji demonstracyjnej.
+W tym artykule opisano wykonywanie plików Terraform utworzonych w poprzednim artykule w tej serii. Wynikiem jest weryfikacja łączności między demonstracją sieciami wirtualnymi.
 
 Ten samouczek obejmuje następujące zadania:
 
 > [!div class="checklist"]
-> * Użycie HCL (HashiCorp Language) w celu wdrożenia sieci wirtualnej koncentratora w topologii piasty i szprych
-> * Aby sprawdzić zasoby, które mają zostać wdrożone przy użyciu planu narzędzia Terraform
-> * Użyj narzędzia Terraform zastosować do utworzenia zasobów na platformie Azure
-> * Sprawdź łączność między różnymi sieciami
-> * Aby zniszczyć wszystkie zasoby za pomocą narzędzia Terraform
+> * Używanie HCL (HashiCorp Language) do implementowania sieci wirtualnej centrum w topologii gwiazdy
+> * Aby sprawdzić zasoby, które mają zostać wdrożone, należy użyć planu Terraform
+> * Użyj Terraform do tworzenia zasobów na platformie Azure
+> * Weryfikowanie łączności między różnymi sieciami
+> * Użyj Terraform, aby zniszczyć wszystkie zasoby
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-1. [Utwórz koncentrator i topologię sieci hybrydowej za pomocą programu Terraform na platformie Azure typu gwiazda](./terraform-hub-spoke-introduction.md).
-1. [Tworzenie sieci wirtualnej w środowisku lokalnym za pomocą programu Terraform na platformie Azure](./terraform-hub-spoke-on-prem.md).
-1. [Tworzenie sieci wirtualnej koncentratora za pomocą programu Terraform na platformie Azure](./terraform-hub-spoke-hub-network.md).
-1. [Utwórz urządzenie w sieci wirtualnej koncentratora za pomocą programu Terraform na platformie Azure](./terraform-hub-spoke-hub-nva.md).
-1. [Tworzenie sieci wirtualnych przy użyciu programu Terraform na platformie Azure szprychy](./terraform-hub-spoke-spoke-network.md).
+1. [Tworzenie topologii sieci hybrydowej Hub i satelity z Terraform na platformie Azure](./terraform-hub-spoke-introduction.md).
+1. [Utwórz lokalną sieć wirtualną za pomocą Terraform na platformie Azure](./terraform-hub-spoke-on-prem.md).
+1. [Utwórz centralną sieć wirtualną z usługą Terraform na platformie Azure](./terraform-hub-spoke-hub-network.md).
+1. [Utwórz centralne urządzenie sieci wirtualnej z usługą Terraform na platformie Azure](./terraform-hub-spoke-hub-nva.md).
+1. [Utwórz sieci wirtualne szprych z Terraform na platformie Azure](./terraform-hub-spoke-spoke-network.md).
 
-## <a name="verify-your-configuration"></a>Sprawdź konfigurację
+## <a name="verify-your-configuration"></a>Weryfikowanie konfiguracji
 
-Po zakończeniu [wymagania wstępne](#prerequisites), sprawdź, czy pliki odpowiedniej konfiguracji są obecne.
+Po spełnieniu [wymagań wstępnych](#prerequisites)upewnij się, że istnieją odpowiednie pliki konfiguracyjne.
 
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
 
@@ -59,29 +59,29 @@ Po zakończeniu [wymagania wstępne](#prerequisites), sprawdź, czy pliki odpowi
     cd hub-spoke
     ```
 
-1. Uruchom `ls` polecenie, aby sprawdzić, czy `.tf` pliki konfiguracji, utworzony w poprzednich samouczkach należą:
+1. Uruchom polecenie, aby upewnić się `.tf` , że pliki konfiguracji utworzone w poprzednich samouczkach są wymienione poniżej: `ls`
 
-    ![Pliki konfiguracji na wersji demonstracyjnej programu Terraform](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-config-files.png)
+    ![Pliki konfiguracji demonstracyjnej Terraform](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-config-files.png)
 
 ## <a name="deploy-the-resources"></a>Wdrażanie zasobów
 
-1. Inicjowanie dostawcy Terraform:
+1. Zainicjuj dostawcę Terraform:
     
     ```bash
     terraform init
     ```
     
-    ![Przykładowe wyniki polecenia "terraform init"](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-terraform-init.png)
+    ![Przykładowe wyniki polecenia "Terraform init"](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-terraform-init.png)
     
-1. Uruchom `terraform plan` polecenie, aby zobaczyć efekt wdrożenia przed wykonaniem:
+1. `terraform plan` Uruchom polecenie, aby zobaczyć efekt wdrożenia przed wykonaniem:
 
     ```bash
     terraform plan
     ```
     
-    ![Przykładowe wyniki polecenia "terraform plan"](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-terraform-plan.png)
+    ![Przykładowe wyniki polecenia "Terraform plan"](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-terraform-plan.png)
 
-1. Wdrażanie rozwiązania:
+1. Wdróż rozwiązanie:
 
     ```bash
     terraform apply
@@ -89,44 +89,44 @@ Po zakończeniu [wymagania wstępne](#prerequisites), sprawdź, czy pliki odpowi
     
     Wprowadź `yes` po wyświetleniu monitu o potwierdzenie wdrożenia.
 
-    ![Przykładowe wyniki polecenia "terraform Zastosuj"](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-terraform-apply.png)
+    ![Przykładowe wyniki polecenia "Terraform Apply"](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-terraform-apply.png)
     
-## <a name="test-the-hub-vnet-and-spoke-vnets"></a>Testowanie piastą i sieci wirtualne będące szprychami
+## <a name="test-the-hub-vnet-and-spoke-vnets"></a>Testowanie sieci wirtualnej Hub i satelity sieci wirtualnych
 
-W tej sekcji pokazano, jak przetestować połączenie z symulowanego lokalnego środowiska do sieci wirtualnej serwera centralnego.
+W tej sekcji przedstawiono sposób testowania łączności z symulowanego środowiska lokalnego do sieci wirtualnej centrum.
 
-1. W witrynie Azure portal przejdź do **lokalnego-sieć wirtualna rg** grupy zasobów.
+1. W Azure Portal przejdź do grupy zasobów **lokalnego-VNET-RG** .
 
-1. W **lokalnego-sieć wirtualna rg** , a następnie wybierz maszynę Wirtualną o nazwie **maszyny wirtualnej lokalnego**.
+1. Na karcie **lokalnego-VNET-RG** wybierz maszynę wirtualną o nazwie **lokalnego-VM**.
 
 1. Wybierz przycisk **Połącz**.
 
-1. Obok tekstu **Zaloguj się przy użyciu lokalnego konta maszyny Wirtualnej**, kopia **ssh** polecenia do Schowka.
+1. Obok tekstu **logowania przy użyciu lokalnego konta maszyny wirtualnej**Skopiuj polecenie **SSH** do Schowka.
 
-1. W wierszu polecenia systemu Linux Uruchom `ssh` połączyć się z symulowanego lokalnego środowiska. Użyj hasło określone w `on-prem.tf` pliku parametrów.
+1. W wierszu polecenia systemu Linux Uruchom `ssh` połączyć się z symulowanego lokalnego środowiska. Użyj hasła określonego w `on-prem.tf` pliku parametrów.
 
-1. Uruchom `ping` polecenie, aby przetestować łączność z maszyną Wirtualną serwera przesiadkowego w sieci wirtualnej serwera centralnego:
+1. Uruchom polecenie `ping` , aby przetestować łączność z maszyną wirtualną serwera przesiadkowego w sieci wirtualnej centrum:
 
    ```bash
    ping 10.0.0.68
    ```
 
-1. Uruchom `ping` polecenie, aby przetestować łączliwość do serwera przesiadkowego maszyn wirtualnych w każdej szprysze:
+1. Uruchom polecenie `ping` , aby przetestować łączność z maszynami wirtualnymi serwera przesiadkowego w każdym szprychie:
 
    ```bash
    ping 10.1.0.68
    ping 10.2.0.68
    ```
 
-1. Aby zakończyć działanie ssh sesji na **maszyny wirtualnej lokalnego** maszyny wirtualnej, wprowadź `exit` i naciśnij klawisz &lt;Enter >.
+1. Aby zakończyć sesję SSH na maszynie wirtualnej **lokalnego-VM** , wprowadź `exit` i naciśnij klawisz &lt;Enter >.
 
-## <a name="troubleshoot-vpn-issues"></a>Rozwiązywanie problemów z usługą VPN
+## <a name="troubleshoot-vpn-issues"></a>Rozwiązywanie problemów z siecią VPN
 
-Aby uzyskać informacje o rozwiązywaniu problemów z błędami sieci VPN, zobacz artykuł [Rozwiązywanie problemów z hybrydowego rozwiązania łączącego program połączenia sieci VPN](/azure/architecture/reference-architectures/hybrid-networking/troubleshoot-vpn).
+Informacje o rozwiązywaniu błędów sieci VPN można znaleźć w artykule [Rozwiązywanie problemów z hybrydowym połączeniem sieci VPN](/azure/architecture/reference-architectures/hybrid-networking/troubleshoot-vpn).
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie są już potrzebne, Usuń zasoby utworzone w tej serii samouczka.
+Gdy nie jest już potrzebne, Usuń zasoby utworzone w serii samouczków.
 
 1. Usuń zasoby zadeklarowane w planie:
 
@@ -142,13 +142,13 @@ Gdy nie są już potrzebne, Usuń zasoby utworzone w tej serii samouczka.
     cd ..
     ```
 
-1. Usuń `hub-scope` katalogu (w tym wszystkie jego pliki):
+1. `hub-scope` Usuń katalog (z uwzględnieniem wszystkich jego plików):
 
     ```bash
     rm -r hub-spoke
     ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"] 
-> [Dowiedz się więcej o używaniu programu Terraform na platformie Azure](/azure/terraform)
+> [Dowiedz się więcej o korzystaniu z Terraform na platformie Azure](/azure/terraform)

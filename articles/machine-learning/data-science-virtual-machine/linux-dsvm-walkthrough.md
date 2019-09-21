@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: 759c804fd4128d7b28cbba078cab5e9d7e6453f6
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: f9d4b933bc9c6e11dde8168d9797a1b6196e6f47
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208301"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170687"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Nauka danych przy użyciu Data Science Virtual Machine systemu Linux na platformie Azure
 
@@ -30,7 +30,7 @@ Przed użyciem DSVM systemu Linux należy spełnić następujące wymagania wst�
 
 * **Subskrypcja platformy Azure**. Aby uzyskać subskrypcję platformy Azure, zobacz artykuł [Tworzenie bezpłatnego konta platformy Azure już dzisiaj](https://azure.microsoft.com/free/).
 * [**Data Science Virtual Machine systemu Linux**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm). Informacje o aprowizacji maszyny wirtualnej można znaleźć w temacie [Inicjowanie obsługi Data Science Virtual Machine systemu Linux](linux-dsvm-intro.md).
-* [**X2go**](https://wiki.x2go.org/doku.php) zainstalowane na komputerze z otwartą sesją pulpit Xfce. Aby uzyskać więcej informacji, zobacz [Instalowanie i Konfigurowanie klienta x2go](linux-dsvm-intro.md#install-and-configure-the-x2go-client).
+* [**X2go**](https://wiki.x2go.org/doku.php) zainstalowane na komputerze z otwartą sesją pulpit Xfce. Aby uzyskać więcej informacji, zobacz [Instalowanie i Konfigurowanie klienta x2go](linux-dsvm-intro.md#x2go).
 * Aby usprawnić przewijanie w przeglądarce sieci Web w programie DSVM, przełącz `gfx.xrender.enabled` flagę w. `about:config` [Dowiedz się więcej](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Należy również rozważyć `mousewheel.enable_pixel_scrolling` ustawienie `False`. [Dowiedz się więcej](https://support.mozilla.org/questions/981140).
 * **Konto Azure Machine Learning**. Jeśli jeszcze tego nie zrobiono, Utwórz nowe konto na [stronie głównej Azure Machine Learning](https://studio.azureml.net/). Możesz bezpłatnie wypróbować usługę, aby pomóc Ci rozpocząć pracę.
 
@@ -58,7 +58,7 @@ Następnie połącz dwa pliki razem:
 
 Zestaw danych zawiera kilka typów statystyk dla każdej wiadomości e-mail:
 
-* Kolumny, **takie\_jak\_Word FREQ * Word***, wskazują procent słów w wiadomości e-mail pasującej do *wyrazu*. Jeśli na przykład **słowo\_FREQ\_** ma wartość **1**, nastąpiło 1% wszystkich wyrazów w wiadomości e-mail.
+* Kolumny, **takie\_jak\_Word FREQ * Word***, wskazują procent słów w wiadomości e-mail pasującej do *wyrazu*. Jeśli na przykład **słowo\_FREQ\_** ma wartość **1**, *nastąpiło*1% wszystkich wyrazów w wiadomości e-mail.
 * Kolumny, **takie\_jak\_char FREQ * char***, wskazują procent wszystkich znaków w wiadomości e-mail, która jest *znakiem*.
 * **wielkie\_Uruchom\_długość\_najdłuższy** jest najdłuższy okres sekwencję wielkie litery.
 * **wielkie\_Uruchom\_długość\_średni** jest średnia długość wszystkie sekwencje wielkie litery.
@@ -375,14 +375,14 @@ Aby załadować i skonfigurować zestaw danych:
 Aby eksplorować dane:
 
 1. Wybierz **Eksploruj** kartę.
-1. Aby wyświetlić informacje o typach zmiennych i niektórych statystykach podsumowujących, > wybierz opcję**wykonywanie**podsumowania.
+1. Aby wyświetlić informacje o typach zmiennych i niektórych statystykach podsumowujących, wybierz opcję**wykonywanie** **podsumowania** > .
 1. Aby wyświetlić inne typy statystyk dla każdej zmiennej, wybierz inne opcje, takie jak **opisywanie** lub **podstawy**.
 
-Karta Eksplorowanie umożliwia również generowanie szczegółowych wykresów. Do wykreślenia histogram danych:
+Karta **Eksplorowanie** umożliwia również generowanie szczegółowych wykresów. Do wykreślenia histogram danych:
 
 1. Wybierz **dystrybucje**.
 1. W przypadku **word_freq_remove** i **Word_freq_you**wybierz pozycję **histogram**.
-1. Wybierz pozycję **Wykonaj**. W jednym oknie wykresu powinny być widoczne oba wykresy gęstości, w których jest jasne, że słowo pojawia się częściej niż w wiadomościach e-mail.
+1. Wybierz pozycję **Wykonaj**. W jednym oknie wykresu powinny być widoczne oba wykresy gęstości, w _których jest jasne, że słowo pojawia_ się częściej _niż w_wiadomościach e-mail.
 
 Wykresy **korelacji** są również interesujące. Aby utworzyć wykres:
 
@@ -392,7 +392,7 @@ Wykresy **korelacji** są również interesujące. Aby utworzyć wykres:
 
 Istnieje kilka interesujących korelacji: _technologia_ jest silnie skorelowana z _HP_ i _Labs_, na przykład. Jest również silnie skorelowane z _650_ , ponieważ kod obszaru dawców zestawu danych to 650.
 
-Wartości liczbowe korelacji między wyrazami są dostępne w oknie Eksplorowanie . Warto zwrócić uwagę na przykład, że _technologia_ jest niekorzystnie skorelowane z i _pieniędzy_.
+Wartości liczbowe korelacji między wyrazami są dostępne w oknie **Eksplorowanie** . Warto zwrócić uwagę na przykład, że _technologia_ jest niekorzystnie _skorelowane z i_ _pieniędzy_.
 
 Rattle można przekształcać zestawu danych do obsługi niektórych typowych problemów. Na przykład może zmieniać skalę funkcji, określać brakujące wartości, obsługiwać elementy odstające i usuwać zmienne lub obserwacje z brakującymi danymi. Rattle może również identyfikować reguły kojarzenia między obserwacjami a zmiennymi. Te karty nie zostały omówione w tym instruktażu wprowadzającym.
 
@@ -550,4 +550,4 @@ Możesz również wysyłać zapytania przy użyciu języka SQL SQuirreL. Wykonaj
 
 Aby zapoznać się z omówieniem artykułów, które przeprowadzą Cię przez zadania wchodzące w skład procesu analizy danych na platformie Azure, zobacz [zespół ds. analizy danych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview).
 
-Aby zapoznać się z opisem kompleksowych przewodników, które przedstawiają kroki procesu nauka danych zespołu dla konkretnych scenariuszy, zobacz przewodniki dotyczące [procesów naukowych](../team-data-science-process/walkthroughs.md)dotyczących analiz danych. Przewodniki pokazują również sposób łączenia w chmurze i lokalnych narzędzi i usług w przepływie pracy lub potoku do tworzenia inteligentnych aplikacji.
+Aby zapoznać się z opisem kompleksowych przewodników, które przedstawiają kroki procesu nauka danych zespołu dla konkretnych scenariuszy, zobacz [przewodniki dotyczące procesów naukowych](../team-data-science-process/walkthroughs.md)dotyczących analiz danych. Przewodniki pokazują również sposób łączenia w chmurze i lokalnych narzędzi i usług w przepływie pracy lub potoku do tworzenia inteligentnych aplikacji.

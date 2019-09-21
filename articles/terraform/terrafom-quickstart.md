@@ -5,14 +5,14 @@ services: terraform
 author: neilpeterson
 ms.service: azure
 ms.topic: quickstart
-ms.date: 02/04/2019
+ms.date: 09/20/2019
 ms.author: nepeters
-ms.openlocfilehash: 57ab3fbc584932cb7d08bda76530bbe95ce61a6f
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: c53f3a31b46f00d3207cd8f47dcfbfa131c03666
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699087"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173523"
 ---
 # <a name="create-a-terraform-configuration-for-azure"></a>Tworzenie konfiguracji programu Terraform na platformie Azure
 
@@ -24,7 +24,7 @@ W tej sekcji utworzysz konfigurację wystąpienia usługi Azure Cosmos DB.
 
 Wybierz pozycję **wypróbuj teraz**, aby otworzyć usługę Azure Cloud Shell. Po jej otwarciu wprowadź polecenie `code .`, aby otworzyć edytor kodu usługi Cloud Shell.
 
-```azurecli-interactive
+```bash
 code .
 ```
 
@@ -34,7 +34,7 @@ Ta konfiguracja modeluje grupę zasobów platformy Azure, losową liczbę całko
 
 Po zakończeniu zapisz plik jako `main.tf`. Tę operację można wykonać przy użyciu wielokropka w prawej górnej części edytora kodu.
 
-```azurecli-interactive
+```hcl
 resource "azurerm_resource_group" "vote-resource-group" {
   name     = "vote-resource-group"
   location = "westus"
@@ -67,7 +67,7 @@ resource "azurerm_cosmosdb_account" "vote-cosmos-db" {
 
 Polecenie [terraform init](https://www.terraform.io/docs/commands/init.html) inicjuje katalog roboczy. Uruchom polecenie `terraform init` w terminalu usługi Cloud Shell, aby przygotować się do wdrożenia nowej konfiguracji.
 
-```azurecli-interactive
+```bash
 terraform init
 ```
 
@@ -75,13 +75,13 @@ Za pomocą polecenia [terraform plan](https://www.terraform.io/docs/commands/pla
 
 Uruchom polecenie `terraform plan`, aby przetestować nową konfigurację programu Terraform.
 
-```azurecli-interactive
+```bash
 terraform plan --out plan.out
 ```
 
 Zastosuj konfigurację, używając polecenia [terraform apply](https://www.terraform.io/docs/commands/apply.html) i określając nazwę pliku planu. To polecenie służy do wdrożenia zasobów w ramach subskrypcji platformy Azure.
 
-```azurecli-interactive
+```bash
 terraform apply plan.out
 ```
 
@@ -98,7 +98,7 @@ Ustawiane są dwie zmienne środowiskowe — `COSMOS_DB_ENDPOINT` i `COSMOS_DB_M
 
 Konfiguracja obejmuje również blok danych wyjściowych, który zwraca w pełni kwalifikowaną nazwę domeny (FQDN) wystąpienia kontenera.
 
-```azurecli-interactive
+```hcl
 resource "azurerm_container_group" "vote-aci" {
   name                = "vote-aci"
   location            = "${azurerm_resource_group.vote-resource-group.location}"
@@ -134,13 +134,13 @@ output "dns" {
 
 Uruchom polecenie `terraform plan`, aby utworzyć zaktualizowany plan i zwizualizować wprowadzane zmiany. Powinna zostać wyświetlona informacja, że zasób usługi Azure Container Instance został dodany do konfiguracji.
 
-```azurecli-interactive
+```bash
 terraform plan --out plan.out
 ```
 
 Na koniec uruchom polecenie `terraform apply`, aby zastosować konfigurację.
 
-```azurecli-interactive
+```bash
 terraform apply plan.out
 ```
 
@@ -156,11 +156,11 @@ Przejdź do nazwy FQDN wystąpienia kontenera. Jeśli wszystko zostało skonfigu
 
 Gdy skończysz, zasoby i grupy zasobów platformy Azure można usunąć za pomocą polecenia [terraform destroy](https://www.terraform.io/docs/commands/destroy.html).
 
-```azurecli-interactive
+```bash
 terraform destroy -auto-approve
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przykładzie utworzono, wdrożono i zniszczono konfigurację programu Terraform. Aby uzyskać więcej informacji na temat korzystania z programu Terraform na platformie Azure, zapoznaj się z dokumentacją dostawcy programu Terraform na platformie Azure.
 

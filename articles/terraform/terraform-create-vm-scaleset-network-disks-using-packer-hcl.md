@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 08/28/2019
-ms.openlocfilehash: 9a80cb7ba44c86d449e4ff4178a2982db302a717
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 09/20/2019
+ms.openlocfilehash: 6feeab9b48715a8fe1f6c6fe11ae90b6be71a57a
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70138343"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173483"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Tworzenie zestawu skalowania maszyn wirtualnych platformy Azure z niestandardowego obrazu narzędzia Packer przy użyciu narzędzia Terraform
 
@@ -42,9 +42,9 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 W pustym katalogu utwórz trzy nowe pliki o następujących nazwach:
 
-- ```variables.tf``` — ten plik zawiera wartości zmiennych używanych w szablonie.
-- ```output.tf``` — ten plik opisuje ustawienia, które są wyświetlane po wdrożeniu.
-- ```vmss.tf```Ten plik zawiera kod infrastruktury, która jest wdrażana.
+- `variables.tf` : Ten plik zawiera wartości zmiennych użytych w szablonie.
+- `output.tf` : W tym pliku opisano ustawienia, które są wyświetlane po wdrożeniu.
+- `vmss.tf` : Ten plik zawiera kod infrastruktury, która jest wdrażana.
 
 ##  <a name="create-the-variables"></a>Tworzenie zmiennych 
 
@@ -52,7 +52,7 @@ W tym kroku zdefiniujesz zmienne, za pomocą których dostosujesz zasoby utworzo
 
 Przeprowadź edycję pliku `variables.tf`, skopiuj poniższy kod, a następnie zapisz zmiany.
 
-```tf 
+```hcl
 variable "location" {
   description = "The location where resources are created"
   default     = "East US"
@@ -70,7 +70,7 @@ variable "resource_group_name" {
 
 Zapisz plik.
 
-Podczas wdrażania szablonu narzędzia Terraform może być konieczne pobranie w pełni kwalifikowanej nazwy domeny, która służy do uzyskiwania dostępu do aplikacji. Użyj typu zasobu ```output``` narzędzia Terraform i pobierz właściwość zasobu ```fqdn```. 
+Podczas wdrażania szablonu narzędzia Terraform może być konieczne pobranie w pełni kwalifikowanej nazwy domeny, która służy do uzyskiwania dostępu do aplikacji. Użyj typu zasobu `output` narzędzia Terraform i pobierz właściwość zasobu `fqdn`. 
 
 Przeprowadź edycję pliku `output.tf` i skopiuj poniższy kod, aby uwidocznić w pełni kwalifikowaną nazwę domeny dla maszyn wirtualnych. 
 
@@ -89,9 +89,9 @@ W tym kroku utworzysz w nowej grupie zasobów platformy Azure następującą inf
 
 Potrzebujesz również grupy zasobów, w której są tworzone wszystkie zasoby. 
 
-Przeprowadź edycję pliku ```vmss.tf``` i skopiuj następujący kod: 
+Przeprowadź edycję pliku `vmss.tf` i skopiuj następujący kod: 
 
-```tf 
+```hcl
 
 resource "azurerm_resource_group" "vmss" {
   name     = "${var.resource_group_name}"
@@ -145,7 +145,7 @@ Zainicjuj środowisko narzędzia Terraform, uruchamiając następujące poleceni
 terraform init 
 ```
  
-Do folderu ```.terraform``` w katalogu, w którym uruchomiono polecenie, zostaną pobrane wtyczki dostawcy z rejestru narzędzia Terraform.
+Do folderu `.terraform` w katalogu, w którym uruchomiono polecenie, zostaną pobrane wtyczki dostawcy z rejestru narzędzia Terraform.
 
 Uruchom poniższe polecenie, aby wdrożyć infrastrukturę na platformie Azure.
 
@@ -185,8 +185,7 @@ W tym kroku we wdrożonej wcześniej sieci utworzysz następujące zasoby:
 
 Na końcu pliku `vmss.tf` dodaj poniższy kod.
 
-```tf
-
+```hcl
 
 resource "azurerm_lb" "vmss" {
   name                = "vmss-lb"
@@ -303,7 +302,7 @@ resource "azurerm_virtual_machine_scale_set" "vmss" {
 
 Dostosuj wdrożenie, dodając do pliku `variables.tf` następujący kod:
 
-```tf 
+```hcl
 variable "application_port" {
     description = "The port that you want to expose to the external load balancer"
     default     = 80

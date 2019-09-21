@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 11/08/2018
-ms.openlocfilehash: 7e66f374a1f5f4fb050f366fdad0e787292101f8
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.date: 09/20/2019
+ms.openlocfilehash: 7a628eb02170346a826cab19498d6fdf40cebddd
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128184"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173380"
 ---
 # <a name="create-a-terraform-base-template-in-azure-using-yeoman"></a>Tworzenie szablonu podstawowego Terraform na platformie Azure przy użyciu narzędzia Yeoman
 
@@ -74,7 +74,7 @@ W wierszu polecenia:
 1. Wprowadź polecenie `mkdir <new-directory-name>`.
 
     > [!NOTE]
-    > Zastąp `<new-directory-name>` nazwą Twojego nowego katalogu. W tym przykładzie nadaliśmy nowemu katalogowi nazwę `GeneratorDocSample`.
+    > Zamień `<new-directory-name>` na nazwę nowego katalogu. W tym przykładzie nadaliśmy nowemu katalogowi nazwę `GeneratorDocSample`.
 
     ![mkdir](media/terraform-vscode-module-generator/ymg-mkdir-GeneratorDocSample.png)
 
@@ -209,7 +209,7 @@ Aby potwierdzić, że platforma Docker faktycznie działa, wprowadź polecenie `
 
 1. Po kilku chwilach zostanie wyświetlony komunikat **PASS** (POWODZENIE).
 
-    ![PASS (POWODZENIE)](media/terraform-vscode-module-generator/ymg-pass.png)
+    ![POWODZENIE](media/terraform-vscode-module-generator/ymg-pass.png)
 
 1. Wprowadź polecenie `exit`, aby ukończyć test całościowy i zamknąć środowisko Docker.
 
@@ -229,7 +229,7 @@ Wszystkie te elementy są preinstalowane w usłudze Cloud Shell.
 
 1. Uruchom sesję usługi Azure Cloud Shell za pośrednictwem witryny [Azure Portal](https://portal.azure.com/), witryny [shell.azure.com](https://shell.azure.com) lub [aplikacji mobilnej platformy Azure](https://azure.microsoft.com/features/azure-portal/mobile-app/).
 
-1. Zostanie otwarta strona **Witamy w usłudze Azure Cloud Shell**. Wybierz pozycję **Bash (Linux)**. (Program PowerShell nie jest obsługiwany).
+1. Zostanie otwarta strona **Witamy w usłudze Azure Cloud Shell**. Wybierz pozycję **Bash (Linux)** . (Program PowerShell nie jest obsługiwany).
 
     ![Witamy w usłudze Azure Cloud Shell](media/terraform-vscode-module-generator/ymg-welcome-to-azure-cloud-shell.png)
 
@@ -250,7 +250,7 @@ Wszystkie te elementy są preinstalowane w usłudze Cloud Shell.
 
 1. Utwórz folder $GOPATH, jeśli jeszcze nie istnieje: Wprowadź polecenie `mkdir ~/go`.
 
-1. Utwórz folder w folderze $GOPATH: Wprowadź polecenie `mkdir ~/go/src`. Ten folder będzie służyć do przechowywania i organizowanie folderów inny projekt, możesz utworzyć, takie jak `<your-module-name>` folderu zostanie utworzony w następnym kroku.
+1. Utwórz folder w folderze $GOPATH: Wprowadź polecenie `mkdir ~/go/src`. Ten folder będzie używany do przechowywania i organizowania różnych folderów projektu, które można utworzyć, takich jak `<your-module-name>` folder, który zostanie utworzony w następnym kroku.
 
 1. Utwórz folder do przechowywania modułu Terraform: Wprowadź polecenie `mkdir ~/go/src/<your-module-name>`.
 
@@ -278,9 +278,9 @@ Wszystkie te elementy są preinstalowane w usłudze Cloud Shell.
 
 1. Po kilku chwilach zostanie wyświetlony komunikat **PASS** (POWODZENIE).
 
-    ![PASS (POWODZENIE)](media/terraform-vscode-module-generator/ymg-pass.png)
+    ![POWODZENIE](media/terraform-vscode-module-generator/ymg-pass.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Instalowanie i używanie rozszerzenia Azure Terraform dla programu Visual Studio Code](https://docs.microsoft.com/azure/terraform/terraform-vscode-extension)

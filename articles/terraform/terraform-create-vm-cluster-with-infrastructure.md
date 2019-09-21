@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 11/13/2017
-ms.openlocfilehash: 284dcd99dc77d7ec0fb5cb214d49b6fcf93a6aef
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.date: 09/20/2019
+ms.openlocfilehash: bf9539512961930a97d9dcfe86722d0103c1facc
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854480"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173464"
 ---
 # <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>Tworzenie klastra maszyn wirtualnych przy użyciu programu Terraform i HCL
 
@@ -46,7 +46,7 @@ W tej sekcji wygenerujesz jednostkę usługi platformy Azure i dwa pliki konfigu
 
 5. Skopiuj następujący kod do pliku deklaracji zmiennych:
 
-   ```tf
+   ```hcl
    variable subscription_id {}
    variable tenant_id {}
    variable client_id {}
@@ -64,7 +64,7 @@ W tej sekcji wygenerujesz jednostkę usługi platformy Azure i dwa pliki konfigu
 
 7. Skopiuj następujący kod do pliku zmiennych. Pamiętaj, aby zamienić symbole zastępcze w następujący sposób: Dla symbolu zastępczego `subscription_id` użyj identyfikatora subskrypcji platformy Azure określonego podczas uruchamiania polecenia `az account set`. Dla symbolu zastępczego `tenant_id` użyto wartości `tenant` zwróconej przez polecenie `az ad sp create-for-rbac`. Dla symbolu zastępczego `client_id` użyto wartości `appId` zwróconej przez polecenie `az ad sp create-for-rbac`. Dla symbolu zastępczego `client_secret` użyto wartości `password` zwróconej przez polecenie `az ad sp create-for-rbac`.
 
-   ```tf
+   ```hcl
    subscription_id = "<azure-subscription-id>"
    tenant_id = "<tenant-returned-from-creating-a-service-principal>"
    client_id = "<appId-returned-from-creating-a-service-principal>"
@@ -79,7 +79,7 @@ W tej sekcji utworzysz plik zawierający definicje zasobów dla infrastruktury.
 
 2. Skopiuj następujące przykładowe definicje zasobów do nowo utworzonego pliku `main.tf`: 
 
-   ```tf
+   ```hcl
    resource "azurerm_resource_group" "test" {
     name     = "acctestrg"
     location = "West US 2"
@@ -227,7 +227,7 @@ W tej sekcji utworzysz plik zawierający definicje zasobów dla infrastruktury.
 
 Aby zainicjować program Terraform, uruchom następujące polecenie:
 
-  ```cmd
+  ```bash
   terraform init
   ```
 
@@ -245,13 +245,13 @@ Podczas przetwarzania polecenia `terraform plan` program Terraform wykonuje odś
 
 Jeśli nie potrzebujesz zapisywać planu wykonania, uruchom następujące polecenie:
 
-  ```cmd
+  ```bash
   terraform plan
   ```
 
 Jeśli musisz zapisać plan wykonania, uruchom następujące polecenie (zastępując symbol zastępczy &lt;path> wymaganą ścieżką wyjściową):
 
-  ```cmd
+  ```bash
   terraform plan -out=<path>
   ```
 
@@ -263,19 +263,19 @@ Ostatnim krokiem tego samouczka jest użycie [polecenia terraform apply](https:/
 
 Jeśli chcesz zastosować najnowszy plan wykonania, uruchom następujące polecenie:
 
-  ```cmd
+  ```bash
   terraform apply
   ```
 
 Jeśli chcesz zastosować wcześniej zapisany plan wykonania, uruchom następujące polecenie (zastępując symbol zastępczy &lt;path> ścieżką zawierającą zapisany plan wykonania):
 
-  ```cmd
+  ```bash
   terraform apply <path>
   ```
 
 ![Stosowanie planu wykonania programu Terraform](media/terraform-create-vm-cluster-with-infrastructure/terraform-apply.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Przeglądanie listy [modułów Azure Terraform](https://registry.terraform.io/modules/Azure)
 - Tworzenie [zestawu skalowania maszyn wirtualnych za pomocą narzędzia Terraform](terraform-create-vm-scaleset-network-disks-hcl.md)

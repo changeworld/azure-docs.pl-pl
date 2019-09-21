@@ -3,7 +3,7 @@ title: Rozszerzenia i funkcje maszyny wirtualnej platformy Azure dla systemu Win
 description: Dowiedz się, jakie rozszerzenia są dostępne dla usługi Azure Virtual Machines, pogrupowane według ich udostępniania lub usprawnienia.
 services: virtual-machines-windows
 documentationcenter: ''
-author: roiyz-msft
+author: axayjo
 manager: gwallace
 editor: ''
 tags: azure-service-management,azure-resource-manager
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
-ms.author: roiyz
+ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9a7f204245e59cbda11c663a80828a20a79c9923
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a19b6bd8da82498aae45657d30883db14efd9343
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084556"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71174076"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Rozszerzenia i funkcje maszyny wirtualnej dla systemu Windows
 
@@ -220,7 +220,7 @@ W poniższym przykładzie pokazano wystąpienie niestandardowego rozszerzenia sk
 }
 ```
 
-Przeniesienie **polecenia do wykonania** właściwości do chronionej konfiguracji zabezpiecza ciąg wykonywania, jak pokazano w następującym przykładzie:
+Przeniesienie **polecenia do wykonania** właściwości do **chronionej** konfiguracji zabezpiecza ciąg wykonywania, jak pokazano w następującym przykładzie:
 
 ```json
 {
@@ -290,7 +290,7 @@ Aby sprawdzić, która wersja jest uruchomiona, zobacz [wykrywanie zainstalowane
 
 #### <a name="extension-updates"></a>Aktualizacje rozszerzeń
 
-Po udostępnieniu aktualizacji rozszerzenia Agent gościa systemu Windows pobiera i uaktualnia rozszerzenie. Automatyczna aktualizacja rozszerzeń jest *niewielka* lub *poprawka*. Można zrezygnować z rozszerzeń lub zrezygnować z nich podczas inicjowania obsługi administracyjnej rozszerzenia. Poniższy przykład pokazuje, jak automatycznie uaktualniać wersje pomocnicze w szablonie Menedżer zasobów z *włączoną flagą autoupgrademinorversion ": true*":
+Po udostępnieniu aktualizacji rozszerzenia Agent gościa systemu Windows pobiera i uaktualnia rozszerzenie. Automatyczna aktualizacja rozszerzeń jest *niewielka* lub *poprawka*. Można zrezygnować z rozszerzeń lub zrezygnować z nich podczas inicjowania obsługi *administracyjnej rozszerzenia.* Poniższy przykład pokazuje, jak automatycznie uaktualniać wersje pomocnicze w szablonie Menedżer zasobów z *włączoną flagą autoupgrademinorversion ": true*":
 
 ```json
     "properties": {
@@ -351,7 +351,7 @@ Poniższe kroki rozwiązywania problemów dotyczą wszystkich rozszerzeń maszyn
 
 1. Aby sprawdzić dziennik agenta gościa systemu Windows, zapoznaj się z działaniem w przypadku aprowizacji rozszerzenia w *C:\WindowsAzure\Logs\WaAppAgent.txt*
 
-2. Zapoznaj się z rzeczywistymi dziennikami rozszerzeń, aby uzyskać więcej szczegółów w *\<C:\WindowsAzure\Logs\Plugins ExtensionName >*
+2. Zapoznaj się z rzeczywistymi dziennikami rozszerzeń, aby uzyskać więcej szczegółów w *C:\WindowsAzure\Logs\Plugins\<ExtensionName >*
 
 3. Sprawdź sekcje dotyczące rozwiązywania problemów z dokumentacją dotyczącą kodów błędów, znanych problemów itp.
 
@@ -367,7 +367,7 @@ Poniższe kroki rozwiązywania problemów dotyczą wszystkich rozszerzeń maszyn
 
 ### <a name="view-extension-status"></a>Wyświetl stan rozszerzenia
 
-Po uruchomieniu rozszerzenia maszyny wirtualnej na maszynie wirtualnej Użyj polecenie [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) , aby przywrócić stan rozszerzenia. *Stany podstanów [0]* pokazują, że inicjowanie obsługi rozszerzenia zakończyło się pomyślnie, co oznacza, że zostało pomyślnie wdrożone na maszynie wirtualnej, ale wykonanie rozszerzenia wewnątrz maszyny wirtualnej nie powiodło się, podstanów *[1]* .
+Po uruchomieniu rozszerzenia maszyny wirtualnej na maszynie wirtualnej Użyj polecenie [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) , aby przywrócić stan rozszerzenia. *Stany podstanów [0]* pokazują, że inicjowanie obsługi rozszerzenia zakończyło się pomyślnie, co oznacza, że zostało pomyślnie wdrożone na maszynie wirtualnej, ale wykonanie rozszerzenia wewnątrz maszyny wirtualnej nie powiodło się, *podstanów [1]* .
 
 ```powershell
 Get-AzVM -ResourceGroupName "myResourceGroup" -VMName "myVM" -Status

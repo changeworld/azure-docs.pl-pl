@@ -10,17 +10,56 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 9/4/2019
+ms.date: 9/20/2019
 ms.author: raiye
-ms.openlocfilehash: 71febe6544a4f53215ec4dbee2bcef86bda23386
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 6168e877022eccd9cbe818c20e81266cc3ea1f69
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275502"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169368"
 ---
 # <a name="azure-guest-os"></a>System operacyjny gościa platformy Azure
 W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Response Center (MSRC) zastosowane do systemu operacyjnego gościa platformy Azure. Przeszukaj ten artykuł, aby ustalić, czy dana aktualizacja dotyczy systemu operacyjnego gościa, którego używasz. Aktualizacje są zawsze przenoszone dla określonej [rodziny][family-explain] , w której zostały wprowadzone.
+
+## <a name="september-2019-guest-os"></a>System operacyjny gościa z września 2019
+
+>[!NOTE]
+>System operacyjny gościa jest obecnie wdrażany na maszynach wirtualnych usługi w chmurze skonfigurowanych do aktualizacji automatycznych. Po zakończeniu wprowadzania ta wersja zostanie udostępniona do ręcznego aktualizowania za pomocą plików Azure Portal i konfiguracji. W systemie operacyjnym gościa z września uwzględniono następujące poprawki. Ta lista może ulec zmianie.
+
+| Kategoria produktu | Nadrzędny artykuł bazy wiedzy | Opis luki w zabezpieczeniach | System operacyjny gościa | Data wprowadzenia po raz pierwszy |
+| --- | --- | --- | --- | --- |
+|  Rel 19-09   |  [4516046]  |  Internet Explorer   |  2,90, 3,77, 4,70  |  Września 10, 2019  |
+|  Rel 19-09   |  [4516115]  |  Flash   |  2,90, 3,77, 4,70, 5,35, 6,11  |  Września 10, 2019  |
+|  Rel 19-09   |  [4512578]  |  Najnowsza aktualizacja zbiorcza   |  6,11  |  Września 10, 2019  |
+|  Rel 19-09   |  [4514366]  |  .NET Framework 3,5 i 4.7.2   |  6,11  |  Września 10, 2019  |
+|  Rel 19-09   |  [4516044]  |  Najnowsza aktualizacja zbiorcza   |  5,35  |  Września 10, 2019  |
+|  Rel 19-09   |  [4516064]  |  Zabezpieczenia systemu Windows   |  4.7  |  Września 10, 2019  |
+|  Rel 19-09   |  [4514350]  |  Program .NET Framework 3,5   |  4.7  |  Września 10, 2019  |
+|  Rel 19-09   |  [4514341]  |  .NET Framework 4.5.2   |  4.7  |  Września 10, 2019  |
+|  Rel 19-09   |  [4516062]  |  Zabezpieczenia systemu Windows   |  3,77  |  Września 10, 2019  |
+|  Rel 19-09   |  [4514349]  |  Program .NET Framework 3,5   |  3,77  |  Września 10, 2019  |
+|  Rel 19-09   |  [4514342]  |  .NET Framework 4.5.2   |  3,77  |  Września 10, 2019  |
+|  Rel 19-09   |  [4516033]  |  Zabezpieczenia systemu Windows   |  2.9  |  Września 12, 2019  |
+|  Rel 19-09   |  [4512488]  |  Niezwiązane z zabezpieczeniami   |  4.7  |  13 sierpnia 2019  |
+|  Rel 19-09   |  [4512518]  |  Niezwiązane z zabezpieczeniami   |  3,77  |  13 sierpnia 2019  |
+|  Rel 19-09   |  [4512506]  |  Niezwiązane z zabezpieczeniami   |  2.9  |  13 sierpnia 2019  |
+
+[4516046]: https://support.microsoft.com/kb/4516046
+[4516115]: https://support.microsoft.com/kb/4516115
+[4512578]: https://support.microsoft.com/kb/4512578
+[4514366]: https://support.microsoft.com/kb/4514366
+[4516044]: https://support.microsoft.com/kb/4516044
+[4516064]: https://support.microsoft.com/kb/4516064
+[4514350]: https://support.microsoft.com/kb/4514350
+[4514341]: https://support.microsoft.com/kb/4514341
+[4516062]: https://support.microsoft.com/kb/4516062
+[4514349]: https://support.microsoft.com/kb/4514349
+[4514342]: https://support.microsoft.com/kb/4514342
+[4516033]: https://support.microsoft.com/kb/4516033
+[4512488]: https://support.microsoft.com/kb/4512488
+[4512518]: https://support.microsoft.com/kb/4512518
+[4512506]: https://support.microsoft.com/kb/4512506
 
 
 ## <a name="august-2019-guest-os"></a>System operacyjny gościa z sierpnia 2019

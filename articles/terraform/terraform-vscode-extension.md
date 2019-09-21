@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 08/31/2018
-ms.openlocfilehash: b1102649e48af8cb36a64f1142c078bf9ebc0d99
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 09/20/2019
+ms.openlocfilehash: 7dd87f38ca5dfb1c2fdd38b56b314e0cbbe3ce12
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60888278"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169920"
 ---
 # <a name="install-and-use-the-azure-terraform-visual-studio-code-extension"></a>Instalowanie i używanie rozszerzenia Azure Terraform dla programu Visual Studio Code
 
@@ -306,6 +306,6 @@ Po kilku chwilach w okienku terminalu zostanie wyświetlona lista podobna do teg
 
 ![Wyniki testu end-to-end](media/terraform-vscode-extension/tf-end-to-end-test-results.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"]
 > [Lista modułów narzędzia Terraform dostępnych dla platformy Azure (i innych obsługiwanych dostawców)](https://registry.terraform.io/)

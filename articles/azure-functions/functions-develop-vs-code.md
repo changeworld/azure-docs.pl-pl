@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: glenga
-ms.openlocfilehash: 3fa68cf3996efa047b7573306749acb56b4c9411
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 77805b15d0061d0ab4b6ef2185c2f7f1c3459f0c
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "70744084"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172067"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Opracowywanie Azure Functions przy użyciu Visual Studio Code
 
@@ -90,7 +90,7 @@ Szablon projektu tworzy projekt w wybranym języku i instaluje wymagane zależno
     >[!IMPORTANT]
     >Ponieważ plik Local. Settings. JSON może zawierać wpisy tajne, należy wykluczyć go z kontroli źródła projektu.
 
-W tym momencie można dodać powiązania danych wejściowych i wyjściowych do funkcji, [modyfikując plik Function. JSON](#javascript-2) lub [dodając parametr do funkcji biblioteki C# klas](#c-class-library-2).
+W tym momencie można dodać powiązania danych wejściowych i wyjściowych do funkcji, [modyfikując plik Function. JSON](#add-a-function-to-your-project) lub [dodając parametr do funkcji biblioteki C# klas](#add-a-function-to-your-project).
 
 Możesz również [dodać nową funkcję do projektu](#add-a-function-to-your-project).
 
@@ -98,11 +98,11 @@ Możesz również [dodać nową funkcję do projektu](#add-a-function-to-your-pr
 
 Z wyjątkiem wyzwalaczy HTTP i Timer, powiązania są implementowane w pakietach rozszerzeń. Należy zainstalować pakiety rozszerzeń dla wyzwalaczy i powiązań, które ich potrzebują. Proces instalacji rozszerzeń powiązań zależy od języka projektu.
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
-### <a name="c-class-library"></a>Biblioteka\# klas języka C
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 Uruchom polecenie [dotnet Add Package](/dotnet/core/tools/dotnet-add-package) w oknie terminalu, aby zainstalować pakiety rozszerzeń, które są potrzebne w projekcie. Następujące polecenie instaluje rozszerzenie usługi Azure Storage, które implementuje powiązania dla obiektów blob, Queue i Table Storage.
 
@@ -110,19 +110,23 @@ Uruchom polecenie [dotnet Add Package](/dotnet/core/tools/dotnet-add-package) w 
 dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 ```
 
+---
+
 ## <a name="add-a-function-to-your-project"></a>Dodawanie funkcji do projektu
 
 Nową funkcję można dodać do istniejącego projektu przy użyciu jednego ze wstępnie zdefiniowanych szablonów wyzwalaczy funkcji. Aby dodać nowy wyzwalacz funkcji, wybierz F1, aby otworzyć paletę poleceń, a następnie wyszukaj i uruchom polecenie **Azure Functions: Utwórz funkcję**. Postępuj zgodnie z monitami, aby wybrać typ wyzwalacza i zdefiniować wymagane atrybuty wyzwalacza. Jeśli wyzwalacz wymaga klucza dostępu lub parametrów połączenia w celu nawiązania połączenia z usługą, przygotuj go przed utworzeniem wyzwalacza funkcji.
 
 Wyniki tej akcji zależą od języka projektu:
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
 W projekcie zostanie utworzony nowy folder. Folder zawiera nowy plik Function. JSON i nowy plik kodu JavaScript.
 
-### <a name="c-class-library"></a>Biblioteka\# klas języka C
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 Do projektu C# zostanie dodany nowy plik biblioteki klas (. cs).
+
+---
 
 ## <a name="add-input-and-output-bindings"></a>Dodawanie powiązań wejściowych i wyjściowych
 
@@ -130,7 +134,7 @@ Funkcję można rozszerzyć przez dodanie powiązań wejściowych i wyjściowych
 
 Poniższe przykłady nawiązują połączenie z kolejką magazynu `outqueue`o nazwie, gdzie parametry połączenia dla konta magazynu są ustawiane `MyStorageConnection` w ustawieniach aplikacji w pliku Local. Settings. JSON.
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
 Visual Studio Code pozwala dodawać powiązania do pliku Function. JSON, wykonując odpowiedni zestaw postanowień. Aby utworzyć powiązanie, kliknij prawym przyciskiem myszy (Ctrl + kliknięcie macOS) plik **Function. JSON** w folderze funkcji i wybierz polecenie **Dodaj powiązanie**:
 
@@ -168,7 +172,7 @@ context.bindings.msg = "Name passed to the function: " req.query.name;
 
 Aby dowiedzieć się więcej, zobacz informacje o [powiązaniach wyjściowych magazynu kolejki](functions-bindings-storage-queue.md#output---javascript-example) .
 
-### <a name="c-class-library"></a>Biblioteka\# klas języka C
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 Zaktualizuj metodę funkcji, aby dodać następujący parametr do `Run` definicji metody:
 
@@ -181,6 +185,8 @@ Ten kod wymaga dodania następującej `using` instrukcji:
 ```cs
 using Microsoft.Azure.WebJobs.Extensions.Storage;
 ```
+
+---
 
 `msg` Parametr`ICollector<T>` jest typem, który reprezentuje kolekcję komunikatów, które są zapisywane do powiązania danych wyjściowych po zakończeniu działania funkcji. Do kolekcji dodasz co najmniej jeden komunikat. Te komunikaty są wysyłane do kolejki po zakończeniu działania funkcji.
 

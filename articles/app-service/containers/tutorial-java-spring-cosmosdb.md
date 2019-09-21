@@ -8,19 +8,19 @@ ms.service: app-service-web
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
-ms.custom: seodec18, seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 27b30bae80e2959698d71279efbfa2531498d8de
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 582ed374e7895d0b99f25ac033d0d4b1ec99104c
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70171205"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71171498"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Samouczek: Tworzenie aplikacji sieci Web do rozruchu ze sprężyną Java za pomocą Azure App Service w systemie Linux i Azure Cosmos DB
 
 Ten samouczek przeprowadzi Cię przez proces tworzenia, konfigurowania, wdrażania i skalowania aplikacji internetowych w języku Java na platformie Azure. Po zakończeniu będziesz mieć aplikację [Spring Boot](https://projects.spring.io/spring-boot/) przechowującą dane w bazie danych [Azure Cosmos DB](/azure/cosmos-db) i działającą w usłudze [Azure App Service w systemie Linux](/azure/app-service/containers).
 
-![Aplikacja Java uruchomiona w usłudze Azure App Service](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
+![Aplikacja ze sprężyną rozruchową przechowująca dane w Azure Cosmos DB](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -169,7 +169,7 @@ bash-3.2$ mvn package spring-boot:run
 
 Dostęp do aplikacji TODO platformy Spring można uzyskać lokalnie za pomocą tego linku po uruchomieniu aplikacji: [http://localhost:8080/](http://localhost:8080/).
 
- ![Aplikacja Java uruchomiona w usłudze Azure App Service](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
+ ![Lokalne dostęp do aplikacji ze sprężyną](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
 Jeśli zobaczysz wyjątki zamiast komunikatu "Started TodoApplication", sprawdź, czy `bash` skrypt w poprzednim kroku prawidłowo wyeksportował zmienne środowiskowe i że wartości są poprawne dla utworzonej bazy danych Azure Cosmos DB.
 
@@ -263,7 +263,7 @@ open https://spring-todo-app.azurewebsites.net
 
 Powinna zostać wyświetlona aplikacja działająca ze zdalnym adresem URL na pasku adresu:
 
- ![Aplikacja Java uruchomiona w usłudze Azure App Service](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-in-app-service.jpg)
+ ![Aplikacja ze sprężyną rozruchu działająca ze zdalnym adresem URL](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-in-app-service.jpg)
 
 ## <a name="stream-diagnostic-logs"></a>Przesyłanie strumieniowe dzienników diagnostycznych
 

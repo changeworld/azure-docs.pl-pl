@@ -1,6 +1,6 @@
 ---
 title: Limity zasobów dla Azure NetApp Files | Microsoft Docs
-description: Opisuje limity dotyczące Azure NetApp Files zasobów, w tym limity dla kont NetApp, pul pojemności, woluminów, migawek i delegowanej podsieci.
+description: Opisuje limity dotyczące zasobów Azure NetApp Files i sposób żądania zwiększenia limitu zasobów.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 09/20/2019
 ms.author: b-juche
-ms.openlocfilehash: 15d0a584d88045f6020162a88124cd9d6a4735bf
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: f7213ddee5d7bdfd41508f5fee66de63cde5b7c4
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984007"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170024"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Limity zasobów dla usługi Azure NetApp Files
 
@@ -29,7 +29,7 @@ Zrozumienie limitów zasobów Azure NetApp Files ułatwia zarządzanie woluminam
 
 W poniższej tabeli opisano limity zasobów dla Azure NetApp Files:
 
-|  Resource  |  Limit domyślny  |  Regulowane przez żądanie pomocy technicznej  |
+|  Resource  |  Domyślny limit  |  Regulowane przez żądanie pomocy technicznej  |
 |----------------|---------------------|--------------------------------------|
 |  Liczba kont NetApp na subskrypcję platformy Azure   |  10    |  Tak   |
 |  Liczba pul pojemności na konto NetApp   |    25     |   Tak   |
@@ -40,10 +40,27 @@ W poniższej tabeli opisano limity zasobów dla Azure NetApp Files:
 |  Minimalny rozmiar puli o pojedynczej pojemności   |  4 TiB     |    Nie  |
 |  Maksymalny rozmiar puli o pojedynczej pojemności    |  500 TiB   |   Nie   |
 |  Minimalny rozmiar pojedynczego woluminu    |    100 GiB    |    Nie    |
-|  Maksymalny rozmiar pojedynczego woluminu     |    100 TiB    |    Nie       |
-|  Maksymalna liczba plików (węzłów i) na wolumin     |    50 000 000    |    Nie    |    
+|  Maksymalny rozmiar pojedynczego woluminu     |    100 TiB    |    Nie    |
+|  Maksymalna liczba plików ([maxfiles](#maxfiles)) na wolumin     |    100 000 000    |    Tak    |    
+|  Maksymalny rozmiar pojedynczego pliku     |    16 TiB    |    Nie    |    
 
-## <a name="request-limit-increase"></a>Zwiększenie limitu żądań 
+## Limity maxfiles<a name="maxfiles"></a> 
+
+Woluminy Azure NetApp Files mają limit o nazwie *maxfiles*. Limit maxfiles to liczba plików, które może zawierać wolumin. Limit maxfiles dla woluminu Azure NetApp Files jest indeksowany na podstawie rozmiaru (przydziału) woluminu. Limit maxfiles dla woluminu rośnie lub zmniejsza się o szybkości 20 000 000 plików na TiB rozmiaru woluminu. 
+
+Usługa dynamicznie dostosowuje limit maxfiles dla woluminu na podstawie jego rozmiaru aprowizacji. Na przykład wolumin skonfigurowany początkowo o rozmiarze 1 TiB będzie miał limit maxfiles równy 20 000 000. Kolejne zmiany rozmiaru woluminu spowodują automatyczne ponowne dostosowanie limitu maxfiles w zależności od następujących zasad: 
+
+|    Rozmiar woluminu (przydział)     |  Automatyczne dostosowywanie limitu maxfiles    |
+|----------------------------|-------------------|
+|    < 1 TiB                 |    20 000 000     |
+|    > = 1 TiB, ale < 2 TiB    |    40 000 000     |
+|    > = 2 TiB, ale < 3 TiB    |    60 000 000     |
+|    > = 3 TiB, ale < 4 TiB    |    80 000 000     |
+|    > = 4 TiB                |    100 000 000    |
+
+W przypadku dowolnego rozmiaru woluminu można zainicjować [żądanie obsługi](#limit_increase) , aby zwiększyć limit maxfilesy przekraczający 100 000 000.
+
+## Zwiększenie limitu żądań<a name="limit_increase"></a> 
 
 Możesz utworzyć żądanie pomocy technicznej platformy Azure, aby zwiększyć regulowane limity z powyższej tabeli. 
 
@@ -64,6 +81,7 @@ Ze płaszczyzny nawigacyjnej Azure Portal:
         |  Konto |  *Subscription ID (Identyfikator subskrypcji)*   |  *Żądany nowy maksymalny numer **konta***    |  *Jakiego scenariusza lub przypadku użycia monituje o żądanie?*  |
         |  Pula    |  *Identyfikator subskrypcji, identyfikator URI konta*  |  *Żądany nowy numer **puli***   |  *Jakiego scenariusza lub przypadku użycia monituje o żądanie?*  |
         |  Wolumin  |  *Identyfikator subskrypcji, identyfikator URI konta, identyfikator URI puli*   |  *Żądany nowy maksymalny numer **woluminu***     |  *Jakiego scenariusza lub przypadku użycia monituje o żądanie?*  |
+        |  Maxfiles  |  *Identyfikator subskrypcji, identyfikator URI konta, identyfikator URI puli, identyfikator URI woluminu*   |  *Żądany nowy maksymalny numer **maxfiles***     |  *Jakiego scenariusza lub przypadku użycia monituje o żądanie?*  |    
 
     2. Określ odpowiednią metodę obsługi i podaj informacje o kontrakcie.
 

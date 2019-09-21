@@ -1,40 +1,40 @@
 ---
-title: Tworzenie sieci wirtualnej w środowisku lokalnym za pomocą programu Terraform na platformie Azure
-description: Samouczek pokazujący, jak zaimplementować lokalnymi sieciami wirtualnymi na platformie Azure, która zawiera wszystkie zasoby lokalne
+title: Tworzenie lokalnej sieci wirtualnej z usługą Terraform na platformie Azure
+description: Samouczek przedstawiający sposób implementacji lokalnej sieci wirtualnej na platformie Azure, w której zawarto zasoby lokalne
 services: terraform
 ms.service: azure
-keywords: terraform, gwiazdy, sieci, hybrydowych sieci, metodyki devops, maszyna wirtualna, azure, komunikacja równorzędna sieci wirtualnych, w środowisku lokalnym
+keywords: Terraform, Hub i szprych, sieci, sieci hybrydowe, DevOps, maszyna wirtualna, platforma Azure, wirtualne sieci równorzędne, lokalne
 author: VaijanathB
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
-ms.date: 03/01/2019
-ms.openlocfilehash: 435ee13de28fb1591a5579761ecc7ad5bf9f9d76
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 09/20/2019
+ms.openlocfilehash: 98c7c2450b4aa828f544ecab4c1e320eb74bab45
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60888690"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169790"
 ---
-# <a name="tutorial-create-on-premises-virtual-network-with-terraform-in-azure"></a>Samouczek: Tworzenie sieci wirtualnej w środowisku lokalnym za pomocą programu Terraform na platformie Azure
+# <a name="tutorial-create-on-premises-virtual-network-with-terraform-in-azure"></a>Samouczek: Tworzenie lokalnej sieci wirtualnej z usługą Terraform na platformie Azure
 
-W ramach tego samouczka możesz zaimplementować między siecią lokalną przy użyciu usługi Azure Virtual network (VNet). Siecią wirtualną platformy Azure mogą zostać zastąpione przez własną prywatną sieć wirtualną. Aby to zrobić, należy zamapować odpowiednie adresy IP w podsieci.
+W tym samouczku zaimplementowano sieć lokalną przy użyciu sieci wirtualnej platformy Azure. Sieć wirtualna platformy Azure mogła zostać zastąpiona przez prywatną prywatnej sieci wirtualnej. W tym celu należy zmapować odpowiednie adresy IP w podsieciach.
 
 Ten samouczek obejmuje następujące zadania:
 
 > [!div class="checklist"]
-> * Użycie HCL (HashiCorp Language) w celu wdrożenia lokalnej sieci wirtualnej w topologii piasty i szprych
-> * Aby utworzyć sieć Centrum zasobów urządzenia za pomocą narzędzia Terraform
-> * Aby utworzyć maszynę wirtualną w środowisku lokalnym za pomocą narzędzia Terraform
-> * Tworzenie bramy wirtualnej sieci prywatnej w środowisku lokalnym za pomocą narzędzia Terraform
+> * Używanie HCL (HashiCorp Language) do implementowania lokalnej sieci wirtualnej w topologii gwiazdy
+> * Tworzenie zasobów urządzeń sieciowych centrów przy użyciu programu Terraform
+> * Tworzenie lokalnej maszyny wirtualnej za pomocą Terraform
+> * Tworzenie lokalnej bramy wirtualnej sieci prywatnej przy użyciu programu Terraform
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-1. [Utwórz koncentrator i topologię sieci hybrydowej za pomocą programu Terraform na platformie Azure typu gwiazda](./terraform-hub-spoke-introduction.md).
+1. [Tworzenie topologii sieci hybrydowej Hub i satelity z Terraform na platformie Azure](./terraform-hub-spoke-introduction.md).
 
 ## <a name="create-the-directory-structure"></a>Tworzenie struktury katalogów
 
-Aby zasymulować między siecią lokalną, należy utworzyć sieci wirtualnej platformy Azure. Pokaz sieci wirtualnej odbywa się rzeczywista prywatnej sieci lokalnej. Aby zrobić to samo z istniejącej sieci lokalnej, mapować odpowiednie adresy IP w podsieci.
+Aby zasymulować sieć lokalną, należy utworzyć sieć wirtualną platformy Azure. Demonstracyjna Sieć wirtualna jest miejscem rzeczywistej prywatnej sieci lokalnej. Aby wykonać te same czynności w przypadku istniejącej sieci lokalnej, należy zmapować odpowiednie adresy IP w podsieciach.
 
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
 
@@ -54,11 +54,11 @@ Aby zasymulować między siecią lokalną, należy utworzyć sieci wirtualnej pl
     cd hub-spoke
     ```
 
-## <a name="declare-the-on-premises-vnet"></a>Zadeklaruj lokalnej sieci wirtualnej
+## <a name="declare-the-on-premises-vnet"></a>Deklarowanie lokalnej sieci wirtualnej
 
-Utwórz plik konfiguracyjny programu Terraform, która deklaruje lokalnej sieci wirtualnej.
+Utwórz plik konfiguracji Terraform, który deklaruje lokalną sieć wirtualną.
 
-1. W usłudze Cloud Shell, otwórz nowy plik o nazwie `on-prem.tf`.
+1. W Cloud Shell Otwórz nowy plik o nazwie `on-prem.tf`.
 
     ```bash
     code on-prem.tf
@@ -66,7 +66,7 @@ Utwórz plik konfiguracyjny programu Terraform, która deklaruje lokalnej sieci 
 
 1. Wklej następujący kod do edytora:
 
-    ```JSON
+    ```hcl
     locals {
       onprem-location       = "SouthCentralUS"
       onprem-resource-group = "onprem-vnet-rg"
@@ -223,9 +223,9 @@ Utwórz plik konfiguracyjny programu Terraform, która deklaruje lokalnej sieci 
     }
     ```
 
-1. Zapisz plik i zamknij Edytor.
+1. Zapisz plik i Zamknij Edytor.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Tworzenie sieci wirtualnej koncentratora za pomocą programu Terraform na platformie Azure](./terraform-hub-spoke-hub-network.md)
+> [Tworzenie centralnej sieci wirtualnej z usługą Terraform na platformie Azure](./terraform-hub-spoke-hub-network.md)

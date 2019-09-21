@@ -8,19 +8,19 @@ ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.custom: seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 06f1c0123d6bdf56b5182605016d2feb80adf18b
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: c4e4a984adc0ec6af99667ff36c009ca730acf48
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172967"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172802"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Samouczek: Wdrażanie z usługi GitHub do usługi Azure App Service przy użyciu funkcji ciągłej integracji i ciągłego wdrażania narzędzia Jenkins
 
 W tym samouczku wdrożysz przykładową internetową aplikację Java z usługi GitHub do [usługi Azure App Service w systemie Linux](/azure/app-service/containers/app-service-linux-intro), konfigurując ciągłą integrację i ciągłe wdrażanie w narzędziu Jenkins. Po zaktualizowaniu aplikacji przez wypchnięcie zatwierdzeń do usługi GitHub narzędzie Jenkins automatycznie skompiluje i opublikuje ponownie aplikację w usłudze Azure App Service. Przykładowa aplikacja w tym samouczku została opracowana przy użyciu struktury [Spring Boot](https://projects.spring.io/spring-boot/). 
 
-![Przegląd](media/tutorial-jenkins-deploy-web-app-azure-app-service/overview.png)
+![Omówienie wdrażania usługi GitHub w usłudze Azure App Service](media/tutorial-jenkins-deploy-web-app-azure-app-service/azure-continuous-integration-deployment-overview.png)
 
 W tym samouczku wykonasz następujące zadania:
 
@@ -97,19 +97,19 @@ Aby narzędzie Jenkins monitorowało usługę GitHub i odpowiadało po wypchnię
 
 1. Na stronie **Manage Jenkins** (Zarządzanie narzędziem Jenkins) wybierz pozycję **Configure System** (Konfiguruj system). 
 
-   ![Konfigurowanie systemu](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-jenkins-configure-system.png)
+   ![Konfigurowanie systemu w Jenkins](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-jenkins-configure-system.png)
 
 1. W sekcji **GitHub** podaj szczegóły serwera GitHub. Z listy **Add GitHub Server** (Dodaj serwer GitHub) wybierz pozycję **GitHub Server** (Serwer GitHub). 
 
-   ![Dodawanie serwera GitHub](media/tutorial-jenkins-deploy-web-app-azure-app-service/add-GitHub-server.png)
+   ![Dodaj serwer GitHub w Jenkins](media/tutorial-jenkins-deploy-web-app-azure-app-service/add-GitHub-server.png)
 
 1. Jeśli właściwość **Manage hooks** (Zarządzaj wpięciami) nie jest wybrana, wybierz ją. Wybierz pozycję **Zaawansowane** , aby określić inne ustawienia. 
 
-   ![Wybieranie pozycji „Advanced” (Zaawansowane) w celu określenia kolejnych ustawień](media/tutorial-jenkins-deploy-web-app-azure-app-service/advanced-GitHub-settings.png)
+   ![Określ zaawansowane ustawienia Jenkins dla serwera usługi GitHub](media/tutorial-jenkins-deploy-web-app-azure-app-service/advanced-GitHub-settings.png)
 
 1. Z listy **Manage additional GitHub actions** (Zarządzaj dodatkowymi akcjami usługi GitHub) wybierz pozycję **Convert login and password to token** (Konwertuj nazwę logowania i hasło na token).
 
-   ![Wybieranie pozycji „Manage additional GitHub actions” (Zarządzaj dodatkowymi akcjami usługi GitHub)](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-additional-actions.png)
+   ![Konwertuj nazwę logowania i hasło na token usługi GitHub](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-additional-actions.png)
 
 1. Wybierz pozycję **From login and password** (Z nazwy logowania i hasła), aby można było podać nazwę użytkownika i hasło usługi GitHub. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz poświadczenia tokenu**, co spowoduje utworzenie [osobistego tokenu dostępu usługi GitHub](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).   
 
@@ -181,11 +181,11 @@ W narzędziu Jenkins utwórz zadanie potoku na potrzeby kompilowania i wdrażani
 
 1. Wróć do strony głównej narzędzia Jenkins i wybierz pozycję **New Item** (Nowy element). 
 
-   ![Wybieranie pozycji „New Item” (Nowy element)](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-new-item.png)
+   ![Tworzenie potoku serwera Jenkins](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-new-item.png)
 
 1. Podaj nazwę dla zadania potoku, na przykład, „Moja internetowa aplikacja Java”, i wybierz pozycję **Pipeline** (Potok). Kliknij **przycisk OK**w dolnej części.  
 
-   ![Wybieranie pozycji „Pipeline” (Potok)](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-pipeline.png)
+   ![Nazwij zadanie potoku Jenkins](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-pipeline.png)
 
 1. Skonfiguruj narzędzie Jenkins przy użyciu jednostki usługi, co umożliwi narzędziu Jenkins wdrażanie na platformie Azure bez konieczności używania poświadczeń.
 
@@ -199,7 +199,7 @@ W narzędziu Jenkins utwórz zadanie potoku na potrzeby kompilowania i wdrażani
       WEB_APP=yourWebAppName
       ```
 
-      ![Wybieranie pozycji „Prepare an environment for the run” (Przygotuj środowisko dla uruchomienia) i ustawianie zmiennych środowiskowych](media/tutorial-jenkins-deploy-web-app-azure-app-service/prepare-environment-for-run.png)
+      ![Przygotuj środowisko do uruchomienia i Ustaw zmienne środowiskowe](media/tutorial-jenkins-deploy-web-app-azure-app-service/prepare-environment-for-jenkins-run.png)
 
 1. Po zakończeniu wybierz pozycję **Zapisz**.
 
@@ -254,7 +254,7 @@ Teraz określ skrypt kompilowania i wdrażania, którego ma używać narzędzie 
 
 1. W narzędziu Jenkins wybierz uprzednio utworzone zadanie potoku. 
 
-   ![Wybieranie zadania potoku dla aplikacji internetowej](media/tutorial-jenkins-deploy-web-app-azure-app-service/select-pipeline-job.png)
+   ![Wybierz zadanie potoku Jenkins dla aplikacji sieci Web](media/tutorial-jenkins-deploy-web-app-azure-app-service/select-pipeline-job.png)
 
 1. W menu po lewej stronie wybierz pozycję **Configure** (Konfiguruj).
 
@@ -272,7 +272,7 @@ Teraz określ skrypt kompilowania i wdrażania, którego ma używać narzędzie 
 
    Gdy wszystko będzie gotowe, definicja potoku będzie wyglądać podobnie do następującego przykładu: 
 
-   ![Wskazanie skryptu dla potoku](media/tutorial-jenkins-deploy-web-app-azure-app-service/set-up-jenkins-github.png)
+   ![Wskazywanie potoku Jenkins na skrypcie](media/tutorial-jenkins-deploy-web-app-azure-app-service/set-up-jenkins-github.png)
 
 1. Po zakończeniu wybierz pozycję **Zapisz**.
 

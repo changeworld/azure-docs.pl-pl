@@ -1,21 +1,18 @@
 ---
-title: 'Szybki start: Skonfiguruj geograficzną sztuczną inteligencję'
-titleSuffix: Azure Data Science Virtual Machine
-description: Dowiedz się, jak utworzyć i skonfigurować maszynę wirtualną do nauki o danych sztucznej Inteligencji geograficznie. Maszyny wirtualnej do nauki o danych sztucznej Inteligencji geograficzną udostępnia narzędzia umożliwiające tworzenie rozwiązań sztucznej Inteligencji i uczenia Maszynowego za pomocą danych geograficznych.
-keywords: głębokiego uczenia i sztucznej Inteligencji, narzędzia do analizy danych, maszyny wirtualnej do nauki o danych, Geoprzestrzenna analiza
-services: machine-learning
+title: 'Szybki start: Tworzenie maszyny DSVM ze sztuczną inteligencją w zakresie danych geograficznych'
+description: Skonfiguruj i Utwórz geograficzną Data Science Virtual Machine AI na platformie Azure na potrzeby analiz geoprzestrzennych i uczenia maszynowego.
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: vijetajo
-ms.author: vijetaj
+author: gvashishtha
+ms.author: gopalv
 ms.topic: quickstart
-ms.date: 03/05/2018
-ms.openlocfilehash: 7afeec3f71cd1af30093801fedabf3f0357ae3d0
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.date: 09/13/2019
+ms.openlocfilehash: 6b32d1f76091d7bbb8f870402020d0ac247d425b
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208058"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170726"
 ---
 # <a name="quickstart-set-up-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Szybki start: Konfigurowanie geograficznie sztucznej maszyny wirtualnej na platformie Azure 
 
@@ -52,7 +49,7 @@ Aby utworzyć wystąpienie geograficznego Data Science VM AI, wykonaj następuj�
     
 - **Subskrypcja**: Jeśli masz więcej niż jedną subskrypcję, wybierz ten, na którym maszyna ma zostać utworzona i rozliczane.
     
-- **Grupa zasobów**: Możesz utworzyć nową lub użyć pustej istniejącej grupy zasobów platformy Azure w ramach subskrypcji.
+- **Grupa zasobów**: Możesz utworzyć nową lub użyć **pustej** istniejącej grupy zasobów platformy Azure w ramach subskrypcji.
     
 - **Lokalizacja**: Wybierz centrum danych, które jest najbardziej odpowiednie. Zwykle jest to ten, który ma większość danych lub znajduje się najbliżej fizycznej lokalizacji, aby uzyskać najszybszy dostęp do sieci. Jeśli planujesz uruchomić uczenie głębokie na procesorze GPU, musisz wybrać jedną z lokalizacji na platformie Azure, która ma wystąpienia maszyn wirtualnych procesora GPU z serii NC. Obecnie są to następujące lokalizacje: **Wschodnie stany USA, Północno-środkowe stany USA, Południowo-środkowe stany USA, zachodnie stany USA 2, Europa Północna, Europa Zachodnia**. Aby uzyskać najnowszą listę, sprawdź stronę [produkty platformy Azure według regionów](https://azure.microsoft.com/regions/services/) i Wyszukaj **serie NC** w obszarze **obliczenia**. 
     
@@ -82,7 +79,7 @@ W przeciwnym razie możesz zarejestrować się w celu uzyskania nowego konta i l
 
 ![Komponent ArcGIS bezpłatną wersję próbną](./media/provision-geo-ai-dsvm/ArcGIS-Free-Trial.png)
 
-Po zarejestrowaniu się w celu korzystania ze standardowego konta usługi ArcGIS lub bezpłatnej wersji próbnej możesz autoryzować ArcGIS Pro dla konta, postępując zgodnie z instrukcjami podanymi w tematach Rozpoczynanie [pracy z usługą ArcGIS Pro](https://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf).
+Po zarejestrowaniu się w celu korzystania ze standardowego konta usługi ArcGIS lub bezpłatnej wersji próbnej możesz autoryzować ArcGIS Pro dla konta, postępując zgodnie z instrukcjami podanymi w [tematach Rozpoczynanie pracy z usługą ArcGIS Pro](https://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf).
 
 Po zalogowaniu się do ArcGIS Pro Desktop za pośrednictwem konta ArcGIS możesz zacząć korzystać z narzędzi do nauki o danych, które są zainstalowane i skonfigurowane na maszynie wirtualnej na potrzeby analiz geoprzestrzennych i projektów uczenia maszynowego.
 

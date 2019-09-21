@@ -1,68 +1,58 @@
 ---
-title: Konfigurowanie usługi Azure Functions dla dostawców niestandardowych usługi Azure
-description: W tym samouczku zostanie umieszczona w sposób tworzenia funkcji platformy Azure i ustawić go tak, aby pracować z dostawców niestandardowych usługi Azure
+title: Konfigurowanie Azure Functions dla dostawców niestandardowych platformy Azure
+description: Ten samouczek przedstawia sposób tworzenia aplikacji funkcji platformy Azure i konfigurowania jej do pracy z dostawcami niestandardowymi platformy Azure
 author: jjbfour
 ms.service: managed-applications
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: d7e4de43659db88bfd9aad40cc3b9f1753189bba
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 6b5ab6948d382a9925c9ced91e04f360ecf51a0e
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67799994"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173017"
 ---
-# <a name="setup-azure-functions-for-azure-custom-providers"></a>Konfigurowanie usługi Azure Functions dla dostawców niestandardowych usługi Azure
+# <a name="set-up-azure-functions-for-azure-custom-providers"></a>Konfigurowanie Azure Functions dla dostawców niestandardowych platformy Azure
 
-Dostawcy niestandardowi umożliwiają dostosowywanie przepływów pracy na platformie Azure. Niestandardowy dostawca jest kontrakt między platformą Azure i `endpoint`. W tym samouczku zostanie przejść przez proces konfigurowania funkcji platformy Azure do działania w formie niestandardowego dostawcy `endpoint`.
+Dostawca niestandardowy to kontrakt między platformą Azure i punktem końcowym. Dostawcy niestandardowi mogą zmieniać przepływy pracy na platformie Azure. W tym samouczku pokazano, jak skonfigurować aplikację funkcji platformy Azure do pracy jako punkt końcowy dostawcy niestandardowego.
 
-W tym samouczku jest dzielony na następujące czynności:
-
-- Tworzenie funkcji platformy Azure
-- Zainstaluj powiązania tabeli platformy Azure
-- Aktualizacja metod RESTful HTTP
-- Dodaj pakiety NuGet usługi Azure Resource Manager
-
-W tym samouczku zostanie skompilowany w ramach następujących samouczków:
-
-- [Tworzenie pierwszej funkcji platformy Azure za pośrednictwem witryny Azure portal](../azure-functions/functions-create-first-azure-function.md)
-
-## <a name="creating-the-azure-function"></a>Tworzenie funkcji platformy Azure
+## <a name="create-the-azure-function-app"></a>Tworzenie aplikacji funkcji platformy Azure
 
 > [!NOTE]
-> W tym samouczku utworzymy prostą usługę punktu końcowego, przy użyciu funkcji platformy Azure, ale wszystkie dostępne publiczne użyć niestandardowego dostawcy `endpoint`. Usługa Azure Logic Apps usługi Azure API Management i Azure Web Apps są niektóre świetnymi alternatywami.
+> W tym samouczku utworzysz prosty punkt końcowy usługi, który korzysta z aplikacji funkcji platformy Azure. Niestandardowi dostawcy mogą jednak korzystać z dowolnego dostępnego publicznie punktu końcowego. Alternatywy obejmują Azure Logic Apps, API Management platformy Azure i funkcję Web Apps Azure App Service.
 
-Można uruchomić w tym samouczku, należy wykonać kroki samouczka, [tworzenie pierwszej funkcji platformy Azure w witrynie Azure portal](../azure-functions/functions-create-first-azure-function.md). Samouczek utworzy funkcji elementu webhook platformy .NET core, która może być modyfikowany w witrynie Azure portal.
+Aby rozpocząć pracę z tym samouczkiem, należy najpierw wykonać czynności opisane w samouczku [Tworzenie pierwszej aplikacji funkcji platformy Azure w Azure Portal](../azure-functions/functions-create-first-azure-function.md). Ten samouczek tworzy funkcję elementu webhook platformy .NET Core, która może być modyfikowana w Azure Portal. Jest to również podstawa bieżącego samouczka.
 
-## <a name="install-azure-table-bindings"></a>Zainstaluj powiązania tabeli platformy Azure
+## <a name="install-azure-table-storage-bindings"></a>Instalowanie powiązań usługi Azure Table Storage
 
-W tej sekcji będzie przejście przez Szybkie kroki dotyczące instalowania powiązania magazynu tabel Azure.
+Aby zainstalować powiązania usługi Azure Table Storage:
 
-1. Przejdź do `Integrate` kartę HttpTrigger.
-2. Kliknij pozycję `+ New Input`.
-3. Wybierz pozycję `Azure Table Storage`.
-4. Zainstaluj `Microsoft.Azure.WebJobs.Extensions.Storage` Jeśli nie jest już zainstalowany.
-5. Aktualizacja `Table parameter name` do "tableStorage" i `Table name` do "myCustomResources".
-6. Zapisz zaktualizowany parametr wejściowy.
+1. Przejdź do karty **integracja** dla HttpTrigger.
+1. Wybierz pozycję **+ nowe dane wejściowe**.
+1. Wybierz pozycję **Azure Table Storage**.
+1. Zainstaluj rozszerzenie Microsoft. Azure. WebJobs. Extensions. Storage, jeśli nie jest jeszcze zainstalowane.
+1. W polu **Nazwa parametru tabeli** wprowadź **tableStorage**.
+1. W polu **Nazwa tabeli** wpisz **myCustomResources**.
+1. Wybierz pozycję **Zapisz** , aby zapisać zaktualizowany parametr wejściowy.
 
-![Omówienie niestandardowego dostawcy](./media/create-custom-providers/azure-functions-table-bindings.png)
+![Przegląd dostawcy niestandardowego przedstawiający powiązania tabeli](./media/create-custom-providers/azure-functions-table-bindings.png)
 
-## <a name="update-restful-http-methods"></a>Aktualizacja metod RESTful HTTP
+## <a name="update-restful-http-methods"></a>Aktualizowanie metod HTTP RESTful
 
-W tej sekcji będzie przejście przez Szybkie kroki konfigurowania funkcji platformy Azure obejmujący metody żądania RESTful niestandardowego dostawcy.
+Aby skonfigurować funkcję platformy Azure w celu uwzględnienia metod żądania RESTful dostawcy niestandardowego:
 
-1. Przejdź do `Integrate` kartę HttpTrigger.
-2. Aktualizacja `Selected HTTP methods` do: Pobierz, POST, DELETE i PUT.
+1. Przejdź do karty **integracja** dla HttpTrigger.
+1. W obszarze **wybrane metody http**wybierz **pozycję Get**, **post**, **delete**i **Put**.
 
-![Omówienie niestandardowego dostawcy](./media/create-custom-providers/azure-functions-http-methods.png)
+![Przegląd dostawcy niestandardowego przedstawiający metody HTTP](./media/create-custom-providers/azure-functions-http-methods.png)
 
-## <a name="modifying-the-csproj"></a>Modyfikowanie pliku csproj
+## <a name="add-azure-resource-manager-nuget-packages"></a>Dodawanie Azure Resource Manager pakietów NuGet
 
 > [!NOTE]
-> Brakuje pliku csproj katalogu, mogą być dodawane ręcznie czy pojawi się raz `Microsoft.Azure.WebJobs.Extensions.Storage` rozszerzenie jest zainstalowane w funkcji.
+> Jeśli brakuje C# pliku projektu w katalogu projektu, możesz go dodać ręcznie. Lub zostanie on wyświetlony po zainstalowaniu rozszerzenia Microsoft. Azure. WebJobs. Extensions. Storage w aplikacji funkcji.
 
-Następnie zaktualizujemy plik csproj, aby zawierają przydatne biblioteki NuGet, które ułatwi przeanalizować żądania przychodzące z niestandardowych dostawców. Wykonaj kroki opisane w temacie [Dodawanie rozszerzeń z portalu](../azure-functions/install-update-binding-extensions-manual.md) i zaktualizuj csproj, aby uwzględnić następujące odwołania do pakietu:
+Następnie zaktualizuj plik C# projektu w celu uwzględnienia przydatnych bibliotek NuGet. Te biblioteki ułatwiają analizowanie przychodzących żądań od dostawców niestandardowych. Postępuj zgodnie z instrukcjami, aby [dodać rozszerzenia z portalu](../azure-functions/install-update-binding-extensions-manual.md) i C# zaktualizować plik projektu w celu uwzględnienia następujących odwołań do pakietów:
 
 ```xml
 <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage" Version="3.0.4" />
@@ -70,7 +60,7 @@ Następnie zaktualizujemy plik csproj, aby zawierają przydatne biblioteki NuGet
 <PackageReference Include="Microsoft.Azure.WebJobs.Script.ExtensionsMetadataGenerator" Version="1.1.*" />
 ```
 
-Przykładowy plik csproj:
+Następujący element XML to przykładowy C# plik projektu:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -86,8 +76,9 @@ Przykładowy plik csproj:
 </Project>
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym artykule będziemy konfigurować funkcji platformy Azure do pracy jako dostawcy niestandardowego usługi Azure `endpoint`. Przejdź do następnego artykułu, aby dowiedzieć się, jak tworzenie niestandardowego dostawcy typu RESTful `endpoint`.
+W tym samouczku skonfigurujesz aplikację funkcji platformy Azure do pracy jako punkt końcowy niestandardowego dostawcy platformy Azure.
 
-- [Samouczek: Tworzenie punktu końcowego RESTful niestandardowego dostawcy](./tutorial-custom-providers-function-authoring.md)
+Aby dowiedzieć się, jak utworzyć punkt końcowy niestandardowego dostawcy RESTful [, zobacz Samouczek: Tworzenie punktu końcowego](./tutorial-custom-providers-function-authoring.md)niestandardowego dostawcy RESTful.
+

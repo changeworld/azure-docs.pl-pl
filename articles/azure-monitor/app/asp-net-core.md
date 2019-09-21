@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: mbullwin
-ms.openlocfilehash: a48c2fdcce5126747f00cd3b901839864d438346
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 9e14a9f3f2f27112a591f14e9a93580f66aadef7
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058275"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169555"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights aplikacji ASP.NET Core
 
@@ -29,14 +29,14 @@ Przykład będziemy używać tutaj, gdy jest to [aplikacja MVC](https://docs.mic
 
 [Zestaw Application Insights SDK dla ASP.NET Core](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) może monitorować aplikacje niezależnie od tego, gdzie lub jak są uruchamiane. Jeśli aplikacja działa i ma łączność sieciową z platformą Azure, można zbierać dane telemetryczne. Monitorowanie Application Insights jest obsługiwane wszędzie tam, gdzie jest obsługiwany program .NET Core. Centrum pomocy technicznej:
 * **System operacyjny**: Windows, Linux lub Mac.
-* **Metoda hostingu**: W procesie lub w trakcie procesu. 
+* **Metoda hostingu**: W procesie lub w trakcie procesu.
 * **Metoda wdrożenia**: Platforma zależna lub samodzielna.
-* **Serwer sieci Web**: Usługi IIS (Internet Information Server) lub Kestrel. 
+* **Serwer sieci Web**: Usługi IIS (Internet Information Server) lub Kestrel.
 * **Platforma hostingu**: Web Apps funkcja Azure App Service, maszyna wirtualna platformy Azure, platforma Docker, usługa Azure Kubernetes Service (AKS) i tak dalej.
 * **ŚRODOWISKO IDE**: Visual Studio, VS Code lub wiersz polecenia.
 
 > [!NOTE]
-> Jeśli używasz ASP.NET Core 3,0 — wersja zapoznawcza wraz z Application Insights, użyj wersji [2.8.0-beta2](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0-beta2) lub nowszej. Jest to jedyna wersja znana pod kątem prawidłowego działania z ASP.NET Core 3,0. Ponadto program Visual Studio oparty na dołączaniu nie jest jeszcze obsługiwany w przypadku aplikacji ASP.NET Core 3,0.
+> Jeśli używasz ASP.NET Core 3,0 — wersja zapoznawcza wraz z Application Insights, użyj wersji [2.8.0-beta3](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0-beta3) lub nowszej. Jest to jedyna wersja znana pod kątem prawidłowego działania z ASP.NET Core 3,0. Ponadto program Visual Studio oparty na dołączaniu nie jest jeszcze obsługiwany w przypadku aplikacji ASP.NET Core 3,0.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -151,7 +151,7 @@ Obsługa [liczników wydajności](https://azure.microsoft.com/documentation/arti
 
 Wersje zestawu SDK 2.8.0-beta3 i nowsze obsługują kolekcję EventCounters. Domyślnie zestaw SDK zbiera następujące liczniki, a te liczniki mogą być badane w Eksplorator metryk lub przy użyciu zapytania analizy w tabeli PerformanceCounter. Nazwa liczników będzie mieć postać "Kategoria | Licznik ".
 
-|Kategoria | Licznik|
+|Category | Licznik|
 |---------------|-------|
 |System. Runtime | Użycie procesora CPU |
 |System. Runtime | zestaw roboczy |
@@ -241,7 +241,7 @@ Pełna lista ustawień w programie`ApplicationInsightsServiceOptions`
 |AddAutoCollectedMetricExtractor | Włącz/Wyłącz Ekstraktor AutoCollectedMetrics, który jest TelemetryProcessor, który wysyła wstępnie zagregowane metryki dotyczące żądań/zależności przed pobraniem próbek. | true
 |RequestCollectionOptions.TrackExceptions | Włącz/Wyłącz raportowanie nieobsłużonego śledzenia wyjątków przez moduł kolekcji żądań. | wartość false w programie STANDARDowym 2.0 (ponieważ wyjątki są śledzone za pomocą ApplicationInsightsLoggerProvider), true w przeciwnym razie.
 
-Zobacz [ustawienia konfigurowalne w `ApplicationInsightsServiceOptions` programie](https://github.com/microsoft/ApplicationInsights-aspnetcore/blob/develop/src/Microsoft.ApplicationInsights.AspNetCore/Extensions/ApplicationInsightsServiceOptions.cs) , aby uzyskać najbardziej aktualną listę.
+Zobacz [ustawienia konfigurowalne w `ApplicationInsightsServiceOptions` programie](https://github.com/microsoft/ApplicationInsights-aspnetcore/blob/develop/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs) , aby uzyskać najbardziej aktualną listę.
 
 ### <a name="sampling"></a>Próbkowanie
 

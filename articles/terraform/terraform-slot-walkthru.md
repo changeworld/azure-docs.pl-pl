@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 4/05/2018
-ms.openlocfilehash: 08e90a69791b0555a6497166f6008e8619f40704
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 09/20/2019
+ms.openlocfilehash: ec2ed1da46df2793a241c9c89d168a6c5d462b9d
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60889342"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169830"
 ---
 # <a name="use-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>Program Terraform służy do aprowizowania infrastruktury za pomocą miejsc wdrożenia platformy Azure
 
@@ -74,7 +74,7 @@ W tym artykule przedstawiono w formie przewodnika przykładowe zastosowanie miej
 
 1. Wklej następujący kod do edytora:
 
-    ```JSON
+    ```hcl
     # Configure the Azure provider
     provider "azurerm" { }
 
@@ -266,7 +266,7 @@ Aby przetestować zamianę dwóch miejsc wdrożenia, wykonaj następujące kroki
 
 1. Wklej następujący kod do edytora:
 
-    ```JSON
+    ```hcl
     # Configure the Azure provider
     provider "azurerm" { }
 
