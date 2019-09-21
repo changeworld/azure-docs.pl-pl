@@ -51,12 +51,12 @@ W poniższej tabeli opisano, co znajduje się w każdym dzienniku. W zależnośc
 | TimeGenerated [UTC] | Sygnatura czasowa, gdy dziennik został zarejestrowany w formacie UTC |
 | Type | Typ dziennika. zawsze `AzureDiagnostics` |
 | SubscriptionId | Identyfikator GUID subskrypcji, do której należy serwer |
-| Grupa zasobów | Nazwa grupy zasobów, do której należy serwer |
+| ResourceGroup | Nazwa grupy zasobów, do której należy serwer |
 | ResourceProvider | Nazwa dostawcy zasobów. zawsze `MICROSOFT.DBFORPOSTGRESQL` |
 | ResourceType | `Servers` |
 | ResourceId | Identyfikator URI zasobu |
 | Resource | Nazwa serwera |
-| Kategoria | `PostgreSQLLogs` |
+| Category | `PostgreSQLLogs` |
 | OperationName | `LogEvent` |
 | Zmienna | Poziom rejestrowania, przykład: DZIENNIK, BŁĄD, POWIADOMIENIE |
 | Message | Podstawowy komunikat dziennika | 
