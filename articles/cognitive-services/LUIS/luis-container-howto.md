@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 09/20/2019
 ms.author: dapine
-ms.openlocfilehash: 9d1a6ab698ceb6ac1c0a4fc635b5a8fe1e68b0c6
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: b15ab7be5467d35b774dce643d6bb3910560ae01
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71102038"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172328"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Instalowanie i uruchamianie kontenerów platformy Docker LUIS
  
-Kontener Language Understanding (LUIS) ładuje przeszkolony lub opublikowany model Language Understanding, znany także jako [aplikacja Luis](https://www.luis.ai), w kontenerze Docker i zapewnia dostęp do prognoz zapytania z punktów końcowych interfejsu API kontenera. Można zebrać dzienniki zapytań z kontenera i przekazać je z powrotem do aplikacji Language Understanding, aby zwiększyć dokładność przewidywania aplikacji.
+Kontener Language Understanding (LUIS) ładuje swój przeszkolony lub opublikowany Language Understanding model. Jako [aplikacja Luis](https://www.luis.ai), kontener platformy Docker zapewnia dostęp do prognoz zapytania z punktów końcowych interfejsu API kontenera. Można zebrać dzienniki zapytań z kontenera i przekazać je z powrotem do aplikacji Language Understanding, aby zwiększyć dokładność przewidywania aplikacji.
 
 Poniższy film wideo demonstruje użycie tego kontenera.
 
@@ -30,13 +30,13 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby można było uruchomić kontener LUIS, wymagane są następujące elementy: 
+Aby uruchomić kontener LUIS, należy zwrócić uwagę na następujące wymagania wstępne:
 
 |Wymagane|Cel|
 |--|--|
 |Aparat platformy Docker| Aparat platformy Docker musi być zainstalowany na [komputerze-hoście](#the-host-computer). Platforma Docker zawiera pakiety, które konfigurują środowisko platformy Docker w systemach [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)i [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Aby uzyskać podstawowe informacje na temat platformy Docker i kontenerów, zobacz [Docker — omówienie](https://docs.docker.com/engine/docker-overview/).<br><br> Docker należy skonfigurować w taki sposób, aby umożliwić kontenerów, aby nawiązać połączenie z, a następnie wysyłać danych dotyczących rozliczeń do platformy Azure. <br><br> **W systemie Windows**program Docker musi być również skonfigurowany do obsługi kontenerów systemu Linux.<br><br>|
 |Znajomość platformy Docker | Należy dysponować podstawową wiedzą na temat pojęć platformy Docker, takich jak rejestry, repozytoria, kontenery i obrazy kontenerów, a także znajomość `docker` podstawowych poleceń.| 
-|Zasób `Cognitive Services` platformy Azure i plik Luis [spakowanej aplikacji](luis-how-to-start-new-app.md#export-app-for-containers) |Aby można było używać kontenera, musisz mieć:<br><br>* Zasób platformy Azure _Cognitive Services_ i skojarzony klucz rozliczeniowy identyfikator URI punktu końcowego rozliczenia. Obie wartości są dostępne na stronach przeglądów i kluczy dla zasobu i są wymagane do uruchomienia kontenera. Należy dodać `luis/v2.0` Routing do identyfikatora URI punktu końcowego, jak pokazano w poniższym przykładzie BILLING_ENDPOINT_URI. <br>* Przeszkolone lub opublikowana aplikacja spakowana jako zainstalowano dane wejściowe do kontenera ze skojarzonym IDENTYFIKATORem aplikacji. Spakowany plik można pobrać z portalu LUIS lub interfejsów API tworzenia. Jeśli otrzymujesz spakowaną aplikację LUIS z [interfejsów API tworzenia](#authoring-apis-for-package-file), będziesz również potrzebować _klucza tworzenia_.<br><br>Te wymagania są używane do przekazywania argumentów wiersza polecenia do następujących zmiennych:<br><br>**{AUTHORING_KEY}** : Ten klucz służy do uzyskiwania spakowanej aplikacji z usługi LUIS w chmurze i przekazywania dzienników zapytań z powrotem do chmury. Format to `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.<br><br>**{APPLICATION_ID}** : Ten identyfikator jest używany do wybierania aplikacji. Format to `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.<br><br>**{API_KEY}** : Ten klucz jest używany do uruchamiania kontenera. Klucz punktu końcowego można znaleźć w dwóch miejscach. Pierwszy to Azure Portal na liście kluczy zasobu _Cognitive Services_ . Klucz punktu końcowego jest również dostępny w portalu LUIS na stronie ustawień klucze i punkt końcowy. Nie używaj klucza początkowego.<br><br>**{ENDPOINT_URI}** : Punkt końcowy zgodnie z opisem na stronie Przegląd.<br><br>[Klucz tworzenia i klucz punktu końcowego](luis-boundaries.md#key-limits) mają różne cele. Nie należy ich używać zamiennie. |
+|Zasób `Cognitive Services` platformy Azure i plik Luis [spakowanej aplikacji](luis-how-to-start-new-app.md#export-app-for-containers) |Aby można było używać kontenera, musisz mieć:<br><br>* Zasób platformy Azure _Cognitive Services_ i skojarzony klucz rozliczeniowy identyfikator URI punktu końcowego rozliczenia. Obie wartości są dostępne na stronach przeglądów i kluczy dla zasobu i są wymagane do uruchomienia kontenera. <br>* Przeszkolone lub opublikowana aplikacja spakowana jako zainstalowano dane wejściowe do kontenera ze skojarzonym IDENTYFIKATORem aplikacji. Spakowany plik można pobrać z portalu LUIS lub interfejsów API tworzenia. Jeśli otrzymujesz spakowaną aplikację LUIS z [interfejsów API tworzenia](#authoring-apis-for-package-file), będziesz również potrzebować _klucza tworzenia_.<br><br>Te wymagania są używane do przekazywania argumentów wiersza polecenia do następujących zmiennych:<br><br>**{AUTHORING_KEY}** : Ten klucz służy do uzyskiwania spakowanej aplikacji z usługi LUIS w chmurze i przekazywania dzienników zapytań z powrotem do chmury. Format to `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.<br><br>**{APPLICATION_ID}** : Ten identyfikator jest używany do wybierania aplikacji. Format to `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.<br><br>**{API_KEY}** : Ten klucz jest używany do uruchamiania kontenera. Klucz punktu końcowego można znaleźć w dwóch miejscach. Pierwszy to Azure Portal na liście kluczy zasobu _Cognitive Services_ . Klucz punktu końcowego jest również dostępny w portalu LUIS na stronie ustawień klucze i punkt końcowy. Nie używaj klucza początkowego.<br><br>**{ENDPOINT_URI}** : Punkt końcowy zgodnie z opisem na stronie Przegląd.<br><br>[Klucz tworzenia i klucz punktu końcowego](luis-boundaries.md#key-limits) mają różne cele. Nie należy ich używać zamiennie. |
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
@@ -85,7 +85,7 @@ Gdy kontener znajduje się na [komputerze hosta](#the-host-computer), użyj nast
 ![Proces używania kontenera Language Understanding (LUIS)](./media/luis-container-how-to/luis-flow-with-containers-diagram.jpg)
 
 1. [Pakiet eksportu](#export-packaged-app-from-luis) dla kontenera z Luis Portal lub interfejsów API Luis.
-1. Przenieś plik pakietu do wymaganego katalogu wejściowego na [komputerze-hoście](#the-host-computer). Nie zmieniaj nazwy, nie zmieniaj, zastępuj ani nie Kompresuj pliku pakietu LUIS.
+1. Przenieś plik pakietu do wymaganego katalogu wejściowego na [komputerze-hoście](#the-host-computer). Nie należy zmieniać nazwy, zmieniać, zastępować ani dekompresowanie pliku pakietu LUIS.
 1. [Uruchom kontener](##run-the-container-with-docker-run)z wymaganymi ustawieniami _instalacji_ i rozliczeń. Więcej [przykładów](luis-container-configuration.md#example-docker-run-commands) `docker run` polecenia jest dostępnych. 
 1. [Wykonywanie zapytania dotyczącego punktu końcowego przewidywania kontenera](#query-the-containers-prediction-endpoint). 
 1. Po zakończeniu pracy z kontenerem zaimportuj [dzienniki punktów końcowych](#import-the-endpoint-logs-for-active-learning) z instalacji wyjściowej w portalu Luis i [Zatrzymaj](#stop-the-container) kontener.
@@ -109,9 +109,9 @@ Wejściowy katalog instalacji może zawierać jednocześnie **produkcyjne**, **p
 
 |Typ pakietu|Interfejs API punktu końcowego zapytania|Dostępność zapytania|Format nazwy pliku pakietu|
 |--|--|--|--|
-|Szkolone|Pobierz, Opublikuj|Tylko kontener|`{APPLICATION_ID}_v{APPLICATION_VERSION}.gz`|
-|Przemieszczanie|Pobierz, Opublikuj|Platforma Azure i kontener|`{APPLICATION_ID}_STAGING.gz`|
-|Produkcja|Pobierz, Opublikuj|Platforma Azure i kontener|`{APPLICATION_ID}_PRODUCTION.gz`|
+|Szkolone|POBIERZ, OPUBLIKUJ|Tylko kontener|`{APPLICATION_ID}_v{APPLICATION_VERSION}.gz`|
+|Przemieszczanie|POBIERZ, OPUBLIKUJ|Platforma Azure i kontener|`{APPLICATION_ID}_STAGING.gz`|
+|Produkcja|POBIERZ, OPUBLIKUJ|Platforma Azure i kontener|`{APPLICATION_ID}_PRODUCTION.gz`|
 
 > [!IMPORTANT]
 > Nie zmieniaj nazw, nie zmieniaj, zastępuj ani nie Kompresuj plików pakietu LUIS.
@@ -170,10 +170,10 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 
 | Symbol zastępczy | Value |
 |-------------|-------|
-|{APPLICATION_ID} | Identyfikator aplikacji opublikowanej aplikacji LUIS. |
-|{APPLICATION_ENVIRONMENT} | Środowisko opublikowanej aplikacji LUIS. Użyj jednej z następujących wartości:<br/>`PRODUCTION`<br/>`STAGING` |
-|{AUTHORING_KEY} | Klucz tworzenia konta LUIS dla opublikowanej aplikacji LUIS.<br/>Swój klucz tworzenia można pobrać ze strony **ustawień użytkownika** w portalu Luis. |
-|{AZURE_REGION} | Odpowiedni region świadczenia usługi Azure:<br/><br/>`westus`— Zachodnie stany USA<br/>`westeurope`— Europa Zachodnia<br/>`australiaeast`— Australia Wschodnia |
+| **{APPLICATION_ID}** | Identyfikator aplikacji opublikowanej aplikacji LUIS. |
+| **{APPLICATION_ENVIRONMENT}** | Środowisko opublikowanej aplikacji LUIS. Użyj jednej z następujących wartości:<br/>`PRODUCTION`<br/>`STAGING` |
+| **{AUTHORING_KEY}** | Klucz tworzenia konta LUIS dla opublikowanej aplikacji LUIS.<br/>Swój klucz tworzenia można pobrać ze strony **ustawień użytkownika** w portalu Luis. |
+| **{AZURE_REGION}** | Odpowiedni region świadczenia usługi Azure:<br/><br/>`westus`— Zachodnie stany USA<br/>`westeurope`— Europa Zachodnia<br/>`australiaeast`— Australia Wschodnia |
 
 Aby pobrać opublikowany pakiet, zapoznaj się z [dokumentacją interfejsu API w tym miejscu][download-published-package]. Jeśli pobrano pomyślnie, odpowiedź to plik pakietu LUIS. Zapisz plik w lokalizacji magazynu określonej dla instalacji wejściowej kontenera. 
 
@@ -189,10 +189,10 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 
 | Symbol zastępczy | Value |
 |-------------|-------|
-|{APPLICATION_ID} | Identyfikator aplikacji przeszkolonej aplikacji LUIS. |
-|{APPLICATION_VERSION} | Wersja aplikacji z przeszkolonej aplikacji LUIS. |
-|{AUTHORING_KEY} | Klucz tworzenia konta LUIS dla opublikowanej aplikacji LUIS.<br/>Swój klucz tworzenia można pobrać ze strony **ustawień użytkownika** w portalu Luis.  |
-|{AZURE_REGION} | Odpowiedni region świadczenia usługi Azure:<br/><br/>`westus`— Zachodnie stany USA<br/>`westeurope`— Europa Zachodnia<br/>`australiaeast`— Australia Wschodnia |
+| **{APPLICATION_ID}** | Identyfikator aplikacji wyszkolonej aplikacji LUIS. |
+| **{APPLICATION_VERSION}** | Wersja aplikacji z przeszkolonej aplikacji LUIS. |
+| **{AUTHORING_KEY}** | Klucz tworzenia konta LUIS dla opublikowanej aplikacji LUIS.<br/>Swój klucz tworzenia można pobrać ze strony **ustawień użytkownika** w portalu Luis. |
+| **{AZURE_REGION}** | Odpowiedni region świadczenia usługi Azure:<br/><br/>`westus`— Zachodnie stany USA<br/>`westeurope`— Europa Zachodnia<br/>`australiaeast`— Australia Wschodnia |
 
 Aby pobrać przeszkolony pakiet, zapoznaj się z [dokumentacją interfejsu API w tym miejscu][download-trained-package]. Jeśli pobrano pomyślnie, odpowiedź to plik pakietu LUIS. Zapisz plik w lokalizacji magazynu określonej dla instalacji wejściowej kontenera. 
 
@@ -247,8 +247,8 @@ Użyj hosta, `http://localhost:5000`, dla interfejsów API kontenerów.
 
 |Typ pakietu|Metoda|Trasa|Parametry zapytania|
 |--|--|--|--|
-|Opublikowane|[Pobierz](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78), [Opublikuj](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|/luis/v2.0/apps/{appId}?|q={q}<br>& przemieszczanie<br>[& timezoneOffset]<br>[& verbose]<br>[Dziennik &]<br>|
-|Szkolone|Pobierz, Opublikuj|/luis/v2.0/apps/{appId}/versions/{versionId}?|q={q}<br>[& timezoneOffset]<br>[& verbose]<br>[Dziennik &]|
+|Opublikowane|[POBIERZ](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78), [OPUBLIKUJ](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|/luis/v2.0/apps/{appId}?|q={q}<br>& przemieszczanie<br>[& timezoneOffset]<br>[& verbose]<br>[Dziennik &]<br>|
+|Szkolone|POBIERZ, OPUBLIKUJ|/luis/v2.0/apps/{appId}/versions/{versionId}?|q={q}<br>[& timezoneOffset]<br>[& verbose]<br>[Dziennik &]|
 
 Parametry zapytania konfigurują sposób i wartość zwracaną w odpowiedzi na zapytanie:
 
@@ -286,7 +286,7 @@ Nazwa wersji ma maksymalnie 10 znaków i zawiera tylko znaki dozwolone w adresie
 
 ## <a name="import-the-endpoint-logs-for-active-learning"></a>Importowanie dzienników punktów końcowych dla usługi Active Learning
 
-Jeśli dla kontenera LUIS określono instalację wyjściową, pliki dziennika zapytania aplikacji są zapisywane w katalogu wyjściowym, gdzie {INSTANCE_ID} jest IDENTYFIKATORem kontenera. Dziennik zapytań aplikacji zawiera zapytanie, odpowiedź i sygnatury czasowe dla każdego zapytania predykcyjnego przesłanego do kontenera LUIS. 
+Jeśli dla kontenera Luis określono instalację wyjściową, pliki dziennika zapytania aplikacji są zapisywane w katalogu wyjściowym, gdzie `{INSTANCE_ID}` jest identyfikatorem kontenera. Dziennik zapytań aplikacji zawiera zapytanie, odpowiedź i sygnatury czasowe dla każdego zapytania predykcyjnego przesłanego do kontenera LUIS. 
 
 W następującej lokalizacji przedstawiono zagnieżdżoną strukturę katalogów dla plików dziennika kontenera.
 ```
@@ -330,7 +330,7 @@ Najnowszy kontener, wydanego o 2019 Build, będzie obsługiwał:
 
 ## <a name="unsupported-dependencies-for-latest-container"></a>Nieobsługiwane zależności `latest` dla kontenera
 
-Jeśli aplikacja LUIS ma nieobsługiwane zależności, nie będziesz w stanie [eksportować kontenera](#export-packaged-app-from-luis) do momentu usunięcia nieobsługiwanych funkcji. Podczas próby eksportowania dla kontenera Portal LUIS zgłasza Nieobsługiwane funkcje, które należy usunąć.
+Aby [wyeksportować kontener](#export-packaged-app-from-luis), należy usunąć nieobsługiwane zależności z aplikacji Luis. Podczas próby eksportowania dla kontenera Portal LUIS zgłasza te Nieobsługiwane funkcje, które należy usunąć.
 
 Aplikacji LUIS można użyć, jeśli **nie zawiera** ona żadnych z następujących zależności:
 

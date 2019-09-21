@@ -7,14 +7,14 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 09/20/2019
 ms.author: victorh
-ms.openlocfilehash: 400f25fea7b4834fcff830de2dee4b15dacc4cde
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
-ms.translationtype: HT
+ms.openlocfilehash: 8aee640d8648abb623fe5ead0b21e3ae3084424a
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155661"
+ms.locfileid: "71162134"
 ---
-# <a name="create-an-azure-private-dns-zone-using-the-azure-cli"></a>Tworzenie prywatnej strefy DNS platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure
+# <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-cli"></a>Szybki start: Tworzenie prywatnej strefy DNS platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure
 
 [!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
 
