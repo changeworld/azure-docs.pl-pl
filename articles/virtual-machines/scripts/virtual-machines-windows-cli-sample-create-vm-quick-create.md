@@ -3,7 +3,7 @@ title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — szyb
 description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — szybkie tworzenie maszyny wirtualnej z systemem Windows Server 2016
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
-author: rickstercdn
+author: cynthn
 manager: gwallace
 editor: tysonn
 tags: ''
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-Windows
 ms.workload: infrastructure
 ms.date: 02/23/2017
-ms.author: gwallace
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e9eed2ee25c5088df88730ccec8d2a634cd3fcef
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 565c660473d819a046ce54c6bb3dfa05c90ee5df
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871603"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173823"
 ---
 # <a name="quick-create-a-virtual-machine-with-the-azure-cli"></a>Szybkie tworzenie maszyny wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -53,7 +53,7 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 | [az vm create](https://docs.microsoft.com/cli/azure/vm) | Tworzy maszynę wirtualną i łączy ją z kartą sieciową, siecią wirtualną, podsiecią i sieciową grupą zabezpieczeń. To polecenie określa również obraz maszyny wirtualnej do użycia oraz poświadczenia administracyjne.  |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 

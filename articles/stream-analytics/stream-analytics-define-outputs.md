@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 87dca4cf06bd8c5982e5f83a2498496c4bec69fd
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 386dc737bb45eec031aaa1a0c55f4478b8302c54
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984877"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173583"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Zrozumieć dane wyjściowe z usługi Azure Stream Analytics
 
@@ -82,7 +82,7 @@ W poniższej tabeli wymieniono nazwy właściwości i ich opisy dotyczące tworz
 | Konto magazynu     | Nazwa konta magazynu, do którego wysyłane są dane wyjściowe.               |
 | Klucz konta magazynu | Klucz tajny skojarzony z kontem magazynu.                              |
 | Kontener magazynu   | Grupowanie logiczne dla obiektów BLOB przechowywanych w usłudze Azure Blob service. Podczas przekazywania obiektu blob do usługi obiektów Blob, należy określić kontener dla tego obiektu blob. |
-| Wzorzec ścieżki | Opcjonalna. Wzorzec ścieżki pliku używany do pisania obiektów BLOB w określonym kontenerze. <br /><br /> We wzorcu ścieżki można wybrać, aby użyć jednego lub większej liczby wystąpień zmiennych daty i godziny, aby określić częstotliwość zapisywania obiektów blob: <br /> {date}, {time} <br /><br />Możesz użyć niestandardowego partycjonowania obiektów blob, aby określić jedną niestandardową nazwę {Field} z danych zdarzenia do partycjonowania obiektów BLOB. Nazwa pola to znak alfanumeryczny oraz może zawierać spacji, łączniki i podkreślenia. Następujące ograniczenia dotyczące pól niestandardowych: <ul><li>W nazwach pól nie jest rozróżniana wielkość liter. Na przykład usługa nie może rozróżnić między kolumnami "ID" i kolumną "ID".</li><li>Zagnieżdżone pola są niedozwolone. Zamiast tego należy użyć aliasu w zapytaniu zadania do "Spłaszcz" pola.</li><li>Wyrażenia nie mogą być używane jako nazwa pola.</li></ul> <br />Ta funkcja umożliwia użycie niestandardowych konfiguracji specyfikatora formatu daty i godziny w ścieżce. Niestandardowa data i godzina formaty musi być określona pojedynczo, ujęta w {daty/godziny:\<specyfikator >} — słowo kluczowe. Dozwolone dane wejściowe dla \<specyfikatora > to rrrr, mm, m, DD, d, hh, H, mm, m, SS lub s. Słowo kluczowe {DateTime\<: specyfikator >} może być używane wiele razy w ścieżce, aby utworzyć niestandardową konfigurację daty/czasu. <br /><br />Przykłady: <ul><li>Przykład 1: Klaster1/dzienniki / {date} / {time}</li><li>Przykład 2: Klaster1/dzienniki / {date}</li><li>Przykład 3: Klaster1/{client_id}/{Date}/{Time}</li><li>Przykład 4: Klaster1/{DateTime: SS}/{myField}, gdzie zapytanie jest: Wybierz dane. moje pole jako pole z danych wejściowych;</li><li>Przykład 5: Klaster1/Year = {DateTime: RRRR}/miesiąc = {DateTime: MM}/Day = {DateTime: DD}</ul><br />Sygnatura czasowa utworzonej struktury folderów następuje po UTC, a nie na czas lokalny.<br /><br />Nazwa pliku używa następującej konwencji: <br /><br />{Ścieżka prefiksu Pattern}/schemaHashcode_Guid_Number.extension<br /><br />Przykładowe pliki danych wyjściowych:<ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li>  <li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul> <br />Aby uzyskać więcej informacji na temat tej funkcji, zobacz [niestandardowe Partycjonowanie danych wyjściowych obiektu blob Azure Stream Analytics](stream-analytics-custom-path-patterns-blob-storage-output.md). |
+| Wzorzec ścieżki | Opcjonalny. Wzorzec ścieżki pliku używany do pisania obiektów BLOB w określonym kontenerze. <br /><br /> We wzorcu ścieżki można wybrać, aby użyć jednego lub większej liczby wystąpień zmiennych daty i godziny, aby określić częstotliwość zapisywania obiektów blob: <br /> {date}, {time} <br /><br />Możesz użyć niestandardowego partycjonowania obiektów blob, aby określić jedną niestandardową nazwę {Field} z danych zdarzenia do partycjonowania obiektów BLOB. Nazwa pola to znak alfanumeryczny oraz może zawierać spacji, łączniki i podkreślenia. Następujące ograniczenia dotyczące pól niestandardowych: <ul><li>W nazwach pól nie jest rozróżniana wielkość liter. Na przykład usługa nie może rozróżnić między kolumnami "ID" i kolumną "ID".</li><li>Zagnieżdżone pola są niedozwolone. Zamiast tego należy użyć aliasu w zapytaniu zadania do "Spłaszcz" pola.</li><li>Wyrażenia nie mogą być używane jako nazwa pola.</li></ul> <br />Ta funkcja umożliwia użycie niestandardowych konfiguracji specyfikatora formatu daty i godziny w ścieżce. Niestandardowa data i godzina formaty musi być określona pojedynczo, ujęta w {daty/godziny:\<specyfikator >} — słowo kluczowe. Dozwolone dane wejściowe dla \<specyfikatora > to rrrr, mm, m, DD, d, hh, H, mm, m, SS lub s. Słowo kluczowe {DateTime\<: specyfikator >} może być używane wiele razy w ścieżce, aby utworzyć niestandardową konfigurację daty/czasu. <br /><br />Przykłady: <ul><li>Przykład 1: Klaster1/dzienniki / {date} / {time}</li><li>Przykład 2: Klaster1/dzienniki / {date}</li><li>Przykład 3: Klaster1/{client_id}/{Date}/{Time}</li><li>Przykład 4: Klaster1/{DateTime: SS}/{myField}, gdzie zapytanie jest: Wybierz dane. moje pole jako pole z danych wejściowych;</li><li>Przykład 5: Klaster1/Year = {DateTime: RRRR}/miesiąc = {DateTime: MM}/Day = {DateTime: DD}</ul><br />Sygnatura czasowa utworzonej struktury folderów następuje po UTC, a nie na czas lokalny.<br /><br />Nazwa pliku używa następującej konwencji: <br /><br />{Ścieżka prefiksu Pattern}/schemaHashcode_Guid_Number.extension<br /><br />Przykładowe pliki danych wyjściowych:<ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li>  <li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul> <br />Aby uzyskać więcej informacji na temat tej funkcji, zobacz [niestandardowe Partycjonowanie danych wyjściowych obiektu blob Azure Stream Analytics](stream-analytics-custom-path-patterns-blob-storage-output.md). |
 | Format daty | Opcjonalny. Jeśli token daty jest używany w ścieżce prefiksu, można wybrać format daty, w której pliki są uporządkowane. Przykład: RRRR/MM/DD |
 | Format godziny | Opcjonalny. Jeśli token czasu jest używany w ścieżce prefiksu, należy określić format czasu, w której pliki są uporządkowane. Obecnie jedyna obsługiwana wartość to HH. |
 | Format serializacji zdarzeń | Format serializacji danych wyjściowych. Obsługiwane są kod JSON, CSV, Avro i Parquet. |
@@ -209,7 +209,8 @@ W poniższej tabeli wymieniono nazwy właściwości i ich opisy dotyczące tworz
 | Kodowanie |Dla woluminu CSV i JSON UTF-8 jest obsługiwany tylko format kodowania w tej chwili. |
 | Ogranicznik |Dotyczy tylko serializacji woluminu CSV. Usługa Stream Analytics obsługuje różne ograniczniki dla serializacji danych w formacie CSV. Obsługiwane wartości to przecinek, średnik, miejsca, kartę i pionowy pasek. |
 | Format |Dotyczy tylko typu JSON. **Linia rozdzielona** określa, że dane wyjściowe są formatowane przy użyciu każdego obiektu JSON oddzielonego przez nowy wiersz. **Tablica** określa, że dane wyjściowe są formatowane jako tablica obiektów JSON. |
-| Kolumny właściwości | Opcjonalna. Kolumny oddzielone przecinkami, które muszą być dołączone jako właściwości użytkownika wiadomości wychodzącej zamiast ładunku. Więcej informacji na temat tej funkcji znajduje się w sekcji [właściwości metadanych niestandardowych dla danych wyjściowych](#custom-metadata-properties-for-output). |
+| Kolumny właściwości | Opcjonalny. Kolumny oddzielone przecinkami, które muszą być dołączone jako właściwości użytkownika wiadomości wychodzącej zamiast ładunku. Więcej informacji na temat tej funkcji znajduje się w sekcji [właściwości metadanych niestandardowych dla danych wyjściowych](#custom-metadata-properties-for-output). |
+| Kolumny właściwości systemu | Opcjonalny. Pary klucz-wartość właściwości systemu i odpowiednich nazw kolumn, które muszą być dołączone do wiadomości wychodzącej zamiast ładunku. Więcej informacji na temat tej funkcji znajduje się w sekcji [Właściwości systemu dla Service Bus kolejki i danych wyjściowych tematu](#system-properties-for-service-bus-queue-and-topic-outputs)  |
 
 Liczba partycji wynosi [na podstawie jednostki SKU magistrali usług i rozmiaru](../service-bus-messaging/service-bus-partitioning.md). Klucz partycji jest unikatową wartością całkowitą dla każdej partycji.
 
@@ -228,7 +229,8 @@ W poniższej tabeli wymieniono nazwy właściwości i ich opisy dotyczące tworz
 | Format serializacji zdarzeń |Format serializacji danych wyjściowych. JSON, CSV i format Avro są obsługiwane. |
 | Kodowanie |Jeśli używasz formatu CSV lub JSON, należy określić kodowanie. UTF-8 to jedyny obsługiwany obecnie format kodowania. |
 | Ogranicznik |Dotyczy tylko serializacji woluminu CSV. Usługa Stream Analytics obsługuje różne ograniczniki dla serializacji danych w formacie CSV. Obsługiwane wartości to przecinek, średnik, miejsca, kartę i pionowy pasek. |
-| Kolumny właściwości | Opcjonalna. Kolumny oddzielone przecinkami, które muszą być dołączone jako właściwości użytkownika wiadomości wychodzącej zamiast ładunku. Więcej informacji na temat tej funkcji znajduje się w sekcji [właściwości metadanych niestandardowych dla danych wyjściowych](#custom-metadata-properties-for-output). |
+| Kolumny właściwości | Opcjonalny. Kolumny oddzielone przecinkami, które muszą być dołączone jako właściwości użytkownika wiadomości wychodzącej zamiast ładunku. Więcej informacji na temat tej funkcji znajduje się w sekcji [właściwości metadanych niestandardowych dla danych wyjściowych](#custom-metadata-properties-for-output). |
+| Kolumny właściwości systemu | Opcjonalny. Pary klucz-wartość właściwości systemu i odpowiednich nazw kolumn, które muszą być dołączone do wiadomości wychodzącej zamiast ładunku. Więcej informacji na temat tej funkcji znajduje się w sekcji [Właściwości systemu dla Service Bus kolejki i danych wyjściowych tematu](#system-properties-for-service-bus-queue-and-topic-outputs) |
 
 Liczba partycji wynosi [na podstawie jednostki SKU magistrali usług i rozmiaru](../service-bus-messaging/service-bus-partitioning.md). Klucz partycji jest unikatową wartością całkowitą dla każdej partycji.
 
@@ -294,6 +296,25 @@ W poniższym przykładzie dodamy dwa pola `DeviceId` i `DeviceStatus` do metadan
 Poniższy zrzut ekranu przedstawia właściwości komunikatu wyjściowego inspekcji w centrum EventHub za pomocą [eksploratora Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer).
 
 ![Właściwości niestandardowe zdarzenia](./media/stream-analytics-define-outputs/09-stream-analytics-custom-properties.png)
+
+## <a name="system-properties-for-service-bus-queue-and-topic-outputs"></a>Właściwości systemu dla Service Bus kolejki i danych wyjściowych tematu 
+Kolumny zapytania można dołączać jako [Właściwości systemu](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties) do kolejki lub komunikatów tematu usługi wychodzącej magistrali usług. Te kolumny nie znajdują się w ładunku, natomiast odpowiednia [Właściwość systemu](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties) BrokeredMessage jest wypełniana wartościami kolumn zapytania.
+Te właściwości systemu są obsługiwane — `MessageId, ContentType, Label, PartitionKey, ReplyTo, SessionId, CorrelationId, To, ForcePersistence, TimeToLive, ScheduledEnqueueTimeUtc`.
+Wartości ciągu tych kolumn są analizowane jako odpowiadające im typy wartości właściwości systemu, a wszystkie błędy analizy są traktowane jako błędy danych.
+To pole jest dostępne jako format obiektu JSON. Szczegółowe informacje o tym formacie są następujące:
+* Ujęte w nawiasy klamrowe {}.
+* Zapisywane w parach klucz/wartość.
+* Klucze i wartości muszą być ciągami.
+* Klucz jest nazwą i wartością właściwości systemowej jest nazwa kolumny zapytania.
+* Klucze i wartości są oddzielone dwukropkiem.
+* Każda para klucz/wartość jest oddzielona przecinkiem.
+
+Pokazuje, jak używać tej właściwości —
+
+* Dotyczących`select *, column1, column2 INTO queueOutput FROM iotHubInput`
+* Kolumny właściwości systemu:`{ "MessageId": "column1", "PartitionKey": "column2"}`
+
+To ustawienie powoduje `MessageId` , że komunikaty w kolejce usługi `column1`Service Bus z wartościami `column2`i PartitionKey są ustawione na wartości.
 
 ## <a name="partitioning"></a>Partycjonowanie
 

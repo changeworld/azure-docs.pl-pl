@@ -12,17 +12,17 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
-ms.author: roiyz
-ms.openlocfilehash: c44722403967f3563472692f97cb2a114e6294cd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: akjosh
+ms.openlocfilehash: 4526456b608f0920c73ae28446a822661995acab
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084458"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173990"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>Rozszerzenie sterownika GPU NVIDIA dla systemu Windows
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 To rozszerzenie powoduje zainstalowanie sterowników NVIDIA GPU na maszynach wirtualnych z serii N systemu Windows. W zależności od rodziny maszyn wirtualnych rozszerzenie instaluje sterowniki CUDA lub GRID. Jeśli instalujesz sterowniki firmy NVIDIA przy użyciu tego rozszerzenia, akceptujesz i wyrażasz zgodę na warunki [umowy licencyjnej użytkownika końcowego firmy NVIDIA](https://go.microsoft.com/fwlink/?linkid=874330). Podczas instalacji maszyna wirtualna może zostać ponownie przetworzony w celu ukończenia instalacji sterownika.
 
@@ -69,7 +69,7 @@ Poniższy kod JSON pokazuje schemat rozszerzenia.
 }
 ```
 
-### <a name="properties"></a>Właściwości
+### <a name="properties"></a>properties
 
 | Name | Wartość / przykład | Typ danych |
 | ---- | ---- | ---- |
@@ -161,7 +161,7 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 
 | Kod błędu | Znaczenie | Możliwe działania |
 | :---: | --- | --- |
-| 0 | Operacja zakończona powodzeniem |
+| 0 | Operacja zakończona pomyślnie |
 | 1 | Operacja powiodła się. Wymagany jest ponowny rozruch. |
 | 100 | Operacja nie jest obsługiwana lub nie można jej ukończyć. | Możliwe przyczyny: Nieobsługiwana wersja programu PowerShell, rozmiar maszyny wirtualnej nie jest maszyną wirtualną serii N, wystąpił błąd podczas pobierania danych. Sprawdź pliki dziennika, aby ustalić przyczynę błędu. |
 | 240, 840 | Limit czasu operacji. | Ponów próbę wykonania operacji. |

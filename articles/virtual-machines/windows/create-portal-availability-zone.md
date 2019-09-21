@@ -3,7 +3,7 @@ title: Tworzenie maszyny wirtualnej z systemem Windows w strefie przy użyciu Az
 description: Tworzenie maszyny wirtualnej z systemem Windows w strefie dostępności przy użyciu Azure Portal
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: dlepow
+author: cynthn
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/27/2018
-ms.author: danlep
+ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: c3ebaae9fc023eb309bceeac7543b279a21fd436
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 90c6f7106cbc885c513d47bf80a7b1ec218d8c6c
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079779"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168559"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-the-azure-portal"></a>Utwórz maszynę wirtualną z systemem Windows w strefie dostępności przy użyciu Azure Portal
 
@@ -60,7 +60,7 @@ Po wdrożeniu maszyny wirtualnej w strefie dostępności dysk zarządzany dla ma
 
 Ustawienia strefy dla tych zasobów można potwierdzić w portalu.  
 
-1. Kliknij pozycję **grupy zasobów** , a następnie nazwę grupy zasobów dla maszyny wirtualnej, na przykład grupęzasobów.
+1. Kliknij pozycję **grupy zasobów** , a następnie nazwę grupy zasobów dla maszyny wirtualnej, na przykład grupę *zasobów.*
 
 2. Kliknij nazwę zasobu dyskowego. Strona **Przegląd** zawiera szczegółowe informacje o lokalizacji i strefie dostępności zasobu.
 

@@ -2,29 +2,29 @@
 title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: virtual-machines-linux
-author: dlepow
+author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: include
 ms.date: 12/21/2018
-ms.author: danlep
+ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: bca78e2963f19b60071b1b27c8dc65c76818e10e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3f9b86dd3716a25ab95265cf46b616144f57163b
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183241"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168632"
 ---
-## <a name="overview-of-ssh-and-keys"></a>Omówienie protokołu SSH i klucze
+## <a name="overview-of-ssh-and-keys"></a>Omówienie protokołów SSH i kluczy
 
-[SSH](https://www.ssh.com/ssh/) to szyfrowanego połączenia, który umożliwia bezpieczne logowania za pośrednictwem niezabezpieczonych połączeń. Protokół SSH jest domyślnym protokołem połączenia maszyn wirtualnych systemu Linux hostowanych na platformie Azure. Chociaż protokół SSH, sama udostępnia połączenie szyfrowane, przy użyciu haseł z połączeniami SSH nadal pozostawia to maszyna wirtualna narażony na atak metodą siłową ataków lub zgadywania haseł. Większe bezpieczeństwo i preferowaną metodą nawiązywania połączenia z maszyną wirtualną przy użyciu protokołu SSH jest za pomocą pary kluczy publiczny prywatny, znany także jako *kluczy SSH*. 
+[SSH](https://www.ssh.com/ssh/) to protokół połączenia szyfrowanego, który umożliwia bezpieczne logowanie za pośrednictwem niezabezpieczonych połączeń. SSH to domyślny protokół połączeń dla maszyn wirtualnych z systemem Linux hostowanych na platformie Azure. Mimo że protokół SSH zapewnia szyfrowane połączenie, używanie haseł z połączeniami SSH nadal pozostawia maszynę wirtualną narażoną na ataki lub zgadywanie haseł. Bezpieczniejsza i preferowana metoda łączenia się z maszyną wirtualną przy użyciu protokołu SSH polega na użyciu pary kluczy publiczny-prywatny, znanej również jako *klucze SSH*. 
 
-* *Klucza publicznego* znajduje się na maszynie Wirtualnej systemu Linux lub dowolnej innej usługi, którego chcesz użyć z kryptografii klucza publicznego.
+* *Klucz publiczny* jest umieszczany na maszynie wirtualnej z systemem Linux lub dowolnej innej usłudze, która ma być używana z kryptografią klucza publicznego.
 
-* *Klucza prywatnego* pozostaje w systemie lokalnym. Klucz prywatny należy chronić. Nie należy go udostępniać.
+* *Klucz prywatny* pozostaje w systemie lokalnym. Klucz prywatny należy chronić. Nie należy go udostępniać.
 
-Kiedy używasz klienta SSH połączyć się z systemem Linux maszyny Wirtualnej (który ma klucz publiczny) zdalnej maszynie Wirtualnej testy klienta, aby upewnić się, że posiada on klucza prywatnego. Jeśli klient ma klucz prywatny, że udzielono mu dostęp do maszyny Wirtualnej. 
+W przypadku korzystania z klienta SSH do nawiązywania połączenia z maszyną wirtualną z systemem Linux (która ma klucz publiczny) zdalna maszyna wirtualna testuje klienta, aby upewnić się, że dysponuje kluczem prywatnym. Jeśli klient ma klucz prywatny, zostanie mu udzielony dostęp do maszyny wirtualnej. 
 
-W zależności od zasad zabezpieczeń organizacji można ponownie użyć pojedynczego pary kluczy publiczny prywatny dostęp do wielu maszyn wirtualnych platformy Azure i usług. Nie potrzebujesz oddzielnych pary kluczy dla każdej maszyny Wirtualnej lub usługi, które chcesz uzyskać dostęp. 
+W zależności od zasad zabezpieczeń organizacji można użyć pojedynczej pary kluczy publiczny-prywatny, aby uzyskać dostęp do wielu maszyn wirtualnych i usług platformy Azure. Nie potrzebujesz oddzielnej pary kluczy dla każdej maszyny wirtualnej lub usługi, do której chcesz uzyskać dostęp. 
 
-Klucz publiczny można udostępniać wszystkim, ale tylko użytkownik (lub lokalna infrastruktura zabezpieczeń) powinny mieć klucz prywatny.
+Klucz publiczny może być współużytkowany z każdą osobą, ale tylko ty (lub Twoja lokalna infrastruktura zabezpieczeń) powinna mieć swój klucz prywatny.

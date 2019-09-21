@@ -3,7 +3,7 @@ title: Eksportowanie grup zasobów platformy Azure zawierających rozszerzenia m
 description: Eksportowanie szablonów Menedżer zasobów zawierających rozszerzenia maszyn wirtualnych.
 services: virtual-machines-windows
 documentationcenter: ''
-author: roiyz-msft
+author: axayjo
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
-ms.author: roiyz
-ms.openlocfilehash: 6ac3a19d12b99c61dd0607b07b4659114f52400e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: akjosh
+ms.openlocfilehash: 652ed732a7fe8f08e48aba6fc4bd1b52164d1fa0
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084620"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169064"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>Eksportowanie grup zasobów zawierających rozszerzenia maszyn wirtualnych
 

@@ -3,7 +3,7 @@ title: Azure Monitor rozszerzenie maszyny wirtualnej dla systemu Linux | Microso
 description: Wdróż agenta usługi Log Analytics na maszynie wirtualnej systemu Linux przy użyciu rozszerzenia maszyny wirtualnej.
 services: virtual-machines-linux
 documentationcenter: ''
-author: roiyz-msft
+author: axayjo
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -13,17 +13,17 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
-ms.author: roiyz
-ms.openlocfilehash: 8ce10deaf49b6d7796a6b932beb15a1527322f69
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: akjosh
+ms.openlocfilehash: 95b630342ac2b4bc9cf51f3aa3d8563c4962ce11
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084388"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168939"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-linux"></a>Azure Monitor rozszerzenie maszyny wirtualnej dla systemu Linux
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Dzienniki Azure Monitor udostępniają funkcje monitorowania, alertów i korygowania alertów w ramach zasobów w chmurze i lokalnych. Rozszerzenie maszyny wirtualnej Log Analytics Agent dla systemu Linux jest opublikowany i obsługiwane przez firmę Microsoft. Rozszerzenie instaluje agenta usługi Log Analytics na maszynach wirtualnych platformy Azure i rejestruje maszyn wirtualnych do istniejącego obszaru roboczego usługi Log Analytics. Ten dokument zawiera szczegółowe informacje o obsługiwanych platformach, konfiguracjach i opcjach wdrażania dla rozszerzenia maszyny wirtualnej Azure Monitor dla systemu Linux.
 

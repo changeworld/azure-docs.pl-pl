@@ -12,17 +12,17 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
-ms.author: roiyz
-ms.openlocfilehash: 167780971ec59efd1ca197958798564d1ef2d596
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: akjosh
+ms.openlocfilehash: 83646c0b11bf558f667b29271a27d31e5489c157
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092314"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71174007"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Rozszerzenie sterownika GPU NVIDIA dla systemu Linux
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 To rozszerzenie powoduje zainstalowanie sterowników NVIDIA GPU na maszynach wirtualnych serii N z systemem Linux. W zależności od rodziny maszyn wirtualnych rozszerzenie instaluje sterowniki CUDA lub GRID. Jeśli instalujesz sterowniki firmy NVIDIA przy użyciu tego rozszerzenia, akceptujesz i wyrażasz zgodę na warunki [umowy licencyjnej użytkownika końcowego firmy NVIDIA](https://go.microsoft.com/fwlink/?linkid=874330). Podczas instalacji maszyna wirtualna może zostać ponownie przetworzony w celu ukończenia instalacji sterownika.
 
@@ -70,7 +70,7 @@ Poniższy kod JSON pokazuje schemat rozszerzenia.
 }
 ```
 
-### <a name="properties"></a>Właściwości
+### <a name="properties"></a>properties
 
 | Name | Wartość / przykład | Typ danych |
 | ---- | ---- | ---- |
@@ -177,7 +177,7 @@ Dane wyjściowe wykonywania rozszerzenia jest rejestrowany w następującym plik
 
 | Kod zakończenia | Znaczenie | Możliwe działania |
 | :---: | --- | --- |
-| 0 | Operacja zakończona powodzeniem |
+| 0 | Operacja zakończona pomyślnie |
 | 1 | Nieprawidłowe użycie rozszerzenia | Sprawdź dziennik wyjściowy wykonywania |
 | 10 | Usługi integracji z systemem Linux dla funkcji Hyper-V i platformy Azure nie są dostępne ani zainstalowane | Sprawdź dane wyjściowe lspci |
 | 11 | Nie znaleziono procesora GPU NVIDIA dla tego rozmiaru maszyny wirtualnej | Korzystanie z [obsługiwanego rozmiaru maszyny wirtualnej i systemu operacyjnego](../linux/n-series-driver-setup.md) |

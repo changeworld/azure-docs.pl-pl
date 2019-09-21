@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: lahugh
-ms.openlocfilehash: 5e342418dc6cc9ed0a3bbbfaad42801d5ffe9e9d
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: e4572ac6041caffc6c77d74dcbb2cf52f9f0aed0
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900258"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173783"
 ---
 # <a name="support-for-generation-2-vms-preview-on-azure"></a>Obsługa maszyn wirtualnych 2. generacji (wersja zapoznawcza) na platformie Azure
 
@@ -49,7 +49,7 @@ Maszyny wirtualne generacji 1 są obsługiwane przez wszystkie rozmiary maszyn w
 * [Seria Mv2](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#mv2-series)
 * Seria [NCv2](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#ncv2-series) i [Seria NCV3](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#ncv3-series)
 * [Seria ND](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#nd-series)
-* [Seria NVv2](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#nvv3-series--1)
+* [Seria NVv3](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#nvv3-series--1)
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>Obrazy maszyn wirtualnych generacji 2 w witrynie Azure Marketplace
 
@@ -88,12 +88,13 @@ Platforma Azure nie obsługuje obecnie niektórych funkcji, które są obsługiw
 
 | Możliwość | Generacja 1 | Generacja 2 |
 |------------|--------------|--------------|
-| Dysk systemu operacyjnego > 2 TB                    | y                        | :heavy_check_mark: |
-| Niestandardowy dysk/obraz/system operacyjny wymiany         | :heavy_check_mark:         | :heavy_check_mark: |
-| Obsługa zestawu skalowania maszyn wirtualnych | :heavy_check_mark:         | :heavy_check_mark: |
-| ASR/backup                        | :heavy_check_mark:         | y                |
-| Galeria obrazów udostępnionych              | :heavy_check_mark:         | y                |
-| Szyfrowanie dysków Azure             | :heavy_check_mark:         | y                |
+| Dysk systemu operacyjnego > 2 TB                    | y                | :heavy_check_mark: |
+| Niestandardowy dysk/obraz/system operacyjny wymiany         | :heavy_check_mark: | :heavy_check_mark: |
+| Obsługa zestawu skalowania maszyn wirtualnych | :heavy_check_mark: | :heavy_check_mark: |
+| Azure Site Recovery               | :heavy_check_mark: | y                |
+| Tworzenie kopii zapasowej/przywracanie                    | :heavy_check_mark: | :heavy_check_mark: |
+| Galeria obrazów udostępnionych              | :heavy_check_mark: | y                |
+| Szyfrowanie dysków Azure             | :heavy_check_mark: | y                |
 
 ## <a name="creating-a-generation-2-vm"></a>Tworzenie maszyny wirtualnej generacji 2
 
@@ -101,14 +102,37 @@ Platforma Azure nie obsługuje obecnie niektórych funkcji, które są obsługiw
 
 W Azure Portal lub interfejsie wiersza polecenia platformy Azure można tworzyć maszyny wirtualne 2. generacji z obrazu portalu Marketplace, który obsługuje rozruch z interfejsem UEFI.
 
-`windowsserver-gen2preview` Oferta zawiera tylko obrazy generacji 2 systemu Windows. To opakowanie pozwala uniknąć pomyłek w obrazach generacji 1 i 2. generacji. Aby utworzyć maszynę wirtualną generacji 2, wybierz pozycję **obrazy** z tej oferty i postępuj zgodnie ze standardowym procesem, aby utworzyć maszynę wirtualną.
+#### <a name="azure-portal"></a>Azure Portal
 
-Obecnie witryna Marketplace oferuje następujące obrazy generacji 2 systemu Windows:
+Obrazy generacji 2 dla systemu Windows i SLES są zawarte w tej samej ofercie serwera co obrazy Gen1. Co to znaczy z perspektywy przepływu, należy wybrać ofertę i jednostkę SKU z portalu dla maszyny wirtualnej. Jeśli jednostka SKU obsługuje zarówno obrazy generacji 1, jak i 2, możesz wybrać opcję utworzenia maszyny wirtualnej generacji 2 z karty *Zaawansowane* w przepływie tworzenia maszyny wirtualnej.
 
-* 2019 — Datacenter-Gen2
-* 2016 — Datacenter-Gen2
-* 2012-R2-Datacenter-Gen2
-* 2012 — Datacenter-Gen2
+Obecnie następujące jednostki SKU obsługują obrazy generacji 1 i 2. generacji:
+
+* Windows Server 2012
+* Windows Server 2012 R2
+* Windows Server 2016
+* Windows Server 2019
+
+Po wybraniu jednostki SKU systemu Windows Server jako oferty na karcie **Zaawansowane** można utworzyć maszynę wirtualną **generacji 1** (BIOS) lub **Gen 2** (UEFI). W przypadku wybrania **generacji 2**upewnij się, że rozmiar maszyny wirtualnej wybrany na karcie **podstawy** jest [obsługiwany w przypadku maszyn wirtualnych 2. generacji](#generation-2-vm-sizes).
+
+![Wybierz maszynę wirtualną generacji 1 lub Gen 2](./media/generation-2/gen1-gen2-select.png)
+
+#### <a name="powershell"></a>PowerShell
+
+Możesz również użyć programu PowerShell do utworzenia maszyny wirtualnej, bezpośrednio odwołującej się do jednostki SKU generacji 1 lub 2.
+
+Na przykład użyj następującego polecenia cmdlet programu PowerShell, aby wyświetlić listę jednostek SKU w `WindowsServer` ofercie.
+
+```powershell
+Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer
+```
+
+Jeśli tworzysz maszynę wirtualną z systemem Windows Server 2012 jako system operacyjny, wybierz jednostkę SKU maszyny wirtualnej generacji 1 (BIOS) lub 2 (UEFI), która wygląda następująco:
+
+```powershell
+2012-Datacenter
+2012-datacenter-gensecond
+```
 
 Zapoznaj się z sekcją [funkcje i możliwości](#features-and-capabilities) , aby zapoznać się z bieżącą listą obsługiwanych obrazów z portalu Marketplace.
 
@@ -116,7 +140,7 @@ Zapoznaj się z sekcją [funkcje i możliwości](#features-and-capabilities) , a
 
 Maszynę wirtualną generacji 2 można utworzyć na podstawie zarządzanego obrazu lub dysku zarządzanego w taki sam sposób jak w przypadku tworzenia maszyny wirtualnej generacji 1.
 
-### <a name="virtual-machine-scale-sets"></a>Zestawy skalowania maszyn wirtualnych
+### <a name="virtual-machine-scale-sets"></a>Virtual Machine Scale Sets
 
 Można również tworzyć maszyny wirtualne 2. generacji przy użyciu zestawów skalowania maszyn wirtualnych. W interfejsie wiersza polecenia platformy Azure Użyj zestawów skalowania platformy Azure, aby utworzyć maszyny wirtualne 2. generacji.
 
@@ -131,7 +155,7 @@ Można również tworzyć maszyny wirtualne 2. generacji przy użyciu zestawów 
 * **Mam plik VHD z lokalnej maszyny wirtualnej generacji 2. Czy można użyć tego pliku VHD do utworzenia maszyny wirtualnej generacji 2 na platformie Azure?**
   Tak, możesz przenieść plik VHD 2. generacji na platformę Azure i użyć go do utworzenia maszyny wirtualnej generacji 2. Wykonaj następujące kroki, aby to zrobić:
     1. Przekaż plik VHD do konta magazynu w tym samym regionie, w którym chcesz utworzyć maszynę wirtualną.
-    1. Utwórz dysk zarządzany na podstawie pliku VHD. Ustaw właściwość funkcji HyperV Generation na v2. Następujące polecenia programu PowerShell ustawiają Właściwość generowania funkcji Hyper-v podczas tworzenia dysku zarządzanego.
+    1. Utwórz dysk zarządzany na podstawie pliku VHD. Ustaw właściwość generacja funkcji Hyper-V na v2. Następujące polecenia programu PowerShell ustawiają Właściwość generowania funkcji Hyper-V podczas tworzenia dysku zarządzanego.
 
         ```powershell
         $sourceUri = 'https://xyzstorage.blob.core.windows.net/vhd/abcd.vhd'. #<Provide location to your uploaded .vhd file>

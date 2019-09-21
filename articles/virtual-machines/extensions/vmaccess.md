@@ -1,9 +1,9 @@
 ---
-title: Zresetuj dostęp do maszyny Wirtualnej systemu Linux na platformie Azure | Dokumentacja firmy Microsoft
-description: Jak zarządzać użytkownicy administracyjni i zresetuj dostęp na maszynach wirtualnych systemu Linux przy użyciu rozszerzenia VMAccess i wiersza polecenia platformy Azure
+title: Resetowanie dostępu do maszyny wirtualnej z systemem Linux na platformie Azure | Microsoft Docs
+description: Jak zarządzać użytkownikami administracyjnymi i resetować dostęp na maszynach wirtualnych z systemem Linux przy użyciu rozszerzenia VMAccess i interfejsu wiersza polecenia platformy Azure
 services: virtual-machines-linux
 documentationcenter: ''
-author: roiyz-msft
+author: axayjo
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -14,32 +14,32 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
 ms.date: 05/10/2018
-ms.author: roiyz
-ms.openlocfilehash: 2841aedc1a4fe69e2604d3c6b95cc12dab4c7716
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.author: akjosh
+ms.openlocfilehash: 447c10037503c627092bb23e23b4fe1ee88ca45d
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706600"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173951"
 ---
-# <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>Zarządzanie użytkowników administracyjnych, SSH i sprawdzanie lub napraw dyski maszyn wirtualnych systemu Linux przy użyciu rozszerzenia VMAccess przy użyciu wiersza polecenia platformy Azure
-## <a name="overview"></a>Omówienie
-Dysk na maszynie Wirtualnej systemu Linux są wyświetlane błędy. Jakiś sposób resetowania hasła głównego dla maszyny Wirtualnej z systemem Linux lub przypadkowo usunięty klucz prywatny SSH. Jeśli które miały miejsce w ciągu dni centrum danych, będziesz potrzebować dysku istnieje, a następnie otwórz KVM można pobrać z konsoli serwera. Rozszerzenie Azure VMAccess należy traktować jako tego przełącznika KVM, która pozwala uzyskać dostęp do konsoli zresetować dostępu do systemu Linux lub przeprowadzenia konserwacji poziomu dysku.
+# <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>Zarządzanie użytkownikami administracyjnymi, SSH oraz sprawdzaniem i naprawianiem dysków na maszynach wirtualnych z systemem Linux przy użyciu rozszerzenia VMAccess z interfejsem wiersza polecenia platformy Azure
+## <a name="overview"></a>Przegląd
+Na dysku na maszynie wirtualnej z systemem Linux są wyświetlane błędy. Ty możesz zresetować hasło główne dla maszyny wirtualnej z systemem Linux lub przypadkowo usunąć klucz prywatny SSH. Jeśli ten problem wystąpił z powrotem w dniach centrum danych, należy tam tam znaleźć, a następnie otworzyć KVM, aby uzyskać dostęp do konsoli serwera. Należy wziąć pod uwagę rozszerzenie VMAccess platformy Azure, ponieważ przełącznik KVM pozwala uzyskać dostęp do konsoli programu w celu zresetowania dostępu do systemu Linux lub przeprowadzenia konserwacji na poziomie dysku.
 
-W tym artykule pokazano, jak Sprawdź lub naprawy dysku za pomocą rozszerzenia Azure VMAccess, zresetuj dostęp użytkowników, zarządzanie kontami użytkowników administracyjnych lub zaktualizować konfiguracji SSH w systemie Linux, gdy są one uruchamiane jako maszyny wirtualne usługi Azure Resource Manager. Jeśli musisz zarządzać maszynami wirtualnymi Classic — można wykonać instrukcji zawartych w [klasycznego dokumentacji dotyczącej maszyny Wirtualnej](../linux/classic/reset-access-classic.md). 
+W tym artykule pokazano, jak za pomocą rozszerzenia usługi Azure VMAccess sprawdzić lub naprawić dysk, zresetować dostęp użytkowników, zarządzać kontami użytkowników administracyjnych lub zaktualizować konfigurację protokołu SSH w systemie Linux, gdy są one uruchomione jako Azure Resource Manager maszyny wirtualne. Jeśli chcesz zarządzać klasycznymi maszynami wirtualnymi, możesz postępować zgodnie z instrukcjami znajdującymi się w [dokumentacji klasycznej maszyny wirtualnej](../linux/classic/reset-access-classic.md). 
  
 > [!NOTE]
-> Jeśli używasz rozszerzenie VMAccess do zresetowania hasła maszyny wirtualnej po zainstalowaniu rozszerzenia logowania usługi AAD będzie konieczne ponowne uruchomienie rozszerzenie logowania usługi AAD, aby ponownie włączyć logowania usługi AAD dla maszyny.
+> Jeśli używasz rozszerzenia VMAccess do resetowania hasła maszyny wirtualnej po zainstalowaniu rozszerzenia logowania usługi AAD, musisz ponownie uruchomić rozszerzenie logowania usługi AAD, aby ponownie włączyć logowanie do usługi AAD dla maszyny.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 ### <a name="operating-system"></a>System operacyjny
 
-Rozszerzenie dostępu do maszyny Wirtualnej mogą być uruchamiane względem tych dystrybucje systemu Linux:
+Rozszerzenie dostępu do maszyny wirtualnej można uruchomić w odniesieniu do tych dystrybucji systemu Linux:
 
 | Dystrybucja | Version |
 |---|---|
-| Ubuntu | 16.04 LTS, 14.04 LTS i 12.04 LTS |
-| Debian | Debian 7.9+, 8.2+ |
+| Ubuntu | 16,04 LTS, 14,04 LTS i 12,04 LTS |
+| Debian | Debian 7,9 +, 8.2 + |
 | Red Hat | RHEL 6.7+, 7.1+ |
 | Oracle Linux | 6.4+, 7.0+ |
 | SUSE | 11 i 12 |
@@ -47,16 +47,16 @@ Rozszerzenie dostępu do maszyny Wirtualnej mogą być uruchamiane względem tyc
 | CentOS | CentOS 6.3+, 7.0+ |
 | CoreOS | 494.4.0+ |
 
-## <a name="ways-to-use-the-vmaccess-extension"></a>Sposoby korzystania z rozszerzenia VMAccess
-Istnieją dwa sposoby użyć rozszerzenia VMAccess na maszynach wirtualnych systemu Linux:
+## <a name="ways-to-use-the-vmaccess-extension"></a>Sposoby używania rozszerzenia VMAccess
+Istnieją dwa sposoby używania rozszerzenia VMAccess na maszynach wirtualnych z systemem Linux:
 
-* Za pomocą wiersza polecenia platformy Azure i wymaganych parametrów.
-* [Użyj nieprzetworzone pliki w formacie JSON, które przetwarzają rozszerzenie VMAccess](#use-json-files-and-the-vmaccess-extension) i następnie działać na nich.
+* Użyj interfejsu wiersza polecenia platformy Azure i wymaganych parametrów.
+* [Użyj nieprzetworzonych plików JSON, które są przetwarzane przez rozszerzenie VMAccess](#use-json-files-and-the-vmaccess-extension) , a następnie wykonaj działania.
 
-W poniższych przykładach używane [użytkownika maszyny wirtualnej az](/cli/azure/vm/user) poleceń. Aby wykonać te kroki, potrzebujesz najnowszej [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index).
+W poniższych przykładach użyto polecenia [AZ VM User](/cli/azure/vm/user) Commands. Aby wykonać te kroki, należy zainstalować najnowszy [interfejs wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) i zalogować się na konto platformy Azure za pomocą polecenia [AZ login](/cli/azure/reference-index).
 
-## <a name="update-ssh-key"></a>Zaktualizuj klucz SSH
-Poniższy przykład aktualizuje klucz SSH dla użytkownika `azureuser` na maszynie Wirtualnej o nazwie `myVM`:
+## <a name="update-ssh-key"></a>Aktualizowanie klucza SSH
+Poniższy przykład aktualizuje klucz SSH dla użytkownika `azureuser` na maszynie wirtualnej o nazwie: `myVM`
 
 ```azurecli-interactive
 az vm user update \
@@ -66,10 +66,10 @@ az vm user update \
   --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-> **UWAGA:** `az vm user update` Polecenie dołącza nowy tekst klucza publicznego do `~/.ssh/authorized_keys` pliku dla administratora na maszynie Wirtualnej. To nie Zamień lub usuń jakiekolwiek klucze SSH. Nie spowoduje to usunięcie poprzednich kluczy zestawu w czasie wdrażania lub kolejnych aktualizacji za pośrednictwem rozszerzenia VMAccess.
+> **UWAGA:** Polecenie dołącza nowy tekst klucza publicznego `~/.ssh/authorized_keys` do pliku dla użytkownika administratora na maszynie wirtualnej. `az vm user update` Nie zastępuje to ani nie usunie żadnych istniejących kluczy SSH. Nie spowoduje to usunięcia poprzednich kluczy ustawionych w czasie wdrażania lub kolejnych aktualizacji za pośrednictwem rozszerzenia VMAccess.
 
 ## <a name="reset-password"></a>Resetowanie hasła
-Poniższy przykład powoduje zresetowanie hasła dla użytkownika `azureuser` na maszynie Wirtualnej o nazwie `myVM`:
+Poniższy przykład resetuje hasło dla użytkownika `azureuser` na maszynie wirtualnej o nazwie: `myVM`
 
 ```azurecli-interactive
 az vm user update \
@@ -79,8 +79,8 @@ az vm user update \
   --password myNewPassword
 ```
 
-## <a name="restart-ssh"></a>Uruchom ponownie SSH
-Poniższy przykład powoduje ponowne uruchomienie demon SSH i zresetowanie konfiguracji SSH do wartości domyślnych na maszynie Wirtualnej o nazwie `myVM`:
+## <a name="restart-ssh"></a>Ponowne uruchamianie protokołu SSH
+Poniższy przykład powoduje ponowne uruchomienie demona SSH i zresetowanie konfiguracji SSH do wartości domyślnych na maszynie wirtualnej o `myVM`nazwie:
 
 ```azurecli-interactive
 az vm user reset-ssh \
@@ -89,7 +89,7 @@ az vm user reset-ssh \
 ```
 
 ## <a name="create-an-administrativesudo-user"></a>Utwórz użytkownika administracyjnego/sudo
-Poniższy przykład tworzy użytkownika o nazwie `myNewUser` z **"sudo"** uprawnienia. To konto używa klucza SSH do uwierzytelniania na maszynie Wirtualnej o nazwie `myVM`. Ta metoda jest przeznaczony do pomóc Ci odzyskania dostępu do maszyny Wirtualnej, w przypadku, gdy bieżące poświadczenia są zgubienia lub zapomnienia hasła. Najlepszym rozwiązaniem jest kont z **"sudo"** uprawnienia powinny być ograniczone.
+Poniższy przykład tworzy użytkownika o nazwie `myNewUser` z uprawnieniami **sudo** . Konto używa klucza SSH do uwierzytelniania na maszynie wirtualnej o nazwie `myVM`. Ta metoda została zaprojektowana w celu ułatwienia odzyskania dostępu do maszyny wirtualnej w przypadku zgubienia lub zapomnienia bieżących poświadczeń. Najlepszym rozwiązaniem jest ograniczenie kont z uprawnieniami **sudo** .
 
 ```azurecli-interactive
 az vm user update \
@@ -100,7 +100,7 @@ az vm user update \
 ```
 
 ## <a name="delete-a-user"></a>Usuwanie użytkownika
-W następującym przykładzie usunięto użytkownika o nazwie `myNewUser` na maszynie Wirtualnej o nazwie `myVM`:
+Poniższy przykład usuwa użytkownika o nazwie `myNewUser` do maszyny wirtualnej o nazwie: `myVM`
 
 ```azurecli-interactive
 az vm user delete \
@@ -109,13 +109,13 @@ az vm user delete \
   --username myNewUser
 ```
 
-## <a name="use-json-files-and-the-vmaccess-extension"></a>Pliki w formacie JSON i rozszerzenie VMAccess
-W poniższych przykładach używane nieprzetworzone pliki w formacie JSON. Użyj [zestaw rozszerzeń maszyn wirtualnych az](/cli/azure/vm/extension) następnie wywołać pliki w formacie JSON. Te pliki JSON mogą być również wywoływane z szablonów platformy Azure. 
+## <a name="use-json-files-and-the-vmaccess-extension"></a>Korzystanie z plików JSON i rozszerzenia VMAccess
+W poniższych przykładach użyto nieprzetworzonych plików JSON. Użyj polecenie [AZ VM Extension Set](/cli/azure/vm/extension) , aby następnie wywołać pliki JSON. Te pliki JSON można również wywołać z szablonów platformy Azure. 
 
-### <a name="reset-user-access"></a>Resetowanie dostępu użytkownika
-W przypadku utraty dostępu do katalogu głównego na maszynie Wirtualnej systemu Linux, możesz uruchomić skrypt VMAccess do zaktualizowania użytkownika hasła lub klucza SSH.
+### <a name="reset-user-access"></a>Resetuj dostęp użytkownika
+Jeśli masz utracony dostęp do katalogu głównego na maszynie wirtualnej z systemem Linux, możesz uruchomić skrypt VMAccess, aby zaktualizować klucz SSH lub hasło użytkownika.
 
-Aby zaktualizować klucz publiczny SSH użytkownika, Utwórz plik o nazwie `update_ssh_key.json` i dodaniu ustawienia w następującym formacie. Zastąp własnymi wartościami `username` i `ssh_key` parametry:
+Aby zaktualizować klucz publiczny SSH użytkownika, Utwórz plik o nazwie `update_ssh_key.json` i Dodaj ustawienia w następującym formacie. Zastąp własne wartości `username` parametrów i `ssh_key` :
 
 ```json
 {
@@ -124,7 +124,7 @@ Aby zaktualizować klucz publiczny SSH użytkownika, Utwórz plik o nazwie `upda
 }
 ```
 
-Wykonaj skrypt VMAccess za pomocą:
+Wykonaj skrypt VMAccess przy użyciu:
 
 ```azurecli-interactive
 az vm extension set \
@@ -136,7 +136,7 @@ az vm extension set \
   --protected-settings update_ssh_key.json
 ```
 
-Aby zresetować hasło użytkownika, Utwórz plik o nazwie `reset_user_password.json` i dodaniu ustawienia w następującym formacie. Zastąp własnymi wartościami `username` i `password` parametry:
+Aby zresetować hasło użytkownika, należy utworzyć plik o nazwie `reset_user_password.json` i dodać ustawienia w następującym formacie. Zastąp własne wartości `username` parametrów i `password` :
 
 ```json
 {
@@ -145,7 +145,7 @@ Aby zresetować hasło użytkownika, Utwórz plik o nazwie `reset_user_password.
 }
 ```
 
-Wykonaj skrypt VMAccess za pomocą:
+Wykonaj skrypt VMAccess przy użyciu:
 
 ```azurecli-interactive
 az vm extension set \
@@ -157,8 +157,8 @@ az vm extension set \
   --protected-settings reset_user_password.json
 ```
 
-### <a name="restart-ssh"></a>Uruchom ponownie SSH
-Aby ponownie uruchomić demona SSH i resetowanie konfiguracji SSH do wartości domyślnych, Utwórz plik o nazwie `reset_sshd.json`. Dodaj następującą zawartość:
+### <a name="restart-ssh"></a>Ponowne uruchamianie protokołu SSH
+Aby ponownie uruchomić demona SSH i zresetować konfigurację SSH do wartości domyślnych, Utwórz plik o nazwie `reset_sshd.json`. Dodaj następującą zawartość:
 
 ```json
 {
@@ -166,7 +166,7 @@ Aby ponownie uruchomić demona SSH i resetowanie konfiguracji SSH do wartości d
 }
 ```
 
-Wykonaj skrypt VMAccess za pomocą:
+Wykonaj skrypt VMAccess przy użyciu:
 
 ```azurecli-interactive
 az vm extension set \
@@ -180,7 +180,7 @@ az vm extension set \
 
 ### <a name="manage-administrative-users"></a>Zarządzanie użytkownikami administracyjnymi
 
-Aby utworzyć użytkownika z **"sudo"** uprawnienia, które używa klucza SSH do uwierzytelniania, Utwórz plik o nazwie `create_new_user.json` i dodaniu ustawienia w następującym formacie. Zastąp własnymi wartościami `username` i `ssh_key` parametrów. Ta metoda jest przeznaczony do pomóc Ci odzyskania dostępu do maszyny Wirtualnej, w przypadku, gdy bieżące poświadczenia są zgubienia lub zapomnienia hasła. Najlepszym rozwiązaniem jest kont z **"sudo"** uprawnienia powinny być ograniczone.
+Aby utworzyć użytkownika z uprawnieniami **sudo** , które używają klucza SSH do uwierzytelniania, Utwórz plik o nazwie `create_new_user.json` i Dodaj ustawienia w następującym formacie. Zastąp własne wartości `username` parametrów i `ssh_key` . Ta metoda została zaprojektowana w celu ułatwienia odzyskania dostępu do maszyny wirtualnej w przypadku zgubienia lub zapomnienia bieżących poświadczeń. Najlepszym rozwiązaniem jest ograniczenie kont z uprawnieniami **sudo** .
 
 ```json
 {
@@ -190,7 +190,7 @@ Aby utworzyć użytkownika z **"sudo"** uprawnienia, które używa klucza SSH do
 }
 ```
 
-Wykonaj skrypt VMAccess za pomocą:
+Wykonaj skrypt VMAccess przy użyciu:
 
 ```azurecli-interactive
 az vm extension set \
@@ -202,7 +202,7 @@ az vm extension set \
   --protected-settings create_new_user.json
 ```
 
-Aby usunąć użytkownika, Utwórz plik o nazwie `delete_user.json` i dodaj następującą zawartość. Zastąp wartość dla `remove_user` parametru:
+Aby usunąć użytkownika, Utwórz plik o nazwie `delete_user.json` i Dodaj poniższą zawartość. Zastąp własną wartość `remove_user` parametru:
 
 ```json
 {
@@ -210,7 +210,7 @@ Aby usunąć użytkownika, Utwórz plik o nazwie `delete_user.json` i dodaj nast
 }
 ```
 
-Wykonaj skrypt VMAccess za pomocą:
+Wykonaj skrypt VMAccess przy użyciu:
 
 ```azurecli-interactive
 az vm extension set \
@@ -222,10 +222,10 @@ az vm extension set \
   --protected-settings delete_user.json
 ```
 
-### <a name="check-or-repair-the-disk"></a>Sprawdź lub naprawy dysku
-Użyć rozszerzenia VMAccess można również sprawdzić i naprawić dysku, który został dodany do maszyny Wirtualnej systemu Linux.
+### <a name="check-or-repair-the-disk"></a>Sprawdź lub Napraw dysk
+Za pomocą VMAccess można także sprawdzić i naprawić dysk dodany do maszyny wirtualnej z systemem Linux.
 
-Aby sprawdzić, a następnie napraw dysku, Utwórz plik o nazwie `disk_check_repair.json` i dodaniu ustawienia w następującym formacie. Zastąp wartość dla nazwy `repair_disk`:
+Aby sprawdzić i naprawić dysk, Utwórz plik o nazwie `disk_check_repair.json` i Dodaj ustawienia w następującym formacie. Zastąp własną wartość nazwą `repair_disk`:
 
 ```json
 {
@@ -234,7 +234,7 @@ Aby sprawdzić, a następnie napraw dysku, Utwórz plik o nazwie `disk_check_rep
 }
 ```
 
-Wykonaj skrypt VMAccess za pomocą:
+Wykonaj skrypt VMAccess przy użyciu:
 
 ```azurecli-interactive
 az vm extension set \
