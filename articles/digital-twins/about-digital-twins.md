@@ -3,18 +3,18 @@ title: Omówienie usługi Azure Digital Twins | Microsoft Docs
 description: Dowiedz się więcej o usłudze Azure Digital Twins, rozwiązaniu IoT platformy Azure do analizy przestrzennej.
 author: julieseto
 ms.author: jseto
-ms.date: 08/01/2019
+ms.date: 09/17/2019
 ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
 manager: bertvanhoof
 ms.custom: mvc
-ms.openlocfilehash: 6bd4e3bb688e92d30a21c39599e2e5bdb7b17dba
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 2b80d0b364330a0effa7b89c620bd935157de290
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736965"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178299"
 ---
 # <a name="overview-of-azure-digital-twins"></a>Omówienie usługi Azure Digital Twins
 
@@ -33,7 +33,7 @@ Usługa Azure Digital bliźniaczych reprezentacji ma zastosowanie do wszystkich 
 - Analizowanie poziomów zajętości budynku.
 - Znajdowanie najbardziej zajętej kasy w sklepie.
 
-Bez względu na rzeczywisty scenariusz biznesowy jest bardzo prawdopodobnie odpowiednie wystąpienie cyfrowe może być obsługiwane za pomocą usługi Azure Digital bliźniaczych reprezentacji.
+Każdy rzeczywisty scenariusz biznesowy to prawdopodobnie odpowiednie wystąpienie cyfrowe można zainicjować za pomocą usługi Azure Digital bliźniaczych reprezentacji.
 
 W poniższym klipie wideo bardziej szczegółowo omówiono usługę Azure Digital Twins.
 
@@ -45,13 +45,13 @@ Usługa Azure Digital Twins oferuje następujące kluczowe możliwości.
 
 ### <a name="spatial-intelligence-graph"></a>Wykres analizy przestrzennej
 
-[*Graf analizy przestrzennej*](./concepts-objectmodel-spatialgraph.md#graph) lub inaczej *graf przestrzenny* jest wirtualną reprezentacją środowiska fizycznego. Umożliwia on modelowanie relacji między osobami, miejscami i urządzeniami.
+[*Graf analizy przestrzennej*](./concepts-objectmodel-spatialgraph.md#spatial-intelligence-graph) lub inaczej *graf przestrzenny* jest wirtualną reprezentacją środowiska fizycznego. Umożliwia on modelowanie relacji między osobami, miejscami i urządzeniami.
 
 Wyobraź sobie inteligentną aplikację narzędziową, która obejmuje kilka mierników użycia energii elektrycznej rozmieszczonych na pewnym obszarze. Firma zapewniająca inteligentne usługi komunalne musi precyzyjnie monitorować i przewidywać użycie energii elektrycznej oraz rozliczenia. Każde urządzenie i czujnik musi być modelowany za pomocą kontekstu dotyczącego lokalizacji i klienta, który będzie rozliczany. Graf analizy przestrzennej umożliwia modelowanie złożonych relacji tego rodzaju.
 
 ### <a name="digital-twin-object-models"></a>Cyfrowe modele obiektów bliźniaczych
 
-[Cyfrowe modele obiektów bliźniaczych](./concepts-objectmodel-spatialgraph.md#model) to wstępnie zdefiniowane protokoły urządzeń i schematy danych. Są one dostosowane do wymagań specyficznych dla danego obszaru, które przyspieszają i upraszczają tworzenie rozwiązań.
+[Cyfrowe modele obiektów bliźniaczych](./concepts-objectmodel-spatialgraph.md#digital-twins-object-models) to wstępnie zdefiniowane protokoły urządzeń i schematy danych. Są one dostosowane do wymagań specyficznych dla danego obszaru, które przyspieszają i upraszczają tworzenie rozwiązań.
 
 Na przykład aplikacja pokojowa może korzystać ze wstępnie zdefiniowanych typów miejsca, takich jak kampus, budynek, piętro i pokój.
 
@@ -93,9 +93,9 @@ Usługa Azure Digital Twins przydaje się do reprezentowania świata fizycznego 
 
 Usługa Azure Digital Twins używa usługi Azure IoT Hub w celu łączenia urządzeń IoT i czujników, które na bieżąco aktualizują dane ze świata fizycznego. Na poniższym diagramie pokazano, jak usługa Azure Digital Twins odnosi się do innych usług Azure IoT.
 
-![Usługa Azure Digital Twins to usługa oparta na usłudze Azure IoT Hub][1]
+[![Azure Digital bliźniaczych reprezentacji to usługa oparta na usłudze Azure IoT Hub](media/overview/azure-digital-twins-in-iot-ecosystem.png)](media/overview/azure-digital-twins-in-iot-ecosystem.png#lightbox)
 
-Aby uzyskać więcej informacji na temat Internetu rzeczy, zobacz [Technologie i rozwiązania usługi Azure IoT](https://docs.microsoft.com/azure/iot-fundamentals/iot-services-and-technologies).
+Aby uzyskać więcej informacji na temat Internetu rzeczy, zobacz [Technologie i rozwiązania usługi Azure IoT](../iot-fundamentals/iot-services-and-technologies.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -113,6 +113,3 @@ Zapoznaj się z kluczowymi pojęciami usługi Azure Digital Twins:
 
 >[!div class="nextstepaction"]
 >[Czym są modele obiektów i grafy analizy przestrzennej w usłudze Digital Twins](./concepts-objectmodel-spatialgraph.md)
-
-<!-- Images -->
-[1]: media/overview/azure-digital-twins-in-iot-ecosystem.png

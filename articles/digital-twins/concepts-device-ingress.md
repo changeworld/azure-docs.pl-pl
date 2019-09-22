@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/17/2019
 ms.author: alinast
-ms.openlocfilehash: a3a5555bf163aedd9b41a9c9aa363a883deb4cb8
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 22ae7aeeff4542bee764e131f58eb115026a4fb3
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638506"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71177110"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Ruch przychodzący danych telemetrycznych i łączność urządzeń
 
@@ -69,7 +69,7 @@ Można dostosować Format komunikatów i ładunek urządzenia, aby odpowiadały 
 
 | Nazwa właściwości | Value | Wymagane | Opis |
 |---|---|---|---|
-| **DigitalTwins-Telemetry** | 1.0 | Yes | Stała wartość, która identyfikuje komunikat w systemie. |
+| **DigitalTwins-Telemetry** | 1.0 | Tak | Stała wartość, która identyfikuje komunikat w systemie. |
 | **DigitalTwins-SensorHardwareId** | `string(72)` | Tak | Unikatowy identyfikator czujnika, który wysyła **komunikat**. Ta wartość musi być zgodna z właściwością **HardwareId** obiektu dla systemu, aby przetworzyć go. Na przykład `00FF0643BE88-CO2`. |
 | **CreationTimeUtc** | `string` | Nie | Ciąg daty w formacie [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) , który identyfikuje czas próbkowania ładunku. Na przykład `2018-09-20T07:35:00.8587882-07:00`. |
 | **CorrelationId** | `string` | Nie | Identyfikator UUID używany do śledzenia zdarzeń w systemie. Na przykład `cec16751-ab27-405d-8fe6-c68e1412ce1f`.
@@ -78,6 +78,6 @@ Można dostosować Format komunikatów i ładunek urządzenia, aby odpowiadały 
 
 Użyj wywołania DeviceClient [SendEventAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.sendeventasync?view=azure-dotnet) lub [SendEventBatchAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.sendeventbatchasync?view=azure-dotnet) , aby wysłać wiadomość do Digital bliźniaczych reprezentacji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby dowiedzieć się więcej na temat możliwości przetwarzania danych Digital bliźniaczych reprezentacji i funkcji zdefiniowanych przez użytkownika, należy przeczytać artykuł [Azure Digital bliźniaczych reprezentacji Data Processing i funkcje zdefiniowane przez użytkownika](concepts-user-defined-functions.md).

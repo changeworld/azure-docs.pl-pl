@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/17/2019
 ms.author: alinast
-ms.openlocfilehash: a013525109fe85ad70e5aaa5895da20f5abc3237
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 81f2cc32ee10e891ffab127d6ecd7909eb75abd6
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638536"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71177084"
 ---
 # <a name="routing-events-and-messages"></a>Routing zdarzeń i komunikatów
 
@@ -29,7 +29,7 @@ Usługa Azure Digital bliźniaczych reprezentacji oferuje dwa sposoby łączenia
 
 Użytkownicy mogą określać jeden lub więcej punktów końcowych ruchu wychodzącego w celu wysyłania zdarzeń lub przesyłania dalej komunikatów. Zdarzenia i komunikaty będą wysyłane do punktów końcowych zgodnie z tymi wstępnie zdefiniowanymi preferencjami routingu. Innymi słowy użytkownicy mogą określić określony punkt końcowy do odbierania zdarzeń operacji wykresu, drugi do odbierania zdarzeń telemetrii urządzenia itd.
 
-![Routing zdarzeń usługi Azure Digital bliźniaczych reprezentacji][1]
+[![Routing zdarzeń usługi Azure Digital bliźniaczych reprezentacji](media/concepts/digital-twins-events-routing.png)](media/concepts/digital-twins-events-routing.png#lightbox)
 
 Routing do Event Hubs zachowuje kolejność, w której wysyłane są komunikaty telemetryczne. Tak więc docierają do punktu końcowego w tej samej kolejności, w jakiej zostały pierwotnie odebrane. Event Grid i Service Bus nie gwarantuje, że punkty końcowe będą odbierać zdarzenia w takiej samej kolejności, w jakiej wystąpiły. Jednak schemat zdarzenia zawiera sygnaturę czasową, która może służyć do identyfikowania kolejności po nadejściu zdarzeń w punkcie końcowym.
 
@@ -64,9 +64,6 @@ Usługa Azure Digital bliźniaczych reprezentacji obecnie obsługuje następują
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby dowiedzieć się więcej o ograniczeniach [usługi](concepts-service-limits.md)Azure Digital bliźniaczych reprezentacji w wersji zapoznawczej, zapoznaj się z limitami
+- Aby dowiedzieć się więcej o ograniczeniach usługi Azure Digital bliźniaczych reprezentacji w wersji zapoznawczej, zapoznaj się z [limitami](concepts-service-limits.md)
 
 - Aby wypróbować próbkę Digital bliźniaczych reprezentacji na platformie Azure, zapoznaj się z [przewodnikiem Szybki Start, aby znaleźć dostępne pokoje](quickstart-view-occupancy-dotnet.md).
-
-<!-- Images -->
-[1]: media/concepts/digital-twins-events-routing.png

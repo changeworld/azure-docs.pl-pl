@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: danlep
-ms.openlocfilehash: 599339b0591245462dcc0840400ad5241cd5922c
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: a38b0cfe7072975e4bcaf61b65ab7733694f714c
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325812"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178565"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>Samouczek: Wdrażanie grupy wielokontenerowej przy użyciu pliku YAML
 
@@ -24,7 +24,7 @@ ms.locfileid: "68325812"
 
 Azure Container Instances obsługuje wdrażanie wielu kontenerów na jednym hoście przy użyciu [grupy kontenerów](container-instances-container-groups.md). Grupa kontenerów jest przydatna podczas tworzenia przyczepki aplikacji do rejestrowania, monitorowania lub innej konfiguracji, w której usługa wymaga drugiego dołączonego procesu.
 
-W tym samouczku przedstawiono procedurę uruchamiania prostej konfiguracji dwukontenerowej przyczepki przez wdrożenie pliku YAML przy użyciu interfejsu wiersza polecenia platformy Azure. Plik YAML zawiera zwięzły format służący do określania ustawień wystąpienia. Omawiane kwestie:
+W tym samouczku przedstawiono procedurę uruchamiania prostej konfiguracji dwukontenerowej przyczepki przez wdrożenie [pliku YAML](container-instances-reference-yaml.md) przy użyciu interfejsu wiersza polecenia platformy Azure. Plik YAML zawiera zwięzły format służący do określania ustawień wystąpienia. Omawiane kwestie:
 
 > [!div class="checklist"]
 > * Konfiguruj plik YAML
@@ -126,7 +126,7 @@ Name              ResourceGroup    Status    Image                              
 myContainerGroup  danlep0318r      Running   mcr.microsoft.com/azuredocs/aci-tutorial-sidecar,mcr.microsoft.com/azuredocs/aci-helloworld:latest  20.42.26.114:80,8080  Public     1.0 core/1.5 gb  Linux     eastus
 ```
 
-## <a name="view-container-logs"></a>Wyświetlanie dzienników kontenerów
+## <a name="view-container-logs"></a>Wyświetl dzienniki kontenera
 
 Wyświetlanie danych wyjściowych kontenera za pomocą polecenia [AZ Container Logs][az-container-logs] . `--container-name` Argument określa kontener, z którego mają być ściągane dzienniki. W tym przykładzie `aci-tutorial-app` kontener jest określony.
 
@@ -171,7 +171,7 @@ Connection: keep-alive
 
 Jak widać, Przyczepka okresowo przesyła żądanie HTTP do głównej aplikacji sieci Web za pośrednictwem sieci lokalnej grupy, aby upewnić się, że jest uruchomiona. Tego przykładu przyczepki można rozszerzyć, aby wyzwolić alert, jeśli otrzymał kod odpowiedzi HTTP inny `200 OK`niż.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku użyto pliku YAML do wdrożenia wielokontenerowej grupy w Azure Container Instances. W tym samouczku omówiono:
 

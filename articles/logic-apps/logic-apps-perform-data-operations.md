@@ -1,80 +1,78 @@
 ---
-title: Wykonywanie operacji na danych — Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Konwertuj, zarządzanie i modyfikować dane wyjściowe i formatów w usłudze Azure Logic Apps
+title: Wykonywanie operacji na Azure Logic Apps danych
+description: Konwertowanie i formatowanie danych wyjściowych i formatów oraz zarządzanie nimi w Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
-ms.topic: article
-ms.date: 07/30/2018
+manager: carmonm
 ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 93c24f88fcd6a002493933ef71c5c80bd2ff8c10
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.topic: article
+ms.date: 09/20/2019
+ms.openlocfilehash: 1b0a7473f1cdfb6aa3533b261979da7c18605a16
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206211"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71179762"
 ---
-# <a name="perform-data-operations-in-azure-logic-apps"></a>Wykonaj operacje na danych w usłudze Azure Logic Apps
+# <a name="perform-data-operations-in-azure-logic-apps"></a>Wykonywanie operacji na danych w Azure Logic Apps
 
-W tym artykule pokazano, jak można pracować z danymi w aplikacjach logiki, dodawanie akcji dla tych zadań i nie tylko:
+W tym artykule przedstawiono sposób pracy z danymi w aplikacjach logiki przez dodanie akcji dla tych zadań i nie tylko:
 
-* Tworzenie tabel z tablic.
-* Tworzenie tablic z innych tablic, na podstawie warunku.
-* Tworzenie tokenów przyjazny dla użytkownika z właściwości obiektu JavaScript Object Notation (JSON), dzięki czemu można łatwo użyć tych właściwości w przepływie pracy.
+* Utwórz tabele na podstawie tablic.
+* Utwórz tablice z innych tablic na podstawie warunku.
+* Utwórz przyjazne dla użytkownika tokeny z właściwości obiektu JavaScript Object Notation (JSON), aby można było łatwo korzystać z tych właściwości w przepływie pracy.
 
-Jeśli nie możesz znaleźć akcję, która ma w tym miejscu, spróbuj wiele różnych [funkcje manipulowania danymi](../logic-apps/workflow-definition-language-functions-reference.md) zapewniająca Logic Apps. 
+Jeśli nie znajdziesz akcji, którą chcesz wykonać, spróbuj przeglądać wiele różnych [funkcji manipulowania danymi](../logic-apps/workflow-definition-language-functions-reference.md) , które udostępnia Azure Logic Apps.
 
-Te tabele zawierają podsumowanie dane, które operacje, można użyć i są zorganizowane na podstawie typów danych źródłowych, które operacje działają na, ale każdy opis pojawia się w kolejności alfabetycznej.
+Te tabele podsumowują operacje na danych, których można użyć i są zorganizowane na podstawie typów danych źródłowych, na których działają operacje, ale każdy opis pojawia się alfabetycznie.
 
 **Akcje tablicy** 
 
-Te akcje ułatwiają pracę z danymi w tablicach.
+Te akcje pomagają w pracy z danymi w tablicach.
 
-| Akcja | Opis | 
-|--------|-------------| 
-| [**Utwórz tabelę CSV**](#create-csv-table-action) | Utwórz tabelę wartości rozdzielanych przecinkami (CSV) z tablicy. | 
-| [**Utwórz tabelę HTML**](#create-html-table-action) | Utwórz tabelę HTML z tablicy. | 
-| [**Filtruj tablicę**](#filter-array-action) | Utwórz podzbiór tablicy z tablicy, na podstawie określonego filtra lub warunku. | 
-| [**Join**](#join-action) | Tworzenie ciągu z wszystkich elementów w tablicy i Oddziel poszczególne elementy określonego znaku. | 
-| [**Select**](#select-action) | Utwórz tablicę ze określonych właściwości dla wszystkich elementów w innej tablicy. | 
+| Action | Opis |
+|--------|-------------|
+| [**Utwórz tabelę CSV**](#create-csv-table-action) | Utwórz tabelę wartości rozdzielanych przecinkami (CSV) z tablicy. |
+| [**Utwórz tabelę HTML**](#create-html-table-action) | Utwórz tabelę HTML z tablicy. |
+| [**Filtruj tablicę**](#filter-array-action) | Utwórz podzestaw tablicy z tablicy na podstawie określonego filtru lub warunku. |
+| [**Złącza**](#join-action) | Utwórz ciąg ze wszystkich elementów w tablicy i oddziel każdy element z określonym znakiem. |
+| [**Zaznaczenia**](#select-action) | Utwórz tablicę na podstawie określonych właściwości dla wszystkich elementów w innej tablicy. |
 ||| 
 
 **Akcje JSON**
 
-Działania te ułatwiają pracę z danymi w formacie JavaScript Object Notation (JSON).
+Te akcje pomagają w pracy z danymi w formacie JavaScript Object Notation (JSON).
 
-| Akcja | Opis | 
-|--------|-------------| 
-| [**Compose**](#compose-action) | Tworzenie wiadomości lub ciąg, z wielu danych wejściowych, które mogą mieć różnych typów danych. Następnie można użyć tego ciągu jako pojedynczy dane wejściowe, a nie wielokrotnego wprowadzania tych samych danych wejściowych. Na przykład można utworzyć pojedynczy komunikat JSON z różnych danych wejściowych. | 
-| [**Parse JSON**](#parse-json-action) | Utwórz tokeny przyjazny dla użytkownika danych dla właściwości w formacie JSON zawartości, dzięki czemu łatwiej można użyć właściwości w aplikacjach logiki. | 
-||| 
+| Action | Opis |
+|--------|-------------|
+| [**Compose**](#compose-action) | Utwórz wiadomość lub ciąg z wielu wejść, które mogą mieć różne typy danych. Następnie można użyć tego ciągu jako pojedynczej wartości wejściowej, zamiast wielokrotnie wprowadzać te same dane wejściowe. Na przykład można utworzyć pojedynczy komunikat JSON z różnych danych wejściowych. |
+| [**Analiza JSON**](#parse-json-action) | Utwórz przyjazne dla użytkownika tokeny danych dla właściwości w zawartości JSON, aby łatwiej używać właściwości w aplikacjach logiki. |
+|||
 
-Aby utworzyć bardziej złożonych przekształceń JSON, zobacz [wykonaj zaawansowane przekształceń JSON i łącznika Liquid szablony](../logic-apps/logic-apps-enterprise-integration-liquid-transform.md).
+Aby utworzyć bardziej złożone przekształcenia JSON, zobacz [wykonywanie zaawansowanych transformacji JSON przy użyciu szablonów płynnych](../logic-apps/logic-apps-enterprise-integration-liquid-transform.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skorzystać z przykładów w tym artykule, będą potrzebne następujące elementy:
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
 
-* Subskrypcja platformy Azure. Jeśli nie masz jeszcze subskrypcji platformy Azure <a href="https://azure.microsoft.com/free/" target="_blank">Załóż bezpłatne konto platformy Azure</a>.
+* Aplikacja logiki, w której jest potrzebna operacja do pracy z danymi
 
-* Aplikacja logiki gdzie potrzebujesz operacji do pracy z danymi 
+  Jeśli jesteś nowym sposobem logiki aplikacji, zapoznaj [się z tematem Azure Logic Apps?](../logic-apps/logic-apps-overview.md) i [szybki start: Utwórz swoją pierwszą aplikację](../logic-apps/quickstart-create-first-logic-app-workflow.md)logiki.
 
-  Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps](../logic-apps/logic-apps-overview.md) i [Szybki Start: Utwórz swoją pierwszą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* [Wyzwalacz](../logic-apps/logic-apps-overview.md#logic-app-concepts) jako pierwszy krok w aplikacji logiki 
 
-* A [wyzwalacza](../logic-apps/logic-apps-overview.md#logic-app-concepts) jako pierwszy krok w aplikacji logiki 
-
-  Operacje na danych są dostępne tylko akcje, więc zanim będzie można użyć tych akcji uruchomić swoją aplikację logiki z wyzwalaczem i inne akcje wymagane do utworzenia dane wyjściowe, które chcesz uwzględnić.
+  Operacje na danych są dostępne tylko jako akcje, więc zanim będzie można użyć tych akcji, uruchom aplikację logiki z wyzwalaczem i Uwzględnij inne akcje wymagane do utworzenia żądanych danych wyjściowych.
 
 <a name="compose-action"></a>
 
 ## <a name="compose-action"></a>Akcja redagowania
 
-Do utworzenia pojedynczego wyjścia, takich jak obiekt JSON z wielu danych wejściowych, można użyć **operacje danych — Redaguj** akcji. Dane wejściowe mogą mieć różnych typów, takie jak liczb całkowitych, wartości logicznych, tablice, obiekty JSON i innych native wpisz ten obsługuje usługi Azure Logic Apps, na przykład binarne i XML. Następnie wykorzystywać dane wyjściowe w akcjach, które należy wykonać po **Compose** akcji. **Compose** akcji można także zapisać możesz wielokrotnego wprowadzania tych samych wejściach, podczas tworzenia przepływu pracy aplikacji logiki. 
+Aby skonstruować pojedyncze dane wyjściowe, takie jak obiekt JSON z wielu danych wejściowych, można **użyć akcji tworzenia** . Dane wejściowe mogą mieć różne typy, takie jak liczby całkowite, wartości logiczne, tablice, obiekty JSON, oraz każdy inny typ natywny, który Azure Logic Apps obsługuje, na przykład Binary i XML. Następnie można użyć danych wyjściowych w akcjach, które po akcji **Utwórz** . Akcja **redagowania** umożliwia także zapisanie danych przez wielokrotne wprowadzanie tych samych danych wejściowych podczas tworzenia przepływu pracy aplikacji logiki.
 
-Na przykład można utworzyć komunikat JSON z wielu zmiennych, takich jak zmiennych ciągu, które przechowują imion i nazwisk osób, a zmienna typu Liczba całkowita, która przechowuje wieku osób. W tym miejscu **Compose** akcji akceptuje te dane wejściowe:
+Na przykład można skonstruować komunikat JSON z wielu zmiennych, takich jak zmienne ciągów, które przechowują imiona i nazwiska osób, a także zmienną całkowitą przechowującą wiek osób. W tym miejscu akcja redagowania akceptuje następujące dane wejściowe:
 
 `{ "age": <ageVar>, "fullName": "<lastNameVar>, <firstNameVar>" }`
 
@@ -82,493 +80,558 @@ i tworzy następujące dane wyjściowe:
 
 `{"age":35,"fullName":"Owens,Sophie"}`
 
-Aby wypróbować przykładową, wykonaj następujące czynności za pomocą projektanta aplikacji logiki. Lub, jeśli wolisz, Praca w edytorze widoku kodu, możesz skopiować przykładu **Compose** i **inicjowane zmiennej** przepływu pracy podstawowej definicji działania z tego artykułu w aplikacji logiki Definicja: [Przykłady kodu operacji danych - Compose](../logic-apps/logic-apps-data-operations-code-samples.md#compose-action-example) 
+Aby wypróbować przykład, wykonaj następujące kroki przy użyciu projektanta aplikacji logiki. Lub, jeśli wolisz pracować w edytorze widoku kodu, możesz skopiować przykładowe definicje akcji **Utwórz** i **zainicjuj zmienne** z tego artykułu do własnej definicji przepływu pracy aplikacji logiki: [Przykłady kodu operacji na danych — Tworzenie](../logic-apps/logic-apps-data-operations-code-samples.md#compose-action-example) 
 
-1. W <a href="https://portal.azure.com" target="_blank">witryny Azure portal</a> lub Visual Studio, Otwórz aplikację logiki w Projektancie aplikacji logiki. 
+1. W [Azure Portal](https://portal.azure.com) lub Visual Studio Otwórz aplikację logiki w Projektancie aplikacji logiki.
 
-   W tym przykładzie użyto portalu Azure i aplikacji logiki z **cyklu** wyzwalacza i kilka **inicjowane zmiennej** akcji. 
-   Te akcje są konfigurowane do tworzenia dwóch zmiennych ciągu oraz zmienna typu Liczba całkowita. Gdy później przetestuj aplikację logiki, możesz ręcznie uruchomić aplikację bez konieczności oczekiwania na Aby uruchomić wyzwalacz.
+   W tym przykładzie zastosowano Azure Portal i aplikację logiki z wyzwalaczem **cyklu** oraz kilka akcji **inicjowania zmiennych** . Te akcje są konfigurowane do tworzenia dwóch zmiennych ciągów i zmiennej typu Integer. Podczas późniejszego testowania aplikacji logiki można ręcznie uruchomić aplikację bez oczekiwania na uruchomienie wyzwalacza.
 
-   ![Począwszy od przykładowej aplikacji logiki](./media/logic-apps-perform-data-operations/sample-starting-logic-app-compose-action.png)
+   ![Uruchamianie przykładowej aplikacji logiki](./media/logic-apps-perform-data-operations/sample-starting-logic-app-compose-action.png)
 
-2. W aplikacji logiki gdzie chcesz utworzyć dane wyjściowe wykonaj jedną z następujących czynności: 
+1. W aplikacji logiki, w której chcesz utworzyć dane wyjściowe, wykonaj jedną z następujących czynności: 
 
-   * Aby dodać akcję w ostatnim kroku, wybierz **nowy krok** > **Dodaj akcję**.
+   * Aby dodać akcję w ostatnim kroku, wybierz pozycję **nowy krok**.
 
      ![Dodaj akcję](./media/logic-apps-perform-data-operations/add-compose-action.png)
 
-   * Aby dodać akcję między krokami, przesuń wskaźnik myszy strzałkę łączącego się więc pojawia się znak plusa (+). 
-   Wybierz znak plusa, a następnie wybierz **Dodaj akcję**.
+   * Aby dodać akcję między krokami, przesuń wskaźnik myszy nad strzałkę łączącą, aby pojawił się znak **+** plus (). Wybierz znak plus, a następnie wybierz pozycję **Dodaj akcję**.
 
-3. W polu wyszukiwania wprowadź "compose" jako filtr. Z listy akcji wybierz następującą akcję: **Redaguj**
+1. W obszarze **Wybierz akcję**, w polu wyszukiwania wpisz `compose` jako filtr. Z listy Akcje wybierz akcję **Zredaguj** .
 
-   ![Wybierz akcję "Utwórz"](./media/logic-apps-perform-data-operations/select-compose-action.png)
+   ![Wybierz akcję "Zredaguj"](./media/logic-apps-perform-data-operations/select-compose-action.png)
 
-4. W **dane wejściowe** Podaj dane wejściowe dla tworzenia danych wyjściowych. 
+1. W polu **dane wejściowe** podaj dane wejściowe do utworzenia danych wyjściowych.
 
-   W tym przykładzie po kliknięciu wewnątrz **dane wejściowe** , lista zawartości dynamicznej pojawi się okno, można wybrać wcześniej utworzony zmiennych:
+   Na potrzeby tego przykładu po kliknięciu wewnątrz pola **dane wejściowe** zostanie wyświetlona lista zawartość dynamiczna, aby można było wybrać wcześniej utworzone zmienne:
 
-   ![Zaznacz dane wejściowe do redagowania](./media/logic-apps-perform-data-operations/configure-compose-action.png)
+   ![Wybierz dane wejściowe do redagowania](./media/logic-apps-perform-data-operations/configure-compose-action.png)
 
-   Oto przykład Zakończono **Compose** akcji: 
+   Oto zakończono Przykładowa akcja redagowania: 
 
-   ![Zakończono akcję "Utwórz"](./media/logic-apps-perform-data-operations/finished-compose-action.png)
+   ![Zakończono akcję "Zredaguj"](./media/logic-apps-perform-data-operations/finished-compose-action.png)
 
-5. Zapisz aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
+1. Zapisz aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
 
-Aby uzyskać więcej informacji dotyczących tej akcji w podstawowej definicji przepływu pracy, zobacz [Akcja redagowania](../logic-apps/logic-apps-workflow-actions-triggers.md#compose-action). 
+Aby uzyskać więcej informacji na temat tej akcji w źródłowej definicji przepływu pracy, zobacz [Akcja redagowania](../logic-apps/logic-apps-workflow-actions-triggers.md#compose-action).
 
-### <a name="test-your-logic-app"></a>Przetestuj aplikację logiki
+### <a name="test-your-logic-app"></a>Testowanie aplikacji logiki
 
-Aby upewnić się, czy **Compose** akcja powoduje utworzenie oczekiwanych rezultatów, Wyślij do siebie powiadomienie, które zawiera dane wyjściowe z **Compose** akcji.
+Aby potwierdzić, czy akcja redagowania powoduje utworzenie oczekiwanych wyników, Wyślij do siebie powiadomienie zawierające dane wyjściowe akcji **Utwórz** .
 
-1. W aplikacji logiki, Dodaj akcję, którą można wysłać wyniki z **Compose** akcji.
+1. W aplikacji logiki Dodaj akcję, która może wysyłać wyniki z akcji **redagowania** .
 
-2. Ta akcja kliknij gdziekolwiek mają być wyświetlane wyniki. Jeśli lista zawartości dynamicznej otwiera w obszarze **Compose** akcji, wybierz opcję **dane wyjściowe**. 
+1. W tej akcji kliknij w dowolnym miejscu, w którym mają być wyświetlane wyniki. Gdy zostanie otwarta lista zawartości dynamicznej, w obszarze akcja redagowanie wybierz pozycję **dane wyjściowe**.
 
-   W tym przykładzie użyto **Office 365 Outlook — Wyślij wiadomość e-mail** akcji i zawiera **dane wyjściowe** pól w treści i tematu wiadomości e-mail:
+   W tym przykładzie użyta zostanie Akcja **Wyślij wiadomość e-mail** i uwzględniono pola **wyjściowe** w treści i temacie wiadomości e-mail:
 
-   ![Pola "Wyjście" w akcji "Wyślij wiadomość e-mail"](./media/logic-apps-perform-data-operations/send-email-compose-action.png)
+   ![Pola "output" w akcji "Wyślij wiadomość e-mail"](./media/logic-apps-perform-data-operations/send-email-compose-action.png)
 
-3. Teraz ręcznie uruchomić swoją aplikację logiki. Na pasku narzędzi Projektanta wybierz **Uruchom**. 
+1. Teraz ręcznie uruchom aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Uruchom**.
 
-   Oparte na Łącznik poczty e-mail, którego użyłeś, Oto wyniki Ci:
+   W oparciu o używany łącznik poczty e-mail znajdują się następujące wyniki:
 
-   ![Wyślij wiadomość e-mail z wynikami akcji "Utwórz"](./media/logic-apps-perform-data-operations/compose-email-results.png)
+   ![Wyślij wiadomość e-mail z wynikami akcji "redagowania"](./media/logic-apps-perform-data-operations/compose-email-results.png)
 
 <a name="create-csv-table-action"></a>
 
-## <a name="create-csv-table-action"></a>Akcji tworzenia tabeli CSV
+## <a name="create-csv-table-action"></a>Akcja tworzenia tabeli CSV
 
-Aby utworzyć tabelę wartości rozdzielanych przecinkami (CSV) zawierający właściwości i wartości z JavaScript Object Notation (JSON) obiektów w tablicy, należy użyć **operacje na danych — Utwórz tabelę CSV** akcji. Można następnie użyć tabeli wynikowej w akcjach, które należy wykonać **Utwórz tabelę CSV** akcji. 
+Aby utworzyć tabelę wartości rozdzielanych przecinkami (CSV), która zawiera właściwości i wartości z obiektów JavaScript Object Notation (JSON) w tablicy, użyj akcji **Utwórz tabelę CSV** . Następnie można użyć tabeli w akcjach, które są zgodne z akcją **Utwórz tabelę CSV** .
 
-Jeśli wolisz, Praca w edytorze widoku kodu, możesz skopiować przykładu **Utwórz tabelę CSV** i **inicjowane zmiennej** przepływu pracy podstawowej definicji działania z tego artykułu w aplikacji logiki Definicja: [Przykłady kodu operacji danych — Utwórz tabelę CSV](../logic-apps/logic-apps-data-operations-code-samples.md#create-csv-table-action-example) 
+Jeśli wolisz pracować w edytorze widoku kodu, możesz skopiować przykład **tworzenia tabeli CSV** i **zainicjować zmienne** definicje akcji z tego artykułu do własnej definicji przepływu pracy aplikacji logiki: [Przykłady kodu operacji na danych — Tworzenie tabeli CSV](../logic-apps/logic-apps-data-operations-code-samples.md#create-csv-table-action-example)
 
-1. W <a href="https://portal.azure.com" target="_blank">witryny Azure portal</a> lub Visual Studio, Otwórz aplikację logiki w Projektancie aplikacji logiki. 
+1. W [Azure Portal](https://portal.azure.com) lub Visual Studio Otwórz aplikację logiki w Projektancie aplikacji logiki.
 
-   W tym przykładzie użyto portalu Azure i aplikacji logiki z **cyklu** wyzwalacza i **inicjowane zmiennej** akcji. 
-   Akcja jest skonfigurowany dla tworzenia zmiennej, którego wartość początkowa to tablica, która ma kilka właściwości i wartości w formacie JSON. 
-   Gdy później przetestuj aplikację logiki, możesz ręcznie uruchomić aplikację bez konieczności oczekiwania na Aby uruchomić wyzwalacz.
+   W tym przykładzie zastosowano Azure Portal i aplikację logiki z wyzwalaczem **cyklu** i akcją **inicjowania zmiennej** . Akcja jest skonfigurowana do tworzenia zmiennej, której wartość początkowa jest tablicą z właściwościami i wartościami w formacie JSON. Podczas późniejszego testowania aplikacji logiki można ręcznie uruchomić aplikację bez oczekiwania na uruchomienie wyzwalacza.
 
-   ![Począwszy od przykładowej aplikacji logiki](./media/logic-apps-perform-data-operations/sample-starting-logic-app-create-table-action.png)
+   ![Uruchamianie przykładowej aplikacji logiki](./media/logic-apps-perform-data-operations/sample-starting-logic-app-create-table-action.png)
 
-2. W aplikacji logiki gdzie chcesz utworzyć tabelę CSV wykonaj jedną z następujących czynności: 
+1. W aplikacji logiki, w której chcesz utworzyć tabelę CSV, wykonaj jedną z następujących czynności: 
 
-   * Aby dodać akcję w ostatnim kroku, wybierz **nowy krok** > **Dodaj akcję**.
+   * Aby dodać akcję w ostatnim kroku, wybierz pozycję **nowy krok**.
 
      ![Dodaj akcję](./media/logic-apps-perform-data-operations/add-create-table-action.png)
 
-   * Aby dodać akcję między krokami, przesuń wskaźnik myszy strzałkę łączącego się więc pojawia się znak plusa (+). 
-   Wybierz znak plusa, a następnie wybierz **Dodaj akcję**.
+   * Aby dodać akcję między krokami, przesuń wskaźnik myszy nad strzałkę łączącą, aby pojawił się znak **+** plus (). Wybierz znak plus, a następnie wybierz pozycję **Dodaj akcję**.
 
-3. W polu wyszukiwania wprowadź "Utwórz tabelę csv" jako filtr. Z listy akcji wybierz następującą akcję: **Utwórz tabelę CSV**
+1. W obszarze **Wybierz akcję**, w polu wyszukiwania wpisz `create csv table` jako filtr. Z listy Akcje wybierz akcję **Utwórz tabelę CSV** .
 
-   ![Wybierz pozycję "Utwórz CSV tabeli" Akcja](./media/logic-apps-perform-data-operations/select-create-csv-table-action.png)
+   ![Wybierz akcję "Utwórz tabelę CSV"](./media/logic-apps-perform-data-operations/select-create-csv-table-action.png)
 
-4. W **z** Podaj tablicy lub wyrażenie dla tworzenia tabeli. 
+1. W polu **od** Podaj tablicę lub wyrażenie, dla których chcesz utworzyć tabelę.
 
-   W tym przykładzie po kliknięciu wewnątrz **z** , lista zawartości dynamicznej pojawi się okno, można wybrać wcześniej utworzony zmiennej:
+   Na potrzeby tego przykładu, gdy klikniesz wewnątrz pola, zostanie wyświetlona lista zawartości dynamicznej, aby można było wybrać wcześniej utworzoną zmienną:
 
-   ![Wybierz dane wyjściowe tablicy, do tworzenia tabeli CSV](./media/logic-apps-perform-data-operations/configure-create-csv-table-action.png)
-
-   Oto przykład Zakończono **Utwórz tabelę CSV** akcji: 
-
-   ![Zakończono "CSV Utwórz tabelę" akcji](./media/logic-apps-perform-data-operations/finished-create-csv-table-action.png)
-
-   Domyślnie ta akcja powoduje automatyczne utworzenie kolumn na podstawie elementów tablicy. 
-   Aby ręcznie utworzyć nagłówki kolumn i wartości, wybierz **Pokaż opcje zaawansowane**. 
-   Aby podać tylko wartości niestandardowych, należy zmienić **kolumn** do **niestandardowe**. 
-   Aby zapewnić zbyt nagłówków kolumn niestandardowych, należy zmienić **zawierają nagłówki** do **tak**. 
+   ![Wybierz dane wyjściowe macierzy do tworzenia tabeli CSV](./media/logic-apps-perform-data-operations/configure-create-csv-table-action.png)
 
    > [!TIP]
-   > Aby utworzyć czytelne tokenów dla właściwości w obiekty JSON, te właściwości można wybrać jako dane wejściowe, użyj [Przeanalizuj dane JSON](#parse-json-action) przed wywołaniem **Utwórz tabelę CSV** akcji.
+   > Aby utworzyć przyjazne dla użytkownika tokeny dla właściwości w obiektach JSON, aby można było wybrać te właściwości jako dane wejściowe, przed wywołaniem akcji **Utwórz tabelę CSV** Użyj [składni JSON analizy](#parse-json-action) .
 
-5. Zapisz aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
+   Oto przykład gotowej akcji **Utwórz tabelę CSV** : 
 
-Aby uzyskać więcej informacji dotyczących tej akcji w podstawowej definicji przepływu pracy, zobacz [Akcja tabeli](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action).
+   ![Zakończono akcję "Utwórz tabelę CSV"](./media/logic-apps-perform-data-operations/finished-create-csv-table-action.png)
 
-### <a name="test-your-logic-app"></a>Przetestuj aplikację logiki
+1. Zapisz aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
 
-Aby upewnić się, czy **Utwórz tabelę CSV** akcja powoduje utworzenie oczekiwanych rezultatów, Wyślij do siebie powiadomienie, które zawiera dane wyjściowe z **Utwórz tabelę CSV** akcji.
+### <a name="customize-table-format"></a>Dostosuj Format tabeli
 
-1. W aplikacji logiki, Dodaj akcję, którą można wysłać wyniki z **Utwórz tabelę CSV** akcji.
+Domyślnie właściwość **Columns** jest ustawiona na automatyczne tworzenie kolumn tabeli na podstawie elementów tablicy. 
 
-2. Ta akcja kliknij gdziekolwiek mają być wyświetlane wyniki. Jeśli lista zawartości dynamicznej otwiera w obszarze **Utwórz tabelę CSV** akcji wybierz **dane wyjściowe**. 
+Aby określić niestandardowe nagłówki i wartości, wykonaj następujące kroki:
 
-   W tym przykładzie użyto **Office 365 Outlook — Wyślij wiadomość e-mail** akcji i zawiera **dane wyjściowe** w treści wiadomości e-mail:
+1. Otwórz listę **kolumny** i wybierz pozycję **niestandardowe**.
 
-   ![Pola "Wyjście" w akcji "Wyślij wiadomość e-mail"](./media/logic-apps-perform-data-operations/send-email-create-csv-table-action.png)
+1. We właściwości **nagłówka** Określ niestandardowy tekst nagłówka, który ma być używany.
 
-3. Teraz ręcznie uruchomić swoją aplikację logiki. Na pasku narzędzi Projektanta wybierz **Uruchom**. 
+1. We właściwości **klucza** Określ wartość niestandardową, która ma zostać użyta.
 
-   Oparte na Łącznik poczty e-mail, którego użyłeś, Oto wyniki Ci:
+Aby przywołać i edytować wartości z tablicy, można użyć `@item()` funkcji w definicji JSON akcji **tworzenia tabeli CSV** .
 
-   ![Wiadomość e-mail z "CSV Utwórz tabelę" wyników akcji](./media/logic-apps-perform-data-operations/create-csv-table-email-results.png)
+1. Na pasku narzędzi projektanta wybierz **Widok kod**. 
+
+1. W edytorze kodu, Edytuj `inputs` sekcję akcji, aby dostosować dane wyjściowe tabeli w żądany sposób.
+
+Ten przykład zwraca tylko wartości kolumn, a nie nagłówki z `columns` tablicy przez `header` ustawienie właściwości na wartość pustą i wyłuskanie każdej `value` właściwości:
+
+```json
+"Create_CSV_table": {
+   "inputs": {
+      "columns": [
+         { 
+            "header": "",
+            "value": "@item()?['Description']"
+         },
+         { 
+            "header": "",
+            "value": "@item()?['Product_ID']"
+         }
+      ],
+      "format": "CSV",
+      "from": "@variables('myJSONArray')"
+   }
+}
+```
+
+Oto wynik zwracany przez ten przykład:
+
+```text
+Results from Create CSV table action:
+
+Apples,1
+Oranges,2
+```
+
+W projektancie Akcja **Utwórz tabelę CSV** zostanie teraz wyświetlona w następujący sposób:
+
+!["Utwórz tabelę CSV" bez nagłówków kolumn](./media/logic-apps-perform-data-operations/create-csv-table-no-column-headers.png)
+
+Aby uzyskać więcej informacji na temat tej akcji w źródłowej definicji przepływu pracy, zobacz [Akcja tabeli](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action).
+
+### <a name="test-your-logic-app"></a>Testowanie aplikacji logiki
+
+Aby sprawdzić, czy Akcja **Utwórz tabelę CSV** tworzy oczekiwane wyniki, Wyślij do siebie powiadomienie zawierające dane wyjściowe akcji **Utwórz tabelę CSV** .
+
+1. W aplikacji logiki Dodaj akcję, która może wysyłać wyniki z akcji **Utwórz tabelę CSV** .
+
+1. W tej akcji kliknij w dowolnym miejscu, w którym mają być wyświetlane wyniki. Gdy zostanie otwarta lista zawartości dynamicznej, w obszarze Akcja **Utwórz tabelę CSV** wybierz pozycję **dane wyjściowe**. 
+
+   W tym przykładzie zostanie użyta akcja **Wyślij wiadomość e-mail** w programie Outlook 365 i zawiera pole **dane wyjściowe** w treści wiadomości e-mail:
+
+   ![Pola "output" w akcji "Wyślij wiadomość e-mail"](./media/logic-apps-perform-data-operations/send-email-create-csv-table-action.png)
+
+1. Teraz ręcznie uruchom aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Uruchom**.
+
+   W oparciu o używany łącznik poczty e-mail znajdują się następujące wyniki:
+
+   ![Wyślij wiadomość e-mail z wynikami akcji "Utwórz tabelę CSV"](./media/logic-apps-perform-data-operations/create-csv-table-email-results.png)
 
 <a name="create-html-table-action"></a>
 
-## <a name="create-html-table-action"></a>Utwórz akcję tabeli HTML
+## <a name="create-html-table-action"></a>Akcja tworzenia tabeli HTML
 
-Aby utworzyć tabelę HTML, który ma właściwości i wartości z JavaScript Object Notation (JSON) obiektów w tablicy, należy użyć **operacje na danych — Utwórz tabelę HTML** akcji. Można następnie użyć tabeli wynikowej w akcjach, które należy wykonać **Utwórz tabelę HTML** akcji.
+Aby utworzyć tabelę HTML zawierającą właściwości i wartości z obiektów JavaScript Object Notation (JSON) w tablicy, użyj akcji **Utwórz tabelę HTML** . Następnie można użyć tabeli w akcjach, które są zgodne z akcją **Tworzenie tabeli HTML** .
 
-Jeśli wolisz, Praca w edytorze widoku kodu, możesz skopiować przykładu **Utwórz tabelę HTML** i **inicjowane zmiennej** przepływu pracy podstawowej definicji działania z tego artykułu w aplikacji logiki Definicja: [Przykłady kodu operacji danych — Utwórz tabelę HTML](../logic-apps/logic-apps-data-operations-code-samples.md#create-html-table-action-example) 
+Jeśli wolisz pracować w edytorze widoku kodu, możesz skopiować przykładowe definicje akcji **Create HTML** i **Initialize Variable** z tego artykułu do własnej definicji przepływu pracy aplikacji logiki: [Przykłady kodu operacji na danych — Tworzenie tabeli HTML](../logic-apps/logic-apps-data-operations-code-samples.md#create-html-table-action-example) 
 
-1. W <a href="https://portal.azure.com" target="_blank">witryny Azure portal</a> lub Visual Studio, Otwórz aplikację logiki w Projektancie aplikacji logiki. 
+1. W [Azure Portal](https://portal.azure.com) lub Visual Studio Otwórz aplikację logiki w Projektancie aplikacji logiki.
 
-   W tym przykładzie użyto portalu Azure i aplikacji logiki z **cyklu** wyzwalacza i **inicjowane zmiennej** akcji. 
-   Akcja jest skonfigurowany dla tworzenia zmiennej, którego wartość początkowa to tablica, która ma kilka właściwości i wartości w formacie JSON. 
-   Gdy później przetestuj aplikację logiki, możesz ręcznie uruchomić aplikację bez konieczności oczekiwania na Aby uruchomić wyzwalacz.
+   W tym przykładzie zastosowano Azure Portal i aplikację logiki z wyzwalaczem **cyklu** i akcją **inicjowania zmiennej** . Akcja jest skonfigurowana do tworzenia zmiennej, której wartość początkowa jest tablicą z właściwościami i wartościami w formacie JSON. Podczas późniejszego testowania aplikacji logiki można ręcznie uruchomić aplikację bez oczekiwania na uruchomienie wyzwalacza.
 
-   ![Począwszy od przykładowej aplikacji logiki](./media/logic-apps-perform-data-operations/sample-starting-logic-app-create-table-action.png)
+   ![Uruchamianie przykładowej aplikacji logiki](./media/logic-apps-perform-data-operations/sample-starting-logic-app-create-table-action.png)
 
-2. W aplikacji logiki gdzie chcesz utworzyć tabelę HTML wykonaj jedną z następujących czynności: 
+1. W aplikacji logiki, w której chcesz utworzyć tabelę HTML, wykonaj jedną z następujących czynności:
 
-   * Aby dodać akcję w ostatnim kroku, wybierz **nowy krok** > **Dodaj akcję**.
+   * Aby dodać akcję w ostatnim kroku, wybierz pozycję **nowy krok**.
 
      ![Dodaj akcję](./media/logic-apps-perform-data-operations/add-create-table-action.png)
 
-   * Aby dodać akcję między krokami, przesuń wskaźnik myszy strzałkę łączącego się więc pojawia się znak plusa (+). 
-   Wybierz znak plusa, a następnie wybierz **Dodaj akcję**.
+   * Aby dodać akcję między krokami, przesuń wskaźnik myszy nad strzałkę łączącą, aby pojawił się znak **+** plus (). Wybierz znak plus, a następnie wybierz pozycję **Dodaj akcję**.
 
-3. W polu wyszukiwania wprowadź "Utwórz tabelę html" jako filtr. Z listy akcji wybierz następującą akcję: **Utwórz tabelę HTML**
+1. W obszarze **Wybierz akcję**, w polu wyszukiwania wpisz `create html table` jako filtr. Z listy Akcje wybierz akcję **Utwórz tabelę HTML** .
 
-   ![Wybierz akcję "Utwórz HTML tabelę"](./media/logic-apps-perform-data-operations/select-create-html-table-action.png)
+   ![Wybierz akcję "Utwórz tabelę HTML"](./media/logic-apps-perform-data-operations/select-create-html-table-action.png)
 
-4. W **z** Podaj tablicy lub wyrażenie dla tworzenia tabeli. 
+1. W polu **od** Podaj tablicę lub wyrażenie, dla których chcesz utworzyć tabelę.
 
-   W tym przykładzie po kliknięciu wewnątrz **z** , lista zawartości dynamicznej pojawi się okno, można wybrać wcześniej utworzony zmiennej:
+   Na potrzeby tego przykładu, gdy klikniesz wewnątrz pola, zostanie wyświetlona lista zawartości dynamicznej, aby można było wybrać wcześniej utworzoną zmienną:
 
-   ![Wybierz dane wyjściowe tablicy, do tworzenia tabeli HTML](./media/logic-apps-perform-data-operations/configure-create-html-table-action.png)
-
-   Oto przykład Zakończono **Utwórz tabelę HTML** akcji: 
-
-   ![Zakończono akcję "Utwórz HTML tabelę"](./media/logic-apps-perform-data-operations/finished-create-html-table-action.png)
-
-   Domyślnie ta akcja powoduje automatyczne utworzenie kolumn na podstawie elementów tablicy. 
-   Aby ręcznie utworzyć nagłówki kolumn i wartości, wybierz **Pokaż opcje zaawansowane**. 
-   Aby podać tylko wartości niestandardowych, należy zmienić **kolumn** do **niestandardowe**. 
-   Aby zapewnić zbyt nagłówków kolumn niestandardowych, należy zmienić **zawierają nagłówki** do **tak**. 
+   ![Wybierz dane wyjściowe macierzy do tworzenia tabeli HTML](./media/logic-apps-perform-data-operations/configure-create-html-table-action.png)
 
    > [!TIP]
-   > Aby utworzyć czytelne tokenów dla właściwości w obiekty JSON, te właściwości można wybrać jako dane wejściowe, użyj [Przeanalizuj dane JSON](#parse-json-action) przed wywołaniem **Utwórz tabelę HTML** akcji.
+   > Aby utworzyć przyjazne dla użytkownika tokeny dla właściwości w obiektach JSON, aby można było wybrać te właściwości jako dane wejściowe, przed wywołaniem akcji **Utwórz tabelę HTML** Użyj [składni JSON analizy](#parse-json-action) .
 
-5. Zapisz aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
+   Oto przykład gotowej akcji **Create HTML Table** :
 
-Aby uzyskać więcej informacji dotyczących tej akcji w podstawowej definicji przepływu pracy, zobacz [Akcja tabeli](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action).
+   ![Zakończono akcję "Utwórz tabelę HTML"](./media/logic-apps-perform-data-operations/finished-create-html-table-action.png)
 
-### <a name="test-your-logic-app"></a>Przetestuj aplikację logiki
+1. Zapisz aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
 
-Aby upewnić się, czy **Utwórz tabelę HTML** akcja powoduje utworzenie oczekiwanych rezultatów, Wyślij do siebie powiadomienie, które zawiera dane wyjściowe z **Utwórz tabelę HTML** akcji.
+### <a name="customize-table-format"></a>Dostosuj Format tabeli
 
-1. W aplikacji logiki, Dodaj akcję, którą można wysłać wyniki z **Utwórz tabelę HTML** akcji.
+Domyślnie właściwość **Columns** jest ustawiona na automatyczne tworzenie kolumn tabeli na podstawie elementów tablicy. 
 
-2. Ta akcja kliknij gdziekolwiek mają być wyświetlane wyniki. Jeśli lista zawartości dynamicznej otwiera w obszarze **Utwórz tabelę HTML** akcji wybierz **dane wyjściowe**. 
+Aby określić niestandardowe nagłówki i wartości, wykonaj następujące kroki:
 
-   W tym przykładzie użyto **Office 365 Outlook — Wyślij wiadomość e-mail** akcji i zawiera **dane wyjściowe** w treści wiadomości e-mail:
+1. Otwórz listę **kolumny** i wybierz pozycję **niestandardowe**.
 
-   ![Pola "Wyjście" w akcji "Wyślij wiadomość e-mail"](./media/logic-apps-perform-data-operations/send-email-create-html-table-action.png)
+1. We właściwości **nagłówka** Określ niestandardowy tekst nagłówka, który ma być używany.
+
+1. We właściwości **klucza** Określ wartość niestandardową, która ma zostać użyta.
+
+Aby przywołać i edytować wartości z tablicy, można użyć `@item()` funkcji w definicji JSON akcji **tworzenia tabeli HTML** .
+
+1. Na pasku narzędzi projektanta wybierz **Widok kod**. 
+
+1. W edytorze kodu, Edytuj `inputs` sekcję akcji, aby dostosować dane wyjściowe tabeli w żądany sposób.
+
+Ten przykład zwraca tylko wartości kolumn, a nie nagłówki z `columns` tablicy przez `header` ustawienie właściwości na wartość pustą i wyłuskanie każdej `value` właściwości:
+
+```json
+"Create_HTML_table": {
+   "inputs": {
+      "columns": [
+         { 
+            "header": "",
+            "value": "@item()?['Description']"
+         },
+         { 
+            "header": "",
+            "value": "@item()?['Product_ID']"
+         }
+      ],
+      "format": "HTML",
+      "from": "@variables('myJSONArray')"
+   }
+}
+```
+
+Oto wynik zwracany przez ten przykład:
+
+```text
+Results from Create HTML table action:
+
+Apples    1
+Oranges   2
+```
+
+W projektancie Akcja **Utwórz tabelę HTML** będzie teraz wyglądać następująco:
+
+!["Utwórz tabelę HTML" bez nagłówków kolumn](./media/logic-apps-perform-data-operations/create-html-table-no-column-headers.png)
+
+Aby uzyskać więcej informacji na temat tej akcji w źródłowej definicji przepływu pracy, zobacz [Akcja tabeli](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action).
+
+### <a name="test-your-logic-app"></a>Testowanie aplikacji logiki
+
+Aby sprawdzić, czy Akcja **Utwórz tabelę HTML** tworzy oczekiwane wyniki, Wyślij do siebie powiadomienie zawierające dane wyjściowe akcji **Utwórz tabelę HTML** .
+
+1. W aplikacji logiki Dodaj akcję, która może wysyłać wyniki z akcji **tworzenia tabeli HTML** .
+
+1. W tej akcji kliknij w dowolnym miejscu, w którym mają być wyświetlane wyniki. Po otwarciu listy zawartości dynamicznej w obszarze akcji **Utwórz tabelę HTML** wybierz pozycję **dane wyjściowe**. 
+
+   W tym przykładzie zostanie użyta akcja **Wyślij wiadomość e-mail** w programie Outlook 365 i zawiera pole **dane wyjściowe** w treści wiadomości e-mail:
+
+   ![Pola "output" w akcji "Wyślij wiadomość e-mail"](./media/logic-apps-perform-data-operations/send-email-create-html-table-action.png)
    
    > [!NOTE]
-   > Po tym tabeli HTML dane wyjściowe w akcji poczty e-mail, upewnij się, możesz ustawić **HTML jest** właściwości **tak** akcji w wiadomości e-mail zaawansowane opcje. W ten sposób akcji w wiadomości e-mail poprawnie formatuje tabelę HTML.
+   > W przypadku dołączania danych wyjściowych tabeli HTML do akcji poczty e-mail upewnij się, że właściwość **is HTML została** ustawiona na **wartość tak** w opcjach zaawansowanych akcji poczty e-mail. Dzięki temu akcja e-mail prawidłowo sformatuje tabelę HTML.
 
-3. Teraz ręcznie uruchomić swoją aplikację logiki. Na pasku narzędzi Projektanta wybierz **Uruchom**. 
+1. Teraz ręcznie uruchom aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Uruchom**.
 
-   Oparte na Łącznik poczty e-mail, którego użyłeś, Oto wyniki Ci:
+   W oparciu o używany łącznik poczty e-mail znajdują się następujące wyniki:
 
-   ![Wyślij wiadomość e-mail z wynikami akcji "Utwórz HTML tabelę"](./media/logic-apps-perform-data-operations/create-html-table-email-results.png)
+   ![Wyślij wiadomość e-mail z wynikami akcji "Utwórz tabelę HTML"](./media/logic-apps-perform-data-operations/create-html-table-email-results.png)
 
 <a name="filter-array-action"></a>
 
-## <a name="filter-array-action"></a>Akcji filtrowania tablicy
+## <a name="filter-array-action"></a>Akcja filtrowania tablicy
 
-Aby utworzyć mniejsze tablica, która zawiera elementy, które spełniają określone kryteria, z istniejącej tablicy, należy użyć **operacje na danych — Filtruj tablicę** akcji. Następnie można użyć tablicy filtrowane w akcjach, które należy wykonać po **Filtruj tablicę** akcji. 
+Aby utworzyć mniejszą tablicę zawierającą elementy, które spełniają określone kryteria, z istniejącej tablicy, użyj akcji **filtrowania tablicy** . Następnie można użyć filtrowanej tablicy w akcjach, które po akcji **Filtruj tablicę** .
 
 > [!NOTE]
-> Dowolny tekst filtr, którego używasz w warunku jest uwzględniana wielkość liter. Ponadto tej akcji nie można zmienić format lub składniki elementów w tablicy. 
+> W każdym tekście filtru używanym w warunku jest uwzględniana wielkość liter. Ponadto ta akcja nie może zmienić formatu ani składników elementów w tablicy. 
 > 
-> Dla akcji umożliwiających korzystanie z danych wyjściowych tablicy **Filtruj tablicę** akcji, te akcje muszą zaakceptować tablic jako dane wejściowe lub może być konieczne przekształcenie tablicy danych wyjściowych w innym formacie zgodne. 
+> Aby akcje używały danych wyjściowych macierzy z akcji **filtrowania tablicy** , te akcje muszą akceptować tablice jako dane wejściowe lub trzeba przekształcić tablicę wyjściową w inny zgodny format.
 
-Jeśli wolisz, Praca w edytorze widoku kodu, możesz skopiować przykładu **Filtruj tablicę** i **inicjowane zmiennej** przepływu pracy podstawowej definicji działania z tego artykułu w aplikacji logiki Definicja: [Przykłady kodu operacji danych — Filtruj tablicę](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example) 
+Jeśli wolisz pracować w edytorze widoku kodu, możesz skopiować przykładową **tablicę filtrów** i **zainicjować zmienne** definicje akcji z tego artykułu do własnej definicji przepływu pracy aplikacji logiki: [Przykłady kodu operacji na danych — tablica filtrów](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example)
 
-1. W <a href="https://portal.azure.com" target="_blank">witryny Azure portal</a> lub Visual Studio, Otwórz aplikację logiki w Projektancie aplikacji logiki. 
+1. W [Azure Portal](https://portal.azure.com) lub Visual Studio Otwórz aplikację logiki w Projektancie aplikacji logiki.
 
-   W tym przykładzie użyto portalu Azure i aplikacji logiki z **cyklu** wyzwalacza i **inicjowane zmiennej** akcji. 
-   Akcja jest skonfigurowany dla tworzenia zmiennej, którego wartość początkowa to tablica, która zawiera niektóre przykładowe liczb całkowitych. Gdy później przetestuj aplikację logiki, możesz ręcznie uruchomić aplikację bez konieczności oczekiwania na Aby uruchomić wyzwalacz.
+   W tym przykładzie zastosowano Azure Portal i aplikację logiki z wyzwalaczem **cyklu** i akcją **inicjowania zmiennej** . Akcja jest skonfigurowana do tworzenia zmiennej, której wartość początkowa jest tablicą zawierającą Przykładowe liczby całkowite. Podczas późniejszego testowania aplikacji logiki można ręcznie uruchomić aplikację bez oczekiwania na uruchomienie wyzwalacza.
 
    > [!NOTE]
-   > Mimo że w tym przykładzie użyto tablicy liczb całkowitych prosty, ta akcja jest szczególnie przydatne w przypadku obiektu JSON, który tablic, w którym można filtrować na podstawie obiektów właściwości i wartości.
+   > Chociaż w tym przykładzie używana jest prosta tablica liczb całkowitych, ta akcja jest szczególnie przydatna w przypadku tablic obiektów JSON, w których można filtrować na podstawie właściwości i wartości obiektów.
 
-   ![Począwszy od przykładowej aplikacji logiki](./media/logic-apps-perform-data-operations/sample-starting-logic-app-filter-array-action.png)
+   ![Uruchamianie przykładowej aplikacji logiki](./media/logic-apps-perform-data-operations/sample-starting-logic-app-filter-array-action.png)
 
-2. W aplikacji logiki gdzie chcesz utworzyć tablicę filtrowane wykonaj jedną z następujących czynności: 
+1. W aplikacji logiki, w której chcesz utworzyć przefiltrowaną tablicę, wykonaj jedną z następujących czynności: 
 
-   * Aby dodać akcję w ostatnim kroku, wybierz **nowy krok** > **Dodaj akcję**.
+   * Aby dodać akcję w ostatnim kroku, wybierz pozycję **nowy krok**.
 
      ![Dodaj akcję](./media/logic-apps-perform-data-operations/add-filter-array-action.png)
 
-   * Aby dodać akcję między krokami, przesuń wskaźnik myszy strzałkę łączącego się więc pojawia się znak plusa (+). 
-   Wybierz znak plusa, a następnie wybierz **Dodaj akcję**.
+   * Aby dodać akcję między krokami, przesuń wskaźnik myszy nad strzałkę łączącą, aby pojawił się znak **+** plus (). Wybierz znak plus, a następnie wybierz pozycję **Dodaj akcję**.
 
-3. W polu wyszukiwania wprowadź "Filtruj tablicę" jako filtr. Z listy akcji wybierz następującą akcję: **Filtruj tablicę**
+1. W polu wyszukiwania wprowadź `filter array` jako filtr. Z listy Akcje wybierz akcję **Filtruj tablicę** .
 
-   ![Wybieranie akcji "Filtrowanie tablicy"](./media/logic-apps-perform-data-operations/select-filter-array-action.png)
+   ![Wybierz akcję "Filtruj tablicę"](./media/logic-apps-perform-data-operations/select-filter-array-action.png)
 
-4. W **z** Podaj tablicy lub wyrażenie, które chcesz filtrować. 
+1. W polu **od** Podaj tablicę lub wyrażenie, które chcesz filtrować.
 
-   W tym przykładzie po kliknięciu wewnątrz **z** , lista zawartości dynamicznej pojawi się okno, można wybrać wcześniej utworzony zmiennej:
+   Na potrzeby tego przykładu, gdy klikniesz wewnątrz pola, zostanie wyświetlona lista zawartości dynamicznej, aby można było wybrać wcześniej utworzoną zmienną:
 
-   ![Wybierz wyjścia tablicy do utworzenia tablicy filtrowane](./media/logic-apps-perform-data-operations/configure-filter-array-action.png)
+   ![Wybierz tablicę wyjściową dla tworzenia filtrowanej tablicy](./media/logic-apps-perform-data-operations/configure-filter-array-action.png)
 
-5. Warunek Określ elementów tablicy, aby porównać, wybierz operator porównania, a następnie podaj wartość porównania.
+1. Dla warunku Określ elementy tablicy do porównania, wybierz operator porównania i określ wartość porównania.
 
-   W tym przykładzie użyto **item()** funkcji do uzyskiwania dostępu do każdego elementu w tablicy podczas **Filtruj tablicę** wyszukiwania akcji dla tablicy elementów, których wartość jest większa niż 1:
+   W tym przykładzie funkcja `item()` jest wykorzystywana do uzyskiwania dostępu do każdego elementu w tablicy, podczas gdy akcja **Filtruj tablicę** wyszukuje elementy tablicy, których wartość jest większa niż jeden:
    
-   ![Zakończono akcji "Filtrowanie tablicy"](./media/logic-apps-perform-data-operations/finished-filter-array-action.png)
+   ![Zakończono akcję "Filtruj tablicę"](./media/logic-apps-perform-data-operations/finished-filter-array-action.png)
 
-6. Zapisz aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
+1. Zapisz aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
 
-Aby uzyskać więcej informacji dotyczących tej akcji w podstawowej definicji przepływu pracy, zobacz [Akcja zapytania](../logic-apps/logic-apps-workflow-actions-triggers.md#query-action).
+Aby uzyskać więcej informacji na temat tej akcji w źródłowej definicji przepływu pracy, zobacz [Akcja zapytania](../logic-apps/logic-apps-workflow-actions-triggers.md#query-action).
 
-### <a name="test-your-logic-app"></a>Przetestuj aplikację logiki
+### <a name="test-your-logic-app"></a>Testowanie aplikacji logiki
 
-Aby upewnić się, czy **Filtruj tablicę** akcja powoduje utworzenie oczekiwanych rezultatów, Wyślij do siebie powiadomienie, które zawiera dane wyjściowe z **Filtruj tablicę** akcji.
+Aby potwierdzić, czy Akcja **Filtruj tablicę** tworzy oczekiwane wyniki, Wyślij do siebie powiadomienie zawierające dane wyjściowe akcji **Filtruj tablicę** .
 
-1. W aplikacji logiki, Dodaj akcję, którą można wysłać wyniki z **Filtruj tablicę** akcji.
+1. W aplikacji logiki Dodaj akcję, która może wysyłać wyniki z akcji **filtrowania tablicy** .
 
-2. Ta akcja kliknij gdziekolwiek mają być wyświetlane wyniki. Po otwarciu listy zawartości dynamicznej wybierz **wyrażenie**. Aby uzyskać dane wyjściowe tablicy z **Filtruj tablicę** akcji, wprowadź następujące wyrażenie, który zawiera **Filtruj tablicę** nazwę akcji:
+1. W tej akcji kliknij w dowolnym miejscu, w którym mają być wyświetlane wyniki. Po otwarciu listy zawartości dynamicznej wybierz pozycję **wyrażenie**. Aby uzyskać dane wyjściowe macierzy z akcji **filtrowania tablicy** , wprowadź to wyrażenie, które zawiera nazwę akcji **filtrowania tablicy** :
 
-   ```
-   @actionBody('Filter_array')
-   ```
+   `@actionBody('Filter_array')`
 
-   W tym przykładzie użyto **Office 365 Outlook — Wyślij wiadomość e-mail** akcji i zawiera dane wyjściowe z **actionBody('Filter_array')** wyrażeń w treści wiadomości e-mail:
+   W tym przykładzie zostanie użyta akcja **Wyślij wiadomość e-mail** w programie Outlook 365, która zawiera dane wyjściowe z wyrażenia **ActionBody ("Filter_array")** w treści wiadomości e-mail:
 
-   ![W akcji "Wyślij wiadomość e-mail" dane wyjściowe akcji](./media/logic-apps-perform-data-operations/send-email-filter-array-action.png)
+   ![Wyniki akcji w akcji "Wyślij wiadomość e-mail"](./media/logic-apps-perform-data-operations/send-email-filter-array-action.png)
 
-3. Teraz ręcznie uruchomić swoją aplikację logiki. Na pasku narzędzi Projektanta wybierz **Uruchom**. 
+1. Teraz ręcznie uruchom aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Uruchom**.
 
-   Oparte na Łącznik poczty e-mail, którego użyłeś, Oto wyniki Ci:
+   W oparciu o używany łącznik poczty e-mail znajdują się następujące wyniki:
 
    ![Wyślij wiadomość e-mail z wynikami akcji "Filtruj tablicę"](./media/logic-apps-perform-data-operations/filter-array-email-results.png)
 
 <a name="join-action"></a>
 
-## <a name="join-action"></a>Dołącz do akcji
+## <a name="join-action"></a>Akcja łączenia
 
-Aby utworzyć ciąg, który zawiera wszystkie elementy z tablicy i tych elementów należy oddzielić znak ogranicznika określonego, użyj **operacje na danych — Połącz** akcji. Można następnie używać ciągu w akcjach, które należy wykonać po **Dołącz** akcji.
+Aby utworzyć ciąg zawierający wszystkie elementy z tablicy i oddzielić te elementy o określonym znaku ogranicznika, użyj akcji **sprzężenia** . Następnie można użyć ciągu w akcjach, które po akcji **Join** .
 
-Jeśli wolisz, Praca w edytorze widoku kodu, możesz skopiować przykładu **Dołącz** i **inicjowane zmiennej** definicji działania z tego artykułu w aplikacji logiki podstawowej definicji przepływu pracy: [Przykłady kodu operacji danych — sprzężenia](../logic-apps/logic-apps-data-operations-code-samples.md#join-action-example) 
+Jeśli wolisz pracować w edytorze widoku kodu, możesz skopiować przykładowe przykłady sprzężenia i **inicjalizacji zmiennych** z tego artykułu do własnej definicji przepływu pracy aplikacji logiki: [Przykłady kodu operacji na danych — sprzężenie](../logic-apps/logic-apps-data-operations-code-samples.md#join-action-example)
 
-1. W <a href="https://portal.azure.com" target="_blank">witryny Azure portal</a> lub Visual Studio, Otwórz aplikację logiki w Projektancie aplikacji logiki. 
+1. W [Azure Portal](https://portal.azure.com) lub Visual Studio Otwórz aplikację logiki w Projektancie aplikacji logiki.
 
-   W tym przykładzie użyto portalu Azure i aplikacji logiki z **cyklu** wyzwalacza i **inicjowane zmiennej** akcji. 
-   Ta akcja jest skonfigurowany dla tworzenia zmiennej, którego wartość początkowa to tablica, która zawiera niektóre przykładowe liczb całkowitych. 
-   Przetestuj aplikację logiki w dalszej części można ręcznie uruchomić aplikację, bez konieczności oczekiwania na Aby uruchomić wyzwalacz.
+   W tym przykładzie zastosowano Azure Portal i aplikację logiki z wyzwalaczem **cyklu** i akcją **inicjowania zmiennej** . Ta akcja jest skonfigurowana do tworzenia zmiennej, której wartość początkowa jest tablicą zawierającą Przykładowe liczby całkowite. Po przetestowaniu aplikacji logiki później można uruchomić aplikację ręcznie bez czekania na uruchomienie wyzwalacza.
 
-   ![Począwszy od przykładowej aplikacji logiki](./media/logic-apps-perform-data-operations/sample-starting-logic-app-join-action.png)
+   ![Uruchamianie przykładowej aplikacji logiki](./media/logic-apps-perform-data-operations/sample-starting-logic-app-join-action.png)
 
-2. W aplikacji logiki gdzie chcesz utworzyć ciągu z tablicy wykonaj jedną z następujących czynności: 
+1. W aplikacji logiki, w której chcesz utworzyć ciąg z tablicy, wykonaj jedną z następujących czynności:
 
-   * Aby dodać akcję w ostatnim kroku, wybierz **nowy krok** > **Dodaj akcję**.
+   * Aby dodać akcję w ostatnim kroku, wybierz pozycję **nowy krok**.
 
      ![Dodaj akcję](./media/logic-apps-perform-data-operations/add-join-action.png)
 
-   * Aby dodać akcję między krokami, przesuń wskaźnik myszy strzałkę łączącego się więc pojawia się znak plusa (+). 
-   Wybierz znak plusa, a następnie wybierz **Dodaj akcję**.
+   * Aby dodać akcję między krokami, przesuń wskaźnik myszy nad strzałkę łączącą, aby pojawił się znak **+** plus (). Wybierz znak plus, a następnie wybierz pozycję **Dodaj akcję**.
 
-3. W polu wyszukiwania wprowadź "join" jako filtr. Z listy akcji wybierz następującą akcję: **Join**
+1. W polu wyszukiwania wprowadź `join` jako filtr. Z listy Akcje wybierz tę akcję: **Join**
 
-   ![Wybierz akcję "Danych operacji Join —"](./media/logic-apps-perform-data-operations/select-join-action.png)
+   ![Wybierz akcję "Dołącz"](./media/logic-apps-perform-data-operations/select-join-action.png)
 
-4. W **z** wprowadź tablicę, która zawiera elementy, aby dołączyć jako ciąg. 
+1. W polu **od** Podaj tablicę zawierającą elementy, które chcesz dołączyć jako ciąg.
 
-   W tym przykładzie po kliknięciu wewnątrz **z** pole listy zawartości dynamicznej, który pojawia się, można wybrać zmiennej utworzonej wcześniej:  
+   Na potrzeby tego przykładu po kliknięciu wewnątrz pola **z** listy zawartość dynamiczna zostanie wyświetlona, aby można było wybrać wcześniej utworzoną zmienną:  
 
-   ![Wybierz dane wyjściowe tablicy, do tworzenia ciągu](./media/logic-apps-perform-data-operations/configure-join-action.png)
+   ![Wybierz dane wyjściowe macierzy do utworzenia ciągu](./media/logic-apps-perform-data-operations/configure-join-action.png)
 
-5. W **członkiem społeczności użytkowników na** Wprowadź znak ma do oddzielania każdego elementu tablicy. 
+1. W polu **Dołącz do** wprowadź znak, który ma zostać oddzielone dla każdego elementu tablicy. 
 
-   W tym przykładzie użyto dwukropek (:) jako separatora.
+   W tym przykładzie zastosowano dwukropek (:) jako separator.
 
    ![Podaj znak separatora](./media/logic-apps-perform-data-operations/finished-join-action.png)
 
-6. Zapisz aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
+1. Zapisz aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
 
-Aby uzyskać więcej informacji dotyczących tej akcji w podstawowej definicji przepływu pracy, zobacz [Dołącz akcji](../logic-apps/logic-apps-workflow-actions-triggers.md#join-action).
+Aby uzyskać więcej informacji na temat tej akcji w źródłowej definicji przepływu pracy, zobacz [akcję Join](../logic-apps/logic-apps-workflow-actions-triggers.md#join-action).
 
-### <a name="test-your-logic-app"></a>Przetestuj aplikację logiki
+### <a name="test-your-logic-app"></a>Testowanie aplikacji logiki
 
-Aby upewnić się, czy **Dołącz** akcja powoduje utworzenie oczekiwanych rezultatów, Wyślij do siebie powiadomienie, które zawiera dane wyjściowe z **Dołącz** akcji. 
+Aby sprawdzić, czy Akcja **łączenia** tworzy oczekiwane wyniki, Wyślij do siebie powiadomienie zawierające dane wyjściowe akcji **sprzężenia** .
 
-1. W aplikacji logiki, Dodaj akcję, którą można wysłać wyniki z **Dołącz** akcji.
+1. W aplikacji logiki Dodaj akcję, która może wysyłać wyniki z akcji **Dołącz** .
 
-2. Ta akcja kliknij gdziekolwiek mają być wyświetlane wyniki. Jeśli lista zawartości dynamicznej otwiera w obszarze **Dołącz** akcji, wybierz opcję **dane wyjściowe**. 
+1. W tej akcji kliknij w dowolnym miejscu, w którym mają być wyświetlane wyniki. Po otwarciu listy zawartości dynamicznej w obszarze akcji **sprzężenia** wybierz pozycję **dane wyjściowe**. 
 
-   W tym przykładzie użyto **Office 365 Outlook — Wyślij wiadomość e-mail** akcji i zawiera **dane wyjściowe** w treści wiadomości e-mail:
+   W tym przykładzie zostanie użyta akcja **Wyślij wiadomość e-mail** w programie Outlook 365 i zawiera pole **dane wyjściowe** w treści wiadomości e-mail:
 
-   ![Pola "Wyjście" w akcji "Wyślij wiadomość e-mail"](./media/logic-apps-perform-data-operations/send-email-join-action.png)
+   ![Pola "output" w akcji "Wyślij wiadomość e-mail"](./media/logic-apps-perform-data-operations/send-email-join-action.png)
 
-3. Teraz ręcznie uruchomić swoją aplikację logiki. Na pasku narzędzi Projektanta wybierz **Uruchom**. 
+1. Teraz ręcznie uruchom aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Uruchom**.
 
-   Oparte na Łącznik poczty e-mail, którego użyłeś, Oto wyniki Ci:
+   W oparciu o używany łącznik poczty e-mail znajdują się następujące wyniki:
 
-   ![Wyślij wiadomość e-mail z wynikami akcji "Join"](./media/logic-apps-perform-data-operations/join-email-results.png)
+   ![Wyślij wiadomość e-mail z wynikami akcji "join"](./media/logic-apps-perform-data-operations/join-email-results.png)
 
 <a name="parse-json-action"></a>
 
-## <a name="parse-json-action"></a>Analizowanie JSON akcji
+## <a name="parse-json-action"></a>Analiza akcji JSON
 
-Odwołanie i dostęp do właściwości w JavaScript Object Notation (JSON) zawartości pola przyjazny dla użytkownika lub tokenów dla tych właściwości można utworzyć przy użyciu **operacje na danych — Przeanalizuj dane JSON** akcji.
-W ten sposób można wybrać te właściwości z listy zawartości dynamicznej po określeniu dane wejściowe dla twojej aplikacji logiki. Dla tej akcji możesz podać schematu JSON lub generowanie schematu JSON z przykładowej zawartości JSON lub ładunku.
+Aby uzyskać odwołanie lub uzyskać dostęp do właściwości w zawartości JavaScript Object Notation (JSON), możesz utworzyć przyjazne dla użytkownika pola lub tokeny dla tych właściwości przy użyciu akcji **Przeanalizuj dane JSON** . Dzięki temu można wybrać te właściwości z listy zawartości dynamicznej po określeniu danych wejściowych dla aplikacji logiki. Dla tej akcji można dostarczyć schemat JSON lub wygenerować schemat JSON z przykładowej zawartości lub ładunku JSON.
 
-Jeśli wolisz, Praca w edytorze widoku kodu, możesz skopiować przykładu **Przeanalizuj dane JSON** i **inicjowane zmiennej** definicji działania z tego artykułu w aplikacji logiki podstawowej definicji przepływu pracy : [Przykłady kodu operacji danych — Przeanalizuj dane JSON](../logic-apps/logic-apps-data-operations-code-samples.md#parse-json-action-example) 
+Jeśli wolisz pracować w edytorze widoku kodu, możesz skopiować przykładowe definicje akcji **Przeanalizuj dane JSON** i **zainicjuj zmienne** z tego artykułu do własnej definicji przepływu pracy aplikacji logiki: [Przykłady kodu operacji danych — Analiza JSON](../logic-apps/logic-apps-data-operations-code-samples.md#parse-json-action-example)
 
-1. W <a href="https://portal.azure.com" target="_blank">witryny Azure portal</a> lub Visual Studio, Otwórz aplikację logiki w Projektancie aplikacji logiki. 
+1. W [Azure Portal](https://portal.azure.com) lub Visual Studio Otwórz aplikację logiki w Projektancie aplikacji logiki.
 
-   W tym przykładzie użyto portalu Azure i aplikacji logiki z **cyklu** wyzwalacza i **inicjowane zmiennej** akcji. 
-   Akcja jest skonfigurowany dla tworzenia zmiennej, którego wartość początkowa to obiekt JSON, który zawiera właściwości i wartości. 
-   Gdy później przetestuj aplikację logiki, możesz ręcznie uruchomić aplikację bez konieczności oczekiwania na Aby uruchomić wyzwalacz.
+   W tym przykładzie zastosowano Azure Portal i aplikację logiki z wyzwalaczem **cyklu** i akcją **inicjowania zmiennej** . Akcja jest skonfigurowana do tworzenia zmiennej, której wartość początkowa jest obiektem JSON, który ma właściwości i wartości. Podczas późniejszego testowania aplikacji logiki można ręcznie uruchomić aplikację bez oczekiwania na uruchomienie wyzwalacza.
 
-   ![Począwszy od przykładowej aplikacji logiki](./media/logic-apps-perform-data-operations/sample-starting-logic-app-parse-json-action.png)
+   ![Uruchamianie przykładowej aplikacji logiki](./media/logic-apps-perform-data-operations/sample-starting-logic-app-parse-json-action.png)
 
-2. W aplikacji logiki gdzie chcesz przeanalizować zawartość JSON wykonaj jedną z następujących czynności: 
+1. W aplikacji logiki, w której chcesz analizować zawartość JSON, wykonaj jedną z następujących czynności:
 
-   * Aby dodać akcję w ostatnim kroku, wybierz **nowy krok** > **Dodaj akcję**.
+   * Aby dodać akcję w ostatnim kroku, wybierz pozycję **nowy krok**.
 
      ![Dodaj akcję](./media/logic-apps-perform-data-operations/add-parse-json-action.png)
 
-   * Aby dodać akcję między krokami, przesuń wskaźnik myszy strzałkę łączącego się więc pojawia się znak plusa (+). 
-   Wybierz znak plusa, a następnie wybierz **Dodaj akcję**.
+   * Aby dodać akcję między krokami, przesuń wskaźnik myszy nad strzałkę łączącą, aby pojawił się znak **+** plus (). Wybierz znak plus, a następnie wybierz pozycję **Dodaj akcję**.
 
-3. W polu wyszukiwania wprowadź "Przeanalizuj dane json" jako filtr. Z listy akcji wybierz następującą akcję: **Przeanalizuj dane JSON**
+1. W polu wyszukiwania wprowadź `parse json` jako filtr. Z listy Akcje wybierz akcję **Przeanalizuj dane JSON** .
 
-   ![Wybierz akcję "Przeanalizuj dane JSON"](./media/logic-apps-perform-data-operations/select-parse-json-action.png)
+   ![Wybierz akcję "Analizuj dane JSON"](./media/logic-apps-perform-data-operations/select-parse-json-action.png)
 
-4. W **zawartości** Podaj zawartość JSON, aby przeanalizować. 
+1. W polu **zawartość** Podaj zawartość JSON, którą chcesz przeanalizować.
 
-   W tym przykładzie po kliknięciu wewnątrz **zawartości** , lista zawartości dynamicznej pojawi się okno, można wybrać wcześniej utworzony zmiennej:
+   Na potrzeby tego przykładu po kliknięciu wewnątrz pola **zawartość** zostanie wyświetlona lista zawartość dynamiczna, aby można było wybrać wcześniej utworzoną zmienną:
 
-   ![Wybierz obiekt JSON dla akcji analizy danych JSON](./media/logic-apps-perform-data-operations/configure-parse-json-action.png)
+   ![Wybierz obiekt JSON dla akcji Przeanalizuj dane JSON](./media/logic-apps-perform-data-operations/configure-parse-json-action.png)
 
-5. Wprowadź schemat JSON opisujące zawartość JSON, który jest analiza kodu. 
+1. Wprowadź schemat JSON, który opisuje przeanalizowany zawartość JSON.
 
-   Na przykład Oto schematu JSON:
+   W tym przykładzie przedstawiono schemat JSON:
 
-   ![Podaj obiekt JSON, który chcesz przeanalizować schematu JSON](./media/logic-apps-perform-data-operations/provide-schema-parse-json-action.png)
+   ![Podaj schemat JSON dla obiektu JSON, który chcesz przeanalizować](./media/logic-apps-perform-data-operations/provide-schema-parse-json-action.png)
 
-   Jeśli nie masz schematu z zawartość JSON można wygenerować schemat lub *ładunku*, są analizy. 
+   Jeśli nie masz schematu, możesz wygenerować ten schemat z zawartości lub *ładunku*JSON. 
    
-   1. W **Przeanalizuj dane JSON** akcji wybierz **Użyj przykładowego ładunku do wygenerowania schematu**.
+   1. W akcji **Przeanalizuj dane JSON** wybierz pozycję **Użyj przykładowego ładunku do wygenerowania schematu**.
 
-   2. W obszarze **wpisz lub wklej przykładowy ładunek JSON**Podaj zawartość JSON, a następnie wybierz **gotowe**.
+   1. W obszarze **wprowadzanie lub wklejanie przykładowego ładunku JSON**Podaj zawartość w formacie JSON, a następnie wybierz pozycję **gotowe**.
 
-      ![Wprowadź zawartość JSON do generowania schematu](./media/logic-apps-perform-data-operations/generate-schema-parse-json-action.png)
+      ![Wprowadź zawartość JSON w celu wygenerowania schematu](./media/logic-apps-perform-data-operations/generate-schema-parse-json-action.png)
 
-6. Zapisz aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
+1. Zapisz aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
 
-Aby uzyskać więcej informacji dotyczących tej akcji w podstawowej definicji przepływu pracy, zobacz [akcji analizy danych JSON](../logic-apps/logic-apps-workflow-actions-triggers.md).
+Aby uzyskać więcej informacji na temat tej akcji w źródłowej definicji przepływu pracy, zobacz [Analiza JSON akcja](../logic-apps/logic-apps-workflow-actions-triggers.md).
 
-### <a name="test-your-logic-app"></a>Przetestuj aplikację logiki
+### <a name="test-your-logic-app"></a>Testowanie aplikacji logiki
 
-Aby upewnić się, czy **Przeanalizuj dane JSON** akcja powoduje utworzenie oczekiwanych rezultatów, Wyślij do siebie powiadomienie, które zawiera dane wyjściowe z **Przeanalizuj dane JSON** akcji.
+Aby sprawdzić, czy Akcja **Przeanalizuj dane JSON** powoduje utworzenie oczekiwanych wyników, Wyślij do siebie powiadomienie zawierające dane wyjściowe akcji **analizy JSON** .
 
-1. W aplikacji logiki, Dodaj akcję, którą można wysłać wyniki z **Przeanalizuj dane JSON** akcji.
+1. W aplikacji logiki Dodaj akcję, która może wysyłać wyniki z akcji **Przeanalizuj dane JSON** .
 
-2. Ta akcja kliknij gdziekolwiek mają być wyświetlane wyniki. Jeśli lista zawartości dynamicznej otwiera w obszarze **Przeanalizuj dane JSON** działania, można teraz wybrać właściwości z przeanalizowanego zawartość JSON.
+1. W tej akcji kliknij w dowolnym miejscu, w którym mają być wyświetlane wyniki. Po otwarciu listy zawartości dynamicznej w obszarze akcji **Przeanalizuj dane JSON** możesz teraz wybrać właściwości z przeanalizowanej zawartości w formacie JSON.
 
-   W tym przykładzie użyto **Office 365 Outlook — Wyślij wiadomość e-mail** akcji i zawiera **FirstName**, **LastName**, i **E-mail** pola w Treść wiadomości e-mail:
+   W tym przykładzie zostanie użyta akcja **Wyślij wiadomość e-mail w usłudze** Office 365 Outlook, która zawiera pola **FirstName**, **LastName**i **email** w treści wiadomości e-mail:
 
    ![Właściwości JSON w akcji "Wyślij wiadomość e-mail"](./media/logic-apps-perform-data-operations/send-email-parse-json-action.png)
 
-   Oto akcji Zakończono poczty e-mail:
+   Oto gotowa akcja dla wiadomości e-mail:
 
-   ![Akcja zakończona poczty e-mail](./media/logic-apps-perform-data-operations/send-email-parse-json-action-2.png)
+   ![Zakończono akcję poczty e-mail](./media/logic-apps-perform-data-operations/send-email-parse-json-action-2.png)
 
-3. Teraz ręcznie uruchomić swoją aplikację logiki. Na pasku narzędzi Projektanta wybierz **Uruchom**. 
+1. Teraz ręcznie uruchom aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Uruchom**. 
 
-   Oparte na Łącznik poczty e-mail, którego użyłeś, Oto wyniki Ci:
+   W oparciu o używany łącznik poczty e-mail znajdują się następujące wyniki:
 
-   ![Wyślij wiadomość e-mail z wynikami akcji "Join"](./media/logic-apps-perform-data-operations/parse-json-email-results.png)
+   ![Wyślij wiadomość e-mail z wynikami akcji "join"](./media/logic-apps-perform-data-operations/parse-json-email-results.png)
 
 <a name="select-action"></a>
 
 ## <a name="select-action"></a>Wybierz akcję
 
-Aby utworzyć tablicę z obiektami JSON utworzony na podstawie wartości w istniejącej tablicy, należy użyć **operacje na danych — wybierz** akcji. Na przykład można utworzyć obiekt JSON dla każdej wartości w tablicę liczb całkowitych, określając właściwości, które musi zawierać każdego obiektu JSON i sposób mapowania wartości w tablicy źródłowej do tych właściwości. I można zmienić składników w tych obiektów JSON, ale tablicy danych wyjściowych zawsze ma taką samą liczbę elementów jako tablica źródłowa.
+Aby utworzyć tablicę z obiektami JSON utworzonymi z wartości w istniejącej tablicy, użyj akcji **SELECT** . Na przykład można utworzyć obiekt JSON dla każdej wartości w tablicy liczb całkowitych, określając właściwości, które każdy obiekt JSON musi mieć i jak mapować wartości w tablicy źródłowej na te właściwości. Chociaż można zmienić składniki w tych obiektach JSON, tablica wyjściowa zawsze ma taką samą liczbę elementów jak tablica źródłowa.
 
 > [!NOTE]
-> Dla akcji umożliwiających korzystanie z danych wyjściowych tablicy **wybierz** akcji, te akcje muszą zaakceptować tablic jako dane wejściowe lub może być konieczne przekształcenie tablicy danych wyjściowych w innym formacie zgodne. 
+> Aby akcje używały danych wyjściowych macierzy z akcji **SELECT** , te akcje muszą akceptować tablice jako dane wejściowe lub być może trzeba przekształcić tablicę wyjściową w inny zgodny format. 
 
-Jeśli wolisz, Praca w edytorze widoku kodu, możesz skopiować przykładu **wybierz** i **inicjowane zmiennej** definicji działania z tego artykułu w aplikacji logiki podstawowej definicji przepływu pracy: [Przykłady kodu operacji danych — wybierz](../logic-apps/logic-apps-data-operations-code-samples.md#select-action-example) 
+Jeśli wolisz pracować w edytorze widoku kodu, możesz skopiować przykładowe definicje akcji " **SELECT** " i " **Initialize" zmiennej** z tego artykułu do własnej definicji przepływu pracy aplikacji logiki: [Przykłady kodu operacji danych — wybór](../logic-apps/logic-apps-data-operations-code-samples.md#select-action-example) 
 
-1. W <a href="https://portal.azure.com" target="_blank">witryny Azure portal</a> lub Visual Studio, Otwórz aplikację logiki w Projektancie aplikacji logiki. 
+1. W [Azure Portal](https://portal.azure.com) lub Visual Studio Otwórz aplikację logiki w Projektancie aplikacji logiki.
 
-   W tym przykładzie użyto portalu Azure i aplikacji logiki z **cyklu** wyzwalacza i **inicjowane zmiennej** akcji. 
-   Akcja jest skonfigurowany dla tworzenia zmiennej, którego wartość początkowa to tablica, która zawiera niektóre przykładowe liczb całkowitych. 
-   Gdy później przetestuj aplikację logiki, możesz ręcznie uruchomić aplikację bez konieczności oczekiwania na Aby uruchomić wyzwalacz.
+   W tym przykładzie zastosowano Azure Portal i aplikację logiki z wyzwalaczem **cyklu** i akcją **inicjowania zmiennej** . Akcja jest skonfigurowana do tworzenia zmiennej, której wartość początkowa jest tablicą zawierającą Przykładowe liczby całkowite. Podczas późniejszego testowania aplikacji logiki można ręcznie uruchomić aplikację bez oczekiwania na uruchomienie wyzwalacza.
 
-   ![Począwszy od przykładowej aplikacji logiki](./media/logic-apps-perform-data-operations/sample-starting-logic-app-select-action.png)
+   ![Uruchamianie przykładowej aplikacji logiki](./media/logic-apps-perform-data-operations/sample-starting-logic-app-select-action.png)
 
-2. W aplikacji logiki gdzie chcesz utworzyć tablicę wykonaj jedną z następujących czynności: 
+1. W aplikacji logiki, w której chcesz utworzyć tablicę, wykonaj jedną z następujących czynności: 
 
-   * Aby dodać akcję w ostatnim kroku, wybierz **nowy krok** > **Dodaj akcję**.
+   * Aby dodać akcję w ostatnim kroku, wybierz pozycję **nowy krok**.
 
      ![Dodaj akcję](./media/logic-apps-perform-data-operations/add-select-action.png)
 
-   * Aby dodać akcję między krokami, przesuń wskaźnik myszy strzałkę łączącego się więc pojawia się znak plusa (+). 
-   Wybierz znak plusa, a następnie wybierz **Dodaj akcję**.
+   * Aby dodać akcję między krokami, przesuń wskaźnik myszy nad strzałkę łączącą, aby pojawił się znak **+** plus (). Wybierz znak plus, a następnie wybierz pozycję **Dodaj akcję**.
 
-3. W polu wyszukiwania wprowadź "Wybierz" jako filtr. Z listy akcji wybierz następującą akcję: **Select**
+1. W obszarze **Wybierz akcję**wybierz pozycję **wbudowane**. W polu wyszukiwania wprowadź `select` jako filtr. Z listy Akcje wybierz akcję **Wybierz** .
 
-   ![Wybieranie akcji "Select"](./media/logic-apps-perform-data-operations/select-select-action.png)
+   ![Wybierz akcję "Wybierz"](./media/logic-apps-perform-data-operations/select-select-action.png)
 
-4. W **z** Określ ma tablica źródłowa.
+1. W polu **od** Określ tablicę źródłową, którą chcesz.
 
-   W tym przykładzie po kliknięciu wewnątrz **z** , lista zawartości dynamicznej pojawi się okno, można wybrać wcześniej utworzony zmiennej:
+   Na potrzeby tego przykładu, gdy klikniesz wewnątrz pola, zostanie wyświetlona lista zawartości dynamicznej, aby można było wybrać wcześniej utworzoną zmienną:
 
-   ![Wybierz źródło tablicy dla akcji wybierania](./media/logic-apps-perform-data-operations/configure-select-action.png)
+   ![Wybierz tablicę źródłową dla akcji SELECT](./media/logic-apps-perform-data-operations/configure-select-action.png)
 
-5. W **mapy** kolumny po lewej stronie pola, podaj nazwę właściwości, którą chcesz przypisać każdej wartości w tablicy źródłowej. W kolumnie po prawej stronie należy określić wyrażenie, które reprezentuje wartość, którą chcesz przypisać właściwości.
+1. W kolumnie po lewej stronie pola **mapy** Podaj nazwę właściwości, która ma zostać przypisana do każdej wartości w tablicy źródłowej. W kolumnie po prawej stronie Określ wyrażenie reprezentujące wartość, do której chcesz przypisać właściwość.
 
-   W tym przykładzie określa "Product_ID" jako nazwy właściwości, aby przypisać każdej wartości w tablicy liczb całkowitych przy użyciu **item()** funkcji w wyrażeniu, który uzyskuje dostęp do każdego elementu tablicy. 
+   W tym przykładzie określono "product_id" jako nazwę właściwości, aby przypisać każdą wartość w tablicy liczb całkowitych przy `item()` użyciu funkcji w wyrażeniu, która uzyskuje dostęp do każdego elementu tablicy. 
 
-   ![Określ właściwość obiektu JSON i wartości dla tablicy, który chcesz utworzyć](./media/logic-apps-perform-data-operations/configure-select-action-2.png)
+   ![Określ właściwość i wartości obiektu JSON dla tablicy, którą chcesz utworzyć.](./media/logic-apps-perform-data-operations/configure-select-action-2.png)
 
-   Oto Zakończono akcji:
+   Oto ukończona akcja:
 
-   ![Zakończono akcji wybierania](./media/logic-apps-perform-data-operations/finished-select-action.png)
+   ![Zakończono akcję wybierania](./media/logic-apps-perform-data-operations/finished-select-action.png)
 
-6. Zapisz aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
+1. Zapisz aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
 
-Aby uzyskać więcej informacji dotyczących tej akcji w podstawowej definicji przepływu pracy, zobacz [wybierz akcję](../logic-apps/logic-apps-workflow-actions-triggers.md).
+Aby uzyskać więcej informacji na temat tej akcji w źródłowej definicji przepływu pracy, zobacz [Wybieranie akcji](../logic-apps/logic-apps-workflow-actions-triggers.md).
 
-### <a name="test-your-logic-app"></a>Przetestuj aplikację logiki
+### <a name="test-your-logic-app"></a>Testowanie aplikacji logiki
 
-Aby upewnić się, czy **wybierz** akcja powoduje utworzenie oczekiwanych rezultatów, Wyślij do siebie powiadomienie, które zawiera dane wyjściowe z **wybierz** akcji.
+Aby sprawdzić, czy Akcja **Wybierz** powoduje utworzenie oczekiwanych wyników, Wyślij do siebie powiadomienie zawierające dane wyjściowe z akcji **Wybierz** .
 
-1. W aplikacji logiki, Dodaj akcję, którą można wysłać wyniki z **wybierz** akcji.
+1. W aplikacji logiki Dodaj akcję, która może wysyłać wyniki z akcji **Wybierz** .
 
-2. Ta akcja kliknij gdziekolwiek mają być wyświetlane wyniki. Po otwarciu listy zawartości dynamicznej wybierz **wyrażenie**. Aby uzyskać dane wyjściowe tablicy z **wybierz** akcji, wprowadź następujące wyrażenie, który zawiera **wybierz** nazwę akcji:
+1. W tej akcji kliknij w dowolnym miejscu, w którym mają być wyświetlane wyniki. Po otwarciu listy zawartości dynamicznej wybierz pozycję **wyrażenie**. Aby uzyskać dane wyjściowe macierzy z akcji **SELECT** , wprowadź to wyrażenie zawierające nazwę **wybranej** akcji:
 
-   ```
-   @actionBody('Select')
-   ```
+   `@actionBody('Select')`
 
-   W tym przykładzie użyto **Office 365 Outlook — Wyślij wiadomość e-mail** akcji i zawiera dane wyjściowe z **actionBody('Select')** wyrażeń w treści wiadomości e-mail:
+   W tym przykładzie zostanie użyta akcja **Wyślij wiadomość e-mail** w programie Outlook 365, która zawiera `@actionBody('Select')` dane wyjściowe z wyrażenia w treści wiadomości e-mail:
 
-   ![W akcji "Wyślij wiadomość e-mail" dane wyjściowe akcji](./media/logic-apps-perform-data-operations/send-email-select-action.png)
+   ![Wyniki akcji w akcji "Wyślij wiadomość e-mail"](./media/logic-apps-perform-data-operations/send-email-select-action.png)
 
-3. Teraz ręcznie uruchomić swoją aplikację logiki. Na pasku narzędzi Projektanta wybierz **Uruchom**. 
+1. Teraz ręcznie uruchom aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Uruchom**.
 
-   Oparte na Łącznik poczty e-mail, którego użyłeś, Oto wyniki Ci:
+   W oparciu o używany łącznik poczty e-mail znajdują się następujące wyniki:
 
    ![Wyślij wiadomość e-mail z wynikami akcji "Select"](./media/logic-apps-perform-data-operations/select-email-results.png)
 
-## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
+## <a name="next-steps"></a>Następne kroki
 
-* Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
-
-## <a name="next-steps"></a>Kolejne kroki
-
-* Dowiedz się więcej o [łączników Logic Apps](../connectors/apis-list.md)
+* Więcej informacji na temat [łączników Logic Apps](../connectors/apis-list.md)

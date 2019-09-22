@@ -1,19 +1,20 @@
 ---
-title: Skrypt programu Azure PowerShell — Azure Cosmos DB listy i Pobierz operacje dla programu SQL (rdzenie) interfejsu API
-description: Skrypt programu Azure PowerShell — Azure Cosmos DB listy i Pobierz operacje dla programu SQL (rdzenie) interfejsu API
+title: Azure PowerShell listę Azure Cosmos DB skryptu i Pobierz operacje dla interfejsu API SQL (rdzeń)
+description: Azure PowerShell listę Azure Cosmos DB skryptu i Pobierz operacje dla interfejsu API SQL (rdzeń)
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 4c82f1ffffe5149960f710252ec8dfe967ffbe2b
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 4544b1d3346128f8ad88c2b0e123145f4e0632a6
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603811"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178782"
 ---
-# <a name="list-and-get-databases-and-containers-for-azure-cosmos-db---sql-core-api"></a>Listy i pobieranie baz danych i kontenerów usługi Azure Cosmos DB - SQL (rdzenie) interfejsu API
+# <a name="list-and-get-databases-and-containers-for-azure-cosmos-db---sql-core-api"></a>Wyświetlanie i pobieranie baz danych i kontenerów dla interfejsu API Azure Cosmos DB-SQL (rdzeń)
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,12 +39,12 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | Polecenie | Uwagi |
 |---|---|
 |**Zasoby platformy Azure**| |
-| [Nowe AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Tworzy zasób. |
+| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Tworzy zasób. |
 |**Grupy zasobów platformy Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 |||
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat programu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](https://docs.microsoft.com/powershell/).
 

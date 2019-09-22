@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: 83581b22389efe5c9c19689e3116b39ea049ccdc
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 087a88322175b1908ab591a5b9afb5ae45227bb1
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694198"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71177958"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL warstw cenowych
 
@@ -19,7 +19,7 @@ Serwer Azure Database for MySQL można utworzyć w jednej z trzech różnych war
 
 |    | **Podstawowa** | **Ogólnego przeznaczenia** | **Zoptymalizowane pod kątem pamięci** |
 |:---|:----------|:--------------------|:---------------------|
-| Generowanie obliczeń | Gen 4, Gen 5 | Gen 4, Gen 5 | 5\. generacja |
+| Generacja obliczeń | Gen 4, Gen 5 | Gen 4, Gen 5 | 5\. generacja |
 | Rdzenie wirtualne | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
 | Pamięć na rdzeń wirtualny | 2 GB | 5 GB | 10 GB |
 | Rozmiar magazynu | od 5 GB do 1 TB | od 5 GB do 4 TB | od 5 GB do 4 TB |
@@ -83,7 +83,7 @@ Zwiększamy limity magazynowania w naszych Ogólnego przeznaczenia i warstw zopt
 
 Serwery z magazynem o rozmiarze mniejszym niż 100 GB są oznaczone jako tylko do odczytu, jeśli ilość wolnego miejsca w magazynie jest mniejsza niż 512 MB lub 5% rozmiaru magazynu. Serwery z więcej niż 100 GB miejsca do magazynowania są oznaczone jako tylko do odczytu, jeśli ilość wolnego miejsca w magazynie jest mniejsza niż 5 GB.
 
-Jeśli na przykład Zainicjowano obsługę administracyjną 110 GB miejsca w magazynie, a rzeczywiste wykorzystanie przekracza 105 GB, serwer jest oznaczony jako tylko do odczytu. Alternatywnie, jeśli masz zainicjowany 5 GB miejsca w magazynie, serwer jest oznaczony jako tylko do odczytu, gdy ilość wolnego miejsca osiągnie mniej niż 512 MB.
+Jeśli na przykład Zainicjowano obsługę administracyjną 110 GB miejsca w magazynie, a rzeczywiste wykorzystanie przekracza 105 GB, serwer jest oznaczony jako tylko do odczytu. Alternatywnie, jeśli masz zainicjowany 5 GB miejsca w magazynie, serwer jest oznaczony jako tylko do odczytu, gdy ilość wolnego miejsca osiągnie mniej niż 256 MB.
 
 Podczas gdy usługa próbuje przełączyć serwer w tryb tylko do odczytu, wszystkie nowe żądania transakcji zapisu są blokowane, a istniejące aktywne transakcje nadal są wykonywane. Gdy serwer zostanie przełączony w tryb tylko do odczytu, wszystkie kolejne zatwierdzenia transakcji i operacji zapisu zakończą się niepowodzeniem. Zapytania odczytu będą działać bez żadnych przerw. Gdy zwiększysz zaaprowizowaną pojemność magazynu, serwer będzie ponownie gotowy do akceptowania transakcji zapisu.
 
@@ -91,15 +91,15 @@ Zalecamy włączenie opcji autowzrostu magazynu lub skonfigurowanie alertu w cel
 
 ### <a name="storage-auto-grow"></a>Autouzupełnianie magazynu
 
-Automatyczne zwiększanie ilości miejsca do magazynowania uniemożliwia serwerowi wyjście z magazynu i staje się tylko do odczytu. Jeśli funkcja automatycznego zwiększania rozmiaru magazynu jest włączona, magazyn automatycznie rośnie bez wpływu na obciążenie. W przypadku serwerów o rozmiarze mniejszym niż 100 GB zainicjowany magazyn jest zwiększany o 5 GB, gdy tylko ilość wolnego miejsca w magazynie jest mniejsza niż 1 GB lub 10% zainicjowanego magazynu. W przypadku serwerów mających więcej niż 100 GB zasobów magazynowych zainicjowany rozmiar magazynu jest zwiększany o 5%, gdy ilość wolnego miejsca w magazynie jest mniejsza od 5% rozmiaru magazynu. Obowiązują maksymalne limity magazynu określone powyżej.
+Automatyczne zwiększanie ilości miejsca do magazynowania uniemożliwia serwerowi wyjście z magazynu i staje się tylko do odczytu. Jeśli funkcja automatycznego zwiększania rozmiaru magazynu jest włączona, magazyn automatycznie rośnie bez wpływu na obciążenie. W przypadku serwerów o rozmiarze mniejszym niż 100 GB zainicjowany magazyn jest zwiększany o 5 GB, gdy ilość wolnego miejsca w magazynie jest mniejsza niż 10% magazynu zasobów. W przypadku serwerów mających więcej niż 100 GB zasobów magazynowych zainicjowany rozmiar magazynu jest zwiększany o 5%, gdy ilość wolnego miejsca w magazynie jest mniejsza niż 10% rozmiaru magazynu. Obowiązują maksymalne limity magazynu określone powyżej.
 
-Jeśli na przykład Zainicjowano obsługę administracyjną 1000 GB miejsca w magazynie, a rzeczywiste wykorzystanie przekracza 950 GB, rozmiar magazynu serwera zostanie zwiększony do 1050 GB. Alternatywnie, jeśli masz zainicjowany 10 GB miejsca w magazynie, rozmiar magazynu zostanie zwiększony do 15 GB, gdy jest mniej niż 1 GB miejsca w magazynie.
+Jeśli na przykład Zainicjowano obsługę administracyjną 1000 GB miejsca w magazynie, a rzeczywiste wykorzystanie przekracza 900 GB, rozmiar magazynu serwera zostanie zwiększony do 1050 GB. Alternatywnie, jeśli masz zainicjowany 10 GB miejsca w magazynie, rozmiar magazynu zostanie zwiększony do 15 GB, gdy jest mniej niż 1 GB miejsca w magazynie.
 
 Należy pamiętać, że magazyn można skalować w górę, nie w dół.
 
 ## <a name="backup"></a>Tworzenie kopii zapasowej
 
-Usługa automatycznie pobiera kopie zapasowe serwera. Minimalny okres przechowywania kopii zapasowych wynosi siedem dni. Możesz ustawić okres przechowywania na maksymalnie 35 dni. Przechowywanie można zmienić w dowolnym momencie w okresie istnienia serwera. Można wybrać między lokalnie nadmiarowe i geograficznie nadmiarowe kopie zapasowe. Dublowane nadmiarowe kopie zapasowe są również przechowywane w [obszarze](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) geograficznym regionu obszaru, w którym został utworzony serwer. Ta nadmiarowość zapewnia poziom ochrony w przypadku awarii. Możliwe jest również przywrócenie serwera do dowolnego innego regionu świadczenia usługi Azure, w którym usługa jest dostępna w geograficznie nadmiarowych kopiach zapasowych. Po utworzeniu serwera nie jest możliwe przeprowadzenie zmiany między tymi dwiema opcjami magazynu kopii zapasowych.
+Usługa automatycznie pobiera kopie zapasowe serwera. Minimalny okres przechowywania kopii zapasowych wynosi siedem dni. Możesz ustawić okres przechowywania na maksymalnie 35 dni. Przechowywanie można zmienić w dowolnym momencie w okresie istnienia serwera. Można wybrać między lokalnie nadmiarowe i geograficznie nadmiarowe kopie zapasowe. Dublowane nadmiarowe kopie zapasowe są również przechowywane w [obszarze geograficznym](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) regionu obszaru, w którym został utworzony serwer. Ta nadmiarowość zapewnia poziom ochrony w przypadku awarii. Możliwe jest również przywrócenie serwera do dowolnego innego regionu świadczenia usługi Azure, w którym usługa jest dostępna w geograficznie nadmiarowych kopiach zapasowych. Po utworzeniu serwera nie jest możliwe przeprowadzenie zmiany między tymi dwiema opcjami magazynu kopii zapasowych.
 
 ## <a name="scale-resources"></a>Skalowanie zasobów
 
@@ -113,7 +113,7 @@ Skalowanie magazynu i zmiana okresu przechowywania kopii zapasowych to prawdziwe
 
 Najbardziej aktualne informacje o cenach można znaleźć na [stronie cennika](https://azure.microsoft.com/pricing/details/mysql/)usługi. Aby wyświetlić koszt dla wybranej konfiguracji, [Azure Portal](https://portal.azure.com/#create/Microsoft.MySQLServer) przedstawia miesięczny koszt na karcie **warstwa cenowa** na podstawie wybranych opcji. Jeśli nie masz subskrypcji platformy Azure, możesz skorzystać z kalkulatora cen platformy Azure, aby uzyskać szacowaną cenę. W witrynie sieci Web [kalkulatora cen platformy Azure](https://azure.microsoft.com/pricing/calculator/) wybierz pozycję **Dodaj elementy**, rozwiń kategorię **bazy danych** i wybierz **Azure Database for MySQL** , aby dostosować opcje.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się [, jak utworzyć serwer MySQL w portalu](howto-create-manage-server-portal.md).
 - Dowiedz się więcej o [limitach usługi](concepts-limits.md).

@@ -1,19 +1,20 @@
 ---
-title: Utwórz skrypt programu Azure PowerShell — usługa Azure Cosmos DB, interfejs API Gremlin bazy danych i grafu
-description: Utwórz skrypt programu Azure PowerShell — usługa Azure Cosmos DB, interfejs API Gremlin bazy danych i grafu
+title: Skrypt Azure PowerShell — Azure Cosmos DB tworzenia bazy danych i grafu interfejsu API Gremlin
+description: Skrypt Azure PowerShell — Azure Cosmos DB tworzenia bazy danych i grafu interfejsu API Gremlin
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-graph
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 92af72609aa4f6261dfbd41ae07ddacd4275ab39
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 1820195b59a370b9378283a35d1d058abde6eccd
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602479"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178967"
 ---
-# <a name="create-a-database-and-graph-for-azure-cosmos-db---gremlin-api"></a>Tworzenie bazy danych i grafu usługi Azure Cosmos DB — interfejs API Gremlin
+# <a name="create-a-database-and-graph-for-azure-cosmos-db---gremlin-api"></a>Tworzenie bazy danych i grafu dla interfejsu API Azure Cosmos DB Gremlin
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,12 +39,12 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | Polecenie | Uwagi |
 |---|---|
 |**Zasoby platformy Azure**| |
-| [Nowe AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Tworzy zasób. |
+| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Tworzy zasób. |
 |**Grupy zasobów platformy Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 |||
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat programu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](https://docs.microsoft.com/powershell/).
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 7/9/2019
 ms.author: b-juche
-ms.openlocfilehash: 06733103980086fad0975514ae3489c3652e428a
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 45164acd89fc9634d6929bafb35e64a5dc9f2b86
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846742"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178221"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Tworzenie woluminu NFS dla usługi Azure NetApp Files
 
@@ -44,7 +44,9 @@ Podsieć musi być delegowana do usługi Azure NetApp Files.
     * **Nazwa woluminu**      
         Określ nazwę tworzonego woluminu.   
 
-        Nazwa woluminu musi być unikatowa w ramach każdej puli pojemności. Musi zawierać co najmniej trzy znaki. Można użyć dowolnych znaków alfanumerycznych.
+        Nazwa woluminu musi być unikatowa w ramach każdej puli pojemności. Musi zawierać co najmniej trzy znaki. Można użyć dowolnych znaków alfanumerycznych.   
+
+        Nie można użyć `default` jako nazwy woluminu.
 
     * **Pula pojemności**  
         Określ pulę pojemności, w której ma zostać utworzony wolumin.
@@ -65,7 +67,7 @@ Podsieć musi być delegowana do usługi Azure NetApp Files.
         
         Jeśli podsieć nie została delegowana, można kliknąć pozycję **Utwórz nowe** na stronie Utwórz wolumin. Następnie na stronie Utwórz podsieć określ informacje o podsieci i wybierz pozycję **Microsoft.NetApp/woluminy**, aby delegować podsieć dla usługi Azure NetApp Files. W każdej sieci wirtualnej można delegować tylko jedną podsieć do Azure NetApp Files.   
  
-        ![Tworzenie woluminu](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
+        ![Utwórz wolumin](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![Tworzenie podsieci](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
@@ -87,7 +89,7 @@ Podsieć musi być delegowana do usługi Azure NetApp Files.
     Wolumin dziedziczy atrybuty Subskrypcja, Grupa zasobów i Lokalizacja z puli pojemności. Stan wdrożenia woluminu możesz monitorować na karcie Powiadomienia.
 
 
-## <a name="next-steps"></a>Kolejne kroki  
+## <a name="next-steps"></a>Następne kroki  
 
 * [Instalowanie lub odinstalowywanie woluminu dla maszyn wirtualnych z systemem Windows lub Linux](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Konfigurowanie zasad eksportu dla woluminu NFS](azure-netapp-files-configure-export-policy.md)

@@ -1,19 +1,20 @@
 ---
-title: Skrypt programu Azure PowerShell — usługa Azure Cosmos DB listy i Pobierz operacje dla interfejsu API tabel
-description: Skrypt programu Azure PowerShell — usługa Azure Cosmos DB listy i Pobierz operacje dla interfejsu API tabel
+title: Azure PowerShell listę Azure Cosmos DB skryptu i Pobierz operacje interfejs API tabel
+description: Azure PowerShell listę Azure Cosmos DB skryptu i Pobierz operacje interfejs API tabel
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 28394d1a5cb09caca243ad9f3a584aa2e55f8fe9
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: d4d299f9cec7170256e66ec161eff3976c5211ca
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603799"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178724"
 ---
-# <a name="list-and-get-tables-for-azure-cosmos-db---table-api"></a>Listy i Pobierz tabele usługi Azure Cosmos DB — interfejs API tabel
+# <a name="list-and-get-tables-for-azure-cosmos-db---table-api"></a>Wyświetlanie listy i pobieranie tabel dla Azure Cosmos DB-interfejs API tabel
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,12 +39,12 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | Polecenie | Uwagi |
 |---|---|
 |**Zasoby platformy Azure**| |
-| [Nowe AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Tworzy zasób. |
+| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Tworzy zasób. |
 |**Grupy zasobów platformy Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 |||
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat programu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](https://docs.microsoft.com/powershell/).
 

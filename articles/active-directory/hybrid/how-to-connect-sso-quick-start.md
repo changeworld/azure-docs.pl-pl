@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87764ed30182dc548fc3a260582174f121e27e24
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 29f94d6ff8045b7cae64957eeae00d2460ca3e37
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965214"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71176822"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory bezproblemowe logowanie jednokrotne: Szybki start
 
@@ -62,14 +62,14 @@ Zapewnij bezproblemowe logowanie jednokrotne za pomocą [Azure AD Connect](whati
 >[!NOTE]
 > Możesz również [włączyć bezproblemowe logowanie jednokrotne przy użyciu programu PowerShell](tshoot-connect-sso.md#manual-reset-of-the-feature) , jeśli Azure AD Connect nie spełnia wymagań. Użyj tej opcji, jeśli masz więcej niż jedną domenę na Active Directory Las, a chcesz mieć większą wartość dowolną dla domeny, dla której chcesz włączyć bezproblemowe logowanie jednokrotne.
 
-Jeśli wykonujesz nową instalację Azure AD Connect, wybierz niestandardową [ścieżkę instalacji](how-to-connect-install-custom.md). Na stronie **logowania użytkownika** wybierz opcję **Włącz logowanie** jednokrotne.
+Jeśli wykonujesz nową instalację Azure AD Connect, wybierz [niestandardową ścieżkę instalacji](how-to-connect-install-custom.md). Na stronie **logowania użytkownika** wybierz opcję **Włącz logowanie jednokrotne** .
 
 >[!NOTE]
 > Opcja będzie dostępna do wybrania tylko wtedy, gdy metoda logowania jest **synchronizacją skrótu hasła** lub **uwierzytelnianiem przekazującym**.
 
 ![Program Azure AD Connect: Logowanie użytkowników](./media/how-to-connect-sso-quick-start/sso8.png)
 
-Jeśli masz już instalację Azure AD Connect, wybierz stronę **logowania użytkownika** w Azure AD Connect, a następnie wybierz przycisk **dalej**. Jeśli używasz Azure AD Connect wersji 1.1.880.0 lub nowszej, opcja **Włącz logowanie** jednokrotne zostanie domyślnie wybrana. Jeśli używasz starszych wersji Azure AD Connect, zaznacz opcję **Włącz logowanie** jednokrotne.
+Jeśli masz już instalację Azure AD Connect, wybierz stronę **logowania użytkownika** w Azure AD Connect, a następnie wybierz przycisk **dalej**. Jeśli używasz Azure AD Connect wersji 1.1.880.0 lub nowszej, opcja **Włącz logowanie** jednokrotne zostanie domyślnie wybrana. Jeśli używasz starszych wersji Azure AD Connect, zaznacz opcję **Włącz logowanie jednokrotne** .
 
 ![Program Azure AD Connect: Zmiana logowania użytkownika](./media/how-to-connect-sso-quick-start/changeusersignin.png)
 
@@ -88,7 +88,7 @@ Postępuj zgodnie z tymi instrukcjami, aby sprawdzić, czy włączono bezproblem
 1. Zaloguj się do [Centrum administracyjnego Azure Active Directory](https://aad.portal.azure.com) przy użyciu poświadczeń administratora globalnego dla dzierżawy.
 2. W lewym okienku wybierz pozycję **Azure Active Directory** .
 3. Wybierz **Azure AD Connect**.
-4. Upewnij się, że funkcja bezproblemowego **logowania** jednokrotnego jest wyświetlana jako **włączona**.
+4. Upewnij się, że funkcja **bezproblemowego logowania jednokrotnego** jest wyświetlana jako **włączona**.
 
 ![Azure Portal: Okienko Azure AD Connect](./media/how-to-connect-sso-quick-start/sso10.png)
 
@@ -203,9 +203,9 @@ Bezproblemowe logowanie jednokrotne nie działa w trybie przeglądania prywatneg
 
 Aby przetestować funkcję dla określonego użytkownika, upewnij się, że zostały spełnione wszystkie następujące warunki:
   - Użytkownik loguje się na urządzeniu firmowym.
-  - Urządzenie jest przyłączone do domeny Active Directory. Urządzenie _nie_ musi być przyłączone do [usługi Azure AD](../active-directory-azureadjoin-overview.md).
+  - Urządzenie jest przyłączone do domeny Active Directory. Urządzenie _nie_ musi być [przyłączone do usługi Azure AD](../active-directory-azureadjoin-overview.md).
   - Urządzenie ma bezpośrednie połączenie z kontrolerem domeny (DC) w sieci przewodowej lub bezprzewodowej firmy lub za pośrednictwem połączenia dostępu zdalnego, takiego jak połączenie sieci VPN.
-  - [Funkcja](##step-3-roll-out-the-feature) dla tego użytkownika została przeprowadzona za pomocą zasady grupy.
+  - Funkcja dla tego użytkownika została [przeprowadzona](##step-3-roll-out-the-feature) za pomocą zasady grupy.
 
 W celu przetestowania scenariusza, w którym użytkownik wprowadza tylko nazwę użytkownika, ale nie hasło:
    - Zaloguj się do `https://myapps.microsoft.com/` programu w nowej sesji przeglądarki prywatnej.
@@ -221,7 +221,7 @@ W kroku 2 Azure AD Connect tworzy konta komputerów (reprezentujące usługę Az
 >[!IMPORTANT]
 >Klucz odszyfrowujący protokołu Kerberos na koncie komputera, w przypadku przecieków, może służyć do generowania biletów protokołu Kerberos dla dowolnego użytkownika w jego lesie usługi AD. Złośliwe podmioty mogą następnie personifikować logowania do usługi Azure AD dla użytkowników, których dotyczy naruszenie. Zdecydowanie zalecamy okresowe przeprowadzenie tych kluczy odszyfrowywania Kerberos — co najmniej raz na 30 dni.
 
-Aby uzyskać instrukcje dotyczące sposobu zestawiania kluczy, zobacz [Azure Active Directory bezproblemowe logowanie jednokrotne: Często zadawane pytania](how-to-connect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account). Pracujemy nad możliwością wprowadzenia zautomatyzowanego przejmowania kluczy.
+Aby uzyskać instrukcje dotyczące sposobu zestawiania kluczy, zobacz [Azure Active Directory bezproblemowe logowanie jednokrotne: Często zadawane pytania](how-to-connect-sso-faq.md). Pracujemy nad możliwością wprowadzenia zautomatyzowanego przejmowania kluczy.
 
 >[!IMPORTANT]
 >Nie musisz wykonywać tego kroku _natychmiast_ po włączeniu tej funkcji. Przewinięcie kluczy odszyfrowywania Kerberos co najmniej raz na 30 dni.

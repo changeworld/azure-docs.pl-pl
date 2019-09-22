@@ -1,5 +1,5 @@
 ---
-title: Przykłady zapytań Lucene — Azure Search
+title: Użyj pełnej składni zapytań Lucene — Azure Search
 description: Składnia zapytań Lucene dla wyszukiwania rozmytego, wyszukiwania w sąsiedztwie, zwiększania terminów, wyszukiwania wyrażeń regularnych i wyszukiwania symboli wieloznacznych w usłudze Azure Search.
 author: HeidiSteen
 manager: nitinme
@@ -7,19 +7,19 @@ tags: Lucene query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 09/20/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 3f6a39129db9e8c43a5e2de68d919ba1037c3f5c
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: fcfc668022d0d8fc74258657bb93642aec49bd08
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648234"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178155"
 ---
-# <a name="query-examples-using-full-lucene-search-syntax-advanced-queries-in-azure-search"></a>Przykłady zapytań wykorzystujących "pełną" składnię wyszukiwania Lucene (zapytania zaawansowane w Azure Search)
+# <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-search"></a>Użyj "pełnej" składni wyszukiwania Lucene (zapytania zaawansowane w Azure Search)
 
-Podczas konstruowania zapytań dla Azure Search, można zastąpić domyślny [prosty Analizator zapytań](query-simple-syntax.md) , używając analizatora zapytań o więcej rozległych [lucene w Azure Search](query-lucene-syntax.md) , aby sformułować wyspecjalizowane i zaawansowane definicje zapytań. 
+Podczas konstruowania zapytań dla Azure Search, można zastąpić domyślny [prosty Analizator zapytań](query-simple-syntax.md) , używając [analizatora zapytań o więcej rozległych lucene w Azure Search](query-lucene-syntax.md) , aby sformułować wyspecjalizowane i zaawansowane definicje zapytań. 
 
 Parser Lucene obsługuje złożone konstrukcje zapytań, takie jak zapytania o zakresie pól, Wyszukiwanie rozmyte i symbole wieloznaczne, wyszukiwanie w sąsiedztwie, zwiększanie terminów i wyszukiwanie wyrażeń regularnych. Dodatkowa moc jest dostarczana z dodatkowymi wymaganiami dotyczącymi przetwarzania, dlatego należy oczekiwać nieco dłuższego czasu wykonania. W tym artykule można zapoznać się z przykładami pokazującymi operacje zapytania dostępne w przypadku korzystania z pełnej składni.
 
@@ -213,7 +213,7 @@ Zwiększenie warunków dotyczy klasyfikacji dokumentu, jeśli zawiera on podwyż
 
 ### <a name="full-urls"></a>Pełne adresy URL
 
-W tym zapytaniu "Before" Wyszukaj zadania z takim analitykiem *komputerowym* i zwróć uwagę na to, że nie ma żadnych wyników zarówno dla *komputera* , jak i *analityka*, ale zadania *komputera* znajdują się w górnej części wyników.
+W tym zapytaniu "Before" Wyszukaj zadania z takim *analitykiem komputerowym* i zwróć uwagę na to, że nie ma żadnych wyników zarówno dla *komputera* , jak i *analityka*, ale zadania *komputera* znajdują się w górnej części wyników.
 
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst

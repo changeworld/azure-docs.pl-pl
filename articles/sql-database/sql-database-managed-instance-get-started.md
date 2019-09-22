@@ -7,16 +7,16 @@ ms.subservice: managed-instance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
-author: jovanpop-msft
-ms.author: jovanpop
+author: danimir
+ms.author: danil
 ms.reviewer: sstein, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: 0344fc834cb1ef29c91bc52239d1df2706d1ca81
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 5f37ca8e22b07e39eda87e11f52358e1d1497c60
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71101672"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178513"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Szybki start: Tworzenie wystąpienia zarządzanego usługi Azure SQL Database
 
@@ -41,38 +41,83 @@ Poniższe kroki przedstawiają sposób tworzenia wystąpienia zarządzanego.
 
    ![Tworzenie wystąpienia zarządzanego](./media/sql-database-managed-instance-get-started/create-managed-instance.png)
 
-4. Wypełnij formularz **wystąpienia zarządzanego SQL** z żądanymi informacjami, korzystając z informacji podanych w poniższej tabeli.
+4. Wypełnij formularz **tworzenie SQL Database tworzenia wystąpienia zarządzanego** , wypełniając informacje wymagane na karcie podstawowa. Skonfiguruj dodatkowe ustawienia przy użyciu sieci i ustawień zaawansowanych.
+
+### <a name="basic-tab"></a>Karta podstawowa
+
+Wypełnij obowiązkowe informacje wymagane na karcie **podstawowe** , korzystając z poniższej tabeli. Jest to minimalny zestaw informacji umożliwiających zainicjowanie wystąpienia zarządzanego.
+
+   ![Utwórz kartę podstawową dla wystąpienia zarządzanego](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-basics.png)
 
    | Ustawienie| Sugerowana wartość | Opis |
    | ------ | --------------- | ----------- |
    | **Subskrypcja** | Twoja subskrypcja. | Subskrypcja, która zapewnia uprawnienia do tworzenia nowych zasobów. |
-   |**Nazwa wystąpienia zarządzanego**|Dowolna prawidłowa nazwa.|Prawidłowe nazwy opisano w artykule [Ograniczenia i reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
-   |**Identyfikator logowania administratora wystąpienia zarządzanego**|Dowolna prawidłowa nazwa użytkownika.|Prawidłowe nazwy opisano w artykule [Ograniczenia i reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). Nie należy używać elementu "serveradmin", ponieważ jest to zastrzeżona rola na poziomie serwera.|
-   |**Hasło**|Dowolne prawidłowe hasło.|Hasło musi mieć co najmniej 16 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).|
-   |**Strefa czasowa**|Strefa czasowa, która ma być zaobserwowana przez wystąpienie zarządzane.|Aby uzyskać więcej informacji, zobacz [strefy czasowe](sql-database-managed-instance-timezone.md).|
-   |**Sortowanie**|Sortowanie, które ma być używane dla wystąpienia zarządzanego.|W przypadku migrowania baz danych z SQL Server sprawdź sortowanie źródłowe za `SELECT SERVERPROPERTY(N'Collation')` pomocą i Użyj tej wartości. Aby uzyskać informacje o sortowaniu, zobacz [Ustawianie lub zmienianie sortowania serwera](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation).|
-   |**Location**|Lokalizacja, w której chcesz utworzyć wystąpienie zarządzane.|Aby uzyskać informacje na temat regionów, zobacz [Regiony systemu Azure](https://azure.microsoft.com/regions/).|
-   |**Sieć wirtualna**|Wybierz opcję **Utwórz nową sieć wirtualną** lub prawidłową sieć wirtualną i podsieć.| Jeśli sieć lub podsieć jest niedostępna, należy ją [zmodyfikować, aby spełniała wymagania sieciowe](sql-database-managed-instance-configure-vnet-subnet.md) przed wybraniem jej jako docelowej dla nowego wystąpienia zarządzanego. Aby uzyskać informacje o wymaganiach dotyczących konfigurowania środowiska sieciowego dla wystąpienia zarządzanego, zobacz [Konfigurowanie sieci wirtualnej dla wystąpienia zarządzanego](sql-database-managed-instance-connectivity-architecture.md). |
-   |**Włącz publiczny punkt końcowy**   |Zaznacz tę opcję, aby włączyć publiczny punkt końcowy   |Aby można było uzyskać dostęp do zarządzanego wystąpienia za pomocą publicznego punktu końcowego danych, należy sprawdzić, czy należy zaznaczyć opcję **publiczny punkt końcowy** .| 
-   |**Zezwalaj na dostęp z**   |Wybierz jedną z opcji: <ul> <li>**Usługi platformy Azure**</li> <li>**Internet**</li> <li>**Brak dostępu**</li></ul>   |Środowisko portalu umożliwia skonfigurowanie grupy zabezpieczeń z publicznym punktem końcowym. </br> </br> Na podstawie Twojego scenariusza wybierz jedną z następujących opcji: </br> <ul> <li>Usługi platformy Azure — zalecane w przypadku nawiązywania połączenia z poziomu usługi Power BI lub innej dzierżawy. </li> <li> Używanie Internetu do celów testowych, gdy chcesz szybko utworzyć wystąpienie zarządzane. Nie jest to zalecane do użycia w środowiskach produkcyjnych. </li> <li> Brak dostępu — ta opcja tworzy regułę odmowy zabezpieczeń. Należy zmodyfikować tę regułę, aby umożliwić dostęp do wystąpienia zarządzanego za poorednictwem publicznego punktu końcowego. </li> </ul> </br> Aby uzyskać więcej informacji o zabezpieczeniach publicznego punktu końcowego, zobacz [bezpieczne używanie Azure SQL Database wystąpienia zarządzanego z publicznym punktem końcowym](sql-database-managed-instance-public-endpoint-securely.md).|
-   |**Typ połączenia**|Wybierz między serwerem proxy a typem połączenia przekierowania.|Aby uzyskać więcej informacji na temat typów połączeń, zobacz [Azure SQL Database Policy Connection](sql-database-connectivity-architecture.md#connection-policy).|
-   |**Grupa zasobów**|nowa lub istniejąca grupa zasobów.|Prawidłowe nazwy grup zasobów opisano w artykule [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Reguły i ograniczenia nazewnictwa).|
+   | **Grupa zasobów** | nowa lub istniejąca grupa zasobów.|Prawidłowe nazwy grup zasobów opisano w artykule [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Reguły i ograniczenia nazewnictwa).|
+   | **Nazwa wystąpienia zarządzanego** | Dowolna prawidłowa nazwa.|Prawidłowe nazwy opisano w artykule [Ograniczenia i reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
+   | **Region** |Region, w którym chcesz utworzyć wystąpienie zarządzane.|Aby uzyskać informacje na temat regionów, zobacz [Regiony systemu Azure](https://azure.microsoft.com/regions/).|
+| **Identyfikator logowania administratora wystąpienia zarządzanego** | Dowolna prawidłowa nazwa użytkownika. | Prawidłowe nazwy opisano w artykule [Ograniczenia i reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). Nie należy używać elementu "serveradmin", ponieważ jest to zastrzeżona rola na poziomie serwera.|
+   | **Hasło** | Dowolne prawidłowe hasło.| Hasło musi mieć co najmniej 16 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).|
 
-   ![Formularz wystąpienia zarządzanego](./media/sql-database-managed-instance-get-started/managed-instance-create-form.png)
+- Wybierz pozycję **Konfiguruj wystąpienie zarządzane** , aby zmienić rozmiar zasobów obliczeniowych i magazynu oraz przejrzeć opcje warstwy cenowej.
+- Użyj suwaków lub pól tekstowych, aby określić ilość pamięci i liczbę rdzeni wirtualnych.
+- Po zakończeniu wybierz pozycję **Zastosuj** , aby zapisać swój wybór. 
 
-5. Aby użyć wystąpienia zarządzanego jako pomocniczej grupy trybu failover wystąpienia, zaznacz pole wyboru i określ wystąpienie zarządzane DnsAzurePartner. 
-6. Wybierz pozycję **warstwa cenowa** , aby zmienić rozmiar zasobów obliczeniowych i magazynu oraz przejrzeć opcje warstwy cenowej. Wartość domyślna to warstwa cenowa Ogólnego przeznaczenia z 32 GB pamięci i 16 rdzeniami wirtualnymi.
-7. Użyj suwaków lub pól tekstowych, aby określić ilość pamięci i liczbę rdzeni wirtualnych.
-8. Po zakończeniu wybierz pozycję **Zastosuj** , aby zapisać swój wybór. 
-9. Wybierz pozycję **Utwórz**, aby wdrożyć wystąpienie zarządzane.
-10. Wybierz ikonę **powiadomienia** , aby wyświetlić stan wdrożenia.
+  ![Formularz wystąpienia zarządzanego](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-configure-performance.png)
 
-    ![Postęp wdrażania wystąpienia zarządzanego](./media/sql-database-managed-instance-get-started/deployment-progress.png)
+Możesz kliknąć pozycję **Przegląd + Utwórz** , aby przejrzeć wybrane opcje przed utworzeniem wystąpienia zarządzanego, lub skonfigurować sieć, klikając przycisk **dalej: Sieć**.
 
-11. Wybierz pozycję **Wdrażanie jest w toku**, aby otworzyć okno wystąpienia zarządzanego i dokładniej monitorować postęp wdrażania. 
+### <a name="networking-tab"></a>Karta Sieć
+
+Wypełnij informacje opcjonalne na karcie Sieć, korzystając z poniższej tabeli. W przypadku pominięcia tych informacji zostaną zastosowane ustawienia domyślne.
+
+   ![Karta Tworzenie sieci wystąpienia zarządzanego](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-networking.png)
+
+   | Ustawienie| Sugerowana wartość | Opis |
+   | ------ | --------------- | ----------- |
+   | **Sieć wirtualna** | Wybierz opcję **Utwórz nową sieć wirtualną** lub prawidłową sieć wirtualną i podsieć.| Jeśli sieć lub podsieć jest niedostępna, należy ją [zmodyfikować, aby spełniała wymagania sieciowe](sql-database-managed-instance-configure-vnet-subnet.md) przed wybraniem jej jako docelowej dla nowego wystąpienia zarządzanego. Aby uzyskać informacje o wymaganiach dotyczących konfigurowania środowiska sieciowego dla wystąpienia zarządzanego, zobacz [Konfigurowanie sieci wirtualnej dla wystąpienia zarządzanego](sql-database-managed-instance-connectivity-architecture.md). |
+   | **Typ połączenia** | Wybierz między serwerem proxy a typem połączenia przekierowania.|Aby uzyskać więcej informacji na temat typów połączeń, zobacz [Azure SQL Database Policy Connection](sql-database-connectivity-architecture.md#connection-policy).|
+   | **Publiczny punkt końcowy**  | Wybierz tę opcję, aby włączyć publiczny punkt końcowy | Aby można było uzyskać dostęp do zarządzanego wystąpienia za pomocą publicznego punktu końcowego **danych, należy wybrać opcję publiczny** punkt końcowy. | 
+   | **Zezwalaj na dostęp z** (w przypadku gdy publiczny punkt końcowy jest ustawiony na wartość włączone) | Wybierz jedną z opcji: <ul> <li>**Usługi platformy Azure**</li> <li>**Internet**</li> <li>**Brak dostępu**</li></ul>   |Środowisko portalu umożliwia skonfigurowanie grupy zabezpieczeń z publicznym punktem końcowym. </br> </br> Na podstawie Twojego scenariusza wybierz jedną z następujących opcji: </br> <ul> <li>Usługi platformy Azure — zalecane w przypadku nawiązywania połączenia z poziomu usługi Power BI lub innej dzierżawy. </li> <li> Używanie Internetu do celów testowych, gdy chcesz szybko utworzyć wystąpienie zarządzane. Nie jest to zalecane do użycia w środowiskach produkcyjnych. </li> <li> Brak dostępu — ta opcja tworzy regułę odmowy zabezpieczeń. Należy zmodyfikować tę regułę, aby umożliwić dostęp do wystąpienia zarządzanego za poorednictwem publicznego punktu końcowego. </li> </ul> </br> Aby uzyskać więcej informacji o zabezpieczeniach publicznego punktu końcowego, zobacz [bezpieczne używanie Azure SQL Database wystąpienia zarządzanego z publicznym punktem końcowym](sql-database-managed-instance-public-endpoint-securely.md).|
+
+Możesz wybrać pozycję **Przegląd + Utwórz** , aby przejrzeć wybrane opcje przed utworzeniem wystąpienia zarządzanego, lub skonfigurować dodatkowe ustawienia, klikając przycisk **dalej: Ustawienia**dodatkowe.
+
+### <a name="additional-settings-tab"></a>Karta Ustawienia dodatkowe
+
+Wypełnij opcjonalne informacje na karcie **Ustawienia dodatkowe** , korzystając z poniższej tabeli. W przypadku pominięcia tych informacji zostaną zastosowane ustawienia domyślne.
+
+   ![Karta Tworzenie dodatkowych ustawień wystąpienia zarządzanego](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-additional-settings.png)
+
+   | Ustawienie| Sugerowana wartość | Opis |
+   | ------ | --------------- | ----------- |
+   | **Sortowanie** | Sortowanie, które ma być używane dla wystąpienia zarządzanego.|W przypadku migrowania baz danych z SQL Server sprawdź sortowanie źródłowe za `SELECT SERVERPROPERTY(N'Collation')` pomocą i Użyj tej wartości. Aby uzyskać informacje o sortowaniu, zobacz [Ustawianie lub zmienianie sortowania serwera](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation).|   
+   | **Strefa czasowa** | Strefa czasowa, która ma być zaobserwowana przez wystąpienie zarządzane.|Aby uzyskać więcej informacji, zobacz [strefy czasowe](sql-database-managed-instance-timezone.md).|
+   | **Użyj jako dodatkowego trybu failover** | Aby użyć wystąpienia zarządzanego jako pomocniczej grupy trybu failover wystąpienia, wybierz pozycję tak. |
+   | **Podstawowe wystąpienie zarządzane** (w przypadku użycia jako pomocniczy tryb failover ma ustawioną wartość tak) | Wybierz podstawowe wystąpienie zarządzane (musi już istnieć), z którym tworzone wystąpienie zarządzane zostanie dołączone w tej samej strefie DNS. Jest to krok wstępny służący do włączania tworzenia konfiguracji grupy trybu failover. Aby uzyskać szczegółowe [informacje, zobacz Samouczek: Dodaj wystąpienie zarządzane SQL Database do grupy](sql-database-managed-instance-failover-group-tutorial.md)trybu failover. |
+
+### <a name="review--create-tab"></a>Przejrzyj i Utwórz kartę
+
+1. Wybierz kartę **Recenzja + tworzenie** , aby przejrzeć wybrane opcje przed utworzeniem wystąpienia zarządzanego.
+
+   ![Przegląd i tworzenie wystąpienia zarządzanego](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-review-create.png)
+
+1. Wybierz pozycję **Utwórz** , aby rozpocząć Inicjowanie obsługi administracyjnej wystąpienia zarządzanego.
 
 > [!IMPORTANT]
-> W przypadku pierwszego wystąpienia w podsieci czas wdrożenia jest zazwyczaj znacznie dłuższy niż w kolejnych wystąpieniach. Nie anuluj operacji wdrażania, ponieważ proces trwa dłużej niż oczekiwano.
+> Wdrożenie wystąpienia zarządzanego jest długotrwałą operacją. Wdrożenie pierwszego wystąpienia w podsieci zwykle trwa znacznie dłużej niż wdrażanie w podsieci z istniejącymi wystąpieniami zarządzanymi. Aby uzyskać średni czas udostępniania, zobacz [operacje zarządzania wystąpieniami zarządzanymi](sql-database-managed-instance.md#managed-instance-management-operations).
+
+### <a name="monitor-deployment-progress"></a>Monitorowanie postępu wdrażania
+
+1. Wybierz ikonę **powiadomienia** , aby wyświetlić stan wdrożenia.
+
+    ![Postęp wdrażania wystąpienia zarządzanego](./media/sql-database-managed-instance-get-started/in-progress/mi-create-deployment-in-progress.png)
+
+1. Wybierz pozycję **wdrożenie w toku** dla powiadomienia, aby otworzyć okno wystąpienia zarządzane, aby dodatkowo monitorować postęp wdrażania. 
+
+> [!TIP]
+> W przypadku zamknięcia przeglądarki sieci Web lub przechodzenia poza ekran postępu wdrażania wykonaj następujące kroki, aby zlokalizować ekran postępu wdrażania:
+> 1. W Azure Portal Otwórz grupę zasobów (wprowadzoną na karcie **podstawowa** ), w której wdrażasz wystąpienie zarządzane.
+> 2. Wybierz pozycję **wdrożenia**.
+> 3. Wybierz operację wdrażania wystąpienia zarządzanego w toku.
 
 ## <a name="review-resources-and-retrieve-your-fully-qualified-server-name"></a>Przeglądanie zasobów i pobieranie w pełni kwalifikowanej nazwy serwera
 
@@ -98,7 +143,7 @@ Po pomyślnym wdrożeniu zapoznaj się z utworzonymi zasobami i Pobierz w pełni
 
    ![Reguły zabezpieczeń](./media/sql-database-managed-instance-get-started/security-rules.png)
 
-6. Wróć do grupy zasobów, a następnie wybierz wystąpienie zarządzane.
+6. Wróć do grupy zasobów i wybierz swoje wystąpienie zarządzane.
 
    ![Wystąpienie zarządzane](./media/sql-database-managed-instance-get-started/managed-instance.png)
 

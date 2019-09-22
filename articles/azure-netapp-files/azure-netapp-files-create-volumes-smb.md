@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 7/9/2019
+ms.date: 9/20/2019
 ms.author: b-juche
-ms.openlocfilehash: 3cd60f390f0233e2923660fc39675b5a307d8d8f
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: a2cfd7937bff10dae4601cb9727cfe43e4d61ca0
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515420"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178277"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Tworzenie woluminu SMB dla usługi Azure NetApp Files
 
@@ -64,7 +64,7 @@ Podsieć musi być delegowana do usługi Azure NetApp Files.
 
     Przestrzeń adresowa dla sieci wirtualnej, w której wdrożono Azure NetApp Files, musi zostać dodana do nowej lub istniejącej lokacji Active Directory (w której znajduje się kontroler domeny osiągalny przez Azure NetApp Files). 
 
-* Określone serwery DNS muszą być dostępne z delegowanej [podsieci](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet) Azure NetApp Files.  
+* Określone serwery DNS muszą być dostępne z [delegowanej podsieci](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet) Azure NetApp Files.  
 
     Zapoznaj się z tematem [wskazówki dotyczące planowania sieci Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies) obsługiwanych topologii sieci.
 
@@ -118,7 +118,9 @@ Podsieć musi być delegowana do usługi Azure NetApp Files.
     * **Nazwa woluminu**      
         Określ nazwę tworzonego woluminu.   
 
-        Nazwa woluminu musi być unikatowa w ramach każdej puli pojemności. Musi zawierać co najmniej trzy znaki. Można użyć dowolnych znaków alfanumerycznych.
+        Nazwa woluminu musi być unikatowa w ramach każdej puli pojemności. Musi zawierać co najmniej trzy znaki. Można użyć dowolnych znaków alfanumerycznych.   
+
+        Nie można użyć `default` jako nazwy woluminu.
 
     * **Pula pojemności**  
         Określ pulę pojemności, w której ma zostać utworzony wolumin.
@@ -139,7 +141,7 @@ Podsieć musi być delegowana do usługi Azure NetApp Files.
         
         Jeśli podsieć nie została delegowana, można kliknąć pozycję **Utwórz nowe** na stronie Utwórz wolumin. Następnie na stronie Utwórz podsieć określ informacje o podsieci i wybierz pozycję **Microsoft.NetApp/woluminy**, aby delegować podsieć dla usługi Azure NetApp Files. W każdej sieci wirtualnej można delegować tylko jedną podsieć do Azure NetApp Files.   
  
-        ![Tworzenie woluminu](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
+        ![Utwórz wolumin](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![Tworzenie podsieci](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 

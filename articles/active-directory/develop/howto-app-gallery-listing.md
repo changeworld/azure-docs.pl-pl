@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba4beeff5484f774e801842f06d694af456c4e96
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 88d74fe794f4de95b7ba8b0dd5575ca56d2016e5
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033747"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71176853"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Instrukcje: Wyświetlanie listy aplikacji w galerii aplikacji usługi Azure Active Directory
 
@@ -80,7 +80,7 @@ Aby wyświetlić listę aplikacji w galerii aplikacji usługi Azure AD, najpierw
     ![Oś czasu wyświetlania aplikacji OpenID Connect Connect w galerii](./media/howto-app-gallery-listing/openid.png)
 
     * Jeśli chcesz dodać aplikację do listy w galerii za pomocą OpenID Connect Connect, wybierz pozycję **OpenID Connect connect & OAuth 2,0** .
-    * Jeśli masz jakieś problemy dotyczące dostępu, skontaktuj się z [zespołem ds. integracji rejestracji jednokrotnej usługi Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
+    * Jeśli masz jakieś problemy dotyczące dostępu, skontaktuj się z [zespołem ds. integracji rejestracji jednokrotnej usługi Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
 - **SAML 2,0** lub **WS-karmione**: Jeśli aplikacja obsługuje protokół SAML 2,0, możesz zintegrować go bezpośrednio z dzierżawą usługi Azure AD przy użyciu [instrukcji, aby dodać aplikację](../active-directory-saas-custom-apps.md)niestandardową.
 
@@ -98,6 +98,12 @@ Utwórz aplikację sieci Web, która zawiera stronę logowania w formacie HTML, 
 * Jeśli chcesz dodać aplikację do listy w galerii przy użyciu hasła logowania jednokrotnego, wybierz pozycję Logowanie jednokrotne jako **hasło** powyżej.
 * Jeśli masz jakieś problemy dotyczące dostępu, skontaktuj się z [zespołem ds. integracji rejestracji jednokrotnej usługi Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
+## <a name="requesting-for-user-provisioning"></a>Żądanie aprowizacji użytkownika
+
+Wykonaj poniższe czynności, aby zażądać aprowizacji użytkowników —
+
+   ![Oś czasu wyświetlania aplikacji SAML w galerii](./media/howto-app-gallery-listing/user-provisioning.png)
+
 ## <a name="updateremove-existing-listing"></a>Aktualizuj/Usuń istniejącą listę
 
 Aby zaktualizować lub usunąć istniejącą aplikację w galerii aplikacji usługi Azure AD, należy najpierw przesłać żądanie w [portalu sieci aplikacji](https://microsoft.sharepoint.com/teams/apponboarding/Apps). Jeśli masz konto Office 365, użyj go do zalogowania się do tego portalu. W przeciwnym razie zaloguj się przy użyciu konto Microsoft (na przykład Outlook lub Hotmail).
@@ -106,9 +112,9 @@ Aby zaktualizować lub usunąć istniejącą aplikację w galerii aplikacji usł
 
     ![Oś czasu wyświetlania aplikacji SAML w galerii](./media/howto-app-gallery-listing/updateorremove.png)
 
-    * Jeśli chcesz zaktualizować istniejącą aplikację, wybierz pozycję **Aktualizuj istniejącą aplikację**.
-    * Jeśli chcesz usunąć istniejącą aplikację z galerii usługi Azure AD, wybierz pozycję **Usuń istniejącą aplikację**.
-    * Jeśli masz jakieś problemy dotyczące dostępu, skontaktuj się z [zespołem ds. integracji rejestracji jednokrotnej usługi Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
+    * Jeśli chcesz zaktualizować istniejącą aplikację, wybierz odpowiednią opcję zgodnie z wymaganiami.
+    * Jeśli chcesz usunąć istniejącą aplikację z galerii usługi Azure AD, wybierz pozycję **Usuń moją aplikację z galerii**.
+    * Jeśli masz jakieś problemy dotyczące dostępu, skontaktuj się z [zespołem ds. integracji rejestracji jednokrotnej usługi Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
 ## <a name="listing-requests-by-customers"></a>Wyświetlanie żądań według klientów
 
@@ -120,15 +126,15 @@ Poniżej znajduje się przepływ aplikacji żądanych przez klienta —
 
 ![Pokazuje przepływ aplikacji żądanych przez klienta](./media/howto-app-gallery-listing/customer-request.png)
 
-## <a name="timelines"></a>Osie czasu
+## <a name="timelines"></a>Osi czasu
 
 Oś czasu procesu tworzenia listy aplikacji SAML 2,0 lub WS-karmione w galerii to 7-10 dni robocze.
 
-   ![Oś czasu wyświetlania aplikacji SAML w galerii](./media/howto-app-gallery-listing/timeline.png)
+  ![Oś czasu wyświetlania aplikacji SAML w galerii](./media/howto-app-gallery-listing/timeline.png)
 
 Oś czasu procesu tworzenia listy aplikacji OpenID Connect Connect w galerii to 2-5 dni roboczych.
 
-   ![Oś czasu wyświetlania aplikacji SAML w galerii](./media/howto-app-gallery-listing/timeline2.png)
+  ![Oś czasu wyświetlania aplikacji SAML w galerii](./media/howto-app-gallery-listing/timeline2.png)
 
 ## <a name="escalations"></a>Ich eskalacji
 

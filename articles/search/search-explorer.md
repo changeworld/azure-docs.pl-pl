@@ -1,33 +1,30 @@
 ---
-title: Narzędzie Eksplorator wyszukiwania do wykonywania zapytań dotyczących danych w Azure Portal-Azure Search
-description: Użyj narzędzi Azure Portal, takich jak Eksplorator wyszukiwania, aby wykonywać zapytania dotyczące indeksów w Azure Search. Wprowadź wyszukiwane terminy lub w pełni kwalifikowane ciągi wyszukiwania, używając składni zaawansowanej.
+title: Używanie narzędzia Eksplorator wyszukiwania do wykonywania zapytań dotyczących danych w Azure Portal-Azure Search
+description: Eksplorator wyszukiwania jest wbudowany w Azure Portal, przydatny do eksplorowania zawartości i sprawdzania poprawności zapytań w programie Azure Search. Wprowadź ciągi dla wyszukiwania terminów lub fraz lub w pełni kwalifikowanych wyrażeń wyszukiwania z zaawansowaną składnią.
 manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 09/20/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: e941e487adaac38c4ec3bd61a58b4b0c61f4c80a
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: fe66787ea82a8f97470199e99faadb72b85c83b2
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649967"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178140"
 ---
-# <a name="search-explorer-for-querying-data-in-azure-search"></a>Eksplorator wyszukiwania do wykonywania zapytań dotyczących danych w Azure Search 
+# <a name="use-search-explorer-in-the-azure-portal-for-querying-documents-in-azure-search"></a>Użyj Eksploratora wyszukiwania w Azure Portal do wykonywania zapytań dotyczących dokumentów w Azure Search 
 
-W tym artykule pokazano, jak zbadać istniejący indeks Azure Search przy użyciu **Eksploratora wyszukiwania** w Azure Portal. Możesz użyć Eksploratora wyszukiwania do przesyłania prostych lub pełnych ciągów zapytań Lucene do dowolnego istniejącego indeksu w usłudze. 
+W tym artykule pokazano, jak zbadać istniejący indeks Azure Search przy użyciu **Eksploratora wyszukiwania** w Azure Portal. Eksplorator wyszukiwania można uruchomić na pasku poleceń, aby przesłać proste lub pełne wyrażenia zapytania Lucene do dowolnego istniejącego indeksu w usłudze. 
 
    ![Polecenie Search Explorer w portalu](./media/search-explorer/search-explorer-cmd2.png "Polecenie Search Explorer w portalu")
 
-
-Aby uzyskać pomoc dotyczącą rozpoczynania pracy, zobacz [Uruchamianie Eksploratora wyszukiwania](#start-search-explorer).
-
 ## <a name="basic-search-strings"></a>Podstawowe ciągi wyszukiwania
 
-W poniższych przykładach założono wbudowany indeks przykładowej Realestate. Aby uzyskać pomoc dotyczącą tworzenia tego [indeksu, zobacz Szybki Start: Importowanie, indeksowanie i zapytanie w Azure Portal](search-get-started-portal.md).
+W poniższych przykładach założono wbudowany indeks przykładowej nieruchomości. Ten indeks można utworzyć za pomocą Kreatora importowania danych w portalu, wybierając **przykłady** jako źródło danych.
 
 ### <a name="example-1---empty-search"></a>Przykład 1 — puste wyszukiwanie
 
@@ -146,7 +143,7 @@ Porady dotyczące wyszukiwania w **Eksploratorze wyszukiwania**:
 
 + Zapytania o dowolnej postaci, podobne do tego, co można wprowadzać w komercyjnej przeglądarce internetowej, są przydatne do testowania środowiska użytkownika końcowego. Na przykład przy założeniu wbudowanego przykładowego indeksu realestate można wprowadzić wartość "Seattle apartamentach jeziora Waszyngton", a następnie użyć kombinacji klawiszy Ctrl-F, aby znaleźć warunki w wynikach wyszukiwania. 
 
-+ Wyrażenia zapytania i filtru muszą być łączone w składni obsługiwane przez Azure Search. Wartość domyślna to [prosta składnia](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search), ale opcjonalnie można użyć pełnych [Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) dla bardziej zaawansowanych zapytań. [Wyrażenia filtru](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) są składnią OData.
++ Wyrażenia zapytania i filtru muszą być łączone w składni obsługiwane przez Azure Search. Wartość domyślna to [prosta składnia](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search), ale opcjonalnie można użyć [pełnych Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) dla bardziej zaawansowanych zapytań. [Wyrażenia filtru](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) są składnią OData.
 
 
 ## <a name="next-steps"></a>Następne kroki

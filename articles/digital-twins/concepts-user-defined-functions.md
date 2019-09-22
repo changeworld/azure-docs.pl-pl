@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/17/2019
 ms.author: alinast
-ms.openlocfilehash: f4aa7e6660e3febdca6e0e5b1ad9f11bebaa48ea
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 07facf06702a63df8ea93d43b9896b72322b209f
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638455"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178251"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>Przetwarzanie danych i funkcje zdefiniowane przez użytkownika
 
@@ -23,7 +23,7 @@ Usługa Azure Digital bliźniaczych reprezentacji oferuje zaawansowane możliwo�
 
 Gdy urządzenia wysyłają dane telemetryczne do usługi Azure Digital bliźniaczych reprezentacji, deweloperzy mogą przetwarzać dane w czterech fazach: *Walidacja*, *dopasowanie*, *Obliczanie*i *wysyłanie*.
 
-![Przepływ przetwarzania danych Digital bliźniaczych reprezentacji systemu Azure][1]
+[![Przepływ przetwarzania danych Digital bliźniaczych reprezentacji systemu Azure](media/concepts/digital-twins-data-processing-flow.png)](media/concepts/digital-twins-data-processing-flow.png#lightbox)
 
 1. Faza walidacji przekształca przychodzące komunikaty telemetryczne do powszechnie rozumiany format [obiektu transferu danych](https://docs.microsoft.com/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) . W tej fazie wykonywane jest również Walidacja urządzenia i czujnika.
 1. Etap dopasowywania umożliwia znalezienie odpowiednich funkcji zdefiniowanych przez użytkownika do uruchomienia. Wstępnie zdefiniowane dopasowania znajdują funkcje zdefiniowane przez użytkownika na podstawie informacji o urządzeniu, czujniku i miejscu z przychodzącego komunikatu telemetrii.
@@ -32,11 +32,9 @@ Gdy urządzenia wysyłają dane telemetryczne do usługi Azure Digital bliźniac
 
 ## <a name="data-processing-objects"></a>Obiekty przetwarzania danych
 
-Przetwarzanie danych w usłudze Azure Digital bliźniaczych reprezentacji składa się z definiowaniatrzech obiektów: dopasowań, *funkcji zdefiniowanych przez użytkownika*i przypisań *ról*.
+Przetwarzanie danych w usłudze Azure Digital bliźniaczych reprezentacji składa się z definiowania trzech obiektów: *dopasowań*, *funkcji zdefiniowanych przez użytkownika*i *przypisań ról*.
 
-![Obiekty przetwarzania danych Digital bliźniaczych reprezentacji na platformie Azure][2]
-
-<div id="matcher"></div>
+[![Obiekty przetwarzania danych Digital bliźniaczych reprezentacji na platformie Azure](media/concepts/digital-twins-user-defined-functions.png)](media/concepts/digital-twins-user-defined-functions.png#lightbox)
 
 ### <a name="matchers"></a>Dopasowanie
 
@@ -92,7 +90,7 @@ Dopasowania definiują zestaw warunków, które sprawdzają, jakie akcje odbywaj
 
 ### <a name="user-defined-functions"></a>Funkcje zdefiniowane przez użytkownika
 
-Funkcja zdefiniowana przez użytkownika jest funkcją niestandardową wykonywaną w izolowanym środowisku usługi Azure Digital bliźniaczych reprezentacji. Funkcje zdefiniowane przez użytkownika mają dostęp do komunikatu telemetrii nieprzetworzonej czujnika, gdy zostanie on odebrany. Funkcje zdefiniowane przez użytkownika mają również dostęp do przestrzennego wykresu i usługi dyspozytora. Po zarejestrowaniu funkcji zdefiniowanej przez użytkownika w grafie należy utworzyć odpowiednika (szczegółowo [powyżej](#matcher)), aby określić czas wykonywania funkcji. Na przykład gdy usługa Azure Digital bliźniaczych reprezentacji otrzymuje nową telemetrię z danego czujnika, dopasowana funkcja zdefiniowana przez użytkownika może obliczyć średnią przesunięcia z ostatnich kilku odczytów czujnika.
+Funkcja zdefiniowana przez użytkownika jest funkcją niestandardową wykonywaną w izolowanym środowisku usługi Azure Digital bliźniaczych reprezentacji. Funkcje zdefiniowane przez użytkownika mają dostęp do komunikatu telemetrii nieprzetworzonej czujnika, gdy zostanie on odebrany. Funkcje zdefiniowane przez użytkownika mają również dostęp do przestrzennego wykresu i usługi dyspozytora. Po zarejestrowaniu funkcji zdefiniowanej przez użytkownika w grafie należy utworzyć odpowiednika (szczegółowo [powyżej](#matchers)), aby określić czas wykonywania funkcji. Na przykład gdy usługa Azure Digital bliźniaczych reprezentacji otrzymuje nową telemetrię z danego czujnika, dopasowana funkcja zdefiniowana przez użytkownika może obliczyć średnią przesunięcia z ostatnich kilku odczytów czujnika.
 
 Funkcje zdefiniowane przez użytkownika mogą być zapisywane w języku JavaScript. Metody pomocnika współpracują z wykresem w środowisku wykonawczym zdefiniowanym przez użytkownika. Deweloperzy mogą wykonywać niestandardowe fragmenty kodu w odniesieniu do komunikatów telemetrycznych czujnika. Przykłady:
 
@@ -103,29 +101,22 @@ Funkcje zdefiniowane przez użytkownika mogą być zapisywane w języku JavaScri
 
 Aby uzyskać więcej informacji, zobacz [jak korzystać z funkcji zdefiniowanych przez użytkownika](./how-to-user-defined-functions.md).
 
-
 #### <a name="examples"></a>Przykłady
 
 [Repozytorium GitHub dla przykładu Digital bliźniaczych reprezentacji C# ](https://github.com/Azure-Samples/digital-twins-samples-csharp/) zawiera kilka przykładów funkcji zdefiniowanych przez użytkownika:
 - [Ta funkcja](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js) szuka wartości ditlenku węgla, ruchu i temperatury, aby określić, czy pomieszczenie jest dostępne z tymi wartościami w zakresie. [Samouczki dotyczące usługi Digital bliźniaczych reprezentacji](tutorial-facilities-udf.md) eksplorują tę funkcję w bardziej szczegółowy sposób. 
-- [Ta funkcja](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/multiplemotionsensors.js) szuka danych z wielu czujników ruchu i określa, że ilość miejsca jest dostępna, jeśli żadna z nich nie wykryje żadnego ruchu. Można łatwo zastąpić funkcję zdefiniowaną przez użytkownika w przewodniku [Szybki Start](quickstart-view-occupancy-dotnet.md)lub samouczków, [](tutorial-facilities-setup.md)wprowadzając zmiany wymienione w sekcji komentarzy pliku. 
-
-
+- [Ta funkcja](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/multiplemotionsensors.js) szuka danych z wielu czujników ruchu i określa, że ilość miejsca jest dostępna, jeśli żadna z nich nie wykryje żadnego ruchu. Można łatwo zastąpić funkcję zdefiniowaną przez użytkownika w przewodniku [Szybki Start](quickstart-view-occupancy-dotnet.md)lub [samouczków](tutorial-facilities-setup.md), wprowadzając zmiany wymienione w sekcji komentarzy pliku. 
 
 ### <a name="role-assignment"></a>Przypisanie roli
 
-Akcje funkcji zdefiniowane przez użytkownika podlegają [kontroli dostępu opartej na rolach](./security-role-based-access-control.md) usługi Azure Digital bliźniaczych reprezentacji w celu zabezpieczania danych w ramach usługi. Przypisania ról definiują, które funkcje zdefiniowane przez użytkownika mają odpowiednie uprawnienia do współdziałania z wykresem przestrzennym i jego jednostkami. Na przykład funkcja zdefiniowana przez użytkownika może mieć możliwość i uprawnienia do *tworzenia*, odczytywania, *aktualizowania*lub *usuwania* danych grafu w danym miejscu. Poziom dostępu zdefiniowany przez użytkownika jest sprawdzany, gdy funkcja zdefiniowana przez użytkownika prosi wykres o dane lub próbuje wykonać akcję. Aby uzyskać więcej informacji, zobacz [Kontrola dostępu oparta na rolach](./security-create-manage-role-assignments.md).
+Akcje funkcji zdefiniowane przez użytkownika podlegają [kontroli dostępu opartej na rolach](./security-role-based-access-control.md) usługi Azure Digital bliźniaczych reprezentacji w celu zabezpieczania danych w ramach usługi. Przypisania ról definiują, które funkcje zdefiniowane przez użytkownika mają odpowiednie uprawnienia do współdziałania z wykresem przestrzennym i jego jednostkami. Na przykład funkcja zdefiniowana przez użytkownika może mieć możliwość i uprawnienia do *tworzenia*, *odczytywania*, *aktualizowania*lub *usuwania* danych grafu w danym miejscu. Poziom dostępu zdefiniowany przez użytkownika jest sprawdzany, gdy funkcja zdefiniowana przez użytkownika prosi wykres o dane lub próbuje wykonać akcję. Aby uzyskać więcej informacji, zobacz [Kontrola dostępu oparta na rolach](./security-create-manage-role-assignments.md).
 
 Istnieje możliwość, aby można było wyzwolić funkcję zdefiniowaną przez użytkownika, która nie ma przypisań ról. W takim przypadku funkcja zdefiniowana przez użytkownika nie odczyta żadnych danych z grafu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby dowiedzieć się więcej o kierowaniu zdarzeń i komunikatów telemetrycznych do innych usług platformy Azure, Odczytaj [zdarzenia i komunikaty dotyczące trasy](./concepts-events-routing.md).
 
 - Aby dowiedzieć się więcej na temat tworzenia dopasowań, funkcji zdefiniowanych przez użytkownika i przypisań ról, Przeczytaj [Przewodnik dotyczący korzystania z funkcji zdefiniowanych przez użytkownika](./how-to-user-defined-functions.md).
 
 - Przejrzyj [dokumentację dotyczącą biblioteki klienta funkcji zdefiniowanej przez użytkownika](./reference-user-defined-functions-client-library.md).
-
-<!-- Images -->
-[1]: media/concepts/digital-twins-data-processing-flow.png
-[2]: media/concepts/digital-twins-user-defined-functions.png

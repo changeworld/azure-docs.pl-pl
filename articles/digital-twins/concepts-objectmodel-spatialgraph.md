@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/17/2019
 ms.author: alinast
-ms.openlocfilehash: 0bb7309ae452b2885be279d1ab38b8467397f2f8
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 37f2afbd9bae4ca6bccc5062515f166687d8913c
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638501"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71177071"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Zrozumienie modeli obiektów Digital bliźniaczych reprezentacji i grafu analizy przestrzennej
 
@@ -23,9 +23,7 @@ Modele obiektów Digital bliźniaczych reprezentacji opisują koncepcje, kategor
 
 Korzystając z modeli obiektów Digital bliźniaczych reprezentacji i Ontology na miejscu, można wypełnić _Wykres przestrzenny_. Wykresy przestrzenne to wirtualne reprezentacje wielu relacji między spacjami, urządzeniami i osobami, które są istotne dla rozwiązania IoT. Ten diagram przedstawia przykład wykresu przestrzennego, który używa inteligentnego kompilowania Ontology.
 
-![Kompilowanie wykresu przestrzennego Digital bliźniaczych reprezentacji][1]
-
-<a id="model"></a>
+[![Kompilowanie wykresu przestrzennego Digital bliźniaczych reprezentacji](media/concepts/digital-twins-spatial-graph-building.png)](media/concepts/digital-twins-spatial-graph-building.png#lightbox)
 
 Wykres przestrzenny zawiera razem miejsca, urządzenia, czujniki i użytkowników. Każda z nich jest połączona w sposób, który modeluje świecie rzeczywistym. W tym przykładzie miejsce 43 ma cztery piętra, każdy z wielu różnych obszarów. Użytkownicy są powiązani ze swoimi stacjami roboczymi i mają dostęp do fragmentów grafu. Administrator ma uprawnienia do wprowadzania zmian w grafie przestrzennym, podczas gdy odwiedzający ma uprawnienia do wyświetlania tylko niektórych danych kompilacji.
 
@@ -56,8 +54,6 @@ Inne kategorie obiektów to:
 - **Dopasowania** są obiektami, które określają, które UDF są wykonywane dla danego komunikatu telemetrii.
 - **Punkty końcowe** to lokalizacje, w których można kierować komunikaty telemetryczne i cyfrowe zdarzenia bliźniaczych reprezentacji, `Event Hub`na `Service Bus`przykład, `Event Grid`, i.
 
-<a id="graph"></a>
-
 ## <a name="spatial-intelligence-graph"></a>Wykres analizy przestrzennej
 
 Wykres przestrzenny to hierarchiczny wykres obszarów, urządzeń i osób zdefiniowanych w modelu obiektów Digital bliźniaczych reprezentacji. Wykres przestrzenny obsługuje dziedziczenie, filtrowanie, przechodzenie, skalowalność i rozszerzalność. Możesz zarządzać wykresem przestrzennym i korzystać z niego przy użyciu kolekcji interfejsów API REST.
@@ -82,14 +78,14 @@ Po wdrożeniu Digital bliźniaczych reprezentacji z [Azure Portal](https://porta
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| Name (Nazwa) | Zamień na |
+| Name | Zamień na |
 | --- | --- |
 | YOUR_INSTANCE_NAME | Nazwa używanego wystąpienia usługi Digital Twins |
 | YOUR_LOCATION | Region serwera, w którym jest hostowane używane wystąpienie |
 
  Pełny format adresu URL zostanie wyświetlony na tym obrazie.
 
-![Interfejs API zarządzania portalem Digital bliźniaczych reprezentacji][2]
+(![Interfejs API zarządzania portalem Digital bliźniaczych reprezentacji](media/concepts/digital-twins-spatial-graph-management-api-url.png)] (Media/koncepcje/Digital-Twins-Spatial-Graph-Management-API-URL. png # element lightbox)
 
 Aby uzyskać więcej informacji na temat korzystania z wykresów analizy przestrzennej, odwiedź stronę usługi Azure Digital bliźniaczych reprezentacji Management Apis zobaczyć Preview.
 
@@ -106,7 +102,3 @@ Wszystkie wywołania interfejsu API muszą zostać uwierzytelnione przy użyciu 
 - Aby dowiedzieć się więcej o łączności urządzeń i sposobach wysyłania komunikatów telemetrycznych do bliźniaczych reprezentacji cyfrowych, odczytaj informacje o [łączności i danych telemetrycznych usługi Azure Digital bliźniaczych reprezentacji](concepts-device-ingress.md).
 
 - Aby dowiedzieć się więcej o ograniczeniach i ograniczaniu wydajności interfejsu API zarządzania, przeczytaj temat [usługa Azure Digital bliźniaczych reprezentacji API Management i ograniczenia](concepts-service-limits.md).
-
-<!-- Images -->
-[1]: media/concepts/digital-twins-spatial-graph-building.png
-[2]: media/concepts/digital-twins-spatial-graph-management-api-url.png

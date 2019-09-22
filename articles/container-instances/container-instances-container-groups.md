@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: b17004e7821bcac61ca98afdbeaf87644da2a441
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: cc9b11ba5fe0cd015d0879f28b9e85fb46b11955
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68326050"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178581"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Grupy kontenerów w Azure Container Instances
 
@@ -41,9 +41,11 @@ Ta przykładowa Grupa kontenerów:
 
 ## <a name="deployment"></a>Wdrożenie
 
-Poniżej przedstawiono dwa typowe sposoby wdrażania grupy wielokontenerowej: Użyj [szablonu Menedżer zasobów][resource-manager template] lub [pliku YAML][yaml-file]. Szablon Menedżer zasobów jest zalecany, gdy konieczne jest wdrożenie dodatkowych zasobów usługi platformy Azure (na przykład [udziału Azure Files][azure-files]) podczas wdrażania wystąpień kontenerów. Ze względu na bardziej zwięzły YAML formatu pliku YAML zaleca się, gdy wdrożenie obejmuje tylko wystąpienia kontenerów.
+Poniżej przedstawiono dwa typowe sposoby wdrażania grupy wielokontenerowej: Użyj [szablonu Menedżer zasobów][resource-manager template] lub [pliku YAML][yaml-file]. Szablon Menedżer zasobów jest zalecany, gdy konieczne jest wdrożenie dodatkowych zasobów usługi platformy Azure (na przykład [udziału Azure Files][azure-files]) podczas wdrażania wystąpień kontenerów. Ze względu na bardziej zwięzły YAML formatu pliku YAML zaleca się, gdy wdrożenie obejmuje tylko wystąpienia kontenerów. Aby uzyskać szczegółowe informacje na temat właściwości, które można ustawić, zapoznaj się z dokumentacją dotyczącą [szablonu Menedżer zasobów](/azure/templates/microsoft.containerinstance/containergroups) lub dokumentacji [referencyjnej YAML](container-instances-reference-yaml.md) .
 
 Aby zachować konfigurację grupy kontenerów, można wyeksportować konfigurację do pliku YAML przy użyciu polecenia [AZ Container Export][az-container-export]na platformie Azure. Eksport umożliwia przechowywanie konfiguracji grupy kontenerów w kontroli wersji dla "konfiguracji jako kodu". Można też użyć wyeksportowanego pliku jako punktu wyjścia podczas tworzenia nowej konfiguracji w programie YAML.
+
+
 
 ## <a name="resource-allocation"></a>Alokacja zasobów
 
@@ -88,7 +90,7 @@ Przykładowe użycie może obejmować:
 * Kontener aplikacji i kontener monitorowania. Kontener monitorujący okresowo wysyła żądanie do aplikacji, aby upewnić się, że działa i odpowiada poprawnie, i zgłasza alert, jeśli nie jest.
 * Kontener frontonu i kontener zaplecza. Fronton może obtworzyć aplikację sieci Web przy użyciu zaplecza z uruchomioną usługą w celu pobierania danych. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się, jak wdrożyć wielokontenerową grupę kontenerów z szablonem Azure Resource Manager:
 

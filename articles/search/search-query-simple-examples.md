@@ -1,33 +1,35 @@
 ---
-title: Przykłady zapytań używające składni wyszukiwania "Simple" — Azure Search
-description: Proste przykłady zapytania do wyszukiwania pełnotekstowego, wyszukiwania filtrów, wyszukiwania geograficznego, wyszukiwania aspektowego i innych ciągów zapytań używanych do wykonywania zapytań względem indeksu Azure Search.
+title: Tworzenie prostego zapytania — Azure Search
+description: Zapoznaj się z przykładem, uruchamiając zapytania w oparciu o prostą składnię wyszukiwania pełnotekstowego, wyszukiwanie filtru, wyszukiwanie geograficzne, a następnie wyszukiwanie aspektowe względem indeksu Azure Search.
 author: HeidiSteen
 manager: nitinme
 tags: Simple query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 09/20/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: df84686e512db90351d5a9815706890bce49848b
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 7c4aeef07d34159e01f188effae77926895e2857
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647617"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71179187"
 ---
-# <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>Przykłady zapytań używające składni wyszukiwania "Simple" w Azure Search
+# <a name="create-a-simple-query-in-azure-search"></a>Tworzenie prostego zapytania w Azure Search
 
-[Prosta Składnia zapytania](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) wywołuje domyślny Analizator zapytań w celu wykonywania zapytań wyszukiwania pełnotekstowego na indeks Azure Search. Prosty Analizator zapytań jest szybki i obsługuje typowe scenariusze w Azure Search, w tym wyszukiwanie pełnotekstowe, filtrowanie i wyszukiwanie aspektów oraz wyszukiwanie geograficzne. W tym artykule opisano przykłady pokazujące operacje zapytania dostępne podczas korzystania z prostej składni.
+W Azure Search, [prosta Składnia zapytania](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) wywołuje domyślny Analizator zapytań służący do wykonywania zapytań wyszukiwania pełnotekstowego na indeks. Ten parser jest szybki i obsługuje często spotykane scenariusze, w tym wyszukiwanie pełnotekstowe, filtrowanie i wyszukiwanie aspektów oraz wyszukiwanie geograficzne. 
 
-Alternatywna składnia zapytania to [pełna Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), obsługujące bardziej złożone struktury zapytań, takie jak rozmyte i wieloznaczne wyszukiwanie, które może zająć więcej czasu. Aby uzyskać więcej informacji i przykładów demonstrujących pełną składnię, zobacz [przykłady zapytań składni Lucene](search-query-lucene-examples.md).
+W tym artykule użyto przykładów do zilustrowania prostej składni.
+
+Alternatywna składnia zapytania to [pełna Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), obsługujące bardziej złożone struktury zapytań, takie jak rozmyte i wieloznaczne wyszukiwanie, które może zająć więcej czasu. Aby uzyskać więcej informacji i przykładów demonstrujących pełną składnię, zobacz [Używanie pełnej składni Lucene](search-query-lucene-examples.md).
 
 ## <a name="formulate-requests-in-postman"></a>Formułowanie żądań w programie Poster
 
 Poniższe przykłady wykorzystują indeks wyszukiwania zadań NYC składający się z zadań dostępnych na podstawie zestawu danych dostarczonego przez [miasto z inicjatywy New York OpenData](https://nycopendata.socrata.com/) Initiative. Te dane nie powinny być uważane za bieżące ani ukończone. Indeks znajduje się w usłudze piaskownicy dostarczonej przez firmę Microsoft, co oznacza, że nie jest potrzebna subskrypcja platformy Azure ani Azure Search do wypróbowania tych zapytań.
 
-To, czego potrzebujesz, jest to Poster lub równoważne narzędzie do wystawiania żądań HTTP na potrzeby pobierania. Aby uzyskać więcej informacji, zobacz [Eksplorowanie z klientami REST](search-get-started-postman.md).
+To, czego potrzebujesz, jest to Poster lub równoważne narzędzie do wystawiania żądań HTTP na potrzeby pobierania. Aby uzyskać więcej informacji, zobacz temat [Szybki start: Poznaj interfejs API REST Azure Search przy użyciu](search-get-started-postman.md)programu Poster.
 
 ### <a name="set-the-request-header"></a>Ustawianie nagłówka żądania
 
@@ -75,7 +77,7 @@ W przypadku zapytań interaktywnych nie trzeba określać niczego: wartość dom
 
 Pierwszy przykład nie jest specyficzny dla parsera, ale prowadzimy do tego, aby wprowadzić pierwszą podstawową koncepcję zapytania: zawieranie. To przykładowe zakresy wykonywania zapytania i odpowiedzi na kilka określonych pól. Znajomość sposobu tworzenia struktury odpowiedzi w formacie JSON jest ważna, gdy narzędzie jest dostępne po opublikowaniu lub w Eksploratorze wyszukiwania. 
 
-W przypadku zwięzłości zapytanie odwołuje się tylko do pola *business_title* i określa tylko tytuły biznesowe, które są zwracane. Składnia jest **searchFields** , aby ograniczyć wykonywanie zapytania tylko do pola business_title i określić, które pola są uwzględniane w odpowiedzi.
+W przypadku zwięzłości zapytanie odwołuje się tylko do pola *business_title* i określa tylko tytuły biznesowe, które są zwracane. Składnia jest **searchFields** , aby ograniczyć wykonywanie zapytania tylko do pola **business_title i określić, które** pola są uwzględniane w odpowiedzi.
 
 ### <a name="partial-query-string"></a>Częściowy ciąg zapytania
 

@@ -1,19 +1,20 @@
 ---
-title: Skrypt programu Azure PowerShell — usługa Azure Cosmos DB uzyskać aprowizowana przepływność (RU/s) (rdzenie) interfejsu API SQL
-description: Skrypt programu Azure PowerShell — usługa Azure Cosmos DB uzyskać aprowizowana przepływność (RU/s) (rdzenie) interfejsu API SQL
+title: Skrypt Azure PowerShell — Azure Cosmos DB Uzyskaj przepływność aprowizacji (RU/s) dla interfejsu API SQL (rdzeń)
+description: Skrypt Azure PowerShell — Azure Cosmos DB Uzyskaj przepływność aprowizacji (RU/s) dla interfejsu API SQL (rdzeń)
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 07/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: 75a8ebbb04fd3cbad9f0a1a3f302b40439adbbcc
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: c7d7f295589d4e3b152016c2b55cfe07355d1cb0
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602131"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178765"
 ---
-# <a name="get-the-provisioned-throughput-rus-for-a-database-or-container-for-azure-cosmos-db---sql-core-api"></a>Pobierz aprowizowana przepływność (RU/s) dla bazy danych lub kontenera usługi Azure Cosmos DB - SQL (rdzenie) interfejsu API
+# <a name="get-the-provisioned-throughput-rus-for-a-database-or-container-for-azure-cosmos-db---sql-core-api"></a>Uzyskaj przepływność aprowizacji (RU/s) dla bazy danych lub kontenera dla interfejsu API Azure Cosmos DB-SQL (rdzeń)
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,12 +39,12 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | Polecenie | Uwagi |
 |---|---|
 |**Zasoby platformy Azure**| |
-| [Nowe AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Tworzy zasób. |
+| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Tworzy zasób. |
 |**Grupy zasobów platformy Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 |||
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat programu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](https://docs.microsoft.com/powershell/).
 

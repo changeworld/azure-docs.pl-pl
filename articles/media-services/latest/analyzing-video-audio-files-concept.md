@@ -9,18 +9,18 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/21/2019
+ms.date: 09/21/2019
 ms.author: juliako
-ms.openlocfilehash: 477733dcb76647b2c03f79dea4f55c3102d262b8
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: bc4be8eaafe805e5d9a985b005efe80bc4af1d21
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376201"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178000"
 ---
 # <a name="analyzing-video-and-audio-files"></a>Analizowanie plików wideo i audio
 
-Azure Media Services v3 umożliwia wyodrębnienie szczegółowych informacji z plików wideo i audio przy użyciu Video Indexer za pośrednictwem ustawień usługi AMS v3 Analyzer (opisanych w tym artykule). Aby uzyskać bardziej szczegółowe informacje, można korzystać bezpośrednio z usługi Video Indexer. Aby ustalić, kiedy należy używać usługi Video Indexer zamiast ustawień wstępnych analizatora usługi Media Services, zapoznaj się z [dokumentem z porównaniem](../video-indexer/compare-video-indexer-with-media-services-presets.md).
+Azure Media Services v3 umożliwia wyodrębnienie szczegółowych informacji z plików wideo i audio przy użyciu Video Indexer za pośrednictwem ustawień programu Media Services v3 Analyzer (opisanych w tym artykule). Aby uzyskać bardziej szczegółowe informacje, można korzystać bezpośrednio z usługi Video Indexer. Aby ustalić, kiedy należy używać usługi Video Indexer zamiast ustawień wstępnych analizatora usługi Media Services, zapoznaj się z [dokumentem z porównaniem](../video-indexer/compare-video-indexer-with-media-services-presets.md).
 
 Aby analizować zawartość przy użyciu ustawień wstępnych Media Services v3, utworzysz **transformację** i prześlij **zadanie** , które używa jednego z następujących ustawień wstępnych: [VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset) lub **AudioAnalyzerPreset**. W poniższym artykule przedstawiono sposób korzystania z programu **VideoAnalyzerPreset**: [Ręczny Analizuj wideo przy użyciu](analyze-videos-tutorial-with-api.md)Azure Media Services.
 

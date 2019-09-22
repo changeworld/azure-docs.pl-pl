@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: db7746bc91935c0385e97d494a45d34819665ced
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 95e3ee31ea6a700253e372d183944c17c85e327c
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093385"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178326"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Zarządzanie kontem usługi Azure Cosmos
 
 W tym artykule opisano sposób zarządzania różnymi zadaniami na koncie usługi Azure Cosmos za pomocą szablonów Azure Portal, Azure PowerShell, interfejsu wiersza polecenia platformy Azure i Azure Resource Manager.
 
-## <a name="create-an-account"></a>Tworzenie konta
+## <a name="create-an-account"></a>Utwórz konto
 
 ### <a id="create-database-account-via-portal"></a>Azure Portal
 
@@ -166,10 +166,7 @@ Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a id="configure-multiple-write-regions-portal"></a>Azure Portal
 
-Otwórz kartę **Replikuj dane globalnie** i wybierz pozycję **Włącz** , aby włączyć zapisywanie w ramach wieloregionu. Po włączeniu zapisów obejmujących wiele regionów wszystkie regiony odczytu znajdujące się obecnie na koncie staną się regionami odczytu i zapisu. 
-
-> [!NOTE]
-> Po włączeniu zapisu w ramach wieloregionu nie można go wyłączyć. 
+Otwórz kartę **Replikuj dane globalnie** i wybierz pozycję **Włącz** , aby włączyć zapisywanie w ramach wieloregionu. Po włączeniu zapisów obejmujących wiele regionów wszystkie regiony odczytu znajdujące się obecnie na koncie staną się regionami odczytu i zapisu. W razie konieczności można także wyłączyć zapisywanie w ramach wieloregionu.
 
 ![Konto usługi Azure Cosmos służy do konfigurowania wieloskładnikowego zrzutu ekranu](./media/how-to-manage-database-account/single-to-multi-master.png)
 
@@ -182,6 +179,8 @@ $resourceGroupName = 'myResourceGroup'
 $accountName = 'myaccountname'
 az cosmosdb update --name $accountName --resource-group $resourceGroupName --enable-multiple-write-locations true
 ```
+
+Aby utworzyć konto usługi Azure Cosmos bez zapisu w ramach wieloregionu, można ustawić `--enable-multiple-write-locations` parametr na wartość false.
 
 ### <a id="configure-multiple-write-regions-ps"></a>Azure PowerShell
 

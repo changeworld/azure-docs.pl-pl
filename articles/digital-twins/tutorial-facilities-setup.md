@@ -6,14 +6,14 @@ author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 08/16/2019
+ms.date: 09/17/2019
 ms.author: alinast
-ms.openlocfilehash: a107f7dba7f28b41303727ad37b7c50f2e215c4f
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: eebf6f58000178f2aa8021fbd435aa863fb70e49
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622960"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71177191"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Samouczek: Wdróż usługę Azure Digital bliźniaczych reprezentacji Preview i skonfiguruj wykres przestrzenny
 
@@ -43,15 +43,11 @@ W tym samouczkach są używane i modyfikowane te same przykłady co w [przewodni
 
 - Program [Visual Studio Code](https://code.visualstudio.com/) umożliwiający eksplorowanie przykładowego kodu. 
 
-<a id="deploy"></a>
-
 ## <a name="deploy-digital-twins"></a>Wdrażanie usługi Digital Twins
 
 Wykonaj kroki opisane w tej sekcji, aby utworzyć nowe wystąpienie usługi Azure Digital Twins. Można utworzyć tylko jedno wystąpienie na subskrypcję. Jeśli jedno wystąpienie jest już uruchomione, przejdź do następnej sekcji. 
 
 [!INCLUDE [create-digital-twins-portal](../../includes/digital-twins-create-portal.md)]
-
-<a id="permissions"></a>
 
 ## <a name="grant-permissions-to-your-app"></a>Udzielanie uprawnień dla Twojej aplikacji
 
@@ -76,7 +72,7 @@ Jeśli już masz przykłady pobrane na potrzeby [przewodnika Szybki start dotycz
 
 W folderze z wyodrębnionym przykładem otwórz plik **digital-twins-samples-csharp\digital-twins-samples.code-workspace** w programie Visual Studio Code. Zawiera on dwa projekty:
 
-* Używając przykładu aprowizacji **occupancy-quickstart**, możesz skonfigurować i aprowizować [wykres analizy przestrzennej](concepts-objectmodel-spatialgraph.md#graph). Ten wykres jest cyfrowym obrazem lokalizacji fizycznych i znajdujących się w nich zasobów. Korzysta on z [modelu obiektów](concepts-objectmodel-spatialgraph.md#model) definiującego obiekty dla inteligentnego budynku. Aby uzyskać pełną listę obiektów usługi Digital Twins i interfejsów API REST, odwiedź [stronę dokumentacji interfejsu API REST](https://docs.westcentralus.azuresmartspaces.net/management/swagger) lub skorzystaj z adresu URL interfejsu API zarządzania, który został utworzony na potrzeby [Twojego wystąpienia](#deploy).
+* Używając przykładu aprowizacji **occupancy-quickstart**, możesz skonfigurować i aprowizować [wykres analizy przestrzennej](concepts-objectmodel-spatialgraph.md#digital-twins-object-models). Ten wykres jest cyfrowym obrazem lokalizacji fizycznych i znajdujących się w nich zasobów. Korzysta on z [modelu obiektów](concepts-objectmodel-spatialgraph.md#digital-twins-object-models) definiującego obiekty dla inteligentnego budynku. Aby uzyskać pełną listę obiektów usługi Digital Twins i interfejsów API REST, odwiedź [stronę dokumentacji interfejsu API REST](https://docs.westcentralus.azuresmartspaces.net/management/swagger) lub skorzystaj z adresu URL interfejsu API zarządzania, który został utworzony na potrzeby [Twojego wystąpienia](#deploy-digital-twins).
 
    Aby zobaczyć, jak przykładowa aplikacja komunikuje się z wystąpieniem usługi Digital Twins, możesz zacząć od folderu **src\actions**. W plikach w tym folderze zaimplementowano polecenia, które będą używane w tych samouczkach:
     - Plik **provisionSample.cs** pokazuje, jak aprowizować wykres przestrzenny.
@@ -101,17 +97,15 @@ W folderze z wyodrębnionym przykładem otwórz plik **digital-twins-samples-csh
     ```
 
 1. W programie Visual Studio Code otwórz plik [appSettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/appSettings.json) w projekcie **occupancy-quickstart**. Zaktualizuj następujące wartości:
-   * **ClientId**: wprowadź identyfikator aplikacji Twojej rejestracji aplikacji w usłudze Azure AD. Ten identyfikator został zanotowany w sekcji, w której były [określane uprawnienia aplikacji](#permissions).
-   * **Dzierżawa**: wprowadź identyfikator katalogu swojej [dzierżawy usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant). Ten identyfikator także został zanotowany w sekcji, w której były [określane uprawnienia aplikacji](#permissions).
-   * **BaseUrl**: wprowadź adres URL Twojego wystąpienia usługi Digital Twins. Aby uzyskać ten adres URL, zamień symbole zastępcze w tym adresie URL na wartości odpowiadające Twojemu wystąpieniu: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Możesz również uzyskać ten adres URL, modyfikując adres URL interfejsu API zarządzania z [sekcji poświęconej wdrażaniu](#deploy). Zamień ciąg **swagger/** na **api/v1.0/** .
+   * **ClientId**: wprowadź identyfikator aplikacji Twojej rejestracji aplikacji w usłudze Azure AD. Ten identyfikator został zanotowany w sekcji, w której były [określane uprawnienia aplikacji](#grant-permissions-to-your-app).
+   * **Dzierżawa**: wprowadź identyfikator katalogu swojej [dzierżawy usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant). Ten identyfikator także został zanotowany w sekcji, w której były [określane uprawnienia aplikacji](#grant-permissions-to-your-app).
+   * **BaseUrl**: wprowadź adres URL Twojego wystąpienia usługi Digital Twins. Aby uzyskać ten adres URL, zamień symbole zastępcze w tym adresie URL na wartości odpowiadające Twojemu wystąpieniu: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Możesz również uzyskać ten adres URL, modyfikując adres URL interfejsu API zarządzania z [sekcji poświęconej wdrażaniu](#deploy-digital-twins). Zamień ciąg **swagger/** na **api/v1.0/** .
 
 1. Wyświetl listę funkcji usługi Digital Twins, które możesz eksplorować przy użyciu tego przykładu. Uruchom następujące polecenie:
 
     ```cmd/sh
     dotnet run
     ```
-
-<a id="provision-spaces"></a>
 
 ## <a name="understand-the-provisioning-process"></a>Omówienie procesu aprowizacji
 

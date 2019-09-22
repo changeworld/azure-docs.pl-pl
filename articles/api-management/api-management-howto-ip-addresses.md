@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 6e12a16b221a8f31d82a002fbc93b090d6f0c577
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 7224c6a77df496624903830f0a2cbd8d193517cc
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861254"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178193"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>Adresy IP API Management platformy Azure
 
@@ -61,7 +61,7 @@ W [przypadku wdrożeń w wielu regionach](api-management-howto-deploy-multi-regi
 
 Jeśli usługa API Management znajduje się w sieci wirtualnej, będzie mieć dwa typy adresów IP — Public i Private.
 
-Publiczne adresy IP są używane do komunikacji wewnętrznej na porcie `3443` — do zarządzania konfiguracją (na przykład przez Azure Resource Manager). Ponadto, gdy żądanie jest wysyłane z API Management do publicznego zaplecza (z Internetu), publiczny adres IP będzie widoczny jako źródło żądania.
+Publiczne adresy IP są używane do komunikacji wewnętrznej na porcie `3443` — do zarządzania konfiguracją (na przykład przez Azure Resource Manager). W konfiguracji zewnętrznej sieci wirtualnej są one również używane na potrzeby ruchu interfejsu API środowiska uruchomieniowego. Gdy żądanie jest wysyłane z API Management do publicznego zaplecza (dostępnego z Internetu), publiczny adres IP będzie widoczny jako źródło żądania.
 
 Prywatne wirtualne adresy IP (VIP) są używane do nawiązywania połączenia z siecią w celu API Management punktów końcowych — bram, portalu deweloperów i płaszczyzny zarządzania do bezpośredniego dostępu do interfejsu API. Można ich używać do konfigurowania rekordów DNS w sieci.
 

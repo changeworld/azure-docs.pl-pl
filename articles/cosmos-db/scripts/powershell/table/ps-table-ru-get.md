@@ -1,19 +1,20 @@
 ---
-title: Skrypt programu Azure PowerShell — Azure Cosmos DB Pobierz przepływność (RU/s) dla interfejsu API tabel
-description: Skrypt programu Azure PowerShell — Azure Cosmos DB Pobierz przepływność (RU/s) dla interfejsu API tabel
+title: Skrypt Azure PowerShell — Azure Cosmos DB uzyskiwania przepływności (RU/s) dla interfejs API tabel
+description: Skrypt Azure PowerShell — Azure Cosmos DB uzyskiwania przepływności (RU/s) dla interfejs API tabel
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: d34a9e679ee6c1b65111817197a98555be13cf1d
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 5d3fa2e2122c006825a8413a2ca2f292bda2de74
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67601944"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178698"
 ---
-# <a name="get-throughput-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Uzyskiwanie przepływność (RU/s) dla tabeli usługi Azure Cosmos DB — interfejs API tabel
+# <a name="get-throughput-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Pobierz przepływność (RU/s) dla tabeli dla Azure Cosmos DB-interfejs API tabel
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,12 +39,12 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | Polecenie | Uwagi |
 |---|---|
 |**Zasoby platformy Azure**| |
-| [Nowe AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Tworzy zasób. |
+| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Tworzy zasób. |
 |**Grupy zasobów platformy Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 |||
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat programu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](https://docs.microsoft.com/powershell/).
 

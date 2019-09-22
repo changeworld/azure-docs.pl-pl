@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/20/2019
 ms.author: spelluru
-ms.openlocfilehash: 3d08105e78274300eb7ee0a8c0ad146a737d0ffa
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 562ad0e5e6088c2fbadc853779b7533c5398e079
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69644952"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71176645"
 ---
 # <a name="enable-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>Włącz pulpit zdalny dla maszyn wirtualnych z systemem Linux w laboratorium w Azure Lab Services
 W tym artykule przedstawiono sposób wykonywania następujących zadań:
@@ -36,7 +36,8 @@ W oknie dialogowym **Włączanie komunikatu Podłączanie pulpitu zdalnego** wyb
 ![Włączanie połączenia pulpitu zdalnego dla obrazu systemu Linux](../media/how-to-enable-remote-desktop-linux/enabling-remote-desktop-connection-dialog.png)
 
 > [!IMPORTANT] 
-> Włączenie usługi **Podłączanie pulpitu zdalnego** otwiera tylko port **RDP** na maszynach z systemem Linux. Po raz pierwszy Nawiąż połączenie z maszyną z systemem Linux przy użyciu protokołu SSH, a następnie zainstaluj pakiety RDP i GUI, aby można było połączyć się z maszyną z systemem Linux przy użyciu protokołu RDP. Następnie opublikujesz obraz tak, aby studenci mogli na maszynach wirtualnych z systemem Linux mieć protokół RDP. 
+> Włączenie usługi **Podłączanie pulpitu zdalnego** otwiera tylko port **RDP** na maszynach z systemem Linux. Jeśli protokół RDP jest już zainstalowany i skonfigurowany w obrazie maszyny wirtualnej (na przykład: Ubuntu Data Science Virtual Machine Image), ty/uczniowie mogą łączyć się z maszynami wirtualnymi za pośrednictwem protokołu RDP, nie wykonując żadnych dodatkowych kroków.
+> Jeśli na obrazie maszyny wirtualnej nie zainstalowano i skonfigurowano protokół RDP, należy połączyć się z maszyną z systemem Linux przy użyciu protokołu SSH po raz pierwszy, a następnie zainstalować pakiety RDP i GUI, aby umożliwić uczniom łączenie się z maszyną z systemem Linux przy użyciu protokołu RDP. Następnie opublikujesz obraz tak, aby studenci mogli na maszynach wirtualnych z systemem Linux mieć protokół RDP.
 
 ## <a name="supported-operating-systems"></a>Obsługiwane systemy operacyjne
 Obecnie jest obsługiwane Podłączanie pulpitu zdalnego dla następujących systemów operacyjnych:

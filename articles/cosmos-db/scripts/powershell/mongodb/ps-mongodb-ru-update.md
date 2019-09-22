@@ -1,19 +1,20 @@
 ---
-title: Skrypt programu Azure PowerShell — Azure Cosmos DB Update jednostek RU/s dla interfejsu API usługi MongoDB
-description: Skrypt programu Azure PowerShell — Azure Cosmos DB Update jednostek RU/s dla interfejsu API usługi MongoDB
+title: Azure PowerShell skryptu — Azure Cosmos DB aktualizacji RU/s dla interfejsu API MongoDB
+description: Azure PowerShell skryptu — Azure Cosmos DB aktualizacji RU/s dla interfejsu API MongoDB
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-mongo
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 517857116bf077814b936e5d7ecb54d841959657
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: d2dd99d5a5f1d0f03c5fe4980fde376ffdd55bca
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603886"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178820"
 ---
-# <a name="update-rus-for-a-database-or-collection-for-azure-cosmos-db---mongodb-api"></a>Aktualizacja jednostek RU/s dla bazy danych lub kolekcji usługi Azure Cosmos DB — interfejs API usługi MongoDB
+# <a name="update-rus-for-a-database-or-collection-for-azure-cosmos-db---mongodb-api"></a>Aktualizowanie RU/s dla bazy danych lub kolekcji dla Azure Cosmos DB-MongoDB interfejsu API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,12 +39,12 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | Polecenie | Uwagi |
 |---|---|
 |**Zasoby platformy Azure**| |
-| [Nowe AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Tworzy zasób. |
+| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Tworzy zasób. |
 |**Grupy zasobów platformy Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 |||
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat programu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](https://docs.microsoft.com/powershell/).
 

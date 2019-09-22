@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: afc51735fcbd8f4131b2a4066a0fc4adbb8f1a41
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: a1c4bf55fbb8242293fc0e30bbe16a6884b901cb
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142333"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178628"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Iteracyjne programowanie i debugowanie za pomocą Azure Data Factory
 
@@ -52,6 +52,10 @@ Można wizualizować wszystkie przebiegi debugowania, które są w toku dla fabr
 
 ![Przykładowa lista aktywnych przebiegów debugowania](media/iterative-development-debugging/view-debug-runs-image2.png)
 
+Jeśli masz aktywne sesje debugowania przepływu danych, te sesje będą wyświetlane w dolnej części aktywnego okna debugowania. Możesz wybrać aktywną sesję przepływu danych i zatrzymać odpowiedni klaster.
+
+![Przykładowa lista aktywnych przebiegów debugowania przepływu danych](media/data-flow/dfsessions.png)
+
 ## <a name="monitoring-debug-runs"></a>Monitorowanie przebiegów debugowania
 
 Przebiegi testowe zainicjowane z możliwością **debugowania** nie są dostępne na liście na karcie **monitor** . Tylko uruchomienia wyzwalane przez wyzwalacze okna **Wyzwalanie teraz**, **harmonogram**lub **wirowania** można zobaczyć na karcie **monitorowanie** . Można zobaczyć ostatni przebieg testu zainicjowany z możliwością **debugowania** w oknie **danych wyjściowych** kanwy potoku.
@@ -66,7 +70,7 @@ Aby ustawić punkt przerwania, wybierz element na kanwie potoku. Opcja *Debuguj 
 
 ![Przed ustawieniem punktu przerwania dla wybranego elementu](media/iterative-development-debugging/iterative-development-image5.png)
 
-Po wybraniu opcji *Debuguj* do momentu zostanie ona zmieniona na wypełniony czerwony okrąg, aby wskazać, że punkt przerwania jest włączony.
+Po wybraniu opcji *Debuguj do momentu* zostanie ona zmieniona na wypełniony czerwony okrąg, aby wskazać, że punkt przerwania jest włączony.
 
 ![Po ustawieniu punktu przerwania dla wybranego elementu](media/iterative-development-debugging/iterative-development-image6.png)
 
