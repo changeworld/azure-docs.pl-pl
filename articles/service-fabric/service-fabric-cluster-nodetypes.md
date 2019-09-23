@@ -77,19 +77,19 @@ Poniżej przedstawiono opisy właściwości:
 
 | **Nazwa** | **Dozwolone wartości** | ** --- ** | **Wskazówki lub Krótki opis** |
 | --- | --- | --- | --- |
-| name | ciąg | --- | Unikatowa nazwa rozszerzenia |
+| name | string | --- | Unikatowa nazwa rozszerzenia |
 | type | "ServiceFabricLinuxNode" lub "ServiceFabricWindowsNode | --- | Identyfikuje Service Fabric systemu operacyjnego |
-| autoUpgradeMinorVersion | prawda lub FAŁSZ | --- | Włącz autouaktualnienie wersji pomocniczych w środowisku uruchomieniowym SF |
+| autoUpgradeMinorVersion | true lub false | --- | Włącz autouaktualnienie wersji pomocniczych w środowisku uruchomieniowym SF |
 | publisher | Microsoft.Azure.ServiceFabric | --- | Nazwa wydawcy Service Fabricego w zakresie |
-| clusterEndpont | ciąg | --- | URI: PORT do punktu końcowego zarządzania |
-| nodeTypeRef | ciąg | --- | Nazwa nodeType |
-| durabilityLevel | brąz, Silver, Gold, Platinum | --- | czas, w którym można wstrzymać niezmienne infrastruktury platformy Azure |
-| enableParallelJobs | prawda lub FAŁSZ | --- | Włącz funkcję COMPUTE ParallelJobs, na przykład Usuń maszynę wirtualną i ponownie uruchom maszynę wirtualną w zestawie skalowania równoległego |
-| nicPrefixOverride | ciąg | --- | Prefiks podsieci, taki jak "10.0.0.0/24" |
-| commonNames | ciąg [] | --- | Typowe nazwy zainstalowanych certyfikatów klastra |
-| x509StoreName | ciąg | --- | Nazwa magazynu, w którym znajduje się zainstalowany certyfikat klastra |
+| clusterEndpont | string | --- | URI: PORT do punktu końcowego zarządzania |
+| nodeTypeRef | string | --- | Nazwa nodeType |
+| durabilityLevel | bronze, silver, gold, platinum | --- | czas, w którym można wstrzymać niezmienne infrastruktury platformy Azure |
+| enableParallelJobs | true lub false | --- | Włącz funkcję COMPUTE ParallelJobs, na przykład Usuń maszynę wirtualną i ponownie uruchom maszynę wirtualną w zestawie skalowania równoległego |
+| nicPrefixOverride | string | --- | Prefiks podsieci, taki jak "10.0.0.0/24" |
+| commonNames | string[] | --- | Typowe nazwy zainstalowanych certyfikatów klastra |
+| x509StoreName | string | --- | Nazwa magazynu, w którym znajduje się zainstalowany certyfikat klastra |
 | typeHandlerVersion | 1.1 | --- | Wersja rozszerzenia. 1,0 klasycznej wersji rozszerzenia zaleca się uaktualnienie do 1,1 |
-| Ścieżka datapath | ciąg | --- | Ścieżka do dysku używanego do zapisywania stanu Service Fabric usług systemowych i danych aplikacji. 
+| dataPath | string | --- | Ścieżka do dysku używanego do zapisywania stanu Service Fabric usług systemowych i danych aplikacji. 
 
 ## <a name="next-steps"></a>Następne kroki
 * Zobacz [Omówienie funkcji "wdróż gdziekolwiek" i porównanie z klastrami zarządzanymi przez platformę Azure](service-fabric-deploy-anywhere.md).
