@@ -2577,7 +2577,7 @@ I zwraca ten wynik:`"a.b.c"`
 
 <a name="last"></a>
 
-### <a name="last"></a>ostatniego
+### <a name="last"></a>last
 
 Zwróć ostatni element z kolekcji.
 
@@ -4129,7 +4129,7 @@ triggerOutputs()
 
 <a name="trim"></a>
 
-### <a name="trim"></a>Trim
+### <a name="trim"></a>trim
 
 Usuń spacje wiodące i końcowe z ciągu, a następnie Zwróć zaktualizowany ciąg.
 

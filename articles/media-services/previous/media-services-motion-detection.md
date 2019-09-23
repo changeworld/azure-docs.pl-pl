@@ -42,9 +42,9 @@ Można użyć następujących parametrów:
 
 | Name (Nazwa) | Opcje | Opis | Domyślny |
 | --- | --- | --- | --- |
-| sensitivityLevel |String: "low", "medium", "high" |Ustawia poziom czułości, przy którym są raportowane ruchy. Dostosuj ten sposób, aby dopasować liczbę fałszywie dodatnich. |średniookresow |
+| sensitivityLevel |String:'low', 'medium', 'high' |Ustawia poziom czułości, przy którym są raportowane ruchy. Dostosuj ten sposób, aby dopasować liczbę fałszywie dodatnich. |średniookresow |
 | frameSamplingValue |Dodatnia liczba całkowita |Ustawia częstotliwość uruchamiania algorytmu. 1 równa się każdej klatce, 2 oznacza każdą klatkę i tak dalej. |1 |
-| detectLightChange |Boolean: "true", "false" |Ustawia, czy jasne zmiany są raportowane w wynikach |'False' |
+| detectLightChange |Boolean:'true', 'false' |Ustawia, czy jasne zmiany są raportowane w wynikach |'False' |
 | mergeTimeThreshold |Godzina xs: Hh: mm: SS<br/>Przykład: 00:00:03 |Określa przedział czasu między zdarzeniami ruchu, w przypadku których 2 zdarzenia są łączone i raportowane jako 1. |00:00:00 |
 | detectionZones |Tablica stref wykrywania:<br/>— Strefa wykrywania jest tablicą z 3 lub więcej punktów<br/>-Point to współrzędna x i y od 0 do 1. |Opisuje listę wielokątaowych stref wykrywania, które mają być używane.<br/>Wyniki są raportowane ze strefami jako identyfikator, a pierwszy z nich to "ID": 0 |Pojedynczej strefy, która obejmuje całą ramkę. |
 
