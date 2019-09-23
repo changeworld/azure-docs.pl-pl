@@ -92,7 +92,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webap
 
 ### <a name="configure-the-web-api"></a>Konfigurowanie internetowego interfejsu API
 
-1. Otwórz plik *B2C-WebAPI/* * appSettings. JSON** * w programie Visual Studio lub Visual Studio Code.
+1. Otwórz plik *B2C-WebAPI/**appSettings. JSON*** w programie Visual Studio lub Visual Studio Code.
 1. `AzureAdB2C` Zmodyfikuj blok, aby odzwierciedlał nazwę dzierżawy, identyfikator aplikacji internetowego interfejsu API, nazwę zasad rejestracji/logowania oraz zdefiniowane wcześniej zakresy. Blok powinien wyglądać podobnie do poniższego przykładu (z odpowiednimi `Tenant` wartościami `ClientId` i):
 
     ```json

@@ -35,7 +35,7 @@ Najpierw skonfigurujemy nasze sceny projektowe i Unity:
 4. Upewnij się, że wybrano **3W** .
 5. Nazwij projekt i wprowadź **lokalizację**zapisywania.
 6. Kliknij przycisk **Tworzenie projektu**.
-7. Zapisz pustą domyślną scenę w nowym pliku przy użyciu:  > **Zapisz jako**plik.
+7. Zapisz pustą domyślną scenę w nowym pliku przy użyciu: > **Zapisz jako**plik.
 8. Nazwij nową scenę **główną** i naciśnij przycisk **Zapisz** .
 
 **Konfigurowanie ustawień projektu**
@@ -78,19 +78,19 @@ Musimy poinformować aparat Unity, że aplikacja, którą próbujesz wyeksportow
 **Utwórz nasz skrypt**
 1. W okienku **projekt** Utwórz nowy folder ( **skrypty**) w folderze Assets ( **zasoby** ). 
 2. Kliknij prawym przyciskiem myszy folder, a następnie wybierz polecenie **Utwórz >** ,  **C# skrypt**. Tytuł IT **AzureSpatialAnchorsScript**. 
-3. Przejdź do  -> pozycji gameobject**Utwórz pustą**. 
+3. Przejdź do -> pozycji gameobject**Utwórz pustą**. 
 4. Wybierz go, a w **Inspektorze** zmień jego nazwę **z** **MixedRealityCloud**. Wybierz pozycję **Dodaj składnik** i Wyszukaj i Dodaj **AzureSpatialAnchorsScript**.
 
 **Utwórz sferę PREFAB**
-1. Przejdź do  -> **sfery** **obiektu** -> 3D gry 3W.
+1. Przejdź do -> **sfery** **obiektu** -> 3D gry 3W.
 2. W **Inspektorze**ustaw jej skalę na **0,25, 0,25, 0,25**.
-3. Znajdź obiekt **Sphere** w okienku **Hierarchia** . Kliknij go i przeciągnij do folderu Assets  w okienku **projektu** .
-4. Kliknij prawym przyciskiem myszy i **Usuń** oryginalną sferę  utworzoną w okienku hierarchia.
+3. Znajdź obiekt **Sphere** w okienku **Hierarchia** . Kliknij go i przeciągnij do folderu Assets w okienku **projektu** .
+4. Kliknij prawym przyciskiem myszy i **Usuń** oryginalną sferę utworzoną w okienku hierarchia.
 
 W okienku **projektu** powinna być teraz dostępna sfera PREFAB.
 
 ## <a name="trying-it-out"></a>Trwa próba
-Aby sprawdzić, czy wszystko działa, skompiluj swoją aplikację w aparacie **Unity** i Wdróż ją z poziomu **programu Visual Studio**. Obserwuj rozdział 6 od [ **mrch podstaw 100: Wprowadzenie](https://docs.microsoft.com/windows/mixed-reality/holograms-100#chapter-6---build-and-deploy-to-device-from-visual-studio) do środowiska Unity** , aby to zrobić. Powinien zostać wyświetlony ekran startowy środowiska Unity, a następnie przycisk Wyczyść.
+Aby sprawdzić, czy wszystko działa, skompiluj swoją aplikację w aparacie **Unity** i Wdróż ją z poziomu **programu Visual Studio**. Obserwuj rozdział 6 od [**mrch podstaw 100: Wprowadzenie**](https://docs.microsoft.com/windows/mixed-reality/holograms-100#chapter-6---build-and-deploy-to-device-from-visual-studio) do środowiska Unity , aby to zrobić. Powinien zostać wyświetlony ekran startowy środowiska Unity, a następnie przycisk Wyczyść.
 
 ## <a name="place-an-object-in-the-real-world"></a>Umieść obiekt w świecie rzeczywistym
 Utwórzmy & umieścić obiekt przy użyciu aplikacji. Otwórz rozwiązanie programu Visual Studio, które zostało utworzone podczas [wdrażania naszej aplikacji](#trying-it-out). 
@@ -107,7 +107,7 @@ Przed kontynuowaniem musimy ustawić PREFAB sferę utworzoną na naszej zmiennej
 1. W aparacie **Unity**wybierz obiekt **MixedRealityCloud** w okienku **Hierarchia** .
 2. Kliknij PREFAB **sferę** , która została zapisana w okienku **projektu** . Przeciągnij sferę klikniętą w obszarze **sfera PREFAB** w obszarze **skrypt zakotwiczenia przestrzenne platformy Azure** w okienku **Inspektor** .
 
-Teraz należy mieć rolę PREFAB  w skrypcie. Skompiluj z **aparatu Unity** , a następnie ponownie otwórz powstałe rozwiązanie **programu Visual Studio** , tak jak właśnie było to [możliwe.](#trying-it-out) 
+Teraz należy mieć rolę PREFAB w skrypcie. Skompiluj z **aparatu Unity** , a następnie ponownie otwórz powstałe rozwiązanie **programu Visual Studio** , tak jak właśnie było to [możliwe.](#trying-it-out) 
 
 W programie **Visual Studio** `AzureSpatialAnchorsScript.cs` ponownie otwórz program. Dodaj następujący kod do `Start()` metody. Ten kod zostanie `GestureRecognizer`poddany, który zostanie wykryty w przypadku naciskania `HandleTap`i wyłączania powietrza.
 
@@ -143,7 +143,7 @@ Teraz użyjemy pętli Update (), aby sprawdzić, czy w kolejce występuje akcja.
 
 Teraz pobieramy zestaw SDK kotwic przestrzennych platformy Azure. Przejdź do [strony wersji usługi GitHub dla kotwic Azure](https://github.com/Azure/azure-spatial-anchors-samples/releases). W obszarze zasoby Pobierz plik **AzureSpatialAnchors. UNITYPACKAGE** . 
 
-W środowisku Unity przejdź do pozycji **zasoby**, kliknij pozycję  > Importuj pakiet niestandardowy pakietu **.** Przejdź do pakietu i wybierz pozycję **Otwórz**.
+W środowisku Unity przejdź do pozycji **zasoby**, kliknij pozycję > Importuj pakiet niestandardowy pakietu **.** Przejdź do pakietu i wybierz pozycję **Otwórz**.
 
 W oknie Nowy **Importuj pakiet Unity** kliknij pozycję **Brak** w lewym dolnym rogu. Następnie w obszarze**wtyczki** **AzureSpatialAnchorsPlugin** > wybierz pozycję **Common**, **Editor**i **HoloLens**. Kliknij przycisk **Importuj** w prawym dolnym rogu.
 

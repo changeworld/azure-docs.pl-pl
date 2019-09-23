@@ -1210,7 +1210,7 @@ Aby dodać port sondy:
 
    Numer portu jest zdefiniowany w szablonach Azure Resource Manager SAP. Numer portu można przypisać w programie PowerShell.
 
-   Aby ustawić nową wartość ProbePort dla ***identyfikatora SID*< protokołu SAP >** zasobu klastra IP, uruchom następujący skrypt programu PowerShell. Zaktualizuj zmienne programu PowerShell dla danego środowiska. Po uruchomieniu skryptu zostanie wyświetlony monit o ponowne uruchomienie grupy klastra SAP w celu aktywowania zmian.
+   Aby ustawić nową wartość ProbePort dla **identyfikatora *SID*< protokołu SAP >** zasobu klastra IP, uruchom następujący skrypt programu PowerShell. Zaktualizuj zmienne programu PowerShell dla danego środowiska. Po uruchomieniu skryptu zostanie wyświetlony monit o ponowne uruchomienie grupy klastra SAP w celu aktywowania zmian.
 
    ```powershell
    $SAPSID = "PR1"      # SAP <SID>

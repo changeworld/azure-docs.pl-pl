@@ -441,7 +441,7 @@ Wybierz częstotliwość, z jaką klienci muszą uiścić cenę. Należy podać 
 - **Cena**: USD miesięcznie lub USD rocznie
 
 Ceny ustawione w walucie lokalnej (USD = Stany Zjednoczone dolara) są konwertowane na walutę lokalną wszystkich wybranych rynków przy użyciu bieżących stawek wymiany dostępnych podczas instalacji. Sprawdź te ceny przed opublikowaniem, eksportując arkusz kalkulacyjny z cennikiem i sprawdzając cenę na każdym rynku. Jeśli chcesz ustawić ceny niestandardowe na indywidualnym rynku, zmodyfikuj i zaimportuj arkusz cen. Użytkownik jest odpowiedzialny za sprawdzanie poprawności cen i ich ustawienia.
-**Najpierw musisz zapisać zmiany cen, aby włączyć eksportowanie danych cen.*
+* *Najpierw musisz zapisać zmiany cen, aby włączyć eksportowanie danych cen.*
 
 Uważnie Przejrzyj ceny przed opublikowaniem, ponieważ istnieją pewne ograniczenia dotyczące tego, co można zmienić po opublikowaniu planu:
 

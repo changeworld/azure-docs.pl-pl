@@ -30,7 +30,7 @@ Aby uzyskać szczegółowe informacje o żądaniach elementu webhook, zobacz [Az
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Przejdź do rejestru kontenerów, w której chcesz utworzyć element webhook.
-1. W obszarze **usługi**wybierz pozycję elementy webhook. ****
+1. W obszarze **usługi**wybierz pozycję elementy **webhook**.
 1. Wybierz pozycję **Dodaj** na pasku narzędzi elementu webhook.
 1. Wypełnij formularz *Utwórz element webhook* , podając następujące informacje:
 

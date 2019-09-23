@@ -100,7 +100,7 @@ Kierowanie całego środowiska z platformy .NET Core, samodzielnego wdrażania i
 
 Monitorowanie po stronie klienta jest zgodą na ASP.NET. Aby włączyć monitorowanie po stronie klienta:
 
-* Wybierz pozycję **ustawienia** > * * * * Ustawienia aplikacji * * * *
+* Wybierz pozycję **ustawienia** > ** **Ustawienia aplikacji** **
    * W obszarze Ustawienia aplikacji Dodaj nową nazwę i **wartość** **Ustawienia aplikacji** :
 
      Nazwij`APPINSIGHTS_JAVASCRIPT_ENABLED`
