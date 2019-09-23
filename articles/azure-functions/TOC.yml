@@ -192,6 +192,8 @@
           href: functions-deployment-slots.md
         - name: Tworzenie i wdrażanie za pomocą usługi Azure Pipelines
           href: functions-how-to-azure-devops.md
+        - name: Tworzenie i wdrażanie za pomocą usługi GitHub Actions
+          href: functions-how-to-github-actions.md
         - name: Wdrażanie pliku zip
           href: deployment-zip-push.md
         - name: Uruchamianie za pomocą pakietu

@@ -18,7 +18,7 @@
       href: quickstart-load-balancer-standard-public-cli.md
     - name: Tworzenie standardowego modułu równoważenia obciążenia — program Azure PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
-    - name: Tworzenie usługi Load Balancer w warstwie Standardowa — szablon usługi Azure Resource Manager
+    - name: Tworzenie usługi Load Balancer w warstwie Standardowa — szablon
       displayName: ARM
       href: quickstart-load-balancer-standard-public-template.md
 - name: Samouczki

@@ -134,8 +134,10 @@
       href: ../../virtual-machine-scale-sets/overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: Automatyzacja infrastruktury
       href: infrastructure-automation.md
-    - name: Zabezpieczenia i zasady
-      href: security-policy.md
+    - name: Bezpieczeństwo
+      items:
+        - name: Zabezpieczenia i zasady
+          href: security-policy.md
     - name: Stany i cykl życia
       href: states-lifecycle.md
     - name: Monitorowanie
@@ -183,6 +185,8 @@
           href: windows-desktop-multitenant-hosting-deployment.md
     - name: Zabezpieczone maszyny wirtualne
       items:
+        - name: Zalecenia
+          href: security-recommendations.md
         - name: Dostęp just in time
           href: ../../security-center/security-center-just-in-time.md
         - name: Szyfrowanie
@@ -259,6 +263,14 @@
           href: instance-metadata-service.md
         - name: Włączanie wirtualizacji zagnieżdżonej
           href: nested-virtualization.md
+    - name: Monitorowanie maszyn wirtualnych
+      items:
+        - name: Usługa Azure Monitor dla maszyn wirtualnych
+          href: ../../azure-monitor/insights/vminsights-overview.md
+        - name: Tworzenie alertów dotyczących metryk
+          href: ../../azure-monitor/platform/alerts-metric.md
+        - name: Tworzenie alertów dotyczących dzienników
+          href: ../../azure-monitor/platform/alerts-log.md
     - name: Zarządzanie kosztami
       items:
         - name: Opłacanie maszyn wirtualnych z góry — rezerwacje platformy Azure

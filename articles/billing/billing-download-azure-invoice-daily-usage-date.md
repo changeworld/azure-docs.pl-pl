@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: 16b2eaef74a7aa0e3e28bfcbb6dbd9da568db6cf
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 45f4a45828501afea52f0ad522c3f3f6777f7ccd
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67491404"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057683"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Pobieranie lub wyświetlanie faktury rozliczeniowej i danych dziennego użycia platformy Azure
 
 W przypadku większości subskrypcji możesz pobrać fakturę z [witryny Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) lub zażądać jej wysłania w wiadomości e-mail. Jeśli jesteś klientem platformy Azure z umową Enterprise Agreement (umową EA), nie możesz pobrać faktur swojej organizacji. Faktury są wysyłane do osoby skonfigurowanej jako odbiorca faktur dla rejestracji.
 
-Jeśli jesteś klientem z umową EA lub masz [umowę klienta firmy Microsoft](#check-access-to-a-microsoft-customer-agreement), możesz pobrać dane użycia w [witrynie Azure Portal](https://portal.azure.com/). W przypadku innych subskrypcji przejdź do [Centrum konta platformy Azure](https://account.azure.com/Subscriptions), aby pobrać dane użycia.
+Jeśli jesteś klientem z umową EA lub masz [umowę klienta firmy Microsoft](#check-access-to-a-microsoft-customer-agreement), możesz pobrać dane użycia w [witrynie Azure Portal](https://portal.azure.com/).
 
 Tylko niektóre role, takie jak administrator konta i administrator przedsiębiorstwa, mają uprawnienie do pobierania danych użycia i faktur rozliczeniowych. Aby dowiedzieć się więcej na temat uzyskiwania dostępu do informacji dotyczących rozliczeń, zobacz [Manage access to Azure billing using roles (Zarządzanie dostępem do rozliczeń platformy Azure przy użyciu ról)](billing-manage-access.md).
 
@@ -46,11 +46,13 @@ W przypadku większości subskrypcji możesz pobrać fakturę z witryny Azure Po
 
     ![Zrzut ekranu przedstawiający opcję Rozliczenia i użycie](./media/billing-download-azure-invoice-daily-usage-date/billingandusage.png)
 
-3. Kliknij pozycję **Pobierz fakturę**, aby wyświetlić kopię faktury w formacie PDF. Jeśli jest wyświetlany tekst **Niedostępna**, zobacz sekcję [Dlaczego nie widzę faktury za ostatni okres rozliczeniowy?](#noinvoice)
+3. Kliknij przycisk pobierania umożliwiający pobranie kopii faktury w formacie PDF, a następnie wybierz pozycję **Pobierz fakturę**. Jeśli jest wyświetlany tekst **Niedostępna**, zobacz sekcję [Dlaczego nie widzę faktury za ostatni okres rozliczeniowy?](#noinvoice)
 
-    ![Zrzut ekranu pokazujący okresy rozliczeniowe, opcję pobierania i łączne opłaty za każdy okres rozliczeniowy](./media/billing-download-azure-invoice-daily-usage-date/billing4.png)
+    ![Zrzut ekranu pokazujący okresy rozliczeniowe, opcję pobierania i łączne opłaty za każdy okres rozliczeniowy](./media/billing-download-azure-invoice-daily-usage-date/downloadinvoice.png)
 
-4. Możesz również wyświetlać dzienne użycie, klikając okres rozliczeniowy.
+4. Możesz również pobrać dzienne zestawienie ilości zużytych zasobów i szacowanych opłat, klikając pozycję **Pobierz plik csv**.
+
+    ![Zrzut ekranu przedstawiający stronę Pobieranie faktur i danych użycia](./media/billing-download-azure-invoice-daily-usage-date/usageandinvoice.png)
 
 Aby uzyskać więcej informacji na temat faktury, zobacz [Informacje o rachunku za korzystanie z platformy Microsoft Azure](billing-understand-your-bill.md). Aby uzyskać pomoc dotyczącą zarządzania kosztami, zobacz [Zapobieganie powstawaniu nieoczekiwanych kosztów w rozliczeniach platformy Azure i zarządzanie kosztami](billing-getting-started.md).
 
@@ -62,7 +64,7 @@ Faktury są generowane dla każdego [profilu rozliczeniowego](billing-mca-overvi
 2. Wybierz profil rozliczeniowy.
 3. Wybierz pozycję **Faktury**.
 4. W siatce faktur znajdź wiersz faktury, którą chcesz pobrać.
-5. Kliknij symbol wielokropka (`...`) na końcu wiersza.
+5. Kliknij przycisk pobierania na końcu wiersza.
 6. W menu kontekstowym pobierania wybierz pozycję **Faktura**.
 
 Jeśli nie widzisz faktury dla ostatniego okresu rozliczeniowego, zobacz **Dodatkowe informacje**. <!-- Fix this -->
@@ -119,37 +121,19 @@ Jeśli masz umowę klienta firmy Microsoft, możesz wyrazić zgodę na otrzymywa
 
 Możesz zrezygnować z otrzymywania faktur za pomocą poczty e-mail, wykonując powyższe kroki i klikając pozycję **Zrezygnuj**. Rezygnacja z otrzymywania faktur w wiadomości e-mail obejmie także wszystkich właścicieli, współautorów, czytelników i menedżerów faktur. Czytelnicy nie mogą zmieniać preferencji wysyłania faktur za pomocą poczty e-mail.
 
-## <a name="download-usage"></a>Pobieranie danych użycia
+## <a name="download-usage-in-azure-portal"></a>Pobieranie danych użycia w witrynie Azure Portal
 
- W przypadku większości subskrypcji plik dziennego użycia jest dostępny w [Centrum konta platformy Azure](https://account.azure.com/Subscriptions). Jeśli jesteś klientem z umową EA lub masz umowę klienta firmy Microsoft, możesz pobrać dane użycia w [witrynie Azure Portal](https://portal.azure.com/). <!-- TO DO: update PayG experience to Ibiza once it ships-->
+ W przypadku większości subskrypcji wykonaj następujące kroki, aby znaleźć zestawienie dziennego użycia:
 
-### <a name="download-usage-from-the-account-center-csv"></a>Pobieranie danych użycia z Centrum konta (CSV)
+1. Wybierz swoją subskrypcję na [stronie Subskrypcje](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) w witrynie Azure Portal jako [użytkownik z dostępem do faktur](billing-manage-access.md).
 
-1. Zaloguj się do [Centrum konta platformy Azure](https://account.windowsazure.com/subscriptions) jako administrator konta.
+2. Wybierz pozycję **Faktury**.
 
-2. Wybierz subskrypcję, dla której chcesz otrzymać fakturę i dane użycia.
+    ![Zrzut ekranu przedstawiający opcję Rozliczenia i użycie](./media/billing-download-azure-invoice-daily-usage-date/billingandusage.png)
 
-3. Wybierz pozycję **HISTORIA ROZLICZEŃ**.
+3. Kliknij przycisk pobierania dotyczący okresu fakturowania, który chcesz sprawdzić.
 
-    ![Zrzut ekranu przedstawiający opcję historii rozliczeń](./media/billing-download-azure-invoice-daily-usage-date/Billinghisotry.png)
-
-4. Dostępne są zestawienia za sześć ostatnich okresów rozliczeniowych i bieżący, nierozliczony okres.
-
-    ![Zrzut ekranu pokazujący okresy rozliczeniowe, opcję pobierania faktury i danych dziennego użycia oraz łączne opłaty za każdy okres rozliczeniowy](./media/billing-download-azure-invoice-daily-usage-date/billingSum.png)
-
-5. Wybierz pozycję **Wyświetl bieżące zestawienie**, aby zobaczyć oszacowanie opłat na dzień wygenerowania tego oszacowania. Te informacje są aktualizowane tylko raz dziennie i mogą nie uwzględniać całego użycia. Rachunek miesięczny może różnić się od podanego oszacowania.
-
-    ![Zrzut ekranu przedstawiający opcję Wyświetl bieżące zestawienie](./media/billing-download-azure-invoice-daily-usage-date/billingSum2.png)
-
-    ![Zrzut ekranu przedstawiający oszacowanie bieżących opłat](./media/billing-download-azure-invoice-daily-usage-date/billingSum3.png)
-
-6. Wybierz pozycję **Pobierz zestawienie użycia**, aby pobrać dane dziennego użycia w postaci pliku CSV. Jeśli będą dostępne dwie wersje, pobierz wersję 2.
-
-    ![Zrzut ekranu przedstawiający opcję Pobierz zestawienie użycia](./media/billing-download-azure-invoice-daily-usage-date/DLusage.png)
-
-Tylko administrator konta może uzyskać dostęp do Centrum konta platformy Azure. Inni administratorzy rozliczeń, tacy jak właściciel, mogą uzyskać informacje dotyczące użycia za pomocą [interfejsów API rozliczeń](billing-usage-rate-card-overview.md).
-
-Aby uzyskać więcej informacji na temat dziennego użycia, zobacz [Informacje o rachunku za korzystanie z platformy Microsoft Azure](billing-understand-your-bill.md). Aby uzyskać pomoc dotyczącą zarządzania kosztami, zobacz [Zapobieganie powstawaniu nieoczekiwanych kosztów w rozliczeniach platformy Azure i zarządzanie kosztami](billing-getting-started.md).
+4. Pobierz dzienne zestawienie ilości zużytych zasobów i szacowanych opłat, klikając pozycję **Pobierz plik csv**.  Przygotowanie pliku CSV może potrwać kilka minut.
 
 ### <a name="download-usage-for-ea-customers"></a>Pobieranie zestawienia użycia dla klientów z umową EA
 

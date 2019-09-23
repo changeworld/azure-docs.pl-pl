@@ -4,16 +4,16 @@ description: W tym artykule opisano typowe zadania wykonywane przez administrato
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/09/2019
+ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 7b594cef2fefa164ef900cbfd65fcf95d5d47b94
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 236a8d6d280e75102df84fec5ab3df51f7ba355b
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901138"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105483"
 ---
 # <a name="azure-ea-portal-administration"></a>Administracja przy użyciu witryny Azure EA Portal
 
@@ -23,7 +23,7 @@ W tym artykule opisano typowe zadania wykonywane przez administratora w witrynie
 
 Administratorzy przedsiębiorstwa mają największe uprawnienia podczas zarządzania rejestracją w portalu Azure EA. Początkowy administrator platformy Azure EA został utworzony podczas konfigurowania umowy EA. Można jednak dodawać i usuwać nowych administratorów w dowolnym momencie. Nowi administratorzy są dodawani tylko przez istniejących administratorów. Aby uzyskać więcej informacji na temat dodawania dodatkowych administratorów przedsiębiorstwa, zobacz sekcję [Tworzenie innego administratora przedsiębiorstwa](billing-ea-portal-get-started.md#create-another-enterprise-admin). Aby uzyskać więcej informacji o rolach i zadaniach dotyczących rozliczeń, zobacz sekcję [Role i zadania profilów rozliczeniowych](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
 
-## <a name="update-user-state-from-pending-to-active"></a>Aktualizowanie stanu użytkownika z Oczekujący na Aktywny
+## <a name="update-user-state-from-pending-to-active"></a>Aktualizowanie stanu użytkownika z „oczekujące” na „aktywne”
 
 Gdy nowi właściciele konta są po raz pierwszy dodawani do rejestracji w ramach umowy EA, ich stan jest wyświetlany jako _oczekujące_. Gdy nowy właściciel konta otrzymuje powitalną wiadomość e-mail z informacjami o aktywacji, może się zalogować, aby aktywować swoje konto. Po aktywowaniu konta stan konta jest aktualizowany z _oczekujące_ na _aktywne_. Nowi użytkownicy mogą zobaczyć monit o wprowadzenie imienia i nazwiska, aby utworzyć konto komercyjne. W takiej sytuacji muszą dodać wymagane informacje, aby kontynuować pracę, a konto jest aktywowane.
 
@@ -152,7 +152,7 @@ Aby wyświetlić użytkowników z dostępem RBAC do subskrypcji:
 
 Jeśli subskrypcja zostanie przeniesiona na konto w innej dzierżawie usługi Azure AD, wszyscy użytkownicy, wszystkie grupy i wszystkie jednostki usługi z [dostępem RBAC](../role-based-access-control/overview.md) do zarządzania zasobami _utracą_ dostęp. Chociaż dostęp do usługi RBAC nie istnieje, dostęp do subskrypcji może być dostępny w ramach mechanizmów zabezpieczeń, takich jak przykład:
 
-- Certyfikaty zarządzania, które przyznają użytkownikowi uprawnienia administratora do zasobów subskrypcji. Aby uzyskać więcej informacji, zobacz [Tworzenie i przekazywanie certyfikatu zarządzania dla platformy Azure](../cloud-services/cloud-services-certs-create.md).
+- Certyfikaty zarządzania, które przyznają użytkownikowi uprawnienia administratora do zasobów subskrypcji. Więcej informacji — zobacz [Tworzenie i przekazywanie certyfikatu zarządzania dla platformy Azure](../cloud-services/cloud-services-certs-create.md).
 - Klucze dostępu dla usług, takich jak Storage. Aby uzyskać więcej informacji, zobacz [Omówienie konta magazynu platformy Azure](../storage/common/storage-account-overview.md).
 - Poświadczenia dostępu zdalnego dla usług, takich jak Azure Virtual Machines.
 

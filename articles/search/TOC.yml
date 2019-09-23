@@ -251,18 +251,18 @@
               href: knowledge-store-connect-power-bi.md
     - name: Dokumenty z zapytaniami
       items:
-        - name: Tworzenie podstawowego zapytania
+        - name: Typy i kompozycja zapytań
           href: search-query-overview.md
-        - name: Eksplorator wyszukiwania (portal)
+        - name: Tworzenie prostego zapytania
+          href: search-query-simple-examples.md
+        - name: Używanie pełnej składni Lucene
+          href: search-query-lucene-examples.md
+        - name: Używanie Eksploratora wyszukiwania (portal)
           href: search-explorer.md
         - name: Prosta składnia zapytań
           href: query-simple-syntax.md
         - name: Pełna składnia zapytań Lucene
           href: query-lucene-syntax.md
-        - name: Przykłady (prosta składnia)
-          href: search-query-simple-examples.md
-        - name: Przykłady (pełna składnia Lucene)
-          href: search-query-lucene-examples.md
         - name: moreLikeThis (wersja zapoznawcza)
           href: search-more-like-this.md
     - name: Stosowanie filtrów

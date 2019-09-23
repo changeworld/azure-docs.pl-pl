@@ -183,8 +183,8 @@
       href: /rest/api/mariadb
     - name: Szablon usługi Resource Manager
       href: /azure/templates/microsoft.dbformariadb/allversions
-    - name: Procedury składowane replikacji wejściowej danych
-      href: reference-data-in-stored-procedures.md
+    - name: Procedury składowane na platformie Azure
+      href: reference-stored-procedures.md
 - name: Zasoby
   items:
     - name: Szablony wdrażania

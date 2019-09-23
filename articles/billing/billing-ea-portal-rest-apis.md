@@ -4,16 +4,16 @@ description: W tym artykule opisano interfejsy API REST, których można używa�
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/09/2019
+ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 4b56ef09525473920c5f5925485aae9c793ecc04
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: a8cf0d2eb87a823ee4b1d27484e7ea8d89c1abfc
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900866"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105456"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Interfejsy API REST usługi Azure Enterprise
 
@@ -31,7 +31,7 @@ Klienci korporacyjni platformy Azure firmy Microsoft mogą uzyskać informacje o
 
 **Opłaty za sklep Marketplace** — [Interfejs API opłat za sklep Marketplace](billing-enterprise-api-marketplace-storecharge.md) zwraca opłaty za witrynę Marketplace obliczone na podstawie użycia według dnia dla określonego okresu rozliczeniowego lub dat rozpoczęcia i zakończenia. Aby uzyskać więcej informacji, zobacz [Interfejsy API raportowania dla klientów Enterprise — opłaty za sklep Marketplace](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge).
 
-**Arkusz cen** — [Interfejs API arkusza cen](/billing-enterprise-api-pricesheet.md) udostępnia odpowiednią stawkę za każdy miernik dla rejestracji i okresu rozliczeniowego. Aby uzyskać więcej informacji, zobacz [Interfejsy API raportowania dla klientów Enterprise — arkusz cen](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet).
+**Arkusz cen** — [Interfejs API arkusza cen](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) udostępnia odpowiednią stawkę za każdy miernik dla rejestracji i okresu rozliczeniowego. Aby uzyskać więcej informacji, zobacz [Interfejsy API raportowania dla klientów Enterprise — arkusz cen](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet).
 
 **Okresy rozliczeniowe** — [interfejs API okresów rozliczeniowych](billing-enterprise-api-billing-periods.md) zwraca listę okresów rozliczeniowych, które zawierają dane dotyczące użycia dla rejestracji w odwrotnej kolejności chronologicznej. Każdy okres zawiera właściwość wskazującą trasę interfejsu API dla czterech zestawów danych: BalanceSummary, UsageDetails, Marketplace Charges i PriceSheet (Podsumowanie salda, Szczegóły użycia, Opłaty za witrynę Marketplace i Arkusz cen). Aby uzyskać więcej informacji, zobacz [Interfejsy API raportowania dla klientów Enterprise — okresy rozliczeniowe](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods).
 

@@ -9,12 +9,22 @@
 - name: Przewodniki Szybki start
   expanded: true
   items:
-    - name: Rozpoznawanie nazw — portal
-      href: dns-getstarted-portal.md
-    - name: Rozpoznawanie nazw — PowerShell
-      href: dns-getstarted-powershell.md
-    - name: Rozpoznawanie nazw — interfejs wiersza polecenia
-      href: dns-getstarted-cli.md
+    - name: Publiczna usługa DNS
+      items:
+        - name: Tworzenie strefy publicznej — portal
+          href: dns-getstarted-portal.md
+        - name: Tworzenie strefy publicznej — program PowerShell
+          href: dns-getstarted-powershell.md
+        - name: Tworzenie strefy publicznej — interfejs wiersza polecenia
+          href: dns-getstarted-cli.md
+    - name: Prywatna strefa DNS
+      items:
+        - name: Tworzenie strefy prywatnej — portal
+          href: private-dns-getstarted-portal.md
+        - name: Tworzenie strefy prywatnej — interfejs wiersza polecenia
+          href: private-dns-getstarted-cli.md
+        - name: Tworzenie strefy prywatnej — program PowerShell
+          href: private-dns-getstarted-powershell.md
 - name: Samouczki
   items:
     - name: Publiczna usługa DNS
@@ -29,10 +39,6 @@
           href: tutorial-alias-pip.md
         - name: Rekordy aliasów dla rekordów strefy
           href: tutorial-alias-rr.md
-    - name: Prywatna strefa DNS
-      items:
-        - name: Tworzenie strefy i rekordu w prywatnej usłudze DNS
-          href: private-dns-portal.md
 - name: Przykłady
   items:
     - name: Interfejs wiersza polecenia platformy Azure
@@ -63,12 +69,6 @@
           href: private-dns-scenarios.md
 - name: Instrukcje
   items:
-    - name: Prywatna strefa DNS
-      items:
-        - name: Tworzenie strefy prywatnej — interfejs wiersza polecenia
-          href: private-dns-getstarted-cli.md
-        - name: Tworzenie strefy prywatnej — PowerShell
-          href: private-dns-getstarted-powershell.md
     - name: Publiczna usługa DNS
       items:
         - name: Rekordy aliasów dla aplikacji internetowych z równoważeniem obciążenia

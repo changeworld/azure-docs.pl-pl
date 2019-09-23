@@ -25,9 +25,9 @@
       items:
         - name: Tworzenie środowiska usługi Time Series Insights
           href: tutorial-create-populate-tsi-environment.md
-    - name: Wersja zapoznawcza usługi Azure Time Series Insights
+    - name: Azure Time Series Insights (wersja zapoznawcza)
       items:
-        - name: 'Samouczek: usługa Azure Time Series Insights w wersji zapoznawczej'
+        - name: Konfigurowanie środowiska wersji zapoznawczej
           href: time-series-insights-update-create-environment.md
 - name: Pojęcia
   items:

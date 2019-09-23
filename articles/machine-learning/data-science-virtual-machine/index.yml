@@ -1,29 +1,28 @@
 ### YamlMime:Landing
 title: Dokumentacja dotycząca środowiska Data Science Virtual Machine na platformie Azure
-summary: Środowisko Azure Data Science Virtual Machine (DSVM) to dostosowany obraz maszyny wirtualnej zawierający narzędzia do nauki o danych i uczenia maszynowego. Za pomocą tej maszyny wirtualnej możesz tworzyć inteligentne aplikacje do zaawansowanej analizy.
+summary: Środowisko Azure Data Science Virtual Machine (DSVM) to obraz maszyny wirtualnej zawierający wstępnie załadowane narzędzia do nauki o danych i uczenia maszynowego. Za pomocą tej maszyny wirtualnej możesz tworzyć inteligentne aplikacje do zaawansowanej analizy.
 metadata:
   title: Dokumentacja dotycząca środowiska Data Science Virtual Machine — platforma Azure
-  description: Środowisko Data Science Virtual Machine to eksperymentalne środowisko w chmurze platformy Azure utworzone na potrzeby nauki o danych. Popularne narzędzia do nauki o danych i uczenia maszynowego są wstępnie zainstalowane.
-  services: machine-learning
+  description: Środowisko Azure Data Science Virtual Machine (DSVM) to obraz maszyny wirtualnej zawierający wstępnie załadowane narzędzia do nauki o danych i uczenia maszynowego.
   ms.service: machine-learning
   ms.subservice: data-science-vm
   ms.topic: landing-page
   ms.collection: collection
-  author: j-martens
-  ms.author: jmartens
-  ms.date: 09/03/2019
-  ms.openlocfilehash: c33504124bdef2edf44842581143a8468cbb1e20
-  ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+  author: gvashishtha
+  ms.author: gopalv
+  ms.date: 09/13/2019
+  ms.openlocfilehash: 3fdd30274796072fcca6a5cfe41651334cf62aee
+  ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 09/04/2019
-  ms.locfileid: "70308790"
+  ms.lasthandoff: 09/20/2019
+  ms.locfileid: "71170713"
 landingContent:
 - title: Rozpocznij pracę z maszyną DSVM
   linkLists:
   - linkListType: overview
     links:
-    - text: Co to jest środowisko Azure DSVM?
+    - text: Co to jest maszyna DSVM?
       url: overview.md
     - text: Co to jest maszyna DSVM ze sztuczną inteligencją w zakresie danych geograficznych?
       url: geo-ai-dsvm-overview.md
@@ -39,6 +38,10 @@ landingContent:
       url: provision-geo-ai-dsvm.md
 - title: Zarządzanie maszyną DSVM
   linkLists:
+  - linkListType: architecture
+    links:
+    - text: Wskazówki i zabezpieczenia przedsiębiorstwa
+      url: dsvm-enterprise-overview.md
   - linkListType: how-to-guide
     links:
     - text: Tworzenie automatycznie skalowanych pul maszyn DSVM
@@ -49,7 +52,7 @@ landingContent:
       url: dsvm-secure-access-keys.md
 - title: Więcej technologii usługi Azure Machine Learning
   linkLists:
-  - linkListType: reference
+  - linkListType: learn
     links:
     - text: Usługa Azure Machine Learning
       url: /azure/machine-learning/

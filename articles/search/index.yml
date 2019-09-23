@@ -1,67 +1,131 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentacja usługi Azure Search
+summary: Przeszukuj prywatną, niejednorodną zawartość w chmurze, korzystając z opcji wzbogacania przy użyciu sztucznej inteligencji dla zawartości bez struktury lub niemożliwej do przeszukiwania w nieprzetworzonej postaci.
 metadata:
-  document_id: null
-  title: 'Dokumentacja usługi Azure Search — samouczki, przewodniki Szybki start i dokumentacja interfejsu API'
-  description: 'Dowiedz się, jak przy użyciu usługi Azure Search utworzyć rozwiązanie wyszukiwania dla przedsiębiorstw obsługujące prywatną, heterogeniczną zawartość. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiają sposób konsolidowania zawartości, którą można przeszukiwać, w jeden, szybki indeks umożliwiający wykonywanie zapytań za pomocą składni o różnej złożoności (od podstawowej po zaawansowaną) w szerokim zakresie scenariuszy.'
+  title: Dokumentacja usługi Azure Search
+  description: Przeszukuj prywatną, niejednorodną zawartość w chmurze, korzystając z opcji wzbogacania przy użyciu sztucznej inteligencji dla zawartości bez struktury lub niemożliwej do przeszukiwania w nieprzetworzonej postaci.
   services: search
-  author: HeidiSteen
-  manager: nitinme
-  ms.service: search
+  ms.service: service
+  ms.subservice: cognitive-search
   ms.topic: landing-page
-  ms.date: 08/12/2019
+  ms.collection: collection
+  author: HeidiSteen
   ms.author: heidist
-abstract:
-  description: 'Dowiedz się, jak przy użyciu usługi Azure Search utworzyć rozwiązanie wyszukiwania dla przedsiębiorstw obsługujące prywatną, heterogeniczną zawartość. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiają sposób konsolidowania zawartości, którą można przeszukiwać, w jeden, szybki indeks umożliwiający wykonywanie zapytań za pomocą składni o różnej złożoności (od podstawowej po zaawansowaną) w szerokim zakresie scenariuszy. <p/><a href="/azure/search/cognitive-search-concept-intro"><b>Wyszukiwanie poznawcze</b></a> jest funkcją usługi Azure Search, która dołącza procesy AI do indeksowania, wykrywania tekstu i cech w plikach obrazów oraz znajdowania wzorców w dużych blokach tekstu bez struktury. Procesy sztucznej inteligencji są obsługiwane przez usługi Cognitive Services.<p/><a href="/azure/search/knowledge-store-concept-intro"><b>Magazyn wiedzy (wersja zapoznawcza)</b></a> umożliwia zapisanie wzbogaceń o sztuczną inteligencję w magazynie, w którym możesz wyświetlać i przekształcać wzbogacenia oraz korzystać z nich w aplikacjach klienckich lub procesach podrzędnych.'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: 'https://docs.microsoft.com/azure/search/media/index/search-page-callouts3.png'
-      width: 250
-    title: 'Co to jest usługa Azure Search (1:27)'
-    href: 'https://channel9.msdn.com/Blogs/Azure/What-is-Azure-Search/player'
-    width: 250
-sections:
-  - title: 5-minutowe przewodniki Szybki start
-    items:
-      - type: paragraph
-        text: 'Rozpocznij pracę z usługą Search w portalu, a następnie zdefiniuj i załaduj indeksy oraz wykonuj względem nich zapytania za pomocą języka C# i architektury REST.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/search/media/index/portal.svg
-            text: Portal Azure
-            href: 'https://docs.microsoft.com/azure/search/search-create-service-portal'
-          - image:
-              src: /azure/search/media/index/logo_Csharp.svg
-            text: .NET
-            href: 'https://docs.microsoft.com/azure/search/search-create-index-dotnet'
-          - image:
-              src: /azure/search/media/index/rest.svg
-            text: REST
-            href: 'https://docs.microsoft.com/azure/search/search-get-started-postman'
-  - title: Samouczki krok po kroku
-    items:
-      - type: paragraph
-        text: Twórz kod .NET lub REST albo wypróbuj portal w celu szybkiego testowania koncepcji.
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/search/search-get-started-portal">Korzystanie z portalu w celu indeksowania i testowania zapytań</a>
-          - html: <a href="/azure/search/search-howto-dotnet-sdk">Pisanie pierwszego rozwiązania wyszukiwania za pomocą platformy .NET</a>
-          - html: <a href="/azure/search/cognitive-search-tutorial-blob">Wzbogacanie o sztuczną inteligencję (Cognitive Services)</a>
-          - html: <a href="/azure/search/search-indexer-tutorial">Indeksowanie zawartości usługi Azure SQL Database za pomocą platformy .NET</a>
-          - html: <a href="/azure/search/search-semi-structured-data">Indeksowanie częściowo ustrukturyzowanych danych w usłudze Azure Blob Storage za pomocą architektury REST</a>
-  - title: Dokumentacja
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Języki
-            html: '<p><a href="/dotnet/api/?term=microsoft.azure.search">.NET</a></p><p><a href="/dotnet/api/?term=microsoft.azure.management.search">.NET (zarządzanie)</a></p><p><a href="https://docs.microsoft.com/python/api/?view=azure-python&term=search">Python (zarządzanie)</a></p>'
-          - title: REST
-            html: <p><a href="/rest/api/searchservice">Service API Reference (Dokumentacja interfejsu API usługi)</a></p><p><a href="/rest/api/searchmanagement">Management API Reference (Dokumentacja interfejsu API zarządzania)</a></p>
+  ms.date: 09/20/2019
+  ms.openlocfilehash: 113ee13c1667e00f1052c88c9b29b881f312b00c
+  ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 09/19/2019
+  ms.locfileid: "71147276"
+landingContent:
+- title: Informacje o usłudze Azure Search
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest usługa Azure Search?
+      url: search-what-is-azure-search.md
+  - linkListType: architecture
+    links:
+    - text: Jak działa wyszukiwanie pełnotekstowe w usłudze Azure Search
+      url: search-lucene-query-architecture.md
+  - linkListType: video
+    links:
+    - text: Co to jest Azure Search (1 min 27 s)
+      url: https://channel9.msdn.com/Blogs/Azure/What-is-Azure-Search/player
+- title: Rozpoczęcie pracy
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Tworzenie usługi
+      url: search-create-service-portal.md
+    - text: Tworzenie indeksu
+      url: search-get-started-portal.md
+    - text: Tworzenie potoku wzbogacania
+      url: cognitive-search-quickstart-blob.md
+  - linkListType: learn
+    links:
+    - text: Wprowadzenie do usługi Azure Search
+      url: https://docs.microsoft.com/learn/modules/intro-to-azure-search/
+- title: Indeksowanie danych
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Definiowanie indeksu
+      url: search-what-is-an-index.md
+    - text: Importowanie danych
+      url: search-what-is-data-import.md
+    - text: Używanie indeksatora
+      url: search-indexer-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Indeksowanie danych z usługi Blob Storage
+      url: search-howto-indexing-azure-blob-storage.md
+    - text: Indeksowanie obiektów blob JSON
+      url: search-howto-index-json-blobs.md
+    - text: Indeksowanie danych z usługi Azure SQL Database
+      url: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
+    - text: Indeksowanie danych z usługi Cosmos DB
+      url: search-howto-index-cosmosdb.md
+  - linkListType: reference
+    links:
+    - text: Tworzenie indeksu (REST)
+      url: https://docs.microsoft.com/rest/api/searchservice/create-index
+    - text: Tworzenie indeksatora (REST)
+      url: https://docs.microsoft.com/rest/api/searchservice/create-indexer
+- title: Wzbogacanie danych
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Co to jest wyszukiwanie poznawcze?
+      url: cognitive-search-concept-intro.md
+    - text: Zestawy umiejętności
+      url: cognitive-search-defining-skillset.md
+    - text: Magazyny wiedzy
+      url: knowledge-store-concept-intro.md
+    - text: Projekcje
+      url: knowledge-store-projection-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Dołączanie usług Cognitive Services
+      url: cognitive-search-attach-cognitive-services.md
+    - text: Definiowanie zestawu umiejętności
+      url: cognitive-search-defining-skillset.md
+    - text: Tworzenie magazynu wiedzy
+      url: knowledge-store-create-portal.md
+  - linkListType: reference
+    links:
+    - text: Wstępnie zdefiniowane umiejętności
+      url: cognitive-search-predefined-skills.md
+- title: Wysyłanie zapytań dotyczących danych
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Omówienie
+      url: search-query-overview.md
+    - text: Prosta składnia (domyślna)
+      url: query-simple-syntax.md
+    - text: Pełna składnia Lucene
+      url: query-lucene-syntax.md
+  - linkListType: how-to-guide
+    links:
+    - text: Tworzenie prostego zapytania
+      url: search-query-simple-examples.md
+    - text: Używanie pełnej składni
+      url: search-query-lucene-examples.md
+  - linkListType: reference
+    links:
+    - text: Dokumentacja języka OData
+      url: query-odata-filter-orderby-syntax.md
+    - text: Wyszukiwanie dokumentów (REST)
+      url: https://docs.microsoft.com/rest/api/searchservice/search-documents
+- title: Pomoc i opinie
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Często zadawane pytania
+      url: search-faq-frequently-asked-questions.md
+    - text: Zadawaj pytania na stronie Stack Overflow
+      url: https://stackoverflow.com/questions/tagged/azure-search
+    - text: Prośba o funkcję
+      url: https://feedback.azure.com/forums/263029-azure-search

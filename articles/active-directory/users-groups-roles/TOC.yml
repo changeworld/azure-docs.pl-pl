@@ -36,26 +36,24 @@
   items:
     - name: Zarządzanie użytkownikami
       items:
-        - name: Dodawanie nowych użytkowników do usługi Azure AD
+        - name: Tworzenie użytkowników
           href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Zbiorcze tworzenie użytkowników (wersja zapoznawcza)
+          href: users-bulk-add.md
         - name: Zarządzanie profilami użytkowników
           href: /azure/active-directory/fundamentals/active-directory-users-profile-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Operacje zbiorcze (wersja zapoznawcza)
-          items:
-            - name: Pobieranie użytkowników (wersja zapoznawcza)
-              href: users-bulk-download.md
-            - name: Zbiorcze importowanie użytkowników (wersja zapoznawcza)
-              href: users-bulk-add.md
-            - name: Zbiorcze usuwanie użytkowników (wersja zapoznawcza)
-              href: users-bulk-delete.md
-            - name: Zbiorcze przywracanie użytkowników (wersja zapoznawcza)
-              href: users-bulk-restore.md
+        - name: Pobieranie informacji o użytkownikach (wersja zapoznawcza)
+          href: users-bulk-download.md
         - name: Udostępnianie kont użytkowników
           href: users-sharing-accounts.md
         - name: Przypisywanie użytkowników do ról administratorów
           href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Zbiorcze usuwanie użytkowników (wersja zapoznawcza)
+          href: users-bulk-delete.md
         - name: Przywrócić usuniętego użytkownika
           href: /azure/active-directory/fundamentals/active-directory-users-restore?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Zbiorcze przywracanie użytkowników (wersja zapoznawcza)
+          href: users-bulk-restore.md
         - name: Zamykanie konta w katalogu niezarządzanym
           href: users-close-account.md
         - name: Dodawanie użytkowników B2B
@@ -86,28 +84,26 @@
           href: /azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Wyszukiwanie list grup i członków (wersja zapoznawcza)
           href: groups-members-owners-search.md
+        - name: Tworzenie grupy (Azure Portal)
+          href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Zarządzanie grupami — program PowerShell dla programu Graph (wersja 2)
           href: groups-settings-v2-cmdlets.md
         - name: Zarządzanie grupami — moduł PowerShell MSOnline
           href: groups-settings-cmdlets.md
-        - name: Zarządzanie członkami grup
+        - name: Dodawanie lub usuwanie członków grupy
           href: /azure/active-directory/fundamentals/active-directory-groups-members-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Zbiorcze dodawanie członków (wersja zapoznawcza)
+          href: groups-bulk-import-members.md
+        - name: Zbiorcze usuwanie członków (wersja zapoznawcza)
+          href: groups-bulk-remove-members.md
+        - name: Zbiorcze pobieranie listy członków (wersja zapoznawcza)
+          href: groups-bulk-download-members.md
         - name: Zarządzenie właścicielami grup
           href: /azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Operacje zbiorcze (wersja zapoznawcza)
-          items:
-            - name: Zbiorcze importowanie członków (wersja zapoznawcza)
-              href: groups-bulk-import-members.md
-            - name: Zbiorcze pobieranie członków (wersja zapoznawcza)
-              href: groups-bulk-download-members.md
-            - name: Zbiorcze usuwanie członków (wersja zapoznawcza)
-              href: groups-bulk-remove-members.md
-            - name: Zbiorcze pobieranie listy grup (wersja zapoznawcza)
-              href: groups-bulk-download.md
+        - name: Zbiorcze pobieranie listy grup (wersja zapoznawcza)
+          href: groups-bulk-download.md
         - name: Zarządzanie grupami w grupach
           href: /azure/active-directory/fundamentals/active-directory-groups-membership-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Tworzenie grupy (Azure Portal)
-          href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Dodawanie dostępu grupowego do aplikacji SaaS
           href: groups-saasapps.md
         - name: Dokumentacja nazewnictwa grup
