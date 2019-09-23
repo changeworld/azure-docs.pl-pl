@@ -54,26 +54,6 @@
     - name: Notebooks
       displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
-    - name: Eksperymenty interfejsu wizualnego
-      items:
-        - name: Przewidywanie ceny
-          displayName: 'regression, studio'
-          href: ui-sample-regression-predict-automobile-price-basic.md
-        - name: Przewidywanie ceny (zaawansowane)
-          displayName: 'regression, studio'
-          href: ui-sample-regression-predict-automobile-price-compare-algorithms.md
-        - name: Przewidywanie ryzyka kredytowego
-          displayName: 'classification, studio'
-          href: ui-sample-classification-predict-credit-risk-basic.md
-        - name: Przewidywanie ryzyka kredytowego (zaawansowane)
-          displayName: 'classification, studio'
-          href: ui-sample-classification-predict-credit-risk-cost-sensitive.md
-        - name: Przewidywanie zmian
-          displayName: 'classification, studio'
-          href: ui-sample-classification-predict-churn.md
-        - name: Przewidywanie opóźnień lotów
-          displayName: 'classification, studio'
-          href: ui-sample-classification-predict-flight-delay.md
     - name: Zestawy danych licencji Azure Open
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
 - name: Pojęcia
@@ -174,6 +154,27 @@
               href: how-to-train-pytorch.md
             - name: Korzystanie z platformy Chainer
               href: how-to-train-chainer.md
+        - name: Korzystanie z interfejsu wizualnego
+          displayName: sample visual interface experiments
+          items:
+            - name: Przewidywanie ceny
+              displayName: 'regression, studio'
+              href: how-to-ui-sample-regression-predict-automobile-price-basic.md
+            - name: Przewidywanie ceny (zaawansowane)
+              displayName: 'regression, studio'
+              href: how-to-ui-sample-regression-predict-automobile-price-compare-algorithms.md
+            - name: Przewidywanie ryzyka kredytowego
+              displayName: 'classification, studio'
+              href: how-to-ui-sample-classification-predict-credit-risk-basic.md
+            - name: Przewidywanie ryzyka kredytowego (zaawansowane)
+              displayName: 'classification, studio'
+              href: how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md
+            - name: Przewidywanie zmian
+              displayName: 'classification, studio'
+              href: how-to-ui-sample-classification-predict-churn.md
+            - name: Przewidywanie opóźnień lotów
+              displayName: 'classification, studio'
+              href: how-to-ui-sample-classification-predict-flight-delay.md
         - name: Dostrajanie hiperparametrów
           displayName: parameter
           href: how-to-tune-hyperparameters.md
