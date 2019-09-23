@@ -92,16 +92,16 @@ Przykładowy ładunek JSON:
 
    | deviceId | messageId | deviceLocation |
    | --- | --- | --- |
-   | FXXX | DANE\_WIERSZA | EU |
-   | FYYY | DANE\_WIERSZA | USA |
+   | FXXX | LINE\_DATA | EU |
+   | FYYY | LINE\_DATA | US |
 
 * Time Series Insights tabeli zdarzeń po spłaszczeniu:
 
    | deviceId | messageId | deviceLocation | timestamp | Seria. Przepływ współczynnika ft3/s | Seria. Aparat wykorzystanie ropa naftowa psi |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | DANE\_WIERSZA | EU | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34.7 |
-   | FXXX | DANE\_WIERSZA | EU | 2018-01-17T01:17:00Z | 2.445906400680542 | 49.2 |
-   | FYYY | DANE\_WIERSZA | USA | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22.2 |
+   | FXXX | LINE\_DATA | EU | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34.7 |
+   | FXXX | LINE\_DATA | EU | 2018-01-17T01:17:00Z | 2.445906400680542 | 49.2 |
+   | FYYY | LINE\_DATA | US | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22.2 |
 
 Uwagi dotyczące tych dwóch tabel:
 
