@@ -27,11 +27,11 @@ Twórz i usuwaj aplikacje i typy aplikacji oraz zarządzaj nimi.
 
 |Polecenie|Opis|
 | --- | --- |
-| tworzenie | Tworzy aplikację Service Fabric przy użyciu podanego opisu. |
-| usuwanie | Usuwa istniejącą aplikację Service Fabric. |
+| create | Tworzy aplikację Service Fabric przy użyciu podanego opisu. |
+| delete | Usuwa istniejącą aplikację Service Fabric. |
 | deployed | Pobiera informacje o aplikacji wdrożonej w węźle Service Fabric. |
 | deployed-health | Pobiera informacje o kondycji aplikacji wdrożonej w węźle Service Fabric. |
-| wdrożone — lista | Pobiera listę aplikacji wdrożonych w węźle Service Fabric. |
+| deployed—list | Pobiera listę aplikacji wdrożonych w węźle Service Fabric. |
 | health | Pobiera kondycję aplikacji usługi Service Fabric. |
 | info | Pobiera informacje o aplikacji Service Fabric. |
 | list | Pobiera listę aplikacji utworzonych w klastrze Service Fabric, które pasują do określonych filtrów. |
@@ -44,8 +44,8 @@ Twórz i usuwaj aplikacje i typy aplikacji oraz zarządzaj nimi.
 | unprovision | Usuwa lub wyrejestrowuje typ aplikacji Service Fabric z klastra. |
 | upgrade | Uruchamia Uaktualnianie aplikacji w klastrze Service Fabric. |
 | upgrade-resume | Wznawia Uaktualnianie aplikacji w klastrze Service Fabric. |
-| uaktualnienie — wycofanie | Uruchamia wycofywanie bieżącego uaktualnienia aplikacji w klastrze Service Fabric. |
-| uaktualnienie — stan | Pobiera szczegóły dotyczące najnowszej aktualizacji wykonywanej w tej aplikacji. |
+| upgrade—rollback | Uruchamia wycofywanie bieżącego uaktualnienia aplikacji w klastrze Service Fabric. |
+| upgrade—status | Pobiera szczegóły dotyczące najnowszej aktualizacji wykonywanej w tej aplikacji. |
 | upload | Skopiuj pakiet aplikacji Service Fabric do magazynu obrazów. |
 
 ## <a name="sfctl-application-create"></a>Tworzenie aplikacji sfctl
