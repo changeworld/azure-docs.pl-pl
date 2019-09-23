@@ -66,17 +66,17 @@ Poniższy kod JSON przedstawia schemat rozszerzenia kondycji aplikacji. Rozszerz
 | Name (Nazwa) | Wartość / przykład | Typ danych
 | ---- | ---- | ---- 
 | apiVersion | `2018-10-01` | date |
-| publisher | `Microsoft.ManagedServices` | ciąg |
-| type | `ApplicationHealthLinux`(Linux), `ApplicationHealthWindows` (system Windows) | ciąg |
+| publisher | `Microsoft.ManagedServices` | string |
+| type | `ApplicationHealthLinux`(Linux), `ApplicationHealthWindows` (system Windows) | string |
 | typeHandlerVersion | `1.0` | int |
 
 ### <a name="settings"></a>Ustawienia
 
 | Name | Wartość / przykład | Typ danych
 | ---- | ---- | ----
-| protocol | `http` lub `tcp` | ciąg |
+| protocol | `http` lub `tcp` | string |
 | port | Opcjonalne, gdy protokół `http`jest, obowiązkowy, gdy protokół jest`tcp` | int |
-| requestPath | Obowiązkowe, gdy protokół `http`jest, niedozwolony, gdy protokół jest`tcp` | ciąg |
+| requestPath | Obowiązkowe, gdy protokół `http`jest, niedozwolony, gdy protokół jest`tcp` | string |
 
 ## <a name="deploy-the-application-health-extension"></a>Wdróż rozszerzenie kondycji aplikacji
 Istnieje wiele sposobów wdrażania rozszerzenia kondycji aplikacji w zestawach skalowania, jak opisano w poniższych przykładach.
