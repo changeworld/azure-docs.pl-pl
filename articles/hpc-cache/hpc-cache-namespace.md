@@ -1,22 +1,21 @@
 ---
-title: Tworzenie pamięci podręcznej platformy Azure HPC
+title: Tworzenie pamięci podręcznej platformy Azure HPC (wersja zapoznawcza)
 description: Jak utworzyć wystąpienie pamięci podręcznej platformy Azure HPC
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: c3d14eaefaa1f317cb061273866ffee83747f12b
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 677d42dfa1c468417f18ba4222cb0d5fd3ebb189
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036841"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180972"
 ---
-# <a name="configure-aggregated-namespace"></a>Skonfiguruj zagregowaną przestrzeń nazw
-<!-- change link in GUI -->
+# <a name="plan-the-aggregated-namespace"></a>Planowanie zagregowanej przestrzeni nazw
 
-Pamięć podręczna Azure HPC umożliwia klientom dostęp do różnych systemów magazynowania za pomocą wirtualnej przestrzeni nazw, która ukrywa szczegóły systemu magazynu zaplecza.
+Pamięć podręczna Azure HPC (wersja zapoznawcza) umożliwia klientom dostęp do różnych systemów magazynowania za pomocą wirtualnej przestrzeni nazw, która ukrywa szczegóły systemu magazynu zaplecza.
 
 Po dodaniu miejsca docelowego magazynu należy ustawić ścieżkę dla klienta. Komputery klienckie instalują tę ścieżkę pliku. Można zmienić miejsce docelowe magazynu skojarzone z tą ścieżką. Można na przykład zastąpić sprzętowy system magazynowania z magazynem w chmurze bez konieczności ponownego zapisywania procedur związanych z klientem.
 
@@ -31,7 +30,7 @@ Dane szablonu są przechowywane w centrum danych, a informacje wymagające tego 
     /goldline/templates/acme2017/sku798
     /goldline/templates/acme2017/sku980 
 
-System magazynu centrum danych ujawnia następujące eksporty: 
+System magazynu centrum danych ujawnia następujące eksporty:
 
     /
     /goldline
@@ -49,7 +48,7 @@ Aby zapewnić łatwy dostęp za pomocą pamięci podręcznej, należy rozważyć
 
 Ponieważ ścieżki źródłowe NFS są podkatalogami tego samego eksportu, należy zdefiniować wiele ścieżek przestrzeni nazw z tego samego miejsca docelowego magazynu. 
 
-| Nazwa hosta docelowego magazynu  | Ścieżka eksportowania NFS      | Ścieżka podkatalogu | Ścieżka przestrzeni nazw    |
+| Nazwa hosta docelowego magazynu  | Ścieżka eksportu systemu plików NFS      | Ścieżka podkatalogu | Ścieżka przestrzeni nazw    |
 |--------------------------|----------------------|-------------------|-------------------|
 | *Adres IP lub nazwa hosta* | /goldline/templates  | acme2017/sku798   | /templates/sku798 |
 | *Adres IP lub nazwa hosta* | /goldline/templates  | acme2017/sku980   | /templates/sku980 |

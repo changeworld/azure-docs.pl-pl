@@ -87,7 +87,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 W tej sekcji należy zaktualizować kod, aby określić, że oba punkty końcowe wystawcy tokenu są prawidłowe.
 
 1. Otwórz rozwiązanie **B2C-WebAPI-dotnet. sln** w programie Visual Studio
-1. W projekcie **TaskService** Otwórz plik *TaskService\\App_Start\\* * Startup.auth.cs** * w edytorze
+1. W projekcie **TaskService** Otwórz plik *TaskService\\App_Start\\**Startup.auth.cs*** w edytorze
 1. Dodaj następującą `using` dyrektywę na początku pliku:
 
     `using System.Collections.Generic;`
@@ -122,7 +122,7 @@ Jak wspomniano wcześniej, inne biblioteki OWIN zazwyczaj oferują podobną funk
 
 Przy użyciu obu identyfikatorów URI teraz obsługiwanych przez internetowy interfejs API, musisz teraz zaktualizować aplikację sieci Web tak, aby pobierali tokeny z punktu końcowego b2clogin.com.
 
-Przykładowo można skonfigurować przykładową aplikację sieci Web, aby korzystała z nowego punktu końcowego, `ida:AadInstance` modyfikując wartość w *pliku\\TaskWebApp * * Web. config** * projektu **TaskWebApp** .
+Przykładowo można skonfigurować przykładową aplikację sieci Web, aby korzystała z nowego punktu końcowego, `ida:AadInstance` modyfikując wartość w *pliku\\TaskWebApp **Web. config*** projektu **TaskWebApp** .
 
 Zmień wartość w *pliku Web. config* elementu TaskWebApp tak, aby odwoływał `{your-b2c-tenant-name}.b2clogin.com` `login.microsoftonline.com`się do niego zamiast. `ida:AadInstance`
 

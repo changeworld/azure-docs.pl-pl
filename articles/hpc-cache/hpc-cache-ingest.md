@@ -1,19 +1,19 @@
 ---
-title: Przenoszenie danych do kontenera w chmurze pamięci podręcznej platformy Azure HPC
+title: Przenoszenie danych do kontenera chmury usługi Azure HPC cache (wersja zapoznawcza)
 description: Jak wypełnić usługę Azure Blob Storage do użycia z pamięcią podręczną platformy Azure HPC
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: v-erkell
-ms.openlocfilehash: 0a71efdc0479a69aed8fecc22a6c89c506279d57
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 103470861383ff411cfaa670d70412086045a418
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105312"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180723"
 ---
-# <a name="move-data-to-azure-blob-storage-for-azure-hpc-cache"></a>Przenoszenie danych do usługi Azure Blob Storage dla pamięci podręcznej platformy Azure HPC
+# <a name="move-data-to-azure-blob-storage-for-azure-hpc-cache-preview"></a>Przenoszenie danych do usługi Azure Blob Storage dla usługi Azure HPC cache (wersja zapoznawcza)
 
 Jeśli przepływ pracy zawiera przeniesienie danych do usługi Azure Blob Storage, upewnij się, że korzystasz z wydajnej strategii do kopiowania danych za pośrednictwem pamięci podręcznej platformy Azure HPC.
 
@@ -33,7 +33,7 @@ Jeśli nie chcesz używać narzędzia ładowania lub chcesz dodać zawartość d
 
 Możesz użyć <!--[Avere CLFSLoad](https://aka.ms/avere-clfsload)--> Avere CLFSLoad narzędzie do kopiowania danych do nowego kontenera magazynu obiektów BLOB przed dodaniem go jako miejsca docelowego magazynu. To narzędzie działa w ramach jednego systemu Linux i zapisuje dane w formacie zastrzeżonym wymaganym przez pamięć podręczną platformy Azure HPC. CLFSLoad to najbardziej wydajny sposób wypełniania kontenera magazynu obiektów BLOB do użycia z pamięcią podręczną.
 
-Narzędzie avere CLFSLoad jest dostępne przez żądanie od zespołu pamięci podręcznej platformy Azure HPC. Poproś o kontakt z zespołem lub Otwórz bilet pomocy technicznej, aby uzyskać pomoc.
+Narzędzie avere CLFSLoad jest dostępne przez żądanie od zespołu pamięci podręcznej platformy Azure HPC. Poproś o kontakt z zespołem lub Otwórz [bilet pomocy technicznej](hpc-cache-support-ticket.md) , aby uzyskać pomoc.
 
 Ta opcja działa tylko z nowymi pustymi kontenerami. Utwórz kontener przed użyciem avere CLFSLoad.
 
@@ -60,7 +60,7 @@ Jeśli nie chcesz używać narzędzia avere CLFSLoad, lub jeśli chcesz dodać d
 
 ![Diagram przedstawiający wiele klientów, przenoszenie danych wielowątkowych: W lewym górnym rogu ikona lokalnego magazynu sprzętu ma wiele strzałek. Strzałki wskazują cztery komputery klienckie. Z każdego komputera klienckiego trzy strzałki wskazują na pamięć podręczną platformy Azure HPC. W pamięci podręcznej platformy Azure HPC wiele strzałek wskazuje na usługę BLOB Storage.](media/hpc-cache-parallel-ingest.png) 
 
-Polecenia ``cp`` lub``copy`` , które są zwykle używane do transferowania danych z jednego systemu magazynu do innego, to procesy jednowątkowe, które kopiującą tylko jeden plik jednocześnie. Oznacza to, że serwer plików pobiera tylko jeden plik w czasie, który jest odpadami zasobów klastra.
+Polecenia ``cp`` lub``copy`` , które są zwykle używane do transferowania danych z jednego systemu magazynu do innego, to procesy jednowątkowe, które kopiującą tylko jeden plik jednocześnie. Oznacza to, że serwer plików pobiera tylko jeden plik w czasie, który jest odpadami zasobów pamięci podręcznej.
 
 W tej sekcji opisano strategie tworzenia wieloskładnikowego systemu kopiowania plików wielowątkowych do przenoszenia danych do usługi BLOB Storage za pomocą pamięci podręcznej Azure HPC. Objaśniono w nim koncepcje transferu plików i punkty decyzyjne, które mogą być używane do wydajnego kopiowania danych przy użyciu wielu klientów i prostych poleceń kopiowania.
 

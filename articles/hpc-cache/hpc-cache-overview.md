@@ -1,19 +1,19 @@
 ---
-title: Omówienie usługi Azure HPC cache
+title: Omówienie wersji zapoznawczej pamięci podręcznej Azure HPC
 description: Opisuje pamięć podręczną platformy Azure HPC, rozwiązanie dostępu do pliku do obliczeń o wysokiej wydajności
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 09/06/2019
+ms.date: 09/19/2019
 ms.author: v-erkell
-ms.openlocfilehash: 77eca3ef58733a616705fdaac1d2880b5a990e8a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: f4c858d7a71cf02b4a8fe181deecbf3a1b652885
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036881"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180685"
 ---
-# <a name="what-is-azure-hpc-cache"></a>Co to jest usługa Azure HPC Cache?
+# <a name="what-is-azure-hpc-cache-preview"></a>Co to jest usługa Azure HPC Cache? (Wersja zapoznawcza)
 
 Pamięć podręczna Azure HPC umożliwia przyspieszenie dostępu do danych na potrzeby zadań obliczeniowych o wysokiej wydajności (HPC). Buforowanie plików na platformie Azure sprawia, że skalowalność w chmurze jest dostępna nawet w przypadku przepływów pracy, w których dane są przechowywane przez linki sieci WAN, na przykład w lokalnym środowisku magazynu (NAS) podłączonym do sieci centrum danych.
 
@@ -57,6 +57,10 @@ Pamięć podręczna Azure HPC jest dostępna w następujących regionach platfor
 * Zachodnie stany USA 2
 
 Aby uzyskać najnowsze informacje o dostępności, należy zapoznać się ze [stroną produktu Azure HPC cache](https://azure.microsoft.com/services/hpc-cache) .
+
+## <a name="preview-availability"></a>Podgląd dostępności
+
+Publiczna wersja zapoznawcza pamięci podręcznej platformy Azure HPC jest ograniczona do zapewnienia jakości usług. Zażądaj dostępu, wypełniając [ten formularz](https://aka.ms/onboard-hpc-cache). Po dodaniu subskrypcji do listy dostępu można utworzyć pamięci podręczne testów.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/24/2019
-ms.openlocfilehash: 752bf1919634d29221a00d983b4e88fefaf628d5
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: b6114a764d0834b7bcfe4b95d34fae6a03a8a40e
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736349"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181027"
 ---
 # <a name="tutorial-write-to-apache-hadoop-hdfs-from-apache-storm-on-azure-hdinsight"></a>Samouczek: Zapisywanie do Apache Hadoop HDFS z Apache Storm w usłudze Azure HDInsight
 
@@ -38,7 +38,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 * Klient SSH. Aby uzyskać więcej informacji, zobacz [Łączenie się z usługą HDInsight (Apache Hadoop) przy użyciu protokołu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* [Schemat identyfikatora URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) magazynu podstawowego klastrów. Będzie to możliwe `wasb://` w przypadku usługi Azure `abfs://` Storage, Azure Data Lake Storage Gen2 `adl://` lub Azure Data Lake Storage Gen1. W przypadku włączenia bezpiecznego transferu dla usługi Azure Storage lub Data Lake Storage Gen2, identyfikator URI może `wasbs://` być `abfss://`lub, odpowiednio, zobacz również [bezpieczny transfer](../../storage/common/storage-require-secure-transfer.md).
+* [Schemat identyfikatora URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) magazynu podstawowego klastrów. Będzie to możliwe `wasb://` w przypadku usługi Azure `abfs://` Storage, Azure Data Lake Storage Gen2 `adl://` lub Azure Data Lake Storage Gen1. Jeśli w usłudze Azure Storage włączono opcję bezpiecznego transferu, identyfikator URI mógłby `wasbs://`być.  Zobacz również [bezpieczny transfer](../../storage/common/storage-require-secure-transfer.md).
 
 ### <a name="example-configuration"></a>Przykładowa konfiguracja
 

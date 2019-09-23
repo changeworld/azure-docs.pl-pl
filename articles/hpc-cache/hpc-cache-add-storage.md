@@ -1,19 +1,19 @@
 ---
-title: Dodawanie magazynu do pamięci podręcznej platformy Azure HPC
+title: Dodawanie magazynu do pamięci podręcznej platformy Azure HPC (wersja zapoznawcza)
 description: Jak zdefiniować cele magazynu, aby pamięć podręczna platformy Azure HPC mogła używać lokalnego systemu plików NFS lub kontenerów obiektów blob platformy Azure do przechowywania długoterminowych plików
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: ca8e13e322c3e192b697248f1252b65f6cbeda7f
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: a17952e193f3e03becaab044f55637372bac7b0d
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037222"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181008"
 ---
-# <a name="add-storage"></a>Dodawanie magazynu
+# <a name="add-storage-targets"></a>Dodaj cele magazynu
 
 *Cele magazynu* są magazynem zaplecza dla plików, do których dostęp jest uzyskiwany za pomocą wystąpienia pamięci podręcznej platformy Azure HPC. Można dodać magazyn systemu plików NFS, taki jak lokalny system sprzętu lub przechowywać dane w obiekcie blob platformy Azure.
 
@@ -112,8 +112,8 @@ Dla każdego eksportu wypełnij następujące wartości:
 
 Po zakończeniu kliknij przycisk **OK** , aby dodać miejsce docelowe magazynu.
 
-### <a name="choose-a-usage-model"></a>Wybierz model użycia 
-<!-- link in GUI to this heading -->
+### <a name="choose-a-usage-model"></a>Wybierz model użycia
+<!-- referenced from GUI - update aka.ms link if you change this heading -->
 
 Podczas tworzenia miejsca docelowego magazynu, które wskazuje system magazynu NFS, należy wybrać *model użycia* dla tego celu. Ten model określa, w jaki sposób dane są buforowane.
 

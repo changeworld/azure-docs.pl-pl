@@ -1,6 +1,6 @@
 ---
-title: Odczytywanie i zapisywanie danych HBase — Azure HDInsight za pomocą platformy Spark
-description: Korzystanie z łącznika bazy danych HBase Spark, aby odczytywać i zapisywać dane z klastra Spark do klastra HBase.
+title: Korzystanie z platformy Spark do odczytywania i zapisywania danych HBase — Azure HDInsight
+description: Za pomocą łącznika Spark HBase można odczytywać i zapisywać dane z klastra Spark do klastra HBase.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,59 +8,59 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/06/2019
-ms.openlocfilehash: e747f39ca84bb859b37550efef51e01cffd96876
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e6b3fc4f9badeedbed55f89702933b41a952977b
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056736"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180801"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Odczytywanie i zapisywanie danych w bazie danych Apache HBase za pomocą platformy Apache Spark
 
-Bazy danych Apache HBase jest zazwyczaj badane za pomocą jego niskiego poziomu interfejsu API (skanowania, pobiera i umieszcza) lub przy użyciu składni SQL, przy użyciu rozwiązania Apache Phoenix. Apache także Apache HBase łącznika usługi Spark, który jest wygodny sposób i wydajne alternatywne, zapytania i modyfikację danych przechowywanych przez bazę danych HBase.
+Na platformie Apache HBase są zwykle wykonywane zapytania przy użyciu interfejsu API niskiego poziomu (skanowanie, pobieranie i umieszczanie) lub ze składnią SQL przy użyciu Apache Phoenix. Apache udostępnia również łącznik HBase Apache Spark, który jest wygodnym i wydajnym alternatywą dla zapytań i modyfikacji danych przechowywanych przez HBase.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Dwa oddzielne klastry HDInsight wdrożonych w tej samej sieci wirtualnej. Jednej bazy danych HBase, a drugi platformy Spark za pomocą co najmniej Spark 2.1 (HDInsight 3.6) zainstalowane. Aby uzyskać więcej informacji, zobacz [opartych na systemie Linux z Tworzenie klastrów w HDInsight przy użyciu witryny Azure portal](hdinsight-hadoop-create-linux-clusters-portal.md).
+* Dwa oddzielne klastry usługi HDInsight wdrożone w tej samej sieci wirtualnej. Jeden HBase i jeden Spark z zainstalowanym co najmniej platformą Spark 2,1 (HDInsight 3,6). Aby uzyskać więcej informacji, zobacz [Tworzenie klastrów opartych na systemie Linux w usłudze HDInsight przy użyciu Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md).
 
 * Klient SSH. Aby uzyskać więcej informacji, zobacz [Łączenie się z usługą HDInsight (Apache Hadoop) przy użyciu protokołu SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* [Schemat identyfikatora URI](hdinsight-hadoop-linux-information.md#URI-and-scheme) do obsługi klastrów magazynu podstawowego. Takie rozwiązanie byłoby wasb: / / usługi Azure Blob Storage, abfs: / / dla usługi Azure Data Lake Storage Gen2 lub systemu plików adl: / / dla usługi Azure Data Lake Storage Gen1. Bezpieczny transfer jest włączona dla usługi Blob Storage lub Data Lake Storage Gen2, identyfikator URI będzie mieć wasbs: / / lub abfss: / / odpowiednio Zobacz też [bezpieczny transfer](../storage/common/storage-require-secure-transfer.md).
+* [Schemat identyfikatora URI](hdinsight-hadoop-linux-information.md#URI-and-scheme) magazynu podstawowego klastrów. Wasb://dla usługi Azure Blob Storage, abfs://dla Azure Data Lake Storage Gen2 lub adl://dla Azure Data Lake Storage Gen1. W przypadku włączenia bezpiecznego transferu dla Blob Storage, identyfikator URI `wasbs://`to.  Zobacz również [bezpieczny transfer](../storage/common/storage-require-secure-transfer.md).
 
-## <a name="overall-process"></a>Ogólny proces
+## <a name="overall-process"></a>Proces ogólny
 
-Ogólny proces włączania klastra Spark do wykonywania zapytań klastra usługi HDInsight jest następująca:
+Proces wysokiego poziomu służący do włączania klastra platformy Spark na potrzeby wysyłania zapytań do klastra usługi HDInsight jest następujący:
 
-1. Przygotuj przykładowe dane w bazie danych HBase.
-2. Uzyskiwanie pliku bazy danych hbase-site.xml, z folderu konfiguracji klastra HBase (/ etc/hbase/conf).
-3. Umieść kopię bazy danych hbase-site.xml, w folderze Konfiguracja Spark 2 (/ conf/spark2/itp.).
-4. Uruchom `spark-shell` odwołuje się do łącznika usługi Spark HBase przez jego Maven koordynuje w `packages` opcji.
-5. Zdefiniuj katalogu, który mapuje schematu z platformy Spark do bazy danych HBase.
-6. Wchodzić w interakcje z danymi bazy danych HBase przy użyciu RDD lub interfejsów API ramki danych.
+1. Przygotuj przykładowe dane w HBase.
+2. Pobierz plik HBase-site. XML z folderu konfiguracji klastra HBase (/etc/HBase/conf).
+3. Umieść kopię pliku HBase-site. XML w folderze konfiguracji Spark 2 (/etc/spark2/conf).
+4. Uruchom `spark-shell` odwołujące się do łącznika Spark HBase za pomocą `packages` współrzędnych Maven w opcji.
+5. Zdefiniuj katalog, który mapuje schemat z platformy Spark do HBase.
+6. Współpracuj z danymi HBase przy użyciu interfejsów API RDD lub Dataframe.
 
-## <a name="prepare-sample-data-in-apache-hbase"></a>Przygotowanie przykładowych danych w bazy danych Apache HBase
+## <a name="prepare-sample-data-in-apache-hbase"></a>Przygotowywanie przykładowych danych w Apache HBase
 
-W tym kroku, Utwórz i Wypełnij tabelę w bazie danych HBase Apache, który można następnie wykonywać zapytania za pomocą platformy Spark.
+W tym kroku utworzysz i wypełnimy tabelę w Apache HBase, którą można następnie wysyłać zapytania przy użyciu platformy Spark.
 
-1. Użyj `ssh` polecenie, aby nawiązać połączenie z klastrem HBase. Edytuj poniższe polecenie, zastępując `HBASECLUSTER` nazwą swojej bazy danych HBase klastra, a następnie wpisz polecenie:
+1. Użyj polecenia `ssh` , aby nawiązać połączenie z klastrem HBase. Edytuj poniższe polecenie, zastępując `HBASECLUSTER` je nazwą klastra HBase, a następnie wprowadź polecenie:
 
     ```cmd
     ssh sshuser@HBASECLUSTER-ssh.azurehdinsight.net
     ```
 
-2. Użyj `hbase shell` polecenia do uruchamiania interaktywnej powłoki HBase. Wprowadź następujące polecenie, w związku z protokołu SSH:
+2. `hbase shell` Użyj polecenia, aby uruchomić powłokę interaktywną HBase. Wprowadź następujące polecenie w połączeniu SSH:
 
     ```bash
     hbase shell
     ```
 
-3. Użyj `create` polecenie, aby utworzyć tabelę HBase z dwiema rodzinami kolumn. Wprowadź następujące polecenie:
+3. Użyj polecenia `create` , aby utworzyć tabelę HBase z rodziną dwóch kolumn. Wprowadź następujące polecenie:
 
     ```hbase
     create 'Contacts', 'Personal', 'Office'
     ```
 
-4. Użyj `put` polecenie, aby wstawić wartości w określonej kolumnie w określonym wierszu określonej tabeli. Wprowadź następujące polecenie:
+4. Użyj polecenia `put` , aby wstawić wartości z określonej kolumny w określonym wierszu w określonej tabeli. Wprowadź następujące polecenie:
 
     ```hbase
     put 'Contacts', '1000', 'Personal:Name', 'John Dole'
@@ -73,53 +73,53 @@ W tym kroku, Utwórz i Wypełnij tabelę w bazie danych HBase Apache, który mo�
     put 'Contacts', '8396', 'Office:Address', '5415 San Gabriel Dr.'
     ```
 
-5. Użyj `exit` polecenie, aby zatrzymać interaktywnej powłoki HBase. Wprowadź następujące polecenie:
+5. `exit` Użyj polecenia, aby zatrzymać powłokę interaktywną HBase. Wprowadź następujące polecenie:
 
     ```hbase
     exit
     ```
 
-## <a name="copy-hbase-sitexml-to-spark-cluster"></a>Kopiowanie bazy danych hbase-site.xml do klastra Spark
+## <a name="copy-hbase-sitexml-to-spark-cluster"></a>Kopiuj HBase-site. XML do klastra Spark
 
-Kopiowanie bazy danych hbase-site.xml z magazynu lokalnego do katalogu głównego magazynu domyślnego klastra Spark.  Edytować poniższe polecenie, aby odpowiadały konfiguracji.  Następnie z otwartych sesji SSH z klastrem HBase, wpisz polecenie:
+Skopiuj plik HBase-site. XML z magazynu lokalnego do katalogu głównego magazynu platformy Spark w klastrze domyślnym.  Edytuj poniższe polecenie, aby odzwierciedlić konfigurację.  Następnie z otwartej sesji SSH do klastra HBase wprowadź polecenie:
 
 | Wartość składni | Nowa wartość|
 |---|---|
-|[Schemat identyfikatora URI](hdinsight-hadoop-linux-information.md#URI-and-scheme) | Modyfikacja w celu odzwierciedlenia magazynu.  Poniższej składni jest dla usługi blob storage z włączonym bezpiecznym transferem.|
-|`SPARK_STORAGE_CONTAINER`|Zamień na nazwę domyślnego kontenera magazynu używane dla klastra Spark.|
-|`SPARK_STORAGE_ACCOUNT`|Zamień domyślna nazwa konta magazynu używane dla klastra Spark.|
+|[Schemat identyfikatora URI](hdinsight-hadoop-linux-information.md#URI-and-scheme) | Zmodyfikuj, aby odzwierciedlić magazyn.  Poniższa składnia dotyczy usługi BLOB Storage z włączonym bezpiecznym transferem.|
+|`SPARK_STORAGE_CONTAINER`|Zastąp wartość domyślną nazwą kontenera magazynu używaną dla klastra Spark.|
+|`SPARK_STORAGE_ACCOUNT`|Zamień na domyślną nazwę konta magazynu używanego dla klastra Spark.|
 
 ```bash
 hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CONTAINER@SPARK_STORAGE_ACCOUNT.blob.core.windows.net/
 ```
 
-Następnie Zakończ działanie sieci protokołu ssh połączenie z klastrem HBase.
+Następnie zamknij połączenie SSH z klastrem HBase.
 
-## <a name="put-hbase-sitexml-on-your-spark-cluster"></a>Umieść site.xml bazy danych hbase w klastrze Spark
+## <a name="put-hbase-sitexml-on-your-spark-cluster"></a>Umieszczanie HBase-site. XML w klastrze Spark
 
-1. Łączenie z węzłem głównym klastra Spark przy użyciu protokołu SSH.
+1. Połącz się z węzłem głównym klastra platformy Spark przy użyciu protokołu SSH.
 
-2. Wprowadź poniższe polecenie, aby skopiować `hbase-site.xml` z klastrem Spark domyślnego magazynu do folderu konfiguracji Spark 2 klastra lokalnego magazynu:
+2. Wprowadź poniższe polecenie, aby skopiować `hbase-site.xml` z domyślnego magazynu klastra Spark do folderu konfiguracji platformy Spark 2 w lokalnym magazynie klastra:
 
     ```bash
     sudo hdfs dfs -copyToLocal /hbase-site.xml /etc/spark2/conf
     ```
 
-## <a name="run-spark-shell-referencing-the-spark-hbase-connector"></a>Uruchom powłokę aparatu Spark odwołujące się do łącznika usługi Spark bazy danych HBase
+## <a name="run-spark-shell-referencing-the-spark-hbase-connector"></a>Uruchom powłokę platformy Spark odwołującą się do łącznika Spark HBase
 
-1. Z otwartego sesji SSH do klastra Spark wprowadź poniższe polecenie, aby uruchomić powłoki spark:
+1. Z otwartej sesji SSH do klastra Spark Wprowadź poniższe polecenie, aby uruchomić powłokę Spark:
 
     ```bash
     spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/
     ```  
 
-2. Nie zamykaj tego wystąpienia powłoki usługi Spark, a następnie przejdź do następnego kroku.
+2. Pozostaw otwarte wystąpienie powłoki Spark i przejdź do następnego kroku.
 
-## <a name="define-a-catalog-and-query"></a>Zdefiniuj wykazu i zapytań
+## <a name="define-a-catalog-and-query"></a>Definiowanie wykazu i zapytania
 
-W tym kroku zdefiniujesz obiektu katalogu, który mapuje schemat bazy danych Apache HBase z platformy Apache Spark.  
+W tym kroku zdefiniujesz obiekt katalogu, który mapuje schemat z Apache Spark na Apache HBase.  
 
-1. W powłoce platformy Spark otwarte, wprowadź następujące `import` instrukcji:
+1. W otwartej powłoki platformy Spark wprowadź następujące `import` instrukcje:
 
     ```scala
     import org.apache.spark.sql.{SQLContext, _}
@@ -128,7 +128,7 @@ W tym kroku zdefiniujesz obiektu katalogu, który mapuje schemat bazy danych Apa
     import spark.sqlContext.implicits._
     ```  
 
-2. Wprowadź poniższe polecenie, aby określić katalog do tabeli kontaktów utworzonego w bazie danych HBase:
+2. Wprowadź poniższe polecenie, aby zdefiniować katalog dla tabeli kontaktów utworzonej w programie HBase:
 
     ```scala
     def catalog = s"""{
@@ -144,13 +144,13 @@ W tym kroku zdefiniujesz obiektu katalogu, który mapuje schemat bazy danych Apa
     |}""".stripMargin
     ```
 
-    Kod wykonuje następujące działania:  
+    Kod wykonuje następujące czynności:  
 
-     a. Zdefiniować schemat tabeli HBase, o nazwie katalogu `Contacts`.  
-     b. Identyfikowanie rowkey jako `key`i mapowania nazw kolumn użytych w Spark do rodziny kolumn, nazwa kolumny i typ kolumny, ponieważ używany w bazie danych HBase.  
-     c. Rowkey również musi być zdefiniowany szczegółowo jako kolumna o nazwie (`rowkey`), który ma rodziny kolumn określonych `cf` z `rowkey`.  
+     a. Zdefiniuj schemat wykazu dla tabeli HBase o nazwie `Contacts`.  
+     b. Zidentyfikuj rowkey jako `key`i zamapuj nazwy kolumn używanych w platformie Spark do rodziny kolumn, nazwy kolumny i typu kolumny jako używane w HBase.  
+     c. Rowkey również musi być zdefiniowana w szczegółach jako nazwana kolumna (`rowkey`), która ma określoną `rowkey`rodzinę `cf` kolumn.  
 
-3. Wprowadź poniższe polecenie, aby zdefiniować metodę, która zapewnia wokół ramkę danych Twojej `Contacts` tabeli w bazie danych HBase:
+3. Wprowadź poniższe polecenie, aby zdefiniować metodę, która udostępnia ramkę danych wokół `Contacts` tabeli w HBase:
 
     ```scala
     def withCatalog(cat: String): DataFrame = {
@@ -162,19 +162,19 @@ W tym kroku zdefiniujesz obiektu katalogu, który mapuje schemat bazy danych Apa
      }
     ```
 
-4. Utwórz wystąpienie obiektu ramki danych:
+4. Utwórz wystąpienie elementu Dataframe:
 
     ```scala
     val df = withCatalog(catalog)
     ```  
 
-5. Zapytanie ramki danych:
+5. Zbadaj ramkę danych:
 
     ```scala
     df.show()
     ```
 
-6. Powinny zostać wyświetlone dwa wiersze danych:
+6. Powinny być widoczne dwa wiersze danych:
 
         +------+--------------------+--------------+-------------+--------------+
         |rowkey|       officeAddress|   officePhone| personalName| personalPhone|
@@ -183,20 +183,20 @@ W tym kroku zdefiniujesz obiektu katalogu, który mapuje schemat bazy danych Apa
         |  8396|5415 San Gabriel Dr.|  230-555-0191|  Calvin Raji|  230-555-0191|
         +------+--------------------+--------------+-------------+--------------+
 
-7. Zarejestruj tabeli tymczasowej, dzięki czemu można tworzyć zapytania w tabeli HBase przy użyciu modułu Spark SQL:
+7. Zarejestruj tabelę tymczasową, aby można było wysyłać zapytania do tabeli HBase przy użyciu platformy Spark SQL:
 
     ```scala
     df.createTempView("contacts")
     ```
 
-8. Zapytanie SQL do wystawiania `contacts` tabeli:
+8. Wydaj zapytanie SQL względem `contacts` tabeli:
 
     ```scala
     val query = spark.sqlContext.sql("select personalName, officeAddress from contacts")
     query.show()
     ```
 
-9. Powinny zostać wyświetlone wyniki, takie jak te:
+9. Powinny być widoczne następujące wyniki:
 
     ```output
     +-------------+--------------------+
@@ -209,7 +209,7 @@ W tym kroku zdefiniujesz obiektu katalogu, który mapuje schemat bazy danych Apa
 
 ## <a name="insert-new-data"></a>Wstaw nowe dane
 
-1. Aby wstawić nowy rekord kontaktu, zdefiniuj `ContactRecord` klasy:
+1. Aby wstawić nowy rekord kontaktu, zdefiniuj `ContactRecord` klasę:
 
     ```scala
     case class ContactRecord(
@@ -221,7 +221,7 @@ W tym kroku zdefiniujesz obiektu katalogu, który mapuje schemat bazy danych Apa
         )
     ```
 
-2. Utwórz wystąpienie obiektu `ContactRecord` i umieść je w tablicy:
+2. Utwórz wystąpienie `ContactRecord` i umieść je w tablicy:
 
     ```scala
     val newContact = ContactRecord("16891", "40 Ellis St.", "674-555-0110", "John Jackson","230-555-0194")
@@ -230,13 +230,13 @@ W tym kroku zdefiniujesz obiektu katalogu, który mapuje schemat bazy danych Apa
     newData(0) = newContact
     ```
 
-3. Zapisz tablicy nowe dane do bazy danych HBase:
+3. Zapisz tablicę nowych danych do HBase:
 
     ```scala
     sc.parallelize(newData).toDF.write.options(Map(HBaseTableCatalog.tableCatalog -> catalog, HBaseTableCatalog.newTable -> "5")).format("org.apache.spark.sql.execution.datasources.hbase").save()
     ```
 
-4. Sprawdź wyniki:
+4. Przejrzyj wyniki:
 
     ```scala  
     df.show()
@@ -254,12 +254,12 @@ W tym kroku zdefiniujesz obiektu katalogu, który mapuje schemat bazy danych Apa
     +------+--------------------+--------------+------------+--------------+
     ```
 
-6. Zamknij powłoki spark, wprowadzając następujące polecenie:
+6. Zamknij powłokę Spark, wprowadzając następujące polecenie:
 
     ```scala
     :q
     ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Apache Spark łącznika bazy danych HBase](https://github.com/hortonworks-spark/shc)
+* [Apache Spark łącznik HBase](https://github.com/hortonworks-spark/shc)

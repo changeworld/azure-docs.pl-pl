@@ -116,8 +116,8 @@ Aby dodać dodatkowe moduły do rozwiązania, uruchom polecenie **Azure IoT Edge
 
 Domyślny kod modułu dostarczany wraz z rozwiązaniem znajduje się w następującej lokalizacji:
 
-- Funkcja platformy AzureC#(): **moduły >  *&lt;nazwą&gt;*  >  *&gt;modułu Nazwa modułu. cs&lt;*
-- C#: **moduły >  *&lt;nazwą&gt; modułu* > program.cs
+- Funkcja platformy AzureC#(): **moduły >  *&lt;nazwą&gt;*  >  *&gt;modułu Nazwa modułu. cs&lt;***
+- C#: **moduły >  *&lt;nazwą&gt; modułu* > program.cs**
 - Python: **moduły >  *&lt;nazwą&gt; modułu* > Main.py**
 - Node. js: **moduły >  *&lt;nazwę&gt; modułu* > App. js**
 - Java: **moduły >  *&lt;&gt; nazwą modułu* > src > Main > Java > com > edgemodulemodules > App. Java**

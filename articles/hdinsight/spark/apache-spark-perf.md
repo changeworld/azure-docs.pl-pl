@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 673c83c861e1f044a521786a903dd7b21db8c170
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 64dfd26e02526664a4edb204521f7a47a4463a12
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995558"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181081"
 ---
 # <a name="optimize-apache-spark-jobs-in-hdinsight"></a>Optymalizowanie Apache Spark zadań w usłudze HDInsight
 
@@ -60,7 +60,7 @@ Podczas tworzenia nowego klastra Spark można wybrać platformę Azure Blob Stor
 | Typ magazynu | System plików | Szybkość | Przejściowe | Przypadki użycia |
 | --- | --- | --- | --- | --- |
 | Azure Blob Storage | **wasb:** //URL/ | **Standardowa** | Tak | Przejściowy klaster |
-| Azure Data Lake Storage Gen 2| **ABFS [s]:** //URL/ | **Większej** | Tak | Przejściowy klaster |
+| Azure Data Lake Storage Gen 2| **ABFS:** //URL/ | **Większej** | Tak | Przejściowy klaster |
 | Azure Data Lake Storage Gen 1| **ADL:** //URL/ | **Większej** | Tak | Przejściowy klaster |
 | Lokalny system plików HDFS | **hdfs:** //url/ | **Najlepszy** | Nie | Interaktywny klaster 24/7 |
 

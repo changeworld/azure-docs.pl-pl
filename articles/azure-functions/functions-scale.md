@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c39ee29b9a4449000d44e44bc6feae407cf4cd38
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 2fcace82eed81b85571ba88243a3de991ae01aa0
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874949"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180106"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions skalowanie i hosting
 
@@ -41,7 +41,7 @@ Plan App Service umożliwia korzystanie z dedykowanej infrastruktury zarządzane
 Obsługa funkcji znajduje się w następujących dwóch kategoriach:
 
 * _Ogólnie dostępna (ga)_ : w pełni obsługiwana i zatwierdzona do użycia w środowisku produkcyjnym.
-* _Wersja_zapoznawcza: nie jest jeszcze w pełni obsługiwana i zatwierdzona do użycia w środowisku produkcyjnym.
+* _Wersja zapoznawcza_: nie jest jeszcze w pełni obsługiwana i zatwierdzona do użycia w środowisku produkcyjnym.
 
 Poniższa tabela przedstawia bieżący poziom wsparcia dla trzech planów hostingu w przypadku uruchamiania w systemie Windows lub Linux:
 
@@ -62,6 +62,8 @@ Plan zużycia jest domyślnym planem hostingu i oferuje następujące korzyści:
 * Automatyczne skalowanie w poziomie, nawet w okresach dużego obciążenia
 
 Aplikacje funkcji w tym samym regionie mogą być przypisane do tego samego planu zużycia. Nie ma Minusem ani wpływu na wiele aplikacji uruchomionych w tym samym planie zużycia. Przypisywanie wielu aplikacji do tego samego planu zużycia nie ma wpływu na odporność, skalowalność ani niezawodność każdej aplikacji.
+
+Aby dowiedzieć się więcej na temat szacowania kosztów podczas pracy w planie zużycia, zobacz [Opis kosztów planu zużycia](functions-consumption-costs.md).
 
 ## <a name="premium-plan"></a>Plan Premium (wersja zapoznawcza)
 
@@ -131,6 +133,8 @@ Gdy dane wyjściowe tego polecenia `dynamic`to, aplikacja funkcji jest w planie 
 
 W każdym planie aplikacja funkcji wymaga konta usługi Azure Storage, które obsługuje obiekty blob, kolejki, pliki i tabele usługi Azure Storage. Wynika to z faktu, że funkcje programu korzystają z usługi Azure Storage w przypadku operacji takich jak zarządzanie wyzwalaczami i rejestrowanie wykonań funkcji, ale niektóre konta magazynu nie obsługują kolejek i tabel. Te konta, które obejmują konta magazynu tylko dla obiektów BLOB (w tym magazyn Premium Storage) i konta magazynu ogólnego przeznaczenia z replikacją magazynową strefowo nadmiarową, są odfiltrowane z istniejących ustawień **konta magazynu** podczas tworzenia Aplikacja funkcji.
 
+To samo konto magazynu używane przez aplikację funkcji może być również używane przez wyzwalacze i powiązania do przechowywania danych aplikacji. Jednak w przypadku operacji intensywnie korzystających z magazynu należy użyć oddzielnego konta magazynu.   
+
 <!-- JH: Does using a Premium Storage account improve perf? -->
 
 Aby dowiedzieć się więcej na temat typów kont magazynu, zobacz [wprowadzenie do usług Azure Storage](../storage/common/storage-introduction.md#azure-storage-services).
@@ -172,7 +176,7 @@ Rozliczenia dla różnych planów są szczegółowo opisane na [stronie cennika 
 * **Użycie zasobów w gigabajtach sekund (GB-s)** . Obliczany jako kombinacja rozmiaru pamięci i czasu wykonywania dla wszystkich funkcji w aplikacji funkcji. 
 * **Wykonania**. Zliczane za każdym razem, gdy funkcja jest wykonywana w odpowiedzi na wyzwalacz zdarzenia.
 
-Przydatne zapytania i informacje dotyczące sposobu zrozumienia rachunku zużycia można znaleźć [na stronie często zadawanych pytań dotyczących](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ)rozliczeń.
+Przydatne zapytania i informacje dotyczące sposobu zrozumienia rachunku zużycia można znaleźć [na stronie często zadawanych pytań dotyczących rozliczeń](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ).
 
 [Azure Functions pricing page]: https://azure.microsoft.com/pricing/details/functions
 

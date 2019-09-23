@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 1904ab07a188e4e877a4fb2f2b7682d923c08fb2
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 7f97348999f2cab6509afeb44bc704d5109ee0f7
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68441992"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181111"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informacje dotyczące korzystania z usługi HDInsight w systemie Linux
 
@@ -124,11 +124,9 @@ Korzystając z __usługi Azure Storage__, należy użyć jednego z następujący
 
 * `wasb://<container-name>@<account-name>.blob.core.windows.net/`: Używane podczas komunikacji z kontem magazynu innym niż domyślne. Na przykład jeśli masz dodatkowe konto magazynu lub dostęp do danych przechowywanych na publicznie dostępnym koncie magazynu.
 
-Korzystając z __Azure Data Lake Storage Gen2__, użyj jednego z następujących schematów URI:
+W przypadku korzystania z __Azure Data Lake Storage Gen2__Użyj następującego schematu URI:
 
-* `abfs:///`: Dostęp do magazynu domyślnego przy użyciu nieszyfrowanej komunikacji.
-
-* `abfss:///`: Dostęp do magazynu domyślnego przy użyciu komunikacji szyfrowanej.  Schemat abfss jest obsługiwany tylko w usłudze HDInsight w wersji 3,6 lub nowszej.
+* `abfs://`: Dostęp do magazynu domyślnego przy użyciu komunikacji szyfrowanej.
 
 * `abfs://<container-name>@<account-name>.dfs.core.windows.net/`: Używane podczas komunikacji z kontem magazynu innym niż domyślne. Na przykład jeśli masz dodatkowe konto magazynu lub dostęp do danych przechowywanych na publicznie dostępnym koncie magazynu.
 
@@ -203,7 +201,7 @@ W przypadku korzystania z __usługi Azure Storage__zobacz następujące linki, a
 Jeśli używasz __Azure Data Lake Storage__, zobacz następujące linki, aby poznać sposoby dostępu do danych:
 
 * [Przeglądarka sieci Web](../data-lake-store/data-lake-store-get-started-portal.md)
-* [Program PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)
+* [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)
 * [Interfejs wiersza polecenia platformy Azure](../data-lake-store/data-lake-store-get-started-cli-2.0.md)
 * [Interfejs API REST usługi WebHDFS](../data-lake-store/data-lake-store-get-started-rest-api.md)
 * [Narzędzia Data Lake Tools for Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504)
@@ -283,7 +281,7 @@ Aby użyć innej wersji składnika, Przekaż potrzebną wersję i użyj jej do z
 >
 > Składniki niestandardowe otrzymują komercyjnie uzasadnioną pomoc techniczną, która ułatwia dalsze Rozwiązywanie problemu. Może to skutkować rozwiązaniem problemu lub zapytaniem o zaangażowanie dostępnych kanałów dla technologii open source, w których znajduje się Szczegółowa wiedza dla tej technologii. Na przykład istnieje wiele witryn społeczności, które mogą być używane, takich jak: [Forum MSDN dotyczące](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)usługi HDInsight [https://stackoverflow.com](https://stackoverflow.com),. Również projekty Apache mają witryny projektu, [https://apache.org](https://apache.org)na przykład: [Hadoop](https://hadoop.apache.org/), [Spark](https://spark.apache.org/).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Zarządzanie klastrami usługi HDInsight przy użyciu interfejsu API REST usługi Apache Ambari](./hdinsight-hadoop-manage-ambari-rest-api.md)
 * [Korzystanie z Apache Hive z usługą HDInsight](hadoop/hdinsight-use-hive.md)

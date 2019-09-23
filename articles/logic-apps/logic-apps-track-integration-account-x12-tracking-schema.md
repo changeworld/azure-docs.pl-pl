@@ -132,7 +132,7 @@ Aby ułatwić sukcesu monitora, błędy i właściwości wiadomości dla transak
 | respondingtransactionSetControlNumber | String | Numer kontrolny zestawu transakcji odpowiada. (Opcjonalnie) |
 | respondingTransactionSetId | String | Transakcja odpowiada Ustaw identyfikator, który mapuje AK201 w potwierdzeniu. (Opcjonalnie) |
 | statusCode | Boolean | Kod stanu potwierdzenia zestawu transakcji. (Obowiązkowe) |
-| segmentsCount | Enum | Kod stanu potwierdzenia. Dozwolone wartości to **zaakceptowano**, **odrzucony**, i **AcceptedWithErrors**. (Obowiązkowe) |
+| segmentsCount | Enum | Kod stanu potwierdzenia. Dozwolone wartości to **Accepted**, **Rejected**, i **AcceptedWithErrors**. (Obowiązkowe) |
 | processingStatus | Enum | Stan przetwarzania potwierdzenia. Dozwolone wartości to **odebrane**, **Generated**, i **wysłane**. (Obowiązkowe) |
 | CorrelationMessageId | String | Identyfikator korelacji wiadomości. Kombinacja {AgreementName} {*GroupControlNumber*} {TransactionSetControlNumber}. (Opcjonalnie) |
 | isMessageFailed | Boolean | Czy X12 wiadomości nie powiodło się. (Obowiązkowe) |
@@ -236,7 +236,7 @@ Aby ułatwić sukcesu monitora, błędy i właściwości wiadomości dla transak
 | isaSegment | String | Segment ISA na potwierdzenie technicznych, odebrane od partnerów. (Opcjonalnie) |
 | respondingInterchangeControlNumber |String | Numer kontrolny potwierdzenia technicznych, odebrane od partnerów wymiany. (Opcjonalnie) |
 | isMessageFailed | Boolean | Czy X12 wiadomości nie powiodło się. (Obowiązkowe) |
-| statusCode | Enum | Wymiany kod stanu potwierdzenia. Dozwolone wartości to **zaakceptowano**, **odrzucony**, i **AcceptedWithErrors**. (Obowiązkowe) |
+| statusCode | Enum | Wymiany kod stanu potwierdzenia. Dozwolone wartości to **Accepted**, **Rejected**, i **AcceptedWithErrors**. (Obowiązkowe) |
 | processingStatus | Enum | Stan potwierdzenia. Dozwolone wartości to **odebrane**, **Generated**, i **wysłane**. (Obowiązkowe) |
 | ta102 | String | Wymiany daty. (Opcjonalnie) |
 | ta103 | String | Wymiany czasu. (Opcjonalnie) |

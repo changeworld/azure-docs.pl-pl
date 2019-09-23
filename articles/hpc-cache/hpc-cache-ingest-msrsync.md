@@ -1,19 +1,19 @@
 ---
-title: Pobieranie danych z pamięci podręcznej platformy Azure HPC — msrsync
+title: Pozyskiwanie danych w pamięci podręcznej platformy Azure HPC — msrsync
 description: Jak używać msrsync do przenoszenia danych do docelowego magazynu obiektów BLOB w pamięci podręcznej platformy Azure HPC
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: v-erkell
-ms.openlocfilehash: d49c2ba45b125f8e42ea5d10dcf3dcd68558a52c
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 265ec55a6e013a37cf963b6256e900c070311f72
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775639"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180934"
 ---
-# <a name="azure-hpc-cache-data-ingest---msrsync-method"></a>Pobieranie danych z pamięci podręcznej platformy Azure HPC — Metoda msrsync
+# <a name="azure-hpc-cache-preview-data-ingest---msrsync-method"></a>Azure HPC cache (wersja zapoznawcza) Metoda pozyskiwania danych — msrsync
 
 Ten artykuł zawiera szczegółowe instrukcje dotyczące korzystania ``msrsync`` z narzędzia do kopiowania danych do kontenera usługi Azure Blob Storage w celu użycia z pamięcią podręczną platformy Azure HPC.
 

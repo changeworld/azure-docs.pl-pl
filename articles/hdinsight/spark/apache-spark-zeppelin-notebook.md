@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/04/2019
-ms.openlocfilehash: 6801f2b3bca1fbfa221ec2eba07f51b76712b4ff
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 26634e2fe23e0a23540638c4559af6e11eccbe72
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813976"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180733"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Korzystanie z notesów Apache Zeppelin z klastrem Apache Spark w usłudze Azure HDInsight
 
@@ -23,7 +23,7 @@ Klastry usługi HDInsight Spark obejmują notesy [Apache Zeppelin](https://zeppe
 
 * Subskrypcja platformy Azure. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Klaster Apache Spark w usłudze HDInsight. Aby uzyskać instrukcje, zobacz [Tworzenie klastra platformy Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md).
-* Schemat identyfikatora URI magazynu podstawowego klastrów. Będzie to możliwe `wasb://` w przypadku usługi Azure `abfs://` BLOB Storage w przypadku `adl://` Azure Data Lake Storage Gen2 lub Azure Data Lake Storage Gen1. W przypadku włączenia bezpiecznego transferu dla BLOB Storage lub Data Lake Storage Gen2, identyfikator URI `wasbs://` będzie odpowiednio lub. `abfss://`  Aby uzyskać więcej informacji, zobacz również temat [Wymagaj bezpiecznego transferu w usłudze Azure Storage](../../storage/common/storage-require-secure-transfer.md) .
+* Schemat identyfikatora URI magazynu podstawowego klastrów. Będzie to możliwe `wasb://` w przypadku usługi Azure `abfs://` BLOB Storage w przypadku `adl://` Azure Data Lake Storage Gen2 lub Azure Data Lake Storage Gen1. W przypadku włączenia bezpiecznego transferu dla Blob Storage, identyfikator URI `wasbs://`to.  Aby uzyskać więcej informacji, zobacz również temat [Wymagaj bezpiecznego transferu w usłudze Azure Storage](../../storage/common/storage-require-secure-transfer.md) .
 
 ## <a name="launch-an-apache-zeppelin-notebook"></a>Uruchamianie notesu Apache Zeppelin
 
@@ -118,7 +118,7 @@ Klastry usługi HDInsight Spark obejmują notesy [Apache Zeppelin](https://zeppe
 
 10. Przewiń do **usługi Livy**, a następnie wybierz pozycję **Uruchom ponownie**.  W wierszu polecenia wybierz pozycję **OK** .
 
-    ![Uruchom ponownie usługi Livy intepreter](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "Uruchom ponownie Zeppelin intepreter")
+    ![Uruchom ponownie interpreter usługi Livy](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "Uruchom ponownie interpreter Zeppelin")
 
 ## <a name="how-do-i-use-external-packages-with-the-notebook"></a>Jak mogę używać zewnętrznych pakietów z notesem?
 Notes Zeppelin można skonfigurować w klastrze Apache Spark w usłudze HDInsight, aby korzystał z zewnętrznych pakietów współtworzonych przez społeczność, które nie są uwzględnione w tym klastrze. Możesz wyszukać w [repozytorium Maven](https://search.maven.org/) pełną listę dostępnych pakietów. Możesz również uzyskać listę dostępnych pakietów z innych źródeł. Na przykład kompletna lista pakietów z wkładem do społeczności jest dostępna w [pakietach Spark](https://spark-packages.org/).
@@ -169,7 +169,7 @@ W takim przypadku przed rozpoczęciem uruchamiania zadań z notesu Zeppelin nale
 
 2. Przewiń do **usługi Livy**, a następnie wybierz pozycję **Uruchom ponownie**.
 
-    ![Uruchom ponownie usługi Livy intepreter](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "Uruchom ponownie Zeppelin intepreter")
+    ![Uruchom ponownie interpreter usługi Livy](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "Uruchom ponownie interpreter Zeppelin")
 
 3. Uruchom komórkę kodu z istniejącego notesu Zeppelin. Spowoduje to utworzenie nowej sesji usługi Livy w klastrze usługi HDInsight.
 
@@ -193,7 +193,7 @@ W takim przypadku przed rozpoczęciem uruchamiania zadań z notesu Zeppelin nale
 * [Korzystanie z zewnętrznych pakietów z notesami Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Instalacja oprogramowania Jupyter na komputerze i nawiązywanie połączenia z klastrem Spark w usłudze HDInsight](apache-spark-jupyter-notebook-install-locally.md)
 
-### <a name="manage-resources"></a>Zarządzanie zasobami
+### <a name="manage-resources"></a>Zarządzaj zasobami
 * [Zarządzanie zasobami klastra Apache Spark w usłudze Azure HDInsight](apache-spark-resource-manager.md)
 * [Śledzenie i debugowanie zadań uruchamianych w klastrze Apache Spark w usłudze HDInsight](apache-spark-job-debugging.md)
 

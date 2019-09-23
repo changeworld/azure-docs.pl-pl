@@ -1,19 +1,19 @@
 ---
-title: Azure HPC — skrypt do kopiowania danych w pamięci podręcznej
+title: Azure HPC cache — Podgląd danych pozyskiwanie — skrypt kopiowania równoległego
 description: Jak używać skryptu kopiowania równoległego do przenoszenia danych do docelowego magazynu obiektów BLOB w pamięci podręcznej Azure HPC
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: v-erkell
-ms.openlocfilehash: 7414d830f5a2e6fc12066b2f408da041838283db
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 852b4e692a4316c7701c8c179039104bee561949
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775366"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180957"
 ---
-# <a name="azure-hpc-cache-data-ingest---parallel-copy-script-method"></a>Pobieranie danych z pamięci podręcznej platformy Azure HPC — Metoda skryptu kopiowania równoległego
+# <a name="azure-hpc-cache-preview-data-ingest---parallel-copy-script-method"></a>Azure HPC cache (wersja zapoznawcza) — Metoda skryptu kopiowania równoległego
 
 Ten artykuł zawiera instrukcje dotyczące tworzenia ``parallelcp`` skryptu i używania go do przenoszenia danych do kontenera magazynu obiektów BLOB do użycia z pamięcią podręczną platformy Azure HPC.
 

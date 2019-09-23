@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 49fd69c124ff9053f3934aefd349e039b437df0d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: de738461776be7bdfd1abc45dde24dc1202d3a3c
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68354956"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180756"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>Używanie funkcji języka Python zdefiniowanej przez użytkownika (UDF) z Apache Hive i Apache chlewnej w usłudze HDInsight
 
@@ -29,14 +29,14 @@ Usługa HDInsight zawiera również Jython, która jest implementacją języka P
 
 * **Klaster usługi Hadoop w usłudze HDInsight**. Zobacz Rozpoczynanie [pracy z usługą HDInsight w systemie Linux](apache-hadoop-linux-tutorial-get-started.md).
 * **Klient SSH**. Aby uzyskać więcej informacji, zobacz [Łączenie się z usługą HDInsight (Apache Hadoop) przy użyciu protokołu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
-* [Schemat identyfikatora URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) magazynu podstawowego klastrów. Będzie to wasb://dla usługi Azure Storage, abfs://dla Azure Data Lake Storage Gen2 lub adl://dla Azure Data Lake Storage Gen1. Jeśli na potrzeby usługi Azure Storage lub Data Lake Storage Gen2 jest włączony bezpieczny transfer, identyfikator URI mógłby być odpowiednio wasbs://lub abfss://, a [](../../storage/common/storage-require-secure-transfer.md)następnie bezpiecznym transferem.
+* [Schemat identyfikatora URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) magazynu podstawowego klastrów. Dotyczy to usługi Azure Storage, `abfs://` Azure Data Lake Storage Gen2 lub ADL://dla Azure Data Lake Storage Gen1. `wasb://` Jeśli w usłudze Azure Storage włączono opcję bezpiecznego transferu, identyfikator URI zostałby wasbs://.  Zobacz również [bezpieczny transfer](../../storage/common/storage-require-secure-transfer.md).
 * **Możliwa zmiana konfiguracji magazynu.**  Zobacz [Konfiguracja magazynu](#storage-configuration) , jeśli używany jest typ `BlobStorage`konta magazynu.
 * Opcjonalny.  Jeśli planujesz korzystanie z programu PowerShell, musisz mieć zainstalowaną pozycję [AZ module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) .
 
 > [!NOTE]  
-> Konto magazynu używane w tym artykule było magazynem platformy Azure [](../../storage/common/storage-require-secure-transfer.md) z włączonym bezpiecznym `wasbs` transferem i w tym przypadku jest używany w całym artykule.
+> Konto magazynu używane w tym artykule było magazynem platformy Azure z włączonym [bezpiecznym transferem](../../storage/common/storage-require-secure-transfer.md) i w tym `wasbs` przypadku jest używany w całym artykule.
 
-## <a name="storage-configuration"></a>Konfiguracja usługi Storage
+## <a name="storage-configuration"></a>Konfiguracja magazynu
 Jeśli używane konto magazynu ma charakter `Storage (general purpose v1)` lub `StorageV2 (general purpose v2)`, nie jest wymagana żadna akcja.  Proces w tym artykule spowoduje wygenerowanie danych wyjściowych do `/tezstaging`co najmniej.  Domyślna konfiguracja usługi `/tezstaging` `core-site.xml` `fs.azure.page.blob.dir` Hadoopbędziezawieraćwzmiennejkonfiguracyjnejprogramu`HDFS`w programie for.  Ta konfiguracja powoduje, że dane wyjściowe do katalogu będą stronicowymi obiektami BLOB, które nie są obsługiwane dla rodzaju `BlobStorage`konta magazynu.  Aby użyć `BlobStorage` tego artykułu, Usuń `/tezstaging` ze `fs.azure.page.blob.dir` zmiennej konfiguracyjnej.  Dostęp do konfiguracji można uzyskać za pomocą [interfejsu użytkownika Ambari](../hdinsight-hadoop-manage-ambari.md).  W przeciwnym razie zostanie wyświetlony komunikat o błędzie:`Page blob is not supported for this account type.`
 
 > [!WARNING]  

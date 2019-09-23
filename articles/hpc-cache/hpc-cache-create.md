@@ -1,21 +1,21 @@
 ---
-title: Tworzenie pamięci podręcznej platformy Azure HPC
+title: Tworzenie pamięci podręcznej platformy Azure HPC (wersja zapoznawcza)
 description: Jak utworzyć wystąpienie pamięci podręcznej platformy Azure HPC
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: tutorial
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: e1b69f17d964647944f23f4d16a0a1a5f112b60d
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 1cc77b24c96514f40c86115f7d611076facd406b
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037037"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181038"
 ---
-# <a name="create-an-azure-hpc-cache"></a>Tworzenie pamięci podręcznej platformy Azure HPC
+# <a name="create-an-azure-hpc-cache-preview"></a>Tworzenie pamięci podręcznej platformy Azure HPC (wersja zapoznawcza)
 
-Użyj Azure Portal, aby utworzyć pamięć podręczną.
+Użyj Azure Portal, aby utworzyć pamięć podręczną. 
 
 ![zrzut ekranu przedstawiający przegląd pamięci podręcznej w Azure Portal z przyciskiem Utwórz u dołu](media/hpc-cache-home-page.png)
 
@@ -32,7 +32,7 @@ W obszarze **Szczegóły usługi**Ustaw nazwę pamięci podręcznej i inne atryb
 * Podsieć — wybierz lub Utwórz podsieć z co najmniej 64 adresami IP (/24), które będą używane tylko dla pamięci podręcznej platformy Azure HPC.
 
 ## <a name="set-cache-capacity"></a>Ustawianie pojemności pamięci podręcznej
-<!-- change link in GUI -->
+<!-- referenced from GUI - update aka.ms link if you change this header text -->
 
 Na stronie **pamięć podręczna** należy ustawić pojemność pamięci podręcznej platformy Azure HPC. Ta wartość określa, ile danych może być przechowywane w pamięci podręcznej oraz jak szybko może obsłużyć żądania klientów. Po okresie publicznej wersji zapoznawczej pojemność będzie również mieć wpływ na koszt pamięci podręcznej.
 
@@ -61,7 +61,7 @@ Kliknij **link Dodaj miejsce docelowe magazynu** , aby zdefiniować systemy prze
 
 Można zdefiniować maksymalnie dziesięć różnych miejsc docelowych magazynu.
 
-Instrukcje krok po kroku dotyczące dodawania miejsca docelowego magazynu znajdują się w temacie [Dodawanie magazynu](hpc-cache-add-storage.md). Procedura różni się w zależności od usługi BLOB Storage lub eksportu systemu plików NFS.
+Instrukcje krok po kroku dotyczące dodawania miejsca docelowego magazynu znajdują się w temacie [Dodawanie elementów docelowych magazynu](hpc-cache-add-storage.md). Procedura różni się w zależności od usługi BLOB Storage lub eksportu systemu plików NFS.
 
 Oto kilka porad: 
 

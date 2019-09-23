@@ -5,13 +5,13 @@ author: kromerm
 ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
-ms.date: 05/16/2019
-ms.openlocfilehash: 8eb244a0eff1569ac27feae68104db613373463a
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.date: 09/22/2019
+ms.openlocfilehash: e4b3e08c0cc7fc1ead2aed551c228c6a1165c3b6
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992345"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180860"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Przewodnik dotyczący wydajności i dostrajania przepływu danych
 
@@ -90,6 +90,13 @@ Kliknięcie tej ikony spowoduje wyświetlenie planu wykonania i kolejnego profil
 * W Projektancie przepływu danych Użyj karty Podgląd danych na przekształceń, aby wyświetlić wyniki logiki transformacji.
 * Testowanie jednostkowe przepływów danych z projektanta potoku przez umieszczenie na kanwie projektu potoku działania dotyczącego przepływu danych i użycie przycisku "Debuguj" do przetestowania.
 * Testowanie w trybie debugowania będzie działać w rozgrzanym środowisku klastra bez konieczności oczekiwania na odczekanie klastra just in Time.
+* Podczas debugowania podglądu danych w środowisku projektanta przepływu danych można ograniczyć ilość danych, które można testować za pomocą każdego źródła, ustawiając limit wierszy z linku ustawienia debugowania w interfejsie użytkownika projektanta przepływu danych. Należy pamiętać, że należy najpierw włączyć tryb debugowania.
+
+![Ustawienia debugowania](media/data-flow/debug-settings.png "Ustawienia debugowania")
+
+* Podczas testowania przepływów danych z poziomu wykonywania debugowania potoku można ograniczyć liczbę wierszy używanych do testowania przez ustawienie rozmiaru próbkowania dla każdego źródła. Należy pamiętać, aby wyłączyć próbkowanie podczas planowania potoków zgodnie z regularnym harmonogramem operacyjnym.
+
+![Próbkowanie wierszy](media/data-flow/source1.png "Próbkowanie wierszy")
 
 ### <a name="disable-indexes-on-write"></a>Wyłącz indeksy przy zapisie
 * Użyj działania procedury składowanej w potoku ADF przed działaniem przepływu danych, które powoduje wyłączenie indeksów w tabelach docelowych, które są zapisywane na podstawie ujścia.
@@ -140,6 +147,10 @@ Na przykład jeśli mam listę plików danych z lipca 2019, które chcą przetwo
 ```DateFiles/*_201907*.txt```
 
 Wykonanie tej czynności będzie lepszym rozwiązaniem niż wyszukiwanie magazynu obiektów BLOB w potoku, który następnie iteruje we wszystkich dopasowanych plikach za pomocą działania instrukcji EXECUTE Flow przepływu danych wewnątrz.
+
+### <a name="increase-the-size-of-your-debug-cluster"></a>Zwiększ rozmiar klastra debugowania
+
+Domyślnie włączenie debugowania będzie używać domyślnego środowiska Azure Integration Runtime, które jest tworzone automatycznie dla każdej fabryki danych. Ten domyślny Azure IR jest ustawiany dla 8 rdzeni, 4 dla węzła sterownika i 4 dla węzła procesu roboczego przy użyciu ogólnych właściwości obliczeń. Podczas testowania większej ilości danych można zwiększyć rozmiar klastra debugowania, tworząc nowe Azure IR z większą konfiguracją i wybierając tę nową Azure IR po włączeniu debugowania. Spowoduje to, że funkcja ADF użyje tego Azure IR do wyświetlania podglądu danych i debugowania potoku przy użyciu przepływów danych.
 
 ## <a name="next-steps"></a>Następne kroki
 

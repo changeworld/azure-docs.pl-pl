@@ -1,19 +1,19 @@
 ---
-title: Instalowanie pamięci podręcznej platformy Azure HPC
+title: Instalowanie pamięci podręcznej platformy Azure HPC (wersja zapoznawcza)
 description: Jak połączyć klientów z usługą Azure HPC cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: v-erkell
-ms.openlocfilehash: 46f221fd7c340b7f321d317f0e7493448d83177c
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 3b7a59afa0dea300e200b953d045d38218e99b22
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036957"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180928"
 ---
-# <a name="mount-the-azure-hpc-cache"></a>Instalowanie pamięci podręcznej platformy Azure HPC
+# <a name="mount-the-azure-hpc-cache-preview"></a>Instalowanie pamięci podręcznej platformy Azure HPC (wersja zapoznawcza)
 
 Po utworzeniu pamięci podręcznej klienci systemu plików NFS mogą uzyskać do niej dostęp za pomocą prostego polecenia instalacji.
 
@@ -54,7 +54,7 @@ W przypadku niezawodnego instalowania klienta należy przekazać te ustawienia i
 
 | Zalecane ustawienia poleceń instalacji | |
 --- | --- 
-``hard`` | Instalacje miękkie do klastra vFXT są skojarzone z awariami aplikacji i możliwymi utratą danych. 
+``hard`` | Instalacje miękkie do pamięci podręcznej platformy Azure HPC są skojarzone z niepowodzeńmi aplikacji i możliwymi utratą danych. 
 ``proto=netid`` | Ta opcja obsługuje odpowiednią obsługę błędów sieci NFS.
 ``mountproto=netid`` | Ta opcja obsługuje odpowiednią obsługę błędów sieci dla operacji instalacji.
 ``retry=n`` | Ustaw ``retry=30`` , aby uniknąć błędów instalacji przejściowej. (W instalacjach na pierwszym planie zalecana jest inna wartość).

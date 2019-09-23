@@ -10,12 +10,12 @@ manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 016ab15b2ca4b2e6278752b166c746f6f5aef72d
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 0f7947e4a96a49e3a7a3b0059a1b20b21ac8cbd1
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71171296"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180785"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Przechowywanie wartości i zarządzanie nimi przy użyciu zmiennych w Azure Logic Apps
 
@@ -99,6 +99,9 @@ Jeśli przełączysz projektanta z edytorem widoku kodu, w tym miejscu zostanie 
    }
 },
 ```
+
+> [!NOTE]
+> Chociaż Akcja **zainicjuj zmienną** ma `variables` sekcję, która jest strukturą jako tablicą, akcja może utworzyć tylko jedną zmienną jednocześnie. Każda nowa zmienna wymaga pojedynczej akcji **inicjowania zmiennej** .
 
 Oto przykłady dla innych typów zmiennych:
 
@@ -200,7 +203,7 @@ Aby *zwiększyć lub zwiększyć* zmienną przez wartość stałą, Dodaj akcję
 
    Aby dodać akcję między istniejącymi krokami, przesuń wskaźnik myszy nad strzałkę łączącą, aby pojawił się znak plus (+). Wybierz znak plus, a następnie wybierz pozycję **Dodaj akcję**.
 
-1. W polu wyszukiwania wprowadź wartość "zmienna przyrostowa" jako filtr. Na liście Akcje wybierz pozycję **zmienne — przyrostowa zmienna**.
+1. W polu wyszukiwania wprowadź wartość "zmienna przyrostowa" jako filtr. Na liście Akcje wybierz pozycję **Zwiększ wartość zmiennej**.
 
    ![Wybierz akcję "Zwiększ zmienną"](./media/logic-apps-create-variables-store-values/select-increment-variable-action.png)
 

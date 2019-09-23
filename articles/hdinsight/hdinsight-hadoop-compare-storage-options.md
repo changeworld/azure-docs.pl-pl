@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: d036e56a4ccf826ccd19fb7424b7b76568839b23
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: b73810b37020bf01c1088f194bd426e93fd95d2c
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104531"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180770"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Porównanie opcji magazynu do użycia z klastrami usługi Azure HDInsight
 
@@ -45,14 +45,14 @@ Klaster można utworzyć przy użyciu różnych kombinacji usług dla podstawowe
 | Wersja usługi HDInsight | Magazyn podstawowy | Magazyn pomocniczy | Obsługiwane |
 |---|---|---|---|
 | 3,6 & 4,0 | Ogólnego przeznaczenia V1, Ogólnego przeznaczenia v2 | Ogólnego przeznaczenia V1, Ogólnego przeznaczenia v2, BlobStorage (blokowe obiekty blob) | Tak |
-| 3,6 & 4,0 | Ogólnego przeznaczenia V1, Ogólnego przeznaczenia v2 | Usługa Data Lake Storage 2. generacji | Nie |
+| 3,6 & 4,0 | Ogólnego przeznaczenia V1, Ogólnego przeznaczenia v2 | Data Lake Storage Gen2 | Nie |
 | 3,6 & 4,0 | Ogólnego przeznaczenia V1, Ogólnego przeznaczenia v2 | Usługa Data Lake Storage 1. generacji | Tak |
-| 3,6 & 4,0 | Data Lake Storage Gen2 * | Usługa Data Lake Storage 2. generacji | Tak |
+| 3,6 & 4,0 | Data Lake Storage Gen2 * | Data Lake Storage Gen2 | Tak |
 | 3,6 & 4,0 | Data Lake Storage Gen2 * | Ogólnego przeznaczenia V1, Ogólnego przeznaczenia v2, BlobStorage (blokowe obiekty blob) | Tak |
-| 3,6 & 4,0 | Usługa Data Lake Storage 2. generacji | Usługa Data Lake Storage 1. generacji | Nie |
+| 3,6 & 4,0 | Data Lake Storage Gen2 | Usługa Data Lake Storage 1. generacji | Nie |
 | 3.6 | Usługa Data Lake Storage 1. generacji | Usługa Data Lake Storage 1. generacji | Tak |
 | 3.6 | Usługa Data Lake Storage 1. generacji | Ogólnego przeznaczenia V1, Ogólnego przeznaczenia v2, BlobStorage (blokowe obiekty blob) | Tak |
-| 3.6 | Usługa Data Lake Storage 1. generacji | Usługa Data Lake Storage 2. generacji | Nie |
+| 3.6 | Usługa Data Lake Storage 1. generacji | Data Lake Storage Gen2 | Nie |
 | 4.0 | Usługa Data Lake Storage 1. generacji | Any | Nie |
 
 \* = Może to być jedno lub wiele kont Data Lake Storage Gen2, o ile są one skonfigurowane do używania tej samej tożsamości zarządzanej na potrzeby dostępu do klastra.
@@ -95,9 +95,9 @@ Aby uzyskać więcej informacji, [Zobacz sterownik systemu plików obiektów blo
 
 Azure Data Lake Storage Gen2 używa nowego schematu identyfikatora URI do uzyskiwania dostępu do plików w usłudze Azure Storage z usługi HDInsight:
 
-`abfs[s]://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>`
+`abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>`
 
-Schemat URI zapewnia dostęp szyfrowany przy użyciu protokołu SSL`abfss://` (prefiks) i nieszyfrowany dostęp`abfs://` (prefiks). Użyj `abfss` wszędzie tam, gdzie to możliwe, nawet w przypadku uzyskiwania dostępu do danych znajdujących się w tym samym regionie na platformie Azure.
+Schemat URI zapewnia dostęp szyfrowany przy użyciu protokołu SSL.
 
 `<FILE_SYSTEM_NAME>`Identyfikuje ścieżkę do systemu plików Data Lake Storage Gen2.
 
@@ -108,8 +108,8 @@ Schemat URI zapewnia dostęp szyfrowany przy użyciu protokołu SSL`abfss://` (p
 Jeśli wartości dla `<FILE_SYSTEM_NAME>` i `<ACCOUNT_NAME>` nie są określone, używany jest domyślny system plików. Dla plików w domyślnym systemie plików użyj ścieżki względnej lub ścieżki bezwzględnej. Na przykład `hadoop-mapreduce-examples.jar` plik, który jest dostarczany z klastrami usługi HDInsight, może być określony przy użyciu jednej z następujących ścieżek:
 
 ```
-abfss://myfilesystempath@myaccount.dfs.core.windows.net/example/jars/hadoop-mapreduce-examples.jar
-abfss:///example/jars/hadoop-mapreduce-examples.jar /example/jars/hadoop-mapreduce-examples.jar
+abfs://myfilesystempath@myaccount.dfs.core.windows.net/example/jars/hadoop-mapreduce-examples.jar
+abfs:///example/jars/hadoop-mapreduce-examples.jar /example/jars/hadoop-mapreduce-examples.jar
 ```
 
 > [!Note]

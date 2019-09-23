@@ -4,30 +4,30 @@ ms.service: storage
 ms.topic: include
 ms.date: 06/07/2019
 ms.author: rogarana
-ms.openlocfilehash: 368f08272173b019873dfe20e1164d6baf72ff5e
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: b28427b3ede0cfaeb9e08d3c73b15ea7f2961f1b
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542660"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71180064"
 ---
-#### <a name="additional-premium-file-share-level-limits"></a>Dodatkowe premium limity poziomu udziału plików
+#### <a name="additional-premium-file-share-level-limits"></a>Dodatkowe limity poziomów udziałów plików w warstwie Premium
 
 |Obszar  |Cel  |
 |---------|---------|
-|Zwiększenie/zmniejszenie minimalnego rozmiaru    |1 GiB      |
-|Liczba operacji we/wy na sekundę punktu odniesienia    |1 operacje We/Wy za GiB maksymalnie 100 000|
-|Operacje We/Wy, przenoszenie obsługi dużego ruchu    |3 x IOPS za GiB maksymalnie 100 000|
-|Współczynnik ruchu wychodzącego         |60 MiB/s i 0,06 * aprowizowane GiB        |
-|Szybkość transferu danych przychodzących| 40 MiB/s i 0,04 * aprowizowane GiB |
+|Minimalny wzrost/zmniejszenie rozmiaru    |1 GiB      |
+|Liczba operacji we/wy na sekundę punktu odniesienia    |1 Liczba operacji we/wy na sekundę, do 100 000|
+|Rozerwanie operacji we/wy    |3 razy dziennie operacji we/wy na GiB, do 100 000|
+|Szybkość ruchu wychodzącego         |60 MiB/s + 0,06 * GiB aprowizacji        |
+|Szybkość transferu danych przychodzących| 40 MiB/s + 0,04 * GiB aprowizacji |
 
-#### <a name="file-level-limits"></a>Limity poziomu pliku
+#### <a name="file-level-limits"></a>Limity poziomów plików
 
-|Obszar  |Plik — wersja Premium  |Standardowy plik |
+|Obszar  |Plik Premium  |Plik standardowy |
 |---------|---------|---------|
 |Size                  |1 TiB         |1 TiB|
-|Maksymalna liczba operacji We/Wy na pliku     |5,000         |1000|
-|Uchwyty współbieżne    |2000         |2000|
-|Ruch przychodzący  |300 MiB/s|      Zobacz wartości przepływności standardowego pliku|
-|Ruch wychodzący   |200 Mib/s| Zobacz wartości przepływności standardowego pliku|
-|Przepływność| Zobacz wartości ruchem przychodzącym/wychodzącym pliku — Wersja premium| Maksymalnie 60 MiB/s|
+|Maksymalna liczba operacji we/wy na plik     |5,000         |1000|
+|Równoczesne uchwyty    |2000         |2000|
+|Ruch wychodzący  |300 MiB/s|      Zobacz standardowe wartości przepływności plików|
+|Ruch przychodzący  |200 MiB/s| Zobacz standardowe wartości przepływności plików|
+|Przepływność| Zobacz wartości wejściowe/wyjściowe plików w warstwie Premium| Do 60 MiB/s|

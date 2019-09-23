@@ -85,7 +85,7 @@ Centrum powiadomień jest skonfigurowane do pracy z usługą FCM i uzyskano para
     ![Nazwa pakietu w usłudze GCM](./media/partner-xamarin-notification-hubs-android-get-started/package-name-gcm.png)
 4. Ustaw docelową wersję systemu Android dla projektu na **android 9,0 (kołowy)** , wykonując następujące czynności: 
     1. Kliknij prawym przyciskiem myszy projekt, a następnie wybierz polecenie **Właściwości**. 
-    1. W przypadku **kompilacji przy użyciu wersji systemu Android: (Platforma docelowa) Wybierz pozycję **Android 9,0 (wykres kołowy).**** 
+    1. W przypadku **kompilacji przy użyciu wersji systemu Android: (Platforma docelowa)** Wybierz pozycję **Android 9,0 (wykres kołowy).** 
     1. Wybierz opcję **tak** w oknie komunikatu, aby kontynuować Zmienianie platformy docelowej.
 1. Dodaj wymagane pakiety NuGet do projektu, wykonując następujące czynności:
     1. Kliknij projekt prawym przyciskiem myszy i wybierz pozycję **Zarządzaj pakietami NuGet**.

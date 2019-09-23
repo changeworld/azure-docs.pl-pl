@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: c24370c91c7164786503cdd8e3c44de60abc8370
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: b0cb5f9fa0a0bc64b38225fba03568cf31021572
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122492"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181094"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Korzystanie z usługi Apache Oozie z usługą Apache Hadoop do definiowania i uruchamiania przepływu pracy w usłudze Azure HDInsight opartej na systemie Linux
 
@@ -37,7 +37,7 @@ Można również użyć Oozie do planowania zadań specyficznych dla systemu, ta
 
 * **Azure SQL Database**.  Zobacz [Tworzenie bazy danych Azure SQL Database w Azure Portal](../sql-database/sql-database-get-started.md).  W tym artykule jest stosowana baza `oozietest`danych o nazwie.
 
-* [Schemat identyfikatora URI](./hdinsight-hadoop-linux-information.md#URI-and-scheme) magazynu podstawowego klastrów. Będzie to możliwe `wasb://` w przypadku usługi Azure `abfs://` Storage, Azure Data Lake Storage Gen2 `adl://` lub Azure Data Lake Storage Gen1. W przypadku włączenia bezpiecznego transferu dla usługi Azure Storage lub Data Lake Storage Gen2, identyfikator URI może `wasbs://` być `abfss://`lub, odpowiednio, zobacz również [bezpieczny transfer](../storage/common/storage-require-secure-transfer.md).
+* [Schemat identyfikatora URI](./hdinsight-hadoop-linux-information.md#URI-and-scheme) magazynu podstawowego klastrów. Będzie to możliwe `wasb://` w przypadku usługi Azure `abfs://` Storage, Azure Data Lake Storage Gen2 `adl://` lub Azure Data Lake Storage Gen1. Jeśli w usłudze Azure Storage włączono opcję bezpiecznego transferu, identyfikator URI mógłby `wasbs://`być. Zobacz również [bezpieczny transfer](../storage/common/storage-require-secure-transfer.md).
 
 ## <a name="example-workflow"></a>Przykładowy przepływ pracy
 

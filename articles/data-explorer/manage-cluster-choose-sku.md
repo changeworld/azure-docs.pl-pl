@@ -51,7 +51,7 @@ Kluczowe różnice między dostępnymi typami jednostek SKU zostały opisane w p
 |---|---|---
 |**Małe jednostki SKU**|Minimalny rozmiar jest D11 z dwoma rdzeniami|Minimalny rozmiar to P4 z czterema rdzeniami |
 |**Dostępność**|Dostępne we wszystkich regionach (wersja DS + PS ma więcej ograniczonej dostępności)|Dostępne w kilku regionach |
-|**Koszt pamięci podręcznej wGBnardzeń&nbsp;**|Wysoka z jednostkami SKU D, niska w wersji DS + PS|Najniższy z opcją płatność zgodnie z rzeczywistym użyciem |
+|**Koszt pamięci&nbsp; podręcznej wGBnardzeń**|Wysoka z jednostkami SKU D, niska w wersji DS + PS|Najniższy z opcją płatność zgodnie z rzeczywistym użyciem |
 |**Cennik wystąpień zarezerwowanych (RI)**|Wysoki rabat (ponad 55&nbsp;% dla zobowiązania z trzech lat)|Niższy rabat (20&nbsp;procent dla zobowiązania z trzech lat) |  
 
 ## <a name="select-your-cluster-vm"></a>Wybierz maszynę wirtualną klastra 
