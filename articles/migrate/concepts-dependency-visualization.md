@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: hamusa
-ms.openlocfilehash: e7b69e57d4e01c292a2c6d032ba995d1936b88dc
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 33594e09778b9a629645e12357e6bafe561ad35e
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142902"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202899"
 ---
 # <a name="dependency-visualization"></a>Wizualizacja zależności
 
@@ -20,7 +20,7 @@ Azure Migrate: Ocena serwera ocenia grupy maszyn lokalnych pod kątem migracji n
 > [!NOTE]
 > Funkcja wizualizacji zależności nie jest dostępna na platformie Azure Government.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Wizualizacja zależności w ramach oceny serwera umożliwia tworzenie grup o wysokim poziomie pewności na potrzeby oceny migracji. Za pomocą wizualizacji zależności można wyświetlać zależności sieci maszyn i identyfikować powiązane maszyny, które muszą zostać zmigrowane razem z platformą Azure. Ta funkcja jest przydatna w scenariuszach, w których nie są w pełni świadomi maszyn, które stanowią aplikację i muszą zostać zmigrowane razem z platformą Azure.
 
@@ -44,11 +44,14 @@ Azure Migrate używa rozwiązania [Service map](../operations-management-suite/o
     ![Dodaj obszar roboczy](./media/how-to-create-group-machine-dependencies/workspace.png)
 
 - Podczas kojarzenia obszaru roboczego uzyskasz możliwość utworzenia nowego obszaru roboczego lub dołączenia istniejącego:
-  - Podczas tworzenia nowego obszaru roboczego należy określić nazwę obszaru roboczego. Obszar roboczy jest następnie tworzony w regionie w tej samej lokalizacji [geograficznej platformy Azure](https://azure.microsoft.com/global-infrastructure/geographies/) co projekt migracji.
+  - Podczas tworzenia nowego obszaru roboczego należy określić nazwę obszaru roboczego. Możesz wybrać [region](https://azure.microsoft.com/global-infrastructure/regions/) , w którym zostanie utworzony obszar roboczy.
   - Po dołączeniu istniejącego obszaru roboczego możesz wybrać wszystkie dostępne obszary robocze w tej samej subskrypcji co projekt migracji. Należy zauważyć, że na liście są wyświetlane tylko te obszary robocze, które zostały utworzone w regionie, w którym [Service map jest obsługiwana](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites). Aby możliwe było dołączenie obszaru roboczego, upewnij się, że masz dostęp do obszaru roboczego "czytelnik".
 
   > [!NOTE]
   > Po dołączeniu obszaru roboczego do projektu nie można go później zmienić.
+
+  > [!NOTE]
+  > Azure Migrate obecnie obsługuje tworzenie obszaru roboczego pakietu OMS w regionach Wschodnie stany USA, Azja Południowo-Wschodnia i Europa Zachodnia. Jeśli obszar roboczy jest tworzony poza Azure Migrate w innym regionie, nie można go skojarzyć z Azure Migrate projektem. 
 
 - Skojarzony obszar roboczy jest otagowany za pomocą **projektu migracji**kluczy i **nazwy projektu**wartości, którego można użyć do wyszukiwania w Azure Portal.
 - Aby przejść do obszaru roboczego skojarzonego z projektem, możesz przejść do sekcji **podstawowe** strony **Przegląd** projektu i uzyskać dostęp do obszaru roboczego

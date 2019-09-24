@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: 58b6531a394db8f9d29dcc0fe9b4b40d1725e70a
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: c0c160d9fc2fcfb8da004d02baae1dd410620cbb
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774579"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71204204"
 ---
 # <a name="custom-script-extension-for-windows"></a>Niestandardowe rozszerzenie skryptu dla systemu Windows
 
@@ -69,7 +69,7 @@ Te elementy powinny być traktowane jako dane poufne i określone w konfiguracji
 {
     "apiVersion": "2018-06-01",
     "type": "Microsoft.Compute/virtualMachines/extensions",
-    "name": "config-app",
+    "name": "virtualMachineName/config-app",
     "location": "[resourceGroup().location]",
     "dependsOn": [
         "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'),copyindex())]",
@@ -100,6 +100,9 @@ Te elementy powinny być traktowane jako dane poufne i określone w konfiguracji
 
 > [!NOTE]
 > Tylko jedna wersja rozszerzenia może być zainstalowana na maszynie wirtualnej w danym momencie, co oznacza, że niestandardowy skrypt dwa razy w tym samym szablonie Menedżer zasobów dla tej samej maszyny wirtualnej zakończy się niepowodzeniem.
+
+> [!NOTE]
+> Można użyć tego schematu wewnątrz zasobu VirtualMachine lub jako zasób autonomiczny. Nazwa zasobu musi mieć format "virtualMachineName/ExtensionName", jeśli to rozszerzenie jest używane jako zasób autonomiczny w szablonie ARM. 
 
 ### <a name="property-values"></a>Wartości właściwości
 
@@ -274,7 +277,7 @@ gdzie `<n>` jest dziesiętną liczbą całkowitą, która może ulec zmianie mi�
 
 Po wykonaniu `commandToExecute` polecenia rozszerzenie ustawia ten katalog (na `...\Downloads\2`przykład) jako bieżący katalog roboczy. Ten proces umożliwia lokalizowanie plików pobranych za pośrednictwem `fileURIs` właściwości przy użyciu ścieżek względnych. Przykłady można znaleźć w poniższej tabeli.
 
-Ze względu na to, że absolutna ścieżka pobierania może się różnić w miarę upływu czasu, lepiej jest wybrać `commandToExecute` względne ścieżki skryptów/plików w ciągu, jeśli jest to możliwe. Przykład:
+Ze względu na to, że absolutna ścieżka pobierania może się różnić w miarę upływu czasu, lepiej jest wybrać `commandToExecute` względne ścieżki skryptów/plików w ciągu, jeśli jest to możliwe. Na przykład:
 
 ```json
 "commandToExecute": "powershell.exe . . . -File \"./scripts/myscript.ps1\""

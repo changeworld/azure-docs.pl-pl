@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: quickstart
 ms.date: 07/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 16a487dc007526f685edb52726f5797303a30c11
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: d0ef228f9f019b6f975ba32cf6a579f328226ae2
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70966986"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203453"
 ---
 # <a name="quickstart-computer-vision-client-library-for-java"></a>Szybki start: przetwarzanie obrazów Biblioteka kliencka dla języka Java
 
@@ -24,6 +24,7 @@ Wprowadzenie do biblioteki klienta przetwarzanie obrazów dla środowiska Java. 
 Użyj biblioteki klienta przetwarzanie obrazów dla języka Java, aby:
 
 * Analizuj obraz pod kątem tagów, opisu tekstu, twarzy, treści dla dorosłych itd.
+* Rozpoznawanie wydrukowanych i odręcznych tekstu za pomocą interfejsu API odczytu usługi Batch.
 
 [](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable) | [Przykłady](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0) artefaktów dokumentacji referencyjnej[(Maven)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) | 
 
@@ -115,6 +116,7 @@ Te fragmenty kodu przedstawiają sposób wykonywania następujących zadań za p
 
 * [Uwierzytelnianie klienta](#authenticate-the-client)
 * [Analizowanie obrazu](#analyze-an-image)
+* [Odczytaj tekst drukowany i odręczny](#read-printed-and-handwritten-text)
 
 ## <a name="authenticate-the-client"></a>Uwierzytelnianie klienta
 
@@ -211,6 +213,29 @@ Poniższy kod analizuje dane dotyczące wykrytych punktów orientacyjnych w obra
 Poniższy kod drukuje informacje o typie obrazu&mdash;, niezależnie od tego, czy jest to obiekt clipart czy rysowanie liniowe.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_imagetype)]
+
+## <a name="read-printed-and-handwritten-text"></a>Odczytaj tekst drukowany i odręczny
+
+Przetwarzanie obrazów może odczytać widoczny tekst w obrazie i przekonwertować go na strumień znaków.
+
+> [!NOTE]
+> Możesz również odczytać tekst w obrazie zdalnym przy użyciu jego adresu URL. Zapoznaj się z przykładowym kodem w witrynie [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/ComputerVisionQuickstart.java) , aby poznać scenariusze związane z obrazami zdalnymi.
+
+### <a name="call-the-recognize-api"></a>Wywoływanie interfejsu API rozpoznawania
+
+Najpierw użyj następującego kodu, aby wywołać metodę **recognizePrintedTextInStream** dla danego obrazu. Po dodaniu tego kodu do projektu należy zastąpić wartość `localTextImagePath` ścieżką do lokalnego obrazu. 
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_imagetype)]
+
+### <a name="print-recognize-results"></a>Drukuj wyniki rozpoznawania
+
+Poniższy blok kodu przetwarza zwracany tekst i analizuje go w celu wydrukowania pierwszego wyrazu w każdym wierszu. Możesz użyć tego kodu, aby szybko zrozumieć strukturę wystąpienia **OcrResult** .
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_read_print)]
+
+Na koniec Zamknij blok try/catch i definicję metody.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_read_catch)]
 
 ## <a name="run-the-application"></a>Uruchamianie aplikacji
 

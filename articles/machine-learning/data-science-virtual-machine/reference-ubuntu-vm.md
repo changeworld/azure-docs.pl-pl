@@ -1,5 +1,5 @@
 ---
-title: 'Informacje ogólne: Ubuntu DSVM'
+title: 'Informacje ogólne: Maszyna DSVM z systemem Ubuntu'
 description: Szczegóły dotyczące narzędzi uwzględnionych w Ubuntu Data Science Virtual Machine
 author: gvashishtha
 ms.service: machine-learning
@@ -7,12 +7,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 20fe027ddf47ba98cef41cdc40a1b2e0d387c2a5
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 0c48b8ba28f67ac7f38d6f636728abe7c5a6bd4e
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174710"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71204022"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Informacje ogólne: Ubuntu (Linux) Data Science Virtual Machine
 
@@ -342,3 +342,6 @@ Teraz zostanie otwarty interfejs graficzny z zestawem kart. Poniższe kroki szyb
 
 Możesz wyjść z Rattle i R. Teraz można zmodyfikować wygenerowany skrypt języka R. Można również użyć skryptu w ten sposób i uruchomić go w dowolnym momencie, aby powtórzyć wszystko, co zostało zrobione w interfejsie użytkownika Rattle. Szczególnie w przypadku początkujących w języku R, jest to sposób, aby szybko przeprowadzić analizę i uczenie maszynowe w prostym interfejsie graficznym, podczas gdy automatycznie generuje kod w języku R, aby zmodyfikować lub poznać.
 
+## <a name="next-steps"></a>Następne kroki
+
+Masz dodatkowe pytania? Rozważ utworzenie [biletu pomocy technicznej](https://azure.microsoft.com/support/create-ticket/).

@@ -9,12 +9,12 @@ ms.subservice: cognitive-search
 ms.topic: overview
 ms.date: 08/02/2019
 ms.author: heidist
-ms.openlocfilehash: 6177f5821efe74fdf3a6aba7fe52f41e9db22728
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 07a0d3ef8660d32d14b8339fb76fa296b1c9635b
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123100"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202996"
 ---
 # <a name="what-is-knowledge-store-in-azure-search"></a>Co to jest sklep merytoryczny w Azure Search?
 
@@ -26,13 +26,13 @@ Magazyn wiedzy to funkcja Azure Search, która zapisuje wzbogacone dokumenty i m
 
 Jeśli używasz wyszukiwania poznawczego w przeszłości, wiesz już, że umiejętności są używane do przenoszenia dokumentu przez sekwencję wzbogacania. Wynikiem może być indeks Azure Search lub (Nowość w tej wersji zapoznawczej) projekcje w sklepie z bazami danych. Dwa dane wyjściowe, indeks wyszukiwania i magazyn wiedzy są fizycznie odrębne. Korzystają one z tej samej zawartości, ale są przechowywane i używane na różne sposoby.
 
-Fizycznie magazyn wiedzy jest tworzony na koncie usługi Azure Storage, jako usługa Azure Table Storage lub BLOB Storage, w zależności od konfiguracji potoku. Wszystkie narzędzia i procesy, które mogą łączyć się z usługą Azure Storage, mogą zużywać zawartość sklepu z bazami wiedzy.
+Fizycznie magazyn wiedzy to konto usługi Azure Storage, w tym Azure Table Storage, BLOB Storage lub Both, w zależności od sposobu skonfigurowania potoku. Wszystkie narzędzia i procesy, które mogą łączyć się z usługą Azure Storage, mogą zużywać zawartość sklepu z bazami wiedzy.
 
 Projekcje to mechanizm służący do tworzenia struktury danych w sklepie z bazami wiedzy. Na przykład za pomocą projekcji można określić, czy dane wyjściowe mają być zapisywane jako pojedynczy obiekt BLOB, czy jako kolekcja powiązanych tabel. Prostym sposobem wyświetlania zawartości sklepu merytorycznego jest użycie wbudowanej [Eksplorator usługi Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) usługi Azure Storage.
 
 ![Magazyn wiedzy w diagramie potoku](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "Magazyn wiedzy w diagramie potoku")
 
-Aby korzystać ze sklepu z bazami `knowledgeStore` danych, Dodaj element do elementu zestawu umiejętności, który definiuje operacje krok po kroku w potoku indeksowania. Podczas wykonywania Azure Search tworzy miejsce na koncie usługi Azure Storage i wypełnia je definicjami i zawartością utworzoną przez potok.
+Aby korzystać ze sklepu z bazami `knowledgeStore` danych, Dodaj element do elementu zestawu umiejętności, który definiuje operacje krok po kroku w potoku indeksowania. Podczas wykonywania Azure Search tworzy miejsce na koncie usługi Azure Storage i projektuje wzbogacone dokumenty z definicją utworzoną w potoku.
 
 ## <a name="benefits-of-knowledge-store"></a>Zalety sklepu z bazami danych
 
@@ -51,7 +51,7 @@ Wyliczane są korzyści z używania sklepu z bazami danych:
 > [!Note]
 > Nie znasz indeksowania opartego na formacie AI przy użyciu Cognitive Services? Azure Search integruje się z funkcjami obsługi Cognitive Services i języka, aby wyodrębnić i wzbogacić dane źródłowe za pomocą optycznego rozpoznawania znaków (OCR) przez pliki obrazów, rozpoznawanie jednostek i wyodrębnianie kluczowych fraz z plików tekstowych. Aby uzyskać więcej informacji, zobacz [co to jest wyszukiwanie poznawcze?](cognitive-search-concept-intro.md).
 
-## <a name="create-a-knowledge-store"></a>Tworzenie sklepu merytorycznego
+## <a name="create-a-knowledge-store"></a>Tworzenie magazynu wiedzy
 
 Magazyn wiedzy jest częścią definicji zestawu umiejętności. W tej wersji zapoznawczej tworzenie jej wymaga interfejsu API REST `api-version=2019-05-06-Preview` , przy użyciu programu lub kreatora **importu danych** w portalu.
 
@@ -105,6 +105,13 @@ Jeśli znasz już indeksowanie oparte na formacie AI, definicja zestawu umiejęt
 
             ], 
             "objects": [ 
+               
+            ]      
+        },
+        { 
+            "tables": [ 
+            ], 
+            "objects": [ 
                 { 
                 "storageContainer": "Reviews", 
                 "format": "json", 
@@ -112,7 +119,7 @@ Jeśli znasz już indeksowanie oparte na formacie AI, definicja zestawu umiejęt
                 "key": "/document/Review/Id" 
                 } 
             ]      
-        }    
+        }        
     ]     
     } 
 }
@@ -143,17 +150,17 @@ Azure Search udostępnia funkcję indeksatora, a Indeksatory są używane do kie
 | Object | Interfejs API REST | Opis |
 |--------|----------|-------------|
 | źródło danych | [Create Data Source](https://docs.microsoft.com/rest/api/searchservice/create-data-source) (Tworzenie źródła danych)  | Zasób, który identyfikuje zewnętrzne źródło danych platformy Azure, dostarczając dane źródłowe używane do tworzenia wzbogaconych dokumentów.  |
-| zestawu umiejętności | [Create zestawu umiejętności (API-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Zasób koordynujący korzystanie z [wbudowanych umiejętności](cognitive-search-predefined-skills.md) i [niestandardowych umiejętności poznawczych](cognitive-search-custom-skill-interface.md) używanych w potoku wzbogacenia podczas indeksowania. |
+| zestawu umiejętności | [Create zestawu umiejętności (API-Version = 2019-05 -06-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Zasób koordynujący korzystanie z [wbudowanych umiejętności](cognitive-search-predefined-skills.md) i [niestandardowych umiejętności poznawczych](cognitive-search-custom-skill-interface.md) używanych w potoku wzbogacenia podczas indeksowania. |
 | index | [Utwórz indeks](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Schemat przedstawiający indeks Azure Search. Pola w indeksie mapują do pól w danych źródłowych lub do pól wyprodukowanych w fazie wzbogacania (na przykład pola nazw organizacji utworzonych przez funkcję rozpoznawania jednostek). |
 | indeksator | [Create indeksator (API-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Zasób definiujący składniki używane podczas indeksowania: w tym źródła danych, zestawu umiejętności, skojarzenia pól ze źródeł i pośrednich struktur danych do indeksu docelowego i samego indeksu. Uruchomienie indeksatora jest wyzwalaczem do pozyskiwania i wzbogacania danych. Wyjście jest indeksem wyszukiwania opartym na schemacie indeksu, wypełnionym danymi źródłowymi, wzbogaconym przez umiejętności.  |
 
 ### <a name="3---cognitive-services"></a>3 — Cognitive Services
 
-Wzbogacania określone w zestawu umiejętności są oparte na przetwarzanie obrazów i funkcjach języka w Cognitive Services. Funkcja Cognitive Services jest używana podczas indeksowania przez zestawu umiejętności. Zestawu umiejętności to skład umiejętności, a umiejętności są powiązane z konkretnymi funkcjami przetwarzanie obrazów i języka. Aby zintegrować Cognitive Services, [dołączysz zasób Cognitive Services](cognitive-search-attach-cognitive-services.md) do zestawu umiejętności.
+Wzbogacania określone w zestawu umiejętności są niestandardowe lub oparte na przetwarzanie obrazów i funkcjach języka w Cognitive Services. Funkcja Cognitive Services jest używana podczas indeksowania przez zestawu umiejętności. Zestawu umiejętności to skład umiejętności, a umiejętności są powiązane z konkretnymi funkcjami przetwarzanie obrazów i języka. Aby zintegrować Cognitive Services, [dołączysz zasób Cognitive Services](cognitive-search-attach-cognitive-services.md) do zestawu umiejętności.
 
 ### <a name="4---storage-account"></a>4 — konto magazynu
 
-Na koncie usługi Azure Storage Azure Search tworzy kontener obiektów blob lub tabele, w zależności od sposobu konfigurowania zestawu umiejętności. Jeśli dane pochodzą z usługi Azure Blob lub magazynu tabel, jest już ustawiony. W przeciwnym razie musisz utworzyć konto usługi Azure Storage. Tabele i obiekty w usłudze Azure Storage zawierają wzbogacone dokumenty utworzone przez potok indeksowania oparty na AI.
+Na koncie usługi Azure Storage Azure Search tworzy kontener lub tabele obiektów blob, w zależności od sposobu konfigurowania projekcji w zestawu umiejętności. Jeśli dane pochodzą z usługi Azure Blob lub magazynu tabel, masz już ustawione i można ponownie użyć konta magazynu. W przeciwnym razie musisz utworzyć konto usługi Azure Storage. Tabele i obiekty w usłudze Azure Storage zawierają wzbogacone dokumenty utworzone przez potok indeksowania oparty na AI.
 
 Konto magazynu jest określone w zestawu umiejętności. W `api-version=2019-05-06-Preview`programie definicja zestawu umiejętności zawiera definicję magazynu wiedzy, dzięki czemu można podać informacje o koncie.
 
@@ -179,15 +186,13 @@ W ramach konta magazynu wzbogacania mogą być wyrażone jako tabele w usłudze 
 
 + Magazyn obiektów BLOB tworzy jedną reprezentację w formacie JSON dla każdego dokumentu. Aby uzyskać pełny zakres wyrażeń, można użyć opcji magazynu w jednym zestawu umiejętności.
 
-+ Azure Search utrzymuje zawartość w indeksie. Jeśli scenariusz nie jest powiązany z wyszukiwaniem, na przykład jeśli cel jest analizowany w innym narzędziu, można usunąć indeks utworzony przez potok. Możesz również zachować indeks i użyć wbudowanego narzędzia, takiego jak [Eksplorator wyszukiwania](search-explorer.md) jako trzeci średni (w tle Eksplorator usługi Storage i aplikacji analizy) na potrzeby korzystania z zawartości.
-
-Wraz z zawartością dokumentu wzbogacone dokumenty obejmują metadane wersji zestawu umiejętności, która wyprodukowała wzbogacenia.  
++ Azure Search utrzymuje zawartość w indeksie. Jeśli scenariusz nie jest powiązany z wyszukiwaniem, na przykład jeśli cel jest analizowany w innym narzędziu, można usunąć indeks utworzony przez potok. Możesz również zachować indeks i użyć wbudowanego narzędzia, takiego jak [Eksplorator wyszukiwania](search-explorer.md) jako trzeci średni (w tle Eksplorator usługi Storage i aplikacji analizy) na potrzeby korzystania z zawartości.  
 
 ## <a name="inside-a-knowledge-store"></a>W sklepie merytorycznym
 
-Magazyn informacji składa się z pamięci podręcznej adnotacji i projekcji. *Pamięć podręczna* jest używana wewnętrznie przez usługę w celu buforowania wyników z umiejętności i śledzenia zmian. *Rzutowanie* definiuje schemat i strukturę wzbogacania, które pasują do zamierzonego użycia. Istnieje jedna pamięć podręczna na magazyn wiedzy, ale wiele projekcji. 
+ *Rzutowanie* definiuje schemat i strukturę wzbogacania, które pasują do zamierzonego użycia. Można zdefiniować wiele projekcji, jeśli masz aplikacje, które zużywają dane w różnych formatach i kształtach. 
 
-Pamięć podręczna jest zawsze kontenera obiektów blob, ale projekcje mogą być łączone jako tabele lub obiekty:
+Projekcje mogą być przegubowe jako obiekty lub tabele:
 
 + Jako obiekt, projekcja mapuje do magazynu obiektów blob, gdzie Projekcja jest zapisywana w kontener, w którym są obiekty lub hierarchiczne reprezentacje w formacie JSON dla scenariuszy, takich jak potok analizy danych.
 

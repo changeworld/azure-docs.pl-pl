@@ -3,9 +3,8 @@ title: Zaawansowane zabezpieczenia danych dla IaaS w Azure Security Center | Mic
 description: " Dowiedz się, jak włączyć zaawansowane zabezpieczenia danych dla IaaS w Azure Security Center. "
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: monhaber
+author: memildin
+manager: rkarlin
 ms.assetid: ba46c460-6ba7-48b2-a6a7-ec802dd4eec2
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/29/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 0b83575baa2221f0b502abbf919654492c7ab6cf
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.author: memildin
+ms.openlocfilehash: 287da68617a9527bc398df577cf8d10773fa8557
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295752"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202176"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-public-preview"></a>Zaawansowane zabezpieczenia danych dla serwerów SQL w systemie Azure Virtual Machines (publiczna wersja zapoznawcza)
 Zaawansowane zabezpieczenia danych dla serwerów SQL w systemie Azure Virtual Machines to ujednolicony pakiet dla zaawansowanych funkcji zabezpieczeń SQL. Obecnie (w publicznej wersji zapoznawczej) zawiera funkcje umożliwiające wyświetlanie i łagodzenie potencjalnych luk w zabezpieczeniach i wykrywanie nietypowych działań, które mogą wskazywać na zagrożenie dla bazy danych. 
@@ -49,7 +48,7 @@ Poniższe kroki ułatwiają rozpoczęcie pracy z zaawansowanymi zabezpieczeniami
 
     ![Zaawansowane zabezpieczenia danych dla IaaS](./media/security-center-advanced-iaas-data/sql-advanced-data-security.png)
 
-1. Kliknij przycisk **Utwórz**. Zostaną wyświetlone miejsca pracy.
+1. Kliknij pozycję **Utwórz**. Zostaną wyświetlone miejsca pracy.
 
     ![Zaawansowane zabezpieczenia danych — Tworzenie](./media/security-center-advanced-iaas-data/sql-advanced-data-create.png)
 
@@ -72,7 +71,7 @@ Możesz wyświetlać bieżące alerty zabezpieczeń i zarządzać nimi.
 
 1. Aby wyświetlić szczegóły alertu i akcje związane z badaniem bieżącego zagrożenia i rozwiązywać przyszłe zagrożenia, przewiń w dół stronę **Informacje ogólne** , a następnie w sekcji **kroki zaradcze** kliknij link **kroki badania** .
 
-    ![Kroki zaradcze](./media/security-center-advanced-iaas-data/remediation-steps.png)
+    ![Instrukcje rozwiązania problemu](./media/security-center-advanced-iaas-data/remediation-steps.png)
 
 1. Aby wyświetlić dzienniki skojarzone z wyzwalaczem alertu, przejdź do **obszaru roboczego usługi log Analytics** i wykonaj następujące czynności:
 
@@ -89,7 +88,7 @@ Możesz wyświetlać bieżące alerty zabezpieczeń i zarządzać nimi.
 
     1. Kliknij oczy obok tabeli **SQLAdvancedThreatProtection** . Dzienniki znajdują się na liście.
 
-     ![Wyświetlanie dzienników](./media/security-center-advanced-iaas-data/view-logs.png)
+     ![Wyświetl dziennik](./media/security-center-advanced-iaas-data/view-logs.png)
 
 ## <a name="set-up-email-notification-for-atp-alerts"></a>Konfigurowanie powiadomień E-mail dla alertów ATP 
 
@@ -102,7 +101,7 @@ Po wygenerowaniu alertów ASC można ustawić listę adresatów, którzy otrzyma
 1. W menu **Ustawienia** kliknij pozycję **powiadomienia e-mail**. 
 1. W polu tekstowym **adres e-mail** wprowadź adresy e-mail, na które mają być wysyłane powiadomienia. Można wprowadzić więcej niż jeden adres e-mail, oddzielając adresy e-mail przecinkami (,).  Na przykład admin1@mycompany.com,admin2@mycompany.comadmin3@mycompany.com
 
-      ![Ustawienia poczty e-mail](./media/security-center-advanced-iaas-data/email-settings.png)
+      ![Ustawienia wiadomości e-mail](./media/security-center-advanced-iaas-data/email-settings.png)
 
 1. W ustawieniach **powiadomień e-mail** ustaw następujące opcje:
   

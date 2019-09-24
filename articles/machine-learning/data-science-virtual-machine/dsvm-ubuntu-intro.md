@@ -7,12 +7,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/10/2019
-ms.openlocfilehash: 5b50355391180c4a499a0f4e77c3897f8969cdb8
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: f50d784b7518bd01a3a0069cb474296d359420a8
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170980"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200047"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Szybki start: Konfigurowanie Data Science Virtual Machine dla systemu Linux (Ubuntu)
 
@@ -33,7 +33,7 @@ Poniżej przedstawiono kroki, aby utworzyć wystąpienie maszyny wirtualnej do n
 
 1. W następnym oknie wybierz pozycję **Utwórz**.
 
-    ![Kreator tworzenia maszyny wirtualnej](./media/dsvm-ubuntu-intro/create-linux.png)
+   [![](media/dsvm-ubuntu-intro/create-linux.png "Przycisk służący do tworzenia maszyny Ubuntu")](media/dsvm-ubuntu-intro/create-linux-expanded.png#lightbox)
 
 1. Należy przekierować do bloku "Tworzenie maszyny wirtualnej".
    

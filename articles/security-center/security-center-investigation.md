@@ -3,9 +3,8 @@ title: Badanie zdarzeń i alertów w usłudze Azure Security Center | Microsoft 
 description: Ten dokument ułatwia korzystanie z funkcji badania zdarzeń zabezpieczeń i alertów w usłudze Azure Security Center.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: a8e894a9-8781-4749-ae8f-8c8e01658566
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
-ms.author: rkarlin
-ms.openlocfilehash: 476bdd50a56b953585a8a4e9cea05975c9922e0f
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.author: memildin
+ms.openlocfilehash: 32cc4b01d68ee7a15ae7cfa2259d234cbcd143c4
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662950"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202050"
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-retired"></a>Badanie zdarzeń i alertów w Azure Security Center (wycofane)
 Ten dokument ułatwia korzystanie z funkcji badania (wersja zapoznawcza) w Azure Security Center w celu zbadania zdarzeń zabezpieczeń i alertów.
@@ -65,11 +64,11 @@ Na karcie **Jednostki** są wyświetlane wszystkie powiązane jednostki pogrupow
 
 ![Jednostki](./media/security-center-investigation/security-center-investigation-fig4.png)
 
-### <a name="search"></a>Wyszukaj
+### <a name="search"></a>Wyszukiwanie
 
 Karta **Wyszukiwanie** przedstawia wszystkie typy dzienników dostępne dla danej jednostki. W przypadku każdego typu dziennika można wyświetlić liczbę dostępnych rekordów. Kliknięcie każdego typu dziennika powoduje przejście do ekranu wyszukiwania. Na ekranie wyszukiwania można uściślić wyszukiwanie i skorzystać z różnych funkcji wyszukiwania, takich jak alerty ustawień. W bieżącej wersji karta Wyszukiwanie jest dostępna tylko w przypadku jednostek użytkownicy i komputery.
 
-![Wyszukaj](./media/security-center-investigation/security-center-investigation-fig5.png)
+![Wyszukiwanie](./media/security-center-investigation/security-center-investigation-fig5.png)
 
 ### <a name="exploration"></a>Eksploracja
 

@@ -3,22 +3,21 @@ title: Zaawansowana ochrona przed zagrożeniami w usłudze Windows Defender przy
 description: W tym dokumencie przedstawiono integrację między programem Azure Security Center a zaawansowaną ochroną przed zagrożeniami w usłudze Windows Defender.
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/21/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 5342ec14e32b87c5cccdb36206122ce1168aeb56
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.author: memildin
+ms.openlocfilehash: b1af4f99b1446599f53448884d3147601fba56a8
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061424"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200646"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Zaawansowana ochrona przed zagrożeniami w usłudze Windows Defender przy użyciu Azure Security Center
 

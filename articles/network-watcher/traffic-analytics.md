@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: kumud
-ms.reviewer: yagup
-ms.openlocfilehash: dbc0829adc29848c9047368295a2ade589834e8b
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.reviewer: vinigam
+ms.openlocfilehash: 6c11f415fc1ea3a578893f6d14a60dfc1c4fddb0
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70031855"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203016"
 ---
 # <a name="traffic-analytics"></a>Analiza ruchu
 
@@ -30,6 +30,8 @@ Analiza ruchu to rozwiązanie oparte na chmurze, które zapewnia wgląd w aktywn
 - Zrozumienie wzorców przepływu ruchu w regionach platformy Azure oraz w Internecie w celu zoptymalizowania wdrożenia sieci pod kątem wydajności i pojemności.
 - Lokalizowanie błędnych konfiguracji sieciowych prowadzących do nieudanych połączeń w sieci.
 
+> [!NOTE]
+> Analiza ruchu teraz obsługuje zbieranie danych dzienników przepływu sieciowej grupy zabezpieczeń o wyższej częstotliwości wynoszącej 10 minut
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -85,7 +87,7 @@ Analizy ruchu można użyć dla sieciowych grup zabezpieczeń w jednym z następ
 * Japonia Zachodnia
 * Administracja USA — Wirginia
 
-## <a name="supported-regions-log-analytics-workspaces"></a>Obsługiwane regiony: Log Analytics obszary robocze
+## <a name="supported-regions-log-analytics-workspaces"></a>Obsługiwane regiony: Obszary robocze usługi Log Analytics
 
 Obszar roboczy Log Analytics musi istnieć w następujących regionach:
 * Kanada Środkowa
@@ -115,7 +117,7 @@ Obszar roboczy Log Analytics musi istnieć w następujących regionach:
 
 Twoje konto musi być członkiem jednej z następujących [wbudowanych ról](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)platformy Azure:
 
-|Model wdrażania   | Role                   |
+|Model wdrożenia   | Role                   |
 |---------          |---------               |
 |Resource Manager   | Właściciel                  |
 |                   | Współautor            |
@@ -181,7 +183,7 @@ Wybierz poniższe opcje, jak pokazano na ilustracji:
 > [!IMPORTANT]
 > Obecnie występuje problem polegający na tym, że [dzienniki przepływu sieciowych grup zabezpieczeń (sieciowej grupy zabezpieczeń)](network-watcher-nsg-flow-logging-overview.md) dla Network Watcher nie są automatycznie usuwane z magazynu obiektów BLOB na podstawie ustawień zasad przechowywania. Jeśli masz istniejące zasady przechowywania inne niż zero, zalecamy okresowe usuwanie obiektów blob magazynu, które przekroczyły okres przechowywania, aby uniknąć naliczania opłat. Aby uzyskać więcej informacji o usuwaniu blogu magazynu dzienników sieciowej grupy zabezpieczeń Flow, zobacz [usuwanie obiektów blob magazynu dzienników usługi sieciowej grupy zabezpieczeń Flow](network-watcher-delete-nsg-flow-log-blobs.md).
 5. Wybierz pozycję *włączone* , aby uzyskać **stan Analiza ruchu**.
-6. Wybierz interwał przetwarzania. W zależności od wybranych dzienników przepływów będą zbierane z konta magazynu i przetwarzane przez Analiza ruchu. Można wybrać interwał przetwarzania co 1 godzinę lub co 10 minut.
+6. Wybierz interwał przetwarzania. W zależności od wybranych dzienników przepływów będą zbierane z konta magazynu i przetwarzane przez Analiza ruchu. Można wybrać interwał przetwarzania co 1 godzinę lub co 10 minut. 
 7. Wybierz istniejący obszar roboczy usługi Log Analytics (OMS) lub wybierz pozycję **Utwórz nowy obszar roboczy** , aby utworzyć nowy. Obszar roboczy Log Analytics jest używany przez Analiza ruchu do przechowywania zagregowanych i indeksowanych danych, które są następnie używane do generowania analizy. Jeśli wybierzesz istniejący obszar roboczy, musi on znajdować się w jednym z [obsługiwanych regionów](#supported-regions-log-analytics-workspaces) i został uaktualniony do nowego języka zapytań. Jeśli nie chcesz uaktualnić istniejącego obszaru roboczego lub nie masz obszaru roboczego w obsługiwanym regionie, Utwórz nowy. Aby uzyskać więcej informacji na temat języków zapytań, zobacz [Azure log Analytics Upgrade to New Search log](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
     Obszar roboczy usługi log Analytics obsługujący rozwiązanie do analizy ruchu i sieciowych grup zabezpieczeń nie muszą znajdować się w tym samym regionie. Na przykład możesz mieć dostęp do analizy ruchu w obszarze roboczym w regionie Europa Zachodnia, a ty możesz mieć sieciowych grup zabezpieczeń w regionach Wschodnie stany USA i zachodnie stany USA. W tym samym obszarze roboczym można skonfigurować wiele sieciowych grup zabezpieczeń.

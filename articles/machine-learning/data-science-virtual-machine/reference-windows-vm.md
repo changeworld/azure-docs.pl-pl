@@ -1,5 +1,5 @@
 ---
-title: 'Informacje ogólne: DSVM systemu Windows'
+title: 'Informacje ogólne: Maszyna DSVM z systemem Windows'
 description: Szczegóły dotyczące narzędzi dostępnych w systemie Windows Data Science VM
 author: gvashishtha
 ms.service: machine-learning
@@ -7,12 +7,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 8ed083ad39c3ace3a0f66a61936974b462ed418f
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: be4397de477891f2a698c9f7dcb131da79479529
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174697"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200018"
 ---
 # <a name="reference-windows-data-science-virtual-machine"></a>Informacje ogólne: Data Science Virtual Machine systemu Windows
 
@@ -132,4 +132,6 @@ Możesz użyć [Instalator platformy Microsoft Web](https://www.microsoft.com/we
 > [!NOTE]
 > W systemie Windows Server 2012 wydanie systemu DSVM i Windows Server 2016 Edition przed 2018 marca domyślne środowisko Anaconda to Python 2,7. Środowisko pomocnicze to Python 3,5, który znajduje się w C:\Anaconda\envs\py35.
 
+## <a name="next-steps"></a>Następne kroki
 
+Masz dodatkowe pytania? Rozważ utworzenie [biletu pomocy technicznej](https://azure.microsoft.com/support/create-ticket/).

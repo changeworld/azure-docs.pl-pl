@@ -1,52 +1,68 @@
 ---
 title: Azure Key Vault zarządzane konto magazynu — wersja programu PowerShell
-description: Funkcja zarządzanego konta magazynu zapewnia niezawodną integrację między Azure Key Vault i kontem usługi Azure Storage.
+description: Funkcja zarządzanego konta magazynu zapewnia bezproblemową integrację między Azure Key Vault i kontem usługi Azure Storage.
 ms.topic: conceptual
 ms.service: key-vault
 author: msmbaldwin
 ms.author: mbaldwin
-manager: barbkess
-ms.date: 03/01/2019
-ms.openlocfilehash: 530f38289afb3fce85bbb025e7b699862eedbadc
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+manager: rkarlin
+ms.date: 09/10/2019
+ms.openlocfilehash: 225d9b715c56e4813a8e26d881c876e7bd498155
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382697"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71204214"
 ---
-# <a name="azure-key-vault-managed-storage-account---powershell"></a>Azure Key Vault zarządzane konto magazynu — PowerShell
+# <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Zarządzanie kluczami konta magazynu przy użyciu Key Vault i Azure PowerShell
 
-> [!NOTE]
-> [Integracja usługi Azure Storage z usługą Azure Active Directory (Azure AD) jest teraz w wersji zapoznawczej](../storage/common/storage-auth-aad.md). Zalecamy używanie usługi Azure AD do uwierzytelniania i autoryzacji, która zapewnia dostęp oparty na tokenach OAuth2 do usługi Azure Storage, podobnie jak Azure Key Vault. Dzięki temu można:
-> - Uwierzytelnianie aplikacji klienckiej przy użyciu tożsamości aplikacji lub użytkownika zamiast poświadczeń konta magazynu. 
-> - Użyj [tożsamości zarządzanej usługi Azure AD](/azure/active-directory/managed-identities-azure-resources/) w przypadku uruchamiania na platformie Azure. Tożsamości zarządzane usuwają potrzebę wszystkich jednocześnie uwierzytelniania klienta i przechowywania poświadczeń w aplikacji lub z aplikacją.
-> - Użyj Access Control opartej na rolach (RBAC) do zarządzania autoryzacją, która jest również obsługiwana przez Key Vault.
-> - Dostęp do konta magazynu w usłudze AAD nie działa w celu uzyskania dostępu do tabel.
+Konto usługi Azure Storage używa poświadczeń składających się z nazwy konta i klucza. Klucz jest generowany automatycznie i służy jako hasło, a nie jako klucz kryptograficzny. Key Vault zarządza kluczami konta magazynu przez przechowywanie ich jako [Key Vault wpisów tajnych](/azure/key-vault/about-keys-secrets-and-certificates#key-vault-secrets). 
+
+Za pomocą funkcji klucza zarządzanego magazynu Key Vault można wyświetlać (synchronizować) klucze za pomocą konta usługi Azure Storage i ponownie generować (obrócić) klucze okresowo. Można zarządzać kluczami zarówno dla kont magazynu, jak i klasycznych kont magazynu.
+
+Korzystając z funkcji zarządzanego klucza konta magazynu, należy rozważyć następujące kwestie:
+
+- Wartości klucza nigdy nie są zwracane w odpowiedzi na obiekt wywołujący.
+- Tylko Key Vault powinny zarządzać kluczami konta magazynu. Nie Zarządzaj kluczami samodzielnie i unikaj zakłócania procesów Key Vault.
+- Tylko jeden obiekt Key Vault powinien zarządzać kluczami konta magazynu. Nie Zezwalaj na zarządzanie kluczami z wielu obiektów.
+- Możesz zażądać Key Vault, aby zarządzać kontem magazynu za pomocą podmiotu zabezpieczeń użytkownika, ale nie z jednostką usługi.
+- Wygeneruj ponownie klucze, używając tylko Key Vault. Nie należy ręcznie generować ponownie kluczy konta magazynu.
+
+Zalecamy korzystanie z integracji usługi Azure Storage z usługą Azure Active Directory (Azure AD), opartą na chmurze firmą Microsoft do zarządzania tożsamościami i dostępem. Integracja z usługą Azure AD jest dostępna dla [obiektów blob i kolejek platformy Azure](../storage/common/storage-auth-aad.md)oraz zapewnia dostęp oparty na tokenach OAuth2 do usługi Azure Storage (podobnie jak Azure Key Vault).
+
+Usługa Azure AD umożliwia uwierzytelnianie aplikacji klienckiej przy użyciu tożsamości aplikacji lub użytkownika, a nie poświadczeń konta magazynu. Możesz użyć [tożsamości zarządzanej usługi Azure AD](/azure/active-directory/managed-identities-azure-resources/) podczas uruchamiania na platformie Azure. Tożsamości zarządzane usuwają potrzebę uwierzytelniania klienta i przechowywania poświadczeń w aplikacji lub w aplikacjach.
+
+Usługa Azure AD używa kontroli dostępu opartej na rolach (RBAC) do zarządzania autoryzacją, która również jest obsługiwana przez Key Vault.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[Konto usługi Azure Storage](/azure/storage/storage-create-storage-account) używa poświadczeń, które składają się z nazwy konta i klucza. Klucz jest generowany automatycznie i służy jako "hasło" zamiast klucza kryptograficznego. Key Vault mogą zarządzać tymi kluczami konta magazynu, przechowując je jako wpisy [tajne Key Vault](/azure/key-vault/about-keys-secrets-and-certificates#key-vault-secrets). 
+## <a name="service-principal-application-id"></a>Identyfikator aplikacji głównej usługi
 
-## <a name="overview"></a>Omówienie
+Dzierżawa usługi Azure AD udostępnia każdą zarejestrowaną aplikację z jednostką [usługi](/azure/active-directory/develop/developer-glossary#service-principal-object). Jednostka usługi służy jako identyfikator aplikacji, który jest używany podczas konfigurowania autoryzacji w celu uzyskania dostępu do innych zasobów platformy Azure za pośrednictwem RBAC.
 
-Funkcja zarządzanego konta magazynu Key Vault wykonuje kilka funkcji zarządzania w Twoim imieniu:
+Key Vault to aplikacja firmy Microsoft, która jest wstępnie zarejestrowana we wszystkich dzierżawach usługi Azure AD. Key Vault jest zarejestrowany w ramach tego samego identyfikatora aplikacji w każdej chmurze platformy Azure.
 
-- Wyświetla listę (synchronizuje) klucze z kontem usługi Azure Storage.
-- Ponownie generuje (obraca) klucze okresowo.
-- Zarządza kluczami dla kont magazynu i klasycznych kont magazynu.
-- Wartości klucza nigdy nie są zwracane w odpowiedzi na obiekt wywołujący.
+| dzierżaw | Chmura | Identyfikator aplikacji |
+| --- | --- | --- |
+| Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
+| Azure AD | Azure — publiczna | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Inne  | Any | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
-W przypadku korzystania z funkcji klucza zarządzanego konta magazynu:
+## <a name="prerequisites"></a>Wymagania wstępne
 
-- **Zezwalaj Key Vault na zarządzanie kluczami konta magazynu.** Nie próbuj zarządzać nimi samodzielnie, ponieważ przeszkadzasz w procesach Key Vault.
-- **Nie Zezwalaj na zarządzanie kluczami konta magazynu przez więcej niż jeden obiekt Key Vault**.
-- **Nie należy ręcznie generować ponownie kluczy konta magazynu**. Zalecamy ponowne wygenerowanie ich za pośrednictwem Key Vault.
+Aby ukończyć ten przewodnik, należy najpierw wykonać następujące czynności:
 
-W poniższym przykładzie pokazano, jak zezwolić Key Vault na zarządzanie kluczami konta magazynu.
+- [Zainstaluj moduł Azure PowerShell](/powershell/azure/install-az-ps?view=azps-2.6.0).
+- [Tworzenie magazynu kluczy](quick-create-powershell.md)
+- [Utwórz konto usługi Azure Storage](../storage/common/storage-quickstart-create-account.md?tabs=azure-powershell). Nazwa konta magazynu musi zawierać tylko małe litery i cyfry. Długość nazwy musi wynosić od 3 do 24 znaków.
+      
 
-## <a name="connect-to-your-azure-account"></a>Nawiąż połączenie z kontem platformy Azure
+## <a name="manage-storage-account-keys"></a>Zarządzanie kluczami konta magazynu
+
+### <a name="connect-to-your-azure-account"></a>Nawiąż połączenie z kontem platformy Azure
 
 Uwierzytelnij sesję programu PowerShell przy użyciu polecenia cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) . 
+
 ```azurepowershell-interactive
 Connect-AzAccount
 ```
@@ -56,31 +72,33 @@ Jeśli masz wiele subskrypcji platformy Azure, możesz je wyświetlić za pomoc�
 Set-AzContext -SubscriptionId <subscriptionId>
 ```
 
-## <a name="authorize-key-vault-to-access-to-your-storage-account"></a>Autoryzuj Key Vault, aby uzyskać dostęp do konta magazynu
+### <a name="set-variables"></a>Ustaw zmienne
 
-> [!IMPORTANT]
-> Dzierżawa usługi Azure AD zapewnia każdej zarejestrowanej aplikacji za pomocą **[nazwy głównej usługi](/azure/active-directory/develop/developer-glossary#service-principal-object)** , która służy jako tożsamość aplikacji. Identyfikator aplikacji nazwy głównej usługi jest używany podczas nadawania autoryzacji IT dostępu do innych zasobów platformy Azure za pośrednictwem kontroli dostępu opartej na rolach (RBAC). Ponieważ Key Vault jest aplikacją firmy Microsoft, jest wstępnie zarejestrowana we wszystkich dzierżawach usługi Azure AD w ramach tego samego identyfikatora aplikacji w ramach każdej chmury platformy Azure:
-> - Dzierżawy usługi Azure AD w chmurze platformy Azure dla instytucji `7e7c393b-45d0-48b1-a35e-2905ddf8183c`rządowych używają identyfikatora aplikacji.
-> - Dzierżawy usługi Azure AD w chmurze publicznej platformy Azure i wszystkie inne korzystają `cfa8b339-82a2-471a-a3c9-0fc0be7a4093`z identyfikatora aplikacji.
+Najpierw Ustaw zmienne, które będą używane przez polecenia cmdlet programu PowerShell w poniższych krokach. Pamiętaj, <YourResourceGroupName>aby zaktualizować symbole zastępcze, <YourKeyVaultName> <YourStorageAccountName>i i ustawić $keyVaultSpAppId na `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` (zgodnie z opisem w [identyfikatorze aplikacji głównej usługi](#service-principal-application-id), powyżej).
 
-Aby Key Vault mógł uzyskać dostęp do kluczy konta magazynu i zarządzać nimi, musisz autoryzować swój dostęp do konta magazynu. Aplikacja Key Vault wymaga uprawnień do *wyświetlania* i ponownego *generowania* kluczy dla konta magazynu. Te uprawnienia są włączane za pomocą wbudowanej [roli usługi operatora kluczy konta magazynu](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)roli RBAC. 
-
-Przypisz tę rolę do jednostki usługi Key Vault, ograniczając zakres do konta magazynu, wykonując poniższe kroki. Pamiętaj `$resourceGroupName`, aby zaktualizować zmienne, `$storageAccountName`, `$storageAccountKey`, i `$keyVaultName` przed uruchomieniem skryptu:
+Będziemy również Azure PowerShell używać poleceń cmdlet [Get-AzContext](/powershell/module/az.accounts/get-azcontext?view=azps-2.6.0) i [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount?view=azps-2.6.0) w celu uzyskania identyfikatora użytkownika i kontekstu konta usługi Azure Storage.
 
 ```azurepowershell-interactive
-# TODO: Update with the resource group where your storage account resides, your storage account name, the name of your active storage account key, and your Key Vault instance name
-$resourceGroupName = "rgContoso"
-$storageAccountName = "sacontoso"
+$resourceGroupName = <YourResourceGroupName>
+$storageAccountName = <YourStorageAccountName>
+$keyVaultName = <YourKeyVaultName>
+$keyVaultSpAppId = "cfa8b339-82a2-471a-a3c9-0fc0be7a4093"
 $storageAccountKey = "key1"
-$keyVaultName = "kvContoso"
-$keyVaultSpAppId = "cfa8b339-82a2-471a-a3c9-0fc0be7a4093" # See "IMPORTANT" block above for information on Key Vault Application IDs
 
-# Get your User Id for later commands
+# Get your User Id
 $userId = (Get-AzContext).Account.Id
 
 # Get a reference to your Azure storage account
 $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName
+```
 
+### <a name="give-key-vault-access-to-your-storage-account"></a>Przyznaj Key Vault dostęp do konta magazynu
+
+Aby Key Vault mógł uzyskać dostęp do kluczy konta magazynu i zarządzać nimi, musisz autoryzować swój dostęp do konta magazynu. Aplikacja Key Vault wymaga uprawnień do *wyświetlania* i ponownego *generowania* kluczy dla konta magazynu. Te uprawnienia są włączane za pomocą wbudowanej [roli usługi operatora kluczy konta magazynu](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)roli RBAC. 
+
+Przypisz tę rolę do jednostki usługi Key Vault, ograniczając zakres do konta magazynu przy użyciu polecenia cmdlet Azure PowerShell [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment?view=azps-2.6.0) .
+
+```azurepowershell-interactive
 # Assign RBAC role "Storage Account Key Operator Service Role" to Key Vault, limiting the access scope to your storage account. For a classic storage account, use "Classic Storage Account Key Operator Service Role." 
 New-AzRoleAssignment -ApplicationId $keyVaultSpAppId -RoleDefinitionName 'Storage Account Key Operator Service Role' -Scope $storageAccount.Id
 ```
@@ -101,12 +119,9 @@ CanDelegate        : False
 
 Jeśli Key Vault został już dodany do roli na koncie magazynu, zostanie wyświetlony komunikat *"przypisanie roli już istnieje".* Porn. Możesz również zweryfikować przypisanie roli przy użyciu strony "kontrola dostępu (IAM)" konta magazynu w Azure Portal.  
 
-## <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>Nadaj kontu użytkownika uprawnienia do zarządzanych kont magazynu
+### <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>Nadaj kontu użytkownika uprawnienia do zarządzanych kont magazynu
 
->[!TIP] 
-> Podobnie jak usługa Azure AD udostępnia nazwę **główną usługi** dla tożsamości aplikacji, **podmiot użytkownika** jest dostarczany dla tożsamości użytkownika. Następnie można uzyskać autoryzację dostępu do Key Vault przy użyciu uprawnień zasad dostępu Key Vault.
-
-Korzystając z tej samej sesji programu PowerShell, zaktualizuj zasady dostępu Key Vault dla zarządzanych kont magazynu. Ten krok dotyczy uprawnień konta magazynu na koncie użytkownika, dzięki czemu można uzyskać dostęp do funkcji zarządzanego konta magazynu: 
+Użyj polecenia cmdlet Azure PowerShell [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy?view=azps-2.6.0) , aby zaktualizować zasady dostępu Key Vault i przyznać uprawnienia konta magazynu dla konta użytkownika.
 
 ```azurepowershell-interactive
 # Give your user principal access to all storage account permissions, on your Key Vault instance
@@ -116,12 +131,13 @@ Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $userId -
 
 Należy pamiętać, że uprawnienia dla kont magazynu nie są dostępne na stronie "zasady dostępu" konta magazynu w Azure Portal.
 
-## <a name="add-a-managed-storage-account-to-your-key-vault-instance"></a>Dodawanie zarządzanego konta magazynu do wystąpienia Key Vault
+### <a name="add-a-managed-storage-account-to-your-key-vault-instance"></a>Dodawanie zarządzanego konta magazynu do wystąpienia Key Vault
 
-Korzystając z tej samej sesji programu PowerShell, Utwórz konto magazynu zarządzanego w wystąpieniu Key Vault. `-DisableAutoRegenerateKey` Przełącznik określa, aby nie generować ponownie kluczy konta magazynu.
+Użyj Azure PowerShell [Add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) polecenia cmdlet, aby utworzyć zarządzane konto magazynu w wystąpieniu Key Vault. `-DisableAutoRegenerateKey` Przełącznik określa, aby nie generować ponownie kluczy konta magazynu.
 
 ```azurepowershell-interactive
 # Add your storage account to your Key Vault's managed storage accounts
+
 Add-AzKeyVaultManagedStorageAccount -VaultName $keyVaultName -AccountName $storageAccountName -AccountResourceId $storageAccount.Id -ActiveKeyName $storageAccountKey -DisableAutoRegenerateKey
 ```
 
@@ -143,10 +159,11 @@ Tags                :
 
 ### <a name="enable-key-regeneration"></a>Włącz ponowne generowanie klucza
 
-Jeśli chcesz, aby Key Vault okresowo generować ponownie klucze konta magazynu, możesz ustawić okres regeneracji. W poniższym przykładzie ustawimy okres regeneracji o trzy dni. Po upływie trzech dni Key Vault ponownie wygeneruje element "klucz2" i zamianę aktywnego klucza z "klucz2" na "Klucz1".
+Jeśli chcesz, aby Key Vault okresowo generować ponownie klucze konta magazynu, możesz użyć polecenia cmdlet [Add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) Azure PowerShell w celu ustawienia okresu regeneracji. W tym przykładzie ustawimy okres regeneracji o trzy dni. Po upływie trzech dni Key Vault ponownie wygeneruje element "klucz2" i zamianę aktywnego klucza z "klucz2" na "Klucz1".
 
 ```azurepowershell-interactive
 $regenPeriod = [System.Timespan]::FromDays(3)
+
 Add-AzKeyVaultManagedStorageAccount -VaultName $keyVaultName -AccountName $storageAccountName -AccountResourceId $storageAccount.Id -ActiveKeyName $storageAccountKey -RegenerationPeriod $regenPeriod
 ```
 
@@ -165,6 +182,85 @@ Created             : 11/19/2018 11:54:47 PM
 Updated             : 11/19/2018 11:54:47 PM
 Tags                : 
 ```
+
+## <a name="shared-access-signature-tokens"></a>Tokeny sygnatury dostępu współdzielonego
+
+Możesz również poproszenie Key Vault o generowanie tokenów sygnatury dostępu współdzielonego. Sygnatury dostępu współdzielonego zapewnia delegowany dostęp do zasobów na koncie magazynu. Możesz udzielić klientom dostępu do zasobów na koncie magazynu bez udostępniania kluczy konta. Sygnatura dostępu współdzielonego zapewnia bezpieczny sposób udostępniania zasobów magazynu bez naruszania kluczy konta.
+
+Polecenia w tej sekcji pełnią następujące czynności:
+
+- Ustaw definicję sygnatury dostępu współdzielonego konta. 
+- Utwórz token sygnatury dostępu współdzielonego konta dla usług obiektów blob, plików, tabel i kolejek. Token jest tworzony dla usług, kontenerów i obiektów typu zasób. Token jest tworzony ze wszystkimi uprawnieniami, za pośrednictwem protokołu HTTPS i z określonymi datami rozpoczęcia i zakończenia.
+- Ustaw Key Vault zarządzaną definicję sygnatury dostępu współdzielonego magazynu w magazynie. Definicja zawiera identyfikator URI szablonu utworzonego tokenu sygnatury dostępu współdzielonego. Definicja zawiera typ `account` sygnatury dostępu współdzielonego i jest ważna przez N dni.
+- Sprawdź, czy sygnatura dostępu współdzielonego została zapisana w magazynie kluczy jako wpis tajny.
+- 
+### <a name="set-variables"></a>Ustaw zmienne
+
+Najpierw Ustaw zmienne, które będą używane przez polecenia cmdlet programu PowerShell w poniższych krokach. Pamiętaj, aby zaktualizować <YourStorageAccountName> symbole zastępcze i. <YourKeyVaultName>
+
+Użyjemy również Azure PowerShell polecenia cmdlet [New-AzStorageContext](/powershell/module/az.storage/new-azstoragecontext?view=azps-2.6.0) , aby uzyskać kontekst konta usługi Azure Storage.
+
+```azurepowershell-interactive
+$storageAccountName = <YourStorageAccountName>
+$keyVaultName = <YourKeyVaultName>
+
+$storageContext = New-AzStorageContext -StorageAccountName $storageAccountName -Protocol Https -StorageAccountKey Key1
+```
+
+### <a name="create-a-shared-access-signature-token"></a>Tworzenie tokenu sygnatury dostępu współdzielonego
+
+Utwórz definicję sygnatury dostępu współdzielonego za pomocą poleceń cmdlet Azure PowerShell [New-AzStorageAccountSASToken](/powershell/module/az.storage/new-azstorageaccountsastoken?view=azps-2.6.0) .
+ 
+```azurepowershell-interactive
+$start = [System.DateTime]::Now.AddDays(-1)
+$end = [System.DateTime]::Now.AddMonths(1)
+
+$sasToken = New-AzStorageAccountSasToken -Service blob,file,Table,Queue -ResourceType Service,Container,Object -Permission "racwdlup" -Protocol HttpsOnly -StartTime $start -ExpiryTime $end -Context $storageContext
+```
+Wartość $sasToken będzie wyglądać podobnie do tego.
+
+```console
+?sv=2018-11-09&sig=5GWqHFkEOtM7W9alOgoXSCOJO%2B55qJr4J7tHQjCId9S%3D&spr=https&st=2019-09-18T18%3A25%3A00Z&se=2019-10-19T18%3A25%3A00Z&srt=sco&ss=bfqt&sp=racupwdl
+```
+
+### <a name="generate-a-shared-access-signature-definition"></a>Generowanie definicji sygnatury dostępu współdzielonego
+
+Za pomocą polecenia cmdlet Azure PowerShell [Set-AzKeyVaultManagedStorageSasDefinition](/powershell/module/az.keyvault/set-azkeyvaultmanagedstoragesasdefinition?view=azps-2.6.0) Utwórz definicję sygnatury dostępu współdzielonego.  Możesz podać wybraną nazwę `-Name` parametru.
+
+```azurepowershell-interactive
+Set-AzKeyVaultManagedStorageSasDefinition -AccountName $storageAccountName -VaultName $keyVaultName -Name <YourSASDefinitionName> -TemplateUri $sasToken -SasType 'account' -ValidityPeriod ([System.Timespan]::FromDays(30))
+```
+
+### <a name="verify-the-shared-access-signature-definition"></a>Weryfikowanie definicji sygnatury dostępu współdzielonego
+
+Możesz sprawdzić, czy definicja sygnatury dostępu współdzielonego została zapisana w magazynie kluczy za pomocą polecenia cmdlet Azure PowerShell [Get-AzKeyVaultSecret](/powershell/module/az.keyvault/get-azkeyvaultsecret?view=azps-2.6.0) .
+
+Najpierw Znajdź definicję sygnatury dostępu współdzielonego w magazynie kluczy.
+
+```azurepowershell-interactive
+Get-AzKeyVaultSecret -vault-name <YourKeyVaultName>
+```
+
+Wpis tajny odpowiadający definicji sygnatury dostępu współdzielonego będzie miał następujące właściwości:
+
+```console
+Vault Name   : <YourKeyVaultName>
+Name         : <SecretName>
+...
+Content Type : application/vnd.ms-sastoken-storage
+Tags         :
+```
+
+Teraz można użyć polecenia cmdlet [Get-AzKeyVaultSecret](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) i właściwości Secret `Name` , aby wyświetlić zawartość tego klucza tajnego.
+
+```azurepowershell-interactive
+$secret = Get-AzKeyVaultSecret -VaultName <YourKeyVaultName> -Name <SecretName>
+
+Write-Host $secret.SecretValueText
+```
+
+Dane wyjściowe tego polecenia będą zawierać ciąg definicji sygnatury dostępu współdzielonego.
+
 
 ## <a name="next-steps"></a>Następne kroki
 

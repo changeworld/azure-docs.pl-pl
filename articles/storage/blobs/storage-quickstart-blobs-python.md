@@ -3,20 +3,20 @@ title: 'Azure: Szybki start — tworzenie obiektu blob w magazynie obiektów prz
 description: Ten przewodnik Szybki start przedstawia tworzenie konta magazynu i kontenera w magazynie obiektów (blob). Następnie przy użyciu biblioteki klienta języka Python przekażesz obiekt blob do usługi Azure Storage, pobierzesz obiekt blob i wyświetlisz listę obiektów blob w kontenerze.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/29/2019
+ms.date: 09/11/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 059e41b744ad92cdec9057e4a17f470b5b769c62
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 4d371026b932a0870798a32b3102102836962b78
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142966"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203922"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Szybki start: przekazywanie i pobieranie obiektów blob oraz wyświetlanie ich listy za pomocą języka Python
 
-W tym przewodniku szybki start dowiesz się, jak za pomocą języka Python przekazywać, pobierać i wyświetlać listę blokowych obiektów BLOB w kontenerze w usłudze Azure Blob Storage. Obiekty blob są po prostu obiektami, które mogą przechowywać dowolną ilość danych tekstowych lub binarnych (takich jak obrazy, dokumenty, multimedia strumieniowe, dane archiwalne itp.), a także różnią się w usłudze Azure Storage z udziałów plików, tabel bez schematu i kolejek komunikatów. (Aby uzyskać więcej informacji, zobacz [wprowadzenie do usługi Azure Storage](/azure/storage/common/storage-introduction)).
+W tym przewodniku szybki start użyjesz języka Python, aby przekazywać, pobierać i wyświetlać listę blokowych obiektów BLOB w kontenerze w usłudze Azure Blob Storage. Obiekty blob są po prostu obiektami, które mogą przechowywać duże ilości danych tekstowych lub binarnych, w tym obrazy, dokumenty, multimedia strumieniowe i dane archiwalne. Obiekty blob w usłudze Azure Storage różnią się od udziałów plików, tabel bez schematu i kolejek komunikatów.  Aby uzyskać więcej informacji, zobacz [wprowadzenie do usługi Azure Storage](/azure/storage/common/storage-introduction).
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -27,76 +27,94 @@ W tym przewodniku szybki start dowiesz się, jak za pomocą języka Python przek
 Upewnij się, że masz zainstalowane następujące dodatkowe elementy wymagane wstępnie:
 
 * [Python](https://www.python.org/downloads/)
+
 * [Zestaw SDK usługi Azure Storage dla języka Python](https://github.com/Azure/azure-sdk-for-python)
 
 ## <a name="download-the-sample-application"></a>Pobieranie przykładowej aplikacji
+
 [Przykładowa aplikacja](https://github.com/Azure-Samples/storage-blobs-python-quickstart.git) używana w tym przewodniku Szybki start to podstawowa aplikacja w języku Python.  
 
-Użyj narzędzia [git](https://git-scm.com/), aby pobrać kopię tej aplikacji do swojego środowiska projektowego. 
+Użyj następującego polecenia [git](https://git-scm.com/) , aby pobrać aplikację do środowiska deweloperskiego. 
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-blobs-python-quickstart.git 
 ```
 
-To polecenie klonuje repozytorium *Azure-Samples/storage-blobs-python-quickstart* do folderu lokalnego narzędzia git. Aby uruchomić program w języku Python, otwórz plik *example.py* w folderze głównym repozytorium.  
+Aby przejrzeć program Python, Otwórz plik *example.py* w katalogu głównym repozytorium.  
 
 [!INCLUDE [storage-copy-account-key-portal](../../../includes/storage-copy-account-key-portal.md)]
 
 ## <a name="configure-your-storage-connection-string"></a>Konfigurowanie parametrów połączenia magazynu
-W aplikacji podaj nazwę konta magazynu i klucz konta, aby utworzyć obiekt `BlockBlobService`. Otwórz plik *example.py* w Eksploratorze rozwiązań w środowisku IDE. Zastąp wartości `accountname` i `accountkey` nazwą konta i kluczem. 
 
-```python
-block_blob_service = BlockBlobService(
-    account_name='accountname', account_key='accountkey')
-```
+W aplikacji podaj nazwę konta magazynu i klucz konta, aby utworzyć obiekt `BlockBlobService`.
+
+1. Otwórz plik *example.py* w Eksploratorze rozwiązań w środowisku IDE.
+
+1. Zastąp wartości `accountkey`inazwą konta magazynu i kluczem: `accountname`
+
+    ```python
+    block_blob_service = BlockBlobService(
+        account_name='accountname', account_key='accountkey')
+    ```
+
+1. Zapisz i zamknij plik.
 
 ## <a name="run-the-sample"></a>Uruchamianie aplikacji przykładowej
-Ta aplikacja przykładowa tworzy plik testowy w folderze *Documents*. Aplikacja przykładowa przesyła plik testowy do usługi Blob Storage, wyświetla listę obiektów blob w kontenerze i pobiera plik z nową nazwą. 
 
-Najpierw zainstaluj zależności, uruchamiając polecenie `pip install`:
+Przykładowy program tworzy plik testowy w folderze *dokumenty* , przekazuje plik do magazynu obiektów blob, wyświetla listę obiektów BLOB w pliku i pobiera plik z nową nazwą.
 
-```python
+1. Zainstaluj zależności:
+
+    ```console
     pip install azure-storage-blob
-```
+    ```
 
-Następnie uruchom przykład. Zostaną wyświetlone komunikaty podobne do następujących danych wyjściowych:
+1. Przejdź do przykładowej aplikacji:
+
+    ```console
+    cd storage-blobs-python-quickstart
+    ```
+
+1. Uruchom przykład:
+
+    ```console
+    python example.py
+    ```
+
+    Zostaną wyświetlone komunikaty podobne do następujących danych wyjściowych:
   
-```output
-Temp file = C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078.txt
+    ```output
+    Temp file = C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078.txt
 
-Uploading to Blob storage as blobQuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078.txt
+    Uploading to Blob storage as blobQuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078.txt
 
-List blobs in the container
-         Blob name: QuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078.txt
+    List blobs in the container
+             Blob name: QuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078.txt
 
-Downloading blob to C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078_DOWNLOADED.txt
-```
-Przed kontynuowaniem sprawdź, czy w folderze *Documents* znajdują się te dwa pliki. Możesz je otworzyć i sprawdzić, czy są takie same.
+    Downloading blob to     C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078_DOWNLOADED.txt
+    ```
 
-Możesz również wyświetlić pliki w usłudze Blob Storage za pomocą narzędzia takiego jak [Eksplorator usługi Azure Storage](https://storageexplorer.com). Eksplorator usługi Azure Storage to darmowe narzędzie międzyplatformowe, które umożliwia dostęp do informacji na koncie magazynu. 
+1. Przed kontynuowaniem przejdź do folderu *dokumenty* i sprawdź, czy są dwa pliki.
 
-Po zweryfikowaniu plików naciśnij dowolny klawisz, aby zakończyć demonstrację i usunąć pliki testowe. Teraz, gdy wiesz już, jak działa aplikacja przykładowa, otwórz plik *example.py* i przyjrzyj się kodowi. 
+    * *QuickStart_\<uniwersalny — unikatowy identyfikator\>*
+    * *QuickStart_\<uniwersalnie unikatowy identyfikator\>_DOWNLOADED*
 
-## <a name="understand-the-sample-code"></a>Omówienie przykładowego kodu
+1. Możesz je otworzyć i sprawdzić, czy są takie same.
 
-Omówmy teraz przykładowy kod, aby wyjaśnić, w jaki sposób działa.
+    Możesz również użyć narzędzia, takiego jak [Eksplorator usługi Azure Storage](https://storageexplorer.com). Jest to dobre do wyświetlania plików w usłudze BLOB Storage. Eksplorator usługi Azure Storage to bezpłatne narzędzie Międzyplatformowe, które pozwala uzyskać dostęp do informacji o koncie magazynu. 
+
+1. Po przeszukaniu plików naciśnij dowolny klawisz, aby zakończyć próbkę i usunąć pliki testowe.
+
+## <a name="learn-about-the-sample-code"></a>Dowiedz się więcej na temat przykładowego kodu
+
+Teraz, gdy wiesz już, jak działa aplikacja przykładowa, otwórz plik *example.py* i przyjrzyj się kodowi.
 
 ### <a name="get-references-to-the-storage-objects"></a>Pobieranie odwołań do obiektów magazynu
-Najpierw należy utworzyć odwołania do obiektów używane w celu uzyskania dostępu do magazynu obiektów blob i zarządzania nim. Te obiekty są powiązane i każdy obiekt jest używany przez kolejny na liście.
 
-* Utwórz wystąpienie obiektu **BlockBlobService**, który wskazuje usługę Blob service na koncie magazynu. 
-
-* Utwórz wystąpienie obiektu **CloudBlobContainer** reprezentujące kontener, do którego uzyskujesz dostęp. Kontenery są używane do porządkowania obiektów blob w ten sam sposób, w jaki foldery na komputerze są używane do porządkowania plików.
-
-Gdy istnieje już kontener CloudBlobContainer, utwórz wystąpienie obiektu **CloudBlockBlob** wskazujące na konkretny obiekt blob, którego chcesz użyć. Następnie możesz przekazywać, pobierać i kopiować obiekt blob zgodnie z potrzebami.
-
-> [!IMPORTANT]
-> Nazwy kontenerów muszą być zapisane małymi literami. Aby uzyskać dodatkowe informacje o regułach nazewnictwa kontenerów i obiektów blob, zobacz [Nazewnictwo i odwołania do kontenerów, obiektów blob i metadanych](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
-
-Ta sekcja poświęcona jest tworzeniu wystąpień obiektów, tworzeniu nowego kontenera, a następnie konfigurowaniu uprawnień w kontenerze, tak aby obiekty blob były publiczne. Kontener nazywa się **quickstartblobs**. 
+Ta sekcja poświęcona jest tworzeniu wystąpień obiektów, tworzeniu nowego kontenera, a następnie konfigurowaniu uprawnień w kontenerze, tak aby obiekty blob były publiczne. Nastąpi wywołanie kontenera `quickstartblobs`. 
 
 ```python
-# Create the BlockBlockService that is used to call the Blob service for the storage account.
+# Create the BlockBlockService that the system uses to call the Blob service for the storage account.
 block_blob_service = BlockBlobService(
     account_name='accountname', account_key='accountkey')
 
@@ -108,13 +126,25 @@ block_blob_service.create_container(container_name)
 block_blob_service.set_container_acl(
     container_name, public_access=PublicAccess.Container)
 ```
+
+Najpierw należy utworzyć odwołania do obiektów używane w celu uzyskania dostępu do magazynu obiektów blob i zarządzania nim. Te obiekty są powiązane i każdy obiekt jest używany przez kolejny na liście.
+
+* Utwórz wystąpienie obiektu **BlockBlobService**, który wskazuje usługę Blob service na koncie magazynu. 
+
+* Utwórz wystąpienie obiektu **CloudBlobContainer** reprezentujące kontener, do którego uzyskujesz dostęp. System używa kontenerów do organizowania obiektów BLOB w taki sposób, jak foldery na komputerze są używane do organizowania plików.
+
+Gdy istnieje już kontener CloudBlobContainer, utwórz wystąpienie obiektu **CloudBlockBlob** wskazujące na konkretny obiekt blob, którego chcesz użyć. Następnie możesz przekazywać, pobierać i kopiować obiekt blob zgodnie z potrzebami.
+
+> [!IMPORTANT]
+> Nazwy kontenerów muszą być zapisane małymi literami. Aby uzyskać dodatkowe informacje o regułach nazewnictwa kontenerów i obiektów blob, zobacz [Naming and Referencing Containers, Blobs, and Metadata (Nazewnictwo i odwoływanie się do kontenerów, obiektów blob i metadanych)](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
+
 ### <a name="upload-blobs-to-the-container"></a>Przekazywanie obiektów blob do kontenera
 
-Usługa Blob Storage obsługuje blokowe, uzupełnialne i stronicowe obiekty blob. Blokowe obiekty blob są używane najczęściej i dlatego zostały użyte w tym przewodniku Szybki start.  
+Usługa Blob Storage obsługuje blokowe, uzupełnialne i stronicowe obiekty blob. Blokowe obiekty blob mogą mieć rozmiar nawet do 4,7 TB i mogą to być dowolne pliki, od arkuszy kalkulacyjnych programu Excel po duże pliki wideo. Możesz użyć Dołącz obiekty blob do rejestrowania, gdy chcesz zapisać w pliku, a następnie kontynuować dodawanie dodatkowych informacji. Stronicowe obiekty blob są używane głównie dla plików wirtualnych dysków twardych (VHD), które są zapleczem infrastruktury jako usługi (maszyny wirtualne IaaS). Blokowe obiekty blob są używane najczęściej. Ten przewodnik Szybki Start używa blokowych obiektów BLOB.
 
 Aby przekazać plik do obiektu blob, uzyskaj pełną ścieżkę pliku, łącząc nazwę katalogu i nazwę pliku na dysku lokalnym. Następnie możesz przekazać plik do określonej ścieżki przy użyciu metody `create_blob_from_path`. 
 
-Przykładowy kod tworzy plik lokalny do użycia podczas przekazywania i pobierania, przechowujący plik do przekazania jako *full_path_to_file* i nazwę obiektu BLOB jako *local_file_name*. Następujący kod przykładowy przekazuje plik do kontenera o nazwie **quickstartblobs**.
+Przykładowy kod tworzy plik lokalny, którego system używa do przekazywania i pobierania, przechowując plik, przekazywany przez system jako *full_path_to_file* i nazwę obiektu BLOB jako *local_file_name*. Ten przykład przekazuje plik do kontenera o nazwie `quickstartblobs`:
 
 ```python
 # Create a file in Documents to test the upload and download.
@@ -137,11 +167,9 @@ block_blob_service.create_blob_from_path(
 
 Istnieje kilka metod przekazywania, których można użyć z usługą Blob Storage. Na przykład w przypadku strumienia pamięci możesz użyć metody `create_blob_from_stream` zamiast metody `create_blob_from_path`. 
 
-Blokowe obiekty blob mogą mieć rozmiar nawet do 4,7 TB i mogą to być dowolne pliki, od arkuszy kalkulacyjnych programu Excel po duże pliki wideo. Stronicowe obiekty blob są używane głównie na potrzeby plików VHD służących do obsługi maszyn wirtualnych usługi IaaS. Uzupełnialne obiekty blob są używane do rejestrowania, na przykład w sytuacji, w której konieczny jest zapis do pliku, a następnie dodawanie kolejnych informacji. Większość obiektów przechowywanych w usłudze Blob Storage to blokowe obiekty blob.
-
 ### <a name="list-the-blobs-in-a-container"></a>Wyświetlanie listy obiektów blob w kontenerze
 
-Pobierz listę plików w kontenerze za pomocą metody `list_blobs`. Ta metoda zwraca generator. Poniższy kod umożliwia pobranie listy obiektów blob, a następnie przetwarza je w pętli, wyświetlając nazwy obiektów blob odnalezionych w kontenerze.  
+Poniższy kod tworzy `generator` `list_blobs` dla metody. Kod przechodzi przez listę obiektów BLOB w kontenerze i drukuje ich nazwy do konsoli programu.
 
 ```python
 # List the blobs in the container.
@@ -153,7 +181,9 @@ for blob in generator:
 
 ### <a name="download-the-blobs"></a>Pobieranie obiektów blob
 
-Pobierz obiekty blob na dysk lokalny przy użyciu `get_blob_to_path` metody. Poniższy kod pozwala pobrać obiekt blob przekazany w poprzedniej sekcji. Ciąg *_DOWNLOADED* jest dodawany jako sufiks do nazwy obiektu blob, co pozwala zobaczyć oba pliki na dysku lokalnym. 
+
+Pobierz obiekty blob na dysk lokalny przy użyciu `get_blob_to_path` metody.
+Poniższy kod pobiera wcześniej przekazany obiekt BLOB. System dołącza *_DOWNLOADED* do nazwy obiektu BLOB, aby można było zobaczyć oba pliki na dysku lokalnym.
 
 ```python
 # Download the blob(s).
@@ -174,9 +204,10 @@ block_blob_service.delete_container(container_name)
 os.remove(full_path_to_file)
 os.remove(full_path_to_file2)
 ```
+
 ## <a name="resources-for-developing-python-applications-with-blobs"></a>Zasoby używane do tworzenia aplikacji Python z obiektami blob
 
-Aby uzyskać dodatkowe informacje dotyczące tworzenia aplikacji w języku Python z magazynem obiektów blob, zapoznaj się z następującymi zasobami dodatkowymi:
+Aby uzyskać więcej informacji na temat programowania w języku Python za pomocą usługi BLOB Storage, zobacz następujące dodatkowe zasoby:
 
 ### <a name="binaries-and-source-code"></a>Pliki binarne i kod źródłowy
 
@@ -184,14 +215,11 @@ Aby uzyskać dodatkowe informacje dotyczące tworzenia aplikacji w języku Pytho
 
 ### <a name="client-library-reference-and-samples"></a>Dokumentacja i przykłady dotyczące biblioteka klienta
 
-- Aby uzyskać więcej informacji na temat biblioteki klienta Python, zapoznaj się z [dokumentacją interfejsu API języka Python](https://docs.microsoft.com/python/api/overview/azure/storage).
+- Aby uzyskać więcej informacji na temat biblioteki klienta języka Python, zobacz [biblioteki usługi Azure Storage dla języka Python](https://docs.microsoft.com/python/api/overview/azure/storage).
 - Zapoznaj się z [przykładami magazynu Blob Storage](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=python&term=blob) napisanymi przy użyciu biblioteki klienta Python.
 
 ## <a name="next-steps"></a>Następne kroki
  
-W tym przewodniku Szybki start przedstawiono metodę transferowania plików między dyskiem lokalnym i usługą Azure Blob Storage przy użyciu języka Python. Aby dowiedzieć się więcej na temat pracy z usługą Blob Storage, przejdź do instrukcji dotyczących magazynu obiektów blob.
+W tym przewodniku Szybki start przedstawiono metodę transferowania plików między dyskiem lokalnym i usługą Azure Blob Storage przy użyciu języka Python. 
 
-> [!div class="nextstepaction"]
-> [Instrukcje: Operacje wykonywane w usłudze Blob Storage](./storage-python-how-to-use-blob-storage.md)
- 
-Aby uzyskać więcej informacji na temat Eksploratora usługi Storage i obiektów blob, zapoznaj się artykułem [Manage Azure Blob storage resources with Storage Explorer](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) (Zarządzanie zasobami usługi Azure Blob Storage za pomocą Eksploratora usługi Microsoft Azure Storage).
+Aby uzyskać więcej informacji na temat Eksplorator usługi Storage i obiektów blob, zobacz [Zarządzanie zasobami usługi Azure Blob Storage za pomocą usługi Eksplorator usługi Storage](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).

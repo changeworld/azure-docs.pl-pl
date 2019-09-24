@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 09/19/2019
 ms.author: diberry
-ms.openlocfilehash: ee17e204082389db19e1ebe463352a40d7ecd5ae
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: e2af5cb193653736a0d75b4194e09d42282d2fa6
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155252"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203786"
 ---
 # <a name="what-is-personalizer"></a>Co to jest usługa Personalizacja?
 
@@ -53,7 +53,7 @@ Na przykład aplikacja kliencka może dodać personalizację do:
 * Wybierz odpowiedź bot rozmowy, aby wyjaśnić intencję użytkownika lub zasugerować akcję.
 * Ustalanie priorytetów sugestii, jakie użytkownik powinien wykonać w następnym kroku w procesie biznesowym.
 
-Program personalizujer nie jest usługą do utrwalania informacji o profilu użytkownika i zarządzania nimi, a także do rejestrowania preferencji lub historii poszczególnych użytkowników. Personalizacja uczy się od funkcji poszczególnych interakcji w akcji, a kontekst jeden model, który może uzyskać maksymalne nagrody w przypadku wystąpienia podobnych funkcji. 
+Program personalizujer nie jest usługą do utrwalania informacji o profilu użytkownika i zarządzania nimi, a także do rejestrowania preferencji lub historii poszczególnych użytkowników. Personalizacja uczy się od funkcji każdej interakcji w akcji kontekstu w jednym modelu, który może uzyskać maksymalne nagrody w przypadku wystąpienia podobnych funkcji. 
 
 ## <a name="personalization-for-developers"></a>Personalizacja dla deweloperów
 

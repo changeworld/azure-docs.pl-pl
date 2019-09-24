@@ -7,12 +7,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/13/2019
-ms.openlocfilehash: 34aaae23b834ec1fb9e071f31c6d8e94c9c7dd0a
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 1761673198b3d8ffc3740d64f525c9e70bda9e3e
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170798"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71204186"
 ---
 # <a name="quickstart-set-up-a-centos-linux-data-science-virtual-machine-in-azure"></a>Szybki start: Konfigurowanie Data Science Virtual Machine CentOS (Linux) na platformie Azure
 
@@ -33,7 +33,7 @@ Poniżej przedstawiono kroki, które należy wykonać, aby utworzyć wystąpieni
 
 1. W następnym oknie wybierz pozycję **Utwórz**.
 
-    ![Kreator tworzenia maszyny wirtualnej](./media/linux-dsvm-intro/create-centos.png)
+    [![](media/linux-dsvm-intro/create-centos.png "Przycisk służący do tworzenia maszyny CentOS")](media/linux-dsvm-intro/create-centos-expanded.png#lightbox)
 
 1. Należy przekierować do bloku "Tworzenie maszyny wirtualnej".
    

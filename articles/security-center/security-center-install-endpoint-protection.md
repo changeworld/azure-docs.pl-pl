@@ -3,9 +3,8 @@ title: Zarządzanie problemami z programem Endpoint Protection w Azure Security 
 description: Dowiedz się, jak zarządzać problemami programu Endpoint Protection w Azure Security Center.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 1599ad5f-d810-421d-aafc-892e831b403f
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2019
-ms.author: rkarlin
-ms.openlocfilehash: 58a220192d6a02c6ad66094e8421405578a82a01
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.author: memildin
+ms.openlocfilehash: b1bcce1e94a64253986ad9b1fd77874ba0a39839
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231300"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202075"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Zarządzanie problemami z programem Endpoint Protection przy użyciu Azure Security Center
 Azure Security Center monitoruje stan ochrony przed złośliwym kodem i raportuje ją w bloku problemy z programem Endpoint Protection. Security Center wyróżnia problemy, takie jak wykryte zagrożenia i niewystarczająca ochrona, które mogą sprawić, że maszyny wirtualne i komputery są narażone na ataki chroniące przed złośliwym kodem. Korzystając z informacji w obszarze **problemy z programem Endpoint Protection**, można zidentyfikować plan pozwalający rozwiązać wszelkie zidentyfikowane problemy.

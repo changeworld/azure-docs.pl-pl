@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/23/2018
 ms.author: chackdan
-ms.openlocfilehash: f33b25112b5c4ee77f1f7d2a419ffb8e926a27d9
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: f929ca1cd0fe6f2a94864ae3eb4df28e7b1927db
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501360"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200463"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Typy węzłów usługi Azure Service Fabric i zestawy skalowania maszyn wirtualnych
 [Zestawy skalowania maszyn wirtualnych](/azure/virtual-machine-scale-sets) to zasób obliczeniowy platformy Azure. Zestawy skalowania umożliwiają wdrażanie kolekcji maszyn wirtualnych jako zestawu i zarządzanie nimi. Każdy typ węzła zdefiniowany w klastrze Service Fabric platformy Azure konfiguruje oddzielną skalę.  Środowisko uruchomieniowe Service Fabric zainstalowane na każdej maszynie wirtualnej w zestawie skalowania za pomocą rozszerzenia maszyny wirtualnej Microsoft. Azure. servicefabric. Można niezależnie skalować każdy typ węzła w górę lub w dół, zmieniać jednostkę SKU systemu operacyjnego działającą w każdym węźle klastra, mieć otwarte różne zestawy portów i korzystać z różnych metryk pojemności.
@@ -78,7 +78,7 @@ Poniżej przedstawiono opisy właściwości:
 | **Nazwa** | **Dozwolone wartości** | ** --- ** | **Wskazówki lub Krótki opis** |
 | --- | --- | --- | --- |
 | name | string | --- | Unikatowa nazwa rozszerzenia |
-| type | "ServiceFabricLinuxNode" lub "ServiceFabricWindowsNode | --- | Identyfikuje Service Fabric systemu operacyjnego |
+| type | "ServiceFabricLinuxNode" lub "ServiceFabricWindowsNode" | --- | Identyfikuje Service Fabric systemu operacyjnego |
 | autoUpgradeMinorVersion | true lub false | --- | Włącz autouaktualnienie wersji pomocniczych w środowisku uruchomieniowym SF |
 | publisher | Microsoft.Azure.ServiceFabric | --- | Nazwa wydawcy Service Fabricego w zakresie |
 | clusterEndpont | string | --- | URI: PORT do punktu końcowego zarządzania |

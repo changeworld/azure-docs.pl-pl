@@ -3,23 +3,19 @@ title: Integracja produktów zabezpieczeń platformy Azure w Azure Security Cent
 description: W tym temacie przedstawiono produkty zabezpieczeń platformy Azure, które zostały zintegrowane z Azure Security Center.
 services: security-center
 documentationcenter: na
-author: monhaber
+author: memildin
 manager: rkarlin
-editor: ''
 ms.assetid: ad4b0373-08ee-46ca-a573-638ed93a647c
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 7/02/2019
-ms.author: v-mohabe
-ms.openlocfilehash: beac7d08a973dd8dc7e450840669bfd5687e76ed
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.date: 07/02/2019
+ms.author: memildin
+ms.openlocfilehash: 6560db7e2f1cb363e0b8ca7af3a08f6babd9b36b
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013304"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202415"
 ---
 # <a name="integration-of-azure-security-products-in-azure-security-center"></a>Integracja produktów zabezpieczeń platformy Azure w Azure Security Center
 

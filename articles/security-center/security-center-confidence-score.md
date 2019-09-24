@@ -1,11 +1,10 @@
 ---
-title: Współczynnik ufności w usłudze Azure Security Center | Dokumentacja firmy Microsoft
-description: " Dowiedz się, jak pracować z oceną zaufania usługi Azure Security Center. "
+title: Wynik pewności w Azure Security Center | Microsoft Docs
+description: " Dowiedz się, jak korzystać z Azure Security Centerego oceny ufności. "
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: e88198f8-2e16-409d-a0b0-a62e68c2f999
 ms.service: security-center
 ms.devlang: na
@@ -13,45 +12,45 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2018
-ms.author: rkarlin
-ms.openlocfilehash: 64bab5c1b99720eecb189834d7a11802cf919ca3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: memildin
+ms.openlocfilehash: 0f0380ca4a285d9cb4a8472a40c77130a8f63035
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60916596"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202376"
 ---
 # <a name="alert-confidence-score"></a>Współczynnik ufności alertu 
 
-Usługa Azure Security Center zapewnia wgląd w zasoby, których uruchamianie na platformie Azure, a ostrzega, gdy wykryje potencjalne problemy. Liczby alertów może być wyzwaniem dla zespołu operacji zabezpieczeń do indywidualnego adresowania i staje się niezbędne do określenia priorytetów, który umożliwia generowanie alertów do badania. Badanie alertów mogą być złożone i czasochłonne, a w rezultacie niektóre alerty są ignorowane.
+Azure Security Center zapewnia wgląd w zasoby działające na platformie Azure i ostrzega o wykryciu potencjalnych problemów. Liczba alertów może być wyzwaniem dla zespołu operacji zabezpieczeń na indywidualnym adresie i konieczne jest określenie priorytetów, które alerty należy zbadać. Badanie alertów może być złożone i czasochłonne, a w związku z tym niektóre alerty są ignorowane.
 
-Współczynnik ufności w usłudze Security Center może pomóc w klasyfikacji Twojego zespołu i ustalanie priorytetu alertów. Usługa Security Center automatycznie stosuje najlepsze rozwiązania w branży, inteligentne algorytmy i procesy używane przez analityków, aby określić, czy zagrożenie jest uzasadnione i udostępniają Ci istotne dane w postaci współczynnik ufności.
+Wynik zaufania w Security Center może pomóc zespołowi Klasyfikacja i wyznaczyć priorytety alertów. Security Center automatycznie stosuje najlepsze rozwiązania branżowe, inteligentne algorytmy i procesy używane przez analityków, aby określić, czy zagrożenie jest wiarygodne i zapewnia wgląd w informacje w formie oceny zaufania.
 
-## <a name="how-the-confidence-score-is-triggered"></a>Jak jest wyzwalany, współczynnik ufności
+## <a name="how-the-confidence-score-is-triggered"></a>Jak jest wyzwalany wynik zaufania
 
-Alerty są generowane w przypadku wykrycia podejrzanych procesów uruchomionych na maszynach wirtualnych. Usługa Security Center sprawdza i analizuje te alerty na maszynach wirtualnych Windows działających na platformie Azure. Sprawdza zautomatyzowane i korelacji, przy użyciu zaawansowanych algorytmów w wielu jednostek i źródeł danych w organizacji, a także wszystkich zasobów platformy Azure i przedstawia bez obaw, których wynik, który jest miarą pewność, jak usługa Security Center czy alert jest oryginalna i należy zbadać.
+Alerty są generowane po wykryciu podejrzanych procesów uruchomionych na maszynach wirtualnych. Security Center Recenzje i analizuje te alerty na maszynach wirtualnych z systemem Windows uruchomionych na platformie Azure. Wykonuje automatyczne sprawdzanie i korelacje przy użyciu zaawansowanych algorytmów w wielu jednostkach i źródłach danych w całej organizacji, a także wszystkich zasobów platformy Azure i prezentuje wynik zaufania, który jest miarą tego, jak pewność Security Center alert jest autentyczny i należy go zbadać.
 
-## <a name="understanding-the-confidence-score"></a>Opis współczynnik ufności
+## <a name="understanding-the-confidence-score"></a>Zrozumienie wyniku pewności
 
-Współczynnik ufności reprezentuje pewność, której usługa Security Center ma alert musi zostać zbadana i zakresu od 1 do 100. Im większa jest liczba punktów, większa pewność Centrum zabezpieczeń jest, że ten alert wskazuje oryginalnego złośliwych działań. Współczynnik ufności zawiera listę głównych powodów dlaczego alert Odebrano jego współczynnik ufności. Współczynnik ufności ułatwia analityków zabezpieczeń określić priorytety ich odpowiedzi na alerty i rozwiązać większość najpierw naciskając ataków, ostatecznie skrócenie czasu potrzebnego na ataków i naruszeń.
+Wynik zaufania obejmuje zakres od 1 do 100 i reprezentuje Security Center pewności, że należy zbadać alert. Im wyższy wynik, tym bardziej niezawodna Security Center polega na tym, że alert wskazuje na oryginalne złośliwe działanie. Wynik pewności zawiera listę najważniejszych przyczyn, dla których alert otrzymał swój wynik zaufania. Wynik pewności ułatwia analitykom zabezpieczeń określanie priorytetów odpowiedzi na alerty i rozwiązywanie pierwszych ataków, a ostatecznie skrócenie czasu reakcji na ataki i naruszenia.
 
-Aby wyświetlić współczynnik ufności:
-- Otwórz blok alerty zabezpieczeń w portalu usługi Security Center.
--  Alerty i zdarzenia są uporządkowane od najwyższego do najniższego, co oznacza, że większa pewność Centrum zabezpieczeń jest, że alert stanowi zagrożenie, im bliżej stanowi on górnej części strony. 
+Aby wyświetlić wynik pewności:
+- W portalu Security Center Otwórz blok alerty zabezpieczeń.
+-  Alerty i zdarzenia są zorganizowane od najwyższego do najniższego, co oznacza, że jest to bardziej przekonane Security Center polegające na tym, że alert reprezentuje zagrożenie, tym bliżej w górnej części strony. 
 
 
  ![Współczynnik ufności][1]
 
-Aby wyświetlić dane, które przyczyniły się do Centrum zabezpieczeń zaufania alertu:
-- W zabezpieczeniach alert bloku, w obszarze **ufności**, wyświetlanie uwag, które przyczyniły się do współczynnik ufności oraz uzyskiwanie szczegółowych informacji związanych z alertem. Zapewnia lepszy wgląd w rodzaju działań, które spowodował wygenerowanie alertu.
+Aby wyświetlić dane, które przyczyniają się do Security Center zaufania w alercie:
+- W bloku alertu zabezpieczeń, w obszarze **zaufanie**, przejrzyj uwagi, które przyczyniają się do oceny pewności, i uzyskaj szczegółowe informacje dotyczące alertu. Zapewnia to dokładniejszy wgląd w charakter działań, które spowodowały alert.
 
-  ![Współczynnik ufności podejrzanych][2]
+  ![Wynik podejrzanej pewności][2]
 
-Współczynnik ufności usługa Security Center, aby określić priorytety alertu klasyfikacji w danym środowisku. Współczynnik ufności oszczędza czas i wysiłek automatycznie badania alertów, stosując najlepsze rozwiązania w branży i inteligentnych algorytmów i działający jako wirtualnego analityka w celu ustalenia, które zagrożenia są na rzeczywistych i wymagających koncentrować.
+Użyj Security Centerego wyniku pewności, aby określić priorytety klasyfikacjai alertów w danym środowisku. Wynik zaufania umożliwia zaoszczędzenie czasu i wysiłku przez automatyczne badanie alertów, stosowanie najlepszych rozwiązań branżowych i inteligentnych algorytmów, a także działanie jako analityków wirtualnych w celu ustalenia, które zagrożenia są prawdziwe i w jakich sytuacjach należy skoncentrować uwagę.
 
 
-## <a name="next-steps"></a>Kolejne kroki
-W tym artykule wyjaśniono, jak określić priorytet badania alertów za pomocą współczynnik ufności. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
+## <a name="next-steps"></a>Następne kroki
+W tym artykule wyjaśniono, jak użyć wyniku pewności, aby określić priorytety badania alertów. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 
 * [Centrum zabezpieczeń Azure — często zadawane pytania](security-center-faq.md) — odpowiedzi na najczęstsze pytania dotyczące korzystania z usługi.
 * [Monitorowanie kondycji zabezpieczeń w Centrum zabezpieczeń Azure](security-center-monitoring.md) — informacje na temat monitorowania kondycji zasobów platformy Azure.

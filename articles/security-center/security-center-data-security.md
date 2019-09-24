@@ -3,9 +3,8 @@ title: Azure Security Center — bezpieczeństwo danych | Microsoft Docs
 description: W tym dokumencie wyjaśniono, jak zarządzane i chronione są dane w usłudze Azure Security Center.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 33f2c9f4-21aa-4f0c-9e5e-4cd1223e39d7
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
-ms.author: rkarlin
-ms.openlocfilehash: cd91b83bc808d811fc50293fbf1726d609ad5b46
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: memildin
+ms.openlocfilehash: 30f4358bea2670cfa8d825bf1ef75feeba7ea851
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65234071"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202346"
 ---
 # <a name="azure-security-center-data-security"></a>Azure Security Center — bezpieczeństwo danych
 Aby ułatwić klientom zapobieganie zagrożeniom, wykrywanie ich i reagowanie na nie, usługa Azure Security Center zbiera i przetwarza dane dotyczące zabezpieczeń, w tym informacje o konfiguracji, metadane, dzienniki zdarzeń, pliki zrzutu awaryjnego i inne. Firma Microsoft przestrzega surowych wymogów z zakresu zabezpieczeń i zgodności — od kodu po działanie usługi.
@@ -29,31 +28,31 @@ W tym artykule wyjaśniono, jak zarządzane i chronione są dane w usłudze Azur
 ## <a name="data-sources"></a>Źródła danych
 Usługa Azure Security Center analizuje dane z następujących źródeł, aby zapewnić wgląd w stan zabezpieczeń, zidentyfikować luki w zabezpieczeniach i polecić rozwiązania oraz wykryć aktywne zagrożenia:
 
-- Usługi platformy Azure: Używa informacji o konfiguracji usługi platformy Azure została wdrożona, komunikując się z dostawcą zasobów tej usługi.
-- Ruch sieciowy: Używa próbkowanych metadanych ruchu sieciowego z infrastruktury firmy Microsoft, takich jak lokalizacja źródłowa/docelowa IP i port, rozmiar pakietu i protokół sieciowy.
-- Rozwiązania partnerów: Używa alertów zabezpieczeń z rozwiązań zintegrowanych partnerów, takich jak zapory i rozwiązania do ochrony przed złośliwym oprogramowaniem.
-- Maszyny wirtualne i serwery: Używa informacji o konfiguracji i informacji na temat zdarzeń zabezpieczeń, takich jak Windows dzienniki inspekcji i zdarzeń, dzienniki programu IIS, komunikaty dziennika systemu i pliki zrzutu awaryjnego, z maszyn wirtualnych. Ponadto w przypadku tworzenia alertu usługa Azure Security Center może wygenerować migawkę dysku uwzględnionej maszyny wirtualnej i wyodrębnić artefakty maszyny powiązane z alertem z dysku maszyny wirtualnej, takie jak plik rejestru, dla celów przeprowadzania ekspertyz.
+- Usługi platformy Azure: Używa informacji o konfiguracji wdrożonych usług platformy Azure, komunikując się z dostawcą zasobów tej usługi.
+- Ruch sieciowy: Używa przykładowych metadanych ruchu sieciowego z infrastruktury firmy Microsoft, takich jak źródłowy/docelowy adres IP/port, rozmiar pakietu i protokół sieciowy.
+- Rozwiązania partnerskie: Program używa alertów zabezpieczeń z zintegrowanych rozwiązań partnerskich, takich jak zapory i rozwiązania chroniące przed złośliwym kodem.
+- Twoje Virtual Machines i serwery: Program używa informacji o konfiguracji i informacji dotyczących zdarzeń zabezpieczeń, takich jak dzienniki zdarzeń systemu Windows i inspekcje, dzienniki programu IIS, komunikaty dziennika systemowego i pliki zrzutu awaryjnego z maszyn wirtualnych. Ponadto w przypadku tworzenia alertu usługa Azure Security Center może wygenerować migawkę dysku uwzględnionej maszyny wirtualnej i wyodrębnić artefakty maszyny powiązane z alertem z dysku maszyny wirtualnej, takie jak plik rejestru, dla celów przeprowadzania ekspertyz.
 
 
 ## <a name="data-protection"></a>Ochrona danych
-**Podział danych**: Dane są logicznie oddzielone dla każdego składnika w całej usłudze. Wszystkie dane są otagowane informacjami o organizacji. To tagowanie jest obecne przez cały cykl życia danych i jest wymuszane w każdej warstwie usługi.
+Podział **danych**: Dane są logicznie oddzielone dla każdego składnika w ramach usługi. Wszystkie dane są otagowane informacjami o organizacji. To tagowanie jest obecne przez cały cykl życia danych i jest wymuszane w każdej warstwie usługi.
 
-**Dostęp do danych**: Aby można było przedstawić zalecenia dotyczące zabezpieczeń i zbadać potencjalne zagrożenia bezpieczeństwa, personel firmy Microsoft może uzyskiwać dostęp do informacji zbieranych lub analizowanych przez usługi platformy Azure, w tym pliki zrzutu awaryjnego, zdarzeń tworzenia procesów, migawki dysków maszyny Wirtualnej i artefaktów które przypadkowo mogą zawierać dane klientów lub dane osobowe z maszyn wirtualnych. Stosujemy się do [warunków korzystania z usług Microsoft Online Services i zasad zachowania poufności informacji](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31), które stanowią, że firma Microsoft nie będzie używać danych klienta ani informacji pochodnych do żadnych celów reklamowych ani zbliżonych celów komercyjnych. Danych klienta używamy tylko w razie potrzeby w celu świadczenia usług platformy Azure, włączając w to cele zgodne ze świadczeniem tych usług. Użytkownik zachowuje wszystkie uprawnienia do danych klienta.
+**Dostęp do danych**: Aby zapewnić zalecenia dotyczące zabezpieczeń i zbadać potencjalne zagrożenia bezpieczeństwa, personel firmy Microsoft może uzyskać dostęp do informacji zbieranych lub analizowanych przez usługi platformy Azure, w tym plików zrzutu awaryjnego, zdarzeń tworzenia procesów, migawek dysków maszyny wirtualnej i artefaktów, co może przypadkowo obejmować dane klienta lub dane osobowe z maszyn wirtualnych. Stosujemy się do [warunków korzystania z usług Microsoft Online Services i zasad zachowania poufności informacji](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31), które stanowią, że firma Microsoft nie będzie używać danych klienta ani informacji pochodnych do żadnych celów reklamowych ani zbliżonych celów komercyjnych. Danych klienta używamy tylko w razie potrzeby w celu świadczenia usług platformy Azure, włączając w to cele zgodne ze świadczeniem tych usług. Użytkownik zachowuje wszystkie uprawnienia do danych klienta.
 
-**Użycie danych**: Firma Microsoft używa wzorców i analizy zagrożeń obecnych w wielu dzierżawach, aby zwiększyć nasze możliwości zapobiegania i wykrywania; robimy to zgodnie ze zobowiązaniami zachowania opisanego w naszym [zasady zachowania poufności informacji](https://www.microsoft.com/privacystatement/en-us/OnlineServices/Default.aspx).
+**Użycie danych**: Firma Microsoft używa wzorców i analizy zagrożeń widocznych dla wielu dzierżawców w celu zwiększenia możliwości zapobiegania i wykrywania. jest to zgodne z zobowiązaniami dotyczącymi ochrony prywatności opisanymi w zasadach [zachowania poufności informacji](https://www.microsoft.com/privacystatement/en-us/OnlineServices/Default.aspx).
 
 ## <a name="data-location"></a>Lokalizacja danych
 
-**Obszarów roboczych**: Obszar roboczy jest określona dla następujących obszarach geograficznych, a dane zbierane z maszyn wirtualnych platformy Azure, w tym zrzuty awaryjne oraz niektóre typy danych alertów są przechowywane w najbliższym obszarze roboczym.
+**Twoje obszary robocze**: Obszar roboczy jest określony dla następujących Georegiony, a dane zbierane z maszyn wirtualnych platformy Azure, w tym Zrzuty awaryjne i niektóre typy danych alertów, są przechowywane w najbliższym obszarze roboczym.
 
 | Lokalizacja geograficzna maszyny wirtualnej                              | Lokalizacja geograficzna obszaru roboczego |
 |-------------------------------------|---------------|
-| Stany Zjednoczone, Brazylia, Południowej Afryki | Stany Zjednoczone |
+| Stany Zjednoczone, Brazylia, Afryka Południowa | Stany Zjednoczone |
 | Kanada                              | Kanada        |
-| Europa (z wyjątkiem Wielka Brytania)   | Europa        |
+| Europa (z wyjątkiem Zjednoczonego Królestwa)   | Europa        |
 | Zjednoczone Królestwo                      | Zjednoczone Królestwo |
-| Azja Wschodnia (z wyjątkiem Indii, Japonia, Korea, Chiny)   | Azja i Pacyfik  |
-| Korea                              | Azja i Pacyfik  |
+| Azja (z wyjątkiem Indii, Japonia, Korea, Chiny)   | Azja i Pacyfik  |
+| Korea Południowa                              | Azja i Pacyfik  |
 | Indie                               | Indie         |
 | Japonia                               | Japonia         |
 | Chiny                               | Chiny         |
@@ -64,7 +63,7 @@ Migawki dysków maszyny wirtualnej są przechowywane na tym samym koncie magazyn
 
 Dla maszyn wirtualnych i serwerów działających w innych środowiskach, na przykład lokalnie, można określić obszar roboczy i region, w którym będą przechowywane zebrane dane.
 
-**Magazyn usługi Azure Security Center**: Informacje dotyczące alertów zabezpieczeń, w tym alerty partnerów, są przechowywane regionalnie zgodnie z lokalizacją powiązanego zasobu platformy Azure, natomiast informacje dotyczące stanu kondycji zabezpieczeń i zalecenia są przechowywane centralnie w Stanach Zjednoczonych lub Europa, zgodnie z lokalizacją klienta.
+**Azure Security Center Storage**: Informacje dotyczące alertów zabezpieczeń, w tym alerty partnerów, są przechowywane regionalnie zgodnie z lokalizacją powiązanego zasobu platformy Azure, a informacje o stanie kondycji zabezpieczeń i zalecenia są przechowywane centralnie w Stany Zjednoczone lub Europa zgodnie z lokalizacją klienta.
 Usługa Azure Security Center zbiera efemeryczne kopie plików zrzutu awaryjnego i analizuje je pod kątem dowodów na próby ich naruszenia i pomyślnie przeprowadzonych ataków. Usługa Azure Security Center dokonuje tej analizy w ramach tego samego obszaru geograficznego, co obszar roboczy, i usuwa efemeryczne kopie po zakończeniu analizy.
 
 Artefakty maszyny są przechowywane centralnie w tym samym regionie, co maszyna wirtualna.
@@ -82,7 +81,7 @@ Jeśli jest używana warstwa Bezpłatna usługi Azure Security Center, zbieranie
 Klienci mogą używać danych związanych z usługą Security Center pochodzących z różnych strumieni danych, jak pokazano poniżej:
 
 * **Aktywność platformy Azure**: wszystkie alerty zabezpieczeń, zatwierdzone żądania [dokładnie na czas](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) usługi Security Center i wszystkie alerty generowane przez [adaptacyjne kontrolki aplikacji](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application).
-* **Dzienniki platformy Azure Monitor**: wszystkie alerty zabezpieczeń.
+* **Dzienniki Azure monitor**: wszystkie alerty zabezpieczeń.
 
 
 > [!NOTE]

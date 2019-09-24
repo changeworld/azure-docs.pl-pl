@@ -2,24 +2,18 @@
 title: Definicje zasad platformy Azure monitorowane w Azure Security Center | Microsoft Docs
 description: Definicje zasad platformy Azure monitorowane w Azure Security Center.
 services: security-center
-documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
-ms.assetid: c89cb1aa-74e8-4ed1-980a-02a7a25c1a2f
+author: memildin
+manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 8/22/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 56e6285501529f26e3622e2f773dbd373c169c10
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.author: memildin
+ms.openlocfilehash: 892b33f52788bd37d430f221f14ba4c98f764cfb
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69990502"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201669"
 ---
 # <a name="azure-security-policies-monitored-by-security-center"></a>Zasady zabezpieczeń platformy Azure monitorowane przez Security Center
 Ten artykuł zawiera listę definicji Azure Policy, które można monitorować w programie Azure Security Center. Aby uzyskać więcej informacji na temat zasad zabezpieczeń, zobacz [Praca z zasadami zabezpieczeń](tutorial-security-policy.md).
@@ -50,7 +44,7 @@ Aby dowiedzieć się więcej na temat wbudowanych zasad monitorowanych przez Sec
 |Dzienniki diagnostyczne w Azure Data Lake Store powinny być włączone|Inspekcja włączenia dzienników i utrzymywanie ich na rok. Spowoduje to utworzenie śladów aktywności na potrzeby badania w przypadku wystąpienia zdarzenia związanego z bezpieczeństwem lub zabezpieczenia sieci.|
 |Dzienniki diagnostyczne w Data Lake Analytics powinny być włączone|Inspekcja włączenia dzienników i utrzymywanie ich przez maksymalnie rok. Spowoduje to utworzenie śladów aktywności na potrzeby badania w przypadku wystąpienia zdarzenia związanego z bezpieczeństwem lub zabezpieczenia sieci.|
 |Konta magazynu należy migrować do nowych zasobów AzureRM|Aby zapewnić ulepszenia zabezpieczeń, użyj Azure Resource Manager dla kont magazynu. Należą do nich: <br>-Silniejsza kontrola dostępu (RBAC)<br>— Lepsza Inspekcja<br>Wdrożenie i zarządzanie oparte na Azure Resource Managerach<br>— Dostęp do tożsamości zarządzanych<br>— Dostęp do Azure Key Vault dla wpisów tajnych<br>— Uwierzytelnianie oparte na usłudze Azure AD<br>— Obsługa tagów i grup zasobów w celu łatwiejszego zarządzania zabezpieczeniami|
-|Maszyny wirtualne powinny być migrowane do nowych zasobów AzureRM|Użyj Azure Resource Manager na potrzeby maszyn wirtualnych, aby zapewnić ulepszenia zabezpieczeń.  Należą do nich: <br>-Silniejsza kontrola dostępu (RBAC)<br>— Lepsza Inspekcja<br>Wdrożenie i zarządzanie oparte na Azure Resource Managerach<br>— Dostęp do tożsamości zarządzanych<br>— Dostęp do Azure Key Vault dla wpisów tajnych<br>— Uwierzytelnianie oparte na usłudze Azure AD<br>— Obsługa tagów i grup zasobów w celu łatwiejszego zarządzania zabezpieczeniami|
+|Maszyny wirtualne powinny być migrowane do nowych zasobów AzureRM|Użyj Azure Resource Manager na potrzeby maszyn wirtualnych, aby zapewnić ulepszenia zabezpieczeń. Należą do nich: <br>-Silniejsza kontrola dostępu (RBAC)<br>— Lepsza Inspekcja<br>Wdrożenie i zarządzanie oparte na Azure Resource Managerach<br>— Dostęp do tożsamości zarządzanych<br>— Dostęp do Azure Key Vault dla wpisów tajnych<br>— Uwierzytelnianie oparte na usłudze Azure AD<br>— Obsługa tagów i grup zasobów w celu łatwiejszego zarządzania zabezpieczeniami|
 |Reguły alertów metryk powinny być skonfigurowane na kontach wsadowych|Inspekcja konfiguracji reguł alertów metryk na kontach Azure Batch, aby włączyć wymaganą metrykę.|
 |Należy włączyć dzienniki diagnostyczne na kontach wsadowych|Inspekcja włączenia dzienników i utrzymywanie ich przez maksymalnie rok. Spowoduje to utworzenie śladów aktywności na potrzeby badania w przypadku wystąpienia zdarzenia związanego z bezpieczeństwem lub zabezpieczenia sieci.|
 |Szyfrowanie powinno być włączone dla zmiennych konta usługi Automation|Ważne jest włączenie szyfrowania zasobów zmiennych konta Azure Automation, gdy przechowywane są poufne dane.|

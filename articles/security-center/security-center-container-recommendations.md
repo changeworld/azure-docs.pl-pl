@@ -1,11 +1,10 @@
 ---
-title: Zalecenia kontenera w usłudze Azure Security Center | Dokumentacja firmy Microsoft
-description: W tym dokumencie wyjaśniono zaleceń Centrum zabezpieczeń Azure, jak chronić swoje kontenery.
+title: Zalecenia dotyczące kontenera w Azure Security Center | Microsoft Docs
+description: W tym dokumencie opisano Azure Security Center zalecenia dotyczące ochrony kontenerów.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 2e76c7f7-a3dd-4d9f-add9-7e0e10e9324d
 ms.service: security-center
 ms.devlang: na
@@ -13,42 +12,42 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
-ms.author: rkarlin
-ms.openlocfilehash: 782c769bc7825dc9b6bd3ba3b8e36885bf150eaa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: memildin
+ms.openlocfilehash: 96efe5271b91f87e30ba26aabe69a0de76e1a791
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60705301"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202399"
 ---
-# <a name="understand-azure-security-center-container-recommendations"></a>Omówienie zaleceń kontenera usługi Azure Security Center
+# <a name="understand-azure-security-center-container-recommendations"></a>Omówienie zaleceń dotyczących kontenera Azure Security Center
 
-Podczas migracji aplikacji monolitu do uruchamiania o kluczowym znaczeniu konteneryzowanych aplikacji natywnych dla chmury w środowisku produkcyjnym, należy korzystać z zalet funkcji kontenerów, w tym proste i szybkie wdrażanie i aktualizacja. Jak liczba kontenerów wdrożonych stale rośnie, rozwiązania w zakresie zabezpieczeń należy w celu zapewniają wgląd w stan zabezpieczeń kontenerów i ich ochronę przed zagrożeniami.
+Podczas migrowania aplikacji monolitu w celu uruchamiania aplikacji w chmurze o kluczowym znaczeniu w środowisku produkcyjnym można korzystać z funkcji kontenerów, w tym łatwe i szybkie wdrażanie i aktualizowanie. Wraz ze wzrostem liczby wdrożonych kontenerów nadal trzeba mieć na celu zapewnienie wglądu w stan zabezpieczeń kontenerów i ochronę przed zagrożeniami.
 
-Usługa Azure Security Center oferuje następujące funkcje, które ułatwiają zabezpieczanie kontenerów:
+Azure Security Center zapewnia następujące funkcje, które ułatwiają Zabezpieczanie kontenerów:
 
-- **Wgląd w kontenerach hostowanych w infrastrukturze IaaS maszyn z systemem Linux**<br>W usłudze Azure Security Center na karcie kontenerów Wyświetla wszystkich maszyn wirtualnych wdrożonych za pomocą platformy Docker. Podczas eksplorowania problemy dotyczące zabezpieczeń na maszynie wirtualnej, usługa Security Center zapewnia dodatkowe informacje związane z kontenerami na maszynie, na przykład wersja platformy Docker i liczbę obrazów uruchomiona na hoście.
+- **Wgląd w kontenery hostowane na maszynach z systemem Linux IaaS**<br>W Azure Security Center na karcie kontenery są wyświetlane wszystkie maszyny wirtualne wdrożone przy użyciu platformy Docker. Podczas eksplorowania problemów z zabezpieczeniami na maszynie wirtualnej Security Center zawiera dodatkowe informacje dotyczące kontenerów na komputerze, takie jak wersja platformy Docker i Liczba obrazów uruchomionych na hoście.
 
-    ![karty kontenera](./media/security-center-container-recommendations/docker-recommendation.png)
+    ![Karta kontener](./media/security-center-container-recommendations/docker-recommendation.png)
 
 
-- **Zalecenia dotyczące zabezpieczeń oparte na wzorzec konfiguracji (ci) dla platformy Docker**<br>Usługa Security Center skanuje konfiguracje platformy Docker i zapewnia wgląd w błędy konfiguracji poprzez dostarczenie listy wszystkich ocenionych reguł zakończonych niepowodzeniem. Usługa Security Center zapewnia wskazówek, aby pomóc Ci szybko rozwiązać te problemy i zaoszczędzić czas. Usługa Security Center stale ocenia konfiguracje platformy Docker i udostępnia Ci ich najnowszy stan.
+- **Zalecenia dotyczące zabezpieczeń oparte na teście usług CIS dla platformy Docker**<br>Usługa Security Center skanuje konfiguracje platformy Docker i zapewnia wgląd w błędy konfiguracji poprzez dostarczenie listy wszystkich ocenionych reguł zakończonych niepowodzeniem. Security Center zawiera wytyczne ułatwiające szybkie rozwiązywanie tych problemów i oszczędność czasu. Usługa Security Center stale ocenia konfiguracje platformy Docker i udostępnia Ci ich najnowszy stan.
 
-    ![karty kontenera](./media/security-center-container-recommendations/container-cis-benchmark.png)
+    ![Karta kontener](./media/security-center-container-recommendations/container-cis-benchmark.png)
 
-- **Wykrywanie zagrożeń w czasie rzeczywistym kontenera**<br> Usługa Security Center zapewnia wykrywanie zagrożeń w czasie rzeczywistym dla kontenerów na maszynach z systemem Linux za pomocą składnika wykorzystują. Alerty zidentyfikować kilka podejrzanych działań platformy Docker, takich jak tworzenie uprzywilejowanych kontenera na hoście, wskazanie serwera protokołu Secure Shell (SSH) uruchomionej w kontenerze platformy Docker lub korzystanie z usług kryptograficznych wyszukiwarek. Te informacje pozwalają na szybkie rozwiązywanie problemów dotyczących zabezpieczeń i poprawę bezpieczeństwa kontenerów.
+- **Wykrywanie zagrożeń kontenera w czasie rzeczywistym**<br> Security Center zapewnia wykrywanie zagrożeń w czasie rzeczywistym dla kontenerów na komputerach z systemem Linux z poddawanym inspekcją składnikiem. Alerty identyfikują kilka podejrzanych działań platformy Docker, takich jak tworzenie kontenera uprzywilejowanego na hoście, wskazanie serwera Secure Shell (SSH) działającego wewnątrz kontenera Docker lub użycie kryptografii wyszukiwarek używa tego. Te informacje pozwalają na szybkie rozwiązywanie problemów dotyczących zabezpieczeń i poprawę bezpieczeństwa kontenerów.
 
-    ![karty kontenera](./media/security-center-container-recommendations/docker-threat-detection.png)
+    ![Karta kontener](./media/security-center-container-recommendations/docker-threat-detection.png)
 
 ## <a name="recommendations"></a>Zalecenia
-Aby lepiej zrozumieć dostępne kontenery hostowanych na maszynach z systemem IaaS Linux i ocenę zabezpieczeń ich konfiguracji platformy Docker, użyj poniższe tabele zawierają jako odwołanie.
+Poniższe tabele zawierają informacje ułatwiające zrozumienie dostępnych kontenerów hostowanych na maszynach z systemem Linux IaaS oraz ocenę zabezpieczeń ich konfiguracji platformy Docker.
 
 | Zalecenie | Opis | Korygowanie |
 | --- | --- | --- |
-|Korygowanie luk w zabezpieczeniach w konfiguracjach zabezpieczeń kontenerów |Korygowanie luk w zabezpieczeniach w kontenerze konfiguracji zabezpieczeń oparte na najlepszymi rozwiązaniami konfiguracyjnymi.| Aby korygowanie luk w zabezpieczeniach w konfiguracjach zabezpieczeń kontenerów:<br>1. Przejrzyj listę reguł nie powiodło się.<br>2. Usuń każdą regułę, zgodnie z instrukcjami określony.|
+|Koryguj luki w zabezpieczeniach w konfiguracjach zabezpieczeń kontenerów |Koryguj luki w zabezpieczeniach w konfiguracjach zabezpieczeń kontenerów na podstawie najlepszych rozwiązań konfiguracyjnych.| Aby skorygować luki w zabezpieczeniach konfiguracji kontenerów:<br>1. Przejrzyj listę reguł zakończonych niepowodzeniem.<br>2. Popraw każdą regułę zgodnie z określonymi instrukcjami.|
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej na temat zalecenia, które mają zastosowanie do innych typów zasobów platformy Azure, zobacz następujące tematy:
 
 * [Monitorowanie tożsamości i dostępu w usłudze Azure Security Center](security-center-identity-access.md)

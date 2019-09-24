@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/17/2019
 ms.author: juliako
-ms.openlocfilehash: a4b7ccf6ece8ed40d6f6c6a22410d4bbe99e590a
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: d346f68534a9fdbc286cd5521c00d81c2a5fec78
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146470"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203547"
 ---
 # <a name="what-is-video-indexer"></a>Co to jest Video Indexer?
 
@@ -79,7 +79,6 @@ Gdy indeksowanie według jednego kanału częściowy wynik dla tych modeli będz
 
 * **Wyodrębnianie słów kluczowych**: Wyodrębnia słowa kluczowe z mowy i tekstu wizualnego.
 * **Wyodrębnianie nazwanych jednostek**: Wyodrębnianie marek, lokalizacji i osób z mowy i tekstu wizualnego za pośrednictwem przetwarzania języka naturalnego (NLP).
-* **Wyodrębnianie marek**: Wyodrębnia marki z mowy i tekstu wizualnego.
 * **Wnioskowanie dotyczące tematu**: Wykonuje wnioskowanie głównych tematów z transkrypcji. Dołączona jest Taksonomia IPTC pierwszego poziomu.
 * **Artefakty**: Wyodrębnia bogaty zestaw artefaktów "Next Level of details" dla każdego z modeli.
 * **Analiza tonacji**: Identyfikuje pozytywne, ujemne i neutralne mową z mowy i tekstu wizualnego.

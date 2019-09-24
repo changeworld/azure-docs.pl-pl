@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: de9e0a936c68f181665e44ea6115f60c6dc60e98
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 2ade270011ad5c1e1e5f5940ca305687e52bba86
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179057"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200300"
 ---
 # <a name="configure-self-hosted-ir-as-a-proxy-for-azure-ssis-ir-in-adf"></a>Skonfiguruj własne środowisko IR jako serwer proxy dla Azure-SSIS IR w usłudze ADF
 W tym artykule opisano sposób uruchamiania pakietów SQL Server Integration Services (SSIS) na Azure-SSIS Integration Runtime (IR) w Azure Data Factory (ADF) z własnym hostowanym systemem IR skonfigurowanym jako serwer proxy.  Ta funkcja umożliwia dostęp do danych lokalnych bez [przyłączania Azure-SSIS IR do sieci wirtualnej](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).  Jest to przydatne w przypadku, gdy sieć firmowa ma zbyt skomplikowane zasady konfiguracji/ograniczania, aby móc wprowadzać w niej Azure-SSIS IR.
@@ -86,10 +86,11 @@ Pierwsze zadania przemieszczania uruchomione na samoobsługowym środowisku IR b
 Pozostałe zadania przemieszczania uruchomione w Azure-SSIS IR nie będą rozliczane oddzielnie, ale w przypadku uruchamiania Azure-SSIS IR zostanie naliczona wartość określona w artykule dotyczącym [cennika Azure-SSIS IR](https://azure.microsoft.com/pricing/details/data-factory/ssis/) .
 
 ## <a name="current-limitations"></a>Bieżące ograniczenia
-- Obecnie są obsługiwane tylko menedżerów połączeń plików OLEDB/Flat i źródła plików OLEDB/Flat.
+
+- Obecnie są obsługiwane tylko menedżerów połączeń plików OLEDB/Flat i źródła plików OLEDB/Flat. 
 - Obecnie są obsługiwane tylko połączone usługi platformy Azure Blob Storage skonfigurowane z uwierzytelnianiem podstawowym **klucza**/konta**SAS**/**usługi** .
 - Obecnie jest obsługiwane tylko własne środowisko IR obsługiwane w ramach tego samego PODAJNIKa danych, w którym zainicjowano Azure-SSIS IR.
-- Zmienne SSIS i parametry nie są obsługiwane.
+- Korzystanie z parametrów/zmiennych SSIS w ramach właściwości w źródłach plików OLEDB/Flat i menedżerach połączeń nie jest obsługiwane.
 
 ## <a name="next-steps"></a>Następne kroki
 Po skonfigurowaniu własnego środowiska IR jako serwera proxy dla Azure-SSIS IR można wdrażać i uruchamiać pakiety, aby uzyskiwać dostęp do danych lokalnych jako działania wykonywania pakietów SSIS w potokach ADF, zobacz [uruchamianie pakietów SSIS jako działania pakietu SSIS w potokach ADF ](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).

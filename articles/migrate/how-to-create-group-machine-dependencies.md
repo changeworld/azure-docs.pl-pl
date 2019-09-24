@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: hamusa
-ms.openlocfilehash: c48323bb4c8798a0f36d3fda99a4c659187e0e81
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 8e793891ea646ae8c91077ead36be9b84c1b08c8
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906372"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200208"
 ---
 # <a name="set-up-dependency-visualization-for-assessment"></a>Konfigurowanie wizualizacji zależności dla oceny
 
@@ -61,7 +61,7 @@ Dołącz obszar roboczy w następujący sposób:
 
     ![Dodaj obszar roboczy](./media/how-to-create-group-machine-dependencies/workspace.png)
 
-    - Po określeniu nazwy nowego obszaru roboczego jest on tworzony w tej samej lokalizacji geograficznej co projekt Azure Migrate.
+    - Po określeniu nazwy nowego obszaru roboczego można wybrać [region](https://azure.microsoft.com/global-infrastructure/regions/) , w którym zostanie utworzony obszar roboczy.
     - Po dołączeniu istniejącego obszaru roboczego możesz wybrać wszystkie dostępne obszary robocze w tej samej subskrypcji co projekt migracji.
     - Potrzebujesz dostępu czytelnika do obszaru roboczego, aby móc go dołączyć.
     - Nie można modyfikować obszaru roboczego skojarzonego z projektem po jego dołączeniu.

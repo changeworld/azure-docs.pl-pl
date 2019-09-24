@@ -1,66 +1,68 @@
 ---
-title: Reguły zapory w usłudze Azure Database for PostgreSQL — pojedynczy serwer
-description: W tym artykule opisano reguły zapory dla usługi Azure Database for PostgreSQL — pojedynczy serwer.
+title: Reguły zapory w Azure Database for PostgreSQL-pojedynczym serwerze
+description: W tym artykule opisano reguły zapory dla Azure Database for PostgreSQL-pojedynczego serwera.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 40a675fbefe9743f5de1f9766cf33ae7dba9e5a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/22/2019
+ms.openlocfilehash: a48e9e2583afbde584987e5a1ac61da9734058d1
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65073585"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200131"
 ---
-# <a name="firewall-rules-in-azure-database-for-postgresql---single-server"></a>Reguły zapory w usłudze Azure Database for PostgreSQL — pojedynczy serwer
-Usługa Azure Database for postgresql w warstwie zapory serwera uniemożliwia dostęp do serwera bazy danych, do momentu określenia komputerów, które mają uprawnienia. Zapora udziela dostępu do serwera, na podstawie źródłowego adresu IP każdego żądania.
-Aby skonfigurować zaporę, należy utworzyć reguły zapory określające zakresy dopuszczalnych adresów IP. Można utworzyć reguły zapory na poziomie serwera.
+# <a name="firewall-rules-in-azure-database-for-postgresql---single-server"></a>Reguły zapory w Azure Database for PostgreSQL-pojedynczym serwerze
+Zapora serwera Azure Database for PostgreSQL uniemożliwia dostęp do serwera bazy danych do momentu określenia komputerów, które mają uprawnienia. Zapora przyznaje dostęp do serwera na podstawie źródłowego adresu IP każdego żądania.
+Aby skonfigurować zaporę, należy utworzyć reguły zapory określające zakresy dopuszczalnych adresów IP. Reguły zapory można tworzyć na poziomie serwera.
 
-**Reguły zapory:** Te reguły umożliwiają klientom dostęp do całej bazy danych platformy Azure przez serwer PostgreSQL, oznacza to, że wszystkie bazy danych na tym samym serwerze logicznym. Reguły zapory na poziomie serwera można skonfigurować za pomocą witryny Azure portal lub za pomocą poleceń interfejsu wiersza polecenia platformy Azure. Aby utworzyć reguły zapory na poziomie serwera, musi być właścicielem bądź współautorem subskrypcji.
+**Reguły zapory:** Te reguły umożliwiają klientom dostęp do całego serwera Azure Database for PostgreSQL, czyli wszystkich baz danych na tym samym serwerze logicznym. Reguły zapory na poziomie serwera można skonfigurować za pomocą Azure Portal lub przy użyciu poleceń interfejsu wiersza polecenia platformy Azure. Aby utworzyć reguły zapory na poziomie serwera, musisz być właścicielem subskrypcji lub współautorem subskrypcji.
 
 ## <a name="firewall-overview"></a>Omówienie zapory
-Wszystkie dostępu do bazy danych z usługi Azure Database dla serwera PostgreSQL jest zablokowany przez zaporę, domyślnie. Aby rozpocząć korzystanie z serwera z innego komputera, należy określić co najmniej jedną regułę zapory na poziomie serwera, aby umożliwić dostęp do serwera. Reguły zapory, aby określić, które IP zakresów adresów z Internetu, aby zezwolić na użycie. Dostęp do witryny portalu Azure, sama nie ma wpływu reguły zapory.
-Próby nawiązania połączenia z Internetem a platformą Azure muszą najpierw przejść przez zaporę zanim dotrą do bazy danych postgresql w warstwie, jak pokazano na poniższym diagramie:
+Domyślnie dostęp do serwera Azure Database for PostgreSQL jest blokowany przez zaporę. Aby rozpocząć korzystanie z serwera z innego komputera, należy określić co najmniej jedną regułę zapory na poziomie serwera, aby umożliwić dostęp do serwera. Użyj reguł zapory, aby określić, które zakresy adresów IP z Internetu mają być dozwolone. Reguły zapory nie wpływają na dostęp do samej witryny sieci Web Azure Portal.
+Próby połączenia z Internetu i platformy Azure muszą być przekazywane przez zaporę przed uzyskaniem dostępu do bazy danych PostgreSQL, jak pokazano na poniższym diagramie:
 
 ![Przykładowy przepływ działania zapory](media/concepts-firewall-rules/1-firewall-concept.png)
 
 ## <a name="connecting-from-the-internet"></a>Łączenie się z Internetu
-Reguły zapory na poziomie serwera mają zastosowanie do wszystkich baz danych na tej samej usługi Azure Database for postgresql w warstwie serwera. Jeśli adres IP żądania należy do jednego z zakresów określonych w regułach zapory na poziomie serwera, ustanawiane jest połączenie.
-Jeśli adres IP żądania nie jest w zakresach określonych w dowolnej reguły zapory na poziomie serwera, żądanie połączenia kończy się niepowodzeniem.
-Na przykład jeśli aplikacja łączy się przy użyciu sterownika JDBC dla PostgreSQL, możesz napotkać ten błąd podczas próby Połącz, gdy Zapora blokuje połączenie.
-> java.util.concurrent.ExecutionException: java.lang.RuntimeException: org.postgresql.util.PSQLException: Błąd krytyczny: nie pg\_hba.conf wpis dla hosta: "123.45.67.890" użytkownika "adminuser", baza danych "postgresql", protokołu SSL
+Reguły zapory na poziomie serwera mają zastosowanie do wszystkich baz danych na tym samym serwerze Azure Database for PostgreSQL. Jeśli adres IP żądania należy do jednego z zakresów określonych w regułach zapory na poziomie serwera, ustanawiane jest połączenie.
+Jeśli adres IP żądania nie należy do zakresów określonych w regułach zapory na poziomie serwera, żądanie połączenia kończy się niepowodzeniem.
+Jeśli na przykład aplikacja nawiązuje połączenie z sterownikiem JDBC dla PostgreSQL, może wystąpić błąd podczas próby nawiązania połączenia, gdy Zapora blokuje połączenie.
+> Java. util. współbieżne. ExecutionException: Java. lang. RuntimeException: org. PostgreSQL. util. PSQLException: Błąd krytyczny:\_brak wpisu HBA. conf dla hosta "123.45.67.890", użytkownika "AdminUser", bazy danych "PostgreSQL", SSL
 
 ## <a name="connecting-from-azure"></a>Łączenie z platformy Azure
-Aby umożliwić aplikacjom z platformy Azure, nawiązać połączenia z usługi Azure Database for postgresql w warstwie serwera, należy włączyć połączenia platformy Azure. Na przykład, aby hostować aplikację usługi Azure Web Apps lub aplikację, która działa na Maszynie wirtualnej platformy Azure lub do nawiązywania połączenia bramy zarządzania danymi usługi Azure Data Factory. Zasoby nie muszą znajdować się w tej samej sieci wirtualnej (VNet) lub grupy zasobów dla reguły zapory, aby włączyć te połączenia. Gdy aplikacja platformy Azure próbuje połączyć się z serwerem bazy danych, zapora sprawdza, czy połączenia platformy Azure są dozwolone. Istnieje kilka metod, aby włączyć te typy połączeń. Ustawienie zapory z początkowym i końcowym adresem równym 0.0.0.0 wskazuje, że te połączenia są dozwolone. Alternatywnie, można ustawić **zezwolić na dostęp do usług platformy Azure** opcję **ON** w portalu pochodzące ze **zabezpieczenia połączeń** okienka, a następnie wybierz pozycję **Zapisz**. Jeśli próba połączenia nie jest dozwolona, żądanie nie dociera usługi Azure Database for postgresql w warstwie serwera.
+Aby umożliwić aplikacjom z platformy Azure Łączenie się z serwerem Azure Database for PostgreSQL, należy włączyć połączenia platformy Azure. Na przykład w celu hostowania aplikacji Web Apps platformy Azure lub aplikacji działającej na maszynie wirtualnej platformy Azure lub w celu nawiązania połączenia z Azure Data Factory bramy zarządzania danymi. Zasoby nie muszą znajdować się w tej samej Virtual Network (VNet) lub grupie zasobów dla reguły zapory w celu włączenia tych połączeń. Gdy aplikacja platformy Azure próbuje połączyć się z serwerem bazy danych, zapora sprawdza, czy połączenia platformy Azure są dozwolone. Istnieje kilka metod włączania tych typów połączeń. Ustawienie zapory z początkowym i końcowym adresem równym 0.0.0.0 wskazuje, że te połączenia są dozwolone. Alternatywnie możesz ustawić opcję Zezwalaj na **dostęp do usług platformy Azure** w portalu w okienku **zabezpieczenia połączenia** i kliknąć przycisk **Zapisz**. Jeśli próba połączenia nie jest dozwolona, żądanie nie dociera do serwera Azure Database for PostgreSQL.
 
 > [!IMPORTANT]
 > Ta opcja konfiguruje zaporę w celu zezwalania na wszystkie połączenia z platformy Azure, w tym połączenia z subskrypcji innych klientów. W przypadku wybrania tej opcji upewnij się, że uprawnienia logowania i użytkownika zezwalają na dostęp tylko uprawnionym użytkownikom.
 > 
 
-![Konfigurowanie Zezwalaj na dostęp do usług platformy Azure w portalu](media/concepts-firewall-rules/allow-azure-services.png)
+![Konfigurowanie zezwalania na dostęp do usług platformy Azure w portalu](media/concepts-firewall-rules/allow-azure-services.png)
 
 ## <a name="programmatically-managing-firewall-rules"></a>Programowe zarządzanie regułami zapory
-Oprócz witryny Azure portal reguły zapory można zarządzać programowo przy użyciu wiersza polecenia platformy Azure.
-Zobacz też [tworzenie i zarządzanie nimi — Azure Database for postgresql w warstwie reguł zapory przy użyciu wiersza polecenia platformy Azure](howto-manage-firewall-using-cli.md)
+Oprócz Azure Portal reguły zapory można zarządzać programowo przy użyciu interfejsu wiersza polecenia platformy Azure.
+Zobacz też [Tworzenie reguł zapory Azure Database for PostgreSQL przy użyciu interfejsu wiersza polecenia platformy Azure i zarządzanie nimi](howto-manage-firewall-using-cli.md)
 
-## <a name="troubleshooting-the-database-server-firewall"></a>Rozwiązywanie problemów z zapory serwera bazy danych
-Gdy dostęp do bazy danych Microsoft Azure usługi serwera PostgreSQL nie zachowywać się zgodnie z oczekiwaniami, należy wziąć pod uwagę następujące kwestie:
+## <a name="troubleshooting-firewall-issues"></a>Rozwiązywanie problemów z zaporą
+Należy wziąć pod uwagę następujące kwestie, gdy dostęp do usługi Microsoft Azure Database for PostgreSQL Server nie zadziała zgodnie z oczekiwaniami:
 
-* **Zmiany do listy dozwolonych nie zostały uwzględnione jeszcze:** Może to być jak pięciu minut opóźnienia, zanim zmiany do usługi Azure Database dla konfiguracji zapory serwera PostgreSQL zaczęły obowiązywać.
+* **Zmiany na liście dozwolonych nie zostały jeszcze zastosowane:** Może wystąpić do pięciu minut opóźnienia, zanim zmiany konfiguracji zapory serwera usługi Azure Database for PostgreSQL zostaną zastosowane.
 
-* **Nazwa logowania nie ma autoryzacji lub użyto nieprawidłowego hasła:** Jeśli logowanie nie ma uprawnień w usłudze Azure Database dla serwera PostgreSQL lub użyte hasło jest nieprawidłowe, odmowa połączenia z usługi Azure Database for postgresql w warstwie serwera. Tylko utworzenie ustawień zapory zapewnia klientom możliwość próby nawiązywania połączenia z serwerem; Każdy klient nadal musi podać niezbędne poświadczenia zabezpieczeń.
+* **Logowanie nie jest autoryzowane lub użyto nieprawidłowego hasła:** Jeśli logowanie nie ma uprawnień na serwerze Azure Database for PostgreSQL lub użyte hasło jest nieprawidłowe, nastąpiło odmowa połączenia z serwerem Azure Database for PostgreSQL. Utworzenie ustawienia zapory zapewnia klientom możliwość próby nawiązania połączenia z serwerem; Każdy klient musi nadal podawać niezbędne poświadczenia zabezpieczeń.
 
-Na przykład za pomocą klienta JDBC, może się pojawić następujący błąd.
-> java.util.concurrent.ExecutionException: java.lang.RuntimeException: org.postgresql.util.PSQLException: Błąd krytyczny: uwierzytelnianie przy użyciu hasła użytkownika nie powiodło się "nazwa_użytkownika"
+   Na przykład przy użyciu klienta JDBC może pojawić się następujący błąd.
+   > Java. util. współbieżne. ExecutionException: Java. lang. RuntimeException: org. PostgreSQL. util. PSQLException: Błąd krytyczny: uwierzytelnianie hasła użytkownika "yourUserName" nie powiodło się
 
-* **Dynamiczny adres IP:** Jeśli masz połączenie internetowe za pomocą dynamicznego adresowania IP i problemy z przejściem przez zaporę, można wypróbować jedno z następujących rozwiązań:
+* **Dynamiczny adres IP:** Jeśli masz połączenie internetowe z dynamicznym adresem IP i masz problemy z uzyskaniem przez zaporę, możesz wypróbować jedno z następujących rozwiązań:
 
-* Poproś usługodawcy internetowego (ISP) dla zakresu adresów IP, które są przypisane do komputerów klienckich uzyskujących dostęp do usługi Azure Database dla serwera PostgreSQL, a następnie dodać zakres adresów IP jako reguły zapory.
+   * Poproszenie usługodawcy internetowego (ISP) o zakres adresów IP przypisany do komputerów klienckich, które uzyskują dostęp do serwera Azure Database for PostgreSQL, a następnie Dodaj zakres adresów IP jako regułę zapory.
 
-* Pobierz statyczne adresy IP dla komputerów klienckich, a następnie dodać statyczny adres IP jako reguły zapory.
+   * Zamiast tego należy pobrać statyczne adresy IP dla komputerów klienckich, a następnie dodać statyczny adres IP jako regułę zapory.
 
-## <a name="next-steps"></a>Kolejne kroki
-Artykuły na temat tworzenia reguł zapory na poziomie serwera i na poziomie bazy danych zobacz:
-* [Tworzenie i zarządzanie nimi — Azure Database for postgresql w warstwie reguł zapory przy użyciu witryny Azure portal](howto-manage-firewall-using-portal.md)
-* [Tworzenie i zarządzanie nimi — Azure Database for postgresql w warstwie reguł zapory przy użyciu wiersza polecenia platformy Azure](howto-manage-firewall-using-cli.md)
+* **Adres IP serwera wydaje się być publiczny:** Połączenia z serwerem Azure Database for PostgreSQL są kierowane za pomocą publicznie dostępnej bramy platformy Azure. Rzeczywisty adres IP serwera jest jednak chroniony przez zaporę. Aby uzyskać więcej informacji, zapoznaj się z [artykułem dotyczącym architektury łączności](concepts-connectivity-architecture.md). 
+
+## <a name="next-steps"></a>Następne kroki
+Aby zapoznać się z artykułami dotyczącymi tworzenia reguł zapory na poziomie serwera i na poziomie bazy danych, zobacz:
+* [Tworzenie reguł zapory Azure Database for PostgreSQL i zarządzanie nimi za pomocą Azure Portal](howto-manage-firewall-using-portal.md)
+* [Tworzenie reguł zapory Azure Database for PostgreSQL przy użyciu interfejsu wiersza polecenia platformy Azure i zarządzanie nimi](howto-manage-firewall-using-cli.md)

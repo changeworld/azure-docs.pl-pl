@@ -16,12 +16,12 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 monikerRange: vsts
-ms.openlocfilehash: d395855de6bb16841d54821c87a6af6d5d62c11c
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 49514022dc00afcd07002c7a3278c18a606e5ad5
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898053"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203734"
 ---
 # <a name="quickstart-set-up-a-cicd-pipeline-for-a-java-app-with-azure-devops-projects"></a>Szybki start: Konfigurowanie potoku ciągłej integracji/ciągłego wdrażania dla aplikacji Java za pomocą Azure DevOps Projects
 
@@ -39,7 +39,7 @@ Jeśli nie masz subskrypcji platformy Azure, możesz uzyskać ją bezpłatnie za
 
 2. Wybierz pozycję **Utwórz**.
 
-    ![Rozpoczynanie konfigurowania ciągłego dostarczania](_img/azure-devops-project-java/fullbrowser.png)
+    ![Tworzenie zasobu platformy Azure w DevOps Projects](_img/azure-devops-project-java/continuous-delivery-configuration-full-browser.png)
 
 ## <a name="select-a-sample-application-and-azure-service"></a>Wybieranie przykładowej aplikacji i usługi platformy Azure
 
@@ -62,7 +62,7 @@ Przykłady w języku Java obejmują kilka struktur aplikacji do wyboru.
 
 2. Wybierz pozycję **Przeglądaj**, aby wyświetlić uruchomioną aplikację.
 
-    ![Widok pulpitu nawigacyjnego](_img/azure-devops-project-java/dashboardnopreview.png) 
+    ![Wyświetlanie pulpitu nawigacyjnego aplikacji w Azure Portal](_img/azure-devops-project-java/azure-devops-application-dashboard.png) 
     
    Usługa DevOps Projects automatycznie skonfigurowała wyzwalacz kompilacji i wydania ciągłej integracji.  Możesz teraz rozpocząć pracę w zespole nad aplikacją w języku Java w ramach procesu ciągłej integracji/ciągłego wdrażania, który umożliwia automatyczne wdrożenie najnowszej wersji w witrynie internetowej.
 

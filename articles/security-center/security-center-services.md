@@ -3,9 +3,8 @@ title: Obsługiwane funkcje dostępne w Azure Security Center | Microsoft Docs
 description: Ten dokument zawiera listę usług obsługiwanych przez Azure Security Center.
 services: security-center
 documentationcenter: na
-author: monhaber
+author: memildin
 manager: rkarlin
-editor: ''
 ms.assetid: 870ebc8d-1fad-435b-9bf9-c477f472ab17
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 0d2b417dd01e26f0f93722be66d82972b52aca83
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.author: memildin
+ms.openlocfilehash: 97708fa3211aa203aab56253b1c7720d04329014
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70234584"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200816"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Obsługiwane funkcje dostępne w Azure Security Center
 
@@ -109,7 +108,7 @@ Następujące zasoby PaaS są obsługiwane przez Azure Security Center:
 |Konto usługi Service Fabric|✔| X|
 |Konto usługi Automation|✔| X|
 |Moduł równoważenia obciążenia|✔| X|
-|Wyszukaj|✔| X|
+|Wyszukiwanie|✔| X|
 |Przestrzeń nazw magistrala usług|✔| X|
 |Stream Analytics|✔| X|
 |Przestrzeń nazw centrum zdarzeń|✔| X|

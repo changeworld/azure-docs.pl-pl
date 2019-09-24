@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
-ms.openlocfilehash: bdf81eb447596c8f580809eed99004186a81eacf
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9a758ce56356da21fc94f426d575a55f7dc762a0
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70065914"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200319"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Porady dotyczące wydajności Azure Cosmos DB i .NET
 
@@ -32,16 +32,15 @@ Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" na
 
     Sposób, w jaki klient nawiązuje połączenie z Azure Cosmos DB, ma ważne konsekwencje dotyczące wydajności, szczególnie w odniesieniu do zaobserwowanego opóźnienia po stronie klienta. Dostępne są dwa ustawienia konfiguracji klucza do konfigurowania zasad połączenia klienta — *tryb* połączenia i *Protokół*połączenia.  Dostępne są dwa tryby:
 
-   * Tryb bramy (wartość domyślna)
+   * Tryb bramy
       
-     Tryb bramy jest obsługiwany na wszystkich platformach SDK i jest skonfigurowany domyślnie. Jeśli aplikacja działa w sieci firmowej z rygorystycznymi ograniczeniami zapory, najlepszym wyborem jest tryb bramy, ponieważ używa on standardowego portu HTTPS i jednego punktu końcowego. Jednak jest to, że tryb bramy obejmuje dodatkowy przeskok sieciowy za każdym razem, gdy dane są odczytywane lub zapisywane w Azure Cosmos DB. Z tego powodu tryb bezpośredni zapewnia lepszą wydajność ze względu na mniejszą liczbę przeskoków sieci. Tryb połączenia bramy jest również zalecany w przypadku uruchamiania aplikacji w środowiskach z ograniczoną liczbą połączeń gniazd, na przykład w przypadku korzystania z Azure Functions lub jeśli korzystasz z planu zużycia. 
+     Tryb bramy jest obsługiwany na wszystkich platformach SDK i jest skonfigurowany domyślnie dla [zestawu SDK Microsoft. Azure. DocumentDB](sql-api-sdk-dotnet.md). Jeśli aplikacja działa w sieci firmowej z rygorystycznymi ograniczeniami zapory, najlepszym wyborem jest tryb bramy, ponieważ używa on standardowego portu HTTPS i jednego punktu końcowego. Jednak jest to, że tryb bramy obejmuje dodatkowy przeskok sieciowy za każdym razem, gdy dane są odczytywane lub zapisywane w Azure Cosmos DB. Z tego powodu tryb bezpośredni zapewnia lepszą wydajność ze względu na mniejszą liczbę przeskoków sieci. Tryb połączenia bramy jest również zalecany w przypadku uruchamiania aplikacji w środowiskach z ograniczoną liczbą połączeń gniazd. 
+
+     W przypadku korzystania z zestawu SDK w Azure Functions, szczególnie w [planie zużycia](../azure-functions/functions-scale.md#consumption-plan), należy mieć na uwadze bieżące [limity połączeń](../azure-functions/manage-connections.md). W takim przypadku można zalecać tryb bramy, jeśli pracujesz również z innymi klientami opartymi na protokole HTTP w aplikacji Azure Functions.
 
    * Tryb bezpośredni
 
-     Tryb bezpośredni obsługuje łączność za pośrednictwem protokołów TCP i HTTPS. W przypadku korzystania z najnowszej wersji zestawu .NET SDK tryb łączności bezpośredniej jest obsługiwany w .NET Standard 2,0 i .NET Framework. W przypadku korzystania z trybu bezpośredniego dostępne są dwie opcje protokołu:
-
-     * TCP
-     * HTTPS
+     Tryb bezpośredni obsługuje łączność za pośrednictwem protokołów TCP i HTTPS i jest domyślnym trybem łączności, jeśli używany jest [pakiet Microsoft. Azure. Cosmos/.NET v3 SDK](sql-api-sdk-dotnet-standard.md).
 
      W przypadku korzystania z trybu bramy Cosmos DB korzysta z portu 443 i portów 10250, 10255 i 10256 przy użyciu interfejsu API Azure Cosmos DB dla MongoDB. Port 10250 jest mapowany na domyślne wystąpienie MongoDB bez replikacji geograficznej i 10255/10256 portów do wystąpienia MongoDB z funkcją replikacji geograficznej. W przypadku korzystania z protokołu TCP w trybie bezpośrednim oprócz portów bramy należy upewnić się, że zakres portów od 10000 do 20000 jest otwarty, ponieważ Azure Cosmos DB używa dynamicznych portów TCP. Jeśli te porty nie są otwarte i podjęto próbę użycia protokołu TCP, zostanie wyświetlony błąd niedostępności usługi 503. W poniższej tabeli przedstawiono tryby łączności dostępne dla różnych interfejsów API i użytkowników portów usługi dla każdego interfejsu API:
 
@@ -53,7 +52,20 @@ Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" na
 
      Azure Cosmos DB oferuje prosty i otwarty model programowania RESTful za pośrednictwem protokołu HTTPS. Ponadto oferuje wydajny protokół TCP, który jest również RESTful w swoim modelu komunikacji i jest dostępny za pośrednictwem zestawu SDK klienta platformy .NET. Zarówno bezpośrednie TCP, jak i HTTPS używają protokołu SSL do uwierzytelniania początkowego i szyfrowania ruchu sieciowego. Aby uzyskać najlepszą wydajność, Użyj protokołu TCP, gdy jest to możliwe.
 
-     Tryb łączności jest konfigurowany podczas konstruowania wystąpienia DocumentClient z parametrem ConnectionPolicy. Jeśli jest używany tryb bezpośredni, protokół można także ustawić w parametrze ConnectionPolicy.
+     W przypadku zestawu SDK v3 tryb łączności jest konfigurowany podczas tworzenia wystąpienia CosmosClient w ramach CosmosClientOptions.
+
+     ```csharp
+     var serviceEndpoint = new Uri("https://contoso.documents.net");
+     var authKey = "your authKey from the Azure portal";
+     CosmosClient client = new CosmosClient(serviceEndpoint, authKey,
+     new CosmosClientOptions
+     {
+        ConnectionMode = ConnectionMode.Direct,
+        ConnectionProtocol = Protocol.Tcp
+     });
+     ```
+
+     W przypadku zestawu SDK Microsoft. Azure. DocumentDB tryb łączności jest konfigurowany podczas konstruowania wystąpienia DocumentClient z parametrem ConnectionPolicy. Jeśli jest używany tryb bezpośredni, protokół można także ustawić w parametrze ConnectionPolicy.
 
      ```csharp
      var serviceEndpoint = new Uri("https://contoso.documents.net");
@@ -72,9 +84,13 @@ Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" na
 
 2. **Wywołaj OpenAsync, aby uniknąć opóźnień uruchamiania przy pierwszym żądaniu**
 
-    Domyślnie pierwsze żądanie ma wyższy czas opóźnienia, ponieważ musi pobrać tabelę routingu adresów. Aby uniknąć tego opóźnienia uruchamiania pierwszego żądania, należy wywołać OpenAsync () raz podczas inicjowania w następujący sposób.
+    Domyślnie pierwsze żądanie ma wyższy czas opóźnienia, ponieważ musi pobrać tabelę routingu adresów. W przypadku korzystania z [zestawu SDK V2](sql-api-sdk-dotnet.md)w celu uniknięcia opóźnień uruchamiania pierwszego żądania należy wywołać openAsync () raz podczas inicjowania w następujący sposób.
 
         await client.OpenAsync();
+
+    > [!NOTE] 
+    > Metoda OpenAsync będzie generować żądania, aby uzyskać tabelę routingu adresów dla wszystkich kontenerów na koncie. W przypadku kont, które mają wiele kontenerów, ale ich aplikacja uzyskuje dostęp do podzbioru z nich, wygeneruje niepotrzebny ruch, który spowalnia inicjalizację. Użycie metody OpenAsync może nie być przydatne w tym scenariuszu, ponieważ spowalnia uruchamianie aplikacji.
+
    <a id="same-region"></a>
 3. **Kolokacja klientów w tym samym regionie świadczenia usługi Azure na potrzeby wydajności**
 
@@ -95,15 +111,22 @@ Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" na
 1. **Zainstaluj najnowszy zestaw SDK**
 
     Zestawy SDK Azure Cosmos DB są stale ulepszane w celu zapewnienia najlepszej wydajności. Zobacz strony [zestawu sdk Azure Cosmos DB](sql-api-sdk-dotnet-standard.md) , aby określić najnowszy zestaw SDK i zapoznać się z ulepszeniami.
-2. **Używanie pojedynczego klienta Azure Cosmos DB w okresie istnienia aplikacji**
 
-    Każde wystąpienie DocumentClient jest bezpieczne wątkowo i wykonuje wydajne zarządzanie połączeniami oraz buforowanie adresów podczas pracy w trybie bezpośrednim. Aby umożliwić efektywne zarządzanie połączeniami i lepszą wydajność dzięki DocumentClient, zaleca się użycie jednego wystąpienia elementu DocumentClient na domenę aplikacji przez okres istnienia programu.
+2. **Korzystanie z interfejsów API przesyłania strumieniowego**
+
+    [Zestaw .NET SDK v3](sql-api-sdk-dotnet-standard.md) zawiera interfejsy API przesyłania strumieniowego, które mogą odbierać i zwracać dane bez serializacji. 
+
+    Aplikacje warstwy środkowej, które nie zużywają odpowiedzi z zestawu SDK bezpośrednio, ale przekazują je do innych warstw aplikacji, mogą korzystać z interfejsów API usługi Stream. Zobacz przykłady [zarządzania elementami](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement) na potrzeby obsługi strumienia.
+
+3. **Używanie pojedynczego klienta Azure Cosmos DB w okresie istnienia aplikacji**
+
+    Każde wystąpienie DocumentClient i CosmosClient jest bezpieczne wątkowo i wykonuje wydajne zarządzanie połączeniami oraz buforowanie adresów podczas pracy w trybie bezpośrednim. Aby umożliwić efektywne zarządzanie połączeniami i lepszą wydajność przez klienta zestawu SDK, zaleca się użycie jednego wystąpienia na domenę aplikacji przez okres istnienia tej usługi.
 
    <a id="max-connection"></a>
-3. **Zwiększ System.Net MaxConnections na hosta podczas korzystania z trybu bramy**
+4. **Zwiększ System.Net MaxConnections na hosta podczas korzystania z trybu bramy**
 
     Żądania Azure Cosmos DB są wykonywane za pośrednictwem protokołu HTTPS/REST podczas korzystania z trybu bramy i podlegają domyślnemu limitowi połączeń na nazwę hosta lub adres IP. Może być konieczne ustawienie dla elementu MaxConnections wyższej wartości (100-1000), aby Biblioteka klienta mogła używać wielu jednoczesnych połączeń do Azure Cosmos DB. W 1.8.0 .NET SDK i nowszych wartość domyślna dla ServicePointManager [. DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) to 50 i aby zmienić wartość, można ustawić [dokumenty. Client. ConnectionPolicy. MaxConnectionLimit](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) na wyższą wartość.   
-4. **Dostrajanie równoległych zapytań dla kolekcji partycjonowanych**
+5. **Dostrajanie równoległych zapytań dla kolekcji partycjonowanych**
 
      Zestaw SDK programu SQL .NET w wersji 1.9.0 lub nowszej obsługuje zapytania równoległe, które umożliwiają równoległe wykonywanie zapytań do kolekcji partycjonowanej. Aby uzyskać więcej informacji, zobacz [przykłady kodu](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) związane z pracą z zestawami SDK. Zapytania równoległe są przeznaczone do poprawiania opóźnienia zapytań i przepływności w porównaniu z ich odpowiednikami seryjnymi. Zapytania równoległe zawierają dwa parametry, które użytkownicy mogą dostosowywać do własnych wymagań, (a) MaxDegreeOfParallelism: aby kontrolować maksymalną liczbę partycji, a następnie można wykonywać zapytania równoległe i (b) MaxBufferedItemCount: w celu kontrolowania liczby wstępnie pobrane wyniki.
 
@@ -114,10 +137,10 @@ Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" na
     (b) ***dostrajanie\:***  równoległe zapytania MaxBufferedItemCount zaprojektowano w celu wstępnego pobrania wyników podczas przetwarzania bieżącej partii wyników przez klienta. Wstępne pobieranie pomaga w ogólnym ulepszaniu opóźnienia zapytania. MaxBufferedItemCount jest parametrem, aby ograniczyć liczbę wstępnie pobranych wyników. Ustawienie MaxBufferedItemCount na oczekiwaną liczbę zwracanych wyników (lub wyższą liczbę) umożliwia zapytanie, aby otrzymać maksymalną korzyść z pobierania wstępnego.
 
     Przed pobraniem działa w taki sam sposób, niezależnie od MaxDegreeOfParallelism, i istnieje jeden bufor dla danych ze wszystkich partycji.  
-5. **Włącz funkcję GC po stronie serwera**
+6. **Włącz funkcję GC po stronie serwera**
 
     Zmniejszenie częstotliwości wyrzucania elementów bezużytecznych może pomóc w niektórych przypadkach. W programie .NET Ustaw [gcServer](https://msdn.microsoft.com/library/ms229357.aspx) na wartość true.
-6. **Implementowanie wycofywania w interwałach RetryAfter**
+7. **Implementowanie wycofywania w interwałach RetryAfter**
 
     Podczas testowania wydajności należy zwiększyć obciążenie, dopóki nie zostanie ograniczona niewielka liczba żądań. W przypadku ograniczenia przepustowości aplikacja kliencka powinna wycofywania przy użyciu ograniczenia przepustowości dla interwału ponawiania określonych przez serwer. Poszanowanie wycofywania gwarantuje, że spędzasz minimalny czas oczekiwania między ponownymi próbami. Obsługa zasad ponawiania jest dostępna w wersji 1.8.0 i nowszych od programów SQL [.NET](sql-api-sdk-dotnet.md) i [Java](sql-api-sdk-java.md), w wersji 1.9.0 i nowszych od [Node. js](sql-api-sdk-node.md) i [Python](sql-api-sdk-python.md)oraz wszystkich obsługiwanych wersji zestawów SDK [platformy .NET Core](sql-api-sdk-dotnet-core.md) . Aby uzyskać więcej informacji, [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx).
     
@@ -127,15 +150,15 @@ Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" na
     readDocument.RequestDiagnosticsString 
     ```
     
-7. **Skalowanie obciążenia klienta**
+8. **Skalowanie obciążenia klienta**
 
     Jeśli testujesz na poziomach o wysokiej przepływności (> 50 000 RU/s), aplikacja kliencka może stać się wąskim gardłem z powodu ograniczenia przepustowości procesora lub sieci. Jeśli docierasz do tego punktu, możesz kontynuować wypychanie konta Azure Cosmos DB przez skalowanie aplikacji klienckich na wiele serwerów.
-8. **Identyfikatory URI dokumentów pamięci podręcznej dla niskiego opóźnienia odczytu**
+9. **Identyfikatory URI dokumentów pamięci podręcznej dla niskiego opóźnienia odczytu**
 
     W miarę możliwości można buforować identyfikatory URI dokumentów w celu uzyskania najlepszej wydajności odczytu. Należy zdefiniować logikę do buforowania ResourceID podczas tworzenia zasobu. Wyszukiwania oparte na ResourceID są szybsze niż wyszukiwania oparte na nazwach, więc buforowanie tych wartości zwiększa wydajność. 
 
    <a id="tune-page-size"></a>
-1. **Dostosuj rozmiar strony dla zapytań/Odczytaj źródła w celu uzyskania lepszej wydajności**
+10. **Dostosuj rozmiar strony dla zapytań/Odczytaj źródła w celu uzyskania lepszej wydajności**
 
    Podczas wykonywania zbiorczej odczytu dokumentów przy użyciu funkcji odczytywania kanału informacyjnego (na przykład ReadDocumentFeedAsync) lub podczas wystawiania zapytania SQL wyniki są zwracane w postaci segmentacji, jeśli zestaw wyników jest zbyt duży. Domyślnie wyniki są zwracane w fragmentach 100 elementów lub 1 MB, w zależności od tego, który limit zostanie osiągnięty jako pierwszy.
 
@@ -144,7 +167,7 @@ Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" na
    > [!NOTE] 
    > Właściwość maxItemCount nie powinna być używana tylko do celów stronicowania. Jest to główne użycie, aby zwiększyć wydajność zapytań, zmniejszając maksymalną liczbę elementów zwracanych na jednej stronie.  
 
-   Możesz również ustawić rozmiar strony przy użyciu dostępnych zestawów SDK Azure Cosmos DB. Właściwość [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) w FeedOptions umożliwia ustawienie maksymalnej liczby elementów, które mają być zwracane w operacji enmuration. Gdy `maxItemCount` jest ustawiona na-1, zestaw SDK automatycznie znajdzie najbardziej optymalną wartość w zależności od rozmiaru dokumentu. Przykład:
+   Możesz również ustawić rozmiar strony przy użyciu dostępnych zestawów SDK Azure Cosmos DB. Właściwość [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) w FeedOptions umożliwia ustawienie maksymalnej liczby elementów, które mają być zwracane w operacji wyliczania. Gdy `maxItemCount` jest ustawiona na-1, zestaw SDK automatycznie znajdzie najbardziej optymalną wartość w zależności od rozmiaru dokumentu. Na przykład:
     
    ```csharp
     IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });
@@ -152,17 +175,17 @@ Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" na
     
    Po wykonaniu zapytania dane uzyskane są wysyłane w ramach pakietu TCP. Jeśli określisz zbyt niską wartość `maxItemCount`dla, liczba podróży wymagana do wysłania danych w ramach pakietu TCP jest wysoka, co ma wpływ na wydajność. Dlatego jeśli nie masz pewności, jaka wartość jest ustawiona dla `maxItemCount` właściwości, najlepiej ustawić ją na wartość-1 i pozwolić zestawowi SDK na wybranie wartości domyślnej. 
 
-10. **Zwiększ liczbę wątków/zadań**
+11. **Zwiększ liczbę wątków/zadań**
 
     Zobacz temat [zwiększanie liczby wątków/zadań](#increase-threads) w sekcji Sieć.
 
-11. **Korzystanie z 64-bitowego przetwarzania hosta**
+12. **Korzystanie z 64-bitowego przetwarzania hosta**
 
     Zestaw SQL SDK działa w procesie hosta 32-bitowego w przypadku korzystania z zestawu SQL .NET SDK w wersji 1.11.4 lub nowszej. Jeśli jednak używasz zapytań między partycjami, 64-bitowe przetwarzanie hosta jest zalecane w celu zwiększenia wydajności. Następujące typy aplikacji mają 32-bitowy proces hosta jako domyślny, więc aby zmienić go na 64-bitowy, wykonaj następujące kroki na podstawie typu aplikacji:
 
     - W przypadku aplikacji wykonywalnych można to zrobić, usuwając zaznaczenie opcji **preferuj 32-bitową** w oknie **właściwości projektu** na karcie **kompilacja** .
 
-    - W przypadku projektów testowych opartych na VSTest można to zrobić,->wybierając pozycję Testuj testy**Ustawienia**->**domyślne architektura procesora jako x64**z opcji menu **test programu Visual Studio** .
+    - W przypadku projektów testowych opartych na VSTest można to zrobić, **wybierając**->pozycję Testuj testy**Ustawienia**->**domyślne architektura procesora jako x64**z opcji menu **test programu Visual Studio** .
 
     - W przypadku lokalnie wdrożonych aplikacji sieci Web ASP.NET można to zrobić, sprawdzając, **jak używać 64-bitowej wersji IIS Express dla witryn i projektów sieci Web**, w obszarze **Narzędzia**->**Opcje**->**projekty i rozwiązania** **Projekty sieci Web.** ->
 

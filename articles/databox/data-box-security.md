@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 09/24/2018
+ms.date: 09/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 3e871b8d4de8ff83e260aded89e09ad5b17b3297
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 678bef1b18d60679be6c296a1fd7beef42f721b7
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65799225"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203824"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Zabezpieczenia i ochrona danych w usłudze Azure Data Box
 
@@ -34,7 +34,7 @@ Poniższy diagram przedstawia przepływ danych z infrastruktury lokalnej na plat
 
 ![Zabezpieczenia usługi Data Box](media/data-box-security/data-box-security-2.png)
 
-Dane przepływają przez to rozwiązanie, zdarzenia są rejestrowane i są generowane dzienniki. Aby uzyskać więcej informacji, przejdź do [śledzenie i rejestrowanie zdarzeń dla usługi Azure Data Box](data-box-logs.md).
+Ponieważ dane są przepływane przez to rozwiązanie, rejestrowane są zdarzenia i dzienniki są generowane. Aby uzyskać więcej informacji, przejdź do obszaru [śledzenie i rejestrowanie zdarzeń dla Azure Data Box](data-box-logs.md).
 
 ## <a name="security-features"></a>Funkcje zabezpieczeń
 
@@ -50,7 +50,7 @@ Urządzenie Data Box jest chronione przez następujące funkcje:
 - Uruchamia się tylko oprogramowanie urządzenia Data Box.
 - Urządzenie uruchamia się w stanie zablokowanym.
 - Dostęp do urządzenia jest możliwy po podaniu hasła odblokowania urządzenia.
-- Poświadczenia dostępu umożliwiające kopiowanie danych do i z urządzenia. Wszystkie dostęp do **poświadczenia urządzenia** strony w usłudze Azure portal są rejestrowane w [dzienników aktywności](data-box-logs.md#query-activity-logs-during-setup).
+- Poświadczenia dostępu umożliwiające kopiowanie danych do i z urządzenia. Wszystkie uprawnienia dostępu do strony **poświadczenia urządzenia** w Azure Portal są rejestrowane w [dziennikach aktywności](data-box-logs.md#query-activity-logs-during-setup).
 
 ### <a name="data-box-data-protection"></a>Ochrona danych na urządzeniu Data Box
 
@@ -58,7 +58,7 @@ Dane przesyłane do i z rozwiązania Data Box są chronione przez następujące 
 
 - 256-bitowe szyfrowanie AES magazynowanych danych.
 - W przypadku transmitowanych danych można używać zaszyfrowanych protokołów.
-- Bezpieczne usunięcie danych z urządzenia po zakończeniu przekazywania danych na platformę Azure. Dane są usuwane zgodnie z normą NIST 800-88r1. Zdarzenie wymazywania danych jest rejestrowane w [kolejność historii](data-box-logs.md#download-order-history).
+- Bezpieczne usunięcie danych z urządzenia po zakończeniu przekazywania danych na platformę Azure. Wymazywane dane są zgodne z wytycznymi zawartymi w [dodatku A dla dysków twardych usługi ATA w standardach NIST 800-88r1](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf). Zdarzenie wymazywania danych jest rejestrowane w [historii kolejności](data-box-logs.md#download-order-history).
 
 ### <a name="data-box-service-protection"></a>Ochrona usługi Data Box
 
@@ -66,7 +66,7 @@ Usługa Data Box jest chroniona przez następujące funkcje.
 
 - Aby uzyskać dostęp do usługi Data Box, organizacja musi mieć subskrypcję platformy Azure obejmującą usługę Data Box. Subskrypcja określa funkcje, do których masz dostęp w witrynie Azure Portal.
 - Ponieważ usługa Data Box jest hostowana na platformie Azure, chronią ją funkcje zabezpieczeń platformy Azure. Aby uzyskać więcej informacji na temat funkcji zabezpieczeń platformy Microsoft Azure, zobacz [Centrum zaufania Microsoft Azure](https://www.microsoft.com/TrustCenter/Security/default.aspx).
-- Dostęp do zamówienie urządzenia Data Box można sterować za pośrednictwem używanie ról kontroli dostępu opartej na rolach (RBAC). Aby uzyskać więcej informacji, zobacz [Konfigurowanie kontroli dostępu dla zamówienie urządzenia Data Box](data-box-logs.md#set-up-access-control-on-the-order)
+- Dostęp do kolejności urządzenie Data Box można kontrolować za pomocą ról Access Control opartych na rolach (RBAC). Aby uzyskać więcej informacji, zobacz [Konfigurowanie kontroli dostępu dla kolejności urządzenie Data Box](data-box-logs.md#set-up-access-control-on-the-order)
 - W usłudze Data Box jest przechowywane hasło odblokowania służące do odblokowania urządzenia w usłudze.
 - W usłudze Data Box są przechowywane szczegóły zamówienia i jego stan. Te informacje są usuwane po usunięciu zamówienia.
 
@@ -80,11 +80,11 @@ W usłudze Azure Data Box dane osobowe są zbierane i wyświetlane w następują
 
   - Nazwa kontaktu
   - Numer telefonu
-  - Poczta e-mail
-  - Adres
+  - Email
+  - Ulica
   - Miasto
   - Kod pocztowy
-  - Stan
+  - State
   - Kraj/Województwo/Region
   - Numer konta operatora
   - Numer śledzenia dostawy
@@ -106,9 +106,9 @@ W usłudze Data Box są zaimplementowane następujące wytyczne dotyczące zabez
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | Dotyczy odporności na niekorzystne warunki podczas transportu          |
 |[NIST SP 800-147](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-147.pdf)      | Dotyczy bezpiecznej aktualizacji oprogramowania układowego         |
 |[FIPS 140-2 Level 2](https://csrc.nist.gov/csrc/media/publications/fips/140/2/final/documents/fips1402.pdf)      | Dotyczy ochrony danych         |
-|[NIST SP 800-88r1](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf)      | Dotyczy oczyszczania danych         |
+|Dodatek A dla dysków twardych usługi ATA w obszarze [NIST SP 88r1](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf)      | Dotyczy oczyszczania danych         |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Zapoznaj się z [wymaganiami rozwiązania Data Box](data-box-system-requirements.md).
 - Poznaj [ograniczenia usługi Data Box](data-box-limits.md).

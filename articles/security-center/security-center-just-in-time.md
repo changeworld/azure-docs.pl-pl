@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 9948f4d9e6287530004b073adf10bb723899e96d
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 2abe917d1713bbc5f5844aced5e688baacc7d397
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910606"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202015"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Zarządzanie dostępem do maszyny wirtualnej przy użyciu funkcji just in Time
 
@@ -38,7 +38,7 @@ Jednym ze sposobów zmniejszenia narażenia na ataki z wykorzystaniem bezprawneg
 
 Gdy jest włączone just-in-Time, Security Center blokuje ruch przychodzący do maszyn wirtualnych platformy Azure przez utworzenie reguły sieciowej grupy zabezpieczeń. Wybierasz porty na maszynie wirtualnej, do której zostanie zablokowany ruch przychodzący. Te porty są kontrolowane przez rozwiązanie just-in-Time.
 
-Gdy użytkownik zażąda dostępu do maszyny wirtualnej, Security Center sprawdza, czy użytkownik ma uprawnienia [Access Control (RBAC) oparte na rolach](../role-based-access-control/role-assignments-portal.md) , które pozwalają na pomyślne zażądanie dostępu do maszyny wirtualnej. Jeśli żądanie zostało zatwierdzone, Security Center automatycznie konfiguruje sieciowe grupy zabezpieczeń (sieciowych grup zabezpieczeń) i zaporę platformy Azure w celu zezwolenia na ruch przychodzący do wybranych portów i żądanych źródłowych adresów IP lub zakresów, przez określony czas. Po upływie tego czasu program Security Center Przywraca poprzedni stan sieciowych grup zabezpieczeń. Te połączenia, które są już ustanowione, nie są jednak przerywane.
+Gdy użytkownik zażąda dostępu do maszyny wirtualnej, Security Center sprawdza, czy użytkownik ma uprawnienia [Access Control na podstawie ról (RBAC)](../role-based-access-control/role-assignments-portal.md) dla tej maszyny wirtualnej. Jeśli żądanie zostało zatwierdzone, Security Center automatycznie konfiguruje sieciowe grupy zabezpieczeń (sieciowych grup zabezpieczeń) i zaporę platformy Azure w celu zezwolenia na ruch przychodzący do wybranych portów i żądanych źródłowych adresów IP lub zakresów, przez określony czas. Po upływie tego czasu program Security Center Przywraca poprzedni stan sieciowych grup zabezpieczeń. Te połączenia, które są już ustanowione, nie są jednak przerywane.
 
  > [!NOTE]
  > Jeśli żądanie dostępu JIT zostanie zatwierdzone dla maszyny wirtualnej za zaporą platformy Azure, Security Center automatycznie zmieni reguły zasad sieciowej grupy zabezpieczeń i zapory. Przez określony czas, reguły zezwalają na ruch przychodzący do wybranych portów i żądanych źródłowych adresów IP lub zakresów. Po upływie tego czasu program Security Center przywraca poprzednie Stany zapory i reguły sieciowej grupy zabezpieczeń.
@@ -99,7 +99,7 @@ Z poziomu ASC można skonfigurować zasady JIT i zażądać dostępu do maszyny 
       - 5986 — WinRM
 6. Możesz również skonfigurować porty niestandardowe:
 
-      1. Kliknij przycisk **Dodaj**. Zostanie otwarte okno **Dodaj konfigurację portu** .
+      1. Kliknij pozycję **Dodaj**. Zostanie otwarte okno **Dodaj konfigurację portu** .
       2. Dla każdego skonfigurowanego portu, zarówno domyślnego, jak i niestandardowego, można dostosować następujące ustawienia:
 
     - **Typ protokołu**— protokół, który jest dozwolony na tym porcie w przypadku zatwierdzenia żądania.
@@ -108,7 +108,7 @@ Z poziomu ASC można skonfigurować zasady JIT i zażądać dostępu do maszyny 
 
      3. Kliknij przycisk **OK**.
 
-1. Kliknij polecenie **Zapisz**.
+1. Kliknij pozycję **Zapisz**.
 
 > [!NOTE]
 >Gdy dla maszyny wirtualnej jest włączony dostęp JIT dla maszyny wirtualnej, Azure Security Center tworzy reguły "Odmów wszystkim ruchem przychodzącym" dla wybranych portów w grupach zabezpieczeń sieci skojarzonych i z tą zaporą platformy Azure. Jeśli zostały utworzone inne reguły dla wybranych portów, istniejące reguły mają pierwszeństwo przed nowym regułą "odmowa całego ruchu przychodzącego". Jeśli nie ma żadnych istniejących reguł na wybranych portach, nowy reguły "Odrzuć cały ruch przychodzący" mają najwyższy priorytet w grupach zabezpieczeń sieci i zaporze platformy Azure.

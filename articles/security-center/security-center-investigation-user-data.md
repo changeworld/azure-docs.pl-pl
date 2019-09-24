@@ -1,11 +1,10 @@
 ---
-title: Zarządzanie danymi użytkownika w Centrum zabezpieczeń Azure badanie | Dokumentacja firmy Microsoft
-description: " Dowiedz się, jak zarządzać danymi użytkownika w funkcji badania w usłudze Azure Security Center. "
+title: Zarządzanie danymi użytkownika w badaniu Azure Security Center | Microsoft Docs
+description: " Dowiedz się, jak zarządzać danymi użytkowników znalezionymi w funkcji badania Azure Security Center. "
 services: operations-management-suite
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
 ms.devlang: na
@@ -13,40 +12,40 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2018
-ms.author: rkarlin
-ms.openlocfilehash: 1fd979be117104186b2dfce47cc79947a092eb9e
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.author: memildin
+ms.openlocfilehash: 8b6bde69f233fee9fe20b260e392966298f13a9a
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672325"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202039"
 ---
-# <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Zarządzanie danymi użytkownika w Centrum zabezpieczeń Azure badanie
-Ten artykuł zawiera informacje na temat sposobu zarządzania danymi użytkownika w funkcji badania w usłudze Azure Security Center. Badanie dane są przechowywane w [dzienniki usługi Azure Monitor](../log-analytics/log-analytics-overview.md) i widoczne w usłudze Security Center. Zarządzanie danymi użytkowników obejmuje możliwość usunięcia lub eksportowanie danych.
+# <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Zarządzanie danymi użytkownika w badaniu Azure Security Centernym
+Ten artykuł zawiera informacje na temat zarządzania danymi użytkownika znalezionymi w funkcji badania Azure Security Center. Dane badania są przechowywane w [Azure monitor dziennikach](../log-analytics/log-analytics-overview.md) i udostępniane w Security Center. Zarządzanie danymi użytkownika obejmuje możliwość usuwania lub eksportowania danych.
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="searching-for-and-identifying-personal-data"></a>Wyszukiwanie i identyfikowanie danych osobowych
-W witrynie Azure portal, można użyć Centrum zabezpieczeń [funkcji badania](../security-center/security-center-investigation.md) do wyszukiwania danych osobowych. Funkcja badanie jest dostępna w ramach **alerty zabezpieczeń**.
+W Azure Portal można użyć [funkcji badania](../security-center/security-center-investigation.md) Security Center, aby wyszukać dane osobowe. Funkcja badania jest dostępna w obszarze **alerty zabezpieczeń**.
 
-Funkcja badanie pokazuje wszystkie jednostki, informacje o użytkownikach i danych w ramach **jednostek** kartę.
+Funkcja badania pokazuje wszystkie jednostki, informacje o użytkownikach i dane na karcie **jednostki** .
 
-## <a name="securing-and-controlling-access-to-personal-information"></a>Zabezpieczanie i kontrolowanie dostępu do danych osobowych
-Użytkownika usługa Security Center przypisaną rolę Czytelnik, właściciela, współautora lub administratora konta mają dostęp do danych klienta w narzędziu.
+## <a name="securing-and-controlling-access-to-personal-information"></a>Zabezpieczanie i kontrola dostępu do danych osobowych
+Użytkownik Security Center przypisany do roli czytelnik, właściciel, współautor lub administrator konta może uzyskać dostęp do danych klienta w ramach tego narzędzia.
 
-Zobacz [wbudowane role kontroli dostępu opartej na rolach na platformie Azure](../role-based-access-control/built-in-roles.md) Aby dowiedzieć się więcej o rolach czytnika, właściciel i współautor. Zobacz [Administratorzy subskrypcji platformy Azure](../billing/billing-add-change-azure-subscription-administrator.md) dowiedzieć się więcej o rolach administratora konta.
+Zobacz [wbudowane role dla kontroli dostępu opartej na rolach na platformie Azure](../role-based-access-control/built-in-roles.md) , aby dowiedzieć się więcej na temat ról czytelnik, właściciel i współautor. Zobacz [administratorów subskrypcji platformy Azure](../billing/billing-add-change-azure-subscription-administrator.md) , aby dowiedzieć się więcej o roli administratora konta.
 
 ## <a name="deleting-personal-data"></a>Usuwanie danych osobowych
-Użytkownik usługi Security Center przypisaną rolę właściciela, współautora, lub Administrator konta może usunąć informacji badania.
+Użytkownik Security Center przypisany do roli właściciela, współautora lub administrator konta może usunąć informacje o badaniu.
 
-Aby usunąć dochodzenia, możesz przesłać `DELETE` żądania interfejsu API REST usługi Azure Resource Manager:
+Aby usunąć badanie, możesz przesłać `DELETE` żądanie do interfejsu API REST Azure Resource Manager:
 
 ```HTTP
 DELETE
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/features/security/incidents/{incidentName}
 ```
 
-`incidentName` Danych wejściowych można znaleźć, wyświetlając listę wszystkich zdarzeń za pomocą `GET` żądania:
+Dane wejściowe można znaleźć, wyświetlając listę wszystkich zdarzeń `GET` przy użyciu żądania: `incidentName`
 
 ```HTTP
 GET
@@ -54,8 +53,8 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 ```
 
 ## <a name="exporting-personal-data"></a>Eksportowanie danych osobowych
-Użytkownik usługi Security Center przypisaną rolę właściciela, współautora, lub Administrator konta może wyeksportować informacje badania. Aby wyeksportować informacje badania, przejdź do **jednostek** kartę, aby skopiować i wkleić istotne informacje.
+Użytkownik Security Center przypisany do roli właściciela, współautora lub administratora konta może eksportować informacje o badaniu. Aby wyeksportować informacje o badaniu, przejdź do karty **jednostki** , aby skopiować i wkleić odpowiednie informacje.
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji na temat zarządzających danymi użytkowników zobacz [zarządzanie danymi użytkownika w usłudze Azure Security Center](security-center-privacy.md).
-Aby dowiedzieć się więcej na temat usuwania danych prywatnych w dziennikach w usłudze Azure Monitor, zobacz [sposobu eksportowania i usuwania danych prywatnych](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data).
+## <a name="next-steps"></a>Następne kroki
+Aby uzyskać więcej informacji na temat zarządzania danymi użytkowników, zobacz [Zarządzanie danymi użytkowników w Azure Security Center](security-center-privacy.md).
+Aby dowiedzieć się więcej o usuwaniu danych prywatnych w dziennikach Azure Monitor, zobacz [Jak eksportować i usuwać dane prywatne](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data).

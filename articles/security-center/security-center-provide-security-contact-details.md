@@ -3,9 +3,8 @@ title: Podaj szczegóły kontaktu zabezpieczeń w Azure Security Center | Micros
 description: W tym dokumencie pokazano, jak zapewnić szczegóły dotyczące kontaktu z zabezpieczeniami w Azure Security Center.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 26b5dcb4-ce3f-4f22-8d56-d2bf743cfc90
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/09/2019
-ms.author: rkarlin
-ms.openlocfilehash: ae7c130df40ea0553bd9e3ae117534fe98466f26
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.author: memildin
+ms.openlocfilehash: fabccb7a3f49442a009fd69ee6d3b831760751d2
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68934905"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201027"
 ---
 # <a name="provide-security-contact-details-in-azure-security-center"></a>Podaj szczegóły kontaktu zabezpieczeń w Azure Security Center
 W Azure Security Center zalecamy podanie szczegółowych informacji o kontakcie zabezpieczeń dla subskrypcji platformy Azure, jeśli jeszcze tego nie zrobiono. Te informacje będą używane przez firmę Microsoft do kontaktowania się z Tobą, gdy centrum Microsoft Security Response Center (MSRC) wykryje, że osoby nieupoważnione lub działające niezgodnie z prawem uzyskały dostęp do Twoich danych klienta. Usługa MSRC wybiera pozycję monitorowanie zabezpieczeń sieci i infrastruktury platformy Azure, a następnie odbiera analizę zagrożeń i nieodpowiednie skargi od stron trzecich.
@@ -44,7 +43,7 @@ Jeśli na przykład została już wysłana wiadomość e-mail z powiadomieniem o
 1. Kliknij pozycję **powiadomienia e-mail**.
 
 > [!NOTE]
-> Jeśli wdrażasz zalecenie, w obszarze rekomendacjewybierz pozycję **Podaj szczegóły kontaktu zabezpieczeń**, wybierz subskrypcję platformy Azure, w której mają zostać wprowadzone informacje kontaktowe. Spowoduje to otwarcie **powiadomień e-mail**.
+> Jeśli wdrażasz zalecenie, w obszarze **rekomendacje**wybierz pozycję **Podaj szczegóły kontaktu zabezpieczeń**, wybierz subskrypcję platformy Azure, w której mają zostać wprowadzone informacje kontaktowe. Spowoduje to otwarcie **powiadomień e-mail**.
 
    ![Podaj szczegóły kontaktu ds. zabezpieczeń][2]
 

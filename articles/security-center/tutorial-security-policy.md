@@ -3,9 +3,8 @@ title: Praca z zasadami zabezpieczeń | Microsoft Docs
 description: W tym artykule opisano sposób pracy z zasadami zabezpieczeń w programie Azure Security Center.
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 2d248817-ae97-4c10-8f5d-5c207a8019ea
 ms.service: security-center
 ms.devlang: na
@@ -13,14 +12,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/18/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 1820c31053c13a0f3039812b31df415bc9fa4fdc
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.date: 07/18/2019
+ms.author: memildin
+ms.openlocfilehash: 11e1c837e416a5d2105f494c43823298edfd4355
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910373"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200500"
 ---
 # <a name="working-with-security-policies"></a>Praca z zasadami zabezpieczeń
 
@@ -114,7 +113,7 @@ Aby uzyskać więcej informacji na temat zaleceń, zobacz [Zarządzanie zaleceni
 1. W sekcji **Parametry** Wyszukaj zasady wywołujące zalecenie, które chcesz wyłączyć, a następnie z listy rozwijanej wybierz pozycję **wyłączone** .
 
    ![Wyłącz zasady](./media/tutorial-security-policy/disable-policy.png)
-1. Kliknij polecenie **Zapisz**.
+1. Kliknij pozycję **Zapisz**.
    > [!Note]
    > Wyłączenie zmian zasad może potrwać do 12 godzin.
 
@@ -223,7 +222,7 @@ Ten przykład pokazuje, jak usunąć przypisanie:
 
 |Nazwa zasad w Security Center|Nazwa zasad wyświetlana w Azure Policy |Nazwa parametru efektu zasad|
 |----|----|----|
-|Szyfrowanie danych SQL |Monitorowanie nieszyfrowanej bazy danych SQL w Azure Security Center |sqlEncryptionMonitoringEffect| 
+|Szyfrowanie SQL |Monitorowanie nieszyfrowanej bazy danych SQL w Azure Security Center |sqlEncryptionMonitoringEffect| 
 |Inspekcja SQL |Monitoruj niepoddaną inspekcję bazy danych SQL w Azure Security Center |sqlAuditingMonitoringEffect|
 |Aktualizacje systemu |Monitoruj brakujące aktualizacje systemu w Azure Security Center |systemUpdatesMonitoringEffect|
 |Szyfrowanie w usłudze Storage |Inspekcja braku szyfrowania obiektów BLOB dla kont magazynu |storageEncryptionMonitoringEffect|

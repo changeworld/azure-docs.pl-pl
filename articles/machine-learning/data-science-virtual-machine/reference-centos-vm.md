@@ -1,5 +1,5 @@
 ---
-title: 'Informacje ogólne: CentOS DSVM'
+title: 'Informacje ogólne: Maszyna DSVM z systemem CentOS'
 description: Szczegóły dotyczące narzędzi uwzględnionych w CentOS Data Science Virtual Machine
 author: gvashishtha
 ms.service: machine-learning
@@ -7,12 +7,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 9366eb1bde05d80b8882ee28aa9eb03a75f75964
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: d50bb18d15bcad72eed3a97088b61c623e6208fe
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174723"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71199974"
 ---
 # <a name="reference-centos-linux-data-science-virtual-machine"></a>Informacje ogólne: CentOS (Linux) Data Science Virtual Machine
 
@@ -341,3 +341,7 @@ Zostanie otwarty interfejs graficzny, który ma zestaw kart. Poniższe kroki szy
 1. Wybierz przycisk **Eksportuj** , aby zapisać plik skryptu języka R o nazwie *weather_script. R* do folderu macierzystego.
 
 Możesz wyjść z Rattle i R. Teraz można zmodyfikować wygenerowany skrypt języka R. Można też użyć skryptu w taki sposób, aby był on uruchamiany w dowolnym momencie, aby powtórzyć wszystko, co zostało zrobione w interfejsie użytkownika Rattle. Szczególnie w przypadku początkujących w języku R, jest to sposób, aby szybko przeprowadzić analizę i uczenie maszynowe w prostym interfejsie graficznym, podczas gdy automatycznie generuje kod w języku R w celu zmodyfikowania lub uczenia się.
+
+## <a name="next-steps"></a>Następne kroki
+
+Masz dodatkowe pytania? Rozważ utworzenie [biletu pomocy technicznej](https://azure.microsoft.com/support/create-ticket/).

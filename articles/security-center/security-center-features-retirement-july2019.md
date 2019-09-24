@@ -8,25 +8,24 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: b4367bacf13e121220f12b6587c5ad60ad59d031
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 6e7263dfa0faf0bf2fd7e8b7d6e050ca6bc95e2a
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910570"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202214"
 ---
+# <a name="retirement-of-security-center-features-july-2019"></a>Wycofanie funkcji Security Center (lipiec 2019)
+
 > [!NOTE]
 > W tym dokumencie szczegółowo przedstawiono listę funkcji, które zostały wycofane z Azure Security Center 31 lipca 2019.
 >
 >
 
-
-# <a name="retirement-of-security-center-features-july-2019"></a>Wycofanie funkcji Security Center (lipiec 2019)
-
 Wprowadziliśmy kilka [ulepszeń](https://azure.microsoft.com/updates/?product=security-center) Azure Security Center w ciągu sześciu miesięcy, które zaczynają się do lipca 2019.
 Dzięki tym ulepszonym funkcjom firma Microsoft usunęła pewne nadmiarowe funkcje i powiązane interfejsy API z programu Security Center 31 lipca 2019.
 
-Większość tych funkcji wycofywania można zastąpić nową funkcją w Azure Security Center lub Log Analytics platformy Azure. Inne funkcje można zaimplementować przy użyciu [systemu Azure (wersja zapoznawcza)](https://azure.microsoft.com/services/azure-sentinel/).
+Większość z tych wycofanych funkcji można zastąpić innymi funkcjami w Azure Security Center lub Log Analytics platformy Azure. Inne funkcje można zaimplementować przy użyciu [systemu Azure (wersja zapoznawcza)](https://azure.microsoft.com/services/azure-sentinel/).
 
 Wycofane funkcje Security Center obejmują:
 
@@ -104,11 +103,11 @@ Usunęliśmy przycisk **Przejdź do mapy zdarzeń zabezpieczeń** i pulpit nawig
 
 ![Mapa alertów zabezpieczeń — przycisk][10]
 
-Po wybraniu przycisku **Przejdź do mapy zdarzeń zabezpieczeń** zostanie otwarty pulpit nawigacyjny analizy zagrożeń. Wycofano pulpit nawigacyjny analizy zagrożeń.
+Po wybraniu przycisku **Przejdź do mapy zdarzeń zabezpieczeń** zostanie otwarty pulpit nawigacyjny analizy zagrożeń (teraz wycofany).
 
 ![Pulpit nawigacyjny Analiza zagrożeń][11]
 
-Po wybraniu obszaru roboczego, aby wyświetlić pulpit nawigacyjny analizy zagrożeń, należy otworzyć ekran Mapa alerty zabezpieczeń (wersja zapoznawcza) w Log Analytics. Wycofano ten ekran.
+Po wybraniu obszaru roboczego, aby wyświetlić pulpit nawigacyjny analizy zagrożeń, należy otworzyć ekran mapy alertów zabezpieczeń (wersja zapoznawcza) na stronie Log Analytics.
 
 ![Mapa alertów zabezpieczeń w Log Analytics][12]
 

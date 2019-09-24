@@ -3,7 +3,7 @@ title: 'Dokumentacja interfejsu API platformy Azure monitor stanu v2: Konfigurac
 description: Dokumentacja interfejsu API monitor stanu v2. Set-ApplicationInsightsMonitoringConfig. Monitorowanie wydajności witryny sieci Web bez ponownego wdrażania witryny sieci Web. Współpracuje z usługą ASP.NET Web Apps hostowaną lokalnie, na maszynach wirtualnych lub na platformie Azure.
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: TimothyMothra
 manager: alexklim
 ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: f3a55caba13b3b96884d446e0750d9fb67a343df
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 6d93be5b01be63a75041b939f6b8deb9106c4262
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326293"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200452"
 ---
 # <a name="status-monitor-v2-api-set-applicationinsightsmonitoringconfig"></a>Interfejs API monitor stanu v2: Set-ApplicationInsightsMonitoringConfig
 

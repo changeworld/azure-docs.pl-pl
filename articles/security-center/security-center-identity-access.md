@@ -3,9 +3,8 @@ title: Monitorowanie tożsamości i dostępu w usłudze Azure Security Center | 
 description: Dowiedz się, jak korzystać z funkcji zarządzania tożsamościami i dostępem w usłudze Azure Security Center w celu monitorowania dostępu użytkowników i rozwiązywania problemów związanych z tożsamościami.
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 9f04e730-4cfa-4078-8eec-905a443133da
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2018
-ms.author: v-mohabe
-ms.openlocfilehash: 1ef4d8e76b54b995a09decdfaf9974f0929c8ed9
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.author: memildin
+ms.openlocfilehash: d035dc4e8f77bb64a9e845a9dae0668365a6aacb
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905340"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202278"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Monitorowanie tożsamości i dostępu w Azure Security Center (wersja zapoznawcza)
 Ten artykuł ułatwia korzystanie z usługi Azure Security Center w celu monitorowania tożsamości i dostępu użytkowników.
@@ -44,7 +43,7 @@ Dzięki monitorowaniu działań związanych z tożsamością możesz podejmować
 Security Center nie może uruchomić zaleceń dotyczących tożsamości dla agentów administratora dostawcy rozwiązań w chmurze (CSP).
 >
 
-Zapoznaj się z listą rekomendacji i rekomendacji dotyczących dostępu zapewnianych przez Security Center. [](security-center-identity-access.md#recommendations)
+Zapoznaj [się](security-center-identity-access.md#recommendations) z listą rekomendacji i rekomendacji dotyczących dostępu zapewnianych przez Security Center.
 
 ## <a name="monitoring-security-health"></a>Monitorowanie kondycji zabezpieczeń
 Możesz monitorować stan zabezpieczeń zasobów na **Security Center — Przegląd** pulpitu nawigacyjnego. Sekcja Resources to wskaźnik kondycji przedstawiający serwery dla każdego typu zasobu.
@@ -111,9 +110,9 @@ Skorzystaj z poniższej tabeli jako odniesienia, aby pomóc zrozumieć dostępn�
 |Typ zasobu|Wskaźnik bezpieczeństwa|Zalecenie|Opis|
 |----|----|----|----|
 |Subscription|50|Uwierzytelnianie wieloskładnikowe powinno być włączone na kontach z uprawnieniami właściciela w ramach subskrypcji|Włącz uwierzytelnianie wieloskładnikowe (MFA) dla wszystkich kont subskrypcji z uprawnieniami administratora, aby zapobiec naruszeniu kont lub zasobów.|
-|Subscription|40|Uwierzytelnianie wieloskładnikowe powinno być włączone na kontach subskrypcji z uprawnieniami do zapisu|Włącz Multi-Factor Authentication (MFA) dla wszystkich kont subskrypcji z uprawnieniami do zapisu, aby zapobiec naruszeniu kont lub zasobów.|
+|Subscription|40|Uwierzytelnianie wieloskładnikowe powinno być włączone na kontach subskrypcji z uprawnieniami do zapisu|Włącz uwierzytelnianie wieloskładnikowe (MFA) dla wszystkich kont subskrypcji z uprawnieniami do zapisu, aby zapobiec naruszeniu kont lub zasobów.|
 |Subscription|30|Konta zewnętrzne z uprawnieniami właściciela powinny zostać usunięte z subskrypcji|Usuń konta zewnętrzne z uprawnieniami właściciela z subskrypcji, aby zapobiec niemonitorowanemu dostępowi.|
-|Subscription|30|Uwierzytelnianie wieloskładnikowe powinno być włączone na kontach subskrypcji z uprawnieniami do odczytu|Włącz Multi-Factor Authentication (MFA) dla wszystkich kont subskrypcji z uprawnieniami do odczytu, aby zapobiec naruszeniu kont lub zasobów.|
+|Subscription|30|Uwierzytelnianie wieloskładnikowe powinno być włączone na kontach subskrypcji z uprawnieniami do odczytu|Włącz uwierzytelnianie wieloskładnikowe (MFA) dla wszystkich kont subskrypcji z uprawnieniami do odczytu, aby zapobiec naruszeniu kont lub zasobów.|
 |Subscription|25|Konta zewnętrzne z uprawnieniami do zapisu powinny zostać usunięte z subskrypcji|Usuń konta zewnętrzne z uprawnieniami do zapisu z subskrypcji, aby zapobiec niemonitorowanemu dostępowi. |
 |Subscription|20|Przestarzałe konta z uprawnieniami właściciela powinny zostać usunięte z subskrypcji|Usuń przestarzałe konta z uprawnieniami właściciela z subskrypcji.|
 |Subscription|5|Przestarzałe konta powinny zostać usunięte z subskrypcji|Usuń przestarzałe konta z subskrypcji, aby umożliwić dostęp tylko bieżącym użytkownikom. |

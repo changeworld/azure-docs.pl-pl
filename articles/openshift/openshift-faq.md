@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: 6ba252ccf7a46e93b2057b6822f2aae298f537d1
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 86875643950e11f1e5030676c1ab3825039749ed
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991643"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203539"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift — często zadawane pytania
 
@@ -25,7 +25,7 @@ Przed rozpoczęciem korzystania z usługi Azure Red Hat OpenShift należy zakupi
 
 Jeśli jesteś klientem platformy Azure,[Kup wystąpienia zarezerwowane w systemie Azure Red Hat OpenShift](https://aka.ms/openshift/buy) za pomocą Azure Portal. Po zakupieniu subskrypcja zostanie uaktywniona w ciągu 24 godzin, po upływie której będzie możliwe udostępnienie klastrów.
 
-Jeśli nie jesteś klientem platformy Azure, [skontaktuj się](https://aka.ms/openshift/contact-sales) ze sprzedażą i wypełnij formularz sprzedaży w dolnej części strony, aby rozpocząć proces.
+Jeśli nie jesteś klientem platformy Azure, [skontaktuj się ze sprzedażą](https://aka.ms/openshift/contact-sales) i wypełnij formularz sprzedaży w dolnej części strony, aby rozpocząć proces.
 
 Aby uzyskać więcej informacji, zobacz [stronę z cennikiem usługi Azure Red Hat OpenShift](https://aka.ms/openshift/pricing) .
 
@@ -164,3 +164,45 @@ Aby uzyskać więcej informacji, zapoznaj się z dokumentacją [OpenShift](https
 System Red Hat OpenShift obsługuje wirtualne sieci równorzędne i umożliwia klientowi dostarczanie sieci wirtualnej do komunikacji równorzędnej oraz sieci wirtualnej CIDR, w której będzie działać sieć OpenShift.
 
 Sieć wirtualna utworzona przy użyciu ARO zostanie zabezpieczona i nie będzie akceptować zmian konfiguracji. Sieć wirtualna, która jest podłączona do sieci równorzędnej, jest kontrolowana przez klienta i znajduje się w jego subskrypcji.
+
+## <a name="does-the-cluster-reside-in-a-customer-subscription"></a>Czy klaster znajduje się w ramach subskrypcji klienta? 
+
+Aplikacja zarządzana przez platformę Azure znajduje się w zablokowanej grupie zasobów z subskrypcją klienta. Klient może przeglądać obiekty w tym RG, ale nie modyfikować.
+
+## <a name="is-the-sdn-module-configurable"></a>Czy moduł SDN jest konfigurowalny?
+
+SDN jest OpenShift-OVS-networkpolicy i nie można go konfigurować.
+
+## <a name="which-unix-rights-in-iaas-are-available-for-mastersinfraapp-nodes"></a>Które prawa systemu UNIX (w IaaS) są dostępne dla węzłów wzorców/infrastruktury/aplikacji?
+
+Nie dotyczy tej oferty. Dostęp do węzła jest zabroniony.
+
+## <a name="which-ocp-rights-do-we-have-cluster-admin-project-admin"></a>Jakie są prawa OCP? Klaster-administrator? Projekt — administrator?
+
+Aby uzyskać szczegółowe informacje, zobacz [Omówienie administrowania klastrem](https://docs.openshift.com/aro/admin_guide/index.html)w systemie Red Hat OpenShift.
+
+## <a name="which-kind-of-federation-with-ldap"></a>Jakiego rodzaju Federacji z LDAP?
+
+Można to osiągnąć za pomocą integracji z usługą Azure AD. 
+
+## <a name="is-there-any-element-in-aro-shared-with-other-customers-or-is-everything-independent"></a>Czy istnieją jakieś elementy, które są udostępniane innym klientom? Czy wszystko jest niezależne?
+
+Każdy klaster usługi Azure Red Hat OpenShift jest przeznaczony dla danego klienta i przebywa w ramach subskrypcji klienta. 
+
+## <a name="can-we-choose-any-persistent-storage-solution-ocs"></a>Można wybrać dowolne rozwiązanie magazynu trwałego. LICENCJA? 
+
+Dwie klasy magazynu są dostępne do wyboru z: Dysk platformy Azure i plik platformy Azure.
+
+## <a name="how-is-a-cluster-updated-including-majors-and-minors-due-to-vulnerabilities"></a>Jak jest aktualizowany klaster (w tym główne i pomocnicze z powodu luk w zabezpieczeniach)?
+
+Zobacz [, co to jest ogólny proces uaktualniania?](https://docs.microsoft.com/azure/openshift/openshift-faq#what-is-the-general-upgrade-process)
+
+## <a name="what-azure-load-balancer-is-used-by-aro-is-it-standard-or-basic-and-is-it-configurable"></a>Jakiego modułu równoważenia obciążenia platformy Azure używa firma ARO?  Czy jest to wersja standardowa czy podstawowa i czy jest konfigurowana?
+
+Polecenie ARO używa standardowej Azure Load Balancer i nie można go konfigurować.
+
+## <a name="can-aro-use-netapp-based-storage"></a>Czy można użyć magazynu opartego na NetApp?
+
+Obecnie obsługiwane opcje magazynu to Azure Disk i Azure File Storage. 
+
+

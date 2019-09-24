@@ -3,23 +3,22 @@ title: Ochrona maszyn i aplikacji w usłudze Azure Security Center | Dokumentacj
 description: Tym dokumencie przedstawiono zalecenia w usłudze Security Center, które ułatwiają ochronę maszyn wirtualnych i komputerów i aplikacji sieci web i środowisk usługi App Service.
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 47fa1f76-683d-4230-b4ed-d123fef9a3e8
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/20/2019
-ms.author: v-mohabe
-ms.openlocfilehash: cb6025b47aec50121a0f96f7b6cba7ad726db291
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.date: 03/20/2019
+ms.author: memildin
+ms.openlocfilehash: a3bce8d6312dd09a7f10f8d5d2eaebd4e312d95d
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907966"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200776"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Ochrona maszyn i aplikacji w usłudze Azure Security Center
 Azure Security Center analizuje stan zabezpieczeń zasobów platformy Azure, serwerów spoza platformy Azure i maszyn wirtualnych. Gdy usługa Security Center zidentyfikuje potencjalnych luk w zabezpieczeniach, tworzy zaleceń, które przeprowadzą Cię przez proces konfigurowania wymaganych kontrolek. Zalecenia odnoszą się do typów zasobów platformy Azure: maszyny wirtualne (VM) i komputerów, aplikacji, networking, SQL i tożsamościami i dostępem.
@@ -85,7 +84,7 @@ Aby wyświetlić szczegóły zalecenia, kliknij nazwę brakującej aktualizacji 
 
 
 > [!NOTE]
-> Zalecenia dotyczące zabezpieczeń w tym miejscu są takie same, jak w obszarze **zalecenia** kafelka. Zobacz [wdrażanie zaleceń dotyczących zabezpieczeń w usłudze Azure Security Center](security-center-recommendations.md) uzyskać więcej informacji dotyczących stosowania zaleceń.
+> Zalecenia dotyczące zabezpieczeń w tym miejscu są takie same, jak w obszarze **zalecenia** kafelka. Aby uzyskać więcej informacji o sposobach rozwiązywania zaleceń, zobacz [implementowanie zaleceń dotyczących zabezpieczeń w Azure Security Center](security-center-recommendations.md).
 >
 >
 
@@ -108,7 +107,7 @@ Istnieją cztery typy ikon przedstawianych na tej liście:
 Ikona wyświetlana pod każdym zaleceniem pomaga szybko zidentyfikować maszyny Wirtualnej, a komputer, który wymaga uwagi oraz jakiego typu zalecenie ma do nich. Możesz również użyć filtrów, aby przeszukać listę według **typu zasobów** i według **ważności**.
 
 Aby przejść do szczegółów zaleceń dotyczących zabezpieczeń dla każdej maszyny wirtualnej, kliknij maszynę wirtualną.
-W tym miejscu wyświetlane szczegóły zabezpieczeń dotyczące maszyny Wirtualnej lub komputera. W dolnej części widoczna jest zalecana akcja i ważność poszczególnych problemów.
+W tym miejscu wyświetlane szczegóły zabezpieczeń dotyczące maszyny Wirtualnej lub komputera. Na dole można zobaczyć zalecaną akcję i ważność poszczególnych problemów.
 ![Usługi w chmurze](./media/security-center-virtual-machine-recommendations/recommendation-list.png)
 
 ### <a name="cloud-services"></a>Usługi w chmurze
@@ -125,7 +124,7 @@ Aby zobaczyć więcej normatywnych wyjaśnień dotyczących tego zalecenia, klik
 ![Aktualizacja wersji systemu operacyjnego](./media/security-center-virtual-machine-recommendations/security-center-monitoring-fig8-new4.png)
 
 ### <a name="app-services"></a>Usługi aplikacji
-Aby wyświetlić informacje o App Service, należy włączyć App Service w ramach subskrypcji. Aby uzyskać instrukcje dotyczące włączania tej funkcji, zobacz [ochrona App Service przy użyciu Azure Security Center](security-center-app-services.md).
+Aby wyświetlić informacje App Service, należy włączyć App Service w subskrypcji. Aby uzyskać instrukcje dotyczące włączania tej funkcji, zobacz [ochrona App Service przy użyciu Azure Security Center](security-center-app-services.md).
 [!NOTE]
 > Monitorowanie usługi App Service jest dostępna w wersji zapoznawczej i jest dostępna tylko w warstwie standardowa usługi Security Center.
 
@@ -160,7 +159,7 @@ Istnieją trzy typy ikon przedstawianych na tej liście:
 
      ![Korygowanie App Service](./media/security-center-virtual-machine-recommendations/app-service-remediation.png)
 
-## <a name="virtual-machine-scale-sets"></a>Zestawy skalowania maszyn wirtualnych
+## <a name="virtual-machine-scale-sets"></a>Virtual Machine Scale Sets
 Security Center automatycznie wykrywa, czy masz zestawy skalowania i zaleca się zainstalowanie Microsoft Monitoring Agent w tych zestawach skalowania. 
 
 Aby zainstalować Microsoft Monitoring Agent: 
@@ -170,7 +169,7 @@ Aby zainstalować Microsoft Monitoring Agent:
 
    ![Instalowanie MMS](./media/security-center-virtual-machine-recommendations/install-mms.png)
 
-Jeśli chcesz ustawić nowe zestawy skalowania tak, aby automatycznie instalowały Microsoft Monitoring Agent:
+Aby ustawić nowe zestawy skalowania tak, aby automatycznie instalowały Microsoft Monitoring Agent:
 1. Przejdź do Azure Policy i kliknij pozycję **definicje**.
 2. Wyszukaj zasady **wdróż log Analytics Agent dla systemu Windows Virtual Machine Scale Sets** i kliknij je.
 3. Kliknij przycisk **Przypisz**.

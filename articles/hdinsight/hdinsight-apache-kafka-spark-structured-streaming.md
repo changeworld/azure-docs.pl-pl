@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,seodec18
 ms.topic: tutorial
 ms.date: 05/22/2019
 ms.author: hrasheed
-ms.openlocfilehash: 32e47f688150333ac78091589d8a252641d4c7d6
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: bcf1b967cf8eeab7aae4b720683785309689858e
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076992"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71204232"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Samouczek: Używanie strumieni ze strukturą platformy Apache Spark z platformą Kafka w usłudze HDInsight
 
@@ -186,12 +186,15 @@ W tym przykładzie pokazano, jak używać przesyłania strumieniowego Spark ze s
 
 4. Ładowanie pakietów używanych przez Notes, wprowadzając następujące informacje w komórce notesu. Uruchom polecenie za pomocą **klawiszy Ctrl + Enter**.
 
+Przesyłanie strumieniowe platformy Spark ma mikropartii, co oznacza, że dane są uruchamiane jako partie i uruchomienia na partiach danych. Jeśli wykonawca ma limit czasu bezczynności krótszy niż czas przetwarzania partii, zostaną one ciągle dodane i usunięte. Jeśli limit czasu bezczynności wykonawców jest większy niż czas trwania partii, program wykonujący nigdy nie zostanie usunięty. Dlatego **zalecamy wyłączenie dynamicznego przydzielenia przez ustawienie dla platformy Spark. dynamicAllocation. Enabled wartości false podczas uruchamiania aplikacji przesyłania strumieniowego.**
+
     ```
     %%configure -f
     {
         "conf": {
             "spark.jars.packages": "org.apache.spark:spark-sql-kafka-0-10_2.11:2.2.0",
-            "spark.jars.excludes": "org.scala-lang:scala-reflect,org.apache.spark:spark-tags_2.11"
+            "spark.jars.excludes": "org.scala-lang:scala-reflect,org.apache.spark:spark-tags_2.11",
+            "spark.dynamicAllocation.enabled": false
         }
     }
     ```

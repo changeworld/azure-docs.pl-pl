@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 7a58e8559587ddcb307c338f5ce87cd6b8e52021
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 93eddc0ff8f1a1af8b485fcdb891f72d874b5c0a
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71171510"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202952"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Wersja zapoznawcza — tworzenie i zarządzanie wieloma pulami węzłów dla klastra w usłudze Azure Kubernetes Service (AKS)
 
@@ -35,7 +35,7 @@ Wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.61 lub no
 
 ### <a name="install-aks-preview-cli-extension"></a>Zainstaluj rozszerzenie interfejsu wiersza polecenia AKS-Preview
 
-Aby można było używać wielu pul węzłów, wymagany jest interfejs wiersza polecenia *AKS-Preview* w wersji 0.4.12 lub nowszej. Zainstaluj rozszerzenie interfejsu wiersza polecenia platformy Azure w *wersji zapoznawczej* przy użyciu poleceń [AZ Extension Add][az-extension-add] , a następnie wyszukaj wszystkie dostępne aktualizacje za pomocą polecenia [AZ Extension Update][az-extension-update] ::
+Aby można było używać wielu pul węzłów, wymagany jest interfejs wiersza polecenia *AKS-Preview* w wersji 0.4.16 lub nowszej. Zainstaluj rozszerzenie interfejsu wiersza polecenia platformy Azure w *wersji zapoznawczej* przy użyciu poleceń [AZ Extension Add][az-extension-add] , a następnie wyszukaj wszystkie dostępne aktualizacje za pomocą polecenia [AZ Extension Update][az-extension-update] ::
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -178,7 +178,9 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 > [!NOTE]
 > Operacje uaktualniania i skalowania w klastrze lub puli węzłów nie mogą występować jednocześnie, jeśli zostanie zwrócony błąd. W zamian każdy typ operacji musi zakończyć się w odniesieniu do zasobu docelowego przed następnym żądaniem tego samego zasobu. Więcej informacji na ten temat znajdziesz w naszym [przewodniku rozwiązywania problemów](https://aka.ms/aks-pending-upgrade).
 
-Po utworzeniu klastra AKS w pierwszym kroku został określony element `--kubernetes-version` *1.13.10* . Spowoduje to ustawienie wersji Kubernetes dla płaszczyzny kontroli i domyślnej puli węzłów. W poleceniach w tej sekcji wyjaśniono, jak uaktualnić pojedynczą określoną pulę węzłów. Relacja między uaktualnianiem wersji Kubernetes płaszczyzny kontroli a pulą węzłów znajduje się w [sekcji poniżej](#upgrade-a-cluster-control-plane-with-multiple-node-pools).
+Po utworzeniu klastra AKS w pierwszym kroku został określony element `--kubernetes-version` *1.13.10* . Spowoduje to ustawienie wersji Kubernetes dla płaszczyzny kontroli i domyślnej puli węzłów. W poleceniach w tej sekcji wyjaśniono, jak uaktualnić pojedynczą określoną pulę węzłów.
+
+Relacja między uaktualnianiem wersji Kubernetes płaszczyzny kontroli a pulą węzłów znajduje się w [sekcji poniżej](#upgrade-a-cluster-control-plane-with-multiple-node-pools).
 
 > [!NOTE]
 > Wersja obrazu systemu operacyjnego puli węzłów jest powiązana z wersją Kubernetes klastra. Uaktualnienia obrazu systemu operacyjnego są uzyskiwane tylko po uaktualnieniu klastra.
@@ -193,9 +195,6 @@ az aks nodepool upgrade \
     --kubernetes-version 1.13.10 \
     --no-wait
 ```
-
-> [!Tip]
-> Aby uaktualnić płaszczyznę kontroli do *1.14.6*, uruchom `az aks upgrade -k 1.14.6`polecenie. Więcej informacji o [uaktualnieniach płaszczyzny kontroli z wieloma pulami węzłów znajdziesz tutaj](#upgrade-a-cluster-control-plane-with-multiple-node-pools).
 
 Ponownie utwórz listę stan pul węzłów za pomocą polecenia [AZ AKS Node Pool list][az-aks-nodepool-list] . Poniższy przykład pokazuje, że *mynodepool* jest w stanie *uaktualnienia* do *1.13.10*:
 
@@ -232,7 +231,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 Uaktualnienie węzłów do określonej wersji może potrwać kilka minut.
 
-Najlepszym rozwiązaniem jest uaktualnienie wszystkich pul węzłów w klastrze AKS do tej samej wersji Kubernetes. Możliwość uaktualnienia poszczególnych pul węzłów umożliwia przeprowadzenie uaktualnienia stopniowego i zaplanowanie między pulami węzłów, aby zachować czas działania aplikacji w ramach powyższych ograniczeń wymienionych powyżej.
+Najlepszym rozwiązaniem jest uaktualnienie wszystkich pul węzłów w klastrze AKS do tej samej wersji Kubernetes. Domyślnym zachowaniem programu `az aks upgrade` jest uaktualnienie wszystkich pul węzłów razem z płaszczyzną kontroli w celu osiągnięcia tego wyrównania. Możliwość uaktualnienia poszczególnych pul węzłów umożliwia przeprowadzenie uaktualnienia stopniowego i zaplanowanie między pulami węzłów, aby zachować czas działania aplikacji w ramach powyższych ograniczeń wymienionych powyżej.
 
 ## <a name="upgrade-a-cluster-control-plane-with-multiple-node-pools"></a>Uaktualnianie płaszczyzny kontroli klastra z wieloma pulami węzłów
 
@@ -243,11 +242,12 @@ Najlepszym rozwiązaniem jest uaktualnienie wszystkich pul węzłów w klastrze 
 > * Wersja puli węzłów może być jedną wersją pomocniczą mniejszą niż wersja płaszczyzny kontroli.
 > * Wersja puli węzłów może być dowolną wersją poprawki, o ile są spełnione inne dwa ograniczenia.
 
-Klaster AKS ma dwa obiekty zasobów klastra. Pierwszy jest płaszczyzną kontrolną Kubernetes wersja. Druga to pula agentów z wersją Kubernetes. Płaszczyzna kontrolna jest mapowana na jedną lub wiele pul węzłów, a każda z nich ma własną wersję Kubernetes. Zachowanie operacji uaktualniania zależy od tego, który zasób jest przeznaczony, oraz od tego, jaka wersja źródłowego interfejsu API jest wywoływana.
+Klaster AKS ma dwa obiekty zasobów klastra z skojarzonymi wersjami Kubernetes. Pierwszy jest płaszczyzną kontrolną Kubernetes wersja. Druga to pula agentów z wersją Kubernetes. Płaszczyzna kontrolna jest mapowana na jedną lub wiele pul węzłów. Zachowanie operacji uaktualniania zależy od tego, które polecenie interfejsu wiersza polecenia platformy Azure jest używane.
 
 1. Uaktualnianie płaszczyzny kontroli wymaga użycia`az aks upgrade`
-   * Spowoduje to uaktualnienie wszystkich pul węzłów w klastrze.
-1. Uaktualnianie za pomocą`az aks nodepool upgrade`
+   * Spowoduje to uaktualnienie wersji płaszczyzny kontroli i wszystkich pul węzłów w klastrze.
+   * `--control-plane-only` Przekazanie `az aks upgrade` `--control-plane-only` z flagą spowoduje uaktualnienie tylko płaszczyzny kontroli klastra i brak skojarzonych pul węzłów * flaga jest dostępna w **AKS-Preview Extension v 0.4.16** lub nowszej
+1. Uaktualnianie poszczególnych pul węzłów wymaga użycia`az aks nodepool upgrade`
    * Spowoduje to uaktualnienie tylko puli węzłów docelowych z określoną wersją Kubernetes
 
 Relacja między wersjami Kubernetes przechowywanymi przez pule węzłów musi również być zgodna z zestawem reguł.
