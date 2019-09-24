@@ -163,21 +163,21 @@ Przykładowy ładunek JSON:
 
    | deviceId | series.tagId | messageId | deviceLocation | type | jednostka |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | DANE\_WIERSZA | EU | Szybkość przepływu | ft3/s |
-   | FXXX | oilPressure | DANE\_WIERSZA | EU | Ciśnienie oleju silnikowego | psi |
-   | FYYY | pumpRate | DANE\_WIERSZA | USA | Szybkość przepływu | ft3/s |
-   | FYYY | oilPressure | DANE\_WIERSZA | USA | Ciśnienie oleju silnikowego | psi |
+   | FXXX | pumpRate | LINE\_DATA | EU | Szybkość przepływu | ft3/s |
+   | FXXX | oilPressure | LINE\_DATA | EU | Ciśnienie oleju silnikowego | psi |
+   | FYYY | pumpRate | LINE\_DATA | US | Szybkość przepływu | ft3/s |
+   | FYYY | oilPressure | LINE\_DATA | US | Ciśnienie oleju silnikowego | psi |
 
 * Time Series Insights tabeli zdarzeń po spłaszczeniu:
 
    | deviceId | series.tagId | messageId | deviceLocation | type | jednostka | timestamp | Serie. wartość |
    | --- | --- | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | DANE\_WIERSZA | EU | Szybkość przepływu | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
-   | FXXX | oilPressure | DANE\_WIERSZA | EU | Ciśnienie oleju silnikowego | psi | 2018-01-17T01:17:00Z | 34.7 |
-   | FXXX | pumpRate | DANE\_WIERSZA | EU | Szybkość przepływu | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
-   | FXXX | oilPressure | DANE\_WIERSZA | EU | Ciśnienie oleju silnikowego | psi | 2018-01-17T01:17:00Z | 49.2 |
-   | FYYY | pumpRate | DANE\_WIERSZA | USA | Szybkość przepływu | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
-   | FYYY | oilPressure | DANE\_WIERSZA | USA | Ciśnienie oleju silnikowego | psi | 2018-01-17T01:18:00Z | 22.2 |
+   | FXXX | pumpRate | LINE\_DATA | EU | Szybkość przepływu | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
+   | FXXX | oilPressure | LINE\_DATA | EU | Ciśnienie oleju silnikowego | psi | 2018-01-17T01:17:00Z | 34.7 |
+   | FXXX | pumpRate | LINE\_DATA | EU | Szybkość przepływu | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
+   | FXXX | oilPressure | LINE\_DATA | EU | Ciśnienie oleju silnikowego | psi | 2018-01-17T01:17:00Z | 49.2 |
+   | FYYY | pumpRate | LINE\_DATA | US | Szybkość przepływu | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
+   | FYYY | oilPressure | LINE\_DATA | US | Ciśnienie oleju silnikowego | psi | 2018-01-17T01:18:00Z | 22.2 |
 
 Uwagi dotyczące tych dwóch tabel:
 
