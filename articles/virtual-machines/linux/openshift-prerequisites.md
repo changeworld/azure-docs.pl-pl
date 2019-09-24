@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/14/2019
 ms.author: haroldw
-ms.openlocfilehash: ab8814f1620cc019a0bee872c7b8f42cbb427365
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8dae521902d0568f2d79725bad792d4df64daa1c
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091737"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71204011"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-in-azure"></a>Wspólne wymagania wstępne dotyczące wdrażania OpenShift na platformie Azure
 
@@ -116,7 +116,7 @@ Utwórz nazwę główną usługi:
 scope=`az group show --name openshiftrg --query id`
 az ad sp create-for-rbac --name openshiftsp \
       --role Contributor --password {Strong Password} \
-      --scopes $scope
+      --scopes $scope \
 ```
 Jeśli używasz systemu Windows, wykonaj ```az group show --name openshiftrg --query id``` i Użyj danych wyjściowych zamiast $Scope.
 
