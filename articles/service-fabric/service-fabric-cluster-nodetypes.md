@@ -89,7 +89,7 @@ Poniżej przedstawiono opisy właściwości:
 | commonNames | string[] | --- | Typowe nazwy zainstalowanych certyfikatów klastra |
 | x509StoreName | string | --- | Nazwa magazynu, w którym znajduje się zainstalowany certyfikat klastra |
 | typeHandlerVersion | 1.1 | --- | Wersja rozszerzenia. 1,0 klasycznej wersji rozszerzenia zaleca się uaktualnienie do 1,1 |
-| Ścieżka datapath | string | --- | Ścieżka do dysku używanego do zapisywania stanu Service Fabric usług systemowych i danych aplikacji. 
+| dataPath | string | --- | Ścieżka do dysku używanego do zapisywania stanu Service Fabric usług systemowych i danych aplikacji. 
 
 ## <a name="next-steps"></a>Następne kroki
 * Zobacz [Omówienie funkcji "wdróż gdziekolwiek" i porównanie z klastrami zarządzanymi przez platformę Azure](service-fabric-deploy-anywhere.md).
