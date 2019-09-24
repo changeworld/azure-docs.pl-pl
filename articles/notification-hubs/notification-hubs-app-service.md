@@ -1,9 +1,9 @@
 ---
 title: Integracja z usługą App Service Mobile Apps
-description: Dowiedz się, jak usługa Azure Notification Hubs współpracuje z usługą Azure App Service Mobile Apps.
-author: jwargo
-manager: patniko
-editor: spelluru
+description: Dowiedz się, jak usługa Azure Notification Hubs współpracuje z Azure App Service Mobile Apps.
+author: sethmanheim
+manager: femila
+editor: jwargo
 services: notification-hubs
 documentationcenter: ''
 ms.assetid: 83132dff-a01d-4b31-a426-b57496852b81
@@ -14,18 +14,20 @@ ms.devlang: multiple
 ms.topic: overview
 ms.custom: mvc
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: bb39949bc21ece819b7ac6e279390f8bdb0ee00a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: d6747193b8c82119e45a24e3e4bffc065db14e51
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65158525"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212160"
 ---
 # <a name="integration-with-app-service-mobile-apps"></a>Integracja z usługą App Service Mobile Apps
 
 > [!NOTE]
-> Firma Microsoft dba o pełnej obsłudze usługi Azure App Service Mobile Apps, takie jak obsługa najnowszej wersji systemu operacyjnego, poprawki i udoskonalenia dokumentacji i przeglądy społeczności żądania Ściągnięcia. Należy pamiętać, że zespół pracujący nad produktem nie jest obecnie inwestowanie w dowolnej nowej pracy nad funkcjami usługi Azure Mobile Apps. Dziękujemy za zdecydowanie kod wniesiony przez społeczność do wszystkich obszarów usługi Azure Mobile Apps.
+> Firma Microsoft dokłada starań, aby w pełni obsługiwać Azure App Service Mobile Apps, w tym obsługę najnowszej wersji systemu operacyjnego, poprawek usterek, ulepszeń dokumentacji i przeglądów żądań ściągnięcia przez społeczność. Należy pamiętać, że zespół produktu nie jest obecnie inwestować w żadną nową funkcję pracy dla Mobile Apps platformy Azure. Wysoce doceniamy wkłady społecznościowe na wszystkie obszary Mobile Apps platformy Azure.
 
 W celu umożliwienia bezproblemowej i jednorodnej obsługi we wszystkich usługach Azure funkcja [App Service Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) ma wbudowaną obsługę powiadomień wypychanych przy użyciu usługi Notification Hubs. Funkcja [App Service Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) oferuje wysoce skalowalną, globalnie dostępną platformę tworzenia aplikacji mobilnych dla deweloperów w przedsiębiorstwach i integratorów systemów. Platforma ta oferuje bogaty zestaw funkcji dla deweloperów aplikacji mobilnych.
 
@@ -46,4 +48,4 @@ Oto niektóre udogodnienia dla deweloperów wynikające z tej integracji:
   - *Wypychanie do urządzenia*: Zestawy SDK automatycznie używają identyfikatora instalacji usługi Mobile Apps jako identyfikatora GUID do rejestracji w usłudze Notification Hubs, oszczędzając deweloperom pracy związanej z obsługą identyfikatorów GUID wielu usług.
 - **Model instalacji**: Usługa Mobile Apps współpracuje z najnowszym modelem wypychania usługi Notification Hubs w celu reprezentowania wszystkich właściwości wypychania skojarzonych z urządzeniem w instalacji JSON, które są zgodne z usługami powiadomień wypychanych i łatwe w użyciu.
 - **Elastyczność**: Deweloperzy mogą zawsze pracować bezpośrednio za pomocą usługi Notification Hubs nawet po integracji.
-- **Zintegrowane środowisko pracy w witrynie [Azure Portal](https://portal.azure.com)**: Wypychanie jako możliwość ma wizualną reprezentację w usłudze Mobile Apps, a deweloperzy mogą z łatwością pracować przy użyciu skojarzonego centrum powiadomień za pomocą usługi Mobile Apps.
+- **Zintegrowane środowisko pracy w witrynie [Azure Portal](https://portal.azure.com)** : Wypychanie jako możliwość ma wizualną reprezentację w usłudze Mobile Apps, a deweloperzy mogą z łatwością pracować przy użyciu skojarzonego centrum powiadomień za pomocą usługi Mobile Apps.

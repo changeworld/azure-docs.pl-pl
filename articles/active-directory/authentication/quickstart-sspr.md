@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58e3254d499e013dc686bf6b7d53f919a457c901
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7a863c8fe81a08f00385cb267bf360994918fe82
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60414068"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212109"
 ---
 # <a name="quickstart-self-service-password-reset"></a>Szybki start: Samoobsługowe resetowanie haseł
 
@@ -31,7 +31,7 @@ W tym przewodniku Szybki start opisano konfigurowanie funkcji samoobsługowego r
 
 ## <a name="enable-self-service-password-reset"></a>Włączanie samoobsługowego resetowania hasła
 
-> [!VIDEO https://www.youtube.com/embed/Pa0eyqjEjvQ]
+[Wyświetl ten proces jako film wideo w usłudze YouTube](https://youtu.be/Pa0eyqjEjvQ)
 
 1. W istniejącej dzierżawie usługi Azure AD w witrynie **Azure Portal** w obszarze **Azure Active Directory** wybierz pozycję **Resetowanie hasła**.
 
@@ -46,7 +46,7 @@ W tym przewodniku Szybki start opisano konfigurowanie funkcji samoobsługowego r
       * **Kod aplikacji mobilnej (wersja zapoznawcza)**
    * Kliknij pozycję **Zapisz**.
 
-     ![Wybieranie metod uwierzytelniania dla funkcji samoobsługowego resetowania HASEŁ][Authentication]
+     ![Wybieranie metod uwierzytelniania dla SSPR][Authentication]
 
 4. Na stronie **Rejestracja** wybierz następujące opcje:
    * Wymaganie od użytkowników rejestrowania się podczas logowania: **Tak**
@@ -67,7 +67,7 @@ Teraz możesz przetestować konfigurację funkcji samoobsługowego resetowania h
 
 Samoobsługowe resetowanie haseł można w łatwy sposób wyłączyć. Otwórz dzierżawę usługi Azure AD, przejdź do obszaru **Właściwości** > **Resetowanie hasła**, a następnie wybierz pozycję **Brak** w obszarze **Funkcja samoobsługowego resetowania hasła** jest włączona.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Po zapoznaniu się z tym przewodnikiem szybkiego startu wiesz już, jak szybko skonfigurować samoobsługowe resetowanie haseł dla swoich użytkowników korzystających tylko z chmury. Aby dowiedzieć się, jak wykonać bardziej szczegółowe wdrożenie, przejdź do naszego przewodnika dotyczącego wdrożenia.
 

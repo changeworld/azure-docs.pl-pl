@@ -8,13 +8,13 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: lbosq
-ms.custom: seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 8689cb74e35d5b87c300f5fce239993691652ee2
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 1b37475cfa8df38a00ea6017d47e90677ed457d2
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172530"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212630"
 ---
 # <a name="quickstart-build-a-graph-database-with-the-java-sdk-and-the-azure-cosmos-db-table-api"></a>Szybki start: Tworzenie bazy danych grafu przy użyciu zestawu Java SDK i Azure Cosmos DB interfejs API tabel
 
@@ -110,7 +110,7 @@ Teraz wróć do witryny Azure Portal, aby uzyskać informacje o połączeniu i s
 
     Skopiuj pierwszą część wartości identyfikatora URI.
 
-    ![Wyświetlanie i kopiowanie klucza dostępu w witrynie Azure Portal, strona Klucze](./media/create-graph-java/keys.png)
+    ![Wyświetlanie i kopiowanie klucza dostępu w witrynie Azure Portal, strona Klucze](./media/create-graph-java/copy-access-key-azure-portal.png)
 2. Otwórz plik src/remote.yaml i wklej wartość unikatowego identyfikatora za pośrednictwem elementu `$name$` do adresu `hosts: [$name$.graphs.azure.com]`.
 
     Wiersz 1 pliku remote.yaml powinien wyglądać podobnie do 
@@ -219,15 +219,15 @@ Teraz możesz wrócić do Eksploratora danych i zobaczyć wierzchołki dodane do
 
 12. Teraz możesz połączyć użytkowników rakesh i ashley. Upewnij się, że na liście **wyników** została wybrana ![opcja **Ashley** , a następnie wybierz pozycję Zmień obiekt docelowy wierzchołka w grafie](./media/create-graph-java/edit-pencil-button.png) obok **elementów docelowych** znajdujących się w prawej dolnej części. Może być konieczne rozszerzenie okna w celu wyświetlenia przycisku.
 
-    ![Zmiana celu wierzchołka w grafie](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
+    ![Zmiana celu wierzchołka w grafie — Azure CosmosDB](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
 
 13. W polu **Target** wpisz *Rakesh*, a w polu **etykieta krawędzi** wpisz *wie*, a następnie zaznacz pole wyboru.
 
-    ![Dodawanie połączenia między użytkownikami ashley i rakesh w Eksploratorze danych](./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png)
+    ![Dodawanie połączenia w Eksplorator danych — Azure CosmosDB](./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png)
 
 14. Teraz wybierz użytkownika **rakesh** z listy wyników, aby zobaczyć, że użytkownicy ashley i rakesh są połączeni. 
 
-    ![Dwa wierzchołki połączone w Eksploratorze danych](./media/create-graph-java/azure-cosmosdb-graph-explorer.png)
+    ![Dwa wierzchołki połączone w Eksplorator danych — Azure CosmosDB](./media/create-graph-java/azure-cosmosdb-graph-explorer.png)
 
     Na tym kończy się część tego samouczka poświęcona tworzeniu zasobów. Możesz dodać do grafu kolejne wierzchołki, zmodyfikować istniejące wierzchołki lub zmienić zapytania. Teraz przejrzyjmy metryki udostępniane przez usługę Azure Cosmos DB, a następnie wyczyśćmy zasoby. 
 

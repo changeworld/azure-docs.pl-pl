@@ -2,20 +2,22 @@
 title: Tworzenie centrum powiadomień przy użyciu witryny Azure Portal | Microsoft Docs
 description: W ramach tego samouczka nauczysz się tworzyć centrum powiadomień platformy Azure przy użyciu witryny Azure Portal.
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: quickstart
 ms.date: 02/14/2019
-ms.author: jowargo
-ms.openlocfilehash: 62e72f27e48f7bf220901f4eb36090f926724a2a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 02/14/2019
+ms.openlocfilehash: 53abc28a6923c2d55b3bb39defb08778485a9744
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60682037"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212441"
 ---
 # <a name="create-an-azure-notification-hub-in-the-azure-portal"></a>Tworzenie centrum powiadomień platformy Azure w witrynie Azure Portal 
 Usługa Azure Notification Hubs oferuje łatwy w użyciu, skalowany w poziomie mechanizm, który umożliwia wysyłanie powiadomień do dowolnej platformy (iOS, Android, Windows, Kindle, Baidu, itp.) z poziomu dowolnego zaplecza (w chmurze lub w środowisku lokalnym). Aby uzyskać więcej informacji na temat usługi, zobacz [Co to jest usługa Azure Notification Hubs?](notification-hubs-push-notification-overview.md)
@@ -53,5 +55,5 @@ W tej sekcji utworzysz centrum powiadomień w istniejącej przestrzeni nazw.
 
       ![Witryna Azure Portal -> Powiadomienia -> Przejdź do zasobu](./media/create-notification-hub-portal/hub-home-page.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym przewodniku Szybki start utworzono centrum powiadomień. Aby dowiedzieć się, jak skonfigurować centrum przy użyciu ustawień systemu powiadomień platformy, zobacz [Konfigurowanie centrum powiadomień przy użyciu ustawień systemu powiadomień platformy](configure-notification-hub-portal-pns-settings.md). 

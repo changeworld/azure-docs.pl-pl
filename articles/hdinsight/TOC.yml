@@ -217,6 +217,8 @@
               href: ./hdinsight-release-notes.md
             - name: Informacje o pełnej wersji usługi HDInsight 3.6
               href: ./hdinsight-release-notes-archive.md
+        - name: Często zadawane pytania
+          href: ./hdinsight-faq.md
         - name: Migrowanie do szczegółowego dostępu opartego na rolach w przypadku konfiguracji klastrów
           href: ./hdinsight-migrate-granular-access-cluster-configurations.md
         - name: Informacje dotyczące korzystania z usługi HDInsight w systemie Linux

@@ -54,7 +54,7 @@
     - name: Funkcje z aplikacjami logiki
       href: functions-twitter-email.md
     - name: Programowanie funkcji języka Python za pomocą programu VS Code
-      href: tutorial-vs-code-serverless-python.md
+      href: /azure/python/tutorial-vs-code-serverless-python-01
     - name: Definicja interfejsu OpenAPI dla bezserwerowych interfejsów API
       href: functions-openapi-definition.md
     - name: Łączenie z siecią wirtualną
