@@ -6,18 +6,8 @@
       href: hpc-cache-overview.md
 - name: Pojęcia
   items:
-    - name: Używanie zagregowanej przestrzeni nazw
+    - name: Planowanie zagregowanej przestrzeni nazw
       href: hpc-cache-namespace.md
-    - name: Wypełnianie nowego magazynu obiektów blob
-      href: hpc-cache-ingest.md
-    - name: Alternatywne metody pozyskiwania danych
-      items:
-        - name: Wypełnianie pamięci podręcznej przy użyciu kopiowania równoległego
-          href: hpc-cache-ingest-parallelcp.md
-        - name: Wypełnianie pamięci podręcznej przy użyciu narzędzia msrsync
-          href: hpc-cache-ingest-msrsync.md
-        - name: Wypełnianie pamięci podręcznej przy użyciu ręcznego kopiowania plików
-          href: hpc-cache-ingest-manual.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Wymagania wstępne
@@ -25,9 +15,20 @@
     - name: Tworzenie pamięci podręcznej
       href: hpc-cache-create.md
     - name: Dodawanie magazynu
-      href: hpc-cache-add-storage.md
-    - name: Łączenie z pamięcią podręczną
-      href: hpc-cache-mount.md
+      items:
+        - name: Dodawanie lokalizacji docelowych magazynu
+          href: hpc-cache-add-storage.md
+        - name: Przenoszenie danych do magazynu pamięci podręcznej
+          items:
+            - name: Wstępne ładowanie nowego magazynu obiektów blob
+              href: hpc-cache-ingest.md
+            - name: Alternatywne metody pozyskiwania danych
+            - name: Wypełnianie pamięci podręcznej przy użyciu kopiowania równoległego
+              href: hpc-cache-ingest-parallelcp.md
+            - name: Wypełnianie pamięci podręcznej przy użyciu narzędzia msrsync
+              href: hpc-cache-ingest-msrsync.md
+            - name: Wypełnianie pamięci podręcznej przy użyciu ręcznego kopiowania plików
+              href: hpc-cache-ingest-manual.md
 - name: Zasoby
   items:
     - name: Otwieranie biletu pomocy technicznej

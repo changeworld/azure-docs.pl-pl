@@ -42,10 +42,12 @@
               href: tutorial-python-windows-virtual-machine.md
     - name: Klucze kont magazynu
       items:
-        - name: Obsługa zarządzanych kluczy kont magazynu za pomocą interfejsu wiersza polecenia platformy Azure
+        - name: Zarządzanie kluczami kont magazynu za pomocą interfejsu wiersza polecenia platformy Azure
           href: key-vault-ovw-storage-keys.md
-        - name: Obsługa zarządzanych kluczy kont magazynu za pomocą programu PowerShell
+        - name: Zarządzanie kluczami kont magazynu za pomocą programu PowerShell
           href: key-vault-overview-storage-keys-powershell.md
+        - name: Pobieranie tokenów sygnatury dostępu współdzielonego
+          href: storage-keys-sas-tokens-code.md
     - name: Kontenery platformy Azure
       href: ../container-instances/container-instances-managed-identity.md
     - name: Szablon usługi Azure Resource Manager

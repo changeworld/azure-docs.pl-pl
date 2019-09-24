@@ -257,6 +257,12 @@
     - name: Interpretacja efektów działania zasad
       displayName: 'order, evaluation'
       href: ./concepts/effects.md
+    - name: Struktura przypisań usługi Azure Policy
+      displayName: 'parameters, enforcementmode, policyDefinitionId'
+      href: ./concepts/assignment-structure.md
+    - name: Ocena wpływu nowych zasad
+      displayName: 'audit, enforcementmode, compliance'
+      href: ./concepts/evaluate-impact.md
     - name: Azure Policy dla platformy Kubernetes
       displayName: 'aks, rego, k8s, opa, open policy agent, gatekeeper'
       href: ./concepts/rego-for-aks.md

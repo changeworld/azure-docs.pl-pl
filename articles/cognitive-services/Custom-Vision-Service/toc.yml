@@ -44,6 +44,8 @@
           href: go-tutorial-object-detection.md
 - name: Samouczki
   items:
+    - name: Aplikacja alertów wizualnych IoT
+      href: iot-visual-alerts-tutorial.md
     - name: Detektor logo dla urządzeń przenośnych
       href: logo-detector-mobile.md
 - name: Przewodniki z instrukcjami

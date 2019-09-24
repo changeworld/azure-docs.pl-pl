@@ -36,6 +36,8 @@
           href: virtual-machines-windows-sql-automated-backup-v2.md
     - name: Zarządzanie
       items:
+        - name: Dedykowany host
+          href: virtual-machines-windows-sql-dedicated-host.md
         - name: Z witryną Azure Portal
           href: virtual-machines-windows-sql-manage-portal.md
         - name: Rozszerzona obsługa programu SQL 2008 i R2
