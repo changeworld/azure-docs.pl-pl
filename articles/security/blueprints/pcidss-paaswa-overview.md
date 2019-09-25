@@ -8,16 +8,16 @@ ms.service: security
 ms.topic: article
 ms.date: 07/03/2018
 ms.author: meladie
-ms.openlocfilehash: 9b588a536b89c6c3780c36e8b18da375fda811f7
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 45c3e5da6cff51e14d22ed3a6a3ab526b96b50ef
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946604"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259651"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-for-pci-dss"></a>Strategia zabezpieczeń i zgodności z przepisami platformy Azure: Aplikacja sieci Web PaaS dla PCI DSS
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Ta Strategia zabezpieczeń i zgodności z przepisami platformy Azure Automatyzacja zawiera wskazówki dotyczące wdrożenia w środowisku usługi zgodnych ze standardami płatniczymi branżowymi (PCI DSS 3,2), które są odpowiednie dla kolekcji, magazynu i pobierania danych posiadacza kart. To rozwiązanie automatyzuje wdrażanie i Konfigurowanie zasobów platformy Azure na potrzeby wspólnej architektury referencyjnej, pokazując sposoby, w których klienci mogą spełniać określone wymagania w zakresie zabezpieczeń i zgodności, a także jak podstawą dla klientów do kompilowania i Skonfiguruj własne rozwiązania na platformie Azure. Rozwiązanie implementuje podzestaw wymagań z PCI DSS 3,2. Więcej informacji o wymaganiach dotyczących PCI DSS 3,2 i tym rozwiązaniu można znaleźć w sekcji [Dokumentacja dotycząca zgodności](#compliance-documentation) .
 
@@ -58,7 +58,7 @@ To rozwiązanie używa następujących usług platformy Azure. Szczegóły archi
 - Application Insights
 - Usługa Azure Active Directory
 - Azure Automation
-- Usługa DNS platformy Azure
+- System DNS platformy Azure
 - W usłudze Azure Key Vault
 - Azure Load Balancer
 - Azure Monitor
@@ -70,7 +70,7 @@ To rozwiązanie używa następujących usług platformy Azure. Szczegóły archi
     - (1)/16 sieci
     - (4)/24 sieci
     - (4) sieciowe grupy zabezpieczeń
-- Aplikacja internetowa platformy Azure
+- Aplikacja sieci Web platformy Azure
 
 ## <a name="deployment-architecture"></a>Architektura wdrożenia
 
@@ -160,7 +160,7 @@ Poniższe technologie zapewniają możliwości zarządzania dostępem do danych 
 
 ### <a name="security"></a>Bezpieczeństwo
 
-**Zarządzanie**wpisami tajnymi: Rozwiązanie używa [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) do zarządzania kluczami i wpisami tajnymi. Usługa Azure Key Vault ułatwia ochronę kluczy kryptograficznych i kluczy tajnych używanych przez aplikacje i usługi w chmurze. Następujące funkcje Azure Key Vault pomagają klientom chronić i uzyskiwać dostęp do tych danych:
+**Zarządzanie wpisami tajnymi**: Rozwiązanie używa [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) do zarządzania kluczami i wpisami tajnymi. Usługa Azure Key Vault ułatwia ochronę kluczy kryptograficznych i kluczy tajnych używanych przez aplikacje i usługi w chmurze. Następujące funkcje Azure Key Vault pomagają klientom chronić i uzyskiwać dostęp do tych danych:
 
 - Zaawansowane zasady dostępu są konfigurowane w zależności od potrzeb.
 - Zasady dostępu Key Vault są zdefiniowane z minimalnymi wymaganymi uprawnieniami do kluczy i wpisów tajnych.
@@ -187,11 +187,11 @@ Azure Security Center zapewnia priorytetowe alerty zabezpieczeń i zdarzenia, dz
 - [Niestandardowe sondy kondycji](../../application-gateway/quick-create-portal.md)
 - [Azure Security Center](https://azure.microsoft.com/services/security-center) i [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-security-recommendations) zapewniają dodatkową ochronę i powiadomienia. Azure Security Center udostępnia również system reputacji.
 
-### <a name="logging-and-auditing"></a>Rejestrowanie i inspekcja
+### <a name="logging-and-auditing"></a>Rejestrowanie i przeprowadzanie inspekcji
 
 Usługi platformy Azure w szerokim zakresie rejestrują aktywność systemu i użytkownika, a także kondycję systemu:
 - **Dzienniki aktywności**: [Dzienniki aktywności](../../azure-monitor/platform/activity-logs-overview.md) zapewniają wgląd w operacje wykonywane na zasobach w ramach subskrypcji. Dzienniki aktywności mogą pomóc w ustaleniu inicjatora, czasu wystąpienia i stanu operacji.
-- **Dzienniki diagnostyczne**: [Dzienniki diagnostyczne](../../azure-monitor/platform/diagnostic-logs-overview.md) obejmują wszystkie dzienniki wyemitowane przez każdy zasób. Dzienniki te obejmują Dzienniki systemu Windows, dzienniki usługi Azure Storage, dzienniki inspekcji Key Vault i Application Gateway dostępu i dzienników zapory. Wszystkie dzienniki diagnostyczne zapisu na scentralizowanym i zaszyfrowanym koncie usługi Azure Storage w celu archiwizacji. Przechowywanie jest możliwe do skonfigurowania przez użytkownika, do 730 dni, w celu spełnienia wymagań dotyczących przechowywania specyficznych dla organizacji.
+- **Dzienniki diagnostyczne**: [Dzienniki diagnostyczne](../../azure-monitor/platform/resource-logs-overview.md) obejmują wszystkie dzienniki wyemitowane przez każdy zasób. Dzienniki te obejmują Dzienniki systemu Windows, dzienniki usługi Azure Storage, dzienniki inspekcji Key Vault i Application Gateway dostępu i dzienników zapory. Wszystkie dzienniki diagnostyczne zapisu na scentralizowanym i zaszyfrowanym koncie usługi Azure Storage w celu archiwizacji. Przechowywanie jest możliwe do skonfigurowania przez użytkownika, do 730 dni, w celu spełnienia wymagań dotyczących przechowywania specyficznych dla organizacji.
 
 **Azure monitor dzienników**: Te dzienniki są konsolidowane w [Azure monitor dziennikach](https://azure.microsoft.com/services/log-analytics/) na potrzeby przetwarzania, przechowywania i raportowania na pulpicie nawigacyjnym. Po zebraniu dane są zorganizowane w oddzielne tabele dla każdego typu danych w obszarze obszary robocze Log Analytics, co umożliwia analizowanie wszystkich danych razem niezależnie od oryginalnego źródła. Ponadto Azure Security Center integruje się z dziennikami Azure Monitor, dzięki czemu klienci mogą korzystać z zapytań Kusto w celu uzyskania dostępu do danych zdarzeń zabezpieczeń i połączyć je z danymi z innych usług.
 

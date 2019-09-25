@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/11/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 0c87a6968e5c6fd0e587c240b0a5df0a73f9909b
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 28914244f7ea84ec133821d4b125cbd3b0378348
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321650"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272331"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Samouczek: Renderowanie sceny w usłudze Azure Batch 
 
@@ -96,7 +96,7 @@ az storage container create \
     --name scenefiles
 ```
 
-Pobierz scenę `MotionBlur-Dragon-Flying.max` z witryny [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max) do lokalnego katalogu roboczego. Przykład:
+Pobierz scenę `MotionBlur-Dragon-Flying.max` z witryny [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max) do lokalnego katalogu roboczego. Na przykład:
 
 ```azurecli-interactive
 wget -O MotionBlur-DragonFlying.max https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max
@@ -168,20 +168,20 @@ az storage container create \
     --name job-myrenderjob
 ```
 
-Do zapisania plików wyjściowych w kontenerze usługa Batch wymaga tokenu sygnatury dostępu współdzielonego (SAS). Utwórz ten token za pomocą polecenia [az storage account generate-sas](/cli/azure/storage/account#az-storage-account-generate-sas). W tym przykładzie zostanie utworzony token umożliwiający zapis w dowolnym kontenerze obiektów blob na koncie, wygasający 15 listopada 2018 r.:
+Do zapisania plików wyjściowych w kontenerze usługa Batch wymaga tokenu sygnatury dostępu współdzielonego (SAS). Utwórz ten token za pomocą polecenia [az storage account generate-sas](/cli/azure/storage/account#az-storage-account-generate-sas). Ten przykład tworzy token do zapisu do dowolnego kontenera obiektów BLOB na koncie, a token wygasa 15 listopada 2020:
 
 ```azurecli-interactive
 az storage account generate-sas \
     --permissions w \
     --resource-types co \
     --services b \
-    --expiry 2019-11-15
+    --expiry 2020-11-15
 ```
 
 Zanotuj token zwrócony przez polecenie, który będzie podobny do następującego. Użyjesz tego tokenu w późniejszym kroku.
 
 ```
-se=2018-11-15&sp=rw&sv=2017-04-17&ss=b&srt=co&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+se=2020-11-15&sp=rw&sv=2019-09-24&ss=b&srt=co&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
 ## <a name="render-a-single-frame-scene"></a>Renderowanie sceny z jedną ramką
@@ -217,7 +217,7 @@ Zmodyfikuj elementy `blobSource` i `containerURL` w pliku JSON tak, aby zawiera�
   "commandLine": "cmd /c \"%3DSMAX_2018%3dsmaxcmdio.exe -secure off -v:5 -rfw:0 -start:1 -end:1 -outputName:\"dragon.jpg\" -w 400 -h 300 MotionBlur-DragonFlying.max\"",
   "resourceFiles": [
     {
-        "blobSource": "https://mystorageaccount.blob.core.windows.net/scenefiles/MotionBlur-DragonFlying.max",
+        "httpUrl": "https://mystorageaccount.blob.core.windows.net/scenefiles/MotionBlur-DragonFlying.max",
         "filePath": "MotionBlur-DragonFlying.max"
     }
   ],
@@ -301,7 +301,7 @@ az batch task create --job-id myrenderjob --json-file myrendertask_multi.json
 
 ### <a name="view-task-output"></a>Wyświetlanie danych wyjściowych zadania podrzędnego
 
-Wykonanie zadania podrzędnego zajmuje kilka minut. Stan zadań podrzędnych możesz wyświetlić za pomocą polecenia [az batch task list](/cli/azure/batch/task#az-batch-task-list). Przykład:
+Wykonanie zadania podrzędnego zajmuje kilka minut. Stan zadań podrzędnych możesz wyświetlić za pomocą polecenia [az batch task list](/cli/azure/batch/task#az-batch-task-list). Na przykład:
 
 ```azurecli-interactive
 az batch task list \
@@ -317,7 +317,7 @@ az batch task show \
     --task-id mymultitask1
 ```
  
-Zadania podrzędne generują pliki wyjściowe o nazwach *dragon0002.jpg* - *dragon0007.jpg* w węzłach obliczeniowych, a następnie przekazują je do kontenera *job-myrenderjob* na koncie magazynu. Aby wyświetlić pliki wyjściowe, pobierz te pliki do folderu na komputerze lokalnym za pomocą polecenia [az storage blob download-batch](/cli/azure/storage/blob). Przykład:
+Zadania podrzędne generują pliki wyjściowe o nazwach *dragon0002.jpg* - *dragon0007.jpg* w węzłach obliczeniowych, a następnie przekazują je do kontenera *job-myrenderjob* na koncie magazynu. Aby wyświetlić pliki wyjściowe, pobierz te pliki do folderu na komputerze lokalnym za pomocą polecenia [az storage blob download-batch](/cli/azure/storage/blob). Na przykład:
 
 ```azurecli-interactive
 az storage blob download-batch \

@@ -5,21 +5,21 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 09/11/2019
 ms.author: raynew
-ms.openlocfilehash: fd24d0d9f05855cf22da547f95b16da0a8d2c788
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: cb46acf3f54b5955ba8542adf73b7ca896f20c28
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617643"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266408"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Macierz obsługi odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformie Azure
 
 W tym artykule opisano obsługiwane składniki i ustawienia odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformie Azure przy użyciu [Azure Site Recovery](site-recovery-overview.md).
 
 - [Dowiedz się więcej](vmware-azure-architecture.md) o architekturze odzyskiwania po awarii maszyny wirtualnej VMware/serwera fizycznego.
-- Postępuj [](tutorial-prepare-azure.md) zgodnie z naszymi samouczkami, aby wypróbować odzyskiwanie po awarii.
+- Postępuj zgodnie z naszymi [samouczkami](tutorial-prepare-azure.md) , aby wypróbować odzyskiwanie po awarii.
 
 ## <a name="deployment-scenarios"></a>Scenariusze wdrażania
 
@@ -45,7 +45,7 @@ Serwer konfiguracji to komputer lokalny, na którym są uruchamiane składniki S
 
 **Składnik** | **Wymagania**
 --- |---
-Rdzenie procesora CPU | 8
+Rdzenie procesora | 8
 Pamięć RAM | 16 GB
 Liczba dysków | 3 dyski<br/><br/> Dyski obejmują dysk systemu operacyjnego, dysk pamięci podręcznej serwera przetwarzania i dysk przechowywania na potrzeby powrotu po awarii.
 Wolne miejsce na dysku | 600 GB miejsca w pamięci podręcznej serwera przetwarzania.
@@ -156,7 +156,7 @@ Sieć gościa/serwer z wieloma kartami sieciowymi | Tak.
 
 **Składnik** | **Obsługiwane**
 --- | ---
-Azure ExpressRoute | Tak
+Usługa ExpressRoute systemu Azure | Tak
 ILB | Tak
 ELB | Tak
 Azure Traffic Manager | Tak
@@ -192,7 +192,8 @@ Gość/serwer — miejsca do magazynowania | Nie
 Gość/serwer gorąca Dodaj/Usuń dysk | Nie
 Gość/serwer — wykluczanie dysku | Tak
 Wielościeżkowa gość/serwer (MPIO) | Nie
-Partycje typu GPT/serwer | Z pakietem zbiorczym [aktualizacji 37](https://support.microsoft.com/help/4508614/) są obsługiwane pięć partycji (wersja 9,25 usługi mobilności). Poprzednia wersja obsługiwała cztery.
+Partycje typu GPT/serwer | Z [pakietem zbiorczym aktualizacji 37](https://support.microsoft.com/help/4508614/) są obsługiwane pięć partycji (wersja 9,25 usługi mobilności). Poprzednia wersja obsługiwała cztery.
+System | System plików jest odporny na błędy w wersji 9,23 lub nowszej
 Gość/serwer EFI/rozruch UEFI | — Obsługiwane w przypadku korzystania z usługi mobilności w wersji 9,13 lub nowszej.<br/> -Obsługiwane w przypadku migrowania maszyn wirtualnych VMware lub serwerów fizycznych z systemem Windows Server 2012 lub nowszym na platformę Azure.<br/> — Maszyny wirtualne można replikować tylko na potrzeby migracji. Powrót po awarii do lokalnego nie jest obsługiwany.<br/> Obsługiwane są tylko systemy plików NTFS <br/> -Bezpieczny typ rozruchu UEFI nie jest obsługiwany. <br/> — Rozmiar sektora dysku powinien wynosić 512 bajtów na sektor fizyczny.
 
 ## <a name="replication-channels"></a>Kanały replikacji
@@ -245,6 +246,10 @@ Udostępniony wirtualny dysk twardy | Nieobsługiwane. | Sprawdzanie kończy si�
 Dysk FC | Nieobsługiwane. | Sprawdzanie kończy się niepowodzeniem, jeśli nie jest obsługiwane.
 BitLocker | Nieobsługiwane. | Aby włączyć replikację dla maszyny, należy wyłączyć funkcję BitLocker. |
 Nazwa maszyny wirtualnej | Od 1 do 63 znaków.<br/><br/> Ograniczone do liter, cyfr i łączników.<br/><br/> Nazwa maszyny musi rozpoczynać się i kończyć literą lub cyfrą. |  Zaktualizuj wartość we właściwościach komputera w Site Recovery.
+
+## <a name="resource-group-limits"></a>Limity grupy zasobów
+
+Aby zrozumieć liczbę maszyn wirtualnych, które mogą być chronione w ramach jednej grupy zasobów, zapoznaj się z artykułem dotyczącym [limitów subskrypcji i przydziałów](https://docs.microsoft.com/azure/azure-subscription-service-limits#resource-group-limits)
 
 ## <a name="churn-limits"></a>Limity zmian
 

@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5288fe57b2f83522b140f65fa62e08f9c63a7af5
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: d56a07b46c4cd54577bcb3d81f2c45c03433fc31
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852681"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268348"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>Scenariusz: Aplikacja klasyczna wywołująca internetowe interfejsy API
 
@@ -32,7 +32,7 @@ Dowiedz się wszystkiego, co jest potrzebne do utworzenia aplikacji klasycznej, 
 
 ## <a name="getting-started"></a>Wprowadzenie
 
-Jeśli jeszcze tego nie zrobiono, Utwórz swoją pierwszą aplikację, postępując zgodnie z przewodnikiem Szybki Start dla programu .NET Desktop lub platformy UWP szybki start:
+Jeśli jeszcze tego nie zrobiono, Utwórz swoją pierwszą aplikację, postępując zgodnie z przewodnikiem Szybki Start dla programu .NET Desktop, platformy UWP przewodniku szybki start lub aplikacji natywnej macOS:
 
 > [!div class="nextstepaction"]
 > [Szybki start: Uzyskiwanie tokenu i wywoływanie Microsoft Graph interfejsu API z aplikacji klasycznej systemu Windows](./quickstart-v2-windows-desktop.md)
@@ -41,13 +41,16 @@ Jeśli jeszcze tego nie zrobiono, Utwórz swoją pierwszą aplikację, postępuj
 > [!div class="nextstepaction"]
 > [Szybki start: Uzyskiwanie tokenu i wywoływanie Microsoft Graph interfejsu API z poziomu aplikacji platformy UWP](./quickstart-v2-uwp.md)
 
-## <a name="overview"></a>Omówienie
+> [!div class="nextstepaction"]
+> [Szybki start: Uzyskiwanie tokenu i wywoływanie Microsoft Graph interfejsu API z natywnej aplikacji macOS](./quickstart-v2-ios.md)
+
+## <a name="overview"></a>Przegląd
 
 Napisz aplikację klasyczną i chcesz zalogować użytkowników do aplikacji i wywoływać interfejsy API sieci Web, takie jak Microsoft Graph, inne interfejsy API firmy Microsoft lub własny internetowy interfejs API. Masz kilka możliwości:
 
 - Możesz użyć pozyskiwania tokenów interaktywnych:
 
-  - Jeśli aplikacja klasyczna obsługuje kontrolki graficzne, na przykład jeśli jest to aplikacja Windows. form lub aplikacja WPF.
+  - Jeśli aplikacja klasyczna obsługuje kontrolki graficzne, na przykład jeśli jest to aplikacja typu Windows. form, aplikacja WPF lub aplikacja natywna macOS.
   - Jeśli jest to aplikacja platformy .NET Core i wyrażasz zgodę na interakcję uwierzytelniania z usługą Azure AD w przeglądarce systemowej
 
 - W przypadku aplikacji hostowanych w systemie Windows istnieje również możliwość, że aplikacje działające na komputerach przyłączonych do domeny systemu Windows lub usługi AAD są dołączone do dyskretnego uzyskiwania tokenu przy użyciu zintegrowanego uwierzytelniania systemu Windows.
@@ -65,7 +68,7 @@ Napisz aplikację klasyczną i chcesz zalogować użytkowników do aplikacji i w
 
 Aplikacje klasyczne mają różne wartości, które są zależne od tego, czy aplikacja korzysta z uwierzytelniania interaktywnego, czy nie.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Aplikacja klasyczna — Rejestracja aplikacji](scenario-desktop-app-registration.md)

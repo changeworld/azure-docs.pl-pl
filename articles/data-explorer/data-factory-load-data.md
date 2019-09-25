@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: b3bd9b800da4f096639d02c78b718216441621a9
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 5eb05df7ed97839ef80798a752565234d180f0e2
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70803988"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268820"
 ---
 # <a name="copy-data-to-azure-data-explorer-using-azure-data-factory"></a>Kopiowanie danych do usługi Azure Eksplorator danych przy użyciu Azure Data Factory 
 
@@ -96,6 +96,9 @@ Istnieją dwa sposoby ładowania danych do usługi Azure Eksplorator danych przy
     * Określ wartość **klucza dostępu tajnego** .
     * Wybierz pozycję **Testuj połączenie** , aby przetestować utworzone połączenie połączonej usługi.
     * Wybierz pozycję **Finish** (Zakończ).
+    
+    > [!NOTE]
+    > W obszarze Amazon S3 wybierz swoją nazwę użytkownika Amazon na pasku nawigacyjnym, a następnie wybierz pozycję **moje poświadczenia zabezpieczeń** , aby znaleźć **klucz dostępu**. 
 
 1. Na stronie **Magazyn danych źródłowych** zobaczysz nowe połączenie usługi AmazonS31. Wybierz opcję **Dalej**.
 

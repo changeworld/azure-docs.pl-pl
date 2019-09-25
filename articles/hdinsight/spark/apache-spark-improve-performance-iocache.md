@@ -1,27 +1,27 @@
 ---
 title: Apache Spark obciążenie wydajności za pomocą pamięci podręcznej we/wy usługi Azure HDInsight (wersja zapoznawcza)
 description: Informacje o pamięci podręcznej we/wy usługi Azure HDInsight i sposobach ich użycia w celu poprawy wydajności Apache Spark.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2018
-ms.openlocfilehash: f3f171d4dfd3642dc71724afbe084c3fcbf8beaa
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: ecb393ea1f64897f17ce73170da1673886ef8916
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091069"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266185"
 ---
-# <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Poprawianie wydajności Apache Spark obciążeń przy użyciu pamięci podręcznej we/wy usługi Azure HDInsight 
+# <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Poprawianie wydajności Apache Spark obciążeń przy użyciu pamięci podręcznej we/wy usługi Azure HDInsight
 
 Pamięć podręczna we/wy to usługa buforowania danych dla usługi Azure HDInsight, która zwiększa wydajność Apache Spark zadań. Pamięć podręczna we/wy działa również w przypadku obciążeń [Apache tez](https://tez.apache.org/) i [Apache Hive](https://hive.apache.org/) , które można uruchamiać w klastrach [Apache Spark](https://spark.apache.org/) . Pamięć podręczna we/wy używa składnika pamięci podręcznej Open Source o nazwie RubiX. RubiX to lokalna pamięć podręczna dysku do użycia z aparatami analizy danych Big Data, które uzyskują dostęp do danych z systemów magazynu w chmurze. RubiX jest unikatowy w systemach buforowania, ponieważ używa dysków półprzewodnikowych (dysków SSD), a nie rezerwowej pamięci operacyjnej do celów buforowania. Usługa pamięci podręcznej we/wy uruchamia i zarządza serwerami metadanych RubiX w każdym węźle procesu roboczego klastra. Konfiguruje także wszystkie usługi klastra na potrzeby przezroczystego użycia pamięci podręcznej RubiX.
 
 Większość dysków SSD zapewnia więcej niż 1 GByte na sekundę przepustowości. Ta przepustowość, dostosowana przez system operacyjny w pamięci podręcznej plików, zapewnia wystarczającą przepustowość do ładowania aparatów przetwarzania obliczeń danych Big Data, takich jak Apache Spark. Pamięć operacyjna jest dostępna do Apache Spark, aby przetwarzać silnie zależne od pamięci zadania, takie jak losowo. Korzystanie z wyłącznej pamięci operacyjnej pozwala Apache Spark uzyskać optymalne użycie zasobów.  
 
->[!Note]  
->Pamięć podręczna we/wy używa obecnie RubiX jako składnika buforowania, ale może się to zmienić w przyszłych wersjach usługi. Użyj interfejsów pamięci podręcznej we/wy i nie podejmuj żadnych zależności bezpośrednio w implementacji RubiX.
+> [!Note]  
+> Pamięć podręczna we/wy używa obecnie RubiX jako składnika buforowania, ale może się to zmienić w przyszłych wersjach usługi. Użyj interfejsów pamięci podręcznej we/wy i nie podejmuj żadnych zależności bezpośrednio w implementacji RubiX.
 
 ## <a name="benefits-of-azure-hdinsight-io-cache"></a>Zalety pamięci podręcznej we/wy usługi Azure HDInsight
 
@@ -70,7 +70,7 @@ Po włączeniu pamięci podręcznej we/wy może wystąpić błąd miejsca na dys
 
 1. Wybierz pozycję **Uruchom ponownie** > **ponownie wszystkie uwzględnione**.
 
-    ![Uruchom ponownie wszystkie uwzględnione](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Uruchom ponownie wszystkie uwzględnione")
+    ![System Apache Ambari](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Uruchom ponownie wszystkie uwzględnione")
 
 1. Wybierz pozycję **Potwierdź ponowne uruchomienie wszystkich**.
 

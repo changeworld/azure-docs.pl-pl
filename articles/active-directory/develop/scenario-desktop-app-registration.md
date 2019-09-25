@@ -17,12 +17,12 @@ ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b996b2387e324c7e318536c2a13bdc9de39a7a5e
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 648652ed32a5dea30de665b7fa49190171a7f10a
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860879"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268406"
 ---
 # <a name="desktop-app-that-calls-web-apis---app-registration"></a>Aplikacja klasyczna, która wywołuje interfejsy API sieci Web — Rejestracja aplikacji
 
@@ -51,6 +51,7 @@ Identyfikatory URI przekierowania używane w aplikacji klasycznej będą zależe
   > [!IMPORTANT]
   > Dzisiaj MSAL.NET domyślnie używa innego identyfikatora URI przekierowania w aplikacjach klasycznych działających w`urn:ietf:wg:oauth:2.0:oob`systemie Windows (). W przyszłości będziemy chcieć zmienić to ustawienie domyślne i dlatego zalecamy użycie`https://login.microsoftonline.com/common/oauth2/nativeclient`
 
+- Jeśli tworzysz natywną aplikację "cel-C" lub "Swift" dla macOS, chcesz zarejestrować redirectUri na podstawie identyfikatora pakietu aplikacji w następującym formacie: **msauth. < element. app .Binding. id >://auth** (zastąp < Twoja. app .Binding. ID > z identyfikatorem pakietu aplikacji)
 - Jeśli aplikacja używa tylko zintegrowanego uwierzytelniania systemu Windows lub nazwy użytkownika/hasła, nie trzeba rejestrować identyfikatora URI przekierowania dla aplikacji. Te przepływy wykonują rundy w punkcie końcowym Microsoft Identity platform v 2.0, a aplikacja nie zostanie wywołana ponownie na żadnym konkretnym identyfikatorze URI.
 - Aby rozróżnić przepływ kodu urządzenia, zintegrowane uwierzytelnianie systemu Windows i nazwę użytkownika/hasło z poufnego przepływu aplikacji klienta, który nie ma identyfikatorów URI przekierowania (przepływ poświadczeń klienta używany w aplikacjach demonów), należy wyrazić, że Aplikacja jest publiczną aplikacją kliencką. Aby osiągnąć tę konfigurację, przejdź do sekcji **uwierzytelnianie** dla swojej aplikacji. Następnie w podsekcji **Ustawienia zaawansowane** w obszarze **domyślny typ klienta** wybierz pozycję **tak** dla pytania **Traktuj aplikację jako klienta publicznego**.
 

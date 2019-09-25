@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 69c63d4eb2e0bfd04bb232cb0cf39965a5b77193
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: be82ab1597021d7198d7936ecd24e4bec64fdf25
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70104278"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266912"
 ---
 ## <a name="benefits-of-managed-disks"></a>Zalety dysków zarządzanych
 
@@ -43,15 +43,21 @@ Aby chronić przed awariami regionalnymi, [Azure Backup](../articles/backup/back
 
 Za pomocą [kontroli dostępu opartej na rolach (RBAC) platformy Azure](../articles/role-based-access-control/overview.md) można przypisać określone uprawnienia dla dysku zarządzanego do jednego lub większej liczby użytkowników. W przypadku dysków zarządzanych są dostępne różne operacje, takie jak Odczyt, zapis (Tworzenie/aktualizowanie), usuwanie i pobieranie [identyfikatora URI sygnatury dostępu współdzielonego (SAS)](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) dla dysku. Można udzielić dostępu tylko do operacji wykonywanych przez osobę. Na przykład, jeśli nie chcesz, aby użytkownik skopiował dysk zarządzany do konta magazynu, możesz zrezygnować z udzielenia dostępu do akcji eksportowania dla tego dysku zarządzanego. Podobnie, jeśli nie chcesz, aby użytkownik korzystał z identyfikatora URI sygnatury dostępu współdzielonego w celu skopiowania dysku zarządzanego, możesz zrezygnować z przyznania tego uprawnienia do dysku zarządzanego.
 
+### <a name="upload-your-vhd"></a>Przekazywanie wirtualnego dysku twardego
+
+ Przekazywanie bezpośrednie ułatwia przenoszenie dysku VHD na dysk zarządzany platformy Azure. Wcześniej musiałeś postępować zgodnie z większym procesem, który obejmuje przemieszczenie danych na koncie magazynu. Teraz jest mniej kroków. Łatwiejsze jest przekazywanie lokalnych maszyn wirtualnych na platformę Azure, przekazywanie ich do dużych dysków zarządzanych, a proces tworzenia kopii zapasowej i przywracania jest uproszczony. Zmniejsza to również koszty, umożliwiając przekazywanie danych do dysków zarządzanych bezpośrednio bez dołączania ich do maszyn wirtualnych. Możesz użyć bezpośredniego przekazywania, aby przekazać wirtualne dyski twarde o rozmiarze do 32 TiB.
+
+ Aby dowiedzieć się, jak przenieść dysk VHD na platformę Azure, zapoznaj się z artykułami [interfejsu wiersza polecenia](../articles/virtual-machines/linux/disks-upload-vhd-to-managed-disk-cli.md) lub [programu PowerShell](../articles/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md) .
+
 ## <a name="encryption"></a>Szyfrowanie
 
-Dyski zarządzane oferują dwa różne rodzaje szyfrowania. Pierwszy jest szyfrowanie usługi Storage (SSE), który jest wykonywany przez usługę magazynu. Druga Azure Disk Encryption, którą można włączyć na dyskach systemu operacyjnego i danych dla maszyn wirtualnych.
+Dyski zarządzane oferują dwa różne rodzaje szyfrowania. Pierwszy jest szyfrowanie usługi Storage (SSE), który jest wykonywany przez usługę magazynu. Druga z nich to Azure Disk Encryption (ADE), którą można włączyć na dyskach systemu operacyjnego i danych dla maszyn wirtualnych.
 
 ### <a name="storage-service-encryption-sse"></a>Szyfrowanie usługi Storage (SSE)
 
 [Usługa Azure szyfrowanie usługi Storage](../articles/storage/common/storage-service-encryption.md) zapewnia szyfrowanie w spoczynku i zabezpiecza dane zgodnie ze zobowiązaniami dotyczącymi zabezpieczeń i zgodności w organizacji. Funkcja SSE jest domyślnie włączona dla wszystkich dysków zarządzanych, migawek i obrazów we wszystkich regionach, w których są dostępne usługi Managed Disks. Aby uzyskać więcej informacji, odwiedź [stronę Managed disks często zadawanych pytań](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) .
 
-### <a name="azure-disk-encryption-ade"></a>Azure Disk Encryption (ADE)
+### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
 Azure Disk Encryption pozwala na szyfrowanie dysków systemu operacyjnego i danych używanych przez maszynę wirtualną IaaS. To szyfrowanie obejmuje dyski zarządzane. W przypadku systemu Windows dyski są szyfrowane przy użyciu standardowej technologii szyfrowania funkcji BitLocker. W przypadku systemu Linux dyski są szyfrowane przy użyciu technologii DM-Crypt. Proces szyfrowania jest zintegrowany z usługą Azure Key Vault, aby umożliwić kontrolowanie kluczy szyfrowania dysków i zarządzanie nimi. Aby uzyskać więcej informacji, zobacz [Azure Disk Encryption dla maszyn wirtualnych IaaS](../articles/security/azure-security-disk-encryption-overview.md).
 

@@ -1,41 +1,30 @@
 ---
-title: Przykłady interfejsu wiersza polecenia platformy Azure dla usługi Azure Cosmos DB
-description: Przykłady interfejsu wiersza polecenia platformy Azure — tworzenie kont, baz danych, kontenerów, regionów i zapór usługi Azure Cosmos DB oraz zarządzanie nimi.
+title: Przykłady interfejsu wiersza polecenia platformy Azure dla usługi Azure Cosmos DB SQL (rdzeń)
+description: Przykłady interfejsu wiersza polecenia platformy Azure dla usługi Azure Cosmos DB SQL (rdzeń)
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 10/26/2018
+ms.date: 9/25/2019
 ms.author: mjbrown
-ms.reviewer: sngun
-ms.openlocfilehash: d7ce5e2c12feeee770de8acfd5df81d340e0a7d0
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: defeacc3f0bc4cd9d77e538f8ceac5ca09a4068a
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615569"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272372"
 ---
-# <a name="azure-cli-samples-for-azure-cosmos-db"></a>Przykłady interfejsu wiersza polecenia platformy Azure dla usługi Azure Cosmos DB
+# <a name="azure-cli-samples-for-azure-cosmos-db-sql-core-api"></a>Przykłady interfejsu wiersza polecenia platformy Azure dla usługi Azure Cosmos DB SQL (rdzeń)
 
-Poniższa tabela zawiera linki do przykładowych skryptów interfejsu wiersza polecenia platformy Azure dla usługi Azure Cosmos DB. Strony referencyjne dla wszystkich poleceń dostępnych w interfejsie wiersza polecenia usługi Azure Cosmos DB są dostępne w [dokumentacji dotyczącej interfejsu wiersza polecenia platformy Azure](/cli/azure/cosmosdb).
+Poniższa tabela zawiera linki do przykładowych skryptów interfejsu wiersza polecenia platformy Azure dla interfejsu API Azure Cosmos DB SQL (rdzeń). Strony referencyjne dla wszystkich poleceń dostępnych w interfejsie wiersza polecenia usługi Azure Cosmos DB są dostępne w [dokumentacji dotyczącej interfejsu wiersza polecenia platformy Azure](/cli/azure/cosmosdb). Przykłady interfejsu wiersza polecenia platformy Azure dla innych interfejsów API Azure Cosmos DB Zobacz, [interfejs API Cassandra](cli-samples-cassandra.md), [MongoDB API](cli-samples-mongodb.md), [Gremlin API](cli-samples-gremlin.md)i [interfejs API tabel](cli-samples-table.md). Wszystkie przykłady skryptów interfejsu wiersza polecenia Azure Cosmos DB można znaleźć w [repozytorium GitHub Azure Cosmos DB interfejsu wiersza polecenia](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb).
 
 | |  |
 |---|---|
-|**Tworzenie konta, bazy danych i kontenerów usługi Azure Cosmos DB**||
-| [Tworzenie konta usługi Azure Cosmos DB przy użyciu interfejsu API SQL](scripts/create-database-account-collections-cli.md?toc=%2fcli%2fazure%2ftoc.json)| Tworzy pojedyncze konto, bazę danych i kontener usługi Azure Cosmos DB. |
-| [Tworzenie konta usługi Azure Cosmos DB przy użyciu interfejsu API usługi Cosmos DB dla bazy danych MongoDB](scripts/create-mongodb-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Tworzy pojedyncze konto usługi Azure Cosmos DB, bazę danych i kolekcję. |
-| [Tworzenie konta usługi Azure Cosmos DB przy użyciu interfejsu API języka Gremlin](scripts/create-gremlin-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Tworzy pojedyncze konto, bazę danych i graf usługi Azure Cosmos DB. |
-| [Tworzenie konta usługi Azure Cosmos DB przy użyciu interfejsu API Cassandra](scripts/create-cassandra-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Tworzy pojedyncze konto i bazę danych usługi Azure Cosmos DB. |
-| [Tworzenie konta usługi Azure Cosmos DB przy użyciu interfejsu API tabel](scripts/create-table-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Tworzy pojedyncze konto, bazę danych i tabelę usługi Azure Cosmos DB. |
-|**Skalowanie usługi Azure Cosmos DB**||
-| [Skalowanie przepływności kontenerów](scripts/scale-collection-throughput-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Zmienia aprowizowaną przepływność w kontenerze.|
-| [Replikowanie konta bazy danych Azure Cosmos Database w wielu regionach i Konfigurowanie priorytetów trybu failover](scripts/scale-multiregion-cli.md?toc=%2fcli%2fazure%2ftoc.json)|Globalnie replikuje dane konta w wielu regionach z określonym priorytetem trybu failover.|
-|**Zabezpieczanie usługi Azure Cosmos DB**||
-| [Uzyskiwanie kluczy kont](scripts/secure-get-account-key-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Uzyskuje podstawowe i pomocnicze klucze główne zapisu oraz klucze podstawowe i pomocnicze tylko do odczytu dla konta.|
-| [Pobieranie parametrów połączenia dla konta usługi Cosmos skonfigurowanego za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB](scripts/secure-mongo-connection-string-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Uzyskuje parametry połączenia umożliwiające połączenie aplikacji bazy danych MongoDB z Twoim kontem usługi Azure Cosmos DB.|
-| [Ponowne generowanie kluczy konta](scripts/secure-regenerate-key-cli.md?toc=%2fcli%2fazure%2ftoc.json)|Ponownie generuje klucze konta.|
-| [Tworzenie zapory](scripts/create-firewall-cli.md?toc=%2fcli%2fazure%2ftoc.json)| Tworzy zasady kontroli dostępu do adresów IP dla połączeń przychodzących w celu ograniczenia dostępu do konta z zatwierdzonego zestawu maszyn i/lub usług w chmurze.|
-|**Wysoka dostępność, odzyskiwanie po awarii, tworzenie i przywracanie kopii zapasowej**||
-| [Konfigurowanie zasad trybu failover](scripts/ha-failover-policy-cli.md?toc=%2fcli%2fazure%2ftoc.json)|Ustawia priorytet trybu failover poszczególnych regionów, w których konto jest replikowane.|
-|**Łączenie usługi Azure Cosmos DB z zasobami**||
-| [Łączenie aplikacji internetowej z usługą Azure Cosmos DB](../app-service/scripts/cli-connect-to-documentdb.md?toc=%2fcli%2fazure%2ftoc.json)|Utwórz i Połącz bazę danych Azure Cosmos i aplikację sieci Web platformy Azure.|
+| [Tworzenie konta, bazy danych i kontenera usługi Azure Cosmos](scripts/cli/sql/create.md?toc=%2fcli%2fazure%2ftoc.json)| Tworzy konto Azure Cosmos DB, bazę danych i kontener dla interfejsu API SQL (rdzeń). |
+| [Zmień przepływność](scripts/cli/sql/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Zaktualizuj RU/s w bazie danych i kontenerze.|
+| [Dodawanie regionów lub przełączanie do trybu failover](scripts/cli/common/regions.md?toc=%2fcli%2fazure%2ftoc.json) | Dodaj region, Zmień priorytet trybu failover i Wyzwól ręczny tryb failover.|
+| [Klucze konta i parametry połączenia](scripts/cli/common/keys.md?toc=%2fcli%2fazure%2ftoc.json) | Wyświetl listę kluczy konta, klucze tylko do odczytu, Wygeneruj ponownie klucze i Wyświetl listę parametrów połączenia.|
+| [Zabezpieczanie za pomocą zapory IP](scripts/cli/common/ipfirewall.md?toc=%2fcli%2fazure%2ftoc.json)| Utwórz konto Cosmos z skonfigurowaną zaporą IP.|
+| [Zabezpiecz nowe konto za pomocą punktów końcowych usługi](scripts/cli/common/service-endpoints.md?toc=%2fcli%2fazure%2ftoc.json)| Utwórz konto Cosmos i zabezpiecz je za pomocą punktów końcowych usługi.|
+| [Zabezpiecz istniejące konto za pomocą punktów końcowych usługi](scripts/cli/common/service-endpoints-ignore-missing-vnet.md?toc=%2fcli%2fazure%2ftoc.json)| Zaktualizuj konto usługi Cosmos, aby zabezpieczyć za pomocą punktów końcowych, gdy podsieć jest ostatecznie skonfigurowana.|
 |||

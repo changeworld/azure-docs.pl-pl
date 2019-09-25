@@ -13,18 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: dd5442ff8c8d296dfa221a9ea7ed8d5833fd89c1
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: c5e58f496176ec0f1b8317c8b862a8ef2ffa434d
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240710"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262731"
 ---
-# <a name="connect-your-domain-name-server---preview"></a>Łączenie serwera nazw domen — wersja zapoznawcza
+# <a name="connect-your-domain-name-server"></a>Łączenie serwera nazw domen
 
-
+> [!IMPORTANT]
+> Łącznik danych DNS na platformie Azure jest obecnie w publicznej wersji zapoznawczej.
+> Ta funkcja jest dostępna bez umowy dotyczącej poziomu usług i nie jest zalecana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Można połączyć wszystkie serwery nazw domen (DNS) działające w systemie Windows z platformą Azure. W tym celu należy zainstalować agenta na maszynie DNS. Korzystając z dzienników DNS, można uzyskać szczegółowe informacje dotyczące zabezpieczeń, wydajności i operacji w infrastrukturze DNS organizacji przez zbieranie, analizowanie i skorelowanie dzienników analitycznych i inspekcji oraz innych powiązanych danych z serwerów DNS.
 
@@ -53,7 +55,7 @@ Rozwiązanie zbiera spis DNS i dane dotyczące zdarzeń DNS z serwerów DNS, kt�
 
 ## <a name="connect-your-dns-appliance"></a>Połącz urządzenie DNS
 
-1. W portalu wskaźnikowym platformy Azure wybierz pozycję **Łączniki danych** i wybierz kafelek **DNS** .
+1. W portalu wskaźnikowym platformy Azure wybierz pozycję **Łączniki danych** i wybierz kafelek **DNS (wersja zapoznawcza)** .
 1. Jeśli Twoje maszyny DNS znajdują się na platformie Azure:
     1. Kliknij przycisk **Zainstaluj agenta na maszynie wirtualnej platformy Azure systemu Windows**.
     1. Na liście **maszyny wirtualne** wybierz MASZYNę DNS, która ma zostać przesłana do usługi Azure wskaźnikowej. Upewnij się, że jest to maszyna wirtualna z systemem Windows.

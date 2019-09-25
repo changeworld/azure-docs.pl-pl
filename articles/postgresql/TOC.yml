@@ -146,6 +146,12 @@
           href: concepts-hyperscale-choose-distribution-column.md
         - name: Kolokacja tabeli
           href: concepts-hyperscale-colocation.md
+        - name: Dostęp do danych i zabezpieczenia
+          items:
+            - name: Reguły zapory
+              href: concepts-hyperscale-firewall-rules.md
+            - name: Konfigurowanie protokołu SSL
+              href: concepts-hyperscale-ssl-connection-security.md
         - name: Rozszerzenia PostgreSQL
           href: concepts-hyperscale-extensions.md
         - name: Zasoby
@@ -154,86 +160,96 @@
               href: concepts-hyperscale-configuration-options.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Tworzenie użytkowników
-      href: howto-create-users.md
-    - name: Optymalizacja
+    - name: Pojedynczy serwer
       items:
-        - name: Zbiorcze operacje wstawiania
-          href: howto-optimize-bulk-inserts.md
-        - name: Automatyczna próżnia
-          href: howto-optimize-autovacuum.md
-        - name: Zbieranie statystyk zapytań
-          href: howto-optimize-query-stats-collection.md
-        - name: Strategia dotycząca wyskakujących tabel
-          href: howto-optimize-query-time-with-toast-table-storage-strategy.md
-    - name: Zarządzanie zaporą
+        - name: Tworzenie użytkowników
+          href: howto-create-users.md
+        - name: Optymalizacja
+          items:
+            - name: Zbiorcze operacje wstawiania
+              href: howto-optimize-bulk-inserts.md
+            - name: Automatyczna próżnia
+              href: howto-optimize-autovacuum.md
+            - name: Zbieranie statystyk zapytań
+              href: howto-optimize-query-stats-collection.md
+            - name: Strategia dotycząca wyskakujących tabel
+              href: howto-optimize-query-time-with-toast-table-storage-strategy.md
+        - name: Zarządzanie zaporą
+          items:
+            - name: Azure Portal
+              href: howto-manage-firewall-using-portal.md
+            - name: Interfejs wiersza polecenia platformy Azure
+              href: howto-manage-firewall-using-cli.md
+        - name: Przywracanie serwera
+          items:
+            - name: Azure Portal
+              href: howto-restore-server-portal.md
+            - name: Interfejs wiersza polecenia platformy Azure
+              href: howto-restore-server-cli.md
+        - name: Migrowanie bazy danych
+          items:
+            - name: Zrzucanie i przywracanie
+              href: howto-migrate-using-dump-and-restore.md
+            - name: Importowanie i eksportowanie
+              href: howto-migrate-using-export-and-import.md
+            - name: Migracja z minimalnym przestojem
+              href: howto-migrate-online.md
+        - name: Konfigurowanie parametrów serwera
+          items:
+            - name: Azure Portal
+              href: howto-configure-server-parameters-using-portal.md
+            - name: Interfejs wiersza polecenia platformy Azure
+              href: howto-configure-server-parameters-using-cli.md
+        - name: Automatyczne zwiększanie rozmiaru magazynu
+          items:
+            - name: Portal Azure
+              href: howto-auto-grow-storage-portal.md
+            - name: Interfejs wiersza polecenia platformy Azure
+              href: howto-auto-grow-storage-cli.md
+        - name: Dzienniki dostępu serwera
+          items:
+            - name: Azure Portal
+              href: howto-configure-server-logs-in-portal.md
+            - name: Interfejs wiersza polecenia platformy Azure
+              href: howto-configure-server-logs-using-cli.md
+        - name: Monitorowanie
+          items:
+            - name: Tworzenie alertów dotyczących metryk
+              href: howto-alert-on-metric.md
+        - name: Rozwiązywanie problemów
+          items:
+            - name: Rozwiązywanie problemów z błędami połączenia
+              href: howto-troubleshoot-common-connection-issues.md
+        - name: Zaawansowana ochrona przed zagrożeniami
+          items:
+            - name: Azure Portal
+              href: howto-database-threat-protection-portal.md
+        - name: Virtual Network
+          items:
+            - name: Azure Portal
+              href: howto-manage-vnet-using-portal.md
+            - name: Interfejs wiersza polecenia platformy Azure
+              href: howto-manage-vnet-using-cli.md
+        - name: Ponowne uruchamianie serwera
+          items:
+            - name: Portal Azure
+              href: howto-restart-server-portal.md
+            - name: Interfejs wiersza polecenia platformy Azure
+              href: howto-restart-server-cli.md
+        - name: Replikacja
+          items:
+            - name: Zarządzanie replikami do odczytu w witrynie Azure Portal
+              href: howto-read-replicas-portal.md
+            - name: 'Zarządzanie replikami do odczytu (interfejs wiersza polecenia platformy Azure, interfejs API REST)'
+              href: howto-read-replicas-cli.md
+    - name: Hiperskala (Citus)
       items:
-        - name: Azure Portal
-          href: howto-manage-firewall-using-portal.md
-        - name: Interfejs wiersza polecenia platformy Azure
-          href: howto-manage-firewall-using-cli.md
-    - name: Przywracanie serwera
-      items:
-        - name: Azure Portal
-          href: howto-restore-server-portal.md
-        - name: Interfejs wiersza polecenia platformy Azure
-          href: howto-restore-server-cli.md
-    - name: Migrowanie bazy danych
-      items:
-        - name: Zrzucanie i przywracanie
-          href: howto-migrate-using-dump-and-restore.md
-        - name: Importowanie i eksportowanie
-          href: howto-migrate-using-export-and-import.md
-        - name: Migracja z minimalnym przestojem
-          href: howto-migrate-online.md
-    - name: Konfigurowanie parametrów serwera
-      items:
-        - name: Azure Portal
-          href: howto-configure-server-parameters-using-portal.md
-        - name: Interfejs wiersza polecenia platformy Azure
-          href: howto-configure-server-parameters-using-cli.md
-    - name: Automatyczne zwiększanie rozmiaru magazynu
-      items:
-        - name: Portal Azure
-          href: howto-auto-grow-storage-portal.md
-        - name: Interfejs wiersza polecenia platformy Azure
-          href: howto-auto-grow-storage-cli.md
-    - name: Dzienniki dostępu serwera
-      items:
-        - name: Azure Portal
-          href: howto-configure-server-logs-in-portal.md
-        - name: Interfejs wiersza polecenia platformy Azure
-          href: howto-configure-server-logs-using-cli.md
-    - name: Monitorowanie
-      items:
-        - name: Tworzenie alertów dotyczących metryk
-          href: howto-alert-on-metric.md
-    - name: Rozwiązywanie problemów
-      items:
-        - name: Rozwiązywanie problemów z błędami połączenia
-          href: howto-troubleshoot-common-connection-issues.md
-    - name: Zaawansowana ochrona przed zagrożeniami
-      items:
-        - name: Azure Portal
-          href: howto-database-threat-protection-portal.md
-    - name: Virtual Network
-      items:
-        - name: Azure Portal
-          href: howto-manage-vnet-using-portal.md
-        - name: Interfejs wiersza polecenia platformy Azure
-          href: howto-manage-vnet-using-cli.md
-    - name: Ponowne uruchamianie serwera
-      items:
-        - name: Portal Azure
-          href: howto-restart-server-portal.md
-        - name: Interfejs wiersza polecenia platformy Azure
-          href: howto-restart-server-cli.md
-    - name: Replikacja
-      items:
-        - name: Zarządzanie replikami do odczytu w witrynie Azure Portal
-          href: howto-read-replicas-portal.md
-        - name: 'Zarządzanie replikami do odczytu (interfejs wiersza polecenia platformy Azure, interfejs API REST)'
-          href: howto-read-replicas-cli.md
+        - name: Skalowanie
+          href: howto-hyperscale-scaling.md
+        - name: Zarządzanie zaporą
+          items:
+            - name: Portal Azure
+              href: howto-hyperscale-manage-firewall-using-portal.md
 - name: Dokumentacja
   items:
     - name: Interfejs wiersza polecenia platformy Azure

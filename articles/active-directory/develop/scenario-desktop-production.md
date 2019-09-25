@@ -1,6 +1,6 @@
 ---
-title: Aplikacja klasyczna, że wywołuje interfejsy API sieci web (przenoszenie do środowiska produkcyjnego) — Platforma tożsamości usługi Microsoft
-description: Naucz się tworzyć aplikację klasyczną wywołuje interfejsy API (przenoszenie do środowiska produkcyjnego) sieci web
+title: Aplikacja klasyczna, która wywołuje interfejsy API sieci Web (Przenieś do środowiska produkcyjnego) — Microsoft Identity platform
+description: Dowiedz się, jak utworzyć aplikację klasyczną wywołującą interfejsy API sieci Web (Przenieś do środowiska produkcyjnego)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -17,36 +17,38 @@ ms.date: 04/18/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2343a416bd810792e7267b94395f953aa4f880a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6a353b4577f8cfa9ba279ad2793e1a7ab8b27e55
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111199"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268336"
 ---
-# <a name="desktop-app-that-calls-web-apis---move-to-production"></a>Aplikacja klasyczna, która wywołuje sieci web interfejsy API — przenoszenie do środowiska produkcyjnego
+# <a name="desktop-app-that-calls-web-apis---move-to-production"></a>Aplikacja klasyczna, która wywołuje interfejsy API sieci Web — Przenieś do środowiska produkcyjnego
 
-Ten artykuł zawiera szczegóły, aby ulepszać aplikację dalej i przenieś ją do środowiska produkcyjnego.
+Ten artykuł zawiera szczegółowe informacje ułatwiające dalsze ulepszanie aplikacji i przenoszenie jej do środowiska produkcyjnego.
 
 ## <a name="handling-errors-in-desktop-applications"></a>Obsługa błędów w aplikacjach klasycznych
 
-W różnych przepływów wyjaśniono sposób obsługi błędów dla przepływów dyskretnej (jak pokazano w fragmenty kodu). Również w tym samouczku, istnieją przypadki, w którym interakcja jest wymagane (przyrostowe wyrażania zgody i dostępu warunkowego).
+W różnych przepływach wiesz, jak obsłużyć błędy dla przepływów dyskretnych (jak pokazano w fragmentach kodu). Pojawiły się także sytuacje, w których jest wymagana interakcja (przyrostowa zgoda i dostęp warunkowy).
 
-## <a name="how-to-have--the-user-consent-upfront-for-several-resources"></a>Jak zgody użytkownika z wyprzedzeniem dla kilku zasobów
+## <a name="how-to-have--the-user-consent-upfront-for-several-resources"></a>Jak uzyskać zgodę użytkownika na dostęp do kilku zasobów
 
 > [!NOTE]
-> Aby uzyskać zgodę kilka działa zasobów dla platformy tożsamości firmy Microsoft, ale nie dla usługi Azure Active Directory (Azure AD) B2C. Usługa Azure AD B2C obsługuje tylko zgody administratora, nie zgody użytkownika.
+> Uzyskanie zgody na kilka zasobów działa w przypadku platformy tożsamości firmy Microsoft, ale nie dla Azure Active Directory (Azure AD) B2C. Azure AD B2C obsługuje tylko zgodę z uprawnieniami administratora, a nie za zgodą użytkownika.
 
-Punkt końcowy platformy (w wersji 2.0) tożsamości firmy Microsoft nie zezwala na uzyskać token dla kilku zasobów jednocześnie. W związku z tym `scopes` parametru może zawierać tylko zakresy do jednego zasobu. Należy zapewnić, że użytkownik wstępnie wyraża zgodę na kilka zasobów za pomocą `extraScopesToConsent` parametru.
+Punkt końcowy Microsoft Identity platform (v 2.0) nie zezwala na uzyskanie tokenu dla kilku zasobów jednocześnie. W związku z tym parametrmożezawieraćtylkozakresydlapojedynczegozasobu.`scopes` Można upewnić się, że użytkownik wstępnie wysłał kilka zasobów przy użyciu `extraScopesToConsent` parametru.
 
-Na przykład jeśli masz dwa zasoby, które mają dwa zakresy każdego:
+Na przykład jeśli masz dwa zasoby, które mają dwa zakresy:
 
-- `https://mytenant.onmicrosoft.com/customerapi` -z 2-zakresami `customer.read` i `customer.write`
-- `https://mytenant.onmicrosoft.com/vendorapi` -z 2-zakresami `vendor.read` i `vendor.write`
+- `https://mytenant.onmicrosoft.com/customerapi`– z 2 zakresami `customer.read` i`customer.write`
+- `https://mytenant.onmicrosoft.com/vendorapi`– z 2 zakresami `vendor.read` i`vendor.write`
 
-Należy używać `.WithAdditionalPromptToConsent` modyfikator, który ma `extraScopesToConsent` parametru.
+Należy używać `.WithAdditionalPromptToConsent` modyfikatora, który `extraScopesToConsent` ma parametr.
 
 Na wystąpienie:
+
+### <a name="in-msalnet"></a>W MSAL.NET
 
 ```CSharp
 string[] scopesForCustomerApi = new string[]
@@ -67,18 +69,48 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
                      .ExecuteAsync();
 ```
 
-To wywołanie Uzyskaj token dostępu dla pierwszego interfejsu API sieci web.
+### <a name="in-msal-for-ios-and-macos"></a>W MSAL dla systemów iOS i macOS
 
-Gdy potrzebne do wywoływania drugiego interfejsu API sieci web, można wywołać:
+Cel-C:
+
+```objc
+NSArray *scopesForCustomerApi = @[@"https://mytenant.onmicrosoft.com/customerapi/customer.read",
+                                @"https://mytenant.onmicrosoft.com/customerapi/customer.write"];
+    
+NSArray *scopesForVendorApi = @[@"https://mytenant.onmicrosoft.com/vendorapi/vendor.read",
+                              @"https://mytenant.onmicrosoft.com/vendorapi/vendor.write"]
+    
+MSALInteractiveTokenParameters *interactiveParams = [[MSALInteractiveTokenParameters alloc] initWithScopes:scopesForCustomerApi webviewParameters:[MSALWebviewParameters new]];
+interactiveParams.extraScopesToConsent = scopesForVendorApi;
+[application acquireTokenWithParameters:interactiveParams completionBlock:^(MSALResult *result, NSError *error) { /* handle result */ }];
+```
+
+Adres
+
+```swift
+let scopesForCustomerApi = ["https://mytenant.onmicrosoft.com/customerapi/customer.read",
+                            "https://mytenant.onmicrosoft.com/customerapi/customer.write"]
+        
+let scopesForVendorApi = ["https://mytenant.onmicrosoft.com/vendorapi/vendor.read",
+                          "https://mytenant.onmicrosoft.com/vendorapi/vendor.write"]
+        
+let interactiveParameters = MSALInteractiveTokenParameters(scopes: scopesForCustomerApi, webviewParameters: MSALWebviewParameters())
+interactiveParameters.extraScopesToConsent = scopesForVendorApi
+application.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in /* handle result */ })
+```
+
+To wywołanie spowoduje uzyskanie tokenu dostępu dla pierwszego internetowego interfejsu API.
+
+Gdy musisz wywołać drugi internetowy interfejs API, możesz wywołać `AcquireTokenSilent` interfejs API:
 
 ```CSharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();
 ```
 
-### <a name="microsoft-personal-account-requires-reconsenting-each-time-the-app-is-run"></a>Konta osobiste Microsoft wymaga reconsenting każdorazowo, gdy aplikacja jest uruchomiona
+### <a name="microsoft-personal-account-requires-reconsenting-each-time-the-app-is-run"></a>Konto osobiste firmy Microsoft wymaga zgody przy każdym uruchomieniu aplikacji
 
-Dla użytkowników konta osobiste Microsoft reprompting o zgodę na każde wywołanie klienta natywnego (desktop/mobile app), do autoryzacji jest to oczekiwane zachowanie. Natywny klient tożsamości jest z założenia niezabezpieczone (sprzecznie poufne klienta aplikacji, która wpisu tajnego z platformą Microsoft Identity w celu potwierdzenia tożsamości). Platforma Microsoft identity wybrała zmniejszyć to braku bezpieczeństwa dla konsumentów, wykonując monitowania użytkownika o zgodę, każdym razem, gdy aplikacja jest autoryzowany.
+W przypadku użytkowników z kontami osobistymi firmy Microsoft monit o zgodę na każde wywołanie natywnego klienta (aplikacji klasycznej/mobilnej) do autoryzacji jest zamierzonym zachowaniem. Natywna tożsamość klienta jest z natury niezabezpieczona (w przeciwieństwie do poufnej aplikacji klienckiej, która zamieni wpis tajny na platformę tożsamości firmy Microsoft w celu potwierdzenia ich tożsamości). Platforma tożsamości firmy Microsoft zdecydowała się wyeliminować to niebezpieczeństwo dla usług konsumenckich, monitując użytkownika o zgodę, za każdym razem, gdy aplikacja jest autoryzowana.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]

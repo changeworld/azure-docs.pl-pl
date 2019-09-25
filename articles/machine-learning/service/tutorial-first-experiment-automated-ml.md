@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
-ms.date: 09/09/2019
-ms.openlocfilehash: 8d91768d46d3e4a793982418da91f2d1877c5a79
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.date: 09/26/2019
+ms.openlocfilehash: 38c319fb89e8c763f8231c18cbb59bef099193e2
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162544"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259329"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Samouczek: Tworzenie pierwszego modelu klasyfikacji przy użyciu automatycznej uczenia maszynowego
 
@@ -58,10 +58,11 @@ Wykonaj następujące kroki konfiguracji i uruchamiania na stronie docelowej obs
 
 1. Wybierz pozycję **Rozpocznij**.
 
-1.  Wybierz pozycję **zautomatyzowany ml** w sekcji **Tworzenie** w okienku po lewej stronie.
-Zobaczysz ekran **wprowadzenie** , ponieważ jest to pierwszy eksperyment z automatycznym Machine Learningem.
+1. W lewym okienku wybierz pozycję **zautomatyzowany ml** w sekcji **Tworzenie** .
 
-    ![Studio uczenia maszynowego Azure](media/tutorial-1st-experiment-automated-ml/get-started.png)
+   Ponieważ jest to pierwszy zautomatyzowany eksperyment z ML, zobaczysz ekran Wprowadzenie.
+
+   ![Studio uczenia maszynowego Azure](media/tutorial-1st-experiment-automated-ml/get-started.png)
 
 1. Wybierz pozycję **Utwórz eksperyment**. 
 
@@ -79,6 +80,7 @@ Zobaczysz ekran **wprowadzenie** , ponieważ jest to pierwszy eksperyment z auto
    >W ramach tego samouczka będziesz używać domyślnego konta magazynu i kontenera utworzonego przy użyciu nowego obliczenia. Wypełniają one automatycznie w formularzu.
     
 1. Wybierz pozycję **Utwórz** , aby uzyskać obiekt docelowy obliczeń. 
+
    **Wykonanie tej czynności może zająć kilka minut.** 
 
 1. Po utworzeniu wybierz nowe miejsce docelowe obliczeń z listy rozwijanej i wybierz pozycję **dalej**.
@@ -92,18 +94,18 @@ Zobaczysz ekran **wprowadzenie** , ponieważ jest to pierwszy eksperyment z auto
     1. Nadaj zestawowi danych unikatową nazwę i podaj opcjonalny opis. 
 
     1. Wybierz pozycję **dalej** w lewym dolnym rogu, aby przekazać ją do domyślnego kontenera, który został automatycznie skonfigurowany podczas tworzenia obszaru roboczego. Publiczna wersja zapoznawcza obsługuje tylko lokalne operacje przekazywania plików. 
-
-    1. Po zakończeniu przekazywania **Ustawienia i formularz podglądu** są inteligentnie wypełniane na podstawie typu pliku. Upewnij się, że formularz jest wypełniony w następujący sposób.
+    
+       Po zakończeniu przekazywania ustawienia i formularz podglądu są wstępnie wypełniane na podstawie typu pliku. 
+       
+    1. Sprawdź, czy **Ustawienia i formularz podglądu** są wypełnione w następujący sposób, a następnie wybierz przycisk **dalej**.
         
-        Pole|Value
+        Pole|Wartość dla samouczka
         ---|---
         Format pliku| Rozdzielane
         Ogranicznik| Przecinek
         Kodowanie| UTF-8
         Nagłówki kolumn| Wszystkie pliki mają te same nagłówki
         Pomiń wiersze | Brak
-
-        Wybierz opcję **Dalej**.
     
     1. Formularz **schematu** umożliwia dalsze Konfigurowanie danych na potrzeby tego eksperymentu. Na potrzeby tego przykładu wybierz przełącznik przełącznika dla funkcji **day_of_week** , tak aby nie obejmował go dla tego eksperymentu. Wybierz pozycję **gotowe**, aby zakończyć przekazywanie plików i tworzenie zestawu danych dla eksperymentu.
 
@@ -116,16 +118,17 @@ Zobaczysz ekran **wprowadzenie** , ponieważ jest to pierwszy eksperyment z auto
 1. Rozwiń pozycję **Ustawienia zaawansowane** i wypełnij pola w następujący sposób.
 
    >[!NOTE]
-   > Dla tego eksperymentu nie ustawiono oceny metryki ani maksymalnej liczby rdzeni na wartość progową iteracji. Nie można też blokować przetestowanie algorytmów.
+   > W tym samouczku nie ustawisz oceny metryki lub maksymalnej liczby rdzeni na wartość progową iteracji. Nie można natomiast blokować algorytmów.
    
-    Ustawienia&nbsp;zaawansowane|Opis|Wartość&nbsp;dla&nbsp;samouczka
-    ------|---------|---
-    Metryka podstawowa| Metryka oceny, według której będzie mierzony algorytm uczenia maszynowego.|**AUC_weighted** 
-    Kryteria wyjścia| W przypadku spełnienia dowolnego z tych kryteriów zadanie szkolenia kończy się nawet wtedy, gdy nie zostało w pełni ukończone. |Czas&nbsp;zadania&nbsp;szkoleniowego (minuty):&nbsp; **5000**  <br> <br> Maksymalna&nbsp;liczba#iteracji10&#58; &nbsp;&nbsp; 
-    Przetwarzania wstępnego| Umożliwia przetwarzanie wstępne wykonywane przez automatyczne Uczenie maszynowe. Obejmuje to automatyczne czyszczenie danych, przygotowanie i transformację do generowania funkcji syntetycznych.| Włączenie
-    Sprawdzanie poprawności| Typ walidacji i liczba testów. | **K — złożenie** krzyżowego sprawdzania poprawności<br><br>  Walidacja krzyżowa: **2** 
-    Współbieżność| Maksymalna liczba współbieżnych iteracji.|**5**
-
+   Ustawienia&nbsp;zaawansowane|Opis|Wartość&nbsp;dla&nbsp;samouczka
+   ------|---------|---
+   Metryka podstawowa| Metryka oceny, według której będzie mierzony algorytm uczenia maszynowego.|AUC_weighted
+   Kryteria wyjścia| Jeśli kryteria są spełnione, zadanie szkolenia zostanie zatrzymane. |Czas&nbsp;zadania&nbsp;szkoleniowego: 5 <br> <br> Maksymalna&nbsp;liczba#iteracji10&nbsp;&nbsp;&#58;
+   Przetwarzania wstępnego| Umożliwia przetwarzanie wstępne wykonywane przez automatyczne Uczenie maszynowe. Obejmuje to automatyczne czyszczenie danych, przygotowanie i transformację do generowania funkcji syntetycznych.| Włączenie
+   Typ walidacji | Wybierz typ krzyżowej walidacji.|K — złożenie krzyżowego sprawdzania poprawności
+   Liczba walidacji | Liczba testów. | 2 walidacje krzyżowe 
+   Współbieżność| Maksymalna liczba współbieżnych iteracji.|5
+   
 1. Wybierz pozycję **Rozpocznij** , aby uruchomić eksperyment. Po rozpoczęciu przygotowania eksperymentu zostanie wyświetlony ekran z komunikatem o stanie.
 
 >[!IMPORTANT]

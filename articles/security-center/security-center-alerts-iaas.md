@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: memildin
-ms.openlocfilehash: 0d6f05524be41693ba280b0f0162f65b517ec281
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 50d4023b09eb14fcfafe752ca60b8e888acc1fef
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219619"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273883"
 ---
 # <a name="threat-detection-for-vms-and-servers-in-azure-security-center"></a>Wykrywanie zagrożeń dla maszyn wirtualnych i serwerów w Azure Security Center
 
@@ -28,14 +28,14 @@ W tym temacie przedstawiono różne typy metod wykrywania i alerty dostępne dla
 
 Azure Security Center integruje się z usługami platformy Azure w celu monitorowania i ochrony maszyn z systemem Windows. Security Center przedstawia alerty i sugestie dotyczące korygowania ze wszystkich tych usług w łatwym do użycia formacie.
 
-### Windows Server Defender ATP<a nanme="windows-atp"></a>
+### Usługa Microsoft Defender ATP<a nanme="windows-atp"></a>
 
-Security Center rozszerza platformę ochrony obciążeń w chmurze przez integrację z usługą Windows Server Defender Advanced Threat Protection (ATP). Zapewnia to kompleksowe możliwości wykrywania i reagowania punktów końcowych (EDR).
+Security Center rozszerza platformę ochrony obciążeń w chmurze przez integrację z usługą Microsoft Defender Advanced Threat Protection (ATP). Zapewnia to kompleksowe możliwości wykrywania i reagowania punktów końcowych (EDR).
 
 > [!NOTE]
-> Czujnik ATP systemu Windows Server Defender jest automatycznie włączany na serwerach z systemem Windows, które używają Security Center.
+> Czujnik ATP programu Microsoft Defender jest automatycznie włączany na serwerach z systemem Windows, które używają Security Center.
 
-Gdy usługa Windows Server Defender ATP wykryje zagrożenie, wyzwala alert. Alert jest wyświetlany na pulpicie nawigacyjnym Security Center. Z poziomu pulpitu nawigacyjnego można przestawiać do konsoli usługi Microsoft Defender ATP i przeprowadzić szczegółowe badanie w celu odzyskania zakresu ataku. Aby uzyskać więcej informacji o usłudze Windows Server Defender ATP, zobacz Dołączanie [serwerów do usługi Microsoft Defender ATP](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
+Gdy usługa Microsoft Defender ATP wykryje zagrożenie, wyzwala alert. Alert jest wyświetlany na pulpicie nawigacyjnym Security Center. Z poziomu pulpitu nawigacyjnego można przestawiać do konsoli usługi Microsoft Defender ATP i przeprowadzić szczegółowe badanie w celu odzyskania zakresu ataku. Aby uzyskać więcej informacji o usłudze Microsoft Defender ATP, zobacz Dołączanie [serwerów do usługi Microsoft Defender ATP](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
 
 ### Analiza zrzutu awaryjnego<a nanme="windows-dump"></a>
 

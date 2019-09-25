@@ -8,16 +8,16 @@ ms.service: security
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 602e4356ccd9eb45855462a7a25e0966dc176b4f
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 4a30e496c96fcc90417e58b0f921717985b89693
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899939"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262794"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Strategia zabezpieczeń i zgodności z przepisami platformy Azure — trzy warstwy wielowarstwowa aplikacja sieci Web IaaS dla URZĘDNIKów BRYTYJSKIch
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
  Ten artykuł zawiera wskazówki i skrypty automatyzacji umożliwiające dostarczenie Microsoft Azure architektury opartej na sieci Web trójwarstwowej, która jest odpowiednia do obsługi wielu obciążeń sklasyfikowanych jako oficjalne w Zjednoczonym Królestwie.
 
@@ -158,7 +158,7 @@ Te sieci wirtualnych są nadal zarządzane jako oddzielne zasoby, ale są wyświ
 
 **Rejestrowanie i inspekcja**: [Dziennik aktywności platformy Azure](../../azure-monitor/platform/activity-logs-overview.md) przechwytuje operacje wykonywane na zasobach w ramach subskrypcji, takich jak osoba, która zainicjowała operację, po wystąpieniu operacji, stanie operacji i wartości innych właściwości, które mogą pomóc w zbadaniu operacji. Dziennik aktywności platformy Azure to usługa platformy Azure, która przechwytuje wszystkie akcje w ramach subskrypcji. Dzienniki można archiwizować lub eksportować w razie potrzeby.
 
-**Monitorowanie sieci i**zgłaszanie alertów: [Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) to usługa platformy zapewnia przechwytywanie pakietów sieciowych, rejestrowanie przepływów, narzędzia topologii i diagnostykę dla ruchu sieciowego w ramach sieci wirtualnych.
+**Monitorowanie sieci i zgłaszanie alertów**: [Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) to usługa platformy zapewnia przechwytywanie pakietów sieciowych, rejestrowanie przepływów, narzędzia topologii i diagnostykę dla ruchu sieciowego w ramach sieci wirtualnych.
 
 ## <a name="guidance-and-recommendations"></a>Wskazówki i zalecenia
 
@@ -172,7 +172,7 @@ Te sieci wirtualnych są nadal zarządzane jako oddzielne zasoby, ale są wyświ
 
 **Dzienniki aktywności**: Skonfiguruj [dzienniki aktywności platformy Azure](../../azure-monitor/platform/activity-logs-overview.md) , aby uzyskać wgląd w operacje wykonywane względem zasobów w ramach subskrypcji.
 
-**Dzienniki diagnostyczne**: [Dzienniki diagnostyczne](../../azure-monitor/platform/diagnostic-logs-overview.md) to wszystkie dzienniki emitowane przez zasób. Dzienniki te mogą obejmować Dzienniki systemu Windows, obiekty blob, tabele i dzienniki kolejki.
+**Dzienniki diagnostyczne**: [Dzienniki diagnostyczne](../../azure-monitor/platform/resource-logs-overview.md) to wszystkie dzienniki emitowane przez zasób. Dzienniki te mogą obejmować Dzienniki systemu Windows, obiekty blob, tabele i dzienniki kolejki.
 
 **Dzienniki zapory**: Application Gateway zapewnia pełną diagnostykę i dzienniki dostępu. Dzienniki zapory są dostępne dla zasobów usługi Application Gateway z włączoną zaporą aplikacji sieci Web.
 
@@ -206,7 +206,7 @@ Klienci mogą również rozważyć użycie [rozszerzonego modelu administracyjne
 
 **Zarządzanie zasobami**: Zasoby platformy Azure, takie jak maszyny wirtualne, sieci wirtualnych i moduły równoważenia obciążenia, są zarządzane przez zgrupowanie ich razem z [grupami zasobów platformy Azure](../../azure-resource-manager/resource-group-overview.md). Role Access Control oparte na zasobach można następnie przypisać do poszczególnych grup zasobów, aby ograniczyć dostęp tylko do autoryzowanych użytkowników.
 
-**Ograniczenia Access Control**: Użyj [Access Control opartej na rolach](../../role-based-access-control/role-assignments-portal.md) (RBAC) do zarządzania zasobami w aplikacji przy użyciu [ról niestandardowych](../../role-based-access-control/custom-roles.md) RBAC może służyć do ograniczenia operacji, które DevOps mogą wykonywać w poszczególnych warstwach. Podczas udzielania uprawnień należy stosować [zasadę](https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1)najniższych uprawnień. Rejestruj wszystkie operacje administracyjne i przeprowadzaj regularne inspekcje, aby mieć pewność, że wszelkie zmiany konfiguracji są planowane.
+**Ograniczenia Access Control**: Użyj [Access Control opartej na rolach](../../role-based-access-control/role-assignments-portal.md) (RBAC) do zarządzania zasobami w aplikacji przy użyciu [ról niestandardowych](../../role-based-access-control/custom-roles.md) RBAC może służyć do ograniczenia operacji, które DevOps mogą wykonywać w poszczególnych warstwach. Podczas udzielania uprawnień należy stosować [zasadę najniższych](https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1)uprawnień. Rejestruj wszystkie operacje administracyjne i przeprowadzaj regularne inspekcje, aby mieć pewność, że wszelkie zmiany konfiguracji są planowane.
 
 **Dostęp do Internetu**: Ta architektura referencyjna korzysta z [usługi Azure Application Gateway](../../application-gateway/overview.md) jako bramy połączonej z Internetem i modułu równoważenia obciążenia. Niektórzy klienci mogą również rozważyć użycie wirtualnych urządzeń sieciowych innych firm, aby uzyskać dodatkowe warstwy zabezpieczeń sieciowych jako alternatywę dla [Application Gateway platformy Azure](../../application-gateway/overview.md).
 

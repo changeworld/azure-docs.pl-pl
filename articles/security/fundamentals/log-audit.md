@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: TomSh
-ms.openlocfilehash: 80f90f1788e798261f77bb7a4147763e7ca6cec0
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: d64cdce34127b066aedc8a5fcd6ec3a891b38c5e
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946501"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262850"
 ---
 # <a name="azure-logging-and-auditing"></a>Rejestrowanie i przeprowadzanie inspekcji na platformie Azure
 
@@ -36,16 +36,16 @@ Aplikacje w chmurze są złożone, a wiele ruchomych części. Dzienniki zapewni
 Dzienniki platformy Azure są podzielone na następujące typy:
 * **Dzienniki kontroli i zarządzania** zawierają informacje dotyczące Azure Resource Manager operacji tworzenia, aktualizowania i usuwania. Aby uzyskać więcej informacji, zobacz [dzienniki aktywności platformy Azure](../../azure-monitor/platform/activity-logs-overview.md).
 
-* **Dzienniki płaszczyzny danych** zawierają informacje o zdarzeniach wywoływanych jako część użycia zasobów platformy Azure. Przykładami tego typu dziennika są dzienniki systemu zdarzeń systemu Windows, zabezpieczeń i aplikacji na maszynie wirtualnej (VM) oraz [dzienniki diagnostyczne](../../azure-monitor/platform/diagnostic-logs-overview.md) skonfigurowane za pomocą Azure monitor.
+* **Dzienniki płaszczyzny danych** zawierają informacje o zdarzeniach wywoływanych jako część użycia zasobów platformy Azure. Przykładami tego typu dziennika są dzienniki systemu zdarzeń systemu Windows, zabezpieczeń i aplikacji na maszynie wirtualnej (VM) oraz [dzienniki diagnostyczne](../../azure-monitor/platform/resource-logs-overview.md) skonfigurowane za pomocą Azure monitor.
 
 * **Przetwarzane zdarzenia** zawierają informacje o przeanalizowanych zdarzeniach/alertach, które zostały przetworzone w Twoim imieniu. Przykłady tego typu są [Azure Security Center alertów](../../security-center/security-center-managing-and-responding-alerts.md) , w których [Azure Security Center](../../security-center/security-center-intro.md) przetworzył i przeanalizować subskrypcję i oferuje zwięzłe alerty zabezpieczeń.
 
 Poniższa tabela zawiera listę najważniejszych typów dzienników dostępnych na platformie Azure:
 
-| Kategoria dziennika | Typ dziennika | Użycie | Integracja |
+| Kategoria dziennika | Typ dziennika | Sposób użycia | Integracja |
 | ------------ | -------- | ------ | ----------- |
 |[Dzienniki aktywności](../../azure-monitor/platform/activity-logs-overview.md)|Zdarzenia płaszczyzny kontroli dla zasobów Azure Resource Manager|  Zapewnia wgląd w operacje wykonywane względem zasobów w ramach subskrypcji.|    Interfejs API REST, [Azure monitor](../../azure-monitor/platform/activity-logs-overview.md)|
-|[Dzienniki diagnostyczne platformy Azure](../../azure-monitor/platform/diagnostic-logs-overview.md)|Częste dane dotyczące operacji Azure Resource Manager zasobów w subskrypcji|  Zapewnia wgląd w operacje wykonywane przez sam zasób.| Azure Monitor, [strumień](../../azure-monitor/platform/diagnostic-logs-overview.md)|
+|[Dzienniki diagnostyczne platformy Azure](../../azure-monitor/platform/resource-logs-overview.md)|Częste dane dotyczące operacji Azure Resource Manager zasobów w subskrypcji|    Zapewnia wgląd w operacje wykonywane przez sam zasób.| Azure Monitor, [strumień](../../azure-monitor/platform/resource-logs-overview.md)|
 |[Raportowanie usługi Azure AD](../../active-directory/reports-monitoring/overview-reports.md)|Dzienniki i raporty | Zgłasza działania związane z logowaniem użytkowników i informacje o aktywności systemu dotyczące zarządzania użytkownikami i grupami.|[Interfejs API programu Graph](../../active-directory/develop/active-directory-graph-api-quickstart.md)|
 |[Maszyny wirtualne i usługi w chmurze](../../azure-monitor/learn/quick-collect-azurevm.md)|Usługa Dziennik zdarzeń systemu Windows i dziennik systemowy Linux|  Przechwytuje dane systemowe i rejestruje dane na maszynach wirtualnych i przesyła je do wybranego konta magazynu.|   Windows (z systemem Windows Diagnostyka Azure [[funkcji wad](../../monitoring-and-diagnostics/azure-diagnostics.md)] Storage) i Linux w systemie Azure monitor|
 |[analityka magazynu platformy Azure](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|Rejestrowanie magazynu udostępnia dane metryk dla konta magazynu|Zapewnia wgląd w żądania śledzenia, analizuje trendy użycia i diagnozuje problemy związane z kontem magazynu.|   Interfejs API REST lub [Biblioteka kliencka](https://msdn.microsoft.com/library/azure/mt347887.aspx)|
@@ -95,14 +95,14 @@ Dzienniki diagnostyczne platformy Azure oferują wiele opcji konfiguracji, takic
 
 * Zapisz je na [koncie magazynu](../../azure-monitor/platform/archive-diagnostic-logs.md) , aby przeprowadzić inspekcję lub inspekcję ręczną. Czas przechowywania (w dniach) można określić za pomocą ustawień diagnostycznych.
 
-* [Przesyłaj strumieniowo do centrów zdarzeń](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) na potrzeby pozyskiwania przez usługę innej firmy lub rozwiązanie do analizy niestandardowej, takie jak [PowerBI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/).
+* [Przesyłaj strumieniowo do centrów zdarzeń](../../azure-monitor/platform/resource-logs-stream-event-hubs.md) na potrzeby pozyskiwania przez usługę innej firmy lub rozwiązanie do analizy niestandardowej, takie jak [PowerBI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/).
 
 * Analizuj je za pomocą [dzienników Azure monitor](../../log-analytics/log-analytics-queries.md).
 
 **Obsługiwane usługi, schematy dla dzienników diagnostycznych i obsługiwanych kategorii dzienników dla każdego typu zasobu**
 
 
-| Usługa | Schemat i dokumentacja | Typ zasobu | Kategoria |
+| Usługa | Schemat i dokumentacja | Typ zasobu | Category |
 | ------- | ------------- | ------------- | -------- |
 |Azure Load Balancer| [Dzienniki Azure Monitor dla Load Balancer (wersja zapoznawcza)](../../load-balancer/load-balancer-monitor-log.md)|Microsoft.Network/loadBalancers<br>Microsoft.Network/loadBalancers|    LoadBalancerAlertEvent<br>LoadBalancerProbeHealthStatus|
 |Grupy zabezpieczeń sieci|[Dzienniki Azure Monitor dla sieciowych grup zabezpieczeń](../../virtual-network/virtual-network-nsg-manage-log.md)|Microsoft.Network/networksecuritygroups<br>Microsoft.Network/networksecuritygroups|NetworkSecurityGroupEvent<br>NetworkSecurityGroupRuleCounter|
@@ -131,7 +131,7 @@ Uwzględnione raporty są wymienione w poniższej tabeli:
 |Logowania z nieznanych źródeł| Podsumowanie użycia aplikacji| Raport dotyczący inspekcji katalogu|
 |Logowania po wielokrotnych niepowodzeniach|  Szczegóły użycia aplikacji||
 |Logowania z wielu lokalizacji geograficznych|    Pulpit nawigacyjny aplikacji||
-|Logowania z adresów IP z podejrzaną aktywnością|   Błędy aprowizacji kont||
+|Logowania z adresów IP związanych z podejrzanymi działaniami|   Błędy aprowizacji kont||
 |Nieregularne działania związane z logowaniem|    Urządzenia indywidualnych użytkowników||
 |Logowania z urządzeń, które mogą być zainfekowane|   Aktywność poszczególnych użytkowników||
 |Nietypowe działania użytkowników związane z logowaniem| Raport dotyczący działań grup||
@@ -315,11 +315,11 @@ W centrum dzienników Azure Monitor jest obszar roboczy Log Analytics, który je
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Połączone źródła to komputery i inne zasoby, które generują dane zbierane przez Azure Monitor dzienników. Źródła mogą obejmować agentów zainstalowanych na komputerach z [systemem Windows](../../log-analytics/log-analytics-agent-windows.md) i [Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) , które łączą się bezpośrednio lub agenci w [połączonej System Center Operations Manager grupie zarządzania](../../azure-monitor/platform/om-agents.md). Dzienniki Azure Monitor mogą również zbierać dane z [konta usługi Azure Storage](../../azure-monitor/platform/diagnostic-logs-stream-log-store.md).
+Połączone źródła to komputery i inne zasoby, które generują dane zbierane przez Azure Monitor dzienników. Źródła mogą obejmować agentów zainstalowanych na komputerach z [systemem Windows](../../log-analytics/log-analytics-agent-windows.md) i [Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) , które łączą się bezpośrednio lub agenci w [połączonej System Center Operations Manager grupie zarządzania](../../azure-monitor/platform/om-agents.md). Dzienniki Azure Monitor mogą również zbierać dane z [konta usługi Azure Storage](../../azure-monitor/platform/resource-logs-collect-storage.md).
 
 [Źródła danych](../../azure-monitor/platform/agent-data-sources.md) to różne rodzaje danych, które są zbierane z każdego połączonego źródła. Źródła obejmują zdarzenia i [dane wydajności](../../azure-monitor/platform/data-sources-performance-counters.md) z agentów [systemu Windows](../../azure-monitor/platform/data-sources-windows-events.md) i Linux, a także źródła, takie jak [dzienniki usług IIS](../../azure-monitor/platform/data-sources-iis-logs.md) i [niestandardowe Dzienniki tekstowe](../../azure-monitor/platform/data-sources-custom-logs.md). Każde źródło danych, które ma być zbierane, jest konfigurowane, a konfiguracja jest automatycznie dostarczana do każdego z nich.
 
-Istnieją cztery sposoby [zbierania dzienników i metryk dla usług platformy Azure](../../azure-monitor/platform/diagnostic-logs-stream-log-store.md):
+Istnieją cztery sposoby [zbierania dzienników i metryk dla usług platformy Azure](../../azure-monitor/platform/resource-logs-collect-storage.md):
 
 * Diagnostyka Azure bezpośrednio do dzienników Azure Monitor (**Diagnostyka** w poniższej tabeli)
 
@@ -333,7 +333,7 @@ Istnieją cztery sposoby [zbierania dzienników i metryk dla usług platformy Az
 | :------ | :------------ | :--- | :------ | :------- |
 |Azure Application Gateway| Microsoft.Network/<br>applicationGateways|  Diagnostyka|Diagnostyka|    [Aplikacja platformy Azure](../../azure-monitor/insights/azure-networking-analytics.md) [Analiza bramy](../../azure-monitor/insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor)|
 |Application Insights||     Łącznik|  Łącznik|  [Application Insights](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) [Łącznik (wersja zapoznawcza)](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)|
-|Konta Azure Automation| Microsoft.Automation/<br>AutomationAccounts|    Diagnostyka||       [Więcej informacji](../../automation/automation-manage-send-joblogs-log-analytics.md)|
+|Konta Azure Automation| Microsoft.Automation/<br>automationAccounts|    Diagnostyka||       [Więcej informacji](../../automation/automation-manage-send-joblogs-log-analytics.md)|
 |Konta Azure Batch|  Microsoft.Batch/<br>batchAccounts|  Diagnostyka|    Diagnostyka||
 |Usługi w chmurze klasycznego||       Magazyn||       [Więcej informacji](../../azure-monitor/platform/azure-storage-iis-table.md)|
 |Cognitive Services|    Microsoft.CognitiveServices/<br>konta|       Diagnostyka|||
@@ -353,10 +353,10 @@ Istnieją cztery sposoby [zbierania dzienników i metryk dla usług platformy Az
 |SQL (v12)| Microsoft.Sql/<br>serwerem<br>databases||       Diagnostyka||
 ||Microsoft.Sql/<br>serwerem<br>elasticPools||||
 |Magazyn|||         Skrypt| [Usługa Azure Storage Analytics (wersja zapoznawcza)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution)|
-|Usługa Azure Virtual Machines|    Microsoft.Compute/<br>virtualMachines|  Wewnętrzny|  Wewnętrzny||
+|Usługa Azure Virtual Machines|    Microsoft.Compute/<br>VirtualMachines|  Wewnętrzny|  Wewnętrzny||
 ||||Diagnostyka||
-|Zestawy skalowania maszyn wirtualnych|    Microsoft.Compute/<br>virtualMachines    ||Diagnostyka||
-||Microsoft.Compute/<br>virtualMachineScaleSets/<br>virtualMachines||||
+|Virtual Machine Scale Sets|    Microsoft.Compute/<br>VirtualMachines    ||Diagnostyka||
+||Microsoft.Compute/<br>virtualMachineScaleSets/<br>VirtualMachines||||
 |Farmy serwerów sieci Web|Microsoft.Web/<br>dopuszczalna||   Diagnostyka
 |Witryny internetowe|  Microsoft.Web/<br>lokacje ||      Diagnostyka|    [Więcej informacji](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webappazure-oms-monitoring)|
 ||Microsoft.Web/<br>teren<br>czasów||||

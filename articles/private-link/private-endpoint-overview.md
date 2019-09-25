@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 7394a9e1b1fa90741bc26fc0e9b6b7e6284d75e0
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 80f2e8a8fd41fbafbaf6d30bc1001b86c5dcdd50
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104693"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266366"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co to jest prywatny punkt końcowy platformy Azure?
 
@@ -43,7 +43,7 @@ Poniżej przedstawiono niektóre kluczowe szczegóły dotyczące prywatnych punk
  
 - Można utworzyć wiele prywatnych punktów końcowych przy użyciu tego samego zasobu linku prywatnego. W przypadku pojedynczej sieci używającej typowej konfiguracji serwera DNS zalecanym rozwiązaniem jest użycie jednego prywatnego punktu końcowego dla danego zasobu linku prywatnego, aby uniknąć zduplikowanych wpisów lub konfliktów w rozpoznawaniu nazw DNS. 
  
-- Wiele prywatnych punktów końcowych można utworzyć w tej samej lub różnych podsieciach w ramach tej samej sieci wirtualnej. Istnieją limity liczby prywatnych punktów końcowych, które można utworzyć w ramach subskrypcji. Aby uzyskać szczegółowe informacje, zobacz [limity platformy Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits.md#networking-limits).
+- Wiele prywatnych punktów końcowych można utworzyć w tej samej lub różnych podsieciach w ramach tej samej sieci wirtualnej. Istnieją limity liczby prywatnych punktów końcowych, które można utworzyć w ramach subskrypcji. Aby uzyskać szczegółowe informacje, zobacz [limity platformy Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
 
 
  

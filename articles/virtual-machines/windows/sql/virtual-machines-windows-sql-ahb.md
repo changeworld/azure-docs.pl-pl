@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 5d740224adb15dc2d772689d77ab1c510532c901
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 05cd68c7be005a5b148b7d3e691c46a0d067b0c0
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204001"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262870"
 ---
 # <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>Zmień model licencji dla SQL Server maszyny wirtualnej na platformie Azure
 W tym artykule opisano, jak zmienić model licencji dla SQL Server maszyny wirtualnej (VM) na platformie Azure przy użyciu nowego dostawcy zasobów maszyny wirtualnej SQL, **Microsoft. SqlVirtualMachine**.
@@ -125,7 +125,7 @@ Jeśli zainicjowano SQL Server maszynę wirtualną z obrazów systemu Azure Mark
 
 Możesz zakwalifikować się tylko do samoinstalowania SQL Server na maszynie wirtualnej platformy Azure za pośrednictwem Korzyść użycia hybrydowego platformy Azure. Należy [zarejestrować te maszyny wirtualne przy użyciu dostawcy zasobów maszyny wirtualnej SQL](virtual-machines-windows-sql-register-with-resource-provider.md) , ustawiając SQL Server licencję jako korzyść użycia hybrydowego platformy Azure, aby wskazać korzyść użycia hybrydowego platformy Azure użycie zgodnie z postanowieniami produktu firmy Microsoft.
 
-Typ licencji maszyny wirtualnej SQL Server można zmienić jako płatność zgodnie z rzeczywistym użyciem lub Korzyść użycia hybrydowego platformy Azure tylko wtedy, gdy maszyna wirtualna SQL Server jest zarejestrowana u dostawcy zasobów maszyny wirtualnej SQL. Wszystkie maszyny wirtualne SQL Server powinny być zarejestrowane przy użyciu dostawcy zasobów na potrzeby zgodności licencji.
+Typ licencji maszyny wirtualnej SQL Server można zmienić jako płatność zgodnie z rzeczywistym użyciem lub Korzyść użycia hybrydowego platformy Azure tylko wtedy, gdy maszyna wirtualna SQL Server jest zarejestrowana u dostawcy zasobów maszyny wirtualnej SQL.
 
 ## <a name="remarks"></a>Uwagi
 

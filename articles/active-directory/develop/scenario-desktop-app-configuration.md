@@ -1,6 +1,6 @@
 ---
-title: Aplikacja klasyczna wywołuje interfejsy API (kod Konfiguracja) - sieci web platforma tożsamości firmy Microsoft
-description: Naucz się tworzyć aplikację klasyczną wywołuje interfejsy API (konfiguracji kodu aplikacji) sieci web
+title: Aplikacja klasyczna, która wywołuje interfejsy API sieci Web (Konfiguracja kodu) — Microsoft Identity platform
+description: Dowiedz się, jak utworzyć aplikację klasyczną wywołującą interfejsy API sieci Web (konfigurację kodu aplikacji)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,37 +15,39 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 600b6db1eb3d3b422d62e49c5bc816a1a56370f9
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 0926e6800dbcd81d2e542e27afe3afb1240cff22
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798505"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268411"
 ---
-# <a name="desktop-app-that-calls-web-apis---code-configuration"></a>Aplikacja klasyczna, że wywołania sieci web interfejsy API — Konfiguracja kodu
+# <a name="desktop-app-that-calls-web-apis---code-configuration"></a>Aplikacja klasyczna, która wywołuje interfejsy API sieci Web — konfiguracja kodu
 
-Teraz, po utworzeniu aplikacji, dowiesz się, jak skonfigurować kod z aplikacji współrzędne.
+Teraz, po utworzeniu aplikacji, dowiesz się, jak skonfigurować kod przy użyciu współrzędnych aplikacji.
 
 ## <a name="msal-libraries"></a>Biblioteki MSAL
 
-Tylko Biblioteka MSAL obsługi aplikacji klasycznych już dziś jest platformy MSAL.NET
+Jedyną biblioteką MSAL obsługującą aplikacje klasyczne na wielu platformach jest MSAL.NET.
 
-## <a name="public-client-application"></a>Aplikacja kliencka publiczne
+MSAL dla systemów iOS i macOS obsługuje aplikacje klasyczne działające tylko na macOS. 
 
-Z punktu widzenia kodu, aplikacje klasyczne są aplikacje klienckie publicznych i dlatego można tworzyć i manipulowania platformy MSAL.NET `IPublicClientApplication`. Ponownie czynności będzie nieco inna, czy używać przeprowadzić uwierzytelnianie interakcyjne czy nie.
+## <a name="public-client-application-with-msalnet"></a>Publiczna aplikacja kliencka z MSAL.NET
+
+Z punktu widzenia kodu aplikacje klasyczne są publicznymi aplikacjami klienckimi i dlatego Kompilowanie i manipulowanie MSAL.NET `IPublicClientApplication`. W przypadku korzystania z uwierzytelniania interaktywnego nie będzie to możliwe.
 
 ![IPublicClientApplication](media/scenarios/public-client-application.png)
 
 ### <a name="exclusively-by-code"></a>Wyłącznie przez kod
 
-Poniższy kod tworzy wystąpienie aplikacji publicznych klienta, logowanie użytkowników w chmurze publicznej Microsoft Azure przy użyciu służbowego i konta służbowego lub osobistego konta Microsoft.
+Poniższy kod tworzy wystąpienie publicznej aplikacji klienckiej, logowania użytkowników w Microsoft Azure chmurze publicznej przy użyciu konta służbowego lub osobistego konto Microsoft.
 
 ```CSharp
 IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
     .Build();
 ```
 
-Jeśli zamierzasz używać przeprowadzić uwierzytelnianie interakcyjne lub urządzenie przepływu kodu, jak pokazano powyżej, chcesz użyć `.WithRedirectUri` modyfikator:
+Jeśli zamierzasz używać uwierzytelniania interakcyjnego lub przepływu kodu urządzenia, jak pokazano powyżej, chcesz użyć `.WithRedirectUri` modyfikatora:
 
 ```CSharp
 IPublicClientApplication app;
@@ -54,9 +56,9 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-### <a name="using-configuration-files"></a>Za pomocą plików konfiguracji
+### <a name="using-configuration-files"></a>Korzystanie z plików konfiguracji
 
-Poniższy kod tworzy wystąpienie aplikacji klienckiej publicznych z obiektu konfiguracji, które mogą być wypełniane programowo lub odczytu z pliku konfiguracji
+Poniższy kod tworzy wystąpienie publicznej aplikacji klienckiej z obiektu konfiguracji, który może być wypełniany programowo lub odczytywany z pliku konfiguracji
 
 ```CSharp
 PublicClientApplicationOptions options = GetOptions(); // your own method
@@ -65,9 +67,9 @@ IPublicClientApplication app = PublicClientApplicationBuilder.CreateWithApplicat
         .Build();
 ```
 
-### <a name="more-elaborated-configuration"></a>Konfiguracja bardziej uszczegółowionych
+### <a name="more-elaborated-configuration"></a>Bardziej rozbudowana konfiguracja
 
-Można opracować aplikację tworzenia przez dodanie liczby modyfikatory. Na przykład jeśli chcesz, aby aplikacja ma być aplikacji z wieloma dzierżawami, w chmurze krajowej (tutaj instytucji rządowych USA), można napisać:
+Kompilowanie aplikacji można rozbudować przez dodanie szeregu modyfikatorów. Na przykład jeśli chcesz, aby aplikacja była aplikacją wielodostępną w chmurze krajowej (w tym przypadku dla instytucji rządowych USA), możesz napisać:
 
 ```CSharp
 IPublicClientApplication app;
@@ -78,7 +80,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-Platformy MSAL.NET zawiera również modyfikator 2019 usług AD FS:
+MSAL.NET zawiera również modyfikator dla usług AD FS 2019:
 
 ```CSharp
 IPublicClientApplication app;
@@ -87,7 +89,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-Ponadto jeśli chcesz uzyskać tokeny dla dzierżawy usługi Azure AD B2C, można określić swojej dzierżawy, jak pokazano w poniższym fragmencie kodu:
+Na koniec Jeśli chcesz uzyskać tokeny dla dzierżawy Azure AD B2C, możesz określić dzierżawcę, jak pokazano w poniższym fragmencie kodu:
 
 ```CSharp
 IPublicClientApplication app;
@@ -98,14 +100,14 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 ### <a name="learn-more"></a>Dowiedz się więcej
 
-Aby dowiedzieć się więcej na temat konfigurowania aplikacji klasycznej platformy MSAL.NET:
+Aby dowiedzieć się więcej na temat konfigurowania aplikacji klasycznej MSAL.NET:
 
-- Aby uzyskać listę wszystkich modyfikatorów dostępne na `PublicClientApplicationBuilder`, zobacz dokumentację referencyjną [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods)
-- Aby uzyskać opis wszystkich opcji, które są widoczne w `PublicClientApplicationOptions` zobacz [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions), w dokumentacji
+- Aby uzyskać listę wszystkich modyfikatorów dostępnych na stronie `PublicClientApplicationBuilder`, zobacz dokumentację referencyjną [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods)
+- Opis wszystkich opcji dostępnych w `PublicClientApplicationOptions` temacie zobacz [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions)w dokumentacji referencyjnej
 
-## <a name="complete-example-with-configuration-options"></a>Pełny przykład za pomocą opcji konfiguracji
+## <a name="complete-example-with-configuration-options"></a>Ukończ przykład z opcjami konfiguracji
 
-Wyobraź sobie aplikacji konsolowej .NET Core, która ma następujące `appsettings.json` pliku konfiguracji:
+Załóżmy, że Aplikacja konsolowa platformy .NET Core ma `appsettings.json` następujący plik konfiguracyjny:
 
 ```JSon
 {
@@ -121,7 +123,7 @@ Wyobraź sobie aplikacji konsolowej .NET Core, która ma następujące `appsetti
 }
 ```
 
-Masz niewielkiej ilości kodu do odczytu tego pliku przy użyciu platformy .NET, udostępniane w ramach konfiguracji;
+Masz niewielki kod, aby odczytać ten plik za pomocą platformy .NET dostarczonej przez program.
 
 ```CSharp
 public class SampleConfiguration
@@ -164,7 +166,7 @@ public class SampleConfiguration
 }
 ```
 
-Teraz Aby utworzyć aplikację, po prostu należy napisać następujący kod:
+Teraz, aby utworzyć aplikację, wystarczy napisać następujący kod:
 
 ```CSharp
 SampleConfiguration config = SampleConfiguration.ReadFromJsonFile("appsettings.json");
@@ -173,7 +175,60 @@ var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.Pub
            .Build();
 ```
 
-i przed wywołaniem do `.Build()` metody, można zastąpić konfigurację przy użyciu wywołań `.WithXXX` metody, jak pokazano wcześniej.
+i przed wywołaniem `.Build()` metody można zastąpić konfigurację z `.WithXXX` wywołaniami metod tak jak wcześniej.
+
+## <a name="public-client-application-with-msal-for-ios-and-macos"></a>Publiczna aplikacja kliencka z MSAL dla systemów iOS i macOS
+
+Poniższy kod tworzy wystąpienie publicznej aplikacji klienckiej, logowania użytkowników w Microsoft Azure chmurze publicznej przy użyciu konta służbowego lub osobistego konto Microsoft.
+
+### <a name="quick-configuration"></a>Szybka konfiguracja
+
+Cel-C:
+
+```objc
+NSError *msalError = nil;
+    
+MSALPublicClientApplicationConfig *config = [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"<your-client-id-here>"];    
+MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&msalError];
+```
+
+Adres
+```swift
+let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>")
+if let application = try? MSALPublicClientApplication(configuration: config){ /* Use application */}
+```
+
+### <a name="more-elaborated-configuration"></a>Bardziej rozbudowana konfiguracja
+
+Kompilowanie aplikacji można rozbudować przez dodanie szeregu modyfikatorów. Na przykład jeśli chcesz, aby aplikacja była aplikacją wielodostępną w chmurze krajowej (w tym przypadku dla instytucji rządowych USA), możesz napisać:
+
+Cel-C:
+
+```objc
+MSALAADAuthority *aadAuthority =
+                [[MSALAADAuthority alloc] initWithCloudInstance:MSALAzureUsGovernmentCloudInstance
+                                                   audienceType:MSALAzureADMultipleOrgsAudience
+                                                      rawTenant:nil
+                                                          error:nil];
+                                                          
+MSALPublicClientApplicationConfig *config =
+                [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"<your-client-id-here>"
+                                                                redirectUri:@"<your-redirect-uri-here>"
+                                                                  authority:aadAuthority];
+                                                                  
+NSError *applicationError = nil;
+MSALPublicClientApplication *application =
+                [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&applicationError];
+```
+
+Adres
+
+```swift
+let authority = try? MSALAADAuthority(cloudInstance: .usGovernmentCloudInstance, audienceType: .azureADMultipleOrgsAudience, rawTenant: nil)
+        
+let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>", redirectUri: "<your-redirect-uri-here>", authority: authority)
+if let application = try? MSALPublicClientApplication(configuration: config) { /* Use application */}
+```
 
 ## <a name="next-steps"></a>Następne kroki
 

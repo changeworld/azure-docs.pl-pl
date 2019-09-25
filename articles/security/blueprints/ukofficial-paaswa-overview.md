@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: c0163b5280de942491f2174aa371fa7cc83d5984
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 1f6eeea85a348bb8e88a387fa0fc6bed55e41a5e
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946516"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262786"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Strategia zabezpieczeń i zgodności z przepisami platformy Azure: PaaS hosting aplikacji sieci Web dla OFICJALNych obciążeń BRYTYJSKIch
 
@@ -55,7 +55,7 @@ To rozwiązanie używa następujących usług platformy Azure. Szczegóły archi
 - App Service
 - Aplikacja internetowa
 - Aplikacja interfejsu API
-- Usługa DNS platformy Azure
+- System DNS platformy Azure
 - Usługa Key Vault
 - Azure Monitor (dzienniki)
 - Application Insights
@@ -113,7 +113,7 @@ Ten szablon wdraża następujące funkcje App Service:
 - Wiele App Service [miejsc wdrożenia](https://docs.microsoft.com/azure/app-service/deploy-staging-slots): Tworzenie, Podgląd, pytania i odpowiedzi, przeprowadzających i kurs (gniazdo domyślne).
 - [Zarządzane tożsamości dla zasobów platformy Azure](https://docs.microsoft.com/azure/app-service/overview-managed-identity) w celu nawiązania połączenia z [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) (może to również służyć do zapewnienia dostępu do [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) 
 - Integracja z [usługą Azure Application Insights](../../azure-monitor/app/azure-web-apps.md) w celu monitorowania wydajności
-- [Dzienniki diagnostyczne](../../azure-monitor/platform/diagnostic-logs-overview.md) 
+- [Dzienniki diagnostyczne](../../azure-monitor/platform/resource-logs-overview.md) 
 - [Alerty](../../azure-monitor/app/alerts.md) metryk 
 - [Azure API Apps](https://azure.microsoft.com/services/app-service/api/) 
 
@@ -209,7 +209,7 @@ Komercyjna usługa dla korony (Agencja, która pracuje nad ulepszaniem działaln
 
 Ten plan jest zgodny z 14 zasadami zabezpieczeń w chmurze, które zostały udokumentowane w [zasadach zabezpieczeń w chmurze](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles) NCSC, aby pomóc w zapewnieniu środowiska, które obsługuje obciążenia sklasyfikowane jako urzędnik brytyjski.
 
-W Strategia zabezpieczeń i zgodności z przepisami platformy Azureej z BRYTYJSKIej noty [odpowiedzialnej za klienta](https://aka.ms/ukofficial-crm) (skoroszyt programu Excel) są wyświetlane wszystkie 14 zasad zabezpieczeń chmury i określenia dla każdej zasady (lub podczęściu), niezależnie od tego, czy zasady implementacji są odpowiedzialność firmy Microsoft, klienta lub współdzielenia między nimi.
+W [strategia zabezpieczeń i zgodności z przepisami platformy Azureej z brytyjskiej noty odpowiedzialnej za klienta](https://aka.ms/ukofficial-crm) (skoroszyt programu Excel) są wyświetlane wszystkie 14 zasad zabezpieczeń chmury i określenia dla każdej zasady (lub podczęściu), niezależnie od tego, czy zasady implementacji są odpowiedzialność firmy Microsoft, klienta lub współdzielenia między nimi.
 
 [Aplikacja sieci Web strategia zabezpieczeń i zgodności z przepisami platformy Azure-PaaS dla brytyjskiej oficjalnej implementacji reguły](https://aka.ms/ukofficial-paaswa-pim) (skoroszyt programu Excel) zawiera wszystkie 14 zasad zabezpieczeń chmury i wskazuje, dla każdej zasady (lub podczęściu), która jest oznaczona Odpowiedzialność klienta w macierzy odpowiedzialności klienta 1), jeśli plan implementuje zasadę i 2) opis sposobu, w jaki wdrożenie jest wyrównane z wymaganiami zasad.  
 

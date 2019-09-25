@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 85c0cbc1e516730018f80e1978ba565e311117fe
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: ab03056557c7c67c5b75d701c9995c9ad500caae
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018172"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268778"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z błędem Azure Backup: Problemy z agentem lub rozszerzeniem
 
@@ -233,7 +233,11 @@ Wykonanie tych kroków powoduje ponowne zainstalowanie rozszerzenia podczas kole
 
 ### <a name="clean_up_restore_point_collection"></a>Wyczyść kolekcję punktów przywracania
 
-Po usunięciu blokady punkty przywracania muszą zostać oczyszczone. Aby wyczyścić punkty przywracania, wykonaj dowolną z następujących metod:<br>
+Po usunięciu blokady punkty przywracania muszą zostać oczyszczone.
+
+Usunięcie grupy zasobów maszyny wirtualnej lub samej maszyny wirtualnej powoduje, że migawki usługi Managed disks pozostają aktywne i wygasną zgodnie z zestawem przechowywania. W celu usunięcia migawek przywracania natychmiastowego (jeśli nie są już potrzebne), które są przechowywane w kolekcji punktów przywracania, wyczyść kolekcję punktów przywracania zgodnie z krokami podanymi poniżej.
+
+Aby wyczyścić punkty przywracania, wykonaj dowolną z następujących metod:<br>
 
 - [Czyszczenie kolekcji punktów przywracania przez uruchomienie kopii zapasowej ad hoc](#clean-up-restore-point-collection-by-running-ad-hoc-backup)<br>
 - [Wyczyść kolekcję punktów przywracania z Azure Portal](#clean-up-restore-point-collection-from-azure-portal)<br>

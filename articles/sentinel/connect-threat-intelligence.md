@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: cbdf05c714971db5a618ca2a8bb35fe286d6804c
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: c1c374977460de04d2339ba8c93019cf9152dbe3
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240688"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262715"
 ---
-# <a name="connect-data-from-threat-intelligence-providers---preview"></a>Łączenie danych od dostawców analizy zagrożeń — wersja zapoznawcza
+# <a name="connect-data-from-threat-intelligence-providers"></a>Łączenie danych od dostawców analizy zagrożeń
 
 > [!IMPORTANT]
-> Analiza zagrożeń na platformie Azure jest obecnie dostępna w publicznej wersji zapoznawczej.
+> Łącznik danych platformy analizy zagrożeń w usłudze Azure wskaźnikowej jest obecnie w publicznej wersji zapoznawczej.
 > Ta funkcja jest dostępna bez umowy dotyczącej poziomu usług i nie jest zalecana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Wskaźnik "platformy Azure" umożliwia importowanie wskaźników zagrożeń, które są używane w organizacji, co może pomóc analitykom zabezpieczeń w wykrywaniu i ustalaniu priorytetów znanych zagrożeń. Niektóre funkcje ze wskaźnikiem na platformie Azure są dostępne lub udoskonalone:

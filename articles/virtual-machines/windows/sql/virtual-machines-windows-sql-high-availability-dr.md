@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
-ms.openlocfilehash: 175ea1c0c25a0c6dd41c68ea0a340cc1b18cc8b0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1d0bdfbbad7e811ac8f1eeffb1991cc5430483a6
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100600"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262907"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Wysoka dostępność i odzyskiwanie awaryjne na potrzeby programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -78,7 +78,11 @@ Możesz mieć rozwiązanie do odzyskiwania po awarii dla baz danych SQL Server w
 Maszyny wirtualne, magazyn i sieci platformy Azure mają różne cechy operacyjne niż lokalna, niezwirtualizowana infrastruktura IT. Pomyślne wdrożenie rozwiązania HADR Cluster SQL Server na platformie Azure wymaga zrozumienia tych różnic i zaprojektowania rozwiązania w celu ich dopasowania.
 
 ### <a name="high-availability-nodes-in-an-availability-set"></a>Węzły wysokiej dostępności w zestawie dostępności
-Zestawy dostępności na platformie Azure umożliwiają umieszczenie węzłów o wysokiej dostępności w oddzielnych domenach błędów (domenami błędów) i domenach aktualizacji. W przypadku maszyn wirtualnych platformy Azure, które mają zostać umieszczone w tym samym zestawie dostępności, należy wdrożyć je w tej samej usłudze w chmurze. Tylko węzły w tej samej usłudze w chmurze mogą uczestniczyć w tym samym zestawie dostępności. Aby uzyskać więcej informacji, zobacz [Manage the Availability of Virtual Machines](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Zarządzanie dostępnością usługi Virtual Machines).
+Zestawy dostępności na platformie Azure umożliwiają umieszczenie węzłów o wysokiej dostępności w oddzielnych domenach błędów (domenami błędów) i domenach aktualizacji. Każda maszyna wirtualna w zestawie dostępności ma przypisaną domenę aktualizacji i domenę błędów przez podstawową platformę Azure. Ta konfiguracja w centrum danych gwarantuje, że podczas planowanego lub nieplanowanego zdarzenia konserwacji jest dostępna co najmniej jedna maszyna wirtualna i spełnia warunki umowy SLA platformy Azure o wartości 99,95%. Aby skonfigurować konfigurację wysokiej dostępności, umieść wszystkie uczestniczące Virtual Machines SQL w tym samym zestawie dostępności, aby uniknąć utraty aplikacji lub danych podczas zdarzenia konserwacji. Tylko węzły w tej samej usłudze w chmurze mogą uczestniczyć w tym samym zestawie dostępności. Aby uzyskać więcej informacji, zobacz [Manage the Availability of Virtual Machines](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Zarządzanie dostępnością usługi Virtual Machines).
+
+### <a name="high-availability-nodes-in-an-availability-zone"></a>Węzły wysokiej dostępności w strefie dostępności
+Strefy dostępności to unikatowe fizycznie lokalizacje w regionie platformy Azure. Każda strefa składa się z co najmniej jeden centrów danych, wyposażone w niezależne zasilanie, chłodzenie i usługi sieciowe. Fizyczne rozdzielenie Strefy dostępności w regionie chroni aplikacje i dane przed awariami centrów danych, co zapewnia dostępność co najmniej jednej maszyny wirtualnej i spełnia warunki umowy SLA na 99,99%. Aby skonfigurować wysoką dostępność, umieść uczestniczące w programie SQL Virtual Machines rozłożone w ramach dostępnych Strefy dostępności w regionie. Będzie dostępnych dodatkowych opłat za transfer danych między MASZYNami wirtualnymi między strefami dostępności. Aby uzyskać więcej informacji, zobacz [strefy dostępności](/azure/availability-zones/az-overview). 
+
 
 ### <a name="failover-cluster-behavior-in-azure-networking"></a>Zachowanie klastra trybu failover w sieci platformy Azure
 Usługa DHCP niezgodna ze standardem RFC na platformie Azure może spowodować niepowodzenie tworzenia niektórych konfiguracji klastra trybu failover, ponieważ nazwa sieci klastra ma przypisany zduplikowany adres IP, na przykład ten sam adres IP, co jeden z węzłów klastra. Jest to problem występujący podczas implementowania grup dostępności, które są zależne od funkcji klastra trybu failover systemu Windows.
@@ -109,7 +113,7 @@ Jeśli grupa dostępności obejmuje wiele podsieci platformy Azure (na przykład
 Można nadal łączyć się z każdą repliką dostępności oddzielnie, łącząc się bezpośrednio z wystąpieniem usługi. Ponadto, ponieważ grupy dostępności są zgodne z poprzednimi wersjami klientów funkcji dublowania baz danych, można łączyć się z replikami dostępności, takimi jak partnerzy funkcji dublowania baz danych, o ile repliki są skonfigurowane podobnie jak w przypadku dublowania baz danych:
 
 * Jedna replika podstawowa i jedna replika pomocnicza
-* Replika pomocnicza jest skonfigurowana jako niemożliwa do odczytu (opcja pomocnicza do**odczytu** jest ustawiona na wartość **nie**)
+* Replika pomocnicza jest skonfigurowana jako niemożliwa do odczytu (opcja**pomocnicza do odczytu** jest ustawiona na wartość **nie**)
 
 Oto przykładowe parametry połączenia klienta, które odpowiadają tej konfiguracji podobnej do dublowania bazy danych, przy użyciu ADO.NET lub SQL Server Native Client poniżej:
 

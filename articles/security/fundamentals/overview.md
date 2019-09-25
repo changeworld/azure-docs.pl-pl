@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 4cabf2e7a1f0f1ff058f900ed823cc4df0ce80a6
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c01931268642aebbf87c54080c292b105af15665
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999201"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262762"
 ---
 # <a name="introduction-to-azure-security"></a>Wprowadzenie do zabezpieczeń platformy Azure
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Wiemy, że zabezpieczenia to zadanie jedno w chmurze i jak ważne jest, aby znaleźć dokładne i aktualne informacje o zabezpieczeniach platformy Azure. Jednym z najlepszych powodów używania platformy Azure dla aplikacji i usług jest skorzystanie z zalet szerokiej gamy narzędzi i możliwości zabezpieczeń. Te narzędzia i funkcje ułatwiają tworzenie bezpiecznych rozwiązań na bezpiecznej platformie Azure. Microsoft Azure zapewnia poufność, integralność i dostępność danych klientów, a także umożliwia przejrzyste odpowiedzialności.
 
 Aby lepiej zrozumieć zbieranie elementów kontroli zabezpieczeń wdrożonych w ramach Microsoft Azure z perspektywy klienta i firmy Microsoft, ten oficjalny dokument "wprowadzenie do zabezpieczeń platformy Azure" jest zapisywana w celu zapewnienia kompleksowego wyglądu w obszarze zabezpieczenia dostępne dla Microsoft Azure.
@@ -93,7 +93,7 @@ Application Insights tworzy wykresy i tabele, które pokazują Ci, na przykład 
 W przypadku awarii, błędów lub problemów z wydajnością można wyszukać szczegółowe dane telemetryczne, aby zdiagnozować przyczynę. A usługa wysyła wiadomości e-mail, jeśli istnieją jakiekolwiek zmiany w zakresie dostępności i wydajności aplikacji. Usługa Application Insights w ten sposób będzie cennym narzędziem zabezpieczeń, ponieważ ułatwia dostęp do Triad zabezpieczeń, integralności i dostępności.
 
 ### <a name="azure-monitor"></a>Azure Monitor
-[Azure monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) oferuje wizualizacje, zapytania, routing, alerty, automatyczne skalowanie i automatyzację danych zarówno z infrastruktury platformy Azure ([Dziennik aktywności](../../azure-monitor/platform/activity-logs-overview.md)), jak i poszczególnych zasobów platformy Azure ([dzienników diagnostycznych](../../azure-monitor/platform/diagnostic-logs-overview.md)). Za pomocą Azure Monitor można ostrzec o zdarzeniach związanych z zabezpieczeniami, które są generowane w dziennikach platformy Azure.
+[Azure monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) oferuje wizualizacje, zapytania, routing, alerty, automatyczne skalowanie i automatyzację danych zarówno z infrastruktury platformy Azure ([Dziennik aktywności](../../azure-monitor/platform/activity-logs-overview.md)), jak i poszczególnych zasobów platformy Azure ([dzienników diagnostycznych](../../azure-monitor/platform/resource-logs-overview.md)). Za pomocą Azure Monitor można ostrzec o zdarzeniach związanych z zabezpieczeniami, które są generowane w dziennikach platformy Azure.
 
 ### <a name="azure-monitor-logs"></a>Dzienniki usługi Azure Monitor
 [Dzienniki Azure monitor](https://azure.microsoft.com/documentation/services/log-analytics/) — udostępnia rozwiązanie do zarządzania IT dla infrastruktury lokalnej i opartej na chmurze innej firmy (na przykład AWS) oprócz zasobów platformy Azure. Dane z Azure Monitor mogą być kierowane bezpośrednio do dzienników Azure Monitor, dzięki czemu można zobaczyć metryki i dzienniki dla całego środowiska w jednym miejscu.
@@ -287,7 +287,7 @@ Usługa [Azure Load Balancer](../../load-balancer/load-balancer-overview.md) zap
 ### <a name="internal-dns"></a>Wewnętrzny serwer DNS
 Można zarządzać listą serwerów DNS używanych w sieci wirtualnej w portal zarządzania lub w pliku konfiguracji sieci. Klient może dodać do 12 serwerów DNS dla każdej sieci wirtualnej. Podczas określania serwerów DNS ważne jest, aby sprawdzić, czy serwery DNS klienta są w odpowiedniej kolejności dla środowiska klienta. Listy serwerów DNS nie działają w sposób okrężny. Są one używane w kolejności, w jakiej zostały określone. Jeśli pierwszy serwer DNS na liście jest w stanie dotrzeć, klient korzysta z tego serwera DNS bez względu na to, czy serwer DNS działa prawidłowo, czy nie. Aby zmienić kolejność serwera DNS dla sieci wirtualnej klienta, Usuń serwery DNS z listy i Dodaj je ponownie w kolejności, w jakiej klient chce. System DNS obsługuje aspekt dostępności "CIA" zabezpieczeń Triad.
 
-### <a name="azure-dns"></a>Usługa DNS platformy Azure
+### <a name="azure-dns"></a>System DNS platformy Azure
 [System nazw domen](https://technet.microsoft.com/library/bb629410.aspx)(DNS) jest odpowiedzialny za tłumaczenie (lub rozwiązanie) nazwy witryny sieci Web lub usługi na adres IP. [Azure DNS](../../dns/dns-overview.md) to usługa hostingu dla domen DNS, która zapewnia rozpoznawanie nazw przy użyciu infrastruktury Microsoft Azure. Dzięki hostowaniu swoich domen na platformie Azure możesz zarządzać rekordami DNS z zastosowaniem tych samych poświadczeń, interfejsów API, narzędzi i rozliczeń co w przypadku innych usług platformy Azure. System DNS obsługuje aspekt dostępności "CIA" zabezpieczeń Triad.
 ### <a name="azure-monitor-logs-nsgs"></a>Sieciowych grup zabezpieczeń dzienników Azure Monitor
 Następujące kategorie dzienników diagnostycznych można włączyć dla sieciowych grup zabezpieczeń:

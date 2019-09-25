@@ -5,16 +5,15 @@ manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
-ms.subservice: cognitive-search
 ms.topic: overview
 ms.date: 08/15/2019
 ms.author: heidist
-ms.openlocfilehash: 4987c17eabf5d9e140352e3581b38a7d29049c5f
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: aa8ab3a3bc2f243e8b0ee404228926ef46bc46db
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899981"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266387"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Co to jest "wyszukiwanie poznawcze" w Azure Search?
 
@@ -51,7 +50,7 @@ Wyszukiwanie poznawcze przy użyciu wstępnie utworzonych umiejętności jest od
 
   Ponadto wstępnie skompilowane umiejętności mogą również służyć do zmiany struktury zawartości przy użyciu operacji dzielenia tekstu, scalania i kształtowania.
 
-Umiejętności niestandardowe mogą obsługiwać bardziej złożone scenariusze, takie jak rozpoznawanie formularzy lub wykrywanie jednostek niestandardowych przy użyciu udostępnianego modelu i zawijania w niestandardowym [interfejsie sieci Web](cognitive-search-custom-skill-interface.md). Kilka przykładów umiejętności niestandardowych obejmuje [aparat rozpoznawania formularzy](/azure/cognitive-services/form-recognizer/overview), integrację [interfejs API wyszukiwania jednostek Bing](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example)i [niestandardowego rozpoznawania jednostek](https://github.com/Microsoft/SkillsExtractorCognitiveSearch).
+Umiejętności niestandardowe mogą obsługiwać bardziej złożone scenariusze, takie jak rozpoznawanie formularzy lub wykrywanie jednostek niestandardowych przy użyciu udostępnianego modelu i zawijania w [niestandardowym interfejsie sieci Web](cognitive-search-custom-skill-interface.md). Kilka przykładów umiejętności niestandardowych obejmuje [aparat rozpoznawania formularzy](/azure/cognitive-services/form-recognizer/overview), integrację [interfejs API wyszukiwania jednostek Bing](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example)i [niestandardowego rozpoznawania jednostek](https://github.com/Microsoft/SkillsExtractorCognitiveSearch).
 
 
 ## <a name="component-pipeline-of-cognitive-search"></a>Potok składnika wyszukiwania poznawczego
@@ -96,12 +95,12 @@ Indeksy są generowane na podstawie schematu indeksu, który definiuje pola, atr
 
 ## <a name="key-features-and-concepts"></a>Kluczowe funkcje i pojęcia
 
-| Pojęcie | Opis| Łącza |
+| Pojęcie | Opis| Linki |
 |---------|------------|-------|
-| Zestawu umiejętności | Zasób o nazwie najwyższego poziomu zawierający kolekcję umiejętności. Zestawu umiejętności to potok wzbogacania. Jest wywoływana podczas indeksowania przez indeksator. | [Zdefiniuj zestawu umiejętności](cognitive-search-defining-skillset.md) |
+| Zestaw umiejętności | Zasób o nazwie najwyższego poziomu zawierający kolekcję umiejętności. Zestawu umiejętności to potok wzbogacania. Jest wywoływana podczas indeksowania przez indeksator. | [Zdefiniuj zestawu umiejętności](cognitive-search-defining-skillset.md) |
 | Umiejętność | Niepodzielna transformacja w potoku wzbogacania. Często jest to składnik, który wyodrębnia lub wnioskuje strukturę i w związku z tym rozszerza zrozumienie danych wejściowych. Prawie zawsze, dane wyjściowe są oparte na tekście, a przetwarzanie polega na przetwarzaniu języka naturalnego lub przetwarzaniu obrazu, który wyodrębnia lub generuje tekst z danych wejściowych obrazu. Dane wyjściowe z umiejętności mogą być mapowane do pola w indeksie lub używane jako dane wejściowe dla wzbogacania podrzędnego. Umiejętności są wstępnie zdefiniowane i udostępniane przez firmę Microsoft albo niestandardowe: utworzone i wdrożone przez użytkownika. | [Wstępnie zdefiniowane umiejętności](cognitive-search-predefined-skills.md) |
 | Wyodrębnianie danych | Obejmuje szeroką gamę procesów przetwarzania, ale odnoszące się do wyszukiwania poznawczego, umiejętność rozpoznawania jednostek zazwyczaj służy do wyodrębniania danych (jednostki) ze źródła, które nie zapewnia natywnej informacji. | [Umiejętność rozpoznawania jednostek](cognitive-search-skill-entity-recognition.md)| 
-| Przetwarzanie obrazu | Wnioskuje tekst z obrazu, taki jak możliwość rozpoznawania punktu orientacyjnego, lub wyodrębniania tekstu z obrazu. Typowe przykłady obejmują OCR do podnoszenia znaków z pliku zeskanowanego dokumentu (JPEG) lub rozpoznania nazwy ulicy w fotografii zawierającej znak ulicy. | Umiejętność [analizy obrazów](cognitive-search-skill-image-analysis.md) lub [umiejętność OCR](cognitive-search-skill-ocr.md)
+| Przetwarzanie obrazów | Wnioskuje tekst z obrazu, taki jak możliwość rozpoznawania punktu orientacyjnego, lub wyodrębniania tekstu z obrazu. Typowe przykłady obejmują OCR do podnoszenia znaków z pliku zeskanowanego dokumentu (JPEG) lub rozpoznania nazwy ulicy w fotografii zawierającej znak ulicy. | Umiejętność [analizy obrazów](cognitive-search-skill-image-analysis.md) lub [umiejętność OCR](cognitive-search-skill-ocr.md)
 | Przetwarzanie języka naturalnego | Przetwarzanie tekstu na potrzeby wglądu i informacji na temat danych wejściowych tekstu. Wykrywanie języka, analiza tonacji i wyodrębnianie kluczowych fraz są umiejętnościami, które są objęte przetwarzaniem w języku naturalnym.  | [Wyodrębnianie kluczowych fraz umiejętności](cognitive-search-skill-keyphrases.md), [wykrywanie języka umiejętności](cognitive-search-skill-language-detection.md), [Analiza tonacji umiejętność](cognitive-search-skill-sentiment.md) |
 | Łamanie dokumentów | Proces wyodrębniania lub tworzenia zawartości tekstowej ze źródeł nietekstowych podczas indeksowania. Optyczne rozpoznawanie znaków (OCR) to przykład, ale ogólnie odnosi się do podstawowej funkcjonalności indeksatora, ponieważ indeksator wyodrębnia zawartość z plików aplikacji. Źródło danych dostarczające lokalizację pliku źródłowego oraz definicję indeksatora dostarczającego mapowania pól są kluczowymi czynnikami w przypadku łamania dokumentów. | Zobacz [indeksatory](search-indexer-overview.md) |
 | Kształtowania | Konsolidowanie fragmentów tekstu do większej struktury lub odwrotne rozdzielenie większych fragmentów tekstu do rozmiaru do zarządzania w celu przeprowadzenia dalszej obróbki podrzędnej. | [Umiejętność kształtu](cognitive-search-skill-shaper.md), [umiejętność łączenia tekstu](cognitive-search-skill-textmerger.md), [umiejętność dzielenia tekstu](cognitive-search-skill-textsplit.md) |

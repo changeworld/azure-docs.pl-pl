@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 642eb15c62c895e85add55b725318b150b51658e
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: df8dfc72dea9289fc13d648b05b59f6d1bd9b3e0
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179967"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273593"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-idc"></a>Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z IDC
 
@@ -90,7 +90,7 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
 1. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
-    W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://cas.idc.com/saml-welcome/AzureAppDirectory`
+    W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://www.idc.com/saml-welcome/<SamlWelcomeCode>`
 
     > [!NOTE]
     > Te wartości nie są prawdziwe. Zastąp te wartości rzeczywistymi wartościami identyfikatora i adresu URL odpowiedzi. Skontaktuj się z [zespołem pomocy technicznej programu IDC](mailto:webchanneldev@idc.com) , aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
@@ -139,7 +139,7 @@ Aby skonfigurować Logowanie jednokrotne po stronie **IDC** , należy wysłać p
 
 ### <a name="create-idc-test-user"></a>Utwórz użytkownika testowego IDC
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w IDC. Pracuj z [zespołem pomocy technicznej IDC](mailto:webchanneldev@idc.com) , aby dodać użytkowników na platformie IDC. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
+Użytkownik nie musi być utworzony w programie IDC z wyprzedzeniem. Użytkownik zostanie automatycznie utworzony, gdy użyje logowania jednokrotnego po raz pierwszy.
 
 ## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
 

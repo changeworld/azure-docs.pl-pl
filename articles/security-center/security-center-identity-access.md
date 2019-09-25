@@ -13,18 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2018
 ms.author: memildin
-ms.openlocfilehash: d035dc4e8f77bb64a9e845a9dae0668365a6aacb
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 8b069bedd3c36f27828e54a1110443ae6dfcdf3f
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202278"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268859"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Monitorowanie tożsamości i dostępu w Azure Security Center (wersja zapoznawcza)
 Ten artykuł ułatwia korzystanie z usługi Azure Security Center w celu monitorowania tożsamości i dostępu użytkowników.
-
-> [!NOTE]
-> Link "Wyświetl *klasyczny* & dostępu" zostanie wycofany 31 lipca 2019. Kliknij [tutaj](security-center-features-retirement-july2019.md#menu_classicidentity) , aby dowiedzieć się więcej na temat alternatywnych usług.
 
 > [!NOTE]
 > Monitorowanie tożsamości i dostępu jest w wersji zapoznawczej i dostępne tylko w warstwie Standardowa Security Center. Zobacz [cennik](security-center-pricing.md), aby dowiedzieć się więcej na temat warstw cenowych usługi Security Center.
@@ -67,7 +64,7 @@ W obszarze **tożsamość & dostęp**istnieją dwie karty:
 ### <a name="overview-section"></a>Sekcja przegląd
 W obszarze **Przegląd**znajduje się lista zaleceń. W pierwszej kolumnie wyświetlane są zalecenia. Druga kolumna zawiera łączną liczbę subskrypcji, których dotyczy to zalecenie. Trzecia kolumna przedstawia ważność problemu.
 
-1. Wybierz zalecenie. Zostanie otwarte okno Rekomendacja:
+1. Wybierz zalecenie. Zostanie otwarte okno rekomendacje zawierające następujące elementy:
 
    - Opis zalecenia
    - Lista nieprawidłowych i zdrowych subskrypcji
@@ -80,7 +77,7 @@ W obszarze **Przegląd**znajduje się lista zaleceń. W pierwszej kolumnie wyśw
 ### <a name="subscriptions-section"></a>Sekcja subskrypcje
 W obszarze **subskrypcje**istnieje lista subskrypcji. W pierwszej kolumnie są wyświetlane subskrypcje. Druga kolumna zawiera łączną liczbę zaleceń dla każdej subskrypcji. Trzecia kolumna przedstawia liczbę problemów.
 
-![Karta subskrypcji][4]
+![Karta subskrypcje][4]
 
 1. Wybierz subskrypcję. Otwiera widok podsumowania z trzema kartami:
 
@@ -125,13 +122,13 @@ Skorzystaj z poniższej tabeli jako odniesienia, aby pomóc zrozumieć dostępn�
 > Jeśli zostały utworzone zasady dostępu warunkowego, które wymagają uwierzytelniania wieloskładnikowego, ale mają ustawione wykluczenia, Ocena rekomendacji Security Center MFA uważa, że zasady nie są zgodne, ponieważ umożliwia ona użytkownikom logowanie się na platformie Azure bez uwierzytelniania wieloskładnikowego.
 
 ## <a name="next-steps"></a>Następne kroki
-Aby dowiedzieć się więcej na temat zalecenia, które mają zastosowanie do innych typów zasobów platformy Azure, zobacz następujące tematy:
+Aby dowiedzieć się więcej o zaleceniach dotyczących innych typów zasobów platformy Azure, zobacz następujące artykuły:
 
 - [Ochrona maszyn i aplikacji w usłudze Azure Security Center](security-center-virtual-machine-protection.md)
 - [Ochrona sieci w usłudze Azure Security Center](security-center-network-recommendations.md)
 - [Ochrona usługi Azure SQL i danych w Azure Security Center](security-center-sql-service-recommendations.md)
 
-Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
+Aby dowiedzieć się więcej na temat usługi Security Center, zobacz następujące artykuły:
 * [Zarządzanie alertami zabezpieczeń i reagowanie na nie w usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Dowiedz się, jak zarządzać alertami i reagować na zdarzenia związane z bezpieczeństwem w usłudze Security Center.
 * [Informacje o alertach zabezpieczeń w usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Poznaj różne typy alertów zabezpieczeń.
 * [Azure Security Center — często zadawane pytania](security-center-faq.md). Odpowiedzi na często zadawane pytania dotyczące korzystania z usługi Security Center.

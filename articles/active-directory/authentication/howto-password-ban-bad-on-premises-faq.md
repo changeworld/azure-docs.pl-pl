@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74f81cb1f9b62755d2dd2707518b828466e9ed1b
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 2c2e737360d6b1eeb8df28a95b8c36d4cca80ee4
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097571"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268643"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Ochrona hasłem w usłudze Azure AD — często zadawane pytania
 
@@ -100,6 +100,8 @@ Nie. Ponieważ serwer proxy jest bezstanowy, nie ma znaczenia, który z nich jes
 **Pyt.: Czy warto wdrożyć usługę serwera proxy ochrony haseł usługi Azure AD obok innych usług, takich jak Azure AD Connect?**
 
 Tak. Usługa serwera proxy ochrony hasłem usługi Azure AD i Azure AD Connect nigdy nie powinna powodować konfliktu bezpośrednio ze sobą.
+
+Niestety, znaleziono niezgodność między wersją usługi Microsoft Azure AD Connect Agent Aktualizator, która jest instalowana przez oprogramowanie serwera proxy ochrony hasłem w usłudze Azure AD i wersję usługi zainstalowanej przez usługę [Azure Active Directory Oprogramowanie serwera proxy aplikacji katalogu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) . Niezgodność może spowodować, że usługa Aktualizator agenta nie będzie mogła skontaktować się z platformą Azure w celu uzyskania aktualizacji oprogramowania. Nie zaleca się instalowania serwera proxy ochrony hasłem usługi Azure AD i serwer proxy aplikacji usługi Azure Active Directory na tym samym komputerze.
 
 **Pyt.: W jakiej kolejności mają być zainstalowane i zarejestrowane agenci i serwery proxy kontrolera domeny?**
 

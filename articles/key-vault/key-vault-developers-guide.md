@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a2749ca35e6137d42a09b79da9315c8f7b242c31
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 1ebf4feb0687d9580bba29cd8213030e542a06da
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000796"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268846"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Przewodnik dewelopera Azure Key Vault
 
@@ -29,26 +29,6 @@ Aby uzyskać więcej ogólnych informacji na temat Azure Key Vault, zobacz [co t
 ## <a name="public-previews"></a>Publiczne podglądy
 
 Okresowo firma Microsoft udostępnia publiczną wersję zapoznawczą nowej funkcji Key Vault. Wypróbuj je i daj nam znać, co myślisz, azurekeyvault@microsoft.comza pośrednictwem adresu e-mail z opiniami.
-
-### <a name="storage-account-keys---july-10-2017"></a>Klucze konta magazynu — 10 lipca 2017
-
->[!NOTE]
->Ta aktualizacja Azure Key Vault tylko funkcji **kluczy konta magazynu** jest dostępna w wersji zapoznawczej.
-
-Ta wersja zapoznawcza obejmuje nasze nowe funkcje kluczy konta magazynu dostępne za poorednictwem tych interfejsów; [.NET/C#](/dotnet/api/microsoft.azure.keyvault/), [rest](/rest/api/keyvault/) i [PowerShell](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault). 
-
-Aby uzyskać więcej informacji na temat nowych kluczy konta magazynu, zobacz [Azure Key Vault — Omówienie kluczy konta magazynu](key-vault-ovw-storage-keys.md).
-
-## <a name="videos"></a>Wideo
-
-W tym filmie wideo pokazano, jak utworzyć własny magazyn kluczy i jak używać go z przykładowej aplikacji "Hello Key Vault".
-
-- [Key Vault Developer — Przewodnik Szybki Start](https://channel9.msdn.com/Blogs/Azure/Azure-Key-Vault-Developer-Quick-Start/player)
-
-Zasoby wymienione powyżej filmu wideo:
-
-- [Azure PowerShell](https://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409)
-- [Azure Key Vault przykładowy kod](https://go.microsoft.com/fwlink/?LinkId=521527&clcid=0x409)
 
 ## <a name="creating-and-managing-key-vaults"></a>Tworzenie magazynów kluczy i zarządzanie nimi
 

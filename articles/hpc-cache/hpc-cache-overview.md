@@ -4,18 +4,18 @@ description: Opisuje pamięć podręczną platformy Azure HPC, rozwiązanie dost
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 09/19/2019
+ms.date: 09/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: f4c858d7a71cf02b4a8fe181deecbf3a1b652885
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 093116a8def69e3f63af9aeb963abc60841cbe85
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180685"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257012"
 ---
 # <a name="what-is-azure-hpc-cache-preview"></a>Co to jest usługa Azure HPC Cache? (Wersja zapoznawcza)
 
-Pamięć podręczna Azure HPC umożliwia przyspieszenie dostępu do danych na potrzeby zadań obliczeniowych o wysokiej wydajności (HPC). Buforowanie plików na platformie Azure sprawia, że skalowalność w chmurze jest dostępna nawet w przypadku przepływów pracy, w których dane są przechowywane przez linki sieci WAN, na przykład w lokalnym środowisku magazynu (NAS) podłączonym do sieci centrum danych.
+Pamięć podręczna Azure HPC umożliwia przyspieszenie dostępu do danych na potrzeby zadań obliczeniowych o wysokiej wydajności (HPC). Buforowanie plików na platformie Azure powoduje, że pamięć podręczna Azure HPC zapewnia skalowalność przetwarzania w chmurze w istniejącym przepływie pracy. Tej usługi można używać nawet w przypadku przepływów pracy, w których dane są przechowywane w łączach sieci WAN, takich jak w lokalnym środowisku magazynu (NAS) podłączonym do sieci centrum danych.
 
 Pamięć podręczna Azure HPC jest łatwa do uruchomienia i monitorowania z Azure Portal. Istniejący magazyn NFS lub nowe kontenery obiektów BLOB mogą stać się częścią zagregowanej przestrzeni nazw, co sprawia, że dostęp klienta jest prosty nawet w przypadku zmiany miejsca docelowego magazynu zaplecza.
 
@@ -37,13 +37,13 @@ W przypadku multimediów i rozrywki pamięć podręczna Azure HPC może przyspie
 
 Wiele przepływów pracy nauki przyrodniczej może korzystać z buforowania plików skalowalnych w poziomie.
 
-Instytut badawczy, który chce przenieść swoje przepływy pracy analizy genomiki do platformy Azure, może je łatwo przenieść przy użyciu pamięci podręcznej platformy Azure HPC. Ponieważ pamięć podręczna zapewnia dostęp do plików POSIX, może uruchamiać swój istniejący przepływ pracy po stronie klienta w chmurze bez wprowadzania żadnych zmian.
+Instytut badawczy, który chce przenieść swoje przepływy pracy analizy genomiki do platformy Azure, może je łatwo przenieść przy użyciu pamięci podręcznej platformy Azure HPC. Ponieważ pamięć podręczna zapewnia dostęp do plików POSIX, nie są konieczne żadne zmiany po stronie klienta, aby uruchomić swój istniejący przepływ pracy klienta w chmurze.
 
 Pamięć podręczna Azure HPC może być również wykorzystywana w celu zwiększenia wydajności zadań, takich jak analiza pomocnicza, Symulacja farmakologiczna lub Analiza obrazu oparta na AI.
 
 ### <a name="financial-services-analytics"></a>Analiza usług finansowych
 
-Pamięć podręczna Azure HPC może ułatwić przyspieszenie obliczeń ilościowych, obciążeń związanych z analizą ryzyka i symulacje Monte Carlo w celu zapewnienia firmowych usług finansowych lepszy wgląd w podejmowanie decyzji strategicznych.
+Wdrożenie pamięci podręcznej platformy Azure HPC może ułatwić przyspieszenie obliczeń analizy ilościowej, obciążeń związanych z analizą ryzyka i symulacji Monte Carlo, aby zapewnić firmom usług finansowych lepszy wgląd w podejmowanie decyzji strategicznych.
 
 ## <a name="region-availability"></a>Dostępność w danym regionie
 
