@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2f7ad49fc56fc82955f79155838c69ff714aba2f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: bd51e70122a5457c8dcf1bd8f2061fe25943e87f
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845863"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "71224504"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Wymagania wstępne usługi Azure Disk Encryption
 
@@ -28,7 +28,7 @@ Przed włączeniem usługi Azure Disk Encryption na maszynach wirtualnych IaaS p
 
 ## <a name="supported-vm-sizes"></a>Obsługiwane rozmiary maszyn wirtualnych
 
-Azure Disk Encryption nie jest dostępna na [maszynach wirtualnych serii A](/pricing/details/virtual-machines/series/). Azure Disk Encryption jest dostępna na innych maszynach wirtualnych, które spełniają te minimalne wymagania dotyczące pamięci:
+Azure Disk Encryption nie jest dostępna na [maszynach wirtualnych serii A](https://azure.microsoft.com/pricing/details/virtual-machines/series/). Azure Disk Encryption jest dostępna na innych maszynach wirtualnych, które spełniają te minimalne wymagania dotyczące pamięci:
 
 | Maszyna wirtualna | Minimalne wymagania dotyczące pamięci |
 |--|--|
@@ -59,7 +59,7 @@ Azure Disk Encryption jest również dostępna dla maszyn wirtualnych z magazyne
 
 ### <a name="linux"></a>Linux 
 
-Azure Disk Encryption jest obsługiwane w podzestawie [dystrybucji systemu Linux](../virtual-machines/linux/endorsed-distros.md)z zatwierdzona przez platformę Azure, które jest samym podzbiorem wszystkich możliwych dystrybucji serwerów z systemem Linux.
+Azure Disk Encryption jest obsługiwane w podzestawie [dystrybucji systemu Linux z zatwierdzona przez platformę Azure](../virtual-machines/linux/endorsed-distros.md), które jest samym podzbiorem wszystkich możliwych dystrybucji serwerów z systemem Linux.
 
 ![Diagram Venna dystrybucji serwerów z systemem Linux, który obsługuje Azure Disk Encryption](./media/azure-security-disk-encryption-faq/ade-supported-distros.png)
 

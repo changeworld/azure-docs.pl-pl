@@ -4,9 +4,9 @@ description: Dowiedz się, jak wysyłać powiadomienia wypychane z aplikacji nod
 keywords: Powiadomienie wypychane, powiadomienia wypychane, wypychanie Node. js push, wypychanie systemu iOS
 services: notification-hubs
 documentationcenter: nodejs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: ded4749c-6c39-4ff8-b2cf-1927b3e92f93
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,13 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 129127a2a43cd9a86e0a1e1cf538358b62381257
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 6e109c5a7f4911893c81c88ae84322fb962fff6e
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67706229"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213194"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Wysyłanie powiadomień wypychanych za pomocą usługi Azure Notification Hubs i środowiska Node. js
 
@@ -29,7 +31,7 @@ ms.locfileid: "67706229"
 ## <a name="overview"></a>Przegląd
 
 > [!IMPORTANT]
-> Do wykonania kroków tego samouczka potrzebne jest aktywne konto platformy Azure. Jeśli nie masz konta, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut, korzystając z bezpłatnej [wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-nodejs-how-to-use-notification-hubs).
+> Do wykonania kroków tego samouczka potrzebne jest aktywne konto platformy Azure. Jeśli nie masz konta, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut, korzystając z [bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-nodejs-how-to-use-notification-hubs).
 
 W tym przewodniku pokazano, jak wysyłać powiadomienia wypychane za pomocą Notification Hubs platformy Azure bezpośrednio z aplikacji [Node. js](https://nodejs.org) .
 
@@ -80,7 +82,7 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 Uzyskaj wartość połączenia `connectionstring` z [Azure Portal] , wykonując następujące czynności:
 
 1. W okienku nawigacji po lewej stronie kliknij przycisk **Przeglądaj**.
-2. Wybierz pozycję **Notification Hubs**, a następnie Znajdź centrum, którego chcesz użyć dla przykładu. Aby uzyskać pomoc dotyczącą tworzenia nowego centrum powiadomień, można zapoznać się z samouczkiem dotyczącym [sklepu Windows wprowadzenie](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) .
+2. Wybierz pozycję **Notification Hubs**, a następnie Znajdź centrum, którego chcesz użyć dla przykładu. Aby uzyskać pomoc dotyczącą tworzenia nowego centrum powiadomień, można zapoznać się z [samouczkiem dotyczącym sklepu Windows wprowadzenie](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) .
 3. Wybierz **ustawienia**.
 4. Kliknij pozycję **zasady dostępu**. Zobaczysz parametry połączenia dostępu współdzielonego i pełnego.
 
@@ -98,7 +100,7 @@ Uzyskaj wartość połączenia `connectionstring` z [Azure Portal] , wykonując 
 - **Windows Phone** — Użyj `MpnsService` obiektu, który jest dostępny w`notificationHubService.mpns`
 - **Platforma uniwersalna systemu Windows** — Użyj `WnsService` obiektu, który jest dostępny w`notificationHubService.wns`
 
-### <a name="how-to-send-push-notifications-to-android-applications"></a>Instrukcje: Wysyłanie powiadomień wypychanych do aplikacji systemu Android
+### <a name="how-to-send-push-notifications-to-android-applications"></a>Instrukcje: Wysyłanie powiadomień push do aplikacji systemu Android
 
 `GcmService` Obiekt`send` udostępnia metodę, która może służyć do wysyłania powiadomień wypychanych do aplikacji systemu Android. `send` Metoda akceptuje następujące parametry:
 

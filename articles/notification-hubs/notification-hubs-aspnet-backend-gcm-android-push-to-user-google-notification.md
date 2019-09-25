@@ -3,9 +3,9 @@ title: Wypychanie powiadomień do konkretnych użytkowników aplikacji systemu A
 description: Dowiedz się, jak wysyłać powiadomienia push do konkretnych użytkowników przy użyciu usługi Azure Notification Hubs.
 documentationcenter: android
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: ae0e17a8-9d2b-496e-afd2-baa151370c25
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,18 +14,20 @@ ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: d125e0c0818efbc6ec8f317122859411a37a0d20
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 1b867d571e97209c4385c1f23b49fe5a03ab94d5
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65232752"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212079"
 ---
-# <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Samouczek: Wypychanie powiadomień do użytkowników określonych aplikacji systemu Android przy użyciu usługi Azure Notification Hubs i Google Cloud Messaging (przestarzałe)
+# <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Samouczek: Powiadomienia wypychane do określonych użytkowników aplikacji systemu Android przy użyciu usługi Azure Notification Hubs i Google Cloud Messaging (przestarzałe)
 
 > [!WARNING]
-> Od 10 kwietnia 2018 r. Google jest przestarzała Google Cloud Messaging (GCM). Serwer usługi GCM i interfejsów API klienta są przestarzałe i zostaną usunięte natychmiast po 29 maja 2019 r. Aby uzyskać więcej informacji, zobacz [usługi GCM i FCM — często zadawane pytania](https://developers.google.com/cloud-messaging/faq).
+> Od 10 kwietnia 2018 firma Google ma przestarzałe Google Cloud Messaging (GCM). Serwer GCM i interfejsy API klienta są przestarzałe i zostaną usunięte od razu do 29 maja 2019. Aby uzyskać więcej informacji, zobacz [często zadawane pytania dotyczące GCM i FCM](https://developers.google.com/cloud-messaging/faq).
 
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
@@ -260,7 +262,7 @@ Kolejnym krokiem jest zaktualizowanie aplikacji systemu Android utworzonej w ram
     }
     ```
 
-    Ten składnik implementuje wywołania REST wymagane do kontaktowania się z zapleczem aplikacji, aby przeprowadzać rejestrację na potrzeby powiadomień push. Ponadto zapisuje lokalnie identyfikatory *registrationId* utworzone przez centrum powiadomień zgodnie z opisem w sekcji [Rejestrowanie z poziomu zaplecza aplikacji](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend). Używa ona token autoryzacji przechowywanych w magazynie lokalnym, po kliknięciu **Zaloguj** przycisku.
+    Ten składnik implementuje wywołania REST wymagane do kontaktowania się z zapleczem aplikacji, aby przeprowadzać rejestrację na potrzeby powiadomień push. Ponadto zapisuje lokalnie identyfikatory *registrationId* utworzone przez centrum powiadomień zgodnie z opisem w sekcji [Rejestrowanie z poziomu zaplecza aplikacji](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend). Używa tokenu autoryzacji przechowywanego w magazynie lokalnym po kliknięciu przycisku **Zaloguj** .
 4. W klasie usuń lub oznacz jako komentarz pole prywatne dla elementu `NotificationHub`, a także dodaj pole dla klasy `RegisterClient` i ciąg dla punktu końcowego zaplecza ASP.NET. Pamiętaj, aby zastąpić ciąg `<Enter Your Backend Endpoint>` wcześniej pozyskanym, faktycznym punktem końcowym zaplecza. Na przykład `http://mybackend.azurewebsites.net`.
 
     ```java
@@ -322,7 +324,7 @@ Kolejnym krokiem jest zaktualizowanie aplikacji systemu Android utworzonej w ram
     Button sendPush = (Button) findViewById(R.id.sendbutton);
     sendPush.setEnabled(false);
     ```
-9. Następnie należy dodać następujące metody umożliwiające obsługę **Zaloguj** kliknięcia przycisku zdarzeń i wysyłania powiadomień wypychanych.
+9. Następnie Dodaj następujące metody, aby obsłużyć przycisk **Zaloguj się** i wysyłać powiadomienia wypychane.
 
     ```java
     public void login(View view) throws UnsupportedEncodingException {
@@ -404,7 +406,7 @@ Kolejnym krokiem jest zaktualizowanie aplikacji systemu Android utworzonej w ram
     }
     ```
 
-    `login` Obsługa **Zaloguj** przycisk generuje uwierzytelnienie podstawowe tokenu przy użyciu na wprowadzania nazwy użytkownika i hasło (reprezentuje dowolny token wykorzystuje schemat uwierzytelniania), a następnie używa `RegisterClient` do wywołania zaplecze dla rejestracji.
+    Program obsługi przycisku **logowania** generuje podstawowy token uwierzytelniania przy użyciu nazwy użytkownika i hasła wejściowego (reprezentuje dowolny token używany przez schemat uwierzytelniania), a następnie używa `RegisterClient` do wywoływania zaplecza na potrzeby rejestracji `login` .
 
     Metoda `sendPush` wywołuje zaplecze, aby wyzwolić bezpieczne powiadomienie do użytkownika w oparciu o tag użytkownika. Docelowa usługa powiadomień platformy dla metody `sendPush` zależy od przekazanego ciągu `pns`.
 
@@ -470,7 +472,7 @@ Kolejnym krokiem jest zaktualizowanie aplikacji systemu Android utworzonej w ram
 
 1. Uruchom aplikację na urządzeniu lub emulatorze przy użyciu programu Android Studio.
 2. W aplikacji systemu Android wprowadź nazwę użytkownika i hasło. Oba muszą być taką samą wartością ciągu i nie mogą zawierać spacji ani znaków specjalnych.
-3. W aplikacji dla systemu Android, kliknij przycisk **Zaloguj**. Poczekaj na komunikat wyskakujący z informacją **Logged in and registered** (Zalogowano i zarejestrowano). Spowoduje to włączenie przycisku **Send Notification** (Wyślij powiadomienie).
+3. W aplikacji systemu Android kliknij przycisk **Zaloguj**. Poczekaj na komunikat wyskakujący z informacją **Logged in and registered** (Zalogowano i zarejestrowano). Spowoduje to włączenie przycisku **Send Notification** (Wyślij powiadomienie).
 
     ![][A2]
 4. Kliknij przyciski przełączania, aby włączyć wszystkie platformy, na których uruchomiono aplikację i zarejestrowano użytkownika.
@@ -478,7 +480,7 @@ Kolejnym krokiem jest zaktualizowanie aplikacji systemu Android utworzonej w ram
 6. Wpisz wiadomość dla użytkownika, która zostanie odebrana w formie powiadomienia push.
 7. Kliknij przycisk **Send Notification** (Wyślij powiadomienie).  Każde urządzenie, które zostało zarejestrowane przy użyciu pasującego tagu nazwy użytkownika, otrzyma powiadomienie push.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono sposób wysyłania powiadomień push do konkretnych użytkowników, którzy mają tagi skojarzone ze swoimi rejestracjami. Aby dowiedzieć się, jak wypychać powiadomienia oparte na lokalizacji, przejdź do następującego samouczka:
 

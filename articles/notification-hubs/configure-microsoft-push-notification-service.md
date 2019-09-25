@@ -1,46 +1,48 @@
 ---
-title: Konfigurowanie usługi powiadomień wypychanych firmy Microsoft w usłudze Azure Notification Hubs | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować ustawienia usługi powiadomień wypychanych firmy Microsoft dla usługi Azure notification hub.
+title: Konfigurowanie usługi powiadomień wypychanych firmy Microsoft na platformie Azure Notification Hubs | Microsoft Docs
+description: Dowiedz się, jak skonfigurować ustawienia usługi powiadomień wypychanych firmy Microsoft dla centrum powiadomień platformy Azure.
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: article
 ms.date: 03/25/2019
-ms.author: jowargo
-ms.openlocfilehash: 1c76b44438e6527439d0a370c92f4120424b8da5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/25/2019
+ms.openlocfilehash: 0d7bf5410e05bb74a215fb7a95c704673b764b93
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60240312"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212480"
 ---
-# <a name="configure-microsoft-push-notification-service-mpns-settings-for-a-notification-hub-in-the-azure-portal"></a>Konfigurowanie ustawień usługi powiadomień wypychanych firmy Microsoft (MPNS) dla Centrum powiadomień w witrynie Azure portal
-W tym artykule pokazano, jak skonfigurować ustawienia usługi powiadomień wypychanych firmy Microsoft (MPNS) dla usługi Azure notification hub przy użyciu witryny Azure portal. 
+# <a name="configure-microsoft-push-notification-service-mpns-settings-for-a-notification-hub-in-the-azure-portal"></a>Skonfiguruj ustawienia usługi Microsoft Push Notification Service (usługi MPNS) dla centrum powiadomień w Azure Portal
+W tym artykule opisano sposób konfigurowania ustawień usługi Microsoft Push Notification Service (usługi MPNS) dla centrum powiadomień platformy Azure przy użyciu Azure Portal. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Jeśli nie zostało jeszcze utworzone Centrum powiadomień, utwórz ją teraz. Aby uzyskać więcej informacji, zobacz [Tworzenie Centrum powiadomień platformy Azure w witrynie Azure portal](create-notification-hub-portal.md). 
+Jeśli nie utworzono jeszcze centrum powiadomień, utwórz je teraz. Aby uzyskać więcej informacji, zobacz [Tworzenie centrum powiadomień platformy Azure w Azure Portal](create-notification-hub-portal.md). 
 
-## <a name="configure-microsoft-push-notification-service-mpns"></a>Konfigurowanie usługi powiadomień wypychanych firmy Microsoft (MPNS)
+## <a name="configure-microsoft-push-notification-service-mpns"></a>Konfigurowanie usługi powiadomień wypychanych firmy Microsoft (usługi MPNS)
 
-Poniższa procedura zawiera kroki, aby skonfigurować ustawienia usługi powiadomień wypychanych firmy Microsoft (MPNS) dla Centrum powiadomień: 
+Poniższa procedura zawiera instrukcje dotyczące konfigurowania ustawień usługi Microsoft Push Notification Service (usługi MPNS) dla centrum powiadomień: 
 
-1. W witrynie Azure portal na **Centrum powiadomień** wybierz opcję **Windows Phone (MPNS)** w menu po lewej stronie.
-1. Włącz nieuwierzytelnione lub uwierzytelniony powiadomień wypychanych:
+1. Na Azure Portal na stronie **centrum powiadomień** wybierz pozycję **Windows Phone (usługi MPNS)** w menu po lewej stronie.
+1. Włącz nieuwierzytelnione lub uwierzytelnione powiadomienia wypychane:
 
-   a. Aby włączyć nieuwierzytelnione wypychanie powiadomień, wybierz **Włącz nieuwierzytelnione wypychanie** > **Zapisz**.
+   a. Aby włączyć nieuwierzytelnione powiadomienia wypychane, zaznacz opcję **Włącz nieuwierzytelnione wypychanie** > .
 
-      ![Zrzut ekranu pokazujący sposób Włącz nieuwierzytelnione wypychanie powiadomień](./media/notification-hubs-windows-phone-get-started/azure-portal-unauth.png)
+      ![Zrzut ekranu pokazujący sposób włączania nieuwierzytelnionych powiadomień wypychanych](./media/notification-hubs-windows-phone-get-started/azure-portal-unauth.png)
 
-   b. Aby włączyć powiadomienia wypychane uwierzytelnionego:
-      * Na pasku narzędzi wybierz **Przekaż certyfikat**.
+   b. Aby włączyć uwierzytelnione powiadomienia wypychane:
+      * Na pasku narzędzi wybierz pozycję **Przekaż certyfikat**.
       * Wybierz ikonę pliku, a następnie wybierz plik certyfikatu.
       * Wprowadź hasło certyfikatu.
       * Kliknij przycisk **OK**.
-      * Na **Windows Phone (MPNS)** wybierz opcję **Zapisz**.
+      * Na stronie **Windows Phone (usługi MPNS)** wybierz pozycję **Zapisz**.
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać samouczek z instrukcjami krok po kroku do wypychania powiadomień do urządzeń Windows Phone przy użyciu usługi Azure Notification Hubs i usługi powiadomień wypychanych firmy Microsoft (MPNS), zobacz [powiadomienia wypychane do aplikacji Windows Phone za pomocą powiadomień Koncentratory](notification-hubs-windows-mobile-push-notifications-mpns.md).
+## <a name="next-steps"></a>Następne kroki
+Aby zapoznać się z samouczkiem zawierającym instrukcje krok po kroku dotyczące wypychania powiadomień do urządzeń Windows Phone przy użyciu usług Azure Notification Hubs i Microsoft Push Notification Service (usługi MPNS), zobacz [powiadomienia wypychane, aby Windows Phone aplikacje za pomocą Notification Hubs](notification-hubs-windows-mobile-push-notifications-mpns.md).
 

@@ -9,18 +9,18 @@ ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: aa6bee9cceffc0252dd39d85ebe9d70625e33419
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 6278b16221072b9b5bca371007296806454ba197
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036405"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212431"
 ---
-# <a name="store-business-critical-data-in-azure-blob-storage"></a>Przechowywanie danych o krytycznym znaczeniu dla firmy w usłudze Azure Blob Storage
+# <a name="store-business-critical-data-in-azure-blob-storage-immutably"></a>Przechowywanie danych o kluczowym znaczeniu dla firmy w usłudze Azure Blob Storage immutably 
 
 Niezmienny magazyn usługi Azure Blob Storage umożliwia użytkownikom przechowywanie obiektów danych o kluczowym znaczeniu dla firmy w ROBAKu (zapis jeden raz, odczyt wielu). Ten stan sprawia, że dane nie są wymazywane i nie są modyfikowane dla interwału określonego przez użytkownika. Obiekty blob można tworzyć i odczytywać, ale nie modyfikować ani usuwać, na czas trwania interwału przechowywania. Niezmienny magazyn jest włączony dla kont Ogólnego przeznaczenia v2 i Blob Storage we wszystkich regionach świadczenia usługi Azure.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Niezmienny magazyn ułatwia organizacjom opieki zdrowotnej, instytucjom finansowym i pokrewnym branżom, a w szczególności organizację dealerów — w celu bezpiecznego przechowywania danych. Można go również wykorzystać w każdym scenariuszu, aby chronić krytyczne dane przed modyfikacją lub usunięciem. 
 
@@ -93,7 +93,7 @@ W poniższej tabeli przedstawiono typy operacji obiektów blob, które są wył�
 - W przypadku kontenera Maksymalna liczba zmian w celu zwiększenia interwału przechowywania dla zabudowanych, opartych na czasie limitów zasad wynosi 5.
 - W przypadku kontenera do zablokowanych zasad są zachowywane maksymalnie 7 dzienników inspekcji zasad przechowywania opartych na czasie.
 
-### <a name="legal-hold"></a>Blokada prawna
+### <a name="legal-hold"></a>Archiwizacja ze względów prawnych
 - W przypadku konta magazynu Maksymalna liczba kontenerów z ustawieniem wstrzymania prawnego to 1 000.
 - W przypadku kontenera Maksymalna liczba dozwolonych tagów w blokadzie wynosi 10.
 - Minimalna długość urzędowego tagu blokady to 3 znaki alfanumeryczne. Maksymalna długość to 23 znaków alfanumerycznych.

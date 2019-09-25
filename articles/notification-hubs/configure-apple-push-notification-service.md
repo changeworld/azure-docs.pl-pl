@@ -1,49 +1,51 @@
 ---
-title: Konfigurowanie Apple Push Notification Service w usłudze Azure Notification Hubs | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować usługi Azure notification hub przy użyciu ustawień firmy Apple Push Notification Service (APNS).
+title: Konfigurowanie Apple Push Notification Service na platformie Azure Notification Hubs | Microsoft Docs
+description: Dowiedz się, jak skonfigurować centrum powiadomień platformy Azure przy użyciu ustawień Apple Push Notification Service (APNS).
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: article
 ms.date: 03/25/2019
-ms.author: jowargo
-ms.openlocfilehash: 9a9db9f05895569b050e56cdeec1ee2ee25af0df
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/25/2019
+ms.openlocfilehash: 74e7e3c74934e292b668b8bff594a5efbca19716
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60237817"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212550"
 ---
-# <a name="configure-apple-push-notification-service-apns-settings-for-a-notification-hub-in-the-azure-portal"></a>Konfigurowanie ustawień firmy Apple Push Notification Service (APNS) dla Centrum powiadomień w witrynie Azure portal
-W tym artykule pokazano, jak skonfigurować ustawienia Apple Push Notification Service (APNS) dla usługi Azure notification hub przy użyciu witryny Azure portal. 
+# <a name="configure-apple-push-notification-service-apns-settings-for-a-notification-hub-in-the-azure-portal"></a>Skonfiguruj ustawienia usługi Apple Push Notification Service (APNS) dla centrum powiadomień w Azure Portal
+W tym artykule opisano sposób konfigurowania ustawień usług Apple Push Notification Service (APNS) dla centrum powiadomień platformy Azure przy użyciu Azure Portal. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Jeśli nie zostało jeszcze utworzone Centrum powiadomień, utwórz ją teraz. Aby uzyskać więcej informacji, zobacz [Tworzenie Centrum powiadomień platformy Azure w witrynie Azure portal](create-notification-hub-portal.md). 
+Jeśli nie utworzono jeszcze centrum powiadomień, utwórz je teraz. Aby uzyskać więcej informacji, zobacz [Tworzenie centrum powiadomień platformy Azure w Azure Portal](create-notification-hub-portal.md). 
 
 ## <a name="configure-apple-push-notification-service"></a>Konfigurowanie Apple Push Notification Service
 
-Poniższa procedura zawiera kroki, aby skonfigurować ustawienia Apple Push Notification Service (APNS) dla Centrum powiadomień:
+Poniższa procedura zawiera instrukcje dotyczące konfigurowania ustawień usługi Apple Push Notification Service (APNS) dla centrum powiadomień:
 
-1. W witrynie Azure portal na **Centrum powiadomień** wybierz opcję **Apple (APNS)** w menu po lewej stronie.
+1. W Azure Portal na stronie **centrum powiadomień** wybierz pozycję **Apple (APNs)** w menu po lewej stronie.
 
-1. Aby uzyskać **tryb uwierzytelniania**, wybierz opcję **certyfikatu** lub **tokenu**.
+1. W obszarze **tryb uwierzytelniania**wybierz pozycję **certyfikat** lub **token**.
 
-   a. Jeśli wybierzesz **certyfikatu**:
-   * Wybierz ikonę pliku, a następnie wybierz *.p12* pliku, który chcesz przekazać.
+   a. W przypadku wybrania opcji **certyfikat**:
+   * Wybierz ikonę pliku, a następnie wybierz plik *. p12* , który chcesz przekazać.
    * Wprowadź hasło.
-   * Wybierz tryb **Piaskownica**. Aby wysyłać powiadomienia wypychane do użytkowników, którzy kupili twoją aplikację ze sklepu, zaznacz **produkcji** trybu.
+   * Wybierz tryb **Piaskownica**. Aby wysyłać powiadomienia wypychane do użytkowników, którzy kupili aplikację ze sklepu, wybierz pozycję tryb produkcyjny.
 
-     ![Zrzut ekranu przedstawiający APNS certyfikatu konfiguracji w witrynie Azure portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
+     ![Zrzut ekranu przedstawiający konfigurację certyfikatu APNS w Azure Portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
 
-   b. Jeśli wybierzesz **tokenu**:
+   b. W przypadku wybrania opcji **token**:
 
-   * Wprowadź wartości w polach **identyfikator klucza**, **identyfikator pakietu**, **identyfikator zespołu**, i **tokenu**.
-   * Wybierz tryb **Piaskownica**. Aby wysyłać powiadomienia wypychane do użytkowników, którzy kupili twoją aplikację ze sklepu, zaznacz **produkcji** trybu.
+   * Wprowadź wartości dla **identyfikatora klucza**, **identyfikatora pakietu**, **identyfikatora zespołu**i **tokenu**.
+   * Wybierz tryb **Piaskownica**. Aby wysyłać powiadomienia wypychane do użytkowników, którzy kupili aplikację ze sklepu, wybierz pozycję tryb produkcyjny.
 
-     ![Zrzut ekranu przedstawiający APNS token konfiguracji w witrynie Azure portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-token.png)
+     ![Zrzut ekranu przedstawiający konfigurację tokenu usługi APNS w Azure Portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-token.png)
 
-## <a name="next-steps"></a>Kolejne kroki
-Samouczek z instrukcjami krok po kroku dla wypychanie powiadomień do urządzeń z systemem iOS zobacz następujący artykuł: [Wypychanie powiadomień do urządzeń z systemem iOS przy użyciu usługi Notification Hubs i usługi APNS](notification-hubs-ios-apple-push-notification-apns-get-started.md)
+## <a name="next-steps"></a>Następne kroki
+Aby zapoznać się z samouczkiem zawierającym instrukcje krok po kroku dotyczące wypychania powiadomień do urządzeń z systemem iOS, zobacz następujący artykuł: [Powiadomienia wypychane do urządzeń z systemem iOS przy użyciu Notification Hubs i usługi APNS](notification-hubs-ios-apple-push-notification-apns-get-started.md)

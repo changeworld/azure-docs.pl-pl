@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18, seo-java-august2019, seo-java-september2019
 ms.date: 04/15/2019
 ms.author: shvija
-ms.openlocfilehash: a24263e80f50d880be269238441545785e2f51e8
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 054289de296488036dd0855d228d272fdea18baf
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967612"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219429"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs"></a>Wysyłanie zdarzeń do i odbieranie zdarzeń z platformy Azure Event Hubs przy użyciu języka Java
 
@@ -181,11 +181,11 @@ Aby korzystać z klasy eventprocessorhost, musisz mieć konto usługi Azure Stor
 1. Zaloguj się do [Azure Portal](https://portal.azure.com)i wybierz pozycję **Utwórz zasób** po lewej stronie ekranu.
 2. Wybierz pozycję **Magazyn**, a następnie pozycję **konto magazynu**. W **Tworzenie konta magazynu** okna i wpisz nazwę konta magazynu. Wypełnij pozostałe pola, wybierz żądany region, a następnie wybierz pozycję **Utwórz**.
    
-    ![Tworzenie konta magazynu](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
+    ![Tworzenie konta magazynu w Azure Portal](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-azure-storage-account.png)
 
 3. Wybierz nowo utworzone konto magazynu, a następnie wybierz pozycję **klucze dostępu**:
    
-    ![Uzyskiwanie dostępu do kluczy](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
+    ![Uzyskaj klucze dostępu w Azure Portal](./media/event-hubs-dotnet-framework-getstarted-receive-eph/select-azure-storage-access-keys.png)
 
     Skopiuj wartość klucz 1 do lokalizacji tymczasowej. Będziesz jej używać w dalszej części tego samouczka.
 

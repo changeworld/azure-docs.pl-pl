@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/15/2019
 ms.author: magoedte
-ms.openlocfilehash: 17135f896140a843dd95c8d9624e9faf1d7194c3
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 1ab49d17ebf10a1ae0277768ddbd1878195d835d
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996244"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212768"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>Monitorowanie usługi magazynu za pomocą Azure Monitor dla magazynu (wersja zapoznawcza)
 
-Azure Monitor for Storage (wersja zapoznawcza) to kompleksowe monitorowanie kont usługi Azure Storage, zapewniając ujednolicony widok wydajności, pojemności i dostępności usług Azure Storage. Można obserwować pojemność magazynu i wydajność na dwa sposoby, przeglądać bezpośrednio z poziomu konta magazynu lub widoku Azure Monitor, aby zobaczyć w różnych grupach kont magazynu. 
+Usługa Azure Monitor for Storage (wersja zapoznawcza) umożliwia kompleksowe monitorowanie kont usługi Azure Storage, zapewniając ujednolicony wgląd w wydajność, wydajność i dostępność usług Azure Storage. Można obserwować pojemność magazynu i wydajność na dwa sposoby, przeglądać bezpośrednio z poziomu konta magazynu lub widoku Azure Monitor, aby zobaczyć w różnych grupach kont magazynu. 
 
 Ten artykuł ułatwi zapoznanie się z Azure Monitor środowiska w ramach usługi Storage (wersja zapoznawcza) w celu uzyskania informacji na temat kondycji i wydajności kont magazynu na dużą skalę, z możliwością skoncentrowania się na hotspotach i zdiagnozowaniu opóźnień, ograniczania przepustowości, i problemy z dostępnością.
 

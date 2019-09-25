@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: memildin
-ms.openlocfilehash: 0070ab94196dfe752e048e97dd40a8f69cf98373
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 0d6f05524be41693ba280b0f0162f65b517ec281
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202592"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219619"
 ---
 # <a name="threat-detection-for-vms-and-servers-in-azure-security-center"></a>Wykrywanie zagrożeń dla maszyn wirtualnych i serwerów w Azure Security Center
 
@@ -35,7 +35,7 @@ Security Center rozszerza platformę ochrony obciążeń w chmurze przez integra
 > [!NOTE]
 > Czujnik ATP systemu Windows Server Defender jest automatycznie włączany na serwerach z systemem Windows, które używają Security Center.
 
-Gdy usługa Windows Server Defender ATP wykryje zagrożenie, wyzwala alert. Alert jest wyświetlany na pulpicie nawigacyjnym Security Center. Z poziomu pulpitu nawigacyjnego można przestawiać do konsoli usługi Windows Defender ATP i przeprowadzić szczegółowe badanie w celu odzyskania zakresu ataku. Aby uzyskać więcej informacji o usłudze Windows Server Defender ATP, zobacz Dołączanie [serwerów do usługi Windows Defender ATP](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
+Gdy usługa Windows Server Defender ATP wykryje zagrożenie, wyzwala alert. Alert jest wyświetlany na pulpicie nawigacyjnym Security Center. Z poziomu pulpitu nawigacyjnego można przestawiać do konsoli usługi Microsoft Defender ATP i przeprowadzić szczegółowe badanie w celu odzyskania zakresu ataku. Aby uzyskać więcej informacji o usłudze Windows Server Defender ATP, zobacz Dołączanie [serwerów do usługi Microsoft Defender ATP](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
 
 ### Analiza zrzutu awaryjnego<a nanme="windows-dump"></a>
 

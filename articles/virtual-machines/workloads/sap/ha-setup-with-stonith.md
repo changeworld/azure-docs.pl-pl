@@ -13,18 +13,18 @@ ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1d97130251f7ca56adaf77c5e70d6f08bd5cf514
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0f23fe2aa17934b967e7aecf41687cc555b9552c
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101509"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212528"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>Wysoka dostępność skonfigurowana w SUSE przy użyciu STONITH
 Ten dokument zawiera szczegółowe instrukcje krok po kroku dotyczące konfigurowania wysokiej dostępności systemu operacyjnego SUSE przy użyciu urządzenia STONITH.
 
 **Zastrzeżenie** *Ten przewodnik jest uzyskiwany przez przetestowanie konfiguracji w środowisku dużych wystąpień Microsoft HANA, które pomyślnie zadziałało. W przypadku dużych wystąpień usługi Microsoft Service Management Team for HANA nie jest obsługiwany system operacyjny, jednak może być konieczne skontaktowanie się z firmą SUSE w celu uzyskania dalszych problemów lub wyjaśnień dotyczących warstwy systemu operacyjnego. Zespół zarządzający usługą firmy Microsoft konfiguruje urządzenie STONITH i w pełni obsługuje i może być związane z rozwiązywaniem problemów dotyczących urządzeń STONITH.*
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Aby skonfigurować wysoką dostępność przy użyciu klastrowania SUSE, należy spełnić następujące wymagania wstępne.
 ### <a name="pre-requisites"></a>Wymagania wstępne
 - Obsługiwane są duże wystąpienia HANA
@@ -333,17 +333,18 @@ Service pacemaker stop
 ```
 Teraz Zatrzymaj usługę Pacemaker na **Węzeł2** i zasoby przełączone w tryb failover do **Węzeł1**
 
-**Przed**
-przejściem do trybu](media/HowToHLI/HASetupWithStonith/Before-failover.png)
-failover![Before-failover. png po](media/HowToHLI/HASetupWithStonith/after-failover.png)
-przejściu w**tryb failover**
-![After-failover. png![CRM-Mon-After-failover. png](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)
+**Przed przejściem w tryb failover**  
+![Before-failover. png](media/HowToHLI/HASetupWithStonith/Before-failover.png)  
+
+**Po przejściu w tryb failover**  
+![After-failover. png](media/HowToHLI/HASetupWithStonith/after-failover.png)  
+![CRM-Mon-After-failover. png](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)  
 
 
 ## <a name="9-troubleshooting"></a>9. Rozwiązywanie problemów
 W tej sekcji opisano kilka scenariuszy niepowodzeń, które można napotkać podczas instalacji. Te problemy mogą nie być takie same.
 
-### <a name="scenario-1-cluster-node-not-online"></a>Scenariusz 1: Węzeł klastra nie jest w trybie online
+### <a name="scenario-1-cluster-node-not-online"></a>Scenariusz 1. Węzeł klastra nie jest w trybie online
 Jeśli którykolwiek z węzłów nie jest wyświetlany w trybie online w Menedżerze klastra, możesz spróbować wykonać następujące czynności, aby przełączyć go w tryb online.
 
 Uruchom usługę iSCSI
@@ -447,7 +448,7 @@ Po zakończeniu instalacji kliknij przycisk **dalej** .
 
 ![yast2-installation-report.png](media/HowToHLI/HASetupWithStonith/yast2-installation-report.png)
 
-### <a name="scenario-4-hana-installation-fails-with-gcc-assemblies-error"></a>Scenariusz 4: Nie powiodła się instalacja platformy HANA z powodu błędu zestawów w ramach programu
+### <a name="scenario-4-hana-installation-fails-with-gcc-assemblies-error"></a>Scenariusz 4. Nie powiodła się instalacja platformy HANA z powodu błędu zestawów w ramach programu
 Instalacja platformy HANA kończy się niepowodzeniem z powodu następującego błędu.
 
 ![Hana-installation-error.png](media/HowToHLI/HASetupWithStonith/Hana-installation-error.png)

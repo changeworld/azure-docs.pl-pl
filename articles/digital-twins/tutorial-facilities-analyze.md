@@ -6,14 +6,14 @@ author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 08/05/2019
+ms.date: 09/23/2019
 ms.author: alinast
-ms.openlocfilehash: 0244d6ac51b7cad6b74139c39914223928e2b627
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: d155d3566ef87e8a21cdc3e701892144c613f694
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827836"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219287"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-your-azure-digital-twins-spaces-by-using-time-series-insights"></a>Samouczek: wizualizowanie i analizowanie zdarzeń z przestrzeni usługi Azure Digital Twins przy użyciu usługi Time Series Insights
 
@@ -37,6 +37,9 @@ W tym samouczku przyjęto założenie, że [skonfigurowano](tutorial-facilities-
 - Uruchomione wystąpienie usługi Digital Twins.
 - Pobrane i wyodrębnione [przykłady usługi Digital Twins w języku C#](https://github.com/Azure-Samples/digital-twins-samples-csharp) na maszynie roboczej.
 - [Zestaw SDK .NET Core w wersji 2.1.403 lub nowszej](https://www.microsoft.com/net/download) na komputerze deweloperskim w celu uruchomienia przykładu. Uruchom polecenie `dotnet --version`, aby sprawdzić, czy zainstalowano prawidłową wersję.
+
+> [!TIP]
+> Jeśli zainicjowano nowe wystąpienie, użyj unikatowej nazwy wystąpienia bliźniaczych reprezentacji Digital.
 
 ## <a name="stream-data-by-using-event-hubs"></a>Przesyłanie strumieniowe danych za pomocą usługi Event Hubs
 
@@ -130,7 +133,7 @@ Korzystając z usługi [Event Hubs](../event-hubs/event-hubs-about.md), możesz 
 
 1. W okienku po lewej stronie witryny [Azure Portal](https://portal.azure.com) wybierz pozycję **Utwórz zasób**. 
 
-1. Wyszukaj i wybierz nowy zasób usługi **Time Series Insights**. Wybierz pozycję **Utwórz**.
+1. Wyszukaj i wybierz zasób **Time Series Insights** ogólnej dostępności (ga). Wybierz pozycję **Utwórz**.
 
 1. Wprowadź **nazwę** wystąpienia usługi Time Series Insights, a następnie wybierz swoją **subskrypcję**. Wybierz **grupę zasobów** używaną dla wystąpienia usługi Digital Twins i **lokalizację**. Wybierz opcję **Dalej: Przycisk Źródło** zdarzenia lub karta **Źródło zdarzenia** .
 
@@ -169,7 +172,7 @@ Jeśli nie chcesz kontynuować pracy z usługą Azure Digital Twins, możesz usu
 
 2. Jeśli będzie to konieczne, możesz usunąć przykładowe aplikacje na komputerze służbowym.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Przejdź do kolejnego artykułu, aby dowiedzieć się więcej na temat wykresów analizy przestrzennej i modeli obiektów w usłudze Azure Digital Twins.
 

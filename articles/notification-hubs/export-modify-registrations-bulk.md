@@ -1,43 +1,45 @@
 ---
-title: Eksportowanie i importowanie usługi Azure Notification Hubs rejestracji zbiorczych | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak korzystać z pomocy technicznej zbiorcze usługi Notification Hubs, przeprowadzenie dużej liczby operacji w Centrum powiadomień, lub aby wyeksportować wszystkie rejestracje.
+title: Wyeksportuj i zaimportuj rejestrację usługi Azure Notification Hubs zbiorczo | Microsoft Docs
+description: Dowiedz się, w jaki sposób używać Notification Hubs zbiorczej, aby wykonać dużą liczbę operacji w centrum powiadomień lub wyeksportować wszystkie rejestracje.
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: jowargo
-ms.openlocfilehash: d7e38e8eca58c06fc6896887522b320a797fc42e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/18/2019
+ms.openlocfilehash: 8eb03a42f38c0cc7fe82eda6a81d1c8c1213ec74
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64575300"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212404"
 ---
-# <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>Eksportowanie i importowanie usługi Azure Notification Hubs rejestracji zbiorczej
-Istnieją scenariusze, w których jest wymagany, aby utworzyć lub zmodyfikować dużą liczbę rejestracji w Centrum powiadomień. Niektóre z tych scenariuszy są aktualizacje tag następujące obliczeń wsadowych, czy migrujesz istniejącą implementację wypychania używać usługi Notification Hubs.
+# <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>Zbiorcze eksportowanie i importowanie rejestracji Notification Hubs platformy Azure
+Istnieją scenariusze, w których wymagane jest utworzenie lub zmodyfikowanie dużej liczby rejestracji w centrum powiadomień. Niektóre z tych scenariuszy są aktualizacjami tagów po obliczeniach wsadowych lub migracji istniejącej implementacji wypychania do korzystania z Notification Hubs.
 
-W tym artykule wyjaśniono, jak przeprowadzić dużą liczbę operacji w Centrum powiadomień lub aby wyeksportować wszystkie rejestracje zbiorczo.
+W tym artykule wyjaśniono, jak wykonać dużą liczbę operacji w centrum powiadomień lub wyeksportować wszystkie rejestracje.
 
-## <a name="high-level-flow"></a>Ogólny przepływ
-Obsługa usługi Batch jest przeznaczony do obsługi długotrwałych zadań, obejmujących miliony rejestracji. Do osiągnięcia tej skali, obsługę usługi batch używa usługi Azure Storage do przechowywania szczegółów zadania i dane wyjściowe. W przypadku operacji aktualizacji zbiorczej użytkownika jest wymagane do utworzenia pliku w kontenerze obiektów blob, w których zawartość znajduje się lista operacje aktualizacji operacji. Podczas uruchamiania zadania, użytkownik udostępnia adres URL do wejściowego obiektu blob oraz adres URL do katalogu wyjściowego (również w kontenerze obiektów blob). Po rozpoczęciu zadania użytkownika można sprawdzić stan, badając lokalizacji adresu URL podany podczas uruchamiania zadania. Określonego zadania można wykonać tylko operacje tworzenia określonego typu (tworzy, aktualizuje lub usuwa). Analogicznie wykonywane są operacje eksportu.
+## <a name="high-level-flow"></a>Przepływ wysokiego poziomu
+Wsparcie wsadowe jest przeznaczone do obsługi długotrwałych zadań obejmujących miliony rejestracji. Aby osiągnąć tę skalę, obsługa usługi Batch używa magazynu Azure do przechowywania informacji o zadaniu i danych wyjściowych. W przypadku operacji aktualizacji zbiorczej użytkownik musi utworzyć plik w kontenerze obiektów blob, którego zawartość jest listą operacji aktualizacji rejestracji. Podczas uruchamiania zadania użytkownik udostępnia adres URL wejściowego obiektu BLOB wraz z adresem URL do katalogu wyjściowego (również w kontenerze obiektów BLOB). Po rozpoczęciu zadania użytkownik może sprawdzić stan, badając lokalizację adresu URL podaną podczas uruchamiania zadania. Określone zadanie może wykonywać tylko operacje o określonym rodzaju (tworzenie, aktualizacje lub usuwanie). Operacje eksportowania są wykonywane analogicznie.
 
 ## <a name="import"></a>Import
 
 ### <a name="set-up"></a>Konfigurowanie
 W tej sekcji założono, że masz następujące jednostki:
 
-- Centrum powiadomień elastycznie.
-- Kontener obiektów blob usługi Azure Storage.
-- Odwołuje się do [pakietu NuGet usługi Azure Storage](https://www.nuget.org/packages/windowsazure.storage/) i [pakietu NuGet usługi Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+- Administracyjna centrum powiadomień.
+- Kontener obiektów BLOB usługi Azure Storage.
+- Odwołania do [pakietu NuGet usługi Azure Storage](https://www.nuget.org/packages/windowsazure.storage/) i [pakietu NuGet Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
-### <a name="create-input-file-and-store-it-in-a-blob"></a>Tworzenie pliku wejściowego i zapisz go w obiekcie blob
-Plik wejściowy zawiera listę rejestracje serializowane w kodzie XML, jeden na wiersz. Przy użyciu zestawu SDK platformy Azure, w poniższym przykładzie kodu pokazano, jak do serializacji rejestracji i przekazać je do kontenera obiektów blob.
+### <a name="create-input-file-and-store-it-in-a-blob"></a>Utwórz plik wejściowy i Zapisz go w obiekcie blob
+Plik wejściowy zawiera listę serializowanych rejestracji w kodzie XML, po jednym dla każdego wiersza. Przy użyciu zestawu Azure SDK Poniższy przykład kodu pokazuje, jak serializować rejestracje i przekazać je do kontenera obiektów BLOB.
 
 ```csharp
 private static void SerializeToBlob(CloudBlobContainer container, RegistrationDescription[] descriptions)
@@ -57,10 +59,10 @@ private static void SerializeToBlob(CloudBlobContainer container, RegistrationDe
 ```
 
 > [!IMPORTANT]
-> Powyższy kod serializuje rejestracje w pamięci, a następnie przekazuje całe strumienia do obiektu blob. Jeśli przekazano plik więcej niż kilku megabajtów, zobacz wskazówki dotyczące obiektów blob platformy Azure na temat sposobu wykonywania tych kroków; na przykład [blokowe obiekty BLOB](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs).
+> Poprzedni kod serializacji rejestracje w pamięci, a następnie przekazuje cały strumień do obiektu BLOB. Jeśli przekazano plik więcej niż kilka megabajtów, zapoznaj się ze wskazówkami dotyczącymi obiektów blob platformy Azure dotyczącymi sposobu wykonywania tych kroków. na przykład [Zablokuj obiekty blob](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs).
 
-### <a name="create-url-tokens"></a>Utwórz adres URL tokenów
-Po przekazaniu pliku wejściowego, należy wygenerować adresy URL, aby zapewnić do Centrum powiadomień dla pliku wejściowego i katalog wyjściowy. Korzystaj z dwóch kontenerów inny obiektu blob, dane wejściowe i wyjściowe.
+### <a name="create-url-tokens"></a>Utwórz tokeny adresu URL
+Po przekazaniu pliku wejściowego Wygeneruj adresy URL do udostępnienia centrum powiadomień dla pliku wejściowego i katalogu wyjściowego. Można użyć dwóch różnych kontenerów obiektów BLOB dla danych wejściowych i wyjściowych.
 
 ```csharp
 static Uri GetOutputDirectoryUrl(CloudBlobContainer container)
@@ -88,7 +90,7 @@ static Uri GetInputFileUrl(CloudBlobContainer container, string filePath)
 ```
 
 ### <a name="submit-the-job"></a>Przesyłanie zadania
-Za pomocą dwóch danych wejściowych i wyjściowych adresy URL możesz teraz rozpocząć zadanie wsadowe.
+Przy użyciu dwóch adresów URL danych wejściowych i wyjściowych możesz teraz uruchomić zadanie wsadowe.
 
 ```csharp
 NotificationHubClient client = NotificationHubClient.CreateClientFromConnectionString(CONNECTION_STRING, HUB_NAME);
@@ -113,23 +115,23 @@ while (i > 0 && job.Status != NotificationHubJobStatus.Completed)
 }
 ```
 
-Oprócz przychodzące i wychodzące adresy URL, w tym przykładzie jest tworzony `NotificationHubJob` obiekt, który zawiera `JobType` obiektu, który może być jedną z następujących typów:
+Oprócz wejściowych i wyjściowych adresów URL, ten przykład tworzy `NotificationHubJob` obiekt, który `JobType` zawiera obiekt, który może być jednym z następujących typów:
 
 - `ImportCreateRegistrations`
 - `ImportUpdateRegistrations`
 - `ImportDeleteRegistrations`
 
-Gdy nawiązać połączenia, zadanie jest kontynuowane przez Centrum powiadomień i mogli sprawdzać jego stan, z wywołaniem [GetNotificationHubJobAsync](/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.getnotificationhubjobasync?view=azure-dotnet).
+Po zakończeniu wywołania zadanie jest kontynuowane przez centrum powiadomień, a jego stan można sprawdzić za pomocą wywołania do [GetNotificationHubJobAsync](/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.getnotificationhubjobasync?view=azure-dotnet).
 
-Po ukończeniu zadania możesz sprawdzić wyniki, analizując następujące pliki w katalogu danych wyjściowych:
+Po zakończeniu zadania można sprawdzić wyniki, przeglądając następujące pliki w katalogu wyjściowym:
 
 - `/<hub>/<jobid>/Failed.txt`
 - `/<hub>/<jobid>/Output.txt`
 
-Te pliki zawierają listę udane i nieudane operacje z usługi batch. Format pliku jest `.cvs`, w którym każdy wiersz zawiera numer wiersza, oryginalnym pliku wejściowego, a wynik operacji (zazwyczaj opis utworzone lub zaktualizowane rejestracji).
+Te pliki zawierają listę operacji zakończonych powodzeniem i zakończonych niepowodzeniem z usługi Batch. Format pliku to `.cvs`, w którym każdy wiersz ma numer wiersza oryginalnego pliku wejściowego i dane wyjściowe operacji (zazwyczaj utworzony lub zaktualizowany opis rejestracji).
 
 ### <a name="full-sample-code"></a>Pełny przykładowy kod
-Następujący przykładowy kod importuje rejestracji do danego centrum powiadomień.
+Następujący przykładowy kod importuje rejestracje do centrum powiadomień.
 
 ```csharp
 using Microsoft.Azure.NotificationHubs;
@@ -260,13 +262,13 @@ namespace ConsoleApplication1
 ```
 
 ## <a name="export"></a>Eksportowanie
-Eksportowanie rejestracji jest podobne do importowania, z następującymi różnicami:
+Eksportowanie rejestracji jest podobne do importu z następującymi różnicami:
 
-- Wystarczy tylko adres URL danych wyjściowych.
-- Możesz utworzyć NotificationHubJob typu ExportRegistrations.
+- Potrzebujesz tylko wyjściowego adresu URL.
+- Tworzysz NotificationHubJob typu ExportRegistrations.
 
-### <a name="sample-code-snippet"></a>Fragment kodu z próbki
-Poniżej przedstawiono przykładowe wstawki kodu programu do eksportowania rejestracje w języku Java:
+### <a name="sample-code-snippet"></a>Przykładowy fragment kodu
+Oto przykładowy fragment kodu dotyczący eksportowania rejestracji w języku Java:
 
 ```java
 // submit an export job
@@ -285,9 +287,9 @@ while(true){
 
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej na temat rejestracji, zobacz następujące artykuły:
 
 - [Zarządzanie rejestracją](notification-hubs-push-notification-registration-management.md)
-- [Tagi do rejestracji](notification-hubs-tags-segment-push-message.md)
-- [Rejestracja szablonu](notification-hubs-templates-cross-platform-push-messages.md)
+- [Tagi rejestracji](notification-hubs-tags-segment-push-message.md)
+- [Rejestracje szablonów](notification-hubs-templates-cross-platform-push-messages.md)

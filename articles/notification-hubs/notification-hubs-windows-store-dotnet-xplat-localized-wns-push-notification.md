@@ -3,9 +3,9 @@ title: Wysyłanie zlokalizowanych powiadomień do aplikacji systemu Windows przy
 description: Dowiedz się, jak używać usługi Azure Notification Hubs do wysyłania zlokalizowanych powiadomień z ważnymi wiadomościami.
 services: notification-hubs
 documentationcenter: windows
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: c454f5a3-a06b-45ac-91c7-f91210889b25
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,13 +14,15 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/22/2019
-ms.author: jowargo
-ms.openlocfilehash: f3880db813072ca0bcecf073a8db24b21c87189f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/22/2019
+ms.openlocfilehash: 57353999ff94aa8fd4499b511c86cd59d24d1f0a
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60871823"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213384"
 ---
 # <a name="tutorial-push-localized-notifications-to-windows-apps-by-using-azure-notification-hubs"></a>Samouczek: wysyłanie zlokalizowanych powiadomień push do aplikacji systemu Windows przy użyciu usługi Azure Notification Hubs
 
@@ -28,7 +30,7 @@ ms.locfileid: "60871823"
 > * [Sklep Windows — C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
 > * [iOS](notification-hubs-ios-xplat-localized-apns-push-notification.md)
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 W tym samouczku przedstawiono sposób wysyłania zlokalizowanych powiadomień push do urządzeń przenośnych zarejestrowanych w usłudze Notification Hubs. W tym samouczku zaktualizujesz aplikacje utworzone w temacie [Samouczek: wysyłanie powiadomień do konkretnych urządzeń (platforma uniwersalna systemu Windows)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) na potrzeby obsługi następujących scenariuszy:
 
@@ -192,9 +194,9 @@ Aby dowiedzieć się więcej o szablonach, zobacz artykuł [Push Templates (Szab
 
 
 
-## <a name="run-the-uwp-application"></a>Uruchamianie aplikacji platformy uniwersalnej systemu Windows
+## <a name="run-the-uwp-application"></a>Uruchamianie aplikacji platformy UWP
 
-1. Uruchamianie aplikacji platformy uniwersalnej Windows. Poczekaj na wyświetlenie komunikatu **Rejestracja zakończona powodzeniem**.
+1. Uruchom aplikację platforma uniwersalna systemu Windows. Poczekaj na wyświetlenie komunikatu **Rejestracja zakończona powodzeniem**.
 
     ![Aplikacja mobilna i rejestracja](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/registration-successful.png)
 2. Wybierz **kategorie** i **ustawienia regionalne**, a następnie kliknij pozycję **Subscribe** (Subskrybuj). Aplikacja konwertuje wybrane kategorie na tagi i żąda nowej rejestracji urządzenia dla wybranych tagów z centrum powiadomień.
@@ -204,7 +206,7 @@ Aby dowiedzieć się więcej o szablonach, zobacz artykuł [Push Templates (Szab
 
     ![Komunikat dotyczący subskrypcji](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/subscription-message.png)
 
-## <a name="update-console-app-to-send-localized-notifications"></a>Aktualizuj aplikację konsoli na wysyłanie powiadomień zlokalizowanych
+## <a name="update-console-app-to-send-localized-notifications"></a>Aktualizowanie aplikacji konsolowej w celu wysyłania zlokalizowanych powiadomień
 
 W przypadku wysyłania powiadomień szablonowych musisz podać tylko zestaw właściwości. W tym samouczku aplikacja zaplecza wysyła zestaw właściwości zawierający zlokalizowaną wersję bieżących wiadomości, na przykład:
 
@@ -257,12 +259,12 @@ private static async void SendTemplateNotificationAsync()
 
 To proste wywołanie dostarcza zlokalizowaną partię wiadomości do **wszystkich** urządzeń, niezależnie od platformy, natomiast centrum powiadomień tworzy i dostarcza prawidłowy, natywny ładunek do wszystkich urządzeń, które zasubskrybowały określony tag.
 
-## <a name="run-console-app-to-send-localized-notification"></a>Uruchamianie aplikacji konsoli do wysyłania powiadomień zlokalizowanych
-Uruchom **aplikacja konsolowa** do wysyłania powiadomień dla każdej kategorii, jak i w każdym obsługiwanym językiem. Upewnij się, że otrzymujesz wyłącznie powiadomienia dla subskrybowanych kategorii oraz że wiadomość jest zgodna z wybranymi ustawieniami regionalnymi.
+## <a name="run-console-app-to-send-localized-notification"></a>Uruchom aplikację konsolową, aby wysłać zlokalizowane powiadomienie
+Uruchom **aplikację konsolową** , aby wysyłać powiadomienia dla każdej kategorii i w każdym obsługiwanym języku. Upewnij się, że otrzymujesz wyłącznie powiadomienia dla subskrybowanych kategorii oraz że wiadomość jest zgodna z wybranymi ustawieniami regionalnymi.
 
 ![Powiadomienia](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/notifications.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono sposób wysyłania zlokalizowanych powiadomień push do konkretnych urządzeń, które mają tagi skojarzone z rejestracjami. Aby dowiedzieć się, jak wysyłać powiadomienia push do konkretnych użytkowników, którzy mogą używać więcej niż jednego urządzenia, przejdź do następującego samouczka:
 

@@ -6,12 +6,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: allensu
-ms.openlocfilehash: 0dd460f7ed829bf82c285b80e59778dacd882404
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 839e608aa4bba26712ae5b0c160da40db279bbc9
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059322"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219191"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-the-azure-portal"></a>Przenoszenie sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń) platformy Azure do innego regionu przy użyciu Azure Portal
 
@@ -27,7 +27,7 @@ Grup zabezpieczeń platformy Azure nie można przenosić z jednego regionu do in
 - Nie można przenosić grup zabezpieczeń sieci platformy Azure między regionami.  Należy skojarzyć nowe sieciowej grupy zabezpieczeń z zasobami w regionie docelowym.
 
 - Aby wyeksportować konfigurację sieciowej grupy zabezpieczeń i wdrożyć szablon w celu utworzenia sieciowej grupy zabezpieczeń w innym regionie, musisz mieć rolę współautor sieci lub wyższą.
-   
+
 - Zidentyfikuj układ sieci źródłowej i wszystkie aktualnie używane zasoby. Ten układ obejmuje, ale nie jest ograniczony do modułów równoważenia obciążenia, publicznych adresów IP i sieci wirtualnych.
 
 - Sprawdź, czy subskrypcja platformy Azure umożliwia tworzenie sieciowych grup zabezpieczeń w regionie docelowym, który jest używany. Skontaktuj się z pomocą techniczną, aby włączyć wymagany limit przydziału.
@@ -41,7 +41,7 @@ Poniższe kroki pokazują, jak przygotować grupę zabezpieczeń sieci dla regu�
 
 ### <a name="export-the-template-and-deploy-from-the-portal"></a>Eksportowanie szablonu i wdrażanie go z portalu
 
-1. Zaloguj się do**grup zasobów** [Azure Portal](http://portal.azure.com) > .
+1. Zaloguj się do**grup zasobów** [Azure Portal](https://portal.azure.com) > .
 2. Znajdź grupę zasobów zawierającą sieciowej grupy zabezpieczeń źródłową i kliknij ją.
 3. Wybierz pozycję > **Ustawienia** > **Eksportuj szablon**.
 4. Wybierz pozycję **Wdróż** w bloku **Eksportuj szablon** .
@@ -77,19 +77,19 @@ Poniższe kroki pokazują, jak przygotować grupę zabezpieczeń sieci dla regu�
             "location": "<target-region>",
             "properties": {
                 "provisioningState": "Succeeded",
-                "resourceGuid": "2c846acf-58c8-416d-be97-ccd00a4ccd78", 
+                "resourceGuid": "2c846acf-58c8-416d-be97-ccd00a4ccd78",
              }
             }
            ]
 
     ```
-  
+
 11. Aby uzyskać kody lokalizacji regionu, zobacz [lokalizacje platformy Azure](https://azure.microsoft.com/global-infrastructure/locations/).  Kod regionu to nazwa regionu bez spacji, **środkowe stany USA** =  **.**
-    
+
 12. W przypadku wybrania opcji i opcjonalnych w zależności od wymagań można także zmienić inne parametry szablonu:
 
     * **Reguły zabezpieczeń** — można edytować, które reguły są wdrażane w docelowym sieciowej grupy zabezpieczeń, dodając lub usuwając reguły do sekcji **securityRules** w pliku **Template. JSON** :
-    
+
         ```json
            "resources": [
             {
@@ -155,7 +155,7 @@ Poniższe kroki pokazują, jak przygotować grupę zabezpieczeń sieci dla regu�
 
 14. Kliknij pozycję**subskrypcja** **podstawy** > , aby wybrać subskrypcję, w której zostanie wdrożony docelowy element sieciowej grupy zabezpieczeń.
 
-15. Kliknij pozycję **podstawowe** > **grupy zasobów** , aby wybrać grupę zasobów, w której zostanie wdrożony docelowy element sieciowej grupy zabezpieczeń.  Możesz kliknąć przycisk **Utwórz nowy** , aby utworzyć nową grupę zasobów dla elementu docelowego sieciowej grupy zabezpieczeń.  Upewnij się, że nazwa nie jest taka sama jak źródłowa Grupa zasobów istniejącej sieciowej grupy zabezpieczeń. 
+15. Kliknij pozycję **podstawowe** > **grupy zasobów** , aby wybrać grupę zasobów, w której zostanie wdrożony docelowy element sieciowej grupy zabezpieczeń.  Możesz kliknąć przycisk **Utwórz nowy** , aby utworzyć nową grupę zasobów dla elementu docelowego sieciowej grupy zabezpieczeń.  Upewnij się, że nazwa nie jest taka sama jak źródłowa Grupa zasobów istniejącej sieciowej grupy zabezpieczeń.
 
 16. Sprawdź, czy**Lokalizacja** **podstawy** > jest ustawiona na lokalizację docelową, w której ma zostać wdrożone sieciowej grupy zabezpieczeń.
 
@@ -165,7 +165,7 @@ Poniższe kroki pokazują, jak przygotować grupę zabezpieczeń sieci dla regu�
 
 19. Kliknij przycisk **Kup** , aby wdrożyć docelową grupę zabezpieczeń sieci.
 
-## <a name="discard"></a>Odrzuć 
+## <a name="discard"></a>Odrzuć
 
 Jeśli chcesz odrzucić element docelowy sieciowej grupy zabezpieczeń, Usuń grupę zasobów zawierającą docelowy element sieciowej grupy zabezpieczeń.  Aby to zrobić, wybierz grupę zasobów z pulpitu nawigacyjnego w portalu i wybierz pozycję **Usuń** w górnej części strony przegląd.
 

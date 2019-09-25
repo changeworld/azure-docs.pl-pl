@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: ed20ef023a884ac79150cd31f25fde86b715c752
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 2b6e056fbfb134f0b1218b4281b9f971a0e24202
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073392"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219470"
 ---
 # <a name="api-management-policies"></a>API Management policies
 Ta sekcja zawiera informacje dotyczące następujących zasad API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasady w API Management](api-management-howto-policies.md).  
@@ -32,7 +32,7 @@ Ta sekcja zawiera informacje dotyczące następujących zasad API Management. Ab
     -   [Sprawdź nagłówek HTTP](api-management-access-restriction-policies.md#CheckHTTPHeader) — wymusza istnienie i/lub wartość nagłówka HTTP.  
     -   [Ogranicz częstotliwość wywołań przez subskrypcję](api-management-access-restriction-policies.md#LimitCallRate) — uniemożliwia użycie interfejsu API przez ograniczenie liczby wywołań dla każdej subskrypcji.  
     -   [Ogranicz częstotliwość wywołań według klucza](api-management-access-restriction-policies.md#LimitCallRateByKey) — uniemożliwia użycie interfejsu API przez ograniczenie liczby wywołań na podstawie poszczególnych kluczy.  
-    -   [Ogranicz adresy](api-management-access-restriction-policies.md#RestrictCallerIPs) IP wywołującego — filtry (dozwolone/odmawiające) wywołania z określonych adresów i/lub zakresów adresów.  
+    -   [Ogranicz adresy IP wywołującego](api-management-access-restriction-policies.md#RestrictCallerIPs) — filtry (dozwolone/odmawiające) wywołania z określonych adresów i/lub zakresów adresów.  
     -   [Ustawianie limitu przydziału użycia według subskrypcji](api-management-access-restriction-policies.md#SetUsageQuota) — umożliwia wymuszenie naliczania i/lub przydziału przepustowości dla każdej subskrypcji.  
     -   [Ustawianie przydziału użycia według klucza](api-management-access-restriction-policies.md#SetUsageQuotaByKey) — umożliwia wymuszenie naliczania i/lub przydziału przepustowości dla każdego klucza.  
     -   [Sprawdzanie poprawności tokenu JWT](api-management-access-restriction-policies.md#ValidateJWT) — wymusza istnienie i ważność tokenu JWT wyodrębnionego z albo określonego nagłówka HTTP lub określonego parametru zapytania.  
@@ -42,7 +42,7 @@ Ta sekcja zawiera informacje dotyczące następujących zasad API Management. Ab
     -   [Ograniczenie współbieżności](api-management-advanced-policies.md#LimitConcurrency) uniemożliwia wykonywanie załączonych zasad przez więcej niż określoną liczbę żądań w danym momencie.
     -   [Logowanie do centrum zdarzeń](api-management-advanced-policies.md#log-to-eventhub) — wysyła komunikaty w określonym formacie do obiektu docelowego komunikatu zdefiniowanego przez jednostkę rejestratora.
     -   [Makieta odpowiedzi](api-management-advanced-policies.md#mock-response) — przerywa wykonywanie potoku i zwraca zamakietę odpowiedzi bezpośrednio do obiektu wywołującego.
-    -   Ponawianie próbuje [wykonać](api-management-advanced-policies.md#Retry) załączone instrukcje zasad, jeśli i do momentu spełnienia warunku. Wykonanie będzie powtarzane w określonych odstępach czasu i do określonej liczby ponownych prób.  
+    -   [Ponawianie](api-management-advanced-policies.md#Retry) próbuje wykonać załączone instrukcje zasad, jeśli i do momentu spełnienia warunku. Wykonanie będzie powtarzane w określonych odstępach czasu i do określonej liczby ponownych prób.  
     -   [Odpowiedź zwrotna](api-management-advanced-policies.md#ReturnResponse) — przerywa wykonywanie potoku i zwraca określoną odpowiedź bezpośrednio do obiektu wywołującego.  
     -   [Wyślij jednokierunkowe żądanie](api-management-advanced-policies.md#SendOneWayRequest) — wysyła żądanie do określonego adresu URL bez oczekiwania na odpowiedź.  
     -   [Wyślij żądanie](api-management-advanced-policies.md#SendRequest) — wysyła żądanie do określonego adresu URL.
@@ -50,20 +50,20 @@ Ta sekcja zawiera informacje dotyczące następujących zasad API Management. Ab
     -   [Ustaw zmienną](api-management-advanced-policies.md#set-variable) — utrwalanie wartości w nazwanej zmiennej kontekstowej w celu późniejszego dostępu.  
     -   [Ustaw metodę żądania](api-management-advanced-policies.md#SetRequestMethod) — pozwala zmienić metodę http dla żądania.  
     -   [Ustawianie kodu stanu](api-management-advanced-policies.md#SetStatus) — zmienia kod stanu HTTP na określoną wartość.  
-    -   [Trace](api-management-advanced-policies.md#Trace) — dodaje ciąg do danych wyjściowych [inspektora interfejsu API](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) .  
+    -   [Trace](api-management-advanced-policies.md#Trace) — dodaje niestandardowe ślady do danych wyjściowych [inspektora interfejsu API](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) , Application Insights telemetrii i dzienników diagnostycznych.  
     -   [](api-management-advanced-policies.md#Wait) Zaczekaj — oczekiwanie na załączone [żądanie wysłania](api-management-advanced-policies.md#SendRequest), [Pobierz wartość z pamięci](api-management-caching-policies.md#GetFromCacheByKey)podręcznej lub zasady [przepływu sterowania](api-management-advanced-policies.md#choose) do ukończenia przed kontynuowaniem.  
 -   [Zasady uwierzytelniania](api-management-authentication-policies.md#AuthenticationPolicies)  
     -   [Uwierzytelnianie z](api-management-authentication-policies.md#Basic) uwierzytelnianiem Basic z użyciem usługi wewnętrznej bazy danych przy użyciu uwierzytelniania podstawowego.  
     -   [Uwierzytelnianie przy użyciu certyfikatu klienta](api-management-authentication-policies.md#ClientCertificate) — uwierzytelnianie za pomocą usługi zaplecza przy użyciu certyfikatów klienta.  
     -   [Uwierzytelnianie przy użyciu tożsamości zarządzanej](api-management-authentication-policies.md#ManagedIdentity) — uwierzytelnianie za pomocą usługi zaplecza przy użyciu [tożsamości zarządzanej](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).  
 -   [Caching policies](api-management-caching-policies.md#CachingPolicies)  
-    -   [Pobierz z pamięci](api-management-caching-policies.md#GetFromCache) podręcznej — wykonaj wyszukiwanie w pamięci podręcznej i zwróć poprawną buforowaną odpowiedź, jeśli jest dostępna.  
+    -   [Pobierz z pamięci podręcznej](api-management-caching-policies.md#GetFromCache) — wykonaj wyszukiwanie w pamięci podręcznej i zwróć poprawną buforowaną odpowiedź, jeśli jest dostępna.  
     -   [Przechowywanie w pamięci](api-management-caching-policies.md#StoreToCache) podręcznej w pamięci podręcznej zgodnie z określoną konfiguracją kontroli pamięci podręcznej.  
-    -   [Pobierz wartość z pamięci](api-management-caching-policies.md#GetFromCacheByKey) podręcznej — Pobierz zbuforowany element według klucza.  
-    -   [Wartość magazynu w pamięci](api-management-caching-policies.md#StoreToCacheByKey) podręcznej — przechowywanie elementu w pamięci podręcznej według klucza.  
-    -   [Usuń wartość z pamięci](api-management-caching-policies.md#RemoveCacheByKey) podręcznej — Usuń element z pamięci podręcznej według klucza.  
+    -   [Pobierz wartość z pamięci podręcznej](api-management-caching-policies.md#GetFromCacheByKey) — Pobierz zbuforowany element według klucza.  
+    -   [Wartość magazynu w pamięci podręcznej](api-management-caching-policies.md#StoreToCacheByKey) — przechowywanie elementu w pamięci podręcznej według klucza.  
+    -   [Usuń wartość z pamięci podręcznej](api-management-caching-policies.md#RemoveCacheByKey) — Usuń element z pamięci podręcznej według klucza.  
 -   [Zasady międzydomenowe](api-management-cross-domain-policies.md#CrossDomainPolicies)  
-    -   [Zezwalaj na wywołania](api-management-cross-domain-policies.md#AllowCrossDomainCalls) międzydomenowe — umożliwia dostęp do interfejsu API z poziomu klientów opartych na przeglądarce Adobe Flash i Microsoft Silverlight.  
+    -   [Zezwalaj na wywołania międzydomenowe](api-management-cross-domain-policies.md#AllowCrossDomainCalls) — umożliwia dostęp do interfejsu API z poziomu klientów opartych na przeglądarce Adobe Flash i Microsoft Silverlight.  
     -   [CORS](api-management-cross-domain-policies.md#CORS) — dodaje obsługę funkcji udostępniania zasobów między źródłami (CORS) do operacji lub interfejsu API w celu zezwalania na wywołania międzydomenowe z klientów opartych na przeglądarce.  
     -   [JSONP](api-management-cross-domain-policies.md#JSONP) — dodaje kod JSON z obsługą dopełnienia (JSONP) do operacji lub interfejsu API w celu zezwalania na wywołania międzydomenowe z klientów opartych na przeglądarce JavaScript.  
 -   [Zasady transformacji](api-management-transformation-policies.md#TransformationPolicies)  

@@ -4,9 +4,9 @@ description: Korzystając z tego samouczka, dowiesz się, jak za pomocą usług 
 services: notification-hubs
 documentationcenter: android
 keywords: powiadomienia wypychane, powiadomienie wypychane, powiadomienia wypychane w systemie android
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 8268c6ef-af63-433c-b14e-a20b04a0342a
 ms.service: notification-hubs
 ms.workload: mobile
@@ -15,28 +15,30 @@ ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 341f5a30fe03de4c69b5a7e18703931988d2d185
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 36af79b90722041ddb16bb90a73175a8635531fd
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063640"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212363"
 ---
-# <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Samouczek: Wysyłanie powiadomień wypychanych do urządzeń z systemem Android przy użyciu usługi Azure Notification Hubs i Google Cloud Messaging (przestarzałe)
+# <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Samouczek: Powiadomienia wypychane do urządzeń z systemem Android przy użyciu usługi Azure Notification Hubs i Google Cloud Messaging (przestarzałe)
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 > [!WARNING]
-> Od 10 kwietnia 2018 r. Google jest przestarzała Google Cloud Messaging (GCM). Serwer usługi GCM i interfejsów API klienta są przestarzałe i zostaną usunięte natychmiast po 29 maja 2019 r. Aby uzyskać więcej informacji, zobacz [usługi GCM i FCM — często zadawane pytania](https://developers.google.com/cloud-messaging/faq).
+> Od 10 kwietnia 2018 firma Google ma przestarzałe Google Cloud Messaging (GCM). Serwer GCM i interfejsy API klienta są przestarzałe i zostaną usunięte od razu do 29 maja 2019. Aby uzyskać więcej informacji, zobacz [często zadawane pytania dotyczące GCM i FCM](https://developers.google.com/cloud-messaging/faq).
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Korzystając z tego samouczka, dowiesz się, jak wysyłać powiadomienia wypychane do aplikacji dla systemu Android przy użyciu usługi Azure Notification Hubs.
 Utworzysz pustą aplikację dla systemu Android służącą do odbierania powiadomień push przy użyciu usługi Google Cloud Messaging (GCM).
 
 > [!IMPORTANT]
-> Google Cloud Messaging (GCM) jest przestarzały i zostanie usunięte [wkrótce](https://developers.google.com/cloud-messaging/faq).
+> Google Cloud Messaging (GCM) jest przestarzała i zostanie [wkrótce](https://developers.google.com/cloud-messaging/faq)usunięta.
 
 > [!IMPORTANT]
 > W tym temacie przedstawiono powiadomienia wypychane za pomocą usługi Google Cloud Messaging (GCM). Jeśli używasz usługi Google Firebase Cloud Messaging (FCM), zobacz [Wysyłanie powiadomień wypychanych do urządzeń z systemem Android przy użyciu usług Azure Notification Hubs i FCM](notification-hubs-android-push-notification-google-fcm-get-started.md).
@@ -712,7 +714,7 @@ Zwykle powiadomienia są wysyłane przy użyciu serwera zaplecza. W niektórych 
     }
     ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku wysłano wyemitowane powiadomienia do wszystkich urządzeń z systemem Android zarejestrowanych w zapleczu. Aby dowiedzieć się, jak wysyłać powiadomienia push do konkretnych urządzeń z systemem Android, przejdź do następującego samouczka:  
 

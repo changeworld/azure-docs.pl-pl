@@ -8,12 +8,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 09/17/2019
 ms.author: alinast
-ms.openlocfilehash: eebf6f58000178f2aa8021fbd435aa863fb70e49
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 1ab3f30f035f8099ab50f827e559e56b31d7f1f6
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71177191"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219743"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Samouczek: Wdróż usługę Azure Digital bliźniaczych reprezentacji Preview i skonfiguruj wykres przestrzenny
 
@@ -80,7 +80,7 @@ W folderze z wyodrębnionym przykładem otwórz plik **digital-twins-samples-csh
     - Plik **getAvailableAndFreshSpaces.cs** pobiera wyniki funkcji niestandardowej nazywanej funkcją zdefiniowaną przez użytkownika.
     - Plik **createEndpoints.cs** tworzy punkty końcowe do interakcji z innymi usługami.
 
-* Przykład symulacji **device-connectivity** symuluje dane z czujników i wysyła je do centrum IoT aprowizowanego na potrzeby Twojego wystąpienia usługi Digital Twins. Ten przykład zostanie wykorzystany w [kolejnym samouczku po przeprowadzeniu aprowizacji wykresu przestrzennego](tutorial-facilities-udf.md#simulate). Identyfikatory czujników i urządzeń, których używasz do skonfigurowania tego przykładu, powinny być takie same jak te, które będą używane do aprowizacji wykresu.
+* Przykład symulacji **device-connectivity** symuluje dane z czujników i wysyła je do centrum IoT aprowizowanego na potrzeby Twojego wystąpienia usługi Digital Twins. Ten przykład zostanie wykorzystany w [kolejnym samouczku po przeprowadzeniu aprowizacji wykresu przestrzennego](tutorial-facilities-udf.md#simulate-sensor-data). Identyfikatory czujników i urządzeń, których używasz do skonfigurowania tego przykładu, powinny być takie same jak te, które będą używane do aprowizacji wykresu.
 
 ### <a name="configure-the-provisioning-sample"></a>Konfigurowanie przykładu aprowizacji
 

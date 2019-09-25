@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 08/2/2019
 ms.custom: seodec18
-ms.openlocfilehash: eaed6e7b0ea044ba39a1055ad14de13d5deb9b05
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: ecd1212385473e33d05f38f67db5708bff060daa
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035309"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71218242"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Dostęp do danych w usługach Azure Storage
 
@@ -147,7 +147,8 @@ datastore.download(target_path='your target path',
 <a name="train"></a>
 ## <a name="access-your-data-during-training"></a>Uzyskiwanie dostępu do danych podczas szkoleń
 
-Aby uzyskać dostęp do danych podczas szkoleń, możesz pobrać lub zainstalować dane z usług Azure Storage w celu obliczeń za pośrednictwem magazynów danych.
+> [!IMPORTANT]
+> Korzystanie z [Azure Machine Learning zestawy danych (wersja zapoznawcza)](how-to-create-register-datasets.md) to nowy zalecany sposób uzyskiwania dostępu do danych w szkole. Zestawy danych udostępniają funkcje, które ładują dane tabelaryczne do Pandas lub Spark Dataframe oraz możliwość pobierania lub instalowania plików dowolnego formatu z obiektów blob platformy Azure, Azure File, Azure Data Lake Gen 1, Azure Data Lake Gen 2, Azure SQL i Azure PostgreSQL. Dowiedz się więcej [na temat uczenia się z zestawami danych](how-to-train-with-datasets.md).
 
 W poniższej tabeli wymieniono metody, które poinformują element docelowy obliczeń, jak używać magazynów danych podczas uruchamiania. 
 

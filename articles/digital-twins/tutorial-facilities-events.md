@@ -6,14 +6,14 @@ author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 08/05/2019
+ms.date: 09/23/2019
 ms.author: alinast
-ms.openlocfilehash: 30d43831b73edc52b461512faecac369f6bf00b0
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: f598eecca2623c888e44f6171f12681f8e9c017b
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827818"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219309"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>Samouczek: otrzymywanie powiadomień z przestrzeni usługi Azure Digital Twins przy użyciu usługi Logic Apps
 
@@ -38,6 +38,9 @@ W tym samouczku przyjęto założenie, że [skonfigurowano](tutorial-facilities-
 - Pobrane i wyodrębnione [przykłady usługi Digital Twins w języku C#](https://github.com/Azure-Samples/digital-twins-samples-csharp) na maszynie roboczej.
 - [Zestaw SDK .NET Core w wersji 2.1.403 lub nowszej](https://www.microsoft.com/net/download) na komputerze deweloperskim w celu uruchomienia przykładu. Uruchom polecenie `dotnet --version`, aby sprawdzić, czy zainstalowano prawidłową wersję.
 - Konto usługi Office 365 do wysyłania powiadomień e-mail.
+
+> [!TIP]
+> Jeśli zainicjowano nowe wystąpienie, użyj unikatowej nazwy wystąpienia bliźniaczych reprezentacji Digital.
 
 ## <a name="integrate-events-with-event-grid"></a>Integrowanie zdarzeń z usługą Event Grid
 
@@ -203,7 +206,7 @@ Jeśli nie chcesz kontynuować pracy z usługą Azure Digital Twins, możesz usu
 
 2. Jeśli będzie to konieczne, możesz usunąć przykładowe aplikacje na komputerze służbowym.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się, w jaki sposób wizualizować dane z czujników, analizować trendy i wykrywać anomalie, przejdź do kolejnego samouczka:
 

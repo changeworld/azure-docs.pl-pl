@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: e3b9acf38bc213db7fcde5fbb5fe26f455c0fc00
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 44dbe6d036000aaff403e212052f8fdb21647a80
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67305316"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71210295"
 ---
 | Resource | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
 | Alerty metryk (klasyczne) |100 aktywnych reguł alertów na subskrypcję. | Skontaktuj się z pomocą techniczną. |
-| Alerty dotyczące metryk |1000 aktywnych reguł alertów na subskrypcję (w chmurach publicznych) i 100 aktywnych reguł alertów na subskrypcję na platformie Azure (Chiny) i Azure Government. | Skontaktuj się z pomocą techniczną. |
+| Alerty dotyczące metryk |1000 aktywnych reguł alertów na subskrypcję na platformie Azure, usługa Azure — Chiny i chmury Azure Government. | Skontaktuj się z pomocą techniczną. |
 | Alerty dziennika aktywności | 100 aktywnych reguł alertów na subskrypcję. | Analogicznie jak domyślny. |
 | Alerty dotyczące dzienników | 512 | Skontaktuj się z pomocą techniczną. |
 | Grupy akcji |2 000 grup akcji na subskrypcję. | Skontaktuj się z pomocą techniczną. |

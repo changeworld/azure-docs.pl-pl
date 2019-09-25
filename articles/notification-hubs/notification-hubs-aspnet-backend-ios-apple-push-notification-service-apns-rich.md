@@ -3,9 +3,9 @@ title: Azure Notification Hubs rozbudowane wypychanie
 description: Dowiedz się, jak wysyłać rozbudowane powiadomienia wypychane do aplikacji systemu iOS z platformy Azure. Przykłady kodu zapisywana w celu zamierzenia C i C#.
 documentationcenter: ios
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 590304df-c0a4-46c5-8ef5-6a6486bb3340
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,17 +13,19 @@ ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 7fcb4a1db62abfc04d2b0c60488d35393d98c57e
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 9da629929ca88f406dc503710477104be94c47e3
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348477"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212191"
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs rozbudowane wypychanie
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Aby można było zaangażować użytkowników z błyskawiczną zawartością, aplikacja może chcieć przeprowadzić wypychanie poza zwykły tekst. Te powiadomienia promują interakcje użytkowników oraz zawartość taką jak adresy URL, dźwięki, obrazy/współdziałania i inne. Ten samouczek kompiluje się w temacie [Powiadamianie użytkowników](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) i pokazuje, jak wysyłać powiadomienia wypychane, które zawierają ładunki (na przykład obraz).
 
@@ -101,7 +103,7 @@ Na wysokim poziomie:
     ```
 
    > [!NOTE]
-   > obowiązkowe Aby uzyskać więcej informacji na temat dodawania i uzyskiwania zasobów projektu, zobacz [temat jak osadzić zasoby i uzyskać do nich dostęp przy użyciu C# wizualizacji](https://support.microsoft.com/kb/319292) .
+   > obowiązkowe Aby uzyskać więcej informacji na temat dodawania i uzyskiwania zasobów projektu, zobacz [temat jak osadzić zasoby i uzyskać do nich dostęp przy użyciu wizualizacji C# ](https://support.microsoft.com/kb/319292) .
 
 7. W `NotificationsController.cs`programie ponownie zdefiniuj polecenie "NotificationsController z poniższymi fragmentami kodu. Spowoduje to wysłanie początkowego, dyskretnego identyfikatora powiadomienia do urządzenia i umożliwia pobieranie obrazu po stronie klienta:
 
@@ -135,7 +137,7 @@ Na wysokim poziomie:
     }
     ```
 8. Teraz będziemy ponownie wdrażać tę aplikację w witrynie sieci Web platformy Azure w celu udostępnienia jej ze wszystkich urządzeń. Kliknij prawym przyciskiem myszy projekt **AppBackend** i wybierz polecenie **Publikuj**.
-9. Wybierz witrynę sieci Web platformy Azure jako element docelowy publikowania. Zaloguj się przy użyciu konta platformy Azure i wybierz istniejącą lub nową witrynę sieci Web, a następnie zanotuj Właściwość docelowa **adresu URL** na karcie **połączenie** . W dalszej części tego samouczka będziemy nazywać ten adres URL *punktem końcowym zaplecza*. Kliknij przycisk **publikowania**.
+9. Wybierz witrynę sieci Web platformy Azure jako element docelowy publikowania. Zaloguj się przy użyciu konta platformy Azure i wybierz istniejącą lub nową witrynę sieci Web, a następnie zanotuj Właściwość **docelowa adresu URL** na karcie **połączenie** . W dalszej części tego samouczka będziemy nazywać ten adres URL *punktem końcowym zaplecza*. Kliknij przycisk **publikowania**.
 
 ## <a name="modify-the-ios-project"></a>Modyfikowanie projektu systemu iOS
 
@@ -150,7 +152,7 @@ Po zmodyfikowaniu zaplecza aplikacji w celu wysłania tylko *identyfikatora* pow
 5. Dodaj **kontroler widoku** do scenorysu i Dodaj **widok obrazu**. Ta strona zostanie wyświetlona, gdy zdecydują się, aby dowiedzieć się więcej, klikając powiadomienie. Scenorys powinien wyglądać następująco:
 
     ![][IOS4]
-6. Kliknij **kontroler widoku głównego** w scenorysie i upewnij się, że **HomeViewController** jako jego **Klasa** niestandardowa i **Identyfikator scenorysu** w Inspektorze tożsamości.
+6. Kliknij **kontroler widoku głównego** w scenorysie i upewnij się, że **HomeViewController** jako jego **Klasa niestandardowa** i **Identyfikator scenorysu** w Inspektorze tożsamości.
 7. Wykonaj te same czynności dla kontrolera widoku obrazu jako **imageViewController**.
 8. Następnie utwórz nową klasę kontrolera widoku zatytułowaną **imageViewController** , aby obsługiwać interfejs użytkownika, który właśnie został utworzony.
 9. W **imageViewController. h**Dodaj następujący do deklaracji interfejsu kontrolera. Upewnij się, że kontrolka przeciągnie się z widoku obrazu scenorysu do tych właściwości, aby połączyć dwa:

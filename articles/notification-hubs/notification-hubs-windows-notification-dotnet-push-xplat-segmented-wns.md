@@ -3,9 +3,9 @@ title: Wysyłanie powiadomień do konkretnych urządzeń (platforma uniwersalna 
 description: Za pomocą usługi Azure Notification Hubs z tagami w rejestracji wysyłaj ważne wiadomości do aplikacji platformy uniwersalnej systemu Windows.
 services: notification-hubs
 documentationcenter: windows
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 994d2eed-f62e-433c-bf65-4afebf1c0561
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,19 +14,21 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/22/2019
-ms.author: jowargo
-ms.openlocfilehash: 9cfe5f490ef4063e02d9407f23130c1a216961ed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/22/2019
+ms.openlocfilehash: efe668e42e04942cc0d9fc99670057ab5bdd302a
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60872385"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212124"
 ---
 # <a name="tutorial-push-notifications-to-specific-windows-devices-running-universal-windows-platform-applications"></a>Samouczek: wysyłanie powiadomień push do konkretnych urządzeń z systemem Windows z uruchomionymi aplikacjami platformy uniwersalnej systemu Windows
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Korzystając z tego samouczka, dowiesz się, jak rozgłaszać ważne wiadomości do aplikacji ze Sklepu Windows lub aplikacji dla systemu Windows Phone 8.1 (bez użycia platformy Silverlight) przy użyciu usługi Azure Notification Hubs. Jeśli aplikacja ma być przeznaczona dla systemu Windows Phone 8.1 z platformą Silverlight, zobacz wersję dla systemu [Windows Phone](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md).
 
@@ -47,7 +49,7 @@ W tym samouczku wykonasz następujące kroki:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Wykonaj kroki z artykułu [Samouczek: wysyłanie powiadomień do aplikacji platformy uniwersalnej systemu Windows przy użyciu usługi Azure Notification Hubs][get-started] przed rozpoczęciem tego samouczka.  
+Wykonaj kroki z artykułu [Samouczek: Wysyłaj powiadomienia do platforma uniwersalna systemu Windows aplikacji przy użyciu usługi][get-started] Azure Notification Hubs przed rozpoczęciem pracy z tym samouczkiem.  
 
 ## <a name="add-category-selection-to-the-app"></a>Dodawanie wyboru kategorii do aplikacji
 
@@ -201,7 +203,7 @@ W tej sekcji rejestrujesz się w centrum powiadomień przy uruchamianiu przy uż
     var result = await notifications.SubscribeToCategories();
     ```
 
-    Ten proces gwarantuje, że podczas uruchamiania aplikacja pobiera kategorie z magazynu lokalnego oraz żąda rejestracji tych kategorii. Metodę `InitNotificationsAsync` utworzono w ramach samouczka [Rozpoczynanie pracy z usługą Notification Hubs][get-started].
+    Ten proces gwarantuje, że podczas uruchamiania aplikacja pobiera kategorie z magazynu lokalnego oraz żąda rejestracji tych kategorii. Utworzono `InitNotificationsAsync` metodę w ramach samouczka Wprowadzenie [do Notification Hubs][get-started] .
 2. W pliku projektu `MainPage.xaml.cs` dodaj następujący kod do metody `OnNavigatedTo`:
 
     ```csharp
@@ -222,7 +224,7 @@ W tej sekcji rejestrujesz się w centrum powiadomień przy uruchamianiu przy uż
 
 Aplikacja jest teraz ukończona. Może przechowywać zestaw kategorii w magazynie lokalnym na urządzeniu, który jest używany do rejestrowania w centrum powiadomień, gdy użytkownicy dokonają zmian w wyborach kategorii. W następnej sekcji zdefiniujesz zaplecze, które może wysyłać do tej aplikacji powiadomienia w odpowiednich kategoriach.
 
-## <a name="run-the-uwp-app"></a>Uruchamianie aplikacji platformy uniwersalnej systemu Windows 
+## <a name="run-the-uwp-app"></a>Uruchamianie aplikacji platformy UWP 
 1. W programie Visual Studio naciśnij klawisz **F5**, aby skompilować i uruchomić aplikację. Interfejs użytkownika aplikacji udostępnia zestaw przełączników pozwalających wybrać kategorie do zasubskrybowania.
 
     ![Aplikacja Breaking News](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-breakingnews-win1.png)
@@ -233,19 +235,19 @@ Aplikacja jest teraz ukończona. Może przechowywać zestaw kategorii w magazyni
 
     ![Przełączniki kategorii i przycisk Subscribe (Subskrybuj)](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-toast-2.png)
 
-## <a name="create-a-console-app-to-send-tagged-notifications"></a>Tworzenie aplikacji konsolowej do wysyłania powiadomień oznakowane
+## <a name="create-a-console-app-to-send-tagged-notifications"></a>Tworzenie aplikacji konsolowej do wysyłania otagowanych powiadomień
 
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
-## <a name="run-the-console-app-to-send-tagged-notifications"></a>Uruchom aplikację konsoli, aby wysyłać powiadomienia oznakowane
+## <a name="run-the-console-app-to-send-tagged-notifications"></a>Uruchamianie aplikacji konsolowej w celu wysyłania otagowanych powiadomień
 
 1. Uruchom aplikację utworzoną w poprzedniej sekcji.
-2. Powiadomienia dla wybranych kategorii będą wyświetlane jako powiadomienia wyskakujące. Jeśli wybierzesz opcję powiadomienia, zobaczysz pierwszym okna aplikacji platformy uniwersalnej systemu Windows. 
+2. Powiadomienia dla wybranych kategorii będą wyświetlane jako powiadomienia wyskakujące. Jeśli wybierzesz powiadomienie, zobaczysz pierwsze okno aplikacji platformy UWP. 
 
      ![Powiadomienia wyskakujące](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-reg-2.png)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym artykule przedstawiono sposób rozgłaszania ważnych wiadomości według kategorii. Aplikacja zaplecza wypycha otagowane powiadomienia do urządzeń, które zarejestrowały się do odbierania powiadomień dla danego tagu. Aby dowiedzieć się, jak wypychać powiadomienia do konkretnych użytkowników, niezależnie od używanego urządzenia, przejdź do następującego samouczka:
 

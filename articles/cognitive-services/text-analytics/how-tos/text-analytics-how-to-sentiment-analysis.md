@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 07/30/2019
+ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: 60ae2136c3fa934c178de95f51d490e570f45faa
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: ea145239d38a4030423a4517fe02c62b8eefa08a
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845344"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211775"
 ---
 # <a name="example-detect-sentiment-with-text-analytics"></a>Przykład: Wykryj tonacji z analiza tekstu
 
@@ -139,7 +139,7 @@ Poniższy przykład przedstawia odpowiedzi dla kolekcji dokumentów w tym artyku
 > [!NOTE]
 > * Format żądania analiza tonacji v3 i [limity danych](../overview.md#data-limits) są takie same jak w poprzedniej wersji.
 > * W tej chwili analiza tonacji v3:
->    * Obecnie obsługuje języki angielski, chiński uproszczony i japoński.
+>    * Obecnie obsługuje język angielski, francuski, włoski, japoński, chiński (uproszczony) i tradycyjny — chiński.
 >    * Jest dostępny `Australia East`w następujących regionach: ,`Southeast Asia` `West Europe` `West US 2` ,,,,,,,,, i `Central Canada` `Central US` `East Asia` `East US` `East US 2` `North Europe` `South Central US` `UK South` .
 
 |Cecha |Opis  |

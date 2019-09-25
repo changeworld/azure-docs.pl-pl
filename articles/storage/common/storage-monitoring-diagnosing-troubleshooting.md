@@ -4,21 +4,21 @@ description: Korzystaj z funkcji, takich jak analiza magazynu, rejestrowanie po 
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/11/2017
+ms.date: 09/23/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 08c19daa0af226834ea70db8847e1637c2373351
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 34aa4ff6c54b34acf865af0b57c3dfa7945a637c
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855348"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212839"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorowanie, diagnozowanie i rozwiązywanie problemów z usługą Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Diagnozowanie i rozwiązywanie problemów w aplikacji rozproszonej hostowanej w środowisku chmury może być bardziej skomplikowane niż w tradycyjnych środowiskach. Aplikacje można wdrażać w infrastrukturze PaaS lub IaaS, lokalnie, na urządzeniu przenośnym lub w niektórych kombinacjach tych środowisk. Zwykle ruch sieciowy aplikacji może przechodzić między sieciami publicznymi i prywatnymi, a aplikacja może korzystać z wielu technologii magazynowania, takich jak tabele Microsoft Azure Storage, obiekty blob, kolejki lub pliki, a także inne magazyny danych, takie jak relacyjne i bazy danych dokumentów.
 
 Aby zarządzać takimi aplikacjami, należy monitorować je aktywnie i zrozumieć, jak diagnozować i rozwiązywać problemy ze wszystkimi aspektami i technologiami zależnymi. Jako użytkownik usługi Azure Storage należy stale monitorować usługi magazynu używane przez aplikację w przypadku wszelkich nieoczekiwanych zmian w zachowaniu (na przykład wolniejszych od zwykłych czasów odpowiedzi) i używać funkcji rejestrowania do zbierania bardziej szczegółowych danych i analizowania problemu w programie ścisł. Informacje diagnostyczne uzyskane z monitorowania i rejestrowania ułatwią ustalenie głównej przyczyny problemu występującego przez aplikację. Następnie można rozwiązać problem i określić odpowiednie kroki, które należy wykonać w celu rozwiązania tego problemu. Azure Storage to podstawowa usługa platformy Azure, która stanowi ważną część większości rozwiązań wdrażanych przez klientów w infrastrukturze platformy Azure. Usługa Azure Storage obejmuje funkcje upraszczające monitorowanie, diagnozowanie i rozwiązywanie problemów z magazynem w aplikacjach opartych na chmurze.
@@ -89,7 +89,7 @@ Ten przewodnik jest przeznaczony głównie dla deweloperów Usługi online korzy
 ### <a name="how-this-guide-is-organized"></a>Jak zorganizowany jest ten przewodnik
 Sekcja "[monitorowanie usługi magazynu]" opisuje sposób monitorowania kondycji i wydajności usług Azure Storage przy użyciu metryk analityka magazynu platformy Azure (metryki magazynu).
 
-Sekcja "[Diagnozowanie problemów z magazynem]z magazynem" opisuje, jak zdiagnozować problemy przy użyciu rejestrowania analityka magazynu platformy Azure (Rejestrowanie magazynu). Opisano w nim również, jak włączyć rejestrowanie po stronie klienta przy użyciu funkcji w jednej z bibliotek klienckich, takich jak Biblioteka klienta usługi Storage dla platformy .NET lub zestawu Azure SDK dla języka Java.
+Sekcja "[diagnozowanie problemów z magazynem]" opisuje, jak zdiagnozować problemy przy użyciu rejestrowania analityka magazynu platformy Azure (Rejestrowanie magazynu). Opisano w nim również, jak włączyć rejestrowanie po stronie klienta przy użyciu funkcji w jednej z bibliotek klienckich, takich jak Biblioteka klienta usługi Storage dla platformy .NET lub zestawu Azure SDK dla języka Java.
 
 Sekcja "[kompleksowe śledzenie]" opisuje sposób skorelowania informacji zawartych w różnych plikach dziennika i danych metryk.
 
@@ -102,16 +102,18 @@ Jeśli wiesz już, jak działa program Windows Performance Monitoring, możesz t
 
 Możesz wybrać metryki godzinowe, które mają być wyświetlane w [Azure Portal](https://portal.azure.com) i skonfigurować reguły, które powiadamiają administratorów pocztą e-mail za każdym razem, gdy Metryka godzinowa przekroczy określony próg. Aby uzyskać więcej informacji, zobacz [Odbieranie powiadomień o alertach](/azure/monitoring-and-diagnostics/monitoring-overview-alerts).
 
+Zalecamy zapoznanie się [Azure monitor z magazynem](../../azure-monitor/insights/storage-insights-overview.md) (wersja zapoznawcza). Jest to funkcja Azure Monitor, która oferuje kompleksowe monitorowanie kont usługi Azure Storage, zapewniając ujednolicony wgląd w wydajność, wydajność i dostępność usług Azure Storage. Nie wymaga to włączania ani konfigurowania niczego i można od razu wyświetlać te metryki ze wstępnie zdefiniowanych wykresów interaktywnych i innych wizualizacji.
+
 Usługa Storage zbiera metryki przy użyciu najlepszego nakładu pracy, ale nie może rejestrować każdej operacji magazynu.
 
-W Azure Portal można wyświetlić metryki, takie jak dostępność, Łączna liczba żądań i średnie opóźnienia dla konta magazynu. Reguła powiadomienia została również skonfigurowana w taki sposób, aby ostrzegał administratora o tym, że dostępność spadnie poniżej określonego poziomu. W przypadku wyświetlania tych danych jeden możliwy obszar do zbadania to procent sukcesu usługi tabeli poniżej 100% (Aby uzyskać więcej informacji, zobacz sekcję "metryki[Metryki pokazują PercentSuccess niskim lub wpisy dziennika analytics ma operacji ze stanem transakcji ClientOtherErrors]").
+W Azure Portal można wyświetlić metryki, takie jak dostępność, Łączna liczba żądań i średnie opóźnienia dla konta magazynu. Reguła powiadomienia została również skonfigurowana w taki sposób, aby ostrzegał administratora o tym, że dostępność spadnie poniżej określonego poziomu. W przypadku wyświetlania tych danych jeden możliwy obszar do zbadania to procent sukcesu usługi tabeli poniżej 100% (Aby uzyskać więcej informacji, zobacz sekcję "[Metryki pokazują PercentSuccess niskim lub wpisy dziennika analytics ma operacji ze stanem transakcji ClientOtherErrors]").
 
 Należy stale monitorować aplikacje platformy Azure, aby upewnić się, że są w dobrej kondycji i są wykonywane zgodnie z oczekiwaniami:
 
 * Ustanowienie niektórych metryk linii bazowej dla aplikacji, które umożliwią porównanie bieżących danych i zidentyfikowanie wszelkich znaczących zmian w zachowaniu usługi Azure Storage i aplikacji. Wartości metryki linii bazowej w wielu przypadkach są specyficzne dla aplikacji i należy je ustalić w przypadku testowania wydajności aplikacji.
 * Rejestrowanie metryk minut i używanie ich do aktywnego monitorowania pod kątem nieoczekiwanych błędów i anomalii, takich jak maksymalne liczby błędów lub stawki żądania.
 * Rejestrowanie metryk godzinowych i używanie ich do monitorowania średnich wartości, takich jak średnia liczba błędów i szybkość żądania.
-* Badanie potencjalnych problemów przy użyciu narzędzi diagnostycznych opisanych w dalszej części artykułu "[Diagnozowanie problemów z magazynem]z magazynem".
+* Badanie potencjalnych problemów przy użyciu narzędzi diagnostycznych opisanych w dalszej części artykułu "[diagnozowanie problemów z magazynem]".
 
 Wykresy na poniższej ilustracji ilustrują sposób, w jaki przeciętny wpływ na metryki godzinowe może ukryć skoki w działaniu. Metryki godzinowe pojawiają się, aby pokazać stałą częstotliwość żądań, natomiast metryki minut ujawniają wahania, które naprawdę odbywają się.
 
@@ -135,7 +137,7 @@ Metryki magazynu przechowują tylko metryki pojemności dla usługi BLOB Service
 >
 >
 
-Aby uzyskać pomoc w szacowaniu rozmiaru różnych obiektów magazynu, takich jak obiekty blob, zobacz wpis w blogu informacje o rozliczeniach [usługi Azure Storage — przepustowości, transakcjach i pojemności](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx).
+Aby uzyskać pomoc w szacowaniu rozmiaru różnych obiektów magazynu, takich jak obiekty blob, zobacz wpis w blogu [Informacje o rozliczeniach usługi Azure Storage — przepustowości, transakcjach i pojemności](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx).
 
 ### <a name="monitoring-availability"></a>Monitorowanie dostępności
 Dostępność usług magazynu na koncie magazynu należy monitorować przez monitorowanie wartości w kolumnie **dostępność** w tabelach metryk godzinowych lub minutowych — **$MetricsHourPrimaryTransactionsBlob**, **$ MetricsHourPrimaryTransactionsTable**, **$MetricsHourPrimaryTransactionsQueue**, **$MetricsMinutePrimaryTransactionsBlob**, **$MetricsMinutePrimaryTransactionsTable** **$MetricsMinutePrimaryTransactionsQueue** , **$MetricsCapacityBlob**. Kolumna **dostępności** zawiera wartość procentową wskazującą dostępność usługi lub operacji interfejsu API reprezentowanej przez wiersz ( **RowKey** pokazuje, czy wiersz zawiera metryki dla usługi jako całość lub dla konkretnej operacji interfejsu API) .
@@ -485,7 +487,7 @@ W tym scenariuszu należy zbadać, dlaczego token sygnatury dostępu współdzie
 * Czy parametr Version w kluczu sygnatury dostępu współdzielonego (na przykład **OHR = 2015-04-05**) jest zgodny z wersją używanej biblioteki klienta magazynu? Zalecamy, aby zawsze używać najnowszej wersji [biblioteki klienta magazynu](https://www.nuget.org/packages/WindowsAzure.Storage/).
 * Jeśli ponownie wygenerujesz klucze dostępu do magazynu, wszelkie istniejące tokeny SAS mogą zostać unieważnione. Ten problem może wystąpić, jeśli generujesz tokeny SAS z długim czasem wygaśnięcia dla aplikacji klienckich do przechowywania w pamięci podręcznej.
 
-Jeśli używasz biblioteki klienta usługi magazynu do generowania tokenów SAS, utworzenie prawidłowego tokenu jest łatwe. Jeśli jednak korzystasz z interfejsu API REST magazynu i ręcznie konstruujesz tokeny SAS, zobacz Delegowanie [dostępu przy użyciu sygnatury dostępu](https://msdn.microsoft.com/library/azure/ee395415.aspx)współdzielonego.
+Jeśli używasz biblioteki klienta usługi magazynu do generowania tokenów SAS, utworzenie prawidłowego tokenu jest łatwe. Jeśli jednak korzystasz z interfejsu API REST magazynu i ręcznie konstruujesz tokeny SAS, zobacz [delegowanie dostępu przy użyciu sygnatury dostępu współdzielonego](https://msdn.microsoft.com/library/azure/ee395415.aspx).
 
 ### <a name="the-client-is-receiving-404-messages"></a>Klient otrzymuje komunikaty HTTP 404 (nie znaleziono)
 Jeśli aplikacja kliencka odbiera komunikat HTTP 404 (nie znaleziono) z serwera, oznacza to, że obiekt, którego klient próbował użyć (np. jednostka, tabela, obiekt blob, kontener lub kolejka) nie istnieje w usłudze magazynu. Istnieje kilka możliwych przyczyn tej sytuacji, takich jak:
@@ -520,14 +522,14 @@ Wpisy dziennika:
 | 07b26a5d-... |Odebrano odpowiedź. Kod stanu = 200, identyfikator żądania = eeead849-... Content-MD5 =, ETag = &quot;0x8D14D2DC63D059B&quot;. |
 | 07b26a5d-... |Nagłówki odpowiedzi zostały pomyślnie przetworzone, podczas gdy pozostała część operacji. |
 | 07b26a5d-... |Pobieranie treści odpowiedzi. |
-| 07b26a5d-... |Operacja ukończona pomyślnie. |
+| 07b26a5d-... |Operacja została ukończona pomyślnie. |
 | 07b26a5d-... |Uruchamianie żądania synchronicznego https://domemaildist.blob.core.windows.net/azuremmblobcontainer do. |
 | 07b26a5d-... |StringToSign = DELETE............x-ms-client-request-id:07b26a5d-....x-ms-date:Tue, 03 Jun 2014 10:33:12    GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | 07b26a5d-... |Oczekiwanie na odpowiedź. |
 | 07b26a5d-... |Odebrano odpowiedź. Kod stanu = 202, identyfikator żądania = 6ab2a4cf-..., Content-MD5 =, ETag =. |
 | 07b26a5d-... |Nagłówki odpowiedzi zostały pomyślnie przetworzone, podczas gdy pozostała część operacji. |
 | 07b26a5d-... |Pobieranie treści odpowiedzi. |
-| 07b26a5d-... |Operacja ukończona pomyślnie. |
+| 07b26a5d-... |Operacja została ukończona pomyślnie. |
 | e2d06d78-... |Uruchamianie żądania asynchronicznego do https://domemaildist.blob.core.windows.net/azuremmblobcontainer.</td> |
 | e2d06d78-... |StringToSign = HEAD............x-ms-client-request-id:e2d06d78-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | e2d06d78-... |Oczekiwanie na odpowiedź. |
@@ -538,7 +540,7 @@ Wpisy dziennika:
 | e2d06d78-... |Odebrano odpowiedź. Kod stanu = 404, identyfikator żądania = 353ae3bc-..., Content-MD5 =, ETag =. |
 | e2d06d78-... |Nagłówki odpowiedzi zostały pomyślnie przetworzone, podczas gdy pozostała część operacji. |
 | e2d06d78-... |Pobieranie treści odpowiedzi. |
-| e2d06d78-... |Operacja ukończona pomyślnie. |
+| e2d06d78-... |Operacja została ukończona pomyślnie. |
 | e2d06d78-... |Uruchamianie żądania asynchronicznego do https://domemaildist.blob.core.windows.net/azuremmblobcontainer. |
 | e2d06d78-... |StringToSign = PUT...0.........x-ms-client-request-id:e2d06d78-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | e2d06d78-... |Oczekiwanie na odpowiedź. |
@@ -560,7 +562,7 @@ Jeśli aplikacja kliencka próbuje użyć klucza sygnatury dostępu współdziel
 
 W poniższej tabeli przedstawiono przykładowy komunikat dziennika po stronie serwera z pliku dziennika rejestrowania magazynu:
 
-| Name (Nazwa) | Wartość |
+| Name | Value |
 | --- | --- |
 | Czas rozpoczęcia żądania | 2014-05-30T06:17:48.4473697Z |
 | Typ operacji     | GetBlobProperties            |
@@ -811,7 +813,7 @@ Więcej informacji można znaleźć na [Application Insights](../../azure-monito
 
 Aby uzyskać więcej informacji na temat analiz w usłudze Azure Storage, zobacz następujące zasoby:
 
-* [Monitorowanie konta magazynu w Azure Portal](storage-monitor-storage-account.md)
+* [Monitorowanie konta magazynu w witrynie Azure Portal](storage-monitor-storage-account.md)
 * [Analiza magazynu](storage-analytics.md)
 * [Metryki analizy magazynu](storage-analytics-metrics.md)
 * [Schemat tabeli metryk usługi Storage Analytics](/rest/api/storageservices/storage-analytics-metrics-table-schema)

@@ -1,52 +1,52 @@
 ---
-title: 'Szybki start: Cyfrowy atrament za pomocą interfejsu API REST rozpoznawania pisma odręcznego rozpoznaje iC#'
+title: 'Szybki start: Rozpoznaj cyfrowy atrament za pomocą interfejsu API REST rozpoznawania atramentu iC#'
 titleSuffix: Azure Cognitive Services
-description: Użyj interfejsu API rozpoznawania pisma odręcznego, aby rozpocząć, rozpoznawaniu pociągnięć odręcznych cyfrowych.
+description: Użyj interfejsu API rozpoznawania pisma odręcznego, aby rozpocząć rozpoznawanie cyfrowych pociągnięć atramentu.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 05/02/2019
+ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: 6a1b4ab43a7d87ac1162a7f0a3556d6bc3bfbfab
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 86e69d75c067159a4daa637984a392a393dc46fa
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721243"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211791"
 ---
-# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>Szybki start: Cyfrowy atrament za pomocą interfejsu API REST rozpoznawania pisma odręcznego rozpoznaje iC#
+# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>Szybki start: Rozpoznaj cyfrowy atrament za pomocą interfejsu API REST rozpoznawania atramentu iC#
 
-Użyj tego przewodnika Szybki Start, aby rozpocząć wysyłanie pociągnięć odręcznych cyfrowych do interfejsu API rozpoznawania pisma odręcznego. To C# aplikacja wysyła żądanie interfejsu API, zawierające dane pociągnięcia odręczne w formacie JSON, a następnie pobiera odpowiedź.
+Skorzystaj z tego przewodnika Szybki Start, aby rozpocząć wysyłanie pociągnięć cyfrowego atramentu do interfejsu API rozpoznawania atramentu. Ta C# aplikacja wysyła żądanie interfejsu API zawierające dane pociągnięcia odręcznego w formacie JSON i pobiera odpowiedź.
 
 Chociaż ta aplikacja jest napisana w języku C#, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
 
-Zwykle będzie wywołać interfejs API z aplikacją pisma odręcznego cyfrowych. Ten przewodnik Szybki Start wysyła danych pociągnięcia odręczne na potrzeby poniższego przykładu pisma odręcznego z pliku JSON.
+Zazwyczaj można wywołać interfejs API z aplikacji cyfrowego odręcznego. Ten przewodnik Szybki Start wysyła dane pociągnięć odręcznych dla poniższego przykładu napisanego ręcznie z pliku JSON.
 
-![Obraz przedstawiający tekstu odręcznego](../media/handwriting-sample.jpg)
+![obraz tekstu odręcznego](../media/handwriting-sample.jpg)
 
-Kod źródłowy dla tego przewodnika Szybki Start można znaleźć na [GitHub](https://go.microsoft.com/fwlink/?linkid=2089502).
+Kod źródłowy dla tego przewodnika Szybki Start można znaleźć w witrynie [GitHub](https://go.microsoft.com/fwlink/?linkid=2089502).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Dowolna wersja programu [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/).
 - [Newtonsoft.Json](https://www.newtonsoft.com/json)
-    - Aby zainstalować pakiet Newtonsoft.Json jako pakiet NuGet w programie Visual studio:
-        1. Kliknij prawym przyciskiem myszy **Menedżerze rozwiązania**
-        2. Kliknij przycisk **Zarządzaj pakietami NuGet...**
-        3. Wyszukaj `Newtonsoft.Json` i zainstaluj pakiet
-- Jeśli używasz systemu Linux/MacOS ta aplikacja może być została uruchomiona przy użyciu [Mono](https://www.mono-project.com/).
+    - Aby zainstalować plik Newtonsoft. JSON jako pakiet NuGet w programie Visual Studio:
+        1. Kliknij prawym przyciskiem myszy **Menedżera rozwiązań**
+        2. Kliknij pozycję **Zarządzaj pakietami NuGet...**
+        3. `Newtonsoft.Json` Wyszukaj i zainstaluj pakiet
+- Jeśli używasz systemu Linux/MacOS, ta aplikacja może zostać uruchomiona przy użyciu narzędzia [mono](https://www.mono-project.com/).
 
-- Pociągnięcia odręczne przykładowych danych w tym przewodniku Szybki znajduje się na [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/InkRecognition/quickstart/example-ink-strokes.json).
+- Przykładowe dane pociągnięcia farbą dla tego przewodnika Szybki Start można znaleźć w witrynie [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/InkRecognition/quickstart/example-ink-strokes.json).
 
 [!INCLUDE [cognitive-services-ink-recognizer-signup-requirements](../../../../includes/cognitive-services-ink-recognizer-signup-requirements.md)]
 
 
 ## <a name="create-a-new-application"></a>Tworzenie nowej aplikacji
 
-1. W programie Visual Studio Utwórz nowe rozwiązanie konsoli i dodaj następujące pakiety. 
+1. W programie Visual Studio Utwórz nowe rozwiązanie konsoli i Dodaj następujące pakiety. 
 
     ```csharp
     using System;
@@ -60,7 +60,7 @@ Kod źródłowy dla tego przewodnika Szybki Start można znaleźć na [GitHub](h
     using Newtonsoft.Json.Linq;
     ```
 
-2. Utwórz zmienne dla swój klucz subskrypcji i punktu końcowego usługi. Poniżej znajduje się identyfikator URI, można użyć do rozpoznawania pisma odręcznego. Zostanie dołączony do punktu końcowego usługi później, aby utworzyć interfejs API adres URl żądania.
+2. Utwórz zmienne dla klucza subskrypcji i punktu końcowego. Zamień punkt końcowy poniżej na ten wygenerowany dla zasobu aparatu rozpoznawania atramentu. Dołącz go do identyfikatora URI rozpoznawania pisma odręcznego, aby nawiązać połączenie z interfejsem API.
 
     ```csharp
     // Replace the subscriptionKey string with your valid subscription key.
@@ -70,17 +70,17 @@ Kod źródłowy dla tego przewodnika Szybki Start można znaleźć na [GitHub](h
     const string dataPath = @"PATH-TO-INK-STROKE-DATA"; 
 
     // URI information for ink recognition:
-    const string endpoint = "https://api.cognitive.microsoft.com";
+    const string endpoint = "https://<your-custom-subdomain>.cognitiveservices.azure.com";
     const string inkRecognitionUrl = "/inkrecognizer/v1.0-preview/recognize";
     ```
 
-## <a name="create-a-function-to-send-requests"></a>Tworzenie funkcji na potrzeby wysyłania żądań
+## <a name="create-a-function-to-send-requests"></a>Utwórz funkcję do wysyłania żądań
 
-1. Tworzenie nowej funkcji asynchronicznej o nazwie `Request` przyjmującej zmienne utworzone powyżej.
+1. Utwórz nową funkcję asynchroniczną o `Request` nazwie, która przyjmuje utworzone powyżej zmienne.
 
-2. Protokół zabezpieczeń klienta i informacje nagłówka przy użyciu `HttpClient` obiektu. Pamiętaj dodać klucz subskrypcji, aby `Ocp-Apim-Subscription-Key` nagłówka. Następnie utwórz `StringContent` obiekt dla żądania.
+2. Ustaw informacje o protokole i nagłówku zabezpieczeń klienta przy `HttpClient` użyciu obiektu. Pamiętaj, aby dodać klucz subskrypcji do `Ocp-Apim-Subscription-Key` nagłówka. Następnie Utwórz `StringContent` obiekt dla żądania.
  
-3. Wyślij żądanie za pomocą `PutAsync()`. Jeśli żądanie zakończy się pomyślnie, zwraca odpowiedź.  
+3. Wyślij żądanie przy użyciu `PutAsync()`. Jeśli żądanie zakończy się pomyślnie, zwróć odpowiedź.  
     
     ```csharp
     static async Task<string> Request(string apiAddress, string endpoint, string subscriptionKey, string requestData){
@@ -104,9 +104,9 @@ Kod źródłowy dla tego przewodnika Szybki Start można znaleźć na [GitHub](h
 
 ## <a name="send-an-ink-recognition-request"></a>Wyślij żądanie rozpoznawania pisma odręcznego
 
-1. Utwórz nową funkcję o nazwie `recognizeInk()`. Konstruowania żądania i wysyłać je przez wywołanie metody `Request()` funkcji z punktem końcowym usługi, klucz subskrypcji, adres URL dla interfejsu API i dane obrysu cyfrowy atrament.
+1. Utwórz nową funkcję o nazwie `recognizeInk()`. Utwórz żądanie i wyślij je, wywołując `Request()` funkcję z punktem końcowym, kluczem subskrypcji, adresem URL dla interfejsu API i danymi pociągnięcia cyfrowego atramentu.
 
-2. Deserializacji obiektu JSON i zapisz je w konsoli. 
+2. Deserializacji obiektu JSON i Zapisz go w konsoli. 
     
     ```csharp
     static void recognizeInk(string requestData){
@@ -123,9 +123,9 @@ Kod źródłowy dla tego przewodnika Szybki Start można znaleźć na [GitHub](h
     }
     ```
 
-## <a name="load-your-digital-ink-data"></a>Załaduj dane cyfrowy atrament
+## <a name="load-your-digital-ink-data"></a>Ładowanie danych cyfrowego atramentu
 
-Tworzenie funkcji o nazwie `LoadJson()` można załadować pliku JSON dane pisma odręcznego. Użyj `StreamReader` i `JsonTextReader` utworzyć `JObject` i przywrócić go.
+Utwórz funkcję o nazwie `LoadJson()` , aby załadować plik JSON danych pisma odręcznego. `StreamReader` Użyj i `JsonTextReader` , aby utworzyć `JObject` i zwrócić.
     
 ```csharp
 public static JObject LoadJson(string fileLocation){
@@ -140,11 +140,11 @@ public static JObject LoadJson(string fileLocation){
 }
 ```
 
-## <a name="send-the-api-request"></a>Wysyłanie żądań do interfejsu API
+## <a name="send-the-api-request"></a>Wyślij żądanie interfejsu API
 
-1. W metodzie głównej aplikacji Załaduj dane JSON za pomocą funkcji utworzonego powyżej. 
+1. W głównej metodzie aplikacji Załaduj dane JSON przy użyciu funkcji utworzonej powyżej. 
 
-2. Wywołaj `recognizeInk()` funkcji utworzonego powyżej. Użyj `System.Console.ReadKey()` do nie zamykaj okna konsoli po uruchomieniu aplikacji.
+2. Wywołaj utworzoną powyżej funkcję. `recognizeInk()` Użyj `System.Console.ReadKey()` , aby zachować otwarte okno konsoli po uruchomieniu aplikacji.
     
     ```csharp
     static void Main(string[] args){
@@ -157,9 +157,9 @@ public static JObject LoadJson(string fileLocation){
         }
     ```
 
-## <a name="run-the-application-and-view-the-response"></a>Uruchom aplikację, a następnie zobacz odpowiedź
+## <a name="run-the-application-and-view-the-response"></a>Uruchom aplikację i Wyświetl odpowiedź
 
-Uruchom aplikację. Odpowiedź oznaczająca Powodzenie są zwracane w formacie JSON. Możesz również znaleźć odpowiedź w formacie JSON na [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/InkRecognition/quickstart/example-response.json).
+Uruchom aplikację. Pomyślna odpowiedź jest zwracana w formacie JSON. Odpowiedź na kod JSON można również znaleźć w witrynie [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/InkRecognition/quickstart/example-response.json).
 
 
 ## <a name="next-steps"></a>Następne kroki
@@ -168,7 +168,7 @@ Uruchom aplikację. Odpowiedź oznaczająca Powodzenie są zwracane w formacie J
 > [Dokumentacja interfejsu API REST](https://go.microsoft.com/fwlink/?linkid=2089907)
 
 
-Aby zobaczyć, jak działa interfejs API rozpoznawania pisma odręcznego w cyfrowych aplikacji pisma odręcznego, spójrz na następujące przykładowe aplikacje w usłudze GitHub:
+Aby zobaczyć, jak działa interfejs API rozpoznawania pisma odręcznego w aplikacji do cyfrowego odkróla, zapoznaj się z następującymi przykładowymi aplikacjami w witrynie GitHub:
 * [C# i platforma uniwersalna systemu Windows (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
 * [C# i Windows Presentation Foundation (WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
 * [Aplikacja języka JavaScript dla przeglądarki internetowej](https://go.microsoft.com/fwlink/?linkid=2089908)       

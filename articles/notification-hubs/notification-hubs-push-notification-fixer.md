@@ -1,11 +1,11 @@
 ---
-title: Diagnozowanie porzuconymi powiadomieniami w usłudze Azure Notification Hubs
-description: Dowiedz się, jak diagnozować typowych problemów z porzuconymi powiadomieniami w usłudze Azure Notification Hubs.
+title: Diagnozuj opuszczone powiadomienia w usłudze Azure Notification Hubs
+description: Dowiedz się, jak zdiagnozować typowe problemy z porzuconymi powiadomieniami w usłudze Azure Notification Hubs.
 services: notification-hubs
 documentationcenter: Mobile
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: b5c89a2a-63b8-46d2-bbed-924f5a4cce61
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,196 +13,198 @@ ms.tgt_pltfrm: NA
 ms.devlang: multiple
 ms.topic: article
 ms.date: 04/04/2019
-ms.author: jowargo
-ms.openlocfilehash: eebf9ef63a8622c4cc431322b786fdf30f6352fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 04/04/2019
+ms.openlocfilehash: c9754c1d7fee5af13de6176dbf8a1ca6e57a71eb
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925822"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213151"
 ---
-# <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>Diagnozowanie porzuconymi powiadomieniami w usłudze Azure Notification Hubs
+# <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>Diagnozuj opuszczone powiadomienia w usłudze Azure Notification Hubs
 
-Często zadawane pytania dotyczące usługi Azure Notification Hubs jest jak rozwiązywać problemy podczas powiadomienia z aplikacji nie są wyświetlane na urządzeniach klienckich. Klienci chcą wiedzieć, gdzie i dlaczego powiadomienia zostały usunięte, a także sposób rozwiązać ten problem. W tym artykule identyfikuje Dlaczego powiadomienia porzucane może lub nie można odebrać przez urządzenia. Wyjaśniono również sposób ustalania głównej przyczyny.
+Często zadawane pytania dotyczące usługi Azure Notification Hubs to sposób rozwiązywania problemów, gdy powiadomienia z aplikacji nie są wyświetlane na urządzeniach klienckich. Klienci chcą wiedzieć, gdzie i dlaczego powiadomienia zostały porzucone, i jak rozwiązać problem. W tym artykule opisano, dlaczego powiadomienia mogą zostać porzucone lub nie odebrane przez urządzenia. Wyjaśniono również, jak ustalić główną przyczynę.
 
-Koniecznie najpierw zrozumieć, jak usługa Notification Hubs wypycha powiadomienia do urządzenia.
+Ważne jest, aby najpierw zrozumieć, jak Notification Hubs wypychania powiadomień do urządzenia.
 
-![Architektura centra powiadomień][0]
+![Architektura Notification Hubs][0]
 
-W ramach przepływu powiadomień typowe Wyślij komunikat jest wysyłany z *zapleczu aplikacji* usługę Notification hubs. Usługa Notification Hubs przetwarza wszystkie rejestracje. Uwzględnia ona skonfigurowanych znaczników i wyrażeń tagów, aby ustalić cele. Obiekty docelowe są rejestracji, które należy do odbierania powiadomień wypychanych. Tyto registrace może obejmować jedną z naszych obsługiwanych platform: Android, Baidu (urządzenia z systemem Android w Chinach), systemu operacyjnego ogień (Amazon) dla systemu iOS, Windows i Windows Phone.
+W typowym przepływie powiadomień wysyła komunikat z *zaplecza aplikacji* do Notification Hubs. Notification Hubs przetwarza wszystkie rejestracje. Uwzględnia on skonfigurowane Tagi i wyrażenia tagów, aby określić cele. Cele są rejestracjami, które muszą odebrać Powiadomienie wypychane. Te rejestracje mogą obejmować dowolne z naszych obsługiwanych platform: Android, Baidu (urządzenia z systemem Android w Chinach), ogień systemu iOS (Amazon), system Windows i Windows Phone.
 
-Za pomocą ustanowionych celów usługi Notification Hubs wypycha powiadomienia do *push notification service* dla platformy urządzenia. Przykłady obejmują Apple Push Notification service (APNs) firmy Apple i usługi Firebase Cloud Messaging (FCM) dla usług Google. Notification Hubs wypchnięć powiadomienia podzielone między wiele instancji rejestracji. Uwierzytelnia się za pomocą usługi powiadomień wypychanych odpowiednich, na podstawie poświadczeń ustawiona w witrynie Azure portal w obszarze **Konfigurowanie Centrum powiadomień**. Powiadomienie wypychane powiadomienia dotyczące usług następnie będzie przekazywać do odpowiednich *urządzeń klienckich*.
+Mając ustanowione cele, Notification Hubs wypychanie powiadomień do *usługi powiadomień wypychanych* dla platformy urządzeń. Przykładami mogą być usługi Apple Push Notification Service (APNs) dla firm Apple i Firebase Cloud Messaging (FCM) dla usługi Google. Notification Hubs wypychania powiadomień w wielu partiach rejestracji. Jest on uwierzytelniany przy użyciu odpowiedniej usługi powiadomień wypychanych na podstawie poświadczeń ustawionych w Azure Portal, w obszarze **Konfigurowanie centrum powiadomień**. Następnie usługa powiadomień wypychanych przekazuje powiadomienia do odpowiednich *urządzeń klienckich*.
 
-Ostatnim etapie mechanizm dostarczania powiadomień to od usługi powiadomień wypychanych platformy i urządzenia. Mechanizm dostarczania powiadomień o może zakończyć się niepowodzeniem w dowolnym z czterech etapów w procesie powiadomień wypychanych (klient, zaplecza aplikacji, usługi Notification Hubs i usługi powiadomień wypychanych platformy). Aby uzyskać więcej informacji na temat architektury usługi Notification Hubs, zobacz [Notification Hubs — omówienie].
+Końcowy etap dostarczania powiadomień jest między usługą powiadomień wypychanych platformy a urządzeniem. Dostarczanie powiadomień może zakończyć się niepowodzeniem na dowolnym z czterech etapów procesu powiadomień wypychanych (klienta, zaplecza aplikacji, Notification Hubs i usługi powiadomień wypychanych platformy). Aby uzyskać więcej informacji na temat architektury Notification Hubs, zobacz [Przegląd Notification Hubs].
 
-Błąd podczas dostarczania powiadomień mogą wystąpić podczas początkowego testu i przemieszczania fazy. Porzucone powiadomienia na tym etapie może wskazywać problem z konfiguracją. Jeśli wystąpi awaria dostarczać powiadomienia w środowisku produkcyjnym, niektóre lub wszystkie powiadomienia mogą być opuszczane. W tym przypadku jest wskazywany bardziej aplikacji lub messaging wzorzec problem.
+Podczas wstępnej fazy testowania/przemieszczania nie można dostarczyć powiadomień. Opuszczone powiadomienia na tym etapie mogą wskazywać na problem z konfiguracją. Jeśli błąd dostarczania powiadomień w środowisku produkcyjnym, niektóre lub wszystkie powiadomienia mogą zostać porzucone. W tym przypadku jest wskazany bardziej szczegółowy problem z wzorcem aplikacji lub komunikatów.
 
-Następna sekcja patrzy na scenariusze, w których powiadomienia mogą być opuszczane, od wspólnego rzadkie.
+Następna sekcja analizuje scenariusze, w których można porzucić powiadomienia, od typowych do rzadkich.
 
-## <a name="notification-hubs-misconfiguration"></a>Notification Hubs z błędną konfiguracją ##
+## <a name="notification-hubs-misconfiguration"></a>NieNotification Hubsa konfiguracja ##
 
-Do wysyłania powiadomień do usługi powiadomień wypychanych odpowiednich, Notification Hubs musi uwierzytelniać w kontekście aplikacji. Konto dewelopera należy utworzyć przy użyciu usługi powiadomień platformy docelowej (firmy Microsoft, firmy Apple, Google itp.). Następnie należy zarejestrować aplikację w usłudze systemu operacyjnego, gdzie można uzyskać tokenu lub klucza, których używasz do pracy z systemem powiadomień platformy docelowej.
+Aby wysyłać powiadomienia do odpowiedniej usługi powiadomień wypychanych, Notification Hubs musi uwierzytelnić się w kontekście aplikacji. Musisz utworzyć konto dewelopera przy użyciu usługi powiadamiania platformy docelowej (Microsoft, Apple, Google itp.). Następnie musisz zarejestrować swoją aplikację w systemie operacyjnym, w którym uzyskujesz token lub klucz używany do pracy z docelowym PNS.
 
-Poświadczenia platformy należy dodać do witryny Azure portal. Jeśli żadne powiadomienia się połączyć urządzenie, pierwszym krokiem jest upewnij się, że poprawne poświadczenia są konfigurowane w usłudze Notification Hubs. Poświadczenia muszą odpowiadać aplikacji, która jest tworzona przy użyciu konta dewelopera specyficzne dla platformy.
+Musisz dodać poświadczenia platformy do Azure Portal. Jeśli żadne powiadomienia nie docierają do urządzenia, pierwszym krokiem jest upewnienie się, że w Notification Hubs są skonfigurowane poprawne poświadczenia. Poświadczenia muszą być zgodne z aplikacją utworzoną w ramach konta dewelopera określonego dla platformy.
 
-Instrukcje krok po kroku ukończyć ten proces, zobacz [Rozpoczynanie pracy z usługą Azure Notification Hubs].
+Instrukcje krok po kroku dotyczące wykonywania tego procesu znajdują się w temacie [Wprowadzenie do usługi Azure Notification Hubs].
 
-Poniżej przedstawiono kilka typowych błędów konfiguracji, aby wyszukać:
+Poniżej przedstawiono kilka typowych niespotykanych konfiguracji do sprawdzenia:
 
-### <a name="notification-hub-name-location"></a>Lokalizacja nazwy Centrum powiadomień
+### <a name="notification-hub-name-location"></a>Lokalizacja nazwy centrum powiadomień
 
-Upewnij się, że nazwę Centrum powiadomień (bez błędów) jest taka sama w każdym z następujących lokalizacji:
-   * Gdy zarejestrujesz od klienta
-   * Gdzie wysyłanie powiadomień z zaplecza
-   * Którego skonfigurowano poświadczenia usługi powiadomień wypychanych
+Upewnij się, że nazwa centrum powiadomień (bez literówek) jest taka sama w każdej z następujących lokalizacji:
+   * Miejsce rejestracji z poziomu klienta
+   * Miejsce wysyłania powiadomień z zaplecza
+   * Miejsce, w którym skonfigurowano poświadczenia usługi powiadomień wypychanych
 
-Upewnij się, użyj ciągi konfiguracji sygnatury dostępu współdzielonego poprawne na komputerze klienckim i kończyć aplikację ponownie. Ogólnie rzecz biorąc, należy użyć **DefaultListenSharedAccessSignature** na komputerze klienckim i **DefaultFullSharedAccessSignature** aplikacji zaplecza. Spowoduje to przydzielenie uprawnień do wysyłania powiadomień do usługi Notification Hubs.
+Upewnij się, że używasz prawidłowych ciągów konfiguracji sygnatury dostępu współdzielonego na kliencie i zapleczu aplikacji. Ogólnie rzecz biorąc, należy użyć **DefaultListenSharedAccessSignature** na kliencie i **DefaultFullSharedAccessSignature** na zapleczu aplikacji. To przyznaje uprawnienia do wysyłania powiadomień do Notification Hubs.
 
-### <a name="apn-configuration"></a>Konfiguracja elementu APN ###
+### <a name="apn-configuration"></a>Konfiguracja APN ###
 
-Należy zachować dwa różne centra: jeden dla produkcji i inny wpis dla testowania. Musisz przekazać certyfikat, którego używasz w środowisku piaskownicy w osobnym Centrum niż certyfikatu/koncentratora, które będą używane w środowisku produkcyjnym. Nie należy próbować przekazać różne typy certyfikatów do tego samego Centrum. Spowoduje błędy powiadomień.
+Należy zachować dwa różne centra: jeden do produkcji i drugi do testowania. Certyfikat używany w środowisku piaskownicy należy przekazać do oddzielnego centrum niż certyfikat/koncentrator, który będzie używany w produkcji. Nie próbuj przekazywać różnych typów certyfikatów do tego samego centrum. Spowoduje to niepowodzenie powiadomień.
 
-Jeśli załadujesz przypadkowo różne typy certyfikatów do tego samego Centrum, należy usunąć koncentratora i zacznij od zera za pomocą nowego Centrum. Jeśli z jakiegoś powodu nie można usunąć koncentratora, co najmniej należy usunąć wszystkie istniejące rejestracje z koncentratora.
+Jeśli przypadkowo przekazano różne typy certyfikatów do tego samego centrum, należy usunąć centrum i zacząć od nowa centrum. Jeśli z jakiegoś powodu nie można usunąć centrum, należy usunąć wszystkie istniejące rejestracje z centrum.
 
-### <a name="fcm-configuration"></a>Konfiguracja usługi FCM ###
+### <a name="fcm-configuration"></a>Konfiguracja FCM ###
 
-1. Upewnij się, że *klucz serwera* uzyskany od dopasowania Firebase klucz serwera zarejestrowany w witrynie Azure portal.
+1. Upewnij się, że *klucz serwera* uzyskany z Firebase jest zgodny z kluczem serwera zarejestrowanego w Azure Portal.
 
-   ![Klucz serwera usługi firebase][3]
+   ![Klucz serwera Firebase][3]
 
-2. Upewnij się, że skonfigurowano **identyfikator projektu** na komputerze klienckim. Można uzyskać wartość **identyfikator projektu** na pulpicie nawigacyjnym usługi Firebase.
+2. Upewnij się, że na kliencie został skonfigurowany **Identyfikator projektu** . Wartość **identyfikatora projektu** można uzyskać z pulpitu nawigacyjnego Firebase.
 
-   ![Identyfikator projektu firebase][1]
+   ![Identyfikator projektu Firebase][1]
 
 ## <a name="application-issues"></a>Problemy z aplikacją ##
 
-### <a name="tags-and-tag-expressions"></a>Znaczniki i wyrażenia tagu ###
+### <a name="tags-and-tag-expressions"></a>Tagi i wyrażenia tagów ###
 
-Jeśli używasz tagów lub wyrażenia tagu do segmentowania odbiorców, jest możliwe, podczas wysyłania powiadomienia, żadne miejsce docelowe nie zostanie znaleziony. Ten błąd jest oparty na określonymi tagami lub wyrażenia tagu w wywołania wysyłania.
+Jeśli używasz tagów lub wyrażeń tagów do segmentacji odbiorców, istnieje możliwość, że po wysłaniu powiadomienia nie zostanie znaleziony żaden element docelowy. Ten błąd jest oparty na określonych znacznikach lub wyrażeniach tagów w wywołaniu wysyłania.
 
-Przejrzyj rejestracje w taki sposób, aby upewnić się, że znaczniki odpowiadają podczas wysyłania powiadomienia. Następnie sprawdź odbieranie powiadomień od klientów, które mają te rejestracji.
+Przejrzyj rejestracje, aby upewnić się, że Tagi są zgodne podczas wysyłania powiadomienia. Następnie sprawdź, czy odebrano powiadomienie tylko od klientów, którzy mają te rejestracje.
 
-Na przykład załóżmy, że wszystkie rejestracje z usługą Notification Hubs używany jest tag "Polityka". Jeśli następnie należy wysłać powiadomienia za pomocą znacznika "Sport", powiadomienia nie zostaną wysłane na dowolnym urządzeniu. Złożonych przypadkach może obejmować wyrażenia tagu, na którym zarejestrowany przez tagu "A" *lub* "Tag B", ale docelowe "Tag & & Tag B." Sekcji wskazówki dotyczące Autodiagnostyki w dalszej części tego artykułu dowiesz się, jak przeglądać rejestracje i ich tagów.
+Załóżmy na przykład, że wszystkie rejestracje z Notification Hubs korzystają ze znacznika "Polityka". Jeśli następnie wyślesz powiadomienie ze znacznikiem "Sport", powiadomienie nie zostanie wysłane do żadnego urządzenia. Złożone przypadki mogą zawierać wyrażenia tagów, w których zarejestrowano przy użyciu "tag A" *lub* "tag B", ale wskazywany jest "tag & & tag b". Sekcja porady samodiagnostyki w dalszej części artykułu przedstawia sposób przeglądania rejestracji i ich tagów.
 
-### <a name="template-issues"></a>Problemy dotyczące szablonu ###
+### <a name="template-issues"></a>Problemy związane z szablonami ###
 
-Jeśli korzystasz z szablonów, upewnij się, postępuj zgodnie z wytycznymi opisany w [szablony].
+W przypadku używania szablonów należy postępować zgodnie z wytycznymi opisanymi w [Szablony].
 
-### <a name="invalid-registrations"></a>Nieprawidłowy rejestracji ###
+### <a name="invalid-registrations"></a>Nieprawidłowe rejestracje ###
 
-Jeśli Centrum powiadomień zostały poprawnie skonfigurowane i znaczników lub wyrażenia tagu zostały prawidłowo wykorzystywane, znajdują się elementy docelowe prawidłowe. Powiadomienia mają być wysyłane do następujących elementów docelowych. Usługa Notification Hubs, a następnie uruchamiany off partie przetwarzania równoległego. Każda partia wysyła komunikaty do zestawu rejestracji.
+Jeśli centrum powiadomień zostało prawidłowo skonfigurowane i Tagi lub wyrażenia tagów zostały prawidłowo użyte, znaleziono prawidłowe elementy docelowe. Powiadomienia powinny być wysyłane do tych celów. Notification Hubs następnie wygeneruje kilka partii przetwarzania równolegle. Każda partia wysyła komunikaty do zestawu rejestracji.
 
 > [!NOTE]
-> Ponieważ usługa Notification Hubs przetwarza partie w sposób równoległy, nie jest gwarantowana kolejność, w której powiadomienia są dostarczane.
+> Ponieważ Notification Hubs przetwarza partii równolegle, kolejność dostarczania powiadomień nie jest gwarantowana.
 
-Usługa Notification Hubs jest zoptymalizowana pod kątem modelu dostarczania wiadomości "co większość jednokrotne". Staramy się deduplikacji, dzięki czemu żadne powiadomienia są dostarczane więcej niż jeden raz na urządzeniu. Rejestracje są sprawdzane w celu upewnij się, że tylko jeden komunikat jest wysyłany do jednego identyfikatora urządzenia przed wysłaniem ich do usługi powiadomień wypychanych.
+Notification Hubs jest zoptymalizowany pod kątem "co najwyżej jednego" modelu dostarczania komunikatów. Podjęto próbę przeprowadzenia deduplikacji, aby żadne powiadomienia nie były dostarczane do urządzenia więcej niż raz. Rejestracje są sprawdzane w celu zapewnienia, że tylko jeden komunikat jest wysyłany na identyfikator urządzenia przed wysłaniem go do usługi powiadomień wypychanych.
 
-Partie są wysyłane do usługi powiadomień wypychanych, która z kolei akceptuje i sprawdza poprawność rejestracji. W trakcie tego procesu jest możliwe, że usługi powiadomień wypychanych wykryje błąd związany z co najmniej jeden rejestracji w zadaniu wsadowym. Usługa powiadomień wypychanych następnie zwróci błąd usługi Notification Hubs i zatrzymuje proces. Usługa powiadomień wypychanych porzuca tej partii całkowicie. Jest to szczególnie istotne, za pomocą usługi APNs, który używa protokołu strumienia TCP.
+Każda partia jest wysyłana do usługi powiadomień wypychanych, która z kolei akceptuje i weryfikuje rejestracje. W trakcie tego procesu usługa powiadomień wypychanych może wykryć błąd z co najmniej jedną rejestracją w partii. Usługa powiadomień wypychanych zwraca błąd do Notification Hubs i proces zostaje zatrzymany. Usługa powiadomień wypychanych opuszcza tę partię całkowicie. Jest to szczególnie prawdziwe w przypadku usługi APNs, która używa protokołu strumienia TCP.
 
-W tym przypadku błędną rejestracji jest usuwany z bazy danych. Spróbuj możemy mechanizm dostarczania powiadomień dla pozostałych urządzeń w danej partii.
+W takim przypadku Rejestracja błędów zostanie usunięta z bazy danych. Następnie ponów próbę dostarczenia powiadomienia dla pozostałych urządzeń w tej partii.
 
-Aby uzyskać więcej informacji o błędzie o próbie dostarczania nie powiodło się dla rejestracji, możesz użyć interfejsów API REST dla centrów powiadomień [na Telemetrii komunikat: Pobierz dane telemetryczne komunikatu powiadomienia](https://msdn.microsoft.com/library/azure/mt608135.aspx) i [PNS, opinii](https://msdn.microsoft.com/library/azure/mt705560.aspx). Przykładowy kod, zobacz [przykład Wyślij REST](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/).
+Aby uzyskać więcej informacji o błędach dotyczących nieudanej próby dostarczenia na rejestrację, można użyć Notification Hubs interfejsów API [REST na potrzeby telemetrii komunikatów: Pobierz dane telemetryczne](https://msdn.microsoft.com/library/azure/mt608135.aspx) komunikatów powiadomień i [PNS Opinie](https://msdn.microsoft.com/library/azure/mt705560.aspx). Aby uzyskać przykładowy kod, zobacz [przykład wysyłania w dalszej części](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/).
 
 ## <a name="push-notification-service-issues"></a>Problemy z usługą powiadomień wypychanych
 
-Gdy Usługa powiadomień wypychanych otrzyma powiadomienie, zapewnia powiadomienie do urządzenia. W tym momencie usługa Notification Hubs nie ma kontroli nad dostarczania powiadomień na urządzeniu.
+Gdy usługa powiadomień wypychanych otrzyma powiadomienie, udostępnia powiadomienie na urządzeniu. W tym momencie Notification Hubs nie ma kontroli nad dostarczeniem powiadomienia na urządzeniu.
 
-Ponieważ usług powiadomień platformy są niezawodne, powiadomienia zwykle udostępnianiem urządzeniom w ciągu kilku sekund. Jeśli ograniczania usługi powiadomień wypychanych usługi Notification Hubs ma zastosowanie strategii wykładniczego wycofywania. Usługa powiadomień wypychanych pozostaje nieosiągalny przez 30 minut, czy zasady mające na celu zakończenie okresu ważności i trwale usunąć komunikaty.
+Ponieważ usługi powiadomień platformy są niezawodne, powiadomienia mogą dotrzeć do urządzeń w ciągu kilku sekund. Jeśli usługa powiadomień wypychanych ma ograniczenia, Notification Hubs stosuje strategię wycofywania wykładniczego. Jeśli usługa powiadomień wypychanych pozostaje nieosiągalna przez 30 minut, istnieją zasady, które mają na celu wygaśnięcie i porzucenie komunikatów.
 
-Jeśli usługi powiadomień wypychanych, próby dostarczenia powiadomienia, ale urządzenie jest w trybie offline, powiadomienia są przechowywane w usłudze powiadomień wypychanych. Jest on przechowywany przez ograniczony okres czasu. Powiadomienia są dostarczane do urządzenia, gdy urządzenie stanie się dostępna.
+Jeśli usługa powiadomień wypychanych próbuje dostarczyć powiadomienie, ale urządzenie jest w trybie offline, powiadomienie jest przechowywane przez usługę powiadomień wypychanych. Jest on przechowywany przez ograniczony czas. Powiadomienie jest dostarczane do urządzenia, gdy urządzenie będzie dostępne.
 
-Każda aplikacja przechowuje tylko jedno powiadomienie ostatnie. Jeśli wiele powiadomień są wysyłane, gdy urządzenie jest w trybie offline, każde nowe powiadomienie powoduje, że ostatni z nich do usunięcia. Przechowywanie tylko najnowsze powiadomień jest wywoływana *łączenie* w APNs i *zwijanie* w usługi FCM. (FCM używa klucza zwijanie). Gdy urządzenie będzie w trybie offline przez długi czas, powiadomienia, które były przechowywane na urządzeniu zostaną odrzucone. Aby uzyskać więcej informacji, zobacz [Omówienie usługi APNs] i [Temat wiadomości FCM].
+Każda aplikacja przechowuje tylko jedno ostatnie powiadomienie. W przypadku wysyłania wielu powiadomień, gdy urządzenie jest w trybie offline, każde nowe powiadomienie spowoduje odrzucenie ostatniego z nich. Tylko najnowsze powiadomienia są nazywane *łączeniami* w usłudze APNs i *zwijane* w FCM. (FCM używa klucza zwijanego). Gdy urządzenie pozostanie w trybie offline przez dłuższy czas, powiadomienia, które były przechowywane na urządzeniu, są odrzucane. Aby uzyskać więcej informacji, zobacz [Omówienie usługi APNs] i [Informacje o komunikatach FCM].
 
-Usługa Notification Hubs można przekazać łączącego klucz za pośrednictwem nagłówek HTTP za pomocą ogólnego interfejsu API SendNotification. Na przykład dla zestawu .NET SDK, możesz użyć `SendNotificationAsync`. Interfejs API SendNotification ma również nagłówki HTTP, które są przekazywane jako usługi powiadomień wypychanych odpowiednich.
+Za pomocą Notification Hubs można przekazać klucz łączenia za pośrednictwem nagłówka HTTP przy użyciu ogólnego interfejsu API SendNotification. Na przykład dla zestawu .NET SDK można użyć `SendNotificationAsync`. Interfejs API SendNotification pobiera również nagłówki HTTP, które są przekazywane w postaci, do odpowiedniej usługi powiadomień wypychanych.
 
-## <a name="self-diagnosis-tips"></a>Wskazówki dotyczące Autodiagnostyki
+## <a name="self-diagnosis-tips"></a>Porady dotyczące samodiagnostyki
 
-Poniżej przedstawiono ścieżki, aby zdiagnozować jej główną przyczynę porzucone powiadomienia usługi Notification Hubs.
+Poniżej przedstawiono ścieżki umożliwiające zdiagnozowanie głównej przyczyny porzucenia powiadomień w Notification Hubs.
 
 ### <a name="verify-credentials"></a>Weryfikowanie poświadczeń ###
 
 #### <a name="push-notification-service-developer-portal"></a>Portal dla deweloperów usługi powiadomień wypychanych ####
 
-Sprawdź poświadczenia w portalu dla deweloperów programu odpowiednich wypychania powiadomień service (APNs, FCM, Windows Notification Service i tak dalej). Aby uzyskać więcej informacji, zobacz [Samouczek: wysyłanie powiadomień do aplikacji platformy uniwersalnej systemu Windows przy użyciu usługi Azure Notification Hubs](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification).
+Sprawdź poświadczenia w odpowiednim portalu dla deweloperów usługi powiadomień wypychanych (APNs, FCM, usługa powiadomień systemu Windows itd.). Aby uzyskać więcej informacji, zobacz [Samouczek: wysyłanie powiadomień do aplikacji platformy uniwersalnej systemu Windows przy użyciu usługi Azure Notification Hubs](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification).
 
 #### <a name="azure-portal"></a>Azure Portal ####
 
-Aby przejrzeć i pasować do poświadczeń z identyfikatorami uzyskanymi z portalu dla deweloperów usługi powiadomień wypychanych, przejdź do **zasady dostępu** kartę w witrynie Azure portal.
+Aby przejrzeć i dopasować poświadczenia do tych, które zostały uzyskane z portalu dla deweloperów usługi powiadomień wypychanych, przejdź do karty **zasady dostępu** w Azure Portal.
 
-![Zasady dostępu do witryny Azure portal][4]
+![Zasady dostępu Azure Portal][4]
 
-### <a name="verify-registrations"></a>Weryfikowanie rejestracji
+### <a name="verify-registrations"></a>Weryfikuj rejestracje
 
 #### <a name="visual-studio"></a>Visual Studio ####
 
-W programie Visual Studio możesz się połączyć na platformie Azure za pomocą Eksploratora serwera do przeglądania i zarządzania wielu usług platformy Azure, w tym usługi Notification Hubs. Ten skrót jest szczególnie przydatne w przypadku środowiska projektowania i testowania.
+W programie Visual Studio możesz łączyć się z platformą Azure za pomocą Eksplorator serwera, aby wyświetlać wiele usług platformy Azure i zarządzać nimi, w tym Notification Hubs. Ten skrót jest szczególnie przydatny w środowisku deweloperskim/testowym.
 
-![Visual Studio Server Explorer][9]
+![Eksplorator serwera programu Visual Studio][9]
 
-Można wyświetlać i zarządzać wszystkich rejestracji w Centrum. Rejestracje mogą zostać podzielone przez platformę, rejestracja natywnym, czy szablon, tag, identyfikator usługi powiadomień wypychanych, identyfikator rejestracji i datę wygaśnięcia. Można również edytować rejestracji na tej stronie. Jest to szczególnie przydatne w przypadku edytowania tagów.
+Można wyświetlać wszystkie rejestracje w centrum i zarządzać nimi. Rejestracje mogą być kategoryzowane według platform, natywnych lub szablonów rejestracji, tagów, identyfikatora usługi powiadomień wypychanych, identyfikatora rejestracji i daty wygaśnięcia. Możesz również edytować rejestrację na tej stronie. Jest to szczególnie przydatne w przypadku edytowania tagów.
 
-Kliknij prawym przyciskiem myszy Centrum powiadomień w **Eksploratora serwera**i wybierz **diagnozowanie**. 
+Kliknij prawym przyciskiem myszy centrum powiadomień w **Eksplorator serwera**i wybierz polecenie **Diagnozuj**. 
 
-![Visual Studio Server Explorer: Diagnozowanie menu](./media/notification-hubs-diagnosing/diagnose-menu.png)
+![Eksplorator serwera programu Visual Studio: Menu Diagnozuj](./media/notification-hubs-diagnosing/diagnose-menu.png)
 
 Zostanie wyświetlona następująca strona:
 
-![Visual Studio: Diagnozowanie strony](./media/notification-hubs-diagnosing/diagnose-page.png)
+![Visual Studio: Strona diagnostyki](./media/notification-hubs-diagnosing/diagnose-page.png)
 
-Przełącz się do **rejestracje urządzeń** strony:
+Przejdź do strony **rejestracji urządzeń** :
 
 ![Visual Studio: Rejestracje urządzeń](./media/notification-hubs-diagnosing/VSRegistrations.png)
 
-Możesz użyć **wysyłanie testowe** strony, aby wysłać komunikatu z powiadomieniem testowym:
+Przy użyciu strony **wysyłania testowe** można wysłać testową wiadomość e-mail:
 
 ![Visual Studio: Wysyłanie testowe](./media/notification-hubs-diagnosing/test-send-vs.png)
 
 > [!NOTE]
-> Edytowanie rejestracji tylko podczas tworzenia/testowania i z ograniczoną liczbą rejestracji przy użyciu programu Visual Studio. Jeśli musisz zmodyfikować rejestracje w trybie zbiorczym, rozważ użycie opcji eksportowania i zaimportuj rejestracji funkcji opisanych w [How to: Eksportowanie i modyfikowanie rejestracji zbiorczej](https://msdn.microsoft.com/library/dn790624.aspx).
+> Program Visual Studio umożliwia edytowanie rejestracji tylko podczas tworzenia i testowania oraz ograniczoną liczbę rejestracji. Jeśli trzeba edytować rejestracje zbiorczo, należy rozważyć użycie funkcji rejestracji eksportu i importu opisanej w [temacie How to: Eksportować i modyfikować rejestracje zbiorczo](https://msdn.microsoft.com/library/dn790624.aspx).
 
 #### <a name="service-bus-explorer"></a>Eksplorator usługi Service Bus ####
 
-Wielu klientów używa [Eksploratora usługi Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer) do przeglądania i zarządzania ich usługi notification hubs. Eksplorator usługi Service Bus to projekt typu open source. 
+Wielu klientów używa [eksploratora Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer) do wyświetlania centrów powiadomień i zarządzania nimi. Eksplorator Service Bus jest projektem Open Source. 
 
-### <a name="verify-message-notifications"></a>Sprawdź powiadomienia
+### <a name="verify-message-notifications"></a>Weryfikuj powiadomienia o wiadomościach
 
 #### <a name="azure-portal"></a>Azure Portal ####
 
-Aby wysłać powiadomienie testowe do klientów bez konieczności usługi zaplecza działanie, w obszarze **pomoc techniczna i rozwiązywanie problemów**, wybierz opcję **wysyłanie testowe**.
+Aby wysłać testowe powiadomienie do klientów bez konieczności zapełniania i uruchamiania usługi, w obszarze **Pomoc techniczna i rozwiązywanie problemów**wybierz pozycję **wysyłanie testowe**.
 
 ![Testowanie funkcji wysyłania na platformie Azure][7]
 
 #### <a name="visual-studio"></a>Visual Studio ####
 
-Można również wysłać powiadomień dotyczących testów z programu Visual Studio.
+Możesz również wysyłać powiadomienia testowe z programu Visual Studio.
 
-![Testowanie funkcji wysyłania w programie Visual Studio][10]
+![Funkcja wysyłania testowego w programie Visual Studio][10]
 
-Aby uzyskać więcej informacji na temat używania usługi Notification Hubs za pomocą Eksploratora serwera w usłudze Visual Studio zobacz następujące artykuły:
+Aby uzyskać więcej informacji na temat używania Notification Hubs z programem Visual Studio Eksplorator serwera, zobacz następujące artykuły:
 
-* [Jak wyświetlić rejestracje urządzeń do usługi notification hubs](https://docs.microsoft.com/previous-versions/windows/apps/dn792122(v=win.10))
-* [Szczegółowe informacje: Visual Studio 2013 Update 2 RC i Azure SDK 2.3]
-* [Ogłaszamy wydanie programu Visual Studio 2013 Update 3 i Azure SDK 2.4]
+* [Jak wyświetlić rejestracje urządzeń dla centrów powiadomień](https://docs.microsoft.com/previous-versions/windows/apps/dn792122(v=win.10))
+* [Głębokie szczegółowe: Visual Studio 2013 Update 2 RC i Azure SDK 2,3]
+* [Ogłaszanie wersji Visual Studio 2013 Update 3 i zestawu Azure SDK 2,4]
 
-### <a name="debug-failed-notifications-and-review-notification-outcome"></a>Powiadomienia dotyczące niepowodzenia debugowania i przejrzyj wynik powiadomienia
+### <a name="debug-failed-notifications-and-review-notification-outcome"></a>Debugowanie powiadomień zakończonych niepowodzeniem i przegląd wyników powiadomień
 
-#### <a name="enabletestsend-property"></a>Atrybut EnableTestSend właściwości ####
+#### <a name="enabletestsend-property"></a>Właściwość EnableTestSend ####
 
-Podczas wysyłania powiadomienia za pośrednictwem usługi Notification Hubs, powiadomienia początkowo znajduje się w kolejce. Usługa Notification Hubs określa prawidłowe elementy docelowe, a następnie wysyła powiadomienie push notification Service. Jeśli używasz interfejsu API REST, ani żadnego z zestawów SDK klienta zwracany wywołania wysyłania oznacza, że tylko czy komunikat jest umieszczane w kolejce przy użyciu usługi Notification Hubs. Go nie zapewniają wgląd w co się dzieje po usługę Notification Hubs po pewnym czasie wysyłane powiadomienie push notification Service.
+Po wysłaniu powiadomienia za pośrednictwem Notification Hubs powiadomienia są początkowo umieszczane w kolejce. Notification Hubs określa prawidłowe elementy docelowe, a następnie wysyła powiadomienie do usługi powiadomień wypychanych. Jeśli korzystasz z interfejsu API REST lub dowolnego z zestawów SDK klienta, zwrot wywołania wysyłania oznacza tylko, że wiadomość jest umieszczona w kolejce przy użyciu Notification Hubs. Nie zapewnia on informacji o tym, co się stało, gdy Notification Hubs ostatecznie wysłał powiadomienie do usługi powiadomień wypychanych.
 
-Jeśli powiadomienia nie dotrze na urządzeniu klienckim, może wystąpić błąd podczas próby dostarczenia go do usługi powiadomień wypychanych usługi Notification Hubs. Na przykład rozmiar ładunku może przekracza maksymalną dozwoloną przez usługi powiadomień wypychanych lub poświadczenia skonfigurowane w usłudze Notification Hubs może być nieprawidłowy.
+Jeśli Twoje powiadomienie nie dotarło do urządzenia klienckiego, może wystąpić błąd Notification Hubs podczas próby dostarczenia go do usługi powiadomień wypychanych. Na przykład rozmiar ładunku może przekroczyć maksymalną dozwoloną przez usługę powiadomień wypychanych lub poświadczenia skonfigurowane w Notification Hubs mogą być nieprawidłowe.
 
-Aby uzyskać wgląd w wypychanych błędy usługi powiadomień, możesz użyć [EnableTestSend] właściwości. Ta właściwość jest automatycznie włączone, gdy wysyłanie wiadomości testowych z portalu lub klienta programu Visual Studio. Ta właściwość umożliwia Zobacz szczegółowe informacje o debugowaniu i również za pośrednictwem interfejsów API. Obecnie można go używać w zestawie SDK platformy .NET. Jego zostaną dodane do wszystkich zestawów SDK klienta po pewnym czasie.
+Aby uzyskać wgląd w błędy usługi powiadomień wypychanych, można użyć właściwości [EnableTestSend] . Ta właściwość jest włączana automatycznie podczas wysyłania wiadomości testowych z portalu lub klienta programu Visual Studio. Tej właściwości można użyć, aby wyświetlić szczegółowe informacje o debugowaniu, a także za pośrednictwem interfejsów API. Obecnie można używać go w zestawie SDK platformy .NET. Zostanie ona dodana do wszystkich zestawów SDK klienta ostatecznie.
 
-Do użycia `EnableTestSend` właściwości za pomocą wywołania REST, Dołącz parametr ciągu zapytania o nazwie *test* w celu wywołania wysyłania. Na przykład:
+Aby użyć `EnableTestSend` właściwości z wywołaniem REST, Dołącz parametr ciągu zapytania o nazwie *test* do końca wywołania wysyłania. Na przykład:
 
 ```text
 https://mynamespace.servicebus.windows.net/mynotificationhub/messages?api-version=2013-10&test
 ```
 
-#### <a name="net-sdk-example"></a>Przykładowy zestaw SDK platformy .NET ####
+#### <a name="net-sdk-example"></a>Przykład zestawu SDK platformy .NET ####
 
-Oto przykład przy użyciu zestawu .NET SDK, można wysłać powiadomienia wyskakującego natywnego (wyskakujące):
+Oto przykład użycia zestawu .NET SDK w celu wysłania natywnego powiadomienia wyskakującego okienka (wyskakujące okienko):
 
 ```csharp
 NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(connString, hubName);
@@ -210,9 +212,9 @@ var result = await hub.SendWindowsNativeNotificationAsync(toast);
 Console.WriteLine(result.State);
 ```
 
-Po zakończeniu wykonywania `result.State` po prostu stany `Enqueued`. Wynikami niepodania wgląd co się stało z usługi powiadomień wypychanych.
+Po zakończeniu wykonywania — `result.State` po prostu Stany. `Enqueued` Wyniki nie zapewniają wglądu w to, co się stało z powiadomieniem wypychanym.
 
-Następnie możesz użyć `EnableTestSend` właściwość typu Boolean. Użyj `EnableTestSend` właściwości podczas inicjowania `NotificationHubClient` Aby uzyskać szczegółowy stan wypychania błędów usługi powiadomień, które występują, gdy powiadomienie jest wysyłane. Wywołanie wysyłania zajmuje dodatkowy czas zwrotu, ponieważ najpierw musi usługi Notification Hubs w celu dostarczenia powiadomienia push notification Service.
+Następnie można użyć `EnableTestSend` właściwości Boolean. Użyj właściwości podczas inicjowania `NotificationHubClient` , aby uzyskać szczegółowy stan błędów usługi powiadomień wypychanych, które występują podczas wysyłania powiadomienia. `EnableTestSend` Wysyłanie wywołania trwa dodatkowy czas, ponieważ najpierw musi Notification Hubs dostarczyć powiadomienia do usługi powiadomień wypychanych.
 
 ```csharp
     bool enableTestSend = true;
@@ -236,37 +238,37 @@ windows
 The Token obtained from the Token Provider is wrong
 ```
 
-Ten komunikat oznacza, że skonfigurowane w usłudze Notification Hubs poświadczenia są nieprawidłowe albo że występuje problem z rejestracji w Centrum. Odstranit tuto registraci i pozwól klienta, ponownie utwórz rejestracji przed wysłaniem wiadomości.
+Ten komunikat oznacza, że poświadczenia skonfigurowane w Notification Hubs są nieprawidłowe lub wystąpił problem z rejestracjami w centrum. Usuń tę rejestrację i pozwól klientowi ponownie utworzyć rejestrację przed wysłaniem wiadomości.
 
 > [!NOTE]
-> Korzystanie z `EnableTestSend` właściwość jest mocno ograniczona. Użyj tej opcji tylko w środowisku tworzenia/testowania i z ograniczonym zestawem rejestracji. Debugowanie powiadomienia są wysyłane do urządzenia tylko 10. Ma to również limit przetwarzania wysyła debugowania, od 10 na minutę.
+> `EnableTestSend` Użycie właściwości jest silnie ograniczone. Tej opcji należy używać tylko w środowisku deweloperskim/testowym i z ograniczonym zestawem rejestracji. Powiadomienia debugowania są wysyłane tylko do 10 urządzeń. Istnieje również limit przetwarzania wysyłanych danych debugowania przy 10 na minutę.
 
 ### <a name="review-telemetry"></a>Przejrzyj dane telemetryczne ###
 
 #### <a name="azure-portal"></a>Azure Portal ####
 
-W portalu możesz uzyskać szybki przegląd wszystkich działań w Centrum powiadomień.
+W portalu możesz zapoznać się z krótkim omówieniem wszystkich działań w centrum powiadomień.
 
-1. Na **Przegląd** kartę, zobaczysz zagregowany widok rejestracji, powiadomienia i błędy przez platformę.
+1. Na karcie **Omówienie** można zobaczyć Zagregowany widok rejestracji, powiadomień i błędów według platformy.
 
-   ![Pulpit nawigacyjny przeglądu centra powiadomień][5]
+   ![Pulpit nawigacyjny przeglądu Notification Hubs][5]
 
-2. Na **Monitor** karcie, można dodać wiele innych metryk specyficzne dla platformy, aby dowiedzieć się więcej. Możesz obejrzeć specjalnie błędów, które są zwracane, gdy próbuje wysłać powiadomienie do usługi powiadomień wypychanych usługi Notification Hubs.
+2. Na karcie **monitor** można dodać wiele innych metryk specyficznych dla platformy w celu dokładniejszego przeszukiwania. Można wyszukać błędy, które są zwracane, gdy Notification Hubs próbuje wysłać powiadomienie do usługi powiadomień wypychanych.
 
-   ![Dziennik aktywności platformy Azure portal][6]
+   ![Azure Portal dziennik aktywności][6]
 
-3. Rozpocznij od przejrzenia **komunikaty przychodzące**, **operacje rejestracji**, i **powiadomienia zakończone powodzeniem**. Następnie przejdź do karty na platformie, aby przejrzeć błędy, które są specyficzne dla usługi powiadomień wypychanych.
+3. Zacznij od przejrzenia **komunikatów przychodzących**, **operacji rejestracji**i **powiadomień o powodzeniu**. Następnie przejdź do karty na platformę, aby przejrzeć błędy specyficzne dla usługi powiadomień wypychanych.
 
-4. Jeżeli ustawienia uwierzytelniania dla Centrum powiadomień są nieprawidłowe, komunikat **błąd uwierzytelniania systemu powiadomień platformy** pojawia się. Jest dobrym wskaźnikiem w celu sprawdzenia poświadczeń usługi push notification.
+4. Jeśli ustawienia uwierzytelniania dla centrum powiadomień są nieprawidłowe, pojawi się komunikat **o błędzie uwierzytelniania PNS** . Dobrym wskaźnikiem jest sprawdzenie poświadczeń usługi powiadomień wypychanych.
 
 #### <a name="programmatic-access"></a>Dostęp programowy ####
 
-Aby uzyskać więcej informacji na temat dostęp programowy zobacz [dostęp programowy](https://docs.microsoft.com/previous-versions/azure/azure-services/dn458823(v=azure.100)).
+Aby uzyskać więcej informacji o dostępie programistycznym, zobacz [dostęp programistyczny](https://docs.microsoft.com/previous-versions/azure/azure-services/dn458823(v=azure.100)).
 
 > [!NOTE]
-> Kilka funkcji związane z telemetrią, takich jak eksportowanie i importowanie rejestracji i dane telemetryczne dostęp za pośrednictwem interfejsów API, są dostępne tylko w warstwie usług standardowa na. Próby użycia tych funkcji, bezpłatna lub podstawowa z warstwy usług, zapewnisz sobie komunikat o wyjątku używania zestawu SDK. Jeśli korzystasz z funkcji bezpośrednio za pośrednictwem interfejsów API REST, zostanie wyświetlony błąd HTTP 403 (zabronione).
+> Niektóre funkcje związane z telemetrią, takie jak eksportowanie i importowanie rejestracji oraz dostęp do telemetrii za pośrednictwem interfejsów API, są dostępne tylko w warstwie Standardowa usługi. Jeśli spróbujesz użyć tych funkcji z warstwy Bezpłatna lub podstawowa, zostanie wyświetlony komunikat o wyjątku w przypadku użycia zestawu SDK. Jeśli używasz funkcji bezpośrednio z interfejsów API REST, otrzymasz błąd HTTP 403 (dostęp zabroniony).
 >
-> Korzystanie z funkcji powiązanych danych telemetrycznych, najpierw upewnij się, w witrynie Azure portal używasz warstwie usługi standardowa.  
+> Aby korzystać z funkcji związanych z telemetrią, należy najpierw upewnić się, że w Azure Portal jest używana standardowa warstwa usług.  
 
 <!-- IMAGES -->
 [0]: ./media/notification-hubs-diagnosing/Architecture.png
@@ -281,15 +283,15 @@ Aby uzyskać więcej informacji na temat dostęp programowy zobacz [dostęp prog
 [10]: ./media/notification-hubs-diagnosing/VSTestNotification.png
 
 <!-- LINKS -->
-[Notification Hubs — omówienie]: notification-hubs-push-notification-overview.md
-[Rozpoczynanie pracy z usługą Azure Notification Hubs]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
+[Przegląd Notification Hubs]: notification-hubs-push-notification-overview.md
+[Wprowadzenie do usługi Azure Notification Hubs]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [Szablony]: https://msdn.microsoft.com/library/dn530748.aspx
 [Omówienie usługi APNs]: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html
-[Temat wiadomości FCM]: https://firebase.google.com/docs/cloud-messaging/concept-options
+[Informacje o komunikatach FCM]: https://firebase.google.com/docs/cloud-messaging/concept-options
 [Export and modify registrations in bulk]: https://msdn.microsoft.com/library/dn790624.aspx
 [Service Bus Explorer code]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Explorer-f2abca5a
 [View device registrations for notification hubs]: https://msdn.microsoft.com/library/windows/apps/xaml/dn792122.aspx
-[Szczegółowe informacje: Visual Studio 2013 Update 2 RC i Azure SDK 2.3]: https://azure.microsoft.com/blog/2014/04/09/deep-dive-visual-studio-2013-update-2-rc-and-azure-sdk-2-3/#NotificationHubs
-[Ogłaszamy wydanie programu Visual Studio 2013 Update 3 i Azure SDK 2.4]: https://azure.microsoft.com/blog/2014/08/04/announcing-release-of-visual-studio-2013-update-3-and-azure-sdk-2-4/
+[Głębokie szczegółowe: Visual Studio 2013 Update 2 RC i Azure SDK 2,3]: https://azure.microsoft.com/blog/2014/04/09/deep-dive-visual-studio-2013-update-2-rc-and-azure-sdk-2-3/#NotificationHubs
+[Ogłaszanie wersji Visual Studio 2013 Update 3 i zestawu Azure SDK 2,4]: https://azure.microsoft.com/blog/2014/08/04/announcing-release-of-visual-studio-2013-update-3-and-azure-sdk-2-4/
 [EnableTestSend]: https://docs.microsoft.com/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.enabletestsend?view=azure-dotnet
 [Programmatic telemetry access]: https://msdn.microsoft.com/library/azure/dn458823.aspx

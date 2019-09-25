@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 3140aff93c9afcf9a911fe1f381859ff93efef14
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: beb9e1344f5dd3bf4b3c3d293e38a7a28170771c
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178358"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212008"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 
@@ -215,7 +215,7 @@ Standardowe udziały plików są dostępne we wszystkich regionach do 5 TiB. W n
 |East US        |LRS     |Nie    |Jeszcze nie|
 |Francja Środkowa |LRS, ZRS|Nie    |LRS — tak, ZRS — jeszcze nie|
 |Francja Południowa   |LRS     |Nie    |Tak|
-|Europa Północna   |LRS     |Nie    |Tak|
+|Europa Północna   |LRS     |Nie    |Jeszcze nie|
 |Indie Południowe    |LRS     |Nie    |Jeszcze nie|
 |Azja Południowo-Wschodnia |LRS, ZRS|Nie    |Tak|
 |Środkowo-zachodnie stany USA|LRS     |Nie    |Jeszcze nie|

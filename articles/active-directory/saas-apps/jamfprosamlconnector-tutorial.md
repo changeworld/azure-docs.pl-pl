@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91c8a2fb278515306848f46206db67b7f37ea2ac
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: bfe426a6b3d087683e615d3212e0693b185c40f0
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034258"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212382"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-jamf-pro"></a>Samouczek: Azure Active Directory integrację z logowaniem jednokrotnym przy użyciu Jamf Pro
 
@@ -87,7 +87,7 @@ W tej sekcji włączasz Logowanie jednokrotne usługi Azure AD w Azure Portal.
 1. Wybierz pozycję **Ustaw dodatkowe adresy URL**. Jeśli chcesz skonfigurować aplikację w trybie inicjowania programu **SP** , w polu tekstowym **adres URL logowania** wprowadź adres URL, który używa następującej formuły:`https://<subdomain>.jamfcloud.com`
 
     > [!NOTE]
-    > To nie są rzeczywiste wartości. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora, adresu URL odpowiedzi i adresu URL logowania. Rzeczywista wartość identyfikatora znajduje się **w sekcji * w portalu** Jamf Pro, która została omówiona w dalszej części tego samouczka. Wartość rzeczywistej domeny podrzędnej można wyodrębnić z wartości identyfikatora i użyć jej jako adresu URL logowania i adresu URL odpowiedzi. Można również odwołać się do formuł przedstawionych w sekcji podstawowe informacje o **konfiguracji SAML** w Azure Portal.
+    > To nie są rzeczywiste wartości. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora, adresu URL odpowiedzi i adresu URL logowania. Rzeczywista wartość identyfikatora zostanie pobrana z sekcji **Logowanie** jednokrotne w portalu Jamf Pro, która została omówiona w dalszej części tego samouczka. Wartość rzeczywistej domeny podrzędnej można wyodrębnić z wartości identyfikatora i użyć jej jako adresu URL logowania i adresu URL odpowiedzi. Można również odwołać się do formuł przedstawionych w sekcji podstawowe informacje o **konfiguracji SAML** w Azure Portal.
 
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** przejdź do sekcji **certyfikat podpisywania SAML** , wybierz przycisk **Kopiuj** , aby skopiować **adres URL metadanych federacji aplikacji**, a następnie zapisz go na komputerze.
 

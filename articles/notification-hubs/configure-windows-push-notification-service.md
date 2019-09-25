@@ -1,39 +1,41 @@
 ---
-title: Konfigurowanie systemu Windows Push Notification Service w usłudze Azure Notification Hubs | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować ustawienia Windows Push Notification Service dla usługi Azure notification hub.
+title: Konfigurowanie usługi powiadomień wypychanych systemu Windows na platformie Azure Notification Hubs | Microsoft Docs
+description: Dowiedz się, jak skonfigurować ustawienia usługi powiadomień wypychanych systemu Windows dla centrum powiadomień platformy Azure.
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: article
 ms.date: 03/25/2019
-ms.author: jowargo
-ms.openlocfilehash: c3e3f1e7df5c90c690756375ff1e1b0350c72714
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/25/2019
+ms.openlocfilehash: a7f7734d97cd67c133ff0cedc3ef2376967bcdf4
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60240279"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212413"
 ---
-# <a name="configure-windows-push-notification-service-wns-settings-for-a-notification-hub-in-the-azure-portal"></a>Konfigurowanie ustawień usługi powiadomień wypychanych Windows (WNS) dla Centrum powiadomień w witrynie Azure portal
-W tym artykule pokazano, jak skonfigurować ustawienia hosta skryptów systemu Windows (WNS, Windows Notification Service) dla usługi Azure notification hub przy użyciu witryny Azure portal.  
+# <a name="configure-windows-push-notification-service-wns-settings-for-a-notification-hub-in-the-azure-portal"></a>Skonfiguruj ustawienia usługi Windows Push Notification Service (WNS) dla centrum powiadomień w Azure Portal
+W tym artykule opisano sposób konfigurowania ustawień usługi powiadomień systemu Windows (WNS) dla centrum powiadomień platformy Azure przy użyciu Azure Portal.  
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Jeśli nie zostało jeszcze utworzone Centrum powiadomień, utwórz ją teraz. Aby uzyskać więcej informacji, zobacz [Tworzenie Centrum powiadomień platformy Azure w witrynie Azure portal](create-notification-hub-portal.md). 
+Jeśli nie utworzono jeszcze centrum powiadomień, utwórz je teraz. Aby uzyskać więcej informacji, zobacz [Tworzenie centrum powiadomień platformy Azure w Azure Portal](create-notification-hub-portal.md). 
 
-## <a name="configure-windows-push-notification-service-wns"></a>Konfigurowanie usługi powiadomień wypychanych systemu Windows (WNS)
+## <a name="configure-windows-push-notification-service-wns"></a>Konfigurowanie usługi powiadomień WNS (WNS)
 
-Poniższa procedura zawiera kroki, aby skonfigurować ustawienia usługi powiadomień wypychanych Windows (WNS) dla Centrum powiadomień: 
+Poniższa procedura zawiera instrukcje dotyczące konfigurowania ustawień usługi Windows Push Notification Service (WNS) dla centrum powiadomień: 
 
-1. W witrynie Azure portal na **Centrum powiadomień** wybierz opcję **Windows (WNS)** w menu po lewej stronie.
+1. Na Azure Portal na stronie **centrum powiadomień** wybierz pozycję **Windows (WNS)** w menu po lewej stronie.
 2. Wprowadź wartości w polach **Identyfikator SID pakietu** i **Klucz zabezpieczeń**.
 3. Wybierz pozycję **Zapisz**.
 
-   ![Zrzut ekranu pokazujący pola Identyfikator SID pakietu i klucz zabezpieczeń](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-configure-wns.png)
+   ![Zrzut ekranu przedstawiający pola identyfikatora SID pakietu i klucza zabezpieczeń](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-configure-wns.png)
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać samouczek z instrukcjami krok po kroku dla wypychanie powiadomień do aplikacji platformy uniwersalnej Windows za pomocą usługi Azure Notification Hubs i usługi powiadomień wypychanych Windows (WNS), zobacz [wysyłać powiadomienia do aplikacji platformy uniwersalnej systemu Windows, korzystając z platformy Azure Usługa Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
+## <a name="next-steps"></a>Następne kroki
+Samouczek z instrukcjami krok po kroku dotyczącymi wypychania powiadomień do aplikacji platforma uniwersalna systemu Windows przy użyciu usługi Azure Notification Hubs i Windows Push Notification Service (WNS), zobacz [wysyłanie powiadomień do aplikacji platformy UWP przy użyciu powiadomień platformy Azure Centra](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
 
 

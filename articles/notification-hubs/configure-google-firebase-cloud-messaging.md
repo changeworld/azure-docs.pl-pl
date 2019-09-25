@@ -1,38 +1,40 @@
 ---
-title: Konfigurowanie usługi Google Firebase Cloud komunikatów w usłudze Azure Notification Hubs | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować usługi Azure notification hub przy użyciu ustawień usługi Google Firebase Cloud Messaging.
+title: Konfigurowanie usługi Google Firebase Cloud Messaging na platformie Azure Notification Hubs | Microsoft Docs
+description: Dowiedz się, jak skonfigurować centrum powiadomień Azure za pomocą ustawień obsługi komunikatów w usłudze Google Firebase Cloud.
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: article
 ms.date: 03/25/2019
-ms.author: jowargo
-ms.openlocfilehash: d200f5746d5f7c62ff3a52873d5d5d6c3e1322dc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/25/2019
+ms.openlocfilehash: 803289476d4d8869f7828b2843a983ee0c86bfbd
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60239198"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212499"
 ---
-# <a name="configure-google-firebase-cloud-messaging-fcm-settings-for-a-notification-hub-in-the-azure-portal"></a>Konfigurowanie ustawień Google Firebase Cloud Messaging (FCM) dla Centrum powiadomień w witrynie Azure portal
-W tym artykule pokazano, jak skonfigurować ustawienia Google Firebase Cloud Messaging (FCM) dla usługi Azure notification hub przy użyciu witryny Azure portal.  
+# <a name="configure-google-firebase-cloud-messaging-fcm-settings-for-a-notification-hub-in-the-azure-portal"></a>Skonfiguruj ustawienia usługi Google Firebase Cloud Messaging (FCM) dla centrum powiadomień w Azure Portal
+W tym artykule opisano sposób konfigurowania ustawień usługi Google Firebase Cloud Messaging (FCM) dla centrum powiadomień platformy Azure przy użyciu Azure Portal.  
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Jeśli nie zostało jeszcze utworzone Centrum powiadomień, utwórz ją teraz. Aby uzyskać więcej informacji, zobacz [Tworzenie Centrum powiadomień platformy Azure w witrynie Azure portal](create-notification-hub-portal.md). 
+Jeśli nie utworzono jeszcze centrum powiadomień, utwórz je teraz. Aby uzyskać więcej informacji, zobacz [Tworzenie centrum powiadomień platformy Azure w Azure Portal](create-notification-hub-portal.md). 
 
 ## <a name="configure-google-firebase-cloud-messaging-fcm"></a>Konfigurowanie usługi Google Firebase Cloud Messaging (FCM)
 
-Poniższa procedura zawiera kroki, aby skonfigurować ustawienia Google Firebase Cloud Messaging (FCM) dla Centrum powiadomień: 
+Poniższa procedura zawiera instrukcje dotyczące konfigurowania ustawień usługi Google Firebase Cloud Messaging (FCM) dla centrum powiadomień: 
 
-1. W witrynie Azure portal na **Centrum powiadomień** wybierz opcję **Google (GCM/FCM)** w menu po lewej stronie. 
-2. Wklej **klucz interfejsu API** w projekcie usługi FCM, który został wcześniej zapisany. 
+1. Na Azure Portal na stronie **centrum powiadomień** wybierz pozycję **Google (GCM/FCM)** w menu po lewej stronie. 
+2. Wklej **klucz interfejsu API** dla projektu FCM, który został wcześniej zapisany. 
 3. Wybierz pozycję **Zapisz**. 
 
-   ![Zrzut ekranu pokazujący sposób konfigurowania usługi Notification Hubs dla usługi FCM Google](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
+   ![Zrzut ekranu pokazujący sposób konfigurowania Notification Hubs dla usługi Google FCM](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
 
-## <a name="next-steps"></a>Kolejne kroki
-Samouczek z instrukcjami krok po kroku dla wypychanie powiadomień do urządzeń z systemem Android przy użyciu usługi Azure Notification Hubs i Google Firebase Cloud Messaging [wysyłać powiadomienia wypychane do urządzeń z systemem Android przy użyciu usługi Notification Hubs i Google FCM ](notification-hubs-android-push-notification-google-fcm-get-started.md).
+## <a name="next-steps"></a>Następne kroki
+Samouczek z instrukcjami krok po kroku dotyczącymi wypychania powiadomień do urządzeń z systemem Android przy użyciu usług Azure Notification Hubs i Google Firebase Cloud Messaging znajduje się w temacie [powiadomienia wypychane do urządzeń z systemem Android przy użyciu Notification Hubs i Google FCM](notification-hubs-android-push-notification-google-fcm-get-started.md).
 

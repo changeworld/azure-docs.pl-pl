@@ -1,43 +1,43 @@
 ---
-title: 'Szybki start: Rozpoznaje cyfrowy atrament za pomocą interfejsu API REST rozpoznawania pisma odręcznego i Java'
+title: 'Szybki start: Rozpoznawanie cyfrowego pisma odręcznego za pomocą interfejsu API REST aparatu rozpoznawania farb i języka Java'
 titleSuffix: Azure Cognitive Services
-description: Użyj interfejsu API rozpoznawania pisma odręcznego, aby rozpocząć, rozpoznawaniu pociągnięć odręcznych cyfrowych.
+description: Użyj interfejsu API rozpoznawania pisma odręcznego, aby rozpocząć rozpoznawanie cyfrowych pociągnięć atramentu.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 05/02/2019
+ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: b1c739b6355d3b32063e5289720ed1d191611e65
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 36ff0fe4550b140a722ed25f4e372f7c88581211
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721231"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212689"
 ---
-# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-java"></a>Szybki start: Rozpoznaje cyfrowy atrament za pomocą interfejsu API REST rozpoznawania pisma odręcznego i Java
+# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-java"></a>Szybki start: Rozpoznawanie cyfrowego pisma odręcznego za pomocą interfejsu API REST aparatu rozpoznawania farb i języka Java
 
-Aby rozpocząć korzystanie z interfejsu API rozpoznawania pisma odręcznego na pociągnięć odręcznych cyfrowych, należy użyć tego przewodnika Szybki Start. Ta aplikacja Java wysyła żądanie interfejsu API, zawierające dane pociągnięcia odręczne w formacie JSON, a następnie pobiera odpowiedź.
+Skorzystaj z tego przewodnika Szybki Start, aby rozpocząć korzystanie z interfejsu API rozpoznawania atramentu na potrzeby pociągnięć atramentów cyfrowych Ta aplikacja Java wysyła żądanie interfejsu API zawierające dane pociągnięcia odręcznego w formacie JSON i pobiera odpowiedź.
 
 Chociaż ta aplikacja jest napisana w języku Java, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
 
-Zwykle będzie wywołać interfejs API z aplikacją pisma odręcznego cyfrowych. Ten przewodnik Szybki Start wysyła danych pociągnięcia odręczne na potrzeby poniższego przykładu pisma odręcznego z pliku JSON.
+Zazwyczaj można wywołać interfejs API z aplikacji cyfrowego odręcznego. Ten przewodnik Szybki Start wysyła dane pociągnięć odręcznych dla poniższego przykładu napisanego ręcznie z pliku JSON.
 
-![Obraz przedstawiający tekstu odręcznego](../media/handwriting-sample.jpg)
+![obraz tekstu odręcznego](../media/handwriting-sample.jpg)
 
-Kod źródłowy dla tego przewodnika Szybki Start można znaleźć na [GitHub](https://go.microsoft.com/fwlink/?linkid=2089904).
+Kod źródłowy dla tego przewodnika Szybki Start można znaleźć w witrynie [GitHub](https://go.microsoft.com/fwlink/?linkid=2089904).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- [Java&trade; 7 Kit(JDK) rozwoju](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) lub nowszej.
+- [Zestaw Java&trade; Development Kit (JDK) 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) lub nowszy.
 
-- Importowanie tych bibliotek z repozytorium Maven
-    - [JSON w języku Java](https://mvnrepository.com/artifact/org.json/json) pakietu
-    - [Apache HttpClient](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient) pakietu
+- Zaimportuj te biblioteki z repozytorium Maven
+    - [Kod JSON w pakiecie java](https://mvnrepository.com/artifact/org.json/json)
+    - Pakiet [Apache HttpClient](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient)
 
-- Pociągnięcia odręczne przykładowych danych w tym przewodniku Szybki znajduje się na [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/InkRecognition/quickstart/example-ink-strokes.json).
+- Przykładowe dane pociągnięcia farbą dla tego przewodnika Szybki Start można znaleźć w witrynie [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/InkRecognition/quickstart/example-ink-strokes.json).
 
 [!INCLUDE [cognitive-services-ink-recognizer-signup-requirements](../../../../includes/cognitive-services-ink-recognizer-signup-requirements.md)]
 
@@ -58,7 +58,7 @@ Kod źródłowy dla tego przewodnika Szybki Start można znaleźć na [GitHub](h
     import java.nio.file.Paths;
     ```
 
-2. Utwórz zmienne dla swój klucz subskrypcji i punktu końcowego usługi. Poniżej znajduje się identyfikator URI, można użyć do rozpoznawania pisma odręcznego. Zostanie on dołączony do punktu końcowego usługi później, aby utworzyć adres URL żądania interfejsu API.
+2. Utwórz zmienne dla klucza subskrypcji i punktu końcowego. Zamień punkt końcowy poniżej na ten wygenerowany dla zasobu aparatu rozpoznawania atramentu. Dołącz go do identyfikatora URI rozpoznawania pisma odręcznego, aby nawiązać połączenie z interfejsem API.
 
     ```java
     // Replace the subscriptionKey string value with your valid subscription key.
@@ -66,23 +66,23 @@ Kod źródłowy dla tego przewodnika Szybki Start można znaleźć na [GitHub](h
     // Replace the dataPath string with a path to the JSON formatted ink stroke data file.
     static final String dataPath = "PATH_TO_INK_STROKE_DATA";
     
-    static final String endpoint = "https://api.cognitive.microsoft.com";
+    static final String endpoint = "https://<your-custom-subdomain>.cognitiveservices.azure.com";
     static final String inkRecognitionUrl = "/inkrecognizer/v1.0-preview/recognize";
     ```
 
-## <a name="create-a-function-to-send-requests"></a>Tworzenie funkcji na potrzeby wysyłania żądań
+## <a name="create-a-function-to-send-requests"></a>Utwórz funkcję do wysyłania żądań
 
-1. Utwórz nową funkcję o nazwie `sendRequest()` przyjmującej zmienne utworzone powyżej. Następnie wykonaj poniższe czynności.
+1. Utwórz nową funkcję o nazwie `sendRequest()` , która przyjmuje zmienne utworzone powyżej. Następnie wykonaj poniższe czynności.
 
-2. Utwórz `CloseableHttpClient` obiektu, który może wysyłać żądań do interfejsu API. Wyślij żądanie `HttpPut` obiekt żądania przez połączenie punktu końcowego i adres URL żądającego aparatu rozpoznawania pisma odręcznego.
+2. `CloseableHttpClient` Utwórz obiekt, który może wysyłać żądania do interfejsu API. Wyślij żądanie do `HttpPut` obiektu żądania, łącząc punkt końcowy i adres URL aparatu rozpoznawania atramentu.
 
-3. Użyj żądania `setHeader()` funkcję, aby ustawić `Content-Type` nagłówka do `application/json`i Dodaj swój klucz subskrypcji, aby `Ocp-Apim-Subscription-Key` nagłówka.
+3. Użyj `setHeader()` funkcji żądania `Content-Type` ,aby`application/json`ustawić nagłówek na, i Dodaj swój klucz subskrypcji do nagłówka.`Ocp-Apim-Subscription-Key`
 
-4. Użyj żądania `setEntity()` funkcję, aby dane, które mają być wysyłane.   
+4. Użyj `setEntity()` funkcji żądania do wysyłanych danych.   
 
-5. Korzystanie z klienta `execute()` funkcji do wysłania żądania i zapisać go w celu `CloseableHttpResponse` obiektu. 
+5. Użyj `execute()` funkcji klienta, aby wysłać żądanie i zapisać ją `CloseableHttpResponse` w obiekcie. 
 
-6. Utwórz `HttpEntity` obiektu do zapisania zawartości odpowiedzi. Pobierz zawartość z `getEntity()`. Jeśli odpowiedź nie jest pusty, zwraca go.
+6. `HttpEntity` Utwórz obiekt do przechowywania zawartości odpowiedzi. Pobierz zawartość za pomocą `getEntity()`programu. Jeśli odpowiedź nie jest pusta, zwróć ją.
     
     ```java
     static String sendRequest(String apiAddress, String endpoint, String subscriptionKey, String requestData) {
@@ -110,7 +110,7 @@ Kod źródłowy dla tego przewodnika Szybki Start można znaleźć na [GitHub](h
 
 ## <a name="send-an-ink-recognition-request"></a>Wyślij żądanie rozpoznawania pisma odręcznego
 
-Utwórz metodę o nazwie `recognizeInk()` rozpoznać danych pociągnięcia odręczne. Wywołaj `sendRequest()` metoda utworzoną za pomocą punktu końcowego, adres url, klucz subskrypcji i danych json. Pobierz wynik i drukować do konsoli.
+Utwórz metodę o nazwie `recognizeInk()` , aby rozpoznać dane pociągnięcia odręcznego. Wywołaj `sendRequest()` metodę utworzoną powyżej przy użyciu swojego punktu końcowego, adresu URL, klucza subskrypcji i danych JSON. Pobierz wynik i wydrukuj go w konsoli programu.
 
 ```java
 static void recognizeInk(String requestData) {
@@ -120,11 +120,11 @@ static void recognizeInk(String requestData) {
 }
 ```
 
-## <a name="load-your-digital-ink-data-and-send-the-request"></a>Załaduj dane cyfrowy atrament i wysłać żądanie
+## <a name="load-your-digital-ink-data-and-send-the-request"></a>Ładowanie danych cyfrowego atramentu i wysyłanie żądania
 
-1. W metodzie głównej aplikacji należy przeczytać plik JSON zawierający dane, które zostaną dodane do żądania.
+1. W głównej metodzie aplikacji przeczytaj plik JSON zawierający dane, które zostaną dodane do żądań.
 
-2. Wywołaj funkcję rozpoznawania pisma odręcznego utworzonego powyżej.
+2. Wywołaj funkcję rozpoznawania pisma odręcznego utworzoną powyżej.
     
     ```java
     public static void main(String[] args) throws Exception {
@@ -133,17 +133,17 @@ static void recognizeInk(String requestData) {
     }
     ```
 
-## <a name="run-the-application-and-view-the-response"></a>Uruchom aplikację, a następnie zobacz odpowiedź
+## <a name="run-the-application-and-view-the-response"></a>Uruchom aplikację i Wyświetl odpowiedź
 
-Uruchom aplikację. Odpowiedź oznaczająca Powodzenie są zwracane w formacie JSON. Możesz również znaleźć odpowiedź w formacie JSON na [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/InkRecognition/quickstart/example-response.json).
+Uruchom aplikację. Pomyślna odpowiedź jest zwracana w formacie JSON. Odpowiedź na kod JSON można również znaleźć w witrynie [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/InkRecognition/quickstart/example-response.json).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Dokumentacja interfejsu API REST](https://go.microsoft.com/fwlink/?linkid=2089907)
 
 
-Aby zobaczyć, jak działa interfejs API rozpoznawania pisma odręcznego w cyfrowych aplikacji pisma odręcznego, spójrz na następujące przykładowe aplikacje w usłudze GitHub:
+Aby zobaczyć, jak działa interfejs API rozpoznawania pisma odręcznego w aplikacji do cyfrowego odkróla, zapoznaj się z następującymi przykładowymi aplikacjami w witrynie GitHub:
 * [C# i platforma uniwersalna systemu Windows (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
 * [C# i Windows Presentation Foundation (WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
 * [Aplikacja języka JavaScript dla przeglądarki internetowej](https://go.microsoft.com/fwlink/?linkid=2089908)       

@@ -1,11 +1,11 @@
 ---
 title: Wysyłanie powiadomień do aplikacji platformy uniwersalnej systemu Windows przy użyciu usługi Azure Notification Hubs | Microsoft Docs
-description: Dowiedz się, jak używać usługi Azure Notification Hubs wysyłać powiadomienia wypychane do aplikacji platformy uniwersalnej dla Windows.
+description: Użyj usługi Azure Notification Hubs, aby wypchnąć powiadomienia wypychane do aplikacji platformy uniwersalnej systemu Windows.
 services: notification-hubs
 documentationcenter: windows
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: cf307cf3-8c58-4628-9c63-8751e6a0ef43
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,24 +14,26 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/22/2019
-ms.author: jowargo
-ms.openlocfilehash: 714c2be7265a41a7791ce39bfaa1bdc12fa58cac
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/22/2019
+ms.openlocfilehash: 82f983f6fc55c01c4e445915d06da33889977d24
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340746"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213438"
 ---
 # <a name="tutorial-send-notifications-to-universal-windows-platform-apps-by-using-azure-notification-hubs"></a>Samouczek: wysyłanie powiadomień do aplikacji platformy uniwersalnej systemu Windows przy użyciu usługi Azure Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-Korzystając z tego samouczka, utworzysz centrum powiadomień, aby wysyłać powiadomienia push do aplikacji platformy uniwersalnej systemu Windows (UWP, Universal Windows Platform). Utworzysz pustą aplikację dla Sklepu Windows, która odbiera powiadomienia push przy użyciu usługi powiadomień push systemu Windows (WNS). Następnie przy użyciu Centrum powiadomień wysyłać powiadomienia push do wszystkich urządzeń, które są używane przez aplikację.
+Korzystając z tego samouczka, utworzysz centrum powiadomień, aby wysyłać powiadomienia push do aplikacji platformy uniwersalnej systemu Windows (UWP, Universal Windows Platform). Utworzysz pustą aplikację dla Sklepu Windows, która odbiera powiadomienia push przy użyciu usługi powiadomień push systemu Windows (WNS). Następnie możesz wysyłać powiadomienia wypychane do wszystkich urządzeń z uruchomioną aplikacją przy użyciu Centrum powiadomień.
 
 > [!NOTE]
 > Kompletny kod dla tego samouczka można znaleźć [w witrynie GitHub](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/UwpSample).
 
-Należy wykonać następujące czynności:
+Wykonaj następujące czynności:
 
 > [!div class="checklist"]
 > * Tworzenie aplikacji w Sklepie Windows
@@ -45,11 +47,11 @@ Należy wykonać następujące czynności:
 - Program [Microsoft Visual Studio Community 2015](https://www.visualstudio.com/products/visual-studio-community-vs) lub nowszy.
 - [Zainstalowane narzędzia do programowania aplikacji platformy UWP](https://msdn.microsoft.com/windows/uwp/get-started/get-set-up)
 - Aktywne konto Sklepu Windows
-- Upewnij się, że **otrzymywać powiadomienia z aplikacji i innych nadawców** ustawienie jest włączone. 
-    - Uruchom **ustawienia** okna na tym komputerze.
-    - Wybierz **systemu** kafelka.
-    - Wybierz **powiadomienia i akcje** menu po lewej stronie. 
-    - Upewnij się, że **otrzymywać powiadomienia z aplikacji i innych nadawców** ustawienie jest włączone. Jeśli nie jest włączona, należy ją włączyć. 
+- Upewnij się, że opcja **Pobierz powiadomienia z aplikacji i innych nadawców** jest włączona. 
+    - Uruchom okno **Ustawienia** na komputerze.
+    - Wybierz kafelek **system** .
+    - Wybierz pozycję **powiadomienia & akcje** z menu po lewej stronie. 
+    - Upewnij się, że ustawienie **Pobierz powiadomienia z aplikacji i innych nadawców** jest włączone. Jeśli nie jest włączona, włącz ją. 
 
 Wykonanie czynności opisanych w tym samouczku jest wymaganiem wstępnym dla wszystkich innych samouczków usługi Notification Hubs dotyczących aplikacji platformy UWP.
 
@@ -174,8 +176,8 @@ Możesz szybko przetestować odbieranie powiadomień w aplikacji, wysyłając po
 
     ![Komunikat z powiadomieniem](./media/notification-hubs-windows-store-dotnet-get-started/test-notification-message.png)
 
-## <a name="next-steps"></a>Kolejne kroki
-Za pomocą portalu lub aplikacji konsolowej zostały wysłano wyemitowane powiadomienia do wszystkich urządzeń z systemem Windows. Aby dowiedzieć się, jak wysyłać powiadomienia push do konkretnych urządzeń, przejdź do następującego samouczka:
+## <a name="next-steps"></a>Następne kroki
+Wysłano powiadomienia emisji do wszystkich urządzeń z systemem Windows przy użyciu portalu lub aplikacji konsolowej. Aby dowiedzieć się, jak wysyłać powiadomienia push do konkretnych urządzeń, przejdź do następującego samouczka:
 
 > [!div class="nextstepaction"]
 >[Wysyłanie powiadomień push do konkretnych urządzeń](

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 93eddc0ff8f1a1af8b485fcdb891f72d874b5c0a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: c1b372dbeaea31e83c8ff42a84fc39d762b2ebdb
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202952"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212267"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Wersja zapoznawcza — tworzenie i zarządzanie wieloma pulami węzłów dla klastra w usłudze Azure Kubernetes Service (AKS)
 
@@ -246,14 +246,14 @@ Klaster AKS ma dwa obiekty zasobów klastra z skojarzonymi wersjami Kubernetes. 
 
 1. Uaktualnianie płaszczyzny kontroli wymaga użycia`az aks upgrade`
    * Spowoduje to uaktualnienie wersji płaszczyzny kontroli i wszystkich pul węzłów w klastrze.
-   * `--control-plane-only` Przekazanie `az aks upgrade` `--control-plane-only` z flagą spowoduje uaktualnienie tylko płaszczyzny kontroli klastra i brak skojarzonych pul węzłów * flaga jest dostępna w **AKS-Preview Extension v 0.4.16** lub nowszej
+   * `az aks upgrade` Przekazanie`--control-plane-only` z flagą jest uaktualniane, a żadna ze skojarzonych pul węzłów nie zostanie zmieniona. Flaga jest dostępna w **AKS-Preview Extension v 0.4.16** lub nowszej. `--control-plane-only`
 1. Uaktualnianie poszczególnych pul węzłów wymaga użycia`az aks nodepool upgrade`
    * Spowoduje to uaktualnienie tylko puli węzłów docelowych z określoną wersją Kubernetes
 
 Relacja między wersjami Kubernetes przechowywanymi przez pule węzłów musi również być zgodna z zestawem reguł.
 
 1. Nie można obniżyć poziomu płaszczyzny kontroli ani wersji Kubernetes puli węzłów.
-1. Jeśli nie zostanie określona wersja Kubernetes puli węzłów, domyślnie zostanie przywrócona Poprzednia wersja płaszczyzny kontroli.
+1. Jeśli nie określono wersji Kubernetes puli węzłów, zachowanie zależy od używanego klienta. Dla deklaracji w szablonie ARM zostanie użyta istniejąca wersja zdefiniowana dla puli węzłów, jeśli żadna z nich nie jest ustawiona. zostanie użyta wersja płaszczyzny kontroli.
 1. W danym momencie można uaktualnić lub skalować płaszczyznę kontroli lub pulę węzłów, nie można jednocześnie przesłać obu operacji.
 1. Wersja Kubernetes puli węzłów musi być tą samą wersją główną jak płaszczyzną kontroli.
 1. Wersja Kubernetes puli węzłów może mieć co najwyżej dwie wersje pomocnicze (2) mniejsze od płaszczyzny kontroli, nigdy nie większa.
@@ -593,7 +593,7 @@ Węzły AKS nie wymagają swoich własnych publicznych adresów IP do komunikacj
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
 
-Po pomyślnej rejestracji Wdróż szablon Azure Resource Manager, postępując zgodnie z tymi samymi instrukcjami, jak [powyżej](#manage-node-pools-using-a-resource-manager-template) , i dodając następującą właściwość wartość logiczna "enableNodePublicIP" w agentPoolProfiles. Ustawienie tej opcji `true` na wartość domyślnie zostanie ustawione tak, `false` jakby nie zostało określone. Jest to właściwość "Create-Time", która wymaga minimalnej wersji interfejsu API 2019-06-01. Można to zastosować do pul węzłów systemu Linux i Windows.
+Po pomyślnej rejestracji Wdróż szablon Azure Resource Manager, postępując zgodnie z tymi samymi instrukcjami, jak [powyżej](#manage-node-pools-using-a-resource-manager-template) , i dodając następującą właściwość wartość logiczna "enableNodePublicIP" w agentPoolProfiles. Ustaw dla tej `true` opcji wartość tak, aby była domyślnie `false` ustawiona jako nieokreślona. Jest to właściwość "Create-Time", która wymaga minimalnej wersji interfejsu API 2019-06-01. Można to zastosować do pul węzłów systemu Linux i Windows.
 
 ```
 "agentPoolProfiles":[  

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 5d0c43fbcc1c59c3281f412aad96a3942a5c79b1
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 58a741b369231a353a6b8e282a6e604a63a5727d
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "70392952"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71210301"
 ---
 **Wolumin zbierania danych i ich przechowywanie** 
 
@@ -35,21 +35,21 @@ ms.locfileid: "70392952"
 
 **Azure Portal**
 
-| Kategoria | Limity | Komentarze |
+| Category | Limity | Komentarze |
 |:---|:---|:---|
 | Maksymalna liczba rekordów zwracanych przez zapytanie dziennika | 10 000 | Zmniejsz wyniki przy użyciu zakresu zapytania, zakresu czasu i filtrów w zapytaniu. |
 
 
 **Interfejs API modułu zbierającego dane**
 
-| Kategoria | Limity | Komentarze |
+| Category | Limity | Komentarze |
 |:---|:---|:---|
 | Maksymalny rozmiar pojedynczego wpisu | 30 MB | Podziel większe woluminy na wiele wpisów. |
 | Maksymalny rozmiar wartości pól  | 32 KB | Pola dłuższe niż 32 KB są obcinane. |
 
 **Interfejs API wyszukiwania**
 
-| Kategoria | Limity | Komentarze |
+| Category | Limity | Komentarze |
 |:---|:---|:---|
 | Maksymalna liczba rekordów zwrócona w pojedynczym zapytaniu | 500,000 | |
 | Maksymalny rozmiar zwracanych danych | 64 000 000 bajtów (~ 61 MiB)| |
@@ -58,12 +58,25 @@ ms.locfileid: "70392952"
 
 **Ogólne limity obszaru roboczego**
 
-| Kategoria | Limity | Komentarze |
+| Category | Limity | Komentarze |
 |:---|:---|:---|
 | Maksymalna liczba kolumn w tabeli         | 500 | |
 | Maksymalna liczba znaków w nazwie kolumny | 500 | |
 | Regiony w pojemności | Środkowo-zachodnie stany USA | Obecnie nie można utworzyć nowego obszaru roboczego w tym regionie, ponieważ ma on tymczasowy limit pojemności. Ten limit jest planowany na podstawie końca października 2019. |
 | Eksport danych | Obecnie niedostępne | Agreguj i Eksportuj dane przy użyciu funkcji platformy Azure lub aplikacji logiki. | 
+
+**Szybkość pozyskiwania danych**
+
+Azure Monitor to usługa danych o dużej skali, która umożliwia tysiącom klientów wysyłanie terabajtów danych co miesiąc w coraz większej tempie. Domyślny próg współczynnika pozyskiwania jest ustawiony na **500 MB/min** dla obszaru roboczego. W przypadku wysyłania danych o wyższej stawce do jednego obszaru roboczego niektóre dane zostaną usunięte, a zdarzenie jest wysyłane do tabeli *operacji* w obszarze roboczym co 6 godzin, podczas gdy próg zostanie przekroczony. Jeśli wolumin pozyskiwania w dalszym ciągu przekroczy limit szybkości lub oczekujesz, że wkrótce dojdziesz do niego, możesz poprosić o zwiększenie obszaru roboczego, otwierając żądanie pomocy technicznej.
+ 
+Aby otrzymywać powiadomienia o takim zdarzeniu w Twoim obszarze roboczym, należy utworzyć [regułę alertu dziennika](../articles/azure-monitor/platform/alerts-log.md) przy użyciu następującego zapytania z podstawą logiki alertu na liczbie wyników, które nie są równe zeru.
+
+``` Kusto
+Operation
+|where OperationCategory == "Ingestion"
+|where Detail startswith "The rate of data crossed the threshold"
+``` 
+
 
 >[!NOTE]
 >W zależności od tego, jak długo korzystasz z Log Analytics, możesz mieć dostęp do starszych warstw cenowych. Dowiedz się więcej na temat [log Analytics starszych warstw cenowych](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers). 

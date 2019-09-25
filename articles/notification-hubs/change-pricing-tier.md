@@ -1,79 +1,80 @@
 ---
-title: Zmiany cennika usługi Notification Hubs w przestrzeni nazw w warstwie | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zmienić warstwę cenową przestrzeni nazw usługi Azure Notification Hubs.
+title: Zmień warstwę cenową Notification Hubs przestrzeni nazw | Microsoft Docs
+description: Dowiedz się, jak zmienić warstwę cenową przestrzeni nazw platformy Azure Notification Hubs.
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 01/28/2019
-ms.author: jowargo
-ms.openlocfilehash: 99ea21b3eb01a674a89c70a1b923f02e600cc3c5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/28/2019
+ms.openlocfilehash: 679e8b58e5876d5460b426e694df85ded992a36d
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60234457"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212570"
 ---
-# <a name="change-pricing-tier-of-an-azure-notification-hubs-namespace"></a>Zmień warstwę cenową przestrzeni nazw usługi Azure notification hubs
-Usługa Notification Hubs jest oferowana w trzech warstwach: **bezpłatne**, **podstawowe**, i **standardowa**. W tym artykule pokazano, jak zmienić warstwę cenową dla przestrzeni nazw usługi Azure Notification Hubs. 
+# <a name="change-pricing-tier-of-an-azure-notification-hubs-namespace"></a>Zmień warstwę cenową przestrzeni nazw centrów powiadomień platformy Azure
+Notification Hubs jest oferowana w trzech warstwach: **bezpłatna**, **podstawowa**i **standardowa**. W tym artykule opisano sposób zmiany warstwy cenowej dla przestrzeni nazw platformy Azure Notification Hubs. 
 
-## <a name="overview"></a>Omówienie
-W usłudze Azure Notification Hubs **Centrum** jest najmniejszą zasobu na jednostkę. Go ogólnie mapuje do jednej aplikacji i może zawierać jeden certyfikat dla każdego systemu powiadomień platformy, firma Microsoft obsługuje dla aplikacji. Aplikacja może być hybrydowego lub natywny i aplikacji dla wielu platform.
+## <a name="overview"></a>Przegląd
+W usłudze Azure Notification Hubs **centrum** jest najmniejszym zasobem/jednostką. Zwykle jest ona mapowana na jedną aplikację i może przechowywać jeden certyfikat dla każdej system powiadomień platformy, która obsługuje aplikację. Aplikacja może być hybrydową lub natywną i międzyplatformową aplikacją.
 
-A **przestrzeni nazw** to kolekcja usługi notification hubs. Każda przestrzeń nazw zwykle składa się z koncentratorów, które są powiązane i używane do określonego celu. Na przykład można mieć trzech różnych obszarach nazw do celów programowania, testowania i produkcji odpowiednio. 
+**Przestrzeń nazw** jest kolekcją centrów powiadomień. Każda przestrzeń nazw składa się zazwyczaj z centrów, które są powiązane i używane do określonego celu. Na przykład mogą istnieć trzy różne przestrzenie nazw na potrzeby programowania, testowania i produkcji. 
 
-Możesz skojarzyć warstwy cenowej na poziomie przestrzeni nazw. Notification Hubs obsługuje też trzech warstw: **bezpłatne**, **podstawowe**, i **standardowa**. Możesz korzystać z warstwy dla przestrzeni nazw, który odpowiada Twoim wymaganiom. Poniższe sekcje pokazują, jak zmienić warstwę cenową w przestrzeni nazw usługi Notification Hubs. 
+Warstwę cenową można skojarzyć na poziomie przestrzeni nazw. Notification Hubs obsługuje trzy warstwy: **bezpłatna**, **podstawowa**i **standardowa**. Możesz użyć warstwy dla przestrzeni nazw, która odpowiada Twoim wymaganiom. W poniższych sekcjach pokazano, jak zmienić warstwę cenową Notification Hubs przestrzeni nazw. 
 
 ## <a name="use-azure-portal"></a>Korzystanie z witryny Azure Portal 
-Korzystając z witryny Azure portal, możesz zmienić warstwę cenową dla przestrzeni nazw na stronie przestrzeń nazw lub strona Centrum.  Po zmianie na stronie Centrum, możesz faktycznie go zmienić na poziomie przestrzeni nazw. Zmienia warstwę cenową dla przestrzeni nazw i wszystkich centrów w przestrzeni nazw. 
+W przypadku korzystania z Azure Portal można zmienić warstwę cenową dla przestrzeni nazw na stronie przestrzeni nazw lub na stronie centrum.  Gdy zmienisz ją na stronie centrum, rzeczywiście zmienisz ją na poziomie przestrzeni nazw. Zmiana warstwy cenowej dla przestrzeni nazw i wszystkich centrów w przestrzeni nazw. 
 
-### <a name="change-tier-on-the-namespace-page"></a>Zmiana warstwy na stronie przestrzeń nazw
-Poniższa procedura zawiera kroki, aby zmienić warstwę cenową dla przestrzeni nazw na stronie przestrzeni nazw. Po zmianie warstwy w przestrzeni nazw ma zastosowanie do wszystkich centrów w przestrzeni nazw.
-
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Wybierz **wszystkich usług** w menu po lewej stronie. 
-3. Wybierz **przestrzenie nazw Centrum powiadomień** w **Internet of Things** sekcji. Jeśli wybierzesz gwiazdkę (`*`) obok tekstu, pobiera ono dodane do paska nawigacji po lewej stronie w obszarze **ulubione**. Ułatwia on z uzyskiwaniem dostępu do strony przestrzenie nazw szybciej następnym razem i nowszych wersjach. Po dodaniu go do ulubionych, wybierz **przestrzenie nazw Centrum powiadomień**. 
-
-    ![Wszystkie usługi -> przestrzenie nazw Centrum powiadomień](./media/change-pricing-tier/all-services-nhub.png)
-1. Na **przestrzenie nazw Centrum powiadomień** wybierz przestrzeń nazw, dla którego chcesz zmienić warstwę cenową. 
-2. Na **Notification Hub Namespace** strony dla przestrzeni nazw, można wyświetlić bieżąca warstwa cenowa dla przestrzeni nazw w **Essentials** sekcji. Na poniższej ilustracji widać, że warstwa cenowa obszaru nazw jest **bezpłatna**. 
-
-    ![Bieżąca warstwa cenowa na stronie przestrzeń nazw](./media/change-pricing-tier/pricing-tier-before.png)
-1. Na **Notification Hub Namespace** strony dla swojego obszaru nazw, wybierz opcję **warstwy cenowej** w obszarze **Zarządzaj** sekcji. 
-
-    ![Wybierz warstwę cenową na stronie przestrzeń nazw](./media/change-pricing-tier/namespace-select-pricing-menu.png)
-6. Zmień warstwę cenową, a następnie kliknij przycisk **wybierz** przycisku.    
-7. Zostanie wyświetlony stan warstwy zmienić akcję w **alerty**. 
-8. Przełącz się do **Przegląd** strony. Upewnij się, że nowa warstwa jest wyświetlana dla **warstwy cenowej** pole **Essentials** sekcji.     
-1. Ten krok jest opcjonalny. Wybierz dowolne Centrum w przestrzeni nazw. Upewnij się, że te same ceny warstwy **Essentials** sekcji. Powinien zostać wyświetlony tej samej warstwie cenowej do wszystkich centrów w przestrzeni nazw. 
-
-### <a name="change-tier-on-the-hub-page"></a>Zmiana warstwy na stronie
-Poniższa procedura zawiera kroki, aby zmienić warstwę cenową dla przestrzeni nazw na stronie. Mimo że wykonaniem tych kroków, zaczynając od strony Centrum faktycznie Zmień warstwę cenową dla przestrzeni nazw i wszystkich centrów w przestrzeni nazw. 
+### <a name="change-tier-on-the-namespace-page"></a>Zmień warstwę na stronie przestrzeni nazw
+Poniższa procedura zawiera kroki umożliwiające zmianę warstwy cenowej dla przestrzeni nazw na stronie przestrzeni nazw. Zmiana warstwy dla przestrzeni nazw ma zastosowanie do wszystkich centrów w przestrzeni nazw.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Wybierz **wszystkich usług** w menu po lewej stronie.
-3. Wybierz **usługi Notification Hubs** w **Internet of Things** sekcji. 
-4. Wybierz powiadomienie, **Centrum**. 
-5. Wybierz **warstwy cenowej** w menu po lewej stronie. 
-6. Zmień warstwę cenową, a następnie kliknij przycisk **wybierz** przycisku. Ta akcja zmian cen ustawienia warstwy dla przestrzeni nazw, który zawiera koncentratora. Tak Zobacz nowej warstwy cenowej na stronie przestrzeń nazw, a wszystkie strony Centrum. 
+2. W menu po lewej stronie wybierz pozycję **wszystkie usługi** . 
+3. W sekcji **Internet rzeczy** wybierz pozycję **przestrzenie nazw centrum powiadomień** . Jeśli wybierzesz gwiazdkę`*`() obok tekstu, zostanie ona dodana na lewym pasku nawigacyjnym w obszarze **Ulubione**. Ułatwia ona szybkie uzyskiwanie dostępu do strony przestrzeni nazw. Po dodaniu go do ulubionych wybierz pozycję **przestrzenie nazw centrum powiadomień**. 
+
+    ![Wszystkie usługi — > przestrzenie nazw centrum powiadomień](./media/change-pricing-tier/all-services-nhub.png)
+1. Na stronie **przestrzenie nazw centrum powiadomień** wybierz przestrzeń nazw, dla której chcesz zmienić warstwę cenową. 
+2. Na stronie **obszar nazw centrum powiadomień** dla obszaru nazw można wyświetlić bieżącą warstwę cenową dla przestrzeni nazw w sekcji **podstawy** . Na poniższej ilustracji widać, że warstwa cenowa przestrzeni nazw jest **bezpłatna**. 
+
+    ![Bieżąca warstwa cenowa na stronie przestrzeni nazw](./media/change-pricing-tier/pricing-tier-before.png)
+1. Na stronie **obszar nazw centrum powiadomień** dla obszaru nazw wybierz pozycję **warstwa cenowa** w obszarze **Zarządzaj** . 
+
+    ![Wybierz warstwę cenową na stronie przestrzeni nazw](./media/change-pricing-tier/namespace-select-pricing-menu.png)
+6. Zmień warstwę cenową, a następnie kliknij przycisk **Wybierz** .    
+7. Zobaczysz stan akcji zmiany warstwy w **alertach**. 
+8. Przejdź do strony **Przegląd** . Upewnij się, że nowa warstwa jest wyświetlana w polu **warstwa cenowa** w sekcji **podstawowe** informacje.     
+1. Ten krok jest opcjonalny. Wybierz dowolne centrum w przestrzeni nazw. Upewnij się, że w sekcji **podstawowe** informacje są wyświetlane te same warstwy cenowe. Powinna zostać wyświetlona ta sama warstwa cenowa dla wszystkich centrów w przestrzeni nazw. 
+
+### <a name="change-tier-on-the-hub-page"></a>Zmień warstwę na stronie centrum
+Poniższa procedura zawiera kroki umożliwiające zmianę warstwy cenowej dla przestrzeni nazw na stronie centrum. Mimo że te kroki są wykonywane począwszy od strony centrum, w rzeczywistości zmienisz warstwę cenową dla przestrzeni nazw i wszystkich centrów w przestrzeni nazw. 
+
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+2. W menu po lewej stronie wybierz pozycję **wszystkie usługi** .
+3. Wybierz **Notification Hubs** w sekcji **Internet rzeczy** . 
+4. Wybierz **centrum**powiadomień. 
+5. W menu po lewej stronie wybierz pozycję **warstwa cenowa** . 
+6. Zmień warstwę cenową, a następnie kliknij przycisk **Wybierz** . Ta akcja powoduje zmianę ustawienia warstwy cenowej dla przestrzeni nazw zawierającej centrum. Na stronie przestrzeń nazw zostanie wyświetlona nowa warstwa cenowa i wszystkie strony centrów. 
 
 ## <a name="use-rest-api"></a>Korzystanie z interfejsu API REST
-Następujące interfejsy API REST dostawcy zasobów umożliwia pobieranie bieżąca warstwa cenowa i zaktualizować go. 
+Aby uzyskać bieżącą warstwę cenową i zaktualizować ją, można użyć następujących interfejsów API REST dostawcy zasobów. 
 
-### <a name="get-current-pricing-tier-for-a-namespace"></a>Pobierz bieżąca warstwa cenowa dla przestrzeni nazw
-Aby uzyskać **bieżącej przestrzeni nazw warstwy**, wysłać polecenie GET, jak pokazano w poniższym przykładzie: 
+### <a name="get-current-pricing-tier-for-a-namespace"></a>Pobierz bieżącą warstwę cenową dla przestrzeni nazw
+Aby uzyskać **bieżącą warstwę przestrzeni nazw**, Wyślij polecenie Get, jak pokazano w następującym przykładzie: 
 
 ```REST
 GET: https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/notificationhubplan
 ```
 
 ### <a name="update-pricing-tier-for-a-namespace"></a>Aktualizowanie warstwy cenowej dla przestrzeni nazw
-Aby **zaktualizuj warstwę przestrzeni nazw**, wysłać polecenie PUT, jak pokazano w poniższym przykładzie: 
+Aby **zaktualizować warstwę przestrzeni nazw**, Wyślij polecenie Put, jak pokazano w następującym przykładzie: 
 
 ```REST
 PUT: https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/notificationhubplan
@@ -82,5 +83,5 @@ Body: <NotificationHubPlan xmlns:i="https://www.w3.org/2001/XMLSchema-instance" 
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji na temat tych warstw i cenach, zobacz [cennik usługi Notification Hubs](https://azure.microsoft.com/pricing/details/notification-hubs/).
+## <a name="next-steps"></a>Następne kroki
+Aby uzyskać więcej informacji o tych warstwach i cenach, zobacz [Notification Hubs Cennik](https://azure.microsoft.com/pricing/details/notification-hubs/).

@@ -12,19 +12,21 @@ ms.workload: infrastructure-services
 ms.date: 05/31/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: d2d52d2faf9122b7dc87f71ac7b1be53eaa99878
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: adca1bdd0cf525627cc284b1c0d3509beddef131
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534987"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219389"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door-service"></a>Konfigurowanie reguły ograniczeń adresów IP za pomocą zapory aplikacji sieci Web dla usługi platformy Azure front-drzwi
 W tym artykule opisano sposób konfigurowania reguł ograniczeń adresów IP w zaporze aplikacji sieci Web (WAF) dla usługi frontonu platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure, Azure PowerShell lub szablonu Azure Resource Manager.
 
 Reguła kontroli dostępu opartej na adresie IP to Niestandardowa reguła WAF, która umożliwia kontrolowanie dostępu do aplikacji sieci Web. W tym celu należy określić listę adresów IP lub zakresy adresów IP w formacie routingu międzydomenowego bez klas.
 
-Domyślnie aplikacja sieci Web jest dostępna z Internetu. Jeśli chcesz ograniczyć dostęp do klientów z listy znanych adresów IP lub zakresów adresów IP, możesz utworzyć regułę dopasowania adresów IP, która zawiera listę adresów IP jako pasujące wartości i zestawy, do "not" (Negate jest true) i akcję do zablokowania. Po zastosowaniu reguły ograniczeń adresów IP żądania, które pochodzą z adresów spoza tej listy dozwolonych, odbierają niedostępną odpowiedź 403.  
+Domyślnie aplikacja sieci Web jest dostępna z Internetu. Jeśli chcesz ograniczyć dostęp do klientów z listy znanych adresów IP lub zakresów adresów IP, możesz utworzyć regułę dopasowania adresów IP, która zawiera listę adresów IP jako pasujące wartości i zestawy, do "not" (Negate jest true) i akcję do **zablokowania**. Po zastosowaniu reguły ograniczeń adresów IP żądania, które pochodzą z adresów spoza tej listy dozwolonych, odbierają niedostępną odpowiedź 403.  
+
+Adres IP klienta może różnić się od adresu IP WAF, na przykład gdy klient uzyskuje dostęp do WAF za pośrednictwem serwera proxy. Reguły ograniczeń adresów IP można utworzyć na podstawie adresów IP klienta (RemoteAddr) lub adresów IP gniazd widzianych przez WAF (SocketAddr). 
 
 ## <a name="configure-a-waf-policy-with-the-azure-cli"></a>Konfigurowanie zasad WAFymi za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -38,7 +40,7 @@ Przed rozpoczęciem konfigurowania zasad ograniczeń adresów IP Skonfiguruj śr
 #### <a name="create-an-azure-front-door-service-profile"></a>Tworzenie profilu usługi frontonu platformy Azure
 Utwórz profil usługi frontonu platformy Azure, postępując zgodnie z instrukcjami opisanymi w [przewodniku szybki start: Utwórz drzwi tylne dla globalnej aplikacji](quickstart-create-front-door.md)sieci Web o wysokiej dostępności.
 
-### <a name="create-a-waf-policy"></a>Tworzenie zasad WAF
+### <a name="create-a-waf-policy"></a>Utwórz zasady zapory aplikacji internetowej
 
 Utwórz zasady WAF przy użyciu polecenia [AZ Network Front-drzwiczke WAF-Policy Create](/cli/azure/ext/front-door/network/front-door/waf-policy?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-create) . W poniższym przykładzie Zastąp nazwę zasad *IPAllowPolicyExampleCLI* unikatową nazwą zasad.
 
@@ -56,7 +58,7 @@ W następujących przykładach:
 -  Zastąp *IPAllowPolicyExampleCLI* własnymi utworzonymi wcześniej zasadami.
 -  Zastąp wartości *IP-Address-Range-1*, *IP-Address-Range-2* własnym zakresem.
 
-Najpierw utwórz regułę zezwalania IP dla zasad utworzonych w poprzednim kroku. Uwaga : odroczenie jest wymagane, ponieważ reguła musi zawierać co najmniej jeden warunek dopasowania. 
+Najpierw utwórz regułę zezwalania IP dla zasad utworzonych w poprzednim kroku. Uwaga: **odroczenie** jest wymagane, ponieważ reguła musi zawierać co najmniej jeden warunek dopasowania. 
 
 ```azurecli
 az network front-door waf-policy rule create \
@@ -67,7 +69,7 @@ az network front-door waf-policy rule create \
   --resource-group <resource-group-name> \
   --policy-name IPAllowPolicyExampleCLI --defer
 ```
-Następnie Dodaj warunek dopasowania do reguły:
+Następnie Dodaj warunek dopasowania adresu IP klienta do reguły:
 
 ```azurecli
 az network front-door waf-policy rule match-condition add\
@@ -79,9 +81,19 @@ az network front-door waf-policy rule match-condition add\
   --resource-group <resource-group-name> \
   --policy-name IPAllowPolicyExampleCLI 
   ```
-                                                   
-### <a name="find-the-id-of-a-waf-policy"></a>Znajdź identyfikator zasad WAF 
-Znajdź identyfikator zasad WAF przy użyciu polecenia [AZ Network Front-drzwiczke WAF-Policy show](/cli/azure/ext/front-door/network/front-door/waf-policy?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-show) . Zastąp *IPAllowPolicyExampleCLI* w poniższym przykładzie z unikatowymi zasadami, które zostały utworzone wcześniej.
+Warunek dopasowania dla gniazda IP (SocketAddr):
+  ```azurecli
+az network front-door waf-policy rule match-condition add\
+--match-variable SocketAddr \
+--operator IPMatch
+--values "ip-address-range-1" "ip-address-range-2"
+--negate true\
+--name IPAllowListRule\
+  --resource-group <resource-group-name> \
+  --policy-name IPAllowPolicyExampleCLI                                                  
+
+### Find the ID of a WAF policy 
+Find a WAF policy's ID by using the [az network front-door waf-policy show](/cli/azure/ext/front-door/network/front-door/waf-policy?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-show) command. Replace *IPAllowPolicyExampleCLI* in the following example with your unique policy that you created earlier.
 
    ```azurecli
    az network front-door  waf-policy show \
@@ -141,7 +153,17 @@ $IPMatchCondition = New-AzFrontDoorWafMatchConditionObject `
 -MatchValue "ip-address-range-1", "ip-address-range-2"
 -NegateCondition 1
 ```
-     
+
+Warunek dopasowania dla gniazda IP (SocketAddr):   
+```powershell
+$IPMatchCondition = New-AzFrontDoorWafMatchConditionObject `
+-MatchVariable  SocketAddr `
+-OperatorProperty IPMatch `
+-MatchValue "ip-address-range-1", "ip-address-range-2"
+-NegateCondition 1
+```
+
+
 ### <a name="create-a-custom-ip-allow-rule"></a>Tworzenie niestandardowej reguły zezwalania na adresy IP
 
 Użyj polecenia [New-AzFrontDoorCustomRuleObject](/powershell/module/Az.FrontDoor/New-azfrontdoorwafcustomruleobject) , aby zdefiniować akcję i ustawić priorytet. W poniższym przykładzie żądania spoza adresów IP klientów pasujących do listy zostaną zablokowane.

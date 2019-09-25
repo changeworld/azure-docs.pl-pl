@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/29/2019
+ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: 97708fa3211aa203aab56253b1c7720d04329014
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: ad662cdeb0a87e57eb9e3e7480d120be1c6c729e
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200816"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71218262"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Obsługiwane funkcje dostępne w Azure Security Center
 
@@ -41,7 +41,7 @@ W poniższych sekcjach przedstawiono Security Center funkcje, które są dostęp
 ||**Maszyna wirtualna**|**Zestaw skalowania maszyn wirtualnych**||**Maszyna wirtualna**|**Zestaw skalowania maszyn wirtualnych**|
 |Alerty wykrywania zagrożeń VMBA|✔|✔|✔|✔ (w obsługiwanych wersjach)|✔ (w obsługiwanych wersjach)|✔|Zalecenia (bezpłatne) wykrywanie zagrożeń (wersja standardowa)|
 |Alerty dotyczące wykrywania zagrożeń opartych na sieci|✔|✔|X|✔|✔|X|Standardowa (Standard)|
-|Integracja usługi Windows Defender ATP|✔ (w obsługiwanych wersjach)|✔ (w obsługiwanych wersjach)|✔|X|X|X|Standardowa (Standard)|
+|Integracja z programem Microsoft Defender ATP|✔ (w obsługiwanych wersjach)|✔ (w obsługiwanych wersjach)|✔|X|X|X|Standardowa (Standard)|
 |Brakujące poprawki|✔|✔|✔|✔|✔|✔|Wolne|
 |Konfiguracje zabezpieczeń|✔|✔|✔|✔|✔|✔|Wolne|
 |Ocena programu Endpoint Protection|✔|✔|✔|X|X|X|Wolne|

@@ -9,10 +9,10 @@ ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: 3ff93d006b7599eaa3f97c33efb047ce480c301c
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
+ms.lasthandoff: 09/24/2019
 ms.locfileid: "68740948"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>Samouczek: Przygotowywanie aplikacji na potrzeby usługi Azure Kubernetes Service (AKS)
@@ -105,7 +105,7 @@ docker-compose down
 
 Po usunięciu aplikacji lokalnej masz obraz *platformy*Docker zawierający aplikację do głosowania platformy Azure, na której będzie można korzystać w następnym samouczku.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przetestowano aplikację i obrazy kontenera utworzone dla aplikacji. W tym samouczku omówiono:
 

@@ -1,9 +1,9 @@
 ---
 title: Wysyłanie powiadomień push do aplikacji platformy Xamarin.Android przy użyciu usługi Azure Notification Hubs | Microsoft Docs
 description: Korzystając z tego samouczka, dowiesz się, jak wysyłać powiadomienia wypychane do aplikacji platformy Xamarin Android przy użyciu usługi Azure Notification Hubs.
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 services: notification-hubs
 documentationcenter: xamarin
 ms.assetid: 0be600fe-d5f3-43a5-9e5e-3135c9743e54
@@ -14,13 +14,15 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/01/2019
-ms.author: jowargo
-ms.openlocfilehash: 39fa004b62bf7e2e2a50500f32fa7edcb0c4b6ba
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 08/01/2019
+ms.openlocfilehash: cba84b0f07db3a69cc964e47657a3f6b64659e6a
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742444"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213566"
 ---
 # <a name="tutorial-push-notifications-to-xamarinandroid-apps-using-azure-notification-hubs"></a>Samouczek: wysyłanie powiadomień push do aplikacji platformy Xamarin.Android przy użyciu usługi Azure Notification Hubs
 
@@ -89,7 +91,7 @@ Centrum powiadomień jest skonfigurowane do pracy z usługą FCM i uzyskano para
     1. Wybierz opcję **tak** w oknie komunikatu, aby kontynuować Zmienianie platformy docelowej.
 1. Dodaj wymagane pakiety NuGet do projektu, wykonując następujące czynności:
     1. Kliknij projekt prawym przyciskiem myszy i wybierz pozycję **Zarządzaj pakietami NuGet**.
-    1. Przejdź do zainstalowanej karty, wybierz pozycję **Xamarin. Android. support. Design**, a następnie wybierz pozycję **Update (Aktualizuj** ) w okienku po prawej stronie, aby zaktualizować pakiet do najnowszej wersji.
+    1. Przejdź do **zainstalowanej** karty, wybierz pozycję **Xamarin. Android. support. Design**, a następnie wybierz pozycję **Update (Aktualizuj** ) w okienku po prawej stronie, aby zaktualizować pakiet do najnowszej wersji.
     1. Przejdź do karty **przeglądanie** . Wyszukaj pozycję **Xamarin.GooglePlayServices.Base**. Na liście wyników wybierz pozycję **Xamarin.GooglePlayServices.Base**. Następnie wybierz pozycję **Zainstaluj**.
 
         ![Pakiet NuGet usług Google Play](./media/partner-xamarin-notification-hubs-android-get-started/google-play-services-nuget.png)

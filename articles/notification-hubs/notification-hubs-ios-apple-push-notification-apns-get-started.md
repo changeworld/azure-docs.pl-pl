@@ -4,9 +4,9 @@ description: Korzystając z tego samouczka, dowiesz się, jak wysyłać powiadom
 services: notification-hubs
 documentationcenter: ios
 keywords: powiadomienie wypychane, powiadomienia wypychane, powiadomienia wypychane w systemie ios
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: b7fcd916-8db8-41a6-ae88-fc02d57cb914
 ms.service: notification-hubs
 ms.workload: mobile
@@ -15,13 +15,15 @@ ms.devlang: objective-c
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/21/2019
-ms.author: jowargo
-ms.openlocfilehash: c5793d2388ddd7bb59d68f8f7fd7af773179ed41
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 05/21/2019
+ms.openlocfilehash: 0335f5c71f99e6c7a90ce920c25e6bb7e9b4a08f
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65988206"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211948"
 ---
 # <a name="tutorial-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Samouczek: wysyłanie powiadomień push do aplikacji dla systemu iOS przy użyciu usługi Azure Notification Hubs
 
@@ -80,42 +82,42 @@ Wykonanie czynności opisanych w tym samouczku jest wymaganiem wstępnym dla wsz
 
     ![Xcode — możliwości push][12]
 
-5. Dodaj moduły zestawu SDK usługi Azure Notification Hubs.
+5. Dodaj moduły zestawu Azure Notification Hubs SDK.
 
-   Można zintegrować zestaw SDK usługi Azure Notification Hubs w aplikacji przy użyciu [Cocoapods](https://cocoapods.org) lub ręcznego dodawania plików binarnych do projektu.
+   Zestaw SDK usługi Azure Notification Hubs można zintegrować z aplikacją za pomocą [Cocoapods](https://cocoapods.org) lub ręcznie dodając pliki binarne do projektu.
 
-   - Integracja przy użyciu Menedżera Cocoapods
+   - Integracja za pośrednictwem Cocoapods
 
-     Dodaj poniższe zależności do Twojego `podfile` do dołączenia zestawu SDK usługi Azure Notification Hubs do swojej aplikacji.
+     Dodaj następujące zależności do `podfile` usługi, aby dołączyć do aplikacji usługę Azure Notification Hubs SDK.
 
      ```ruby
      pod 'AzureNotificationHubs-iOS'
      ```
 
-     Uruchom `pod install` zainstalować tym zasobniku nowo zdefiniowane i Otwórz swoje `.xcworkspace`.
+     Uruchom `pod install` , aby zainstalować nowo zdefiniowany pod i `.xcworkspace`otworzyć.
 
      > [!NOTE]
-     > Jeśli zostanie wyświetlony błąd taki jak ```[!] Unable to find a specification for `AzureNotificationHubs-iOS` ``` podczas uruchamiania `pod install`, uruchom `pod repo update` uzyskiwanie najnowszych zasobników Cocoapods repozytorium, a następnie uruchomienie `pod install`.
+     > ```[!] Unable to find a specification for `AzureNotificationHubs-iOS` ``` Jeśli zobaczysz błąd podobny do uruchomionego `pod install`, uruchom `pod repo update` polecenie, aby uzyskać najnowsze Zasobniki z repozytorium Cocoapods, a następnie `pod install`Uruchom polecenie.
 
    - Integracja za pośrednictwem Carthage
 
-     Dodaj poniższe zależności do Twojego `Cartfile` do dołączenia zestawu SDK usługi Azure Notification Hubs do swojej aplikacji.
+     Dodaj następujące zależności do `Cartfile` usługi, aby dołączyć do aplikacji usługę Azure Notification Hubs SDK.
 
      ```ruby
      github "Azure/azure-notificationhubs-ios"
      ```
 
-     Następnie zaktualizuj i zależności kompilacji:
+     Zależności Next, Update i Build:
 
      ```shell
      $ carthage update
      ```
 
-     Aby uzyskać więcej informacji na temat używania Carthage zobacz [repozytorium Carthage GitHub](https://github.com/Carthage/Carthage).
+     Aby uzyskać więcej informacji na temat korzystania z programu Carthage, zobacz [repozytorium GitHub Carthage](https://github.com/Carthage/Carthage).
 
-   - Integracja przez skopiowanie plików binarnych do projektu
+   - Integracja przez kopiowanie plików binarnych do projektu
 
-     1. Pobierz [zestawu SDK usługi Azure Notification Hubs](https://github.com/Azure/azure-notificationhubs-ios/releases) framework oferowana jako plik zip i Rozpakuj go.
+     1. Pobierz platformę [zestawu SDK usługi Azure Notification Hubs](https://github.com/Azure/azure-notificationhubs-ios/releases) w postaci pliku zip i rozpakuj ją.
 
      2. W programie Xcode kliknij prawym przyciskiem myszy projekt i kliknij opcję **Add Files to** (Dodaj pliki do), aby dodać folder **WindowsAzureMessaging.framework** do projektu Xcode. Wybierz pozycję **Options** (Opcje), upewnij się, że pozycja **Copy items if needed** (Skopiuj elementy w razie potrzeby) jest zaznaczona, a następnie kliknij pozycję **Add** (Dodaj).
 
@@ -211,7 +213,7 @@ Aby przetestować powiadomienia wypychane w systemie iOS, należy wdrożyć apli
 
     ![Test odbierania powiadomienia wypychanego z aplikacji dla systemu iOS][35]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym prostym przykładzie wysłano powiadomienia wypychane do wszystkich zarejestrowanych urządzeń z systemem iOS. Aby dowiedzieć się, jak wysyłać powiadomienia push do konkretnych urządzeń z systemem iOS, przejdź do następującego samouczka:
 

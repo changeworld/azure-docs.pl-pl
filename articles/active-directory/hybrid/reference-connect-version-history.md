@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/23/2019
+ms.date: 09/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce66c0239eee3f31695a942a586766694525fbad
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 2a875e028a38c085d45d062984764cd840983fc3
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097595"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212332"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Program Azure AD Connect: Historia wersji
 Zespół Azure Active Directory (Azure AD) regularnie aktualizuje Azure AD Connect za pomocą nowych funkcji i funkcji. Nie wszystkie dodatki są stosowane dla wszystkich odbiorców.
@@ -46,7 +46,13 @@ Nie wszystkie wersje Azure AD Connect będą udostępniane do autouaktualniania.
 ## <a name="14x0"></a>1.4. X. 0
 
 >[!IMPORTANT]
->Wcześniej w pewnych okolicznościach komputery niższego poziomu systemu Windows przyłączone do usługi AD Premium zostały nieprawidłowo zsynchronizowane z chmurą. Na przykład wartość atrybutu userCertificate dla urządzeń niskiego poziomu systemu Windows w usłudze AD jest wypełniana. Jednak takie urządzenia w usłudze Azure AD zawsze pozostają w stanie "oczekiwanie", ponieważ te wersje systemu operacyjnego nie zostały zaprojektowane do rejestracji w usłudze Azure AD za pośrednictwem AAD Sync. W tej wersji programu Azure AD Connect AAD Sync zatrzyma synchronizowanie komputerów z systemem Windows niższego poziomu z usługą Azure AD, a także usunie wcześniej niepoprawnie zsynchronizowane urządzenia niskiego poziomu systemu Windows z usługi Azure AD. Należy pamiętać, że ta zmiana nie spowoduje usunięcia wszystkich urządzeń niższego poziomu systemu Windows, które zostały poprawnie zarejestrowane w usłudze Azure AD za pomocą pakietu MSI. Te urządzenia będą nadal działały zgodnie z oczekiwaniami na potrzeby dostępu warunkowego opartego na urządzeniach. Niektórzy klienci mogą zobaczyć, że niektóre lub wszystkie urządzenia niskiego poziomu systemu Windows znikną z usługi Azure AD. Nie jest to przyczyną problemu, ponieważ te tożsamości urządzeń nigdy nie były używane przez usługę Azure AD podczas autoryzacji dostępu warunkowego. Tacy klienci mogą wymagać ponownego odwiedzania https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan i zarejestrowania urządzeń niskiego poziomu systemu Windows w celu zapewnienia, że te urządzenia mogą w pełni uczestniczyć w dostępie warunkowym opartym na urządzeniach. Należy pamiętać, że jeśli zostaną wyświetlone te usunięcia obiektów niskiego poziomu komputera/urządzenia w usłudze Azure AD przekraczających próg usuwania eksportu, zaleca się, aby te operacje usuwania zostały przechodzące przez klienta.
+>Komputery z systemem Windows zarejestrowane jako hybrydowe przyłączone do usługi Azure AD są reprezentowane w usłudze Azure AD jako obiekty urządzeń. Te obiekty urządzenia mogą być używane na potrzeby dostępu warunkowego. Komputery z systemem Windows 10 są synchronizowane z chmurą za pośrednictwem Azure AD Connect, a komputery z systemem Windows są rejestrowane bezpośrednio przy użyciu AD FS lub bezproblemowego logowania jednokrotnego.
+>
+>Tylko komputery z systemem Windows 10 z określoną wartością atrybutu userCertificate skonfigurowanym za pomocą funkcji hybrydowego sprzężenia usługi Azure AD powinny być synchronizowane z chmurą przez Azure AD Connect.  W poprzednich wersjach Azure AD Connect ten wymóg nie został rygorystycznie wymuszony, co powoduje niepotrzebne obiekty urządzenia w usłudze Azure AD. Takie urządzenia w usłudze Azure AD zawsze pozostają w stanie "oczekiwanie", ponieważ te komputery nie zostały przeznaczone do rejestracji w usłudze Azure AD.
+>
+>Ta wersja Azure AD Connect będzie synchronizować tylko komputery z systemem Windows 10, które są poprawnie skonfigurowane do obsługi hybrydowej usługi Azure AD. Azure AD Connect nigdy nie należy synchronizować [urządzeń z systemem Windows niższego poziomu](../../active-directory/devices/hybrid-azuread-join-plan.md#windows-down-level-devices).  Wszystkie urządzenia w usłudze Azure AD, które wcześniej zostały zsynchronizowane, zostaną teraz usunięte z usługi Azure AD.  Jednak ta zmiana nie spowoduje usunięcia wszystkich urządzeń z systemem Windows, które zostały poprawnie zarejestrowane w usłudze Azure AD dla hybrydowego sprzężenia usługi Azure AD. 
+>
+>Niektórzy klienci mogą zobaczyć, że niektóre lub wszystkie urządzenia z systemem Windows znikną z usługi Azure AD. Nie jest to przyczyną problemu, ponieważ te tożsamości urządzeń nie są używane przez usługę Azure AD podczas autoryzacji dostępu warunkowego. Niektórzy klienci mogą potrzebować odwiedzania [, jak: Zaplanuj implementację](../../active-directory/devices/hybrid-azuread-join-plan.md) hybrydowej Azure Active Directory dołączenia, aby zalogować się do swoich komputerów z systemem Windows, i upewnij się, że takie urządzenia mogą w pełni uczestniczyć w dostęp warunkowy oparty na urządzeniach Jeśli Azure AD Connect próbuje usunąć urządzenia z [systemem Windows niższego poziomu](../../active-directory/devices/hybrid-azuread-join-plan.md#windows-down-level-devices) , to urządzenie nie jest tym, które zostało utworzone przez [program Microsoft Workplace Join dla komputerów z systemem innym niż Windows 10](https://www.microsoft.com/download/details.aspx?id=53554) , i nie może być używane przez żadną inną funkcję usługi Azure AD.  Jeśli widzisz usunięcie obiektów komputera/urządzenia w usłudze Azure AD przekraczających próg usuwania eksportu, zaleca się, aby klient zezwolił na te operacje usuwania.
 
 ### <a name="release-status"></a>Stan wydania
 9/10/2019: Wydano tylko do uaktualnienia
@@ -96,8 +102,8 @@ Nie wszystkie wersje Azure AD Connect będą udostępniane do autouaktualniania.
 > Aby rozwiązać ten problem, należy zaimportować moduł **AdSync** , a następnie uruchomić`Set-ADSyncDirSyncConfiguration` polecenie cmdlet programu PowerShell na serwerze Azure AD Connect.  Można wykonać następujące czynności:
 >
 >1. Otwórz program PowerShell w trybie administrator
->2. Uruchom `Import-Module "ADSync"`
->3. Uruchom `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""`
+>2. Uruchom polecenie `Import-Module "ADSync"`
+>3. Uruchom polecenie `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""`
  
 ### <a name="release-status"></a>Stan wydania 
 

@@ -3,9 +3,9 @@ title: Wysyłanie powiadomień push do określonych urządzeń z systemem Androi
 description: Dowiedz się, jak wysyłać powiadomienia push do określonych urządzeń z systemem Android przy użyciu usług Azure Notification Hubs i Google Cloud Messaging.
 services: notification-hubs
 documentationcenter: android
-author: jwargo
-manager: patniko
-editor: spelluru'
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 3c23cb80-9d35-4dde-b26d-a7bfd4cb8f81
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,22 +14,24 @@ ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: af08d3ca6eaa95663b0bb669f6dc82a13df5ab39
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 4a369b72d5c19a63c65f8d693d131b2c10ff2023
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233108"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212825"
 ---
 # <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Samouczek: Powiadomienia wypychane do określonych urządzeń z systemem Android przy użyciu usługi Azure Notification Hubs i Google Cloud Messaging (przestarzałe)
 
 > [!WARNING]
-> Od 10 kwietnia 2018 r. Google jest przestarzała Google Cloud Messaging (GCM). Serwer usługi GCM i interfejsów API klienta są przestarzałe i zostaną usunięte natychmiast po 29 maja 2019 r. Aby uzyskać więcej informacji, zobacz [usługi GCM i FCM — często zadawane pytania](https://developers.google.com/cloud-messaging/faq).
+> Od 10 kwietnia 2018 firma Google ma przestarzałe Google Cloud Messaging (GCM). Serwer GCM i interfejsy API klienta są przestarzałe i zostaną usunięte od razu do 29 maja 2019. Aby uzyskać więcej informacji, zobacz [często zadawane pytania dotyczące GCM i FCM](https://developers.google.com/cloud-messaging/faq).
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Korzystając z tego samouczka, dowiesz się, jak rozgłaszać powiadomienia z najważniejszymi informacjami do aplikacji systemu Android przy użyciu usługi Azure Notification Hubs. Po zakończeniu pracy z samouczkiem będziesz wiedzieć, jak rejestrować kategorie ważnych wiadomości, które Cię interesują, oraz otrzymywać tylko powiadomienia push dla tych kategorii. Ten scenariusz jest typowym wzorcem dla wielu aplikacji wymagających wysyłania powiadomień do grup użytkowników, które wcześniej zadeklarowały zainteresowanie nimi, na przykład czytników danych RSS, aplikacji dla fanów muzyki itp.
 
@@ -321,7 +323,7 @@ Aplikacja jest teraz zakończona i może przechowywać w magazynie lokalnym na u
 
     ![Powiadomienia dotyczące wiadomości technologicznych](./media/notification-hubs-aspnet-backend-android-breaking-news/technolgy-news-notification.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku wysłano rozgłoszone powiadomienia do określonych urządzeń z systemem Android zarejestrowanych dla kategorii. Aby dowiedzieć się, jak wysyłać powiadomienia push do konkretnych użytkowników, przejdź do następującego samouczka:
 

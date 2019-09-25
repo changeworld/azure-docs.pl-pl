@@ -1,5 +1,5 @@
 ---
-title: Jak monitorować konto usługi Azure Storage | Microsoft Docs
+title: Jak monitorować konto usługi Azure Storage w Azure Portal | Microsoft Docs
 description: Dowiedz się, jak monitorować konto magazynu na platformie Azure przy użyciu Azure Portal.
 author: normesta
 ms.service: storage
@@ -8,16 +8,18 @@ ms.date: 07/31/2018
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 912c1c3403191f40dac054f99f29ac60ba84ce8f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 143574ff02960fcd0fd33ccaed5a80a9bb4f3147
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68844915"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211859"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Monitorowanie konta magazynu w Azure Portal
 
-[Analityka magazynu platformy Azure](storage-analytics.md) udostępnia metryki dla wszystkich usług magazynu oraz dzienników obiektów blob, kolejek i tabel. Możesz użyć [Azure Portal](https://portal.azure.com) , aby skonfigurować metryki i dzienniki, które są rejestrowane dla Twojego konta, i skonfigurować wykresy, które umożliwiają wizualne reprezentacje danych metryk.
+[Analityka magazynu platformy Azure](storage-analytics.md) udostępnia metryki dla wszystkich usług magazynu oraz dzienników obiektów blob, kolejek i tabel. Możesz użyć [Azure Portal](https://portal.azure.com) , aby skonfigurować metryki i dzienniki, które są rejestrowane dla Twojego konta, i skonfigurować wykresy, które umożliwiają wizualne reprezentacje danych metryk. 
+
+Zalecamy zapoznanie się [Azure monitor z magazynem](../../azure-monitor/insights/storage-insights-overview.md) (wersja zapoznawcza). Jest to funkcja Azure Monitor, która oferuje kompleksowe monitorowanie kont usługi Azure Storage, zapewniając ujednolicony wgląd w wydajność, wydajność i dostępność usług Azure Storage. Nie wymaga to włączania ani konfigurowania niczego i można od razu wyświetlać te metryki ze wstępnie zdefiniowanych wykresów interaktywnych i innych wizualizacji.
 
 > [!NOTE]
 > Istnieją koszty związane z badaniem danych monitorowania w Azure Portal. Aby uzyskać więcej informacji, zobacz [analityka magazynu](storage-analytics.md).
@@ -41,7 +43,7 @@ ms.locfileid: "68844915"
    Aby ustawić zasady przechowywania danych, przenieś suwak **przechowywanie (dni)** lub wprowadź liczbę dni, po których dane mają zostać zachowane, od 1 do 365. Wartość domyślna dla nowych kont magazynu wynosi siedem dni. Jeśli nie chcesz ustawiać zasad przechowywania, wprowadź wartość zero. Jeśli nie ma zasad przechowywania, można usunąć dane monitorowania.
 
    > [!WARNING]
-   > Opłaty są naliczone po ręcznym usunięciu danych metryk. Nieodświeżone dane analityczne (dane starsze niż zasady przechowywania) są usuwane przez system bez ponoszenia kosztów. Zalecamy ustawienie zasad przechowywania w zależności od tego, jak długo mają być przechowywane dane analizy magazynu dla Twojego konta. Aby uzyskać więcej informacji, zobacz artykuł dotyczący rozliczeń za [Magazyn](storage-analytics-metrics.md#billing-on-storage-metrics) .
+   > Opłaty są naliczone po ręcznym usunięciu danych metryk. Nieodświeżone dane analityczne (dane starsze niż zasady przechowywania) są usuwane przez system bez ponoszenia kosztów. Zalecamy ustawienie zasad przechowywania w zależności od tego, jak długo mają być przechowywane dane analizy magazynu dla Twojego konta. Aby uzyskać więcej informacji, zobacz artykuł dotyczący [rozliczeń za magazyn](storage-analytics-metrics.md#billing-on-storage-metrics) .
    >
 
 1. Po zakończeniu konfigurowania monitorowania wybierz pozycję **Zapisz**.
@@ -93,7 +95,7 @@ Metryki wybrane w obszarze **Diagnostyka** określają rozdzielczość metryk, k
 
 Można utworzyć alerty powiadamiające o osiągnięciu progów dla metryk zasobów magazynu.
 
-1. Aby otworzyć **blok reguły alertów**, przewiń w dół do sekcji **monitorowanie** w **bloku menu** i wybierz pozycję **alerty (klasyczne)** .
+1. Aby otworzyć **blok reguły alertów**, przewiń w dół do **sekcji monitorowanie** w **bloku menu** i wybierz pozycję **alerty (klasyczne)** .
 2. Wybierz pozycję **Dodaj alert metryki (klasyczny)** , aby otworzyć blok **Dodawanie reguły alertu**
 3. Wprowadź **nazwę** i **Opis** nowej reguły alertu.
 4. Wybierz **metrykę** , dla której chcesz dodać alert, **warunek**alertu i **próg**. Typ jednostki progowej zmienia się w zależności od wybranej metryki. Na przykład "Count" jest typem jednostki dla *ContainerCount*, podczas gdy jednostka dla metryki *wzrost percentnetworkerror* jest wartością procentową.
@@ -134,12 +136,12 @@ Można nakazać usłudze Azure Storage zapisywanie dzienników diagnostycznych d
 1. Upewnij się, że **stan** jest ustawiony na **włączone**, a następnie wybierz **usługi** , dla których chcesz włączyć rejestrowanie.
 
     ![Skonfiguruj rejestrowanie w Azure Portal.](./media/storage-monitor-storage-account/enable-diagnostics.png)
-1. Kliknij polecenie **Zapisz**.
+1. Kliknij pozycję **Zapisz**.
 
 Dzienniki diagnostyczne są zapisywane w kontenerze obiektów BLOB o nazwie *$Logs* na koncie magazynu. Dane dziennika można wyświetlić za pomocą Eksploratora usługi Storage, takiego jak [Microsoft Eksplorator usługi Storage](https://storageexplorer.com), lub programowo przy użyciu biblioteki klienta usługi Storage lub programu PowerShell.
 
 Aby uzyskać informacje o uzyskiwaniu dostępu do kontenera $logs, zobacz [Rejestrowanie analizy magazynu](storage-analytics-logging.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Więcej informacji na temat [metryk, rejestrowania i](storage-analytics.md) rozliczeń można znaleźć w analityka magazynu.
+* Więcej informacji na temat [metryk, rejestrowania i rozliczeń](storage-analytics.md) można znaleźć w analityka magazynu.
