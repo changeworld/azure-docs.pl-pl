@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: spelluru
-ms.openlocfilehash: 311f69ffa436eebb261fb8aa5ee72886ad9fe9d0
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 37ca2b655d30ffd330d5430da20d07d9548a7c84
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035907"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260872"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Skonfiguruj klucze zarządzane przez klienta do szyfrowania danych Event Hubs platformy Azure przechowywanych przy użyciu Azure Portal
 Usługa Azure Event Hubs zapewnia szyfrowanie danych przechowywanych przy użyciu usługi Azure szyfrowanie usługi Storage (SSE platformy Azure). Event Hubs opiera się na usłudze Azure Storage do przechowywania danych i domyślnie wszystkie dane przechowywane w usłudze Azure Storage są szyfrowane przy użyciu kluczy zarządzanych przez firmę Microsoft. 
@@ -24,7 +24,7 @@ Usługa Azure Event Hubs obsługuje teraz opcję szyfrowania danych przechowywan
 Włączenie funkcji BYOK to jednorazowy proces konfiguracji w przestrzeni nazw.
 
 > [!NOTE]
-> Funkcja BYOK jest obsługiwana przez Event Hubs dedykowanych klastrów z [jedną dzierżawą](event-hubs-dedicated-overview.md) . Nie można jej włączyć dla przestrzeni nazw w warstwie Standardowa Event Hubs.
+> Funkcja BYOK jest obsługiwana przez [Event Hubs dedykowanych klastrów z jedną dzierżawą](event-hubs-dedicated-overview.md) . Nie można jej włączyć dla przestrzeni nazw w warstwie Standardowa Event Hubs.
 
 Za pomocą Azure Key Vault można zarządzać kluczami i przeprowadzać inspekcję użycia klucza. Możesz utworzyć własne klucze i zapisać je w magazynie kluczy lub użyć Azure Key Vault interfejsów API do wygenerowania kluczy. Aby uzyskać więcej informacji na temat Azure Key Vault, zobacz [co to jest Azure Key Vault?](../key-vault/key-vault-overview.md)
 
@@ -44,10 +44,10 @@ Aby włączyć klucze zarządzane przez klienta w Azure Portal, wykonaj następu
     ![Włącz klucz zarządzany przez klienta](./media/configure-customer-managed-key/enable-customer-managed-key.png)
 
 ## <a name="set-up-a-key-vault-with-keys"></a>Konfigurowanie magazynu kluczy z kluczami
-Po włączeniu kluczy zarządzanych przez klienta należy skojarzyć klucz zarządzany przez klienta z przestrzenią nazw platformy Azure Event Hubs. Event Hubs obsługuje tylko Azure Key Vault. Po włączeniu opcji **szyfrowania z kluczem zarządzanym przez klienta** w poprzedniej sekcji należy zaimportować klucz do Azure Key Vault. Ponadto klucze muszą mieć nietrwałe **usuwanie** i nie można ich **czyścić** skonfigurować dla klucza. Te ustawienia można skonfigurować przy użyciu [programu PowerShell](../key-vault/key-vault-soft-delete-powershell.md) lub [interfejsu wiersza polecenia](../key-vault/key-vault-soft-delete-cli.md#enabling-purge-protection).
+Po włączeniu kluczy zarządzanych przez klienta należy skojarzyć klucz zarządzany przez klienta z przestrzenią nazw platformy Azure Event Hubs. Event Hubs obsługuje tylko Azure Key Vault. Po włączeniu opcji **szyfrowania z kluczem zarządzanym przez klienta** w poprzedniej sekcji należy zaimportować klucz do Azure Key Vault. Ponadto klucze muszą mieć **nietrwałe usuwanie** i nie można ich **czyścić** skonfigurować dla klucza. Te ustawienia można skonfigurować przy użyciu [programu PowerShell](../key-vault/key-vault-soft-delete-powershell.md) lub [interfejsu wiersza polecenia](../key-vault/key-vault-soft-delete-cli.md#enabling-purge-protection).
 
-1. Aby utworzyć nowy magazyn kluczy, postępuj zgodnie z Azure Key Vault [przewodnika Szybki Start](../key-vault/key-vault-overview.md). Aby uzyskać więcej informacji o importowaniu istniejących kluczy, zobacz [Informacje o kluczach,](../key-vault/about-keys-secrets-and-certificates.md)wpisach tajnych i certyfikatach.
-1. Aby włączyć zarówno nietrwałe usuwanie, jak i przeczyszczanie, podczas tworzenia magazynu należy użyć polecenia [AZ Create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) webmagazynion.
+1. Aby utworzyć nowy magazyn kluczy, postępuj zgodnie z Azure Key Vault [przewodnika Szybki Start](../key-vault/key-vault-overview.md). Aby uzyskać więcej informacji o importowaniu istniejących kluczy, zobacz [Informacje o kluczach, wpisach tajnych i certyfikatach](../key-vault/about-keys-secrets-and-certificates.md).
+1. Aby włączyć zarówno nietrwałe usuwanie, jak i przeczyszczanie, podczas tworzenia magazynu należy użyć polecenia [AZ Create webmagazynion](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) .
 
     ```azurecli-interactive
     az keyvault create --name ContosoVault --resource-group ContosoRG --location westus --enable-soft-delete true --enable-purge-protection true
@@ -61,7 +61,7 @@ Po włączeniu kluczy zarządzanych przez klienta należy skojarzyć klucz zarz�
     1. Aby utworzyć nowy klucz, wybierz pozycję **Generuj/Importuj** z menu **klucze** w obszarze **Ustawienia**.
         
         ![Przycisk Wybierz opcję Generuj/Importuj](./media/configure-customer-managed-key/select-generate-import.png)
-    1. Ustaw **Opcje** w celu wygenerowania klucza i nadaj mu nazwę.
+    1. Ustaw **Opcje** w celu **wygenerowania** klucza i nadaj mu nazwę.
 
         ![Tworzenie klucza](./media/configure-customer-managed-key/create-key.png) 
     1. Teraz możesz wybrać ten klucz do skojarzenia z przestrzenią nazw Event Hubs do szyfrowania z listy rozwijanej. 
@@ -84,7 +84,7 @@ Po odwołaniu klucza szyfrowania usługa Event Hubs w zaszyfrowanej przestrzeni 
 > Jeśli usuniesz istniejący klucz szyfrowania z magazynu kluczy i zastąpi go nowym kluczem w przestrzeni nazw Event Hubs, ponieważ klucz usuwania jest nadal ważny (ponieważ jest buforowany) przez maksymalnie godzinę, stare dane (zaszyfrowany przy użyciu starego klucza) mogą być nadal dostępne.  nowe dane, które są teraz dostępne tylko przy użyciu nowego klucza. To zachowanie jest zaprojektowana w wersji zapoznawczej funkcji. 
 
 ## <a name="set-up-diagnostic-logs"></a>Konfigurowanie dzienników diagnostycznych 
-Ustawienie dzienników diagnostycznych dla przestrzeni nazw z włączoną obsługą BYOK umożliwia uzyskanie wymaganych informacji o operacjach, gdy przestrzeń nazw jest zaszyfrowana przy użyciu kluczy zarządzanych przez klienta. Te dzienniki mogą być włączone i później przesyłane strumieniowo do centrum zdarzeń lub analizowane przy użyciu usługi log Analytics lub przesyłane strumieniowo do magazynu w celu przeprowadzenia dostosowanej analizy. Aby dowiedzieć się więcej na temat dzienników diagnostycznych, zobacz [Omówienie dzienników diagnostycznych platformy Azure](../azure-monitor/platform/diagnostic-logs-overview.md).
+Ustawienie dzienników diagnostycznych dla przestrzeni nazw z włączoną obsługą BYOK umożliwia uzyskanie wymaganych informacji o operacjach, gdy przestrzeń nazw jest zaszyfrowana przy użyciu kluczy zarządzanych przez klienta. Te dzienniki mogą być włączone i później przesyłane strumieniowo do centrum zdarzeń lub analizowane przy użyciu usługi log Analytics lub przesyłane strumieniowo do magazynu w celu przeprowadzenia dostosowanej analizy. Aby dowiedzieć się więcej na temat dzienników diagnostycznych, zobacz [Omówienie dzienników diagnostycznych platformy Azure](../azure-monitor/platform/resource-logs-overview.md).
 
 ## <a name="enable-user-logs"></a>Włącz dzienniki użytkowników
 Wykonaj następujące kroki, aby włączyć dzienniki dla kluczy zarządzanych przez klienta.
@@ -110,7 +110,7 @@ Wszystkie dzienniki są przechowywane w formacie JavaScript Object Notation (JSO
 | Identyfikator działania | Wewnętrzny identyfikator używany do śledzenia. |
 | category | Definiuje klasyfikację zadania. Na przykład jeśli klucz z magazynu kluczy jest wyłączany, będzie to kategoria informacji lub jeśli klucz nie może zostać rozpakowany, może to oznaczać, że wystąpił błąd. |
 | resourceId | Identyfikator zasobu Azure Resource Manager |
-| keyVault | Pełna nazwa magazynu kluczy. |
+| KeyVault | Pełna nazwa magazynu kluczy. |
 | key | Nazwa klucza służąca do szyfrowania przestrzeni nazw Event Hubs. |
 | version | Używana wersja klucza. |
 | operation | Operacja wykonywana na kluczu w magazynie kluczy. Na przykład Wyłącz/Włącz klucz, Zawijaj lub Odpakuj |

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 24dc01d47bece4191d1b142a58c4ad7b6d9fb6cf
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c1bd33ea5cbe45d6ff862645d614d54d20110ef4
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876580"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260859"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Jak debugować funkcje zdefiniowane przez użytkownika w usłudze Azure Digital bliźniaczych reprezentacji
 
@@ -35,7 +35,7 @@ Usługa Azure Digital bliźniaczych reprezentacji obsługuje niezawodne rejestro
 
 * Aby uzyskać konfigurację rejestrowania specyficzną dla usługi Azure Digital bliźniaczych reprezentacji, przeczytaj artykuł [jak skonfigurować monitorowanie i rejestrowanie](./how-to-configure-monitoring.md).
 * Zapoznaj się z omówieniem [Azure monitor](../azure-monitor/overview.md) , aby dowiedzieć się więcej o zaawansowanych ustawieniach rejestrowania włączonych za pomocą Azure monitor.
-* Zapoznaj się z artykułem [zbieranie danych dzienników z zasobów platformy Azure i korzystanie z nich](../azure-monitor/platform/diagnostic-logs-overview.md) w celu konfigurowania ustawień dziennika diagnostycznego w usłudze Azure Digital bliźniaczych reprezentacji za pomocą witryny Azure Portal, interfejsu wiersza polecenia platformy Azure lub programu PowerShell.
+* Zapoznaj się z artykułem [zbieranie danych dzienników z zasobów platformy Azure i korzystanie z nich](../azure-monitor/platform/resource-logs-overview.md) w celu konfigurowania ustawień dziennika diagnostycznego w usłudze Azure Digital bliźniaczych reprezentacji za pomocą witryny Azure Portal, interfejsu wiersza polecenia platformy Azure lub programu PowerShell.
 
 Po skonfigurowaniu można wybrać wszystkie kategorie i metryki dzienników oraz zaawansowane Azure Monitor obszary robocze usługi log Analytics do obsługi działań związanych z debugowaniem.
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: e61ddd6cb51795fad564b6246fb24ea4ce48f028
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 467ec25bb9e41180da36f118094324e4fea48cf8
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982957"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266099"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurowanie urządzenia usługi IoT Edge, aby pełnić rolę przezroczystej bramy
 
@@ -34,7 +34,7 @@ Należy wykonać trzy ogólne kroki, aby skonfigurować pomyślne, przezroczyste
 
 Aby urządzenie działało jako brama, musi być w stanie bezpiecznie połączyć się z jego urządzeniami podrzędnymi. Usługa Azure IoT Edge umożliwia użycie infrastruktury kluczy publicznych (PKI) do skonfigurowania bezpiecznych połączeń między urządzeniami. W tym przypadku możemy zezwolenie podrzędnym urządzenia połączyć się z urządzenia usługi IoT Edge, działając jako przezroczystej bramy. Aby zachować uzasadnione zabezpieczenia, urządzenie podrzędne powinno potwierdzić tożsamość urządzenia bramy. To sprawdzenie tożsamości uniemożliwia urządzeniom łączenie się z potencjalnie złośliwymi bramami.
 
-Podrzędne urządzenie może pozostawać w dowolnej aplikacji lub platformy, który został utworzony za pomocą tożsamości [usługi Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub) usługi w chmurze. W wielu przypadkach te aplikacje korzystają [zestaw SDK urządzeń Azure IoT](../iot-hub/iot-hub-devguide-sdks.md). Praktycznego podrzędne urządzenia można nawet aplikację działającą na samym urządzeniu bramy usługi IoT Edge. 
+W przypadku niejawnego scenariusza bramy może być dowolna aplikacja lub platforma, która ma tożsamość utworzoną za pomocą usługi [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub) w chmurze. W wielu przypadkach te aplikacje korzystają [zestaw SDK urządzeń Azure IoT](../iot-hub/iot-hub-devguide-sdks.md). Praktycznego podrzędne urządzenia można nawet aplikację działającą na samym urządzeniu bramy usługi IoT Edge. Jednak urządzenie IoT Edge nie może być niższe niż Brama IoT Edge. 
 
 Można utworzyć żadnej infrastruktury certyfikatów, umożliwiająca zaufania wymagane dla topologii urządzenia bramy. W tym artykule przyjęto założenie, że ta sama konfiguracja certyfikatu zostanie użyta w celu włączenia [zabezpieczeń urzędu certyfikacji x. 509](../iot-hub/iot-hub-x509ca-overview.md) w IoT Hub, co obejmuje certyfikat dla urzędu certyfikacji x. 509 skojarzony z określonym Centrum IoT Hub (główny urząd certyfikacji Centrum IoT Hub), Seria certyfikatów podpisanych za pomocą tego urzędu certyfikacji. i urząd certyfikacji dla urządzenia IoT Edge.
 
@@ -49,7 +49,8 @@ Poniższe kroki przeprowadzą Cię przez proces tworzenia certyfikatów i instal
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Urządzenia z systemem Azure IoT Edge można skonfigurować jako bramę. Wykonaj kroki instalacji IoT Edge jednego z następujących systemów operacyjnych:
+* Komputer deweloperski do tworzenia certyfikatów. 
+* Urządzenia z systemem Azure IoT Edge można skonfigurować jako bramę. Wykonaj kroki instalacji IoT Edge jednego z następujących systemów operacyjnych:
   * [Windows](how-to-install-iot-edge-windows.md)
   * [Linux](how-to-install-iot-edge-linux.md)
 
@@ -63,7 +64,7 @@ Certyfikatów wygenerowanych w tej sekcji są przeznaczone tylko do celów testo
 
 Zainstaluj biblioteki OpenSSL dla Windows na komputerze, którego używasz w celu wygenerowania certyfikatów. Jeśli masz już zainstalowaną OpenSSL na urządzeniu z systemem Windows, możesz pominąć ten krok, ale upewnij się, że OpenSSL. exe jest dostępny w zmiennej środowiskowej PATH. 
 
-Istnieje kilka sposobów, należy zainstalować protokół OpenSSL:
+Istnieje kilka sposobów instalacji programu OpenSSL, w tym:
 
 * **Czytelnooci** Pobierz i zainstaluj wszystkie [pliki binarne OpenSSL innych](https://wiki.openssl.org/index.php/Binaries)firm, na przykład z [OpenSSL na sourceforge](https://sourceforge.net/projects/openssl/). Dodanie pełnej ścieżki do openssl.exe do zmiennej środowiskowej PATH. 
    
@@ -321,4 +322,4 @@ Aby włączyć rozszerzone możliwości trybu offline, należy ustanowić relacj
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy masz urządzenia usługi IoT Edge działa jako przezroczystej bramy, należy skonfigurować podrzędne urządzenia, aby ufać bramy i wysyłanie komunikatów do niego. Aby uzyskać więcej informacji, zobacz [łączenie urządzenia podrzędnego z bramą Azure IoT Edge](how-to-connect-downstream-device.md) i [uwierzytelnianie urządzenia podrzędnego w usłudze Azure IoT Hub](how-to-authenticate-downstream-device.md).
+Teraz, gdy masz urządzenia usługi IoT Edge działa jako przezroczystej bramy, należy skonfigurować podrzędne urządzenia, aby ufać bramy i wysyłanie komunikatów do niego. Kontynuuj, aby [uwierzytelnić urządzenie podrzędne w usłudze Azure IoT Hub](how-to-authenticate-downstream-device.md) w celu wykonania następnych kroków w celu skonfigurowania niejawnego scenariusza bramy. 

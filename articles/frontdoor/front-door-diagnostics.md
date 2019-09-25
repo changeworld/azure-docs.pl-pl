@@ -1,6 +1,6 @@
 ---
-title: Monitorowanie metryk i dzienników w usłudze Azure Service wejściu | Dokumentacja firmy Microsoft
-description: W tym artykule opisano różne metryki i Dzienniki dostępu, które obsługuje usługę drzwiami frontowymi Azure
+title: Monitorowanie metryk i dzienników w usłudze Azure Front-drzwiczk | Microsoft Docs
+description: W tym artykule opisano różne metryki i dzienniki dostępu obsługiwane przez usługę Azure Front drzwiczk
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,86 +11,86 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: 16770ea0a320b3d9f081cc21a102ab050a6467f6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f76df0045fc3939392759ed0edd266380295a85
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60736805"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260178"
 ---
-# <a name="monitoring-metrics-and-logs-in-azure-front-door-service"></a>Monitorowanie metryk i dzienników w usłudze Azure Service drzwi
+# <a name="monitoring-metrics-and-logs-in-azure-front-door-service"></a>Monitorowanie metryk i dzienników w usłudze Azure Front-drzwiczk
 
-Za pomocą usługi Azure Service drzwiami frontowymi, można monitorować zasoby w następujący sposób:
+Za pomocą usługi Azure Front drzwiczk można monitorować zasoby w następujący sposób:
 
-- **Metryki**. Usługa Application Gateway obecnie ma siedem metryki, aby wyświetlić liczniki wydajności.
-- **Dzienniki**. Aktywności i dziennikach diagnostycznych Zezwalaj na wydajność, dostępu i inne dane, które mają być zapisane lub używane z zasobu do celów monitorowania.
+- **Metryki**. Application Gateway obecnie ma siedem metryk do wyświetlania liczników wydajności.
+- **Dzienniki**. Dzienniki działań i diagnostyki umożliwiają zapisywanie lub zużywanie wydajności, dostępu i innych danych z zasobów na potrzeby monitorowania.
 
 ### <a name="metrics"></a>Metryki
 
-Metryki są funkcją dla niektórych zasobów platformy Azure, które umożliwiają wyświetlanie liczników wydajności w portalu. Dostępne metryki drzwiami frontowymi są następujące:
+Metryki to funkcja niektórych zasobów platformy Azure, która umożliwia wyświetlanie liczników wydajności w portalu. Dostępne są następujące metryki czołowych drzwi:
 
 | Metryka | Nazwa wyświetlana metryki | Jednostka | Wymiary | Opis |
 | --- | --- | --- | --- | --- |
-| RequestCount | Liczba żądań | Licznik | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Liczba żądań klientów obsługiwanych przez wejściu.  |
-| RequestSize | Rozmiar żądania | Bajty | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Liczba bajtów wysłanych jako żądania od klientów na wejściu. |
-| ResponseSize | Rozmiar odpowiedzi | Bajty | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Liczba bajtów wysłanych jako odpowiedzi z wejściu do klientów. |
-| TotalLatency | Całkowity czas oczekiwania | MS | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Czas jest obliczany od żądania klienta odebranych przez drzwiami frontowymi, dopóki klient potwierdzenia ostatni bajt odpowiedzi z drzwiami frontowymi. |
-| BackendRequestCount | Liczba żądań wewnętrznej bazy danych | Count | HttpStatus</br>HttpStatusGroup</br>Wewnętrznej bazy danych | Liczba żądań wysyłanych z wejściu do zaplecza. |
-| BackendRequestLatency | Opóźnienia żądania wewnętrznej bazy danych | MS | Wewnętrznej bazy danych | Czas obliczonym na podstawie Jeśli żądanie zostało wysłane przy wejściu do wewnętrznej bazy danych, do chwili drzwiami frontowymi odebrania ostatniego bajtu odpowiedzi z wewnętrznej bazy danych. |
-| BackendHealthPercentage | Wartość procentowa kondycję wewnętrznej bazy danych | Procent | Wewnętrznej bazy danych</br>BackendPool | Procent pomyślnych kondycji sondy z wejściu do zaplecza. |
-| WebApplicationFirewallRequestCount | Liczba żądań zapory aplikacji sieci Web | Count | PolicyName</br>RuleName</br>Akcja | Liczba żądań klienta przetwarzanych przez drzwiami frontowymi zabezpieczeń warstwy aplikacji. |
+| RequestCount | Liczba żądań | Count | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Liczba żądań klientów obsłużonych przez tylne drzwi.  |
+| RequestSize | Rozmiar żądania | Bajty | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Liczba bajtów wysłanych jako żądania od klientów do przednich drzwi. |
+| ResponseSize | Rozmiar odpowiedzi | Bajty | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Liczba bajtów wysłanych jako odpowiedzi z pierwszych drzwi do klientów. |
+| TotalLatency | Łączne opóźnienie | MS | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Czas, który został obliczony przez żądanie klienta odebrane przez tylne drzwi do momentu potwierdzenia przez klienta ostatniego bajtu odpowiedzi z drzwi przednich. |
+| BackendRequestCount | Liczba żądań wewnętrznej bazy danych | Count | HttpStatus</br>HttpStatusGroup</br>Zaplecze | Liczba żądań wysyłanych z przednich drzwi do frontonu. |
+| BackendRequestLatency | Opóźnienie żądania wewnętrznej bazy danych | MS | Zaplecze | Czas, jaki upłynął od momentu wysłania żądania przez drzwi do zaplecza do momentu odebrania ostatniego bajtu odpowiedzi z zaplecza do przodu. |
+| BackendHealthPercentage | Procent kondycji zaplecza | Percent | Zaplecze</br>BackendPool | Procent pomyślnych sond kondycji z czołowych drzwi do frontonu. |
+| WebApplicationFirewallRequestCount | Liczba żądań zapory aplikacji sieci Web | Count | policyName</br>RuleName</br>Action | Liczba żądań klientów przetworzonych przez zabezpieczenia warstwy aplikacji dla drzwi z przodu. |
 
 ## <a name="activity-log"></a>Dzienniki aktywności
 
-Dzienniki aktywności udostępniają informacje o operacjach na wejściu usługi. Określają również co, kto i dla każdego zapisu (put, post lub delete) wykonywanych na wejściu usługi.
+Dzienniki aktywności zawierają informacje o operacjach wykonywanych w usłudze front-drzwi. Określają one również elementy, kto i kiedy dla operacji zapisu (Put, post lub Delete) podejmowane w usłudze front-drzwi.
 
 >[!NOTE]
->Dzienniki aktywności nie obejmują operacji odczytu (get). Te aktualizacje nie obejmują również operacje wykonywane przy użyciu witryny Azure portal lub oryginalny interfejs API zarządzania.
+>Dzienniki aktywności nie obejmują operacji odczytu (Get). Nie obejmują one również operacji wykonywanych przy użyciu Azure Portal lub oryginalnego interfejsu API zarządzania.
 
-Dzienniki aktywności dostępu w usłudze drzwiami frontowymi lub wszystkich dzienników z zasobów platformy Azure w usłudze Azure Monitor. Aby wyświetlić dzienniki aktywności:
+Uzyskaj dostęp do dzienników aktywności w usłudze front-drzwi lub wszystkich dzienników zasobów platformy Azure w Azure Monitor. Aby wyświetlić dzienniki aktywności:
 
-1. Wybierz wystąpienie usługi wejściu.
-2. Wybierz **dziennika aktywności**.
+1. Wybierz wystąpienie z drzwiami czołowymi.
+2. Wybierz pozycję **Dziennik aktywności**.
 
     ![Dziennik aktywności](./media/front-door-diagnostics/activity-log.png)
 
 3. Wybierz zakres filtrowania, a następnie wybierz pozycję **Zastosuj**.
 
 ## <a name="diagnostic-logging"></a>Dzienniki diagnostyczne
-Dzienniki diagnostyczne zawierają bogate informacje o operacjach i błędach, które są ważne na potrzeby inspekcji i rozwiązywania problemów. Dzienniki diagnostyczne różnią się od dzienników aktywności.
+Dzienniki diagnostyczne zawierają bogate informacje o operacjach i błędach, które są ważne w przypadku inspekcji i rozwiązywania problemów. Dzienniki diagnostyczne różnią się od dzienników aktywności.
 
-Dzienniki aktywności udostępniają szczegółowe dane operacji na zasoby platformy Azure. Dzienniki diagnostyczne udostępniają szczegółowe dane operacji wykonanych przez zasób. Aby uzyskać więcej informacji, zobacz [dzienników diagnostycznych usługi Azure Monitor](../azure-monitor/platform/diagnostic-logs-overview.md).
+Dzienniki aktywności zapewniają wgląd w operacje wykonywane w zasobach platformy Azure. Dzienniki diagnostyczne zapewniają wgląd w operacje wykonywane przez zasób. Aby uzyskać więcej informacji, zobacz [Azure monitor dzienników diagnostycznych](../azure-monitor/platform/resource-logs-overview.md).
 
 ![Dzienniki diagnostyczne](./media/front-door-diagnostics/diagnostic-log.png)
 
-Aby skonfigurować dzienniki diagnostyczne usługi drzwi wejściowe:
+Aby skonfigurować dzienniki diagnostyczne dla usługi front-drzwi:
 
-1. Wybierz usługę Azure drzwiami frontowymi.
+1. Wybierz swoją usługę Azure front-drzwi.
 
-2. Wybierz **ustawień diagnostycznych**.
+2. Wybierz pozycję **Ustawienia diagnostyczne**.
 
-3. Wybierz **Włącz diagnostykę**. Archiwizuj dzienniki diagnostyczne wraz z metrykami na konto magazynu, przekazywać je strumieniowo do Centrum zdarzeń lub wysyłać dzienniki usługi Azure Monitor.
+3. Wybierz **Włącz diagnostykę**. Archiwizuj dzienniki diagnostyczne wraz z metrykami na koncie magazynu, przesyłaj strumieniowo do centrum zdarzeń lub wysyłaj je do dzienników Azure Monitor.
 
-Usługa drzwiami frontowymi udostępnia obecnie dzienniki diagnostyczne (wsadowe co godzinę). Dzienniki diagnostyczne zawierają poszczególnych żądań interfejsu API zgodny z następującym schematem AP. Każdy wpis:
+Usługa front-drzwi udostępnia teraz dzienniki diagnostyczne (wsadowe co godzinę). Dzienniki diagnostyczne zapewniają pojedyncze żądania interfejsu API za pomocą każdego wpisu, który ma następujący schemat:
 
 | Właściwość  | Opis |
 | ------------- | ------------- |
-| ClientIp | Adres IP klienta, który zgłosił żądanie. |
-| ClientPort | Port adresu IP klienta, który zgłosił żądanie. |
-| HttpMethod | Metoda HTTP używana przez żądanie. |
+| ClientIp | Adres IP klienta, który wykonał żądanie. |
+| clientPort | Port IP klienta, który wykonał żądanie. |
+| httpMethod | Metoda HTTP używana przez żądanie. |
 | HttpStatusCode | Kod stanu HTTP zwrócony z serwera proxy. |
-| HttpStatusDetails | Wynikowy stan dla żądania. Znaczenie tej wartości parametrów można znaleźć w tabeli referencyjnej stanu. |
+| HttpStatusDetails | Stan wynikający z żądania. Znaczenie tej wartości ciągu można znaleźć w tabeli odwołania do stanu. |
 | HttpVersion | Typ żądania lub połączenia. |
-| RequestBytes | Rozmiar komunikatu żądania HTTP, w bajtach, w tym nagłówki żądania i treści żądania. |
-| RequestUri | Identyfikator URI odebrane żądanie. |
-| ResponseBytes | Liczba bajtów wysłanych przez serwer wewnętrznej bazy danych jako odpowiedzi.  |
-| RoutingRuleName | Nazwa reguły routingu, który jest zgodny z żądaniem. |
-| Elementu SecurityProtocol | Wersja protokołu TLS/SSL używany przez żądania lub wartość null, jeśli bez szyfrowania. |
-| Właściwość timeTaken | Długość czasu wykonywania akcji w milisekundach. |
-| UserAgent | Typ przeglądarki, używanego przez klienta |
-| TrackingReference | Ciąg unikatowy odwołania, który identyfikuje żądanie obsługiwanej przez drzwiami frontowymi również wysyłane jako nagłówek X-Azure-Ref do klienta. Wymagane do wyszukiwania informacji w dziennikach dostępu dla określonego żądania. |
+| RequestBytes | Rozmiar komunikatu żądania HTTP w bajtach, w tym nagłówki żądań i treść żądania. |
+| RequestUri | Identyfikator URI odebranego żądania. |
+| ResponseBytes | Bajty wysłane przez serwer wewnętrznej bazy danych jako odpowiedź.  |
+| RoutingRuleName | Nazwa reguły routingu, która pasuje do żądania. |
+| To elementu SecurityProtocol | Wersja protokołu TLS/SSL używana przez żądanie lub wartość null, jeśli nie ma szyfrowania. |
+| TimeTaken | Czas trwania akcji (w milisekundach). |
+| UserAgent | Typ przeglądarki używany przez klienta |
+| TrackingReference | Unikatowy ciąg odwołania, który identyfikuje żądanie obsługiwane przez tylne drzwi, również wysyłany jako nagłówek X-Azure-ref do klienta. Wymagane do wyszukiwania szczegółowych informacji w dziennikach dostępu dla określonego żądania. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Utwórz profil drzwi](quickstart-create-front-door.md)
-- [Jak działa drzwi](front-door-routing-architecture.md)
+- [Tworzenie profilu frontu drzwi](quickstart-create-front-door.md)
+- [Jak działają tylne drzwi](front-door-routing-architecture.md)

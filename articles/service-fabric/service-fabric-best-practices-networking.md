@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: d221b828624e649a0d04a89c4394fe5a7fa857dd
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 317977af9d41163013545a6e5f60bee887da596c
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "66237319"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262246"
 ---
 # <a name="networking"></a>Networking
 
@@ -70,7 +70,7 @@ Skalowanie w górę infrastruktury jest wymagane do włączenia przyspieszonej s
 
 * Aby można było uruchomić obciążenia kontenerów systemu Windows, należy użyć [trybu otwartej sieci](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) do ułatwienia komunikacji między usługami.
 
-* Użyj zwrotnego serwera proxy, takiego jak [Traefik](https://docs.traefik.io/configuration/backends/servicefabric/) lub [Service Fabric zwrotnego serwera proxy](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy) w celu udostępnienia typowych portów aplikacji, takich jak 80 lub 443.
+* Użyj zwrotnego serwera proxy, takiego jak [Traefik](https://docs.traefik.io/v1.6/configuration/backends/servicefabric/) lub [Service Fabric zwrotnego serwera proxy](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy) w celu udostępnienia typowych portów aplikacji, takich jak 80 lub 443.
 
 * W przypadku kontenerów systemu Windows hostowanych na maszynach gapped powietrznych, które nie mogą pobierać warstw podstawowych z magazynu w chmurze platformy Azure, Zastąp zachowanie warstwy obcej przy użyciu flagi [--Allow-undystrybucyjne-artefakty](https://docs.microsoft.com/virtualization/windowscontainers/about/faq#how-do-i-make-my-container-images-available-on-air-gapped-machines) w demona platformy Docker.
 

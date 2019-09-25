@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 223efefde4fc09684504925abd0d8d5ee5e4b5ea
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 795f18365c4b4846d18eddf3212059040bf9e319
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699574"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260211"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>Jak utworzyć udział plików platformy Azure w warstwie Premium
 Udziały plików w warstwie Premium są oferowane na nośnikach magazynowania SSD i są przydatne w przypadku obciążeń intensywnie korzystających z operacji we/wy, w tym hostingu baz danych i obliczeń o wysokiej wydajności (HPC). Udziały plików w warstwie Premium są hostowane w specjalnym rodzaju koncie magazynu o nazwie konto FileStorage. Udziały plików w warstwie Premium są przeznaczone dla aplikacji o wysokiej wydajności i skalowania w przedsiębiorstwie, zapewniając spójne małe opóźnienia, duże liczby operacji we/wy i duże przepływność.
@@ -59,11 +59,11 @@ Po utworzeniu zasobu konta magazynu przejdź do niego.
 ### <a name="create-a-premium-file-share"></a>Tworzenie udziału plików w warstwie Premium
 
 1. W menu po lewej stronie konta magazynu przewiń do sekcji **Usługa plików** , a następnie wybierz pozycję **pliki**.
-1. Wybierz pozycję **+ udział plików** , aby utworzyć udział plików w warstwie Premium.
+1. Wybierz pozycję **udział plików** , aby utworzyć udział plików w warstwie Premium.
 1. Wprowadź nazwę i żądany przydział udziału plików, a następnie wybierz pozycję **Utwórz**.
 
 > [!NOTE]
-> Rozmiar udostępnianych udziałów jest określany na podstawie przydziału udziału, a udziały plików są rozliczane zgodnie z zainicjowaną ilością. więcej informacji można znaleźć na [stronie](https://azure.microsoft.com/pricing/details/storage/files/) z cennikiem.
+> Rozmiar udostępnianych udziałów jest określany na podstawie przydziału udziału, a udziały plików są rozliczane zgodnie z zainicjowaną ilością. więcej informacji można znaleźć na [stronie z cennikiem](https://azure.microsoft.com/pricing/details/storage/files/) .
 
    ![Tworzenie udziału plików w warstwie Premium](media/storage-how-to-create-premium-fileshare/create-premium-file-share.png)
 
@@ -124,7 +124,7 @@ $storageAcct = New-AzStorageAccount -ResourceGroupName $resourceGroup -Name "fil
 Teraz, gdy masz już konto FileStorage, możesz utworzyć udział plików w warstwie Premium. Użyj polecenia cmdlet [New-AzStorageShare](/powershell/module/az.storage/New-AzStorageShare) , aby go utworzyć.
 
 > [!NOTE]
-> Rozmiar udostępnianych udziałów jest określany na podstawie przydziału udziału, a udziały plików są rozliczane zgodnie z zainicjowaną ilością. więcej informacji można znaleźć na [stronie](https://azure.microsoft.com/pricing/details/storage/files/) z cennikiem.
+> Rozmiar udostępnianych udziałów jest określany na podstawie przydziału udziału, a udziały plików są rozliczane zgodnie z zainicjowaną ilością. więcej informacji można znaleźć na [stronie z cennikiem](https://azure.microsoft.com/pricing/details/storage/files/) .
 
 ```powershell
 New-AzStorageShare `
@@ -189,7 +189,7 @@ STORAGEKEY=$(az storage account keys list \
 Teraz, gdy masz już konto FileStorage, możesz utworzyć udział plików w warstwie Premium. Użyj polecenia [AZ Storage Share Create](/cli/azure/storage/share) , aby go utworzyć.
 
 > [!NOTE]
-> Rozmiar udostępnianych udziałów jest określany na podstawie przydziału udziału, a udziały plików są rozliczane zgodnie z zainicjowaną ilością. więcej informacji można znaleźć na [stronie](https://azure.microsoft.com/pricing/details/storage/files/) z cennikiem.
+> Rozmiar udostępnianych udziałów jest określany na podstawie przydziału udziału, a udziały plików są rozliczane zgodnie z zainicjowaną ilością. więcej informacji można znaleźć na [stronie z cennikiem](https://azure.microsoft.com/pricing/details/storage/files/) .
 
 ```azurecli-interactive
 az storage share create \

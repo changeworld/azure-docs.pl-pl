@@ -1,6 +1,6 @@
 ---
-title: Platforma danych w usłudze Azure Monitor | Dokumentacja firmy Microsoft
-description: Monitorowanie danych zbieranych przez usługi Azure Monitor jest podzielony metryki, które są uproszczone i może obsługiwać w scenariuszach w czasie rzeczywistym i dzienników, które są używane do zaawansowanej analizy.
+title: Platforma danych Azure Monitor | Microsoft Docs
+description: Dane monitorowania zbierane przez Azure Monitor są rozdzielone na metryki, które są lekkie i mogą obsługiwać niemal scenariusze i dzienniki, które są używane na potrzeby zaawansowanej analizy.
 documentationcenter: ''
 author: bwren
 manager: carmonm
@@ -11,84 +11,84 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 00c0fea9d8ca7ee299a9a19473917eba90edd675
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 48357adccea201aaeb99863b39e9c8cabce915ce
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606973"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262068"
 ---
-# <a name="azure-monitor-data-platform"></a>Platforma danych w usłudze Azure Monitor
+# <a name="azure-monitor-data-platform"></a>Platforma danych Azure Monitor
 
-Włączenie observability we współczesnych złożonych środowisk obliczeniowych uruchamiania aplikacji rozproszonych, które opierają się na chmurze i usług lokalnych wymaga zbierania danych operacyjnych z każdej warstwy i każdy składnik systemu rozproszonego. Musisz mieć możliwość wykonania szczegółowych informacji na tych danych i konsolidować je w jedną taflę szkła z różnych perspektyw do obsługi wielu uczestników projektu w Twojej organizacji.
+Umożliwienie wglądu w współczesnych środowiskach obliczeniowych uruchamiających aplikacje rozproszone korzystające z usług w chmurze i lokalnych, wymaga zbierania danych operacyjnych z każdej warstwy i każdego składnika systemu rozproszonego. Musisz mieć możliwość przeprowadzenia szczegółowego wglądu w dane i skonsolidować je w jednym okienku szkła z różnymi perspektywami, aby wspierać wiele uczestników projektu w organizacji.
 
-[Usługa Azure Monitor](../overview.md) zbiera i agregują dane z wielu źródeł do wspólną platformę danych, w której może służyć do analiz, wizualizacji i alertów. Zapewnia spójne środowisko na podstawie danych z wielu źródeł, co daje wgląd we wszystkich monitorowanych zasobów, a nawet w przypadku danych z innych usług, które przechowują dane w usłudze Azure Monitor.
+[Azure monitor](../overview.md) zbiera i agreguje dane z różnych źródeł do wspólnej platformy danych, gdzie można jej używać do analizowania, wizualizacji i generowania alertów. Zapewnia spójne środowisko danych z wielu źródeł, które zapewnia szczegółowe informacje na temat wszystkich monitorowanych zasobów, a nawet danych z innych usług, które przechowują swoje dane w Azure Monitor.
 
 
 ![Omówienie usługi Azure Monitor](media/data-platform/overview.png)
 
-## <a name="observability-data-in-azure-monitor"></a>Observability danych w usłudze Azure Monitor
-Metryk, dzienników i ślady rozproszone są często nazywane trzy filary observability. Są to różne rodzaje danych, który narzędzia do monitorowania należy zbierać i analizować, aby zapewnić wystarczającą observability monitorowanych systemu. Observability można osiągnąć przez skorelowanie danych z wielu filary i agregowanie danych w obrębie całego zestawu zasobów są monitorowane. Ponieważ usługa Azure Monitor są przechowywane dane z wielu źródeł, które razem, dane mogą zostać skorelowane i analizować, korzystając ze wspólnego zestawu narzędzi. Jest także danych, w wielu subskrypcji platformy Azure i dzierżaw, oprócz hostowania danych dla innych usług.
+## <a name="observability-data-in-azure-monitor"></a>Dane dotyczące zaobserwowania w Azure Monitor
+Metryki, dzienniki i rozproszone ślady są często określane jako trzy filary przestrzegania. Są to różne rodzaje danych, które narzędzie monitorowania musi zbierać i analizować, aby zapewnić wystarczającą zauważalność monitorowanego systemu. Zauważalność można osiągnąć poprzez skorelowanie danych z wielu filarów i agregowanie danych w całym monitorowanym zestawie zasobów. Ponieważ Azure Monitor przechowuje dane z wielu źródeł jednocześnie, dane mogą być skorelowane i analizowane przy użyciu wspólnego zestawu narzędzi. W programie są również skorelowane dane wielu subskrypcji platformy Azure i dzierżawców, a także dane hostingu dla innych usług.
 
-Zasoby platformy Azure generuje znacznej ilości danych monitorowania. Usługa Azure Monitor konsoliduje dane oraz dane monitorowania z innych źródeł w jeden metryk lub dzienników platformy. Każdy jest zoptymalizowany pod kątem konkretnych scenariuszach monitorowania, a każdy obsługuje różne funkcje w usłudze Azure Monitor. Funkcje, takie jak analiza danych, wizualizacje lub alerty wymagają zrozumienie różnic, dzięki czemu można zaimplementować wymaganego scenariusza w najbardziej skuteczny i niskie koszty. Szczegółowe informacje w usłudze Azure Monitor, takich jak [usługi Application Insights](../app/app-insights-overview.md) lub [usługi Azure Monitor dla maszyn wirtualnych](../insights/vminsights-overview.md) mieć narzędzia do analizy, które pozwalają skoncentrować się na danym scenariuszu monitorowania bez konieczności orientowania się różnice między tymi dwoma typami danych. 
+Zasoby platformy Azure generują znaczną ilość danych monitorowania. Azure Monitor konsoliduje te dane wraz z danymi monitorowania z innych źródeł na platformie metryk lub dzienników. Każda z nich jest zoptymalizowana pod kątem określonych scenariuszy monitorowania, a każdy z nich obsługuje różne funkcje w Azure Monitor. Funkcje, takie jak analiza danych, wizualizacje lub alerty, wymagają zrozumienia różnic, dzięki czemu można zaimplementować wymagany scenariusz w najbardziej efektywny i ekonomiczny sposób. Szczegółowe informacje w Azure Monitor takich jak [Application Insights](../app/app-insights-overview.md) lub [Azure monitor dla maszyn wirtualnych](../insights/vminsights-overview.md) zawierają narzędzia analityczne, które umożliwiają skoncentrowanie się na konkretnym scenariuszu monitorowania bez konieczności zrozumienia różnic między dwoma typami danych. 
 
 
 ### <a name="metrics"></a>Metryki
-[Metryki](data-platform-metrics.md) są wartości liczbowe, które opisują niektóre aspekty systemu w określonym punkcie w czasie. Są zbierane w regularnych odstępach czasu i są identyfikowane przez sygnaturę czasową, nazwę, wartość i jedną lub więcej etykiet definiujące. Metryki można agregować przy użyciu różnych algorytmów, w porównaniu z innymi metrykami i analizowane pod kątem trendy wraz z upływem czasu. 
+[Metryki](data-platform-metrics.md) to wartości liczbowe, które opisują część systemu w konkretnym momencie. Są one zbierane w regularnych odstępach czasu i są identyfikowane za pomocą sygnatury czasowej, nazwy, wartości i co najmniej jednej etykiety definiującej. Metryki można agregować przy użyciu różnych algorytmów, w porównaniu z innymi metrykami i przeanalizowane pod kątem trendów w czasie. 
 
-Metryki w usłudze Azure Monitor są przechowywane w bazie danych szeregów czasowych, który jest zoptymalizowany pod kątem analizowania danych z sygnaturami czasowymi. To sprawia, że metryki szczególnie odpowiednie dla alertów i szybkie wykrywanie problemów. One informujące o tym, jak działa system, ale zwykle muszą być łączone z dzienników do identyfikowania głównych przyczyn problemów.
+Metryki w Azure Monitor są przechowywane w bazie danych szeregów czasowych, która jest zoptymalizowana pod kątem analizowania danych z sygnaturami czasowymi. Dzięki temu metryki są szczególnie odpowiednie dla alertów i szybkiego wykrywania problemów. Mogą oni powiedzieć, jak działa system, ale zazwyczaj musi być połączony z dziennikami, aby identyfikować główną przyczynę problemów.
 
-Metryki są dostępne do analizy interakcyjnej w witrynie Azure portal, za pomocą [Eksploratora metryk](../app/metrics-explorer.md). Mogą być dodawane do [pulpitu nawigacyjnego platformy Azure](../learn/tutorial-app-dashboards.md) dla wizualizacji w połączeniu z innymi danymi i używane do niemal w czasie rzeczywistym [alerty](alerts-metric.md).
+Metryki są dostępne dla interaktywnej analizy w Azure Portal z [Eksplorator metryk](../app/metrics-explorer.md). Można je dodać do [pulpitu nawigacyjnego platformy Azure](../learn/tutorial-app-dashboards.md) w celu wizualizacji w połączeniu z innymi danymi, które są używane [](alerts-metric.md)do wysyłania alertów w czasie niemal w czasie rzeczywistym.
 
-Przeczytaj więcej na temat usługi Azure Monitor metryk, takich jak swoich źródeł danych w [metryk w usłudze Azure Monitor](data-platform-metrics.md).
+Przeczytaj więcej na temat Azure Monitor metryk, w tym ich źródeł danych, w [Azure monitor](data-platform-metrics.md).
 
 ### <a name="logs"></a>Dzienniki
-[Dzienniki](data-platform-logs.md) są zdarzenia, które wystąpiły w ramach systemu. One może zawierać różne rodzaje danych i może mieć strukturę lub dowolnego tekstu w formularzu z sygnaturą czasową. Zdarzenia w środowisku wygenerować wpisów dziennika, a system pod dużym obciążeniem zazwyczaj wygeneruje więcej wolumin dziennika może być sporadycznie utworzony.
+[Dzienniki](data-platform-logs.md) to zdarzenia, które wystąpiły w systemie. Mogą one zawierać różne rodzaje danych i mogą być strukturalne lub bezpłatne tekstu formularza z sygnaturą czasową. Mogą być tworzone sporadycznie, ponieważ zdarzenia w środowisku generują wpisy dziennika, a system z dużym obciążeniem zwykle generuje więcej woluminów dziennika.
 
-Dzienniki w usłudze Azure Monitor są przechowywane w obszarze roboczym usługi Log Analytics, która jest oparta na [Eksploratora danych usługi Azure](/azure/data-explorer/) zapewniającą aparatu zaawansowane analizy i [zaawansowany język zapytań](/azure/kusto/query/). Dzienniki zwykle zawierać informacje wystarczające do zapewnienia pełnego kontekstu problemu są identyfikowane i są przydatne do identyfikowania przypadków głównych problemów.
+Dzienniki w Azure Monitor są przechowywane w Log Analytics obszarze roboczym, który jest oparty na [Eksplorator danych platformy Azure](/azure/data-explorer/) , który oferuje zaawansowany aparat analityczny i [bogaty język zapytań](/azure/kusto/query/). Dzienniki zapewniają zazwyczaj wystarczającą ilość informacji, aby zapewnić pełen kontekst identyfikowanego problemu i są przydatne do identyfikowania głównych przypadków problemów.
 
 > [!NOTE]
-> Jest ważne rozróżnić dzienników monitora platformy Azure i źródła danych dziennika na platformie Azure. Na przykład zdarzeń na poziomie subskrypcji na platformie Azure są zapisywane w [dziennika aktywności](activity-logs-overview.md) można wyświetlić z menu usługi Azure Monitor. Większość zasobów zapisze informacje operacyjne, aby [dziennik diagnostyczny](diagnostic-logs-overview.md) który może przekazywać do innej lokalizacji. Dzienniki platformy Azure Monitor to platforma danych dziennika, która gromadzi Dzienniki aktywności i dzienników diagnostycznych oraz innych danych monitorowania w celu zapewnienia szczegółowej analizy cały zestaw zasobów.
+> Ważne jest rozróżnienie między dziennikami Azure Monitor i źródłami danych dzienników na platformie Azure. Na przykład zdarzenia na poziomie subskrypcji na platformie Azure są zapisywane w [dzienniku aktywności](activity-logs-overview.md) , który można wyświetlić z menu Azure monitor. Większość zasobów zapisze informacje operacyjne w [dzienniku diagnostycznym](resource-logs-overview.md) , który można przekazać do różnych lokalizacji. Dzienniki Azure Monitor to platforma danych dziennika, która zbiera dzienniki aktywności i dzienniki diagnostyczne wraz z innymi danymi monitorowania w celu zapewnienia głębokiej analizy w całym zestawie zasobów.
 
 
- Możesz pracować z [rejestrowania zapytań](../log-query/log-query-overview.md) interaktywnie przy użyciu [usługi Log Analytics](../log-query/portals.md) w witrynie Azure portal lub Dodaj wyniki do [pulpitu nawigacyjnego platformy Azure](../learn/tutorial-app-dashboards.md) dla wizualizacji w połączeniu z inne dane. Można również utworzyć [alerty dzienników](alerts-log.md) która wyzwoli alert, w oparciu o wyniki kwerendy harmonogramu.
+ Możesz interakcyjnie korzystać z [zapytań dzienników](../log-query/log-query-overview.md) w [log Analytics](../log-query/portals.md) w Azure Portal lub dodać wyniki do [pulpitu nawigacyjnego platformy Azure](../learn/tutorial-app-dashboards.md) w celu wizualizacji w połączeniu z innymi danymi. Możesz również utworzyć [alerty dziennika](alerts-log.md) , które będą wyzwalać alert w oparciu o wyniki zapytania dotyczącego harmonogramu.
 
-Przeczytaj więcej na temat dzienników monitora platformy Azure, łącznie z ich źródła danych w [dzienników w usłudze Azure Monitor](data-platform-logs.md).
+Przeczytaj więcej na temat dzienników Azure Monitor, w tym ich źródeł danych w [dziennikach Azure monitor](data-platform-logs.md).
 
-### <a name="distributed-traces"></a>Rozproszone dane śledzenia
-Ślady są serii powiązanych zdarzeń, które należy wykonać żądania użytkownika przez rozproszony system. Mogą one używane, aby określić zachowanie kodu aplikacji oraz wydajności różnych transakcji. Gdy dzienniki często zostanie utworzona przez poszczególne składniki systemu rozproszonego, śledzenia mierzy działanie i wydajność aplikacji przez cały zestaw składników.
+### <a name="distributed-traces"></a>Rozproszone ślady
+Ślady to seria powiązanych zdarzeń, które są zgodne z żądaniem użytkownika w systemie rozproszonym. Mogą służyć do określania zachowania kodu aplikacji oraz wydajności różnych transakcji. Dzienniki często są tworzone przez poszczególne składniki systemu rozproszonego, a śledzenie mierzy działanie i wydajność aplikacji w całym zestawie składników.
 
-Włączono rozproszonego śledzenia w usłudze Azure Monitor [zestawu SDK usługi Application Insights](../app/distributed-tracing.md), a dane śledzenia są przechowywane z innymi danymi dziennika aplikacji zbierane przez usługę Application Insights. Dzięki temu dostępne dla tego samego narzędzia analizy jako inne dane dziennika, w tym dziennika zapytań, pulpity nawigacyjne i alerty.
+Śledzenie rozproszone w Azure Monitor jest włączone przy użyciu [zestawu SDK Application Insights](../app/distributed-tracing.md), a dane śledzenia są przechowywane przy użyciu innych danych dziennika aplikacji zebranych przez Application Insights. Dzięki temu można korzystać z tych samych narzędzi analitycznych co inne dane dziennika, w tym zapytań dzienników, pulpitów nawigacyjnych i alertów.
 
-Przeczytaj więcej na temat rozproszonego śledzenia w [co to jest rozproszonego śledzenia?](../app/distributed-tracing.md).
+Dowiedz się więcej na temat śledzenia rozproszonego, co [to jest śledzenie rozproszone?](../app/distributed-tracing.md).
 
 
-## <a name="compare-azure-monitor-metrics-and-logs"></a>Porównanie usługi Azure Monitor metryk i dzienników
+## <a name="compare-azure-monitor-metrics-and-logs"></a>Porównanie metryk Azure Monitor i dzienników
 
-W poniższej tabeli porównano metryk i dzienników w usłudze Azure Monitor.
+Poniższa tabela zawiera porównanie metryk i dzienników w Azure Monitor.
 
 | Atrybut  | Metryki | Dzienniki |
 |:---|:---|:---|
-| Korzyści | Uproszczona i możliwością scenariuszy niemal w czasie rzeczywistym, takich jak alerty. Idealne rozwiązanie dla szybkiego wykrywania problemów. | Przeanalizowane dzięki zaawansowanemu języka zapytań. Idealne rozwiązanie dla szczegółowej analizy i identyfikowania głównych przyczyn. |
+| Korzyści | Lekkie i możliwe do zrealizowania scenariusze w czasie zbliżonym do rzeczywistego, takie jak alerty. Idealne rozwiązanie do szybkiego wykrywania problemów. | Przeanalizowane przy użyciu zaawansowanego języka zapytań. Idealne dla głębokiej analizy i identyfikowania głównej przyczyny. |
 | Data | Tylko wartości liczbowe | Dane tekstowe lub liczbowe |
-| Struktura | Standardowy zestaw właściwości, w tym przedziału czasu, zasobów, które są monitorowane, wartość liczbowa. Niektóre metryki obejmują wiele wymiarów dla dalszych definicji. | Unikatowy zestaw właściwości, w zależności od typu dziennika. |
-| Collection | Zebrane w regularnych odstępach czasu. | Mogą być zbierane sporadycznie, ponieważ zdarzenia wyzwalacza rekord ma zostać utworzony. |
-| Wyświetl w witrynie Azure portal | Eksplorator metryk | Log Analytics |
-| Źródła danych zawierają | Metryki platformy zbierane z zasobów platformy Azure.<br>Aplikacje monitorowane przez usługę Application Insights.<br>Niestandardowe zdefiniowane przez aplikację lub interfejsu API. | Aplikacja i dzienniki diagnostyczne.<br>Rozwiązania do monitorowania.<br>Agenci i rozszerzenia maszyn wirtualnych.<br>Aplikacja żądań i wyjątków.<br>Usługa Azure Security Center.<br>Moduł zbierający dane interfejsu API. |
+| Struktura | Standardowy zestaw właściwości, w tym czas próbkowania, monitorowany zasób, wartość liczbowa. Niektóre metryki obejmują wiele wymiarów w celu dalszej definicji. | Unikatowy zestaw właściwości w zależności od typu dziennika. |
+| Collection | Zbierane w regularnych odstępach czasu. | Mogą być zbierane sporadycznie, ponieważ zdarzenia wyzwalają rekord, który ma zostać utworzony. |
+| Wyświetl w Azure Portal | Eksplorator metryk | Log Analytics |
+| Źródła danych obejmują | Metryki platformy zebrane z zasobów platformy Azure.<br>Aplikacje monitorowane przez Application Insights.<br>Niestandardowe zdefiniowane przez aplikację lub interfejs API. | Dzienniki aplikacji i diagnostyki.<br>Rozwiązania do monitorowania.<br>Agenci i rozszerzenia maszyn wirtualnych.<br>Żądania i wyjątki aplikacji.<br>Azure Security Center.<br>Interfejs API modułu zbierającego dane. |
 
 ## <a name="collect-monitoring-data"></a>Zbieranie danych monitorowania
-Różne [źródeł danych dla usługi Azure Monitor](data-sources.md) zapisze obszar roboczy usługi Log Analytics (Dzienniki) lub bazy danych metryk usługi Azure Monitor (metryki) lub obu. Niektóre źródła będzie zapisywać bezpośrednio do tych magazynów danych, podczas gdy inne osoby mogą zapisać do innej lokalizacji, takiej jak usługa Azure storage i wymagają pewnych czynności konfiguracyjnych do wypełniania dzienników i metryk. 
+Różne [źródła danych dla Azure monitor](data-sources.md) będą zapisywać w log Analytics obszarze roboczym (Dzienniku) lub w bazie danych metryk Azure monitor (metrycznych) lub w obu tych przypadkach. Niektóre źródła zapisują bezpośrednio do tych magazynów danych, a inne mogą zapisywać w innej lokalizacji, takiej jak usługa Azure Storage, i wymagać konfiguracji w celu wypełnienia dzienników lub metryk. 
 
-Zobacz [metryk w usłudze Azure Monitor](data-platform-metrics.md) i [dzienników w usłudze Azure Monitor](data-platform-logs.md) listę różnych źródeł danych służące do wypełniania każdego typu.
+Zobacz [metryki w Azure monitor](data-platform-metrics.md) i [dzienniki w Azure monitor](data-platform-logs.md) , aby wyświetlić listę różnych źródeł danych, które wypełniają każdy typ.
 
 
 ## <a name="stream-data-to-external-systems"></a>Data Stream z systemami zewnętrznymi
-Oprócz używania narzędzi na platformie Azure do analizowania danych monitorowania, może być wymagane ją przesłać do zewnętrznego narzędzia, takie jak informacje o zabezpieczeniach i produktów do zarządzania (SIEM) zdarzenia. Przekazywanie ten jest zazwyczaj wykonywane bezpośrednio z monitorowanych zasobów za pomocą [usługi Azure Event Hubs](/azure/event-hubs/). Niektóre źródła można skonfigurować do wysyłania danych bezpośrednio do Centrum zdarzeń za pomocą innego procesu, takie jak aplikacja logiki w celu pobrania niezbędnych danych. Zobacz [Stream danych monitorowania platformy Azure do Centrum zdarzeń do użycia przez narzędzie zewnętrzne](stream-monitoring-data-event-hubs.md) Aby uzyskać szczegółowe informacje.
+Oprócz używania narzędzi na platformie Azure do analizowania danych monitorowania, może być wymagane ją przesłać do zewnętrznego narzędzia, takie jak informacje o zabezpieczeniach i produktów do zarządzania (SIEM) zdarzenia. Przekazywanie ten jest zazwyczaj wykonywane bezpośrednio z monitorowanych zasobów za pomocą [usługi Azure Event Hubs](/azure/event-hubs/). Niektóre źródła można skonfigurować tak, aby wysyłali dane bezpośrednio do centrum zdarzeń, podczas gdy można użyć innego procesu, takiego jak aplikacja logiki, aby pobrać wymagane dane. Aby uzyskać szczegółowe informacje [, zobacz Przesyłanie strumieniowe danych monitorowania platformy Azure do centrum zdarzeń w celu użycia przez zewnętrzne narzędzie](stream-monitoring-data-event-hubs.md) .
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Przeczytaj więcej na temat [metryk w usłudze Azure Monitor](data-platform-metrics.md).
-- Przeczytaj więcej na temat [dzienników w usłudze Azure Monitor](data-platform-logs.md).
+- Przeczytaj więcej [na temat metryk w Azure monitor](data-platform-metrics.md).
+- Przeczytaj więcej [na temat dzienników w Azure monitor](data-platform-logs.md).
 - Dowiedz się więcej o [dostępne dane monitorowania](data-sources.md) dla różnych zasobów na platformie Azure.

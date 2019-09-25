@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 09/26/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c13f3166c50d9afc03125d66155ce654c84e5e0a
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 77b2fccaeba3cd1d164a3ce428c04083fd69fb5a
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065231"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264219"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Skonfiguruj konto i zaloguj się za pomocą konta w usłudze Facebook przy użyciu Azure Active Directory B2C
 
@@ -25,20 +25,20 @@ Aby użyć konta w serwisie Facebook jako [dostawcy tożsamości](active-directo
 
 1. Zaloguj się do usługi [Facebook dla deweloperów](https://developers.facebook.com/) przy użyciu poświadczeń konta w serwisie Facebook.
 1. Jeśli jeszcze tego nie zrobiono, należy zarejestrować się jako deweloper w serwisie Facebook. W tym celu wybierz pozycję **Rozpocznij** w prawym górnym rogu strony, zaakceptuj zasady serwisu Facebook i wykonaj kroki rejestracji.
-1. Wybierz pozycję **Moje aplikacje** , a następnie **Dodaj nową aplikację**.
+1. Wybierz pozycję **Moje aplikacje** , a następnie **Utwórz aplikację**.
 1. Wprowadź **nazwę wyświetlaną** i prawidłowy **kontaktowy adres e-mail**.
-1. Kliknij pozycję **Utwórz identyfikator aplikacji**. Może to wymagać zaakceptowania zasad platformy Facebook i ukończenia kontroli zabezpieczeń w trybie online.
+1. Wybierz pozycję **Utwórz identyfikator aplikacji**. Może to wymagać zaakceptowania zasad platformy Facebook i ukończenia kontroli zabezpieczeń w trybie online.
 1. Wybierz pozycję **Ustawienia** > **podstawowe**.
 1. Wybierz **kategorię**, na przykład `Business and Pages`. Ta wartość jest wymagana przez serwis Facebook, ale nie jest używana do Azure AD B2C.
 1. W dolnej części strony wybierz pozycję **Dodaj platformę**, a następnie wybierz pozycję **Witryna sieci Web**.
 1. W polu **adres URL witryny** `https://your-tenant-name.b2clogin.com/` wprowadź `your-tenant-name` zamianę na nazwę dzierżawy. Wprowadź adres URL **zasad zachowania poufności informacji**, na przykład `http://www.contoso.com`. Adres URL zasad to strona, którą przechowujesz, aby zapewnić informacje o ochronie prywatności dla aplikacji.
 1. Wybierz pozycję **Zapisz zmiany**.
 1. W górnej części strony skopiuj wartość **Identyfikator aplikacji**.
-1. Kliknij przycisk **Pokaż** i skopiuj wartość **wpisu tajnego aplikacji**. Oba te elementy umożliwiają skonfigurowanie usługi Facebook jako dostawcy tożsamości w dzierżawie. **Wpis tajny aplikacji** jest ważnym poświadczeniem zabezpieczeń.
+1. Wybierz pozycję **Pokaż** i skopiuj wartość **wpisu tajnego aplikacji**. Oba te elementy umożliwiają skonfigurowanie usługi Facebook jako dostawcy tożsamości w dzierżawie. **Wpis tajny aplikacji** jest ważnym poświadczeniem zabezpieczeń.
 1. Wybierz znak plus obok pozycji **produkty**, a następnie wybierz pozycję **Konfiguruj** w obszarze **Logowanie do serwisu Facebook**.
 1. W obszarze **Logowanie do serwisu Facebook**wybierz pozycję **Ustawienia**.
-1. W **prawidłowych identyfikatorach URI przekierowania OAuth**wprowadź `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`. Zamień `your-tenant-name` na nazwę dzierżawy. Kliknij przycisk **Zapisz zmiany** w dolnej części strony.
-1. Aby udostępnić aplikację Facebook Azure AD B2C, kliknij selektor stanu w prawym górnym rogu strony i włącz go, aby udostępnić aplikację, a następnie kliknij przycisk **Potwierdź**.  W tym momencie stan powinien ulec zmianie z **opracowywania** na na **żywo**.
+1. W **prawidłowych identyfikatorach URI przekierowania OAuth**wprowadź `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`. Zamień `your-tenant-name` na nazwę dzierżawy. Wybierz pozycję **Zapisz zmiany** w dolnej części strony.
+1. Aby udostępnić aplikację w serwisie Facebook Azure AD B2C, wybierz selektor stanu w prawym górnym rogu strony i **Włącz go,** aby udostępnić aplikację jako publiczną, a następnie wybierz pozycję **Przełącz tryb**.  W tym momencie stan powinien ulec zmianie z **opracowywania** na na **żywo**.
 
 ## <a name="configure-a-facebook-account-as-an-identity-provider"></a>Konfigurowanie konta w serwisie Facebook jako dostawcy tożsamości
 

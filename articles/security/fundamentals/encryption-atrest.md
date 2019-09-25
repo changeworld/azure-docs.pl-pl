@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/10/2019
+ms.date: 09/24/2019
 ms.author: barclayn
-ms.openlocfilehash: 3e745d5f38d5623aab17ef7a3e3fbfa2c616e6d4
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: b506c6f6101e8c5ce71231a8178f70fa5a0914d8
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984851"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262820"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Szyfrowanie danych platformy Azure — w spoczynku
 
@@ -262,8 +262,8 @@ Szyfrowanie po stronie klienta Azure SQL Database danych jest obsługiwane za po
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 |                                  | **Po stronie serwera przy użyciu klucza zarządzanego przez usługę**     | **Po stronie serwera przy użyciu klucza zarządzanego przez klienta**             | **Po stronie klienta przy użyciu programu zarządzanego przez klienta**      |
 | **AI i Machine Learning**      |                    |                    |                    |
-| Azure Search                     | Tak                | -                  | -                  |
-| Azure Machine Learning Service   | Tak                | -                  | -                  |
+| Azure Search                     | Tak                | Wersja zapoznawcza            | -                  |
+| Usługa Azure Machine Learning   | Tak                | -                  | -                  |
 | Azure Machine Learning Studio    | Tak                | Wersja zapoznawcza, RSA 2048-bit | -               |
 | Power BI                         | Tak                | Wersja zapoznawcza, RSA 2048-bit | -                  |
 | **Analiza**                    |                    |                    |                    |
@@ -277,7 +277,7 @@ Szyfrowanie po stronie klienta Azure SQL Database danych jest obsługiwane za po
 | Azure Data Lake Store            | Tak                | Tak, RSA 2048-bit  | -                  |
 | **Containers**                   |                    |                    |                    |
 | Azure Kubernetes Service         | Tak                | -                  | -                  |
-| Rejestr kontenerów               | Tak                | -                  | -                  |
+| Container Registry               | Tak                | -                  | -                  |
 | **Obliczanie**                      |                    |                    |                    |
 | Maszyny wirtualne                 | Tak                | Tak, RSA 2048-bit  | -                  |
 | Zestaw skalowania maszyn wirtualnych        | Tak                | Tak, RSA 2048-bit  | -                  |
@@ -321,6 +321,6 @@ Szyfrowanie po stronie klienta Azure SQL Database danych jest obsługiwane za po
 | Azure Backup                     | Tak                | -                  | Tak                |
 | Data Box                         | Tak                | -                  | Tak                |
 
-## <a name="conclusion"></a>Wniosek
+## <a name="conclusion"></a>Podsumowanie
 
 Ochrona danych klienta przechowywanych w ramach usług platformy Azure ma najważniejsze znaczenie dla firmy Microsoft. Wszystkie usługi hostowane na platformie Azure są zobowiązane do zapewniania szyfrowania w opcjach Rest. Usługi podstawowe, takie jak Azure Storage, Azure SQL Database i Analytics Key i Intelligence Services, udostępniają już szyfrowanie w opcjach Rest. Niektóre z tych usług obsługują klucze kontrolowane przez klienta oraz szyfrowanie po stronie klienta, a także klucze i szyfrowanie zarządzane przez usługę. Usługi Microsoft Azure Services są szeroko rozszerzane na dostępność w spoczynku, a nowe opcje są planowane na potrzeby wersji zapoznawczej i ogólnej dostępności w nadchodzących miesiącach.

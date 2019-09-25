@@ -14,19 +14,19 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c5a08677759f0ed1a39f5507d936c777516b237
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 7d3346c873f88654f75628863a01fda76449ce2d
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608104"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259404"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpieczanie uprzywilejowanego dostępu dla wdrożeń hybrydowych i w chmurze w usłudze Azure AD
 
 Bezpieczeństwo większości lub wszystkich zasobów firmowych w nowoczesnej organizacji zależy od integralności uprzywilejowanych kont, które administrują systemami IT i zarządzają nimi. Złośliwe podmioty, w tym cybernetycznymi — osoby atakujące często kierują konta administratora i inne elementy uprzywilejowanego dostępu, aby próbować szybko uzyskać dostęp do poufnych danych i systemów przy użyciu ataków kradzieży poświadczeń. W przypadku usług w chmurze, zapobiegania i odpowiedzi są wspólne obowiązki dostawcy usług w chmurze i klienta. Aby uzyskać więcej informacji na temat najnowszych zagrożeń dla punktów końcowych i chmury, zobacz [Raport analizy zabezpieczeń firmy Microsoft](https://www.microsoft.com/security/operations/security-intelligence-report). Ten artykuł może pomóc w opracowaniu planu w kierunku zamykania luk między bieżącymi planami i wskazówkami opisanymi tutaj.
 
 > [!NOTE]
-> Firma Microsoft dokłada starań, aby zapewnić najwyższy poziom zaufania, przejrzystości, zgodności ze standardami i zgodność z przepisami. Dowiedz się więcej na temat tego, w jaki sposób zespół reagowania na zdarzenia globalne firmy Microsoft zmniejsza skutki ataków na usługi w chmurze, oraz sposób, w jaki zabezpieczenia są wbudowane w produkty i [usługi w chmurze](https://www.microsoft.com/trustcenter/security) firmy Microsoft cele zgodności w [Centrum zaufania firmy Microsoft — zgodność](https://www.microsoft.com/trustcenter/compliance).
+> Firma Microsoft dokłada starań, aby zapewnić najwyższy poziom zaufania, przejrzystości, zgodności ze standardami i zgodność z przepisami. Dowiedz się więcej na temat tego, w jaki sposób zespół reagowania na zdarzenia globalne firmy Microsoft zmniejsza skutki ataków na usługi w chmurze, oraz sposób, w jaki zabezpieczenia są wbudowane w produkty i [usługi w chmurze firmy Microsoft](https://www.microsoft.com/trustcenter/security) cele zgodności w [Centrum zaufania firmy Microsoft — zgodność](https://www.microsoft.com/trustcenter/compliance).
 
 <!--## Risk management, incident response, and recovery preparation
 
@@ -123,7 +123,7 @@ Oceń konta, które są przypisane lub kwalifikujące się do roli administrator
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>Włącz uwierzytelnianie wieloskładnikowe i Zarejestruj wszystkie inne konta administratora niefederacyjnego z wysokim poziomem uprawnień pojedynczego użytkownika
 
-Wymagaj uwierzytelniania wieloskładnikowego (MFA) w usłudze Azure dla wszystkich użytkowników, którzy są trwale przypisani do co najmniej jednej roli administratora usługi Azure AD: Administrator globalny, administrator ról uprzywilejowanych, administrator programu Exchange Online i administrator usługi SharePoint Online. Skorzystaj z przewodnika, aby włączyć [uwierzytelnianie wieloskładnikowe (MFA) dla kont administratorów](../authentication/howto-mfa-userstates.md) i upewnić się, że wszyscy użytkownicy zostali zarejestrowani w [https://aka.ms/mfasetup](https://aka.ms/mfasetup)usłudze. Więcej informacji można znaleźć w sekcji Krok 2 i krok 3 przewodnika [Ochrona dostępu do danych i usług w pakiecie Office 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e). 
+Wymagaj usługi Azure Multi-Factor Authentication (MFA) podczas logowania dla wszystkich użytkowników, którzy są trwale przypisani do co najmniej jednej roli administratora usługi Azure AD: Administrator globalny, administrator ról uprzywilejowanych, administrator programu Exchange Online i administrator usługi SharePoint Online. Skorzystaj z przewodnika, aby włączyć [uwierzytelnianie wieloskładnikowe (MFA) dla kont administratorów](../authentication/howto-mfa-userstates.md) i upewnić się, że wszyscy użytkownicy zostali zarejestrowani w [https://aka.ms/mfasetup](https://aka.ms/mfasetup)usłudze. Więcej informacji można znaleźć w sekcji Krok 2 i krok 3 przewodnika [Ochrona dostępu do danych i usług w pakiecie Office 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e). 
 
 ## <a name="stage-2-mitigate-the-most-frequently-used-attack-techniques"></a>Etap 2: Eliminowanie najczęściej używanych technik ataków
 
@@ -139,7 +139,7 @@ Mając na celu zwiększenie możliwości ponoszenia urządzeń (BYOD) i zasad pr
 
 * Zidentyfikuj użytkowników, którzy mają role administracyjne i usługi, którymi mogą zarządzać.
 * Użyj usługi Azure AD PIM, aby dowiedzieć się, którzy użytkownicy w organizacji mają dostęp administratora do usługi Azure AD, w tym dodatkowe role poza tymi wymienionymi na etapie 1.
-* Poza rolami zdefiniowanymi w usłudze Azure AD pakiet Office 365 zawiera zestaw ról administratora, które można przypisać do użytkowników w organizacji. Każda rola administratora jest mapowana na typowe funkcje biznesowe i umożliwia osobom w organizacji uprawnienia do wykonywania określonych zadań w [centrum administracyjnym Microsoft 365](https://admin.microsoft.com). Skorzystaj z centrum administracyjnego Microsoft 365, aby dowiedzieć się, którzy użytkownicy w organizacji mają dostęp administratora do pakietu Office 365, w tym za pośrednictwem ról, które nie są zarządzane w usłudze Azure AD. Aby uzyskać więcej informacji, zobacz [Informacje o rolach administracyjnych pakietu office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) i [najlepszych rozwiązaniach dotyczących zabezpieczeń dla pakietu Office 365](https://support.office.com/article/Security-best-practices-for-Office-365-9295e396-e53d-49b9-ae9b-0b5828cdedc3).
+* Poza rolami zdefiniowanymi w usłudze Azure AD pakiet Office 365 zawiera zestaw ról administratora, które można przypisać do użytkowników w organizacji. Każda rola administratora jest mapowana na typowe funkcje biznesowe i umożliwia osobom w organizacji uprawnienia do wykonywania określonych zadań w [centrum administracyjnym Microsoft 365](https://admin.microsoft.com). Skorzystaj z centrum administracyjnego Microsoft 365, aby dowiedzieć się, którzy użytkownicy w organizacji mają dostęp administratora do pakietu Office 365, w tym za pośrednictwem ról, które nie są zarządzane w usłudze Azure AD. Aby uzyskać więcej informacji, zobacz [Informacje o rolach administracyjnych pakietu office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) i [najlepszych rozwiązaniach dotyczących zabezpieczeń dla pakietu Office 365](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center).
 * Wykonaj spis w innych usługach, na których opiera się organizacja, na przykład Azure, Intune lub Dynamics 365.
 * Upewnij się, że konta administratorów (konta, które są używane do celów administracyjnych, a nie tylko dla codziennych kont użytkowników), mają dołączone do nich służbowe adresy e-mail i zostały zarejestrowane dla usługi Azure MFA lub w środowisku lokalnym.
 * Poproszenie użytkowników o uzasadnienie biznesowe dla dostępu administracyjnego.
@@ -173,7 +173,7 @@ Włącz:
 
 W przypadku korzystania z funkcji Windows Hello dla firm wymagane jest spełnienie wymagań usługi MFA przy użyciu środowiska logowania do usługi Windows Hello. Aby uzyskać więcej informacji, zobacz Funkcja [Windows Hello](https://docs.microsoft.com/windows/uwp/security/microsoft-passport). 
 
-#### <a name="configure-identity-protection"></a>Konfigurowanie usługi Identity Protection 
+#### <a name="configure-identity-protection"></a>Konfigurowanie ochrony tożsamości 
 
 Azure AD Identity Protection to narzędzie do monitorowania i raportowania oparte na algorytmach, które służy do wykrywania potencjalnych luk w zabezpieczeniach związanych z tożsamościami w organizacji. Można skonfigurować automatyczne odpowiedzi na te wykryte podejrzane działania i podjąć odpowiednie działania w celu ich rozwiązania. Aby uzyskać więcej informacji, zobacz [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 
@@ -425,7 +425,7 @@ Aby uzyskać więcej informacji na temat sposobu, w jaki Microsoft Office 365 ob
 
 **Udzielić** Używaj kont bez uprawnień dla wszystkich użytkowników i większości administratorów. Zacznij od utworzenia podstawy organizacji, aby określić, które konta administratorów mają być uprzywilejowane. I monitoruj nowo utworzonych użytkowników administracyjnych.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Centrum zaufania firmy Microsoft dotyczące zabezpieczeń produktów](https://www.microsoft.com/trustcenter/security) — funkcje zabezpieczeń usług i produktów w chmurze firmy Microsoft
 

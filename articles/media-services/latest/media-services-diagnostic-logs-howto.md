@@ -1,6 +1,6 @@
 ---
-title: Monitoruj dzienniki diagnostyczne usługi Media Services za pomocą usługi Azure Monitor | Dokumentacja firmy Microsoft
-description: W tym artykule przedstawiono sposób kierowania i przeglądaj dzienniki diagnostyki za pomocą usługi Azure Monitor.
+title: Monitoruj Media Services dzienników diagnostycznych za pomocą Azure Monitor | Microsoft Docs
+description: W tym artykule przedstawiono sposób kierowania i wyświetlania dzienników diagnostycznych za pośrednictwem Azure Monitor.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,49 +13,49 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 233b043ffdc295fe94ed2e3ba837d4229848df22
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 42724ae3619312c2cc172be0e143291cd7fa2a70
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67795837"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261105"
 ---
-# <a name="monitor-media-services-diagnostic-logs"></a>Monitoruj dzienniki diagnostyczne usługi Media Services
+# <a name="monitor-media-services-diagnostic-logs"></a>Monitorowanie dzienników diagnostycznych Media Services
 
-[Usługa Azure Monitor](../../azure-monitor/overview.md) umożliwia monitorowanie metryk i dzienników diagnostycznych, które pomagają zrozumieć, jak działają aplikacje. Szczegółowy opis tej funkcji i aby zobaczyć, dlaczego chcesz przy użyciu dzienników metryki i diagnostyka usługi Azure Media Services, zobacz [usługi Media Services monitora, metryk i dzienników diagnostycznych](media-services-metrics-diagnostic-logs.md).
+[Azure monitor](../../azure-monitor/overview.md) umożliwia monitorowanie metryk i dzienników diagnostycznych, które ułatwiają zrozumienie sposobu działania aplikacji. Aby uzyskać szczegółowy opis tej funkcji oraz sprawdzić, dlaczego warto używać Azure Media Services metryki i dzienniki diagnostyczne, zobacz [monitorowanie Media Services metryk i dzienników diagnostycznych](media-services-metrics-diagnostic-logs.md).
 
-Ten artykuł pokazuje, jak kierować dane do konta magazynu, a następnie Wyświetl dane. 
+W tym artykule pokazano, jak skierować dane do konta magazynu, a następnie wyświetlić dane. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - [Utwórz konto usługi Media Services](create-account-cli-how-to.md).
-- Przegląd [usługi Media Services monitora, metryk i dzienników diagnostycznych](media-services-metrics-diagnostic-logs.md).
+- Przegląd [metryk Media Services monitorów i dzienników diagnostycznych](media-services-metrics-diagnostic-logs.md).
 
-## <a name="route-data-to-the-storage-account-using-the-portal"></a>Dane trasy do konta magazynu przy użyciu portalu
+## <a name="route-data-to-the-storage-account-using-the-portal"></a>Kierowanie danych do konta magazynu przy użyciu portalu
 
 1. Zaloguj się do witryny Azure Portal na stronie https://portal.azure.com.
-1. Przejdź do swojego konta usługi Media Services w, a następnie kliknij przycisk **ustawień diagnostycznych** w obszarze **Monitor**. Zostanie wyświetlona lista wszystkich zasobów w subskrypcji, które generują dane monitorowania za pośrednictwem usługi Azure Monitor. 
+1. Przejdź do konta Media Services w programie, a następnie kliknij pozycję **Ustawienia diagnostyczne** w obszarze **monitorowanie**. Zostanie wyświetlona lista wszystkich zasobów w subskrypcji, które generują dane monitorowania za pośrednictwem usługi Azure Monitor. 
 
     ![Sekcja ustawień diagnostycznych](media/media-services-diagnostic-logs/logs01.png)
 
-1. Kliknij przycisk **Dodaj ustawienie diagnostyczne**.
+1. Kliknij pozycję **Dodaj ustawienie diagnostyczne**.
 
    Ustawienie diagnostyczne zasobu definiuje, *jakie* dane monitorowania powinny być przekierowywane z określonego zasobu i *gdzie* powinny one trafiać.
 
 1. W wyświetlonej sekcji podaj **nazwę** ustawienia i zaznacz pole wyboru **Zarchiwizuj na koncie magazynu**.
 
-    Wybierz konto magazynu, do którego chcesz wysłać dzienniki, a następnie naciśnij klawisz **OK**.
+    Wybierz konto magazynu, do którego chcesz wysłać dzienniki, a następnie naciśnij przycisk **OK**.
 1. Zaznacz wszystkie pola w obszarach **Dziennik** i **Metryka**. W zależności od typu zasobu może być widoczna tylko jedna z tych opcji. Za pomocą tych pól wyboru można wybrać kategorie danych dzienników i metryk, dostępne dla tego typu zasobu, które mają być wysyłane do wybranego miejsca docelowego — w tym przypadku konta magazynu.
 
    ![Sekcja ustawień diagnostycznych](media/media-services-diagnostic-logs/logs02.png)
 1. Ustaw suwak **Okres przechowywania (w dniach)** na wartość 30. Suwak umożliwia ustawienie liczby dni przechowywania danych monitorowania na koncie magazynu. Starsze dane są automatycznie usuwane przez usługę Azure Monitor. Wpisanie wartości zero powoduje, że dane są przechowywane przez nieograniczony czas.
-1. Kliknij polecenie **Zapisz**.
+1. Kliknij pozycję **Zapisz**.
 
 Dane monitorowania z zasobu będą teraz przepływać do konta magazynu.
 
-## <a name="route-data-to-the-storage-account-using-the-cli"></a>Dane trasy do konta magazynu przy użyciu interfejsu wiersza polecenia
+## <a name="route-data-to-the-storage-account-using-the-cli"></a>Kierowanie danych do konta magazynu przy użyciu interfejsu wiersza polecenia
 
-Aby włączyć magazyn dzienniki diagnostyczne na koncie magazynu, należy uruchomić następujące `az monitor diagnostic-settings` interfejsu wiersza polecenia: 
+Aby włączyć magazyn dzienników diagnostycznych na koncie magazynu, uruchom następujące `az monitor diagnostic-settings` polecenie interfejsu wiersza polecenia: 
 
 ```cli
 az monitor diagnostic-settings create --name <diagnostic name> \
@@ -91,14 +91,14 @@ Może upłynąć nawet pięć minut, zanim zdarzenie pojawi się na koncie magaz
 
 1. W portalu przejdź do sekcji **Konta magazynu** widocznej na pasku nawigacyjnym po lewej stronie.
 1. Znajdź konto magazynu utworzone w poprzedniej sekcji i kliknij je.
-1. Kliknij pozycję **obiektów blob**, kliknij kontener oznaczony **insights — dzienniki keydeliveryrequests**. Jest to kontener, który zawiera dzienniki. Dane monitorowania są grupowane w kontenerach według Identyfikatora zasobu, następnie według daty i godziny.
+1. Kliknij **obiekty blob**, a następnie na kontenerze z etykietą **Insights-Logs-keydeliveryrequests**. Jest to kontener, w którym znajdują się Twoje dzienniki. Dane monitorowania są podzielone na kontenery według identyfikatora zasobu, a następnie według daty i godziny.
 1. Przejdź do pliku PT1H.json, klikając identyfikator zasobu, datę i godzinę w obrębie kontenerów. Kliknij plik PT1H.json, a następnie kliknij przycisk **Pobierz**.
 
  Możesz teraz wyświetlić zdarzenie JSON przechowywane na koncie magazynu.
 
-### <a name="examples-of-pt1hjson"></a>Przykłady PT1H.json
+### <a name="examples-of-pt1hjson"></a>Przykłady PT1H. JSON
 
-#### <a name="clear-key-delivery-log"></a>Dostarczania klucza czyszczenia dziennika
+#### <a name="clear-key-delivery-log"></a>Wyczyść dziennik dostarczania klucza
 
 ```json
 {
@@ -136,7 +136,7 @@ Może upłynąć nawet pięć minut, zanim zdarzenie pojawi się na koncie magaz
 }
 ```
 
-#### <a name="widevine-encrypted-key-delivery-log"></a>Dziennik zaszyfrowanego klucza dostawy Widevine
+#### <a name="widevine-encrypted-key-delivery-log"></a>Dziennik dostarczania zaszyfrowanego klucza Widevine
 
 ```json
 {
@@ -176,10 +176,10 @@ Może upłynąć nawet pięć minut, zanim zdarzenie pojawi się na koncie magaz
 
 ## <a name="see-also"></a>Zobacz także
 
-* [Metryki usługi Azure Monitor](../../azure-monitor/platform/data-platform.md)
-* [Dzienniki diagnostyczne platformy Azure Monitor](../../azure-monitor/platform/diagnostic-logs-overview.md)
-* [Jak zbierać i wykorzystywać dane dzienników z zasobów platformy Azure](../../azure-monitor/platform/diagnostic-logs-overview.md)
+* [Metryki Azure Monitor](../../azure-monitor/platform/data-platform.md)
+* [Azure Monitor dzienników diagnostycznych](../../azure-monitor/platform/resource-logs-overview.md)
+* [Jak zbierać i zużywać dane dzienników z zasobów platformy Azure](../../azure-monitor/platform/resource-logs-overview.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Monitorowanie metryk](media-services-metrics-howto.md)

@@ -8,16 +8,16 @@ ms.service: security
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: jomolesk
-ms.openlocfilehash: 7b07fee46bce4c7b80346eb0b4c0fccd5245d87f
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 9850c5f064815315db6f85a931e7e175d605dcc1
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946871"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257593"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-fedramp"></a>Strategia zabezpieczeń i zgodności z przepisami platformy Azure: Analiza dla FedRAMP
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 [Federal Risk and Authorization Management Program (FedRAMP)](https://www.fedramp.gov/) to Stany Zjednoczone program dla instytucji rządowych, który zapewnia ustandaryzowane podejście do oceny zabezpieczeń, autoryzacji i ciągłego monitorowania produktów i usług w chmurze. Ten Strategia zabezpieczeń i zgodności z przepisami platformy Azure zawiera wskazówki dotyczące sposobu dostarczania architektury analizy Microsoft Azure, która pomaga zaimplementować podzestaw FedRAMP o wysokiej kontroli. To rozwiązanie zapewnia wskazówki dotyczące wdrażania i konfigurowania zasobów platformy Azure na potrzeby wspólnej architektury referencyjnej, pokazując sposoby, w których klienci mogą spełniać określone wymagania w zakresie zabezpieczeń i zgodności, a także służy jako podstawa dla klientów Twórz i Konfiguruj własne rozwiązania analityczne na platformie Azure.
 
@@ -111,7 +111,7 @@ AzureDiskEncryption
 [Azure monitor](../../azure-monitor/overview.md) generuje cały ekran danych monitorowania, w tym dzienniki aktywności, metryki i dane diagnostyczne, umożliwiając klientom tworzenie kompletnego obrazu kondycji systemu.  
 [Dzienniki Azure monitor](../azure-security-disk-encryption-overview.md) zapewniają obszerne rejestrowanie aktywności systemu i użytkownika, a także kondycję systemu. Zbiera i analizuje dane generowane przez zasoby na platformie Azure i w środowiskach lokalnych.
 - **Dzienniki aktywności**: [Dzienniki aktywności](../../azure-monitor/platform/activity-logs-overview.md) zapewniają wgląd w operacje wykonywane na zasobach w ramach subskrypcji.
-- **Dzienniki diagnostyczne**: [Dzienniki diagnostyczne](../../azure-monitor/platform/diagnostic-logs-overview.md) obejmują wszystkie dzienniki wyemitowane przez każdy zasób. Te dzienniki obejmują Dzienniki systemu Windows i magazyn obiektów blob platformy Azure, tabele i dzienniki kolejki.
+- **Dzienniki diagnostyczne**: [Dzienniki diagnostyczne](../../azure-monitor/platform/resource-logs-overview.md) obejmują wszystkie dzienniki wyemitowane przez każdy zasób. Te dzienniki obejmują Dzienniki systemu Windows i magazyn obiektów blob platformy Azure, tabele i dzienniki kolejki.
 - **Dzienniki zapory**: Application Gateway zapewnia pełną dzienników diagnostycznych i dostępu. Dzienniki zapory są dostępne dla zasobów Application Gateway z włączoną obsługą usługi WAF.
 - **Archiwizowanie dzienników**: Wszystkie dzienniki diagnostyczne zapisu na scentralizowanym i zaszyfrowanym koncie usługi Azure Storage na potrzeby archiwizacji ze zdefiniowanym okresem przechowywania wynoszącym 2 dni. Te dzienniki łączą się z dziennikami Azure Monitor na potrzeby przetwarzania, przechowywania i raportowania pulpitów nawigacyjnych.
 
@@ -129,7 +129,7 @@ Ponadto w ramach tej architektury są dołączone następujące rozwiązania do 
 Aby dowiedzieć się więcej o korzystaniu z funkcji zabezpieczeń Azure SQL Database, zobacz przykład [aplikacji demonstracyjnej firmy Contoso](https://github.com/Microsoft/azure-sql-security-sample) .
 
 ### <a name="security"></a>Bezpieczeństwo
-**Zarządzanie**wpisami tajnymi: Rozwiązanie używa [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) do zarządzania kluczami i wpisami tajnymi. Usługa Azure Key Vault ułatwia ochronę kluczy kryptograficznych i kluczy tajnych używanych przez aplikacje i usługi w chmurze.
+**Zarządzanie wpisami tajnymi**: Rozwiązanie używa [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) do zarządzania kluczami i wpisami tajnymi. Usługa Azure Key Vault ułatwia ochronę kluczy kryptograficznych i kluczy tajnych używanych przez aplikacje i usługi w chmurze.
 
 ## <a name="guidance-and-recommendations"></a>Wskazówki i zalecenia
 

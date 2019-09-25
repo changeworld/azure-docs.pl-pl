@@ -1,6 +1,6 @@
 ---
-title: Przygotowanie do zmiany formatu do dzienników diagnostycznych usługi Azure Monitor
-description: Dzienniki diagnostyczne platformy Azure zostaną przeniesione do użycia uzupełnialnych obiektów BLOB od 1 listopada 2018 r.
+title: Przygotuj do zmiany formatu Azure Monitor dzienników diagnostycznych
+description: Dzienniki diagnostyczne platformy Azure zostaną przeniesione do użycia Dołącz obiekty blob 1 listopada 2018.
 author: johnkemnetz
 services: monitoring
 ms.service: azure-monitor
@@ -8,56 +8,56 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: ab5fba6bbbf6ade83c7699edec937ba02b222939
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a5589828570455c61f857dbeadc896e8fef27178
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60237663"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258381"
 ---
-# <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>Przygotowanie do zmiany formatu do dzienników diagnostycznych usługi Azure Monitor zarchiwizować na koncie magazynu
+# <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>Przygotuj do zmiany formatu Azure Monitor dzienników diagnostycznych archiwizowanych na koncie magazynu
 
 > [!WARNING]
-> W przypadku wysyłania [dzienników diagnostycznych zasobów platformy Azure lub metryk z kontem magazynu za pomocą ustawień diagnostycznych zasobu](./../../azure-monitor/platform/archive-diagnostic-logs.md) lub [profile dzienników dzienników aktywności do konta magazynu przy użyciu](./../../azure-monitor/platform/archive-activity-log.md), formatu danych w Konto magazynu zmieni się na wiersze JSON od 1 listopada 2018 r. W poniższych instrukcjach opisano wpływ i aktualizacji narzędzi do obsługi nowego formatu. 
+> W przypadku wysyłania [dzienników diagnostycznych zasobów platformy Azure lub metryk do konta magazynu przy użyciu ustawień diagnostycznych zasobów](./../../azure-monitor/platform/archive-diagnostic-logs.md) lub [dzienników aktywności do konta magazynu przy użyciu profilów dzienników](./../../azure-monitor/platform/archive-activity-log.md), format danych na koncie magazynu zmieni się na linie JSON na Lis. 1, 2018. Poniższe instrukcje opisują wpływ i sposobu aktualizowania narzędzi do obsługi nowego formatu. 
 >
 > 
 
-## <a name="what-is-changing"></a>Co ulega zmianie
+## <a name="what-is-changing"></a>Co się zmienia
 
-Usługa Azure Monitor udostępnia możliwości, który umożliwia wysyłanie danych diagnostycznych zasobów i dane dzienników aktywności do konta usługi Azure storage, przestrzeń nazw usługi Event Hubs, lub do obszaru roboczego usługi Log Analytics w usłudze Azure Monitor. Aby rozwiązać problem z wydajnością systemu, na **1 listopada 2018, 12:00 do północy czasu UTC** zmieni format dziennika danych wysyła do magazynu obiektów blob. Jeśli masz, czyli narzędzia odczytywania danych z magazynu obiektów blob, należy zaktualizować narzędzi w taki sposób, aby zrozumieć nowego formatu danych.
+Azure Monitor oferuje możliwość przesyłania danych diagnostycznych zasobów i danych dziennika aktywności do konta usługi Azure Storage, Event Hubs przestrzeni nazw lub obszaru roboczego Log Analytics w Azure Monitor. Aby rozwiązać problem z wydajnością systemu, **1 listopada 2018 o godzinie 12:00 północy** , format przesyłania danych dziennika do magazynu obiektów BLOB zostanie zmieniony. Jeśli masz narzędzia odczytujące dane z magazynu obiektów blob, musisz zaktualizować swoje narzędzia, aby zrozumieć nowy format danych.
 
-* Czwartek, listopad 1 2018 północy czasu UTC, 12:00, format obiektów blob zmieni się [wierszy JSON](http://jsonlines.org/). Oznacza to, że każdy rekord będzie rozdzielone znakami nowego wiersza, z tablicą nie rekordów zewnętrzne i nie przecinkami, między rekordami JSON.
-* Zmiany formatu obiektu blob dla wszystkich ustawień diagnostycznych dla wszystkich subskrypcji na raz. Pierwszy plik PT1H.json wysyłanego do 1 listopada użyje ten nowy format. Nazwy obiektów blob i kontener pozostają takie same.
-* Ustawienie diagnostyczne od chwili 1 listopada w dalszym ciągu Emituj danych w bieżącym formacie, aż do 1 listopada.
-* Ta zmiana zostanie przeprowadzona tylko raz we wszystkich regionach chmury publicznej. Zmiana zostanie przeprowadzona w chińskiej wersji platformy Azure, Azure (Niemcy) lub Azure dla instytucji rządowych chmurach jeszcze.
+* W czwartek, 1 listopada 2018 o 12:00 północy czasu UTC, format obiektu BLOB zmieni się na [wiersz JSON](http://jsonlines.org/). Oznacza to, że każdy rekord zostanie rozdzielony znakiem nowego wiersza, bez tablicy rekordów zewnętrznych i bez przecinków między rekordami JSON.
+* Format obiektu BLOB zmienia się dla wszystkich ustawień diagnostycznych jednocześnie w ramach wszystkich subskrypcji. Pierwszy plik PT1H. JSON emitowany przez 1 listopada będzie używać tego nowego formatu. Nazwy obiektów blob i kontenerów pozostają takie same.
+* Ustawienie ustawień diagnostycznych między teraz a listopadem nadal będzie emitować dane w bieżącym formacie do 1 listopada.
+* Ta zmiana będzie wykonywana jednocześnie we wszystkich regionach chmury publicznej. Ta zmiana nie będzie jeszcze wykonywana w Microsoft Azure obsługiwane przez firmę 21Vianet, platformę Azure (Niemcy) ani chmurę Azure Government.
 * Ta zmiana ma wpływ na następujące typy danych:
-  * [Dzienniki diagnostyczne usługi Azure resource](./../../azure-monitor/platform/archive-diagnostic-logs.md) ([zobacz listę zasobów w tym miejscu](./../../azure-monitor/platform/diagnostic-logs-schema.md))
-  * [Metryki zasobów platformy Azure są eksportowane przez ustawienia diagnostyczne](./../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings)
-  * [Dane dzienników aktywności platformy Azure są eksportowane przez profile dziennika](./../../azure-monitor/platform/archive-activity-log.md)
+  * [Dzienniki diagnostyczne zasobów platformy Azure](archive-diagnostic-logs.md) ([Zobacz tutaj listę zasobów](diagnostic-logs-schema.md))
+  * [Metryki zasobów platformy Azure eksportowane przez ustawienia diagnostyczne](diagnostic-settings.md)
+  * [Dane dziennika aktywności platformy Azure eksportowane przez profile dziennika](archive-activity-log.md)
 * Ta zmiana nie ma wpływu na:
-  * Dzienniki sieciowe w usłudze flow
-  * Dzienniki usługi platformy Azure nie udostępniane za pośrednictwem usługi Azure Monitor jeszcze (na przykład dzienników diagnostycznych usługi Azure App Service, dzienniki analiz magazynu)
-  * Routing dzienniki diagnostyczne platformy Azure i dzienników aktywności do innych miejsc docelowych (usługa Event Hubs, usługi Log Analytics)
+  * Dzienniki przepływu sieci
+  * Dzienniki usługi platformy Azure nie zostały jeszcze udostępnione za pomocą Azure Monitor (na przykład Azure App Service dzienników diagnostycznych, dzienników analizy magazynu)
+  * Routing dzienników diagnostycznych platformy Azure i dzienników aktywności do innych miejsc docelowych (Event Hubs, Log Analytics)
 
-### <a name="how-to-see-if-you-are-impacted"></a>Jak sprawdzić, jeśli ma wpływ
+### <a name="how-to-see-if-you-are-impacted"></a>Jak sprawdzić, czy ma to wpływ
 
-Jedynie wpływ ta zmiana Jeśli możesz:
-1. Konta usługi Azure storage przy użyciu ustawienie diagnostyczne zasobu definiuje, wysyłają dane dziennika i
-2. Dostępne narzędzie, który zależy od struktury JSON te dzienniki w magazynie.
+Ta zmiana ma wpływ tylko na to, że:
+1. Wysyła dane dziennika do konta usługi Azure Storage przy użyciu ustawienia diagnostyki zasobów i
+2. Narzędzia, które są zależne od struktury JSON tych dzienników w magazynie.
  
-Aby sprawdzić, czy masz ustawienia diagnostyczne zasobów, które wysyłają dane do konta usługi Azure storage, możesz przejść do **Monitor** sekcji portalu, kliknij pozycję **ustawień diagnostycznych**i zidentyfikować wszystkie zasoby, które mają **stanie diagnostyki** równa **włączone**:
+Aby określić, czy masz ustawienia diagnostyczne zasobów wysyłające dane do konta usługi Azure Storage, możesz przejść do sekcji **monitorowanie** portalu, kliknąć pozycję **Ustawienia diagnostyczne**i zidentyfikować wszystkie zasoby, które mają **diagnostykę Stan** ustawiony na **włączone**:
 
-![Blok usługi Azure Monitor ustawień diagnostycznych](./media/diagnostic-logs-append-blobs/portal-diag-settings.png)
+![Blok ustawień diagnostycznych Azure Monitor](./media/diagnostic-logs-append-blobs/portal-diag-settings.png)
 
-Jeśli stanie diagnostyki jest równa włączona, masz aktywne ustawienie diagnostyczne dla tego zasobu. Kliknij zasób, aby zobaczyć, jeśli wszystkie ustawienia diagnostyczne wysyłania danych do konta magazynu:
+Jeśli stan diagnostyki jest ustawiony na włączone, masz aktywne ustawienie diagnostyczne dla tego zasobu. Kliknij zasób, aby sprawdzić, czy żadne z ustawień diagnostycznych wysyła dane do konta magazynu:
 
 ![Konto magazynu jest włączone](./media/diagnostic-logs-append-blobs/portal-storage-enabled.png)
 
-Jeśli masz zasoby wysyłania danych do konta magazynu przy użyciu tych ustawień diagnostycznych zasobu formatu danych na tym koncie magazynu będzie wpływ tej zmiany. Jeśli nie masz niestandardowych narzędzi, który działa poza te konta magazynu, Zmień format nie ma wpływu na użytkownik.
+Jeśli masz zasoby wysyłające dane do konta magazynu przy użyciu tych ustawień diagnostycznych zasobów, ta zmiana będzie miała wpływ na format danych na tym koncie magazynu. Jeśli nie masz niestandardowych narzędzi, które działają poza tymi kontami magazynu, zmiana formatu nie wpłynie.
 
-### <a name="details-of-the-format-change"></a>Szczegółowe informacje o zmianę formatu
+### <a name="details-of-the-format-change"></a>Szczegóły zmiany formatu
 
-Bieżący format pliku PT1H.json w usłudze Azure blob storage korzysta z tablicą JSON rekordów. Oto przykładowy plik dziennika magazynu kluczy:
+Bieżący format pliku PT1H. JSON w usłudze Azure Blob Storage używa tablicy rekordów JSON. Oto przykład pliku dziennika magazynu kluczy:
 
 ```json
 {
@@ -118,23 +118,23 @@ Bieżący format pliku PT1H.json w usłudze Azure blob storage korzysta z tablic
 }
 ```
 
-Używa nowego formatu [wierszy JSON](http://jsonlines.org/), gdzie każde zdarzenie jest linię i znak nowego wiersza wskazuje nowe zdarzenie. Poniżej przedstawiono, jak w powyższym przykładzie będą wyglądać w pliku PT1H.json po zmianie:
+Nowy format używa [wierszy JSON](http://jsonlines.org/), gdzie każde zdarzenie jest wierszem, a znak nowego wiersza wskazuje nowe zdarzenie. Oto, co powyższy przykład będzie wyglądać w pliku PT1H. JSON po zmianie:
 
 ```json
 {"time": "2016-01-05T01:32:01.2691226Z","resourceId": "/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSOGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT","operationName": "VaultGet","operationVersion": "2015-06-01","category": "AuditEvent","resultType": "Success","resultSignature": "OK","resultDescription": "","durationMs": "78","callerIpAddress": "104.40.82.76","correlationId": "","identity": {"claim": {"http://schemas.microsoft.com/identity/claims/objectidentifier": "d9da5048-2737-4770-bd64-XXXXXXXXXXXX","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "live.com#username@outlook.com","appid": "1950a258-227b-4e31-a9cf-XXXXXXXXXXXX"}},"properties": {"clientInfo": "azure-resource-manager/2.0","requestUri": "https://control-prod-wus.vaultcore.azure.net/subscriptions/361da5d4-a47a-4c79-afdd-XXXXXXXXXXXX/resourcegroups/contosoresourcegroup/providers/Microsoft.KeyVault/vaults/contosokeyvault?api-version=2015-06-01","id": "https://contosokeyvault.vault.azure.net/","httpStatusCode": 200}}
 {"time": "2016-01-05T01:33:56.5264523Z","resourceId": "/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSOGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT","operationName": "VaultGet","operationVersion": "2015-06-01","category": "AuditEvent","resultType": "Success","resultSignature": "OK","resultDescription": "","durationMs": "83","callerIpAddress": "104.40.82.76","correlationId": "","identity": {"claim": {"http://schemas.microsoft.com/identity/claims/objectidentifier": "d9da5048-2737-4770-bd64-XXXXXXXXXXXX","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "live.com#username@outlook.com","appid": "1950a258-227b-4e31-a9cf-XXXXXXXXXXXX"}},"properties": {"clientInfo": "azure-resource-manager/2.0","requestUri": "https://control-prod-wus.vaultcore.azure.net/subscriptions/361da5d4-a47a-4c79-afdd-XXXXXXXXXXXX/resourcegroups/contosoresourcegroup/providers/Microsoft.KeyVault/vaults/contosokeyvault?api-version=2015-06-01","id": "https://contosokeyvault.vault.azure.net/","httpStatusCode": 200}}
 ```
 
-Ten nowy format umożliwia wypychania plików dziennika przy użyciu usługi Azure Monitor [uzupełnialnych obiektów blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs), które są bardziej wydajne stale dołączania nowych danych zdarzenia.
+Ten nowy format umożliwia Azure Monitor wypychania plików dziennika przy użyciu [dołączanych obiektów BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs), co jest bardziej wydajne w przypadku ciągłego dołączania nowych danych zdarzeń.
 
 ## <a name="how-to-update"></a>Jak zaktualizować
 
-Należy dokonać aktualizacji w przypadku niestandardowych narzędzi, które pozwalają pozyskać te pliki dziennika w celu dalszego przetwarzania. Jeśli wykonujesz korzystania z usługi zewnętrznej log analytics lub narzędziem SIEM, firma Microsoft zaleca [przy użyciu usługi event hubs pozyskiwać dane zamiast](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/). Event hubs integracji jest łatwiejsze pod kątem przetwarzania dzienników z wielu usług i tworzenie zakładek dla lokalizacji, w określonym dzienniku.
+Tylko wtedy, gdy istnieje narzędzie niestandardowe, które pozyskuje te pliki dziennika do dalszej obróbki. Jeśli korzystasz z zewnętrznego narzędzia do analizy dzienników lub SIEM, zalecamy [Używanie centrów zdarzeń do pozyskiwania tych danych](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/). Integracja centrów zdarzeń jest łatwiejsza pod względem przetwarzania dzienników z wielu usług i lokalizacji zakładek w konkretnym dzienniku.
 
-Narzędzia niestandardowe powinien zostać zaktualizowany do obsługi bieżącego formatu i format JSON wiersze opisanych powyżej. Pozwoli to zagwarantować, że po uruchomieniu danych pojawią się w nowym formacie narzędzi nie przerywają działania.
+Narzędzia niestandardowe należy zaktualizować w taki sposób, aby obsługiwały zarówno bieżący format, jak i format linii JSON opisany powyżej. Zapewni to, że gdy dane zaczynają pojawiać się w nowym formacie, narzędzia nie są przerywane.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej o [archiwizowanie dzienników diagnostycznych zasobów do konta magazynu](./../../azure-monitor/platform/archive-diagnostic-logs.md)
-* Dowiedz się więcej o [archiwizowania danych dziennika aktywności na koncie magazynu](./../../azure-monitor/platform/archive-activity-log.md)
+* Informacje o [archiwizowaniu dzienników diagnostycznych zasobów na koncie magazynu](./../../azure-monitor/platform/archive-diagnostic-logs.md)
+* Informacje [na temat archiwizowania danych dziennika aktywności na koncie magazynu](./../../azure-monitor/platform/archive-activity-log.md)
 

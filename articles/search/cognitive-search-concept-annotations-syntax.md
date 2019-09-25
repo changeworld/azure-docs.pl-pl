@@ -5,17 +5,16 @@ services: search
 manager: nitinme
 author: luiscabrer
 ms.service: search
-ms.subservice: cognitive-search
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: e4b94e7a6e41a5c6beaf94069c0fb6bed795ca6d
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 40559744f0650c64afb1dc63c38f56efaa0219d7
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183504"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265533"
 ---
 # <a name="how-to-reference-annotations-in-a-cognitive-search-skillset"></a>Jak odwoływać się do adnotacji w zestawu umiejętności wyszukiwania poznawczego
 
@@ -30,7 +29,7 @@ Przed przejrzeniem składni należy ponownie odwiedzić kilka ważnych koncepcji
 | Termin | Opis |
 |------|-------------|
 | Wzbogacony dokument | Wzbogacony dokument to wewnętrzna struktura utworzona i używana przez potok do przechowywania wszystkich adnotacji związanych z dokumentem. Zastanów się, że wzbogacony dokument jest drzewem adnotacji. Na ogół adnotacja utworzona na podstawie poprzedniej adnotacji staną się jej elementami podrzędnymi.<p/>Dokumenty wzbogacone istnieją tylko na czas wykonywania zestawu umiejętności. Gdy zawartość jest zamapowana na indeks wyszukiwania, wzbogacony dokument nie będzie już potrzebne. Chociaż nie można bezpośrednio korzystać z ulepszonych dokumentów, warto mieć model psychiczny dokumentów podczas tworzenia zestawu umiejętności. |
-| Kontekst wzbogacania | Kontekst, w którym odbywa się wzbogacanie, w odniesieniu do którego element jest wzbogacany. Domyślnie kontekst wzbogacania jest na `"/document"` poziomie, w zakresie do poszczególnych dokumentów. Po uruchomieniu umiejętności dane wyjściowe tej umiejętności stają się właściwościami [zdefiniowanego kontekstu](#example-2).|
+| Kontekst wzbogacania | Kontekst, w którym odbywa się wzbogacanie, w odniesieniu do którego element jest wzbogacany. Domyślnie kontekst wzbogacania jest na `"/document"` poziomie, w zakresie do poszczególnych dokumentów. Po uruchomieniu umiejętności dane wyjściowe tej umiejętności stają się [właściwościami zdefiniowanego kontekstu](#example-2).|
 
 <a name="example-1"></a>
 ## <a name="example-1-simple-annotation-reference"></a>Przykład 1: Proste odwołanie do adnotacji

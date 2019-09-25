@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 2482fb4ab74a3c1e032a32890c3dc2c3920b5e6b
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 1dcea4f56d778b0e6320634286a25d478c78a5bc
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725623"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261707"
 ---
 # <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Wersja zapoznawcza: Wdrażanie maszyn wirtualnych na dedykowanych hostach przy użyciu Azure PowerShell
 
@@ -26,7 +26,7 @@ W tym artykule opisano sposób tworzenia [dedykowanego hosta](dedicated-hosts.md
 Upewnij się, że zainstalowano Azure PowerShell w wersji 2.4.2 lub nowszej, i zalogujesz się do konta platformy Azure w `Connect-AzAccount`usłudze. Aby zainstalować wersję 2.4.2, Otwórz wiersz polecenia programu PowerShell i wpisz:
 
 ```powershell
-Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion 2.4.2-preview -AllowPrelease
+Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion 2.4.2-preview -AllowPrerelease
 ```
 
 Aby włączyć funkcję modułu podglądu w programie PowerShell, potrzebna jest co najmniej wersja 1.6.0 modułu PowerShellGet. Najnowsze wersje programu PowerShell Core mają to automatycznie wbudowaną wersję, ale w przypadku starszych wersji programu PowerShell można uruchomić następujące polecenie, aby zaktualizować do najnowszej wersji:

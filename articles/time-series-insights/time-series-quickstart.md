@@ -10,13 +10,13 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 07/29/2019
-ms.openlocfilehash: 04bd4378a0820444ab31c9c696e58fccf3026d14
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.date: 09/23/2019
+ms.openlocfilehash: b5fb0c4de82d5ff5f5290127ec529787cabad64a
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720884"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258362"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>Szybki start: Poznawanie usługi Azure Time Series Insights
 
@@ -33,7 +33,7 @@ Ten przewodnik Szybki Start dla programu Time Series Insights Explorer oferuje f
 
 ## <a name="prepare-the-demo-environment"></a>Przygotowanie środowiska demonstracyjnego
 
-1. W przeglądarce przejdź do [głównej](https://insights.timeseries.azure.com/demo)wersji demonstracyjnej.
+1. W przeglądarce przejdź do [głównej wersji demonstracyjnej](https://insights.timeseries.azure.com/demo).
 
 1. Jeśli zostanie wyświetlony monit, zaloguj się do Eksploratora Time Series Insights przy użyciu poświadczeń konta platformy Azure.
 
@@ -88,7 +88,7 @@ Po ukończeniu samouczka Wyczyść utworzone zasoby:
 1. W menu po lewej stronie w [Azure Portal](https://portal.azure.com)wybierz pozycję **wszystkie zasoby**, Znajdź Azure Time Series Insights grupę zasobów.
 1. Usuń całą grupę zasobów (i wszystkie znajdujące się w niej zasoby), wybierając pozycję **Usuń** lub Usuń osobno każdy zasób.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Wszystko jest gotowe do utworzenia własnego środowiska Time Series Insightsowego:
 > [!div class="nextstepaction"]

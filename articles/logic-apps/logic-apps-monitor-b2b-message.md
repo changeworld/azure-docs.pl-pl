@@ -1,6 +1,6 @@
 ---
-title: Monitorowanie komunikatów B2B przy użyciu dzienników usługi Azure Monitor — Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Monitorowanie AS2, X 12 i EDIFACT wiadomości dla konta integracji i Azure Logic Apps i konfigurowanie rejestrowania diagnostycznego przy użyciu dzienników usługi Azure Monitor
+title: Monitorowanie komunikatów B2B przy użyciu dzienników Azure Monitor — Azure Logic Apps | Microsoft Docs
+description: Monitoruj komunikaty AS2, X12 i EDIFACT dla kont integracji i Azure Logic Apps i skonfiguruj rejestrowanie diagnostyki przy użyciu dzienników Azure Monitor
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,143 +9,143 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/23/2018
-ms.openlocfilehash: 12799a308157c3c0e19de1f82c0fe3df44fad37e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a4a7f951d34455f2e333f2c11e30d24efdfd22c1
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62106304"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261201"
 ---
-# <a name="monitor-b2b-messages-with-azure-monitor-logs-in-azure-logic-apps"></a>Monitorowanie komunikatów B2B przy użyciu dzienników usługi Azure Monitor w usłudze Azure Logic Apps
+# <a name="monitor-b2b-messages-with-azure-monitor-logs-in-azure-logic-apps"></a>Monitorowanie komunikatów B2B przy użyciu dzienników Azure Monitor w Azure Logic Apps
 
-Po skonfigurowaniu komunikacji B2B między partnerami handlowymi na koncie integracji tych partnerów mogą wymieniać komunikaty ze sobą. Aby sprawdzić, czy ta komunikacja działa w oczekiwany sposób, można monitorować AS2, X12, i EDIFACT komunikatów i konfigurowanie logowania dla konta integracji z diagnostyki [dzienniki usługi Azure Monitor](../log-analytics/log-analytics-overview.md). Ta usługa monitoruje środowiska w chmurze i lokalnych zachowania ich dostępności i wydajności i zbiera szczegóły środowiska uruchomieniowego i zdarzenia dla bardziej zaawansowane debugowanie. Można również użyć tych danych z innymi usługami, takimi jak usługi Azure Storage i Azure Event Hubs.
+Po skonfigurowaniu komunikacji B2B między partnerami handlowymi na Twoim koncie integracyjnym partnerzy mogą wymieniać komunikaty ze sobą. Aby sprawdzić, czy ta komunikacja działa w oczekiwany sposób, możesz monitorować komunikaty AS2, X12 i EDIFACT oraz konfigurować rejestrowanie danych diagnostycznych dla konta integracji za pomocą [dzienników Azure monitor](../log-analytics/log-analytics-overview.md). Ta usługa monitoruje środowiska w chmurze i lokalne, pomaga zachować swoją dostępność i wydajność oraz gromadzi szczegóły i zdarzenia środowiska uruchomieniowego w celu zaawansowania debugowania. Możesz również użyć tych danych z innymi usługami, takimi jak Azure Storage i Azure Event Hubs.
 
 > [!NOTE]
-> Na tej stronie może nadal mieć odwołania do programu Microsoft Operations Management Suite (OMS), czyli [wycofywania w styczniu 2019](../azure-monitor/platform/oms-portal-transition.md), lecz zastępuje te kroki z usługą Azure Log Analytics, jeśli jest to możliwe. 
+> Ta strona może nadal mieć odwołania do Microsoft Operations Management Suite (OMS), które są [wycofywane w styczniu 2019](../azure-monitor/platform/oms-portal-transition.md), ale zastępują te kroki na platformie Azure log Analytics, tam gdzie to możliwe. 
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Aplikację logiki, która została skonfigurowana za pomocą rejestrowania diagnostycznego. Dowiedz się, [jak utworzyć aplikację logiki](quickstart-create-first-logic-app-workflow.md) i [jak skonfigurować rejestrowanie dla tej aplikacji logiki](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
+* Aplikacja logiki, która jest skonfigurowana z rejestrowaniem diagnostyki. Dowiedz się, [jak utworzyć aplikację logiki](quickstart-create-first-logic-app-workflow.md) i [jak skonfigurować rejestrowanie dla tej aplikacji logiki](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
-* Po użytkownik spełnia poprzednie wymagania, należy również obszar roboczy usługi Log Analytics, która jest używana do monitorowania i śledzenia komunikacji B2B przy użyciu dzienników usługi Azure Monitor. Dowiedz się, jeśli nie masz obszaru roboczego usługi Log Analytics [jak utworzyć obszar roboczy usługi Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
+* Po spełnieniu powyższych wymagań potrzebny jest również obszar roboczy Log Analytics, który służy do monitorowania i śledzenia komunikacji B2B za pomocą dzienników Azure Monitor. Jeśli nie masz obszaru roboczego Log Analytics, zapoznaj się [z tematem tworzenie log Analytics obszaru roboczego](../azure-monitor/learn/quick-create-workspace.md).
 
-* Konto integracji jest połączony z aplikacji logiki. Dowiedz się, [sposób tworzenia konta integracji z linkiem do aplikacji logiki](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md).
+* Konto integracji połączone z aplikacją logiki. Dowiedz się, [jak utworzyć konto integracji z linkiem do aplikacji logiki](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md).
 
-## <a name="turn-on-diagnostics-logging"></a>Włączanie rejestrowania diagnostycznego
+## <a name="turn-on-diagnostics-logging"></a>Włącz rejestrowanie diagnostyczne
 
-Można włączyć rejestrowanie albo bezpośrednio z Twojego konta integracji lub [za pośrednictwem usługi Azure Monitor](#azure-monitor-service). Usługa Azure Monitor zapewnia podstawowe monitorowanie za pomocą danych na poziomie infrastruktury. Dowiedz się więcej o [usługi Azure Monitor](../azure-monitor/overview.md).
+Rejestrowanie można włączyć bezpośrednio z poziomu konta integracji lub [za pośrednictwem usługi Azure monitor](#azure-monitor-service). Azure Monitor zapewnia podstawowe monitorowanie za pomocą danych poziomu infrastruktury. Dowiedz się więcej o [Azure monitor](../azure-monitor/overview.md).
 
-### <a name="turn-on-logging-from-integration-account"></a>Włączanie rejestrowania z konta integracji
+### <a name="turn-on-logging-from-integration-account"></a>Włącz rejestrowanie na koncie integracji
 
-1. W [witryny Azure portal](https://portal.azure.com), Znajdź i wybierz swoje konto integracji. W obszarze **monitorowanie**, wybierz opcję **ustawień diagnostycznych**.
+1. W [Azure Portal](https://portal.azure.com)Znajdź i wybierz swoje konto integracji. W obszarze **monitorowanie**, wybierz opcję **ustawień diagnostycznych**.
 
-   ![Znajdź i wybierz swoje konto integracji, wybierz pozycję "Ustawienia diagnostyczne"](media/logic-apps-monitor-b2b-message/find-integration-account.png)
+   ![Znajdź i wybierz swoje konto integracji, wybierz pozycję Ustawienia diagnostyczne](media/logic-apps-monitor-b2b-message/find-integration-account.png)
 
-1. Teraz Znajdź i wybierz swoje konto integracji. Na listach filtru wybierz wartości, które są stosowane na koncie integracji.
-Gdy wszystko będzie gotowe, wybierz pozycję **Dodaj ustawienie diagnostyczne**.
+1. Teraz Znajdź i wybierz swoje konto integracji. Z listy filtrów wybierz wartości, które mają zastosowanie do konta integracji.
+Gdy skończysz, wybierz pozycję **Dodaj ustawienie diagnostyczne**.
 
-   | Właściwość | Wartość | Opis | 
+   | Właściwość | Value | Opis | 
    |----------|-------|-------------|
-   | **Subskrypcja** | <*Azure-subscription-name*> | Subskrypcja platformy Azure, która jest skojarzona z kontem integracji | 
-   | **Grupa zasobów** | <*Azure-resource-group-name*> | Grupy zasobów platformy Azure dla konta integracji | 
-   | **Typ zasobu** | **Integracja kont** | Typ dla zasobów platformy Azure, której chcesz włączyć rejestrowanie | 
-   | **Zasób** | <*integration-account-name*> | Nazwa dla swoich zasobów platformy Azure, w której chcesz włączyć rejestrowanie | 
+   | **Subskrypcja** | <*Azure-subscription-name*> | Subskrypcja platformy Azure skojarzona z kontem integracji | 
+   | **Grupa zasobów** | <*Azure-resource-group-name*> | Grupa zasobów platformy Azure dla konta integracji | 
+   | **Typ zasobu** | **Integracja kont** | Typ zasobu platformy Azure, w którym ma zostać włączone rejestrowanie | 
+   | **Zasób** | <*Integracja — nazwa konta*> | Nazwa zasobu platformy Azure, w którym ma zostać włączona Rejestracja | 
    ||||  
 
    Na przykład:
 
    ![Konfigurowanie diagnostyki dla konta integracji](media/logic-apps-monitor-b2b-message/turn-on-diagnostics-integration-account.png)
 
-1. Podaj nazwę dla nowego ustawienia diagnostycznego, a następnie wybierz obszar roboczy usługi Log Analytics i dane, które mają być rejestrowane.
+1. Podaj nazwę nowego ustawienia diagnostycznego, wybierz obszar roboczy Log Analytics i dane, które chcesz zarejestrować.
 
-   1. Wybierz **wysyłanie do usługi Log Analytics**. 
+   1. Wybierz pozycję **Wyślij do log Analytics**. 
 
-   1. W obszarze **usługi Log Analytics**, wybierz opcję **Konfiguruj**. 
+   1. W obszarze **log Analytics**wybierz pozycję **Konfiguruj**. 
 
-   1. W obszarze **obszarów roboczych pakietu OMS**, wybierz obszar roboczy usługi Log Analytics, którego chcesz użyć do rejestrowania. 
+   1. W obszarze **obszary robocze OMS**wybierz obszar roboczy log Analytics, który ma być używany do rejestrowania. 
 
       > [!NOTE]
-      > Obszary robocze OMS są zastępowane przez obszary robocze usługi Log Analytics. 
+      > Obszary robocze pakietu OMS są zastępowane przez Log Analytics obszary robocze. 
 
-   1. W obszarze **dziennika**, wybierz opcję **IntegrationAccountTrackingEvents** kategorii i wybierz polecenie **Zapisz**.
+   1. W obszarze **Dziennik**wybierz kategorię **IntegrationAccountTrackingEvents** , a następnie wybierz pozycję **Zapisz**.
 
    Na przykład: 
 
-   ![Konfigurowanie dzienników usługi Azure Monitor, co umożliwia wysyłanie danych diagnostycznych do dziennika](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
+   ![Konfigurowanie dzienników Azure Monitor, aby można było wysyłać dane diagnostyczne do dziennika](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
 
-1. Teraz [skonfigurować śledzenie wiadomości B2B w usłudze Azure Monitor dziennikach](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+1. Teraz [Skonfiguruj śledzenie dla wiadomości B2B w dziennikach Azure monitor](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 
 <a name="azure-monitor-service"></a>
 
-### <a name="turn-on-logging-through-azure-monitor"></a>Włącz rejestrowanie za pomocą usługi Azure Monitor
+### <a name="turn-on-logging-through-azure-monitor"></a>Włącz logowanie za Azure Monitor
 
-1. W [witryny Azure portal](https://portal.azure.com), w menu głównym platformy Azure wybierz **Monitor**. W obszarze **ustawienia**, wybierz opcję **ustawień diagnostycznych**. 
+1. W [Azure Portal](https://portal.azure.com)w głównym menu platformy Azure wybierz pozycję **Monitoruj**. W obszarze **Ustawienia**wybierz pozycję **Ustawienia diagnostyki**. 
 
-   ![Wybierz pozycję "Monitor" > "Ustawienia diagnostyki" > konta integracji](media/logic-apps-monitor-b2b-message/monitor-diagnostics-settings.png)
+   ![Wybierz pozycję "Monitoruj" > "Ustawienia diagnostyki" > konto integracji](media/logic-apps-monitor-b2b-message/monitor-diagnostics-settings.png)
 
-1. Teraz Znajdź i wybierz swoje konto integracji. Na listach filtru wybierz wartości, które są stosowane na koncie integracji.
-Gdy wszystko będzie gotowe, wybierz pozycję **Dodaj ustawienie diagnostyczne**.
+1. Teraz Znajdź i wybierz swoje konto integracji. Z listy filtrów wybierz wartości, które mają zastosowanie do konta integracji.
+Gdy skończysz, wybierz pozycję **Dodaj ustawienie diagnostyczne**.
 
-   | Właściwość | Wartość | Opis | 
+   | Właściwość | Value | Opis | 
    |----------|-------|-------------|
-   | **Subskrypcja** | <*Azure-subscription-name*> | Subskrypcja platformy Azure, która jest skojarzona z kontem integracji | 
-   | **Grupa zasobów** | <*Azure-resource-group-name*> | Grupy zasobów platformy Azure dla konta integracji | 
-   | **Typ zasobu** | **Integracja kont** | Typ dla zasobów platformy Azure, której chcesz włączyć rejestrowanie | 
-   | **Zasób** | <*integration-account-name*> | Nazwa dla swoich zasobów platformy Azure, w której chcesz włączyć rejestrowanie | 
+   | **Subskrypcja** | <*Azure-subscription-name*> | Subskrypcja platformy Azure skojarzona z kontem integracji | 
+   | **Grupa zasobów** | <*Azure-resource-group-name*> | Grupa zasobów platformy Azure dla konta integracji | 
+   | **Typ zasobu** | **Integracja kont** | Typ zasobu platformy Azure, w którym ma zostać włączone rejestrowanie | 
+   | **Zasób** | <*Integracja — nazwa konta*> | Nazwa zasobu platformy Azure, w którym ma zostać włączona Rejestracja | 
    ||||  
 
    Na przykład:
 
    ![Konfigurowanie diagnostyki dla konta integracji](media/logic-apps-monitor-b2b-message/turn-on-diagnostics-integration-account.png)
 
-1. Podaj nazwę dla nowego ustawienia diagnostycznego, a następnie wybierz obszar roboczy usługi Log Analytics i dane, które mają być rejestrowane.
+1. Podaj nazwę nowego ustawienia diagnostycznego, wybierz obszar roboczy Log Analytics i dane, które chcesz zarejestrować.
 
-   1. Wybierz **wysyłanie do usługi Log Analytics**. 
+   1. Wybierz pozycję **Wyślij do log Analytics**. 
 
-   1. W obszarze **usługi Log Analytics**, wybierz opcję **Konfiguruj**. 
+   1. W obszarze **log Analytics**wybierz pozycję **Konfiguruj**. 
 
-   1. W obszarze **obszarów roboczych pakietu OMS**, wybierz obszar roboczy usługi Log Analytics, którego chcesz użyć do rejestrowania. 
+   1. W obszarze **obszary robocze OMS**wybierz obszar roboczy log Analytics, który ma być używany do rejestrowania. 
 
       > [!NOTE]
-      > Obszary robocze OMS są zastępowane przez obszary robocze usługi Log Analytics. 
+      > Obszary robocze pakietu OMS są zastępowane przez Log Analytics obszary robocze. 
 
-   1. W obszarze **dziennika**, wybierz opcję **IntegrationAccountTrackingEvents** kategorii i wybierz polecenie **Zapisz**.
+   1. W obszarze **Dziennik**wybierz kategorię **IntegrationAccountTrackingEvents** , a następnie wybierz pozycję **Zapisz**.
 
    Na przykład: 
 
-   ![Konfigurowanie dzienników usługi Azure Monitor, co umożliwia wysyłanie danych diagnostycznych do dziennika](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
+   ![Konfigurowanie dzienników Azure Monitor, aby można było wysyłać dane diagnostyczne do dziennika](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
 
-1. Teraz [skonfigurować śledzenie wiadomości B2B w usłudze Azure Monitor dziennikach](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+1. Teraz [Skonfiguruj śledzenie dla wiadomości B2B w dziennikach Azure monitor](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 
-## <a name="use-diagnostic-data-with-other-services"></a>Dane diagnostyczne używane z innymi usługami
+## <a name="use-diagnostic-data-with-other-services"></a>Korzystanie z danych diagnostycznych z innymi usługami
 
-Wraz z dzienników usługi Azure Monitor można rozszerzyć, wykorzystania danych diagnostycznych z aplikacji logiki z innymi usługami platformy Azure, na przykład: 
+Wraz z Azure Monitorymi dziennikami możesz dołożyć, jak używać danych diagnostycznych aplikacji logiki z innymi usługami platformy Azure, na przykład: 
 
-* [Archiwum, które dzienniki diagnostyczne platformy Azure w usłudze Azure Storage](../azure-monitor/platform/archive-diagnostic-logs.md)
-* [Dzienniki diagnostyczne platformy Azure Stream do usługi Azure Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) 
+* [Archiwizowanie dzienników Diagnostyka Azure w usłudze Azure Storage](../azure-monitor/platform/archive-diagnostic-logs.md)
+* [Przesyłanie strumieniowe dzienników Diagnostyka Azure do platformy Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md) 
 
-Następnie monitorowanie przy użyciu danych telemetrycznych i analitycznych z innych usług, takich jak get w czasie rzeczywistym [usługi Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) i [usługi Power BI](../azure-monitor/platform/powerbi.md). Na przykład:
+Następnie można uzyskać monitorowanie w czasie rzeczywistym, korzystając z danych telemetrycznych i analiz z innych usług, takich jak [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) i [Power BI](../azure-monitor/platform/powerbi.md). Na przykład:
 
-* [Stream dane z usługi Event Hubs do usługi Stream Analytics](../stream-analytics/stream-analytics-define-inputs.md)
-* [Analizuj dane przesyłane strumieniowo przy użyciu usługi Stream Analytics i utworzyć pulpit nawigacyjny analizy w czasie rzeczywistym w usłudze Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)
+* [Przesyłanie strumieniowe danych z Event Hubs do Stream Analytics](../stream-analytics/stream-analytics-define-inputs.md)
+* [Analizowanie danych przesyłanych strumieniowo za pomocą Stream Analytics i tworzenie pulpitu nawigacyjnego analizy w czasie rzeczywistym w programie Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)
 
-Na podstawie opcji chcesz mieć zainstalowanego, upewnij się, że możesz pierwszy [Tworzenie konta usługi Azure storage](../storage/common/storage-create-storage-account.md) lub [Tworzenie Centrum zdarzeń Azure](../event-hubs/event-hubs-create.md). Następnie możesz wybrać miejsc docelowych, które chcesz wysyłać dane diagnostyczne.
-Okresy przechowywania mają zastosowanie tylko wtedy, gdy użytkownik chce użyć konta magazynu.
+Na podstawie opcji, które chcesz skonfigurować, upewnij się, że najpierw [utworzono konto usługi Azure Storage](../storage/common/storage-create-storage-account.md) lub [utworzono centrum zdarzeń platformy Azure](../event-hubs/event-hubs-create.md). Następnie możesz wybrać miejsca docelowe, w których chcesz wysyłać dane diagnostyczne.
+Okresy przechowywania są stosowane tylko w przypadku wybrania opcji korzystania z konta magazynu.
 
-![Wysłać dane do Centrum konta lub zdarzenia usługi Azure storage](./media/logic-apps-monitor-b2b-message/diagnostics-storage-event-hub-log-analytics.png)
+![Wysyłanie danych do konta usługi Azure Storage lub centrum zdarzeń](./media/logic-apps-monitor-b2b-message/diagnostics-storage-event-hub-log-analytics.png)
 
 ## <a name="supported-tracking-schemas"></a>Obsługiwane schematy śledzenia
 
-Platforma Azure obsługuje te śledzenie typów schematu, które ustalone schematów z wyjątkiem typu niestandardowego.
+Platforma Azure obsługuje te typy schematów śledzenia, które mają stałe schematy, z wyjątkiem typów niestandardowych.
 
 * [Schemat śledzenia AS2](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)
 * [Schemat śledzenia X12](../logic-apps/logic-apps-track-integration-account-x12-tracking-schema.md)
 * [Niestandardowe schematy śledzenia](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Śledzenie komunikatów B2B w usłudze Azure Monitor dziennikach](../logic-apps/logic-apps-track-b2b-messages-omsportal.md "komunikatów B2B śledzenie w dziennikach w usłudze Azure Monitor")
-* [Dowiedz się więcej na temat pakietu integracyjnego dla przedsiębiorstw](../logic-apps/logic-apps-enterprise-integration-overview.md "więcej informacji na temat pakietu integracyjnego dla przedsiębiorstw")
+* [Śledzenie komunikatów B2B w dziennikach Azure Monitor](../logic-apps/logic-apps-track-b2b-messages-omsportal.md "Śledzenie komunikatów B2B w dziennikach Azure Monitor")
+* [Dowiedz się więcej o Pakiet integracyjny dla przedsiębiorstw](../logic-apps/logic-apps-enterprise-integration-overview.md "Dowiedz się więcej o Pakiet integracyjny dla przedsiębiorstw")
 

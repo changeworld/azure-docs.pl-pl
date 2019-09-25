@@ -8,16 +8,16 @@ ms.service: security
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: jomolesk
-ms.openlocfilehash: b74373201db26405653584fc4000993b9d6fdf43
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: e8458d505575a5bf39bbd0a9970c5044b9cbd0f0
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946829"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257340"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-for-fedramp"></a>Strategia zabezpieczeń i zgodności z przepisami platformy Azure: Aplikacja sieci Web PaaS dla FedRAMP
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 [Federal Risk and Authorization Management Program (FedRAMP)](https://www.fedramp.gov/) to Stany Zjednoczone program dla instytucji rządowych, który zapewnia ustandaryzowane podejście do oceny zabezpieczeń, autoryzacji i ciągłego monitorowania produktów i usług w chmurze. Ten Strategia zabezpieczeń i zgodności z przepisami platformy Azure zawiera wskazówki dotyczące sposobu dostarczania architektury Microsoft Azure platformy jako usługi (PaaS), która pomaga zaimplementować podzestaw FedRAMP wysokiej kontroli. To rozwiązanie zapewnia wskazówki dotyczące wdrażania i konfigurowania zasobów platformy Azure na potrzeby wspólnej architektury referencyjnej, pokazując sposoby, w których klienci mogą spełniać określone wymagania w zakresie zabezpieczeń i zgodności, a także służy jako podstawa dla klientów Twórz i Konfiguruj własne rozwiązania na platformie Azure.
 
@@ -39,15 +39,15 @@ To rozwiązanie używa następujących usług platformy Azure. Szczegóły archi
     - (1) Zapora aplikacji sieci Web
         - Tryb zapory: zapobieganie
         - Zestaw reguł: OWASP 3.0
-        - Odbiornik: port 443
+        - odbiornik: port 443
 - Sieć wirtualna platformy Azure
 - Grupy zabezpieczeń sieci
-- Usługa DNS platformy Azure
+- System DNS platformy Azure
 - Azure Storage
 - Azure Monitor
 - App Service Environment v2
 - Azure Load Balancer
-- Aplikacja internetowa platformy Azure
+- Aplikacja sieci Web platformy Azure
 - Azure Resource Manager
 
 ## <a name="deployment-architecture"></a>Architektura wdrożenia
@@ -141,10 +141,10 @@ Następujące technologie zapewniają funkcje zarządzania tożsamościami w śr
 - [Niestandardowe sondy kondycji](../../application-gateway/quick-create-portal.md)
 - [Azure Security Center](https://azure.microsoft.com/services/security-center) i [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-security-recommendations) zapewniają dodatkową ochronę i powiadomienia. Azure Security Center udostępnia również system reputacji.
 
-### <a name="logging-and-auditing"></a>Rejestrowanie i inspekcja
+### <a name="logging-and-auditing"></a>Rejestrowanie i przeprowadzanie inspekcji
 Azure Monitor zapewnia obszerne rejestrowanie aktywności systemu i użytkownika, a także kondycji systemu. Zbiera i analizuje dane generowane przez zasoby na platformie Azure i w środowiskach lokalnych.
 - **Dzienniki aktywności**: [Dzienniki aktywności](../../azure-monitor/platform/activity-logs-overview.md) zapewniają wgląd w operacje wykonywane na zasobach w ramach subskrypcji. Dzienniki aktywności mogą pomóc w ustaleniu inicjatora, czasu wystąpienia i stanu operacji.
-- **Dzienniki diagnostyczne**: [Dzienniki diagnostyczne](../../azure-monitor/platform/diagnostic-logs-overview.md) obejmują wszystkie dzienniki wyemitowane przez każdy zasób. Dzienniki te obejmują Dzienniki systemu Windows, dzienniki usługi Azure Storage, dzienniki inspekcji Key Vault i Application Gateway dostępu i dzienników zapory.
+- **Dzienniki diagnostyczne**: [Dzienniki diagnostyczne](../../azure-monitor/platform/resource-logs-overview.md) obejmują wszystkie dzienniki wyemitowane przez każdy zasób. Dzienniki te obejmują Dzienniki systemu Windows, dzienniki usługi Azure Storage, dzienniki inspekcji Key Vault i Application Gateway dostępu i dzienników zapory.
 - **Archiwizowanie dzienników**: Wszystkie dzienniki diagnostyczne zapisu na scentralizowanym i zaszyfrowanym koncie usługi Azure Storage w celu archiwizacji. Przechowywanie jest możliwe do skonfigurowania przez użytkownika, do 730 dni, w celu spełnienia wymagań dotyczących przechowywania specyficznych dla organizacji. Te dzienniki łączą się z dziennikami Azure Monitor na potrzeby przetwarzania, przechowywania i raportowania pulpitów nawigacyjnych.
 
 Ponadto w ramach tej architektury są dołączone następujące rozwiązania do monitorowania:

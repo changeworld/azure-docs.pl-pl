@@ -1,107 +1,102 @@
 ---
-title: 'Azure Active Directory Domain Services: Rozwiązywanie problemów z nazwami podmiotów usługi | Microsoft Docs'
-description: Rozwiązywanie problemów z konfiguracją główną usługi dla Azure AD Domain Services
+title: Rozwiązywanie alertów głównych usługi w Azure AD Domain Services | Microsoft Docs
+description: Dowiedz się, jak rozwiązywać problemy z alertami konfiguracji jednostki usługi dla Azure Active Directory Domain Services
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
-manager: ''
-editor: ''
+manager: daveba
 ms.assetid: f168870c-b43a-4dd6-a13f-5cfadc5edf2c
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
-ms.date: 05/14/2019
+ms.topic: troubleshooting
+ms.date: 09/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 9e5fa8c84f5e7ca58117666846b603a118826150
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 175bfe63176b78c5aeafc7147c46dd5ab1110325
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234139"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257963"
 ---
-# <a name="troubleshoot-invalid-service-principal-configurations-for-azure-active-directory-domain-services"></a>Rozwiązywanie problemów z nieprawidłowymi konfiguracjami jednostek usługi dla Azure Active Directory Domain Services
+# <a name="known-issues-service-principal-alerts-in-azure-active-directory-domain-services"></a>Znane problemy: Alerty jednostki usługi w Azure Active Directory Domain Services
 
-Ten artykuł pomaga rozwiązywać problemy i rozwiązywać związane z nimi błędy konfiguracji dotyczące jednostki usługi, które powodują następujący komunikat o alercie:
+[Nazwy główne usług](../active-directory/develop/app-objects-and-service-principals.md) to aplikacje używane przez platformę Azure do zarządzania, aktualizowania i konserwowania domeny zarządzanej AD DS platformy Azure. Jeśli jednostka usługi zostanie usunięta, wpłynie to na funkcjonalność domeny zarządzanej platformy Azure AD DS.
+
+Ten artykuł ułatwia rozwiązywanie problemów i rozwiązywanie alertów dotyczących konfiguracji jednostki usługi.
 
 ## <a name="alert-aadds102-service-principal-not-found"></a>AADDS102 alertu: Nie znaleziono nazwy głównej usługi
 
-**Komunikat alertu:** *Nazwa główna usługi wymagana do poprawnego działania Azure AD Domain Services została usunięta z katalogu usługi Azure AD. Ta konfiguracja ma wpływ na zdolność firmy Microsoft do monitorowania, poprawiania i synchronizowania domeny zarządzanej oraz zarządzania nią.*
+### <a name="alert-message"></a>Komunikat alertu
 
-[Nazwy główne usług](../active-directory/develop/app-objects-and-service-principals.md) to aplikacje używane przez firmę Microsoft do zarządzania, aktualizowania i konserwowania domeny zarządzanej. Jeśli zostaną usunięte, przerwie zdolność firmy Microsoft do obsługi Twojej domeny.
+*Nazwa główna usługi wymagana do poprawnego działania Azure AD Domain Services została usunięta z katalogu usługi Azure AD. Ta konfiguracja ma wpływ na zdolność firmy Microsoft do monitorowania, poprawiania i synchronizowania domeny zarządzanej oraz zarządzania nią.*
 
+Jeśli zostanie usunięta wymagana jednostka usługi, platforma Azure nie będzie mogła wykonywać zautomatyzowanych zadań zarządzania. Domena zarządzana AD DS platformy Azure może nie stosować poprawnie aktualizacji lub tworzyć kopie zapasowe.
 
-## <a name="check-for-missing-service-principals"></a>Sprawdź brakujące jednostki usługi
-Wykonaj następujące kroki, aby określić, które jednostki usługi muszą zostać utworzone ponownie:
+### <a name="check-for-missing-service-principals"></a>Sprawdź brakujące jednostki usługi
 
-1. Przejdź do strony [aplikacje dla przedsiębiorstw — wszystkie aplikacje](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps) w Azure Portal.
-2. Z listy rozwijanej **Pokaż** wybierz pozycję **wszystkie aplikacje** , a następnie kliknij przycisk **Zastosuj**.
-3. Korzystając z poniższej tabeli, Wyszukaj każdy identyfikator aplikacji, wklejając identyfikator w polu wyszukiwania i naciskając klawisz ENTER. Jeśli wyniki wyszukiwania są puste, należy ponownie utworzyć jednostkę usługi, wykonując kroki z kolumny "rozwiązanie".
+Aby sprawdzić, której nazwy głównej usługi nie ma i które należy utworzyć, należy wykonać następujące czynności:
 
-| Identyfikator aplikacji | Rozwiązanie |
-| :--- | :--- |
-| 2565bd9d-da50-47d4-8b85-4c97f669dc36 | [Ponowne tworzenie brakującej jednostki usługi przy użyciu programu PowerShell](#recreate-a-missing-service-principal-with-powershell) |
-| 443155a6-77f3-45e3-882b-22b3a8d431fb | [Zarejestruj ponownie w przestrzeni nazw Microsoft. AAD](#re-register-to-the-microsoft-aad-namespace-using-the-azure-portal) |
-| abba844e-bc0e-44b0-947a-dc74e5d09022  | [Zarejestruj ponownie w przestrzeni nazw Microsoft. AAD](#re-register-to-the-microsoft-aad-namespace-using-the-azure-portal) |
-| d87dcbc6-a371-462e-88e3-28ad15ec4e64 | [Zarejestruj ponownie w przestrzeni nazw Microsoft. AAD](#re-register-to-the-microsoft-aad-namespace-using-the-azure-portal) |
+1. W Azure Portal wybierz pozycję **Azure Active Directory** z menu nawigacji po lewej stronie.
+1. Wybierz pozycję **aplikacje dla przedsiębiorstw**. Wybierz opcję *wszystkie aplikacje* z menu rozwijanego **Typ aplikacji** , a następnie wybierz pozycję **Zastosuj**.
+1. Wyszukaj poszczególne identyfikatory aplikacji. Jeśli nie zostanie znaleziona istniejąca aplikacja, wykonaj kroki opisane w sekcji *rozwiązanie* , aby utworzyć nazwę główną usługi, lub ponownie zarejestruj przestrzeń nazw.
 
-## <a name="recreate-a-missing-service-principal-with-powershell"></a>Ponowne tworzenie brakującej jednostki usługi przy użyciu programu PowerShell
-Wykonaj te kroki, jeśli w katalogu usługi Azure AD ```2565bd9d-da50-47d4-8b85-4c97f669dc36``` brakuje nazwy głównej usługi o identyfikatorze.
+    | Identyfikator aplikacji | Rozwiązanie |
+    | :--- | :--- |
+    | 2565bd9d-da50-47d4-8b85-4c97f669dc36 | [Utwórz ponownie brakującą nazwę główną usługi](#recreate-a-missing-service-principal) |
+    | 443155a6-77f3-45e3-882b-22b3a8d431fb | [Zarejestruj ponownie przestrzeń nazw Microsoft. AAD](#re-register-the-microsoft-aad-namespace) |
+    | abba844e-bc0e-44b0-947a-dc74e5d09022 | [Zarejestruj ponownie przestrzeń nazw Microsoft. AAD](#re-register-the-microsoft-aad-namespace) |
+    | d87dcbc6-a371-462e-88e3-28ad15ec4e64 | [Zarejestruj ponownie przestrzeń nazw Microsoft. AAD](#re-register-the-microsoft-aad-namespace) |
 
-**Tłumaczenia** Aby wykonać te kroki, potrzebujesz programu Azure AD PowerShell. Aby uzyskać informacje na temat instalowania programu Azure AD PowerShell, zobacz [ten artykuł](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0.).
+### <a name="recreate-a-missing-service-principal"></a>Utwórz ponownie brakującą nazwę główną usługi
 
-Aby rozwiązać ten problem, wpisz następujące polecenia w oknie programu PowerShell:
-1. Zainstaluj moduł Azure AD PowerShell i zaimportuj go.
+Jeśli w katalogu usługi Azure AD brakuje identyfikatora aplikacji *2565bd9d-DA50-47d4-8b85-4c97f669dc36* , użyj programu Azure AD PowerShell, aby wykonać następujące czynności. Aby uzyskać więcej informacji, zobacz [Instalowanie programu Azure AD PowerShell](/powershell/azure/active-directory/install-adv2).
+
+1. Zainstaluj moduł Azure AD PowerShell i zaimportuj go w następujący sposób:
 
     ```powershell
     Install-Module AzureAD
     Import-Module AzureAD
     ```
 
-2. Sprawdź, czy w katalogu brakuje jednostki usługi wymaganej do Azure AD Domain Services, wykonując następujące polecenie programu PowerShell:
-
-    ```powershell
-    Get-AzureAdServicePrincipal -filter "AppId eq '2565bd9d-da50-47d4-8b85-4c97f669dc36'"
-    ```
-
-3. Utwórz nazwę główną usługi, wpisując następujące polecenie programu PowerShell:
+1. Teraz należy ponownie utworzyć nazwę główną usługi przy użyciu polecenia cmdlet [New-AzureAdServicePrincipal][New-AzureAdServicePrincipal] :
 
     ```powershell
     New-AzureAdServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
     ```
 
-4. Po utworzeniu brakującej jednostki usługi Poczekaj dwie godziny i Sprawdź kondycję domeny zarządzanej.
+Kondycja domeny zarządzanej na platformie Azure AD DS automatycznie aktualizuje się w ciągu dwóch godzin i usuwa alert.
 
+### <a name="re-register-the-microsoft-aad-namespace"></a>Zarejestruj ponownie przestrzeń nazw usługi Microsoft AAD
 
-## <a name="re-register-to-the-microsoft-aad-namespace-using-the-azure-portal"></a>Zarejestruj ponownie w przestrzeni nazw usługi Microsoft AAD przy użyciu Azure Portal
-Wykonaj te kroki, jeśli w katalogu usługi Azure AD ```443155a6-77f3-45e3-882b-22b3a8d431fb``` nie ```abba844e-bc0e-44b0-947a-dc74e5d09022``` ma ```d87dcbc6-a371-462e-88e3-28ad15ec4e64``` nazwy podmiotu usług o identyfikatorze lub lub.
+Jeśli w katalogu usługi Azure AD brakuje identyfikatora aplikacji *443155a6-77f3-45e3-882b-22b3a8d431fb*, *abba844e-bc0e-44b0-947a-dc74e5d09022*lub *d87dcbc6-a371-462e-88e3-28ad15ec4e64* , wykonaj następujące kroki, aby Zarejestruj ponownie dostawcę zasobów *Microsoft. AAD* :
 
-**Tłumaczenia** Wykonaj następujące kroki, aby przywrócić usługi domenowe w Twoim katalogu:
+1. W Azure Portal Wyszukaj i wybierz pozycję **subskrypcje**.
+1. Wybierz subskrypcję skojarzoną z domeną zarządzaną AD DS platformy Azure.
+1. W okienku nawigacji po lewej stronie wybierz pozycję **dostawcy zasobów**.
+1. Wyszukaj ciąg *Microsoft. AAD*, a następnie wybierz pozycję **zarejestruj ponownie**.
 
-1. Przejdź do strony [subskrypcje](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) w Azure Portal.
-2. Wybierz subskrypcję z tabeli skojarzonej z Twoją domeną zarządzaną
-3. Przy użyciu nawigacji po lewej stronie wybierz pozycję **dostawcy zasobów**
-4. Wyszukaj ciąg "Microsoft. AAD" w tabeli, a następnie kliknij pozycję **zarejestruj ponownie**
-5. Aby upewnić się, że alert został rozwiązany, Wyświetl stronę kondycja domeny zarządzanej w ciągu dwóch godzin.
-
+Kondycja domeny zarządzanej na platformie Azure AD DS automatycznie aktualizuje się w ciągu dwóch godzin i usuwa alert.
 
 ## <a name="alert-aadds105-password-synchronization-application-is-out-of-date"></a>AADDS105 alertu: Aplikacja do synchronizacji haseł jest nieaktualna
 
-**Komunikat alertu:** Nazwa główna usługi z identyfikatorem aplikacji "d87dcbc6-a371-462e-88e3-28ad15ec4e64" została usunięta, a następnie ponownie utworzona. Ponowne tworzenie jest pozostawiane za niespójnymi uprawnieniami do Azure AD Domain Services zasobów wymaganych do obsługi domeny zarządzanej. Może to wpłynąć na synchronizację haseł w domenie zarządzanej.
+### <a name="alert-message"></a>Komunikat alertu
 
+*Nazwa główna usługi z identyfikatorem aplikacji "d87dcbc6-a371-462e-88e3-28ad15ec4e64" została usunięta, a następnie ponownie utworzona. Ponowne tworzenie jest pozostawiane za niespójnymi uprawnieniami do Azure AD Domain Services zasobów wymaganych do obsługi domeny zarządzanej. Może to wpłynąć na synchronizację haseł w domenie zarządzanej.*
 
-**Tłumaczenia** Aby wykonać te kroki, potrzebujesz programu Azure AD PowerShell. Aby uzyskać informacje na temat instalowania programu Azure AD PowerShell, zobacz [ten artykuł](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0.).
+Usługa Azure AD DS automatycznie synchronizuje konta użytkowników i poświadczenia z usługi Azure AD. Jeśli wystąpi problem z aplikacją usługi Azure AD używaną dla tego procesu, synchronizacja poświadczeń między usługą Azure AD DS i usługą Azure AD kończy się niepowodzeniem.
 
-Aby rozwiązać ten problem, wpisz następujące polecenia w oknie programu PowerShell:
-1. Zainstaluj moduł Azure AD PowerShell i zaimportuj go.
+### <a name="resolution"></a>Rozwiązanie
+
+Aby ponownie utworzyć aplikację usługi Azure AD służącą do synchronizacji poświadczeń, użyj programu Azure AD PowerShell, aby wykonać następujące czynności. Aby uzyskać więcej informacji, zobacz [Instalowanie programu Azure AD PowerShell](/powershell/azure/active-directory/install-adv2).
+
+1. Zainstaluj moduł Azure AD PowerShell i zaimportuj go w następujący sposób:
 
     ```powershell
     Install-Module AzureAD
     Import-Module AzureAD
     ```
-2. Usuń starą aplikację i obiekt za pomocą następujących poleceń programu PowerShell
+
+2. Teraz usuń starą aplikację i obiekt za pomocą następujących poleceń cmdlet programu PowerShell:
 
     ```powershell
     $app = Get-AzureADApplication -Filter "IdentifierUris eq 'https://sync.aaddc.activedirectory.windowsazure.com'"
@@ -109,8 +104,15 @@ Aby rozwiązać ten problem, wpisz następujące polecenia w oknie programu Powe
     $spObject = Get-AzureADServicePrincipal -Filter "DisplayName eq 'Azure AD Domain Services Sync'"
     Remove-AzureADServicePrincipal -ObjectId $app.ObjectId
     ```
-3. Po usunięciu obu systemów system koryguje się i ponownie utworzy aplikacje potrzebne do synchronizacji haseł. Aby upewnić się, że alert został skorygowany, odczekaj dwie godziny i Sprawdź kondycję domeny.
 
+Po usunięciu obu aplikacji platforma Azure automatycznie odtworzy je i podejmie próbę wznowienia synchronizacji haseł. Kondycja domeny zarządzanej na platformie Azure AD DS automatycznie aktualizuje się w ciągu dwóch godzin i usuwa alert.
 
-## <a name="contact-us"></a>Kontakt z nami
-Skontaktuj się z zespołem pomocy technicznej Azure Active Directory Domain Services, aby [udostępnić opinię lub pomoc techniczną](contact-us.md).
+## <a name="next-steps"></a>Następne kroki
+
+Jeśli nadal masz problemy, [Otwórz żądanie pomocy technicznej platformy Azure][azure-support] , aby uzyskać dodatkową pomoc dotyczącą rozwiązywania problemów.
+
+<!-- INTERNAL LINKS -->
+[azure-support]: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md
+
+<!-- EXTERNAL LINKS -->
+[New-AzureAdServicePrincipal]: /powershell/module/AzureAD/New-AzureADServicePrincipal

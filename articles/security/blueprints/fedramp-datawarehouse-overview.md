@@ -8,16 +8,16 @@ ms.service: security
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: jomolesk
-ms.openlocfilehash: 79ed2b6e5d7bb600a79e12d19268035491f3fe08
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 7fe5b45d7719b34fff8c09d08f510dc465f50104
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946857"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257403"
 ---
 # <a name="azure-security-and-compliance-blueprint-data-warehouse-for-fedramp-automation"></a>Strategia zabezpieczeń i zgodności z przepisami platformy Azure: Magazyn danych dla automatyzacji FedRAMP
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 [Federal Risk and Authorization Management Program (FedRAMP)](https://www.fedramp.gov/) to Stany Zjednoczone program dla instytucji rządowych, który zapewnia ustandaryzowane podejście do oceny zabezpieczeń, autoryzacji i ciągłego monitorowania produktów i usług w chmurze. Ten Strategia zabezpieczeń i zgodności z przepisami platformy Azure zawiera wskazówki dotyczące sposobu dostarczania Microsoft Azure architekturę magazynu danych, która pomaga zaimplementować podzestaw FedRAMP o wysokiej kontroli. To rozwiązanie zapewnia wskazówki dotyczące wdrażania i konfigurowania zasobów platformy Azure na potrzeby wspólnej architektury referencyjnej, pokazując sposoby, w których klienci mogą spełniać określone wymagania w zakresie zabezpieczeń i zgodności, a także służy jako podstawa dla klientów Twórz i Konfiguruj własne rozwiązania magazynu danych na platformie Azure.
 
@@ -27,7 +27,7 @@ Ta architektura referencyjna, przewodniki związane z implementacją kontroli i 
 
 ## <a name="architecture-diagram-and-components"></a>Diagram architektury i składniki
 
-To rozwiązanie zapewnia architekturę referencyjną magazynu danych implementującą wysoką wydajność i bezpieczny magazyn danych w chmurze. W tej architekturze są dwie osobne warstwy danych: jedna, w której dane są importowane, przechowywane i przemieszczane w ramach klastrowanego środowiska SQL, a drugi dla Azure SQL Data Warehouse, w którym dane są ładowane przy użyciu narzędzia ETL ( [](https://docs.microsoft.com/azure/sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase) np. zapytania T-SQL) do przetwarzania. Gdy dane są przechowywane w Azure SQL Data Warehouse, analiza może być uruchamiana na dużą skalę.
+To rozwiązanie zapewnia architekturę referencyjną magazynu danych implementującą wysoką wydajność i bezpieczny magazyn danych w chmurze. W tej architekturze są dwie osobne warstwy danych: jedna, w której dane są importowane, przechowywane i przemieszczane w ramach klastrowanego środowiska SQL, a drugi dla Azure SQL Data Warehouse, w którym dane są ładowane przy użyciu narzędzia ETL ( [np. zapytania](https://docs.microsoft.com/azure/sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase) T-SQL) do przetwarzania. Gdy dane są przechowywane w Azure SQL Data Warehouse, analiza może być uruchamiana na dużą skalę.
 
 Microsoft Azure oferuje różne usługi raportowania i analiz dla klienta. To rozwiązanie obejmuje SQL Server Reporting Services (SSRS) umożliwiające szybkie tworzenie raportów z Azure SQL Data Warehouse. Cały ruch SQL jest szyfrowany przy użyciu protokołu SSL w ramach dołączania certyfikatów z podpisem własnym. Najlepszym rozwiązaniem jest to, że platforma Azure zaleca korzystanie z zaufanego urzędu certyfikacji w celu zwiększenia bezpieczeństwa.
 
@@ -65,7 +65,7 @@ Load Balancer Azure SQL
 
 Usługa Azure Active Directory
 
-Magazyn Recovery Services
+Magazyn usługi Recovery Services
 
 W usłudze Azure Key Vault
 
@@ -129,7 +129,7 @@ AzureDiskEncryption
 ### <a name="logging-and-audit"></a>Rejestrowanie i inspekcja
 [Dzienniki Azure monitor](../azure-security-disk-encryption-overview.md) zapewniają obszerne rejestrowanie aktywności systemu i użytkownika, a także kondycję systemu. [Azure monitor rejestruje](https://azure.microsoft.com/services/log-analytics/) rozwiązanie zbiera i analizuje dane wygenerowane przez zasoby na platformie Azure i w środowiskach lokalnych.
 - **Dzienniki aktywności**: [Dzienniki aktywności](../../azure-monitor/platform/activity-logs-overview.md) zapewniają wgląd w operacje wykonywane na zasobach w ramach subskrypcji.
-- **Dzienniki diagnostyczne**: [Dzienniki diagnostyczne](../../azure-monitor/platform/diagnostic-logs-overview.md) obejmują wszystkie dzienniki wyemitowane przez każdy zasób. Te dzienniki obejmują Dzienniki systemu Windows i magazyn obiektów blob platformy Azure, tabele i dzienniki kolejki.
+- **Dzienniki diagnostyczne**: [Dzienniki diagnostyczne](../../azure-monitor/platform/resource-logs-overview.md) obejmują wszystkie dzienniki wyemitowane przez każdy zasób. Te dzienniki obejmują Dzienniki systemu Windows i magazyn obiektów blob platformy Azure, tabele i dzienniki kolejki.
 - **Dzienniki zapory**: Application Gateway zapewnia pełną dzienników diagnostycznych i dostępu. Dzienniki zapory są dostępne dla zasobów Application Gateway z włączoną obsługą usługi WAF.
 - **Archiwizowanie dzienników**: Wszystkie dzienniki diagnostyczne zapisu na scentralizowanym i zaszyfrowanym koncie usługi Azure Storage na potrzeby archiwizacji ze zdefiniowanym okresem przechowywania wynoszącym 2 dni. Te dzienniki łączą się z dziennikami Azure Monitor na potrzeby przetwarzania, przechowywania i raportowania pulpitów nawigacyjnych.
 
@@ -154,7 +154,7 @@ Następujące technologie zapewniają funkcje zarządzania tożsamościami w śr
 Aby dowiedzieć się więcej o korzystaniu z funkcji zabezpieczeń Azure SQL Database, zobacz przykład [aplikacji demonstracyjnej firmy Contoso](https://github.com/Microsoft/azure-sql-security-sample) .
 
 ### <a name="security"></a>Bezpieczeństwo
-**Zarządzanie**wpisami tajnymi: Rozwiązanie używa [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) do zarządzania kluczami i wpisami tajnymi. Usługa Azure Key Vault ułatwia ochronę kluczy kryptograficznych i kluczy tajnych używanych przez aplikacje i usługi w chmurze.
+**Zarządzanie wpisami tajnymi**: Rozwiązanie używa [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) do zarządzania kluczami i wpisami tajnymi. Usługa Azure Key Vault ułatwia ochronę kluczy kryptograficznych i kluczy tajnych używanych przez aplikacje i usługi w chmurze.
 
 **Ochrona przed złośliwym oprogramowaniem**: [Oprogramowanie chroniące przed złośliwym oprogramowaniem firmy Microsoft](https://docs.microsoft.com/azure/security/fundamentals/antimalware) Virtual Machines zapewnia ochronę w czasie rzeczywistym, która pomaga identyfikować i usuwać wirusy, programy szpiegujące i inne złośliwe oprogramowanie, z konfigurowalnymi alertami, gdy znane złośliwe lub niepożądane oprogramowanie próbuje Zainstaluj lub Uruchom na chronionych maszynach wirtualnych.
 

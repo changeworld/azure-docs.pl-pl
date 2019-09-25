@@ -7,23 +7,23 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 06/24/2019
 ms.author: lbosq
-ms.openlocfilehash: db263c1c7f0a8b87b315c5aa6da31336229c9643
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 159233da989a5bbec75dbd0a6cfe230b8a512979
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67502735"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261296"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Obsługa grafu Gremlin w usłudze Azure Cosmos DB
-Usługa Azure Cosmos DB obsługuje [Apache Tinkerpop](https://tinkerpop.apache.org) wykresu języka przechodzenia, znane jako [Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps). Język Gremlin służy do tworzenia jednostek grafu (wierzchołków i krawędzi), modyfikacji właściwości w ramach tych elementów, wykonywania zapytań i przejść oraz usuwania elementów. 
+Azure Cosmos DB obsługuje język przechodzenia wykresu [Apache Tinkerpop](https://tinkerpop.apache.org) , znany jako [Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps). Język Gremlin służy do tworzenia jednostek grafu (wierzchołków i krawędzi), modyfikacji właściwości w ramach tych elementów, wykonywania zapytań i przejść oraz usuwania elementów. 
 
-W tym artykule oferujemy szybki przewodnik Gremlin i wyliczyć funkcji języka Gremlin, które są obsługiwane przez interfejs API Gremlin.
+W tym artykule udostępniamy Krótki przewodnik Gremlin i wyliczamy funkcje Gremlin, które są obsługiwane przez interfejs API Gremlin.
 
-## <a name="compatible-client-libraries"></a>Biblioteki klienckie zgodne
+## <a name="compatible-client-libraries"></a>Zgodne biblioteki klienckie
 
 W poniższej tabeli przedstawiono popularne sterowniki Gremlin, których można użyć do usługi Azure Cosmos DB:
 
-| Do pobrania | source | Wprowadzenie | Obsługiwana wersja łącznika |
+| Do pobrania | Source | Wprowadzenie | Obsługiwana wersja łącznika |
 | --- | --- | --- | --- |
 | [.NET](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-DotNet) | [Gremlin.NET w witrynie GitHub](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [Tworzenie grafu przy użyciu platformy .NET](create-graph-dotnet.md) | 3.4.0-RC2 |
 | [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) | [Gremlin JavaDoc](https://tinkerpop.apache.org/javadocs/current/full/) | [Tworzenie grafu przy użyciu środowiska Java](create-graph-java.md) | 3.2.0+ |
@@ -32,7 +32,7 @@ W poniższej tabeli przedstawiono popularne sterowniki Gremlin, których można 
 | [PHP](https://packagist.org/packages/brightzone/gremlin-php) | [Gremlin-PHP w witrynie GitHub](https://github.com/PommeVerte/gremlin-php) | [Tworzenie grafu przy użyciu środowiska PHP](create-graph-php.md) | 3.1.0 |
 | [Konsola Gremlin](https://tinkerpop.apache.org/downloads.html) | [Dokumentacja dotycząca witryny TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [Tworzenie grafu przy użyciu Konsoli Gremlin](create-graph-gremlin-console.md) | 3.2.0 + |
 
-## <a name="supported-graph-objects"></a>Obsługiwane obiekty programu Graph
+## <a name="supported-graph-objects"></a>Obsługiwane obiekty grafu
 TinkerPop jest standardem, który obejmuje szeroki zakres technologii grafów. Dlatego ma standardową terminologię do opisywania, jakie funkcje są udostępniane przez dostawcę grafu. Usługa Azure Cosmos DB zapewnia trwałą, zapisywalną bazę danych grafów o dużej współbieżności, którą można podzielić na partycje w wielu serwerach lub klastrach. 
 
 W poniższej tabeli wymieniono funkcje struktury TinkerPop wdrażane przez usługę Azure Cosmos DB: 
@@ -48,7 +48,7 @@ W poniższej tabeli wymieniono funkcje struktury TinkerPop wdrażane przez usłu
 
 ## <a name="gremlin-wire-format-graphson"></a>Format połączeń Gremlin: GraphSON
 
-Usługa Azure Cosmos DB korzysta z [formatu GraphSON](https://tinkerpop.apache.org/docs/3.3.2/reference/#graphson-reader-writer) podczas zwracania wyników z operacji Gremlin. GraphSON jest standardowym formatem środowiska Gremlin do przedstawiania wierzchołków, krawędzi i właściwości (jedno- i wielowartościowych) przy użyciu formatu JSON. 
+Usługa Azure Cosmos DB korzysta z [formatu GraphSON](http://tinkerpop.apache.org/docs/current/reference/#graphson) podczas zwracania wyników z operacji Gremlin. Azure Cosmos DB obecnie obsługuje wersję "GraphSONv2". GraphSON jest standardowym formatem środowiska Gremlin do przedstawiania wierzchołków, krawędzi i właściwości (jedno- i wielowartościowych) przy użyciu formatu JSON.
 
 Na przykład poniższy fragment kodu przedstawia widok w formacie GraphSON wierzchołka *zwracanego do klienta* z usługi Azure Cosmos DB. 
 
@@ -89,24 +89,24 @@ Na przykład poniższy fragment kodu przedstawia widok w formacie GraphSON wierz
   }
 ```
 
-Poniżej opisano właściwości używane w formacie GraphSON dla wierzchołków:
+Poniżej opisano właściwości używane przez GraphSON dla wierzchołków:
 
 | Właściwość | Opis | 
 | --- | --- | --- |
-| `id` | Identyfikator wierzchołka. Muszą być unikatowe (w połączeniu z wartością `_partition` jeśli ma to zastosowanie). Jeśli wartość nie zostanie podany, będą go automatycznie wprowadzane z identyfikatorem GUID | 
-| `label` | Etykieta wierzchołka. Ta właściwość jest używana do opisywania typu jednostki. |
+| `id` | Identyfikator wierzchołka. Musi być unikatowa (w połączeniu z wartością `_partition` , jeśli ma zastosowanie). Jeśli nie podano wartości, zostanie ona automatycznie dostarczona z identyfikatorem GUID | 
+| `label` | Etykieta wierzchołka. Ta właściwość służy do opisywania typu jednostki. |
 | `type` | Służy do odróżnienia wierzchołków od dokumentów bez grafów |
 | `properties` | Pakiet właściwości zdefiniowanych przez użytkownika skojarzonych z wierzchołkiem. Każda właściwość może mieć wiele wartości. |
-| `_partition` | Klucz partycji wierzchołka. Używany do [partycjonowanie grafu](graph-partitioning.md). |
-| `outE` | Ta właściwość zawiera listę się krawędzie z wierzchołka. Przechowywanie informacji sąsiedztwa razem z wierzchołkiem umożliwia szybkie wykonanie przejść. Krawędzie są pogrupowane w oparciu o etykiety. |
+| `_partition` | Klucz partycji wierzchołka. Używany do [partycjonowania grafu](graph-partitioning.md). |
+| `outE` | Ta właściwość zawiera listę krawędzi poza wierzchołkiem. Przechowywanie informacji sąsiedztwa razem z wierzchołkiem umożliwia szybkie wykonanie przejść. Krawędzie są pogrupowane w oparciu o etykiety. |
 
 Krawędź zawiera następujące informacje, aby pomóc w nawigacji do innych części grafu.
 
 | Właściwość | Opis |
 | --- | --- |
-| `id` | Identyfikator krawędzi. Muszą być unikatowe (w połączeniu z wartością `_partition` jeśli ma to zastosowanie) |
+| `id` | Identyfikator krawędzi. Musi być unikatowa (w połączeniu z wartością `_partition` , jeśli ma zastosowanie) |
 | `label` | Etykieta krawędzi. Ta właściwość jest opcjonalna i służy do opisu typu relacji. |
-| `inV` | Ta właściwość zawiera liście wierzchołków krawędź. Przechowywanie informacji sąsiedztwa razem z krawędzią umożliwia szybkie wykonanie przejść. Wierzchołki są pogrupowane w oparciu o etykiety. |
+| `inV` | Ta właściwość zawiera listę wierzchołków dla krawędzi. Przechowywanie informacji sąsiedztwa razem z krawędzią umożliwia szybkie wykonanie przejść. Wierzchołki są pogrupowane w oparciu o etykiety. |
 | `properties` | Pakiet właściwości zdefiniowanych przez użytkownika skojarzonych z krawędzią. Każda właściwość może mieć wiele wartości. |
 
 Każda właściwość może przechowywać wiele wartości w tablicy. 
@@ -130,7 +130,7 @@ Teraz przyjrzyjmy się krokom w środowisku Gremlin obsługiwanym przez usługę
 | `count` | Zwraca liczbę z przejścia | [krok count](https://tinkerpop.apache.org/docs/3.3.2/reference/#count-step) |
 | `dedup` | Zwraca wartości z usuniętymi duplikatami | [krok dedup](https://tinkerpop.apache.org/docs/3.3.2/reference/#dedup-step) |
 | `drop` | Upuszcza wartości (wierzchołek/krawędź) | [krok drop](https://tinkerpop.apache.org/docs/3.3.2/reference/#drop-step) |
-| `executionProfile` | Tworzy opis wszystkie operacje wygenerowane przez krok wykonywany języka Gremlin | [krok executionProfile](graph-execution-profile.md) |
+| `executionProfile` | Tworzy opis wszystkich operacji generowanych przez wykonany krok Gremlin | [executionProfile — krok](graph-execution-profile.md) |
 | `fold` | Działa jak bariera, która oblicza agregację wyników| [krok fold](https://tinkerpop.apache.org/docs/3.3.2/reference/#fold-step) |
 | `group` | Grupuje wartości w oparciu o określone etykiety| [krok group](https://tinkerpop.apache.org/docs/3.3.2/reference/#group-step) |
 | `has` | Służy do filtrowania właściwości, wierzchołków i krawędzi. Obsługuje warianty `hasLabel`, `hasId`, `hasNot` i `has`. | [krok step](https://tinkerpop.apache.org/docs/3.3.2/reference/#has-step) |
@@ -150,12 +150,12 @@ Teraz przyjrzyjmy się krokom w środowisku Gremlin obsługiwanym przez usługę
 | `sample` | Służy do próbkowania wyników z przejścia | [krok sample](https://tinkerpop.apache.org/docs/3.3.2/reference/#sample-step) |
 | `select` | Służy do projektowania wyników z przejścia |  [krok select](https://tinkerpop.apache.org/docs/3.3.2/reference/#select-step) |
 | `store` | Używany do nieblokujących agregacji z przejścia | [krok store](https://tinkerpop.apache.org/docs/3.3.2/reference/#store-step) |
-| `TextP.startingWith(string)` | Ciąg funkcji filtrowania. Ta funkcja jest używana jako predykat dla `has()` krok do dopasowania właściwości do początku ciągu | [Predykaty TextP](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.endingWith(string)` |  Ciąg funkcji filtrowania. Ta funkcja jest używana jako predykat dla `has()` krok do dopasowania właściwości z zakończeniem podany ciąg | [Predykaty TextP](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.containing(string)` | Ciąg funkcji filtrowania. Ta funkcja jest używana jako predykat dla `has()` krok do dopasowania właściwości przy użyciu zawartości ciągu | [Predykaty TextP](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.notStartingWith(string)` | Ciąg funkcji filtrowania. Ta funkcja jest używana jako predykat dla `has()` krok do dopasowania właściwości, która nie zaczyna się od ciągu | [Predykaty TextP](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.notEndingWith(string)` | Ciąg funkcji filtrowania. Ta funkcja jest używana jako predykat dla `has()` krok do dopasowania właściwości, które nie kończy się podanym ciągiem | [Predykaty TextP](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.notContaining(string)` | Ciąg funkcji filtrowania. Ta funkcja jest używana jako predykat dla `has()` krok do dopasowania właściwości, która nie zawiera ciągu | [Predykaty TextP](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.startingWith(string)` | Funkcja filtrowania ciągów. Ta funkcja jest używana jako predykat dla kroku, `has()` aby dopasować właściwość do początku danego ciągu | [Predykaty TextP](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.endingWith(string)` |  Funkcja filtrowania ciągów. Ta funkcja jest używana jako predykat dla kroku, `has()` aby dopasować właściwość do końca danego ciągu | [Predykaty TextP](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.containing(string)` | Funkcja filtrowania ciągów. Ta funkcja jest używana jako predykat dla kroku, `has()` aby dopasować właściwość do zawartości danego ciągu | [Predykaty TextP](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.notStartingWith(string)` | Funkcja filtrowania ciągów. Ta funkcja jest używana jako predykat dla `has()` kroku, aby dopasować właściwość, która nie zaczyna się od danego ciągu | [Predykaty TextP](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.notEndingWith(string)` | Funkcja filtrowania ciągów. Ta funkcja jest używana jako predykat dla `has()` kroku, aby dopasować właściwość, która nie kończy się podanym ciągiem | [Predykaty TextP](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.notContaining(string)` | Funkcja filtrowania ciągów. Ta funkcja jest używana jako predykat dla `has()` kroku, aby dopasować właściwość, która nie zawiera danego ciągu | [Predykaty TextP](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
 | `tree` | Agreguje ścieżki z wierzchołka do drzewa | [krok tree](https://tinkerpop.apache.org/docs/3.3.2/reference/#tree-step) |
 | `unfold` | Odwija iterator w ramach kroku| [krok unfold](https://tinkerpop.apache.org/docs/3.3.2/reference/#unfold-step) |
 | `union` | Scalanie wyników z wielu przejść| [krok union](https://tinkerpop.apache.org/docs/3.3.2/reference/#union-step) |

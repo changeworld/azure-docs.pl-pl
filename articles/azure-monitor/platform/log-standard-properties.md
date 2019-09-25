@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: bwren
-ms.openlocfilehash: b9a4a0a18e120a2843e23d44b03c0fe53b0d84fc
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0fe174f309656011a1d05762927e254ff210b1e7
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68370674"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262005"
 ---
 # <a name="standard-properties-in-azure-monitor-logs"></a>Standardowe właściwości w dziennikach Azure Monitor
 Dane w dziennikach Azure Monitor są [przechowywane jako zestaw rekordów w obszarze roboczym log Analytics lub w aplikacji Application Insights](../log-query/logs-structure.md), z których każdy ma określony typ danych, który ma unikatowy zestaw właściwości. Wiele typów danych będzie zawierać standardowe właściwości, które są wspólne dla wielu typów. W tym artykule opisano te właściwości i przedstawiono przykłady korzystania z nich w zapytaniach.
@@ -26,7 +26,7 @@ Dane w dziennikach Azure Monitor są [przechowywane jako zestaw rekordów w obsz
 > Niektóre standardowe przeprowadzenie analizy PERT nie będą wyświetlane w widoku schematu ani IntelliSense w Log Analytics i nie będą wyświetlane w wynikach zapytania, chyba że jawnie określisz właściwość w danych wyjściowych.
 
 ## <a name="timegenerated-and-timestamp"></a>TimeGenerated i znacznik czasu
-Właściwości **TimeGenerated** (obszar roboczy log Analytics) i sygnatura czasowa (aplikacja Application Insights Application) zawierają datę i godzinę utworzenia rekordu przez źródło danych. Aby uzyskać więcej informacji, zobacz czas pozyskiwania [danych dziennika w Azure monitor](data-ingestion-time.md) .
+Właściwości **TimeGenerated** (obszar roboczy log Analytics) i **sygnatura czasowa** (aplikacja Application Insights Application) zawierają datę i godzinę utworzenia rekordu przez źródło danych. Aby uzyskać więcej informacji, zobacz czas pozyskiwania [danych dziennika w Azure monitor](data-ingestion-time.md) .
 
 **TimeGenerated** i **sygnatura czasowa** zapewniają wspólną Właściwość służącą do filtrowania lub podsumowywania według czasu. Po wybraniu przedziału czasu dla widoku lub pulpitu nawigacyjnego w Azure Portal do filtrowania wyników służy TimeGenerated lub znacznik czasu. 
 
@@ -128,7 +128,7 @@ union withsource = tt *
 Te zapytania `union withsource = tt *` są oszczędnie zależą od tego, jak skanowanie między typami danych jest kosztowne.
 
 ## <a name="_isbillable"></a>\_Ismiliard
-Właściwość isbilled określa, czy są naliczane opłaty za pozyskiwane dane.  **\_** Dane z  **\_** ismiliardem równym _wartości false_ są zbierane bezpłatnie i nie są naliczane za Twoje konto platformy Azure.
+Właściwość isbilled określa, czy są naliczane opłaty za pozyskiwane dane.  **\_** Dane z  **\_ismiliardem** równym _wartości false_ są zbierane bezpłatnie i nie są naliczane za Twoje konto platformy Azure.
 
 ### <a name="examples"></a>Przykłady
 Aby uzyskać listę komputerów wysyłających typy danych, należy użyć następującej kwerendy:
@@ -155,7 +155,7 @@ union withsource = tt *
 ```
 
 ## <a name="_billedsize"></a>\_BilledSize
-Właściwość BilledSize określa rozmiar w bajtach danych, które będą rozliczane na konto platformy Azure, jeśli  **\_** jest to wartość true.  **\_**
+Właściwość BilledSize określa rozmiar w bajtach danych, które będą rozliczane na konto platformy Azure  **\_, jeśli jest** to wartość true.  **\_**
 
 
 ### <a name="examples"></a>Przykłady

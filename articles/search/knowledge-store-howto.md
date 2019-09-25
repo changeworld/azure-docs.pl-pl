@@ -5,25 +5,24 @@ manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
-ms.subservice: cognitive-search
 ms.topic: tutorial
 ms.date: 06/29/2019
 ms.author: heidist
-ms.openlocfilehash: d6cecdce9bc4f7fee9ec936ac73b6accc77084c4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 7568742c4a01903eddf7681da71e4f243cac1e56
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648832"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265630"
 ---
 # <a name="how-to-get-started-with-knowledge-store-in-azure-search"></a>Jak rozpocząć pracę z usługą Knowledge Store w Azure Search
 
 > [!Note]
-> Magazyn wiedzy jest w wersji zapoznawczej i nie jest przeznaczony do użycia w środowisku produkcyjnym. [Interfejs API REST w wersji 2019-05-06 —](search-api-preview.md) wersja zapoznawcza zawiera tę funkcję. W tej chwili nie ma obsługi zestawu SDK platformy .NET.
+> Magazyn wiedzy jest w wersji zapoznawczej i nie jest przeznaczony do użycia w środowisku produkcyjnym. [Interfejs API REST w wersji 2019-05-06 — wersja zapoznawcza](search-api-preview.md) zawiera tę funkcję. W tej chwili nie ma obsługi zestawu SDK platformy .NET.
 >
 [Magazyn wiedzy](knowledge-store-concept-intro.md) zapisuje dokumenty wzbogacone AI utworzone podczas indeksowania na koncie usługi Azure Storage na potrzeby wyszukiwania danych podrzędnych w innych aplikacjach. Możesz również użyć zapisanych wzbogaceń, aby zrozumieć i udoskonalić potok Azure Search indeksowania. 
 
-Magazyn wiedzy jest definiowany przez *zestawu umiejętności* i tworzony przez *indeksator*. Wyrażenie fizyczne magazynu informacji jest określane przez projekcje, które określają struktury danych w magazynie. Po zakończeniu tego przewodnika zostaną utworzone wszystkie te obiekty, a ty wiesz, jak wszystkie one pasują do siebie. 
+Magazyn wiedzy jest definiowany przez *zestawu umiejętności* i tworzony przez *indeksator*. Wyrażenie fizyczne magazynu informacji jest określane przez *projekcje* , które określają struktury danych w magazynie. Po zakończeniu tego przewodnika zostaną utworzone wszystkie te obiekty, a ty wiesz, jak wszystkie one pasują do siebie. 
 
 W tym ćwiczeniu Zacznij od przykładowych danych, usług i narzędzi, aby poznać podstawowy przepływ pracy służący do tworzenia i używania pierwszego sklepu z bazami danych, z uwzględnieniem definicji zestawu umiejętności.
 
@@ -33,7 +32,7 @@ Magazyn wiedzy znajduje się w centrum z wieloma usługami, usługą Azure Blob 
 
 W tym przewodniku Szybki Start są używane następujące usługi i narzędzia. 
 
-+ [Pobierz aplikację komputerową](https://www.getpostman.com/)programu Poster służącą do wysyłania żądań HTTP do Azure Search.
++ [Pobierz aplikację komputerową programu Poster](https://www.getpostman.com/)służącą do wysyłania żądań HTTP do Azure Search.
 
 + [Utwórz konto usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) do przechowywania przykładowych danych i sklepu z bazami informacji. Twój sklep merytoryczny będzie istnieć w usłudze Azure Storage.
 

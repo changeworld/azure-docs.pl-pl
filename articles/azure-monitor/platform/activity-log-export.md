@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 9b4e7ce714d0a1f65e0a35b9c493e99200c668c6
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 925fed320359edc04ad6c91fe7a7d9bde5370254
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034848"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258467"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Eksportowanie dziennika aktywności platformy Azure do magazynu lub Event Hubs platformy Azure
 [Dziennik aktywności platformy Azure](activity-logs-overview.md) zapewnia wgląd w zdarzenia na poziomie subskrypcji, które wystąpiły w ramach subskrypcji platformy Azure. Oprócz wyświetlania dziennika aktywności w Azure Portal lub kopiowania go do Log Analytics obszaru roboczego, gdzie można analizować z innymi danymi zebranymi przez Azure Monitor, można utworzyć profil dziennika w celu zarchiwizowania dziennika aktywności na koncie usługi Azure Storage lub przesyłania strumienia do niego  Centrum zdarzeń.
@@ -60,13 +60,9 @@ Profil dziennika definiuje następujące elementy.
 Jeśli zasady przechowywania są ustawione, ale przechowywanie dzienników na koncie magazynu jest wyłączone, zasady przechowywania nie będą miały żadnego efektu. Zasady przechowywania są stosowane dziennie, aby na koniec dnia (UTC), dzienniki w dzień, w którym jest teraz, po przekroczeniu przechowywania zasady zostaną usunięte. Na przykład jeśli masz zasady przechowywania w jeden dzień, na początku dnia już dziś dzienników z wczoraj zanim dnia zostaną usunięte. Proces usuwania rozpoczyna się od północy czasu UTC, ale należy pamiętać, że może upłynąć do 24 godzin dla dzienników są usuwane z konta magazynu.
 
 
-
-> [!WARNING]
-> Format danych dziennika w ramach konta magazynu został zmieniony na wiersze JSON na lis. 1st, 2018. [W tym artykule znajdziesz opis skutków tej zmiany oraz instrukcje aktualizacji narzędzi w celu zapewnienia obsługi nowego formatu.](diagnostic-logs-append-blobs.md)
-
-
 > [!IMPORTANT]
 > Jeśli nie zarejestrowano dostawcy zasobów Microsoft. Insights, podczas tworzenia profilu dziennika może zostać wyświetlony komunikat o błędzie. Zobacz [dostawcy zasobów platformy Azure i typy](../../azure-resource-manager/resource-manager-supported-services.md) , aby zarejestrować tego dostawcę.
+
 
 ### <a name="create-log-profile-using-the-azure-portal"></a>Utwórz profil dziennika przy użyciu Azure Portal
 
@@ -118,7 +114,7 @@ Jeśli profil dziennika już istnieje, najpierw musisz usunąć istniejący prof
     | serviceBusRuleId |Nie |Service Bus Identyfikator reguły dla przestrzeni nazw Service Bus, w której chcesz utworzyć Centra zdarzeń. Jest to ciąg o formacie: `{service bus resource ID}/authorizationrules/{key name}`. |
     | Location |Tak |Rozdzielana przecinkami lista regionów, dla których chcesz zbierać zdarzenia dziennika aktywności. |
     | RetentionInDays |Tak |Liczba dni, przez jaką zdarzenia mają być przechowywane na koncie magazynu, z zakresu od 1 do 365. Wartość zero przechowuje dzienniki w nieskończoność. |
-    | Kategoria |Nie |Rozdzielana przecinkami lista kategorii zdarzeń, które mają być zbierane. Możliwe wartości to _Write_, _delete_i _Action_. |
+    | Category |Nie |Rozdzielana przecinkami lista kategorii zdarzeń, które mają być zbierane. Możliwe wartości to _Write_, _delete_i _Action_. |
 
 ### <a name="example-script"></a>Przykładowy skrypt
 Poniżej znajduje się przykładowy skrypt programu PowerShell służący do tworzenia profilu dziennika, który zapisuje dziennik aktywności zarówno do konta magazynu, jak i do centrum zdarzeń.
@@ -167,6 +163,9 @@ Jeśli profil dziennika już istnieje, należy najpierw usunąć istniejący pro
 
 ## <a name="activity-log-schema"></a>Schemat dziennika aktywności
 Niezależnie od tego, czy jest wysyłany do usługi Azure Storage, czy centrum zdarzeń, dane dziennika aktywności będą zapisywane w formacie JSON przy użyciu następującego formatu.
+
+
+> Format danych dziennika aktywności zapisany na koncie magazynu został zmieniony na wiersze JSON na lis. 1, 2018. Aby uzyskać szczegółowe informacje na temat tego formatu, zobacz [Przygotowywanie do zmiany formatu do Azure monitor dzienników diagnostycznych archiwizowanych na koncie magazynu](diagnostic-logs-append-blobs.md) .
 
 ``` JSON
 {

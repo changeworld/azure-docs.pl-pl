@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fe4a47161e86614807e69b613b49e8808a35e041
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: bccaf45cf617bd31a584b6c73f3dd08877bc8587
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077228"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266072"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>SAP HANA wysokiej dostępności dla maszyn wirtualnych platformy Azure
 
@@ -60,7 +60,7 @@ Platforma Azure ma inne umowy SLA dostępność dla różnych składników, taki
 
 [Umowa SLA dla Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) opisuje trzy różne konfiguracje:
 
-- Pojedyncza maszyna wirtualna korzystająca z [usługi Azure Premium dysków SSD](../../wi https://azure.microsoft.com/en-us/support/legal/sla/virtual-machines/v1_8/ows/disks-types.md) dla dysku systemu operacyjnego i wszystkich dysków z danymi. Ta opcja zapewnia miesięczny czas pracy w wysokości 99,9%.
+- Pojedyncza maszyna wirtualna korzystająca z [usługi Azure Premium dysków SSD](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) dla dysku systemu operacyjnego i wszystkich dysków z danymi. Ta opcja zapewnia miesięczny czas pracy w wysokości 99,9%.
 - Wiele (co najmniej dwóch) maszyn wirtualnych zorganizowanych w [zestawie dostępności platformy Azure](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets). Ta opcja zapewnia miesięczny czas pracy w wysokości 99,95%.
 - Wiele (co najmniej dwa) maszyn wirtualnych, które są zorganizowane w [strefie dostępności](https://docs.microsoft.com/azure/availability-zones/az-overview). Ta opcja zapewnia miesięczny czas pracy w wysokości 99,99%.
 

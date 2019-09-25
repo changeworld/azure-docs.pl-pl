@@ -4,17 +4,17 @@ description: Jak skonfigurować urządzenia podrzędne lub liściowe w celu nawi
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/07/2019
+ms.date: 09/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 41039d148e0aae7303dbc95c832bed842acdcc90
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 822e58d1d35cfb9b62565ca78ea2277b8d194bc0
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999403"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266119"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Podłącz urządzenie z podrzędnych do bramy usługi Azure IoT Edge
 
@@ -33,6 +33,10 @@ W tym artykule identyfikuje typowe problemy z połączeniami podrzędnym urządz
 * Przykłady w kilku językach, które pomogą Ci rozpocząć zalet usługi Azure IoT pracę. 
 
 W tym artykule terminy *bramy* i *brama usługi IoT Edge* odnoszą się do urządzenia usługi IoT Edge skonfigurowane jako przezroczystej bramy. 
+
+## <a name="prerequisites"></a>Wymagania wstępne 
+
+Mieć plik certyfikatu **Azure-IoT-test-Only. root. ca. CERT** , który został wygenerowany w temacie [Konfigurowanie urządzenia IoT Edge do działania jako przezroczysta Brama](how-to-create-transparent-gateway.md) dostępna na urządzeniu podrzędnym. Urządzenie podrzędne używa tego certyfikatu do weryfikowania tożsamości urządzenia bramy. 
 
 ## <a name="prepare-a-downstream-device"></a>Przygotuj urządzenie podrzędne
 
@@ -89,6 +93,14 @@ Powinien zostać wyświetlony komunikat z informacją, "aktualizowanie certyfika
 ### <a name="windows"></a>Windows
 
 Poniższe kroki są przykładem zainstalować certyfikat urzędu certyfikacji na hoście Windows. W tym przykładzie przyjęto założenie, że używasz certyfikatu **Azure-IoT-test-Only. root. ca. CERT. pem** z artykułów z wymaganiami wstępnymi i że certyfikat został skopiowany do lokalizacji na urządzeniu podrzędnym.
+
+Certyfikaty można instalować przy użyciu programu PowerShell [Import-Certificate](https://docs.microsoft.com/powershell/module/pkiclient/import-certificate?view=win10-ps) jako administrator:
+
+```powershell
+import-certificate  <file path>\azure-iot-test-only.root.ca.cert.pem -certstorelocation cert:\LocalMachine\root
+```
+
+Certyfikaty można także zainstalować za pomocą narzędzia **certlm** : 
 
 1. W Start menu, wyszukaj i wybierz pozycję **zarządzania certyfikatami komputera**. Wywołuje narzędzie **certlm** zostanie otwarty.
 2. Przejdź do **certyfikaty — komputer lokalny** > **zaufane główne urzędy certyfikacji**.

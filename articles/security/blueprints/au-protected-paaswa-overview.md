@@ -8,16 +8,16 @@ ms.service: security
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: meladie
-ms.openlocfilehash: d1857d0cb1b45be5b6ce4e1dd34e8398786f54fb
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 6d1b84894439010e5297ce010b2ece6dea8f3e56
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946915"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257602"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-australia-protected"></a>Strategia zabezpieczeń i zgodności z przepisami platformy Azure — aplikacja sieci Web PaaS dla Australii
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Ten Strategia zabezpieczeń i zgodności z przepisami platformy Azure zawiera wskazówki dotyczące wdrażania środowiska platformy jako usługi (PaaS) odpowiednie do zbierania, przechowywania i pobierania danych administracji publicznej, które są zgodne z celami Australijskie informacje o bezpieczeństwie instytucji rządowych (ISM), które zostały opracowane przez australijską organizację sygnałów (ASD). Ten plan przedstawia wspólną architekturę referencyjną i pomaga w zapewnieniu właściwej obsługi poufnych danych rządowych w bezpiecznym, zgodnym środowisku wielowarstwowym.
 
@@ -51,7 +51,7 @@ To rozwiązanie używa następujących usług platformy Azure. Dalsze szczegół
 - Usługa Azure Active Directory
 - Środowisko usługi aplikacji platformy Azure w wersji 2
 - Azure Automation
-- Usługa DNS platformy Azure
+- System DNS platformy Azure
 - W usłudze Azure Key Vault
 - Azure Load Balancer
 - Azure Monitor
@@ -65,8 +65,8 @@ To rozwiązanie używa następujących usług platformy Azure. Dalsze szczegół
     - (4)/24 sieci
     - Grupy zabezpieczeń sieci
 - Grupy zabezpieczeń sieci
-- Magazyn Recovery Services
-- Aplikacja internetowa platformy Azure
+- Magazyn usługi Recovery Services
+- Aplikacja sieci Web platformy Azure
 
 Ten plan zawiera usługi platformy Azure, które nie zostały certyfikowane do użycia w chronionej klasyfikacji przez australijskie Centrum zabezpieczeń cybernetycznymi (ACSC). Firma Microsoft zaleca, aby klienci przeglądali opublikowane raporty dotyczące zabezpieczeń i inspekcji związane z tymi usługami platformy Azure oraz korzystać z ich struktury zarządzania ryzykiem w celu określenia, czy usługa platformy Azure jest odpowiednia do celów wewnętrznych akredytacji i używania w Klasyfikacja chroniona.
 
@@ -154,10 +154,10 @@ Ponadto następujące funkcje Azure Active Directory ułatwiają zarządzanie do
 - [Azure Active Directory Privileged Identity Management](../../active-directory/privileged-identity-management/pim-getting-started.md) pozwala klientom zminimalizować liczbę użytkowników, którzy mają dostęp do określonych informacji. Administratorzy mogą używać Azure Active Directory Privileged Identity Management do odnajdywania, ograniczania i monitorowania uprzywilejowanych tożsamości oraz ich dostępu do zasobów. Tej funkcji można także użyć do wymuszenia dostępu administracyjnego na żądanie, w miarę potrzeb, w razie potrzeby.
 - [Azure Active Directory Identity Protection](../../active-directory/identity-protection/overview.md) wykrywa potencjalne luki w zabezpieczeniach, które mają wpływ na tożsamości organizacji, konfiguruje automatyczne odpowiedzi na wykryte podejrzane działania związane z tożsamościami organizacji i bada podejrzane zdarzenia w celu podjęcia odpowiednich działań w celu ich rozwiązania.
 
-**Uwierzytelnianie wieloskładnikowe systemu Azure**: Aby chronić tożsamości, należy zaimplementować uwierzytelnianie wieloskładnikowe. [Uwierzytelnianie wieloskładnikowe systemu Azure](https://azure.microsoft.com/services/multi-factor-authentication/) to łatwe w użyciu, skalowalne i niezawodne rozwiązanie, które zapewnia drugą metodę uwierzytelniania w celu ochrony użytkowników. Uwierzytelnianie wieloskładnikowe systemu Azure używa możliwości chmury i integruje się z lokalnymi Active Directory i aplikacjami niestandardowymi. Ta ochrona jest rozszerzona o duże ilościowe scenariusze o kluczowym znaczeniu.
+**Multi-Factor Authentication platformy Azure**: Aby chronić tożsamości, należy zaimplementować uwierzytelnianie wieloskładnikowe. [Usługa Azure Multi-Factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/) to łatwe w użyciu, skalowalne i niezawodne rozwiązanie, które zapewnia drugą metodę uwierzytelniania w celu ochrony użytkowników. Platforma Azure Multi-Factor Authentication używa możliwości chmury i integruje się z lokalnymi Active Directory i aplikacjami niestandardowymi. Ta ochrona jest rozszerzona o duże ilościowe scenariusze o kluczowym znaczeniu.
 
 ### <a name="security"></a>Bezpieczeństwo
-**Zarządzanie**wpisami tajnymi: Rozwiązanie używa [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) do zarządzania kluczami i wpisami tajnymi. Usługa Azure Key Vault ułatwia ochronę kluczy kryptograficznych i kluczy tajnych używanych przez aplikacje i usługi w chmurze. Następujące funkcje Azure Key Vault pomagają klientom chronić dane:
+**Zarządzanie wpisami tajnymi**: Rozwiązanie używa [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) do zarządzania kluczami i wpisami tajnymi. Usługa Azure Key Vault ułatwia ochronę kluczy kryptograficznych i kluczy tajnych używanych przez aplikacje i usługi w chmurze. Następujące funkcje Azure Key Vault pomagają klientom chronić dane:
 - Zaawansowane zasady dostępu są konfigurowane w zależności od potrzeb.
 - Zasady dostępu Key Vault są zdefiniowane z minimalnymi wymaganymi uprawnieniami do kluczy i wpisów tajnych.
 - Wszystkie klucze i wpisy tajne w Key Vault mają daty wygaśnięcia.
@@ -183,11 +183,11 @@ Azure Security Center zapewnia priorytetowe alerty zabezpieczeń i zdarzenia, dz
 - [Niestandardowe sondy kondycji](../../application-gateway/quick-create-portal.md)
 - [Azure Security Center](https://azure.microsoft.com/services/security-center) i [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-security-recommendations) zapewniają dodatkową ochronę i powiadomienia. Azure Security Center udostępnia również system reputacji.
 
-### <a name="logging-and-auditing"></a>Rejestrowanie i inspekcja
+### <a name="logging-and-auditing"></a>Rejestrowanie i przeprowadzanie inspekcji
 
 Usługi platformy Azure w szerokim zakresie rejestrują aktywność systemu i użytkownika, a także kondycję systemu:
 - **Dzienniki aktywności**: [Dzienniki aktywności](../../azure-monitor/platform/activity-logs-overview.md) zapewniają wgląd w operacje wykonywane na zasobach w ramach subskrypcji. Dzienniki aktywności mogą pomóc w ustaleniu inicjatora, czasu wystąpienia i stanu operacji.
-- **Dzienniki diagnostyczne**: [Dzienniki diagnostyczne](../../azure-monitor/platform/diagnostic-logs-overview.md) obejmują wszystkie dzienniki wyemitowane przez każdy zasób. Dzienniki te obejmują Dzienniki systemu Windows, dzienniki usługi Azure Storage, dzienniki inspekcji Key Vault i Application Gateway dostępu i dzienników zapory. Wszystkie dzienniki diagnostyczne zapisu na scentralizowanym i zaszyfrowanym koncie usługi Azure Storage w celu archiwizacji. Przechowywanie jest możliwe do skonfigurowania przez użytkownika, do 730 dni, w celu spełnienia wymagań dotyczących przechowywania specyficznych dla organizacji.
+- **Dzienniki diagnostyczne**: [Dzienniki diagnostyczne](../../azure-monitor/platform/resource-logs-overview.md) obejmują wszystkie dzienniki wyemitowane przez każdy zasób. Dzienniki te obejmują Dzienniki systemu Windows, dzienniki usługi Azure Storage, dzienniki inspekcji Key Vault i Application Gateway dostępu i dzienników zapory. Wszystkie dzienniki diagnostyczne zapisu na scentralizowanym i zaszyfrowanym koncie usługi Azure Storage w celu archiwizacji. Przechowywanie jest możliwe do skonfigurowania przez użytkownika, do 730 dni, w celu spełnienia wymagań dotyczących przechowywania specyficznych dla organizacji.
 
 **Azure monitor dzienników**: Te dzienniki są konsolidowane w [Azure monitor dziennikach](https://azure.microsoft.com/services/log-analytics/) na potrzeby przetwarzania, przechowywania i raportowania na pulpicie nawigacyjnym. Po zebraniu dane są organizowane w oddzielnych tabelach dla każdego typu danych, dzięki czemu wszystkie dane mogą być analizowane razem niezależnie od ich oryginalnego źródła. Ponadto Azure Security Center integruje się z dziennikami Azure Monitor, dzięki czemu klienci mogą korzystać z zapytań Kusto w celu uzyskania dostępu do danych zdarzeń zabezpieczeń i połączyć je z danymi z innych usług.
 

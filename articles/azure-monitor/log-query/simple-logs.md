@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: bwren
-ms.openlocfilehash: bff80b7083f2fb2e35af7db652849d527a5b8ba4
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 323267dd47735ca54b84e47e6a55d1f2d14a0b06
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70963449"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262173"
 ---
 # <a name="simple-logs-experience-in-azure-monitor-preview"></a>Proste środowisko dzienników w Azure Monitor (wersja zapoznawcza)
 Azure Monitor oferuje [bogate środowisko](get-started-portal.md) tworzenia [zapytań dzienników](log-query-overview.md) przy użyciu języka KQL. W przypadku podstawowych wymagań związanych z zapytaniami nie można wymagać pełnej mocy KQL. Proste środowisko dzienników umożliwia tworzenie podstawowych zapytań bez bezpośredniego działania z KQL. Możesz również użyć prostych dzienników jako narzędzia edukacyjnego dla KQL, ponieważ potrzebne są bardziej zaawansowane zapytania.
@@ -31,7 +31,7 @@ Azure Monitor oferuje [bogate środowisko](get-started-portal.md) tworzenia [zap
 W ramach prostych dzienników środowisko to umożliwia pobieranie danych z tabeli *AzureDiagnostics*, *AzureMetrics*i *platformy Azure* dla wybranego zasobu. 
 
 ## <a name="using-simple-logs"></a>Korzystanie z prostych dzienników
-Przejdź do dowolnego Cosmos DB lub Key Vault w subskrypcji platformy Azure z [ustawieniami diagnostycznymi skonfigurowanymi do zbierania dzienników w obszarze roboczym log Analytics](../platform/diagnostic-logs-stream-log-store.md). Kliknij pozycję **dzienniki** w menu **monitorowanie** , aby otworzyć proste środowisko dzienników.
+Przejdź do dowolnego Cosmos DB lub Key Vault w subskrypcji platformy Azure z [ustawieniami diagnostycznymi skonfigurowanymi do zbierania dzienników w obszarze roboczym log Analytics](../platform/resource-logs-collect-storage.md). Kliknij pozycję **dzienniki** w menu **monitorowanie** , aby otworzyć proste środowisko dzienników.
 
 ![Menu](media/simple-logs/menu.png)
 
@@ -48,7 +48,7 @@ Wybierz **Edytor zapytań** , aby otworzyć KQL wygenerowanego przez proste zapy
 
 Możesz bezpośrednio edytować KQL i korzystać z innych funkcji w Log Analytics, takich jak filtry, aby udoskonalić wyniki.
 
-![Edytuj KQL](media/simple-logs/edit-kql.png)
+![Edytuj zapytanie KQL](media/simple-logs/edit-kql.png)
 
 
 ## <a name="next-steps"></a>Następne kroki

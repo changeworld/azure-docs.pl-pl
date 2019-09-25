@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2019
 ms.author: barclayn
-ms.openlocfilehash: 1f662c34f557d382b3d6181bac18a6402b233412
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: fc1657be4dbff1acee186e3a85d9d1e772055f73
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061914"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262744"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Najlepsze rozwiązania dotyczące zabezpieczeń dla obciążeń IaaS na platformie Azure
 W tym artykule opisano najlepsze rozwiązania w zakresie zabezpieczeń dotyczące maszyn wirtualnych i systemów operacyjnych.
@@ -146,7 +146,7 @@ Użycie zasobów może być problemem, gdy procesy maszyny wirtualnej zużywają
 
 Zalecamy używanie [Azure monitor](/azure/monitoring-and-diagnostics/monitoring-overview-metrics) , aby uzyskać wgląd w kondycję zasobu. Funkcje Azure Monitor:
 
-- [Pliki dziennika diagnostyki zasobów](../../azure-monitor/platform/diagnostic-logs-overview.md): Monitoruje zasoby maszyn wirtualnych i identyfikuje potencjalne problemy, które mogą naruszyć wydajność i dostępność.
+- [Pliki dziennika diagnostyki zasobów](../../azure-monitor/platform/resource-logs-overview.md): Monitoruje zasoby maszyn wirtualnych i identyfikuje potencjalne problemy, które mogą naruszyć wydajność i dostępność.
 - [Diagnostyka Azure rozszerzenie](/azure/azure-monitor/platform/diagnostics-extension-overview): Oferuje funkcje monitorowania i diagnostyki na maszynach wirtualnych z systemem Windows. Te możliwości można włączyć, dołączając rozszerzenie jako część [szablonu Azure Resource Manager](/azure/virtual-machines/windows/extensions-diagnostics-template).
 
 Organizacje, które nie monitorują wydajności maszyn wirtualnych, nie mogą określić, czy pewne zmiany wzorców wydajności są normalne, czy nietypowe. Maszyna wirtualna, która zużywa więcej zasobów niż normalna, może wskazywać na atak z zasobów zewnętrznych lub zagrożony proces uruchomiony na maszynie wirtualnej.

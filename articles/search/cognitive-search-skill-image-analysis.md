@@ -9,20 +9,19 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: luisca
-ms.subservice: cognitive-search
-ms.openlocfilehash: 07969a92286837f8f72b533173ac8d170378d0ea
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 69e798601dc53ffb666aa9dcddd68980256fa3fc
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183385"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265454"
 ---
 #   <a name="image-analysis-cognitive-skill"></a>Umiejętność analizy obrazów
 
 Umiejętność **analizy obrazów** wyodrębnia bogaty zestaw funkcji wizualnych opartych na zawartości obrazu. Na przykład można wygenerować podpis na podstawie obrazu, generować Tagi lub identyfikować osobistości i punkty orientacyjne. Ta umiejętność używa modeli uczenia maszynowego zapewnianych przez [Przetwarzanie obrazów](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) w Cognitive Services. 
 
 > [!NOTE]
-> Małe woluminy (w ramach 20 transakcji) można bezpłatnie wykonywać w Azure Search, ale większe obciążenia wymagają dołączenia [zasobu Cognitive Services do rozliczenia](cognitive-search-attach-cognitive-services.md). Opłaty naliczane podczas wywoływania interfejsów API w Cognitive Services oraz do wyodrębniania obrazów w ramach etapu łamania dokumentu w Azure Search. Nie są naliczane opłaty za Wyodrębnianie tekstu z dokumentów.
+> Małe woluminy (w ramach 20 transakcji) można bezpłatnie wykonywać w Azure Search, ale większe obciążenia wymagają [dołączenia zasobu Cognitive Services do rozliczenia](cognitive-search-attach-cognitive-services.md). Opłaty naliczane podczas wywoływania interfejsów API w Cognitive Services oraz do wyodrębniania obrazów w ramach etapu łamania dokumentu w Azure Search. Nie są naliczane opłaty za Wyodrębnianie tekstu z dokumentów.
 >
 > Do wykonania wbudowanych umiejętności są naliczane opłaty za istniejące [Cognitive Services cena płatność zgodnie z rzeczywistym](https://azure.microsoft.com/pricing/details/cognitive-services/)użyciem. Cennik wyodrębniania obrazów został opisany na [stronie cennika Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
 

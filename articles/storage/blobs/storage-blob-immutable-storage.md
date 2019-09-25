@@ -9,12 +9,12 @@ ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 6278b16221072b9b5bca371007296806454ba197
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: fcc5c4008c0fdef3b77e436761d8958fe31458d8
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212431"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257366"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage-immutably"></a>Przechowywanie danych o kluczowym znaczeniu dla firmy w usłudze Azure Blob Storage immutably 
 
@@ -42,7 +42,7 @@ Niezmienny magazyn obsługuje następujące elementy:
 
 - **Konfiguracja na poziomie kontenera**: Użytkownicy mogą konfigurować zasady przechowywania oparte na czasie i Tagi blokady prawne na poziomie kontenera. Korzystając z prostych ustawień na poziomie kontenera, użytkownicy mogą tworzyć i blokować zasady przechowywania oparte na czasie, zwiększać interwały przechowywania, ustawiać i czyścić blokady prawne itd. Te zasady mają zastosowanie do wszystkich obiektów BLOB w kontenerze, zarówno istniejących, jak i nowych.
 
-- **Obsługa rejestrowania inspekcji**: Każdy kontener zawiera dziennik inspekcji zasad. Pokazuje do siedmiu poleceń przechowywania opartych na czasie dla zablokowanych zasad przechowywania opartych na czasie i zawiera identyfikator użytkownika, Typ polecenia, sygnatury czasowe i Interwał przechowywania. W przypadku blokad prawnych dziennik zawiera identyfikator użytkownika, Typ polecenia, sygnatury czasowe i urzędowe znaczniki. Ten dziennik jest zachowywany przez okres istnienia zasad, zgodnie z wytycznymi dotyczącymi przepisów w zakresie s 17a-4 (f). [Dziennik aktywności platformy Azure](../../azure-monitor/platform/activity-logs-overview.md) zawiera bardziej obszerny dziennik wszystkich działań płaszczyzny kontroli; podczas włączania [dzienników diagnostycznych platformy Azure](../../azure-monitor/platform/diagnostic-logs-overview.md) są zachowywane i wyświetlane operacje płaszczyzny danych. Użytkownik jest odpowiedzialny za trwałe przechowywanie dzienników, co może być wymagane do celów prawnych lub w innych celach.
+- **Obsługa rejestrowania inspekcji**: Każdy kontener zawiera dziennik inspekcji zasad. Pokazuje do siedmiu poleceń przechowywania opartych na czasie dla zablokowanych zasad przechowywania opartych na czasie i zawiera identyfikator użytkownika, Typ polecenia, sygnatury czasowe i Interwał przechowywania. W przypadku blokad prawnych dziennik zawiera identyfikator użytkownika, Typ polecenia, sygnatury czasowe i urzędowe znaczniki. Ten dziennik jest zachowywany przez okres istnienia zasad, zgodnie z wytycznymi dotyczącymi przepisów w zakresie s 17a-4 (f). [Dziennik aktywności platformy Azure](../../azure-monitor/platform/activity-logs-overview.md) zawiera bardziej obszerny dziennik wszystkich działań płaszczyzny kontroli; podczas włączania [dzienników diagnostycznych platformy Azure](../../azure-monitor/platform/resource-logs-overview.md) są zachowywane i wyświetlane operacje płaszczyzny danych. Użytkownik jest odpowiedzialny za trwałe przechowywanie dzienników, co może być wymagane do celów prawnych lub w innych celach.
 
 ## <a name="how-it-works"></a>Jak to działa
 

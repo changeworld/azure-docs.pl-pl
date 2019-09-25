@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: e5b99bba3c3b21ea9662845928c523c329695bf8
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 6118c4ddf1386ff4cc816148938e1f5ddeaecc9e
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877235"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266077"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Zainstaluj środowisko uruchomieniowe Azure IoT Edge w systemie Windows
 
@@ -41,6 +41,14 @@ Ta sekcja służy do sprawdzenia, czy urządzenie z systemem Windows może obsł
 ### <a name="supported-windows-versions"></a>Obsługiwane wersje Windows
 
 W przypadku scenariuszy projektowania i testowania Azure IoT Edge z kontenerami systemu Windows można zainstalować w dowolnej wersji systemu Windows 10 lub Windows Server 2019 (kompilacja 17763), która obsługuje funkcję kontenerów. Informacje o tym, które systemy operacyjne są obecnie obsługiwane w scenariuszach produkcyjnych, można znaleźć w temacie [Azure IoT Edge obsługiwane systemy](support.md#operating-systems). 
+
+Urządzenia IoT Core muszą zawierać funkcję opcjonalną do obsługi kontenerów systemu Windows, aby zapewnić obsługę IoT Edge środowiska uruchomieniowego. Użyj następującego polecenia w [zdalnej sesji programu PowerShell](https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell) , aby sprawdzić, czy kontenery systemu Windows są obsługiwane na urządzeniu: 
+
+```powershell
+Get-Service vmcompute
+```
+
+Jeśli usługa jest obecna, należy uzyskać pomyślną odpowiedź ze stanem usługi wymienionym jako **uruchomiony**. Jeśli usługa vmcompute nie zostanie znaleziona, urządzenie nie spełnia wymagań dotyczących IoT Edge. Skontaktuj się z dostawcą sprzętu, aby uzyskać pomoc techniczną dotyczącą tej funkcji. 
 
 ### <a name="prepare-for-a-container-engine"></a>Przygotowanie do aparatu kontenera 
 

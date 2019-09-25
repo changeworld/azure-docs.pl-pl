@@ -61,7 +61,7 @@
           href: time-series-insights-update-use-cases.md
         - name: Model szeregów czasowych
           href: time-series-insights-update-tsm.md
-        - name: Wykonywanie zapytań dotyczących danych
+        - name: Zapytanie szeregów czasowych
           href: time-series-insights-update-tsq.md
         - name: Wizualizowanie danych w Eksploratorze (wersja zapoznawcza)
           href: time-series-insights-update-explorer.md

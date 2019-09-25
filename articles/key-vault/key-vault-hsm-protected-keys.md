@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 71b7e4bd9406e7fb300ebccd86908820b7628c29
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 4ebb31a839a645bcb1312405ee0222f39dbbcd1e
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71000760"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261284"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Jak generować i przesyłać klucze chronione przez moduł HSM dla Azure Key Vault
 
@@ -41,7 +41,7 @@ Więcej informacji o generowaniu i przesyłaniu klucza chronionego przez moduł 
 
 ## <a name="more-information-about-ncipher-hsms-and-microsoft-services"></a>Więcej informacji na temat oprogramowanie wspomagające nCipher sprzętowych modułów zabezpieczeń i usług firmy Microsoft
 
-Oprogramowanie wspomagające nCipher Security to wiodący globalny dostawca rozwiązań do szyfrowania danych i zabezpieczania cybernetycznymi dla usług finansowych, wysokiej technologii, produkcji, instytucji rządowych i technologii. W przypadku 40-letniego rekordu dotyczącego ochrony informacji firmowych i rządowych rozwiązania kryptograficzne zabezpieczeń oprogramowanie wspomagające nCipher są używane w czterech z pięciu największych firm i przedsiębiorców. Ich rozwiązania są również używane przez 22 kraje/regiony NATO i zapewniają ponad 80 miesięcznie transakcji płatności.
+Oprogramowanie wspomagające nCipher bezpieczeństwo, firma Entrust Datacard, jest liderem na rynku modułu HSM ogólnego przeznaczenia, umożliwiając organizacjom wiodącym na świecie oferowanie zaufania, integralności i kontroli do ważnych informacji i aplikacji. rozwiązania kryptograficzne oprogramowanie wspomagające nCipher zabezpieczają nowe technologie — Cloud, IoT, łańcucha bloków, płatności cyfrowe — i pomagają w spełnieniu nowych mandatów związanych z zgodnością, korzystając z tej samej sprawdzonej technologii, w której organizacje globalne zależą od dzisiaj, aby chronić przed zagrożeniami dane poufne, komunikacja sieciowa i infrastruktura przedsiębiorstwa. Oprogramowanie wspomagające nCipher zapewnia zaufanie do aplikacji o krytycznym znaczeniu dla firmy, zapewniając integralność danych i wprowadzanie klientów w całościowej kontroli — dzisiaj, jutro, przez cały czas.
 
 Firma Microsoft współpracuje z oprogramowanie wspomagające nCipher zabezpieczeniami w celu zwiększenia stanu kompozycji dla sprzętowych modułów zabezpieczeń. Te udoskonalenia umożliwiają uzyskanie typowych korzyści płynących z usług hostowanych bez konieczności kontroli nad kluczami. W związku z tym te udoskonalenia umożliwiają firmie Microsoft zarządzanie sprzętowych modułów zabezpieczeń, dzięki czemu nie trzeba. Jako usługa w chmurze Azure Key Vault skaluje się w krótkim czasie, aby sprostać wzrostom użycia w organizacji. W tym samym czasie klucz jest chroniony w sprzętowych modułów zabezpieczeń firmy Microsoft: Zachowujesz kontrolę nad kluczowym cyklem życia, ponieważ klucz jest generowany i przesyłany do sprzętowych modułów zabezpieczeń firmy Microsoft.
 
@@ -287,6 +287,10 @@ Ten program tworzy plik środowiska **zabezpieczeń** w%NFAST_KMDATA%\local\worl
 
 > [!NOTE]
 > Jeśli moduł HSM nie obsługuje nowszego pakietu szyfr Suite DLf3072s256mRijndael, można zastąpić polecenie--cipher-Suite = DLf3072s256mRijndael z--cipher-Suite = DLf1024s160mRijndael
+> 
+> Sieć World Security utworzona przy użyciu programu New-World. exe, która jest dostarczana z oprogramowaniem oprogramowanie wspomagające nCipher w wersji 12,50, nie jest zgodna z tą procedurą BYOK. Dostępne są dwie opcje:
+> 1) Obniżenie wersji oprogramowania oprogramowanie wspomagające nCipher na 12.40.2 w celu utworzenia nowego świata zabezpieczeń.
+> 2) Skontaktuj się z pomocą techniczną usługi oprogramowanie wspomagające nCipher i poproś o udostępnienie poprawki dla wersji 12,50 oprogramowania, która pozwala na użycie 12.40.2 wersji New-World. exe zgodnej z tą procedurą BYOK.
 
 Następnie wykonaj poniższe czynności:
 

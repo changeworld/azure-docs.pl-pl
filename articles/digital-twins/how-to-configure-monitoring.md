@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/09/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: dd1481c74cdf519dcb4588e0b7cf09b7b6ab5f1d
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: d0f5f9a1d488b6be8ca91fdd057880e351ae0b3f
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950121"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261043"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Jak skonfigurować monitorowanie w usłudze Azure Digital bliźniaczych reprezentacji
 
@@ -57,7 +57,7 @@ W przypadku zaawansowanego rejestrowania aktywności:
 
 ## <a name="enable-customer-diagnostic-logs"></a>Włączanie dzienników diagnostycznych klienta
 
-[Ustawienia diagnostyczne](../azure-monitor/platform/diagnostic-logs-overview.md) platformy Azure można ustawić dla każdego wystąpienia platformy Azure w celu uzupełnienia rejestrowania aktywności. Dzienniki aktywności odnoszą się do zdarzeń na poziomie subskrypcji, rejestrowanie diagnostyczne zapewnia wgląd w historię operacyjną samych zasobów.
+[Ustawienia diagnostyczne](../azure-monitor/platform/resource-logs-overview.md) platformy Azure można ustawić dla każdego wystąpienia platformy Azure w celu uzupełnienia rejestrowania aktywności. Dzienniki aktywności odnoszą się do zdarzeń na poziomie subskrypcji, rejestrowanie diagnostyczne zapewnia wgląd w historię operacyjną samych zasobów.
 
 Przykłady rejestrowania diagnostycznego obejmują:
 
@@ -109,7 +109,7 @@ Po zainicjowaniu wystąpienia **obszaru roboczego log Analytics** można używa�
 
    [![Zarządzanie dziennikami](media/how-to-configure-monitoring/log-analytics-management.png)](media/how-to-configure-monitoring/log-analytics-management.png#lightbox)
 
-Aby uzyskać więcej informacji na temat zaawansowanych operacji związanych z zapytaniami, zobacz [Rozpoczynanie pracy z](../azure-monitor/log-query/get-started-queries.md)zapytaniami.
+Aby uzyskać więcej informacji na temat zaawansowanych operacji związanych z zapytaniami, zobacz [Rozpoczynanie pracy z zapytaniami](../azure-monitor/log-query/get-started-queries.md).
 
 > [!NOTE]
 > W przypadku wysyłania zdarzeń do **log Analytics obszaru roboczego** po raz pierwszy może wystąpić 5 minut.
@@ -129,6 +129,6 @@ Usługa Azure Digital bliźniaczych reprezentacji obsługuje również rejestrow
 
 - Dowiedz się więcej o [dziennikach aktywności](../azure-monitor/platform/activity-logs-overview.md)platformy Azure.
 
-- Zapoznaj się z [omówieniem dzienników diagnostycznych](../azure-monitor/platform/diagnostic-logs-overview.md), szczegółowe do ustawień diagnostycznych platformy Azure.
+- Zapoznaj się z [omówieniem dzienników diagnostycznych](../azure-monitor/platform/resource-logs-overview.md), szczegółowe do ustawień diagnostycznych platformy Azure.
 
 - Przeczytaj więcej na temat [dzienników Azure monitor](../azure-monitor/log-query/get-started-portal.md).

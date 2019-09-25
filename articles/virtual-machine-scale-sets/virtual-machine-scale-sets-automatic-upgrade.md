@@ -3,7 +3,7 @@ title: Automatyczne uaktualnianie obrazów systemu operacyjnego przy użyciu zes
 description: Informacje o automatycznym uaktualnianiu obrazu systemu operacyjnego na wystąpieniach maszyn wirtualnych w zestawie skalowania
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: mayanknayar
+author: shandilvarun
 manager: drewm
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/16/2019
-ms.author: manayar
-ms.openlocfilehash: a9829f380200e616d242f5406b72593014f0efc2
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.author: vashan
+ms.openlocfilehash: 9825ef1426a1c93f94b502c396fbaab1f86a924e
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656562"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71263506"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Automatyczne uaktualnienia obrazu systemu operacyjnego dla zestawu skalowania maszyn wirtualnych platformy Azure
 
@@ -257,21 +257,21 @@ W przypadku określonych przypadków, w których nie chcesz czekać na zastosowa
 > Ręczne wyzwalacze uaktualnień obrazów systemu operacyjnego nie zapewniają możliwości automatycznego wycofywania. Jeśli wystąpienie nie odzyska jego kondycji po zakończeniu operacji uaktualniania, jego poprzedni dysk systemu operacyjnego nie może zostać przywrócony.
 
 ### <a name="rest-api"></a>Interfejs API REST
-Użyj wywołania interfejsu API [uruchamiania systemu operacyjnego](/rest/api/compute/virtualmachinescalesetrollingupgrades/startosupgrade) , aby rozpocząć uaktualnianie stopniowe, aby przenieść wszystkie wystąpienia zestawu skalowania maszyn wirtualnych do najnowszej dostępnej wersji systemu operacyjnego obrazu platformy. Nie wpłynie to na wystąpienia, na których jest już uruchomiona najnowsza dostępna wersja systemu operacyjnego. Poniższy przykład zawiera szczegółowe informacje na temat sposobu uruchamiania stopniowego uaktualniania systemu operacyjnego w zestawie skalowania o nazwie *myScaleSet* w grupiezasobów o nazwie Moja Grupa:
+Użyj wywołania interfejsu API [uruchamiania systemu operacyjnego](/rest/api/compute/virtualmachinescalesetrollingupgrades/startosupgrade) , aby rozpocząć uaktualnianie stopniowe, aby przenieść wszystkie wystąpienia zestawu skalowania maszyn wirtualnych do najnowszej dostępnej wersji systemu operacyjnego obrazu platformy. Nie wpłynie to na wystąpienia, na których jest już uruchomiona najnowsza dostępna wersja systemu operacyjnego. Poniższy przykład zawiera szczegółowe informacje na temat sposobu uruchamiania stopniowego uaktualniania systemu operacyjnego w zestawie skalowania o nazwie *myScaleSet* w grupie zasobów o nazwie Moja *Grupa:*
 
 ```
 POST on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osRollingUpgrade?api-version=2018-10-01`
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Użyj polecenia cmdlet [Start-AzVmssRollingOSUpgrade](/powershell/module/az.compute/Start-AzVmssRollingOSUpgrade) , aby sprawdzić historię uaktualnienia systemu operacyjnego dla zestawu skalowania. Poniższy przykład zawiera szczegółowe informacje na temat sposobu uruchamiania stopniowego uaktualniania systemu operacyjnego w zestawie skalowania o nazwie *myScaleSet* w grupiezasobów o nazwie Moja Grupa:
+Użyj polecenia cmdlet [Start-AzVmssRollingOSUpgrade](/powershell/module/az.compute/Start-AzVmssRollingOSUpgrade) , aby sprawdzić historię uaktualnienia systemu operacyjnego dla zestawu skalowania. Poniższy przykład zawiera szczegółowe informacje na temat sposobu uruchamiania stopniowego uaktualniania systemu operacyjnego w zestawie skalowania o nazwie *myScaleSet* w grupie zasobów o nazwie Moja *Grupa:*
 
 ```azurepowershell-interactive
 Start-AzVmssRollingOSUpgrade -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 ```
 
 ### <a name="azure-cli-20"></a>Interfejs wiersza polecenia platformy Azure 2.0
-Użyj [AZ VMSS krocząc-upgrade Start](/cli/azure/vmss/rolling-upgrade#az-vmss-rolling-upgrade-start) , aby sprawdzić historię uaktualnienia systemu operacyjnego dla zestawu skalowania. Użyj interfejsu wiersza polecenia platformy Azure 2.0.47 lub nowszego. Poniższy przykład zawiera szczegółowe informacje na temat sposobu uruchamiania stopniowego uaktualniania systemu operacyjnego w zestawie skalowania o nazwie *myScaleSet* w grupiezasobów o nazwie Moja Grupa:
+Użyj [AZ VMSS krocząc-upgrade Start](/cli/azure/vmss/rolling-upgrade#az-vmss-rolling-upgrade-start) , aby sprawdzić historię uaktualnienia systemu operacyjnego dla zestawu skalowania. Użyj interfejsu wiersza polecenia platformy Azure 2.0.47 lub nowszego. Poniższy przykład zawiera szczegółowe informacje na temat sposobu uruchamiania stopniowego uaktualniania systemu operacyjnego w zestawie skalowania o nazwie *myScaleSet* w grupie zasobów o nazwie Moja *Grupa:*
 
 ```azurecli-interactive
 az vmss rolling-upgrade start --resource-group "myResourceGroup" --name "myScaleSet" --subscription "subscriptionId"

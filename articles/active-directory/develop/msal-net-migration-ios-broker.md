@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4426c070d2fd2e26e0d4368a94996bc32e95129d
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: fdfb2d7d33111f1adf998cd75446576d2010a365
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103955"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257776"
 ---
 # <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>Migrowanie aplikacji systemu iOS, które używają Microsoft Authenticator z programu ADAL.NET do MSAL.NET
 
@@ -36,7 +36,7 @@ W tym artykule przyjęto założenie, że masz już aplikację platformy Xamarin
 
 ### <a name="what-are-brokers"></a>Co to są brokerzy?
 
-Brokerzy są aplikacjami udostępnianymi przez firmę Microsoft w systemach Android i iOS. (Zobacz aplikację [Microsoft Authenticator](https://www.microsoft.com/account/authenticator) w systemach iOS i Android oraz aplikację Intune — portal firmy w systemie Android). 
+Brokerzy są aplikacjami udostępnianymi przez firmę Microsoft w systemach Android i iOS. (Zobacz aplikację [Microsoft Authenticator](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6) w systemach iOS i Android oraz aplikację Intune — portal firmy w systemie Android). 
 
 Umożliwiają one:
 

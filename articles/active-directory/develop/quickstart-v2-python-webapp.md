@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/11/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: 682582c8c695550f7dfdfcc079e1d0bf04828180
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: c5817427102bf10dcd1ece932b0f582d973efaf7
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997376"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257892"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Szybki start: Dodawanie logowania z firmą Microsoft do aplikacji sieci Web w języku Python
 
@@ -37,7 +37,7 @@ Po ukończeniu tego przewodnika aplikacja będzie akceptować logowania do osobi
 Do uruchomienia tego przykładu potrzebne są:
 
 - [Python 2.7 +](https://www.python.org/downloads/release/python-2713) lub [Python 3 +](https://www.python.org/downloads/release/python-364/)
-- [Kolba](http://flask.pocoo.org/), [podsesja](https:/pythonhosted.org/Flask-Session/), [żądania](https://2.python-requests.org/en/master/)
+- [Kolba](http://flask.pocoo.org/), [podsesja](https://pythonhosted.org/Flask-Session/), [żądania](https://2.python-requests.org/en/master/)
 - [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python) 
 - Dzierżawa usługi Azure Active Directory (Azure AD). Aby uzyskać więcej informacji na temat uzyskiwania dzierżawy usługi Azure AD, zobacz [jak uzyskać dzierżawę usługi Azure AD.](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)
 

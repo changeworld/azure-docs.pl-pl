@@ -49,6 +49,10 @@
           href: api-management-howto-policies.md
         - name: Informacje ogólne o zasadach — indeks
           href: api-management-policies.md
+    - name: Bezpieczeństwo
+      items:
+        - name: Wbudowane mechanizmy zabezpieczeń
+          href: api-management-security-controls.md
     - name: Subskrypcje
       href: api-management-subscriptions.md
     - name: Zarządzanie przy użyciu automatyzacji
@@ -57,8 +61,6 @@
       href: api-management-error-handling-policies.md
     - name: Ograniczenia importu interfejsu API
       href: api-management-api-import-restrictions.md
-    - name: Wbudowane mechanizmy zabezpieczeń
-      href: api-management-security-controls.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Definiowanie interfejsów API

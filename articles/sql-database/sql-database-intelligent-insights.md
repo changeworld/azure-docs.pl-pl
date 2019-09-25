@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: d77557f6d5d6a7bb741b9ff6caa4ea8f76db19c0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 70498c5f4c824681ee59b7232e9409235d7f6a93
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567876"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262154"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Intelligent Insights przy użyciu AI do monitorowania i rozwiązywania problemów z wydajnością bazy danych
 
@@ -96,7 +96,7 @@ Poniższy przykład pokazuje Intelligent Insights oglądany przez Azure SQL Anal
 
 ### <a name="set-up-with-event-hubs"></a>Konfiguracja przy użyciu Event Hubs
 
-Aby użyć Intelligent Insights z Event Hubs, skonfiguruj dane dziennika Intelligent Insights do przesyłania strumieniowego do Event Hubs, zobacz [przesyłanie strumieniowe dzienników diagnostyki Azure do Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md).
+Aby użyć Intelligent Insights z Event Hubs, skonfiguruj dane dziennika Intelligent Insights do przesyłania strumieniowego do Event Hubs, zobacz [przesyłanie strumieniowe dzienników diagnostyki Azure do Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md).
 
 Aby użyć Event Hubs do konfiguracji niestandardowego monitorowania i generowania alertów, zobacz [co zrobić z metrykami i dziennikami diagnostycznymi w Event Hubs](sql-database-metrics-diag-logging.md#what-to-do-with-metrics-and-diagnostics-logs-in-event-hubs).
 
@@ -174,9 +174,9 @@ W dzienniku Intelligent Insights są wyprowadzane liczba błędnych żądań. Ws
 
 Jeśli którykolwiek z monitorowanych wyjątków krytycznych przekroczy progi bezwzględne zarządzane przez system, usługa inteligentnego wglądu jest generowana ze szczegółowymi informacjami o wyjątkach.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się, jak [rozwiązywać problemy z wydajnością SQL Database przy użyciu Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
 - Użyj [dziennika diagnostyki wydajności SQL Database Intelligent Insights](sql-database-intelligent-insights-use-diagnostics-log.md).
 - Dowiedz się [, jak monitorować SQL Database przy użyciu usługi SQL Analytics](../azure-monitor/insights/azure-sql.md).
-- Dowiedz się [, jak zbierać dane dzienników z zasobów platformy Azure i korzystać z nich](../azure-monitor/platform/diagnostic-logs-overview.md).
+- Dowiedz się [, jak zbierać dane dzienników z zasobów platformy Azure i korzystać z nich](../azure-monitor/platform/resource-logs-overview.md).

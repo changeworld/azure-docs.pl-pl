@@ -1,5 +1,5 @@
 ---
-title: Usługi Azure Application Insights | Dokumentacja firmy Microsoft
+title: Application Insights platformy Azure | Microsoft Docs
 description: ''
 services: application-insights
 documentationcenter: ''
@@ -13,46 +13,46 @@ ms.topic: conceptual
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
 ms.author: evternov
-ms.openlocfilehash: 9bc94f653f5e70883b483fa44f6a17f6e9e9eaf1
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 3abf50b3467ce9a97f2163a10ad1782f6e1c9c20
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594434"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258439"
 ---
-# <a name="correlating-application-insights-data-with-custom-data-sources"></a>Korelowanie danych usługi Application Insights z niestandardowymi źródłami danych
+# <a name="correlating-application-insights-data-with-custom-data-sources"></a>Skorelowanie danych Application Insights z niestandardowymi źródłami danych
 
-Application Insights gromadzi kilka różnych typów danych: wyjątki, ślady, wyświetleń stron i inne. Często jest wystarczająca do badania wydajności, niezawodności i użycia aplikacji, istnieją przypadki, gdy jest ona przydatna w celu skorelowania danych przechowywanych w usłudze Application Insights do innych całkowicie niestandardowych zestawów danych.
+Application Insights zbiera różne typy danych: wyjątki, ślady, wyświetlenia stron i inne. Chociaż jest to często wystarczające do zbadania wydajności, niezawodności i użycia aplikacji, istnieją przypadki, w których warto skorelować dane przechowywane w Application Insights z innymi całkowicie niestandardowymi zestawami danych.
 
-Sytuacje, w których możesz chcieć niestandardowe dane obejmują:
+Niektóre sytuacje, w których można chcieć, aby dane niestandardowe obejmowały:
 
-- Tabele danych wzbogacenia lub wyszukiwania: na przykład uzupełnienia nazwy serwera z właścicielem serwera i lokalizacji laboratorium, w którym można znaleźć 
-- Korelacja ze źródłami danych — usługa Application Insights: na przykład zostały korelowanie danych dotyczących zakupu w sklepie sieci web przy użyciu informacji z usługi realizacji zakupu w celu określenia, jak dokładny szacowania czasu wysyłania 
-- Dane niestandardowe całkowicie: liczbę naszym klientom lubisz język zapytań i wydajności usługi Azure Monitor platformę log, która będzie tworzyć kopię usługi Application Insights i chcesz używać go do zapytania o dane, w ogóle nie jest powiązany z usługi Application Insights. Na przykład śledzić wydajność słoneczny panelu inteligentnego instalacja głównego w ramach opisanych [tutaj]( https://blogs.catapultsystems.com/cfuller/archive/2017/10/04/using-log-analytics-and-a-special-guest-to-forecast-electricity-generation/).
+- Wzbogacanie danych lub tabele odnośników: na przykład uzupełnij nazwę serwera z właścicielem serwera i lokalizacją laboratorium, w której można ją znaleźć 
+- Korelacja ze źródłami danych innymi niż Application Insights: na przykład skorelowanie danych dotyczących zakupu w sklepie internetowym z informacjami z usługi realizacji zakupów, aby określić, jak dokładne oszacowania czasu wysyłki były 
+- Dane niestandardowe: wielu naszych klientów lubię język zapytań i wydajność Azure Monitor platformy dzienników, która wykonuje kopię zapasową Application Insights, i chce używać jej do wykonywania zapytań dotyczących danych, które nie są w ogóle powiązane z Application Insights. Na przykład, aby śledzić wydajność panelu słonecznego w ramach inteligentnej instalacji domowej, jak [opisano tutaj](https://www.catapultsystems.com/blogs/using-log-analytics-and-a-special-guest-to-forecast-electricity-generation/).
 
-## <a name="how-to-correlate-custom-data-with-application-insights-data"></a>Sposób korelowania danych niestandardowych z danych usługi Application Insights 
+## <a name="how-to-correlate-custom-data-with-application-insights-data"></a>Jak skorelować dane niestandardowe z danymi Application Insights 
 
-Ponieważ usługa Application Insights jest objęta zaawansowana platforma Azure Monitor w dzienniku, jesteśmy w stanie używać pełnych możliwości usługi Azure Monitor do pozyskiwania danych. Następnie napiszemy zapytań przy użyciu operatora "Dołącz", który będzie skorelować te dane niestandardowe dane, które są dostępne dla nas w dziennikach w usłudze Azure Monitor. 
+Ponieważ Application Insights jest obsługiwana przez zaawansowaną platformę rejestrowania Azure Monitor, możemy używać pełnych możliwości Azure Monitor do pozyskiwania danych. Następnie będziemy pisać zapytania przy użyciu operatora "join", który będzie skorelować te dane niestandardowe z danymi dostępnymi dla nas w dziennikach Azure Monitor. 
 
-## <a name="ingesting-data"></a>Dane wprowadzane
+## <a name="ingesting-data"></a>Pozyskiwanie danych
 
-W tej sekcji omówimy się, jak pobierać dane do dzienników usługi Azure Monitor.
+W tej sekcji zawarto informacje na temat pobierania danych do dzienników Azure Monitor.
 
-Jeśli nie masz jeszcze jedną, aprowizacja nowego obszaru roboczego usługi Log Analytics postępując zgodnie z [w instrukcjach](../learn/quick-collect-azurevm.md) za pomocą, a w tym kroku "Tworzenie obszaru roboczego".
+Jeśli jeszcze tego nie masz, Zainicjuj obsługę nowego obszaru roboczego Log Analytics, wykonując [te instrukcje](../learn/quick-collect-azurevm.md) w systemie i uwzględniając krok "Utwórz obszar roboczy".
 
-Aby rozpocząć wysyłanie dzienników danych do usługi Azure Monitor. Istnieje kilka opcji:
+Aby rozpocząć wysyłanie danych dziennika do Azure Monitor. Istnieje kilka opcji:
 
-- Mechanizm synchronicznej, można albo bezpośrednio wywołać [interfejs API modułu zbierającego dane](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) lub użyć naszego łącznika aplikacji logiki — po prostu wyszukaj "Azure Log Analytics" i wybierz opcję "Wyślij dane":
+- W przypadku mechanizmu synchronicznego można bezpośrednio wywołać [interfejs API modułu zbierającego dane](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) lub użyć naszego łącznika aplikacji logiki — po prostu zapoznaj się z tematem "Azure log Analytics" i wybierz opcję "Wyślij dane":
 
-  ![Zrzut ekranu, wybierz i akcji](./media/custom-data-correlation/01-logic-app-connector.png)  
+  ![Wybór i akcja zrzutu ekranu](./media/custom-data-correlation/01-logic-app-connector.png)  
 
-- Z opcji asynchronicznego Użyj interfejsu API modułu zbierającego dane do tworzenia potoku przetwarzania. Zobacz [w tym artykule](https://docs.microsoft.com/azure/log-analytics/log-analytics-create-pipeline-datacollector-api) Aby uzyskać szczegółowe informacje.
+- Dla opcji asynchronicznej Użyj interfejsu API modułu zbierającego dane, aby skompilować potok przetwarzania. Zobacz [ten artykuł](https://docs.microsoft.com/azure/log-analytics/log-analytics-create-pipeline-datacollector-api) , aby uzyskać szczegółowe informacje.
 
 ## <a name="correlating-data"></a>Korelowanie danych
 
-Usługa Application Insights opiera się na platformie Azure Monitor dziennika. Możemy więc użyć [sprzężeń między zasobami](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search) do skorelowania wszelkich danych pozyskanych do usługi Azure Monitor firma Microsoft z danych usługi Application Insights.
+Application Insights jest oparty na platformie dzienników Azure Monitor. W związku z tym możemy używać [sprzężeń między zasobami](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search) w celu skorelowania dowolnych danych w Azure monitor z naszymi Application Insights danymi.
 
-Na przykład możemy pozyskiwać nasze laboratorium spisu i lokalizacji do tabeli o nazwie "LabLocations_CL" w obszarze roboczym usługi Log Analytics o nazwie "myLA". Jeśli chcemy następnie przejrzyj nasz żądań śledzone w aplikacji usługi Application Insights o nazwie "myAI" i korelowanie nazw maszyn, które obsłużone żądania do lokalizacji tych maszyn, przechowywane w tabeli niestandardowej wspomniano wcześniej, można uruchomić następujące zapytanie z Kontekst usługi Application Insights lub Azure Monitor:
+Można na przykład pozyskać nasze spisy i lokalizacje laboratorium w tabeli o nazwie "LabLocations_CL" w obszarze roboczym Log Analytics o nazwie "myLA". Jeśli chcemy przejrzeć nasze żądania śledzone w Application Insights aplikacji o nazwie "myAI" i skorelować nazwy maszyn, które obsługują żądania do lokalizacji tych maszyn przechowywanych w wcześniej wymienionej tabeli niestandardowej, można uruchomić następujące zapytanie z kontekst Application Insights lub Azure Monitor:
 
 ```
 app('myAI').requests
@@ -64,5 +64,5 @@ app('myAI').requests
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Zapoznaj się z [interfejsu API modułu zbierającego dane](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) odwołania.
+- Sprawdź informacje o [interfejsie API modułu zbierającego dane](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) .
 - Aby uzyskać więcej informacji na temat [sprzężeń między zasobami](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search).

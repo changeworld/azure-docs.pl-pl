@@ -4,17 +4,17 @@ description: Jak uwierzytelniać urządzenia podrzędne lub urządzenia typu li�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/07/2019
+ms.date: 09/23/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 7a032056a684107de3dd00fe4861f34c013a80db
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: d73c0f4dbfcc2c67a222f91693ebe8ed9ea83d98
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003616"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266142"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Uwierzytelnianie urządzenia podrzędnego w usłudze Azure IoT Hub
 
@@ -32,7 +32,7 @@ W krokach przedstawionych w tym artykule przedstawiono Ręczne inicjowanie obsł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Wykonaj kroki opisane w [sekcji Konfigurowanie urządzenia IoT Edge do działania jako nieprzezroczyste bramy](how-to-create-transparent-gateway.md).
+Wykonaj kroki opisane w [sekcji Konfigurowanie urządzenia IoT Edge do działania jako nieprzezroczyste bramy](how-to-create-transparent-gateway.md). Jeśli używasz uwierzytelniania X. 509 dla urządzenia podrzędnego, musisz użyć tego samego skryptu generującego ten sam certyfikat, który został skonfigurowany w przezroczystym artykule bramy. 
 
 Ten artykuł odnosi się do *nazwy hosta bramy* w kilku punktach. Nazwa hosta bramy jest zadeklarowana w parametrze **hostname** pliku config. YAML na urządzeniu bramy IoT Edge. Służy do tworzenia certyfikatów w tym artykule i jest określany w parametrach połączenia urządzeń podrzędnych. Nazwa hosta bramy musi być rozpoznawalna na adres IP przy użyciu systemu DNS lub wpisu pliku hosta.
 

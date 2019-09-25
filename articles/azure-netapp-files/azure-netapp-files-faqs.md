@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/14/2019
+ms.date: 09/24/2019
 ms.author: b-juche
-ms.openlocfilehash: f97bb4842d9e24d879dd47757fda75b16bca48cf
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: 66d0d65065f323f53095782e165f179125aa35ac
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494820"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264982"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Często zadawane pytania dotyczące Azure NetApp Files
 
@@ -58,7 +58,9 @@ Wszystkie woluminy Azure NetApp Files są szyfrowane przy użyciu standardu FIPS
 
 ### <a name="how-are-encryption-keys-managed"></a>Jak zarządzane są klucze szyfrowania? 
 
-Zarządzanie kluczami dla Azure NetApp Files jest obsługiwane przez usługę.  Obecnie klucze zarządzane przez użytkownika (nie należy wprowadzać własnych kluczy) nie są obsługiwane.
+Zarządzanie kluczami dla Azure NetApp Files jest obsługiwane przez usługę. Dla każdego woluminu jest generowany unikatowy klucz szyfrowania danych XTS-AES-256. Hierarchia kluczy szyfrowania służy do szyfrowania i ochrony wszystkich kluczy woluminów. Te klucze szyfrowania nigdy nie są wyświetlane ani raportowane w nieszyfrowanym formacie. Klucze szyfrowania są usuwane natychmiast po usunięciu woluminu.
+
+Obecnie klucze zarządzane przez użytkownika (nie należy wprowadzać własnych kluczy) nie są obsługiwane.
 
 ### <a name="can-i-configure-the-nfs-export-policy-rules-to-control-access-to-the-azure-netapp-files-service-mount-target"></a>Czy można skonfigurować zasady eksportowania systemu plików NFS, aby kontrolować dostęp do celu instalacji usługi Azure NetApp Files Service?
 

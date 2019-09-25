@@ -14,18 +14,16 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: 19291e233e4086815488973629167cc7d7dc9f4a
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 964ba16fb7421c58f43d8b7d0d0d96f5cd377579
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240590"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261881"
 ---
 # <a name="what-is-azure-sentinel"></a>Co to jest Azure — Wskaźnikowanie?
-
-
 
 Microsoft Azure wskaźnikiem wydajności jest skalowalne i natywne rozwiązanie do **zarządzania zdarzeniami zabezpieczeń (Siem)** i **o (Security Orchestration)** . Platforma Azure — wskaźnik przedstawia inteligentne rozwiązania w zakresie zabezpieczeń i analizy zagrożeń w całym przedsiębiorstwie, zapewniając jedno rozwiązanie do wykrywania alertów, widoczności zagrożeń, aktywnego polowania i reagowania na zagrożenia. 
 
@@ -73,10 +71,9 @@ Na przykład w przypadku korzystania z systemu biletów usługi ServiceNow możn
 ![Podręczniki](./media/tutorial-respond-threats-playbook/logic-app.png)
 
 
+## <a name="investigation"></a>Badanie
 
-## <a name="investigation-preview"></a>Badanie (wersja zapoznawcza)
-
-Zaawansowane narzędzia do [badania](tutorial-investigate-cases.md) wskaźnikowego platformy Azure ułatwiają zrozumienie zakresu i znalezienie głównej przyczyny potencjalnego zagrożenia bezpieczeństwa. Możesz wybrać jednostkę na interaktywnym wykresie, aby zadać interesujące pytania dotyczące określonej jednostki, i przejść do tej jednostki i jej połączeń, aby uzyskać dostęp do głównej przyczyny zagrożenia. 
+Obecnie dostępne w wersji zapoznawczej narzędzia do badania w usłudze Azure — [szczegółowe](tutorial-investigate-cases.md) informacje ułatwiają zrozumienie zakresu i znalezienie głównej przyczyny potencjalnego zagrożenia bezpieczeństwa. Możesz wybrać jednostkę na interaktywnym wykresie, aby zadać interesujące pytania dotyczące określonej jednostki, i przejść do tej jednostki i jej połączeń, aby uzyskać dostęp do głównej przyczyny zagrożenia. 
 
 ![Badanie](./media/tutorial-investigate-cases/map-timeline.png)
 

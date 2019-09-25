@@ -1,6 +1,6 @@
 ---
-title: Co to są zależności usługi Azure Active Directory dostępu warunkowego? | Microsoft Docs
-description: Dowiedz się, jak warunki są używane w usłudze Azure Active Directory dostępu warunkowego do wyzwolenia zasad.
+title: Co to są zależności usługi w Azure Active Directory dostęp warunkowy? | Microsoft Docs
+description: Dowiedz się, w jaki sposób warunki są używane w Azure Active Directory dostęp warunkowy, aby wyzwolić zasady.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,53 +11,56 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9aca2e4ea5e107358ff72e83562057830ece2cc
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 7c7f2abda282d0219dd8787a9f6a2b6c1cda15df
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509354"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257909"
 ---
-# <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Co to są zależności usługi Azure Active Directory dostępu warunkowego? 
+# <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Co to są zależności usługi w Azure Active Directory dostęp warunkowy? 
 
-Za pomocą zasad dostępu warunkowego można określić wymagania dotyczące dostępu do witryn internetowych i usług. Na przykład Twoje wymagania dotyczące dostępu mogą obejmować wymaganie uwierzytelniania wieloskładnikowego (MFA) lub [urządzeń zarządzanych przy użyciu](require-managed-devices.md). 
+Za pomocą zasad dostępu warunkowego można określić wymagania dostępu do witryn sieci Web i usług. Na przykład wymagania dostępu mogą obejmować wymaganie uwierzytelniania wieloskładnikowego (MFA) lub [urządzeń zarządzanych](require-managed-devices.md). 
 
-Gdy uzyskujesz dostęp do witryny lub usługi bezpośrednio, wpływ pokrewnych zasad jest zazwyczaj ułatwia ocenę. Na przykład jeśli masz zasady, które wymagają usługi MFA dla usługi SharePoint Online skonfigurowane, uwierzytelnianie wieloskładnikowe jest wymuszana podczas każdego logowania do portalu sieci web programu SharePoint. Jednak nie zawsze jest proste, aby ocenić wpływ zasad, ponieważ istnieją aplikacje w chmurze z zależnościami do innych aplikacji w chmurze. Na przykład Microsoft Teams można zapewnić dostęp do zasobów w usłudze SharePoint Online. Tak gdy uzyskujesz dostęp do Microsoft Teams w naszym scenariuszu należy podlegają także zasady MFA programu SharePoint.   
+W przypadku bezpośredniego dostępu do witryny lub usługi, wpływ powiązanych zasad jest zwykle łatwy do oceny. Na przykład jeśli masz zasady, które wymagają skonfigurowania usługi MFA dla usługi SharePoint Online, uwierzytelnianie wieloskładnikowe jest wymuszane dla każdego logowania do portalu sieci Web programu SharePoint. Nie zawsze jest to jednak proste, aby ocenić wpływ zasad, ponieważ istnieją aplikacje w chmurze z zależnościami od innych aplikacji w chmurze. Na przykład firma Microsoft Teams może zapewnić dostęp do zasobów w usłudze SharePoint Online. W związku z tym podczas uzyskiwania dostępu do programu Microsoft Teams w naszym bieżącym scenariuszu podlegają one również zasadom MFA programu SharePoint.   
 
 ## <a name="policy-enforcement"></a>Wymuszanie zasad 
 
-W przypadku zależności usługi skonfigurowane zasady można stosować przy użyciu wymuszenia wczesnym wiązaniem lub z późnym wiązaniem. 
+Jeśli masz skonfigurowaną zależność usługi, zasady mogą być stosowane przy użyciu wczesnego lub późnego wymuszania. 
 
-- **Wymuszanie zasad z wczesnym wiązaniem** oznacza, że użytkownik musi spełnić wymagania zasad usług zależnych przed uzyskaniem dostępu do aplikacji wywołującej. Na przykład użytkownik musi spełniać zasady usługi SharePoint, przed zalogowaniem się do MS Teams. 
-- **Wymuszanie zasad z późnym wiązaniem** występuje po użytkownik zalogował do wywoływania aplikacji. Wymuszanie jest odroczone do podczas wywoływania żądań aplikacji, token usługi podrzędne. Przykłady obejmują MS Teams uzyskiwanie dostępu do aplikacji Planner i Office.com uzyskiwania dostępu do programu SharePoint. 
+- **Wczesne wymuszanie zasad** przed uzyskaniem dostępu do aplikacji wywołującej musi spełniać zależne zasady usługi. Na przykład użytkownik musi spełnić zasady programu SharePoint przed zalogowaniem się do usługi MS Teams. 
+- **Wymuszanie zasad z późnym** wiązaniem jest wykonywane po zalogowaniu się użytkownika do aplikacji wywołującej. Wymuszanie jest odroczone do podczas wywoływania żądań aplikacji, tokenu usługi podrzędnej. Przykładami mogą być MS Teams uzyskujący dostęp do planisty i Office.com dostępu do programu SharePoint. 
 
-Poniższy diagram przedstawia zależności usług MS Teams. Stałe strzałki wskazują wymuszania wczesnym wiązaniem przerywaną strzałką dla aplikacji Planner wskazuje wymuszania z późnym wiązaniem. 
+Na poniższym diagramie przedstawiono zależności usługi MS Teams. Pełne strzałki wskazują na wczesny zakres wymuszania kreskowaną strzałkę dla usługi Planner wskazuje wymuszanie z późnym wiązaniem. 
 
-![Zależności usług MS Teams](./media/service-dependencies/01.png)
+![Zależności usługi MS Teams](./media/service-dependencies/01.png)
 
-Najlepszym rozwiązaniem należy ustawić wspólnych zasad obejmujących wiele pokrewnych aplikacji i usług zawsze, gdy jest to możliwe. Posiadanie poziom zabezpieczeń spójne zapewnia najlepsze środowisko użytkownika. Na przykład ustawienie wspólne zasady dla usługi Exchange Online, SharePoint Online, Microsoft Teams i Skype dla firm znacznie zmniejsza nieoczekiwane monity, które mogą wynikać z różnych zasad są stosowane do usługach niższego rzędu. 
+Najlepszym rozwiązaniem jest skonfigurowanie w miarę możliwości wspólnych zasad w ramach powiązanych aplikacji i usług. Posiadanie spójnej stan zabezpieczeń zapewnia najlepsze środowisko użytkownika. Na przykład ustawienie wspólnych zasad w usłudze Exchange Online, SharePoint Online, Microsoft Teams i Skype dla firm znacznie zmniejsza nieoczekiwane komunikaty, które mogą wynikać z różnych zasad stosowanych do usług podrzędnych. 
 
-Poniższa tabela zawiera listę zależności usług dodatkowych, gdzie muszą spełniać aplikacje klienckie  
+W poniższej tabeli wymieniono dodatkowe zależności usługi, w przypadku których aplikacje klienckie muszą być zgodne  
 
-| Aplikacje klienckie         | Usługa transmisji                          | Wymuszanie |
+| Aplikacje klienckie         | Usługa podrzędny                          | Tytułu |
 | :--                 | :--                                         | ---         | 
-| Azure Data Lake     | Usługa Microsoft Azure Management (portal i interfejsu API) | Wczesnym wiązaniem |
-| Microsoft Classroom | Exchange                                    | Wczesnym wiązaniem |
-|                     | Sharepoint                                  | Wczesnym wiązaniem  |
-| Microsoft Teams     | Exchange                                    | Wczesnym wiązaniem |
-|                     | MS Planner                                  | Z późnym wiązaniem  |
-|                     | Sharepoint                                  | Wczesnym wiązaniem |
-|                     | Skype dla firm Online                   | Wczesnym wiązaniem |
-| Office Portal       | Exchange                                    | Z późnym wiązaniem  |
-|                     | Sharepoint                                  | Z późnym wiązaniem  |
-| Grupy programu Outlook      | Exchange                                    | Wczesnym wiązaniem |
-|                     | Sharepoint                                  | Wczesnym wiązaniem |
-| PowerApps           | Usługa Microsoft Azure Management (portal i interfejsu API) | Wczesnym wiązaniem |
-|                     | Windows Azure Active Directory              | Wczesnym wiązaniem |
-| Projekt             | Dynamics CRM                                | Wczesnym wiązaniem |
-| Skype dla firm  | Exchange                                    | Wczesnym wiązaniem |
-| Visual Studio       | Usługa Microsoft Azure Management (portal i interfejsu API) | Wczesnym wiązaniem |
+| Azure Data Lake     | Zarządzanie Microsoft Azure (Portal i interfejs API) | Wczesna granica |
+| Microsoft Classroom | Exchange                                    | Wczesna granica |
+|                     | Program SharePoint                                  | Wczesna granica |
+| Microsoft Teams     | Exchange                                    | Wczesna granica |
+|                     | Planista firmy Microsoft                                  | Późne wiązanie  |
+|                     | Program SharePoint                                  | Wczesna granica |
+|                     | Skype dla firm Online                   | Wczesna granica |
+| Portal Office       | Exchange                                    | Późne wiązanie  |
+|                     | Program SharePoint                                  | Późne wiązanie  |
+| Grupy programu Outlook      | Exchange                                    | Wczesna granica |
+|                     | Program SharePoint                                  | Wczesna granica |
+| Aplikacje PowerApp           | Zarządzanie Microsoft Azure (Portal i interfejs API) | Wczesna granica |
+|                     | Azure Active Directory systemu Windows              | Wczesna granica |
+| Projekt             | Dynamics CRM                                | Wczesna granica |
+| Skype dla firm  | Exchange                                    | Wczesna granica |
+| Visual Studio       | Zarządzanie Microsoft Azure (Portal i interfejs API) | Wczesna granica |
+| Microsoft Forms     | Exchange                                    | Wczesna granica |
+|                     | Program SharePoint                                  | Wczesna granica |
+| Microsoft To-Do     | Exchange                                    | Wczesna granica |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się, jak wdrożyć dostęp warunkowy w danym środowisku, zobacz [Planowanie wdrożenia dostępu warunkowego w usłudze Azure Active Directory](plan-conditional-access.md).
+Aby dowiedzieć się, jak zaimplementować dostęp warunkowy w środowisku, zapoznaj się z tematem [Planowanie wdrożenia dostępu warunkowego w Azure Active Directory](plan-conditional-access.md).

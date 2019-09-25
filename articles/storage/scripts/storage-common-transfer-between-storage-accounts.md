@@ -3,8 +3,7 @@ title: Przykładowy skrypt programu Azure PowerShell — migrowanie obiektów bl
 description: Kopiowanie zawartości obiektów blob z jednego konta usługi Azure Storage na inne przy użyciu narzędzia AzCopy.
 services: storage
 documentationcenter: na
-author: roygara
-manager: jeconnoc
+author: normesta
 ms.custom: mvc
 ms.service: storage
 ms.workload: storage
@@ -12,13 +11,13 @@ ms.tgt_pltfrm: na
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/01/2018
-ms.author: rogarana
-ms.openlocfilehash: 88eb97a206bc75bc9635da90eb9d48818ceef0f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: normesta
+ms.openlocfilehash: 0af945177289760ca0d2a97133a300d9978ce702
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61365584"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260640"
 ---
 # <a name="migrate-blobs-across-storage-accounts-using-azcopy-on-windows"></a>Migrowanie obiektów blob między kontami magazynu przy użyciu narzędzia AzCopy w systemie Windows
 
@@ -71,7 +70,7 @@ Ten skrypt zawiera następujące polecenia, służące do skopiowania danych mi�
 | [Get-AzStorageContainer](/powershell/module/az.storage/Get-AzStorageContainer) | Zwraca kontenery skojarzone z kontem magazynu. |
 | [New-AzStorageContext](/powershell/module/az.storage/New-AzStorageContext) | Tworzy kontekst usługi Azure Storage. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat modułu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 

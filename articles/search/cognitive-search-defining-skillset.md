@@ -8,13 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.subservice: cognitive-search
-ms.openlocfilehash: 457157b93e6fb6be8ed734ae6f58c3b8717fc83d
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: f78b8c3b9619b7eea92b6a4f04ed4f6543916efe
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183482"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265530"
 ---
 # <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>Jak utworzyć zestawu umiejętności w potoku wzbogacania
 
@@ -37,7 +36,7 @@ Zalecany początkowy krok polega na tym, które dane mają zostać wyodrębnione
 
 Załóżmy, że interesuje Cię przetwarzanie zestawu komentarzy analityków finansowych. Dla każdego pliku, chcesz wyodrębnić nazwy firmowe i ogólne tonacji komentarzy. Warto również napisać niestandardowy wzbogacający, który używa usługi wyszukiwanie jednostek Bing, aby znaleźć dodatkowe informacje o firmie, takie jak rodzaj firmy, w której jest zaangażowana firma. Zasadniczo, chcesz wyodrębnić informacje takie jak następujące, które są indeksowane dla każdego dokumentu:
 
-| rekord — tekst | towarzystw | tonacji | opisy firmy |
+| rekord — tekst | towarzystw | Tonacji | opisy firmy |
 |--------|-----|-----|-----|
 |sample-record| ["Microsoft", "LinkedIn"] | 0,99. | ["Microsoft Corporation to amerykańska firma wielonarodowych technologii...", "LinkedIn to sieć społecznościowa zorientowana na działalność biznesową i"... "]
 
@@ -228,7 +227,7 @@ Odwołaj strukturę niestandardowego elementu wzbogacania wyszukiwania jednostek
     }
 ```
 
-Ta definicja to niestandardowa [umiejętność](cognitive-search-custom-skill-web-api.md) wywołująca internetowy interfejs API w ramach procesu wzbogacania. W przypadku każdej organizacji identyfikowanej przez funkcję rozpoznawania jednostek ta umiejętność wywołuje internetowy interfejs API, aby znaleźć opis tej organizacji. Aranżacja, kiedy należy wywołać interfejs API sieci Web i jak przepływać otrzymane informacje, jest obsługiwana wewnętrznie przez aparat wzbogacania. Jednak Inicjalizacja niezbędna do wywołania tego niestandardowego interfejsu API musi być podana w formacie JSON (na przykład identyfikator URI, httpHeaders i oczekiwane dane wejściowe). Aby uzyskać wskazówki dotyczące tworzenia niestandardowego interfejsu API sieci Web dla potoku wzbogacania, zobacz [How to define a Custom Interface](cognitive-search-custom-skill-interface.md).
+Ta definicja to [niestandardowa umiejętność](cognitive-search-custom-skill-web-api.md) wywołująca internetowy interfejs API w ramach procesu wzbogacania. W przypadku każdej organizacji identyfikowanej przez funkcję rozpoznawania jednostek ta umiejętność wywołuje internetowy interfejs API, aby znaleźć opis tej organizacji. Aranżacja, kiedy należy wywołać interfejs API sieci Web i jak przepływać otrzymane informacje, jest obsługiwana wewnętrznie przez aparat wzbogacania. Jednak Inicjalizacja niezbędna do wywołania tego niestandardowego interfejsu API musi być podana w formacie JSON (na przykład identyfikator URI, httpHeaders i oczekiwane dane wejściowe). Aby uzyskać wskazówki dotyczące tworzenia niestandardowego interfejsu API sieci Web dla potoku wzbogacania, zobacz [How to define a Custom Interface](cognitive-search-custom-skill-interface.md).
 
 Zwróć uwagę, że pole "context" jest ustawione ```"/document/organizations/*"``` na wartość przy użyciu gwiazdki, co oznacza, że krok wzbogacania jest wywoływany ```"/document/organizations"``` *dla każdej* organizacji. 
 
@@ -278,4 +277,4 @@ Można zapisać wzbogacone dokumenty jako tabele z niehierarchicznymi relacjami 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy znasz już potok wzbogacania i umiejętności, Kontynuuj, jak odwoływać się do [adnotacji w zestawu umiejętności](cognitive-search-concept-annotations-syntax.md) lub [Jak mapować dane wyjściowe do pól w indeksie](cognitive-search-output-field-mapping.md). 
+Teraz, gdy znasz już potok wzbogacania i umiejętności, Kontynuuj, [jak odwoływać się do adnotacji w zestawu umiejętności](cognitive-search-concept-annotations-syntax.md) lub [Jak mapować dane wyjściowe do pól w indeksie](cognitive-search-output-field-mapping.md). 

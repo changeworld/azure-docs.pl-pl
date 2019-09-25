@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 67e5364996be2945d67aa1a95cbc3ab8137e077e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b9d2dda589cc59be24b73ce16dcdcbbe79b31aef
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850258"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259176"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Rozwiązywanie problemów z konfiguracją żądanego stanu (DSC)
 
@@ -149,7 +149,7 @@ Uaktualniono wersję WMF i usunięto uszkodzoną usługę WMI.
 
 #### <a name="resolution"></a>Rozwiązanie
 
-Aby rozwiązać ten problem, postępuj zgodnie z instrukcjami podanymi w artykule [znane problemy i ograniczenia DSC](https://msdn.microsoft.com/powershell/wmf/5.0/limitation_dsc) .
+Aby rozwiązać ten problem, postępuj zgodnie z instrukcjami podanymi w artykule [znane problemy i ograniczenia DSC](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc) .
 
 ### <a name="issue-using-credential"></a>Scenariusz Nie można użyć poświadczenia w konfiguracji DSC
 

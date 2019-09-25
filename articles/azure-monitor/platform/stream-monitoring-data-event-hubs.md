@@ -1,124 +1,67 @@
 ---
-title: Stream danych monitorowania platformy Azure do usługi Event Hubs
-description: Dowiedz się, jak przesyłać strumieniowo dane monitorowania platformy Azure do Centrum zdarzeń można pobrać danych do rozwiązania SIEM partnera lub narzędzia analizy.
-author: nkiest
+title: Przesyłanie strumieniowe danych monitorowania platformy Azure do centrum zdarzeń
+description: Dowiedz się, jak przesyłać dane monitorowania platformy Azure do centrum zdarzeń w celu pobrania danych do narzędzia partner SIEM lub analizy.
+author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 11/01/2018
-ms.author: nikiest
+ms.date: 07/20/2019
+ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 8a4de244d0fa07bfc162625f577015317fca7e6a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 535c74fd161019db28e691ff916ad03eaaf07c90
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069337"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260379"
 ---
-# <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Stream danych monitorowania platformy Azure do Centrum zdarzeń do użycia przez narzędzie zewnętrzne
+# <a name="stream-azure-monitoring-data-to-an-event-hub"></a>Przesyłanie strumieniowe danych monitorowania platformy Azure do centrum zdarzeń
+Azure Monitor zapewnia pełne rozwiązanie do monitorowania stosu dla aplikacji i usług na platformie Azure, w innych chmurach i lokalnie. Oprócz Azure Monitor do analizowania danych i korzystania z nich w różnych scenariuszach monitorowania może być konieczne wysłanie ich do innych narzędzi do monitorowania w środowisku. Najbardziej efektywną metodą przesyłania strumieniowego danych monitorowania do zewnętrznych narzędzi w większości przypadków jest użycie [usługi Azure Event Hubs](/azure/event-hubs/). Ten artykuł zawiera krótki opis sposobu przesyłania strumieniowego danych monitorowania z różnych źródeł do centrum zdarzeń oraz linki do szczegółowych wskazówek.
 
-W tym artykule przedstawiono konfigurowanie różnych warstw danych ze środowiska platformy Azure do wysłania do jednej usługi Event Hubs przestrzeni nazw lub zdarzenia koncentratora, gdzie mogą być zbierane przez narzędzie zewnętrzne.
 
-> [!VIDEO https://www.youtube.com/embed/SPHxCgbcvSw]
+## <a name="create-an-event-hubs-namespace"></a>Tworzenie przestrzeni nazw usługi Event Hubs
 
-## <a name="what-data-can-i-send-into-an-event-hub"></a>Jakie dane może wysłać do Centrum zdarzeń?
+Przed skonfigurowaniem przesyłania strumieniowego dla dowolnego źródła danych należy [utworzyć Event Hubs przestrzeni nazw i centrum zdarzeń](../../event-hubs/event-hubs-create.md). Ta przestrzeń nazw i centrum zdarzeń to miejsce docelowe dla wszystkich danych monitorowania. Przestrzeń nazw Event Hubs to logiczna Grupa centrów zdarzeń, które współużytkują te same zasady dostępu, podobnie jak konto magazynu ma poszczególne obiekty blob w ramach tego konta magazynu. Należy wziąć pod uwagę następujące szczegóły dotyczące przestrzeni nazw centrów zdarzeń i centrów zdarzeń, które są używane do przesyłania strumieniowego danych monitorowania:
 
-W środowisku platformy Azure istnieje kilka "warstwy" danych monitorowania, a metoda uzyskiwania dostępu do danych z każdej warstwy różni się nieco. Zazwyczaj te warstwy można przedstawić jako:
+* Liczba jednostek przepływności pozwala zwiększyć skalę przepływności dla centrów zdarzeń. Zwykle konieczna jest tylko jedna jednostka przepływności. Jeśli konieczne jest skalowanie w górę w miarę wzrostu użycia dzienników, można ręcznie zwiększyć liczbę jednostek przepływności dla przestrzeni nazw lub włączyć automatyczne inflację.
+* Liczba partycji pozwala zrównoleglanie użycie wielu odbiorców. Pojedyncza partycja może obsługiwać do 20MBps lub około 20 000 komunikatów na sekundę. W zależności od narzędzia, które korzysta z danych, może być nieobsługiwane w przypadku używania wielu partycji. Jeśli nie masz pewności o liczbie partycji do ustawienia, możesz rozpocząć cztery partycje.
+* Należy ustawić przechowywanie komunikatów w centrum zdarzeń na co najmniej 7 dni. Jeśli narzędzie do konsumowania działa przez więcej niż jeden dzień, zapewnia to, że narzędzie może zostać wznowione w miejscu, w którym wyłączono do 7 dni.
+* Należy użyć domyślnej grupy odbiorców dla centrum zdarzeń. Nie ma potrzeby tworzenia innych grup konsumenckich ani używania oddzielnej grupy odbiorców, chyba że planujesz, aby dwa różne narzędzia korzystały z tych samych danych z tego samego centrum zdarzeń.
+* W przypadku dziennika aktywności platformy Azure można wybrać Event Hubs przestrzeń nazw, a Azure Monitor tworzy centrum zdarzeń w tej przestrzeni nazw o nazwie _Insights-Logs-Logs-Logs_. W przypadku innych typów dzienników można wybrać istniejące centrum zdarzeń lub Azure Monitor utworzyć centrum zdarzeń dla każdej kategorii dziennika.
+* Porty wychodzące 5671 i 5672 muszą być zwykle otwarte na komputerze lub w sieci wirtualnej wykorzystującej dane z centrum zdarzeń.
 
-- **Dane monitorowania aplikacji:** Dane dotyczące wydajności i funkcji kodu zostały napisane i działają na platformie Azure. Przykładami aplikacji, danych monitorowania ślady wydajności, dzienniki aplikacji i danych telemetrycznych użytkownika. Monitorowanie danych aplikacji zwykle są zbierane w jednym z następujących sposobów:
-  - Instrumentując kodu za pomocą zestawu SDK, takich jak [zestawu SDK usługi Application Insights](../../azure-monitor/app/app-insights-overview.md).
-  - Uruchamiając agent monitorowania, który nasłuchuje nowych aplikacji dzienników na maszynie działania aplikacji, takich jak [agenta diagnostyki Azure Windows](./../../azure-monitor/platform/diagnostics-extension-overview.md) lub [agenta diagnostyki Azure Linux](../../virtual-machines/extensions/diagnostics-linux.md).
-- **Dane monitorowania systemu operacyjnego gościa:** Dane dotyczące systemu operacyjnego, na którym aplikacja jest uruchomiona. Przykładowe dane monitorowania systemu operacyjnego gościa będzie dzienników syslog systemu Linux lub zdarzeń systemu Windows. Aby zbierać dane tego typu, należy zainstalować agenta, takie jak [agenta diagnostyki Azure Windows](./../../azure-monitor/platform/diagnostics-extension-overview.md) lub [agenta diagnostyki Azure Linux](../../virtual-machines/extensions/diagnostics-linux.md).
-- **Dane monitorowania zasobów platformy Azure:** Dane dotyczące operacji zasobu platformy Azure. W przypadku niektórych typów zasobów platformy Azure, takie jak maszyny wirtualne ma systemu operacyjnego gościa i aplikacji do monitorowania wewnątrz tej usługi platformy Azure. Dla innych zasobów platformy Azure, takich jak sieciowe grupy zabezpieczeń zasobu danych monitorowania jest najwyższej warstwy danych (ponieważ nie ma systemu operacyjnego gościa lub aplikacja działająca w tych zasobach). Te dane można zbierać w programach [ustawień diagnostycznych zasobu](./../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings).
-- **Subskrypcja platformy Azure, danych monitorowania:** Dane dotyczące operacji i zarządzania subskrypcją platformy Azure, a także dane dotyczące kondycji i działanie systemu Azure sam. [Dziennika aktywności](./../../azure-monitor/platform/activity-logs-overview.md) zawiera większość subskrypcji monitorowania danych, takich jak zdarzenia kondycji usługi i inspekcji usługi Azure Resource Manager. Można zbierać dane przy użyciu profilu dziennika.
-- **Monitorowanie danych dzierżawy platformy Azure:** Dane o poziomie dzierżawy usług platformy Azure, takich jak Azure Active Directory. Przeprowadza inspekcję Azure Active Directory i logowania są przykładami dzierżawy danych monitorowania. Te dane mogą być zbierane przy użyciu ustawienia diagnostyczne dzierżawy.
 
-Dane z dowolnej warstwy mogą być wysyłane do Centrum zdarzeń, gdzie mogą być ściągane do narzędzia partnera. Niektóre źródła można skonfigurować do wysyłania danych bezpośrednio do Centrum zdarzeń, podczas gdy inny przetwarzania, takie jak aplikacja logiki może być wymagany do pobrania niezbędnych danych. W kolejnych sekcjach opisano sposób konfigurowania danych z każdej warstwy, aby być przesłana strumieniowo do Centrum zdarzeń. Założono w nim już ma zasoby w tej warstwie do monitorowania.
+## <a name="monitoring-data-available"></a>Dane monitorowania są dostępne
+[Źródła danych monitorowania dla Azure monitor](data-sources.md) opisuje różne warstwy danych dla aplikacji platformy Azure oraz rodzaje danych monitorowania dostępnych dla każdego z nich. W poniższej tabeli wymieniono wszystkie te warstwy oraz opis sposobu przesyłania strumieniowego danych do centrum zdarzeń. Postępuj zgodnie z podanymi linkami, aby uzyskać więcej szczegółowych informacji.
 
-## <a name="set-up-an-event-hubs-namespace"></a>Konfigurowanie przestrzeni nazw usługi Event Hubs
+| Warstwa | Data | Metoda |
+|:---|:---|:---|
+| [Dzierżawa platformy Azure](data-sources.md#azure-tenant) | Azure Active Directory dzienników inspekcji | Skonfiguruj ustawienia diagnostyczne dzierżawy w dzierżawie usługi AAD. Zobacz [samouczek: Aby uzyskać szczegółowe informacje, przesyłaj strumieniowo Azure Active Directory dzienniki do centrum](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) zdarzeń platformy Azure. |
+| [Subskrypcja platformy Azure](data-sources.md#azure-subscription) | Dziennik aktywności platformy Azure | Utwórz profil dziennika, aby wyeksportować zdarzenia dziennika aktywności do Event Hubs.  Aby uzyskać szczegółowe informacje [, zobacz Eksportowanie dziennika aktywności platformy Azure do magazynu lub Event Hubs platformy Azure](activity-log-export.md) . |
+| [Zasoby platformy Azure](data-sources.md#azure-resources) | Metryki platformy<br>Dzienniki diagnostyczne |Oba typy danych są wysyłane do centrum zdarzeń przy użyciu ustawienia diagnostycznego zasobu. Aby uzyskać szczegółowe informacje, zobacz [przesyłanie strumieniowe dzienników diagnostycznych platformy Azure do centrum zdarzeń](resource-logs-stream-event-hubs.md) . |
+| [System operacyjny (gościa)](data-sources.md#operating-system-guest) | Maszyny wirtualne platformy Azure | Zainstaluj [rozszerzenie Diagnostyka Azure](diagnostics-extension-overview.md) na maszynach wirtualnych z systemem Windows i Linux na platformie Azure. Zobacz [przesyłanie strumieniowe danych Diagnostyka Azure w ścieżce aktywnej przy użyciu Event Hubs](diagnostics-extension-stream-event-hubs.md) , aby uzyskać szczegółowe informacje na temat maszyn wirtualnych z systemem Windows i [użyć rozszerzenia diagnostyki systemu Linux do monitorowania metryk i dzienników](../../virtual-machines/extensions/diagnostics-linux.md#protected-settings) w celu uzyskania szczegółowych informacji na temat maszyn wirtualnych |
+| [Kod aplikacji](data-sources.md#application-code) | Application Insights | Application Insights nie zapewnia bezpośredniej metody przesyłania strumieniowego danych do centrów zdarzeń. Można [skonfigurować ciągły eksport](../../azure-monitor/app/export-telemetry.md) danych Application Insights do konta magazynu, a następnie użyć aplikacji logiki do wysłania danych do centrum zdarzeń zgodnie z opisem w artykule [Ręczne przesyłanie strumieniowe za pomocą aplikacji logiki](#manual-streaming-with-logic-app). |
 
-Przed rozpoczęciem należy [Utwórz koncentrator przestrzeni nazw i zdarzeń usługi Event Hubs](../../event-hubs/event-hubs-create.md). Ta przestrzeń nazw i Centrum zdarzeń jest miejscem docelowym dla wszystkich danych monitorowania. Przestrzeń nazw usługi Event Hubs to logiczna grupa usługi event hubs, które używają tych samych zasad dostępu, podobnie jak magazynu kontu poszczególne obiekty BLOB w ramach tego konta magazynu. Należy pamiętać, kilka informacji na temat przestrzeń nazw usługi event hubs i centrów zdarzeń, które tworzysz:
-* Zalecamy używanie przestrzeni nazw standardowe usługi Event Hubs.
-* Typowo tylko jedną jednostkę przepływności jest to konieczne. Jeśli musisz skalować w górę wzrostu użycia dziennika zawsze ręcznie zwiększyć liczbę jednostek przepływności w przestrzeni nazw w dalszej części lub Włącz inflacji automatycznie.
-* Liczbę jednostek przepływności, można zwiększyć skalę przepływności usługi event hubs. Liczba partycji można zrównoleglić użycie wielu odbiorców. Jedna partycja wykonać maksymalnie 20MBps lub około 20 000 komunikatów na sekundę. W zależności od narzędzia korzystanie z danych może być lub może nie obsługiwać korzystanie z różnych partycji. Jeśli nie masz pewności co do liczby partycji można ustawić, zalecamy rozpoczęcie od cztery partycje.
-* Zalecane ustawienie przechowywanie komunikatów w Centrum zdarzeń do 7 dni. Jeśli narzędzie konsumencki przestanie działać więcej niż jeden dzień, dzięki temu narzędziu można wczytać tam, gdzie ją przerwaliśmy (zdarzenia maksymalnie 7 dni).
-* Zalecamy używanie domyślna grupa odbiorców Centrum zdarzeń. Nie ma potrzeby do tworzenia innych grup odbiorców lub używają grupy odbiorców oddzielne, chyba że użytkownik chce posiadać dwóch różnych narzędzi, które korzystają z tych samych danych, z tym samym Centrum zdarzeń.
-* W dzienniku aktywności platformy Azure wybierz przestrzeń nazw usługi Event Hubs i Azure Monitor tworzy Centrum zdarzeń w ramach tej przestrzeni nazw o nazwie "insights — dzienniki operational-logs." Dla innych typów dziennika można wybrać istniejącym Centrum zdarzeń (umożliwiając ponowne używanie tego samego Centrum zdarzeń usługi insights dzienniki operational-logs) lub usługi Azure Monitor Tworzenie Centrum zdarzeń dla każdej kategorii dziennika.
-* Zazwyczaj wychodząca przez port 5671 i 5672 musi być otwarty na komputerze lub korzystanie z danych z Centrum zdarzeń w sieci Wirtualnej.
+## <a name="manual-streaming-with-logic-app"></a>Ręczne przesyłanie strumieniowe za pomocą aplikacji logiki
+W przypadku danych, które nie są bezpośrednio przesyłane do centrum zdarzeń, możesz zapisywać w usłudze Azure Storage, a następnie używać wyzwalanej przez czas aplikacji logiki, która [Pobiera dane z magazynu obiektów BLOB](../../connectors/connectors-create-api-azureblobstorage.md#add-action) , i [wypycha ją jako komunikat do centrum zdarzeń](../../connectors/connectors-create-api-azure-event-hubs.md#add-action). 
 
-Można również znaleźć [Azure Event Hubs — często zadawane pytania](../../event-hubs/event-hubs-faq.md).
 
-## <a name="azure-tenant-monitoring-data"></a>Monitorowanie danych dzierżawy platformy Azure
+## <a name="tools-with-azure-monitor-integration"></a>Narzędzia z integracją Azure Monitor
 
-Dane monitorowania dzierżawy platformy Azure jest obecnie dostępny tylko dla usługi Azure Active Directory. Możesz użyć danych z [raportowania usługi Azure Active Directory](../../active-directory/reports-monitoring/overview-reports.md), który zawiera historię logowania działań i inspekcji dziennik zmian wprowadzonych w określonej dzierżawie.
+Kierowanie danych monitorowania do centrum zdarzeń za pomocą Azure Monitor pozwala na łatwą integrację z zewnętrznymi narzędziami SIEM i monitorowania. Przykłady narzędzi z integracją Azure Monitor są następujące:
 
-### <a name="azure-active-directory-data"></a>Azure Active Directory data
+| Tool | Opis |
+|:---|:---|
+|  IBM QRadar | Microsoft Azure DSM i Microsoft Azure centrum zdarzeń jest dostępny do pobrania z [witryny sieci Web pomocy technicznej firmy IBM](https://www.ibm.com/support). Możesz dowiedzieć się więcej o integracji z platformą Azure w [konfiguracji DSM QRadar](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0). |
+| Splunk | [Dodatek Azure monitor dla Splunk](https://splunkbase.splunk.com/app/3534/) jest projektem open source dostępnym w Splunkbase. Dokumentacja jest dostępna w [Azure monitor dodatku dla Splunk](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk).<br><br> Jeśli nie można zainstalować dodatku w wystąpieniu usługi Splunk, jeśli na przykład używasz serwera proxy lub działającego w chmurze Splunk, możesz przesłać te zdarzenia do modułu zbierającego zdarzenia HTTP Splunk przy użyciu [funkcji platformy Azure dla Splunk](https://github.com/Microsoft/AzureFunctionforSplunkVS), która jest wyzwalana przez nowe komunikaty w centrum zdarzeń. |
+| SumoLogic | Instrukcje dotyczące konfigurowania SumoLogic do korzystania z danych z centrum zdarzeń są dostępne w [dziennikach zbierania dla aplikacji inspekcji platformy Azure z centrum zdarzeń](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub). |
+| ArcSight | Łącznik inteligentny ArcSight usługi Azure Event Hub jest dostępny jako część [kolekcji inteligentnych łączników ArcSight](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852). |
+| Serwer Syslog | Jeśli chcesz przesyłać strumieniowo Azure Monitor dane bezpośrednio do serwera dziennika systemowego, możesz użyć [rozwiązania na podstawie funkcji platformy Azure](https://github.com/miguelangelopereira/azuremonitor2syslog/).
 
-Aby wysyłać dane z dziennika usługi Azure Active Directory do przestrzeni nazw usługi Event Hubs, należy skonfigurować ustawienie diagnostyczne dzierżawy w dzierżawie usługi AAD. [Postępuj zgodnie z tego przewodnika](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) skonfigurować ustawienie diagnostyczne dzierżawy.
-
-## <a name="azure-subscription-monitoring-data"></a>Dane monitorowania subskrypcji platformy Azure
-
-Dane monitorowania subskrypcji platformy Azure jest dostępna w [dziennika aktywności platformy Azure](./../../azure-monitor/platform/activity-logs-overview.md). Zawiera tworzenia, aktualizowanie i usuwanie operacji z usługi Resource Manager, zmiany w [usługę Azure service health](../../service-health/service-health-overview.md) , może mieć wpływ na zasoby w ramach subskrypcji, [kondycja zasobu](../../service-health/resource-health-overview.md) stanu przejścia i kilku innych typów zdarzeń na poziomie subskrypcji. [Ten artykuł szczegółowo opisuje wszystkie kategorie zdarzeń, które pojawiają się w dzienniku aktywności platformy Azure](./../../azure-monitor/platform/activity-log-schema.md).
-
-### <a name="activity-log-data"></a>Dane dzienników aktywności
-
-Aby przesyłanie danych z dziennika aktywności platformy Azure do przestrzeni nazw usługi Event Hubs, należy skonfigurować profil dziennika w ramach subskrypcji. [Postępuj zgodnie z tego przewodnika](./activity-logs-stream-event-hubs.md) do konfiguracji profilu dziennika w ramach Twojej subskrypcji. W tym po każdej subskrypcji, którą chcesz monitorować.
-
-> [!TIP]
-> Profil dziennika obecnie tylko służy do wybierania przestrzeni nazw usługi Event Hubs, w którym Centrum zdarzeń jest tworzone przy użyciu nazwy "insights-operational-logs." Go nie jest jeszcze można określić własną nazwę Centrum zdarzeń w profilu dziennika.
-
-## <a name="azure-resource-metrics-and-diagnostics-logs"></a>Dzienniki usługi Azure resource metryki i Diagnostyka
-
-Zasoby platformy Azure tworzą dwa rodzaje danych monitorowania:
-1. [Dzienniki diagnostyczne zasobu](diagnostic-logs-overview.md)
-2. [Metryki](data-platform.md)
-
-Oba typy danych są wysyłane do Centrum zdarzeń za pomocą ustawienie diagnostyczne zasobu. [Postępuj zgodnie z tego przewodnika](diagnostic-logs-stream-event-hubs.md) skonfigurować ustawienie diagnostyczne zasobu definiuje od określonego zasobu. Ustaw ustawienie diagnostyczne zasobu dla każdego zasobu, z której chcesz zbierać dzienniki.
-
-> [!TIP]
-> Można użyć usługi Azure Policy, aby upewnić się, że każdy zasób w określonym zakresie zawsze skonfigurowano ustawienie diagnostyczne [przy użyciu efektu DeployIfNotExists w regule zasad](../../governance/policy/concepts/definition-structure.md#policy-rule).
-
-## <a name="guest-os-data"></a>Dane systemu operacyjnego gościa
-
-Musisz zainstalować agenta, aby wysyłać dane monitorowania systemu operacyjnego gościa do Centrum zdarzeń. Dla Windows lub Linux należy określić dane, które mają być wysyłane do Centrum zdarzeń, a także Centrum zdarzeń, do którego dane mają być wysyłane w pliku konfiguracji i przekazać plik konfiguracji do agenta uruchomionego na maszynie Wirtualnej.
-
-### <a name="linux-data"></a>Dane systemu Linux
-
-[Agenta diagnostyki Azure Linux](../../virtual-machines/extensions/diagnostics-linux.md) może służyć do wysyłania danych z maszyny z systemem Linux w Centrum zdarzeń monitorowania. To zrobić, dodając Centrum zdarzeń jako obiekt sink w swojej LAD ustawienia chronionego pliku konfiguracji JSON. [Ten artykuł, aby dowiedzieć się więcej na temat dodawania obiekt sink zdarzenia Centrum agentowi diagnostyki Azure Linux](../../virtual-machines/extensions/diagnostics-linux.md#protected-settings).
-
-> [!NOTE]
-> Nie można skonfigurować przesyłanie strumieniowe danych monitorowania systemów operacyjnych gościa do Centrum zdarzeń w portalu. Zamiast tego należy ręcznie edytować plik konfiguracji.
-
-### <a name="windows-data"></a>Windows danych
-
-[Diagnostycznych platformy Azure Windows agent](./../../azure-monitor/platform/diagnostics-extension-overview.md) może służyć do wysyłania danych z maszyny Windows do Centrum zdarzeń monitorowania. To zrobić, dodając Centrum zdarzeń jako obiekt sink w sekcji privateConfig WAD pliku konfiguracji. [Ten artykuł, aby dowiedzieć się więcej na temat dodawania obiekt sink zdarzenia Centrum agentowi diagnostyki Azure Windows](./../../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md).
-
-> [!NOTE]
-> Nie można skonfigurować przesyłanie strumieniowe danych monitorowania systemów operacyjnych gościa do Centrum zdarzeń w portalu. Zamiast tego należy ręcznie edytować plik konfiguracji.
-
-## <a name="application-monitoring-data"></a>Dane monitorowania aplikacji
-
-Monitorowanie danych aplikacji wymaga, że kod został zinstrumentowany przy użyciu zestawu SDK, dzięki czemu nie występuje ogólnego przeznaczenia rozwiązania do monitorowania danych do Centrum zdarzeń w systemie Azure routing aplikacji. Jednak [usługi Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) co usługa, która może służyć do zbierania danych z poziomu aplikacji platformy Azure. Jeśli używasz usługi Application Insights obejmuje strumieniowe przesyłanie danych monitorowania do Centrum zdarzeń, wykonując następujące czynności:
-
-1. [Skonfiguruj Eksport ciągły](../../azure-monitor/app/export-telemetry.md) danych usługi Application Insights do konta magazynu.
-
-2. Konfigurowanie aplikacji Logic wyzwolone przez czasomierz, [ściąga dane z magazynu obiektów blob](../../connectors/connectors-create-api-azureblobstorage.md#add-action) i [wypycha go jako wiadomości do Centrum zdarzeń](../../connectors/connectors-create-api-azure-event-hubs.md#add-action).
-
-## <a name="what-can-i-do-with-the-monitoring-data-being-sent-to-my-event-hub"></a>Co można zrobić za pomocą danych monitorowania, są wysyłane do mojego Centrum zdarzeń?
-
-Routing danych monitorowania do Centrum zdarzeń za pomocą usługi Azure Monitor pozwala łatwo zintegrować ją z partnerem rozwiązania SIEM i narzędzi do monitorowania. Większość narzędzi wymagają parametry połączenia Centrum zdarzeń i pewnych uprawnień do Twojej subskrypcji platformy Azure można odczytać danych z Centrum zdarzeń. Tutaj znajduje się niepełna lista narzędzi obsługujących integrację usługi Azure Monitor:
-
-* **IBM QRadar** — Microsoft Azure DSM i Protokół Centrum zdarzeń Azure firmy Microsoft są dostępne do pobrania z [witryna internetowa Pomocy technicznej firmy IBM](https://www.ibm.com/support). Możesz [dowiedzieć się więcej o integracji z platformą Azure w tym miejscu](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0).
-* **Splunk** — w zależności od ustawień Splunk, dostępne są dwie opcje:
-    1. [Dodatek monitora platformy Azure dla programu Splunk](https://splunkbase.splunk.com/app/3534/) jest dostępna w Splunkbase i projekt open source. [Dokumentacja jest tutaj](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk).
-    2. Jeśli nie możesz zainstalować dodatkowe wystąpienia Splunk (np.) Jeśli przy użyciu serwera proxy lub działające w chmurze Splunk), możesz przekazywać te zdarzenia do modułu zbierającego zdarzenia HTTP Splunk przy użyciu [tę funkcję, która jest wyzwalana przez nowych komunikatów w Centrum zdarzeń](https://github.com/Microsoft/AzureFunctionforSplunkVS).
-* **SumoLogic** — instrukcje dotyczące konfigurowania SumoLogic do pracy z danymi z Centrum zdarzeń są [dostępne tutaj](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub)
-* **ArcSight** — łącznik inteligentne ArcSight Azure Event Hub jest dostępny jako część [tutaj kolekcji inteligentnych łącznika ArcSight](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852).
-* **Serwer SYSLOG** — Jeśli chcesz strumień danych usługi Azure Monitor bezpośrednio do serwera syslog, możesz sprawdzić [tego repozytorium GitHub](https://github.com/miguelangelopereira/azuremonitor2syslog/).
 
 ## <a name="next-steps"></a>Następne kroki
 * [Archiwizowanie dziennika aktywności na koncie magazynu](../../azure-monitor/platform/archive-activity-log.md)
-* [Zapoznaj się z omówieniem dziennik aktywności platformy Azure](../../azure-monitor/platform/activity-logs-overview.md)
-* [Ustawianie alertu na podstawie zdarzenia dziennika aktywności](../../azure-monitor/platform/alerts-log-webhook.md)
+* [Zapoznaj się z omówieniem dziennika aktywności platformy Azure](../../azure-monitor/platform/activity-logs-overview.md)
+* [Konfigurowanie alertu na podstawie zdarzenia dziennika aktywności](../../azure-monitor/platform/alerts-log-webhook.md)
 
 

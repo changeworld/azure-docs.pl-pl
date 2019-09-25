@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 40e54daa60efedd84b32c72f29d1e2a8858c27da
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7349287945a56bb7674e364f515d0b763015ed59
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66162539"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262311"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Samouczek: konfigurowanie i używanie metryk i dzienników diagnostycznych w usłudze IoT Hub
 
@@ -126,7 +126,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 ## <a name="enable-the-diagnostic-logs"></a>Włączanie dzienników diagnostycznych 
 
-[Dzienniki diagnostyczne](../azure-monitor/platform/diagnostic-logs-overview.md) są domyślnie wyłączone po utworzeniu nowego centrum IoT. W tej sekcji włączysz dzienniki diagnostyczne dla swojego centrum.
+[Dzienniki diagnostyczne](../azure-monitor/platform/resource-logs-overview.md) są domyślnie wyłączone po utworzeniu nowego centrum IoT. W tej sekcji włączysz dzienniki diagnostyczne dla swojego centrum.
 
 1. Najpierw, jeśli nie jesteś jeszcze w swoim centrum w portalu, kliknij pozycję **Grupy zasobów**, a następnie kliknij grupę zasobów Contoso-Resources. Wybierz centrum z listy wyświetlanych zasobów. 
 
@@ -274,7 +274,7 @@ Usługa IoT Hub nie została jeszcze zmigrowana do [metryk w usłudze Azure Moni
 
 Wcześniej w sekcji konfigurowania skryptu skonfigurowano urządzenia do symulowania użycia urządzenia IoT. Ta sekcja zawiera instrukcje dotyczące pobierania aplikacji konsolowej .NET, która symuluje urządzenie wysyłające komunikaty z urządzenia do chmury do centrum IoT Hub.  
 
-Pobierz rozwiązanie na potrzeby [symulacji urządzenia IoT](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Ten link powoduje pobranie repozytorium z kilku aplikacji rozwiązania, którego szukasz, jest w iot-hub/samouczki/Routing /.
+Pobierz rozwiązanie na potrzeby [symulacji urządzenia IoT](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Ten link umożliwia pobranie repozytorium z kilkoma aplikacjami. szukane rozwiązanie dotyczy usługi IoT-Hub/samouczków/routingu/.
 
 Kliknij dwukrotnie plik rozwiązania (SimulatedDevice.sln), aby otworzyć kod w programie Visual Studio, a następnie otwórz plik Program.cs. Zastąp element `{iot hub hostname}` nazwą hosta centrum IoT Hub. Format nazwy hosta centrum IoT Hub to **{nazwa-centrum-iot}.azure-devices.net**. W tym samouczku jest używana nazwa hosta centrum **ContosoTestHub.azure-devices.net**. Następnie zastąp ciąg `{device key}` kluczem urządzenia, który został wcześniej zapisany podczas konfigurowania urządzenia symulowanego. 
 
@@ -369,7 +369,7 @@ Aby usunąć grupę zasobów, użyj polecenia [az group delete](https://docs.mic
 az group delete --name $resourceGroup
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono sposób korzystania z metryk i dzienników diagnostycznych przez wykonywanie następujących czynności:
 

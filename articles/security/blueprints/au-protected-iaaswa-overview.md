@@ -8,16 +8,16 @@ ms.service: security
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: meladie
-ms.openlocfilehash: 50e410fc439be7b3a5f4c1e8d4bab5d60c3c4f52
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 5fe9cfe642585c4f5220d79813816e554fdf48ef
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946926"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259185"
 ---
 # <a name="azure-security-and-compliance-blueprint---iaas-web-application-for-australia-protected"></a>Strategia zabezpieczeń i zgodności z przepisami platformy Azure — aplikacja sieci Web IaaS dla Australii
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Ten Strategia zabezpieczeń i zgodności z przepisami platformy Azure zawiera wskazówki dotyczące wdrażania środowiska infrastruktury jako usługi (IaaS) odpowiednie do zbierania, przechowywania i pobierania danych administracji publicznej chronionych przez usługę AU, które są zgodne z celami Australijskie informacje o bezpieczeństwie instytucji rządowych (ISM), które zostały opracowane przez australijską organizację sygnałów (ASD). Ten plan przedstawia wspólną architekturę referencyjną i pomaga w zapewnieniu właściwej obsługi poufnych danych rządowych w bezpiecznym, zgodnym środowisku wielowarstwowym.
 
 Ta architektura referencyjna, przewodnik implementacji i model zagrożeń stanowią podstawę dla klientów, którzy podejmują własne procesy planowania i akredytacji systemu, ułatwiając klientom wdrażanie obciążeń na platformie Azure w sposób zgodny ze standardem ASD. Klienci mogą zdecydować się na wdrożenie usługi Azure VPN Gateway lub ExpressRoute do korzystania z usług federacyjnych oraz do integrowania zasobów lokalnych z zasobami platformy Azure. Klienci muszą rozważyć implikacje zabezpieczeń dotyczące korzystania z zasobów lokalnych. Dodatkowa konfiguracja jest wymagana w celu spełnienia wszystkich wymagań, ponieważ mogą się one różnić w zależności od implementacji poszczególnych klientów.
@@ -65,7 +65,7 @@ To rozwiązanie używa następujących usług platformy Azure. Dalsze szczegół
 - Azure Virtual Network
     - (4) sieciowe grupy zabezpieczeń
     - Azure Network Watcher
-- Magazyn Recovery Services
+- Magazyn usługi Recovery Services
 
 Ten plan zawiera usługi platformy Azure, które nie zostały certyfikowane do użycia w chronionej klasyfikacji przez australijskie Centrum zabezpieczeń cybernetycznymi (ACSC). Wszystkie usługi uwzględnione w tej architekturze referencyjnej zostały certyfikowane przez ACSC na poziomie "DLM". Firma Microsoft zaleca, aby klienci przeglądali opublikowane raporty dotyczące zabezpieczeń i inspekcji związane z tymi usługami platformy Azure oraz korzystać z ich struktury zarządzania ryzykiem w celu określenia, czy usługa platformy Azure jest odpowiednia do celów wewnętrznych akredytacji i używania w Klasyfikacja chroniona.
 
@@ -123,10 +123,10 @@ Ponadto następujące funkcje Azure Active Directory ułatwiają zarządzanie do
 - [Azure Active Directory Privileged Identity Management](../../active-directory/privileged-identity-management/pim-getting-started.md) pozwala klientom zminimalizować liczbę użytkowników, którzy mają dostęp do określonych informacji. Administratorzy mogą używać Azure Active Directory Privileged Identity Management do odnajdywania, ograniczania i monitorowania uprzywilejowanych tożsamości oraz ich dostępu do zasobów. Tej funkcji można także użyć do wymuszenia dostępu administracyjnego na żądanie, w miarę potrzeb, w razie potrzeby.
 - [Azure Active Directory Identity Protection](../../active-directory/identity-protection/overview.md) wykrywa potencjalne luki w zabezpieczeniach,&#39;które mają wpływ na tożsamości organizacji, konfiguruje automatyczne odpowiedzi na wykryte podejrzane działania związane z tożsamościami organizacji&#39;i bada podejrzane zdarzenia w celu podjęcia odpowiednich działań w celu ich rozwiązania.
 
-**Uwierzytelnianie wieloskładnikowe systemu Azure**: Aby chronić tożsamości, należy zaimplementować uwierzytelnianie wieloskładnikowe. [Uwierzytelnianie wieloskładnikowe systemu Azure](https://azure.microsoft.com/services/multi-factor-authentication/) to łatwe w użyciu, skalowalne i niezawodne rozwiązanie, które zapewnia drugą metodę uwierzytelniania w celu ochrony użytkowników. Uwierzytelnianie wieloskładnikowe systemu Azure używa możliwości chmury i integruje się z lokalnymi Active Directory i aplikacjami niestandardowymi. Ta ochrona jest rozszerzona o duże ilościowe scenariusze o kluczowym znaczeniu.
+**Multi-Factor Authentication platformy Azure**: Aby chronić tożsamości, należy zaimplementować uwierzytelnianie wieloskładnikowe. [Usługa Azure Multi-Factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/) to łatwe w użyciu, skalowalne i niezawodne rozwiązanie, które zapewnia drugą metodę uwierzytelniania w celu ochrony użytkowników. Platforma Azure Multi-Factor Authentication używa możliwości chmury i integruje się z lokalnymi Active Directory i aplikacjami niestandardowymi. Ta ochrona jest rozszerzona o duże ilościowe scenariusze o kluczowym znaczeniu.
 
 ### <a name="security"></a>Bezpieczeństwo
-**Zarządzanie**wpisami tajnymi: Rozwiązanie używa [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) do zarządzania kluczami i wpisami tajnymi. Usługa Azure Key Vault ułatwia ochronę kluczy kryptograficznych i kluczy tajnych używanych przez aplikacje i usługi w chmurze. Następujące funkcje Azure Key Vault pomagają klientom chronić i uzyskiwać dostęp do tych danych:
+**Zarządzanie wpisami tajnymi**: Rozwiązanie używa [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) do zarządzania kluczami i wpisami tajnymi. Usługa Azure Key Vault ułatwia ochronę kluczy kryptograficznych i kluczy tajnych używanych przez aplikacje i usługi w chmurze. Następujące funkcje Azure Key Vault pomagają klientom chronić i uzyskiwać dostęp do tych danych:
 
 - Zaawansowane zasady dostępu są konfigurowane w zależności od potrzeb.
 - Zasady dostępu Key Vault są zdefiniowane z minimalnymi wymaganymi uprawnieniami do kluczy i wpisów tajnych.
@@ -147,7 +147,7 @@ Azure Security Center korzysta z różnych funkcji wykrywania, aby wysyłać ale
 
 Azure Security Center zapewnia priorytetowe alerty zabezpieczeń i zdarzenia, dzięki czemu klienci mogą łatwiej wykrywać i rozwiązywać potencjalne problemy z zabezpieczeniami. [Raport analizy zagrożeń](https://docs.microsoft.com/azure/security-center/security-center-threat-report) jest generowany dla każdego wykrytego zagrożenia, aby pomóc zespołom reagowania na incydenty w trakcie badania i korygowaniem zagrożeń.
 
-Ponadto ta architektura referencyjna wykorzystuje [ocenę luk](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations) w zabezpieczeniach w Azure Security Center. Po skonfigurowaniu Agent partnera (np. Qualys) zgłasza luki w zabezpieczeniach do platformy zarządzania partnera. Z kolei Platforma zarządzania przez partnera zapewnia informacje dotyczące luk i monitorowania kondycji z powrotem do Azure Security Center, dzięki czemu klienci mogą szybko identyfikować zagrożone maszyny wirtualne.
+Ponadto ta architektura referencyjna wykorzystuje [ocenę luk w zabezpieczeniach](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations) w Azure Security Center. Po skonfigurowaniu Agent partnera (np. Qualys) zgłasza luki w zabezpieczeniach do platformy zarządzania partnera. Z kolei Platforma zarządzania przez partnera zapewnia informacje dotyczące luk i monitorowania kondycji z powrotem do Azure Security Center, dzięki czemu klienci mogą szybko identyfikować zagrożone maszyny wirtualne.
 
 **Application Gateway platformy Azure**: Architektura zmniejsza ryzyko wystąpienia luk w zabezpieczeniach przy użyciu Application Gateway platformy Azure z skonfigurowaną zaporą aplikacji sieci Web, a zestaw reguł OWASP jest włączony. Dodatkowe możliwości obejmują:
 
@@ -167,10 +167,10 @@ Ponadto ta architektura referencyjna wykorzystuje [ocenę luk](https://docs.micr
 
 **Monitor chmury**: [Monitor w chmurze](https://docs.microsoft.com/windows-server/failover-clustering/whats-new-in-failover-clustering#BKMK_CloudWitness) to typ monitora kworum klastra trybu failover w systemie Windows Server 2016, który wykorzystuje platformę Azure jako punkt rozstrzygania. Monitor w chmurze, taki jak każdy inny monitor kworum, otrzymuje głos i może uczestniczyć w obliczeniach kworum, ale korzysta ze standardowego publicznie dostępnego Blob Storage platformy Azure. Eliminuje to dodatkowe obciążenie pracą maszyn wirtualnych hostowanych w chmurze publicznej.
 
-### <a name="logging-and-auditing"></a>Rejestrowanie i inspekcja
+### <a name="logging-and-auditing"></a>Rejestrowanie i przeprowadzanie inspekcji
 Usługi platformy Azure w szerokim zakresie rejestrują aktywność systemu i użytkownika, a także kondycję systemu:
 - **Dzienniki aktywności**: [Dzienniki aktywności](../../azure-monitor/platform/activity-logs-overview.md) zapewniają wgląd w operacje wykonywane na zasobach w ramach subskrypcji. Dzienniki aktywności mogą pomóc w ustaleniu inicjatora, czasu wystąpienia i stanu operacji.
-- **Dzienniki diagnostyczne**: [Dzienniki diagnostyczne](../../azure-monitor/platform/diagnostic-logs-overview.md) obejmują wszystkie dzienniki wyemitowane przez każdy zasób. Dzienniki te obejmują Dzienniki systemu Windows, dzienniki usługi Azure Storage, dzienniki inspekcji Key Vault i Application Gateway dostępu i dzienników zapory. Wszystkie dzienniki diagnostyczne zapisu na scentralizowanym i zaszyfrowanym koncie usługi Azure Storage w celu archiwizacji. Przechowywanie jest możliwe do skonfigurowania przez użytkownika, do 730 dni, w celu spełnienia wymagań dotyczących przechowywania specyficznych dla organizacji.
+- **Dzienniki diagnostyczne**: [Dzienniki diagnostyczne](../../azure-monitor/platform/resource-logs-overview.md) obejmują wszystkie dzienniki wyemitowane przez każdy zasób. Dzienniki te obejmują Dzienniki systemu Windows, dzienniki usługi Azure Storage, dzienniki inspekcji Key Vault i Application Gateway dostępu i dzienników zapory. Wszystkie dzienniki diagnostyczne zapisu na scentralizowanym i zaszyfrowanym koncie usługi Azure Storage w celu archiwizacji. Przechowywanie jest możliwe do skonfigurowania przez użytkownika, do 730 dni, w celu spełnienia wymagań dotyczących przechowywania specyficznych dla organizacji.
 
 **Azure monitor dzienników**: Te dzienniki są konsolidowane w [Azure monitor dziennikach](https://azure.microsoft.com/services/log-analytics/) na potrzeby przetwarzania, przechowywania i raportowania na pulpicie nawigacyjnym. Po zebraniu dane są organizowane w oddzielnych tabelach dla każdego typu danych, dzięki czemu wszystkie dane mogą być analizowane razem niezależnie od ich oryginalnego źródła. Ponadto Azure Security Center integruje się z dziennikami Azure Monitor, dzięki czemu klienci mogą korzystać z zapytań Kusto w celu uzyskania dostępu do danych zdarzeń zabezpieczeń i połączyć je z danymi z innych usług.
 

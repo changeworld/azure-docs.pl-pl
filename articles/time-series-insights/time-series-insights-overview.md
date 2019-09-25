@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: overview
-ms.date: 08/01/2019
+ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: c0c65f364e9e72d87d6618944ab296354e03a1fc
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 706960f18080b4883735195b21ed05c3763e8617
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736193"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264495"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Co to jest usługa Azure Time Series Insights?
 
@@ -76,7 +76,7 @@ Azure Time Series Insights przechwytuje i zapisuje każde nowe zdarzenie jako wi
 
 - **Skalowalność**: usługa Time Series Insights obsługuje urządzenia IoT na dużą skalę. Umożliwia pozyskiwanie od 1 miliona do 100 milionów zdarzeń dziennie, które domyślnie są przechowywane przez 31 dni. Możesz wizualizować i analizować strumienie danych na żywo niemal w czasie rzeczywistym, obok danych historycznych.
 
-## <a name="get-started"></a>Wprowadzenie
+## <a name="get-started"></a>Rozpoczęcie pracy
 
 Aby rozpocząć, wykonaj następujące kroki.
 
@@ -94,4 +94,4 @@ Ten diagram przedstawia przykład danych usługi Time Series Insights wyświetla
 ## <a name="next-steps"></a>Następne kroki
 
 - Poznaj Azure Time Series Insights ogólnej dostępności [bezpłatnego środowiska demonstracyjnego](./time-series-quickstart.md).
-- Dowiedz się więcej o [tym](time-series-insights-environment-planning.md) , jak planować środowisko Time Series Insights.
+- Dowiedz się więcej o [tym, jak planować środowisko Time Series Insights](time-series-insights-environment-planning.md) .

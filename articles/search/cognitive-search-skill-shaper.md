@@ -9,13 +9,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.subservice: cognitive-search
-ms.openlocfilehash: 22a8f891eaf72dbec9c1ec103508c81effb14b08
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 84814c317a945fd22ada580dcc3f64ed2adcff7c
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186315"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265347"
 ---
 #   <a name="shaper-cognitive-skill"></a>Umiejętności poznawcze kształtu
 
@@ -226,7 +225,7 @@ Definicja umiejętności **kształtu** w tym scenariuszu może wyglądać podobn
 ```
 
 ### <a name="skill-output"></a>Dane wyjściowe kwalifikacji
-W takim przypadku **kształt** tworzy typ złożony. Ta struktura istnieje w pamięci. Jeśli chcesz zapisać go w [sklepie](knowledge-store-concept-intro.md)z bazami danych, należy utworzyć projekcję w zestawu umiejętności, która definiuje charakterystykę magazynu.
+W takim przypadku **kształt** tworzy typ złożony. Ta struktura istnieje w pamięci. Jeśli chcesz zapisać go w [sklepie z bazami](knowledge-store-concept-intro.md)danych, należy utworzyć projekcję w zestawu umiejętności, która definiuje charakterystykę magazynu.
 
 ```json
 {

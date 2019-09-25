@@ -9,21 +9,21 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: 4f296aae6c147b0d5209276dbd008a1207837cfd
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: f45762d5b37a006ede9aeff76e3d756c8144f5ba
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875198"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258575"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Monitorowanie wydajności Azure App Service
 
-Włączenie monitorowania w aplikacjach sieci Web opartych na oprogramowaniu .NET i .NET Core działających na [platformie Azure App Services](https://docs.microsoft.com/azure/app-service/) jest teraz łatwiejsze niż kiedykolwiek wcześniej. Wcześniej trzeba było ręcznie zainstalować rozszerzenie witryny, dlatego najnowsze rozszerzenie/Agent jest teraz domyślnie wbudowane w obraz usługi App Service. W tym artykule opisano Włączanie monitorowania Application Insights oraz zamieszczono wstępne wskazówki dotyczące automatyzowania procesu wdrażania na dużą skalę.
+Włączenie monitorowania na ASP.NET i opartych na ASP.NET Core aplikacjach sieci Web działających na [platformie Azure App Services](https://docs.microsoft.com/azure/app-service/) jest teraz łatwiejsze niż kiedykolwiek wcześniej. Wcześniej trzeba było ręcznie zainstalować rozszerzenie witryny, dlatego najnowsze rozszerzenie/Agent jest teraz domyślnie wbudowane w obraz usługi App Service. W tym artykule opisano Włączanie monitorowania Application Insights oraz zamieszczono wstępne wskazówki dotyczące automatyzowania procesu wdrażania na dużą skalę.
 
 > [!NOTE]
 > Ręczne dodawanie rozszerzenia witryny Application Insights za pomocą**rozszerzeń** **narzędzi** > programistycznych jest przestarzałe. Ta metoda instalacji rozszerzenia była zależna od aktualizacji ręcznych dla każdej nowej wersji. Najnowsza stabilna wersja rozszerzenia jest teraz [wstępnie zainstalowana](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) jako część obrazu App Service. Pliki znajdują się w `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` systemie i są automatycznie aktualizowane z każdą stabilną wersją. W przypadku korzystania z instrukcji opartych na agencie w celu włączenia monitorowania poniżej zostanie automatycznie usunięte przestarzałe rozszerzenie.
 
-## <a name="enable-application-insights"></a>Włączanie usługi Application Insights
+## <a name="enable-application-insights"></a>Włącz usługę Application Insights
 
 Istnieją dwa sposoby włączania monitorowania aplikacji na platformie Azure App Services hostowanych aplikacjach:
 
@@ -138,7 +138,7 @@ Aby można było włączyć zbieranie danych telemetrycznych z Application Insig
 
 ### <a name="application-settings-definitions"></a>Definicje ustawień aplikacji
 
-|Nazwa ustawienia aplikacji |  Definicja | Wartość |
+|Nazwa ustawienia aplikacji |  Definicja | Value |
 |-----------------|:------------|-------------:|
 |ApplicationInsightsAgent_EXTENSION_VERSION | Główne rozszerzenie, które kontroluje monitorowanie środowiska uruchomieniowego. | `~2` |
 |XDT_MicrosoftApplicationInsights_Mode |  W trybie domyślnym tylko funkcje podstawowe są włączane w celu zapewnienia optymalnej wydajności. | `default`lub `recommended`. |
@@ -326,6 +326,9 @@ Poniżej przedstawiono Przewodnik rozwiązywania problemów krok po kroku dotycz
 > [!NOTE]
 > Aplikacje Java i Node. js są obsługiwane tylko na platformie Azure App Services za pośrednictwem ręcznie Instrumentacji opartej na zestawie SDK i dlatego poniższe kroki nie dotyczą tych scenariuszy.
 
+> [!NOTE]
+> Aplikacje ASP.NET Core 3,0 nie są obsługiwane. Wykonaj [ręczną instrumentację](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) za pomocą kodu dla aplikacji ASP.NET Core 3,0.
+
 1. Sprawdź, czy aplikacja jest monitorowana `ApplicationInsightsAgent`za pośrednictwem programu.
     * Sprawdź, `ApplicationInsightsAgent_EXTENSION_VERSION` czy ustawienie aplikacji ma ustawioną wartość "~ 2".
 2. Upewnij się, że aplikacja spełnia wymagania, które mają być monitorowane.
@@ -367,7 +370,7 @@ Jest to spowodowane tym, że ustawienie aplikacji APPINSIGHTS_JAVASCRIPT_ENABLED
 
 Aby uzyskać najnowsze informacje na temat Application Insights agenta/rozszerzenia, zapoznaj się z [informacjami o wersji](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/app-insights-web-app-extensions-releasenotes.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Uruchom profilera aplikacji na żywo](../app/profiler.md).
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) — monitorowanie usługi Azure Functions za pomocą usługi Application Insights
 * [Włącz diagnostykę platformy Azure](../platform/diagnostics-extension-to-application-insights.md), która ma być wysyłana do usługi Application Insights.

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 03/19/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6808ad101a828708ff4fe77bb4b8a55cf8c5fec7
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 65cd59933fa31d870a507cbe80b454934c9008d0
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135433"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265100"
 ---
 # <a name="my-first-python-runbook"></a>Mój pierwszy element Runbook w języku Python
 
@@ -146,7 +146,7 @@ Aby zarządzać zasobami platformy Azure, skrypt musi uwierzytelniać się przy 
 
 ## <a name="add-code-to-create-python-compute-client-and-start-the-vm"></a>Dodaj kod, aby utworzyć klienta obliczeniowego języka Python i uruchomić maszynę wirtualną
 
-Aby współpracować z maszynami wirtualnymi platformy Azure, Utwórz wystąpienie [klienta obliczeniowego platformy Azure dla języka Python](https://docs.microsoft.com/python/api/azure.mgmt.compute.computemanagementclient?view=azure-python).
+Aby współpracować z maszynami wirtualnymi platformy Azure, Utwórz wystąpienie [klienta obliczeniowego platformy Azure dla języka Python](https://docs.microsoft.com/python/api/azure-mgmt-compute/azure.mgmt.compute.computemanagementclient).
 
 Użyj klienta obliczeniowego, aby uruchomić maszynę wirtualną. Dodaj następujący kod do elementu Runbook:
 

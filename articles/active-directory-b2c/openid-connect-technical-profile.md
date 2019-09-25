@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b1262d34f93ecbcdb71586fd551d28fde477f92a
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 0a776c793bab9aee76cf338bc19c560ab700e787
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063940"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258196"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj profil techniczny OpenID Connect Connect w zasadach niestandardowych Azure Active Directory B2C
 
@@ -84,7 +84,7 @@ Profil techniczny zwraca również oświadczenia, które nie są zwracane przez 
 | scope | Nie | Zakres żądania, który jest zdefiniowany zgodnie z specyfikacją OpenID Connect Connect Core 1,0. Takie jak `openid`, `profile`i. `email` |
 | HttpBinding | Nie | Oczekiwano powiązania HTTP z punktami końcowymi tokenu dostępu i tokenów oświadczeń. Możliwe wartości: `GET` lub `POST`.  |
 | ValidTokenIssuerPrefixes | Nie | Klucz, którego można użyć do zalogowania się do poszczególnych dzierżawców w przypadku korzystania z dostawcy tożsamości z wieloma dzierżawcami, takiego jak Azure Active Directory. |
-| UsePolicyInRedirectUri | Nie | Wskazuje, czy należy używać zasad podczas konstruowania identyfikatora URI przekierowania. Podczas konfigurowania aplikacji w dostawcy tożsamości należy określić identyfikator URI przekierowania. Identyfikator URI przekierowania wskazuje na Azure AD B2C `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` , (login.microsoftonline.com może ulec zmianie z Your-tenant-Name.b2clogin.com).  W przypadku określenia `false`tego elementu należy dodać identyfikator URI przekierowania dla każdej używanej zasady. Na przykład: `https://login.microsoftonline.com/te/{tenant}/{policy}/oauth2/authresp`. |
+| UsePolicyInRedirectUri | Nie | Wskazuje, czy należy używać zasad podczas konstruowania identyfikatora URI przekierowania. Podczas konfigurowania aplikacji w dostawcy tożsamości należy określić identyfikator URI przekierowania. Identyfikator URI przekierowania wskazuje Azure AD B2C, `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp`.  W przypadku określenia `false`tego elementu należy dodać identyfikator URI przekierowania dla każdej używanej zasady. Na przykład: `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/{policy-name}/oauth2/authresp`. |
 | MarkAsFailureOnStatusCode5xx | Nie | Wskazuje, czy żądanie do usługi zewnętrznej powinno być oznaczone jako błąd, jeśli kod stanu HTTP znajduje się w zakresie 5xx. Wartość domyślna to `false`. |
 | DiscoverMetadataByTokenIssuer | Nie | Wskazuje, czy metadane OIDC powinny być odnajdywane przy użyciu wystawcy w tokenie JWT. |
 
@@ -98,28 +98,10 @@ Element **CryptographicKeys** zawiera następujący atrybut:
 
 ## <a name="redirect-uri"></a>Identyfikator URI przekierowania
 
-Podczas konfigurowania identyfikatora URI przekierowania dostawcy tożsamości wprowadź `https://login.microsoftonline.com/te/tenant/oauth2/authresp`wartość. Pamiętaj o zamianie **dzierżawy** na nazwę dzierżawy (na przykład contosob2c.onmicrosoft.com) lub identyfikator dzierżawy. Identyfikator URI przekierowania musi zawierać tylko małe litery.
-
-Jeśli używasz domeny **b2clogin.com** zamiast **login.microsoftonline.com** upewnij się, że używasz b2clogin.com zamiast login.microsoftonline.com.
+Podczas konfigurowania identyfikatora URI przekierowania dostawcy tożsamości wprowadź `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp`wartość. Pamiętaj, aby zamienić `{your-tenant-name}` na nazwę dzierżawy. Identyfikator URI przekierowania musi zawierać tylko małe litery.
 
 Przykłady:
 
 - [Dodawanie konta Microsoft (MSA) jako dostawcy tożsamości przy użyciu zasad niestandardowych](active-directory-b2c-custom-setup-msa-idp.md)
 - [Logowanie przy użyciu kont usługi Azure AD](active-directory-b2c-setup-aad-custom.md)
 - [Zezwalaj użytkownikom na logowanie się do wielodostępnego dostawcy tożsamości usługi Azure AD przy użyciu zasad niestandardowych](active-directory-b2c-setup-commonaad-custom.md)
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-

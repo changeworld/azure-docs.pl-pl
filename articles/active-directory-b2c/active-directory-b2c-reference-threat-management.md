@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 09/26/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 281bd73671352e1e525e11a7bfde1882d3ef8864
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: eae82fbd56782faf5b15479c13fe530e189a0e3e
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065418"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71256905"
 ---
 # <a name="manage-threats-to-resources-and-data-in-azure-active-directory-b2c"></a>Zarządzanie zagrożeniami dla zasobów i danych w Azure Active Directory B2C
 
@@ -37,10 +37,10 @@ Pierwsze 10 okresów blokowania to jedna minuta. Kolejne 10 okresów blokowania 
 
 Aby zarządzać ustawieniami ochrony hasłem, w tym progiem blokady:
 
-1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
-1. Wybierz filtr **katalogów i subskrypcji** w prawym górnym menu portalu, a następnie wybierz dzierżawę Azure AD B2C.
-1. W menu po lewej stronie wybierz pozycję **Azure Active Directory** (lub wybierz pozycję **wszystkie usługi** w lewym górnym rogu portalu, a następnie wyszukaj i wybierz pozycję *Azure Active Directory*).
-1. W obszarze **zabezpieczenia**wybierz pozycję **metody uwierzytelniania**, a następnie wybierz pozycję **Ochrona hasłem**.
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
+1. Użyj filtru **katalogów i subskrypcji** w górnym menu, aby wybrać katalog, który zawiera dzierżawę Azure AD B2C.
+1. W menu po lewej stronie wybierz pozycję **Azure AD B2C**. Lub wybierz pozycję **wszystkie usługi** i Wyszukaj i wybierz pozycję **Azure AD B2C**.
+1. W obszarze **zabezpieczenia**wybierz pozycję **metody uwierzytelniania (wersja zapoznawcza)** , a następnie wybierz pozycję **Ochrona hasłem**.
 1. Wprowadź odpowiednie ustawienia ochrony hasłem, a następnie wybierz pozycję **Zapisz**.
 
     ![Strona ochrony hasłem Azure Portal w ustawieniach usługi Azure AD](media/active-directory-b2c-reference-threat-management/portal-02-password-protection.png)

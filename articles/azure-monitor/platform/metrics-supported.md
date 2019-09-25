@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 05/20/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: dbbe5a667b8d467b416e4a4a571d8d3599ec45b6
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: a8cffe83ec0f2cdfd2e71accfa55966e5dedcd89
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051817"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259138"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Obsługiwane metryki z Azure Monitor
 
@@ -48,7 +48,7 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |MemoryLimitHigh|Pamięć: Limit pamięci — wysoki|Bajty|Average|Górny limit pamięci z pliku konfiguracji.|ServerResourceType|
 |MemoryLimitLow|Pamięć: Limit pamięci — niski|Bajty|Average|Limit braku pamięci z pliku konfiguracji.|ServerResourceType|
 |MemoryLimitVertiPaq|Pamięć: Limit pamięci — tryb VertiPaq|Bajty|Average|Limit w pamięci z pliku konfiguracji.|ServerResourceType|
-|Limit przydziału|Pamięć: Limit przydziału|Bajty|Average|Bieżący limit pamięci (w bajtach). Przydział pamięci jest również nazywany przydziałem pamięci lub rezerwacją pamięci.|ServerResourceType|
+|Przydział|Pamięć: Przydział|Bajty|Average|Bieżący limit pamięci (w bajtach). Przydział pamięci jest również nazywany przydziałem pamięci lub rezerwacją pamięci.|ServerResourceType|
 |QuotaBlocked|Pamięć: Limit przydziału zablokowany|Count|Average|Bieżąca liczba żądań przydziałów blokowanych do momentu zwolnienia innych limitów przydziału pamięci.|ServerResourceType|
 |VertiPaqNonpaged|Pamięć: Niestronicowana VertiPaq|Bajty|Average|Bajty pamięci zablokowane w zestawie roboczym do użycia przez aparat w pamięci.|ServerResourceType|
 |VertiPaqPaged|Pamięć: Stronicowana VertiPaq|Bajty|Average|Bajty stronicowanej pamięci w użyciu dla danych w pamięci.|ServerResourceType|
@@ -146,19 +146,19 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |---|---|---|---|---|---|
 |connectedclients|Podłączeni klienci|Count|Maksimum||ShardId|
 |totalcommandsprocessed|Łączna liczba operacji|Count|Łącznie||ShardId|
-|cachehits|Trafienia w pamięci podręcznej|Count|Łącznie||ShardId|
+|cachehits|Trafienia pamięci podręcznej|Count|Łącznie||ShardId|
 |cachemisses|Chybienia w pamięci podręcznej|Count|Łącznie||ShardId|
-|GetCommands|Pobrania|Count|Łącznie||ShardId|
+|GetCommands|Kto|Count|Łącznie||ShardId|
 |SetCommands|Zestawy|Count|Łącznie||ShardId|
 |operationsPerSecond|Liczba operacji na sekundę|Count|Maksimum||ShardId|
 |evictedkeys|Wykluczone klucze|Count|Łącznie||ShardId|
-|totalkeys|Całkowita liczba kluczy|Count|Maksimum||ShardId|
+|totalkeys|Łączna liczba kluczy|Count|Maksimum||ShardId|
 |expiredkeys|Wygasłe klucze|Count|Łącznie||ShardId|
-|usedmemory|Użyta pamięć|Bajty|Maksimum||ShardId|
+|usedmemory|Używana pamięć|Bajty|Maksimum||ShardId|
 |usedmemorypercentage|Wartość procentowa używanej pamięci|Percent|Maksimum||ShardId|
 |usedmemoryRss|Używana pamięć RSS|Bajty|Maksimum||ShardId|
 |serverLoad|Obciążenie serwera|Percent|Maksimum||ShardId|
-|cacheWrite|Zapis w pamięci podręcznej|BytesPerSecond|Maksimum||ShardId|
+|cacheWrite|Zapis pamięci podręcznej|BytesPerSecond|Maksimum||ShardId|
 |cacheRead|Odczyt pamięci podręcznej|BytesPerSecond|Maksimum||ShardId|
 |percentProcessorTime|Procesor CPU|Percent|Maksimum||ShardId|
 |cacheLatency|Mikrosekundy opóźnienia pamięci podręcznej (wersja zapoznawcza)|Count|Average||ShardId, Sampletype|
@@ -353,15 +353,15 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
 |TotalCalls|Łączna liczba wywołań|Count|Łącznie|Łączna liczba wywołań.|ApiName, OperationName, region|
-|SuccessfulCalls|Wywołania zakończone powodzeniem|Count|Łącznie|Liczba pomyślnych wywołań.|ApiName, OperationName, region|
+|SuccessfulCalls|Pomyślne wywołania|Count|Łącznie|Liczba pomyślnych wywołań.|ApiName, OperationName, region|
 |TotalErrors|Łączna liczba błędów|Count|Łącznie|Łączna liczba wywołań z odpowiedzią na błąd (kod odpowiedzi HTTP 4xx lub 5xx).|ApiName, OperationName, region|
 |BlockedCalls|Zablokowane wywołania|Count|Łącznie|Liczba wywołań, które przekroczyły limit szybkości lub limitu przydziału.|ApiName, OperationName, region|
 |Błędy servererrors|Błędy serwera|Count|Łącznie|Liczba wywołań z błędem wewnętrznym usługi (5xx kodu odpowiedzi HTTP).|ApiName, OperationName, region|
 |ClientErrors|Błędy klienta|Count|Łącznie|Liczba wywołań z błędem po stronie klienta (4xx kodu odpowiedzi HTTP).|ApiName, OperationName, region|
 |Dane|Dane wejściowe|Bajty|Łącznie|Rozmiar danych przychodzących w bajtach.|ApiName, OperationName, region|
 |DataOut|Dane wyjściowe|Bajty|Łącznie|Rozmiar danych wychodzących w bajtach.|ApiName, OperationName, region|
-|Opóźnienie|Opóźnienie|MilliSeconds|Average|Opóźnienie w milisekundach.|ApiName, OperationName, region|
-|CharactersTranslated|Przetłumaczone znaki|Count|Łącznie|Całkowita liczba znaków w żądaniu tekstu przychodzącego.|ApiName, OperationName, region|
+|Czas oczekiwania|Czas oczekiwania|MilliSeconds|Average|Opóźnienie w milisekundach.|ApiName, OperationName, region|
+|CharactersTranslated|Znaki tłumaczone|Count|Łącznie|Całkowita liczba znaków w żądaniu tekstu przychodzącego.|ApiName, OperationName, region|
 |CharactersTrained|Znaki przeszkolone|Count|Łącznie|Łączna liczba znaków przeszkolonych.|ApiName, OperationName, region|
 |SpeechSessionDuration|Czas trwania sesji mowy|Sekundy|Łącznie|Łączny czas trwania sesji mowy (w sekundach).|ApiName, OperationName, region|
 |TotalTransactions|Łączna liczba transakcji|Count|Łącznie|Łączna liczba transakcji.|Nie wymiarów|
@@ -372,14 +372,14 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
 |Procentowe użycie procesora CPU|Procentowe użycie procesora CPU|Procent|Średnia|Procent przydzielonych jednostek obliczeniowych, które są obecnie używane przez maszyny wirtualne|Nie wymiarów|
-|Sieć — wejście|Ruch przychodzący do sieci (płatny)|Bajty|Łącznie|Liczba bajtów rozliczanych odebranych we wszystkich interfejsach sieciowych przez maszyny wirtualne (ruch przychodzący)|Nie wymiarów|
-|Sieć — wyjście|Ruch wychodzący z sieci (płatny)|Bajty|Łącznie|Liczba bajtów rozliczanych we wszystkich interfejsach sieciowych przez maszyny wirtualne (ruch wychodzący)|Nie wymiarów|
+|Sieć — wejście|Sieć jest rozliczana|Bajty|Łącznie|Liczba bajtów rozliczanych odebranych we wszystkich interfejsach sieciowych przez maszyny wirtualne (ruch przychodzący)|Nie wymiarów|
+|Sieć — wyjście|Sieć — do rozliczania|Bajty|Łącznie|Liczba bajtów rozliczanych we wszystkich interfejsach sieciowych przez maszyny wirtualne (ruch wychodzący)|Nie wymiarów|
 |Bajty odczytane z dysku|Bajty odczytane z dysku|Bajty|Łącznie|Bajty odczytane z dysku w okresie monitorowania|Nie wymiarów|
 |Bajty zapisane na dysku|Bajty zapisane na dysku|Bajty|Łącznie|Bajty zapisywane na dysku w okresie monitorowania|Nie wymiarów|
 |Operacje odczytu z dysku/s|Operacje odczytu z dysku/s|CountPerSecond|Average|Operacje we/wy odczytu dysku|Nie wymiarów|
-|Operacje zapisu na dysku/s|Operacje zapisu na dysku/s|CountPerSecond|Average|Operacje we/wy zapisu dysku|Nie wymiarów|
-|Pozostałe środki na procesory CPU|Pozostałe środki na procesory CPU|Count|Average|Łączna liczba kredytów dostępnych dla serii|Nie wymiarów|
-|Wykorzystane środki na procesory CPU|Wykorzystane środki na procesory CPU|Count|Average|Łączna liczba kredytów zużytych przez maszynę wirtualną|Nie wymiarów|
+|Operacje zapisu na dysku/s|Operacje zapisu na dysku/s|CountPerSecond|Average|Operacje we/wy zapisu na dysku|Nie wymiarów|
+|Pozostałe kredyty procesora CPU|Pozostałe kredyty procesora CPU|Count|Average|Łączna liczba kredytów dostępnych dla serii|Nie wymiarów|
+|Wykorzystane środki CPU|Wykorzystane środki CPU|Count|Average|Łączna liczba kredytów zużytych przez maszynę wirtualną|Nie wymiarów|
 |Bajty odczytu na dysk/s|Bajty odczytu dysku danych/s (przestarzałe)|CountPerSecond|Average|Bajty/s odczytane z pojedynczego dysku w okresie monitorowania|SlotId|
 |Bajty zapisu na dysku/s|Bajty zapisu na dysku danych/s (przestarzałe)|CountPerSecond|Average|Bajty na sekundę zapisywane na pojedynczym dysku w okresie monitorowania|SlotId|
 |Operacje odczytu na dysk/s|Operacje odczytu z dysku danych/s (przestarzałe)|CountPerSecond|Average|Odczyt operacji we/wy na pojedynczym dysku w okresie monitorowania|SlotId|
@@ -416,14 +416,14 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
 |Procentowe użycie procesora CPU|Procentowe użycie procesora CPU|Procent|Średnia|Procent przydzielonych jednostek obliczeniowych, które są obecnie używane przez maszyny wirtualne|VMName|
-|Sieć — wejście|Ruch przychodzący do sieci (płatny)|Bajty|Łącznie|Liczba bajtów rozliczanych odebranych we wszystkich interfejsach sieciowych przez maszyny wirtualne (ruch przychodzący)|VMName|
-|Sieć — wyjście|Ruch wychodzący z sieci (płatny)|Bajty|Łącznie|Liczba bajtów rozliczanych we wszystkich interfejsach sieciowych przez maszyny wirtualne (ruch wychodzący)|VMName|
+|Sieć — wejście|Sieć jest rozliczana|Bajty|Łącznie|Liczba bajtów rozliczanych odebranych we wszystkich interfejsach sieciowych przez maszyny wirtualne (ruch przychodzący)|VMName|
+|Sieć — wyjście|Sieć — do rozliczania|Bajty|Łącznie|Liczba bajtów rozliczanych we wszystkich interfejsach sieciowych przez maszyny wirtualne (ruch wychodzący)|VMName|
 |Bajty odczytane z dysku|Bajty odczytane z dysku|Bajty|Łącznie|Bajty odczytane z dysku w okresie monitorowania|VMName|
 |Bajty zapisane na dysku|Bajty zapisane na dysku|Bajty|Łącznie|Bajty zapisywane na dysku w okresie monitorowania|VMName|
 |Operacje odczytu z dysku/s|Operacje odczytu z dysku/s|CountPerSecond|Average|Operacje we/wy odczytu dysku|VMName|
-|Operacje zapisu na dysku/s|Operacje zapisu na dysku/s|CountPerSecond|Average|Operacje we/wy zapisu dysku|VMName|
-|Pozostałe środki na procesory CPU|Pozostałe środki na procesory CPU|Count|Average|Łączna liczba kredytów dostępnych dla serii|Nie wymiarów|
-|Wykorzystane środki na procesory CPU|Wykorzystane środki na procesory CPU|Count|Average|Łączna liczba kredytów zużytych przez maszynę wirtualną|Nie wymiarów|
+|Operacje zapisu na dysku/s|Operacje zapisu na dysku/s|CountPerSecond|Average|Operacje we/wy zapisu na dysku|VMName|
+|Pozostałe kredyty procesora CPU|Pozostałe kredyty procesora CPU|Count|Average|Łączna liczba kredytów dostępnych dla serii|Nie wymiarów|
+|Wykorzystane środki CPU|Wykorzystane środki CPU|Count|Average|Łączna liczba kredytów zużytych przez maszynę wirtualną|Nie wymiarów|
 |Bajty odczytu na dysk/s|Bajty odczytu dysku danych/s (przestarzałe)|CountPerSecond|Average|Bajty/s odczytane z pojedynczego dysku w okresie monitorowania|SlotId|
 |Bajty zapisu na dysku/s|Bajty zapisu na dysku danych/s (przestarzałe)|CountPerSecond|Average|Bajty na sekundę zapisywane na pojedynczym dysku w okresie monitorowania|SlotId|
 |Operacje odczytu na dysk/s|Operacje odczytu z dysku danych/s (przestarzałe)|CountPerSecond|Average|Odczyt operacji we/wy na pojedynczym dysku w okresie monitorowania|SlotId|
@@ -589,7 +589,7 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |memory_percent|Procent pamięci|Percent|Average|Procent pamięci|Nie wymiarów|
 |io_consumption_percent|Procent operacji we/wy|Percent|Average|Procent operacji we/wy|Nie wymiarów|
 |storage_percent|Procent magazynu|Percent|Average|Procent magazynu|Nie wymiarów|
-|storage_used|Używane miejsce|Bajty|Average|Używane miejsce|Nie wymiarów|
+|storage_used|Użyty magazyn|Bajty|Average|Użyty magazyn|Nie wymiarów|
 |storage_limit|Limit magazynu|Bajty|Average|Limit magazynu|Nie wymiarów|
 |serverlog_storage_percent|Procent magazynu dzienników serwera|Percent|Average|Procent magazynu dzienników serwera|Nie wymiarów|
 |serverlog_storage_usage|Używany magazyn dzienników serwera|Bajty|Average|Używany magazyn dzienników serwera|Nie wymiarów|
@@ -609,7 +609,7 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |memory_percent|Procent pamięci|Percent|Average|Procent pamięci|Nie wymiarów|
 |io_consumption_percent|Procent operacji we/wy|Percent|Average|Procent operacji we/wy|Nie wymiarów|
 |storage_percent|Procent magazynu|Percent|Average|Procent magazynu|Nie wymiarów|
-|storage_used|Używane miejsce|Bajty|Average|Używane miejsce|Nie wymiarów|
+|storage_used|Użyty magazyn|Bajty|Average|Użyty magazyn|Nie wymiarów|
 |storage_limit|Limit magazynu|Bajty|Average|Limit magazynu|Nie wymiarów|
 |serverlog_storage_percent|Procent magazynu dzienników serwera|Percent|Average|Procent magazynu dzienników serwera|Nie wymiarów|
 |serverlog_storage_usage|Używany magazyn dzienników serwera|Bajty|Average|Używany magazyn dzienników serwera|Nie wymiarów|
@@ -629,7 +629,7 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |memory_percent|Procent pamięci|Percent|Average|Procent pamięci|Nie wymiarów|
 |io_consumption_percent|Procent operacji we/wy|Percent|Average|Procent operacji we/wy|Nie wymiarów|
 |storage_percent|Procent magazynu|Percent|Average|Procent magazynu|Nie wymiarów|
-|storage_used|Używane miejsce|Bajty|Average|Używane miejsce|Nie wymiarów|
+|storage_used|Użyty magazyn|Bajty|Average|Użyty magazyn|Nie wymiarów|
 |storage_limit|Limit magazynu|Bajty|Average|Limit magazynu|Nie wymiarów|
 |serverlog_storage_percent|Procent magazynu dzienników serwera|Percent|Average|Procent magazynu dzienników serwera|Nie wymiarów|
 |serverlog_storage_usage|Używany magazyn dzienników serwera|Bajty|Average|Używany magazyn dzienników serwera|Nie wymiarów|
@@ -650,7 +650,7 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |memory_percent|Procent pamięci|Percent|Average|Procent pamięci|Nie wymiarów|
 |Wejścia|IOPS|Count|Average|Operacje we/wy na sekundę|Nie wymiarów|
 |storage_percent|Procent magazynu|Percent|Average|Procent magazynu|Nie wymiarów|
-|storage_used|Używane miejsce|Bajty|Average|Używane miejsce|Nie wymiarów|
+|storage_used|Użyty magazyn|Bajty|Average|Użyty magazyn|Nie wymiarów|
 |active_connections|Aktywne połączenia|Count|Average|Aktywne połączenia|Nie wymiarów|
 |network_bytes_egress|Sieć — wyjście|Bajty|Łącznie|Sieć poza aktywnymi połączeniami|Nie wymiarów|
 |network_bytes_ingress|Sieć — wejście|Bajty|Łącznie|Sieć w ramach aktywnych połączeń|Nie wymiarów|
@@ -743,7 +743,7 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |DocumentCount|Liczba dokumentów|Count|Łącznie|Łączna liczba dokumentów raportowana z dokładnością do 5 minut|CollectionName, DatabaseName, region|
 |DocumentQuota|Przydział dokumentu|Bajty|Łącznie|Łączny przydział magazynu zgłoszony z dokładnością do 5 minut|CollectionName, DatabaseName, region|
 |IndexUsage|Użycie indeksu|Bajty|Łącznie|Całkowite użycie indeksów zgłoszone na 5 minut|CollectionName, DatabaseName, region|
-|MetadataRequests|Żądania metadanych|Count|Count|Liczba żądań metadanych. Cosmos DB przechowuje zbieranie metadanych systemu dla każdego konta, które pozwala na Wyliczanie kolekcji, baz danych itp. i ich konfiguracji bez opłat.|DatabaseName, CollectionName, region, StatusCode, |
+|MetadataRequests|Żądania metadanych|Count|Count|Liczba żądań metadanych. Cosmos DB przechowuje zbieranie metadanych systemu dla każdego konta, które pozwala na Wyliczanie kolekcji, baz danych itp. i ich konfiguracji, bez opłat.|DatabaseName, CollectionName, region, StatusCode, |
 |MongoRequestCharge|Opłata żądania Mongo|Count|Łącznie|Wykorzystane jednostki żądania Mongo|DatabaseName, CollectionName, region, CommandName, ErrorCode|
 |MongoRequests|Żądania Mongo|Count|Count|Liczba wykonanych żądań Mongo|DatabaseName, CollectionName, region, CommandName, ErrorCode|
 |ProvisionedThroughput|Aprowizowana przepływność|Count|Maksimum|Aprowizowana przepływność|DatabaseName, CollectionName|
@@ -785,17 +785,17 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|Żądania successfulrequests|Żądania zakończone powodzeniem|Count|Łącznie|Pomyślne żądania dla elementu Microsoft. EventHub.|EntityName, |
+|Żądania successfulrequests|Żądania pomyślne|Count|Łącznie|Pomyślne żądania dla elementu Microsoft. EventHub.|EntityName, |
 |Błędy servererrors|Błędy serwera.|Count|Łącznie|Błędy serwera dla elementu Microsoft. EventHub.|EntityName, |
 |Błędy usererrors|Błędy użytkownika.|Count|Łącznie|Błędy użytkowników dla elementu Microsoft. EventHub.|EntityName, |
 |Błędy quotaexceedederrors|Błędy przekroczenia limitu przydziału.|Count|Łącznie|Przekroczono limit przydziału dla elementu Microsoft. EventHub.|EntityName, |
-|Żądania throttledrequests|Żądania z ograniczeniami.|Count|Łącznie|Żądania ograniczone dla elementu Microsoft. EventHub.|EntityName, |
+|ThrottledRequests|Żądania z ograniczeniami.|Count|Łącznie|Żądania ograniczone dla elementu Microsoft. EventHub.|EntityName, |
 |Żądania incomingrequests|Żądania przychodzące|Count|Łącznie|Żądania przychodzące dla elementu Microsoft. EventHub.|EntityName|
 |Komunikaty incomingmessages|Wiadomości przychodzące|Count|Łącznie|Komunikaty przychodzące dla elementu Microsoft. EventHub.|EntityName|
 |Komunikaty outgoingmessages|Wiadomości wychodzące|Count|Łącznie|Komunikaty wychodzące dla elementu Microsoft. EventHub.|EntityName|
 |Bajty incomingbytes|Bajty przychodzące.|Bajty|Łącznie|Przychodzące bajty dla elementu Microsoft. EventHub.|EntityName|
 |Bajty outgoingbytes|Bajty wychodzące.|Bajty|Łącznie|Bajty wychodzące dla elementu Microsoft. EventHub.|EntityName|
-|ActiveConnections|ActiveConnections|Count|Average|Łączna liczba aktywnych połączeń dla elementu Microsoft. EventHub.|Nie wymiarów|
+|Połączeń ActiveConnections|Połączeń ActiveConnections|Count|Average|Łączna liczba aktywnych połączeń dla elementu Microsoft. EventHub.|Nie wymiarów|
 |Połączenia connectionsopened|Otwarte połączenia.|Count|Average|Połączenia otwarte dla elementu Microsoft. EventHub.|EntityName|
 |Połączenia connectionsclosed|Połączenia zamknięte.|Count|Average|Połączenia zamknięte dla elementu Microsoft. EventHub.|EntityName|
 |CaptureBacklog|Zaległości przechwytywania.|Count|Łącznie|Zaległości przechwytywania dla elementu Microsoft. EventHub.|EntityName|
@@ -828,13 +828,13 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |Błędy servererrors|Błędy serwera. (Wersja zapoznawcza)|Count|Łącznie|Błędy serwera dla elementu Microsoft. EventHub. (Wersja zapoznawcza)|Nie wymiarów|
 |Błędy usererrors|Błędy użytkownika. (Wersja zapoznawcza)|Count|Łącznie|Błędy użytkowników dla elementu Microsoft. EventHub. (Wersja zapoznawcza)|Nie wymiarów|
 |Błędy quotaexceedederrors|Błędy przekroczenia limitu przydziału. (Wersja zapoznawcza)|Count|Łącznie|Przekroczono limit przydziału dla elementu Microsoft. EventHub. (Wersja zapoznawcza)|Nie wymiarów|
-|Żądania throttledrequests|Żądania z ograniczeniami. (Wersja zapoznawcza)|Count|Łącznie|Żądania ograniczone dla elementu Microsoft. EventHub. (Wersja zapoznawcza)|Nie wymiarów|
+|ThrottledRequests|Żądania z ograniczeniami. (Wersja zapoznawcza)|Count|Łącznie|Żądania ograniczone dla elementu Microsoft. EventHub. (Wersja zapoznawcza)|Nie wymiarów|
 |Żądania incomingrequests|Żądania przychodzące (wersja zapoznawcza)|Count|Łącznie|Żądania przychodzące dla elementu Microsoft. EventHub. (Wersja zapoznawcza)|Nie wymiarów|
 |Komunikaty incomingmessages|Wiadomości przychodzące (wersja zapoznawcza)|Count|Łącznie|Komunikaty przychodzące dla elementu Microsoft. EventHub. (Wersja zapoznawcza)|Nie wymiarów|
 |Komunikaty outgoingmessages|Wiadomości wychodzące (wersja zapoznawcza)|Count|Łącznie|Komunikaty wychodzące dla elementu Microsoft. EventHub. (Wersja zapoznawcza)|Nie wymiarów|
 |Bajty incomingbytes|Bajty przychodzące. (Wersja zapoznawcza)|Bajty|Łącznie|Przychodzące bajty dla elementu Microsoft. EventHub. (Wersja zapoznawcza)|Nie wymiarów|
 |Bajty outgoingbytes|Bajty wychodzące. (Wersja zapoznawcza)|Bajty|Łącznie|Bajty wychodzące dla elementu Microsoft. EventHub. (Wersja zapoznawcza)|Nie wymiarów|
-|ActiveConnections|Połączeń ActiveConnections (wersja zapoznawcza)|Count|Average|Łączna liczba aktywnych połączeń dla elementu Microsoft. EventHub. (Wersja zapoznawcza)|Nie wymiarów|
+|Połączeń ActiveConnections|Połączeń ActiveConnections (wersja zapoznawcza)|Count|Average|Łączna liczba aktywnych połączeń dla elementu Microsoft. EventHub. (Wersja zapoznawcza)|Nie wymiarów|
 |Połączenia connectionsopened|Otwarte połączenia. (Wersja zapoznawcza)|Count|Average|Połączenia otwarte dla elementu Microsoft. EventHub. (Wersja zapoznawcza)|Nie wymiarów|
 |Połączenia connectionsclosed|Połączenia zamknięte. (Wersja zapoznawcza)|Count|Average|Połączenia zamknięte dla elementu Microsoft. EventHub. (Wersja zapoznawcza)|Nie wymiarów|
 |CaptureBacklog|Zaległości przechwytywania. (Wersja zapoznawcza)|Count|Łącznie|Zaległości przechwytywania dla elementu Microsoft. EventHub. (Wersja zapoznawcza)|Nie wymiarów|
@@ -855,9 +855,9 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|ObservedMetricValue|Zaobserwowana wartość metryki|Count|Average|Wartość obliczona przez automatyczne skalowanie podczas wykonywania|MetricTriggerSource|
+|ObservedMetricValue|Obserwowana wartość metryki|Count|Average|Wartość obliczona przez automatyczne skalowanie podczas wykonywania|MetricTriggerSource|
 |MetricThreshold|Próg metryki|Count|Average|Skonfigurowany próg automatycznego skalowania podczas uruchamiania automatycznego skalowania.|MetricTriggerRule|
-|ObservedCapacity|Zaobserwowana wydajność|Count|Average|Pojemność zgłoszona do automatycznego skalowania podczas jego wykonywania.|Nie wymiarów|
+|ObservedCapacity|Zaobserwowana pojemność|Count|Average|Pojemność zgłoszona do automatycznego skalowania podczas jego wykonywania.|Nie wymiarów|
 |ScaleActionsInitiated|Zainicjowane akcje skalowania|Count|Łącznie|Kierunek operacji skalowania.|ScaleDirection|
 
 ## <a name="microsoftinsightscomponents"></a>Microsoft. Insights/składniki
@@ -927,42 +927,42 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|Użycie|Użycie|Count|Count|Liczba wywołań interfejsu API|ApiCategory, ApiName|
+|Sposób użycia|Sposób użycia|Count|Count|Liczba wywołań interfejsu API|ApiCategory, ApiName|
 
 ## <a name="microsoftlogicworkflows"></a>Microsoft.Logic/workflows
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|RunsStarted|Przebiegi rozpoczęte|Count|Łącznie|Liczba uruchomionych przebiegów przepływu pracy.|Nie wymiarów|
-|RunsCompleted|Przebiegi ukończone|Count|Łącznie|Liczba ukończonych przebiegów przepływu pracy.|Nie wymiarów|
+|RunsStarted|Uruchomienia uruchomione|Count|Łącznie|Liczba uruchomionych przebiegów przepływu pracy.|Nie wymiarów|
+|RunsCompleted|Przebiegi zakończone|Count|Łącznie|Liczba ukończonych przebiegów przepływu pracy.|Nie wymiarów|
 |RunsSucceeded|Przebiegi zakończone powodzeniem|Count|Łącznie|Liczba przebiegów przepływu pracy zakończonych powodzeniem.|Nie wymiarów|
 |RunsFailed|Przebiegi zakończone niepowodzeniem|Count|Łącznie|Liczba przebiegów przepływu pracy zakończonych niepowodzeniem.|Nie wymiarów|
 |RunsCancelled|Przebiegi anulowane|Count|Łącznie|Liczba anulowanych przebiegów przepływu pracy.|Nie wymiarów|
-|RunLatency|Opóźnienie przebiegów|Sekundy|Average|Opóźnienie ukończonych przebiegów przepływu pracy.|Nie wymiarów|
-|RunSuccessLatency|Opóźnienie przebiegów zakończonych powodzeniem|Sekundy|Average|Opóźnienie przebiegów przepływu pracy zakończonych powodzeniem.|Nie wymiarów|
-|RunThrottledEvents|Zdarzenia ograniczenia przebiegu|Count|Łącznie|Liczba zdarzeń związanych ze zdarzeniami przepływu pracy lub wyzwalaczem.|Nie wymiarów|
-|RunFailurePercentage|Procent niepowodzeń przebiegów|Percent|Łącznie|Procent przebiegów przepływu pracy zakończonych niepowodzeniem.|Nie wymiarów|
-|ActionsStarted|Rozpoczęte akcje |Count|Łącznie|Liczba rozpoczętych akcji przepływu pracy.|Nie wymiarów|
-|ActionsCompleted|Ukończone akcje |Count|Łącznie|Liczba ukończonych akcji przepływu pracy.|Nie wymiarów|
+|RunLatency|Opóźnienie uruchamiania|Sekundy|Average|Opóźnienie ukończonych przebiegów przepływu pracy.|Nie wymiarów|
+|RunSuccessLatency|Opóźnienie sukcesu przebiegu|Sekundy|Average|Opóźnienie przebiegów przepływu pracy zakończonych powodzeniem.|Nie wymiarów|
+|RunThrottledEvents|Uruchamianie zdarzeń z ograniczeniami|Count|Łącznie|Liczba zdarzeń związanych ze zdarzeniami przepływu pracy lub wyzwalaczem.|Nie wymiarów|
+|RunFailurePercentage|Procent niepowodzeń przebiegu|Percent|Łącznie|Procent przebiegów przepływu pracy zakończonych niepowodzeniem.|Nie wymiarów|
+|ActionsStarted|Akcje uruchomione |Count|Łącznie|Liczba rozpoczętych akcji przepływu pracy.|Nie wymiarów|
+|ActionsCompleted|Wykonane akcje |Count|Łącznie|Liczba ukończonych akcji przepływu pracy.|Nie wymiarów|
 |ActionsSucceeded|Akcje zakończone powodzeniem |Count|Łącznie|Liczba akcji przepływu pracy zakończonych powodzeniem.|Nie wymiarów|
 |ActionsFailed|Akcje zakończone niepowodzeniem|Count|Łącznie|Liczba akcji przepływu pracy zakończonych niepowodzeniem.|Nie wymiarów|
 |ActionsSkipped|Pominięte akcje |Count|Łącznie|Liczba pominiętych akcji przepływu pracy.|Nie wymiarów|
 |ActionLatency|Opóźnienie akcji |Sekundy|Average|Opóźnienie ukończonych akcji przepływu pracy.|Nie wymiarów|
-|ActionSuccessLatency|Opóźnienie akcji – powodzenie |Sekundy|Average|Opóźnienie akcji przepływu pracy zakończonych powodzeniem.|Nie wymiarów|
-|ActionThrottledEvents|Zdarzenia ograniczenia akcji|Count|Łącznie|Liczba zdarzeń ograniczających przepływ pracy...|Nie wymiarów|
-|TriggersStarted|Rozpoczęte wyzwalacze |Count|Łącznie|Liczba uruchomionych wyzwalaczy przepływu pracy.|Nie wymiarów|
+|ActionSuccessLatency|Opóźnienie sukcesu akcji |Sekundy|Average|Opóźnienie akcji przepływu pracy zakończonych powodzeniem.|Nie wymiarów|
+|ActionThrottledEvents|Zdarzenia ograniczające akcję|Count|Łącznie|Liczba zdarzeń ograniczających przepływ pracy...|Nie wymiarów|
+|TriggersStarted|Uruchomiono wyzwalacze |Count|Łącznie|Liczba uruchomionych wyzwalaczy przepływu pracy.|Nie wymiarów|
 |TriggersCompleted|Ukończone wyzwalacze |Count|Łącznie|Liczba ukończonych wyzwalaczy przepływu pracy.|Nie wymiarów|
-|TriggersSucceeded|Udane wyzwalacze |Count|Łącznie|Liczba wyzwalaczy przepływu pracy zakończonych powodzeniem.|Nie wymiarów|
-|TriggersFailed|Nieudane wyzwalacze |Count|Łącznie|Liczba wyzwalaczy przepływu pracy zakończonych niepowodzeniem.|Nie wymiarów|
+|TriggersSucceeded|Wyzwalacze zakończone powodzeniem |Count|Łącznie|Liczba wyzwalaczy przepływu pracy zakończonych powodzeniem.|Nie wymiarów|
+|TriggersFailed|Wyzwalacze zakończone niepowodzeniem |Count|Łącznie|Liczba wyzwalaczy przepływu pracy zakończonych niepowodzeniem.|Nie wymiarów|
 |TriggersSkipped|Pominięte wyzwalacze|Count|Łącznie|Liczba pominiętych wyzwalaczy przepływu pracy.|Nie wymiarów|
-|TriggersFired|Uruchomione wyzwalacze |Count|Łącznie|Liczba wyzwolonych wyzwalaczy przepływu pracy.|Nie wymiarów|
+|TriggersFired|Wyzwolone wyzwalacze |Count|Łącznie|Liczba wyzwolonych wyzwalaczy przepływu pracy.|Nie wymiarów|
 |TriggerLatency|Opóźnienie wyzwalacza |Sekundy|Average|Opóźnienie ukończonych wyzwalaczy przepływu pracy.|Nie wymiarów|
-|TriggerFireLatency|Opóźnienie uruchomienia wyzwalacza |Sekundy|Average|Opóźnienie wyzwalanych wyzwalaczy przepływu pracy.|Nie wymiarów|
-|TriggerSuccessLatency|Opóźnienie udanego wyzwalacza |Sekundy|Average|Opóźnienie wyzwalaczy przepływu pracy zakończonych powodzeniem.|Nie wymiarów|
-|TriggerThrottledEvents|Zdarzenia ograniczenia wyzwalacza|Count|Łącznie|Liczba zdarzeń ograniczenia wyzwalacza przepływu pracy.|Nie wymiarów|
+|TriggerFireLatency|Opóźnienie wyzwalania wyzwalacza |Sekundy|Average|Opóźnienie wyzwalanych wyzwalaczy przepływu pracy.|Nie wymiarów|
+|TriggerSuccessLatency|Opóźnienie sukcesu wyzwalacza |Sekundy|Average|Opóźnienie wyzwalaczy przepływu pracy zakończonych powodzeniem.|Nie wymiarów|
+|TriggerThrottledEvents|Wyzwalaj zdarzenia ograniczające|Count|Łącznie|Liczba zdarzeń ograniczenia wyzwalacza przepływu pracy.|Nie wymiarów|
 |BillableActionExecutions|Rozliczane wykonania akcji|Count|Łącznie|Liczba rozliczanych wykonań akcji przepływu pracy.|Nie wymiarów|
-|BillableTriggerExecutions|Rozliczane wykonania wyzwalaczy|Count|Łącznie|Liczba rozliczanych wykonań wyzwalacza przepływu pracy.|Nie wymiarów|
-|TotalBillableExecutions|Łączna liczba rozliczanych wykonań|Count|Łącznie|Liczba rozliczanych wykonań przepływu pracy.|Nie wymiarów|
+|BillableTriggerExecutions|Rozliczane wykonania wyzwalacza|Count|Łącznie|Liczba rozliczanych wykonań wyzwalacza przepływu pracy.|Nie wymiarów|
+|TotalBillableExecutions|Łączna Liczba wykonań rozliczanych|Count|Łącznie|Liczba rozliczanych wykonań przepływu pracy.|Nie wymiarów|
 |BillingUsageNativeOperation|Użycie rozliczeń dla natywnych wykonań operacji|Count|Łącznie|Liczba rozliczanych wykonań operacji natywnych.|Nie wymiarów|
 |BillingUsageStandardConnector|Użycie rozliczeń dla wykonywania łączników standardowych|Count|Łącznie|Liczba rozliczanych wykonań łączników standardowych.|Nie wymiarów|
 |BillingUsageStorageConsumption|Użycie rozliczeń dla wykonań zużycia magazynu|Count|Łącznie|Liczba rozliczanych wykonań zużycia magazynu.|Nie wymiarów|
@@ -974,34 +974,34 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|RunsStarted|Przebiegi rozpoczęte|Count|Łącznie|Liczba uruchomionych przebiegów przepływu pracy.|Nie wymiarów|
-|RunsCompleted|Przebiegi ukończone|Count|Łącznie|Liczba ukończonych przebiegów przepływu pracy.|Nie wymiarów|
+|RunsStarted|Uruchomienia uruchomione|Count|Łącznie|Liczba uruchomionych przebiegów przepływu pracy.|Nie wymiarów|
+|RunsCompleted|Przebiegi zakończone|Count|Łącznie|Liczba ukończonych przebiegów przepływu pracy.|Nie wymiarów|
 |RunsSucceeded|Przebiegi zakończone powodzeniem|Count|Łącznie|Liczba przebiegów przepływu pracy zakończonych powodzeniem.|Nie wymiarów|
 |RunsFailed|Przebiegi zakończone niepowodzeniem|Count|Łącznie|Liczba przebiegów przepływu pracy zakończonych niepowodzeniem.|Nie wymiarów|
 |RunsCancelled|Przebiegi anulowane|Count|Łącznie|Liczba anulowanych przebiegów przepływu pracy.|Nie wymiarów|
-|RunLatency|Opóźnienie przebiegów|Sekundy|Average|Opóźnienie ukończonych przebiegów przepływu pracy.|Nie wymiarów|
-|RunSuccessLatency|Opóźnienie przebiegów zakończonych powodzeniem|Sekundy|Average|Opóźnienie przebiegów przepływu pracy zakończonych powodzeniem.|Nie wymiarów|
-|RunThrottledEvents|Zdarzenia ograniczenia przebiegu|Count|Łącznie|Liczba zdarzeń związanych ze zdarzeniami przepływu pracy lub wyzwalaczem.|Nie wymiarów|
+|RunLatency|Opóźnienie uruchamiania|Sekundy|Average|Opóźnienie ukończonych przebiegów przepływu pracy.|Nie wymiarów|
+|RunSuccessLatency|Opóźnienie sukcesu przebiegu|Sekundy|Average|Opóźnienie przebiegów przepływu pracy zakończonych powodzeniem.|Nie wymiarów|
+|RunThrottledEvents|Uruchamianie zdarzeń z ograniczeniami|Count|Łącznie|Liczba zdarzeń związanych ze zdarzeniami przepływu pracy lub wyzwalaczem.|Nie wymiarów|
 |RunStartThrottledEvents|Zdarzenia ograniczenia rozpoczęcia przebiegu|Count|Łącznie|Liczba uruchomionych zdarzeń ograniczających przepływ pracy.|Nie wymiarów|
-|RunFailurePercentage|Procent niepowodzeń przebiegów|Percent|Łącznie|Procent przebiegów przepływu pracy zakończonych niepowodzeniem.|Nie wymiarów|
-|ActionsStarted|Rozpoczęte akcje |Count|Łącznie|Liczba rozpoczętych akcji przepływu pracy.|Nie wymiarów|
-|ActionsCompleted|Ukończone akcje |Count|Łącznie|Liczba ukończonych akcji przepływu pracy.|Nie wymiarów|
+|RunFailurePercentage|Procent niepowodzeń przebiegu|Percent|Łącznie|Procent przebiegów przepływu pracy zakończonych niepowodzeniem.|Nie wymiarów|
+|ActionsStarted|Akcje uruchomione |Count|Łącznie|Liczba rozpoczętych akcji przepływu pracy.|Nie wymiarów|
+|ActionsCompleted|Wykonane akcje |Count|Łącznie|Liczba ukończonych akcji przepływu pracy.|Nie wymiarów|
 |ActionsSucceeded|Akcje zakończone powodzeniem |Count|Łącznie|Liczba akcji przepływu pracy zakończonych powodzeniem.|Nie wymiarów|
 |ActionsFailed|Akcje zakończone niepowodzeniem |Count|Łącznie|Liczba akcji przepływu pracy zakończonych niepowodzeniem.|Nie wymiarów|
 |ActionsSkipped|Pominięte akcje |Count|Łącznie|Liczba pominiętych akcji przepływu pracy.|Nie wymiarów|
 |ActionLatency|Opóźnienie akcji |Sekundy|Average|Opóźnienie ukończonych akcji przepływu pracy.|Nie wymiarów|
-|ActionSuccessLatency|Opóźnienie akcji – powodzenie |Sekundy|Average|Opóźnienie akcji przepływu pracy zakończonych powodzeniem.|Nie wymiarów|
-|ActionThrottledEvents|Zdarzenia ograniczenia akcji|Count|Łącznie|Liczba zdarzeń ograniczających przepływ pracy...|Nie wymiarów|
-|TriggersStarted|Rozpoczęte wyzwalacze |Count|Łącznie|Liczba uruchomionych wyzwalaczy przepływu pracy.|Nie wymiarów|
+|ActionSuccessLatency|Opóźnienie sukcesu akcji |Sekundy|Average|Opóźnienie akcji przepływu pracy zakończonych powodzeniem.|Nie wymiarów|
+|ActionThrottledEvents|Zdarzenia ograniczające akcję|Count|Łącznie|Liczba zdarzeń ograniczających przepływ pracy...|Nie wymiarów|
+|TriggersStarted|Uruchomiono wyzwalacze |Count|Łącznie|Liczba uruchomionych wyzwalaczy przepływu pracy.|Nie wymiarów|
 |TriggersCompleted|Ukończone wyzwalacze |Count|Łącznie|Liczba ukończonych wyzwalaczy przepływu pracy.|Nie wymiarów|
-|TriggersSucceeded|Udane wyzwalacze |Count|Łącznie|Liczba wyzwalaczy przepływu pracy zakończonych powodzeniem.|Nie wymiarów|
-|TriggersFailed|Nieudane wyzwalacze |Count|Łącznie|Liczba wyzwalaczy przepływu pracy zakończonych niepowodzeniem.|Nie wymiarów|
+|TriggersSucceeded|Wyzwalacze zakończone powodzeniem |Count|Łącznie|Liczba wyzwalaczy przepływu pracy zakończonych powodzeniem.|Nie wymiarów|
+|TriggersFailed|Wyzwalacze zakończone niepowodzeniem |Count|Łącznie|Liczba wyzwalaczy przepływu pracy zakończonych niepowodzeniem.|Nie wymiarów|
 |TriggersSkipped|Pominięte wyzwalacze|Count|Łącznie|Liczba pominiętych wyzwalaczy przepływu pracy.|Nie wymiarów|
-|TriggersFired|Uruchomione wyzwalacze |Count|Łącznie|Liczba wyzwolonych wyzwalaczy przepływu pracy.|Nie wymiarów|
+|TriggersFired|Wyzwolone wyzwalacze |Count|Łącznie|Liczba wyzwolonych wyzwalaczy przepływu pracy.|Nie wymiarów|
 |TriggerLatency|Opóźnienie wyzwalacza |Sekundy|Average|Opóźnienie ukończonych wyzwalaczy przepływu pracy.|Nie wymiarów|
-|TriggerFireLatency|Opóźnienie uruchomienia wyzwalacza |Sekundy|Average|Opóźnienie wyzwalanych wyzwalaczy przepływu pracy.|Nie wymiarów|
-|TriggerSuccessLatency|Opóźnienie udanego wyzwalacza |Sekundy|Average|Opóźnienie wyzwalaczy przepływu pracy zakończonych powodzeniem.|Nie wymiarów|
-|TriggerThrottledEvents|Zdarzenia ograniczenia wyzwalacza|Count|Łącznie|Liczba zdarzeń ograniczenia wyzwalacza przepływu pracy.|Nie wymiarów|
+|TriggerFireLatency|Opóźnienie wyzwalania wyzwalacza |Sekundy|Average|Opóźnienie wyzwalanych wyzwalaczy przepływu pracy.|Nie wymiarów|
+|TriggerSuccessLatency|Opóźnienie sukcesu wyzwalacza |Sekundy|Average|Opóźnienie wyzwalaczy przepływu pracy zakończonych powodzeniem.|Nie wymiarów|
+|TriggerThrottledEvents|Wyzwalaj zdarzenia ograniczające|Count|Łącznie|Liczba zdarzeń ograniczenia wyzwalacza przepływu pracy.|Nie wymiarów|
 |IntegrationServiceEnvironmentWorkflowProcessorUsage|Użycie procesora przepływu pracy dla środowisko usługi integracji|Percent|Average|Użycie procesora przez przepływ pracy dla środowiska usługi integracji.|Nie wymiarów|
 |IntegrationServiceEnvironmentWorkflowMemoryUsage|Użycie pamięci przez przepływ pracy dla środowisko usługi integracji|Percent|Average|Użycie pamięci przez przepływ pracy dla środowiska usługi integracji.|Nie wymiarów|
 |IntegrationServiceEnvironmentConnectorProcessorUsage|Użycie procesora przez łącznik dla środowisko usługi integracji|Percent|Average|Użycie procesora przez łącznik dla środowiska usługi integracji.|Nie wymiarów|
@@ -1019,7 +1019,7 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|Użycie|Użycie|Count|Count|Liczba wywołań interfejsu API|ApiCategory, ApiName, ResultType, ResponseCode|
+|Sposób użycia|Sposób użycia|Count|Count|Liczba wywołań interfejsu API|ApiCategory, ApiName, ResultType, ResponseCode|
 |Dostępność|Dostępność|Procent|Average|Dostępność interfejsów API|ApiCategory, ApiName|
 
 ## <a name="microsoftnetappnetappaccountscapacitypoolsvolumes"></a>Microsoft.NetApp/netAppAccounts/capacityPools/Volumes
@@ -1039,16 +1039,16 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |IoBytesPerTotalOps|Bajty we/wy na operację we wszystkich operacjach|bajty/op|Average|Suma wszystkich operacji we/out bajtów|Nie wymiarów|
 |IoBytesPerWriteOps|Bajty we/wy na operacje zapisu|bajty/op|Average|Liczba bajtów we/out na operację zapisu|Nie wymiarów|
 |OtherIops|Inne operacje we/wy|operacje na sekundę|Average|Inne operacje we/wychodzące na sekundę|Nie wymiarów|
-|OtherThroughput|Inna przepływność|MB/s|Average|Inna przepływność (nie jest odczytywana ani zapisu) w megabajtach na sekundę|Nie wymiarów|
+|OtherThroughput|Inna przepływność|mb/s|Average|Inna przepływność (nie jest odczytywana ani zapisu) w megabajtach na sekundę|Nie wymiarów|
 |ReadIops|Odczyt operacji we/wy|operacje na sekundę|Average|Operacje odczytu/out na sekundę|Nie wymiarów|
-|ReadThroughput|Przepływność odczytu|MB/s|Average|Przepływność odczytu (w megabajtach) na sekundę|Nie wymiarów|
+|ReadThroughput|Przepływność odczytu|mb/s|Average|Przepływność odczytu (w megabajtach) na sekundę|Nie wymiarów|
 |TotalIops|Całkowita liczba operacji we/wy|operacje na sekundę|Average|Suma wszystkich operacji we/wychodzącym na sekundę|Nie wymiarów|
-|TotalThroughput|Łączna przepływność|MB/s|Average|Suma całej przepływności w megabajtach na sekundę|Nie wymiarów|
+|TotalThroughput|Łączna przepływność|mb/s|Average|Suma całej przepływności w megabajtach na sekundę|Nie wymiarów|
 |VolumeAllocatedSize|Rozmiar przydzielony woluminu|B|Average|Przydzielony rozmiar woluminu (nie są to rzeczywiste używane bajty)|Nie wymiarów|
 |VolumeLogicalSize|Rozmiar logiczny woluminu|B|Average|Rozmiar logiczny woluminu (zużyte bajty)|Nie wymiarów|
 |VolumeSnapshotSize|Rozmiar migawki woluminu|B|Average|Rozmiar wszystkich migawek w woluminie|Nie wymiarów|
 |WriteIops|Zapisz operacje we/wy|operacje na sekundę|Average|Operacje zapisu/wylogowania na sekundę|Nie wymiarów|
-|WriteThroughput|Przepływność zapisu|MB/s|Average|Przepływność zapisu w megabajtach na sekundę|Nie wymiarów|
+|WriteThroughput|Przepływność zapisu|mb/s|Average|Przepływność zapisu w megabajtach na sekundę|Nie wymiarów|
 
 ## <a name="microsoftnetappnetappaccountscapacitypools"></a>Microsoft.NetApp/netAppAccounts/capacityPools
 
@@ -1209,66 +1209,66 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |---|---|---|---|---|---|
 |Rejestracja. wszystkie|Operacje rejestracji|Count|Łącznie|Liczba wszystkich operacji rejestracji zakończonych powodzeniem (Tworzenie aktualizacji zapytań i usunięć). |Nie wymiarów|
 |registration.create|Operacje tworzenia rejestracji|Count|Łącznie|Liczba wszystkich operacji tworzenia rejestracji zakończonych powodzeniem.|Nie wymiarów|
-|registration.update|Operacje aktualizacji operacji|Count|Łącznie|Liczba wszystkich aktualizacji rejestracji zakończonych powodzeniem.|Nie wymiarów|
-|registration.get|Operacje odczytu operacji|Count|Łącznie|Liczba wszystkich zapytań rejestracji zakończonych powodzeniem.|Nie wymiarów|
+|registration.update|Operacje aktualizacji rejestracji|Count|Łącznie|Liczba wszystkich aktualizacji rejestracji zakończonych powodzeniem.|Nie wymiarów|
+|registration.get|Operacje odczytu rejestracji|Count|Łącznie|Liczba wszystkich zapytań rejestracji zakończonych powodzeniem.|Nie wymiarów|
 |registration.delete|Operacje usuwania rejestracji|Count|Łącznie|Liczba wszystkich operacji usunięcia rejestracji zakończonych powodzeniem.|Nie wymiarów|
-|przychodzące|Wiadomości przychodzące|Count|Łącznie|Liczba wszystkich pomyślnie wysłanych wywołań interfejsu API. |Nie wymiarów|
-|incoming.scheduled|Wysłano zaplanowane powiadomienia wypychane|Count|Łącznie|Zaplanowane powiadomienia wypychane zostały anulowane|Nie wymiarów|
+|Przychodzące|Wiadomości przychodzące|Count|Łącznie|Liczba wszystkich pomyślnie wysłanych wywołań interfejsu API. |Nie wymiarów|
+|incoming.scheduled|Przesłane zaplanowane powiadomienia wypychane|Count|Łącznie|Zaplanowane powiadomienia wypychane zostały anulowane|Nie wymiarów|
 |incoming.scheduled.cancel|Zaplanowane powiadomienia wypychane zostały anulowane|Count|Łącznie|Zaplanowane powiadomienia wypychane zostały anulowane|Nie wymiarów|
 |scheduled.pending|Oczekujące zaplanowane powiadomienia|Count|Łącznie|Oczekujące zaplanowane powiadomienia|Nie wymiarów|
 |Instalacja. wszystkie|Operacje zarządzania instalacją|Count|Łącznie|Operacje zarządzania instalacją|Nie wymiarów|
 |Instalacja. Get|Pobierz operacje instalacji|Count|Łącznie|Pobierz operacje instalacji|Nie wymiarów|
-|Instalacja. upsert|Utwórz lub zaktualizuj operacje instalacji|Count|Łącznie|Utwórz lub zaktualizuj operacje instalacji|Nie wymiarów|
-|installation.patch|Operacje instalacji poprawki|Count|Łącznie|Operacje instalacji poprawki|Nie wymiarów|
-|installation.delete|Usuń operacje instalacji|Count|Łącznie|Usuń operacje instalacji|Nie wymiarów|
+|Instalacja. upsert|Tworzenie lub aktualizowanie operacji instalacji|Count|Łącznie|Tworzenie lub aktualizowanie operacji instalacji|Nie wymiarów|
+|installation.patch|Operacje instalacji poprawek|Count|Łącznie|Operacje instalacji poprawek|Nie wymiarów|
+|installation.delete|Usuwanie operacji instalacji|Count|Łącznie|Usuwanie operacji instalacji|Nie wymiarów|
 |outgoing.allpns.success|Powiadomienia zakończone powodzeniem|Count|Łącznie|Liczba wszystkich udanych powiadomień.|Nie wymiarów|
 |wychodzący. allpns. invalidpayload|Błędy ładunku|Count|Łącznie|Liczba wypchnięciów zakończonych niepowodzeniem, ponieważ PNS zwrócił zły błąd ładunku.|Nie wymiarów|
-|outgoing.allpns.pnserror|Błędy zewnętrznych systemów powiadamiania|Count|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ wystąpił problem z komunikacją z PNS (wyklucza problemy z uwierzytelnianiem).|Nie wymiarów|
-|outgoing.allpns.channelerror|Błędy kanału|Count|Łącznie|Liczba wypchnięciów zakończonych niepowodzeniem, ponieważ kanał był nieprawidłowy, nie jest skojarzony z poprawną aplikacją lub wygasłą.|Nie wymiarów|
+|outgoing.allpns.pnserror|Błędy zewnętrznego systemu powiadomień|Count|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ wystąpił problem z komunikacją z PNS (wyklucza problemy z uwierzytelnianiem).|Nie wymiarów|
+|outgoing.allpns.channelerror|Błędy kanałów|Count|Łącznie|Liczba wypchnięciów zakończonych niepowodzeniem, ponieważ kanał był nieprawidłowy, nie jest skojarzony z poprawną aplikacją lub wygasłą.|Nie wymiarów|
 |outgoing.allpns.badorexpiredchannel|Błędy nieprawidłowych lub wygasłych kanałów|Count|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ kanał/token/Identyfikator rejestracji w rejestracji został wygasły lub nieprawidłowy.|Nie wymiarów|
-|outgoing.wns.success|Powiadomienia usługi WNS zakończone powodzeniem|Count|Łącznie|Liczba wszystkich udanych powiadomień.|Nie wymiarów|
+|outgoing.wns.success|WNS pomyślne powiadomienia|Count|Łącznie|Liczba wszystkich udanych powiadomień.|Nie wymiarów|
 |wychodzący. WNS. invalidcredentials|WNS błędy autoryzacji (Nieprawidłowe poświadczenia)|Count|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ PNS nie zaakceptował podanych poświadczeń lub poświadczenia są zablokowane. (Usługa Windows Live nie rozpoznaje poświadczeń).|Nie wymiarów|
-|outgoing.wns.badchannel|Błąd nieprawidłowego kanału usługi WNS|Count|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ identyfikator channeluri w rejestracji nie został rozpoznany (stan WNS: nie znaleziono 404).|Nie wymiarów|
-|outgoing.wns.expiredchannel|Błąd wygasłego kanału usługi WNS|Count|Łącznie|Liczba wypchnięciów zakończonych niepowodzeniem z powodu wygaśnięcia identyfikator channeluri (stan WNS: 410).|Nie wymiarów|
-|wychodzące. WNS. dławienia|Powiadomienia usługi WNS z ograniczoną przepływnością|Count|Łącznie|Liczba wypchnięciów zakończonych niepowodzeniem, ponieważ WNS ogranicza tę aplikację (stan WNS: 406 nie akceptowalny).|Nie wymiarów|
+|outgoing.wns.badchannel|Błąd nieprawidłowego kanału WNS|Count|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ identyfikator channeluri w rejestracji nie został rozpoznany (stan WNS: nie znaleziono 404).|Nie wymiarów|
+|outgoing.wns.expiredchannel|Błąd WNS kanału wygasłego|Count|Łącznie|Liczba wypchnięciów zakończonych niepowodzeniem z powodu wygaśnięcia identyfikator channeluri (stan WNS: 410).|Nie wymiarów|
+|wychodzące. WNS. dławienia|WNS powiadomienia z ograniczeniami|Count|Łącznie|Liczba wypchnięciów zakończonych niepowodzeniem, ponieważ WNS ogranicza tę aplikację (stan WNS: 406 nie akceptowalny).|Nie wymiarów|
 |outgoing.wns.tokenproviderunreachable|Błędy autoryzacji WNS (nieosiągalne)|Count|Łącznie|Usługa Windows Live jest nieosiągalna.|Nie wymiarów|
 |outgoing.wns.invalidtoken|Błędy autoryzacji WNS (nieprawidłowy token)|Count|Łącznie|Token dostarczony do WNS jest nieprawidłowy (stan WNS: 401).|Nie wymiarów|
 |outgoing.wns.wrongtoken|WNS błędy autoryzacji (nieprawidłowy token)|Count|Łącznie|Token dostarczony do WNS jest prawidłowy, ale dla innej aplikacji (stan WNS: 403 — Dostęp zabroniony). Może się tak zdarzyć, jeśli identyfikator channeluri w rejestracji jest skojarzony z inną aplikacją. Sprawdź, czy aplikacja kliencka jest skojarzona z tą samą aplikacją, której poświadczenia znajdują się w centrum powiadomień.|Nie wymiarów|
-|outgoing.wns.invalidnotificationformat|Nieprawidłowy format powiadomienia usługi WNS|Count|Łącznie|Format powiadomienia jest nieprawidłowy (stan WNS: 400). Należy pamiętać, że WNS nie odrzuca wszystkich nieprawidłowych ładunków.|Nie wymiarów|
-|outgoing.wns.invalidnotificationsize|Błąd nieprawidłowego rozmiaru powiadomienia usługi WNS|Count|Łącznie|Ładunek powiadomienia jest zbyt duży (stan WNS: 413).|Nie wymiarów|
-|outgoing.wns.channelthrottled|Ograniczono przepływność kanału usługi WNS|Count|Łącznie|Powiadomienie zostało porzucone, ponieważ identyfikator channeluri w rejestracji jest ograniczany (nagłówek odpowiedzi WNS: X-WNS-NotificationStatus:channelThrottled).|Nie wymiarów|
-|outgoing.wns.channeldisconnected|Rozłączono kanał usługi WNS|Count|Łącznie|Powiadomienie zostało porzucone, ponieważ identyfikator channeluri w rejestracji jest ograniczany (nagłówek odpowiedzi WNS: X-WNS-DeviceConnectionStatus: odłączono.|Nie wymiarów|
-|outgoing.wns.dropped|Porzucone powiadomienia usługi WNS|Count|Łącznie|Powiadomienie zostało porzucone, ponieważ identyfikator channeluri w rejestracji jest ograniczany (X-WNS-NotificationStatus: porzucone, ale nie X-WNS-DeviceConnectionStatus: disconnected).|Nie wymiarów|
-|outgoing.wns.pnserror|Błędy usługi WNS|Count|Łącznie|Powiadomienie nie zostało dostarczone z powodu błędów komunikacji z WNS.|Nie wymiarów|
-|outgoing.wns.authenticationerror|Błędy uwierzytelniania usługi WNS|Count|Łącznie|Powiadomienie nie zostało dostarczone z powodu błędów komunikacji z nieprawidłowymi poświadczeniami usługi Windows Live lub nieprawidłowym tokenem.|Nie wymiarów|
-|outgoing.apns.success|Powiadomienia usługi APNS zakończone powodzeniem|Count|Łącznie|Liczba wszystkich udanych powiadomień.|Nie wymiarów|
+|outgoing.wns.invalidnotificationformat|Nieprawidłowy format powiadomienia WNS|Count|Łącznie|Format powiadomienia jest nieprawidłowy (stan WNS: 400). Należy pamiętać, że WNS nie odrzuca wszystkich nieprawidłowych ładunków.|Nie wymiarów|
+|outgoing.wns.invalidnotificationsize|Błąd nieprawidłowego rozmiaru powiadomienia WNS|Count|Łącznie|Ładunek powiadomienia jest zbyt duży (stan WNS: 413).|Nie wymiarów|
+|outgoing.wns.channelthrottled|Ograniczenie kanału WNS|Count|Łącznie|Powiadomienie zostało porzucone, ponieważ identyfikator channeluri w rejestracji jest ograniczany (nagłówek odpowiedzi WNS: X-WNS-NotificationStatus:channelThrottled).|Nie wymiarów|
+|outgoing.wns.channeldisconnected|Kanał WNS został odłączony|Count|Łącznie|Powiadomienie zostało porzucone, ponieważ identyfikator channeluri w rejestracji jest ograniczany (nagłówek odpowiedzi WNS: X-WNS-DeviceConnectionStatus: odłączono.|Nie wymiarów|
+|outgoing.wns.dropped|WNS usunięte powiadomienia|Count|Łącznie|Powiadomienie zostało porzucone, ponieważ identyfikator channeluri w rejestracji jest ograniczany (X-WNS-NotificationStatus: porzucone, ale nie X-WNS-DeviceConnectionStatus: disconnected).|Nie wymiarów|
+|outgoing.wns.pnserror|Błędy WNS|Count|Łącznie|Powiadomienie nie zostało dostarczone z powodu błędów komunikacji z WNS.|Nie wymiarów|
+|outgoing.wns.authenticationerror|Błędy uwierzytelniania WNS|Count|Łącznie|Powiadomienie nie zostało dostarczone z powodu błędów komunikacji z nieprawidłowymi poświadczeniami usługi Windows Live lub nieprawidłowym tokenem.|Nie wymiarów|
+|outgoing.apns.success|Pomyślne powiadomienia usługi APNS|Count|Łącznie|Liczba wszystkich udanych powiadomień.|Nie wymiarów|
 |outgoing.apns.invalidcredentials|Błędy autoryzacji usługi APNS|Count|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ PNS nie zaakceptował podanych poświadczeń lub poświadczenia są zablokowane.|Nie wymiarów|
 |outgoing.apns.badchannel|Błąd nieprawidłowego kanału usługi APNS|Count|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ token jest nieprawidłowy (kod stanu protokołu binarnego usługi APNS: 8. Kod stanu protokołu HTTP usługi APNS: 400 z "BadDeviceToken").|Nie wymiarów|
-|outgoing.apns.expiredchannel|Błąd nieprawidłowego kanału usługi APNS|Count|Łącznie|Liczba tokenów unieważnionych przez kanał opinii usługi APNS.|Nie wymiarów|
+|outgoing.apns.expiredchannel|Błąd wygasłego kanału usługi APNS|Count|Łącznie|Liczba tokenów unieważnionych przez kanał opinii usługi APNS.|Nie wymiarów|
 |outgoing.apns.invalidnotificationsize|Błąd nieprawidłowego rozmiaru powiadomienia usługi APNS|Count|Łącznie|Liczba wypchnięciów zakończonych niepowodzeniem ze względu na to, że ładunek jest zbyt duży (kod stanu protokołu binarnego usługi APNS: 7).|Nie wymiarów|
 |outgoing.apns.pnserror|Błędy usługi APNS|Count|Łącznie|Liczba wypchnięciów zakończonych niepowodzeniem z powodu błędów komunikacji z usługą APNS.|Nie wymiarów|
-|outgoing.gcm.success|Powiadomienia usługi GCM zakończone powodzeniem|Count|Łącznie|Liczba wszystkich udanych powiadomień.|Nie wymiarów|
+|outgoing.gcm.success|GCM pomyślne powiadomienia|Count|Łącznie|Liczba wszystkich udanych powiadomień.|Nie wymiarów|
 |outgoing.gcm.invalidcredentials|GCM błędy autoryzacji (Nieprawidłowe poświadczenia)|Count|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ PNS nie zaakceptował podanych poświadczeń lub poświadczenia są zablokowane.|Nie wymiarów|
-|outgoing.gcm.badchannel|Błąd nieprawidłowego kanału usługi GCM|Count|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ identyfikator rejestracji w rejestracji nie został rozpoznany (wynik GCM: Nieprawidłowa rejestracja).|Nie wymiarów|
-|outgoing.gcm.expiredchannel|Błąd wygasłego kanału usługi GCM|Count|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem z powodu wygaśnięcia Identyfikator rejestracji w rejestracji (wynik GCM: NotRegistered).|Nie wymiarów|
-|outgoing.gcm.throttled|Powiadomienia usługi GCM z ograniczoną przepływnością|Count|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ GCM ograniczenie tej aplikacji (kod stanu GCM: 501-599 lub wynik: niedostępne).|Nie wymiarów|
-|outgoing.gcm.invalidnotificationformat|Nieprawidłowy format powiadomienia usługi GCM|Count|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ ładunek nie został poprawnie sformatowany (wynik GCM: InvalidDataKey lub InvalidTtl).|Nie wymiarów|
-|outgoing.gcm.invalidnotificationsize|Błąd nieprawidłowego rozmiaru powiadomienia usługi GCM|Count|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ ładunek jest zbyt duży (wynik GCM: MessageTooBig).|Nie wymiarów|
-|outgoing.gcm.wrongchannel|Błąd nieprawidłowego kanału usługi GCM|Count|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ identyfikator rejestracji w rejestracji nie jest skojarzony z bieżącą aplikacją (wynik GCM: InvalidPackageName).|Nie wymiarów|
-|outgoing.gcm.pnserror|Błędy usługi GCM|Count|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem z powodu błędów komunikacji z GCM.|Nie wymiarów|
-|outgoing.gcm.authenticationerror|Błędy uwierzytelniania usługi GCM|Count|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ PNS nie zaakceptował podanych poświadczeń, a SenderId nie został poprawnie skonfigurowany w aplikacji (wynik GCM: MismatchedSenderId).|Nie wymiarów|
-|outgoing.mpns.success|Powiadomienia usługi MPNS zakończone powodzeniem|Count|Łącznie|Liczba wszystkich udanych powiadomień.|Nie wymiarów|
-|outgoing.mpns.invalidcredentials|Nieprawidłowe poświadczenia usługi MPNS|Count|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ PNS nie zaakceptował podanych poświadczeń lub poświadczenia są zablokowane.|Nie wymiarów|
+|outgoing.gcm.badchannel|Błąd nieprawidłowego kanału GCM|Count|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ identyfikator rejestracji w rejestracji nie został rozpoznany (wynik GCM: Nieprawidłowa rejestracja).|Nie wymiarów|
+|outgoing.gcm.expiredchannel|Błąd GCM kanału wygasłego|Count|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem z powodu wygaśnięcia Identyfikator rejestracji w rejestracji (wynik GCM: NotRegistered).|Nie wymiarów|
+|outgoing.gcm.throttled|GCM powiadomienia z ograniczeniami|Count|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ GCM ograniczenie tej aplikacji (kod stanu GCM: 501-599 lub wynik: niedostępne).|Nie wymiarów|
+|outgoing.gcm.invalidnotificationformat|Nieprawidłowy format powiadomienia GCM|Count|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ ładunek nie został poprawnie sformatowany (wynik GCM: InvalidDataKey lub InvalidTtl).|Nie wymiarów|
+|outgoing.gcm.invalidnotificationsize|Błąd nieprawidłowego rozmiaru powiadomienia GCM|Count|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ ładunek jest zbyt duży (wynik GCM: MessageTooBig).|Nie wymiarów|
+|outgoing.gcm.wrongchannel|Błąd nieprawidłowego kanału GCM|Count|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ identyfikator rejestracji w rejestracji nie jest skojarzony z bieżącą aplikacją (wynik GCM: InvalidPackageName).|Nie wymiarów|
+|outgoing.gcm.pnserror|Błędy GCM|Count|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem z powodu błędów komunikacji z GCM.|Nie wymiarów|
+|outgoing.gcm.authenticationerror|Błędy uwierzytelniania GCM|Count|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ PNS nie zaakceptował podanych poświadczeń, a SenderId nie został poprawnie skonfigurowany w aplikacji (wynik GCM: MismatchedSenderId).|Nie wymiarów|
+|outgoing.mpns.success|USŁUGI MPNS pomyślne powiadomienia|Count|Łącznie|Liczba wszystkich udanych powiadomień.|Nie wymiarów|
+|outgoing.mpns.invalidcredentials|USŁUGI MPNS nieprawidłowe poświadczenia|Count|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ PNS nie zaakceptował podanych poświadczeń lub poświadczenia są zablokowane.|Nie wymiarów|
 |outgoing.mpns.badchannel|Błąd nieprawidłowego kanału usługi MPNS|Count|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ identyfikator channeluri w rejestracji nie został rozpoznany (stan usługi MPNS: nie znaleziono 404).|Nie wymiarów|
-|wychodzące. usługi MPNS. dławienia|Powiadomienia usługi MPNS z ograniczoną przepływnością|Count|Łącznie|Liczba wypchnięciów zakończonych niepowodzeniem, ponieważ usługi MPNS ogranicza tę aplikację (WNS usługi MPNS: 406 nie akceptowalny).|Nie wymiarów|
+|wychodzące. usługi MPNS. dławienia|USŁUGI MPNS powiadomienia z ograniczeniami|Count|Łącznie|Liczba wypchnięciów zakończonych niepowodzeniem, ponieważ usługi MPNS ogranicza tę aplikację (WNS usługi MPNS: 406 nie akceptowalny).|Nie wymiarów|
 |outgoing.mpns.invalidnotificationformat|Nieprawidłowy format powiadomienia usługi MPNS|Count|Łącznie|Liczba wypchnięciów zakończonych niepowodzeniem, ponieważ ładunek powiadomienia był zbyt duży.|Nie wymiarów|
-|outgoing.mpns.channeldisconnected|Rozłączono kanał usługi MPNS|Count|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ identyfikator channeluri w rejestracji został rozłączony (stan usługi MPNS: nie znaleziono 412).|Nie wymiarów|
-|outgoing.mpns.dropped|Porzucone powiadomienia usługi MPNS|Count|Łącznie|Liczba wypchnięciów, które zostały porzucone przez usługi MPNS (nagłówek odpowiedzi usługi MPNS: X-NotificationStatus: QueueFull lub pomijane).|Nie wymiarów|
+|outgoing.mpns.channeldisconnected|Kanał usługi MPNS został odłączony|Count|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ identyfikator channeluri w rejestracji został rozłączony (stan usługi MPNS: nie znaleziono 412).|Nie wymiarów|
+|outgoing.mpns.dropped|USŁUGI MPNS usunięte powiadomienia|Count|Łącznie|Liczba wypchnięciów, które zostały porzucone przez usługi MPNS (nagłówek odpowiedzi usługi MPNS: X-NotificationStatus: QueueFull lub pomijane).|Nie wymiarów|
 |outgoing.mpns.pnserror|Błędy usługi MPNS|Count|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem z powodu błędów komunikacji z usługi MPNS.|Nie wymiarów|
 |outgoing.mpns.authenticationerror|Błędy uwierzytelniania usługi MPNS|Count|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ PNS nie zaakceptował podanych poświadczeń lub poświadczenia są zablokowane.|Nie wymiarów|
 |notificationhub.pushes|Wszystkie powiadomienia wychodzące|Count|Łącznie|Wszystkie powiadomienia wychodzące centrum powiadomień|Nie wymiarów|
 |incoming.all.requests|Wszystkie żądania przychodzące|Count|Łącznie|Łączna liczba żądań przychodzących dla centrum powiadomień|Nie wymiarów|
-|przychodzące. ALL. failedrequests|Wszystkie nieudane żądania przychodzące|Count|Łącznie|Łączna liczba nieudanych żądań przychodzących dla centrum powiadomień|Nie wymiarów|
+|przychodzące. ALL. failedrequests|Wszystkie przychodzące żądania zakończone niepowodzeniem|Count|Łącznie|Łączna liczba nieudanych żądań przychodzących dla centrum powiadomień|Nie wymiarów|
 
 ## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft.OperationalInsights/workspaces
 
@@ -1368,7 +1368,7 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |SenderConnections-ServerError|SenderConnections-ServerError|Count|Łącznie|Błąd servererror on SenderConnections dla elementu Microsoft. Relay.|EntityName|
 |ListenerConnections-TotalRequests|ListenerConnections-TotalRequests|Count|Łącznie|Łącznie ListenerConnections dla elementu Microsoft. Relay.|EntityName|
 |SenderConnections-TotalRequests|SenderConnections-TotalRequests|Count|Łącznie|Łączna liczba żądań SenderConnections dla elementu Microsoft. Relay.|EntityName|
-|ActiveConnections|ActiveConnections|Count|Łącznie|Łącznie połączeń ActiveConnections dla elementu Microsoft. Relay.|EntityName|
+|Połączeń ActiveConnections|Połączeń ActiveConnections|Count|Łącznie|Łącznie połączeń ActiveConnections dla elementu Microsoft. Relay.|EntityName|
 |ActiveListeners|ActiveListeners|Count|Łącznie|Łącznie ActiveListeners dla elementu Microsoft. Relay.|EntityName|
 |BytesTransferred|BytesTransferred|Count|Łącznie|Łącznie BytesTransferred dla elementu Microsoft. Relay.|EntityName|
 |ListenerDisconnects|ListenerDisconnects|Count|Łącznie|Łącznie ListenerDisconnects dla elementu Microsoft. Relay.|EntityName|
@@ -1389,17 +1389,17 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |Żądania successfulrequests|Pomyślne żądania (wersja zapoznawcza)|Count|Łącznie|Łączna liczba pomyślnych żądań dla przestrzeni nazw (wersja zapoznawcza)|EntityName|
 |Błędy servererrors|Błędy serwera. (Wersja zapoznawcza)|Count|Łącznie|Błędy serwera dla elementu Microsoft. ServiceBus. (Wersja zapoznawcza)|EntityName|
 |Błędy usererrors|Błędy użytkownika. (Wersja zapoznawcza)|Count|Łącznie|Błędy użytkowników dla elementu Microsoft. ServiceBus. (Wersja zapoznawcza)|EntityName|
-|Żądania throttledrequests|Żądania z ograniczeniami. (Wersja zapoznawcza)|Count|Łącznie|Żądania ograniczone dla elementu Microsoft. ServiceBus. (Wersja zapoznawcza)|EntityName|
+|ThrottledRequests|Żądania z ograniczeniami. (Wersja zapoznawcza)|Count|Łącznie|Żądania ograniczone dla elementu Microsoft. ServiceBus. (Wersja zapoznawcza)|EntityName|
 |Żądania incomingrequests|Żądania przychodzące (wersja zapoznawcza)|Count|Łącznie|Żądania przychodzące dla Microsoft. ServiceBus. (Wersja zapoznawcza)|EntityName|
 |Komunikaty incomingmessages|Wiadomości przychodzące (wersja zapoznawcza)|Count|Łącznie|Komunikaty przychodzące dla elementu Microsoft. ServiceBus. (Wersja zapoznawcza)|EntityName|
 |Komunikaty outgoingmessages|Wiadomości wychodzące (wersja zapoznawcza)|Count|Łącznie|Komunikaty wychodzące dla elementu Microsoft. ServiceBus. (Wersja zapoznawcza)|EntityName|
-|ActiveConnections|Połączeń ActiveConnections (wersja zapoznawcza)|Count|Łącznie|Całkowita liczba aktywnych połączeń dla elementu Microsoft. ServiceBus. (Wersja zapoznawcza)|Nie wymiarów|
+|Połączeń ActiveConnections|Połączeń ActiveConnections (wersja zapoznawcza)|Count|Łącznie|Całkowita liczba aktywnych połączeń dla elementu Microsoft. ServiceBus. (Wersja zapoznawcza)|Nie wymiarów|
 |Size|Rozmiar (wersja zapoznawcza)|Bajty|Average|Rozmiar kolejki/tematu w bajtach. (Wersja zapoznawcza)|EntityName|
-|Wiadomości|Liczba komunikatów w kolejce/temacie. (Wersja zapoznawcza)|Count|Average|Liczba komunikatów w kolejce/temacie. (Wersja zapoznawcza)|EntityName|
+|Komunikaty|Liczba komunikatów w kolejce/temacie. (Wersja zapoznawcza)|Count|Average|Liczba komunikatów w kolejce/temacie. (Wersja zapoznawcza)|EntityName|
 |ActiveMessages|Liczba aktywnych komunikatów w kolejce/temacie. (Wersja zapoznawcza)|Count|Average|Liczba aktywnych komunikatów w kolejce/temacie. (Wersja zapoznawcza)|EntityName|
 |DeadletteredMessages|Liczba utraconych wiadomości w kolejce/temacie. (Wersja zapoznawcza)|Count|Average|Liczba utraconych wiadomości w kolejce/temacie. (Wersja zapoznawcza)|EntityName|
 |ScheduledMessages|Liczba zaplanowanych komunikatów w kolejce/temacie. (Wersja zapoznawcza)|Count|Average|Liczba zaplanowanych komunikatów w kolejce/temacie. (Wersja zapoznawcza)|EntityName|
-|CPUXNS|Użycie procesora na przestrzeń nazw|Percent|Maksimum|Metryka użycia procesora przestrzeni nazw w warstwie Premium usługi Service Bus|Nie wymiarów|
+|CPUXNS|Użycie procesora CPU na przestrzeń nazw|Percent|Maksimum|Metryka użycia procesora przestrzeni nazw w warstwie Premium usługi Service Bus|Nie wymiarów|
 |WSXNS|Użycie rozmiaru pamięci na przestrzeń nazw|Percent|Maksimum|Metryka użycia pamięci przestrzeni nazw Premium usługi Service Bus|Nie wymiarów|
 
 ## <a name="microsoftservicefabricmeshapplications"></a>Microsoft.ServiceFabricMesh/applications
@@ -1434,18 +1434,18 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
 |cpu_percent|Procent użycia procesora CPU|Percent|Average|Procent użycia procesora CPU|Nie wymiarów|
-|physical_data_read_percent|We/wy danych (procent)|Percent|Average|We/wy danych (procent)|Nie wymiarów|
-|log_write_percent|We/wy dziennika (procent)|Percent|Average|Procent operacji we/wy dziennika. Nie dotyczy hurtowni danych.|Nie wymiarów|
+|physical_data_read_percent|Operacje we/wy danych (procent)|Percent|Average|Operacje we/wy danych (procent)|Nie wymiarów|
+|log_write_percent|Operacje we/wy dziennika (procent)|Percent|Average|Procent operacji we/wy dziennika. Nie dotyczy hurtowni danych.|Nie wymiarów|
 |dtu_consumption_percent|Procent jednostek DTU|Percent|Average|Procent jednostek DTU. Dotyczy baz danych opartych na jednostkach DTU.|Nie wymiarów|
 |magazyn|Używane miejsce na dane|Bajty|Maksimum|Łączny rozmiar bazy danych. Nie dotyczy hurtowni danych.|Nie wymiarów|
 |connection_successful|Udane połączenia|Count|Łącznie|Udane połączenia|Nie wymiarów|
 |connection_failed|Połączenia zakończone niepowodzeniem|Count|Łącznie|Połączenia zakończone niepowodzeniem|Nie wymiarów|
 |blocked_by_firewall|Zablokowane przez zaporę|Count|Łącznie|Zablokowane przez zaporę|Nie wymiarów|
-|stanu|Zakleszczenia|Count|Łącznie|Zakleszczenia. Nie dotyczy hurtowni danych.|Nie wymiarów|
+|Stanu|Zakleszczenia|Count|Łącznie|Zakleszczenia. Nie dotyczy hurtowni danych.|Nie wymiarów|
 |storage_percent|Procent użytego miejsca na danych|Percent|Maksimum|Procent rozmiaru bazy danych. Nie dotyczy magazynów danych ani baz danych w skali.|Nie wymiarów|
 |xtp_storage_percent|Procent magazynu OLTP w pamięci|Percent|Average|Procent magazynu OLTP w pamięci. Nie dotyczy hurtowni danych.|Nie wymiarów|
-|workers_percent|Procent procesów roboczych|Percent|Average|Procent pracowników. Nie dotyczy hurtowni danych.|Nie wymiarów|
-|sessions_percent|Procent sesji|Percent|Average|Procent sesji. Nie dotyczy hurtowni danych.|Nie wymiarów|
+|workers_percent|Procesy robocze (procent)|Percent|Average|Procent pracowników. Nie dotyczy hurtowni danych.|Nie wymiarów|
+|sessions_percent|Sesje (procent)|Percent|Average|Procent sesji. Nie dotyczy hurtowni danych.|Nie wymiarów|
 |dtu_limit|DTU Limit|Count|Average|Limit jednostek DTU. Dotyczy baz danych opartych na jednostkach DTU.|Nie wymiarów|
 |dtu_used|Używane jednostki DTU|Count|Average|Użyto jednostek DTU. Dotyczy baz danych opartych na jednostkach DTU.|Nie wymiarów|
 |cpu_limit|Limit CPU|Count|Average|Limit czasu procesora CPU. Dotyczy baz danych opartych na rdzeń wirtualny.|Nie wymiarów|
@@ -1468,16 +1468,16 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
 |cpu_percent|Procent użycia procesora CPU|Percent|Average|Procent użycia procesora CPU|Nie wymiarów|
-|physical_data_read_percent|We/wy danych (procent)|Percent|Average|We/wy danych (procent)|Nie wymiarów|
-|log_write_percent|We/wy dziennika (procent)|Percent|Average|We/wy dziennika (procent)|Nie wymiarów|
+|physical_data_read_percent|Operacje we/wy danych (procent)|Percent|Average|Operacje we/wy danych (procent)|Nie wymiarów|
+|log_write_percent|Operacje we/wy dziennika (procent)|Percent|Average|Operacje we/wy dziennika (procent)|Nie wymiarów|
 |dtu_consumption_percent|Procent jednostek DTU|Percent|Average|Procent jednostek DTU. Dotyczy pul elastycznych opartych na jednostkach DTU.|Nie wymiarów|
 |storage_percent|Procent użytego miejsca na danych||Percent|Average|Procent miejsca do magazynowania|Nie wymiarów|
-|workers_percent|Procent procesów roboczych|Percent|Average|Procent procesów roboczych|Nie wymiarów|
-|sessions_percent|Procent sesji|Percent|Average|Procent sesji|Nie wymiarów|
+|workers_percent|Procesy robocze (procent)|Percent|Average|Procesy robocze (procent)|Nie wymiarów|
+|sessions_percent|Sesje (procent)|Percent|Average|Sesje (procent)|Nie wymiarów|
 |eDTU_limit|limit liczby jednostek eDTU|Count|Average|limit liczby jednostek eDTU. Dotyczy pul elastycznych opartych na jednostkach DTU.|Nie wymiarów|
 |storage_limit|Maksymalny rozmiar danych|Bajty|Average|Limit magazynu|Nie wymiarów|
 |eDTU_used|użyta wartość eDTU|Count|Average|użyta wartość eDTU. Dotyczy pul elastycznych opartych na jednostkach DTU.|Nie wymiarów|
-|storage_used|Używane miejsce na dane|Bajty|Average|Używane miejsce|Nie wymiarów|
+|storage_used|Używane miejsce na dane|Bajty|Average|Użyty magazyn|Nie wymiarów|
 |xtp_storage_percent|Procent magazynu OLTP w pamięci|Percent|Average|Procent magazynu OLTP w pamięci|Nie wymiarów|
 |cpu_limit|Limit CPU|Count|Average|Limit czasu procesora CPU. Dotyczy pul elastycznych opartych na rdzeń wirtualny.|Nie wymiarów|
 |cpu_used|Użycie procesora CPU|Count|Average|Użycie procesora CPU. Dotyczy pul elastycznych opartych na rdzeń wirtualny.|Nie wymiarów|
@@ -1653,9 +1653,9 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|CpuPercentage|Procent użycia procesora CPU|Percent|Average|Procent użycia procesora CPU|Wystąpienie|
+|CpuPercentage|Procent procesora CPU|Percent|Average|Procent procesora CPU|Wystąpienie|
 |MemoryPercentage|Procent pamięci|Percent|Average|Procent pamięci|Wystąpienie|
-|DiskQueueLength|Długość kolejki dysku|Count|Average|Długość kolejki dysku|Wystąpienie|
+|DiskQueueLength|Długość kolejki dyskowej|Count|Average|Długość kolejki dyskowej|Wystąpienie|
 |HttpQueueLength|Długość kolejki HTTP|Count|Average|Długość kolejki HTTP|Wystąpienie|
 |BytesReceived|Dane wejściowe|Bajty|Łącznie|Dane wejściowe|Wystąpienie|
 |BytesSent|Dane wyjściowe|Bajty|Łącznie|Dane wyjściowe|Wystąpienie|
@@ -1681,7 +1681,7 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |AverageMemoryWorkingSet|Średni zestaw roboczy pamięci|Bajty|Average|Średni zestaw roboczy pamięci|Wystąpienie|
 |AverageResponseTime|Średni czas odpowiedzi|Sekundy|Average|Średni czas odpowiedzi|Wystąpienie|
 |AppConnections|Połączenia|Count|Average|Połączenia|Wystąpienie|
-|Dojścia|Liczba dojść|Count|Average|Liczba dojść|Wystąpienie|
+|Realizuj|Liczba dojść|Count|Average|Liczba dojść|Wystąpienie|
 |Wątki|Liczba wątków|Count|Average|Liczba wątków|Wystąpienie|
 |PrivateBytes|Bajty prywatne|Bajty|Average|Bajty prywatne|Wystąpienie|
 |IoReadBytesPerSecond|Odczytane bajty We/Wy na sekundę|BytesPerSecond|Łącznie|Odczytane bajty We/Wy na sekundę|Wystąpienie|
@@ -1747,7 +1747,7 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |FunctionExecutionUnits|Jednostki wykonawcze funkcji|Count|Łącznie|Jednostki wykonawcze funkcji|Wystąpienie|
 |FunctionExecutionCount|Liczba wykonań funkcji|Count|Łącznie|Liczba wykonań funkcji|Wystąpienie|
 |AppConnections|Połączenia|Count|Average|Połączenia|Wystąpienie|
-|Dojścia|Liczba dojść|Count|Average|Liczba dojść|Wystąpienie|
+|Realizuj|Liczba dojść|Count|Average|Liczba dojść|Wystąpienie|
 |Wątki|Liczba wątków|Count|Average|Liczba wątków|Wystąpienie|
 |PrivateBytes|Bajty prywatne|Bajty|Average|Bajty prywatne|Wystąpienie|
 |IoReadBytesPerSecond|Odczytane bajty We/Wy na sekundę|BytesPerSecond|Łącznie|Odczytane bajty We/Wy na sekundę|Wystąpienie|
@@ -1781,9 +1781,9 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |Http4xx|HTTP 4xx|Count|Łącznie|HTTP 4xx|Wystąpienie|
 |Http5xx|Błędy serwera HTTP|Count|Łącznie|Błędy serwera HTTP|Wystąpienie|
 |AverageResponseTime|Średni czas odpowiedzi|Sekundy|Average|Średni czas odpowiedzi|Wystąpienie|
-|CpuPercentage|Procent użycia procesora CPU|Percent|Average|Procent użycia procesora CPU|Wystąpienie|
+|CpuPercentage|Procent procesora CPU|Percent|Average|Procent procesora CPU|Wystąpienie|
 |MemoryPercentage|Procent pamięci|Percent|Average|Procent pamięci|Wystąpienie|
-|DiskQueueLength|Długość kolejki dysku|Count|Average|Długość kolejki dysku|Wystąpienie|
+|DiskQueueLength|Długość kolejki dyskowej|Count|Average|Długość kolejki dyskowej|Wystąpienie|
 |HttpQueueLength|Długość kolejki HTTP|Count|Average|Długość kolejki HTTP|Wystąpienie|
 |ActiveRequests|Aktywne żądania|Count|Łącznie|Aktywne żądania|Wystąpienie|
 |TotalFrontEnds|Łącznie frontonów|Count|Average|Łącznie frontonów|Nie wymiarów|
@@ -1798,10 +1798,10 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |Łączna|Łączna liczba procesów roboczych|Count|Average|Łączna liczba procesów roboczych|Nie wymiarów|
 |WorkersAvailable|Dostępne procesy robocze|Count|Average|Dostępne procesy robocze|Nie wymiarów|
 |WorkersUsed|Używane procesy robocze|Count|Average|Używane procesy robocze|Nie wymiarów|
-|CpuPercentage|Procent użycia procesora CPU|Percent|Average|Procent użycia procesora CPU|Wystąpienie|
+|CpuPercentage|Procent procesora CPU|Percent|Average|Procent procesora CPU|Wystąpienie|
 |MemoryPercentage|Procent pamięci|Percent|Average|Procent pamięci|Wystąpienie|
 
 ## <a name="next-steps"></a>Następne kroki
 * [Przeczytaj informacje o metrykach w Azure Monitor](data-platform.md)
 * [Tworzenie alertów dotyczących metryk](alerts-overview.md)
-* [Eksportowanie metryk do magazynu, centrum zdarzeń lub Log Analytics](diagnostic-logs-overview.md)
+* [Eksportowanie metryk do magazynu, centrum zdarzeń lub Log Analytics](resource-logs-overview.md)

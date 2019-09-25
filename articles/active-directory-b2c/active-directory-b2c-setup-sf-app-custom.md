@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0bc373649b19b75a8f137e82bf839ac5b27b8692
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 4c9d1fa01ba39a94966cda99ee212a3de0d67a2e
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064997"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258224"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurowanie logowania za pomocą dostawcy protokołu SAML usługi Salesforce przy użyciu zasad niestandardowych w programie Azure Active Directory B2C
 
@@ -35,7 +35,7 @@ W tym artykule opisano sposób włączania logowania dla użytkowników z organi
 2. W menu po lewej stronie w obszarze **Ustawienia**rozwiń węzeł **tożsamość**, a następnie wybierz pozycję **dostawca tożsamości**.
 3. Wybierz pozycję **Włącz dostawcę tożsamości**.
 4. W obszarze **Wybierz certyfikat**wybierz certyfikat, który ma być używany przez usługi Salesforce do komunikowania się z Azure AD B2C. Możesz użyć domyślnego certyfikatu.
-5. Kliknij polecenie **Zapisz**.
+5. Kliknij pozycję **Zapisz**.
 
 ### <a name="create-a-connected-app-in-salesforce"></a>Tworzenie aplikacji połączonej w usłudze Salesforce
 
@@ -96,7 +96,7 @@ Należy przechowywać certyfikat utworzony w dzierżawie Azure AD B2C.
 7. Wprowadź wartość **Nazwa** dla zasad. Na przykład SAMLSigningCert. Prefiks `B2C_1A_` jest automatycznie dodawany do nazwy klucza.
 8. Przejdź do i wybierz utworzony certyfikat B2CSigningCert. pfx.
 9. Wprowadź **hasło** dla certyfikatu.
-3. Kliknij przycisk **Utwórz**.
+3. Kliknij pozycję **Utwórz**.
 
 ## <a name="add-a-claims-provider"></a>Dodawanie dostawcy oświadczeń
 
@@ -127,7 +127,7 @@ Konto usługi Salesforce można zdefiniować jako dostawcę oświadczeń, dodaj�
             <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_SAMLSigningCert"/>
           </CryptographicKeys>
           <OutputClaims>
-            <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="userId"/>
+            <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="userId"/>
             <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name"/>
             <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="family_name"/>
             <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="email"/>
@@ -204,7 +204,7 @@ Komunikacja z usługą Azure AD B2C odbywa się za pomocą aplikacji utworzonej 
 4. Wybierz pozycję **Aplikacje**, a następnie wybierz polecenie **Dodaj**.
 5. Wprowadź nazwę aplikacji, na przykład *testapp1*.
 6. W polu **aplikacja sieci Web/interfejs API sieci Web**wybierz `Yes`pozycję `https://jwt.ms` , a następnie wprowadź **adres URL odpowiedzi**.
-7. Kliknij przycisk **Utwórz**.
+7. Kliknij pozycję **Utwórz**.
 
 ## <a name="update-and-test-the-relying-party-file"></a>Aktualizowanie i testowanie pliku jednostki uzależnionej
 

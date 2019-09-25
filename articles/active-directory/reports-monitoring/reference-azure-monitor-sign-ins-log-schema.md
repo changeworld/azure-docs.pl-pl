@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cc07ac2644ac9f97146e980a1961b9b84e7c561
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: c3a05a531fd03cbd77bf3460ec45300692764565
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127049"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259152"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Interpretuj schemat dzienników logowania usługi Azure AD w Azure Monitor
 
@@ -149,7 +149,7 @@ W tym artykule opisano schemat dziennika logowania Azure Active Directory (Azure
 | ResourceId | Ta wartość jest niezamapowana i można bezpiecznie zignorować to pole.  |
 | OperationName | W przypadku logowania ta wartość jest zawsze *aktywność logowania*. |
 | OperationVersion | Wersja interfejsu API REST, która jest wymagana przez klienta programu. |
-| Kategoria | W przypadku logowania ta wartość jest zawsze *rejestracja*. | 
+| Category | W przypadku logowania ta wartość jest zawsze *rejestracja*. | 
 | TenantId | Identyfikator GUID dzierżawy, który jest skojarzony z dziennikami. |
 | Result | Wynik operacji logowania może być spowodowany sukcesem lub niepowodzeniem. | 
 | ResultSignature | Zawiera kod błędu (jeśli istnieje) dla operacji logowania. |
@@ -165,9 +165,9 @@ W tym artykule opisano schemat dziennika logowania Azure Active Directory (Azure
 | Tożsamość | Tożsamość z tokenu, która została przedstawiona podczas żądania. Może to być konto użytkownika, konto System lub nazwa główna usługi. |
 | Poziom | Udostępnia typ komunikatu. W przypadku inspekcji zawsze jest to *informacja*. |
 | Location | Udostępnia lokalizację działania związanego z logowaniem. |
-| Właściwości | Wyświetla wszystkie właściwości, które są skojarzone z logowaniem. Aby uzyskać więcej informacji, zobacz [Microsoft Graph dokumentacja interfejsu API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin). Ten schemat używa tych samych nazw atrybutów co zasób logowania, co umożliwia ich czytelność.
+| properties | Wyświetla wszystkie właściwości, które są skojarzone z logowaniem. Aby uzyskać więcej informacji, zobacz [Microsoft Graph dokumentacja interfejsu API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin). Ten schemat używa tych samych nazw atrybutów co zasób logowania, co umożliwia ich czytelność.
 
 ## <a name="next-steps"></a>Następne kroki
 
 * [Interpret audit logs schema in Azure Monitor (Interpretowanie schematu dzienników inspekcji w usłudze Azure Monitor)](reference-azure-monitor-audit-log-schema.md)
-* [Przeczytaj więcej na temat dzienników diagnostycznych platformy Azure](../../azure-monitor/platform/diagnostic-logs-overview.md)
+* [Przeczytaj więcej na temat dzienników diagnostycznych platformy Azure](../../azure-monitor/platform/resource-logs-overview.md)

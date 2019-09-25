@@ -5,32 +5,32 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 43e6fe301cf28b7a342ba2e802c9fce19bfeec4d
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.date: 09/24/2019
+ms.openlocfilehash: 55e802aa1f7bdf0d67d1a9c3f020d255afdc8130
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815856"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261899"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Migrowanie bazy danych PostgreSQL przy użyciu funkcji zrzutów i przywracania
-Możesz użyć [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) , aby wyodrębnić bazę danych PostgreSQL do pliku zrzutu i [pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) w celu przywrócenia bazy danych PostgreSQL z pliku archiwum utworzonego przez pg_dump.
+Możesz użyć [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) , aby wyodrębnić bazę danych PostgreSQL do pliku zrzutu i [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) w celu przywrócenia bazy danych PostgreSQL z pliku archiwum utworzonego przez pg_dump.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Aby krokowo poprowadzić ten przewodnik, musisz:
 - [Serwer Azure Database for PostgreSQL](quickstart-create-server-database-portal.md) z regułami zapory, aby umożliwić dostęp do niego i bazę danych.
-- narzędzia wiersza polecenia [pg_dump](https://www.postgresql.org/docs/9.6/static/app-pgdump.html) i [pg_restore](https://www.postgresql.org/docs/9.6/static/app-pgrestore.html) zainstalowane
+- narzędzia wiersza polecenia [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) i [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) zainstalowane
 
 Wykonaj następujące kroki, aby zrzucić i przywrócić bazę danych PostgreSQL:
 
 ## <a name="create-a-dump-file-using-pg_dump-that-contains-the-data-to-be-loaded"></a>Utwórz plik zrzutu przy użyciu pg_dump, który zawiera dane do załadowania
 Aby utworzyć kopię zapasową istniejącej bazy danych PostgreSQL lokalnie lub na maszynie wirtualnej, uruchom następujące polecenie:
 ```bash
-pg_dump -Fc -v --host=<host> --username=<name> --dbname=<database name> > <database>.dump
+pg_dump -Fc -v --host=<host> --username=<name> --dbname=<database name> -f <database>.dump
 ```
 Na przykład jeśli masz serwer lokalny i bazę danych o nazwie **TestDB** w niej
 ```bash
-pg_dump -Fc -v --host=localhost --username=masterlogin --dbname=testdb > testdb.dump
+pg_dump -Fc -v --host=localhost --username=masterlogin --dbname=testdb -f testdb.dump
 ```
 
 
@@ -57,14 +57,14 @@ pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=
 Jednym ze sposobów migrowania istniejącej bazy danych PostgreSQL do usługi Azure Database for PostgreSQL jest wykonanie kopii zapasowej bazy danych na serwerze źródłowym i przywrócenie jej na platformie Azure. Aby zminimalizować czas wymagany do przeprowadzenia migracji, należy rozważyć użycie następujących parametrów za pomocą poleceń tworzenia kopii zapasowej i przywracania.
 
 > [!NOTE]
-> Aby uzyskać szczegółowe informacje o składni, zobacz artykuły [pg_dump](https://www.postgresql.org/docs/9.6/static/app-pgdump.html) i [pg_restore](https://www.postgresql.org/docs/9.6/static/app-pgrestore.html).
+> Aby uzyskać szczegółowe informacje o składni, zobacz artykuły [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) i [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html).
 >
 
 ### <a name="for-the-backup"></a>Dla kopii zapasowej
 - Utwórz kopię zapasową za pomocą przełącznika-FC, aby można było wykonać przywracanie równolegle w celu przyspieszenia jego działania. Na przykład:
 
     ```
-    pg_dump -h MySourceServerName -U MySourceUserName -Fc -d MySourceDatabaseName > Z:\Data\Backups\MyDatabaseBackup.dump
+    pg_dump -h MySourceServerName -U MySourceUserName -Fc -d MySourceDatabaseName -f Z:\Data\Backups\MyDatabaseBackup.dump
     ```
 
 ### <a name="for-the-restore"></a>Dla przywracania
@@ -72,7 +72,7 @@ Jednym ze sposobów migrowania istniejącej bazy danych PostgreSQL do usługi Az
 
 - Powinno to być już wykonywane domyślnie, ale otworzyć plik zrzutu, aby sprawdzić, czy instrukcje CREATE INDEX są po wstawieniu danych. Jeśli tak nie jest, Przenieś instrukcje tworzenia indeksu po wstawieniu danych.
 
-- Przywróć przy użyciu przełączników-FC i- *#* j, aby zrównoleglanie przywracanie. *#* jest liczbą rdzeni na serwerze docelowym. Możesz również spróbować z *#* ustawionym dwukrotnie liczbą rdzeni serwera docelowego, aby zobaczyć wpływ. Przykład:
+- Przywróć przy użyciu przełączników-FC i- *#* j, aby zrównoleglanie przywracanie. *#* jest liczbą rdzeni na serwerze docelowym. Możesz również spróbować z *#* ustawionym dwukrotnie liczbą rdzeni serwera docelowego, aby zobaczyć wpływ. Na przykład:
 
     ```
     pg_restore -h MyTargetServer.postgres.database.azure.com -U MyAzurePostgreSQLUserName -Fc -j 4 -d MyTargetDatabase Z:\Data\Backups\MyDatabaseBackup.dump
@@ -89,6 +89,6 @@ Jednym ze sposobów migrowania istniejącej bazy danych PostgreSQL do usługi Az
 
 Pamiętaj, aby testować i sprawdzać poprawność tych poleceń w środowisku testowym przed użyciem ich w produkcji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - Aby przeprowadzić migrację bazy danych PostgreSQL przy użyciu funkcji eksportowania i importowania, zobacz [Migrowanie bazy danych PostgreSQL przy użyciu funkcji eksportowania i importowania](howto-migrate-using-export-and-import.md).
 - Aby uzyskać więcej informacji na temat migrowania baz danych do Azure Database for PostgreSQL, zobacz [Przewodnik po migracji bazy danych](https://aka.ms/datamigration).

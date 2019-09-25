@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: e1d481c6019feebf3d62f0e23480f5572363869c
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: bcce4dcac35b783efefe81abc2090506502e9931
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946842"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257279"
 ---
 # <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-fedramp"></a>Strategia zabezpieczeń i zgodności z przepisami platformy Azure: Aplikacja sieci Web IaaS dla FedRAMP
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 [Federal Risk and Authorization Management Program (FedRAMP)](https://www.fedramp.gov) to programowy rząd USA, który zapewnia ustandaryzowane podejście do oceny zabezpieczeń, autoryzacji i ciągłego monitorowania produktów i usług w chmurze. Ta Strategia zabezpieczeń i zgodności z przepisami platformy Azure Automatyzacja zawiera wskazówki dotyczące wdrażania środowiska zgodnego z infrastrukturą FedRAMP jako usługi (IaaS), które jest odpowiednie dla prostej internetowej aplikacji sieci Web. To rozwiązanie automatyzuje wdrażanie i Konfigurowanie zasobów platformy Azure na potrzeby wspólnej architektury referencyjnej, pokazując sposoby, w których klienci mogą spełniać określone wymagania w zakresie zabezpieczeń i zgodności, a także jak podstawą dla klientów do kompilowania i Skonfiguruj własne rozwiązania na platformie Azure. Rozwiązanie implementuje podzbiór kontrolek z FedRAMP High Baseline w oparciu o instytut NIST SP 800-53. Aby uzyskać więcej informacji na temat wymagań FedRAMP i tego rozwiązania, zobacz [dokumentację dotyczącą zgodności](#compliance-documentation).
 > [!NOTE]
@@ -63,12 +63,12 @@ To rozwiązanie używa następujących usług platformy Azure. Szczegóły archi
 - Azure Application Gateway
     - (1) WAF Application Gateway włączone
         - Tryb zapory: zapobieganie
-        - zestaw reguł: OWASP 3.0
+        - Zestaw reguł: OWASP 3.0
         - odbiornik: port 443
 - Azure Storage
     - (7) konta magazynu geograficznie nadmiarowego
 - Monitor usługi Azure Cloud
-- Magazyn usług Recovery Services
+- magazyn usług Recovery Services
 - W usłudze Azure Key Vault
 - Azure Active Directory (Azure AD)
 - Azure Resource Manager
@@ -123,7 +123,7 @@ Następujące technologie zapewniają funkcje zarządzania tożsamościami w śr
 - Wdrożone wystąpienie Active Directory IaaS zapewnia zarządzanie tożsamościami na poziomie systemu operacyjnego dla wdrożonych maszyn wirtualnych IaaS.
 
 ### <a name="security"></a>Bezpieczeństwo
-**Zarządzanie**wpisami tajnymi: Rozwiązanie używa [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) do zarządzania kluczami i wpisami tajnymi. Usługa Azure Key Vault ułatwia ochronę kluczy kryptograficznych i kluczy tajnych używanych przez aplikacje i usługi w chmurze. Azure Key Vault ułatwia zarządzanie dyskami maszyn wirtualnych IaaS — kluczami szyfrowania i wpisami tajnymi dla tej architektury referencyjnej.
+**Zarządzanie wpisami tajnymi**: Rozwiązanie używa [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) do zarządzania kluczami i wpisami tajnymi. Usługa Azure Key Vault ułatwia ochronę kluczy kryptograficznych i kluczy tajnych używanych przez aplikacje i usługi w chmurze. Azure Key Vault ułatwia zarządzanie dyskami maszyn wirtualnych IaaS — kluczami szyfrowania i wpisami tajnymi dla tej architektury referencyjnej.
 
 **Zarządzanie poprawkami**: Maszyny wirtualne z systemem Windows wdrożone przez tę Strategia zabezpieczeń i zgodności z przepisami platformy Azure automatyzację są domyślnie konfigurowane do odbierania automatycznych aktualizacji z usługi Windows Update. To rozwiązanie wdraża również Azure Automation rozwiązanie, za pomocą którego można tworzyć wdrożenia aktualizacji w celu wdrażania poprawek do serwerów z systemem Windows w razie potrzeby.
 
@@ -145,12 +145,12 @@ Następujące technologie zapewniają funkcje zarządzania tożsamościami w śr
 
 **Monitor chmury**: [Monitor w chmurze](https://docs.microsoft.com/windows-server/failover-clustering/whats-new-in-failover-clustering#BKMK_CloudWitness) to typ monitora kworum klastra trybu failover w systemie Windows Server 2016, który wykorzystuje platformę Azure jako punkt rozstrzygania. Monitor w chmurze, taki jak każdy inny monitor kworum, otrzymuje głos i może uczestniczyć w obliczeniach kworum, ale korzysta ze standardowego publicznie dostępnego Blob Storage platformy Azure. Eliminuje to dodatkowe obciążenie pracą maszyn wirtualnych hostowanych w chmurze publicznej.
 
-### <a name="logging-and-auditing"></a>Rejestrowanie i inspekcja
+### <a name="logging-and-auditing"></a>Rejestrowanie i przeprowadzanie inspekcji
 
 Dzienniki Azure Monitor zapewniają obszerne rejestrowanie aktywności systemu i użytkownika, a także kondycję systemu. [Azure monitor rejestruje](../azure-security-disk-encryption-overview.md) rozwiązanie zbiera i analizuje dane wygenerowane przez zasoby na platformie Azure i w środowiskach lokalnych.
 
 - **Dzienniki aktywności:**  [Dzienniki aktywności](../../azure-monitor/platform/activity-logs-overview.md) zapewniają wgląd w operacje wykonywane na zasobach w ramach subskrypcji. Dzienniki aktywności mogą pomóc w ustaleniu inicjatora, czasu wystąpienia i stanu operacji.
-- **Dzienniki diagnostyczne:**  [Dzienniki diagnostyczne](../../azure-monitor/platform/diagnostic-logs-overview.md) to wszystkie dzienniki emitowane przez każdy zasób. Dzienniki te obejmują Dzienniki systemu Windows, dzienniki usługi Azure Storage, dzienniki inspekcji Key Vault i Application Gateway dostępu i dzienników zapory.
+- **Dzienniki diagnostyczne:**  [Dzienniki diagnostyczne](../../azure-monitor/platform/resource-logs-overview.md) to wszystkie dzienniki emitowane przez każdy zasób. Dzienniki te obejmują Dzienniki systemu Windows, dzienniki usługi Azure Storage, dzienniki inspekcji Key Vault i Application Gateway dostępu i dzienników zapory.
 - **Archiwizowanie dzienników:**  Wszystkie dzienniki diagnostyczne zapisu na scentralizowanym i zaszyfrowanym koncie usługi Azure Storage w celu archiwizacji. Przechowywanie jest możliwe do skonfigurowania przez użytkownika, do 730 dni, w celu spełnienia wymagań dotyczących przechowywania specyficznych dla organizacji. Te dzienniki łączą się z dziennikami Azure Monitor na potrzeby przetwarzania, przechowywania i raportowania pulpitów nawigacyjnych.
 
 Ponadto następujące rozwiązania do monitorowania są instalowane w ramach tej architektury. Należy pamiętać, że klient jest odpowiedzialny za skonfigurowanie tych rozwiązań w celu dostosowania ich do kontroli zabezpieczeń FedRAMP:

@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: cabailey
-ms.openlocfilehash: 7584a884d41451c5a248b84a40eb45815bfb6bdf
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: a2760b53dbb9776501cb5e58c681045743471166
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240727"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261817"
 ---
 # <a name="connect-data-from-azure-information-protection"></a>Łączenie danych z Azure Information Protection
+
+> [!IMPORTANT]
+> Łącznik danych Azure Information Protection na platformie Azure jest obecnie w publicznej wersji zapoznawczej.
+> Ta funkcja jest dostępna bez umowy dotyczącej poziomu usług i nie jest zalecana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Informacje o rejestrowaniu można przesyłać z [Azure Information Protection](https://azure.microsoft.com/services/information-protection/) do kontrolki Azure wskaźnikowej przez skonfigurowanie łącznika danych Azure Information Protection. Azure Information Protection pomaga kontrolować i zabezpieczać poufne dane, niezależnie od tego, czy są przechowywane w chmurze, czy lokalnie.
 
@@ -54,10 +58,6 @@ Jeśli jednak rejestrowanie informacji z Azure Information Protection przechodzi
 - Do Azure Portal dodano Azure Information Protection. Jeśli potrzebujesz pomocy dotyczącej tego kroku, zobacz [dodawanie Azure Information Protection do Azure Portal](https://docs.microsoft.com/azure/information-protection/quickstart-viewpolicy#add-azure-information-protection-to-the-azure-portal).
 
 ## <a name="connect-to-azure-information-protection"></a>Połącz z Azure Information Protection
-
-> [!IMPORTANT]
-> Łącznik danych Azure Information Protection na platformie Azure jest obecnie w publicznej wersji zapoznawczej.
-> Ta funkcja jest dostępna bez umowy dotyczącej poziomu usług i nie jest zalecana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Jeśli nie skonfigurowano obszaru roboczego Log Analytics dla Azure Information Protection, należy skorzystać z poniższych instrukcji lub zmienić obszar roboczy, w którym są przechowywane Azure Information Protection informacje o rejestrowaniu.
 

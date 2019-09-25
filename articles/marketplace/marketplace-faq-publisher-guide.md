@@ -5,14 +5,14 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 07/11/2019
+ms.date: 9/24/2019
 ms.author: ellacroi
-ms.openlocfilehash: 209905eaf90e006ded232be73ab2a3a428568eda
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 6b9cc80dfb397d5bf330d0be947f468e9b802139
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309021"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259960"
 ---
 # <a name="marketplace-faqs"></a>Witryna Marketplace — często zadawane pytania
 
@@ -207,7 +207,7 @@ Mimo że większość subskrypcji firmy Microsoft można łatwo przekonwertować
 
 Aby przeprowadzić migrację innych usług zakupionych w portalu Azure Marketplace do subskrypcji umowy EA, najpierw Anuluj aplikacje z istniejącej subskrypcji MOSP i ponownie Kup te aplikacje w ramach subskrypcji umowy EA. Dzięki temu możesz przesłać żądanie kredytowe dotyczące zwrotu w trakcie potencjalnego miesiąca nakładających się zakresów między subskrypcjami usługi Marketplace — Utwórz [bilet pomocy technicznej](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
-**Jaka jest różnica między *ceną*, *ceną oprogramowania*i *łączną ceną* w strukturze kosztów dla ofert maszyn wirtualnych w portalu Azure Marketplace?**
+**Jaka jest różnica między *ceną*, *ceną oprogramowania*i łączną *ceną* w strukturze kosztów dla ofert maszyn wirtualnych w portalu Azure Marketplace?**
 
 *Cena* to koszt maszyny wirtualnej platformy Azure, w której ma zostać uruchomione oprogramowanie. *Cena oprogramowania* to koszt oprogramowania wydawcy portalu Marketplace uruchomionego na maszynie wirtualnej platformy Azure. *Cena łączna* dotyczy łącznego łącznego kosztu maszyny wirtualnej platformy Azure oraz oprogramowania wydawcy portalu Marketplace działającego na maszynie wirtualnej platformy Azure.
 
@@ -244,6 +244,14 @@ Skontaktuj się z dostawcą wydawcy, aby uzyskać pomoc techniczną dotyczącą 
 Nie można zwrócić zakupów dokonanych w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/) , ale można je anulować lub usunąć. Oferty oparte na zużyciu są rozliczane zgodnie z użyciem, więc w przypadku jego zatrzymania opłaty są również przerywane. Subskrypcje są anulowane i nie będą naliczane za bieżący okres rozliczeniowy. Jeśli subskrypcja zostanie anulowana wkrótce po zakupie (24 godziny przez comiesięczne i 14 dni w okresie rocznym), zostanie udostępniona pełna refundacja.
 
 Klienci muszą kontaktować się bezpośrednio z wydawcą, aby uzyskać wszelkie problemy techniczne związane z ich usługą Marketplace lub zakupem. Informacje kontaktowe wydawcy i/lub link do witryny sieci Web pomocy technicznej można znaleźć na stronie szczegółów rozwiązania w witrynie Azure Marketplace.
+
+**Jak są obsługiwane Dodatki licencji w przypadku zwiększenia okresu ważności?**
+
+Licencje dodawane do istniejącej subskrypcji są oceniane proporcjonalnie do pozostałej części czasu trwania subskrypcji.
+
+**Jak są obsługiwane usunięcia licencji w połowie okresu?**
+
+Anulowane licencje będą podlegać zasadom dotyczącym zwrotu znalezionym w ramach tych często zadawanych pytań.  Wszystkie anulowane licencje są natychmiast usuwane z Twojego konta i nie będą już dostępne do użycia.
 
 ## <a name="faq-for-publishers"></a>Często zadawane pytania dla wydawców
 
@@ -305,7 +313,7 @@ Aby uzyskać więcej informacji i rozpocząć Włączanie wersji próbnej za pom
 
 **Jak mogę rozpocząć rejestrację w centrum deweloperów?**
 
-Aby rozpocząć, wydawcy powinni sprawdzić, czy [konto Centrum deweloperów](deprecated/register-dev-center.md) nie zostało jeszcze zarejestrowane (aby zapobiec duplikowaniu). Następnym krokiem jest zarejestrowanie [się przy użyciu konto Microsoft](https://account.microsoft.com/account/) , który zostanie skojarzony z kontem dewelopera.
+Aby rozpocząć, wydawcy powinni sprawdzić, czy [konto Centrum deweloperów](deprecated/register-dev-center.md) nie zostało jeszcze zarejestrowane (aby zapobiec duplikowaniu). Następnym krokiem jest zarejestrowanie się [przy użyciu konto Microsoft](https://account.microsoft.com/account/) , który zostanie skojarzony z kontem dewelopera.
 
 Jeśli nie masz jeszcze konto Microsoft, możesz [utworzyć konto](https://signup.live.com/) (na przykład: contoso_marketplace@live.com).
 
@@ -319,11 +327,11 @@ Potencjalni klienci to klienci, którzy wdrażają produkty z portalu Marketplac
 
 **Gdzie mogę uzyskać pomoc w konfigurowaniu miejsca docelowego potencjalnego klienta?**
 
-Dowiedz się więcej w temacie [Portal Cloud partner — Uzyskaj informacje o potencjalnych klientach](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md) lub Prześlij [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) zgłoszenie do pomocy technicznej, wybierając typ oferty i zarządzanie potencjalnymi klientami.
+Dowiedz się więcej w temacie [Portal Cloud partner — Uzyskaj](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md) informacje o potencjalnych klientach lub Prześlij [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) zgłoszenie do pomocy technicznej, wybierając typ oferty i zarządzanie potencjalnymi klientami.
 
 **Czy muszę skonfigurować miejsce docelowe potencjalnego klienta w celu opublikowania oferty w portalu Marketplace?**
 
-Tak, jeśli publikowana jest oferta **contacter**, **SaaS**lub **usług konsultingowych** , musisz skonfigurować miejsce docelowe potencjalnego klienta.
+Tak, jeśli publikowanajest oferta contacter, **SaaS**lub **usług konsultingowych** , musisz skonfigurować miejsce docelowe potencjalnego klienta.
 
 **Jak upewnić się, że konfiguracja lidera jest poprawna?**
 
@@ -370,7 +378,7 @@ Proś [Anjana Sompur (slalom Consulting)](mailto:v-ansomp@microsoft.com).
 
 **Jakie są korzyści ze stosowania w przypadku wydawców dostępnych w portalu Azure Marketplace?**
 
-Portal Azure Marketplace to punkt początkowy dla wspólnych działań związanych z przechodzeniem do rynku z firmą Microsoft, a bramą to partnerstwo gotowe. Wszystkie nowe aukcje w witrynie Azure Marketplace są automatycznie oferowane z [korzyściami z niekosztownego przechodzenia na rynek](https://assetsprod.microsoft.com/mpn/marketplace-gtm-benefits.pdf) , aby pomóc w rozwiązywaniu problemów z ofertami do klientów firmy Microsoft. Po opublikowaniu oferty zespół GTM firmy Microsoft kontaktuje się z firmą i rozpoczyna świadczenie usług.
+Portal Azure Marketplace to punkt początkowy dla wspólnych działań związanych z przechodzeniem do rynku z firmą Microsoft, a bramą to partnerstwo gotowe. Wszystkie nowe aukcje w witrynie Azure Marketplace są automatycznie oferowane z korzyściami z niekosztownego przechodzenia na [rynek](https://assetsprod.microsoft.com/mpn/marketplace-gtm-benefits.pdf) , aby pomóc w rozwiązywaniu problemów z ofertami do klientów firmy Microsoft. Po opublikowaniu oferty zespół GTM firmy Microsoft kontaktuje się z firmą i rozpoczyna świadczenie usług.
 
 Odwiedź witrynę [Microsoft GTM Services](https://partner.microsoft.com/reach-customers/gtm) , aby uzyskać więcej informacji na temat naszych GTMych korzyści i sposobów rozwoju firmy w portalu Marketplace.
 

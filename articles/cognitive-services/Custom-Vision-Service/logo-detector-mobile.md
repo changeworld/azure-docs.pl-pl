@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: b0a5b110951d7b13110fab935d5ca1333f7f8c1e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bdcf8a0d63b880075cd22c73305afa8cf09a2e3b
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564208"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261970"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Samouczek: rozpoznawanie logo usług platformy Azure na obrazach z kamery
 
@@ -57,7 +57,7 @@ Po przekazaniu obrazów treningowych wybierz pierwszy z nich na ekranie. Zostani
 
 Aplikacja jest skonfigurowana do pracy z określonymi ciągami tagów. Definicje znajdziesz w pliku *Source\VisualProvision\Services\Recognition\RecognitionService.cs*:
 
-[!code-csharp[Tag definitions](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/RecognitionService.cs?range=18-33)]
+[!code-csharp[Tag definitions](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/RecognitionService.cs?name=snippet_constants)]
 
 Po otagowaniu obrazu przejdź w prawo, aby otagować następny. Po zakończeniu zamknij okno tagowania.
 
@@ -73,19 +73,19 @@ Po wytrenowaniu modelu można już zintegrować go z Twoją aplikacją. Musisz u
 
 ![Witryna internetowa usługi Custom Vision przedstawiająca okno interfejsu API przewidywania, które wyświetla adres URL i klucz interfejsu API](media/azure-logo-tutorial/cusvis-endpoint.png)
 
-Skopiuj adres URL pliku obrazu i wartość **Prediction-Key** do odpowiednich pól w pliku *Source\VisualProvision\AppSettings.cs*:
+Skopiuj adres URL punktu końcowego i wartość **przewidywania klucza** do odpowiednich pól w pliku *Source\VisualProvision\AppSettings.cs* :
 
-[!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?range=22-26)]
+[!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?name=snippet_cusvis_keys)]
 
 ## <a name="examine-custom-vision-usage"></a>Sprawdzenie użycia usługi Custom Vision
 
 Otwórz plik *Source/VisualProvision/Services/Recognition/CustomVisionService.cs*, aby zobaczyć, jak aplikacja używa Twojego klucza usługi Custom Vision i adresu URL punktu końcowego. Metoda **PredictImageContentsAsync** przyjmuje strumień bajtów pliku obrazu wraz z tokenem anulowania (do asynchronicznego zarządzania zadaniami), wywołuje interfejs API prognozowania usługi Custom Vision i zwraca wynik prognozowania. 
 
-[!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/CustomVisionService.cs?range=12-28)]
+[!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/CustomVisionService.cs?name=snippet_prediction)]
 
 Ten wynik przybiera postać wystąpienia **PredictionResult**, które samo zawiera listę wystąpień **prognozy**. **Prognoza** zawiera wykryty tag i lokalizację otaczającego go pola na obrazie.
 
-[!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/Prediction.cs?range=3-12)]
+[!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/Prediction.cs?name=snippet_prediction_class)]
 
 Aby dowiedzieć się więcej na temat sposobu obsługi tych danych w aplikacji, zacznij od metody **GetResourcesAsync**. Ta metoda jest zdefiniowana w pliku *Source/VisualProvision/Services/Recognition/RecognitionService.cs*.  
 
@@ -99,7 +99,7 @@ Zasubskrybuj usługę Computer Vision, aby uzyskać klucz i adres URL punktu ko�
 
 Następnie otwórz plik *Source\VisualProvision\AppSettings.cs* i wpisz poprawne wartości do zmiennych `ComputerVisionEndpoint` i `ComputerVisionKey`.
 
-[!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?range=28-32)]
+[!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?name=snippet_comvis_keys)]
 
 ## <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi
 
@@ -133,7 +133,7 @@ Po pomyślnym zakończeniu powinny pojawić się następujące dane wyjściowe J
 
 Zanotuj wartości `clientId` i `tenantId`. Dodaj je do odpowiednich pól w pliku *Source\VisualProvision\AppSettings.cs*.
 
-[!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?range=8-16)]
+[!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?name=snippet_serviceprincipal)]
 
 ## <a name="run-the-app"></a>Uruchamianie aplikacji
 

@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Media Services diagnostycznych dzienników schematów - Azure
-description: Ten artykuł zawiera schematy dzienników diagnostycznych usługi Azure Media Services.
+title: Schematy dzienników diagnostycznych Azure Media Services — platforma Azure
+description: W tym artykule przedstawiono schematy dzienników diagnostycznych Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,42 +13,42 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/20/2019
 ms.author: juliako
-ms.openlocfilehash: 394370738bc7996a221300540e68404986d91310
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f95258368664aabeb89426afb83854378c0e4429
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60322254"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261095"
 ---
 # <a name="diagnostic-logs-schemas"></a>Schematy dzienników diagnostycznych
 
-[Usługa Azure Monitor](../../azure-monitor/overview.md) umożliwia monitorowanie metryk i dzienników diagnostycznych, które pomagają zrozumieć, jak działają aplikacje. Można monitorować dzienników diagnostycznych usługi Media Services i tworzyć alerty i powiadomienia dotyczące zebranych metryk i dzienników. Możesz wysłać dzienniki do [usługi Azure Storage](https://azure.microsoft.com/services/storage/), ich do usługi stream [usługi Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)i wyeksportować je do [usługi Log Analytics](https://azure.microsoft.com/services/log-analytics/), lub użyj 3 usługi innych firm.
+[Azure monitor](../../azure-monitor/overview.md) umożliwia monitorowanie metryk i dzienników diagnostycznych, które ułatwiają zrozumienie sposobu działania aplikacji. Można monitorować Media Services dzienników diagnostycznych oraz tworzyć alerty i powiadomienia dotyczące zebranych metryk i dzienników. Możesz wysyłać dzienniki do usługi [Azure Storage](https://azure.microsoft.com/services/storage/), przesyłać strumieniowo do [usługi Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)i eksportować je do [log Analytics](https://azure.microsoft.com/services/log-analytics/)lub korzystać z usług innych firm.
 
-Aby uzyskać szczegółowe informacje, zobacz [metryk usługi Azure Monitor](../../azure-monitor/platform/data-platform.md) i [dzienników diagnostycznych platformy Azure Monitor](../../azure-monitor/platform/diagnostic-logs-overview.md).
+Aby uzyskać szczegółowe informacje, zobacz [Azure monitor metryki](../../azure-monitor/platform/data-platform.md) i [Azure monitor dzienników diagnostycznych](../../azure-monitor/platform/resource-logs-overview.md).
 
-W tym artykule opisano schematów dzienników diagnostycznych usługi Media Services.
+W tym artykule opisano Media Services schematy dzienników diagnostycznych.
 
-## <a name="top-level-diagnostic-logs-schema"></a>Schemat najwyższego poziomu dzienników diagnostycznych
+## <a name="top-level-diagnostic-logs-schema"></a>Schemat dzienników diagnostycznych najwyższego poziomu
 
-Aby uzyskać szczegółowy opis schematu najwyższego poziomu dzienników diagnostycznych, zobacz [obsługiwane usługi, schematów i kategorie dla dzienników diagnostycznych usługi Azure](../../azure-monitor/platform/tutorial-dashboards.md).
+Aby uzyskać szczegółowy opis schematu dzienników diagnostycznych najwyższego poziomu, zobacz [obsługiwane usługi, schematy i kategorie dla dzienników diagnostycznych platformy Azure](../../azure-monitor/platform/tutorial-dashboards.md).
 
 ## <a name="key-delivery-log-schema"></a>Schemat dziennika dostarczania kluczy
 
-### <a name="properties"></a>Właściwości
+### <a name="properties"></a>properties
 
 Te właściwości są specyficzne dla schematu dziennika dostarczania kluczy.
 
-|Name (Nazwa)|Opis|
+|Name|Opis|
 |---|---|
-|keyId|Identyfikator klucza żądanej.|
-|keyType|Może być jedną z następujących wartości: "Wyczyść" (bez szyfrowania), "FairPlay", "PlayReady" lub "Widevine".|
-|policyName|Nazwa zasad usługi Azure Resource Manager.|
-|tokenType|Typ tokenu.|
-|Komunikat stanu|Komunikat o stanie.|
+|keyId|Identyfikator żądanego klucza.|
+|keyType|Może być jedną z następujących wartości: "Clear" (bez szyfrowania), "FairPlay", "PlayReady" lub "Widevine".|
+|policyName|Nazwa Azure Resource Manager zasad.|
+|Obiektu TokenType|Typ tokenu.|
+|statusMessage|Komunikat o stanie.|
 
 ### <a name="examples"></a>Przykłady
 
-Właściwości klucza dostawy schemat żądania.
+Właściwości schematu żądań dostarczenia klucza.
 
 ```json
 {
@@ -108,6 +108,6 @@ Właściwości klucza dostawy schemat żądania.
 } 
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Monitorowanie metryk usług Media Services i dzienników diagnostycznych](media-services-metrics-diagnostic-logs.md)
+[Monitorowanie metryk Media Services i dzienników diagnostycznych](media-services-metrics-diagnostic-logs.md)

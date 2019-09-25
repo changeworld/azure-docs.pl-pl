@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/05/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bac37eed33535962ac0f1e6dbb34d8c396507682
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 6632bee77d400dcfd6e8e4afa05efb84e1c1794a
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063632"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258188"
 ---
 # <a name="set-up-sign-in-with-an-amazon-account-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurowanie logowania za pomocą konta Amazon przy użyciu zasad niestandardowych w Azure Active Directory B2C
 
@@ -38,7 +38,7 @@ Aby włączyć Logowanie użytkowników z konta Amazon, należy utworzyć aplika
 4. Wprowadź **nazwę**, **Opis**i **adres URL informacji o ochronie prywatności**, a następnie kliknij przycisk **Zapisz**. Powiadomienie o zasadach zachowania poufności informacji to strona, którą można zarządzać, która zapewnia użytkownikom informacje o ochronie prywatności.
 5. W sekcji **Ustawienia sieci Web** Skopiuj wartości **Identyfikator klienta**. Wybierz pozycję **Pokaż klucz tajny** , aby uzyskać klucz tajny klienta, a następnie skopiuj go. Musisz mieć oba te elementy, aby skonfigurować konto Amazon jako dostawcę tożsamości w dzierżawie. **Klucz tajny klienta** jest ważnym poświadczeniem zabezpieczeń.
 6. W sekcji **Ustawienia sieci Web** wybierz pozycję **Edytuj**, a następnie wprowadź `https://your-tenant-name.b2clogin.com` w polu **dozwolone źródła języka JavaScript** i `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` w polu **dozwolone adresy URL**. Zamień `your-tenant-name` na nazwę dzierżawy. Podczas wprowadzania nazwa dzierżawy, nawet jeśli dzierżawa jest zdefiniowana z wielkich liter w usłudze Azure AD B2C, należy używać małych liter.
-7. Kliknij polecenie **Zapisz**.
+7. Kliknij pozycję **Zapisz**.
 
 ## <a name="create-a-policy-key"></a>Tworzenie klucza zasad
 
@@ -53,7 +53,7 @@ Należy przechowywać klucz tajny klienta, który został wcześniej zarejestrow
 7. Wprowadź **nazwę** klucza zasad. Na przykład `AmazonSecret`. Prefiks `B2C_1A_` jest automatycznie dodawany do nazwy klucza.
 8. W **kluczu tajnym**wprowadź wcześniej zarejestrowany klucz tajny klienta.
 9. W obszarze **użycie klucza**wybierz `Signature`opcję.
-10. Kliknij przycisk **Utwórz**.
+10. Kliknij pozycję **Utwórz**.
 
 ## <a name="add-a-claims-provider"></a>Dodawanie dostawcy oświadczeń
 
@@ -88,7 +88,7 @@ Konto Amazon można zdefiniować jako dostawcę oświadczeń, dodając je do ele
           <Key Id="client_secret" StorageReferenceId="B2C_1A_AmazonSecret" />
         </CryptographicKeys>
         <OutputClaims>
-          <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="user_id" />
+          <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="user_id" />
           <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="email" />
           <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
           <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="amazon.com" />
@@ -162,7 +162,7 @@ Komunikacja z usługą Azure AD B2C odbywa się za pomocą aplikacji utworzonej 
 4. Wybierz pozycję **Aplikacje**, a następnie wybierz polecenie **Dodaj**.
 5. Wprowadź nazwę aplikacji, na przykład *testapp1*.
 6. W polu **aplikacja sieci Web/interfejs API sieci Web**wybierz `Yes`pozycję `https://jwt.ms` , a następnie wprowadź **adres URL odpowiedzi**.
-7. Kliknij przycisk **Utwórz**.
+7. Kliknij pozycję **Utwórz**.
 
 ## <a name="update-and-test-the-relying-party-file"></a>Aktualizowanie i testowanie pliku jednostki uzależnionej
 

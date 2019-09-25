@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5d72b474e5f5e62ded6423fcc756e1cd51b905f4
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 10ddb7272de164e6f92022a6f512df31753f7e31
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850661"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265127"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Kompilowanie konfiguracji DSC w konfiguracji stanu Azure Automation
 
@@ -124,7 +124,7 @@ Aby uzyskać informacje o przekazywaniu PSCredentials jako parametrów, zobacz p
 
 ### <a name="compiling-configurations-in-azure-automation-that-contain-composite-resources"></a>Kompilowanie konfiguracji w Azure Automation zawierających zasoby złożone
 
-**Zasoby złożone** umożliwiają używanie konfiguracji DSC jako zasobów zagnieżdżonych wewnątrz konfiguracji. Dzięki temu można zastosować wiele konfiguracji do pojedynczego zasobu. Zobacz [zasoby złożone: Aby dowiedzieć się więcej o](/powershell/dsc/authoringresourcecomposite) zasobach **złożonych**, użyj konfiguracji DSC jako zasobu.
+**Zasoby złożone** umożliwiają używanie konfiguracji DSC jako zasobów zagnieżdżonych wewnątrz konfiguracji. Dzięki temu można zastosować wiele konfiguracji do pojedynczego zasobu. Zobacz [zasoby złożone: Aby dowiedzieć się więcej o](/powershell/dsc/authoringresourcecomposite) **zasobach złożonych**, użyj konfiguracji DSC jako zasobu.
 
 > [!NOTE]
 > Aby konfiguracje zawierające **zasoby złożone** zostały prawidłowo skompilowane, należy najpierw upewnić się, że wszystkie zasoby DSC, na których bazują złożone, są najpierw importowane do Azure Automation.
@@ -259,7 +259,7 @@ Konfiguracja węzła podpisanego jest weryfikowana lokalnie w zarządzanym węź
 > [!NOTE]
 > Plik konfiguracji węzła nie może być większy niż 1 MB, aby można go było zaimportować do Azure Automation.
 
-Więcej informacji o sposobach podpisywania konfiguracji węzłów znajduje się [w temacie ulepszenia w programie WMF 5,1 — Jak podpisać konfigurację i moduł](/powershell/wmf/5.1/dsc-improvements#dsc-module-and-configuration-signing-validations).
+Więcej informacji o sposobach podpisywania konfiguracji węzłów znajduje się [w temacie ulepszenia w programie WMF 5,1 — Jak podpisać konfigurację i moduł](/powershell/scripting/wmf/whats-new/dsc-improvements#dsc-module-and-configuration-signing-validations).
 
 ### <a name="compiling-a-configuration-in-windows-powershell"></a>Kompilowanie konfiguracji w programie Windows PowerShell
 

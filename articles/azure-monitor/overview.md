@@ -12,20 +12,20 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: a80f99bc37d3a92a794a78f1f47ce32fbaae75a3
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1bc4a7634e864f0e3feb0d33cef3b967e5b6741f
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989167"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262210"
 ---
 # <a name="azure-monitor-overview"></a>Omówienie usługi Azure Monitor
 
-Azure Monitor maksymalizuje dostępność i wydajność aplikacji, udostępniając kompleksowe rozwiązanie do zbierania, analizowania i działania na telemetrii z chmur i środowisk lokalnych. Pomaga interpretować działanie aplikacji i proaktywnie identyfikuje problemy dotyczące aplikacji i zasobów, od których zależą.
+Usługa Azure Monitor maksymalizuje dostępność i wydajność aplikacji zapewniając kompleksowe rozwiązanie do zbierania i analizowania danych telemetrycznych ze środowisk chmurowych i lokalnych oraz podejmowania działań w oparciu o nie. Pomaga interpretować działanie aplikacji i proaktywnie identyfikuje problemy dotyczące aplikacji i zasobów, od których zależą.
 
 > [!VIDEO https://www.youtube.com/embed/_hGff5bVtkM]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Poniższy diagram zawiera widok wysokiego poziomu Azure Monitor. Na środku diagramu są magazyny danych dla metryk i dzienników, czyli dwa podstawowe typy danych używanych przez Azure Monitor. Po lewej stronie znajdują się [źródła danych monitorowania](platform/data-sources.md) , które wypełniają te [magazyny danych](platform/data-platform.md). Po prawej stronie znajdują się różne funkcje, które Azure Monitor wykonuje przy użyciu tych zebranych danych, takich jak analiza, alerty i przesyłanie strumieniowe do systemów zewnętrznych.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
@@ -57,7 +57,7 @@ Azure Monitor może zbierać dane z różnych źródeł. Dane monitorowania apli
 
 Gdy tylko utworzysz subskrypcję platformy Azure i zaczniesz dodawać zasoby, takie jak maszyny wirtualne i aplikacje sieci Web, Azure Monitor rozpoczyna zbieranie danych.  [Rejestruje dzienniki aktywności](platform/activity-logs-overview.md) podczas tworzenia lub modyfikowania zasobów. [Metryki](platform/data-platform.md) informują o sposobie wykonywania zasobów i zasobach, których zużywa. 
 
-Rozszerzanie zbieranych danych do rzeczywistej operacji zasobów przez [włączenie diagnostyki](platform/diagnostic-logs-overview.md) i [dodanie agenta](platform/agent-windows.md) do zasobów obliczeniowych. Spowoduje to zebranie danych telemetrycznych dotyczących wewnętrznej operacji zasobu i umożliwi skonfigurowanie różnych [źródeł danych](platform/agent-data-sources.md) w celu zbierania dzienników i metryk z systemu operacyjnego gościa z systemami Windows i Linux. 
+Rozszerzanie zbieranych danych do rzeczywistej operacji zasobów przez [włączenie diagnostyki](platform/resource-logs-overview.md) i [dodanie agenta](platform/agent-windows.md) do zasobów obliczeniowych. Spowoduje to zebranie danych telemetrycznych dotyczących wewnętrznej operacji zasobu i umożliwi skonfigurowanie różnych [źródeł danych](platform/agent-data-sources.md) w celu zbierania dzienników i metryk z systemu operacyjnego gościa z systemami Windows i Linux. 
 
 Włącz monitorowanie [aplikacji App Services](app/azure-web-apps.md) lub maszyny wirtualnej [oraz aplikacji zestawu skalowania maszyn wirtualnych](app/azure-vm-vmss-apps.md), aby umożliwić Application Insights Zbieranie szczegółowych informacji o aplikacji, takich jak widoki stron, żądania aplikacji i wyłączenia. Sprawdź dostępność aplikacji, konfigurując [Test dostępności](app/monitor-web-app-availability.md) w celu zasymulowania ruchu użytkownika.
 

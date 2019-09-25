@@ -8,12 +8,12 @@ ms.date: 09/05/2017
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: e31ad78e24f329eb46cd85ba4a5962442a216779
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c2f6847a286a9c106fc094e9f0aa315d6b1f337d
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68844831"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257102"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Metryki usługi Azure Storage w usłudze Azure Monitor
 
@@ -25,7 +25,7 @@ Azure Monitor zapewnia ujednolicone interfejsy użytkownika do monitorowania ró
 
 Usługa Azure Monitor zapewnia wiele sposobów, aby dostęp do metryk. Możesz uzyskać do nich dostęp z [Azure Portal](https://portal.azure.com), interfejsów API Azure monitor (REST i .NET) oraz rozwiązań do analizy, takich jak Event Hubs. Aby uzyskać więcej informacji, zobacz [Azure monitor metryki](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
-Metryki są domyślnie włączone i można uzyskać dostęp do ostatnich 93 dni danych. Jeśli zachodzi potrzeba Zachowaj dane przez dłuższy okres czasu, można archiwizować dane metryk do konta usługi Azure Storage. To ustawienie jest konfigurowane w [ustawień diagnostycznych](../../azure-monitor/platform/diagnostic-logs-overview.md) w usłudze Azure Monitor.
+Metryki są domyślnie włączone i można uzyskać dostęp do ostatnich 93 dni danych. Jeśli zachodzi potrzeba Zachowaj dane przez dłuższy okres czasu, można archiwizować dane metryk do konta usługi Azure Storage. To ustawienie jest konfigurowane w [ustawień diagnostycznych](../../azure-monitor/platform/resource-logs-overview.md) w usłudze Azure Monitor.
 
 ### <a name="access-metrics-in-the-azure-portal"></a>Dostęp do metryk w Azure Portal
 
@@ -302,15 +302,15 @@ Poniżej przedstawiono format służący do określania identyfikatora zasobu dl
 
 Poniżej przedstawiono format służący do określania identyfikatora zasobu dla każdej usługi magazynu.
 
-* Identyfikator zasobu Blob service
+* Identyfikator zasobu usługi obiektów blob
 ```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/blobServices/default
 ```
-* Identyfikator zasobu Table service
+* Identyfikator zasobu usługi tabeli
 ```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/tableServices/default
 ```
-* Identyfikator zasobu usługa kolejki
+* Identyfikator zasobu usługi kolejki
 ```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/queueServices/default
 ```
@@ -393,7 +393,7 @@ Usługa Azure Storage obsługuje następujące wymiary dla metryk w Azure Monito
 | Nazwa wymiaru | Opis |
 | ------------------- | ----------------- |
 | **Obiekt blobtype** | Typ obiektu BLOB tylko dla metryk obiektów BLOB. Obsługiwane wartości to **BlockBlob**, **PageBlob**i **Azure Data Lake Storage**. Dołącz obiekt BLOB jest zawarty w BlockBlob. |
-| **BlobTier** | Usługa Azure Storage oferuje różne warstwy dostępu, dzięki którym można przechowywać dane obiektów BLOB w najbardziej opłacalny sposób. Zobacz więcej w [warstwie obiektów BLOB usługi Azure Storage](../blobs/storage-blob-storage-tiers.md). Obsługiwane są następujące wartości: <br/> <li>**Gorąca**: Warstwa gorąca</li> <li>**Chłodna**: Warstwa chłodna</li> <li>**Archiwizuj**: Warstwa Archiwum</li> <li>Wersja **Premium**: Warstwa Premium dla blokowego obiektu BLOB</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: Typy warstw dla obiektu BLOB na stronie Premium</li> <li>**Standard**: Typ warstwy dla standardowego obiektu BLOB strony</li> <li>Niewarstwowe: Typ warstwy dla konta magazynu ogólnego przeznaczenia w wersji 1</li> |
+| **BlobTier** | Usługa Azure Storage oferuje różne warstwy dostępu, dzięki którym można przechowywać dane obiektów BLOB w najbardziej opłacalny sposób. Zobacz więcej w [warstwie obiektów BLOB usługi Azure Storage](../blobs/storage-blob-storage-tiers.md). Obsługiwane są następujące wartości: <br/> <li>**Gorąca**: Warstwa gorąca</li> <li>**Chłodna**: Warstwa chłodna</li> <li>**Archiwizuj**: Warstwa Archiwum</li> <li>Wersja **Premium**: Warstwa Premium dla blokowego obiektu BLOB</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: Typy warstw dla obiektu BLOB na stronie Premium</li> <li>**Standard**: Typ warstwy dla standardowego obiektu BLOB strony</li> <li>**Niewarstwowe**: Typ warstwy dla konta magazynu ogólnego przeznaczenia w wersji 1</li> |
 | **Typ geotype** | Transakcja z klastra podstawowego lub pomocniczego. Dostępne wartości to **podstawowy** i **pomocniczy**. Dotyczy on dostępu do odczytu geograficznie nadmiarowego magazynu (RA-GRS) podczas odczytywania obiektów z pomocniczej dzierżawy. |
 | **Responsetype** | Typ odpowiedzi transakcji. Dostępne wartości obejmują: <br/><br/> <li>**ServerOtherError**: Wszystkie inne błędy po stronie serwera z wyjątkiem opisanych </li> <li>**ServerBusyError**: Uwierzytelnione żądanie, które zwróciło kod stanu HTTP 503. </li> <li>**ServerTimeoutError**: Uwierzytelnione żądanie z przekroczonym limitem czasu, które zwróciło kod stanu HTTP 500. Przekroczenie limitu czasu wystąpiło z powodu błędu serwera. </li> <li>**AuthorizationError**: Uwierzytelnione żądanie, które nie powiodło się z powodu nieautoryzowanego dostępu do danych lub błędu autoryzacji. </li> <li>**NetworkError**: Uwierzytelnione żądanie, które nie powiodło się z powodu błędów sieci. Najczęściej występuje, gdy klient przedwcześnie zamyka połączenie przed wygaśnięciem limitu czasu. </li> <li>**ClientThrottlingError**: Błąd ograniczania przepływności po stronie klienta. </li> <li>**ClientTimeoutError**: Uwierzytelnione żądanie z przekroczonym limitem czasu, które zwróciło kod stanu HTTP 500. Jeśli limit czasu sieci klienta lub limit czasu żądania jest ustawiony na mniejszą wartość niż oczekiwana przez usługę magazynu, jest to oczekiwany limit czasu. W przeciwnym razie zostanie zgłoszone jako ServerTimeoutError. </li> <li>**ClientOtherError**: Wszystkie inne błędy po stronie klienta z wyjątkiem opisanych. </li> <li>**Success**: Żądanie zakończone powodzeniem</li> <li> **SuccessWithThrottling**: Pomyślne żądanie, gdy klient SMB zostanie w pierwszej kolejności określony, ale kończy się powodzeniem po ponownych próbach.</li> |
 | **ApiName** | Nazwa operacji. Na przykład: <br/> <li>**CreateContainer**</li> <li>**DeleteBlob**</li> <li>**GetBlob**</li> W przypadku wszystkich nazw operacji zobacz [dokument](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). |
@@ -419,6 +419,6 @@ Nie, usługa Azure COMPUTE obsługuje metryki na dyskach. Aby uzyskać więcej i
 
 Można znaleźć szczegółowe mapowanie między metrykami klasycznymi i nowymi metrykami w ramach [migracji metryk usługi Azure Storage](./storage-metrics-migration.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Azure Monitor](../../monitoring-and-diagnostics/monitoring-overview.md)

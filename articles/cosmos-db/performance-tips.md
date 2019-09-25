@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
-ms.openlocfilehash: 9a758ce56356da21fc94f426d575a55f7dc762a0
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 27f39af480db8c0a044489a2efe6d2e4447b6db1
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200319"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261308"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Porady dotyczące wydajności Azure Cosmos DB i .NET
 
@@ -47,7 +47,6 @@ Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" na
      |Tryb połączenia  |Obsługiwany protokół  |Obsługiwane zestawy SDK  |Port API/usługi  |
      |---------|---------|---------|---------|
      |Brama  |   HTTPS    |  Wszystkie zestawy SDK    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(10350), Graph(443)    |
-     |Bezpośrednie    |    HTTPS     |  Zestaw SDK dla platformy .NET i języka Java    |   Porty w zakresie 10000-20000    |
      |Bezpośrednie    |     TCP    |  Zestaw SDK .NET    | Porty w zakresie 10000-20000 |
 
      Azure Cosmos DB oferuje prosty i otwarty model programowania RESTful za pośrednictwem protokołu HTTPS. Ponadto oferuje wydajny protokół TCP, który jest również RESTful w swoim modelu komunikacji i jest dostępny za pośrednictwem zestawu SDK klienta platformy .NET. Zarówno bezpośrednie TCP, jak i HTTPS używają protokołu SSL do uwierzytelniania początkowego i szyfrowania ruchu sieciowego. Aby uzyskać najlepszą wydajność, Użyj protokołu TCP, gdy jest to możliwe.
@@ -60,8 +59,7 @@ Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" na
      CosmosClient client = new CosmosClient(serviceEndpoint, authKey,
      new CosmosClientOptions
      {
-        ConnectionMode = ConnectionMode.Direct,
-        ConnectionProtocol = Protocol.Tcp
+        ConnectionMode = ConnectionMode.Direct
      });
      ```
 
@@ -130,13 +128,13 @@ Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" na
 
      Zestaw SDK programu SQL .NET w wersji 1.9.0 lub nowszej obsługuje zapytania równoległe, które umożliwiają równoległe wykonywanie zapytań do kolekcji partycjonowanej. Aby uzyskać więcej informacji, zobacz [przykłady kodu](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) związane z pracą z zestawami SDK. Zapytania równoległe są przeznaczone do poprawiania opóźnienia zapytań i przepływności w porównaniu z ich odpowiednikami seryjnymi. Zapytania równoległe zawierają dwa parametry, które użytkownicy mogą dostosowywać do własnych wymagań, (a) MaxDegreeOfParallelism: aby kontrolować maksymalną liczbę partycji, a następnie można wykonywać zapytania równoległe i (b) MaxBufferedItemCount: w celu kontrolowania liczby wstępnie pobrane wyniki.
 
-    (a) ***dostrajanie\:***  równoległe zapytania MaxDegreeOfParallelism działa przez wykonywanie zapytań na wielu partycjach równolegle. Jednak dane z pojedynczych zebranych partycji są pobierane sekwencyjnie w odniesieniu do zapytania. Dlatego ustawienie MaxDegreeOfParallelism na liczbę partycji ma największą szansę osiągnięcia najbardziej wydajnego zapytania, pod warunkiem, że wszystkie inne warunki systemu pozostają takie same. Jeśli nie znasz liczby partycji, możesz ustawić MaxDegreeOfParallelism na dużą liczbę, a system wybierze minimalną (liczbę partycji, dane wejściowe podane przez użytkownika) jako MaxDegreeOfParallelism.
+    (a) ***stopień\: dostrajania*** równoległych zapytań równoległych działa przez wykonywanie zapytań na wielu partycjach równolegle. Jednak dane z pojedynczej partycji są pobierane sekwencyjnie w odniesieniu do zapytania. Ustawienie zestawu [SDK V2](sql-api-sdk-dotnet.md) lub `MaxConcurrency` [zestawu SDK v3](sql-api-sdk-dotnet-standard.md) na liczbę partycji ma największą szansę na osiągnięcie najbardziej wydajnego zapytania, pod warunkiem, że wszystkie inne warunki systemu pozostają takie same. `MaxDegreeOfParallelism` Jeśli nie znasz liczby partycji, możesz ustawić stopień równoległości na wysoki, a system wybierze minimalną (liczbę partycji, dane wejściowe podane przez użytkownika) jako stopień równoległości.
 
     Należy pamiętać, że zapytania równoległe generują najlepsze korzyści, jeśli dane są równomiernie dystrybuowane we wszystkich partycjach w odniesieniu do zapytania. Jeśli partycjonowana kolekcja jest partycjonowana w taki sposób, że wszystkie lub większość danych zwróconych przez zapytanie jest skoncentrowana na kilku partycjach (jedna partycja w najgorszym przypadku), wydajność zapytania zostałaby przekazana przez te partycje.
 
     (b) ***dostrajanie\:***  równoległe zapytania MaxBufferedItemCount zaprojektowano w celu wstępnego pobrania wyników podczas przetwarzania bieżącej partii wyników przez klienta. Wstępne pobieranie pomaga w ogólnym ulepszaniu opóźnienia zapytania. MaxBufferedItemCount jest parametrem, aby ograniczyć liczbę wstępnie pobranych wyników. Ustawienie MaxBufferedItemCount na oczekiwaną liczbę zwracanych wyników (lub wyższą liczbę) umożliwia zapytanie, aby otrzymać maksymalną korzyść z pobierania wstępnego.
 
-    Przed pobraniem działa w taki sam sposób, niezależnie od MaxDegreeOfParallelism, i istnieje jeden bufor dla danych ze wszystkich partycji.  
+    Wstępne pobieranie działa tak samo, niezależnie od stopnia równoległości i istnieje pojedynczy bufor dla danych ze wszystkich partycji.  
 6. **Włącz funkcję GC po stronie serwera**
 
     Zmniejszenie częstotliwości wyrzucania elementów bezużytecznych może pomóc w niektórych przypadkach. W programie .NET Ustaw [gcServer](https://msdn.microsoft.com/library/ms229357.aspx) na wartość true.

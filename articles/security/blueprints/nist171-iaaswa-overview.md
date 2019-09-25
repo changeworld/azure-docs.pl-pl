@@ -8,16 +8,16 @@ ms.service: security
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
-ms.openlocfilehash: 88bca1a799d55ba59c8f5d2263f3219cfb66700e
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 83d368e419550f38c173a7a1dca42c84db7d542f
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946720"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259836"
 ---
 # <a name="azure-security-and-compliance-blueprint---iaas-web-application-for-nist-sp-800-171"></a>Aplikacja sieci Web Strategia zabezpieczeń i zgodności z przepisami platformy Azure IaaS dla programu NIST SP 800-171
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 [Specjalna publikacja NIST 800-171](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-171.pdf) zawiera wytyczne dotyczące ochrony kontrolowanych niesklasyfikowanych informacji (CUI), które znajdują się w niefederalnych systemach i organizacjach informacyjnych. NIST SP 800-171 ustanawia 14 rodzin wymagań dotyczących zabezpieczeń, aby chronić poufność CUI.
 
 Ten Strategia zabezpieczeń i zgodności z przepisami platformy Azure zawiera wskazówki ułatwiające klientom wdrożenie architektury aplikacji sieci Web na platformie Azure, która implementuje podzestaw formantów NIST SP 800-171. W tym rozwiązaniu pokazano, w jaki sposób klienci mogą spełniać określone wymagania w zakresie zabezpieczeń i zgodności. Służy ona również jako podstawa dla klientów do kompilowania i konfigurowania własnych aplikacji sieci Web na platformie Azure.
@@ -65,7 +65,7 @@ To rozwiązanie używa następujących usług platformy Azure. Aby uzyskać wię
 - Azure Storage
 - Azure Automation
 - Monitor w chmurze
-- Magazyn usług Recovery Services
+- magazyn usług Recovery Services
 
 ## <a name="deployment-architecture"></a>Architektura wdrożenia
 W poniższej sekcji znajdują się szczegółowe informacje dotyczące elementów wdrażania i implementacji.
@@ -99,7 +99,7 @@ Platforma Azure domyślnie szyfruje całą komunikację do i z centrów danych p
 ### <a name="data-at-rest"></a>Dane magazynowane
 Architektura chroni dane przechowywane przez wiele miar. Te miary obejmują szyfrowanie i inspekcję bazy danych.
 
-**Azure Storage**: Aby spełnić wymagania dotyczące szyfrowanych danych [przechowywanych w magazynie](https://azure.microsoft.com/services/storage/) , wszystkie magazyny są używane [szyfrowanie usługi Storage](../../storage/common/storage-service-encryption.md). Ta funkcja pomaga chronić i zabezpieczać dane w celu obsługi zobowiązań w zakresie zabezpieczeń organizacji i wymagań dotyczących zgodności określonych przez instytut NIST SP 800-171.
+**Azure Storage**: Aby spełnić wymagania dotyczące szyfrowanych danych przechowywanych w magazynie, wszystkie [magazyny](https://azure.microsoft.com/services/storage/) są używane [szyfrowanie usługi Storage](../../storage/common/storage-service-encryption.md). Ta funkcja pomaga chronić i zabezpieczać dane w celu obsługi zobowiązań w zakresie zabezpieczeń organizacji i wymagań dotyczących zgodności określonych przez instytut NIST SP 800-171.
 
 **Azure Disk Encryption**: Szyfrowanie dysków służy do szyfrowania dysków maszyn wirtualnych z systemem Windows IaaS. [Szyfrowanie dysków](../azure-security-disk-encryption-overview.md) używa funkcji BitLocker systemu Windows w celu zapewnienia szyfrowania woluminów dla systemu operacyjnego i dysków danych. Rozwiązanie jest zintegrowane z Key Vault w celu ułatwienia kontroli kluczy szyfrowania dysków i zarządzania nimi.
 
@@ -119,7 +119,7 @@ Następujące technologie zapewniają możliwości zarządzania dostępem do dan
 - [Azure Active Directory Identity Protection](../../active-directory/identity-protection/overview.md) wykrywa potencjalne luki w zabezpieczeniach, które mają wpływ na tożsamości organizacji. Służy do konfigurowania automatycznych odpowiedzi w celu wykrycia podejrzanych działań związanych z tożsamościami organizacji. Bada także podejrzane zdarzenia w celu podjęcia odpowiednich działań w celu ich rozwiązania.
 
 ### <a name="security"></a>Bezpieczeństwo
-**Zarządzanie**wpisami tajnymi: Rozwiązanie używa [Key Vault](https://azure.microsoft.com/services/key-vault/) do zarządzania kluczami i wpisami tajnymi. Key Vault pomaga chronić klucze kryptograficzne i wpisy tajne używane przez aplikacje i usługi w chmurze. Następujące funkcje Key Vault pomagają klientom chronić dane:
+**Zarządzanie wpisami tajnymi**: Rozwiązanie używa [Key Vault](https://azure.microsoft.com/services/key-vault/) do zarządzania kluczami i wpisami tajnymi. Key Vault pomaga chronić klucze kryptograficzne i wpisy tajne używane przez aplikacje i usługi w chmurze. Następujące funkcje Key Vault pomagają klientom chronić dane:
 - Zaawansowane zasady dostępu są konfigurowane w zależności od potrzeb.
 - Zasady dostępu Key Vault są zdefiniowane z minimalnymi wymaganymi uprawnieniami do kluczy i wpisów tajnych.
 - Wszystkie klucze i wpisy tajne w Key Vault mają daty wygaśnięcia.
@@ -139,7 +139,7 @@ Security Center korzysta z różnych funkcji wykrywania, aby wysyłać alerty kl
 
 Security Center zapewnia priorytetowe alerty zabezpieczeń i zdarzenia. Security Center ułatwia klientom odnajdywanie potencjalnych problemów z zabezpieczeniami i ich rozwiązywanie. Dla każdego wykrytego zagrożenia jest generowany [Raport analizy zagrożeń](https://docs.microsoft.com/azure/security-center/security-center-threat-report) . Zespoły reagowania na incydenty mogą korzystać z raportów podczas badania i korygowania zagrożeń.
 
-Ta architektura referencyjna używa funkcji [oceny luk](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations) w zabezpieczeniach w Security Center. Po jego skonfigurowaniu Agent partnera (na przykład Qualys) zgłasza luki w zabezpieczeniach do platformy zarządzania partnera. W odpowiedzi platforma zarządzania partnera dostarcza dane monitorowania o lukach w zabezpieczeniach i kondycji do usługi Security Center. Klienci mogą używać tych informacji, aby szybko identyfikować podatne na nie maszyny wirtualne.
+Ta architektura referencyjna używa funkcji [oceny luk w zabezpieczeniach](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations) w Security Center. Po jego skonfigurowaniu Agent partnera (na przykład Qualys) zgłasza luki w zabezpieczeniach do platformy zarządzania partnera. W odpowiedzi platforma zarządzania partnera dostarcza dane monitorowania o lukach w zabezpieczeniach i kondycji do usługi Security Center. Klienci mogą używać tych informacji, aby szybko identyfikować podatne na nie maszyny wirtualne.
 
 **Application Gateway platformy Azure**: Architektura zmniejsza ryzyko wystąpienia luk w zabezpieczeniach przy użyciu bramy aplikacji z skonfigurowaną zaporą aplikacji sieci Web i włączonym zestawem reguł OWASP. Dodatkowe możliwości obejmują:
 
@@ -160,11 +160,11 @@ Ta architektura referencyjna używa funkcji [oceny luk](https://docs.microsoft.c
 
 **Monitor chmury**: [Monitor chmury](https://docs.microsoft.com/windows-server/failover-clustering/whats-new-in-failover-clustering#BKMK_CloudWitness) to typ monitora kworum klastra trybu failover w systemie Windows Server 2016, który korzysta z platformy Azure jako punktu rozstrzygania. Monitor w chmurze, taki jak każdy inny monitor kworum, otrzymuje głos i może uczestniczyć w obliczeniach kworum. Używa on standardowego publicznie dostępnego magazynu obiektów blob platformy Azure. To rozwiązanie eliminuje dodatkowe obciążenie pracą maszyn wirtualnych hostowanych w chmurze publicznej.
 
-### <a name="logging-and-auditing"></a>Rejestrowanie i inspekcja
+### <a name="logging-and-auditing"></a>Rejestrowanie i przeprowadzanie inspekcji
 
 Usługi platformy Azure w szerokim zakresie rejestrują aktywność systemu i użytkownika, a także kondycję systemu:
 - **Dzienniki aktywności**: [Dzienniki aktywności](../../azure-monitor/platform/activity-logs-overview.md) zapewniają wgląd w operacje wykonywane na zasobach w ramach subskrypcji. Dzienniki aktywności mogą pomóc w ustaleniu inicjatora, czasu wystąpienia i stanu operacji.
-- **Dzienniki diagnostyczne**: [Dzienniki diagnostyczne](../../azure-monitor/platform/diagnostic-logs-overview.md) obejmują wszystkie dzienniki wyemitowane przez każdy zasób. Te dzienniki obejmują Dzienniki systemu Windows, dzienniki magazynu, dzienniki inspekcji Key Vault i Application Gateway dostępu i dzienników zapory. Wszystkie dzienniki diagnostyczne zapisu na scentralizowanym i zaszyfrowanym koncie usługi Azure Storage w celu archiwizacji. Użytkownicy mogą skonfigurować okres przechowywania (do 730 dni) w celu spełnienia określonych wymagań.
+- **Dzienniki diagnostyczne**: [Dzienniki diagnostyczne](../../azure-monitor/platform/resource-logs-overview.md) obejmują wszystkie dzienniki wyemitowane przez każdy zasób. Te dzienniki obejmują Dzienniki systemu Windows, dzienniki magazynu, dzienniki inspekcji Key Vault i Application Gateway dostępu i dzienników zapory. Wszystkie dzienniki diagnostyczne zapisu na scentralizowanym i zaszyfrowanym koncie usługi Azure Storage w celu archiwizacji. Użytkownicy mogą skonfigurować okres przechowywania (do 730 dni) w celu spełnienia określonych wymagań.
 
 **Azure monitor dzienników**: Te dzienniki są konsolidowane w [Azure monitor dziennikach](https://azure.microsoft.com/services/log-analytics/) na potrzeby przetwarzania, przechowywania i raportowania na pulpicie nawigacyjnym. Po zebraniu danych są one podzielone na oddzielne tabele dla każdego typu danych w obszarze obszary robocze Log Analytics. W ten sposób wszystkie dane można analizować razem niezależnie od oryginalnego źródła. Security Center integruje się z dziennikami Azure Monitor. Klienci mogą używać zapytań Kusto, aby uzyskać dostęp do danych zdarzeń zabezpieczeń i połączyć je z danymi z innych usług.
 

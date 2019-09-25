@@ -17,16 +17,16 @@ ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 291de1fa9bbb43ff9393a3163d1cd21dd7cd1b01
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 28021c0b8512ca12ead92b0b78541fce690b1f80
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835140"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257930"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain-preview"></a>Instrukcje: Skonfiguruj domenę wydawcy aplikacji (wersja zapoznawcza)
 
-Domena wydawcy aplikacji jest wyświetlana użytkownikom z [monitem o zgodę aplikacji](application-consent-experience.md) , aby poinformować użytkowników o tym, gdzie są wysyłane dane. Aplikacje z wieloma dzierżawcami, które są zarejestrowane po 21 maja 2019, które nie mają domeny wydawcy, sąwyświetlane jako niezweryfikowane. Aplikacje wielodostępne są aplikacjami, które obsługują konta poza pojedynczym katalogiem organizacji; na przykład obsługują wszystkie konta usługi Azure AD lub obsługują wszystkie konta usługi Azure AD i osobiste konta Microsoft.
+Domena wydawcy aplikacji jest wyświetlana użytkownikom z [monitem o zgodę aplikacji](application-consent-experience.md) , aby poinformować użytkowników o tym, gdzie są wysyłane dane. Aplikacje z wieloma dzierżawcami, które są zarejestrowane po 21 maja 2019, które nie mają domeny wydawcy, są wyświetlane jako **niezweryfikowane**. Aplikacje wielodostępne są aplikacjami, które obsługują konta poza pojedynczym katalogiem organizacji; na przykład obsługują wszystkie konta usługi Azure AD lub obsługują wszystkie konta usługi Azure AD i osobiste konta Microsoft.
 
 ## <a name="new-applications"></a>Nowe aplikacje
 
@@ -42,11 +42,11 @@ Poniższa tabela zawiera podsumowanie domyślnego zachowania wartości domeny wy
 | *.onmicrosoft.com | *.onmicrosoft.com |
 | -*. onmicrosoft.com<br/>-domain1.com<br/>-domain2.com (podstawowy) | domain2.com |
 
-Jeśli domena wydawcy aplikacji wielodostępnej nie została ustawiona lub jeśli jest ustawiona na domenę kończącą się na. onmicrosoft.com, monit o zgodę aplikacji będzie zawierał niezweryfikowane miejsce w domenie wydawcy.
+Jeśli domena wydawcy aplikacji wielodostępnej nie została ustawiona lub jeśli jest ustawiona na domenę kończącą się na. onmicrosoft.com, monit o zgodę aplikacji będzie zawierał **niezweryfikowane** miejsce w domenie wydawcy.
 
 ## <a name="grandfathered-applications"></a>Aplikacje nabyte
 
-Jeśli aplikacja została zarejestrowana przed 21 maja 2019, monit o zgodę aplikacji nie będzie wyświetlany, Jeśli nie ustawisz domeny wydawcy. Zalecamy ustawienie wartości domeny wydawcy, aby użytkownicy mogli zobaczyć te informacje w monicie o zgodę aplikacji.
+Jeśli aplikacja została zarejestrowana przed 21 maja 2019, monit o zgodę aplikacji nie będzie wyświetlany, **Jeśli nie** ustawisz domeny wydawcy. Zalecamy ustawienie wartości domeny wydawcy, aby użytkownicy mogli zobaczyć te informacje w monicie o zgodę aplikacji.
 
 ## <a name="configure-publisher-domain-using-the-azure-portal"></a>Skonfiguruj domenę wydawcy przy użyciu Azure Portal
 
@@ -62,7 +62,7 @@ Aby ustawić domenę wydawcy aplikacji, wykonaj następujące kroki.
 
    Po wybraniu aplikacji zobaczysz stronę **omówienia** aplikacji.
 
-1. Na stronie **Przegląd** aplikacji wybierz sekcję znakowania.
+1. Na stronie **Przegląd** aplikacji wybierz sekcję **znakowania** .
 
 1. Znajdź pole **domena wydawcy** i wybierz jedną z następujących opcji:
 
@@ -96,6 +96,12 @@ Jeśli aplikacja nie jest zarejestrowana w dzierżawie, zobaczysz tylko opcję w
 ### <a name="to-select-a-verified-domain"></a>Aby wybrać zweryfikowaną domenę
 
 - Jeśli dzierżawca ma zweryfikowane domeny, wybierz jedną z domen z listy rozwijanej **Wybierz zweryfikowaną domenę** .
+
+>[!Note]
+> Oczekiwany nagłówek "Content-Type", który ma zostać zwrócony `application/json`. Może wystąpić błąd, jak wspomniano poniżej, jeśli używasz innych elementów, takich jak`application/json; charset=utf-8` 
+> 
+>``` "Verification of publisher domain failed. Error getting JSON file from https:///.well-known/microsoft-identity-association. The server returned an unexpected content type header value. " ```
+>
 
 ## <a name="implications-on-the-app-consent-prompt"></a>Konsekwencje dotyczące monitu o zgodę aplikacji
 

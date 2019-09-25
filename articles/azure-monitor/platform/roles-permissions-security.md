@@ -1,6 +1,6 @@
 ---
-title: Rozpoczynanie pracy z rolami, uprawnienia i zabezpieczeń za pomocą usługi Azure Monitor
-description: Dowiedz się, jak ograniczyć dostęp do monitorowania zasobów za pomocą usługi Azure Monitor wbudowane role i uprawnienia.
+title: Wprowadzenie do ról, uprawnień i zabezpieczeń w Azure Monitor
+description: Dowiedz się, jak używać wbudowanych ról i uprawnień Azure Monitor, aby ograniczyć dostęp do zasobów monitorowania.
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,97 +8,97 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 4949391aded58f27ba8acd5c9ec437e8933f9843
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c745375eb4f59208af79bbb03d45f8f0eea7f3ca
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66243422"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260619"
 ---
-# <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Rozpoczynanie pracy z rolami, uprawnienia i zabezpieczeń za pomocą usługi Azure Monitor
+# <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Wprowadzenie do ról, uprawnień i zabezpieczeń w Azure Monitor
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Wiele zespołów należy ściśle regulowania dostępu do danych monitorowania i ustawień. Na przykład, jeśli posiadasz elementy członkowskie zespołu, którzy pracują wyłącznie na temat monitorowania (pracowników działu pomocy technicznej, inżynierom DevOps) lub korzystając z dostawcą usługi zarządzanej, można przyznać im dostęp do danych monitorowania tylko jednocześnie ograniczając możliwość tworzenia, modyfikowania, lub Usuń zasoby. W tym artykule pokazano, jak szybko wbudowana rola RBAC monitorowania są stosowane do użytkownika na platformie Azure lub utworzyć własne niestandardowe rolę dla użytkownika, który musi mieć ograniczone uprawnienia monitorowania. Następnie omówiono zagadnienia dotyczące zabezpieczeń na zasoby dotyczące usługi Azure Monitor i jak można ograniczyć dostęp do danych, które zawierają.
+Wiele zespołów musi ściśle regulować dostęp do danych i ustawień monitorowania. Na przykład jeśli masz członków zespołu, którzy pracują wyłącznie w zakresie monitorowania (inżynierów pomocy technicznej, inżynierów DevOps) lub jeśli używasz dostawcy usług zarządzanych, możesz udzielić im dostępu tylko do monitorowania danych, jednocześnie ograniczając możliwość tworzenia, modyfikowania lub Usuń zasoby. W tym artykule pokazano, jak szybko zastosować wbudowaną rolę RBAC monitorowania do użytkownika na platformie Azure lub utworzyć własną rolę niestandardową dla użytkownika, który wymaga ograniczonych uprawnień monitorowania. W tym artykule omówiono zagadnienia dotyczące zabezpieczeń zasobów związanych z Azure Monitor i sposób ograniczania dostępu do zawartych w nich danych.
 
 ## <a name="built-in-monitoring-roles"></a>Wbudowane role monitorowania
-Usługa Azure Monitor wbudowane role mają na celu ograniczenia dostępu do zasobów w ramach subskrypcji, ograniczając osoby odpowiedzialne za monitorowanie infrastruktury, aby uzyskać i skonfigurować je. Usługa Azure Monitor zapewnia dwie role out-of--box: Monitorowania Czytelnik i współautor monitorowania.
+Wbudowane role Azure Monitor zaprojektowano w celu ułatwienia ograniczenia dostępu do zasobów w ramach subskrypcji, a jednocześnie włączenie tych osób odpowiedzialnych za monitorowanie infrastruktury w celu uzyskania i skonfigurowania potrzebnych danych. Azure Monitor oferuje dwie wbudowane role: Czytelnik monitorowania i współautor monitorowania.
 
 ### <a name="monitoring-reader"></a>Czytelnik monitorowania
-Osoby z przypisaną rolą Czytelnik monitorowania można wyświetlić wszystkie dane monitorowania w ramach subskrypcji, ale nie można zmodyfikować dowolnego zasobu lub edytować wszelkie ustawienia związane z monitorowania zasobów. Ta rola jest odpowiednia dla użytkowników w organizacji, takie jak operacje lub pomocy technicznej inżynierów, którzy muszą mieć możliwość:
+Osoby, którym przypisano rolę czytelnik monitorowania, mogą wyświetlać wszystkie dane monitorowania w ramach subskrypcji, ale nie mogą modyfikować żadnych zasobów ani edytować żadnych ustawień związanych z zasobami monitorowania. Ta rola jest odpowiednia dla użytkowników w organizacji, takich jak pomoc techniczna lub inżynierowie operacyjni, którzy muszą mieć możliwość:
 
-* Wyświetlać pulpity nawigacyjne monitorowania w portalu i Utwórz swoje własne prywatne pulpity nawigacyjne monitorowania.
-* Wyświetl reguły alertu zdefiniowane w [Azure Alerts](alerts-overview.md)
-* Zapytanie dotyczące korzystania z metryk [interfejsu API REST usługi Azure Monitor](https://msdn.microsoft.com/library/azure/dn931930.aspx), [poleceń cmdlet programu PowerShell](powershell-quickstart-samples.md), lub [międzyplatformowego interfejsu wiersza polecenia](cli-samples.md).
-* Wyślij zapytanie do dziennika aktywności przy użyciu portalu, interfejsu API REST usługi Azure Monitor, poleceń cmdlet programu PowerShell lub wieloplatformowego interfejsu wiersza polecenia.
-* Widok [ustawień diagnostycznych](diagnostic-logs-overview.md#diagnostic-settings) dla zasobu.
-* Widok [profil dziennika](activity-log-export.md) dla subskrypcji.
-* Wyświetl ustawienia automatycznego skalowania.
-* Wyświetl działania alertu i ustawienia.
-* Dostęp do danych usługi Application Insights i wyświetlanie danych analitycznych w sztucznej Inteligencji.
-* Wyszukiwanie danych obszaru roboczego usługi Log Analytics, w tym dane użycia dla obszaru roboczego.
-* Wyświetlanie grup zarządzania usługi Log Analytics.
-* Pobierz schemat wyszukiwania w obszarze roboczym usługi Log Analytics.
-* Lista pakietów monitorowania w obszarze roboczym usługi Log Analytics.
-* Pobierz i wykonaj zapisanych wyszukiwań w obszarze roboczym usługi Log Analytics.
-* Pobieranie konfiguracji magazynu analizy dzienników obszaru roboczego.
+* Wyświetlanie pulpitów nawigacyjnych monitorowania w portalu i tworzenie własnych prywatnych pulpitów nawigacyjnych.
+* Wyświetlanie reguł alertów zdefiniowanych w [alertach platformy Azure](alerts-overview.md)
+* Zapytanie o metryki przy użyciu [interfejsu API REST Azure monitor](https://msdn.microsoft.com/library/azure/dn931930.aspx), [poleceń cmdlet programu PowerShell](powershell-quickstart-samples.md)lub [międzyplatformowego interfejsu wiersza polecenia](cli-samples.md).
+* Wykonaj zapytanie dotyczące dziennika aktywności przy użyciu portalu, Azure Monitor interfejsu API REST, poleceń cmdlet programu PowerShell lub międzyplatformowego interfejsu wiersza polecenia.
+* Wyświetlanie [ustawień diagnostycznych](diagnostic-settings.md) dla zasobu.
+* Wyświetl [profil dziennika](activity-log-export.md) dla subskrypcji.
+* Wyświetl ustawienia skalowania automatycznego.
+* Wyświetlanie działań i ustawień alertów.
+* Dostęp do danych Application Insights i wyświetlanie danych w usłudze AI Analytics.
+* Wyszukaj Log Analytics dane obszaru roboczego, w tym dane użycia dla obszaru roboczego.
+* Wyświetl Log Analytics grupy zarządzania.
+* Pobierz schemat wyszukiwania w obszarze roboczym Log Analytics.
+* Wyświetl listę pakietów monitorowania w obszarze roboczym Log Analytics.
+* Pobierz i wykonaj zapisane wyszukiwania w obszarze roboczym Log Analytics.
+* Pobierz konfigurację magazynu obszaru roboczego Log Analytics.
 
 > [!NOTE]
-> Ta rola nie daje dostęp do odczytu danych dziennika, które są przesyłane strumieniowo do Centrum zdarzeń lub przechowywane na koncie magazynu. [Zobacz poniżej](#security-considerations-for-monitoring-data) informacji na temat konfigurowania dostępu do tych zasobów.
+> Ta rola nie daje dostępu do odczytu do danych dziennika przesyłanych strumieniowo do centrum zdarzeń lub przechowywanych na koncie magazynu. [Poniżej znajdują](#security-considerations-for-monitoring-data) się informacje dotyczące konfigurowania dostępu do tych zasobów.
 > 
 > 
 
 ### <a name="monitoring-contributor"></a>Współautor monitorowania
-Osoby przypisane do roli Współautor monitorowania można wyświetlić wszystkie dane monitorowania w ramach subskrypcji i utworzyć lub zmodyfikować ustawienia monitorowania, ale nie można modyfikować żadnych innych zasobów. Ta rola jest podzbiorem roli Czytelnik monitorowania i jest przeznaczona dla członków zespołu monitorowania lub dostawcy usług zarządzanych, które oprócz powyższego, uprawnienia muszą być również możliwość organizacji:
+Osoby przypisane do roli współautor monitorowania mogą wyświetlać wszystkie dane monitorowania w ramach subskrypcji i tworzyć lub modyfikować ustawienia monitorowania, ale nie mogą modyfikować innych zasobów. Ta rola jest nadzbiorem roli czytelnik monitorowania i jest odpowiednia dla członków zespołu monitorowania organizacji lub dostawców usług zarządzanych, którzy oprócz powyższych uprawnień również muszą mieć możliwość:
 
-* Publikuj monitorowania pulpitów nawigacyjnych jako udostępniony pulpit nawigacyjny.
-* Ustaw [ustawień diagnostycznych](diagnostic-logs-overview.md#diagnostic-settings) dla zasobu.\*
+* Publikuj pulpity nawigacyjne monitorowania jako udostępniony pulpit nawigacyjny.
+* Ustawianie [ustawień diagnostycznych](diagnostic-settings.md) dla zasobu.\*
 * Ustaw [profil dziennika](activity-log-export.md) dla subskrypcji.\*
-* Działanie reguły alertów i ustawienia za pośrednictwem [Azure Alerts](alerts-overview.md).
-* Utwórz testy sieci web usługi Application Insights i składników.
-* Obszar roboczy usługi Log Analytics listy udostępnionych kluczy.
-* Włącz lub wyłącz pakiety monitorowania, w obszarze roboczym usługi Log Analytics.
-* Tworzenie i usuwanie wykonać zapisanych wyszukiwań w obszarze roboczym usługi Log Analytics.
-* Tworzenie i usuwanie konfiguracji magazynu analizy dzienników obszaru roboczego.
+* Skonfiguruj działanie i Ustawienia reguł alertów za pomocą [alertów platformy Azure](alerts-overview.md).
+* Tworzenie Application Insightsych testów i składników sieci Web.
+* Wyświetl listę kluczy wspólnych obszaru roboczego Log Analytics.
+* Włączać lub wyłączać pakiety monitorowania w obszarze roboczym Log Analytics.
+* Tworzenie i usuwanie zapisanych wyszukiwań w Log Analytics obszarze roboczym.
+* Utwórz i Usuń konfigurację magazynu obszaru roboczego Log Analytics.
 
-\*użytkownik musi również oddzielnie udzielane uprawnienia ListKeys zasobu docelowego (magazynu konta lub zdarzenia przestrzeń nazw Centrum) można ustawić profil dziennika lub ustawienie diagnostyczne.
+\*Użytkownik musi również oddzielnie udzielić uprawnienia ListKeys do zasobu docelowego (konto magazynu lub przestrzeń nazw centrum zdarzeń), aby ustawić profil dziennika lub ustawienie diagnostyczne.
 
 > [!NOTE]
-> Ta rola nie daje dostęp do odczytu danych dziennika, które są przesyłane strumieniowo do Centrum zdarzeń lub przechowywane na koncie magazynu. [Zobacz poniżej](#security-considerations-for-monitoring-data) informacji na temat konfigurowania dostępu do tych zasobów.
+> Ta rola nie daje dostępu do odczytu do danych dziennika przesyłanych strumieniowo do centrum zdarzeń lub przechowywanych na koncie magazynu. [Poniżej znajdują](#security-considerations-for-monitoring-data) się informacje dotyczące konfigurowania dostępu do tych zasobów.
 > 
 > 
 
-## <a name="monitoring-permissions-and-custom-rbac-roles"></a>Monitorowanie uprawnień i ról RBAC niestandardowych
-Jeśli powyższe wbudowanych ról nie dokładne potrzeb Twojego zespołu, możesz to zrobić [utworzyć niestandardową rolę RBAC](../../role-based-access-control/custom-roles.md) przy użyciu bardziej szczegółowych uprawnień. Poniżej przedstawiono typowe operacje usługi Azure Monitor RBAC przy użyciu ich opisy.
+## <a name="monitoring-permissions-and-custom-rbac-roles"></a>Monitorowanie uprawnień i niestandardowych ról RBAC
+Jeśli powyższe wbudowane role nie są zgodne z dokładnymi potrzebami zespołu, można [utworzyć niestandardową rolę RBAC](../../role-based-access-control/custom-roles.md) z bardziej szczegółowymi uprawnieniami. Poniżej przedstawiono typowe operacje RBAC Azure Monitor z ich opisami.
 
 | Operacja | Opis |
 | --- | --- |
-| Microsoft.Insights/ActionGroups/[Read, Write, Delete] |Grupy akcji odczytu/zapisu/usuwania. |
-| Microsoft.Insights/ActivityLogAlerts/[Read, zapis, usuwanie] |Alerty dziennika aktywności odczytu/zapisu/usuwania. |
-| Microsoft.Insights/AlertRules/[Read, Write, Delete] |Odczyt/zapis/usuwanie reguły alertów (z alertów klasycznych). |
-| Microsoft.Insights/AlertRules/Incidents/Read |Lista zdarzeń (Historia reguły alertu wyzwalane) dla reguł alertów. Dotyczy to tylko do portalu. |
-| Microsoft.Insights/AutoscaleSettings/[Read, Write, Delete] |Ustawienia skalowania automatycznego odczytu/zapisu/usuwania. |
+| Microsoft.Insights/ActionGroups/[Read, Write, Delete] |Grupy akcji do odczytu/zapisu/usuwania. |
+| Microsoft. Insights/ActivityLogAlerts/[odczyt, zapis, usuwanie] |Odczyt/zapis/usuwanie alertów dziennika aktywności. |
+| Microsoft.Insights/AlertRules/[Read, Write, Delete] |Reguły alertów do odczytu/zapisu/usuwania (z alertów klasycznych). |
+| Microsoft.Insights/AlertRules/Incidents/Read |Wyświetl listę incydentów (historia wyzwalanej reguły alertu) dla reguł alertów. Dotyczy to tylko portalu. |
+| Microsoft.Insights/AutoscaleSettings/[Read, Write, Delete] |Odczytaj/Zapisz/Usuń ustawienia skalowania automatycznego. |
 | Microsoft.Insights/DiagnosticSettings/[Read, Write, Delete] |Odczyt/zapis/usuwanie ustawień diagnostycznych. |
-| Microsoft.Insights/EventCategories/Read |Wylicza wszystkie kategorie w dzienniku aktywności. Używane przez witryny Azure portal. |
-| Microsoft.Insights/eventtypes/digestevents/Read |To uprawnienie jest wymagane dla użytkowników, którzy potrzebują dostępu do dzienników aktywności w portalu. |
-| Microsoft.Insights/eventtypes/values/Read |Wyświetl listę zdarzeń dziennika aktywności (zdarzenia zarządzania) w ramach subskrypcji. To uprawnienie ma zastosowanie do portalu i programowy dostęp do dziennika aktywności. |
-| Microsoft.Insights/ExtendedDiagnosticSettings/[Read, Write, Delete] | Odczyt/zapis/usuwanie ustawień diagnostycznych dla dzienników przepływu sieci. |
-| Microsoft.Insights/LogDefinitions/Read |To uprawnienie jest wymagane dla użytkowników, którzy potrzebują dostępu do dzienników aktywności w portalu. |
-| Microsoft.Insights/LogProfiles/[Read, Write, Delete] |Profile dziennika odczytu/zapisu/usuwania (przesyłanie strumieniowe dzienników aktywności do event hub lub konta magazynu). |
-| Microsoft.Insights/MetricAlerts/[Read, Write, Delete] |Odczyt/zapis/usuwanie niemal w czasie rzeczywistym alertów dotyczących metryk |
-| Microsoft.Insights/MetricDefinitions/Read |Przeczytaj definicje metryk (lista dostępnych typów metryki dla zasobu). |
-| Microsoft.Insights/Metrics/Read |Odczytać metryki dla zasobu. |
-| Microsoft.Insights/Register/Action |Zarejestruj dostawcę zasobów usługi Azure Monitor. |
-| Microsoft.Insights/ScheduledQueryRules/[Read, Write, Delete] |Odczyt/zapis/usuwanie dziennika alertów w usłudze Azure Monitor. |
+| Microsoft.Insights/EventCategories/Read |Wylicz wszystkie kategorie możliwe w dzienniku aktywności. Używane przez Azure Portal. |
+| Microsoft.Insights/eventtypes/digestevents/Read |To uprawnienie jest niezbędne dla użytkowników, którzy potrzebują dostępu do dzienników aktywności za pośrednictwem portalu. |
+| Microsoft.Insights/eventtypes/values/Read |Wyświetl listę zdarzeń dziennika aktywności (zdarzenia zarządzania) w subskrypcji. To uprawnienie dotyczy zarówno dostępu programowego, jak i portalu do dziennika aktywności. |
+| Microsoft.Insights/ExtendedDiagnosticSettings/[Read, Write, Delete] | Odczyt/zapis/usuwanie ustawień diagnostycznych dla dzienników przepływów sieciowych. |
+| Microsoft.Insights/LogDefinitions/Read |To uprawnienie jest niezbędne dla użytkowników, którzy potrzebują dostępu do dzienników aktywności za pośrednictwem portalu. |
+| Microsoft.Insights/LogProfiles/[Read, Write, Delete] |Odczyt/zapis/usuwanie profilów dzienników (przesyłanie strumieniowe dziennika aktywności do centrum zdarzeń lub konta magazynu). |
+| Microsoft.Insights/MetricAlerts/[Read, Write, Delete] |Odczytaj/Zapisz/Usuń alerty metryk niemal w czasie rzeczywistym |
+| Microsoft.Insights/MetricDefinitions/Read |Odczytaj definicje metryk (lista dostępnych typów metryk dla zasobu). |
+| Microsoft.Insights/Metrics/Read |Odczytaj metryki dla zasobu. |
+| Microsoft.Insights/Register/Action |Zarejestruj dostawcę zasobów Azure Monitor. |
+| Microsoft.Insights/ScheduledQueryRules/[Read, Write, Delete] |Odczytaj/Zapisz/Usuń alerty dzienników w Azure Monitor. |
 
 
 
 > [!NOTE]
-> Dostęp do alertów, ustawienia diagnostyczne i metryki dla zasobu wymaga, czy użytkownik ma dostęp do odczytu jako typ zasobu, a zakres tego zasobu. Profil diagnostyczny ustawienie lub dziennika, które powoduje archiwizowanie na koncie magazynu lub strumienie do usługi event hubs, tworzenie ("Zapisz") wymaga użytkownik również musi mieć uprawnienie ListKeys nad zasobem docelowym.
+> Dostęp do alertów, ustawień diagnostycznych i metryk dla zasobu wymaga, aby użytkownik miał dostęp do odczytu dla typu zasobu i zakresu tego zasobu. Tworzenie ("Write") ustawień diagnostycznych lub profilu dziennika, które są archiwizowane na koncie magazynu lub strumieniach do centrów zdarzeń, wymagają również, aby użytkownik miał uprawnienie ListKeys do zasobu docelowego.
 > 
 > 
 
-Na przykład przy użyciu powyższej tabeli, można utworzyć niestandardową rolę RBAC dla "działania czytnik dziennika" następująco:
+Na przykład za pomocą powyższej tabeli można utworzyć niestandardową rolę RBAC dla "czytnika dzienników aktywności" w następujący sposób:
 
 ```powershell
 $role = Get-AzRoleDefinition "Reader"
@@ -112,31 +112,31 @@ $role.AssignableScopes.Add("/subscriptions/mySubscription")
 New-AzRoleDefinition -Role $role 
 ```
 
-## <a name="security-considerations-for-monitoring-data"></a>Zagadnienia dotyczące zabezpieczeń na potrzeby danych monitorowania
-Monitorowanie danych — szczególnie plików dziennika — mogą zawierać poufne informacje, takie jak adresy IP lub nazwy użytkownika. Monitorowanie danych z platformy Azure jest oferowana w trzech głównych form:
+## <a name="security-considerations-for-monitoring-data"></a>Zagadnienia dotyczące zabezpieczeń dotyczące monitorowania danych
+Monitorowanie danych — w szczególności plików dziennika — może zawierać informacje poufne, takie jak adresy IP lub nazwy użytkowników. Dane monitorowania z platformy Azure są dostępne w trzech podstawowych formach:
 
-1. Dziennik aktywności w tym artykule opisano wszystkie akcje płaszczyznę kontroli w ramach subskrypcji platformy Azure.
-2. Dzienniki diagnostyczne, które są dzienniki emitowane przez zasób.
-3. Metryk, które są emitowane przez zasoby.
+1. Dziennik aktywności, który opisuje wszystkie działania płaszczyzny kontroli w ramach subskrypcji platformy Azure.
+2. Dzienniki diagnostyczne, które są dziennikami emitowanymi przez zasób.
+3. Metryki, które są emitowane przez zasoby.
 
-Wszystkie trzy typy danych mogą być przechowywane na koncie magazynu lub przesyłane strumieniowo do Centrum zdarzeń, które są ogólnego przeznaczenia zasobów platformy Azure. Ponieważ są to zasoby ogólnego przeznaczenia, tworzenie, usuwanie i uzyskiwać dostęp do nich jest operacją wymagającą odpowiednich uprawnień, zarezerwowane dla administratora. Sugerujemy, użyj następujących wskazówek dla zasobów związanych z monitorowaniem aby uniemożliwić nadużycia:
+Wszystkie trzy z tych typów danych mogą być przechowywane na koncie magazynu lub przesyłane strumieniowo do centrum zdarzeń, które są zasobami platformy Azure ogólnego przeznaczenia. Ponieważ są to zasoby ogólnego przeznaczenia, tworzenie, usuwanie i uzyskiwanie do nich dostępu, są uprzywilejowaną operacją zarezerwowaną dla administratora. Zalecamy stosowanie następujących rozwiązań do monitorowania zasobów związanych z monitorowaniem w celu zapobiegania nadużyciom:
 
-* Użyj konta magazynu jednego, przeznaczonego do monitorowania danych. Jeśli potrzebujesz oddzielnych danych monitorowania do wielu kont magazynu, nigdy nie udostępniaj użycia konta magazynu między monitorowania i -monitorowania danych, ponieważ przypadkowo mogą dawać tych, którzy potrzebują dostępu tylko do monitorowania danych (na przykład SIEM innych firm) dostęp do innych monitorowania danych.
-* Użyj jednego, przeznaczonego nazw usługi Service Bus lub Centrum zdarzeń we wszystkich ustawień diagnostycznych dla tego samego powodu opisanych powyżej.
-* Ograniczanie dostępu do konta usługi storage związanych z monitorowaniem lub centrów zdarzeń, przechowując je w oddzielnej grupie zasobów, a [Użyj zakresu](../../role-based-access-control/overview.md#scope) Twoja monitorowania ról, aby ograniczyć dostęp do tej grupy zasobów.
-* Nigdy nie należy przyznać uprawnienia klucze listy dla konta magazynu lub centrów zdarzeń w zakresie subskrypcji, po użytkownik potrzebuje tylko dostępu do danych monitorowania. Zamiast tego należy nadać te uprawnienia do użytkownika na zasób lub grupa zasobów (Jeśli masz dedykowane monitorowania grupy zasobów) zakresu.
+* Do monitorowania danych służy jedno dedykowane konto magazynu. Jeśli konieczne jest oddzielenie danych monitorowania na wiele kont magazynu, nigdy nie należy udostępniać konta magazynu między danymi monitorowania i niemonitorowania, ponieważ może to przypadkowo dać tym osobom, które potrzebują dostępu tylko do danych monitorowania (na przykład SIEM innych firm). dostęp do danych niezwiązanych z monitorowaniem.
+* Użyj pojedynczej, dedykowanej Service Bus lub przestrzeni nazw centrum zdarzeń dla wszystkich ustawień diagnostycznych z tego samego powodu, jak powyżej.
+* Ograniczanie dostępu do kont magazynu związanych z monitorowaniem lub centrów zdarzeń przez utrzymywanie ich w osobnej grupie zasobów i [Używanie zakresu](../../role-based-access-control/overview.md#scope) w rolach monitorowania w celu ograniczenia dostępu tylko do tej grupy zasobów.
+* Nie udzielaj uprawnienia ListKeys dla kont magazynu ani centrów zdarzeń w zakresie subskrypcji, gdy użytkownik potrzebuje tylko dostępu do danych monitorowania. Zamiast tego nadaj temu użytkownikowi uprawnienia do zasobu lub grupy zasobów (Jeśli masz dedykowaną grupę zasobów monitorowania).
 
-### <a name="limiting-access-to-monitoring-related-storage-accounts"></a>Ograniczanie dostępu do konta usługi storage związanych z monitorowaniem
-Gdy użytkownik lub aplikacja potrzebuje dostępu do danych na koncie magazynu monitorowania, należy [Generowanie sygnatury dostępu Współdzielonego konta](https://msdn.microsoft.com/library/azure/mt584140.aspx) na koncie magazynu, który zawiera dane monitorowania z poziomu usługi dostęp tylko do odczytu do magazynu obiektów blob. W programie PowerShell może to wyglądać jak:
+### <a name="limiting-access-to-monitoring-related-storage-accounts"></a>Ograniczanie dostępu do kont magazynu związanych z monitorowaniem
+Gdy użytkownik lub aplikacja musi mieć dostęp do danych monitorowania na koncie magazynu, należy [wygenerować sygnaturę dostępu współdzielonego konta](https://msdn.microsoft.com/library/azure/mt584140.aspx) na koncie magazynu zawierającym dane monitorowania z dostępem tylko do odczytu do usługi BLOB Storage. W programie PowerShell może wyglądać następująco:
 
 ```powershell
 $context = New-AzStorageContext -ConnectionString "[connection string for your monitoring Storage Account]"
 $token = New-AzStorageAccountSASToken -ResourceType Service -Service Blob -Permission "rl" -Context $context
 ```
 
-Można następnie przekazać ten token do jednostki, musi odczytać z magazynu konta i jego można wyświetlić listę i odczytywanie wszystkich obiektów blob w ramach tego konta magazynu.
+Następnie można przekazać token do jednostki, która musi odczytywać z tego konta magazynu, a także wyświetlać i odczytywać wszystkie obiekty blob w ramach tego konta magazynu.
 
-Alternatywnie Jeśli wymagane jest sterowanie to uprawnienie z RBAC, można przyznać tej jednostki uprawnienie Microsoft.Storage/storageAccounts/listkeys/action na tym koncie magazynu określonym. Jest to niezbędne dla użytkowników, którzy muszą mieć możliwość ustawienia diagnostyczne lub dziennika profilu zarchiwizować na koncie magazynu. Na przykład można utworzyć następujące niestandardową rolę RBAC dla użytkownika lub aplikacji, która musi tylko do odczytu z jednego konta magazynu:
+Alternatywnie, jeśli konieczne jest kontrolowanie tego uprawnienia za pomocą RBAC, można przyznać tej jednostce uprawnienia Microsoft. Storage/storageAccounts/ListKeys/Action na tym konkretnym koncie magazynu. Jest to konieczne w przypadku użytkowników, którzy muszą mieć możliwość ustawienia ustawień diagnostycznych lub profilu dziennika na potrzeby archiwizowania na koncie magazynu. Można na przykład utworzyć następującą niestandardową rolę RBAC dla użytkownika lub aplikacji, która musi tylko odczytać z jednego konta magazynu:
 
 ```powershell
 $role = Get-AzRoleDefinition "Reader"
@@ -152,15 +152,15 @@ New-AzRoleDefinition -Role $role
 ```
 
 > [!WARNING]
-> Uprawnienia ListKeys pozwala użytkownikowi na liście kluczy konta magazynu podstawowego i pomocniczego. Te klucze Przyznaj użytkownikowi wszystkie podpisane uprawnienia (Odczyt, zapis, Utwórz obiekty BLOB, usuwanie obiektów blob, itp.) na wszystkich podpisany usług (obiektu blob, kolejka, tabela, plik) w ramach tego konta magazynu. Zalecamy używanie sygnatury dostępu Współdzielonego konta opisanych powyżej, jeśli jest to możliwe.
+> Uprawnienie ListKeys umożliwia użytkownikowi wyświetlanie kluczy podstawowych i pomocniczych kont magazynu. Te klucze przyznają użytkownikowi wszystkie podpisane uprawnienia (odczyt, zapis, tworzenie obiektów blob, usuwanie obiektów BLOB itp.) dla wszystkich podpisanych usług (obiektów blob, kolejek, tabel, plików) na tym koncie magazynu. Zalecamy używanie sygnatury dostępu współdzielonego konta opisanego powyżej, jeśli jest to możliwe.
 > 
 > 
 
 ### <a name="limiting-access-to-monitoring-related-event-hubs"></a>Ograniczanie dostępu do centrów zdarzeń związanych z monitorowaniem
-Podobny wzorzec można wykonać za pomocą usługi event hubs, ale najpierw należy utworzyć dedykowane reguły autoryzacji nasłuchiwania. Jeśli użytkownik chce udzielić, uzyskać dostęp do aplikacji, która musi tylko do nasłuchiwania centra zdarzeń związanych z monitorowaniem, wykonaj następujące czynności:
+Podobny wzorzec może być stosowany w przypadku centrów zdarzeń, ale najpierw należy utworzyć dedykowaną regułę autoryzacji nasłuchiwania. Aby udzielić dostępu do aplikacji, która musi nasłuchiwać tylko centrów zdarzeń związanych z monitorowaniem, wykonaj następujące czynności:
 
-1. Utwórz zasady dostępu współdzielonego na koncentratory zdarzeń, które zostały utworzone dla przesyłania strumieniowego danych monitorowania z tylko oświadczenia nasłuchiwania. Można to zrobić w portalu. Na przykład może być wywołasz ją "monitoringReadOnly." Jeśli to możliwe należy udzielić tego klucza bezpośrednio do użytkownika i pomiń następny krok.
-2. Jeśli użytkownik musi mieć możliwość uzyskania klucza ad hoc, Przyznaj użytkownikowi akcję klucze listy dla tego Centrum zdarzeń. To jest również dla użytkowników, którzy muszą mieć możliwość ustawienia diagnostyczne lub profil dziennika do strumienia usługi event hubs. Na przykład można utworzyć regułę RBAC:
+1. Utwórz zasady dostępu współdzielonego dla centrów zdarzeń utworzonych na potrzeby przesyłania strumieniowego danych monitorowania tylko przy użyciu oświadczeń nasłuchujących. Można to zrobić w portalu. Można na przykład wywołać "monitoringReadOnly". Jeśli to możliwe, należy przekazać ten klucz bezpośrednio do konsumenta i pominąć następny krok.
+2. Jeśli konsument musi mieć możliwość uzyskania klucza ad hoc, Udziel użytkownikowi akcji ListKeys dla tego centrum zdarzeń. Jest to również konieczne w przypadku użytkowników, którzy muszą mieć możliwość ustawienia ustawień diagnostycznych lub profilu dziennika na potrzeby przesyłania strumieniowego do centrów zdarzeń. Na przykład możesz utworzyć regułę RBAC:
    
    ```powershell
    $role = Get-AzRoleDefinition "Reader"
@@ -175,20 +175,20 @@ Podobny wzorzec można wykonać za pomocą usługi event hubs, ale najpierw nale
    New-AzRoleDefinition -Role $role 
    ```
 
-## <a name="monitoring-within-a-secured-virtual-network"></a>Monitorowanie w zabezpieczonej sieci wirtualnej
+## <a name="monitoring-within-a-secured-virtual-network"></a>Monitorowanie w zabezpieczonym Virtual Network
 
-Usługa Azure Monitor wymaga dostępu do zasobów platformy Azure do świadczenia usług, które zostanie włączone. Jeśli chcesz monitorować zasobów platformy Azure, zabezpieczając nadal je przed dostępem do publicznej sieci Internet, aby umożliwić następujące ustawienia.
+Azure Monitor potrzebuje dostępu do zasobów platformy Azure w celu zapewnienia usług, które są włączone. Jeśli chcesz monitorować zasoby platformy Azure przy zachowaniu ich dostępu do publicznego Internetu, możesz włączyć poniższe ustawienia.
 
-### <a name="secured-storage-accounts"></a>Konta magazynu zabezpieczone 
+### <a name="secured-storage-accounts"></a>Zabezpieczone konta magazynu 
 
-Monitorowanie danych często są zapisywane na koncie magazynu. Warto upewnić się, że dane skopiowane do konta magazynu nie są dostępne przez nieautoryzowanych użytkowników. Dla dodatkowego bezpieczeństwa możesz zablokować dostęp do sieci, aby zezwalać tylko na autoryzowanych zasobów i zaufanych dostępu do usług firmy Microsoft do konta magazynu przez ograniczenie konta magazynu do użycia "wybranych sieci".
-![Okno dialogowe Ustawienia usługi Azure Storage](./media/roles-permissions-security/secured-storage-example.png) usługi Azure Monitor jest uważany za jeden z nich "zaufanych usług firmy Microsoft" Jeśli zezwolisz na dostęp zabezpieczony magazyn do zaufanych usług firmy Microsoft, usługa Azure monitor będzie mieć dostęp do konta magazynu zabezpieczone; Włączanie zapisywanie dzienników diagnostycznych usługi Azure Monitor, dzienników aktywności i metryki do swojego konta magazynu w tych warunkach chronionych. Umożliwi to również usługi Log Analytics w celu odczytu dzienników z bezpiecznego magazynu.   
+Dane monitorowania są często zapisywane na koncie magazynu. Można upewnić się, że dane skopiowane na konto magazynu nie są dostępne dla nieautoryzowanych użytkowników. Aby uzyskać dodatkowe zabezpieczenia, można zablokować dostęp do sieci, aby zezwolić na dostęp do konta magazynu tylko autoryzowanym zasobom i zaufanym usługom firmy Microsoft, ograniczając konto magazynu do używania "wybranych sieci".
+![Okno dialogowe](./media/roles-permissions-security/secured-storage-example.png) ustawień usługi Azure Storage Azure monitor jest uznawane za jedną z następujących "zaufanych usług firmy Microsoft", Jeśli zezwolisz zaufanym usługom firmy Microsoft na dostęp do bezpiecznego magazynu, usługa Azure monitor będzie mieć dostęp do bezpiecznego konta magazynu; Włączanie Zapisywanie Azure Monitor dzienników diagnostycznych, dziennika aktywności i metryk na koncie magazynu w ramach tych chronionych warunków. Spowoduje to również umożliwienie Log Analytics odczytywania dzienników z bezpiecznego magazynu.   
 
 
-Aby uzyskać więcej informacji, zobacz [Network security i Azure Storage](../../storage/common/storage-network-security.md)
+Aby uzyskać więcej informacji, zobacz [zabezpieczenia sieci i usługa Azure Storage](../../storage/common/storage-network-security.md)
 
-## <a name="next-steps"></a>Kolejne kroki
-* [Przeczytaj o ROLACH i uprawnienia w usłudze Resource Manager](../../role-based-access-control/overview.md)
+## <a name="next-steps"></a>Następne kroki
+* [Przeczytaj informacje na temat RBAC i uprawnień w Menedżer zasobów](../../role-based-access-control/overview.md)
 * [Zapoznaj się z omówieniem monitorowania na platformie Azure](../../azure-monitor/overview.md)
 
 

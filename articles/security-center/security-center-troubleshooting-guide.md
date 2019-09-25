@@ -2,28 +2,49 @@
 title: Przewodnik rozwiązywania problemów z usługą Azure Security Center | Microsoft Docs
 description: Ten dokument pomaga rozwiązywać problemy w Azure Security Center.
 services: security-center
-author: memildin
-manager: rkarlin
+author: v-miegge
+manager: dcscontentpm
 ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 26615819dc407e51281254c73076a1d721e6059f
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 073e500028634e3c35a482d8efc5f9ae169145e3
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873392"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257689"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Przewodnik rozwiązywania problemów z usługą Azure Security Center
+
 Ten przewodnik jest przeznaczony dla specjalistów IT, analityków zabezpieczeń informacji oraz administratorów chmury, których organizacje używają usługi Azure Security Center i muszą rozwiązywać problemy związane z usługą Azure Security Center.
 
->[!NOTE]
->Security Center używa Microsoft Monitoring Agent do zbierania i przechowywania danych. Aby dowiedzieć się więcej, zobacz [Migracja platformy usługi Azure Security Center](security-center-platform-migration.md).
->
+Security Center używa Microsoft Monitoring Agent do zbierania i przechowywania danych. Aby dowiedzieć się więcej, zobacz [Migracja platformy usługi Azure Security Center](security-center-platform-migration.md). Informacje przedstawione w tym artykule reprezentują funkcję Security Center po przejściu do programu Microsoft Monitoring Agent.
 
 ## <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
-W tym przewodniku wyjaśniano, jak rozwiązywać problemy związane z usługą Security Center. W większości przypadków rozwiązywanie problemów w usłudze Security Center rozpoczyna się od sprawdzenia rekordów [dziennika inspekcji](../azure-monitor/platform/activity-logs-overview.md) składnika, w przypadku którego wystąpił błąd. Za pomocą dzienników inspekcji można określić:
+
+W tym przewodniku wyjaśniano, jak rozwiązywać problemy związane z usługą Security Center.
+
+Typy alertów:
+
+* Analiza zachowania maszyny wirtualnej (VMBA)
+* Analiza sieci
+* Analiza bazy danych SQL Database i magazynu SQL Data Warehouse
+* Informacje kontekstowe
+
+W zależności od typów alertów klienci mogą zebrać informacje niezbędne do zbadania alertu przy użyciu następujących zasobów:
+
+* Dzienniki zabezpieczeń w podglądzie zdarzeń maszyny wirtualnej w systemie Windows
+* Polecenie AuditD w systemie Linux
+* Dzienniki aktywności platformy Azure i Włączanie dzienników diagnostycznych zasobu ataku.
+
+W przypadku niektórych alertów mamy również wynik pewności. Współczynnik ufności w usłudze **Security Center** może ułatwić zespołowi klasyfikowanie alertów i ustalanie ich priorytetów. **Security Center** automatycznie stosuje najlepsze rozwiązania branżowe, inteligentne algorytmy i procesy używane przez analityków do określenia, czy zagrożenie jest wiarygodne i zapewnia znaczący wgląd w formę oceny zaufania.
+
+Klienci mogą dzielić się opiniami dotyczącymi opisu i istotności alertu. Przejdź do samego alertu, wybierz przycisk **Czy te informacje były przydatne**, wybierz przyczynę, a następnie wprowadź komentarz, aby uzasadnić opinię. Stale monitorujemy ten kanał opinii, aby ulepszać nasze alerty.
+
+## <a name="audit-log"></a>Dziennik inspekcji
+
+W większości przypadków rozwiązywanie problemów w usłudze Security Center rozpoczyna się od sprawdzenia rekordów [dziennika inspekcji](../azure-monitor/platform/activity-logs-overview.md) składnika, w przypadku którego wystąpił błąd. Za pomocą dzienników inspekcji można określić:
 
 * Operacje, które zostały wykonane
 * Użytkownika, który zainicjował operację
@@ -34,6 +55,7 @@ W tym przewodniku wyjaśniano, jak rozwiązywać problemy związane z usługą S
 Dziennik inspekcji zawiera informacje o wszystkich operacjach zapisu (PUT, POST, DELETE) wykonywanych względem zasobów, ale nie zawiera informacji dotyczących operacji odczytu (GET).
 
 ## <a name="microsoft-monitoring-agent"></a>Microsoft Monitoring Agent
+
 Security Center używa Microsoft Monitoring Agent — jest to ten sam Agent, który jest używany przez usługę Azure Monitor do zbierania danych zabezpieczeń z maszyn wirtualnych platformy Azure. Po włączeniu zbierania danych i poprawnym zainstalowaniu agenta na maszynie docelowej powinny być wykonywane poniższe procesy:
 
 * HealthService.exe
@@ -46,19 +68,19 @@ Aby sprawdzić, która wersja agenta jest używana, otwórz **Menedżera zadań*
 
 ![Plik](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
 
-
 ## <a name="microsoft-monitoring-agent-installation-scenarios"></a>Scenariusze instalacji programu Microsoft Monitoring Agent
+
 Istnieją dwa scenariusze instalacji, które mogą wygenerować różne wyniki podczas instalowania programu Microsoft Monitoring Agent na komputerze. Obsługiwane scenariusze są następujące:
 
 * **Agent instalowany automatycznie za pomocą usługi Security Center**: w tym scenariuszu możliwe będzie wyświetlanie alertów w obu lokalizacjach — usłudze Security Center i funkcji przeszukiwania dzienników. Powiadomienia e-mail będą wysyłane na adres e-mail skonfigurowany w ramach zasad zabezpieczeń dla subskrypcji, do której należy zasób.
-.
+
 * **Agent został ręcznie zainstalowany na maszynie wirtualnej znajdującej się na platformie Azure**: w tym scenariuszu, jeśli używasz agentów pobranych i zainstalowanych ręcznie przed luty 2017, alerty można wyświetlić w portalu Security Center tylko w przypadku filtrowania subskrypcji obszaru roboczego należy do. Jeśli odfiltruje subskrypcję, do której należy zasób, nie zobaczysz żadnych alertów. Powiadomienia e-mail będą wysyłane na adres e-mail skonfigurowany w ramach zasad zabezpieczeń dla subskrypcji, do której należy obszar roboczy.
 
->[!NOTE]
+> [!NOTE]
 > Aby uniknąć zachowania opisanego w drugim scenariuszu, upewnij się, że pobrano najnowszą wersję agenta.
->
 
 ## Monitorowanie problemów dotyczących kondycji agenta <a name="mon-agent"></a>
+
 **Stan monitorowania** definiuje powód, dla którego usługa Security Center nie może prawidłowo monitorować maszyn wirtualnych i komputerów zainicjowanych do automatycznej aprowizacji. Poniższa tabela zawiera wartości, opisy i kroki związane z rozwiązywaniem problemów z opcją **Stan monitorowania**.
 
 | Stan monitorowania | Opis | Kroki rozwiązywania problemów |
@@ -74,12 +96,12 @@ Istnieją dwa scenariusze instalacji, które mogą wygenerować różne wyniki p
 | Brak identyfikatora agenta lub agent nie odpowiada | Usługa Security Center nie może pobrać danych zabezpieczeń zeskanowanych z maszyny wirtualnej, chociaż agent jest zainstalowany. | Agent nie zgłasza żadnych danych, w tym pulsu. Agent może być uszkodzony lub coś blokuje ruch. Ewentualnie agent zgłasza dane, ale nie ma identyfikatora zasobu platformy Azure, więc nie można powiązać danych z maszyną wirtualną platformy Azure. Aby rozwiązać problemy w systemie Linux, zobacz [Troubleshooting Guide for Log Analytics Agent dla systemu Linux](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal). Aby rozwiązać problemy w systemie Windows, zobacz [Troubleshooting Windows Virtual Machines (Rozwiązywanie problemów z maszynami wirtualnymi z systemem Windows)](https://github.com/MicrosoftDocs/azure-docs/blob/8c53ac4371d482eda3d85819a4fb8dac09996a89/articles/log-analytics/log-analytics-azure-vm-extension.md#troubleshooting-windows-virtual-machines). |
 | Agent nie jest zainstalowany | Zbieranie danych jest wyłączone. | Włącz zbieranie danych w zasadach zabezpieczeń lub ręcznie zainstaluj program Microsoft Monitoring Agent. |
 
-
 ## Rozwiązywanie problemów z wymaganiami dotyczącymi sieci agenta monitorowania <a name="mon-network-req"></a>
+
 Aby agenci mogli nawiązać połączenie z usługą Security Center i zarejestrować się za jej pomocą, muszą mieć oni dostęp do zasobów sieciowych, w tym numerów portów i adresów URL domeny.
 
-- W przypadku serwerów proxy konieczne jest zapewnienie, że ich odpowiednie zasoby są skonfigurowane w ustawieniach agenta. Przeczytaj ten artykuł, aby uzyskać więcej informacji dotyczących [sposobu zmiany ustawień serwera proxy](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents).
-- Zapory ograniczające dostęp do Internetu należy skonfigurować w taki sposób, aby zezwalały na dostęp do usługi Log Analytics. W ustawieniach agenta nie jest wymagana żadna akcja.
+* W przypadku serwerów proxy konieczne jest zapewnienie, że ich odpowiednie zasoby są skonfigurowane w ustawieniach agenta. Przeczytaj ten artykuł, aby uzyskać więcej informacji dotyczących [sposobu zmiany ustawień serwera proxy](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents).
+* Zapory ograniczające dostęp do Internetu należy skonfigurować w taki sposób, aby zezwalały na dostęp do usługi Log Analytics. W ustawieniach agenta nie jest wymagana żadna akcja.
 
 W poniższej tabeli przedstawiono zasoby wymagane do komunikacji.
 
@@ -90,20 +112,19 @@ W poniższej tabeli przedstawiono zasoby wymagane do komunikacji.
 | *.blob.core.windows.net | 443 | Yes |
 | *.azure-automation.net | 443 | Yes |
 
-Jeśli wystąpią problemy związane z dołączaniem dotyczące agenta, przeczytaj artykuł [How to troubleshoot Operations Management Suite onboarding issues](https://support.microsoft.com/en-us/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues) (Jak rozwiązywać problemy dotyczące przechodzenia do pakietu Operations Management Suite)
-
+Jeśli wystąpią problemy związane z dołączaniem dotyczące agenta, przeczytaj artykuł [How to troubleshoot Operations Management Suite onboarding issues](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues) (Jak rozwiązywać problemy dotyczące przechodzenia do pakietu Operations Management Suite)
 
 ## <a name="troubleshooting-endpoint-protection-not-working-properly"></a>Rozwiązywanie problemów z niedziałającą prawidłowo ochroną punktów końcowych
 
 Agent gościa to proces nadrzędny w stosunku do wszystkich czynności wykonywanych przez rozszerzenie [Usługa firmy Microsoft chroniąca przed złośliwym kodem](../security/fundamentals/antimalware.md). Jeśli proces agenta gościa zakończy się niepowodzeniem, usługa firmy Microsoft chroniąca przed złośliwym kodem uruchomiona jako proces podrzędny agenta gościa może również zakończyć się niepowodzeniem.  W przypadku takich scenariuszy zalecamy zweryfikowanie następujących opcji:
 
-- Jeśli docelowa maszyna wirtualna to obraz niestandardowy, a twórca maszyny wirtualnej nigdy nie zainstalował agenta gościa.
-- Jeśli cel to maszyna wirtualna z systemem Linux, a nie Windows, instalowanie rozszerzenia usługi firmy Microsoft chroniącej przed złośliwym kodem w wersji dla systemu Windows na maszynie wirtualnej z systemem Linux zakończy się niepowodzeniem. Agent gościa z systemem Linux ma określone wymagania dotyczące wersji systemu operacyjnego i wymaganych pakietów. Jeśli nie zostaną one spełnione, agent maszyny wirtualnej również nie będzie działać.
-- Jeśli maszyna wirtualna została utworzona za pomocą starszej wersji agenta gościa. W takiej sytuacji należy pamiętać, że niektórzy starsi agenci nie mogą przeprowadzić automatycznie samodzielnej aktualizacji i może to prowadzić do wystąpienia tego problemu. Zawsze używaj najnowszej wersji agenta gościa podczas tworzenia własnych obrazów.
-- Niektóre programy administracyjne innych firm mogą wyłączać agenta gościa lub blokować dostęp do niektórych lokalizacji plików. Jeśli na maszynie wirtualnej zainstalowano programy innych firm, upewnij się, że agent znajduje się na liście wykluczeń.
-- Niektóre ustawienia zapory lub grupy zabezpieczeń sieci (NSG) mogą blokować ruch sieciowy do i z agenta gościa.
-- Niektóre listy kontroli dostępu (ACL) mogą uniemożliwiać dostęp do dysku.
-- Brak miejsca na dysku może uniemożliwić prawidłowe działanie agenta gościa.
+* Jeśli docelowa maszyna wirtualna to obraz niestandardowy, a twórca maszyny wirtualnej nigdy nie zainstalował agenta gościa.
+* Jeśli cel to maszyna wirtualna z systemem Linux, a nie Windows, instalowanie rozszerzenia usługi firmy Microsoft chroniącej przed złośliwym kodem w wersji dla systemu Windows na maszynie wirtualnej z systemem Linux zakończy się niepowodzeniem. Agent gościa z systemem Linux ma określone wymagania dotyczące wersji systemu operacyjnego i wymaganych pakietów. Jeśli nie zostaną one spełnione, agent maszyny wirtualnej również nie będzie działać.
+* Jeśli maszyna wirtualna została utworzona za pomocą starszej wersji agenta gościa. W takiej sytuacji należy pamiętać, że niektórzy starsi agenci nie mogą przeprowadzić automatycznie samodzielnej aktualizacji i może to prowadzić do wystąpienia tego problemu. Zawsze używaj najnowszej wersji agenta gościa podczas tworzenia własnych obrazów.
+* Niektóre programy administracyjne innych firm mogą wyłączać agenta gościa lub blokować dostęp do niektórych lokalizacji plików. Jeśli na maszynie wirtualnej zainstalowano programy innych firm, upewnij się, że agent znajduje się na liście wykluczeń.
+* Niektóre ustawienia zapory lub grupy zabezpieczeń sieci (NSG) mogą blokować ruch sieciowy do i z agenta gościa.
+* Niektóre listy kontroli dostępu (ACL) mogą uniemożliwiać dostęp do dysku.
+* Brak miejsca na dysku może uniemożliwić prawidłowe działanie agenta gościa.
 
 Domyślnie interfejs użytkownika usługi firmy Microsoft chroniącej przed złośliwym kodem jest wyłączony. Więcej informacji na temat jego włączania w razie potrzeby można znaleźć w temacie [Enabling Microsoft Antimalware User Interface on Azure Resource Manager VMs Post Deployment](https://blogs.msdn.microsoft.com/azuresecurity/2016/03/09/enabling-microsoft-antimalware-user-interface-post-deployment/) (Włączanie interfejsu użytkownika usługi firmy Microsoft chroniącej przed złośliwym kodem po wdrożeniu maszyn wirtualnych usługi Azure Resource Manager).
 
@@ -112,17 +133,26 @@ Domyślnie interfejs użytkownika usługi firmy Microsoft chroniącej przed zło
 Jeśli masz problemy z ładowaniem pulpitu nawigacyjnego usługi Security Center, upewnij się, że użytkownik, który rejestruje subskrypcję usługi Security Center (tj. pierwszy użytkownik, który otworzył usługę Security Center za pomocą subskrypcji), oraz użytkownik, który chce włączyć kolekcję danych, mają uprawnienia *Właściciel* lub *Współautor* w subskrypcji. Od tej pory również użytkownicy z uprawnieniem *Czytelnik* w subskrypcji będą widzieć pulpit nawigacyjny/alerty/rekomendacje/zasady.
 
 ## <a name="contacting-microsoft-support"></a>Kontaktowanie się z pomocą techniczną firmy Microsoft
+
 Niektóre problemy można zidentyfikować za pomocą wskazówek znajdujących się w tym artykule. Inne problemy można znaleźć udokumentowane na publicznym [Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSecurityCenter) usługi Security Center. Jeśli jednak potrzebna jest dalsza pomoc w rozwiązywaniu problemów, możesz otworzyć nowe żądanie obsługi, używając witryny **Azure Portal** w sposób pokazany poniżej:
 
 ![Pomoc techniczna firmy Microsoft](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 
-
 ## <a name="see-also"></a>Zobacz także
+
 W tym dokumencie przedstawiono konfigurowanie zasad zabezpieczeń w Centrum zabezpieczeń Azure. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń Azure, zobacz następujące artykuły:
 
 * [Przewodnik planowania i obsługi usługi Azure Security Center](security-center-planning-and-operations-guide.md)— informacje na temat planowania i zagadnień projektowych podczas wdrażania usługi Azure Security Center.
 * [Monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](security-center-monitoring.md) — informacje na temat monitorowania kondycji zasobów platformy Azure
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md) — informacje na temat reagowania na alerty zabezpieczeń i zarządzania nimi
+* [Informacje o alertach zabezpieczeń w usłudze Azure Security Center](security-center-alerts-type.md)
+* [Samouczek: Reagowanie na zdarzenia związane z zabezpieczeniami](tutorial-security-incident.md)
+* [Walidacja alertów w usłudze Azure Security Center](security-center-alert-validation.md)
+* [Powiadomienia e-mail w usłudze Azure Security Center](security-center-provide-security-contact-details.md)
+* [Obsługa zdarzeń naruszenia zabezpieczeń w usłudze Azure Security Center](security-center-incident.md)
+* [Współczynnik ufności alertu](security-center-secure-score.md)
+* [Badanie zdarzeń i alertów w usłudze Azure Security Center](security-center-investigation.md)
+* [Funkcje wykrywania usługi Azure Security Center](security-center-detection-capabilities.md)
 * [Monitorowanie rozwiązań partnerskich w usłudze Azure Security Center](security-center-partner-solutions.md) — informacje na temat monitorowania stanu kondycji rozwiązań partnerskich.
 * [Azure Security Center — często zadawane pytania](security-center-faq.md) — odpowiedzi na często zadawane pytania dotyczące korzystania z usługi
 * [Blog Azure Security](https://blogs.msdn.com/b/azuresecurity/) — wpisy na blogu dotyczące zabezpieczeń i zgodności platformy Azure

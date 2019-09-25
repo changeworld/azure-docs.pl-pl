@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 08/15/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 16c65a98ca420a4b15281ee033ea7773197b5b2a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1774fcf0af287bba03c2c5c79e14883e3594ef0c
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098467"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260144"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Jak używać tożsamości zarządzanych do App Service i Azure Functions
 
@@ -43,7 +43,7 @@ Aby skonfigurować tożsamość zarządzaną w portalu, musisz najpierw utworzy�
 
 3. Wybierz pozycję **zarządzana tożsamość**.
 
-4. W ramach karty przypisanej do **systemu** Przełącz pozycję **stan** na wartość **włączone**. Kliknij polecenie **Zapisz**.
+4. W ramach karty przypisanej do **systemu** Przełącz pozycję **stan** na wartość **włączone**. Kliknij pozycję **Zapisz**.
 
 ![Tożsamość zarządzana w App Service](media/app-service-managed-service-identity/msi-blade-system.png)
 
@@ -172,7 +172,7 @@ Najpierw należy utworzyć zasób tożsamości przypisany przez użytkownika.
 
 5. Na karcie **przypisane przez użytkownika** kliknij przycisk **Dodaj**.
 
-6. Wyszukaj utworzoną wcześniej tożsamość i wybierz ją. Kliknij przycisk **Dodaj**.
+6. Wyszukaj utworzoną wcześniej tożsamość i wybierz ją. Kliknij pozycję **Dodaj**.
 
 ![Tożsamość zarządzana w App Service](media/app-service-managed-service-identity/msi-blade-user.png)
 
@@ -309,7 +309,10 @@ Aplikacja z zarządzaną tożsamością ma zdefiniowane dwie zmienne środowisko
 > |resource|Zapytanie|Identyfikator URI zasobu usługi AAD zasobu, dla którego ma zostać uzyskany token. Może to być jedna z [usług platformy Azure, które obsługują uwierzytelnianie usługi Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) lub dowolny inny identyfikator URI zasobu.|
 > |api-version|Zapytanie|Wersja interfejsu API tokenu, który ma być używany. "2017-09-01" jest obecnie jedyną obsługiwaną wersją.|
 > |secret|nagłówek|Wartość zmiennej środowiskowej MSI_SECRET. Ten nagłówek jest używany, aby pomóc w ograniczeniu ataków SSRF (po stronie serwera).|
-> |clientid|Zapytanie|Obowiązkowe Identyfikator tożsamości przypisanej do użytkownika, który ma być używany. W przypadku pominięcia zostanie użyta tożsamość przypisana do systemu.|
+> |clientid|Zapytanie|(Opcjonalnie, chyba że zostanie przypisany przez użytkownika) Identyfikator tożsamości przypisanej do użytkownika, który ma być używany. W przypadku pominięcia zostanie użyta tożsamość przypisana do systemu.|
+
+> [!IMPORTANT]
+> Jeśli próbujesz uzyskać tokeny dla tożsamości przypisanych przez użytkownika, musisz dołączyć `clientid` właściwość. W przeciwnym razie usługa tokenów podejmie próbę uzyskania tokenu dla tożsamości przypisanej do systemu, która może być lub nie istnieje.
 
 Pomyślne odpowiedź 200 OK zawiera treść JSON o następujących właściwościach:
 

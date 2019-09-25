@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a25c5fed4fd88866f46a9ca254213cae5db893a4
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: cd4839e2c8ad6605a29f3c8b824375185384f78c
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063581"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258148"
 ---
 # <a name="social-accounts-claims-transformations"></a>Przekształceń oświadczeń dotyczących kont społecznościowych
 
@@ -51,7 +51,7 @@ Użyj tej transformacji oświadczeń do wygenerowania `alternativeSecurityId` el
 ```XML
 <ClaimsTransformation Id="CreateAlternativeSecurityId" TransformationMethod="CreateAlternativeSecurityId">
   <InputClaims>
-    <InputClaim ClaimTypeReferenceId="socialIdpUserId" TransformationClaimType="key" />
+    <InputClaim ClaimTypeReferenceId="issuerUserId" TransformationClaimType="key" />
     <InputClaim ClaimTypeReferenceId="identityProvider" TransformationClaimType="identityProvider" />
   </InputClaims>
   <OutputClaims>
@@ -74,7 +74,7 @@ Użyj tej transformacji oświadczeń do wygenerowania `alternativeSecurityId` el
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie inputclaim | elementów | ciąg | Wartość oświadczenia, która ma zostać dodana do oświadczenia wyjściowego. |
+| Oświadczenie inputclaim | element | ciąg | Wartość oświadczenia, która ma zostać dodana do oświadczenia wyjściowego. |
 | Oświadczenie inputclaim | kolekcja | alternativeSecurityIdCollection | Oświadczenia, które są używane przez transformację oświadczeń, jeśli są dostępne w zasadach. Jeśli ta wartość jest określona, transformacja oświadczeń `item` dodaje na końcu kolekcji. |
 | Oświadczenie outputclaim | kolekcja | alternativeSecurityIdCollection | Oświadczenia są tworzone po wywołaniu tego ClaimsTransformation. Nowa kolekcja zawierająca elementy z danych wejściowych `collection` i. `item` |
 

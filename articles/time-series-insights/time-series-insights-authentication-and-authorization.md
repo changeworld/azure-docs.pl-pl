@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 602623d48457498963cb5928081d24c1d1132ad4
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 88734b0ee05f5193da89f33e1639e4e7a187f225
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935237"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264660"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Uwierzytelnianie i autoryzacja interfejsu API Azure Time Series Insights
 
@@ -43,7 +43,7 @@ Na **krok 3**oddzielenie poświadczeń aplikacji i użytkownika pozwala:
 * Użyj certyfikatu zabezpieczeń zamiast hasła, aby zabezpieczyć dostęp do interfejsu API Azure Time Series Insights.
 
 > [!IMPORTANT]
-> Postępuj zgodnie z zasadami rozdzielenia **problemów** (opisanymi w tym scenariuszu) podczas konfigurowania zasad zabezpieczeń Azure Time Series Insights.
+> Postępuj zgodnie z zasadami **rozdzielenia problemów** (opisanymi w tym scenariuszu) podczas konfigurowania zasad zabezpieczeń Azure Time Series Insights.
 
 > [!NOTE]
 > * Artykuł koncentruje się na aplikacji z jedną dzierżawą, w której aplikacja jest przeznaczona do działania tylko w jednej organizacji.
@@ -65,7 +65,7 @@ Na **krok 3**oddzielenie poświadczeń aplikacji i użytkownika pozwala:
 
    [![Znajdź aplikację w oknie dialogowym Wybieranie użytkownika](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png#lightbox)
 
-1. Wybierz rolę. Wybierz opcję **czytelnik** , aby wykonać zapytanie dotyczące danych lub współautora, aby wykonać zapytanie o dane i zmienić dane referencyjne Kliknij przycisk **OK**.
+1. Wybierz rolę. Wybierz opcję **czytelnik** , aby wykonać zapytanie dotyczące danych lub **współautora** , aby wykonać zapytanie o dane i zmienić dane referencyjne Kliknij przycisk **OK**.
 
    [![Wybieranie czytnika lub współautora w oknie dialogowym Wybieranie roli użytkownika](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png#lightbox)
 
@@ -100,6 +100,50 @@ Na **krok 3**oddzielenie poświadczeń aplikacji i użytkownika pozwala:
     ```
 
 1. Token można następnie przesłać do `Authorization` nagłówka, gdy aplikacja wywoła interfejs API Time Series Insights.
+
+## <a name="common-headers-and-parameters"></a>Wspólne nagłówki i parametry
+
+W tej sekcji opisano typowe nagłówki i parametry żądań HTTP służące do wykonywania zapytań dotyczących Time Series Insights GA i Podgląd interfejsów API. Wymagania dotyczące interfejsu API są szczegółowo opisane w [dokumentacji dotyczącej interfejsu API REST Time Series Insights](https://docs.microsoft.com/rest/api/time-series-insights/).
+
+### <a name="authentication"></a>Authentication
+
+Aby wykonać uwierzytelnione zapytania dotyczące [Time Series Insights interfejsów API REST](https://docs.microsoft.com/rest/api/time-series-insights/), należy przesłać prawidłowy token okaziciela OAuth 2,0 w [nagłówku autoryzacji](/rest/api/apimanagement/authorizationserver/createorupdate) za pomocą wybranego przez siebie klienta REST (Poster, JavaScript, C#). 
+
+> [!IMPORTANT]
+> Token musi być wystawiony dokładnie dla `https://api.timeseries.azure.com/` zasobu (znanego również jako "odbiorcy" tokenu).
+> * W związku z tym Twoje **AuthURLy** Twojego [wpisu](https://www.getpostman.com/) są zgodne z:`https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?resource=https://api.timeseries.azure.com/`
+
+> [!TIP]
+> Zapoznaj się z samouczkiem dotyczącym [biblioteki klienta Azure Time Series Insights JavaScript](tutorial-explore-js-client-lib.md#authentication) , aby dowiedzieć się, jak uwierzytelniać się przy użyciu interfejsów API Time Series Insights programowo przy użyciu [zestawu SDK klienta języka JavaScript](https://github.com/microsoft/tsiclient/blob/master/docs/API.md).
+
+### <a name="http-headers"></a>Nagłówki HTTP
+
+Wymagane nagłówki żądania:
+
+- `Authorization`w celu uwierzytelniania i autoryzacji należy przesłać prawidłowy token okaziciela OAuth 2,0 w nagłówku autoryzacji. Token musi być wystawiony dokładnie dla `https://api.timeseries.azure.com/` zasobu (znanego również jako "odbiorcy" tokenu).
+
+Opcjonalne nagłówki żądań:
+
+- `Content-type`-tylko `application/json` jest obsługiwana.
+- `x-ms-client-request-id`-Identyfikator żądania klienta. Usługa rejestruje tę wartość. Umożliwia usłudze śledzenie operacji między usługami.
+- `x-ms-client-session-id`-Identyfikator sesji klienta. Usługa rejestruje tę wartość. Umożliwia usłudze Śledzenie grupy powiązanych operacji między usługami.
+- `x-ms-client-application-name`-Nazwa aplikacji, która wygenerowała to żądanie. Usługa rejestruje tę wartość.
+
+Nagłówki odpowiedzi:
+
+- `Content-type`-tylko `application/json` jest obsługiwana.
+- `x-ms-request-id`— Identyfikator żądania wygenerowany przez serwer. Można go użyć do skontaktowania się z firmą Microsoft w celu zbadania żądania.
+
+### <a name="http-parameters"></a>Parametry HTTP
+
+Parametry ciągu zapytania wymaganego adresu URL:
+
+- `api-version=2016-12-12`
+- `api-version=2018-11-01-preview`
+
+Opcjonalne parametry ciągu zapytania URL:
+
+- `timeout=<timeout>`— limit czasu po stronie serwera dla wykonywania żądania. Dotyczy tylko [zdarzeń Get Environment](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api) i [Get Environment](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api) API. Wartość limitu czasu powinna mieć format czasu trwania ISO 8601, na `"PT20S"` przykład i musi należeć do `1-30 s`zakresu. Wartość domyślna to `30 s`.
 
 ## <a name="next-steps"></a>Następne kroki
 

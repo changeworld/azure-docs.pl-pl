@@ -1,6 +1,6 @@
 ---
-title: Dzienniki diagnostyczne platformy Azure Service Bus | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować dzienniki diagnostyczne usługi Service Bus na platformie Azure.
+title: Azure Service Bus dzienników diagnostycznych | Microsoft Docs
+description: Dowiedz się, jak skonfigurować dzienniki diagnostyczne dla Service Bus na platformie Azure.
 keywords: ''
 documentationcenter: .net
 services: service-bus-messaging
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 7d4cb8e55c5d1561c09cf85122550a66e3671f17
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6443cb727573645792a4e6c929b80c3406d72025
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60714141"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261806"
 ---
-# <a name="service-bus-diagnostic-logs"></a>Dzienniki diagnostyczne usługi Service Bus
+# <a name="service-bus-diagnostic-logs"></a>Service Bus dzienników diagnostycznych
 
-Możesz wyświetlić dwa typy dzienników dla usługi Azure Service Bus:
-* **[Dzienniki aktywności](../azure-monitor/platform/activity-logs-overview.md)** . Te dzienniki zawierają informacje dotyczące operacji wykonywanych na zadania. Dzienniki są zawsze włączone.
-* **[Dzienniki diagnostyczne](../azure-monitor/platform/diagnostic-logs-overview.md)** . Można skonfigurować dzienniki diagnostyczne na potrzeby bardziej rozbudowane informacje o wszystko, co się stanie, w ramach danego zadania. Dzienniki diagnostyczne czynności tytułowa, od czasu utworzenia zadania do momentu usunięcia zadania, w tym aktualizacje i działań, które występują, gdy zadanie jest uruchomione.
+Można wyświetlić dwa typy dzienników dla Azure Service Bus:
+* **[Dzienniki aktywności](../azure-monitor/platform/activity-logs-overview.md)** . Te dzienniki zawierają informacje o operacjach wykonywanych w ramach zadania. Dzienniki są zawsze włączone.
+* **[Dzienniki diagnostyczne](../azure-monitor/platform/resource-logs-overview.md)** . Dzienniki diagnostyczne można skonfigurować w celu uzyskania bardziej szczegółowych informacji na temat wszystkiego, co się dzieje w ramach zadania. Dzienniki diagnostyczne czynności tytułowa, od czasu utworzenia zadania do momentu usunięcia zadania, w tym aktualizacje i działań, które występują, gdy zadanie jest uruchomione.
 
 ## <a name="turn-on-diagnostic-logs"></a>Włączanie dzienników diagnostycznych
 
@@ -46,37 +46,37 @@ Dzienniki diagnostyczne są domyślnie wyłączone. Aby włączyć dzienniki dia
 
     ![Zmień stan dzienników diagnostycznych](./media/service-bus-diagnostic-logs/image3.png)
 
-5.  Ustaw docelowy archiwum, który ma; na przykład konto magazynu, Centrum zdarzeń lub usługi Azure Monitor dzienników.
+5.  Ustaw żądany cel Archiwum; na przykład konto magazynu, centrum zdarzeń lub dzienniki Azure Monitor.
 
 6.  Zapisz nowe ustawienia diagnostyki.
 
-Nowe ustawienia zaczną obowiązywać w ciągu około 10 minut. Po tym dzienników pojawia się w skonfigurowanym archiwizacji lokalizacji docelowej na **dzienniki diagnostyczne** bloku.
+Nowe ustawienia zaczną obowiązywać w ciągu około 10 minut. Następnie dzienniki są wyświetlane w skonfigurowanym miejscu docelowym archiwizowania w bloku **dzienniki diagnostyczne** .
 
-Aby uzyskać więcej informacji na temat konfigurowania diagnostyki zobacz [Przegląd dzienniki diagnostyczne platformy Azure](../azure-monitor/platform/diagnostic-logs-overview.md).
+Aby uzyskać więcej informacji na temat konfigurowania diagnostyki zobacz [Przegląd dzienniki diagnostyczne platformy Azure](../azure-monitor/platform/resource-logs-overview.md).
 
 ## <a name="diagnostic-logs-schema"></a>Dzienniki diagnostyczne schematu
 
-Wszystkie dzienniki są przechowywane w formacie JavaScript Object Notation (JSON). Każdy wpis ma pola ciągów, w formacie opisane w poniższej sekcji.
+Wszystkie dzienniki są przechowywane w formacie JavaScript Object Notation (JSON). Każdy wpis zawiera pola ciągów, które używają formatu opisanego w poniższej sekcji.
 
 ## <a name="operational-logs-schema"></a>Dzienniki operacyjne schematu
 
-Loguje się **OperationalLogs** kategorii przechwytywania, co się dzieje podczas operacji usługi Service Bus. W szczególności te dzienniki przechwytywania typ operacji, w tym tworzenie kolejek, zasoby używane i stan operacji.
+Dzienniki w kategorii **OperationalLogs** przechwytują, co się dzieje podczas operacji Service Bus. W szczególności te dzienniki przechwytują typ operacji, w tym Tworzenie kolejki, używane zasoby i stan operacji.
 
 Dziennik operacyjny ciągów JSON obejmują elementy wymienione w poniższej tabeli:
 
 Name (Nazwa) | Opis
 ------- | -------
-Identyfikator działania | Wewnętrzny identyfikator, używane do śledzenia
+Identyfikator działania | Identyfikator wewnętrzny używany do śledzenia
 EventName | Nazwa operacji           
-resourceId | Identyfikator zasobu usługi Azure Resource Manager
+resourceId | Identyfikator zasobu Azure Resource Manager
 SubscriptionId | Identyfikator subskrypcji
 EventTimeString | Czas operacji
 EventProperties | Właściwości operacji
-Stan | Stan operacji
-Caller | Obiekt wywołujący operacji (klient usługi Azure portal lub zarządzania)
+State | Stan operacji
+Caller | Obiekt wywołujący operacji (Azure Portal lub klient zarządzania)
 category | OperationalLogs
 
-Poniżej przedstawiono przykładowy dziennik operacyjny ciągu JSON:
+Oto przykład ciągu JSON dziennika operacyjnego:
 
 ```json
 {
@@ -92,9 +92,9 @@ Poniżej przedstawiono przykładowy dziennik operacyjny ciągu JSON:
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zobacz poniższe linki, aby dowiedzieć się więcej na temat usługi Service Bus:
+Aby dowiedzieć się więcej na temat Service Bus, zobacz następujące linki:
 
-* [Wprowadzenie do usługi Service Bus](service-bus-messaging-overview.md)
-* [Rozpoczynanie pracy z usługą Service Bus](service-bus-dotnet-get-started-with-queues.md)
+* [Wprowadzenie do Service Bus](service-bus-messaging-overview.md)
+* [Wprowadzenie do Service Bus](service-bus-dotnet-get-started-with-queues.md)

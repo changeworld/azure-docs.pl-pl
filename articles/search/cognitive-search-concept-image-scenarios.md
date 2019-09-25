@@ -5,17 +5,16 @@ services: search
 manager: nitinme
 author: luiscabrer
 ms.service: search
-ms.subservice: cognitive-search
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 84109cf04588a5de6fb3fd946a89b5dfee4baa1b
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: c1fd5c4e5a3ac054a85bdcc11d95bc3c338ee3c2
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259149"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265864"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Jak przetwarzać i wyodrębniać informacje z obrazów w scenariuszach wyszukiwania poznawczego
 
@@ -38,7 +37,7 @@ Nie można wyłączyć normalizacji obrazu. Umiejętności, które iterą nad ob
 |  normalizedImageMaxHeight | Maksymalna wysokość (w pikselach) dla wygenerowanych znormalizowanych obrazów. Wartość domyślna to 2000. Maksymalna dozwolona wartość to 10000.|
 
 > [!NOTE]
-> Jeśli ustawisz właściwość *imageAction* na inną niż "none", nie będzie można ustawić właściwości *przeanalizmode* na wartość inną niż "default".  W konfiguracji indeksatora można ustawić tylko jedną z tych dwóch właściwości na wartość inną niż domyślna.
+> Jeśli ustawisz właściwość *imageAction* na inną niż "none", nie będzie można ustawić właściwości przeanalizmode na wartość inną niż "default".  W konfiguracji indeksatora można ustawić tylko jedną z tych dwóch właściwości na wartość inną niż domyślna.
 
 Ustaw parametr **analizymode** na `json` (Aby indeksować każdy obiekt BLOB jako pojedynczy dokument) lub `jsonArray` (jeśli obiekty blob zawierają tablice JSON, a każdy element tablicy ma być traktowany jako oddzielny dokument).
 
@@ -66,7 +65,7 @@ Gdy *imageAction* jest ustawiona na wartość inną niż "none", nowe pole *norm
 |--------------------|-----------------------------------------|
 | data               | Zakodowany ciąg BASE64 standardowego obrazu w formacie JPEG.   |
 | Szerokość              | Szerokość znormalizowanego obrazu w pikselach. |
-| proporcj             | Wysokość znormalizowanego obrazu (w pikselach). |
+| Proporcj             | Wysokość znormalizowanego obrazu (w pikselach). |
 | originalWidth      | Oryginalna Szerokość obrazu przed normalizacją. |
 | originalHeight      | Oryginalna wysokość obrazu przed normalizacją. |
 | rotationFromOriginal |  Obrót w prawo w stopniach, które wystąpiły w celu utworzenia znormalizowanego obrazu. Wartość z przedziału od 0 stopni do 360 stopni. Ten krok odczytuje metadane z obrazu wygenerowanego przez aparat lub skaner. Zwykle jest to wielokrotność 90 stopni. |

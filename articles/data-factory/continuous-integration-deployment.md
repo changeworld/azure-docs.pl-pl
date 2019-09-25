@@ -11,16 +11,16 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: e522cba88eaf9cb63ef7ef2f20e3b72691261073
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 4386a7adba17eefe3c373697597abdb7d69c476a
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002398"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265980"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Ciągła integracja i dostarczanie (CI/CD) w Azure Data Factory
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Ciągła integracja to zwyczajowa metoda testowania każdej zmiany wykonywanej w bazie kodu, jak najszybciej, jak to możliwe. Ciągłe dostarczanie odbywa się przy testowaniu, który jest wykonywany podczas ciągłej integracji i wypycha zmiany do systemu przejściowego lub produkcyjnego.
 
@@ -669,7 +669,7 @@ Jeśli nie masz skonfigurowanego narzędzia Git, połączone szablony są dostę
 
 ## <a name="hot-fix-production-branch"></a>Rozgałęzienie produkcyjne Hot-Fix
 
-W przypadku wdrożenia fabryki do produkcji i zapoznania się z usterką, która musi zostać naprawiona natychmiast, ale nie można wdrożyć bieżącej gałęzi współpracy, może być konieczne wdrożenie gorącej poprawki.
+W przypadku wdrożenia fabryki do produkcji i zapoznania się z usterką, która musi zostać naprawiona natychmiast, ale nie można wdrożyć bieżącej gałęzi współpracy, może być konieczne wdrożenie gorącej poprawki. To podejście jest znane jako Szybka naprawa inżynierów lub QFE. 
 
 1.  W usłudze Azure DevOps przejdź do wersji, która została wdrożona w środowisku produkcyjnym, i Znajdź ostatnio wdrożone zatwierdzenie.
 
@@ -705,8 +705,11 @@ Jeśli korzystasz z integracji narzędzia Git z fabryką danych i masz potok CI/
 
 ## <a name="unsupported-features"></a>Nieobsługiwane funkcje
 
--   Nie można opublikować poszczególnych zasobów. Jednostki usługi Data Factory są zależne od siebie i śledzenie zmieniających się zależności może być trudne i prowadzić do nieoczekiwanego zachowania. Na przykład wyzwalacze są zależne od potoków, potoki zależą od zestawów danych i innych potoków, tak dalej. Jeśli możliwe było opublikowanie tylko podzestawu całego zestawu zmian, mogą wystąpić pewne nieprzewidziane błędy.
+- Zgodnie z projektem, funkcja ADF _nie zezwala na_ zatwierdzanie wybierania ani selektywne Publikowanie zasobów. Opublikowanie obejmie **wszystkie** zmiany wprowadzone w fabryce danych
 
--   Nie można publikować z gałęzi prywatnych.
+    - Jednostki usługi Data Factory są od siebie zależne, na przykład wyzwalacze są zależne od potoków, potoki zależą od zestawów danych i innych potoków itp. Selektywne publikowanie podzestawu zasobów _może_ prowadzić do nieoczekiwanych zachowań i błędów
+    - W rzadkich przypadkach, gdy wymagane jest publikowanie selektywne, można rozważyć zastosowanie poprawki. Aby uzyskać więcej informacji, zobacz [rozgałęzienie produkcyjne Hot-Fix](#hot-fix-production-branch)
 
--   Nie można hostować projektów w BitBucket.
+-   Nie można publikować z gałęzi prywatnych
+
+-   Od teraz nie można hostować projektów w BitBucket

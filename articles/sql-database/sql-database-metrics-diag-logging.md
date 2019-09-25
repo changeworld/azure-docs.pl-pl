@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 05/21/2019
-ms.openlocfilehash: d9f1afdff53ada2df7722fcfdd7014fb6c417e39
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 208ebaa2e22f4cd0ee2138f3e49f78c1e56860cf
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135186"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260334"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metryki i rejestrowania diagnostyki
 
@@ -33,7 +33,7 @@ Pojedyncze bazy danych, pule baz danych w puli elastycznej, a bazy danych wystą
 Aby uzyskać więcej informacji na temat metryk i kategorii dzienników obsługiwanych przez różne usługi platformy Azure, zobacz:
 
 - [Przegląd metryk w Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-- [Omówienie dzienników diagnostyki platformy Azure](../azure-monitor/platform/diagnostic-logs-overview.md)
+- [Omówienie dzienników diagnostyki platformy Azure](../azure-monitor/platform/resource-logs-overview.md)
 
 Ten artykuł zawiera wskazówki ułatwiające włączenie telemetrii diagnostyki dla baz danych SQL Azure, pul elastycznych i wystąpień zarządzanych. Może również pomóc zrozumieć, jak skonfigurować Azure SQL Analytics jako narzędzie monitorowania do wyświetlania telemetrii diagnostyki bazy danych.
 
@@ -304,7 +304,7 @@ Dowiedz się więcej o sposobie [zmiany ustawień diagnostycznych przy użyciu i
 
 ### <a name="resource-manager-template"></a>Szablon usługi Resource Manager
 
-Przeczytaj informacje o sposobie [włączania ustawień diagnostycznych podczas tworzenia zasobów przy użyciu szablonu Menedżer zasobów](../azure-monitor/platform/diagnostic-logs-stream-template.md).
+Przeczytaj informacje o sposobie [włączania ustawień diagnostycznych podczas tworzenia zasobów przy użyciu szablonu Menedżer zasobów](../azure-monitor/platform/diagnostic-settings-template.md).
 
 ## <a name="stream-into-azure-sql-analytics"></a>Przesyłanie strumieniowe do Azure SQL Analytics
 
@@ -314,7 +314,7 @@ Azure SQL Analytics to rozwiązanie w chmurze, które służy do monitorowania w
 
 SQL Database metryki i dzienniki diagnostyczne mogą być przesyłane strumieniowo do Azure SQL Analytics przy użyciu wbudowanej opcji **Wyślij do log Analytics** na karcie Ustawienia diagnostyki w portalu. Usługę log Analytics można również włączyć przy użyciu ustawień diagnostycznych za pośrednictwem poleceń cmdlet programu PowerShell, interfejsu wiersza polecenia platformy Azure lub protokołu API REST Azure Monitor.
 
-### <a name="installation-overview"></a>Przegląd instalacji
+### <a name="installation-overview"></a>Omówienie instalacji
 
 SQL Database flotę można monitorować przy użyciu Azure SQL Analytics. Wykonaj następujące czynności:
 
@@ -366,9 +366,9 @@ Metryki przesyłane strumieniowo można używać w Event Hubs do:
 
 - **Wyświetl kondycję usługi, wysyłając strumieniowo dane na gorąco do Power BI**. Za pomocą Event Hubs, Stream Analytics i Power BI można łatwo przekształcać metryki i dane diagnostyczne na szczegółowe informacje w czasie rzeczywistym w ramach usług platformy Azure. Aby zapoznać się z omówieniem sposobu konfigurowania centrum zdarzeń, przetwarzania danych przy użyciu Stream Analytics i używania Power BI jako danych wyjściowych, zobacz [Stream Analytics i Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md).
 
-- Przesyłaj strumieniowo strumienie **dzienników do rejestrowania i**telemetrii innych firm. Korzystając z Event Hubs streaming, możesz uzyskać dzienniki metryk i diagnostyki w różnych rozwiązaniach do monitorowania i analizy dzienników innych firm.
+- **Przesyłaj strumieniowo strumienie dzienników do rejestrowania i telemetrii**innych firm. Korzystając z Event Hubs streaming, możesz uzyskać dzienniki metryk i diagnostyki w różnych rozwiązaniach do monitorowania i analizy dzienników innych firm.
 
-- **Utwórz niestandardową platformę telemetrii i rejestrowania**. Czy masz już utworzoną niestandardową platformę telemetrii lub rozważamy kompilację? Wysoce skalowalny charakter publikowania/subskrybowania Event Hubs umożliwia elastyczne pozyskiwanie dzienników diagnostycznych. Zobacz [Rosanova, aby korzystać z Event Hubs na platformie](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/)telemetrii na skalę globalną.
+- **Utwórz niestandardową platformę telemetrii i rejestrowania**. Czy masz już utworzoną niestandardową platformę telemetrii lub rozważamy kompilację? Wysoce skalowalny charakter publikowania/subskrybowania Event Hubs umożliwia elastyczne pozyskiwanie dzienników diagnostycznych. Zobacz [Rosanova, aby korzystać z Event Hubs na platformie telemetrii na skalę globalną](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/).
 
 ## <a name="stream-into-storage"></a>Przesyłanie strumieniowe do magazynu
 
@@ -442,11 +442,11 @@ Szczegółowe informacje o telemetrii dostępne dla wszystkich dzienników zosta
 |TimeGenerated [UTC]|Sygnatura czasowa rejestrowania dziennika |
 |Type|Stałego AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Stałego MICROSOFT.SQL |
-|Kategoria|Nazwa kategorii. Stałego ResourceUsageStats |
+|Category|Nazwa kategorii. Stałego ResourceUsageStats |
 |Resource|Nazwa zasobu |
 |ResourceType|Nazwa typu zasobu. Stałego MANAGEDINSTANCES |
 |SubscriptionId|Identyfikator GUID subskrypcji bazy danych |
-|Grupa zasobów|Nazwa grupy zasobów dla bazy danych |
+|ResourceGroup|Nazwa grupy zasobów dla bazy danych |
 |LogicalServerName_s|Nazwa wystąpienia zarządzanego |
 |ResourceId|Identyfikator URI zasobu |
 |SKU_s|Jednostka SKU produktu wystąpienia zarządzanego |
@@ -467,12 +467,12 @@ Szczegółowe informacje o telemetrii dostępne dla wszystkich dzienników zosta
 |TimeGenerated [UTC]|Sygnatura czasowa rejestrowania dziennika |
 |Type|Stałego AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Stałego MICROSOFT.SQL |
-|Kategoria|Nazwa kategorii. Stałego QueryStoreRuntimeStatistics |
+|Category|Nazwa kategorii. Stałego QueryStoreRuntimeStatistics |
 |OperationName|Nazwa operacji. Stałego QueryStoreRuntimeStatisticsEvent |
 |Resource|Nazwa zasobu |
 |ResourceType|Nazwa typu zasobu. Stałego SERWERY/BAZY DANYCH |
 |SubscriptionId|Identyfikator GUID subskrypcji bazy danych |
-|Grupa zasobów|Nazwa grupy zasobów dla bazy danych |
+|ResourceGroup|Nazwa grupy zasobów dla bazy danych |
 |LogicalServerName_s|Nazwa serwera bazy danych |
 |ElasticPoolName_s|Nazwa puli elastycznej dla bazy danych (jeśli istnieje) |
 |DatabaseName_s|Nazwa bazy danych |
@@ -518,12 +518,12 @@ Dowiedz się więcej o [danych statystyk środowiska uruchomieniowego magazynu z
 |TimeGenerated [UTC]|Sygnatura czasowa rejestrowania dziennika |
 |Type|Stałego AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Stałego MICROSOFT.SQL |
-|Kategoria|Nazwa kategorii. Stałego QueryStoreWaitStatistics |
+|Category|Nazwa kategorii. Stałego QueryStoreWaitStatistics |
 |OperationName|Nazwa operacji. Stałego QueryStoreWaitStatisticsEvent |
 |Resource|Nazwa zasobu |
 |ResourceType|Nazwa typu zasobu. Stałego SERWERY/BAZY DANYCH |
 |SubscriptionId|Identyfikator GUID subskrypcji bazy danych |
-|Grupa zasobów|Nazwa grupy zasobów dla bazy danych |
+|ResourceGroup|Nazwa grupy zasobów dla bazy danych |
 |LogicalServerName_s|Nazwa serwera bazy danych |
 |ElasticPoolName_s|Nazwa puli elastycznej dla bazy danych (jeśli istnieje) |
 |DatabaseName_s|Nazwa bazy danych |
@@ -556,12 +556,12 @@ Dowiedz się więcej na temat [danych statystycznych oczekiwania magazynu zapyta
 |TimeGenerated [UTC]|Sygnatura czasowa rejestrowania dziennika |
 |Type|Stałego AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Stałego MICROSOFT.SQL |
-|Kategoria|Nazwa kategorii. Stałego Błędy |
+|Category|Nazwa kategorii. Stałego Błędy |
 |OperationName|Nazwa operacji. Stałego ErrorEvent |
 |Resource|Nazwa zasobu |
 |ResourceType|Nazwa typu zasobu. Stałego SERWERY/BAZY DANYCH |
 |SubscriptionId|Identyfikator GUID subskrypcji bazy danych |
-|Grupa zasobów|Nazwa grupy zasobów dla bazy danych |
+|ResourceGroup|Nazwa grupy zasobów dla bazy danych |
 |LogicalServerName_s|Nazwa serwera bazy danych |
 |ElasticPoolName_s|Nazwa puli elastycznej dla bazy danych (jeśli istnieje) |
 |DatabaseName_s|Nazwa bazy danych |
@@ -585,12 +585,12 @@ Dowiedz się więcej o [SQL Server komunikatach o błędach](https://msdn.micros
 |TimeGenerated [UTC]|Sygnatura czasowa rejestrowania dziennika |
 |Type|Stałego AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Stałego MICROSOFT.SQL |
-|Kategoria|Nazwa kategorii. Stałego DatabaseWaitStatistics |
+|Category|Nazwa kategorii. Stałego DatabaseWaitStatistics |
 |OperationName|Nazwa operacji. Stałego DatabaseWaitStatisticsEvent |
 |Resource|Nazwa zasobu |
 |ResourceType|Nazwa typu zasobu. Stałego SERWERY/BAZY DANYCH |
 |SubscriptionId|Identyfikator GUID subskrypcji bazy danych |
-|Grupa zasobów|Nazwa grupy zasobów dla bazy danych |
+|ResourceGroup|Nazwa grupy zasobów dla bazy danych |
 |LogicalServerName_s|Nazwa serwera bazy danych |
 |ElasticPoolName_s|Nazwa puli elastycznej dla bazy danych (jeśli istnieje) |
 |DatabaseName_s|Nazwa bazy danych |
@@ -614,12 +614,12 @@ Dowiedz się więcej na temat [statystyk oczekiwania bazy danych](https://docs.m
 |TimeGenerated [UTC]|Sygnatura czasowa rejestrowania dziennika |
 |Type|Stałego AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Stałego MICROSOFT.SQL |
-|Kategoria|Nazwa kategorii. Stałego Limity czasu |
+|Category|Nazwa kategorii. Stałego Limity czasu |
 |OperationName|Nazwa operacji. Stałego TimeoutEvent |
 |Resource|Nazwa zasobu |
 |ResourceType|Nazwa typu zasobu. Stałego SERWERY/BAZY DANYCH |
 |SubscriptionId|Identyfikator GUID subskrypcji bazy danych |
-|Grupa zasobów|Nazwa grupy zasobów dla bazy danych |
+|ResourceGroup|Nazwa grupy zasobów dla bazy danych |
 |LogicalServerName_s|Nazwa serwera bazy danych |
 |ElasticPoolName_s|Nazwa puli elastycznej dla bazy danych (jeśli istnieje) |
 |DatabaseName_s|Nazwa bazy danych |
@@ -637,12 +637,12 @@ Dowiedz się więcej na temat [statystyk oczekiwania bazy danych](https://docs.m
 |TimeGenerated [UTC]|Sygnatura czasowa rejestrowania dziennika |
 |Type|Stałego AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Stałego MICROSOFT.SQL |
-|Kategoria|Nazwa kategorii. Stałego Propagowan |
+|Category|Nazwa kategorii. Stałego Propagowan |
 |OperationName|Nazwa operacji. Stałego BlockEvent |
 |Resource|Nazwa zasobu |
 |ResourceType|Nazwa typu zasobu. Stałego SERWERY/BAZY DANYCH |
 |SubscriptionId|Identyfikator GUID subskrypcji bazy danych |
-|Grupa zasobów|Nazwa grupy zasobów dla bazy danych |
+|ResourceGroup|Nazwa grupy zasobów dla bazy danych |
 |LogicalServerName_s|Nazwa serwera bazy danych |
 |ElasticPoolName_s|Nazwa puli elastycznej dla bazy danych (jeśli istnieje) |
 |DatabaseName_s|Nazwa bazy danych |
@@ -661,12 +661,12 @@ Dowiedz się więcej na temat [statystyk oczekiwania bazy danych](https://docs.m
 |TimeGenerated [UTC] |Sygnatura czasowa rejestrowania dziennika |
 |Type|Stałego AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Stałego MICROSOFT.SQL |
-|Kategoria|Nazwa kategorii. Stałego Zakleszczenia |
+|Category|Nazwa kategorii. Stałego Zakleszczenia |
 |OperationName|Nazwa operacji. Stałego DeadlockEvent |
 |Resource|Nazwa zasobu |
 |ResourceType|Nazwa typu zasobu. Stałego SERWERY/BAZY DANYCH |
 |SubscriptionId|Identyfikator GUID subskrypcji bazy danych |
-|Grupa zasobów|Nazwa grupy zasobów dla bazy danych |
+|ResourceGroup|Nazwa grupy zasobów dla bazy danych |
 |LogicalServerName_s|Nazwa serwera bazy danych |
 |ElasticPoolName_s|Nazwa puli elastycznej dla bazy danych (jeśli istnieje) |
 |DatabaseName_s|Nazwa bazy danych |
@@ -682,11 +682,11 @@ Dowiedz się więcej na temat [statystyk oczekiwania bazy danych](https://docs.m
 |TimeGenerated [UTC]|Sygnatura czasowa rejestrowania dziennika |
 |Type|Stałego AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Stałego MICROSOFT.SQL |
-|Kategoria|Nazwa kategorii. Stałego AutomaticTuning |
+|Category|Nazwa kategorii. Stałego AutomaticTuning |
 |Resource|Nazwa zasobu |
 |ResourceType|Nazwa typu zasobu. Stałego SERWERY/BAZY DANYCH |
 |SubscriptionId|Identyfikator GUID subskrypcji bazy danych |
-|Grupa zasobów|Nazwa grupy zasobów dla bazy danych |
+|ResourceGroup|Nazwa grupy zasobów dla bazy danych |
 |LogicalServerName_s|Nazwa serwera bazy danych |
 |LogicalDatabaseName_s|Nazwa bazy danych |
 |ElasticPoolName_s|Nazwa puli elastycznej dla bazy danych (jeśli istnieje) |
@@ -701,7 +701,7 @@ Dowiedz się więcej na temat [statystyk oczekiwania bazy danych](https://docs.m
 |IncludedColumns_s|Uwzględnione kolumny |
 |EstimatedImpact_s|Szacowany wpływ JSON zalecenia dostrajania automatycznego |
 |Event_s|Typ zdarzenia dostrajania automatycznego |
-|Timestamp_t|Ostatnia aktualizacja sygnatury czasowej |
+|Timestamp_t|Znacznik czasu ostatniej aktualizacji |
 
 ### <a name="intelligent-insights-dataset"></a>Zestaw danych Intelligent Insights
 
@@ -712,7 +712,7 @@ Dowiedz się więcej o [formacie dziennika Intelligent Insights](sql-database-in
 Aby dowiedzieć się, jak włączyć rejestrowanie i zrozumieć metryki i kategorie dzienników obsługiwane przez różne usługi platformy Azure, zobacz:
 
 - [Przegląd metryk w Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-- [Omówienie dzienników diagnostyki platformy Azure](../azure-monitor/platform/diagnostic-logs-overview.md)
+- [Omówienie dzienników diagnostyki platformy Azure](../azure-monitor/platform/resource-logs-overview.md)
 
 Aby dowiedzieć się więcej na temat Event Hubs, Przeczytaj:
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: 25e7262842de2bcf3823a51dfe6d97b5558b16fe
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: ce8aa0229d9a9b873a489209065ada588adbffff
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201748"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257743"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integracja rozwiązań zabezpieczeń w usłudze Azure Security Center
 Ten dokument ułatwia zarządzanie rozwiązaniami zabezpieczeń już połączonymi z usługą Azure Security Center i dodawanie nowych.
@@ -133,7 +133,7 @@ Zapoznaj się z następującym artykułem [Dziennik aktywności w usłudze Strea
 
 Kierowanie danych monitorowania do centrum zdarzeń za pomocą Azure Monitor pozwala na łatwą integrację z SIEM partnerskim i narzędziami do monitorowania.
 
-Skorzystaj z następującego linku, aby wyświetlić listę [obsługiwanych rozwiązań Siem](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#what-can-i-do-with-the-monitoring-data-being-sent-to-my-event-hub)
+Skorzystaj z następującego linku, aby wyświetlić listę [obsługiwanych rozwiązań Siem](../azure-monitor/platform/resource-logs-stream-event-hubs.md#what-you-can-do-with-resource-logs-sent-to-an-event-hub)
 
 ### <a name="example-for-querying-data"></a>Przykład na potrzeby wykonywania zapytań dotyczących danych 
 

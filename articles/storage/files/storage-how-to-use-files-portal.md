@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b7665caad60a5135da5780da242772af3c0a05a4
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: fef3daf6e9e535736002e309e3d27491364dc553
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984879"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260286"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>Szybki start: tworzenie udziałów plików platformy Azure i zarządzanie nimi za pomocą witryny Azure Portal 
 [Azure Files](storage-files-introduction.md) to łatwy w użyciu system plików w chmurze firmy Microsoft. Udziały plików platformy Azure można instalować w systemach Windows, Linux i macOS. W tym przewodniku przedstawiono podstawowe informacje dotyczące pracy z udziałami plików platformy Azure przy użyciu witryny [Azure Portal](https://portal.azure.com/).
@@ -29,7 +29,7 @@ Aby utworzyć udział plików platformy Azure, wykonaj następujące czynności:
 2. Na stronie konta magazynu w sekcji **Usługi** wybierz pozycję **Pliki**.
     ![Zrzut ekranu przedstawiający sekcję usług konta magazynu; wybieranie usługi Pliki](media/storage-how-to-use-files-portal/create-file-share-1.png)
 
-3. W menu w górnej części strony **Usługa plików** kliknij pozycję **+ Udział plików**. Zostanie rozwinięta strona **Nowy udział plików**.
+3. W menu w górnej części strony **usługi plików** kliknij pozycję **udział plików**. Zostanie rozwinięta strona **Nowy udział plików**.
 4. W polu **Nazwa** wpisz ciąg *myshare*.
 5. Kliknij przycisk **OK**, aby utworzyć udział plików platformy Azure.
 

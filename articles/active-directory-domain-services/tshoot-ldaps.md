@@ -1,50 +1,51 @@
 ---
-title: Rozwiązywanie problemów z Secure LDAP (LDAPs) w Azure AD Domain Services | Microsoft Docs
-description: Rozwiązywanie problemów z Secure LDAP (LDAPs) dla domeny zarządzanej Azure AD Domain Services
+title: Rozwiązywanie problemów z zabezpieczaniem protokołu LDAP w Azure AD Domain Services | Microsoft Docs
+description: Dowiedz się, jak rozwiązywać problemy z zabezpieczaniem protokołu LDAP (LDAPs) dla domeny zarządzanej Azure Active Directory Domain Services
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 445c60da-e115-447b-841d-96739975bdf6
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
-ms.date: 05/20/2019
+ms.topic: troubleshooting
+ms.date: 09/19/2019
 ms.author: iainfou
-ms.openlocfilehash: 285af0e5e5d5ab03027fc29064a5f3623ed10e2f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 96aa463441c9e0f21e2ef1aa27c566b94e1e5f4f
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617044"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257872"
 ---
-# <a name="troubleshoot-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Rozwiązywanie problemów z Secure LDAP (LDAPs) dla domeny zarządzanej Azure AD Domain Services
+# <a name="troubleshoot-secure-ldap-connectivity-issues-to-an-azure-active-directory-domain-services-managed-domain"></a>Rozwiązywanie problemów z łącznością za pośrednictwem protokołu LDAP w Azure Active Directory Domain Services domeny zarządzanej
 
-## <a name="connection-issues"></a>Problemy z połączeniem
-Jeśli masz problemy z nawiązywaniem połączenia z domeną zarządzaną przy użyciu protokołu Secure LDAP:
+Aplikacje i usługi korzystające z protokołu LDAP (Lightweight Directory Access Protocol) do komunikowania się z Azure Active Directory Domain Services (Azure AD DS) można [skonfigurować tak, aby używały bezpiecznego protokołu LDAP](tutorial-configure-ldaps.md). Aby zabezpieczyć protokół LDAP działał poprawnie, musi być otwarty odpowiedni certyfikat i wymagane porty sieciowe.
 
-* Łańcuch wystawcy certyfikatu bezpiecznego protokołu LDAP musi być zaufany na kliencie. Możesz dodać główny urząd certyfikacji do magazynu zaufanych certyfikatów głównych na kliencie, aby ustanowić relację zaufania.
-* Sprawdź, czy klient LDAP (na przykład Ldp. exe) nawiązuje połączenie z punktem końcowym bezpiecznego protokołu LDAP przy użyciu nazwy DNS, a nie adresu IP.
-* Sprawdź nazwę DNS, z którą łączy się klient LDAP. Musi on zostać rozpoznany jako publiczny adres IP dla bezpiecznego protokołu LDAP w domenie zarządzanej.
-* Sprawdź, czy certyfikat bezpiecznego protokołu LDAP dla domeny zarządzanej ma nazwę DNS w temacie lub alternatywna nazwa podmiotu.
-* Ustawienia sieciowej grupy zabezpieczeń dla sieci wirtualnej muszą zezwalać na ruch do portu 636 z Internetu. Ten krok ma zastosowanie tylko wtedy, gdy włączono bezpieczny dostęp do protokołu LDAP za pośrednictwem Internetu.
+Ten artykuł pomaga w rozwiązywaniu problemów z bezpiecznym dostępem do protokołu LDAP na platformie Azure AD DS.
 
+## <a name="common-connection-issues"></a>Typowe problemy z połączeniem
 
-## <a name="need-help"></a>Potrzebujesz pomocy?
-Jeśli nadal występują problemy z nawiązywaniem połączenia z domeną zarządzaną przy użyciu protokołu Secure LDAP, [skontaktuj się z zespołem produktu](contact-us.md) w celu uzyskania pomocy. Podaj następujące informacje, aby ułatwić zdiagnozowanie problemu:
-* Zrzut ekranu programu Ldp. exe, który sprawia połączenie i kończy się niepowodzeniem.
-* Identyfikator dzierżawy usługi Azure AD i nazwa domeny DNS domeny zarządzanej.
-* Dokładna nazwa użytkownika, z którą próbujesz powiązać.
+Jeśli masz problemy z nawiązywaniem połączenia z domeną zarządzaną platformy Azure AD DS przy użyciu protokołu Secure LDAP, zapoznaj się z następującymi krokami rozwiązywania problemów. Po każdym kroku rozwiązywania problemów spróbuj ponownie nawiązać połączenie z domeną zarządzaną AD DS platformy Azure:
 
+* Łańcuch wystawcy certyfikatu bezpiecznego protokołu LDAP musi być zaufany na kliencie. Główny urząd certyfikacji (CA) można dodać do magazynu zaufanych certyfikatów głównych na kliencie, aby ustanowić relację zaufania.
+    * Należy się upewnić, że [Certyfikaty są eksportowane i stosowane na komputerach klienckich][client-cert].
+* Sprawdź, czy certyfikat bezpiecznego protokołu LDAP dla domeny zarządzanej ma nazwę DNS w *temacie* lub *Alternatywna nazwa podmiotu* .
+    * Przejrzyj [wymagania dotyczące bezpiecznego certyfikatu LDAP][certs-prereqs] i w razie potrzeby Utwórz certyfikat zastępczy.
+* Sprawdź, czy klient LDAP, taki jak *Ldp. exe* , łączy się z bezpiecznym punktem końcowym protokołu LDAP przy użyciu nazwy DNS, a nie adresu IP.
+    * Certyfikat zastosowany do domeny zarządzanej usługi Azure AD DS nie obejmuje adresów IP usługi, tylko nazw DNS.
+* Sprawdź nazwę DNS, z którą łączy się klient LDAP. Musi on zostać rozpoznany jako publiczny adres IP dla bezpiecznego protokołu LDAP w domenie zarządzanej AD DS platformy Azure.
+    * Jeśli nazwa DNS jest rozpoznawana jako wewnętrzny adres IP, Zaktualizuj rekord DNS, aby mógł zostać rozpoznany jako zewnętrzny adres IP.
+* W przypadku łączności zewnętrznej Grupa zabezpieczeń sieci musi zawierać regułę umożliwiającą ruch do portu TCP 636 z Internetu.
+    * Jeśli można nawiązać połączenie z domeną zarządzaną platformy Azure AD DS przy użyciu bezpiecznego protokołu LDAP z zasobów podłączonych bezpośrednio do sieci wirtualnej, ale nie połączeń zewnętrznych, należy się upewnić, że [utworzono regułę sieciowej grupy zabezpieczeń, która zezwala na bezpieczny ruch protokołu LDAP][ldaps-nsg].
 
-## <a name="related-content"></a>Powiązana zawartość
-* [Przewodnik po Wprowadzenie Azure AD Domain Services](tutorial-create-instance.md)
-* [Zarządzanie domeną Azure AD Domain Services](tutorial-create-management-vm.md)
-* [Podstawowe informacje o zapytaniach LDAP](https://technet.microsoft.com/library/aa996205.aspx)
-* [Zarządzaj zasady grupy dla Azure AD Domain Services](manage-group-policy.md)
-* [Sieciowe grupy zabezpieczeń](../virtual-network/security-overview.md)
-* [Tworzenie sieciowej grupy zabezpieczeń](../virtual-network/tutorial-filter-network-traffic.md)
+## <a name="next-steps"></a>Następne kroki
+
+Jeśli nadal masz problemy, [Otwórz żądanie pomocy technicznej platformy Azure][azure-support] , aby uzyskać dodatkową pomoc dotyczącą rozwiązywania problemów.
+
+<!-- INTERNAL LINKS -->
+[azure-support]: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md
+[configure-ldaps]: tutorial-configure-ldaps.md
+[certs-prereqs]: tutorial-configure-ldaps.md#create-a-certificate-for-secure-ldap
+[client-cert]: tutorial-configure-ldaps.md#export-a-certificate-for-client-computers
+[ldaps-nsg]: tutorial-configure-ldaps.md#lock-down-secure-ldap-access-over-the-internet

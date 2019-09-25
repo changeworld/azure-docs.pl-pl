@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 27e927425faec045c4f304ae6de155f2337307d9
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 67bddea31a4bb375657b0df5e21fab1ab3d732f5
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104675"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265556"
 ---
 # <a name="what-is-azure-private-link-service"></a>Co to jest usługa Azure Private Link Service?
 
@@ -42,7 +42,7 @@ Po zainicjowaniu połączenia przez odbiorcę dostawca usług może zaakceptowa�
 
 Jeśli usługa link prywatny nie jest już używana, możesz ją usunąć. Jednak przed usunięciem usługi upewnij się, że nie ma skojarzonych z nimi połączeń prywatnych punktów końcowych. Możesz odrzucić wszystkie połączenia i usunąć usługę.
 
-## <a name="properties"></a>Właściwości
+## <a name="properties"></a>properties
 
 Usługa link prywatny określa następujące właściwości: 
 
@@ -68,7 +68,7 @@ Usługa link prywatny określa następujące właściwości:
  
 - Dostęp do pojedynczej usługi linku prywatnego można uzyskać z wielu prywatnych punktów końcowych należących do różnych sieci wirtualnych, subskrypcji i/lub Active Directory dzierżawców. Połączenie jest nawiązywane za pomocą przepływu pracy połączenia. 
  
-- Na tym samym usługa Load Balancer w warstwie Standardowa można utworzyć wiele usług łączy prywatnych przy użyciu różnych konfiguracji adresu IP frontonu. Istnieją limity dotyczące liczby prywatnych usług linków, które można utworzyć na usługa Load Balancer w warstwie Standardowa i na subskrypcję. Aby uzyskać szczegółowe informacje, zobacz [limity platformy Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits.md#networking-limits).
+- Na tym samym usługa Load Balancer w warstwie Standardowa można utworzyć wiele usług łączy prywatnych przy użyciu różnych konfiguracji adresu IP frontonu. Istnieją limity dotyczące liczby prywatnych usług linków, które można utworzyć na usługa Load Balancer w warstwie Standardowa i na subskrypcję. Aby uzyskać szczegółowe informacje, zobacz [limity platformy Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
  
 - Z usługą linku prywatnego może być połączona więcej niż jedna konfiguracja adresu IP NAT. Wybranie więcej niż jednej konfiguracji protokołu IP NAT może ułatwić dostawcom usług skalowanie. Obecnie dostawcy usług mogą przypisywać maksymalnie osiem adresów IP translatora adresów sieciowych na usługę łącza prywatnego. Każdy adres IP translatora adresów sieciowych umożliwia przypisanie więcej portów dla połączeń TCP, a tym samym skalowanie w poziomie. Po dodaniu wielu adresów IP translatora adresów sieciowych do usługi link prywatny nie można usunąć adresów IP translatora adresów sieciowych. Jest to wykonywane w celu upewnienia się, że podczas usuwania adresów IP NAT nie wpłynie to na aktywne połączenia.
 
