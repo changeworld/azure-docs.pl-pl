@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4bbe9d9bfaf49fe93631787b347a3446e4b0f817
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: cca4f794fd3f84b991c7882307f74bcfadf6835b
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000578"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71241053"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Klucze, wpisy tajne i certyfikaty — informacje
 
@@ -196,7 +196,7 @@ W postaci tagów można określić dodatkowe metadane specyficzne dla aplikacji.
 
 ###  <a name="key-access-control"></a>Kontrola dostępu do kluczy
 
-Kontrola dostępu do kluczy zarządzanych przez Key Vault jest udostępniana na poziomie Key Vault, który działa jako kontener kluczy. Zasady kontroli dostępu dla kluczy, różnią się od zasad kontroli dostępu dla wpisów tajnych w tym samym Key Vault. Użytkownicy mogą utworzyć jeden lub więcej magazynów w celu przechowywania kluczy i muszą utrzymywać odpowiednie segmentacje i zarządzanie kluczami. Kontrola dostępu do kluczy jest niezależna od kontroli dostępu do wpisów tajnych.  
+Kontrola dostępu do kluczy zarządzanych przez Key Vault jest udostępniana na poziomie Key Vault, który działa jako kontener kluczy. Zasady kontroli dostępu dla kluczy różnią się od zasad kontroli dostępu dla wpisów tajnych w tym samym Key Vault. Użytkownicy mogą utworzyć jeden lub więcej magazynów w celu przechowywania kluczy i muszą utrzymywać odpowiednie segmentacje i zarządzanie kluczami. Kontrola dostępu do kluczy jest niezależna od kontroli dostępu do wpisów tajnych.  
 
 Następujące uprawnienia można udzielić dla poszczególnych użytkowników/głównych usług, w wpis kontroli dostępu do kluczy w magazynie. Te uprawnienia ściśle duplikują operacje dozwolone dla obiektu klucza.  Udzielanie dostępu do jednostki usługi w magazynie kluczy jest operacją jednorazowej, która pozostanie taka sama dla wszystkich subskrypcji platformy Azure. Można go użyć do wdrożenia dowolnej liczby certyfikatów. 
 

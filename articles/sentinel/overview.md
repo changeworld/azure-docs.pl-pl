@@ -1,5 +1,5 @@
 ---
-title: Co to jest wersja zapoznawcza usługi Azure wskaźnikowej? | Microsoft Docs
+title: Co to jest Azure — Wskaźnikowanie? | Microsoft Docs
 description: Dowiedz się więcej na temat platformy Azure, jej najważniejszych możliwości i sposobu działania.
 services: sentinel
 documentationcenter: na
@@ -14,20 +14,18 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 15cf770a372c9a1386dd0293abeac01fd3cacf63
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 19291e233e4086815488973629167cc7d7dc9f4a
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779742"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240590"
 ---
-# <a name="what-is-azure-sentinel-preview"></a>Co to jest wersja zapoznawcza usługi Azure wskaźnikowej?
+# <a name="what-is-azure-sentinel"></a>Co to jest Azure — Wskaźnikowanie?
 
-> [!IMPORTANT]
-> W publicznej wersji zapoznawczej jest obecnie dostępna usługa Azure.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 Microsoft Azure wskaźnikiem wydajności jest skalowalne i natywne rozwiązanie do **zarządzania zdarzeniami zabezpieczeń (Siem)** i **o (Security Orchestration)** . Platforma Azure — wskaźnik przedstawia inteligentne rozwiązania w zakresie zabezpieczeń i analizy zagrożeń w całym przedsiębiorstwie, zapewniając jedno rozwiązanie do wykrywania alertów, widoczności zagrożeń, aktywnego polowania i reagowania na zagrożenia. 
 
@@ -53,25 +51,17 @@ Aby przejść do tablicy wskaźnikowej platformy Azure, musisz najpierw [nawiąz
 
 ![Moduły zbierające dane](./media/collect-data/collect-data-page.png)
 
-## <a name="dashboards"></a>Pulpity nawigacyjne
+## <a name="workbooks"></a>Skoroszyty
 
-Po nawiązaniu połączenia ze źródłami danych można wybierać z galerii [ekspertów](quickstart-get-visibility.md#dashboards) , którzy utworzyli szczegółowe informacje ze źródeł danych. Każdy pulpit nawigacyjny jest w pełni dostosowywany — możesz dodać własne logiki lub zmodyfikować zapytania lub utworzyć pulpit nawigacyjny od podstaw.
+Po [nawiązaniu połączenia ze źródłami](quickstart-onboard.md) danych na platformie Azure — dane można monitorować, korzystając z integracji z Azure monitor skoroszytów platformy Azure, które zapewniają uniwersalność tworzenia niestandardowych skoroszytów. Gdy skoroszyty są wyświetlane inaczej na platformie Azure — wskaźnikiem, może być przydatne, aby zobaczyć, jak [tworzyć interaktywne raporty za pomocą skoroszytów Azure monitor](../azure-monitor/app/usage-workbooks.md). System Azure — wskaźnik kontrolny umożliwia tworzenie niestandardowych skoroszytów w danych, a także udostępnia wbudowane szablony skoroszytów umożliwiające szybkie uzyskiwanie szczegółowych informacji na temat danych, gdy tylko nawiążesz połączenie ze źródłem danych.
 
-Pulpity nawigacyjne zapewniają interaktywną wizualizację dzięki zaawansowanej analizie, która pomaga analitykom zabezpieczeń lepiej zrozumieć, co się dzieje podczas ataku. Narzędzia do badania umożliwiają Głębokie szczegółowe na dowolnym polu, z jakichkolwiek danych, do szybkiego tworzenia kontekstu zagrożeń. 
-
-![Pulpity nawigacyjne](./media/overview/dashboards.png)
+![Pulpity nawigacyjne](./media/tutorial-monitor-data/access-workbooks.png)
 
 ## <a name="analytics"></a>Analiza
 
-Aby ułatwić zredukowanie szumu i zminimalizować liczbę alertów, które należy przejrzeć i zbadać, wskaźnik platformy Azure używa [analizy do skorelowania alertów](tutorial-detect-threats.md)z zdarzeniami. **Zdarzenia** to grupy powiązanych alertów, które wspólnie tworzą możliwe do podjęcia działania, które można zbadać i rozwiązać. Użyj wbudowanych reguł korelacji jako-lub użyj ich jako punktu wyjścia do tworzenia własnych. Usługa Azure Learning udostępnia także reguły uczenia maszynowego, które umożliwiają mapowanie zachowania sieci, a następnie poszukiwanie anomalii w zasobach. Te analizy łączą kropki, łącząc alerty o niskiej wierności dotyczące różnych jednostek w potencjalnych zdarzeniach związanych z zabezpieczeniami o wysokiej wierności.
+Aby ułatwić zredukowanie szumu i zminimalizować liczbę alertów, które należy przejrzeć i zbadać, wskaźnik platformy Azure używa [analizy do skorelowania alertów z zdarzeniami](tutorial-detect-threats-built-in.md). **Zdarzenia** to grupy powiązanych alertów, które wspólnie tworzą możliwe do podjęcia działania, które można zbadać i rozwiązać. Użyj wbudowanych reguł korelacji jako-lub użyj ich jako punktu wyjścia do tworzenia własnych. Usługa Azure Learning udostępnia także reguły uczenia maszynowego, które umożliwiają mapowanie zachowania sieci, a następnie poszukiwanie anomalii w zasobach. Te analizy łączą kropki, łącząc alerty o niskiej wierności dotyczące różnych jednostek w potencjalnych zdarzeniach związanych z zabezpieczeniami o wysokiej wierności.
 
-![Padkach](./media/overview/cases.png)
-
-## <a name="user-analytics"></a>Analiza użytkowników
-
-Dzięki natywnej integracji uczenia maszynowego (ML) i [analizie użytkownika](user-analytics.md)usługa Azure wskaźnikowa może pomóc szybko wykrywać zagrożenia. Na platformie Azure wskaźnikiem wiedzy można bezproblemowo zintegrować usługę Azure Advanced Threat Protection, aby analizować zachowanie użytkowników i określić priorytety użytkowników, którzy powinni najpierw badać, na podstawie ich alertów oraz podejrzanych wzorców aktywności na platformie Azure i Microsoft 365.
-
-![Analiza użytkowników](./media/overview/user-analytics.png)
+![Zdarzenia](./media/tutorial-investigate-cases/incident-severity.png)
 
 
 ## <a name="security-automation--orchestration"></a>& Aranżacji usługi Security Automation
@@ -84,26 +74,26 @@ Na przykład w przypadku korzystania z systemu biletów usługi ServiceNow możn
 
 
 
-## <a name="investigation"></a>Badanie
+## <a name="investigation-preview"></a>Badanie (wersja zapoznawcza)
 
 Zaawansowane narzędzia do [badania](tutorial-investigate-cases.md) wskaźnikowego platformy Azure ułatwiają zrozumienie zakresu i znalezienie głównej przyczyny potencjalnego zagrożenia bezpieczeństwa. Możesz wybrać jednostkę na interaktywnym wykresie, aby zadać interesujące pytania dotyczące określonej jednostki, i przejść do tej jednostki i jej połączeń, aby uzyskać dostęp do głównej przyczyny zagrożenia. 
 
-![Badanie](./media/overview/investigation.png)
+![Badanie](./media/tutorial-investigate-cases/map-timeline.png)
 
 
 ## <a name="hunting"></a>Wyszukiwanie zagrożeń
 
-Korzystaj z [zaawansowanych narzędzi do wyszukiwania i wykonywania zapytań](hunting.md)na platformie Azure, opartych na strukturze Mitre, która umożliwia proaktywne wyszukiwanie zagrożeń bezpieczeństwa w źródłach danych organizacji przed wyzwoleniem alertu. Po ustaleniu, które zapytanie polowania zawiera szczegółowe informacje na temat możliwych ataków, można także utworzyć niestandardowe reguły wykrywania na podstawie zapytania, a następnie przedstawić te informacje jako alerty w odniesieniu do odpowiedzi na zdarzenia zabezpieczeń. Podczas polowania można tworzyć zakładki dla interesujących zdarzeń, co pozwala na powrót do nich później, udostępnianie ich innym osobom oraz grupowanie ich przy użyciu innych zdarzeń skorelowanych w celu utworzenia atrakcyjnych przypadków na potrzeby badania.
+Korzystaj z [zaawansowanych narzędzi do wyszukiwania i wykonywania zapytań](hunting.md)na platformie Azure, opartych na strukturze Mitre, która umożliwia proaktywne wyszukiwanie zagrożeń bezpieczeństwa w źródłach danych organizacji przed wyzwoleniem alertu. Po ustaleniu, które zapytanie polowania zawiera szczegółowe informacje na temat możliwych ataków, można także utworzyć niestandardowe reguły wykrywania na podstawie zapytania, a następnie przedstawić te informacje jako alerty w odniesieniu do odpowiedzi na zdarzenia zabezpieczeń. Podczas polowania można tworzyć zakładki dla interesujących zdarzeń, co pozwala na powrót do nich później, udostępnianie ich innym osobom oraz grupowanie ich przy użyciu innych zdarzeń skorelowanych w celu utworzenia atrakcyjnych zdarzeń na potrzeby badania.
 
 ![Wyszukiwanie zagrożeń](./media/overview/hunting.png)
 
 ## <a name="community"></a>Społeczność
 
-Społeczność wskaźnikowa Azure jest zaawansowanym zasobem do wykrywania zagrożeń i automatyzacji. Nasi analitycy zabezpieczeń firmy Microsoft stale tworzą i dodają nowe pulpity nawigacyjne, elementy PlayBook, zapytania łowieckie i inne elementy, które mogą być używane w danym środowisku. Możesz pobrać przykładową zawartość z [repozytorium](https://aka.ms/asicommunity) prywatnej społeczności GitHub, aby utworzyć niestandardowe pulpity nawigacyjne, zapytania polowające, Notesy i elementy PlayBook dla platformy Azure. 
+Społeczność wskaźnikowa Azure jest zaawansowanym zasobem do wykrywania zagrożeń i automatyzacji. Nasi analitycy zabezpieczeń firmy Microsoft stale tworzą i dodają nowe skoroszyty, elementy PlayBook, zapytania polowające i nie tylko publikują je w społeczności, aby można było korzystać z tego środowiska. Możesz pobrać przykładową zawartość z [repozytorium](https://aka.ms/asicommunity) prywatnej społeczności GitHub, aby tworzyć niestandardowe skoroszyty, zapytania polowające, Notesy i elementy PlayBook na potrzeby platformy Azure. 
 
 ![Społeczność](./media/overview/community.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby rozpocząć pracę z systemem Azure — wskaźnikiem, potrzebna jest subskrypcja do Microsoft Azure. Jeśli nie masz subskrypcji, możesz zarejestrować się, aby uzyskać dostęp do [bezpłatnej wersji próbnej](https://azure.microsoft.com/free/).
 - Dowiedz się, jak dołączać [dane do usługi Azure wskaźnikowej](quickstart-onboard.md)i [uzyskiwać wgląd w dane oraz potencjalne zagrożenia](quickstart-get-visibility.md).

@@ -1,6 +1,6 @@
 ---
-title: Połącz dane Barracuda przez wartownika platformy Azure w wersji zapoznawczej | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak nawiązać połączenie z danych Barracuda przez wartownika platformy Azure.
+title: Łączenie danych Barracuda z platformą Azure — wskaźnikiem Microsoft Docs
+description: Dowiedz się, jak połączyć dane Barracuda z platformą Azure — wskaźnikiem.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -13,46 +13,44 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/17/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 33953c3a6b4244ec50ca5b1505b6d48621527d64
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: b3ca93d9e70456d25d5f78b2ca1fde8e4ea24f8d
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620549"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240201"
 ---
-# <a name="connect-your-barracuda-appliance"></a>Połącz urządzenie Barracuda 
+# <a name="connect-your-barracuda-appliance"></a>Łączenie urządzenia z programem Barracuda 
 
-> [!IMPORTANT]
-> Wartownik platformy Azure jest obecnie dostępna w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Barracuda zapory aplikacji sieci Web (WAF) łącznik umożliwia łatwe łączenie dzienników Barracuda za pomocą usługi Azure przez wartownika, aby wyświetlić pulpity nawigacyjne, tworzyć niestandardowe alerty i lepsze badanie. To zapewnia lepszy wgląd w sieci swojej organizacji i zwiększa możliwości operacji zabezpieczeń. Wartownik Azure wykorzystuje natywna integracja pomiędzy usługą **Barracuda** i Microsoft Monitoring Agent umożliwia bezproblemową integrację. 
+
+Łącznik zapory aplikacji sieci Web Barracuda (WAF) umożliwia łatwe łączenie dzienników Barracuda z platformą Azure, w celu wyświetlania pulpitów nawigacyjnych, tworzenia alertów niestandardowych i ulepszania badania. Zapewnia to dokładniejszy wgląd w sieć organizacji i zwiększa możliwości operacji zabezpieczeń. Korzystanie z platformy Azure w celu zapewnienia bezproblemowej integracji obejmuje natywną integrację między **Barracuda** i agentem log Analytics. 
 
 
 > [!NOTE]
-> Dane będą przechowywane w lokalizacji geograficznej w obszarze roboczym, na którym są uruchomione przez wartownika platformy Azure.
+> Dane będą przechowywane w lokalizacji geograficznej obszaru roboczego, w którym jest uruchamiany wskaźnik platformy Azure.
 
-## <a name="configure-and-connect-barracuda-waf"></a>Skonfigurować i połączyć z zapory aplikacji internetowych Barracuda
-Zapory aplikacji internetowych barracuda można integrować i wyeksportuj dzienniki bezpośrednio na platformie Azure przez wartownika za pośrednictwem programu Microsoft Monitoring Agent.
-1. Przejdź do [przepływu konfiguracji zapory aplikacji internetowych Barracuda](https://campus.barracuda.com/product/webapplicationfirewall/doc/73696965/configure-the-barracuda-web-application-firewall-to-integrate-with-the-oms-server-and-export-logs/)i postępuj zgodnie z instrukcjami, aby skonfigurować połączenie przy użyciu tych parametrów:
-    - **Identyfikator obszaru roboczego**: Skopiuj wartość Identyfikatora obszaru roboczego ze strony łącznika Azure przez wartownika Barracuda.
-    - **Klucz podstawowy**: Skopiuj wartość klucz podstawowy na stronie łącznika Azure przez wartownika Barracuda.
-2. W portalu Azure przez wartownika przejdź do obszaru roboczego, na którym wdrożono przez wartownika platformy Azure i wybierz wielokropek (...) na końcu wiersza i wybierz pozycję **Zaawansowane ustawienia**. 
-1. Wybierz **danych** i następnie **Syslog**.
-1. Upewnij się, funkcji, można ustawić w Barracuda istnieje i ustawić ważność i kliknij przycisk **Zapisz**.
-6. Aby użyć odpowiednich schematu w usłudze Log Analytics dla zdarzeń Barracuda, wyszukaj **CommonSecurityLog** i **barracuda_CL**.
+## <a name="configure-and-connect-barracuda-waf"></a>Konfigurowanie i łączenie rozwiązania Barracuda WAF
+Zapora aplikacji sieci Web Barracuda umożliwia integrację i eksportowanie dzienników bezpośrednio do funkcji wskaźnikowej platformy Azure za pośrednictwem agenta Log Analytics.
+1. Przejdź do [przepływu konfiguracji usługi Barracuda WAF](https://campus.barracuda.com/product/webapplicationfirewall/doc/73696965/configure-the-barracuda-web-application-firewall-to-integrate-with-the-oms-server-and-export-logs/)i postępuj zgodnie z instrukcjami, aby skonfigurować połączenie przy użyciu następujących parametrów:
+    - **Identyfikator obszaru roboczego**: Skopiuj wartość identyfikatora obszaru roboczego ze strony łącznika usługi Azure nazwa_obszaru_roboczego Barracuda.
+    - **Klucz podstawowy**: Skopiuj wartość klucza podstawowego ze strony łącznika usługi Azure wskaźnik Barracuda.
+2. W portalu wskaźnikowym platformy Azure przejdź do obszaru roboczego, w którym wdrożono platformę Azure, i wybierz wielokropek (...) na końcu wiersza, a następnie wybierz pozycję **Ustawienia zaawansowane**. 
+1. Wybierz pozycję **dane** , a następnie **Dziennik**systemowy.
+1. Upewnij się, że obiekt ustawiony w Barracuda istnieje i ustaw ważność, a następnie kliknij przycisk **Zapisz**.
+6. Aby użyć odpowiedniego schematu w Log Analytics dla zdarzeń Barracuda, wyszukaj ciąg **CommonSecurityLog** i **barracuda_CL**.
 
 
-## <a name="validate-connectivity"></a>Zweryfikuj łączność
+## <a name="validate-connectivity"></a>Sprawdź poprawność łączności
 
-Może upłynąć zgłaszane 20 minut do momentu dzienników rozpocząć pojawiają się w usłudze Log Analytics. 
+Rozpoczęcie wyświetlania dzienników w Log Analytics może zająć więcej niż 20 minut. 
 
 
 
 ## <a name="next-steps"></a>Następne kroki
-W tym dokumencie przedstawiono sposób łączenia urządzeń Barracuda na platformie Azure przez wartownika. Aby dowiedzieć się więcej na temat platformy Azure przez wartownika, zobacz następujące artykuły:
-- Dowiedz się, jak [Uzyskaj wgląd w dane i potencjalne zagrożenia](quickstart-get-visibility.md).
-- Rozpoczynanie pracy [wykrywanie zagrożeń za pomocą platformy Azure przez wartownika](tutorial-detect-threats.md).
+W tym dokumencie przedstawiono sposób łączenia urządzeń Barracuda z platformą Azure — wskaźnikiem. Aby dowiedzieć się więcej na temat platformy Azure, zobacz następujące artykuły:
+- Dowiedz się [, jak uzyskać wgląd w dane oraz potencjalne zagrożenia](quickstart-get-visibility.md).
+- Rozpocznij [wykrywanie zagrożeń za pomocą platformy Azure — wskaźnik](tutorial-detect-threats-built-in.md).
 

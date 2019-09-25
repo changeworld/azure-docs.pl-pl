@@ -1,5 +1,5 @@
 ---
-title: Łączenie danych Cisco z platformą Azure wskaźnikiem wersji zapoznawczej | Microsoft Docs
+title: Łączenie danych Cisco z platformą Azure Microsoft Docs
 description: Dowiedz się, jak połączyć dane Cisco z platformą Azure.
 services: sentinel
 documentationcenter: na
@@ -13,20 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: e4df594128a119f38c66796d7b00a30420a2a0bd
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 6218d3a53df38e938b7d7805c45facd30f850105
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679325"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240160"
 ---
 # <a name="connect-your-cisco-asa-appliance"></a>Łączenie urządzenia Cisco ASA 
 
-> [!IMPORTANT]
-> W publicznej wersji zapoznawczej jest obecnie dostępna usługa Azure.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 Możesz połączyć urządzenie wskaźnikowe platformy Azure z dowolnym urządzeniem Cisco ASA. Cisco ASA jest natywnie zintegrowana z platformą Azure wskaźnikiem do pozyskiwania danych, dzięki czemu mimo że urządzenie Cisco nie zapisuje dzienników jako CEF, wskaźnik na platformie Azure pozyskuje je w taki sam sposób, jak w przypadku dzienników CEF. Integracja z platformą Azure wskaźnikiem umożliwia łatwe uruchamianie analiz i zapytań w ramach danych pliku dziennika z programu Cisco ASA. 
 
@@ -91,7 +89,7 @@ Rozpoczęcie wyświetlania dzienników w Log Analytics może zająć więcej ni�
 
 2. Upewnij się, że dzienniki znajdują się na odpowiednim porcie w agencie dziennika systemowego. Uruchom to polecenie na komputerze agenta dziennika systemu: `tcpdump -A -ni any  port 514 -vv`To polecenie umożliwia wyświetlenie dzienników przesyłanych strumieniowo z urządzenia do maszyny dziennika systemowego. Upewnij się, że dzienniki są odbierane z urządzenia źródłowego z właściwym portem i odpowiednim obiektem.
 
-3. Upewnij się, że dzienniki są zgodne ze specyfikacją [RFC 3164](https://tools.ietf.org/html/rfc3164).
+3. Upewnij się, że dzienniki są zgodne ze [specyfikacją RFC 3164](https://tools.ietf.org/html/rfc3164).
 
 4. Upewnij się, że te porty 514, 25226 są otwarte i nasłuchuje na komputerze z uruchomionym agentem dziennika `netstat -a -n:`systemowego, używając polecenia. Aby uzyskać więcej informacji na temat korzystania z tego polecenia, zobacz [stronę sieci Web z systemem Linux (8)](https://linux.die.net/man/8/netstat). Jeśli nasłuchuje prawidłowo, zobaczysz:
 
@@ -131,5 +129,5 @@ Rozpoczęcie wyświetlania dzienników w Log Analytics może zająć więcej ni�
 ## <a name="next-steps"></a>Następne kroki
 W tym dokumencie przedstawiono sposób łączenia urządzeń z programem Cisco ASA z platformą Azure — wskaźnikiem. Aby dowiedzieć się więcej na temat platformy Azure, zobacz następujące artykuły:
 - Dowiedz się [, jak uzyskać wgląd w dane oraz potencjalne zagrożenia](quickstart-get-visibility.md).
-- Rozpocznij [wykrywanie zagrożeń za pomocą platformy Azure — wskaźnik](tutorial-detect-threats.md).
+- Rozpocznij [wykrywanie zagrożeń za pomocą platformy Azure — wskaźnik](tutorial-detect-threats-built-in.md).
 

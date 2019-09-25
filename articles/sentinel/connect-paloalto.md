@@ -1,5 +1,5 @@
 ---
-title: Łączenie danych Palo Alto Networks z platformą Azure wskaźnikiem wersji zapoznawczej | Microsoft Docs
+title: Łączenie danych Palo Alto Networks z platformą Azure Microsoft Docs
 description: Dowiedz się, jak łączyć dane Palo Alto Networks z platformą Azure.
 services: sentinel
 documentationcenter: na
@@ -13,20 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5860e1b1b817985aafd95f6f63d39553489482b9
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 659f36a036d8a165b0c2b28830ae2312adb56c56
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679233"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240236"
 ---
 # <a name="connect-your-palo-alto-networks-appliance"></a>Połącz urządzenie z programem Palo Alto Networks
 
-> [!IMPORTANT]
-> W publicznej wersji zapoznawczej jest obecnie dostępna usługa Azure.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 Możesz połączyć wskaźnik platformy Azure z dowolnym urządzeniem Palo Alto Networks, zapisując pliki dzienników jako typowy format błędu dziennika systemowego (CEF). Integracja z platformą Azure wskaźnikiem umożliwia łatwe uruchamianie analiz i zapytań w ramach danych pliku dziennika z sieci Palo Alto. Aby uzyskać więcej informacji na temat sposobu pozyskiwania danych CEF przez platformę Azure, zobacz [Łączenie urządzeń CEF](connect-common-event-format.md).
 
@@ -97,7 +95,7 @@ Rozpoczęcie wyświetlania dzienników w Log Analytics może zająć więcej ni�
 
 2. Upewnij się, że dzienniki znajdują się na odpowiednim porcie w agencie dziennika systemowego. Uruchom to polecenie na komputerze agenta dziennika systemu: `tcpdump -A -ni any  port 514 -vv`To polecenie umożliwia wyświetlenie dzienników przesyłanych strumieniowo z urządzenia do maszyny dziennika systemowego. Upewnij się, że dzienniki są odbierane z urządzenia źródłowego z właściwym portem i odpowiednim obiektem.
 
-3. Upewnij się, że dzienniki są zgodne ze specyfikacją [RFC 3164](https://tools.ietf.org/html/rfc3164).
+3. Upewnij się, że dzienniki są zgodne ze [specyfikacją RFC 3164](https://tools.ietf.org/html/rfc3164).
 
 4. Upewnij się, że te porty 514, 25226 są otwarte i nasłuchuje na komputerze z uruchomionym agentem dziennika `netstat -a -n:`systemowego, używając polecenia. Aby uzyskać więcej informacji na temat korzystania z tego polecenia, zobacz [stronę sieci Web z systemem Linux (8)](https://linux.die.net/man/8/netstat). Jeśli nasłuchuje prawidłowo, zobaczysz:
 
@@ -141,5 +139,5 @@ Rozpoczęcie wyświetlania dzienników w Log Analytics może zająć więcej ni�
 ## <a name="next-steps"></a>Następne kroki
 W tym dokumencie przedstawiono sposób nawiązywania połączeń z urządzeniami Palo Alto Networks z platformą Azure. Aby dowiedzieć się więcej na temat platformy Azure, zobacz następujące artykuły:
 - Dowiedz się [, jak uzyskać wgląd w dane oraz potencjalne zagrożenia](quickstart-get-visibility.md).
-- Rozpocznij [wykrywanie zagrożeń za pomocą platformy Azure — wskaźnik](tutorial-detect-threats.md).
+- Rozpocznij [wykrywanie zagrożeń za pomocą platformy Azure — wskaźnik](tutorial-detect-threats-built-in.md).
 

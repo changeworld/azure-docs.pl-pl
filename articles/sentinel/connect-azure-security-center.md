@@ -1,6 +1,6 @@
 ---
-title: Łączenie danych w usłudze Azure Security Center przez wartownika platformy Azure w wersji zapoznawczej | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak nawiązać połączenie z danych usługi Azure Security Center przez wartownika platformy Azure.
+title: Łączenie Azure Security Center danych z platformą Azure — wskaźnikiem Microsoft Docs
+description: Dowiedz się, jak połączyć Azure Security Center dane z platformą Azure — wskaźnikiem.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -13,44 +13,45 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 697983000f84f9e4efe7e2c8ef9dbb2f636e0735
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a9c210531f2c4cab1c3c023eab795023c3ad9f0c
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620573"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240220"
 ---
-# <a name="connect-data-from-azure-security-center"></a>Połącz dane z usługi Azure Security Center
-
-> [!IMPORTANT]
-> Wartownik platformy Azure jest obecnie dostępna w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="connect-data-from-azure-security-center"></a>Łączenie danych z Azure Security Center
 
 
 
-Wartownik platformy Azure umożliwiają łączenie alertów z [usługi Azure Security Center](../security-center/security-center-intro.md) i przekazywać je strumieniowo do usługi Azure przez wartownika. 
+
+
+System Azure — wskaźnik produkcji umożliwia łączenie alertów z [Azure Security Center](../security-center/security-center-intro.md) i przesyłanie ich strumieniowo do usługi Azure wskaźnikowej. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Jeśli chcesz wyeksportować alertów z usługi Azure Security Center, musi być współautorem subskrypcji, dla których dzienniki przesyłania strumieniowego.
+- Jeśli chcesz wyeksportować alerty z Azure Security Center, musisz być współautorem subskrypcji, której rejestrujesz dzienniki.
 
-- Konieczne jest posiadanie [Azure Security Center w warstwie standardowa](../security-center/security-center-pricing.md) uruchomiony w ramach subskrypcji. W przeciwnym razie [Uaktualnij swoją subskrypcję na warstwę standardowa](https://azure.microsoft.com/pricing/details/security-center/).
+- W ramach subskrypcji musi być uruchomiona [Azure Security Center warstwa standardowa](../security-center/security-center-pricing.md) . W przeciwnym razie [Uaktualnij subskrypcję do wersji Standard](https://azure.microsoft.com/pricing/details/security-center/).
 
-- Należy zalogować się jako użytkownik, który ma administratora globalnego lub uprawnienia administratora zabezpieczeń w każdej subskrypcji, którą chcesz się połączyć.
+- Musisz zalogować się przy użyciu użytkownika, który ma uprawnienia administratora globalnego lub administratora zabezpieczeń dla każdej subskrypcji, którą chcesz połączyć.
 
 
-## <a name="connect-to-azure-security-center"></a>Łączenie z usługą Azure Security Center
+## <a name="connect-to-azure-security-center"></a>Połącz z Azure Security Center
 
-1. Na platformie Azure przez wartownika, wybierz **łączników danych** a następnie kliknij przycisk **usługi Azure Security Center** kafelka.
-1. Po prawej stronie, kliknij **Connect** obok każdej subskrypcji alertów, którego chcesz strumieniowo przesyłać do platformy Azure przez wartownika. Upewnij się, że uaktualnienie każdej subskrypcji do warstwy standardowej usługi Azure Security Center do strumienia alertów do platformy Azure przez wartownika.
+1. W obszarze wskaźnik platformy Azure wybierz pozycję **Łączniki danych** , a następnie kliknij kafelek **Azure Security Center** .
+
+1. Po prawej stronie kliknij pozycję **Połącz** obok każdej subskrypcji, której alerty chcesz przesłać do usługi Azure wskaźnikowej. Pamiętaj, aby uaktualnić każdą subskrypcję do Azure Security Center warstwy Standardowa, aby przesyłać strumieniowo alerty do platformy Azure.
+
+1. Możesz wybrać, czy alerty od Azure Security Center mają automatycznie generować zdarzenia na platformie Azure. W obszarze **Tworzenie zdarzeń** wybierz pozycję **Włącz** , aby włączyć domyślną regułę analityczną, która automatycznie tworzy zdarzenia z alertów generowanych w połączonej usłudze zabezpieczeń. Następnie można edytować tę regułę w obszarze **Analiza** , a następnie **aktywne reguły**.
 
 3. Kliknij przycisk **Połącz**.
 
-4. Aby użyć odpowiednich schematu w usłudze Log Analytics dla alertów w usłudze Azure Security Center, możesz wyszukać **SecurityEvent**.
+4. Aby użyć odpowiedniego schematu w Log Analytics dla alertów Azure Security Center, Wyszukaj pozycję **SecurityAlert**.
 
 ## <a name="next-steps"></a>Następne kroki
-W tym dokumencie przedstawiono sposób łączenia usługi Azure Security Center na platformie Azure przez wartownika. Aby dowiedzieć się więcej na temat platformy Azure przez wartownika, zobacz następujące artykuły:
-- Dowiedz się, jak [Uzyskaj wgląd w dane i potencjalne zagrożenia](quickstart-get-visibility.md).
-- Rozpoczynanie pracy [wykrywanie zagrożeń za pomocą platformy Azure przez wartownika](tutorial-detect-threats.md).
+W tym dokumencie przedstawiono sposób nawiązywania połączenia Azure Security Center z platformą Azure — wskaźnikiem. Aby dowiedzieć się więcej na temat platformy Azure, zobacz następujące artykuły:
+- Dowiedz się [, jak uzyskać wgląd w dane oraz potencjalne zagrożenia](quickstart-get-visibility.md).
+- Rozpocznij [wykrywanie zagrożeń za pomocą platformy Azure — wskaźnik](tutorial-detect-threats-built-in.md).

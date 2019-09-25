@@ -1,5 +1,5 @@
 ---
-title: Możliwości łowiectwa w wersji zapoznawczej platformy Azure wskaźnikowej | Microsoft Docs
+title: Możliwości polowania na platformie Azure — wskaźnikowa | Microsoft Docs
 description: W tym artykule opisano sposób korzystania z możliwości łowiectwa wskaźnikowego platformy Azure.
 services: sentinel
 documentationcenter: na
@@ -14,20 +14,18 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 09/10/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5e6ad3c0b415722349dc584434add1031b7c3cb1
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: b00f60394a24008ca39f3ac7b378b1936c46ef76
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780461"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240614"
 ---
-# <a name="hunt-for-threats-with-in-azure-sentinel-preview"></a>W wersji zapoznawczej platformy Azure — Wersja zapoznawcza
+# <a name="hunt-for-threats-with-in-azure-sentinel"></a>W przypadku zagrożeń związanych z platformą Azure — wskaźnikiem
 
-> [!IMPORTANT]
-> W publicznej wersji zapoznawczej jest obecnie dostępna usługa Azure.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 Jeśli jesteś analitykiem, który chce być aktywny w sprawie wyszukania zagrożeń bezpieczeństwa, platforma Azure bada zaawansowane narzędzia wyszukiwania i zapytań w poszukiwaniu zagrożeń związanych z bezpieczeństwem w źródłach danych organizacji. Jednak systemy i urządzenia zabezpieczeń generują górach danych, które mogą być trudne do analizy i filtrowania do znaczących zdarzeń. Aby ułatwić analitykom zabezpieczeń odszukanie nowych anomalii, które nie zostały wykryte przez aplikacje zabezpieczające, wbudowane zapytania polowające dotyczące platformy Azure wskazują, że zażądają odpowiednich pytań, aby znaleźć problemy w danych, które już znajdują się w sieci. 
 
@@ -41,8 +39,7 @@ Korzystając z łowiectwa wskaźnikowego platformy Azure, możesz korzystać z n
 
 - Zaawansowany język zapytań z technologią IntelliSense: Utworzone na podstawie języka zapytań, który zapewnia elastyczność potrzebną do skorzystania z kolejnego poziomu.
 
-- Utwórz własne zakładki: W trakcie procesu polowania mogą trafiać między innymi dopasowania lub wyniki, pulpity nawigacyjne lub działania, które wyglądają nierzadko lub podejrzane. Aby oznaczyć te elementy tak, aby można było je w przyszłości wrócić do nich, użyj funkcji Zakładka. Zakładki umożliwiają zapisywanie elementów w celu ich późniejszego użycia w celu utworzenia incydentu do badania. Aby uzyskać więcej informacji na temat zakładek, zobacz use [zakładki w łowiectwie].
-
+- Utwórz własne zakładki: W trakcie procesu polowania mogą trafiać między innymi dopasowania lub wyniki, pulpity nawigacyjne lub działania, które wyglądają nierzadko lub podejrzane. Aby oznaczyć te elementy tak, aby można było je w przyszłości wrócić do nich, użyj funkcji Zakładka. Zakładki umożliwiają zapisywanie elementów w celu ich późniejszego użycia w celu utworzenia incydentu do badania. Aby uzyskać więcej informacji na temat zakładek, zobacz [Używanie zakładek w łowiectwie](hunting.md).
 - Automatyzacja badań za pomocą notesów: Notesy przypominają elementy PlayBook krok po kroku, które można kompilować, aby zapoznać się z krokami badania i wyszukiwania.  Notesy hermetyzują wszystkie kroki polowania w element PlayBook wielokrotnego użytku, które mogą być współużytkowane z innymi osobami w organizacji. 
 - Wykonaj zapytanie dotyczące przechowywanych danych: Dane są dostępne w tabelach, aby można było wykonywać zapytania. Można na przykład wykonywać zapytania dotyczące tworzenia procesów, zdarzeń DNS i wielu innych typów zdarzeń.
 

@@ -1,6 +1,6 @@
 ---
-title: Informacje o danych podczas myślistwo w przez wartownika wersji zapoznawczej Azure korzystanie z zakładek myślistwo | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak używać zakładek myślistwo przez wartownika platformy Azure do śledzenia danych.
+title: Śledź dane podczas polowania na platformie Azure — wskaźnikiem polowań | Microsoft Docs
+description: W tym artykule opisano, jak używać zakładek polowania na platformie Azure do śledzenia danych.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -14,90 +14,141 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: aec04c4b9fd56b79a92c2774a48fd55f2f6a9d7a
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: aa414e37470cc11b7dc83e7416590aa2babf6818
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620206"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240249"
 ---
-# <a name="keep-track-of-data-during-hunting"></a>Zachowaj informacje o danych podczas myślistwo
+# <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>Śledź dane podczas polowania z platformą Azure — wskaźnikiem
 
-> [!IMPORTANT]
-> Wartownik platformy Azure jest obecnie dostępna w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
- 
-Myślistwo zagrożeń wymaga zwykle od przeglądanie tam dane dziennika szuka dowodu złośliwego zachowania. W trakcie tego procesu badaczy znaleźć zdarzenia, które mają do zapamiętania, ponownie i analizować jako część sprawdzania poprawności potencjalnych hipotez i zrozumienie całą historię naruszenia zabezpieczeń.
-Zakładki myślistwo pomóc Ci to zrobić, przy zachowaniu zapytań, że został uruchomiony w usłudze Log Analytics oraz wyniki zapytania, które można uznać za istotne. Można również rejestrować swoje kontekstowych uwag i odwoływać się swoimi ustaleniami poprzez dodanie uwagi i tagów. Dane z zakładką jest widoczna członkom zespołu łatwo współpracy.   
+Polowanie zagrożeń zwykle wymaga przejrzenia górach danych dzienników szukających dowodu złośliwego zachowania. W trakcie tego procesu badacze znajdą zdarzenia, które chcą zapamiętać, odwiedzać i przeanalizować w ramach walidacji potencjalnych postanowień, a także zrozumieć pełną historię naruszenia.
 
-Dane z zakładką możesz wrócić w dowolnym momencie, w **zakładki** karcie **myślistwo** strony. Możesz użyć filtrowania i opcje, aby szybko znaleźć określone dane dla bieżącego badania wyszukiwania. Alternatywnie można wyświetlić dane zakładką bezpośrednio w **HuntingBookmark** tabeli w usłudze Log Analytics. Dzięki temu można filtrować, podsumowanie i Dołącz do dodanego danych z innych źródeł danych, co ułatwia poszukaj dowody potwierdzające.
+Zakładki łowiectwa na platformie Azure — wskaźnik pomocy, dzięki zachowaniu zapytań, które zostały uruchomione w Log Analytics, wraz z wynikami zapytania, które są odpowiednie. Możesz również rejestrować uwagi kontekstowe i odwoływać się do wyników, dodając notatki i Tagi. Dane oznaczone zakładką są widoczne dla Ciebie i Twoich członków zespołu w celu ułatwienia współpracy.
 
-Można również wizualizować dane z zakładką, klikając **zbadaj**. Spowoduje to uruchomienie badać, w którym można wyświetlać, badanie i wizualnie komunikują się swoimi ustaleniami przy użyciu diagramu interaktywne wykres jednostki i osi czasu.
+W dowolnym momencie możesz ponownie odwiedzić dane z zakładkami na karcie **zakładka** okienka **polowania** . Możesz użyć opcji filtrowania i wyszukiwania, aby szybko znaleźć konkretne dane dla bieżącego badania. Alternatywnie możesz wyświetlać dane z zakładek bezpośrednio w tabeli **HuntingBookmark** w Azure monitor. Dzięki temu można filtrować, podsumowywać i łączyć dane z zakładkami z innymi źródłami danych, co ułatwia wyszukiwanie corroboratingych dowodów.
 
+Obecnie w wersji zapoznawczej, jeśli okaże się, że w przypadku niektórych problemów należy rozwiązać problem w dziennikach, w kilku kliknięciach można utworzyć zakładkę i podwyższyć poziom do zdarzenia lub dodać zakładkę do istniejącego zdarzenia. Aby uzyskać więcej informacji na temat zdarzeń, [zobacz Samouczek: Zbadaj zdarzenia za pomocą usługi](tutorial-investigate-cases.md)Azure wskaźnikowej. 
 
-## <a name="run-a-log-analytics-query-from-azure-sentinel"></a>Uruchom zapytanie usługi Log Analytics z platformy Azure przez wartownika
-
-1. W portalu Azure przez wartownika kliknij **myślistwo** do uruchamiania zapytań dla podejrzanych i nietypowych zachowań.
-
-1. Aby uruchomić kampanii myślistwo, wybierz jedno z zapytań myślistwo i przegląd po lewej stronie, wyniki. 
-
-1. Kliknij przycisk **wyświetlenia wyników zapytania** w zapytaniu myślistwo **szczegóły** strony, aby wyświetlić zapytanie wyników w usłudze Log Analytics. Oto przykład wyświetlanych jeżeli uruchomiono zapytanie niestandardowe ataku bruteforce SSH.
-  
-   ![Pokaż wyniki](./media/bookmarks/ssh-bruteforce-example.png)
+Ponadto w wersji zapoznawczej można wizualizować dane oznaczone zakładką, klikając polecenie **Zbadaj** w obszarze Szczegóły zakładki. Spowoduje to uruchomienie środowiska dochodzeniowego, w którym można wyświetlać, badać i wizualnie komunikować swoje wyniki przy użyciu interaktywnego diagramu i osi czasu grafu obiektów.
 
 ## <a name="add-a-bookmark"></a>Dodawanie zakładki
 
-1. Na liście wyników zapytania usługi Log Analytics należy rozwinąć wiersz zawierający informacje możesz znaleźć interesujące.
+1. W Azure Portal przejdź do**polowania** do > **zarządzania zagrożeniami** **wskaźnikiem** > , aby uruchomić zapytania dotyczące podejrzanego i nietypowego zachowania.
 
-4. Wybierz przycisk wielokropka (...) na końcu wiersza, a następnie wybierz pozycję **dodać zakładki myślistwo**.
-5. Po prawej stronie w **szczegóły** strony, zaktualizuj nazwę, a następnie dodaj znaczniki i notatki, aby pomóc w zidentyfikowaniu, jaki był interesujący o elemencie.
-6. Kliknij przycisk **Zapisz** aby zatwierdzić zmiany. Wszystkie dane z zakładką jest współużytkowany z innymi badaczy i jest to pierwszy krok w kierunku współpracy badać.
+2. Wybierz jedną z zapytań polowania i po prawej stronie, w szczegółach zapytania polowania wybierz pozycję **Uruchom zapytanie**. 
 
-   ![Pokaż wyniki](./media/bookmarks/add-bookmark-la.png)
+3. Wybierz pozycję **Wyświetl wyniki zapytania**. Na przykład:
+    
+    > [!div class="mx-imgBorder"]
+    > ![Wyświetl wyniki zapytania z polowania wskaźnikowego platformy Azure](./media/bookmarks/new-processes-observed-example.png)
+    
+    Ta akcja powoduje otwarcie wyników zapytania w okienku **dzienniki** .
+
+4. Z listy wyników zapytania dziennika Rozwiń wiersz zawierający informacje interesujące.
+
+5. Wybierz wielokropek (...) po lewej stronie, a następnie wybierz pozycję **Dodaj zakładkę polowania**:
+    
+    > [!div class="mx-imgBorder"]
+    > ![Dodaj zakładkę polowania do zapytania](./media/bookmarks/add-hunting-bookmark.png)
+
+6. Po prawej stronie w okienku **Dodaj zakładkę polowania** możesz opcjonalnie zaktualizować nazwę zakładki, dodać tagi i notatki, aby ułatwić identyfikację interesujących elementów.
+
+7. W sekcji **Informacje o zapytaniu** Użyj pól listy rozwijanej, aby wyodrębnić informacje z wyników zapytania dla typu **konta**, **hosta**i jednostki **adresów IP** . Ta akcja mapuje wybrany typ jednostki na określoną kolumnę z wyniku zapytania. Na przykład:
+    
+    > [!div class="mx-imgBorder"]
+    > ![Mapowanie typów jednostek dla zakładki polowania](./media/bookmarks/map-entity-types-bookmark.png)
+    
+    Aby wyświetlić zakładkę na grafie badania (obecnie w wersji zapoznawczej), należy zmapować co najmniej jeden typ jednostki, który jest **kontem**, **hostem**lub **adresem IP**. 
+
+5. Kliknij przycisk **Dodaj** , aby zatwierdzić wprowadzone zmiany i dodać zakładkę. Wszystkie dane oznaczone zakładką są współużytkowane z innymi osobami badającymi i to pierwszy krok w kierunku współpracy z zespołowym badaniem.
 
  
 > [!NOTE]
-> Za pomocą dowolnego zapytań usługi Log Analytics uruchomionego z dzienników platformy Azure przez wartownika Log Analytics strony lub zapytań tworzone na bieżąco ze strony usługi Log Analytics i otwarty na stronie myślistwo można również używać zakładek. Nie można dodać zakładkę, jeśli uruchomienie usługi Log Analytics z poza przez wartownika platformy Azure. 
+> Wyniki zapytania dziennika obsługują zakładki, za każdym razem, gdy to okienko zostanie otwarte z platformy Azure. Na przykład wybierz pozycję**dzienniki** **Ogólne** > na pasku nawigacyjnym, wybierz pozycję linki zdarzeń w grafie badania lub wybierz identyfikator alertu z pełnych szczegółów zdarzenia (obecnie w wersji zapoznawczej). Nie można tworzyć zakładek, gdy okienko **dzienniki** jest otwierane z innych lokalizacji, na przykład bezpośrednio z Azure monitor.
 
-## <a name="view-and-update-bookmarks"></a>Wyświetl i zaktualizuj zakładki 
+## <a name="view-and-update-bookmarks"></a>Wyświetl i Zaktualizuj zakładki 
 
-1. W portalu Azure przez wartownika kliknij **myślistwo**. 
-2. Kliknij przycisk **zakładki** kartę pośrodku strony, aby wyświetlić listę zakładek.
-3. Użyj opcji wyszukiwania w polu lub filtr, aby znaleźć określonej zakładki.
-4. Wybierz poszczególne zakładki w siatce poniżej, aby wyświetlić szczegóły zakładkę w okienku szczegółów po prawej stronie.
-5. Aby zaktualizować znaczniki i notatki, kliknij pozycję edytowalnymi polami tekstowymi, a następnie kliknij przycisk **Zapisz** Aby zachować zmiany.
+1. W Azure Portal przejdź do**polowania**dotyczącego > **zarządzania zagrożeniami** **wskaźnikiem** > . 
 
-   ![Pokaż wyniki](./media/bookmarks/view-update-bookmarks.png)
+2. Wybierz zakładkę **zakładki** , aby wyświetlić listę zakładek.
 
-## <a name="view-bookmarked-data-in-log-analytics"></a>Wyświetl dane z zakładką w usłudze Log Analytics 
+3. Aby ułatwić znalezienie określonej zakładki, użyj pola wyszukiwania lub opcji filtrowania.
 
-Istnieje wiele sposobów nawiązania wyświetlanie zakładką danych w usłudze Log Analytics. 
+4. Wybierz poszczególne zakładki i sprawdź szczegóły zakładki w okienku szczegółów z prawej strony.
 
-Najprostszym sposobem wyświetlenia zapytań zakładką, wyniki lub historii polega na wybraniu żądaną zakładki w **zakładki** tabeli i użyć linków dostępnych w okienku szczegółów. Opcje obejmują: 
-- Kliknij pozycję **Wyświetl zapytanie** Aby wyświetlić zapytania źródłowego w usłudze Log Analytics.  
-- Kliknij pozycję **wyświetlić historię zakładki** aby zobaczyć wszystkie zakładki metadanych, w tym: kto wprowadził aktualizacji, zaktualizowanymi wartościami i czas wystąpiła aktualizacja. 
+5. Wprowadź odpowiednie zmiany, które są zapisywane automatycznie.
 
-- Można również wyświetlić dane pierwotne zakładki wszystkie zakładki, klikając **zakładki dzienniki** nad siatką zakładki. Ten widok zostaną wyświetlone wszystkie zakładki w tabeli zakładki myślistwo ze skojarzonymi metadanymi. Zapytania KQL służy do odfiltrowania najnowszej wersji określonej zakładki, którego szukasz.  
+## <a name="exploring-bookmarks-in-the-investigation-graph"></a>Eksplorowanie zakładek na grafie badania
 
+> [!IMPORTANT]
+> Eksplorowanie zakładek na grafie badania i samym grafie badania jest obecnie w publicznej wersji zapoznawczej.
+> Te funkcje są dostępne bez umowy dotyczącej poziomu usług i nie są zalecane w przypadku obciążeń produkcyjnych.
+> Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+1. W Azure Portal przejdź do karty **wskaźnik** > **polowania** > na > potrzeby**zarządzania zagrożeniami**, a następnie**Wybierz zakładkę lub** zakładki, które chcesz zbadać.
+
+2. Upewnij się, że w obszarze Szczegóły zakładki jest zamapowana co najmniej jedna jednostka. Na przykład w przypadku **jednostek**widoczne są wpisy dotyczące **adresu IP**, **komputera**lub **konta**.
+
+3. Kliknij przycisk **Zbadaj** , aby wyświetlić zakładkę w grafie badania.
+
+Aby uzyskać instrukcje dotyczące korzystania z grafu badania, zobacz temat [Korzystanie z grafu badania do głębokiego szczegółowe](tutorial-investigate-cases.md#use-the-investigation-graph-to-deep-dive).
+
+## <a name="add-bookmarks-to-a-new-or-existing-incident"></a>Dodaj zakładki do nowego lub istniejącego zdarzenia
+
+> [!IMPORTANT]
+> Dodawanie zakładek do nowego lub istniejącego zdarzenia jest obecnie w publicznej wersji zapoznawczej.
+> Ta funkcja jest dostępna bez umowy dotyczącej poziomu usług i nie jest zalecana w przypadku obciążeń produkcyjnych.
+> Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+1. W Azure Portal przejdź do karty **wskaźnik** > **polowania** > na > potrzeby**zarządzania zagrożeniami**, a następnie**Wybierz zakładkę lub** zakładki, które chcesz dodać do zdarzenia.
+
+2. Wybierz **Akcje zdarzenia (wersja zapoznawcza)** z paska poleceń:
+    
+    > [!div class="mx-imgBorder"]
+    > ![Dodaj zakładki do zdarzenia](./media/bookmarks/incident-actions.png)
+
+3. Wybierz opcję **Utwórz nowe zdarzenie** lub **Dodaj do istniejącego zdarzenia**, zgodnie z potrzebami. Następnie:
+    
+    - Nowe zdarzenie: Opcjonalnie Zaktualizuj szczegóły zdarzenia, a następnie wybierz pozycję **Utwórz**.
+    - Aby dodać zakładkę do istniejącego zdarzenia: Wybierz jedno zdarzenie, a następnie wybierz pozycję **Dodaj**. 
+
+Aby wyświetlić zakładkę w zdarzeniu: Przejdź > do**zdarzenia** **zarządzania** > zagrożeniami **wskaźnikiem**, a następnie wybierz zdarzenie z zakładką. Wybierz pozycję **Wyświetl pełne szczegóły**, a następnie wybierz zakładkę **zakładki** .
+
+## <a name="view-bookmarked-data-in-logs"></a>Wyświetlanie danych z zakładkami w dziennikach
+
+Aby wyświetlić zapytania z zakładkami, wyniki lub ich historię, wybierz zakładkę z karty**zakładki** **polowania** > i użyj linków w okienku szczegółów: 
+
+- **Wyświetl zapytanie źródłowe** , aby wyświetlić zapytanie źródłowe w okienku **dzienniki** .
+
+- **Wyświetl dzienniki zakładek** , aby wyświetlić wszystkie metadane zakładki, w tym osoby, które dokonały aktualizacji, zaktualizowane wartości i czas wystąpienia aktualizacji.
+
+Możesz również wyświetlić nieprzetworzone dane zakładki dla wszystkich zakładek, wybierając pozycję **dzienniki zakładek** na pasku poleceń na karcie**zakładki** **polowania** > :
+
+> [!div class="mx-imgBorder"]
+> ![Dzienniki zakładek](./media/bookmarks/bookmark-logs.png)
+
+Ten widok przedstawia wszystkie zakładki ze skojarzonymi metadanymi. Możesz użyć zapytań [języka KQL (keyword Query Language](https://docs.microsoft.com/sharepoint/dev/general-development/keyword-query-language-kql-syntax-reference) ), aby odfiltrować do najnowszej wersji konkretnej zakładki.
 
 > [!NOTE]
-> Może być znaczne opóźnienie (mierzony w minutach) między tworzenia zakładki i kiedy jest wyświetlany w **HuntingBookmark** tabeli. Zalecane jest, aby najpierw utworzyć zakładki, a następnie analizowanie ich po dane są pozyskiwane. 
+> Istnieje duże opóźnienie (mierzone w minutach) między czasem utworzenia zakładki a wyświetleniem jej na karcie **zakładki** .
 
-## <a name="delete-a-bookmark"></a>Usuń zakładkę
-Jeśli chcesz usunąć zakładki, wykonaj następujące czynności: 
-1.  Otwórz th **zakładki myślistwo** kartę. 
-2.  Wybierz zakładkę docelowego.
-3.  Wybierz przycisk wielokropka (...) na końcu wiersza i wybierz pozycję **zakładki Delete**.
+## <a name="delete-a-bookmark"></a>Usuwanie zakładki
+ 
+1.  W Azure Portal przejdź do karty **wskaźnik** > **polowania** > na > potrzeby**zarządzania zagrożeniami**, a następnie**Wybierz zakładkę lub** zakładki, które chcesz usunąć. 
+
+2. Wybierz wielokropek (...) na końcu wiersza, a następnie wybierz pozycję **Usuń zakładkę**.
     
-Usuwanie zakładki zakładka zostanie usunięta z listy w **zakładki** kartę.  Usługa Log Analytics "HuntingBookmark" tabela będzie w dalszym ciągu zawierają wcześniejsze wpisy zakładki, ale zmieni się najnowszy wpis **SoftDelete** wartość true, co ułatwia filtrowanie starych zakładek.  Usuwanie zakładki nie powoduje usunięcia żadnych jednostek ze środowiska badania, które są skojarzone z innymi zakładek lub alertów. 
+Usunięcie zakładki spowoduje usunięcie zakładki z listy na karcie **zakładka** . Tabela Log Analytics **HuntingBookmark** będzie nadal zawierać poprzednie wpisy zakładki, ale Najnowsza pozycja zmieni wartość **SoftDelete** na true, co ułatwia odfiltrowanie starych zakładek. Usunięcie zakładki nie powoduje usunięcia żadnych jednostek ze środowiska badania, które są skojarzone z innymi zakładkami lub alertami. 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym artykule przedstawiono sposób uruchamiania badania myślistwo korzystanie z zakładek w przez wartownika platformy Azure. Aby dowiedzieć się więcej na temat platformy Azure przez wartownika, zobacz następujące artykuły:
+W tym artykule przedstawiono sposób uruchamiania badania polowania przy użyciu zakładek na platformie Azure. Aby dowiedzieć się więcej na temat platformy Azure, zobacz następujące artykuły:
 
 
-- [Proaktywnie możliwe pod kątem zagrożeń](hunting.md)
-- [Korzystanie z notesów, aby uruchomić zautomatyzowane myślistwo kampanii](notebooks.md)
+- [Proaktywne wyszukiwanie zagrożeń](hunting.md)
+- [Korzystanie z notesów do uruchamiania zautomatyzowanych kampanii łowieckich](notebooks.md)

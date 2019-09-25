@@ -1,59 +1,86 @@
 ---
-title: Połącz dane analizy zagrożeń przez wartownika platformy Azure w wersji zapoznawczej | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o tym, jak połączyć dane analizy zagrożeń na platformie Azure przez wartownika.
+title: Łączenie danych analizy zagrożeń z platformą Azure — wskaźnikiem Microsoft Docs
+description: Dowiedz się, jak połączyć dane analizy zagrożeń z wskaźnikiem kontrolnym platformy Azure.
 documentationcenter: na
 author: rkarlin
 manager: rkarlin
 editor: ''
-ms.assetid: 56412543-5664-44c1-b026-2dbaf78a9a50
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: 266e487a7c345f75e966afbde567c5bc4683b5c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cbdf05c714971db5a618ca2a8bb35fe286d6804c
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65233753"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240688"
 ---
-# <a name="connect-data-from-threat-intelligence-providers"></a>Połącz dane z dostawców analizy zagrożeń 
+# <a name="connect-data-from-threat-intelligence-providers---preview"></a>Łączenie danych od dostawców analizy zagrożeń — wersja zapoznawcza
 
 > [!IMPORTANT]
-> Wartownik platformy Azure jest obecnie dostępna w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Analiza zagrożeń na platformie Azure jest obecnie dostępna w publicznej wersji zapoznawczej.
+> Ta funkcja jest dostępna bez umowy dotyczącej poziomu usług i nie jest zalecana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Po obejmuje strumieniowe przesyłanie danych do platformy Azure przez wartownika możesz wzbogacić go za pomocą analizy zagrożeń, źródła danych używanego w organizacji. 
+Wskaźnik "platformy Azure" umożliwia importowanie wskaźników zagrożeń, które są używane w organizacji, co może pomóc analitykom zabezpieczeń w wykrywaniu i ustalaniu priorytetów znanych zagrożeń. Niektóre funkcje ze wskaźnikiem na platformie Azure są dostępne lub udoskonalone:
 
-Umożliwia wielu sprawdzić alerty i reguły z analizy zagrożeń wartość true, jeśli alert zostanie wygenerowany z określonego adresu IP, na przykład integracją dostawcy analizy zagrożeń będą mogli Cię powiadomić, jeśli ten adres IP ostatnio stwierdzono, być złośliwy , Wartownik platformy azure umożliwia integrację z [dostawców analizy zagrożeń](https://aka.ms/graphsecuritytips). 
+- **Analiza** obejmuje zestaw szablonów zaplanowanych reguł, które można włączyć, aby generować alerty i zdarzenia oparte na dopasowaniach zdarzeń dziennika ze wskaźników zagrożeń.
 
-Można przesyłać strumieniowo dzienniki z dostawców analizy zagrożeń na platformie Azure przez wartownika, za pomocą jednego kliknięcia. To połączenie umożliwia dołączenie wskaźniki zawierające różne rodzaje dostrzegalne elementy, takie jak adres IP, domeny, adres URL i skrótu pliku, wyszukiwanie i tworzenie niestandardowych alertów reguły w przez wartownika platformy Azure.  
-> [!NOTE]
-> Można wpisać wskaźniki dostosowane przed zagrożeniami na platformie Azure przez wartownika do użycia w reguł alertów, pulpitów nawigacyjnych i myślistwo scenariuszy dzięki integracji z usługą [tiIndicator Microsoft Graph Security](https://aka.ms/graphsecuritytiindicators) jednostki lub za pomocą [firmy Microsoft Wykres zabezpieczenia zintegrowane platformy analizy zagrożeń](https://aka.ms/graphsecuritytips).
+- **Skoroszyty** zawierają podsumowane informacje o wskaźnikach zagrożeń zaimportowanych do platformy Azure, a także wszystkie alerty wygenerowane na podstawie reguł analizy, które pasują do wskaźników zagrożeń.
+
+- Zapytania **polowania** umożliwiają badaczom zabezpieczeń korzystanie z wskaźników zagrożeń w kontekście typowych scenariuszy polowania.
+
+- **Notesy** mogą używać wskaźników zagrożeń podczas badania anomalii i wyszukiwania złośliwych zachowań.
+
+Za pomocą jednego z produktów zintegrowanej platformy do analizy zagrożeń (TIP), które znajdują się w następnej sekcji lub przy użyciu bezpośredniej integracji [Microsoft Graph z interfejsem API TiIndicators zabezpieczeń](https://aka.ms/graphsecuritytiindicators), można przesyłać wskaźniki zagrożeń do wskaźnika wskaźnikowego platformy Azure.
+
+## <a name="integrated-threat-intelligence-platform-products"></a>Zintegrowane produkty platformy do analizy zagrożeń
+
+- [MISP platforma analizy zagrożeń Open Source](https://www.misp-project.org/)
+    
+    Przykładowy skrypt, który zapewnia klientom z wystąpieniami MISP Migrowanie wskaźników zagrożeń do interfejsu API zabezpieczeń Microsoft Graph, można znaleźć w artykule [MISP do Microsoft Graph skrypt zabezpieczeń](https://github.com/microsoftgraph/security-api-solutions/tree/master/Samples/MISP).
+
+- [Palo Alto Networks MineMeld](https://www.paloaltonetworks.com/products/secure-the-network/subscriptions/minemeld)
+    
+    Aby uzyskać instrukcje z przewodnikiem, zobacz [wysyłanie IOCs do interfejsu API zabezpieczeń Microsoft Graph przy użyciu MineMeld](https://live.paloaltonetworks.com/t5/MineMeld-Articles/Sending-IOCs-to-the-Microsoft-Graph-Security-API-using-MineMeld/ta-p/258540).
+
+- [Platforma ThreatConnect](https://threatconnect.com/solution/)
+
 
 ## <a name="prerequisites"></a>Wymagania wstępne  
 
-- Użytkownik z administratorem globalnym lub uprawnienia administratora zabezpieczeń 
+- Rola usługi Azure AD administratora globalnego lub administratora zabezpieczeń umożliwiająca Przyznawanie uprawnień do produktu TIP lub aplikacji niestandardowej korzystającej Microsoft Graph z bezpośredniej integracji z interfejsem API tiIndicators zabezpieczeń.
 
-- Zintegrowana z usługą Microsoft Intelligent Security Graph aplikacji analizy zagrożeń 
+- Uprawnienia do odczytu i zapisu do obszaru roboczego wskaźnikowego platformy Azure w celu przechowywania wskaźników zagrożeń.
 
-## <a name="connect-to-threat-intelligence"></a>Nawiązać połączenie z analizy zagrożeń 
+## <a name="connect-azure-sentinel-to-your-threat-intelligence-provider"></a>Łączenie wskaźnikowego platformy Azure z dostawcą analizy zagrożeń
 
-1. Jeśli już używasz dostawcy analizy zagrożeń, pamiętaj przejść do aplikacji PORADĘ, a następnie przyznać uprawnienia do wskaźników do firmy Microsoft i określić usługę jako platformy Azure przez wartownika.  
+1. [Zarejestruj aplikację](/graph/auth-v2-service#1-register-your-app) w Azure Active Directory, aby uzyskać identyfikator aplikacji, klucz tajny aplikacji i identyfikator dzierżawy Azure Active Directory. Te wartości są potrzebne podczas konfigurowania zintegrowanego produktu lub aplikacji TIP, która korzysta Microsoft Graph z bezpośredniej integracji z interfejsem API tiIndicators zabezpieczeń.
 
-2. Na platformie Azure przez wartownika, wybierz **łączników danych** a następnie kliknij przycisk **analizy zagrożeń** kafelka.
+2. [Skonfiguruj uprawnienia interfejsu API](/graph/auth-v2-service#2-configure-permissions-for-microsoft-graph) dla zarejestrowanej aplikacji: Dodaj uprawnienie Microsoft Graph aplikacji **ThreatIndicators. ReadWrite. OwnedBy** do zarejestrowanej aplikacji.
 
-3. Kliknij przycisk **Połącz**. 
+3. Skontaktuj się z administratorem dzierżawy Azure Active Directory, aby przyznać administratorowi zgodę na zarejestrowana aplikacja w organizacji. Z Azure Portal: **Azure Active Directory** > **rejestracje aplikacji** **Wyświetl nazwęaplikacji>uprawnieniainterfejsu API Przyznaj zgodę administratora na\<**  >  >  >  ***Nazwa dzierżawy*.> \<**
 
-4. Aby użyć odpowiednich schematu w usłudze Log Analytics dla źródła analizy zagrożeń, możesz wyszukać **ThreatIntelligenceIndicator**. 
+4. Skonfiguruj produkt lub aplikację TIP, która korzysta Microsoft Graph z bezpośredniej integracji z interfejsem API tiIndicators zabezpieczeń w celu wysyłania wskaźników do wskaźnika platformy Azure, określając następujące kwestie:
+    
+    a. Wartości identyfikatora, wpisu tajnego i identyfikatora dzierżawy zarejestrowanej aplikacji.
+    
+    b. Dla produktu docelowego określ platformę Azure.
+    
+    c. Dla akcji Określ alert.
 
- 
-## <a name="next-steps"></a>Kolejne kroki
+5. W Azure Portal przejdź do**łączników danych**  >  **wskaźnikowych platformy Azure**, a następnie wybierz łącznik **platformy analizy zagrożeń (wersja zapoznawcza)** .
 
-W tym dokumencie przedstawiono sposób nawiązać połączenie z dostawcą analizy zagrożeń usługi Azure przez wartownika. Aby dowiedzieć się więcej na temat platformy Azure przez wartownika, zobacz następujące artykuły.
+6. Wybierz **Otwórz stronę łącznika**, a następnie **Połącz się**.
 
-- Aby rozpocząć korzystanie z platformy Azure przez wartownika, musisz mieć subskrypcji platformy Microsoft Azure. Jeśli nie masz subskrypcji, możesz zarejestrować się, aby uzyskać dostęp do [bezpłatnej wersji próbnej](https://azure.microsoft.com/free/).
-- Dowiedz się, jak [dołączyć dane do platformy Azure przez wartownika](quickstart-onboard.md), i [Uzyskaj wgląd w dane i potencjalne zagrożenia](quickstart-get-visibility.md).
+7. Aby wyświetlić wskaźniki zagrożeń, które zostały zaimportowane do wskaźnika wskaźnikowego platformy Azure, przejdź do **platformy Azure — dzienniki** > i**SecurityInsights**, a następnie rozwiń węzeł **ThreatIntelligenceIndicator**.
+
+## <a name="next-steps"></a>Następne kroki
+
+W tym dokumencie przedstawiono sposób łączenia dostawcy analizy zagrożeń z platformą Azure wskaźnikiem. Aby dowiedzieć się więcej na temat platformy Azure, zobacz następujące artykuły.
+
+- Dowiedz się [, jak uzyskać wgląd w dane oraz potencjalne zagrożenia](quickstart-get-visibility.md).
+- Rozpocznij [wykrywanie zagrożeń za pomocą platformy Azure — wskaźnik](tutorial-detect-threats.md).

@@ -1,12 +1,11 @@
 ---
-title: Przewodnik Szybki Start dotyczący platformy Azure — wprowadzenie do wersji zapoznawczej platformy Azure Microsoft Docs
+title: Przewodnik Szybki Start dotyczący platformy Azure — wprowadzenie do platformy Azure Microsoft Docs
 description: Przewodnik Szybki Start platformy Azure — wprowadzenie do platformy Azure
 services: sentinel
 documentationcenter: na
 author: rkarlin
 manager: rkarlin
 editor: ''
-ms.assetid: 5a4ae93c-d648-41fb-8fb8-96a025d2f73e
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
@@ -14,23 +13,21 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/20/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: c6434b4f5808c349d5e0ab04dafc5233f6ec63ac
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: c81f4cacd4c93d681122f3c8cd692ca8645288af
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780484"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240087"
 ---
-# <a name="quickstart-get-started-with-azure-sentinel-preview"></a>Szybki start: Wprowadzenie do wersji zapoznawczej platformy Azure — Wersja zapoznawcza
-
-> [!IMPORTANT]
-> W publicznej wersji zapoznawczej jest obecnie dostępna usługa Azure.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="quickstart-get-started-with-azure-sentinel"></a>Szybki start: Rozpoczynanie pracy z programem Azure Sentinel
 
 
-W tym przewodniku szybki start dowiesz się, jak szybko przeglądać i monitorować działania wykonywane w danym środowisku za pomocą platformy Azure. Po nawiązaniu połączenia ze źródłami danych na platformie Azure wskażesz błyskawiczną wizualizację i analizę danych, aby dowiedzieć się, co się dzieje między wszystkimi połączonymi źródłami danych. Wskaźnik na platformie Azure to pulpity nawigacyjne zapewniające pełną moc narzędzi już dostępnych na platformie Azure, a także tabele i wykresy, które są wbudowane w celu zapewnienia analiz dla dzienników i zapytań. Możesz użyć wbudowanych pulpitów nawigacyjnych lub łatwo utworzyć nowy pulpit nawigacyjny, od podstaw lub na podstawie istniejącego pulpitu nawigacyjnego. 
+
+
+W tym przewodniku szybki start dowiesz się, jak szybko wyświetlać i monitorować działania wykonywane w danym środowisku za pomocą platformy Azure. Po nawiązaniu połączenia ze źródłami danych na platformie Azure wskażesz błyskawiczną wizualizację i analizę danych, aby dowiedzieć się, co się dzieje między wszystkimi połączonymi źródłami danych. Wskaźnik na platformie Azure przedstawia skoroszyty zapewniające pełną moc narzędzi już dostępnych na platformie Azure, a także tabele i wykresy, które są wbudowane w celu zapewnienia analiz dla dzienników i zapytań. Można używać wbudowanych skoroszytów lub łatwo tworzyć nowe skoroszyty od podstaw lub w oparciu o istniejący skoroszyt. 
 
 ## <a name="get-visualization"></a>Pobierz wizualizację
 
@@ -59,43 +56,43 @@ Główna treść strony Przegląd zapewnia wgląd w informacje o stanie zabezpie
 
    ![Mapa wskaźnikowa platformy Azure](./media/qs-get-visibility/anomolies.png)
 
-## Korzystanie z wbudowanych pulpitów nawigacyjnych<a name="dashboards"></a>
+## Używanie wbudowanych skoroszytów<a name="dashboards"></a>
 
-Wbudowane pulpity nawigacyjne zapewniają zintegrowane dane z połączonych źródeł danych, aby umożliwić głębokie szczegółowe zdarzeń generowanych w ramach tych usług. Wbudowane pulpity nawigacyjne obejmują identyfikator platformy Azure, zdarzenia aktywności platformy Azure i lokalne, które mogą być danymi ze zdarzeń systemu Windows z serwerów, od alertów z pierwszej strony, w tym dzienników ruchu zapory, pakietu Office 365 i niezabezpieczonych protokołów opartych na systemie Windows wydarzeniach.
+Wbudowane skoroszyty zapewniają zintegrowane dane z połączonych źródeł danych, co pozwala na głębokie szczegółowe zdarzeń generowanych w ramach tych usług. Wbudowane skoroszyty obejmują identyfikator platformy Azure, zdarzenia aktywności platformy Azure i lokalne, które mogą być danymi z zdarzeń systemu Windows z serwerów, od alertów z pierwszej strony, w tym dzienników ruchu zapory, pakietu Office 365 i niezabezpieczonych protokołów opartych na systemie Windows wydarzeniach. Skoroszyty są oparte na Azure Monitor skoroszytach, aby zapewnić lepszą szerszym i elastyczność projektowania własnych skoroszytów. Aby uzyskać więcej informacji, zobacz [skoroszyty](../azure-monitor/app/usage-workbooks.md).
 
-1. W obszarze **Ustawienia**wybierz pozycję **pulpity nawigacyjne**. W obszarze **zainstalowane**są widoczne wszystkie zainstalowane pulpity nawigacyjne. W obszarze **wszystko** można zobaczyć całą galerię wbudowanych pulpitów nawigacyjnych, które są dostępne do zainstalowania. 
-2. Wyszukaj konkretny pulpit nawigacyjny, aby wyświetlić całą listę i opis każdej oferty. 
-3. Przy założeniu, że używasz usługi Azure AD, aby rozpocząć korzystanie z platformy Azure, zalecamy zainstalowanie co najmniej następujących pulpitów nawigacyjnych:
+1. W obszarze **Ustawienia**wybierz pozycję **skoroszyty**. W obszarze **zainstalowane**można zobaczyć wszystkie zainstalowane skoroszyty. W obszarze **wszystko**można zobaczyć całą galerię wbudowanych skoroszytów, które są dostępne do zainstalowania. 
+2. Wyszukaj konkretny skoroszyt, aby zobaczyć całą listę i opis poszczególnych ofert. 
+3. Przy założeniu, że używasz usługi Azure AD, aby rozpocząć korzystanie z platformy Azure, zalecamy zainstalowanie co najmniej następujących skoroszytów:
    - **Usługa Azure AD**: Użyj jednego lub obu następujących elementów:
-       - **Logowania za pomocą usługi Azure AD** analizują logowania w czasie, aby sprawdzić, czy występują anomalie. Ten pulpit nawigacyjny zawiera nieudane logowania w aplikacjach, urządzeniach i lokalizacjach, dzięki czemu można natychmiast zauważyć, jeśli coś się nie zdarza. Zwróć uwagę na wiele nieudanych logowań. 
+       - **Logowania za pomocą usługi Azure AD** analizują logowania w czasie, aby sprawdzić, czy występują anomalie. Te skoroszyty zawierają nieudane logowania w aplikacjach, urządzeniach i lokalizacjach, dzięki czemu możesz zauważyć, że w przypadku nietypowego działania wystąpią. Zwróć uwagę na wiele nieudanych logowań. 
        - **Dzienniki inspekcji usługi Azure AD** analizują działania administracyjne, takie jak zmiany użytkowników (Dodawanie, usuwanie itp.), tworzenie grup i modyfikacje.  
 
-   - Dodaj pulpit nawigacyjny dla zapory. Na przykład Dodaj pulpit nawigacyjny Palo Alto. Pulpit nawigacyjny analizuje ruch związany z zaporą, zapewniając korelacje między danymi zapory i zdarzeniami zagrożeń oraz wyróżnia podejrzane zdarzenia w różnych jednostkach. Pulpity nawigacyjne zapewniają informacje o trendach w ruchu i umożliwiają przechodzenie do szczegółów i filtrowanie wyników. 
+   - Dodaj skoroszyt dla zapory. Na przykład Dodaj skoroszyt Palo Alto. Skoroszyt analizuje ruch związany z zaporą, zapewniając korelacje między zdarzeniami danych i zagrożeniami zapory, a następnie wyróżnia podejrzane zdarzenia w różnych jednostkach. Skoroszyty zawierają informacje o trendach w ruchu i umożliwiają przechodzenie do szczegółów i filtrowanie wyników. 
 
       ![PAL Alto Dashboard](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-Możesz dostosować pulpity nawigacyjne, edytując przycisk ![](./media/qs-get-visibility/edit-query-button.png)głównej kwerendy. Możesz ![kliknąć przycisk](./media/qs-get-visibility/go-to-la-button.png) przycisk, aby przejść do log Analytics, [Aby edytować zapytanie](../azure-monitor/log-query/get-started-portal.md)w tym miejscu i można wybrać wielokropek (...) i wybrać opcję **Dostosuj dane kafelka**, co umożliwia edytowanie filtru czasu głównego lub usuwanie określone kafelki z pulpitu nawigacyjnego.
+Możesz dostosować skoroszyty, edytując przycisk ![](./media/qs-get-visibility/edit-query-button.png)głównej kwerendy. Możesz ![kliknąć przycisk](./media/qs-get-visibility/go-to-la-button.png) przycisk, aby przejść do log Analytics, [Aby edytować zapytanie](../azure-monitor/log-query/get-started-portal.md)w tym miejscu i można wybrać wielokropek (...) i wybrać opcję **Dostosuj dane kafelka**, co umożliwia edytowanie filtru czasu głównego lub usuwanie określone kafelki ze skoroszytu.
 
 Aby uzyskać więcej informacji na temat pracy z zapytaniami, zobacz [samouczek: Dane wizualne w Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md)
 
 ### <a name="add-a-new-tile"></a>Dodawanie nowego kafelka
 
-Jeśli chcesz dodać nowy kafelek, możesz dodać go do istniejącego pulpitu nawigacyjnego, jednego z nich lub wbudowanego pulpitu nawigacyjnego platformy Azure. 
+Jeśli chcesz dodać nowy kafelek, możesz dodać go do istniejącego skoroszytu, który został utworzony lub wbudowany arkusz kontrolny platformy Azure. 
 1. W log Analytics Utwórz kafelek przy użyciu instrukcji znalezionych w [samouczku: Dane wizualne w Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md). 
-2. Po utworzeniu kafelka w obszarze **Przypnij**wybierz Pulpit nawigacyjny, w którym ma być wyświetlany kafelek.
+2. Po utworzeniu kafelka w obszarze **Przypnij**wybierz skoroszyt, w którym ma się pojawić kafelek.
 
-## <a name="create-new-dashboards"></a>Utwórz nowe pulpity nawigacyjne
-Możesz utworzyć nowy pulpit nawigacyjny od podstaw lub użyć wbudowanego pulpitu nawigacyjnego jako podstawy dla nowego pulpitu nawigacyjnego.
+## <a name="create-new-workbooks"></a>Utwórz nowe skoroszyty
+Możesz utworzyć nowy skoroszyt od podstaw lub użyć wbudowanego skoroszytu jako podstawy dla nowego skoroszytu.
 
-1. Aby utworzyć nowy pulpit nawigacyjny od podstaw, wybierz pulpity nawigacyjne, a następnie pozycję **+ nowy pulpit nawigacyjny**.
-2. Wybierz subskrypcję, w której jest tworzony pulpit nawigacyjny, i nadaj jej nazwę opisową. Każdy pulpit nawigacyjny jest zasobem platformy Azure, podobnie jak inne, i można przypisać role IT (RBAC) w celu zdefiniowania i ograniczenia dostępu do nich. 
-3. Aby umożliwić jej wyświetlanie na pulpitach nawigacyjnych w celu przypinania wizualizacji do, należy ją udostępnić. Kliknij przycisk **Udostępnij** , a następnie **Zarządzaj użytkownikami**. 
+1. Aby utworzyć nowy skoroszyt od podstaw, zaznacz opcję **skoroszyty** , a następnie pozycję **+ nowy skoroszyt**.
+2. Wybierz subskrypcję, w której jest tworzony skoroszyt, i nadaj jej nazwę opisową. Każdy skoroszyt jest zasobem platformy Azure, podobnie jak inne, i można przypisać role IT (RBAC), aby zdefiniować i ograniczyć dostęp do nich. 
+3. Aby umożliwić wyświetlanie w skoroszytach do przypinania wizualizacji do, należy ją udostępnić. Kliknij przycisk **Udostępnij** , a następnie **Zarządzaj użytkownikami**. 
  
-1. Użyj **uprawnień Sprawdź dostęp** i **rola** , tak jak w przypadku innych zasobów platformy Azure. Aby uzyskać więcej informacji, zobacz [udostępnianie pulpitów nawigacyjnych platformy Azure przy użyciu RBAC](../azure-portal/azure-portal-dashboard-share-access.md).
+1. Użyj **uprawnień Sprawdź dostęp** i **rola** , tak jak w przypadku innych zasobów platformy Azure. Aby uzyskać więcej informacji, zobacz [udostępnianie skoroszytów platformy Azure przy użyciu RBAC](../azure-portal/azure-portal-dashboard-share-access.md).
 
 
-## <a name="new-dashboard-examples"></a>Przykłady nowych pulpitów nawigacyjnych
+## <a name="new-workbook-examples"></a>Przykłady nowych skoroszytów
 
 Poniższe przykładowe zapytanie umożliwia porównanie trendów ruchu w tygodniach. Można łatwo przełączać dostawcę urządzenia i źródło danych, na których uruchomiono zapytanie. W tym przykładzie używamy SecurityEvent z systemu Windows, możesz przełączyć go do uruchamiania w usłudze Azure lub CommonSecurityLog na dowolnej innej zaporze.
 
@@ -117,7 +114,7 @@ Możesz chcieć utworzyć zapytanie, które zawiera dane z wielu źródeł. Moż
     | project OperationName, RoleAssignmentTime = TimeGenerated, user = Caller) on user
     | project-away user1
 
-Możesz tworzyć różne pulpity nawigacyjne w oparciu o rolę osoby, która przegląda dane i czego szukają. Na przykład możesz utworzyć pulpit nawigacyjny dla administratora sieci, który zawiera dane zapory. Możesz również tworzyć pulpity nawigacyjne w zależności od tego, jak często chcesz je przeglądać, czy istnieją jakieś rzeczy, które chcesz przejrzeć codziennie, i inne elementy, które chcesz sprawdzić po godzinie, na przykład możesz chcieć zajrzeć na logowanie do usługi Azure AD co godzinę, aby wyszukać anomali AK. 
+Możesz tworzyć różne skoroszyty w oparciu o rolę osoby, która przegląda dane i czego szukają. Na przykład można utworzyć skoroszyt dla administratora sieci, który zawiera dane zapory. Możesz również utworzyć skoroszyty na podstawie tego, jak często mają być przeglądane elementy, niezależnie od tego, czy istnieją jakieś rzeczy, które chcesz przejrzeć codziennie, i innych elementów, które mają być sprawdzane po godzinie, na przykład możesz chcieć zajrzeć do logowania za pomocą usługi Azure AD co godzinę, aby wyszukać anomalię wolumin. 
 
 ## <a name="create-new-detections"></a>Utwórz nowe wykrycia
 
@@ -125,18 +122,14 @@ Generuj wykrycia dla [źródeł danych połączonych z platformą Azure wskaźni
 
 Podczas tworzenia nowego wykrywania należy skorzystać z wbudowanych wykryć spreparowanych przez badaczy zabezpieczeń firmy Microsoft, które są dostosowane do połączonych źródeł danych.
 
-1. [W społeczności usługi GitHub](https://github.com/Azure/Azure-Sentinel/tree/master/Detections) przejdź do folderu **Detects** , a następnie wybierz odpowiednie foldery.
-   ![odpowiednie foldery](./media/qs-get-visibility/detection-folders.png)
- 
-3.  Przejdź do karty **Analiza** i wybierz pozycję **Dodaj**.
-   ![Utwórz regułę w Log Analytics](./media/qs-get-visibility/query-params.png)
+Aby wyświetlić wszystkie gotowe do użycia wykrycia, przejdź do pozycji **Analiza** , a następnie pozycję **Szablony reguł**. Ta karta zawiera wszystkie wbudowane reguły kontrolki Azure — wskaźnik.
 
-3.  Skopiuj wszystkie parametry do reguły, a następnie kliknij przycisk **Utwórz**.
-   ![Utwórz regułę alertu](./media/qs-get-visibility/create-alert-rule.png)
+   ![Używanie wbudowanych wykryć do znajdowania zagrożeń przy użyciu platformy Azure — wskaźnik](media/tutorial-detect-built-in/view-oob-detections.png)
 
+Aby uzyskać więcej informacji na temat uzyskiwania wbudowanych wykryć, zobacz [samouczek: Uzyskaj wbudowaną analizę](tutorial-detect-threats-built-in.md).
  
 ## <a name="next-steps"></a>Następne kroki
-W tym przewodniku szybki start pokazano, jak rozpocząć korzystanie z platformy Azure. Przejdź do samouczka dotyczącego [sposobu wykrywania zagrożeń](tutorial-detect-threats.md).
+W tym przewodniku szybki start pokazano, jak rozpocząć korzystanie z platformy Azure. Przejdź do samouczka dotyczącego [sposobu wykrywania zagrożeń](tutorial-detect-threats-built-in.md).
 > [!div class="nextstepaction"]
-> [Wykrywaj zagrożenia](tutorial-detect-threats.md) , aby zautomatyzować swoje odpowiedzi na zagrożenia.
+> [Utwórz niestandardowe reguły wykrywania zagrożeń](tutorial-detect-threats-custom.md) , aby zautomatyzować odpowiedzi na zagrożenia.
 

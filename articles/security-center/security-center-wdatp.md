@@ -1,6 +1,6 @@
 ---
-title: Zaawansowana ochrona przed zagrożeniami w usłudze Windows Defender przy użyciu Azure Security Center
-description: W tym dokumencie przedstawiono integrację między programem Azure Security Center a zaawansowaną ochroną przed zagrożeniami w usłudze Windows Defender.
+title: Zaawansowana ochrona przed zagrożeniami w usłudze Microsoft Defender przy użyciu Azure Security Center
+description: W tym dokumencie przedstawiono integrację między programem Azure Security Center i zaawansowaną ochroną przed zagrożeniami w usłudze Microsoft Defender.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -10,57 +10,57 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/21/2019
+ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: b1af4f99b1446599f53448884d3147601fba56a8
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 07934e3c7d9f61ecb4153e6a169882509a81dc75
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200646"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71241043"
 ---
-# <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Zaawansowana ochrona przed zagrożeniami w usłudze Windows Defender przy użyciu Azure Security Center
+# <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Zaawansowana ochrona przed zagrożeniami w usłudze Microsoft Defender przy użyciu Azure Security Center
 
-Usługa Azure Security Center rozszerza ofertę platform ochrony obciążeń w chmurze dzięki integracji z usługą [Windows Defender Advanced Threat Protection](https://www.microsoft.com/en-us/WindowsForBusiness/windows-atp) (ATP).
-Ta zmiana zapewnia kompleksowe możliwości dotyczące wykrywania i odpowiedzi punktu końcowego (EDR, Endpoint Detection and Response). Dzięki integracji z usługą Windows Defender ATP można wychwycić nietypowe. Możesz także wykryć zaawansowane ataki i odpowiedzieć na nie w punktach końcowych serwera monitorowanych przez Azure Security Center.
+Azure Security Center rozszerza oferty platformy ochrony obciążeń w chmurze przez integrację z usługą [Microsoft Defender Advanced Threat Protection](https://www.microsoft.com/microsoft-365/windows/microsoft-defender-atp) (ATP).
+Ta zmiana zapewnia kompleksowe możliwości dotyczące wykrywania i odpowiedzi punktu końcowego (EDR, Endpoint Detection and Response). Dzięki integracji z usługą Microsoft Defender ATP można wykasować nietypowe. Możesz także wykryć zaawansowane ataki i odpowiedzieć na nie w punktach końcowych serwera monitorowanych przez Azure Security Center.
 
-## <a name="windows-defender-atp-features-in-security-center"></a>Funkcje Windows Defender ATP w Security Center
+## <a name="microsoft-defender-atp-features-in-security-center"></a>Funkcje ATP dotyczące programu Microsoft Defender w Security Center
 
-W przypadku korzystania z programu Windows Defender ATP uzyskasz następujące korzyści:
+W przypadku korzystania z programu Microsoft Defender ATP uzyskasz następujące korzyści:
 
-- **Czujniki wykrywania wykrycia po wykryciu nowej generacji**: Czujniki usługi Windows Defender ATP dla serwerów z systemem Windows zbierają ogromną gamę sygnałów z zachowaniem.
+- **Zaawansowane czujniki wykrywania po naruszeniu naruszeń**: Czujniki usługi Microsoft Defender ATP dla serwerów z systemem Windows zbierają ogromną gamę sygnałów z zachowaniem.
 
-- **Wykrywanie naruszeń po wykorzystaniu analiz, oparte na chmurze**: Usługa Windows Defender ATP szybko dostosowuje się do zmieniających się zagrożeń. Używa zaawansowanej analizy i danych Big Data. Usługa Windows Defender ATP jest wzmocniona możliwościami Intelligent Security Graph z sygnałami w systemach Windows, Azure i Office w celu wykrywania nieznanych zagrożeń. Zapewnia alerty funkcjonalne i umożliwia szybkie reagowanie na nie.
+- **Wykrywanie naruszeń po wykorzystaniu analiz, oparte na chmurze**: Usługa Microsoft Defender ATP szybko dostosowuje się do zmieniających się zagrożeń. Używa zaawansowanej analizy i danych Big Data. Usługa Microsoft Defender ATP jest wzmocniona możliwościami Intelligent Security Graph z sygnałami w systemach Windows, Azure i Office w celu wykrywania nieznanych zagrożeń. Zapewnia alerty funkcjonalne i umożliwia szybkie reagowanie na nie.
 
-- **Analiza zagrożeń**: Usługa Windows Defender ATP identyfikuje narzędzia, techniki i procedury atakujących. Po jego wykryciu program generuje alerty. Używa on danych wygenerowanych przez program Microsoft Threat myśliwych i zespoły ds. zabezpieczeń, uzupełnione o analizy udostępniane przez partnerów.
+- **Analiza zagrożeń**: Usługa Microsoft Defender ATP generuje alerty po zidentyfikowaniu narzędzi, technik i procedur osoby atakującej. Używa on danych wygenerowanych przez program Microsoft Threat myśliwych i zespoły ds. zabezpieczeń, uzupełnione o analizy udostępniane przez partnerów.
 
-Te możliwości są teraz dostępne w usłudze Azure Security Center:
+Następujące funkcje są teraz dostępne w Azure Security Center:
 
-- **Automatyczne**dołączanie: Czujnik usługi Windows Defender ATP jest automatycznie włączany dla serwerów z systemem Windows, które są dołączane do Azure Security Center.
+- **Automatyczne**dołączanie: Czujnik usługi Microsoft Defender ATP jest automatycznie włączany dla serwerów z systemem Windows, które są dołączane do Azure Security Center.
 
-- **Pojedyncze okienko szkła**: W konsoli Azure Security Center są wyświetlane alerty programu Windows Defender ATP.
+- **Pojedyncze okienko szkła**: W konsoli Azure Security Center są wyświetlane alerty ATP programu Microsoft Defender.
 
-- **Szczegółowa badanie maszynowe**: Azure Security Center klienci mogą uzyskać dostęp do konsoli programu Windows Defender ATP w celu przeprowadzenia szczegółowej analizy w celu odzyskania zakresu naruszenia.
+- **Szczegółowa badanie maszynowe**: Azure Security Center klienci mogą korzystać z konsoli programu Microsoft Defender ATP w celu przeprowadzenia szczegółowej analizy w celu odzyskania zakresu naruszenia.
 
 ![Azure Security Center, wyświetlanie listy alertów i ogólnych informacji o każdym alercie](media/security-center-wdatp/image1.png)
 
-Można dokładniej zbadać alert, przestawiając się do programu Windows Defender ATP. Można wyświetlić dodatkowe informacje, takie jak drzewo procesu alertu i wykres incydentu. Możesz również wyświetlić szczegółową oś czasu komputera, która pokazuje każde zachowanie w okresie historycznym przez maksymalnie sześć miesięcy.
+Aby przeprowadzić dalsze badanie, użyj programu Microsoft Defender ATP. Usługa Microsoft Defender ATP udostępnia dodatkowe informacje, takie jak drzewo procesu alertu i wykres incydentu. Możesz również wyświetlić szczegółową oś czasu komputera, która pokazuje każde zachowanie w okresie historycznym przez maksymalnie sześć miesięcy.
 
-![Strona Windows Defender ATP ze szczegółowymi informacjami o alercie](media/security-center-wdatp/image3.png)
+![Strona Microsoft Defender ATP ze szczegółowymi informacjami o alercie](media/security-center-wdatp/image3.png)
 
 ## <a name="platform-support"></a>Obsługa platform
 
-Usługa Windows Defender ATP w Security Center obsługuje wykrywanie w systemach operacyjnych Windows Server 2016, 2012 R2 i 2008 R2 z dodatkiem SP1 w standardowej subskrypcji usługi.
+Usługa Microsoft Defender ATP w Security Center obsługuje wykrywanie w systemach operacyjnych Windows Server 2016, 2012 R2 i 2008 R2 z dodatkiem SP1 w standardowej subskrypcji usługi.
 
 > [!NOTE]
-> W przypadku używania Azure Security Center do monitorowania serwerów usługa Windows Defender ATP jest automatycznie tworzona i domyślnie są przechowywane dane ATP dotyczące programu Windows Defender. Jeśli musisz przenieść dane do innej lokalizacji, musisz skontaktować się z pomoc techniczna firmy Microsoft w celu zresetowania dzierżawy.
+> W przypadku korzystania z Azure Security Center do monitorowania serwerów usługa Microsoft Defender ATP zostanie automatycznie utworzona, a dane z witryny Microsoft Defender ATP są domyślnie przechowywane w Europie. Jeśli musisz przenieść dane do innej lokalizacji, musisz skontaktować się z pomoc techniczna firmy Microsoft w celu zresetowania dzierżawy. Monitorowanie punktu końcowego serwera korzystające z tej integracji zostało wyłączone dla klientów korzystających z pakietu Office 365 w zatoce.
 
 ## <a name="onboarding-servers-to-security-center"></a>Dołączanie serwerów do Security Center 
 
-Aby dołączać serwery do Security Center, kliknij przycisk **Przejdź do Azure Security Center do** dołączania serwerów z usługi Windows Defender ATP Server dołączanie.
+Aby dołączać serwery do Security Center, kliknij przycisk **Przejdź do Azure Security Center do** dołączania serwerów z usługi Microsoft Defender ATP Server dołączanie.
 
-1. W bloku dołączania wybierz lub Utwórz obszar roboczy, w którym mają zostać zapisane dane. <br>
-2. Jeśli nie widzisz wszystkich obszarów roboczych, może to być spowodowane brakiem uprawnień, upewnij się, że obszar roboczy jest ustawiony na warstwę Standardowa usługi Azure Security. Aby uzyskać więcej informacji [, zobacz Uaktualnianie do warstwy standardowa Security Center w celu zwiększenia bezpieczeństwa](security-center-pricing.md).
+1. W obszarze dołączania wybierz lub Utwórz obszar roboczy, w którym mają zostać zapisane dane. <br>
+2. Jeśli nie widzisz wszystkich obszarów roboczych, może to być spowodowane brakiem uprawnień, upewnij się, że obszar roboczy jest ustawiony na warstwę Standardowa usługi Azure Security. Aby uzyskać więcej informacji, zobacz [uaktualnianie do warstwy standardowa Security Center w celu zwiększenia bezpieczeństwa](security-center-pricing.md).
     
 3. Wybierz pozycję **Dodaj serwery** , aby wyświetlić instrukcje dotyczące sposobu instalowania Microsoft Monitoring Agent. 
 
@@ -68,35 +68,32 @@ Aby dołączać serwery do Security Center, kliknij przycisk **Przejdź do Azure
 
    ![Dołączanie komputerów](media/security-center-wdatp/onboard-computers.png)
 
-## <a name="enable-windows-defender-atp-integration"></a>Włącz integrację z programem Windows Defender ATP
+## <a name="enable-microsoft-defender-atp-integration"></a>Włącz integrację z programem Microsoft Defender ATP
 
-Aby sprawdzić, czy integracja z usługą Windows Defender ATP jest włączona, wybierz pozycję Cennik usługi **Security Center** >  **& Ustawienia** > kliknij subskrypcję.
-
-  ![Azure Security Center Zarządzanie zasadami](media/security-center-wdatp/policy-management.png)
-
+Aby sprawdzić, czy integracja z usługą Microsoft Defender ATP jest włączona, wybierz pozycję Cennik usługi **Security Center** >  **& Ustawienia** > kliknij subskrypcję.
 W tym miejscu można zobaczyć aktualnie włączone integracje.
 
-  ![Strona ustawień wykrywania zagrożeń Azure Security Center z włączoną integracją z usługą Windows Defender ATP](media/security-center-wdatp/enable-integrations.png)
+  ![Strona ustawień wykrywania zagrożeń Azure Security Center z włączoną integracją z usługą Microsoft Defender ATP](media/security-center-wdatp/enable-integrations.png)
 
-- Jeśli serwery zostały już dołączone do Azure Security Center warstwy Standardowa, nie musisz podejmować żadnych dalszych działań. Azure Security Center automatycznie dołączać serwery do programu Windows Defender ATP. Może to potrwać do 24 godzin.
+- Jeśli serwery zostały już dołączone do Azure Security Center warstwy Standardowa, nie musisz podejmować żadnych dalszych działań. Azure Security Center automatycznie dołączać serwery do programu Microsoft Defender ATP. Dołączanie może potrwać do 24 godzin.
 
 - Jeśli nie dołączysz serwerów do Azure Security Center warstwy Standardowa, Dołącz je do Azure Security Center jak zwykle.
 
-- W przypadku dołączania serwerów za pomocą programu Windows Defender ATP:
+- W przypadku dołączania serwerów za pomocą programu Microsoft Defender ATP:
   - Zapoznaj się z dokumentacją, aby uzyskać wskazówki dotyczące [odłączania maszyn serwera](https://go.microsoft.com/fwlink/p/?linkid=852906).
   - Dołącz te serwery do Azure Security Center.
 
-## <a name="access-to-the-windows-defender-atp-portal"></a>Dostęp do portalu Windows Defender ATP
+## <a name="access-to-the-microsoft-defender-atp-portal"></a>Dostęp do portalu Microsoft Defender ATP
 
-Postępuj zgodnie z instrukcjami w temacie [Przypisywanie dostępu użytkowników do portalu](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/assign-portal-access-windows-defender-advanced-threat-protection).
+Postępuj zgodnie z instrukcjami w temacie [Przypisywanie dostępu użytkowników do portalu](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/assign-portal-access).
 
 ## <a name="set-the-firewall-configuration"></a>Ustawianie konfiguracji zapory
 
-Jeśli masz serwer proxy lub zaporę blokującą ruch anonimowy, ponieważ czujnik usługi Windows Defender ATP jest połączony z kontekstu systemu, upewnij się, że ruch anonimowy jest dozwolony. Postępuj zgodnie z instrukcjami w temacie [Włączanie dostępu do adresów URL usługi Windows Defender ATP na serwerze proxy](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/configure-proxy-internet-windows-defender-advanced-threat-protection#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server).
+Jeśli masz serwer proxy lub zaporę blokującą ruch anonimowy, ponieważ czujnik usługi Microsoft Defender ATP nawiązuje połączenie z kontekstu systemu, upewnij się, że ruch anonimowy jest dozwolony. Postępuj zgodnie z instrukcjami w temacie [Włączanie dostępu do adresów URL usługi Microsoft Defender ATP na serwerze proxy](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server).
 
 ## <a name="test-the-feature"></a>Testowanie funkcji
 
-Aby wygenerować niegroźny alert testu Windows Defender ATP:
+Aby wygenerować niegroźny alert dotyczący testu Microsoft Defender ATP:
 
 1. Użyj Pulpit zdalny, aby uzyskać dostęp do maszyny wirtualnej z systemem Windows Server 2012 R2 lub z maszyną wirtualną z systemem Windows Server 2016.  Otwórz okno wiersza polecenia.
 
@@ -108,11 +105,11 @@ Aby wygenerować niegroźny alert testu Windows Defender ATP:
 
    ![Okno wiersza polecenia z powyższym poleceniem](media/security-center-wdatp/image4.jpeg)
 
-3. Jeśli polecenie zakończy się pomyślnie, zobaczysz nowy Alert na pulpicie nawigacyjnym Azure Security Center i portalu Windows Defender ATP. Ten alert może potrwać kilka minut.
+3. Jeśli polecenie zakończy się pomyślnie, zobaczysz nowy Alert na pulpicie nawigacyjnym Azure Security Center i portalu Microsoft Defender ATP. Ten alert może potrwać kilka minut.
 
 4. Aby sprawdzić alert w Security Center, przejdź do **alertów** >  zabezpieczeń**podejrzany wiersz polecenia programu PowerShell**.
 
-5. W oknie badanie wybierz link, aby przejść do portalu usługi Windows Defender ATP.
+5. W oknie badanie wybierz link, aby przejść do portalu usługi Microsoft Defender ATP.
 
 ## <a name="next-steps"></a>Następne kroki
 

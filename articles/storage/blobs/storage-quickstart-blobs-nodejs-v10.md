@@ -3,16 +3,16 @@ title: Przekazywanie, pobieranie, wyświetlanie i usuwanie obiektów blob za pom
 description: Tworzenie, przekazywanie i usuwanie obiektów blob oraz kontenerów w środowisku Node.js za pomocą usługi Azure Storage
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/14/2018
+ms.date: 09/24/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 9d709d19f179dc29b5e290a141d446f3353f4971
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: f8c7de63f2bd4b7329e8ae6a53123c9c1ea035af
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306036"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240444"
 ---
 # <a name="quickstart-upload-download-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascript"></a>Szybki start: Przekazywanie, pobieranie, wyświetlanie i usuwanie obiektów blob za pomocą zestawu SDK usługi Azure Storage w wersji 10 dla języka JavaScript
 
@@ -51,6 +51,7 @@ npm install
 ```
 
 ## <a name="run-the-sample"></a>Uruchamianie aplikacji przykładowej
+
 Po zainstalowaniu zależności możesz uruchomić przykład, wykonując następujące polecenie:
 
 ```bash
@@ -60,10 +61,11 @@ npm start
 Dane wyjściowe aplikacji będą mieć postać podobną do następującego przykładu:
 
 ```bash
+Container "demo" is created
 Containers:
  - container-one
  - container-two
-Container "demo" is created
+ - demo
 Blob "quickstart.txt" is uploaded
 Local file "./readme.md" is uploaded
 Blobs in "demo" container:
@@ -75,9 +77,11 @@ Blob "quickstart.txt" is deleted
 Container "demo" is deleted
 Done
 ```
-Jeśli w tym przewodniku Szybki start używasz nowego konta magazynu, nazwy kontenerów mogą nie pojawić się pod etykietą „*Kontenery*”.
+
+Jeśli używasz nowego konta magazynu dla tego przewodnika Szybki Start, możesz zobaczyć tylko kontener *demonstracyjny* w obszarze etykieta "*kontenery:* ".
 
 ## <a name="understanding-the-code"></a>Omówienie kodu
+
 Przykład zaczyna się od zaimportowania pewnej liczby klas i funkcji z przestrzeni nazw usługi Azure Blob Storage. Każdy z zaimportowanych elementów jest omawiany w kontekście, w jakim jest używany w tym przykładzie.
 
 ```javascript
@@ -123,14 +127,18 @@ const STORAGE_ACCOUNT_NAME = process.env.AZURE_STORAGE_ACCOUNT_NAME;
 const ACCOUNT_ACCESS_KEY = process.env.AZURE_STORAGE_ACCOUNT_ACCESS_KEY;
 ```
 Kolejny zestaw stałych pozwala ujawnić intencje obliczeń rozmiaru pliku podczas operacji przekazywania.
+
 ```javascript
 const ONE_MEGABYTE = 1024 * 1024;
 const FOUR_MEGABYTES = 4 * ONE_MEGABYTE;
 ```
+
 Żądania wysyłane przez interfejs API można ustawić tak, aby wygasały po upływie określonego interwału. Klasa [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-preview) jest odpowiedzialna za zarządzanie sposobem wygasania żądań, a poniższa stała służy do definiowania limitów czasu używanych w tym przykładzie.
+
 ```javascript
 const ONE_MINUTE = 60 * 1000;
 ```
+
 ### <a name="calling-code"></a>Kod wywołujący
 
 Aby umożliwić obsługę składni *async/await* języka JavaScript, cały kod wywołujący został opakowany w funkcję o nazwie *execute*. Następnie funkcja *execute* jest wywoływana i obsługiwana jako obietnica.
@@ -142,6 +150,7 @@ async function execute() {
 
 execute().then(() => console.log("Done")).catch((e) => console.log(e));
 ```
+
 Cały poniższy kod jest wywoływany wewnątrz funkcji execute, w której umieszczono komentarz `// commands...`.
 
 Najpierw odpowiednie zmienne są deklarowane w celu przypisania nazw, utworzenia przykładu zawartości oraz wskazania pliku lokalnego do przekazania do magazynu obiektów blob.
@@ -160,6 +169,7 @@ const credentials = new SharedKeyCredential(STORAGE_ACCOUNT_NAME, ACCOUNT_ACCESS
 const pipeline = StorageURL.newPipeline(credentials);
 const serviceURL = new ServiceURL(`https://${STORAGE_ACCOUNT_NAME}.blob.core.windows.net`, pipeline);
 ```
+
 W tym bloku kodu są używane następujące klasy:
 
 - Klasa [SharedKeyCredential](/javascript/api/%40azure/storage-blob/sharedkeycredential?view=azure-node-preview) jest odpowiedzialna za opakowywanie poświadczeń konta magazynu w celu dostarczenia ich do potoku żądań.
@@ -174,6 +184,7 @@ Wystąpienie klasy *ServiceURL* jest używane z wystąpieniami [ContainerURL](/j
 const containerURL = ContainerURL.fromServiceURL(serviceURL, containerName);
 const blockBlobURL = BlockBlobURL.fromContainerURL(containerURL, blobName);
 ```
+
 Zmienne *containerURL* i *blockBlobURL* są używane wielokrotnie w tym przykładzie na potrzeby działań związanych z kontem magazynu. 
 
 W tym momencie na koncie magazynu nie ma kontenera. Wystąpienie zmiennej *ContainerURL* reprezentuje adres URL, na którym możesz działać. Używając tego wystąpienia, możesz utworzyć i usunąć kontener. Lokalizacja tego kontenera jest taka sama jak następująca:
@@ -187,6 +198,7 @@ Zmienna *blockBlobURL* służy do zarządzania poszczególnymi obiektami blob, u
 ```bash
 https://<ACCOUNT_NAME>.blob.core.windows.net/demo/quickstart.txt
 ```
+
 Podobnie jak w przypadku kontenera, blokowy obiekt blob jeszcze nie istnieje. Zmienna *blockBlobURL* jest używana później do utworzenia obiektu blob przez przekazanie zawartości.
 
 ### <a name="using-the-aborter-class"></a>Używanie klasy Aborter
@@ -196,37 +208,13 @@ Podobnie jak w przypadku kontenera, blokowy obiekt blob jeszcze nie istnieje. Zm
 ```javascript
 const aborter = Aborter.timeout(30 * ONE_MINUTE);
 ```
+
 Klasy Aborter zapewniają kontrolę nad żądaniami, umożliwiając:
 
 - wyznaczanie ilości czasu dla partii żądań
 - wyznaczanie czasu na wykonanie pojedynczego żądania w partii
 - anulowanie żądań
 - używanie elementu statycznego *Aborter.none* w celu zatrzymania upływu limitu czasu dla wszystkich żądań
-
-### <a name="show-container-names"></a>Wyświetlanie nazw kontenerów
-Na kontach można przechowywać ogromną liczbę kontenerów. Poniższy kod przedstawia sposób wyświetlania listy kontenerów podzielonej na segmenty, co umożliwia przeglądanie dużej liczby kontenerów. Funkcja *ShowContainerNames* przekazuje wystąpienia klas *ServiceURL* i *Aborter*.
-
-```javascript
-console.log("Containers:");
-await showContainerNames(serviceURL, aborter);
-```
-Funkcja *ShowContainerNames* używa metody *listContainersSegment*, aby zażądać partii nazw kontenerów z konta magazynu.
-```javascript
-async function showContainerNames(aborter, serviceURL) {
-
-    let response;
-    let marker;
-
-    do {
-        response = await serviceURL.listContainersSegment(aborter, marker);
-        marker = response.marker;
-        for(let container of response.containerItems) {
-            console.log(` - ${ container.name }`);
-        }
-    } while (marker);
-}
-```
-Po zwróceniu odpowiedzi powtarzane są elementy *containerItem* w celu zarejestrowania nazwy w konsoli. 
 
 ### <a name="create-a-container"></a>Tworzenie kontenera
 
@@ -236,22 +224,58 @@ Do tworzenia kontenera służy metoda *create* klasy *ContainerURL*.
 await containerURL.create(aborter);
 console.log(`Container: "${containerName}" is created`);
 ```
+
 Ponieważ nazwa kontenera jest definiowana podczas wywoływania funkcji *ContainerURL.fromServiceURL (serviceURL, containerName)* , do utworzenia kontenera potrzebne jest jedynie wywołanie metody *create*.
 
+### <a name="show-container-names"></a>Wyświetlanie nazw kontenerów
+
+Na kontach można przechowywać ogromną liczbę kontenerów. Poniższy kod przedstawia sposób wyświetlania listy kontenerów podzielonej na segmenty, co umożliwia przeglądanie dużej liczby kontenerów. Funkcja *ShowContainerNames* przekazuje wystąpienia klas *ServiceURL* i *Aborter*.
+
+```javascript
+console.log("Containers:");
+await showContainerNames(serviceURL, aborter);
+```
+
+Funkcja *ShowContainerNames* używa metody *listContainersSegment*, aby zażądać partii nazw kontenerów z konta magazynu.
+
+```javascript
+async function showContainerNames(aborter, serviceURL) {
+    let marker = undefined;
+
+    do {
+        const listContainersResponse = await serviceURL.listContainersSegment(aborter, marker);
+        marker = listContainersResponse.nextMarker;
+        for(let container of listContainersResponse.containerItems) {
+            console.log(` - ${ container.name }`);
+        }
+    } while (marker);
+}
+```
+
+Po zwróceniu odpowiedzi powtarzane są elementy *containerItem* w celu zarejestrowania nazwy w konsoli. 
+
 ### <a name="upload-text"></a>Przekazywanie tekstu
+
 Do przekazywania tekstu do obiektu blob służy metoda *upload*.
+
 ```javascript
 await blockBlobURL.upload(aborter, content, content.length);
 console.log(`Blob "${blobName}" is uploaded`);
 ```
+
 W tym miejscu tekst i jego długość są przekazywane do metody.
+
 ### <a name="upload-a-local-file"></a>Przekazywanie pliku lokalnego
+
 Aby przekazać plik lokalny do kontenera, potrzebujesz adresu URL kontenera i ścieżki do pliku.
+
 ```javascript
 await uploadLocalFile(aborter, containerURL, localFilePath);
 console.log(`Local file "${localFilePath}" is uploaded`);
 ```
+
 Funkcja *uploadLocalFile* wywołuje funkcję *uploadFileToBlockBlob*, która jako argumenty przyjmuje ścieżkę pliku oraz wystąpienie miejsca docelowego dla blokowego obiektu blob.
+
 ```javascript
 async function uploadLocalFile(aborter, containerURL, filePath) {
 
@@ -263,16 +287,20 @@ async function uploadLocalFile(aborter, containerURL, filePath) {
     return await uploadFileToBlockBlob(aborter, filePath, blockBlobURL);
 }
 ```
+
 ### <a name="upload-a-stream"></a>Przekazywanie strumienia
+
 Obsługiwane jest również przekazywanie strumieni. W tym przykładzie plik lokalny jest otwierany jako strumień, który zostanie przekazany do metody upload.
+
 ```javascript
 await uploadStream(containerURL, localFilePath, aborter);
 console.log(`Local file "${localFilePath}" is uploaded as a stream`);
 ```
+
 Funkcja *uploadStream* wywołuje funkcję *uploadStreamToBlockBlob* w celu przekazania strumienia do kontenera magazynu.
+
 ```javascript
 async function uploadStream(aborter, containerURL, filePath) {
-
     filePath = path.resolve(filePath);
 
     const fileName = path.basename(filePath).replace('.md', '-stream.md');
@@ -295,51 +323,82 @@ async function uploadStream(aborter, containerURL, filePath) {
                     uploadOptions.maxBuffers);
 }
 ```
+
 Podczas przekazywania funkcja *uploadStreamToBlockBlob* przydziela bufory w celu buforowania danych ze strumienia, gdy konieczne jest ponowienie. Wartość *maxBuffers* określa maksymalną liczbę używanych buforów, ponieważ każdy bufor tworzy oddzielne żądanie przekazywania. W idealnym przypadku więcej buforów oznacza większe szybkości, ale kosztem większego użycia pamięci. Szybkość przekazywania osiąga pułap możliwości, gdy liczba buforów jest na tyle duża, że wąskie gardło pojawia się w sieci lub na dysku, zamiast u klienta.
 
 ### <a name="show-blob-names"></a>Wyświetlanie nazw obiektów blob
-Tak jak konta mogą zawierać wiele kontenerów, tak samo każdy kontener potencjalnie może zawierać ogromną liczbę obiektów blob. Dostęp do poszczególnych obiektów blob w kontenerze jest możliwy za pośrednictwem wystąpienia klasy *ContainerURL*. 
+
+Tak jak konta mogą zawierać wiele kontenerów, tak samo każdy kontener potencjalnie może zawierać ogromną liczbę obiektów blob. Dostęp do poszczególnych obiektów blob w kontenerze jest możliwy za pośrednictwem wystąpienia klasy *ContainerURL*.
+
 ```javascript
 console.log(`Blobs in "${containerName}" container:`);
 await showBlobNames(aborter, containerURL);
 ```
+
 Funkcja *showBlobNames* wywołuje funkcję *listBlobFlatSegment*, aby zażądać partii obiektów blob z kontenera.
+
 ```javascript
 async function showBlobNames(aborter, containerURL) {
-
-    let response;
-    let marker;
+    let marker = undefined;
 
     do {
-        response = await containerURL.listBlobFlatSegment(aborter);
-        marker = response.marker;
-        for(let blob of response.segment.blobItems) {
+        const listBlobsResponse = await containerURL.listBlobFlatSegment(Aborter.none, marker);
+        marker = listBlobsResponse.nextMarker;
+        for (const blob of listBlobsResponse.segment.blobItems) {
             console.log(` - ${ blob.name }`);
         }
     } while (marker);
 }
 ```
+
 ### <a name="download-a-blob"></a>Pobieranie obiektu blob
+
 Po utworzeniu obiektu blob możesz pobrać zawartość przy użyciu metody *download*.
+
 ```javascript
 const downloadResponse = await blockBlobURL.download(aborter, 0);
-const downloadedContent = downloadResponse.readableStreamBody.read(content.length).toString();
+const downloadedContent = await streamToString(downloadResponse.readableStreamBody);
 console.log(`Downloaded blob content: "${downloadedContent}"`);
 ```
-Odpowiedź jest zwracana jako strumień. W tym przykładzie strumień jest konwertowany na ciąg umożliwiający zalogowanie się do konsoli.
+
+Odpowiedź jest zwracana jako strumień. W tym przykładzie strumień jest konwertowany na ciąg za pomocą następującej funkcji pomocnika *streamToString* .
+
+```javascript
+// A helper method used to read a Node.js readable stream into a string
+async function streamToString(readableStream) {
+    return new Promise((resolve, reject) => {
+      const chunks = [];
+      readableStream.on("data", data => {
+        chunks.push(data.toString());
+      });
+      readableStream.on("end", () => {
+        resolve(chunks.join(""));
+      });
+      readableStream.on("error", reject);
+    });
+}
+```
+
 ### <a name="delete-a-blob"></a>Usuwanie obiektu blob
+
 Metoda *delete* z wystąpienia *BlockBlobURL* usuwa obiekt blob z kontenera.
+
 ```javascript
 await blockBlobURL.delete(aborter)
 console.log(`Block blob "${blobName}" is deleted`);
 ```
+
 ### <a name="delete-a-container"></a>Usuwanie kontenera
+
 Metoda *delete* z wystąpienia *ContainerURL* usuwa kontener z konta magazynu.
+
 ```javascript
 await containerURL.delete(aborter);
 console.log(`Container "${containerName}" is deleted`);
 ```
+
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
 Wszystkie dane zapisane na koncie magazynu są automatycznie usuwane po zakończeniu pracy z przykładowym kodem. 
 
 ## <a name="next-steps"></a>Następne kroki

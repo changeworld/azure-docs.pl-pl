@@ -1,6 +1,6 @@
 ---
-title: Połącz dane zapory aplikacji sieci web firmy Microsoft przez wartownika platformy Azure w wersji zapoznawczej | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak połączyć dane zapory aplikacji sieci web firmy Microsoft na platformie Azure przez wartownika.
+title: Łączenie danych zapory aplikacji sieci Web firmy Microsoft z platformą Azure Microsoft Docs
+description: Dowiedz się, jak połączyć dane zapory aplikacji sieci Web firmy Microsoft z platformą Azure.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -13,44 +13,42 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 0a308394c3cfa77f80db1361b5a49a485ee5ca0e
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 9d85b5a72c2e37719348d61250d167eb9a5688a1
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67611345"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240021"
 ---
-# <a name="connect-data-from-microsoft-web-application-firewall"></a>Połącz dane z zapory aplikacji sieci web firmy Microsoft
+# <a name="connect-data-from-microsoft-web-application-firewall"></a>Łączenie danych z zapory aplikacji sieci Web firmy Microsoft
 
-> [!IMPORTANT]
-> Wartownik platformy Azure jest obecnie dostępna w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Obejmuje strumieniowe przesyłanie dzienników z zapory aplikacji sieci web usługi Azure Application Gateway firmy Microsoft (WAF). Ta zapora aplikacji sieci Web chroni aplikacji przed lukami takich jak wstrzykiwanie kodu SQL i wykonywanie skryptów między witrynami i umożliwia dostosowywanie reguł w celu zmniejszenia liczby wyników fałszywie dodatnich. Wykonaj te instrukcje, aby przesyłać strumieniowo dzienniki zapory aplikacji sieci Web firmy Microsoft na platformie Azure przez wartownika.
+
+Dzienniki można przesyłać strumieniowo z zapory aplikacji sieci Web firmy Microsoft (WAF) platformy Application Gateway Azure. Ta WAF chroni aplikacje przed typowymi lukami w zabezpieczeniach sieci Web, takimi jak iniekcja kodu SQL i skrypty między lokacjami, oraz pozwala na dostosowanie reguł w celu ograniczenia fałszywych wartości dodatnich. Postępuj zgodnie z tymi instrukcjami w celu przesyłania strumieniowego dzienników zapory aplikacji sieci Web firmy Microsoft do usługi Azure wskaźnikowej.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Istniejącego zasobu bramy aplikacji
+- Istniejący zasób bramy aplikacji
 
-## <a name="connect-to-microsoft-web-application-firewall"></a>Nawiązać połączenie z zapory aplikacji sieci web firmy Microsoft
+## <a name="connect-to-microsoft-web-application-firewall"></a>Nawiązywanie połączenia z zaporą aplikacji sieci Web firmy Microsoft
 
-Jeśli masz już zapory aplikacji sieci web firmy Microsoft, upewnij się, że masz istniejący zasób bramy.
-Po wdrożeniu zapory aplikacji sieci web firmy Microsoft i pobieranie danych, dane alertu można łatwo przesyłane strumieniowo do usługi Azure przez wartownika.
+Jeśli masz już zaporę aplikacji sieci Web firmy Microsoft, upewnij się, że masz istniejący zasób bramy.
+Po wdrożeniu i pobieraniu danych przez zaporę aplikacji sieci Web firmy Microsoft dane alertów mogą być łatwo przesyłane strumieniowo do usługi Azure wskaźnikowej.
     
-1. W portalu Azure przez wartownika wybierz **łączników danych**.
-1. Na stronie łączniki danych wybierz **zapory aplikacji sieci Web** kafelka.
-1. Przejdź do [zasobu usługi Application Gateway](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways) i wybierz polecenie zapory aplikacji internetowych.
-    1. Wybierz **ustawień diagnostycznych**.
-    1. Wybierz **+ Dodaj ustawienie diagnostyczne** pod tabelą.
-    1. W **ustawień diagnostycznych** wpisz **nazwa** i wybierz **wysyłanie do usługi Log Analytics**.
-    1. W obszarze **obszar roboczy usługi Log Analytics** wybierz obszar roboczy przez wartownika platformy Azure.
-    1. Wybierz typy dzienników, które mają być analizowane. Firma Microsoft zaleca: ApplicationGatewayAccessLog i ApplicationGatewayFirewallLog.
-1. Aby użyć odpowiednich schematu w usłudze Log Analytics dla alertów zapory aplikacji sieci web firmy Microsoft, możesz wyszukać **AzureDiagnostics**.
+1. W portalu wskaźnikowym platformy Azure wybierz pozycję **Łączniki danych**.
+1. Na stronie łączniki danych wybierz kafelek **WAF** .
+1. Przejdź do [zasobu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways) Application Gateway i wybierz pozycję WAF.
+    1. Wybierz pozycję **Ustawienia diagnostyczne**.
+    1. Wybierz pozycję **+ Dodaj ustawienie diagnostyczne** w tabeli.
+    1. Na stronie **Ustawienia diagnostyczne** wpisz **nazwę** i wybierz pozycję **Wyślij do log Analytics**.
+    1. W obszarze **obszar roboczy log Analytics** wybierz obszar roboczy wskaźnik platformy Azure.
+    1. Wybierz typy dzienników, które chcesz analizować. Zalecamy: ApplicationGatewayAccessLog i ApplicationGatewayFirewallLog.
+1. Aby użyć odpowiedniego schematu w Log Analytics dla alertów zapory aplikacji sieci Web firmy Microsoft, Wyszukaj pozycję **AzureDiagnostics**.
 
 ## <a name="next-steps"></a>Następne kroki
-W tym dokumencie przedstawiono sposób nawiązywania połączeń zapory aplikacji sieci web firmy Microsoft na platformie Azure przez wartownika. Aby dowiedzieć się więcej na temat platformy Azure przez wartownika, zobacz następujące artykuły:
-- Dowiedz się, jak [Uzyskaj wgląd w dane i potencjalne zagrożenia](quickstart-get-visibility.md).
-- Rozpoczynanie pracy [wykrywanie zagrożeń za pomocą platformy Azure przez wartownika](tutorial-detect-threats.md).
+W tym dokumencie pokazano, jak połączyć zaporę aplikacji sieci Web firmy Microsoft z platformą Azure. Aby dowiedzieć się więcej na temat platformy Azure, zobacz następujące artykuły:
+- Dowiedz się [, jak uzyskać wgląd w dane oraz potencjalne zagrożenia](quickstart-get-visibility.md).
+- Rozpocznij [wykrywanie zagrożeń za pomocą platformy Azure — wskaźnik](tutorial-detect-threats-built-in.md).

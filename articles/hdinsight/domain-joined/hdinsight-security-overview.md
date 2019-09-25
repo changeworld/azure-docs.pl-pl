@@ -6,13 +6,13 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: overview
-ms.date: 07/22/2019
-ms.openlocfilehash: 4619545ab1fed5f55504e80eede0d1cf240eea87
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.date: 09/23/2019
+ms.openlocfilehash: e1863cc54759f6cc2266073629093d4923260525
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488688"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240403"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Omówienie zabezpieczeń przedsiębiorstwa w usłudze Azure HDInsight
 
@@ -52,7 +52,7 @@ Inspekcja całego dostępu do zasobów klastra i danych jest niezbędna do śled
 
 Administrator może wyświetlić i zgłosić cały dostęp do zasobów i danych klastra usługi HDInsight. Administrator może również wyświetlać i raportować wszystkie zmiany zasad kontroli dostępu utworzonych w ramach obsługiwanych przez Apache Ranger punktów końcowych. 
 
-Aby uzyskać dostęp do dzienników inspekcji oprogramowania Apache Ranger i Ambari, a także dzienników dostępu SSH, [włącz Azure monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md) i Wyświetl powiązane rekordy inspekcji.
+Aby uzyskać dostęp do dzienników inspekcji oprogramowania Apache Ranger i Ambari, a także dzienników dostępu SSH, [włącz Azure monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing) i Wyświetl tabele, które udostępniają rekordy inspekcji.
 
 ### <a name="encryption"></a>Szyfrowanie
 
@@ -73,6 +73,7 @@ Poniższa tabela zawiera linki do zasobów dla każdego typu rozwiązania zabezp
 | Zabezpieczenia dostępu do danych | Konfigurowanie [kontroli dostępu listy ACL](../../storage/blobs/data-lake-storage-access-control.md) dla Azure Data Lake Storage Gen1 i Gen2  | Odbiorcy |
 |  | Włącz Właściwość ["wymagany bezpieczny transfer"](../../storage/common/storage-require-secure-transfer.md) na kontach magazynu. | Odbiorcy |
 |  | Konfigurowanie zapór i sieci wirtualnych [usługi Azure Storage](../../storage/common/storage-network-security.md) | Odbiorcy |
+|  | Konfigurowanie [punktów końcowych usługi sieci wirtualnej platformy Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) dla Cosmos DB i [usługi Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) | Odbiorcy |
 |  | Upewnij się, że [szyfrowanie TLS](../../storage/common/storage-security-tls.md) jest włączone na potrzeby przesyłania danych. | Odbiorcy |
 |  | Konfigurowanie [kluczy zarządzanych przez klienta](../../storage/common/storage-encryption-keys-portal.md) do szyfrowania za pomocą usługi Azure Storage | Odbiorcy |
 | Zabezpieczenia aplikacji i oprogramowania pośredniczącego | Integracja z usługą AAD — DS i [Konfigurowanie uwierzytelniania](apache-domain-joined-configure-using-azure-adds.md) | Odbiorcy |
@@ -82,7 +83,7 @@ Poniższa tabela zawiera linki do zasobów dla każdego typu rozwiązania zabezp
 |  | Zapewnianie [stosowania poprawek systemu operacyjnego](../hdinsight-os-patching.md) w regularnych odstępach czasu | Odbiorcy |
 | Bezpieczeństwo sieci | Konfigurowanie [sieci wirtualnej](../hdinsight-plan-virtual-network-deployment.md) |
 |  | Skonfiguruj [reguły sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń) dla ruchu przychodzącego](../hdinsight-plan-virtual-network-deployment.md#networktraffic) | Odbiorcy |
-|  | Konfigurowanie [ograniczenia ruchu](../hdinsight-restrict-outbound-traffic.md) wychodzącego za pomocą zapory (wersja zapoznawcza) | Odbiorcy |
+|  | Konfigurowanie [ograniczenia ruchu wychodzącego](../hdinsight-restrict-outbound-traffic.md) za pomocą zapory (wersja zapoznawcza) | Odbiorcy |
 | Zwirtualizowana infrastruktura | ND | HDInsight (dostawca usług w chmurze) |
 | Zabezpieczenia infrastruktury fizycznej | ND | HDInsight (dostawca usług w chmurze) |
 

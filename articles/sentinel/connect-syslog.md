@@ -1,32 +1,27 @@
 ---
-title: Łączenie danych dziennika systemowego z platformą Azure wskaźnikiem wersji Preview | Microsoft Docs
+title: Łączenie danych dziennika systemowego z platformą Azure Microsoft Docs
 description: Dowiedz się, jak połączyć dane dziennika systemu z platformą Azure.
 services: sentinel
 documentationcenter: na
 author: rkarlin
 manager: rkarlin
 editor: ''
-ms.assetid: 5dd59729-c623-4cb4-b326-bb847c8f094b
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2019
+ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: dad74410562aa54aeb61675e7dc1c0adccc44797
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: b2be563efa3c09cffaf14dec2b871f3881af1a7a
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679209"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240047"
 ---
 # <a name="connect-your-external-solution-using-syslog"></a>Łączenie rozwiązania zewnętrznego przy użyciu dziennika systemowego
-
-> [!IMPORTANT]
-> W publicznej wersji zapoznawczej jest obecnie dostępna usługa Azure.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Można podłączyć urządzenie lokalne obsługujące dziennik systemowy do platformy Azure. Odbywa się to przy użyciu agenta opartego na komputerze z systemem Linux między urządzeniem a platformą Azure. Jeśli maszyna z systemem Linux znajduje się na platformie Azure, możesz przesłać strumieniowo dzienniki z urządzenia lub aplikacji do dedykowanego obszaru roboczego tworzonego na platformie Azure i połączyć go. Jeśli maszyna z systemem Linux nie znajduje się na platformie Azure, możesz przesłać strumieniowo dzienniki z urządzenia do dedykowanej maszyny wirtualnej lub na maszynie, na której jest instalowany Agent programu dla systemu Linux. 
 
@@ -44,30 +39,66 @@ Aby uzyskać więcej informacji, zobacz [źródła danych dziennika systemowego 
 
 ## <a name="connect-your-syslog-appliance"></a>Połącz urządzenie dziennika systemu
 
-1. W portalu wskaźnikowym platformy Azure wybierz pozycję **Łączniki danych** i wybierz wiersz **dziennika** systemowego w tabeli i w okienku dziennik systemowy po prawej stronie, a następnie kliknij pozycję **Otwórz stronę łącznika**.
-2. Jeśli maszyna z systemem Linux znajduje się na platformie Azure, wybierz pozycję **Pobierz i Zainstaluj agenta na maszynie wirtualnej platformy Azure z systemem Linux**. W oknie maszyny wirtualne wybierz maszyny, na których chcesz zainstalować agenta, a następnie kliknij pozycję **Połącz** w górnej części ekranu.
-1. Jeśli komputer z systemem Linux nie znajduje się na platformie Azure, wybierz pozycję **Pobierz i Zainstaluj agenta na maszynie spoza platformy Azure**. W oknie **agenta bezpośredniego** Skopiuj polecenie w obszarze **Pobierz i Dołącz agenta dla systemu Linux** i uruchom je na komputerze. 
+1. W obszarze wskaźnik platformy Azure wybierz pozycję **Łączniki danych** , a następnie wybierz pozycję Łącznik **dziennika** systemowego.
+
+2. W bloku **Dziennik** systemowy wybierz pozycję **Otwórz stronę łącznika**.
+
+3. Zainstaluj agenta systemu Linux:
+    
+    - Jeśli maszyna wirtualna z systemem Linux znajduje się na platformie Azure, wybierz pozycję **Pobierz i Zainstaluj agenta na maszynie wirtualnej platformy Azure z systemem Linux**. W bloku **maszyny wirtualne** Wybierz Maszyny wirtualne, na których ma zostać zainstalowany agent, a następnie kliknij przycisk **Połącz**.
+    - Jeśli maszyna z systemem Linux nie znajduje się na platformie Azure, wybierz pozycję **Pobierz i Zainstaluj agenta na maszynie spoza platformy Azure**. W bloku **agenta bezpośredniego** Skopiuj polecenie pobierania i dołączania **agenta dla systemu Linux** i uruchom je na komputerze. 
+    
    > [!NOTE]
-   > Upewnij się, że skonfigurowano zabezpieczenia maszyny zgodnie z zasadami zabezpieczeń organizacji. Można na przykład skonfigurować sieć do dopasowania do zasad zabezpieczeń sieci firmowej i zmienić porty i protokoły w demoum, aby dostosować je do swoich wymagań. 
+   > Upewnij się, że skonfigurowano ustawienia zabezpieczeń dla tych komputerów zgodnie z zasadami zabezpieczeń organizacji. Można na przykład skonfigurować ustawienia sieci, aby dostosować je do zasad zabezpieczeń sieci organizacji, i zmienić porty i protokoły w demona, aby dostosować je do wymagań dotyczących zabezpieczeń.
 
-1. W obszarze **Konfigurowanie dzienników do połączenia** w oknie instalatora łącznika dziennika systemowego postępuj zgodnie z instrukcjami:
-    1. Kliknij link, aby **otworzyć konfigurację ustawień zaawansowanych obszaru roboczego**. 
-    1. Wybierz pozycję **dane**, a następnie **Dziennik**systemowy.
-    1. Następnie w tabeli ustaw, które obiekty mają być zbierane przez dziennik systemowy. Należy dodać lub wybrać obiekty, które urządzenie dziennika systemu zawiera w jego nagłówkach dziennika. Tę konfigurację można zobaczyć w urządzeniu dziennika systemowego w folderze dziennika:/etc/rsyslog.d/Security-config-omsagent.conf i w obszarze r-dziennik systemu w obszarze/etc/syslog-ng/Security-config-omsagent.conf. 
-       > [!NOTE]
-       > Po zaznaczeniu pola wyboru, aby **zastosować poniższą konfigurację do moich maszyn**, ta konfiguracja będzie miała zastosowanie do wszystkich maszyn z systemem Linux podłączonych do tego obszaru roboczego. Tę konfigurację można zobaczyć na komputerze dziennika systemu w obszarze 
-1. Kliknij przycisk **naciśnij tutaj, aby otworzyć blok konfiguracja**.
-1. Wybierz pozycję **dane** , a następnie **Dziennik**systemowy.
-   - Upewnij się, że każda z funkcji wysyłanych przez dziennik systemowy znajduje się w tabeli. Dla każdej funkcji należy monitorować, ustawiać ważność. Kliknij przycisk **zastosować**.
-1. Upewnij się, że wysyłasz te obiekty na komputerze dziennika systemowego. 
+4. Wybierz pozycję **Otwórz konfigurację ustawień zaawansowanych obszaru roboczego**.
 
-1. Aby użyć odpowiedniego schematu w Log Analytics dla dzienników dziennika systemowego, Wyszukaj **Dziennik**systemowy.
-1. Można użyć funkcji Kusto opisanej w temacie using Functions [in Azure Monitor Log zapytania](../azure-monitor/log-query/functions.md) , aby przeanalizować komunikaty dziennika systemowego, a następnie zapisać je jako nową funkcję log Analytics, a następnie użyć funkcji jako nowego typu danych.
+5. W bloku **Ustawienia zaawansowane** wybierz pozycję**Dziennik**systemowy **danych** > . Następnie Dodaj obiekty do zebrania dla łącznika.
+    
+    Dodaj obiekty, które urządzenie dziennika systemu zawiera w jego nagłówkach dziennika. Tę konfigurację można wyświetlić w urządzeniu dziennika systemowego w `/etc/rsyslog.d/security-config-omsagent.conf` folderze dziennika systemowego, a w obszarze **r-dziennik** `/etc/syslog-ng/security-config-omsagent.conf`systemu.
+    
+    Jeśli chcesz użyć nietypowego wykrywania logowania SSH za pomocą zbieranych danych, Dodaj **uwierzytelnianie** i **authpriv**. Aby uzyskać dodatkowe informacje, zobacz [następującą sekcję](#configure-the-syslog-connector-for-anomalous-ssh-login-detection) .
 
+6. Po dodaniu wszystkich funkcji, które mają być monitorowane, i dostosowaniu wszystkich opcji ważności dla każdej z nich, zaznacz pole wyboru **Zastosuj poniższą konfigurację do moich maszyn**.
 
+7. Wybierz pozycję **Zapisz**. 
 
+8. Upewnij się, że w urządzeniu dziennika systemowego są wysyłane określone obiekty.
+
+9. Aby użyć odpowiedniego schematu w Azure Monitor dla dzienników dziennika systemowego, Wyszukaj **Dziennik**systemowy.
+
+10. Aby przeanalizować komunikaty dziennika systemowego, można użyć funkcji Kusto opisanej w temacie using Functions [in Azure Monitor Log zapytania](../azure-monitor/log-query/functions.md) . Następnie można zapisać je jako nową funkcję Log Analytics, aby użyć jej jako nowego typu danych.
+
+### <a name="configure-the-syslog-connector-for-anomalous-ssh-login-detection"></a>Konfigurowanie łącznika dziennika systemowego na potrzeby wykrywania nietypowego logowania SSH
+
+> [!IMPORTANT]
+> Nietypowe wykrywanie logowania SSH jest obecnie w publicznej wersji zapoznawczej.
+> Ta funkcja jest dostępna bez umowy dotyczącej poziomu usług i nie jest zalecana w przypadku obciążeń produkcyjnych.
+> Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Wskaźnik "Azure" może stosować Uczenie maszynowe (ML) do danych dziennika systemowego, aby zidentyfikować nietypowe działanie logowania Secure Shell (SSH). Scenariusze obejmują:
+
+- Niemożliwa podróż — w przypadku dwóch pomyślnych zdarzeń logowania z dwóch lokalizacji, które są niedostępne w ramach przedziału czasu dla dwóch zdarzeń logowania.
+- Nieoczekiwana Lokalizacja — Lokalizacja, w której wystąpiło podejrzane zdarzenie logowania. Na przykład lokalizacja nie była ostatnio widoczna.
+ 
+To wykrywanie wymaga określonej konfiguracji łącznika danych dziennika systemowego: 
+
+1. W przypadku kroku 5 w poprzedniej procedurze upewnij się, że zarówno **uwierzytelnianie** , jak i **authpriv** są wybrane jako urządzenia do monitorowania. Zachowaj ustawienia domyślne opcji ważności, aby były zaznaczone. Na przykład:
+    
+    > [!div class="mx-imgBorder"]
+    > ![Urządzenia wymagane do wykrycia nietypowego logowania SSH](./media/connect-syslog/facilities-ssh-detection.png)
+
+2. Zezwalaj na zbieranie informacji dziennika systemu wystarczająco długo. Następnie przejdź do okna badanie **wskaźnikowe platformy Azure**i skopiuj i wklej następujące zapytanie:
+    
+        Syslog |  where Facility in ("authpriv","auth")| extend c = extract( "Accepted\\s(publickey|password|keyboard-interactive/pam)\\sfor ([^\\s]+)",1,SyslogMessage)| where isnotempty(c) | count 
+    
+    W razie potrzeby zmień **zakres czasu** , a następnie wybierz pozycję **Uruchom**.
+    
+    Jeśli wynikowa liczba jest równa zero, Potwierdź konfigurację łącznika i że monitorowane komputery mają działanie pomyślnego logowania dla okresu określonego dla zapytania.
+    
+    Jeśli wynikowa liczba jest większa od zera, dane dziennika systemowego są odpowiednie dla nietypowego wykrywania logowania SSH. To wykrywanie można włączyć z**szablonów** > reguł **analizy** >   **(wersja zapoznawcza) wykrywanie nietypowego logowania SSH**.
 
 ## <a name="next-steps"></a>Następne kroki
 W tym dokumencie przedstawiono sposób łączenia lokalnych urządzeń dziennika systemu z platformą Azure. Aby dowiedzieć się więcej na temat platformy Azure, zobacz następujące artykuły:
 - Dowiedz się [, jak uzyskać wgląd w dane oraz potencjalne zagrożenia](quickstart-get-visibility.md).
-- Rozpocznij [wykrywanie zagrożeń za pomocą platformy Azure — wskaźnik](tutorial-detect-threats.md).
+- Rozpocznij [wykrywanie zagrożeń za pomocą platformy Azure — wskaźnik](tutorial-detect-threats-built-in.md).

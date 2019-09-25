@@ -1,5 +1,5 @@
 ---
-title: Uruchamianie element PlayBook w wersji zapoznawczej platformy Azure — Wersja zapoznawcza | Microsoft Docs
+title: Uruchamianie element PlayBook na platformie Azure — wskaźnik | Microsoft Docs
 description: W tym artykule opisano sposób uruchamiania element PlayBook na platformie Azure — wskaźnik.
 services: sentinel
 documentationcenter: na
@@ -14,20 +14,18 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 8/21/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 08c88df2f8ccc69f213687209d1d003f3bb1c7b8
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 7ab4c4ba4553e7e5f15e563c67c845758a53766f
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018799"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71229514"
 ---
-# <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel-preview"></a>Samouczek: Konfigurowanie zautomatyzowanych odpowiedzi na zagrożenia w wersji zapoznawczej platformy Azure wskaźnikowej
+# <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel"></a>Samouczek: Konfigurowanie zautomatyzowanych odpowiedzi na zagrożenia na platformie Azure — wskaźnik
 
-> [!IMPORTANT]
-> W publicznej wersji zapoznawczej jest obecnie dostępna usługa Azure.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 Ten samouczek ułatwia korzystanie z usługi Security elementy PlayBook w wskaźniku kontrolnym platformy Azure w celu automatycznego reagowania na problemy związane z zabezpieczeniami wykryte przez wskaźnik na platformie Azure.
 
@@ -78,7 +76,9 @@ Wykonaj następujące kroki, aby utworzyć nowy element PlayBook zabezpieczeń n
 
 6. Nastąpi przekierowanie do projektanta aplikacji logiki, w którym można utworzyć nowy lub edytować szablon. Aby uzyskać więcej informacji na temat tworzenia element PlayBook z [Logic Apps](../logic-apps/logic-apps-create-logic-apps-from-templates.md).
 
-7. Jeśli tworzysz puste element PlayBook, w polu **Przeszukaj wszystkie łączniki i wyzwalacze** wpisz *Azure*, a następnie wybierz, **kiedy zostanie wyzwolona odpowiedź na alert na platformie Azure**. <br>Po utworzeniu nowego element PlayBook pojawia się na liście **elementy PlayBook** . Jeśli nie jest wyświetlany, kliknij przycisk **Odśwież**. 
+7. Jeśli tworzysz puste element PlayBook, w polu **Przeszukaj wszystkie łączniki i wyzwalacze** wpisz *Azure*, a następnie wybierz, **kiedy zostanie wyzwolona odpowiedź na alert na platformie Azure**. <br>Po utworzeniu nowego element PlayBook pojawia się na liście **elementy PlayBook** . Jeśli nie jest wyświetlany, kliknij przycisk **Odśwież**.
+
+1. Użyj funkcji **Pobierz jednostki** , które umożliwiają uzyskanie odpowiednich jednostek z listy **jednostek** , takich jak konta, adresy IP i hosty. Umożliwi to uruchamianie akcji na określonych jednostkach.
 
 7. Teraz możesz zdefiniować zachowanie po wyzwoleniu elementu playbook. Można dodać akcję, warunek logiczny, warunki przełączenia lub pętle.
 

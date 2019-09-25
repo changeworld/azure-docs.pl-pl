@@ -6,12 +6,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: 2a1ee358a6c97b721ec6f0da3eb70269239b0737
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: a09ce7b77dfcaa51e7c82f67a5d20000f3e22b61
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077674"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219991"
 ---
 # <a name="move-azure-virtual-network-to-another-region-using-the-azure-portal"></a>Przenoszenie Virtual Network platformy Azure do innego regionu przy użyciu Azure Portal
 
@@ -27,7 +27,7 @@ Możesz użyć szablonu Azure Resource Manager, aby zakończyć przenoszenie sie
 - Aby wyeksportować sieć wirtualną i wdrożyć szablon w celu utworzenia sieci wirtualnej w innym regionie, musisz mieć rolę współautor sieci lub wyższą.
 
 - Komunikacja równorzędna sieci wirtualnych nie zostanie ponownie utworzona i zakończy się niepowodzeniem, jeśli nadal znajdują się one w szablonie.  Przed wyeksportowaniem szablonu należy usunąć wszystkie elementy równorzędne sieci wirtualnej, a następnie ponownie ustanowić elementy równorzędne po przeniesieniu sieci wirtualnej.
-    
+
 - Zidentyfikuj układ sieci źródłowej i wszystkie aktualnie używane zasoby. Ten układ obejmuje, ale nie jest ograniczony do modułów równoważenia obciążenia, sieciowych grup zabezpieczeń (sieciowych grup zabezpieczeń) i publicznych adresów IP.
 
 - Sprawdź, czy Twoja subskrypcja platformy Azure umożliwia tworzenie sieci wirtualnych w używanym regionie docelowym. Skontaktuj się z pomocą techniczną, aby włączyć wymagany limit przydziału.
@@ -40,13 +40,13 @@ Poniższe kroki przedstawiają sposób przygotowania sieci wirtualnej do przenos
 
 ### <a name="export-the-template-and-deploy-from-the-portal"></a>Eksportowanie szablonu i wdrażanie go z portalu
 
-1. Zaloguj się do**grup zasobów** [Azure Portal](http://portal.azure.com) > .
+1. Zaloguj się do**grup zasobów** [Azure Portal](https://portal.azure.com) > .
 2. Znajdź grupę zasobów zawierającą źródłową sieć wirtualną i kliknij ją.
 3. Wybierz pozycję > **Ustawienia** > **Eksportuj szablon**.
 4. Wybierz pozycję **Wdróż** w bloku **Eksportuj szablon** .
 5. Kliknij pozycję **szablon** > **Edytuj parametry** , aby otworzyć plik **Parameters. JSON** w edytorze online.
 6. Aby edytować parametr nazwy sieci wirtualnej, Zmień właściwość **Value** w obszarze **Parametry**:
-    
+
     ```json
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
@@ -62,7 +62,7 @@ Poniższe kroki przedstawiają sposób przygotowania sieci wirtualnej do przenos
 
 8.  Kliknij przycisk **Zapisz** w edytorze.
 
-9.  Kliknij pozycję **szablon** > **Edytuj szablon** , aby otworzyć plik **Template. JSON** w edytorze online. 
+9.  Kliknij pozycję **szablon** > **Edytuj szablon** , aby otworzyć plik **Template. JSON** w edytorze online.
 
 10. Aby edytować region docelowy, w którym zostanie przeniesiona Sieć wirtualna, Zmień właściwość **Location** w obszarze **zasoby** w edytorze online:
 
@@ -83,11 +83,11 @@ Poniższe kroki przedstawiają sposób przygotowania sieci wirtualnej do przenos
                         },
 
     ```
- 
+
 11. Aby uzyskać kody lokalizacji regionu, zobacz [lokalizacje platformy Azure](https://azure.microsoft.com/global-infrastructure/locations/).  Kod regionu to nazwa regionu bez spacji, **środkowe stany USA** =  **.**
- 
+
 12. W przypadku wybrania opcji i opcjonalnych w zależności od wymagań można także zmienić inne parametry szablonu:
-    
+
     * **Przestrzeń adresowa** — przed zapisaniem można zmienić przestrzeń adresową sieci wirtualnej, modyfikując sekcję**addressSpace** **zasobów** > i zmieniając właściwość **addressPrefixes** w pliku **Template. JSON** :
 
         ```json
@@ -179,7 +179,7 @@ Poniższe kroki przedstawiają sposób przygotowania sieci wirtualnej do przenos
 
 14. Kliknij pozycję**subskrypcja** **podstawy** > , aby wybrać subskrypcję, w której zostanie wdrożona docelowa sieć wirtualna.
 
-15. Kliknij pozycję **podstawowe** > **grupy zasobów** , aby wybrać grupę zasobów, w której zostanie wdrożona docelowa sieć wirtualna.  Możesz kliknąć przycisk **Utwórz nowy** , aby utworzyć nową grupę zasobów dla docelowej sieci wirtualnej.  Upewnij się, że nazwa nie jest taka sama jak źródłowa Grupa zasobów istniejącej sieci wirtualnej. 
+15. Kliknij pozycję **podstawowe** > **grupy zasobów** , aby wybrać grupę zasobów, w której zostanie wdrożona docelowa sieć wirtualna.  Możesz kliknąć przycisk **Utwórz nowy** , aby utworzyć nową grupę zasobów dla docelowej sieci wirtualnej.  Upewnij się, że nazwa nie jest taka sama jak źródłowa Grupa zasobów istniejącej sieci wirtualnej.
 
 16. Sprawdź, czy**Lokalizacja** **podstawy** > jest ustawiona na lokalizację docelową, w której ma zostać wdrożona Sieć wirtualna.
 
@@ -189,7 +189,7 @@ Poniższe kroki przedstawiają sposób przygotowania sieci wirtualnej do przenos
 
 19. Kliknij przycisk **Kup** , aby wdrożyć docelową sieć wirtualną.
 
-## <a name="discard"></a>Odrzuć 
+## <a name="discard"></a>Odrzuć
 
 Jeśli chcesz odrzucić docelową sieć wirtualną, Usuń grupę zasobów, która zawiera docelową sieć wirtualną.  Aby to zrobić, wybierz grupę zasobów z pulpitu nawigacyjnego w portalu i wybierz pozycję **Usuń** w górnej części strony przegląd.
 

@@ -1,6 +1,6 @@
 ---
-title: Połącz dane usługi Azure AD przez wartownika platformy Azure w wersji zapoznawczej | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak nawiązać połączenie z danych usługi Azure Active Directory przez wartownika platformy Azure.
+title: Łączenie danych usługi Azure AD z usługą Azure wskaźnikowego | Microsoft Docs
+description: Dowiedz się, jak połączyć Azure Active Directory dane z platformą Azure — wskaźnikiem.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -13,44 +13,44 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/17/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5784101c9f2e0dc238ac48c5d0f6fbe4c0dc596f
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 43405bd3e97dbee325f0a5ed82c5848880775eee
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620681"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240819"
 ---
-# <a name="connect-data-from-azure-active-directory"></a>Połącz dane z usługi Azure Active Directory
+# <a name="connect-data-from-azure-active-directory"></a>Łączenie danych z Azure Active Directory
 
-> [!IMPORTANT]
-> Wartownik platformy Azure jest obecnie dostępna w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Wartownik platformy Azure umożliwia zbieranie danych z [usługi Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) i przesłać go strumieniowo do usługi Azure przez wartownika. Możesz wybrać do strumienia [dzienniki logowania](../active-directory/reports-monitoring/concept-sign-ins.md) i [dzienniki inspekcji](../active-directory/reports-monitoring/concept-audit-logs.md) .
+
+Wskaźnik produkcji platformy Azure umożliwia zbieranie danych z [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) i przesyłanie ich strumieniowo do usługi Azure wskaźnikowej. Możesz wybrać opcję przesyłania strumieniowego [dzienników logowania](../active-directory/reports-monitoring/concept-sign-ins.md) i [dzienników inspekcji](../active-directory/reports-monitoring/concept-audit-logs.md) .
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Jeśli chcesz wyeksportować dane logowania z usługi Active Directory, musi mieć licencję usługi Azure AD P1 lub P2.
+- Jeśli chcesz wyeksportować dane logowania z Active Directory, musisz mieć licencję na usługę Azure AD P1 lub P2.
 
-- Użytkownik z globalnego administratora lub zabezpieczeń uprawnienia administratora dla dzierżawy ma być przesyłana strumieniowo dzienniki z.
+- Użytkownik z uprawnieniami administratora globalnego lub administratora zabezpieczeń w dzierżawie, z której mają być przesyłane strumieniowo dzienniki.
 
-- Aby można było wyświetlić stan połączenia, musi mieć uprawnienia dostępu do dzienników diagnostycznych usługi Azure AD. 
+- Aby można było zobaczyć stan połączenia, musisz mieć uprawnienia dostępu do dzienników diagnostycznych usługi Azure AD. 
 
 
 ## <a name="connect-to-azure-ad"></a>Łączenie z usługą Azure AD
 
-1. Na platformie Azure przez wartownika, wybierz **łączników danych** a następnie kliknij przycisk **usługi Azure Active Directory** kafelka.
+1. W obszarze wskaźnik platformy Azure wybierz pozycję **Łączniki danych** , a następnie kliknij kafelek **Azure Active Directory** .
 
-2. Obok dzienniki mają być przesyłane strumieniowo do usługi Azure przez wartownika, kliknij **Connect**.
+1. Obok dzienników, które chcesz przesłać strumieniowo do usługi Azure wskaźnikowej, kliknij pozycję **Połącz**.
 
-6. Aby użyć odpowiednich schematu w usłudze Log Analytics dla alertów usługi Azure AD, możesz wyszukać **SigninLogs** i **AuditLogs**.
+1. Możesz wybrać, czy alerty z usługi Azure AD mają automatycznie generować zdarzenia na platformie Azure. W obszarze **Tworzenie zdarzeń** wybierz pozycję **Włącz** , aby włączyć domyślną regułę analityczną, która automatycznie tworzy zdarzenia z alertów generowanych w połączonej usłudze zabezpieczeń. Następnie można edytować tę regułę w obszarze **Analiza** , a następnie **aktywne reguły**.
+
+1. Aby użyć odpowiedniego schematu w Log Analytics dla alertów usługi Azure AD, wyszukaj ciąg **SigninLogs** i **AuditLogs**.
 
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
-W tym dokumencie przedstawiono sposób łączenia usługi Azure AD na platformie Azure przez wartownika. Aby dowiedzieć się więcej na temat platformy Azure przez wartownika, zobacz następujące artykuły:
-- Dowiedz się, jak [Uzyskaj wgląd w dane i potencjalne zagrożenia](quickstart-get-visibility.md).
-- Rozpoczynanie pracy [wykrywanie zagrożeń za pomocą platformy Azure przez wartownika](tutorial-detect-threats.md).
+## <a name="next-steps"></a>Następne kroki
+W tym dokumencie przedstawiono sposób łączenia usługi Azure AD z wskaźnikiem kontrolnym platformy Azure. Aby dowiedzieć się więcej na temat platformy Azure, zobacz następujące artykuły:
+- Dowiedz się [, jak uzyskać wgląd w dane oraz potencjalne zagrożenia](quickstart-get-visibility.md).
+- Rozpocznij [wykrywanie zagrożeń za pomocą platformy Azure — wskaźnik](tutorial-detect-threats-built-in.md).

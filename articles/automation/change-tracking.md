@@ -10,12 +10,12 @@ ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a681daa60503ff08320b25155e201ca0e7a4a001
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 2d6976e872223cbb66682b9a02ce343487bec35d
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952991"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240273"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Śledź zmiany w środowisku przy użyciu rozwiązania Change Tracking
 
@@ -36,7 +36,7 @@ Windows agent oficjalnie obsługuje następujące wersje systemu operacyjnego Wi
 
 Następujące dystrybucje systemu Linux są oficjalnie obsługiwane. Jednak Agent systemu Linux może być również uruchamiany na innych dystrybucjach, których nie ma na liście. O ile nie zaznaczono inaczej, wszystkie wersje pomocnicze są obsługiwane dla każdej wymienionej wersji głównej.
 
-### <a name="64-bit"></a>64-bitowa
+### <a name="64-bit"></a>64 — bit
 
 * CentOS 6 i 7
 * Amazon Linux 2017,09
@@ -46,7 +46,7 @@ Następujące dystrybucje systemu Linux są oficjalnie obsługiwane. Jednak Agen
 * Ubuntu Linux 14,04 LTS, 16,04 LTS i 18,04 LTS
 * SUSE Linux Enterprise Server 12
 
-### <a name="32-bit"></a>32-bitowa
+### <a name="32-bit"></a>32 — bit
 
 * CentOS 6
 * Oracle Linux 6
@@ -100,11 +100,11 @@ Wykonaj następujące kroki, aby skonfigurować śledzenie plików na komputerac
 |Włączono     | Określa, czy to ustawienie jest stosowane.        |
 |Nazwa elementu     | Przyjazna nazwa pliku do śledzenia.        |
 |Grupa     | Nazwa grupy do logicznego grupowania plików.        |
-|Wprowadź ścieżkę     | Ścieżka do sprawdzenia pliku. Na przykład: "/etc/*. conf"       |
+|Wprowadzanie ścieżki     | Ścieżka do sprawdzenia pliku. Na przykład: "/etc/*. conf"       |
 |Typ ścieżki     | Typ elementu, który ma być śledzony, możliwe wartości to plik i katalog.        |
 |Rekursja     | Określa, czy podczas wyszukiwania elementu, który ma być śledzony, ma być używana rekursja.        |
 |Użyj polecenia Sudo     | To ustawienie określa, czy podczas sprawdzania elementu jest używane polecenie sudo.         |
-|Łącza     | To ustawienie określa, w jaki sposób są obsługiwane linki symboliczne podczas przechodzenia między katalogami.<br> **Ignoruj** — ignoruje linki symboliczne i nie uwzględnia plików/katalogów, do których się odwołuje.<br>**Obserwuj poniższe** linki symboliczne podczas rekursji, a także zawiera pliki/katalogi, do których się odwołuje.<br>**Zarządzanie** — następuje po linków symbolicznych i umożliwia zmianę zwracanej zawartości.     |
+|Linki     | To ustawienie określa, w jaki sposób są obsługiwane linki symboliczne podczas przechodzenia między katalogami.<br> **Ignoruj** — ignoruje linki symboliczne i nie uwzględnia plików/katalogów, do których się odwołuje.<br>**Obserwuj poniższe** linki symboliczne podczas rekursji, a także zawiera pliki/katalogi, do których się odwołuje.<br>**Zarządzanie** — następuje po linków symbolicznych i umożliwia zmianę zwracanej zawartości.     |
 |Przekaż zawartość pliku dla wszystkich ustawień| Włącza lub wyłącza przekazywanie zawartości pliku dla śledzonych zmian. Dostępne opcje: **True** lub **False**.|
 
 > [!NOTE]
@@ -123,7 +123,7 @@ Wykonaj następujące kroki, aby skonfigurować śledzenie plików na komputerac
 |Włączono     | Określa, czy to ustawienie jest stosowane.        |
 |Nazwa elementu     | Przyjazna nazwa pliku do śledzenia.        |
 |Grupa     | Nazwa grupy do logicznego grupowania plików.        |
-|Wprowadź ścieżkę     | Ścieżka do sprawdzania pliku, na przykład: „c:\temp\\\*.txt”<br>Możesz użyć również zmiennych środowiskowych, takich jak „%winDir%\System32\\\*.*”       |
+|Wprowadzanie ścieżki     | Ścieżka do sprawdzania pliku, na przykład: „c:\temp\\\*.txt”<br>Możesz użyć również zmiennych środowiskowych, takich jak „%winDir%\System32\\\*.*”       |
 |Rekursja     | Określa, czy podczas wyszukiwania elementu, który ma być śledzony, ma być używana rekursja.        |
 |Przekaż zawartość pliku dla wszystkich ustawień| Włącza lub wyłącza przekazywanie zawartości pliku dla śledzonych zmian. Dostępne opcje: **True** lub **False**.|
 
@@ -187,7 +187,7 @@ W poniższej tabeli przedstawiono częstotliwość zbierania danych dla typów z
 | Rejestr systemu Windows | 50 minut |
 | Plik systemu Windows | 30 minut |
 | Plik systemu Linux | 15 minut |
-| Usługi systemu Windows | 10 sekund do 30 minut</br> Domyślne: 30 minut |
+| Usługi systemu Windows | 10 sekund do 30 minut</br> Wartooć 30 minut |
 | Demony systemu Linux | 5 minut |
 | Oprogramowanie systemu Windows | 30 minut |
 | Oprogramowanie systemu Linux | 5 minut |
@@ -198,7 +198,7 @@ W poniższej tabeli przedstawiono limity śledzonych elementów na maszynę dla 
 |---|---|---|
 |Plik|500||
 |Rejestr|250||
-|Oprogramowanie systemu Windows|250|Nie obejmuje aktualizacji oprogramowania|
+|Oprogramowanie systemu Windows|250|Nie zawiera poprawek oprogramowania|
 |Pakiety systemu Linux|1250||
 |Usługi|250||
 |Demon|250||
@@ -273,7 +273,7 @@ Poniższe adresy są wymagane dla Change Tracking. Komunikacja z tymi adresami o
 
 Po włączeniu rozwiązania można wyświetlić podsumowanie zmian monitorowanych komputerów, wybierając **Change Tracking** w obszarze **Zarządzanie konfiguracją** na koncie usługi Automation.
 
-Możesz wyświetlić zmiany na komputerach, a następnie przejść do szczegółów poszczególnych zdarzeń. Lista rozwijana jest dostępna w górnej części wykresu, aby ograniczyć wykres i szczegółowe informacje na podstawie typu zmiany i przedziałów czasu. Możesz również kliknąć i przeciągnąć na wykres, aby wybrać niestandardowy zakres czasu. **Typ zmiany** będzie jednym z następujących **zdarzeń**, demonów, **plików**, **rejestru**, **oprogramowania**, **usług systemu Windows**. Kategoria pokazuje typ zmiany i można **dodawać**, **modyfikować**lub **usuwać**.
+Możesz wyświetlić zmiany na komputerach, a następnie przejść do szczegółów poszczególnych zdarzeń. Lista rozwijana jest dostępna w górnej części wykresu, aby ograniczyć wykres i szczegółowe informacje na podstawie typu zmiany i przedziałów czasu. Możesz również kliknąć i przeciągnąć na wykres, aby wybrać niestandardowy zakres czasu. **Typ zmiany** będzie jednym z następujących **zdarzeń**, **demonów**, **plików**, **rejestru**, **oprogramowania**, **usług systemu Windows**. Kategoria pokazuje typ zmiany i można **dodawać**, **modyfikować**lub **usuwać**.
 
 ![obraz pulpitu nawigacyjnego Change Tracking](./media/change-tracking/change-tracking-dash01.png)
 

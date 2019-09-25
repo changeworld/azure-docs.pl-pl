@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 08/30/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: e8c6c21efd1ea406c8293819a2889e198e8455bd
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 82a1dc293a019e4a48760ccbce830d067f2d620d
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242115"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240942"
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>Tworzenie aplikacji internetowej ASP.NET Core na platformie Azure
 
@@ -88,7 +88,7 @@ Utwórz aplikację sieci Web ASP.NET Core, wykonując następujące czynności:
 
    [!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
-1. W obszarze **Plan hostingu**wybierz pozycję **Nowy**.
+1. W przypadku **planu hostingu**wybierz pozycję **Nowy**.
 
 1. W oknie dialogowym **Konfigurowanie planu hostingu** wprowadź wartości z poniższej tabeli, a następnie wybierz przycisk **OK**.
 

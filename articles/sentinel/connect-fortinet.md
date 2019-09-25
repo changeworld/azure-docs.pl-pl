@@ -1,5 +1,5 @@
 ---
-title: Łączenie danych Fortinet z platformą Azure wskaźnikiem wersji zapoznawczej | Microsoft Docs
+title: Łączenie danych Fortinet z platformą Azure — wskaźnikiem Microsoft Docs
 description: Dowiedz się, jak połączyć dane Fortinet z platformą Azure.
 services: sentinel
 documentationcenter: na
@@ -13,20 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 339b8c1b59720989016f68fdb94fae30c26b42f0
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 20079fd0c95da3e3aec9518f194ea39561a5e662
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679277"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240699"
 ---
 # <a name="connect-your-fortinet-appliance"></a>Połącz urządzenie Fortinet
 
-> [!IMPORTANT]
-> W publicznej wersji zapoznawczej jest obecnie dostępna usługa Azure.
-> Ta wersja zapoznawcza jest dostępna bez umowy dotyczącej poziomu usług. Nie jest to zalecane w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [dodatkowe warunki użytkowania wersji](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)zapoznawczych Microsoft Azure.
+
 
 Możesz połączyć wskaźnik na platformie Azure z dowolnym urządzeniem Fortinet, zapisując pliki dziennika jako dziennik Common Event format (CEF). Dzięki integracji z platformą Azure — wskaźnikiem, można łatwo uruchomić analizy i zapytania w danych pliku dziennika od firmy Fortinet. Aby uzyskać więcej informacji na temat sposobu pozyskiwania danych CEF przez platformę Azure, zobacz [Łączenie urządzeń CEF](connect-common-event-format.md).
 
@@ -86,10 +84,10 @@ Skonfiguruj konfigurację Fortinet do przesyłania dalej komunikatów dziennika 
     - Zastąp **adres IP** serwera adresem IP agenta.
     - Ustaw **facility_name** do korzystania z funkcji skonfigurowanej w agencie. Domyślnie agent ustawia tę wartość na local4.
     - Ustaw wartość w polu **port dziennika** systemowego na **514** lub port ustawiony w agencie.
-    - Aby włączyć format CEF w wersjach wczesnego FortiOS, może być konieczne uruchomienie opcji wyłączania **CSV**zestawu poleceń.
+    - Aby włączyć format CEF w wersjach wczesnego FortiOS, może być konieczne uruchomienie opcji **wyłączania CSV**zestawu poleceń.
  
    > [!NOTE] 
-   > Aby uzyskać więcej informacji, przejdź do [biblioteki dokumentów Fortinet](https://aka.ms/asi-syslog-fortinet-fortinetdocumentlibrary). Wybierz swoją wersję, a następnie użyj dokumentacji podręcznika i **komunikatu dziennika**.
+   > Aby uzyskać więcej informacji, przejdź do [biblioteki dokumentów Fortinet](https://aka.ms/asi-syslog-fortinet-fortinetdocumentlibrary). Wybierz swoją wersję, a następnie użyj dokumentacji **podręcznika** i **komunikatu dziennika**.
 
  Aby użyć odpowiedniego schematu w Azure Monitor Log Analytics dla imprez Fortinet, wyszukaj ciąg `CommonSecurityLog`.
 
@@ -102,7 +100,7 @@ Rozpoczęcie wyświetlania dzienników w Log Analytics może potrwać do 20 minu
 
 2. Upewnij się, że dzienniki znajdują się na odpowiednim porcie w agencie dziennika systemowego. Uruchom to polecenie na komputerze agenta dziennika systemu: `tcpdump -A -ni any  port 514 -vv`. To polecenie umożliwia wyświetlenie dzienników przesyłanych strumieniowo z urządzenia do maszyny dziennika systemowego. Upewnij się, że dzienniki są odbierane z urządzenia źródłowego na odpowiednim porcie i właściwej funkcji.
 
-3. Upewnij się, że dzienniki są zgodne ze specyfikacją [RFC 3164](https://tools.ietf.org/html/rfc3164).
+3. Upewnij się, że dzienniki są zgodne ze [specyfikacją RFC 3164](https://tools.ietf.org/html/rfc3164).
 
 4. Upewnij się, że porty 514 i 25226 są otwarte i nasłuchuje `netstat -a -n:`na komputerze z uruchomionym agentem dziennika systemowego. Aby uzyskać więcej informacji na temat korzystania z tego polecenia, zobacz [stronę sieci Web z systemem Linux (8)](https://linux.die.net/man/8/netstat). Jeśli nasłuchuje prawidłowo, zobaczysz:
 
@@ -144,8 +142,8 @@ Rozpoczęcie wyświetlania dzienników w Log Analytics może potrwać do 20 minu
       
      Uruchom ponownie demona dziennika systemu przy użyciu tego polecenia:`sudo service syslog-ng restart`
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym artykule przedstawiono sposób łączenia urządzeń Fortinet z platformą Azure — wskaźnikiem. Aby dowiedzieć się więcej na temat platformy Azure, zobacz następujące artykuły:
 - Dowiedz się [, jak uzyskać wgląd w dane oraz potencjalne zagrożenia](quickstart-get-visibility.md).
-- Rozpocznij [wykrywanie zagrożeń za pomocą platformy Azure — wskaźnik](tutorial-detect-threats.md).
+- Rozpocznij [wykrywanie zagrożeń za pomocą platformy Azure — wskaźnik](tutorial-detect-threats-built-in.md).
 

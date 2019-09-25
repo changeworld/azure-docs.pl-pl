@@ -1,5 +1,5 @@
 ---
-title: Możliwości łowiectwa przy użyciu notesów w wersji zapoznawczej platformy Azure Microsoft Docs
+title: Możliwości łowiectwa przy użyciu notesów na platformie Azure — wskaźnikowa | Microsoft Docs
 description: W tym artykule opisano, jak używać notesów z możliwościami polowania na platformie Azure.
 services: sentinel
 documentationcenter: na
@@ -16,19 +16,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 6372a7958caf108903321e5ee87ea6bf1a42271c
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 5b90ecc1db686b698668b07bd839304b425445ca
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689580"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240526"
 ---
 # <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Korzystanie z notesów Jupyter do wyszukiwania zagrożeń bezpieczeństwa
-
-> [!IMPORTANT]
-> W publicznej wersji zapoznawczej jest obecnie dostępna usługa Azure.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
-> Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Podstawą platformy Azure jest magazyn danych; łączy ona wysoką wydajność zapytań, schematu dynamicznego i skaluje się do dużych ilości danych. Aby uzyskać dostęp do tego magazynu danych, należy użyć wspólnego interfejsu API w portalu Azure — wskaźniku i wszystkich narzędziach usługi Azure wskaźnikowych. Ten sam interfejs API jest również dostępny dla narzędzi zewnętrznych, takich jak notesy [Jupyter](https://jupyter.org/) i Python. Chociaż wiele typowych zadań można wykonać w portalu, Jupyter rozszerza zakres tego, co można zrobić za pomocą tych danych. Łączy ona pełen programowalność z ogromną kolekcją bibliotek na potrzeby uczenia maszynowego, wizualizacji i analizy danych. Te atrybuty sprawiają, że Jupyter narzędzi do dochodzenia do zabezpieczeń i polowania.
 
@@ -43,7 +38,7 @@ Notesy mają dwa składniki:
 - Interfejs oparty na przeglądarce, w którym można wprowadzać i uruchamiać zapytania i kod oraz miejsce wyświetlania wyników wykonania.
 - *jądro* odpowiedzialne za analizowanie i wykonywanie kodu. 
 
-W Azure Notebooks to jądro jest domyślnie uruchamiane w bezpłatnej usłudze Azure *Storage i magazyn w chmurze* . Jeśli notesy zawierają złożone modele uczenia maszynowego lub wizualizacje, należy rozważyć użycie bardziej zaawansowanych, dedykowanych zasobów obliczeniowych, takich jak [Virtual Machines analizy danych](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/) (DSVM). Notesy na Twoim koncie są przechowywane jako prywatne, chyba że zdecydujesz się je udostępnić.
+W Azure Notebooks to jądro jest domyślnie uruchamiane w *bezpłatnej usłudze Azure Storage i magazyn w chmurze* . Jeśli notesy zawierają złożone modele uczenia maszynowego lub wizualizacje, należy rozważyć użycie bardziej zaawansowanych, dedykowanych zasobów obliczeniowych, takich jak [Virtual Machines analizy danych](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/) (DSVM). Notesy na Twoim koncie są przechowywane jako prywatne, chyba że zdecydujesz się je udostępnić.
 
 W notesach usługi Azure Pandas są używane wiele popularnych bibliotek języka Python, takich jak, matplotlib, bokeh i inne. Istnieje ogromna liczba innych pakietów języka Python, które można wybrać, obejmujących obszary takie jak:
 
@@ -66,7 +61,7 @@ Notesy początkowe obejmują:
 
 W poniższym przykładzie utworzysz projekt Azure Notebooks z portalu Azure wskaźnikowego, wypełniania projektu notesami. Przed rozpoczęciem korzystania z tych notesów dobrze jest utworzyć kopię notesu i rozpocząć korzystanie z kopii. Praca nad kopiami pozwala bezpiecznie aktualizować do przyszłych wersji notesów bez zastępowania żadnych danych.
 
-1. W portalu usługi Azure wskaźnikowym kliknij pozycję notesy w menu nawigacji. Aby utworzyć nowy projekt Azure Notebooks, kliknij pozycję **Klonuj notesy usługi Azure wskaźnikowej** lub Otwórz istniejące projekty notesów, a następnie kliknij pozycję **Przejdź do notesów**.
+1. W portalu usługi Azure wskaźnikowym kliknij pozycję **notesy** w menu nawigacji. Aby utworzyć nowy projekt Azure Notebooks, kliknij pozycję **Klonuj notesy usługi Azure wskaźnikowej** lub Otwórz istniejące projekty notesów, a następnie kliknij pozycję **Przejdź do notesów**.
   
    ![Wybierz notesy](./media/notebooks/sentinel-azure-notebooks-home.png)
 
@@ -74,7 +69,7 @@ W poniższym przykładzie utworzysz projekt Azure Notebooks z portalu Azure wska
 
    ![Importuj Notes](./media/notebooks/sentinel-notebooks-clone.png)
 
-3. Podczas tworzenia nowego projektu należy nazwać projekt — Użyj nazwy domyślnej lub typu w nowym. Nie sprawdzaj **cyklicznie** opcji klonowania — ta opcja odnosi się do połączonych repozytoriów GitHub. Kliknięcie przycisku **Importuj** spowoduje odprowadzenie klonowania zawartości usługi GitHub, co może potrwać kilka minut.
+3. Podczas tworzenia nowego projektu należy nazwać projekt — Użyj nazwy domyślnej lub typu w nowym. Nie sprawdzaj **cyklicznie opcji klonowania** — ta opcja odnosi się do połączonych repozytoriów GitHub. Kliknięcie przycisku **Importuj** spowoduje odprowadzenie klonowania zawartości usługi GitHub, co może potrwać kilka minut.
 
    ![Importuj Notes](./media/notebooks/sentinel-create-project.png)
 
@@ -90,7 +85,7 @@ W poniższym przykładzie utworzysz projekt Azure Notebooks z portalu Azure wska
 
    ![Wybieranie notesu](./media/notebooks/sentinel-select-kernel.png)
 
-Aby zapoznać się z szybkim wprowadzeniem do wykonywania zapytań dotyczących danych na platformie [](https://github.com/Azure/Azure-Sentinel/blob/master/Notebooks/Get%20Started.ipynb) Azure, zapoznaj się z notesem getstarted w folderze głównym notesów. Dodatkowe przykładowe notesy znajdują się w podfolderze **Samples-Notess** . Przykładowe notesy zostały zapisane z danymi, dzięki czemu łatwiej jest zobaczyć zamierzone dane wyjściowe (zalecamy wyświetlanie ich w [nbviewer](https://nbviewer.jupyter.org/)). Folder **HOWTOs** zawiera notesy opisujące, na przykład: ustawienie domyślnej wersji języka Python, skonfigurowanie DSVM, tworzenie zakładek wskaźnikowych platformy Azure z notesu i innych tematów.
+Aby zapoznać się z szybkim wprowadzeniem do wykonywania zapytań dotyczących danych na platformie Azure, zapoznaj się z notesem [getstarted](https://github.com/Azure/Azure-Sentinel/blob/master/Notebooks/Get%20Started.ipynb) w folderze głównym notesów. Dodatkowe przykładowe notesy znajdują się w podfolderze **Samples-Notess** . Przykładowe notesy zostały zapisane z danymi, dzięki czemu łatwiej jest zobaczyć zamierzone dane wyjściowe (zalecamy wyświetlanie ich w [nbviewer](https://nbviewer.jupyter.org/)). Folder **HOWTOs** zawiera notesy opisujące, na przykład: ustawienie domyślnej wersji języka Python, skonfigurowanie DSVM, tworzenie zakładek wskaźnikowych platformy Azure z notesu i innych tematów.
 
 Te notesy są przeznaczone zarówno do przydatnych narzędzi, jak i przykładów kodu, których można używać do tworzenia własnych notesów.
 

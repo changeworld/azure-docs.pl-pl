@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: jenoller
-ms.openlocfilehash: bf29799bc2aee12a27216ad45f7ed1e3355bab8a
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 8c1736fcd4356e0778c3b36301b4490764efab76
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596128"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240881"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Zasady pomocy technicznej dla usługi Azure Kubernetes Service
 
@@ -95,7 +95,7 @@ Firma Microsoft i klienci mogą korzystać z odpowiedzialności za węzły proce
   * Demon Docker lub Moby
 
 > [!NOTE]
-> Jeśli składnik płaszczyzny kontroli nie działa w węźle procesu roboczego, może być konieczne ponowne uruchomienie całego węzła procesu roboczego przez zespół AKS. Ze względu na ograniczony dostęp do aktywnego obciążenia i danych klienta zespół AKS wykonuje ponowny rozruch węzła procesu roboczego tylko wtedy, gdy klient eskalacj problemu. Wszędzie tam, gdzie to możliwe, zespół AKS działa, aby zapobiec wymaganym ponownym uruchomieniu aplikacji.
+> Jeśli składnik płaszczyzny kontroli nie działa w węźle procesu roboczego, zespół AKS może potrzebować ponownego uruchomienia poszczególnych składników lub całego węzła procesu roboczego. Te operacje ponownego uruchamiania są zautomatyzowane i zapewniają automatyczne korygowanie typowych problemów. Te ponownych uruchomień odbywa się tylko na poziomie _węzła_ , a nie w klastrze, chyba że jest to konserwacja awaryjna lub awaria.
 
 ### <a name="customer-responsibilities-for-aks-worker-nodes"></a>Obowiązki klienta dotyczące węzłów procesu roboczego AKS
 

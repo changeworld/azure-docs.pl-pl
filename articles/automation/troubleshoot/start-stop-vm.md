@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 447aa4f5bb3c274900beddcef8c89db88d3f3ee9
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: fe4317c193e8aa6c6723556ef36d6111df6f51cd
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688050"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240845"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Rozwiązywanie problemów dotyczących uruchamiania/zatrzymywania maszyn wirtualnych poza godzinami
 
@@ -44,6 +44,14 @@ The subscription is not registered to use namespace 'Microsoft.Insights'.
 The scope '/subscriptions/000000000000-0000-0000-0000-00000000/resourcegroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>/views/StartStopVMView' cannot perform write operation because following scope(s) are locked: '/subscriptions/000000000000-0000-0000-0000-00000000/resourceGroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>/views/StartStopVMView'. Please remove the lock and try again
 ```
 
+```error
+A parameter cannot be found that matches parameter name 'TagName'
+```
+
+```error
+Start-AzureRmVm : Run Login-AzureRmAccount to login
+```
+
 ### <a name="cause"></a>Przyczyna
 
 Wdrożenia mogą zakończyć się niepowodzeniem z jednego z następujących powodów:
@@ -52,6 +60,7 @@ Wdrożenia mogą zakończyć się niepowodzeniem z jednego z następujących pow
 2. Stosowane są zasady, które uniemożliwiają wdrożenie rozwiązania uruchamiania/zatrzymywania maszyn wirtualnych.
 3. Typy zasobów `Microsoft.Insights`, `Microsoft.OperationsManagement` i`Microsoft.Automation` nie są zarejestrowane.
 4. Obszar roboczy Log Analytics ma blokadę.
+5. Masz nieaktualną wersję modułów AzureRM lub rozwiązanie uruchamiania/zatrzymywania.
 
 ### <a name="resolution"></a>Rozwiązanie
 
@@ -66,6 +75,7 @@ Zapoznaj się z poniższą listą, aby zapoznać się z potencjalnymi rozwiązan
 
    Zobacz, [Rozwiązywanie problemów dotyczących rejestracji dostawcy zasobów](../../azure-resource-manager/resource-manager-register-provider-errors.md) , aby dowiedzieć się więcej o błędach podczas rejestrowania dostawców.
 4. Jeśli masz blokadę obszaru roboczego Log Analytics, przejdź do obszaru roboczego w obszarze Azure Portal i Usuń wszystkie blokady zasobu.
+5. Jeśli powyższe rozwiązania nie rozwiążą problemu, postępuj zgodnie z instrukcjami w sekcji [Aktualizowanie rozwiązania](../automation-solution-vm-management.md#update-the-solution) , aby ponownie wdrożyć rozwiązanie uruchamiania/zatrzymywania.
 
 ## <a name="all-vms-fail-to-startstop"></a>Scenariusz Uruchamianie/zatrzymywanie wszystkich maszyn wirtualnych nie powiodło się
 
@@ -203,20 +213,20 @@ Problem może być spowodowany brakiem uprawnień. Aby dowiedzieć się, jak spr
 
 ### <a name="issue"></a>Problem
 
-Wystąpił problem lub nieoczekiwany wynik podczas korzystania z maszyn wirtualnych Start/Stop w nieprawidłowym rozwiązaniu, które nie znajdują się na tej stronie.
+Wystąpił problem lub nieoczekiwany wynik podczas korzystania z rozwiązania Start/Stop VMs during off-hours, które nie znajduje się na tej stronie.
 
 ### <a name="cause"></a>Przyczyna
 
 Wiele błędów może być spowodowanych przez użycie starej i nieaktualnej wersji rozwiązania.
 
 > [!NOTE]
-> Maszyny wirtualne uruchamiania/zatrzymywania w trakcie rozwiązania offline zostały przetestowane z modułami platformy Azure, które zostały zaimportowane do konta usługi Automation podczas wdrażania rozwiązania. Rozwiązanie nie działa obecnie z nowszymi wersjami modułu platformy Azure. Ma to wpływ tylko na konto usługi Automation, którego używasz do uruchamiania maszyn wirtualnych Start/Stop w niegodzinach. Nadal można używać nowszych wersji modułu platformy Azure na innych kontach usługi Automation, zgodnie z opisem w artykule [jak zaktualizować moduły Azure PowerShell w Azure Automation](../automation-update-azure-modules.md)
+> Rozwiązanie Start/Stop VMs during off-hours zostało przetestowane z modułami platformy Azure, które zostały zaimportowane do konta usługi Automation podczas wdrażania rozwiązania. Rozwiązanie nie działa obecnie z nowszymi wersjami modułu platformy Azure. Ma to wpływ tylko na konto usługi Automation używane do uruchamiania rozwiązania Start/Stop VMs during off-hours. Nadal można używać nowszych wersji modułu platformy Azure na innych kontach usługi Automation, zgodnie z opisem w artykule [jak zaktualizować moduły Azure PowerShell w Azure Automation](../automation-update-azure-modules.md)
 
 ### <a name="resolution"></a>Rozwiązanie
 
 Aby rozwiązać wiele błędów, zaleca się usunięcie i zaktualizowanie rozwiązania. Aby dowiedzieć się, jak zaktualizować rozwiązanie, zobacz temat [Aktualizowanie uruchamiania/zatrzymywania maszyn wirtualnych poza godzinami](../automation-solution-vm-management.md#update-the-solution). Dodatkowo można sprawdzić [strumienie zadań](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) , aby wyszukać błędy. W portalu przejdź do konta usługi Automation i wybierz pozycję **zadania** w obszarze **Automatyzacja procesów**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Jeśli problem nie został wyświetlony lub nie można rozwiązać problemu, odwiedź jeden z następujących kanałów, aby uzyskać więcej pomocy:
 

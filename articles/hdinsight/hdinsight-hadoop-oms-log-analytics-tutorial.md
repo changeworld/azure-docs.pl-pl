@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 7d015f485a51ae1f929e2ecaf1a05811d21594a2
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: a693b14bb61eb52a09ab1f1ecd5d00b339357d5d
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816033"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240371"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Używanie dzienników Azure Monitor do monitorowania klastrów usługi HDInsight
 
@@ -109,6 +109,15 @@ Ponieważ klaster jest całkiem nowego klastra, raport nie wyświetla żadnych d
 ## <a name="configuring-performance-counters"></a>Konfigurowanie liczników wydajności
 
 Usługa Azure monitor obsługuje również zbieranie i analizowanie metryk wydajności dla węzłów w klastrze. Aby uzyskać więcej informacji na temat włączania i konfigurowania tej funkcji, zobacz [źródła danych wydajności systemu Linux w Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-performance-counters#linux-performance-counters).
+
+## <a name="cluster-auditing"></a>Inspekcja klastra
+
+Usługa HDInsight obsługuje inspekcję klastra przy użyciu dzienników Azure Monitor przez zaimportowanie następujących typów dzienników:
+
+* `log_gateway_audit_CL`-Ta tabela zawiera dzienniki inspekcji z węzłów bramy klastra, które pokazują pomyślne i nieudane próby zalogowania.
+* `log_auth_CL`-Ta tabela zawiera dzienniki protokołu SSH z pomyślnymi i nieudanymi próbami logowania.
+* `log_ambari_audit_CL`-Ta tabela zawiera dzienniki inspekcji z Ambari.
+* `log_ranger_audti_CL`-Ta tabela zawiera dzienniki inspekcji z platformy Apache Ranger na klastrach ESP.
 
 ## <a name="next-steps"></a>Następne kroki
 

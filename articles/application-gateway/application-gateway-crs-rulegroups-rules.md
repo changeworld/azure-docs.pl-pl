@@ -1,333 +1,334 @@
 ---
-title: Usługa Azure Application Gateway zapory aplikacji sieci web CRS grup reguł i reguł
-description: Ta strona zawiera informacje dotyczące grup reguł CRS zapory aplikacji sieci web i reguł.
+title: Zasady i reguły usługi Azure Application Gateway zapory aplikacji sieci Web
+description: Ta strona zawiera informacje o grupach i regułach reguł KSR aplikacji sieci Web.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.date: 4/11/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: e56301e98ca773369631e2f7ae137c63d0b9ddef
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 9f90f373bd6f1cfd34de1605783bf3a7f0185f4c
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67613313"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240338"
 ---
-# <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Grupy reguł CRS zapory aplikacji sieci Web i reguł
+# <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Zasady i reguły reguły KSR zapory aplikacji sieci Web
 
-Zapory aplikacji sieci web (WAF) Application Gateway chroni aplikacje sieci web z najpopularniejszych luk w zabezpieczeniach i luki w zabezpieczeniach. Jest to realizowane za pomocą reguł, które są zdefiniowane w oparciu o podstawowych zestawów reguł OWASP wersji 3.0 lub 2.2.9. Te reguły można wyłączyć na podstawie przez reguły. Ten artykuł zawiera bieżące reguły i oferowana zestawów reguł.
+Application Gateway Zapora aplikacji sieci Web (WAF) chroni aplikacje sieci Web przed typowymi lukami w zabezpieczeniach i lukami w zabezpieczeniach. Jest to realizowane za pośrednictwem reguł zdefiniowanych w oparciu o OWASP podstawowe zestawy reguł 3,0 lub 2.2.9. Reguły te można wyłączyć na zasadzie reguły. Ten artykuł zawiera bieżące reguły i dostępne zestaw reguł.
 
-Następujących grup reguł i reguł są dostępne podczas korzystania z bramy aplikacji przy użyciu zapory aplikacji sieci web.
+Następujące grupy reguł i reguły są dostępne w przypadku korzystania z Application Gateway z zaporą aplikacji sieci Web.
 
 # <a name="owasp-30tabowasp3"></a>[OWASP 3.0](#tab/owasp3)
 
-## <a name="owasp30"></a> Zestawy reguł
+## <a name="owasp30"></a>Zestawy reguł
 
 ### <a name="General"></a> <p x-ms-format-detection="none">Ogólne</p>
 
-|Identyfikator reguły|Opis|
+|ruleId|Opis|
 |---|---|
-|200004|Możliwe wieloczęściowego niedopasowane granic.|
+|200004|Możliwa wieloczęściowa niezgodna granica.|
 
-### <a name="crs911"></a> <p x-ms-format-detection="none">ŻĄDANIE 911 — METODA WYMUSZANIA</p>
+### <a name="crs911"></a> <p x-ms-format-detection="none">ŻĄDANIE-911-METODA-WYMUSZANIE</p>
 
-|Identyfikator reguły|Opis|
+|ruleId|Opis|
 |---|---|
 |911100|Metoda nie jest dozwolona przez zasady|
 
 
-### <a name="crs913"></a> <p x-ms-format-detection="none">REQUEST-913-SCANNER-DETECTION</p>
+### <a name="crs913"></a> <p x-ms-format-detection="none">ŻĄDANIE-913 — WYKRYWANIE SKANERA</p>
 
-|Identyfikator reguły|Opis|
+|ruleId|Opis|
 |---|---|
-|913100|Znaleziono agenta użytkownika skojarzony z skaner zabezpieczeń|
-|913110|Znaleziono nagłówek żądania skojarzony z skaner zabezpieczeń|
-|913120|Znaleziono żądania/argument pliku skojarzone z skaner zabezpieczeń|
-|913101|Znaleziono agenta użytkownika skojarzony z klienta HTTP skryptów/ogólne|
-|913102|Znaleziono agenta użytkownika skojarzony z sieci web przeszukiwarki/bota|
+|913100|Znaleziono agenta użytkownika skojarzonego z skanerem zabezpieczeń|
+|913110|Znaleziono nagłówek żądania skojarzony ze skanerem zabezpieczeń|
+|913120|Znaleziono nazwę pliku żądania/argument skojarzony z skanerem zabezpieczeń|
+|913101|Znaleziono agenta użytkownika skojarzonego z skryptem/ogólnym klientem HTTP|
+|913102|Znaleziono agenta użytkownika skojarzonego z przeszukiwarką sieci Web/bot|
 
 ### <a name="crs920"></a> <p x-ms-format-detection="none">REQUEST-920-PROTOCOL-ENFORCEMENT</p>
 
-|Identyfikator reguły|Opis|
+|ruleId|Opis|
 |---|---|
-|920100|Nieprawidłowe żądanie HTTP wiersza|
+|920100|Nieprawidłowy wiersz żądania HTTP|
 |920130|Nie można przeanalizować treści żądania.|
-|920140|Treść żądania wieloczęściowej wiadomości ścisła Weryfikacja nie powiodła się|
-|920160|Nagłówek Content-Length protokołu HTTP nie jest liczbą.|
-|920170|Pobierz ani HEAD żądania z treść.|
-|920180|Brak nagłówka Content-Length żądania POST.|
-|920190|Zakres = nieprawidłowy ostatni bajt.|
-|920210|Powodujące konflikt/wielu znaleziono dane nagłówka połączenia.|
-|920220|Próby ataku nadużycie kodowania adresu URL|
-|920240|Próby ataku nadużycie kodowania adresu URL|
-|920250|UTF8 Kodowanie próby ataku nadużyć|
-|920260|Próby ataku nadużycie pełnej/połowę szerokości Unicode|
-|920270|Nieprawidłowy znak w żądaniu (znaku null)|
-|920280|Żądania brakuje nagłówka hosta|
-|920290|Nagłówek hosta pusty|
-|920310|Żądanie ma pustą nagłówek Accept|
-|920311|Żądanie ma pustą nagłówek Accept|
-|920330|Nagłówek Agent użytkownika pusty|
-|920340|Żądanie zawierające zawartości, ale nagłówek Content-Type Brak|
-|920350|Nagłówek hosta jest adresem IP liczbowe|
+|920140|Nieczęściowa weryfikacja treści żądania nie powiodła się|
+|920160|Nagłówek HTTP o długości zawartości nie jest wartością numeryczną.|
+|920170|Pobierz lub zamów żądanie z zawartością treści.|
+|920180|Żądanie POST nie zawiera nagłówka Content-Length.|
+|920190|Zakres = nieprawidłowa wartość ostatniego bajtu.|
+|920210|Znaleziono wiele lub sprzeczne dane nagłówka połączenia.|
+|920220|Próba ataku przy użyciu kodowania adresu URL|
+|920240|Próba ataku przy użyciu kodowania adresu URL|
+|920250|Próba ataku przy użyciu kodowania UTF8|
+|920260|Próba ataków typu Pełna/połówkowa w formacie Unicode|
+|920270|Nieprawidłowy znak w żądaniu (znak null)|
+|920280|W żądaniu brakuje nagłówka hosta|
+|920290|Pusty nagłówek hosta|
+|920310|Żądanie ma pusty nagłówek Accept|
+|920311|Żądanie ma pusty nagłówek Accept|
+|920330|Pusty nagłówek agenta użytkownika|
+|920340|Żądanie zawierające zawartość, ale brak nagłówka Content-Type|
+|920350|Nagłówek hosta jest numerycznym adresem IP|
 |920380|Zbyt wiele argumentów w żądaniu|
 |920360|Zbyt długa nazwa argumentu|
-|920370|Wartość argumentu jest za długa|
-|920390|Przekroczono rozmiar całkowitej argumentów|
-|920400|Przekazany plik jest zbyt duży|
-|920410|Całkowita liczba przekazanych plików jest zbyt duży|
+|920370|Zbyt długa wartość argumentu|
+|920390|Przekroczono łączny rozmiar argumentów|
+|920400|Rozmiar przekazanego pliku jest zbyt duży|
+|920410|Łączny rozmiar przekazanych plików jest zbyt duży|
 |920420|Typ zawartości żądania nie jest dozwolony przez zasady|
-|920430|Wersja protokołu HTTP nie jest dozwolony przez zasady|
-|920440|Rozszerzenie pliku adres URL jest ograniczona przez zasady|
-|920450|Nagłówek HTTP jest ograniczona przez zasady (%@{MATCHED_VAR})|
-|920200|Zakres = zbyt wiele pól (6- lub więcej)|
-|920201|Zakres = zbyt wiele pól dla żądania pdf (35 lub więcej)|
-|920230|Wykryto wiele kodowania adresu URL|
-|920300|Żądania brakuje nagłówek Accept|
-|920271|Nieprawidłowy znak w żądaniu (innych niż drukowalne znaki)|
+|920430|Wersja protokołu HTTP nie jest dozwolona przez zasady|
+|920440|Rozszerzenie pliku adresu URL jest ograniczone przez zasady|
+|920450|Nagłówek HTTP jest ograniczony przez zasady (% @ {MATCHED_VAR})|
+|920200|Zakres = zbyt wiele pól (co najmniej 6)|
+|920201|Zakres = zbyt wiele pól dla żądania PDF (35 lub więcej)|
+|920230|Wykryto wiele kodowań adresów URL|
+|920300|W żądaniu brakuje nagłówka Accept|
+|920271|Nieprawidłowy znak w żądaniu (znaki niedrukowalne)|
 |920320|Brak nagłówka agenta użytkownika|
-|920272|Nieprawidłowy znak w żądaniu (poza drukowalnych znaków poniżej ascii 127 znaków)|
-|920202|Zakres = zbyt wiele pól dla żądania pdf (6- lub więcej)|
-|920273|Nieprawidłowy znak w żądaniu (poza bardzo rygorystyczny set)|
-|920274|Nieprawidłowy znak w nagłówkach żądania (poza bardzo rygorystyczny set)|
-|920460|Znaki ucieczki nietypowe|
+|920272|Nieprawidłowy znak w żądaniu (na zewnątrz znaków drukowalnych poniżej ASCII 127)|
+|920202|Zakres = zbyt wiele pól dla żądania PDF (co najmniej 6)|
+|920273|Nieprawidłowy znak w żądaniu (poza bardzo rygorystycznym zestawem)|
+|920274|Nieprawidłowy znak w nagłówkach żądania (poza bardzo rygorystycznym zestawem)|
+|920460|Nietypowe znaki ucieczki|
 
 ### <a name="crs921"></a> <p x-ms-format-detection="none">REQUEST-921-PROTOCOL-ATTACK</p>
 
-|Identyfikator reguły|Opis|
+|ruleId|Opis|
 |---|---|
-|921100|Żądanie HTTP, Przemycaniem ataku.|
-|921110|Atak przemycie żądania HTTP|
-|921120|Odpowiedź HTTP podział ataku|
-|921130|Odpowiedź HTTP podział ataku|
-|921140|Ataku polegającego na iniekcji nagłówków HTTP za pośrednictwem nagłówki|
-|921150|Ataku polegającego na iniekcji nagłówków HTTP za pośrednictwem ładunek (Wykryto CR/LF)|
-|921160|Ataku polegającego na iniekcji nagłówków HTTP za pośrednictwem ładunek (CR/LF i wykryto nazwę nagłówka)|
-|921151|Ataku polegającego na iniekcji nagłówków HTTP za pośrednictwem ładunek (Wykryto CR/LF)|
-|921170|Zanieczyszczenie parametru HTTP|
-|921180|Zanieczyszczenie parametru HTTP (% @{TX.1})|
+|921100|Atak na żądanie HTTP.|
+|921110|Atak na przemycie żądania HTTP|
+|921120|Atak dzielenia odpowiedzi HTTP|
+|921130|Atak dzielenia odpowiedzi HTTP|
+|921140|Atak z iniekcją nagłówka HTTP za pośrednictwem nagłówków|
+|921150|Atak z iniekcją nagłówka HTTP za pośrednictwem ładunku (wykryto CR/LF)|
+|921160|Atak z iniekcją nagłówka HTTP za pośrednictwem ładunku (wykryto znaki CR/LF i nagłówek-Name)|
+|921151|Atak z iniekcją nagłówka HTTP za pośrednictwem ładunku (wykryto CR/LF)|
+|921170|Zanieczyszczenia parametrów HTTP|
+|921180|Zanieczyszczenia parametrów HTTP (% @ {TX. 1})|
 
 ### <a name="crs930"></a> <p x-ms-format-detection="none">REQUEST-930-APPLICATION-ATTACK-LFI</p>
 
-|Identyfikator reguły|Opis|
+|ruleId|Opis|
 |---|---|
-|930100|Ścieżka przechodzenia ataku (/... /)|
-|930110|Ścieżka przechodzenia ataku (/... /)|
+|930100|Atak przechodzenia do lokalizacji (/.. /)|
+|930110|Atak przechodzenia do lokalizacji (/.. /)|
 |930120|Próba dostępu do pliku systemu operacyjnego|
-|930130|Próba dostępu do pliku ograniczone|
+|930130|Próba dostępu do pliku z ograniczeniami|
 
 ### <a name="crs931"></a> <p x-ms-format-detection="none">REQUEST-931-APPLICATION-ATTACK-RFI</p>
 
-|Identyfikator reguły|Opis|
+|ruleId|Opis|
 |---|---|
-|931100|Możliwości ataku zdalnego plików (RFI) = parametr adresu URL przy użyciu adresu IP|
-|931110|Możliwości ataku zdalnego plików (RFI) = RFI narażone parametru Nazwa pospolita używana w/URL ładunku|
-|931120|Możliwe zdalnego pliku dołączania (RFI) ataku = adres URL ładunku używane w/końcowe pytanie znakiem zapytania (?)|
-|931130|Możliwe zdalnego pliku dołączania (RFI) ataku = łącze odwołania Wyłącz domeny|
+|931100|Możliwy atak pliku zdalnego dołączania (RFI) = adres URL przy użyciu adresu IP|
+|931110|Możliwe ataki zdalnego dołączania plików (RFI) = wspólna RFI Nazwa parametru używana z ładunkiem w adresie URL|
+|931120|Możliwy atak na zdalny dołączenie do pliku (RFI) = ładunek adresu URL używany z końcowym znakiem zapytania (?)|
+|931130|Możliwy atak na zdalny dołączenie do pliku (RFI) = poza domenę odwołanie/łącze|
 
 ### <a name="crs932"></a> <p x-ms-format-detection="none">REQUEST-932-APPLICATION-ATTACK-RCE</p>
 
-|Identyfikator reguły|Opis|
+|ruleId|Opis|
 |---|---|
-|932120|Wykonanie polecenia zdalnego = znaleziono programu Windows PowerShell polecenia|
-|932130|Wykonanie polecenia zdalnego = wyrażenie powłoki systemu Unix, znaleziono|
-|932140|Wykonanie polecenia zdalnego = Windows dla /, jeśli znaleziono polecenia|
-|932160|Wykonanie polecenia zdalnego = znaleziono kod powłoki systemu Unix|
+|932120|Zdalne wykonywanie poleceń = znaleziono polecenie programu Windows PowerShell|
+|932130|Wykonanie polecenia zdalnego = znaleziono wyrażenie powłoki systemu UNIX|
+|932140|Zdalne wykonywanie poleceń = znaleziono polecenie systemu Windows FOR/IF|
+|932160|Wykonanie polecenia zdalnego = znaleziono kod powłoki systemu UNIX|
 |932170|Wykonanie polecenia zdalnego = Shellshock (CVE-2014-6271)|
 |932171|Wykonanie polecenia zdalnego = Shellshock (CVE-2014-6271)|
 
 ### <a name="crs933"></a> <p x-ms-format-detection="none">REQUEST-933-APPLICATION-ATTACK-PHP</p>
 
-|Identyfikator reguły|Opis|
+|ruleId|Opis|
 |---|---|
-|933100|Ataku polegającego na iniekcji PHP = znaleziono tagu otwierającego/zamykającego|
-|933110|Ataku polegającego na iniekcji PHP = przekazywanie pliku skryptu języka PHP znaleziono|
-|933120|Ataku polegającego na iniekcji PHP = dyrektywy konfiguracji znaleziono|
-|933130|Ataku polegającego na iniekcji PHP = znaleziono zmiennych|
-|933150|Ataku polegającego na iniekcji PHP = można odnaleźć nazwy funkcji PHP o wysokim ryzyku|
-|933160|Ataku polegającego na iniekcji PHP = o wysokim ryzyku PHP wywołania funkcji znanego|
-|933180|Ataku polegającego na iniekcji PHP = wywołania funkcji zmiennej znanego|
-|933151|Ataku polegającego na iniekcji PHP = można odnaleźć nazwy funkcji PHP średniego ryzyka|
-|933131|Ataku polegającego na iniekcji PHP = znaleziono zmiennych|
-|933161|Ataku polegającego na iniekcji PHP = znaleziono wywołanie funkcji PHP niskiej wartości|
-|933111|Ataku polegającego na iniekcji PHP = przekazywanie pliku skryptu języka PHP znaleziono|
+|933100|Atak z iniekcją PHP = znaleziono tag otwierającego/zamykającego|
+|933110|Atak z iniekcją PHP = znaleziono plik skryptu PHP|
+|933120|Atak z iniekcją PHP = znaleziono dyrektywę Configuration|
+|933130|Atak z iniekcją PHP = znaleziono zmienne|
+|933150|Atak z iniekcją PHP = znaleziono nazwę funkcji PHP o wysokim ryzyku|
+|933160|Atak z iniekcją PHP = znaleziono wywołanie funkcji PHP o wysokim ryzyku|
+|933180|Atak z iniekcją PHP = znaleziono wywołanie funkcji zmiennej|
+|933151|Atak z iniekcją PHP = znaleziono nazwę funkcji PHP o średnim ryzyku|
+|933131|Atak z iniekcją PHP = znaleziono zmienne|
+|933161|Atak z iniekcją PHP = znaleziono wywołanie funkcji PHP o niskiej wartości|
+|933111|Atak z iniekcją PHP = znaleziono plik skryptu PHP|
 
 ### <a name="crs941"></a> <p x-ms-format-detection="none">REQUEST-941-APPLICATION-ATTACK-XSS</p>
 
-|Identyfikator reguły|Opis|
+|ruleId|Opis|
 |---|---|
-|941100|Wykrył ataku XSS, za pośrednictwem libinjection|
-|941110|Filtr XSS - kategorii 1 = wektor Tag skryptu|
-|941130|Filtr XSS - kategorii 3 = wektor atrybutu|
-|941140|Filtr XSS — kategoria 4 = wektor URI języka Javascript|
-|941150|Filtr XSS — kategoria 5 = atrybutów HTML niedozwolonych|
+|941100|Atak XSS wykryty za pośrednictwem libinjection|
+|941110|Filtr XSS — kategoria 1 = wektor tagów skryptu|
+|941130|Filtr XSS — Kategoria 3 = wektor atrybutu|
+|941140|Filtr XSS — Kategoria 4 = wektor identyfikatora URI JavaScript|
+|941150|Filtr XSS — kategoria 5 = niedozwolone atrybuty HTML|
 |941180|Słowa kluczowe lista zablokowanych modułów weryfikacji węzła|
-|941190|XSS, przy użyciu arkuszy stylów|
-|941200|XSS, przy użyciu klatek VML|
-|941210|XSS zaciemnionego języka JavaScript|
-|941220|XSS, za pomocą zaciemnionego skryptu VB|
-|941230|XSS, za pomocą "Osadź" tag|
-|941240|XSS, przy użyciu atrybutu "import" lub "wdrożenia"|
-|941260|XSS, za pomocą znacznika 'meta'|
-|941270|XSS, za pomocą "link" href|
-|941280|XSS, za pomocą znacznika "base"|
-|941290|XSS, za pomocą znacznika "apletu"|
-|941300|XSS, za pomocą znacznika "obiekt"|
-|941310|US ASCII źle sformułowane kodowania Filtr XSS - atak.|
-|941330|Filtry XSS programu Internet Explorer — wykryto atak.|
-|941340|Filtry XSS programu Internet Explorer — wykryto atak.|
-|941350|UTF-7 kodowania IE XSS - atak.|
-|941320|Wykryto ataku XSS możliwe - procedurę obsługi tagów HTML|
+|941190|XSS przy użyciu arkuszy stylów|
+|941200|XSS przy użyciu ramek VML|
+|941210|XSS przy użyciu zasłoniętego języka JavaScript|
+|941220|XSS przy użyciu zasłoniętego skryptu VB|
+|941230|XSS przy użyciu tagu "embed"|
+|941240|XSS przy użyciu atrybutu "Import" lub "implementacja"|
+|941260|XSS przy użyciu tagu "meta"|
+|941270|XSS przy użyciu "link" href|
+|941280|XSS przy użyciu tagu "Base"|
+|941290|XSS przy użyciu tagu "applet"|
+|941300|XSS przy użyciu tagu "Object"|
+|941310|Filtr XSS z nieprawidłowo sformułowanym kodowaniem ASCII — wykryto atak.|
+|941330|Filtry XSS programu IE — wykryto atak.|
+|941340|Filtry XSS programu IE — wykryto atak.|
+|941350|Kodowanie UTF-7 IE XSS-atak wykryty.|
+|941320|Możliwe ataki XSS wykryto procedurę obsługi tagów HTML|
 
 ### <a name="crs942"></a> <p x-ms-format-detection="none">REQUEST-942-APPLICATION-ATTACK-SQLI</p>
 
-|Identyfikator reguły|Opis|
+|ruleId|Opis|
 |---|---|
-|942100|Wykryto atak w programie SQL iniekcji za pośrednictwem libinjection|
-|942110|Ataku polegającego na iniekcji SQL: Iniekcja wspólne testowanie wykryte|
-|942130|Ataku polegającego na iniekcji SQL: Wykryto Tautology SQL.|
-|942140|Ataku polegającego na iniekcji SQL = wykryto nazw pospolitych bazy danych|
-|942160|Wykrywa ukryta sqli testów przy użyciu sleep() lub benchmark().|
-|942170|Wykrywa prób iniekcji SQL testu wydajności i uśpienia, takich jak zapytania warunkowego|
-|942190|Wykrywa próby zbierania informacji i wykonywanie kodu MSSQL|
-|942200|Wykrywa MySQL komentarz- / zaciemniony miejsce w plikach wstrzyknięć kodu i kończenie działania początkowych|
-|942230|Wykrywa warunkowego prób iniekcji kodu SQL|
-|942260|Wykrywa, że podstawowe pomijania uwierzytelniania SQL próbuje 2/3|
-|942270|Szukasz wstrzyknięcie podstawowego kodu sql. Wspólne parametry ataku dla mysql, oracle i innych.|
-|942290|Znajduje podstawowe SQL bazy danych MongoDB prób iniekcji kodu|
-|942300|Wykrywa MySQL komentarze, warunki i iniekcji ch r ()|
-|942320|Wykrywa, MySQL i PostgreSQL wstrzyknięć kodu funkcji/procedury przechowywane|
-|942330|Wykrywa klasycznego probings iniekcji SQL 1/2|
-|942340|Wykrywa, że podstawowe pomijania uwierzytelniania SQL próbuje 3/3|
-|942350|Wykrywa iniekcji MySQL funkcji zdefiniowanej przez użytkownika i inne struktury danych/manipulowanie prób|
-|942360|Wykrywa połączonych podstawowe wstrzyknięcie kodu SQL i prób SQLLFI|
-|942370|Wykrywa klasycznego probings iniekcji SQL 2/2|
-|942150|Ataku polegającego na iniekcji SQL|
-|942410|Ataku polegającego na iniekcji SQL|
-|942430|Wykrywanie anomalii znak SQL (argumenty) z ograniczeniami: liczba znaków specjalnych przekracza (12)|
-|942440|Wykryto sekwencja Komentarz SQL.|
-|942450|SQL szesnastkowy kodowanie określone|
-|942251|Wykrywa HAVING wstrzyknięć kodu|
-|942460|Alert wykrywania anomalii meta-znak — powtarzające się znaki niebędące znakami słowa|
+|942100|Atak na wstrzyknięcie kodu SQL został wykryty za pośrednictwem libinjection|
+|942110|Atak iniekcji kodu SQL: Wykryto wspólne testowanie iniekcji|
+|942130|Atak iniekcji kodu SQL: Wykryto tautology języka SQL.|
+|942140|Atak iniekcji SQL = wykryto wspólną nazwę bazy danych|
+|942160|Wykrywa testy niewidomych SQLi za pomocą uśpienia () lub testu porównawczego ().|
+|942170|Wykrywa testy porównawcze SQL i iniekcje uśpienia, w tym zapytania warunkowe|
+|942190|Wykrywa wykonywanie kodu MSSQL i prób zbierania informacji|
+|942200|Wykrywa Komentarze MySQL — iniekcje/Space-Obfuscated i zakończenie taktu|
+|942230|Wykrywa warunkowe próby iniekcji SQL|
+|942260|Wykrywa podstawowe próby obejścia uwierzytelniania SQL 2/3|
+|942270|Wyszukiwanie podstawowej iniekcji kodu SQL. Typowy ciąg ataku dla programu MySQL Oracle i innych.|
+|942290|Znajdowanie podstawowych prób iniekcji kodu SQL MongoDB|
+|942300|Wykrywa Komentarze programu MySQL, warunki i wstrzyknięcia języka r (a)|
+|942310|Wykrywa łańcuch prób iniekcji kodu SQL 2/2|
+|942320|Wykrywa procedury składowane MySQL i PostgreSQL oraz iniekcje funkcji.|
+|942330|Wykrywa badanie klasycznego wstrzykiwania kodu SQL 1/2|
+|942340|Wykrywa podstawowe próby obejścia uwierzytelniania SQL 3/3|
+|942350|Wykrywa wprowadzanie danych UDF w formacie MySQL oraz inne próby manipulowania danymi/strukturą|
+|942360|Wykrywa połączone, podstawowe próby iniekcji SQL i SQLLFI|
+|942370|Wykrywa badanie klasycznego wstrzykiwania kodu SQL 2/2|
+|942150|Atak iniekcji kodu SQL|
+|942410|Atak iniekcji kodu SQL|
+|942430|Ograniczone wykrywanie anomalii znaków SQL (args): Przekroczono liczbę znaków specjalnych (12)|
+|942440|Wykryto sekwencję komentarzy SQL.|
+|942450|Zidentyfikowano kodowanie szesnastkowe języka SQL|
+|942251|Wykrywa iniekcje|
+|942460|Alert wykrywania anomalii z nieprawidłowym znakiem — powtarzające się znaki niebędące słowami|
 
 ### <a name="crs943"></a> <p x-ms-format-detection="none">REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION</p>
 
-|Identyfikator reguły|Opis|
+|ruleId|Opis|
 |---|---|
-|943100|Atak użyciem spreparowanych stałych identyfikatorów sesji możliwe = ustawienie wartości plików Cookie w formacie HTML|
-|943110|Atak użyciem spreparowanych stałych identyfikatorów sesji możliwe = Nazwa parametru identyfikatora sesji z odwołania Wyłącz domeny|
-|943120|Atak użyciem spreparowanych stałych identyfikatorów sesji możliwe = Nazwa parametru identyfikatora sesji z nie odwołania|
+|943100|Możliwy atak utrwalania sesji = Ustawianie wartości plików cookie w kodzie HTML|
+|943110|Możliwy atak utrwalania sesji = Nazwa parametru SessionID z odwołującym się poza domenę|
+|943120|Możliwy atak utrwalania sesji = Nazwa parametru SessionID bez odwołującego się|
 
 # <a name="owasp-229tabowasp2"></a>[OWASP 2.2.9](#tab/owasp2)
 
-## <a name="owasp229"></a> Zestawy reguł
+## <a name="owasp229"></a>Zestawy reguł
 
-### <a name="crs20"></a> crs_20_protocol_violations
+### <a name="crs20"></a>crs_20_protocol_violations
 
-|Identyfikator reguły|Opis|
+|ruleId|Opis|
 |---|---|
-|960911|Nieprawidłowe żądanie HTTP wiersza|
-|981227|Błąd Apache = nieprawidłowy identyfikator URI żądania.|
+|960911|Nieprawidłowy wiersz żądania HTTP|
+|981227|Błąd Apache = nieprawidłowy identyfikator URI w żądaniu.|
 |960912|Nie można przeanalizować treści żądania.|
-|960914|Treść żądania wieloczęściowej wiadomości ścisła Weryfikacja nie powiodła się|
-|960915|Parser wieloczęściowej wiadomości wykryto możliwe niedopasowane granicy.|
-|960016|Nagłówek Content-Length protokołu HTTP nie jest liczbą.|
-|960011|Pobierz ani HEAD żądania z treść.|
-|960012|Brak nagłówka Content-Length żądania POST.|
+|960914|Nieczęściowa weryfikacja treści żądania nie powiodła się|
+|960915|Parser wieloczęściowy wykrył możliwe niepasującą granicę.|
+|960016|Nagłówek HTTP o długości zawartości nie jest wartością numeryczną.|
+|960011|Pobierz lub zamów żądanie z zawartością treści.|
+|960012|Żądanie POST nie zawiera nagłówka Content-Length.|
 |960902|Nieprawidłowe użycie kodowania tożsamości.|
-|960022|Oczekuje nagłówka nie jest dozwolona dla protokołu HTTP 1.0.|
-|960020|Nagłówek pragma wymaga nagłówka Cache-Control dla żądania HTTP/1.1.|
-|958291|Zakres = pole istnieje i rozpoczyna się od 0.|
-|958230|Zakres = nieprawidłowy ostatni bajt.|
-|958295|Powodujące konflikt/wielu znaleziono dane nagłówka połączenia.|
-|950107|Próby ataku nadużycie kodowania adresu URL|
-|950109|Wykryto wiele kodowania adresu URL|
-|950108|Próby ataku nadużycie kodowania adresu URL|
-|950801|UTF8 Kodowanie próby ataku nadużyć|
-|950116|Próby ataku nadużycie pełnej/połowę szerokości Unicode|
+|960022|Oczekiwano, że nagłówek nie jest dozwolony dla HTTP 1,0.|
+|960020|Nagłówek Pragma wymaga nagłówka kontroli pamięci podręcznej dla żądań HTTP/1.1.|
+|958291|Zakres = pole istnieje i zaczyna się od 0.|
+|958230|Zakres = nieprawidłowa wartość ostatniego bajtu.|
+|958295|Znaleziono wiele lub sprzeczne dane nagłówka połączenia.|
+|950107|Próba ataku przy użyciu kodowania adresu URL|
+|950109|Wykryto wiele kodowań adresów URL|
+|950108|Próba ataku przy użyciu kodowania adresu URL|
+|950801|Próba ataku przy użyciu kodowania UTF8|
+|950116|Próba ataków typu Pełna/połówkowa w formacie Unicode|
 |960901|Nieprawidłowy znak w żądaniu|
 |960018|Nieprawidłowy znak w żądaniu|
 
-### <a name="crs21"></a> crs_21_protocol_anomalies
+### <a name="crs21"></a>crs_21_protocol_anomalies
 
-|Identyfikator reguły|Opis|
+|ruleId|Opis|
 |---|---|
-|960008|Żądania brakuje nagłówka hosta|
-|960007|Nagłówek hosta pusty|
-|960015|Żądania brakuje nagłówek Accept|
-|960021|Żądanie ma pustą nagłówek Accept|
-|960009|Brak nagłówka agenta użytkownika żądania|
-|960006|Nagłówek Agent użytkownika pusty|
-|960904|Żądanie zawierające zawartości, ale nagłówek Content-Type Brak|
-|960017|Nagłówek hosta jest adresem IP liczbowe|
+|960008|W żądaniu brakuje nagłówka hosta|
+|960007|Pusty nagłówek hosta|
+|960015|W żądaniu brakuje nagłówka Accept|
+|960021|Żądanie ma pusty nagłówek Accept|
+|960009|W żądaniu brakuje nagłówka agenta użytkownika|
+|960006|Pusty nagłówek agenta użytkownika|
+|960904|Żądanie zawierające zawartość, ale brak nagłówka Content-Type|
+|960017|Nagłówek hosta jest numerycznym adresem IP|
 
-### <a name="crs23"></a> crs_23_request_limits
+### <a name="crs23"></a>crs_23_request_limits
 
-|Identyfikator reguły|Opis|
+|ruleId|Opis|
 |---|---|
 |960209|Zbyt długa nazwa argumentu|
-|960208|Wartość argumentu jest za długa|
+|960208|Zbyt długa wartość argumentu|
 |960335|Zbyt wiele argumentów w żądaniu|
-|960341|Przekroczono rozmiar całkowitej argumentów|
-|960342|Przekazany plik jest zbyt duży|
-|960343|Całkowita liczba przekazanych plików jest zbyt duży|
+|960341|Przekroczono łączny rozmiar argumentów|
+|960342|Rozmiar przekazanego pliku jest zbyt duży|
+|960343|Łączny rozmiar przekazanych plików jest zbyt duży|
 
-### <a name="crs30"></a> crs_30_http_policy
+### <a name="crs30"></a>crs_30_http_policy
 
-|Identyfikator reguły|Opis|
+|ruleId|Opis|
 |---|---|
 |960032|Metoda nie jest dozwolona przez zasady|
 |960010|Typ zawartości żądania nie jest dozwolony przez zasady|
-|960034|Wersja protokołu HTTP nie jest dozwolony przez zasady|
-|960035|Rozszerzenie pliku adres URL jest ograniczona przez zasady|
-|960038|Nagłówek HTTP jest ograniczona przez zasady|
+|960034|Wersja protokołu HTTP nie jest dozwolona przez zasady|
+|960035|Rozszerzenie pliku adresu URL jest ograniczone przez zasady|
+|960038|Nagłówek HTTP jest ograniczony przez zasady|
 
-### <a name="crs35"></a> crs_35_bad_robots
+### <a name="crs35"></a>crs_35_bad_robots
 
-|Identyfikator reguły|Opis|
+|ruleId|Opis|
 |---|---|
-|990002|Wskazuje żądanie skaner zabezpieczeń zeskanowanych lokacji|
-|990901|Wskazuje żądanie skaner zabezpieczeń zeskanowanych lokacji|
-|990902|Wskazuje żądanie skaner zabezpieczeń zeskanowanych lokacji|
-|990012|Nieautoryzowany witryny sieci web przeszukiwarki|
+|990002|Żądanie oznacza, że skaner zabezpieczeń przeskanował lokację|
+|990901|Żądanie oznacza, że skaner zabezpieczeń przeskanował lokację|
+|990902|Żądanie oznacza, że skaner zabezpieczeń przeskanował lokację|
+|990012|Nieautoryzowany przeszukiwarka witryn sieci Web|
 
-### <a name="crs40"></a> crs_40_generic_attacks
+### <a name="crs40"></a>crs_40_generic_attacks
 
-|Identyfikator reguły|Opis|
+|ruleId|Opis|
 |---|---|
-|960024|Alert wykrywania anomalii meta-znak — powtarzające się znaki niebędące znakami słowa|
-|950008|Iniekcja nieudokumentowane ColdFusion tagów|
-|950010|Ataku polegającego na iniekcji LDAP|
-|950011|Iniekcja SSI ataku|
-|950018|Wykryto adres URL Universal PDF XSS.|
-|950019|Ataku polegającego na iniekcji poczty e-mail|
-|950012|Żądanie HTTP, Przemycaniem ataku.|
-|950910|Odpowiedź HTTP podział ataku|
-|950911|Odpowiedź HTTP podział ataku|
-|950117|Atak dołączenie pliku zdalnego|
-|950118|Atak dołączenie pliku zdalnego|
-|950119|Atak dołączenie pliku zdalnego|
-|950120|Możliwe zdalnego pliku dołączania (RFI) ataku = łącze odwołania Wyłącz domeny|
+|960024|Alert wykrywania anomalii z nieprawidłowym znakiem — powtarzające się znaki niebędące słowami|
+|950008|Iniekcja nieudokumentowanych tagów ColdFusion|
+|950010|Atak iniekcji LDAP|
+|950011|Atak z iniekcją SSI|
+|950018|Wykryto adres URL XSS uniwersalnego pliku PDF.|
+|950019|Atak z iniekcją poczty e-mail|
+|950012|Atak na żądanie HTTP.|
+|950910|Atak dzielenia odpowiedzi HTTP|
+|950911|Atak dzielenia odpowiedzi HTTP|
+|950117|Atak z dołączeniem do pliku zdalnego|
+|950118|Atak z dołączeniem do pliku zdalnego|
+|950119|Atak z dołączeniem do pliku zdalnego|
+|950120|Możliwy atak na zdalny dołączenie do pliku (RFI) = poza domenę odwołanie/łącze|
 |981133|Reguła 981133|
 |981134|Reguła 981134|
-|950009|Atak użyciem spreparowanych stałych identyfikatorów sesji|
+|950009|Atak utrwalania sesji|
 |950003|Utrwalanie sesji|
 |950000|Utrwalanie sesji|
 |950005|Próba dostępu do pliku zdalnego|
-|950002|Dostęp do poleceń systemu|
-|950006|Polegające na iniekcji poleceń systemu|
-|959151|Ataku polegającego na iniekcji PHP|
-|958976|Ataku polegającego na iniekcji PHP|
-|958977|Ataku polegającego na iniekcji PHP|
+|950002|Dostęp do poleceń systemowych|
+|950006|Iniekcja poleceń systemowych|
+|959151|Atak z iniekcją PHP|
+|958976|Atak z iniekcją PHP|
+|958977|Atak z iniekcją PHP|
 
-### <a name="crs41sql"></a> crs_41_sql_injection_attacks
+### <a name="crs41sql"></a>crs_41_sql_injection_attacks
 
-|Identyfikator reguły|Opis|
+|ruleId|Opis|
 |---|---|
-|981231|Wykryto sekwencja Komentarz SQL.|
-|981260|SQL szesnastkowy kodowanie określone|
-|981320|Ataku polegającego na iniekcji SQL = wykryto nazw pospolitych bazy danych|
+|981231|Wykryto sekwencję komentarzy SQL.|
+|981260|Zidentyfikowano kodowanie szesnastkowe języka SQL|
+|981320|Atak iniekcji SQL = wykryto wspólną nazwę bazy danych|
 |981300|Reguła 981300|
 |981301|Reguła 981301|
 |981302|Reguła 981302|
@@ -345,140 +346,140 @@ Następujących grup reguł i reguł są dostępne podczas korzystania z bramy a
 |981314|Reguła 981314|
 |981315|Reguła 981315|
 |981316|Reguła 981316|
-|981317|Alert wykrycia anomalii w usłudze SQL w instrukcji SELECT|
-|950007|Ataku polegającego na iniekcji SQL ukryta|
-|950001|Ataku polegającego na iniekcji SQL|
-|950908|Ataku polegającego na iniekcji SQL.|
-|959073|Ataku polegającego na iniekcji SQL|
-|981272|Wykrywa ukryta sqli testów przy użyciu sleep() lub benchmark().|
-|981250|Wykrywa prób iniekcji SQL testu wydajności i uśpienia, takich jak zapytania warunkowego|
-|981241|Wykrywa warunkowego prób iniekcji kodu SQL|
-|981276|Szukasz wstrzyknięcie podstawowego kodu sql. Wspólne parametry ataku dla mysql, oracle i innych.|
-|981270|Znajduje podstawowe SQL bazy danych MongoDB prób iniekcji kodu|
-|981253|Wykrywa, MySQL i PostgreSQL wstrzyknięć kodu funkcji/procedury przechowywane|
-|981251|Wykrywa iniekcji MySQL funkcji zdefiniowanej przez użytkownika i inne struktury danych/manipulowanie prób|
+|981317|Alert wykrywania anomalii w instrukcji SELECT języka SQL|
+|950007|Atak polegający na wstrzyknięciu kodu SQL|
+|950001|Atak iniekcji kodu SQL|
+|950908|Atak iniekcji kodu SQL.|
+|959073|Atak iniekcji kodu SQL|
+|981272|Wykrywa testy niewidomych SQLi za pomocą uśpienia () lub testu porównawczego ().|
+|981250|Wykrywa testy porównawcze SQL i iniekcje uśpienia, w tym zapytania warunkowe|
+|981241|Wykrywa warunkowe próby iniekcji SQL|
+|981276|Wyszukiwanie podstawowej iniekcji kodu SQL. Typowy ciąg ataku dla programu MySQL Oracle i innych.|
+|981270|Znajdowanie podstawowych prób iniekcji kodu SQL MongoDB|
+|981253|Wykrywa procedury składowane MySQL i PostgreSQL oraz iniekcje funkcji.|
+|981251|Wykrywa wprowadzanie danych UDF w formacie MySQL oraz inne próby manipulowania danymi/strukturą|
 
-### <a name="crs41xss"></a> crs_41_xss_attacks
+### <a name="crs41xss"></a>crs_41_xss_attacks
 
-|Identyfikator reguły|Opis|
+|ruleId|Opis|
 |---|---|
-|973336|Filtr XSS - kategorii 1 = wektor Tag skryptu|
-|973338|Filtr XSS - kategorii 3 = wektor URI języka Javascript|
+|973336|Filtr XSS — kategoria 1 = wektor tagów skryptu|
+|973338|Filtr XSS — Kategoria 3 = wektor identyfikatora URI JavaScript|
 |981136|Reguła 981136|
 |981018|Reguła 981018|
-|958016|Atak skryptów między witrynami (XSS)|
-|958414|Atak skryptów między witrynami (XSS)|
-|958032|Atak skryptów między witrynami (XSS)|
-|958026|Atak skryptów między witrynami (XSS)|
-|958027|Atak skryptów między witrynami (XSS)|
-|958054|Atak skryptów między witrynami (XSS)|
-|958418|Atak skryptów między witrynami (XSS)|
-|958034|Atak skryptów między witrynami (XSS)|
-|958019|Atak skryptów między witrynami (XSS)|
-|958013|Atak skryptów między witrynami (XSS)|
-|958408|Atak skryptów między witrynami (XSS)|
-|958012|Atak skryptów między witrynami (XSS)|
-|958423|Atak skryptów między witrynami (XSS)|
-|958002|Atak skryptów między witrynami (XSS)|
-|958017|Atak skryptów między witrynami (XSS)|
-|958007|Atak skryptów między witrynami (XSS)|
-|958047|Atak skryptów między witrynami (XSS)|
-|958410|Atak skryptów między witrynami (XSS)|
-|958415|Atak skryptów między witrynami (XSS)|
-|958022|Atak skryptów między witrynami (XSS)|
-|958405|Atak skryptów między witrynami (XSS)|
-|958419|Atak skryptów między witrynami (XSS)|
-|958028|Atak skryptów między witrynami (XSS)|
-|958057|Atak skryptów między witrynami (XSS)|
-|958031|Atak skryptów między witrynami (XSS)|
-|958006|Atak skryptów między witrynami (XSS)|
-|958033|Atak skryptów między witrynami (XSS)|
-|958038|Atak skryptów między witrynami (XSS)|
-|958409|Atak skryptów między witrynami (XSS)|
-|958001|Atak skryptów między witrynami (XSS)|
-|958005|Atak skryptów między witrynami (XSS)|
-|958404|Atak skryptów między witrynami (XSS)|
-|958023|Atak skryptów między witrynami (XSS)|
-|958010|Atak skryptów między witrynami (XSS)|
-|958411|Atak skryptów między witrynami (XSS)|
-|958422|Atak skryptów między witrynami (XSS)|
-|958036|Atak skryptów między witrynami (XSS)|
-|958000|Atak skryptów między witrynami (XSS)|
-|958018|Atak skryptów między witrynami (XSS)|
-|958406|Atak skryptów między witrynami (XSS)|
-|958040|Atak skryptów między witrynami (XSS)|
-|958052|Atak skryptów między witrynami (XSS)|
-|958037|Atak skryptów między witrynami (XSS)|
-|958049|Atak skryptów między witrynami (XSS)|
-|958030|Atak skryptów między witrynami (XSS)|
-|958041|Atak skryptów między witrynami (XSS)|
-|958416|Atak skryptów między witrynami (XSS)|
-|958024|Atak skryptów między witrynami (XSS)|
-|958059|Atak skryptów między witrynami (XSS)|
-|958417|Atak skryptów między witrynami (XSS)|
-|958020|Atak skryptów między witrynami (XSS)|
-|958045|Atak skryptów między witrynami (XSS)|
-|958004|Atak skryptów między witrynami (XSS)|
-|958421|Atak skryptów między witrynami (XSS)|
-|958009|Atak skryptów między witrynami (XSS)|
-|958025|Atak skryptów między witrynami (XSS)|
-|958413|Atak skryptów między witrynami (XSS)|
-|958051|Atak skryptów między witrynami (XSS)|
-|958420|Atak skryptów między witrynami (XSS)|
-|958407|Atak skryptów między witrynami (XSS)|
-|958056|Atak skryptów między witrynami (XSS)|
-|958011|Atak skryptów między witrynami (XSS)|
-|958412|Atak skryptów między witrynami (XSS)|
-|958008|Atak skryptów między witrynami (XSS)|
-|958046|Atak skryptów między witrynami (XSS)|
-|958039|Atak skryptów między witrynami (XSS)|
-|958003|Atak skryptów między witrynami (XSS)|
-|973300|Wykryto ataku XSS możliwe - procedurę obsługi tagów HTML|
-|973301|Wykryto atak XSS|
-|973302|Wykryto atak XSS|
-|973303|Wykryto atak XSS|
-|973304|Wykryto atak XSS|
-|973305|Wykryto atak XSS|
-|973306|Wykryto atak XSS|
-|973307|Wykryto atak XSS|
-|973308|Wykryto atak XSS|
-|973309|Wykryto atak XSS|
-|973311|Wykryto atak XSS|
-|973313|Wykryto atak XSS|
-|973314|Wykryto atak XSS|
-|973331|Filtry XSS programu Internet Explorer — wykryto atak.|
-|973315|Filtry XSS programu Internet Explorer — wykryto atak.|
-|973330|Filtry XSS programu Internet Explorer — wykryto atak.|
-|973327|Filtry XSS programu Internet Explorer — wykryto atak.|
-|973326|Filtry XSS programu Internet Explorer — wykryto atak.|
-|973346|Filtry XSS programu Internet Explorer — wykryto atak.|
-|973345|Filtry XSS programu Internet Explorer — wykryto atak.|
-|973324|Filtry XSS programu Internet Explorer — wykryto atak.|
-|973323|Filtry XSS programu Internet Explorer — wykryto atak.|
-|973348|Filtry XSS programu Internet Explorer — wykryto atak.|
-|973321|Filtry XSS programu Internet Explorer — wykryto atak.|
-|973320|Filtry XSS programu Internet Explorer — wykryto atak.|
-|973318|Filtry XSS programu Internet Explorer — wykryto atak.|
-|973317|Filtry XSS programu Internet Explorer — wykryto atak.|
-|973329|Filtry XSS programu Internet Explorer — wykryto atak.|
-|973328|Filtry XSS programu Internet Explorer — wykryto atak.|
+|958016|Atak na skrypty między lokacjami (XSS)|
+|958414|Atak na skrypty między lokacjami (XSS)|
+|958032|Atak na skrypty między lokacjami (XSS)|
+|958026|Atak na skrypty między lokacjami (XSS)|
+|958027|Atak na skrypty między lokacjami (XSS)|
+|958054|Atak na skrypty między lokacjami (XSS)|
+|958418|Atak na skrypty między lokacjami (XSS)|
+|958034|Atak na skrypty między lokacjami (XSS)|
+|958019|Atak na skrypty między lokacjami (XSS)|
+|958013|Atak na skrypty między lokacjami (XSS)|
+|958408|Atak na skrypty między lokacjami (XSS)|
+|958012|Atak na skrypty między lokacjami (XSS)|
+|958423|Atak na skrypty między lokacjami (XSS)|
+|958002|Atak na skrypty między lokacjami (XSS)|
+|958017|Atak na skrypty między lokacjami (XSS)|
+|958007|Atak na skrypty między lokacjami (XSS)|
+|958047|Atak na skrypty między lokacjami (XSS)|
+|958410|Atak na skrypty między lokacjami (XSS)|
+|958415|Atak na skrypty między lokacjami (XSS)|
+|958022|Atak na skrypty między lokacjami (XSS)|
+|958405|Atak na skrypty między lokacjami (XSS)|
+|958419|Atak na skrypty między lokacjami (XSS)|
+|958028|Atak na skrypty między lokacjami (XSS)|
+|958057|Atak na skrypty między lokacjami (XSS)|
+|958031|Atak na skrypty między lokacjami (XSS)|
+|958006|Atak na skrypty między lokacjami (XSS)|
+|958033|Atak na skrypty między lokacjami (XSS)|
+|958038|Atak na skrypty między lokacjami (XSS)|
+|958409|Atak na skrypty między lokacjami (XSS)|
+|958001|Atak na skrypty między lokacjami (XSS)|
+|958005|Atak na skrypty między lokacjami (XSS)|
+|958404|Atak na skrypty między lokacjami (XSS)|
+|958023|Atak na skrypty między lokacjami (XSS)|
+|958010|Atak na skrypty między lokacjami (XSS)|
+|958411|Atak na skrypty między lokacjami (XSS)|
+|958422|Atak na skrypty między lokacjami (XSS)|
+|958036|Atak na skrypty między lokacjami (XSS)|
+|958000|Atak na skrypty między lokacjami (XSS)|
+|958018|Atak na skrypty między lokacjami (XSS)|
+|958406|Atak na skrypty między lokacjami (XSS)|
+|958040|Atak na skrypty między lokacjami (XSS)|
+|958052|Atak na skrypty między lokacjami (XSS)|
+|958037|Atak na skrypty między lokacjami (XSS)|
+|958049|Atak na skrypty między lokacjami (XSS)|
+|958030|Atak na skrypty między lokacjami (XSS)|
+|958041|Atak na skrypty między lokacjami (XSS)|
+|958416|Atak na skrypty między lokacjami (XSS)|
+|958024|Atak na skrypty między lokacjami (XSS)|
+|958059|Atak na skrypty między lokacjami (XSS)|
+|958417|Atak na skrypty między lokacjami (XSS)|
+|958020|Atak na skrypty między lokacjami (XSS)|
+|958045|Atak na skrypty między lokacjami (XSS)|
+|958004|Atak na skrypty między lokacjami (XSS)|
+|958421|Atak na skrypty między lokacjami (XSS)|
+|958009|Atak na skrypty między lokacjami (XSS)|
+|958025|Atak na skrypty między lokacjami (XSS)|
+|958413|Atak na skrypty między lokacjami (XSS)|
+|958051|Atak na skrypty między lokacjami (XSS)|
+|958420|Atak na skrypty między lokacjami (XSS)|
+|958407|Atak na skrypty między lokacjami (XSS)|
+|958056|Atak na skrypty między lokacjami (XSS)|
+|958011|Atak na skrypty między lokacjami (XSS)|
+|958412|Atak na skrypty między lokacjami (XSS)|
+|958008|Atak na skrypty między lokacjami (XSS)|
+|958046|Atak na skrypty między lokacjami (XSS)|
+|958039|Atak na skrypty między lokacjami (XSS)|
+|958003|Atak na skrypty między lokacjami (XSS)|
+|973300|Możliwe ataki XSS wykryto procedurę obsługi tagów HTML|
+|973301|Wykryto atak typu XSS|
+|973302|Wykryto atak typu XSS|
+|973303|Wykryto atak typu XSS|
+|973304|Wykryto atak typu XSS|
+|973305|Wykryto atak typu XSS|
+|973306|Wykryto atak typu XSS|
+|973307|Wykryto atak typu XSS|
+|973308|Wykryto atak typu XSS|
+|973309|Wykryto atak typu XSS|
+|973311|Wykryto atak typu XSS|
+|973313|Wykryto atak typu XSS|
+|973314|Wykryto atak typu XSS|
+|973331|Filtry XSS programu IE — wykryto atak.|
+|973315|Filtry XSS programu IE — wykryto atak.|
+|973330|Filtry XSS programu IE — wykryto atak.|
+|973327|Filtry XSS programu IE — wykryto atak.|
+|973326|Filtry XSS programu IE — wykryto atak.|
+|973346|Filtry XSS programu IE — wykryto atak.|
+|973345|Filtry XSS programu IE — wykryto atak.|
+|973324|Filtry XSS programu IE — wykryto atak.|
+|973323|Filtry XSS programu IE — wykryto atak.|
+|973348|Filtry XSS programu IE — wykryto atak.|
+|973321|Filtry XSS programu IE — wykryto atak.|
+|973320|Filtry XSS programu IE — wykryto atak.|
+|973318|Filtry XSS programu IE — wykryto atak.|
+|973317|Filtry XSS programu IE — wykryto atak.|
+|973329|Filtry XSS programu IE — wykryto atak.|
+|973328|Filtry XSS programu IE — wykryto atak.|
 
-### <a name="crs42"></a> crs_42_tight_security
+### <a name="crs42"></a>crs_42_tight_security
 
-|Identyfikator reguły|Opis|
+|ruleId|Opis|
 |---|---|
-|950103|Ścieżka przechodzenia ataku|
+|950103|Atak z przechodzeniem ścieżki|
 
-### <a name="crs45"></a> crs_45_trojans
+### <a name="crs45"></a>crs_45_trojans
 
-|Identyfikator reguły|Opis|
+|ruleId|Opis|
 |---|---|
-|950110|Udostępniający Tylne wejście do|
-|950921|Udostępniający Tylne wejście do|
-|950922|Udostępniający Tylne wejście do|
+|950110|Dostęp tylne wejście|
+|950921|Dostęp tylne wejście|
+|950922|Dostęp tylne wejście|
 
 ---
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak wyłączyć reguły zapory aplikacji sieci Web: [Dostosowywanie reguł zapory aplikacji sieci Web](application-gateway-customize-waf-rules-portal.md)
+Dowiedz się, jak wyłączyć reguły WAF: [Dostosuj reguły WAF](application-gateway-customize-waf-rules-portal.md)

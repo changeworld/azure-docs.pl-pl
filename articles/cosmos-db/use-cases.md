@@ -6,12 +6,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: 04c1466c47d28f638bf7461050cb06b59c7d2396
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: e22b426b2172c169f9343569fffac57f370afbee
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614225"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219888"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Typowe przypadki użycia usługi Azure Cosmos DB
 Ten artykuł zawiera omówienie kilku typowych przypadków użycia usługi Azure Cosmos DB.  Zalecenia przedstawione w tym artykule służyć jako punkt początkowy, podczas opracowywania aplikacji za pomocą usługi Cosmos DB.   
@@ -40,7 +40,7 @@ Poniżej przedstawiono niektóre atrybuty usługi Azure Cosmos DB, które ułatw
 Te atrybuty są korzystne w sieci web, mobilnych, gier i aplikacji IoT, które muszą krótkim czasem odpowiedzi i wymagają obsługi ogromnych ilości operacji odczytu i zapisu.
 
 ## <a name="iot-and-telematics"></a>IoT i telematyka
-Przypadki użycia IoT często mają pewne wzorców w sposób pozyskiwanie ich, proces i przechowywania danych.  Najpierw te systemy musisz pozyskiwać wzrosty danych z czujników urządzenia z różnych ustawień regionalnych. Następnie te systemy przetwarzać i analizować dane przesyłane strumieniowo w czasie rzeczywistym analiz. Następnie archiwizowania danych do zimnego magazynu w przypadku analizy wsadowej. Microsoft Azure oferuje zastosowań bogatej oferty usług, które mogą być stosowane dla IoT, w tym usługi Azure Cosmos DB, Azure Event Hubs, Azure Stream Analytics, Azure Notification Hubs, Azure Machine Learning, Azure HDInsight i usługi Power BI. 
+Przypadki użycia IoT często mają pewne wzorców w sposób pozyskiwanie ich, proces i przechowywania danych.  Najpierw te systemy musisz pozyskiwać wzrosty danych z czujników urządzenia z różnych ustawień regionalnych. Następnie te systemy przetwarzać i analizować dane przesyłane strumieniowo w czasie rzeczywistym analiz. Następnie archiwizowania danych do zimnego magazynu w przypadku analizy wsadowej. Microsoft Azure oferuje bogate usługi, które mogą być stosowane do przypadków użycia IoT, w tym Azure Cosmos DB, Azure Event Hubs, Azure Stream Analytics, centrum powiadomień platformy Azure, Azure Machine Learning, Azure HDInsight i Power BI. 
 
 ![Architektura odwołań usługi Azure Cosmos DB IoT](./media/use-cases/iot.png)
 
@@ -98,32 +98,7 @@ JSON, w formacie obsługiwanym przez usługi Cosmos DB to skuteczne format do re
 ![Architektura referencyjna aplikacji sieci web usługi Azure Cosmos DB](./media/use-cases/personalization.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby rozpocząć pracę z usługą Azure Cosmos DB, postępuj zgodnie z naszym [przewodniki szybkiego startu](create-sql-api-dotnet.md), które przeprowadzą Cię przez tworzenie konta i rozpoczynania pracy z usługą Cosmos DB. 
 
-Lub, jeśli chcesz dowiedzieć się więcej o tym, klienci korzystający z usługi Cosmos DB, dostępne są następujące historie klientów:
+* Aby rozpocząć pracę z usługą Azure Cosmos DB, postępuj zgodnie z naszym [przewodniki szybkiego startu](create-sql-api-dotnet.md), które przeprowadzą Cię przez tworzenie konta i rozpoczynania pracy z usługą Cosmos DB.
 
-* [Jet.com](https://jet.com). Wysunąć handlu elektronicznego eyes miejscu górną, działa w chmurze firmy Microsoft, korzysta z usługi Cosmos DB w skali globalnej.
-* [Asos.com](https://www.asos.com/). Asos.com jest British sposób i estetyki sklepu internetowego. Przede wszystkim mających na celu młodzieży, firma Asos sprzedaje ponad 850 marki, a także zasięgu i akcesoriów.
-* [Toyota](https://www.toyota.com/). Firmy Toyota Motor Corporation jest japońskiego producenta automotive. Toyota wykorzystywane usługi Cosmos DB dla globalnych aplikacji IoT.
-* [Citrix](https://customers.microsoft.com/story/citrix). Citrix opracowuje rozwiązanie z logowanie jednokrotne przy użyciu usługi Azure Service Fabric i usługi Azure Cosmos DB
-* [TEXA](https://customers.microsoft.com/story/texaspa) firmy TEXA Rewolucyjny rozwiązania IoT dla właścicieli pojazdu pozwala zaoszczędzić czas, pieniądze, gaz — i prawdopodobnie są przechowywane.
-* [Firmy Domino Pizza](https://www.dominos.com). Firmy Domino Pizza Inc. jest American pizza sieć restauracji.
-* [Kontroluje Johnson](https://www.johnsoncontrols.com). Johnsonem Controls to globalnie zróżnicowana technologia i wielobranżowy lider obsługujący szeroki zakres klientów w ponad 150 krajach/regionach.
-* [Microsoft Windows Store uniwersalny, usługi Azure IoT Hub, Xbox Live i innych usług w skali Internetu](https://azure.microsoft.com/blog/how-azure-documentdb-planet-scale-nosql-helps-run-microsoft-s-own-businesses/). Jak Microsoft buduje wysoce skalowalnych usług, za pomocą usługi Azure Cosmos DB.
-* [Zespół Microsoft Data i analizy](https://customers.microsoft.com/story/microsoftdataandanalytics). Firmy Microsoft zespół Data i analizy osiąga skalowana w skali zbierania danych big data za pomocą usługi Azure Cosmos DB
-* [Sulekha.com](https://customers.microsoft.com/story/sulekha-uses-azure-documentdb-to-connect-customers-and-businesses-across-india). Sulekha używa usługi Azure Cosmos DB do łączenia klientów i firmom w Indiach.
-* [NewOrbit](https://customers.microsoft.com/story/neworbit-takes-flight-with-azure-documentdb). NewOrbit trwa lotu przy użyciu usługi Azure Cosmos DB.
-* [Affinio](https://customers.microsoft.com/doclink/affinio-switches-from-aws-to-azure-documentdb-to-harness-social-data-at-scale). Affinio zmieniła usługę AWS do usługi Azure Cosmos DB danymi społecznościowymi w dużej skali.
-* [Next Games](https://azure.microsoft.com//blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/). Niepochodzenie: Nie Soars gruntów firmy Man do #1 obsługiwanych przez Azure Cosmos DB.
-* [Gra Halo](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/). Gra Halo 5 implementacji rozgrywek społecznościowych w grze przy użyciu usługi Azure Cosmos DB.
-* [Cortana Analytics — Galeria](https://azure.microsoft.com/blog/cortana-analytics-gallery-a-scalable-community-site-built-on-azure-documentdb/). Cortana Analytics — Galeria - witryny społeczności skalowalne, oparta na usłudze Azure Cosmos DB.
-* [Szybka i bezproblemowa](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18602). Początkowe Integrator zapewnia globalny wgląd wielonarodowych przedsiębiorstw w ciągu kilku minut przy użyciu technologii chmury elastyczne.
-* [Republika wiadomości](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18639). Dodawanie analizy do wiadomości, aby podać informacje z przeznaczeniem dla obywateli zaangażowani. 
-* [Firma SGS International](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18653). Spójne koloru na całym świecie głównych marek przejdź do grupy zabezpieczeń. I SGS zmieni się na platformie Azure.
-* [Firma Telenor](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18608). Globalny lider Telenor korzysta z chmury do tempo startupów. 
-* [XOMNI](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18667). Magazyn w przyszłości działa na szybkie wyszukiwanie i błyskawiczny łatwy przepływ danych.
-* [Nucleo](https://customers.microsoft.com/story/azure-based-software-platform-breaks-down-barriers-bet). Platformy oparte na platformie Azure oprogramowanie dzieli bariery między firm i klientów
-* [Weka](https://customers.microsoft.com/story/weka-smart-fridge-improves-vaccine-management-so-more-people-can-be-protected-against-diseases). Inteligentne lodówko weka weka ułatwia zarządzanie szczepionkami, dzięki czemu mogą być chronione więcej osób przed chorobami
-* [Pomarańczowy Tribes](https://customers.microsoft.com/story/theres-more-to-that-food-app-than-meets-the-eye-or-the-mouth). Ma więcej do tej aplikacji żywności nie spełnia oka lub ujścia.
-* [Real Madryt](https://customers.microsoft.com/story/real-madrid-brings-the-stadium-closer-to-450-million-f). Real Madryt udostępnia przybliża stadion 450 milionom fanów z całego świata dzięki rozwiązaniu Microsoft Cloud.
-* [Tuku](https://customers.microsoft.com/story/tuku-makes-car-buying-fun-with-help-from-azure-services). TUKU sprawia, że samochodu kupowania zabawa pomocy z usług platformy Azure
+* Jeśli chcesz dowiedzieć się więcej o klientach przy użyciu Azure Cosmos DB, zobacz stronę [analizy przypadków klientów](https://azure.microsoft.com/en-us/case-studies/?service=cosmos-db) .

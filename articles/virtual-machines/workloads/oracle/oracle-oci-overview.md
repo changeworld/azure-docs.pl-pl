@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: 4628955998ab8b289a429cdfb85e23f7f97b0b40
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9947d28cbde7f4804283e03cc07093b9240ca6bf
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101432"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71241001"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Rozwiązania aplikacji Oracle integrujące Microsoft Azure i infrastrukturę chmurową Oracle (wersja zapoznawcza)
 
@@ -50,7 +50,7 @@ Poniższy diagram przedstawia ogólny przegląd połączonego rozwiązania. Dla 
 
 ## <a name="preview-limitations"></a>Ograniczenia wersji zapoznawczej
 
-* Łączność między chmurami w wersji zapoznawczej jest ograniczona do regionu Wschodnie stany USA (Wschodnie) i OCI Ashburn (US-Ashburn-1).
+* Łączność między chmurami w wersji zapoznawczej jest ograniczona do regionów usługi Azure Wschodnie stany USA (Wschodnie) & Południowe Zjednoczone Królestwo (uksouth) oraz & Ashburn OCI (Południowe Zjednoczone Królestwo). Aby uzyskać Południowe Zjednoczone Królestwo, użyj domeny dostępności 1 (AD 1) w obszarze OCI podczas wdrażania połączeń wzajemnego dla małych opóźnień.
 
 ## <a name="networking"></a>Networking
 
@@ -74,6 +74,6 @@ Obecnie ta Integracja umożliwia zarządzanie w jednej centralnej lokalizacji, k
 
 ## <a name="next-steps"></a>Następne kroki
 
-Rozpocznij pracę z międzychmurową [siecią](configure-azure-oci-networking.md) między platformą Azure a OCI. 
+Rozpocznij pracę z [międzychmurową siecią](configure-azure-oci-networking.md) między platformą Azure a OCI. 
 
 Aby uzyskać więcej informacji i oficjalny dokument dotyczący OCI, zobacz dokumentację w [chmurze firmy Oracle](https://docs.cloud.oracle.com/iaas/Content/home.htm) .

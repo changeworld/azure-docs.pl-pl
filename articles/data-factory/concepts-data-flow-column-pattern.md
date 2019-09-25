@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 41037e0687274d123bea742cee5cf2887548aa0f
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 4df831c1329ab13f19e6ecf979e404d4a90e5f72
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775204"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219769"
 ---
 # <a name="mapping-data-flows-column-patterns"></a>Mapowanie wzorców kolumn przepływów danych
 
@@ -56,6 +56,6 @@ Kompiluj reguły przy użyciu Konstruktora wyrażeń. Wyrażenia zwróci wartoś
 * `stream`reprezentuje nazwę skojarzoną z każdym strumieniem lub transformację w przepływie
 * `position`jest pozycją porządkową kolumn w przepływie danych
 
-## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [języku wyrażeń](http://aka.ms/dataflowexpressions) przepływu danych mapowania ADF na potrzeby transformacji danych
+## <a name="next-steps"></a>Następne kroki
+* Dowiedz się więcej o [języku wyrażeń](https://aka.ms/dataflowexpressions) przepływu danych mapowania ADF na potrzeby transformacji danych
 * Używanie wzorców kolumn w [transformację ujścia](data-flow-sink.md) i [Wybieranie transformacji](data-flow-select.md) z mapowaniem opartym na regułach

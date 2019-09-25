@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 30b1af29d1a7e3a01659353b27d8c997e739e702
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: a523028fb312f030bc453692daceb0f254f844b6
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69030987"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240946"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Samouczek: Tworzenie modułów usługi IoT Edge dla urządzeń z systemem Linux
 
@@ -44,7 +44,7 @@ Podczas opracowywania modułów IoT Edge należy zrozumieć różnicę między m
 
 Ten samouczek dotyczy urządzeń z systemem Linux, na których działa IoT Edge. Możesz użyć preferowanego systemu operacyjnego, tak długo, jak na komputerze deweloperskim można uruchomić kontenery systemu Linux. Zalecamy używanie Visual Studio Code do tworzenia aplikacji dla urządzeń z systemem Linux, co jest potrzebne w tym samouczku. Możesz również użyć programu Visual Studio, chociaż istnieją różnice w obsłudze między tymi dwoma narzędziami.
 
-W poniższej tabeli przedstawiono obsługiwane scenariusze programowania dla kontenerów systemu **Linux** w Visual Studio Code i Visual Studio.
+W poniższej tabeli przedstawiono obsługiwane scenariusze programowania dla **kontenerów systemu Linux** w Visual Studio Code i Visual Studio.
 
 |   | Visual Studio Code | Visual Studio 2017/2019 |
 | - | ------------------ | ------------------ |
@@ -63,6 +63,7 @@ W tym samouczku przedstawiono procedurę tworzenia Visual Studio Code. Jeśli wo
 Komputer deweloperski:
 
 * Możesz użyć własnego komputera lub maszyny wirtualnej, w zależności od preferencji programistycznych.
+  * Upewnij się, że komputer deweloperski obsługuje wirtualizację zagnieżdżoną. Ta funkcja jest niezbędna do uruchomienia aparatu kontenera, który jest instalowany w następnej sekcji.
 * Większość systemów operacyjnych, które mogą uruchamiać aparat kontenerów, może służyć do opracowania modułów IoT Edge dla urządzeń z systemem Linux. Ten samouczek używa komputera z systemem Windows, ale wskazuje na znane różnice w systemie MacOS lub Linux. 
 * Zainstaluj narzędzie [git](https://git-scm.com/), aby ściągnąć pakiety szablonów modułów w dalszej części tego samouczka.  
 * [Rozszerzenie C# for Visual Studio Code (obsługiwane przez technologię OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
@@ -89,7 +90,7 @@ Użyj dokumentacji platformy Docker, aby zainstalować program na komputerze dew
 
 * [Zainstaluj program Docker Desktop dla komputerów Mac](https://docs.docker.com/docker-for-mac/install/)
 
-* Informacje [o](https://docs.docker.com/install/) instalacji programu Docker ce można znaleźć na kilku platformach systemu Linux.
+* Informacje [o instalacji programu Docker ce](https://docs.docker.com/install/) można znaleźć na kilku platformach systemu Linux.
 
 ## <a name="set-up-vs-code-and-tools"></a>Konfigurowanie VS Code i narzędzi
 

@@ -1,6 +1,6 @@
 ---
-title: Połącz dane aktywności platformy Azure do platformy Azure przez wartownika w wersji zapoznawczej | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak połączyć dane o aktywności platformy Azure do platformy Azure przez wartownika.
+title: Łączenie danych aktywności platformy Azure z usługą Azure wskaźnikowego | Microsoft Docs
+description: Dowiedz się, jak połączyć dane aktywności platformy Azure z wskaźnikiem kontrolnym platformy Azure.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -13,43 +13,41 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: e329c8efd9b0e89f5f5eae41952cda9a45a95969
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 807a5ede3feee115b1a8dc51fe14966731fc7784
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620650"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240787"
 ---
 # <a name="connect-data-from-azure-activity-log"></a>Połącz dane z dziennika aktywności platformy Azure
 
-> [!IMPORTANT]
-> Wartownik platformy Azure jest obecnie dostępna w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Można przesyłać strumieniowo dzienniki z [dziennik aktywności platformy Azure](../azure-monitor/platform/activity-logs-overview.md) do platformy Azure przez wartownika za pomocą jednego kliknięcia. Dziennik aktywności jest Dziennik subskrypcji, która zapewnia wgląd w zdarzenia na poziomie subskrypcji, które wystąpiły na platformie Azure. W tym zakresie danych z usługi Azure Resource Manager danych operacyjnych do aktualizacji dla zdarzeń kondycji usługi. Przy użyciu dziennika aktywności, można określić "co, kto i kiedy" dla wszelkie zapisu operacji (PUT, POST, DELETE) wykonywanych na zasobów w ramach subskrypcji. Dodatkowo użytkownik rozumie stanu operacji i inne odpowiednie właściwości. Dziennik aktywności nie obejmują operacji odczytu (GET) ani operacji dotyczących zasobów, które używają klasycznego / modelu "RDFE". 
+
+Dzienniki [aktywności platformy Azure](../azure-monitor/platform/activity-logs-overview.md) można przesyłać strumieniowo do usługi Azure wskaźnikowej przy użyciu jednego kliknięcia. Dziennik aktywności jest dziennikiem subskrypcji, który zapewnia wgląd w zdarzenia na poziomie subskrypcji, które wystąpiły na platformie Azure. Obejmuje to szereg danych, od Azure Resource Manager dane operacyjne do aktualizacji na zdarzeniach Service Health. Korzystając z dziennika aktywności, można określić, kto i kiedy w każdej operacji zapisu (PUT, POST, DELETE) zajęło zasoby w ramach subskrypcji. Dodatkowo użytkownik rozumie stanu operacji i inne odpowiednie właściwości. Dziennik aktywności nie obejmuje operacji odczytu (GET) ani operacji dla zasobów, które używają modelu klasycznego/"FRONTONu". 
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Użytkownik z administratorem globalnym lub uprawnienia administratora zabezpieczeń
+- Użytkownik z uprawnieniami administratora globalnego lub administratora zabezpieczeń
 
 
 ## <a name="connect-to-azure-activity-log"></a>Łączenie z dziennikiem aktywności platformy Azure
 
-1. Na platformie Azure przez wartownika, wybierz **łączników danych** a następnie kliknij przycisk **dziennik aktywności platformy Azure** kafelka.
+1. W obszarze wskaźnik platformy Azure wybierz pozycję **Łączniki danych** , a następnie kliknij kafelek **Dziennik aktywności platformy Azure** .
 
-2. W okienku dziennika aktywności platformy Azure Wybierz subskrypcje, które mają być przesyłane strumieniowo do usługi Azure przez wartownika. 
+2. W okienku dziennik aktywności platformy Azure wybierz subskrypcje, które chcesz przesłać do usługi Azure wskaźnikowej. 
 
 3. Kliknij przycisk **Połącz**.
 
-4. Aby użyć odpowiednich schematu w usłudze Log Analytics dla alertów aktywności platformy Azure, możesz wyszukać **AzureActivity**.
+4. Aby użyć odpowiedniego schematu w Log Analytics dla alertów aktywności platformy Azure, Wyszukaj pozycję **Azure**.
 
 
  
 
-## <a name="next-steps"></a>Kolejne kroki
-W tym dokumencie przedstawiono sposób nawiązywania połączenia dziennika aktywności platformy Azure do platformy Azure przez wartownika. Aby dowiedzieć się więcej na temat platformy Azure przez wartownika, zobacz następujące artykuły:
-- Dowiedz się, jak [Uzyskaj wgląd w dane i potencjalne zagrożenia](quickstart-get-visibility.md).
-- Rozpoczynanie pracy [wykrywanie zagrożeń za pomocą platformy Azure przez wartownika](tutorial-detect-threats.md).
+## <a name="next-steps"></a>Następne kroki
+W tym dokumencie przedstawiono sposób łączenia dziennika aktywności platformy Azure z wskaźnikiem kontrolnym platformy Azure. Aby dowiedzieć się więcej na temat platformy Azure, zobacz następujące artykuły:
+- Dowiedz się [, jak uzyskać wgląd w dane oraz potencjalne zagrożenia](quickstart-get-visibility.md).
+- Rozpocznij [wykrywanie zagrożeń za pomocą platformy Azure — wskaźnik](tutorial-detect-threats-built-in.md).
