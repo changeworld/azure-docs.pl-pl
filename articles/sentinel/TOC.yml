@@ -1,4 +1,4 @@
-- name: Dokumentacja wersji zapoznawczej programu Azure Sentinel
+- name: Dokumentacja usługi Azure Sentinel
   href: index.yml
 - name: Omówienie
   href: overview.md
@@ -11,12 +11,22 @@
       href: quickstart-get-visibility.md
 - name: Samouczki
   items:
-    - name: Wykrywanie podejrzanych zagrożeń
-      href: tutorial-detect-threats.md
+    - name: Wykrywanie zagrożeń za pomocą wbudowanej analizy
+      href: tutorial-detect-threats-built-in.md
+    - name: Tworzenie reguł niestandardowych w celu wykrywania zagrożeń
+      href: tutorial-detect-threats-custom.md
+    - name: Monitorowanie danych
+      href: tutorial-monitor-your-data.md
     - name: Badanie zdarzeń
       href: tutorial-investigate-cases.md
     - name: Reagowanie na zagrożenia
       href: tutorial-respond-threats-playbook.md
+- name: Pojęcia
+  items:
+    - name: Przypisywanie uprawnień za pomocą ról
+      href: roles.md
+    - name: Zaawansowane wieloetapowe wykrywanie ataków
+      href: fusion.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Łączenie ze źródłami danych
@@ -74,6 +84,10 @@
           href: connect-threat-intelligence.md
         - name: Łączenie maszyn wirtualnych usługi Azure Stack
           href: connect-azure-stack.md
+    - name: Wiele dzierżaw (MSSP)
+      href: multiple-tenants-service-providers.md
+    - name: Tworzenie zdarzeń na podstawie alertów
+      href: create-incidents-from-alerts.md
     - name: Wyszukiwanie zagrożeń
       href: hunting.md
       items:
@@ -81,8 +95,8 @@
           href: notebooks.md
         - name: Wyszukiwanie zagrożeń za pomocą zakładek
           href: bookmarks.md
-    - name: Włączanie łączenia
-      href: connect-fusion.md
+    - name: Usuwanie usługi Azure Sentinel
+      href: offboard.md
 - name: Zasoby
   items:
     - name: Przydatne zasoby

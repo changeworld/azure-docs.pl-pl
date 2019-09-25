@@ -476,6 +476,8 @@
           href: expand-disks.md
         - name: Tworzenie migawki dysku
           href: snapshot-copy-managed-disk.md
+        - name: Tworzenie migawki przyrostowej
+          href: disks-incremental-snapshots.md
         - name: Tworzenie kopii zapasowych dysków niezarządzanych
           href: incremental-snapshots.md
         - name: Migracja i konwersja

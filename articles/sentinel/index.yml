@@ -1,8 +1,8 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Dokumentacja wersji zapoznawczej programu Azure Sentinel
+title: Dokumentacja usługi Azure Sentinel
 metadata:
-  title: Dokumentacja wersji zapoznawczej programu Azure Sentinel — samouczki i przewodniki Szybki start | Microsoft Docs
+  title: Dokumentacja usługi Azure Sentinel — samouczki i przewodniki Szybki start | Microsoft Docs
   meta.description: Azure Sentinel is a cloud-native SIEM that provides intelligent security analytics for your entire enterprise at cloud scale.
   services: sentinel
   author: cmcclister
@@ -15,7 +15,7 @@ metadata:
   ms.date: 02/28/19
   ms.author: cmcclister
 abstract:
-  description: 'Program Azure Sentinel w wersji zapoznawczej to rozwiązanie SIEM natywne dla chmury, które zapewnia inteligentną analizę zabezpieczeń dla całego przedsiębiorstwa w skali chmury. Korzystaj z nieograniczonej szybkości i skalowalności chmury, aby skupić się na najistotniejszych kwestiach. Łatwo gromadź dane ze wszystkich swoich zasobów chmurowych i lokalnych, usługi Office 365, zasobów platformy Azure i innych chmur. Skutecznie wykrywaj zagrożenia, używając wbudowanych funkcji uczenia maszynowego opracowanych przez ekspertów firmy Microsoft w dziedzinie analizy zabezpieczeń. Automatyzuj reagowanie na zagrożenia, używając wbudowanych podręczników aranżacji i automatyzacji.'
+  description: 'Usługa Azure Sentinel to rozwiązanie SIEM natywne dla chmury, które zapewnia inteligentną analizę zabezpieczeń dla całego przedsiębiorstwa w skali chmury. Korzystaj z nieograniczonej szybkości i skalowalności chmury, aby skupić się na najistotniejszych kwestiach. Łatwo gromadź dane ze wszystkich swoich zasobów chmurowych i lokalnych, usługi Office 365, zasobów platformy Azure i innych chmur. Skutecznie wykrywaj zagrożenia, używając wbudowanych funkcji uczenia maszynowego opracowanych przez ekspertów firmy Microsoft w dziedzinie analizy zabezpieczeń. Automatyzuj reagowanie na zagrożenia, używając wbudowanych podręczników aranżacji i automatyzacji.'
 sections:
   - title: 5-minutowe przewodniki Szybki start
     items:

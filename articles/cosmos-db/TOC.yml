@@ -227,6 +227,10 @@
           href: spark-api-introduction.md
         - name: Architektura lambda
           href: lambda-architecture.md
+    - name: Wbudowana analiza z notesami Jupyter
+      items:
+        - name: Omówienie notesów Jupyter
+          href: cosmosdb-jupyter-notebooks.md
     - name: Programowanie po stronie serwera
       items:
         - name: 'Procedury składowane, wyzwalacze i funkcje definiowane przez użytkownika (UDF)'
@@ -675,6 +679,10 @@
         - name: Przesyłanie strumieniowe na platformie Apache Kafka i w usłudze Cosmos DB
           href: /azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb
           maintainContext: true
+    - name: Wbudowane notesy programu Jupyter
+      items:
+        - name: Włączanie notesów
+          href: enable-notebooks.md
     - name: Programowanie po stronie serwera
       items:
         - name: 'Zapisywanie procedur składowanych, wyzwalaczy i funkcji definiowanych przez użytkownika (UDF)'
