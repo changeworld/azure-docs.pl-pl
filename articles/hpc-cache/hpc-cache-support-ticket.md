@@ -4,14 +4,14 @@ description: Jak otworzyć żądanie pomocy dla pamięci podręcznej platformy A
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 09/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: 29750ab19f74ef1ceab8c69792d12b9f9ca2a297
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 630af5322483782c1e26cd792bf7d7957e555d84
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180886"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299944"
 ---
 # <a name="open-a-support-ticket-for-azure-hpc-cache-preview"></a>Otwórz bilet pomocy technicznej dla usługi Azure HPC cache (wersja zapoznawcza)
 
@@ -24,6 +24,8 @@ Wybierz swoją subskrypcję z listy.
 Aby znaleźć usługę Azure HPC cache Preview, kliknij przycisk **wszystkie usługi** i Wyszukaj pozycję HPC.
 
 ![Zrzut ekranu przedstawiający kartę podstawowe żądania obsługi, częściowo wypełnione zgodnie z opisem](media/hpc-cache-support-request.png)
+
+<!-- update screenshot after preview to update product name -->
 
 Wypełnij pozostałe pola informacjami i preferencjami, a następnie Prześlij bilet, gdy wszystko będzie gotowe.
 

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 9aa8cda7d65d97d831a218be393581d0e5bf3a4a
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: c8d78473a1128dd4f96f2cfa0c14d2d3b1b2c1e9
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910181"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300563"
 ---
 # <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>Generowanie alertów i monitorowanie fabryk danych przy użyciu Azure Monitor
 
@@ -404,10 +404,10 @@ Log Analytics dziedziczy schemat z monitora z następującymi wyjątkami:
     | Kolumna Azure Monitor | Kolumna Log Analytics | Type |
     | --- | --- | --- |
     | $. Properties. UserProperties | UserProperties | Dynamiczne |
-    | $. Properties. Adnotacj | Adnotacj | Dynamiczne |
+    | $. Properties. Adnotacj | Adnotacje | Dynamiczne |
     | $. Properties. Klawiatur | Dane wejściowe | Dynamiczne |
     | $. Properties. Rozdzielczości | Output | Dynamiczne |
-    | $. Properties. Błąd. errorCode | Kodzie | int |
+    | $. Properties. Błąd. errorCode | ErrorCode | int |
     | $. Properties. Błąd. komunikat | ErrorMessage | string |
     | $. Properties. Porn | Błąd | Dynamiczne |
     | $. Properties. Poprzednikami hostowanymi | Poprzednikami hostowanymi | Dynamiczne |
@@ -504,8 +504,6 @@ Zainstalowanie Azure Data Factory Analytics powoduje utworzenie domyślnego zest
 - Statystyka ADF — 3) maksymalny czas trwania przebiegu potoku
 
 ![Okno z wyróżnioną pozycją "skoroszyty (wersja zapoznawcza)" i "AzureDataFactoryAnalytics"](media/data-factory-monitor-oms/monitor-oms-image6.png)
-
-![Graficzna reprezentacja przebiegów i błędów](media/data-factory-monitor-oms/monitor-oms-image7.png)
 
 Możesz wizualizować powyższe metryki, przyjrzeć się kwerendom związanym z tymi metrykami, edytować zapytania, tworzyć alerty i podejmować inne akcje.
 

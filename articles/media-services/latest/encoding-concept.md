@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 06/08/2019
+ms.date: 09/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 590b84acd57199b291aa44f7120507023ffd026a
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: e1fc58db8f933ae122801f492fbbafdb905c7dda
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389752"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910405"
 ---
 # <a name="encoding-with-media-services"></a>Kodowanie za pomocą usługi Media Services
 
@@ -30,13 +30,13 @@ Filmy wideo są zwykle dostarczane do urządzeń i aplikacji przez [pobieranie p
 
 Na poniższym diagramie przedstawiono przepływ pracy dla kodowania na żądanie z pakietem dynamicznym.
 
-![Pakowanie dynamiczne](./media/dynamic-packaging-overview/media-services-dynamic-packaging.png)
+![Pakowanie dynamiczne](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
 Ten temat zawiera wskazówki na temat kodowania zawartości za pomocą usługi Media Services v3.
 
 ## <a name="transforms-and-jobs"></a>Transformacje i zadania
 
-Aby kodować z Media Services v3, należy utworzyć [transformację](https://docs.microsoft.com/rest/api/media/transforms) i [zadanie](https://docs.microsoft.com/rest/api/media/jobs). Transformacja definiuje przepis dla ustawień kodowania i danych wyjściowych. to zadanie jest wystąpieniem przepisu. Aby uzyskać więcej informacji, zobacz [transformacje i zadania](transforms-jobs-concept.md)
+Aby kodować z Media Services v3, należy utworzyć transformację i [](https://docs.microsoft.com/rest/api/media/transforms) [zadanie](https://docs.microsoft.com/rest/api/media/jobs). Transformacja definiuje przepis dla ustawień kodowania i danych wyjściowych. to zadanie jest wystąpieniem przepisu. Aby uzyskać więcej informacji, zobacz [transformacje i zadania](transforms-jobs-concept.md)
 
 Podczas kodowania za pomocą usługi Media Services, umożliwia wstępne Poinformuj kodera w przetwarzaniu multimedialnych plików wejściowych. Na przykład można określić rozdzielczość wideo i/lub liczbę kanałów audio, który ma w zakodowanej zawartości. 
 
@@ -68,7 +68,7 @@ Wejściowy film wideo może być przechowywany jako zasób usługi Media. w taki
 
 ### <a name="creating-job-input-with-subclipping"></a>Tworzenie danych wejściowych zadania z podcinaniem
 
-Podczas kodowania filmu wideo można również określić, aby przyciąć lub przyciąć plik źródłowy i utworzyć dane wyjściowe zawierające tylko pożądaną część wejściowego wideo. Ta funkcja działa z dowolnym [przekształceniem](https://docs.microsoft.com/rest/api/media/transforms) utworzonym przy użyciu ustawień wstępnych [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) lub predefiniowanych ustawień [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) . 
+Podczas kodowania filmu wideo można również określić, aby przyciąć lub przyciąć plik źródłowy i utworzyć dane wyjściowe zawierające tylko pożądaną część wejściowego wideo. Ta funkcja działa z dowolnym [](https://docs.microsoft.com/rest/api/media/transforms) przekształceniem utworzonym przy użyciu ustawień wstępnych [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) lub predefiniowanych ustawień [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) . 
 
 Możesz określić, aby utworzyć [zadanie](https://docs.microsoft.com/rest/api/media/jobs/create) z pojedynczym klipem wideo na żądanie lub archiwum na żywo (zarejestrowane zdarzenie). Dane wejściowe zadania mogą być zasobem lub adresem URL HTTPS.
 

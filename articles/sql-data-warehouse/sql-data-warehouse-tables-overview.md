@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: d97326430eebcaea64770e99c26ab593b51d5847
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 55da4e3dc9c7f1c1f86a649a654ce41ef59ad839
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68476751"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71310101"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>Projektowanie tabel w Azure SQL Data Warehouse
 
@@ -109,6 +109,9 @@ Aby zapoznać się z listą funkcji magazynu kolumn, zobacz [co nowego w indeksa
 ## <a name="statistics"></a>Statystyka
 Optymalizator zapytań używa statystyk na poziomie kolumny podczas tworzenia planu wykonywania zapytania. Aby poprawić wydajność zapytań, ważne jest posiadanie statystyk dla poszczególnych kolumn, zwłaszcza kolumn używanych w sprzężeniach zapytań. [Tworzenie statystyk](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic) odbywa się automatycznie.  Jednak aktualizowanie statystyk nie odbywa się automatycznie. Aktualizacja statystyk po dodaniu lub zmianie znaczącej liczby wierszy. Na przykład zaktualizuj statystyki po załadowaniu. Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące statystyk](sql-data-warehouse-tables-statistics.md).
 
+## <a name="primary-key-and-unique-key"></a>Klucz podstawowy i unikatowy klucz
+KLUCZ podstawowy jest obsługiwany tylko w przypadku, gdy są używane obiekty nieklastrowane i niewymuszone.  Ograniczenie UNIQUE jest obsługiwane tylko przez niewymuszone użycie.  Sprawdź [SQL Data Warehouse ograniczenia tabeli](sql-data-warehouse-table-constraints.md).
+
 ## <a name="commands-for-creating-tables"></a>Polecenia służące do tworzenia tabel
 Tabelę można utworzyć jako nową pustą tabelę. Możesz również utworzyć i wypełnić tabelę z wynikami instrukcji SELECT. Poniżej przedstawiono polecenia T-SQL służące do tworzenia tabeli.
 
@@ -128,8 +131,7 @@ Jeśli dane pochodzą z wielu magazynów danych, dane można przenieść do maga
 ## <a name="unsupported-table-features"></a>Nieobsługiwane funkcje tabeli
 SQL Data Warehouse obsługuje wiele funkcji tabel oferowanych przez inne bazy danych, ale nie wszystkie.  Na poniższej liście przedstawiono niektóre funkcje tabeli, które nie są obsługiwane w programie SQL Data Warehouse.
 
-- Klucz podstawowy, klucze obce, unikatowe, sprawdzanie [ograniczeń tabeli](/sql/t-sql/statements/alter-table-table-constraint-transact-sql)
-
+- Klucz obcy, sprawdzanie [ograniczeń tabeli](/sql/t-sql/statements/alter-table-table-constraint-transact-sql)
 - [Kolumny obliczane](/sql/t-sql/statements/alter-table-computed-column-definition-transact-sql)
 - [Indeksowane widoki](/sql/relational-databases/views/create-indexed-views)
 - [Nazwisk](/sql/t-sql/statements/create-sequence-transact-sql)

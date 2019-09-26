@@ -136,18 +136,6 @@
           href: Tutorials/choosing-capacity-qnamaker-deployment.md
         - name: Tworzenie planu ciągłości biznesowej
           href: How-To/business-continuity-plan.md
-    - name: Korzystanie z interfejsu API REST
-      items:
-        - name: 'C#'
-          href: Quickstarts/csharp.md
-        - name: Java
-          href: Quickstarts/java.md
-        - name: Node.js
-          href: Quickstarts/nodejs.md
-        - name: Python
-          href: Quickstarts/python.md
-        - name: Przejdź
-          href: Quickstarts/go.md
 - name: Dokumentacja
   items:
     - name: Dokumentacja interfejsu API REST

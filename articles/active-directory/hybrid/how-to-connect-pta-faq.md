@@ -16,12 +16,12 @@ ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c7199cd8e5dbde1f6ff2f5cea56a4191211c853
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 0d21bf0f2ba7c93a35952d2eb2dd4df49bb3260b
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779083"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71290755"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory uwierzytelnianie przekazywane: Często zadawane pytania
 
@@ -41,11 +41,10 @@ Nie. Uwierzytelnianie przekazywane jest dostępne tylko w świecie wystąpienia 
 
 ## <a name="does-conditional-accessactive-directory-conditional-access-azure-portalmd-work-with-pass-through-authentication"></a>Czy [dostęp warunkowy](../active-directory-conditional-access-azure-portal.md) działa z uwierzytelnianiem przekazującym?
 
-Tak. Wszystkie funkcje dostępu warunkowego, w tym uwierzytelnianie wieloskładnikowe systemu Azure, współpracują z uwierzytelnianiem przekazującym.
+Tak. Wszystkie możliwości dostępu warunkowego, w tym Azure Multi-Factor Authentication, działają z uwierzytelnianiem przekazującym.
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>Czy uwierzytelnianie przekazywane obsługuje "alternatywny identyfikator" jako nazwę użytkownika, a nie "userPrincipalName"?
-
-Tak, uwierzytelnianie przekazywane jest obsługiwane `Alternate ID` jako nazwa użytkownika w przypadku skonfigurowania w Azure AD Connect. Zgodnie z wymaganiami wstępnymi Azure AD Connect musi synchronizować lokalny atrybut Active Directory `UserPrincipalName` z usługą Azure AD. Aby uzyskać więcej informacji, zobacz [instalację niestandardową programu Azure AD Connect](how-to-connect-install-custom.md). Nie wszystkie aplikacje `Alternate ID`pakietu Office 365. Zapoznaj się z instrukcją obsługi dokumentacji konkretnej aplikacji.
+W ograniczonym zakresie uwierzytelnianie przekazywane obsługuje alternatywny identyfikator jako nazwę użytkownika w przypadku skonfigurowania w Azure AD Connect. Zgodnie z wymaganiami wstępnymi Azure AD Connect musi synchronizować lokalny atrybut Active Directory `UserPrincipalName` z usługą Azure AD. Dzięki `UserPrincipalName` temu lokalne usługi AD i Azure AD staną się identyczne. Jeśli chcesz użyć innego atrybutu do synchronizowania z lokalnej usługi AD jako nazwy UPN z usługą Azure AD, musisz użyć dowolnej synchronizacji skrótów haseł lub AD FS. Aby uzyskać więcej informacji, zobacz [instalację niestandardową programu Azure AD Connect](how-to-connect-install-custom.md). Nie wszystkie aplikacje `Alternate ID`pakietu Office 365. Zapoznaj się z instrukcją obsługi dokumentacji konkretnej aplikacji.
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>Czy synchronizacja skrótów haseł działa jako rezerwowa do uwierzytelniania przekazywanego?
 
@@ -86,7 +85,7 @@ Jeśli nie skonfigurowano funkcji zapisywania zwrotnego haseł dla określonego 
 Tak. Jeśli w środowisku lokalnym włączono funkcję autowykrywania serwera proxy sieci Web, agenci uwierzytelniania automatycznie próbują zlokalizować i użyć serwera proxy sieci Web w sieci.
 
 Jeśli w danym środowisku nie masz usługi WPAD, możesz dodać informacje o serwerze proxy (jak pokazano poniżej), aby zezwolić agentowi uwierzytelniania przekazującego na komunikację z usługą Azure AD:
-- Skonfiguruj informacje o serwerze proxy w programie Internet Explorer przed zainstalowaniem agenta uwierzytelniania przekazywanego na serwerze. Pozwoli to na ukończenie instalacji agenta uwierzytelniania, ale nadal będzie on wyświetlany jako nieaktywny w portalu administracyjnym .
+- Skonfiguruj informacje o serwerze proxy w programie Internet Explorer przed zainstalowaniem agenta uwierzytelniania przekazywanego na serwerze. Pozwoli to na ukończenie instalacji agenta uwierzytelniania, ale nadal będzie on wyświetlany jako **nieaktywny** w portalu administracyjnym.
 - Na serwerze przejdź do lokalizacji "C:\Program Files\Microsoft Azure AD Connect Authentication Agent".
 - Edytuj plik konfiguracyjny "AzureADConnectAuthenticationAgentService" i Dodaj następujące wiersze (Zastąp ciąg "\:http//contosoproxy.com:8080" rzeczywistym adresem serwera proxy):
 
@@ -104,7 +103,7 @@ Jeśli w danym środowisku nie masz usługi WPAD, możesz dodać informacje o se
 
 ## <a name="can-i-install-two-or-more-pass-through-authentication-agents-on-the-same-server"></a>Czy można zainstalować dwóch lub więcej agentów uwierzytelniania przekazującego na tym samym serwerze?
 
-Nie, tylko jeden Agent uwierzytelniania przekazywanego można zainstalować na jednym serwerze. Jeśli chcesz skonfigurować uwierzytelnianie przekazywane w celu zapewnienia wysokiej dostępności, postępuj [zgodnie z instrukcjami w tym miejscu](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability).
+Nie, tylko jeden Agent uwierzytelniania przekazywanego można zainstalować na jednym serwerze. Jeśli chcesz skonfigurować uwierzytelnianie przekazywane w celu zapewnienia wysokiej dostępności, [postępuj zgodnie z instrukcjami w tym miejscu](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability).
 
 ## <a name="do-i-have-to-manually-renew-certificates-used-by-pass-through-authentication-agents"></a>Czy muszę ręcznie odnowić certyfikaty używane przez agentów uwierzytelniania przekazywanego?
 
@@ -114,7 +113,7 @@ Komunikacja między każdym agentem uwierzytelniania przekazywanego i usługą A
 
 Tak długo, jak działa Agent uwierzytelniania przekazującego, pozostaje aktywny i ciągle obsługuje żądania logowania użytkownika. Jeśli chcesz odinstalować agenta uwierzytelniania, Przejdź kolejno do pozycji **Panel sterowania — > programy — > programy i funkcje** , a następnie Odinstaluj zarówno **agenta Microsoft Azure AD Connect Authentication Agent** , jak i **Microsoft Azure AD Connect Agent Aktualizator** programu.
 
-W przypadku zaznaczenia bloku uwierzytelnianie przekazywane w [centrum administracyjnym Azure Active Directory](https://aad.portal.azure.com) po zakończeniu poprzedniego kroku zostanie wyświetlony Agent uwierzytelniania wyświetlany jako nieaktywny. Jest to _oczekiwane_. Agent uwierzytelniania jest automatycznie usuwany z listy po kilku dniach.
+W przypadku zaznaczenia bloku uwierzytelnianie przekazywane w [centrum administracyjnym Azure Active Directory](https://aad.portal.azure.com) po zakończeniu poprzedniego kroku zostanie wyświetlony Agent uwierzytelniania wyświetlany jako **nieaktywny**. Jest to _oczekiwane_. Agent uwierzytelniania jest automatycznie usuwany z listy po kilku dniach.
 
 ## <a name="i-already-use-ad-fs-to-sign-in-to-azure-ad-how-do-i-switch-it-to-pass-through-authentication"></a>Już używam AD FS do logowania się do usługi Azure AD. Jak mogę przełączyć je na uwierzytelnianie przekazywane?
 
@@ -175,7 +174,7 @@ Dzierżawy utworzone po 15 czerwca 2015 mają domyślne zachowanie synchronizowa
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - [Bieżące ograniczenia](how-to-connect-pta-current-limitations.md): Dowiedz się, które scenariusze są obsługiwane i które nie są.
 - [Szybki Start](how-to-connect-pta-quick-start.md): Zacznij korzystać z uwierzytelniania przekazywanego usługi Azure AD.
 - [Migrowanie z AD FS do uwierzytelniania przekazywanego](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx?raw=true) — szczegółowy przewodnik migracji z AD FS (lub innych technologii federacyjnych) do uwierzytelniania przekazywanego.

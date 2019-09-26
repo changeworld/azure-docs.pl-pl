@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: juliako
-ms.openlocfilehash: 6ff23ca4c66094df18d1d18caac67192059e8f8d
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: d4f4cfc005b2d5a63512245baee5230e9a26cb37
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019409"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309209"
 ---
 # <a name="azure-media-services-legacy-components"></a>Azure Media Services starsze składniki
 
@@ -26,12 +26,14 @@ W miarę upływu czasu wprowadzono stałe ulepszenia i ulepszenia składników u
 
 ## <a name="legacy-components-and-migration-guidance"></a>Starsze składniki i wskazówki dotyczące migracji
 
-### <a name="media-processors"></a>Procesory multimediów
-
 Ogłaszamy przestarzałe procesory multimediów w *systemie Windows Azure Media Encoder* (WAME) i *Azure Media Encoder* (azwa). Te procesory są wycofywane w dniu 30 listopada 2019.
 
 * [Migrowanie z systemu Windows Azure Media Encoder do Media Encoder Standard](migrate-windows-azure-media-encoder.md)
 * [Migrowanie z Azure Media Encoder do Media Encoder Standard](migrate-azure-media-encoder.md)
+
+Ogłaszamy również przestarzałe *Azure Media Indexer* i *Azure Media Indexer 2*. Procesor multimediów [Azure Media Indexer](media-services-index-content.md) zostanie wycofany 1 października 2020. Procesory multimediów [[Azure Media Indexer 2 (wersja zapoznawcza)](media-services-process-content-with-indexer2.md) zostaną wycofane z dniem 1 stycznia 2019.  [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) zastępuje te starsze procesory nośników.
+
+* [Przeprowadź migrację z Azure Media Indexer i Azure Media Indexer 2 do Azure Media Services Video Indexer](migrate-indexer-v1-v2.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

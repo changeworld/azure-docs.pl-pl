@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: d9dd3ff2f24660404a1ab0440668c4d4da1e7319
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1a27d748e16f892a748cf18569c13ca3f9ead1dd
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080515"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309515"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Co to są akceleratory rozwiązań Azure IoT?
 
@@ -34,7 +34,7 @@ Obecnie dostępne do wdrożenia są cztery akceleratory rozwiązań:
 
 ### <a name="remote-monitoring"></a>Zdalne monitorowanie
 
-[Akcelerator rozwiązań Zdalne monitorowanie](iot-accelerators-remote-monitoring-sample-walkthrough.md) umożliwia zbieranie danych telemetrycznych z urządzeń zdalnych i sterowanie nimi. Przykładowe urządzenia to systemy chłodzenia zamontowane w placówce klienta lub zawory w odległych przepompowniach.
+[Akcelerator rozwiązania do monitorowania zdalnego](iot-accelerators-remote-monitoring-sample-walkthrough.md) umożliwia zbieranie danych telemetrycznych z urządzeń zdalnych i sterowanie nimi. Przykładowe urządzenia to systemy chłodzenia zamontowane w placówce klienta lub zawory w odległych przepompowniach.
 
 Za pomocą pulpitu nawigacyjnego zdalnego monitorowania można wyświetlać dane telemetryczne z połączonych urządzeń, aprowizować nowe urządzenia lub uaktualniać oprogramowanie układowe połączonych urządzeń:
 
@@ -85,7 +85,7 @@ Pierwotne akceleratory rozwiązań zostały napisane przy użyciu platformy .NET
 | Połączona fabryka      | MVC           | [.NET](https://github.com/Azure/azure-iot-connected-factory)          |
 | Symulacja urządzenia      | Mikrousługi | [.NET](https://github.com/Azure/device-simulation-dotnet)          |
 
-Aby dowiedzieć się więcej na temat architektury mikrousług, zobacz [Wprowadzenie do architektury referencyjnej usługi Azure IoT](iot-accelerators-architecture-overview.md).
+Aby dowiedzieć się więcej na temat architektury mikrousług, zobacz [Wprowadzenie do architektury referencyjnej usługi Azure IoT](https://docs.microsoft.com/azure/architecture/reference-architectures/iot/).
 
 ## <a name="deployment-options"></a>Opcje wdrożenia
 
@@ -99,11 +99,11 @@ Akcelerator rozwiązania do monitorowania zdalnego można wdrażać w następuj�
 
 Kosztem działania akceleratora rozwiązań jest łączny [koszt działania używanych przez niego podstawowych usług platformy Azure](https://azure.microsoft.com/pricing). Szczegóły używanych usług platformy Azure są widoczne podczas wybierania opcji wdrażania.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby wypróbować jeden z akceleratorów rozwiązań usługi IoT, zapoznaj się z przewodnikami Szybki start:
 
-* [Testowanie rozwiązania do zdalnego monitorowania](quickstart-remote-monitoring-deploy.md)
+* [Testowanie rozwiązania do monitorowania zdalnego](quickstart-remote-monitoring-deploy.md)
 * [Testowanie rozwiązania połączonej fabryki](quickstart-connected-factory-deploy.md)
 * [Testowanie rozwiązania do konserwacji predykcyjnej](quickstart-predictive-maintenance-deploy.md)
 * [Testowanie rozwiązania do symulacji urządzeń](quickstart-device-simulation-deploy.md)

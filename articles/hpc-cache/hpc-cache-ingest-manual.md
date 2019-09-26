@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: v-erkell
-ms.openlocfilehash: 217f976d53a7be8931be9f8d21b000549a9ed68a
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: e1ca6fa4ea1ae4a5bf5996e88d32e1e00416f067
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180994"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299989"
 ---
 # <a name="azure-hpc-cache-preview-data-ingest---manual-copy-method"></a>Pobieranie danych z pamięci podręcznej platformy Azure HPC (wersja zapoznawcza) — Metoda kopiowania ręcznego
 
@@ -83,7 +83,7 @@ cp -R /mnt/source/dir1/dir1d /mnt/destination/dir1/ &
 
 Po dodaniu wystarczającej liczby równoległych wątków do jednego docelowego punktu instalacji systemu plików będzie dostępny punkt, w którym Dodawanie kolejnych wątków nie zapewnia większej przepływności. (Przepływność będzie mierzona w plikach/s lub bajtach na sekundę, w zależności od typu danych). Lub gorsze, nadmierne wątki może czasami spowodować spadek przepływności.  
 
-W takim przypadku można dodać punkty instalacji po stronie klienta do innych adresów instalacji pamięci podręcznej platformy Azure HPC przy użyciu tej samej ścieżki instalacji zdalnej systemu plików:
+W takim przypadku można dodać punkty instalacji po stronie klienta do innych adresów instalacji pamięci podręcznej platformy Azure HPC przy użyciu tej samej ścieżki instalacji systemu plików zdalnych:
 
 ```bash
 10.1.0.100:/nfs on /mnt/sourcetype nfs (rw,vers=3,proto=tcp,addr=10.1.0.100)
@@ -136,7 +136,7 @@ Client4: cp -R /mnt/source/dir3/dir3d /mnt/destination/dir3/ &
 
 ## <a name="create-file-manifests"></a>Tworzenie manifestów plików
 
-Po zrozumieniu powyższych metod (wiele wątków kopiowania na miejsce docelowe, wielu miejsc docelowych na klienta, wielu klientów na dostęp do sieci), należy wziąć pod uwagę następujące zalecenia: Kompiluj manifesty plików, a następnie używaj ich razem z poleceniami kopiowania na wielu klientach.
+Po zrozumieniu powyższych metod (wiele wątków kopiowania na miejsce docelowe, wielu miejsc docelowych na klienta, wielu klientów na system plików źródłowych dostępnych dla sieci) należy wziąć pod uwagę następujące zalecenia: Kompiluj manifesty plików, a następnie używaj ich razem z poleceniami kopiowania na wielu klientach.
 
 W tym scenariuszu do ``find`` tworzenia manifestów plików lub katalogów służy polecenie systemu UNIX:
 

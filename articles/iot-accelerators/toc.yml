@@ -238,9 +238,7 @@
 - name: Architektura referencyjna
   items:
     - name: Omówienie
-      href: iot-accelerators-architecture-overview.md
-    - name: Do pobrania
-      href: 'https://aka.ms/iotrefarchitecture'
+      href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/iot/'
     - name: Implementacje partnerów
       items:
         - name: Intel Connected Logistics Platform

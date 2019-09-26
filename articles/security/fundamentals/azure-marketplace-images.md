@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: barclayn
-ms.openlocfilehash: b574f7c4f30c3bce8bd7d0e234cb523c965772e1
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 3d6b1ed2a3800058acba9fe5df2137811afed74a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727585"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300786"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>Zalecenia dotyczące zabezpieczeń obrazów portalu Azure Marketplace
 
@@ -56,7 +56,7 @@ Te zalecenia mogą być również przydatne w przypadku organizacji, które nie 
 | Bezpieczeństwo                                                         | Użyj bezpiecznego obrazu podstawowego systemu operacyjnego. Wirtualny dysk twardy używany do źródła dowolnego obrazu na podstawie systemu Windows Server musi pochodzić z obrazów systemu operacyjnego Windows Server dostarczonych za pośrednictwem Microsoft Azure. |
 | Bezpieczeństwo                                                         | Zainstaluj wszystkie najnowsze aktualizacje zabezpieczeń.                                                                                                                                     |
 | Bezpieczeństwo                                                         | Aplikacje nie powinny być zależne od nazw użytkowników z ograniczeniami, takich jak administrator, root i administrator.                                                                |
-| Bezpieczeństwo                                                         | Szyfrowanie dysków funkcją BitLocker nie jest obsługiwana na dysku twardym systemu operacyjnego. Funkcja BitLocker może być używana na dyskach danych.                                                            |
+| Bezpieczeństwo                                                         | Szyfrowanie dysków funkcją BitLocker jest włączona zarówno dla dysków twardych systemu operacyjnego, jak i dysków twardych z danymi.                                                             |
 | Bezpieczeństwo                                                         | Ogranicz obszar narażony na ataki, utrzymując minimalny wpływ na tylko niezbędne role, funkcje, usługi i porty sieci systemu Windows Server.                         |
 | Bezpieczeństwo                                                         | Skanuj kod źródłowy i otrzymany obraz maszyny wirtualnej w poszukiwaniu złośliwego oprogramowania.                                                                                                                     |
 | Bezpieczeństwo                                                         | Ustaw aktualizację zabezpieczeń obrazów systemu Windows Server na autoaktualizację.                                                                                                                |

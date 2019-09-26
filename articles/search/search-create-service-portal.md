@@ -1,22 +1,22 @@
 ---
-title: Tworzenie usługi Azure Search w portalu — Azure Search
+title: 'Szybki start: Tworzenie usługi Azure Search w portalu — Azure Search'
 description: Aprowizowanie zasobu usługi Azure Search w witrynie Azure Portal. Wybierz grupy zasobów, regiony i jednostki SKU lub warstwę cenową.
 manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 08/09/2019
+ms.date: 09/10/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 0aabf10b3be8f2f13abbba15d514a008f193646c
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 483810f89ea4bbb3a68e616929bd7d752c4d509f
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649946"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883852"
 ---
-# <a name="create-an-azure-search-service-in-the-portal"></a>Tworzenie usługi Azure Search w portalu
+# <a name="quickstart-create-an-azure-search-service-in-the-portal"></a>Szybki start: Tworzenie usługi Azure Search w portalu
 
 Usługa Azure Search jest zasobem autonomicznym służącym do dołączania funkcji wyszukiwania do aplikacji niestandardowych. Chociaż Azure Search łatwo integruje się z innymi usługami platformy Azure, można go również użyć jako składnika autonomicznego lub zintegrować go z aplikacjami na serwerach sieciowych lub z oprogramowaniem działającym na innych platformach w chmurze.
 
@@ -42,7 +42,7 @@ Możesz również [aktywować korzyści dla subskrybentów MSDN](https://azure.m
 
 ## <a name="select-a-subscription"></a>Wybierz subskrypcję
 
-Jeśli masz więcej niż jedną subskrypcję, wybierz tę, która obejmuje usługi magazynu danych lub plików. Azure Search mogą automatycznie wykrywać usługę Azure Table i BLOB Storage, SQL Database i Azure Cosmos DB do indeksowania [](search-indexer-overview.md)za pośrednictwem indeksatorów, ale tylko dla usług w ramach tej samej subskrypcji.
+Jeśli masz więcej niż jedną subskrypcję, wybierz tę, która obejmuje usługi magazynu danych lub plików. Azure Search mogą automatycznie wykrywać usługę Azure Table i BLOB Storage, SQL Database i Azure Cosmos DB do indeksowania za pośrednictwem [*indeksatorów*](search-indexer-overview.md), ale tylko dla usług w ramach tej samej subskrypcji.
 
 ## <a name="set-a-resource-group"></a>Ustawianie grupy zasobów
 
@@ -74,7 +74,7 @@ Wymagania dotyczące nazwy usługi:
 
 ## <a name="choose-a-location"></a>Wybierz lokalizację
 
-W związku z tym, że usługa Azure Search należy do usług platformy Azure, może być hostowana w centrach danych na całym świecie. Listę obsługiwanych regionów można znaleźć na [stronie](https://azure.microsoft.com/pricing/details/search/)z cennikiem. 
+W związku z tym, że usługa Azure Search należy do usług platformy Azure, może być hostowana w centrach danych na całym świecie. Listę obsługiwanych regionów można znaleźć na [stronie z cennikiem](https://azure.microsoft.com/pricing/details/search/). 
 
 Możesz zminimalizować lub uniknąć opłat za przepustowość, wybierając tę samą lokalizację dla wielu usług. Na przykład w przypadku indeksowania danych dostarczanych przez inną usługę platformy Azure (Azure Storage, Azure Cosmos DB, Azure SQL Database) Tworzenie usługi Azure Search w tym samym regionie pozwala uniknąć naliczania opłat za przepustowość (nie są naliczane opłaty za dane wychodzące, gdy usługi znajdują się w usłudze ten sam region).
 

@@ -9,16 +9,18 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 09/01/2019
-ms.openlocfilehash: dcb0fe4da968408a261e387c636cc548fa757a09
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: d397adfb6ed2d3aef93bd40d14eb0ad199cdb90c
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036652"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309352"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Nawiązywanie połączenia z lokalnymi źródłami danych z Azure Logic Apps
 
-Aby uzyskać dostęp do źródeł danych w środowisku lokalnym z poziomu aplikacji logiki, utwórz zasób lokalnej bramy danych w Azure Portal. Aplikacje logiki mogą następnie używać [łączników lokalnych](../connectors/apis-list.md#on-premises-connectors). W tym artykule przedstawiono sposób tworzenia zasobu bramy platformy Azure *po* [pobraniu i zainstalowaniu bramy na komputerze lokalnym](../logic-apps/logic-apps-gateway-install.md). Aby uzyskać więcej informacji o bramie, zobacz [jak działa Brama](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service).
+Aby uzyskać dostęp do źródeł danych w środowisku lokalnym z poziomu aplikacji logiki, utwórz zasób lokalnej bramy danych w Azure Portal. Aplikacje logiki mogą następnie używać [łączników lokalnych](../connectors/apis-list.md#on-premises-connectors). Azure Logic Apps obsługuje operacje zapisu, w tym wstawienia i aktualizacje, za pomocą bramy. Jednak te operacje mają [limity rozmiaru ładunku](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations).
+
+W tym artykule przedstawiono sposób tworzenia zasobu bramy platformy Azure *po* [pobraniu i zainstalowaniu bramy na komputerze lokalnym](../logic-apps/logic-apps-gateway-install.md). Aby uzyskać więcej informacji o bramie, zobacz [jak działa Brama](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service). 
 
 > [!TIP]
 > W celu nawiązania połączenia z sieciami wirtualnymi platformy Azure Rozważ utworzenie [*środowiska usługi integracji*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) . 
@@ -151,7 +153,7 @@ Aby utworzyć inny zasób bramy, Połącz instalację bramy z innym zasobem bram
 
    Na przykład:
 
-   ![Usuń bramę](./media/logic-apps-gateway-connection/gateway-delete.png)
+   ![Usuwanie bramy](./media/logic-apps-gateway-connection/gateway-delete.png)
 
 <a name="faq"></a>
 

@@ -4,14 +4,14 @@ description: Opisuje sposób używania szablonów Azure Resource Manager do wdra
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 09/25/2019
 ms.author: tomfitz
-ms.openlocfilehash: 6d0d162f0f6f3024f6b4b63b8df1df9fd413afc8
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 96f140cfa5e6151ad53ca242d1fc87ba3397316e
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70965307"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300155"
 ---
 # <a name="azure-resource-manager-templates"></a>Szablony usługi Azure Resource Manager
 
@@ -47,9 +47,11 @@ Jeśli próbujesz zdecydować się na korzystanie z szablonów Menedżer zasobó
 
 * **Plany wdrożenia**: Możesz skorzystać z [planów](../governance/blueprints/overview.md) dostarczonych przez firmę Microsoft, aby spełnić standardy zgodności i stosowania. Te plany obejmują wstępnie skompilowane szablony dla różnych architektur.
 
+* **Integracja ciągłej integracji/** ciągłego wdrażania: Szablony można zintegrować z narzędziami ciągłej integracji i ciągłego wdrażania (CI/CD), które umożliwiają automatyzację potoków wydań w celu uzyskania szybkich i niezawodnych aktualizacji aplikacji i infrastruktury. Za pomocą zadania DevOps platformy Azure i szablonu Menedżer zasobów można używać Azure Pipelines do ciągłego kompilowania i wdrażania projektów szablonów Azure Resource Manager. Aby dowiedzieć się więcej, zobacz [projekt programu vs z potokami](./vs-resource-groups-project-devops-pipelines.md) i [ciągłą integracją z Azure Pipelines](./resource-manager-tutorial-use-azure-pipelines.md).
+
 * **Kod możliwy do eksportu**: Możesz uzyskać szablon dla istniejącej grupy zasobów, eksportując bieżący stan grupy zasobów lub wyświetlając szablon używany do określonego wdrożenia. Przeglądając [wyeksportowany szablon](export-template-portal.md), można poznać jego składnię.
 
-* **Narzędzia do tworzenia**: Szablony można tworzyć przy użyciu [Visual Studio Code](resource-manager-tools-vs-code.md) i rozszerzenia narzędzia szablonu. Uzyskasz funkcję IntelliSense, wyróżnianie składni, pomoc w wierszu i wiele innych funkcji języka.
+* **Narzędzia do tworzenia**: Szablony można tworzyć przy użyciu [Visual Studio Code](resource-manager-tools-vs-code.md) i rozszerzenia narzędzia szablonu. Uzyskasz funkcję IntelliSense, wyróżnianie składni, pomoc w wierszu i wiele innych funkcji języka. Oprócz programu Visual Studio Code można również użyć [programu Visual Studio](./vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
 
 ## <a name="template-file"></a>Plik szablonu
 
@@ -124,7 +126,4 @@ Informacje dotyczące szablonów zagnieżdżonych można znaleźć w temacie [Us
 ## <a name="next-steps"></a>Następne kroki
 
 * Aby uzyskać informacje o właściwościach w plikach szablonów, zobacz [Opis struktury i składni szablonów Azure Resource Manager](resource-group-authoring-templates.md).
-* Aby jawnie ustawić zależności, aby jeden zasób został wdrożony przed innym zasobem, zobacz [Definiowanie zależności w szablonach Azure Resource Manager](resource-group-define-dependencies.md).
-* Możesz dodać zasób do szablonu i opcjonalnie go wdrożyć. Aby uzyskać więcej informacji, zobacz [wdrażanie warunkowe w szablonach Menedżer zasobów](conditional-resource-deployment.md).
-* Zamiast powtarzających się bloków JSON wiele razy w szablonie, można określić więcej niż jedno wystąpienie zmiennej, właściwości lub zasobu. Aby uzyskać więcej informacji, zobacz temat " [Resource, Property" lub "zmienna" w szablonach Azure Resource Manager](resource-group-create-multiple.md).
 * Aby dowiedzieć się więcej na temat [eksportowania szablonów, zobacz Szybki Start: Tworzenie i wdrażanie szablonów usługi Azure Resource Manager przy użyciu witryny Azure Portal](./resource-manager-quickstart-create-templates-use-the-portal.md).

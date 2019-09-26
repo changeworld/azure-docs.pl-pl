@@ -11,24 +11,52 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: aea1434acdbfd97bcc9096dddd497ef031a74b94
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: e3ab825fbf5b5dba74b67eaa894a38c74ed0b62a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170560"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299395"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Przewodnik dewelopera Azure Functions Java
 
 Środowisko uruchomieniowe Azure Functions obsługuje środowisko [Java SE 8 LTS (Zulu 8.31.0.2-JRE 8.0.181-win_x64)](https://repos.azul.com/azure-only/zulu/packages/zulu-8/8u181/). Ten przewodnik zawiera informacje na temat złożonego pisania Azure Functions przy użyciu języka Java.
 
-Funkcja języka Java to metoda `public` , która jest zadekoracyjna `@FunctionName`adnotacją. Ta metoda definiuje wpis dla funkcji języka Java i musi być unikatowa w konkretnym pakiecie. 
+Podobnie jak w przypadku innych języków, aplikacja funkcji może mieć jedną lub więcej funkcji. Funkcja języka Java to metoda `public` , która jest zadekoracyjna `@FunctionName`adnotacją. Ta metoda definiuje wpis dla funkcji języka Java i musi być unikatowa w konkretnym pakiecie. Jeden aplikacja funkcji zapisany w języku Java może mieć wiele klas z adnotacjami `@FunctionName`z wieloma metodami publicznymi.
 
 W tym artykule przyjęto założenie, że już odczytano [informacje dotyczące deweloperów Azure Functions](functions-reference.md). Należy również wykonać funkcję Szybki Start, aby utworzyć pierwszą funkcję przy użyciu [Visual Studio Code](functions-create-first-function-vs-code.md) lub [Maven](functions-create-first-java-maven.md).
 
 ## <a name="programming-model"></a>Model programowania 
 
 Pojęcia związane z [wyzwalaczami i powiązaniami](functions-triggers-bindings.md) mają podstawowe znaczenie dla Azure Functions. Wyzwalacze rozpoczynają wykonywanie kodu. Powiązania umożliwiają przekazywanie danych do i zwracanie danych z funkcji bez konieczności pisania niestandardowego kodu dostępu do danych.
+
+## <a name="project-scaffolding"></a>Tworzenie szkieletu projektu
+
+Najprostszym sposobem tworzenia szkieletu projektu funkcji platformy Azure opartej na języku Java `Apache Maven` jest użycie Archetypes. Kreatory generowania projektu można także znaleźć na Visual Studio Code oraz zestaw narzędzi platformy Azure przeznaczony do przeszukiwania i IntelliJ.
+
+Obecnie istnieją dwa Azure Functions Archetypes dla Maven:
+
+### <a name="java-archetype"></a>Archetype Java
+
+Ten Archetype jest opublikowany w następujących identyfikatorach groupId i artifactId [com. Microsoft. Azure: Azure-Functions-Archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/).
+
+```
+mvn archetype:generate \
+    -DarchetypeGroupId=com.microsoft.azure \
+    -DarchetypeArtifactId=azure-functions-archetype 
+```
+
+### <a name="kotlin-archetype-preview"></a>Kotlin Archetype (wersja zapoznawcza)
+
+Ten Archetype jest opublikowany w następujących identyfikatorach groupId i artifactId [com. Microsoft. Azure: Azure-Functions-Kotlin-Archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/).
+
+```
+mvn archetype:generate \
+    -DarchetypeGroupId=com.microsoft.azure \
+    -DarchetypeArtifactId=azure-functions-kotlin-archetype
+```
+
+Kod źródłowy tych Archetypes można znaleźć w [repozytorium usługi Azure Maven Archetypes](https://github.com/microsoft/azure-maven-archetypes)w witrynie GitHub.
 
 ## <a name="folder-structure"></a>Struktura folderów
 
@@ -56,6 +84,8 @@ FunctionsProject
  | - pom.xml
 ```
 
+_* Projekt Kotlin wygląda bardzo podobnie, ponieważ jest nadal Maven_
+
 Aby skonfigurować aplikację funkcji, można użyć udostępnionego pliku [host. JSON](functions-host-json.md) . Każda funkcja ma własny plik kodu (. Java) i plik konfiguracji powiązania (Function. JSON).
 
 W projekcie można umieścić więcej niż jedną funkcję. Unikaj umieszczania funkcji w osobnych jarsach. `FunctionApp` Katalog docelowy jest wdrażany w aplikacji funkcji na platformie Azure.
@@ -81,7 +111,7 @@ public class Function {
 }
 ```
 
-Poniżej przedstawiono wygenerowane `function.json` przez platformę [Azure-Functions-Maven-plugin](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-maven-plugin):
+Poniżej przedstawiono wygenerowane `function.json` przez [platformę Azure-Functions-Maven-plugin](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-maven-plugin):
 
 ```json
 {

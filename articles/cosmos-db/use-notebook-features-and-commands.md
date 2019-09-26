@@ -1,0 +1,157 @@
+---
+title: Używanie wbudowanych poleceń i funkcji notesu w programie Azure Cosmos DB
+description: Dowiedz się, jak używać wbudowanych poleceń i funkcji, aby wykonywać typowe operacje przy użyciu wbudowanych notesów Azure Cosmos DB.
+author: deborahc
+ms.service: cosmos-db
+ms.topic: conceptual
+ms.date: 09/23/2019
+ms.author: dech
+ms.openlocfilehash: 1eda8271a3b8aa2c9e247252bd755279d23b6e10
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71310349"
+---
+# <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db"></a>Używanie wbudowanych poleceń i funkcji notesu w programie Azure Cosmos DB
+
+Wbudowane notesy Jupyter w Azure Cosmos DB umożliwiają analizowanie i wizualizowanie danych z Azure Portal. W tym artykule opisano, jak używać wbudowanych poleceń i funkcji notesu do wykonywania typowych operacji.
+
+## <a name="install-a-new-package"></a>Zainstaluj nowy pakiet
+Po włączeniu obsługi notesu dla kont usługi Azure Cosmos można otworzyć nowy Notes i zainstalować pakiet.
+
+W nowej komórce kodu Wstaw i uruchom następujący kod, zastępując ``PackageToBeInstalled`` go żądanym pakietem języka Python.
+```python
+import sys
+!{sys.executable} -m pip install PackageToBeInstalled –user
+```
+Ten pakiet będzie dostępny do użycia z dowolnego notesu na koncie usługi Azure Cosmos. 
+
+## <a name="run-a-sql-query"></a>Uruchamianie zapytania SQL
+
+Możesz użyć polecenia Magic ``%%sql`` , aby uruchomić [zapytanie SQL](sql-query-getting-started.md) względem dowolnego kontenera na Twoim koncie. Użyj składni:
+
+```bash
+%%sql --database {database_id} --container {container_id}
+{Query text}
+```
+
+- Zamień ``{database_id}`` i``{container_id}`` na nazwę bazy danych i kontenera na koncie Cosmos. Jeśli argumenty ``--container``inie zostaną podane, zapytanie zostanie wykonane w [domyślnej bazie danych i kontenerze.](#set-default-database-for-queries) ``--database``
+- Można uruchomić dowolne zapytanie SQL, które jest prawidłowe w Azure Cosmos DB. Tekst zapytania musi znajdować się w nowym wierszu.
+
+Na przykład: 
+```bash
+%%sql --database RetailDemo --container WebsiteData
+SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c
+```
+Uruchom ```%%sql?``` w komórce, aby wyświetlić dokumentację pomocy dla polecenia SQL Magic w notesie.
+
+## <a name="run-a-sql-query-and-output-to-a-pandas-dataframe"></a>Uruchamianie zapytania SQL i danych wyjściowych do Pandas Frame
+
+Wyniki ``%%sql`` zapytania można wyprowadzać w [Pandas Dataframe](https://pandas.pydata.org/pandas-docs/stable/getting_started/dsintro.html#dataframe). Użyj składni: 
+
+```bash
+%%sql --database {database_id} --container {container_id} --output {outputDataFrameVar}
+{Query text}
+```
+- Zamień ``{database_id}`` i``{container_id}`` na nazwę bazy danych i kontenera na koncie Cosmos. Jeśli argumenty ``--container``inie zostaną podane, zapytanie zostanie wykonane w [domyślnej bazie danych i kontenerze.](#set-default-database-for-queries) ``--database``
+- Zamień ``{outputDataFrameVar}`` na nazwę zmiennej Dataframe, która będzie zawierać wyniki.
+- Można uruchomić dowolne zapytanie SQL, które jest prawidłowe w Azure Cosmos DB. Tekst zapytania musi znajdować się w nowym wierszu. 
+
+Na przykład:
+
+```bash
+%%sql --database RetailDemo --container WebsiteData --output df_cosmos
+SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c
+```
+```bash
+df_cosmos.head(10)
+
+    Action  ItemRevenue Country Item
+0   Viewed  9.00    Tunisia Black Tee
+1   Viewed  19.99   Antigua and Barbuda Flannel Shirt
+2   Added   3.75    Guinea-Bissau   Socks
+3   Viewed  3.75    Guinea-Bissau   Socks
+4   Viewed  55.00   Czech Republic  Rainjacket
+5   Viewed  350.00  Iceland Cosmos T-shirt
+6   Added   19.99   Syrian Arab Republic    Button-Up Shirt
+7   Viewed  19.99   Syrian Arab Republic    Button-Up Shirt
+8   Viewed  33.00   Tuvalu  Red Top
+9   Viewed  14.00   Cape Verde  Flip Flop Shoes
+```
+
+## <a name="set-default-database-for-queries"></a>Ustaw domyślną bazę danych dla zapytań
+Można ustawić domyślne polecenia bazy danych ```%%sql``` , które będą używane w notesie. Zamień ```{database_id}``` na nazwę bazy danych.
+
+```bash
+%database {database_id}
+```
+Uruchom ```%database?``` w komórce, aby wyświetlić dokumentację w notesie.
+
+## <a name="set-default-container-for-queries"></a>Ustaw domyślny kontener dla zapytań
+Można ustawić domyślne polecenia kontenera ```%%sql``` , które będą używane dla notesu. Zamień ```{container_id}``` na nazwę kontenera.
+
+```bash
+%container {container_id}
+```
+Uruchom ```%container?``` w komórce, aby wyświetlić dokumentację w notesie.
+
+## <a name="use-the-built-in-python-sdk"></a>Korzystanie z wbudowanego zestawu SDK języka Python
+Wersja 4 [Azure Cosmos DB zestawu SDK języka Python dla interfejsu API SQL](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos) jest zainstalowana i uwzględniona w środowisku notesu dla konta Cosmos.
+
+Użyj wbudowanego ``cosmos_client`` wystąpienia do uruchomienia dowolnej operacji zestawu SDK. 
+
+Na przykład:
+
+```python
+## Import modules as needed
+from azure.cosmos.partition_key import PartitionKey
+
+## Create a new database if it doesn't exist
+database = cosmos_client.create_database_if_not_exists('RetailDemo')
+
+## Create a new container if it doesn't exist
+container = database.create_container_if_not_exists(id='WebsiteData', partition_key=PartitionKey(path='/CartID'))
+```
+Zobacz [przykłady zestawu SDK języka Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos/samples). 
+
+> [!IMPORTANT]
+> Wbudowany zestaw SDK języka Python jest obsługiwany tylko w przypadku kont interfejsu API SQL (Core). W przypadku innych interfejsów API konieczne będzie [zainstalowanie odpowiedniego sterownika języka Python](#install-a-new-package) ODPOWIADAJĄCego interfejsowi API. 
+
+## <a name="create-a-custom-instance-of-cosmos_client"></a>Utwórz wystąpienie niestandardowe``cosmos_client``
+Aby uzyskać większą elastyczność, można utworzyć wystąpienie niestandardowe programu ``cosmos_client`` w celu:
+
+- Dostosowywanie [zasad połączenia](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.documents.connectionpolicy?view=azure-python-preview)
+- Wykonaj operacje na innym koncie Cosmos niż to, w którym się znajdują
+
+Możesz uzyskać dostęp do parametrów połączenia i klucza podstawowego bieżącego konta za pomocą [zmiennych środowiskowych](#access-the-account-endpoint-and-primary-key-env-variables). 
+
+```python
+import os
+import azure.cosmos.cosmos_client as cosmos
+import azure.cosmos.documents as documents
+
+# These should be set to a region you've added for Cosmos DB
+region_1 = "Central US" 
+region_2 = "East US 2"
+
+custom_connection_policy = documents.ConnectionPolicy()
+custom_connection_policy.PreferredLocations = [region_1, region_2] # Set the order of regions the SDK will route requests to. The regions should be regions you've added for Cosmos, otherwise this will error.
+
+# Create a new instance of CosmosClient, getting the endpoint and key from the environment variables
+custom_client = cosmos.CosmosClient(os.environ["COSMOS_ENDPOINT"], {'masterKey': os.environ["COSMOS_KEY"]}, connection_policy=custom_connection_policy)
+```
+## <a name="access-the-account-endpoint-and-primary-key-env-variables"></a>Dostęp do punktów końcowych konta i zmiennych klucza podstawowego
+```python
+import os
+
+endpoint = os.environ["COSMOS_ENDPOINT"]
+primary_key = os.environ["COSMOS_KEY"]
+```
+> [!IMPORTANT]
+> Zmienne środowiskowe ``COSMOS_KEY``isą stosowane tylko w przypadku interfejsu API SQL. ``COSMOS_ENDPOINT`` W przypadku innych interfejsów API Znajdź punkt końcowy i klucz w bloku **Parametry połączenia** lub **klucze** na koncie usługi Cosmos.  
+
+## <a name="next-steps"></a>Następne kroki
+
+- Poznaj zalety [Azure Cosmos DB notesów Jupyter](cosmosdb-jupyter-notebooks.md)
+- Dowiedz się więcej o [interfejsie API usługi Azure Cosmos DB Python SDK dla języka SQL](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)

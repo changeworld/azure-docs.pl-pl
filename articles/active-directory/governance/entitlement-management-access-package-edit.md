@@ -16,12 +16,12 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17c85d53d05193313f9e166b88beb2a0f82eb197
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 6a575d9f90d166ba69b14e4507d9ed7a54fac574
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618370"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71291027"
 ---
 # <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Edytuj istniejący pakiet dostępu i Zarządzaj nim w usłudze Azure AD uprawnienia do zarządzania (wersja zapoznawcza)
 
@@ -34,7 +34,7 @@ Pakiet dostępu umożliwia jednorazowe skonfigurowanie zasobów i zasad, które 
 
 W tym artykule opisano sposób edytowania istniejących pakietów dostępu i zarządzania nimi.
 
-## <a name="add-resource-roles"></a>Dodawanie ról zasobów
+## <a name="add-resource-roles"></a>Dodaj role zasobów
 
 Rola zasobu to kolekcja uprawnień skojarzonych z zasobem. Aby udostępnić zasoby użytkownikom do żądania, należy dodać role zasobów do pakietu dostępu. Można dodawać role zasobów dla grup, aplikacji i witryn programu SharePoint.
 
@@ -79,7 +79,7 @@ Możesz wybrać dowolną grupę Office 365 lub grupę zabezpieczeń usługi Azur
 
     ![Dostęp do pakietu — Dodawanie roli zasobów dla grupy](./media/entitlement-management-access-package-edit/group-role.png)
 
-1. Kliknij przycisk **Dodaj**.
+1. Kliknij pozycję **Dodaj**.
 
     Wszyscy użytkownicy z istniejącymi przypisaniami do pakietu dostępu automatycznie staną się członkami tej grupy po dodaniu.
 
@@ -110,7 +110,7 @@ Oto kilka kwestii, które należy wziąć pod uwagę podczas wybierania aplikacj
 
     ![Dostęp do pakietu — Dodawanie roli zasobów dla aplikacji](./media/entitlement-management-access-package-edit/application-role.png)
 
-1. Kliknij przycisk **Dodaj**.
+1. Kliknij pozycję **Dodaj**.
 
     Wszyscy użytkownicy z istniejącymi przypisaniami do pakietu dostępu będą automatycznie mieli dostęp do tej aplikacji po dodaniu.
 
@@ -130,7 +130,7 @@ Usługa Azure AD może automatycznie przypisywać użytkownikom dostęp do witry
 
     ![Dostęp do pakietu — Dodawanie roli zasobów dla witryny usługi SharePoint Online](./media/entitlement-management-access-package-edit/sharepoint-site-role.png)
 
-1. Kliknij przycisk **Dodaj**.
+1. Kliknij pozycję **Dodaj**.
 
     Wszyscy użytkownicy z istniejącymi przypisaniami do pakietu dostępu będą automatycznie mieli dostęp do tej witryny usługi SharePoint Online, gdy zostanie ona dodana.
 
@@ -242,7 +242,7 @@ W niektórych przypadkach może być konieczne bezpośrednie przypisanie określ
 
     Aby wyświetlić dodatkowe szczegóły dotyczące błędów dostarczania, można zlokalizować odpowiednie żądanie użytkownika na stronie **żądania** .
 
-1. Aby wyświetlić wygasłe przypisania, kliknij stan filtru i wybierzpozycję wygasłe.
+1. Aby wyświetlić wygasłe przypisania, kliknij stan filtru i wybierz pozycję **wygasłe**.
 
 1. Aby pobrać plik CSV z filtrowanej listy, kliknij przycisk **Pobierz**.
 
@@ -270,7 +270,7 @@ W niektórych przypadkach może być konieczne bezpośrednie przypisanie określ
 
 1. Wybierz żądanie, które chcesz wyświetlić.
 
-    Jeśli żądanie zawiera błędy dostarczania, stan żądania zostanie wystawiony, a podstan zostanie **częściowo dostarczony**.
+    Jeśli żądanie zawiera błędy dostarczania, stan żądania zostanie **wystawiony** , a podstan zostanie **częściowo dostarczony**.
 
     Jeśli występują błędy dostarczania, w okienku szczegółów żądania zostanie wyliczona liczba błędów dostarczania.
 
@@ -294,7 +294,15 @@ Można anulować tylko oczekujące żądanie, które nie zostało jeszcze dostar
 
 ## <a name="copy-my-access-portal-link"></a>Link Kopiuj mój Portal dostępu
 
-Większość użytkowników w katalogu może zalogować się do portalu My Access i automatycznie wyświetlić listę pakietów dostępu, których mogą żądać. Jednak w przypadku użytkowników zewnętrznego partnera biznesowego, którzy nie znajdują się jeszcze w Twoim katalogu, należy wysłać im link umożliwiający zażądanie pakietu dostępu. O ile pakiet dostępu jest włączony dla użytkowników zewnętrznych i masz zasady dla katalogu użytkownika zewnętrznego, użytkownik zewnętrzny może użyć linku Portal dostępu do aplikacji, aby zażądać pakietu dostępu.
+Większość użytkowników w katalogu może zalogować się do portalu My Access i automatycznie wyświetlić listę pakietów dostępu, których mogą żądać. Jednak w przypadku użytkowników zewnętrznego partnera biznesowego, którzy nie znajdują się jeszcze w Twoim katalogu, należy wysłać im link umożliwiający zażądanie pakietu dostępu. 
+
+Ważne jest, aby skopiować całe łącze portalu dostępu, gdy wyśle je do wewnętrznego partnera biznesowego. Gwarantuje to, że partner uzyska dostęp do portalu Twojego katalogu w celu zgłoszenia żądania. 
+
+Link rozpocznie się z "dostępem do", zawiera wskazówkę katalogu i kończy się identyfikatorem pakietu dostępu. Upewnij się, że link zawiera wszystkie następujące elementy:
+
+ `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
+
+O ile pakiet dostępu jest włączony dla użytkowników zewnętrznych i masz zasady dla katalogu użytkownika zewnętrznego, użytkownik zewnętrzny może użyć linku Portal dostępu do aplikacji, aby zażądać pakietu dostępu.
 
 **Rola wymagana wstępnie:** Administrator globalny, administrator użytkownika, właściciel katalogu lub Menedżer pakietów dostępu
 

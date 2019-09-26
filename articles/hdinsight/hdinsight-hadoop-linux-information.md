@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 7f97348999f2cab6509afeb44bc704d5109ee0f7
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: f50702688b9a261ed98c2eb3a5892d1bdbe8d11b
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181111"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71308084"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informacje dotyczące korzystania z usługi HDInsight w systemie Linux
 
@@ -88,7 +88,7 @@ Aby uzyskać więcej informacji, zobacz [porty używane przez Apache Hadoop Serv
 
 Pliki związane z usługą Hadoop znajdują się w węzłach klastra `/usr/hdp`pod adresem. Ten katalog zawiera następujące podkatalogi:
 
-* **2.6.5.3006-29**: Nazwa katalogu jest wersją platformy danych Hortonworks używanej przez usługi HDInsight. Liczba w klastrze może być różna od wymienionej w tym miejscu.
+* **2.6.5.3006-29**: Nazwa katalogu jest wersją platformy Hadoop używanej przez usługi HDInsight. Liczba w klastrze może być różna od wymienionej w tym miejscu.
 * **bieżący**: Ten katalog zawiera linki do podkatalogów w katalogu **2.6.5.3006-29** . Ten katalog istnieje, aby nie trzeba było pamiętać numeru wersji.
 
 Przykładowe dane i pliki jar można znaleźć w rozproszony system plików `/example` Hadoop w systemach i. `/HdiSamples`

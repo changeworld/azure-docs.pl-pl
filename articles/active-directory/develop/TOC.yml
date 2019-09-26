@@ -344,6 +344,8 @@
               href: v2-permissions-and-consent.md
             - name: Platforma wyrażania zgody
               href: consent-framework.md
+            - name: zgoda administratora
+              href: v2-admin-consent.md
             - name: Środowiska wyrażania zgody w aplikacji
               href: application-consent-experience.md
         - name: Chmury krajowe

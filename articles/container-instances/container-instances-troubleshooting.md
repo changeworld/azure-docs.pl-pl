@@ -6,19 +6,21 @@ author: dlepow
 manager: gwallace
 ms.service: container-instances
 ms.topic: article
-ms.date: 04/25/2019
+ms.date: 09/25/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 4b41a3862341ef39c1288985d86d86667fbc5866
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 7c4812a63137dc2efc5eab2cb3b9e136a5465e78
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325600"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300457"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Rozwiązywanie typowych problemów w Azure Container Instances
 
-W tym artykule pokazano, jak rozwiązywać typowe problemy związane z zarządzaniem kontenerami i ich wdrażaniem Azure Container Instances. Zobacz również [często zadawane pytania](container-instances-faq.md).
+W tym artykule pokazano, jak rozwiązywać typowe problemy związane z zarządzaniem kontenerami i ich wdrażaniem Azure Container Instances. Zobacz również [często zadawane pytania](container-instances-faq.md). 
+
+Jeśli potrzebujesz dodatkowej pomocy technicznej, zobacz dostępne opcje **pomocy i obsługi** w [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ## <a name="naming-conventions"></a>Konwencje nazewnictwa
 
@@ -28,7 +30,7 @@ Podczas definiowania specyfikacji kontenera niektóre parametry wymagają przest
 | --- | --- | --- | --- | --- | --- |
 | Nazwa grupy kontenerów | 1-64 |Bez uwzględniania wielkości liter |Alfanumeryczne i łącznik wszędzie z wyjątkiem pierwszego lub ostatniego znaku |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | Nazwa kontenera | 1-64 |Bez uwzględniania wielkości liter |Alfanumeryczne i łącznik wszędzie z wyjątkiem pierwszego lub ostatniego znaku |`<name>-<role>-CG<number>` |`web-batch-CG1` |
-| Porty kontenerów | Od 1 do 65535 |Liczba całkowita |Liczba całkowita z zakresu od 1 do 65535 |`<port-number>` |`443` |
+| Porty kontenerów | Od 1 do 65535 |Integer |Liczba całkowita z zakresu od 1 do 65535 |`<port-number>` |`443` |
 | Etykieta nazwy DNS | 5-63 |Bez uwzględniania wielkości liter |Alfanumeryczne i łącznik wszędzie z wyjątkiem pierwszego lub ostatniego znaku |`<name>` |`frontend-site1` |
 | Zmienna środowiskowa | 1-63 |Bez uwzględniania wielkości liter |Znaki alfanumeryczne i znaki podkreślenia (_) wszędzie z wyjątkiem pierwszego lub ostatniego znaku |`<name>` |`MY_VARIABLE` |
 | Nazwa woluminu | 5-63 |Bez uwzględniania wielkości liter |Małe litery i cyfry oraz łączniki wszędzie z wyjątkiem pierwszego lub ostatniego znaku. Nie może zawierać dwóch kolejnych łączników. |`<name>` |`batch-output-volume` |
@@ -200,9 +202,28 @@ Ten błąd wskazuje, że ze względu na duże obciążenie w regionie, w którym
 
 Azure Container Instances nie ujawnia bezpośredniego dostępu do podstawowej infrastruktury, która hostuje grupy kontenerów. Obejmuje to dostęp do interfejsu API platformy Docker uruchomionego na hoście kontenera i uruchomionych kontenerów uprzywilejowanych. Jeśli wymagasz interakcji z platformą Docker, zapoznaj się z [dokumentacją usługi REST](https://aka.ms/aci/rest) , aby zobaczyć, co obsługuje interfejs API usługi ACI. Jeśli brakuje czegoś, Prześlij żądanie na [forach opinii ACI](https://aka.ms/aci/feedback).
 
-## <a name="ips-may-not-be-accessible-due-to-mismatched-ports"></a>Adresy IP mogą nie być dostępne ze względu na niezgodne porty
+## <a name="container-group-ip-address-may-not-be-accessible-due-to-mismatched-ports"></a>Adres IP grupy kontenerów może nie być dostępny ze względu na niezgodne porty
 
-Azure Container Instances obecnie nie obsługuje mapowania portów, takiego jak zwykła konfiguracja platformy Docker, jednak ta poprawka jest zawarta w planie. Jeśli okaże się, że adresy IP nie są dostępne, jeśli uważasz, że jest to konieczne, upewnij się, że skonfigurowano obraz kontenera do nasłuchiwania na tych samych portach, które zostały ujawnione w grupie kontenerów z `ports` właściwością.
+Azure Container Instances nie obsługuje jeszcze mapowania portów, takiego jak zwykła konfiguracja platformy Docker. Jeśli okaże się, że adres IP grupy kontenerów nie jest dostępny, jeśli uważasz, że jest to konieczne, upewnij się, że skonfigurowano obraz kontenera do nasłuchiwania na tych samych portach, `ports` które zostały ujawnione w grupie kontenerów z właściwością.
+
+Jeśli chcesz potwierdzić, że Azure Container Instances może nasłuchiwać na porcie skonfigurowanym w obrazie kontenera, przetestuj wdrożenie `aci-helloworld` obrazu, który udostępnia port. Uruchom `aci-helloworld` również aplikację, aby nasłuchiwać na porcie. `aci-helloworld`akceptuje opcjonalną zmienną `PORT` środowiskową, aby zastąpić domyślny port 80, na którym nasłuchuje. Na przykład, aby przetestować port 9000:
+
+1. Skonfiguruj grupę kontenerów, aby udostępnić port 9000 i przekazać numer portu jako wartość zmiennej środowiskowej:
+    ```azurecli
+    az container create --resource-group myResourceGroup \
+    --name mycontainer --image mcr.microsoft.com/azuredocs/aci-helloworld \
+    --ip-address Public --ports 9000 \
+    --environment-variables 'PORT'='9000'
+    ```
+1. Znajdź adres IP grupy kontenerów w danych wyjściowych `az container create`polecenia. Poszukaj wartości **IP**. 
+1. Po pomyślnym zainicjowaniu kontenera przejdź do adresu IP i portu aplikacji kontenera w przeglądarce, na przykład: `192.0.2.0:9000`. 
+
+    Powinna zostać wyświetlona wartość "Witamy w Azure Container Instances!" komunikat wyświetlany przez aplikację internetową.
+1. Po zakończeniu pracy z kontenerem usuń go przy użyciu `az container delete` polecenia:
+
+    ```azurecli
+    az container delete --resource-group myResourceGroup --name mycontainer
+    ```
 
 ## <a name="next-steps"></a>Następne kroki
 

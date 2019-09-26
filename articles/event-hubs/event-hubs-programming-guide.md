@@ -1,5 +1,5 @@
 ---
-title: Podręcznik programowania — usługa Azure Event Hubs | Dokumentacja firmy Microsoft
+title: Przewodnik programowania .NET — Azure Event Hubs | Microsoft Docs
 description: Ten artykuł zawiera informacje na temat sposobu pisanie kodu dla usługi Azure Event Hubs przy użyciu zestawu Azure .NET SDK.
 services: event-hubs
 documentationcenter: na
@@ -7,16 +7,16 @@ author: ShubhaVijayasarathy
 ms.service: event-hubs
 ms.custom: seodec18
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 09/25/2019
 ms.author: shvija
-ms.openlocfilehash: 28b5c2db0f347b27beb31d427c7f189d74903dff
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: c2e23c38abbec5fd0e6010bdfc0feca882a6180d
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70913978"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309831"
 ---
-# <a name="programming-guide-for-azure-event-hubs"></a>Przewodnik programowania dotyczący usługi Azure Event Hubs
+# <a name="net-programming-guide-for-azure-event-hubs"></a>Przewodnik programowania .NET dla platformy Azure Event Hubs
 W tym artykule omówiono kilka typowych scenariuszy, w pisaniu kodu za pomocą usługi Azure Event Hubs. Przyjęto założenie, że wstępnie znasz i rozumiesz usługę Event Hubs. Omówienie koncepcji usługi Event Hubs można znaleźć w temacie [Przegląd usługi Event Hubs](event-hubs-what-is-event-hubs.md).
 
 ## <a name="event-publishers"></a>Wydawcy zdarzeń

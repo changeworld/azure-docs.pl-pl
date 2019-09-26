@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.author: iainfou
-ms.openlocfilehash: e18f990885a25b7e130dfeb5a0a3425530ee11e6
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 81d20a973454db600d8be9ce036f001dd41784e7
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086584"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315005"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Zagadnienia dotyczące projektowania sieci wirtualnej i opcje konfiguracji Azure AD Domain Services
 
@@ -46,7 +46,7 @@ Domena zarządzana AD DS platformy Azure łączy się z podsiecią w sieci wirtu
 * Usługę Azure AD DS należy wdrożyć w jej własnej podsieci. Nie używaj istniejącej podsieci lub podsieci bramy.
 * Grupa zabezpieczeń sieci jest tworzona podczas wdrażania domeny zarządzanej AD DS platformy Azure. Ta sieciowa Grupa zabezpieczeń zawiera reguły wymagane do poprawnego komunikowania się z usługą.
     * Nie twórz ani nie używaj istniejącej sieciowej grupy zabezpieczeń z własnymi regułami niestandardowymi.
-* Usługa Azure AD DS wymaga od pięciu do siedmiu adresów IP. Upewnij się, że zakres adresów IP podsieci może podawać tę liczbę adresów.
+* Usługa Azure AD DS wymaga adresów IP 3-5. Upewnij się, że zakres adresów IP podsieci może podawać tę liczbę adresów.
     * Ograniczanie dostępnych adresów IP może uniemożliwić Azure AD Domain Services utrzymywanie dwóch kontrolerów domeny.
 
 Poniższy przykładowy diagram przedstawia prawidłowy projekt, w którym usługa Azure AD DS ma własną podsieć, jest podsiecią bramy dla łączności zewnętrznej, a obciążenia aplikacji znajdują się w podsieci w sieci wirtualnej:

@@ -11,35 +11,34 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/19/2019
+ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: adsolank
-ms.openlocfilehash: 8aa3082b15886234905edaebbbc9e1458bd7e3f8
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: d03c3a15d9bccf93b73d36302f986dffd95c6428
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "69015013"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309246"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Indeksowanie plików multimedialnych z Azure Media Indexer 2 wersja zapoznawcza
-## <a name="overview"></a>Omówienie
-Procesor **Azure Media Indexer 2 (wersja** zapoznawcza) umożliwia udostępnianie plików multimedialnych i zawartości, a także generowanie ścieżek napisów. W porównaniu do poprzedniej wersji [Azure Media Indexer](media-services-index-content.md), **Azure Media Indexer 2 wersja** zapoznawcza wykonuje szybsze indeksowanie i oferuje szersze wsparcie w zakresie języków. Obsługiwane języki to angielski, hiszpański, francuski, niemiecki, włoski, chiński (mandarynki, uproszczony), portugalski, arabski, rosyjski i japoński.
+
+> [!NOTE]
+> Procesor multimediów [Azure Media Indexer 2](media-services-process-content-with-indexer2.md) zostanie wycofany 1 stycznia 2020. [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) zastępuje ten starszy procesor nośnika. Aby uzyskać więcej informacji, zobacz [Migrowanie z Azure Media Indexer i Azure Media Indexer 2 do Azure Media Services Video Indexer](migrate-indexer-v1-v2.md).
+
+Procesor **Azure Media Indexer 2 (wersja zapoznawcza** ) umożliwia udostępnianie plików multimedialnych i zawartości, a także generowanie ścieżek napisów. W porównaniu do poprzedniej wersji [Azure Media Indexer](media-services-index-content.md), **Azure Media Indexer 2 wersja zapoznawcza** wykonuje szybsze indeksowanie i oferuje szersze wsparcie w zakresie języków. Obsługiwane języki to angielski, hiszpański, francuski, niemiecki, włoski, chiński (mandarynki, uproszczony), portugalski, arabski, rosyjski i japoński.
 
 Pakiet MP **Azure Media Indexer 2 w wersji** zapoznawczej jest obecnie w wersji zapoznawczej.
 
 W tym artykule przedstawiono sposób tworzenia zadań indeksowania przy użyciu **wersji Zapoznawczej Azure Media Indexer 2**.
 
-> [!NOTE]
-> Stosuje się następujące zagadnienia:
-> 
-> Indeksator 2 nie jest obsługiwany w Chinach i Azure Government platformy Azure.
-> 
-> Podczas indeksowania zawartości upewnij się, że używasz plików multimedialnych, które mają bardzo jasne mowę (bez muzyki w tle, szumu, efektów lub HISS mikrofonu). Oto kilka przykładów odpowiedniej zawartości: zarejestrowane spotkania, wykłady lub prezentacje. Następująca zawartość może nie być odpowiednia do indeksowania: filmy, programy telewizyjne, wszystko z mieszaniem dźwięku i dYwiękiem, źle zarejestrowano zawartość z hałasem w tle (HISS).
-> 
-> 
+## <a name="considerations"></a>Zagadnienia do rozważenia
 
-Ten artykuł zawiera szczegółowe informacje na temat **Azure Media Indexer 2 w wersji** zapoznawczej i pokazuje, jak używać go z zestawem SDK Media Services dla platformy .NET
-
+Stosuje się następujące zagadnienia:
+ 
+* Indeksator 2 nie jest obsługiwany w przypadku usług 21Vianet i Azure Government platformy Azure w Chinach.
+* Podczas indeksowania zawartości upewnij się, że używasz plików multimedialnych, które mają bardzo jasne mowę (bez muzyki w tle, szumu, efektów lub HISS mikrofonu). Oto kilka przykładów odpowiedniej zawartości: zarejestrowane spotkania, wykłady lub prezentacje. Następująca zawartość może nie być odpowiednia do indeksowania: filmy, programy telewizyjne, wszystko z mieszaniem dźwięku i dYwiękiem, źle zarejestrowano zawartość z hałasem w tle (HISS).
+ 
 ## <a name="input-and-output-files"></a>Pliki wejściowe i wyjściowe
 ### <a name="input-files"></a>Pliki wejściowe
 Pliki audio lub wideo

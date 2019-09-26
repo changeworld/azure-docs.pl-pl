@@ -10,23 +10,23 @@ ms.reviewer: klam
 ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: 3b2cfc932c6322df8237ec7cdf820fc4242bfa72
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 48e03f41fa0a39642330288fc05ef709179b4c62
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60532010"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300990"
 ---
 # <a name="create-and-schedule-your-first-job-with-azure-scheduler---azure-portal"></a>Tworzenie i planowanie swojego pierwszego zadania przy użyciu usługi Azure Scheduler — Azure Portal
 
 > [!IMPORTANT]
-> Usługa [Azure Logic Apps](../logic-apps/logic-apps-overview.md) zastępuje usługę Azure Scheduler, która zostanie wycofana. Zamiast niej [spróbuj używać usługi Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) do planowania zadań. 
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) zastępuje usługę Azure Scheduler, która jest [wycofywana](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Aby kontynuować pracę z zadaniami skonfigurowanymi w usłudze Scheduler, [Przeprowadź migrację do Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) najszybciej, jak to możliwe.
 
 Ten samouczek pokazuje, jak łatwo można utworzyć i zaplanować zadanie, a następnie monitorować je i zarządzać nim. 
 
 Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>.
 
-## <a name="create-job"></a>Tworzenie zadania
+## <a name="create-job"></a>Utwórz zadanie
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).  
 
@@ -93,7 +93,7 @@ Aby uzyskać więcej informacji na temat tych obszarów wybierz obszar:
 
 <a name="properties"></a>
 
-### <a name="properties"></a>Właściwości
+### <a name="properties"></a>properties
 
 Aby wyświetlić właściwości tylko do odczytu, które opisują metadane dotyczące zarządzania zadaniem, wybierz pozycję **Właściwości**.
 
@@ -144,7 +144,7 @@ Aby wyświetlić szczegóły historii dla każdego uruchomienia, np. pełną odp
 
 Możesz zarządzać dostępem do usługi Azure Scheduler dla każdego użytkownika na poziomie szczegółowym za pomocą kontroli dostępu na podstawie ról (RBAC) platformy Azure. Aby dowiedzieć się, jak skonfigurować dostęp oparty na rolach, zobacz [Zarządzanie dostępem przy użyciu kontroli RBAC](../role-based-access-control/role-assignments-portal.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Dowiedz się więcej o [pojęciach, terminologii i hierarchii jednostek](scheduler-concepts-terms.md)
 * [Tworzenie złożonych i zaawansowanych harmonogramów cyklicznych](scheduler-advanced-complexity.md)

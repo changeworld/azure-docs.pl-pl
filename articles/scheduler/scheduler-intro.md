@@ -10,17 +10,17 @@ ms.reviewer: klam
 ms.assetid: 52aa6ae1-4c3d-43fb-81b0-6792c84bcfae
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: 21204e85adf1c68264ea448360c9e1120567ef3f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2f418a78f80d65cbb784685804a4cc6790c28b99
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60530912"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300903"
 ---
 # <a name="what-is-azure-scheduler"></a>Co to jest usługa Azure Scheduler?
 
 > [!IMPORTANT]
-> Usługa [Azure Logic Apps](../logic-apps/logic-apps-overview.md) zastępuje usługę Azure Scheduler, która zostanie wycofana. Do planowania zadań [spróbuj używać usługi Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) zastępuje usługę Azure Scheduler, która jest [wycofywana](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Aby kontynuować pracę z zadaniami skonfigurowanymi w usłudze Scheduler, [Przeprowadź migrację do Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) najszybciej, jak to możliwe.
 
 Usługa [Azure Scheduler](https://azure.microsoft.com/services/scheduler/) pomaga w tworzeniu [zadań](../scheduler/scheduler-concepts-terms.md), które są uruchamiane w chmurze przez deklaratywne opisanie akcji. Usługa następnie automatycznie planuje i uruchamia te akcje. Można np. wywoływać usługi na platformie Azure i poza nią, np. przez wywołanie punktów końcowych HTTP lub HTTPS, jak również publikować komunikaty w kolejkach usługi Azure Storage i kolejkach lub tematach usługi Azure Service Bus. Zadania można uruchamiać natychmiast lub w późniejszym czasie. Usługa Scheduler umożliwia prostą obsługę [złożonych harmonogramów i zaawansowanych cykli](../scheduler/scheduler-advanced-complexity.md). Usługa Scheduler określa, kiedy uruchamiać zadania, przechowuje historię wyników zadania, którą można przeglądać, a następnie w sposób przewidywalny i niezawodny planuje obciążenia do uruchomienia.
 
@@ -36,7 +36,7 @@ Poniżej przedstawiono kilka scenariuszy, w których może być przydatna usług
 
   Na przykład jako administrator możesz tworzyć kopię zapasową bazy danych codziennie o godzinie 1:00 przez następne dziewięć miesięcy.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Rozpoczynanie pracy z usługą Scheduler w witrynie Azure portal](scheduler-get-started-portal.md)
 * Dowiedz się więcej o [planach i rozliczeniach dla usługi Azure Scheduler](scheduler-plans-billing.md)

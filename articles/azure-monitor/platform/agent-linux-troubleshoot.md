@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 2922bbd2e85a671cd17b6042c0b544d3936de884
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 732c93688dbc73cb5a4ce21e4669744be61c5925
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262106"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299566"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Jak rozwiązywać problemy związane z agenta usługi Log Analytics dla systemu Linux 
 
@@ -51,7 +51,7 @@ Jeśli żadna z powyższych czynności działa, następujących kanałów pomocy
 
  >[!NOTE]
  >Edycja plików konfiguracji, licznikach wydajności i Syslog jest zastępowany, jeśli kolekcja jest skonfigurowana z [danych menu Zaawansowane ustawienia usługi Analiza dzienników](../../azure-monitor/platform/agent-data-sources.md#configuring-data-sources) w witrynie Azure portal dla obszaru roboczego. Aby wyłączyć konfigurację dla wszystkich agentów, należy wyłączyć kolekcji z usługą Log Analytics **Zaawansowane ustawienia** lub jednego agenta, uruchom następujące polecenie:  
-> `sudo su omsagent -c /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable`
+> `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
 
 ## <a name="installation-error-codes"></a>Kody błędów instalacji
 

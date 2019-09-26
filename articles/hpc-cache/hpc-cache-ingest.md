@@ -4,18 +4,18 @@ description: Jak wypełnić usługę Azure Blob Storage do użycia z pamięcią 
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 09/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: 103470861383ff411cfaa670d70412086045a418
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: c18e1c9afab211a8ac076307eefc9074ae7c99d6
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180723"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299993"
 ---
-# <a name="move-data-to-azure-blob-storage-for-azure-hpc-cache-preview"></a>Przenoszenie danych do usługi Azure Blob Storage dla usługi Azure HPC cache (wersja zapoznawcza)
+# <a name="move-data-to-azure-blob-storage"></a>Przenoszenie danych do usługi Azure Blob Storage
 
-Jeśli przepływ pracy zawiera przeniesienie danych do usługi Azure Blob Storage, upewnij się, że korzystasz z wydajnej strategii do kopiowania danych za pośrednictwem pamięci podręcznej platformy Azure HPC.
+Jeśli przepływ pracy zawiera przeniesienie danych do usługi Azure Blob Storage, upewnij się, że korzystasz z wydajnej strategii. Można wstępnie załadować dane w nowym kontenerze obiektów BLOB przed zdefiniowaniem go jako obiekt docelowy magazynu lub dodać kontener, a następnie skopiować dane za pomocą usługi Azure HPC cache.
 
 W tym artykule opisano najlepsze sposoby przenoszenia danych do magazynu obiektów BLOB w celu użycia z pamięcią podręczną platformy Azure HPC.
 
@@ -23,7 +23,7 @@ Należy pamiętać o następujących faktach:
 
 * Pamięć podręczna Azure HPC używa wyspecjalizowanego formatu magazynu do organizowania danych w usłudze BLOB Storage. Dlatego obiekt docelowy magazynu obiektów BLOB musi być nowym, pustym kontenerem lub kontenerem obiektów BLOB poprzednio używanym do przechowywania danych w pamięci podręcznej platformy Azure HPC. ([Avere vFXT for Azure](https://azure.microsoft.com/services/storage/avere-vfxt/) używa również tego systemu plików w chmurze).
 
-* Kopiowanie danych za pomocą pamięci podręcznej platformy Azure HPC jest najlepszym rozwiązaniem w przypadku korzystania z wielu klientów i operacji równoległych. Proste polecenie copy z jednego klienta spowoduje spowolnienie przenoszenia danych.
+* Kopiowanie danych za pomocą pamięci podręcznej platformy Azure HPC do miejsca docelowego magazynu zaplecza jest wydajniejsze w przypadku korzystania z wielu klientów i operacji równoległych. Proste polecenie copy z jednego klienta spowoduje spowolnienie przenoszenia danych.
 
 Narzędzie oparte na języku Python jest dostępne do załadowania zawartości do kontenera magazynu obiektów BLOB. Zapoznaj się ze [wstępnie załadowanymi danymi w magazynie obiektów BLOB](#pre-load-data-in-blob-storage-with-clfsload) , aby dowiedzieć się więcej.
 
@@ -41,7 +41,7 @@ Szczegółowe informacje znajdują się w dystrybucji CLFSLoad avere, która jes
 
 Ogólny przegląd procesu:
 
-1. Przygotuj system Linux (maszyna wirtualna lub fizyczna) przy użyciu języka Python w wersji 3,6 lub nowszej. (W celu uzyskania lepszej wydajności zalecamy środowisko Python 3,7).
+1. Przygotuj system Linux (maszyna wirtualna lub fizyczna) przy użyciu języka Python w wersji 3,6 lub nowszej. Środowisko Python 3,7 jest zalecane w celu zapewnienia lepszej wydajności.
 1. Zainstaluj oprogramowanie avere-CLFSLoad w systemie Linux.
 1. Wykonaj transfer z wiersza polecenia systemu Linux.
 
@@ -50,7 +50,7 @@ Narzędzie avere CLFSLoad potrzebuje następujących informacji:
 * Identyfikator konta magazynu, który zawiera kontener magazynu obiektów BLOB
 * Nazwa pustego kontenera magazynu obiektów BLOB
 * Token sygnatury dostępu współdzielonego (SAS), który umożliwia narzędziu zapis do kontenera
-* Ścieżka lokalna do źródła danych — katalog lokalny zawierający dane do skopiowania lub ścieżka lokalna do zainstalowanego systemu zdalnego z danymi.
+* Ścieżka lokalna do źródła danych — katalog lokalny zawierający dane do skopiowania lub ścieżka lokalna do zainstalowanego systemu zdalnego z danymi
 
 <!-- The requirements are explained in detail in the [Avere CLFSLoad readme](https://aka.ms/avere-clfsload). -->
 

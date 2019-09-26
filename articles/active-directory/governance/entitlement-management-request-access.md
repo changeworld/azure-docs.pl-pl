@@ -16,12 +16,12 @@ ms.date: 04/19/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b5be74b0734a27b02030e2c6995b43ef0c02162
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 0c8a96a4557a500bd4726b8df44ada5df328b7c3
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562127"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71290886"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Zażądaj dostępu do pakietu dostępu w usłudze Azure AD uprawnień do zarządzania (wersja zapoznawcza)
 
@@ -40,9 +40,9 @@ Pierwszym krokiem jest zalogowanie się w portalu do mojego dostępu, w którym 
 
 **Rola wymagana wstępnie:** Żądający
 
-1. Poszukaj wiadomości e-mail lub wiadomości z programu Project lub Business Manager, z którym pracujesz. Wiadomość e-mail powinna zawierać link do pakietu dostępu, do którego będzie potrzebny dostęp. Link rozpocznie się z:
-
-    `https://myaccess.microsoft.com`
+1. Poszukaj wiadomości e-mail lub wiadomości z programu Project lub Business Manager, z którym pracujesz. Wiadomość e-mail powinna zawierać link do pakietu dostępu, do którego będzie potrzebny dostęp. Link rozpocznie się z "dostępem do", obejmuje wskazówkę katalogu i kończy się identyfikatorem pakietu dostępu podobnym do poniższego:
+ 
+    `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 
 1. Otwórz link.
 
@@ -63,7 +63,7 @@ Po znalezieniu pakietu dostępu w portalu dostępu można przesłać żądanie.
 
     ![Portal dostępu — dostęp — pakiety](./media/entitlement-management-shared/my-access-access-packages.png)
 
-1. Kliknij pozycję Zażądaj **dostępu** , aby otworzyć okienko żądania dostępu.
+1. Kliknij pozycję **Zażądaj dostępu** , aby otworzyć okienko żądania dostępu.
 
 1. Jeśli zostanie wyświetlone pole **uzasadnienie biznesowe** , wpisz uzasadnienie dostępu.
 
@@ -81,7 +81,7 @@ Po znalezieniu pakietu dostępu w portalu dostępu można przesłać żądanie.
 
 ## <a name="cancel-a-request"></a>Anuluj żądanie
 
-W przypadku przesyłania żądania dostępu, gdy żądanie jest nadal w stanie **oczekiwania** na zatwierdzenie, można anulować żądanie.
+W przypadku przesyłania żądania dostępu, gdy żądanie jest nadal w stanie **oczekiwania na zatwierdzenie** , można anulować żądanie.
 
 **Rola wymagana wstępnie:** Żądający
 
@@ -89,7 +89,7 @@ W przypadku przesyłania żądania dostępu, gdy żądanie jest nadal w stanie *
 
 1. Kliknij link **Wyświetl** dla żądania, które chcesz anulować.
 
-1. Jeśli żądanie jest nadal w stanie **oczekiwania** na zatwierdzenie, możesz kliknąć przycisk **Anuluj żądanie** , aby anulować żądanie.
+1. Jeśli żądanie jest nadal w stanie **oczekiwania na zatwierdzenie** , możesz kliknąć przycisk **Anuluj żądanie** , aby anulować żądanie.
 
     ![Portal dostępu — Anuluj żądanie](./media/entitlement-management-request-access/my-access-cancel-request.png)
 

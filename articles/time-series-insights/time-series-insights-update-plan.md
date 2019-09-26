@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 72d98e0ca4f75835e7dcc2e7a14b037ccf0d6d7f
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 6141f898a33b4b37c2a1f16e115b184e21163a5a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840545"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300696"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Planowanie środowiska Azure Time Series Insights w wersji zapoznawczej
 
@@ -28,7 +28,7 @@ W tym artykule opisano najlepsze rozwiązania dotyczące szybkiego planowania i 
 
 Aby rozpocząć pracę z Time Series Insights, najlepiej zrozumieć następujące informacje:
 
-* Co otrzymujesz po [udostępnieniu środowiska Time Series Insights w wersji](#the-preview-environment)zapoznawczej.
+* Co otrzymujesz po [udostępnieniu środowiska Time Series Insights w wersji zapoznawczej](#the-preview-environment).
 * Jakie [są identyfikatory szeregów czasowych i właściwości sygnatur czasowych](#configure-time-series-ids-and-timestamp-properties).
 * Nowy [model szeregów czasowych](#understand-the-time-series-model)i sposób tworzenia własnych.
 * Jak [efektywnie wysyłać zdarzenia w formacie JSON](#shape-your-events).

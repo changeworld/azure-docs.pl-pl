@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 3c21c0bdce6f6a5cd3c8f634bf400600b30a8ead
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 5a7e7fa011c0287d5e97ad7a8cd2e3ba77f298dd
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414594"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299847"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>Tworzenie i Inicjowanie obsługi urządzenia IoT Edge przy użyciu zaświadczania klucza symetrycznego
 
@@ -100,11 +100,14 @@ Po utworzeniu rejestracji w usłudze DPS mają okazję do deklarowania **począt
 
    1. Wybierz pozycję **Zapisz**.
 
-Teraz, gdy istnieje Rejestracja dla tego urządzenia, środowisko uruchomieniowe IoT Edge może automatycznie zainicjować obsługę administracyjną urządzenia podczas instalacji. Należy pamiętać, aby skopiować wartość **klucza podstawowego** rejestracji do użycia podczas tworzenia klucza urządzenia.
+Teraz, gdy istnieje Rejestracja dla tego urządzenia, środowisko uruchomieniowe IoT Edge może automatycznie zainicjować obsługę administracyjną urządzenia podczas instalacji. Skopiuj wartość **klucza podstawowego** rejestracji, która ma być używana podczas instalowania środowiska uruchomieniowego IoT Edge, lub jeśli chcesz utworzyć klucze urządzeń do użycia z rejestracją grupy.
 
 ## <a name="derive-a-device-key"></a>Utwórz klucz urządzenia
 
-Urządzenie używa pochodnego klucza urządzenia z unikatowym IDENTYFIKATORem rejestracji w celu przeprowadzenia zaświadczania klucza symetrycznego z rejestracją podczas aprowizacji. Aby wygenerować klucz urządzenia, użyj klucza skopiowanego z rejestracji usługi DPS w celu obliczenia [algorytmu HMAC-SHA256](https://wikipedia.org/wiki/HMAC) unikatowego identyfikatora rejestracji dla urządzenia i Przekształć wynik w formacie base64.
+> [!NOTE]
+> Ta sekcja jest wymagana tylko w przypadku korzystania z rejestracji grupowej.
+
+Każde urządzenie używa pochodnego klucza urządzenia z unikatowym IDENTYFIKATORem rejestracji w celu przeprowadzenia zaświadczania klucza symetrycznego z rejestracją podczas aprowizacji. Aby wygenerować klucz urządzenia, użyj klucza skopiowanego z rejestracji usługi DPS w celu obliczenia [algorytmu HMAC-SHA256](https://wikipedia.org/wiki/HMAC) unikatowego identyfikatora rejestracji dla urządzenia i Przekształć wynik w formacie base64.
 
 Nie uwzględniaj klucza podstawowego lub pomocniczego rejestracji w kodzie urządzenia.
 
@@ -159,7 +162,10 @@ Podczas aprowizacji urządzenia potrzebne są następujące informacje:
 
 * Wartość **zakresu identyfikatora** DPS
 * Utworzony **Identyfikator rejestracji** urządzenia
-* Klucz urządzenia pochodnego urządzenia na potrzeby zaświadczania klucza symetrycznego
+* **Klucz podstawowy** skopiowany z rejestracji usługi DPS
+
+> [!TIP]
+> W przypadku rejestracji grup wymagany jest [klucz pochodny](#derive-a-device-key) każdego urządzenia, a nie klucz rejestracji usługi DPS.
 
 ### <a name="linux-device"></a>Urządzenie z systemem Linux
 
@@ -235,6 +241,6 @@ iotedge list
 
 Możesz sprawdzić, czy została użyta Rejestracja indywidualna utworzona w usłudze Device Provisioning. Przejdź do wystąpienia usługi Device Provisioning w Azure Portal. Otwórz szczegóły rejestracji dla utworzonej rejestracji indywidualnej. Zwróć uwagę, że jest **przypisany** stan rejestracji i identyfikator urządzenia jest wyświetlany.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Proces rejestracji usługi Device Provisioning pozwala ustawić identyfikator urządzenia i tagów bliźniaczych reprezentacji urządzeń w tym samym czasie, jak aprowizować nowe urządzenie. Pod kątem poszczególnych urządzeń lub grup urządzeń za pomocą urządzenia automatycznego zarządzania, można użyć tych wartości. Dowiedz się, jak [monitora usługi IoT Edge modułów na skalowanie przy użyciu witryny Azure portal i wdróż](how-to-deploy-monitor.md) lub [przy użyciu wiersza polecenia platformy Azure](how-to-deploy-monitor-cli.md).

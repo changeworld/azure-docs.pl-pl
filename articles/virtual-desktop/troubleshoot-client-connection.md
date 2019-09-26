@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: helohr
-ms.openlocfilehash: 4f325d9fc512fd9f6776fcd799b720aaf60ce472
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c6c7a57a2093445d3922f9349242c9a902df7370
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876764"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300720"
 ---
 # <a name="remote-desktop-client-connections"></a>Połączenia klienta pulpitu zdalnego
 
@@ -152,6 +152,11 @@ Postępuj zgodnie z tymi ogólnymi instrukcjami dotyczącymi rozwiązywania prob
 **Może** Maszyny wirtualne, z którymi użytkownik próbuje nawiązać połączenie, nie są przyłączone do domeny.
 
 **Wiązane** Dołącz wszystkie maszyny wirtualne, które są częścią puli hostów, do kontrolera domeny.
+
+### <a name="error-connectionfailedusersidinformationmismatch"></a>Błąd: ConnectionFailedUserSIDInformationMismatch
+**Może** Identyfikator SID z tokenu Azure Active Directory użytkownika (AD) nie jest zgodny z identyfikatorem SID zwróconym przez kontroler domeny podczas próby włączenia użytkownika do zdalnego logowania. Ten błąd zazwyczaj występuje podczas próby zalogowania się do środowiska Azure Active Directory Domain Services (Azure AD DS) przy użyciu użytkownika pierwotnie źródłowego z usługi AD systemu Windows Server.
+
+**Wiązane** Ten scenariusz nie jest obecnie obsługiwany. Tylko użytkownicy zarejestrowani z Azure Active Directory mogą logować się do maszyn wirtualnych z systemem Windows, które są połączone z usługą Azure AD DS.
 
 ## <a name="user-connects-but-nothing-is-displayed-no-feed"></a>Użytkownik nawiązuje połączenie, ale nic nie jest wyświetlane (brak źródła danych)
 

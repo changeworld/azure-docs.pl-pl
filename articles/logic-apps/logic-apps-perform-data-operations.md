@@ -10,12 +10,12 @@ manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: 1b0a7473f1cdfb6aa3533b261979da7c18605a16
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 9271a659e18ab969e801fd8974b05984e11e783c
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179762"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309388"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Wykonywanie operacji na danych w Azure Logic Apps
 
@@ -175,55 +175,93 @@ Jeśli wolisz pracować w edytorze widoku kodu, możesz skopiować przykład **t
 
 ### <a name="customize-table-format"></a>Dostosuj Format tabeli
 
-Domyślnie właściwość **Columns** jest ustawiona na automatyczne tworzenie kolumn tabeli na podstawie elementów tablicy. 
-
-Aby określić niestandardowe nagłówki i wartości, wykonaj następujące kroki:
+Domyślnie właściwość **Columns** jest ustawiona na automatyczne tworzenie kolumn tabeli na podstawie elementów tablicy. Aby określić niestandardowe nagłówki i wartości, wykonaj następujące kroki:
 
 1. Otwórz listę **kolumny** i wybierz pozycję **niestandardowe**.
 
 1. We właściwości **nagłówka** Określ niestandardowy tekst nagłówka, który ma być używany.
 
-1. We właściwości **klucza** Określ wartość niestandardową, która ma zostać użyta.
+1. We właściwości **Value (wartość** ) Określ wartość niestandardową, która ma zostać użyta.
 
-Aby przywołać i edytować wartości z tablicy, można użyć `@item()` funkcji w definicji JSON akcji **tworzenia tabeli CSV** .
+Aby zwrócić wartości z tablicy, można użyć [ `item()` funkcji](../logic-apps/workflow-definition-language-functions-reference.md#item) z akcją **Utwórz tabelę CSV** . W pętli można użyć [ `items()` funkcji.](../logic-apps/workflow-definition-language-functions-reference.md#items) `For_each`
 
-1. Na pasku narzędzi projektanta wybierz **Widok kod**. 
-
-1. W edytorze kodu, Edytuj `inputs` sekcję akcji, aby dostosować dane wyjściowe tabeli w żądany sposób.
-
-Ten przykład zwraca tylko wartości kolumn, a nie nagłówki z `columns` tablicy przez `header` ustawienie właściwości na wartość pustą i wyłuskanie każdej `value` właściwości:
-
-```json
-"Create_CSV_table": {
-   "inputs": {
-      "columns": [
-         { 
-            "header": "",
-            "value": "@item()?['Description']"
-         },
-         { 
-            "header": "",
-            "value": "@item()?['Product_ID']"
-         }
-      ],
-      "format": "CSV",
-      "from": "@variables('myJSONArray')"
-   }
-}
-```
-
-Oto wynik zwracany przez ten przykład:
+Załóżmy na przykład, że chcesz, aby kolumny tabeli miały tylko wartości właściwości, a nie nazwy właściwości z tablicy. Aby zwrócić tylko te wartości, wykonaj następujące kroki w widoku projektanta lub w widoku kodu. Oto wynik zwracany przez ten przykład:
 
 ```text
-Results from Create CSV table action:
-
 Apples,1
 Oranges,2
 ```
 
-W projektancie Akcja **Utwórz tabelę CSV** zostanie teraz wyświetlona w następujący sposób:
+#### <a name="work-in-designer-view"></a>Pracuj w widoku projektanta
 
-!["Utwórz tabelę CSV" bez nagłówków kolumn](./media/logic-apps-perform-data-operations/create-csv-table-no-column-headers.png)
+W akcji Zachowaj pustą kolumnę **nagłówka** . W każdym wierszu w kolumnie **Value** odwołuje się do każdej potrzebnej właściwości tablicy. Każdy wiersz w obszarze **wartość** zwraca wszystkie wartości dla określonej właściwości tablicy i zostaje kolumną w tabeli.
+
+1. W obszarze **wartość**w każdym wierszu, który chcesz, kliknij wewnątrz pola edycji, aby wyświetlić listę zawartości dynamicznej.
+
+1. Z listy zawartość dynamiczna wybierz pozycję **wyrażenie**.
+
+1. W edytorze wyrażeń wprowadź to wyrażenie, które określa żądaną wartość właściwości tablicy, a następnie wybierz **przycisk OK**.
+
+   `item()?['<array-property-name>']`
+
+   Na przykład:
+
+   * `item()?['Description']`
+   * `item()?['Product_ID']`
+
+   ![Wyrażenie, aby usunąć odwołanie do właściwości](./media/logic-apps-perform-data-operations/csv-table-expression.png)
+
+1. Powtórz poprzednie kroki dla każdej potrzebnej właściwości tablicy. Gdy skończysz, Twoja akcja będzie wyglądać następująco:
+
+   ![Gotowe wyrażenia](./media/logic-apps-perform-data-operations/finished-csv-expression.png)
+
+1. Aby rozwiązać wyrażenia do bardziej opisowych wersji, przełącz się do widoku kodu i wróć do widoku projektanta, a następnie ponownie otwórz zwiniętej akcji:
+
+   Akcja **Utwórz tabelę CSV** będzie teraz wyglądać następująco:
+
+   ![Akcja "Utwórz tabelę CSV" z rozpoznanymi wyrażeniami i bez nagłówków](./media/logic-apps-perform-data-operations/resolved-csv-expression.png)
+
+#### <a name="work-in-code-view"></a>Pracuj w widoku kodu
+
+W definicji `columns` json akcji w tablicy `header` ustaw właściwość na pusty ciąg. Dla każdej `value` właściwości należy odwoływać się do każdej właściwości tablicy, która ma zostać wybrana.
+
+1. Na pasku narzędzi projektanta wybierz **Widok kod**.
+
+1. W edytorze kodu w `columns` tablicy akcji Dodaj pustą `header` Właściwość i to `value` wyrażenie dla każdej kolumny wartości tablicy, które chcesz:
+
+   ```json
+   {
+      "header": "",
+      "value": "@item()?['<array-property-name>']"
+   }
+   ```
+
+   Na przykład:
+
+   ```json
+   "Create_CSV_table": {
+      "inputs": {
+         "columns": [
+            { 
+               "header": "",
+               "value": "@item()?['Description']"
+            },
+            { 
+               "header": "",
+               "value": "@item()?['Product_ID']"
+            }
+         ],
+         "format": "CSV",
+         "from": "@variables('myJSONArray')"
+      }
+   }
+   ```
+
+1. Przełącz się z powrotem do widoku projektanta i ponownie otwórz zwiniętej akcji.
+
+   Akcja **Utwórz tabelę CSV** będzie teraz wyświetlana jak w tym przykładzie, a wyrażenia zostały rozwiązane z bardziej opisowymi wersjami:
+
+   ![Akcja "Utwórz tabelę CSV" z rozpoznanymi wyrażeniami i bez nagłówków](./media/logic-apps-perform-data-operations/resolved-csv-expression.png)
 
 Aby uzyskać więcej informacji na temat tej akcji w źródłowej definicji przepływu pracy, zobacz [Akcja tabeli](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action).
 
@@ -288,55 +326,93 @@ Jeśli wolisz pracować w edytorze widoku kodu, możesz skopiować przykładowe 
 
 ### <a name="customize-table-format"></a>Dostosuj Format tabeli
 
-Domyślnie właściwość **Columns** jest ustawiona na automatyczne tworzenie kolumn tabeli na podstawie elementów tablicy. 
-
-Aby określić niestandardowe nagłówki i wartości, wykonaj następujące kroki:
+Domyślnie właściwość **Columns** jest ustawiona na automatyczne tworzenie kolumn tabeli na podstawie elementów tablicy. Aby określić niestandardowe nagłówki i wartości, wykonaj następujące kroki:
 
 1. Otwórz listę **kolumny** i wybierz pozycję **niestandardowe**.
 
 1. We właściwości **nagłówka** Określ niestandardowy tekst nagłówka, który ma być używany.
 
-1. We właściwości **klucza** Określ wartość niestandardową, która ma zostać użyta.
+1. We właściwości **Value (wartość** ) Określ wartość niestandardową, która ma zostać użyta.
 
-Aby przywołać i edytować wartości z tablicy, można użyć `@item()` funkcji w definicji JSON akcji **tworzenia tabeli HTML** .
+Aby zwrócić wartości z tablicy, można użyć [ `item()` funkcji](../logic-apps/workflow-definition-language-functions-reference.md#item) z akcją **Utwórz tabelę HTML** . W pętli można użyć [ `items()` funkcji.](../logic-apps/workflow-definition-language-functions-reference.md#items) `For_each`
 
-1. Na pasku narzędzi projektanta wybierz **Widok kod**. 
-
-1. W edytorze kodu, Edytuj `inputs` sekcję akcji, aby dostosować dane wyjściowe tabeli w żądany sposób.
-
-Ten przykład zwraca tylko wartości kolumn, a nie nagłówki z `columns` tablicy przez `header` ustawienie właściwości na wartość pustą i wyłuskanie każdej `value` właściwości:
-
-```json
-"Create_HTML_table": {
-   "inputs": {
-      "columns": [
-         { 
-            "header": "",
-            "value": "@item()?['Description']"
-         },
-         { 
-            "header": "",
-            "value": "@item()?['Product_ID']"
-         }
-      ],
-      "format": "HTML",
-      "from": "@variables('myJSONArray')"
-   }
-}
-```
-
-Oto wynik zwracany przez ten przykład:
+Załóżmy na przykład, że chcesz, aby kolumny tabeli miały tylko wartości właściwości, a nie nazwy właściwości z tablicy. Aby zwrócić tylko te wartości, wykonaj następujące kroki w widoku projektanta lub w widoku kodu. Oto wynik zwracany przez ten przykład:
 
 ```text
-Results from Create HTML table action:
-
-Apples    1
-Oranges   2
+Apples,1
+Oranges,2
 ```
 
-W projektancie Akcja **Utwórz tabelę HTML** będzie teraz wyglądać następująco:
+#### <a name="work-in-designer-view"></a>Pracuj w widoku projektanta
 
-!["Utwórz tabelę HTML" bez nagłówków kolumn](./media/logic-apps-perform-data-operations/create-html-table-no-column-headers.png)
+W akcji Zachowaj pustą kolumnę **nagłówka** . W każdym wierszu w kolumnie **Value** odwołuje się do każdej potrzebnej właściwości tablicy. Każdy wiersz w obszarze **wartość** zwraca wszystkie wartości dla określonej właściwości i zostaje kolumną w tabeli.
+
+1. W obszarze **wartość**w każdym wierszu, który chcesz, kliknij wewnątrz pola edycji, aby wyświetlić listę zawartości dynamicznej.
+
+1. Z listy zawartość dynamiczna wybierz pozycję **wyrażenie**.
+
+1. W edytorze wyrażeń wprowadź to wyrażenie, które określa żądaną wartość właściwości tablicy, a następnie wybierz **przycisk OK**.
+
+   `item()?['<array-property-name>']`
+
+   Na przykład:
+
+   * `item()?['Description']`
+   * `item()?['Product_ID']`
+
+   ![Wyrażenie, aby usunąć odwołanie do właściwości](./media/logic-apps-perform-data-operations/html-table-expression.png)
+
+1. Powtórz poprzednie kroki dla każdej potrzebnej właściwości tablicy. Gdy skończysz, Twoja akcja będzie wyglądać następująco:
+
+   ![Gotowe wyrażenia](./media/logic-apps-perform-data-operations/finished-html-expression.png)
+
+1. Aby rozwiązać wyrażenia do bardziej opisowych wersji, przełącz się do widoku kodu i wróć do widoku projektanta, a następnie ponownie otwórz zwiniętej akcji:
+
+   Akcja **Utwórz tabelę HTML** będzie teraz wyglądać następująco:
+
+   ![Akcja "Utwórz tabelę HTML" z rozpoznanymi wyrażeniami i bez nagłówków](./media/logic-apps-perform-data-operations/resolved-html-expression.png)
+
+#### <a name="work-in-code-view"></a>Pracuj w widoku kodu
+
+W definicji `columns` json akcji w tablicy `header` ustaw właściwość na pusty ciąg. Dla każdej `value` właściwości należy odwoływać się do każdej właściwości tablicy, która ma zostać wybrana.
+
+1. Na pasku narzędzi projektanta wybierz **Widok kod**.
+
+1. W edytorze kodu w `columns` tablicy akcji Dodaj pustą `header` Właściwość i to `value` wyrażenie dla każdej kolumny wartości tablicy, które chcesz:
+
+   ```json
+   {
+      "header": "",
+      "value": "@item()?['<array-property-name>']"
+   }
+   ```
+
+   Na przykład:
+
+   ```json
+   "Create_HTML_table": {
+      "inputs": {
+         "columns": [
+            { 
+               "header": "",
+               "value": "@item()?['Description']"
+            },
+            { 
+               "header": "",
+               "value": "@item()?['Product_ID']"
+            }
+         ],
+         "format": "HTML",
+         "from": "@variables('myJSONArray')"
+      }
+   }
+   ```
+
+1. Przełącz się z powrotem do widoku projektanta i ponownie otwórz zwiniętej akcji.
+
+   Akcja **Utwórz tabelę HTML** będzie teraz wyświetlana jak w tym przykładzie, a wyrażenia zostały rozwiązane z bardziej opisowymi wersjami:
+
+   ![Akcja "Utwórz tabelę HTML" z rozpoznanymi wyrażeniami i bez nagłówków](./media/logic-apps-perform-data-operations/resolved-html-expression.png)
 
 Aby uzyskać więcej informacji na temat tej akcji w źródłowej definicji przepływu pracy, zobacz [Akcja tabeli](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action).
 

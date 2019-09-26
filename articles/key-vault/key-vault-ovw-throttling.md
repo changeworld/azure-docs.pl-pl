@@ -3,18 +3,18 @@ title: Wskazówki dotyczące ograniczania usługi Azure Key Vault
 description: Ograniczania usługi Key Vault ogranicza liczbę równoczesnych wywołań, aby zapobiec nadmiernemu zużyciu zasobów.
 services: key-vault
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 tags: ''
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 06b96ac6ea0202b74638b9331d754c0e0cc28ad0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f10f40551701cafd94692afc0916972b1fd73aff
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64695242"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883048"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Wskazówki dotyczące ograniczania usługi Azure Key Vault
 
@@ -31,7 +31,7 @@ Jeśli masz biznesowe przypadku wyższych limitów ograniczania przepływności,
 
 ## <a name="how-to-throttle-your-app-in-response-to-service-limits"></a>Jak ograniczyć aplikację w odpowiedzi na limity usługi
 
-Poniżej przedstawiono **najlepsze praktyki** powinny implementować, gdy jest ograniczany usługi:
+Poniżej przedstawiono **najlepsze rozwiązania** , które należy zaimplementować w przypadku dławienia usługi:
 - Zmniejsz liczbę operacji na żądanie.
 - Zmniejsz częstotliwość żądań.
 - Należy unikać bezpośredniego ponownych prób. 
@@ -112,7 +112,7 @@ Poniżej przedstawiono kod, który implementuje wykładniczego wycofywania.
 ```
 
 
-Przy użyciu tego kodu w kliencie C\# aplikacji jest bardzo proste. W poniższym przykładzie przedstawiono sposób używania klasy HttpClient.
+Użycie tego kodu w aplikacji klient C\# jest proste. Poniższy przykład pokazuje, jak za pomocą klasy HttpClient.
 
 ```csharp
 public async Task<Cart> GetCartItems(int page)
@@ -131,7 +131,7 @@ public async Task<Cart> GetCartItems(int page)
 }
 ```
 
-Należy pamiętać, że ten kod nadaje się tylko jako weryfikacji koncepcji. 
+Należy pamiętać, że ten kod jest odpowiedni tylko jako Weryfikacja koncepcji. 
 
 ### <a name="recommended-client-side-throttling-method"></a>Zalecana metoda ograniczania przepływności po stronie klienta
 

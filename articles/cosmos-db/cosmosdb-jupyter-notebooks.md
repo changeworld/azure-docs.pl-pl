@@ -6,16 +6,18 @@ ms.topic: overview
 ms.date: 09/22/2019
 author: rimman
 ms.author: rimman
-ms.openlocfilehash: 57df9e0bd6f359a45333fcde51c51f49321fec9e
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 8389cd4d73c5c5d881dcc32c688a59b86895a3e2
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213880"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309551"
 ---
 # <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db"></a>Wbudowana obsługa notesów Jupyter w Azure Cosmos DB
 
 Jupyter Notes to aplikacja sieci Web Open Source, która umożliwia tworzenie i udostępnianie dokumentów zawierających kod na żywo, równania, wizualizacje i tekst opisowy. Azure Cosmos DB obsługuje wbudowane notesy Jupyter dla wszystkich interfejsów API, takich jak Cassandra, MongoDB, SQL, Gremlin i Table. Wbudowana obsługa notesów dla wszystkich Azure Cosmos DB interfejsów API i modeli danych pozwala interaktywnie uruchamiać zapytania. Notesy Jupyter są uruchamiane na kontach usługi Azure Cosmos i umożliwiają deweloperom wykonywanie eksploracji danych, czyszczenie danych, Przekształcanie danych, symulacje liczbowe, modelowanie statystyczne, wizualizację danych i uczenie maszynowe.
+
+![Wizualizacje notesów Jupyter w Azure Cosmos DB](./media/cosmosdb-jupyter-notebooks/cosmos-notebooks-overview.png)
 
 Notesy Jupyter obsługują funkcje Magic, które zwiększają możliwości jądra dzięki obsłudze dodatkowych poleceń. Cosmos Magic to polecenie, które rozszerza możliwości jądra języka Python w notesie Jupyter, dzięki czemu można uruchamiać zapytania interfejsu API usługi Azure Cosmos SQL oprócz Apache Spark. Za pomocą zaawansowanych bibliotek wizualizacji, które są zintegrowane z poleceniami renderowania, można łatwo łączyć zapytania języka Python i interfejsu API SQL w celu wykonywania zapytań i wizualizacji danych.
 Azure Portal natywnie integruje środowisko notesu Jupyter z kontami usługi Azure Cosmos, jak pokazano na poniższej ilustracji:
@@ -56,9 +58,8 @@ Notesy Jupyter mogą zawierać kilka typów składników, które są zorganizowa
 
 Aby rozpocząć pracę z wbudowanymi notesami Jupyter w Azure Cosmos DB Zobacz następujące artykuły:
 
-* [Jak utworzyć Notes]()
-* [Jak zainstalować zależności w notesie]()
-* [Jak używać notesu i rozszerzenia Cosmos Magic do analizowania danych]()
+* [Włącz Notesy na koncie usługi Azure Cosmos](enable-notebooks.md)
+* [Korzystanie z funkcji i poleceń notesu](use-notebook-features-and-commands.md)
 
 
 

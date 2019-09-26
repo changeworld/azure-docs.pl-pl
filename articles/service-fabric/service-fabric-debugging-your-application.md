@@ -1,6 +1,6 @@
 ---
-title: Debugowanie aplikacji w programie Visual Studio | Dokumentacja firmy Microsoft
-description: Zwiększ niezawodność i wydajność usługi, opracowywania i debugowania ich w programie Visual Studio na lokalny klaster projektowy.
+title: Debugowanie aplikacji w programie Visual Studio | Microsoft Docs
+description: Zwiększ niezawodność i wydajność usług, opracowując i debugując je w programie Visual Studio w lokalnym klastrze projektowym.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -15,136 +15,143 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 682059914b5d86f5e670e373a4acf3e4ac6246ba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b9ab36343dd11bdb5bd7cc1adcf2c8b1b971dab3
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66428211"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300679"
 ---
-# <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Debugowanie aplikacji usługi Service Fabric przy użyciu programu Visual Studio
+# <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Debugowanie aplikacji Service Fabric przy użyciu programu Visual Studio
 > [!div class="op_single_selector"]
 > * [Visual Studio/CSharp](service-fabric-debugging-your-application.md) 
 > * [Eclipse/Java](service-fabric-debugging-your-application-java.md)
 >
 
 
-## <a name="debug-a-local-service-fabric-application"></a>Debugowanie lokalne aplikacji usługi Service Fabric
-Przez wdrożenie i profilowanie aplikacji usługi Azure Service Fabric w klastrze programowania komputera lokalnego, można zaoszczędzić czas i pieniądze. Visual Studio 2019 lub 2015 można wdrożyć aplikację w klastrze lokalnym i automatycznego łączenia debugera do wszystkich wystąpień aplikacji. Visual Studio, należy uruchomić jako Administrator, aby połączyć z debugera.
+## <a name="debug-a-local-service-fabric-application"></a>Debugowanie lokalnej aplikacji Service Fabric
+Możesz zaoszczędzić czas i pieniądze, wdrażając i debugując aplikację Service Fabric platformy Azure w klastrze tworzenia komputerów lokalnych. Program Visual Studio 2019 lub 2015 może wdrożyć aplikację w klastrze lokalnym i automatycznie połączyć debuger ze wszystkimi wystąpieniami aplikacji. Program Visual Studio musi być uruchomiony jako administrator, aby podłączyć debuger.
 
-1. Uruchom lokalny klaster projektowy, wykonując kroki opisane w [Konfigurowanie środowiska deweloperskiego usługi Service Fabric](service-fabric-get-started.md).
-2. Naciśnij klawisz **F5** lub kliknij przycisk **debugowania** > **Rozpocznij debugowanie**.
+1. Uruchom lokalny klaster programistyczny, wykonując czynności opisane w sekcji [Konfigurowanie środowiska deweloperskiego Service Fabric](service-fabric-get-started.md).
+2. Naciśnij klawisz **F5** lub kliknij pozycję **Debuguj** > **Rozpocznij debugowanie**.
    
     ![Rozpocznij debugowanie aplikacji][startdebugging]
-3. Ustawianie punktów przerwania w kodzie i kroku za pośrednictwem aplikacji, klikając przycisk polecenia w **debugowania** menu.
+3. Ustaw punkty przerwania w kodzie i przechodząc przez aplikację, klikając polecenie polecenia w menu **Debuguj** .
    
    > [!NOTE]
-   > Program Visual Studio dołącza do wszystkich wystąpień aplikacji. Gdy jesteś wykonywanie kodu, punkty przerwania napotkać pobieranie przez wiele procesów skutkuje równoczesnych sesji. Spróbuj wyłączyć punkty przerwania, po ich one trafień, dokonując uwarunkowany identyfikator wątku każdego punktu przerwania lub za pomocą zdarzeń diagnostycznych.
+   > Program Visual Studio dołącza do wszystkich wystąpień aplikacji. Podczas wykonywania kroków wykonywanych przez kod punkty przerwania mogą trafiać przez wiele procesów, co prowadzi do równoczesnych sesji. Spróbuj wyłączyć punkty przerwania, gdy zostaną one trafione, przez nadanie każdemu punktowi przerwania na identyfikator wątku lub przy użyciu zdarzeń diagnostycznych.
    > 
    > 
-4. **Zdarzenia diagnostyczne** automatycznie zostanie otwarte okno, aby można było wyświetlić zdarzeń diagnostycznych w czasie rzeczywistym.
+4. Okno **zdarzenia diagnostyczne** zostanie automatycznie otwarte, aby można było wyświetlać zdarzenia diagnostyczne w czasie rzeczywistym.
    
     ![Wyświetlanie zdarzeń diagnostycznych w czasie rzeczywistym][diagnosticevents]
-5. Możesz również otworzyć **zdarzenia diagnostyczne** okna w programie Cloud Explorer.  W obszarze **usługi Service Fabric**, kliknij prawym przyciskiem myszy dowolny węzeł i wybierz polecenie **ślady przesyłania strumieniowego widoku**.
+5. Możesz również otworzyć okno **zdarzeń diagnostycznych** w programie Cloud Explorer.  W obszarze **Service Fabric**kliknij prawym przyciskiem myszy dowolny węzeł i wybierz polecenie **Wyświetl ślady przesyłania strumieniowego**.
    
     ![Otwórz okno zdarzeń diagnostycznych][viewdiagnosticevents]
    
-    Jeśli chcesz filtrować swoje informacje śledzenia do określonej usługi lub aplikacji, należy włączyć przesyłania strumieniowego danych śledzenia dla tej określonej usługi lub aplikacji.
-6. Zdarzenia diagnostyczne są widoczne w automatycznie wygenerowany **ServiceEventSource.cs** pliku i jest wywoływana przez kod aplikacji.
+    Jeśli chcesz filtrować ślady do określonej usługi lub aplikacji, Włącz śledzenie przesyłania strumieniowego dla tej konkretnej usługi lub aplikacji.
+6. Zdarzenia diagnostyczne mogą być widoczne w automatycznie wygenerowanym pliku **ServiceEventSource.cs** i są wywoływane z kodu aplikacji.
    
     ```csharp
     ServiceEventSource.Current.ServiceMessage(this, "My ServiceMessage with a parameter {0}", result.Value.ToString());
     ```
-7. **Zdarzenia diagnostyczne** okna obsługuje filtrowanie, wstrzymywania i inspekcja zdarzeń w czasie rzeczywistym.  Filtr jest prosty ciąg wyszukiwania wiadomości zdarzeń, w tym jego zawartość.
+7. Okno **zdarzeń diagnostycznych** obsługuje filtrowanie, wstrzymywanie i sprawdzanie zdarzeń w czasie rzeczywistym.  Filtr jest prostym wyszukiwaniem ciągu komunikatu o zdarzeniu, w tym jego zawartości.
    
-    ![Filtrowanie, wstrzymać i wznowić lub sprawdzić zdarzenia w czasie rzeczywistym][diagnosticeventsactions]
-8. Debugowanie usług jest podobne do debugowania innych aplikacji. Łatwe debugowanie, będzie zwykle ustawić punkty przerwania, za pomocą programu Visual Studio. Mimo że elementów Reliable Collections replikacja w wielu węzłach, nadal implementować interfejs IEnumerable. Ta implementacja oznacza, że można użyć widoku wyników w programie Visual Studio podczas debugowania, aby zobaczyć, co to jest zapisany, wewnątrz. Aby to zrobić, należy ustawić punkt przerwania dowolnym miejscu w kodzie.
+    ![Filtrowanie, wstrzymywanie i wznawianie oraz Inspekcja zdarzeń w czasie rzeczywistym][diagnosticeventsactions]
+8. Usługi debugowania przypominają debugowanie dowolnej innej aplikacji. Zwykle ustawisz punkty przerwania za poorednictwem programu Visual Studio, aby ułatwić debugowanie. Mimo że niezawodne kolekcje są replikowane w wielu węzłach, nadal implementują interfejs IEnumerable. Ta implementacja oznacza, że możesz użyć widoku wyników w programie Visual Studio podczas debugowania, aby zobaczyć, co jest przechowywane w. Aby to zrobić, należy ustawić punkt przerwania w dowolnym miejscu w kodzie.
    
     ![Rozpocznij debugowanie aplikacji][breakpoint]
 
+
+### <a name="running-a-script-as-part-of-debugging"></a>Uruchamianie skryptu w ramach debugowania
+W niektórych scenariuszach może być konieczne uruchomienie skryptu w ramach uruchamiania sesji debugowania (np. gdy nie są używane domyślne usługi).
+
+W programie Visual Studio można dodać plik o nazwie **Start-Service. ps1** w folderze **skryptów** projektu aplikacji Service Fabric (. sfproj). Ten skrypt zostanie wywołany po utworzeniu aplikacji w klastrze lokalnym.
+
+
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
-## <a name="debug-a-remote-service-fabric-application"></a>Debugowanie zdalnej aplikacji usługi Service Fabric
-Jeśli aplikacje usługi Service Fabric są uruchomione w klastrze usługi Service Fabric na platformie Azure, możesz zdalnie debugować te aplikacje, bezpośrednio z programu Visual Studio.
+## <a name="debug-a-remote-service-fabric-application"></a>Debugowanie zdalnej aplikacji Service Fabric
+Jeśli Service Fabric aplikacje są uruchomione w klastrze Service Fabric na platformie Azure, można zdalnie debugować te aplikacje bezpośrednio z programu Visual Studio.
 
 > [!NOTE]
-> Ta funkcja wymaga [usługi Service Fabric SDK 2.0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) i [zestawu Azure SDK dla platformy .NET 2.9](https://azure.microsoft.com/downloads/).    
+> Ta funkcja wymaga [Service Fabric zestawu sdk 2,0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) i [zestawu Azure SDK dla programu .NET 2,9](https://azure.microsoft.com/downloads/).    
 > 
 > 
 
 <!-- -->
 > [!WARNING]
-> Zdalne debugowanie jest przeznaczona dla scenariuszy deweloperskich lub testowych i nie może być używane w środowisku produkcyjnym ze względu na wpływ na uruchamianie aplikacji.
+> Debugowanie zdalne jest przeznaczone do scenariuszy deweloperskich i testowych i nie może być używane w środowiskach produkcyjnych, ponieważ ma to wpływ na uruchomione aplikacje.
 > 
 > 
 
-1. Przejdź do klastra w **programu Cloud Explorer**. Kliknij prawym przyciskiem myszy i wybierz polecenie **włączenia debugowania**
+1. Przejdź do klastra w programie **Cloud Explorer**. Kliknij prawym przyciskiem myszy i wybierz polecenie **Włącz debugowanie**
    
-    ![Włączanie debugowania zdalnego][enableremotedebugging]
+    ![Włącz debugowanie zdalne][enableremotedebugging]
    
-    Ta akcja będzie uruchamiał proces włączania zdalnego debugowania rozszerzenia na węzłach klastra i konfiguracji sieci wymagane.
-2. Kliknij prawym przyciskiem myszy węzeł klastra w **programu Cloud Explorer**i wybierz polecenie **dołączanie debugera**
+    Ta akcja spowoduje rozpoczęcie procesu włączania rozszerzenia zdalnego debugowania w węzłach klastra i wymaganych konfiguracjach sieci.
+2. Kliknij prawym przyciskiem myszy węzeł klastra w programie **Cloud Explorer**i wybierz polecenie **Dołącz debuger**
    
     ![Dołącz debuger][attachdebugger]
-3. W **dołączyć do procesu** okno dialogowe, wybierz proces, którego chcesz debugować, a następnie kliknij przycisk **dołączania**
+3. W oknie dialogowym **Dołącz do procesu** wybierz proces, który chcesz debugować, a następnie kliknij przycisk **Dołącz** .
    
     ![Wybierz proces][chooseprocess]
    
-    Nazwa procesu, który chcesz dołączyć, jest równa nazwa Twojej nazwy zestawu projektu usługi.
+    Nazwa procesu, który chcesz dołączyć, jest równa nazwie zestawu projektu usługi.
    
-    Debuger ma być dołączone do wszystkich węzłów, w którym jest uruchomiony proces.
+    Debuger zostanie dołączony do wszystkich węzłów, na których jest uruchomiony proces.
    
-   * W przypadku, gdy debugujesz usługę bezstanową wszystkie wystąpienia usługi we wszystkich węzłach są częścią sesji debugowania.
-   * Jeśli debugujesz usługi stanowej repliki podstawowej dowolnej partycji zostanie uaktywniony i w związku z tym przechwycony przez debuger. Jeśli replika podstawowa przesuwa się podczas sesji debugowania, przetwarzanie tej repliki bazy danych nadal będzie częścią sesji debugowania.
-   * Aby przechwytywać tylko odpowiednie partycje lub wystąpieniami danej usługi, warunkowe punkty przerwania służy tylko przerwanie określonej partycji lub wystąpienia.
+   * W przypadku debugowania usługi bezstanowej wszystkie wystąpienia usługi we wszystkich węzłach są częścią sesji debugowania.
+   * Jeśli debugujesz usługę stanową, tylko replika podstawowa dowolnej partycji będzie aktywna, więc zostanie przechwycona przez debuger. Jeśli replika podstawowa przenoszona podczas sesji debugowania, przetwarzanie tej repliki będzie nadal częścią sesji debugowania.
+   * Aby przechwytywać tylko odpowiednie partycje lub wystąpienia danej usługi, można użyć punktów przerwania warunkowego, aby przerwać tylko określoną partycję lub wystąpienie.
      
-     ![Warunkowego punktu przerwania][conditionalbreakpoint]
+     ![Warunkowy punkt przerwania][conditionalbreakpoint]
      
      > [!NOTE]
-     > Obecnie nie obsługujemy debugowania klaster usługi Service Fabric z wieloma wystąpieniami tej samej nazwy pliku wykonywalnego usługi.
+     > Obecnie nie obsługujemy debugowania klastra Service Fabric z wieloma wystąpieniami tej samej nazwy pliku wykonywalnego usługi.
      > 
      > 
-4. Po zakończeniu wprowadzania zmian do debugowania aplikacji, klikając prawym przyciskiem myszy klaster, można wyłączyć zdalnego debugowania rozszerzenia **programu Cloud Explorer** i wybierz polecenie **Wyłącz debugowanie**
+4. Po zakończeniu debugowania aplikacji można wyłączyć rozszerzenie debugowania zdalnego, klikając prawym przyciskiem myszy klaster w programie **Cloud Explorer** i wybierając polecenie **Wyłącz debugowanie** .
    
     ![Wyłącz debugowanie zdalne][disableremotedebugging]
 
-## <a name="streaming-traces-from-a-remote-cluster-node"></a>Przesyłanie strumieniowe danych śledzenia z węzła klastra zdalnego
-Możesz również w ramach strumienia danych śledzenia bezpośrednio z poziomu węzła klastra zdalnego programu Visual Studio. Ta funkcja umożliwia strumienia zdarzeń śledzenia funkcji ETW, utworzone w węźle klastra usługi Service Fabric.
+## <a name="streaming-traces-from-a-remote-cluster-node"></a>Ślady przesyłania strumieniowego z węzła klastra zdalnego
+Istnieje również możliwość strumieniowego przesyłania śladów bezpośrednio z węzła klastra zdalnego do programu Visual Studio. Ta funkcja umożliwia przesyłanie strumieniowe zdarzeń śledzenia funkcji ETW utworzonych w węźle klastra Service Fabric.
 
 > [!NOTE]
-> Ta funkcja wymaga [usługi Service Fabric SDK 2.0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) i [zestawu Azure SDK dla platformy .NET 2.9](https://azure.microsoft.com/downloads/).
-> Ta funkcja obsługuje tylko klastrów działających na platformie Azure.
+> Ta funkcja wymaga [Service Fabric zestawu sdk 2,0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) i [zestawu Azure SDK dla programu .NET 2,9](https://azure.microsoft.com/downloads/).
+> Ta funkcja obsługuje tylko klastry działające na platformie Azure.
 > 
 > 
 
 <!-- -->
 > [!WARNING]
-> Przesyłanie strumieniowe danych śledzenia jest przeznaczona dla scenariuszy deweloperskich lub testowych i nie może być używane w środowisku produkcyjnym ze względu na wpływ na uruchamianie aplikacji.
-> W scenariuszu produkcji będą miały funkcji przekazywania zdarzeń za pomocą usługi Azure Diagnostics.
+> Ślady przesyłania strumieniowego są przeznaczone dla scenariuszy deweloperskich i testowych i nie mogą być używane w środowiskach produkcyjnych, ponieważ mają wpływ na uruchomione aplikacje.
+> W scenariuszu produkcyjnym należy polegać na zdarzeniach przekazywania przy użyciu Diagnostyka Azure.
 > 
 > 
 
-1. Przejdź do klastra w **programu Cloud Explorer**. Kliknij prawym przyciskiem myszy i wybierz polecenie **Włączanie przesyłania strumieniowego danych śledzenia**
+1. Przejdź do klastra w programie **Cloud Explorer**. Kliknij prawym przyciskiem myszy i wybierz opcję **Włącz śledzenie przesyłania strumieniowego**
    
     ![Włącz zdalne ślady przesyłania strumieniowego][enablestreamingtraces]
    
-    Ta akcja będzie uruchamiał proces włączania przesyłania strumieniowego rozszerzenia ślady na węzłach klastra oraz konfiguracji sieci wymagane.
-2. Rozwiń **węzłów** element **Eksploratora chmury**, kliknij prawym przyciskiem myszy węzeł, aby śladów ze strumienia, a następnie wybierz **wyświetlanie śladów przesyłania strumieniowego**
+    Ta akcja spowoduje rozpoczęcie procesu włączania rozszerzenia śladów przesyłania strumieniowego w węzłach klastra, a także wymaganych konfiguracji sieci.
+2. Rozwiń węzeł **węzła** w programie **Cloud Explorer**, kliknij prawym przyciskiem myszy węzeł, z którego chcesz przesyłać strumieniowo ślady, a następnie wybierz polecenie **Wyświetl ślady przesyłania strumieniowego**
    
-    ![Wyświetl zdalnego, przesyłanie strumieniowe danych śledzenia][viewremotestreamingtraces]
+    ![Wyświetl zdalne ślady przesyłania strumieniowego][viewremotestreamingtraces]
    
-    Powtórz krok 2 dla dowolną liczbę węzłów wyświetlić ślady z. Każdego strumienia węzłów pojawią się w dedykowanym oknie.
+    Powtórz krok 2 dla tylu węzłów, z których chcesz zobaczyć ślady. Każdy strumień węzłów zostanie wyświetlony w dedykowanym oknie.
    
-    Teraz jesteś w stanie wyświetlić ślady wyemitowane przez usługi Service Fabric i usługi. Jeśli chcesz filtrować zdarzenia, aby wyświetlić tylko określonej aplikacji, po prostu wpisz nazwę aplikacji w filtrze.
+    Teraz można zobaczyć ślady emitowane przez Service Fabric i usługi. Jeśli chcesz filtrować zdarzenia w celu wyświetlenia tylko określonej aplikacji, po prostu wpisz nazwę aplikacji w filtrze.
    
-    ![Wyświetlanie, przesyłanie strumieniowe danych śledzenia][viewingstreamingtraces]
-3. Po zakończeniu przesyłania strumieniowego ślady z klastrem, możesz wyłączyć zdalnego ślady przesyłania strumieniowego, klikając prawym przyciskiem myszy klaster **programu Cloud Explorer** i wybierz polecenie **wyłączyć ślady przesyłania strumieniowego**
+    ![Wyświetlanie śladów przesyłania strumieniowego][viewingstreamingtraces]
+3. Po zakończeniu przesyłania strumieniowego z klastra można wyłączyć zdalne ślady przesyłania strumieniowego, klikając prawym przyciskiem myszy klaster w programie **Cloud Explorer** i wybierając pozycję **Wyłącz ślady przesyłania strumieniowego**
    
     ![Wyłącz zdalne ślady przesyłania strumieniowego][disablestreamingtraces]
 
-## <a name="next-steps"></a>Kolejne kroki
-* [Testowanie usługi Service Fabric](service-fabric-testability-overview.md).
-* [Zarządzaj aplikacjami usługi Service Fabric w programie Visual Studio](service-fabric-manage-application-in-visual-studio.md).
+## <a name="next-steps"></a>Następne kroki
+* [Przetestuj usługę Service Fabric](service-fabric-testability-overview.md).
+* [Zarządzaj aplikacjami Service Fabric w programie Visual Studio](service-fabric-manage-application-in-visual-studio.md).
 
 <!--Image references-->
 [startdebugging]: ./media/service-fabric-debugging-your-application/startdebugging.png

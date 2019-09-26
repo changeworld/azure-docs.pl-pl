@@ -8,40 +8,40 @@ author: derek1ee
 ms.author: deli
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 09/20/2018
-ms.openlocfilehash: 0225a9f34e016a4b1de51c06ba982d384e41007c
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.date: 09/23/2019
+ms.openlocfilehash: 6b80cbd16ac78f7f347bef9ab8e22c4d67d31058
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302084"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71301042"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Migrowanie zadań usługi Azure Scheduler do Azure Logic Apps
 
 > [!IMPORTANT]
-> Azure Logic Apps zastępuje usługę Azure Scheduler, która jest wycofywana. W celu zaplanowania zadań postępuj zgodnie z tym artykułem, aby przenieść się do Azure Logic Apps zamiast tego.
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) zastępuje usługę Azure Scheduler, która jest [wycofywana](#retire-date). Aby kontynuować pracę z zadaniami skonfigurowanymi w usłudze Scheduler, przejdź do Azure Logic Apps najszybciej, jak to możliwe, zgodnie z tym artykułem.
 
 W tym artykule pokazano, jak można zaplanować jednorazowe i cykliczne zadania, tworząc zautomatyzowane przepływy pracy za pomocą Azure Logic Apps, a nie za pomocą usługi Azure Scheduler. Podczas tworzenia zaplanowanych zadań z Logic Apps uzyskasz następujące korzyści:
 
-* Nie musisz martwić się o koncepcję *kolekcji zadań* , ponieważ każda aplikacja logiki jest osobnym zasobem platformy Azure.
+* Kompiluj zadanie przy użyciu projektanta wizualnego i [gotowych do użycia łączników](../connectors/apis-list.md) z setek usług, takich jak Azure Blob Storage, Azure Service Bus, Office 365 Outlook i SAP.
 
-* Można uruchomić wiele jednorazowych zadań przy użyciu pojedynczej aplikacji logiki.
+* Zarządzaj każdym zaplanowanym przepływem pracy jako pierwszym klasą zasobów platformy Azure. Nie musisz martwić się o koncepcję *kolekcji zadań* , ponieważ każda aplikacja logiki jest poszczególnym zasobem platformy Azure.
 
-* Usługa Azure Logic Apps obsługuje strefę czasową i oszczędność czasu letniego (DST).
+* Uruchamianie wielu jednorazowych zadań przy użyciu pojedynczej aplikacji logiki.
+
+* Ustawianie harmonogramów, które obsługują strefy czasowe i automatycznie dostosowują się do czasu letniego (DST).
 
 Aby dowiedzieć się więcej, zobacz [co to jest Azure Logic Apps?](../logic-apps/logic-apps-overview.md) lub spróbuj utworzyć swoją pierwszą aplikację logiki w tym przewodniku szybki start: [Utwórz swoją pierwszą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>.
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
 
 * Aby wyzwolić aplikację logiki przez wysyłanie żądań HTTP, użyj narzędzia, takiego jak [aplikacja dla aplikacji klasycznych](https://www.getpostman.com/apps).
 
 ## <a name="schedule-one-time-jobs"></a>Planowanie zadań jednorazowych
 
 Można uruchomić wiele jednorazowych zadań, tworząc tylko jedną aplikację logiki. 
-
-### <a name="create-your-logic-app"></a>Tworzenie aplikacji logiki
 
 1. W [Azure Portal](https://portal.azure.com)Utwórz pustą aplikację logiki w Projektancie aplikacji logiki. 
 
@@ -100,12 +100,12 @@ Można uruchomić wiele jednorazowych zadań, tworząc tylko jedną aplikację l
 
 Aby ręcznie uruchomić lub wyzwolić jednorazowe zadanie, Wyślij wywołanie do adresu URL punktu końcowego dla wyzwalacza żądania aplikacji logiki. W tym wywołaniu Określ dane wejściowe lub ładunki do wysłania, które można wcześniej opisać, określając schemat. 
 
-Na przykład przy użyciu aplikacji post można utworzyć żądanie POST z ustawieniami podobnymi do tego przykładu, a następnie wybrać polecenie Wyślij, aby **wysłać** żądanie.
+Na przykład przy użyciu aplikacji post można utworzyć żądanie POST z ustawieniami podobnymi do tego przykładu, a następnie wybrać pozycję Wyślij, aby **przesłać** żądanie.
 
 | Metoda żądania | URL | Treść | Nagłówki |
-|----------------|-----|------|---------| 
-| **POST** | <*endpoint-URL*> | **surowców** <p>**JSON (Application/JSON)** <p>W polu **nieprzetworzony** wprowadź ładunek, który ma zostać wysłany w żądaniu. <p>**Uwaga**: To ustawienie powoduje automatyczne skonfigurowanie wartości **nagłówków** . | **Klucz**: Content-Type <br>**Wartość**: Application/JSON
- |||| 
+|----------------|-----|------|---------|
+| **POST** | <*endpoint-URL*> | **surowców** <p>**JSON (Application/JSON)** <p>W polu **RAW** wprowadź ładunek, który ma zostać wysłany w żądaniu. <p>**Uwaga**: To ustawienie powoduje automatyczne skonfigurowanie wartości **nagłówków** . | **Klucz**: Content-Type <br>**Wartość**: Application/JSON |
+|||||
 
 ![Wyślij żądanie ręcznego wyzwalania aplikacji logiki](./media/migrate-from-scheduler-to-logic-apps/postman-send-post-request.png)
 
@@ -125,8 +125,6 @@ W Logic Apps każde zadanie jednorazowe wykonuje jako pojedyncze wystąpienie ur
 
 ## <a name="schedule-recurring-jobs"></a>Planowanie zadań cyklicznych
 
-### <a name="create-your-logic-app"></a>Tworzenie aplikacji logiki
-
 1. W [Azure Portal](https://portal.azure.com)Utwórz pustą aplikację logiki w Projektancie aplikacji logiki. 
 
    Aby uzyskać podstawowe kroki, skorzystaj [z przewodnika Szybki Start: Utwórz swoją pierwszą aplikację](../logic-apps/quickstart-create-first-logic-app-workflow.md)logiki.
@@ -139,7 +137,7 @@ W Logic Apps każde zadanie jednorazowe wykonuje jako pojedyncze wystąpienie ur
 
    ![Harmonogram zaawansowany](./media/migrate-from-scheduler-to-logic-apps/recurrence-advanced-schedule.png)
 
-   Aby uzyskać więcej informacji na temat zaawansowanych opcji planowania, zobacz [Tworzenie i uruchamianie cyklicznych zadań i przepływów pracy za pomocą Azure Logic Apps](../connectors/connectors-native-recurrence.md)
+   Aby uzyskać więcej informacji na temat zaawansowanych opcji planowania, zobacz [Tworzenie i uruchamianie cyklicznych zadań i przepływów pracy za pomocą Azure Logic Apps](../connectors/connectors-native-recurrence.md).
 
 1. Dodaj inne żądane akcje, wybierając spośród [setek gotowych do użycia](../connectors/apis-list.md). W obszarze wyzwalacza wybierz pozycję **Następny krok**. Znajdź i wybierz żądane akcje.
 
@@ -159,11 +157,11 @@ Oto inne sposoby dostosowywania zadań.
 
 Aby kontrolować sposób, w jaki akcja podejmuje próbę ponownego uruchomienia w aplikacji logiki w przypadku wystąpienia sporadycznych awarii, można ustawić [zasady ponawiania](../logic-apps/logic-apps-exception-handling.md#retry-policies) w ustawieniach każdej akcji, na przykład:
 
-1. Otwórz menu akcji ( **...** ), a następnie wybierz pozycję **Ustawienia**.
+1. Otwórz menu wielokropka akcji ( **...** ), a następnie wybierz pozycję **Ustawienia**.
 
    ![Otwórz ustawienia akcji](./media/migrate-from-scheduler-to-logic-apps/action-settings.png)
 
-1. Wybierz żądane zasady ponawiania. Aby uzyskać więcej informacji na temat każdej z zasad, zobacz [zasady ponawiania](../logic-apps/logic-apps-exception-handling.md#retry-policies).
+1. Wybierz odpowiednie zasady ponawiania. Aby uzyskać więcej informacji na temat każdej z zasad, zobacz [zasady ponawiania](../logic-apps/logic-apps-exception-handling.md#retry-policies).
 
    ![Wybierz zasady ponawiania](./media/migrate-from-scheduler-to-logic-apps/retry-policy.png)
 
@@ -171,7 +169,7 @@ Aby kontrolować sposób, w jaki akcja podejmuje próbę ponownego uruchomienia 
 
 Jeśli nie uda się uruchomić akcji domyślnej w usłudze Azure Scheduler, można uruchomić akcję alterative, która odnosi się do warunku błędu. W Azure Logic Apps można także wykonać to samo zadanie.
 
-1. W Projektancie aplikacji logiki, nad akcją, którą chcesz obsłużyć, Przenieś wskaźnik myszy nad strzałkę między krokami, a następnie wybierz i **Dodaj gałąź równoległą**. 
+1. W Projektancie aplikacji logiki, nad akcją, którą chcesz obsłużyć, Przenieś wskaźnik myszy nad strzałkę między krokami, a następnie wybierz pozycję **Dodaj gałąź równoległą**. 
 
    ![Dodaj gałąź równoległą](./media/migrate-from-scheduler-to-logic-apps/add-parallel-branch.png)
 
@@ -179,7 +177,7 @@ Jeśli nie uda się uruchomić akcji domyślnej w usłudze Azure Scheduler, moż
 
    ![Dodaj równoległą akcję](./media/migrate-from-scheduler-to-logic-apps/add-parallel-action.png)
 
-1. W akcji alternatywnej Otwórz menu ( **...** ), a następnie wybierz pozycję **Konfiguruj Uruchom po**.
+1. W akcji alternatywnej Otwórz menu wielokropka ( **...** ), a następnie wybierz pozycję **Skonfiguruj przebieg po**.
 
    ![Skonfiguruj przebieg po](./media/migrate-from-scheduler-to-logic-apps/configure-run-after.png)
 
@@ -193,13 +191,13 @@ Aby dowiedzieć się więcej o obsłudze wyjątków, zobacz temat [Obsługa bł�
 
 ## <a name="faq"></a>Często zadawane pytania
 
-<a name="retire-date"></a> 
+<a name="retire-date"></a>
 
 **P**: Kiedy trwa wycofywanie usługi Azure Scheduler? <br>
-**Odp.:** Usługa Azure Scheduler została zaplanowana do wycofania 30 września 2019.
+**Odp.:** Usługa Azure Scheduler została zaplanowana w pełni w dniu 31 grudnia 2019. Aby zapoznać się z ważnymi krokami, które należy wykonać przed tą datą i szczegółowa oś czasu, zobacz [rozszerzanie daty wycofania usługi Scheduler do 31 grudnia 2019](https://azure.microsoft.com/en-us/updates/extending-retirement-date-of-scheduler/). Aby uzyskać ogólne aktualizacje, zobacz [Azure Updates-Scheduler](https://azure.microsoft.com/updates/?product=scheduler).
 
-**P**: Co się stanie z moimi kolekcjami zadań i zadaniami usługi Scheduler? <br>
-**Odp.:** Wszystkie kolekcje zadań i zadania usługi Scheduler zostaną usunięte z systemu.
+**P**: Co się stanie z moimi kolekcjami zadań i zadaniami po zakończeniu usługi? <br>
+**Odp.:** Wszystkie kolekcje zadań i zadania usługi Scheduler przestają działać i są usuwane z systemu.
 
 **P**: Czy muszę wykonać kopię zapasową lub wykonać inne zadania przed migracją zadań harmonogramu do Logic Apps? <br>
 **Odp.:** Najlepszym rozwiązaniem jest zawsze Tworzenie kopii zapasowej pracy. Przed usunięciem lub wyłączaniem zadań harmonogramu należy sprawdzić, czy utworzone aplikacje logiki działają zgodnie z oczekiwaniami. 
@@ -216,13 +214,13 @@ Jeśli Twoja subskrypcja platformy Azure ma płatny Plan pomocy technicznej, mo�
 
 1. W menu głównym [Azure Portal](https://portal.azure.com) wybierz pozycję **Pomoc i obsługa techniczna**.
 
-1. W obszarze **Pomoc techniczna**wybierz pozycję **nowe żądanie obsługi**. Podaj te szczegóły żądania:
+1. W menu **Pomoc techniczna** wybierz pozycję **nowe żądanie obsługi**. Podaj te informacje dotyczące żądania:
 
-   | Ustawienie | Value |
+   | Właściwość | Value |
    |---------|-------|
-   | **Typ problemu** | **Naukow** | 
-   | **Subskrypcja** | <*your-Azure-subscription*> | 
-   | **Usługa** | W obszarze **monitorowanie & zarządzanie**wybierz pozycję **harmonogram**. | 
+   | **Typ problemu** | **Naukow** |
+   | **Subskrypcja** | <*your-Azure-subscription*> |
+   | **Usługa** | W obszarze **monitorowanie & zarządzanie**wybierz pozycję **harmonogram**. Jeśli nie możesz znaleźć **harmonogramu**, najpierw wybierz pozycję **wszystkie usługi** . |
    ||| 
 
 1. Wybierz żądaną opcję pomocy technicznej. Jeśli masz płatny Plan pomocy technicznej, wybierz pozycję **dalej**.

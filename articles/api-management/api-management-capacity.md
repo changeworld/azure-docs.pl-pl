@@ -1,6 +1,6 @@
 ---
-title: Pojemność wystąpienia usługi Azure API Management | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jakie metryki pojemności i jak do podejmowania świadomych decyzji, czy wykonać skalowanie wystąpienia usługi Azure API Management.
+title: Pojemność wystąpienia usługi Azure API Management | Microsoft Docs
+description: W tym artykule wyjaśniono, co to jest Metryka pojemności i jak podejmować świadome decyzje dotyczące skalowania wystąpienia usługi Azure API Management.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -11,28 +11,32 @@ ms.workload: integration
 ms.topic: article
 ms.date: 06/18/2018
 ms.author: apimpm
-ms.openlocfilehash: c39c585d9947422260868734ec89814d8a510089
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.custom: fasttrack-edit
+ms.openlocfilehash: a585ab059319b15be1f2a86bf10b7dc58da72494
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836954"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299460"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Pojemność wystąpienia usługi Azure API Management
 
-**Pojemność** jest dla Ciebie najważniejsza [metryki usługi Azure Monitor](api-management-howto-use-azure-monitor.md#view-metrics-of-your-apis) dokonywania świadomych decyzji, czy wykonać skalowanie wystąpienia usługi API Management, aby pomieścić większe obciążenie. Konstrukcja jest złożona i nakłada pewne zachowanie.
+**Wydajność** to najważniejszy [Azure monitor metryki](api-management-howto-use-azure-monitor.md#view-metrics-of-your-apis) do podejmowania świadomych decyzji o tym, czy skalować wystąpienie API Management w celu zwiększenia obciążenia. Konstrukcja jest złożona i nakłada pewne zachowanie.
 
-W tym artykule opisano, jakie **pojemności** jest i jak działa. Pokazuje, jak uzyskać dostęp do **pojemności** metryki w witrynie Azure portal, a także sugeruje, kiedy należy rozważyć skalowanie lub uaktualnienie wystąpienia usługi API Management.
+W tym artykule wyjaśniono, co to jest **pojemność** i jak działa. Pokazano, jak uzyskać dostęp do metryk **pojemności** w Azure Portal i sugeruje, kiedy należy rozważyć skalowanie lub uaktualnianie wystąpienia API Management.
+
+> [!IMPORTANT]
+> W tym artykule omówiono sposób monitorowania i skalowania wystąpienia usługi Azure API Management na podstawie jego metryki pojemności. Jednak równie ważne jest, aby zrozumieć, co się dzieje w przypadku wystąpienia poszczególnych API Management w rzeczywistości *osiągnęły* swoją wydajność. Usługa Azure API Management nie będzie stosować ograniczania poziomu usług, aby zapobiec fizycznym przeciążeniem wystąpień. Gdy wystąpienie osiągnie swoją pojemność fizyczną, będzie działać podobnie jak każdy przeciążony serwer sieci Web, który nie może przetworzyć żądań przychodzących: opóźnienie zostanie zwiększone, nastąpi odrzucanie błędów, przekroczenia limitu czasu itd. Oznacza to, że klienci interfejsu API powinni być przygotowani do pracy z tą możliwością podobną jak w przypadku każdej innej usługi zewnętrznej (np. stosując zasady ponawiania).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby wykonać kroki z tego artykułu, musisz mieć:
+Aby wykonać kroki opisane w tym artykule, musisz dysponować:
 
 + Aktywna subskrypcja platformy Azure.
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-+ Wystąpienie usługi APIM. Aby uzyskać więcej informacji, zobacz [Utwórz wystąpienie usługi Azure API Management](get-started-create-service-instance.md).
++ Wystąpienie APIM. Aby uzyskać więcej informacji, zobacz [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md).
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -40,65 +44,66 @@ Aby wykonać kroki z tego artykułu, musisz mieć:
 
 ![Metryka pojemności](./media/api-management-capacity/capacity-ingredients.png)
 
-**Pojemność** stanowi wskaźnik obciążenie wystąpienia usługi API Management. Odzwierciedla użycie zasobów (procesor CPU, pamięci) i długości kolejki sieci. Użycie procesora CPU i pamięci, co spowoduje wyświetlenie zużycie zasobów:
+**Pojemność** jest wskaźnikiem obciążenia wystąpienia API Management. Odzwierciedla użycie zasobów (procesor CPU, pamięć) i długość kolejki sieciowej. Użycie procesora CPU i pamięci pokazuje wykorzystanie zasobów przez:
 
-+ Usługi API Management, takie jak zarządzanie akcji lub żądania przetwarzania, wraz z ewentualnym przekazuje żądania, czy używasz zasad
-+ procesów wybranego systemu operacyjnego, w tym procesy, które obejmują koszt uzgodnienia protokołu SSL na nowe połączenia.
++ API Management usługi płaszczyzny danych, takie jak przetwarzanie żądań, które mogą obejmować przekazywanie żądań lub uruchamianie zasad.
++ API Management usługi płaszczyzny zarządzania, takie jak akcje zarządzania stosowane za pośrednictwem witryny Azure Portal lub ARM, lub obciążenie pochodzące z [portalu dla deweloperów](api-management-howto-developer-portal.md).
++ Wybrane procesy systemu operacyjnego, w tym procesy, które obejmują koszt uzgadniania protokołu SSL dla nowych połączeń.
 
-Łączna liczba **pojemności** jest średnią z wartości z każdej jednostki wystąpienia usługi API Management.
+Całkowita **pojemność** to średnia z poszczególnych jednostek wystąpienia API Management.
 
-Mimo że **metryki pojemności** jest przeznaczony do powierzchni problemy z wystąpienia usługi API Management, są przypadki, gdy problemy nie zostaną odzwierciedlone w zmianach **metryki pojemności**.
+Mimo że **Metryka pojemności** została zaprojektowana w celu wypróbowania problemów z wystąpieniem API Management, istnieją przypadki, w których problemy nie zostaną odzwierciedlone w zmianach w **metryce wydajności**.
 
 ## <a name="capacity-metric-behavior"></a>Zachowanie metryki pojemności
 
-Ze względu na jej konstrukcji w realnym **pojemności** może mieć wpływ na wiele zmiennych, na przykład:
+Ze względu na jego konstrukcję w realnej **wydajności** może mieć wpływ wiele zmiennych, na przykład:
 
-+ wzorce połączenia (nowe połączenie przy użyciu żądania ponownego wykorzystania istniejącego połączenia)
++ wzorce połączeń (nowe połączenie dla żądania a przy użyciu istniejącego połączenia)
 + rozmiar żądania i odpowiedzi
-+ zasady skonfigurowane dla każdego interfejsu API lub liczbę klientów, którzy wysyłają żądania.
++ Zasady skonfigurowane na każdym interfejsie API lub liczbie klientów wysyłających żądania.
 
-Są bardziej złożonych operacji w odpowiedzi na żądania, tym wyżej **pojemności** będzie zużycia. Na przykład zasady skomplikowaną transformację wymagały znacznie większej mocy Procesora niż przekazywanie prostego żądania. Odpowiedzi usługi zaplecza powolne zwiększy się on zbyt.
+Im bardziej złożone operacje na żądaniach, tym większe zużycie **pojemności** . Na przykład złożone zasady transformacji zużywają znacznie więcej czasu procesora niż proste przekazywanie żądań. Zbyt niska odpowiedź usługi zaplecza zwiększy swój poziom.
 
 > [!IMPORTANT]
-> **Pojemność** nie jest bezpośrednie miarą liczba aktualnie przetwarzanych żądań.
+> **Pojemność** nie jest bezpośrednią miarą liczby przetwarzanych żądań.
 
-![Wartości graniczne na metryki wydajności](./media/api-management-capacity/capacity-spikes.png)
+![Skoki metryk pojemności](./media/api-management-capacity/capacity-spikes.png)
 
-**Pojemność** również skacze sporadycznie lub być większa od zera, nawet jeśli żadne żądanie przetwarzane. On dziać się z powodu akcje specyficzne dla systemu lub platformy i powinny nie należy brać pod uwagę przy podejmowaniu decyzji, które można skalować wystąpienia.
+**Pojemność** może również gwałtownie wzgwałtownić lub być większa od zera nawet wtedy, gdy nie są przetwarzane żadne żądania. Dzieje się tak z powodu działań specyficznych dla systemu lub platformy i nie należy brać pod uwagę podczas decydowania o tym, czy skalować wystąpienie.
 
-Niska **metryki pojemności** nie musi oznaczać, że wystąpienia usługi API Management nie masz problemy.
+**Metryka** o niskiej pojemności nie musi oznaczać, że wystąpienie API Management nie napotyka żadnych problemów.
   
-## <a name="use-the-azure-portal-to-examine-capacity"></a>Użyj witryny Azure Portal, aby sprawdzić pojemność
+## <a name="use-the-azure-portal-to-examine-capacity"></a>Sprawdzanie pojemności przy użyciu witryny Azure Portal
   
 ![Metryka pojemności](./media/api-management-capacity/capacity-metric.png)  
 
-1. Przejdź do swojego wystąpienia usługi APIM w [witryny Azure portal](https://portal.azure.com/).
-2. Wybierz **metryki (wersja zapoznawcza)** .
-3. W części fioletowym, wybierz **pojemności** metryk dostępnych metryk i pozostaw domyślny **Avg** agregacji.
+1. Przejdź do wystąpienia APIM w [Azure Portal](https://portal.azure.com/).
+2. Wybierz pozycję **Metryki**.
+3. W sekcji purpurowa wybierz pozycję Metryka **pojemności** z dostępnych metryk i Pozostaw domyślną wartość agregacji **średniej** .
 
     > [!TIP]
-    > Zawsze należy rozważyć **pojemności** metryki podział według lokalizacji w celu uniknięcia interpretacji problem.
+    > Należy zawsze przyjrzeć się rozbiciem metryk **pojemności** na lokalizację, aby uniknąć nieprawidłowych interpretacji.
 
-4. W sekcji zielony, wybierz **lokalizacji** do dzielenia metryki według wymiaru.
-5. Wybierz żądany przedział czasu, z górnym pasku sekcji.
+4. W zielonej sekcji Wybierz pozycję **Lokalizacja** , aby podzielić metrykę według wymiaru.
+5. Wybierz żądany czas z górnego paska sekcji.
 
-    Można ustawić alert dotyczący metryki informacją o tym, kiedy się coś nieoczekiwanego dzieje. Na przykład Otrzymuj powiadomienia, gdy wystąpienie usługi APIM zostały przekraczające pojemności oczekiwanego szczytowego przez ponad 20 minut.
+    Można ustawić alert dotyczący metryki, aby poinformować o nieoczekiwanym czasie. Na przykład Otrzymuj powiadomienia, gdy wystąpienie APIM przekracza oczekiwaną pojemność szczytową przez ponad 20 minut.
 
     >[!TIP]
-    > Można skonfigurować alerty, aby umożliwić wiadomo, kiedy usługa zaczyna brakować pojemności lub automatycznie dodawać jednostki usługi Azure API Management za pomocą funkcji skalowania automatycznego usługi Azure Monitor. Skalowanie w operacji może zająć około 30 minut, dlatego należy odpowiednio zaplanować reguł.  
-    > Dozwolona jest tylko skalowanie lokalizacji głównej.
+    > Możesz skonfigurować alerty, aby poinformować o tym, kiedy usługa ma niską wydajność, lub użyj funkcji automatycznego skalowania Azure Monitor, aby automatycznie dodać jednostkę API Management platformy Azure. Operacja skalowania może potrwać około 30 minut, więc należy zaplanować reguły.  
+    > Dozwolone jest tylko skalowanie lokalizacji głównej.
 
-## <a name="use-capacity-for-scaling-decisions"></a>Używana pojemność decyzji dotyczących skalowania
+## <a name="use-capacity-for-scaling-decisions"></a>Używanie pojemności do podejmowania decyzji dotyczących skalowania
 
-**Pojemność** jest metryka przy podejmowaniu decyzji, czy wykonać skalowanie wystąpienia usługi API Management, aby pomieścić większe obciążenie. Należy wziąć pod uwagę:
+**Pojemność** jest metryką służącą do podejmowania decyzji, czy skalować wystąpienie API Management w celu zwiększenia obciążenia. Należy wziąć pod uwagę:
 
-+ Patrząc długoterminowych trendów i średnia.
-+ Ignorowanie nagłe wartości graniczne, które z największym prawdopodobieństwem mogą nie dotyczą wzrost obciążenia (zobacz sekcję "Zachowanie metryki pojemności" wyjaśnienie).
-+ Uaktualnianie lub skalowania wystąpienia, gdy **pojemności**firmy wartość przekracza 60% lub 70% przez dłuższy czas, w czasie (na przykład 30 minut). Różne wartości może działać lepiej dla usługi lub scenariusza.
++ Spojrzenie na długoterminową tendencję i średnią.
++ Ignorowanie nagłych skoków, które najprawdopodobniej nie są związane z jakimkolwiek wzrostem obciążenia (zobacz "zachowanie metryki wydajności" w celu wyjaśnienia).
++ Uaktualnienie lub skalowanie wystąpienia, gdy wartość **pojemności**przekracza 60% lub 70% przez dłuższy czas (na przykład 30 minut). Różne wartości mogą wydajniej współpracować z usługą lub scenariuszem.
 
 >[!TIP]  
-> Jeśli jesteś w stanie wcześniej oszacować ruchu, należy przetestować swojego wystąpienia usługi APIM dla obciążeń, których oczekujesz. Można stopniowo zwiększać obciążenie żądaniami w dzierżawie usługi, a następnie monitorować, jaka wartość metryki pojemności odnosi się do obciążenia szczytowego. Postępuj zgodnie z instrukcjami z poprzedniej sekcji, aby zrozumieć, jaka pojemność jest używany w dowolnym momencie za pomocą witryny Azure portal.
+> Jeśli możesz wcześniej oszacować ruch, przetestuj wystąpienie APIM w oczekiwanych obciążeniach. Możesz stopniowo zwiększyć obciążenie żądaniami dzierżawy i monitorować wartość metryki pojemności odpowiadającą szczytowej obciążeniu. Postępuj zgodnie z instrukcjami z poprzedniej sekcji, Azure Portal aby dowiedzieć się, ile pojemności jest używanych w danym momencie.
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Jak skalować lub Uaktualnij wystąpienie usługi Azure API Management](upgrade-and-scale.md)
+[Jak skalować lub uaktualnić wystąpienie usługi Azure API Management](upgrade-and-scale.md)

@@ -1,54 +1,54 @@
 ---
-title: Temat repozytoriów i obrazów w usłudze Azure Container Registry
-description: Wprowadzenie do podstawowych pojęć rejestry kontenerów platformy Azure, repozytoriów i obrazów kontenerów.
+title: Informacje o repozytoriach i obrazach w Azure Container Registry
+description: Wprowadzenie do kluczowych pojęć związanych z rejestrami kontenerów platformy Azure, repozytoriami i obrazami kontenerów.
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 07/01/2019
+ms.date: 09/10/2019
 ms.author: danlep
-ms.openlocfilehash: a14f0a2a86c5e4922fcddf3c92d48c6dfb1497a3
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 9a3d4a7d9c3fd4a0465d4e780024559a71372d9d
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67800330"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300204"
 ---
-# <a name="about-registries-repositories-and-images"></a>Rejestry, repozytoriów i obrazów — informacje
+# <a name="about-registries-repositories-and-images"></a>Rejestry, repozytoria i obrazy — informacje
 
-W tym artykule przedstawiono najważniejsze pojęcia związane z rejestrów kontenerów, repozytoriów i obrazów kontenerów i powiązanych artefaktów. 
+W tym artykule przedstawiono kluczowe pojęcia dotyczące rejestrów kontenerów, repozytoriów i obrazów kontenerów oraz powiązanych artefaktów. 
 
 ## <a name="registry"></a>Rejestr
 
-Kontener *rejestru* to usługa, która przechowuje i rozpowszechnianie obrazów kontenerów. Usługa docker Hub jest rejestru publicznego kontenera, który wspiera społeczność oprogramowania typu open source i służy jako ogólny katalog obrazów. Usługa Azure Container Registry zapewnia użytkownikom bezpośredniej kontroli nad ich obrazów, za pomocą uwierzytelniania zintegrowanego [geografickou replikaci](container-registry-geo-replication.md) obsługując dystrybucji globalnej i niezawodności na potrzeby wdrożenia w pobliżu sieci [ konfiguracja wirtualnej sieci i zapory](container-registry-vnet.md), [blokowania tag](container-registry-image-lock.md), a wiele innych funkcji. 
+*Rejestr* kontenerów to usługa, która przechowuje i dystrybuuje obrazy kontenerów. Docker Hub to publiczny rejestr kontenerów, który obsługuje społeczność typu open source i służy jako ogólny katalog obrazów. Azure Container Registry zapewnia użytkownikom bezpośrednią kontrolę nad ich obrazami, z uwierzytelnianiem zintegrowanym, [replikacją geograficzną](container-registry-geo-replication.md) obsługującą globalną dystrybucję i niezawodność dla wdrożeń w pobliżu sieci, [sieci wirtualnej i zapory Konfiguracja](container-registry-vnet.md), [blokowanie tagów](container-registry-image-lock.md)i wiele innych ulepszonych funkcji. 
 
-Oprócz obrazów kontenerów platformy Docker, związane z usługi Azure Container Registry obsługuje [zawartości artefaktów](container-registry-image-formats.md) tym formatów obrazów Otwórz kontener Initiative (OCI).
+Oprócz obrazów kontenerów platformy Docker Azure Container Registry obsługuje powiązane [artefakty zawartości](container-registry-image-formats.md) , w tym formaty obrazów Open Container INITIATIVE (OCI).
 
-## <a name="content-addressable-elements-of-an-artifact"></a>Mogą być adresowane elementów zawartości artefaktu
+## <a name="content-addressable-elements-of-an-artifact"></a>Elementy do adresowania artefaktu
 
-Adres artefakt w usłudze Azure container registry obejmuje następujące elementy. 
+Adres artefaktu w rejestrze kontenerów platformy Azure obejmuje następujące elementy. 
 
 ```
 [loginUrl]/[namespace]/[artifact:][tag]
 ```
 
-* **loginUrl** — w pełni kwalifikowaną nazwę hosta rejestru. Hosta rejestru w usłudze Azure container registry jest w formacie *myregistry*. azurecr.io (tylko małe litery). Należy określić loginUrl, korzystając z platformy Docker lub innych narzędzi klienta w celu ściągania lub wypychania artefakty do usługi Azure container registry. 
-* **przestrzeń nazw** - rozdzielonych ukośnikiem powodują ustawienie logicznego grupowania powiązanych obrazów lub artefakty — na przykład w przypadku aplikacji lub grupy roboczej
-* **artefakt** — nazwę repozytorium dla określonego obrazu lub artefaktu
-* **tag** -określoną wersję obrazu lub przechowywane w repozytorium artefaktów
+* **LoginUrl** — w pełni kwalifikowana nazwa hosta rejestru. Host rejestru w usłudze Azure Container Registry *ma format azurecr.IO*(wszystkie małe litery). Należy określić loginUrl podczas korzystania z platformy Docker lub innych narzędzi klienckich do ściągania i wypychania artefaktów do usługi Azure Container Registry. 
+* rozdzielana przecinkami **przestrzeń nazw** — logiczne grupowanie powiązanych obrazów lub artefaktów — na przykład dla grupy roboczej lub aplikacji
+* **artefakt** — Nazwa repozytorium dla określonego obrazu lub artefaktu
+* **tag** — określona wersja obrazu lub artefaktu przechowywanego w repozytorium
 
 
-Na przykład Pełna nazwa obrazu w usłudze Azure container registry może mieć następującą postać:
+Na przykład Pełna nazwa obrazu w rejestrze kontenerów platformy Azure może wyglądać następująco:
 
 ```
 myregistry.azurecr.io/marketing/campaign10-18/email-sender:v2
 ```
 
-Zobacz następujące sekcje, aby uzyskać szczegółowe informacje o tych elementów.
+Więcej informacji o tych elementach można znaleźć w poniższych sekcjach.
 
 ## <a name="repository-name"></a>Nazwa repozytorium
 
-Rejestry kontenerów, zarządzanie *repozytoriów*, kolekcji obrazów kontenerów lub inne artefakty o takiej samej nazwie, ale różnych znaczników. Na przykład następujące trzy obrazy znajdują się w repozytorium "acr-helloworld":
+Rejestry kontenerów zarządzają *repozytoriami*, kolekcjami obrazów kontenerów lub innymi artefaktami o tej samej nazwie, ale różne Tagi. Na przykład następujące trzy obrazy znajdują się w repozytorium "ACR-HelloWorld":
 
 ```
 acr-helloworld:latest
@@ -56,7 +56,7 @@ acr-helloworld:v1
 acr-helloworld:v2
 ```
 
-Nazwy repozytorium mogą również zawierać [przestrzenie nazw](container-registry-best-practices.md#repository-namespaces). Przestrzenie nazw umożliwiają grupę obrazów przy użyciu nazwy do przodu repozytorium rozdzielonych ukośnikiem, na przykład:
+Nazwy repozytoriów mogą również zawierać [przestrzenie nazw](container-registry-best-practices.md#repository-namespaces). Przestrzenie nazw umożliwiają grupowanie obrazów przy użyciu nazw repozytoriów, które są rozdzielane ukośnikami, na przykład:
 
 ```
 marketing/campaign10-18/web:v2
@@ -68,33 +68,33 @@ product-returns/legacy-integrator:20180715
 
 ## <a name="image"></a>Image
 
-Obraz kontenera ani innego artefaktu w ramach rejestru jest skojarzony z co najmniej jednego znacznika, ma jedną lub więcej warstw i jest identyfikowany przez manifestu. Zrozumienie, jak tych składników powiązane są ze sobą może pomóc efektywne zarządzanie rejestru.
+Obraz kontenera lub inny artefakt w rejestrze jest skojarzony z co najmniej jednym tagiem, ma jedną lub więcej warstw i jest identyfikowany przez manifest. Zrozumienie, jak te składniki są powiązane ze sobą, mogą pomóc w skutecznym zarządzaniu rejestrem.
 
 ### <a name="tag"></a>Tag
 
-*Tag* dla obrazu ani innego artefaktu określa jej wersji. Pojedynczego artefakt w repozytorium można przypisać jeden lub wiele tagów i mogą być również "nieoznakowany". Oznacza to możesz usunąć wszystkie tagi z obrazu, podczas gdy dane obrazu (warstwy) pozostaje w rejestrze.
+*Tag* obrazu lub innego artefaktu określa jego wersję. Pojedynczym artefaktem w repozytorium może być przypisany jeden lub wiele tagów i może być również "nieoznakowany". Oznacza to, że można usunąć wszystkie Tagi z obrazu, podczas gdy dane obrazu (jego warstwy) pozostają w rejestrze.
 
-Repozytorium (lub repozytorium i przestrzeni nazw) oraz tag Określa nazwę obrazu. Można wypychanie i ściąganie obrazu, określając jej nazwę w operacji wypychania i ściągania.
+Repozytorium (lub repozytorium i przestrzeń nazw) oraz tag definiują nazwę obrazu. Można wypchnąć i ściągnąć obraz, określając jego nazwę w operacji wypychania lub ściągania.
 
-Scenariuszy, twórz albo wdrażać je z przewodnikiem jak tagowanie obrazów kontenerów. Na przykład stabilne znaczniki są zalecane w przypadku zachowaniu obrazy podstawowe i unikatowych tagów do wdrażania obrazów. Aby uzyskać więcej informacji, zobacz [zalecenia dotyczące obrazów kontenerów przechowywanie wersji i tagowania](container-registry-image-tag-version.md).
+Sposób oznaczania obrazów kontenerów jest kierowany przez scenariusze w celu ich opracowania lub wdrożenia. Na przykład, stałe Tagi są zalecane do obsługi obrazów podstawowych i unikatowych tagów służących do wdrażania obrazów. Aby uzyskać więcej informacji, zobacz [zalecenia dotyczące tagowania i przechowywania wersji obrazów kontenerów](container-registry-image-tag-version.md).
 
 ### <a name="layer"></a>Warstwa
 
-Obrazy kontenera składają się z co najmniej jeden *warstwy*, odpowiadający każdego wiersza w pliku Dockerfile, który definiuje obraz. Obrazów w rejestrze Udostępnij wspólnej warstwy, zwiększając wydajność magazynu. Na przykład kilka obrazów w różnych repozytoriach może współużytkować tę samą warstwę podstawowa Alpine Linux, ale tylko jedną kopię tej warstwy są przechowywane w rejestrze.
+Obrazy kontenerów składają się z jednej lub kilku *warstw*, z których każdy odpowiada wierszowi w pliku dockerfile, który definiuje obraz. Obrazy w rejestrze udostępniają typowe warstwy, zwiększając wydajność magazynu. Na przykład kilka obrazów w różnych repozytoriach może współużytkować tę samą warstwę bazową Alpine Linux, ale w rejestrze jest przechowywana tylko jedna kopia tej warstwy.
 
-Udostępnianie warstwy optymalizuje też dystrybucji warstwy do węzłów przy użyciu wielu obrazów udostępnianie wspólnej warstwy. Na przykład jeśli obraz już w węźle zawiera warstwę Alpine Linux jako jego podstawowy, kolejne ściąganie inny obraz, który odwołuje się do tej samej warstwie nie przenieść warstwę do węzła. Zamiast tego odwołuje się warstwy już istniejących w węźle.
+Udostępnianie warstwy optymalizuje także dystrybucję warstw do węzłów z wieloma obrazami udostępniającymi wspólne warstwy. Na przykład jeśli obraz już znajdujący się w węźle zawiera warstwę Alpine Linux jako podstawową, kolejna ściąganie innego obrazu odwołującego się do tej samej warstwy nie przenosi warstwy do węzła. Zamiast tego odwołuje się do warstwy już istniejącej w węźle.
 
-Zapewnienie bezpiecznej izolacji i ochronę przed potencjalnym manipulowania warstwy warstwy nie są współdzielone przez rejestrów.
+Aby zapewnić bezpieczną izolację i ochronę przed potencjalną manipulacją warstwową, warstwy nie są udostępniane w rejestrach.
 
 ### <a name="manifest"></a>Manifest
 
-Każdy obraz kontenera lub artefaktu wypchnięte do rejestru kontenera jest skojarzony z *manifestu*. Manifest, generowane przez rejestr obrazu zostanie przypisany, unikatowo identyfikuje obraz i określa jej warstwy. Możesz wyświetlić listę manifesty dla repozytorium przy użyciu polecenia interfejsu wiersza polecenia Azure [az acr repozytorium show manifesty][az-acr-repository-show-manifests]:
+Każdy obraz kontenera lub artefakt wypychany do rejestru kontenerów jest skojarzony z *manifestem*. Manifest generowany przez rejestr podczas wypychania obrazu, jednoznacznie identyfikuje obraz i określa jego warstwy. Można wyświetlić listę manifestów dla repozytorium za pomocą poleceń interfejsu wiersza polecenia platformy Azure [AZ ACR Repository show-Manifests][az-acr-repository-show-manifests]:
 
 ```azurecli
 az acr repository show-manifests --name <acrName> --repository <repositoryName>
 ```
 
-Na przykład lista manifest skróty służące do repozytorium "acr-helloworld":
+Na przykład Wyświetl listę manifestów dla repozytorium "ACR-HelloWorld":
 
 ```console
 $ az acr repository show-manifests --name myregistry --repository acr-helloworld
@@ -124,25 +124,24 @@ $ az acr repository show-manifests --name myregistry --repository acr-helloworld
 ]
 ```
 
-### <a name="manifest-digest"></a>Podsumowanie manifestu
+### <a name="manifest-digest"></a>Szyfrowanie manifestu
 
-Manifesty są identyfikowane przez unikatową Skrót SHA-256, lub *skrótu manifestu*. Każdy obraz lub artefaktu — czy oznakowane lub nie — jest identyfikowane przez jego skrót. Wartość skrótu jest unikatowa, nawet jeśli dane warstw obrazów jest taka sama jak w przypadku innego obrazu. Ten mechanizm jest o tym, co pozwala na wielokrotne wypychanie identycznie oznakowane obrazów do rejestru. Na przykład możesz wielokrotnie wypchnąć `myimage:latest` do rejestru bez błędów, ponieważ każdy obraz jest identyfikowane przez jego unikatowy skrót.
+Manifesty są identyfikowane przez unikatowy skrót SHA-256 lub *skrót manifestu*. Każdy obraz lub artefakt — wskazuje, czy jest oznaczony lub nie--jest identyfikowany przez jego skrót. Wartość skrótu jest unikatowa, nawet jeśli dane warstwy obrazu są takie same jak w przypadku innego obrazu. Ten mechanizm pozwala na wielokrotne wypychanie oznakowanych identycznie obrazów do rejestru. Na przykład można wielokrotnie wypchnąć `myimage:latest` do rejestru bez błędu, ponieważ każdy obraz jest identyfikowany przez jego unikatowy skrót.
 
-Można ściągnąć obraz z rejestru, określając jego skrót w operacji ściągania. Niektóre systemy może być skonfigurowany do ściągnięcia przez szyfrowane, ponieważ gwarantuje to wersja obrazu są pobierane, nawet wtedy, gdy identycznie TIFF jest następnie wypchnięte do rejestru.
+Można ściągnąć obraz z rejestru, określając jego skrót w operacji ściągania. Niektóre systemy można skonfigurować do ściągania przez szyfrowanie, ponieważ gwarantuje ściąganie wersji obrazu, nawet jeśli obraz z identycznymi znacznikami jest następnie wypychany do rejestru.
 
-Na przykład ściągnąć obraz z repozytorium "acr-helloworld" przez skrót manifestu:
+Na przykład Pobierz obraz z repozytorium "ACR-HelloWorld" według skrótu manifestu:
 
 ```console
 $ docker pull myregistry.azurecr.io/acr-helloworld@sha256:0a2e01852872580b2c2fea9380ff8d7b637d3928783c55beb3f21a6e58d5d108
 ```
 
 > [!IMPORTANT]
-> W przypadku modyfikacji obrazów z tagami identyczny wielokrotnie wypchnięcia, możesz utworzyć oddzielone obrazy — obrazy, które są nieoznakowany, ale nadal zużywają miejsca w rejestrze. Nieoznakowany obrazy nie są wyświetlane w interfejsie wiersza polecenia platformy Azure lub w witrynie Azure portal po liście lub wyświetlanie obrazów według tagów. Jednak ich warstwy nadal istnieje i zajmować dużo miejsca w rejestrze. Aby dowiedzieć się, jak zwalnianie miejsca używanego przez nieoznakowany obrazów, zobacz [usuwanie obrazów kontenerów w usłudze Azure Container Registry](container-registry-delete.md).
-
+> W przypadku wielokrotnego wypychania zmodyfikowanych obrazów z identycznymi tagami można utworzyć oddzielone obrazy — obrazy, które są nieoznakowane, ale nadal zużywają miejsce w rejestrze. Obrazy nieoznakowane nie są wyświetlane w interfejsie wiersza polecenia platformy Azure ani w Azure Portal, gdy wyświetlają lub wyświetlają obrazy według tagów. Jednak ich warstwy nadal istnieją i zużywają miejsce w rejestrze. Usunięcie nieoznaczonego obrazu zwalnia miejsce w rejestrze, gdy manifest jest jedynym, lub ostatnim, wskazując konkretną warstwę. Aby uzyskać informacje o zwalnianiu miejsca używanego przez nieoznakowane obrazy, zobacz [usuwanie obrazów kontenerów w Azure Container Registry](container-registry-delete.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o [obrazu magazynu](container-registry-storage.md) i [obsługiwane formaty zawartości](container-registry-image-formats.md) w usłudze Azure Container Registry.
+Dowiedz się więcej o usłudze [Image Storage](container-registry-storage.md) i [obsługiwanych formatach zawartości](container-registry-image-formats.md) w Azure Container Registry.
 
 <!-- LINKS - Internal -->
 [az-acr-repository-show-manifests]: /cli/azure/acr/repository#az-acr-repository-show-manifests

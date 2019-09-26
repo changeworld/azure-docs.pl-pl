@@ -4,14 +4,14 @@ description: Wymagania wstępne dotyczące korzystania z pamięci podręcznej pl
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: 29dc5256424ea4fe7c3a72624ce8d1b3d9e59f3c
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: fab85785ea183736b4012c349af143ef3a8c784a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180901"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299911"
 ---
 # <a name="prerequisites-for-azure-hpc-cache-preview"></a>Wymagania wstępne dotyczące usługi Azure HPC cache (wersja zapoznawcza)
 
@@ -26,7 +26,7 @@ Zalecana jest płatna subskrypcja.
 
 ## <a name="network-infrastructure"></a>Infrastruktura sieciowa
 
-Aby można było korzystać z pamięci podręcznej, należy skonfigurować dwie opcje związane z siecią:
+Aby można było korzystać z pamięci podręcznej, należy skonfigurować dwa wymagania wstępne związane z siecią:
 
 * Dedykowana podsieć dla wystąpienia pamięci podręcznej platformy Azure HPC
 * Obsługa systemu DNS, aby pamięć podręczna mogła uzyskać dostęp do magazynu i innych zasobów
@@ -37,13 +37,13 @@ Pamięć podręczna Azure HPC wymaga dedykowanej podsieci z następującymi jako
 
 * Podsieć musi mieć co najmniej 64 adresów IP.
 * Podsieć nie może obsługiwać żadnych innych maszyn wirtualnych, nawet w przypadku powiązanych usług takich jak komputery klienckie.
-* W przypadku korzystania z wielu wystąpień pamięci podręcznej każdy z nich musi mieć własną podsieć.
+* W przypadku korzystania z wielu wystąpień pamięci podręcznej platformy Azure HPC każda z nich musi mieć własną podsieć.
 
-Najlepszym rozwiązaniem jest utworzenie nowej podsieci dla pamięci podręcznej. W ramach tworzenia pamięci podręcznej można utworzyć nową sieć wirtualną i podsieć.
+Najlepszym rozwiązaniem jest utworzenie nowej podsieci dla każdej pamięci podręcznej. W ramach tworzenia pamięci podręcznej można utworzyć nową sieć wirtualną i podsieć.
 
 ### <a name="dns-access"></a>Dostęp do usługi DNS
 
-Pamięć podręczna platformy Azure HPC wymaga systemu DNS, aby uzyskać dostęp do zasobów spoza sieci wirtualnej. W zależności od zasobów, z których korzystasz, może być konieczne skonfigurowanie niestandardowego serwera DNS i skonfigurowanie przekierowania między tym serwerem i serwerami Azure DNS: 
+Pamięć podręczna potrzebuje systemu DNS, aby uzyskać dostęp do zasobów poza jego siecią wirtualną. W zależności od zasobów, z których korzystasz, może być konieczne skonfigurowanie niestandardowego serwera DNS i skonfigurowanie przekierowania między tym serwerem i serwerami Azure DNS:
 
 * Aby uzyskać dostęp do punktów końcowych usługi Azure Blob Storage i innych zasobów wewnętrznych, wymagany jest serwer DNS oparty na platformie Azure.
 * Aby uzyskać dostęp do magazynu lokalnego, należy skonfigurować niestandardowy serwer DNS, który może rozpoznawać nazwy hostów magazynu.
@@ -56,14 +56,16 @@ Dowiedz się więcej na temat sieci wirtualnych platformy Azure i konfiguracji s
 
 Przed rozpoczęciem tworzenia pamięci podręcznej Sprawdź te wymagania wstępne związane z uprawnieniami.
 
-* Pamięć podręczna Azure HPC musi mieć możliwość tworzenia wirtualnych interfejsów sieciowych (nic). Użytkownik tworzący pamięć podręczną musi mieć wystarczające uprawnienia w subskrypcji, aby można było tworzyć karty sieciowe.
+* Wystąpienie pamięci podręcznej musi być w stanie tworzyć wirtualne interfejsy sieciowe (nic). Użytkownik tworzący pamięć podręczną musi mieć wystarczające uprawnienia w subskrypcji, aby można było tworzyć karty sieciowe.
 <!-- There are several ways to authorize this access; read [Additional prerequisites](media/preview-prereqs.md) to learn more. -->
 
-* W przypadku korzystania z magazynu obiektów BLOB wystąpienie pamięci podręcznej platformy Azure HPC wymaga autoryzacji dostępu do konta magazynu. Za pomocą kontroli dostępu opartej na rolach (RBAC) można zapewnić dostęp do pamięci podręcznej do magazynu obiektów BLOB. Wymagane są dwie role: Współautor konta magazynu oraz współautor danych obiektu blob magazynu. Postępuj zgodnie z instrukcjami w temacie [Dodawanie miejsc docelowych magazynu](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account).
+* W przypadku korzystania z usługi BLOB Storage pamięć podręczna Azure HPC wymaga autoryzacji dostępu do konta magazynu. Za pomocą kontroli dostępu opartej na rolach (RBAC) można zapewnić dostęp do pamięci podręcznej do magazynu obiektów BLOB. Wymagane są dwie role: Współautor konta magazynu i współautor danych obiektu blob magazynu. Postępuj zgodnie z instrukcjami w temacie [Dodawanie elementów docelowych magazynu](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) , aby dodać role.
 
 ## <a name="storage-infrastructure"></a>Infrastruktura magazynu
 
-Pamięć podręczna obsługuje kontenery obiektów blob platformy Azure lub eksporty magazynu sprzętowego systemu plików NFS. Podczas tworzenia pamięci podręcznej można zdefiniować cele magazynu, ale można je również dodać później. 
+Pamięć podręczna obsługuje kontenery obiektów blob platformy Azure lub eksporty magazynu sprzętowego systemu plików NFS. Podczas tworzenia pamięci podręcznej można zdefiniować cele magazynu, ale później można dodać magazyn.
+
+Każdy typ magazynu ma określone wymagania wstępne. 
 
 ### <a name="nfs-storage-requirements"></a>Wymagania dotyczące magazynu NFS
 
@@ -73,7 +75,7 @@ Magazyn zaplecza systemu plików NFS musi być zgodnym sprzętem/platformą opro
 
 ### <a name="blob-storage-requirements"></a>Wymagania dotyczące magazynu obiektów BLOB
 
-Jeśli chcesz używać usługi Azure Blob Storage z pamięcią podręczną Azure HPC, potrzebujesz zgodnego konta magazynu i pustego kontenera obiektów blob lub kontenera, który jest wypełniony danymi z pamięci podręcznej platformy Azure HPC, zgodnie z opisem w sekcji [przenoszenie danych do usługi Azure Blob Storage](hpc-cache-ingest.md).
+Jeśli chcesz używać usługi Azure Blob Storage z pamięcią podręczną, potrzebujesz zgodnego konta magazynu i pustego kontenera obiektów blob lub kontenera, który jest wypełniony danymi z pamięci podręcznej platformy Azure HPC, zgodnie z opisem w sekcji [przenoszenie danych do usługi Azure Blob Storage](hpc-cache-ingest.md).
 
 Utwórz konto i kontener przed podjęciem próby dodania go jako miejsca docelowego magazynu.
 
@@ -85,6 +87,7 @@ Aby utworzyć zgodne konto magazynu, użyj następujących ustawień:
 * Warstwa dostępu (domyślna): **gorąca**
 
 Dobrym sposobem jest użycie konta magazynu w tej samej lokalizacji co pamięć podręczna.
+<!-- need to clarify location - same region or same resource group or same virtual network? -->
 
 Należy również udzielić aplikacji pamięci podręcznej dostępu do konta usługi Azure Storage. Postępuj zgodnie z opisem w temacie [Dodawanie miejsc docelowych](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) w celu przyznania pamięci podręcznej współautor roli dostępu do konta magazynu i obiektu blob magazynu. Jeśli nie jesteś właścicielem konta magazynu, jego właścicielem jest ten krok.
 

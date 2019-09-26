@@ -8,15 +8,15 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: heidist
-ms.openlocfilehash: 308eb90e7ae244442a603491044e90dc3b8d052a
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: c2d4cae1689701704c866833c99ca616bbd01ec5
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141151"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300658"
 ---
 # <a name="service-limits-in-azure-search"></a>Limity usługi w Azure Search
-Maksymalne limity dotyczące magazynu, obciążeń i ilości indeksów, dokumentów i innych obiektów zależą od tego, czy zainicjowano [obsługę administracyjną Azure Search](search-create-service-portal.md) w warstwach **bezpłatna**, **podstawowa**, **standardowa**i **zoptymalizowana pod kątem magazynu** .
+Maksymalne limity dotyczące magazynu, obciążeń i ilości indeksów, dokumentów i innych obiektów zależą od tego, czy [Zainicjowano obsługę administracyjną Azure Search](search-create-service-portal.md) w warstwach **bezpłatna**, **podstawowa**, **standardowa**i **zoptymalizowana pod kątem magazynu** .
 
 + **Bezpłatna** to wielodostępna Usługa udostępniona z subskrypcją platformy Azure.
 
@@ -62,11 +62,13 @@ Maksymalne limity dotyczące magazynu, obciążeń i ilości indeksów, dokument
 
 ## <a name="document-limits"></a>Limity dokumentów 
 
-Od października 2018 nie ma już żadnych ograniczeń dokumentu dla każdej nowej usługi utworzonej w żadnej warstwie rozliczeniowej (podstawowa, S1, S2, S3, S3 HD) w dowolnym regionie. Chociaż większość regionów miało nieograniczoną liczbę dokumentów od listopada/grudnia 2017, istniały pięć regionów, które nadal nakładają limity dokumentów. W zależności od tego, kiedy i gdzie została utworzona usługa wyszukiwania, może być uruchomiona usługa, która nadal podlega limitom dokumentów.
+Od października 2018 żadne dokumenty nie mają już żadnych ograniczeń<sup>1</sup> dla każdej nowej usługi utworzonej w dowolnej warstwie rozliczeniowej (podstawowa, S1, S2, S3, S3 HD) w dowolnym regionie. Chociaż większość regionów miało nieograniczoną liczbę dokumentów od listopada/grudnia 2017, istniały pięć regionów, które nadal nakładają limity dokumentów. W zależności od tego, kiedy i gdzie została utworzona usługa wyszukiwania, może być uruchomiona usługa, która nadal podlega limitom dokumentów.
 
 Aby ustalić, czy usługa ma limity dokumentów, sprawdź kafelek użycie na stronie Przegląd usługi. Liczby dokumentów są nieograniczone lub podlegają limitowi zależnemu od warstwy.
 
   ![Kafelek użycie](media/search-limits-quotas-capacity/portal-usage-tile.png)
+
+<sup>1</sup> pomimo tego, że nie ma żadnych limitów dokumentów specyficznych dla jednostki SKU, każdy indeks jest nadal objęty maksymalnym bezpiecznym limitem zapewniającym stabilność usługi. Ten limit pochodzi z Lucene. Każdy dokument Azure Search jest zaindeksowany wewnętrznie jako jeden lub więcej dokumentów Lucene. Liczba dokumentów Lucene na dokument usługi Azure Search zależy od łącznej liczby elementów w złożonych polach kolekcji. Każdy element jest indeksowany jako oddzielny dokument Lucene. Na przykład dokument z 3 elementami w polu kolekcja złożona zostanie zindeksowany jako 4 dokumenty Lucene-1 dla samego dokumentu i 3 dla elementów. Maksymalna liczba dokumentów Lucene jest około 25 000 000 000 na indeks.
 
 ### <a name="regions-previously-having-document-limits"></a>Regiony posiadające wcześniej limity dokumentów
 
@@ -110,7 +112,7 @@ Maksymalne czasy działania są dostępne w celu zapewnienia równowagi i stabil
 | Maksymalna umiejętności <sup>4</sup> |3 |5 lub 15 |50 |200 |200 |ND |10 |10 |
 | Maksymalne ładowanie indeksowania na wywołanie |10 000 dokumentów |Ograniczone tylko przez maksymalną liczbę dokumentów |Ograniczone tylko przez maksymalną liczbę dokumentów |Ograniczone tylko przez maksymalną liczbę dokumentów |Ograniczone tylko przez maksymalną liczbę dokumentów |ND |Bez limitu |Bez limitu |
 | Minimalny harmonogram | 5 minut |5 minut |5 minut |5 minut |5 minut |5 minut |5 minut | 5 minut |
-| Maksymalny czas działania <sup>5</sup> | 1-3 minut |24 godz. |24 godz. |24 godz. |24 godz. |ND  |24 godz. |24 godz. |
+| Maksymalny czas działania <sup>5</sup> | 1-3 minut |24 godziny |24 godziny |24 godziny |24 godziny |ND  |24 godziny |24 godziny |
 | Maksymalny czas działania dla umiejętności wyszukiwania poznawczego lub indeksowania obiektów BLOB za pomocą analizy obrazów <sup>5</sup> | 3-10 minut |2 godziny |2 godziny |2 godziny |2 godziny |ND  |2 godziny |2 godziny |
 | Indeksator obiektów blob: maksymalny rozmiar obiektu BLOB, MB |16 |16 |128 |256 |256 |ND  |256 |256 |
 | Indeksator obiektów blob: Maksymalna liczba znaków zawartości wyodrębnionych z obiektu BLOB |32,000 |64,000 |4&nbsp;mln |4&nbsp;mln |4&nbsp;mln |ND |4&nbsp;mln |4&nbsp;mln |

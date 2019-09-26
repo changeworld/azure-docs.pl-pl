@@ -1,6 +1,6 @@
 ---
-title: Zapoznaj się z języka Java, dzienniki śledzenia w usłudze Azure Application Insights | Dokumentacja firmy Microsoft
-description: Wyszukiwanie Log4J lub Logback ślady w usłudze Application Insights
+title: Eksplorowanie dzienników śledzenia Java na platformie Azure Application Insights | Microsoft Docs
+description: Wyszukaj ślady Log4J lub Logback w Application Insights
 services: application-insights
 documentationcenter: java
 author: mrbullwinkle
@@ -12,27 +12,45 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/18/2019
 ms.author: mbullwin
-ms.openlocfilehash: 2703c97dc78983ef294b3aa50f7ace879c96f66d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ac9bd6021b5fcec36e3aadfdf4c30020971f3be5
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061233"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299247"
 ---
-# <a name="explore-java-trace-logs-in-application-insights"></a>Zapoznaj się z języka Java, dzienniki śledzenia w usłudze Application Insights
-Jeśli używasz, Logback lub Log4J (wersja 1.2 lub 2.0) do śledzenia, może mieć dzienników śledzenia automatycznie przesyłane do usługi Application Insights, gdzie możesz eksplorować i wyszukiwania na nich.
+# <a name="explore-java-trace-logs-in-application-insights"></a>Eksplorowanie dzienników śledzenia Java w Application Insights
+Jeśli używasz programu Logback lub Log4J (w wersji 1.2 lub 2.0) do śledzenia, dzienniki śledzenia mogą być automatycznie wysyłane do Application Insights, w którym można eksplorować i wyszukiwać.
 
-## <a name="install-the-java-sdk"></a>Instalowanie języka Java SDK
+## <a name="using-the-application-insights-java-agent"></a>Korzystanie z Application Insights agenta Java
 
-Postępuj zgodnie z instrukcjami, aby zainstalować [zestaw Application Insights SDK dla języka Java][java], jeśli już zrobione.
+Aby automatycznie przechwytywać dzienniki, można skonfigurować Application Insights agenta Java przez włączenie tej funkcji w `AI-Agent.xml` pliku:
 
-## <a name="add-logging-libraries-to-your-project"></a>Dodawanie rejestrowania biblioteki do projektu
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsightsAgent>
+   <Instrumentation>
+      <BuiltIn enabled="true">
+         <Logging enabled="true" />
+      </BuiltIn>
+   </Instrumentation>
+   <AgentLogger />
+</ApplicationInsightsAgent>
+```
+
+Alternatywnie można postępować zgodnie z poniższymi instrukcjami.
+
+## <a name="install-the-java-sdk"></a>Instalowanie zestawu Java SDK
+
+Postępuj zgodnie z instrukcjami, aby zainstalować [Application INSIGHTS SDK dla języka Java][java], jeśli jeszcze tego nie zrobiono.
+
+## <a name="add-logging-libraries-to-your-project"></a>Dodawanie bibliotek rejestrowania do projektu
 *Wybierz odpowiedni sposób dla danego projektu.*
 
 #### <a name="if-youre-using-maven"></a>Jeśli używasz narzędzia Maven...
-Jeśli projekt jest już skonfigurowany do używania narzędzia Maven dla kompilacji, Scal jedną z następujących fragmenty kodu do pliku pom.xml.
+Jeśli projekt jest już skonfigurowany do korzystania z Maven na potrzeby kompilacji, Scal jeden z następujących fragmentów kodu w pliku pliku pom. XML.
 
-Następnie Odśwież zależności projektu, aby pliki binarne zostały pobrane.
+Następnie Odśwież zależności projektu, aby pobrać pliki binarne pobrane.
 
 *Logback*
 
@@ -60,7 +78,7 @@ Następnie Odśwież zależności projektu, aby pliki binarne zostały pobrane.
     </dependencies>
 ```
 
-*Log4J v1.2*
+*Log4J v 1.2*
 
 ```XML
 
@@ -74,9 +92,9 @@ Następnie Odśwież zależności projektu, aby pliki binarne zostały pobrane.
 ```
 
 #### <a name="if-youre-using-gradle"></a>Jeśli używasz narzędzia Gradle...
-Jeśli projekt jest już skonfigurowany do używania narzędzia Gradle dla kompilacji, należy dodać jeden z następujące wiersze do `dependencies` w z plikiem build.gradle:
+Jeśli projekt jest już skonfigurowany do korzystania z Gradle dla kompilacji, Dodaj jeden z następujących wierszy do `dependencies` grupy w pliku Build. Gradle:
 
-Następnie Odśwież zależności projektu, aby pliki binarne zostały pobrane.
+Następnie Odśwież zależności projektu, aby pobrać pliki binarne pobrane.
 
 **Logback**
 
@@ -91,24 +109,24 @@ Następnie Odśwież zależności projektu, aby pliki binarne zostały pobrane.
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j2', version: '2.0.+'
 ```
 
-**Log4J v1.2**
+**Log4J v 1.2**
 
 ```
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j1_2', version: '2.0.+'
 ```
 
 #### <a name="otherwise-"></a>W innym przypadku...
-Postępuj zgodnie z zasadami, aby ręcznie zainstalować zestaw SDK Java usługi Application Insights, Pobierz plik jar (po Maven Central kliknij Link "jar" w sekcji pobierania) dla odpowiednich appendera i dodawanie appendera pobrany plik jar do projektu.
+Postępuj zgodnie z instrukcjami, aby ręcznie zainstalować Application Insights Java SDK, Pobierz plik JAR (po nadejściu na stronie Maven Central kliknij link "Jar" w sekcji pobierania) dla odpowiedniego dołączania i Dodaj pobrany plik JAR dołączonego do projektu.
 
 | Logger | Do pobrania | Biblioteka |
 | --- | --- | --- |
-| Logback |[Appendera Logback Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |applicationinsights-logging-logback |
-| Log4J v2.0 |[Log4J v2 appendera Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j2%22) |applicationinsights-logging-log4j2 |
-| Log4j v1.2 |[Log4J v1.2 appendera Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |applicationinsights-logging-log4j1_2 |
+| Logback |[Logback Dołącz do jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |applicationinsights-logging-logback |
+| Log4J v2.0 |[Log4J v2 — plik JAR](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j2%22) |applicationinsights-logging-log4j2 |
+| Log4j v1.2 |[Log4J v 1.2 dołączanie jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |applicationinsights-logging-log4j1_2 |
 
 
-## <a name="add-the-appender-to-your-logging-framework"></a>Dodawanie appendera do preferowanej struktury rejestrowania
-Aby rozpocząć pobieranie ślady, Scal odpowiedni fragment kodu do pliku konfiguracji mechanizmu Log4J lub Logback: 
+## <a name="add-the-appender-to-your-logging-framework"></a>Dodawanie dołączania do struktury rejestrowania
+Aby rozpocząć pobieranie śladów, Scal odpowiedni fragment kodu z plikiem konfiguracji Log4J lub Logback: 
 
 *Logback*
 
@@ -139,7 +157,7 @@ Aby rozpocząć pobieranie ślady, Scal odpowiedni fragment kodu do pliku konfig
     </Configuration>
 ```
 
-*Log4J v1.2*
+*Log4J v 1.2*
 
 ```XML
 
@@ -153,16 +171,16 @@ Aby rozpocząć pobieranie ślady, Scal odpowiedni fragment kodu do pliku konfig
     </root>
 ```
 
-Appenders usługi Application Insights mogą być przywoływane przez dowolnego skonfigurowanego rejestratora i nie musi to być Rejestrator głównego (jak pokazano w przykładach kodu powyżej).
+Do dołączania Application Insights można odwoływać się za pomocą dowolnego skonfigurowanego rejestratora, a nie musi on być rejestratorem głównym (jak pokazano w powyższym przykładzie kodu).
 
-## <a name="explore-your-traces-in-the-application-insights-portal"></a>Eksploruj Twoje ślady w portalu Application Insights
-Teraz, gdy skonfigurowano projekt, aby wysyłał informacje śledzenia do usługi Application Insights, można wyświetlać i wyszukiwać ślady te w portalu usługi Application Insights w [wyszukiwania] [ diagnostic] bloku.
+## <a name="explore-your-traces-in-the-application-insights-portal"></a>Eksplorowanie śladów w portalu Application Insights
+Teraz, po skonfigurowaniu projektu do wysyłania śladów do Application Insights, można wyświetlić i przeszukać te ślady w portalu Application Insights, w bloku [wyszukiwania][diagnostic] .
 
-Wyjątki przesłany za pośrednictwem rejestratorów będą wyświetlane w portalu jako dane telemetryczne dotyczące wyjątków.
+Wyjątki przesłane za pośrednictwem rejestratorów będą wyświetlane w portalu jako dane telemetryczne wyjątku.
 
-![W portalu Application Insights Otwórz wyszukiwanie](./media/java-trace-logs/01-diagnostics.png)
+![W portalu Application Insights Otwórz pozycję Wyszukaj](./media/java-trace-logs/01-diagnostics.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 [Wyszukiwanie diagnostyczne][diagnostic]
 
 <!--Link references-->

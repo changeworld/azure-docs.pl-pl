@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 04/29/2019
+ms.date: 09/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5460033902b71174dc3a10615811f657081f0e4
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 6760677a94855c259501103a54a96d687c87910b
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186304"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71290969"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Program Azure AD Connect: Konta i uprawnienia
 
@@ -48,10 +48,15 @@ Oprócz tych trzech kont używanych do uruchamiania Azure AD Connect należy ró
 
 - **Konto SQL SA (opcjonalnie)** : służy do tworzenia bazy danych ADSync w przypadku korzystania z pełnej wersji SQL Server.  Ta SQL Server może być lokalna lub zdalna dla Azure AD Connect instalacji.  To konto może być tym samym kontem co administrator przedsiębiorstwa.  Inicjowanie obsługi bazy danych może być teraz wykonywane poza pasmem przez administratora SQL, a następnie instalowane przez administratora Azure AD Connect z prawami właściciela bazy danych.  Aby uzyskać więcej informacji na ten temat, zobacz [instalowanie Azure AD Connect przy użyciu uprawnień administratora delegowanego SQL](how-to-connect-install-sql-delegation.md)
 
+<<<<<<< HEAD
+>[!IMPORTANT]
+> Od kompilacji 1.4. # # #. # nie jest już obsługiwane używanie administratora przedsiębiorstwa lub konta administratora domeny jako konta łącznika AD DS.  Jeśli podczas określania **użycia istniejącego konta**zostanie podjęta próba wprowadzenia konta administratora przedsiębiorstwa lub administratora domeny, zostanie wyświetlony komunikat o błędzie.
+=======
 > [!NOTE]
 > Jest on obsługiwany do zarządzania kontami administracyjnymi używanymi w Azure AD Connect z lasu administracyjnego ESAE (znany również jako "Red Forest").
 > Dedykowane lasy administracyjne umożliwiają organizacjom hostowanie kont administracyjnych, stacji roboczych i grup w środowisku z silniejszymi kontrolami zabezpieczeń niż środowisko produkcyjne.
-> Aby dowiedzieć się więcej na temat dedykowanych lasów administracyjnych, zapoznaj się z podejściem do [projektowania lasów administracyjnych ESAE](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach) .
+> Aby dowiedzieć się więcej na temat dedykowanych lasów administracyjnych, zapoznaj się z [podejściem do projektowania lasów administracyjnych ESAE](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach) .
+>>>>>>> e683a61b0ed62ae739941410f658a127534e2481
 
 ## <a name="installing-azure-ad-connect"></a>Instalowanie programu Azure AD Connect
 Kreator instalacji Azure AD Connect oferuje dwie różne ścieżki:
@@ -184,7 +189,7 @@ Jest to tabela domyślnych, zalecanych i obsługiwanych opcji dla konta usługi 
 
 Legendy
 
-- Opcja pogrubiona wskazuje opcję domyślną i w większości przypadków zalecaną opcją.
+- Opcja **pogrubiona** wskazuje opcję domyślną i w większości przypadków zalecaną opcją.
 - *Kursywa* wskazuje zalecaną opcję, jeśli nie jest opcją domyślną.
 - 2008 — opcja domyślna w przypadku instalacji w systemie Windows Server 2008
 - Opcja niepogrubiona — obsługiwana
@@ -193,7 +198,7 @@ Legendy
 - Autonomiczne — [Autonomiczne zarządzane konto usługi](https://technet.microsoft.com/library/dd548356.aspx)
 - gMSA — [konto usługi zarządzanej przez grupę](https://technet.microsoft.com/library/hh831782.aspx)
 
-| | LocalDB</br>Ekspresowy | LocalDB/LocalSQL</br>Niestandardowa | Zdalne SQL</br>Niestandardowa |
+| | LocalDB</br>Express | LocalDB/LocalSQL</br>Niestandardowy | Zdalne SQL</br>Niestandardowy |
 | --- | --- | --- | --- |
 | **komputer autonomiczny/Grupa robocza** | Nieobsługiwane | **VSA**</br>Konto lokalne (2008)</br>Konto lokalne |  Nieobsługiwane |
 | **komputer przyłączony do domeny** | **VSA**</br>Konto lokalne (2008) | **VSA**</br>Konto lokalne (2008)</br>Konto lokalne</br>Konto domeny</br>sMSA,gMSA | **gMSA**</br>Konto domeny |

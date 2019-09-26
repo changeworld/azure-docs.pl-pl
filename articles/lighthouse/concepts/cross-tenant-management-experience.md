@@ -4,15 +4,15 @@ description: Zarządzanie zasobami delegowanymi przez platformę Azure umożliwi
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 07/11/2019
+ms.date: 09/25/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: f6468e62e9969aa87d51e25ed220bf7d4bed989e
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 17a32d50e2e0330218ff51b849cb4f3aeadb3d13
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971566"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309653"
 ---
 # <a name="cross-tenant-management-experiences"></a>Środowiska zarządzania wieloma dzierżawami
 
@@ -88,6 +88,10 @@ Obecnie środowisko zarządzania między dzierżawcami obsługuje następujące 
   - Upewnij się, że na serwerach działają tylko aplikacje i procesy, które powinny należeć do adaptacyjnego sterowania aplikacjami
   - Monitorowanie zmian ważnych plików i wpisów rejestru przy użyciu monitorowania integralności plików (FIM)
 
+[Wskaźnik na platformie Azure](https://docs.microsoft.com/azure/sentinel/multiple-tenants-service-providers):
+
+- Zarządzanie zasobami wskaźnikowymi platformy Azure w dzierżawach klientów
+
 [Azure Service Health](https://docs.microsoft.com/azure/service-health/):
 
 - Monitoruj kondycję zasobów klientów za pomocą Azure Resource Health
@@ -116,7 +120,7 @@ Obecnie środowisko zarządzania między dzierżawcami obsługuje następujące 
 We wszystkich scenariuszach należy pamiętać o następujących bieżących ograniczeniach:
 
 - Żądania obsługiwane przez Azure Resource Manager można wykonać przy użyciu funkcji zarządzania zasobami delegowanymi przez platformę Azure. Identyfikatory URI operacji dla tych żądań zaczynają `https://management.azure.com`się od. Jednak żądania, które są obsługiwane przez wystąpienie typu zasobu (takie jak dostęp do magazynu kluczy lub dostęp do danych magazynu), nie są obsługiwane przez delegowane zarządzanie zasobami platformy Azure. Identyfikatory URI operacji dla tych żądań zwykle zaczynają się od adresu, który jest unikatowy dla Twojego wystąpienia, `https://myaccount.blob.core.windows.net` takiego `https://mykeyvault.vault.azure.net/`jak lub. Te ostatnie również są zazwyczaj operacjami na danych, a nie operacjami zarządzania. 
-- Przypisania ról muszą używać [wbudowanych ról](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)kontroli dostępu opartej na ROLACH (RBAC). Wszystkie wbudowane role są obecnie obsługiwane przez delegowane zarządzanie zasobami platformy Azure z wyjątkiem właściciela, administratora dostępu użytkowników lub wszelkich wbudowanych ról z uprawnieniami dataactions. [](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) Role niestandardowe i [role administratora klasycznej subskrypcji](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) nie są również obsługiwane.
+- Przypisania ról muszą używać [wbudowanych ról](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)kontroli dostępu opartej na ROLACH (RBAC). Wszystkie wbudowane role są obecnie obsługiwane przez delegowane zarządzanie zasobami platformy Azure z wyjątkiem właściciela, administratora dostępu użytkowników lub wszelkich wbudowanych ról z uprawnieniami [Dataactions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) . Role niestandardowe i [role administratora klasycznej subskrypcji](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) nie są również obsługiwane.
 - Obecnie nie można dołączyć subskrypcji (lub grupy zasobów w ramach subskrypcji) do zarządzania zasobami delegowanymi przez platformę Azure, jeśli subskrypcja używa Azure Databricks. Podobnie, jeśli subskrypcja została zarejestrowana w celu dołączenia do dostawcy zasobów **Microsoft. ManagedServices** , nie będzie można w tej chwili utworzyć obszaru roboczego dla tej subskrypcji.
 
 ## <a name="using-apis-and-management-tools-with-cross-tenant-management"></a>Korzystanie z interfejsów API i narzędzi do zarządzania w ramach zarządzania przez wiele dzierżawców

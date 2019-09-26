@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 69279da93197bcaaf1bf600bc9406287253d74bb
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 08edf6e841dc7d389573d5e5b5ea7e043f750e76
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063278"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71291104"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Samouczek: Dostosowywanie interfejsu środowiska użytkownika w Azure Active Directory B2C
 
@@ -63,14 +63,14 @@ Chociaż pliki można przechowywać na wiele sposobów, w tym samouczku można j
 
 1. Z menu wybierz pozycję **CORS**.
 2. Dla **dozwolonych źródeł**wprowadź `https://your-tenant-name.b2clogin.com`. Zastąp `your-tenant-name` nazwą dzierżawy usługi Azure AD B2C. Na przykład `https://fabrikam.b2clogin.com`. Podczas wprowadzania nazwy dzierżawy należy używać wszystkich małych liter.
-3. W przypadku **dozwolonych metod**zaznacz `GET` opcję `OPTIONS`oba i.
+3. Dla **dozwolonych metod**, `GET`wybierz`PUT`,, `OPTIONS`i.
 4. Dla **dozwolonych nagłówków**Wprowadź gwiazdkę (*).
 5. W przypadku **widocznych nagłówków**Wprowadź gwiazdkę (*).
 6. W obszarze **Maksymalny wiek**wprowadź 200.
 
     ![Strona konfiguracji funkcji CORS w usłudze Azure Blob Storage w Azure Portal](./media/tutorial-customize-ui/enable-cors.png)
 
-5. Kliknij polecenie **Zapisz**.
+5. Kliknij pozycję **Zapisz**.
 
 ### <a name="create-the-customization-files"></a>Tworzenie plików dostosowania
 

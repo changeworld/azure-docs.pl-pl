@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/23/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e39f294f7902eabef401d4c8145f4f19a07f267f
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: ee8a711a867f8abdc831b0d1d9d0b504b1104955
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71224575"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71310125"
 ---
 # <a name="creating-an-incremental-snapshot-preview-for-managed-disks"></a>Tworzenie przyrostowej migawki (wersja zapoznawcza) dla dysków zarządzanych
 
@@ -23,10 +23,11 @@ Istnieje kilka różnic między migawką przyrostową i regularną migawką. Mig
 
 Migawki przyrostowe oferują również funkcję różnicową, która jest unikatowo dostępna dla dysków zarządzanych. Umożliwiają one uzyskanie zmian między dwiema przyrostowymi migawkami tych samych dysków zarządzanych, w dół do poziomu bloku. Można użyć tej funkcji, aby zmniejszyć rozmiary danych podczas kopiowania migawek między regionami.
 
-Jeśli jeszcze nie zarejestrowano się w wersji zapoznawczej i chcesz zacząć korzystać z migawek przyrostowych, Wyślij wiadomość AzureDisks@microsoft.com e-mail na adres, aby uzyskać dostęp do publicznej wersji zapoznawczej.
+Jeśli jeszcze nie zarejestrowano się w wersji zapoznawczej i chcesz zacząć korzystać z migawek przyrostowych, Wyślij AzureDisks@microsoft.com wiadomość e-mail na adres, aby uzyskać dostęp do publicznej wersji zapoznawczej.
 
 ## <a name="restrictions"></a>Ograniczenia
 
+- Migawki przyrostowe są obecnie dostępne tylko w regionie zachodnie stany USA.
 - Nie można obecnie utworzyć migawek przyrostowych po zmianie rozmiaru dysku.
 - Obecnie nie można przenosić migawek przyrostowych między subskrypcjami.
 - Obecnie można generować identyfikatory URI SAS maksymalnie pięć migawek określonej rodziny migawek w danym momencie.
@@ -36,7 +37,7 @@ Jeśli jeszcze nie zarejestrowano się w wersji zapoznawczej i chcesz zacząć k
 
 ## <a name="powershell"></a>PowerShell
 
-Za pomocą Azure PowerShell można utworzyć przyrostową migawkę. Najnowszą wersję programu PowerShell można zainstalować lokalnie. Potrzebna będzie Najnowsza wersja Azure PowerShell, następujące polecenie zainstaluje je lub zaktualizuje istniejącą instalację do najnowszej wersji:
+Za pomocą Azure PowerShell można utworzyć przyrostową migawkę. Potrzebna będzie Najnowsza wersja Azure PowerShell, następujące polecenie zainstaluje je lub zaktualizuje istniejącą instalację do najnowszej wersji:
 
 ```PowerShell
 Install-Module -Name Az -AllowClobber -Scope CurrentUser
@@ -44,22 +45,24 @@ Install-Module -Name Az -AllowClobber -Scope CurrentUser
 
 Po zakończeniu instalacji zaloguj się do sesji programu PowerShell przy użyciu `az login`polecenia.
 
+Aby utworzyć przyrostową migawkę z Azure PowerShell, należy ustawić konfigurację przy użyciu `-Incremental` parametru [New-AzSnapShotConfig](https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) z parametrem, a następnie przekazać ją jako zmienną do `-Snapshot` [nowego-AzSnapshot](https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) za pomocą parametru.
+
 `<yourDiskNameHere>`Zastąp `<yourResourceGroupNameHere>`wartości, `<yourDesiredSnapShotNameHere>` i wartościami, aby utworzyć przyrostową migawkę, możesz użyć następującego skryptu:
 
 ```PowerShell
 # Get the disk that you need to backup by creating an incremental snapshot
 $yourDisk = Get-AzDisk -DiskName <yourDiskNameHere> -ResourceGroupName <yourResourceGroupNameHere>
 
-# Create an incremental snapshot by setting:
-# 1. Incremental property
-# 2. SourceUri property with the value of the Id property of the disk
+# Create an incremental snapshot by setting the SourceUri property with the value of the Id property of the disk
 $snapshotConfig=New-AzSnapshotConfig -SourceUri $yourDisk.Id -Location $yourDisk.Location -CreateOption Copy -Incremental 
 New-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere> -SnapshotName <yourDesiredSnapshotNameHere> -Snapshot $snapshotConfig 
+```
 
-# You can identify incremental snapshots of the same disk by using the SourceResourceId and SourceUniqueId properties of snapshots. 
-# SourceResourceId is the Azure Resource Manager resource ID of the parent disk. 
-# SourceUniqueId is the value inherited from the UniqueId property of the disk. If you delete a disk and then create a disk with the same name, the value of the UniqueId property will change. 
-# Following script shows how to get all the incremental snapshots in a resource group of same disk
+Można zidentyfikować przyrostowe migawki z tego samego dysku przy użyciu `SourceResourceId` `SourceUniqueId` i właściwości migawek. `SourceResourceId`jest Azure Resource Manager IDENTYFIKATORem zasobu dysku nadrzędnego. `SourceUniqueId`jest wartością dziedziczoną z `UniqueId` właściwości dysku. Jeśli chcesz usunąć dysk, a następnie utworzyć nowy dysk o tej samej nazwie, wartość `UniqueId` właściwości zostanie zmieniona.
+
+Za pomocą `SourceResourceId` programu i `SourceUniqueId` można utworzyć listę wszystkich migawek skojarzonych z określonym dyskiem. Zamień `<yourResourceGroupNameHere>` na wartość, a następnie użyj poniższego przykładu, aby wyświetlić listę istniejących migawek przyrostowych:
+
+```PowerShell
 $snapshots = Get-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere>
 
 $incrementalSnapshots = New-Object System.Collections.ArrayList
@@ -73,6 +76,46 @@ foreach ($snapshot in $snapshots)
 }
 
 $incrementalSnapshots
+```
+
+## <a name="cli"></a>Interfejs wiersza polecenia
+
+Można utworzyć przyrostową migawkę przy użyciu interfejsu wiersza polecenia platformy Azure, która będzie potrzebna w najnowszej wersji interfejsu wiersza polecenia platformy Azure. Następujące polecenie zainstaluje lub zaktualizuje istniejącą instalację do najnowszej wersji:
+
+```PowerShell
+Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'
+```
+
+Aby utworzyć migawkę przyrostową, użyj [AZ Snapshot Create](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create) z `--incremental` parametrem.
+
+Poniższy przykład obejmuje tworzenie przyrostowych migawek, `<yourDesiredSnapShotNameHere>`zastępowanie `<yourResourceGroupNameHere>`,`<exampleDiskName>`,, `<exampleLocation>` i przy użyciu własnych wartości, a następnie uruchomienie przykładu:
+
+```bash
+sourceResourceId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[id]' -o tsv)
+
+az snapshot create -g <yourResourceGroupNameHere> \
+-n <yourDesiredSnapShotNameHere> \
+-l <exampleLocation> \
+--source "$sourceResourceId" \
+--incremental
+```
+
+Można zidentyfikować przyrostowe migawki z tego samego dysku przy użyciu `SourceResourceId` `SourceUniqueId` i właściwości migawek. `SourceResourceId`jest Azure Resource Manager IDENTYFIKATORem zasobu dysku nadrzędnego. `SourceUniqueId`jest wartością dziedziczoną z `UniqueId` właściwości dysku. Jeśli chcesz usunąć dysk, a następnie utworzyć nowy dysk o tej samej nazwie, wartość `UniqueId` właściwości zostanie zmieniona.
+
+Za pomocą `SourceResourceId` programu i `SourceUniqueId` można utworzyć listę wszystkich migawek skojarzonych z określonym dyskiem. Poniższy przykład wyświetla listę wszystkich migawek przyrostowych skojarzonych z określonym dyskiem, ale wymaga pewnego Instalatora.
+
+Ten przykład używa JQ do wykonywania zapytań dotyczących danych. Aby uruchomić ten przykład, należy [zainstalować JQ](https://stedolan.github.io/jq/download/).
+
+`<yourResourceGroupNameHere>` Zastąp `<exampleDiskName>` wartości i wartościami, a następnie użyj poniższego przykładu, aby wyświetlić listę istniejących migawek przyrostowych, o ile również zainstalowano JQ:
+
+```bash
+sourceUniqueId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[uniqueId]' -o tsv)
+
+ 
+sourceResourceId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[id]' -o tsv)
+
+az snapshot list -g <yourResourceGroupNameHere> -o json \
+| jq -cr --arg SUID "$sourceUniqueId" --arg SRID "$sourceResourceId" '.[] | select(.incremental==true and .creationData.sourceUniqueId==$SUID and .creationData.sourceResourceId==$SRID)'
 ```
 
 ## <a name="resource-manager-template"></a>Szablon usługi Resource Manager
@@ -111,32 +154,6 @@ Za pomocą szablonów Azure Resource Manager można także utworzyć przyrostow�
 }
 ```
 
-## <a name="cli"></a>Interfejs wiersza polecenia
-
-Migawkę przyrostową można utworzyć za pomocą interfejsu wiersza polecenia platformy Azure przy użyciu polecenia [AZ Snapshot Create](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create). Przykładowe polecenie będzie wyglądać następująco:
-
-```bash
-az snapshot create -g <exampleResourceGroup> \
--n <exampleSnapshotName> \
--l <exampleLocation> \
---source <exampleVMId> \
---incremental
-```
-
-Można również zidentyfikować migawki przyrostowe w interfejsie wiersza polecenia przy użyciu `--query` parametru polecenia [AZ Snapshot show](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-show). Tego parametru można użyć do bezpośredniego zapytania o właściwości **Identyfikator sourceresourceid** i **SourceUniqueId** migawek. Identyfikator sourceresourceid jest IDENTYFIKATORem zasobu Azure Resource Manager dysku nadrzędnego. **SourceUniqueId** to wartość dziedziczona ze właściwości **unikatowego** dysku. Jeśli usuniesz dysk, a następnie utworzysz dysk o tej samej nazwie, wartość właściwości **unikatowej** zmieni się.
-
-Przykłady tych zapytań będą wyglądać następująco:
-
-```bash
-az snapshot show -g <exampleResourceGroup> \
--n <yourSnapShotName> \
---query [creationData.sourceResourceId] -o tsv
-
-az snapshot show -g <exampleResourceGroup> \
--n <yourSnapShotName> \
---query [creationData.sourceUniqueId] -o tsv
-```
-
 ## <a name="next-steps"></a>Następne kroki
 
-Jeśli jeszcze nie zarejestrowano się w wersji zapoznawczej i chcesz zacząć korzystać z migawek przyrostowych, Wyślij wiadomość AzureDisks@microsoft.com e-mail na adres, aby uzyskać dostęp do publicznej wersji zapoznawczej.
+Jeśli jeszcze nie zarejestrowano się w wersji zapoznawczej i chcesz zacząć korzystać z migawek przyrostowych, Wyślij AzureDisks@microsoft.com wiadomość e-mail na adres, aby uzyskać dostęp do publicznej wersji zapoznawczej.

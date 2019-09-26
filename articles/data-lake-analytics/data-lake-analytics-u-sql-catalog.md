@@ -1,6 +1,6 @@
 ---
-title: Rozpoczynanie pracy przy użyciu wykazu języka U-SQL w usłudze Azure Data Lake Analytics
-description: Dowiedz się, jak używać katalogu U-SQL do udostępniania kodu i danych.
+title: Użyj wykazu U-SQL w Azure Data Lake Analytics
+description: Dowiedz się, jak udostępniać kod i dane przy użyciu wykazu U-SQL.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
@@ -9,20 +9,20 @@ ms.reviewer: jasonwhowell
 ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.topic: conceptual
 ms.date: 05/09/2017
-ms.openlocfilehash: a6faa7037ccbacc0547401dd52bb3b19abd1c474
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: afd3ca24f2f8232084523e1356d63abce1684b8d
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60813353"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309878"
 ---
-# <a name="get-started-with-the-u-sql-catalog-in-azure-data-lake-analytics"></a>Rozpoczynanie pracy przy użyciu wykazu języka U-SQL w usłudze Azure Data Lake Analytics
+# <a name="get-started-with-the-u-sql-catalog-in-azure-data-lake-analytics"></a>Wprowadzenie do wykazu U-SQL w Azure Data Lake Analytics
 
-## <a name="create-a-tvf"></a>Tworzenie funkcji TVF
+## <a name="create-a-tvf"></a>Utwórz TVF
 
-W poprzednim skrypcie U-SQL powtarzany jest użycie WYODRĘBNIANIA można odczytać z tym samym pliku źródłowym. Przy użyciu języka U-SQL funkcji zwracającej tabelę (TVF) umożliwiająca Hermetyzowanie danych w celu wykorzystania w przyszłości.  
+W poprzednim skrypcie U-SQL powtórzono użycie WYODRĘBNIAnia do odczytu z tego samego pliku źródłowego. Za pomocą funkcji zwracającej tabelę w języku U-SQL (TVF) można hermetyzować dane do użytku w przyszłości.  
 
-Poniższy skrypt tworzy funkcji TVF o nazwie `Searchlog()` w domyślnej bazy danych i schemat:
+Poniższy skrypt tworzy TVF o nazwie wywoływanej `Searchlog()` w domyślnej bazie danych i schemacie:
 
 ```
 DROP FUNCTION IF EXISTS Searchlog;
@@ -53,7 +53,7 @@ RETURN;
 END;
 ```
 
-Poniższy skrypt pokazuje, jak używać funkcji TVF, która została zdefiniowana w poprzednim skrypcie:
+Poniższy skrypt pokazuje, jak używać TVF, który został zdefiniowany w poprzednim skrypcie:
 
 ```
 @res =
@@ -72,9 +72,9 @@ OUTPUT @res
 
 ## <a name="create-views"></a>Tworzenie widoków
 
-Jeśli wyrażenie jedno zapytanie, zamiast funkcji TVF służy widok U-SQL do hermetyzacji to wyrażenie.
+Jeśli masz pojedyncze wyrażenie zapytania, a nie TVF, możesz użyć widoku U-SQL do hermetyzacji tego wyrażenia.
 
-Poniższy skrypt tworzy widok o nazwie `SearchlogView` w domyślnej bazy danych i schemat:
+Poniższy skrypt tworzy widok o nazwie `SearchlogView` w domyślnej bazie danych i schemacie:
 
 ```
 DROP VIEW IF EXISTS SearchlogView;
@@ -91,7 +91,7 @@ CREATE VIEW SearchlogView AS
 USING Extractors.Tsv();
 ```
 
-Poniższy skrypt pokazuje użycie zdefiniowano widoku:
+Poniższy skrypt demonstruje użycie zdefiniowanego widoku:
 
 ```
 @res =
@@ -109,9 +109,9 @@ OUTPUT @res
 ```
 
 ## <a name="create-tables"></a>Tworzenie tabel
-Zgodnie z tabelami relacyjnymi bazami danych przy użyciu języka U-SQL można utworzyć tabeli ze wstępnie zdefiniowanym schematem lub utworzyć tabelę, która wnioskuje schemat z zapytania, który wypełnia tabeli (znany także jako CREATE TABLE AS SELECT lub CTAS).
+Podobnie jak w przypadku tabel relacyjnych baz danych, za pomocą języka U-SQL można utworzyć tabelę ze wstępnie zdefiniowanym schematem lub utworzyć tabelę, która wnioskuje schemat z zapytania, które wypełnia tabelę (nazywaną również CREATE TABLE jako SELECT lub CTAS).
 
-Utwórz bazę danych i tabel za pomocą następującego skryptu:
+Utwórz bazę danych i dwie tabele przy użyciu następującego skryptu:
 
 ```
 DROP DATABASE IF EXISTS SearchLogDb;
@@ -143,9 +143,9 @@ CREATE TABLE SearchLog2(
 ```
 
 ## <a name="query-tables"></a>Wykonywanie zapytań dotyczących tabel
-Można tworzyć zapytania tabelami, takie jak te utworzone w poprzednim skrypcie tak samo jak zapytania plików danych. Zamiast tworzenia zestawu wierszy za pomocą WYODRĘBNIANIA, możesz teraz mogą odwoływać się do nazwy tabeli.
+Można wykonywać zapytania dotyczące tabel, takich jak te utworzone w poprzednim skrypcie, w taki sam sposób, jak pliki danych. Zamiast tworzenia zestawu wierszy przy użyciu WYODRĘBNIAnia, możesz teraz odwołać się do nazwy tabeli.
 
-Aby zapoznać się z tabel, zmodyfikuj skryptu transformacji, której użyto poprzednio:
+Aby odczytywać z tabel, zmodyfikuj użyty wcześniej skrypt przekształcenia:
 
 ```
 @rs1 =
@@ -168,7 +168,7 @@ OUTPUT @res
 ```
 
  >[!NOTE]
- >Obecnie nie można uruchomić SELECT w tabeli w ten sam skrypt, której została utworzona tabela.
+ >Obecnie nie można uruchomić SELECT w tabeli w tym samym skrypcie, w której utworzono tabelę.
 
 ## <a name="next-steps"></a>Następne kroki
 * [Omówienie usługi Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)

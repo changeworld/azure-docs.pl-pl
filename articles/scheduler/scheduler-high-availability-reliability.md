@@ -9,66 +9,66 @@ ms.reviewer: klam
 ms.assetid: 5ec78e60-a9b9-405a-91a8-f010f3872d50
 ms.topic: article
 ms.date: 08/16/2016
-ms.openlocfilehash: 50ab6cfefe4a7df9d671e7fd1287aa16b803f260
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3cc15d173ad735d77505f636bd230e0876371271
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64702889"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300928"
 ---
 # <a name="high-availability-and-reliability-for-azure-scheduler"></a>Wysoka dostępność i niezawodność usługi Azure Scheduler
 
 > [!IMPORTANT]
-> Usługa [Azure Logic Apps](../logic-apps/logic-apps-overview.md) zastępuje usługę Azure Scheduler, która zostanie wycofana. Zamiast niej [spróbuj używać usługi Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) do planowania zadań. 
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) zastępuje usługę Azure Scheduler, która jest [wycofywana](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Aby kontynuować pracę z zadaniami skonfigurowanymi w usłudze Scheduler, [Przeprowadź migrację do Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) najszybciej, jak to możliwe. 
 
-Usługa Azure Scheduler umożliwia zarówno [wysokiej dostępności](https://docs.microsoft.com/azure/architecture/guide/pillars#availability) i niezawodność zadań. Aby uzyskać więcej informacji, zobacz [umowa SLA dla usługi Scheduler](https://azure.microsoft.com/support/legal/sla/scheduler).
+Usługa Azure Scheduler zapewnia [wysoką dostępność](https://docs.microsoft.com/azure/architecture/guide/pillars#availability) i niezawodność zadań. Aby uzyskać więcej informacji, zobacz [Umowa SLA dla usługi Scheduler](https://azure.microsoft.com/support/legal/sla/scheduler).
 
 ## <a name="high-availability"></a>Wysoka dostępność
 
-Usługa Azure Scheduler jest [o wysokiej dostępności] i korzysta z obu wdrożenia magazynu geograficznie nadmiarowego usługi, jak i replikacja geograficzna regionalne zadania.
+Usługa Azure Scheduler to [Wysoka dostępność] i używa zarówno geograficznie nadmiarowego wdrożenia usługi, jak i geograficznej replikacji zadań.
 
-### <a name="geo-redundant-service-deployment"></a>Wdrożenie usługi magazynu geograficznie nadmiarowego
+### <a name="geo-redundant-service-deployment"></a>Wdrożenie usługi geograficznie nadmiarowej
 
-Usługa Azure Scheduler jest dostępna w witrynie Azure portal w prawie [co regionie geograficznym obsługiwanym przez platformę Azure już dziś](https://azure.microsoft.com/global-infrastructure/regions/#services). Dlatego jeśli Centrum danych platformy Azure w regionie hostowanej staje się niedostępny, nadal mogą używać usługi Azure Scheduler, ponieważ możliwości trybu failover usługi Scheduler dostępne w innym centrum danych.
+Usługa Azure Scheduler jest dostępna w Azure Portal w niemal [każdym regionie geograficznym obecnie obsługiwanym przez platformę Azure](https://azure.microsoft.com/global-infrastructure/regions/#services). W związku z tym, jeśli centrum danych platformy Azure w hostowanym regionie stanie się niedostępne, nadal możesz korzystać z usługi Azure Scheduler, ponieważ możliwości pracy w trybie failover w usłudze udostępniają harmonogram z innego centrum danych.
 
-### <a name="geo-regional-job-replication"></a>Replikacja geograficzna regionalne zadania
+### <a name="geo-regional-job-replication"></a>Geograficzna replikacja zadań
 
-Zadania w usłudze Azure Scheduler są replikowane między regionami platformy Azure. Dlatego jeśli jeden region ulegnie awarii, usługa Azure Scheduler w trybie Failover i upewnia się, że zadanie zostanie uruchomiona w innym centrum danych w sparowanym regionie geograficznym.
+Twoje własne zadania w usłudze Azure Scheduler są replikowane w regionach platformy Azure. Jeśli więc w jednym regionie wystąpi awaria, usługa Azure Scheduler przejdzie w tryb failover i upewni się, że zadanie jest uruchamiane z innego centrum danych w sparowanym regionie geograficznym.
 
-Na przykład możesz utworzyć zadanie w południowo-środkowe stany USA, Azure Scheduler automatycznie replikuje dane zadania w północno-środkowe stany USA. Jeśli wystąpi awaria w południowo-środkowe stany USA, Azure Scheduler uruchamia zadanie w północno-środkowe stany USA. 
+Jeśli na przykład utworzysz zadanie w regionie Południowo-środkowe stany USA, usługa Azure Scheduler automatycznie zreplikuje to zadanie w Północno-środkowe stany USA. Jeśli wystąpi awaria w Południowo-środkowe stany USA, usługa Azure Scheduler uruchamia to zadanie w Północno-środkowe stany USA. 
 
-![Replikacja geograficzna regionalne zadania](./media/scheduler-high-availability-reliability/scheduler-high-availability-reliability-image1.png)
+![Geograficzna replikacja zadań](./media/scheduler-high-availability-reliability/scheduler-high-availability-reliability-image1.png)
 
-Usługa Azure Scheduler sprawia, że się, że danych pozostaje w obrębie regionu ten sam, ale szersze geograficznym na wypadek awarii odbywa się w usłudze Azure. Nie trzeba więc zduplikowane zadań, jeśli chcesz tylko wysokiej dostępności. Usługa Azure Scheduler automatycznie zapewnia wysoką dostępność dla zadań.
+Usługa Azure Scheduler gwarantuje również, że dane pozostają w tym samym, ale szerszym regionie geograficznym, tylko w przypadku awarii na platformie Azure. W związku z tym nie trzeba duplikować zadań, jeśli chcesz uzyskać wysoką dostępność. Usługa Azure Scheduler automatycznie zapewnia wysoką dostępność dla zadań.
 
 ## <a name="reliability"></a>Niezawodność
 
-Usługa Azure Scheduler gwarantuje swój własny wysokiej dostępności, ale trwa innego podejścia do zadań utworzonych przez użytkownika. Na przykład załóżmy, że zadanie wywołuje punkt końcowy HTTP, który jest niedostępny. Usługa Azure Scheduler próbuje nadal pomyślnie uruchomić zadanie, dając alternatywnych sposobów obsługi błędów: 
+Usługa Azure Scheduler gwarantuje własną wysoką dostępność, ale ma inne podejście do zadań tworzonych przez użytkownika. Załóżmy na przykład, że zadanie wywołuje punkt końcowy HTTP, który jest niedostępny. Usługa Azure Scheduler nadal próbuje uruchomić zadanie pomyślnie, oferując alternatywne sposoby obsługi niepowodzeń: 
 
-* Skonfiguruj zasady ponawiania prób.
+* Skonfiguruj zasady ponawiania.
 * Skonfiguruj alternatywne punkty końcowe.
 
 <a name="retry-policies"></a>
 
 ### <a name="retry-policies"></a>Zasady ponawiania prób
 
-Usługa Azure Scheduler umożliwia konfigurowanie zasad ponawiania prób. Jeśli zadanie nie powiedzie się, następnie domyślnie harmonogramu ponawia próbę zadania, cztery razy w odstępach 30 sekund. Możesz ustawić te zasady ponawiania wyższe, takie jak 10 razy w odstępach 30 sekund lub mniej agresywne, takie jak dwa razy na codziennie.
+Usługa Azure Scheduler umożliwia skonfigurowanie zasad ponawiania prób. Jeśli zadanie nie powiedzie się, domyślnie usługa Scheduler ponawia próbę wykonania zadania cztery razy w odstępach 30-sekundowych. Te zasady ponawiania można bardziej agresywnie, na przykład 10 razy w odstępach 30-sekundowych lub mniej agresywnych, takich jak dwa razy w dziennych odstępach czasu.
 
-Na przykład załóżmy, że należy utworzyć zadanie co tydzień, który wywołuje punkt końcowy HTTP. Jeśli punkt końcowy HTTP będą niedostępne przez kilka godzin, podczas wykonywania zadania, nie można oczekiwać innego tygodnia dla zadanie zostanie uruchomione ponownie, która wynika z faktu, domyślną zasadę ponownych prób nie będzie działać w tym przypadku. Tak możesz chcieć zmienić zasady ponawiania standard, aby się zdarzyć ponownych prób, na przykład co trzy godziny, a nie co 30 sekund. 
+Załóżmy na przykład, że tworzysz cotygodniowe zadanie, które wywołuje punkt końcowy HTTP. Jeśli punkt końcowy HTTP stanie się niedostępny przez kilka godzin, gdy zadanie zostanie uruchomione, możesz nie chcieć czekać w innym tygodniu, co dzieje się, ponieważ domyślne zasady ponawiania nie będą działać w tym przypadku. W związku z tym możesz chcieć zmienić standardowe zasady ponawiania, aby ponowić próbę, na przykład co trzy godziny, a nie co 30 sekund. 
 
 Aby dowiedzieć się, jak skonfigurować zasady ponawiania, zobacz [retryPolicy](scheduler-concepts-terms.md#retrypolicy).
 
 ### <a name="alternate-endpoints"></a>Alternatywne punkty końcowe
 
-Jeśli zadanie usługi Azure Scheduler wywołuje punkt końcowy, który jest niedostępny, mimo zasady ponawiania, harmonogram jest powraca do alternatywnego punktu końcowego, który może obsłużyć takie błędy. Tak Jeśli skonfigurowano ten punkt końcowy usługi Scheduler wywołuje tego punktu końcowego, co sprawia, że własne zadania o wysokiej dostępności po zdarzają się błędy.
+Jeśli zadanie usługi Azure Scheduler wywoła punkt końcowy, który jest nieosiągalny, nawet po ponownym uruchomieniu zasad, usługa Scheduler powróci do alternatywnego punktu końcowego, który może obsłużyć takie błędy. Dlatego w przypadku skonfigurowania tego punktu końcowego usługa Scheduler wywołuje ten punkt końcowy, co sprawia, że własne zadania mają wysoką dostępność w przypadku wystąpienia awarii.
 
-Na przykład ten diagram przedstawia, jak harmonogram obowiązują zasady ponawiania podczas wywoływania usługi sieci web w Nowym Jorku. Jeśli ponowne próby się nie powieść, harmonogram sprawdza punkcie końcowym alternate. Jeśli istnieje punkt końcowy, rozpoczyna się harmonogram wysyłania żądań do alternatywnego punktu końcowego. Te same zasady ponawiania dotyczy oryginalnej operacji i alternatywne działanie.
+Na przykład na tym diagramie przedstawiono, jak harmonogram postępuje zgodnie z zasadami ponawiania podczas wywoływania usługi sieci Web w Nowym Jorku. Jeśli ponowna próba nie powiedzie się, usługa Scheduler sprawdza alternatywny punkt końcowy. Jeśli punkt końcowy istnieje, usługa Scheduler zacznie wysyłać żądania do alternatywnego punktu końcowego. Te same zasady ponawiania odnoszą się do oryginalnej akcji i alternatywnej akcji.
 
-![Zachowanie usługi Scheduler za pomocą zasad ponawiania i punkcie końcowym alternate](./media/scheduler-high-availability-reliability/scheduler-high-availability-reliability-image2.png)
+![Zachowanie usługi Scheduler z zasadami ponawiania i alternatywnym punktem końcowym](./media/scheduler-high-availability-reliability/scheduler-high-availability-reliability-image2.png)
 
-Typ akcji dla alternatywnych akcji może się różnić od oryginalnej operacji. Na przykład mimo że oryginalnej operacji wywołuje punkt końcowy HTTP, alternatywne działanie może on rejestrować błędy przy użyciu kolejki magazynu, kolejki usługi Service Bus lub akcji tematu magistrali usług.
+Typ akcji dla akcji alternatywnej może się różnić od oryginalnej akcji. Na przykład mimo że oryginalna akcja wywołuje punkt końcowy HTTP, alternatywna akcja może rejestrować błędy przy użyciu kolejki magazynu, kolejki Service Bus lub akcji tematu Service Bus.
 
-Aby dowiedzieć się, jak skonfigurować alternatywne punktu końcowego, zobacz [errorAction](scheduler-concepts-terms.md#error-action).
+Aby dowiedzieć się, jak skonfigurować alternatywny punkt końcowy, zobacz [ErrorAction](scheduler-concepts-terms.md#error-action).
 
 ## <a name="see-also"></a>Zobacz także
 

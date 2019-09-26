@@ -5,21 +5,22 @@ ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.openlocfilehash: 5b482d00990add365a90f36bf6e8d047dc50efc0
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.date: 09/25/2019
+ms.openlocfilehash: ea7880d051303afad01ad8ba4a2d68d7331c6a89
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467816"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71291142"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Praca z datami w usłudze Azure Cosmos DB
 Usługa Azure Cosmos DB zapewnia elastyczność schematu i rozbudowane indeksowanie za pomocą macierzystej [JSON](https://www.json.org) modelu danych. Wszystkie zasoby usługi Azure Cosmos DB, w tym baz danych, kontenerów, dokumenty i procedury składowane są modelowane i przechowywane jako dokumenty JSON. Jako wymaganie do przenośnego, JSON (i Azure Cosmos DB) obsługuje tylko niewielki zestaw typów podstawowych: Ciąg, liczba, wartość logiczna, tablica, obiekt i wartość null. Jednak JSON jest elastyczny i umożliwia deweloperom i struktur, do reprezentowania bardziej złożonych typów, przy użyciu tych wartości pierwotnych i tworzenie ich jako obiekty i tablice. 
 
-Oprócz podstawowych typów wiele aplikacji wymaga [daty/godziny](https://msdn.microsoft.com/library/system.datetime(v=vs.110).aspx) typu do reprezentowania dat i sygnatury czasowe. W tym artykule opisano, jak deweloperzy mogą przechowywanie, pobieranie i zapytania dat w usłudze Azure Cosmos DB przy użyciu zestawu .NET SDK.
+Oprócz typów podstawowych wiele aplikacji wymaga typu DateTime do reprezentowania dat i sygnatur czasowych. W tym artykule opisano, jak deweloperzy mogą przechowywanie, pobieranie i zapytania dat w usłudze Azure Cosmos DB przy użyciu zestawu .NET SDK.
 
 ## <a name="storing-datetimes"></a>Przechowywanie Data/Godzina
-Domyślnie [zestawu SDK usługi Azure Cosmos DB](sql-api-sdk-dotnet.md) serializuje wartości daty/godziny jako [ISO 8601](https://www.iso.org/iso/catalogue_detail?csnumber=40874) ciągów. Większość aplikacji można użyć domyślnego ciągu reprezentującego daty/godziny z następujących powodów:
+
+Azure Cosmos DB należy do zakresu typów JSON, które nie zawierają typu DateTime. Dlatego w Azure Cosmos DB daty muszą być przechowywane jako ciągi. Obecnie Azure Cosmos DB nie obsługuje lokalizacji dat. Zalecany format ciągów DateTime w Azure Cosmos DB jest `YYYY-MM-DDThh:mm:ss.sssZ` następujący po standardzie ISO 8601 UTC. Formatowanie ciągów w tym formacie umożliwi lexicographically dat sortowania. Logika do obsługi dat innych niż UTC musi być zdefiniowana przez klienta. Większość aplikacji można użyć domyślnego ciągu reprezentującego daty/godziny z następujących powodów:
 
 * Można porównać ciągi i względne uporządkowanie wartości daty/godziny jest zachowywana, gdy są one przekształcane na ciągi. 
 * To podejście nie wymaga niestandardowego kodu ani atrybutów do konwersji do formatu JSON.

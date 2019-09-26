@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4d03e5ee5faf39425e1bf927a3c0557b0ad01b82
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: e629cbdce55f236e095f606f56adec453b0b17c7
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840108"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299861"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Samouczek: Tworzenie i wdrażanie niestandardowych modułów IoT Edge
 
@@ -27,13 +27,13 @@ IoT Edge Hub ułatwia komunikację modułu z modułem. Używanie Centrum IoT Edg
 Chcemy, aby IoT Edge urządzenie miało cztery rzeczy dla nas:
 
 * Odbieranie danych z urządzeń liścia
-* Przewidywanie pozostałego czasu eksploatacji dla urządzenia, które wysłało dane
+* Przewidywanie pozostałego okresu użytkowania (pozostałego czasu eksploatacji) dla urządzenia, które wysłało dane
 * Wyślij komunikat z pozostałego czasu eksploatacji tylko dla urządzenia do IoT Hub (Ta funkcja może zostać zmodyfikowana tak, aby dane były wysyłane tylko wtedy, gdy pozostałego czasu eksploatacji spadnie poniżej pewnego poziomu)
 * Zapisz dane urządzenia liścia w pliku lokalnym na urządzeniu IoT Edge. Ten plik danych jest okresowo przekazywany do IoT Hub przez przekazanie pliku w celu uściślenia szkolenia modelu uczenia maszynowego. Używanie przekazywania plików zamiast stałego przesyłania strumieniowego wiadomości jest tańsze.
 
 Aby wykonać te zadania, używamy trzech modułów niestandardowych:
 
-* **Klasyfikator pozostałego czasu eksploatacji:** Moduł turboFanRulClassifier utworzony podczas uczenia [i wdrażania modelu Azure Machine Learning](tutorial-machine-learning-edge-04-train-model.md) jest standardowym modułem uczenia maszynowego, który udostępnia dane wejściowe o nazwie "amlInput" i dane wyjściowe o nazwie "amlOutput". "AmlInput" oczekuje, że dane wejściowe wyglądają dokładnie podobnie jak dane wejściowe wysyłane do usługi sieci Web opartej na ACI. Podobnie "amlOutput" zwraca te same dane, co usługa sieci Web.
+* **Klasyfikator pozostałego czasu eksploatacji:** Moduł turboFanRulClassifier utworzony podczas [uczenia i wdrażania modelu Azure Machine Learning](tutorial-machine-learning-edge-04-train-model.md) jest standardowym modułem uczenia maszynowego, który udostępnia dane wejściowe o nazwie "amlInput" i dane wyjściowe o nazwie "amlOutput". "AmlInput" oczekuje, że dane wejściowe wyglądają dokładnie podobnie jak dane wejściowe wysyłane do usługi sieci Web opartej na ACI. Podobnie "amlOutput" zwraca te same dane, co usługa sieci Web.
 
 * **Avro:** Ten moduł odbiera komunikaty w danych wejściowych "avroModuleInput" i utrzymuje komunikat w formacie Avro na dysku w celu późniejszego przekazania do IoT Hub.
 
@@ -56,7 +56,7 @@ Kroki opisane w tym artykule są zwykle wykonywane przez dewelopera chmury.
 
 ## <a name="create-a-new-iot-edge-solution"></a>Utwórz nowe rozwiązanie IoT Edge
 
-Podczas wykonywania drugiego z naszych dwóch Azure Notebooks utworzyliśmy i opublikowano obraz kontenera zawierający nasz model pozostałego czasu eksploatacji. Azure Machine Learning w ramach procesu tworzenia obrazu, który jest zbudowany w kawałkach, aby można było wdrożyć obraz jako moduł Azure IoT Edge. W tym kroku utworzymy rozwiązanie Azure IoT Edge przy użyciu modułu "Azure Machine Learning" i wskażesz obraz opublikowany przy użyciu Azure Notebooks.
+Podczas wykonywania drugiego z naszych dwóch Azure Notebooks utworzyliśmy i opublikowano obraz kontenera zawierający nasz model pozostałego czasu eksploatacji. Azure Machine Learning w ramach procesu tworzenia obrazu pakuje ten model, dzięki czemu obraz jest wdrażany jako moduł Azure IoT Edge. W tym kroku utworzymy rozwiązanie Azure IoT Edge przy użyciu modułu "Azure Machine Learning" i wskażesz obraz opublikowany przy użyciu Azure Notebooks.
 
 1. Otwórz sesję pulpitu zdalnego na komputerze deweloperskim.
 
@@ -322,7 +322,7 @@ Moduł zapisywania Avro ma dwie obowiązki w naszym rozwiązaniu, do przechowywa
 
 1. Po wyświetleniu monitu wybierz pozycję **wiersz polecenia**.
 
-1. Otwórz nową powłokę terminalu, > **Nowy**Terminal terminalu.
+1. Otwórz nową powłokę **terminalu,**  > **Nowy**Terminal terminalu.
 
 1. Kliknij prawym przyciskiem myszy folder modules w Visual Studio Code i wybierz polecenie **Dodaj moduł IoT Edge**.
 
@@ -639,7 +639,7 @@ W przypadku routera i klasyfikatora oczekuje się otrzymywania zwykłych komunik
 
 13. Wybierz opcję **trasa testowa**. Jeśli test zakończy się pomyślnie, zobaczysz komunikat pasujący do zapytania.
 
-14. Kliknij polecenie **Zapisz**.
+14. Kliknij pozycję **Zapisz**.
 
 #### <a name="update-turbofandevicetostorage-route"></a>Aktualizowanie trasy turbofanDeviceToStorage
 
@@ -756,7 +756,7 @@ Po pomyślnym zakończeniu kompilacji będziemy mogli używać Azure Portal do p
 
     ![Przejdź do rejestru z obszaru roboczego usługi Machine Learning](media/tutorial-machine-learning-edge-06-custom-modules/follow-registry-link.png)
 
-2. Z poziomu nawigatora po stronie rejestruwybierz pozycję repozytoria.
+2. Z poziomu nawigatora po stronie rejestru wybierz pozycję **repozytoria**.
 
 3. Należy zauważyć, że oba moduły utworzone, **avrofilewriter** i **turbofanrouter**są wyświetlane jako repozytoria.
 
@@ -827,7 +827,7 @@ W tym artykule utworzyliśmy rozwiązanie IoT Edge w Visual Studio Code z trzema
 
 Więcej informacji można znaleźć na następujących stronach:
 
-* [Dowiedz się, jak wdrażać moduły i ustanawiać trasy w IoT Edge](module-composition.md)
+* [Learn how to deploy modules and establish routes in IoT Edge (Dowiedz się, jak wdrażać moduły i ustanawiać trasy w usłudze IoT Edge)](module-composition.md).
 * [Składnia zapytania dotyczącego routingu komunikatów IoT Hub](../iot-hub/iot-hub-devguide-routing-query-syntax.md)
 * [IoT Hub Routing komunikatów: teraz z routingiem w treści wiadomości](https://azure.microsoft.com/blog/iot-hub-message-routing-now-with-routing-on-message-body/)
 * [Przekazywanie plików za pomocą usługi IoT Hub](../iot-hub/iot-hub-devguide-file-upload.md)

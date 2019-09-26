@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 857d29f407c9939143fbb8263be40dadb040efdc
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: f9b787413dd6e2aaeafd4aa3bcee0eff746abece
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183056"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71310547"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
 
@@ -39,9 +39,9 @@ Nie. Może być kierowany wyłącznie przez połączenie typu lokacja-lokacja.
  
 ### <a name="is-there-a-change-in-the-number-of-sstp-connections-supported-with-radius-authentication-what-is-the-maximum-number-of-sstp-and-ikev2-connections-supported"></a>Czy liczba połączeń SSTP obsługiwanych z użyciem uwierzytelniania za pomocą protokołu RADIUS uległa zmianie? Jaka jest maksymalna liczba obsługiwanych połączeń SSTP i IKEv2?
 
-Maksymalna liczba połączeń SSTP obsługiwanych na bramie z uwierzytelnianiem za pomocą protokołu RADIUS nie zmieniła się. Nadal jest to 128 dla protokołu SSTP, ale zależy od jednostki SKU bramy dla protokołu IKEv2. Aby uzyskać więcej informacji na temat liczba obsługiwanych połączeń, zobacz [jednostki SKU bramy](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku).
+Maksymalna liczba połączeń SSTP obsługiwanych na bramie z uwierzytelnianiem za pomocą protokołu RADIUS nie zmieniła się. Pozostaje 128 dla protokołu SSTP, ale zależy od jednostki SKU bramy dla protokołu IKEv2. Aby uzyskać więcej informacji o liczbie obsługiwanych połączeń, zobacz [jednostki SKU bramy](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku).
  
-### <a name="what-is-the-difference-between-doing-certificate-authentication-using-a-radius-server-vs-using-azure-native-certificate-authentication-by-uploading-a-trustedcertificate-to-azure"></a>Jaka jest różnica między uwierzytelnianiem certyfikatu przy użyciu serwera usługi RADIUS, a za pomocą platformy Azure natywnego uwierzytelniania certyfikatu (przez przekazanie zaufanego certyfikatu na platformę Azure).
+### <a name="what-is-the-difference-between-doing-certificate-authentication-using-a-radius-server-vs-using-azure-native-certificate-authentication-by-uploading-a-trustedcertificate-to-azure"></a>Różnica między uwierzytelnianiem certyfikatu przy użyciu serwera usługi RADIUS a usługą Azure Native Certificate Authentication (przez przekazanie certyfikatu zaufanego na platformę Azure).
 
 W przypadku uwierzytelniania certyfikatu za pomocą protokołu RADIUS żądanie uwierzytelnienia jest przekazywane do serwera RADIUS, który obsługuje faktyczną weryfikację certyfikatu. Ta opcja jest przydatna, gdy chce się przeprowadzić integrację za pośrednictwem protokołu RADIUS z już posiadaną infrastrukturą uwierzytelniania certyfikatów.
   
@@ -50,3 +50,7 @@ Gdy do uwierzytelniania certyfikatów używana jest platforma Azure, weryfikacj�
 ### <a name="does-radius-authentication-work-with-both-ikev2-and-sstp-vpn"></a>Czy uwierzytelnianie za pomocą protokołu RADIUS działa z sieciami VPN z protokołem IKEv2 i SSTP?
 
 Tak, uwierzytelnianie za pomocą protokołu RADIUS jest obsługiwane dla sieci z protokołem IKEv2 i protokołem SSTP. 
+
+### <a name="does-radius-authentication-work-with-the-openvpn-client"></a>Czy uwierzytelnianie usługi RADIUS działa z klientem OpenVPN?
+
+Uwierzytelnianie usługi RADIUS nie jest obsługiwane przez klienta OpenVPN.

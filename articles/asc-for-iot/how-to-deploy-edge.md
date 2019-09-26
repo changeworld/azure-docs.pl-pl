@@ -1,5 +1,5 @@
 ---
-title: Wdróż Azure Security Center dla modułu IoT Edge (wersja zapoznawcza) | Microsoft Docs
+title: Wdróż Azure Security Center dla modułu IoT Edge | Microsoft Docs
 description: Dowiedz się więcej na temat sposobu wdrażania Azure Security Center usługi IoT Security Agent na IoT Edge.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,18 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 4e568d2322088d9f6f6b4f9ad6e4b3cd98f25a47
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: bb6a975d2a2fc2cc3e65fa8969f8b005be8b1417
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376059"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299719"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Wdrażanie modułu zabezpieczeń na urządzeniu IoT Edge
 
-> [!IMPORTANT]
-> Azure Security Center do obsługi urządzeń IoT Edge IoT jest obecnie w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 **Azure Security Center dla modułu IoT** to kompleksowe rozwiązanie zabezpieczeń dla IoT Edge urządzeń.
 Moduł zabezpieczeń zbiera, agreguje i analizuje pierwotne dane zabezpieczeń z systemu operacyjnego i systemu kontenerów w celu podejmowania działań i alertów dotyczących zabezpieczeń.
@@ -40,19 +37,19 @@ Wykonaj następujące kroki, aby wdrożyć Azure Security Center dla modułu zab
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-- W IoT Hub upewnij się, że urządzenie jest [zarejestrowane jako urządzenie IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal).
+1. W IoT Hub upewnij się, że urządzenie jest [zarejestrowane jako urządzenie IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal).
 
-- Azure Security Center modułu IoT Edge wymaga zainstalowania na urządzeniu IoT Edge [platformy z inspekcją](https://linux.die.net/man/8/auditd) .
+1. Azure Security Center modułu IoT Edge wymaga, aby [platforma](https://linux.die.net/man/8/auditd) poddana inspekcji była zainstalowana na urządzeniu IoT Edge.
 
     - Zainstaluj platformę, uruchamiając następujące polecenie na urządzeniu IoT Edge:
    
-      `sudo apt-get install auditd audispd-plugins`
+    `sudo apt-get install auditd audispd-plugins`
+
+    - Sprawdź, czy inspekcja jest aktywna, uruchamiając następujące polecenie: 
    
-    - Sprawdź, czy inspekcja jest aktywna, uruchamiając następujące polecenie:
-   
-      `sudo systemctl status auditd`
-      
-        Oczekiwana odpowiedź to `active (running)`. 
+    `sudo systemctl status auditd`<br>
+    - Oczekiwana odpowiedź:`active (running)` 
+        
 
 ### <a name="deployment-using-azure-portal"></a>Wdrażanie przy użyciu Azure Portal
 
@@ -64,7 +61,7 @@ Wykonaj następujące kroki, aby wdrożyć Azure Security Center dla modułu zab
 
 1. Kliknij przycisk **Utwórz** , aby skonfigurować wdrożenie. 
 
-1. Wybierz **subskrypcję** platformy Azure IoT Hub, a następnie wybierz **IoT Hub**.<br>Wybierz pozycję **Wdróż na urządzeniu** przeznaczonym dla jednego urządzenia lub wybierz pozycję **Wdróż w odpowiedniej skali** , aby wybrać miejsce docelowe wielu urządzeń, a następnie kliknij pozycję **Utwórz**. Aby uzyskać więcej informacji na temat wdrażania w skali, zobacz artykuł [jak wdrożyć](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-monitor). 
+1. Wybierz subskrypcję platformy Azure IoT Hub, a następnie wybierz **IoT Hub**.<br>Wybierz pozycję **Wdróż na urządzeniu** przeznaczonym dla jednego urządzenia lub wybierz pozycję **Wdróż w odpowiedniej skali** , aby wybrać miejsce docelowe wielu urządzeń, a następnie kliknij pozycję **Utwórz**. Aby uzyskać więcej informacji na temat wdrażania w skali, zobacz artykuł [jak wdrożyć](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-monitor). 
 
     >[!Note] 
     >W przypadku wybrania **wdrożenia w odpowiedniej skali**należy dodać nazwę i szczegóły urządzenia przed przejściem do karty **Dodawanie modułów** w poniższych instrukcjach.     
@@ -76,7 +73,7 @@ Istnieją trzy kroki umożliwiające utworzenie wdrożenia IoT Edge dla Azure Se
 1. Na karcie **Dodawanie modułów** w obszarze **moduły wdrożenia** kliknij pozycję **AzureSecurityCenterforIoT**. 
    
 1. Zmień **nazwę** na **azureiotsecurity**.
-1. Zmień **Identyfikator URI obrazu** na **MCR.Microsoft.com/ascforiot/azureiotsecurity:0.0.3**.
+1. Zmień **Identyfikator URI obrazu** na **MCR.Microsoft.com/ascforiot/azureiotsecurity:1.0.0**.
 1. Sprawdź, czy **opcja tworzenia kontenera** ma ustawioną wartość:      
     ``` json
     {
@@ -98,37 +95,31 @@ Istnieją trzy kroki umożliwiające utworzenie wdrożenia IoT Edge dla Azure Se
 1. Upewnij się, że wybrano **odpowiednie właściwości zestawu splotu modułu** i Zmień obiekt konfiguracji na:
       
     ``` json
-      "properties.desired": {
-        "azureiot*com^securityAgentConfiguration^1*0*0": {
+    "desired": {
+        "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration": {
+          } 
         }
-      }
-      ```
+    ```
 
-1. Kliknij polecenie **Zapisz**.
-1. Przewiń w dół karty i wybierz pozycję **Konfiguruj zaawansowane ustawienia środowiska uruchomieniowego Edge**.
+1. Kliknij pozycję **Zapisz**.
+1. Przewiń w dół karty i wybierz pozycję **Konfiguruj zaawansowane ustawienia środowiska uruchomieniowego Edge**. 
    
-   
-1. Zmień **obraz** pod **węzłem Edge Hub** na **MCR.Microsoft.com/ascforiot/edgehub:1.0.9-Preview**.
-
-   >[!Note]
-   > Azure Security Center dla modułu IoT wymaga przetworzenia rozwidlenia IoT Edge centrum w oparciu o zestaw SDK 1,20.
-   > Zmieniając obraz Centrum IoT Edge, nakazujesz IoT Edge urządzeniu zamienić najnowszą stabilną wersję za pomocą rozwidlenia systemu IoT Edge Hub, która nie jest oficjalnie obsługiwana przez usługę IoT Edge.
+1. Zmień **obraz** pod **węzłem Edge Hub** na **MCR.Microsoft.com/azureiotedge-Hub:1.0.9-RC2**.
 
 1. Sprawdź, czy **Opcje tworzenia** są ustawione na: 
          
     ``` json
-    {
-      "HostConfig": {
-        "PortBindings": {
-          "8883/tcp": [{"HostPort": "8883"}],
-          "443/tcp": [{"HostPort": "443"}],
-          "5671/tcp": [{"HostPort": "5671"}]
+    { 
+    "HostConfig":{
+                    "PortBindings":{
+                    "8883/tcp": [{"HostPort": "8883"}],
+                    "443/tcp": [{"HostPort": "443"}],
+                    "5671/tcp": [{"HostPort": "5671"}]
+                    }
         }
-      }
     }
     ```
-      
-1. Kliknij polecenie **Zapisz**.
+1. Kliknij pozycję **Zapisz**.
    
 1. Kliknij przycisk **Dalej**.
 
@@ -145,7 +136,7 @@ Istnieją trzy kroki umożliwiające utworzenie wdrożenia IoT Edge dla Azure Se
     "ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream"
     ~~~
 
-#### <a name="step-3-review-deployment"></a>Krok 3: Przejrzyj wdrożenie
+#### <a name="step-3-review-deployment"></a>Krok 3: Przegląd wdrożenia
 
 - Na karcie **Przegląd wdrożenia** Przejrzyj informacje dotyczące wdrożenia, a następnie wybierz pozycję **Prześlij** , aby zakończyć wdrażanie.
 
@@ -157,14 +148,14 @@ Jeśli wystąpi problem, dzienniki kontenerów są najlepszym sposobem poznania 
 
 1. Uruchom następujące polecenie na urządzeniu IoT Edge:
     
-     `sudo docker ps`
+    `sudo docker ps`
    
 1. Sprawdź, czy są uruchomione następujące kontenery:
    
    | Name | IMAGE |
    | --- | --- |
-   | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.3 |
-   | edgeHub | mcr.microsoft.com/ascforiot/edgehub:1.0.9-preview |
+   | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.0 |
+   | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.9-rc2 |
    | edgeAgent | mcr.microsoft.com/azureiotedge-agent:1.0 |
    
    Jeśli nie ma minimalnych wymaganych kontenerów, sprawdź, czy IoT Edge manifest wdrożenia jest wyrównany z zalecanymi ustawieniami. Aby uzyskać więcej informacji, zobacz [wdrażanie modułu IoT Edge](#deployment-using-azure-portal).

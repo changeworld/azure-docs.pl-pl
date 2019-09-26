@@ -8,16 +8,16 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 9019e6f72944823d7c256fa5f6b99b0aca84c845
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 321866279e076bfa77d1892e64deaf4b16c08366
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036337"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300648"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Twórz aplikacje usługi Azure Storage o wysokiej dostępności przy użyciu strefy geograficznej nadmiarowej (GZRS) (wersja zapoznawcza)
 
-Magazyn Geograficznie nadmiarowy (GZRS) (wersja zapoznawcza) cywilnego wysokiej dostępności [magazynu Strefowo nadmiarowego (ZRS)](storage-redundancy-zrs.md) z ochroną z regionu w regionie geograficznie nadmiarowym [(GRS)](storage-redundancy-grs.md). Dane na koncie magazynu GZRS są replikowane w trzech [strefach dostępności platformy Azure](../../availability-zones/az-overview.md) w regionie podstawowym, a także zreplikowane do pomocniczego regionu geograficznego na potrzeby ochrony przed awariami regionalnymi. Każdy region platformy Azure jest sparowany z innym regionem w tej samej lokalizacji geograficznej, tworząc parę regionalną. Więcej informacji i wyjątków można znaleźć w [dokumentacji](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Magazyn Geograficznie nadmiarowy (GZRS) (wersja zapoznawcza) cywilnego wysokiej dostępności [magazynu Strefowo nadmiarowego (ZRS)](storage-redundancy-zrs.md) z ochroną z regionu w regionie [geograficznie nadmiarowym (GRS)](storage-redundancy-grs.md). Dane na koncie magazynu GZRS są replikowane w trzech [strefach dostępności platformy Azure](../../availability-zones/az-overview.md) w regionie podstawowym, a także zreplikowane do pomocniczego regionu geograficznego na potrzeby ochrony przed awariami regionalnymi. Każdy region platformy Azure jest sparowany z innym regionem w tej samej lokalizacji geograficznej, tworząc parę regionalną. Więcej informacji i wyjątków można znaleźć w [dokumentacji](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
 Za pomocą konta magazynu GZRS można nadal odczytywać i zapisywać dane, jeśli strefa dostępności stanie się niedostępna lub nie można jej odzyskać. Ponadto dane są również trwałe w przypadku kompletnej awarii regionalnej lub awarii, w której region podstawowy nie jest możliwy do odzyskania. GZRS zaprojektowano w celu udostępnienia co najmniej 99.99999999999999% (16 9) trwałości obiektów w danym roku. GZRS oferuje również te same [elementy docelowe skalowalności](storage-scalability-targets.md) jak LRS, ZRS, GRS lub RA-GRS. Opcjonalnie można włączyć dostęp do odczytu do danych w regionie pomocniczym ze strefą geograficzną z dostępem do odczytu — nadmiarowy magazyn (RA-GZRS), jeśli aplikacje muszą mieć możliwość odczytywania danych w przypadku awarii w regionie podstawowym.
 
@@ -29,7 +29,11 @@ Tylko konta magazynu ogólnego przeznaczenia w wersji 2 obsługują GZRS i RA-GZ
 
 GZRS i RA-GZRS są obecnie dostępne w wersji zapoznawczej w następujących regionach:
 
+- Europa Północna
+- Europa Zachodnia
 - Wschodnie stany USA
+- Wschodnie stany USA 2
+- Środkowe stany USA
 
 Firma Microsoft nadal włącza GZRS i RA-GZRS w dodatkowych regionach świadczenia usługi Azure. Sprawdź regularnie informacje o obsługiwanych regionach na stronie  [aktualizacji usługi platformy Azure](https://azure.microsoft.com/updates/).
 
@@ -97,7 +101,7 @@ Istnieją dwie opcje migracji do GZRS lub RA-GZRS z konta LRS, GRS lub RA-GRS:
 
 #### <a name="perform-a-manual-migration"></a>Przeprowadź migrację ręczną
 
-Aby przeprowadzić migrację w określonym dniu, należy rozważyć przeprowadzenie ręcznej migracji. Migracja ręczna zapewnia większą elastyczność niż migracja na żywo. W przypadku ręcznej migracji masz kontrolę nad chronometrażem.
+Aby przeprowadzić migrację w określonym dniu, należy rozważyć przeprowadzenie ręcznej migracji. Migracja ręczna zapewnia większą elastyczność niż migracja na żywo. W przypadku migracji ręcznej masz kontrolę nad harmonogramem.
 
 Aby ręcznie migrować dane z istniejącego konta do konta usługi GZRS lub RA-GZRS, użyj narzędzia, które może efektywnie kopiować dane. Oto niektóre przykłady:
 
@@ -113,7 +117,7 @@ Podczas migracji na żywo można korzystać z konta magazynu podczas migrowania 
 
 Tylko konta ogólnego przeznaczenia w wersji 2 obsługują usługi GZRS/RA-GZRS, dlatego przed przesłaniem żądania migracji na żywo do usługi GZRS/RA-GZRS należy uaktualnić konto do poziomu ogólnego przeznaczenia w wersji 2. Aby uzyskać więcej informacji, zobacz  [Omówienie konta usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview)i [uaktualnianie do konta magazynu ogólnego przeznaczenia w wersji 2](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
 
-Po zakończeniu migracji ustawienie replikacji konta magazynu zostanie zaktualizowane do magazynu geograficznie nadmiarowego **(GZRS)** lub **do odczytu stref geograficznie nadmiarowego (Ra-GZRS)** . Punkty końcowe usługi, klucze dostępu, sygnatury dostępu współdzielonego (SAS) i inne opcje konfiguracji konta pozostają bez zmian i nie zostały naruszone.
+Po zakończeniu migracji ustawienie replikacji konta magazynu zostanie zaktualizowane do **magazynu geograficznie nadmiarowego (GZRS)** lub **do odczytu stref geograficznie nadmiarowego (Ra-GZRS)** . Punkty końcowe usługi, klucze dostępu, sygnatury dostępu współdzielonego (SAS) i inne opcje konfiguracji konta pozostają bez zmian i nie zostały naruszone.
 
 Należy pamiętać o następujących ograniczeniach migracji na żywo:
 
@@ -131,14 +135,14 @@ Aby zażądać migracji na żywo, użyj [Azure Portal](https://ms.portal.azure.
 
 1. Wybierz pozycję **nowe żądanie obsługi**.
 2. Wypełnij **podstawowe** informacje na podstawie informacji o koncie. W sekcji **Usługa** wybierz pozycję  **Zarządzanie kontem magazynu**i określ konto, które ma zostać zmigrowane.
-3. Wybierz pozycję **dalej**.
+3. Wybierz pozycję  **Dalej**.
 4. Określ następujące wartości w sekcji **problem** :
     - **Ważność**: Pozostaw wartość domyślną.
     - **Typ problemu**: Wybierz pozycję **migracja danych**.
     - **Kategoria**: Wybierz pozycję **Migruj do (Ra-) GZRS w regionie**.
     - **Tytuł**: Wpisz opisowy tytuł, na przykład **(Ra-) GZRS migracji konta**.
     - **Szczegóły**: Wpisz dodatkowe szczegóły w polu **szczegóły** , na przykład "Chcę migrować do GZRS z [LRS, \_ \_ GRS] w regionie". lub "Chcę migrować do usługi RA-GZRS z [LRS, RA-GRS] w \_ \_ regionie".
-5. Wybierz pozycję **dalej**.
+5. Wybierz pozycję  **Dalej**.
 6. Sprawdź, czy informacje kontaktowe są poprawne w bloku **informacje** kontaktowe.
 7. Wybierz pozycję  **Utwórz**.
 

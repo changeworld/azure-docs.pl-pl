@@ -10,12 +10,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: b9058313886484e84000b2b27986280eb1ff30eb
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: f4ee3f78159cb5d9b677f0d43492325754065841
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71145626"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300840"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Informacje o wersji Azure SQL Data Warehouse
 
@@ -38,6 +38,7 @@ Użyj wskazanej daty, aby potwierdzić, która wersja została zastosowana do ma
 |**Link prywatny platformy Azure (wersja zapoznawcza)**|Za pomocą [linku prywatnego platformy Azure](https://azure.microsoft.com/blog/announcing-azure-private-link/)można utworzyć prywatny punkt końcowy w Virtual Network (VNET) i zmapować go na magazyn danych SQL Azure. Te zasoby są następnie dostępne za pośrednictwem prywatnego adresu IP w sieci wirtualnej, co pozwala na połączenie z zasobów lokalnych za pośrednictwem prywatnej komunikacji równorzędnej Azure ExpressRoute i/lub bramy sieci VPN. Ogólnie upraszcza to konfigurację sieci, ponieważ nie wymaga otwierania jej do publicznych adresów IP. Umożliwia to również ochronę przed zagrożeniami związanymi z eksfiltracji danych. Aby uzyskać więcej informacji, zobacz [Omówienie](/azure/private-link/private-link-overview) i [Dokumentacja usługi SQL DW](/azure/sql-database/sql-database-private-endpoint-overview).|
 |**Klasyfikacja & odnajdywania danych (GA)**|Funkcja [odnajdywania i klasyfikowania danych](/azure/sql-database/sql-database-data-discovery-and-classification?toc=/azure/sql-data-warehouse/toc.json) jest teraz ogólnie dostępna. Ta funkcja zapewnia zaawansowane funkcje **odnajdywania, klasyfikowania i etykietowania & ochrony** poufnych danych w bazach danych.|
 |**Azure Advisor integrację jednym kliknięciem**|SQL Data Warehouse teraz bezpośrednio integrują się z zaleceniami Azure Advisor w bloku przegląd wraz z udostępnianiem jednego kliknięcia. Teraz możesz odnaleźć zalecenia w bloku przegląd zamiast przejść do bloku usługi Azure Advisor. Więcej informacji o zaleceniach znajdziesz [tutaj](sql-data-warehouse-concept-recommendations.md).|
+|**Odczytaj zatwierdzoną izolację migawki (wersja zapoznawcza)**|Aby włączyć lub wyłączyć izolację migawki dla bazy danych użytkownika, można użyć polecenia ALTER bazy danych.  Aby uniknąć wpływu na bieżące obciążenie, możesz ustawić tę opcję podczas okna obsługi bazy danych lub zaczekać, aż nie będzie żadnych innych aktywnych połączeń z bazą danych. Aby uzyskać więcej informacji, zobacz [ALTER DATABASE SET Options](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest).|
 |**Wykonaj jako (Transact-SQL)**| [Wykonaj jako](/sql/t-sql/statements/execute-as-transact-sql?view=azure-sqldw-latest) Obsługa języka T-SQL jest teraz dostępna w SQL Data Warehouse Umożliwianie klientom ustawiania kontekstu wykonywania sesji dla określonego użytkownika.|
 |**Dodatkowa obsługa języka T-SQL**|Obszar powierzchniowy języka T-SQL dla SQL Data Warehouse został rozszerzony w celu uwzględnienia obsługi: </br> - [FORMAT (Transact-SQL)](/sql/t-sql/functions/format-transact-sql?view=azure-sqldw-latest)</br> - [TRY_PARSE (Transact-SQL)](/sql/t-sql/functions/try-parse-transact-sql?view=azure-sqldw-latest)</br> - [TRY_CAST (Transact-SQL)](/sql/t-sql/functions/try-cast-transact-sql?view=azure-sqldw-latest)</br> - [TRY_CONVERT (Transact-SQL)](/sql/t-sql/functions/try-convert-transact-sql?view=azure-sqldw-latest)</br> - [sys. user_token (Transact-SQL)](/sql//relational-databases/system-catalog-views/sys-user-token-transact-sql?view=azure-sqldw-latest)|
 

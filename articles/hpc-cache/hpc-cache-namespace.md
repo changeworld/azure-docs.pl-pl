@@ -4,24 +4,26 @@ description: Jak utworzyć wystąpienie pamięci podręcznej platformy Azure HPC
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: 677d42dfa1c468417f18ba4222cb0d5fd3ebb189
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 68ae316dff1518dd8115006764c6cc3036f59e4a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180972"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299935"
 ---
 # <a name="plan-the-aggregated-namespace"></a>Planowanie zagregowanej przestrzeni nazw
 
 Pamięć podręczna Azure HPC (wersja zapoznawcza) umożliwia klientom dostęp do różnych systemów magazynowania za pomocą wirtualnej przestrzeni nazw, która ukrywa szczegóły systemu magazynu zaplecza.
 
-Po dodaniu miejsca docelowego magazynu należy ustawić ścieżkę dla klienta. Komputery klienckie instalują tę ścieżkę pliku. Można zmienić miejsce docelowe magazynu skojarzone z tą ścieżką. Można na przykład zastąpić sprzętowy system magazynowania z magazynem w chmurze bez konieczności ponownego zapisywania procedur związanych z klientem.
+Podczas dodawania miejsca docelowego magazynu należy ustawić ścieżkę pliku dostępną dla klienta. Komputery klienckie instalują tę ścieżkę pliku i mogą wprowadzać żądania odczytu plików do pamięci podręcznej, zamiast bezpośrednio instalować system przechowywania.
+
+Ponieważ pamięć podręczna platformy Azure HPC zarządza tym wirtualnym systemem plików, można zmienić miejsce docelowe magazynu bez zmiany ścieżki skierowanej do klienta. Można na przykład zastąpić sprzętowy system magazynowania z magazynem w chmurze bez konieczności ponownego zapisywania procedur związanych z klientem.
 
 ## <a name="aggregated-namespace-example"></a>Przykład zagregowanego przestrzeni nazw
 
-Zaplanuj zagregowaną przestrzeń nazw, aby komputery klienckie mogły wygodnie uzyskać dostęp do potrzebnych informacji, a administratorzy i inżynierowie przepływów pracy mogą łatwo odróżnić ścieżki.
+Zaplanuj zagregowaną przestrzeń nazw, tak aby komputery klienckie mogły wygodnie uzyskać dostęp do potrzebnych informacji, dzięki czemu administratorzy i inżynierowie przepływów pracy mogą łatwo odróżnić ścieżki.
 
 Rozważmy na przykład system, w którym wystąpienie pamięci podręcznej platformy Azure HPC jest używane do przetwarzania danych przechowywanych w obiekcie blob platformy Azure. Analiza wymaga plików szablonów przechowywanych w lokalnym centrum danych.
 
@@ -40,21 +42,23 @@ Dane, które mają zostać poddane analizie, zostały skopiowane do kontenera ma
 
 Aby zapewnić łatwy dostęp za pomocą pamięci podręcznej, należy rozważyć utworzenie obiektów docelowych magazynu przy użyciu tych ścieżek wirtualnych przestrzeni nazw:
 
-| Ścieżka systemu plików NFS lub kontener obiektów BLOB zaplecza | Ścieżka wirtualnej przestrzeni nazw |
+| System magazynu zaplecza <br/> (Ścieżka pliku NFS lub kontener obiektów BLOB) | Ścieżka wirtualnej przestrzeni nazw |
 |-----------------------------------------|------------------------|
 | /goldline/templates/acme2017/sku798     | /templates/sku798      |
 | /goldline/templates/acme2017/sku980     | /templates/sku980      |
 | obiekcie SourceCollection wprowadzanych                        | /source               |
 
-Ponieważ ścieżki źródłowe NFS są podkatalogami tego samego eksportu, należy zdefiniować wiele ścieżek przestrzeni nazw z tego samego miejsca docelowego magazynu. 
+Obiekt docelowy magazynu NFS może mieć wiele ścieżek przestrzeni nazw wirtualnych, o ile każda z nich odwołuje się do unikatowej ścieżki eksportu.
+
+Ponieważ ścieżki źródłowe NFS są podkatalogami tego samego eksportu, należy zdefiniować wiele ścieżek przestrzeni nazw z tego samego miejsca docelowego magazynu.
 
 | Nazwa hosta docelowego magazynu  | Ścieżka eksportu systemu plików NFS      | Ścieżka podkatalogu | Ścieżka przestrzeni nazw    |
 |--------------------------|----------------------|-------------------|-------------------|
 | *Adres IP lub nazwa hosta* | /goldline/templates  | acme2017/sku798   | /templates/sku798 |
 | *Adres IP lub nazwa hosta* | /goldline/templates  | acme2017/sku980   | /templates/sku980 |
 
-Aplikacja kliencka może zainstalować pamięć podręczną i łatwo uzyskać dostęp do zagregowanych nazw FilePath/source,/templates/sku798 i/templates/sku980.
+Aplikacja kliencka może zainstalować pamięć podręczną i łatwo uzyskać dostęp do zagregowanych ścieżek ``/source`` ``/templates/sku798``plików przestrzeni nazw ``/templates/sku980``, i.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Po podjęciu decyzji o sposobie konfigurowania wirtualnego systemu plików [Utwórz miejsce docelowe magazynu](hpc-cache-add-storage.md) , aby zmapować magazyn zaplecza na ścieżki wirtualne z możliwością klienta.
+Po podjęciu decyzji o sposobie konfigurowania wirtualnego systemu plików należy [utworzyć miejsce docelowe magazynu](hpc-cache-add-storage.md) w celu zamapowania magazynu zaplecza na ścieżki do pliku wirtualnego po stronie klienta.
