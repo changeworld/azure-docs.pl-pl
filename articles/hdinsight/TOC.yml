@@ -19,6 +19,8 @@
           href: ./hdinsight-administer-use-powershell.md
     - name: Przykłady
       items:
+        - name: Przykłady interfejsu wiersza polecenia platformy Azure
+          href: ./azure-cli-samples.md
         - name: Przykłady dla platformy .NET
           href: ./hdinsight-sdk-dotnet-samples.md
         - name: Przykłady w języku Java
@@ -613,6 +615,8 @@
               href: ./hbase/apache-hbase-provision-vnet.md
         - name: Rozwiązywanie problemów
           items:
+            - name: Rozwiązywanie problemów z wydajnością bazy danych Apache HBase
+              href: ./hbase/troubleshoot-hbase-performance-issues.md
             - name: Polecenie hbase hbck zwraca niespójne informacje
               href: ./hbase/hbase-troubleshoot-hbase-hbck-inconsistencies.md
             - name: Wyjątek magazynu po zresetowaniu połączenia

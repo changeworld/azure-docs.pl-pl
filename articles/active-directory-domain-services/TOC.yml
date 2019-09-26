@@ -95,22 +95,22 @@
       items:
         - name: Typowe błędy
           href: troubleshoot.md
-        - name: Typowe alerty
-          items:
-            - name: Typowe alerty
-              href: troubleshoot-alerts.md
-            - name: Naprawianie uszkodzonej konfiguracji sieci
-              href: alert-nsg.md
-            - name: Przywracanie brakujących jednostek usługi
-              href: alert-service-principal.md
-            - name: Alerty protokołu Secure LDAP
-              href: alert-ldaps.md
         - name: Błędy dotyczące niezgodnych dzierżaw
           href: mismatched-tenant-error.md
         - name: Wstrzymane domeny
           href: suspension.md
         - name: Secure LDAP
           href: tshoot-ldaps.md
+        - name: Znane problemy
+          items:
+            - name: Typowe alerty
+              href: troubleshoot-alerts.md
+            - name: Alerty sieci
+              href: alert-nsg.md
+            - name: Alerty jednostki usługi
+              href: alert-service-principal.md
+            - name: Alerty protokołu Secure LDAP
+              href: alert-ldaps.md
 - name: Zasoby
   items:
     - name: Często zadawane pytania

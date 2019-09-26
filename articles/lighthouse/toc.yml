@@ -19,7 +19,7 @@
       displayName: scenarios
       href: ./concepts/cross-tenant-management-experience.md
     - name: Oferty usług zarządzanych w witrynie Azure Marketplace
-      displayName: 'managed services offer, azure marketplace'
+      displayName: 'azure marketplace, marketplace, managed service, private, plan'
       href: ./concepts/managed-services-offers.md
     - name: Zalecane najlepsze rozwiązania dotyczące zabezpieczeń
       displayName: 'mfa, authentication, secure, group'
@@ -27,6 +27,9 @@
     - name: Zagadnienia dotyczące programu Cloud Solution Provider
       displayName: 'csp, aobo, partner'
       href: ./concepts/cloud-solution-provider.md
+    - name: Usługa Azure Lighthouse w scenariuszach dla przedsiębiorstw
+      displayName: 'corporation, IT, consolidate'
+      href: ./concepts/enterprise.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Dołączanie klienta do zarządzania zasobami delegowanymi na platformie Azure

@@ -18,7 +18,7 @@
       items:
         - name: Dodawanie lokalizacji docelowych magazynu
           href: hpc-cache-add-storage.md
-        - name: Przenoszenie danych do magazynu pamięci podręcznej
+        - name: Przenoszenie danych do lokalizacji docelowych magazynu (w razie potrzeby)
           items:
             - name: Wstępne ładowanie nowego magazynu obiektów blob
               href: hpc-cache-ingest.md

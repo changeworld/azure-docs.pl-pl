@@ -47,7 +47,7 @@
           href: security-center-incident.md
         - name: Wykrywanie zagrożeń dla maszyn wirtualnych i serwerów
           href: security-center-alerts-iaas.md
-        - name: Wykrywanie zagrożeń dla natywnych obliczeń w chmurze
+        - name: Wykrywanie zagrożeń dla aplikacji i kontenerów w chmurze
           href: security-center-alerts-compute.md
         - name: Wykrywanie zagrożeń dla usług danych
           href: security-center-alerts-data-services.md
@@ -71,7 +71,7 @@
       href: security-center-wdatp.md
     - name: Zaawansowane zabezpieczenia danych dla bazy danych SQL na maszynach wirtualnych platformy Azure (publiczna wersja zapoznawcza)
       href: security-center-iaas-advanced-data.md
-    - name: Włączanie ochrony usługi App Service
+    - name: Używanie usługi App Service do ochrony aplikacji
       href: security-center-app-services.md
     - name: Praca z zasadami zabezpieczeń
       href: tutorial-security-policy.md
@@ -91,7 +91,7 @@
       href: security-center-policy-definitions.md
     - name: Powiadomienia e-mail
       href: security-center-provide-security-contact-details.md
-    - name: Warstwa cenowa
+    - name: Cennik
       href: security-center-pricing.md
     - name: Widoczność w całej dzierżawie
       href: security-center-management-groups.md
@@ -147,8 +147,6 @@
   items:
     - name: Interfejsy API REST
       href: 'https://docs.microsoft.com/rest/api/securitycenter/'
-    - name: Aktualizacje usług
-      href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: Wycofywanie funkcji i interfejsów API (lipiec 2019 r.)
       href: security-center-features-retirement-july2019.md
     - name: Rekomendacje i ocena ochrony punktu końcowego
@@ -159,25 +157,25 @@
       href: /learn/browse/?term=securityS
     - name: Zarządzanie danymi użytkowników
       href: security-center-privacy.md
-    - name: Zarządzanie środowiskiem IoT
+    - name: Dokumentacja usługi Azure Security Center dla IoT
       href: 'https://docs.microsoft.com/en-us/azure/asc-for-iot/'
     - name: Często zadawane pytania
       href: security-center-faq.md
-    - name: Zabezpieczenia platformy Azure
+    - name: Dokumentacja zabezpieczeń platformy Azure
       href: /azure/security/
-    - name: Harmonogram działania dla platformy Azure
-      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: Aktualizacje platformy Azure
+      href: 'https://azure.microsoft.com/updates/?category=security-identity'
     - name: Harmonogram działania dotyczący gotowości
       href: security-center-readiness-roadmap.md
     - name: 'Blog dotyczący zabezpieczeń, ochrony prywatności i zgodności na platformie Azure'
       href: 'https://blogs.msdn.com/b/azuresecurity/'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/search?q=security-center'
+    - name: Usługa Azure Security Center w witrynie Stack Overflow
+      href: 'https://stackoverflow.com/search?q=azure-security-center'
     - name: Filmy wideo
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=security-center'
     - name: Cennik
       href: 'https://azure.microsoft.com/pricing/details/security-center/'
     - name: Dostępność regionalna
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: Rozwiązywanie problemów
+    - name: Przewodnik rozwiązywania problemów
       href: security-center-troubleshooting-guide.md

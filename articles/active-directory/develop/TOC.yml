@@ -9,7 +9,7 @@
       href: v2-overview.md
     - name: Przewodniki Szybki start
       items:
-        - name: Konfigurowanie środowiska deweloperskiego
+        - name: Konfigurowanie dzierżawy
           href: quickstart-create-new-tenant.md
         - name: Konfigurowanie aplikacji
           items:
@@ -49,7 +49,7 @@
           items:
             - name: Android
               href: quickstart-v2-android.md
-            - name: iOS
+            - name: iOS i macOS
               href: quickstart-v2-ios.md
             - name: Platforma uniwersalna systemu Windows
               href: quickstart-v2-uwp.md
@@ -75,7 +75,7 @@
           items:
             - name: Android
               href: tutorial-v2-android.md
-            - name: iOS
+            - name: iOS i macOS
               href: tutorial-v2-ios.md
             - name: Platforma uniwersalna systemu Windows
               href: tutorial-v2-windows-uwp.md
@@ -223,12 +223,14 @@
           items:
             - name: Omówienie
               href: msal-overview.md
-            - name: Migracja
+            - name: Migracja z biblioteki ADAL
               items:
                 - name: Migrowanie do platformy MSAL.NET
                   href: msal-net-migration.md
                 - name: Migrowanie do biblioteki MSAL.js
                   href: msal-compare-msal-js-and-adal-js.md
+                - name: Migrowanie do biblioteki MSAL dla systemów iOS i MacOS
+                  href: migrate-objc-adal-msal.md
                 - name: Migrowanie aplikacji platformy Xamarin przy użyciu brokerów z biblioteki ADAL.NET do MSAL.NET
                   href: msal-net-migration-ios-broker.md
             - name: Obsługiwane przepływy uwierzytelniania
@@ -239,8 +241,6 @@
                   href: msal-acquire-cache-tokens.md
                 - name: Zakresy dla aplikacji w wersji 1.0
                   href: msal-v1-app-scopes.md
-                - name: Serializacja pamięci podręcznej tokenu (.NET)
-                  href: msal-net-token-cache-serialization.md
             - name: Aplikacje klienckie
               items:
                 - name: Aplikacje klienckie
@@ -257,18 +257,28 @@
               href: msal-handling-exceptions.md
             - name: Rejestrowanie
               href: msal-logging.md
-            - name: Logowanie jednokrotne (JS)
-              href: msal-js-sso.md
-            - name: Zachowanie monitu (JS)
-              href: msal-js-prompt-behavior.md
-            - name: Obsługa usług ADFS (.NET)
-              href: msal-net-adfs-support.md
+            - name: Logowanie jednokrotne
+              items:
+                - name: Logowanie jednokrotne za pomocą biblioteki MSAL.js
+                  href: msal-js-sso.md
+                - name: Logowanie jednokrotne za pomocą biblioteki MSAL dla systemów iOS i macOS
+                  items:
+                    - name: Logowanie jednokrotne między aplikacjami MSAL
+                      href: single-sign-on-macos-ios.md
+                    - name: Logowanie jednokrotne między aplikacjami ADAL i MSAL
+                      href: sso-between-adal-msal-apps-macos-ios.md
+            - name: Integracja z usługami ADFS
+              items:
+                - name: Obsługa usług ADFS na platformie MSAL.NET
+                  href: msal-net-adfs-support.md
             - name: Integracja z usługą Azure AD B2C
               items:
                 - name: JavaScript
                   href: msal-b2c-overview.md
                 - name: .NET
                   href: msal-net-aad-b2c-considerations.md
+                - name: iOS i macOS
+                  href: 'config-authority.md#b2c'
             - name: Istotne zagadnienia i znane problemy
               items:
                 - name: MSAL.NET
@@ -283,6 +293,10 @@
                       href: msal-js-known-issues-ie-edge-browsers.md
                     - name: Znane problemy — Safari
                       href: msal-js-known-issues-safari-browser.md
+                - name: Biblioteka MSAL dla systemów iOS i macOS
+                  items:
+                    - name: Problemy z protokołem SSL
+                      href: ssl-issues.md
         - name: Protokół uwierzytelniania
           items:
             - name: Typy aplikacji i protokół OAuth 2.0
@@ -378,6 +392,8 @@
               items:
                 - name: Uzyskiwanie tokenu z pamięci podręcznej
                   href: msal-net-acquire-token-silently.md
+                - name: Serializacja pamięci podręcznej tokenu
+                  href: msal-net-token-cache-serialization.md
                 - name: Czyszczenie pamięci podręcznej tokenu
                   href: msal-net-clear-token-cache.md
                 - name: Tworzenie wystąpienia klienta publicznego z opcjami
@@ -394,6 +410,20 @@
                   href: msal-js-avoid-page-reloads.md
                 - name: Przekazywanie stanu niestandardowego w żądaniach uwierzytelniania
                   href: msal-js-pass-custom-state-authentication-request.md
+                - name: Zachowanie monitu
+                  href: msal-js-prompt-behavior.md
+            - name: Biblioteka MSAL dla systemów iOS i macOS
+              items:
+                - name: Biblioteka uwierzytelniania firmy Microsoft dla systemów iOS i macOS — różnice
+                  href: msal-differences-ios-macos.md
+                - name: Konfigurowanie pęku kluczy
+                  href: howto-v2-keychain-objc.md
+                - name: Dostosowywanie przeglądarek i widoków WebViews
+                  href: customize-webviews.md
+                - name: Żądanie oświadczeń niestandardowych
+                  href: request-custom-claims.md
+                - name: Konfiguracja identyfikatora URI przekierowania
+                  href: redirect-uris-ios.md
         - name: Praca z programem Visual Studio
           items:
             - name: Korzystanie z usługi połączonej Active Directory
@@ -428,7 +458,7 @@
       href: v1-overview.md
     - name: Przewodniki Szybki start
       items:
-        - name: Konfigurowanie środowiska deweloperskiego
+        - name: Konfigurowanie dzierżawy
           href: quickstart-create-new-tenant.md
         - name: Konfigurowanie aplikacji
           items:
@@ -468,7 +498,7 @@
           items:
             - name: Android
               href: quickstart-v1-android.md
-            - name: iOS
+            - name: iOS i MacOS
               href: quickstart-v1-ios.md
             - name: Aplikacje klasyczne Windows — .NET
               href: quickstart-v1-dotnet.md

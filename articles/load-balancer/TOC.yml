@@ -84,7 +84,11 @@
     - name: Równoważenie obciążenia maszyn wirtualnych w strefie (interfejs wiersza polecenia)
       href: load-balancer-standard-public-zonal-cli.md
     - name: Konfigurowanie reguł dla ruchu wychodzącego
-      href: configure-load-balancer-outbound-cli.md
+      items:
+        - name: Konfigurowanie reguł ruchu wychodzącego — interfejs wiersza polecenia
+          href: configure-load-balancer-outbound-cli.md
+        - name: Konfigurowanie reguł ruchu wychodzącego — PowerShell
+          href: configure-load-balancer-outbound-powershell.md
     - name: Tworzenie usługi Azure Load Balancer przy użyciu interfejsu API REST
       href: create-load-balancer-rest-api.md
     - name: Tworzenie usługi Load Balancer w warstwie Podstawowa (szablon)

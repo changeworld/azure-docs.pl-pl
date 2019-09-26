@@ -431,6 +431,8 @@
                   href: app/asp-net-trace-logs.md
                 - name: Liczniki wydajności
                   href: app/performance-counters.md
+                - name: EventCounters
+                  href: app/eventcounters.md
                 - name: Zależności
                   href: app/asp-net-dependencies.md
                 - name: Plik ApplicationInsights.config
@@ -519,6 +521,8 @@
                   items:
                     - name: Omówienie
                       href: platform/diagnostics-extension-overview.md
+                    - name: Zbieranie dzienników
+                      href: platform/azure-storage-iis-table.md
                     - name: Windows
                       items:
                         - name: Historia wersji
@@ -644,22 +648,20 @@
               href: insights/service-map.md
             - name: Grupy komputerów
               href: platform/computer-groups.md
-        - name: Zasoby platformy Azure
+        - name: Platforma Azure
           items:
-            - name: Dzienniki diagnostyczne
+            - name: Omówienie dzienników platformy
+              href: platform/platform-logs-overview.md
+            - name: Dzienniki zasobów
               items:
                 - name: Omówienie
-                  href: platform/diagnostic-logs-overview.md
-                - name: Zbieranie dzienników
-                  href: platform/diagnostic-logs-stream-log-store.md
-                - name: Zbieranie z usługi Azure Storage
-                  href: platform/azure-storage-iis-table.md
+                  href: platform/resource-logs-overview.md
+                - name: Zbieranie dzienników w usłudze Azure Monitor
+                  href: platform/resource-logs-collect-workspace.md
                 - name: Archiwizowanie w magazynie
-                  href: platform/archive-diagnostic-logs.md
-                - name: Włączanie przy użyciu szablonów usługi Resource Manager
-                  href: platform/diagnostic-logs-stream-template.md
-        - name: Subskrypcja platformy Azure
-          items:
+                  href: platform/resource-logs-collect-storage.md
+                - name: Przesyłanie strumieniowe do usługi Event Hubs
+                  href: platform/resource-logs-stream-event-hubs.md
             - name: Dziennik aktywności
               items:
                 - name: Omówienie
@@ -674,6 +676,14 @@
                   href: platform/activity-log-export.md
                 - name: Schemat
                   href: platform/activity-log-schema.md
+            - name: Ustawienia diagnostyczne
+              items:
+                - name: Tworzenie ustawienia diagnostycznego
+                  href: platform/diagnostic-settings.md
+                - name: Tworzenie ustawienia diagnostycznego przy użyciu usługi Resource Manager
+                  href: platform/diagnostic-settings-template.md
+                - name: Zmiana na format magazynu obiektów blob
+                  href: platform/resource-logs-blob-format.md
             - name: Przesyłanie strumieniowe danych do usługi Event Hubs
               href: platform/stream-monitoring-data-event-hubs.md
             - name: Key Vault Analytics
@@ -685,6 +695,7 @@
         - name: Magazyn
           items:
             - name: Usługa Azure Monitor dla magazynu
+              displayname: 'storage, monitor, insights, storage accounts, azure storage'
               href: insights/storage-insights-overview.md
         - name: Bazy danych
           items:
@@ -747,7 +758,7 @@
             - name: Łączenie programu Configuration Manager
               href: platform/collect-sccm.md
         - name: Przesyłanie strumieniowe danych do usługi Event Hubs
-          href: platform/diagnostic-logs-stream-event-hubs.md
+          href: platform/resource-logs-stream-event-hubs.md
     - name: Analizowanie danych
       items:
         - name: Metryki

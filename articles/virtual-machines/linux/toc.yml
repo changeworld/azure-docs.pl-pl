@@ -472,6 +472,8 @@
         - name: Wdrażanie dysków za pomocą szablonu
           displayName: 'Azure Resource Manager, ARM'
           href: using-managed-disks-template-deployments.md
+        - name: Przekazywanie dysku VHD na dysk — interfejs wiersza polecenia
+          href: disks-upload-vhd-to-managed-disk-cli.md
         - name: Zmienianie rozmiaru dysku
           href: expand-disks.md
         - name: Tworzenie migawki dysku
