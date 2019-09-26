@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba51e10503a3aab7afa2e9639453448d03b91852
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 26b00670ad93cceab8f570d3a5f56bd095fa80b5
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170474"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315273"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw w Azure Portal
 
@@ -88,7 +88,6 @@ Zmień **stan aprowizacji** na **wyłączony** , aby wstrzymać usługę aprowiz
 Zaznacz pole wyboru **Wyczyść bieżący stan i ponownie uruchom synchronizację** i wybierz pozycję **Zapisz** w:
 
 * Zatrzymaj usługę aprowizacji
-* Zrzuć dane przechowywane w pamięci podręcznej dotyczące kont, którymi zarządza usługa Azure AD
 * Uruchom ponownie usługi i ponownie uruchom cykl początkowy
 
 Ta opcja umożliwia administratorom ponowne uruchomienie procesu inicjowania obsługi administracyjnej.

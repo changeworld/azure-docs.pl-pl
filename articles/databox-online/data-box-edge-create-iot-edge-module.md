@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: alkohli
-ms.openlocfilehash: daf7b01725a931b8fa76be14e06e2b32cffe5da6
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: f57a0431bbdafee2d38038d0039b47a34e5454c7
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900630"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315833"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>Opracowywanie C# modułu IoT Edge do przenoszenia plików na Data Box Edge
 
@@ -63,7 +63,7 @@ Przed rozpoczęciem upewnij się, że masz następujące elementy:
 Usługa Azure Container Registry to rejestr prywatny platformy Docker na platformie Azure, w którym można przechowywać prywatne obrazy kontenerów Docker i zarządzać nimi. Dwie popularne usługi rejestru platformy Docker dostępne w chmurze to Azure Container Registry i Docker Hub. W tym artykule jest wykorzystywany Container Registry.
 
 1. Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
-2. Wybierz pozycję **Utwórz zasób > kontenery > Container Registry**. Kliknij przycisk **Utwórz**.
+2. Wybierz pozycję **Utwórz zasób > kontenery > Container Registry**. Kliknij pozycję **Utwórz**.
 3. Oferować
 
    1. Unikatowa **Nazwa rejestru** na platformie Azure, która zawiera od 5 do 50 znaków alfanumerycznych.
@@ -73,7 +73,7 @@ Usługa Azure Container Registry to rejestr prywatny platformy Docker na platfor
    5. Przełącz pozycję **Administrator** na wartość **Włącz**.
    6. Ustaw jednostkę SKU na **podstawową**.
 
-      ![Utwórz rejestr kontenerów](./media/data-box-edge-create-iot-edge-module/create-container-registry-1.png)
+      ![Tworzenie rejestru kontenerów](./media/data-box-edge-create-iot-edge-module/create-container-registry-1.png)
  
 4. Wybierz pozycję **Utwórz**.
 5. Po utworzeniu rejestru kontenerów przejdź do niego i wybierz pozycję **Klucze dostępu**.
@@ -87,7 +87,7 @@ Usługa Azure Container Registry to rejestr prywatny platformy Docker na platfor
 
 Poniższe kroki tworzą projekt modułu IoT Edge na podstawie zestawu .NET Core 2,1 SDK. Projekt używa Visual Studio Code i Azure IoT Edge rozszerzenia.
 
-### <a name="create-a-new-solution"></a>Utwórz nowe rozwiązanie
+### <a name="create-a-new-solution"></a>Tworzenie nowego rozwiązania
 
 Utwórz szablon rozwiązania w języku C#, który można dostosować przy użyciu własnego kodu.
 
@@ -180,7 +180,7 @@ Utwórz szablon rozwiązania w języku C#, który można dostosować przy użyci
     }
     ```
 
-6. Usuń kod **metody komunikatu potoku** i w jej miejscu Wstaw kod dla **operacja FileCopy**.
+6. Usuń kod dla **metody PipeMessage** i w jego miejscu Wstaw kod dla **operacja FileCopy**.
 
     ```
         /// <summary>

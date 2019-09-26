@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bd79b9a6fa8aedd45f41b64f8f81a908feab71f
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: f0f2d3f8d8d2298ec00532205e359ed6f8dbc87a
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883002"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315693"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Polecenia cmdlet usługi Azure Active Directory służące do konfigurowania ustawień grupy
 Ten artykuł zawiera instrukcje dotyczące używania poleceń cmdlet programu PowerShell w usłudze Azure Active Directory (Azure AD) do tworzenia i aktualizowania grup. Ta zawartość dotyczy tylko grup pakietu Office 365 (nazywanych czasami grupami ujednoliconymi). 
@@ -123,7 +123,7 @@ Oto ustawienia zdefiniowane w grupie. ujednolicone SettingsTemplate. O ile nie w
 |  <ul><li>AllowGuestsToBeGroupOwner<li>Wpisz: Boolean<li>Wartooć False | Wartość logiczna wskazująca, czy użytkownik-Gość może być właścicielem grup. |
 |  <ul><li>AllowGuestsToAccessGroups<li>Wpisz: Boolean<li>Wartooć Prawda | Wartość logiczna wskazująca, czy użytkownik-Gość może mieć dostęp do zawartości grup pakietu Office 365.  To ustawienie nie wymaga licencji na Azure Active Directory — wersja Premium P1.|
 |  <ul><li>GuestUsageGuidelinesUrl<li>Wpisz: String<li>Wartość domyślna: "" | Adres URL linku do wskazówek dotyczących użycia gościa. |
-|  <ul><li>AllowToAddGuests<li>Wpisz: Boolean<li>Wartooć Prawda | Wartość logiczna wskazująca, czy można dodawać Gości do tego katalogu.|
+|  <ul><li>AllowAddGuests<li>Wpisz: Boolean<li>Wartooć Prawda | Wartość logiczna wskazująca, czy można dodawać Gości do tego katalogu.|
 |  <ul><li>ClassificationList<li>Wpisz: String<li>Wartość domyślna: "" |Rozdzielana przecinkami lista prawidłowych wartości klasyfikacji, które mogą być stosowane do grup pakietu Office 365. |
 
 ## <a name="example-configure-guest-policy-for-groups-at-the-directory-level"></a>Przykład: Skonfiguruj zasady gościa dla grup na poziomie katalogu
@@ -140,9 +140,9 @@ Oto ustawienia zdefiniowane w grupie. ujednolicone SettingsTemplate. O ile nie w
    ```powershell
    $Setting = $template.CreateDirectorySetting()
    ```  
-4. Następnie zaktualizuj ustawienie AllowToAddGuests
+4. Następnie zaktualizuj ustawienie AllowAddGuests
    ```powershell
-   $Setting["AllowToAddGuests"] = $False
+   $Setting["AllowAddGuests"] = $False
    ```  
 5. Następnie Zastosuj ustawienie:
   
@@ -196,7 +196,7 @@ Te kroki odczytują ustawienia na poziomie katalogu, które mają zastosowanie d
    AllowGuestsToAccessGroups     True
    GuestUsageGuidelinesUrl
    GroupCreationAllowedGroupId
-   AllowToAddGuests              True
+   AllowAddGuests              True
    UsageGuidelinesUrl            https://guideline.example.com
    ClassificationList
    EnableGroupCreation           True
@@ -233,7 +233,7 @@ Ten krok powoduje usunięcie ustawień na poziomie katalogu, które mają zastos
 
 4. Ustaw wymaganą wartość ustawienia:
    ```powershell
-   $SettingCopy["AllowToAddGuests"]=$False
+   $SettingCopy["AllowAddGuests"]=$False
    ```
 5. Pobierz identyfikator grupy, do której chcesz zastosować to ustawienie:
    ```powershell
@@ -259,7 +259,7 @@ Ten krok powoduje usunięcie ustawień na poziomie katalogu, które mają zastos
    ```
 3. Zaktualizuj ustawienie grupy w miarę potrzeb, np.
    ```powershell
-   $Setting["AllowToAddGuests"] = $True
+   $Setting["AllowAddGuests"] = $True
    ```
 4. Następnie Uzyskaj identyfikator ustawienia dla tej konkretnej grupy:
    ```powershell

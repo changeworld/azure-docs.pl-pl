@@ -16,12 +16,12 @@ ms.date: 09/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a875e028a38c085d45d062984764cd840983fc3
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 66e53298625e2388e102b5a4e835fe22a9c81a21
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212332"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71314956"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Program Azure AD Connect: Historia wersji
 Zespół Azure Active Directory (Azure AD) regularnie aktualizuje Azure AD Connect za pomocą nowych funkcji i funkcji. Nie wszystkie dodatki są stosowane dla wszystkich odbiorców.
@@ -46,13 +46,8 @@ Nie wszystkie wersje Azure AD Connect będą udostępniane do autouaktualniania.
 ## <a name="14x0"></a>1.4. X. 0
 
 >[!IMPORTANT]
->Komputery z systemem Windows zarejestrowane jako hybrydowe przyłączone do usługi Azure AD są reprezentowane w usłudze Azure AD jako obiekty urządzeń. Te obiekty urządzenia mogą być używane na potrzeby dostępu warunkowego. Komputery z systemem Windows 10 są synchronizowane z chmurą za pośrednictwem Azure AD Connect, a komputery z systemem Windows są rejestrowane bezpośrednio przy użyciu AD FS lub bezproblemowego logowania jednokrotnego.
->
->Tylko komputery z systemem Windows 10 z określoną wartością atrybutu userCertificate skonfigurowanym za pomocą funkcji hybrydowego sprzężenia usługi Azure AD powinny być synchronizowane z chmurą przez Azure AD Connect.  W poprzednich wersjach Azure AD Connect ten wymóg nie został rygorystycznie wymuszony, co powoduje niepotrzebne obiekty urządzenia w usłudze Azure AD. Takie urządzenia w usłudze Azure AD zawsze pozostają w stanie "oczekiwanie", ponieważ te komputery nie zostały przeznaczone do rejestracji w usłudze Azure AD.
->
->Ta wersja Azure AD Connect będzie synchronizować tylko komputery z systemem Windows 10, które są poprawnie skonfigurowane do obsługi hybrydowej usługi Azure AD. Azure AD Connect nigdy nie należy synchronizować [urządzeń z systemem Windows niższego poziomu](../../active-directory/devices/hybrid-azuread-join-plan.md#windows-down-level-devices).  Wszystkie urządzenia w usłudze Azure AD, które wcześniej zostały zsynchronizowane, zostaną teraz usunięte z usługi Azure AD.  Jednak ta zmiana nie spowoduje usunięcia wszystkich urządzeń z systemem Windows, które zostały poprawnie zarejestrowane w usłudze Azure AD dla hybrydowego sprzężenia usługi Azure AD. 
->
->Niektórzy klienci mogą zobaczyć, że niektóre lub wszystkie urządzenia z systemem Windows znikną z usługi Azure AD. Nie jest to przyczyną problemu, ponieważ te tożsamości urządzeń nie są używane przez usługę Azure AD podczas autoryzacji dostępu warunkowego. Niektórzy klienci mogą potrzebować odwiedzania [, jak: Zaplanuj implementację](../../active-directory/devices/hybrid-azuread-join-plan.md) hybrydowej Azure Active Directory dołączenia, aby zalogować się do swoich komputerów z systemem Windows, i upewnij się, że takie urządzenia mogą w pełni uczestniczyć w dostęp warunkowy oparty na urządzeniach Jeśli Azure AD Connect próbuje usunąć urządzenia z [systemem Windows niższego poziomu](../../active-directory/devices/hybrid-azuread-join-plan.md#windows-down-level-devices) , to urządzenie nie jest tym, które zostało utworzone przez [program Microsoft Workplace Join dla komputerów z systemem innym niż Windows 10](https://www.microsoft.com/download/details.aspx?id=53554) , i nie może być używane przez żadną inną funkcję usługi Azure AD.  Jeśli widzisz usunięcie obiektów komputera/urządzenia w usłudze Azure AD przekraczających próg usuwania eksportu, zaleca się, aby klient zezwolił na te operacje usuwania.
+>W tej wersji programu Azure AD Connect niektórzy klienci mogą zobaczyć, że niektóre lub wszystkie urządzenia z systemem Windows znikną z usługi Azure AD. Nie jest to przyczyną problemu, ponieważ te tożsamości urządzeń nie są używane przez usługę Azure AD podczas autoryzacji dostępu warunkowego. Aby uzyskać więcej informacji, zobacz [omówienie Azure AD Connect 1.4. XX. x Device disappearnce](reference-connect-device-disappearance.md)
+
 
 ### <a name="release-status"></a>Stan wydania
 9/10/2019: Wydano tylko do uaktualnienia
@@ -63,7 +58,7 @@ Nie wszystkie wersje Azure AD Connect będą udostępniane do autouaktualniania.
 - Klienci powinni mieć świadomość, że przestarzałe punkty końcowe usługi WMI dla MIIS_Service zostały już usunięte. Wszystkie operacje WMI powinny teraz odbywać się za pośrednictwem poleceń cmdlet środowiska PS.
 - Poprawa zabezpieczeń przez zresetowanie ograniczonego delegowania obiektu AZUREADSSOACC
 - W przypadku dodawania/edytowania reguły synchronizacji, jeśli istnieją jakiekolwiek atrybuty używane w regule, które znajdują się w schemacie łącznika, ale nie są dodawane do łącznika, atrybuty są automatycznie dodawane do łącznika. Ta sama wartość dotyczy typu obiektu, którego dotyczy reguła. Jeśli wszystkie elementy zostaną dodane do łącznika, łącznik zostanie oznaczony do pełnego importowania w następnym cyklu synchronizacji.
-- Korzystanie z administratora przedsiębiorstwa lub domeny jako konta łącznika nie jest już obsługiwane.
+- Korzystanie z administratora przedsiębiorstwa lub domeny jako konta łącznika nie jest już obsługiwane w nowych wdrożeniach usługi AAD Connect. W tej wersji nie wpłynie to na bieżące wdrożenia usługi AAD Connect z użyciem przedsiębiorstwa lub administratora domeny.
 - W Menedżerze synchronizacji do tworzenia/edytowania/usuwania reguły jest uruchamiana pełna synchronizacja. Gdy zostanie uruchomiony pełny import lub pełna synchronizacja, pojawi się okno podręczne.
 - Dodano kroki zaradcze dla błędów haseł do strony "łączniki > Właściwości > łączności"
 - Dodano ostrzeżenie o zaniechaniu dla Menedżera usług synchronizacji na stronie właściwości łącznika. To ostrzeżenie powiadamia użytkownika, że zmiany należy wykonać za pomocą Kreatora AADC.
