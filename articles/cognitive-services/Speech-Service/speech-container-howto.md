@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 09/24/2019
 ms.author: dapine
-ms.openlocfilehash: 4b8ea102c7acc55acec05234303ff4c215a4bc0f
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: c8efc416555996ef9a1abd79ec5aafcb65186d6f
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105158"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316682"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Instalowanie i uruchamianie kontenerów usługi mowy
 
@@ -111,7 +111,7 @@ Poniższa tabela zawiera listę obsługiwanych ustawień regionalnych dla **zami
 |Ustawienia regionalne języka|`Tags`|
 |--|--|
 |Chiński|`zh-cn`|
-|Angielski |`en-us`<br>`en-gb`<br>`en-au`<br>`en-in`|
+|Polski |`en-us`<br>`en-gb`<br>`en-au`<br>`en-in`|
 |Francuski |`fr-ca`<br>`fr-fr`|
 |Niemiecki|`de-de`|
 |Włoski|`it-it`|
@@ -139,13 +139,13 @@ Poniższa tabela zawiera listę obsługiwanych ustawień regionalnych dla **zami
 |Ustawienia regionalne języka|`Tags`|Obsługiwane głosy|
 |--|--|--|
 |Chiński|`zh-cn`|huihuirus<br>kangkang-apollo<br>yaoyao-apollo|
-|Angielski |`en-au`|catherine<br>hayleyrus|
-|Angielski |`en-gb`|George — Apollo<br>hazelrus<br>Susan — Apollo|
-|Angielski |`en-in`|heera-apollo<br>priyarus<br>ravi-apollo<br>|
-|Angielski |`en-us`|jessarus<br>benjaminrus<br>jessa24krus<br>zirarus<br>guy24krus|
+|Polski |`en-au`|catherine<br>hayleyrus|
+|Polski |`en-gb`|George — Apollo<br>hazelrus<br>Susan — Apollo|
+|Polski |`en-in`|heera-apollo<br>priyarus<br>ravi-apollo<br>|
+|Polski |`en-us`|jessarus<br>benjaminrus<br>jessa24krus<br>zirarus<br>guy24krus|
 |Francuski|`fr-ca`|caroline<br>harmonierus|
 |Francuski|`fr-fr`|hortenserus<br>julie-apollo<br>Paul-Apollo|
-|niemiecki|`de-de`|hedda<br>heddarus<br>Stefan-Apollo|
+|Niemiecki|`de-de`|hedda<br>heddarus<br>Stefan-Apollo|
 |Włoski|`it-it`|cosimo-apollo<br>luciarus|
 |Japoński|`ja-jp`|ayumi-apollo<br>harukarus<br>ichiro-apollo|
 |Koreański|`ko-kr`|heamirus|
@@ -270,7 +270,9 @@ Kontener zawiera interfejsy API punktu końcowego REST, które można znaleźć 
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Po uruchomieniu kontenera kontener używa **stdout** i **stderr** do informacji wyjściowych, które są przydatne do rozwiązywania problemów występujących podczas uruchamiania lub uruchamiania kontenera.
+Jeśli uruchamiasz kontener z [instalacją wyjściową](speech-container-configuration.md#mount-settings) i włączono rejestrowanie, kontener generuje pliki dziennika, które są przydatne do rozwiązywania problemów występujących podczas uruchamiania lub uruchamiania kontenera.
+
+[!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
 ## <a name="billing"></a>Rozliczenia
 

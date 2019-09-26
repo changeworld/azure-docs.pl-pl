@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: cynthn
-ms.openlocfilehash: 0e3996c28750639b227475bf4e0196f3a0c3ab0d
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: e30adf8b694d744e64fb7528b75b85d4a772a723
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163217"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316759"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Wersja zapoznawcza: Logowanie do maszyny wirtualnej z systemem Linux na platformie Azure przy użyciu uwierzytelniania Azure Active Directory
 
@@ -68,7 +68,7 @@ Poniższe regiony platformy Azure są obecnie obsługiwane w ramach wersji zapoz
 
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.31 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
-## <a name="create-a-linux-virtual-machine"></a>Utwórz maszynę wirtualną z systemem Linux
+## <a name="create-a-linux-virtual-machine"></a>Tworzenie maszyny wirtualnej z systemem Linux
 
 Utwórz grupę zasobów za pomocą polecenia [AZ Group Create](/cli/azure/group#az-group-create), a następnie utwórz maszynę wirtualną z funkcją [AZ VM Create](/cli/azure/vm#az-vm-create) przy użyciu obsługiwanego dystrybucji i w obsługiwanym regionie. W poniższym przykładzie wdrożono maszynę wirtualną o nazwie *myVM* , która używa *Ubuntu 16,04 LTS* do grupy zasobów o nazwie Moja *resourceName* w regionie *southcentralus* . W poniższych przykładach można podać własną grupę zasobów i nazwy maszyn wirtualnych zgodnie z potrzebami.
 
@@ -87,7 +87,10 @@ Utworzenie maszyny wirtualnej i zasobów pomocniczych potrwa kilka minut.
 
 ## <a name="install-the-azure-ad-login-vm-extension"></a>Zainstaluj rozszerzenie maszyny wirtualnej do logowania do usługi Azure AD
 
-Aby zalogować się do maszyny wirtualnej z systemem Linux przy użyciu poświadczeń usługi Azure AD, zainstaluj rozszerzenie maszyny wirtualnej logowania Azure Active Directory. Rozszerzenia maszyn wirtualnych to małe aplikacje, które zapewniają konfigurację po wdrożeniu i zadania automatyzacji na maszynach wirtualnych platformy Azure. Użyj opcji [AZ VM Extension Set](/cli/azure/vm/extension#az-vm-extension-set) , aby zainstalować rozszerzenie *AADLoginForLinux* na maszynie wirtualnej o nazwie *myVM* w grupie zasobów:
+> [!NOTE]
+> W przypadku wdrażania tego exention do wcześniej utworzonej maszyny wirtualnej upewnij się, że maszyna ma co najmniej 1 GB przydzieloną pamięć, w przeciwnym razie rozszerzenie nie zostanie zainstalowane
+
+Aby zalogować się do maszyny wirtualnej z systemem Linux przy użyciu poświadczeń usługi Azure AD, zainstaluj rozszerzenie maszyny wirtualnej logowania Azure Active Directory. Rozszerzenia maszyn wirtualnych to małe aplikacje, które zapewniają konfigurację po wdrożeniu i zadania automatyzacji na maszynach wirtualnych platformy Azure. Użyj opcji [AZ VM Extension Set](/cli/azure/vm/extension#az-vm-extension-set) , aby zainstalować rozszerzenie *AADLoginForLinux* na maszynie wirtualnej o nazwie *myVM* w *grupie zasobów* :
 
 ```azurecli-interactive
 az vm extension set \
@@ -97,7 +100,7 @@ az vm extension set \
     --vm-name myVM
 ```
 
-*ProvisioningState* powiodło się, gdy rozszerzenie zostanie pomyślnie zainstalowane na maszynie wirtualnej.
+*ProvisioningState* *powiodło* się, gdy rozszerzenie zostanie pomyślnie zainstalowane na maszynie wirtualnej.
 
 ## <a name="configure-role-assignments-for-the-vm"></a>Konfigurowanie przypisań ról dla maszyny wirtualnej
 
@@ -107,7 +110,7 @@ Zasady Access Control oparte na rolach (RBAC) na platformie Azure określają, k
 - **Logowanie użytkownika maszyny wirtualnej**: Użytkownicy z przypisaną tą rolą mogą logować się do maszyny wirtualnej platformy Azure przy użyciu zwykłych uprawnień użytkownika.
 
 > [!NOTE]
-> Aby umożliwić użytkownikowi logowanie się do maszyny wirtualnej za pośrednictwem protokołu SSH, należy przypisać rolę logowania *administratora maszyny wirtualnej* lub *użytkownika maszyny wirtualnej* . Użytkownik platformy Azure z rolami *właściciela* lub współautora przypisany do maszyny wirtualnej nie ma automatycznie uprawnień do logowania się do maszyny wirtualnej za pośrednictwem protokołu SSH.
+> Aby umożliwić użytkownikowi logowanie się do maszyny wirtualnej za pośrednictwem protokołu SSH, należy przypisać rolę logowania *administratora maszyny wirtualnej* lub *użytkownika maszyny wirtualnej* . Użytkownik platformy Azure z rolami *właściciela* lub *współautora* przypisany do maszyny wirtualnej nie ma automatycznie uprawnień do logowania się do maszyny wirtualnej za pośrednictwem protokołu SSH.
 
 Poniższy przykład używa [AZ role przypisanie Create](/cli/azure/role/assignment#az-role-assignment-create) , aby przypisać rolę *logowania administratora maszyny wirtualnej* do maszyny wirtualnej dla bieżącego użytkownika platformy Azure. Nazwa użytkownika aktywnego konta platformy Azure zostanie uzyskana za pomocą [AZ Account show](/cli/azure/account#az-account-show), a *zakres* jest ustawiany na maszynę wirtualną utworzoną w poprzednim kroku przy użyciu [AZ VM show](/cli/azure/vm#az-vm-show). Zakres może być również przypisany do grupy zasobów lub poziomu subskrypcji i obowiązują normalne uprawnienia dziedziczenia RBAC. Aby uzyskać więcej informacji, zobacz [Kontrola dostępu oparta na rolach](../../role-based-access-control/overview.md)
 
@@ -159,7 +162,7 @@ Przy pierwszym uruchomieniu sudo zostanie wyświetlony monit o uwierzytelnienie 
 ```bash
 %aad_admins ALL=(ALL) ALL
 ```
-Z tym wierszem:
+z tym wierszem:
 
 ```bash
 %aad_admins ALL=(ALL) NOPASSWD:ALL

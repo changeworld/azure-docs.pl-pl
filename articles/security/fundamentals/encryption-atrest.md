@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2019
+ms.date: 09/26/2019
 ms.author: barclayn
-ms.openlocfilehash: b506c6f6101e8c5ce71231a8178f70fa5a0914d8
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 3b60a6da1e7961c7709bb0b19e91dc6f15a51a1c
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262820"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316779"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Szyfrowanie danych platformy Azure — w spoczynku
 
@@ -178,7 +178,7 @@ Aby uzyskać klucz służący do szyfrowania lub odszyfrowywania danych w spoczy
 - Klient ma pełną odpowiedzialność za zarządzanie cyklem życia kluczy
 - Dodatkowe ustawienia & konfiguracji
 
-#### <a name="server-side-encryption-using-service-managed-keys-in-customer-controlled-hardware"></a>Szyfrowanie po stronie serwera przy użyciu kluczy zarządzanych przez klienta
+#### <a name="server-side-encryption-using-customer-managed-keys-in-customer-controlled-hardware"></a>Szyfrowanie po stronie serwera przy użyciu kluczy zarządzanych przez klienta w sprzęcie kontrolowanym przez klienta
 
 Niektóre usługi platformy Azure zapewniają własny model zarządzania kluczami (HYOK) na hoście. Ten tryb zarządzania jest użyteczny w scenariuszach, w których istnieje potrzeba zaszyfrowania danych przechowywanych w pamięci i zarządzania kluczami w repozytorium zastrzeżonym poza kontrolą firmy Microsoft. W tym modelu usługa musi pobrać klucz z zewnętrznej lokacji. Wpływ na gwarancje dotyczące wydajności i dostępności, a konfiguracja jest bardziej skomplikowana. Ponadto, ponieważ usługa ma dostęp do klucza szyfrowania danych w trakcie operacji odszyfrowywania i deszyfrowania, ogólne gwarancje bezpieczeństwa tego modelu są podobne do tego, kiedy klucze są zarządzane przez klienta w Azure Key Vault.  W związku z tym ten model nie jest odpowiedni dla większości organizacji, chyba że mają określone wymagania dotyczące zarządzania kluczami. Ze względu na te ograniczenia większość usług platformy Azure nie obsługuje szyfrowania po stronie serwera przy użyciu kluczy zarządzanych przez klienta.
 
@@ -273,7 +273,7 @@ Szyfrowanie po stronie klienta Azure SQL Database danych jest obsługiwane za po
 | Azure Data Catalog               | Tak                | -                  | -                  |
 | Apache Kafka w usłudze Azure HDInsight  | Tak                | Wszystkie długości RSA.   | -                  |
 | Azure Data Explorer              | Tak                | -                  | -                  |
-| Azure Data Factory               | Tak                | -                  | -                  |
+| Azure Data Factory               | Tak                | Tak                | -                  |
 | Azure Data Lake Store            | Tak                | Tak, RSA 2048-bit  | -                  |
 | **Containers**                   |                    |                    |                    |
 | Azure Kubernetes Service         | Tak                | -                  | -                  |

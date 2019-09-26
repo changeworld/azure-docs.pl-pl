@@ -1,97 +1,93 @@
 ---
-title: Najlepsze rozwiązania dotyczące zarządzania zestawów języka U-SQL w potoku ciągłej integracji/ciągłego wdrażania dla usługi Azure Data Lake
-description: Poznaj najlepsze rozwiązania dotyczące zarządzania U-SQL C# zestawów w potoku ciągłej integracji/ciągłego wdrażania za pomocą DevOps platformy Azure.
-services: data-lake-analytics
+title: Zarządzanie zestawami U-SQL w potoku ciągłej integracji/ciągłego wdrażania — Azure Data Lake
+description: Poznaj najlepsze rozwiązania dotyczące zarządzania zestawami U- C# SQL w potoku ciągłej integracji/ciągłego wdrażania za pomocą usługi Azure DevOps.
 author: yanancai
 ms.author: yanacai
-ms.reviewer: ''
-ms.assetid: ''
 ms.service: data-lake-analytics
 ms.topic: conceptual
-ms.workload: big-data
 ms.date: 10/30/2018
-ms.openlocfilehash: 27a873fac8bf2b53ee06780b8a348eaaa5c94e97
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e6de10ed712688e4ee9dccc22176e81ad5e574ca
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60334270"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315848"
 ---
-# <a name="best-practices-for-managing-u-sql-assemblies-in-a-cicd-pipeline"></a>Najlepsze rozwiązania dotyczące zarządzania zestawów języka U-SQL w potoku ciągłej integracji/ciągłego wdrażania
+# <a name="best-practices-for-managing-u-sql-assemblies-in-a-cicd-pipeline"></a>Najlepsze rozwiązania dotyczące zarządzania zestawami U-SQL w potoku ciągłej integracji/ciągłego wdrażania
 
-W tym artykule dowiesz się, jak zarządzać kodem źródłowym zestawu U-SQL przy użyciu nowo wprowadzonych projekt U-SQL w bazie danych. Poznasz również sposób konfigurowania ciągłej integracji i potoku wdrażania (CI/CD) na potrzeby rejestracji zestawów przy użyciu DevOps platformy Azure.
+W tym artykule dowiesz się, jak zarządzać kodem źródłowym zestawu U-SQL przy użyciu nowo wprowadzonego projektu bazy danych U-SQL. Dowiesz się również, jak skonfigurować potok ciągłej integracji i wdrażania (CI/CD) na potrzeby rejestracji zestawu przy użyciu usługi Azure DevOps.
 
-## <a name="use-the-u-sql-database-project-to-manage-assembly-source-code"></a>Użyj projektu bazy danych U-SQL do zarządzania kodem źródłowym zestawu
+## <a name="use-the-u-sql-database-project-to-manage-assembly-source-code"></a>Użyj projektu bazy danych U-SQL, aby zarządzać kodem źródłowym zestawu
 
-[Projekt bazy danych U-SQL](data-lake-analytics-data-lake-tools-develop-usql-database.md) jest typ projektu w programie Visual Studio, która ułatwia deweloperom tworzenie, zarządzanie i wdrażanie ich bazy danych U-SQL, szybko i łatwo. Możesz zarządzać wszystkie obiekty bazy danych U-SQL (z wyjątkiem poświadczeń) z projektem bazy danych U-SQL. 
+[Projekt bazy danych u-SQL](data-lake-analytics-data-lake-tools-develop-usql-database.md) to typ projektu w programie Visual Studio, który ułatwia deweloperom szybkie i łatwe tworzenie i wdrażanie baz danych U-SQL oraz zarządzanie nimi. Można zarządzać wszystkimi obiektami bazy danych U-SQL (z wyjątkiem poświadczeń) za pomocą projektu bazy danych U-SQL. 
 
-Aby zarządzać C# kod źródłowy zestawu i skrypty języka DDL U-SQL rejestracji zestawów, należy użyć:
+Aby zarządzać kodem C# źródłowym zestawu i SKRYPTAMI DDL języka c-SQL, użyj:
 
-* Projekt bazy danych U-SQL do zarządzania skryptami języka U-SQL rejestracji zestawu.
-* Klasy biblioteki (dla języka U-SQL aplikacji) do zarządzania C# w kodzie źródłowym oraz zależności dla operatorów zdefiniowanych przez użytkownika, funkcje i agregatorów (udo, funkcje zdefiniowane przez użytkownika i UDAGs).
-* Projekt bazy danych U-SQL, aby odwoływać się do projektu biblioteki klas. 
+* Projekt bazy danych u-SQL w celu zarządzania rejestrowaniem skryptów U-SQL.
+* Biblioteka klas (dla aplikacji U-SQL) do zarządzania kodem C# źródłowym i zależnościami dla operatorów zdefiniowanych przez użytkownika, funkcji i agregatorów (udo, UDF i UDAGs).
+* Projekt bazy danych U-SQL do odwoływania się do projektu biblioteki klas. 
 
-Projekt bazy danych U-SQL można odwoływać się do projektu biblioteki klas (dla aplikacji języka U-SQL). Możesz utworzyć zestawy zarejestrowana w bazie danych U-SQL przy użyciu, do których odwołuje się C# źródła kodu z tego projektu biblioteki klas (dla aplikacji języka U-SQL).
+Projekt bazy danych U-SQL może odwoływać się do biblioteki klas (dla aplikacji U-SQL). Zestawy zarejestrowane w bazie danych U-SQL można tworzyć przy użyciu kodu źródłowego C# przywoływanego z tej biblioteki klas (dla aplikacji U-SQL).
 
-Wykonaj następujące kroki, aby tworzyć projekty i dodaj odwołania do.
-1. Utwórz projekt biblioteki klas (dla aplikacji języka U-SQL), wybierając **pliku** > **New** > **projektu**. Projekt jest pod **usługi Azure Data Lake > U-SQL** węzła.
+Wykonaj następujące kroki, aby utworzyć projekty i dodać odwołania.
+1. Utwórz bibliotekę klas (dla aplikacji U-SQL), wybierając kolejno pozycje **plik** > **Nowy** > **projekt**. Projekt znajduje się w **Azure Data Lake > węzła U-SQL** .
 
-   ![Usługa Data Lake Tools for Visual Studio — Utwórz C# projekt biblioteki klas](./media/data-lake-analytics-cicd-manage-assemblies/create-c-sharp-class-library-project.png)
-1. Dodawanie sieci zdefiniowanej przez użytkownika C# kod w projekcie biblioteki klas (dla aplikacji języka U-SQL).
+   ![Data Lake Tools for Visual Studio — tworzenie C# projektu biblioteki klas](./media/data-lake-analytics-cicd-manage-assemblies/create-c-sharp-class-library-project.png)
+1. Dodaj zdefiniowany przez C# użytkownika kod w bibliotece klas (dla aplikacji U-SQL).
 
-1. Utwórz projekt U-SQL, wybierając **pliku** > **New** > **projektu**. Projekt jest pod **usługi Azure Data Lake** > **U-SQL** węzła.
+1. Utwórz projekt U-SQL, wybierając pozycję **plik** > **Nowy** > **projekt**. Projekt znajduje się w węźle **Azure Data Lake** > **U-SQL** .
 
-   ![Narzędzia Data Lake Tools for Visual Studio — Utwórz U-SQL projektu bazy danych](media/data-lake-analytics-cicd-manage-assemblies/create-u-sql-database-project.png)
-1. Dodaj odwołanie do C# projekt biblioteki klas dla projektu bazy danych U-SQL.
+   ![Data Lake Tools for Visual Studio — Tworzenie projektu bazy danych U-SQL](media/data-lake-analytics-cicd-manage-assemblies/create-u-sql-database-project.png)
+1. Dodaj odwołanie do projektu biblioteki C# klas dla projektu bazy danych U-SQL.
 
-    ![Narzędzia Data Lake Tools for Visual Studio — Dodawanie języka U-SQL bazy danych odwołania do projektu](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-add-project-reference.png) 
+    ![Data Lake Tools for Visual Studio — Dodawanie odwołania projektu bazy danych U-SQL](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-add-project-reference.png) 
 
-    ![Narzędzia Data Lake Tools for Visual Studio — Dodawanie języka U-SQL bazy danych odwołania do projektu](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-add-project-reference-wizard.png)
+    ![Data Lake Tools for Visual Studio — Dodawanie odwołania projektu bazy danych U-SQL](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-add-project-reference-wizard.png)
 
-5. Utwórz skrypt zestawu w projekcie bazy danych U-SQL, kliknij prawym przyciskiem myszy projekt i wybierając **Dodaj nowy element**.
+5. Utwórz skrypt zestawu w projekcie bazy danych U-SQL, klikając prawym przyciskiem myszy projekt i wybierając polecenie **Dodaj nowy element**.
 
-   ![Usługa Data Lake Tools for Visual Studio — Dodaj skrypt zestawu](media/data-lake-analytics-cicd-manage-assemblies/add-assembly-script.png)
+   ![Data Lake Tools for Visual Studio — Dodawanie skryptu zestawu](media/data-lake-analytics-cicd-manage-assemblies/add-assembly-script.png)
 
-1. Otwórz skrypt zestawu w widoku Projekt zestawu. Wybierz zestaw z odwołania z **tworzenia zestawu z odwołania** menu rozwijanego.
+1. Otwórz skrypt zestawu w widoku projektu zestawu. Wybierz przywoływany zestaw z menu rozwijanego **Utwórz zestaw z odwołania** .
 
-    ![Narzędzia Data Lake Tools for Visual Studio — Tworzenie zestawu z odwołania](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-create-assembly-from-reference.png)
+    ![Data Lake Tools for Visual Studio — Tworzenie zestawu z odwołania](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-create-assembly-from-reference.png)
 
-7. Dodaj **zarządzanych zależności** i **dodatkowe pliki**, jeśli istnieją. Po dodaniu dodatkowych plików, to narzędzie używa ścieżki względnej do upewnij się, że można odnaleźć zestawów na komputerze lokalnym i na komputerze kompilacji później.
+7. Dodaj **zarządzane zależności** i **dodatkowe pliki**, jeśli istnieją. Po dodaniu dodatkowych plików narzędzie używa ścieżki względnej, aby upewnić się, że można znaleźć zestawy na komputerze lokalnym i na maszynie kompilacji w późniejszym czasie.
 
-**\@_DeployTempDirectory** w edytorze u dołu okna jest wstępnie zdefiniowanej zmiennej, która wskazuje narzędziu do folderu wyjściowego kompilacji. W folderze danych wyjściowych kompilacji każdy zestaw miał podfolder o nazwie zestawu. Wszystkie biblioteki dll i dodatkowe pliki znajdują się w tym podfolderze.
+_DeployTempDirectory w oknie edytora u dołu jest wstępnie zdefiniowaną zmienną, która wskazuje narzędzie do folderu danych wyjściowych kompilacji.  **\@** W folderze danych wyjściowych kompilacji każdy zestaw ma podfolder o nazwie z nazwą zestawu. Wszystkie biblioteki DLL i dodatkowe pliki znajdują się w tym podfolderze.
 
-## <a name="build-a-u-sql-database-project"></a>Tworzenie projektu bazy danych U-SQL
+## <a name="build-a-u-sql-database-project"></a>Kompilowanie projektu bazy danych U-SQL
 
-Dane wyjściowe kompilacji dla projektu bazy danych U-SQL jest pakiet wdrażania bazy danych U-SQL. Jest on nazwany z sufiksem `.usqldbpack`. `.usqldbpack` Pakiet jest plik .zip zawierający wszystkie instrukcje języka DDL w jednego skryptu U-SQL w folderze DDL. Wszystkie pliki .dll skompilowane i dodatkowe pliki zestawów znajdują się w folderze Temp.
+Dane wyjściowe kompilacji dla projektu bazy danych U-SQL to pakiet wdrożeniowy usługi U-SQL Database. Nazwa jest nazywana sufiksem `.usqldbpack`. `.usqldbpack` Pakiet jest plikiem ZIP, który zawiera wszystkie instrukcje języka DDL w jednym skrypcie U-SQL w folderze DDL. Wszystkie skompilowane pliki. dll i dodatkowe pliki dla zestawów znajdują się w folderze temp.
 
 ## <a name="deploy-a-u-sql-database"></a>Wdrażanie bazy danych U-SQL
 
-`.usqldbpack` Można wdrożyć pakietu dla konta lokalnego lub konta usługi Azure Data Lake Analytics. Użyj programu Visual Studio lub wdrożenie zestawu SDK. 
+`.usqldbpack` Pakiet można wdrożyć na koncie lokalnym lub koncie Azure Data Lake Analytics. Użyj programu Visual Studio lub zestawu SDK wdrażania. 
 
 ### <a name="deploy-a-u-sql-database-in-visual-studio"></a>Wdrażanie bazy danych U-SQL w programie Visual Studio
 
-Bazy danych U-SQL można wdrożyć za pomocą projektu bazy danych U-SQL lub `.usqldbpack` pakietów w programie Visual Studio.
+Bazę danych u-SQL można wdrożyć przy użyciu projektu bazy danych u-SQL lub `.usqldbpack` pakietu w programie Visual Studio.
 
 #### <a name="deploy-by-using-a-u-sql-database-project"></a>Wdrażanie przy użyciu projektu bazy danych U-SQL
 
-1.  Kliknij prawym przyciskiem myszy projekt bazy danych U-SQL, a następnie wybierz **Wdróż**.
-2.  W **wdrażania bazy danych U-SQL** kreatora wybierz **konta ADLA** do której chcesz wdrożyć bazy danych. Obsługiwane są zarówno kont lokalnych, jak i kont ADLA.
-3.  **Bazy danych źródła** jest wypełniane automatycznie. Wskazuje on na pakiet .usqldbpack w folderze danych wyjściowych kompilacji projektu.
-4.  Wprowadź nazwę w **Nazwa bazy danych** utworzyć bazę danych. Jeśli baza danych o tej samej nazwie już istnieje w miejscu docelowym kontem usługi Azure Data Lake Analytics, wszystkie obiekty, które są zdefiniowane w projekcie bazy danych są tworzone bez potrzeby ponownego tworzenia bazy danych.
-5.  Aby wdrożyć bazę danych U-SQL, wybierz **przesyłania**. Wszystkie zasoby, takie jak zestawy i dodatkowe pliki zostaną przekazane. Przesłaniu zadania U-SQL, który zawiera wszystkie instrukcje języka DDL.
+1.  Kliknij prawym przyciskiem myszy projekt bazy danych U-SQL, a następnie wybierz polecenie **Wdróż**.
+2.  W kreatorze **wdrażania U-SQL Database** wybierz **konto ADLA** , do którego chcesz wdrożyć bazę danych. Obsługiwane są zarówno konta lokalne, jak i konta ADLA.
+3.  **Źródło bazy danych** jest wypełniane automatycznie. Wskazuje na pakiet. usqldbpack w folderze danych wyjściowych kompilacji projektu.
+4.  Wprowadź nazwę w polu **Nazwa bazy danych** , aby utworzyć bazę danych. Jeśli baza danych o takiej samej nazwie już istnieje na docelowym koncie Azure Data Lake Analytics, wszystkie obiekty, które są zdefiniowane w projekcie bazy danych, zostaną utworzone bez ponownego tworzenia bazy danych.
+5.  Aby wdrożyć bazę danych U-SQL, wybierz pozycję **Prześlij**. Przekazywane są wszystkie zasoby, takie jak zestawy i dodatkowe pliki. Zostanie przesłane zadanie U-SQL zawierające wszystkie instrukcje języka DDL.
 
-    ![Narzędzia Data Lake Tools for Visual Studio — wdrażanie U-SQL projektu bazy danych](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-deploy-usql-database-project.png)
+    ![Data Lake Tools for Visual Studio — wdrażanie projektu bazy danych U-SQL](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-deploy-usql-database-project.png)
 
-    ![Kreator projektu bazy danych narzędzi Data Lake Tools for Visual Studio — wdrażanie U-SQL](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-deploy-usql-database-project-wizard.png)
+    ![Data Lake Tools for Visual Studio — Kreator wdrażania projektu bazy danych U-SQL](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-deploy-usql-database-project-wizard.png)
 
-### <a name="deploy-a-u-sql-database-in-azure-devops"></a>Wdrażanie bazy danych U-SQL w DevOps platformy Azure
+### <a name="deploy-a-u-sql-database-in-azure-devops"></a>Wdrażanie bazy danych U-SQL w usłudze Azure DevOps
 
-`PackageDeploymentTool.exe` udostępnia programowania i interfejsów z wierszem polecenia, które ułatwiają wdrażanie bazy danych U-SQL. Zestaw SDK jest uwzględniony w [pakietu Nuget zestawu SDK U-SQL](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)znajdujący się w folderze `build/runtime/PackageDeploymentTool.exe`.
+`PackageDeploymentTool.exe`zapewnia programowanie i interfejsy wiersza polecenia, które ułatwiają wdrażanie baz danych U-SQL. Zestaw SDK jest zawarty w [pakiecie NuGet zestawu SDK U-SQL](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/), który znajduje `build/runtime/PackageDeploymentTool.exe`się w lokalizacji.
 
-W metodyce DevOps platformy Azure można użyć zadania wiersza polecenia i ten zestaw SDK do konfigurowania potoku automatyzacji do odświeżania bazy danych U-SQL. [Dowiedz się więcej o zestawie SDK oraz sposób konfigurowania potoku ciągłej integracji/ciągłego Dostarczania do wdrożenia bazy danych U-SQL](data-lake-analytics-cicd-overview.md#deploy-u-sql-database-through-azure-pipelines).
+W usłudze Azure DevOps można użyć zadania wiersza polecenia i tego zestawu SDK, aby skonfigurować potok automatyzacji dla odświeżania bazy danych U-SQL. [Dowiedz się więcej o zestawie SDK i sposobach konfigurowania potoku ciągłej integracji i ciągłego wdrażania bazy danych U-SQL](data-lake-analytics-cicd-overview.md#deploy-u-sql-database-through-azure-pipelines).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Skonfiguruj potok ciągłej integracji/ciągłego wdrażania usługi Azure Data Lake Analytics](data-lake-analytics-cicd-overview.md)
-* [Testowanie kodu Azure Data Lake Analytics](data-lake-analytics-cicd-test.md)
+* [Skonfiguruj potok ciągłej integracji/ciągłego wdrażania dla Azure Data Lake Analytics](data-lake-analytics-cicd-overview.md)
+* [Przetestuj kod Azure Data Lake Analytics](data-lake-analytics-cicd-test.md)
 * [Uruchom skrypt U-SQL na komputerze lokalnym](data-lake-analytics-data-lake-tools-local-run.md)

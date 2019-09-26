@@ -1,6 +1,6 @@
 ---
-title: Tworzenie języka U-SQL, Python, R w języku C# dla usługi Azure Data Lake Analytics w programie Visual Studio Code
-description: Dowiedz się, jak za pomocą kodu języka Python, R i języku C# można przesłać zadania w usłudze Azure Data Lake.
+title: Uruchamianie zadań U-SQL w języku Python, R i C# -Azure Data Lake Analytics
+description: Dowiedz się, jak za pomocą kodu w języku Python C# , R i przesłać zadanie w Azure Data Lake.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: jejiang
@@ -8,36 +8,36 @@ ms.author: jejiang
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 11/22/2017
-ms.openlocfilehash: 6c234ad6756f4e65e172bf0ffc0ae5a1d35d109b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cb3ddf0c4147fa982e8ab0f9d440292d12803d35
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60814065"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309709"
 ---
-# <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>Tworzenie języka U-SQL, Python, R w języku C# dla usługi Azure Data Lake Analytics w programie Visual Studio Code
-Dowiedz się, jak używać programu Visual Studio Code (VSCode) do pisania języka Python, R i języku C# kodu za zaporą za pomocą języka U-SQL oraz przesyłania zadań do usługi Azure Data Lake. Aby uzyskać więcej informacji na temat usługi Azure Data Lake Tools dla programu VSCode zobacz [używać usługi Azure Data Lake Tools for Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md).
+# <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>Opracowywanie języka U-SQL w języku Python, C# R i dla Azure Data Lake Analytics w Visual Studio Code
+Dowiedz się, w jaki sposób używać Visual Studio Code (programu vscode) do pisania C# języka Python, języka R i kodu w języku U-SQL oraz przesyłania zadań do usługi Azure Data Lake. Aby uzyskać więcej informacji o Azure Data Lake narzędziach programu vscode, zobacz [Korzystanie z kodu Azure Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-for-vscode.md).
 
-Przed napisaniem kodu niestandardowego związanym z kodem, należy otworzyć folder lub obszaru roboczego w VSCode.
+Przed zapisaniem niestandardowego kodu związanego z kodem należy otworzyć folder lub obszar roboczy w programu vscode.
 
 
-## <a name="prerequisites-for-python-and-r"></a>Wymagania wstępne dotyczące języka Python i R
-Zarejestruj języka Python i R zestawów rozszerzeń dla konta usługi ADL. 
+## <a name="prerequisites-for-python-and-r"></a>Wymagania wstępne dotyczące języków Python i R
+Zarejestruj zestawy rozszerzeń języka Python i rozszerzenia R dla konta usługi ADL. 
 1. Otwórz swoje konto w portalu.
    - Wybierz pozycję **Przegląd**. 
-   - Kliknij przycisk **przykładowy skrypt**.
+   - Kliknij pozycję **przykładowy skrypt**.
 2. Kliknij przycisk **więcej**.
-3. Wybierz **zainstalować rozszerzenia U-SQL**. 
-4. Po zainstalowaniu rozszerzenia U-SQL, zostanie wyświetlony komunikat potwierdzenia. 
+3. Wybierz pozycję **Zainstaluj rozszerzenia U-SQL**. 
+4. Komunikat z potwierdzeniem jest wyświetlany po zainstalowaniu rozszerzeń U-SQL. 
 
-   ![Konfigurowanie środowiska języka python i R](./media/data-lake-analytics-data-lake-tools-for-vscode/setup-the-enrionment-for-python-and-r.png)
+   ![Konfigurowanie środowiska dla języków Python i R](./media/data-lake-analytics-data-lake-tools-for-vscode/setup-the-enrionment-for-python-and-r.png)
 
    > [!Note]
-   > Aby uzyskać najlepsze doświadczenia na usłudze języka Python i R Zainstaluj rozszerzeń programu VSCode języka Python i R. 
+   > Aby uzyskać najlepsze środowisko w języku Python i usłudze języka R, zainstaluj rozszerzenie programu vscode Python i R. 
 
-## <a name="develop-python-file"></a>Tworzenie pliku Python
-1. Kliknij przycisk **nowy plik** w obszarze roboczym.
-2. Napisz swój kod w języku U-SQL. Poniżej przedstawiono przykładowy kod.
+## <a name="develop-python-file"></a>Opracowywanie pliku języka Python
+1. Kliknij **nowy plik** w obszarze roboczym.
+2. Napisz swój kod w języku U-SQL. Poniżej znajduje się przykładowy kod.
     ```U-SQL
     REFERENCE ASSEMBLY [ExtPython];
     @t  = 
@@ -58,8 +58,8 @@ Zarejestruj języka Python i R zestawów rozszerzeń dla konta usługi ADL.
         USING Outputters.Csv();
     ```
     
-3. Kliknij prawym przyciskiem myszy plik skryptu, a następnie wybierz **ADL: Generowanie pliku CodeBehind języka Python**. 
-4. **Xxx.usql.py** generowany jest plik w folderze roboczym. Napisz swój kod w pliku języka Python. Poniżej przedstawiono przykładowy kod.
+3. Kliknij prawym przyciskiem myszy plik skryptu, a następnie **wybierz pozycję ADL: Generuj plik**związany z kodem w języku Python. 
+4. Plik **xxx.usql.py** jest generowany w folderze roboczym. Napisz swój kod w pliku języka Python. Poniżej znajduje się przykładowy kod.
 
     ```Python
     def get_mentions(tweet):
@@ -72,11 +72,11 @@ Zarejestruj języka Python i R zestawów rozszerzeń dla konta usługi ADL.
         del df['tweet']
         return df
     ```
-5. Kliknij prawym przyciskiem myszy **USQL** pliku, możesz kliknąć pozycję **skryptu kompilacji** lub **Prześlij zadanie** do uruchomienia zadania.
+5. Kliknij prawym przyciskiem myszy plik **USQL** , a następnie kliknij polecenie **Kompiluj skrypt** lub **Prześlij zadanie** , aby uruchomić zadanie.
 
 ## <a name="develop-r-file"></a>Tworzenie pliku języka R
-1. Kliknij przycisk **nowy plik** w obszarze roboczym.
-2. Napisz swój kod w pliku języka U-SQL. Poniżej przedstawiono przykładowy kod.
+1. Kliknij **nowy plik** w obszarze roboczym.
+2. Napisz swój kod w pliku U-SQL. Poniżej znajduje się przykładowy kod.
     ```U-SQL
     DEPLOY RESOURCE @"/usqlext/samples/R/my_model_LM_Iris.rda";
     DECLARE @IrisData string = @"/usqlext/samples/R/iris.csv";
@@ -115,20 +115,20 @@ Zarejestruj języka Python i R zestawów rozszerzeń dla konta usługi ADL.
     TO @OutputFilePredictions
     USING Outputters.Tsv();
     ```
-3. Kliknij prawym przyciskiem myszy **USQL** pliku, a następnie wybierz **ADL: Generowanie pliku CodeBehind języka R**. 
-4. **Xxx.usql.r** generowany jest plik w folderze roboczym. Napisz swój kod w pliku języka R. Poniżej przedstawiono przykładowy kod.
+3. Kliknij prawym przyciskiem myszy plik **USQL** , a następnie **wybierz pozycję ADL: Generuj plik**związany z kodem R. 
+4. Plik **xxx. usql. r** jest generowany w folderze roboczym. Napisz kod w pliku R. Poniżej znajduje się przykładowy kod.
 
     ```R
     load("my_model_LM_Iris.rda")
     outputToUSQL=data.frame(predict(lm.fit, inputFromUSQL, interval="confidence"))
     ```
-5. Kliknij prawym przyciskiem myszy **USQL** pliku, możesz kliknąć pozycję **skryptu kompilacji** lub **Prześlij zadanie** do uruchomienia zadania.
+5. Kliknij prawym przyciskiem myszy plik **USQL** , a następnie kliknij polecenie **Kompiluj skrypt** lub **Prześlij zadanie** , aby uruchomić zadanie.
 
-## <a name="develop-c-file"></a>Tworzenie pliku języka C#
-Plik związany z kodem jest plik C# skojarzony z jednego skryptu U-SQL. Operatory zdefiniowane przez użytkownika Agregacja uda w JĘZYKU, UDT oraz funkcji zdefiniowanej przez użytkownika w pliku związanym z kodem, można zdefiniować dedykowany skrypt. Operatory zdefiniowane przez użytkownika, UDA, UDT i funkcji definiowanych przez użytkownika można bezpośrednio w skrypcie bez rejestrowania najpierw zestaw. Plik związany z kodem jest umieszczany w tym samym folderze co jego komunikacji równorzędnej pliku skryptu U-SQL. Jeśli skrypt ma nazwę xxx.usql, jako xxx.usql.cs nosi nazwę związanym z kodem. Jeśli usuniesz ręcznie pliku związanego z kodem, funkcja związanym z kodem jest wyłączona dla jego skojarzony skrypt U-SQL. Aby uzyskać więcej informacji na temat pisania kodu klienta dla skryptu U-SQL, zobacz [pisanie i przy użyciu niestandardowego kodu w języku U-SQL: Funkcje zdefiniowane przez użytkownika]( https://blogs.msdn.microsoft.com/visualstudio/2015/10/28/writing-and-using-custom-code-in-u-sql-user-defined-functions/).
+## <a name="develop-c-file"></a>Opracowywanie C# pliku
+Plik związany z kodem to C# plik skojarzony z jednym skryptem U-SQL. Można zdefiniować skrypt dedykowany dla UDO, UDA, UDT i UDF w pliku związanym z kodem. UDO, UDA, UDT i UDF można używać bezpośrednio w skrypcie bez wcześniejszego rejestrowania zestawu. Plik związany z kodem jest umieszczany w tym samym folderze co plik skryptu U-SQL. Jeśli skrypt ma nazwę xxx. usql, kod źródłowy jest nazwany jako xxx.usql.cs. Jeśli ręcznie usuniesz plik związany z kodem, funkcja związana z kodem zostanie wyłączona dla skojarzonego skryptu U-SQL. Aby uzyskać więcej informacji na temat pisania kodu klienta dla skryptu U-SQL [, zobacz Pisanie i używanie kodu niestandardowego w języku u-SQL: Funkcje]( https://blogs.msdn.microsoft.com/visualstudio/2015/10/28/writing-and-using-custom-code-in-u-sql-user-defined-functions/)zdefiniowane przez użytkownika.
 
-1. Kliknij przycisk **nowy plik** w obszarze roboczym.
-2. Napisz swój kod w pliku języka U-SQL. Poniżej przedstawiono przykładowy kod.
+1. Kliknij **nowy plik** w obszarze roboczym.
+2. Napisz swój kod w pliku U-SQL. Poniżej znajduje się przykładowy kod.
     ```U-SQL
     @a = 
         EXTRACT 
@@ -157,8 +157,8 @@ Plik związany z kodem jest plik C# skojarzony z jednego skryptu U-SQL. Operator
         TO @"/output/SearchLogtest.txt" 
         USING Outputters.Tsv();
     ```
-3. Kliknij prawym przyciskiem myszy **USQL** pliku, a następnie wybierz **ADL: Generowanie pliku CodeBehind CS**. 
-4. **Xxx.usql.cs** generowany jest plik w folderze roboczym. Napisz swój kod w pliku CS. Poniżej przedstawiono przykładowy kod.
+3. Kliknij prawym przyciskiem myszy plik **USQL** , a następnie **wybierz pozycję ADL: Generuj plik**CS związany z kodem. 
+4. Plik **xxx.usql.cs** jest generowany w folderze roboczym. Napisz swój kod w pliku CS. Poniżej znajduje się przykładowy kod.
 
     ```CS
     namespace USQLApplication_codebehind
@@ -176,12 +176,12 @@ Plik związany z kodem jest plik C# skojarzony z jednego skryptu U-SQL. Operator
         }
     }
     ```
-5. Kliknij prawym przyciskiem myszy **USQL** pliku, możesz kliknąć pozycję **skryptu kompilacji** lub **Prześlij zadanie** do uruchomienia zadania.
+5. Kliknij prawym przyciskiem myszy plik **USQL** , a następnie kliknij polecenie **Kompiluj skrypt** lub **Prześlij zadanie** , aby uruchomić zadanie.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Korzystanie z narzędzi Azure Data Lake Tools for Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md)
-* [Uruchamiania lokalnego języka U-SQL i debugowania lokalnego przy użyciu programu Visual Studio Code](data-lake-tools-for-vscode-local-run-and-debug.md)
-* [Rozpoczynanie pracy z usługą Data Lake Analytics przy użyciu programu PowerShell](data-lake-analytics-get-started-powershell.md)
-* [Rozpoczynanie pracy z usługą Data Lake Analytics przy użyciu witryny Azure portal](data-lake-analytics-get-started-portal.md)
-* [Użyj narzędzi Data Lake Tools for Visual Studio do tworzenia aplikacji w języku U-SQL](data-lake-analytics-data-lake-tools-get-started.md)
-* [Korzystanie z Data Lake Analytics(U-SQL) katalogu](data-lake-analytics-use-u-sql-catalog.md)
+* [Lokalne uruchamianie skryptu U-SQL i debugowanie lokalne przy użyciu Visual Studio Code](data-lake-tools-for-vscode-local-run-and-debug.md)
+* [Wprowadzenie do Data Lake Analytics przy użyciu programu PowerShell](data-lake-analytics-get-started-powershell.md)
+* [Wprowadzenie do Data Lake Analytics przy użyciu Azure Portal](data-lake-analytics-get-started-portal.md)
+* [Używanie narzędzi Data Lake Tools for Visual Studio do tworzenia aplikacji U-SQL](data-lake-analytics-data-lake-tools-get-started.md)
+* [Użyj wykazu Data Lake Analytics (U-SQL)](data-lake-analytics-use-u-sql-catalog.md)

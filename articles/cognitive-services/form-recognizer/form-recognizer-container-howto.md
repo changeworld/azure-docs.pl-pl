@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 09/24/2019
 ms.author: dapine
-ms.openlocfilehash: c58f8ae0605f99952507a5f308316f784b3d8de1
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: eced3415db27562ea60b67f5c23ca7fafe09ccc0
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105140"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316645"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Instalowanie i uruchamianie kontenerów aparatów rozpoznawania formularzy
 
@@ -303,7 +303,9 @@ Kontener zawiera interfejsy API punktu końcowego REST, które można znaleźć 
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Po uruchomieniu kontenera kontener używa **stdout** i **stderr** do danych wyjściowych, które są przydatne do rozwiązywania problemów występujących podczas uruchamiania lub uruchamiania kontenera.
+Jeśli uruchamiasz kontener z [instalacją wyjściową](form-recognizer-container-configuration.md#mount-settings) i włączono rejestrowanie, kontener generuje pliki dziennika, które są przydatne do rozwiązywania problemów występujących podczas uruchamiania lub uruchamiania kontenera.
+
+[!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
 ## <a name="billing"></a>Rozliczenia
 

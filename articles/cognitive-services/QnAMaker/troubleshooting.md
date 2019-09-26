@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 09/25/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 95b4978b66accce0182e58493cb9d600dbe5e35f
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: c0ceea5c86af8d733c838e19f77eaeadc8a12dbb
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277480"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300238"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Rozwiązywanie problemów dotyczących QnA Maker
 
@@ -49,6 +49,8 @@ QnA Maker udostępnia **Pomoc techniczną** bot w portalu QNA Maker. Pomoc bot j
 ## <a name="manage-the-knowledge-base"></a>Zarządzanie w bazie wiedzy knowledge base
 
 ### <a name="i-accidentally-deleted-a-part-of-my-qna-maker-what-should-i-do"></a>Część mojej usługi QnA Maker przypadkowo usunięty, co należy zrobić? 
+
+Nie usuwaj żadnych usług platformy Azure utworzonych wraz z zasobem QnA Maker, takich jak Search lub Web App. Są one niezbędne do pracy QnA Maker, jeśli zostaną usunięte, QnA Maker przestaną działać poprawnie.
 
 Usuwa wszystkie są trwałe, łącznie z pary pytań i odpowiedzi, pliki, adresy URL, niestandardowe pytania i odpowiedzi, baz wiedzy lub zasobów platformy Azure. Upewnij się, należy wyeksportować z bazy wiedzy **ustawienia** strony przed usunięciem jakichkolwiek pracach związanych z bazy wiedzy knowledge base. 
 

@@ -1,416 +1,333 @@
 ---
 title: Zadania dla zespołu prowadzić w zespole procesu do nauki o danych zespołu
-description: Zarys zadania, które zespół prowadzić w projekcie zespołowym do nauki o danych oczekuje się, aby ukończyć dla zespołu do nauki o danych.
+description: Szczegółowy przewodnik dotyczący zadań dla zespołu, który prowadzi do zespołu procesów nauki o danych zespołowych
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 09/23/2019
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 45be3d7f865c7b72ae62efbf99dbbb4594b1846f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 84cca255d8cf768d44e01c8f3a892e3c9830184e
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60812070"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316711"
 ---
-# <a name="tasks-for-the-team-lead-in-the-team-data-science-process-team"></a>Zadania dla zespołu prowadzić w zespole procesu do nauki o danych zespołu
+# <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>Zadania dla zespołu liderzy zespołu ds. procesów naukowych
 
-W tym temacie wymieniono zadania, które jest lider zespołu oczekiwano dla swojego zespołu do nauki o danych. Celem jest zapewnienie środowiska zespół współpracowników, standardowego na [zespołu danych dla celów naukowych](overview.md) (TDSP). Przetwarzanie TDSP jest metodologia nauki o danych agile, iteracyjne wydajnie dostarczać rozwiązania do analizy predykcyjnej i inteligentnych aplikacji. Zaprojektowano go, aby poprawić współpracę i szkolenia zespołu. Ten proces jest destylacji najlepsze rozwiązania i struktury zarówno firmy Microsoft, a także z branży służące do pomyślnego wdrożenia inicjatyw do nauki o danych, aby pomóc firmom w pełni korzystać z zalet ich programy analizy. Konspekt ról pracowników i ich skojarzone zadania, które są obsługiwane przez zespół do nauki o danych standaryzacji na temat tego procesu dla [zespołu danych dla celów naukowych role i zadania](roles-tasks.md).
+W tym artykule opisano zadania, które *lider zespołu* ukończy dla zespołu ds. analizy danych. Celem lidera zespołu jest ustanowienie środowiska zespołu współpracy, które jest standaryzacją w [zespołowym procesie nauki o danych](overview.md) (przetwarzania TDSP). PRZETWARZANIA TDSP zaprojektowano tak, aby pomóc w ulepszaniu współpracy i uczenia zespołu. 
 
-A **lider zespołu** zarządza zespołu w jednostce do nauki o danych przedsiębiorstwa. Zespół składa się z wielu analityków danych. Jednostki do nauki o danych z mniejszą liczbą analitykom danych **menedżera grupy** i **lider zespołu** może to być ta sama osoba lub można przekazać jej zadania zastępcze. Ale nie zmieniaj samych zadań. Przepływ pracy dla zadań do wykonania przez zespół potencjalnych klientów w celu skonfigurowania takiego środowiska są przedstawione na poniższym rysunku:
+PRZETWARZANIA TDSP to metoda Agile, iteracyjnej analizy danych, która umożliwia wydajne dostarczanie rozwiązań do analizy predykcyjnej i inteligentnych aplikacji. Proces ten polega na przeprowadzeniu najlepszych praktyk i struktur firmy Microsoft i branży, które są potrzebne do pomyślnej implementacji inicjatyw naukowych dotyczących danych, aby pomóc firmom w pełni wykorzystać zalety swoich programów do analizy. Aby zapoznać się z zarysem ról pracowników i skojarzonych zadań dla zespołu ds. analizy danych w przetwarzania TDSP, zobacz temat [role i zadania zespołowego procesu nauki danych](roles-tasks.md).
 
-![1](./media/team-lead-tasks/team-leads-1-creating-teams.png)
+Lider zespołu zarządza zespołem składającym się z kilku analityków danych w jednostce analizy danych przedsiębiorstwa. W zależności od rozmiaru i struktury jednostki analizy danych [Menedżer grupy](group-manager-tasks.md) i lider zespołu mogą należeć do tej samej osoby lub mogą delegować swoje zadania do surogatów. Ale nie zmieniaj samych zadań. 
 
->[AZURE.NOTE] Zadania w blokach po 1 i 2 ilustracji są wymagane, jeśli używasz DevOps platformy Azure jako platformy hostingowej kodu i chcesz mieć oddzielnego projektu DevOps platformy Azure dla zespołu. Po wykonaniu tych zadań wszystkie repozytoria zespołu mogą być tworzone w ramach tego projektu. 
+Na poniższym diagramie przedstawiono przepływ pracy dla zadań ukończonych przez lidera zespołu w celu skonfigurowania środowiska zespołu:
 
-Po kilku wymagań wstępnych dotyczących zadania określone w poniższej sekcji są spełnione przez menedżera grupy istnieją pięciu głównych zadań (Niektóre opcjonalne), należy wykonać w ramach tego samouczka. Zadania te odpowiadają main numerowane sekcjach tego tematu:
+![Przepływ pracy zadania lidera zespołu](./media/team-lead-tasks/team-leads-1-creating-teams.png)
 
-1. Tworzenie **projektu** na usługom DevOps platformy Azure grupy, grupy i dwa repozytoriami zespołu w projekcie:
-    - **ProjectTemplate repozytorium** 
-    - **TeamUtilities repozytorium**
-2. Zapełnić zespół **ProjectTemplate** repozytorium z **GroupProjectTemplate** repozytorium, który został skonfigurowany przez menedżera grupy. 
-3. Utwórz zespół data i analizy zasobów:
-    - Dodawanie narzędzi specyficznych dla zespołu do **TeamUtilities** repozytorium. 
-    - (Opcjonalnie) Tworzenie **usługi Azure file storage** ma być używany do przechowywania zasobów danych, które mogą być przydatne dla całego zespołu. 
-4. (Opcjonalnie) Usługa Azure file storage, aby zainstalować **maszyny wirtualnej do nauki o danych** (DSVM) zespołu potencjalny klient i Dodaj zasoby danych na nim.
-5. Konfigurowanie **zabezpieczeniem** przez dodawanie członków zespołu i skonfiguruj swoje uprawnienia.
+1. Utwórz **projekt zespołowy** w organizacji grupy w usłudze Azure DevOps. 
+  
+1. Zmień nazwę domyślnego repozytorium zespołu na **TeamUtilities**.
+  
+1. Utwórz nowe repozytorium **TeamTemplate** w projekcie zespołowym. 
+  
+1. Zaimportuj zawartość repozytoriów **GroupUtilities** i **GroupProjectTemplate** z grupy do repozytoriów **TeamUtilities** i **TeamTemplate** . 
+  
+1. Skonfiguruj **kontrolę zabezpieczeń** , dodając członków zespołu i konfigurując ich uprawnienia.
+  
+1. W razie potrzeby utwórz zasoby danych zespołu i analizy:
+   - Dodawanie narzędzi specyficznych dla zespołu do repozytorium **TeamUtilities** . 
+   - Tworzenie **usługi Azure File Storage** do przechowywania zasobów danych, które mogą być przydatne dla całego zespołu. 
+   - Zainstaluj magazyn plików platformy Azure w **Data Science Virtual Machineu** lidera zespołu (DSVM) i Dodaj do niego zasoby danych.
 
->[AZURE.NOTE] Firma Microsoft opisano kroki niezbędne do skonfigurowania środowiska TDSP środowisko pracy dla zespołu za pomocą DevOps platformy Azure w poniższych instrukcjach. Firma Microsoft umożliwia określenie sposobu wykonywania tych zadań, za pomocą DevOps platformy Azure, ponieważ jest to, jak wygląda implementacja przetwarzania TDSP w firmie Microsoft. Jeśli inny kod hostingu platformy jest używana dla tej grupy, zadania, które muszą zostać wykonane przez lider zespołu, zazwyczaj nie należy zmieniać. Ale sposobem wykonania tych zadań ma być inna.
+Poniższy samouczek zawiera szczegółowe instrukcje.
 
-## <a name="repositories-and-directories"></a>Repozytoria i katalogi
+> [!NOTE] 
+> W tym artykule są używane usługi Azure DevOps i DSVM w celu skonfigurowania środowiska zespołu przetwarzania TDSP, ponieważ jest to sposób implementacji przetwarzania TDSP w firmie Microsoft. Jeśli Twój zespół korzysta z innych platform hostingowych lub deweloperskich, zadania lidera zespołu są takie same, ale sposób ich ukończenia może być różny.
 
-W tym temacie używany skrócone nazwy dla repozytoriów i katalogów. Nazwy te ułatwiają wykonaj operacje między repozytoria i katalogi. Ten zapis (**R** dla repozytoriów Git i **D** dla katalogi lokalne na maszyny wirtualnej DSVM) jest używany w następujących sekcjach:
+## <a name="prerequisites"></a>Wymagania wstępne
 
-- **R1**: **GroupProjectTemplate** repozytorium w usłudze Git, który Menedżer grupy skonfigurowany na serwerze grupy DevOps platformy Azure.
-- **R3**: Zespół **ProjectTemplate** repozytorium w usłudze Git, możesz skonfigurować.
-- **R4**: **TeamUtilities** repozytorium w usłudze Git, możesz skonfigurować.
-- **D1**: Katalog lokalny sklonować z R1 i skopiować D3.
-- **D3**: Katalog lokalny sklonować z R3, dostosowywanie i kopiowane z powrotem do R3.
-- **D4**: Katalog lokalny sklonować z R4, dostosowywanie i kopiowane z powrotem do R4.
+W tym samouczku przyjęto założenie, że następujące zasoby i uprawnienia zostały skonfigurowane przez [Menedżera grupy](group-manager-tasks.md):
 
-Nazwy określone dla repozytoriów i katalogi, w tym samouczku zostały dołączone przy założeniu, że Twoje celem jest ustanowienie oddzielnego projektu zespołu w obrębie większej grupy do nauki o danych. Jednak inne opcje są otwarte dla Ciebie jako lider zespołu:
+- **Organizacja** usługi Azure DevOps dla Twojej jednostki danych
+- Repozytoria **GroupProjectTemplate** i **GroupUtilities** , uzupełnione o zawartość repozytoriów **ProjectTemplate** i **narzędzi** zespołu firmy Microsoft przetwarzania TDSP
+- Uprawnienia na koncie organizacji umożliwiające tworzenie projektów i repozytoriów dla zespołu
 
-- Cała grupa można wybrać opcję utworzenia pojedynczego projektu. Wszystkie projekty z wszystkich zespołów do nauki o danych będzie w ramach tego pojedynczego projektu. Aby to osiągnąć, można wyznaczyć administratorowi usługi git, wykonaj następujące instrukcje do utworzenia pojedynczego projektu. Ten scenariusz może być prawidłowy, na przykład:
-    -  grupy do nauki o danych w małych, która nie ma wiele zespołów do nauki o danych 
-    -  większej danych do analizy grupy z wielu zespołów do nauki o danych, niemniej chce, aby zoptymalizować współpracę między zespołami dzięki takim działaniom jak planowanie sprintu na poziomie grupy. 
-- Zespoły mogą wybrać opcję Szablony specyficzne dla zespołu projektu lub narzędzi specyficznych dla zespołu w ramach pojedynczego projektu dla całej grupy. W tym przypadku Liderzy zespołów, należy utworzyć repozytoria szablonu projektu i/lub repozytoriów narzędzia zespołu, w tym samym projekcie. Nazwy tych repozytoriów *< TeamName\>ProjectTemplate* i *< TeamName\>narzędzia*, na przykład *TeamJohnProjectTemplate*i *TeamJohnUtilities*. 
+Aby można było klonować repozytoria i modyfikować ich zawartość na komputerze lokalnym lub DSVM lub skonfigurować usługę Azure File Storage i zainstalować ją w DSVM, potrzebne są następujące elementy:
 
-W każdym przypadku zespołów podać tę informację członków zespołu, wiadomo, które szablon i programy narzędziowe repozytoria do przyjęcia, gdy są one Konfigurowanie i klonowania repozytoriów projektu i narzędzia. Liderzy projektu należy stosować [projektu zadań dla zespołu do nauki o danych](project-lead-tasks.md) do utworzenia projektu repozytoriów, czy w ramach oddzielnych projektów lub pojedynczego projektu. 
+- Subskrypcja platformy Azure.
+- Na maszynie zainstalowano narzędzie git. Jeśli używasz DSVM, program git jest wstępnie zainstalowany. W przeciwnym razie zobacz [dodatku platformami i narzędziami](platforms-and-tools.md#appendix).
+- Jeśli chcesz użyć DSVM, system Windows lub Linux DSVM utworzony i skonfigurowany na platformie Azure. Aby uzyskać więcej informacji i instrukcje, zapoznaj się z [dokumentacją Data Science Virtual Machine](/azure/machine-learning/data-science-virtual-machine/).
+- W przypadku systemu Windows DSVM na komputerze zainstalowano program [git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) . W pliku *README.MD* przewiń w dół do sekcji **pobieranie i instalacja** , a następnie wybierz **najnowszy Instalator**. Pobierz instalatora *exe* ze strony Instalatora i uruchom go. 
+- W przypadku systemu Linux DSVM klucz publiczny skonfigurowany na DSVM i dodany do usługi Azure DevOps. Aby uzyskać więcej informacji i instrukcje, zobacz sekcję **Tworzenie klucza publicznego SSH** w [dodatku platformy i narzędzia](platforms-and-tools.md#appendix). 
 
+## <a name="create-a-team-project-and-repositories"></a>Tworzenie projektu zespołowego i repozytoriów
 
-## <a name="0-prerequisites"></a>0. Wymagania wstępne
+W tej sekcji utworzysz następujące zasoby w organizacji usługi Azure DevOps dla Twojej grupy:
 
-Wymagania wstępne są spełnione, wykonując zadania przydzielone do swojego przełożonego grupy opisane w temacie [menedżera grupy zadań dla zespołu do nauki o danych](group-manager-tasks.md). Aby podsumować zapotrzebowanie w tym miejscu, następujące wymagania muszą spełniać przed przystąpieniem do wykonywania zadań kierownik zespołu: 
+- Projekt **Webteam** w usłudze Azure DevOps
+- Repozytorium **TeamTemplate**
+- Repozytorium **TeamUtilities**
 
-- Twoje **grupie usługom DevOps platformy Azure** (lub konta grupy na innego kodu, hostingu platformy) został skonfigurowany przez menedżera grupy.
-- Twoje **repozytorium GroupProjectTemplate** (R1) zostało skonfigurowane na Twoim koncie grupy przez menedżera grupy kod hostingu platformy, które planujesz używać.
-- Nastąpiło **autoryzacji** na Twoim koncie grupy, aby utworzyć repozytoriów dla Twojego zespołu.
-- Git musi być zainstalowany na tym komputerze. Jeśli używasz maszyny wirtualnej do nauki o danych (DSVM) wstępnie zainstalowane narzędzia Git, i jest gotowe. W przeciwnym razie zobacz [dodatku platformami i narzędziami](platforms-and-tools.md#appendix).  
-- Jeśli używasz **Windows DSVM**, musisz mieć [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) zainstalowana na tym komputerze. W pliku README.md, przewiń w dół do **Pobierz i zainstaluj** sekcji, a następnie kliknij przycisk *najnowszą wersję Instalatora*. Spowoduje to przejście do najnowszych strony Instalatora. Pobierz Instalator .exe, w tym miejscu i uruchom go. 
-- Jeśli używasz **Linux maszyny wirtualnej DSVM**, utworzyć klucz publiczny SSH na maszyny wirtualnej DSVM i dodać go do grupy usług DevOps platformy Azure. Aby uzyskać więcej informacji na temat protokołu SSH, zobacz **utworzyć publiczny klucz SSH** sekcji [dodatku platformami i narzędziami](platforms-and-tools.md#appendix). 
-    
-## <a name="1-create-a-project-and-repositories"></a>1. Tworzenie projektu i repozytoriów
+Nazwy określone dla repozytoriów i katalogów w tym samouczku założono, że chcesz ustanowić oddzielny projekt dla własnego zespołu w ramach większej organizacji analizy danych. Jednak cała grupa może zdecydować się na działanie jednego projektu utworzonego przez Menedżera grupy lub administratora organizacji. Następnie wszystkie zespoły analizy danych tworzą repozytoria w ramach tego pojedynczego projektu. Ten scenariusz może być prawidłowy dla:
+- Niewielka grupa nauki o danych, która nie ma wielu zespołów do nauki o danych. 
+- Większa grupa nauki o danych z wieloma zespołami nauki danych, które jednak chcą zoptymalizować współpracę między zespołami z działaniami, takimi jak planowanie przebiegu na poziomie grupy. 
 
-Ten krok należy wykonać, jeśli używasz DevOps platformy Azure jako kod hostingu platforma umożliwiająca przechowywanie wersji i współpracy. Ta sekcja zawiera można tworzyć trzy artefaktów w usługom DevOps platformy Azure, grupy:
+Jeśli zespoły zdecydują się na posiadanie repozytoriów specyficznych dla zespołu w ramach pojedynczego projektu grupy, liderzy zespołu powinni utworzyć repozytoria z nazwami, takimi jak  *\<TeamName > Template* i  *\<TeamName > Utilities*. Na wystąpienie: *TeamATemplate* i *TeamAUtilities*. 
 
-- **MyTeam** projektu DevOps platformy Azure
-- **MyProjectTemplate** repozytorium (**R3**) w usłudze Git
-- **MyTeamUtilities** repozytorium (**R4**) w usłudze Git
+W każdym przypadku liderzy zespołu muszą pozwolić, aby członkowie zespołu wiedzieli, które szablony i narzędzia są repozytoriami do konfigurowania i klonowania. Potencjalni klienci projektu powinni postępować zgodnie z [zadaniami lidera projektu dla zespołu ds. analizy danych](project-lead-tasks.md) w celu tworzenia repozytoriów projektów, niezależnie od tego, czy są w różnych projektach czy pojedynczym projekcie. 
 
 ### <a name="create-the-myteam-project"></a>Utwórz projekt MyTeam
 
-- Przejdź do swojej grupy głównej usługom DevOps platformy Azure pod adresem URL `https://<Azure DevOps Services Name\>.visualstudio.com`. 
-- Kliknij przycisk **New** do tworzenia projektu. 
-
-    ![2](./media/team-lead-tasks/team-leads-2-create-new-team.png)
-
-- Okno projektu Utwórz prosi o wprowadź nazwę projektu (**MyTeam** w tym przykładzie). Upewnij się, że wybrano **Agile** jako **szablonu procesu** i **Git** jako **kontroli wersji**. 
-
-    ![3](./media/team-lead-tasks/team-leads-3-create-new-team-2.png)
-
-- Kliknij przycisk **Tworzenie projektu**. Projekt **MyTeam** jest tworzony w mniej niż 1 minuta. 
-
-- Po elemencie project **MyTeam** jest utworzony, kliknij polecenie **przejdź do projektu** przycisk, aby przejść do strony głównej projektu. 
-
-    ![4](./media/team-lead-tasks/team-leads-4-create-new-team-3.png)
-
-- Jeśli widzisz **Gratulacje!** okna podręcznego kliknij **Dodaj kod** (przycisk z czerwonym prostokątem). W przeciwnym razie kliknij przycisk **kodu** (w żółte pole). To kieruje użytkownika do strony repozytorium Git projektu. 
-
-    ![5](./media/team-lead-tasks/team-leads-5-team-project-home.png)
-
-### <a name="create-the-myprojecttemplate-repository-r3-on-git"></a>Utwórz repozytorium MyProjectTemplate (R3) w usłudze Git
-
-- Na stronie repozytorium Git projektu, kliknij przycisk strzałki w dół obok nazwy repozytorium **MyTeam**i wybierz **Zarządzaj repozytoriami...** .
-
-    ![6](./media/team-lead-tasks/team-leads-6-rename-team-project-repo.png)
-
-- Na **kontroli wersji** karty Projekt w Panelu sterowania kliknij **MyTeam**, a następnie wybierz **zmiana nazwy repozytorium...** . 
-
-    ![7](./media/team-lead-tasks/team-leads-7-rename-team-project-repo-2.png)
-
-- Wprowadź nazwę nowego repozytorium w **zmiana nazwy repozytorium MyTeam** okna. W tym przykładzie *MyTeamProjectTemplate*. Możesz wybrać podobny *< Twoja nazwa zespołu\>ProjectTemplate*. Kliknij przycisk **Zmień nazwę** aby kontynuować.
-
-    ![8](./media/team-lead-tasks/team-leads-8-rename-team-project-repo-3.png)
-
-### <a name="create-the-myteamutilities-repository-r4-on-git"></a>Utwórz repozytorium MyTeamUtilities (R4) w usłudze Git
-
-- Aby utworzyć nowe repozytorium *< nazwa Twojego zespołu\>narzędzia* w ramach projektu, kliknij przycisk **nowe repozytorium...**  na **kontroli wersji** karty Panelu sterowania projektu.  
-
-    ![9](./media/team-lead-tasks/team-leads-9-create-team-utilities.png)
-
-- W **Utwórz nowe repozytorium** okna, które się pojawi, podaj nazwę dla tego repozytorium. W tym przykładzie użyjemy nazwy jako *MyTeamUtilities*, czyli **R4** w naszym notacji. Wybierz podobny *< Twoja nazwa zespołu\>narzędzia*. Upewnij się, że wybrano **Git** dla **typu**. Następnie kliknij przycisk **Utwórz** aby kontynuować.
-
-    ![10](./media/team-lead-tasks/team-leads-10-create-team-utilities-2.png)
-
-- Upewnij się, że dwa nowe repozytoria Git utworzone w ramach projektu **MyTeam**. W tym przykładzie: 
-
-- **MyTeamProjectTemplate** (R3) 
-- **MyTeamUtilities** (R4).
-
-    ![11](./media/team-lead-tasks/team-leads-11-two-repo-in-team.png)
-
-
-## <a name="2-seed-your-projecttemplate-and-teamutilities-repositories"></a>2. Zapełnić ProjectTemplate i TeamUtilities repozytoriów
-
-Procedura rozmieszczania używa katalogów w lokalnej maszyny wirtualnej DSVM jako pośredniego tymczasowej witryny. Jeśli trzeba dostosować swoje **ProjectTemplate** i **TeamUtilities** repozytoriów w celu spełnienia określonych niektóre zespół wymaga, możesz to zrobić w przedostatni kroku procedury. Poniżej przedstawiono podsumowanie kroków używany do generowania zawartości **MyTeamProjectTemplate** i **MyTeamUtilities** repozytoriów dla zespołu do nauki o danych. Poszczególne kroki odpowiadają podsekcje rozmieszczania procedury:
-
-- Klonuj repozytorium grupy do katalogu lokalnego: team R1 - sklonowany do -> lokalne D1
-- Sklonuj swoje repozytoria zespołu w katalogach lokalnych: team R3 & R4 - sklonowany do -> lokalne D3 & D4
-- Skopiuj zawartość szablonu projektu grupy do folderu lokalnego zespołu:  D1 - zawartość jest kopiowana do -> D3
-- (Opcjonalnie) Dostosowywanie lokalnego D3 & D4
-- Przenieś lokalny katalog zawartości do zespołu repozytoriów: D3 & D4 — zawartość, Dodaj do -> zespół R3 & R4
-
-
-### <a name="initialize-the-team-repositories"></a>Inicjowanie repozytoriami zespołu
-
-W tym kroku należy zainicjować repozytorium szablonów projektu z repozytorium szablonów projektu grupy:
-
-- **MyTeamProjectTemplate** repozytorium (**R3**) z Twojego **GroupProjectTemplate** (**R1**) repozytorium
-
-
-### <a name="clone-group-repositories-into-local-directories"></a>Klonowanie repozytoriów grupy w katalogach lokalnych
-
-Aby rozpocząć tej procedury:
-
-- Utwórz katalog na komputerze lokalnym:
-    - Aby uzyskać **Windows**: **C:\GitRepos\GroupCommon** i **C:\GitRepos\MyTeam**
-    - Aby uzyskać **Linux**: **GitRepos\GroupCommon** i **GitRepos\MyTeam** w katalogu macierzystym 
-- Przejdź do katalogu **GitRepos\GroupCommon**.
-- Uruchom następujące polecenie, w systemie operacyjnym komputera lokalnego.
-
-**Windows**
-
-    git clone https://<Your Azure DevOps Services name>.visualstudio.com/GroupCommon/_git/GroupProjectTemplate
-    
-
-![12](./media/team-lead-tasks/team-leads-12-create-two-group-repos.png)
-
-**Linux**
-    
-    git clone ssh://<Your Azure DevOps Services name>@<Your Azure DevOps Services name>.visualstudio.com:22/GroupCommon/_git/GroupProjectTemplate
-    
-    
-![13](./media/team-lead-tasks/team-leads-13-clone_two_group_repos_linux.png)
-
-Klonowanie tych poleceń Twoje **GroupProjectTemplate** repozytorium (R1) na usługi grupy usługi Azure DevOps do katalogu lokalnego w **GitRepos\GroupCommon** na komputerze lokalnym. Po zakończeniu klonowania katalogu **GroupProjectTemplate** (D1) jest tworzony w katalogu **GitRepos\GroupCommon**. Tutaj przyjęto założenie, że projekt utworzony menedżera grupy **GroupCommon**i **GroupProjectTemplate** repozytorium znajduje się w tym projekcie. 
-
-
-### <a name="clone-your-team-repositories-into-local-directories"></a>Sklonuj swoje repozytoria zespołu w katalogach lokalnych
-
-Klonowanie tych poleceń Twoje **MyTeamProjectTemplate** (R3) i **MyTeamUtilities** (R4) repozytoriów w projekcie **MyTeam** na swojej grupy metodyka DevOps usług systemu Azure **MyTeamProjectTemplate** (D3) i **MyTeamUtilities** katalogów (D4) w **GitRepos\MyTeam** na komputerze lokalnym. 
-
-- Przejdź do katalogu **GitRepos\MyTeam**
-- Uruchom następujące polecenia, zgodnie z potrzebami w systemie operacyjnym komputera lokalnego. 
-
-**Windows**
-
-    git clone https://<Your Azure DevOps Services name>.visualstudio.com/<Your Team Name>/_git/MyTeamProjectTemplate
-    git clone https://<Your Azure DevOps Services name>.visualstudio.com/<Your Team Name>/_git/MyTeamUtilities
-
-![14](./media/team-lead-tasks/team-leads-14-clone_two_empty_team_repos.png)
-        
-**Linux**
-    
-    git clone ssh://<Your Azure DevOps Services name>@<Your Azure DevOps Services name>.visualstudio.com:22/<Your Team Name>/_git/MyTeamProjectTemplate
-    git clone ssh://<Your Azure DevOps Services name>@<Your Azure DevOps Services name>.visualstudio.com:22/<Your Team Name>/_git/MyTeamUtilities
-    
-![15](./media/team-lead-tasks/team-leads-15-clone_two_empty_team_repos_linux.png)
-
-Po zakończeniu klonowania dwa katalogi **MyTeamProjectTemplate** (D3) i **MyTeamUtilities** (D4) są tworzone w katalogu **GitRepos\MyTeam**. Firma Microsoft ma zakłada, że w tym miejscu Nazwa projektu szablonu i programy narzędziowe repozytoriów **MyTeamProjectTemplate** i **MyTeamUtilities**. 
-
-### <a name="copy-the-group-project-template-content-to-the-local-project-template-directory"></a>Skopiuj zawartość szablonu projektu grupy do katalogu lokalnego projektu szablonu
-
-Aby skopiować zawartość lokalnej **GroupProjectTemplate** folder (D1) do lokalnej **MyTeamProjectTemplate** (D3), uruchom jedno z poniższych skryptów powłoki: 
-
-#### <a name="from-the-powershell-command-line-for-windows"></a>Z wiersza polecenia dla Windows PowerShell       
-
-    wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/tdsp_local_copy_win.ps1" -outfile "tdsp_local_copy_win.ps1"
-    .\tdsp_local_copy_win.ps1 2
-
-    
-![16](./media/team-lead-tasks/team-leads-16-local_copy_team_lead_new.png)
-
-#### <a name="from-the-linux-shell-for-the-linux-dsvm"></a>W przypadku systemu Linux **DSVM systemu Linux**
-    
-    wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/tdsp_local_copy_linux.sh"
-    bash tdsp_local_copy_linux.sh 2
-    
-![17](./media/team-lead-tasks/team-leads-17-local-copy-team-lead-linux-new.png)
-
-Skrypty wykluczać zawartość katalogu .git. Skrypty monit **ukończyć ścieżki** do katalogu źródłowego D1 i katalog docelowy D3.
-        
-
-### <a name="customize-your-project-template-or-team-utilities-optional"></a>Dostosowywanie Twojego projektu szablonu lub zespołu narzędzia (opcjonalnie)
-
-Dostosuj swoje **MyTeamProjectTemplate** (D3) i **MyTeamUtilities** (D4), jeśli to konieczne, na tym etapie procesu instalacji. 
-
-- Jeśli chcesz dostosować zawartość D3 do potrzeb Twojego zespołu, możesz modyfikować dokumenty szablonu, lub zmienić strukturę katalogów.
-
-- Jeśli Twój zespół został opracowany niektóre narzędzia, które chcesz udostępnić całego zespołu, skopiuj i Wklej do tych narzędzi do katalogu D4. 
-
-
-### <a name="push-local-directory-content-to-team-repositories"></a>Wypchnij zawartość katalogu lokalnego do zespołu repozytoriów
-
-Aby dodać zawartość (opcjonalnie dostosowane) katalogów lokalnych D3 i D4 do repozytoriami zespołu R3 i R4, uruchom następujące usługi git poleceń powłoki bash z poziomu konsoli programu Windows PowerShell lub z poziomu powłoki systemu Linux. Uruchom polecenia z **GitRepos\MyTeam\MyTeamProjectTemplate** katalogu.
-
-    git status
-    git add .
-    git commit -m"push from DSVM"
-    git push
-    
-![18](./media/team-lead-tasks/team-leads-18-push-to-group-server-2.png)
-
-Pliki w repozytorium MyTeamProjectTemplate usługom DevOps platformy Azure w swojej grupy są synchronizowane prawie od razu po uruchomieniu tego skryptu.
-
-![19](./media/team-lead-tasks/team-leads-19-push-to-group-server-showed-up.png)
-
-Teraz uruchomić ten sam zestaw cztery polecenia git z **GitRepos\MyTeam\MyTeamUtilities** katalogu. 
-
-> [AZURE.NOTE]Jeśli po raz pierwszy, zatwierdzenia do repozytorium Git, należy skonfigurować parametry globalne *user.name* i *user.email* przed uruchomieniem `git commit` polecenia. Uruchom dwa poniższe polecenia:
-        
-    git config --global user.name <your name>
-    git config --global user.email <your email address>
- 
-> Jeśli są zobowiązuje się do wielu repozytoriów Git, należy użyć takiej samej nazwie i adres e-mail, gdy zdecydujesz się na każdym z nich. Przy użyciu tej samej nazwy i adresu e-mail okazuje się wygodne później podczas tworzenia pulpitów nawigacyjnych usługi Power BI, aby śledzić działania usługi Git na wiele repozytoriów.
-
-![20](./media/team-lead-tasks/team-leads-20-git-config-name.png)
-
-
-## <a name="3-create-team-data-and-analytics-resources-optional"></a>3. Tworzenie zespołu data i analizy zasobów (opcjonalnie)
-
-Współużytkowanie zasobów danych i analizy całego zespołu ma zalety wydajności i kosztów: członków zespołu można wykonać swoje projekty ze współużytkowanych zasobów, Zapisz budżetów i bardziej efektywna współpraca. W tej sekcji udostępniamy instrukcje dotyczące sposobu tworzenia usługi Azure file storage. W następnej sekcji firma Microsoft zapewnia instrukcje dotyczące sposobu instalacji w usłudze Azure file storage na komputer lokalny. Aby uzyskać dodatkowe informacje na temat udostępniania innych zasobów, takich jak Azure maszynami wirtualnymi analizy danych, Azure HDInsight Spark klastrów, zobacz [platformami i narzędziami](platforms-and-tools.md). Ten temat zawiera wskazówki z punktu widzenia do nauki o danych na temat wybierania zasobów, które są odpowiednie do potrzeb i linki do stron produktu i innych stosownych i przydatne samouczków, które opublikowaliśmy.
-
->[AZURE.NOTE] Aby uniknąć między przesyłania danych centra danych, które mogą być powolne i kosztowne, upewnij się, że grupa zasobów, konto magazynu i maszyn wirtualnych platformy Azure (np. maszyny wirtualnej DSVM) znajdują się w tym samym centrum danych platformy Azure. 
-
-Uruchom następujące skrypty w celu utworzenia usługi Azure file storage dla Twojego zespołu. Usługi Azure file storage dla Twojego zespołu może służyć do przechowywania zasobów danych, które są przydatne dla całego zespołu. Skrypty monit swoje informacje dotyczące platformy Azure konto i subskrypcję, więc mieć tych poświadczeń, które są gotowe do wprowadzania. 
-
-### <a name="create-azure-file-storage-with-powershell-from-windows"></a>Tworzenie usługi Azure file storage przy użyciu programu PowerShell z Windows
-
-Uruchom ten skrypt z programu PowerShell wiersza polecenia:
-
-    wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/CreateFileShare.ps1" -outfile "CreateFileShare.ps1"
-    .\CreateFileShare.ps1
-
-![21](./media/team-lead-tasks/team-leads-21-create-fileshare-win.png)   
-
-Zaloguj się do konta usługi Microsoft Azure, po wyświetleniu monitu:
-
-![22](./media/team-lead-tasks/team-leads-22-file-create-s1.png)
-
-Wybierz subskrypcję platformy Azure, którego chcesz użyć:
-
-![23](./media/team-lead-tasks/team-leads-23-file-create-s2.png)
-
-Wybierz konto magazynu, które będzie używać lub utworzyć nowy katalog w ramach wybranej subskrypcji:
-
-![24](./media/team-lead-tasks/team-leads-24-file-create-s3.png)
-
-Wprowadź nazwę usługi Azure file storage, aby utworzyć. Tylko małe litery i cyfry zamierzone, Zapisz i - są akceptowane:
-
-![25](./media/team-lead-tasks/team-leads-25-file-create-s4.png)
-
-Aby ułatwić zainstalowanie i udostępnianie tego magazynu, po jego utworzeniu, Zapisz informacje magazynu plików platformy Azure do pliku tekstowego, a następnie Zanotuj ścieżkę do lokalizacji. W szczególności należy ten plik, aby zainstalować usługi Azure file storage, aby maszynach wirtualnych platformy Azure, w następnej sekcji. 
-
-Jest dobrą praktyką, aby sprawdzić, w tym pliku tekstowego do repozytorium ProjectTemplate. Firma Microsoft zaleca się umieszczenie w katalogu **Docs\DataDictionaries**. W związku z tym ten zasób danych są dostępne dla wszystkich projektów zespołu. 
-
-![26](./media/team-lead-tasks/team-leads-26-file-create-s5.png)
-
-
-### <a name="create-azure-file-storage-with-a-linux-script"></a>Tworzenie usługi Azure file storage przy użyciu skryptu systemu Linux
-
-Uruchom ten skrypt z poziomu powłoki systemu Linux:
-
-    wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/CreateFileShare.sh"
-    bash CreateFileShare.sh
-
-Zaloguj się do konta usługi Microsoft Azure, postępując zgodnie z instrukcjami na tym ekranie:
-
-![27](./media/team-lead-tasks/team-leads-27-file-create-linux-s1.png)
-
-Wybierz subskrypcję platformy Azure, którego chcesz używać:
-
-![28](./media/team-lead-tasks/team-leads-28-file-create-linux-s2.png)
-
-Wybierz konto magazynu, które będzie używać lub utworzyć nowy katalog w ramach wybranej subskrypcji:
-
-![29](./media/team-lead-tasks/team-leads-29-file-create-linux-s3.png)
-
-Wprowadź nazwę usługi Azure file storage, aby utworzyć, tylko małe litery, cyfry i - są akceptowane:
-
-![30](./media/team-lead-tasks/team-leads-30-file-create-linux-s4.png)
-
-W celu ułatwienia, uzyskiwania dostępu do tego magazynu, po jego utworzeniu, Zapisz informacje magazynu plików platformy Azure do pliku tekstowego, a następnie Zanotuj ścieżkę do lokalizacji. W szczególności należy ten plik, aby zainstalować usługi Azure file storage, aby maszynach wirtualnych platformy Azure, w następnej sekcji.
-
-Jest dobrą praktyką, aby sprawdzić, w tym pliku tekstowego do repozytorium ProjectTemplate. Firma Microsoft zaleca się umieszczenie w katalogu **Docs\DataDictionaries**. W związku z tym ten zasób danych są dostępne dla wszystkich projektów zespołu. 
-
-![31](./media/team-lead-tasks/team-leads-31-file-create-linux-s5.png)
-
-
-## <a name="4-mount-azure-file-storage-optional"></a>4. Instalowanie usługi Azure storage plik (opcjonalnie)
-
-Po pomyślnym utworzeniu usługi Azure file storage mogą być instalowane na komputerze lokalnym przy użyciu jednego z poniższych skryptów programu PowerShell lub Linux.
-
-### <a name="mount-azure-file-storage-with-powershell-from-windows"></a>Instalowanie usługi Azure file storage przy użyciu programu PowerShell z Windows
-
-    wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/AttachFileShare.ps1" -outfile "AttachFileShare.ps1"
-    .\AttachFileShare.ps1
-    
-Zostanie wyświetlony monit do logowania się w pierwszym, jeśli użytkownik nie zalogował się. 
-
-Kliknij przycisk **Enter** lub **y** aby kontynuować, gdy zostanie wyświetlony monit, czy masz plików platformy Azure informacje o magazynu plików, a następnie wprowadź ***ukończyć ścieżkę i nazwę** pliku, możesz utworzyć w poprzedniego kroku. Informacje o instalacji usługi Azure file storage jest do odczytu bezpośrednio z pliku, a dane są gotowe przejść do następnego kroku.
-
-![32](./media/team-lead-tasks/team-leads-32-attach-s1.png)
-
-> [AZURE.NOTE] Jeśli nie masz plik zawierający informacje o magazynu plików platformy Azure, na końcu tej sekcji znajdują się instrukcje wprowadzania z klawiatury informacji.
-
-Następnie zostanie wyświetlony monit, wprowadź nazwę dysku, który ma zostać dodany do maszyny wirtualnej. Lista istniejących nazw dysków, wydrukowaniu na ekranie. Należy podać nazwę dysku, który jeszcze nie istnieje na liście.
-
-![33](./media/team-lead-tasks/team-leads-33-attach-s2.png)
-
-Upewnij się, że nowy dysk F został pomyślnie zainstalowany na komputerze.
-
-![34](./media/team-lead-tasks/team-leads-34-attach-s3.png)
-
-**Jak ręcznie wprowadzić informacje magazynu plików platformy Azure:** Jeśli nie masz dane magazynu plików platformy Azure w pliku tekstowym, możesz postępuj zgodnie z instrukcjami na kolejnym ekranie wpisać wymagane subskrypcji, konto magazynu oraz informacje dotyczące magazynu plików platformy Azure:
-
-![35](./media/team-lead-tasks/team-leads-35-attach-s4.png)
-
-Typ subskrypcji platformy Azure nazwę, wybierz konto magazynu usługi Azure file storage jest tworzona, i wpisz nazwę magazynu plików platformy Azure:
-
-![36](./media/team-lead-tasks/team-leads-36-attach-s5.png)
-
-### <a name="mount-azure-file-storage-with-a-linux-script"></a>Instalowanie usługi Azure file storage przy użyciu skryptu systemu Linux
-
-    wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/AttachFileShare.sh"
-    bash AttachFileShare.sh
-
-![37](./media/team-lead-tasks/team-leads-37-attach-s1-linux.png)
-
-Zostanie wyświetlony monit do logowania się w pierwszym, jeśli użytkownik nie zalogował się. 
-
-Kliknij przycisk **Enter** lub **y** aby kontynuować, gdy zostanie wyświetlony monit, czy masz plików platformy Azure informacje o magazynu plików, a następnie wprowadź ***ukończyć ścieżkę i nazwę** pliku, możesz utworzyć w poprzedniego kroku. Informacje o instalacji usługi Azure file storage jest do odczytu bezpośrednio z pliku, a dane są gotowe przejść do następnego kroku.
-
-![38](./media/team-lead-tasks/team-leads-38-attach-s2-linux.png)
-
-Następnie zostanie wyświetlony monit, wprowadź nazwę dysku, który ma zostać dodany do maszyny wirtualnej. Lista istniejących nazw dysków, wydrukowaniu na ekranie. Należy podać nazwę dysku, który jeszcze nie istnieje na liście.
-
-![39](./media/team-lead-tasks/team-leads-39-attach-s3-linux.png)
-
-Upewnij się, że nowy dysk F został pomyślnie zainstalowany na komputerze.
-
-![40](./media/team-lead-tasks/team-leads-40-attach-s4-linux.png)
-
-**Jak ręcznie wprowadzić informacje magazynu plików platformy Azure:** Jeśli nie masz dane magazynu plików platformy Azure w pliku tekstowym, możesz postępuj zgodnie z instrukcjami na kolejnym ekranie wpisać wymagane subskrypcji, konto magazynu oraz informacje dotyczące magazynu plików platformy Azure:
-
-- Dane wejściowe **n**.
-- Wybierz indeks nazwę subskrypcji, w której usługi Azure file storage został utworzony w poprzednim kroku:
-
-    ![41](./media/team-lead-tasks/team-leads-41-attach-s5-linux.png)
-
-- Wybierz konto magazynu w ramach Twojej subskrypcji i typu w nazwie magazynu plików platformy Azure:
-
-    ![42](./media/team-lead-tasks/team-leads-42-attach-s6-linux.png)
-
-- Wprowadź nazwę dysku, które mają zostać dodane do swojej maszyny, które powinny się różnić od wszelkie istniejące:
-
-    ![43](./media/team-lead-tasks/team-leads-43-attach-s7-linux.png)
-
-
-## <a name="5-set-up-security-control-policy"></a>5. Konfigurowanie zasad kontroli zabezpieczeń 
-
-Na stronie głównej grupy usługi Azure DevOps usługi firmy, kliknij przycisk **ikonę koła zębatego** obok swojej nazwy użytkownika w prawym górnym rogu wybierz **zabezpieczeń** kartę. Możesz dodawać członków do zespołu w tym miejscu przy użyciu różnych uprawnień.
-
-![44](./media/team-lead-tasks/team-leads-44-add-team-members.png)
-
-## <a name="next-steps"></a>Kolejne kroki
-
-Poniżej podano linki do bardziej szczegółowy opis ról i zadań zdefiniowanych przez zespół danych dla celów naukowych:
+Aby utworzyć oddzielny projekt dla zespołu:
+
+1. W przeglądarce internetowej przejdź do strony głównej organizacji usługi Azure DevOps w grupie na adres URL *https:\//\<nazwa serwera >/\<nazwa organizacji >* , a następnie wybierz pozycję **Nowy projekt**. 
+   
+   ![Wybierz nowy projekt](./media/team-lead-tasks/team-leads-2-create-new-team.png)
+   
+1. W oknie dialogowym **Tworzenie projektu** wprowadź nazwę zespołu, na przykład *Webteam*, w obszarze **Nazwa projektu**, a następnie wybierz pozycję **Zaawansowane**. 
+   
+1. W obszarze **Kontrola wersji**wybierz pozycję **git**i w obszarze **proces elementu pracy**wybierz pozycję **Agile**. Następnie wybierz przycisk **Utwórz**. 
+   
+   ![Tworzenie projektu](./media/team-lead-tasks/team-leads-3-create-new-team-2.png)
+   
+Zostanie otwarta strona **Podsumowanie** projektu zespołowego z adresem URL *strony https\/:/\<nazwa serwera >\</nazwa organizacji >\</Nazwa zespołu >* .
+
+### <a name="rename-the-myteam-default-repository-to-teamutilities"></a>Zmień nazwę repozytorium domyślnego Webteam na TeamUtilities
+
+1. Na stronie **Podsumowanie** projektu **Webteam** w obszarze **jakiej usługi chcesz zacząć od?** wybierz pozycję **repozytoria**. 
+   
+   ![Wybierz repozytoria](./media/team-lead-tasks/team-leads-6-rename-team-project-repo.png)
+   
+1. Na stronie repozytorium elementu **Webteam** wybierz repozytorium **Webteam** w górnej części strony, a następnie wybierz pozycję **Zarządzaj repozytoriami** z listy rozwijanej. 
+   
+   ![Wybierz pozycję Zarządzaj repozytoriami](./media/team-lead-tasks/team-leads-7-rename-team-project-repo-2.png)
+1. Na stronie **Ustawienia projektu** wybierz pozycję **...** obok repozytorium **Webteam** , a następnie wybierz pozycję **Zmień nazwę repozytorium**. 
+   
+   ![Wybierz pozycję Zmień nazwę repozytorium](./media/team-lead-tasks/team-leads-8-rename-team-project-repo-3.png)
+   
+1. W oknie podręcznym **Zmień nazwę repozytorium elementu Webteam** wprowadź wartość *TeamUtilities*, a następnie wybierz pozycję **Zmień nazwę**. 
+
+### <a name="create-the-teamtemplate-repository"></a>Tworzenie repozytorium TeamTemplate
+
+1. Na stronie **Ustawienia projektu** wybierz pozycję **nowe repozytorium.** 
+   
+   ![Wybierz nowe repozytorium](./media/team-lead-tasks/team-leads-9-create-team-utilities.png)
+   
+   Lub wybierz pozycję **repozytoria** z lewego obszaru nawigacji na stronie **Podsumowanie** projektu **Webteam** , zaznacz repozytorium w górnej części strony, a następnie wybierz pozycję **nowe repozytorium** z listy rozwijanej.
+   
+1. W oknie dialogowym **Tworzenie nowego repozytorium** upewnij się, że wybrano opcję **git** w obszarze **Typ**. Wprowadź *TeamTemplate* w polu **Nazwa repozytorium**, a następnie wybierz pozycję **Utwórz**.
+   
+   ![Utwórz repozytorium](./media/team-lead-tasks/team-leads-10-create-team-utilities-2.png)
+   
+1. Upewnij się, że na stronie ustawień projektu są widoczne dwa repozytoria **TeamUtilities** i **TeamTemplate** . 
+   
+   ![Dwa repozytoria zespołu](./media/team-lead-tasks/team-leads-11-two-repo-in-team.png)
+
+### <a name="import-the-contents-of-the-group-common-repositories"></a>Zaimportuj zawartość grup wspólnych repozytoriów
+
+Aby wypełnić repozytoria zespołu zawartością grup wspólnych repozytoriów, które zostały skonfigurowane przez Menedżera grupy:
+
+1. Na stronie głównej projektu **Webteam** wybierz pozycję **repozytoria** w lewym okienku nawigacji. Jeśli zostanie wyświetlony komunikat informujący o tym, że nie znaleziono szablonu **Webteam** , wybierz link w **przeciwnym razie przejdź do domyślnego repozytorium TeamTemplate.** 
+   
+   Zostanie otwarte domyślne repozytorium **TeamTemplate** . 
+   
+1. Na stronie **TeamTemplate jest pusta** wybierz pozycję **Importuj**. 
+   
+   ![Wybierz pozycję Importuj](./media/team-lead-tasks/import-repo.png)
+   
+1. W oknie dialogowym **Importowanie repozytorium git** wybierz pozycję **git** jako **Typ źródła**, a następnie wprowadź adres URL repozytorium wspólnych szablonów grupy w obszarze **Klonowanie adresu URL**. Adres URL to *https:\//\<nazwa serwera >/\<nazwa organizacji > nazwa\<repozytorium/_git/>* . Na przykład: *https:\//dev.Azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*. 
+   
+1. Wybierz pozycję **Importuj**. Zawartość repozytorium szablonów grup jest zaimportowana do repozytorium szablonów zespołu. 
+   
+   ![Importuj repozytorium wspólnych szablonów grupy](./media/team-lead-tasks/import-repo-2.png)
+   
+1. W górnej części strony **repozytoria** projektu rozwiń listę rozwijaną i wybierz repozytorium **TeamUtilities** .
+   
+1. Powtórz proces importowania, aby zaimportować zawartość repozytorium wspólnych narzędzi grupy, na przykład *GroupUtilities*, do repozytorium **TeamUtilities** . 
+   
+Każdy z dwóch repozytoriów zespołu zawiera teraz pliki z odpowiedniego repozytorium wspólnych grup. 
+
+### <a name="customize-the-contents-of-the-team-repositories"></a>Dostosuj zawartość repozytoriów zespołu
+
+Jeśli chcesz dostosować zawartość repozytoriów zespołu w celu spełnienia określonych wymagań zespołu, możesz to zrobić teraz. Można zmodyfikować pliki, zmienić strukturę katalogów lub dodać pliki i foldery.
+
+Aby modyfikować, ładować lub tworzyć pliki lub foldery bezpośrednio w usłudze Azure DevOps:
+
+1. Na stronie **Podsumowanie** projektu **Webteam** wybierz pozycję **repozytoria**. 
+   
+1. W górnej części strony wybierz repozytorium, które chcesz dostosować.
+
+1. W strukturze katalogów repozytorium przejdź do folderu lub pliku, który chcesz zmienić. 
+   
+   - Aby utworzyć nowe foldery lub pliki, wybierz strzałkę obok pozycji **Nowy**. 
+     
+     ![Utwórz nowy plik](./media/team-lead-tasks/new-file.png)
+     
+   - Aby przekazać pliki, wybierz pozycję **Przekaż**pliki. 
+     
+     ![Przekazywanie plików](./media/team-lead-tasks/upload-files.png)
+     
+   - Aby edytować istniejące pliki, przejdź do pliku, a następnie wybierz pozycję **Edytuj**. 
+     
+     ![Edytuj plik](./media/team-lead-tasks/edit-file.png)
+     
+1. Po dodaniu lub edytowaniu plików wybierz pozycję **Zatwierdź**.
+   
+   ![Zatwierdź zmiany](./media/team-lead-tasks/commit.png)
+
+Aby można było korzystać z repozytoriów na komputerze lokalnym lub DSVM, należy najpierw skopiować lub *sklonować* repozytoria na maszynę lokalną, a następnie zatwierdzić i wypchnąć zmiany do udostępnionych repozytoriów zespołu, 
+
+Aby sklonować repozytoria:
+
+1. Na stronie **Podsumowanie** projektu elementu **Webteam** wybierz pozycję **repozytoria**i w górnej części strony wybierz repozytorium, które chcesz sklonować.
+   
+1. Na stronie repozytorium wybierz pozycję **Klonuj** w prawym górnym rogu.
+   
+1. W oknie dialogowym **klonowanie repozytorium** w obszarze **wiersz polecenia**wybierz opcję **https** dla połączenia HTTP lub protokołu **SSH** dla połączenia SSH, a następnie skopiuj adres URL klonowania do Schowka.
+   
+   ![Kopiuj sklonowany adres URL](./media/team-lead-tasks/clone.png)
+   
+1. Na komputerze lokalnym Utwórz następujące katalogi:
+   
+   - W przypadku systemu Windows: **C:\GitRepos\MyTeam**
+   - W przypadku systemu Linux **$Home/gitrepos/myTeam** 
+   
+1. Przejdź do utworzonego katalogu.
+   
+1. W narzędziu git bash Uruchom polecenie `git clone <clone URL>`, gdzie \<adres URL klonowania > to adres URL skopiowany z okna dialogowego **klonowania** .
+   
+   Na przykład użyj jednego z poniższych poleceń, aby sklonować repozytorium **TeamUtilities** do katalogu *Webteam* na komputerze lokalnym. 
+   
+   **Połączenie HTTPS:**
+   
+   ```bash
+   git clone https://DataScienceUnit@dev.azure.com/DataScienceUnit/MyTeam/_git/TeamUtilities
+   ```
+   
+   **Połączenie SSH:**
+   
+   ```bash
+   git clone git@ssh.dev.azure.com:v3/DataScienceUnit/MyTeam/TeamUtilities
+   ```
+
+Po wprowadzeniu wszelkich zmian w lokalnym klonie repozytorium Zatwierdź i wypchnij zmiany do udostępnionych repozytoriów zespołu. 
+
+Uruchom następujące polecenia narzędzia Git bash z lokalnego katalogu **GitRepos\MyTeam\TeamTemplate** lub **GitRepos\MyTeam\TeamUtilities** .
+
+```bash
+git add .
+git commit -m "push from local"
+git push
+```
+
+> [!NOTE]
+> Jeśli po raz pierwszy zatwierdzisz repozytorium git, może być konieczne skonfigurowanie parametrów globalnych *User.Name* i *User. email* przed uruchomieniem `git commit` polecenia. Uruchom dwa poniższe polecenia:
+> 
+> `git config --global user.name <your name>`
+> 
+> `git config --global user.email \<your email address>`
+> 
+> Jeśli przekazujesz do kilku repozytoriów Git, Użyj tej samej nazwy i adresu e-mail dla wszystkich z nich. Korzystanie z tej samej nazwy i adresu e-mail jest wygodne podczas kompilowania Power BI pulpitów nawigacyjnych w celu śledzenia działań Git w wielu repozytoriach.
+
+## <a name="add-team-members-and-configure-permissions"></a>Dodaj członków zespołu i Skonfiguruj uprawnienia
+
+Aby dodać członków do zespołu:
+
+1. W usłudze Azure DevOps na stronie głównej projektu **Webteam** wybierz pozycję **Ustawienia projektu** na lewym pasku nawigacyjnym. 
+   
+1. W lewym panelu nawigacyjnym **Ustawienia projektu** wybierz pozycję **zespoły**, a następnie na stronie **zespoły** wybierz **zespół Webteam**. 
+   
+   ![Konfigurowanie zespołów](./media/team-lead-tasks/teams.png)
+   
+1. Na stronie **profil zespołu** wybierz pozycję **Dodaj**.
+   
+   ![Dodaj do zespołu Webteam](./media/team-lead-tasks/add-to-team.png)
+   
+1. W oknie dialogowym **Dodawanie użytkowników i grup** Wyszukaj i wybierz członków do dodania do grupy, a następnie wybierz pozycję **Zapisz zmiany**. 
+   
+   ![Dodaj użytkowników i grupy](./media/team-lead-tasks/add-users.png)
+   
+
+Aby skonfigurować uprawnienia dla członków zespołu:
+
+1. W lewym panelu nawigacyjnym **Ustawienia projektu** wybierz pozycję **uprawnienia**. 
+   
+1. Na stronie **uprawnienia** wybierz grupę, do której chcesz dodać członków. 
+   
+1. Na stronie tej grupy wybierz pozycję **elementy członkowskie**, a następnie wybierz pozycję **Dodaj**. 
+   
+1. W oknie podręcznym **zapraszanie członków** Wyszukaj i wybierz członków do dodania do grupy, a następnie wybierz pozycję **Zapisz**. 
+   
+   ![Przyznawanie uprawnień członkom](./media/team-lead-tasks/grant-permissions.png)
+
+## <a name="create-team-data-and-analytics-resources"></a>Tworzenie danych zespołu i zasobów analitycznych
+
+Ten krok jest opcjonalny, ale udostępnianie danych i zasobów analitycznych dla całego zespołu ma zalety wydajności i kosztów. Członkowie zespołu mogą wykonywać swoje projekty w zasobach udostępnionych, zapisywać w budżetach i wydajniej pracować. Możesz utworzyć magazyn plików platformy Azure i zainstalować go na DSVM, aby udostępnić członkom zespołu. 
+
+Aby uzyskać informacje na temat udostępniania innym zasobom zespołu, na przykład klastrów Azure HDInsight Spark, zobacz [platformy i narzędzia](platforms-and-tools.md). Ten temat zawiera wskazówki dotyczące naukowej perspektywy dotyczącej wyboru zasobów, które są odpowiednie dla Twoich potrzeb, oraz linki do stron produktu i innych odpowiednich i przydatnych samouczków.
+
+>[!NOTE]
+> Aby uniknąć przesyłania danych między centrami danych, które mogą być powolne i kosztowne, upewnij się, że grupa zasobów platformy Azure, konto magazynu i DSVM są hostowane w tym samym regionie świadczenia usługi Azure. 
+
+### <a name="create-azure-file-storage"></a>Tworzenie usługi Azure File Storage
+
+1. Uruchom następujący skrypt, aby utworzyć magazyn plików Azure dla zasobów danych, które są przydatne dla całego zespołu. Skrypt poprosi o podanie informacji o subskrypcji platformy Azure, więc jest to gotowe do wprowadzenia. 
+
+   - Na komputerze z systemem Windows uruchom skrypt w wierszu polecenia programu PowerShell:
+     
+     ```powershell
+     wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/CreateFileShare.ps1" -outfile "CreateFileShare.ps1"
+     .\CreateFileShare.ps1
+     ```
+     
+   - Na komputerze z systemem Linux Uruchom skrypt z poziomu powłoki systemu Linux:
+     
+     ```shell
+     wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/CreateFileShare.sh"
+     bash CreateFileShare.sh
+     ```
+   
+1. Po wyświetleniu monitu zaloguj się do konta Microsoft Azure i wybierz subskrypcję, której chcesz użyć.
+   
+1. Wybierz konto magazynu, które ma być używane, lub Utwórz nowe w ramach wybranej subskrypcji. W nazwie magazynu plików platformy Azure można używać małych liter, cyfr i łączników.
+   
+1. Aby ułatwić instalowanie i udostępnianie magazynu, naciśnij klawisz ENTER lub wprowadź *Y* , aby zapisać informacje o usłudze Azure File Storage do pliku tekstowego w bieżącym katalogu. Możesz zaewidencjonować ten plik tekstowy do repozytorium **TeamTemplate** , najlepiej w obszarze **Docs\DataDictionaries**, tak aby wszystkie projekty w zespole mogły uzyskać do niego dostęp. Potrzebne są również informacje o pliku do zainstalowania usługi Azure File Storage na platformie Azure DSVM w następnej sekcji. 
+   
+### <a name="mount-azure-file-storage-on-your-local-machine-or-dsvm"></a>Instalowanie usługi Azure File Storage na maszynie lokalnej lub DSVM
+
+1. Aby zainstalować usługę Azure File Storage na komputerze lokalnym lub DSVM, użyj następującego skryptu.
+   
+   - Na komputerze z systemem Windows uruchom skrypt w wierszu polecenia programu PowerShell:
+     
+     ```powershell
+     wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/AttachFileShare.ps1" -outfile "AttachFileShare.ps1"
+     .\AttachFileShare.ps1
+     ```
+     
+   - Na komputerze z systemem Linux Uruchom skrypt z poziomu powłoki systemu Linux:
+     
+     ```shell
+     wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/AttachFileShare.sh"
+     bash AttachFileShare.sh
+     ```
+   
+1. Naciśnij *klawisz ENTER lub ENTER, aby kontynuować* , jeśli plik informacji o usłudze Azure File Storage został zapisany w poprzednim kroku. Wprowadź pełną ścieżkę i nazwę utworzonego pliku. 
+   
+   Jeśli nie masz pliku z informacjami o usłudze Azure File Storage, wprowadź *n*i postępuj zgodnie z instrukcjami, aby wprowadzić swoją subskrypcję, konto usługi Azure Storage i informacje o usłudze Azure File Storage.
+   
+1. Wprowadź nazwę dysku lokalnego lub przetwarzania TDSP, na którym ma zostać zainstalowany udział plików. Na ekranie zostanie wyświetlona lista istniejących nazw dysków. Podaj nazwę dysku, która jeszcze nie istnieje.
+   
+1. Upewnij się, że nowy dysk i magazyn zostały pomyślnie zainstalowane na komputerze.
+
+## <a name="next-steps"></a>Następne kroki
+
+Poniżej znajdują się linki do szczegółowych opisów innych ról i zadań zdefiniowanych przez proces nauka danych zespołu:
 
 - [Menedżer grupy zadań dla zespołu do nauki o danych](group-manager-tasks.md)
-- [Zadania kierownik zespołu dla zespołu do nauki o danych](team-lead-tasks.md)
 - [Zadania potencjalnych klientów dla zespołu do nauki o danych w projekcie](project-lead-tasks.md)
-- [Poszczególnych uczestników projektu dla zespołu do nauki o danych](project-ic-tasks.md)
+- [Projekt poszczególnych zadań współautora dla zespołu ds. analizy danych](project-ic-tasks.md)

@@ -1,6 +1,6 @@
 ---
-title: Debugowanie zdefiniowanych przez użytkownika kodu C#, w przypadku nieudanych zadań usługi Azure Data Lake U-SQL
-description: W tym artykule opisano, jak można debugować wierzchołka nie powiodło się U-SQL przy użyciu narzędzi Azure Data Lake Tools for Visual Studio.
+title: Debuguj C# kod dla Azure Data Lake zadań U-SQL
+description: W tym artykule opisano sposób debugowania niepowodzenia wierzchołka U-SQL przy użyciu Azure Data Lake Tools for Visual Studio.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: yanancai
@@ -9,105 +9,105 @@ ms.reviewer: jasonwhowell
 ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: 5417f66696191cebadc2af9c6d634419a0eb8e5b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 72239fc1679d2ebbfd9c9b5be6b79b58efb760cb
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60615388"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315816"
 ---
-# <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Debugowanie zdefiniowanych przez użytkownika kodu C#, w przypadku nieudanych zadań U-SQL
+# <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Debuguj kod zdefiniowany C# przez użytkownika dla niezakończonych zadań U-SQL
 
-U-SQL zapewnia model rozszerzeń przy użyciu języka C#. Skryptów U-SQL jest łatwe do wywołania funkcji języka C# i wykonują funkcje analityczne, które nie obsługuje języka deklaratywnego podobnego do SQL. Aby dowiedzieć się więcej rozszerzeń U-SQL, zobacz [Podręcznik programowania U-SQL](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-u-sql-programmability-guide#use-user-defined-functions-udf). 
+Język U-SQL udostępnia model rozszerzalności C#przy użyciu programu. W skryptach języka U-SQL łatwe jest wywoływanie C# funkcji i wykonywanie funkcji analitycznych, które nie obsługują języka deklaratywnego przypominającego SQL. Aby dowiedzieć się więcej na temat rozszerzalności U-SQL, zobacz [Przewodnik programowania u-SQL](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-u-sql-programmability-guide#use-user-defined-functions-udf). 
 
-W praktyce debugowanie kodu może być konieczne, ale trudno debugować rozproszone zadania z niestandardowym kodem w chmurze za pomocą plików dziennika ograniczone. [Usługa Azure Data Lake Tools for Visual Studio](https://aka.ms/adltoolsvs) udostępnia funkcję o nazwie **nie można debugować wierzchołka**, która pomaga łatwiej debugowania błędów, które występują w kodzie niestandardowym. W przypadku niepowodzenia zadania U-SQL usługi śledzi stan niepowodzenia i narzędzie ułatwia do pobrania w środowisku błąd chmury na komputer lokalny do debugowania. Pobieranie lokalne przechwytuje całego środowiska chmury, w tym wszystkie dane wejściowe i kod użytkownika.
+W tym przypadku każdy kod może wymagać debugowania, ale trudno jest debugować zadanie rozproszone z niestandardowym kodem w chmurze przy użyciu ograniczonych plików dziennika. [Azure Data Lake Tools for Visual Studio](https://aka.ms/adltoolsvs) udostępnia funkcję o nazwie **Nieudane debugowanie wierzchołka**, co ułatwia debugowanie błędów występujących w kodzie niestandardowym. Gdy zadanie U-SQL zakończy się niepowodzeniem, usługa utrzymuje stan niepowodzenia, a narzędzie pomaga pobrać środowisko awarii chmury do maszyny lokalnej na potrzeby debugowania. Lokalne pobieranie przechwytuje całe środowisko chmury, w tym wszelkie dane wejściowe i kod użytkownika.
 
-Poniższy klip wideo pokazuje, nie powiodło się debugowania wierzchołka w usłudze Azure Data Lake Tools for Visual Studio.
+Poniższy film wideo demonstruje niepowodzenie debugowania wierzchołka w Azure Data Lake Tools for Visual Studio.
 
 > [!VIDEO https://www.youtube.com/embed/3enkNvprfm4]
 >
 
 > [!IMPORTANT]
-> Program Visual Studio wymaga dwóch następujących aktualizacji dla tej funkcji: [Microsoft Visual C++ 2015 Redistributable Update 3](https://www.microsoft.com/en-us/download/details.aspx?id=53840) i [uniwersalne środowisko uruchomieniowe C dla Windows](https://www.microsoft.com/download/details.aspx?id=50410).
+> Program Visual Studio wymaga dwóch następujących aktualizacji do korzystania z tej funkcji: [Microsoft Visual C++ 2015 redystrybucyjny Update 3](https://www.microsoft.com/en-us/download/details.aspx?id=53840) i [uniwersalne środowisko uruchomieniowe języka C dla systemu Windows](https://www.microsoft.com/download/details.aspx?id=50410).
 >
 
-## <a name="download-failed-vertex-to-local-machine"></a>Pobierz wierzchołka nie powiodło się na komputerze lokalnym
+## <a name="download-failed-vertex-to-local-machine"></a>Pobieranie wierzchołka nie powiodło się na komputerze lokalnym
 
-Po otwarciu zakończonego niepowodzeniem zadania w usłudze Azure Data Lake Tools dla programu Visual Studio widać żółty pasek alertu z szczegółowe komunikaty o błędach na karcie błąd.
+Po otwarciu zadania zakończonego niepowodzeniem w Azure Data Lake Tools for Visual Studio zostanie wyświetlony żółty pasek alertu z szczegółowymi komunikatami o błędach na karcie błąd.
 
-1. Kliknij przycisk **Pobierz** można pobrać wszystkie wymagane zasoby oraz strumieni danych wejściowych. Jeśli pobieranie nie zostało ukończone, kliknij przycisk **ponów**.
+1. Kliknij pozycję **Pobierz** , aby pobrać wszystkie wymagane zasoby i strumienie wejściowe. Jeśli pobieranie nie zostanie ukończone, kliknij przycisk **Ponów próbę**.
 
-2. Kliknij przycisk **Otwórz** po ukończeniu pobierania, aby wygenerować lokalnego środowiska debugowania. Zostanie otwarte nowe rozwiązanie debugowania, a jeśli masz istniejące rozwiązanie otwarte w programie Visual Studio, upewnij się, że Zapisz i zamknij go przed debugowaniem.
+2. Po zakończeniu pobierania kliknij przycisk **Otwórz** , aby wygenerować lokalne środowisko debugowania. Nowe rozwiązanie debugowania zostanie otwarte i jeśli masz już otwarte rozwiązanie w programie Visual Studio, upewnij się, że Zapisz i zamknij je przed debugowaniem.
 
-![Azure Data Lake Analytics U-SQL debugowania programu visual studio pobierania wierzchołka](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-download-vertex.png)
+![Azure Data Lake Analytics debugowania U-SQL — wierzchołek pobierania programu Visual Studio](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-download-vertex.png)
 
 ## <a name="configure-the-debugging-environment"></a>Konfigurowanie środowiska debugowania
 
 > [!NOTE]
-> Przed debugowaniem, należy koniecznie sprawdzić **wyjątki środowiska uruchomieniowego języka wspólnego** w oknie Ustawienia wyjątków (**Ctrl + Alt + E**).
+> Przed debugowaniem upewnij się, że w oknie Ustawienia wyjątku Sprawdź **wyjątki środowiska uruchomieniowego języka wspólnego** (**CTRL + ALT + E**).
 
-![Usługa Azure Data Lake Analytics U-SQL debugowania programu visual studio ustawienie](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-clr-exception-setting.png)
+![Azure Data Lake Analytics ustawienia programu Visual Studio dotyczące debugowania U-SQL](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-clr-exception-setting.png)
 
-W nowych uruchomionego wystąpienia programu Visual Studio może lub nie może odnaleźć zdefiniowanych przez użytkownika języka C# kodu źródłowego:
+W nowym uruchomionym wystąpieniu programu Visual Studio możesz lub nie znaleźć kodu źródłowego zdefiniowanego przez C# użytkownika:
 
-1. [Mogę znaleźć mój kod źródłowy w rozwiązaniu](#source-code-is-included-in-debugging-solution)
+1. [Mogę znaleźć kod źródłowy w rozwiązaniu](#source-code-is-included-in-debugging-solution)
 
-2. [Nie mogę znaleźć mój kod źródłowy w rozwiązaniu](#source-code-is-not-included-in-debugging-solution)
+2. [Nie mogę znaleźć kodu źródłowego w rozwiązaniu](#source-code-is-not-included-in-debugging-solution)
 
-### <a name="source-code-is-included-in-debugging-solution"></a>Kod źródłowy znajduje się podczas debugowania rozwiązania
+### <a name="source-code-is-included-in-debugging-solution"></a>Kod źródłowy jest zawarty w rozwiązaniu debugowania
 
-Istnieją dwa przypadki, że kod źródłowy języka C# są przechwytywane:
+Istnieją dwa przypadki, w C# których kod źródłowy jest przechwytywany:
 
-1. Kod użytkownika jest zdefiniowana w pliku związanym z kodem (przeważnie zwaną `Script.usql.cs` w projekcie języka U-SQL).
+1. Kod użytkownika jest zdefiniowany w pliku związanym z kodem (zazwyczaj nazwany `Script.usql.cs` w projekcie U-SQL).
 
-2. Kod użytkownika jest zdefiniowany w języku C# projekt biblioteki klas dla aplikacji w języku U-SQL i zarejestrowana jako zestaw za pomocą **informacje debugowania**.
+2. Kod użytkownika jest zdefiniowany w C# projekcie biblioteki klas dla aplikacji U-SQL i zarejestrowany jako zestaw z **informacjami o debugowaniu**.
 
-Jeśli kod źródłowy jest importowany do rozwiązania, można użyć narzędzia debugowania programu Visual Studio (Czujka, zmienne itp.) do rozwiązania problemu:
+Jeśli kod źródłowy zostanie zaimportowany do rozwiązania, można użyć narzędzi debugowania programu Visual Studio (Obejrzyj, zmienne itp.), aby rozwiązać problem:
 
-1. Naciśnij klawisz **F5** można rozpocząć debugowania. Kod działa, dopóki nie zostanie zatrzymana przez wyjątek.
+1. Naciśnij klawisz **F5** można rozpocząć debugowania. Kod jest uruchamiany, dopóki nie zostanie zatrzymany przez wyjątek.
 
-2. Otwórz plik kodu źródłowego i ustaw punkty przerwania, naciśnij klawisz **F5** do debugowania kodu krok po kroku.
+2. Otwórz plik kodu źródłowego i ustaw punkty przerwania, a następnie naciśnij klawisz **F5** , aby debugować kod krok po kroku.
 
-    ![Usługa Azure Data Lake Analytics U-SQL debugowania wyjątek](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-debug-exception.png)
+    ![Azure Data Lake Analytics wyjątek debugowania U-SQL](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-debug-exception.png)
 
-### <a name="source-code-is-not-included-in-debugging-solution"></a>Kod źródłowy jest niedostępna podczas debugowania rozwiązania
+### <a name="source-code-is-not-included-in-debugging-solution"></a>Kod źródłowy nie jest uwzględniony w rozwiązaniu debugowania
 
-Jeśli kod użytkownika nie znajduje się w pliku związanym z kodem lub nie zarejestrowała zestaw za pomocą **informacje debugowania**, kod źródłowy nie jest automatycznie uwzględnione w rozwiązania debugowania. W takim przypadku potrzebne są dodatkowe czynności, aby dodać kod źródłowy:
+Jeśli kod użytkownika nie jest uwzględniony w pliku związanym z kodem lub nie zarejestrowano go przy użyciu **informacji debugowania**, kod źródłowy nie jest automatycznie uwzględniany w rozwiązaniu debugowania. W takim przypadku konieczne jest wykonanie dodatkowych czynności w celu dodania kodu źródłowego:
 
-1. Kliknij prawym przyciskiem myszy **rozwiązania "VertexDebug" > Dodaj > istniejący projekt...**  znaleźć kod źródłowy zestawu i Dodaj projekt do rozwiązania debugowania.
+1. Kliknij prawym przyciskiem myszy **rozwiązanie "VertexDebug" > dodaj > istniejący projekt...** , aby znaleźć kod źródłowy zestawu i dodać projekt do rozwiązania debugowania.
 
-    ![Usługa Azure Data Lake Analytics U-SQL debugowania, Dodaj projekt](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-add-project-to-debug-solution.png)
+    ![Azure Data Lake Analytics Dodaj projekt do debugowania U-SQL](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-add-project-to-debug-solution.png)
 
-2. Pobrać ścieżki do folderu projektu do **FailedVertexDebugHost** projektu. 
+2. Pobierz ścieżkę folderu projektu dla projektu **FailedVertexDebugHost** . 
 
-3. Kliknij prawym przyciskiem myszy **projektu kodu źródłowego dodano zestaw > właściwości**, wybierz opcję **kompilacji** po lewej stronie, a następnie wklej skopiowany ścieżkę, kończąc \bin\debug jako **dane wyjściowe > Ścieżka wyjściowa**. Ścieżka pliku wyjściowego jest jak `<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\`.
+3. Kliknij prawym przyciskiem myszy **dodany projekt kodu źródłowego zestawu > właściwości**, wybierz kartę **kompilacja** na lewo i wklej skopiowaną ścieżkę kończącą się na \bin\debug jako **wyjście > Ścieżka wyjściowa**. Końcowa ścieżka wyjściowa jest `<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\`taka sama.
 
-    ![Usługa Azure Data Lake Analytics U-SQL debugowania Ustaw ścieżkę pliku pdb](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-set-pdb-path.png)
+    ![Ścieżka pliku PDB zestawu Azure Data Lake Analytics U-SQL](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-set-pdb-path.png)
 
-Po tych ustawień, rozpocząć debugowanie za pomocą **F5** i punktów przerwania. Można również użyć narzędzia (Czujka, zmienne itp.) do rozwiązywania problemów debugowania programu Visual Studio.
+Po wykonaniu tych ustawień Rozpocznij debugowanie za pomocą klawisza **F5** i punktów przerwania. Aby rozwiązać problem, można także użyć narzędzi debugowania programu Visual Studio (oglądania, zmiennych itp.).
 
 > [!NOTE]
-> Ponownie skompiluj projekt kodu źródłowego zestawu każdorazowo po modyfikacji kod, aby wygenerować pliki .pdb zaktualizowane.
+> Kompiluj ponownie projekt kodu źródłowego zestawu przy każdej modyfikacji kodu w celu wygenerowania zaktualizowanych plików. pdb.
 
-## <a name="resubmit-the-job"></a>Prześlij ponownie to zadanie
+## <a name="resubmit-the-job"></a>Prześlij ponownie zadanie
 
-Jeśli projektu zakończy się pomyślnie po debugowaniu, w oknie danych wyjściowych pokazuje następujący komunikat:
+Po zakończeniu debugowania, jeśli projekt zakończy się pomyślnie, w oknie danych wyjściowych zostanie wyświetlony następujący komunikat:
 
     The Program 'LocalVertexHost.exe' has exited with code 0 (0x0).
 
-![Usługa Azure Data Lake Analytics U-SQL debugowania powiodło się](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-debug-succeed.png)
+![Azure Data Lake Analytics debugowanie U-SQL zakończyło się pomyślnie](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-debug-succeed.png)
 
-Prześlij zadanie zakończone niepowodzeniem:
+Aby ponownie przesłać zadanie zakończone niepowodzeniem:
 
-1. Dla zadań z rozwiązaniami związanymi z kodem, skopiuj kod C# do pliku źródłowego związane z kodem (zazwyczaj `Script.usql.cs`).
+1. W przypadku zadań z rozwiązaniami związanymi z kodem C# Skopiuj kod do pliku źródłowego związanego z kodem ( `Script.usql.cs`zazwyczaj).
 
-2. W przypadku zadań za pomocą zestawów kliknij prawym przyciskiem myszy projekt kodu źródłowego zestawu w rozwiązaniu do debugowania i zarejestruj zestawy zaktualizowany plik .dll w katalogu usługi Azure Data Lake.
+2. W przypadku zadań z zestawami kliknij prawym przyciskiem myszy projekt kodu źródłowego zestawu w debugowanym rozwiązaniu i zarejestruj zaktualizowane zestawy dll w katalogu Azure Data Lake.
 
-3. Ponowne przesyłanie zadania U-SQL.
+3. Prześlij ponownie zadanie U-SQL.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Podręcznik programowania U-SQL](data-lake-analytics-u-sql-programmability-guide.md)
-- [Opracowywanie operatorów zdefiniowanych przez użytkownika języka U-SQL na potrzeby zadań usługi Azure Data Lake Analytics](data-lake-analytics-u-sql-develop-user-defined-operators.md)
+- [Przewodnik programowania U-SQL](data-lake-analytics-u-sql-programmability-guide.md)
+- [Tworzenie zdefiniowanych przez użytkownika operatorów U-SQL dla zadań Azure Data Lake Analytics](data-lake-analytics-u-sql-develop-user-defined-operators.md)
 - [Testowanie i debugowanie zadań U-SQL przy użyciu uruchamiania lokalnego i zestawu SDK U-SQL usługi Azure Data Lake](data-lake-analytics-data-lake-tools-local-run.md)
 - [Jak rozwiązywać problemy z nietypowym zadaniem cyklicznym](data-lake-analytics-data-lake-tools-debug-recurring-job.md)

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/08/2019
-ms.openlocfilehash: 1dc1d2780dcaf27e0c60cfffe84581c0278491dd
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c5de4277915e71763f034596d372554e4f88e204
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566530"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316659"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Co to jest pojedyncza baza danych w Azure SQL Database
 
@@ -59,6 +59,6 @@ SQL Database zapewnia szeroki zakres [wbudowanych funkcji zabezpieczeń i zgodno
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby szybko rozpocząć pracę z pojedynczą bazą danych, Zacznij od [pojedynczej bazy danych — szybki start Guide.MD](sql-database-single-database-quickstart-guide.md).
+- Aby szybko rozpocząć pracę z pojedynczą bazą danych, Zacznij od [przewodnika Szybki Start dla jednej bazy danych](sql-database-single-database-quickstart-guide.md).
 - Aby dowiedzieć się więcej na temat migrowania bazy danych SQL Server na platformę Azure, zobacz [Migrowanie do Azure SQL Database](sql-database-single-database-migrate.md).
 - Informacje dotyczące obsługiwanych funkcji można znaleźć w temacie [Funkcje](sql-database-features.md).

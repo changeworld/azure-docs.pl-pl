@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 46045664e9ddeebc45c2dae7c1f0a9f6a0d6b004
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: ad61743751ace9ca0c7eba12ffcea5f15e1157d5
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265165"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316185"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Zbierz informacje na temat infrastruktury DNS za pomocą rozwiązania DNS Analytics w wersji zapoznawczej
 
@@ -180,9 +180,9 @@ Na stronie przeszukiwania dzienników można utworzyć kwerendę. Wyniki wyszuki
 
     ![Wyszukiwanie w dzienniku DnsInventory](./media/dns-analytics/log-search-dnsinventory.png)
     
-### <a name="troubleshooting"></a>Rozwiązywanie problemów
+## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Commopn kroki rozwiązywania problemów:
+Typowe kroki rozwiązywania problemów:
 
 1. Brakujące dane wyszukiwania DNS — aby rozwiązać ten problem, spróbuj zresetować konfigurację lub po prostu Załaduj stronę konfiguracji raz w portalu. Na potrzeby resetowania po prostu zmień ustawienie na inną wartość, a następnie zmień je z powrotem na oryginalną wartość i Zapisz konfigurację.
 

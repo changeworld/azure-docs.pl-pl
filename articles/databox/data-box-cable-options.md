@@ -2,19 +2,18 @@
 title: Opcje okablowania urządzenia Azure Data Box | Microsoft Docs
 description: W tym artykule opisano różne opcje okablowania urządzenia Azure Data Box.
 services: databox
-author: WenJason
+author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-origin.date: 10/24/2018
-ms.date: 02/25/2019
-ms.author: v-jay
-ms.openlocfilehash: 4759676eff03606998759a586f758b7a26ead23d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 10/24/2018
+ms.author: alkohli
+ms.openlocfilehash: 661cec672aa02f62b479b7f5831adfdaff9e6b21
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60728709"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316552"
 ---
 # <a name="cabling-options-for-your-azure-data-box"></a>Opcje okablowania urządzenia Azure Data Box
 
@@ -40,7 +39,7 @@ Wykonaj poniższe kroki, aby okablować urządzenie.
     - **Adres IP** na 192.168.100.5
     - **Podsieć** na 255.255.255.0
 
-3. Dostęp do lokalnego internetowego interfejsu użytkownika z urządzenia pod adresem: 192.168.100.10. Zaloguj się i odblokuj urządzenie Data Box przy użyciu hasła odblokowania z witryny Azure Portal.
+3. Dostęp do lokalnego interfejsu użytkownika sieci Web urządzenia w: 192.168.100.10. Zaloguj się i odblokuj urządzenie Data Box przy użyciu hasła odblokowania z witryny Azure Portal.
 
 
 ## <a name="transfer-via-data-port-with-static-ips"></a>Transfer za pośrednictwem portu DATA przy użyciu statycznych adresów IP
@@ -68,14 +67,14 @@ Wykonaj poniższe kroki, aby okablować urządzenie.
 
      ![Konfiguracja dwóch portów](media/data-box-cable-options/cabling-2-port-setup.png)
 
-4. Dostęp do lokalnego internetowego interfejsu użytkownika z urządzenia pod adresem: 192.168.100.10. Zaloguj się i odblokuj urządzenie Data Box przy użyciu hasła odblokowania z witryny Azure Portal.
-5. Przypisz statyczne adresy IP do skonfigurowanych portów danych.
+3. Dostęp do lokalnego interfejsu użytkownika sieci Web urządzenia w: 192.168.100.10. Zaloguj się i odblokuj urządzenie Data Box przy użyciu hasła odblokowania z witryny Azure Portal.
+4. Przypisz statyczne adresy IP do skonfigurowanych portów danych.
 
 ### <a name="option-2---initial-setup-via-separate-computer"></a>Opcja 2 — Konfiguracja początkowa za pomocą oddzielnego komputera
 
 Wykonaj poniższe kroki, aby okablować urządzenie.
 
-1. Za pomocą kabla Ethernet RJ-45 podłącz serwer bezpośrednio do portu MGMT na potrzeby konfiguracji.
+1. Aby skonfigurować konfigurację, użyj kabla Ethernet RJ45 z osobnego komputera bezpośrednio do portu zarządzania.
 2. Za pomocą kabla RJ-45 (w przypadku portu DATA 3) lub kabla SFP+ (w przypadku portu DATA 1 lub DATA 2) podłącz urządzenie do serwera. Zalecamy użycie portów 10 GbE DATA 1 lub DATA 2 w celu uzyskania dobrej wydajności. Porty danych są połączone z serwerem zawierającym dane za pośrednictwem przełącznika 10 GbE.
 3. Skonfiguruj kartę Ethernet na komputerze przenośnym używanym do nawiązywania połączenia z urządzeniem za pomocą następujących ustawień:
 
@@ -84,8 +83,8 @@ Wykonaj poniższe kroki, aby okablować urządzenie.
 
      ![Konfiguracja dwóch portów z przełącznikiem](media/data-box-cable-options/cabling-with-static-ip.png)
 
-4. Dostęp do lokalnego internetowego interfejsu użytkownika z urządzenia pod adresem: 192.168.100.10. Zaloguj się i odblokuj urządzenie Data Box przy użyciu hasła odblokowania z witryny Azure Portal.
-5. Zidentyfikuj adresy IP przypisane przez serwer DHCP.
+3. Dostęp do lokalnego interfejsu użytkownika sieci Web urządzenia w: 192.168.100.10. Zaloguj się i odblokuj urządzenie Data Box przy użyciu hasła odblokowania z witryny Azure Portal.
+4. Zidentyfikuj adresy IP przypisane przez serwer DHCP.
 
 ## <a name="transfer-via-data-port-with-static-ips-using-a-switch"></a>Transfer za pośrednictwem portu DATA z użyciem przełącznika 
 
@@ -108,8 +107,8 @@ Wykonaj poniższe kroki, aby okablować urządzenie.
 
      ![Konfiguracja dwóch portów z przełącznikiem](media/data-box-cable-options/cabling-with-switch-static-ip.png)
 
-4. Dostęp do lokalnego internetowego interfejsu użytkownika z urządzenia pod adresem: 192.168.100.10. Zaloguj się i odblokuj urządzenie Data Box przy użyciu hasła odblokowania z witryny Azure Portal.
-5. Przypisz statyczne adresy IP do skonfigurowanych portów danych.
+3. Dostęp do lokalnego interfejsu użytkownika sieci Web urządzenia w: 192.168.100.10. Zaloguj się i odblokuj urządzenie Data Box przy użyciu hasła odblokowania z witryny Azure Portal.
+4. Przypisz statyczne adresy IP do skonfigurowanych portów danych.
 
 
 ## <a name="transfer-via-data-port-in-a-dhcp-environment"></a>Transfer za pośrednictwem portu DATA w środowisku DHCP
@@ -130,6 +129,6 @@ Wykonaj poniższe kroki, aby okablować urządzenie.
 2. Użyj serwera DHCP lub serwera DNS, aby zidentyfikować adres IP.
 3. Z serwera w tej samej sieci uzyskaj dostęp do lokalnego interfejsu użytkownika urządzenia przy użyciu adresu IP przypisanego przez serwer DHCP. Zaloguj się i odblokuj urządzenie Data Box przy użyciu hasła odblokowania z witryny Azure Portal.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Po okablowaniu urządzenia przejdź do samouczka [Copy data to your Azure Data Box (Kopiowanie danych na urządzenie Azure Data Box)](data-box-deploy-copy-data.md).

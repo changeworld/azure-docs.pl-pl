@@ -1,6 +1,6 @@
 ---
-title: Pamięć podręczna systemu Azure dla usługi Redis — często zadawane pytania | Dokumentacja firmy Microsoft
-description: Dowiedz się odpowiedzi na często zadawane pytania dotyczące, wzorce i najlepsze rozwiązania dla usługi Azure Cache dla pamięci podręcznej Redis
+title: Usługa Azure cache for Redis — często zadawane pytania | Microsoft Docs
+description: Poznaj odpowiedzi na często zadawane pytania, wzorce oraz najlepsze rozwiązania dotyczące usługi Azure cache for Redis
 services: cache
 documentationcenter: ''
 author: yegu-ms
@@ -14,211 +14,211 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/29/2019
 ms.author: yegu
-ms.openlocfilehash: 6b27b27fedf622908fa5c06bd2562d9049a4366b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 42d0d7dcc4e10e6f9bfad02a68f3ec176b8a7fb4
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052058"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315993"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis — często zadawane pytania
-Dowiedz się, jak się odpowiedzi na często zadawane pytania dotyczące, wzorce i najlepsze rozwiązania dla usługi Azure Cache dla pamięci podręcznej Redis.
+Poznaj odpowiedzi na często zadawane pytania, wzorce oraz najlepsze rozwiązania dotyczące usługi Azure cache for Redis.
 
-## <a name="what-if-my-question-isnt-answered-here"></a>Co zrobić, jeśli moje pytanie nie ma tutaj odpowiedzi?
-Jeśli Twoje pytanie nie ma na liście, Daj nam znać, a my pomożemy Ci znaleźć odpowiedzi.
+## <a name="what-if-my-question-isnt-answered-here"></a>Co zrobić, jeśli w tym miejscu nie udzielono odpowiedzi na moje pytanie?
+Jeśli pytania nie ma na liście, poinformuj nas o tym, a my pomożemy Ci znaleźć odpowiedź.
 
-* Możesz zadać pytanie na komentarze na końcu tego — często zadawane pytania i skontaktuj się z zespołem usługi Azure Cache i inni członkowie społeczności, informacje o tym artykule.
-* Aby uzyskać dostęp do większej liczby osób, możesz zadać pytanie na [Forum MSDN usługi Azure Cache](https://social.msdn.microsoft.com/forums/azure/home?forum=azurecache) i skontaktuj się z zespołem usługi Azure Cache i inni członkowie społeczności.
-* Jeśli chcesz utworzyć żądanie funkcji, można przesłać żądania i pomysłów dotyczących [pamięci podręcznej Azure redis Cache User Voice](https://feedback.azure.com/forums/169382-cache).
-* Można również wysłać wiadomość e-mail do nas pod numer [opinii zewnętrznych pamięć podręczna Azure](mailto:azurecache@microsoft.com).
+* Możesz ogłosić pytanie w komentarzach na końcu często zadawanych pytań i skontaktować się z zespołem usługi Azure cache i innymi członkami społeczności dotyczącymi tego artykułu.
+* Aby dotrzeć do szerszego grona odbiorców, możesz ogłosić pytanie na [forum MSDN usługi Azure cache](https://social.msdn.microsoft.com/forums/azure/home?forum=azurecache) i korzystać z zespołu usługi Azure cache i innych członków społeczności.
+* Jeśli chcesz utworzyć żądanie dotyczące funkcji, możesz przesłać swoje żądania i pomysły do [usługi Azure cache for Redis](https://feedback.azure.com/forums/169382-cache).
+* Możesz również wysłać do nas wiadomość e-mail na temat [zewnętrznej opinii w usłudze Azure cache](mailto:azurecache@microsoft.com).
 
-## <a name="azure-cache-for-redis-basics"></a>Pamięć podręczna systemu Azure, aby uzyskać podstawowe informacje o pamięci podręcznej Redis
-Często zadawane pytania w tej sekcji obejmują niektóre z podstawy pamięć podręczna systemu Azure dla usługi Redis.
+## <a name="azure-cache-for-redis-basics"></a>Azure cache for Redis — podstawy
+Często zadawane pytania przedstawione w tej sekcji dotyczą niektórych podstaw usługi Azure cache for Redis.
 
-* [Co to jest Azure pamięci podręcznej redis Cache?](#what-is-azure-cache-for-redis)
-* [Jak mogę rozpocząć pracę z usługą Azure Cache dla usługi Redis?](#how-can-i-get-started-with-azure-cache-for-redis)
+* [Co to jest usługa Azure cache for Redis?](#what-is-azure-cache-for-redis)
+* [Jak rozpocząć pracę z usługą Azure cache for Redis?](#how-can-i-get-started-with-azure-cache-for-redis)
 
-Poniższe często zadawane pytania obejmuje podstawowe pojęcia i pytania dotyczące usługi Azure Cache dla usługi Redis i odpowiedzi są w innej sekcji często zadawane pytania.
+Poniższe często zadawane pytania obejmują podstawowe pojęcia i pytania dotyczące usługi Azure cache for Redis oraz odpowiedzi na jedną z innych sekcji często zadawanych pytań.
 
-* [Jakie usługi Azure Cache oferty pamięci podręcznej Redis i rozmiaru należy używać?](#what-azure-cache-for-redis-offering-and-size-should-i-use)
-* [Jakie usługi Azure Cache dla klientów usługi Redis można używać?](#what-azure-cache-for-redis-clients-can-i-use)
-* [Dla usługi Redis jest lokalnym emulator dla usługi Azure Cache?](#is-there-a-local-emulator-for-azure-cache-for-redis)
-* [Jak monitorować kondycję i wydajność przepełnieniu pamięci podręcznej?](#how-do-i-monitor-the-health-and-performance-of-my-cache)
+* [Jakiej pamięci podręcznej platformy Azure dla oferty Redis i rozmiaru należy użyć?](#what-azure-cache-for-redis-offering-and-size-should-i-use)
+* [Do jakiej usługi Azure cache for Redis klienci mogą korzystać?](#what-azure-cache-for-redis-clients-can-i-use)
+* [Czy istnieje emulator lokalny dla usługi Azure cache for Redis?](#is-there-a-local-emulator-for-azure-cache-for-redis)
+* [Jak mogę monitorować kondycję i wydajność mojej pamięci podręcznej?](#how-do-i-monitor-the-health-and-performance-of-my-cache)
 
-## <a name="planning-faqs"></a>Często zadawane pytania dotyczące planowania
-* [Jakie usługi Azure Cache oferty pamięci podręcznej Redis i rozmiaru należy używać?](#what-azure-cache-for-redis-offering-and-size-should-i-use)
-* [Pamięć podręczna systemu Azure, wydajność pamięci podręcznej Redis](#azure-cache-for-redis-performance)
-* [W jakim regionie ma szukać przepełnieniu pamięci podręcznej?](#in-what-region-should-i-locate-my-cache)
-* [Jak są rozliczane dla pamięci podręcznej Azure redis Cache?](#how-am-i-billed-for-azure-cache-for-redis)
-* [Dla pamięci podręcznej Redis w chmurze Azure Government, Azure albo chmura lub Microsoft Azure (Niemcy) można używać usługi Azure Cache?](#can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany)
+## <a name="planning-faqs"></a>Planowanie często zadawanych pytań
+* [Jakiej pamięci podręcznej platformy Azure dla oferty Redis i rozmiaru należy użyć?](#what-azure-cache-for-redis-offering-and-size-should-i-use)
+* [Pamięć podręczna Azure dla wydajności Redis](#azure-cache-for-redis-performance)
+* [W jakim regionie należy znaleźć moją pamięć podręczną?](#in-what-region-should-i-locate-my-cache)
+* [Jak naliczane są opłaty za usługę Azure cache for Redis?](#how-am-i-billed-for-azure-cache-for-redis)
+* [Czy mogę używać usługi Azure cache for Redis z usługą Azure Government Cloud, chmurą z Chin platformy Azure lub Microsoft Azure (Niemcy)?](#can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany)
 
-## <a name="development-faqs"></a>Programowanie — często zadawane pytania
-* [Co zrobić opcje konfiguracji StackExchange.Redis](#what-do-the-stackexchangeredis-configuration-options-do)
-* [Jakie usługi Azure Cache dla klientów usługi Redis można używać?](#what-azure-cache-for-redis-clients-can-i-use)
-* [Dla usługi Redis jest lokalnym emulator dla usługi Azure Cache?](#is-there-a-local-emulator-for-azure-cache-for-redis)
-* [Jak uruchomić polecenia Redis](#how-can-i-run-redis-commands)
-* [Dlaczego nie ma MSDN odwołanie do biblioteki klas np. niektóre z innymi usługami platformy Azure w pamięci podręcznej Redis Azure?](#why-doesnt-azure-cache-for-redis-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services)
-* [Czy można używać usługi Azure Cache dla usługi Redis jako pamięci podręcznej sesji PHP?](#can-i-use-azure-cache-for-redis-as-a-php-session-cache)
+## <a name="development-faqs"></a>Często zadawane pytania dotyczące programowania
+* [Do czego służy opcja konfiguracji StackExchange. Redis?](#what-do-the-stackexchangeredis-configuration-options-do)
+* [Do jakiej usługi Azure cache for Redis klienci mogą korzystać?](#what-azure-cache-for-redis-clients-can-i-use)
+* [Czy istnieje emulator lokalny dla usługi Azure cache for Redis?](#is-there-a-local-emulator-for-azure-cache-for-redis)
+* [Jak można uruchomić polecenia Redis?](#how-can-i-run-redis-commands)
+* [Dlaczego usługa Azure cache for Redis ma bibliotekę klas MSDN, jak w przypadku niektórych innych usług platformy Azure?](#why-doesnt-azure-cache-for-redis-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services)
+* [Czy można używać usługi Azure cache for Redis jako pamięci podręcznej sesji języka PHP?](#can-i-use-azure-cache-for-redis-as-a-php-session-cache)
 * [Co to są bazy danych Redis?](#what-are-redis-databases)
 
-## <a name="security-faqs"></a>Często zadawane pytania zabezpieczeń
-* [Kiedy należy włączyć port bez protokołu SSL do łączenia się z pamięci podręcznej Redis](#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis)
+## <a name="security-faqs"></a>Często zadawane pytania dotyczące zabezpieczeń
+* [Kiedy należy włączyć port bez protokołu SSL w celu nawiązania połączenia z usługą Redis?](#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis)
 
-## <a name="production-faqs"></a>Produkcja — często zadawane pytania
-* [Jakie są najważniejsze wskazówki produkcji?](#what-are-some-production-best-practices)
-* [Jakie są niektóre zagadnienia podczas korzystania z Typowe polecenia Redis?](#what-are-some-of-the-considerations-when-using-common-redis-commands)
-* [Jak testu wydajności i przetestować wydajność przepełnieniu pamięci podręcznej?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
-* [Ważne informacje dotyczące rozwoju puli wątków](#important-details-about-threadpool-growth)
-* [Włącz serwer GC w celu uzyskania większej przepustowości na komputerze klienckim, używając StackExchange.Redis](#enable-server-gc-to-get-more-throughput-on-the-client-when-using-stackexchangeredis)
-* [Zagadnienia dotyczące wydajności w całym połączeń](#performance-considerations-around-connections)
+## <a name="production-faqs"></a>Często zadawane pytania dotyczące produkcji
+* [Jakie są najlepsze rozwiązania w zakresie produkcji?](#what-are-some-production-best-practices)
+* [Jakie kwestie należy wziąć pod uwagę podczas korzystania z typowych poleceń Redis?](#what-are-some-of-the-considerations-when-using-common-redis-commands)
+* [Jak można sprawdzić i przetestować wydajność mojej pamięci podręcznej?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+* [Ważne szczegóły dotyczące wzrostu puli wątków](#important-details-about-threadpool-growth)
+* [Włącz serwer GC, aby uzyskać większą przepływność na kliencie przy użyciu StackExchange. Redis](#enable-server-gc-to-get-more-throughput-on-the-client-when-using-stackexchangeredis)
+* [Zagadnienia dotyczące wydajności dotyczące połączeń](#performance-considerations-around-connections)
 
-## <a name="monitoring-and-troubleshooting-faqs"></a>Monitorowanie i rozwiązywanie problemów — często zadawane pytania
-Często zadawane pytania w tej sekcji obejmują typowe monitorowania i pytania dotyczące rozwiązywania problemów. Aby uzyskać więcej informacji dotyczących monitorowania i rozwiązywanie problemów z pamięci podręcznej dla wystąpień pamięci podręcznej Redis Azure, zobacz [jak monitorować pamięć podręczna systemu Azure dla usługi Redis](cache-how-to-monitor.md) i [jak rozwiązywać problemy z pamięć podręczna systemu Azure dla usługi Redis](cache-how-to-troubleshoot.md).
+## <a name="monitoring-and-troubleshooting-faqs"></a>Monitorowanie pytań i rozwiązywanie problemów
+Często zadawane pytania zawarte w tej sekcji dotyczą typowych pytań dotyczących monitorowania i rozwiązywania problemów. Aby uzyskać więcej informacji na temat monitorowania i rozwiązywania problemów z pamięcią podręczną platformy Azure dla wystąpień Redis, zobacz [Jak monitorować usługę Azure cache for Redis](cache-how-to-monitor.md) i [Jak rozwiązywać problemy z usługą Azure cache for Redis](cache-how-to-troubleshoot.md).
 
-* [Jak monitorować kondycję i wydajność przepełnieniu pamięci podręcznej?](#how-do-i-monitor-the-health-and-performance-of-my-cache)
-* [Dlaczego widzę przekroczeń limitu czasu?](#why-am-i-seeing-timeouts)
-* [Dlaczego mój klient został rozłączony z pamięci podręcznej](#why-was-my-client-disconnected-from-the-cache)
+* [Jak mogę monitorować kondycję i wydajność mojej pamięci podręcznej?](#how-do-i-monitor-the-health-and-performance-of-my-cache)
+* [Dlaczego widzę limity czasu?](#why-am-i-seeing-timeouts)
+* [Dlaczego mój klient odłączył się od pamięci podręcznej?](#why-was-my-client-disconnected-from-the-cache)
 
-## <a name="prior-cache-offering-faqs"></a>Wcześniejsze oferta pamięci podręcznej — często zadawane pytania
-* [Która oferta pamięci podręcznej Azure jest dla mnie odpowiednia?](#which-azure-cache-offering-is-right-for-me)
+## <a name="prior-cache-offering-faqs"></a>Wcześniejsza pamięć podręczna oferująca często zadawane pytania
+* [Która oferta pamięci podręcznej systemu Azure jest dla mnie odpowiednia?](#which-azure-cache-offering-is-right-for-me)
 
 ### <a name="what-is-azure-cache-for-redis"></a>Co to jest usługa Azure Cache for Redis?
-Pamięć podręczna systemu Azure dla usługi Redis opiera się na popularnych oprogramowania typu open-source [Redis](https://redis.io/). Daje ona dostęp do zabezpieczonej, dedykowanej pamięci podręcznej Azure dla usługi Redis, zarządzanej przez firmę Microsoft i dostępny z poziomu dowolnej aplikacji na platformie Azure. Aby uzyskać bardziej szczegółowym omówieniem, zobacz [pamięci podręcznej Redis Azure](https://azure.microsoft.com/services/cache/) stronę produktu w witrynie Azure.com.
+Pamięć podręczna systemu Azure dla usługi Redis jest oparta na popularnej [Redis](https://redis.io/)oprogramowania open source. Zapewnia dostęp do bezpiecznej, dedykowanej pamięci podręcznej platformy Azure dla usługi Redis, zarządzanej przez firmę Microsoft i dostępnej z dowolnej aplikacji na platformie Azure. Aby zapoznać się z bardziej szczegółowym omówieniem, zobacz stronę [usługi Azure cache for Redis](https://azure.microsoft.com/services/cache/) na stronie Azure.com.
 
-### <a name="how-can-i-get-started-with-azure-cache-for-redis"></a>Jak mogę rozpocząć pracę z usługą Azure Cache dla usługi Redis?
-Istnieje kilka sposobów, które możesz rozpocząć pracę z usługą Azure Cache dla usługi Redis.
+### <a name="how-can-i-get-started-with-azure-cache-for-redis"></a>Jak rozpocząć pracę z usługą Azure cache for Redis?
+Istnieje kilka sposobów rozpoczynania pracy z usługą Azure cache for Redis.
 
-* Możesz zapoznać się z jednego z naszych samouczków dotyczących [.NET](cache-dotnet-how-to-use-azure-redis-cache.md), [ASP.NET](cache-web-app-howto.md), [Java](cache-java-get-started.md), [Node.js](cache-nodejs-get-started.md), i [językaPython](cache-python-get-started.md).
-* Możesz obejrzeć [sposobu kompilacji o wysokiej wydajności aplikacji za pomocą Microsoft Azure Cache dla usługi Redis](https://azure.microsoft.com/documentation/videos/how-to-build-high-performance-apps-using-microsoft-azure-cache/).
-* Możesz zapoznać się w dokumentacji klienta dla klientów, którzy jest zgodny z językiem programowania projekt, aby zobaczyć sposób użycia usługi Redis. Istnieje wielu klientów Redis, które mogą służyć z pamięcią podręczną Azure redis Cache. Aby uzyskać listę klientów usługi Redis, zobacz [ https://redis.io/clients ](https://redis.io/clients).
+* Możesz zapoznać się z jednym z naszych samouczków dostępnych dla [platform .NET](cache-dotnet-how-to-use-azure-redis-cache.md), [ASP.NET](cache-web-app-howto.md), [Java](cache-java-get-started.md), [Node. js](cache-nodejs-get-started.md)i [Python](cache-python-get-started.md).
+* Możesz obejrzeć, [jak tworzyć aplikacje o wysokiej wydajności za pomocą pamięci Podręcznej Microsoft Azure Redis](https://azure.microsoft.com/documentation/videos/how-to-build-high-performance-apps-using-microsoft-azure-cache/).
+* Aby zobaczyć, jak korzystać z usługi Redis, można sprawdzić dokumentację klienta dla klientów zgodnych z językiem programowania projektu. Istnieje wielu klientów Redis, których można używać z usługą Azure cache dla Redis. Listę klientów Redis można znaleźć w temacie [https://redis.io/clients](https://redis.io/clients).
 
-Jeśli nie masz jeszcze konta platformy Azure, możesz to zrobić:
+Jeśli nie masz jeszcze konta platformy Azure, możesz:
 
 * [Utworzyć bezpłatne konto platformy Azure ](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero). Otrzymasz środki, które możesz wykorzystać do wypróbowania płatnych usług Azure. Nawet po wyczerpaniu tych środków możesz zachować konto i korzystać z bezpłatnych usług i funkcji platformy Azure.
 * [Aktywować korzyści subskrybenta programu Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=redis_cache_hero). W ramach subskrypcji MSDN co miesiąc otrzymasz środki, które możesz przeznaczyć na płatne usługi platformy Azure.
 
 <a name="cache-size"></a>
 
-### <a name="what-azure-cache-for-redis-offering-and-size-should-i-use"></a>Jakie usługi Azure Cache oferty pamięci podręcznej Redis i rozmiaru należy używać?
-Każda pamięć podręczna Azure, oferty pamięci podręcznej Redis zapewnia różne poziomy **rozmiar**, **przepustowości**, **wysokiej dostępności**, i **SLA** opcje.
+### <a name="what-azure-cache-for-redis-offering-and-size-should-i-use"></a>Jakiej pamięci podręcznej platformy Azure dla oferty Redis i rozmiaru należy użyć?
+Każda usługa Azure cache for Redis oferuje różne poziomy **rozmiaru**, **przepustowości**, **wysokiej dostępności**i **umowy SLA** .
 
 Poniżej przedstawiono zagadnienia dotyczące wybierania oferty pamięci podręcznej.
 
-* **Pamięć**: Warstwy podstawowa i standardowa oferują 250 MB – 53 GB. Warstwa Premium zapewnia do 530 GB. Aby uzyskać więcej informacji, zobacz [pamięci podręcznej Azure redis Cache cennik](https://azure.microsoft.com/pricing/details/cache/).
-* **Wydajność sieci**: Jeśli masz obciążenie, która wymaga wysokiej przepływności, warstwa Premium oferuje większej przepustowości w porównaniu do wersji Standard lub Basic. Również w każdej warstwie większy rozmiar pamięci podręcznych korzystania z większej przepustowości z powodu podstawowej maszyny Wirtualnej, który jest hostem pamięci podręcznej. Aby uzyskać więcej informacji, zobacz [następujących tabeli](#cache-performance).
-* **Przepływność**: Warstwa Premium oferuje maksymalną przepustowość dostępna. Jeśli pamięć podręczna serwera lub klienta osiągnie limity przepustowości, może pojawić się przekroczeń limitu czasu po stronie klienta. Aby uzyskać więcej informacji zobacz w poniższej tabeli.
-* **Wysoka dostępność/SLA**: Pamięć podręczna systemu Azure dla usługi Redis gwarantuje, że standardowa/Premium pamięć podręczna jest dostępna co najmniej 99,9% czasu. Aby dowiedzieć się więcej o umowach SLA, zobacz [pamięci podręcznej Azure redis Cache cennik](https://azure.microsoft.com/support/legal/sla/cache/v1_0/). Umowa SLA obejmuje jedynie połączenia z punktami końcowymi pamięci podręcznej. Nie zapewnia ona ochrony przed utratą danych. Firma Microsoft zaleca używanie funkcji trwałości danych Redis w warstwie Premium, aby zwiększyć odporność na utratę danych.
-* **Trwałość danych redis**: Warstwa Premium umożliwia utrwalanie danych pamięci podręcznej na koncie usługi Azure Storage. W pamięci podręcznej podstawowa i standardowa wszystkie dane są przechowywane tylko w pamięci. Podstawowe problemy dotyczące infrastruktury może spowodować utratę danych. Firma Microsoft zaleca używanie funkcji trwałości danych Redis w warstwie Premium, aby zwiększyć odporność na utratę danych. Pamięć podręczna systemu Azure dla usługi Redis zapewnia RDB i AOF (wkrótce) opcje w stan trwały pamięci podręcznej Redis. Aby uzyskać więcej informacji, zobacz [Konfigurowanie trwałości dla usługi Azure Cache w warstwie Premium dla usługi Redis](cache-how-to-premium-persistence.md).
-* **Klaster redis**: Tworzenie pamięci podręcznych większych niż 53 GB i współdzielenie danych między wieloma węzłami Redis, umożliwia klastrowanie Redis, która jest dostępna w warstwie Premium. Każdy węzeł składa się z pary pamięci podręcznej podstawowy i węzeł repliki w celu zapewnienia wysokiej dostępności. Aby uzyskać więcej informacji, zobacz [Konfigurowanie klastrowania dla usługi Azure Cache w warstwie Premium dla usługi Redis](cache-how-to-premium-clustering.md).
-* **Ulepszone zabezpieczenia i sieci izolacji**: Wdrożenie usługi Azure Virtual Network (VNET) zapewnia lepsze zabezpieczenia i izolację pamięci podręcznej usługi Azure redis cache, a także podsieci, zasady kontroli dostępu, i inne funkcje ograniczające dostęp. Aby uzyskać więcej informacji, zobacz [Konfigurowanie obsługi sieci wirtualnej dla usługi Azure Cache w warstwie Premium dla usługi Redis](cache-how-to-premium-vnet.md).
-* **Konfiguruj magazyn Redis**: W warstwach Standard i Premium możesz skonfigurować dla powiadomienia przestrzeni kluczy pamięci podręcznej Redis.
-* **Maksymalna liczba połączeń klienta**: Warstwa Premium oferuje maksymalną liczbę klientów, które można nawiązać połączenia z pamięci podręcznej Redis przy użyciu większej liczby połączeń dla większej wielkości pamięci podręcznych. Klaster nie zwiększa liczbę połączeń, które są dostępne dla klastra pamięci podręcznej. Aby uzyskać więcej informacji, zobacz [pamięci podręcznej Azure Redis cennik](https://azure.microsoft.com/pricing/details/cache/).
-* **Dedykowany serwer Redis Core**: W warstwie Premium dowolnej wielkości pamięci podręcznej ma rdzeni dedykowanych dla usługi Redis. W warstwach podstawowa i standardowa, rozmiar C1 powyżej się rdzeni dedykowanych dla serwera Redis.
-* **Redis jest jednowątkowym** więc mających więcej niż dwa rdzenie nie zapewnia dodatkowych korzyści w posiadanie tylko dwa rdzenie, ale większe rozmiary maszyny Wirtualnej zwykle mają większą przepustowość niż mniejsze rozmiary. Jeśli pamięć podręczna serwera lub klienta osiągnie limity przepustowości, zostanie wyświetlony przekroczeń limitu czasu po stronie klienta.
-* **Ulepszenia wydajności**: Pamięci podręczne w warstwie Premium są wdrażane na sprzęcie, który ma szybszymi procesorami, co zapewnia lepszą wydajność w porównaniu do warstwy podstawowa lub standardowa. Podręczna w warstwie Premium mają większą przepływnością i mniejszymi opóźnieniami.
+* **Pamięć**: Warstwy Podstawowa i Standardowa oferują 250 MB – 53 GB. Warstwa Premium oferuje do 1,2 TB (jako klaster) lub 120 GB (nieklastrowane). Aby uzyskać więcej informacji, zobacz [Azure cache for Redis — Cennik](https://azure.microsoft.com/pricing/details/cache/).
+* **Wydajność sieci**: Jeśli masz obciążenie, które wymaga dużej przepływności, warstwa Premium oferuje większą przepustowość w porównaniu do warstwy Standardowa lub podstawowa. Ponadto w każdej warstwie pamięć podręczna o większym rozmiarze ma większą przepustowość ze względu na źródłową maszynę wirtualną, która obsługuje pamięć podręczną. Aby uzyskać więcej informacji, zobacz [poniższą tabelę](#cache-performance).
+* **Przepływność**: Warstwa Premium oferuje maksymalną dostępną przepływność. Jeśli serwer pamięci podręcznej lub klient osiągnie limity przepustowości, mogą pojawić się limity czasu po stronie klienta. Aby uzyskać więcej informacji, zobacz poniższą tabelę.
+* **Wysoka dostępność/umowa SLA**: Pamięć podręczna systemu Azure dla Redis gwarantuje, że pamięć podręczna w warstwie Standardowa/Premium jest dostępna przez co najmniej 99,9% czasu. Aby dowiedzieć się więcej o umowach SLA, zobacz [Azure cache for Redis — Cennik](https://azure.microsoft.com/support/legal/sla/cache/v1_0/). Umowa SLA obejmuje tylko łączność z punktami końcowymi pamięci podręcznej. Nie zapewnia ona ochrony przed utratą danych. Zalecamy używanie funkcji trwałości danych Redis w warstwie Premium w celu zwiększenia odporności na utratę danych.
+* **Trwałość danych Redis**: Warstwa Premium umożliwia utrwalanie danych w pamięci podręcznej na koncie usługi Azure Storage. W pamięci podręcznej podstawowa/standardowa wszystkie dane są przechowywane tylko w pamięci. Problemy związane z infrastrukturą mogą skutkować potencjalną utratą danych. Zalecamy używanie funkcji trwałości danych Redis w warstwie Premium w celu zwiększenia odporności na utratę danych. Usługa Azure cache for Redis oferuje opcje RDB i kopia zapasowa AOF (dostępne wkrótce) w przypadku trwałości Redis. Aby uzyskać więcej informacji, zobacz [jak skonfigurować trwałość dla pamięci podręcznej Premium platformy Azure dla Redis](cache-how-to-premium-persistence.md).
+* **Klaster Redis**: Aby utworzyć pamięć podręczną o rozmiarze większym niż 120 GB lub fragmentu dane w wielu węzłach Redis, można użyć klastra Redis, który jest dostępny w warstwie Premium. Każdy węzeł składa się z pary pamięci podręcznej podstawowej/repliki w celu zapewnienia wysokiej dostępności. Aby uzyskać więcej informacji, zobacz [jak skonfigurować klastrowanie dla pamięci podręcznej Premium platformy Azure dla Redis](cache-how-to-premium-clustering.md).
+* **Ulepszone zabezpieczenia i izolacja sieci**: Wdrożenie usługi Azure Virtual Network (VNET) zapewnia ulepszone zabezpieczenia i izolację pamięci podręcznej platformy Azure dla usługi Redis, a także podsieci, zasady kontroli dostępu i inne funkcje w celu dodatkowego ograniczenia dostępu. Aby uzyskać więcej informacji, zobacz [jak skonfigurować obsługę usługi Virtual Network w przypadku pamięci podręcznej Premium platformy Azure dla Redis](cache-how-to-premium-vnet.md).
+* **Konfiguruj Redis**: W warstwach Standardowa i Premium można skonfigurować Redis na potrzeby powiadomień dotyczących miejsca na dysku.
+* **Maksymalna liczba połączeń klientów**: Warstwa Premium oferuje maksymalną liczbę klientów, którzy mogą łączyć się z usługą Redis, przy większej liczbie połączeń dla pamięci podręcznych o większej wielkości. Klastrowanie nie zwiększa liczby połączeń dostępnych dla klastrowanej pamięci podręcznej. Aby uzyskać więcej informacji, zobacz [Azure cache for Redis — Cennik](https://azure.microsoft.com/pricing/details/cache/).
+* **Dedykowany rdzeń dla serwera Redis**: W warstwie Premium wszystkie rozmiary pamięci podręcznej mają dedykowany rdzeń dla Redis. W warstwach Podstawowa/standardowa rozmiar C1 i powyżej ma dedykowany rdzeń dla serwera Redis.
+* **Redis jest jednowątkowy** , tak aby więcej niż dwa rdzenie nie zapewniały większej korzyści niż dwa rdzenie, ale większe rozmiary maszyn wirtualnych zazwyczaj mają większą przepustowość niż mniejsze rozmiary. Jeśli serwer pamięci podręcznej lub klient osiągnie limity przepustowości, po stronie klienta zostaną wyświetlone limity czasu.
+* **Ulepszenia wydajności**: Pamięć podręczna w warstwie Premium są wdrażane na sprzęcie z szybszymi procesorami, co zapewnia lepszą wydajność w porównaniu z warstwą podstawowa lub standardowa. Pamięć podręczna warstwy Premium ma wyższą przepływność i mniejsze opóźnienia.
 
 <a name="cache-performance"></a>
 
-### <a name="azure-cache-for-redis-performance"></a>Pamięć podręczna systemu Azure, wydajność pamięci podręcznej Redis
-W poniższej tabeli przedstawiono wartości maksymalnej przepustowości, przestrzegać podczas testowania różne rozmiary Standard i Premium zapisuje w pamięci podręcznej przy użyciu `redis-benchmark.exe` z maszyny Wirtualnej IaaS względem usługi Azure Cache dla punktu końcowego pamięci podręcznej Redis. Przepływność SSL testu porównawczego usługi redis jest używany przy użyciu programu stunnel nawiązywania połączenia z usługą Azure Cache dla punktu końcowego pamięci podręcznej Redis.
+### <a name="azure-cache-for-redis-performance"></a>Pamięć podręczna Azure dla wydajności Redis
+W poniższej tabeli przedstawiono maksymalne wartości przepustowości zaobserwowane podczas testowania różnych rozmiarów pamięci podręcznej w warstwach `redis-benchmark.exe` standardowa i Premium przy użyciu maszyny wirtualnej IaaS w usłudze Azure cache for Redis Endpoint. W przypadku przepływności SSL Redis — test porównawczy jest używany z stunnel do nawiązywania połączenia z usługą Azure cache for Redis Endpoint.
 
 >[!NOTE] 
->Te wartości nie są gwarantowane i ma żadnej umowy SLA dla tych numerów, ale powinien być typowe. Powinny zostać załadowane przetestować aplikację, aby określić rozmiar pamięci podręcznej odpowiedniej dla twojej aplikacji.
->Te numery mogą ulec zmianie, jak okresowo publikujemy nowszych wyników.
+>Te wartości nie są gwarantowane i nie ma umowy SLA dla tych numerów, ale powinny być typowe. Należy przetestować własną aplikację, aby określić odpowiedni rozmiar pamięci podręcznej dla aplikacji.
+>Liczby te mogą ulec zmianie w miarę okresowego ogłaszania nowszych wyników.
 >
 
-Z tej tabeli firma Microsoft narysować następujących wniosków:
+Z tej tabeli można narysować następujące wnioski:
 
-* Przepływność dla pamięci podręcznych, które mają taki sam rozmiar jest większa w warstwie Premium w porównaniu z warstwą standardowa. Na przykład za pomocą 6 GB pamięci podręcznej, przepływność P1 to 180 000 żądań na sekundę (RPS) w porównaniu do 100 000 RPS dla C3.
-* Przy użyciu klastrów usługi Redis przepływności, wydłuża liniowo zwiększyć liczbę fragmentów (węzłów) w klastrze. Na przykład jeśli tworzysz klaster P4 10 fragmentów, dostępne przepływność to 400 000 * 10 = 4 mln RPS.
-* Przepływność dla większych rozmiarów klucza jest większa w warstwie Premium w porównaniu z warstwą standardowa.
+* Przepływność dla pamięci podręcznych o takim samym rozmiarze jest większa w warstwie Premium w porównaniu do warstwy Standardowa. Na przykład w przypadku pamięci podręcznej 6 GB przepływność P1 to 180 000 żądań na sekundę (RPS pliku) w porównaniu do 100 000 RPS pliku dla C3.
+* W przypadku klastrowania Redis przepływność wzrasta liniowo w miarę zwiększania liczby fragmentów (węzłów) w klastrze. Jeśli na przykład utworzysz klaster P4 o wartości 10 fragmentów, dostępna przepływność to 400 000 * 10 = 4 000 000 RPS pliku.
+* Przepływność dla większych rozmiarów kluczy jest wyższa w warstwie Premium w porównaniu do warstwy Standardowa.
 
-| Warstwa cenowa | Rozmiar | Rdzenie procesora CPU | Dostępna przepustowość | Wartość 1 KB rozmiaru | Wartość 1 KB rozmiaru |
+| Warstwa cenowa | Size | Rdzenie procesora | Dostępna przepustowość | rozmiar wartości 1 KB | rozmiar wartości 1 KB |
 | --- | --- | --- | --- | --- | --- |
-| **Rozmiary Standard pamięci podręcznej** | | |**Megabity na sekundę (Mb/s) / MB / s (MB/s)** |**Żądania na drugi bez protokołu SSL (jednostek Uzależnionych)** |**Żądania na drugim SSL (jednostek Uzależnionych)** |
+| **Standardowe rozmiary pamięci podręcznej** | | |**Megabity na sekundę (MB/s)/megabajty na sekundę (MB/s)** |**Żądania na sekundę (RPS pliku) bez protokołu SSL** |**Żądania na sekundę (RPS pliku) SSL** |
 | C0 | 250 MB | Udostępnione | 100 / 12.5  |  15,000 |   7,500 |
-| C1 |   1 GB | 1      | 500 / 62.5  |  38,000 |  20,720 |
-| C2 | 2,5 GB | 2      | 500 / 62.5  |  41,000 |  37,000 |
+| C1 |   1 GB | 1      | 500 / 62.5  |  38 000 |  20 720 |
+| C2 | 2,5 GB | 2      | 500 / 62.5  |  41 000 |  37 000 |
 | C3 |   6 GB | 4      | 1000 / 125  | 100,000 |  90,000 |
-| C4 |  13 GB | 2      | 500 / 62.5  |  60,000 |  55,000 |
-| C5 |  26 GB | 4      | 1,000 / 125 | 102,000 |  93,000 |
-| C6 |  53 GB | 8      | 2,000 / 250 | 126,000 | 120,000 |
-| **Rozmiar pamięci podręcznej — wersja Premium** | |**Liczba rdzeni procesora CPU na fragment** | **Megabity na sekundę (Mb/s) / MB / s (MB/s)** |**Żądania na drugim (jednostek Uzależnionych) bez protokołu SSL, na fragment** |**Żądania na drugim SSL (jednostek Uzależnionych), na fragment** |
-| P1 |   6 GB |  2 | 1,500 / 187.5 | 180,000 | 172,000 |
-| P2 |  13 GB |  4 | 3,000 / 375   | 350,000 | 341,000 |
-| P3 |  26 GB |  4 | 3,000 / 375   | 350,000 | 341,000 |
-| P4 |  53 GB |  8 | 6,000 / 750   | 400 000 | 373,000 |
-| P5 | 120 GB | 20 | 6,000 / 750   | 400 000 | 373,000 |
+| C4 |  13 GB | 2      | 500 / 62.5  |  60,000 |  55 000 |
+| C5 |  26 GB | 4      | 1,000 / 125 | 102 000 |  93 000 |
+| C6 |  53 GB | 8      | 2,000 / 250 | 126 000 | 120,000 |
+| **Rozmiary pamięci podręcznej Premium** | |**Rdzenie procesora CPU na fragmentu** | **Megabity na sekundę (MB/s)/megabajty na sekundę (MB/s)** |**Żądania na sekundę (RPS pliku) bez protokołu SSL, na fragmentu** |**Żądania na sekundę (RPS pliku) SSL, na fragmentu** |
+| P1 |   6 GB |  2 | 1,500 / 187.5 | 180,000 | 172 000 |
+| P2 |  13 GB |  4 | 3,000 / 375   | 350 000 | 341 000 |
+| P3 |  26 GB |  4 | 3,000 / 375   | 350 000 | 341 000 |
+| P4 |  53 GB |  8 | 6,000 / 750   | 400 000 | 373 000 |
+| P5 | 120 GB | 20 | 6,000 / 750   | 400 000 | 373 000 |
 
-Aby uzyskać instrukcje dotyczące konfigurowania programu stunnel, lub takie jak pobieranie narzędzi Redis `redis-benchmark.exe`, zobacz [jak uruchomić polecenia Redis?](#cache-commands) sekcji.
+Instrukcje dotyczące konfigurowania stunnel lub pobierania narzędzi Redis, takich jak `redis-benchmark.exe`, można znaleźć w sekcji [jak uruchomić polecenia Redis?](#cache-commands) .
 
 <a name="cache-region"></a>
 
-### <a name="in-what-region-should-i-locate-my-cache"></a>W jakim regionie ma szukać przepełnieniu pamięci podręcznej?
-Aby uzyskać najlepszą wydajność i najniższym opóźnieniu zlokalizuj pamięć podręczna Azure dla usługi Redis, w tym samym regionie co aplikacja klienta pamięci podręcznej.
+### <a name="in-what-region-should-i-locate-my-cache"></a>W jakim regionie należy znaleźć moją pamięć podręczną?
+Aby uzyskać najlepszą wydajność i najmniejsze opóźnienia, zlokalizuj pamięć podręczną platformy Azure dla Redis w tym samym regionie, w którym znajduje się aplikacja kliencka pamięci podręcznej.
 
 <a name="cache-billing"></a>
 
-### <a name="how-am-i-billed-for-azure-cache-for-redis"></a>Jak są rozliczane dla pamięci podręcznej Azure redis Cache?
-Pamięć podręczna systemu Azure, cennik usługi Redis jest [tutaj](https://azure.microsoft.com/pricing/details/cache/). Wyświetla listę stronie cennika, ceny za godzinę. Pamięci podręczne są rozliczane na podstawie na minutę od czasu utworzenia pamięci podręcznej aż do czasu, które pamięć podręczna zostanie usunięta. Nie ma opcji dla zatrzymanie lub wstrzymanie Naliczanie opłat w pamięci podręcznej.
+### <a name="how-am-i-billed-for-azure-cache-for-redis"></a>Jak naliczane są opłaty za usługę Azure cache for Redis?
+W [tym miejscu](https://azure.microsoft.com/pricing/details/cache/)jest dostępna usługa Azure cache for Redis. Cennik jest wyświetlany na stronie cennika jako stawka godzinowa. W pamięci podręcznej są naliczane opłaty za minutę od momentu utworzenia pamięci podręcznej do momentu usunięcia pamięci podręcznej. Nie ma możliwości zatrzymywania ani wstrzymywania rozliczeń pamięci podręcznej.
 
-### <a name="can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany"></a>Dla pamięci podręcznej Redis w chmurze Azure Government, Azure albo chmura lub Microsoft Azure (Niemcy) można używać usługi Azure Cache?
-Tak, pamięci podręcznej Azure redis Cache jest dostępna w chmurze Azure Government, Azure China 21Vianet chmury i Microsoft Azure (Niemcy). Adresy URL do uzyskiwania dostępu i zarządzania usługi Azure Cache dla pamięci podręcznej Redis różnią się w tych chmurach w porównaniu z chmury publicznej platformy Azure.
+### <a name="can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany"></a>Czy mogę używać usługi Azure cache for Redis z usługą Azure Government Cloud, chmurą z Chin platformy Azure lub Microsoft Azure (Niemcy)?
+Tak. pamięć podręczna platformy Azure dla usługi Redis jest dostępna w chmurze Azure Government, Azure Chiny i Microsoft Azure (Niemcy). Adresy URL służące do uzyskiwania dostępu do pamięci podręcznej platformy Azure dla Redis i zarządzania nią są inne w tych chmurach w porównaniu z chmurą publiczną
 
-| Chmura   | Sufiks DNS dla usługi Redis            |
+| Chmura   | Sufiks DNS dla Redis            |
 |---------|---------------------------------|
 | Public  | *.redis.cache.windows.net       |
-| Rząd USA  | *.redis.cache.usgovcloudapi.net |
+| US Gov  | *.redis.cache.usgovcloudapi.net |
 | Niemcy | *.redis.cache.cloudapi.de       |
 | Chiny   | *.redis.cache.chinacloudapi.cn  |
 
-Aby uzyskać więcej informacji na temat uwagi dotyczące korzystania z usługi Azure Cache dla pamięci podręcznej Redis przy użyciu innych chmur zobacz poniższe linki.
+Aby uzyskać więcej informacji na temat zagadnień dotyczących używania usługi Azure cache for Redis z innymi chmurami, zobacz następujące linki.
 
-- [Bazy danych platformy Azure dla instytucji rządowych — pamięć podręczna systemu Azure dla usługi Redis](../azure-government/documentation-government-services-database.md#azure-cache-for-redis)
-- [Chmura — firmą 21Vianet chińska wersja platformy Azure — pamięć podręczna systemu Azure dla usługi Redis](https://www.azure.cn/home/features/redis-cache/)
+- [Bazy danych Azure Government — usługa Azure cache for Redis](../azure-government/documentation-government-services-database.md#azure-cache-for-redis)
+- [Azure Chiny w chmurze 21Vianet — pamięć podręczna platformy Azure dla Redis](https://www.azure.cn/home/features/redis-cache/)
 - [Microsoft Azure (Niemcy)](https://azure.microsoft.com/overview/clouds/germany/)
 
-Aby uzyskać informacje na temat korzystania z usługi Azure Cache dla pamięci podręcznej Redis przy użyciu programu PowerShell w chmurze Azure Government, Azure China 21Vianet chmury i Microsoft Azure (Niemcy), zobacz [jak połączyć się z innych chmur - pamięci podręcznej Azure redis Cache środowiska PowerShell](cache-howto-manage-redis-cache-powershell.md#how-to-connect-to-other-clouds).
+Aby uzyskać informacje na temat korzystania z usługi Azure cache for Redis z programem PowerShell w chmurze Azure Government, Azure Chiny i Microsoft Azure (Niemcy), zobacz [jak nawiązać połączenie z innymi chmurami — pamięć podręczna Azure dla programu Redis PowerShell](cache-howto-manage-redis-cache-powershell.md#how-to-connect-to-other-clouds).
 
 <a name="cache-configuration"></a>
 
-### <a name="what-do-the-stackexchangeredis-configuration-options-do"></a>Co zrobić opcje konfiguracji StackExchange.Redis
-StackExchange.Redis ma wiele opcji. Ta sekcja zawiera informacje o niektórych typowych ustawień. Aby uzyskać szczegółowe informacje o opcjach StackExchange.Redis, zobacz [konfiguracji StackExchange.Redis](https://stackexchange.github.io/StackExchange.Redis/Configuration).
+### <a name="what-do-the-stackexchangeredis-configuration-options-do"></a>Do czego służy opcja konfiguracji StackExchange. Redis?
+StackExchange. Redis ma wiele opcji. W tej sekcji przedstawiono niektóre typowe ustawienia. Aby uzyskać szczegółowe informacje na temat opcji StackExchange. Redis, zobacz [stackexchange. Redis Configuration](https://stackexchange.github.io/StackExchange.Redis/Configuration).
 
 | ConfigurationOptions | Opis | Zalecenie |
 | --- | --- | --- |
-| AbortOnConnectFail |Jeśli ustawiono wartość true, połączenie nie nawiąże połączenie po awarii sieci. |Ustaw na wartość false i pozwól StackExchange.Redis automatycznie ponownie połączenie. |
-| ConnectRetry |Liczba powtórzeń prób nawiązania połączenia podczas początkowego połączenia. |Zobacz poniższe informacje o orientacji. |
-| ConnectTimeout |Ms na przekroczenie limitu czasu operacji dotyczących połączenia. |Zobacz poniższe informacje o orientacji. |
+| AbortOnConnectFail |Po ustawieniu na wartość true połączenie nie zostanie ponownie nawiązane po awarii sieci. |Ustaw wartość false i zezwól na automatyczne łączenie StackExchange. Redis. |
+| ConnectRetry |Liczba powtórzeń prób połączenia podczas początkowego połączenia. |Aby uzyskać wskazówki, zobacz następujące uwagi. |
+| ConnectTimeout |Limit czasu dla operacji połączenia w MS. |Aby uzyskać wskazówki, zobacz następujące uwagi. |
 
-Zazwyczaj domyślne wartości klienta są wystarczające. Można dostosować opcje, w oparciu o obciążenie.
+Zwykle wartości domyślne klienta są wystarczające. Możesz dostosować opcje w zależności od obciążenia.
 
-* **Ponowne próby**
-  * ConnectRetry i ConnectTimeout ogólną wytyczną jest szybkiego kończenia działania i spróbuj ponownie. Niniejsze wskazówki opiera się na obciążenie i ilość czasu na średni przyjmuje dla klienta, aby wydać polecenie redis Cache i otrzymać odpowiedź.
-  * Pozwól StackExchange.Redis automatycznie ponownie zamiast sprawdzania stanu połączenia i ponowne łączenie samodzielnie. **Unikaj używania właściwości ConnectionMultiplexer.IsConnected**.
-  * Snowballing — czasami może wystąpić problem, w której są ponawianie próby i ponowne próby snowball i nigdy nie odzyska sprawność. Jeśli snowballing problem wystąpi, należy rozważyć użycie algorytmu ponawiania wykładniczego wycofywania, zgodnie z opisem w [ogólne wskazówki dotyczące ponawiania prób](../best-practices-retry-general.md) opublikowane przez grupę Microsoft Patterns i praktyk.
+* **Ponownych prób**
+  * W przypadku ConnectRetry i ConnectTimeout ogólne wskazówki są szybkie i ponawiane. Wskazówki te są oparte na obciążeniu i ile czasu na średnim jest to, aby klient mógł wydać polecenie Redis i odebrać odpowiedź.
+  * Zezwól programowi StackExchange. Redis na automatyczne ponowne nawiązywanie połączenia zamiast sprawdzania stanu połączenia i samodzielnego łączenia się. **Unikaj używania właściwości ConnectionMultiplexer. IsConnected**.
+  * Snowballing — czasami może wystąpić problem polegający na tym, że ponawianie próby, a ponowne próby Snowball i nigdy nie są odzyskiwane. Jeśli wystąpią Snowballing, należy rozważyć użycie wykładniczego algorytmu ponowienia wycofywania, zgodnie z opisem w temacie [ponowienie ogólnych wskazówek](../best-practices-retry-general.md) opublikowanych przez firmę Microsoft w ramach systemu praktyk &.
 * **Wartości limitu czasu**
-  * Należy wziąć pod uwagę obciążenie i odpowiednio ustawić wartości. Jeśli przechowujesz dużych wartościach równa wyższa wartość limitu czasu.
-  * Ustaw `AbortOnConnectFail` połączyć StackExchange.Redis FAŁSZ i pozwala ponownie dla Ciebie.
-  * Pojedyncze wystąpienie ConnectionMultiplexer na użytek aplikacji. LazyConnection można użyć do utworzenia pojedynczego wystąpienia, który jest zwracany przez właściwość połączenia, jak pokazano na [nawiązywanie połączenia z pamięci podręcznej przy użyciu klasy ConnectionMultiplexer](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache).
-  * Ustaw `ConnectionMultiplexer.ClientName` właściwości aplikacji unikatową nazwę dla celów diagnostycznych.
-  * Używanych jest wiele `ConnectionMultiplexer` wystąpień dla niestandardowych obciążeń.
-      * W przypadku zmiennych obciążeń w aplikacji, możesz wykonać ten model. Na przykład:
-      * Może mieć jedną multiplekser radzenia sobie z dużych kluczy.
-      * Może mieć jedną multiplekser radzenia sobie z małych kluczy.
-      * Można ustawić różne wartości limitów czasu połączenia i Logika ponawiania próby dla każdego ConnectionMultiplexer, którego używasz.
-      * Ustaw `ClientName` właściwości na każdym multiplekser ułatwiające wykonywanie diagnostyki.
-      * Niniejsze wskazówki może prowadzić do więcej usprawnione czas oczekiwania na `ConnectionMultiplexer`.
+  * Zastanów się nad obciążeniem i ustaw odpowiednie wartości. Jeśli przechowujesz duże wartości, ustaw limit czasu na wyższą wartość.
+  * Ustaw `AbortOnConnectFail` wartość false i zezwól na ponowne łączenie stackexchange. Redis.
+  * Użyj pojedynczego wystąpienia ConnectionMultiplexer dla aplikacji. Można użyć LazyConnection do utworzenia pojedynczego wystąpienia, które jest zwracane przez właściwość połączenia, jak pokazano w [Połącz z pamięcią podręczną przy użyciu klasy ConnectionMultiplexer](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache).
+  * `ConnectionMultiplexer.ClientName` Ustaw właściwość na unikatową nazwę wystąpienia aplikacji dla celów diagnostycznych.
+  * Używaj wielu `ConnectionMultiplexer` wystąpień dla obciążeń niestandardowych.
+      * Możesz obsłużyć ten model, jeśli masz różne obciążenia w aplikacji. Na przykład:
+      * Możesz mieć jeden multiplekser do celów związanych z dużymi kluczami.
+      * Można mieć jeden multiplekser do obsługi małych kluczy.
+      * Można ustawić różne wartości limitów czasu połączenia i logikę ponowień dla wszystkich używanych ConnectionMultiplexer.
+      * Ustaw właściwość `ClientName` dla każdego multipleksera, aby ułatwić diagnostykę.
+      * Te wskazówki mogą prowadzić do bardziej usprawnionych opóźnień `ConnectionMultiplexer`na.
 
-### <a name="what-azure-cache-for-redis-clients-can-i-use"></a>Jakie usługi Azure Cache dla klientów usługi Redis można używać?
-Jedną z najważniejszych funkcji usługi Redis zakłada, że wielu klientów, obsługa wielu języków programowania różne. Aby uzyskać bieżącą listę klientów, zobacz [klienci Redis](https://redis.io/clients). Samouczki, które obejmują kilka różnych językach i klientów, zobacz [jak używać usługi Azure Cache dla pamięci podręcznej Redis](cache-dotnet-how-to-use-azure-redis-cache.md) i jej element równorzędny artykułów w tabeli treści.
+### <a name="what-azure-cache-for-redis-clients-can-i-use"></a>Do jakiej usługi Azure cache for Redis klienci mogą korzystać?
+Jednym z wspaniałych Redis jest to, że wielu klientów obsługuje wiele różnych języków deweloperskich. Aby uzyskać aktualną listę klientów, zobacz [Redis clients](https://redis.io/clients). Samouczki, które obejmują kilka różnych języków i klientów, znajdują się w temacie [jak używać usługi Azure cache for Redis](cache-dotnet-how-to-use-azure-redis-cache.md) i elementów równorzędnych w spisie treści.
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
 <a name="cache-emulator"></a>
 
-### <a name="is-there-a-local-emulator-for-azure-cache-for-redis"></a>Dla usługi Redis jest lokalnym emulator dla usługi Azure Cache?
-Nie jest brak emulator dla pamięci podręcznej Azure redis cache, ale można uruchomić wersji MSOpenTech redis-server.exe z [Redis narzędzia wiersza polecenia](https://github.com/MSOpenTech/redis/releases/) na lokalnym komputerze, a następnie nawiązać z nim, aby uzyskać podobne możliwości do lokalnej pamięci podręcznej Emulator, jak pokazano w poniższym przykładzie:
+### <a name="is-there-a-local-emulator-for-azure-cache-for-redis"></a>Czy istnieje emulator lokalny dla usługi Azure cache for Redis?
+Nie ma lokalnego emulatora dla usługi Azure cache for Redis, ale można uruchomić wersję MSOpenTech Redis-Server. exe z [narzędzi wiersza polecenia Redis](https://github.com/MSOpenTech/redis/releases/) na komputerze lokalnym i połączyć się z nią w celu uzyskania podobnego środowiska na potrzeby lokalnego emulatora pamięci podręcznej, jak pokazano na stronie Poniższy przykład:
 
     private static Lazy<ConnectionMultiplexer>
           lazyConnection = new Lazy<ConnectionMultiplexer>
@@ -237,158 +237,158 @@ Nie jest brak emulator dla pamięci podręcznej Azure redis cache, ale można ur
         }
 
 
-Opcjonalnie można skonfigurować [redis.conf](https://redis.io/topics/config) pliku, aby lepiej dopasować [domyślne ustawienia pamięci podręcznej](cache-configure.md#default-redis-server-configuration) dla pamięci podręcznej online platformy Azure dla usługi Redis, w razie potrzeby.
+Opcjonalnie można skonfigurować plik [Redis. conf](https://redis.io/topics/config) , aby lepiej pasował do [domyślnych ustawień pamięci](cache-configure.md#default-redis-server-configuration) podręcznej w pamięci podręcznej platformy Azure online dla Redis w razie potrzeby.
 
 <a name="cache-commands"></a>
 
-### <a name="how-can-i-run-redis-commands"></a>Jak uruchomić polecenia Redis
-Można użyć dowolnego polecenia wymienione pod [polecenia Redis](https://redis.io/commands#) z wyjątkiem polecenia wymienione pod [polecenia nie są obsługiwane w usłudze Azure Cache, dla usługi Redis Redis](cache-configure.md#redis-commands-not-supported-in-azure-cache-for-redis). Istnieje kilka opcji, aby uruchamiać polecenia usługi Redis.
+### <a name="how-can-i-run-redis-commands"></a>Jak można uruchomić polecenia Redis?
+Można użyć dowolnego polecenia wymienionego w [poleceniach Redis](https://redis.io/commands#) , z wyjątkiem poleceń wymienionych w [poleceniach Redis, które nie są obsługiwane w usłudze Azure cache for Redis](cache-configure.md#redis-commands-not-supported-in-azure-cache-for-redis). Istnieje kilka opcji uruchamiania poleceń Redis.
 
-* Jeśli pamięć podręczna warstwy standardowa lub Premium, możesz uruchamiać polecenia pamięci podręcznej Redis przy użyciu [konsolę pamięci podręcznej Redis](cache-configure.md#redis-console). Konsola pamięci podręcznej Redis zapewnia bezpieczny sposób do uruchamiania poleceń pamięci podręcznej Redis w portalu Azure.
-* Można również użyć narzędzia wiersza polecenia usługi Redis. Aby korzystać z nich, wykonaj następujące czynności:
-* Pobierz [Redis narzędzia wiersza polecenia](https://github.com/MSOpenTech/redis/releases/).
-* Nawiązać połączenie przy użyciu pamięci podręcznej `redis-cli.exe`. Przekazuje się w pamięci podręcznej punktu końcowego za pomocą przełącznika -h i klucz przy użyciu jak pokazano w poniższym przykładzie:
+* W przypadku pamięci podręcznej standardowej lub Premium można uruchamiać polecenia Redis za pomocą [konsoli Redis](cache-configure.md#redis-console). Konsola Redis zapewnia bezpieczny sposób uruchamiania poleceń Redis w Azure Portal.
+* Można również użyć narzędzi wiersza polecenia Redis. Aby ich użyć, wykonaj następujące czynności:
+* Pobierz [narzędzia wiersza polecenia Redis](https://github.com/MSOpenTech/redis/releases/).
+* Nawiąż połączenie z pamięcią podręczną przy użyciu polecenia `redis-cli.exe`. Przekaż punkt końcowy pamięci podręcznej przy użyciu przełącznika-h i klucza przy użyciu-a, jak pokazano w następującym przykładzie:
 * `redis-cli -h <Azure Cache for Redis name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
-> Narzędzia wiersza polecenia usługi Redis nie działają z portem SSL, ale można użyć narzędzia, takie jak `stunnel` nawiązania bezpiecznego połączenia narzędzi z portem SSL, postępując zgodnie z instrukcjami w [jak za pomocą narzędzia wiersza polecenia usługi Redis pamięć podręczna systemu Azure dla usługi Redis ](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool) artykułu.
+> Narzędzia wiersza polecenia Redis nie działają z portem SSL, ale można użyć narzędzia, takiego jak `stunnel` aby bezpiecznie połączyć narzędzia z portem SSL, postępując zgodnie z instrukcjami w temacie [jak używać narzędzia wiersza polecenia Redis z usługą Azure cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool) .
 >
 >
 
 <a name="cache-reference"></a>
 
-### <a name="why-doesnt-azure-cache-for-redis-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services"></a>Dlaczego nie ma MSDN odwołanie do biblioteki klas np. niektóre z innymi usługami platformy Azure w pamięci podręcznej Redis Azure?
-Usługa Microsoft Azure Cache for Redis jest oparta na popularnym rozwiązaniu open source Azure Cache for Redis. Jest dostępny przez cały szereg [klienci Redis](https://redis.io/clients) dla wielu języków programowania. Każdy klient ma własny interfejs API, który sprawia, że wywołania do pamięci podręcznej Azure wystąpienie pamięci podręcznej Redis za pomocą [polecenia Redis](https://redis.io/commands).
+### <a name="why-doesnt-azure-cache-for-redis-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services"></a>Dlaczego usługa Azure cache for Redis ma bibliotekę klas MSDN, jak w przypadku niektórych innych usług platformy Azure?
+Usługa Microsoft Azure Cache for Redis jest oparta na popularnym rozwiązaniu open source Azure Cache for Redis. Dostęp do niego może uzyskać wiele różnych [klientów Redis](https://redis.io/clients) w wielu językach programowania. Każdy klient ma własny interfejs API, który wysyła wywołania do usługi Azure cache for Redis za pomocą [poleceń Redis](https://redis.io/commands).
 
-Ponieważ różni się każdego klienta, istnieje nie jeden scentralizowane odwołań do klas w witrynie MSDN, a każdy klient zachowuje własną dokumentację referencyjną. Oprócz dokumentacją referencyjną istnieje kilka samouczków, w którym pokazano, jak rozpocząć pracę z usługą Azure Cache dla pamięci podręcznej Redis przy użyciu różnych języków i pamięci podręcznej klientów. Aby uzyskać dostęp do tych samouczków, zobacz [jak używać usługi Azure Cache dla pamięci podręcznej Redis](cache-dotnet-how-to-use-azure-redis-cache.md) i jej element równorzędny artykułów w tabeli treści.
+Ponieważ każdy klient różni się od siebie, w witrynie MSDN nie ma jednego scentralizowanego odwołania do klasy, a każdy klient utrzymuje własną dokumentację referencyjną. Oprócz dokumentacji referencyjnej istnieje kilka samouczków przedstawiających sposób rozpoczynania pracy z usługą Azure cache for Redis przy użyciu różnych języków i klientów pamięci podręcznej. Aby uzyskać dostęp do tych samouczków, zobacz [jak używać usługi Azure cache for Redis](cache-dotnet-how-to-use-azure-redis-cache.md) i elementów równorzędnych w spisie treści.
 
-### <a name="can-i-use-azure-cache-for-redis-as-a-php-session-cache"></a>Czy można używać usługi Azure Cache dla usługi Redis jako pamięci podręcznej sesji PHP?
-Tak, aby użyć pamięć podręczna systemu Azure dla usługi Redis jako pamięci podręcznej sesji języka PHP, określ parametry połączenia do wystąpienia pamięci podręcznej Redis w pamięci podręcznej Azure `session.save_path`.
+### <a name="can-i-use-azure-cache-for-redis-as-a-php-session-cache"></a>Czy można używać usługi Azure cache for Redis jako pamięci podręcznej sesji języka PHP?
+Tak, aby używać usługi Azure cache for Redis jako pamięci podręcznej sesji języka PHP, określ parametry połączenia dla wystąpienia Redis w `session.save_path`usłudze Azure cache.
 
 > [!IMPORTANT]
-> Korzystając z usługi Azure Cache dla usługi Redis jako pamięci podręcznej sesji języka PHP, należy najpierw adresu URL kodowanie klucz zabezpieczeń używany do łączenia z pamięci podręcznej, jak pokazano w poniższym przykładzie:
+> W przypadku używania usługi Azure cache for Redis jako pamięci podręcznej sesji języka PHP należy zakodować klucz zabezpieczeń używany do nawiązywania połączenia z pamięcią podręczną, jak pokazano w następującym przykładzie:
 >
 > `session.save_path = "tcp://mycache.redis.cache.windows.net:6379?auth=<url encoded primary or secondary key here>";`
 >
-> Jeśli klucz nie jest zakodowany w adresie URL, może pojawić się wyjątek z komunikatem, takich jak: `Failed to parse session.save_path`
+> Jeśli klucz nie jest zakodowany w adresie URL, może wystąpić wyjątek z komunikatem podobnym do:`Failed to parse session.save_path`
 >
 >
 
-Aby uzyskać więcej informacji na temat przy użyciu usługi Azure Cache dla usługi Redis jako pamięci podręcznej sesji PHP za pomocą klienta PhpRedis zobacz [obsługi sesji PHP](https://github.com/phpredis/phpredis#php-session-handler).
+Aby uzyskać więcej informacji o korzystaniu z usługi Azure cache for Redis jako pamięci podręcznej sesji PHP z klientem PhpRedis, zobacz [program obsługi sesji języka PHP](https://github.com/phpredis/phpredis#php-session-handler).
 
 ### <a name="what-are-redis-databases"></a>Co to są bazy danych Redis?
 
-Bazy danych usługi redis są logicznie rozdzielić dane w ramach tego samego wystąpienia usługi Redis. Pamięć podręczna jest współużytkowana przez wszystkie bazy danych i pamięci Rzeczywiste użycie określonej bazy danych zależy od kluczy/wartości przechowywane w tej bazie danych. Na przykład pamięć podręczna C6 ma 53 GB pamięci. Możesz umieścić wszystkie 53 GB w jednej bazie danych lub Podziel między wieloma bazami danych. 
+Bazy danych Redis to logiczne rozdzielenie danych w tym samym wystąpieniu Redis. Pamięć podręczna jest udostępniana między wszystkimi bazami danych a rzeczywistym zużyciem pamięci w danej bazie danych zależy od kluczy/wartości przechowywanych w tej bazie danych. Na przykład pamięć podręczna C6 ma 53 GB pamięci, a P5 ma 120 GB. Można wybrać opcję umieszczenia wszystkich 53 GB/120 GB w jednej bazie danych lub podzielić ją między wiele baz danych. 
 
 > [!NOTE]
-> Korzystając z usługi Azure Cache w warstwie Premium dla usługi Redis z włączonym klastrowaniu, tylko bazy danych 0 jest dostępna. To ograniczenie jest wewnętrzna ograniczenie pamięci podręcznej Redis i nie jest określona dla pamięci podręcznej Azure redis Cache. Aby uzyskać więcej informacji, zobacz [należy wprowadzać żadnych zmian Moja aplikacja kliencka, aby użyć klastrowania?](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
+> W przypadku korzystania z pamięci podręcznej systemu Azure w warstwie Premium dla Redis z włączoną obsługą klastrowania dostępna jest tylko baza danych 0. To ograniczenie jest wewnętrznym ograniczeniem Redis i nie jest specyficzne dla usługi Azure cache for Redis. Aby uzyskać więcej informacji, zobacz [Czy muszę wprowadzić zmiany w aplikacji klienckiej w celu korzystania z klastrowania?](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
 > 
 > 
 
 
 <a name="cache-ssl"></a>
 
-### <a name="when-should-i-enable-the-non-ssl-port-for-connecting-to-redis"></a>Kiedy należy włączyć port bez protokołu SSL do łączenia się z pamięci podręcznej Redis
-Redis server nie obsługuje natywnie protokołu SSL, ale nie w pamięci podręcznej Azure redis Cache. Jeśli łączysz się pamięć podręczna systemu Azure dla usługi Redis i klient obsługuje protokół SSL, takich jak StackExchange.Redis, należy używać protokołu SSL.
+### <a name="when-should-i-enable-the-non-ssl-port-for-connecting-to-redis"></a>Kiedy należy włączyć port bez protokołu SSL w celu nawiązania połączenia z usługą Redis?
+Serwer Redis nie obsługuje natywnie protokołu SSL, ale usługa Azure cache for Redis działa. Jeśli łączysz się z usługą Azure cache for Redis, a klient obsługuje protokół SSL, taki jak StackExchange. Redis, należy użyć protokołu SSL.
 
 >[!NOTE]
->Port bez protokołu SSL jest domyślnie wyłączona dla nowej usługi Azure Cache dla wystąpień usługi Redis. Jeśli Twój klient nie obsługuje protokołu SSL, a następnie należy włączyć port bez protokołu SSL, postępując zgodnie z instrukcjami w [portów](cache-configure.md#access-ports) części [Konfigurowanie pamięci podręcznej w pamięci podręcznej Azure dla usługi Redis](cache-configure.md) artykułu.
+>Port bez protokołu SSL jest domyślnie wyłączony dla nowej pamięci podręcznej platformy Azure dla wystąpień Redis. Jeśli klient nie obsługuje protokołu SSL, należy włączyć port inny niż SSL, postępując zgodnie z instrukcjami w sekcji [porty dostępu](cache-configure.md#access-ports) w artykule [Konfigurowanie pamięci podręcznej w usłudze Azure cache for Redis](cache-configure.md) .
 >
 >
 
-Redis narzędzi, takich jak `redis-cli` nie działają z portem SSL, ale można użyć narzędzia, takie jak `stunnel` nawiązania bezpiecznego połączenia narzędzi z portem SSL, postępując zgodnie z instrukcjami w [ogłoszenie dostawca stanu sesji ASP.NET dla usługi Redis Wersja zapoznawcza](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) wpis w blogu.
+Narzędzia Redis, takie `redis-cli` jak nie współpracują z portem SSL, ale można użyć narzędzia, takiego `stunnel` jak aby bezpiecznie połączyć narzędzia z portem SSL, postępując zgodnie z instrukcjami w temacie [anonsowanie ASP.NET dostawcy stanu sesji dla Redis wersji zapoznawczej ](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)wpis w blogu.
 
-Aby uzyskać instrukcje dotyczące pobierania narzędzia pamięci podręcznej Redis, zobacz [jak uruchomić polecenia Redis?](#cache-commands) sekcji.
+Instrukcje dotyczące pobierania narzędzi Redis można znaleźć w sekcji [jak uruchomić polecenia Redis?](#cache-commands)
 
-### <a name="what-are-some-production-best-practices"></a>Jakie są najważniejsze wskazówki produkcji?
-* [Najlepsze rozwiązania StackExchange.Redis](#stackexchangeredis-best-practices)
-* [Konfiguracja i pojęcia](#configuration-and-concepts)
+### <a name="what-are-some-production-best-practices"></a>Jakie są najlepsze rozwiązania w zakresie produkcji?
+* [StackExchange. Redis — najlepsze rozwiązania](#stackexchangeredis-best-practices)
+* [Konfiguracja i koncepcje](#configuration-and-concepts)
 * [Testowanie wydajności](#performance-testing)
 
-#### <a name="stackexchangeredis-best-practices"></a>Najlepsze rozwiązania StackExchange.Redis
-* Ustaw `AbortConnect` na wartość false, a następnie umożliwił ConnectionMultiplexer automatycznie ponownie połączenie. [Zobacz tutaj, aby uzyskać szczegółowe informacje](https://gist.github.com/JonCole/36ba6f60c274e89014dd#file-se-redis-setabortconnecttofalse-md).
-* Ponowne użycie ConnectionMultiplexer — nie należy tworzyć nowego filtru dla każdego żądania. `Lazy<ConnectionMultiplexer>` Wzorzec [pokazane tutaj](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache) jest zalecane.
-* Redis Cache działa najlepiej z mniejszej wartości, dlatego należy rozważyć siekanie większe danych na wiele kluczy. W [tej dyskusji Redis](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ), 100 kb jest uznawany za duży. Odczyt [w tym artykule](https://gist.github.com/JonCole/db0e90bedeb3fc4823c2#large-requestresponse-size) dotyczącej problemu przykład, która może być spowodowany przez dużych wartościach.
-* Konfigurowanie usługi [ustawienia puli wątków](#important-details-about-threadpool-growth) w celu uniknięcia przekroczenia limitu czasu.
-* Użyj co najmniej connectTimeout domyślnej równej 5 sekund. Ten interwał zapewnia StackExchange.Redis wystarczająco dużo czasu, aby ponownie ustanowić połączenia w przypadku blip sieci.
-* Należy pamiętać o poprawa wydajności przy użyciu różnych operacji, które są uruchomione. Na przykład `KEYS` polecenia jest operacją O(n) i należy ich unikać. [Witryny redis.io](https://redis.io/commands/) znajdują się wokół złożoności czasu dla każdej operacji, która go obsługuje. Kliknij każdy polecenie, aby wyświetlić złożoności dla każdej operacji.
+#### <a name="stackexchangeredis-best-practices"></a>StackExchange. Redis — najlepsze rozwiązania
+* Ustaw `AbortConnect` wartość false, a następnie pozwól, aby usługa ConnectionMultiplexer łączyła się automatycznie. [Zobacz tutaj, aby uzyskać szczegółowe informacje](https://gist.github.com/JonCole/36ba6f60c274e89014dd#file-se-redis-setabortconnecttofalse-md).
+* Ponownie Użyj ConnectionMultiplexer — nie twórz nowego dla każdego żądania. `Lazy<ConnectionMultiplexer>` [Opisany tutaj](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache) wzorzec jest zalecany.
+* Redis najlepiej sprawdza się w przypadku mniejszych wartości, więc Rozważ powiększanie większych danych do wielu kluczy. W [tej dyskusji Redis](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ)100 KB jest traktowane jako duże. Przeczytaj [ten artykuł](https://gist.github.com/JonCole/db0e90bedeb3fc4823c2#large-requestresponse-size) , aby zapoznać się z przykładowym problemem, który może być spowodowany przez duże wartości.
+* Skonfiguruj [Ustawienia puli wątków](#important-details-about-threadpool-growth) , aby uniknąć przekroczeń limitu czasu.
+* Użyj co najmniej wartości domyślnej connectTimeout wynoszącej 5 sekund. Ten interwał daje StackExchange. Redis wystarczająco dużo czasu, aby ponownie nawiązać połączenie w przypadku Blip sieci.
+* Należy pamiętać o kosztach wydajności związanych z różnymi operacjami, które są uruchomione. Na przykład `KEYS` polecenie jest operacją o (n) i należy ją uniknąć. [Lokacja Redis.IO](https://redis.io/commands/) zawiera szczegółowe informacje o złożoności czasu dla każdej obsługiwanej operacji. Kliknij każde polecenie, aby zobaczyć złożoność każdej operacji.
 
-#### <a name="configuration-and-concepts"></a>Konfiguracja i pojęcia
-* Dla systemów produkcyjnych należy używać warstwy standardowa i Premium. Warstwa podstawowa to system jeden węzeł nie replikacji danych i objęta umową SLA. Ponadto można użyć co najmniej C1 pamięci podręcznej. Pamięci podręczne C0 są zwykle używane w scenariuszach proste tworzenie i testowanie.
-* Należy pamiętać, że magazyn Redis jest **w pamięci** magazynu danych. Odczyt [w tym artykule](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md) tak, że masz świadomość scenariusze, w których może wystąpić utrata danych.
-* Tworzenie systemu w taki sposób, że może obsługiwać połączenia blips [ze względu na instalowaniu poprawek i trybu failover](https://gist.github.com/JonCole/317fe03805d5802e31cfa37e646e419d#file-azureredis-patchingexplained-md).
+#### <a name="configuration-and-concepts"></a>Konfiguracja i koncepcje
+* Użyj warstwy Standardowa lub Premium dla systemów produkcyjnych. Warstwa Podstawowa to jednowęzłowy system bez replikacji danych i Umowa SLA. Ponadto należy użyć co najmniej pamięci podręcznej C1. Pamięć podręczna C0 jest zwykle używana w przypadku prostych scenariuszy tworzenia i testowania.
+* Należy pamiętać, że Redis jest magazynem danych **w pamięci** . Przeczytaj [ten artykuł](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md) , aby poznać scenariusze, w których może wystąpić utrata danych.
+* Opracowywanie systemu w taki sposób, aby mógł obsługiwać Blips połączeń [z powodu stosowania poprawek i trybu failover](https://gist.github.com/JonCole/317fe03805d5802e31cfa37e646e419d#file-azureredis-patchingexplained-md).
 
 #### <a name="performance-testing"></a>Testowanie wydajności
-* Uruchom przy użyciu `redis-benchmark.exe` aby można było uzyskać pewne pojęcie przepustowości możliwe przed zapisem wydajności własne testy. Ponieważ `redis-benchmark` nie obsługuje protokołu SSL, należy najpierw [włączyć port bez protokołu SSL za pośrednictwem witryny Azure portal](cache-configure.md#access-ports) przed uruchomieniem testu. Aby uzyskać przykłady, zobacz [jak testu wydajności i przetestować wydajność przepełnieniu pamięci podręcznej?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
-* Używane do testowania maszyny Wirtualnej klienta musi należeć do tego samego regionu pamięci podręcznej Azure dla wystąpienia usługi Redis.
-* Zalecamy używanie serię maszyn wirtualnych Dv2 dla klienta, zgodnie z ich lepsze sprzętu i powinien zapewnić najlepsze rezultaty.
-* Upewnij się, sieci maszyny Wirtualnej możesz wybrać klienta ma co najmniej taką ilość obliczeń i testowanie funkcji przepustowość pamięci podręcznej.
-* Włącz VRSS na komputerze klienckim, jeśli użytkownik pracuje na Windows. [Zobacz tutaj, aby uzyskać szczegółowe informacje](https://technet.microsoft.com/library/dn383582.aspx).
-* Wystąpienia pamięci podręcznej Redis w warstwie Premium mają lepiej sieci opóźnienia i przepustowości, ponieważ działają na sprzęcie lepsze dla procesora CPU i sieci.
+* Zacznij od użycia `redis-benchmark.exe` , aby uzyskać dostęp do możliwej przepływności przed napisaniem własnych testów wydajności. Ponieważ `redis-benchmark` program nie obsługuje protokołu SSL, należy [włączyć port bez protokołu SSL za pośrednictwem Azure Portal](cache-configure.md#access-ports) przed uruchomieniem testu. Aby zapoznać się z przykładami, zobacz [Jak sprawdzić i przetestować wydajność mojej pamięci podręcznej?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+* Maszyna wirtualna klienta użyta do testowania powinna znajdować się w tym samym regionie co usługa Azure cache for Redis.
+* Zalecamy używanie serii maszyn wirtualnych Dv2 dla klienta, ponieważ mają one lepszy sprzęt i powinny dawać najlepsze wyniki.
+* Upewnij się, że wybrana maszyna wirtualna klienta ma co najmniej tyle możliwości obliczeniowych i przepustowości jak w przypadku testowanej pamięci podręcznej.
+* Jeśli korzystasz z systemu Windows, Włącz opcję wirtualnego skalowania na komputerze klienckim. [Zobacz tutaj, aby uzyskać szczegółowe informacje](https://technet.microsoft.com/library/dn383582.aspx).
+* Wystąpienia usługi Redis w warstwie Premium mają lepsze opóźnienia sieci i przepływność, ponieważ działają na lepszym sprzęcie dla obu procesorów i sieci.
 
 <a name="cache-redis-commands"></a>
 
-### <a name="what-are-some-of-the-considerations-when-using-common-redis-commands"></a>Jakie są niektóre zagadnienia podczas korzystania z Typowe polecenia Redis?
+### <a name="what-are-some-of-the-considerations-when-using-common-redis-commands"></a>Jakie kwestie należy wziąć pod uwagę podczas korzystania z typowych poleceń Redis?
 
-* Należy unikać używania pewnych poleceń pamięci podręcznej Redis zająć dużo czasu, chyba że pełnego zrozumienia wpływu tych poleceń. Na przykład nie uruchamiaj [KLUCZE](https://redis.io/commands/keys) polecenia w środowisku produkcyjnym. W zależności od liczby kluczy potrwać długo. Redis jest serwerem jednowątkowe i przetwarza polecenia jednego naraz. W przypadku innych poleceń wydane po KLUCZE są nie będą przetwarzane do czasu pamięci podręcznej Redis przetwarza polecenia KLUCZE. [Witryny redis.io](https://redis.io/commands/) znajdują się wokół złożoności czasu dla każdej operacji, która go obsługuje. Kliknij każdy polecenie, aby wyświetlić złożoności dla każdej operacji.
-* Rozmiary kluczy — należy użyć kluczy/wartości małych lub dużych kluczy/wartości? To zależy od scenariusza. Kluczy jest wymagane w danym scenariuszu, można dopasować ConnectionTimeout, a następnie ponów próbę wykonania wartości i Dostosuj swoją logikę ponawiania prób. Z perspektywy serwera Redis mniejsze wartości zapewniają lepszą wydajność.
-* Te zagadnienia nie oznaczają, że nie można przechowywać większe wartości w pamięci podręcznej Redis; należy pamiętać o następujących kwestiach. Opóźnienia będzie wyższa. Jeśli masz jeden zestaw danych, który jest większy lub taki, który jest mniejszy, można użyć wielu wystąpień ConnectionMultiplexer, każdego skonfigurowanego z innym zestawem wartości limitu czasu, a następnie spróbuj ponownie, zgodnie z opisem w poprzedniej [co zrobić StackExchange.Redis Opcje konfiguracji](#cache-configuration) sekcji.
+* Należy unikać używania niektórych poleceń Redis, których wykonanie trwa długo, chyba że w pełni zrozumiesz wpływ tych poleceń. Na przykład nie należy uruchamiać poleceń [Keys](https://redis.io/commands/keys) w środowisku produkcyjnym. W zależności od liczby kluczy powracanie może potrwać dużo czasu. Redis to jednowątkowy serwer i przetwarza polecenia pojedynczo. Jeśli masz inne polecenia wydane po KLUCZu, nie zostaną one przetworzone do momentu, gdy Redis przetwarza polecenie KEYS. [Lokacja Redis.IO](https://redis.io/commands/) zawiera szczegółowe informacje o złożoności czasu dla każdej obsługiwanej operacji. Kliknij każde polecenie, aby zobaczyć złożoność każdej operacji.
+* Rozmiary kluczy — czy należy używać małych kluczy/wartości, czy też dużych wartości klucz/wartość? Jest to zależne od scenariusza. Jeśli w scenariuszu wymagane są większe klucze, można dostosować wartość parametru ConnectionTimeout, a następnie ponowić próbę i dostosować logikę ponowień. W perspektywie serwera Redis mniejsze wartości zapewniają lepszą wydajność.
+* Te zagadnienia nie oznacza, że nie można przechowywać większych wartości w Redis; należy pamiętać o następujących kwestiach. Opóźnienia będą wyższe. Jeśli masz jeden zestaw danych, który jest większy i który jest mniejszy, możesz użyć wielu wystąpień ConnectionMultiplexer, z których każda została skonfigurowana z innym zestawem limit czasu i ponowienia wartości, zgodnie z opisem w poprzedniej części [jak stackexchange. Redis Configuration Sekcja opcji do](#cache-configuration) .
 
 <a name="cache-benchmarking"></a>
 
-### <a name="how-can-i-benchmark-and-test-the-performance-of-my-cache"></a>Jak testu wydajności i przetestować wydajność przepełnieniu pamięci podręcznej?
+### <a name="how-can-i-benchmark-and-test-the-performance-of-my-cache"></a>Jak można sprawdzić i przetestować wydajność mojej pamięci podręcznej?
 * [Włącz diagnostykę pamięci podręcznej](cache-how-to-monitor.md#enable-cache-diagnostics), aby móc [monitorować](cache-how-to-monitor.md) jej kondycję. Możesz wyświetlać metryki w witrynie Azure Portal oraz [pobierać i przeglądać](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring) je przy użyciu wybranych przez siebie narzędzi.
-* Umożliwia redis benchmark.exe test obciążeniowy serwera Redis.
-* Upewnij się, że obciążenia, testowanie klienta i usługi Azure Cache pod kątem pamięci podręcznej Redis znajdują się w tym samym regionie.
-* Użyj pamięci podręcznej redis-cli.exe i monitorować za pomocą polecenia informacji o pamięci podręcznej.
-* Jeśli Twoje obciążenia powoduje fragmentację dużą ilość pamięci, należy skalowanie w górę na większy rozmiar pamięci podręcznej.
-* Aby uzyskać instrukcje dotyczące pobierania narzędzia pamięci podręcznej Redis, zobacz [jak uruchomić polecenia Redis?](#cache-commands) sekcji.
+* Można użyć Redis-Benchmark. exe do załadowania testowego serwera Redis.
+* Upewnij się, że klient testowania obciążenia i pamięć podręczna platformy Azure dla Redis znajdują się w tym samym regionie.
+* Użyj Redis-CLI. exe i monitoruj pamięć podręczną za pomocą polecenia INFO.
+* Jeśli obciążenie powoduje duże fragmentację pamięci, należy skalować w górę do większego rozmiaru pamięci podręcznej.
+* Instrukcje dotyczące pobierania narzędzi Redis można znaleźć w sekcji [jak uruchomić polecenia Redis?](#cache-commands)
 
-Poniższe polecenia zawierają z przykładem użycia benchmark.exe pamięci podręcznej redis. Aby uzyskać dokładne wyniki uruchom następujące polecenia z maszyny Wirtualnej, w tym samym regionie jako pamięci podręcznej.
+Poniższe polecenia zapewniają przykład korzystania z programu Redis-Benchmark. exe. Aby uzyskać dokładne wyniki, Uruchom te polecenia z maszyny wirtualnej w tym samym regionie, w którym znajduje się pamięć podręczna.
 
-* Za pomocą 1 ładunku k żądań potokowe zestawu testów
+* Testuj żądania zestawu potokowego przy użyciu ładunku 1K
 
   `redis-benchmark.exe -h **yourcache**.redis.cache.windows.net -a **yourAccesskey** -t SET -n 1000000 -d 1024 -P 50`
-* Żądań GET potokowe testu przy użyciu 1 ładunku k.
-  UWAGA: Uruchom test zestaw powyżej pierwszego w celu wypełnienia pamięci podręcznej
+* Testuj potok żądania GET przy użyciu ładunku o mocy 1K.
+  UWAGA: Uruchom najpierw określony test, aby wypełnić pamięć podręczną
 
   `redis-benchmark.exe -h **yourcache**.redis.cache.windows.net -a **yourAccesskey** -t GET -n 1000000 -d 1024 -P 50`
 
 <a name="threadpool"></a>
 
-### <a name="important-details-about-threadpool-growth"></a>Ważne informacje dotyczące rozwoju puli wątków
-CLR ThreadPool ma dwa rodzaje wątków — "Procesu roboczego" i "Portu zakończenia We/Wy%N" (portu) wątków.
+### <a name="important-details-about-threadpool-growth"></a>Ważne szczegóły dotyczące wzrostu puli wątków
+W wątkach CLR istnieją dwa typy wątków — wątki "Worker" i "Port zakończenia we/wy" (portu).
 
-* Wątki robocze są używane w przypadku elementów, takich jak przetwarzanie `Task.Run(…)`, lub `ThreadPool.QueueUserWorkItem(…)` metody. Podczas pracy musi zostać przeprowadzona w wątku tła, te wątki są również używane przez różne składniki w CLR.
-* Wątki portu są używane w sytuacji asynchronicznych operacji We/Wy, takie jak czas odczytu z sieci.
+* Wątki robocze są używane dla elementów `Task.Run(…)`, takich jak przetwarzanie metod lub. `ThreadPool.QueueUserWorkItem(…)` Te wątki są również używane przez różne składniki w środowisku CLR, gdy działanie musi się zdarzyć w wątku w tle.
+* Wątki portu są używane, gdy odbywa się asynchroniczne operacje we/wy, takie jak podczas odczytywania z sieci.
 
-Puli wątków zapewnia nowe wątki robocze lub wątki zakończenia operacji We/Wy na żądanie (bez żadnych ograniczania) aż do napotkania ustawienie "Minimalny" dla każdego typu wątku. Minimalna liczba wątków domyślnie do liczby procesorów w systemie.
+Pula wątków udostępnia nowe wątki procesów roboczych lub wątki zakończenia operacji we/wy na żądanie (bez ograniczania przepustowości), dopóki nie osiągnie ustawienia "minimalne" dla każdego typu wątku. Domyślnie minimalna liczba wątków jest ustawiona na liczbę procesorów w systemie.
 
-Gdy liczba istniejących wątkach (zajęty) uderza "minimalny" Liczba wątków, puli wątków będzie ograniczać szybkość jaką go wprowadza nowe wątki na jeden wątek na każdym 500 milisekund. Zazwyczaj Jeśli system serii pracy wymagające wątków portu, go będzie przetwarzać tę pracę szybko. Jednak jeśli serii pracy jest większa niż skonfigurowane ustawienie "Minimum", będą pewne opóźnienie podczas przetwarzania część obciążenia pracą, zgodnie z puli wątków czeka na jedno z następujących czynności do wykonania.
+Gdy liczba istniejących (zajętych) wątków trafi na "minimalną" liczbę wątków, zostanie ograniczona szybkość, z jaką wprowadza nowe wątki do jednego wątku na 500 milisekund. Zwykle, jeśli system pobiera szereg zadań potrzebnych do wątku portu, będzie on szybko przetwarzał te działania. Jeśli jednak obciążenie serii pracy jest większe niż skonfigurowane ustawienie "minimalne", nastąpi kilka opóźnień podczas przetwarzania części pracy, ponieważ jest ona zależna od jednego z dwóch rzeczy.
 
-1. Przetwarzanie zadań zostanie zwolniony istniejącego wątku.
-2. Nie istniejącego wątku staje się bezpłatnie 500 ms, dzięki czemu jest tworzony nowy wątek.
+1. Istniejący wątek będzie bezpłatny, aby przetworzyć prace.
+2. Żaden z istniejących wątków nie jest bezpłatny dla 500 MS, więc zostanie utworzony nowy wątek.
 
-Zasadniczo oznacza to, gdy liczba zajętych wątków jest większy niż minimalny wątków, prawdopodobnie realizujesz opóźnienie 500 ms przed ruch sieciowy jest przetwarzany przez aplikację. Ponadto należy zauważyć, że gdy istniejącego wątku pozostanie bezczynny przez czas dłuższy niż 15 sekund (w oparciu I Zapamiętaj), zostanie on wyczyszczone, a powtórzyć cykl rozwoju i kurczenia.
+W zasadzie oznacza to, że gdy liczba zajętych wątków jest większa niż min, prawdopodobnie płacisz 500-ms opóźnienia przed przetworzeniem ruchu sieciowego przez aplikację. Należy również pamiętać, że gdy istniejący wątek pozostaje bezczynny przez dłużej niż 15 sekund (w zależności od tego, co zapamiętasz), zostanie oczyszczony i będzie można powtórzyć ten cykl wzrostu i zmniejszania.
 
-Jeśli spojrzymy na przykład komunikat o błędzie z StackExchange.Redis (Tworzenie 1.0.450 lub nowszej), zobaczysz, że teraz Wyświetla statystyki puli wątków (zobacz poniżej szczegóły portu i proces ROBOCZY).
+Jeśli zobaczysz przykładowy komunikat o błędzie z StackExchange. Redis (kompilacja 1.0.450 lub nowsza), zobaczysz, że teraz jest drukowana Statystyka puli wątków (zobacz szczegóły dotyczące portu i procesu roboczego).
 
     System.TimeoutException: Timeout performing GET MyKey, inst: 2, mgr: Inactive,
     queue: 6, qu: 0, qs: 6, qc: 0, wr: 0, wq: 0, in: 0, ar: 0,
     IOCP: (Busy=6,Free=994,Min=4,Max=1000),
     WORKER: (Busy=3,Free=997,Min=4,Max=1000)
 
-W poprzednim przykładzie widać, że dla portu wątku są sześć zajęte wątki i system został skonfigurowany, aby zezwolić na cztery minimalna liczba wątków. W takim przypadku klient będzie prawdopodobnie przejrzane dwóch opóźnienia 500 ms, ponieważ 6 > 4.
+W poprzednim przykładzie można zobaczyć, że dla wątku portu są sześć zajętych wątków, a system jest skonfigurowany tak, aby zezwalał na cztery minimalne wątki. W takim przypadku klient prawdopodobnie widzi opóźnienia 2 500-MS, ponieważ 6 > 4.
 
-Należy zwrócić uwagę na to, czy StackExchange.Redis mogą trafić przekroczeń limitu czasu, jeśli wzrostu wątków portu lub proces ROBOCZY pobiera ograniczenia.
+Należy pamiętać, że StackExchange. Redis może trafiać limitów czasu, jeśli wzrost liczby wątków portu lub roboczych zostanie ograniczony.
 
 ### <a name="recommendation"></a>Zalecenie
 
-Biorąc pod uwagę te informacje, zdecydowanie zaleca się że klientów równa wartości minimalnej konfiguracji portu i proces ROBOCZY wątków coś, co jest większa niż wartość domyślna. Nie możemy przyznać opracowanie wskazówki dotyczące co ta wartość powinna być, ponieważ wartość prawej strony w jednej aplikacji będzie prawdopodobnie zbyt wysokiej lub niskiej dla innej aplikacji. To ustawienie może także wpłynąć na wydajność innych części aplikacji złożonych, dzięki czemu każdy klient wymaga precyzyjnie dostosować to ustawienie, aby zgodnie z określonymi wymaganiami. Dobrym miejscem począwszy od 200 lub 300, a następnie przetestuj i dostosować zgodnie z potrzebami.
+Mając te informacje, zdecydowanie zalecamy, aby klienci ustawili minimalną wartość konfiguracji dla portu i wątków roboczych na wartość większą niż domyślna. Firma Microsoft nie może podać wskazówek o jednym rozmiarze, które dotyczą tej wartości, ponieważ odpowiednia wartość dla jednej aplikacji będzie prawdopodobnie zbyt wysoka lub niska dla innej aplikacji. To ustawienie może również mieć wpływ na wydajność innych części skomplikowanych aplikacji, więc każdy klient musi dostosować to ustawienie do swoich konkretnych potrzeb. Dobrym miejscem początkowym jest 200 lub 300, a następnie testowanie i dostosowywanie zgodnie z wymaganiami.
 
-Jak można skonfigurować tego ustawienia:
+Jak skonfigurować to ustawienie:
 
-* Firma Microsoft zaleca, zmiana tego ustawienia programowo przy użyciu [ThreadPool.SetMinThreads (...) ](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) method in Class metoda `global.asax.cs`. Na przykład:
+* Zalecamy zmianę tego ustawienia programowo przy użyciu metody [puli wątków. SetMinThreads — (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) w programie `global.asax.cs`. Na przykład:
 
 ```cs
 private readonly int minThreads = 200;
@@ -403,91 +403,91 @@ void Application_Start(object sender, EventArgs e)
 ```
 
   > [!NOTE]
-  > Wartość określona przez tę metodę jest ustawienie globalne wpływu na cały element AppDomain. Na przykład, jeśli masz maszyny 4-rdzeniową i chcesz ustawić *minWorkerThreads* i *minIoThreads* do 50 na procesor CPU w czasie wykonywania, należy użyć **ThreadPool.SetMinThreads (200, 200)** .
+  > Wartość określona przez tę metodę jest ustawieniem globalnym wpływającym na całą domenę aplikacji. Na przykład jeśli masz maszynę 4-rdzeniową i chcesz ustawić *MinWorkerThreads* i *minIoThreads* na 50 na procesor CPU podczas wykonywania, użyj **puli wątków. SetMinThreads — (200, 200)** .
 
-* Istnieje również możliwość określić minimalną liczbę wątków ustawienie przy użyciu [ *minIoThreads* lub *minWorkerThreads* ustawienie konfiguracji](https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx) w obszarze `<processModel>` element konfiguracji w `Machine.config`zwykle znajdujący się w folderze `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\`. **Ustawianie liczby minimalną liczbę wątków w ten sposób ogólnie nie jest zalecane, ponieważ jest on ustawienie poziomie systemu.**
+* Można również określić ustawienie minimalnych wątków przy użyciu `<processModel>` [Ustawienia konfiguracji *minIoThreads* lub *MinWorkerThreads* ](https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx) w obszarze elementu konfiguracji w programie `Machine.config`, zwykle znajdującego się w lokalizacji `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\` . **Ustawienie minimalnej liczby wątków w ten sposób zwykle nie jest zalecane, ponieważ jest to ustawienie na poziomie całego systemu.**
 
   > [!NOTE]
-  > Wartość określona w tym elemencie konfiguracji jest *za rdzeń* ustawienie. Na przykład, jeśli korzystasz z 4-rdzeniowych maszynach i chcesz swoje *minIoThreads* ustawień można 200 w czasie wykonywania, należy użyć `<processModel minIoThreads="50"/>`.
+  > Wartość określona w tym elemencie konfiguracji jest ustawieniem *na rdzeń* . Na przykład jeśli masz maszynę 4-rdzeniową i chcesz, aby ustawienie *minIoThreads* było 200 w czasie wykonywania, użyj `<processModel minIoThreads="50"/>`.
   >
 
 <a name="server-gc"></a>
 
-### <a name="enable-server-gc-to-get-more-throughput-on-the-client-when-using-stackexchangeredis"></a>Włącz serwer GC w celu uzyskania większej przepustowości na komputerze klienckim, używając StackExchange.Redis
-Włączenie serwera GC może zoptymalizować klienta i zapewnia większą wydajność i przepływność, korzystając z StackExchange.Redis. Aby uzyskać więcej informacji na serwerze odzyskiwania pamięci i jak go włączyć zobacz następujące artykuły:
+### <a name="enable-server-gc-to-get-more-throughput-on-the-client-when-using-stackexchangeredis"></a>Włącz serwer GC, aby uzyskać większą przepływność na kliencie przy użyciu StackExchange. Redis
+Włączenie serwera GC może zoptymalizować klienta i zapewnić lepszą wydajność i przepływność przy użyciu StackExchange. Redis. Aby uzyskać więcej informacji na temat serwera GC i sposobu jego włączania, zobacz następujące artykuły:
 
 * [Aby włączyć serwer GC](/dotnet/framework/configure-apps/file-schema/runtime/gcserver-element)
 * [Podstawy dotyczące odzyskiwania pamięci](/dotnet/standard/garbage-collection/fundamentals)
 * [Odzyskiwanie pamięci i wydajność](/dotnet/standard/garbage-collection/performance)
 
 
-### <a name="performance-considerations-around-connections"></a>Zagadnienia dotyczące wydajności w całym połączeń
+### <a name="performance-considerations-around-connections"></a>Zagadnienia dotyczące wydajności dotyczące połączeń
 
-Każda warstwa cenowa ma różne limity dla połączeń klienta, pamięci i przepustowość. Podczas każdego rozmiaru pamięci podręcznej umożliwia *do* określoną liczbę połączeń, każde połączenie z magazynem Redis obciążenie jest skojarzony z nim. Przykładem takiego obciążenie byłoby użycie Procesora i pamięci, w wyniku szyfrowania TLS/SSL. Limit maksymalnej liczby połączeń dla rozmiaru pamięć podręczna zakłada mniej obciążonych pamięci podręcznej. Jeśli ładowanie z połączenia obciążenie *oraz* obciążenia z operacjami klienta przekracza wydajność systemu, pamięci podręcznej mogą wystąpić problemy pojemności, nawet jeśli nie przekroczono limit połączeń dla bieżącego rozmiaru pamięci podręcznej.
+Każda warstwa cenowa ma różne limity dla połączeń klientów, pamięci i przepustowości. Chociaż każdy rozmiar pamięci podręcznej pozwala *na* określoną liczbę połączeń, każde połączenie z usługą Redis ma powiązane z nim obciążenie. Przykładem takiego obciążenia będzie użycie procesora CPU i pamięci w wyniku szyfrowania TLS/SSL. Maksymalny limit połączeń dla danego rozmiaru pamięci podręcznej zakłada, że pamięć podręczna została załadowana w sposób jasny. Jeśli obciążenie związane z naliczeniem połączenia *i* obciążenie z operacji klienta przekroczy pojemność systemu, pamięć podręczna może mieć problemy z pojemnością, nawet jeśli nie przekroczono limitu połączenia dla bieżącego rozmiaru pamięci podręcznej.
 
-Aby uzyskać więcej informacji na temat limitów różnych połączeń dla każdej warstwy, zobacz [pamięci podręcznej Azure Redis cennik](https://azure.microsoft.com/pricing/details/cache/). Aby uzyskać więcej informacji na temat połączeń i innych konfiguracji domyślnej, zobacz [Redis domyślną konfigurację serwera](cache-configure.md#default-redis-server-configuration).
+Aby uzyskać więcej informacji na temat różnych limitów połączeń dla każdej warstwy, zobacz [Azure cache for Redis — Cennik](https://azure.microsoft.com/pricing/details/cache/). Aby uzyskać więcej informacji o połączeniach i innych konfiguracjach domyślnych, zobacz [domyślną konfigurację serwera Redis](cache-configure.md#default-redis-server-configuration).
 
 <a name="cache-monitor"></a>
 
-### <a name="how-do-i-monitor-the-health-and-performance-of-my-cache"></a>Jak monitorować kondycję i wydajność przepełnieniu pamięci podręcznej?
-Usługa Microsoft Azure Cache dla wystąpień usługi Redis można monitorować w [witryny Azure portal](https://portal.azure.com). Można wyświetlić metryki, przypinać wykresy metryk do tablicy startowej, dostosować zakres dat i godzin, wykresy monitorowania, Dodaj i Usuń metryki z wykresów i ustawić alerty, gdy są spełnione określone warunki. Aby uzyskać więcej informacji, zobacz [monitora platformy Azure z pamięci podręcznej dla pamięci podręcznej Redis](cache-how-to-monitor.md).
+### <a name="how-do-i-monitor-the-health-and-performance-of-my-cache"></a>Jak mogę monitorować kondycję i wydajność mojej pamięci podręcznej?
+Pamięć podręczna Microsoft Azure wystąpień Redis można monitorować w [Azure Portal](https://portal.azure.com). Możesz wyświetlić metryki, przypiąć wykresy metryk do tablicy startowej, dostosować zakres daty i godziny wykresów monitorowania, dodać i usunąć metryki z wykresów i ustawić alerty w przypadku spełnienia określonych warunków. Aby uzyskać więcej informacji, zobacz [monitorowanie usługi Azure cache for Redis](cache-how-to-monitor.md).
 
-Pamięć podręczna Azure dla usługi Redis **menu zasobów** zawiera także kilka narzędzi do monitorowania i rozwiązywania problemów pamięci podręczne.
+**Menu zasobów** usługi Azure cache for Redis zawiera również kilka narzędzi do monitorowania i rozwiązywania problemów z pamięcią podręczną.
 
-* **Diagnozowanie i rozwiązywanie problemów** informacje dotyczące najczęściej występujących problemów i strategie dotyczące rozwiązywania tych problemów.
-* **Usługa Resource health** monitoruje zasób i informuje, czy działa on zgodnie z oczekiwaniami. Aby uzyskać więcej informacji na temat usługi kondycji zasobów platformy Azure, zobacz [Przegląd kondycji zasobów platformy Azure](../resource-health/resource-health-overview.md).
-* **Nowe żądanie pomocy technicznej** udostępnia opcje, aby otworzyć żądanie obsługi dotyczące pamięci podręcznej.
+* **Diagnozowanie i rozwiązywanie problemów** zawiera informacje o typowych problemach i strategiach ich rozwiązywania.
+* **Kondycja zasobu** obserwuje zasób i informuje o tym, że działa zgodnie z oczekiwaniami. Aby uzyskać więcej informacji o usłudze Azure Resource Health, zobacz [Omówienie usługi Azure Resource Health](../resource-health/resource-health-overview.md).
+* **Nowe żądanie obsługi** oferuje opcje otwierania żądania obsługi dla pamięci podręcznej.
 
-Te narzędzia umożliwiają monitorowanie kondycji pamięci podręcznej Azure dla wystąpienia usługi Redis i ułatwia zarządzanie aplikacjami buforowania. Aby uzyskać więcej informacji, zobacz sekcję "Ustawienia dotyczące rozwiązywania problemów i pomocy technicznej" [sposób konfigurowania usługi Azure Cache dla pamięci podręcznej Redis](cache-configure.md).
+Te narzędzia umożliwiają monitorowanie kondycji pamięci podręcznej platformy Azure dla wystąpień Redis i ułatwiają zarządzanie aplikacjami buforowania. Aby uzyskać więcej informacji, zobacz sekcję "Obsługa & ustawień rozwiązywania problemów" w temacie [jak skonfigurować usługę Azure cache for Redis](cache-configure.md).
 
 <a name="cache-timeouts"></a>
 
-### <a name="why-am-i-seeing-timeouts"></a>Dlaczego widzę przekroczeń limitu czasu?
-Limity czasu się tak zdarzyć w kliencie, używanego do komunikacji z magazynem Redis. Gdy polecenie jest wysyłane do serwera Redis, polecenia są kolejkowane i serwera Redis po pewnym czasie przejmuje polecenia i wykonuje ten. Jednak klient może przekroczono limit czasu podczas tego procesu i jeśli wyjątek nie jest wywoływane po stronie wywoływania. Aby uzyskać więcej informacji na temat rozwiązywania problemów limitu czasu, zobacz [rozwiązywania problemów po stronie klienta](cache-how-to-troubleshoot.md#client-side-troubleshooting) i [wyjątków przekroczenia limitu czasu StackExchange.Redis](cache-how-to-troubleshoot.md#stackexchangeredis-timeout-exceptions).
+### <a name="why-am-i-seeing-timeouts"></a>Dlaczego widzę limity czasu?
+Limity czasu są wykonywane na kliencie, który jest używany do komunikowania się z Redis. Gdy polecenie jest wysyłane do serwera Redis, polecenie jest umieszczane w kolejce, a serwer Redis ostatecznie wybiera polecenie i wykonuje je. Jednak klient może przekroczyć limit czasu w trakcie tego procesu, a jeśli zostanie zgłoszony wyjątek na stronie wywołującej. Aby uzyskać więcej informacji na temat rozwiązywania problemów z limitem czasu, zobacz [wyjątki limitów czasu](cache-how-to-troubleshoot.md#stackexchangeredis-timeout-exceptions) [po stronie klienta](cache-how-to-troubleshoot.md#client-side-troubleshooting) i stackexchange. Redis.
 
 <a name="cache-disconnect"></a>
 
-### <a name="why-was-my-client-disconnected-from-the-cache"></a>Dlaczego mój klient został rozłączony z pamięci podręcznej
-Poniżej przedstawiono niektóre z najczęstszych przyczyn Rozłącz pamięci podręcznej.
+### <a name="why-was-my-client-disconnected-from-the-cache"></a>Dlaczego mój klient odłączył się od pamięci podręcznej?
+Poniżej przedstawiono kilka typowych przyczyn odłączenia pamięci podręcznej.
 
-* Powoduje, że po stronie klienta
-  * Aplikacja kliencka była ponownego wdrażania.
-  * Aplikacja kliencka wykonać operacji skalowania.
-    * W przypadku usług w chmurze lub aplikacji sieci Web może to być spowodowane skalowania automatycznego.
-  * Zmienić warstwy sieci po stronie klienta.
-  * Błędy przejściowe wystąpił w kliencie lub w węzłach sieci między klientem a serwerem.
-  * Limity wartości progowych przepustowości były dostępne.
-  * Procesor CPU powiązane operacje trwało za długo.
-* Powoduje, że po stronie serwera
-  * Na oferty standard pamięci podręcznej pamięć podręczna Azure dla usługi Redis zainicjować trybu failover z węzła podstawowego do węzła pomocniczego.
-  * Azure była poprawek wystąpienia wdrożonym pamięci podręcznej
-    * Może to być aktualizacje serwera Redis lub ogólna Konserwacja maszyn wirtualnych.
+* Przyczyny po stronie klienta
+  * Aplikacja kliencka została wdrożona ponownie.
+  * Aplikacja kliencka wykonała operację skalowania.
+    * W przypadku Cloud Services lub Web Apps może to być spowodowane skalowaniem automatycznym.
+  * Zmieniono warstwę sieciową po stronie klienta.
+  * Wystąpił błąd przejściowy w kliencie lub w węzłach sieciowych między klientem a serwerem.
+  * Osiągnięto limity progu przepustowości.
+  * Operacje związane z procesorem CPU trwały zbyt długo.
+* Przyczyny po stronie serwera
+  * W przypadku standardowej oferty pamięci podręcznej usługa Azure cache for Redis zainicjowała przechodzenie w tryb failover z węzła podstawowego do węzła pomocniczego.
+  * Platforma Azure nastąpiła poprawka do wystąpienia, w którym została wdrożona pamięć podręczna
+    * Może to dotyczyć aktualizacji serwera Redis lub ogólnej konserwacji maszyn wirtualnych.
 
 ### <a name="which-azure-cache-offering-is-right-for-me"></a>Która oferta pamięci podręcznej systemu Azure jest dla mnie najlepsza?
 > [!IMPORTANT]
-> Zgodnie z ostatniego roku [ogłoszenie](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/), usługa Azure Managed Cache Service i pamięć podręczna oparta na roli Azure **został wycofany** 30 listopada 2016 r. Nasze zalecenie to użycie [pamięci podręcznej Redis Azure](https://azure.microsoft.com/services/cache/). Aby uzyskać informacje na temat migracji, zobacz [migracja z usługi Managed Cache Service do usługi Azure Cache dla usługi Redis](cache-migrate-to-redis.md).
+> Zgodnie z ogłoszeniem w [](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)ciągu ostatniego roku usługi Azure Managed Cache Service i usługa pamięć podręczna oparta na roli Azure zostały **wycofane** 30 listopada 2016. Naszym rekomendacją jest użycie [usługi Azure cache for Redis](https://azure.microsoft.com/services/cache/). Aby uzyskać informacje na temat migracji, zobacz [Migrowanie z Managed Cache Service do usługi Azure cache for Redis](cache-migrate-to-redis.md).
 >
 >
 
 ### <a name="azure-cache-for-redis"></a>Azure Cache for Redis
-Pamięć podręczna systemu Azure dla usługi Redis jest ogólnie dostępna w rozmiarach do 53 GB i ma dostępność na poziomie 99,9%. Nowy [w warstwie premium](cache-premium-tier-intro.md) oferuje rozmiarach do 530 GB i pomoc techniczna dla klastra sieć Wirtualną i trwałości, z umową SLA 99,9%.
+Pamięć podręczna platformy Azure dla usługi Redis jest ogólnie dostępna w rozmiarach do 120 GB i ma umowę SLA dotyczącą dostępności 99,9%. Nowa [warstwa Premium](cache-premium-tier-intro.md) oferuje rozmiary do 1,2 TB i obsługę klastrowania, sieci wirtualnej i trwałości, z umową SLA na 99,9%.
 
-Pamięć podręczna systemu Azure dla usługi Redis zapewnia klientom możliwość korzystania z bezpiecznej, dedykowanej pamięci podręcznej Azure dla usługi Redis, zarządzanej przez firmę Microsoft. Ta oferta umożliwia skorzystanie z do rozbudowanego zestawu funkcji i ekosystemu udostępnianego udostępnianych przez Redis oraz niezawodnych oraz hostingu i monitorowania od firmy Microsoft.
+Usługa Azure cache for Redis umożliwia klientom korzystanie z bezpiecznej, dedykowanej pamięci podręcznej platformy Azure dla Redis, zarządzanej przez firmę Microsoft. Dzięki tej ofercie uzyskasz dostęp do bogatego zestawu funkcji i ekosystemu zapewnianego przez Redis oraz niezawodnego hostingu i monitorowania od firmy Microsoft.
 
-W przeciwieństwie do tradycyjnych pamięci podręczne, które dotyczą tylko przy użyciu pary klucz wartość usługi Redis jest popularnych dla swoich wysoce wydajne typów danych. Również redis obsługuje uruchamianie niepodzielne operacje na tych typów, takich jak dołączanie do ciąg. Zwiększanie wartości skrótu; Wypychanie do listy; Przetwarzanie zestawu części wspólnych, Unii i różnica; lub elementu członkowskiego o najwyższej klasyfikacji w zestawu posortowanego. Inne funkcje obejmują obsługę transakcji i publikowania/subskrybowania, Lua, skryptów, klucze o ograniczonym czasie wygaśnięcia, ustawienia konfiguracji, że magazyn Redis zachowują się podobnie tradycyjnych pamięci podręcznej.
+W przeciwieństwie do tradycyjnych pamięci podręcznych, które dotyczą tylko par klucz-wartość, Redis jest popularne dla wysoce wydajnych typów danych. Redis obsługuje również wykonywanie operacji niepodzielnych na tych typach, takich jak dołączanie do ciągu; zwiększanie wartości w skrócie; wypychanie do listy; obliczenia zbiorowe, związek i różnica; lub pobierając element członkowski z najwyższą klasyfikacją w posortowanym zestawie. Inne funkcje obejmują obsługę transakcji, publikowania/podLua skryptów, kluczy z ograniczonym czasem wygaśnięcia oraz ustawień konfiguracji, aby Redis zachować więcej jak tradycyjną pamięć podręczną.
 
-Innym kluczowym aspektem powodzenia Redis jest w dobrej kondycji, aktywny ekosystem typu open-source zbudowane wokół niej. Znajduje to odzwierciedlenie w różnorodnych klientów Redis są dostępne w wielu językach. Ten ekosystem i szerokiej gamy klientów umożliwiają Azure pamięci podręcznej Redis do użycia w przypadku niemal dowolnego obciążenia, jakie można utworzyć w systemie Azure.
+Innym najważniejszym aspektem do Redis sukcesu jest dobra w dobrej kondycji ekosystem "open source". Jest to odzwierciedlone w różnorodnym zestawie klientów Redis dostępnych w wielu językach. Ten ekosystem i szeroki zakres klientów umożliwiają korzystanie z usługi Azure cache for Redis przez niemal każde obciążenie, które ma zostać skompilowane w ramach platformy Azure.
 
-Aby uzyskać więcej informacji na temat rozpoczynania pracy z pamięcią podręczną Azure dla usługi Redis, zobacz [sposobu użycia usługi Azure Cache dla usługi Redis](cache-dotnet-how-to-use-azure-redis-cache.md) i [usługi Azure Cache dokumentacja pamięci podręcznej Redis](index.md).
+Aby uzyskać więcej informacji na temat rozpoczynania pracy z usługą Azure cache for Redis, zobacz [jak korzystać z usługi Azure cache for Redis](cache-dotnet-how-to-use-azure-redis-cache.md) i [pamięci podręcznej platformy Azure w celu uzyskania dokumentacji Redis](index.md).
 
-### <a name="managed-cache-service"></a>Usługa Managed Cache service
-[Zarządzana pamięć podręczna usługi została wycofana 30 listopada 2016 r.](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
+### <a name="managed-cache-service"></a>Usługa zarządzanej pamięci podręcznej
+[Usługa zarządzanej pamięci podręcznej została wycofana 30 listopada 2016.](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
 
-Aby wyświetlić zarchiwizowana dokumentacja, zobacz [zarchiwizowana dokumentacja usługi pamięć podręczna zarządzane](/previous-versions/azure/azure-services/dn386094(v=azure.100)).
+Aby wyświetlić archiwalną dokumentację, zapoznaj się z [dokumentacją archiwalną Managed Cache Service](/previous-versions/azure/azure-services/dn386094(v=azure.100)).
 
 ### <a name="in-role-cache"></a>Pamięć podręczna oparta na roli
-[Pamięć podręczna oparta na roli została wycofana 30 listopada 2016 r.](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
+[Pamięć podręczna oparta na roli został wycofany 30 listopada 2016.](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
 
-Aby wyświetlić zarchiwizowana dokumentacja, zobacz [zarchiwizowana dokumentacja usługi pamięć podręczna oparta na roli](/previous-versions/azure/azure-services/dn386103(v=azure.100)).
+Aby wyświetlić archiwalną dokumentację, zapoznaj się z [dokumentacją archiwalną pamięć podręczna oparta na roli](/previous-versions/azure/azure-services/dn386103(v=azure.100)).
 
 ["minIoThreads" configuration setting]: https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx

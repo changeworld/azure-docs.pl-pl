@@ -9,18 +9,18 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 4865a2b3b02a1e7a6db19418122b66aeb79dd332
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d6cc87947ab861e8de4dbdf754164e195f0f458c
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099472"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309319"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Nawiązywanie połączenia z sieciami wirtualnymi platformy Azure z Azure Logic Apps przy użyciu środowiska usługi integracji (ISE)
 
 W przypadku scenariuszy, w których aplikacje logiki i konta integracji potrzebują dostępu do [sieci wirtualnej platformy Azure](../virtual-network/virtual-networks-overview.md), Utwórz [ *środowisko usługi integracji* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). ISE to środowisko prywatne i izolowane korzystające z dedykowanego magazynu i innych zasobów, które są oddzielone od publicznej lub "globalnej" Logic Apps usługi. Ta separacja również zmniejsza wpływ innych dzierżawców platformy Azure na wydajność aplikacji.
 
-Po utworzeniu ISE platforma Azure wprowadza tę ISE do sieci wirtualnej platformy Azure, która następnie wdraża usługę Logic Apps w sieci wirtualnej. Podczas tworzenia aplikacji logiki lub konta integracji wybierz swój ISE jako lokalizację. Aplikacja logiki lub konto integracji może następnie bezpośrednio uzyskać dostęp do zasobów, takich jak maszyny wirtualne, serwery, systemy i usługi, w sieci wirtualnej.
+Po utworzeniu *ISE platforma Azure* wprowadza tę ISE do sieci wirtualnej platformy Azure, która następnie wdraża usługę Logic Apps w sieci wirtualnej. Podczas tworzenia aplikacji logiki lub konta integracji wybierz swój ISE jako lokalizację. Aplikacja logiki lub konto integracji może następnie bezpośrednio uzyskać dostęp do zasobów, takich jak maszyny wirtualne, serwery, systemy i usługi, w sieci wirtualnej.
 
 ![Wybierz środowisko usługi integracji](./media/connect-virtual-network-vnet-isolated-environment/select-logic-app-integration-service-environment.png)
 
@@ -44,18 +44,19 @@ W tym artykule przedstawiono sposób wykonywania następujących zadań:
 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
 
-* [Sieć wirtualna platformy Azure](../virtual-network/virtual-networks-overview.md). Jeśli nie masz sieci wirtualnej, Dowiedz się, jak [utworzyć sieć wirtualną platformy Azure](../virtual-network/quick-create-portal.md).
+* [Sieć wirtualna platformy Azure](../virtual-network/virtual-networks-overview.md). Jeśli nie masz sieci wirtualnej, Dowiedz się, jak [utworzyć sieć wirtualną platformy Azure](../virtual-network/quick-create-portal.md). 
 
   * Sieć wirtualna musi mieć cztery *puste* podsieci do tworzenia i wdrażania zasobów w ISE. Można utworzyć te podsieci z wyprzedzeniem lub poczekać, aż utworzysz ISE, w którym można tworzyć podsieci w tym samym czasie. Dowiedz się więcej o [wymaganiach podsieci](#create-subnet).
-  
-    > [!NOTE]
-    > Jeśli używasz [ExpressRoute](../expressroute/expressroute-introduction.md), który zapewnia prywatne połączenie z usługami w chmurze firmy Microsoft, musisz [utworzyć tabelę tras](../virtual-network/manage-route-table.md) , która ma następującą trasę i połączyć tę tabelę z każdą podsiecią używaną przez ISE:
-    > 
-    > **Nazwa**: <*nazwę trasy*><br>
-    > **Prefiks adresu**: 0.0.0.0/0<br>
-    > **Następny przeskok**: Internet
+
+  * Nazwy podsieci muszą zaczynać się znakiem alfabetycznym lub podkreśleniem i nie mogą używać następujących znaków `<`: `>`, `%`, `&` `\\` `?`,,, `/`,. 
 
   * Upewnij się, że sieć wirtualna [udostępnia te porty](#ports) , aby ISE działała prawidłowo i pozostaje dostępna.
+
+  * Jeśli używasz [ExpressRoute](../expressroute/expressroute-introduction.md), który zapewnia połączenie prywatne z usługami w chmurze firmy Microsoft, musisz [utworzyć tabelę tras](../virtual-network/manage-route-table.md) , która ma następującą trasę i połączyć tę tabelę z każdą podsiecią używaną przez ISE:
+
+    **Nazwa**: <*nazwę trasy*><br>
+    **Prefiks adresu**: 0.0.0.0/0<br>
+    **Następny przeskok**: Internet
 
 * Jeśli chcesz użyć niestandardowych serwerów DNS dla sieci wirtualnej platformy Azure, [Skonfiguruj te serwery, wykonując następujące czynności](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) przed wdrożeniem ISE w sieci wirtualnej. W przeciwnym razie za każdym razem, gdy zmieniasz serwer DNS, musisz również ponownie uruchomić ISE, który jest funkcją dostępną w publicznej wersji zapoznawczej ISE.
 
@@ -65,7 +66,7 @@ W tym artykule przedstawiono sposób wykonywania następujących zadań:
 
 W przypadku używania ISE z istniejącą siecią wirtualną występuje typowy problem z instalacją, który ma co najmniej jeden blokowany port. Łączniki używane do tworzenia połączeń między ISE i systemem docelowym mogą również mieć własne wymagania dotyczące portów. Jeśli na przykład komunikacja z systemem FTP odbywa się przy użyciu łącznika FTP, należy się upewnić, że port używany w tym systemie FTP, na przykład port 21 do wysyłania poleceń jest dostępny.
 
-W przypadku utworzenia nowej sieci wirtualnej i podsieci bez ograniczeń nie trzeba konfigurować [sieciowych grup zabezpieczeń (sieciowych grup zabezpieczeń)](../virtual-network/security-overview.md) w sieci wirtualnej, aby można było kontrolować ruch między podsieciami. W przypadku istniejącej sieci wirtualnej można *Opcjonalnie* skonfigurować sieciowych grup zabezpieczeń przez [Filtrowanie ruchu sieciowego między](../virtual-network/tutorial-filter-network-traffic.md)podsieciami. W przypadku wybrania tej trasy upewnij się, że ISE otwiera określone porty, zgodnie z opisem w poniższej tabeli, w sieci wirtualnej, która ma sieciowych grup zabezpieczeń. W przypadku istniejących sieciowych grup zabezpieczeń lub zapór w sieci wirtualnej upewnij się, że otwierają one te porty. Dzięki temu Twoje ISE pozostają dostępne i może działać prawidłowo, dzięki czemu nie utracisz dostępu do ISE. W przeciwnym razie, jeśli którykolwiek z wymaganych portów jest niedostępny, ISE przestanie działać.
+W przypadku utworzenia nowej sieci wirtualnej i podsieci bez ograniczeń nie trzeba konfigurować [sieciowych grup zabezpieczeń (sieciowych grup zabezpieczeń)](../virtual-network/security-overview.md) w sieci wirtualnej, aby można było kontrolować ruch między podsieciami. W przypadku istniejącej sieci wirtualnej można *Opcjonalnie* skonfigurować sieciowych grup zabezpieczeń przez [Filtrowanie ruchu sieciowego między podsieciami](../virtual-network/tutorial-filter-network-traffic.md). W przypadku wybrania tej trasy upewnij się, że ISE otwiera określone porty, zgodnie z opisem w poniższej tabeli, w sieci wirtualnej, która ma sieciowych grup zabezpieczeń. W przypadku istniejących sieciowych grup zabezpieczeń lub zapór w sieci wirtualnej upewnij się, że otwierają one te porty. Dzięki temu Twoje ISE pozostają dostępne i może działać prawidłowo, dzięki czemu nie utracisz dostępu do ISE. W przeciwnym razie, jeśli którykolwiek z wymaganych portów jest niedostępny, ISE przestanie działać.
 
 > [!IMPORTANT]
 > W przypadku komunikacji wewnętrznej wewnątrz podsieci ISE wymaga otwarcia wszystkich portów w tych podsieciach.
@@ -134,13 +135,17 @@ W polu wyszukiwania wprowadź "środowisko usługi integracji" jako filtr.
 
    **Utwórz podsieć**
 
-   Aby tworzyć i wdrażać zasoby w danym środowisku, ISE muszą mieć cztery *puste* podsieci, które nie są delegowane do żadnej usługi. *Nie* można zmienić tych adresów podsieci po utworzeniu środowiska. Każda podsieć musi spełniać następujące kryteria:
-
-   * Ma nazwę zaczynającą się od litery `<`lub znaku podkreślenia i nie zawiera następujących znaków:, `%` `&` `>`, `\\` `?`,,,,`/`
+   Aby tworzyć i wdrażać zasoby w danym środowisku, ISE muszą mieć cztery *puste* podsieci, które nie są delegowane do żadnej usługi. *Nie* można zmienić tych adresów podsieci po utworzeniu środowiska.
+   
+   > [!IMPORTANT]
+   > 
+   > Nazwy podsieci muszą `<`zaczynać się od litery lub znaku podkreślenia (bez cyfr) i nie mogą używać następujących znaków:, `>`, `?` `\\` `%` `&`,,,, `/`.
+   
+   Ponadto każda podsieć musi spełniać następujące wymagania:
 
    * Używa [formatu routingu bezklasowego (cidr)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) i przestrzeni adresowej klasy B.
 
-   * Program używa co najmniej `/27` 32 adresów w przestrzeni adresowej, ponieważ każda podsieć musi mieć minimalną *Długość* równą. Na przykład:
+   * Program używa co najmniej `/27` 32 adresów w przestrzeni adresowej, ponieważ każda podsieć musi mieć *minimalną* *Długość* równą. Na przykład:
 
      * `10.0.0.0/27`ma 32 adresów, ponieważ 2<sup>(32-27)</sup> jest 2<sup>5</sup> lub 32.
 
@@ -150,7 +155,7 @@ W polu wyszukiwania wprowadź "środowisko usługi integracji" jako filtr.
 
      Aby dowiedzieć się więcej o obliczaniu adresów, zobacz [bloki protokołu IPv4 w protokole CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks).
 
-   * Jeśli używasz [ExpressRoute](../expressroute/expressroute-introduction.md), pamiętaj, aby [utworzyć tabelę tras](../virtual-network/manage-route-table.md) , która ma następującą trasę i połączyć tę tabelę z każdą podsiecią używaną przez ISE:
+   * Jeśli używasz [ExpressRoute](../expressroute/expressroute-introduction.md), musisz [utworzyć tabelę tras](../virtual-network/manage-route-table.md) , która ma następującą trasę i połączyć tę tabelę z każdą podsiecią używaną przez ISE:
 
      **Nazwa**: <*nazwę trasy*><br>
      **Prefiks adresu**: 0.0.0.0/0<br>

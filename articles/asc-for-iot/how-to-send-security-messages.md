@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/27/2019
+ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: c780eea15b9f064d3279c75ac2f967e8b6099ecb
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: b291e2392f0756cb2d3ec294db37206d32216959
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596206"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315927"
 ---
 # <a name="send-security-messages-sdk"></a>Wyślij zestaw SDK komunikatów zabezpieczeń
 
@@ -28,17 +28,21 @@ W tym przewodniku opisano Azure Security Center funkcji usługi IoT, gdy użytko
 
 Niniejszy przewodnik zawiera informacje na temat wykonywania następujących czynności: 
 > [!div class="checklist"]
-> * Użyj interfejsu API wysyłania komunikatów zabezpieczeń dla programuC#
-> * Korzystanie z interfejsu API wysyłania komunikatów zabezpieczeń dla języka C
+> * Wysyłanie komunikatów zabezpieczeń przy użyciu zestawu Azure IoT C SDK
+> * Wysyłanie komunikatów zabezpieczeń przy użyciu zestawu Azure C# IoT SDK
+> * Wysyłanie komunikatów zabezpieczeń przy użyciu zestawu Azure IoT Python SDK
+> * Wysyłanie komunikatów zabezpieczeń przy użyciu zestawu SDK środowiska Node. js platformy Azure IoT
+> * Wysyłanie komunikatów zabezpieczeń przy użyciu zestawu Azure IoT Java SDK
+
 
 ## <a name="azure-security-center-for-iot-capabilities"></a>Azure Security Center funkcji IoT
 
-Azure Security Center dla IoT mogą przetwarzać i analizować dowolny rodzaj danych komunikatów zabezpieczeń, o ile wysyłane dane są zgodne ze schematem [Azure Security Center dla schematu IoT](https://aka.ms/iot-security-schemas) , a komunikat jest ustawiany jako komunikat zabezpieczeń.
+Azure Security Center dla IoT mogą przetwarzać i analizować dowolny rodzaj danych komunikatów zabezpieczeń, o ile wysyłane dane są zgodne ze [schematem Azure Security Center dla schematu IoT](https://aka.ms/iot-security-schemas) , a komunikat jest ustawiany jako komunikat zabezpieczeń.
 
 ## <a name="security-message"></a>Komunikat zabezpieczeń
 
 Azure Security Center dla IoT definiuje komunikat zabezpieczeń przy użyciu następujących kryteriów:
-- Jeśli komunikat został wysłany przy użyciu usługi Azure IoT CC# /SDK
+- Jeśli wiadomość została wysłana z zestawem SDK usługi Azure IoT
 - Jeśli komunikat jest zgodny ze [schematem komunikatu zabezpieczeń](https://aka.ms/iot-security-schemas)
 - Jeśli wiadomość została ustawiona jako komunikat zabezpieczeń przed wysłaniem
 
@@ -49,7 +53,7 @@ Schemat definiuje prawidłowe i wymagane właściwości komunikatu zabezpieczeń
 > Wysłane komunikaty, które nie są zgodne ze schematem, są ignorowane. Przed zainicjowaniem wysyłania danych upewnij się, że został on zweryfikowany, ponieważ ignorowane komunikaty nie są obecnie przechowywane. 
 
 >[!Note]
-> Wiadomości wysłane, które nie zostały ustawione jako komunikat zabezpieczeń przy użyciu usługi Azure IoT CC# /SDK, nie będą kierowane do Azure Security Center dla potoku IoT
+> Komunikaty wysłane, które nie zostały ustawione jako komunikat zabezpieczeń przy użyciu zestawu Azure IoT SDK, nie będą kierowane do Azure Security Center dla potoku usługi IoT.
 
 ## <a name="valid-message-example"></a>Prawidłowy przykład wiadomości
 
@@ -87,28 +91,15 @@ Po ustawieniu jako komunikat zabezpieczeń i wysłaniu ten komunikat zostanie pr
 
 ## <a name="send-security-messages"></a>Wysyłanie komunikatów zabezpieczeń 
 
-Wysyłanie komunikatów zabezpieczeń bez korzystania z Azure Security Center dla agenta IoT przy użyciu zestawu SDK [urządzeń Azure C# IoT](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview) lub zestawu [SDK usługi Azure IoT C](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview).
+Wysyłanie komunikatów zabezpieczeń *bez* korzystania z Azure Security Center dla agenta IoT przy użyciu [zestawu SDK urządzeń Azure IoT C](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview), [zestawu SDK C# urządzenia Azure IoT](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview), zestawu SDK środowiska [Node. js](https://github.com/Azure/azure-iot-sdk-node)usługi Azure IoT, [zestawu](https://github.com/Azure/azure-iot-sdk-python)SDK języka Python dla usługi Azure IoT [ ](https://github.com/Azure/azure-iot-sdk-java).
 
 Aby wysłać dane urządzenia z urządzeń do przetwarzania przez Azure Security Center IoT, użyj jednego z następujących interfejsów API, aby oznaczyć komunikaty do poprawnego routingu do Azure Security Center potoku przetwarzania IoT. 
 
 Wszystkie dane, które są wysyłane, nawet jeśli są oznaczone prawidłowym nagłówkiem, muszą również być zgodne z [Azure Security Center dla schematu wiadomości IoT](https://aka.ms/iot-security-schemas). 
 
-### <a name="send-security-message-api"></a>Wyślij interfejs API komunikatów zabezpieczeń
+### <a name="send-security-message-api"></a>Wyślij interfejs API komunikatów zabezpieczeń 
 
-Interfejs API **wysyłania komunikatów zabezpieczeń** jest obecnie dostępny w języku C C#i.  
-
-#### <a name="c-api"></a>Interfejs API języka C#
-
-```cs
-
-private static async Task SendSecurityMessageAsync(string messageContent)
-{
-    ModuleClient client = ModuleClient.CreateFromConnectionString("<connection_string>");
-    Message  securityMessage = new Message(Encoding.UTF8.GetBytes(messageContent));
-    securityMessage.SetAsSecurityMessage();
-    await client.SendEventAsync(securityMessage);
-}
-```
+Interfejs API **wysyłania komunikatów zabezpieczeń** jest obecnie dostępny w językach C C#i, Python, Node. js i Java.  
 
 #### <a name="c-api"></a>INTERFEJS API JĘZYKA C
 
@@ -154,8 +145,67 @@ static void SendConfirmCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* 
     }
 }
 ```
+#### <a name="c-api"></a>Interfejs API języka C#
 
-## <a name="next-steps"></a>Kolejne kroki
+```cs
+
+private static async Task SendSecurityMessageAsync(string messageContent)
+{
+    ModuleClient client = ModuleClient.CreateFromConnectionString("<connection_string>");
+    Message  securityMessage = new Message(Encoding.UTF8.GetBytes(messageContent));
+    securityMessage.SetAsSecurityMessage();
+    await client.SendEventAsync(securityMessage);
+}
+```
+#### <a name="nodejs-api"></a>Interfejs API środowiska Node. js
+
+```typescript
+var Protocol = require('azure-iot-device-mqtt').Mqtt
+
+function SendSecurityMessage(messageContent)
+{
+  var client = Client.fromConnectionString(connectionString, Protocol);
+
+  var connectCallback = function (err) {
+    if (err) {
+      console.error('Could not connect: ' + err.message);
+    } else {
+      var message = new Message(messageContent);
+      message.setAsSecurityMessage();
+      client.sendEvent(message);
+  
+      client.on('error', function (err) {
+        console.error(err.message);
+      });
+  
+      client.on('disconnect', function () {
+        clearInterval(sendInterval);
+        client.removeAllListeners();
+        client.open(connectCallback);
+      });
+    }
+  };
+
+  client.open(connectCallback);
+}
+```
+
+#### <a name="python-api"></a>Interfejs API języka Python
+
+```python
+async def send_security_message_async(message_content):
+    conn_str = os.getenv("<connection_string>")
+    device_client = IoTHubDeviceClient.create_from_connection_string(conn_str)
+    await device_client.connect()
+    security_message = Message(message_content)
+    security_message.set_as_security_message()
+    await device_client.send_d2c_message(security_message)
+    await device_client.disconnect()
+```
+
+
+
+## <a name="next-steps"></a>Następne kroki
 - Przeczytaj Azure Security Center dla usługi IoT [— Omówienie](overview.md)
 - Dowiedz się więcej o [architekturze](architecture.md) Azure Security Center dla usługi IoT
 - Włącz [usługę](quickstart-onboard-iot-hub.md)

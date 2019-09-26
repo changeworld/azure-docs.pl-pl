@@ -1,5 +1,5 @@
 ---
-title: Limity i konfiguracja — Azure Logic Apps | Microsoft Docs
+title: Limity i konfiguracja — Azure Logic Apps
 description: Limity i wartości konfiguracji usługi Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 401b33c28e4ba91a0da5e4ab38f920e173302ea1
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 1479c6665b5d68e0fa16ece7e37f4e2a2457c69a
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242363"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309793"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Informacje o limitach i konfiguracji Azure Logic Apps
 
@@ -52,7 +52,7 @@ Poniżej przedstawiono limity dla pojedynczego uruchomienia aplikacji logiki:
 |------|--------------------|---------------------------------------|-------|
 | Czas trwania przebiegu | 90 dni | 365 dni | Aby zmienić domyślny limit, zobacz [zmiana czasu trwania](#change-duration). |
 | Przechowywanie magazynu | 90 dni od czasu rozpoczęcia przebiegu | 365 dni | Aby zmienić domyślny limit, zobacz [zmiana przechowywania magazynu](#change-retention). |
-| Minimalny interwał cyklu | 1 s | 1 s ||
+| Minimalny interwał cyklu | 1 sekunda | 1 sekunda ||
 | Maksymalny interwał cyklu | 500 dni | 500 dni ||
 |||||
 
@@ -65,7 +65,7 @@ Aby zmienić domyślny limit czasu wykonywania i przechowywania magazynu, wykona
 
 1. W Azure Portal w menu aplikacji logiki wybierz pozycję **Ustawienia przepływu pracy**.
 
-2. W obszarze **Opcje środowiska uruchomieniowego**na liście **przechowywanie historii uruchamiania w dniach** wybierz pozycję **niestandardowa**.
+2. W obszarze **Opcje środowiska uruchomieniowego**na liście **przechowywanie historii uruchamiania w dniach** wybierz pozycję niestandardowa.
 
 3. Wprowadź lub przeciągnij suwak, aby określić żądaną liczbę dni.
 
@@ -118,6 +118,12 @@ Aby przekroczyć te limity podczas normalnego przetwarzania lub uruchomić testy
 
 > [!NOTE]
 > [Jednostka SKU dla deweloperów](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) nie ma opublikowanych limitów, ponieważ ta jednostka SKU nie ma żadnej umowy dotyczącej poziomu usług (SLA) ani możliwości skalowania w górę. Tej jednostki SKU można używać tylko na potrzeby eksperymentowania, programowania i testowania, a nie produkcji ani testowania wydajności.
+
+<a name="gateway-limits"></a>
+
+## <a name="gateway-limits"></a>Limity bramy
+
+Azure Logic Apps obsługuje operacje zapisu, w tym wstawienia i aktualizacje, za pomocą bramy. Jednak te operacje mają [limity rozmiaru ładunku](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations).
 
 <a name="request-limits"></a>
 
@@ -258,9 +264,9 @@ Po usunięciu aplikacji logiki nie są tworzone wystąpienia nowych przebiegów.
 
 ## <a name="firewall-configuration-ip-addresses"></a>Konfiguracja zapory: Adresy IP
 
-Wszystkie aplikacje logiki w tym samym regionie używają tych samych zakresów adresów IP. Aby zapewnić obsługę wywołań, które bezpośrednio tworzą aplikacje logiki przy użyciu [protokołu HTTP](../connectors/connectors-native-http.md), [http + Swagger](../connectors/connectors-native-http-swagger.md)i innych żądań HTTP, skonfiguruj zapory za pomocą *wszystkich* [przychodzących](#inbound) *i* [wychodzących](#outbound) adresów IP używanych przez usługę Logic Apps , w oparciu o regiony, w których istnieją aplikacje logiki. Te adresy są wyświetlane w obszarze nagłówki **przychodzące** i **wychodzące** w tej sekcji i są sortowane według regionów. 
+Wszystkie aplikacje logiki w tym samym regionie używają tych samych zakresów adresów IP. Aby zapewnić obsługę wywołań, które bezpośrednio tworzą aplikacje logiki przy użyciu [protokołu HTTP](../connectors/connectors-native-http.md), [http + Swagger](../connectors/connectors-native-http-swagger.md)i innych żądań HTTP, skonfiguruj zapory za pomocą *wszystkich* [przychodzących](#inbound) *i* [wychodzących](#outbound) adresów IP używanych przez usługę Logic Apps , w oparciu o regiony, w których istnieją aplikacje logiki. Te adresy są wyświetlane w obszarze nagłówki **przychodzące** i wychodzące w tej sekcji i są sortowane według regionów. 
 
-Aby zapewnić obsługę wywołań wywoływanych przez [Łączniki zarządzane przez firmę Microsoft](../connectors/apis-list.md) , należy skonfigurować zaporę ze *wszystkimi* [wychodzącymi](#outbound) adresami IP używanymi przez te łączniki w oparciu o regiony, w których istnieją aplikacje logiki. Te adresy są wyświetlane pod nagłówkiem **wychodzącym** w tej sekcji i są sortowane według regionów. W przypadku aplikacji logiki, które działają w środowisku usługi integracji (ISE), upewnij się, że [te porty są otwarte](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports).
+Aby zapewnić obsługę wywołań wywoływanych przez [Łączniki zarządzane przez firmę Microsoft](../connectors/apis-list.md) , należy skonfigurować zaporę ze *wszystkimi* wychodzącymi adresami IP używanymi przez te łączniki w oparciu o regiony, w których istnieją aplikacje logiki. [](#outbound) Te adresy są wyświetlane pod nagłówkiem wychodzącym w tej sekcji i są sortowane według regionów. W przypadku aplikacji logiki, które działają w środowisku usługi integracji (ISE), upewnij się, że [te porty są otwarte](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports).
 
 W przypadku łączników niestandardowych, [Azure Government](../azure-government/documentation-government-overview.md)i [platformy Azure w Chinach](https://docs.microsoft.com/azure/china/), stałych lub zarezerwowanych adresów IP nie są dostępne.
 

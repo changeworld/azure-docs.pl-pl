@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 3b1b31da68d821ff27fa30e75ec1522b9d4875c8
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 94f019205959d63a05ed3d90ede59fece3c05901
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307433"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316350"
 ---
 # <a name="language-and-region-support-for-luis"></a>Obsługa języka i regionu dla usługi LUIS
 
@@ -34,18 +34,18 @@ Usługa LUIS rozumie wypowiedzi w następujących językach:
 |--|--|:--:|:--:|:--:|:--:|
 | Angielski |`en-US` | ✔ | ✔  |✔|✔|
 | *[Chiński](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
-| Holenderski |`nl-NL` |-|  -   |-|✔|
-| Francuski (Francja) |`fr-FR` |-| ✔ |✔ |✔|
+| Holenderski |`nl-NL` |✔|  -   |-|✔|
+| Francuski (Francja) |`fr-FR` |✔| ✔ |✔ |✔|
 | Francuski (Kanada) |`fr-CA` |-|   -   |-|✔|
-| Niemiecki |`de-DE` |-| ✔ |✔ |✔|
+| Niemiecki |`de-DE` |✔| ✔ |✔ |✔|
 | Hindi | `hi-IN`|-|-|-|-|
-| Włoski |`it-IT` |-| ✔ |✔|✔|
-| *[Japoński](#japanese-support-notes) |`ja-JP` |-| ✔ |✔|Tylko frazy kluczowe|
-| Koreański |`ko-KR` |-|   -   |-|Tylko frazy kluczowe|
-| Portugalski (Brazylia) |`pt-BR` |-| ✔ |✔ |nie wszystkie podrzędne kultur|
-| Hiszpański (Hiszpania) |`es-ES` |-| ✔ |✔|✔|
+| Włoski |`it-IT` |✔| ✔ |✔|✔|
+| *[Japoński](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|Tylko frazy kluczowe|
+| Koreański |`ko-KR` |✔|   -   |-|Tylko frazy kluczowe|
+| Portugalski (Brazylia) |`pt-BR` |✔| ✔ |✔ |nie wszystkie podrzędne kultur|
+| Hiszpański (Hiszpania) |`es-ES` |✔| ✔ |✔|✔|
 | Hiszpański (Meksyk)|`es-MX` |-|  -   |✔|✔|
-| Turecki | `tr-TR` |-|-|-|Tylko tonacji|
+| Turecki | `tr-TR` |✔|-|-|Tylko tonacji|
 
 
 Obsługa języka jest różny dla [ze wstępnie utworzonych jednostek](luis-reference-prebuilt-entities.md) i [ze wstępnie utworzonych domen](luis-reference-prebuilt-domains.md).
@@ -103,8 +103,8 @@ Następujące kultury mają niestandardowe wersje tokenizatora:
 
 |Kultura|Version|Cel|
 |--|--|--|
-|niemiecki<br>`de-de`|1.0.0|Tokenizes wyrazy, dzieląc je za pomocą tokenizatora opartych na uczeniu maszynowym, które próbują podzielić wyrazy złożone na ich pojedyncze składniki.<br>Jeśli użytkownik wprowadzi `Ich fahre einen krankenwagen` jako wypowiedź, jest on `Ich fahre einen kranken wagen`włączony. Zezwalanie na `kranken` oznaczanie `wagen` i niezależnie jako różne jednostki.|
-|niemiecki<br>`de-de`|1.0.2|Tokenizes wyrazy, dzieląc je na spacje.<br> Jeśli użytkownik wprowadzi `Ich fahre einen krankenwagen` jako wypowiedź, pozostaje pojedynczym tokenem. Oznacza `krankenwagen` to, że jest oznaczona jako pojedyncza jednostka. |
+|Niemiecki<br>`de-de`|1.0.0|Tokenizes wyrazy, dzieląc je za pomocą tokenizatora opartych na uczeniu maszynowym, które próbują podzielić wyrazy złożone na ich pojedyncze składniki.<br>Jeśli użytkownik wprowadzi `Ich fahre einen krankenwagen` jako wypowiedź, jest on `Ich fahre einen kranken wagen`włączony. Zezwalanie na `kranken` oznaczanie `wagen` i niezależnie jako różne jednostki.|
+|Niemiecki<br>`de-de`|1.0.2|Tokenizes wyrazy, dzieląc je na spacje.<br> Jeśli użytkownik wprowadzi `Ich fahre einen krankenwagen` jako wypowiedź, pozostaje pojedynczym tokenem. Oznacza `krankenwagen` to, że jest oznaczona jako pojedyncza jednostka. |
 
 ### <a name="migrating-between-tokenizer-versions"></a>Migrowanie między wersjami tokenizatora
 <!--

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: dacurwin
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: e6a1ec1d11404e6179fda919c58f581c3524c4d4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: d5f3b98048cb04eab15479c3a9f5d27f16df1f3a
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650339"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309752"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure--vms-with-powershell"></a>Tworzenie kopii zapasowych i przywracanie baz danych SQL na maszynach wirtualnych platformy Azure przy użyciu programu PowerShell
 
@@ -46,8 +46,6 @@ Hierarchia obiektów jest podsumowana na poniższym diagramie.
 Zapoznaj się z dokumentacją [polecenia cmdlet](/powershell/module/az.recoveryservices) **AZ. RecoveryServices** w bibliotece platformy Azure.
 
 ### <a name="set-up-and-install"></a>Skonfiguruj i zainstaluj
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Skonfiguruj program PowerShell w następujący sposób:
 
@@ -109,8 +107,8 @@ Magazyn Recovery Services jest zasobem Menedżer zasobów, dlatego należy umie�
 
 3. Określ typ nadmiarowości, która ma być używana w magazynie magazynu.
 
-    * Można użyć magazynu [lokalnie](../storage/common/storage-redundancy-lrs.md) nadmiarowego lub [magazynu geograficznie](../storage/common/storage-redundancy-grs.md)nadmiarowego.
-    * W poniższym przykładzie ustawiono opcję **-BackupStorageRedundancy** dla polecenia[Set-AzRecoveryServicesBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) cmd dla **testvault** jako geomiarowy.
+    * Można użyć magazynu [lokalnie nadmiarowego](../storage/common/storage-redundancy-lrs.md) lub [magazynu geograficznie nadmiarowego](../storage/common/storage-redundancy-grs.md).
+    * W poniższym przykładzie ustawiono opcję **-BackupStorageRedundancy** dla polecenia[Set-AzRecoveryServicesBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) cmd dla **testvault** jako **geomiarowy**.
 
     ```powershell
     $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
@@ -196,7 +194,7 @@ Name                 WorkloadType       BackupManagementType BackupTime         
 NewSQLPolicy         MSSQL              AzureWorkload        3/15/2019 01:30:00 AM      Daily                                    False                True
 ```
 
-## <a name="enable-backup"></a>Włącz tworzenie kopii zapasowej
+## <a name="enable-backup"></a>Włącz kopię zapasową
 
 ### <a name="registering-the-sql-vm"></a>Rejestrowanie maszyny wirtualnej SQL
 
@@ -492,7 +490,7 @@ master           ConfigureBackup      Completed            3/18/2019 8:00:21 PM 
 ### <a name="re-register-sql-vms"></a>Ponowne rejestrowanie maszyn wirtualnych SQL
 
 > [!WARNING]
-> Pamiętaj o zapoznaniu się [](backup-sql-server-azure-troubleshoot.md#re-registration-failures) z tym dokumentem, aby zrozumieć objawy błędów i przyczyny przed próbą ponownego zarejestrowania
+> Pamiętaj o zapoznaniu się z tym [dokumentem](backup-sql-server-azure-troubleshoot.md#re-registration-failures) , aby zrozumieć objawy błędów i przyczyny przed próbą ponownego zarejestrowania
 
 Aby wyzwolić ponowną rejestrację maszyny wirtualnej SQL, Pobierz odpowiedni kontener kopii zapasowych i przekaż go do polecenia cmdlet register.
 
@@ -512,7 +510,7 @@ $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload 
 Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.ID
 ````
 
-#### <a name="delete-backup-data"></a>Usuwanie danych kopii zapasowej
+#### <a name="delete-backup-data"></a>Usuń dane kopii zapasowej
 
 Aby całkowicie usunąć przechowywane dane kopii zapasowej w magazynie, po prostu Dodaj flagę "-RemoveRecoveryPoints"/Przełącz do [polecenia "Disable" ochrony](#retain-data).
 
@@ -558,9 +556,9 @@ Aby anulować zadanie w toku, należy użyć polecenia cmdlet [stop-AzRecoverySe
 
 ## <a name="managing-sql-always-on-availability-groups"></a>Zarządzanie zawsze włączonymi grupami dostępności SQL
 
-W przypadku zawsze dostępnych grup dostępności SQL upewnij się, że zarejestrowano [wszystkie węzły](#registering-the-sql-vm) grupy dostępności (AG). Po zakończeniu rejestracji dla wszystkich węzłów obiekt grupy dostępności SQL jest logicznie tworzony w obszarze elementy objęte ochroną. Bazy danych w ramach programu SQL AG będą wyświetlane jako "SQLDatabase". Węzły będą wyświetlane jako wystąpienia autonomiczne, a domyślne bazy danych SQL znajdujące się w nich są również wyświetlane jako bazy danych SQL.
+W przypadku zawsze dostępnych grup dostępności SQL upewnij się, że [zarejestrowano wszystkie węzły](#registering-the-sql-vm) grupy dostępności (AG). Po zakończeniu rejestracji dla wszystkich węzłów obiekt grupy dostępności SQL jest logicznie tworzony w obszarze elementy objęte ochroną. Bazy danych w ramach programu SQL AG będą wyświetlane jako "SQLDatabase". Węzły będą wyświetlane jako wystąpienia autonomiczne, a domyślne bazy danych SQL znajdujące się w nich są również wyświetlane jako bazy danych SQL.
 
-Załóżmy na przykład, że w przypadku usługi SQL AG istnieją dwa węzły: "SQL-Server-0" i "SQL-Server-1" oraz 1 SQL AG DB. Po zarejestrowaniu obu tych węzłów, jeśli użytkownik [wyświetla listę elementów](#fetching-sql-dbs)podlegających ochronie, wyświetla następujące składniki
+Załóżmy na przykład, że w przypadku usługi SQL AG istnieją dwa węzły: "SQL-Server-0" i "SQL-Server-1" oraz 1 SQL AG DB. Po zarejestrowaniu obu tych węzłów, jeśli użytkownik [wyświetla listę elementów podlegających ochronie](#fetching-sql-dbs), wyświetla następujące składniki
 
 1. Typ elementu, który umożliwia ochronę obiektów SQL AG jako element sqlavailability
 2. Typ elementu chronionego za pomocą bazy danych SQL w formacie SQLDatabase

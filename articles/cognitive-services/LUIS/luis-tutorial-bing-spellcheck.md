@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/05/2019
+ms.date: 09/25/2019
 ms.author: diberry
-ms.openlocfilehash: 43cb2f0c3ef0f845afcd309dccb35bc632ffd324
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 3bde609c83425d660c867939e034247d7e6898c5
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390949"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300274"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>Poprawne błędnie napisanych wyrazów za pomocą sprawdzania pisowni Bing
 
@@ -89,7 +89,13 @@ Punkt końcowy adres URL ma kilka wartości, które muszą zostać prawidłowo p
 ```
 
 ## <a name="ignore-spelling-mistakes"></a>Ignoruj błędy pisowni
-Jeśli nie chcesz korzystać z interfejsu API sprawdzania pisowni Bing w wersji 7 usługi, możesz oznaczyć wypowiedzi, które mają błędy pisowni, tak aby usługi LUIS można znaleźć prawidłowego pisowni, a także literówki. Ta opcja wymaga wysiłku etykietowania niż używanie sprawdzania pisowni.
+
+Jeśli nie chcesz używać sprawdzanie pisowni Bing API wersji 7, musisz dodać poprawną i niepoprawną pisownię. 
+
+Dwa rozwiązania:
+
+* Etykieta przykład wyrażenia długości, która ma wszystkie inne pisownie, dzięki czemu LUIS może poznać poprawną pisownię oraz literówki. Ta opcja wymaga wysiłku etykietowania niż używanie sprawdzania pisowni.
+* Utwórz listę fraz ze wszystkimi odmianami wyrazu. W tym rozwiązaniu nie trzeba etykietować odmian wyrazów w przykładzie wyrażenia długości. 
 
 ## <a name="publishing-page"></a>Strona publikowania
 [Publikowania](luis-how-to-publish-app.md) strona ma **sprawdzania pisowni Bing Włącz** pola wyboru. Jest to wygodne do tworzenia klucza i zrozumieć, jak zmienia się adres URL punktu końcowego. Nadal jest konieczne korzystanie z parametrów właściwego punktu końcowego, aby mogła mieć pisownię każdego wypowiedź została poprawiona automatycznie. 
