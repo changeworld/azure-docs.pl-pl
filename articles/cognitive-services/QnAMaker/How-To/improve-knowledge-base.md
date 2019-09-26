@@ -8,16 +8,16 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 09/11/2019
+ms.date: 09/24/2019
 ms.author: diberry
-ms.openlocfilehash: b5528d8cd23893248170bdb15588925f3c92c02b
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: ab4447c8c07f8e8315c0258cc3254e5272ab7582
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934735"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272435"
 ---
-# <a name="use-active-learning-to-improve-your-knowledge-base"></a>Korzystanie z usługi Active Learning w celu ulepszania bazy wiedzy
+# <a name="use-active-learning-to-improve-your-knowledge-base"></a>Ulepszanie bazy wiedzy za pomocą uczenia aktywnego
 
 Usługa Active Learning pozwala ulepszyć jakość bazy wiedzy, sugerując alternatywne pytania na podstawie przesłanych przez użytkowników do pary pytań i odpowiedzi. Te sugestie można przejrzeć, dodając je do istniejących pytań lub odrzucając je. 
 
@@ -79,6 +79,8 @@ Aktywna nauka jest domyślnie wyłączona. Włącz tę opcję, aby zobaczyć sug
     Po włączeniu **aktywnej uczenia** baza wiedzy sugeruje nowe pytania w regularnych odstępach czasu na podstawie pytań przesłanych przez użytkownika. **Aktywną naukę** można wyłączyć, przełączając ponownie ustawienie.
 
 ## <a name="accept-an-active-learning-suggestion-in-the-knowledge-base"></a>Zaakceptowanie aktywnej sugestii szkoleniowej w bazie wiedzy
+
+Usługa Active Learning zmienia bazę wiedzy lub Search Service po zatwierdzeniu sugestii, a następnie zapisaniu i uczeniu się. Jeśli zatwierdzisz sugestię, zostanie ona dodana jako zapytanie alternatywne.
 
 1. Aby wyświetlić sugerowane pytania, na stronie **Edytowanie** bazy wiedzy wybierz opcję **Wyświetl opcje**, a następnie wybierz pozycję **Pokaż aktywne sugestie dotyczące uczenia**. 
 
@@ -197,8 +199,8 @@ Treść JSON ma kilka ustawień:
 |Właściwość treści JSON|Type|Cel|
 |--|--|--|--|
 |`feedbackRecords`|array|Lista opinii.|
-|`userId`|ciąg|Identyfikator użytkownika osoby akceptującej sugerowane pytania. Format identyfikatora użytkownika jest aktualny. Na przykład adres e-mail może być prawidłowym IDENTYFIKATORem użytkownika w danej architekturze. Opcjonalna.|
-|`userQuestion`|ciąg|Dokładny tekst zapytania użytkownika. Wymagane.|
+|`userId`|ciąg|Identyfikator użytkownika osoby akceptującej sugerowane pytania. Format identyfikatora użytkownika jest aktualny. Na przykład adres e-mail może być prawidłowym IDENTYFIKATORem użytkownika w danej architekturze. Opcjonalny.|
+|`userQuestion`|ciąg|Dokładny tekst zapytania użytkownika. Wymagany.|
 |`qnaID`|number|Identyfikator pytania znaleziony w [odpowiedzi GenerateAnswer](metadata-generateanswer-usage.md#generateanswer-response-properties). |
 
 Przykładowa treść JSON wygląda następująco:
@@ -387,7 +389,14 @@ Kolumna jest obiektem JSON informacji o niejawnych, `autosuggested`i jawnych `us
 ]
 ```
 
+Możesz również użyć interfejsu API pobierania zmian, aby przejrzeć te zmiany, używając protokołu REST lub dowolnego z zestawów SDK opartych na języku:
+* [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc)
+* [Zestaw SDK platformy .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.alterationsextensions.getasync?view=azure-dotnet)
+
+
 Po ponownym zaimportowaniu tej aplikacji aktywna nauka nadal zbiera informacje i zaleca sugestie dotyczące bazy wiedzy. 
+
+
 
 ## <a name="best-practices"></a>Najlepsze praktyki
 
