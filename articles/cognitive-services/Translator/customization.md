@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: e6771a0d72592f1952853642ceea196b02774ada
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: be9c06d45da4d83c26f82343c9cb7b19ba19b4ae
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595314"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257619"
 ---
 # <a name="customize-your-text-translations"></a>Dostosowywanie tłumaczenia tekstu
 
@@ -29,7 +29,7 @@ Dzięki usłudze translator niestandardowy można budować systemy tłumaczenia 
 
 ### <a name="how-does-it-work"></a>Jak to działa?
 
-Skorzystaj z wcześniej przetłumaczonych dokumentów (ulotek, stron sieci Web, dokumentacji itp.), aby skompilować system tłumaczenia, który odzwierciedla terminologię i styl specyficzny dla domeny, lepszy niż ogólny system tłumaczenia. Użytkownicy mogą przekazywać dokumenty TMX, XLIFF, TXT, DOCX i XLSX.  
+Skorzystaj z wcześniej przetłumaczonych dokumentów (ulotek, stron sieci Web, dokumentacji itp.), aby skompilować system tłumaczenia, który odzwierciedla terminologię i styl specyficzny dla domeny, lepszy niż standardowy system tłumaczenia. Użytkownicy mogą przekazywać dokumenty TMX, XLIFF, TXT, DOCX i XLSX.  
 
 System akceptuje również dane, które są równoległe na poziomie dokumentu, ale nie są jeszcze wyrównane na poziomie zdania. Jeśli użytkownicy mają dostęp do wersji tej samej zawartości w wielu językach, ale w oddzielnych dokumentach translator niestandardowy będzie mógł automatycznie dopasować zdania w dokumentach.  System może również używać danych w języku lub w obu językach, aby uzupełnić równoległe dane szkoleniowe w celu usprawnienia tłumaczenia.
 
@@ -53,8 +53,8 @@ Więcej szczegółowych informacji na temat różnych poziomów dostosowywania o
 | Interfejs API tłumaczenia tekstu w wersji  | Tylko wersja 2   | Tylko wersja 3 |
 | Dostosowywanie SMT | Yes   | Nie |
 | Dostosowywanie NMT | Nie    | Yes |
-| Nowe ujednolicone dostosowywanie usług mowy | Nie    | Yes |
-| [Brak śladu](https://www.aka.ms/notrace) | Yes  | Tak |
+| Nowe ujednolicone dostosowywanie usług mowy | Nie    | Tak |
+| [Brak śladu](https://www.aka.ms/notrace) | Tak  | Tak |
 
 ## <a name="collaborative-translations-framework"></a>Struktura tłumaczeń współpracy
 

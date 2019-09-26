@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: a627592bdfcbebc3c7fcda911e31c0ae6f4a630f
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: d27b3613acb2980ff4116825197d018f9c183baa
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976615"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266861"
 ---
 ## <a name="benefits"></a>Korzyści 
 
@@ -64,12 +64,12 @@ Przykładowy szablon Menedżer zasobów znaleziony w [tym miejscu](https://githu
 
 ## <a name="maintenance-control"></a>Kontrola konserwacji
 
-Infrastruktura obsługująca maszyny wirtualne może być czasami aktualizowana w celu poprawy niezawodności, wydajności, zabezpieczeń i uruchamiania nowych funkcji. Platforma Azure próbuje zminimalizować wpływ konserwacji na platformę, jeśli jest to możliwe, ale Klienci, którzy mają wrażliwe obciążenia, nie mogą tolerować nawet kilka sekund, aby maszyna wirtualna mogła zostać zamrożona lub odłączona do konserwacji.
+Infrastruktura obsługująca maszyny wirtualne może być czasami aktualizowana w celu poprawy niezawodności, wydajności, zabezpieczeń i uruchamiania nowych funkcji. Platforma Azure próbuje zminimalizować wpływ konserwacji na platformę, jeśli jest to możliwe, ale klienci, którzy mają *wrażliwe* obciążenia, nie mogą tolerować nawet kilka sekund, aby maszyna wirtualna mogła zostać zamrożona lub odłączona do konserwacji.
 
 **Kontrola konserwacji** udostępnia klientom opcję pomijania regularnych aktualizacji platformy zaplanowanych na ich dedykowanych hostach, a następnie zastosuje ją w wybranym momencie w 35 dziennym oknie.
 
 > [!NOTE]
->  Kontrola konserwacji jest obecnie w ograniczonym etapie wersji zapoznawczej i wymaga procesu dołączania. Zastosuj do tej wersji zapoznawczej, [](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6lJf7DwiQxNmz51ksQvxV9UNUM3UllWUjBMTFZQUFhHUDI0VTBPQlJFNS4u)przesyłając ankietę nominacji.
+>  Kontrola konserwacji jest obecnie w ograniczonym etapie wersji zapoznawczej i wymaga procesu dołączania. Zastosuj do tej wersji zapoznawczej, przesyłając [ankietę nominacji](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6lJf7DwiQxNmz51ksQvxV9UNUM3UllWUjBMTFZQUFhHUDI0VTBPQlJFNS4u).
 
 ## <a name="capacity-considerations"></a>Zagadnienia dotyczące wydajności
 
@@ -81,7 +81,7 @@ Obowiązuje domyślny limit przydziału 3000 procesorów wirtualnych vCPU dla de
 
 ![Zrzut ekranu strony użycie i przydziały w portalu](./media/virtual-machines-common-dedicated-hosts/quotas.png)
 
-Aby uzyskać więcej informacji, zobacz Przydziały [maszyn wirtualnych vCPU](/azure/virtual-machines/windows/quotas).
+Aby uzyskać więcej informacji, zobacz [przydziały maszyn wirtualnych vCPU](/azure/virtual-machines/windows/quotas).
 
 ## <a name="pricing"></a>Cennik
 
@@ -113,6 +113,6 @@ Platforma Azure monitoruje stan kondycji hostów i zarządza nim. Podczas wykony
 |----------|----------------|
 | Dostępne hosty     | Nie ma żadnych znanych problemów z hostem.   |
 | Host objęty badaniem  | Mamy problemy z hostem, do którego chcemy. Jest to stan przejściowy wymagany przez platformę Azure do wypróbowania i zidentyfikowania zakresu oraz głównej przyczyny zidentyfikowanego problemu. Może to mieć wpływ na maszyny wirtualne działające na hoście. |
-| Host oczekujący na cofnięcie alokacji   | Platforma Azure nie może przywrócić kondycji hosta z powrotem do stanu prawidłowego i poprosił o ponowne wdrożenie maszyn wirtualnych poza tym hostem. Jeśli `autoHealingOnFailure` ta funkcja jest włączona, Twoje maszyny wirtualne są w dobrej kondycji. W przeciwnym razie maszyna wirtualna może działać na hoście, który kończy się niepowodzeniem.|
+| Host oczekujący na cofnięcie alokacji   | Platforma Azure nie może przywrócić kondycji hosta z powrotem do stanu prawidłowego i poprosił o ponowne wdrożenie maszyn wirtualnych poza tym hostem. Jeśli `autoReplaceOnFailure` ta funkcja jest włączona, Twoje maszyny *wirtualne są w* dobrej kondycji. W przeciwnym razie maszyna wirtualna może działać na hoście, który kończy się niepowodzeniem.|
 | Cofnięto przydział hosta  | Wszystkie maszyny wirtualne zostały usunięte z hosta. Nie są już naliczane opłaty za tego hosta, ponieważ sprzęt nie został przetworzony.   |
 

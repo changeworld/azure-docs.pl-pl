@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c3201ec64ee7a3471b7d93b83664c62c2e7e0435
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: ffc77d2a175d300be306b1566324b2551e38aeab
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69541515"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266878"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Często zadawane pytania dotyczące dysków maszyn wirtualnych usługi Azure IaaS oraz zarządzanych i niezarządzanych dysków Premium
 
@@ -183,8 +183,26 @@ Nie, pomoc techniczna Azure Backup nie jest jeszcze dostępna.
 **Czy mogę dołączyć dysk Ultra do maszyny wirtualnej działającej w zestawie dostępności?**
 Nie, to nie jest jeszcze obsługiwane.
 
-**Czy mogę włączyć funkcję Azure Site Recovery (ASR) dla maszyn wirtualnych przy użyciu Ultra disks?**
-Nie, usługa ASR nie jest jeszcze obsługiwana w przypadku Ultra Disks.
+**Czy mogę włączyć Azure Site Recovery dla maszyn wirtualnych przy użyciu usługi Ultra disks?**
+Nie, Azure Site Recovery nie jest jeszcze obsługiwana dla Ultra Disks.
+
+## <a name="uploading-to-a-managed-disk"></a>Przekazywanie na dysk zarządzany
+
+**Czy mogę przekazać dane na istniejący dysk zarządzany?**
+
+Nie, przekazywania można używać tylko podczas tworzenia nowego pustego dysku ze stanem **ReadyToUpload** .
+
+**Jak mogę przekazać do dysku zarządzanego?**
+
+Utwórz dysk zarządzany [z właściwością creationData o wartości](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#diskcreateoption) " [](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#creationdata) upload", a następnie możesz przekazać do niej dane.
+
+**Czy mogę dołączyć dysk do maszyny wirtualnej, gdy jest ona w stanie przekazywania?**
+
+Nie.
+
+**Czy mogę zrobić migawkę dysku z pamięcią podpisaną w stanie przekazywania?**
+
+Nie.
 
 ## <a name="standard-ssd-disks"></a>SSD w warstwie Standardowa dyski
 

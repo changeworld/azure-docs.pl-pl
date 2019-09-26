@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 07/31/2019
+ms.date: 09/24/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: eba7dbb934bbc19ed7dc7452c15cbf22a9429bc3
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 9ce9fa29a29559a1eaaff6173737159f11aa83d8
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706738"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268892"
 ---
 1. W portalu po lewej stronie kliknij pozycję **+ Utwórz zasób** i wpisz „Brama sieci wirtualnej” w polu wyszukiwania. Znajdź pozycję **Brama sieci wirtualnej** w wynikach wyszukiwania i kliknij tę pozycję. Na stronie **Brama sieci wirtualnej** kliknij pozycję **Utwórz**. Spowoduje to otwarcie strony **Tworzenie bramy sieci wirtualnej**.
 
@@ -39,7 +39,7 @@ ms.locfileid: "68706738"
 
       **Zakres adresów podsieci bramy**: To pole pojawia się tylko wtedy, gdy wybrana Sieć wirtualna nie ma podsieci bramy. Wypełnij zakres, jeśli nie masz jeszcze podsieci bramy. Jeśli to możliwe, należy wprowadzić zakres/27 lub większy (/26,/25 itp.)
 
-    **Publiczny adres IP**: To ustawienie określa obiekt publicznego adresu IP, który jest skojarzony z bramą sieci VPN. Publiczny adres IP jest dynamicznie przypisywany do tego obiektu podczas tworzenia bramy sieci VPN. Brama sieci VPN aktualnie obsługuje tylko *dynamiczne* przypisywanie publicznych adresów IP. Nie oznacza to jednak, że adres IP zmienia się po przypisaniu go do bramy sieci VPN. Jedyną sytuacją, w której ma miejsce zmiana publicznego adresu IP, jest usunięcie bramy i jej ponowne utworzenie. Nie zmienia się on w przypadku zmiany rozmiaru, zresetowania ani przeprowadzania innych wewnętrznych czynności konserwacyjnych bądź uaktualnień bramy sieci VPN.
+   **Publiczny adres IP**: To ustawienie określa obiekt publicznego adresu IP, który jest skojarzony z bramą sieci VPN. Publiczny adres IP jest dynamicznie przypisywany do tego obiektu podczas tworzenia bramy sieci VPN. Jedyną sytuacją, w której ma miejsce zmiana publicznego adresu IP, jest usunięcie bramy i jej ponowne utworzenie. Nie zmienia się on w przypadku zmiany rozmiaru, zresetowania ani przeprowadzania innych wewnętrznych czynności konserwacyjnych bądź uaktualnień bramy sieci VPN.
 
      - **Publiczny adres IP**: Pozostaw wybraną opcję **Utwórz nowy**.
      - **Nazwa publicznego adresu IP**: W polu tekstowym wpisz nazwę swojego wystąpienia publicznego adresu IP.

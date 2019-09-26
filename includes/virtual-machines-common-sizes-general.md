@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: a47589728bdbe3842790a7c13fe35d04dbbe6883
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 5d89feaa5225aea56af86aa7f70d3666994fdaec
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881653"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266895"
 ---
 Rozmiary maszyn wirtualnych ogólnego przeznaczenia zapewniają zrównoważony współczynnik procesora CPU do pamięci. Idealne na potrzeby testowania i programowania, małych i średnich baz danych oraz serwerów sieci Web o niewielkim i średnim ruchu. Ten artykuł zawiera informacje na temat liczby procesorów wirtualnych vCPU, dysków danych i kart sieciowych, a także przepływności magazynu dla rozmiarów w tym grupowaniu.
 
@@ -80,13 +80,15 @@ Rozmiary serii Dsv3 są oparte na procesorach Intel Xeon® E5-2673 v3 (Haswell) 
 
 <sup>1</sup> funkcja maszyny wirtualnej z serii Dsv3 Intel® technologia wielowątkowości funkcji Hyper-Threading
 
-## <a name="dasv3-series"></a>Seria Dasv3
+## <a name="dasv3-series-preview"></a>Dasv3 — seria (wersja zapoznawcza)
 
 Magazyn w warstwie Premium: Obsługiwane
 
 Buforowanie Premium Storage: Obsługiwane
 
-Rozmiary serii Dasv3 są oparte na procesorze 7452V 2.35 GHz AMD EPYC<sup>TM</sup> , który może osiągnąć podwyższenie poziomu Fmax — GHz i korzystać z magazynu Premium Storage. Rozmiary serii Dasv3 oferują kombinację vCPU, pamięci i magazynu tymczasowego dla większości obciążeń produkcyjnych.
+Rozmiary serii Dasv3 są oparte na procesorze 2.35 GHz AMD EPYC<sup>TM</sup> 7452, który może osiągnąć podwyższenie poziomu Fmax — 3.35 GHz i korzystać z magazynu Premium Storage. Rozmiary serii Dasv3 oferują kombinację vCPU, pamięci i magazynu tymczasowego dla większości obciążeń produkcyjnych.
+
+[Kliknij tutaj, aby utworzyć konto w wersji zapoznawczej](http://aka.ms/azureamdpreview).
 
 | Size | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB |
 |---|---|---|---|
@@ -123,13 +125,15 @@ Opłaty za magazyn dysków danych są naliczane oddzielnie od opłat za maszyny 
 
 <sup>1</sup> funkcja maszyny wirtualnej z serii Dv3 Intel® technologia wielowątkowości funkcji Hyper-Threading
 
-## <a name="dav3-series"></a>Seria Dav3
+## <a name="dav3-series-preview"></a>Dav3 — seria (wersja zapoznawcza)
 
 Magazyn w warstwie Premium: Brak obsługi
 
 Buforowanie Premium Storage: Brak obsługi
 
-Rozmiary serii Dav3 są oparte na procesorze 7452V 2.35 GHz AMD EPYC<sup>TM</sup> , który może osiągnąć podwyższenie poziomu Fmax — GHz. Rozmiary serii Dav3 oferują kombinację vCPU, pamięci i magazynu tymczasowego dla większości obciążeń produkcyjnych. Opłaty za magazyn dysków danych są naliczane oddzielnie od opłat za maszyny wirtualne. Aby korzystać z dysków magazynu Premium Storage, użyj rozmiarów Dasv3. Liczniki cen i rozliczeń dla rozmiarów Dasv3 są takie same jak dla serii Dav3.
+Rozmiary serii Dav3 są oparte na procesorze 2.35 GHz AMD EPYC<sup>TM</sup> 7452, który może osiągnąć Fmax — o częstotliwości 3.35 GHz. Rozmiary serii Dav3 oferują kombinację vCPU, pamięci i magazynu tymczasowego dla większości obciążeń produkcyjnych. Opłaty za magazyn dysków danych są naliczane oddzielnie od opłat za maszyny wirtualne. Aby korzystać z dysków magazynu Premium Storage, użyj rozmiarów Dasv3. Liczniki cen i rozliczeń dla rozmiarów Dasv3 są takie same jak dla serii Dav3.
+
+[Kliknij tutaj, aby utworzyć konto w wersji zapoznawczej](http://aka.ms/azureamdpreview).
 
 | Size | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB |
 |---|---|---|---|
@@ -165,7 +169,7 @@ Magazyn w warstwie Premium:  Brak obsługi
 
 Buforowanie Premium Storage:  Brak obsługi
 
-| Size           | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna przepływność magazynu tymczasowego: Liczba IOPS/Odczyt MB/s/zapis MB/s | Maks. liczba dysków danych | Przepływność: IOPS | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) |
+| Size           | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna przepływność magazynu tymczasowego: Liczba IOPS/Odczyt MB/s/zapis MB/s | Maks. liczba dysków danych | Kazany IOPS | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) |
 |----------------|------|-------------|------------------------|------------------------------------------------------------|----------------|------------------|----------------------------------------------|
 | Standardowa_D1_v2 | 1    | 3,5         | 50                     | 3000 / 46 / 23                                             | 4              | 4 x 500            | 2 / 750                                      |
 | Maszyna wirtualna Standard_D2_v2 | 2    | 7           | 100                    | 6000 / 93 / 46                                             | 8              | 8 x 500            | 2 / 1500                                     |

@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: diberry
-ms.openlocfilehash: 01d01461c540949693855ca407920d52b22ad714
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 97684a4668c1d495fa690674f7bd94e064737bd4
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71106857"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273950"
 ---
 # <a name="developer-resources-for-language-understanding"></a>Zasoby dla deweloperów Language Understanding
 
@@ -27,7 +27,7 @@ Korzystając z warstwy zarządzania usługi Azure Cognitive Services, można two
 
 Zapoznaj się z dokumentacją referencyjną opartą na narzędziu:
 
-* [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list)
+* [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/cognitiveservices#az-cognitiveservices-list)
 
 * [Azure RM PowerShell](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services)
 

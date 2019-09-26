@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: dce7cc2cd8e97eef81023eb803cace3f6d011171
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 18a19f5f853206b06c617307c761a99033c9f92a
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "70174647"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266929"
 ---
 Rozmiary maszyn wirtualnych zoptymalizowane pod kątem pamięci oferują duże proporcje pamięci dla serwerów relacyjnych baz danych, średnich i dużych pamięci podręcznych oraz analizę w pamięci. Ten artykuł zawiera informacje na temat liczby procesorów wirtualnych vCPU, dysków danych i kart sieciowych, a także przepływności magazynu i przepustowości sieci dla każdego rozmiaru w ramach tego grupowania.
 
 * EV3 Series oferuje procesor E5-2673 v4 2,3 GHz (Broadwell) w konfiguracji wielowątkowej, co zapewnia lepszą wartość propozycji dla większości obciążeń ogólnego przeznaczenia, a EV3 do wyrównania z maszynami wirtualnymi ogólnego przeznaczenia większości innych chmur.  Pamięć została rozszerzona (od 7 GiB/vCPU do 8 GiB/vCPU), podczas gdy limity dysku i sieci zostały skorygowane dla poszczególnych rdzeni, aby dostosować je do przenoszenia do wielowątkowości.  EV3 to kolejne rozmiary maszyn wirtualnych o dużej ilości pamięci w rodzinach D/Dv2.
 
-* Seria Eav3 i Easv3 korzysta z procesora AMD 2.35 GHz EPYC<sup>TM</sup> 7452V w konfiguracji wielowątkowej z maksymalnie 256 MB pamięci podręcznej L3, zwiększając opcje uruchamiania większości zoptymalizowanych pod kątem pamięci.  Serie Eav3 i Easv3 mają takie same konfiguracje pamięci i dysków jak seria EV3 & Esv3.
+* Rozmiary wersji zapoznawczej serii Eav3 i Easv3 wykorzystują procesor AMD z 2.35 GHz EPYC<sup>TM</sup> 7452 w konfiguracji wielowątkowej z maksymalnie 256 MB pamięci podręcznej L3, zwiększając opcje uruchamiania większości zoptymalizowanych pod kątem pamięci.  Serie Eav3 i Easv3 mają takie same konfiguracje pamięci i dysków jak seria EV3 & Esv3.
 
 * Seria Mv2 oferuje najwyższą liczbę vCPU (do 208 procesorów wirtualnych vCPU) i największą ilość pamięci (do 5,7 TiB) dowolnej maszyny wirtualnej w chmurze. Jest to idealne rozwiązanie dla bardzo dużych baz danych lub innych aplikacji, które korzystają z dużej liczby procesorów wirtualnych vCPU i dużych ilości pamięci.
 
@@ -61,13 +61,15 @@ dostępne <sup>dwa</sup> ograniczone rozmiary rdzeni.
 
 <sup>3</sup> wystąpienie jest izolowane do sprzętu dedykowanego pojedynczemu klientowi.
 
-## <a name="easv3-series"></a>Seria Easv3
+## <a name="easv3-series-preview"></a>Easv3 — seria (wersja zapoznawcza)
 
 Magazyn w warstwie Premium: Obsługiwane
 
 Buforowanie Premium Storage: Obsługiwane
 
-Rozmiary serii Easv3 są oparte na procesorze 7452V 2.35 GHz AMD EPYC<sup>TM</sup> , który może osiągnąć podwyższenie poziomu Fmax — GHz i korzystać z magazynu Premium Storage. Rozmiary serii Easv3 są idealne dla aplikacji korporacyjnych intensywnie korzystających z pamięci.
+Rozmiary serii Easv3 są oparte na procesorze 2.35 GHz AMD EPYC<sup>TM</sup> 7452, który może osiągnąć podwyższenie poziomu Fmax — 3.35 GHz i korzystać z magazynu Premium Storage. Rozmiary serii Easv3 są idealne dla aplikacji korporacyjnych intensywnie korzystających z pamięci.
+
+[Kliknij tutaj, aby zarejestrowanie się w wersji zapoznawczej](http://aka.ms/azureamdpreview).
 
 | Size | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB |
 |---|---|---|---|
@@ -110,23 +112,25 @@ dostępne <sup>dwa</sup> ograniczone rozmiary rdzeni.
 
 <sup>3</sup> wystąpienie jest izolowane do sprzętu dedykowanego pojedynczemu klientowi.
 
-## <a name="eav3-series"></a>Seria Eav3
+## <a name="eav3-series-preview"></a>Eav3 — seria (wersja zapoznawcza)
 
 Magazyn w warstwie Premium: Brak obsługi
 
 Buforowanie Premium Storage: Brak obsługi
 
-Rozmiary serii Eav3 są oparte na procesorze 7452V 2.35 GHz AMD EPYC<sup>TM</sup> , który może osiągnąć podwyższenie poziomu Fmax — GHz i korzystać z magazynu Premium Storage. Rozmiary serii Eav3 są idealne dla aplikacji korporacyjnych intensywnie korzystających z pamięci. Opłaty za magazyn dysków danych są naliczane oddzielnie od opłat za maszyny wirtualne. Aby korzystać z dysków magazynu Premium Storage, użyj rozmiarów serii Easv3. Liczniki cen i rozliczeń dla rozmiarów Easv3 są takie same jak dla serii Eav3.
+Rozmiary serii Eav3 są oparte na procesorze 2.35 GHz AMD EPYC<sup>TM</sup> 7452, który może osiągnąć podwyższenie poziomu Fmax — 3.35 GHz i korzystać z magazynu Premium Storage. Rozmiary serii Eav3 są idealne dla aplikacji korporacyjnych intensywnie korzystających z pamięci. Opłaty za magazyn dysków danych są naliczane oddzielnie od opłat za maszyny wirtualne. Aby korzystać z dysków magazynu Premium Storage, użyj rozmiarów serii Easv3. Liczniki cen i rozliczeń dla rozmiarów Easv3 są takie same jak dla serii Eav3.
 
-| Size | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB |
-|---|---|---|---|---|---|
-| Standard_E2a_v3  | 2  | 16  | 50   |
-| Standard_E4a_v3  | 4  | 32  | 100  |
-| Standard_E8a_v3  | 8  | 64  | 200  |
-| Standard_E16a_v3 | 16 | 128 | 400  |
-| Standard_E32a_v3 | 32 | 256 | 800  |
-| Standard_E48a_v3 | 48 | 384 | 1200 |
-| Standard_E64a_v3 | 64 | 432 | 1600 |
+[Kliknij tutaj, aby zarejestrowanie się w wersji zapoznawczej](http://aka.ms/azureamdpreview).
+
+| Size             | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB |
+|------------------|------|-------------|-------------------------|
+| Standard_E2a_v3  | 2    | 16          | 50                      |
+| Standard_E4a_v3  | 4    | 32          | 100                     |
+| Standard_E8a_v3  | 8    | 64          | 200                     |
+| Standard_E16a_v3 | 16   | 128         | 400                     |
+| Standard_E32a_v3 | 32   | 256         | 800                     |
+| Standard_E48a_v3 | 48   | 384         | 1200                    |
+| Standard_E64a_v3 | 64   | 432         | 1600                    |
 
 ## <a name="mv2-series"></a>Seria Mv2
 
