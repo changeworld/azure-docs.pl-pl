@@ -1,47 +1,52 @@
 ---
-title: Dodawanie lub zmienianie administratorów subskrypcji platformy Azure | Microsoft Docs
+title: Dodawanie lub zmienianie administratorów subskrypcji platformy Azure
 description: Opisuje sposób dodawania lub zmieniania administratora subskrypcji platformy Azure przy użyciu kontroli dostępu opartej na rolach (RBAC).
-services: ''
-documentationcenter: ''
 author: genlin
-manager: adpick
-editor: ''
+manager: dcscontentpm
 tags: billing
-ms.assetid: 13a72d76-e043-4212-bcac-a35f4a27ee26
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 09/24/2019
 ms.author: banders
-ms.openlocfilehash: 000315a2d751a05d3e401ee1bb9f593c6e321194
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 2054fbb7d0a9f450ad487fc0f03d0af920c6cc4b
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "64922895"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260924"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Dodawanie lub zmienianie administratorów subskrypcji platformy Azure
 
-Zarządzanie dostępem do zasobów platformy Azure wymaga odpowiedniej roli administratora. Platforma Azure ma system autoryzacji zwany kontrolą dostępu opartą na rolach (RBAC) z kilkoma wbudowanymi rolami do wyboru. Te role można przypisywać do różnych zakresów, takich jak grupa zarządzania, subskrypcja lub grupa zasobów.
 
-Firma Microsoft zaleca, aby zarządzać dostępem do zasobów przy użyciu ról RBAC. Jeśli jednak nadal korzystasz z klasycznego modelu wdrażania i zarządzasz zasobami klasycznymi przy użyciu [modułu programu PowerShell do zarządzania usługami platformy Azure](https://docs.microsoft.com/powershell/module/servicemanagement/azure), musisz użyć administratora klasycznego. 
+Zarządzanie dostępem do zasobów platformy Azure wymaga odpowiedniej roli administratora. Platforma Azure ma system autoryzacji zwany [kontrolą dostępu opartą na rolach](../role-based-access-control/overview.md) (RBAC) z kilkoma wbudowanymi rolami do wyboru. Te role można przypisywać do różnych zakresów, takich jak grupa zarządzania, subskrypcja lub grupa zasobów. Domyślnie osoba, która tworzy nową subskrypcję platformy Azure, może przypisywać innym użytkownikom dostęp administracyjny do tej subskrypcji.
+
+W tym artykule opisano sposób dodawania lub zmieniania roli administratora dla użytkownika przy użyciu funkcji RBAC w zakresie subskrypcji.
+
+Firma Microsoft zaleca, aby zarządzać dostępem do zasobów przy użyciu ról RBAC. Jeśli jednak nadal korzystasz z klasycznego modelu wdrażania i zarządzasz zasobami klasycznymi przy użyciu [modułu programu PowerShell do zarządzania usługami platformy Azure](https://docs.microsoft.com/powershell/module/servicemanagement/azure), musisz użyć administratora klasycznego.
 
 > [!TIP]
 > Jeśli do zarządzania zasobami klasycznymi używasz tylko witryny Azure Portal, nie musisz używać administratora klasycznego.
 
 Aby uzyskać więcej informacji, zobacz [Porównanie usługi Azure Resource Manager i wdrożenia klasycznego](../azure-resource-manager/resource-manager-deployment-model.md) oraz [Klasyczni administratorzy subskrypcji platformy Azure](../role-based-access-control/classic-administrators.md).
 
-W tym artykule opisano sposób dodawania lub zmieniania roli administratora dla użytkownika przy użyciu funkcji RBAC w zakresie subskrypcji.
-
 <a name="add-an-admin-for-a-subscription"></a>
 
-## <a name="assign-a-user-as-an-administrator-of-a-subscription"></a>Przypisywanie użytkownika jako administratora subskrypcji
+## <a name="assign-a-subscription-administrator"></a>Przypisywanie administratora subskrypcji
 
-Aby nadać użytkownikowi uprawnienia administratora subskrypcji platformy Azure, przypisz do niego rolę [Właściciel](../role-based-access-control/built-in-roles.md#owner) (rolę RBAC) w zakresie subskrypcji. Rola właściciela daje użytkownikowi pełen dostęp do wszystkich zasobów w subskrypcji, w tym prawo do przydzielania dostępu innym osobom. Te kroki są takie same jak w przypadku innych przypisań ról.
+Aby nadać użytkownikowi uprawnienia administratora subskrypcji platformy Azure, istniejący administrator przypisuje mu rolę [Właściciel](../role-based-access-control/built-in-roles.md#owner) (rolę RBAC) w zakresie subskrypcji. Rola właściciela daje użytkownikowi pełen dostęp do wszystkich zasobów w subskrypcji, w tym prawo do przydzielania dostępu innym osobom. Te kroki są takie same jak w przypadku innych przypisań ról.
 
-1. W witrynie Azure Portal otwórz pozycję [Subskrypcje](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
+Jeśli nie wiesz, kto jest administratorem konta dla subskrypcji, wykonaj poniższe kroki, aby to sprawdzić.
+
+1. Otwórz [stronę Subskrypcje w witrynie Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
+1. Wybierz subskrypcję, którą chcesz sprawdzić, a następnie przejrzyj **Ustawienia**.
+1. Wybierz pozycję **Właściwości**. Administrator konta subskrypcji jest wyświetlany w polu **Administrator konta**.
+
+### <a name="to-assign-a-user-as-an-administrator"></a>Aby przypisać użytkownika jako administratora
+
+1. Zaloguj się w witrynie Azure Portal jako właściciel subskrypcji i otwórz sekcję [Subskrypcje](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 
 1. Kliknij subskrypcję, do której chcesz udzielić dostępu.
 

@@ -4,7 +4,7 @@ description: Opis sposobu dokonywania płatności w przypadku, gdy Twoja subskry
 services: ''
 documentationcenter: ''
 author: genlin
-manager: jureid
+manager: dcscontentpm
 editor: ''
 tags: billing
 ms.assetid: d0b88c92-fb9d-4d12-931b-c26104ad63e9
@@ -15,14 +15,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: banders
-ms.openlocfilehash: f58969b167b6c0f0a66d46731ad76c1f6e9acc41
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: cd3c29c4b65f45863647599ae2447584845f27c8
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67491454"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300284"
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription"></a>Rozwiązywanie problemu z zaległym saldem za subskrypcję platformy Azure
+
+Ten artykuł dotyczy klientów z kontami usługi online firmy Microsoft.
 
 Jeśli nie otrzymamy Twojej płatności lub jeśli nie będziemy mogli jej przetworzyć, możesz otrzymać wiadomość e-mail lub zobaczyć alert w witrynie Azure Portal bądź w Centrum konta.
 Jeśli jesteś [administratorem konta](billing-subscription-transfer.md#whoisaa), możesz rozliczyć zaległe opłaty w witrynie [Azure Portal](https://portal.azure.com). Jeśli Twoja płatność jest rozliczana na podstawie faktury, wyślij płatność do lokalizacji wskazanej na dole faktury.
@@ -43,6 +45,13 @@ Jeśli jesteś [administratorem konta](billing-subscription-transfer.md#whoisaa)
 1. Jeśli wybrana forma płatności ma także zaległe opłaty za usługi firmy Microsoft, zostanie to odzwierciedlone w łącznym należnym saldzie. Te zaległe opłaty muszą zostać również uregulowane.
 1. Kliknij pozycję **Zapłać**.
 
+## <a name="troubleshoot-declined-credit-card"></a>Rozwiązywanie problemów z odrzuconą kartą kredytową
+
+W razie odrzucenia przez instytucję finansową płatności za pomocą karty kredytowej skontaktuj się z tą instytucją, aby rozwiązać ten problem. W swoim banku upewnij się, że spełnione są te warunki:
+- Na karcie są włączone transakcje międzynarodowe.
+- Karta ma wystarczający limit kredytowy lub środki do rozliczenia salda.
+- Na karcie są włączone płatności cykliczne.
+
 ## <a name="not-getting-billing-email-notifications"></a>Nie otrzymujesz powiadomień e-mail dotyczących rozliczeń?
 
 Jeśli jesteś administratorem konta, [sprawdź, jaki adres e-mail jest używany na potrzeby powiadomień](billing-how-to-change-azure-account-profile.md). Zalecamy korzystanie z adresu e-mail, który jest regularnie sprawdzany. Jeśli adres e-mail jest prawidłowy, sprawdź swój folder spamu.
@@ -52,6 +61,7 @@ Jeśli jesteś administratorem konta, [sprawdź, jaki adres e-mail jest używany
 Usługa zostanie anulowana, a Twoje zasoby nie będą już dostępne. Twoje dane zostaną usunięte z platformy Azure po 90 dniach od zakończenia usługi. Aby dowiedzieć się więcej, zobacz [Centrum zaufania firmy Microsoft — jak zarządzamy Twoimi danymi](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409).
 
 Jeśli wiesz, że Twoja płatność została przetworzona, ale Twoja subskrypcja jest nadal wyłączona, skontaktuj się z [pomocą techniczną platformy Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 

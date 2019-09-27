@@ -1,59 +1,52 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentacja dedykowanego modułu HSM platformy Azure
+summary: Dowiedz się, jak za pomocą usługi Azure Dedicated HSM tworzyć i obsługiwać klucze, które umożliwiają uzyskiwanie dostępu do zasobów, aplikacji i rozwiązań przechowywanych w chmurze oraz ich szyfrowanie. Samouczki, dokumentacja interfejsu API i inne materiały.
 metadata:
-  title: Dokumentacja dedykowanego modułu HSM platformy Azure — samouczki i dokumentacja interfejsu API | Microsoft Docs
-  meta.description: 'Learn how to use Azure Dedicated HSM to create and maintain keys that access and encrypt your cloud resources, apps, and solutions. Tutorials, API references, and more.'
+  title: Dokumentacja dedykowanego modułu HSM platformy Azure
+  description: Dowiedz się, jak za pomocą usługi Azure Dedicated HSM tworzyć i obsługiwać klucze, które umożliwiają uzyskiwanie dostępu do zasobów, aplikacji i rozwiązań przechowywanych w chmurze oraz ich szyfrowanie. Samouczki, dokumentacja interfejsu API i inne materiały.
   services: dedicated-hsm
-  author: msmbaldwin
-  manager: rkarlin
-  layout: LandingPage
-  ms.assetid: null
   ms.service: dedicated-hsm
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 11/21/2018
+  author: msmbaldwin
   ms.author: mbaldwin
-abstract:
-  description: 'Dowiedz się więcej na temat funkcji dedykowanego modułu HSM i sprawdź, czy możesz jej używać w swoim środowisku.'
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/dedicated-hsm/overview
-            html: <p>Uzyskaj informacje o dedykowanym module HSM platformy Azure.</p>
-            image:
-              src: media/index/hsm.svg
-            title: Omówienie dedykowanego modułu HSM
-          - href: /azure/dedicated-hsm/faq
-            html: <p>Zagadnienia dotyczące projektowania do wzięcia pod uwagę przy korzystaniu z dedykowanego modułu HSM</p>
-            image:
-              src: media/index/guide.svg
-            title: Wybieranie architektury wdrożenia
-  - title: Samouczki krok po kroku
-    items:
-      - type: paragraph
-        text: ''
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/cli.svg
-            text: Interfejs wiersza polecenia platformy Azure
-            href: /azure/dedicated-hsm/tutorial-deploy-hsm-cli
-          - image:
-              src: media/index/logo_powershell.svg
-            text: PowerShell
-            href: /azure/dedicated-hsm/tutorial-deploy-hsm-powershell
-  - title: Dokumentacja
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Często zadawane pytania
-            html: <p><a href="/azure/dedicated-hsm/faq/">Często zadawane pytania</a></p>
+  manager: rkarlin
+  ms.date: 09/19/2019
+  ms.openlocfilehash: 9e592fdb5fa87487f131bb0aca0c6176175e5385
+  ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 09/26/2019
+  ms.locfileid: "71300106"
+landingContent:
+- title: Informacje o dedykowanym module HSM
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest dedykowany moduł HSM?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Wysoka dostępność
+      url: high-availability.md
+    - text: Zabezpieczenia fizyczne
+      url: physical-security.md
+    - text: Networking
+      url: networking.md
+    - text: Możliwości obsługi
+      url: supportability.md
+    - text: Monitorowanie
+      url: monitoring.md
+- title: Rozpoczęcie pracy
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Wdrażanie w sieci wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure
+      url: tutorial-deploy-hsm-cli.md
+    - text: Wdrażanie w sieci wirtualnej przy użyciu programu Azure PowerShell
+      url: tutorial-deploy-hsm-powershell.md
+- title: Scenariusze
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: Architektura wdrożenia usługi Azure Dedicated HSM
+      url: deployment-architecture.md

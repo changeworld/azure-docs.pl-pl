@@ -474,6 +474,8 @@
           href: disks-upload-vhd-to-managed-disk-powershell.md
         - name: Zmienianie rozmiaru dysku
           href: expand-os-disk.md
+        - name: Zarządzanie dyskami za pomocą Eksploratora usługi Storage
+          href: disks-use-storage-explorer-managed-disks.md
         - name: Tworzenie migawki dysku
           href: snapshot-copy-managed-disk.md
         - name: Tworzenie migawki przyrostowej

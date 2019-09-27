@@ -1,63 +1,91 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentacja usługi Azure Sentinel
+summary: W tym artykule przedstawiono przypadki użycia ułatwiające rozpoczęcie korzystania z usługi Azure Sentinel. Wyświetlaj i powstrzymuj zagrożenia, zanim spowodują szkody, korzystając z rozwiązania SIEM stworzonego na nowo z myślą o współczesnym świecie. Usługa Azure Sentinel zapewnia ogólny widok na całe przedsiębiorstwo.
 metadata:
-  title: Dokumentacja usługi Azure Sentinel — samouczki i przewodniki Szybki start | Microsoft Docs
-  meta.description: Azure Sentinel is a cloud-native SIEM that provides intelligent security analytics for your entire enterprise at cloud scale.
+  title: Dokumentacja usługi Azure Sentinel
+  description: W tym artykule przedstawiono przypadki użycia i scenariusze ułatwiające rozpoczęcie korzystania z usługi Azure Sentinel. Wyświetlaj i powstrzymuj zagrożenia, zanim spowodują szkody, korzystając z rozwiązania SIEM stworzonego na nowo z myślą o współczesnym świecie. Usługa Azure Sentinel zapewnia ogólny obraz całego przedsiębiorstwa.# Wymagane; opis artykułu wyświetlany w wynikach wyszukiwania. Mniej niż 160 znaków.
   services: sentinel
-  author: cmcclister
-  manager: carolz
-  ms.service: azure-sentinel
+  ms.service: sentinel
   ms.subservice: azure-sentinel
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 02/28/19
-  ms.author: cmcclister
-abstract:
-  description: 'Usługa Azure Sentinel to rozwiązanie SIEM natywne dla chmury, które zapewnia inteligentną analizę zabezpieczeń dla całego przedsiębiorstwa w skali chmury. Korzystaj z nieograniczonej szybkości i skalowalności chmury, aby skupić się na najistotniejszych kwestiach. Łatwo gromadź dane ze wszystkich swoich zasobów chmurowych i lokalnych, usługi Office 365, zasobów platformy Azure i innych chmur. Skutecznie wykrywaj zagrożenia, używając wbudowanych funkcji uczenia maszynowego opracowanych przez ekspertów firmy Microsoft w dziedzinie analizy zabezpieczeń. Automatyzuj reagowanie na zagrożenia, używając wbudowanych podręczników aranżacji i automatyzacji.'
-sections:
-  - title: 5-minutowe przewodniki Szybki start
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak dołączyć dane do programu Azure Sentinel oraz uzyskać wgląd w dane i potencjalne zagrożenia.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/deploy.svg
-            text: Rozpoczynanie korzystania z programu Azure Sentinel
-            href: /azure/sentinel/quickstart-onboard
-          - image:
-              src: media/index/get-started.svg
-            text: Rozpoczynanie pracy z programem Azure Sentinel
-            href: /azure/sentinel/quickstart-get-visibility
-  - title: Samouczki krok po kroku
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak definiować zasady zabezpieczeń, chronić zasoby przed złośliwymi działaniami i reagować na alerty zabezpieczeń oraz zdarzenia.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/sentinel/tutorial-detect-threats">Wykrywanie zagrożeń za pomocą programu Azure Sentinel</a>
-          - html: <a href="/azure/sentinel/tutorial-respond-threats-playbook">Konfigurowanie automatycznych reakcji na zagrożenia</a>
-  - title: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Wprowadzenie do zabezpieczeń na platformie Azure
-            href: 'https://docs.microsoft.com/learn/azure'
-            image:
-              src: media/index/tutorial.svg
-              href: 'https://docs.microsoft.com/learn/azure'
-      - type: paragraph
-        text: <a href="/learn/browse/?term=security">Więcej interakcyjnych zasobów szkoleniowych...</a>
-  - title: Dokumentacja
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - html: '<a href="https://azure.microsoft.com/updates/?product=sentinel">Aktualizacje usług</a>'
+  ms.collection: collection
+  author: rkarlin
+  ms.author: rkarlin
+  ms.date: 25/09/2019
+  ms.openlocfilehash: 8f8815645b7dfcdcc5e1ed5212ecd1ec298f8644
+  ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 09/26/2019
+  ms.locfileid: "71316484"
+landingContent:
+- title: Informacje o usłudze Azure Sentinel
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest usługa Azure Sentinel?
+      url: overview.md
+- title: Rozpoczęcie pracy
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Rozpoczynanie korzystania z programu Azure Sentinel
+      url: quickstart-onboard.md
+    - text: Uzyskiwanie wglądu w alerty
+      url: quickstart-get-visibility.md
+  - linkListType: how-to-guide
+    links:
+    - text: Łączenie danych z usługą Azure Sentinel
+      url: connect-data-sources.md
+- title: Łączenie dodatkowych źródeł danych
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Łączenie z usługą Azure AD
+      url: connect-azure-active-directory.md
+    - text: Łączenie z usługą Azure Information Protection
+      url: connect-azure-information-protection.md
+    - text: Łączenie usługi AWS
+      url: connect-aws.md
+    - text: Łączenie z rozwiązaniami Palo Alto Networks
+      url: connect-paloalto.md
+    - text: Łączenie z funkcjami analizy zagrożeń
+      url: connect-threat-intelligence.md
+- title: Praca z wieloma dzierżawami
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Jak włączyć obsługę wielu dzierżaw w usłudze Azure Sentinel
+      url: multiple-tenants-service-providers.md
+- title: Sprawdzaj, co się dzieje w Twoim środowisku
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Monitorowanie danych
+      url: tutorial-monitor-your-data.md
+    - text: Badanie zdarzeń
+      url: tutorial-investigate-cases.md
+- title: Wykrywania zagrożeń
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Wykrywanie zagrożeń za pomocą wbudowanej analizy
+      url: tutorial-detect-threats-built-in.md
+    - text: Tworzenie niestandardowych reguł wykrywania
+      url: tutorial-detect-threats-custom.md
+- title: Automatyzowanie zapobiegania zagrożeniom
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Automatyczne reagowanie na zagrożenia
+      url: tutorial-respond-threats-playbook.md
+    - text: Wyszukiwanie zagrożeń za pomocą notesów Jupyter
+      url: notebooks.md
+- title: Proaktywne wykrywanie zagrożeń
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Łączenie z funkcjami analizy zagrożeń
+      url: connect-threat-intelligence.md
+    - text: Wyszukiwanie zagrożeń
+      url: hunting.md

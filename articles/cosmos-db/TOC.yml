@@ -691,6 +691,8 @@
       items:
         - name: Włączanie notesów
           href: enable-notebooks.md
+        - name: Korzystanie z wbudowanych poleceń notesu
+          href: use-notebook-features-and-commands.md
     - name: Programowanie po stronie serwera
       items:
         - name: 'Zapisywanie procedur składowanych, wyzwalaczy i funkcji definiowanych przez użytkownika (UDF)'

@@ -28,6 +28,10 @@
           href: connect-windows-7-and-10.md
         - name: Łączenie z przeglądarki internetowej
           href: connect-web.md
+        - name: Nawiązywanie połączenia z klientem systemu macOS
+          href: connect-macos.md
+        - name: Nawiązywanie połączenia z klientem systemu iOS
+          href: connect-ios.md
     - name: Tworzenie puli hostów za pomocą szablonu usługi Azure Resource Manager
       href: create-host-pools-arm-template.md
     - name: Tworzenie puli hostów przy użyciu programu PowerShell

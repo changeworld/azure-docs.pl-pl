@@ -476,6 +476,8 @@
           href: disks-upload-vhd-to-managed-disk-cli.md
         - name: Zmienianie rozmiaru dysku
           href: expand-disks.md
+        - name: Zarządzanie dyskami za pomocą Eksploratora usługi Storage
+          href: disks-use-storage-explorer-managed-disks.md
         - name: Tworzenie migawki dysku
           href: snapshot-copy-managed-disk.md
         - name: Tworzenie migawki przyrostowej

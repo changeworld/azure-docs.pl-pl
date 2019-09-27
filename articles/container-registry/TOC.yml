@@ -71,6 +71,8 @@
           items:
             - name: Usuwanie danych obrazu — interfejs wiersza polecenia
               href: container-registry-delete.md
+            - name: Zasady przechowywania dla nieotagowanych manifestów (wersja zapoznawcza)
+              href: container-registry-retention-policy.md
             - name: Automatyczne przeczyszczanie tagów i manifestów (wersja zapoznawcza)
               href: container-registry-auto-purge.md
         - name: Uaktualnianie rejestru klasycznego

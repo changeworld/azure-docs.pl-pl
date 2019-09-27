@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 507ad62a917120689bee3f1e293e23c9ab8b0f66
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: f2f5b2ecf096d7dc8babb79a38d00158a2120688
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "68598097"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71218075"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Pobieranie kosztów i użycia rezerwacji w ramach umowy Enterprise Agreement
 
@@ -26,7 +26,7 @@ Koszty rezerwacji i dane użycia są dostępne dla klientów z umową Enterprise
 - Dowiedzieć się, w przypadku której subskrypcji, grupy zasobów lub którego zasobu została użyta rezerwacja
 - Dokonać obciążenia zwrotnego za użycie rezerwacji
 - Obliczyć oszczędności rezerwacji
-- Pobrać dane dotyczące zbyt krótkiego użycia rezerwacji
+- Pobrać dane dotyczące niedostatecznego użycia rezerwacji
 - Amortyzować koszty rezerwacji
 
 Opłaty w witrynie Marketplace są łączone w danych użycia. Można wyświetlać opłaty za użycie tej samej firmy, użycie platformy handlowej oraz zakupy z jednego źródła danych.
@@ -57,18 +57,20 @@ Inne informacje dostępne w danych użycia platformy Azure uległy zmianie:
 - Okres — 12 miesięcy lub 36 miesięcy.
 - RINormalizationRatio — dostępne w obszarze AdditionalInfo. Jest to stosunek rezerwacji do rekordu użycia. Jeśli na potrzeby rezerwacji włączono elastyczność rozmiaru wystąpienia, może ona mieć zastosowanie w przypadku innych rozmiarów. Wartość przedstawia współczynnik, do którego została zastosowana rezerwacja dla rekordu użycia.
 
+[Zobacz definicję pola](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#definitions)
+
 ## <a name="get-azure-consumption-and-reservation-usage-data-using-api"></a>Pobieranie danych użycia platformy Azure i rezerwacji przy użyciu interfejsu API
 
 Można pobrać dane przy użyciu interfejsu API lub pobrać je z witryny Azure Portal.
 
-Można wywołać [interfejs API szczegółów użycia](/rest/api/consumption/usagedetails/list) za pomocą interfejsu API w wersji &quot;2019-04-01-preview&quot;, aby pobrać nowe dane. Aby uzyskać szczegółowe informacje na temat terminologii, zobacz [warunki użytkowania](billing-understand-your-usage.md). Wywołujący powinien być administratorem Enterprise w ramach umowy Enterprise Agreement korzystającym z witryny [EA Portal](https://ea.azure.com). Administratorzy Enterprise z uprawnieniami tylko do odczytu mogą również pobierać dane.
+Można wywołać [interfejs API szczegółów użycia](/rest/api/consumption/usagedetails/list), aby pobrać nowe dane. Aby uzyskać szczegółowe informacje na temat terminologii, zobacz [warunki użytkowania](billing-understand-your-usage.md). Wywołujący powinien być administratorem Enterprise w ramach umowy Enterprise Agreement korzystającym z witryny [EA Portal](https://ea.azure.com). Administratorzy Enterprise z uprawnieniami tylko do odczytu mogą również pobierać dane.
 
 Dane nie są dostępne w [interfejsach API raportowania dla klientów Enterprise — szczegóły użycia](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail).
 
 Oto przykład wywołania interfejsu API:
 
 ```
-https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-04-01-preview&amp;$filter={filter}
+https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-05-01&amp;$filter={filter}
 ```
 
 Aby uzyskać więcej informacji na temat parametrów {enrollmentId} i {billingPeriodId}, zobacz artykuł dotyczący interfejsu API [Usage Details – List](https://docs.microsoft.com/rest/api/consumption/usagedetails/list) (Szczegóły użycia — lista).
@@ -154,9 +156,9 @@ Jeśli masz pytania lub potrzebujesz pomocy, [utwórz wniosek o pomoc techniczn�
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat usługi Azure Reservations, zobacz następujące artykuły:
+Aby dowiedzieć się więcej na temat rezerwacji platformy Azure, zobacz następujące artykuły:
 
-- [Co to jest Azure Reservations?](billing-save-compute-costs-reservations.md)
+- [Co to są rezerwacje platformy Azure?](billing-save-compute-costs-reservations.md)
 - [Prepay for Virtual Machines with Azure Reserved VM Instances (Opłacanie maszyn wirtualnych z góry przy użyciu usługi Azure Reserved VM Instances)](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Prepay for SQL Database compute resources with Azure SQL Database reserved capacity (Opłacanie zasobów obliczeniowych usługi SQL Database z góry przy użyciu zarezerwowanej pojemności usługi Azure SQL Database)](../sql-database/sql-database-reserved-capacity.md)
 - [Zarządzanie usługą Azure Reservations](billing-manage-reserved-vm-instance.md)

@@ -21,7 +21,7 @@
 - name: Przewodniki Szybki start
   expanded: true
   items:
-    - name: Włączanie usługi Azure Security Center dla IoT w usłudze IoT Hub
+    - name: Dołączanie usługi Azure Security Center dla IoT w usłudze IoT Hub
       href: quickstart-onboard-iot-hub.md
     - name: Konfigurowanie rozwiązania
       href: quickstart-configure-your-solution.md
@@ -73,6 +73,8 @@
       href: how-to-security-data-access.md
     - name: Badanie urządzenia
       href: how-to-investigate-device.md
+    - name: Dostosowywanie rozwiązania
+      href: how-to-customize-solution.md
 - name: Zasoby
   items:
     - name: Często zadawane pytania
