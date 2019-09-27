@@ -41,7 +41,7 @@ Następujące wypowiedzi przedstawiają przykłady tonacji:
 |Opinia|Wynik|Wypowiedź|
 |:--|:--|:--|
 |pozytywna|0,91 |John W. Smith zostało świetnie w prezentacji w Paryżu.|
-|pozytywna|0,84 |The Seattle engineers did fabulous work on the Parker sales pitch.|
+|pozytywna|0,84 |Inżynierowie z Seattle wykonali fantastyczną pracę na boisku Parkera|
 
 Analiza tonacji to ustawienie publikowania, które ma zastosowanie do każdej wypowiedzi. Nie ma potrzeby odnajdywania słów wskazujących tonację w ramach wypowiedzi i oznaczania ich. 
 
@@ -84,12 +84,12 @@ Dodanie nowej intencji pozwala na przechwycenie opinii pracowników firmy.
     |--|
     |John Smith did a nice job of welcoming back a co-worker from maternity leave|
     |Jill Jones did a great job of comforting a co-worker in their time of grief.|
-    |Bob Barnes didn't have all the required invoices for the paperwork.|
-    |Todd Thomas turned in the required forms a month late with no signatures|
-    |Katherine Kelly didn't make it to the important marketing off-site meeting.|
+    |Bob Barnes nie miał wszystkich wymaganych faktur za dokumenty.|
+    |Todd Thomas oddał wymagane formularze miesiąc później bez podpisów|
+    |Katherine Kelly nie dotarła na ważne spotkanie marketingowe poza miejscem.|
     |Denise Dillard missed the meeting for June reviews.|
-    |Mark Mathews rocked the sales pitch at Harvard|
-    |Walter Williams did a great job on the presentation at Stanford|
+    |Mark Mathews wstrząsnął boiskiem sprzedaży na Harvardzie|
+    |Walter Williams wykonał świetną robotę podczas prezentacji w Stanford|
 
     Wybierz **Opcje widoku**, wybierz pozycję **Pokaż wartości jednostki** , aby wyświetlić nazwy.
 
