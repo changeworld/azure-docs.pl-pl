@@ -1,71 +1,69 @@
 ---
-title: Jak działa bramy aplikacji
-description: Ten artykuł zawiera informacje dotyczące sposobu działania bramy aplikacji
+title: Jak działa Brama aplikacji
+description: Ten artykuł zawiera informacje o działaniu bramy aplikacji
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: a16421182f533f5aa2ad4bcc2e58e910cc7e8ca6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5cb7473b309e1aefe6237671fac73c042b33f2cf
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64702408"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326872"
 ---
-# <a name="how-an-application-gateway-works"></a>Jak działa bramy aplikacji
+# <a name="how-an-application-gateway-works"></a>Jak działa Brama aplikacji
 
-W tym artykule wyjaśniono, jak usługa application gateway akceptuje żądania przychodzące i kieruje je do wewnętrznej bazy danych.
+W tym artykule wyjaśniono, jak Brama aplikacji akceptuje żądania przychodzące i kieruje je do zaplecza.
 
-![Jak akceptuje żądania przez bramę aplikacji](./media/how-application-gateway-works/how-application-gateway-works.png)
+![Jak Brama aplikacji akceptuje żądanie](./media/how-application-gateway-works/how-application-gateway-works.png)
 
-## <a name="how-an-application-gateway-accepts-a-request"></a>Jak akceptuje żądania przez bramę aplikacji
+## <a name="how-an-application-gateway-accepts-a-request"></a>Jak Brama aplikacji akceptuje żądanie
 
-1. Zanim klient wysyła żądanie do usługi application gateway, rozpoznaje nazwę domeny usługi application gateway przy użyciu serwera systemu nazw domen (DNS, Domain Name System). Azure Określa wpis DNS, ponieważ wszystkich bram aplikacji znajdują się w domenie azure.com.
+1. Zanim klient wyśle żądanie do bramy aplikacji, rozpoznaje nazwę domeny bramy aplikacji przy użyciu serwera systemu nazw domen (DNS). System Azure kontroluje wpis DNS, ponieważ wszystkie bramy aplikacji znajdują się w domenie azure.com.
 
-2. System DNS Azure zwracany jest adres IP klienta, czyli adresu IP frontonu bramy aplikacji.
+2. Azure DNS zwraca adres IP klienta, który jest adresem IP frontonu bramy aplikacji.
 
-3. Application gateway akceptuje ruch przychodzący na co najmniej jednego odbiornika. Odbiornik jest logicznej jednostki, która sprawdza, czy żądania połączenia. Jest ona skonfigurowana przy użyciu adresu IP frontonu, protokół i numer portu dla połączenia od klientów do usługi application gateway.
+3. Brama aplikacji akceptuje ruch przychodzący na jednym lub większej liczbie odbiorników. Odbiornik jest jednostką logiczną, która sprawdza, czy są używane żądania połączeń. Jest on konfigurowany przy użyciu adresu IP frontonu, protokołu i numeru portu dla połączeń od klientów do bramy aplikacji.
 
-4. Jeśli zapory aplikacji sieci web (WAF) jest używany, bramy application gateway sprawdza nagłówki żądania i treści, jeśli jest obecny, względem reguły zapory aplikacji sieci Web. Ta akcja określa, czy żądanie jest prawidłowym żądaniem lub zagrożenie bezpieczeństwa. Jeśli żądanie jest prawidłowe, odbywa się do wewnętrznej bazy danych. Jeśli żądanie nie jest prawidłowy, jest zablokowany jako zagrożenie bezpieczeństwa.
+4. Jeśli jest używana Zapora aplikacji sieci Web (WAF), Brama aplikacji sprawdza nagłówki żądań i treść, jeśli istnieje, względem reguł WAF. Ta akcja określa, czy żądanie jest prawidłowym żądaniem czy zagrożeniem bezpieczeństwa. Jeśli żądanie jest prawidłowe, jest kierowane do zaplecza. Jeśli żądanie jest nieprawidłowe i WAF jest w trybie zapobiegania, jest ono blokowane jako zagrożenie bezpieczeństwa. Jeśli jest w trybie wykrywania, żądanie jest oceniane i rejestrowane, ale nadal przesyłane do serwera wewnętrznej bazy danych.
 
-Usługa Azure Application Gateway może służyć jako aplikacja wewnętrzna usługa równoważenia obciążenia lub z Internetu modułu równoważenia obciążenia aplikacji. Bramy aplikacji z Internetu używa publicznych adresów IP. Nazwy DNS bramy aplikacji z Internetu jest publicznie rozpoznawalnej do publicznego adresu IP. W wyniku bram aplikacji z Internetu może kierować żądania klientów w Internecie.
+Usługi Azure Application Gateway można używać jako wewnętrznego modułu równoważenia obciążenia aplikacji lub jako modułu równoważenia obciążenia aplikacji dostępnego z Internetu. Brama aplikacji mających dostęp do Internetu używa publicznych adresów IP. Nazwa DNS bramy aplikacji dostępnej z Internetu jest publicznie rozpoznawalna na swój publiczny adres IP. W związku z tym internetowe bramy aplikacji mogą kierować żądania klientów do Internetu.
 
-Aplikacja wewnętrzna bramy używają tylko prywatnych adresów IP. Nazwy DNS bramy aplikacji wewnętrznej jest rozpoznania publicznie na jego prywatny adres IP. W związku z tym wewnętrznego równoważenia obciążenia, tylko może kierować żądania klientów z dostępem do sieci wirtualnej dla usługi application gateway.
+Wewnętrzne bramy aplikacji używają tylko prywatnych adresów IP. Jeśli używasz niestandardowej lub [prywatna strefa DNS strefy](https://docs.microsoft.com/azure/dns/private-dns-overview), nazwa domeny powinna być wewnętrznie rozpoznawalna na prywatny adres IP Application Gateway. W związku z tym wewnętrzne moduły równoważenia obciążenia mogą kierować żądania tylko od klientów mających dostęp do sieci wirtualnej dla bramy aplikacji.
 
-Zarówno z Internetu, jak i wewnętrznych aplikacji bramy kierowania żądań do serwerów wewnętrznej bazy danych przy użyciu prywatnych adresów IP. Serwerów wewnętrznej bazy danych nie ma potrzeby publicznych adresów IP do odbierania żądań od wewnętrznego lub bramy aplikacji z Internetu.
+## <a name="how-an-application-gateway-routes-a-request"></a>Jak Brama aplikacji kieruje żądanie
 
-## <a name="how-an-application-gateway-routes-a-request"></a>Jak usługa application gateway kieruje żądania
+Jeśli żądanie jest prawidłowe i nie zostało zablokowane przez WAF, Brama aplikacji oceni regułę routingu żądań skojarzoną z odbiornikiem. Ta akcja określa pulę zaplecza, do której mają być kierowane żądania.
 
-Jeśli żądanie jest nieprawidłowy lub nie jest używana Zapora aplikacji sieci Web, bramy application gateway ocenia reguły routingu żądania skojarzonego z odbiornika. Ta akcja określa, które puli zaplecza, aby skierować żądanie.
+Na podstawie reguły routingu żądań Brama aplikacji określa, czy wszystkie żądania dotyczące odbiornika mają być kierowane do określonej puli zaplecza, trasy żądań do różnych pul zaplecza na podstawie ścieżki URL lub przekierować żądania do innego portu lub zewnętrznej lokacji.
+>[!NOTE]
+>Reguły są przetwarzane w kolejności, w jakiej są wyświetlane w portalu dla jednostki SKU w wersji 1. 
 
-Reguły są przetwarzane w kolejności, w której są wyświetlane w portalu. Oparte na regułę routingu żądań, bramy application gateway Określa, czy przekierowaniu wszystkich żądań odbiornik z pulą zaplecza określonej trasy żądania do pul różnych wewnętrznych baz danych na podstawie ścieżki adresu URL, lub Przekieruj żądania do innego portu lub zewnętrznej witryny.
+Gdy Brama aplikacji wybiera pulę zaplecza, wysyła żądanie do jednego z serwerów zaplecza w dobrej kondycji w puli (y. y. y. y). Kondycja serwera jest określana przez sondę kondycji. Jeśli pula zaplecza zawiera wiele serwerów, Brama aplikacji używa algorytmu okrężnego do kierowania żądań między serwerami w dobrej kondycji. To obciążenie równoważy żądania na serwerach.
 
-Gdy bramy application gateway wybierze puli zaplecza, wysyła żądanie do jednego z serwerów zaplecza w dobrej kondycji w puli (y.y.y.y). Kondycja serwera jest określany przez sondy kondycji. Jeśli pula wewnętrznej bazy danych zawiera wiele serwerów, bramy application gateway używa algorytmu okrężnym do kierowania żądań między serwerami w dobrej kondycji. Równoważy żądań na serwerach.
+Gdy Brama aplikacji określi serwer wewnętrznej bazy danych, zostanie otwarta nowa sesja TCP z serwerem zaplecza na podstawie ustawień HTTP. Ustawienia protokołu HTTP określają protokół, port i inne ustawienia związane z routingiem, które są wymagane do ustanowienia nowej sesji z serwerem wewnętrznej bazy danych.
 
-Po bramy application gateway określa serwera wewnętrznej bazy danych, otwiera nową sesję protokołu TCP z serwerem wewnętrznej bazy danych na podstawie ustawień HTTP. Ustawienia HTTP Określ protokół, port i innych ustawień związanych z routingiem, które są wymagane do ustanowienia nowej sesji z serwera wewnętrznej bazy danych.
+Port i protokół używany w ustawieniach protokołu HTTP określają, czy ruch między usługą Application Gateway i serwerami zaplecza jest szyfrowany (w związku z tym kompleksowym protokołem SSL) lub jest niezaszyfrowany.
 
-Port i protokół używany w ustawieniach protokołu HTTP należy określić, czy ruchu między serwerami bramy i wewnętrznej bazy danych aplikacji są szyfrowane (ten sposób wykonywania end-to-end SSL), czy jest niezaszyfrowany.
-
-Bramy aplikacji wysyła oryginalne żądanie do serwera wewnętrznej bazy danych, będzie używana żadnej konfiguracji niestandardowej wprowadzone w ustawieniach protokołu HTTP, związane z zastępowanie nazwy hosta, ścieżki i protokołu. Ta akcja zachowuje koligacji sesji na podstawie pliku cookie, wybór opróżniania, nazwy hosta połączenia z wewnętrznej bazy danych i tak dalej.
-
-Bramy aplikacji wewnętrznych używa tylko prywatnych adresów IP. Nazwy DNS bramy aplikacji wewnętrznej jest rozpoznawany na jego prywatny adres IP. W rezultacie wewnętrznego równoważenia obciążenia tylko może kierować żądania klientów z dostępem do sieci wirtualnej dla usługi application gateway.
+Gdy Brama aplikacji wysyła oryginalne żądanie do serwera wewnętrznej bazy danych, zauważa każdą konfigurację niestandardową wykonaną w ustawieniach HTTP związanych z zastępowaniem nazwy hosta, ścieżki i protokołu. Ta akcja obsługuje koligację sesji opartą na plikach cookie, opróżnianie połączeń, wybór nazwy hosta z zaplecza i tak dalej.
 
  >[!NOTE]
- >Obie bramy aplikacji internetowych i wewnętrznych kierowania żądań do serwerów wewnętrznej bazy danych przy użyciu prywatnych adresów IP. Ta akcja występuje, gdy zasób puli wewnętrznej bazy danych zawiera prywatny adres IP, konfiguracja karty Sieciowej maszyny Wirtualnej lub wewnętrznie możliwej do rozpoznania adresu. Jeśli pula zaplecza:
-> - **Jest to publiczny punkt końcowy**, brama aplikacji używa publiczny adres IP jego frontonu do serwera. Jeśli nie ma publicznego adresu IP frontonu, jeden jest przypisany dla ruchu wychodzącego łączność zewnętrzną.
-> - **Zawiera wewnętrznie rozpoznania nazwy FQDN lub prywatnego adresu IP**, usługa application gateway kieruje żądanie do serwera wewnętrznej bazy danych przy użyciu prywatnych adresów IP jego wystąpienia.
-> - **Zawiera zewnętrzny punkt końcowy lub zewnętrznie rozpoznawalną nazwą FQDN**, usługa application gateway kieruje żądanie do serwera wewnętrznej bazy danych za pomocą frontonu publicznego adresu IP. Rozpoznawanie nazw DNS opiera się na prywatnej strefy DNS lub niestandardowego serwera DNS, jeśli skonfigurowane lub używa domyślnej DNS platformy Azure. Jeśli nie ma publicznego adresu IP frontonu, jeden jest przypisany dla ruchu wychodzącego łączność zewnętrzną.
+>Jeśli pula zaplecza:
+> - **To publiczny punkt końcowy**. Brama aplikacji używa publicznego adresu IP frontonu do uzyskiwania dostępu do serwera. Jeśli nie ma publicznego adresu IP frontonu, jeden zostanie przypisany do wychodzącej łączności zewnętrznej.
+> - **Zawiera wewnętrznie rozpoznawalną nazwę FQDN lub prywatny adres IP**, Brama aplikacji kieruje żądanie do serwera wewnętrznej bazy danych za pomocą prywatnych adresów IP wystąpienia.
+> - **Zawiera zewnętrzny punkt końcowy lub zewnętrznie rozpoznawalną nazwę FQDN**, Brama aplikacji kieruje żądanie do serwera wewnętrznej bazy danych przy użyciu publicznego adresu IP frontonu. Rozpoznawanie nazw DNS jest oparte na prywatnej strefie DNS lub niestandardowym serwerze DNS, jeśli jest skonfigurowany lub korzysta z domyślnej usługi DNS udostępnionej przez platformę Azure. Jeśli nie ma publicznego adresu IP frontonu, jeden zostanie przypisany do wychodzącej łączności zewnętrznej.
 
-### <a name="modifications-to-the-request"></a>Modyfikacje na żądanie
+### <a name="modifications-to-the-request"></a>Modyfikacje żądania
 
-Bramy aplikacji wstawia cztery dodatkowe nagłówki do wszystkich żądań, zanim przekazuje żądania do zaplecza. Tych nagłówków są x-forwarded dla, x-forwarded-proto, x-forwarded-port i x oryginalny host. Format dla nagłówka x-forwarded dla jest IP:port listę rozdzielonych przecinkami.
+Brama aplikacji wstawia cztery dodatkowe nagłówki do wszystkich żądań przed przekazaniem żądań do zaplecza. Te nagłówki to x-Forwarded-For, x-Forwarded-proto, x-Forward-port i x-Original-host. Format dla nagłówka x-Forward-for jest rozdzielaną przecinkami listą adresów IP: port.
 
-Prawidłowe wartości dla x-forwarded-proto są HTTP lub HTTPS. X-forwarded-port Określa port, w którym żądanie osiągnięto bramy application gateway. Nagłówek X-oryginalny host zawiera oryginalnego nagłówka hosta, z którym odebrano żądanie. Tego pliku nagłówkowego przydaje się w witrynie internetowej platformy Azure, integracja, gdzie przychodzącego nagłówka hosta jest modyfikowany, zanim ruch jest kierowany do wewnętrznej bazy danych. Jeśli koligacja sesji jest włączony jako opcja, następnie dodaje plik cookie koligacji zarządzanych przez bramę.
+Prawidłowe wartości x-Forwarded-Proto to HTTP lub HTTPS. X-forwardd-Port Określa port, do którego żądanie dotarło do bramy aplikacji. Nagłówek X-Original-host zawiera oryginalny nagłówek hosta, z którym nadeszło żądanie. Ten nagłówek jest przydatny w integracji z witryną sieci Web systemu Azure, w której nagłówek hosta przychodzącego jest modyfikowany przed skierowaniem ruchu do zaplecza. Jeśli koligacja sesji jest włączona jako opcja, dodaje plik cookie koligacji zarządzanej przez bramę.
 
-Można skonfigurować bramy aplikacji można modyfikować nagłówki za pomocą [nagłówków HTTP Nadpisz](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers) lub zmodyfikować składnik path identyfikatora URI za pomocą ustawienia zastąpienie ścieżki. Jeśli jednak skonfigurowany, aby to zrobić, wszystkie żądania przychodzące są przekazywane do zaplecza.
+Można skonfigurować bramę aplikacji, aby modyfikować nagłówki przy użyciu ponownego [zapisywania nagłówków HTTP](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers) lub zmodyfikować ścieżkę URI przy użyciu ustawienia zastępowanie ścieżki. Jednak dopóki nie zostaną skonfigurowane, wszystkie żądania przychodzące są przekazywane do zaplecza.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Dowiedz się więcej o składniki bramy aplikacji](application-gateway-components.md)
+[Informacje o składnikach Application Gateway](application-gateway-components.md)

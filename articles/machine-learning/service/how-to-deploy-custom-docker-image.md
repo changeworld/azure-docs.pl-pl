@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: b86c0d0de95581f7a47de428ffbf0b161353df83
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 84567b68c85a48d0fc02f6f6a4986d8092215a92
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260747"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326498"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Wdrażanie modelu przy użyciu niestandardowego obrazu platformy Docker
 
@@ -183,15 +183,16 @@ Firma Microsoft udostępnia kilka obrazów platformy Docker w publicznie dostęp
 | Image | Opis |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Obraz podstawowy dla Azure Machine Learning |
-| `mcr.microsoft.com/azureml/onnxruntime:v0.4.0` | Zawiera środowisko uruchomieniowe ONNX. |
-| `mcr.microsoft.com/azureml/onnxruntime:v0.4.0-cuda10.0-cudnn7` | Zawiera składniki środowiska uruchomieniowego ONNX i CUDA. |
-| `mcr.microsoft.com/azureml/onnxruntime:v0.4.0-tensorrt19.03` | Zawiera środowisko uruchomieniowe ONNX i TensorRT. |
+| `mcr.microsoft.com/azureml/onnxruntime:latest` | Zawiera środowisko uruchomieniowe ONNX dla procesora CPU inferecning |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-cuda` | Zawiera środowisko uruchomieniowe ONNX i CUDA dla procesora GPU |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-tensorrt` | Zawiera środowisko uruchomieniowe ONNX i TensorRT dla procesora GPU |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-vadm ` | Zawiera środowisko uruchomieniowe ONNX i OpenVINO<sup> </sup> dla projektu akceleratora Intel Vision na podstawie Movidius<sup>TM</sup> MyriadX VPUs |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-myriad` | Zawiera środowisko uruchomieniowe ONNX i OpenVINO<sup> </sup> dla urządzeń USB Intel Movidius<sup>TM</sup> |
+
+Aby uzyskać więcej informacji na temat obrazów podstawowych środowiska uruchomieniowego ONNX, zobacz [sekcję ONNX Runtime pliku dockerfile](https://github.com/microsoft/onnxruntime/blob/master/dockerfiles/README.md) w repozytorium GitHub.
 
 > [!TIP]
 > Ponieważ te obrazy są publicznie dostępne, nie trzeba podawać adresu, nazwy użytkownika ani hasła podczas ich używania.
-
-> [!IMPORTANT]
-> Obrazy firmy Microsoft korzystające z CUDA lub TensorRT muszą być używane tylko w przypadku usług Microsoft Azure Services.
 
 Aby uzyskać więcej informacji, zobacz [Azure Machine Learning Containers](https://github.com/Azure/AzureML-Containers).
 

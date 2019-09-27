@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 529a8b6136a5d9c69b044df2614644bdbd4fd4f4
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: d86976ad191ffffa343ad7a94b8171759ad102c3
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69012218"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338353"
 ---
 Udostępniona Galeria obrazów to usługa, która ułatwia tworzenie struktury i organizacji na całym zarządzanym obrazie. Udostępnione Galerie obrazów zapewniają następujące:
 
@@ -53,14 +53,14 @@ Istnieją trzy parametry dla każdej definicji obrazu, które są używane w po�
 |Definicja obrazu|Wydawca|Oferta|Numer SKU|
 |---|---|---|---|
 |myImage1|Contoso|Finanse|Zaplecze|
-|myImage2|Contoso|Finanse|Fronton|
-|myImage3|Testowanie|Finanse|Fronton|
+|myImage2|Contoso|Finanse|Frontonu|
+|myImage3|Testowanie|Finanse|Frontonu|
 
 Wszystkie trzy z nich mają unikatowe zestawy wartości. Ten format jest podobny do tego, jak obecnie można określić wydawcy, oferty i jednostki SKU dla [obrazów portalu Azure Marketplace](../articles/virtual-machines/windows/cli-ps-findimage.md) w Azure PowerShell, aby uzyskać najnowszą wersję obrazu portalu Marketplace. Każda definicja obrazu musi mieć unikatowy zestaw tych wartości.
 
 Poniżej znajdują się inne parametry, które można ustawić w definicji obrazu, dzięki czemu można łatwiej śledzić zasoby:
 
-* Stan systemu operacyjnego — można ustawić uogólniony lub wyspecjalizowany stan systemu operacyjnego, ale tylko uogólnione jest obecnie obsługiwane. Obrazy muszą być tworzone na podstawie maszyn wirtualnych, które zostały uogólnione przy użyciu programu `waagent -deprovision` Sysprep dla systemu Windows lub Linux.
+* Stan systemu operacyjnego — można ustawić uogólniony lub wyspecjalizowany stan systemu operacyjnego, ale tylko uogólnione jest obecnie obsługiwane. Obrazy muszą być tworzone na podstawie maszyn wirtualnych, które zostały uogólnione przy użyciu programu Sysprep dla systemu Windows lub `waagent -deprovision` w systemie Linux.
 * System operacyjny — może to być system Windows lub Linux.
 * Opis — Użyj opisu, aby uzyskać bardziej szczegółowe informacje na temat tego, dlaczego istnieje definicja obrazu. Na przykład może istnieć definicja obrazu dla serwera frontonu, na którym jest wstępnie zainstalowana aplikacja.
 * EULA — może służyć do wskazywania umowy licencyjnej użytkownika końcowego dotyczącej definicji obrazu.
@@ -83,10 +83,10 @@ Regiony źródłowe są wymienione w poniższej tabeli. Wszystkie regiony public
 | Australia Wschodnia      | East US         | Środkowo-północne stany USA | Indie Zachodnie      |
 | Australia Południowo-Wschodnia | Wschodnie stany USA 2       | Europa Północna     | Zachodnie stany USA         |
 | Brazylia Południowa        | East US 2 EUAP  | Środkowo-południowe stany USA | Zachodnie stany USA 2       |
-| Kanada Środkowa      | Francja Środkowa  | Indie Południowe      |                 |
-| Kanada Wschodnia         | Francja Południowa    | Azja Południowo-Wschodnia   |                 |
-| Indie Środkowe       | Japonia Wschodnia      | Południowe Zjednoczone Królestwo         |                 |
-| Środkowe stany USA          | Japonia Zachodnia      | Zachodnie Zjednoczone Królestwo          |                 |
+| Kanada Środkowa      | Francja Środkowa  | Indie Południowe      | Chiny Wschodnie      |
+| Kanada Wschodnia         | Francja Południowa    | Azja Południowo-Wschodnia   | Chiny Wschodnie 2    |
+| Indie Środkowe       | Japonia Wschodnia      | Południowe Zjednoczone Królestwo         | Chiny Północne     |
+| Środkowe stany USA          | Japonia Zachodnia      | Zachodnie Zjednoczone Królestwo          | Chiny Północne 2   |
 
 
 
@@ -106,8 +106,8 @@ Udostępniona Galeria obrazów pozwala określić liczbę replik, które mają b
 
 Korzystając z galerii obrazów udostępnionych, można teraz wdrożyć do 1 000 wystąpień maszyn wirtualnych w zestawie skalowania maszyn wirtualnych (do maksymalnie 600 z obrazami zarządzanymi). Repliki obrazów zapewniają lepszą wydajność, niezawodność i spójność wdrożenia.  Można ustawić inną liczbę replik w każdym regionie docelowym na podstawie potrzeb skali dla regionu. Ponieważ każda replika to głęboka kopia obrazu, to ułatwia skalowanie wdrożeń liniowo z każdą dodatkową repliką. Wiemy, że nie ma żadnych dwóch obrazów ani regionów, poniżej przedstawiono ogólne wytyczne dotyczące korzystania z replik w regionie:
 
-- Dla każdego 20 maszyn wirtualnych, które tworzysz współbieżnie, zalecamy zachowanie jednej repliki. Na przykład jeśli tworzysz maszyny wirtualne 120 na bieżąco przy użyciu tego samego obrazu w regionie, sugerujemy zachowywanie co najmniej 6 replik obrazu. 
-- W przypadku każdego wdrożenia zestawu skalowania z maksymalnie 600 wystąpieniami zalecamy zachowanie co najmniej jednej repliki. Na przykład, jeśli tworzysz 5 zestawów skalowania współbieżnie, z których każda korzysta z 600 wystąpień maszyn wirtualnych przy użyciu tego samego obrazu w jednym regionie, sugerujemy zachowanie co najmniej 5 replik obrazu. 
+- W przypadku wdrożeń z zestawu skalowania maszyn wirtualnych (VMSS) — dla każdej 20 maszyn wirtualnych, które tworzysz współbieżnie, zalecamy zachowanie jednej repliki. Na przykład jeśli tworzysz maszyny wirtualne 120 na bieżąco przy użyciu tego samego obrazu w regionie, sugerujemy zachowywanie co najmniej 6 replik obrazu. 
+- W przypadku wdrożeń zestawu skalowania maszyn wirtualnych (VMSS) — dla każdego wdrożenia zestawu skalowania z maksymalnie 600 wystąpieniami zalecamy zachowanie co najmniej jednej repliki. Na przykład, jeśli tworzysz 5 zestawów skalowania współbieżnie, z których każda korzysta z 600 wystąpień maszyn wirtualnych przy użyciu tego samego obrazu w jednym regionie, sugerujemy zachowanie co najmniej 5 replik obrazu. 
 
 Zawsze zalecamy przeprowadzenie aprowizacji liczby replik ze względu na takie czynniki jak rozmiar obrazu, zawartość i typ systemu operacyjnego.
 
@@ -137,9 +137,9 @@ Regiony, w których jest replikowana wersja udostępnionego obrazu, mogą zosta�
 
 Jako Galeria obrazów udostępnionych, definicja obrazu i wersja obrazu są wszystkie zasoby, które można udostępniać przy użyciu wbudowanych kontrolek kontroli RBAC platformy Azure. Za pomocą RBAC można udostępniać te zasoby innym użytkownikom, podmiotom usługi i grupom. Możesz nawet udostępnić dostęp osobom spoza dzierżawy, w ramach której zostały utworzone. Gdy użytkownik ma dostęp do udostępnionej wersji obrazu, może wdrożyć maszynę wirtualną lub zestaw skalowania maszyn wirtualnych.  Oto macierz udostępniania, która pomaga zrozumieć, do czego użytkownik uzyskuje dostęp:
 
-| Udostępnione użytkownikowi     | Galeria obrazów udostępnionych | Definicja obrazu | Wersja graficzna |
+| Udostępnione użytkownikowi     | Shared Image Gallery | Definicja obrazu | Wersja graficzna |
 |----------------------|----------------------|--------------|----------------------|
-| Galeria obrazów udostępnionych | Tak                  | Yes          | Tak                  |
+| Shared Image Gallery | Tak                  | Yes          | Tak                  |
 | Definicja obrazu     | Nie                   | Yes          | Tak                  |
 
 Zalecamy udostępnianie na poziomie galerii w celu uzyskania najlepszego środowiska. Nie zaleca się udostępniania poszczególnych wersji obrazu. Aby uzyskać więcej informacji na temat RBAC, zobacz [Zarządzanie dostępem do zasobów platformy Azure przy użyciu RBAC](../articles/role-based-access-control/role-assignments-portal.md).
@@ -214,11 +214,11 @@ Możesz utworzyć zasób udostępnionej galerii obrazów przy użyciu szablonów
  
  A. Tak. Istnieją 3 scenariusze na podstawie typów obrazów, które mogą mieć.
 
- Scenariusz 1: Jeśli masz obraz zarządzany, możesz utworzyć definicję obrazu i wersję obrazu.
+ Scenariusz 1. Jeśli masz obraz zarządzany, możesz utworzyć definicję obrazu i wersję obrazu.
 
- Scenariusz 2: Jeśli masz niezarządzany obraz uogólniony, możesz utworzyć z niego obraz zarządzany, a następnie utworzyć definicję obrazu i wersję obrazu. 
+ Scenariusz 2. Jeśli masz niezarządzany obraz uogólniony, możesz utworzyć z niego obraz zarządzany, a następnie utworzyć definicję obrazu i wersję obrazu. 
 
- Scenariusz 3: Jeśli masz dysk VHD w lokalnym systemie plików, musisz przekazać dysk VHD, utworzyć obraz zarządzany, a następnie utworzyć definicję obrazu i wersję obrazu oraz z niego.
+ Scenariusz 3. Jeśli masz dysk VHD w lokalnym systemie plików, musisz przekazać dysk VHD, utworzyć obraz zarządzany, a następnie utworzyć definicję obrazu i wersję obrazu oraz z niego.
 - Jeśli wirtualny dysk twardy jest maszyną wirtualną z systemem Windows, zobacz [przekazywanie uogólnionego wirtualnego dysku twardego](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed).
 - Jeśli wirtualny dysk twardy jest przeznaczony dla maszyny wirtualnej z systemem Linux, zobacz [przekazywanie wirtualnego dysku twardego](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd)
 
@@ -271,7 +271,7 @@ Aby określić liczbę replik regionalnych, Przekaż lokalizację wraz z liczbą
 
 Jeśli liczba replik regionalnych nie jest określona dla każdej lokalizacji, domyślną liczbą replik będzie określona liczba znanych replik. 
 
-Aby określić wspólną liczbę replik w interfejsie wiersza `az sig image-version create` polecenia, użyj argumentu **--Replica-Count** w poleceniu.
+Aby określić wspólną liczbę replik w interfejsie wiersza polecenia, użyj argumentu **--Replica-Count** w poleceniu `az sig image-version create`.
 
 
 **PYTANIE** Czy można utworzyć galerię obrazów udostępnionych w innej lokalizacji niż ta, w której chcę utworzyć definicję obrazu i wersję obrazu?

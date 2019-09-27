@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: heidist
-ms.openlocfilehash: d0f0abade5d1eea952c5abde293ae90745ee9b04
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 1ba0a965de356cfbe7d9a1cfc8d6d2e8da092934
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640652"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327177"
 ---
 # <a name="c-tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>C#Ręczny Przeszukiwanie bazy danych Azure SQL Database przy użyciu indeksatorów usługi Azure Search
 
@@ -67,7 +67,7 @@ Informacje o połączeniu z wymaganymi usługami są określane w pliku **appset
 
 1. W Eksplorator rozwiązań otwórz plik **appSettings. JSON** , aby można było wypełnić każde ustawienie.  
 
-Pierwsze dwa wpisy, które można teraz wypełnić, przy użyciu adresu URL i kluczy administracyjnych dla usługi Azure Search. Mając punkt końcowy `https://mydemo.search.windows.net`, nazwa usługi, która ma zostać `mydemo`określona.
+Pierwsze dwa wpisy, które można teraz wypełnić, przy użyciu adresu URL i kluczy administracyjnych dla usługi Azure Search. Mając punkt końcowy `https://mydemo.search.windows.net`, nazwa usługi do udostępnienia jest `mydemo`.
 
 ```json
 {
@@ -159,7 +159,7 @@ W tym samouczku indeksator ściąga dane z jednego źródła danych. W tym celu 
 
 Program główny zawiera logikę tworzenia klienta, indeksu, źródła danych i indeksatora. Kod sprawdza i usuwa istniejące zasoby o tej samej nazwie, przy założeniu, że ten program może być uruchamiany wiele razy.
 
-Obiekt źródła danych jest skonfigurowany przy użyciu ustawień specyficznych dla zasobów usługi Azure SQL Database, w tym [indeksowania przyrostowego](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) do korzystania z wbudowanych [funkcji wykrywania zmian](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) w usłudze Azure SQL. Baza danych hoteli demonstracyjna w usłudze Azure SQL zawiera kolumnę "Usuwanie trwałe"o nazwie IsDeleted. Gdy ta kolumna ma wartość true w bazie danych, indeksator usuwa odpowiedni dokument z indeksu Azure Search.
+Obiekt źródła danych jest skonfigurowany przy użyciu ustawień specyficznych dla zasobów usługi Azure SQL Database, w tym [indeksowania przyrostowego](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) do korzystania z wbudowanych [funkcji wykrywania zmian](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) w usłudze Azure SQL. Baza danych hoteli demonstracyjna w usłudze Azure SQL zawiera kolumnę "Usuwanie trwałe" o nazwie **IsDeleted**. Gdy ta kolumna ma wartość true w bazie danych, indeksator usuwa odpowiedni dokument z indeksu Azure Search.
 
   ```csharp
   Console.WriteLine("Creating data source...");
@@ -230,7 +230,7 @@ Kod jest uruchamiany lokalnie w programie Visual Studio. Łączy się on z usłu
 
 + Informacje o połączeniu z bazą danych w pliku **appsettings.json**. Powinny to być parametry połączenia ADO.NET uzyskane z portalu i zmodyfikowane w celu uwzględnienia nazwy użytkownika i hasła, które obowiązują w przypadku Twojej bazy danych. Konto użytkownika musi mieć uprawnienia do pobierania danych.
 
-+ Limity zasobów. Pamiętaj, że usługa udostępniona (bezpłatna) ma limit 3 indeksów, indeksatorów i źródeł danych. W usłudze obsługującej maksymalny limit nie można tworzyć nowych obiektów.
++ Limity zasobów. Należy przypomnieć, że warstwa Bezpłatna ma limity trzech indeksów, indeksatorów i źródeł danych. W usłudze obsługującej maksymalny limit nie można tworzyć nowych obiektów.
 
 ## <a name="search-the-index"></a>Przeszukiwanie indeksu 
 

@@ -1,27 +1,27 @@
 ---
 title: 'Szybki start: Tłumaczenie mowy, C# (.NET Framework Windows) — usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: W tym przewodniku Szybki start utworzysz prostą aplikację .NET Framework do przechwytywania mowy użytkownika, tłumaczenia jej na inny język i przekazywania tekstu do wiersza polecenia. Ten przewodnik jest przeznaczony dla użytkowników systemu Windows.
+description: W tym przewodniku szybki start utworzysz aplikację .NET Framework, aby przechwycić mowę użytkownika, przetłumaczyć ją na inny język i wyjście tekstu do wiersza polecenia. Ten przewodnik jest przeznaczony dla użytkowników systemu Windows.
 services: cognitive-services
 author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/05/2019
+ms.date: 08/28/2019
 ms.author: erhopf
-ms.openlocfilehash: e62756ab428135ca3d5d9107f37e61813097d21f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bb710a3e3adb13aa3999c13043c8bb93f6b885f1
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553462"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327343"
 ---
-# <a name="quickstart-translate-speech-with-the-speech-sdk-for-net-framework"></a>Szybki start: tłumaczenie mowy przy użyciu zestawu SDK usługi Mowa dla platformy .NET Framework
+# <a name="quickstart-translate-speech-with-the-speech-sdk-for-net-framework-windows"></a>Szybki start: Tłumaczenie mowy przy użyciu zestawu Speech SDK dla .NET Framework (system Windows)
 
-Przewodniki Szybki Start są również dostępne dla [zamiany mowy na tekst](quickstart-csharp-dotnet-windows.md) i [zamiany tekstu na mowę](quickstart-text-to-speech-dotnet-windows.md).
+Przewodniki Szybki Start są również dostępne dla [funkcji rozpoznawania mowy](quickstart-csharp-dotnet-windows.md) i [syntezy mowy](quickstart-text-to-speech-dotnet-windows.md).
 
-W tym przewodniku Szybki start utworzysz prostą aplikację .NET Framework, która przechwytuje mowę użytkownika z mikrofonu komputera, tłumaczy tę mowę i transkrybuje przetłumaczony tekst do wiersza polecenia w czasie rzeczywistym. Ta aplikacja jest przeznaczona do uruchamiania w 64-bitowych systemach Windows i jest kompilowana przy użyciu [pakietu NuGet zestawu SDK usługi Mowa](https://aka.ms/csspeech/nuget) i programu Microsoft Visual Studio 2017.
+W tym przewodniku szybki start utworzysz aplikację .NET Framework, która przechwytuje mowę użytkownika z mikrofonu komputera, przekształci mowę i przekształca przetłumaczony tekst w wierszu polecenia w czasie rzeczywistym. Ta aplikacja może działać na 32-bitowym lub 64-bitowym systemie Windows i została skompilowana przy użyciu [pakietu NuGet zestawu mowy SDK](https://aka.ms/csspeech/nuget) i Microsoft Visual Studio 2019.
 
 Aby uzyskać pełną listę języków dostępnych na potrzeby tłumaczenia mowy, zapoznaj się z [listą obsługiwanych języków](language-support.md).
 
@@ -29,7 +29,7 @@ Aby uzyskać pełną listę języków dostępnych na potrzeby tłumaczenia mowy,
 
 Ten przewodnik Szybki start wymaga następujących elementów:
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/).
 * Klucz subskrypcji platformy Azure dla usługi Mowa. [Uzyskaj bezpłatnie](get-started.md).
 
 ## <a name="create-a-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
@@ -38,29 +38,25 @@ Ten przewodnik Szybki start wymaga następujących elementów:
 
 ## <a name="add-sample-code"></a>Dodaj kod przykładowy
 
-1. Otwórz plik `Program.cs` i zastąp cały jego kod poniższym kodem.
+1. Otwórz **program.cs**i Zastąp cały kod następującym kodem.
 
-    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/speech-translation/csharp-dotnet-windows/helloworld/Program.cs#code)]
+   [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/speech-translation/csharp-dotnet-windows/helloworld/Program.cs#code)]
 
-1. W tym samym pliku zastąp ciąg `YourSubscriptionKey` kluczem subskrypcji.
+1. Znajdź ciąg `YourSubscriptionKey` i zastąp go kluczem subskrypcji.
 
-1. Zastąp także ciąg `YourServiceRegion` [regionem](regions.md) skojarzonym z subskrypcją (na przykład `westus` w przypadku subskrypcji bezpłatnej wersji próbnej).
+1. Znajdź ciąg `YourServiceRegion` i zastąp go [regionem](regions.md) skojarzonym z subskrypcją. Na przykład jeśli używasz bezpłatnej subskrypcji wersji próbnej, region jest `westus`.
 
-1. Zapisz zmiany w projekcie.
+1. Na pasku menu wybierz kolejno opcje **plik** > **Zapisz wszystko**.
 
-## <a name="build-and-run-the-app"></a>Kompilowanie i uruchamianie aplikacji
+## <a name="build-and-run-the-application"></a>Kompilowanie i uruchamianie aplikacji
 
-1. Skompiluj aplikację. Na pasku menu wybierz kolejno pozycje **Kompiluj** > **Kompiluj rozwiązanie**. Kod powinien zostać skompilowany bez błędów.
+1. Na pasku menu wybierz kolejno opcje **kompiluj** > **Kompiluj rozwiązanie** , aby skompilować aplikację. Kod powinien teraz zostać skompilowany bez błędów.
 
-    ![Zrzut ekranu aplikacji Visual Studio z wyróżnioną opcją Kompiluj rozwiązanie](media/sdk/qs-csharp-dotnetcore-windows-05-build.png "Kompilacja ukończona pomyślnie")
+1. Wybierz **debuguj** > **Rozpocznij debugowanie** (lub wybierz **F5**), aby uruchomić aplikację **HelloWorld** .
 
-1. Uruchom aplikację. Na pasku menu wybierz kolejno pozycje **Debuguj** > **Rozpocznij debugowanie** lub naciśnij klawisz **F5**.
+1. Zacznij od angielskiej frazy lub zdania do mikrofonu Twojego urządzenia. Aplikacja przesyła mowę do usługi mowy, która tłumaczy mowę na tekst w innym języku (w tym przypadku w języku niemieckim). Usługa mowy wysyła przetłumaczony tekst z powrotem do aplikacji, co spowoduje wyświetlenie tłumaczenia w oknie.
 
-    ![Zrzut ekranu aplikacji Visual Studio z wyróżnioną opcją Rozpocznij debugowanie](media/sdk/qs-csharp-dotnetcore-windows-06-start-debugging.png "Uruchamianie aplikacji do debugowania")
-
-1. Zostanie wyświetlone okno konsoli z monitem o wypowiedzenie słów. Wypowiedz zwrot lub zdanie w języku angielskim. Mowa zostanie przesłana do usługi Mowa, przetłumaczona i przetranskrybowana na tekst, który zostanie wyświetlony w tym samym oknie.
-
-    ![Zrzut ekranu przedstawiający dane wyjściowe konsoli po pomyślnym ukończeniu tłumaczenia](media/sdk/qs-translate-csharp-dotnetcore-windows-output.png "Dane wyjściowe konsoli po pomyślnym ukończeniu tłumaczenia")
+   ![Interfejs użytkownika tłumaczenia mowy](media/sdk/qs-translate-csharp-dotnetcore-windows-output.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -71,5 +67,4 @@ Dodatkowe przykłady, dotyczące między innymi odczytywania mowy z pliku audio 
 
 ## <a name="see-also"></a>Zobacz także
 
-- [Samouczek: tworzenie niestandardowego modelu akustycznego](how-to-customize-acoustic-models.md)
-- [Samouczek: tworzenie niestandardowego modelu językowego](how-to-customize-language-model.md)
+- [Uczenie modelu dla Custom Speech](how-to-custom-speech-train-model.md)

@@ -1,19 +1,19 @@
 ---
-title: Informacje o najlepszych rozwiązaniach dotyczących zabezpieczeń usługi Azure Digital bliźniaczych reprezentacji | Microsoft Docs
-description: Najlepsze rozwiązania dotyczące zabezpieczeń usługi Azure Digital bliźniaczych reprezentacji.
+title: Informacje o najlepszych rozwiązaniach dotyczących zabezpieczeń — Azure Digital bliźniaczych reprezentacji | Microsoft Docs
+description: Poznaj najlepsze rozwiązania w zakresie zabezpieczeń dotyczące usługi Azure Digital bliźniaczych reprezentacji i Internet rzeczy.
 author: kingdomofends
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/19/2019
+ms.date: 09/17/2019
 ms.author: v-adgera
-ms.openlocfilehash: f211206bc2408fe55f6742622b5b0e56d1ab4d90
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 181176e00595daa307504d4dea7494aefa7f1942
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656521"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336706"
 ---
 # <a name="security-best-practices"></a>Najlepsze rozwiązania dotyczące zabezpieczeń
 
@@ -46,7 +46,7 @@ Oto kilka najważniejszych metod bezpiecznego zabezpieczania przestrzeni IoT:
 > [!div class="checklist"]
 > * Szyfruj zapisane, przechowywane lub trwałe dane.
 > * Wymagaj, aby hasła lub klucze były okresowo zmieniane lub odświeżane.
-> * Należy uważnie ograniczyć dostęp i uprawnienia według roli. Zobacz sekcję dotyczącą [kontroli dostępu opartej na rolach](#rbac) poniżej.
+> * Należy uważnie ograniczyć dostęp i uprawnienia według roli. Zobacz sekcję dotyczącą [kontroli dostępu opartej na rolach](#role-based-access-control-best-practices) poniżej.
 > * Rozważ podzieloną topologię sieci, dzięki czemu urządzenia w każdej sieci są odizolowane od innych.
 > * Użyj zaawansowanego szyfrowania. Wymagaj długich haseł i używaj protokołów Secure i uwierzytelniania dwuskładnikowego.
 
@@ -66,8 +66,6 @@ Usługa Azure Digital bliźniaczych reprezentacji używa Azure Active Directory 
 > * Sprawdź, jak długo token jest prawidłowy i czy token pozostaje ważny.
 > * Ustaw odpowiednie długości ważności tokenów.
 > * Odśwież wygasłe tokeny.
-
-<div id="rbac"></div>
 
 ## <a name="role-based-access-control-best-practices"></a>Najlepsze rozwiązania dotyczące kontroli dostępu opartej na rolach
 

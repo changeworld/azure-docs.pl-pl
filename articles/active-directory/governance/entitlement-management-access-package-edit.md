@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/23/2019
+ms.date: 09/26/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a575d9f90d166ba69b14e4507d9ed7a54fac574
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 4a79cf166025ced6cb08d2f9e24801ea498fdc1c
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71291027"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326378"
 ---
 # <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Edytuj istniejący pakiet dostępu i Zarządzaj nim w usłudze Azure AD uprawnienia do zarządzania (wersja zapoznawcza)
 
@@ -36,7 +36,7 @@ W tym artykule opisano sposób edytowania istniejących pakietów dostępu i zar
 
 ## <a name="add-resource-roles"></a>Dodaj role zasobów
 
-Rola zasobu to kolekcja uprawnień skojarzonych z zasobem. Aby udostępnić zasoby użytkownikom do żądania, należy dodać role zasobów do pakietu dostępu. Można dodawać role zasobów dla grup, aplikacji i witryn programu SharePoint.
+Rola zasobu to kolekcja uprawnień skojarzonych z zasobem. Aby udostępnić zasoby użytkownikom do żądania, należy dodać role zasobów do pakietu dostępu. Można dodawać role zasobów dla grup, zespołów, aplikacji i witryn programu SharePoint.
 
 **Rola wymagana wstępnie:** Administrator globalny, administrator użytkownika, właściciel katalogu lub Menedżer pakietów dostępu
 
@@ -50,38 +50,49 @@ Rola zasobu to kolekcja uprawnień skojarzonych z zasobem. Aby udostępnić zaso
 
     ![Dostęp do pakietu — Dodawanie ról zasobów](./media/entitlement-management-access-package-edit/resource-roles-add.png)
 
-1. W zależności od tego, czy chcesz dodać grupę, aplikację lub witrynę programu SharePoint, wykonaj czynności opisane w jednej z poniższych sekcji ról zasobów.
+1. W zależności od tego, czy chcesz dodać witrynę grupy, zespołu, aplikacji lub programu SharePoint, wykonaj kroki z jednej z poniższych sekcji ról zasobów.
 
-### <a name="add-a-group-resource-role"></a>Dodaj rolę zasobu grupy
+### <a name="add-a-group-or-team-resource-role"></a>Dodawanie grupy lub roli zasobu zespołu
 
-Zarządzanie prawami może automatycznie dodawać użytkowników do grupy, gdy przypisze im pakiet dostępu. 
+Zarządzanie prawami może automatycznie dodawać użytkowników do grupy lub zespołu firmy Microsoft, gdy przypiszesz do nich pakiet dostępu. 
 
-- Gdy grupa jest częścią pakietu dostępu i użytkownik jest przypisany do tego pakietu, użytkownik zostanie dodany do tej grupy, jeśli jeszcze nie istnieje.
-- Po wygaśnięciu przypisania pakietu dostępu użytkownika są one usuwane z grupy, o ile nie mają obecnie przypisania do innego pakietu dostępu, który zawiera tę samą grupę.
+- Gdy grupa lub zespół jest częścią pakietu dostępu, a użytkownik jest przypisany do tego pakietu, użytkownik zostanie dodany do tej grupy lub zespołu, jeśli jeszcze nie istnieje.
+- Po wygaśnięciu przypisania pakietu dostępu użytkownika są one usuwane z grupy lub zespołu, chyba że są obecnie przypisane do innego pakietu dostępu, który zawiera tę samą grupę lub zespół.
 
-Możesz wybrać dowolną grupę Office 365 lub grupę zabezpieczeń usługi Azure AD.  Administratorzy mogą dodać dowolną grupę do wykazu; Właściciele wykazu mogą dodać dowolną grupę do wykazu, jeśli są właścicielami grupy. Podczas wybierania grupy należy pamiętać o następujących ograniczeniach usługi Azure AD:
+Możesz wybrać dowolną [grupę zabezpieczeń usługi Azure AD lub grupę Office 365](../fundamentals/active-directory-groups-create-azure-portal.md).  Administratorzy mogą dodać dowolną grupę do wykazu; Właściciele wykazu mogą dodać dowolną grupę do wykazu, jeśli są właścicielami grupy. Podczas wybierania grupy należy pamiętać o następujących ograniczeniach usługi Azure AD:
 
-- Gdy użytkownik, łącznie z gościem, jest dodawany jako członek do grupy, zobaczy wszystkie pozostałe elementy członkowskie tej grupy.
+- Gdy użytkownik, łącznie z gościem, jest dodawany jako członek do grupy lub zespołu, może zobaczyć wszystkich innych członków tej grupy lub zespołu.
 - Usługa Azure AD nie może zmienić członkostwa w grupie, która została zsynchronizowana z systemem Windows Server Active Directory przy użyciu Azure AD Connect lub która została utworzona w usłudze Exchange Online jako grupa dystrybucyjna.  
 - Członkostwa w grupach dynamicznych nie można zaktualizować przez dodanie lub usunięcie elementu członkowskiego, więc członkostwa w grupie dynamicznej nie są odpowiednie do użytku z zarządzaniem prawami.
 
-1. Na stronie **Dodaj rolę zasobów do pakietu dostępu** kliknij pozycję **grupy** , aby otworzyć okienko Wybieranie grup.
+Aby uzyskać więcej informacji, zobacz [porównywanie grup](/office365/admin/create-groups/compare-groups) i [grup pakietu Office 365 oraz Microsoft Teams](/microsoftteams/office-365-groups).
 
-1. Wybierz grupy, które mają zostać uwzględnione w pakiecie dostępu.
+1. Na stronie **Dodaj rolę zasobów do pakietu dostępu** kliknij pozycję **grupy i zespoły** , aby otworzyć okienko Wybieranie grup.
+
+1. Wybierz grupy i zespoły, które chcesz uwzględnić w pakiecie dostępu.
 
     ![Dostęp do pakietu — Dodawanie ról zasobów — Wybieranie grup](./media/entitlement-management-access-package-edit/group-select.png)
 
 1. Kliknij przycisk **wybierz**.
 
+    Po wybraniu grupy lub zespołu w kolumnie **podtyp** zostanie wystawiona jedna z następujących podtypów:
+
+    |  |  |
+    | --- | --- |
+    | Bezpieczeństwo | Służy do udzielania dostępu do zasobów. |
+    | Dystrybucja | Służy do wysyłania powiadomień do grupy osób. |
+    | O365 | Grupa pakietu Office 365, która nie jest włączona dla zespołów. Używany do współpracy między użytkownikami i spoza niej. |
+    | Zespół | Grupa pakietu Office 365, dla której włączono zespoły. Używany do współpracy między użytkownikami i spoza niej. |
+
 1. Na liście **rola** wybierz pozycję **właściciel** lub **członek**.
 
     Zwykle wybierasz rolę elementu członkowskiego. W przypadku wybrania roli właściciela, która umożliwi użytkownikom dodawanie lub usuwanie innych członków lub właścicieli.
 
-    ![Dostęp do pakietu — Dodawanie roli zasobów dla grupy](./media/entitlement-management-access-package-edit/group-role.png)
+    ![Dostęp do pakietu — Dodawanie roli zasobów dla grupy lub zespołu](./media/entitlement-management-access-package-edit/group-role.png)
 
 1. Kliknij pozycję **Dodaj**.
 
-    Wszyscy użytkownicy z istniejącymi przypisaniami do pakietu dostępu automatycznie staną się członkami tej grupy po dodaniu.
+    Wszyscy użytkownicy z istniejącymi przypisaniami do pakietu dostępu automatycznie staną się członkami tej grupy lub zespołu po dodaniu.
 
 ### <a name="add-an-application-resource-role"></a>Dodawanie roli zasobu aplikacji
 

@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 02/07/2019
-ms.openlocfilehash: 3b76dc546b46718378d9b22ad80e17849eaf532d
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: b940be1d1b68e4e2a41e3f8353cb54fdb51bb886
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884081"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338738"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Konfigurowanie replikacji w Azure SQL Database bazie danych wystąpienia zarządzanego
 
@@ -41,7 +41,7 @@ Skonfigurowanie wystąpienia zarządzanego do działania w ramach wydawcy i/lub 
 - Że wystąpienie zarządzane wydawcy znajduje się w tej samej sieci wirtualnej co dystrybutora i subskrybenta, lub ustanowiono [komunikację równorzędną](../virtual-network/tutorial-connect-virtual-networks-powershell.md) sieci wirtualnych w ramach wszystkich trzech jednostek. 
 - Połączenie korzysta z uwierzytelniania SQL między uczestnikami replikacji.
 - Udział konta usługi Azure Storage dla katalogu roboczego replikacji.
-- Port 445 (ruch wychodzący TCP) jest otwarty w regułach zabezpieczeń sieciowej grupy zabezpieczeń dla wystąpień zarządzanych, aby uzyskać dostęp do udziału plików platformy Azure. 
+- Port 445 (ruch wychodzący TCP) jest otwarty w regułach zabezpieczeń sieciowej grupy zabezpieczeń dla wystąpień zarządzanych, aby uzyskać dostęp do udziału plików platformy Azure.  Jeśli wystąpi błąd "nie można nawiązać połączenia z usługą Azure Storage @no__t — nazwa konta 0storage > z błędem systemu operacyjnego 53", należy dodać regułę wychodzącą do sieciowej grupy zabezpieczeń odpowiedniej podsieci wystąpienia zarządzanego SQL.
 
 
  > [!NOTE]
@@ -50,7 +50,7 @@ Skonfigurowanie wystąpienia zarządzanego do działania w ramach wydawcy i/lub 
 
 ## <a name="features"></a>Funkcje
 
-Obsługuje:
+Uguje
 
 - Mieszanie transakcji transakcyjnych i migawek dla SQL Server lokalnych i zarządzanych wystąpień w Azure SQL Database.
 - Subskrybenci mogą znajdować się w lokalnych bazach danych SQL Server, pojedynczych bazach danych/wystąpieniach zarządzanych w Azure SQL Database lub w puli baz danych w Azure SQL Database pul elastycznych.
@@ -78,15 +78,15 @@ Należy również [skonfigurować maszynę wirtualną platformy Azure do łącze
 
 [Utwórz konto usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) dla katalogu roboczego, a następnie Utwórz [udział plików](../storage/files/storage-how-to-create-file-share.md) na koncie magazynu. 
 
-Skopiuj ścieżkę udziału plików w formacie:`\\storage-account-name.file.core.windows.net\file-share-name`
+Skopiuj ścieżkę udziału plików w formacie: `\\storage-account-name.file.core.windows.net\file-share-name`
 
-Skopiuj klucze dostępu do magazynu w formacie:`DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
+Skopiuj klucze dostępu do magazynu w formacie: `DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
 
  Aby uzyskać więcej informacji, zobacz temat [View and copy storage access keys](../storage/common/storage-account-manage.md#access-keys) (Wyświetlanie i kopiowanie kluczy dostępu kopiowania). 
 
 ## <a name="4---create-a-publisher-database"></a>4 — Tworzenie bazy danych wydawcy
 
-Połącz się z `sql-mi-pub` wystąpieniem zarządzanym przy użyciu SQL Server Management Studio i uruchom następujący kod języka Transact-SQL (T-SQL), aby utworzyć bazę danych wydawcy:
+Połącz się z wystąpieniem zarządzanym `sql-mi-pub` przy użyciu SQL Server Management Studio i uruchom następujący kod języka Transact-SQL (T-SQL), aby utworzyć bazę danych wydawcy:
 
 ```sql
 USE [master]
@@ -120,7 +120,7 @@ GO
 
 ## <a name="5---create-a-subscriber-database"></a>5 — Tworzenie bazy danych subskrybenta
 
-Połącz się z `sql-mi-sub` wystąpieniem zarządzanym przy użyciu SQL Server Management Studio i uruchom następujący kod T-SQL, aby utworzyć pustą bazę danych subskrybenta:
+Połącz się z wystąpieniem zarządzanym `sql-mi-sub` przy użyciu SQL Server Management Studio i uruchom następujący kod T-SQL, aby utworzyć pustą bazę danych subskrybenta:
 
 ```sql
 USE [master]
@@ -141,7 +141,7 @@ GO
 
 ## <a name="6---configure-distribution"></a>6 — Konfigurowanie dystrybucji
 
-Połącz się z `sql-mi-pub` wystąpieniem zarządzanym przy użyciu SQL Server Management Studio i uruchom następujący kod T-SQL w celu skonfigurowania bazy danych dystrybucji. 
+Połącz się z wystąpieniem zarządzanym `sql-mi-pub` przy użyciu SQL Server Management Studio i uruchom następujący kod T-SQL w celu skonfigurowania bazy danych dystrybucji. 
 
 ```sql
 USE [master]
@@ -154,7 +154,7 @@ GO
 
 ## <a name="7---configure-publisher-to-use-distributor"></a>7 — Konfigurowanie wydawcy do korzystania z dystrybutora 
 
-W wystąpieniu `sql-mi-pub`zarządzanym wydawcy Zmień wykonanie zapytania na tryb [sqlcmd](/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor) i uruchom następujący kod w celu zarejestrowania nowego dystrybutora z wydawcą. 
+W wystąpieniu zarządzanym wydawcy `sql-mi-pub` Zmień wykonanie zapytania na tryb [sqlcmd](/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor) i uruchom następujący kod w celu zarejestrowania nowego dystrybutora z wydawcą. 
 
 ```sql
 :setvar username loginUsedToAccessSourceManagedInstance
@@ -322,7 +322,7 @@ EXEC sp_dropdistributor @no_checks = 1
 GO
 ```
 
-Możesz wyczyścić zasoby platformy Azure, [usuwając zasoby wystąpienia zarządzanego z grupy zasobów](../azure-resource-manager/manage-resources-portal.md#delete-resources) , a następnie usuwając grupę `SQLMI-Repl`zasobów. 
+Możesz wyczyścić zasoby platformy Azure, [usuwając zarządzane zasoby wystąpienia z grupy zasobów](../azure-resource-manager/manage-resources-portal.md#delete-resources) , a następnie usuwając grupę zasobów `SQLMI-Repl`. 
 
    
 ## <a name="see-also"></a>Zobacz też

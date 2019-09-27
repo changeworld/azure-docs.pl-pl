@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 569bc021d978714472bf40bcf39f7134fec95970
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: b3f809a21dab86ac50fcf7c194c886b05977e15e
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130345"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327105"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Tworzenie prywatnego punktu końcowego przy użyciu Azure PowerShell
 Prywatny punkt końcowy to podstawowy blok konstrukcyjny dla prywatnego linku na platformie Azure. Umożliwia ona korzystanie z zasobów platformy Azure, takich jak Virtual Machines (VM), w celu komunikacji z prywatnymi zasobami łączy prywatnych. 
@@ -33,7 +33,7 @@ New-AzResourceGroup `
 ```
 
 ## <a name="create-a-virtual-network"></a>Tworzenie Virtual Network
-W tej sekcji utworzysz sieć wirtualną i podsieć. Następnie należy skojarzyć podsieć Virtual Network.
+W tej sekcji utworzysz sieć wirtualną i podsieć. Następnie należy skojarzyć podsieć z Virtual Network.
 
 ### <a name="create-a-virtual-network"></a>Tworzenie Virtual Network
 

@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 08/02/2019
 ms.author: dylankil
-ms.openlocfilehash: 5e33108c9fc674abaf980a1272cca31aa21cffff
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 6404a5d49bd7af1ed5d74299f03eda8d0bb14b89
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68991064"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326449"
 ---
 # <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>Samouczek: Uruchamianie czytnika immersyjny przy użyciu przykładowego projektu języka Python
 
@@ -68,7 +68,7 @@ Punkt końcowy interfejsu API **getimmersivereadertoken** powinien być zabezpie
 
 ## <a name="create-a-python-web-app-on-windows"></a>Tworzenie aplikacji sieci Web w języku Python w systemie Windows
 
-Utwórz aplikację sieci Web w języku `flask` Python przy użyciu systemu Windows.
+Utwórz aplikację sieci Web w języku Python przy użyciu `flask` w systemie Windows.
 
 [Zainstaluj oprogramowanie Git](https://git-scm.com/).
 
@@ -88,11 +88,11 @@ Dodaj funkcje opcjonalne, zaznaczając pola, a następnie klikając przycisk "da
 
 ![Okno dialogowe instalacji systemu Windows w języku Python — krok 2](./media/pythoninstalltwo.jpg)
 
-Wybierz pozycję "Instalacja niestandardowa" i Ustaw ścieżkę instalacji jako folder `C:\Python37-32\` główny, a następnie kliknij przycisk "Zainstaluj".
+Wybierz pozycję "Instalacja niestandardowa" i Ustaw ścieżkę instalacji jako folder główny, np. `C:\Python37-32\`, a następnie kliknij przycisk "Zainstaluj".
 
 ![Okno dialogowe instalacji systemu Windows w języku Python — krok 3](./media/pythoninstallthree.jpg)
 
-Po zakończeniu instalacji języka Python Otwórz wiersz polecenia i `cd` folder skryptów języka Python.
+Po zakończeniu instalacji języka Python Otwórz wiersz polecenia i `cd` do folderu skryptów języka Python.
 
 ```cmd
 cd C:\Python37-32\Scripts
@@ -113,7 +113,7 @@ pip install jinja2
 Zainstaluj virtualenv. Narzędzie do tworzenia izolowanych środowisk Python.
 
 ```cmd
-pip install pip install virtualenv
+pip install virtualenv
 ```
 
 Zainstaluj virtualenvwrapper-win. Pomysłem za virtualenvwrapper jest ułatwienie użycia virtualenv.
@@ -128,13 +128,19 @@ Zainstaluj moduł żądania. Żądania to Apache2a licencjonowana Biblioteka HTT
 pip install requests
 ```
 
+Zainstaluj moduł Python-dotenv. Ten moduł odczytuje parę klucz-wartość z pliku ENV i dodaje je do zmiennej środowiskowej.
+
+```cmd
+pip install python-dotenv
+```
+
 Tworzenie środowiska wirtualnego
 
 ```cmd
 mkvirtualenv advanced-python
 ```
 
-`cd`z przykładowym folderem głównym projektu.
+`cd` do folderu głównego projektu przykładowego.
 
 ```cmd
 cd C:\immersive-reader-sdk\js\samples\advanced-python
@@ -152,7 +158,7 @@ Aktywuj środowisko wirtualne.
 activate
 ```
 
-Projekt powinien być teraz aktywny i zobaczysz coś jak `(advanced-python) C:\immersive-reader-sdk\js\samples\advanced-python>` w wierszu polecenia.
+Projekt powinien być teraz aktywny i zobaczysz, jak `(advanced-python) C:\immersive-reader-sdk\js\samples\advanced-python>` w wierszu polecenia.
 
 Dezaktywuj środowisko.
 
@@ -160,7 +166,7 @@ Dezaktywuj środowisko.
 deactivate
 ```
 
-`(advanced-python)` Prefiks powinien teraz zostać usunięty, ponieważ środowisko jest teraz dezaktywowane.
+Prefiks `(advanced-python)` powinien teraz zostać usunięty, ponieważ środowisko jest teraz dezaktywowane.
 
 Aby ponownie uaktywnić środowisko `workon advanced-python` z przykładowego folderu głównego projektu.
 
@@ -170,7 +176,7 @@ workon advanced-python
 
 ### <a name="launch-the-immersive-reader-with-sample-content"></a>Uruchom czytnik immersyjny z przykładową zawartością
 
-Gdy środowisko jest aktywne, uruchom przykładowy projekt, wprowadzając `flask run` z przykładowego folderu głównego projektu.
+Gdy środowisko jest aktywne, uruchom przykładowy projekt, wprowadzając `flask run` z folderu głównego projektu przykładowego.
 
 ```cmd
 flask run
@@ -180,7 +186,7 @@ Otwórz przeglądarkę i przejdź do _http://localhost:5000_ .
 
 ## <a name="create-a-python-web-app-on-osx"></a>Tworzenie aplikacji sieci Web w języku Python w witrynie OSX
 
-Utwórz aplikację sieci Web w języku `flask` Python przy użyciu usługi w systemie OSX.
+Utwórz aplikację sieci Web w języku Python przy użyciu `flask` w OSX.
 
 [Zainstaluj oprogramowanie Git](https://git-scm.com/).
 
@@ -192,9 +198,9 @@ git clone https://github.com/microsoft/immersive-reader-sdk.git
 
 Zainstaluj język [Python](https://www.python.org/downloads/).
 
-Folder główny języka Python, np `Python37-32` . powinien znajdować się w folderze aplikacji.
+Folder główny Python, np. `Python37-32` powinien teraz znajdować się w folderze aplikacji.
 
-Po zakończeniu instalacji języka Python Otwórz pozycję Terminal i `cd` folder skrypty języka Python.
+Po zakończeniu instalacji języka Python Otwórz pozycję Terminal i `cd` w folderze skryptów języka Python.
 
 ```bash
 cd immersive-reader-sdk/js/samples/advanced-python
@@ -218,9 +224,9 @@ sudo nano /etc/paths
 
 - Po wyświetleniu monitu wprowadź hasło.
 - Dodaj ścieżkę instalacji PIP do zmiennej PATH.
-- Przejdź do dolnej części pliku, a następnie wprowadź ścieżkę, którą chcesz dodać jako ostatni element listy, np `PATH=$PATH:/usr/local/bin`.
+- Przejdź do dolnej części pliku, a następnie wprowadź ścieżkę, którą chcesz dodać jako ostatni element listy, np. `PATH=$PATH:/usr/local/bin`.
 - Naciśnij klawisz Control — x, aby zakończyć.
-- Wprowadź `Y` , aby zapisać zmodyfikowany bufor.
+- Wprowadź `Y`, aby zapisać zmodyfikowany bufor.
 - To wszystko! Aby go przetestować, w nowym oknie terminalu wpisz: `echo $PATH`.
 
 Zainstaluj kolbę.
@@ -253,13 +259,19 @@ Zainstaluj moduł żądania. Żądania to Apache2a licencjonowana Biblioteka HTT
 pip install requests --user
 ```
 
+Zainstaluj moduł Python-dotenv. Ten moduł odczytuje parę klucz-wartość z pliku ENV i dodaje je do zmiennej środowiskowej.
+
+```bash
+pip install python-dotenv --user
+```
+
 Wybierz folder, w którym chcesz zachować swoje środowiska wirtualne, i Uruchom to polecenie
 
 ```bash
 mkdir ~/.virtualenvs
 ```
 
-`cd`z przykładowym folderem aplikacji zestawu SDK czytnika immersyjny w języku Python.
+`cd` do folderu przykładowej aplikacji zestawu SDK Python dla czytnika immersyjny.
 
 ```bash
 cd immersive-reader-sdk/js/samples/advanced-python
@@ -283,7 +295,7 @@ Aktywuj środowisko wirtualne.
 activate
 ```
 
-Projekt powinien być teraz aktywny i zobaczysz coś jak `(advanced-python) /immersive-reader-sdk/js/samples/advanced-python>` w wierszu polecenia.
+Projekt powinien być teraz aktywny i zobaczysz, jak `(advanced-python) /immersive-reader-sdk/js/samples/advanced-python>` w wierszu polecenia.
 
 Dezaktywuj środowisko.
 
@@ -291,7 +303,7 @@ Dezaktywuj środowisko.
 deactivate
 ```
 
-`(advanced-python)` Prefiks powinien teraz zostać usunięty, ponieważ środowisko jest teraz dezaktywowane.
+Prefiks `(advanced-python)` powinien teraz zostać usunięty, ponieważ środowisko jest teraz dezaktywowane.
 
 Aby ponownie uaktywnić środowisko `workon advanced-python` z przykładowego folderu głównego projektu.
 
@@ -301,7 +313,7 @@ workon advanced-python
 
 ## <a name="launch-the-immersive-reader-with-sample-content"></a>Uruchom czytnik immersyjny z przykładową zawartością
 
-Gdy środowisko jest aktywne, uruchom przykładowy projekt, wprowadzając `flask run` z przykładowego folderu głównego projektu.
+Gdy środowisko jest aktywne, uruchom przykładowy projekt, wprowadzając `flask run` z folderu głównego projektu przykładowego.
 
 ```bash
 flask run

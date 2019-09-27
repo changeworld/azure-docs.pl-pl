@@ -1,43 +1,43 @@
 ---
-title: Nawiązać połączenie z Windows wirtualnego pulpitu (wersja zapoznawcza) w przeglądarce sieci web - Azure
-description: Jak połączyć się z Windows wirtualnego pulpitu (wersja zapoznawcza) w przeglądarce sieci web.
+title: Łączenie się z wersją zapoznawczą pulpitu wirtualnego systemu Windows z przeglądarki sieci Web — Azure
+description: Jak nawiązać połączenie z pulpitem wirtualnym systemu Windows przy użyciu klienta sieci Web.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 09/24/2019
 ms.author: helohr
-ms.openlocfilehash: 4f6bb7c414c38eaa605d259195218c461ddb0ca7
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 961eb98bed712e3dde1b1e7ed2ec997e8992e600
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620160"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338672"
 ---
-# <a name="connect-from-a-web-browser"></a>Łączenie z przeglądarki internetowej
+# <a name="connect-with-the-web-client"></a>Łączenie się z klientem internetowym
 
-Klient sieci web umożliwia dostęp do zasobów Windows wirtualnego pulpitu (wersja zapoznawcza) w przeglądarce sieci web bez proces długich instalacji.
+Klient sieci Web umożliwia dostęp do zasobów pulpitu wirtualnego systemu Windows z przeglądarki sieci Web bez długotrwałego procesu instalacji.
 
 >[!NOTE]
->Klient sieci web nie ma obecnie mobilny system operacyjny obsługuje.
+>Klient sieci Web nie ma obecnie obsługi systemu operacyjnego dla urządzeń przenośnych.
 
 ## <a name="supported-operating-systems-and-browsers"></a>Obsługiwane systemy operacyjne i przeglądarki
 
-Podczas każdej przeglądarce obsługą języka HTML5 powinna działać, firma Microsoft oficjalnie obsługuje następujące systemy operacyjne i przeglądarki.
+Chociaż każda przeglądarka z obsługą języka HTML5 powinna działać, oficjalnie obsługujemy następujące systemy operacyjne i przeglądarki.
 
 | Browser           | Obsługiwane systemy operacyjne                     | Uwagi               |
 |-------------------|----------------------------------|---------------------|
 | Microsoft Edge    | Windows                          |                     |
 | Internet Explorer | Windows                          |                     |
 | Apple Safari      | macOS                            |                     |
-| Mozilla Firefox   | Windows, macOS i Linux            | Wersja 55 lub nowsza |
-| Google Chrome     | Windows, macOS, Linux i systemem Chrome OS |                     |
+| Mozilla Firefox   | Windows, macOS, Linux            | Wersja 55 lub nowsza |
+| Google Chrome     | Windows, macOS, Linux, system operacyjny Chrome |                     |
 
-## <a name="access-remote-resources-feed"></a>Uzyskaj dostęp do zasobów zdalnego źródła danych
+## <a name="access-remote-resources-feed"></a>Uzyskiwanie dostępu do źródeł danych zdalnych
 
-W przeglądarce przejdź do [klienta sieci web pulpitu wirtualnego Windows](https://rdweb.wvd.microsoft.com/webclient) i zaloguj się przy użyciu konta użytkownika.
+W przeglądarce przejdź do [klienta sieci Web pulpitu wirtualnego systemu Windows](https://rdweb.wvd.microsoft.com/webclient) i zaloguj się przy użyciu konta użytkownika.
 
 >[!NOTE]
->Już logujesz się przy użyciu innego konta usługi Azure Active Directory niż ten, którego chcesz użyć dla Windows pulpitu wirtualnego, należy się wylogować lub użyj prywatnym oknie przeglądarki.
+>Jeśli zalogowano się już przy użyciu innego konta Azure Active Directory niż ten, który ma być używany dla pulpitu wirtualnego systemu Windows, należy się wylogować lub użyć prywatnego okna przeglądarki.
 
-Po zarejestrowaniu się powinny teraz wyświetlić listę zasobów. Zasoby można uruchomić, wybierając je, podobnie jak zwykła aplikacja w **wszystkie zasoby** kartę.
+Po zalogowaniu powinna zostać wyświetlona lista zasobów. Zasoby można uruchamiać, wybierając takie jak normalna aplikacja na karcie **wszystkie zasoby** .

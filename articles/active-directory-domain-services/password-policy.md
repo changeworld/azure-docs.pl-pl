@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: iainfou
-ms.openlocfilehash: 45fb2daaeaf9ee788207d43d805e070320372ca0
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 19a618bd576687fcb0d92f8e35613e4cdc749e70
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617188"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71320444"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Zasady blokowania haseł i kont w domenach zarządzanych
 
@@ -48,7 +48,7 @@ Następujące ustawienia hasła można skonfigurować za pomocą szczegółowych
 * Historia haseł
 * Hasła muszą spełniać wymagania dotyczące złożoności
 * Minimalny wiek hasła
-* Maksymalny wiek hasła
+* Maksymalny okres ważności hasła
 * Zasady blokady konta
   * Czas trwania blokady konta
   * Liczba dozwolonych nieudanych prób logowania
@@ -90,6 +90,9 @@ Aby utworzyć szczegółowe zasady haseł, użyj Active Directory narzędzi admi
 1. Na ekranie startowym wybierz pozycję **Narzędzia administracyjne**. Zostanie wyświetlona lista dostępnych narzędzi do zarządzania, które zostały zainstalowane w samouczku, aby [utworzyć maszynę wirtualną zarządzania][tutorial-create-management-vm].
 1. Aby utworzyć jednostki organizacyjne i zarządzać nimi, wybierz **Centrum administracyjne usługi Active Directory** z listy narzędzi administracyjnych.
 1. W lewym okienku wybierz domenę zarządzaną platformy Azure AD DS, na przykład *contoso.com*.
+1. Otwórz kontener **system** , a następnie pozycję kontener **ustawień haseł** .
+
+    Zostanie wyświetlona wbudowana szczegółowych zasad haseł dla domeny zarządzanej platformy Azure AD DS. Nie można zmodyfikować tego wbudowanego szczegółowych zasad haseł. Zamiast tego Utwórz nowy niestandardowy szczegółowych zasad haseł, aby zastąpić domyślny szczegółowych zasad haseł.
 1. W panelu **zadania** po prawej stronie wybierz pozycję **nowe ustawienia hasła >** .
 1. W oknie dialogowym **Tworzenie ustawień hasła** wprowadź nazwę zasad, na przykład *MyCustomFGPP*. Ustaw odpowiedni priorytet, aby zastąpić domyślny szczegółowych zasad haseł ( *200*), na przykład *1*.
 

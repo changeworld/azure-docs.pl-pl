@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 6ed6e21f16287148c8764dd98bda378451440e58
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 593841ac95c4c6f17f33a8d35d6b3f83a6db1124
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172792"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338917"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Dostrajanie wydajności w widokach z materiałami 
 Widoki z materiałami w Azure SQL Data Warehouse zapewniają niską metodę konserwacji dla złożonych zapytań analitycznych w celu uzyskania szybkiej wydajności bez żadnej zmiany w zapytaniu. W tym artykule omówiono ogólne wskazówki dotyczące korzystania z widoków z materiałami.
@@ -49,7 +49,7 @@ Właściwie zaprojektowany widok z materiałami może zapewnić następujące ko
 
 - Optymalizator w Azure SQL Data Warehouse może automatycznie używać wdrożonych widoków w celu usprawnienia planów wykonywania zapytań.  Ten proces jest niewidoczny dla użytkowników, którzy zapewniają szybszą wydajność zapytań i nie wymagają zapytań, aby skierować bezpośrednie odwołanie do widoków z materiałami. 
 
-- Wymagaj niskiej konserwacji w widokach.  Widok z materiałami przechowuje dane w dwóch miejscach, klastrowany indeks magazynu kolumn dla danych początkowych w czasie tworzenia widoku i magazyn różnicowy zmian danych przyrostowych.  Wszystkie zmiany danych z tabel podstawowych są automatycznie dodawane do magazynu różnicowego w sposób synchroniczny.  Proces w tle (w ramach krotki) okresowo przenosi dane z magazynu różnicowego do indeksu magazynu kolumn widoku.  Ten projekt umożliwia wykonywanie zapytań dotyczących danych w postaci materiałów, które zwracają te same dane, co bezpośrednio zapytania dotyczące tabel podstawowych. 
+- Wymagaj niskiej konserwacji w widokach.  Wszystkie przyrostowe zmiany danych z tabel podstawowych są automatycznie dodawane do podzielnych widoków w sposób synchroniczny.  Ten projekt umożliwia wykonywanie zapytań dotyczących danych w postaci materiałów, które zwracają te same dane, co bezpośrednio zapytania dotyczące tabel podstawowych. 
 - Dane w widoku z materiałami mogą być dystrybuowane inaczej od tabel podstawowych.  
 - Dane w widokach z materiałami uzyskują takie same korzyści wysokiej dostępności i odporności jak dane w regularnych tabelach.  
  
@@ -90,7 +90,7 @@ Użytkownicy mogą uruchomić wyjaśnienie WITH_RECOMMENDATIONS < SQL_statement 
 
 **Weź pod uwagę kompromis między szybszymi zapytaniami i kosztem** 
 
-Dla każdego widoku z materiałami istnieje koszt magazynowania danych i koszt utrzymania widoku.  Wraz ze zmianami danych w tabelach podstawowych rozmiar widoku z materiałami wzrasta i jego struktura fizyczna również ulega zmianie.  Aby uniknąć obniżenia wydajności zapytań, każdy widok z materiałami jest obsługiwany oddzielnie przez aparat magazynu danych, w tym przeniesienie wierszy z magazynu różnicowego do segmentów indeksu magazynu kolumn i konsolidowanie zmian danych.  Obciążenie pracą konserwacyjną jest wyższe, gdy liczba widoków z materiałami i zmianami w tabeli podstawowej rośnie.   Użytkownicy powinni sprawdzić, czy koszt ponoszony ze wszystkich widoków z materiałami może być przesunięty przez wzrost wydajności zapytania.  
+Dla każdego widoku z materiałami istnieje koszt magazynowania danych i koszt utrzymania widoku.  Wraz ze zmianami danych w tabelach podstawowych rozmiar widoku z materiałami wzrasta i jego struktura fizyczna również ulega zmianie.  Aby uniknąć obniżenia wydajności zapytań, każdy widok z materiałami jest obsługiwany oddzielnie przez aparat magazynu danych.  Obciążenie pracą konserwacyjną jest wyższe, gdy liczba widoków z materiałami i zmianami w tabeli podstawowej rośnie.   Użytkownicy powinni sprawdzić, czy koszt ponoszony ze wszystkich widoków z materiałami może być przesunięty przez wzrost wydajności zapytania.  
 
 To zapytanie można uruchomić, aby wyświetlić listę przykładowego widoku w bazie danych: 
 
@@ -136,7 +136,7 @@ Optymalizator magazynu danych może automatycznie używać wdrożonych widoków 
 
 **Monitorowanie widoków z materiałami** 
 
-Widok z materiałami jest przechowywany w magazynie danych, podobnie jak tabela z klastrowanym indeksem magazynu kolumn (WIK).  Odczytywanie danych z widoku z materiałami obejmuje skanowanie indeksu i stosowanie zmian z magazynu różnicowego.  Gdy liczba wierszy w magazynie różnic jest zbyt duża, rozpoznawanie zapytania z widoku z materiałami może trwać dłużej niż bezpośrednio zapytania w tabelach bazowych.  Aby uniknąć obniżenia wydajności zapytań, dobrym sposobem jest uruchomienie [polecenia DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?view=azure-sqldw-latest) w celu monitorowania overhead_ratio widoku (total_rows/base_view_row).  Jeśli overhead_ratio jest zbyt wysoka, Rozważ ponowne skompilowanie widoku z materiałami, aby wszystkie wiersze w magazynie różnicowym były przenoszone do indeksu magazynu kolumn.  
+Widok z materiałami jest przechowywany w magazynie danych, podobnie jak tabela z klastrowanym indeksem magazynu kolumn (WIK).  Odczytywanie danych z widoku z materiałami obejmuje skanowanie segmentów indeksu WIK i stosowanie wszelkich zmian przyrostowych z tabel podstawowych. Gdy liczba zmian przyrostowych jest zbyt duża, rozpoznawanie zapytania z widoku z materiałami może trwać dłużej niż bezpośrednio zapytania w tabelach bazowych.  Aby uniknąć obniżenia wydajności zapytań, dobrym sposobem jest uruchomienie [polecenia DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?view=azure-sqldw-latest) w celu monitorowania overhead_ratio widoku (total_rows/Max (1, base_view_row)).  Użytkownicy powinni odbudować materiałowy widok, jeśli jego overhead_ratio jest zbyt duży. 
 
 **Widok materiałowy i buforowanie zestawu wyników**
 

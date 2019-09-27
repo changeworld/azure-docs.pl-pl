@@ -1,102 +1,102 @@
 ---
-title: Samouczek — Zaakceptuj i odbierać dane przy użyciu udziału danych platformy Azure w wersji zapoznawczej
-description: Samouczek — Zaakceptuj i odbierać dane przy użyciu udziału danych platformy Azure w wersji zapoznawczej
+title: 'Samouczek: Akceptuj & odbierania danych — wersja zapoznawcza usługi Azure Data Share'
+description: Samouczek — akceptowanie i odbieranie danych przy użyciu wersji zapoznawczej usługi Azure Data Share
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: fc63c1a0b3b496de8e5ecea58f79f1db9d872e80
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 235ef25b2d655c4388dee5bdcf88d179f3373697
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67838441"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327398"
 ---
-# <a name="tutorial-accept-and-receive-data-using-azure-data-share-preview"></a>Samouczek: Zaakceptuj i odbierać dane przy użyciu udziału danych platformy Azure w wersji zapoznawczej
+# <a name="tutorial-accept-and-receive-data-using-azure-data-share-preview"></a>Samouczek: Akceptowanie i odbieranie danych przy użyciu wersji zapoznawczej usługi Azure Data Share
 
-W tym samouczku dowiesz się, jak zaakceptować zaproszenie udostępniania danych, za pomocą udostępniania danych platformy Azure w wersji zapoznawczej. Dowiesz się, jak odbierać dane są udostępniane Tobie, jak również sposób włączania interwał odświeżania regularne, aby zawsze mieć najnowsze migawkę danych udostępniony Tobie. 
+W tym samouczku dowiesz się, jak zaakceptować zaproszenie do udziału danych przy użyciu usługi Azure Data Share Preview. Dowiesz się, jak odbierać dane udostępniane Tobie, a także jak włączyć okres regularnego odświeżania, aby upewnić się, że zawsze masz najnowszą migawkę danych udostępnionych Tobie. 
 
 > [!div class="checklist"]
-> * Sposób zaakceptować zaproszenie udostępniania danych Azure w wersji zapoznawczej
-> * Tworzenie konta usługi Azure udostępniania danych w wersji zapoznawczej
-> * Określ miejsce docelowe danych
-> * Utwórz subskrypcję do udziału danych do zaplanowanego odświeżania
+> * Jak zaakceptować zaproszenie do korzystania z wersji zapoznawczej udziału danych platformy Azure
+> * Utwórz konto w wersji zapoznawczej udziału danych platformy Azure
+> * Określ miejsce docelowe dla danych
+> * Utwórz subskrypcję udziału danych na potrzeby zaplanowanego odświeżania
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Zanim można zaakceptować zaproszenie udostępniania danych, należy zarezerwować szereg zasobów platformy Azure, które są wymienione poniżej. 
+Przed zaakceptowaniem zaproszenia do udziału danych musisz udostępnić kilka zasobów platformy Azure, które są wymienione poniżej. 
 
-Upewnij się, czy wszystkie wymagania wstępne zostały spełnione przed zaakceptowaniem zaproszenie udostępniania danych. 
+Przed zaakceptowaniem zaproszenia udziału danych upewnij się, że wszystkie wymagania wstępne zostały ukończone. 
 
 * Subskrypcja platformy Azure: Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
-* Konto usługi Azure Storage: Jeśli nie masz jeszcze jeden, możesz utworzyć [konta usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account). 
-* Zaproszenie do udziału danych: Zaproszenie z Microsoft Azure z tematem pod tytułem "zaproszenie udostępniania danych platformy Azure od **<yourdataprovider@domain.com>** ".
-* Uprawnienia do dodawania przypisania roli do konta magazynu, który jest obecny w *Microsoft.Authorization/role przypisania/zapis* uprawnień. To uprawnienie istnieje w roli właściciela. 
-* Rejestracja dostawcy zasobów Microsoft.DataShare. Zobacz [dostawców zasobów Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) dokumentację dotyczącą informacji na temat sposobu wykonania tego zadania. 
+* Konto usługi Azure Storage: Jeśli jeszcze tego nie masz, możesz utworzyć [konto usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account). 
+* Zaproszenie do udziału danych: Zaproszenie od Microsoft Azure z podmiotem zatytułowanym "zaproszenie do udziału danych platformy Azure z **<yourdataprovider@domain.com>** ".
+* Uprawnienie do dodawania przypisywania roli do konta magazynu, które jest obecne w uprawnieniach *Microsoft. Autoryzacja/Przypisywanie ról/zapis* . To uprawnienie istnieje w roli właściciela. 
+* Rejestracja dostawcy zasobów dla elementu Microsoft. datashare. Informacje o tym, jak to zrobić, zawiera dokumentacja [dostawcy zasobów platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) . 
 
 > [!IMPORTANT]
-> Aby zaakceptować i odbierać udziału danych platformy Azure, najpierw należy zarejestrować dostawcę zasobów Microsoft.DataShare i musisz być właścicielem konta magazynu, które akceptują dane. Postępuj zgodnie z instrukcjami opisanymi w [Rozwiązywanie problemów z dane udostępniania wersji zapoznawczej Azure](data-share-troubleshoot.md) Zarejestruj dostawcę zasobów udziału danych, a także dodać siebie jako właściciela konta magazynu. 
+> Aby zaakceptować i odebrać udział danych platformy Azure, musisz najpierw zarejestrować dostawcę zasobów Microsoft. datashare i musisz być właścicielem konta magazynu, do którego są akceptowane dane. Postępuj zgodnie z instrukcjami opisanymi w temacie [Rozwiązywanie problemów z usługą Azure Data Share w wersji zapoznawczej](data-share-troubleshoot.md) , aby zarejestrować dostawcę zasobów udziału danych oraz dodać siebie jako właściciela konta magazynu. 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
 Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
-## <a name="open-invitation"></a>Otwórz zaproszenia
+## <a name="open-invitation"></a>Otwórz zaproszenie
 
-Sprawdź skrzynkę odbiorczą w poszukiwaniu zaproszenie z dostawcą danych. Zaproszenie jest z Microsoft Azure, pod tytułem **zaproszenie udostępniania danych platformy Azure od <yourdataprovider@domain.com>** . Zwróć uwagę na nazwy udziału, aby upewnić się, że akceptujesz poprawnego udziału, w przypadku wielu zaproszeń. 
+Sprawdź zaproszenie od dostawcy danych w skrzynce odbiorczej. Zaproszenie pochodzi z Microsoft Azure, zatytułowane **zaproszenie udziału danych platformy Azure z <yourdataprovider@domain.com>** . Zwróć uwagę na nazwę udziału, aby upewnić się, że zaakceptujesz prawidłowy udział, jeśli istnieje wiele zaproszeń. 
 
-Wybierz **Wyświetl zaproszenia** się zaproszenie na platformie Azure. Spowoduje to przejście do widoku Odebrano udziałów.
+Wybierz pozycję **Wyświetl zaproszenie** , aby zobaczyć zaproszenie na platformie Azure. Spowoduje to przejście do widoku otrzymane udziały.
 
-![Zaproszenia](./media/invitations.png "lista zaproszeń") 
+Lista ![zaproszeń](./media/invitations.png "zaproszeń") 
 
 Wybierz udział, który chcesz wyświetlić. 
 
 ## <a name="accept-invitation"></a>Zaakceptuj zaproszenie
-Upewnij się, wszystkie pola są przeglądane w tym **warunki użytkowania**. Jeśli wyrazisz zgodę na warunki użytkowania, będzie konieczne pole wyboru, aby wskazać, że wyrażasz zgodę. 
+Upewnij się, że wszystkie pola są przeglądane, w tym **warunki użytkowania**. Jeśli akceptujesz warunki użytkowania, musisz zaznaczyć pole wyboru, aby wskazać, że zgadzasz się. 
 
 ![Warunki użytkowania](./media/terms-of-use.png "warunki użytkowania") 
 
-W obszarze *konta udziału danych docelowego*, wybierz subskrypcję i grupę zasobów, której będzie wdrożenie do udziału danych. 
+W obszarze *docelowe konto udziału danych*wybierz subskrypcję i grupę zasobów, w ramach której będziesz wdrażać udział danych. 
 
-Dla **konto udziału danych** pól, zaznacz **Utwórz nową** Jeśli masz istniejące konto udziału danych. W przeciwnym razie wybierz istniejące konto udostępniać dane, chcesz zaakceptować udziału danych do. 
+W polu **konto udostępniania danych** wybierz pozycję **Utwórz nową** , jeśli nie masz istniejącego konta udziału danych. W przeciwnym razie wybierz istniejące konto udziału danych, do którego chcesz zaakceptować udział danych. 
 
-Dla *Odebrano nazwa udziału* pola może pozostaw wartość domyślną, określony przez zapewniają danych lub określ nową nazwę udziału odebrane. 
+W polu *Nazwa otrzymanego udziału* można pozostawić wartość domyślną określoną przez dane lub określić nową nazwę dla odebranego udziału. 
 
-![Docelowe konto udziału danych](./media/target-data-share.png "danych docelowych udostępnić konto") 
+Docelowe konto udziału danych(./media/target-data-share.png "docelowego") ![konta]udziału danych 
 
-Po zgodę na warunki użytkowania i określono lokalizację udziału, wybierz na *Akceptuj i konfigurowanie*. W przypadku wybrania tej opcji, subskrypcja udział zostanie utworzona i następnego ekranu wyświetli monit o wybierz docelowe konto magazynu, który ma zostać skopiowana do danych. 
+Po uzgodnieniu warunków użytkowania i określeniu lokalizacji dla udziału wybierz opcję *Zaakceptuj i skonfiguruj*. W przypadku wybrania tej opcji zostanie utworzona subskrypcja udziału, a na następnym ekranie zostanie wyświetlony monit o wybranie docelowego konta magazynu, do którego mają zostać skopiowane dane. 
 
-![Zaakceptuj opcje](./media/accept-options.png "Zaakceptuj opcje") 
+![Akceptuj]opcje(./media/accept-options.png "Zaakceptuj") opcje 
 
-Jeśli chcesz zaakceptować zaproszenie teraz jednak skonfigurować Magazyn w późniejszym czasie, wybierz *zaakceptować i później skonfigurować*. Ta opcja umożliwia później skonfigurować swoje konto magazynu docelowego. Aby kontynuować, później konfiguracji magazynu, zobacz [sposób konfigurowania konta usługi storage](how-to-configure-mapping.md) strona szczegółowe instrukcje dotyczące sposobu wznowić dane mają konfigurację. 
+Jeśli wolisz zaakceptować zaproszenie teraz, ale skonfigurować magazyn w późniejszym czasie, wybierz opcję *Zaakceptuj i skonfiguruj później*. Ta opcja umożliwia późniejsze skonfigurowanie docelowego konta magazynu. Aby kontynuować konfigurowanie magazynu później, zobacz [jak skonfigurować swoją stronę konta magazynu](how-to-configure-mapping.md) , aby uzyskać szczegółowe instrukcje dotyczące wznawiania konfiguracji udziału danych. 
 
-Jeśli nie chcesz zaakceptować zaproszenie, wybierz *Odrzuć*. 
+Jeśli nie chcesz zaakceptować zaproszenia, wybierz pozycję *Odrzuć*. 
 
 ## <a name="configure-storage"></a>Konfigurowanie magazynu
-W obszarze *ustawienia magazynu docelowego*, wybierz subskrypcję, grupy zasobów i konto magazynu, które chcesz odbierać dane do. 
+W obszarze *docelowe ustawienia magazynu*wybierz subskrypcję, grupę zasobów i konto magazynu, do których chcesz otrzymywać dane. 
 
-![Docelowe ustawienia magazynu](./media/target-storage-settings.png "docelowy magazyn") 
+Docelowy(./media/target-storage-settings.png "Magazyn") ![ustawień magazynu] 
 
-Aby otrzymywać regularne odświeżania danych, upewnij się, że w przypadku włączenia ustawień migawki. Należy pamiętać, że widoczne są tylko ustawienia harmonogramu migawek Jeśli Twój dostawca danych ma on uwzględniony w udziału danych. 
+Aby otrzymywać regularne odświeżanie danych, upewnij się, że zostały włączone ustawienia migawki. Należy zauważyć, że tylko harmonogram ustawień migawek zostanie wyświetlony, jeśli dostawca danych włączył go w udziale danych. 
 
-![Ustawienia migawki](./media/snapshot-settings.png "ustawienia migawki") 
+Ustawienia migawki ![ustawień](./media/snapshot-settings.png "migawek") 
 
 Wybierz pozycję *Zapisz*. 
 
-## <a name="trigger-a-snapshot"></a>Wyzwalacz migawki
+## <a name="trigger-a-snapshot"></a>Wyzwalanie migawki
 
-Możesz wyzwolić migawki w udziałach Odebrano -> Karta Szczegóły, wybierając **migawki wyzwalacza**. W tym miejscu możesz wyzwolić pełną lub przyrostową migawkę danych. Jeśli po raz pierwszy odbierania danych z dostawcą danych, wybierz pełnej kopii. 
+Możesz wyzwolić migawkę na karcie otrzymane udziały — > Szczegóły, wybierając pozycję **Wyzwól migawkę**. Tutaj można wyzwolić pełną lub przyrostową migawkę danych. Jeśli po raz pierwszy otrzymujesz dane od dostawcy danych, wybierz pozycję pełna kopia. 
 
-![Wyzwalacz migawki](./media/trigger-snapshot.png "migawki wyzwalacza") 
+![Wyzwalanie](./media/trigger-snapshot.png "migawki wyzwalacza") migawek 
 
-Gdy jest ostatni stan uruchomienia *pomyślne*, otwórz konto magazynu, aby wyświetlić odebranych danych. 
+Po *pomyślnym*zakończeniu ostatniego uruchomienia programu Otwórz konto magazynu, aby wyświetlić odebrane dane. 
 
-Aby sprawdzić, które konto magazynu, możesz użyć, wybierz **zestawów danych**. 
+Aby sprawdzić, które konto magazynu zostało użyte, wybierz pozycję **zestawy danych**. 
 
-![Zestawy danych klientów](./media/consumer-datasets.png "mapowanie zestawu danych klientów") 
+![](./media/consumer-datasets.png "Mapowanie zestawu danych") konsumenta 
 
-## <a name="view-history"></a>Wyświetlanie historii
-Aby wyświetlić historię z migawki, przejdź do udziałów Odebrano -> Historia. W tym miejscu można znaleźć historię wszystkich migawek, które zostały wygenerowane w ciągu ostatnich 60 dni. 
+## <a name="view-history"></a>Wyświetl historię
+Aby wyświetlić historię migawek, przejdź do obszaru otrzymane udziały — Historia >. W tym miejscu znajdziesz historię wszystkich migawek, które zostały wygenerowane w ciągu ostatnich 60 dni. 
 
-## <a name="next-steps"></a>Kolejne kroki
-W tym samouczku możesz dzięki modelom uczenia jak akceptować i odbierać udziału danych platformy Azure. Aby dowiedzieć się więcej na temat pojęć udziału danych platformy Azure, w dalszym ciągu [pojęcia: Usługi Azure Data udostępnianie terminologii](terminology.md).
+## <a name="next-steps"></a>Następne kroki
+W tym samouczku dowiesz się, jak akceptować i odbierać udział danych platformy Azure. Aby dowiedzieć się więcej na temat pojęć związanych z udostępnianiem danych platformy Azure, przejdź do @no__t 0Concepts: Terminologia dotycząca udziałów danych platformy Azure @ no__t-0.

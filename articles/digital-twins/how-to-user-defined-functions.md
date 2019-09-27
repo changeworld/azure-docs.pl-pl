@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: alinast
 ms.custom: seodec18
-ms.openlocfilehash: 6853ebf16c1a9d6b0d363277b22c7dd2583d37e5
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 8a39a79f4b3aeacd267a0c4b9351d2400f11d1ff
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013971"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336907"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Jak utworzyć funkcje zdefiniowane przez użytkownika w usłudze Azure Digital bliźniaczych reprezentacji
 
@@ -44,7 +44,7 @@ Dopasowania są obiektami grafów, które określają, jakie funkcje zdefiniowan
   - `SensorDevice`
   - `SensorSpace`
 
-Poniższy przykład dopasowania zwraca wartość true dla dowolnego zdarzenia telemetrii czujnika z `"Temperature"` wartością typu danych. Można utworzyć wiele odpowiedników dla funkcji zdefiniowanej przez użytkownika, wykonując uwierzytelnione żądanie HTTP POST:
+Poniższy przykład dopasowania zwraca wartość true dla dowolnego zdarzenia telemetrii czujnika z `"Temperature"` jako wartość typu danych. Można utworzyć wiele odpowiedników dla funkcji zdefiniowanej przez użytkownika, wykonując uwierzytelnione żądanie HTTP POST:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/matchers
@@ -119,12 +119,12 @@ function process(telemetry, executionContext) {
    - Pierwsza część zawiera wymagane metadane funkcji zdefiniowanej przez użytkownika.
    - Druga część zawiera logikę obliczeniową języka JavaScript.
 
-1. W sekcji **USER_DEFINED_BOUNDARY** Zastąp wartości **spaceId** `YOUR_SPACE_IDENTIFIER`() i **Matchs** (`YOUR_MATCHER_IDENTIFIER`).
+1. W sekcji **USER_DEFINED_BOUNDARY** Zastąp wartości **spaceId** (`YOUR_SPACE_IDENTIFIER`) i **matchers** (`YOUR_MATCHER_IDENTIFIER`).
 1. Sprawdź, czy funkcja JavaScript zdefiniowana przez użytkownika jest podana jako `Content-Type: text/javascript`.
 
 ### <a name="example-functions"></a>Przykładowe funkcje
 
-Ustaw odczytywanie danych telemetrycznych czujnika bezpośrednio dla czujnika z **temperaturą** `sensor.DataType`typu dane:
+Ustaw odczytywanie danych telemetrycznych czujnika bezpośrednio dla czujnika z **temperaturą**typu dane, która jest `sensor.DataType`:
 
 ```JavaScript
 function process(telemetry, executionContext) {
@@ -197,7 +197,7 @@ Aby uzyskać bardziej złożony przykładowy kod funkcji zdefiniowany przez uży
 
 Utwórz przypisanie roli dla funkcji zdefiniowanej przez użytkownika do uruchomienia. Jeśli dla funkcji zdefiniowanej przez użytkownika nie istnieje przypisanie roli, nie będzie ono miało odpowiednich uprawnień do współdziałania z interfejsem API zarządzania ani dostępu do wykonywania akcji na obiektach grafu. Akcje, które może wykonywać funkcja zdefiniowana przez użytkownika, są określane i definiowane za pośrednictwem kontroli dostępu opartej na rolach w ramach interfejsów API usługi Azure Digital bliźniaczych reprezentacji Management. Na przykład funkcje zdefiniowane przez użytkownika mogą być ograniczone do zakresu przez określenie pewnych ról lub określonych ścieżek kontroli dostępu. Aby uzyskać więcej informacji, zobacz dokumentację [kontroli dostępu opartej na rolach](./security-role-based-access-control.md) .
 
-1. [Wykonaj zapytanie dotyczące systemowego interfejsu API](./security-create-manage-role-assignments.md#all) dla wszystkich ról, aby uzyskać identyfikator roli, która ma zostać przypisana do funkcji zdefiniowanej przez użytkownika. Zrób to, wykonując uwierzytelnione żądanie HTTP GET:
+1. [Wykonaj zapytanie dotyczące systemowego interfejsu API](./security-create-manage-role-assignments.md#retrieve-all-roles) dla wszystkich ról, aby uzyskać identyfikator roli, która ma zostać przypisana do funkcji zdefiniowanej przez użytkownika. Zrób to, wykonując uwierzytelnione żądanie HTTP GET:
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/system/roles
@@ -205,8 +205,8 @@ Utwórz przypisanie roli dla funkcji zdefiniowanej przez użytkownika do uruchom
    Zachowaj żądany identyfikator roli. Zostanie ona przeniesiona jako atrybut treści JSON **roleId** (`YOUR_DESIRED_ROLE_IDENTIFIER`) poniżej.
 
 1. identyfikator obiektu (`YOUR_USER_DEFINED_FUNCTION_ID`) będzie identyfikatorem funkcji zdefiniowanej przez użytkownika, który został utworzony wcześniej.
-1. Znajdź wartość **Path** (`YOUR_ACCESS_CONTROL_PATH`), wykonując zapytania dotyczące spacji w `fullpath`.
-1. Skopiuj zwróconą `spacePaths` wartość. Użyjesz poniższego. Wykonaj uwierzytelnione żądanie HTTP GET:
+1. Znajdź wartość **Path** (`YOUR_ACCESS_CONTROL_PATH`), wykonując zapytania dotyczące spacji przy użyciu `fullpath`.
+1. Skopiuj zwróconą wartość `spacePaths`. Użyjesz poniższego. Wykonaj uwierzytelnione żądanie HTTP GET:
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?name=YOUR_SPACE_NAME&includes=fullpath
@@ -216,7 +216,7 @@ Utwórz przypisanie roli dla funkcji zdefiniowanej przez użytkownika do uruchom
     | --- | --- |
     | YOUR_SPACE_NAME | Nazwa miejsca, którego chcesz użyć |
 
-1. Wklej zwróconą `spacePaths` wartość do **ścieżki** , aby utworzyć przypisanie roli funkcji zdefiniowanej przez użytkownika, wykonując uwierzytelnione żądanie HTTP Post:
+1. Wklej zwróconą wartość `spacePaths` do **ścieżki** , aby utworzyć przypisanie roli funkcji zdefiniowanej przez użytkownika, wykonując UWIERZYTELNIONE żądanie HTTP Post:
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/roleassignments

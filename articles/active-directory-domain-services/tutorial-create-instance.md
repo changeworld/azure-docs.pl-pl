@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 8c346b75b30737645721d8b39a655a85ed446fae
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 536ada668db724ca50d7db820aff173f7222bab2
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71229524"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336854"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Samouczek: Utwórz i skonfiguruj wystąpienie Azure Active Directory Domain Services
 
@@ -42,7 +42,8 @@ Do ukończenia tego samouczka potrzebne są następujące zasoby i uprawnienia:
     * W razie konieczności [Utwórz dzierżawę Azure Active Directory][create-azure-ad-tenant] lub [skojarz subskrypcję platformy Azure z Twoim kontem][associate-azure-ad-tenant].
 * Aby włączyć usługę Azure AD DS, musisz mieć uprawnienia *administratora globalnego* w dzierżawie usługi Azure AD.
 * Aby utworzyć wymagane zasoby usługi Azure AD DS, musisz mieć uprawnienia *współautora* w ramach subskrypcji platformy Azure.
-* Dzierżawa usługi Azure AD musi być skonfigurowana do samoobsługowego [resetowania hasła][configure-sspr].
+
+Chociaż nie jest to wymagane w przypadku usługi Azure AD DS, zaleca się [skonfigurowanie funkcji samoobsługowego resetowania hasła (SSPR)][configure-sspr] dla dzierżawy usługi Azure AD. Użytkownicy mogą zmieniać swoje hasła bez SSPR, ale SSPR pomagają w przypadku zapomnienia hasła i konieczności jego zresetowania.
 
 > [!IMPORTANT]
 > Po utworzeniu domeny zarządzanej AD DS platformy Azure nie można przenieść wystąpienia do innej grupy zasobów, sieci wirtualnej, subskrypcji itd. Podczas wdrażania wystąpienia usługi Azure AD DS należy zadbać o wybranie najbardziej odpowiedniej subskrypcji, grupy zasobów, regionu i sieci wirtualnej.

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: mbullwin
-ms.openlocfilehash: af157204ad1e1b28639ae2d8f192b3122afa8147
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: ff9d4bb98a79c379fda2c1a0a0ab9d5e0ec212ce
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299242"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338091"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Monitorowanie zależności, przechwycone wyjątki i czasy wykonywania metod w aplikacjach sieci Web Java
 
@@ -122,7 +122,7 @@ Dodaj następujący kod do AI-Agent. XML:
 
 W idealnym przypadku, gdy wszystkie usługi zostały zaktualizowane do nowszej wersji zestawów SDK obsługujących protokół W3C. Zdecydowanie zaleca się przejście do nowszej wersji zestawów SDK z obsługą W3C tak szybko, jak to możliwe.
 
-Upewnij się, że **konfiguracje [przychodzące](correlation.md#w3c-distributed-tracing) i wychodzące (Agent)** są dokładnie takie same.
+Upewnij się, że **konfiguracje [przychodzące](correlation.md#enable-w3c-distributed-tracing-support-for-java-apps) i wychodzące (Agent)** są dokładnie takie same.
 
 ## <a name="view-the-data"></a>Wyświetlanie danych
 W zasobie Application Insights zagregowane czasy wykonywania zdalnych zależności i metod są wyświetlane [w obszarze kafelka wydajność][metrics].

@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: conceptual
 ms.date: 07/14/2017
-ms.openlocfilehash: 2d78523f776c909845057aaf8660a7c6fba3ef6a
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 7c425ee8c9fd99420bbcbba31c7a74c360938aef
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309899"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338244"
 ---
 # <a name="run-u-sql-and-debug-locally-in-visual-studio-code"></a>Uruchom skrypt U-SQL i Debuguj lokalnie w Visual Studio Code
 W tym artykule opisano sposób uruchamiania zadań U-SQL na lokalnym komputerze deweloperskim w celu przyspieszenia wczesnych faz kodowania lub debugowania kodu lokalnie w Visual Studio Code. Aby uzyskać instrukcje dotyczące Azure Data Lake narzędzia dla Visual Studio Code, zobacz [Korzystanie z kodu Azure Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-for-vscode.md).
@@ -51,7 +51,7 @@ Dla użytkownika pierwszego czasu Użyj **ADL: Pobierz pakiet** uruchamiania l
 2. Wybierz pozycję **Akceptuj** , aby zaakceptować postanowienia licencyjne dotyczące oprogramowania firmy Microsoft po raz pierwszy. 
 
    ![Zaakceptuj postanowienia licencyjne dotyczące oprogramowania firmy Microsoft](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/AcceptEULA.png)   
-3. Zostanie otwarta konsola cmd. W przypadku użytkowników po raz pierwszy musisz wprowadzić **3**, a następnie odszukać ścieżkę do lokalnego folderu dla danych wejściowych i wyjściowych. W przypadku innych opcji można użyć wartości domyślnych. 
+3. Zostanie otwarta konsola cmd. W przypadku użytkowników po raz pierwszy musisz wprowadzić **3**, a następnie odszukać ścieżkę do lokalnego folderu dla danych wejściowych i wyjściowych. Jeśli nie powiodło się zdefiniowanie ścieżki przy użyciu ukośników odwrotnych, spróbuj ukośniki. W przypadku innych opcji można użyć wartości domyślnych.
 
    ![Narzędzia Data Lake dla Visual Studio Code lokalnego uruchomienia cmd](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-run-cmd.png)
 4. Wybierz kombinację klawiszy Ctrl + Shift + P, aby otworzyć paletę poleceń, wprowadź **ADL: Prześlij zadanie**, a następnie wybierz pozycję **Local** , aby przesłać zadanie do konta lokalnego.

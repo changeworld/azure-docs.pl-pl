@@ -9,12 +9,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/09/2019
 ms.author: sagupt
-ms.openlocfilehash: a67034752b4c43533a5735b857186ee83934717a
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d641008a7caf4a006344d886aec945a6e8da2568
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935640"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326618"
 ---
 # <a name="create-azure-advisor-alerts-on-new-recommendations"></a>Tworzenie alertów Azure Advisor na temat nowych zaleceń 
 
@@ -24,7 +24,7 @@ Za każdym razem, gdy Azure Advisor wykryje nowe zalecenie dla jednego z zasobó
 
 Możesz również określić typy zaleceń, korzystając z następujących właściwości:
 
-* Kategoria
+* Category
 * Poziom wpływu
 * Typ zalecenia
 
@@ -33,7 +33,7 @@ Możesz również skonfigurować akcję, która będzie wykonywana po wyzwoleniu
 * Wybieranie istniejącej grupy akcji
 * Tworzenie nowej grupy akcji
 
-Aby dowiedzieć się więcej na temat grup akcji, zobacz [Tworzenie grup akcji i zarządzanie nimi] (.. /azure-monitor/platform/action-groups.md.
+Aby dowiedzieć się więcej o grupach akcji, zobacz [Create and manage action groups (Tworzenie grup akcji i zarządzanie nimi)](../azure-monitor/platform/action-groups.md).
 
 > [!NOTE] 
 > Alerty usługi Advisor są obecnie dostępne tylko w celu uzyskania wysokiej dostępności, wydajności i zaleceń dotyczących kosztów. Zalecenia dotyczące zabezpieczeń nie są obsługiwane. 

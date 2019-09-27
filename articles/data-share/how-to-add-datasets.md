@@ -1,17 +1,17 @@
 ---
-title: Dodawanie zestawów danych do istniejącego udziału w wersji zapoznawczej usługi Azure Data Share
+title: Dodawanie zestawów danych do istniejącej wersji zapoznawczej udziału danych platformy Azure
 description: Dodawanie zestawów danych do istniejącego udziału
-author: madams0013
+author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: jasonh
-ms.openlocfilehash: 75ac837491927881fd8b7547b0f49a069c3f2d47
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: bd8cd7af72c349060eb035dc32e9ddd1a7f9920e
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70257225"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327524"
 ---
 # <a name="how-to-add-datasets-to-an-existing-share-in-azure-data-share-preview"></a>Jak dodać zestawy danych do istniejącego udziału w wersji zapoznawczej usługi Azure Data Share
 
@@ -29,7 +29,7 @@ W panelu po prawej stronie wybierz typ zestawu danych, który chcesz dodać, a n
 
 ![Dodaj zestawy danych](./media/how-to/how-to-add-datasets/add-datasets-side.png)
 
-Po kliknięciu przycisku **Dodaj zestawy**danych zestawy danych zostaną dodane do udziału. Uwaga: Aby można było zobaczyć nowe zestawy danych, musi być wyzwalane przez odbiorców. Jeśli ustawienia migawki zostały skonfigurowane, użytkownicy będą widzieli nowe zestawy danych po zakończeniu następnej zaplanowanej migawki. Bez skonfigurowanych ustawień migawek konsument musi ręcznie wyzwolić pełną lub przyrostową kopię danych w celu uzyskania aktualizacji. Aby uzyskać więcej informacji [na temat migawek, zobacz](terminology.md)snapshots.
+Po kliknięciu przycisku **Dodaj zestawy**danych zestawy danych zostaną dodane do udziału. Uwaga: Aby można było zobaczyć nowe zestawy danych, musi być wyzwalane przez odbiorców. Jeśli ustawienia migawki zostały skonfigurowane, użytkownicy będą widzieli nowe zestawy danych po zakończeniu następnej zaplanowanej migawki. Bez skonfigurowanych ustawień migawek konsument musi ręcznie wyzwolić pełną lub przyrostową kopię danych w celu uzyskania aktualizacji. Aby uzyskać więcej informacji na temat migawek [, zobacz](terminology.md)snapshots.
 
 ## <a name="next-steps"></a>Następne kroki
 Dowiedz się więcej na temat [dodawania odbiorców do istniejącego udziału danych](how-to-add-recipients.md).

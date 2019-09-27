@@ -1,19 +1,19 @@
 ---
-title: Opis kontroli dostępu opartej na rolach w usłudze Azure Digital bliźniaczych reprezentacji | Microsoft Docs
-description: Poznaj uwierzytelnianie w programie Digital bliźniaczych reprezentacji z kontrolą dostępu opartą na rolach.
+title: Informacje na temat kontroli dostępu opartej na rolach — Azure Digital bliźniaczych reprezentacji | Microsoft Docs
+description: Informacje na temat kontroli dostępu opartej na rolach i zarządzania uprawnieniami w usłudze Azure Digital bliźniaczych reprezentacji.
 author: lyrana
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/17/2019
 ms.author: lyhughes
-ms.openlocfilehash: 6602a4df2c6e313156010102780240ba19fbac95
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 4e29cb488c9b491ec551ead1873e8cfd2d33a93b
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815565"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336731"
 ---
 # <a name="role-based-access-control-in-azure-digital-twins"></a>Kontrola dostępu oparta na rolach w usłudze Azure Digital bliźniaczych reprezentacji
 
@@ -49,20 +49,20 @@ Deweloper może używać RBAC, aby:
 
 ### <a name="role-definitions"></a>Definicje ról
 
-Definicja roli jest kolekcją uprawnień i innych atrybutów, które stanowią rolę. Definicja roli zawiera listę dozwolonych operacji, takich jak *Tworzenie*, *odczytywanie*, *Aktualizowanie*i *usuwanie* dowolnego obiektu z tą rolą. Określa również, do których typów obiektów odnoszą się uprawnienia.
+Definicja roli jest kolekcją uprawnień i innych atrybutów, które stanowią rolę. Definicja roli zawiera listę dozwolonych operacji, takich jak *Tworzenie*, *odczytywanie*, *Aktualizowanie*i *usuwanie* dowolnego obiektu z tą rolą. Określa również, do których typów obiektów stosowane są uprawnienia.
 
 [!INCLUDE [digital-twins-roles](../../includes/digital-twins-roles.md)]
 
 >[!NOTE]
 > Aby pobrać pełne definicje dla poprzednich ról, wykonaj zapytanie do interfejsu API System/role.
-> Dowiedz się więcej, odczytując [Tworzenie przypisań ról i zarządzanie nimi](./security-create-manage-role-assignments.md#all).
+> Dowiedz się więcej, odczytując [Tworzenie przypisań ról i zarządzanie nimi](./security-create-manage-role-assignments.md#retrieve-all-roles).
 
 ### <a name="object-identifier-types"></a>Typy identyfikatorów obiektów
 
 [!INCLUDE [digital-twins-object-types](../../includes/digital-twins-object-id-types.md)]
 
 >[!TIP]
-> Dowiedz się, jak przyznać uprawnienia do nazwy głównej usługi, odczytując [Tworzenie przypisań ról i zarządzanie nimi](./security-create-manage-role-assignments.md#grant).
+> Dowiedz się, jak przyznać uprawnienia do nazwy głównej usługi, odczytując [Tworzenie przypisań ról i zarządzanie nimi](./security-create-manage-role-assignments.md#grant-permissions-to-your-service-principal).
 
 W poniższych artykułach dokumentacji referencyjnej opisano:
 

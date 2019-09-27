@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: tutorial
-ms.date: 07/05/2019
+ms.date: 08/28/2019
 ms.author: wolfma
-ms.openlocfilehash: d61141a0955f916b1d4bfeabb22454ec38415cea
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: cf5bf3dfd7b6a408179bb267156433168e562a8e
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603238"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326834"
 ---
 # <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Samouczek: rozpoznawanie intencji z mowy przy użyciu zestawu Speech SDK dla języka C#
 
-Zestaw [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) usługi Cognitive Services jest integrowany z usługą [Language Understanding Service (LUIS)](https://www.luis.ai/home) w celu udostępnienia funkcji **rozpoznawania intencji**. Intencja to coś, co użytkownik chce zrobić: zarezerwować lot, sprawdzić prognozę pogody lub zadzwonić. Następnie może on użyć terminów, które wydają się naturalne. Korzystając z uczenia maszynowego, usługa LUIS mapuje żądania użytkownika na zdefiniowane intencje.
+[Zestaw SDK mowy](speech-sdk.md) Cognitive Services integruje się z [usługą Language Understanding (Luis)](https://www.luis.ai/home) w celu zapewnienia **rozpoznawania intencji**. Intencja to coś, co użytkownik chce zrobić: zarezerwować lot, sprawdzić prognozę pogody lub zadzwonić. Następnie może on użyć terminów, które wydają się naturalne. Za pomocą uczenia maszynowego LUIS mapuje żądania użytkowników do zdefiniowanych przez siebie intencji.
 
 > [!NOTE]
 > Aplikacja usługi LUIS definiuje intencje i jednostki, które chcesz rozpoznawać. Jest ona używana oddzielnie od aplikacji języka C#, która korzysta z usługi rozpoznawania mowy. W tym artykule „aplikacja” oznacza aplikację usługi LUIS, a „zastosowanie” oznacza kod języka C#.
@@ -28,7 +28,7 @@ W tym samouczku użyjesz zestawu Speech SDK do utworzenia aplikacji konsolowej j
 
 > [!div class="checklist"]
 > * Tworzenie projektu programu Visual Studio odwołującego się do pakietu NuGet zestawu Speech SDK
-> * Tworzenie konfiguracji rozpoznawania mowy i uzyskiwanie aparatu rozpoznawania intencji
+> * Utwórz konfigurację mowy i uzyskaj aparat rozpoznawania intencji
 > * Uzyskiwanie modelu dla aplikacji usługi LUIS i dodawanie potrzebnych intencji
 > * Określanie języka funkcji rozpoznawania mowy
 > * Rozpoznawanie mowy z pliku
@@ -36,40 +36,42 @@ W tym samouczku użyjesz zestawu Speech SDK do utworzenia aplikacji konsolowej j
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed przystąpieniem do wykonywania kroków opisanych w tym samouczku upewnij się, że dysponujesz poniższymi elementami.
+Przed rozpoczęciem tego samouczka upewnij się, że masz następujące elementy:
 
 * Konto usługi LUIS. Możesz uzyskać je bezpłatnie za pośrednictwem [portalu usługi LUIS](https://www.luis.ai/home).
-* Program Visual Studio 2017 (dowolna wersja).
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (dowolna wersja).
 
 ## <a name="luis-and-speech"></a>Usługa LUIS i mowa
 
-Usługa LUIS integruje się z usług przetwarzania mowy, rozpoznawał intencji z wypowiedzi. Nie potrzebujesz subskrypcji usług przetwarzania mowy, po prostu usługi LUIS.
+LUIS integruje się z usługami mowy, aby rozpoznawać intencje z mowy. Nie potrzebujesz subskrypcji usługi Speech Services — tylko LUIS.
 
 Usługa LUIS używa dwóch rodzajów kluczy:
 
-|Typ klucza|Przeznaczenie|
+|Typ klucza|Cel|
 |--------|-------|
-|authoring|umożliwia programowe tworzenie i modyfikowanie aplikacji LUIS|
-|endpoint |autoryzuje dostęp do danej aplikacji usługi LUIS|
+|Tworzenie|Umożliwia programowe tworzenie i modyfikowanie aplikacji LUIS|
+|Endpoint |Autoryzuje dostęp do określonej aplikacji LUIS|
 
-Klucz punktu końcowego to klucz usługi LUIS potrzebny w tym samouczku. W tym samouczku jest używana przykładowa aplikacja usługi LUIS Home Automation, którą można utworzyć, wykonując kroki opisane w temacie [Używanie wstępnie utworzonej aplikacji Home Automation](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app). Jeśli masz już utworzoną własną aplikację usługi LUIS, możesz jej użyć.
+W tym samouczku potrzebny jest typ klucza punktu końcowego. W tym samouczku jest używana przykładowa aplikacja LUIS Automation, którą można utworzyć, korzystając z [prebudowanego](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) przewodnika Szybki Start dla aplikacji do automatyzacji domowej. Jeśli utworzono własną aplikację LUIS, można jej użyć zamiast niej.
 
-Podczas tworzenia aplikacji usługi LUIS klucz początkowy jest generowany automatycznie, aby można było przetestować aplikację przy użyciu zapytań tekstowych. Ten klucz nie umożliwia integracji usług przetwarzania mowy i nie będzie działać w tym samouczku. Musisz utworzyć zasób usługi LUIS na pulpicie nawigacyjnym platformy Azure i przypisać go do aplikacji usługi LUIS. Na potrzeby tego samouczka możesz używać subskrypcji warstwy Bezpłatna.
+Gdy tworzysz aplikację LUIS, LUIS automatycznie generuje klucz początkowy, aby można było przetestować aplikację przy użyciu zapytań tekstowych. Ten klucz nie umożliwia integracji usługi rozpoznawania mowy i nie współpracuje z tym samouczkiem. Utwórz zasób LUIS na pulpicie nawigacyjnym platformy Azure i przypisz go do aplikacji LUIS. Na potrzeby tego samouczka możesz używać subskrypcji warstwy Bezpłatna.
 
-Po utworzeniu zasobu usługi LUIS na pulpicie nawigacyjnym platformy Azure zaloguj się do [portalu usługi LUIS](https://www.luis.ai/home), wybierz aplikację na stronie Moje aplikacje, a następnie przejdź do strony zarządzania aplikacją. Na koniec kliknij pozycję **Klucze i punkty końcowe** na pasku bocznym.
+Po utworzeniu zasobu LUIS na pulpicie nawigacyjnym platformy Azure Zaloguj się do [portalu Luis](https://www.luis.ai/home), wybierz aplikację na stronie **Moje aplikacje** , a następnie przejdź do strony **zarządzania** aplikacji. Na koniec wybierz pozycję **klucze i punkty końcowe** na pasku bocznym.
 
 ![Ustawienia kluczy i punktów końcowych usługi LUIS](media/sdk/luis-keys-endpoints-page.png)
 
-Na stronie ustawień punktu końcowego i kluczy:
+Na stronie **Ustawienia kluczy i punktu końcowego** :
 
-1. Przewiń w dół do sekcji zasobów i kluczy, a następnie kliknij pozycję **Przypisz zasób**.
-1. W oknie dialogowym **Przypisywanie klucza do aplikacji** wybierz następujące pozycje:
+1. Przewiń w dół do sekcji **zasoby i klucze** , a następnie wybierz pozycję **Przypisz zasób**.
+1. W oknie dialogowym **przypisywanie klucza do aplikacji** wprowadź następujące zmiany:
 
-    * Wybierz pozycję Microsoft jako dzierżawę.
-    * W obszarze nazwy subskrypcji wybierz subskrypcję platformy Azure, która zawiera zasób usługi LUIS do użycia.
-    * W obszarze klucza wybierz zasób usługi LUIS, którego chcesz użyć z aplikacją.
+   * W obszarze **dzierżawca**wybierz pozycję **Microsoft**.
+   * W obszarze **Nazwa subskrypcji**wybierz subskrypcję platformy Azure zawierającą zasób Luis, którego chcesz użyć.
+   * W obszarze **klucz**wybierz zasób Luis, który ma być używany z aplikacją.
 
-Za chwilę w tabeli w dolnej części strony zostanie wyświetlona nowa subskrypcja. Kliknij ikonę obok klucza, aby skopiować go do schowka. (Możesz użyć dowolnego klucza).
+   Za chwilę w tabeli w dolnej części strony zostanie wyświetlona nowa subskrypcja. 
+
+1. Wybierz ikonę obok klawisza, aby skopiować go do Schowka. (Możesz użyć dowolnego klucza).
 
 ![Klucze subskrypcji aplikacji usługi LUIS](media/sdk/luis-keys-assigned.png)
 
@@ -79,71 +81,74 @@ Za chwilę w tabeli w dolnej części strony zostanie wyświetlona nowa subskryp
 
 ## <a name="add-the-code"></a>Dodawanie kodu
 
-Otwórz plik `Program.cs` w projekcie programu Visual Studio i zastąp blok instrukcji `using` na początku pliku poniższymi deklaracjami.
+Następnie Dodaj kod do projektu.
 
-[!code-csharp[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#toplevel)]
+1. W **Eksplorator rozwiązań**otwórz plik **program.cs**.
 
-Wewnątrz wybranej metody `Main()` dodaj poniższy kod.
+1. Zastąp blok `using` instrukcji na początku pliku następującym deklaracją:
 
-```csharp
-RecognizeIntentAsync().Wait();
-Console.WriteLine("Please press Enter to continue.");
-Console.ReadLine();
-```
+   [!code-csharp[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#toplevel)]
 
-Utwórz pustą metodę asynchroniczną `RecognizeIntentAsync()`, jak pokazano w tym miejscu.
+1. W ramach podanej metody `Main()` Dodaj następujący kod:
 
-```csharp
-static async Task RecognizeIntentAsync()
-{
-}
-```
+   ```csharp
+   RecognizeIntentAsync().Wait();
+   Console.WriteLine("Please press Enter to continue.");
+   Console.ReadLine();
+   ```
 
-W treści nowej metody dodaj poniższy kod.
+1. Utwórz pustą metodę asynchroniczną `RecognizeIntentAsync()`, jak pokazano poniżej:
 
-[!code-csharp[Intent recognition by using a microphone](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#intentRecognitionWithMicrophone)]
+   ```csharp
+   static async Task RecognizeIntentAsync()
+   {
+   }
+   ```
 
-Zastąp symbole zastępcze w tej metodzie kluczem subskrypcji, regionem i identyfikatorem aplikacji usługi LUIS w pokazany poniżej sposób.
+1. W treści nowej metody Dodaj następujący kod:
 
-|Symbol zastępczy|Zamień na|
-|-----------|------------|
-|`YourLanguageUnderstandingSubscriptionKey`|Klucz punktu końcowego usługi LUIS. Jak wspomniano wcześniej, musi być to klucz uzyskany z pulpitu nawigacyjnego platformy Azure, a nie „klucz początkowy”. Możesz znaleźć go na stronie kluczy i punktów końcowych aplikacji (w obszarze Zarządzanie) w [portalu usługi LUIS](https://www.luis.ai/home).|
-|`YourLanguageUnderstandingServiceRegion`|Krótki identyfikator regionu, w którym znajduje się Twoja subskrypcja usługi LUIS, na przykład `westus` dla regionu Zachodnie stany USA. Zobacz [Regions](regions.md) (Regiony).|
-|`YourLanguageUnderstandingAppId`|Identyfikator aplikacji usługi LUIS. Możesz go znaleźć na stronie ustawień aplikacji w [portalu usługi LUIS](https://www.luis.ai/home).|
+   [!code-csharp[Intent recognition by using a microphone](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#intentRecognitionWithMicrophone)]
 
-Po wprowadzeniu tych zmian można skompilować (Ctrl+Shift+B) i uruchomić (F5) aplikację z samouczka. Po wyświetleniu monitu spróbuj powiedzieć „Turn off the lights” (Wyłącz światła) do mikrofonu komputera. Wynik zostanie wyświetlony w oknie konsoli.
+1. Zastąp symbole zastępcze w tej metodzie kluczem subskrypcji, regionem i identyfikatorem aplikacji usługi LUIS w pokazany poniżej sposób.
+
+   |Symbol zastępczy|Zamień na|
+   |-----------|------------|
+   |`YourLanguageUnderstandingSubscriptionKey`|Klucz punktu końcowego usługi LUIS. Ponownie musisz pobrać ten element z pulpitu nawigacyjnego platformy Azure, a nie "klawisza początkowego". Można je znaleźć na stronie **klucze i punkty końcowe** aplikacji (w obszarze **Zarządzaj**) w [portalu Luis](https://www.luis.ai/home).|
+   |`YourLanguageUnderstandingServiceRegion`|Krótki identyfikator regionu, w którym znajduje się Twoja subskrypcja usługi LUIS, na przykład `westus` dla regionu Zachodnie stany USA. Zobacz [Regions](regions.md) (Regiony).|
+   |`YourLanguageUnderstandingAppId`|Identyfikator aplikacji usługi LUIS. Można je znaleźć na stronie **ustawień** aplikacji w [portalu Luis](https://www.luis.ai/home).|
+
+Po wprowadzeniu tych zmian możesz skompilować (**Control + Shift + B**) i uruchomić (**F5**) aplikację samouczka. Po wyświetleniu monitu spróbuj wypowiedzieć "Wyłącz lampki" na mikrofon komputera. Aplikacja wyświetli wynik w oknie konsoli.
 
 Poniższe sekcje zawierają omówienie kodu.
 
-
 ## <a name="create-an-intent-recognizer"></a>Tworzenie aparatu rozpoznawania intencji
 
-Pierwszym krokiem rozpoznawania intencji w mowie jest utworzenie konfiguracji mowy przy użyciu regionu i klucza punktu końcowego usługi LUIS. Konfiguracje mowy mogą służyć do tworzenia aparatów rozpoznawania w przypadku różnych możliwości zestawu SDK rozpoznawania mowy. Konfiguracja mowy oferuje wiele sposobów określania subskrypcji do użycia. W tym miejscu użyjemy opcji `FromSubscription`, która uwzględnia region i klucz subskrypcji.
+Najpierw należy utworzyć konfigurację mowy z poziomu klucza i regionu punktu końcowego LUIS. Konfiguracje mowy umożliwiają tworzenie aparatów rozpoznawania dla różnych funkcji zestawu Speech SDK. Konfiguracja mowy ma wiele sposobów na określenie subskrypcji, której chcesz użyć; w tym miejscu użyjemy `FromSubscription`, który pobiera klucz subskrypcji i region.
 
 > [!NOTE]
-> Użyj klucza i regionie Twojej subskrypcji usługi LUIS, nie z subskrypcji usług przetwarzania mowy.
+> Użyj klucza i regionu subskrypcji LUIS, a nie subskrypcji usługi Speech Services.
 
-Następnie utwórz aparat rozpoznawania mowy przy użyciu elementu `new IntentRecognizer(config)`. Ponieważ konfiguracja już wie, której subskrypcji użyć, nie trzeba ponownie określać punktu końcowego i klucza subskrypcji podczas tworzenia aparatu rozpoznawania.
+Następnie utwórz aparat rozpoznawania mowy przy użyciu elementu `new IntentRecognizer(config)`. Ponieważ konfiguracja wie już, której subskrypcji użyć, nie musisz ponownie podawać klucza subskrypcji i punktu końcowego podczas tworzenia aparatu rozpoznawania.
 
 ## <a name="import-a-luis-model-and-add-intents"></a>Importowanie modelu usługi LUIS i dodawanie intencji
 
-Teraz zaimportuj model z aplikacji usługi LUIS przy użyciu elementu `LanguageUnderstandingModel.FromAppId()` i dodaj intencje usługi LUIS, które chcesz rozpoznawać za pośrednictwem metody `AddIntent()` aparatu rozpoznawania. Te dwa kroki zwiększają dokładność rozpoznawania mowy, wskazując słowa, których użytkownik prawdopodobnie użyje w swoich żądaniach. Nie trzeba dodawać wszystkich intencji aplikacji, jeśli nie musisz rozpoznawać ich wszystkich w aplikacji.
+Teraz zaimportuj model z aplikacji usługi LUIS przy użyciu elementu `LanguageUnderstandingModel.FromAppId()` i dodaj intencje usługi LUIS, które chcesz rozpoznawać za pośrednictwem metody `AddIntent()` aparatu rozpoznawania. Te dwa kroki zwiększają dokładność rozpoznawania mowy, wskazując słowa, których użytkownik prawdopodobnie użyje w swoich żądaniach. Nie musisz dodawać wszystkich intencji aplikacji, jeśli nie chcesz ich rozpoznać w aplikacji.
 
-Dodawanie intencji wymaga trzech argumentów: model usługi LUIS (który został utworzony i nosi nazwę `model`), nazwę intencji i identyfikatora elementu intent Różnica między identyfikatorem i nazwą jest następująca.
+Aby dodać intencje, należy podać trzy argumenty: model LUIS (który został utworzony i o nazwie `model`), nazwę celu i Identyfikator celu. Różnica między identyfikatorem i nazwą jest następująca.
 
-|Argument `AddIntent()`|Przeznaczenie|
+|`AddIntent()` @ no__t-1argument|Cel|
 |--------|-------|
-|intentName |Nazwa intencji zgodnie z definicją w aplikacji usługi LUIS. Musi dokładnie odpowiadać nazwie intencji usługi LUIS.|
-|intentID    |Identyfikator przypisany do rozpoznanej intencji przez zestaw SDK rozpoznawania mowy. Dopuszczalna jest dowolna wartość; nie musi odpowiadać nazwie intencji zdefiniowanej w aplikacji usługi LUIS. Jeśli na przykład ten sam kod obsługuje wiele intencji, możesz dla nich użyć tego samego identyfikatora.|
+|intentName|Nazwa intencji zgodnie z definicją w aplikacji usługi LUIS. Ta wartość musi być zgodna z nazwą celu LUIS.|
+|intentID|Identyfikator przypisany do rozpoznanej intencji przez zestaw SDK rozpoznawania mowy. Ta wartość może być dowolnie taka, jak chcesz. nie musi odpowiadać nazwie zamierzonej zdefiniowanej w aplikacji LUIS. Jeśli na przykład ten sam kod obsługuje wiele intencji, możesz dla nich użyć tego samego identyfikatora.|
 
-Aplikacja strona główna usługi LUIS automatyzacji ma dwie opcje: jeden włączania urządzenia i drugą na potrzeby wyłączenie urządzenia. Poniższe wiersze powodują dodanie tych intencji do aparatu rozpoznawania; zastąp trzy wiersze `AddIntent` w metodzie `RecognizeIntentAsync()` tym kodem.
+Aplikacja LUIS Automation w domu ma dwa intencje: jeden do włączenia urządzenia i drugi do wyłączania urządzenia. Poniższe wiersze powodują dodanie tych intencji do aparatu rozpoznawania; zastąp trzy wiersze `AddIntent` w metodzie `RecognizeIntentAsync()` tym kodem.
 
 ```csharp
 recognizer.AddIntent(model, "HomeAutomation.TurnOff", "off");
 recognizer.AddIntent(model, "HomeAutomation.TurnOn", "on");
 ```
 
-Zamiast opcji dodawania poszczególnych opcji, można również użyć `AddAllIntents` metody w celu dodania wszystkich intencje w modelu dla aparatu rozpoznawania.
+Zamiast dodawać pojedyncze intencje, można również użyć metody `AddAllIntents`, aby dodać wszystkie intencje w modelu do aparatu rozpoznawania.
 
 ## <a name="start-recognition"></a>Uruchamianie rozpoznawania
 
@@ -152,38 +157,42 @@ Po utworzeniu aparatu rozpoznawania i dodaniu intencji można rozpocząć rozpoz
 |Tryb rozpoznawania|Metody do wywołania|Wynik|
 |----------------|-----------------|---------|
 |Pojedyncze|`RecognizeOnceAsync()`|Zwraca rozpoznaną intencję, jeśli istnieje, po jednej wypowiedzi.|
-|Ciągłe|`StartContinuousRecognitionAsync()`<br>`StopContinuousRecognitionAsync()`|Rozpoznaje wiele wypowiedzi. Emituje zdarzenia (np. `IntermediateResultReceived`), gdy wyniki są dostępne.|
+|Ciągłe|`StartContinuousRecognitionAsync()`<br>`StopContinuousRecognitionAsync()`|Rozpoznaje wiele wyrażenia długości; emituje zdarzenia (na przykład `IntermediateResultReceived`), gdy dostępne są wyniki.|
 
-Aplikacja z samouczka używa trybu pojedynczego i dlatego wywołuje metodę `RecognizeOnceAsync()` w celu rozpoczęcia rozpoznawania. Wynik to obiekt `IntentRecognitionResult` zawierający informacje o rozpoznanej intencji. Odpowiedź JSON usługi LUIS jest wyodrębniana z następującego wyrażenia:
+Aplikacja z samouczka używa trybu pojedynczego i dlatego wywołuje metodę `RecognizeOnceAsync()` w celu rozpoczęcia rozpoznawania. Wynik to obiekt `IntentRecognitionResult` zawierający informacje o rozpoznanej intencji. Odpowiedź JSON LUIS można wyodrębnić przy użyciu następującego wyrażenia:
 
 ```csharp
 result.Properties.GetProperty(PropertyId.LanguageUnderstandingServiceResponse_JsonResult)
 ```
 
-Aplikacja z samouczka nie analizuje wyniku w formacie JSON, tylko wyświetla go w oknie konsoli.
+Aplikacja samouczka nie analizuje wyniku JSON. Wyświetla tekst JSON tylko w oknie konsoli.
 
-![Wyniki rozpoznawania usługi LUIS](media/sdk/luis-results.png)
+![Wyniki rozpoznawania pojedynczej LUIS](media/sdk/luis-results.png)
 
 ## <a name="specify-recognition-language"></a>Określanie języka na potrzeby rozpoznawania
 
-Domyślnie usługa LUIS rozpoznaje intencje w języku angielskim (Stany Zjednoczone) (`en-us`). Przypisanie kodu ustawień regionalnych do właściwości `SpeechRecognitionLanguage` konfiguracji mowy umożliwia rozpoznawanie intencji w innych językach. Na przykład dodaj element `config.SpeechRecognitionLanguage = "de-de";` w naszej aplikacji z samouczka przed utworzeniem aparatu rozpoznawania, aby rozpoznawać intencje w języku niemieckim. Zobacz [Obsługiwane języki](language-support.md#speech-to-text).
+Domyślnie usługa LUIS rozpoznaje intencje w języku angielskim (Stany Zjednoczone) (`en-us`). Przypisanie kodu ustawień regionalnych do właściwości `SpeechRecognitionLanguage` konfiguracji mowy umożliwia rozpoznawanie intencji w innych językach. Na przykład dodaj element `config.SpeechRecognitionLanguage = "de-de";` w naszej aplikacji z samouczka przed utworzeniem aparatu rozpoznawania, aby rozpoznawać intencje w języku niemieckim. Aby uzyskać więcej informacji, zobacz [obsługiwane języki](language-support.md#speech-to-text).
 
 ## <a name="continuous-recognition-from-a-file"></a>Ciągłe rozpoznawanie z pliku
 
-Poniższy kod ilustruje dwie dodatkowe możliwości funkcji rozpoznawania intencji, które korzystają z zestawu SDK rozpoznawania mowy. Pierwsza z nich, wspomniana wcześniej, to rozpoznawanie ciągłe, w przypadku którego aparat rozpoznawania emituje zdarzenia, gdy wyniki są dostępne. Te zdarzenia mogą być następnie przetwarzane przez udostępnione programy obsługi zdarzeń. W przypadku rozpoznawania ciągłego w celu rozpoczęcia rozpoznawania jest wywoływana metoda `StartContinuousRecognitionAsync()` aparatu rozpoznawania, a nie metoda `RecognizeOnceAsync()`.
+Poniższy kod ilustruje dwie dodatkowe możliwości funkcji rozpoznawania intencji, które korzystają z zestawu SDK rozpoznawania mowy. Pierwsza z nich, wspomniana wcześniej, to rozpoznawanie ciągłe, w przypadku którego aparat rozpoznawania emituje zdarzenia, gdy wyniki są dostępne. Te zdarzenia mogą być następnie przetwarzane przez udostępnione programy obsługi zdarzeń. W przypadku ciągłego rozpoznawania należy wywołać metodę `StartContinuousRecognitionAsync()` aparatu rozpoznawania, aby rozpocząć rozpoznawanie zamiast `RecognizeOnceAsync()`.
 
-Inna możliwość to odczytywanie dźwięku zawierającego mowę w celu przetworzenia z pliku WAV. Obejmuje to tworzenie konfiguracji audio, której można używać podczas tworzenia aparatu rozpoznawania intencji. Plik musi być plikiem jednokanałowym (mono) z częstotliwością próbkowania wynoszącą 16 kHz.
+Inna możliwość to odczytywanie dźwięku zawierającego mowę w celu przetworzenia z pliku WAV. Implementacja obejmuje utworzenie konfiguracji audio, która może być używana podczas tworzenia aparatu rozpoznawania intencji. Plik musi być plikiem jednokanałowym (mono) z częstotliwością próbkowania wynoszącą 16 kHz.
 
-Aby wypróbować te funkcje, zastąp treść metody `RecognizeIntentAsync()` poniższym kodem.
+Aby wypróbować te funkcje, Usuń lub Skomentuj treść metody `RecognizeIntentAsync()` i Dodaj do niej Poniższy kod.
 
 [!code-csharp[Intent recognition by using events from a file](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#intentContinuousRecognitionWithFile)]
 
-Zmodyfikuj kod, aby uwzględnić identyfikator aplikacji, region i klucz punktu końcowego usługi LUIS oraz, tak jak poprzednio, dodać intencje usługi Home Automation. Zmień wartość `whatstheweatherlike.wav` na nazwę pliku audio. Następnie skompiluj i uruchom.
+Zmodyfikuj kod, aby uwzględnić identyfikator aplikacji, region i klucz punktu końcowego usługi LUIS oraz, tak jak poprzednio, dodać intencje usługi Home Automation. Zmień `whatstheweatherlike.wav` na nazwę zarejestrowanego pliku dźwiękowego. Następnie Skompiluj, skopiuj plik audio do katalogu kompilacji i uruchom aplikację.
+
+Na przykład w przypadku podania "wyłączenia sygnalizatorów", "Pause", a następnie "Włącz lampy" w zarejestrowanym pliku audio, mogą pojawić się dane wyjściowe konsoli podobne do następujących:
+
+![Wyniki rozpoznawania LUIS pliku audio](media/sdk/luis-results-2.png)
 
 [!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-Wyszukaj kod z tego artykułu w folderze samples/csharp/sharedcontent/console.
+Poszukaj kodu z tego artykułu w folderze **Samples/CSharp/sharedcontent/Console** .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Jak rozpoznawać mowę](how-to-recognize-speech-csharp.md)
+> [Jak rozpoznawać mowę](quickstart-csharp-dotnetcore-windows.md)

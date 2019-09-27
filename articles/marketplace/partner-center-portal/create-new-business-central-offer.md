@@ -1,18 +1,18 @@
 ---
 title: Utwórz nową ofertę Dynamics 365 Business Central w komercyjnej witrynie Marketplace
 description: Jak utworzyć nową ofertę Dynamics 365 Business Central w celu uzyskania listy lub sprzedaży w witrynie Azure Marketplace, AppSource lub za pośrednictwem programu Cloud Solution Provider (CSP) przy użyciu portalu Marketplace w witrynie Microsoft Partner Center.
-author: JnHs
+author: ChJenk
 manager: evansma
-ms.author: jenhayes
+ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 08/26/2019
-ms.openlocfilehash: e127d937dfaeb8afaad6b9a95383f0008f5ea898
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 09/26/2019
+ms.openlocfilehash: 8c57fd2a2c9c5c059480f3d6ad48454724e5cc61
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70033279"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327638"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Utwórz nową ofertę Dynamics 365 Business Central
 
@@ -22,17 +22,17 @@ Aby rozpocząć tworzenie ofert Dynamics 365 Business Central, należy najpierw 
 
 ![Komercyjny pulpit nawigacyjny portalu Marketplace w centrum partnerskim](./media/new-offer-overview.png)
 
-## <a name="create-a-new-offer"></a>Tworzenie nowej oferty
+## <a name="create-a-new-offer"></a>Utwórz nową ofertę
 
 Wybierz przycisk **+ Nowa oferta** , a następnie wybierz element menu **Dynamics 365 Business Central** . Zostanie wyświetlone okno dialogowe **Nowa oferta** .
 
 ### <a name="offer-id-and-alias"></a>Identyfikator oferty i alias
 
-- **Identyfikator oferty**: Unikatowy identyfikator dla każdej oferty na koncie. Ten identyfikator będzie widoczny dla klientów w adresie URL dla oferty witryny Marketplace i szablonów Azure Resource Manager (jeśli dotyczy). Identyfikator oferty musi składać się z małych liter alfanumerycznych (w tym łączników i podkreśleń, ale nie odstępów), ograniczonych do 50 znaków i nie można go zmienić po wybraniu pozycji **Utwórz**.  Jeśli na przykład wprowadzisz polecenie *test-Offer-1* tutaj, adres URL oferty będzie mieć `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`wartość.
+- **Identyfikator oferty**: Unikatowy identyfikator dla każdej oferty na koncie. Ten identyfikator będzie widoczny dla klientów w adresie URL dla oferty witryny Marketplace i szablonów Azure Resource Manager (jeśli dotyczy). Identyfikator oferty musi składać się z małych liter alfanumerycznych (w tym łączników i podkreśleń, ale nie odstępów), ograniczonych do 50 znaków i nie można go zmienić po wybraniu pozycji **Utwórz**.  Jeśli na przykład wprowadzisz polecenie *test-Offer-1* tutaj, adres URL oferty będzie `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
 
 - **Alias oferty**: Nazwa używana do odwoływania się do oferty w centrum partnerskim. Ta nazwa nie będzie używana w portalu Marketplace i różni się od nazwy oferty i innych wartości, które będą widoczne dla klientów. Tej wartości nie można zmienić po wybraniu opcji **Utwórz**.
 
-Po wprowadzeniu **identyfikatora oferty** i aliasu **oferty**wybierz pozycję **Utwórz**. Następnie będzie można obejść wszystkie różne części oferty.
+Po wprowadzeniu **identyfikatora oferty** i **aliasu oferty**wybierz pozycję **Utwórz**. Następnie będzie można obejść wszystkie różne części oferty.
 
 ## <a name="offer-setup"></a>Konfiguracja oferty
 
@@ -88,11 +88,11 @@ Aby uzyskać więcej informacji, zobacz temat [Zarządzanie potencjalnymi klient
 
 Pamiętaj, aby **zapisać** przed przejściem do następnej sekcji.
 
-## <a name="properties"></a>Właściwości
+## <a name="properties"></a>properties
 
 Strona **Właściwości** umożliwia definiowanie kategorii i branż używanych do grupowania oferty w witrynie Marketplace, wersji aplikacji oraz umów prawnych wspierających Twoją ofertę. Wybierz pozycję **Zapisz** po zakończeniu tej strony.
 
-### <a name="category"></a>Kategoria
+### <a name="category"></a>Category
 
 Wybierz co najmniej jedną i maksymalnie trzy kategorie, które będą używane do umieszczania oferty w odpowiednich obszarach wyszukiwania w portalu Marketplace. Pamiętaj, aby dowiedzieć się, jak Twoja oferta obsługuje te kategorie w opisie oferty. 
 
@@ -129,7 +129,7 @@ Musisz zdefiniować szczegóły witryny Marketplace (nazwę oferty, opis, obrazy
 
 ### <a name="name"></a>Name
 
-Nazwa wprowadzona w tym miejscu będzie wyświetlana klientom jako tytuł oferty. To pole jest wstępnie wypełniane tekstem wprowadzonym dla aliasu **oferty** podczas tworzenia oferty, ale można zmienić tę wartość. Ta nazwa może być znakiem towarowym (i może zawierać znaki towarowe lub autorskie). Nazwa nie może być dłuższa niż 50 znaków i nie może zawierać żadnych znaków emoji.
+Nazwa wprowadzona w tym miejscu będzie wyświetlana klientom jako tytuł oferty. To pole jest wstępnie wypełniane tekstem wprowadzonym dla **aliasu oferty** podczas tworzenia oferty, ale można zmienić tę wartość. Ta nazwa może być znakiem towarowym (i może zawierać znaki towarowe lub autorskie). Nazwa nie może być dłuższa niż 50 znaków i nie może zawierać żadnych znaków emoji.
 
 ### <a name="short-description"></a>Krótki opis
 
@@ -162,7 +162,7 @@ Jeśli chcesz, aby klienci wiedzieli, że aplikacja pracuje z określonymi produ
 
 Ta sekcja zawiera linki pomagające klientom w dowiedzieć się więcej o ofercie.
 
-#### <a name="help-link"></a>Łącze pomocy
+#### <a name="help-link"></a>Link pomocy
 
 Wprowadź adres URL, pod którym klienci mogą dowiedzieć się więcej o ofercie.
 
@@ -174,7 +174,7 @@ Wprowadź adres URL zasad zachowania poufności informacji organizacji. Użytkow
 
 W tej sekcji należy podać nazwę, adres e-mail i numer telefonu dla **kontaktu z pomocą techniczną** i **kontaktu inżynieryjnego**. Te informacje nie są widoczne dla klientów, ale będą dostępne dla firmy Microsoft i mogą być udostępniane partnerom programu CSP.
 
-W sekcji **skontaktuj się z** pomocą techniczną należy również podać **adres URL pomocy technicznej** , w której partnerzy CSP mogą znaleźć obsługę oferty.
+W sekcji **skontaktuj się z pomocą techniczną** należy również podać **adres URL pomocy technicznej** , w której partnerzy CSP mogą znaleźć obsługę oferty.
 
 ### <a name="supporting-documents"></a>Dokumenty pomocnicze
 
@@ -194,11 +194,11 @@ Obraz Hero jest opcjonalny. Jeśli postanowisz jeden, musi on mierzyć 815 x 290
 
 #### <a name="screenshots"></a>Zrzuty ekranu
 
-Dodaj zrzuty ekranu pokazujące, jak działa Twoja oferta. Wymagany jest co najmniej jeden zrzut ekranu i można dodać maksymalnie pięć. Wszystkie zrzuty ekranu muszą mieć 1280 x 720 pikseli.
+Dodaj zrzuty ekranu pokazujące, jak działa Twoja oferta. Wymagane są co najmniej trzy zrzuty ekranu i można dodać maksymalnie pięć. Wszystkie zrzuty ekranu muszą mieć 1280 x 720 pikseli.
 
 #### <a name="videos"></a>Wideo
 
-Opcjonalnie możesz dodać do czterech filmów wideo, które demonstrują Twoją ofertę. Te filmy wideo powinny być hostowane w usłudze YouTube i/lub Vimeo. Dla każdej z nich wprowadź nazwę filmu wideo, jego adres URL i obraz miniatury filmu wideo (1280 x 720 pikseli)
+Opcjonalnie możesz dodać maksymalnie pięć filmów wideo, które demonstrują Twoją ofertę. Te filmy wideo powinny być hostowane w usłudze YouTube i/lub Vimeo. Dla każdej z nich wprowadź nazwę filmu wideo, jego adres URL i obraz miniatury filmu wideo (1280 x 720 pikseli)
 
 #### <a name="additional-marketplace-listing-resources"></a>Dodatkowe zasoby dotyczące wyświetlania w portalu Marketplace
 
@@ -223,7 +223,7 @@ Należy pamiętać, że nawet jeśli wybrano opcję Wszystkie rynki, prawa lokal
 
 ### <a name="preview-audience"></a>Podgląd odbiorców
 
-Przed opublikowaniem oferty na żywo w szerszej ofercie z witryny Marketplace musisz najpierw udostępnić ją w ograniczonej **grupie odbiorców w wersji**zapoznawczej. Wprowadź w tym miejscu **klucz ukrycia** (dowolny ciąg, używając tylko małych liter i/lub cyfr). Członkowie Twojej grupy zapoznawczej mogą używać tego klucza Ukryj jako tokenu, aby wyświetlić podgląd oferty w portalu Marketplace.
+Przed opublikowaniem oferty na żywo w szerszej ofercie z witryny Marketplace musisz najpierw udostępnić ją w ograniczonej **grupie odbiorców w wersji zapoznawczej**. Wprowadź w tym miejscu **klucz ukrycia** (dowolny ciąg, używając tylko małych liter i/lub cyfr). Członkowie Twojej grupy zapoznawczej mogą używać tego klucza Ukryj jako tokenu, aby wyświetlić podgląd oferty w portalu Marketplace.
 
 Gdy wszystko będzie gotowe do udostępnienia oferty i usunięcia ograniczenia wersji zapoznawczej, należy usunąć **klucz Ukryj** i opublikować ponownie.
 
@@ -252,7 +252,7 @@ Wymagane, jeśli oferta musi być zainstalowana wraz z innym rozszerzeniem, któ
 
 #### <a name="dependency-package-file"></a>Plik pakietu zależności
 
-Wymagane, jeśli oferta musi być zainstalowana wraz z innym rozszerzeniem, które zostało już opublikowane w portalu Marketplace. Jeśli tak, Przekaż swój `.app` plik `.zip` lub tutaj.
+Wymagane, jeśli oferta musi być zainstalowana wraz z innym rozszerzeniem, które zostało już opublikowane w portalu Marketplace. Jeśli tak, Przekaż swój plik `.app` lub `.zip` tutaj.
 
 ### <a name="url-to-app-installation"></a>Adres URL instalacji aplikacji
 
@@ -279,7 +279,7 @@ Szablon wdrożenia zawierający wszystkie zasoby platformy Azure, które składa
 
 - **Wystąpienia**: Wybierz typ (gorąca lub zimna) oraz liczbę dostępnych wystąpień, które zostaną pomnożone przez liczbę regionów, w których oferta jest dostępna.
 
-**Gorąca**: Ten typ wystąpienia jest wdrożony i oczekuje na dostęp w wybranym regionie. Klienci mogą natychmiast uzyskać dostęp do gorącego wystąpienia dysku testowego, a nie muszą czekać na wdrożenie. Jego wadą jest to, że te wystąpienia są zawsze uruchamiane na Twojej subskrypcji platformy Azure, spowoduje naliczenie opłaty za większych przestojów, koszt. Zdecydowanie zaleca się, aby miało co najmniej jedno *aktywne* wystąpienie, ponieważ większość klientów nie chce czekać na pełne wdrożenia, co powoduje odrzucanie w przypadku użycia klienta w przypadku braku dostępnego wystąpienia.
+**Gorąca**: Ten typ wystąpienia jest wdrożony i oczekuje na dostęp w wybranym regionie. Klienci mogą natychmiast uzyskać dostęp do gorącego wystąpienia dysku testowego, a nie muszą czekać na wdrożenie. Jego wadą jest to, że te wystąpienia są zawsze uruchamiane na Twojej subskrypcji platformy Azure, spowoduje naliczenie opłaty za większych przestojów, koszt. Zdecydowanie zaleca się, aby miało co najmniej jedno *aktywne* wystąpienie, ponieważ większość klientów nie chce czekać na pełne wdrożenia, co powoduje odrzucanie w przypadku użycia klienta w przypadku braku dostępnego *wystąpienia.*
 
 **Zimne**: Ten typ wystąpienia reprezentuje łączną liczbę wystąpień, które mogą być wdrożone w poszczególnych regionach. Zimne wystąpienia wymagają, aby cały dysk testowy Menedżer zasobów szablon do wdrożenia, gdy klient zażąda dysku testowego, więc *zimne* wystąpienia są znacznie wolniejsze, aby można było ładować je od *aktywnych* wystąpień. Wadą jest to, że musisz tylko uregulować czas trwania testu, ale *nie* zawsze działa w ramach subskrypcji platformy Azure, tak jak w przypadku wystąpienia *aktywnego* .
 
@@ -295,9 +295,9 @@ Firma Microsoft może usunąć złożoność konfigurowania dysku testowego, udo
 
 - **Czas trwania dysku testowego** (wymagane): Wprowadź czas aktywności dysku testowego, określając liczbę godzin. Po tylu godzinach sesja zostanie zakończona i nie będzie już korzystać z jednej z Twoich licencji. Zalecamy użycie wartości 2-24 godzin w zależności od złożoności oferty. Ten czas trwania może być ustawiony tylko przez całą liczbę godzin (na przykład "2" godzin, "1,5" jest nieprawidłowy).  Użytkownik może zażądać nowej sesji, jeśli są one nieaktualne i chcą ponownie uzyskać dostęp do dysku testowego.
 
-- **Adres URL wystąpienia** (wymagane): Adres URL, pod którym klient rozpocznie swój dysk testowy. Zwykle jest to adres URL wystąpienia usługi Dynamics 365 z uruchomioną aplikacją z zainstalowanymi przykładowymi danymi https://testdrive.crm.dynamics.com) (na przykład.
+- **Adres URL wystąpienia** (wymagane): Adres URL, pod którym klient rozpocznie swój dysk testowy. Zwykle jest to adres URL wystąpienia usługi Dynamics 365 z uruchomioną aplikacją z zainstalowanymi przykładowymi danymi (na przykład https://testdrive.crm.dynamics.com).
 
-- **Adres URL internetowego interfejsu API wystąpienia** (wymagane): Pobierz adres URL internetowego interfejsu API dla wystąpienia usługi Dynamics 365, logując się do konta Microsoft 365 i przechodząc do **ustawień** \&gt; **Dostosowanie** \&gt; **Zasoby dla deweloperów** \&gt; **Interfejs API sieci Web wystąpienia (główny adres URL usługi)** , skopiuj adres URL znaleziony w tym https://testdrive.crm.dynamics.com/api/data/v9.0) miejscu (na przykład.
+- **Adres URL internetowego interfejsu API wystąpienia** (wymagane): Pobierz adres URL internetowego interfejsu API dla wystąpienia usługi Dynamics 365, logując się do konta Microsoft 365 i przechodząc do **ustawień** \&gt; **Dostosowanie** \&gt; **Zasoby dla deweloperów** \&GT; **Interfejs API sieci Web wystąpienia (główny adres URL usługi)** , skopiuj adres URL znaleziony w tym miejscu (na przykład https://testdrive.crm.dynamics.com/api/data/v9.0).
 
 - **Nazwa roli** (wymagane): Podaj nazwę roli zabezpieczeń zdefiniowaną w niestandardowym dysku testowym Dynamics 365, która zostanie przypisana do użytkownika podczas testu na dysku (na przykład-roli Test-Drive-role).
 
@@ -366,7 +366,7 @@ Jeśli oferta wymaga wersji Premium systemu Microsoft Dynamics 365 Business Cent
 
 ### <a name="key-usage-scenario"></a>Scenariusz użycia klucza
 
-Należy diagnostycznyc `.pdf` plik, który zawiera listę scenariuszy użycia klucza oferty wymienionych w dokumencie (format PDF). Wszystkie scenariusze wymienione w tym miejscu mogą być weryfikowane przez nasz zespół ds. weryfikacji przed zatwierdzeniem oferty dla portalu Marketplace.
+Musisz diagnostycznyc plik `.pdf`, który zawiera listę scenariuszy użycia klucza oferty wystawionych w dokumencie (format PDF). Wszystkie scenariusze wymienione w tym miejscu mogą być weryfikowane przez nasz zespół ds. weryfikacji przed zatwierdzeniem oferty dla portalu Marketplace.
 
 ### <a name="app-tests-automation"></a>Automatyzacja testów aplikacji
 

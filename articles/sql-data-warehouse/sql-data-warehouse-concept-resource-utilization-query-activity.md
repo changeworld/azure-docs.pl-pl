@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 08/09/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 7f7575daa91cef5cb5be6274a699323fafe67a68
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 786ae1f18d52c6763b60f5019ecfe365f1cd540a
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935132"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71334100"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-sql-data-warehouse"></a>Monitorowanie działania użycia zasobów i zapytań w Azure SQL Data Warehouse
 Azure SQL Data Warehouse zapewnia rozbudowane środowisko monitorowania w ramach Azure Portal do uzyskiwania szczegółowych informacji o obciążeniu magazynu danych. Azure Portal jest zalecanym narzędziem do monitorowania magazynu danych, ponieważ umożliwia on Konfigurowanie okresów przechowywania, alertów, zaleceń oraz dostosowywalnych wykresów i pulpitów nawigacyjnych na potrzeby metryk i dzienników. Portal umożliwia także integrację z innymi usługami monitorowania platformy Azure, takimi jak Operations Management Suite (OMS) i Azure Monitor (dzienniki), aby zapewnić kompleksowe środowisko monitorowania nie tylko dla magazynu danych, ale również całą analizę platformy Azure Platforma umożliwiająca zintegrowane środowisko monitorowania. W tej dokumentacji opisano, jakie funkcje monitorowania są dostępne, aby zoptymalizować platformę analityczną i zarządzać nią za pomocą SQL Data Warehouse. 
@@ -27,7 +27,7 @@ Następujące metryki są dostępne w Azure Portal SQL Data Warehouse. Te metryk
 | Nazwa metryki             | Opis                                                  | Typ agregacji |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
 | Procent użycia procesora CPU          | Użycie procesora CPU we wszystkich węzłach dla hurtowni danych      | Maksimum          |
-| We/wy danych (procent)      | Użycie we/wy we wszystkich węzłach dla hurtowni danych       | Maksimum          |
+| Operacje we/wy danych (procent)      | Użycie we/wy we wszystkich węzłach dla hurtowni danych       | Maksimum          |
 | Procent pamięci       | Użycie pamięci (SQL Server) we wszystkich węzłach dla hurtowni danych | Maksimum          |
 | Udane połączenia  | Liczba pomyślnych połączeń z danymi                 | Łącznie            |
 | Połączenia zakończone niepowodzeniem      | Liczba nieudanych połączeń z magazynem danych           | Łącznie            |
@@ -42,8 +42,10 @@ Następujące metryki są dostępne w Azure Portal SQL Data Warehouse. Te metryk
 > Zagadnienia, które należy wziąć pod uwagę podczas przeglądania metryk i ustawień alertów:
 >
 > - Nie powiodło się i pomyślne połączenia są raportowane dla określonego magazynu danych — nie dla serwera logicznego
+> - Procent pamięci odzwierciedla użycie, nawet jeśli magazyn danych jest w stanie bezczynności — nie odzwierciedla aktywnego zużycia pamięci obciążeń. Użyj i śledź tę metrykę wraz z innymi (tempdb, Gen2 cache), aby wykonać całościową decyzję, czy skalowanie dla dodatkowej pojemności pamięci podręcznej spowoduje zwiększenie wydajności obciążeń w celu spełnienia wymagań.
 
-## <a name="query-activity"></a>Działanie zapytania
+
+## <a name="query-activity"></a>Aktywność zapytań
 W przypadku środowiska programistycznego podczas monitorowania SQL Data Warehouse przy użyciu języka T-SQL Usługa udostępnia zestaw dynamicznych widoków zarządzania (widoków DMV). Te widoki są przydatne podczas aktywnego rozwiązywania problemów i identyfikowania wąskich gardeł wydajności w obciążeniu.
 
 Aby wyświetlić listę widoków DMV, które zawiera SQL Data Warehouse, zapoznaj się z tą [dokumentacją](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-system-views#sql-data-warehouse-dynamic-management-views-dmvs). 

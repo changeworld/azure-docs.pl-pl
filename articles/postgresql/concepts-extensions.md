@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/10/2019
-ms.openlocfilehash: 383f5acb9f106bb4697433be99c53bb78d00b396
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.date: 09/26/2019
+ms.openlocfilehash: 467a8b1de3f6c234d9dfdfaf6132025688757997
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091145"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327134"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Rozszerzenia PostgreSQL w Azure Database for PostgreSQL — pojedynczy serwer
 PostgreSQL zapewnia możliwość rozszerzenia funkcjonalności bazy danych przy użyciu rozszerzeń. Rozszerzenia rozszerzają wiele powiązanych obiektów SQL razem w jednym pakiecie, który można załadować lub usunąć z bazy danych za pomocą jednego polecenia. Po załadowaniu do bazy danych programu rozszerzenia działają jak wbudowane funkcje.
@@ -62,6 +62,7 @@ Następujące rozszerzenia są dostępne na serwerach Azure Database for Postgre
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.5.1           | Typy i funkcje przestrzenne topologii PostGIS|
 > |[postgres_fdw](https://www.postgresql.org/docs/11/postgres-fdw.html)                 | 1.0             | otoka danych obcych dla zdalnych serwerów PostgreSQL|
 > |[tablefunc](https://www.postgresql.org/docs/11/tablefunc.html)                    | 1.0             | funkcje, które manipulują całymi tabelami, w tym krzyżowo|
+> |[timescaledb](https://docs.timescale.com/latest)                    | 1.3.2             | Włącza skalowalne i złożone zapytania dla danych szeregów czasowych|
 > |[unaccent](https://www.postgresql.org/docs/11/unaccent.html)                     | 1.1             | słownik wyszukiwania tekstu, który usuwa akcenty|
 > |[uuid-ossp](https://www.postgresql.org/docs/11/uuid-ossp.html)                    | 1.1             | Generuj unikatowe identyfikatory uniwersalne (UUID)|
 
@@ -206,7 +207,7 @@ Następujące rozszerzenia są dostępne na serwerach Azure Database for Postgre
 Rozszerzenie pg_stat_statements jest wstępnie załadowane na każdym serwerze Azure Database for PostgreSQL, aby umożliwić śledzenie statystyk wykonywania instrukcji SQL.
 Ustawienie `pg_stat_statements.track`, które kontroluje, jakie instrukcje są zliczane przez rozszerzenie, domyślnie to `top`, oznacza, że wszystkie instrukcje wydawane bezpośrednio przez klientów są śledzone. Dwa inne poziomy śledzenia to `none` i. `all` To ustawienie można skonfigurować jako parametr serwera za pomocą [Azure Portal](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal) lub [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli).
 
-Istnieje kompromis między pg_stat_statements informacji o wykonywaniu zapytania i wpływem na wydajność serwera podczas rejestrowania każdej instrukcji SQL. Jeśli nie korzystasz aktywnie z rozszerzenia pg_stat_statements, zalecamy ustawienie wartości `pg_stat_statements.track`. `none` Należy zauważyć, że niektóre usługi monitorowania innych firm mogą polegać na pg_stat_statements na dostarczenie szczegółowych informacji o wydajności zapytań, dlatego należy sprawdzić, czy tak się dzieje.
+Istnieje kompromis między pg_stat_statements informacji o wykonywaniu zapytania i wpływem na wydajność serwera podczas rejestrowania każdej instrukcji SQL. Jeśli nie korzystasz aktywnie z rozszerzenia pg_stat_statements, zalecamy ustawienie wartości `pg_stat_statements.track` na `none`. Należy zauważyć, że niektóre usługi monitorowania innych firm mogą polegać na pg_stat_statements na dostarczenie szczegółowych informacji o wydajności zapytań, dlatego należy sprawdzić, czy tak się dzieje.
 
 ## <a name="dblink-and-postgres_fdw"></a>dblink i postgres_fdw
 dblink i postgres_fdw umożliwiają łączenie się z jednego serwera PostgreSQL z innym lub z inną bazą danych na tym samym serwerze. Serwer otrzymujący musi zezwalać na połączenia z serwera wysyłającego za pośrednictwem jego zapory. Korzystając z tych rozszerzeń do łączenia się między serwerami Azure Database for PostgreSQL, można to zrobić przez ustawienie opcji "Zezwalaj na dostęp do usług platformy Azure" na wartość włączone. Jest to również wymagane, jeśli chcesz użyć rozszerzeń do zapętlenia z powrotem do tego samego serwera. Ustawienie "Zezwalaj na dostęp do usług platformy Azure" można znaleźć na stronie Azure Portal serwera Postgres, w obszarze zabezpieczenia połączeń. Włączenie opcji "Zezwalaj na dostęp do usług platformy Azure" spowoduje umieszczenie wszystkich adresów IP platformy Azure na liście dozwolonych.
@@ -227,9 +228,6 @@ TimescaleDB to baza danych szeregów czasowych spakowana jako rozszerzenie dla P
 
 ### <a name="installing-timescaledb"></a>Instalowanie TimescaleDB
 Aby zainstalować TimescaleDB, należy dołączyć go do udostępnionych bibliotek wstępnego ładowania serwera. Zmiana `shared_preload_libraries` parametru Postgres wymaga **ponownego uruchomienia serwera** . Parametry można zmienić za pomocą [Azure Portal](howto-configure-server-parameters-using-portal.md) lub [interfejsu wiersza polecenia platformy Azure](howto-configure-server-parameters-using-cli.md).
-
-> [!NOTE]
-> TimescaleDB można włączyć na Azure Database for PostgreSQL wersje 9,6 i 10
 
 Przy użyciu [Azure Portal](https://portal.azure.com/):
 

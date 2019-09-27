@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: heidist
-ms.openlocfilehash: e83e84cc8627be468ce0074b35549d5ea7def4f5
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: d0c93d941047413c5056b3718f57b360357affbd
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640530"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327135"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Monitorowanie użycia zasobów i działania zapytań w Azure Search
 
@@ -28,25 +28,25 @@ Ten artykuł zawiera informacje na temat opcji monitorowania, sposobu włączani
 
 Sekcje **użycia** i **monitorowania** wbudowane na stronie przeglądu raportują o zużyciu zasobów i metrykach wykonywania zapytań. Te informacje stają się dostępne zaraz po rozpoczęciu korzystania z usługi, bez konieczności konfigurowania. Ta strona jest odświeżana co kilka minut. W przypadku finalizowania decyzji o [tym, która warstwa ma być używana do obciążeń produkcyjnych](search-sku-tier.md)lub [dostosowywania liczby aktywnych replik i partycji](search-capacity-planning.md), te metryki mogą pomóc w podejmowaniu tych decyzji, pokazując, jak szybko zużywane są zasoby. jak również Bieżąca konfiguracja obsługuje istniejące obciążenie.
 
-Karta **użycie** pokazuje dostępność zasobów względem bieżących limitów. [](search-limits-quotas-capacity.md) Poniższa ilustracja dotyczy bezpłatnej usługi, która jest ograniczona do 3 obiektów każdego typu i 50 MB miejsca w magazynie. Usługa podstawowa lub standardowa ma wyższe limity i w przypadku zwiększenia liczby partycji Maksymalna ilość miejsca w magazynie jest proporcjonalna.
+Karta **użycie** pokazuje dostępność zasobów względem bieżących [limitów](search-limits-quotas-capacity.md). Poniższa ilustracja dotyczy bezpłatnej usługi, która jest ograniczona do 3 obiektów każdego typu i 50 MB miejsca w magazynie. Usługa podstawowa lub standardowa ma wyższe limity i w przypadku zwiększenia liczby partycji Maksymalna ilość miejsca w magazynie jest proporcjonalna.
 
 ![Stan użycia względem czynnych limitów](./media/search-monitor-usage/usage-tab.png
- "użycia względem limitów obowiązujących")
+ "Usage stanu względem efektywnych limitów @ no__t-2
 
 ## <a name="queries-per-second-qps-and-other-metrics"></a>Zapytania na sekundę (zapytań) i inne metryki
 
 Na karcie **monitorowanie** wyświetlane są średnie przenoszone wartości metryk, takich jak *zapytania wyszukiwania na sekundę* (zapytań), zagregowane na minutę. 
-*Opóźnienie wyszukiwania* to ilość czasu wymagana przez usługę wyszukiwania do przetwarzania zapytań wyszukiwania, zagregowana na minutę. *Procent zapytań wyszukiwania* z ograniczeniami (niepokazywany) jest wartością procentową zapytań wyszukiwania, które zostały ograniczone, również zagregowanych na minutę.
+*Opóźnienie wyszukiwania* to ilość czasu wymagana przez usługę wyszukiwania do przetwarzania zapytań wyszukiwania, zagregowana na minutę. *Procent zapytań wyszukiwania z ograniczeniami* (niepokazywany) jest wartością procentową zapytań wyszukiwania, które zostały ograniczone, również zagregowanych na minutę.
 
 Te liczby są przybliżone i mają na celu zapewnienie ogólnego pomysłu, jak dobrze system obsługuje żądania. Rzeczywista wartość zapytań może być większa lub mniejsza od liczby raportowanej w portalu.
 
-![Działanie zapytań na sekundę](./media/search-monitor-usage/monitoring-tab.png "Działanie zapytań na sekundę")
+![Zapytania na sekundę](./media/search-monitor-usage/monitoring-tab.png "dotyczące zapytań dotyczących aktywności na sekundę")
 
 ## <a name="activity-logs"></a>Dzienniki aktywności
 
 **Dziennik aktywności** zbiera informacje z Azure Resource Manager. Przykłady informacji znajdujących się w dzienniku aktywności obejmują tworzenie lub usuwanie usługi, aktualizowanie grupy zasobów, sprawdzanie dostępności nazwy lub Uzyskiwanie klucza dostępu do usługi w celu obsługi żądania. 
 
-Możesz uzyskać dostęp do **dziennika aktywności** z okienka nawigacji po lewej stronie lub z powiadomień w górnym pasku poleceń okna lub na stronie diagnozowanie **i rozwiązywanie problemów** .
+Możesz uzyskać dostęp do **dziennika aktywności** z okienka nawigacji po lewej stronie lub z powiadomień w górnym pasku poleceń okna lub na stronie **diagnozowanie i rozwiązywanie problemów** .
 
 W przypadku zadań w usłudze, takich jak tworzenie indeksu lub usuwanie źródła danych, zobaczysz ogólne powiadomienia, takie jak "Pobierz klucz administratora" dla każdego żądania, ale nie konkretną akcję. W przypadku tego poziomu informacji należy włączyć rozwiązanie do monitorowania dodatków.
 
@@ -63,7 +63,7 @@ W poniższej tabeli porównano opcje przechowywania dzienników i dodawania szcz
 | [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Zarejestrowane zdarzenia i metryki zapytań na podstawie schematów poniżej. Zdarzenia są rejestrowane w kontenerze obiektów blob i przechowywane w plikach JSON. Aby wyświetlić zawartość plików, użyj edytora JSON.|
 | [Centrum zdarzeń](https://docs.microsoft.com/azure/event-hubs/) | Rejestrowane zdarzenia i metryki zapytań na podstawie schematów udokumentowanych w tym artykule. Wybierz tę opcję jako alternatywną usługę zbierania danych dla bardzo dużych dzienników. |
 
-Zarówno dzienniki Azure Monitor, jak i magazyn obiektów BLOB są dostępne jako bezpłatna usługa udostępniona, dzięki czemu można wypróbować ją bezpłatnie w okresie istnienia subskrypcji platformy Azure. Application Insights jest bezpłatny, aby zarejestrować się i używać tak długo, jak rozmiar danych aplikacji ma określone limity (szczegółowe informacje znajdują się na [stronie cennika](https://azure.microsoft.com/pricing/details/monitor/) ).
+Zarówno dzienniki Azure Monitor, jak i magazyn obiektów BLOB są dostępne jako bezpłatna usługa, dzięki czemu można wypróbować ją bezpłatnie w okresie istnienia subskrypcji platformy Azure. Application Insights jest bezpłatny, aby zarejestrować się i używać tak długo, jak rozmiar danych aplikacji ma określone limity (szczegółowe informacje znajdują się na [stronie cennika](https://azure.microsoft.com/pricing/details/monitor/) ).
 
 W następnej sekcji przeprowadzimy Cię przez kroki umożliwiające włączenie i użycie usługi Azure Blob Storage w celu zbierania i uzyskiwania dostępu do danych dziennika utworzonych przez Azure Search operacji.
 
@@ -79,13 +79,13 @@ W tej sekcji dowiesz się, jak używać magazynu obiektów BLOB do przechowywani
 
 2. Otwórz stronę omówienia usługi wyszukiwania. W okienku nawigacji po lewej stronie przewiń w dół do **monitorowania** , a następnie kliknij pozycję **Włącz monitorowanie**.
 
-   ![Włącz monitorowanie](./media/search-monitor-usage/enable-monitoring.png "Włącz monitorowanie")
+   ![Włącz]monitorowanie(./media/search-monitor-usage/enable-monitoring.png "Włączanie") monitorowania
 
 3. Wybierz dane, które chcesz wyeksportować: Dzienniki, metryki lub oba te elementy. Możesz skopiować go do konta magazynu, wysłać do centrum zdarzeń lub wyeksportować do Azure Monitor dzienników.
 
    W przypadku archiwizowania do usługi BLOB Storage musi istnieć tylko konto magazynu. Kontenery i obiekty blob zostaną utworzone w miarę konieczności podczas eksportowania danych dziennika.
 
-   ![Konfigurowanie archiwum magazynu obiektów BLOB](./media/search-monitor-usage/configure-blob-storage-archive.png "Konfigurowanie archiwum magazynu obiektów BLOB")
+   ![Konfigurowanie archiwum magazynu obiektów BLOB](./media/search-monitor-usage/configure-blob-storage-archive.png "Skonfiguruj archiwum magazynu obiektów BLOB")
 
 4. Zapisz profil.
 
@@ -96,7 +96,7 @@ Rejestrowanie jest włączone po zapisaniu profilu. Kontenery są tworzone tylko
 * insights — dzienniki operationlogs: dzienników ruchu wyszukiwania
 * insights — metryki pt1m: dla metryki
 
-**Trwa godzinę, zanim kontenery pojawią się w magazynie obiektów BLOB. Dla każdego kontenera istnieje jeden obiekt BLOB o godzinie.**
+**It trwa godzinę, zanim kontenery pojawią się w magazynie obiektów BLOB. Istnieje jeden obiekt BLOB, na godzinę, na kontener.**
 
 Aby wyświetlić pliki, można użyć [Visual Studio Code](#download-and-open-in-visual-studio-code) lub innego edytora JSON. 
 
@@ -107,7 +107,7 @@ resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/pr
 ```
 
 ## <a name="log-schema"></a>Schemat dziennika
-Obiekty blob zawierające dzienniki ruchu usługi wyszukiwania są uporządkowane zgodnie z opisem w tej sekcji. Każdy obiekt BLOB ma jeden element główny o nazwie Records zawierający tablicę obiektów dziennika. Każdy obiekt BLOB zawiera rekordy dla wszystkich operacji, które miały miejsce w danej godzinie.
+Obiekty blob zawierające dzienniki ruchu usługi wyszukiwania są uporządkowane zgodnie z opisem w tej sekcji. Każdy obiekt BLOB ma jeden element główny o nazwie **Records** zawierający tablicę obiektów dziennika. Każdy obiekt BLOB zawiera rekordy dla wszystkich operacji, które miały miejsce w danej godzinie.
 
 | Name | Typ | Przykład | Uwagi |
 | --- | --- | --- | --- |

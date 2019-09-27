@@ -7,12 +7,12 @@ ms.date: 03/11/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 473e16c610e7dee0b2838cb1a54ef7cd98958889
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 225f5cfe36daaafb7f6ab5d64e77c626e52edaac
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232970"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338192"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Szybki start: Definiowanie i Przypisywanie planu w portalu
 
@@ -44,11 +44,11 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
 
 1. W polu **Lokalizacja definicji** wybierz wielokropek po prawej stronie, wybierz [grupę zarządzania](../management-groups/overview.md) lub subskrypcję, w której chcesz zapisać plan, a następnie wybierz **pozycję Wybierz**.
 
-1. Sprawdź, czy informacje są poprawne. Nie można później zmienić **nazwy** planu i **lokalizacji definicji** . Następnie wybierz **pozycję Dalej: Artefakty** w dolnej części strony lub kartę **Artefakty** w górnej części strony.
+1. Sprawdź, czy informacje są poprawne. Nie można później zmienić **nazwy** planu i **lokalizacji definicji** . Następnie wybierz pozycję **Next: Artefakty** w dolnej części strony lub kartę **Artefakty** w górnej części strony.
 
 1. Dodaj przypisanie roli na poziomie subskrypcji:
 
-   1. Wybierz pozycję **+ Dodaj** wiersz artefaktu w obszarze **subskrypcja**. Po prawej stronie przeglądarki zostanie otwarte okno **Dodawanie artefaktów** .
+   1. Wybierz pozycję **+ Dodaj wiersz artefaktu** w obszarze **subskrypcja**. Po prawej stronie przeglądarki zostanie otwarte okno **Dodawanie artefaktów** .
 
    1. Wybierz **przypisanie roli** dla **typu artefaktu**.
 
@@ -63,7 +63,7 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
 
 1. Dodaj przypisanie zasad na poziomie subskrypcji:
 
-   1. Wybierz **+ Dodaj** wiersz artefaktu w obszarze artefaktu przypisania roli.
+   1. Wybierz **+ Dodaj wiersz artefaktu** w obszarze artefaktu przypisania roli.
 
    1. Wybierz **przypisanie zasad** dla **typu artefaktu**.
 
@@ -79,7 +79,7 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
 
 1. Dodaj grupę zasobów na poziomie subskrypcji:
 
-   1. Wybierz pozycję **+ Dodaj** wiersz artefaktu w obszarze **subskrypcja**.
+   1. Wybierz pozycję **+ Dodaj wiersz artefaktu** w obszarze **subskrypcja**.
 
    1. Wybierz **grupę zasobów** dla **typu artefaktu**.
 
@@ -89,7 +89,7 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
 
 1. Dodaj szablon do grupy zasobów:
 
-   1. Wybierz **+ Dodaj** wiersz artefaktu w ramach wpisu grupy **zasobów** .
+   1. Wybierz **+ Dodaj wiersz artefaktu** w ramach wpisu grupy **zasobów** .
 
    1. Wybierz **szablon Azure Resource Manager** dla **typu artefaktu**, ustaw **nazwę wyświetlaną artefaktu** na **StorageAccount**i pozostaw pole **Opis** puste.
 
@@ -174,7 +174,7 @@ W obszarze [Utwórz plan](#create-a-blueprint)nie podano opisu lub Dodaj przypis
 
 1. Dodaj przypisanie roli do grupy zasobów:
 
-   1. Wybierz pozycję **+ Dodaj** wiersz artefaktu bezpośrednio pod wpisem grupy **zasobów** .
+   1. Wybierz pozycję **+ Dodaj wiersz artefaktu** bezpośrednio pod wpisem grupy **zasobów** .
 
    1. Wybierz **przypisanie roli** dla **typu artefaktu**.
 
@@ -223,7 +223,7 @@ Po opublikowaniu planu można go przypisać do subskrypcji. Przypisz utworzony p
 
    1. Wybierz dostępną **ofertę** z listy rozwijanej.
 
-   1. Użyj wielokropka, aby wybrać [grupę zarządzania](../management-groups/index.md) , do której subskrypcja będzie podrzędna.
+   1. Użyj wielokropka, aby wybrać [grupę zarządzania](../management-groups/overview.md) , do której subskrypcja będzie podrzędna.
 
    1. Wybierz pozycję **Utwórz** w dolnej części strony.
 
@@ -300,7 +300,7 @@ Jeśli nie potrzebujesz już przypisania planu, usuń je z subskrypcji. Plan mó
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o [cyklu życia](./concepts/lifecycle.md)planu.
+- Uzyskaj informacje na temat [cyklu życia strategii](./concepts/lifecycle.md).
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](./concepts/parameters.md).
 - Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](./concepts/sequencing-order.md).
 - Dowiedz się, jak używać [blokowania zasobów strategii](./concepts/resource-locking.md).

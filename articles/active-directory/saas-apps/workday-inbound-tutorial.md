@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c357cba8ce2fbe2ad902d5c215f8adbfc99a9f0a
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 63176c325fd42c46e988ab3798f46089a43e70bf
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813032"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326785"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie produktu Workday do automatycznego aprowizacji użytkowników
 
 Celem tego samouczka jest przedstawienie czynności, które należy wykonać w celu zaimportowania profilów procesów roboczych z produktu Workday do obu Active Directory i Azure Active Directory, z opcjonalnym zapisem adresu e-mail i nazwą użytkownika w dniach roboczych.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 [Usługa aprowizacji użytkowników Azure Active Directory](../manage-apps/user-provisioning.md) integruje się z [interfejsem API zasobów ludzkich firmy Workday](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) , aby udostępnić konta użytkowników. Usługa Azure AD używa tego połączenia, aby włączyć następujące przepływy pracy aprowizacji użytkowników:
 
@@ -97,7 +97,8 @@ Ta sekcja obejmuje następujące aspekty planowania:
 
 Scenariusz opisany w tym samouczku założono, że masz już następujące elementy:
 
-* Prawidłową subskrypcję Azure AD — wersja Premium P1 lub wyższą z dostępem administratora globalnego
+* Ważna licencja subskrypcyjna w Azure AD — wersja Premium P1 lub wyższej dla każdego użytkownika, który będzie źródłem od dnia roboczego i obsługiwana w lokalnej Active Directory lub Azure Active Directory.
+* Dostęp administratora globalnego usługi Azure AD w celu skonfigurowania agenta aprowizacji
 * Dzierżawa implementacji produktu Workday na potrzeby testowania i integracji
 * Uprawnienia administratora w programie Workday do tworzenia użytkownika integracji systemu i wprowadzania zmian w celu przetestowania danych pracownika na potrzeby testowania
 * W celu aprowizacji użytkowników do Active Directory, na serwerze z systemem Windows Server 2012 lub nowszym z programem .NET 4.7.1 + Runtime wymagany jest hostowanie [lokalnego agenta aprowizacji](https://go.microsoft.com/fwlink/?linkid=847801)
@@ -119,7 +120,7 @@ Aby ułatwić inicjowanie przepływów pracy między firmami Workday i Active Di
 > Zwykła aplikacja "Workday" służy do konfigurowania logowania jednokrotnego między dniem roboczym i Azure Active Directory.
 
 Użyj poniższego wykresu przepływu decyzji, aby określić, które aplikacje dla aprowizacji w programie Workday są odpowiednie dla Twojego scenariusza.
-    ![Schemat blokowy decyzji](./media/workday-inbound-tutorial/wday_app_flowchart.png "Schemat blokowy decyzji")
+    Schemat blokowy(./media/workday-inbound-tutorial/wday_app_flowchart.png "decyzji") ![schematu blokowego decyzji]
 
 Użyj spisu treści, aby przejść do odpowiedniej sekcji tego samouczka.
 
@@ -188,25 +189,25 @@ Przed skonfigurowaniem aprowizacji użytkowników do domeny Active Directory nal
 
 * **Co użytkownicy w dniach roboczych muszą być obsługiwani do tego lasu Active Directory?**
 
-  * *Przykład: Użytkownicy, których atrybut "Firma" produktu Workday zawiera wartość "contoso", a atrybut "Worker_Type" zawiera "Regular"*
+  * *Przykład: Użytkownicy, w których atrybut "Company" produktu Workday zawiera wartość "contoso", a atrybut "Worker_Type" zawiera "Regular"*
 
 * **Jak użytkownicy są kierowani do różnych jednostek organizacyjnych?**
 
-  * *Przykład: Użytkownicy są kierowani do jednostek organizacyjnych, które odpowiadają lokalizacji biura, zgodnie z definicją w atrybutach "gmin" i "Country_Region_Reference" w dniach roboczych*
+  * *Przykład: Użytkownicy są kierowani do jednostek organizacyjnych, które odnoszą się do lokalizacji biura, zgodnie z definicją w "gmin" i "Country_Region_Reference" atrybutów @ no__t-0
 
 * **Jak należy wypełnić następujące atrybuty w Active Directory?**
 
   * Nazwa pospolita (CN)
-    * *Przykład: Użyj wartości User_ID produktu Workday, zgodnie z ustawieniem zasobów ludzkich*
+    * *Przykład: Użyj wartości User_ID produktu Workday, zgodnie z ustawieniem zasobów ludzkich @ no__t-0
 
   * IDENTYFIKATOR pracownika (IDPracownika)
-    * *Przykład: Użyj wartości Worker_ID produktu Workday*
+    * *Przykład: Użyj wartości Workday Worker_ID @ no__t-0
 
   * Nazwa konta SAM (sAMAccountName)
-    * *Przykład: Użyj wartości User_ID produktu Workday filtrowanej przez wyrażenie aprowizacji usługi Azure AD w celu usunięcia niedozwolonych znaków*
+    * *Przykład: Użyj wartości User_ID produktu Workday filtrowanej przez wyrażenie aprowizacji usługi Azure AD w celu usunięcia niedozwolonych znaków @ no__t-0
 
   * Główna nazwa użytkownika (userPrincipalName)
-    * *Przykład: Użyj wartości User_ID produktu Workday z wyrażeniem aprowizacji usługi Azure AD w celu dołączenia nazwy domeny*
+    * *Przykład: Użyj wartości User_ID produktu Workday z wyrażeniem aprowizacji usługi Azure AD w celu dołączenia nazwy domeny @ no__t-0
 
 * **Jak mają być dopasowane użytkownicy między dniem Workday i Active Directory?**
 
@@ -237,14 +238,14 @@ Typowym wymaganiem wszystkich łączników aprowizacji w programie Workday jest 
 
 1. Zaloguj się do dzierżawy usługi Workday przy użyciu konta administratora. W **aplikacji Workday**wprowadź w polu wyszukiwania pozycję Utwórz użytkownika, a następnie kliknij pozycję **Utwórz użytkownika systemu integracji**.
 
-    ![Utwórz użytkownika](./media/workday-inbound-tutorial/wd_isu_01.png "Utwórz użytkownika")
+    ![Utwórz](./media/workday-inbound-tutorial/wd_isu_01.png "użytkownika")
 2. Wykonaj zadanie **użytkownika Tworzenie systemu integracji** , podając nazwę użytkownika i hasło dla nowego użytkownika systemu integracji.  
   
 * Pozostaw zaznaczone pole wyboru **Wymagaj nowego hasła przy następnym logowaniu** , ponieważ ten użytkownik będzie logować się programowo.
 * Pozostaw **limit czasu sesji w minutach** o wartości domyślnej 0, co uniemożliwi przekroczenie limitu czasu sesji użytkownika.
 * Wybierz opcję **nie Zezwalaj na sesje interfejsu użytkownika** , ponieważ zapewnia ona dodaną warstwę zabezpieczeń, która uniemożliwia użytkownikowi z hasłem systemu integracji rejestrowanie się w usłudze Workday.
 
-    ![Utwórz użytkownika systemu integracyjnego](./media/workday-inbound-tutorial/wd_isu_02.png "Utwórz użytkownika systemu integracyjnego")
+    ![Tworzenie](./media/workday-inbound-tutorial/wd_isu_02.png "użytkownika systemu") integracyjnego Tworzenie użytkownika systemu integracji
 
 ### <a name="creating-an-integration-security-group"></a>Tworzenie grupy zabezpieczeń integracji
 
@@ -254,7 +255,7 @@ W tym kroku utworzysz nieograniczeń lub ograniczone grupy zabezpieczeń systemu
 
 1. W polu wyszukiwania wprowadź Utwórz grupę zabezpieczeń, a następnie kliknij pozycję **Utwórz grupę zabezpieczeń**.
 
-    ![Grupa zabezpieczeń](./media/workday-inbound-tutorial/wd_isu_03.png "Grupa zabezpieczeń")
+    Grupa ![zabezpieczeń grupy](./media/workday-inbound-tutorial/wd_isu_03.png "")
 2. Ukończ zadanie **tworzenia grupy zabezpieczeń** . 
 
    * W programie Workday istnieją dwa typy grup zabezpieczeń:
@@ -263,11 +264,11 @@ W tym kroku utworzysz nieograniczeń lub ograniczone grupy zabezpieczeń systemu
    * Skontaktuj się z partnerem integracji usługi Workday, aby wybrać odpowiedni typ grupy zabezpieczeń dla integracji.
    * Po poznaniu typu grupy wybierz pozycję **integracja systemowa grupa zabezpieczeń (nieograniczona)** lub **system integracji Grupa zabezpieczeń (ograniczone)** z listy rozwijanej **Typ grupy zabezpieczeń dzierżawca** .
 
-     ![Grupa zabezpieczeń](./media/workday-inbound-tutorial/wd_isu_04.png "Grupa zabezpieczeń")
+     Grupa ![zabezpieczeń grupy](./media/workday-inbound-tutorial/wd_isu_04.png "")
 
 3. Po pomyślnym utworzeniu grupy zabezpieczeń zostanie wyświetlona strona, na której można przypisać członków do grupy zabezpieczeń. Dodaj nowego użytkownika systemu integracji utworzonego w poprzednim kroku do tej grupy zabezpieczeń. Jeśli używasz grupy zabezpieczeń z *ograniczeniami* , musisz również wybrać odpowiedni zakres organizacji.
 
-    ![Edytuj grupę zabezpieczeń](./media/workday-inbound-tutorial/wd_isu_05.png "Edytuj grupę zabezpieczeń")
+    ![Edytowanie]grupy zabezpieczeń(./media/workday-inbound-tutorial/wd_isu_05.png "Edytowanie grupy zabezpieczeń")
 
 ### <a name="configuring-domain-security-policy-permissions"></a>Konfigurowanie uprawnień zasad zabezpieczeń domeny
 
@@ -277,33 +278,33 @@ W tym kroku zostanie udzielone uprawnienie "zabezpieczenia domeny" dotyczące da
 
 1. W polu wyszukiwania wprowadź **konfigurację zabezpieczeń domeny** , a następnie kliknij pozycję **raport Konfiguracja zabezpieczeń domeny**łącza.  
 
-    ![Zasady zabezpieczeń domeny](./media/workday-inbound-tutorial/wd_isu_06.png "Zasady zabezpieczeń domeny")  
+    Zasady ![zabezpieczeń domeny]zasad(./media/workday-inbound-tutorial/wd_isu_06.png "zabezpieczeń domeny")  
 2. W polu tekstowym **domena** Wyszukaj następujące domeny i Dodaj je do filtru jeden według jednego.  
    * *Inicjowanie obsługi konta zewnętrznego*
-   * *Dane procesu roboczego: Raporty dotyczące publicznych procesów roboczych*
-   * *Dane osoby: Informacje kontaktowe służbowych*
-   * *Dane procesu roboczego: Wszystkie pozycje*
-   * *Dane procesu roboczego: Bieżące informacje o kadrze*
-   * *Dane procesu roboczego: Tytuł działalności w profilu procesu roboczego*
+   * @no__t — dane 0Worker: Raporty pracowników publicznych (Public Worker) @ no__t-0
+   * @no__t — dane 0Person: Informacje o kontakcie służbowym @ no__t-0
+   * @no__t — dane 0Worker: Wszystkie pozycje @ no__t-0
+   * @no__t — dane 0Worker: Bieżące informacje dotyczące kadry @ no__t-0
+   * @no__t — dane 0Worker: Tytuł biznesowy w profilu procesu roboczego @ no__t-0
    * *Konta Workday*
    
-     ![Zasady zabezpieczeń domeny](./media/workday-inbound-tutorial/wd_isu_07.png "Zasady zabezpieczeń domeny")  
+     Zasady ![zabezpieczeń domeny]zasad(./media/workday-inbound-tutorial/wd_isu_07.png "zabezpieczeń domeny")  
 
-     ![Zasady zabezpieczeń domeny](./media/workday-inbound-tutorial/wd_isu_08.png "Zasady zabezpieczeń domeny") 
+     Zasady ![zabezpieczeń domeny]zasad(./media/workday-inbound-tutorial/wd_isu_08.png "zabezpieczeń domeny") 
 
      Kliknij przycisk **OK**.
 
 3. W wyświetlonym raporcie wybierz przycisk wielokropka (...) wyświetlany obok pozycji **zewnętrzne Inicjowanie obsługi konta** i kliknij opcję menu **domena-> Edytuj uprawnienia zasad zabezpieczeń**
 
-    ![Zasady zabezpieczeń domeny](./media/workday-inbound-tutorial/wd_isu_09.png "Zasady zabezpieczeń domeny")  
+    Zasady ![zabezpieczeń domeny]zasad(./media/workday-inbound-tutorial/wd_isu_09.png "zabezpieczeń domeny")  
 
 4. Na stronie **Edytowanie uprawnień zasad zabezpieczeń domeny** przewiń w dół do sekcji **uprawnienia integracji**. Kliknij znak "+", aby dodać grupę system Integration do listy grup zabezpieczeń z uprawnieniami do **pobierania** i **umieszczania** integracji.
 
-    ![Edytuj uprawnienie](./media/workday-inbound-tutorial/wd_isu_10.png "Edytuj uprawnienie")  
+    ![Edytuj]uprawnienie(./media/workday-inbound-tutorial/wd_isu_10.png "Edytuj") uprawnienia  
 
 5. Kliknij znak "+", aby dodać grupę system Integration do listy grup zabezpieczeń z uprawnieniami do **pobierania** i **umieszczania** integracji.
 
-    ![Edytuj uprawnienie](./media/workday-inbound-tutorial/wd_isu_11.png "Edytuj uprawnienie")  
+    ![Edytuj]uprawnienie(./media/workday-inbound-tutorial/wd_isu_11.png "Edytuj") uprawnienia  
 
 6. Powtórz kroki 3-5 powyżej dla każdej z pozostałych zasad zabezpieczeń:
 
@@ -311,9 +312,9 @@ W tym kroku zostanie udzielone uprawnienie "zabezpieczenia domeny" dotyczące da
    | ---------- | ---------- |
    | Pobierz i umieść | Dane procesu roboczego: Raporty dotyczące publicznych procesów roboczych |
    | Pobierz i umieść | Dane osoby: Informacje kontaktowe służbowych |
-   | Pobierz | Dane procesu roboczego: Wszystkie pozycje |
-   | Pobierz | Dane procesu roboczego: Bieżące informacje o kadrze |
-   | Pobierz | Dane procesu roboczego: Tytuł działalności w profilu procesu roboczego |
+   | Get | Dane procesu roboczego: Wszystkie pozycje |
+   | Get | Dane procesu roboczego: Bieżące informacje o kadrze |
+   | Get | Dane procesu roboczego: Tytuł działalności w profilu procesu roboczego |
    | Pobierz i umieść | Konta Workday |
 
 ### <a name="configuring-business-process-security-policy-permissions"></a>Konfigurowanie uprawnień zasad zabezpieczeń procesów firmy
@@ -324,19 +325,19 @@ W tym kroku zostanie udzielone uprawnienie "zabezpieczenia procesu biznesowego" 
 
 1. W polu wyszukiwania wprowadź **zasady procesu biznesowego** , a następnie kliknij przycisk Edytuj zadanie **zasad zabezpieczeń procesu biznesowego** .  
 
-    ![Zasady zabezpieczeń procesów firmy](./media/workday-inbound-tutorial/wd_isu_12.png "Zasady zabezpieczeń procesów firmy")  
+    Zasady zabezpieczeń(./media/workday-inbound-tutorial/wd_isu_12.png "procesów") biznesowych ![zasad zabezpieczeń procesów]firmy  
 
 2. W polu tekstowym **Typ procesu biznesowego** Wyszukaj pozycję *kontakt* i wybierz pozycję **kontakt Zmień** proces biznesowy, a następnie kliknij przycisk **OK**.
 
-    ![Zasady zabezpieczeń procesów firmy](./media/workday-inbound-tutorial/wd_isu_13.png "Zasady zabezpieczeń procesów firmy")  
+    Zasady zabezpieczeń(./media/workday-inbound-tutorial/wd_isu_13.png "procesów") biznesowych ![zasad zabezpieczeń procesów]firmy  
 
 3. Na stronie **Edytowanie zasad zabezpieczeń procesu biznesowego** przewiń do sekcji **Obsługa informacji kontaktowych (usługi sieci Web)** .
 
-    ![Zasady zabezpieczeń procesów firmy](./media/workday-inbound-tutorial/wd_isu_14.png "Zasady zabezpieczeń procesów firmy")  
+    Zasady zabezpieczeń(./media/workday-inbound-tutorial/wd_isu_14.png "procesów") biznesowych ![zasad zabezpieczeń procesów]firmy  
 
 4. Wybierz i Dodaj nową grupę zabezpieczeń systemu integracyjnego do listy grup zabezpieczeń, które mogą inicjować żądanie usług sieci Web. Kliknij przycisk **gotowe**. 
 
-    ![Zasady zabezpieczeń procesów firmy](./media/workday-inbound-tutorial/wd_isu_15.png "Zasady zabezpieczeń procesów firmy")  
+    Zasady zabezpieczeń(./media/workday-inbound-tutorial/wd_isu_15.png "procesów") biznesowych ![zasad zabezpieczeń procesów]firmy  
 
 ### <a name="activating-security-policy-changes"></a>Aktywowanie zmian zasad zabezpieczeń
 
@@ -344,12 +345,12 @@ W tym kroku zostanie udzielone uprawnienie "zabezpieczenia procesu biznesowego" 
 
 1. Wprowadź aktywację w polu wyszukiwania, a następnie kliknij link **Aktywuj oczekujące zmiany zasad zabezpieczeń**.
 
-    ![Aktywuj](./media/workday-inbound-tutorial/wd_isu_16.png "Aktywuj")
+    ![Aktywuj](./media/workday-inbound-tutorial/wd_isu_16.png "aktywację")
 
 1. Rozpocznij zadanie Aktywuj oczekujące zmiany zasad zabezpieczeń, wprowadzając komentarz do celów inspekcji, a następnie kliknij przycisk **OK**.
 1. Ukończ zadanie na następnym ekranie, zaznaczając pole wyboru **Potwierdź**, a następnie kliknij przycisk **OK**.
 
-    ![Aktywuj oczekujące zabezpieczenia](./media/workday-inbound-tutorial/wd_isu_18.png "Aktywuj oczekujące zabezpieczenia")  
+    ![Aktywuj oczekujące]zabezpieczenia(./media/workday-inbound-tutorial/wd_isu_18.png "Aktywuj oczekujące zabezpieczenia")  
 
 ## <a name="configuring-user-provisioning-from-workday-to-active-directory"></a>Konfigurowanie aprowizacji użytkowników z produktu Workday do Active Directory
 
@@ -374,22 +375,22 @@ Po wdrożeniu programu .NET 4.7.1 + można pobrać **[lokalny Agent aprowizacji 
 
 1. Uruchom Instalatora agenta aprowizacji, zaakceptuj warunki i kliknij przycisk **Instaluj** .
 
-   ![Ekran instalacji](./media/workday-inbound-tutorial/pa_install_screen_1.png "Ekran instalacji")
+   ![](./media/workday-inbound-tutorial/pa_install_screen_1.png "Ekran") instalacji ekranu instalacji
    
 1. Po zakończeniu instalacji Kreator zostanie uruchomiony i zostanie wyświetlony ekran **łączenie z usługą Azure AD** . Kliknij przycisk **Uwierzytelnij** , aby nawiązać połączenie z wystąpieniem usługi Azure AD.
 
-   ![Łączenie z usługą Azure AD](./media/workday-inbound-tutorial/pa_install_screen_2.png "Łączenie z usługą Azure AD")
+   ![Łączenie]z usługą Azure AD(./media/workday-inbound-tutorial/pa_install_screen_2.png "Connect Azure AD")
    
 1. Uwierzytelnij się w wystąpieniu usługi Azure AD przy użyciu poświadczeń administratora globalnego.
 
-   ![Uwierzytelnianie administratora](./media/workday-inbound-tutorial/pa_install_screen_3.png "Uwierzytelnianie administratora")
+   ![](./media/workday-inbound-tutorial/pa_install_screen_3.png "Uwierzytelnianie") administratora uwierzytelniania administratora
 
    > [!NOTE]
    > Poświadczenia administratora usługi Azure AD są używane tylko w celu nawiązania połączenia z dzierżawą usługi Azure AD. Agent nie przechowuje poświadczeń lokalnie na serwerze.
 
 1. Po pomyślnym uwierzytelnieniu w usłudze Azure AD zostanie wyświetlony ekran **Connect Active Directory** . W tym kroku wprowadź nazwę domeny usługi AD i kliknij przycisk **Dodaj katalog** .
 
-   ![Dodaj katalog](./media/workday-inbound-tutorial/pa_install_screen_4.png "Dodaj katalog")
+   ![Dodaj](./media/workday-inbound-tutorial/pa_install_screen_4.png "katalog Dodawanie") katalogu
   
 1. Teraz zostanie wyświetlony monit o wprowadzenie poświadczeń wymaganych do nawiązania połączenia z domeną usługi AD. Na tym samym ekranie można użyć **priorytetu wybierz kontroler domeny** , aby określić kontrolery domeny, które mają być używane przez agenta do wysyłania żądań aprowizacji.
 
@@ -397,7 +398,7 @@ Po wdrożeniu programu .NET 4.7.1 + można pobrać **[lokalny Agent aprowizacji 
    
 1. Po skonfigurowaniu domeny w instalatorze zostanie wyświetlona lista skonfigurowanych domen. Na tym ekranie można powtórzyć krok #5 i #6, aby dodać więcej domen lub kliknąć przycisk **dalej** , aby przejść do rejestracji agenta.
 
-   ![Skonfigurowane domeny](./media/workday-inbound-tutorial/pa_install_screen_6.png "Skonfigurowane domeny")
+   ![Skonfigurowane]domeny(./media/workday-inbound-tutorial/pa_install_screen_6.png "skonfigurowanych") domen
 
    > [!NOTE]
    > Jeśli masz wiele domen usługi AD (np. na.contoso.com, emea.contoso.com), Dodaj każdą domenę osobno do listy.
@@ -405,15 +406,15 @@ Po wdrożeniu programu .NET 4.7.1 + można pobrać **[lokalny Agent aprowizacji 
    
 1. Przejrzyj szczegóły konfiguracji i kliknij przycisk **Potwierdź** , aby zarejestrować agenta.
   
-   ![Potwierdź ekran](./media/workday-inbound-tutorial/pa_install_screen_7.png "Potwierdź ekran")
+   ![Potwierdź]ekran(./media/workday-inbound-tutorial/pa_install_screen_7.png "potwierdzenia") ekranu
    
 1. Kreator konfiguracji wyświetla postęp rejestracji agenta.
   
-   ![Rejestracja agenta](./media/workday-inbound-tutorial/pa_install_screen_8.png "Rejestracja agenta")
+   (./media/workday-inbound-tutorial/pa_install_screen_8.png "Rejestracja agenta") ![rejestracji agenta]
    
 1. Po pomyślnym zarejestrowaniu agenta możesz kliknąć przycisk **Zakończ** , aby zamknąć kreatora.
   
-   ![Ekran zakończenia](./media/workday-inbound-tutorial/pa_install_screen_9.png "Ekran zakończenia")
+   ![](./media/workday-inbound-tutorial/pa_install_screen_9.png "Ekran") zakończenia ekranu zakończenia
    
 1. Sprawdź instalację agenta i upewnij się, że jest uruchomiona, otwierając przystawkę "usługi" i Wyszukaj usługę o nazwie "Microsoft Azure AD Połącz agenta aprowizacji"
   
@@ -439,11 +440,11 @@ Po wdrożeniu programu .NET 4.7.1 + można pobrać **[lokalny Agent aprowizacji 
 
 8. Wypełnij sekcję **poświadczenia administratora** w następujący sposób:
 
-   * **Nazwa użytkownika administratora** — wprowadź nazwę użytkownika konta programu integracji z systemem Workday z dołączoną nazwą domeny dzierżawy. Powinien wyglądać następująco: **username\@tenant_name**
+   * **Nazwa użytkownika administratora** — wprowadź nazwę użytkownika konta programu integracji z systemem Workday z dołączoną nazwą domeny dzierżawy. Powinien wyglądać następująco: **username @ no__t-1tenant_name**
 
    * **Hasło administratora —** Wprowadź hasło konta systemu integracji produktu Workday
 
-   * **Adres URL dzierżawy —** Wprowadź adres URL punktu końcowego usług sieci Web Workday dla dzierżawy. Ta wartość powinna wyglądać następująco https://wd3-impl-services1.workday.com/ccx/service/contoso4:, gdzie *contoso4* jest zastępowana prawidłową nazwą dzierżawy i *WD3-Impl* jest zastępowana prawidłowym ciągiem środowiska.
+   * **Adres URL dzierżawy —** Wprowadź adres URL punktu końcowego usług sieci Web Workday dla dzierżawy. Ta wartość powinna wyglądać następująco: https://wd3-impl-services1.workday.com/ccx/service/contoso4, gdzie *contoso4* jest zastępowana prawidłową nazwą dzierżawy, a *WD3-Impl* jest zastępowany prawidłowym ciągiem środowiska.
 
    * **Active Directory Las** "Nazwa" domeny Active Directory, zarejestrowana w agencie. Użyj listy rozwijanej, aby wybrać domenę docelową do aprowizacji. Ta wartość jest zazwyczaj ciągiem: *contoso.com*
 
@@ -539,7 +540,7 @@ W tej sekcji skonfigurujesz sposób przepływu danych przez użytkownika z produ
 | ---------- | ---------- | ---------- | ---------- |
 | **WorkerID**  |  EmployeeID | **Tak** | Zapisywane tylko w przypadku tworzenia |
 | **PreferredNameData**    |  cn    |   |   Zapisywane tylko w przypadku tworzenia |
-| **SelectUniqueValue (join ("\@", join (".", \[FirstName\], \[LastName\]), "contoso.com"), join ("\@", join (".", Mid (\[FirstName\], 1, 1) \[, LastName\]), "contoso.com"), join ("\@", join (".", Mid (\[FirstName\], 1, 2), \[LastName\]), "contoso.com")**   | userPrincipalName     |     | Zapisywane tylko w przypadku tworzenia 
+| **SelectUniqueValue (join ("\@", join (".", \[FirstName @ no__t-3, \[LastName @ no__t-5), "contoso.com"), join ("\@", join (".", Mid (\[FirstName @ no__t-8, 1, 1),-9LastName @ no__t-10), "contoso.com"), join ("@no__t t-11 ", join (". ", Mid (2FirstName @ no__t-13, 1, 2), 4LastName @ no__t-15)," contoso.com ")**   | userPrincipalName     |     | Zapisywane tylko w przypadku tworzenia 
 | **Zastąp(Mid(Zastąp(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         Zapisywane tylko w przypadku tworzenia |
 | **Switch(\[Active\], , "0", "True", "1", "False")** |  accountDisabled      |     | Utwórz i zaktualizuj |
 | **Imię**   | givenName       |     |    Utwórz i zaktualizuj |
@@ -560,7 +561,7 @@ W tej sekcji skonfigurujesz sposób przepływu danych przez użytkownika z produ
 | **Fax**      | facsimileTelephoneNumber     |     |    Utwórz i zaktualizuj |
 | **Mobile**  |    Telefon komórkowy       |     |       Utwórz i zaktualizuj |
 | **LocalReference** |  preferredLanguage  |     |  Utwórz i zaktualizuj |                                               
-| **Switch (\[gmina\], OU = użytkownicy standardowi, OU = users, OU = default, OU = Locations, DC = contoso, DC = com "," Dallas "," OU = użytkownicy Standards, OU = users, OU = Dallas, OU = Locations, DC = contoso, DC = com "," Austin "," OU = users Standard, OU = Użytkownicy, OU = Austin, OU = Locations, DC = contoso, DC = com "," Seattle "," OU = standardowy użytkownicy, OU = users, OU = Seattle, OU = Locations, DC = contoso, DC = com "," Londyn "," OU = użytkownicy Standards, OU = users, OU = Londyn, OU = Locations, DC = contoso, DC = com ")**  | parentDistinguishedName     |     |  Utwórz i zaktualizuj |
+| **Przełącznik (\[Municipality @ no__t-2, "OU = użytkownicy standardowi, OU = users, OU = default, OU = Locations, DC = contoso, DC = com", "Dallas", "OU = Standard users, OU = users, OU = Dallas, OU = Locations, DC = contoso, DC = com", "Austin", "OU = users Standard, OU = users, OU = Austin, OU = Locations, DC = contoso, DC = com "," Seattle "," OU = standardowe użytkownicy, OU = users, OU = Seattle, OU = Locations, DC = contoso, DC = com "," Londyn "," OU = użytkownicy Standards, OU = users, OU = Londyn, OU = lokalizacje, DC = contoso, DC = com "**  | parentDistinguishedName     |     |  Utwórz i zaktualizuj |
 
 Po zakończeniu konfiguracji mapowania atrybutów możesz teraz [włączyć i uruchomić usługę aprowizacji użytkowników](#enable-and-launch-user-provisioning).
 
@@ -599,7 +600,7 @@ W poniższych sekcjach opisano kroki konfigurowania aprowizacji użytkowników z
 
    * **Hasło administratora —** Wprowadź hasło konta systemu integracji produktu Workday
 
-   * **Adres URL dzierżawy —** Wprowadź adres URL punktu końcowego usług sieci Web Workday dla dzierżawy. Ta wartość powinna wyglądać następująco https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources:, gdzie *contoso4* jest zastępowana prawidłową nazwą dzierżawy i *WD3-Impl* jest zastępowana prawidłowym ciągiem środowiska. Jeśli ten adres URL nie jest znany, skontaktuj się z partnerem integracji produktu Workday lub przedstawicielem pomocy technicznej, aby określić prawidłowy adres URL do użycia.
+   * **Adres URL dzierżawy —** Wprowadź adres URL punktu końcowego usług sieci Web Workday dla dzierżawy. Ta wartość powinna wyglądać następująco: https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources, gdzie *contoso4* jest zastępowana prawidłową nazwą dzierżawy, a *WD3-Impl* jest zastępowany prawidłowym ciągiem środowiska. Jeśli ten adres URL nie jest znany, skontaktuj się z partnerem integracji produktu Workday lub przedstawicielem pomocy technicznej, aby określić prawidłowy adres URL do użycia.
 
    * **Wiadomość e-mail z powiadomieniem —** Wprowadź adres e-mail, a następnie zaznacz pole wyboru "Wyślij wiadomość e-mail, jeśli wystąpi błąd".
 
@@ -692,11 +693,11 @@ Postępuj zgodnie z tymi instrukcjami, aby skonfigurować Stornowanie adresów e
 
 8. Wypełnij sekcję **poświadczenia administratora** w następujący sposób:
 
-   * **Nazwa użytkownika administratora** — wprowadź nazwę użytkownika konta programu integracji z systemem Workday z dołączoną nazwą domeny dzierżawy. Powinien wyglądać następująco: *username\@contoso4*
+   * **Nazwa użytkownika administratora** — wprowadź nazwę użytkownika konta programu integracji z systemem Workday z dołączoną nazwą domeny dzierżawy. Powinien wyglądać następująco: *username @ no__t-1contoso4*
 
    * **Hasło administratora —** Wprowadź hasło konta systemu integracji produktu Workday
 
-   * **Adres URL dzierżawy —** Wprowadź adres URL punktu końcowego usług sieci Web Workday dla dzierżawy. Ta wartość powinna wyglądać następująco https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources:, gdzie *contoso4* jest zastępowana prawidłową nazwą dzierżawy, a *WD3-Impl* jest zastępowana prawidłowym ciągiem środowiska (w razie potrzeby).
+   * **Adres URL dzierżawy —** Wprowadź adres URL punktu końcowego usług sieci Web Workday dla dzierżawy. Ta wartość powinna wyglądać następująco: https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources, gdzie *contoso4* jest zastępowana prawidłową nazwą dzierżawy, a *WD3-Impl* jest zastępowany prawidłowym ciągiem środowiska (w razie potrzeby).
 
    * **Wiadomość e-mail z powiadomieniem —** Wprowadź adres e-mail, a następnie zaznacz pole wyboru "Wyślij wiadomość e-mail, jeśli wystąpi błąd".
 
@@ -725,7 +726,7 @@ Po zakończeniu konfiguracji aplikacji inicjowania obsługi dla programu Workday
 
 1. Na karcie **aprowizacji** Ustaw **stan aprowizacji** na **włączone**.
 
-2. Kliknij polecenie **Zapisz**.
+2. Kliknij pozycję **Zapisz**.
 
 3. Ta operacja rozpocznie synchronizację początkową, która może potrwać zmienną liczbę godzin w zależności od liczby użytkowników w dzierżawie produktu Workday. 
 
@@ -760,7 +761,7 @@ Po zakończeniu konfiguracji aplikacji inicjowania obsługi dla programu Workday
   
 * **Mapowanie i pytania dotyczące konfiguracji programu Workday do usługi AD**
   * [Jak mogę utworzyć kopię zapasową lub wyeksportować działającą kopię mapowania i schematu atrybutu aprowizacji produktu Workday?](#how-do-i-back-up-or-export-a-working-copy-of-my-workday-provisioning-attribute-mapping-and-schema)
-  * [Mam atrybuty niestandardowe w dniach roboczych i Active Directory. Jak mogę skonfigurować rozwiązanie do pracy z moimi atrybutami niestandardowymi?](#i-have-custom-attributes-in-workday-and-active-directory-how-do-i-configure-the-solution-to-work-with-my-custom-attributes)
+  * [I mają atrybuty niestandardowe w dniach roboczych i Active Directory. Jak mogę skonfigurować rozwiązanie do pracy z moimi atrybutami niestandardowymi? ](#i-have-custom-attributes-in-workday-and-active-directory-how-do-i-configure-the-solution-to-work-with-my-custom-attributes)
   * [Czy można udostępnić zdjęcie użytkownika z produktu Workday do Active Directory?](#can-i-provision-users-photo-from-workday-to-active-directory)
   * [Jak mogę synchronizować numery telefonów komórkowych z produktu Workday w oparciu o zgodę użytkownika na użycie publiczne?](#how-do-i-sync-mobile-numbers-from-workday-based-on-user-consent-for-public-usage)
   * [Jak mogę format nazw wyświetlanych w usłudze AD na podstawie atrybutów działu/kraju/miejscowości użytkownika i obsłużyć wariancje regionalne?](#how-do-i-format-display-names-in-ad-based-on-the-users-departmentcountrycity-attributes-and-handle-regional-variances)
@@ -833,7 +834,7 @@ Podczas sugerowania nowego pomysłu Sprawdź, czy ktoś inny już sugerował pod
 #### <a name="how-do-i-know-the-version-of-my-provisioning-agent"></a>Jak mogę znać wersję mojego agenta aprowizacji?
 
 * Zaloguj się do systemu Windows Server, na którym zainstalowano agenta aprowizacji.
-* Przejdź do **panelu** -> sterowania**Odinstaluj lub Zmień menu programu**
+* Przejdź do **Panelu sterowania** -> **Odinstaluj lub Zmień menu programu**
 * Wyszukaj wersję odpowiadającą wpisowi **Microsoft Azure AD Połącz agenta aprowizacji**
 
   ![Azure Portal](./media/workday-inbound-tutorial/pa_version.png)
@@ -852,7 +853,7 @@ Podczas konfigurowania Agent aprowizacji jest monitowany o poświadczenia admini
 
 #### <a name="how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication"></a>Jak mogę skonfigurować agenta aprowizacji do używania serwera proxy do wychodzącej komunikacji HTTP?
 
-Agent aprowizacji obsługuje korzystanie z serwera proxy wychodzącego. Można ją skonfigurować, edytując plik konfiguracji agenta **C:\Program Files\Microsoft Azure AD Connect aprowizacji Agent\AADConnectProvisioningAgent.exe.config**. Dodaj do niego następujące wiersze w kierunku końca pliku tuż przed tagiem zamykającym `</configuration>` .
+Agent aprowizacji obsługuje korzystanie z serwera proxy wychodzącego. Można ją skonfigurować, edytując plik konfiguracji agenta **C:\Program Files\Microsoft Azure AD Connect aprowizacji Agent\AADConnectProvisioningAgent.exe.config**. Dodaj do niego następujące wiersze przed końcem pliku tuż przed zamykającym tagiem `</configuration>`.
 Zastąp zmienne [Proxy-Server] i [proxy-port] wartościami nazw i portów serwera proxy.
 
 ```xml
@@ -906,7 +907,7 @@ Tak, jeden Agent aprowizacji można skonfigurować do obsługi wielu domen usłu
 #### <a name="how-do-i-uninstall-the-provisioning-agent"></a>Jak mogę odinstalować agenta aprowizacji?
 
 * Zaloguj się do systemu Windows Server, na którym zainstalowano agenta aprowizacji.
-* Przejdź do **panelu** -> sterowania**Odinstaluj lub Zmień menu programu**
+* Przejdź do **Panelu sterowania** -> **Odinstaluj lub Zmień menu programu**
 * Odinstaluj następujące programy:
   * Microsoft Azure AD połączyć się z agentem aprowizacji
   * Microsoft Azure AD Aktualizator połączenia z agentem
@@ -948,7 +949,7 @@ Obecnie rozwiązanie nie obsługuje ustawiania atrybutów binarnych, takich jak 
 * Kliknij mapowania atrybutów 
 * W obszarze **mapowania**wybierz pozycję **Synchronizuj procesy robocze programu Workday z lokalnymi Active Directory** (lub **zsynchronizuj procesy robocze z systemem Workday z usługą Azure AD**).
 * Na stronie mapowania atrybutów przewiń w dół i zaznacz pole wyboru "Pokaż opcje zaawansowane".  Kliknij, **Aby edytować listę atrybutów dla produktu Workday**
-* W bloku, który zostanie otwarty, Znajdź atrybut "Mobile" i kliknij wiersz, aby można było edytować ![ **wyrażenie interfejsu API** Mobile Rodo](./media/workday-inbound-tutorial/mobile_gdpr.png)
+* W bloku, który zostanie otwarty, zlokalizuj atrybut "Mobile" i kliknij wiersz, aby można było edytować **wyrażenie interfejsu API** ![Mobile Rodo @ no__t-2
 
 * Zastąp **wyrażenie interfejsu API** następującym nowym wyrażeniem, które pobiera służbowy numer telefonu, tylko jeśli "Flaga użycia publicznego" jest ustawiona na wartość "true" w programie Workday.
 
@@ -973,7 +974,7 @@ Oto jak można obsługiwać takie wymagania dotyczące konstruowania nazwy *posp
      | PreferredFirstName | wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Name_Data/wd:Preferred_Name_Data/wd:Name_Detail_Data/wd:First_Name/text() |
      | PreferredLastName | wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Name_Data/wd:Preferred_Name_Data/wd:Name_Detail_Data/wd:Last_Name/text() |
      | Firmy | wd:Worker/wd:Worker_Data/wd:Organization_Data/wd:Worker_Organization_Data[wd:Organization_Data/wd:Organization_Type_Reference/wd:ID[@wd:type='Organization_Type_ID']='Company']/wd:Organization_Reference/@wd:Descriptor |
-     | SupervisoryOrganization | WD: Worker/WD: Worker_Data/WD: Organization_Data/WD: Worker_Organization_Data/WD: Organization_Data [WD: Organization_Type_Reference/WD: ID [@wd:type= "Organization_Type_ID"] = "nadzorcza"]/WD: nazwa_organizacji/Text () |
+     | SupervisoryOrganization | WD: Worker/WD: Worker_Data/WD: Organization_Data/WD: Worker_Organization_Data/WD: Organization_Data [WD: Organization_Type_Reference/WD: ID [@wd:type = "Organization_Type_ID"] = "nadzorcze"]/WD: nazwa_organizacji/Text () |
   
    Skontaktuj się z zespołem w programie Workday, że wyrażenie interfejsu API powyżej jest prawidłowe dla konfiguracji dzierżawy w Twojej firmie. W razie potrzeby można je edytować zgodnie z opisem w sekcji [Dostosowywanie listy atrybutów użytkownika produktu Workday](#customizing-the-list-of-workday-user-attributes).
 
@@ -996,7 +997,7 @@ Oto jak można obsługiwać takie wymagania dotyczące konstruowania nazwy *posp
     ```
      Append(Join(", ",[PreferredLastName],[PreferredFirstName]), Join(""," (",[SupervisoryOrganization],"-",[CountryReferenceTwoLetter],")"))
     ```
-    Po zastosowaniu odpowiedniego wyrażenia Edytuj tabelę mapowania atrybutów i zmodyfikuj Mapowanie atrybutów *DisplayName* , jak pokazano poniżej:   ![Nazwa wyświetlana](./media/workday-inbound-tutorial/wd_displayname_map.png)
+    Po zastosowaniu odpowiedniego wyrażenia Edytuj tabelę mapowania atrybutów i zmodyfikuj Mapowanie atrybutów *DisplayName* , jak pokazano poniżej:   ![DisplayName — mapowanie @ no__t-1
 
 * W powyższym przykładzie Załóżmy, że chcesz przekonwertować nazwy miast pochodzące z produktu Workday na wartości skrócone, a następnie użyć ich do kompilowania nazw wyświetlanych *, takich jak Kowalski, Jan (Chi)* lub *Nowak, Janina (NYC)* , a następnie można osiągnąć ten wynik przy użyciu przełącznika wyrażenie z atrybutem *gminy* jednostki Workday jako zmienną wyznaczników.
 
@@ -1041,7 +1042,7 @@ Użyj funkcji [NormalizeDiacritics](../manage-apps/functions-for-customizing-app
 
 ## <a name="troubleshooting-tips"></a>Wskazówki dotyczące rozwiązywania problemów
 
-Ta sekcja zawiera szczegółowe wskazówki dotyczące rozwiązywania problemów z inicjowaniem obsługi administracyjnej w ramach integracji z programem Workday przy użyciu dzienników inspekcji usługi Azure AD i dzienników Podgląd zdarzeń systemu Windows Server. Jest on kompilowany na podstawie ogólnych kroków rozwiązywania problemów i koncepcji przechwyconych w [samouczku: Raportowanie dotyczące automatycznego aprowizacji kont użytkowników](../manage-apps/check-status-user-account-provisioning.md)
+Ta sekcja zawiera szczegółowe wskazówki dotyczące rozwiązywania problemów z inicjowaniem obsługi administracyjnej w ramach integracji z programem Workday przy użyciu dzienników inspekcji usługi Azure AD i dzienników Podgląd zdarzeń systemu Windows Server. Jest on kompilowany na podstawie ogólnych kroków rozwiązywania problemów i koncepcji przechwyconych w @no__t 0Tutorial: Raportowanie dotyczące automatycznego inicjowania obsługi konta użytkownika @ no__t-0
 
 W tej części omówiono następujące aspekty rozwiązywania problemów:
 
@@ -1079,7 +1080,7 @@ W tej części omówiono następujące aspekty rozwiązywania problemów:
 
 Po wykryciu nowego zatrudnienia w usłudze Workday (Załóżmy o IDENTYFIKATORze pracownika *21023*) usługa Azure AD Provisioning próbuje utworzyć nowe konto użytkownika usługi AD dla procesu roboczego, a w procesie tworzy 4 rekordy dziennika inspekcji zgodnie z poniższym opisem:
 
-  [![Dziennik inspekcji — operacje tworzenia](media/workday-inbound-tutorial/wd_audit_logs_02.png)](media/workday-inbound-tutorial/wd_audit_logs_02.png#lightbox)
+  [@no__t — tworzenie dziennika 1Audit](media/workday-inbound-tutorial/wd_audit_logs_02.png)](media/workday-inbound-tutorial/wd_audit_logs_02.png#lightbox)
 
 Po kliknięciu dowolnego z rekordów dziennika inspekcji zostanie otwarta strona **szczegóły działania** . Poniżej znajduje się Strona **szczegóły działania** wyświetlana dla każdego typu rekordu dziennika.
 
@@ -1137,17 +1138,17 @@ Po kliknięciu dowolnego z rekordów dziennika inspekcji zostanie otwarta strona
 
   Wyszukaj rekord HTTP POST odpowiadający sygnatury czasowej operacji eksportu z *identyfikatorem zdarzenia = 2*. Ten rekord będzie zawierać wartości atrybutów wysyłane przez usługę aprowizacji do agenta aprowizacji.
 
-  [![Standard scim Dodaj](media/workday-inbound-tutorial/wd_event_viewer_05.png)](media/workday-inbound-tutorial/wd_event_viewer_05.png#lightbox)
+  [@no__t — Dodawanie 1SCIM](media/workday-inbound-tutorial/wd_event_viewer_05.png)](media/workday-inbound-tutorial/wd_event_viewer_05.png#lightbox)
 
   Bezpośrednio po powyższym zdarzeniu powinno być inne zdarzenie, które przechwytuje odpowiedź na operację tworzenia konta usługi AD. To zdarzenie zwraca nowy objectGuid utworzony w usłudze AD i jest ustawiony jako atrybut TargetAnchor w usłudze aprowizacji.
 
-  [![Standard scim Dodaj](media/workday-inbound-tutorial/wd_event_viewer_06.png)](media/workday-inbound-tutorial/wd_event_viewer_06.png#lightbox)
+  [@no__t — Dodawanie 1SCIM](media/workday-inbound-tutorial/wd_event_viewer_06.png)](media/workday-inbound-tutorial/wd_event_viewer_06.png#lightbox)
 
 ### <a name="understanding-logs-for-manager-update-operations"></a>Omówienie dzienników dla operacji aktualizacji Menedżera
 
 Atrybut Manager jest atrybutem Reference w usłudze AD. Usługa aprowizacji nie ustawia atrybutu Manager jako części operacji tworzenia użytkownika. Zamiast tego atrybut Manager jest ustawiany jako część operacji *aktualizacji* po utworzeniu konta usługi AD dla użytkownika. Powyższy przykład, Załóżmy, że nowe zatrudnienie o IDENTYFIKATORze pracownika "21451" zostało aktywowane w dniach roboczych, a nowy Menedżer zatrudniania (*21023*) ma już konto usługi AD. W tym scenariuszu wyszukiwanie w dziennikach inspekcji dla użytkownika 21451 pokazuje 5 wpisów.
 
-  [![Aktualizacja Menedżera](media/workday-inbound-tutorial/wd_audit_logs_03.png)](media/workday-inbound-tutorial/wd_audit_logs_03.png#lightbox)
+  [@no__t — aktualizacja 1Manager](media/workday-inbound-tutorial/wd_audit_logs_03.png)](media/workday-inbound-tutorial/wd_audit_logs_03.png#lightbox)
 
 Pierwsze 4 rekordy są podobne do tych, które zostały omówione w ramach operacji tworzenia użytkownika. Piąty rekord jest eksportem skojarzonym z aktualizacją atrybutu Menedżera. Rekord dziennika przedstawia wynik operacji aktualizacji Menedżera kont usługi AD, która jest wykonywana przy użyciu atrybutu *objectGUID* Menedżera.
 
@@ -1178,8 +1179,8 @@ W tej sekcji opisano często występujące błędy podczas aprowizacji użytkown
 
 |#|Scenariusz błędu |Prawdopodobne przyczyny|Zalecane rozwiązanie|
 |--|---|---|---|
-|1.| Wystąpił błąd podczas instalowania agenta aprowizacji z komunikatem o błędzie:  *Nie można uruchomić usługi "Microsoft Azure AD połączyć agenta aprowizacji" (AADConnectProvisioningAgent). Sprawdź, czy masz wystarczające uprawnienia do uruchamiania systemu.* | Ten błąd jest zwykle wyświetlany, jeśli próbujesz zainstalować agenta aprowizacji na kontrolerze domeny, a zasady grupy uniemożliwiają uruchomienie usługi.  Jest również widoczna, jeśli masz Poprzednia wersja agenta z uruchomioną usługą i nie został on odinstalowany przed rozpoczęciem nowej instalacji.| Zainstaluj agenta aprowizacji na serwerze niebędącym kontrolerem domeny. Przed zainstalowaniem nowego agenta upewnij się, że poprzednie wersje agenta zostały odinstalowane.|
-|2.| Agent aprowizacji usługi systemu Windows "Microsoft Azure AD Connect" jest w stanie *początkowym* i nie przechodzi do stanu *uruchomienia* . | W ramach instalacji Kreator agenta tworzy konto lokalne (**NT Service\\AADConnectProvisioningAgent**) na serwerze i jest to konto **logowania** używane do uruchamiania usługi. Jeśli zasady zabezpieczeń na serwerze z systemem Windows uniemożliwiają uruchamianie usług na kontach lokalnych, ten błąd zostanie wyświetlony. | Otwórz *konsolę usługi*. Kliknij prawym przyciskiem myszy usługę systemu Windows "Microsoft Azure AD Połącz agenta aprowizacji" i na karcie Logowanie Podaj konto administratora domeny, aby uruchomić usługę. Uruchom ponownie usługę. |
+|1.| Wystąpił błąd podczas instalowania agenta aprowizacji z komunikatem o błędzie:  nie można uruchomić *Service "Microsoft Azure AD łączenia się z agentem aprowizacji" (AADConnectProvisioningAgent). Sprawdź, czy masz wystarczające uprawnienia do uruchomienia systemu.* | Ten błąd jest zwykle wyświetlany, jeśli próbujesz zainstalować agenta aprowizacji na kontrolerze domeny, a zasady grupy uniemożliwiają uruchomienie usługi.  Jest również widoczna, jeśli masz Poprzednia wersja agenta z uruchomioną usługą i nie został on odinstalowany przed rozpoczęciem nowej instalacji.| Zainstaluj agenta aprowizacji na serwerze niebędącym kontrolerem domeny. Przed zainstalowaniem nowego agenta upewnij się, że poprzednie wersje agenta zostały odinstalowane.|
+|2.| Agent aprowizacji usługi systemu Windows "Microsoft Azure AD Connect" jest w stanie *początkowym* i nie przechodzi do stanu *uruchomienia* . | W ramach instalacji Kreator agenta tworzy konto lokalne (**usługa NT @ no__t-1AADConnectProvisioningAgent**) na serwerze i jest to konto **logowania** używane do uruchamiania usługi. Jeśli zasady zabezpieczeń na serwerze z systemem Windows uniemożliwiają uruchamianie usług na kontach lokalnych, ten błąd zostanie wyświetlony. | Otwórz *konsolę usługi*. Kliknij prawym przyciskiem myszy usługę systemu Windows "Microsoft Azure AD Połącz agenta aprowizacji" i na karcie Logowanie Podaj konto administratora domeny, aby uruchomić usługę. Uruchom ponownie usługę. |
 |3.| Podczas konfigurowania agenta aprowizacji przy użyciu domeny usługi AD w kroku *łączenie Active Directory*Kreator zajmuje dużo czasu, próbując załadować schemat usługi AD i ostatecznie przekroczyć limit czasu. | Ten błąd jest zazwyczaj wyświetlany, jeśli kreator nie może skontaktować się z serwerem kontrolera domeny usługi AD ze względu na problemy z zaporą. | Na ekranie Kreator *łączenia Active Directory* , podczas podawania poświadczeń dla domeny usługi AD istnieje opcja o nazwie *Wybierz priorytet kontrolera domeny*. Użyj tej opcji, aby wybrać kontroler domeny znajdujący się w tej samej lokacji co serwer agenta i upewnić się, że nie ma żadnych reguł zapory blokujących komunikację. |
 
 #### <a name="connectivity-errors"></a>Błędy związane z łącznością
@@ -1188,7 +1189,7 @@ Jeśli usługa aprowizacji nie może nawiązać połączenia z dniem Workday lub
 
 |#|Scenariusz błędu |Prawdopodobne przyczyny|Zalecane rozwiązanie|
 |--|---|---|---|
-|1.| Po kliknięciu przycisku **Testuj połączenie**zostanie wyświetlony komunikat o błędzie: *Wystąpił błąd podczas nawiązywania połączenia z Active Directory. Upewnij się, że lokalny Agent aprowizacji jest uruchomiony i jest skonfigurowany z poprawną domeną Active Directory.* | Ten błąd jest zwykle wyświetlany, jeśli Agent aprowizacji nie jest uruchomiony lub istnieje zapora blokująca komunikację między usługą Azure AD a agentem aprowizacji. Ten błąd może również pojawić się, jeśli domena nie jest skonfigurowana w Kreatorze agenta. | Otwórz konsolę *usługi* na serwerze z systemem Windows, aby upewnić się, że Agent jest uruchomiony. Otwórz Kreatora agenta aprowizacji i sprawdź, czy odpowiednia domena jest zarejestrowana w agencie.  |
+|1.| Po kliknięciu przycisku **Testuj połączenie**zostanie wyświetlony komunikat o błędzie: *There Wystąpił błąd podczas nawiązywania połączenia z Active Directory. Upewnij się, że lokalny Agent aprowizacji jest uruchomiony i jest skonfigurowany z poprawną domeną Active Directory.* | Ten błąd jest zwykle wyświetlany, jeśli Agent aprowizacji nie jest uruchomiony lub istnieje zapora blokująca komunikację między usługą Azure AD a agentem aprowizacji. Ten błąd może również pojawić się, jeśli domena nie jest skonfigurowana w Kreatorze agenta. | Otwórz konsolę *usługi* na serwerze z systemem Windows, aby upewnić się, że Agent jest uruchomiony. Otwórz Kreatora agenta aprowizacji i sprawdź, czy odpowiednia domena jest zarejestrowana w agencie.  |
 |2.| Zadanie aprowizacji przejdzie do stanu kwarantanny w weekendy (pt-SAT) i otrzymamy wiadomość e-mail z powiadomieniem, że wystąpił błąd synchronizacji. | Częstą przyczyną występowania tego błędu są planowane przestoje produktu Workday. Jeśli korzystasz z dzierżawy implementacji produktu Workday, pamiętaj, że ten produkt ma w weekendy zaplanowane przestoje dzierżaw implementacji (zwykle od wieczora w piątek do rana w sobotę). W tym czasie aplikacje aprowizacji produktu Workday mogą przechodzić w stan kwarantanny, ponieważ nie mogą nawiązać połączenia z produktem Workday. Normalny stan zostaje przywrócony po ponownym przejściu w tryb online dzierżawy implementacji produktu Workday. W rzadkich przypadkach ten błąd może być także wyświetlany, jeśli zmieniło się hasło użytkownika systemu integracji z powodu odświeżenia dzierżawy lub jeśli konto zostało zablokowane bądź wygasło. | Zapytaj administratora produktu Workday lub partnera integracji o czas planowanych przestojów produktu Workday, aby wiedzieć, które komunikaty o alertach można zignorować, i móc potwierdzić dostępność wystąpienia produktu Workday po jego ponownym przejściu w tryb online.  |
 
 
@@ -1196,8 +1197,8 @@ Jeśli usługa aprowizacji nie może nawiązać połączenia z dniem Workday lub
 
 |#|Scenariusz błędu |Prawdopodobne przyczyny|Zalecane rozwiązanie|
 |--|---|---|---|
-|1.| Niepowodzenia operacji eksportu w dzienniku inspekcji z powodu błędu *komunikatu: OperationsError-SvcErr: Wystąpił błąd operacji. Nie skonfigurowano odwołania wyższego poziomu dla usługi katalogowej. W związku z tym usługa katalogowa nie może wystawić odwołań do obiektów spoza tego lasu.* | Ten błąd jest zwykle wyświetlany, jeśli jednostka organizacyjna *kontenera Active Directory* nie jest ustawiona poprawnie lub jeśli występują problemy z mapowaniem wyrażenia użytego dla *parentDistinguishedName*. | Sprawdź parametr *Active Directory* jednostki organizacyjnej kontenera dla literówki. Jeśli korzystasz z elementu *parentDistinguishedName* podczas mapowania atrybutów, upewnij się, że zawsze wynikiem jego oceny jest znany kontener w ramach domeny usługi AD. Sprawdź zdarzenie *eksportu* w dziennikach inspekcji, aby wyświetlić wygenerowaną wartość. |
-|2.| Błędy operacji eksportowania w dzienniku inspekcji z kodem błędu: *SystemForCrossDomainIdentityManagementBadResponse* i komunikat *o błędzie: ConstraintViolation-AtrErr: Wartość w żądaniu jest nieprawidłowa. Wartość atrybutu nie ma akceptowalnego zakresu wartości. \nError szczegóły: CONSTRAINT_ATT_TYPE — firma*. | Chociaż ten błąd jest specyficzny dla atrybutu *firmy* , może zostać wyświetlony ten błąd dla innych atrybutów, takich jak *CN* . Ten błąd występuje ze względu na ograniczenie schematu wymuszane przez usługi AD. Domyślnie atrybuty, takie jak *firma* i *CN* w usłudze AD, mają górny limit wynoszący 64 znaków. Jeśli wartość pochodząca z produktu Workday przekracza 64 znaków, zobaczysz ten komunikat o błędzie. | Sprawdź zdarzenie *eksportu* w dziennikach inspekcji, aby wyświetlić wartość atrybutu zgłoszonego w komunikacie o błędzie. Rozważ Obcinanie wartości z produktu Workday przy użyciu funkcji [Mid](../manage-apps/functions-for-customizing-application-data.md#mid) lub zmianę mapowań na atrybut AD, który nie ma ograniczeń o podobnej długości.  |
+|1.| Błędy operacji eksportowania w dzienniku inspekcji z komunikatem *Error: OperationsError-SvcErr: Wystąpił błąd operacji. Nie skonfigurowano odwołania wyższego poziomu dla usługi katalogowej. W związku z tym usługa katalogowa nie może wystawić odwołań do obiektów spoza tego lasu.* | Ten błąd jest zwykle wyświetlany, jeśli jednostka organizacyjna *kontenera Active Directory* nie jest ustawiona poprawnie lub jeśli występują problemy z mapowaniem wyrażenia użytego dla *parentDistinguishedName*. | Sprawdź parametr *Active Directory* jednostki organizacyjnej kontenera dla literówki. Jeśli korzystasz z elementu *parentDistinguishedName* podczas mapowania atrybutów, upewnij się, że zawsze wynikiem jego oceny jest znany kontener w ramach domeny usługi AD. Sprawdź zdarzenie *eksportu* w dziennikach inspekcji, aby wyświetlić wygenerowaną wartość. |
+|2.| Błędy operacji eksportowania w dzienniku inspekcji z kodem błędu: *SystemForCrossDomainIdentityManagementBadResponse* i komunikat *Error: ConstraintViolation-AtrErr: Wartość w żądaniu jest nieprawidłowa. Wartość atrybutu nie ma akceptowalnego zakresu wartości. \nError szczegóły: CONSTRAINT_ATT_TYPE — firma @ no__t-0. | Chociaż ten błąd jest specyficzny dla atrybutu *firmy* , może zostać wyświetlony ten błąd dla innych atrybutów, takich jak *CN* . Ten błąd występuje ze względu na ograniczenie schematu wymuszane przez usługi AD. Domyślnie atrybuty, takie jak *firma* i *CN* w usłudze AD, mają górny limit wynoszący 64 znaków. Jeśli wartość pochodząca z produktu Workday przekracza 64 znaków, zobaczysz ten komunikat o błędzie. | Sprawdź zdarzenie *eksportu* w dziennikach inspekcji, aby wyświetlić wartość atrybutu zgłoszonego w komunikacie o błędzie. Rozważ Obcinanie wartości z produktu Workday przy użyciu funkcji [Mid](../manage-apps/functions-for-customizing-application-data.md#mid) lub zmianę mapowań na atrybut AD, który nie ma ograniczeń o podobnej długości.  |
 
 #### <a name="ad-user-account-update-errors"></a>Błędy aktualizacji konta użytkownika usługi AD
 
@@ -1237,11 +1238,11 @@ Aby to zmienić, należy użyć programu [Workday Studio](https://community.work
 
     ![Workday Studio](./media/workday-inbound-tutorial/wdstudio1.png)
 
-6. W `https://IMPL-CC.workday.com/ccx/service/TENANT/Human_Resources`polu **Lokalizacja** Określ wartość, ale Zastąp ciąg "Impl-CC" rzeczywistym typem wystąpienia i "dzierżawca" nazwą swojej rzeczywistej dzierżawy.
+6. Ustaw pole **Lokalizacja** na `https://IMPL-CC.workday.com/ccx/service/TENANT/Human_Resources`, ale Zastąp ciąg "Impl-CC" rzeczywistym typem wystąpienia i "dzierżawca" nazwą swojej rzeczywistej dzierżawy.
 
 7. Ustaw **operację** na **Get_Workers**
 
-8.  Kliknij łącze małe **Konfigurowanie** poniżej okienka żądanie/odpowiedź, aby ustawić poświadczenia dla produktu Workday. Sprawdź pozycję **uwierzytelnianie**, a następnie wprowadź nazwę użytkownika i hasło do konta systemu integracji z programem Workday. Upewnij się, że nazwa użytkownika jest sformatowana\@jako dzierżawca, i pozostaw wybraną opcję **WS-Security UsernameToken** .
+8.  Kliknij łącze małe **Konfigurowanie** poniżej okienka żądanie/odpowiedź, aby ustawić poświadczenia dla produktu Workday. Sprawdź pozycję **uwierzytelnianie**, a następnie wprowadź nazwę użytkownika i hasło do konta systemu integracji z programem Workday. Upewnij się, że nazwa użytkownika jest sformatowana jako nazwa @ no__t-0tenant, i pozostaw wybraną opcję **WS-Security UsernameToken** .
 
     ![Workday Studio](./media/workday-inbound-tutorial/wdstudio2.png)
 
@@ -1284,9 +1285,9 @@ Aby to zmienić, należy użyć programu [Workday Studio](https://community.work
 
     ![Workday Studio](./media/workday-inbound-tutorial/wdstudio3.png)
 
-14. W drzewie plików Przejdź przez **/env: Koperta > env: Treść > WD: Get_Workers_Response > WD: Response_Data > WD: Proces** roboczy, aby znaleźć dane użytkownika.
+14. W drzewie plików Przejdź przez **/env: Koperta > env: Treść > WD: Get_Workers_Response > WD: Response_Data > WD: Proces roboczy @ no__t-0, aby znaleźć dane użytkownika.
 
-15. W **obszarze WD: Proces**roboczy, Znajdź atrybut, który chcesz dodać, a następnie wybierz go.
+15. W obszarze **wd: Proces roboczy @ no__t-0, Znajdź atrybut, który chcesz dodać, a następnie wybierz go.
 
 16. Skopiuj wyrażenie XPath dla wybranego atrybutu spoza pola **ścieżka dokumentu** .
 
@@ -1334,7 +1335,7 @@ Aby to zmienić, należy użyć programu [Workday Studio](https://community.work
 
 16. Po zakończeniu Pamiętaj, aby ustawić **stan aprowizacji** z powrotem **na Włącz** i Zapisz.
 
-### <a name="exporting-and-importing-your-configuration"></a>Eksportowanie i Importowanie konfiguracji
+### <a name="exporting-and-importing-your-configuration"></a>Eksportowanie i importowanie konfiguracji
 
 Zapoznaj się z artykułem [Eksportowanie i Importowanie konfiguracji aprowizacji](../manage-apps/export-import-provisioning-configuration.md)
 

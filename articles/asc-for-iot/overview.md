@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 29add1cff184e234cd5dcc5050b94cdd50593731
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: adb1b840fd733353e449224c9ac752e94329bde6
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315909"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326733"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>Wprowadzenie do usługi Azure Security Center dla IoT
 
@@ -30,7 +30,7 @@ Ujednolicenie zarządzania zabezpieczeniami i umożliwienie kompleksowego wykryw
 
 Wybieraj z naszego bezproblemowego rozwiązania bez wykorzystania agentów lub korzystaj z kompleksowych zabezpieczeń opartych na agentach, Azure Security Center dla usługi IoT zapewnia ochronę przed zagrożeniami i analizę dla każdego urządzenia, IoT Edge i IoT Hub w swoich zasobach IoT.
 
-Ponieważ miliardy nowych urządzeń są połączone z Internetem i są zintegrowane z naszymi codziennymi i naszych firmami. zespoły operacji zabezpieczeń muszą zapewnić, że ich strategie zabezpieczeń są szybko rozwijane, aby uwzględnić te nowe powierzchnie ataków. Podobnie jak w przypadku każdego innego systemu, zabezpieczanie rozwiązania IoT wymaga ochrony na każdym etapie implementacji. 
+Ponieważ miliardy nowych urządzeń są połączone z Internetem i są zintegrowane z naszymi codziennymi i naszych firmami, zespoły operacji bezpieczeństwa muszą zapewnić, że ich strategie zabezpieczeń są szybko rozwijane w celu uwzględnienia każdej nowej powierzchni ataku. Podobnie jak w przypadku każdego innego systemu, aby wszechstronnie zabezpieczyć rozwiązanie IoT, wymaga ochrony na każdym etapie wdrażania. 
 
 Azure Security Center dla IoT upraszcza ochronę hybrydową obciążenia, zapewniając ujednoliconą widoczność i kontrolę, adaptacyjne zapobieganie zagrożeniom oraz Inteligentne wykrywanie zagrożeń i reagowanie na nie w ramach obciążeń działających na urządzeniach brzegowych, lokalnych, na platformie Azure i innych połączeń. 
 

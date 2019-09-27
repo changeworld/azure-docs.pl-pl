@@ -1,29 +1,32 @@
 ---
-title: Opis uwierzytelniania interfejsu API Digital bliźniaczych reprezentacji na platformie Azure | Microsoft Docs
-description: Łączenie i uwierzytelnianie interfejsów API za pomocą usługi Azure Digital bliźniaczych reprezentacji
+title: Informacje o uwierzytelnianiu interfejsu API za pomocą usługi Azure Digital bliźniaczych reprezentacji | Microsoft Docs
+description: Dowiedz się, jak łączyć się z interfejsami API i uwierzytelniać je za pomocą usługi Azure Digital bliźniaczych reprezentacji.
 author: lyrana
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/17/2019
 ms.author: lyhughes
-ms.openlocfilehash: c0b4b6a13143f613bec64c8507f1726e2450be44
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: ad51fbe7d2f8e8f115adf03d6333c0747765ee43
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815547"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338605"
 ---
-# <a name="connect-and-authenticate-to-apis"></a>Łączenie się z interfejsami API i uwierzytelnianie do nich
+# <a name="connect-to-and-authenticate-with-apis"></a>Nawiązywanie połączenia z interfejsami API i uwierzytelnianie przy użyciu
 
 Usługa Azure Digital bliźniaczych reprezentacji korzysta z usługi Azure Active Directory (Azure AD) do uwierzytelniania użytkowników i ochrony aplikacji. Usługa Azure AD obsługuje uwierzytelnianie w różnych nowoczesnych architekturach. Wszystkie z nich są oparte na standardach branżowych protokołu OAuth 2,0 lub OpenID Connect Connect. Ponadto deweloperzy mogą korzystać z usługi Azure AD w celu tworzenia aplikacji z jedną dzierżawą i aplikacjami biznesowymi (LOB). Deweloperzy mogą również używać usługi Azure AD do tworzenia aplikacji wielodostępnych.
 
-Aby zapoznać się z omówieniem usługi Azure AD, odwiedź [stronę podstawy](https://docs.microsoft.com/azure/active-directory/fundamentals/index) , aby uzyskać instrukcje krok po kroku, koncepcje i Przewodniki Szybki Start.
+Aby zapoznać się z omówieniem usługi Azure AD, odwiedź [stronę podstawy](https://docs.microsoft.com/azure/active-directory/fundamentals/) , aby uzyskać instrukcje krok po kroku, koncepcje i Przewodniki Szybki Start.
 
-Aby zintegrować aplikację lub usługę z usługą Azure AD, deweloper musi najpierw zarejestrować aplikację w usłudze Azure AD. Szczegółowe instrukcje i zrzuty ekranu znajdują się w [tym przewodniku szybki start](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app).
+> [!TIP]
+> Postępuj zgodnie z [samouczkiem](tutorial-facilities-setup.md) , aby skonfigurować i uruchomić przykładową aplikację usługi Azure Digital bliźniaczych reprezentacji.
 
-Usługa Azure AD obsługuje [pięć scenariuszy aplikacji podstawowych](https://docs.microsoft.com/azure/active-directory/develop/v2-app-types) :
+Aby zintegrować aplikację lub usługę z usługą Azure AD, deweloper musi najpierw zarejestrować aplikację w usłudze Azure AD. Szczegółowe instrukcje i zrzuty ekranu znajdują się w [tym przewodniku szybki start](../active-directory/develop/quickstart-register-app.md).
+
+Usługa Azure AD obsługuje [pięć scenariuszy aplikacji podstawowych](../active-directory/develop/v2-app-types.md) :
 
 * Aplikacja jednostronicowa (SPA): Użytkownik musi zalogować się do aplikacji jednostronicowej zabezpieczonej przez usługę Azure AD.
 * Przeglądarka sieci Web do aplikacji sieci Web: Użytkownik musi zalogować się do aplikacji sieci Web, która jest zabezpieczona przez usługę Azure AD.
@@ -31,7 +34,7 @@ Usługa Azure AD obsługuje [pięć scenariuszy aplikacji podstawowych](https://
 * Aplikacja sieci Web do interfejsu API sieci Web: Aplikacja sieci Web musi pobrać zasoby z internetowego interfejsu API chronionego przez usługę Azure AD.
 * Demon lub aplikacja serwera do interfejsu API sieci Web: Aplikacja demona lub aplikacja serwera bez interfejsu użytkownika sieci Web musi pobierać zasoby z internetowego interfejsu API zabezpieczonego przez usługę Azure AD.
 
-Biblioteka uwierzytelniania systemu Windows Azure oferuje wiele metod uzyskiwania tokenów Active Directory. Aby uzyskać szczegółowe informacje na temat biblioteki i przykłady kodu, zobacz [ten artykuł](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki).
+Biblioteka uwierzytelniania systemu Windows Azure oferuje wiele metod uzyskiwania tokenów Active Directory. Aby uzyskać szczegółowe informacje na temat biblioteki i przykłady kodu, zobacz witrynę [typu Wiki ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki).
 
 ## <a name="call-digital-twins-from-a-middle-tier-web-api"></a>Wywoływanie Digital bliźniaczych reprezentacji z poziomu internetowego interfejsu API sieci Web
 

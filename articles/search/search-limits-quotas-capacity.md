@@ -8,19 +8,19 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: heidist
-ms.openlocfilehash: c2d4cae1689701704c866833c99ca616bbd01ec5
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: fd65bb134d9057246a1b8c5cc2986e979713d20b
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300658"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327166"
 ---
 # <a name="service-limits-in-azure-search"></a>Limity usługi w Azure Search
 Maksymalne limity dotyczące magazynu, obciążeń i ilości indeksów, dokumentów i innych obiektów zależą od tego, czy [Zainicjowano obsługę administracyjną Azure Search](search-create-service-portal.md) w warstwach **bezpłatna**, **podstawowa**, **standardowa**i **zoptymalizowana pod kątem magazynu** .
 
-+ **Bezpłatna** to wielodostępna Usługa udostępniona z subskrypcją platformy Azure.
++ **Bezpłatna** to wielodostępna Usługa udostępniona z subskrypcją platformy Azure. Żądania indeksowania i zapytań są wykonywane na replikach i partycjach, które są używane przez inne dzierżawców.
 
-+ Funkcja **Basic** zapewnia dedykowane zasoby obliczeniowe dla obciążeń produkcyjnych w mniejszej skali.
++ Funkcja **Basic** zapewnia dedykowane zasoby obliczeniowe dla obciążeń produkcyjnych w mniejszej skali, ale udostępnia infrastrukturę sieciową innym dzierżawcom.
 
 + **Standardowe** przebiegi na dedykowanych maszynach o większej pojemności magazynu i przetwarzania na każdym poziomie. Standard obejmuje cztery poziomy: S1, S2, S3 i S3 HD.
 

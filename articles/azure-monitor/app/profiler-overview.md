@@ -1,6 +1,6 @@
 ---
-title: Profil aplikacji produkcyjnych na platformie Azure za pomocą Application Insights Profiler | Dokumentacja firmy Microsoft
-description: Określ ścieżki aktywnej w kodzie serwera sieci web za pomocą profilera niskiego poziomu.
+title: Profilowanie aplikacji produkcyjnych na platformie Azure za pomocą Application Insights Profiler | Microsoft Docs
+description: Zidentyfikuj gorącą ścieżkę w kodzie serwera sieci Web za pomocą profilera niskiego poziomu.
 services: application-insights
 documentationcenter: ''
 author: cweining
@@ -12,125 +12,125 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: c07b325f3de6cd2cf3aaa436736786d2cdc42881
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: debc30a368a0f9ef7be9b0cda0b1238f8e2bc2e3
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60306329"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338080"
 ---
-# <a name="profile-production-applications-in-azure-with-application-insights"></a>Profil aplikacji produkcyjnych na platformie Azure za pomocą usługi Application Insights
-## <a name="enable-application-insights-profiler-for-your-application"></a>Włącz Application Insights Profiler do aplikacji
+# <a name="profile-production-applications-in-azure-with-application-insights"></a>Profilowanie aplikacji produkcyjnych na platformie Azure za pomocą Application Insights
+## <a name="enable-application-insights-profiler-for-your-application"></a>Włączanie Application Insights Profiler dla aplikacji
 
-Usługa Azure Application Insights Profiler zawiera ślady wydajności dla aplikacji, które są uruchomione w środowisku produkcyjnym na platformie Azure. Profiler przechwytuje dane automatycznie w odpowiedniej skali bez wywierania negatywnego wpływu na użytkowników. Profiler pomaga zidentyfikować ścieżka kodu "gorącymi", która zajmuje najwięcej czasu, gdy jest obsługi żądania namierzenie internetowego. 
+Usługa Azure Application Insights Profiler udostępnia dane śledzenia wydajności dla aplikacji działających w środowisku produkcyjnym na platformie Azure. Profiler automatycznie przechwytuje dane w skali bez negatywnego wpływu na użytkowników. Profiler ułatwia zidentyfikowanie ścieżki kodu "gorąca", która zajmuje najdłuższy czas, gdy obsługuje określone żądanie sieci Web. 
 
-Profiler działa z aplikacjami .NET, które są wdrażane na następujących usług platformy Azure. Szczegółowe instrukcje dotyczące włączania Profiler dla każdego typu usług są poniższe linki.
+Profiler współpracuje z aplikacjami .NET, które są wdrożone w następujących usługach platformy Azure. Szczegółowe instrukcje dotyczące włączania profilera dla każdego typu usługi znajdują się w poniższych linkach.
 
 * [Usługa Azure App Service](profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
-* [Zestawy skalowania maszyn wirtualnych i maszyn wirtualnych platformy Azure](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
-* [**Podgląd** aplikacji sieci Web dla systemu Linux platformy Azure dla platformy ASP.NET Core](profiler-aspnetcore-linux.md?toc=/azure/azure-monitor/toc.json) 
+* [Azure Virtual Machines i zestawy skalowania maszyn wirtualnych](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [**Wersja zapoznawcza** ASP.NET Core Web Apps systemu Linux platformy Azure](profiler-aspnetcore-linux.md?toc=/azure/azure-monitor/toc.json) 
 
-Jeśli włączono Profiler, ale nie widać ślady, Sprawdź nasze [przewodnik rozwiązywania problemów](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json).
+Jeśli włączono Profiler, ale nie widzisz śladów, zapoznaj się [z naszym przewodnikiem rozwiązywania problemów](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json).
 
-## <a name="view-profiler-data"></a>Wyświetlanie danych Profiler
+## <a name="view-profiler-data"></a>Wyświetl dane profilera
 
-Dla Profiler można przekazać dane śledzenia aplikacji musi być aktywnie obsługi żądań. Wykonujesz eksperymentu, można wygenerować żądania do aplikacji sieci web, za pomocą [testowanie wydajności usługi Application Insights](https://docs.microsoft.com/vsts/load-test/app-service-web-app-performance-test). Jeśli Profiler nowo zostało włączone, możesz uruchomić test obciążenia krótki. Po uruchomieniu testu obciążenia wybierz **profilu teraz** znajdujący się na [ **ustawienia Profiler** okienko](profiler-settings.md#profiler-settings-pane). Gdy Profiler jest uruchomiona, profiluje losowo około raz na godzinę i czas trwania wynosi dwie minuty. Jeśli aplikacja obsługuje ciągłego strumienia żądań, Profiler przekazuje ślady co godzinę.
+Aby Profiler mógł przekazać ślady, aplikacja musi aktywnie obsługiwać żądania. Jeśli wykonujesz eksperyment, możesz generować żądania do aplikacji sieci Web za pomocą [Application Insights testowania wydajnościowego](https://docs.microsoft.com/vsts/load-test/app-service-web-app-performance-test). Jeśli wcześniej włączono Profiler, możesz uruchomić krótki test obciążenia. Gdy test obciążenia jest uruchomiony, wybierz przycisk **profil teraz** w [okienku **Ustawienia profilera** ](profiler-settings.md). Gdy profiler jest uruchomiony, profiluje losowo około raz na godzinę i przez dwa minuty. Jeśli aplikacja obsługuje stały strumień żądań, operacje przekazywania profilera są śladami co godzinę.
 
-Po aplikacja odbiera część ruchu i Profiler miał czas przekazywania śladów, powinny być śladów, aby wyświetlić. To może zająć 5 – 10 minut. Aby wyświetlić ślady, w **wydajności** wybierz opcję **podjąć akcje**, a następnie wybierz pozycję **ślady Profiler** przycisku.
+Gdy aplikacja odbierze ruch, a program Profiler miał czas na przekazanie śladów, należy wyświetlić dane śledzenia. Ten proces może potrwać od 5 do 10 minut. Aby wyświetlić ślady, w okienku **wydajność** wybierz pozycję **Przejmij akcje**, a następnie wybierz przycisk **ślady profilera** .
 
-![Śledzi Profiler Podgląd okienko Insights wydajności aplikacji][performance-blade]
+![Dane śledzenia profilera Application Insights w okienku wydajności][performance-blade]
 
-Wybierz próbkę, aby wyświetlić podział na poziomie kodu czas wykonywania żądania.
+Wybierz próbkę, aby wyświetlić podział czasu poświęcony na wykonanie żądania.
 
-![Eksplorator śledzenia usługi Application Insights][trace-explorer]
+![Eksplorator śledzenia Application Insights][trace-explorer]
 
-W Eksploratorze śledzenia zawiera następujące informacje:
+Eksplorator śledzenia wyświetla następujące informacje:
 
-* **Pokaż ścieżkę aktywną**: Zostanie otwarta największą liść węzła lub co najmniej coś zamknąć. W większości przypadków ten węzeł zbliża się wąskim gardłem wydajności.
-* **Etykieta**: Nazwa funkcji lub zdarzeń. W drzewie wyświetlany kombinacji kodu i zdarzenia, które wystąpiły, takimi jak SQL i HTTP. Najważniejsze zdarzenia reprezentuje całkowity czas trwania żądania.
-* **Upłynęło**: Interwał czasu między rozpoczęciem operacji i koniec operacji.
-* **Gdy**: Czas, po funkcji lub zdarzeń była uruchomiona w odniesieniu do innych funkcji.
+* **Pokaż ścieżkę gorącą**: Otwiera największy węzeł liścia lub co najmniej coś zamknięcia. W większości przypadków ten węzeł zbliża się do wąskiego gardła wydajności.
+* **Etykieta**: Nazwa funkcji lub zdarzenia. W drzewie jest wyświetlany mieszany kod i zdarzenia, które wystąpiły, takie jak zdarzenia SQL i HTTP. Zdarzenie Top reprezentuje ogólny czas trwania żądania.
+* **Upłynęło**: Przedział czasu między rozpoczęciem operacji a końcem operacji.
+* **Kiedy**: Czas, w którym funkcja lub zdarzenie działały w odniesieniu do innych funkcji.
 
 ## <a name="how-to-read-performance-data"></a>Jak odczytać dane dotyczące wydajności
 
-Narzędzie profiler usługi firmy Microsoft używa kombinacji metody próbkowania i instrumentacji do analizowania wydajności aplikacji. Szczegółowe kolekcji jest w toku, narzędzie profiler usługi przykłady wskaźnik instrukcji dla każdego Procesora maszyny każdego milisekund. Każda próbka przechwytuje pełny stos wywołań wątku, który jest w trakcie wykonywania. Daje ona szczegółowe informacje na temat ten wątek został działania, zarówno wysokiego poziomu, jak i niskim poziomie abstrakcji. Narzędzie profiler usługi zbiera również inne zdarzenia do śledzenia działania korelacji i przyczynowości, łącznie z kontekstem przełączanie zdarzeń, zdarzenia Biblioteka zadań równoległych (TPL) i zdarzenia puli wątków.
+Program Microsoft Service Profiler używa kombinacji metod próbkowania i instrumentacji do analizowania wydajności aplikacji. Gdy Szczegółowa kolekcja jest w toku, profiler usługi próbuje wskaźnikiem instrukcji każdego procesora komputera co milisekundy. Każdy przykład przechwytuje kompletny stos wywołań wątku, który jest aktualnie wykonywany. Zawiera szczegółowe informacje o tym, co robi ten wątek, zarówno na wysokim poziomie, jak i na niskim poziomie abstrakcji. Profiler usługi zbiera również inne zdarzenia do śledzenia korelacji i przyczyn aktywności, w tym zdarzeń przełączania kontekstu, zdarzeń biblioteki zadań równoległych (TPL) i zdarzenia puli wątków.
 
-Stos wywołań, który jest wyświetlany w widoku osi czasu jest wynikiem próbkowania i instrumentacji. Ponieważ każdy przykład przechwytuje pełny stos wywołań wątku, zawiera kod z programu Microsoft .NET Framework i z innych platform, które odwołują się.
+Stos wywołań, który jest wyświetlany w widoku oś czasu jest wynikiem próbkowania i instrumentacji. Ponieważ każdy przykład przechwytuje cały stos wywołań wątku, zawiera kod z Microsoft .NET Framework oraz z innych struktur, do których się odwołuje.
 
-### <a id="jitnewobj"></a>Alokacja obiektu wspólnego (clr! JIT\_nowy lub clr! JIT\_Newarr1)
+### <a id="jitnewobj"></a>Alokacja obiektu (CLR! JIT @ no__t-1New lub CLR! JIT @ no__t-2Newarr1)
 
-**CLR! JIT\_New** i **clr! JIT\_Newarr1** funkcji pomocnika w programie .NET Framework, które alokować pamięci z zarządzanego stosu. **CLR! JIT\_New** jest wywoływane, gdy obiekt jest przydzielany. **CLR! JIT\_Newarr1** jest wywoływane, gdy tablica obiektów została przydzielona. Te dwie funkcje są zazwyczaj szybkie i stosunkowo małe ilości czasu. Jeśli **clr! JIT\_New** lub **clr! JIT\_Newarr1** przyjmuje dużo czasu na osi czasu, kod może być przydzielanie wielu obiektów i wykorzystywanie znacznej ilości pamięci.
+**środowisko CLR! JIT @ no__t-1New** i **CLR! JIT @ no__t-3Newarr1** to funkcje pomocnika w .NET Framework przydzielania pamięci z sterty zarządzanej. **środowisko CLR! Wywołanie JIT @ no__t-1New** jest wywoływane po przydzieleniu obiektu. **środowisko CLR! Wywoływana jest metoda JIT @ no__t-1Newarr1** , gdy przydzielono tablicę obiektów. Te dwie funkcje są zwykle szybkie i stosunkowo małe. Jeśli **CLR! JIT @ no__t-1New** lub **CLR! JIT @ no__t-3Newarr1** zajmuje dużo czasu na osi czasu, kod może przydzielić wiele obiektów i zużywać znaczną ilość pamięci.
 
-### <a id="theprestub"></a>Trwa ładowanie kodu języka wspólnego (clr! ThePreStub)
+### <a id="theprestub"></a>Ładowanie kodu (CLR! ThePreStub)
 
-**CLR! ThePreStub** jest funkcji pomocnika, która w programie .NET Framework, który przygotowuje kodu wykonywanego po raz pierwszy. To wykonanie zwykle obejmują, ale nie jest ograniczona do just-in-time (JIT) kompilacja. Dla każdego C# metody **clr! ThePreStub** powinna być wywołana najwyżej jeden raz podczas procesu.
+**środowisko CLR! ThePreStub** jest funkcją pomocnika w .NET Framework, która przygotowuje kod do wykonania po raz pierwszy. To wykonanie zwykle obejmuje, ale nie jest ograniczone do, kompilacja just-in-Time (JIT). Dla każdej C# metody **CLR! ThePreStub** powinien być wywoływany co najwyżej raz podczas procesu.
 
-Jeśli **clr! ThePreStub** zajmuje dużo czasu na żądanie, żądanie jest pierwszy z nich do wykonywania tej metody. Czas dla środowiska uruchomieniowego .NET Framework załadować pierwszej metody jest znaczący. Należy rozważyć, za pomocą procesu rozgrzewania, który jest wykonywany przed użytkownikom uzyskać do niego dostęp, lub Rozważ uruchomienie Native Image Generator (ngen.exe) część kodu na swoje zestawy.
+Jeśli **CLR! ThePreStub** zajmuje dużo czasu na żądanie, żądanie jest pierwszym z nich, aby wykonać tę metodę. Czas ładowania pierwszej metody przez środowisko uruchomieniowe .NET Framework jest znaczący. Rozważ użycie procesu rozgrzewania, który wykonuje tę część kodu, zanim użytkownicy uzyskają do niego dostęp, lub Rozważ uruchomienie natywnego generatora obrazu (Ngen. exe) w Twoich zestawach.
 
-### <a id="lockcontention"></a>Rywalizacja o blokady (clr! JITutil\_MonContention lub clr! JITutil\_MonEnterWorker)
+### <a id="lockcontention"></a>Zablokuj rywalizację (CLR! JITutil @ no__t-1MonContention lub CLR! JITutil\_MonEnterWorker)
 
-**CLR! JITutil\_MonContention** lub **clr! JITutil\_MonEnterWorker** wskazuje, że bieżący wątek czeka na zwolnienie blokady. Ten tekst jest wyświetlany często, podczas wykonywania C# **blokady** instrukcji, wywołaj **Monitor.Enter** metody lub wywołania metody o **MethodImplOptions.Synchronized**atrybutu. Zwykle występuje Rywalizacja o blokady po wątku _A_ uzyskuje blokadę i wątku _B_ próbuje uzyskać ten sam blokady przed wątku _A_ zwalnia go.
+**środowisko CLR! JITutil @ no__t-1MonContention** lub **CLR! JITutil @ no__t-3MonEnterWorker** wskazuje, że bieżący wątek oczekuje na zwolnienie blokady. Ten tekst jest często wyświetlany podczas C# wykonywania instrukcji **Lock** , wywoływanie metody **monitor. Enter** lub wywoływanie metody z atrybutem **MethodImplOptions. Synchronized** . Rywalizacja o blokadę zwykle występuje, gdy wątek _a_ uzyskuje blokadę, a wątek _B_ próbuje uzyskać tę samą blokadę przed jej wydaniem przez wątek.
 
-### <a id="ngencold"></a>Trwa ładowanie kodu ([ZIMNEGO])
+### <a id="ngencold"></a>Ładowanie kodu ([ZIMNy])
 
-Jeśli nazwa metody zawiera **[ZIMNYCH]** , takich jak **mscorlib.ni! [ COLD]system.Reflection.CustomAttribute.IsDefined**, środowisko uruchomieniowe programu .NET Framework jest wykonywanie kodu po raz pierwszy, nie jest zoptymalizowany pod kątem przez [optymalizacji sterowanej profilem](/cpp/build/profile-guided-optimizations). Dla każdej metody jej powinien zostać wyświetlony co najwyżej jeden raz w procesie.
+Jeśli nazwa metody zawiera **[zimn]** , np. **mscorlib.ni! [ ZIMNy] system. odbicie. CustomAttribute. IsDefined**, .NET Framework środowisko uruchomieniowe wykonuje kod po raz pierwszy, który nie jest zoptymalizowany pod kątem [optymalizacji opartej na profilach](/cpp/build/profile-guided-optimizations). Dla każdej metody powinna być wyświetlana najwyżej raz podczas procesu.
 
-Jeśli podczas ładowania kodu zajmuje znaczną ilość czasu dla żądania, żądanie jest pierwszy z nich można wykonać niezoptymalizowane część metody. Należy rozważyć użycie procesu rozgrzewania, który wykonuje część kodu, zanim do niego dostęp przez użytkowników.
+Jeśli ładowanie kodu zajmuje dużo czasu na żądanie, żądanie jest pierwszym z nich do wykonania niezoptymalizowanej części metody. Rozważ użycie procesu rozgrzewania, który wykonuje tę część kodu, zanim użytkownicy uzyskają do niej dostęp.
 
 ### <a id="httpclientsend"></a>Wyślij żądanie HTTP
 
-Metody takie jak **HttpClient.Send** wskazują, że kod czeka na ukończenie żądania HTTP.
+Metody, takie jak **HttpClient. Send** wskazują, że kod oczekuje na ukończenie żądania HTTP.
 
 ### <a id="sqlcommand"></a>Operacja bazy danych
 
-Metody takie jak **SqlCommand.Execute** wskazują, że kod czeka na zakończenie operacji bazy danych.
+Metody takie jak **SqlCommand. Execute** wskazują, że kod oczekuje na zakończenie operacji bazy danych.
 
-### <a id="await"></a>Oczekiwanie (AWAIT\_czas)
+### <a id="await"></a>Oczekiwanie (AWAIT @ no__t-1TIME)
 
-**AWAIT\_czasu** wskazuje, że kod oczekuje na zakończenie innego zadania. To opóźnienie zwykle dzieje się z C# **AWAIT** instrukcji. Jeśli dany kod realizuje C# **AWAIT**wątek rozwija i zwraca kontrolę do puli wątków i istnieje żaden wątek, który jest zablokowany, trwa oczekiwanie na **AWAIT** na zakończenie. Jednak logicznie wątku, czy **AWAIT** "blocked," i Trwa oczekiwanie na zakończenie operacji. **AWAIT\_czasu** deklaracja wskazuje czas blokowania oczekiwanie na zakończenie zadania.
+**AWAIT @ no__t-1TIME** wskazuje, że kod oczekuje na zakończenie innego zadania. To opóźnienie zwykle odbywa się przy C# użyciu instrukcji **AWAIT** . Gdy kod wykonuje C# **oczekiwania**, wątek cofa i zwraca kontrolę do puli wątków i nie istnieje wątek, który jest zablokowany oczekujący na zakończenie oczekiwania. Jednak logicznie wątek, który został oczekiwał, jest zablokowany, i oczekuje na zakończenie operacji. Instrukcja **AWAIT @ no__t-1TIME** wskazuje zablokowany czas oczekiwania na zakończenie zadania.
 
 ### <a id="block"></a>Czas blokowania
 
-**BLOCKED_TIME** wskazuje, że kod oczekuje na inny zasób, które mają być dostępne. Na przykład może być oczekiwanie obiektu synchronizacji, wątek ma być dostępny lub do zakończenia wniosku.
+**BLOCKED_TIME** wskazuje, że kod oczekuje na dostępność innego zasobu. Na przykład może być oczekiwanie na obiekt synchronizacji, do udostępnienia wątku lub do zakończenia żądania.
 
-### <a name="unmanaged-async"></a>Asynchroniczne niezarządzanych
+### <a name="unmanaged-async"></a>Niezarządzany asynchroniczny
 
-.NET framework emituje zdarzenia ETW i przekazuje identyfikatory aktywności między wątkami, tak aby wywołań asynchronicznych można śledzić w wątkach. Niezarządzany kod (natywnych) i niektóre starsze style kodu asynchronicznego brakuje tych zdarzeń i identyfikatory działania dzięki program profilujący nie może sprawdzić, jakie wątku i jakie funkcje są uruchamiane w wątku. To jest oznaczona etykietą "Async niezarządzanego" w stosie wywołań. Jeśli pobierzesz plik ETW, można użyć [narzędzia PerfView](https://github.com/Microsoft/perfview/blob/master/documentation/Downloading.md) można uzyskać lepszy wgląd w działania wykonywane.
+Program .NET Framework emituje zdarzenia ETW i przekazuje identyfikatory aktywności między wątkami, aby wywołania asynchroniczne mogły być śledzone między wątkami. Kod niezarządzany (kod natywny) i niektóre starsze style kodu asynchronicznego nie mają tych zdarzeń i identyfikatorów aktywności, dlatego Profiler nie może określić wątku i jakie funkcje działają w wątku. W stosie wywołań jest oznaczona jako "niezarządzana asynchroniczna". Jeśli pobierasz plik ETW, możesz użyć [Narzędzia PerfView](https://github.com/Microsoft/perfview/blob/master/documentation/Downloading.md) , aby uzyskać więcej informacji o tym, co się dzieje.
 
 ### <a id="cpu"></a>Czas procesora CPU
 
-Procesor był zajęty wykonywaniem instrukcji.
+Procesor CPU jest zajęty wykonywaniem instrukcji.
 
 ### <a id="disk"></a>Czas dysku
 
-Aplikacja wykonuje operacje dyskowe.
+Aplikacja wykonuje operacje na dyskach.
 
 ### <a id="network"></a>Czas sieci
 
-Aplikacja jest przeprowadzanie operacji sieciowych.
+Aplikacja wykonuje operacje sieciowe.
 
-### <a id="when"></a>Gdy kolumny
+### <a id="when"></a>Kolumna, gdy
 
-**Podczas** kolumna jest wizualizację jak WŁĄCZNYCH próbek zebranych dla węzła różnią się wraz z upływem czasu. Łączny zakres żądania jest podzielony na 32 przedziałów czasu. Włącznych próbek dla tego węzła są zbierane w tych zasobników 32. Każdego przedziału jest reprezentowany jako pasek. Wysokość paska reprezentuje skalowaną wartość. Dla węzłów, które są oznaczone **CPU_TIME** lub **BLOCKED_TIME**, lub w przypadku, gdy istnieje relacja widocznych na korzystanie z zasobów (na przykład procesora CPU, dysku lub wątek), pasek reprezentuje użycie jednego z zasoby podczas przedziału. Dla tych metryk jest można uzyskać wartość większą niż 100% za korzystanie z wielu zasobów. Na przykład jeśli używasz, średnio dwa procesory przedział czasu, Uzyskaj 200 procent.
+Kolumna **when** to Wizualizacja, w jaki sposób zbierane próbki pobierane dla węzła różnią się w zależności od czasu. Łączny zakres żądania jest podzielony na 32 przedziałów czasu. Próbki włączne dla tego węzła są gromadzone w tych zasobnikach 32. Każdy zasobnik jest reprezentowany jako pasek. Wysokość paska reprezentuje przeskalowana wartość. Dla węzłów, które są oznaczone jako **CPU_TIME** lub **BLOCKED_TIME**, lub gdy istnieje oczywista relacja do zużywania zasobów (na przykład procesora CPU, dysku lub wątku), pasek reprezentuje użycie jednego z zasobów w zasobniku. W przypadku tych metryk możliwe jest uzyskanie wartości większej niż 100 procent przez zużywanie wielu zasobów. Na przykład w przypadku korzystania z średnio dwóch procesorów CPU w interwale występuje 200 procent.
 
 ## <a name="limitations"></a>Ograniczenia
 
-Domyślny okres przechowywania danych to pięć dni. Maksymalna dane są pozyskiwane na dzień wynosi 10 GB.
+Domyślny okres przechowywania danych wynosi pięć dni. Maksymalne dane, które są pozyskiwane dziennie, to 10 GB.
 
-Nie istnieją żadne opłaty za korzystanie z usługi Profiler. Możesz z niej korzystać, aplikacji sieci web musi być hostowane w warstwie podstawowa funkcji Web Apps usługi Azure App Service.
+Za korzystanie z usługi profilera nie są naliczane opłaty. Aby można było z niego korzystać, aplikacja sieci Web musi być hostowana w co najmniej warstwie Podstawowa Web Apps funkcji Azure App Service.
 
-## <a name="overhead-and-sampling-algorithm"></a>Obciążenie i algorytm próbkowania
+## <a name="overhead-and-sampling-algorithm"></a>Algorytm narzutu i próbkowania
 
-Profiler uruchamia losowo dwie minuty, co godzinę na każdej maszynie wirtualnej, który hostuje aplikację, która ma Profiler włączone do przechwytywania śladów. Gdy Profiler jest uruchomiona, dodaje z zakresu od 5 do 15 procent obciążenie Procesora na serwerze.
+Profiler losowo uruchamia dwie minuty co godzinę na każdej maszynie wirtualnej, która hostuje aplikację z włączonym profilerem do przechwytywania śladów. Gdy profiler jest uruchomiony, dodaje od 5 do 15 procent obciążenia procesora CPU do serwera.
 
-## <a name="next-steps"></a>Kolejne kroki
-Włącz Application Insights Profiler do aplikacji platformy Azure. Zobacz też:
+## <a name="next-steps"></a>Następne kroki
+Włącz Application Insights Profiler dla aplikacji platformy Azure. Zobacz również:
 * [App Services](profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
-* [Zestawy skalowania maszyn wirtualnych i maszyn wirtualnych platformy Azure](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Azure Virtual Machines i zestawy skalowania maszyn wirtualnych](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
 
 [performance-blade]: ./media/profiler-overview/performance-blade-v2-examples.png

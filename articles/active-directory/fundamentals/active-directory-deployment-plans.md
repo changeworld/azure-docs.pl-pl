@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a335bcbb45b1aac48a3aaea282ffeffe1696f4c
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: b7c851c2d865a7b553be2cd0f619ad09985115a3
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900079"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336873"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Plany wdrażania usługi Azure Active Directory
 Szukasz kompleksowej wskazówki dotyczącej wdrażania możliwości usług Azure Active Directory (Azure AD)? Plany wdrażania usługi Azure AD przeprowadzą Cię przez wartość biznesową, zagadnienia dotyczące planowania i procedury operacyjne, które są potrzebne do pomyślnego wdrożenia wspólnych możliwości usługi Azure AD.
@@ -42,11 +42,19 @@ Role mogą zawierać następujące elementy:
 
 - **R**esponsible do implementacji planu i wyniku projektu 
 
-- Pproval planu i wyniku projektu 
+- **Pproval planu**i wyniku projektu 
 
 - **C**ondystrybucyjny do planu i wyniku projektu 
 
-- Nformedm planu i wyniku projektu
+- **Nformedm**planu i wyniku projektu
+
+
+## <a name="best-practices-for-a-pilot"></a>Najlepsze rozwiązania dla pilotażu
+Pilotaż umożliwia testowanie z małą grupą przed włączeniem funkcji dla wszystkich. Upewnij się, że w ramach testowania każdy przypadek użycia w organizacji zostanie dokładnie przetestowany. Najlepszym rozwiązaniem jest ukierunkowanie określonej grupy użytkowników pilotażowych przed przekazaniem jej do organizacji jako całości.
+
+W pierwszej fazie, kierowanie do nich, użyteczność i innych odpowiednich użytkowników, którzy mogą testować i dostarczać Opinie. Ta opinia powinna być używana do dalszej analizy komunikacji i instrukcji wysyłanych do użytkowników oraz do uzyskiwania wglądu w typy problemów, które pracownicy pomocy technicznej mogą zobaczyć. 
+
+Rozszerzanie wdrożenia do większych grup użytkowników powinno odbywać się przez zwiększenie zakresu grup przeznaczonych do użycia. Można to zrobić za pomocą [dynamicznej przynależności do grupy](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership)lub ręcznie dodając użytkowników do grup przeznaczonych do grupy.
 
 
 ## <a name="deploy-authentication"></a>Wdróż uwierzytelnianie

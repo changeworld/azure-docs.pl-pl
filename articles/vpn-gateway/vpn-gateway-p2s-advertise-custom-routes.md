@@ -5,22 +5,24 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 09/26/2019
 ms.author: cherylmc
-ms.openlocfilehash: 18a0effcf5157ec2797707db78f9614ef12a4669
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 38250d1cd9853013ba9721ece0201a8df6dd1b4a
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310245"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336290"
 ---
 # <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>Anonsowanie tras niestandardowych dla klientów sieci VPN P2S
 
 Możesz chcieć anonsować trasy niestandardowe wszystkim klientom sieci VPN typu punkt-lokacja. Na przykład jeśli włączono punkty końcowe magazynu w sieci wirtualnej i chcesz, aby użytkownicy zdalni mieli dostęp do tych kont magazynu za pośrednictwem połączenia sieci VPN. Adres IP punktu końcowego magazynu można anonsować wszystkim użytkownikom zdalnym w taki sposób, aby ruch do konta magazynu przeszedł przez tunel VPN, a nie publiczny Internet.
 
+![Przykład połączenia obejmującego wiele lokacji w usłudze Azure VPN Gateway](./media/vpn-gateway-p2s-advertise-custom-routes/custom-routes.png)
+
 ## <a name="to-advertise-custom-routes"></a>Aby anonsować trasy niestandardowe
 
-Aby anonsować trasy niestandardowe, użyj `Set-AzVirtualNetworkGateway cmdlet`. Poniższy przykład przedstawia sposób anonsowania adresu IP dla [tabel kont magazynu Conotoso](https://contoso.table.core.windows.net).
+Aby anonsować trasy niestandardowe, użyj `Set-AzVirtualNetworkGateway cmdlet`. Poniższy przykład pokazuje, jak anonsować adres IP dla [tabel kont magazynu contoso](https://contoso.table.core.windows.net).
 
 1. Wyślij polecenie ping do *contoso.Table.Core.Windows.NET* i Zanotuj adres IP. Na przykład:
 
@@ -45,10 +47,10 @@ Aby anonsować trasy niestandardowe, użyj `Set-AzVirtualNetworkGateway cmdlet`.
 
 Użyj poniższego przykładu, aby wyświetlić trasy niestandardowe:
 
-    ```azurepowershell-interactive
-    $gw = Get-AzVirtualNetworkGateway -Name <name of gateway> -ResourceGroupName <name of resource group>
-    $gw.CustomRoutes | Format-List
-    ```
+  ```azurepowershell-interactive
+  $gw = Get-AzVirtualNetworkGateway -Name <name of gateway> -ResourceGroupName <name of resource group>
+  $gw.CustomRoutes | Format-List
+  ```
 
 ## <a name="next-steps"></a>Następne kroki
 

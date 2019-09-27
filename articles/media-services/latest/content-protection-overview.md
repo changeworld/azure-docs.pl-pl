@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/25/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: a928640aa6d56f0a39011a2cabcf979b4d907a46
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1d95d14398bc6b5acdec89428ebe22a672551a8a
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561478"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338785"
 ---
 # <a name="protect-your-content-by-using-media-services-dynamic-encryption"></a>Ochrona zawartości przy użyciu Media Services szyfrowania dynamicznego
 
@@ -35,7 +35,7 @@ Na poniższej ilustracji przedstawiono przepływ pracy Media Services ochrony za
 
 ![Przepływ pracy dla Media Services Content Protection](./media/content-protection/content-protection.svg)
   
-&#42;*Szyfrowanie dynamiczne obsługuje algorytm AES-128 Clear Key, CBCS i Cenc. Aby uzyskać szczegółowe informacje, zobacz [Macierz obsługi](#streaming-protocols-and-encryption-types).*
+&#42;szyfrowanie @no__t 1Dynamic obsługuje algorytm AES-128 Clear Key, CBCS i CENC. Aby uzyskać szczegółowe informacje, zobacz [Macierz obsługi](#streaming-protocols-and-encryption-types). *
 
 W tym artykule wyjaśniono pojęcia i terminologia ułatwiająca zrozumienie ochrony zawartości za pomocą Media Services.
 
@@ -68,17 +68,17 @@ W przykładzie pokazano sposób:
      ```
 2. Utwórz [lokalizator przesyłania strumieniowego](streaming-locators-concept.md) skonfigurowany do przesyłania strumieniowego zaszyfrowanego zasobu. 
   
-   Lokalizator przesyłania strumieniowego musi być skojarzony z [zasadami przesyłania strumieniowego](streaming-policy-concept.md). W tym przykładzie ustawimy `StreamingLocator.StreamingPolicyName` zasady "Predefined_MultiDrmCencStreaming". 
+   Lokalizator przesyłania strumieniowego musi być skojarzony z [zasadami przesyłania strumieniowego](streaming-policy-concept.md). W tym przykładzie ustawimy `StreamingLocator.StreamingPolicyName` dla zasad "Predefined_MultiDrmCencStreaming". 
       
    Są stosowane szyfrowanie PlayReady i Widevine, a klucz jest dostarczany do klienta odtwarzania na podstawie skonfigurowanych licencji DRM. Jeśli chcesz również zaszyfrować strumień przy użyciu CBCS (FairPlay), użyj zasad "Predefined_MultiDrmStreaming".
 
    Lokalizator przesyłania strumieniowego jest również skojarzony z zdefiniowanymi zasadami klucza zawartości.
 3. Utwórz token testu.
 
-   `GetTokenAsync` Metoda pokazuje, jak utworzyć token testowy.
+   Metoda `GetTokenAsync` pokazuje, jak utworzyć token testowy.
 4. Tworzenie adresu URL przesyłania strumieniowego.
 
-   `GetDASHStreamingUrlAsync` Metoda pokazuje, jak utworzyć adres URL przesyłania strumieniowego. W takim przypadku adres URL strumieniuje zawartość KRESKi.
+   Metoda `GetDASHStreamingUrlAsync` pokazuje, jak utworzyć adres URL przesyłania strumieniowego. W takim przypadku adres URL strumieniuje zawartość KRESKi.
 
 ### <a name="player-with-an-aes-or-drm-client"></a>Odtwarzacz z klientem AES lub DRM 
 
@@ -172,7 +172,7 @@ Zasady klucza zawartości z ograniczeniami (Open) mogą być używane do wystawi
 
 Przy użyciu zasad klucza zawartości z ograniczeniami tokenu klucz zawartości jest wysyłany tylko do klienta, który przedstawia prawidłowy token JWT lub prosty token sieci Web (SWT) w żądaniu licencji/klucza. Ten token musi zostać wystawiony przez usługę STS. 
 
-Możesz użyć usługi Azure AD jako usług STS lub wdrożyć niestandardową usługę STS. Usługa STS musi być skonfigurowany do utworzenia tokenu, który został podpisany przy użyciu określonego klucza i problem oświadczenia określona w konfiguracji ograniczenia tokenu. Media Services licencji/usługi dostarczania kluczy zwraca żądaną licencję lub klucz do klienta w przypadku istnienia obu następujących warunków:
+Możesz użyć usługi Azure AD jako usług STS lub wdrożyć [niestandardową usługę STS](#using-a-custom-sts). Usługa STS musi być skonfigurowany do utworzenia tokenu, który został podpisany przy użyciu określonego klucza i problem oświadczenia określona w konfiguracji ograniczenia tokenu. Media Services licencji/usługi dostarczania kluczy zwraca żądaną licencję lub klucz do klienta w przypadku istnienia obu następujących warunków:
 
 * Token jest prawidłowy. 
 * Oświadczenia w tokenie są zgodne z tymi skonfigurowanymi dla licencji lub klucza.
@@ -222,12 +222,12 @@ Użyj następujących szablonów, jeśli chcesz określić inną licencję/usłu
 * `EnvelopeEncryption.CustomKeyAcquisitionUrlTemplate`: Szablon adresu URL usługi niestandardowej, która dostarcza klucze do graczy użytkowników końcowych. Nie jest to wymagane, jeśli używasz Azure Media Services do wystawiania kluczy. 
 
    Szablon obsługuje tokeny wymienne, które usługa będzie aktualizować w czasie wykonywania, przy użyciu wartości właściwej dla żądania.  Obecnie obsługiwane są następujące wartości tokenu:
-   * `{AlternativeMediaId}`, który jest zastępowany przez wartość StreamingLocatorId. AlternativeMediaId.
+   * `{AlternativeMediaId}`, która jest zastępowana wartością StreamingLocatorId. AlternativeMediaId.
    * `{ContentKeyId}`, która jest zastępowana wartością identyfikatora żądanego klucza.
 * `StreamingPolicyPlayReadyConfiguration.CustomLicenseAcquisitionUrlTemplate`: Szablon adresu URL usługi niestandardowej, która dostarcza licencje dla graczy użytkowników końcowych. Nie jest to wymagane w przypadku korzystania z Azure Media Services w celu wystawiania licencji. 
 
    Szablon obsługuje tokeny wymienne, które usługa będzie aktualizować w czasie wykonywania, przy użyciu wartości właściwej dla żądania. Obecnie obsługiwane są następujące wartości tokenu:  
-   * `{AlternativeMediaId}`, który jest zastępowany przez wartość StreamingLocatorId. AlternativeMediaId.
+   * `{AlternativeMediaId}`, która jest zastępowana wartością StreamingLocatorId. AlternativeMediaId.
    * `{ContentKeyId}`, która jest zastępowana wartością identyfikatora żądanego klucza. 
 * `StreamingPolicyWidevineConfiguration.CustomLicenseAcquisitionUrlTemplate`: Tak samo jak w przypadku poprzedniego szablonu, tylko dla Widevine. 
 * `StreamingPolicyFairPlayConfiguration.CustomLicenseAcquisitionUrlTemplate`: Tak samo jak w przypadku poprzedniego szablonu, tylko dla FairPlay.  
@@ -238,13 +238,13 @@ Na przykład:
 streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://mykeyserver.hostname.com/envelopekey/{AlternativeMediaId}/{ContentKeyId}";
 ```
 
-`ContentKeyId`ma wartość żądanego klucza. Możesz użyć `AlternativeMediaId` , jeśli chcesz zmapować żądanie do jednostki po stronie. Na przykład `AlternativeMediaId` może służyć do wyszukiwania uprawnień.
+`ContentKeyId` ma wartość żądanego klucza. Jeśli chcesz zmapować żądanie do jednostki po stronie, możesz użyć `AlternativeMediaId`. Na przykład, `AlternativeMediaId` może służyć do wyszukiwania uprawnień.
 
  Aby zapoznać się z przykładami użycia niestandardowych licencji/adresów URL pozyskiwania kluczy, zobacz [zasady przesyłania strumieniowego — tworzenie](https://docs.microsoft.com/rest/api/media/streamingpolicies/create).
 
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 
-`MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY` Jeśli wystąpi błąd, upewnij się, że określono odpowiednie zasady przesyłania strumieniowego.
+Jeśli zostanie wyświetlony błąd `MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY`, upewnij się, że określono odpowiednie zasady przesyłania strumieniowego.
 
 Jeśli pojawią się błędy `_NOT_SPECIFIED_IN_URL`, upewnij się, że w adresie URL został określony format szyfrowania. Może to być na przykład `…/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`. Zobacz [protokoły przesyłania strumieniowego i typy szyfrowania](#streaming-protocols-and-encryption-types).
 
@@ -259,4 +259,4 @@ Zapoznaj się z artykułem [community Azure Media Services](media-services-commu
 * [Projektowanie systemu ochrony zawartości z obsługą technologii DRM z użyciem kontroli dostępu](design-multi-drm-system-with-access-control.md)
 * [Szyfrowanie po stronie magazynu](storage-account-concept.md#storage-side-encryption)
 * [Często zadawane pytania](frequently-asked-questions.md)
-
+* [Procedura obsługi tokenów sieci Web JSON](https://docs.microsoft.com/dotnet/framework/security/json-web-token-handler)

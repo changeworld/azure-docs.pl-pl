@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: juliako
-ms.openlocfilehash: 8db677ff94b477992d06a22c367f51c0c6063d69
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 91dead0953d6c124f9179e70b4ed38fe0c13bdc2
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309232"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338546"
 ---
 # <a name="azure-media-services-release-notes"></a>Informacje o wersji Azure Media Services
 
@@ -50,9 +50,9 @@ Informacje o historii wersji interfejsu API REST Media Services można znaleźć
 
 ### <a name="deprecation-of-media-processors"></a>Wycofanie procesorów multimediów
 
-Zanotujemy przestarzałe *Azure Media Indexer* i *Azure Media Indexer 2*. Procesor multimediów [Azure Media Indexer](media-services-index-content.md) zostanie wycofany 1 października 2020. Procesory multimediów [Azure Media Indexer 2 (wersja zapoznawcza)](media-services-process-content-with-indexer2.md) zostaną wycofane z dniem 1 stycznia 2020. [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) zastępuje te starsze procesory nośników.
+Ogłaszamy przestarzałe *Azure Media Indexer wersja 1* i wersja *zapoznawcza systemu Azure Media Indexer v2*. Procesor multimedialny [Azure Media Indexer V1](media-services-index-content.md) zostanie wycofany 1 października 2020. Procesory z nośników w [wersji Zapoznawczej Azure Media Indexer v2](media-services-process-content-with-indexer2.md) zostaną wycofane 1 stycznia 2020. [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) zastępuje te starsze procesory nośników.
 
-Aby uzyskać więcej informacji, zobacz [Migrowanie z Azure Media Indexer i Azure Media Indexer 2 do Azure Media Services Video Indexer](migrate-indexer-v1-v2.md).
+Aby uzyskać więcej informacji, zobacz [Migrowanie z Azure Media Indexer V1 i Azure Media Indexer v2 do Azure Media Services Video Indexer](migrate-indexer-v1-v2.md).
 
 ## <a name="august-2019"></a>2019 sierpnia
 

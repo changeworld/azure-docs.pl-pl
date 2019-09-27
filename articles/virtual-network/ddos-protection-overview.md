@@ -1,6 +1,6 @@
 ---
-title: Przegląd Standard platformy Azure przed atakami DDoS Protection | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat usługi Azure DDoS Protection.
+title: Azure DDoS Protection — przegląd standardowy | Microsoft Docs
+description: Dowiedz się więcej o usłudze Azure DDoS Protection.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -15,72 +15,84 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/13/2018
 ms.author: kumud
-ms.openlocfilehash: 41e9d88df49d153089e6dc7a12c5873ccc167279
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5c964eaf3cae4f4f47724c59caf9ff60d9f4d2cd
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65209458"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336315"
 ---
-# <a name="azure-ddos-protection-standard-overview"></a>Omówienie usługi Azure DDoS Protection standardowe
+# <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Protection — Omówienie
 
 Ataki typu „rozproszona odmowa usługi” (Distributed Denial of Service, DDoS) należą do największych obaw związanych z dostępnością i zabezpieczeniami wśród klientów, którzy planują przeniesienie swoich aplikacji do chmury. Atak DDoS polega na próbie wyczerpania zasobów aplikacji, przez co aplikacja staje się niedostępna dla zwykłych użytkowników. Celem ataku DDoS może być dowolny punkt końcowy publicznie dostępny za pośrednictwem Internetu.
 
-Usługa Azure DDoS protection, w połączeniu z najlepszych rozwiązań projektowania aplikacji zapewniają ochronę przed atakami DDoS. Usługa Azure DDoS protection zapewnia następujących warstwach usługi:
+Usługa Azure DDoS Protection, w połączeniu z najlepszymi rozwiązaniami dotyczącymi projektowania aplikacji, zapewnia ochronę przed atakami na DDoS. Usługa Azure DDoS Protection udostępnia następujące warstwy usług:
 
-- **Podstawowe**: Automatycznie włączone w ramach platformy Azure. Zawsze włączone monitorowanie ruchu, a także w czasie rzeczywistym ograniczenie typowych ataków na poziomie sieci, należy podać tych samych mechanizmów obronnych wartościowa usług online firmy Microsoft. Cały skali globalnej sieci platformy Azure może służyć do dystrybucji, a także zmniejszyć ruch ataku w regionach. Ochrony praw dla protokołów IPv4 i IPv6 Azure [publiczne adresy IP](virtual-network-public-ip-address.md).
-- **Standardowa**: Udostępnia dodatkowe ograniczenia możliwości w porównaniu z warstwa podstawowa usług, które są specjalnie przeznaczone specjalnie do zasobów usługi Azure Virtual Network. Standard ochrony przed atakami DDoS jest proste włączyć i nie wymaga żadnych zmian w aplikacji. Za pomocą dedykowanego monitorowania i ruchu algorytmów uczenia maszynowego dostosowanych zasad ochrony. Zasady są stosowane do publicznych adresów IP skojarzonych z zasobami wdrożonymi w sieciach wirtualnych, takich jak usługa Azure Load Balancer, Azure Application Gateway i wystąpień usługi Azure Service Fabric, ale ta ochrona nie ma zastosowania do środowiska usługi App Service. W czasie rzeczywistym danych telemetrycznych jest dostępna za pośrednictwem usługi Azure Monitor widoków, podczas ataku i historii. Analizy ograniczania ryzyka ataków zaawansowane są dostępne za pomocą ustawień diagnostycznych. Ochrona warstwy aplikacji można dodać za pomocą [zapory aplikacji sieci Web usługi Azure Application Gateway](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub dzięki zainstalowaniu 3rd zapory innych firm w witrynie Azure Marketplace. Ochrony praw dla protokołów IPv4 i IPv6 Azure [publiczne adresy IP](virtual-network-public-ip-address.md).
+- **Podstawowa**: Automatycznie włączona w ramach platformy Azure. Zawsze włączone monitorowanie ruchu oraz łagodzenie typowych ataków na poziomie sieci w czasie rzeczywistym zapewnia te same zabezpieczenia wykorzystywane przez Usługi online firmy Microsoft. Cała Skala sieci globalnej platformy Azure może służyć do dystrybucji i ograniczania ruchu ataków między regionami. Zapewniona jest ochrona dla [publicznych adresów IP](virtual-network-public-ip-address.md)platformy Azure IPv4 i IPv6.
+- **Standard**: Oferuje dodatkowe możliwości ograniczania funkcjonalności w ramach podstawowej warstwy usług, które są dostosowane specjalnie do zasobów usługi Azure Virtual Network. Standard DDoS Protection jest prosty do włączenia i nie wymaga żadnych zmian w aplikacji. Zasady ochrony są dostosowane przez dedykowane algorytmy monitorowania ruchu i uczenia maszynowego. Zasady są stosowane do publicznych adresów IP skojarzonych z zasobami wdrożonymi w sieciach wirtualnych, takich jak Azure Load Balancer, Application Gateway platformy Azure i wystąpienia Service Fabric platformy Azure, ale ta ochrona nie dotyczy środowisk App Service. Dane telemetryczne w czasie rzeczywistym są dostępne za pośrednictwem widoków Azure Monitor podczas ataku oraz dla historii. Zaawansowana analiza łagodzenia ataków jest dostępna za pośrednictwem ustawień diagnostycznych. Ochronę warstwy aplikacji można dodać za pośrednictwem [zapory aplikacji sieci Web platformy azure Application Gateway](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub przez zainstalowanie zapory innej firmy w witrynie Azure Marketplace. Zapewniona jest ochrona dla [publicznych adresów IP](virtual-network-public-ip-address.md)platformy Azure IPv4 i IPv6.
 
-![Platforma Azure a Podstawowa ochrona przed atakami DDoS Standardowa (Standard)](./media/ddos-protection-overview/ddoscomparison.png)
+|Cecha                                         |DDos — podstawowa ochrona                 |Standard ochrony DDos                      |
+|------------------------------------------------|--------------------------------------|----------------------------------------------|
+|Monitorowanie aktywnego ruchu & zawsze włączone wykrywanie |Tak                                   |Tak                                           |
+|Automatyczne łagodzenie ataków                    |Tak                                   |Tak                                           |
+|Gwarancja dostępności                          |Region świadczenia usługi Azure                          |Aplikacja                                   |
+|Zasady ograniczania                             |Dostrojony dla woluminu obszaru ruchu platformy Azure |Dostrojony dla woluminu ruchu aplikacji          |
+|Metryki i alerty                                |Nie                                    |Metryki ataku w czasie rzeczywistym & dzienników diagnostycznych za pośrednictwem usługi Azure monitor                                 |
+|Raporty ograniczenia                              |Nie                                    |Publikowanie raportów ograniczenia ataków                |
+|Dzienniki przepływów łagodzenia                            |Nie                                    |Strumień dziennika NRT na potrzeby integracji usługi SIEM           |
+|Dostosowania zasad migracji                 |Nie                                    |Zaangażowanie ekspertów DDos                           |
+|Pomoc techniczna                                         |Najlepszy nakład pracy                           |Dostęp do ekspertów DDOs podczas aktywnego ataku|
+|Umowa SLA                                             |Region świadczenia usługi Azure                          |Gwarancja aplikacji & kosztów       |
+|Cennik                                         |Wolne                                  |Miesięczne użycie &                         |
 
-## <a name="types-of-ddos-attacks-that-ddos-protection-standard-mitigates"></a>Typy ataków DDoS, które zmniejsza Standard ochrony przed atakami DDoS
+## <a name="types-of-ddos-attacks-that-ddos-protection-standard-mitigates"></a>Typy ataków DDoS, które DDoS Protection standardowe ograniczenia
 
-Standard ochrony przed atakami DDoS pozwala ograniczyć następujące rodzaje ataków:
+Standard DDoS Protection może ograniczyć ataki następujących typów:
 
-- **Ataki pomiarowej**: Celem ataku jest zalać warstwy sieciowej znaczną ilość ruchu pozornie uzasadnione. Zawiera powodzie, powodzie wzmocnienia i innych powodzie sfałszowane pakietów UDP. Standard ochrony przed atakami DDoS zmniejsza tych potencjalnych ataków wielu gigabajtów, przejmowania i czyszczenia danych, w skali globalnej sieci platformy Azure, automatycznie.
-- **Protokół ataków**: Te ataki obiekt docelowy renderowania niedostępne przez wykorzystanie słabości w warstwie 3 i stosu protokołu 4 warstwy. Obejmuje, SYN ataków powódź odbicie ataków i inne ataki protokołu. Standard ochrony przed atakami DDoS zmniejsza te ataki rozróżnianiu ruchu złośliwego i uzasadnione, interakcji z klientem i blokowania złośliwego ruchu. 
-- **Ataki zasobu (aplikacji) w warstwie**: Te ataki docelowych, pakiety aplikacji sieci web, w celu zakłócania przesyłania danych między hostami. Przed atakami obejmują HTTP naruszeniami protokołu, SQL iniekcji, skryptów między witrynami i inne ataki warstwy 7. Skorzystaj z Kalkulatora [zapory aplikacji sieci web Application Gateway](../application-gateway/application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), przed atakami DDoS Protection Standard, aby zapewnić ochronę przed atakami, te. Ponadto są dostępne w ofert zapory aplikacji sieci web innych firm [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall).
+- **Ataki pomiarowe**: Celem ataku jest zalanie warstwy sieci przy użyciu dużej ilości pozornie wiarygodnego ruchu. Obejmuje to zalewania protokołu UDP, zalewania wzpełnień oraz inne zalewania pakietów sfałszowanych. DDoS Protection Standard ogranicza te potencjalne ataki z obsługą wielodostępności przez przeabsorbowanie i ich kontrolę przy użyciu globalnej skali sieci platformy Azure.
+- **Ataki protokołów**: Te ataki sprawiają, że element docelowy jest niedostępny, wykorzystując słabą lukę w stosie protokołu warstwy 3 i 4. Obejmuje to ataki, ataki na zalanie się w przypadku zalewania i ataków. DDoS Protection Standard ogranicza te ataki, różnią się od złośliwego i wiarygodnego ruchu, współpracując z klientem i blokując złośliwy ruch. 
+- **Ataki warstwy zasobów (aplikacji)** : Te ataki są docelowymi pakietami aplikacji sieci Web, aby przerwać przesyłanie danych między hostami. Ataki obejmują naruszenia protokołu HTTP, wstrzykiwanie kodu SQL, skrypty między lokacjami i inne ataki warstwy 7. Aby zapewnić ochronę przed atakami, użyj [zapory aplikacji sieci Web](../application-gateway/application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)platformy Azure Application Gateway ze standardem DDoS Protection. Istnieją także oferty zapory aplikacji sieci Web innych firm dostępne w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall).
 
-Standard ochrony przed atakami DDoS chroni zasoby w sieci wirtualnej, w tym publiczne adresy IP skojarzone z maszyn wirtualnych, usługi równoważenia obciążenia i bramy aplikacji. W połączeniu z zapory aplikacji sieci web Application Gateway, Standard ochrony przed atakami DDoS może zapewnić pełne warstwy 3 do warstwy 7 możliwości ograniczania ryzyka.
+DDoS Protection Standard chroni zasoby w sieci wirtualnej łącznie z publicznymi adresami IP skojarzonymi z maszynami wirtualnymi, modułami równoważenia obciążenia i bramami aplikacji. Po połączeniu z zaporą Application Gateway aplikacji sieci Web DDoS Protection Standard może zapewnić pełną możliwość ograniczenia warstwy 3 do warstwy 7.
 
-## <a name="ddos-protection-standard-features"></a>Funkcje warstwy standardowa ochrony przed atakami DDoS
+## <a name="ddos-protection-standard-features"></a>DDoS Protection funkcje standardowe
 
-![Funkcje przed atakami DDoS](./media/ddos-protection-overview/ddosfeatures.png)
+![Funkcja DDoS](./media/ddos-protection-overview/ddosfeatures.png)
 
-Usługa DDoS Protection standardowe funkcje obejmują:
+Standardowe funkcje DDoS Protection obejmują:
 
-- **Integracja platformy natywnej:** Natywnie zintegrowana z platformą Azure. Obejmuje konfigurację za pomocą witryny Azure portal. Standard ochrony przed atakami DDoS uwzględnia zasoby i konfiguracji zasobów.
-- **Kompleksowa ochrona:** Uproszczona konfiguracja chroni wszystkie zasoby w sieci wirtualnej tak szybko, jak standardowy ochrony przed atakami DDoS jest włączona. Brak definicji interwencji lub użytkownika jest wymagana. Standard ochrony przed atakami DDoS natychmiast i automatycznie minimalizuje skuteczność ataku, po jego wykryciu.
-- **Zawsze włączone monitorowanie ruchu:** Wzorców ruchu dla twojej aplikacji są monitorowane 24 godzin dziennie, 7 dni w tygodniu, wyszukiwanie wskaźników ataki DDoS. Środki zaradcze odbywa się po przekroczeniu zasady ochrony.
-- **Dostrajanie adaptacyjne:** Profilowanie ruchu inteligentne uzyskuje informacje o ruchu danej aplikacji wraz z upływem czasu i wybiera i aktualizuje profil, który jest najbardziej odpowiedni dla Twojej usługi. Profil, który dostosowuje się zgodnie z ruchem zmienia się wraz z upływem czasu.
-- **Ochrona wielowarstwowych:** Zapewnia ochronę przed atakami DDoS pełnego stosu, gdy jest używane z zapory aplikacji sieci web.
-- **Skaluj rozbudowane środki zaradcze:** Ponad 60 ataku różnych typów można zminimalizować globalnego pojemność, aby zapewnić ochronę przed największych znane ataki DDoS.
-- **Analiza ataku:** Uzyskuj szczegółowe raporty co pięć minut w trakcie ataku oraz pełne podsumowanie po jego zakończeniu. Stream środki zaradcze przepływ rejestruje zarządzania informacjami i zdarzeniami zabezpieczeń w trybie offline (SIEM) system niemalże w czasie rzeczywistym podczas ataku.
-- **Metryki ataku:** Skrócona metryki z każdego ataku są dostępne za pośrednictwem usługi Azure Monitor.
-- **Alertowanie ataku:** Alerty można skonfigurować na początku i Zatrzymaj atak i czasie trwania ataku przy użyciu ataku wbudowanych metryk. Alerty zintegrować operacyjne oprogramowania, takie jak dzienniki, Splunk, usługi Azure Storage, poczty E-mail i witryny Azure portal Microsoft Azure Monitor.
-- **Gwarancja kosztów:** Transfer danych i aplikacji skalowalnego w poziomie zniżki w ramach udokumentowane ataki DDoS.
+- **Integracja z platformą natywną:** Natywnie zintegrowane z platformą Azure. Obejmuje konfigurację za pomocą Azure Portal. W standardzie DDoS Protection są poznanie zasobów i konfiguracji zasobów.
+- **Ochrona klucza:** Uproszczona konfiguracja natychmiast chroni wszystkie zasoby w sieci wirtualnej zaraz po włączeniu DDoS Protection Standard. Nie jest wymagana żadna interwencja ani definicja użytkownika. Program DDoS Protection Standard natychmiast i automatycznie ogranicza atak po jego wykryciu.
+- **Zawsze włączone monitorowanie ruchu:** Wzorce ruchu aplikacji są monitorowane przez 24 godziny dziennie, 7 dni w tygodniu, szukając wskaźników ataków DDoS. Środki zaradcze są wykonywane w przypadku przekroczenia zasad ochrony.
+- **Dostrajanie adaptacyjne:** Profilowanie ruchu inteligentnego uzyskuje informacje o ruchu aplikacji w czasie i wybiera i aktualizuje profil, który jest najbardziej odpowiedni dla Twojej usługi. Profil dostosowuje się w miarę zmiany ruchu w czasie.
+- **Ochrona wielowarstwowa:** Zapewnia pełną ochronę DDoS stosu, gdy jest używana z zaporą aplikacji sieci Web.
+- **Rozbudowana Skala łagodzenia:** Ponad 60 różnych typów ataków można ograniczyć, korzystając z globalnej pojemności, aby chronić przed największym znanymi atakami DDoS.
+- **Analiza ataków:** Uzyskuj szczegółowe raporty co pięć minut w trakcie ataku oraz pełne podsumowanie po jego zakończeniu. Dzienniki przepływów ograniczenia przesyłania strumieniowego do systemu informacji o zabezpieczeniach w trybie offline i zarządzania zdarzeniami (SIEM) na potrzeby monitorowania niemal w czasie rzeczywistym podczas ataku.
+- **Metryki ataków:** Podsumowania metryk z każdego ataku są dostępne za pośrednictwem Azure Monitor.
+- **Alerty ataków:** Alerty można skonfigurować przy uruchamianiu i zatrzymywaniu ataku oraz przez czas trwania ataku przy użyciu wbudowanych metryk ataku. Alerty integrują się z oprogramowaniem operacyjnym, takimi jak dzienniki monitora Microsoft Azure, Splunk, Azure Storage, Poczta E-mail i Azure Portal.
+- **Gwarancja kosztów:** Kredyty na korzystanie z usług transferu i skalowanie w poziomie aplikacji dla udokumentowanych ataków DDoS.
 
-## <a name="ddos-protection-standard-mitigation"></a>Środki zaradcze Standard ochrony przed atakami DDoS
+## <a name="ddos-protection-standard-mitigation"></a>DDoS Protection ograniczenia standardowego
 
-Standard ochrony przed atakami DDoS monitoruje wykorzystanie rzeczywisty ruch i stale porównuje ją z progów zdefiniowane w zasadach przed atakami DDoS. Po przekroczeniu progu ruchu ataki DDOS jest inicjowany automatycznie. Gdy ruch zwraca niższy od wartości progowej, środki zaradcze zostaną usunięte.
+DDoS Protection monitoruje rzeczywiste wykorzystanie ruchu i stale porównuje go z progami zdefiniowanymi w zasadach DDoS. Po przekroczeniu progu ruchu środki zaradcze DDoS są inicjowane automatycznie. Gdy ruch wraca poniżej wartości progowej, środki zaradcze zostaną usunięte.
 
 ![Środki zaradcze](./media/ddos-protection-overview/mitigation.png)
 
-Podczas środki zaradcze ruch wysyłany do chronionego zasobu jest przekierowywane przez usługi DDoS protection i kilka są sprawdzane, takie jak następujące testy:
+Podczas rozwiązywania problemów ruch wysyłany do chronionego zasobu jest przekierowywany przez usługę ochrony DDoS i wykonywane jest kilka operacji sprawdzania, takich jak następujące sprawdzenia:
 
-- Upewnij się, pakiety są zgodne ze specyfikacją internet i nie są źle sformułowane.
-- Korzystać z klienta w celu określenia, jeśli ruch jest potencjalnie fałszywych pakietów (np.: SYN uwierzytelniania lub plik Cookie SYN i upuszczając pakietów dla źródła ponowne przesłanie go).
-- Limit szybkości pakietów, jeśli żadnej innej metody wymuszania mogą być wykonywane.
+- Upewnij się, że pakiety są zgodne ze specyfikacjami internetowymi i nie są źle sformułowane.
+- Współdziałanie z klientem w celu ustalenia, czy ruch jest potencjalnie sfałszowanym pakietem (np.: SYN auth lub SYN pliku cookie lub przez usunięcie pakietu dla źródła, aby przesłać go ponownie).
+- Oceń liczbę pakietów, jeśli nie można wykonać żadnej innej metody wymuszania.
 
-Ochrona przed atakami DDoS blokuje ruch ataku i przekazuje pozostały ruch do jego przeznaczenia. W ciągu kilku minut wykrywanie ataków otrzymasz powiadomienie za pomocą metryk usługi Azure Monitor. Konfigurowanie rejestrowania w telemetrii Standard ochrony przed atakami DDoS, może zapisywać dzienniki dostępne opcje do przyszłej analizy. Dane metryk w usłudze Azure Monitor w przypadku ochrony przed atakami DDoS w warstwie standardowa są przechowywane przez 30 dni.
+Ochrona DDoS blokuje ruch związany z atakami i przekazuje pozostałe dane do zamierzonego miejsca docelowego. W ciągu kilku minut wykrywania ataków użytkownik otrzymuje powiadomienie przy użyciu metryk Azure Monitor. Konfigurując funkcję rejestrowania na DDoS Protection standardową telemetrię, możesz napisać dzienniki, aby wyświetlić dostępne opcje dla przyszłej analizy. Dane metryk w Azure Monitor dla DDoS Protection standard są przechowywane przez 30 dni.
 
-Firma Microsoft nawiązała współpracę z [BreakingPoint Cloud](https://www.ixiacom.com/products/breakingpoint-cloud) do tworzenia interfejsu, gdzie można wygenerować ruchu względem włączona ochrona przed atakami DDoS publicznych adresów IP dla symulacji. Symulacja chmury punktu przerwania pozwala na:
+Firma Microsoft połączyła się z [chmurą BreakingPoint](https://www.ixiacom.com/products/breakingpoint-cloud) , aby utworzyć interfejs, w którym można generować ruch dla publicznych adresów IP z włączoną obsługą DDoS Protection na potrzeby symulacji. Symulacja chmury w punkcie przerwania umożliwia:
 
-- Sprawdzić, jak Microsoft Azure przed atakami DDoS Protection Standard chroni Twoje zasoby platformy Azure przed atakami DDoS
-- Optymalizowanie procesu reagowania na zdarzenia w ramach ataków DDoS
-- Dokumentowanie zgodności przed atakami DDoS
-- Szkolenie zespołom zabezpieczeń sieci
+- Sprawdź, jak Microsoft Azure DDoS Protection Standard chroni zasoby platformy Azure przed atakami DDoS
+- Optymalizowanie procesu reagowania na zdarzenia w ramach ataku DDoS
+- Zgodność dokumentu DDoS
+- Uczenie zespołów zabezpieczeń sieci
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Konfigurowanie standardu ochrony przed atakami DDoS](manage-ddos-protection.md)
+- [Konfigurowanie DDoS Protection Standard](manage-ddos-protection.md)

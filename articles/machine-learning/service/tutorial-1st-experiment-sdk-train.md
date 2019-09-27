@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/03/2019
-ms.openlocfilehash: b5d3a687adc8ecefcf581f7eda3b9e13d1973c62
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 6287f51d4fa0a1e4c2fb27b7cde873262ad6b3fe
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71004034"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327228"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Samouczek: Uczenie swojego pierwszego modelu ML
 
@@ -50,6 +50,9 @@ W tej części samouczka uruchamiasz kod w notesie `tutorials/tutorial-1st-exper
    Ten folder istnieje na [koncie magazynu](concept-workspace.md#resources) obszaru roboczego, a nie na maszynie wirtualnej notesu.  Po usunięciu maszyny wirtualnej notesu nadal będzie można zachować całą swoją służbę.  Po utworzeniu nowej maszyny wirtualnej notesu zostanie ona załadowana w tym samym folderze. Jeśli udostępnisz obszar roboczy innym osobom, zobaczysz Twój folder i zobaczysz ich.
 
 1. Otwórz podkatalog, a następnie Otwórz Notes `tutorials/tutorial-1st-experiment-sdk-train.ipynb`Jupyter, a **nie** `.yml` plik o tej samej nazwie. `samples-*` 
+
+> [!Warning]
+> **Nie** Twórz *nowego* notesu w interfejsie Jupyter. Notes `tutorials/tutorial-1st-experiment-sdk-train.ipynb` obejmuje **cały kod i dane, które są zbędne** dla tego samouczka.
 
 ## <a name="connect-workspace-and-create-experiment"></a>Połącz obszar roboczy i Utwórz eksperyment
 

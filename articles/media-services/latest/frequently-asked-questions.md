@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 06/21/2019
 ms.author: juliako
-ms.openlocfilehash: 28b9c8f343437c20e277d2f3ba53767afa45a5c2
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 6e52a51c82529a98ef679dd747b9c8b7d177b660
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501252"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338829"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 — często zadawane pytania
 
@@ -36,7 +36,7 @@ Aby uzyskać szczegółowe informacje, zobacz [Skalowanie przetwarzania multimed
 
 ### <a name="what-is-the-recommended-method-to-process-videos"></a>Jaka jest zalecana metoda przetwarzania wideo?
 
-Za pomocą [transformacji](https://docs.microsoft.com/rest/api/media/transforms) można skonfigurować typowe zadania związane z kodowaniem lub analizowaniem filmów wideo. Każde **przekształcenie** opisuje przepis lub przepływ pracy zadań do przetwarzania plików wideo lub audio. [Zadanie](https://docs.microsoft.com/rest/api/media/jobs) to rzeczywiste żądanie Media Services, aby zastosować transformację do  danych wejściowych wideo lub audio. Po utworzeniu przekształcenia można przesłać zadania przy użyciu interfejsów API Media Services lub dowolnego z opublikowanych zestawów SDK. Aby uzyskać więcej informacji, zobacz [Przekształcenia i zadania](transforms-jobs-concept.md).
+Za pomocą [transformacji](https://docs.microsoft.com/rest/api/media/transforms) można skonfigurować typowe zadania związane z kodowaniem lub analizowaniem filmów wideo. Każde **przekształcenie** opisuje przepis lub przepływ pracy zadań do przetwarzania plików wideo lub audio. [Zadanie](https://docs.microsoft.com/rest/api/media/jobs) to rzeczywiste żądanie Media Services, aby zastosować transformację do danych wejściowych wideo lub audio. Po utworzeniu przekształcenia można przesłać zadania przy użyciu interfejsów API Media Services lub dowolnego z opublikowanych zestawów SDK. Aby uzyskać więcej informacji, zobacz [Przekształcenia i zadania](transforms-jobs-concept.md).
 
 ### <a name="how-does-pagination-work"></a>Jak działa stronicowanie?
 
@@ -65,6 +65,14 @@ Możesz użyć [lokalnego kodera](recommended-on-premises-live-encoders.md) do p
 Klienci często zastanawiasz się, czy należy używać szyfrowania AES lub systemu DRM. Podstawowa różnica między tymi dwoma systemami polega na tym, że szyfrowanie AES klucz zawartości jest przesyłany do klienta za pośrednictwem protokołu TLS, dzięki czemu klucz jest szyfrowany podczas przesyłania, ale bez dodatkowego szyfrowania ("w czyszczeniu"). W związku z tym klucz używany do odszyfrowywania zawartości jest dostępny dla odtwarzacza klienta i może być wyświetlany w wyniku śledzenia sieci na kliencie w postaci zwykłego tekstu. Szyfrowanie za pomocą klucza AES-128 jest odpowiednie do przypadków użycia, w których przeglądarka jest zaufaną stroną (na przykład w przypadku szyfrowania wideo firmowych dystrybuowanych przez pracowników).
 
 Systemy DRM, takie jak PlayReady, Widevine i FairPlay, zapewniają dodatkowy poziom szyfrowania na klucz używany do odszyfrowywania zawartości w porównaniu z kluczem czystym AES-128. Klucz zawartości jest szyfrowany do klucza chronionego przez środowisko uruchomieniowe DRM w dodatkowy sposób do dowolnego szyfrowania na poziomie transportu zapewnianego przez protokół TLS. Ponadto odszyfrowywanie jest obsługiwane w bezpiecznym środowisku na poziomie systemu operacyjnego, gdzie jest trudniejsze, złośliwy użytkownik na ataki. DRM jest zalecana dla przypadków użycia, w której przeglądarka może nie być zaufaną stronę i wymagają najwyższy poziom zabezpieczeń.
+
+### <a name="how-to-show-a-video-only-to-users-who-have-a-specific-permission-without-using-azure-ad"></a>Jak wyświetlić wideo tylko dla użytkowników, którzy mają określone uprawnienia, bez korzystania z usługi Azure AD?
+
+Nie musisz używać żadnego określonego dostawcy tokenów (takiego jak Azure AD). Za pomocą szyfrowania klucza asymetrycznego można utworzyć własnego dostawcę [JWT](https://jwt.io/) (tzw. usługi STS, Secure Token Service). W niestandardowej usłudze STS można dodawać oświadczenia na podstawie logiki biznesowej.
+
+Upewnij się, że wystawcy, odbiorcy i oświadczenia są dokładnie zgodne z informacjami o tym, co jest w tokenie JWT, i ContentKeyPolicyRestriction używanym w ContentKeyPolicy.
+
+Aby uzyskać więcej informacji, zobacz [Ochrona zawartości przy użyciu Media Services szyfrowania dynamicznego](content-protection-overview.md).
 
 ### <a name="how-and-where-to-get-jwt-token-before-using-it-to-request-license-or-key"></a>Jak i gdzie można uzyskać tokenu JWT token przed użyciem w celu żądania licencji lub klucza?
 

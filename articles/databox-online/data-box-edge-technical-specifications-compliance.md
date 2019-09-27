@@ -6,18 +6,37 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 09/11/2019
+ms.date: 09/26/2019
 ms.author: alkohli
-ms.openlocfilehash: f1199748782c40b2527a8778417588891b84f9fc
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 365507f482217bd804bbd5017d4dbbaf8c187ad2
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910139"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326895"
 ---
 # <a name="azure-data-box-edge-technical-specifications"></a>Azure Data Box Edge specyfikacje techniczne
 
 Składniki sprzętowe Microsoft Azure Data Box Edge urządzeniu przestrzegają specyfikacji technicznych i standardów obowiązujących w tym artykule. Specyfikacje techniczne opisują jednostki zasilacza (PSUs), pojemność magazynu, obudowy i standardy środowiskowe. 
+
+## <a name="compute-memory-specifications"></a>Obliczenia, specyfikacje pamięci
+
+Urządzenie Data Box Edge ma następujące specyfikacje dotyczące obliczeń i pamięci:
+
+| Określając           | Value                  |
+|-------------------------|----------------------------|
+| Procesor CPU    | 2 X 10 rdzeni procesora CPU                     |
+| Memory (Pamięć)              | 128 GB pamięci RAM                  |
+
+
+## <a name="fpga-specifications"></a>Specyfikacje FPGA
+
+FPGA jest dołączana do wszystkich urządzeń Data Box Edge, które umożliwiają Machine Learning (ML) scenariusze. 
+
+| Określając           | Value                  |
+|-------------------------|----------------------------|
+| FPGA   | Intel Arria 10 <br> Dostępne modele sieci neuronowych Network (DNN) są takie same, jak te [obsługiwane przez wystąpienia FPGA chmury](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#whats-supported-on-azure).| 
+
 
 ## <a name="power-supply-unit-specifications"></a>Specyfikacje jednostek zasilacza
 
@@ -55,7 +74,7 @@ W poniższych tabelach przedstawiono różne specyfikacje obudowy dla wymiarów 
 
 W poniższej tabeli przedstawiono wymiary obudowy w milimetrach i calach.
 
-|     Szaf     |     Milimetrach     |     15     |
+|     Obudowa     |     Milimetrach     |     15     |
 |-------------------|---------------------|----------------|
 |    Wysokość         |    44,45            |    1,75 "          |
 |    Szerokość          |    434,1           |    17,09 "          |
@@ -73,7 +92,7 @@ W poniższej tabeli przedstawiono wymiary pakietu wysyłki w milimetrach i calac
 
 Pakiet urządzenia waży 66 funtów. i wymaga od dwóch osób, aby je obsłużyć. Waga urządzenia zależy od konfiguracji obudowy.
 
-|     Szaf                                 |     Waga          |
+|     Obudowa                                 |     Waga          |
 |-----------------------------------------------|---------------------|
 |    Łączna waga włącznie z opakowaniem       |    61 funtów          |
 |    Waga urządzenia                       |    35 funtów          |
@@ -84,14 +103,14 @@ W tej sekcji przedstawiono specyfikacje dotyczące środowiska obudowy, takie ja
 
 ### <a name="temperature-and-humidity"></a>Temperatura i wilgotność
 
-|     Szaf         |     Zakres temperatury otoczenia     |     Wilgotność względna     |     Maksymalny punkt Rosa     |
+|     Obudowa         |     Zakres temperatury otoczenia     |     Wilgotność względna     |     Maksymalny punkt Rosa     |
 |-----------------------|--------------------------------------|--------------------------------------|---------------------------|
 |    Działa        |    10 OC – 35 °C (50 °F-86 °F)         |    10%-80% bez kondensacji.         |    29 °C (84 °F)            |
 |    Niedziałające    |    -40 °C do 65 °C (-40 °F-149 °F)     |    5%-95% bez kondensacji.          |    33°C (91°F)            |
 
 ### <a name="airflow-altitude-shock-vibration-orientation-safety-and-emc"></a>Przepływ powietrza, wysokość, wstrząsy, wibracje, Orientacja, bezpieczeństwo i EMC
 
-|     Szaf                           |     Specyfikacje operacyjne                                                                                                                                                                                         |
+|     Obudowa                           |     Specyfikacje operacyjne                                                                                                                                                                                         |
 |-----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |    Przepływ powietrza                              |    Przepływ powietrza systemu jest przedsunięty do tyłu. System musi być obsługiwany przy użyciu instalacji z niską ilością wylotu. <!--Back pressure created by rack doors and obstacles should not exceed 5 pascals (0.5 mm water gauge).-->    |
 |    Maksymalna wysokość, operacyjna        |    3048 mierników (10 000 stóp) z maksymalną temperaturą działania, która jest określana przez niesklasyfikowane [wymagania dotyczące temperatury działania](#operating-temperature-de-rating-specifications).                                                                                |

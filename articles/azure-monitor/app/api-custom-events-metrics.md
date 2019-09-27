@@ -12,19 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbullwin
-ms.openlocfilehash: 776f20d04bb79fa42c78dba8482e8ba866c93b31
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: a56040f5938cc5d1edd452a81935591372cff0d6
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162508"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326646"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API dla niestandardowych zdarzeń i metryk
 
 Wstaw kilka wierszy kodu w aplikacji, aby dowiedzieć się, co użytkownicy robią z nim lub aby pomóc zdiagnozować problemy. Możesz wysyłać dane telemetryczne z aplikacji urządzenia i pulpitu, klientów sieci Web i serwerów sieci Web. Za pomocą interfejsu API telemetrii [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) Core można wysyłać niestandardowe zdarzenia i metryki oraz własne wersje telemetrii standardowej. Ten interfejs API jest tym samym interfejsem API, który jest używany przez moduły zbierające dane standardowe Application Insights.
-
-> [!NOTE]
-> `TrackMetric()`nie jest już preferowaną metodą wysyłania metryk niestandardowych dla aplikacji opartych na platformie .NET. W [wersji 2,60 — beta 3](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/CHANGELOG.md#version-260-beta3) zestawu Application Insights .NET SDK [`TelemetryClient.GetMetric()`](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.getmetric?view=azure-dotnet) została wprowadzona nowa metoda. Począwszy od [wersji 2,72](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.getmetric?view=azure-dotnet) zestawu SDK platformy .NET Application Insights, ta funkcja jest teraz częścią stabilnej wersji.
 
 ## <a name="api-summary"></a>Podsumowanie interfejsu API
 
@@ -68,6 +65,8 @@ Jeśli nie masz jeszcze odwołania do Application Insights SDK:
 
 Pobierz wystąpienie `TelemetryClient` (z wyjątkiem języka JavaScript w stronach sieci Web):
 
+W przypadku aplikacji [ASP.NET Core](asp-net-core.md#how-can-i-track-telemetry-thats-not-automatically-collected) i [innych niż http/Worker dla aplikacji .NET/.NET Core](worker-service.md#how-can-i-track-telemetry-thats-not-automatically-collected) zaleca się uzyskanie wystąpienia `TelemetryClient` z kontenera iniekcji zależności, jak wyjaśniono w odpowiedniej dokumentacji.
+
 *C#*
 
 ```csharp
@@ -94,7 +93,7 @@ var telemetry = applicationInsights.defaultClient;
 
 TelemetryClient jest bezpieczny wątkowo.
 
-W przypadku projektów ASP.NET i Java przychodzące żądania HTTP są przechwytywane automatycznie. Możesz chcieć utworzyć dodatkowe wystąpienia TelemetryClient dla innego modułu aplikacji. Na przykład może istnieć jedno wystąpienie TelemetryClient w klasie pośredniczącej do raportowania zdarzeń logiki biznesowej. Możesz ustawić właściwości, takie jak UserId i DeviceId, aby zidentyfikować maszynę. Te informacje są dołączone do wszystkich zdarzeń wysyłanych przez wystąpienie. 
+W przypadku projektów ASP.NET i Java przychodzące żądania HTTP są przechwytywane automatycznie. Możesz chcieć utworzyć dodatkowe wystąpienia TelemetryClient dla innego modułu aplikacji. Na przykład może istnieć jedno wystąpienie TelemetryClient w klasie pośredniczącej do raportowania zdarzeń logiki biznesowej. Możesz ustawić właściwości, takie jak UserId i DeviceId, aby zidentyfikować maszynę. Te informacje są dołączone do wszystkich zdarzeń wysyłanych przez wystąpienie.
 
 *C#*
 
@@ -969,7 +968,7 @@ Jeśli chcesz ustawić domyślne wartości właściwości dla niektórych zdarze
 using Microsoft.ApplicationInsights.DataContracts;
 
 var gameTelemetry = new TelemetryClient();
-gameTelemetry.Context.Properties["Game"] = currentGame.Name;
+gameTelemetry.Context.GlobalProperties["Game"] = currentGame.Name;
 // Now all telemetry will automatically be sent with the context property:
 gameTelemetry.TrackEvent("WinGame");
 ```
@@ -978,7 +977,7 @@ gameTelemetry.TrackEvent("WinGame");
 
 ```vb
 Dim gameTelemetry = New TelemetryClient()
-gameTelemetry.Context.Properties("Game") = currentGame.Name
+gameTelemetry.Context.GlobalProperties("Game") = currentGame.Name
 ' Now all telemetry will automatically be sent with the context property:
 gameTelemetry.TrackEvent("WinGame")
 ```

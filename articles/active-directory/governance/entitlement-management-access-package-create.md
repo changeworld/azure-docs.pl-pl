@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/23/2019
+ms.date: 09/24/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f033cf57c5a285e94372728677c91e021065fa9
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 1283549ce78535757b7ba42eaf7054538f0c9784
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678196"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326341"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>Tworzenie nowego pakietu dostępu w usłudze Azure AD uprawnia do zarządzania (wersja zapoznawcza)
 
@@ -79,7 +79,7 @@ Na karcie **podstawowe** można nadać pakietowi dostępu nazwę i określić ka
 
 Na karcie **role zasobów** Wybierz zasoby do uwzględnienia w pakiecie dostępu.  Użytkownicy, którzy żądają i otrzymują pakiet dostępu, otrzymają wszystkie role zasobów w pakiecie dostępu.
 
-1. Kliknij typ zasobu, który chcesz dodać (**grupy**, **aplikacje**lub **witryny programu SharePoint**).
+1. Kliknij typ zasobu, który chcesz dodać (**grupy i zespoły**, **aplikacje**lub **witryny programu SharePoint**).
 
 1. W wyświetlonym okienku wybierz pozycję co najmniej jeden zasób z listy.
 
@@ -111,7 +111,7 @@ Na karcie **zasady** Utwórz pierwsze zasady, aby określić, kto może zażąda
 
 [!INCLUDE [Entitlement management policy](../../../includes/active-directory-entitlement-management-policy.md)]
 
-## <a name="review--create"></a>Przeglądanie + tworzenie
+## <a name="review--create"></a>Przegląd + tworzenie
 
 Na karcie **Przegląd i tworzenie** możesz przejrzeć ustawienia i sprawdzić, czy występują błędy walidacji.
 
@@ -123,7 +123,7 @@ Na karcie **Przegląd i tworzenie** możesz przejrzeć ustawienia i sprawdzić, 
 
     Nowy pakiet dostępu zostanie wyświetlony na liście pakietów dostępu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Edytowanie istniejącego pakietu dostępu i zarządzanie nim](entitlement-management-access-package-edit.md)
 - [Dodawanie właściciela katalogu lub Menedżera pakietów programu Access](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)

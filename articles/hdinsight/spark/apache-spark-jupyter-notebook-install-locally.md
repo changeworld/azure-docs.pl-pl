@@ -1,19 +1,19 @@
 ---
 title: Instalowanie Jupyter lokalnie i nawiązywanie połączenia z platformą Spark w usłudze Azure HDInsight
 description: Dowiedz się, jak zainstalować Notes Jupyter lokalnie na komputerze i połączyć go z klastrem Apache Spark.
-ms.service: hdinsight
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/06/2019
-ms.author: hrasheed
-ms.openlocfilehash: 6ce3ff8e00bc92911a7405de1bb0bb7286fb5c15
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 46164cfc0c2baff919808a831a67180b65a23ff7
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993751"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71337656"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Instalowanie notesu Jupyter na komputerze i nawiązywanie połączenia z usługą Apache Spark w usłudze HDInsight
 
@@ -74,7 +74,7 @@ Pobierz [Instalatora Anaconda](https://www.anaconda.com/download/) na platformę
     |PySpark|`jupyter-kernelspec install sparkmagic/kernels/pysparkkernel`|
     |PySpark3|`jupyter-kernelspec install sparkmagic/kernels/pyspark3kernel`|
 
-1. Opcjonalna. Wprowadź poniższe polecenie, aby włączyć rozszerzenie serwera:
+1. Opcjonalny. Wprowadź poniższe polecenie, aby włączyć rozszerzenie serwera:
 
     ```cmd
     jupyter serverextension enable --py sparkmagic
@@ -146,7 +146,7 @@ W tej sekcji skonfigurujesz program Spark, który został wcześniej zainstalowa
 
     a. Utwórz nowy notes. W prawym górnym rogu wybierz pozycję **Nowy**. Powinien zostać wyświetlony domyślny jądro **Python 2** lub **Python 3** i zainstalowane jądra. Rzeczywiste wartości mogą się różnić w zależności od opcji instalacji.  Wybierz pozycję **PySpark**.
 
-    ![Jądra w notesie Jupyter](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels-notebook.png "Jądra w notesie Jupyter")
+    ![Dostępne jądra w](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels-notebook.png "jądrze Jupyter w") notesie Jupyter
 
     > [!IMPORTANT]  
     > Po wybraniu pozycji **Nowy** Przejrzyj powłokę pod kątem błędów.  Jeśli zobaczysz błąd `TypeError: __init__() got an unexpected keyword argument 'io_loop'` , może wystąpić znany problem z niektórymi wersjami programu Tornado.  Jeśli tak, Zatrzymaj jądro, a następnie Obniż poziom instalacji Tornado przy użyciu następującego polecenia `pip install tornado==4.5.3`:.

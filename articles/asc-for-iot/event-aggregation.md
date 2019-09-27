@@ -1,6 +1,6 @@
 ---
-title: Informacje o Azure Security Center dla agregacji zdarzeń rozwiązania IoT | Microsoft Docs
-description: Dowiedz się więcej o tym, jak zdarzenia są agregowane w Azure Security Center dla usługi IoT.
+title: Informacje o Azure Security Center dla agregacji zdarzeń IoT | Microsoft Docs
+description: Dowiedz się więcej na temat Azure Security Center dla agregacji zdarzeń IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/21/2019
+ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: b8100fc78eced9aa26fe185a8d68244d8f665ff2
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: b1a14cf4c8aec2f3dbfa7bc4fd0800d9fd1fb0aa
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933902"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327312"
 ---
-# <a name="security-agent-event-aggregation"></a>Agregacja zdarzeń agenta zabezpieczeń
+# <a name="azure-security-center-for-iot-event-aggregation"></a>Azure Security Center dla agregacji zdarzeń IoT
 
-Azure Security Center dla agentów zabezpieczeń IoT zbiera dane i zdarzenia systemowe z urządzenia lokalnego i wysyła te dane do chmury platformy Azure w celu przetworzenia i analizy. Agent zabezpieczeń zbiera wiele typów zdarzeń urządzeń, w tym nowy proces i nowe zdarzenia połączenia. Zarówno nowy proces, jak i nowe zdarzenia połączeń mogą być często wykonywane na urządzeniu w ciągu sekundy, a chociaż ważne dla niezawodnego i kompleksowego zabezpieczenia, ilość komunikatów, które wymuszają, aby agenci zabezpieczeń mogli szybko osiągnąć lub przekroczyć IoT Hub limity przydziału i kosztów. Zdarzenia te zawierają jednak wysoce cenne informacje zabezpieczające, które są kluczowe dla ochrony urządzenia.
+Azure Security Center dla agentów zabezpieczeń IoT zbiera dane i zdarzenia systemowe z urządzenia lokalnego i wysyła te dane do chmury platformy Azure w celu przetworzenia i analizy. Agent zabezpieczeń zbiera wiele typów zdarzeń urządzeń, w tym nowy proces i nowe zdarzenia połączenia. Zarówno nowy proces, jak i nowe zdarzenia połączeń mogą być często wykonywane na urządzeniu w ciągu sekundy, a chociaż ważne dla niezawodnego i kompleksowego zabezpieczenia, liczba agentów zabezpieczeń komunikatów jest zmuszona do wysłania lub przekroczenia IoT Hub limity przydziału i kosztów. Zdarzenia te zawierają jednak wysoce cenne informacje zabezpieczające, które są kluczowe dla ochrony urządzenia.
 
 Aby zmniejszyć dodatkowy przydział i koszty przy zachowaniu ochrony urządzeń, Azure Security Center dla agentów IoT agregują te typy zdarzeń.
 
@@ -44,8 +44,8 @@ Aby zmniejszyć wykorzystanie pamięci przez agenta, za każdym razem, gdy Agent
 
 Zdarzenia są uważane za identyczne tylko wtedy, gdy są spełnione następujące warunki: 
 
-* Zdarzenia ProcessCreate — gdy są identyczne elementy **CommandLine**, **Executable**, **username** i **UserID**
-* Zdarzenia ConnectionCreate — w **przypadku wiersza polecenia**, **identyfikatora użytkownika**, **kierunku**, **adresu lokalnego**, **adresu zdalnego**, **protokołu** i **portu docelowego** są identyczne
+* Zdarzenia ProcessCreate — gdy parametr **CommandLine**, **Executable**, * * username i **UserID** są identyczne
+* Zdarzenia ConnectionCreate — gdy **wiersz polecenia**, **userId, nazwa użytkownika**, **kierunek**, **adres lokalny**, **adres zdalny**, * * protokół i **port docelowy** są identyczne
 * Zdarzenia ProcessTerminate — gdy **plik wykonywalny** i **stan zakończenia** są identyczne
 
 ### <a name="working-with-aggregated-events"></a>Praca z zagregowanymi zdarzeniami

@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: overview
 ms.date: 08/29/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4f9591b26891ab36ccbfa34126fb1ac1bdb9cf52
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: f8ec833a469e3c3a9b4c88343a48e109fc5c9728
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164797"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338205"
 ---
 # <a name="azure-resource-manager-overview"></a>Omówienie usługi Azure Resource Manager
 
@@ -59,7 +59,7 @@ Za pomocą Menedżer zasobów można:
 
 ## <a name="understand-scope"></a>Objaśnienie zakresu
 
-Platforma Azure udostępnia cztery poziomy zakresu: [grupy zarządzania](../governance/management-groups/index.md), subskrypcje, [grupy zasobów](#resource-groups)i zasoby. Na poniższej ilustracji przedstawiono takie przykładowe warstwy.
+Platforma Azure udostępnia cztery poziomy zakresu: [grupy zarządzania](../governance/management-groups/overview.md), subskrypcje, [grupy zasobów](#resource-groups)i zasoby. Na poniższej ilustracji przedstawiono takie przykładowe warstwy.
 
 ![Scope](./media/resource-group-overview/scope-levels.png)
 
@@ -111,6 +111,6 @@ Ta odporność ma zastosowanie do usług, które odbierają żądania przez Mene
 
 * Aby dowiedzieć się więcej o znakowaniu zasobów, zobacz [Używanie tagów do organizowania zasobów platformy Azure](resource-group-using-tags.md).
 
-* Aby dowiedzieć się więcej o blokowaniu zasobów, zobacz [blokowanie zasobów, aby zapobiec](resource-group-lock-resources.md)nieoczekiwanym zmianom.
+* Aby dowiedzieć się więcej o blokowaniu zasobów, zobacz [blokowanie zasobów, aby zapobiec nieoczekiwanym zmianom](resource-group-lock-resources.md).
 
 * Aby uzyskać informacje na temat tworzenia szablonów dla wdrożeń, zobacz [Template Deployment Omówienie](template-deployment-overview.md).

@@ -1,6 +1,6 @@
 ---
-title: Z zastosowaniem AppAuth w aplikacji systemu iOS w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: W tym artykule pokazano, jak utworzyć aplikację dla systemu iOS, która używa AppAuth z usługi Azure Active Directory B2C, aby zarządzać tożsamościami użytkowników i ich uwierzytelniać.
+title: Korzystanie z AppAuth w aplikacji systemu iOS w Azure Active Directory B2C | Microsoft Docs
+description: W tym artykule pokazano, jak utworzyć aplikację dla systemu iOS, która korzysta z AppAuth z usługą Azure Active Directory B2C, aby zarządzać tożsamościami użytkowników i uwierzytelniać użytkowników.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,67 +10,68 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1f7c864102a4985aa1b2c66e12b42cbe3bc19bca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 96221ffc8249f722268ea5778bee4b4389ded26e
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510096"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326597"
 ---
-# <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: Zaloguj się przy użyciu aplikacji systemu iOS
+# <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: Logowanie przy użyciu aplikacji systemu iOS
 
-Platforma Microsoft Identity korzysta z otwartych standardów, takich jak OAuth2 i OpenID Connect. Za pomocą otwartego protokołu oferuje większy wybór dla deweloperów, podczas wybierania biblioteki można zintegrować z naszymi usługami. Podoba Ci się, aby pomóc deweloperom w pisaniu aplikacji łączących się z platformą Microsoft Identity przygotowaliśmy ten przewodnik i inne. Większość bibliotek implementujących [specyfikację RFC6749 OAuth2](https://tools.ietf.org/html/rfc6749) są w stanie połączyć się z platformą Microsoft Identity.
+Platforma Microsoft Identity korzysta z otwartych standardów, takich jak OAuth2 i OpenID Connect. Korzystanie z protokołu Open standard oferuje deweloperom większą możliwość wyboru podczas wybierania biblioteki do integracji z naszymi usługami. Firma Microsoft udostępniła ten przewodnik i inne osoby, które ułatwiają deweloperom pisanie aplikacji łączących się z platformą tożsamości firmy The. Większość bibliotek implementujących [specyfikację RFC6749 OAuth2](https://tools.ietf.org/html/rfc6749) jest w stanie połączyć się z platformą tożsamości firmy Microsoft.
 
 > [!WARNING]
-> Firma Microsoft udostępnia poprawki dotyczące bibliotek innych firm, a nie zrobił przeglądu tych bibliotek. W tym przykładzie jest przy użyciu biblioteki innej firmy o nazwie AppAuth, który został przetestowany na zgodność w podstawowych scenariuszy z usługą Azure AD B2C. Problemy i sugestie funkcji powinny być kierowane do biblioteki typu open-source projektu. Więcej informacji znajduje się w [tym artykule](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries).
+> Firma Microsoft nie udostępnia poprawek do bibliotek innych firm i nie przeprowadzono przeglądu tych bibliotek. Ten przykład korzysta z biblioteki innej firmy o nazwie AppAuth, która została przetestowana pod kątem zgodności w podstawowych scenariuszach z Azure AD B2C. Problemy i żądania funkcji powinny być kierowane do projektu open-source biblioteki. Więcej informacji znajduje się w [tym artykule](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries).
 >
 >
 
-Jeśli jesteś nowym użytkownikiem OAuth2 lub OpenID Connect, znaczną część tej przykładowej konfiguracji może niezrozumiała dla Ciebie. Zalecamy zapoznanie się z [krótkim omówieniem protokołu w tej dokumentacji](active-directory-b2c-reference-protocols.md).
+Jeśli dopiero zaczynasz korzystać z programu OAuth2 lub OpenID Connect Connect, większość tej przykładowej konfiguracji może nie mieć sensu. Zalecamy zapoznanie się z [krótkim omówieniem protokołu w tej dokumentacji](active-directory-b2c-reference-protocols.md).
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Tworzenie katalogu usługi Azure AD B2C
-Przed rozpoczęciem korzystania z usługi Azure AD B2C należy utworzyć katalog lub dzierżawę. Katalog jest kontenerem dla wszystkich użytkowników, aplikacji, grup i elementów. Jeśli jeszcze go nie masz, [utwórz katalog usługi B2C](tutorial-create-tenant.md), zanim przejdziesz dalej.
+Przed rozpoczęciem korzystania z usługi Azure AD B2C należy utworzyć katalog lub dzierżawę. Katalog jest kontenerem dla wszystkich użytkowników, aplikacji, grup i innych. Jeśli jeszcze go nie masz, [utwórz katalog usługi B2C](tutorial-create-tenant.md), zanim przejdziesz dalej.
 
 ## <a name="create-an-application"></a>Tworzenie aplikacji
-Następnie musisz utworzyć aplikację w katalogu usługi B2C. Rejestracja aplikacji zapewnia usługi Azure AD informacje wymagane do bezpiecznego komunikowania się z aplikacją. Aby utworzyć aplikację mobilną, postępuj zgodnie z [w instrukcjach](active-directory-b2c-app-registration.md). Należy pamiętać o wykonaniu następujących czynności:
 
-* Obejmują **Native client** w aplikacji.
-* Skopiuj **Identyfikator aplikacji** przypisany do aplikacji. Ten identyfikator GUID będą potrzebne później.
-* Konfigurowanie **identyfikator URI przekierowania** ze schematem niestandardowym (na przykład com.onmicrosoft.fabrikamb2c.exampleapp://oauth/redirect). Ten identyfikator URI będzie potrzebna później.
+Następnie zarejestruj aplikację w dzierżawie Azure AD B2C. Dzięki temu usługa Azure AD musi uzyskać bezpieczne komunikowanie się z Twoją aplikacją.
 
-## <a name="create-your-user-flows"></a>Tworzyć przepływy użytkownika
-W usłudze Azure AD B2C każde działanie użytkownika jest definiowany przez [przepływ użytkownika](active-directory-b2c-reference-policies.md). Ta aplikacja zawiera jedno rozwiązanie tożsamości: połączonego logowania i rejestracji. Po utworzeniu przepływu użytkownika, należy koniecznie:
+[!INCLUDE [active-directory-b2c-appreg-native](../../includes/active-directory-b2c-appreg-native.md)]
 
-* W obszarze **atrybuty tworzenia konta**, wybierz atrybut **nazwę wyświetlaną**.  Możesz wybrać, jak również inne atrybuty.
-* W obszarze **oświadczeń aplikacji**, wybierz oświadczenia **nazwę wyświetlaną** i **identyfikator obiektu użytkownika**. Możesz wybrać inne oświadczenia, jak również.
-* Kopiuj **nazwa** każdego przepływu użytkownika po jego utworzeniu. Nazwa przepływu użytkownika jest poprzedzony znakiem `b2c_1_` po zapisaniu przepływu użytkownika.  Przepływ użytkownika będą potrzebne później.
+Zapisz **Identyfikator aplikacji** do użycia w późniejszym kroku. Następnie wybierz aplikację z listy i Zapisz **niestandardowy identyfikator URI przekierowania**, który również zostanie użyty w późniejszym kroku. Na przykład `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
 
-Po utworzeniu przepływów użytkownika możesz przystąpić do kompilowania aplikacji.
+## <a name="create-your-user-flows"></a>Tworzenie przepływów użytkownika
+W Azure AD B2C każde środowisko użytkownika jest definiowane przez [przepływ użytkownika](active-directory-b2c-reference-policies.md). Ta aplikacja zawiera jedno środowisko tożsamości: połączone logowanie i logowanie. Podczas tworzenia przepływu użytkownika upewnij się, że:
 
-## <a name="download-the-sample-code"></a>Pobierz przykładowy kod
-Udostępniliśmy próbkę pracy z zastosowaniem AppAuth za pomocą usługi Azure AD B2C [w serwisie GitHub](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c). Możesz pobrać kod i uruchom go. Aby korzystać z własnej dzierżawy usługi Azure AD B2C, postępuj zgodnie z instrukcjami [README.md](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c/blob/master/README.md).
+* W obszarze **atrybuty rejestracji**wybierz **nazwę wyświetlaną**atrybutu.  Możesz również wybrać inne atrybuty.
+* W obszarze **oświadczenia aplikacji**wybierz **nazwę wyświetlaną** oświadczeń i **Identyfikator obiektu użytkownika**. Możesz również wybrać inne oświadczenia.
+* Skopiuj **nazwę** każdego przepływu użytkownika po jego utworzeniu. Nazwa przepływu użytkownika jest poprzedzona `b2c_1_` podczas zapisywania przepływu użytkownika.  Nazwa przepływu użytkownika będzie potrzebna później.
 
-W tym przykładzie został utworzony zgodnie z instrukcjami w pliku README [iOS AppAuth projektu w witrynie GitHub](https://github.com/openid/AppAuth-iOS). Aby uzyskać więcej informacji na temat sposobu działania przykładu i biblioteki należy odwoływać się AppAuth pliku README w serwisie GitHub.
+Po utworzeniu przepływów użytkowników możesz utworzyć aplikację.
 
-## <a name="modifying-your-app-to-use-azure-ad-b2c-with-appauth"></a>Modyfikowanie aplikacji za pomocą usług Azure AD B2C AppAuth
+## <a name="download-the-sample-code"></a>Pobieranie przykładowego kodu
+Udostępnimy przykład roboczy, który używa usługi AppAuth z usługą Azure AD B2C [w serwisie GitHub](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c). Możesz pobrać kod i uruchomić go. Aby korzystać z własnej dzierżawy Azure AD B2C, postępuj zgodnie z instrukcjami podanymi w [README.MD](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c/blob/master/README.md).
+
+Ten przykład został utworzony przez następujące instrukcje Readme dotyczące [projektu AppAuth systemu iOS w witrynie GitHub](https://github.com/openid/AppAuth-iOS). Aby uzyskać więcej informacji o tym, jak działa przykład i biblioteka, odwołuje się do pliku Readme AppAuth w witrynie GitHub.
+
+## <a name="modifying-your-app-to-use-azure-ad-b2c-with-appauth"></a>Modyfikowanie aplikacji do użycia Azure AD B2C z AppAuth
 
 > [!NOTE]
-> AppAuth obsługuje system iOS 7 i nowsze wersje.  Jednak, aby zapewnić obsługę społecznościowych nazw logowania w usłudze Google, SFSafariViewController jest potrzebny co wymaga systemu iOS 9 lub nowszą.
+> AppAuth obsługuje system iOS 7 lub nowszy.  Jednak w celu zapewnienia obsługi logowań społecznościowych w usłudze Google wymagane jest SFSafariViewController, które wymagają systemu iOS 9 lub nowszego.
 >
 
 ### <a name="configuration"></a>Konfigurowanie
 
-Komunikację można skonfigurować za pomocą usługi Azure AD B2C, określając punkt końcowy autoryzacji i tokena identyfikatory URI punktów końcowych.  Aby wygenerować te identyfikatory URI, potrzebne są następujące informacje:
-* Identyfikator dzierżawy (np. contoso.onmicrosoft.com)
-* Przepływ użytkownika (na przykład B2C\_1\_SignUpIn)
+Komunikację z Azure AD B2C można skonfigurować, określając punkt końcowy autoryzacji i identyfikatory URI punktu końcowego tokenu.  Aby wygenerować te identyfikatory URI, potrzebne są następujące informacje:
+* Identyfikator dzierżawy (na przykład contoso.onmicrosoft.com)
+* Nazwa przepływu użytkownika (na przykład B2C @ no__t-01 @ no__t-1SignUpIn)
 
-Punkt końcowy tokenu identyfikatora URI mogą być generowane przez zastąpienie dzierżawy\_identyfikator i zasady\_nazwy w następującym adresem URL:
+Identyfikator URI punktu końcowego tokenu może zostać wygenerowany przez zastąpienie dzierżawy @ no__t-0ID i zasad @ no__t-1Name w następującym adresie URL:
 
 ```objc
 static NSString *const tokenEndpoint = @"https://<Tenant_name>.b2clogin.com/te/<Tenant_ID>/<Policy_Name>/oauth2/v2.0/token";
 ```
 
-Punkt końcowy autoryzacji, które można wygenerować identyfikatora URI, zastępując dzierżawy\_identyfikator i zasady\_nazwy w następującym adresem URL:
+Identyfikator URI punktu końcowego autoryzacji może zostać wygenerowany przez zastąpienie dzierżawy @ no__t-0ID i zasad @ no__t-1Name w następującym adresie URL:
 
 ```objc
 static NSString *const authorizationEndpoint = @"https://<Tenant_name>.b2clogin.com/te/<Tenant_ID>/<Policy_Name>/oauth2/v2.0/authorize";
@@ -79,21 +80,22 @@ static NSString *const authorizationEndpoint = @"https://<Tenant_name>.b2clogin.
 Uruchom następujący kod, aby utworzyć obiekt AuthorizationServiceConfiguration:
 
 ```objc
-OIDServiceConfiguration *configuration = 
+OIDServiceConfiguration *configuration =
     [[OIDServiceConfiguration alloc] initWithAuthorizationEndpoint:authorizationEndpoint tokenEndpoint:tokenEndpoint];
 // now we are ready to perform the auth request...
 ```
 
 ### <a name="authorizing"></a>Autoryzowanie
 
-Po Konfigurowanie lub pobieranie konfiguracji usługi autoryzacji, można konstruować żądanie autoryzacji. Aby utworzyć żądanie, potrzebne są następujące informacje:  
-* Identyfikator klienta (na przykład 00000000-0000-0000-0000-000000000000)
-* Identyfikator URI przekierowania ze schematem niestandardowym (na przykład com.onmicrosoft.fabrikamb2c.exampleapp://oauth/redirect)
+Po skonfigurowaniu lub pobraniu konfiguracji usługi autoryzacji można utworzyć żądanie autoryzacji. Aby można było utworzyć żądanie, potrzebne są następujące informacje:
 
-Oba elementy powinny zostały zapisane po użytkownik zostały [rejestrując aplikację](#create-an-application).
+* Identyfikator klienta (Identyfikator aplikacji), który został zarejestrowany wcześniej. Na przykład `00000000-0000-0000-0000-000000000000`.
+* Niestandardowy identyfikator URI przekierowania, który został wcześniej zarejestrowany. Na przykład `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
+
+Oba elementy powinny być zapisane podczas [rejestrowania aplikacji](#create-an-application).
 
 ```objc
-OIDAuthorizationRequest *request = 
+OIDAuthorizationRequest *request =
     [[OIDAuthorizationRequest alloc] initWithConfiguration:configuration
                                                   clientId:kClientId
                                                     scopes:@[OIDScopeOpenID, OIDScopeProfile]
@@ -102,7 +104,7 @@ OIDAuthorizationRequest *request =
                                       additionalParameters:nil];
 
 AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-appDelegate.currentAuthorizationFlow = 
+appDelegate.currentAuthorizationFlow =
     [OIDAuthState authStateByPresentingAuthorizationRequest:request
                                    presentingViewController:self
                                                    callback:^(OIDAuthState *_Nullable authState, NSError *_Nullable error) {
@@ -116,16 +118,16 @@ appDelegate.currentAuthorizationFlow =
     }];
 ```
 
-Aby skonfigurować aplikację w celu obsługi przekierowania do identyfikatora URI ze schematem niestandardowym, należy zaktualizować listę "Schematy adresów URL" w pliku Info.pList:
-* Otwórz plik Info.pList.
-* Umieść kursor nad wiersz, takie jak "Kod typu systemu operacyjnego pakietu", a następnie kliknij przycisk \+ symboli.
-* Zmień nazwę nowego wiersza "Typy adresów URL".
-* Kliknij strzałkę po lewej stronie "Typy adresów URL" Aby otworzyć drzewa.
-* Kliknij strzałkę po lewej stronie "elementu 0", aby otworzyć drzewa.
-* Zmień nazwę pierwszego elementu poniżej elementu 0 do "Schematy adresów URL".
-* Kliknij strzałkę po lewej stronie "Schematy adresów URL", aby otworzyć drzewa.
-* W kolumnie 'Value' jest puste pole na lewo od elementu 0 poniżej "Schematy adresów URL".  Ustaw wartość na schemat unikatowy Twojej aplikacji.  Wartość musi odpowiadać używany w redirectURL podczas tworzenia obiektu OIDAuthorizationRequest schemat.  W tym przykładzie używany jest schemat "com.onmicrosoft.fabrikamb2c.exampleapp".
+Aby skonfigurować aplikację do obsługi przekierowania do identyfikatora URI przy użyciu niestandardowego schematu, należy zaktualizować listę "schematy adresów URL" w info. pList:
+* Otwórz info. pList.
+* Umieść kursor nad wierszem, taki jak "kod typu systemu operacyjnego" i kliknij symbol \+.
+* Zmień nazwę nowego wiersza "typy adresów URL".
+* Kliknij strzałkę po lewej stronie "typy adresów URL", aby otworzyć drzewo.
+* Kliknij strzałkę po lewej stronie elementu "Item 0", aby otworzyć drzewo.
+* Zmień nazwę pierwszego elementu pod pozycją od 0 do "schematy adresów URL".
+* Kliknij strzałkę po lewej stronie "schematy adresów URL", aby otworzyć drzewo.
+* W kolumnie "value" istnieje puste pole po lewej stronie elementu "Item 0" poniżej "schematy adresów URL".  Ustaw wartość na unikatowy schemat aplikacji.  Wartość musi być zgodna ze schematem używanym w redirectURL podczas tworzenia obiektu OIDAuthorizationRequest.  W przykładzie używany jest schemat "com. onmicrosoft. fabrikamb2c. ExampleApp".
 
-Zapoznaj się [przewodnik AppAuth](https://openid.github.io/AppAuth-iOS/) na temat sposobu ukończenia pozostałej części procesu. Jeśli potrzebujesz szybko rozpocząć pracę z działającą aplikację, zapoznaj się z [próbki](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c). Postępuj zgodnie z instrukcjami w [README.md](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c/blob/master/README.md) wprowadzić konfigurację usługi Azure AD B2C.
+Zapoznaj się z [przewodnikiem AppAuth](https://openid.github.io/AppAuth-iOS/) dotyczącym kończenia pozostałej części procesu. Jeśli musisz szybko rozpocząć pracę z działającą aplikacją, zapoznaj [się z przykładem](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c). Postępuj zgodnie z instrukcjami w [README.MD](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c/blob/master/README.md) , aby wprowadzić własną konfigurację Azure AD B2C.
 
-Firma Microsoft zawsze są otwarte opinie i sugestie! Jeśli mają trudności z tym artykułem lub poprawić tę zawartość, prosimy o wyrażenie opinii na dole strony. Żądania funkcji, dodaj je do [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c).
+Zawsze jest otwarta opinia i sugestii. Jeśli masz jakiekolwiek problemy z tym artykułem lub zawarto zalecenia dotyczące poprawy tej zawartości, będziemy wdzięczni za opinię w dolnej części strony. W przypadku żądań funkcji Dodaj je do usługi [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c).

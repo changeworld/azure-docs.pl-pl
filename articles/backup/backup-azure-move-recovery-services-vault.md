@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: dacurwin
-ms.openlocfilehash: 960ddcc2a082b247951b0f79d0c990acc5e557e1
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 6e95c012aed9fdcfda2b64c310458425df2b9f9e
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210386"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71337887"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Przenoszenie magazynu Recovery Services w ramach subskrypcji i grup zasobów platformy Azure
 
@@ -38,7 +38,7 @@ Przenoszenie zasobów dla magazynu Recovery Services jest obsługiwane w Austral
 - Opcje przeniesienia zasobów wdrożonych za pomocą modelu klasycznego różnią się w zależności od tego, czy przenosisz zasoby w ramach subskrypcji, czy na nową subskrypcję. Więcej informacji znajduje się w [tym](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources) artykule.
 - Zasady tworzenia kopii zapasowych zdefiniowane dla magazynu są zachowywane po przejściu magazynu między subskrypcjami lub nową grupą zasobów.
 - Przeniesienie magazynu z użyciem Azure Files, Azure File Sync lub SQL na maszynach wirtualnych IaaS w ramach subskrypcji i grup zasobów nie jest obsługiwane.
-- W przypadku przenoszenia magazynu zawierającego dane kopii zapasowej maszyny wirtualnej między subskrypcjami należy przenieść maszyny wirtualne do tej samej subskrypcji, a następnie użyć tej samej docelowej grupy zasobów do kontynuowania wykonywania kopii zapasowych.<br>
+- W przypadku przenoszenia magazynu zawierającego dane kopii zapasowej maszyny wirtualnej między subskrypcjami należy przenieść maszyny wirtualne do tej samej subskrypcji i użyć tej samej nazwy docelowej grupy zasobów maszyny wirtualnej (ponieważ była w starej subskrypcji) w celu kontynuowania wykonywania kopii zapasowych.<br>
 
 > [!NOTE]
 >

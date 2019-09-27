@@ -1,111 +1,111 @@
 ---
-title: Samouczek — udostępniać dane z klientami i partnerami przy użyciu udziału danych platformy Azure w wersji zapoznawczej
-description: Samouczek — udostępniać dane z klientami i partnerami przy użyciu udziału danych platformy Azure w wersji zapoznawczej
+title: 'Samouczek: Udostępnianie poza swoją organizacji — wersja zapoznawcza usługi Azure Data Share'
+description: Samouczek — udostępnianie danych klientom i partnerom przy użyciu wersji zapoznawczej usługi Azure Data Share
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: 01888f3656765b922c1b646e7ca8e07d81e799f3
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: f7df46a6a6f149ef0228fda8c967469a25dc3d50
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67838418"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327416"
 ---
-# <a name="tutorial-share-your-data-using-azure-data-share-preview"></a>Samouczek: Udostępnianie danych przy użyciu udziału danych platformy Azure w wersji zapoznawczej
+# <a name="tutorial-share-your-data-using-azure-data-share-preview"></a>Samouczek: Udostępnianie danych przy użyciu wersji zapoznawczej usługi Azure Data Share
 
-W tym samouczku dowiesz się, jak skonfigurować nowego udziału danych platformy Azure i Rozpocznij udostępnianie Twoje dane z klientami i partnerami spoza organizacji platformy Azure. 
+W tym samouczku dowiesz się, jak skonfigurować nowy udział danych platformy Azure i zacząć udostępniać dane klientom i partnerom spoza organizacji platformy Azure. 
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Utwórz udział danych.
-> * Dodaj zestawy danych do udziału danych.
+> * Dodaj zestawy danych do swojego udziału.
 > * Włącz harmonogram synchronizacji dla udziału danych. 
-> * Dodaj adresatów, do udziału danych. 
+> * Dodaj adresatów do udziału danych. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Subskrypcja platformy Azure: Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
-* Konto usługi Azure Storage: Jeśli nie masz jeszcze jeden, możesz utworzyć [konta usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* Uprawnienia do dodawania przypisania roli do konta magazynu, który jest obecny w *Microsoft.Authorization/role przypisania/zapis* uprawnień. To uprawnienie istnieje w roli właściciela. 
-* Adres e-mail logowania do platformy Azure adresatów (przy użyciu ich alias adresu e-mail nie będą działać).
+* Konto usługi Azure Storage: Jeśli jeszcze tego nie masz, możesz utworzyć [konto usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Uprawnienie do dodawania przypisywania roli do konta magazynu, które jest obecne w uprawnieniach *Microsoft. Autoryzacja/Przypisywanie ról/zapis* . To uprawnienie istnieje w roli właściciela. 
+* Adresaci adresu e-mail logowania platformy Azure (przy użyciu aliasu poczty e-mail nie będą zadziałały).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
 Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
-## <a name="create-a-data-share-account"></a>Utwórz konto udostępniania danych
+## <a name="create-a-data-share-account"></a>Tworzenie konta udziału danych
 
 Utwórz zasób udziału danych platformy Azure w grupie zasobów platformy Azure.
 
 1. Wybierz przycisk **Utwórz zasób** (+) w lewym górnym rogu portalu.
 
-1. Wyszukaj *udziału danych*.
+1. Wyszukaj *udział danych*.
 
-1. Wybierz udział danych (wersja zapoznawcza) i wybierz pozycję **Utwórz**.
+1. Wybierz pozycję udział danych (wersja zapoznawcza) i wybierz pozycję **Utwórz**.
 
-1. Wprowadź podstawowe szczegóły zasobu udziału danych platformy Azure z poniższymi informacjami. 
+1. Wypełnij podstawowe szczegóły zasobu udziału danych platformy Azure, korzystając z poniższych informacji. 
 
      **Ustawienie** | **Sugerowana wartość** | **Opis pola**
     |---|---|---|
-    | Name (Nazwa) | *datashareacount* | Określ nazwę dla swojego konta udziału danych. |
-    | Subscription | Twoja subskrypcja | Wybierz subskrypcję platformy Azure, którego chcesz używać dla swojego konta udziału danych.|
+    | Name | *datashareacount* | Określ nazwę konta udziału danych. |
+    | Subscription | Twoja subskrypcja | Wybierz subskrypcję platformy Azure, która ma być używana dla konta udziału danych.|
     | Resource group | *test-resource-group* | Użyj istniejącej grupy zasobów lub utwórz nową. |
-    | Location | *East US 2* | Wybierz region dla swojego konta udziału danych.
+    | Location | *Wschodnie stany USA 2* | Wybierz region dla konta udziału danych.
     | | |
 
-1. Wybierz **Utwórz** aprowizację swojego konta udziału danych. Aprowizacja nowego konta udziału danych zazwyczaj zajmuje około 2 minuty lub mniej. 
+1. Wybierz pozycję **Utwórz** , aby zainicjować obsługę administracyjną konta udziału danych. Inicjowanie obsługi nowego konta udziału danych zwykle trwa około 2 minuty. 
 
 1. Po zakończeniu wdrażania wybierz pozycję **Przejdź do zasobu**.
 
-## <a name="create-a-data-share"></a>Utwórz udział danych
+## <a name="create-a-data-share"></a>Tworzenie udziału danych
 
 1. Przejdź do strony Przegląd udostępniania danych.
 
-    ![Udostępnianie danych](./media/share-receive-data.png "udostępniać swoje dane") 
+    ![Udostępnianie danych]do(./media/share-receive-data.png "udostępniania danych") 
 
-1. Wybierz **Rozpocznij udostępnianie Twoje dane**.
+1. Wybierz pozycję **Rozpocznij udostępnianie danych**.
 
 1. Wybierz pozycję **Utwórz**.   
 
-1. Wypełnij szczegóły dla udziału danych. Określ nazwę, opis zawartości udziału i warunki użytkowania (opcjonalnie). 
+1. Wypełnij szczegóły dotyczące udziału danych. Określ nazwę, opis zawartości udziału i warunki użytkowania (opcjonalnie). 
 
-    ![EnterShareDetails](./media/enter-share-details.png "wprowadź szczegóły") 
+    ![EnterShareDetails](./media/enter-share-details.png "Wprowadź szczegóły udostępniania") 
 
-1. Wybierz **kontynuować**
+1. Wybierz pozycję **Kontynuuj**
 
-1. Aby dodać zestawy danych do udziału danych, wybierz **dodać zestawy danych**. 
+1. Aby dodać zbiory danych do swojego udziału, wybierz pozycję **Dodaj zestawy**. 
 
-    ![Zestawy danych](./media/datasets.png "zestawów danych")
+    (./media/datasets.png "Zestawy danych") ![DataSets]
 
 1. Wybierz typ zestawu danych, który chcesz dodać. 
 
-    ![AddDatasets](./media/add-datasets.png "dodać zestawy danych")    
+    ![Adddatasets](./media/add-datasets.png "Add DataSets")    
 
-1. Przejdź do obiektu, który chcesz udostępnić, a następnie wybierz pozycję "Dodaj zestawy danych". 
+1. Przejdź do obiektu, który chcesz udostępnić, i wybierz pozycję "Dodaj zestawy danych". 
 
     ![SelectDatasets](./media/select-datasets.png "Wybierz zestawy danych")    
 
-1. Na karcie adresatów wprowadź adresy e-mail konsumentów danych, wybierając pozycję "+ Dodaj adresata". 
+1. Na karcie adresaci wprowadź adres e-mail odbiorcy danych, wybierając pozycję "+ Dodaj odbiorcę". 
 
-    ![AddRecipients](./media/add-recipient.png "Dodaj adresatów") 
+    ![](./media/add-recipient.png "Dodawanie adresatów dla odbiorców") 
 
-1. Wybierz **kontynuować**
+1. Wybierz pozycję **Kontynuuj**
 
-1. Jeśli chcesz usługi konsumenta danych, aby można było uzyskać aktualizacje przyrostowe dane, należy włączyć harmonogramu migawek. 
+1. Jeśli chcesz, aby odbiorca danych mógł uzyskać aktualizacje przyrostowe danych, Włącz harmonogram migawek. 
 
     ![EnableSnapshots](./media/enable-snapshots.png "Włącz migawki") 
 
-1. Wybierz interwał czasu i ponownego uruchamiania. 
+1. Wybierz czas rozpoczęcia i interwał cyklu. 
 
-1. Wybierz **kontynuować**
+1. Wybierz pozycję **Kontynuuj**
 
-1. W przeglądzie + Utwórz kartę, przejrzyj zawartość pakietu, ustawienia, adresaci i ustawień synchronizacji. Wybierz pozycję **Utwórz**
+1. Na karcie Recenzja + tworzenie przejrzyj zawartość pakietu, ustawienia, adresatów i ustawienia synchronizacji. Wybierz pozycję **Utwórz**
 
-Udziału danych platformy Azure została utworzona, a odbiorca udziału danych jest teraz gotowy umożliwiający zaakceptowanie zaproszenia. 
+Udział danych platformy Azure został utworzony, a odbiorca Twojego udziału danych jest teraz gotowy do zaakceptowania Twojego zaproszenia. 
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku możesz dzięki modelom uczenia sposobu tworzenia udziału danych platformy Azure i Zaproś adresatów. Aby dowiedzieć się, jak konsumenta danych może akceptować i otrzymywać udziału danych, w dalszym ciągu [akceptować i odbierać dane](subscribe-to-data-share.md) samouczka. 
+W tym samouczku przedstawiono sposób tworzenia udziału danych platformy Azure i zapraszania adresatów. Aby dowiedzieć się, jak odbiorca danych może zaakceptować i odebrać udział danych, przejdź do samouczka [akceptowanie i odbieranie danych](subscribe-to-data-share.md) . 

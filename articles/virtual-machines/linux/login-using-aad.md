@@ -3,7 +3,7 @@ title: Logowanie do maszyny wirtualnej z systemem Linux przy użyciu poświadcze
 description: Dowiedz się, jak utworzyć i skonfigurować maszynę wirtualną z systemem Linux, aby zalogować się przy użyciu uwierzytelniania Azure Active Directory.
 services: virtual-machines-linux
 documentationcenter: ''
-author: cynthn
+author: iainfoulds
 manager: gwallace
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
-ms.author: cynthn
-ms.openlocfilehash: e30adf8b694d744e64fb7528b75b85d4a772a723
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.author: iainfou
+ms.openlocfilehash: b473844f1507285e0052ca1f8de00f6ca3207e6f
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316759"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327093"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Wersja zapoznawcza: Logowanie do maszyny wirtualnej z systemem Linux na platformie Azure przy użyciu uwierzytelniania Azure Active Directory
 
@@ -88,7 +88,7 @@ Utworzenie maszyny wirtualnej i zasobów pomocniczych potrwa kilka minut.
 ## <a name="install-the-azure-ad-login-vm-extension"></a>Zainstaluj rozszerzenie maszyny wirtualnej do logowania do usługi Azure AD
 
 > [!NOTE]
-> W przypadku wdrażania tego exention do wcześniej utworzonej maszyny wirtualnej upewnij się, że maszyna ma co najmniej 1 GB przydzieloną pamięć, w przeciwnym razie rozszerzenie nie zostanie zainstalowane
+> W przypadku wdrażania tego rozszerzenia na wcześniej utworzonej maszynie wirtualnej upewnij się, że maszyna ma co najmniej 1 GB przydzieloną pamięć, w przeciwnym razie rozszerzenie nie zostanie zainstalowane
 
 Aby zalogować się do maszyny wirtualnej z systemem Linux przy użyciu poświadczeń usługi Azure AD, zainstaluj rozszerzenie maszyny wirtualnej logowania Azure Active Directory. Rozszerzenia maszyn wirtualnych to małe aplikacje, które zapewniają konfigurację po wdrożeniu i zadania automatyzacji na maszynach wirtualnych platformy Azure. Użyj opcji [AZ VM Extension Set](/cli/azure/vm/extension#az-vm-extension-set) , aby zainstalować rozszerzenie *AADLoginForLinux* na maszynie wirtualnej o nazwie *myVM* w *grupie zasobów* :
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: 9664beca514abcbad4eca7c8f9dc1b494018802e
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: deb13b833707849bcbce8bcae7b05aeb5e0bce3b
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535190"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338873"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Konfigurowanie i Konfigurowanie integracji raportów o kosztach i użyciu AWS
 
@@ -40,13 +40,13 @@ Na stronie **raporty dotyczące użycia & kosztów** w konsoli rozliczeń i Cost
 9. W oknie dialogowym Konfigurowanie zasobnika S3 wykonaj jedną z następujących czynności:
     1. Wybierz istniejący zasobnik z listy rozwijanej i wybierz pozycję **dalej**.
     2. Wprowadź nazwę zasobnika i region, w którym chcesz utworzyć nowy zasobnik, a następnie wybierz przycisk **dalej**.
-10. Zaznacz pole wyboru Potwierdzam, **że te zasady są poprawne**, a następnie kliknij przycisk **Zapisz**.
+10. Zaznacz pole wyboru **potwierdzam, że te zasady są poprawne**, a następnie kliknij przycisk **Zapisz**.
 11. Obowiązkowe W polu Prefiks ścieżki raportu wprowadź prefiks ścieżki raportu, który ma zostać poprzedzony nazwą raportu.
-Jeśli nie określisz prefiksu, domyślnym prefiksem jest nazwa określona dla raportu. Zakres dat ma `/report-name/date-range/` format.
+Jeśli nie określisz prefiksu, domyślnym prefiksem jest nazwa określona dla raportu. Zakres dat ma format `/report-name/date-range/`.
 12. Dla **jednostki czasu**wybierz opcję **co godzinę**.
 13. W celu zapewnienia obsługi **wersji raportów**wybierz, czy chcesz, aby każda wersja raportu zastąpiła poprzednią wersję, lub jeśli chcesz uzyskać dodatkowe nowe raporty.
 14. W przypadku **włączania integracji danych dla programu**nie jest wymagane zaznaczenie.
-15. Wobszarze kompresja wybierz pozycję **gzip**.
+15. W obszarze **kompresja**wybierz pozycję **gzip**.
 16. Wybierz opcję **Dalej**.
 17. Po przejrzeniu ustawień raportu wybierz pozycję **Przegląd i zakończenie**.
 
@@ -68,10 +68,10 @@ Użyj Kreatora tworzenia nowej roli:
 4. Na następnej stronie wybierz **inne konto AWS**.
 5. W polu **Identyfikator konta**wprowadź **432263259397**.
 6. W obszarze **Opcje**wybierz pozycję **Wymagaj zewnętrznego identyfikatora (najlepszym rozwiązaniem, gdy ta rola zostanie przyjęta przez osobę trzecią)** .
-7. W polu **Identyfikator zewnętrzny**wprowadź identyfikator zewnętrzny. Identyfikator zewnętrzny to współużytkowany kod dostępu między rolą AWS i Azure Cost Management. Ten sam identyfikator zewnętrzny jest również używany na **nowej** stronie łącznika w Cost Management. Na przykład zewnętrzny identyfikator przypomina _Companyname1234567890123_.
+7. W polu **Identyfikator zewnętrzny**wprowadź identyfikator zewnętrzny. Identyfikator zewnętrzny to współużytkowany kod dostępu między rolą AWS i Azure Cost Management. Ten sam identyfikator zewnętrzny jest również używany na **nowej stronie łącznika** w Cost Management. Na przykład zewnętrzny identyfikator przypomina _Companyname1234567890123_.
 
     > [!NOTE]
-    > Nie zmieniaj zaznaczenia dla opcji **Wymagaj uwierzytelniania**wieloskładnikowego. Powinien pozostać wyczyszczony.
+    > Nie zmieniaj zaznaczenia dla opcji **Wymagaj uwierzytelniania wieloskładnikowego**. Powinien pozostać wyczyszczony.
 8. Wybierz opcję **Dalej: Permissions** (Dalej: uprawnienia).
 9. Wybierz pozycję **Utwórz zasady**. Zostanie otwarta nowa karta przeglądarki. Jest to miejsce, w którym tworzysz zasady.
 10. Wybierz pozycję **Wybierz usługę**.
@@ -79,15 +79,15 @@ Użyj Kreatora tworzenia nowej roli:
 Skonfiguruj uprawnienia do raportu o kosztach i użyciu:
 
 1. Wprowadź **raport dotyczący kosztów i użycia**.
-2. Wybierz pozycję **poziom** > dostępu Odczytaj > **DescribeReportDefinitions**. Ten krok umożliwia Cost Management odczytywanie, jakie bieżące raporty są zdefiniowane, i ustalanie, czy są one zgodne z wymaganiami wstępnymi definicji raportu.
+2. Wybierz pozycję **poziom dostępu** > **Odczyt** > **DescribeReportDefinitions**. Ten krok umożliwia Cost Management odczytywanie, jakie bieżące raporty są zdefiniowane, i ustalanie, czy są one zgodne z wymaganiami wstępnymi definicji raportu.
 3. Wybierz pozycję **Dodaj dodatkowe uprawnienia**.
 
 Skonfiguruj uprawnienie do przedziału i obiektów S3:
 
 1. Wybierz pozycję **Wybierz usługę**.
 2. Wprowadź **S3**.
-3. Wybierz pozycję **poziom** > dostępu**Lista** > **ListBucket**. Ta akcja pobiera listę obiektów w zasobniku S3.
-4. Wybierz pozycję **poziom** > dostępu**Odczyt** > **GetObject**. Ta akcja umożliwia pobranie plików rozliczeń.
+3. Wybierz pozycję **poziom dostępu** > **Lista** > **ListBucket**. Ta akcja pobiera listę obiektów w zasobniku S3.
+4. Wybierz pozycję **poziom dostępu** > **Odczyt** > **GetObject**. Ta akcja umożliwia pobranie plików rozliczeń.
 5. Wybierz pozycję **zasoby**.
 6. Wybierz **zasobnik — Dodaj ARN**.
 7. W polu **Nazwa zasobnika**wprowadź zasobnik używany do przechowywania plików CUR.
@@ -100,13 +100,13 @@ Konfigurowanie uprawnień dla Eksploratora kosztów:
 
 1. Wybierz pozycję **Wybierz usługę**.
 2. Wprowadź **usługę w Eksploratorze kosztów**.
-3. Wybierz pozycję **wszystkie akcje usługi w Eksploratorze kosztów (\*CE:)** . Ta akcja sprawdza, czy kolekcja jest poprawna.
+3. Wybierz pozycję **wszystkie akcje usługi Cost Explorer (CE: \*)** . Ta akcja sprawdza, czy kolekcja jest poprawna.
 4. Wybierz pozycję **Dodaj dodatkowe uprawnienia**.
 
 Dodaj uprawnienie dla organizacji AWS:
 
 1. Wprowadź **organizację**.
-2. Wybierz pozycję **poziom** > dostępu**Lista** > **ListAccounts**. Ta akcja pobiera nazwy kont.
+2. Wybierz pozycję **poziom dostępu** > **Lista** > **ListAccounts**. Ta akcja pobiera nazwy kont.
 3. W obszarze **Przegląd zasad**wprowadź nazwę nowych zasad. Sprawdź, czy wprowadzono poprawne informacje, a następnie wybierz pozycję **Utwórz zasady**.
 4. Wróć do poprzedniej karty i Odśwież stronę sieci Web przeglądarki. Na pasku wyszukiwania Wyszukaj nowe zasady.
 5. Wybierz opcję **Dalej: Review** (Dalej: przegląd).
@@ -114,7 +114,7 @@ Dodaj uprawnienie dla organizacji AWS:
 
     Zanotuj rolę ARN i identyfikator zewnętrzny użyty w poprzednich krokach podczas tworzenia roli. Będziesz ich używać później podczas konfigurowania łącznika Azure Cost Management.
 
-KOD JSON zasad powinien wyglądać podobnie do poniższego przykładu. Zastąp wartość nazwą Twojego przedziału S3.
+KOD JSON zasad powinien wyglądać podobnie do poniższego przykładu. Zastąp _wartość nazwą Twojego_ przedziału S3.
 
 ```JSON
 {
@@ -151,12 +151,12 @@ KOD JSON zasad powinien wyglądać podobnie do poniższego przykładu. Zastąp w
 Skorzystaj z poniższych informacji, aby utworzyć łącznik AWS i rozpocząć monitorowanie kosztów AWS:
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Przejdź do **Cost Management i** > **Cost Management**rozliczeń.
+2. Przejdź do **Cost Management i Rozliczeń** > **Cost Management**.
 3. W obszarze **Ustawienia**wybierz pozycję **Łączniki chmury (wersja zapoznawcza)** .  
-    ![Przykład wyświetlania ustawienia](./media/aws-integration-setup-configure/cloud-connectors-preview01.png)łączników w chmurze (wersja zapoznawcza).
+    ![Example pokazujący ustawienie łączników Cloud (wersja zapoznawcza) ](./media/aws-integration-setup-configure/cloud-connectors-preview01.png).
 4. Wybierz pozycję **+ Dodaj** w górnej części strony, aby utworzyć łącznik.
 5. Na stronie **Tworzenie łącznika AWS** w polu **Nazwa wyświetlana**wprowadź nazwę łącznika.  
-    ![Przykładowa strona do tworzenia łącznika AWS](./media/aws-integration-setup-configure/create-aws-connector01.png)
+    ![Example strony na potrzeby tworzenia łącznika AWS @ no__t-1
 6. Opcjonalnie wybierz domyślną grupę zarządzania. Zostaną zapisane wszystkie wykryte połączone konta. Można skonfigurować go później.
 7. W sekcji **rozliczenia** wybierz opcję **automatycznie naliczaj wartość 1%,** Jeśli chcesz zapewnić ciągłą operację po wygaśnięciu wersji zapoznawczej. W przypadku wybrania opcji automatyczna należy wybrać subskrypcję rozliczeń.
 8. Dla **roli ARN**wprowadź wartość użytą podczas konfigurowania roli w programie AWS.
@@ -172,7 +172,7 @@ Przypisanie uprawnień łącznika do użytkowników po wystąpieniu odnajdywania
 
 ## <a name="take-additional-steps"></a>Wykonaj dodatkowe czynności
 
-- [Skonfiguruj grupy zarządzania](../governance/management-groups/index.md#initial-setup-of-management-groups), jeśli jeszcze tego nie zrobiono.
+- [Skonfiguruj grupy zarządzania](../governance/management-groups/overview.md#initial-setup-of-management-groups), jeśli jeszcze tego nie zrobiono.
 - Sprawdź, czy nowe zakresy są dodawane do selektora zakresu. Wybierz pozycję **Odśwież** , aby wyświetlić najnowsze dane.
 - Na stronie **łączniki w chmurze** wybierz swój łącznik i wybierz pozycję **Przejdź do konta rozliczeniowego** , aby przypisać połączone konto do grup zarządzania.
 
@@ -189,7 +189,7 @@ Po wybraniu łącznika na stronie **łączniki w chmurze** można wykonać nast�
 
 ## <a name="set-up-azure-management-groups"></a>Konfigurowanie grup zarządzania platformy Azure
 
-Umieść subskrypcje platformy Azure i AWS połączone konta w tej samej grupie zarządzania, aby utworzyć pojedynczą lokalizację, w której można wyświetlić informacje o dostawcach międzychmurowych. Jeśli środowisko platformy Azure nie zostało jeszcze skonfigurowane w grupach zarządzania, zobacz [początkowa konfiguracja grup zarządzania](../governance/management-groups/index.md#initial-setup-of-management-groups).
+Umieść subskrypcje platformy Azure i AWS połączone konta w tej samej grupie zarządzania, aby utworzyć pojedynczą lokalizację, w której można wyświetlić informacje o dostawcach międzychmurowych. Jeśli środowisko platformy Azure nie zostało jeszcze skonfigurowane w grupach zarządzania, zobacz [początkowa konfiguracja grup zarządzania](../governance/management-groups/overview.md#initial-setup-of-management-groups).
 
 Jeśli chcesz rozdzielić koszty, możesz utworzyć grupę zarządzania, która zawiera tylko połączone konta AWS.
 
