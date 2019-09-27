@@ -143,20 +143,20 @@ Przy `AADClientCertificate`użyciu:
 | Name (Nazwa) | Wartość / przykład | Typ danych |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.Azure.Security | ciąg |
-| type | AzureDiskEncryptionForLinux | ciąg |
+| publisher | Microsoft.Azure.Security | string |
+| type | AzureDiskEncryptionForLinux | string |
 | typeHandlerVersion | 0,1, 1,1 | int |
-| (schemat 0,1) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | ident | 
-| (schemat 0,1) AADClientSecret | password | ciąg |
-| (schemat 0,1) AADClientCertificate | thumbprint | ciąg |
+| (schemat 0,1) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
+| (schemat 0,1) AADClientSecret | password | string |
+| (schemat 0,1) AADClientCertificate | thumbprint | string |
 | DiskFormatQuery | {"dev_path": "", "name": "", "file_system": ""} | Słownik JSON |
-| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | ciąg | 
-| KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | ciąg |
-| KeyEncryptionKeyURL | url | ciąg |
-| KeyVaultURL | url | ciąg |
-| obowiązkowe Danym | password | ciąg | 
-| SequenceVersion | uniqueidentifier | ciąg |
-| Liczba woluminów | System operacyjny, dane, wszystkie | ciąg |
+| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
+| KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | string |
+| KeyEncryptionKeyURL | url | string |
+| KeyVaultURL | url | string |
+| obowiązkowe Passphrase | password | string | 
+| SequenceVersion | uniqueidentifier | string |
+| VolumeType | OS, Data, All | string |
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
 Aby zapoznać się z przykładem wdrożenia szablonów, zobacz [Tworzenie nowej zaszyfrowanej maszyny wirtualnej z systemem Windows na podstawie obrazu z galerii](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image).
