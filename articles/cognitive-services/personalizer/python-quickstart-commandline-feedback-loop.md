@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/12/2019
+ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: 014a5f264b9beed666f718cda52d197381d58876
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 877a28e5f672bbd61bad2b4c5c9175c7dafa71ab
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266257"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345334"
 ---
 # <a name="quickstart-personalize-client-library-for-python"></a>Szybki start: Personalizowanie biblioteki klienckiej dla języka Python
 
@@ -33,9 +33,19 @@ Rozpocznij pracę z biblioteką klienta personalizacji dla języka Python. Wykon
 * Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/)
 * [Python 3.x](https://www.python.org/)
 
-## <a name="setting-up"></a>Konfigurowanie
+## <a name="using-this-quickstart"></a>Korzystanie z tego przewodnika Szybki Start
 
-### <a name="create-a-personalizer-azure-resource"></a>Tworzenie zasobu platformy Azure dla programu personalizacji
+
+Aby skorzystać z tego przewodnika Szybki Start, należy wykonać kilka czynności:
+
+* W Azure Portal Utwórz zasób personalizacji
+* W Azure Portal dla zasobu Personalizacja na stronie **Ustawienia** Zmień częstotliwość aktualizacji modelu
+* W edytorze kodu Utwórz plik kodu i edytuj plik kodu
+* W wierszu polecenia lub terminalu Zainstaluj zestaw SDK z wiersza polecenia
+* W wierszu polecenia lub terminalu uruchom plik kodu
+
+
+## <a name="create-a-personalizer-azure-resource"></a>Tworzenie zasobu platformy Azure dla programu personalizacji
 
 Usługa Azure Cognitive Services jest reprezentowana przez zasoby platformy Azure, które subskrybujesz. Utwórz zasób dla narzędzia Personalizacja przy użyciu [Azure Portal](https://portal.azure.com/) lub [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) na komputerze lokalnym. Aby uzyskać więcej informacji, zapoznaj się z [tematem jak utworzyć zasób Cognitive Services przy użyciu Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) . Możesz również wykonać następujące czynności:
 
@@ -50,7 +60,7 @@ Po otrzymaniu klucza z subskrypcji próbnej lub zasobu Utwórz dwie [zmienne śr
 W Azure Portal wartości klucza i punktu końcowego są dostępne na stronie **Szybki Start** .
 
 
-### <a name="install-the-python-library-for-personalizer"></a>Zainstaluj bibliotekę języka Python dla programu Personalizacja
+## <a name="install-the-python-library-for-personalizer"></a>Zainstaluj bibliotekę języka Python dla programu Personalizacja
 
 Zainstaluj bibliotekę klienta programu Personalizacja dla języka Python za pomocą następującego polecenia:
 
@@ -60,9 +70,9 @@ pip install azure-cognitiveservices-personalizer
 
 Jeśli używasz środowiska IDE programu Visual Studio, Biblioteka kliencka jest dostępna jako pakiet NuGet do pobrania.
 
-### <a name="change-the-model-update-frequency"></a>Zmień częstotliwość aktualizacji modelu
+## <a name="change-the-model-update-frequency"></a>Zmień częstotliwość aktualizacji modelu
 
-W zasobie Personalizuj w Azure Portal Zmień **częstotliwość aktualizacji modelu** na 10 sekund. Dzięki temu będzie można szybko przeszkolić usługę, co pozwoli zobaczyć, jak Górna akcja zmienia się dla każdej iteracji.
+W Azure Portal na stronie **Ustawienia** w zasobów personalizacji Zmień **częstotliwość aktualizacji modelu** na 10 sekund. Dzięki temu będzie można szybko przeszkolić usługę, co pozwoli zobaczyć, jak Górna akcja zmienia się dla każdej iteracji.
 
 ![Zmień częstotliwość aktualizacji modelu](./media/settings/configure-model-update-frequency-settings.png)
 
@@ -92,7 +102,7 @@ Utwórz nową aplikację w języku Python przy użyciu preferowanego edytora lub
 
 ## <a name="add-the-dependencies"></a>Dodawanie zależności
 
-W katalogu projektu Otwórz plik **program.cs** w preferowanym edytorze lub w środowisku IDE. Zastąp istniejący `using` kod następującymi `using` dyrektywami:
+W katalogu projektu Otwórz plik **Sample.py** w preferowanym edytorze lub w środowisku IDE. Dodaj następujące elementy:
 
 [!code-python[Add module dependencies](~/samples-personalizer/quickstarts/python/sample.py?name=Dependencies)]
 

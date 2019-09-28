@@ -16,12 +16,12 @@ ms.date: 09/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66e53298625e2388e102b5a4e835fe22a9c81a21
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 467fbc421cdd681d0aab52faf75a4987ee849b15
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71314956"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345526"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Program Azure AD Connect: Historia wersji
 Zespół Azure Active Directory (Azure AD) regularnie aktualizuje Azure AD Connect za pomocą nowych funkcji i funkcji. Nie wszystkie dodatki są stosowane dla wszystkich odbiorców.
@@ -43,14 +43,14 @@ Pobierz | [Pobierz Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615
 W trakcie tego procesu numer wersji wersji będzie wyświetlany jako "X" w pozycji pomocniczej numer wersji, jak w "1.3. X. 0" — oznacza to, że informacje o wersji w tym dokumencie są prawidłowe dla wszystkich wersji zaczynających się od "1,3". Po sfinalizowaniu procesu wydania numer wersji zostanie zaktualizowany do ostatnio wydanej wersji, a stan wydania zostanie zaktualizowany na "zwolnione do pobrania i Autouaktualnianie".
 Nie wszystkie wersje Azure AD Connect będą udostępniane do autouaktualniania. Stan wersji wskazuje, czy wersja jest udostępniona do autouaktualnienia, czy tylko do pobrania. Jeśli automatyczne uaktualnianie zostało włączone na serwerze Azure AD Connect, serwer zostanie automatycznie uaktualniony do najnowszej wersji Azure AD Connect wydanej na potrzeby automatycznego uaktualniania. Należy pamiętać, że nie wszystkie konfiguracje Azure AD Connect mogą być stosowane do autouaktualnienia. Skorzystaj z tego linku, aby dowiedzieć się więcej na temat [autouaktualniania](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)
 
-## <a name="14x0"></a>1.4. X. 0
+## <a name="14180"></a>1.4.18.0
 
 >[!IMPORTANT]
 >W tej wersji programu Azure AD Connect niektórzy klienci mogą zobaczyć, że niektóre lub wszystkie urządzenia z systemem Windows znikną z usługi Azure AD. Nie jest to przyczyną problemu, ponieważ te tożsamości urządzeń nie są używane przez usługę Azure AD podczas autoryzacji dostępu warunkowego. Aby uzyskać więcej informacji, zobacz [omówienie Azure AD Connect 1.4. XX. x Device disappearnce](reference-connect-device-disappearance.md)
 
 
 ### <a name="release-status"></a>Stan wydania
-9/10/2019: Wydano tylko do uaktualnienia
+9/25/2019: Wydano do autouaktualnienia i pobrania
 
 ### <a name="new-features-and-improvements"></a>Nowe funkcje i ulepszenia
 - Nowe narzędzia do rozwiązywania problemów ułatwiają rozwiązywanie problemów z scenariuszami "użytkownik niesynchronizowany", "Grupa niezsynchronizowana" lub "członek grupy nie jest synchronizowany".

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/25/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1ba17feea880bb55c3b4a14a06b3d803dba2350a
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: b0ef3dd2f39802d07c4ae04ad1eca23e40db502a
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316956"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345507"
 ---
 # <a name="understanding-azure-ad-connect-14xxx-and-device-disappearance"></a>Zrozumienie Azure AD Connect 1.4. XX. x i znikanie urządzenia
 W wersji 1.4. XX. x z Azure AD Connect niektórzy klienci mogą zobaczyć, że niektóre lub wszystkie urządzenia z systemem Windows znikną z usługi Azure AD. Nie jest to przyczyną problemu, ponieważ te tożsamości urządzeń nie są używane przez usługę Azure AD podczas autoryzacji dostępu warunkowego. Ta zmiana nie spowoduje usunięcia wszystkich urządzeń z systemem Windows, które zostały poprawnie zarejestrowane w usłudze Azure AD dla hybrydowego sprzężenia usługi Azure AD.
@@ -34,6 +34,15 @@ Ta wersja Azure AD Connect będzie synchronizować tylko urządzenia z systemem 
 Azure AD Connect nigdy nie należy synchronizować [urządzeń z systemem Windows niższego poziomu](../devices/hybrid-azuread-join-plan.md#windows-down-level-devices). Wszystkie urządzenia w usłudze Azure AD, które wcześniej zostały zsynchronizowane, zostaną teraz usunięte z usługi Azure AD. Jeśli Azure AD Connect próbuje usunąć urządzenia z [systemem Windows niższego poziomu](../devices/hybrid-azuread-join-plan.md#windows-down-level-devices), to urządzenie nie jest tym, które zostało utworzone przez [program Microsoft Workplace Join dla komputerów z systemem innym niż Windows 10](https://www.microsoft.com/download/details.aspx?id=53554) , i nie może być używane przez żadną inną funkcję usługi Azure AD.
 
 Niektórzy klienci mogą potrzebować odwiedzania [, jak: Zaplanuj implementację](../devices/hybrid-azuread-join-plan.md) hybrydowej funkcji dołączania Azure Active Directory, aby urządzenia z systemem Windows zostały prawidłowo zarejestrowane i zapewnić, że takie urządzenia mogą w pełni uczestniczyć w dostępie warunkowym opartym na urządzeniach. 
+
+## <a name="how-can-i-verify-which-devices-are-deleted-with-this-update"></a>Jak sprawdzić, które urządzenia są usuwane w ramach tej aktualizacji?
+
+Aby sprawdzić, które urządzenia zostały usunięte, możesz użyć tego skryptu programu PowerShell: https://gallery.technet.microsoft.com/scriptcenter/Export-Hybrid-Azure-AD-f8e51436
+
+Ten skrypt generuje raport dotyczący certyfikatów przechowywanych w obiektach komputerów Active Directory, w tym certyfikatów wystawionych przez funkcję sprzężenia hybrydowego usługi Azure AD.
+Sprawdza certyfikaty obecne we właściwości UserCertificate obiektu komputera w usłudze AD, a dla każdego niewygasłego certyfikatu, sprawdza poprawność, czy certyfikat został wystawiony dla funkcji sprzężenia hybrydowego usługi Azure AD (tj. nazwa podmiotu pasuje do CN = {ObjectGUID}).
+Wcześniej Program Azure AD Connect przeprowadził synchronizację do usługi Azure AD z dowolnym komputerem zawierającym co najmniej jeden prawidłowy certyfikat, ale Azure AD Connect począwszy od wersji 1,4, aparat synchronizacji może zidentyfikować certyfikaty hybrydowej usługi Azure AD i "cloudfilter" obiekt komputera synchronizowany z usługą Azure AD, chyba że istnieje prawidłowy certyfikat hybrydowego sprzężenia usługi Azure AD.
+Urządzenia usługi Azure AD, które zostały już zsynchronizowane z usługą AD, ale nie mają prawidłowego certyfikatu hybrydowego sprzężenia usługi Azure AD, zostaną usunięte (CloudFiltered = TRUE) przez aparat synchronizacji.
 
 ## <a name="next-steps"></a>Następne kroki
 - [Historia wersji Azure AD Connect](reference-connect-version-history.md)

@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: 0f036462eb9b37b4ec783bcf8957d307cc55f7ac
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: ccddd13ddd8c10daba84f959b1cc1f8a4a80deb1
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71018512"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345556"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity subskrypcji i usługi Azure, przydziały i ograniczenia
 Ten dokument zawiera listę najbardziej typowych limitów Microsoft Azure, które są również czasami nazywane przydziałami. Ten dokument nie obejmuje obecnie wszystkich usług platformy Azure. Wraz z upływem czasu lista zostanie rozszerzona i zaktualizowana w celu objęcia dodatkowych usług.
@@ -94,6 +94,7 @@ Na poniższej liście limitów Nowa tabela odzwierciedla wszelkie różnice w li
   * [Link prywatny](#private-link-limits)
   * [Traffic Manager](#traffic-manager-limits)
   * [Virtual Network](#networking-limits)
+  * [Wirtualna sieć WAN](#virtual-wan-limits)
 * [Notification Hubs](#notification-hubs-limits)
 * [Grupa zasobów](#resource-group-limits)
 * [Kontrola dostępu oparta na rolach](#role-based-access-control-limits)
@@ -161,6 +162,9 @@ Najnowsze wartości przydziałów obliczeń Azure Machine Learning można znale�
 
 #### <a name="expressroute-limits"></a>Limity ExpressRoute
 [!INCLUDE [expressroute-limits](../includes/expressroute-limits.md)]
+
+#### <a name="virtual-wan-limits"></a>Limity wirtualnej sieci WAN
+[!INCLUDE [virtual-wan-limits](../includes/virtual-wan-limits.md)]
 
 #### <a name="application-gateway-limits"></a>Limity Application Gateway
 

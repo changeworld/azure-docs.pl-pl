@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/12/2019
+ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: 2289c21fcc172c8dffd7d6b3f9c0e2e11736e71a
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 174f0f3d8984e102e098b4c981d3784f50c7d7c6
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266003"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345235"
 ---
 # <a name="quickstart-personalize-client-library-for-net"></a>Szybki start: Personalizowanie biblioteki klienckiej dla platformy .NET
 
@@ -33,9 +33,17 @@ Wprowadzenie do biblioteki klienta programu Personalizacja dla platformy .NET. W
 * Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/)
 * Bieżąca wersja [platformy .NET Core](https://dotnet.microsoft.com/download/dotnet-core).
 
-## <a name="setting-up"></a>Konfigurowanie
+## <a name="using-this-quickstart"></a>Korzystanie z tego przewodnika Szybki Start
 
-### <a name="create-a-personalizer-azure-resource"></a>Tworzenie zasobu platformy Azure dla programu personalizacji
+Aby skorzystać z tego przewodnika Szybki Start, należy wykonać kilka czynności:
+
+* W Azure Portal Utwórz zasób personalizacji
+* W Azure Portal dla zasobu Personalizacja na stronie **Ustawienia** Zmień częstotliwość aktualizacji modelu
+* W edytorze kodu Utwórz plik kodu i edytuj plik kodu
+* W wierszu polecenia lub terminalu Zainstaluj zestaw SDK z wiersza polecenia
+* W wierszu polecenia lub terminalu uruchom plik kodu
+
+## <a name="create-a-personalizer-azure-resource"></a>Tworzenie zasobu platformy Azure dla programu personalizacji
 
 Usługa Azure Cognitive Services jest reprezentowana przez zasoby platformy Azure, które subskrybujesz. Utwórz zasób dla narzędzia Personalizacja przy użyciu [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) lub [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) na komputerze lokalnym. Możesz również wykonać następujące czynności:
 
@@ -50,15 +58,15 @@ Po otrzymaniu klucza z subskrypcji próbnej lub zasobu Utwórz dwie [zmienne śr
 
 W Azure Portal wartości klucza i punktu końcowego są dostępne na stronie **Szybki Start** .
 
-### <a name="change-the-model-update-frequency"></a>Zmień częstotliwość aktualizacji modelu
+## <a name="change-the-model-update-frequency"></a>Zmień częstotliwość aktualizacji modelu
 
-W zasobie Personalizuj w Azure Portal Zmień **częstotliwość aktualizacji modelu** na 10 sekund. Dzięki temu będzie można szybko przeszkolić usługę, co pozwoli zobaczyć, jak Górna akcja zmienia się dla każdej iteracji.
+W Azure Portal na stronie **Ustawienia** w zasobów personalizacji Zmień **częstotliwość aktualizacji modelu** na 10 sekund. Dzięki temu będzie można szybko przeszkolić usługę, co pozwoli zobaczyć, jak Górna akcja zmienia się dla każdej iteracji.
 
 ![Zmień częstotliwość aktualizacji modelu](./media/settings/configure-model-update-frequency-settings.png)
 
 W przypadku pierwszego wystąpienia pętli programu personalizacji nie istnieje model, ponieważ nie ma żadnych wywołań interfejsu API do uczenia się. Wywołania rangi będą zwracać równe prawdopodobieństwa dla każdego elementu. Aplikacja powinna nadal zawsze klasyfikować zawartość przy użyciu danych wyjściowych RewardActionId.
 
-### <a name="create-a-new-c-application"></a>Utwórz nową C# aplikację
+## <a name="create-a-new-c-application"></a>Utwórz nową C# aplikację
 
 Utwórz nową aplikację platformy .NET Core w preferowanym edytorze lub środowisku IDE. 
 
@@ -84,7 +92,7 @@ Build succeeded.
 ...
 ```
 
-### <a name="install-the-sdk"></a>Instalacja zestawu SDK
+## <a name="install-the-sdk"></a>Instalacja zestawu SDK
 
 W katalogu aplikacji zainstaluj bibliotekę klienta programu Personalizacja dla platformy .NET przy użyciu następującego polecenia:
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/12/2019
+ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: ab593ae33f11fe3e39846c50e9f43f73f80894ba
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: b7ea28f98340d3c3547b0ed66771b3982a03143d
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265962"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345248"
 ---
 # <a name="quickstart-personalize-client-library-for-nodejs"></a>Szybki start: Personalizowanie biblioteki klienckiej dla środowiska Node. js
 
@@ -31,11 +31,21 @@ Rozpocznij pracę z biblioteką klienta personalizacji dla środowiska Node. js.
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/)
-* Bieżąca wersja środowiska [Node. js](https://nodejs.org).
+* Bieżąca wersja środowiska [Node. js](https://nodejs.org) i npm.
 
-## <a name="setting-up"></a>Konfigurowanie
+## <a name="using-this-quickstart"></a>Korzystanie z tego przewodnika Szybki Start
 
-### <a name="create-a-personalizer-azure-resource"></a>Tworzenie zasobu platformy Azure dla programu personalizacji
+
+Aby skorzystać z tego przewodnika Szybki Start, należy wykonać kilka czynności:
+
+* W Azure Portal Utwórz zasób personalizacji
+* W Azure Portal dla zasobu Personalizacja na stronie **Ustawienia** Zmień częstotliwość aktualizacji modelu
+* W edytorze kodu Utwórz plik kodu i edytuj plik kodu
+* W wierszu polecenia lub terminalu Zainstaluj zestaw SDK z wiersza polecenia
+* W wierszu polecenia lub terminalu uruchom plik kodu
+
+
+## <a name="create-a-personalizer-azure-resource"></a>Tworzenie zasobu platformy Azure dla programu personalizacji
 
 Usługa Azure Cognitive Services jest reprezentowana przez zasoby platformy Azure, które subskrybujesz. Utwórz zasób dla narzędzia Personalizacja przy użyciu [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) lub [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) na komputerze lokalnym. Możesz również wykonać następujące czynności:
 
@@ -50,7 +60,7 @@ Po otrzymaniu klucza z subskrypcji próbnej lub zasobu Utwórz dwie [zmienne śr
 W Azure Portal wartości klucza i punktu końcowego są dostępne na stronie **Szybki Start** .
 
 
-### <a name="create-a-new-nodejs-application"></a>Tworzenie nowej aplikacji Node.js
+## <a name="create-a-new-nodejs-application"></a>Tworzenie nowej aplikacji Node.js
 
 W oknie konsoli (na przykład cmd, PowerShell lub bash) Utwórz nowy katalog dla aplikacji i przejdź do niego. 
 
@@ -64,7 +74,7 @@ Uruchom polecenie `npm init -y` , aby `package.json` utworzyć plik.
 npm init -y
 ```
 
-### <a name="install-the-nodejs-library-for-personalizer"></a>Zainstaluj bibliotekę środowiska Node. js dla programu Personalizacja
+## <a name="install-the-nodejs-library-for-personalizer"></a>Zainstaluj bibliotekę środowiska Node. js dla programu Personalizacja
 
 Zainstaluj bibliotekę kliencką programu Personalizuj dla środowiska Node. js za pomocą następującego polecenia:
 
@@ -78,9 +88,9 @@ Zainstaluj pozostałe pakiety NPM dla tego przewodnika Szybki Start:
 npm install @azure/ms-rest-azure-js @azure/ms-rest-js readline-sync uuid --save
 ```
 
-### <a name="change-the-model-update-frequency"></a>Zmień częstotliwość aktualizacji modelu
+## <a name="change-the-model-update-frequency"></a>Zmień częstotliwość aktualizacji modelu
 
-W zasobie Personalizuj w Azure Portal Zmień **częstotliwość aktualizacji modelu** na 10 sekund. Dzięki temu będzie można szybko przeszkolić usługę, co pozwoli zobaczyć, jak Górna akcja zmienia się dla każdej iteracji.
+W Azure Portal na stronie **Ustawienia** w zasobów personalizacji Zmień **częstotliwość aktualizacji modelu** na 10 sekund. Dzięki temu będzie można szybko przeszkolić usługę, co pozwoli zobaczyć, jak Górna akcja zmienia się dla każdej iteracji.
 
 ![Zmień częstotliwość aktualizacji modelu](./media/settings/configure-model-update-frequency-settings.png)
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 12d556fd9c37b83a919b830d155250e9eaa64128
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 3791b2d60b84299fc3b646f7e6585002078b607f
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624256"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350169"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>Język znaczników syntezy mowy (SSML)
 
@@ -34,7 +34,7 @@ Aby dowiedzieć się więcej na temat standardowych, neuronowych i niestandardow
 
 ## <a name="special-characters"></a>Znaki specjalne
 
-Korzystając z SSML do konwertowania zamiany tekstu na syntezę, należy pamiętać, że podobnie jak w przypadku formatu XML, znaki specjalne, takie jak cudzysłowy, apostrofy i nawiasy muszą zostać zmienione. Aby uzyskać więcej informacji, [Zobacz XML (XML) 1,0: Dodatek D](https://www.w3.org/TR/xml/#sec-entexpand).
+Korzystając z SSML do konwertowania zamiany tekstu na syntezę, należy pamiętać, że podobnie jak w przypadku formatu XML, znaki specjalne, takie jak cudzysłowy, apostrofy i nawiasy muszą zostać zmienione. Aby uzyskać więcej informacji, zobacz [Extensible Markup Language (XML) 1,0: Dodatek D @ no__t-0.
 
 ## <a name="supported-ssml-elements"></a>Obsługiwane elementy SSML
 
@@ -185,7 +185,7 @@ Ten fragment kodu SSML ilustruje, `<mstts:express-as>` w jaki sposób element je
 | naprężeni | Określa względny czas trwania pauzy przy użyciu jednej z następujących wartości:<ul><li>brak</li><li>x — słabe</li><li>słabe</li><li>Średni (domyślnie)</li><li>silne</li><li>x — Strong</li></ul> | Optional |
 | time | Określa bezwzględny czas przerwy w sekundach lub milisekund. Przykłady prawidłowych wartości to 2S i 500 | Optional |
 
-| Naprężeni | Opis |
+| naprężeni | Opis |
 |----------|-------------|
 | Brak lub nie podano wartości | 0 MS |
 | x — słabe | 250 MS |
@@ -290,7 +290,7 @@ Ponieważ wartości atrybutów granicę prozodyczną mogą się różnić w ró�
 
 | Atrybut | Opis | Wymagane / opcjonalne |
 |-----------|-------------|---------------------|
-| tonu | Wskazuje gęstość linii bazowej dla tekstu. Możesz wyrazić gęstość jako:<ul><li>Wartość bezwzględna wyrażona jako liczba, po której następuje "Hz" (Hz). Na przykład 600Hz.</li><li>Wartość względna, wyrażona jako liczba poprzedzona znakiem "+" lub "-", po której następuje "Hz" lub "St", która określa ilość, aby zmienić gęstość. Na przykład: + 80Hz lub-2st. "St" wskazuje, że jednostka zmiany to semitone, czyli połowę tonu (pół kroku) w standardowej skali Diatonic.</li><li>Stała wartość:<ul><li>x — niska</li><li>niska</li><li>średnie</li><li>wysokowydajn</li><li>x — wysoka</li><li>default</li></ul></li></ul>. | Optional |
+| tonu | Wskazuje gęstość linii bazowej dla tekstu. Możesz wyrazić gęstość jako:<ul><li>Wartość bezwzględna wyrażona jako liczba, po której następuje "Hz" (Hz). Na przykład 600Hz.</li><li>Wartość względna, wyrażona jako liczba poprzedzona znakiem "+" lub "-", po której następuje "Hz" lub "St", która określa ilość, aby zmienić gęstość. Na przykład: + 80Hz lub-2st. "St" wskazuje, że jednostka zmiany to semitone, czyli połowę tonu (pół kroku) w standardowej skali Diatonic.</li><li>Stała wartość:<ul><li>x — niska</li><li>niska</li><li>średnie</li><li>Wysokowydajn</li><li>x — wysoka</li><li>default</li></ul></li></ul>. | Optional |
 | wybranym | Rozkład nie jest obsługiwany w przypadku głosów neuronowych. Rozkład reprezentuje zmiany w wysokości dla zawartości mowy jako tablicę elementów docelowych w określonych miejscach w danych wyjściowych mowy. Każdy element docelowy jest definiowany przez zestawy par parametrów. Na przykład: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>Pierwsza wartość w każdym zestawie parametrów określa lokalizację zmiany w postaci procentu czasu trwania tekstu. Druga wartość określa wielkość, aby podnieść lub obniżyć gęstość, przy użyciu wartości względnej lub wartości wyliczenia dla skoku (zobacz `pitch`). | Optional |
 | zakresu  | Wartość, która reprezentuje zakres skoku dla tekstu. Można wyrazić `range` przy użyciu tych samych wartości bezwzględnych, wartości względnych lub wartości wyliczenia `pitch`, które są używane do opisywania. | Optional |
 | transmisji  | Wskazuje stawkę głosu tekstu. Można wyrazić `rate` jako:<ul><li>Wartość względna wyrażona jako liczba, która działa jako mnożnik wartości domyślnej. Na przykład wartość *1* powoduje brak zmian w szybkości. Wartość *.5* skutkuje halving szybkością. Wartość *3* powoduje przekroczenie stawki.</li><li>Stała wartość:<ul><li>x-slow</li><li>opóźnienie</li><li>średnie</li><li>Fast</li><li>x — Fast</li><li>default</li></ul></li></ul> | Optional |
@@ -359,10 +359,62 @@ Zmiany wysokości mogą być stosowane do głosów standardowych na poziomie wyr
     </voice>
 </speak>
 ```
+## <a name="say-as-element"></a>"Powiedz" jako element  
+
+`say-as` to opcjonalny element, który wskazuje typ zawartości (na przykład liczbę lub datę) tekstu elementu. Zapewnia to wskazówkę dotyczącą aparatu syntezy mowy dotyczącą sposobu wymawiania tekstu. 
+
+**Składnia**
+
+```XML
+<say-as interpret-as="string" format="digit string" detail="string"> <say-as>
+```
+
+**Atrybuty**
+
+| Atrybut | Opis | Wymagane / opcjonalne |
+|-----------|-------------|---------------------|
+| Interpretuj jako | Wskazuje typ zawartości tekstu elementu. Aby zapoznać się z listą typów, zobacz poniższą tabelę. | Wymagane |
+| format | Zawiera dodatkowe informacje na temat precyzyjnego formatowania tekstu elementu dla typów zawartości, które mogą mieć niejednoznaczne formaty. SSML definiuje formaty dla typów zawartości, które ich używają (patrz tabela poniżej). | Optional |
+| Formant | Wskazuje poziom szczegółowości, który ma być wypowiadany. Na przykład ten atrybut może zażądać, aby aparat syntezy mowy wymawiał znaki interpunkcyjne. Nie ma żadnych standardowych wartości zdefiniowanych dla `detail`. | Optional |
+
+<!-- I don't understand the last sentence. Don't we know which one Cortana uses? -->
+
+Poniżej przedstawiono obsługiwane typy zawartości dla atrybutów `interpret-as` i `format`. Uwzględnij atrybut `format` tylko wtedy, gdy `interpret-as` jest ustawiona na datę i godzinę.
+
+| Interpretuj jako | format | Błędne |
+|--------------|--------|----------------|
+| adres | | Tekst jest wymawiany jako adres. Aparat syntezy mowy mówi:<br /><br />`I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>`<br /><br />Podobnie jak w przypadku 150th sąd północno-wschodnia (Waszyngton). |
+| Kardynalność, numer | | Tekst jest wymawiany jako numer kardynalny. Aparat syntezy mowy mówi:<br /><br />`There are <say-as interpret-as="cardinal">3</say-as> alternatives`<br /><br />Jak "Istnieją trzy alternatywy". |
+| znaki, pisownia | | Tekst jest wymawiany jako pojedyncze litery (wypisane). Aparat syntezy mowy mówi:<br /><br />`<say-as interpret-as="characters">test</say-as>`<br /><br />Jako "T E S T". |
+| date  | DMY, MDR, YMD, YDM, ym, my, MD, DM, d, m, y | Tekst jest wymawiany jako Data. Atrybut `format` określa format daty (*d = Day, m = month i y = Year*). Aparat syntezy mowy mówi:<br /><br />`Today is <say-as interpret-as="date" format="mdy">10-19-2016</say-as>`<br /><br />Jako "dzisiaj jest Nineteenth październik 2016." |
+| cyfry, number_digit | | Tekst jest wymawiany jako sekwencja pojedynczych cyfr. Aparat syntezy mowy mówi:<br /><br />`<say-as interpret-as="number_digit">123456789</say-as>`<br /><br />Jako "1 2 3 4 5 6 7 8 9". |
+| część | | Tekst jest wymawiany jako liczba ułamkowa. Aparat syntezy mowy mówi:<br /><br /> `<say-as interpret-as="fraction">3/8</say-as> of an inch`<br /><br />Jako "trzy osiem cala". |
+| ordinal  | | Tekst jest wymawiany jako numer porządkowy. Aparat syntezy mowy mówi:<br /><br />`Select the <say-as interpret-as="ordinal">3rd</say-as> option`<br /><br />Jako "Wybierz trzecią opcję". |
+| Central  | | Tekst jest wymawiany jako numer telefonu. Atrybut `format` może zawierać cyfry, które reprezentują kod kraju. Na przykład "1" dla Stany Zjednoczone lub "39" dla Włoch. Aparat syntezy mowy może korzystać z tych informacji w celu podzielenia wymowy numeru telefonu. Numer telefonu może zawierać również kod kraju, a jeśli tak, ma pierwszeństwo przed kodem kraju w `format`. Aparat syntezy mowy mówi:<br /><br />`The number is <say-as interpret-as="telephone" format="1">(888) 555-1212</say-as>`<br /><br />Jako "mój numer jest kodem obszaru 8 8 8 5 5 5 1 2 1 2." |
+| time | hms12, hms24 | Tekst jest wymawiany jako czas. Atrybut `format` Określa, czy czas jest określony przy użyciu zegara 12-godzinnego (hms12) czy zegara 24-godzinnego (hms24). Użyj dwukropka do oddzielenia liczb reprezentujących godziny, minuty i sekundy. Poniżej przedstawiono prawidłowe przykłady czasu: 12:35, 1:14:32, 08:15 i 02:50:45. Aparat syntezy mowy mówi:<br /><br />`The train departs at <say-as interpret-as="time" format="hms12">4:00am</say-as>`<br /><br />Jako "pozostała część" uczenia w czterech A M ". |
+
+**Użycie**
+
+Element `say-as` może zawierać tylko tekst.
+
+**Przykład**
+
+Aparat syntezy mowy mówi Poniższy przykład jako "pierwsze żądanie było w jednym pokoju od Nineteenth października 20 10 z wczesnym nadejściem o 12 35 P M".
+ 
+```XML
+<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice  name="en-US-Jessa24kRUS">
+    <p>
+    Your <say-as interpret-as="ordinal"> 1st </say-as> request was for <say-as interpret-as="cardinal"> 1 </say-as> room
+    on <say-as interpret-as="date" format="mdy"> 10/19/2010 </say-as>, with early arrival at <say-as interpret-as="time" format="hms12"> 12:35pm </say-as>.
+    </p>
+</speak>
+```
+
 
 ## <a name="add-recorded-audio"></a>Dodaj zarejestrowane audio
 
-`audio`to opcjonalny element, który umożliwia wstawianie audio MP3 do dokumentu SSML. Treść elementu audio może zawierać zwykły tekst lub SSML znaczników, które są wymawiane, jeśli plik dźwiękowy jest niedostępny lub nieosiągalny. `p` `s` `audio` `break` `sub`Ponadto element może zawierać tekst i następujące elementy: `phoneme` ,,`say-as`, ,,,,i.`prosody` `audio`
+`audio` to opcjonalny element, który umożliwia wstawianie audio MP3 do dokumentu SSML. Treść elementu audio może zawierać zwykły tekst lub SSML znaczników, które są wymawiane, jeśli plik dźwiękowy jest niedostępny lub nieosiągalny. Ponadto element `audio` może zawierać tekst i następujące elementy: `audio`, `break`, `p`, `s`, `phoneme`, `prosody`, `say-as` i `sub`.
 
 Wszystkie audio zawarte w dokumencie SSML muszą spełniać następujące wymagania:
 
@@ -400,11 +452,11 @@ Wszystkie audio zawarte w dokumencie SSML muszą spełniać następujące wymaga
 
 ## <a name="add-background-audio"></a>Dodaj dźwięk w tle
 
-`mstts:backgroundaudio` Element umożliwia dodanie dźwięku w tle do dokumentów SSML (lub mieszanie pliku dźwiękowego z funkcją zamiany tekstu na mowę). Za `mstts:backgroundaudio` pomocą programu możesz zapętlać plik audio w tle, stopniowo zanikać na początku tekstu na mowę i stopniowo przechodzić na koniec zamiany tekstu na mowę.
+Element `mstts:backgroundaudio` umożliwia dodanie dźwięku w tle do dokumentów SSML (lub mieszanie pliku dźwiękowego z funkcją zamiany tekstu na mowę). Za pomocą `mstts:backgroundaudio` możesz zapętlać plik audio w tle, stopniowo zanikać na początku tekstu na mowę i stopniowo przechodzić na końcu zamiany tekstu na mowę.
 
 Jeśli podany dźwięk w tle jest krótszy niż tekst-do-mowę lub zanikanie, spowoduje to zapętlenie. Jeśli jest dłuższa niż Zamiana tekstu na mowę, zostanie zatrzymana po zakończeniu zanikania.
 
-Dozwolony jest tylko jeden plik audio w tle dla dokumentu SSML. Można jednak przeplatać `audio` Tagi `voice` w obrębie elementu, aby dodać dodatkowe audio do dokumentu SSML.
+Dozwolony jest tylko jeden plik audio w tle dla dokumentu SSML. Można jednak przeplatać znaczniki `audio` w obrębie elementu `voice`, aby dodać dodatkowe audio do dokumentu SSML.
 
 **Składnia**
 

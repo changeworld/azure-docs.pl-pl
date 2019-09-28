@@ -11,24 +11,24 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: diberry
-ms.openlocfilehash: 585dc03503a61ff6666d3da3374586287e24283f
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 318df27ebb822f49c1f8881d0bf68ac7167dea36
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966696"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71351304"
 ---
-# <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Użyj monitów monitujących, aby utworzyć wiele zamian w konwersacji
+# <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Tworzenie wielu etapów konwersacji za pomocą dodatkowych monitów
 
-Użyj monitów uzupełniających i kontekstu, aby zarządzać wielokrotnymi przełączami, nazywanymi wieloma ruchami dla bot z jednego pytania do innego.
+Użyj monitów uzupełniających i kontekstu, aby zarządzać wielokrotnymi _przełączami_, nazywanymi wieloma ruchami dla bot z jednego pytania do innego.
 
 Aby zobaczyć, jak działa wiele przełączania, Wyświetl następujące wideo demonstracyjne:
 
-[![Obsługa wieloskładnikowej rozmowy w QnA Maker](../media/conversational-context/youtube-video.png)](https://aka.ms/multiturnexample)
+[![Multi — włączaj konwersację w QnA Maker](../media/conversational-context/youtube-video.png)](https://aka.ms/multiturnexample)
 
 ## <a name="what-is-a-multi-turn-conversation"></a>Co to jest konwersacja wieloletnia?
 
-Niektórych pytań nie można udzielić na jednym z nich. Gdy projektujesz konwersacje aplikacji klienckiej (Chat bot), użytkownik może zadawać pytanie, które musi zostać przefiltrowane lub ulepszone, aby określić poprawną odpowiedź. Ten przepływ można wykonać za pomocą pytań możliwych do przesłania użytkownikowi z monitami.
+Niektórych pytań nie można udzielić na jednym z nich. Gdy projektujesz konwersacje aplikacji klienckiej (Chat bot), użytkownik może zadawać pytanie, które musi zostać przefiltrowane lub ulepszone, aby określić poprawną odpowiedź. Ten przepływ można wykonać za pomocą pytań możliwych do przesłania użytkownikowi z *monitami*.
 
 Gdy użytkownik prosi o pytanie, QnA Maker zwróci odpowiedź _i_ wszelkie monity monitujące. Ta odpowiedź umożliwia zaprezentowanie pytań uzupełniających jako wyborów. 
 
@@ -110,7 +110,7 @@ Dodawanie monitu monitujące do istniejącej pary pytań i odpowiedzi, która ni
 
     ![Strona "monit o zaobserwuj" (wersja zapoznawcza)](../media/conversational-context/search-follow-up-prompt-for-existing-answer.png)
 
-1. Po dodaniu monitu kliknij pozycję **Zapisz i** pouczenie w górnym obszarze nawigacji.
+1. Po dodaniu monitu kliknij pozycję **Zapisz i pouczenie** w górnym obszarze nawigacji.
   
 ### <a name="edit-the-display-text"></a>Edytuj tekst wyświetlany 
 
@@ -183,11 +183,11 @@ Po dodaniu nowej pary pytań i odpowiedzi do bazy wiedzy każda para powinna by�
 
     ![! [Kolumna kontekstowa, dla obu pytań, wskazuje, że relacja monitu zostanie zaobserwuj] (.. /media/conversational-context/child-prompt-created.png)](../media/conversational-context/child-prompt-created.png#lightbox)
 
-1. Po dodaniu monitu kliknij pozycję **Zapisz i** pouczenie na górnym pasku nawigacyjnym.
+1. Po dodaniu monitu kliknij pozycję **Zapisz i pouczenie** na górnym pasku nawigacyjnym.
 
 ## <a name="enable-multi-turn-during-testing-of-follow-up-prompts"></a>Włącz obsługę wielostopniową podczas testowania monitów o kolejne instrukcje
 
-Po przetestowaniu pytania z monitami kolejnych w okienku **test** wybierz pozycję **Włącz wiele**przełączania, a następnie wprowadź pytanie. Odpowiedź zawiera monity monitujące.
+Po przetestowaniu pytania z monitami kolejnych w okienku **test** wybierz pozycję **Włącz wiele przełączania**, a następnie wprowadź pytanie. Odpowiedź zawiera monity monitujące.
 
 ![Odpowiedź zawiera monity monitujące](../media/conversational-context/test-pane-with-question-having-follow-up-prompts.png)
 
@@ -195,7 +195,7 @@ Jeśli nie włączysz wielostopniowego, odpowiedź zostanie zwrócona, ale monit
 
 ## <a name="a-json-request-to-return-an-initial-answer-and-follow-up-prompts"></a>Żądanie JSON zwracające początkową odpowiedź i monity monitujące
 
-Użyj pustego `context` obiektu, aby zażądać odpowiedzi na pytanie użytkownika i dołączyć monity monitujące. 
+Użyj pustego obiektu `context`, aby zażądać odpowiedzi na pytanie użytkownika i dołączyć monity monitujące. 
 
 ```JSON
 {
@@ -274,7 +274,7 @@ Poprzednia sekcja zażądała odpowiedzi i wszelkie monity monitujące dotycząc
 }
 ```
 
-Tablica zawiera tekst `displayText` we właściwości i `qnaId` wartość. `prompts` Możesz wyświetlić te odpowiedzi jako kolejne wyświetlane wybory w przepływie konwersacji, a następnie wysłać wybrane `qnaId` z powrotem do QNA Maker w poniższym żądaniu. 
+Tablica `prompts` zawiera tekst we właściwości `displayText` i wartości `qnaId`. Możesz wyświetlić te odpowiedzi jako kolejne wyświetlane wybory w przepływie konwersacji, a następnie wysłać wybrane `qnaId` z powrotem do QnA Maker w poniższym żądaniu. 
 
 <!--
 
@@ -284,7 +284,7 @@ The `promptsToDelete` array provides the ...
 
 ## <a name="a-json-request-to-return-a-non-initial-answer-and-follow-up-prompts"></a>Żądanie JSON zwracające niepoczątkową odpowiedź i monity monitujące
 
-`context` Wypełnij obiekt, aby uwzględnić poprzedni kontekst.
+Wypełnij obiekt `context`, aby uwzględnić poprzedni kontekst.
 
 W poniższym żądaniu JSON bieżące pytanie *służy do logowania* się, a poprzednie pytanie dotyczyło *kont i zalogowanie*się. 
 
@@ -304,7 +304,7 @@ W poniższym żądaniu JSON bieżące pytanie *służy do logowania* się, a pop
 
 ##  <a name="a-json-response-to-return-a-non-initial-answer-and-follow-up-prompts"></a>Odpowiedź JSON zwracająca odpowiedź niepoczątkową i monity monitujące
 
-Odpowiedź QNA Maker _GenerateAnswer_ JSON zawiera monity monitujące we `context` właściwości `answers` pierwszego elementu w obiekcie:
+Odpowiedź QnA Maker _GenerateAnswer_ JSON zawiera monity monitujące we właściwości `context` pierwszego elementu w obiekcie `answers`:
 
 ```JSON
 {
@@ -364,7 +364,7 @@ Odpowiedź QNA Maker _GenerateAnswer_ JSON zawiera monity monitujące we `contex
 
 ## <a name="query-the-knowledge-base-with-the-qna-maker-id"></a>Zbadaj bazę wiedzy przy użyciu identyfikatora QnA Maker
 
-W odpowiedzi na pytanie początkowe zostanie zwrócona prośba o wyświetlenie wszystkich monitów i skojarzonych `qnaId` z nią danych. Teraz, gdy masz identyfikator, możesz przekazać ten komunikat w treści żądania monitowania. Jeśli treść żądania zawiera `qnaId`, a obiekt kontekstu (zawierający poprzednie właściwości QNA Maker), GenerateAnswer zwróci dokładne pytanie według identyfikatora, zamiast używać algorytmu klasyfikacji do znajdowania odpowiedzi według tekstu pytania. 
+W odpowiedzi na pytanie początkowe zostanie zwrócona prośba o monit i skojarzona z nią `qnaId`. Teraz, gdy masz identyfikator, możesz przekazać ten komunikat w treści żądania monitowania. Jeśli treść żądania zawiera `qnaId`, a obiekt kontekstu (który zawiera poprzednie właściwości QnA Maker), wówczas GenerateAnswer zwróci dokładne pytanie według identyfikatora, zamiast używać algorytmu klasyfikacji, aby znaleźć odpowiedź według tekstu pytania. 
 
 ## <a name="display-prompts-and-send-context-in-the-client-application"></a>Wyświetlaj wyświetlenie wierszy i wysyłanie kontekstu w aplikacji klienckiej 
 
@@ -382,12 +382,12 @@ FIX - Need to go to parent, then answer column, then edit answer.
 
 ## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Tworzenie bazy wiedzy z instrukcjami wielodostępnymi za pomocą interfejsu API tworzenia
 
-Można utworzyć przypadek wiedzy z instrukcjami wieloletnimi przy użyciu [QNA Maker tworzenia interfejsu API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create). Monity są dodawane w `context` `prompts` tablicy właściwości. 
+Bazę wiedzy z obsługą wielodostępną można utworzyć przy użyciu [QNA Maker tworzenia interfejsu API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create). Monity są dodawane do tablicy `prompts` właściwości `context`. 
 
 
 ## <a name="add-or-delete-multi-turn-prompts-with-the-update-api"></a>Dodawanie lub usuwanie wieloskładnikowych wierszy przy użyciu interfejsu API aktualizacji
 
-Możesz dodawać lub usuwać wieloosiowe polecenia przy użyciu [interfejsu API aktualizacji QNA Maker](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update).  Monity są dodawane w `context` `promptsToAdd` tablicy właściwości i `promptsToDelete` tablicy. 
+Możesz dodawać lub usuwać wieloosiowe polecenia przy użyciu [interfejsu API aktualizacji QNA Maker](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update).  Monity są dodawane w tablicy `promptsToAdd` właściwości `context` i macierzy `promptsToDelete`. 
 
 
 ## <a name="next-steps"></a>Następne kroki
