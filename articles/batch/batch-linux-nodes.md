@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 06/01/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fc1e80433a09d8a56f2900ab6b24dd3804db56ac
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 18df43ebf3a20547917ddd372d922741b4cee849
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086774"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350110"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Inicjowanie obsługi węzłów obliczeniowych systemu Linux w pulach wsadowym
 
@@ -38,7 +38,8 @@ Podczas tworzenia puli węzłów obliczeniowych w usłudze Batch dostępne są d
 **Konfiguracja maszyny wirtualnej** zapewnia zarówno obrazy systemu Linux, jak i Windows dla węzłów obliczeniowych. Dostępne rozmiary węzłów obliczeniowych są wymienione w obszarze [rozmiary maszyn wirtualnych na platformie Azure](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux) i [rozmiary maszyn wirtualnych na platformie Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows). Podczas tworzenia puli, która zawiera węzły konfiguracji maszyny wirtualnej, należy określić rozmiar węzłów, odwołanie do obrazu maszyny wirtualnej i jednostkę SKU agenta węzła wsadowego do zainstalowania w węzłach.
 
 ### <a name="virtual-machine-image-reference"></a>Odwołanie do obrazu maszyny wirtualnej
-Usługa Batch używa [zestawów skalowania maszyn wirtualnych](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) w celu zapewnienia węzłów obliczeniowych w konfiguracji maszyny wirtualnej. Możesz określić obraz z [witryny Azure Marketplace][vm_marketplace]lub udostępnić niestandardowy obraz, który został przygotowany. Aby uzyskać więcej informacji o obrazach niestandardowych, zobacz [Tworzenie puli przy użyciu obrazu niestandardowego](batch-custom-images.md).
+
+Usługa Batch używa [zestawów skalowania maszyn wirtualnych](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) w celu zapewnienia węzłów obliczeniowych w konfiguracji maszyny wirtualnej. Możesz określić obraz z [witryny Azure Marketplace][vm_marketplace]lub udostępnić niestandardowy obraz, który został przygotowany. Aby uzyskać więcej informacji o obrazach niestandardowych, zobacz [Tworzenie puli za pomocą galerii obrazów udostępnionych](batch-sig-images.md).
 
 Konfigurując odwołanie do obrazu maszyny wirtualnej, należy określić właściwości obrazu maszyny wirtualnej. Następujące właściwości są wymagane podczas tworzenia odwołania do obrazu maszyny wirtualnej:
 

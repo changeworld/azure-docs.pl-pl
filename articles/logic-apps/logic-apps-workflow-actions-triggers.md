@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/19/2019
-ms.openlocfilehash: df1b03d5fbb5b8ef8cda9407e4a595bc2de8ce54
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 3311ca3665083ec8c71f48b28e7195aa8c14f13d
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918954"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350675"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Odwołanie do typów wyzwalaczy i akcji w języku definicji przepływu pracy dla Azure Logic Apps
 
@@ -156,8 +156,8 @@ Ten wyzwalacz sprawdza lub *sonduje* punkt końcowy przy użyciu [interfejsów A
  
 | Element | Type | Opis |
 |---------|------|-------------|
-| Nagłówka | Obiekt JSON | Nagłówki odpowiedzi |
-| treść | Obiekt JSON | Treść z odpowiedzi |
+| nagłówki | Obiekt JSON | Nagłówki odpowiedzi |
+| jednostce | Obiekt JSON | Treść z odpowiedzi |
 | Kod stanu | Integer | Kod stanu z odpowiedzi |
 |||| 
 
@@ -329,8 +329,8 @@ Ten wyzwalacz sprawdza lub sonduje określony punkt końcowy na podstawie okreś
 
 | Element | Type | Opis |
 |---------|------|-------------| 
-| Nagłówka | Obiekt JSON | Nagłówki odpowiedzi | 
-| treść | Obiekt JSON | Treść z odpowiedzi | 
+| nagłówki | Obiekt JSON | Nagłówki odpowiedzi | 
+| jednostce | Obiekt JSON | Treść z odpowiedzi | 
 | Kod stanu | Integer | Kod stanu z odpowiedzi | 
 |||| 
 
@@ -424,8 +424,8 @@ Niektóre wartości, takie jak <*typu metody*>, są dostępne zarówno `"subscri
 
 | Element | Type | Opis |
 |---------|------|-------------| 
-| Nagłówka | Obiekt JSON | Nagłówki odpowiedzi | 
-| treść | Obiekt JSON | Treść z odpowiedzi | 
+| nagłówki | Obiekt JSON | Nagłówki odpowiedzi | 
+| jednostce | Obiekt JSON | Treść z odpowiedzi | 
 | Kod stanu | Integer | Kod stanu z odpowiedzi | 
 |||| 
 
@@ -656,7 +656,7 @@ Ten wyzwalacz określa, że żądanie przychodzące musi używać metody HTTP PO
 
 <a name="trigger-conditions"></a>
 
-## <a name="trigger-conditions"></a>Warunki wyzwalania
+## <a name="trigger-conditions"></a>Warunki wyzwalacza
 
 Dla każdego wyzwalacza i tylko wyzwalaczy, można dołączyć tablicę, która zawiera co najmniej jeden warunek określający, czy przepływ pracy powinien być uruchamiany. Aby dodać `conditions` właściwość do wyzwalacza w przepływie pracy, Otwórz aplikację logiki w edytorze widoku kodu.
 
@@ -2402,12 +2402,38 @@ Można zmienić domyślne zachowanie wyzwalaczy i akcji z `operationOptions` wł
 
 ### <a name="change-trigger-concurrency"></a>Zmień współbieżność wyzwalacza
 
-Domyślnie wystąpienia aplikacji logiki są uruchamiane w tym samym czasie, współbieżnie lub równolegle do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Dlatego każde wystąpienie wyzwalacza wyzwalane przed ukończeniem poprzedniego wystąpienia przepływu pracy. Ten limit pomaga kontrolować liczbę żądań odbieranych przez systemy zaplecza. 
+Domyślnie wystąpienia aplikacji logiki są uruchamiane w tym samym czasie (współbieżnie lub równolegle) do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Dlatego każde wystąpienie wyzwalacza wyzwalane przed ukończeniem poprzedniego wystąpienia przepływu pracy. Ten limit pomaga kontrolować liczbę żądań odbieranych przez systemy zaplecza. 
 
-Aby zmienić domyślny limit, można użyć edytora widoku kodu lub projektanta Logic Apps, ponieważ zmiana ustawienia współbieżności za pomocą projektanta powoduje dodanie lub zaktualizowanie `runtimeConfiguration.concurrency.runs` właściwości w podstawowej definicji wyzwalacza i na odwrót. Ta właściwość określa maksymalną liczbę wystąpień przepływów pracy, które mogą być uruchamiane równolegle. 
+Aby zmienić domyślny limit, można użyć edytora widoku kodu lub projektanta Logic Apps, ponieważ zmiana ustawienia współbieżności za pomocą projektanta powoduje dodanie lub zaktualizowanie `runtimeConfiguration.concurrency.runs` właściwości w podstawowej definicji wyzwalacza i na odwrót. Ta właściwość określa maksymalną liczbę wystąpień przepływów pracy, które mogą być uruchamiane równolegle. Poniżej przedstawiono niektóre zagadnienia dotyczące korzystania z kontroli współbieżności:
 
-> [!NOTE] 
-> Jeśli wyzwalacz ma być uruchamiany sekwencyjnie przy użyciu projektanta lub edytora widoku kodu, nie należy ustawiać `operationOptions` `SingleInstance` właściwości wyzwalacza w edytorze widoku kodu. W przeciwnym razie zostanie wyświetlony błąd walidacji. Aby uzyskać więcej informacji, zobacz [kolejno wyzwalacze wystąpień](#sequential-trigger).
+* Gdy współbieżność jest włączona, długotrwałe wystąpienie aplikacji logiki może spowodować, że nowe wystąpienia aplikacji logiki będą mogły wprowadzić stan oczekiwania. Ten stan uniemożliwia Azure Logic Apps tworzenia nowych wystąpień i występuje nawet wtedy, gdy liczba współbieżnych uruchomień jest mniejsza niż określona maksymalna liczba współbieżnych uruchomień.
+
+  * Aby przerwać ten stan, Anuluj najstarsze wystąpienia, które *nadal działają*.
+
+    1. W menu aplikacji logiki wybierz pozycję **Przegląd**.
+
+    1. W sekcji **historia uruchomień** wybierz najwcześniejsze wystąpienie, które nadal działa, na przykład:
+
+       ![Wybierz najwcześniejsze uruchomione wystąpienie](./media/logic-apps-workflow-actions-triggers/waiting-runs.png)
+
+       > [!TIP]
+       > Aby wyświetlić tylko wystąpienia, które są nadal uruchomione, Otwórz listę **wszystkie** i wybierz pozycję **Uruchom**.    
+
+    1. W obszarze **Uruchom aplikację logiki**wybierz pozycję **Anuluj przebieg**.
+
+       ![Znajdź najwcześniejsze uruchomione wystąpienie](./media/logic-apps-workflow-actions-triggers/cancel-run.png)
+
+  * Aby obejść tę możliwość, należy dodać limit czasu do każdej akcji, która może zawierać te uruchomienia. Jeśli pracujesz w edytorze kodu, zobacz [Zmienianie asynchronicznego czasu trwania](#asynchronous-limits). W przeciwnym razie, jeśli używasz projektanta, wykonaj następujące kroki:
+
+    1. W aplikacji logiki na akcję, w której chcesz dodać limit czasu, w prawym górnym rogu wybierz przycisk wielokropka ( **...** ), a następnie wybierz pozycję **Ustawienia**.
+
+       ![Otwórz ustawienia akcji](./media/logic-apps-workflow-actions-triggers/action-settings.png)
+
+    1. W obszarze **limit czasu**Określ czas trwania limitu czasu w [formacie ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations).
+
+       ![Określ czas trwania limitu czasu](./media/logic-apps-workflow-actions-triggers/timeout.png)
+
+* Jeśli chcesz uruchomić aplikację logiki sekwencyjnie, możesz ustawić współbieżność wyzwalacza na `1` przy użyciu edytora widoku kodu lub projektanta. Nie należy jednak ustawiać właściwości `operationOptions` wyzwalacza na `SingleInstance` w edytorze widoku kodu. W przeciwnym razie zostanie wyświetlony błąd walidacji. Aby uzyskać więcej informacji, zobacz [kolejno wyzwalacze wystąpień](#sequential-trigger).
 
 #### <a name="edit-in-code-view"></a>Edytuj w widoku kodu 
 

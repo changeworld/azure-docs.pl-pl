@@ -11,23 +11,23 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/10/2018
+ms.date: 09/27/2018
 ms.author: allensu
-ms.openlocfilehash: 1995ad5e8179fdee11e960c2ad0e7c03602ebd31
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: df35168d0fab0b01ff11c4105a1fcc5b16e21f30
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274796"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350729"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Dzienniki Azure Monitor dla publicznych Load Balancer podstawowych
 
 >[!IMPORTANT] 
 >Azure Load Balancer obsługuje dwa różne typy: Podstawowa i Standardowa. W tym artykule omówiono usługę Load Balancer w warstwie Podstawowa. Aby uzyskać więcej informacji na temat usługa Load Balancer w warstwie Standardowa, zobacz [omówienie usługa Load Balancer w warstwie Standardowa](load-balancer-standard-overview.md) , które udostępnia dane telemetryczne za pośrednictwem wielowymiarowych metryk w Azure monitor.
 
-Możesz użyć różnych typów dzienników na platformie Azure do zarządzania podstawowymi modułami równoważenia obciążenia i rozwiązywania problemów. Dostęp do niektórych z tych dzienników można uzyskać za pomocą portalu. Wszystkie dzienniki można wyodrębnić z usługi Azure Blob Storage i przeglądać w różnych narzędziach, takich jak program Excel i usługa PowerBI. Więcej informacji o różnych typach dzienników można znaleźć na poniższej liście.
+Możesz użyć różnych typów dzienników na platformie Azure do zarządzania podstawowymi modułami równoważenia obciążenia i rozwiązywania problemów. Dostęp do niektórych z tych dzienników można uzyskać za pomocą portalu. Dzienniki mogą być przesyłane strumieniowo do centrum zdarzeń lub obszaru roboczego Log Analytics. Wszystkie dzienniki można wyodrębnić z usługi Azure Blob Storage i przeglądać w różnych narzędziach, takich jak Excel i Power BI.  Więcej informacji o różnych typach dzienników można znaleźć na poniższej liście.
 
-* **Dzienniki inspekcji:** Możesz użyć [dzienników inspekcji platformy Azure](../monitoring-and-diagnostics/insights-debugging-with-events.md) (dawniej nazywanych dziennikami operacyjnymi), aby wyświetlić wszystkie operacje przesyłane do subskrypcji platformy Azure i ich stan. Dzienniki inspekcji są domyślnie włączone i można je wyświetlić w Azure Portal.
+* **Dzienniki aktywności:** Za pomocą [widoku dzienniki aktywności można monitorować akcje dotyczące zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit) , aby wyświetlić wszystkie działania przesyłane do subskrypcji platformy Azure i ich stan. Dzienniki aktywności są domyślnie włączone i można je wyświetlić w Azure Portal.
 * **Dzienniki zdarzeń alertu:** Ten dziennik służy do wyświetlania alertów wygenerowanych przez moduł równoważenia obciążenia. Stan usługi równoważenia obciążenia jest zbierany co pięć minut. Ten dziennik jest zapisywana tylko w przypadku zgłoszenia zdarzenia alertu modułu równoważenia obciążenia.
 * **Dzienniki sondowania kondycji:** Ten dziennik służy do wyświetlania problemów wykrytych przez sondę kondycji, takich jak liczba wystąpień w puli zaplecza, które nie otrzymują żądań z modułu równoważenia obciążenia z powodu błędów sondy kondycji. Ten dziennik jest zapisywana w przypadku zmiany stanu sondy kondycji.
 
@@ -36,39 +36,66 @@ Możesz użyć różnych typów dzienników na platformie Azure do zarządzania 
 
 ## <a name="enable-logging"></a>Włącz rejestrowanie
 
-Rejestrowanie inspekcji jest automatycznie włączane dla każdego Menedżer zasobów zasobu. Musisz włączyć rejestrowanie sondowania zdarzeń i kondycji, aby rozpocząć zbieranie danych dostępnych w tych dziennikach. Wykonaj następujące kroki, aby włączyć rejestrowanie.
+Rejestrowanie aktywności jest automatycznie włączone dla wszystkich zasobów usługi Resource Manager. Włącz rejestrowanie sondowania zdarzeń i kondycji, aby rozpocząć zbieranie danych dostępnych w tych dziennikach. Wykonaj następujące kroki, aby włączyć rejestrowanie.
 
-Zaloguj się do [Azure Portal](https://portal.azure.com). Jeśli nie masz jeszcze modułu równoważenia obciążenia, przed kontynuowaniem [Utwórz moduł równoważenia obciążenia](load-balancer-get-started-internet-arm-ps.md) .
+Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Jeśli nie masz jeszcze modułu równoważenia obciążenia, przed kontynuowaniem [Utwórz moduł równoważenia obciążenia](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) .
 
-1. W portalu kliknij przycisk **Przeglądaj**.
-2. Wybierz pozycję usługi **równoważenia obciążenia**.
+1. W portalu kliknij pozycję **grupy zasobów**.
+2. Wybierz pozycję **\<resource-Group-name >** , w której znajduje się moduł równoważenia obciążenia.
+3. Wybierz moduł równoważenia obciążenia.
+4. Wybierz pozycję **monitorowanie** > **ustawień diagnostycznych**.
+5. W okienku **Ustawienia diagnostyki** w obszarze **Ustawienia diagnostyki**wybierz pozycję **+ Dodaj ustawienie diagnostyczne**.
+6. W okienku tworzenie **ustawień diagnostycznych** wprowadź **MyLBDiagnostics** w polu **Nazwa** .
+7. Dla **ustawień diagnostycznych**dostępne są trzy opcje.  Można wybrać jeden, dwa lub wszystkie trzy i skonfigurować każdy z nich w celu spełnienia wymagań:
+   * **Archiwizowanie na koncie magazynu**
+   * **Przesyłanie strumieniowe do centrum zdarzeń**
+   * **Wyślij do Log Analytics**
 
-    ![Portal — Równoważenie obciążenia](./media/load-balancer-monitor-log/load-balancer-browse.png)
+    ### <a name="archive-to-a-storage-account"></a>Zarchiwizuj na koncie magazynu
+    Konieczne jest już konto magazynu utworzone dla tego procesu.  Aby utworzyć konto magazynu, zobacz [Tworzenie konta magazynu](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)
 
-3. Wybierz istniejący moduł równoważenia obciążenia > > **wszystkie ustawienia**.
-4. Po prawej stronie okna dialogowego pod nazwą modułu równoważenia obciążenia przewiń do pozycji **monitorowanie**, kliknij pozycję **Diagnostyka**.
+    1. Zaznacz pole wyboru obok pozycji **Archiwizowanie na koncie magazynu**.
+    2. Wybierz pozycję **Konfiguruj** , aby otworzyć okienko **Wybierz konto magazynu** .
+    3. Wybierz **subskrypcję** , w której konto magazynu zostało utworzone w polu ściągania.
+    4. Wybierz nazwę konta magazynu w obszarze **konto magazynu** w polu ściąganie. 
+    5. Wybierz przycisk OK.
 
-    ![Portal — Równoważenie obciążenia — ustawienia](./media/load-balancer-monitor-log/load-balancer-settings.png)
+    ### <a name="stream-to-an-event-hub"></a>Przesyłaj strumieniowo do centrum zdarzeń
+    Musisz już utworzyć centrum zdarzeń dla tego procesu.  Aby utworzyć centrum zdarzeń, zobacz [Quickstart: Tworzenie centrum zdarzeń przy użyciu Azure Portal @ no__t-0
 
-5. W okienku **Diagnostyka** w obszarze **stan**wybierz pozycję **włączone**.
-6. Kliknij pozycję **konto magazynu**.
-7. W obszarze **dzienniki**Wybierz istniejące konto magazynu lub Utwórz nowe. Użyj suwaka, aby określić, ile dni dane zdarzeń będą przechowywane w dziennikach zdarzeń. 
-8. Kliknij polecenie **Zapisz**.
+    1. Zaznacz pole wyboru obok pozycji **strumień do centrum zdarzeń**
+    2. Wybierz pozycję **Konfiguruj** , aby otworzyć okienko **Wybierz centrum zdarzeń** .
+    3. Wybierz **subskrypcję** , w której utworzono centrum zdarzeń w polu ściągania.
+    4. **Wybierz pozycję przestrzeń nazw centrum zdarzeń** w polu ściągania.
+    5. **Wybierz pozycję Nazwa zasad centrum zdarzeń** w polu ściągania.
+    6. Wybierz przycisk OK.
 
-Diagnostyka zostanie zapisana w Table Storage na określonym koncie magazynu. Jeśli dzienniki nie są zapisywane, jest to spowodowane tym, że nie są generowane żadne odpowiednie dzienniki.
+    ### <a name="send-to-log-analytics"></a>Wyślij do usługi Log Analytics
+    Musisz mieć już utworzony i skonfigurowany obszar roboczy usługi log Analytics dla tego procesu.  Aby utworzyć obszar roboczy Log Analytics, zobacz [tworzenie log Analytics obszaru roboczego w Azure Portal](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
 
-![Portal — dzienniki diagnostyki](./media/load-balancer-monitor-log/load-balancer-diagnostics.png)
+    1. Zaznacz pole wyboru obok pozycji **Wyślij do log Analytics**.
+    2. W polu rozwijanym wybierz **subskrypcję** , w której znajduje się obszar roboczy log Analytics.
+    3. Wybierz **obszar roboczy log Analytics** w polu ściągania.
 
-> [!NOTE]
-> Dzienniki inspekcji nie wymagają oddzielnego konta magazynu. Użycie magazynu do rejestrowania zdarzeń i sondowania kondycji spowoduje naliczenie opłat za usługę.
 
-## <a name="audit-log"></a>Dziennik inspekcji
+8. Poniżej sekcji **dziennika** w okienku **Ustawienia diagnostyczne** zaznacz pole wyboru obok obu:
+   * **LoadBalancerAlertEvent**
+   * **LoadBalancerProbeHealthStatus**
 
-Dziennik inspekcji jest domyślnie generowany. Dzienniki są przechowywane przez 90 dni w magazynie dzienników zdarzeń platformy Azure. Dowiedz się więcej o tych dziennikach, odczytując artykuł [Wyświetlanie zdarzeń i dzienników inspekcji](../monitoring-and-diagnostics/insights-debugging-with-events.md) .
+9.  Poniżej sekcji **Metryka** w okienku **Ustawienia diagnostyki** zaznacz pole wyboru obok pozycji:
+   * **AllMetrics**
 
-## <a name="alert-event-log"></a>Dziennik zdarzeń alertu
+11. Sprawdź, czy wszystko wygląda poprawnie, a następnie kliknij pozycję **Zapisz** w górnej części okienka tworzenie **ustawień diagnostycznych** .
 
-Ten dziennik jest generowany tylko wtedy, gdy włączono go na podstawie usługi równoważenia obciążenia. Zdarzenia są rejestrowane w formacie JSON i przechowywane na koncie magazynu określonym podczas włączania rejestrowania. Poniżej znajduje się przykład zdarzenia.
+## <a name="activity-log"></a>Dziennik aktywności
+
+Dziennik aktywności jest domyślnie generowany. Dzienniki są przechowywane przez 90 dni w magazynie dzienników zdarzeń platformy Azure. Więcej informacji na temat tych dzienników można znaleźć w artykule [Wyświetlanie dzienników aktywności w celu monitorowania akcji dotyczących zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit) .
+
+## <a name="archive-to-storage-account-logs"></a>Archiwizuj do dzienników konta magazynu
+
+### <a name="alert-event-log"></a>Dziennik zdarzeń alertu
+
+Ten dziennik jest generowany tylko wtedy, gdy włączono go na podstawie usługi równoważenia obciążenia. Zdarzenia są rejestrowane w formacie JSON i przechowywane na koncie magazynu określonym podczas włączania rejestrowania. Poniższy przykład jest zdarzeniem.
 
 ```json
 {
@@ -87,9 +114,9 @@ Ten dziennik jest generowany tylko wtedy, gdy włączono go na podstawie usługi
 }
 ```
 
-W danych wyjściowych JSON  zostanie wyświetlona Właściwość EventName opisująca przyczynę modułu równoważenia obciążenia, który utworzył alert. W takim przypadku wygenerowany alert był spowodowany wyczerpaniem portów TCP spowodowanym przez limity NAT źródła IP.
+W danych wyjściowych JSON zostanie wyświetlona Właściwość *EventName* opisująca przyczynę modułu równoważenia obciążenia, który utworzył alert. W takim przypadku wygenerowany alert został spowodowany wyczerpaniem portów TCP przez limity NAT źródła IP.
 
-## <a name="health-probe-log"></a>Dziennik sondy kondycji
+### <a name="health-probe-log"></a>Dziennik sondy kondycji
 
 Ten dziennik jest generowany tylko wtedy, gdy włączono go na podstawie usługi równoważenia obciążenia, jak opisano powyżej. Dane są przechowywane na koncie magazynu określonym podczas włączania rejestrowania. Utworzono kontener o nazwie "Insights-Logs-loadbalancerprobehealthstatus" i rejestrowane są następujące dane:
 
@@ -127,27 +154,28 @@ Ten dziennik jest generowany tylko wtedy, gdy włączono go na podstawie usługi
 }
 ```
 
-Dane wyjściowe JSON są wyświetlane w polu właściwości podstawowe informacje o stanie kondycji sondy. Właściwość *dipDownCount* pokazuje całkowitą liczbę wystąpień na zapleczu, które nie odbierają ruchu sieciowego z powodu niepowodzeń odpowiedzi sondy.
+Dane wyjściowe JSON są wyświetlane w polu właściwości podstawowe informacje o stanie kondycji sondy. Właściwość *dipDownCount* pokazuje łączną liczbę wystąpień w zapleczu, które nie odbierają ruchu sieciowego z powodu niepowodzeń odpowiedzi sondy.
 
-## <a name="view-and-analyze-the-audit-log"></a>Wyświetlanie i analizowanie dziennika inspekcji
+### <a name="view-and-analyze-the-audit-log"></a>Wyświetlanie i analizowanie dziennika inspekcji
 
 Można wyświetlać i analizować dane dziennika inspekcji przy użyciu dowolnej z następujących metod:
 
-* **Narzędzia platformy Azure:** Pobierz informacje z dzienników inspekcji za pośrednictwem Azure PowerShell, interfejsu wiersza polecenia platformy Azure, interfejsu API REST platformy Azure lub portalu Azure w wersji zapoznawczej. Instrukcje krok po kroku dla każdej metody opisano szczegółowo w operacjach [inspekcji w Menedżer zasobów](../azure-resource-manager/resource-group-audit.md) artykule.
-* **Power BI:** Jeśli nie masz jeszcze konta [Power BI](https://powerbi.microsoft.com/pricing) , możesz wypróbować go bezpłatnie. Za pomocą [pakietu zawartości dzienników inspekcji platformy Azure dla Power BI](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs)można analizować dane przy użyciu wstępnie skonfigurowanych pulpitów nawigacyjnych lub dostosować widoki zgodnie z wymaganiami.
+* **Narzędzia platformy Azure:** Pobierz informacje z dzienników inspekcji za pośrednictwem Azure PowerShell, interfejsu wiersza polecenia platformy Azure, interfejsu API REST platformy Azure lub Azure Portal. Instrukcje krok po kroku dla każdej metody opisano szczegółowo w operacjach [inspekcji w Menedżer zasobów](../azure-resource-manager/resource-group-audit.md) artykule.
+* **Power BI:** Jeśli nie masz jeszcze konta usługi [Power BI](https:// .microsoft.com/pricing), możesz ją wypróbować bezpłatnie. Za pomocą [pakietu zawartości dzienników inspekcji platformy Azure dla Power BI](https:// .microsoft.com/documentation/ -content-pack-azure-audit-logs)można analizować dane przy użyciu wstępnie skonfigurowanych pulpitów nawigacyjnych lub dostosować widoki zgodnie z wymaganiami.
 
-## <a name="view-and-analyze-the-health-probe-and-event-log"></a>Wyświetlanie i analizowanie sondy kondycji i dziennika zdarzeń
+### <a name="view-and-analyze-the-health-probe-and-event-log"></a>Wyświetlanie i analizowanie sondy kondycji i dziennika zdarzeń
 
-Musisz nawiązać połączenie z kontem magazynu i pobrać wpisy dziennika JSON dla dzienników sondowania zdarzeń i kondycji. Po pobraniu plików JSON można je przekonwertować na woluminy CSV i przeglądać w programie Excel, usługi PowerBI lub dowolnym innym narzędziu do wizualizacji danych.
+Połącz się z kontem magazynu i Pobierz wpisy dziennika JSON dla dzienników sondowania zdarzeń i kondycji. Po pobraniu plików JSON można je przekonwertować na woluminy CSV i wyświetlać w programie Excel, Power BI lub dowolnym innym narzędziu do wizualizacji danych.
 
 > [!TIP]
 > Jeśli znasz program Visual Studio oraz podstawowe pojęcia dotyczące zmiany wartości stałych i zmiennych w języku C#, możesz skorzystać z [konwerterów dzienników](https://github.com/Azure-Samples/networking-dotnet-log-converter) dostępnych w witrynie GitHub.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="stream-to-an-event-hub"></a>Przesyłaj strumieniowo do centrum zdarzeń
+Gdy informacje diagnostyczne są przesyłane strumieniowo do centrum zdarzeń, mogą służyć do scentralizowanej analizy dzienników w narzędziu SIEM innej firmy z integracją Azure Monitor. Aby uzyskać więcej informacji, zobacz [przesyłanie strumieniowe danych monitorowania platformy Azure do centrum zdarzeń](https://docs.microsoft.com/azure/azure-monitor/platform/stream-monitoring-data-event-hubs#tools-with-azure-monitor-integration)
 
-* [Wizualizuj dzienniki inspekcji platformy Azure za pomocą wpisu w blogu Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) .
-* [Wyświetlanie i analizowanie dzienników inspekcji platformy Azure w Power BI i więcej wpisów w](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) blogu.
+## <a name="send-to-log-analytics"></a>Wyślij do usługi Log Analytics
+Zasoby na platformie Azure mogą być wysyłane bezpośrednio do obszaru roboczego Log Analytics, w którym można uruchamiać złożone zapytania, aby uzyskać informacje na temat rozwiązywania problemów i analizy.  Aby uzyskać więcej informacji, zobacz [zbieranie dzienników zasobów platformy Azure w obszarze roboczym log Analytics w Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Opis sond modułu równoważenia obciążenia](load-balancer-custom-probe-overview.md)

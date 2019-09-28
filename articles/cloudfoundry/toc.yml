@@ -11,8 +11,6 @@
       href: /azure/cloudfoundry/create-cloud-foundry-on-azure
     - name: Wdrażanie aplikacji usługi CF na platformie Azure
       href: /azure/virtual-machines/linux/cloudfoundry-deploy-your-first-app
-    - name: Używanie usługi OSBA z aplikacją w usłudze PCF
-      href: /azure/cloudfoundry/use-osba-pcf-app
     - name: Usługa CloudFoundry na platformie Azure
       href: /azure/virtual-machines/linux/cloudfoundry-get-started
     - name: Wdrażanie dodatku OMS Nozzle usługi CF

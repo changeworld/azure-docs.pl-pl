@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/26/2019
-ms.openlocfilehash: 38c319fb89e8c763f8231c18cbb59bef099193e2
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 3ddd228488d8ba4adc6780db1f65fdb634291d3b
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259329"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350505"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Samouczek: Tworzenie pierwszego modelu klasyfikacji przy użyciu automatycznej uczenia maszynowego
 
@@ -50,7 +50,7 @@ Aby zarządzać zasobami platformy Azure, można utworzyć obszar roboczy za po�
 
 ## <a name="create-and-run-the-experiment"></a>Tworzenie i uruchamianie eksperymentu
 
-Wykonaj następujące kroki konfiguracji i uruchamiania na stronie docelowej obszaru roboczego, skonsolidowany interfejs, który obejmuje narzędzia uczenia maszynowego do wykonywania scenariuszy analizy danych dla lekarzy danych o wszystkich poziomach umiejętności.
+Wykonaj następujące kroki konfiguracji i uruchamiania na stronie docelowej obszaru roboczego, skonsolidowany interfejs, który obejmuje narzędzia uczenia maszynowego do wykonywania scenariuszy analizy danych dla lekarzy danych o wszystkich poziomach umiejętności. Strona docelowa obszaru roboczego nie jest obsługiwana w przeglądarkach programu Internet Explorer.
 
 1. Zaloguj się do [strony docelowej obszaru roboczego](https://ml.azure.com/workspaceportal/).
 
@@ -58,7 +58,7 @@ Wykonaj następujące kroki konfiguracji i uruchamiania na stronie docelowej obs
 
 1. Wybierz pozycję **Rozpocznij**.
 
-1. W lewym okienku wybierz pozycję **zautomatyzowany ml** w sekcji **Tworzenie** .
+1. W lewym okienku wybierz pozycję **zautomatyzowany ml** w sekcji **autor** .
 
    Ponieważ jest to pierwszy zautomatyzowany eksperyment z ML, zobaczysz ekran Wprowadzenie.
 
@@ -99,23 +99,21 @@ Wykonaj następujące kroki konfiguracji i uruchamiania na stronie docelowej obs
        
     1. Sprawdź, czy **Ustawienia i formularz podglądu** są wypełnione w następujący sposób, a następnie wybierz przycisk **dalej**.
         
-        Pole|Wartość dla samouczka
-        ---|---
-        Format pliku| Rozdzielane
-        Ogranicznik| Przecinek
-        Kodowanie| UTF-8
-        Nagłówki kolumn| Wszystkie pliki mają te same nagłówki
-        Pomiń wiersze | Brak
+        Pole|Opis| Wartość dla samouczka
+        ---|---|---
+        Format pliku|Definiuje układ i typ danych przechowywanych w pliku.| Rozdzielane
+        Ogranicznik|Jeden lub więcej znaków do określenia granicy między @ no__t-0 oddzielnych, niezależnych regionów w postaci zwykłego tekstu lub innych strumieni danych. |Przecinek
+        Kodowanie|Identyfikuje tablicę znaków, która ma być używana do odczytywania zestawu danych.| UTF-8
+        Nagłówki kolumn| Wskazuje, w jaki sposób nagłówki zestawu danych (jeśli istnieją) będą traktowane.| Wszystkie pliki mają te same nagłówki
+        Pomiń wiersze | Wskazuje, ile (jeśli istnieją) wiersze są pomijane w zestawie danych.| Brak
     
-    1. Formularz **schematu** umożliwia dalsze Konfigurowanie danych na potrzeby tego eksperymentu. Na potrzeby tego przykładu wybierz przełącznik przełącznika dla funkcji **day_of_week** , tak aby nie obejmował go dla tego eksperymentu. Wybierz pozycję **gotowe**, aby zakończyć przekazywanie plików i tworzenie zestawu danych dla eksperymentu.
-
         ![Konfiguracja karty podglądu](media/tutorial-1st-experiment-automated-ml/schema-tab-config.gif)
 
 1. Wybierz pozycję **Klasyfikacja** jako zadanie przewidywania.
 
 1. Zaznacz opcję **y** jako kolumnę docelową, którą chcesz przewidzieć. Ta kolumna wskazuje, czy klient subskrybuje termin depozytowy.
 
-1. Rozwiń pozycję **Ustawienia zaawansowane** i wypełnij pola w następujący sposób.
+1. Rozwiń pozycję **Ustawienia zaawansowane** i wypełnij pola w następujący sposób. Te ustawienia służą do lepszego kontrolowania zadania szkoleniowego. W przeciwnym razie wartości domyślne są stosowane na podstawie wyboru eksperymentu i danych.
 
    >[!NOTE]
    > W tym samouczku nie ustawisz oceny metryki lub maksymalnej liczby rdzeni na wartość progową iteracji. Nie można natomiast blokować algorytmów.
@@ -138,10 +136,10 @@ Wykonaj następujące kroki konfiguracji i uruchamiania na stronie docelowej obs
 
 ##  <a name="explore-iteration-results"></a>Eksploruj wyniki iteracji
 
-W miarę postępu eksperymentu ekran aktualizuje **Wykres iteracji** i **listę iteracji** przy użyciu różnych iteracji (modeli) utworzonych w miarę ich ukończenia i porządkuje je według wyniku pomiaru. Domyślnie model, który ocenia najwyższy poziom w oparciu o wybraną metrykę **AUC_weighted** , znajduje się w górnej części listy.
+W miarę postępu eksperymentu ekran aktualizuje **Wykres iteracji** i **listę iteracji** przy użyciu różnych iteracji (modeli) utworzonych w miarę ich ukończenia. Domyślnie iteracje są uporządkowane według wyniku metryki. Na potrzeby tego samouczka model, który ocenia najwyższy poziom w oparciu o wybraną metrykę **AUC_weighted** , znajduje się na szczycie listy.
 
 Podczas oczekiwania na zakończenie wszystkich iteracji eksperymentów wybierz **nazwę** ukończonej iteracji, aby poznać jej szczegóły wydajności. 
-   
+
 Poniżej przedstawiono wykresy i uruchomienia metryk generowanych dla każdej iteracji, takich jak krzywa odwołania z dokładnością, niepodzielna macierz, oceny ważonej dokładności itd. 
 
 ![Szczegóły przebiegu iteracji](media/tutorial-1st-experiment-automated-ml/run-detail.gif)
@@ -199,6 +197,7 @@ W tym samouczku zautomatyzowanym uczenia maszynowego została użyta Strona doce
 + Dowiedz się więcej na temat [przetwarzania wstępnego](how-to-create-portal-experiments.md#preprocess).
 + Dowiedz się więcej na temat [profilowania danych](how-to-create-portal-experiments.md#profile).
 + Dowiedz się więcej o [automatycznym uczeniu maszynowym](concept-automated-ml.md).
++ Aby uzyskać więcej informacji na temat metryk i wykresów klasyfikacji, zobacz artykuł [Omówienie automatycznego uczenia maszynowego](how-to-understand-automated-ml.md#classification) .
 
 >[!NOTE]
 > Ten zestaw danych marketingu dla [banku jest udostępniany w ramach Creative Commons Attribution (CCO: Domena publiczna)](https://creativecommons.org/publicdomain/zero/1.0/). Wszystkie prawa do poszczególnych treści bazy danych są licencjonowane w ramach [licencji na zawartość bazy danych](https://creativecommons.org/publicdomain/zero/1.0/) i dostępne w witrynie [Kaggle](https://www.kaggle.com/janiobachmann/bank-marketing-dataset). Ten zestaw danych był początkowo dostępny w [bazie danych Machine Learning UCI](https://archive.ics.uci.edu/ml/datasets/bank+marketing).<br><br>

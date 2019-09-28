@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: d6d7b4cda4bd3b3246b9bc5573246546d8020b38
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 73b5c86030d9e106cb3ea24d3100faa56e323815
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597366"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71348948"
 ---
 # <a name="application-gateway-components"></a>Składniki bramy aplikacji
 
@@ -28,17 +28,17 @@ Adres IP frontonu to adres IP skojarzony z bramą aplikacji. Bramę aplikacji mo
 
 Jednostka SKU platformy Azure Application Gateway v2 można skonfigurować do obsługi zarówno statycznego wewnętrznego adresu IP, jak i statycznego publicznego adresu IP, lub tylko statycznego publicznego adresu IP. Nie można go skonfigurować do obsługi tylko statycznego wewnętrznego adresu IP.
 
-Jednostka SKU w wersji 1 można skonfigurować do obsługi statycznego wewnętrznego adresu IP i dynamicznego publicznego adresu IP, tylko statycznego wewnętrznego adresu IP lub tylko dynamicznego publicznego adresu IP lub tylko dynamicznego prywatnego adresu IP lub dynamiczny publiczny adres IP oraz dynamiczny prywatny adres IP. Dynamiczny adres IP Application Gateway nie zmienia się na działającej bramie. Można to zmienić tylko wtedy, gdy zatrzymasz lub uruchomisz bramę. Nie zmieniają się na awarie systemu, aktualizacje, aktualizacje hosta platformy Azure itd. 
+Jednostka SKU V1 można skonfigurować do obsługi statycznego lub dynamicznego wewnętrznego adresu IP oraz dynamicznego publicznego adresu IP. Dynamiczny adres IP Application Gateway nie zmienia się na działającej bramie. Można to zmienić tylko wtedy, gdy zatrzymasz lub uruchomisz bramę. Nie zmieniają się na awarie systemu, aktualizacje, aktualizacje hosta platformy Azure itd. 
 
 Nazwa DNS skojarzona z bramą aplikacji nie zmienia cyklu życia bramy. W związku z tym należy użyć aliasu CNAME i wskazać go adres DNS bramy aplikacji.
 
 ## <a name="listeners"></a>Odbiorniki
 
-Odbiornik jest jednostką logiczną, która sprawdza przychodzące żądania połączenia. Odbiornik akceptuje żądanie, jeśli protokół, port, Host i adres IP skojarzony z żądaniem są zgodne z tymi samymi elementami, które są skojarzone z konfiguracją odbiornika.
+Odbiornik jest jednostką logiczną, która sprawdza przychodzące żądania połączenia. Odbiornik akceptuje żądanie, jeśli protokół, port, nazwa hosta i adres IP skojarzony z żądaniem są zgodne z tymi samymi elementami, które są skojarzone z konfiguracją odbiornika.
 
 Przed użyciem bramy aplikacji należy dodać co najmniej jeden odbiornik. Do bramy aplikacji może być przypisanych wiele odbiorników, które mogą być używane dla tego samego protokołu.
 
-Gdy odbiornik wykryje przychodzące żądania od klientów, Brama aplikacji kieruje te żądania do członków w puli zaplecza. Brama aplikacji używa reguł routingu żądań zdefiniowanych dla odbiornika, który odebrał żądanie przychodzące.
+Gdy odbiornik wykryje przychodzące żądania od klientów, Brama aplikacji kieruje te żądania do członków w puli zaplecza skonfigurowanych w regule.
 
 Odbiorniki obsługują następujące porty i protokoły.
 
@@ -49,14 +49,15 @@ Port jest miejscem, w którym odbiornik nasłuchuje żądania klienta. Można sk
 ### <a name="protocols"></a>Protokoły
 
 Application Gateway obsługuje cztery protokoły: HTTP, HTTPS, HTTP/2 i WebSocket:
+>[!NOTE]
+>Obsługa protokołu HTTP/2 jest dostępna dla klientów nawiązujących połączenie z odbiornikami bramy aplikacji. Komunikacja z pulami serwerów zaplecza jest zawsze za pośrednictwem protokołu HTTP/1.1. Domyślnie obsługa protokołu HTTP/2 jest wyłączona. Możesz włączyć tę opcję.
 
 - Określ między protokołami HTTP i HTTPS w konfiguracji odbiornika.
 - Obsługa [protokołów WebSockets i http/2](https://docs.microsoft.com/azure/application-gateway/overview#websocket-and-http2-traffic) jest zapewniana w sposób natywny, a [Obsługa protokołu WebSocket](https://docs.microsoft.com/azure/application-gateway/application-gateway-websocket) jest domyślnie włączona. Nie ma żadnych ustawień konfigurowanych przez użytkownika umożliwiających selektywne włączenie lub wyłączenie obsługi protokołu WebSocket. Użyj obiektów WebSockets z odbiornikami HTTP i HTTPS.
-- Obsługa protokołu HTTP/2 jest dostępna dla klientów nawiązujących połączenie z odbiornikami bramy aplikacji. Komunikacja z pulami serwerów zaplecza odbywa się za pośrednictwem protokołu HTTP/1.1. Domyślnie obsługa protokołu HTTP/2 jest wyłączona. Możesz włączyć tę opcję.
 
-Użyj odbiornika HTTPS do zakończenia protokołu SSL. Odbiornik HTTPS odciąża szyfrowanie i odszyfrowanie do bramy aplikacji, dzięki czemu serwery sieci Web nie są obciążeniem. Aplikacje są następnie bezpłatne, aby skoncentrować się na logice biznesowej.
+Użyj odbiornika HTTPS do zakończenia protokołu SSL. Odbiornik HTTPS odciąża szyfrowanie i odszyfrowanie do bramy aplikacji, dzięki czemu serwery sieci Web nie obciążają obciążenia.
 
-### <a name="custom-error-pages"></a>Niestandardowe strony błędów
+### <a name="custom-error-pages"></a>Strony błędów niestandardowych
 
 Application Gateway umożliwia tworzenie niestandardowych stron błędów zamiast wyświetlania domyślnych stron błędów. W przypadku niestandardowych stron błędów możesz użyć własnych oznakowań i układu. Application Gateway wyświetla niestandardową stronę błędu, gdy żądanie nie może nawiązać połączenia z zapleczem.
 
@@ -80,7 +81,7 @@ Application Gateway przetwarza odbiorniki w pokazanej kolejności. Jeśli podsta
 
 Reguła routingu żądań jest kluczem składnika bramy aplikacji, ponieważ określa sposób kierowania ruchu do odbiornika. Reguła wiąże odbiornik, pulę serwerów zaplecza i ustawienia protokołu HTTP zaplecza.
 
-Gdy odbiornik akceptuje żądanie, reguła routingu żądań przekazuje żądanie do zaplecza lub przekierowuje ją w innym miejscu. Jeśli żądanie jest przekazywane do zaplecza, reguła routingu żądań określa, do której puli serwerów zaplecza ma zostać przekazana. Ponadto reguła routingu żądań określa również, czy nagłówki w żądaniu mają być ponownie zapisywane. Jeden odbiornik może być dołączony do jednej reguły.
+Gdy odbiornik akceptuje żądanie, reguła routingu żądań przekazuje żądanie do zaplecza lub przekierowuje ją w innym miejscu. Jeśli żądanie jest przekazywane do zaplecza, reguła routingu żądań określa, do której puli serwerów zaplecza ma zostać przekazana. Reguła routingu żądań określa również, czy nagłówki w żądaniu mają być ponownie zapisywane. Jeden odbiornik może być dołączony do jednej reguły.
 
 Istnieją dwa typy reguł routingu żądań:
 
@@ -114,7 +115,7 @@ Port i protokół używany w ustawieniach protokołu HTTP określają, czy ruch 
 
 Ten składnik jest również używany do:
 
-- Określ, czy sesja użytkownika ma być przechowywana na tym samym serwerze przy użyciu koligacji [sesji opartej na plikach cookie](https://docs.microsoft.com/azure/application-gateway/overview#session-affinity).
+- Określ, czy sesja użytkownika ma być przechowywana na tym samym serwerze przy użyciu [koligacji sesji opartej na plikach cookie](https://docs.microsoft.com/azure/application-gateway/overview#session-affinity).
 
 - Usuń bezpiecznie członków puli zaplecza przy użyciu [opróżniania połączeń](https://docs.microsoft.com/azure/application-gateway/overview#connection-draining).
 
@@ -125,7 +126,7 @@ Ten składnik jest również używany do:
 Pula zaplecza kieruje żądanie do serwerów zaplecza, które umożliwiają żądanie. Pule zaplecza mogą zawierać:
 
 - Karty interfejsów sieciowych
-- Zestawy skalowania maszyn wirtualnych
+- Virtual Machine Scale Sets
 - Publiczne adresy IP
 - Wewnętrzne adresy IP
 - NAZWA FQDN
@@ -147,7 +148,7 @@ Oprócz domyślnego monitorowania sondy kondycji można także dostosować sond�
 
 Aby uzyskać więcej informacji, zobacz [monitorowanie kondycji bramy aplikacji](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Tworzenie bramy aplikacji:
 

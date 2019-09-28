@@ -1,98 +1,98 @@
 ---
-title: Renderowanie możliwości — w usłudze Azure Batch
-description: Możliwości renderowania określonych w usłudze Azure Batch
+title: Możliwości renderowania — Azure Batch
+description: Określone możliwości renderowania w Azure Batch
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: be6c0f9a8874507433606903bcbd58c7723d6a8a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b5eaaa6d41b9dae97a2d6219ffa44fb75ed67e61
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62118691"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350046"
 ---
-# <a name="azure-batch-rendering-capabilities"></a>Możliwości renderowania w usłudze Azure Batch
+# <a name="azure-batch-rendering-capabilities"></a>Możliwości renderowania Azure Batch
 
-Funkcje wersji standardowej usługi Azure Batch są używane do uruchamiania obciążenia renderowania i aplikacji. Usługa Batch obejmuje również określone funkcje do obsługi obciążenia renderowania.
+Standardowe możliwości Azure Batch są używane do uruchamiania obciążeń i aplikacji renderowania. Program Batch zawiera również określone funkcje do obsługi obciążeń renderowania.
 
-Aby uzyskać omówienie pojęcia usługi Batch, łącznie z pul, zadań i zadań, zobacz [w tym artykule](https://docs.microsoft.com/azure/batch/batch-api-basics).
+Aby zapoznać się z omówieniem pojęć związanych z przetwarzaniem wsadowym, w tym pulami, zadaniami i zadaniami, zobacz [ten artykuł](https://docs.microsoft.com/azure/batch/batch-api-basics).
 
-## <a name="batch-pools"></a>Pule usługi Batch
+## <a name="batch-pools"></a>Pule wsadowe
 
 ### <a name="rendering-application-installation"></a>Renderowanie instalacji aplikacji
 
-Renderowanie obrazu maszyny Wirtualnej portalu Azure Marketplace można określić w konfiguracji puli, jeśli tylko wstępnie zainstalowanych aplikacji trzeba było używać.
+Obraz maszyny wirtualnej renderowania w portalu Azure Marketplace można określić w konfiguracji puli, jeśli trzeba będzie używać tylko wstępnie zainstalowanych aplikacji.
 
-Brak obrazu Windows 2016 i obrazu systemu CentOS.  W [portalu Azure Marketplace](https://azuremarketplace.microsoft.com), obrazy maszyn wirtualnych można znaleźć, wyszukując pozycję "usługi batch rendering".
+Istnieje obraz systemu Windows 2016 i obraz CentOS.  W [portalu Azure Marketplace](https://azuremarketplace.microsoft.com)obrazy maszyn wirtualnych można znaleźć, wyszukując frazę "renderowanie wsadowe".
 
-Aby uzyskać przykładową konfigurację puli, zobacz [renderowania wiersza polecenia platformy Azure w ramach samouczka](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli).  Witryna Azure portal i programu Batch Explorer zapewnia narzędzia graficznego interfejsu użytkownika do renderowania obrazu maszyny Wirtualnej należy wybrać podczas tworzenia puli.  Jeśli za pomocą interfejsu API usługi Batch, a następnie określ następujące wartości właściwości dla [ImageReference](https://docs.microsoft.com/rest/api/batchservice/pool/add#imagereference) podczas tworzenia puli:
+Aby zapoznać się z przykładową konfiguracją puli, zobacz [samouczek renderowania interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli).  Azure Portal i Batch Explorer udostępniają narzędzia graficznego interfejsu użytkownika, które umożliwiają wybranie renderowania obrazu maszyny wirtualnej podczas tworzenia puli.  W przypadku korzystania z interfejsu API usługi Batch określ następujące wartości właściwości [elementu imagereference](https://docs.microsoft.com/rest/api/batchservice/pool/add#imagereference) podczas tworzenia puli:
 
 | Wydawca | Oferta | SKU | Version |
 |---------|---------|---------|--------|
-| partia | rendering-centos73 | Renderowanie | najnowsza |
-| partia | rendering-windows2016 | Renderowanie | najnowsza |
+| partia | rendering-centos73 | Dawania | najnowsza |
+| partia | rendering-windows2016 | Dawania | najnowsza |
 
-Inne opcje są dostępne, jeśli są wymagane dodatkowe aplikacje, w puli maszyn wirtualnych:
+Inne opcje są dostępne, jeśli na maszynach wirtualnych puli są wymagane dodatkowe aplikacje:
 
-* Obraz niestandardowy na podstawie standardowego obrazu portalu Marketplace:
-  * Przy użyciu tej opcji możesz skonfigurować swoją maszynę wirtualną z odpowiednimi aplikacjami w określonych wersjach, których potrzebujesz. Aby uzyskać więcej informacji, zobacz [użyć obrazu niestandardowego do tworzenia puli maszyn wirtualnych](https://docs.microsoft.com/azure/batch/batch-custom-images). Autodesk i Chaos Group zmodyfikowano Arnold i V-Ray, odpowiednio, na potrzeby sprawdzania poprawności usługi licencjonowania usługi Azure Batch. Upewnij się, że masz wersje tych aplikacji, dzięki temu, w przeciwnym razie Licencjonowanie płatność za użycie nie będą działać. Bieżące wersje aplikacji Maya lub 3ds Max nie wymagają serwera licencji podczas uruchamiania bezobsługowego (w trybie wsadowym/wiersza polecenia). Jeśli nie masz pewności, jak korzystać z tej opcji, skontaktuj się z działem pomocy technicznej platformy Azure.
+* Obraz niestandardowy z galerii obrazów udostępnionych:
+  * Przy użyciu tej opcji możesz skonfigurować swoją maszynę wirtualną z odpowiednimi aplikacjami w określonych wersjach, których potrzebujesz. Aby uzyskać więcej informacji, zobacz [Tworzenie puli za pomocą galerii obrazów udostępnionych](batch-sig-images.md). Grupy Autodesk i chaos zmieniły odpowiednio Arnold i V-Ray, aby można było sprawdzić poprawność usługi licencjonowania Azure Batch. Upewnij się, że masz wersje tych aplikacji z tą obsługą, w przeciwnym razie Licencjonowanie za użycie nie będzie działało. Bieżące wersje Maya lub 3ds Max nie wymagają serwera licencji podczas uruchamiania bezobsługowego (w trybie wsadowym/wierszu polecenia). Skontaktuj się z pomocą techniczną platformy Azure, jeśli nie masz pewności, jak kontynuować tę opcję.
 * [Pakiety aplikacji](https://docs.microsoft.com/azure/batch/batch-application-packages):
-  * Pliki aplikacji przy użyciu co najmniej jednego pliku ZIP pakietu, Przekaż za pośrednictwem witryny Azure portal i określ pakiet, w konfiguracji puli. Podczas tworzenia puli maszyn wirtualnych są pobierane pliki ZIP i wyodrębnić pliki.
+  * Pakowanie plików aplikacji przy użyciu co najmniej jednego pliku ZIP, przekazywanie przez Azure Portal i określanie pakietu w konfiguracji puli. Podczas tworzenia puli maszyn wirtualnych pliki ZIP są pobierane i wyodrębnione pliki.
 * Pliki zasobów:
-  * Pliki aplikacji są przekazywane do usługi Azure blob storage i określ odwołań do pliku w [zadanie podrzędne uruchamiania puli](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask). Podczas tworzenia puli maszyn wirtualnych, pliki zasobów zostaną pobrane na każdej maszynie Wirtualnej.
+  * Pliki aplikacji są przekazywane do usługi Azure Blob Storage, a w [zadaniu puli](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask)należy określić odwołania do plików. Podczas tworzenia puli maszyn wirtualnych pliki zasobów są pobierane na każdą maszynę wirtualną.
 
-### <a name="pay-for-use-licensing-for-pre-installed-applications"></a>Płatność dla użycie licencji na program preinstalowanymi aplikacji
+### <a name="pay-for-use-licensing-for-pre-installed-applications"></a>Płatność za korzystanie z usługi licencjonowania dla wstępnie zainstalowanych aplikacji
 
-Aplikacje, które będą używane i mieć opłacie licencyjnej muszą być określone w konfiguracji puli.
+W konfiguracji puli należy określić aplikacje, które będą używane i mieć opłatę licencyjną.
 
-* Określ `applicationLicenses` właściwości podczas [tworzenia puli](https://docs.microsoft.com/rest/api/batchservice/pool/add#request-body).  Można określić następujące wartości w tablicy ciągów — "vray", "arnold", "3dsmax", "maya".
-* Po określeniu jednej lub więcej aplikacji, koszt tych aplikacji jest dodawany do kosztu maszyn wirtualnych.  Ceny aplikacji są wyświetlane na [usługi Azure Batch stronę z cennikiem](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering).
+* Określ właściwość `applicationLicenses` podczas [tworzenia puli](https://docs.microsoft.com/rest/api/batchservice/pool/add#request-body).  Następujące wartości można określić w tablicy ciągów-"VRay", "Arnold", "3dsMax", "Maya".
+* Po określeniu jednej lub kilku aplikacji koszt tych aplikacji zostanie dodany do kosztu maszyn wirtualnych.  Ceny aplikacji są wymienione na [stronie cennika Azure Batch](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering).
 
 > [!NOTE]
-> Jeśli zamiast tego możesz połączyć się z serwera licencji na korzystanie z aplikacji renderowanie, nie należy określać `applicationLicenses` właściwości.
+> Jeśli zamiast tego nawiążesz połączenie z serwerem licencji, aby korzystać z aplikacji do renderowania, nie określaj właściwości `applicationLicenses`.
 
-Aby wybrać aplikacje i wyświetlić ceny aplikacji, można użyć witryny Azure portal lub programu Batch Explorer.
+Możesz użyć Azure Portal lub Batch Explorer do wybrania aplikacji i pokazywania cen aplikacji.
 
-Jeśli zostanie podjęta próba na korzystanie z aplikacji, ale aplikacja nie została określona w `applicationLicenses` właściwość konfiguracji puli lub czy nie zasięg serwera licencji, a następnie wykonywania aplikacji nie powiedzie się z licencjonowania błędów oraz kod zakończenia różny od zera.
+Jeśli podjęto próbę użycia aplikacji, ale aplikacja nie została określona we właściwości `applicationLicenses` konfiguracji puli lub nie dociera do serwera licencji, wykonanie aplikacji kończy się niepowodzeniem z błędem licencjonowania i kodem zakończenia innym niż zero.
 
-### <a name="environment-variables-for-pre-installed-applications"></a>Zmienne środowiskowe dla optymalizacji wstępnie zainstalowanych aplikacji
+### <a name="environment-variables-for-pre-installed-applications"></a>Zmienne środowiskowe dla wstępnie zainstalowanych aplikacji
 
-Aby można było utworzyć wiersz polecenia dla zadań podrzędnych renderowania, należy określić lokalizację instalacji plików wykonywalnych aplikacji renderowania.  Systemowe zmienne środowiskowe zostały utworzone na obrazy maszyny Wirtualnej portalu Azure Marketplace, które mogą być używane zamiast konieczności określania rzeczywiste ścieżki.  Te zmienne środowiskowe stanowią uzupełnienie [standardowa zmiennych środowiskowych usługi Batch](https://docs.microsoft.com/azure/batch/batch-compute-node-environment-variables) tworzony dla każdego zadania.
+Aby można było utworzyć wiersz polecenia dla zadań renderowania, należy określić lokalizację instalacji plików wykonywalnych aplikacji do renderowania.  Systemowe zmienne środowiskowe zostały utworzone w obrazach maszyn wirtualnych portalu Azure Marketplace, których można użyć zamiast określania rzeczywistych ścieżek.  Te zmienne środowiskowe są uzupełnieniem [standardowych zmiennych środowiskowych usługi Batch](https://docs.microsoft.com/azure/batch/batch-compute-node-environment-variables) utworzonych dla każdego zadania.
 
 |Aplikacja|Plik wykonywalny aplikacji|Zmienna środowiskowa|
 |---------|---------|---------|
-|Autodesk 3ds Max 2018 r.|3dsmaxcmdio.exe|3DSMAX_2018_EXEC|
+|Autodesk 3ds Max 2018|3dsmaxcmdio.exe|3DSMAX_2018_EXEC|
 |Autodesk 3ds Max 2019|3dsmaxcmdio.exe|3DSMAX_2019_EXEC|
 |Autodesk Maya 2017|render.exe|MAYA_2017_EXEC|
 |Autodesk Maya 2018|render.exe|MAYA_2018_EXEC|
-|Chaos Group V-Ray autonomiczny|vray.exe|VRAY_3.60.4_EXEC|
-Wiersz polecenia programu Arnold 2017 r.|kick.exe|ARNOLD_2017_EXEC|
-|Wiersz polecenia programu Arnold 2018 r.|kick.exe|ARNOLD_2018_EXEC|
-|Mikser|blender.exe|BLENDER_2018_EXEC|
+|Grupa chaos V-Ray Standalone|VRay. exe|VRAY_3.60.4_EXEC|
+Wiersz polecenia Arnold 2017|kick.exe|ARNOLD_2017_EXEC|
+|Wiersz polecenia Arnold 2018|kick.exe|ARNOLD_2018_EXEC|
+|Programem Blender|Blender. exe|BLENDER_2018_EXEC|
 
-### <a name="azure-vm-families"></a>Rodzin maszyn wirtualnych platformy Azure
+### <a name="azure-vm-families"></a>Rodziny maszyn wirtualnych platformy Azure
 
-Podobnie jak w przypadku innych obciążeń, wymagania systemowe aplikacji renderowania różnią się i wymagań dotyczących wydajności zależy dla projektów i zadań.  Wielu różnych rodzin maszyn wirtualnych są dostępne w Azure, w zależności od wymagań — najniższy koszt, najlepsze ceny do wydajności, najlepsze wydajności i tak dalej.
-Niektóre aplikacje renderowania, takie jak Arnold, są oparte na procesor CPU; inne, takie jak V-Ray i cykle Blender można używać procesorów CPU lub GPU.
-Aby uzyskać opis dostępnych rodzin maszyn wirtualnych i rozmiarach maszyn wirtualnych [Zobacz typy maszyn wirtualnych i rozmiarach](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).
+Podobnie jak w przypadku innych obciążeń, renderowanie wymagań systemowych aplikacji jest różne i wymagania dotyczące wydajności różnią się w zależności od zadań i projektów.  Na platformie Azure dostępne są duże różne rodziny maszyn wirtualnych, w zależności od wymagań — najniższy koszt, Najlepsza cena/wydajność, Najlepsza wydajność i tak dalej.
+Niektóre aplikacje do renderowania, takie jak Arnold, są oparte na procesorach CPU; inne, takie jak cykle V-Ray i Blender, mogą korzystać z procesorów CPU i/lub GPU.
+Aby uzyskać opis dostępnych rodzin maszyn wirtualnych i rozmiarów maszyn wirtualnych, [Zobacz typy i rozmiary maszyn wirtualnych](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).
 
 ### <a name="low-priority-vms"></a>Maszyny wirtualne o niskim priorytecie
 
-Podobnie jak w przypadku innych obciążeń maszyn wirtualnych o niskim priorytecie może być wykorzystywany w pulach usługi Batch do renderowania.  Maszyny wirtualne o niskim priorytecie wykonać takie same jak regularne dedykowanych maszyn wirtualnych, ale korzystanie z nadmiarowej wydajności platformy Azure i są dostępne dla dużą zniżką.  Kompromisem za ułatwienie przy użyciu maszyn wirtualnych o niskim priorytecie jest, że te maszyny wirtualne mogą być niedostępne do alokacji lub mogą być przerywane, w dowolnym momencie, w zależności od dostępnej pojemności. Z tego powodu maszyny wirtualne o niskim priorytecie nie mają być odpowiednie dla wszystkich zadań renderowania. Na przykład jeśli obrazy zająć wiele godzin do renderowania, a następnie jest prawdopodobne, posiadające renderowania tych obrazów, przerwane i ponownie uruchomione z powodu maszyny wirtualne są przerywane byłoby dopuszczalne.
+Podobnie jak w przypadku innych obciążeń, maszyny wirtualne o niskim priorytecie mogą być wykorzystywane w pulach usługi Batch do renderowania.  Maszyny wirtualne o niskim priorytecie działają tak samo jak regularne dedykowane maszyny wirtualne, ale wykorzystują nadwyżkową pojemność platformy Azure i są dostępne dla dużego rabatu.  Użycie maszyn wirtualnych o niskim priorytecie polega na tym, że te maszyny wirtualne mogą nie być dostępne do przydzielenia lub mogą zostać przeniesione w dowolnym momencie, w zależności od dostępnej pojemności. Z tego powodu maszyny wirtualne o niskim priorytecie nie są odpowiednie dla wszystkich zadań renderowania. Na przykład, jeśli obrazy potrwają wiele godzin w celu renderowania, prawdopodobnie wyrenderowanie tych obrazów zostało przerwane i uruchomione ze względu na to, że maszyny wirtualne są zaakceptowane.
 
-Aby uzyskać więcej informacji na temat maszyn wirtualnych o niskim priorytecie i różne sposoby, aby je skonfigurować za pomocą usługi Batch, zobacz [używanie maszyn wirtualnych o niskim priorytecie z usługą Batch](https://docs.microsoft.com/azure/batch/batch-low-pri-vms).
+Aby uzyskać więcej informacji na temat właściwości maszyn wirtualnych o niskim priorytecie i różnych sposobów konfigurowania ich przy użyciu usługi Batch, zobacz [Korzystanie z maszyn wirtualnych o niskim priorytecie w usłudze Batch](https://docs.microsoft.com/azure/batch/batch-low-pri-vms).
 
-## <a name="jobs-and-tasks"></a>Zadania i podzadania
+## <a name="jobs-and-tasks"></a>Zadania i zadania
 
-Brak obsługi specyficznych dla renderowania jest wymagana dla zadań i zadań podrzędnych.  Element konfiguracji głównego jest wiersz polecenia zadania, który musi odwoływać się do wymaganej aplikacji.
-Gdy używane są obrazy maszyny Wirtualnej portalu Azure Marketplace, najlepszym rozwiązaniem jest używać zmiennych środowiskowych, aby określić ścieżkę i plik wykonywalny aplikacji.
+Zadania i zadania nie wymagają obsługi specyficznej dla renderowania.  Głównym elementem konfiguracji jest wiersz poleceń zadania, który musi odwoływać się do wymaganej aplikacji.
+Gdy są używane obrazy maszyn wirtualnych w portalu Azure Marketplace, najlepszym rozwiązaniem jest użycie zmiennych środowiskowych w celu określenia ścieżki i pliku wykonywalnego aplikacji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Przykłady usługi Batch renderowania Wypróbuj samouczki dwa:
+Przykłady renderowania wsadowego Wypróbuj dwa samouczki:
 
-* [Renderowanie przy użyciu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
-* [Renderowanie przy użyciu programu Batch Explorer](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)
+* [Renderowanie przy użyciu interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
+* [Renderowanie przy użyciu Batch Explorer](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)

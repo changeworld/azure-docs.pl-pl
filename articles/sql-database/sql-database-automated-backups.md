@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, carlrab, danil
 manager: craigg
-ms.date: 08/22/2019
-ms.openlocfilehash: 551c2c02af7b996a34a138586fd91a77a0455d92
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.date: 09/26/2019
+ms.openlocfilehash: cc6041a228545ffef158e3d627de983a154513a5
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904322"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350945"
 ---
 # <a name="automated-backups"></a>Automatyczne kopie zapasowe
 
@@ -46,10 +46,10 @@ Niektóre z tych operacji można wypróbować, korzystając z następujących pr
 
 | | Witryna Azure Portal | Azure PowerShell |
 |---|---|---|
-| Zmień przechowywanie kopii zapasowych | [pojedyncza baza danych](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-the-azure-portal) <br/> [Wystąpienie zarządzane](sql-database-automated-backups.md#change-pitr-for-a-managed-instance) | [pojedyncza baza danych](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-powershell) <br/>[Wystąpienie zarządzane](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
+| Zmień przechowywanie kopii zapasowych | [pojedyncza baza danych](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-azure-portal) <br/> [Wystąpienie zarządzane](sql-database-automated-backups.md#managed-instance-database) | [pojedyncza baza danych](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-powershell) <br/>[Wystąpienie zarządzane](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
 | Zmiana długoterminowego przechowywania kopii zapasowych | [Pojedyncza baza danych](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Wystąpienie zarządzane — nie dotyczy  | [pojedyncza baza danych](sql-database-long-term-backup-retention-configure.md#use-powershell-to-manage-long-term-backups)<br/>Wystąpienie zarządzane — nie dotyczy  |
 | Przywracanie bazy danych z punktu w czasie | [Pojedyncza baza danych](sql-database-recovery-using-backups.md#point-in-time-restore) | [Pojedyncza baza danych](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [Wystąpienie zarządzane](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
-| Przywracanie usuniętej bazy danych | [Pojedyncza baza danych](sql-database-recovery-using-backups.md#deleted-database-restore-using-the-azure-portal) | [Pojedyncza baza danych](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Wystąpienie zarządzane](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
+| Przywracanie usuniętej bazy danych | [Pojedyncza baza danych](sql-database-recovery-using-backups.md#deleted-database-restore-using-azure-portal) | [Pojedyncza baza danych](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Wystąpienie zarządzane](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
 | Przywracanie bazy danych z usługi Azure Blob Storage | Pojedyncza baza danych — nie dotyczy <br/>Wystąpienie zarządzane — nie dotyczy  | Pojedyncza baza danych — nie dotyczy <br/>[Wystąpienie zarządzane](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
 
 ## <a name="how-long-are-backups-kept"></a>Jak długo są przechowywane kopie zapasowe
@@ -114,15 +114,19 @@ Domyślny okres przechowywania kopii zapasowej kopie można zmienić przy użyci
 > [!NOTE]
 > Te interfejsy API będą mieć wpływ tylko na kopie okres przechowywania. Jeśli skonfigurowano opcję LTR dla bazy danych, nie będzie to miało wpływu. Aby uzyskać więcej informacji na temat zmiany okresu przechowywania LTR, zobacz [długoterminowe przechowywanie](sql-database-long-term-retention.md)danych.
 
-### <a name="change-pitr-backup-retention-period-using-the-azure-portal"></a>Zmień okres przechowywania kopii zapasowej kopie przy użyciu Azure Portal
+### <a name="change-pitr-backup-retention-period-using-azure-portal"></a>Zmień okres przechowywania kopii zapasowej kopie przy użyciu Azure Portal
 
 Aby zmienić kopie okres przechowywania kopii zapasowej przy użyciu Azure Portal, przejdź do obiektu serwera, którego okres przechowywania chcesz zmienić w portalu, a następnie wybierz odpowiednią opcję na podstawie tego, który obiekt serwera jest modyfikowany.
 
-#### <a name="change-pitr-for-a-sql-database-server"></a>Zmień kopie dla serwera SQL Database
+#### <a name="single-azure-sql-database"></a>Pojedyncze Azure SQL Database
+
+Zmiana kopie przechowywania kopii zapasowych dla pojedynczych baz danych Azure SQL Database odbywa się na poziomie serwera. Zmiany wprowadzone na poziomie serwera dotyczą baz danych na tym serwerze. Aby zmienić kopie dla serwera Azure SQL Database z Azure Portal, przejdź do bloku przegląd serwera, kliknij pozycję Zarządzaj kopiami zapasowymi w menu nawigacji, a następnie kliknij pozycję Konfiguruj przechowywanie na pasku nawigacyjnym.
 
 ![Zmień Azure Portal kopie](./media/sql-database-automated-backup/configure-backup-retention-sqldb.png)
 
-#### <a name="change-pitr-for-a-managed-instance"></a>Zmień kopie dla wystąpienia zarządzanego
+#### <a name="managed-instance-database"></a>Baza danych wystąpienia zarządzanego
+
+Zmiana przechowywania kopii zapasowych kopie dla wystąpienia zarządzanego SQL Database odbywa się na poziomie poszczególnych baz danych. Aby zmienić kopie przechowywanie kopii zapasowych dla bazy danych wystąpienia z Azure Portal, przejdź do bloku przegląd poszczególnych baz danych, a następnie kliknij pozycję Konfiguruj przechowywanie kopii zapasowych na pasku nawigacyjnym.
 
 ![Zmień Azure Portal kopie](./media/sql-database-automated-backup/configure-backup-retention-sqlmi.png)
 

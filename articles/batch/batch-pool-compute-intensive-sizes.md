@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: lahugh
-ms.openlocfilehash: c3c54b003017f7512cd40c7798fc351e4e4a3f69
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c8fa96e41b98cfa227fd25dc4b3bd66a171ff3c8
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094916"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350136"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Używanie wystąpień RDMA lub GPU w pulach wsadowym
 
@@ -86,7 +86,7 @@ Aby skonfigurować wyspecjalizowany rozmiar maszyny wirtualnej dla puli usługi 
 
     * [Serwer Ubuntu (ze sterownikami procesora GPU i RDMA) dla puli kontenerów Azure Batch](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-batch.ubuntu-server-container-rdma?tab=Overview)
 
-* Utwórz [niestandardowy obraz maszyny wirtualnej z systemem Windows lub Linux](batch-custom-images.md) , na którym zainstalowano sterowniki, oprogramowanie lub inne ustawienia wymagane dla rozmiaru maszyny wirtualnej. 
+* Utwórz [niestandardowy obraz maszyny wirtualnej z systemem Windows lub Linux](batch-sig-images.md) , na którym zainstalowano sterowniki, oprogramowanie lub inne ustawienia wymagane dla rozmiaru maszyny wirtualnej. 
 
 * Utwórz [pakiet aplikacji](batch-application-packages.md) usługi Batch na podstawie skompresowanego sterownika lub Instalatora aplikacji, a następnie skonfiguruj usługę Batch do wdrożenia pakietu w węzłach puli i zainstaluj raz podczas tworzenia każdego węzła. Na przykład jeśli pakiet aplikacji jest instalatorem, Utwórz wiersz polecenia [Uruchom zadanie](batch-api-basics.md#start-task) , aby zainstalować aplikację w trybie dyskretnym. Rozważ użycie pakietu aplikacji i zadania uruchamiania puli, jeśli obciążenie zależy od określonej wersji sterownika.
 
@@ -123,9 +123,9 @@ Aby uruchamiać aplikacje CUDA w puli węzłów systemu Linux NC, należy zainst
 1. Wdróż maszynę wirtualną z serii NC platformy Azure z systemem Ubuntu 16,04 LTS. Na przykład utwórz maszynę wirtualną w regionie Południowo-środkowe stany USA. 
 2. [Dodajrozszerzenie](../virtual-machines/extensions/hpccompute-gpu-linux.md
 ) sterowników procesora GPU NVIDIAdomaszynywirtualnejprzyużyciuAzurePortal,komputeraklienckiego,któryłączysięzsubskrypcjąplatformyAzurelubAzureCloudShell. Alternatywnie wykonaj kroki, aby połączyć się z maszyną wirtualną i ręcznie [zainstalować sterowniki cuda](../virtual-machines/linux/n-series-driver-setup.md) .
-3. Postępuj zgodnie z instrukcjami, aby utworzyć [migawkę i niestandardowy obraz maszyny wirtualnej z systemem Linux](batch-custom-images.md) dla usługi Batch.
+3. Postępuj zgodnie z instrukcjami, aby utworzyć [obraz udostępnionej galerii obrazów](batch-sig-images.md) dla usługi Batch.
 4. Utwórz konto w usłudze Batch w regionie, który obsługuje maszyny wirtualne NC.
-5. Korzystając z interfejsów API usługi Batch lub Azure Portal, Utwórz pulę [przy użyciu obrazu niestandardowego](batch-custom-images.md) oraz żądaną liczbę węzłów i skalowania. W poniższej tabeli przedstawiono przykładowe ustawienia puli dla obrazu:
+5. Korzystając z interfejsów API usługi Batch lub Azure Portal, Utwórz pulę [przy użyciu obrazu niestandardowego](batch-sig-images.md) oraz żądaną liczbę węzłów i skalowania. W poniższej tabeli przedstawiono przykładowe ustawienia puli dla obrazu:
 
 | Ustawienie | Value |
 | ---- | ---- |
@@ -143,8 +143,8 @@ Aby uruchamiać aplikacje MPI systemu Windows w puli węzłów maszyny wirtualne
 ) Azure PowerShell z komputera klienckiego, który nawiązuje połączenie z subskrypcją platformy Azure lub korzystając z Azure Cloud Shell. 
 1. Nawiązywanie połączenia Pulpit zdalny z maszyną wirtualną.
 1. Pobierz [pakiet instalacyjny](https://www.microsoft.com/download/details.aspx?id=57467) (MSMpiSetup. exe) dla najnowszej wersji programu Microsoft MPI i zainstaluj program Microsoft MPI.
-1. Postępuj zgodnie z instrukcjami, aby utworzyć [migawkę i niestandardowy obraz maszyny wirtualnej z systemem Windows](batch-custom-images.md) dla usługi Batch.
-1. Korzystając z interfejsów API usługi Batch lub Azure Portal, Utwórz pulę [przy użyciu obrazu niestandardowego](batch-custom-images.md) oraz żądaną liczbę węzłów i skalowania. W poniższej tabeli przedstawiono przykładowe ustawienia puli dla obrazu:
+1. Postępuj zgodnie z instrukcjami, aby utworzyć [obraz udostępnionej galerii obrazów](batch-sig-images.md) dla usługi Batch.
+1. Korzystając z interfejsów API usługi Batch lub Azure Portal, Utwórz pulę [przy użyciu galerii obrazów udostępnionych](batch-sig-images.md) i żądaną liczbę węzłów i skalowania. W poniższej tabeli przedstawiono przykładowe ustawienia puli dla obrazu:
 
 | Ustawienie | Value |
 | ---- | ---- |

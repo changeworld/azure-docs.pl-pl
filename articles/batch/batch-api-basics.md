@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 08/29/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: bd630fec16ddfb269ead5f1f62af882f52501a86
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 364861e57f37192a3ae454e27fedf732ee8d513e
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390476"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350188"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Tworzenie rozbudowanych rozwiązań przetwarzania równoległego przy użyciu usługi Batch
 
@@ -149,9 +149,9 @@ W przypadku tworzenia puli musisz wybrać odpowiednią wartość elementu **node
 
 #### <a name="custom-images-for-virtual-machine-pools"></a>Niestandardowe obrazy dla pul usługi Virtual Machines
 
-Aby użyć obrazu niestandardowego, musisz go przygotować, korzystając z funkcji uogólniania. Aby uzyskać informacje dotyczące przygotowywania niestandardowych obrazów systemu Linux na podstawie maszyn wirtualnych platformy Azure, zobacz [How to create an image of a virtual machine or VHD](../virtual-machines/linux/capture-image.md) (Jak utworzyć obraz maszyny wirtualnej lub wirtualnego dysku twardego). Aby uzyskać informacje na temat przygotowywania niestandardowych obrazów systemu Windows na podstawie maszyn wirtualnych platformy Azure, zobacz [Create a managed image of a generalized VM in Azure (Tworzenie zarządzanego obrazu uogólnionej maszyny wirtualnej na platformie Azure)](../virtual-machines/windows/capture-image-resource.md). 
+Aby dowiedzieć się, jak utworzyć pulę z obrazami niestandardowymi, zobacz [Używanie galerii obrazów udostępnionych do tworzenia puli niestandardowej](batch-sig-images.md).
 
-Aby uzyskać szczegółowe wymagania i procedury, zobacz [Use a custom image to create a pool of virtual machines](batch-custom-images.md) (Używanie obrazu niestandardowego do tworzenia puli maszyn wirtualnych).
+Alternatywnie można utworzyć niestandardową pulę maszyn wirtualnych przy użyciu zasobu [obrazu zarządzanego](batch-custom-images.md) . Aby uzyskać informacje dotyczące przygotowywania niestandardowych obrazów systemu Linux na podstawie maszyn wirtualnych platformy Azure, zobacz [How to create an image of a virtual machine or VHD](../virtual-machines/linux/capture-image.md) (Jak utworzyć obraz maszyny wirtualnej lub wirtualnego dysku twardego). Aby uzyskać informacje na temat przygotowywania niestandardowych obrazów systemu Windows na podstawie maszyn wirtualnych platformy Azure, zobacz [Create a managed image of a generalized VM in Azure (Tworzenie zarządzanego obrazu uogólnionej maszyny wirtualnej na platformie Azure)](../virtual-machines/windows/capture-image-resource.md).
 
 #### <a name="container-support-in-virtual-machine-pools"></a>Obsługa kontenerów w pulach maszyn wirtualnych
 
@@ -519,10 +519,10 @@ Jeśli chcesz ograniczyć lub wyłączyć dostęp do węzłów obliczeniowych za
 
 W sytuacjach, w których niektóre z zadań kończą się niepowodzeniem, aplikacja kliencka lub usługa Batch mogą badać metadane nieudanych zadań w celu identyfikacji nieprawidłowo funkcjonującego węzła. Każdemu węzłowi w puli zostaje nadany unikatowy identyfikator, a węzeł, w którym jest uruchomione zadanie, jest dołączany do metadanych zadania. Po zidentyfikowaniu problemu dotyczącego węzła można wykonać kilka powiązanych czynności:
 
-* **Ponowne uruchamianie węzła** ([rest][rest_reboot] | [.NET][net_reboot])
+* **Uruchom ponownie węzeł** ([rest][rest_reboot] | [.NET][net_reboot])
 
     Ponowne uruchomienie węzła może czasami usunąć ukryte problemy, takie jak zablokowane procesy lub procesy, które uległy awarii. Jeśli pula używa zadania uruchamiania, a zadanie zawiera zadanie przygotowania zadania, zostaną one wykonane po ponownym uruchomieniu węzła.
-* Odtwórz **węzeł z obrazu** ([rest][rest_reimage] | [.NET][net_reimage])
+* Odtworzenie **obrazu węzła** ([rest][rest_reimage] | [.NET][net_reimage])
 
     Spowoduje to ponowne zainstalowanie systemu operacyjnego w węźle. Podobnie jak w przypadku ponownego rozruchu węzła zadania uruchamiania i zadania przygotowania zadania są uruchamiane ponownie po odtworzeniu węzła z obrazu.
 * **Usuń węzeł z puli** ([rest][rest_remove] | [.NET][net_remove])
@@ -530,10 +530,10 @@ W sytuacjach, w których niektóre z zadań kończą się niepowodzeniem, aplika
     Czasami konieczne jest całkowite usunięcie węzła z puli.
 * **Wyłącz planowanie zadań w węźle** ([rest][rest_offline] | [.NET][net_offline])
 
-    Ta czynność przełącza węzeł w tryb „offline”, aby nie zostały do niego przypisane żadne dalsze zadania podrzędne, ale pozwala na dalsze działanie węzła i jego obecność w puli. Dzięki temu można dalej badać przyczyny błędów bez utraty danych nieudanego zadania, podczas gdy węzeł nie powoduje dodatkowych błędów zadania. Można na przykład wyłączyć planowanie zadań podrzędnych w węźle, a następnie [zalogować się zdalnie](#connecting-to-compute-nodes), aby sprawdzić dzienniki zdarzeń węzła lub wykonać inne operacje związane z rozwiązywaniem problemów. Po zakończeniu badania można przenieść węzeł z powrotem do trybu online, włączając planowanie zadań ([rest][rest_online] | [.NET][net_online]) lub wykonując jedną z innych czynności omówionych wcześniej.
+    Ta czynność przełącza węzeł w tryb „offline”, aby nie zostały do niego przypisane żadne dalsze zadania podrzędne, ale pozwala na dalsze działanie węzła i jego obecność w puli. Dzięki temu można dalej badać przyczyny błędów bez utraty danych nieudanego zadania, podczas gdy węzeł nie powoduje dodatkowych błędów zadania. Można na przykład wyłączyć planowanie zadań podrzędnych w węźle, a następnie [zalogować się zdalnie](#connecting-to-compute-nodes), aby sprawdzić dzienniki zdarzeń węzła lub wykonać inne operacje związane z rozwiązywaniem problemów. Po zakończeniu badania można przenieść węzeł z powrotem do trybu online, włączając planowanie zadań ([REST][rest_online] | [.NET][net_online]) lub wykonać jedną z innych akcji omówionych wcześniej.
 
 > [!IMPORTANT]
-> Wszystkie akcje opisane w tej sekcji — ponowny rozruch, odtwarzanie z obrazu, usuwanie, wyłączanie planowania zadań podrzędnych — umożliwiają określenie sposobu obsługi zadań podrzędnych uruchomionych aktualnie w węźle podczas wykonywania akcji. Na przykład po wyłączeniu planowania zadań w węźle przy użyciu biblioteki klienckiej usługi Batch .NET można określić wartość wyliczenia [wartość wyliczeniową disablecomputenodeschedulingoption][net_offline_option] , aby określić, **czy uruchamiać zadania ponownie w** **kolejce** Planowanie w innych węzłach lub zezwalanie na wykonywanie zadań przed wykonaniem akcji (**TaskCompletion**).
+> Wszystkie akcje opisane w tej sekcji — ponowny rozruch, odtwarzanie z obrazu, usuwanie, wyłączanie planowania zadań podrzędnych — umożliwiają określenie sposobu obsługi zadań podrzędnych uruchomionych aktualnie w węźle podczas wykonywania akcji. Na przykład po wyłączeniu planowania zadań w węźle przy użyciu biblioteki klienckiej usługi Batch .NET można określić wartość wyliczenia [wartość wyliczeniową disablecomputenodeschedulingoption][net_offline_option] , aby określić, **czy uruchamiać zadania** ponownie w **kolejce** Planowanie w innych węzłach lub zezwalanie na wykonywanie zadań przed wykonaniem akcji (**TaskCompletion**).
 >
 >
 

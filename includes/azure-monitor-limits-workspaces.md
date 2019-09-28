@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 58a741b369231a353a6b8e282a6e604a63a5727d
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 017c02a10137579e6e3497775e9e4a3ac0a5d72d
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71210301"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350860"
 ---
 **Wolumin zbierania danych i ich przechowywanie** 
 
@@ -65,9 +65,12 @@ ms.locfileid: "71210301"
 | Regiony w pojemności | Środkowo-zachodnie stany USA | Obecnie nie można utworzyć nowego obszaru roboczego w tym regionie, ponieważ ma on tymczasowy limit pojemności. Ten limit jest planowany na podstawie końca października 2019. |
 | Eksport danych | Obecnie niedostępne | Agreguj i Eksportuj dane przy użyciu funkcji platformy Azure lub aplikacji logiki. | 
 
-**Szybkość pozyskiwania danych**
+**Współczynnik ilości woluminu pozyskiwania danych**
 
-Azure Monitor to usługa danych o dużej skali, która umożliwia tysiącom klientów wysyłanie terabajtów danych co miesiąc w coraz większej tempie. Domyślny próg współczynnika pozyskiwania jest ustawiony na **500 MB/min** dla obszaru roboczego. W przypadku wysyłania danych o wyższej stawce do jednego obszaru roboczego niektóre dane zostaną usunięte, a zdarzenie jest wysyłane do tabeli *operacji* w obszarze roboczym co 6 godzin, podczas gdy próg zostanie przekroczony. Jeśli wolumin pozyskiwania w dalszym ciągu przekroczy limit szybkości lub oczekujesz, że wkrótce dojdziesz do niego, możesz poprosić o zwiększenie obszaru roboczego, otwierając żądanie pomocy technicznej.
+
+Azure Monitor to usługa danych o dużej skali, która umożliwia tysiącom klientów wysyłanie terabajtów danych co miesiąc w coraz większej tempie. Domyślny limit ilości woluminu pozyskiwania danych wysyłanych z zasobów platformy Azure przy użyciu [ustawień diagnostycznych](../articles/azure-monitor/platform/diagnostic-settings.md) to około **6 GB/min** na obszar roboczy. Jest to przybliżona wartość, ponieważ rzeczywisty rozmiar może się różnić między typami danych w zależności od długości dziennika i jego stosunku kompresji. Ten limit nie dotyczy danych wysyłanych z agentów lub [interfejsu API modułu zbierającego dane](../articles/azure-monitor/platform/data-collector-api.md).
+
+W przypadku wysyłania danych o wyższej stawce do jednego obszaru roboczego niektóre dane zostaną usunięte, a zdarzenie jest wysyłane do tabeli *operacji* w obszarze roboczym co 6 godzin, podczas gdy próg zostanie przekroczony. Jeśli wolumin pozyskiwania w dalszym ciągu przekroczy limit szybkości lub oczekujesz, że wkrótce dojdziesz do niego, możesz poprosić o zwiększenie obszaru roboczego, otwierając żądanie pomocy technicznej.
  
 Aby otrzymywać powiadomienia o takim zdarzeniu w Twoim obszarze roboczym, należy utworzyć [regułę alertu dziennika](../articles/azure-monitor/platform/alerts-log.md) przy użyciu następującego zapytania z podstawą logiki alertu na liczbie wyników, które nie są równe zeru.
 

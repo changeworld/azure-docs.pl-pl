@@ -1,33 +1,29 @@
 ---
-title: Wizualizuj dane przy użyciu łącznika Eksplorator danych platformy Azure dla usługi Power BI
-description: 'W tym artykule dowiesz się, jak używać jednej z trzech opcji do wizualizacji danych w usłudze Power BI: łącznik usługi Power BI do Eksploratora danych usługi Azure.'
+title: Wizualizuj dane przy użyciu łącznika Eksplorator danych platformy Azure dla Power BI
+description: 'W tym artykule dowiesz się, jak użyć jednej z trzech opcji wizualizacji danych w Power BI: Łącznik Power BI dla platformy Azure Eksplorator danych.'
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: cfe7d5fa82197a05ddadd08a8811dc86067a05d7
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: a2ec179321c5d9cb6e9627e397fcb6ae09dc82ed
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806481"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71349144"
 ---
-# <a name="visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Wizualizuj dane przy użyciu łącznika Eksplorator danych platformy Azure dla usługi Power BI
+# <a name="visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Wizualizuj dane przy użyciu łącznika Eksplorator danych platformy Azure dla Power BI
 
-Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Power BI to rozwiązanie do analizy biznesowej, które pozwala wizualizować dane i udostępniać wyniki w organizacji.
-
-Usługa Azure Data Explorer oferuje trzy opcje łączenia się z danymi w usłudze Power BI: za pomocą wbudowanego łącznika, przez zaimportowanie zapytania z usługi Azure Data Explorer lub za pomocą zapytania SQL. W tym artykule pokazano, jak za pomocą wbudowanego łącznika danych i wizualizacji w raporcie usługi Power BI.
-
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
+Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Power BI to rozwiązanie do analizy biznesowej, które pozwala wizualizować dane i udostępniać wyniki w organizacji. Usługa Azure Data Explorer oferuje trzy opcje łączenia się z danymi w usłudze Power BI: za pomocą wbudowanego łącznika, przez zaimportowanie zapytania z usługi Azure Data Explorer lub za pomocą zapytania SQL. W tym artykule pokazano, jak za pomocą wbudowanego łącznika pobierać dane i wizualizować je w raporcie Power BI. Używanie łącznika natywnego Eksplorator danych platformy Azure do tworzenia pulpitów nawigacyjnych Power BI jest proste. Łącznik Power BI obsługuje [tryby połączeń zapytań import i Direct](https://docs.microsoft.com/power-bi/desktop-directquery-about). Pulpity nawigacyjne można tworzyć przy użyciu trybu **importu** lub **zapytania bezpośredniego** , w zależności od wymagań dotyczących scenariusza, skali i wydajności. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Potrzebne są następujące polecenie, aby zakończyć w tym artykule:
+Aby ukończyć ten artykuł, potrzebne są następujące elementy:
 
+* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
 * Konto e-mail organizacji należące do usługi Azure Active Directory, aby możliwe było łączenie się z [klastrem pomocy usługi Azure Data Explorer](https://dataexplorer.azure.com/clusters/help/databases/samples).
-
 * Program [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (wybierz pozycję **POBIERZ BEZPŁATNIE**)
 
 ## <a name="get-data-from-azure-data-explorer"></a>Pobieranie danych z usługi Azure Data Explorer
@@ -38,11 +34,11 @@ Najpierw nawiąż połączenie z klastrem pomocy usługi Azure Data Explorer, a 
 
     ![Pobieranie danych](media/power-bi-connector/get-data-more.png)
 
-1. Wyszukaj *Eksploratora danych usługi Azure*, wybierz opcję **Eksploratora danych usługi Azure** następnie **Connect**.
+1. Wyszukaj *Eksplorator danych Azure*, wybierz pozycję **Azure Eksplorator danych** a następnie **Połącz**.
 
     ![Wyszukiwanie i pobieranie danych](media/power-bi-connector/search-get-data.png)
 
-1. Na **Eksplorator danych platformy Azure (Kusto)** ekranu, wypełnij formularz z poniższymi informacjami.
+1. Na ekranie **Azure Eksplorator danych (Kusto)** Wypełnij formularz poniższymi informacjami.
 
     ![Opcje klastra, bazy danych, tabeli](media/power-bi-connector/cluster-database-table.png)
 
@@ -50,10 +46,22 @@ Najpierw nawiąż połączenie z klastrem pomocy usługi Azure Data Explorer, a 
     |---|---|---|
     | Klaster | *https://help.kusto.windows.net* | Adres URL klastra pomocy. W przypadku innych klastrów adres URL ma postać *https://\<Nazwa_klastra\>.\<Region\>.kusto.windows.net*. |
     | Database (Baza danych) | Pozostaw puste | Baza danych hostowana w klastrze, z którą nawiązujesz połączenie. Wybierzemy ją w późniejszym kroku. |
-    | Nazwa tabeli | Pozostaw puste | Jedną z tabel w bazie danych lub zapytanie, takich jak <code>StormEvents \| take 1000</code>. Wybierzemy ją w późniejszym kroku. |
+    | Nazwa tabeli | Pozostaw puste | Jedna z tabel w bazie danych lub zapytanie, takie jak <code>StormEvents \| take 1000</code>. Wybierzemy ją w późniejszym kroku. |
     | Opcje zaawansowane | Pozostaw puste | Opcje zapytań, na przykład rozmiar zestawu wyników. |
     | Tryb łączności danych | Tryb *DirectQuery* | Określa, czy usługa Power BI importuje dane, czy łączy się bezpośrednio ze źródłem danych. Korzystając z tego łącznika, możesz wybrać dowolną z tych opcji. |
     | | | |
+    
+    > [!NOTE]
+    > W trybie **importu** dane są przenoszone do Power BI. W trybie **zapytania bezpośredniego** dane są wysyłane bezpośrednio z klastra usługi Azure Eksplorator danych.
+    >
+    > Użyj trybu **importu** , gdy:
+    > * Zestaw danych jest mały.
+    > * Dane nie są potrzebne niemal w czasie rzeczywistym. 
+    > * Twoje dane są już agregowane lub agregacja jest przeprowadzana [w Kusto](/azure/kusto/query/summarizeoperator#list-of-aggregation-functions)    
+    >
+    > Użyj trybu **DirectQuery** w przypadku:
+    > * Zestaw danych jest bardzo duży. 
+    > * Potrzebujesz danych niemal w czasie rzeczywistym.   
 
 1. Jeśli jeszcze nie masz połączenia z klastrem pomocy, zaloguj się. Zaloguj się przy użyciu konta organizacyjnego, a następnie wybierz pozycję **Połącz**.
 
@@ -61,7 +69,7 @@ Najpierw nawiąż połączenie z klastrem pomocy usługi Azure Data Explorer, a 
 
 1. Na ekranie **Nawigator** rozwiń bazę danych **Samples**, wybierz pozycję **StormEvents**, a następnie pozycję **Edytuj**.
 
-    ![Wybieranie tabeli](media/power-bi-connector/select-table.png)
+    ![Wybierz tabelę](media/power-bi-connector/select-table.png)
 
     W edytorze Power Query zostanie otwarta tabela, w której przed zaimportowaniem danych można edytować wiersze i kolumny.
 
@@ -83,8 +91,8 @@ Najpierw nawiąż połączenie z klastrem pomocy usługi Azure Data Explorer, a 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli nie potrzebujesz już raportu, który został utworzony w tym artykule, usuń plik programu Power BI Desktop (pbix).
+Jeśli raport utworzony w tym artykule nie jest już potrzebny, usuń plik Power BI Desktop (pbix).
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Wizualizuj dane przy użyciu importowanych zapytania w usłudze Power BI](power-bi-imported-query.md)
+[Porady dotyczące używania łącznika usługi Azure Eksplorator danych na potrzeby Power BI do wykonywania zapytań dotyczących danych](power-bi-best-practices.md#tips-for-using-the-azure-data-explorer-connector-for-power-bi-to-query-data)

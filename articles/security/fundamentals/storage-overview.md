@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 249380b5bd9d95e969a9c7a812102b694b9d1e3b
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e273d913d07d8d7b77289695a4a28a478a64123a
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726543"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350308"
 ---
 # <a name="azure-storage-security-overview"></a>Omówienie zabezpieczeń usługi Azure Storage
 
 Ten artykuł zawiera omówienie funkcji zabezpieczeń platformy Azure, których można używać z usługą Azure Storage. Usługa Azure Storage to rozwiązanie magazynu w chmurze dla nowoczesnych aplikacji, które polegają na trwałości, dostępności i skalowalności, aby spełniać potrzeby klientów. Usługa Azure Storage zapewnia kompleksowy zestaw funkcji zabezpieczeń. Możesz:
 
 * Zabezpiecz konto magazynu za pomocą Access Control opartych na rolach (RBAC) i Azure Active Directory.
-* Zabezpieczanie danych przesyłanych między aplikacją i platformą Azure przy użyciu szyfrowania po stronie klienta, protokołu HTTPS lub protokołu SMB 3,0.
+* Zabezpieczyć dane podczas przesyłania między aplikacją i platformą Azure przy użyciu szyfrowania po stronie klienta, protokołu HTTPS lub protokołu SMB 3.0.
 * Ustaw dane, które mają być automatycznie szyfrowane podczas zapisywania do usługi Azure Storage przy użyciu szyfrowanie usługi Storage.
 * Ustaw dyski systemu operacyjnego i danych używane przez maszyny wirtualne do zaszyfrowania przy użyciu Azure Disk Encryption.
 * Udzielanie delegowanego dostępu do obiektów danych w usłudze Azure Storage przy użyciu sygnatur dostępu współdzielonego (SASs).
@@ -37,9 +37,9 @@ Aby zapoznać się z bardziej szczegółowym opisem zabezpieczeń w usłudze Azu
 
 ## <a name="role-based-access-control"></a>Kontrola dostępu oparta na rolach
 
-Za pomocą Access Control opartych na rolach można zabezpieczyć konto magazynu. Ograniczanie dostępu na podstawie [konieczności znajomości](https://en.wikipedia.org/wiki/Need_to_know) i najniższych zasad zabezpieczeń jest niezbędne dla organizacji, które chcą wymuszać zasady zabezpieczeń dostępu do danych. [](https://en.wikipedia.org/wiki/Principle_of_least_privilege) Te prawa dostępu są przyznawane przez przypisanie odpowiedniej roli RBAC do grup i aplikacji w określonym zakresie. Do przypisywania uprawnień użytkownikom można używać [wbudowanych ról RBAC](/azure/role-based-access-control/built-in-roles), takich jak współautor konta magazynu.
+Za pomocą Access Control opartych na rolach można zabezpieczyć konto magazynu. Ograniczanie dostępu na podstawie [konieczności znajomości](https://en.wikipedia.org/wiki/Need_to_know) i [najniższych](https://en.wikipedia.org/wiki/Principle_of_least_privilege) zasad zabezpieczeń jest niezbędne dla organizacji, które chcą wymuszać zasady zabezpieczeń dostępu do danych. Te prawa dostępu są przyznawane przez przypisanie odpowiedniej roli RBAC do grup i aplikacji w określonym zakresie. Do przypisywania uprawnień użytkownikom można używać [wbudowanych ról RBAC](/azure/role-based-access-control/built-in-roles), takich jak współautor konta magazynu.
 
-Dowiedz się więcej:
+Więcej informacji:
 
 * [Azure Active Directory Access Control oparte na rolach](/azure/role-based-access-control/role-assignments-portal)
 
@@ -49,7 +49,7 @@ Sygnatury dostępu współdzielonego zapewnia delegowany dostęp do zasobów na 
 
 Sygnatura dostępu współdzielonego to identyfikator URI, który obejmuje parametry zapytania, wszystkie informacje niezbędne do uzyskania uwierzytelniony dostęp do zasobu magazynu. Aby uzyskać dostęp do zasobów magazynu za pomocą sygnatury dostępu współdzielonego, klient musi tylko dostarczyć sygnaturę dostępu współdzielonego do odpowiedniego konstruktora lub metody.
 
-Dowiedz się więcej:
+Więcej informacji:
 
 * [Omówienie modelu SAS](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
 * [Tworzenie i używanie sygnatury dostępu współdzielonego z usługą BLOB Storage](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
@@ -65,7 +65,7 @@ Szyfrowanie podczas przesyłania jest mechanizmem ochrony danych przesyłanych m
 Dowiedz się więcej o szyfrowaniu po stronie klienta:
 
 * [Szyfrowanie po stronie klienta dla Microsoft Azure Storage](https://blogs.msdn.microsoft.com/windowsazurestorage/2015/04/28/client-side-encryption-for-microsoft-azure-storage-preview/)
-* [Seria kontroli zabezpieczeń w chmurze: Szyfrowanie danych podczas przesyłania](https://cloudblogs.microsoft.com/microsoftsecure/2015/08/10/cloud-security-controls-series-encrypting-data-in-transit/)
+* @no__t — 0Cloud — seria kontroli zabezpieczeń: Szyfrowanie danych w tranzycie @ no__t-0
 
 ## <a name="encryption-at-rest"></a>Szyfrowanie w spoczynku
 
@@ -88,7 +88,7 @@ Szyfrowanie dysków dla maszyn wirtualnych działa w systemach operacyjnych Linu
 
 Dowiedz się więcej
 
-* [Azure Disk Encryption dla systemów Windows i Linux IaaS Virtual Machines](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0)
+* [Przegląd Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview)
 
 ## <a name="firewalls-and-virtual-networks"></a>Zapory i sieci wirtualne
 
@@ -104,7 +104,7 @@ Urządzenia Data Box, Data Box Disk i Data Box Heavy pomagają w przesyłaniu du
 
 Usługi Data Box Edge i Data Box Gateway to produkty transferu danych online, które działają jak bramy magazynu sieciowego, aby zarządzać danymi między Twoją witryną a platformą Azure. Data Box Edge, lokalne urządzenie sieciowe, przesyła dane na platformę Azure i z niej oraz przetwarza dane przy użyciu funkcji obliczeniowej na brzegu sieci z obsługą sztucznej inteligencji. Data Box Gateway to urządzenie wirtualne z funkcjami bramy magazynu.
 
-Dowiedz się więcej:
+Więcej informacji:
 
 * [Azure Data Box](https://azure.microsoft.com/services/storage/databox/)
 * [Azure Data Box Edge](/azure/databox-online/data-box-edge-overview)
@@ -116,7 +116,7 @@ Usługa Azure Storage zapewnia zaawansowaną ochronę przed zagrożeniami dla do
 
 Alerty zaawansowanej ochrony przed zagrożeniami można przeglądać z poziomu [Azure Security Center](https://azure.microsoft.com/services/security-center/). Azure Security Center zawiera szczegółowe informacje o wykrytych podejrzanych działaniach i zaleca działania umożliwiające zbadanie i skorygowanie potencjalnego zagrożenia.
 
-Dowiedz się więcej:
+Więcej informacji:
 
 * [Omówienie zaawansowanej ochrony przed zagrożeniami w usłudze Azure Storage](/azure/storage/common/storage-advanced-threat-protection)
 

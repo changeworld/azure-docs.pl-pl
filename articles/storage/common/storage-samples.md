@@ -7,12 +7,12 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 03a036ce5381130af4bbcea88c87d77cd93cf6a9
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: e2816d8e6fdd900473cceebb20c96794f3f9f0f9
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743883"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350875"
 ---
 # <a name="azure-storage-samples"></a>Przykłady usługi Azure Storage
 
@@ -40,13 +40,7 @@ Aby zapoznać się z przykładami języka Python, Pobierz [bibliotekę klienta m
 ## <a name="nodejs-samples"></a>Przykłady dla platformy Node.js
 Aby poznać przykłady dla środowiska Node. js, Pobierz [bibliotekę kliencką magazynu Node. js](https://github.com/Azure/azure-storage-node).
 
-* [Obiektu przekazującego obiektów BLOB](https://github.com/Azure/azure-storage-node/tree/master/examples/blobuploader)
-* [Przekazywanie i pobieranie obiektów BLOB](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/blobuploaddownloadsample.js)
-* [Token kontynuacji](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/continuationsample.js)
-* [Zasady ponawiania](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/retrypolicysample.js)
-* [Sygnatura dostępu współdzielonego](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/sassample.js)
-* [Zdjęcie](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/snapshotsample.js)
-* [Zapytanie tabeli](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/tablequerysample.js)
+* [Przykłady usługi Azure Storage korzystające z języka JavaScript/Node. js](storage-samples-javascript.md)
 
 ## <a name="c-samples"></a>C++badan
 Aby zapoznać C++ się z przykładami, Pobierz [ C++ bibliotekę klienta usługi Storage](https://www.nuget.org/packages/wastorage/) z narzędzia NuGet.
@@ -71,4 +65,5 @@ Poniższe artykuły indeksuje poszczególne przykłady według usługi (BLOB, Fi
 
 * [Przykłady usługi Azure Storage korzystające z platformy .NET](storage-samples-dotnet.md)
 * [Przykłady usługi Azure Storage korzystające z języka Java](storage-samples-java.md)
+* [Przykłady usługi Azure Storage korzystające z języka JavaScript](storage-samples-javascript.md)
 * [Przykłady usługi Azure Storage przy użyciu języka Python](storage-samples-python.md)

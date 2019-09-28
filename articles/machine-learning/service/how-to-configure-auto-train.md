@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: e6cfc18f01bb23d0b318ac1b924cf8cbb9f7a2b6
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 5a0f2922763f8fccb9f3eec8bab4d6eddee7e446
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259989"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350584"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurowanie zautomatyzowanych eksperymentów ML w języku Python
 
@@ -328,7 +328,7 @@ Możesz wyświetlić wyniki szkolenia w widżecie lub inline, jeśli jesteś w n
 
 Każdy model wygenerowany przy użyciu zautomatyzowanej ML obejmuje następujące kroki:
 + Zautomatyzowana funkcja inżynierii
-+ Skalowanie/Normalizacja i algorytm przy użyciu wartości z przelicznikiem
++ Skalowanie/Normalizacja i algorytm przy użyciu wartości parametru
 
 Czynimy to przezroczyste, aby uzyskać te informacje z danych wyjściowych fitted_model z zautomatyzowanej ML.
 
@@ -410,7 +410,7 @@ Użyj tych 2 interfejsów API w pierwszym kroku dopasowanego modelu, aby poznać
    |EngineeringFeatureCount|Liczba funkcji generowanych przez automatyczne transformacje inżynieryjnych funkcji.|
    |Przekształcenia|Lista transformacji zastosowanych do funkcji wejściowych do generowania przetworzonych funkcji.|
 
-### <a name="scalingnormalization-and-algorithm-with-hypermeter-values"></a>Skalowanie/Normalizacja i algorytm przy użyciu wartości z przelicznikiem:
+### <a name="scalingnormalization-and-algorithm-with-hyperparameter-values"></a>Skalowanie/Normalizacja i algorytm za pomocą wartości parametrów:
 
 Aby zrozumieć wartości skalowania/normalizacji oraz algorytm/parametry dla potoku, użyj fitted_model. kroki. [Dowiedz się więcej o skalowaniu/normalizacji](concept-automated-ml.md#preprocess). Oto przykładowe dane wyjściowe:
 

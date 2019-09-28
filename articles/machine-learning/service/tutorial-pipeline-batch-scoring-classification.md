@@ -1,7 +1,7 @@
 ---
-title: 'Samouczek: Potoki Azure ML do oceniania partii'
+title: 'Samouczek: Potoki usługi Machine Learning na potrzeby oceniania partii'
 titleSuffix: Azure Machine Learning
-description: Utwórz potok ML do uruchamiania oceniania wsadowego na modelu klasyfikacji obrazów. Potoki usługi Machine Learning optymalizują przepływ pracy przy użyciu szybkości, przenośności i ponownego wykorzystania, dzięki czemu możesz skupić się na wiedzy, uczeniu maszynowym, a nie na infrastrukturze i automatyzacji.
+description: Utwórz potok uczenia maszynowego na potrzeby uruchamiania oceniania wsadowego na modelu klasyfikacji obrazów w Azure Machine Learning. Potoki uczenia maszynowego optymalizują przepływ pracy z szybkością, przenośnością i wielokrotnym użyciem, dzięki czemu możesz skupić się na wiedzy na temat uczenia maszynowego — zamiast infrastruktury i automatyzacji.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,20 +10,20 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/05/2019
-ms.openlocfilehash: 15a11ba74262ec5a354f0cb3fe22c09167c8d5a6
-ms.sourcegitcommit: d15b23e23328ce7502dd3d2846b49fd2d6d8209c
+ms.openlocfilehash: 978cfa7926e7a035494aae11351c15a45c0251e4
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71005393"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350434"
 ---
-# <a name="use-azure-machine-learning-pipelines-for-batch-scoring"></a>Korzystanie z potoków Azure Machine Learning na potrzeby oceniania partii
+# <a name="use-a-machine-learning-pipeline-for-batch-scoring"></a>Korzystanie z potoku uczenia maszynowego na potrzeby oceniania partii
 
-W tym samouczku użyjesz potoków Azure Machine Learning, aby uruchomić zadanie oceniania partii. W tym przykładzie używamy wstępnie [nauczonego](https://arxiv.org/abs/1512.00567) modelu splotowych neuronowych Network Tensorflow do klasyfikowania obrazów bez etykiet. Po skompilowaniu i opublikowaniu potoku należy skonfigurować punkt końcowy REST, aby można było wyzwolić potok z dowolnej biblioteki HTTP na dowolnej platformie.
+W tym samouczku użyjesz potoku w Azure Machine Learning, aby uruchomić zadanie oceniania partii. W przykładzie zastosowano [model splotowych neuronowych](https://arxiv.org/abs/1512.00567) sieci Tensorflow, który umożliwia klasyfikowanie obrazów bez etykiet. Po skompilowaniu i opublikowaniu potoku należy skonfigurować punkt końcowy REST, za pomocą którego można wyzwolić potok z dowolnej biblioteki HTTP na dowolnej platformie.
 
-Potoki usługi Machine Learning optymalizują przepływ pracy przy użyciu szybkości, przenośności i ponownego wykorzystania, dzięki czemu możesz skupić się na wiedzy, uczeniu maszynowym, a nie na infrastrukturze i automatyzacji. [Dowiedz się więcej o potokach ml](concept-ml-pipelines.md).
+Potoki uczenia maszynowego optymalizują przepływ pracy z szybkością, przenośnością i wielokrotnym użyciem, dzięki czemu możesz skupić się na wiedzy na temat uczenia maszynowego — zamiast infrastruktury i automatyzacji. [Dowiedz się więcej o potokach uczenia maszynowego](concept-ml-pipelines.md).
 
-W tym samouczku przedstawiono następujące zadania:
+W tym samouczku wykonasz następujące zadania:
 
 > [!div class="checklist"]
 > * Konfigurowanie obszaru roboczego i Pobieranie przykładowych danych
@@ -37,17 +37,17 @@ Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Ukończ [część 1 samouczka Instalatora](tutorial-1st-experiment-sdk-setup.md) , jeśli nie masz jeszcze obszaru roboczego Azure Machine Learning lub maszyny wirtualnej notesu.
-* Po zakończeniu pracy z samouczkiem Instalatora Otwórz Notes **samouczków/tutorial-Pipeline-Batch-Scoring-Classification. ipynb** przy użyciu tego samego serwera notesu.
+* Jeśli nie masz jeszcze Azure Machine Learning obszaru roboczego lub notesu maszyny wirtualnej, Ukończ [część 1 samouczka instalacji](tutorial-1st-experiment-sdk-setup.md).
+* Po zakończeniu pracy z samouczkiem Instalatora Użyj tego samego serwera notesu, aby otworzyć Notes */tutorial-Pipeline-Batch-Scoring-Classification. ipynb* .
 
-Ten samouczek jest również dostępny w witrynie [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) , jeśli chcesz uruchomić go w [środowisku lokalnym](how-to-configure-environment.md#local). Uruchom `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-pipeline-steps pandas requests` , aby pobrać wymagane pakiety.
+Jeśli chcesz uruchomić samouczek instalacji we własnym [środowisku lokalnym](how-to-configure-environment.md#local), możesz uzyskać dostęp do samouczka w witrynie [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials). Uruchom `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-pipeline-steps pandas requests` , aby pobrać wymagane pakiety.
 
-## <a name="configure-workspace-and-create-datastore"></a>Konfigurowanie obszaru roboczego i tworzenie magazynu danych
+## <a name="configure-workspace-and-create-a-datastore"></a>Konfigurowanie obszaru roboczego i tworzenie magazynu danych
 
-Utwórz obiekt obszaru roboczego z istniejącego obszaru roboczego Azure Machine Learning. 
-+ [Obszar roboczy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) to Klasa, która akceptuje informacje o subskrypcji i zasobach platformy Azure. Tworzy ona również zasób w chmurze służący do monitorowania i śledzenia przebiegów modelu. 
+Utwórz obiekt obszaru roboczego z istniejącego obszaru roboczego Azure Machine Learning.
 
-+ `Workspace.from_config()`odczytuje plik **config. JSON** i ładuje szczegóły uwierzytelniania do obiektu o nazwie `ws`. Obiekt `ws` jest używany w kodzie w tym samouczku.
+- [Obszar roboczy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) to Klasa, która akceptuje informacje o subskrypcji i zasobach platformy Azure. Obszar roboczy tworzy również zasób w chmurze, którego można użyć do monitorowania i śledzenia przebiegów modelu. 
+- `Workspace.from_config()` odczytuje plik `config.json`, a następnie ładuje szczegóły uwierzytelniania do obiektu o nazwie `ws`. Obiekt `ws` jest używany w kodzie w tym samouczku.
 
 ```python
 from azureml.core import Workspace
@@ -56,7 +56,7 @@ ws = Workspace.from_config()
 
 ### <a name="create-a-datastore-for-sample-images"></a>Tworzenie magazynu danych dla przykładowych obrazów
 
-Pobierz przykład danych z publicznej wersji ewaluacyjnej ImageNet z publicznego kontenera `sampledata` obiektów BLOB na `pipelinedata`koncie. Wywołanie `register_azure_blob_container()` sprawia, że dane są dostępne dla obszaru roboczego pod `images_datastore`nazwą. Następnie określ domyślny magazyn danych obszaru roboczego jako wynikowy magazyn danych, który będzie używany do oceny wyników w potoku.
+Na koncie `pipelinedata` Pobierz próbkę danych ImageNet oceny z `sampledata` publicznego kontenera obiektów BLOB. Wywołaj `register_azure_blob_container()`, aby udostępnić dane dla obszaru roboczego pod nazwą `images_datastore`. Następnie należy ustawić domyślny magazyn danych obszaru roboczego jako wyjściowy. Użyj wyjściowego magazynu danych do oceny danych wyjściowych w potoku.
 
 ```python
 from azureml.core.datastore import Datastore
@@ -72,16 +72,16 @@ def_data_store = ws.get_default_datastore()
 
 ## <a name="create-data-objects"></a>Tworzenie obiektów danych
 
-Podczas kompilowania potoków `DataReference` obiekty są używane do odczytywania danych z magazynów elementów obszaru roboczego `PipelineData` , a obiekty są używane do przesyłania danych pośrednich między etapami potoku.
+Podczas kompilowania potoku obiekt `DataReference` odczytuje dane z magazynu danych obszaru roboczego. Obiekt `PipelineData` przesyła pośrednie dane między etapami potoku.
 
 > [!Important]
-> Ten przykład wsadowego oceniania wykorzystuje tylko jeden krok potoku, ale w przypadku użycia z wieloma krokami typowy przepływ obejmuje:
+> Przykład wsadowego oceniania w tym samouczku używa tylko jednego kroku potoku. W przypadku użycia, które mają wiele kroków, typowy przepływ obejmuje następujące kroki:
 >
-> 1. Używanie `DataReference` obiektów jako danych **wejściowych** do pobierania nieprzetworzonych, wykonywania niektórych transformacji, `PipelineData` a następnie **wyprowadzania** obiektu.
+> 1. Używaj obiektów `DataReference` jako *danych wejściowych* do pobierania danych pierwotnych, wykonywania niektórych transformacji, a następnie *wyprowadzania* obiektu `PipelineData`.
 >
-> 2. Użyj **obiektu wyjściowego** poprzedniego kroku `PipelineData` jako *obiektu wejściowego*, powtarzanego dla kolejnych kroków.
+> 2. Użyj *obiektu wyjściowego* `PipelineData` w poprzednim kroku jako *obiektu wejściowego*. Powtórz tę czynność dla kolejnych kroków.
 
-W tym scenariuszu utworzysz `DataReference` obiekty odpowiadające katalogom magazynu danych zarówno dla obrazów wejściowych, jak i etykiet klasyfikacji (wartości y-test). Tworzony jest również `PipelineData` obiekt dla danych wyjściowych oceniania partii.
+W tym scenariuszu utworzysz obiekty `DataReference` odpowiadające katalogom magazynu danych zarówno dla obrazów wejściowych, jak i etykiet klasyfikacji (wartości y-test). Tworzony jest również `PipelineData` obiekt dla danych wyjściowych oceniania partii.
 
 ```python
 from azureml.data.data_reference import DataReference
@@ -106,7 +106,7 @@ output_dir = PipelineData(name="scores",
 
 ## <a name="download-and-register-the-model"></a>Pobieranie i rejestrowanie modelu
 
-Pobierz wstępnie szkolony model Tensorflow, aby używać go do oceniania partii w potoku. Najpierw Utwórz katalog lokalny, w którym przechowujesz model, a następnie pobierz go i Wyodrębnij.
+Pobierz Tensorflow model, aby użyć go do oceniania partii w potoku. Najpierw Utwórz katalog lokalny, w którym jest przechowywany model. Następnie pobierz i Wyodrębnij model.
 
 ```python
 import os
@@ -121,7 +121,7 @@ tar = tarfile.open("model.tar.gz", "r:gz")
 tar.extractall("models")
 ```
 
-Teraz zarejestrujesz model w obszarze roboczym, który pozwala łatwo pobrać go w procesie potoku. `register()` W funkcji`model_name` statycznej parametr jest kluczem używanym do lokalizowania modelu w całym zestawie SDK.
+Następnie zarejestruj model w obszarze roboczym, aby można było łatwo pobrać model w procesie potoku. `register()` W funkcji`model_name` statycznej parametr jest kluczem używanym do lokalizowania modelu w całym zestawie SDK.
 
 ```python
 from azureml.core.model import Model
@@ -133,9 +133,11 @@ model = Model.register(model_path="models/inception_v3.ckpt",
                        workspace=ws)
 ```
 
-## <a name="create-and-attach-remote-compute-target"></a>Tworzenie i dołączanie zdalnego celu obliczeń
+## <a name="create-and-attach-the-remote-compute-target"></a>Tworzenie i dołączanie zdalnego celu obliczeń
 
-Ponieważ potoki ML nie mogą być uruchamiane lokalnie, należy je uruchomić w zasobach w chmurze. Nazywamy je jako zdalnymi obiektami docelowymi obliczeń, które są wirtualnymi środowiskami obliczeniowymi wielokrotnego użytku, w których uruchamiane są eksperymenty i przepływy pracy w ML. Uruchom następujący kod, aby utworzyć obiekt docelowy z obsługą [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) procesora GPU i dołączyć go do obszaru roboczego. Więcej informacji na temat obiektów docelowych obliczeń można znaleźć w [artykule koncepcyjnym](https://docs.microsoft.com/azure/machine-learning/service/concept-compute-target) .
+Potoki usługi Machine Learning nie mogą być uruchamiane lokalnie, dlatego można je uruchamiać w zasobach w chmurze lub *zdalnych celach obliczeniowych*. Zdalny obiekt docelowy obliczeń to wirtualne środowisko obliczeniowe wielokrotnego użytku, w którym można uruchamiać eksperymenty i przepływy pracy uczenia maszynowego. 
+
+Uruchom następujący kod, aby utworzyć obiekt docelowy [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) OBSŁUGUJĄCY procesor GPU, a następnie dołącz go do obszaru roboczego. Aby uzyskać więcej informacji na temat obiektów docelowych obliczeń, zobacz [artykuł koncepcyjny](https://docs.microsoft.com/azure/machine-learning/service/concept-compute-target).
 
 
 ```python
@@ -158,17 +160,17 @@ except ComputeTargetException:
 
 ## <a name="write-a-scoring-script"></a>Napisz skrypt oceniania
 
-Aby wykonać ocenianie, należy utworzyć skrypt `batch_scoring.py`oceniania partii i zapisać go w bieżącym katalogu. Skrypt pobiera obrazy wejściowe, stosuje model klasyfikacji i wyprowadza przewidywania do pliku wyników.
+Aby wykonać ocenianie, Utwórz skrypt oceniania partii o nazwie `batch_scoring.py`, a następnie zapisz go w bieżącym katalogu. Skrypt pobiera obrazy wejściowe, stosuje model klasyfikacji, a następnie wyprowadza przewidywania do pliku wyników.
 
-Skrypt `batch_scoring.py` przyjmuje następujące parametry, które są przenoszone z kroku potoku utworzonego w dalszej części tego samouczka:
+Skrypt `batch_scoring.py` przyjmuje następujące parametry, które są przesyłane z kroku potoku utworzonego w dalszej części tego samouczka:
 
-- `--model_name`: nazwa używanego modelu
-- `--label_dir`: katalog zawierający `labels.txt` plik 
-- `--dataset_path`: katalog zawierający obrazy wejściowe
-- `--output_dir`: skrypt uruchomi model na danych i wyjściowych `results-label.txt` w tym katalogu
-- `--batch_size`: rozmiar wsadu używany podczas uruchamiania modelu
+- `--model_name`: Nazwa używanego modelu.
+- `--label_dir`: Katalog, w którym znajduje się plik `labels.txt`.
+- `--dataset_path`: Katalog zawierający obrazy wejściowe.
+- `--output_dir`: Katalog wyjściowy dla pliku `results-label.txt` po uruchomieniu skryptu model na danych.
+- `--batch_size`: Rozmiar wsadu używany w modelu.
 
-Infrastruktura potoków używa `ArgumentParser` klasy do przekazywania parametrów do kroków potoku. Na przykład, w kodzie poniżej pierwszego argumentu `--model_name` jest przyznany identyfikator `model_name`właściwości. W funkcji Ta właściwość jest dostępna przy użyciu `Model.get_model_path(args.model_name)`. `main()`
+Infrastruktura potoku używa klasy `ArgumentParser` do przekazywania parametrów do kroków potoku. Na przykład, w poniższym kodzie, pierwszy argument `--model_name` otrzymuje identyfikator właściwości `model_name`. W funkcji `main()` `Model.get_model_path(args.model_name)` jest używana do uzyskiwania dostępu do tej właściwości.
 
 
 ```python
@@ -290,11 +292,11 @@ if __name__ == "__main__":
 ```
 
 > [!TIP]
-> Potok w tym samouczku ma tylko jeden krok i zapisuje dane wyjściowe do pliku, ale w przypadku potoków wieloetapowych można również `ArgumentParser` zdefiniować katalog do zapisywania danych wyjściowych do kolejnych kroków. Zapoznaj się z [notesem](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb) , aby uzyskać przykład przekazywania danych między wieloma krokami potoku przy użyciu `ArgumentParser` wzorca projektowego.
+> Potok w tym samouczku ma tylko jeden krok i zapisuje dane wyjściowe do pliku. W przypadku potoków wieloetapowych należy również użyć `ArgumentParser` w celu zdefiniowania katalogu w celu zapisania danych wyjściowych do kolejnych kroków. Przykład przekazywania danych między wieloma krokami potoku przy użyciu wzorca projektowego `ArgumentParser` można znaleźć w [notesie](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb).
 
 ## <a name="build-and-run-the-pipeline"></a>Kompilowanie i uruchamianie potoku
 
-Przed uruchomieniem potoku należy utworzyć obiekt definiujący środowisko i zależności, które są potrzebne przez skrypt `batch_scoring.py`. Główna zależność wymagana to Tensorflow, ale można również zainstalować `azureml-defaults` procesy w tle z zestawu SDK. `RunConfiguration` Utwórz obiekt przy użyciu zależności, a także określ obsługę platformy Docker i procesora GPU.
+Przed uruchomieniem potoku Utwórz obiekt definiujący środowisko Python i tworzy zależności wymagane przez skrypt `batch_scoring.py`. Główna zależność wymagana to Tensorflow, ale można również zainstalować `azureml-defaults` z zestawu SDK dla procesów w tle. Utwórz obiekt `RunConfiguration` przy użyciu zależności. Należy również określić obsługę platformy Docker i platformy Docker-GPU.
 
 ```python
 from azureml.core.runconfig import DEFAULT_GPU_IMAGE
@@ -310,9 +312,9 @@ amlcompute_run_config.environment.spark.precache_packages = False
 
 ### <a name="parameterize-the-pipeline"></a>Sparametryzuj potoku
 
-Zdefiniuj parametr niestandardowy dla potoku, aby kontrolować rozmiar wsadu. Po opublikowaniu i udostępnieniu potoku za pośrednictwem punktu końcowego REST wszystkie skonfigurowane parametry są również uwidaczniane i można je określić w ładunku JSON podczas ponownej uruchomienia potoku przy użyciu żądania HTTP.
+Zdefiniuj parametr niestandardowy dla potoku, aby kontrolować rozmiar wsadu. Gdy potok zostanie opublikowany i ujawniony za pośrednictwem punktu końcowego REST, wszystkie skonfigurowane parametry są również uwidocznione. Po ponownym uruchomieniu potoku za pomocą żądania HTTP można określić parametry niestandardowe w ładunku JSON.
 
-`PipelineParameter` Utwórz obiekt, aby włączyć to zachowanie, i zdefiniuj nazwę i wartość domyślną.
+Utwórz obiekt `PipelineParameter`, aby włączyć to zachowanie oraz zdefiniować nazwę i wartość domyślną.
 
 ```python
 from azureml.pipeline.core.graph import PipelineParameter
@@ -321,16 +323,16 @@ batch_size_param = PipelineParameter(name="param_batch_size", default_value=20)
 
 ### <a name="create-the-pipeline-step"></a>Tworzenie etap potoku
 
-Krok potoku to obiekt, który hermetyzuje wszystko, czego potrzebujesz do uruchamiania potoków, w tym:
+Krok potoku to obiekt, który hermetyzuje wszystko, czego potrzebujesz do uruchomienia potoku, w tym:
 
 * Ustawienia środowiska i zależności
 * zasób obliczeniowy, na którym ma zostać uruchomiony potok
 * dane wejściowe i wyjściowe oraz dowolne parametry niestandardowe
-* odwołanie do skryptu lub zestawu SDK logiki do uruchomienia w ramach tego kroku
+* Odwołanie do skryptu lub logiki zestawu SDK do uruchomienia w ramach tego kroku
 
-Istnieje wiele klas, które dziedziczą z klasy [`PipelineStep`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py) nadrzędnej, aby ułatwić tworzenie kroków przy użyciu określonych platform i stosów. W tym przykładzie użyto [`PythonScriptStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) klasy do zdefiniowania logiki kroku przy użyciu niestandardowego skryptu języka Python. Należy pamiętać, że jeśli argument skryptu jest danymi wejściowymi do kroku lub danych wyjściowych kroku, musi być zdefiniowany **zarówno** `arguments` w tablicy, **jak** i odpowiednio w `input` parametrze lub. `output` 
+Wiele klas dziedziczy z klasy nadrzędnej [`PipelineStep`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py). Możesz wybrać klasy do użycia określonych platform lub stosów, aby skompilować krok. W tym przykładzie użyto klasy [`PythonScriptStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) do zdefiniowania logiki krokowej przy użyciu niestandardowego skryptu języka Python. Jeśli argument skryptu jest wejściem do kroku lub wyjściem kroku, argument musi być zdefiniowany *zarówno* w tablicy `arguments`, *jak i* w `input` lub `output`. 
 
-Odwołanie do obiektu w `outputs` tablicy jest dostępne jako **dane wejściowe** dla kolejnego kroku potoku, w przypadku scenariuszy, w których istnieje więcej niż jeden krok.
+W scenariuszach, w których występuje więcej niż jeden krok, odwołanie do obiektu w tablicy `outputs` jest dostępne jako *dane wejściowe* dla kolejnego kroku potoku.
 
 ```python
 from azureml.pipeline.steps import PythonScriptStep
@@ -350,16 +352,16 @@ batch_score_step = PythonScriptStep(
 )
 ```
 
-Aby uzyskać listę wszystkich klas dla różnych typów etapów, zobacz [pakiet kroków](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py).
+Aby zapoznać się z listą wszystkich klas, których można użyć dla różnych typów etapów, zobacz [pakiet kroków](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py).
 
 ### <a name="run-the-pipeline"></a>Uruchamianie potoku
 
-Teraz można uruchomić potok. Najpierw Utwórz `Pipeline` obiekt z odwołaniem do obszaru roboczego i utworzonym etapem potoku. `steps` Parametr jest tablicą kroków, a w tym przypadku jest tylko jeden krok dla oceniania partii. Aby kompilować potoki z wieloma krokami, należy umieścić kroki w kolejności w tej tablicy.
+Teraz uruchom potok. Najpierw Utwórz obiekt `Pipeline` przy użyciu odwołania do obszaru roboczego i utworzonego etapu potoku. Parametr `steps` jest tablicą kroków. W takim przypadku istnieje tylko jeden krok oceniania partii. Aby utworzyć potoki, które mają wiele kroków, należy umieścić kroki w kolejności w tej tablicy.
 
-Następnie użyj funkcji `Experiment.submit()` , aby przesłać potok do wykonania. Należy również określić parametr `param_batch_size`niestandardowy. `wait_for_completion` Funkcja będzie wyprowadzać dzienniki podczas procesu kompilacji potoku, co umożliwia wyświetlenie bieżącego postępu.
+Następnie użyj funkcji `Experiment.submit()` w celu przesłania potoku do wykonania. Należy również określić parametr `param_batch_size`niestandardowy. Funkcja `wait_for_completion` wyprowadza dzienniki podczas procesu kompilacji potoku. Możesz użyć dzienników, aby zobaczyć bieżący postęp.
 
 > [!IMPORTANT]
-> Pierwsze uruchomienie potoku trwa około **15 minut**, ponieważ wszystkie zależności muszą zostać pobrane, tworzony jest obraz platformy Docker, a środowisko języka Python jest inicjowane/tworzone. Ponowne uruchomienie tego procesu zajmuje znacznie mniej czasu, ponieważ zasoby są ponownie używane. Jednak łączny czas wykonywania zależy od obciążenia skryptów i procesów uruchomionych w każdym kroku potoku.
+> Pierwsze uruchomienie potoku trwa około *15 minut*. Wszystkie zależności muszą zostać pobrane, zostanie utworzony obraz platformy Docker, a środowisko Python jest inicjowane i tworzone. Ponowne uruchomienie potoku trwa znacznie mniej czasu, ponieważ te zasoby są ponownie używane zamiast tworzenia. Jednak łączny czas wykonywania potoku zależy od obciążenia skryptów i procesów uruchomionych w każdym kroku potoku.
 
 ```python
 from azureml.core import Experiment
@@ -372,7 +374,7 @@ pipeline_run.wait_for_completion(show_output=True)
 
 ### <a name="download-and-review-output"></a>Pobierz i Przejrzyj dane wyjściowe
 
-Uruchom następujący kod, aby pobrać plik wyjściowy utworzony ze `batch_scoring.py` skryptu, a następnie przejrzyj wyniki oceniania.
+Uruchom następujący kod, aby pobrać plik wyjściowy, który został utworzony za pomocą skryptu `batch_scoring.py`. Następnie przejrzyj wyniki oceniania.
 
 ```python
 import pandas as pd
@@ -408,7 +410,7 @@ df.head(10)
     <tr>
       <td>0</td>
       <td>ILSVRC2012_val_00000102. JPEG</td>
-      <td>Rhodesian ridgeback</td>
+      <td>Rhodesian Ridgeback</td>
     </tr>
     <tr>
       <td>1</td>
@@ -459,11 +461,11 @@ df.head(10)
 </table>
 </div>
 
-## <a name="publish-and-run-from-rest-endpoint"></a>Publikowanie i uruchamianie z punktu końcowego REST
+## <a name="publish-and-run-from-a-rest-endpoint"></a>Publikowanie i uruchamianie z punktu końcowego REST
 
-Uruchom następujący kod, aby opublikować potok w obszarze roboczym. W obszarze roboczym portalu można zobaczyć metadane dla potoku, w tym historię uruchamiania i czasy trwania. Potok można również uruchomić ręcznie z poziomu portalu.
+Uruchom następujący kod, aby opublikować potok w obszarze roboczym. W obszarze roboczym w Azure Portal można zobaczyć metadane dla potoku, w tym historię uruchamiania i czas trwania. Potok można również uruchomić ręcznie z poziomu portalu.
 
-Ponadto opublikowanie potoku umożliwia punktowi końcowego REST ponowne uruchomienie potoku z dowolnej biblioteki HTTP na dowolnej platformie.
+Opublikowanie potoku umożliwia punkt końcowy REST, którego można użyć do uruchomienia potoku z dowolnej biblioteki HTTP na dowolnej platformie.
 
 ```python
 published_pipeline = pipeline_run.publish_pipeline(
@@ -472,11 +474,11 @@ published_pipeline = pipeline_run.publish_pipeline(
 published_pipeline
 ```
 
-Aby uruchomić potok z punktu końcowego REST, należy najpierw uzyskać nagłówek uwierzytelniania typu "OAuth2". W tym przykładzie użyto interaktywnego uwierzytelniania na potrzeby ilustracji, ale w przypadku większości scenariuszy produkcyjnych wymagających uwierzytelniania automatycznego lub bezobsługowego należy użyć uwierzytelniania z użyciem zasady usługi zgodnie [z opisem w tym notesie](https://aka.ms/pl-restep-auth).
+Aby można było uruchomić potok z punktu końcowego REST, potrzebny jest nagłówek uwierzytelniania typu "OAuth2". W poniższym przykładzie użyto uwierzytelniania interaktywnego (na przykład), ale w przypadku większości scenariuszy produkcyjnych, które wymagają automatycznego lub bezobsługowego uwierzytelniania, należy użyć uwierzytelniania nazwy głównej usługi zgodnie [z opisem w tym notesie](https://aka.ms/pl-restep-auth).
 
-Uwierzytelnianie zasad usługi polega na utworzeniu **rejestracji aplikacji** w **Azure Active Directory**, wygenerowaniu klucza tajnego klienta, a następnie przyznaniu **roli** głównej usługi dostępu do obszaru roboczego uczenia maszynowego. Następnie można użyć [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) klasy do zarządzania przepływem uwierzytelniania. 
+Uwierzytelnianie jednostki usługi polega na utworzeniu *rejestracji aplikacji* w *Azure Active Directory*. Najpierw należy wygenerować klucz tajny klienta, a następnie przyznać roli głównej usługi *dostęp* do obszaru roboczego uczenia maszynowego. Użyj klasy [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) do zarządzania przepływem uwierzytelniania. 
 
-Oba `InteractiveLoginAuthentication` `AbstractAuthentication`i `ServicePrincipalAuthentication` dziedziczą z`get_authentication_header()` , a w obu przypadkach używasz funkcji w taki sam sposób, aby można było pobrać nagłówek.
+Zarówno `InteractiveLoginAuthentication`, jak i `ServicePrincipalAuthentication` dziedziczą z `AbstractAuthentication`. W obu przypadkach Użyj funkcji `get_authentication_header()` w taki sam sposób, aby pobrać nagłówek:
 
 ```python
 from azureml.core.authentication import InteractiveLoginAuthentication
@@ -485,9 +487,11 @@ interactive_auth = InteractiveLoginAuthentication()
 auth_header = interactive_auth.get_authentication_header()
 ```
 
-Pobierz adres URL REST z `endpoint` właściwości opublikowanego obiektu potoku. Adres URL REST można również znaleźć w obszarze roboczym portalu. Utwórz żądanie HTTP POST w punkcie końcowym, określając nagłówek uwierzytelniania. Dodatkowo Dodaj obiekt ładunku JSON z nazwą eksperymentu i parametrem rozmiaru partii. Przypomnienie `param_batch_size` jest przesyłane `batch_scoring.py` do skryptu, ponieważ zostało zdefiniowane jako `PipelineParameter` obiekt w konfiguracji kroku.
+Pobierz adres URL REST z właściwości `endpoint` opublikowanego obiektu potoku. Możesz również znaleźć adres URL REST w obszarze roboczym w Azure Portal. 
 
-Wykonaj żądanie, aby wyzwolić uruchomienie. Uzyskaj dostęp do klucza z słownika odpowiedzi, aby uzyskać wartość identyfikatora uruchomienia. `Id`
+Kompiluj żądanie HTTP POST do punktu końcowego. Określ w żądaniu nagłówek uwierzytelniania. Dodaj obiekt ładunku JSON, który ma nazwę eksperymentu i parametr rozmiaru partii. Jak wspomniano wcześniej w samouczku, `param_batch_size` jest przenoszona do skryptu `batch_scoring.py`, ponieważ został on zdefiniowany jako obiekt `PipelineParameter` w konfiguracji kroku.
+
+Wykonaj żądanie, aby wyzwolić uruchomienie. Dołącz kod, aby uzyskać dostęp do klucza `Id` z słownika odpowiedzi, aby uzyskać wartość identyfikatora uruchomienia.
 
 ```python
 import requests
@@ -500,7 +504,9 @@ response = requests.post(rest_endpoint,
 run_id = response.json()["Id"]
 ```
 
-Użyj identyfikatora uruchomienia, aby monitorować stan nowego przebiegu. Spowoduje to ponowienie 10-15 min i będzie wyglądać podobnie do poprzedniego przebiegu potoku, dlatego jeśli nie trzeba zobaczyć innego uruchomienia potoku, możesz pominąć oglądanie pełnych danych wyjściowych.
+Użyj identyfikatora uruchomienia, aby monitorować stan nowego przebiegu. Nowy przebieg zajmie jeszcze 10-15 min. 
+
+Nowy przebieg będzie wyglądał podobnie do potoku, który został uruchomiony wcześniej w samouczku. Możesz zrezygnować z wyświetlania pełnych danych wyjściowych.
 
 ```python
 from azureml.pipeline.core.run import PipelineRun
@@ -512,35 +518,35 @@ RunDetails(published_pipeline_run).show()
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Nie wykonuj tej sekcji, jeśli planujesz Uruchamianie innych samouczków Azure Machine Learning.
+Nie Dokończ tej sekcji, jeśli planujesz uruchamiać inne samouczki Azure Machine Learning.
 
 ### <a name="stop-the-notebook-vm"></a>Zatrzymaj maszynę wirtualną notesu
 
-Jeśli używasz serwera notesu w chmurze, Zatrzymaj maszynę wirtualną, gdy nie używasz jej do obniżenia kosztów.
+Jeśli używasz serwera notesu w chmurze, aby obniżyć koszty, Zatrzymaj maszynę wirtualną, gdy your'e jej używanie:
 
 1. W obszarze roboczym wybierz pozycję **maszyny wirtualne Notes**.
-1. Z listy wybierz maszynę wirtualną.
+1. Z listy maszyn wirtualnych wybierz maszynę wirtualną, która ma zostać zatrzymana.
 1. Wybierz pozycję **Zatrzymaj**.
 1. Gdy wszystko będzie gotowe do korzystania z serwera, wybierz pozycję **Uruchom**.
 
 ### <a name="delete-everything"></a>Usuń wszystko
 
-Jeśli nie planujesz korzystać z utworzonych zasobów, usuń je, aby nie nawiązać żadnych opłat.
+Jeśli nie planujesz używać utworzonych zasobów, usuń je, aby uniknąć naliczania opłat.
 
-1. W witrynie Azure Portal na końcu z lewej strony wybierz pozycję **Grupy zasobów**.
-1. Wybierz utworzoną grupę zasobów z listy.
+1. W Azure Portal w menu po lewej stronie wybierz pozycję **grupy zasobów**.
+1. Z listy grup zasobów wybierz utworzoną grupę zasobów.
 1. Wybierz pozycję **Usuń grupę zasobów**.
 1. Wpisz nazwę grupy zasobów. Następnie wybierz pozycję **Usuń**.
 
-Możesz też zachować grupę zasobów i usunąć jeden obszar roboczy. Wyświetl właściwości obszaru roboczego i wybierz pozycję **Usuń**.
+Możesz też zachować grupę zasobów i usunąć jeden obszar roboczy. Wyświetl właściwości obszaru roboczego, a następnie wybierz pozycję **Usuń**.
 
 ## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku potoki uczenia maszynowego zostały wykonane następujące zadania:
 
 > [!div class="checklist"]
-> * Skompilowany potok z zależnościami środowiska do uruchamiania na zdalnym zasobie obliczeniowym procesora GPU
-> * Utworzono skrypt oceniania służący do uruchamiania prognoz wsadowych ze wstępnie szkolonym modelem Tensorflow
-> * Opublikowano potok i włączył go do uruchamiania z punktu końcowego REST
+> * Utworzono potok z zależnościami środowiska do uruchomienia na zdalnym zasobie obliczeniowym procesora GPU.
+> * Utworzono skrypt oceniania służący do uruchamiania prognoz wsadowych przy użyciu przedniego Tensorflow modelu.
+> * Opublikowano potok i włączył go do uruchamiania z punktu końcowego REST.
 
-Zapoznaj się z [repozytorium notesu](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines) , aby uzyskać dodatkowe przykłady kompilowania potoków przy użyciu zestawu SDK usługi Machine Learning.
+Aby uzyskać więcej przykładów tworzenia potoków przy użyciu zestawu SDK usługi Machine Learning, zobacz [repozytorium notesu](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines).

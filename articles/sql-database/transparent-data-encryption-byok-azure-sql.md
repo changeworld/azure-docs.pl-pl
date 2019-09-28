@@ -11,12 +11,12 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 ms.date: 07/18/2019
-ms.openlocfilehash: 6b1b706e68b090090ed4268b70b7c9d254f8b629
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 095ecc360e5639a5d47dff4bc4675fc237cf81da
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596696"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71348925"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-keys-in-azure-key-vault-bring-your-own-key-support"></a>Usługa Azure SQL Transparent Data Encryption z kluczami zarządzanymi przez klienta w programie Azure Key Vault: Obsługa Bring Your Own Key
 
@@ -60,7 +60,7 @@ Gdy TDE jest najpierw skonfigurowany do korzystania z funkcji ochrony TDE z Key 
 - Upewnij się, że Azure Key Vault i Azure SQL Database/zarządzane wystąpienie ma należeć do tej samej dzierżawy.  Magazyn kluczy między dzierżawcami i interakcje serwera **nie są obsługiwane**.
 - Jeśli planujesz przeniesienie dzierżawy, TDE z AKV będzie musiała zostać ponownie skonfigurowana, Dowiedz się więcej o [przenoszeniu zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
 - Podczas konfigurowania TDE z Azure Key Vault należy wziąć pod uwagę obciążenie umieszczane w magazynie kluczy przez powtarzające się operacje zawijania/odpakowania. Na przykład, ponieważ wszystkie bazy danych skojarzone z serwerem SQL Database korzystają z tej samej funkcji ochrony TDE, przełączenie w tryb failover tego serwera spowoduje wyzwolenie w postaci wielu kluczowych operacji związanych z magazynem, ponieważ na serwerze znajdują się bazy danych. W oparciu o nasze doświadczenie i udokumentowane [limity usługi magazynu kluczy](https://docs.microsoft.com/azure/key-vault/key-vault-service-limits)zalecamy 500 skojarzenie baz danych w warstwie standardowa/Ogólnego przeznaczenia lub 200 Premium/krytyczne dla działania firmy z jednym Azure Key Vault w ramach jednej subskrypcji w celu zapewnienia spójnej wysokiej wydajności dostępność podczas uzyskiwania dostępu do funkcji ochrony TDE w magazynie.
-- Rekomendowane Zachowaj kopię funkcji ochrony TDE lokalnie.  Wymaga to urządzenia HSM do lokalnego utworzenia funkcji ochrony TDE i klucza systemu Escrow do przechowywania lokalnej kopii funkcji ochrony TDE.  Dowiedz się, [jak przenieść klucz z lokalnego modułu HSM do Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys).
+- Zalecane: Zachowaj kopię funkcji ochrony TDE lokalnie.  Wymaga to urządzenia HSM do lokalnego utworzenia funkcji ochrony TDE i klucza systemu Escrow do przechowywania lokalnej kopii funkcji ochrony TDE.  Dowiedz się, [jak przenieść klucz z lokalnego modułu HSM do Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys).
 
 
 ### <a name="guidelines-for-configuring-azure-key-vault"></a>Wskazówki dotyczące konfigurowania Azure Key Vault
@@ -149,7 +149,7 @@ W poniższej sekcji opisano kroki instalacji i konfiguracji w bardziej szczegó�
 - Utwórz dwa magazyny kluczy platformy Azure w dwóch różnych regionach przy użyciu [programu PowerShell, aby włączyć właściwość "Soft-Delete"](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell) w magazynach kluczy (Ta opcja nie jest jeszcze dostępna w portalu AKV, ale jest wymagana przez program SQL).
 - Oba magazyny kluczy platformy Azure muszą znajdować się w dwóch regionach dostępnych w tej samej lokalizacji geograficznej platformy Azure w celu tworzenia kopii zapasowych i przywracania kluczy do pracy.  Jeśli potrzebujesz dwóch magazynów kluczy, które mają znajdować się w różnych georegionyach w celu spełnienia wymagań geograficznych SQL-DR, postępuj zgodnie z [procesem BYOK](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys) , który umożliwia importowanie kluczy z lokalnego modułu HSM.
 - Utwórz nowy klucz w pierwszym magazynie kluczy:  
-  - Klucz RSA/RSA-HSA 2048
+  - Klucz RSA/RSA-HSM 2048
   - Brak dat wygaśnięcia
   - Klucz jest włączony i ma uprawnienia do wykonywania operacji pobrania, zawijania klucza i rozwinięcia klucza
 - Wykonaj kopię zapasową klucza podstawowego i Przywróć klucz do drugiego magazynu kluczy.  Zobacz [BackupAzureKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey) i [Restore-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey).

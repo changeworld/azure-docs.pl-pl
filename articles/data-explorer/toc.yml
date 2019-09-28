@@ -90,6 +90,8 @@
       items:
         - name: Power BI
           items:
+            - name: Najlepsze praktyki
+              href: power-bi-best-practices.md
             - name: łącznik
               href: power-bi-connector.md
             - name: zaimportowane zapytanie

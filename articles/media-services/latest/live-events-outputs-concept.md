@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 09/25/2019
 ms.author: juliako
-ms.openlocfilehash: 7cb158490bd8a8520e101dbe321b8594cad059f9
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: efe0aaf7c7d5516401f8c72721121a5dff247b95
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309668"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350374"
 ---
 # <a name="live-events-and-live-outputs"></a>Wydarzenia i dane wyjściowe na żywo
 
@@ -35,7 +35,7 @@ Azure Media Services pozwala na dostarczanie na żywo wydarzeń klientom w chmur
 
 [Wydarzenie na żywo](https://docs.microsoft.com/rest/api/media/liveevents) może być jednym z dwóch typów: przekazywaniem i kodowaniem na żywo. Typy są ustawiane podczas tworzenia przy użyciu [LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype):
 
-* **LiveEventEncodingType. None** — lokalny koder na żywo wysyła strumień o wielokrotnej szybkości transmisji bitów. Pozyskiwane strumienie są przekazywane przez wydarzenie na żywo bez dalszej obróbki. 
+* **LiveEventEncodingType. None** — lokalny koder na żywo wysyła strumień o wielokrotnej szybkości transmisji bitów. Pozyskiwany strumień przeszedł przez wydarzenie na żywo bez dalszej obróbki. 
 * **LiveEventEncodingType. Standard** — lokalny koder na żywo wysyła strumień o pojedynczej szybkości transmisji bitów do zdarzenia na żywo, a Media Services tworzy wiele strumieni szybkości transmisji bitów. Jeśli kanał informacyjny udziału ma rozdzielczość 720 lub wyższą, ustawienie wstępne **Default720p** będzie kodować zestaw par rozdzielczości/szybkości transmisji bitów.
 * **LiveEventEncodingType. Premium1080p** — lokalny koder na żywo wysyła strumień o pojedynczej szybkości transmisji bitów do zdarzenia na żywo, a Media Services tworzy wiele strumieni szybkości transmisji bitów. Ustawienie wstępne Default1080p określa wyjściowy zestaw par rozdzielczości/szybkości transmisji bitów. 
 
@@ -66,7 +66,9 @@ Rozdzielczości i szybkości transmisji bitów zawarte w danych wyjściowych z k
 > [!NOTE]
 > Jeśli musisz dostosować ustawienie wstępne kodowania na żywo, Otwórz bilet pomocy technicznej za pośrednictwem Azure Portal. Musisz określić odpowiednią tabelę z rozdzielczością i szybkościami transmisji bitów. Upewnij się, że istnieje tylko jedna warstwa o rozdzielczości 720 (jeśli żądasz ustawienia wstępnego dla standardowego kodera na żywo) lub w lokalizacji 1080p (Jeśli zażądasz ustawienia wstępnego dla kodera Premium1080p na żywo) i maksymalnie 6 warstw.
 
-## <a name="live-event-creation-options"></a>Opcje tworzenia zdarzeń na żywo
+## <a name="creating-live-events"></a>Tworzenie zdarzeń na żywo 
+
+### <a name="options"></a>Opcje
 
 Podczas tworzenia zdarzenia na żywo można określić następujące opcje:
 
@@ -77,7 +79,14 @@ Podczas tworzenia zdarzenia na żywo można określić następujące opcje:
 * Ograniczenia dotyczące adresów IP w pozyskiwaniu i podglądzie. Można zdefiniować adresy IP, które mogą pozyskiwać pliki wideo w tym wydarzeniu na żywo. Jako dozwolone adresy IP można podać pojedynczy adres IP (na przykład „10.0.0.1”), zakres adresów IP przy użyciu adresu IP i maski podsieci CIDR (na przykład „10.0.0.1/22”) lub zakres adresów IP przy użyciu adresu IP i maski podsieci w notacji z kropką dziesiętną (na przykład, „10.0.0.1(255.255.252.0)”).<br/>Jeśli adresy IP nie zostaną określone i brakuje definicji reguły, to żaden adres IP nie będzie dozwolony. Aby zezwolić na jakikolwiek adres IP, utwórz regułę i ustaw wartość 0.0.0.0/0.<br/>Adresy IP muszą mieć jeden z następujących formatów: adres IPv4 z 4 cyframi, zakres adresów CIDR.
 
     Jeśli chcesz włączyć niektóre adresy IP na własnych zaporach lub chcesz ograniczyć dane wejściowe do zdarzeń na żywo do adresów IP platformy Azure, Pobierz plik JSON z [zakresów adresów IP centrum danych platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653). Aby uzyskać szczegółowe informacje na temat tego pliku, kliknij sekcję **szczegóły** na stronie.
-    
+        
+### <a name="naming-rules"></a>Reguły nazewnictwa
+
+* Maksymalna Nazwa zdarzenia na żywo to 32 znaków.
+* Nazwa powinna być zgodna z tym wzorcem [wyrażenia regularnego](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) : `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`.
+
+Zobacz również [konwencje nazewnictwa punktów końcowych przesyłania strumieniowego](streaming-endpoint-concept.md#naming-convention).
+
 ## <a name="live-event-ingest-urls"></a>Adresy URL pozyskiwania zdarzeń na żywo
 
 Po utworzeniu wydarzenia na żywo można pobrać adresy URL pozyskiwania, które należy udostępnić lokalnemu koderowi na żywo. Koder na żywo używa tych adresów URL do wprowadzenia strumienia na żywo. Aby uzyskać więcej informacji, zobacz [zalecane lokalne kodery na żywo](recommended-on-premises-live-encoders.md). 

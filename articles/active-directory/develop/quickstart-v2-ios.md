@@ -17,12 +17,12 @@ ms.author: twhitney
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b8637bb1a1ba397750bd04c88c6535fa3d1caa0
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: bdb1ae92b17bef281e3b82a8c1a21344fa37f0da
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309634"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345534"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Szybki start: Logowanie użytkowników i wywoływanie interfejsu API Microsoft Graph z aplikacji dla systemu iOS lub macOS
 
@@ -94,11 +94,11 @@ W oknie terminalu przejdź do folderu z pobranym przykładem kodu i uruchom `pod
 > 1. Wyodrębnij plik zip i otwórz projekt w programie XCode.
 > 1. Edytuj **plik viewcontroller. Swift** i Zastąp wiersz zaczynający się od "Let kClientID" następującym fragmentem kodu. Pamiętaj, aby zaktualizować wartość `kClientID` z identyfikatorem klienta zapisanym podczas rejestrowania aplikacji w portalu wcześniej w przewodniku szybki start:
 >    ```swift
->    let kClientID = "<ENTER_YOUR_APPLICATION/CLIENT_ID>"
+>    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
 > 1. Otwórz ustawienia projektu. W sekcji **tożsamość** wprowadź **Identyfikator pakietu** wprowadzony w portalu.
 > 1. Tylko dla systemu iOS kliknij prawym przyciskiem myszy pozycję **info. plist** i wybierz polecenie **Otwórz jako** > **kod źródłowy**.
-> 1. Tylko dla systemu iOS w węźle głównym DICT Zastąp `Enter_the_bundle_Id_Here`wartość ***identyfikatorem pakietu*** wprowadzonym w portalu.
+> 1. Tylko dla systemu iOS w węźle głównym DICT Zastąp `CFBundleURLSchemes` ***identyfikatorem pakietu*** wprowadzonym w portalu.
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>
@@ -120,11 +120,11 @@ W oknie terminalu przejdź do folderu z pobranym przykładem kodu i uruchom `pod
 > 1. Wyodrębnij plik zip i otwórz projekt w programie XCode.
 > 1. Edytuj **plik viewcontroller. Swift** i Zastąp wiersz zaczynający się od "Let kClientID" następującym fragmentem kodu. Pamiętaj, aby zaktualizować wartość `kClientID` clientID, która została zapisana podczas rejestrowania aplikacji w portalu wcześniej w tym przewodniku szybki start:
 >    ```swift
->    let kClientID = "<ENTER_YOUR_APPLICATION/CLIENT_ID>"
+>    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
 > 1. Otwórz ustawienia projektu. W sekcji **tożsamość** wprowadź **Identyfikator pakietu** wprowadzony w portalu.
 > 1. Tylko dla systemu iOS kliknij prawym przyciskiem myszy pozycję **info. plist** i wybierz polecenie **Otwórz jako** > **kod źródłowy**.
-> 1. Tylko dla systemu iOS w węźle głównym DICT Zastąp `Enter_the_bundle_Id_Here`ciąg ***identyfikatorem pakietu*** użytym w portalu.
+> 1. Tylko dla systemu iOS w węźle głównym DICT Zastąp `Enter_the_bundle_Id_Here` ***identyfikatorem pakietu*** użytym w portalu.
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>

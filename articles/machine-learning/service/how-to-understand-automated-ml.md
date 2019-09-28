@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.openlocfilehash: 56d8dff7d158cedb4ab33e811cf5134cdbc475ab
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: b0024bc12f29a76da02c9f7e62af7727b9af7249
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999446"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350648"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Informacje o zautomatyzowanych wynikach uczenia maszynowego
 
@@ -30,7 +30,7 @@ Dowiedz się więcej o usługach:
 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
 
-* Utwórz automatyczny eksperyment uczenia maszynowego z zestawem SDK w Azure Portal lub na stronie docelowej obszaru roboczego (wersja zapoznawcza).
+* Utwórz eksperyment dla automatycznego przebiegu uczenia maszynowego z zestawem SDK w Azure Portal lub na stronie docelowej obszaru roboczego (wersja zapoznawcza).
 
     * Użyj zestawu SDK, aby utworzyć [model klasyfikacji](how-to-auto-train-remote.md) lub [model regresji](tutorial-auto-train-models.md)
     * Użyj [Azure Portal lub strony docelowej obszaru roboczego (wersja zapoznawcza)](how-to-create-portal-experiments.md) , aby utworzyć model klasyfikacji lub regresji przez przekazanie odpowiednich danych.
@@ -117,7 +117,7 @@ Termin dokładności reprezentuje zdolność klasyfikatora poprawnie oznaczenie 
 
 Przykład 1: Model klasyfikacji z małą dokładnością i niskim odwołaniem ![modelu klasyfikacji z niską dokładnością i niskim wycofywaniem](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-precision-recall1.png)
 
-Przykład 2: Model klasyfikacji o wartości ~ 100% Precision i ~ 100% (idealne) ![model klasyfikacji o wysokiej dokładności i odwołaniu](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-precision-recall2.png)
+Przykład 2: Model klasyfikacji z ~ 100% precyzji i ~ 100% odzyskania (idealne) ![A Klasyfikacja modelu klasyfikacji i odwoływania @ no__t-1
 
 ### <a name="roc"></a>ROC
 

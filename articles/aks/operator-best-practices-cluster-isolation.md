@@ -1,67 +1,67 @@
 ---
-title: Operator najlepsze rozwiązania — izolacja klastra usługi Kubernetes w usłudze Azure (AKS)
-description: Poznaj klastra operator najlepsze rozwiązania dotyczące izolacji w usłudze Azure Kubernetes Service (AKS)
+title: Najlepsze praktyki operatora — izolacja klastra w usłudze Azure Kubernetes Services (AKS)
+description: Zapoznaj się z najlepszymi rozwiązaniami operatora klastra na potrzeby izolacji w usłudze Azure Kubernetes Service (AKS)
 services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: mlearned
-ms.openlocfilehash: 8150e184f0c7533d5a6e7e4847bf126206f5e6c6
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: e9f7a10f19ed23e4f3b4fefa38fbb2d1912f2ac0
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614929"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71348788"
 ---
-# <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące izolacji klastra w usłudze Azure Kubernetes Service (AKS)
+# <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania związane z izolacją klastra w usłudze Azure Kubernetes Service (AKS)
 
-W przypadku zarządzania klastrów w usłudze Azure Kubernetes Service (AKS), często jest konieczne do izolowania obciążeń i zespołów. AKS zapewnia większą elastyczność w sposób uruchamiaj klastry z wieloma dzierżawami i izolowanie zasobów. Aby zmaksymalizować korzyści z inwestycji w rozwiązania Kubernetes, tych funkcji obsługi wielu dzierżawców i izolacji należy rozumieć i zaimplementowane.
+Podczas zarządzania klastrami w usłudze Azure Kubernetes Service (AKS) często trzeba izolować zespoły i obciążenia. AKS zapewnia elastyczność w zakresie uruchamiania klastrów wielodostępnych i izolowania zasobów. Aby zmaksymalizować swoją inwestycję w Kubernetes, należy zrozumieć i zaimplementować te funkcje do obsługi wielu dzierżawców i izolacji.
 
-Najlepsze rozwiązania dotyczące tej koncentruje się na izolację operatorów klastra. W tym artykule omówiono sposób wykonywania następujących zadań:
+Ten artykuł dotyczący najlepszych rozwiązań koncentruje się na izolacji operatorów klastra. W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
-> * Planowanie klastrów z wieloma dzierżawami i oddzielenie zasobów
-> * Użyj logiczną lub fizyczną izolację w klastrach usługi AKS
+> * Planowanie klastrów z wieloma dzierżawcami i separacja zasobów
+> * Używanie izolacji logicznej lub fizycznej w klastrach AKS
 
-## <a name="design-clusters-for-multi-tenancy"></a>Klastry projektu dla wielu dzierżawców
+## <a name="design-clusters-for-multi-tenancy"></a>Projektowanie klastrów dla wielu dzierżawców
 
-Kubernetes zapewnia funkcje, które pozwalają logicznie izolowania zespołów i obciążeń w tym samym klastrze. Celem powinno być zapewnienie najmniejszej liczby uprawnień, zakres zasobów, każdy zespół potrzebuje. A [Namespace][k8s-namespaces] w usłudze Kubernetes tworzy granicę izolacji logicznej. Funkcje dodatkowe usługi kubernetes i zagadnienia dotyczące izolacji i wielodostępność obejmują następujące obszary:
+Kubernetes udostępnia funkcje, które umożliwiają logiczne izolowanie zespołów i obciążeń w tym samym klastrze. Celem powinna być zapewnienie najmniejszej liczby uprawnień do zakresu zasobów, które każdy zespół potrzebuje. [Przestrzeń nazw][k8s-namespaces] w Kubernetes tworzy logiczną granicę izolacji. Dodatkowe funkcje Kubernetes oraz zagadnienia dotyczące izolacji i wielu dzierżawców obejmują następujące obszary:
 
-* **Planowanie** obejmuje korzystanie z podstawowych funkcji takich jak limity przydziałów zasobów i budżetu przerw w działaniu zasobników. Aby uzyskać więcej informacji o tych funkcjach, zobacz [najlepsze rozwiązania dotyczące harmonogramu podstawowe funkcje w usłudze AKS][aks-best-practices-scheduler].
-  * Bardziej zaawansowane funkcje usługi scheduler obejmują, nasłonecznieniem i tolerations, selektory węzła i koligacji węzła i zasobnika lub konfiguracji zapobiegającej koligacji. Aby uzyskać więcej informacji o tych funkcjach, zobacz [najlepsze rozwiązania dotyczące harmonogramu zaawansowanych funkcji w usłudze AKS][aks-best-practices-advanced-scheduler].
-* **Sieć** obejmuje korzystanie z zasad sieciowych, aby kontrolować przepływ ruchu i z zasobników.
-* **Uwierzytelnianie i autoryzacja** uwzględnić użytkownika kontroli dostępu opartej na rolach (RBAC) oraz integracji usługi Azure Active Directory (AD), pod tożsamości i kluczy tajnych w usłudze Azure Key Vault. Aby uzyskać więcej informacji o tych funkcjach, zobacz [najlepsze rozwiązania dotyczące uwierzytelniania i autoryzacji w usłudze AKS][aks-best-practices-identity].
-* **Kontenery** obejmują zasady zabezpieczeń pod, konteksty zabezpieczeń pod, skanowanie obrazów i środowisk wykonawczych dla luki w zabezpieczeniach. Również polega na użyciu Moto aplikację lub funkcję Seccomp (bezpiecznego przetwarzania danych) do ograniczania dostępu do kontenera do węzła podstawowego.
+* **Planowanie** obejmuje korzystanie z podstawowych funkcji, takich jak przydziały zasobów i budżety na przerwy. Aby uzyskać więcej informacji o tych funkcjach, zobacz [najlepsze rozwiązania dotyczące podstawowych funkcji usługi Scheduler w AKS][aks-best-practices-scheduler].
+  * Bardziej zaawansowane funkcje harmonogramu obejmują: przeznaczenia i tolerowanie, selektory węzłów oraz koligacje węzła i pod. Aby uzyskać więcej informacji o tych funkcjach, zobacz [najlepsze rozwiązania dotyczące zaawansowanych funkcji usługi Scheduler w programie AKS][aks-best-practices-advanced-scheduler].
+* **Sieć** obejmuje korzystanie z zasad sieciowych w celu kontrolowania przepływu ruchu do i z zasobników.
+* **Uwierzytelnianie i autoryzacja** obejmują użytkownika dotyczące integracji kontroli dostępu opartej na ROLACH (RBAC) i Azure Active Directory (AD), tożsamości pod i wpisy tajne w Azure Key Vault. Aby uzyskać więcej informacji o tych funkcjach, zobacz [najlepsze rozwiązania dotyczące uwierzytelniania i autoryzacji w programie AKS][aks-best-practices-identity].
+* **Kontenery** obejmują zasady zabezpieczeń na mocy, na kontekstach zabezpieczeń, skanowania obrazów i środowisk uruchomieniowych pod kątem luk w zabezpieczeniach. Obejmuje również ochronę aplikacji lub Seccomp (Zabezpieczanie obliczeniowe) w celu ograniczenia dostępu kontenera do podstawowego węzła.
 
-## <a name="logically-isolate-clusters"></a>Logicznie izolowanie klastrów
+## <a name="logically-isolate-clusters"></a>Logicznie Izoluj klastry
 
-**Najważniejsze wskazówki** — stosowana jest izolacja logiczna do oddzielenia zespołów i projektów. Należy zminimalizować liczbę fizycznych klastrów AKS wdrażanie do izolowania aplikacji lub zespołów.
+**Wskazówki dotyczące najlepszych** rozwiązań — Użyj izolacji logicznej do oddzielenia zespołów i projektów. Spróbuj zminimalizować liczbę fizycznych klastrów AKS wdrażanych w celu izolowania zespołów lub aplikacji.
 
-Za pomocą izolacji logicznej pojedynczy klaster AKS może służyć do wielu obciążeń, zespoły lub środowisk. Kubernetes [przestrzenie nazw][k8s-namespaces] stanowią granicę izolacji logicznej, w przypadku obciążeń i zasobów.
+Z izolacją logiczną pojedynczy klaster AKS może być używany w wielu obciążeniach, zespołach lub środowiskach. [Przestrzenie nazw][k8s-namespaces] Kubernetes tworzą granice logicznej izolacji dla obciążeń i zasobów.
 
-![Izolacji logicznej klastra Kubernetes w usłudze AKS](media/operator-best-practices-cluster-isolation/logical-isolation.png)
+![Logiczna izolacja klastra Kubernetes w AKS](media/operator-best-practices-cluster-isolation/logical-isolation.png)
 
-Separacji logicznej klastrów zwykle zapewnia zwiększenie gęstości zasobnika niż fizycznie izolowane klastrów. Mniej nadmiarowe moc obliczeniową, która jest bezczynny w klastrze. W połączeniu z skalowanie klastra usługi Kubernetes, możesz skalować liczbę węzłów w górę lub w dół, aby spełniać wymagania. Tego najlepszego podejścia praktycznego do automatycznego skalowania pozwala na uruchamianie tylko liczbę węzłów, wymagane i minimalizuje koszty.
+Logiczne rozdzielenie klastrów zwykle zapewnia wyższą gęstość pod względem klastra izolowanego. W klastrze jest mniej nadmiarowa pojemność obliczeniowa, która jest bezczynna. W połączeniu z automatycznym skalowaniem klastra Kubernetes można skalować liczbę węzłów w górę lub w dół w celu spełnienia wymagań. Takie najlepsze podejście do skalowania automatycznego umożliwia uruchamianie tylko wymaganej liczby węzłów i zminimalizowania kosztów.
 
-Środowisk Kubernetes w usłudze AKS, lub w innych miejscach, nie są całkowicie bezpieczne dla szkodliwy użycie wielu obcych dzierżaw. Funkcje dodatkowe zabezpieczenia, takie jak *zasady zabezpieczeń zasobnika* i więcej kontroli dostępu w zakresie opartej na rolach (RBAC) dla węzłów utrudniają luki w zabezpieczeniach. Wartość true, zabezpieczeń przy uruchamianiu obciążeń liczonych w szkodliwy wielodostępne, funkcja hypervisor to tylko poziom zabezpieczeń, które należy ufać. Domeny zabezpieczeń dla rozwiązania Kubernetes staje się całego klastra, a nie oddzielnego węzła. Dla tych typów szkodliwy obciążenia z wieloma dzierżawami należy użyć fizycznie izolowane klastrów.
+Środowiska Kubernetes, w AKS lub w innym miejscu, nie są całkowicie bezpieczne do korzystania z wielu dzierżawców. W środowisku wielodostępnym wiele dzierżawców pracuje w wspólnej, udostępnionej infrastrukturze. W związku z tym jeśli wszyscy dzierżawcy nie będą Zaufani, musisz wykonać dodatkowe planowanie, aby uniknąć jednej dzierżawy wpływającej na bezpieczeństwo i usługę innej. Dodatkowe funkcje zabezpieczeń, takie jak *zasady zabezpieczeń* i bardziej szczegółowe kontroli dostępu opartej na ROLACH (RBAC) dla węzłów sprawiają, że luki w zabezpieczeniach są trudniejsze. Jednak w celu zapewnienia prawdziwych zabezpieczeń przy uruchamianiu nieprzechodnich obciążeń z wieloma dzierżawcami funkcja hypervisor jest jedynym poziomem zabezpieczeń, który należy zaufać. Domena zabezpieczeń dla Kubernetes jest cały klaster, a nie pojedynczy węzeł. W przypadku tych typów nieszkodliwych obciążeń z wieloma dzierżawcami należy używać klastrów fizycznie izolowanych.
 
-## <a name="physically-isolate-clusters"></a>Fizycznie izolowanie klastrów
+## <a name="physically-isolate-clusters"></a>Izolowanie klastrów
 
-**Najważniejsze wskazówki** — należy zminimalizować użycie fizycznego izolacji dla każdego oddzielnego zespołu lub wdrażania aplikacji. Zamiast tego należy użyć *logiczne* oddzielnie, zgodnie z opisem w poprzedniej sekcji.
+**Wskazówki dotyczące najlepszych** rozwiązań — minimalizuje wykorzystanie fizycznej izolacji dla każdego oddzielnego wdrożenia zespołu lub aplikacji. Zamiast tego należy użyć izolacji logicznej, zgodnie z opisem w poprzedniej sekcji.
 
-Typowym rozwiązaniem w przypadku izolacji klastra ma używać fizycznie oddzielnymi klastrami usługi AKS. W tym modelu izolacji obciążeń lub zespołów są przypisywane ich własnych klastra AKS. To podejście często wygląda Najprostszym sposobem do izolowania obciążeń lub zespołów, ale dodaje koszty finansowe i dodatkowego zarządzania. Możesz teraz muszą obsługiwać te wielu klastrów i indywidualnie zapewniają dostęp i przypisać uprawnienia. Możesz również są naliczane dla poszczególnych węzłów.
+Typowym podejściem do izolacji klastra jest używanie fizycznie oddzielnych klastrów AKS. W tym modelu izolacji zespoły lub obciążenia są przypisani do własnego klastra AKS. Takie podejście często wygląda jak Najprostszym sposobem izolowania obciążeń lub zespołów, ale powoduje dodanie dodatkowych kosztów związanych z zarządzaniem i finansami. Teraz musisz obsługiwać te wiele klastrów i mieć indywidualny dostęp i uprawnienia do przypisywania. Opłaty są naliczane również za wszystkie poszczególne węzły.
 
-![Fizyczne odizolowanie Kubernetes poszczególnych klastrów w usłudze AKS](media/operator-best-practices-cluster-isolation/physical-isolation.png)
+![Fizyczna izolacja pojedynczych klastrów Kubernetes w AKS](media/operator-best-practices-cluster-isolation/physical-isolation.png)
 
-Fizycznie oddzielnymi klastrami zazwyczaj ma pod niskiej gęstości. Każdy zespół lub Obciążenie ma swoje własne klastra AKS, klaster często jest nadmiernie aprowizowane przy użyciu zasobów obliczeniowych. Często niewielka liczba zasobników jest zaplanowane w ramach tych węzłów. Nieużywane miejsce na węzłach nie można używać dla aplikacji lub usług w rozwoju przez inne zespoły. Te zasoby nadmiarowe przyczyniają się do dodatkowych kosztów w fizycznie oddzielnymi klastrami.
+Fizycznie oddzielne klastry mają zazwyczaj niską gęstość pod. Ponieważ każdy zespół lub obciążenie ma własny klaster AKS, klaster jest często nadmiernie inicjowany przy użyciu zasobów obliczeniowych. Często w tych węzłach zaplanowano małą liczbę zasobników. Nie można używać nieużywanej pojemności na węzłach w przypadku aplikacji lub usług programistycznych przez inne zespoły. Te nadmiarowe zasoby przyczyniają się do dodatkowych kosztów w oddzielnym klastrze.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Ten artykuł koncentruje się na izolację klastra. Aby uzyskać więcej informacji na temat operacji klastra w usłudze AKS zobacz poniższe najlepsze rozwiązania:
+Ten artykuł koncentruje się na izolowaniu klastra. Aby uzyskać więcej informacji na temat operacji klastra w programie AKS, zobacz następujące najlepsze rozwiązania:
 
-* [Podstawowe funkcje usługi scheduler rozwiązania Kubernetes][aks-best-practices-scheduler]
-* [Zaawansowane funkcje usługi scheduler rozwiązania Kubernetes][aks-best-practices-advanced-scheduler]
+* [Podstawowe funkcje usługi Kubernetes Scheduler][aks-best-practices-scheduler]
+* [Zaawansowane funkcje usługi Scheduler Kubernetes][aks-best-practices-advanced-scheduler]
 * [Uwierzytelnianie i autoryzacja][aks-best-practices-identity]
 
 <!-- EXTERNAL LINKS -->

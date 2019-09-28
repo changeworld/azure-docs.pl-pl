@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 30164824cab19aae9cc9665304eb66f595e082da
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 1349a81bc4f0f3eed4093bbe91abea68264b4021
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162563"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350665"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Wdrażanie modeli przy użyciu Azure Machine Learning
 
@@ -467,7 +467,9 @@ def run(request):
 
 Konfiguracja wnioskowania opisuje, jak skonfigurować model do tworzenia prognoz. Ta konfiguracja nie jest częścią skryptu wejścia. Odwołuje się do skryptu wejścia i służy do lokalizowania wszystkich zasobów wymaganych przez wdrożenie. Jest on używany później podczas wdrażania modelu.
 
-Konfiguracja wnioskowania może używać środowisk Azure Machine Learning do definiowania zależności oprogramowania wymaganego do wdrożenia. Środowiska umożliwiają tworzenie i ponowne używanie zależności oprogramowania wymaganych do szkolenia i wdrażania, a także zarządzanie nimi. Poniższy przykład ilustruje ładowanie środowiska z obszaru roboczego, a następnie używanie go z konfiguracją wnioskowania:
+Konfiguracja wnioskowania może używać środowisk Azure Machine Learning do definiowania zależności oprogramowania wymaganego do wdrożenia. Środowiska umożliwiają tworzenie i ponowne używanie zależności oprogramowania wymaganych do szkolenia i wdrażania, a także zarządzanie nimi. W przypadku korzystania ze środowiska pliki modelu i podany Katalog źródłowy są instalowane bezpośrednio w używanym kontenerze — nie są kopiowane do obrazu kontenera ani do rejestru kontenerów.
+
+Poniższy przykład ilustruje ładowanie środowiska z obszaru roboczego, a następnie używanie go z konfiguracją wnioskowania:
 
 ```python
 from azureml.core import Environment
@@ -619,7 +621,7 @@ Jeśli włączono uwierzytelnianie klucza dla usługi, musisz podać klucz usłu
 Jeśli włączono uwierzytelnianie tokenu dla usługi, musisz podać Azure Machine Learning token JWT jako token okaziciela w nagłówku żądania.
 
 > [!TIP]
-> Po wdrożeniu usługi można pobrać dokument JSON schematu. Użyj [Właściwości swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri) ze wdrożonej usługi sieci Web (na przykład) `service.swagger_uri`, aby uzyskać identyfikator URI do pliku struktury Swagger lokalnej usługi sieci Web.
+> Po wdrożeniu usługi można pobrać dokument JSON schematu. Użyj [Właściwości swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri) ze wdrożonej usługi sieci Web (na przykład `service.swagger_uri`), aby uzyskać identyfikator URI do pliku struktury Swagger lokalnej usługi sieci Web.
 
 ### <a name="request-response-consumption"></a>Żądanie — użycie odpowiedzi
 

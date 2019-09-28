@@ -1,32 +1,32 @@
 ---
-title: Konfigurowanie i dzienniki inspekcji dostępu do usługi Azure Database for MySQL w witrynie Azure portal
-description: W tym artykule opisano sposób konfigurowania i uzyskać dostęp do dzienników inspekcji w usłudze Azure Database for MySQL z witryny Azure portal.
+title: Konfigurowanie i dostęp do dzienników inspekcji — Azure Database for MySQL
+description: W tym artykule opisano sposób konfigurowania i uzyskiwania dostępu do dzienników inspekcji w programie Azure Database for MySQL z Azure Portal.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: a2f44b52c6d34adb1bebf666ff8453b17f7778a5
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 2a2d2a697f0e41fb296c61c01909a814678f8277
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448483"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350394"
 ---
-# <a name="configure-and-access-audit-logs-in-the-azure-portal"></a>Konfigurowanie i dostęp do dzienników inspekcji w witrynie Azure portal
+# <a name="configure-and-access-audit-logs-for-azure-database-for-mysql-in-the-azure-portal"></a>Skonfiguruj i uzyskaj dostęp do dzienników inspekcji dla Azure Database for MySQL w Azure Portal
 
-Można skonfigurować [— Azure Database for MySQL — dzienniki inspekcji](concepts-audit-logs.md) i ustawień diagnostycznych w witrynie Azure portal.
+Można skonfigurować [Azure Database for MySQL dzienników inspekcji](concepts-audit-logs.md) i ustawień diagnostycznych z Azure Portal.
 
 > [!IMPORTANT]
-> Funkcja dziennika inspekcji jest obecnie w wersji zapoznawczej.
+> Funkcje dziennika inspekcji są obecnie dostępne w wersji zapoznawczej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do wykonania kroków w tym przewodniku, potrzebne są:
+Aby krokowo poprowadzić ten przewodnik, musisz:
 
-- [Azure Database dla serwera MySQL](quickstart-create-mysql-server-database-using-azure-portal.md)
+- [Serwer Azure Database for MySQL](quickstart-create-mysql-server-database-using-azure-portal.md)
 
-## <a name="configure-audit-logging"></a>Skonfiguruj rejestrowanie inspekcji
+## <a name="configure-audit-logging"></a>Konfigurowanie rejestrowania inspekcji
 
 Włącz i skonfiguruj rejestrowanie inspekcji.
 
@@ -34,39 +34,39 @@ Włącz i skonfiguruj rejestrowanie inspekcji.
 
 1. Wybierz usługi Azure Database for MySQL server.
 
-1. W obszarze **ustawienia** sekcji na pasku bocznym wybierz opcję **parametrów serwera**.
+1. W sekcji **Ustawienia** na pasku bocznym wybierz opcję **parametry serwera**.
     ![Parametry serwera](./media/howto-configure-audit-logs-portal/server-parameters.png)
 
-1. Aktualizacja **audit_log_enabled** parametru na wartość ON.
-    ![Włączanie dzienników inspekcji](./media/howto-configure-audit-logs-portal/audit-log-enabled.png)
+1. Zaktualizuj parametr **audit_log_enabled** na wartość on.
+    @no__t — dzienniki inspekcji 0Enable @ no__t-1
 
-1. Wybierz [typy zdarzeń](concepts-audit-logs.md#configure-audit-logging) mają być rejestrowane, aktualizując **audit_log_events** parametru.
-    ![Zdarzenia dziennika inspekcji](./media/howto-configure-audit-logs-portal/audit-log-events.png)
+1. Wybierz [typy zdarzeń](concepts-audit-logs.md#configure-audit-logging) , które mają być rejestrowane, aktualizując parametr **audit_log_events** .
+    ![Audit zdarzenia dziennika @ no__t-1
 
-1. Dodaj wszystkich użytkowników MySQL, które mają być wykluczone z rejestrowania, aktualizując **audit_log_exclude_users** parametru. Określ użytkowników, zapewniając ich nazw użytkowników MySQL.
-    ![Użytkownicy wykluczania dziennika inspekcji](./media/howto-configure-audit-logs-portal/audit-log-exclude-users.png)
+1. Dodaj wszystkich użytkowników programu MySQL, którzy mają zostać wykluczeni z rejestrowania przez zaktualizowanie parametru **audit_log_exclude_users** . Określ użytkowników, podając ich nazwę użytkownika MySQL.
+    @no__t 0Audit — wykluczanie użytkowników @ no__t-1
 
-1. Po zmianie parametrów, możesz kliknąć **Zapisz**. Możesz też **odrzucić** zmiany.
+1. Po zmianie parametrów możesz kliknąć przycisk **Zapisz**. Możesz też **odrzucić** zmiany.
     ![Zapisz](./media/howto-configure-audit-logs-portal/save-parameters.png)
 
 ## <a name="set-up-diagnostic-logs"></a>Konfigurowanie dzienników diagnostycznych
 
-1. W obszarze **monitorowanie** sekcji na pasku bocznym wybierz opcję **ustawień diagnostycznych**.
+1. W sekcji **monitorowanie** na pasku bocznym wybierz pozycję **Ustawienia diagnostyczne**.
 
-1. Kliknij pozycję "+ Dodaj ustawienie diagnostyczne" ![Dodaj ustawienie diagnostyczne](./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png)
+1. Kliknij pozycję "+ Dodaj ustawienie diagnostyczne" ![Add ustawienia diagnostyczne @ no__t-1
 
-1. Podaj nazwę ustawienia diagnostyczne.
+1. Podaj nazwę ustawienia diagnostycznego.
 
-1. Określ dane, które wychwytywanie do wysyłania dzienników inspekcji (konto magazynu, Centrum zdarzeń i/lub obszar roboczy usługi Log Analytics).
+1. Określ, które ujścia danych mają wysyłać dzienniki inspekcji (konto magazynu, centrum zdarzeń i/lub Log Analytics obszar roboczy).
 
-1. Wybierz "MySqlAuditLogs" jako typ dziennika.
-![Konfiguruj ustawienie diagnostyczne](./media/howto-configure-audit-logs-portal/configure-diagnostic-setting.png)
+1. Wybierz pozycję "MySqlAuditLogs" jako typ dziennika.
+![Configure ustawienia diagnostyczne @ no__t-1
 
-1. Po skonfigurowaniu ujścia danych, aby przekazać dzienniki inspekcji, aby kliknąć **Zapisz**.
-![Zapisz ustawienie diagnostyczne](./media/howto-configure-audit-logs-portal/save-diagnostic-setting.png)
+1. Po skonfigurowaniu ujścia danych do potoków dzienników inspekcji do programu można kliknąć przycisk **Zapisz**.
+![Save ustawienia diagnostyczne @ no__t-1
 
-1. Dostęp do dzienników inspekcji, eksplorując w ujścia danych, które zostały skonfigurowane. Może upłynąć do 10 minut, zanim dzienniki będą widoczne.
+1. Uzyskaj dostęp do dzienników inspekcji, przepoznając je w skonfigurowanych ujściach danych. Wyświetlenie dzienników może potrwać do 10 minut.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o [dzienniki inspekcji](concepts-audit-logs.md) w usłudze Azure Database for MySQL.
+- Dowiedz się więcej o [dziennikach inspekcji](concepts-audit-logs.md) w Azure Database for MySQL.

@@ -7,18 +7,22 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 15b4d3208be693a5b8d858d30b663347515f5a68
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 74df4f8e3161576280e1d71c4a9b2f50a169dbb4
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130288"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350317"
 ---
 # <a name="create-a-private-endpoint-using-azure-portal"></a>Tworzenie prywatnego punktu końcowego przy użyciu Azure Portal
 
 Prywatny punkt końcowy to podstawowy blok konstrukcyjny dla prywatnego linku na platformie Azure. Umożliwia ona korzystanie z zasobów platformy Azure, takich jak Virtual Machines (VM), w celu komunikacji z prywatnymi zasobami łączy prywatnych. W tym przewodniku szybki start dowiesz się, jak utworzyć maszynę wirtualną na platformie Azure Virtual Network, SQL Database serwerze z prywatnym punktem końcowym platformy Azure przy użyciu Azure PowerShell. Następnie można bezpiecznie uzyskać dostęp do serwera SQL Database z maszyny wirtualnej.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+
+> [!NOTE]
+> Prywatne punkty końcowe są niedozwolone w połączeniu z punktami końcowymi usługi w tej samej podsieci.
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 

@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: juliako
-ms.openlocfilehash: 831ba217e99d1610383320ddf5706c6acfcdf48a
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: cd1dc7b55060e8262b300022f5ffd1b4da5f7922
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67848899"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350348"
 ---
 # <a name="streaming-endpoints"></a>Punkty końcowe przesyłania strumieniowego 
 
@@ -31,11 +31,16 @@ Podczas tworzenia konta Media Services zostanie utworzony **domyślny** punkt ko
 
 ## <a name="naming-convention"></a>Konwencja nazewnictwa
 
-Dla domyślnego punktu końcowego:`{AccountName}-{DatacenterAbbreviation}.streaming.media.azure.net`
+Format nazwy hosta adresu URL przesyłania strumieniowego to: `{servicename}-{accountname}-{regionname}.streaming.media.azure.net`, gdzie `servicename` = Nazwa punktu końcowego przesyłania strumieniowego lub nazwa zdarzenia na żywo. 
 
-Dla wszystkich dodatkowych punktów końcowych:`{EndpointName}-{AccountName}-{DatacenterAbbreviation}.streaming.media.azure.net`
+W przypadku korzystania z domyślnego punktu końcowego przesyłania strumieniowego `servicename` jest pomijany, więc adres URL to: `{accountname}-{regionname}.streaming.azure.net`. 
 
-## <a name="types"></a>Typ  
+### <a name="limitations"></a>Ograniczenia
+
+* Nazwa punktu końcowego przesyłania strumieniowego ma maksymalną wartość 24 znaków.
+* Nazwa powinna być zgodna z tym wzorcem [wyrażenia regularnego](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) : `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`.
+
+## <a name="types"></a>Typy  
 
 Istnieją dwa typy **punktów końcowych przesyłania strumieniowego**: **Standard** (wersja zapoznawcza) i **Premium**. Typ jest definiowany przez liczbę jednostek skalowania (`scaleUnits`) przydzielonego dla punktu końcowego przesyłania strumieniowego. 
 
@@ -43,7 +48,7 @@ Tabela zawiera opis typów:
 
 |Type|Jednostki skalowania|Opis|
 |--------|--------|--------|  
-|**Standardowa**|0|Domyślny punkt końcowy przesyłania strumieniowego  jest typem standardowym, można go zmienić na typ Premium przez `scaleUnits`dostosowanie.|
+|**Standardowa**|0|Domyślny punkt końcowy przesyłania strumieniowego jest typem standardowym, można go zmienić na typ Premium przez `scaleUnits`dostosowanie.|
 |**Premium**|>0|Wersja **Premium** Punkty końcowe przesyłania strumieniowego są odpowiednie dla zaawansowanych obciążeń i zapewniają dedykowaną i skalowalną przepustowość. Przechodzenie do typu **Premium** przez dostosowanie `scaleUnits` (jednostki przesyłania strumieniowego). `scaleUnits`Zapewnij dedykowaną pojemność wyjściową, którą można zakupić w przyrostach wynoszących 200 MB/s. W przypadku korzystania z typu **Premium** każda włączona jednostka zapewnia dodatkową przepustowość w aplikacji. |
 
 > [!NOTE]
@@ -59,15 +64,15 @@ Przepływność |Do 600 MB/s i może zapewnić znacznie wyższą skuteczną prze
 CDN|Azure CDN, Sieć CDN innej firmy lub brak sieci CDN.|Azure CDN, Sieć CDN innej firmy lub brak sieci CDN.
 Opłaty są naliczane proporcjonalnie| Codziennie|Codziennie
 Szyfrowanie dynamiczne|Tak|Tak
-Dynamiczne tworzenie pakietów|Tak|Yes
+Dynamiczne tworzenie pakietów|Tak|Tak
 Skalowanie|Automatycznie Skaluj do dostosowanej przepływności.|Dodatkowe usługi SUs
-Filtrowanie/G20 IP/Host niestandardowy <sup>1</sup>|Tak|Yes
-Pobieranie progresywne|Yes|Tak
+Filtrowanie/G20 IP/Host niestandardowy <sup>1</sup>|Tak|Tak
+Pobieranie progresywne|Tak|Tak
 Zalecane użycie |Zalecane w przypadku większości scenariuszy przesyłania strumieniowego.|Profesjonalne użycie.
 
 <sup>1</sup> używany bezpośrednio w punkcie końcowym przesyłania strumieniowego, gdy sieć CDN nie jest włączona w punkcie końcowym.<br/>
 
-## <a name="properties"></a>Właściwości 
+## <a name="properties"></a>properties 
 
 Ta sekcja zawiera szczegółowe informacje dotyczące niektórych właściwości punktu końcowego przesyłania strumieniowego. Przykłady tworzenia nowego punktu końcowego przesyłania strumieniowego i opisy wszystkich właściwości można znaleźć w temacie [punkt końcowy przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streamingendpoints/create). 
 
@@ -128,7 +133,7 @@ W większości przypadków usługa CDN powinna być włączona. Jeśli jednak pr
 
 ### <a name="considerations"></a>Zagadnienia do rozważenia
 
-* Punkt końcowy `hostname` przesyłania strumieniowego i adres URL przesyłania strumieniowego pozostają bez zmian niezależnie od tego, czy jest włączona sieć CDN.
+* Punkt końcowy przesyłania strumieniowego `hostname` i adres URL przesyłania strumieniowego pozostają takie same niezależnie od tego, czy jest włączona sieć CDN.
 * Jeśli potrzebujesz możliwości testowania zawartości z użyciem sieci CDN lub bez niej, możesz utworzyć inny punkt końcowy przesyłania strumieniowego, który nie jest włączony w sieci CDN.
 
 ### <a name="detailed-explanation-of-how-caching-works"></a>Szczegółowe wyjaśnienie działania buforowania
@@ -141,7 +146,7 @@ Należy również wziąć pod uwagę sposób działania adaptacyjnego przesyłan
 
 Po udostępnieniu punktu końcowego przesyłania strumieniowego z włączoną usługą CDN istnieje zdefiniowany czas oczekiwania na Media Services przed aktualizacją usługi DNS w celu zamapowania punktu końcowego przesyłania strumieniowego na punkt końcowy usługi CDN.
 
-Jeśli zechcesz później wyłączyć/włączyć usługę CDN, punkt końcowy przesyłania strumieniowego musi znajdować  się w stanie zatrzymanym. Włączenie integracji Azure CDN może potrwać do dwóch godzin, a zmiany zostaną uaktywnione we wszystkich punktach pop usługi CDN. Można jednak uruchomić punkt końcowy przesyłania strumieniowego i strumień bez przerw w punkcie końcowym przesyłania strumieniowego, a po zakończeniu integracji zostanie dostarczony strumień z sieci CDN. W trakcie okresu aprowizacji punkt końcowy przesyłania strumieniowego będzie w stanie **uruchomienia** i może wystąpić spadek wydajności.
+Jeśli zechcesz później wyłączyć/włączyć usługę CDN, punkt końcowy przesyłania strumieniowego musi znajdować się w stanie zatrzymanym. Włączenie integracji Azure CDN może potrwać do dwóch godzin, a zmiany zostaną uaktywnione we wszystkich punktach pop usługi CDN. Można jednak uruchomić punkt końcowy przesyłania strumieniowego i strumień bez przerw w punkcie końcowym przesyłania strumieniowego, a po zakończeniu integracji zostanie dostarczony strumień z sieci CDN. W trakcie okresu aprowizacji punkt końcowy przesyłania strumieniowego będzie w stanie **uruchomienia** i może wystąpić spadek wydajności.
 
 Po utworzeniu standardowego punktu końcowego przesyłania strumieniowego jest on konfigurowany domyślnie przy użyciu standardowego Verizon. Korzystając z interfejsów API REST, można skonfigurować Verizon Premium lub standardowego dostawcy Akamai. 
 

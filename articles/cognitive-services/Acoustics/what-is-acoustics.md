@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 51bfcc47961e870fb7fb87b26a78aea0f1564d46
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 65678f08399f378b8580eed79e49197dd4d84c64
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390303"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71351137"
 ---
 # <a name="what-is-project-acoustics"></a>Co to jest akustyka projektu?
 Akustyczny projekt jest aparatem akustycznym Wave dla interaktywnych środowisk 3W. Modele it to efekty Wave, takie jak zamknięcia, przeszkody, portale i efekty reverberation w złożonych scenach, bez konieczności ręcznego stosowania znaczników strefy lub intensywnego raytracing procesora CPU. Obejmuje to także integrację aparatu gier i oprogramowania pośredniczącego. Funkcja wyznaczania wartości akustycznych projektu jest podobna do statycznego oświetlenia: Tworzenie szczegółowej fizyki w trybie offline, aby zapewnić fizyczną linię bazową, i korzystać z uproszczonego środowiska uruchomieniowego z kontrolkami projektowymi, aby zaspokoić cele w zakresie hałasu wirtualnego świata.
@@ -31,7 +31,7 @@ Kluczowe innowacje w projekcie polegają na rozłączeniu symulacji akustycznej 
 ![Animacja pokazująca poziomy rozpropagowania fali Wave przez scenę](media/wave-simulation.gif)
 
 ## <a name="video-presentation-from-gdc-2019-30-min"></a>Prezentacja wideo z GDC 2019 (~ 30 min)
-Film wideo(https://img.youtube.com/vi/uY4G-GUAQIE/0.jpg)](https://www.youtube.com/watch?v=uY4G-GUAQIE "dotyczący hałasu, kliknij, aby odtworzyć wideo") [ ![]
+[Film wideo ![Project akustyczny](https://img.youtube.com/vi/uY4G-GUAQIE/0.jpg)](https://www.youtube.com/watch?v=uY4G-GUAQIE "Kliknij, aby odtworzyć wideo")
 
 ## <a name="setup"></a>Konfiguracja
 Integracja z mechanizmem [akustycznym w projekcie](unity-integration.md) polega na przeciąganiu i upuszczaniu i włączaniu wtyczki aparatu audio aparatu Unity. Rozszerzanie kontroli źródła audio Unity przez dołączenie składnika C# kontroli akustycznych projektu do każdego obiektu audio.
@@ -58,11 +58,10 @@ Wtyczka edytora akustycznego projektu jest dostępna dla następujących platfor
 ## <a name="download"></a>Do pobrania
 * [Wtyczka i przykłady w środowisku Unity](https://www.microsoft.com/en-us/download/details.aspx?id=57346)
 * [Unreal akustyczny projektu i przykłady & Wwise](https://www.microsoft.com/download/details.aspx?id=58090)
-  * W przypadku plików binarnych i pomocy technicznej usługi Xbox skontaktuj się z nami za pośrednictwem formularza rejestracji poniżej
+  * W przypadku plików binarnych usługi Xbox i innych pomocy technicznej skontaktuj się z nami za pośrednictwem [forum](https://github.com/microsoft/ProjectAcoustics/issues).
 
 ## <a name="contact-us"></a>Skontaktuj się z nami
 * [Dyskusje i raporty o problemach dotyczących projektów](https://github.com/microsoft/ProjectAcoustics/issues)
-* [Zarejestruj się, aby otrzymywać aktualizacje dotyczące hałasu projektu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u)
 
 ## <a name="next-steps"></a>Następne kroki
 * Wypróbuj [Przewodnik Szybki Start dla środowiska Unity](unity-quickstart.md) lub [Unreal](unreal-quickstart.md)

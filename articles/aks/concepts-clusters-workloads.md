@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: e606b4fee2c46f66f13c45586bcc25577bd90a1f
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 6120eee5bbd2f385fa8e76da093f7fadccb4904e
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147199"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71348975"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Podstawowe pojęcia Kubernetes dla usługi Azure Kubernetes Service (AKS)
 
@@ -50,7 +50,7 @@ Wzorzec klastra zawiera następujące podstawowe składniki Kubernetes:
 - *polecenia-Scheduler* — podczas tworzenia lub skalowania aplikacji harmonogram określa węzły, które mogą uruchamiać obciążenie i je uruchamia.
 - *polecenia-Controller-Manager* — Menedżer kontrolerów widzi kilka mniejszych kontrolerów, które wykonują takie działania, jak replikowanie i obsługa operacji węzła.
 
-AKS udostępnia wzorzec klastra z jedną dzierżawą, przy użyciu dedykowanego serwera interfejsu API, harmonogramu itp. Zdefiniuj liczbę i rozmiar węzłów, a platforma Azure skonfiguruje bezpieczną komunikację między wzorcem i węzłami klastra. Interakcja z wzorcem klastra odbywa się za pomocą interfejsów API `kubectl` Kubernetes, takich jak lub pulpitu nawigacyjnego Kubernetes.
+AKS udostępnia wzorzec klastra z jedną dzierżawą, przy użyciu dedykowanego serwera interfejsu API, harmonogramu itp. Zdefiniuj liczbę i rozmiar węzłów, a platforma Azure skonfiguruje bezpieczną komunikację między wzorcem i węzłami klastra. Interakcja z wzorcem klastra odbywa się za pomocą interfejsów API Kubernetes, takich jak `kubectl` lub pulpit nawigacyjny Kubernetes.
 
 Ten zarządzany serwer główny klastra oznacza, że nie trzeba konfigurować składników takich jak magazyn *etcd* o wysokiej dostępności, ale oznacza to również, że nie można uzyskać dostępu bezpośrednio do wzorca klastra. Uaktualnienia do Kubernetes są zorganizowane za pomocą interfejsu wiersza polecenia platformy Azure lub Azure Portal, który uaktualnia wzorzec klastra, a następnie węzły. Aby rozwiązać ewentualne problemy, można przejrzeć dzienniki główne klastra za pomocą dzienników Azure Monitor.
 
@@ -62,7 +62,7 @@ W przypadku skojarzonych najlepszych rozwiązań należy zapoznać się [z najle
 
 Aby uruchamiać aplikacje i usługi pomocnicze, potrzebny jest *węzeł*Kubernetes. Klaster AKS ma co najmniej jeden węzeł, który jest maszyną wirtualną platformy Azure, na której działa składniki węzła Kubernetes i środowisko uruchomieniowe kontenera:
 
-- `kubelet` Jest to Agent Kubernetes, który przetwarza żądania aranżacji z głównego serwera klastra i planowania uruchamiania żądanych kontenerów.
+- @No__t-0 to Agent Kubernetes, który przetwarza żądania aranżacji z głównego serwera klastra i planowania uruchamiania żądanych kontenerów.
 - Sieć wirtualna jest obsługiwana przez *polecenia-proxy* w każdym węźle. Serwer proxy kieruje ruchem sieciowym i zarządza adresami IP dla usług i zasobników.
 - *Środowisko uruchomieniowe kontenera* to składnik, który umożliwia aplikacjom kontenerowym uruchamianie i współdziałanie z dodatkowymi zasobami, takimi jak sieć wirtualna i magazyn. W AKS, Moby jest używany jako środowisko uruchomieniowe kontenera.
 
@@ -72,14 +72,30 @@ Rozmiar maszyny wirtualnej platformy Azure dla węzłów definiuje liczbę proce
 
 W AKS obraz maszyny wirtualnej dla węzłów w klastrze jest obecnie oparty na Ubuntu Linux lub Windows Server 2019. Podczas tworzenia klastra AKS lub skalowania w górę liczby węzłów platforma Azure tworzy żądaną liczbę maszyn wirtualnych i konfiguruje je. Nie istnieje ręczna konfiguracja do wykonania. Węzły agentów są rozliczane jako standardowe maszyny wirtualne, w związku z czym wszelkie zniżki na używanym rozmiarze maszyny wirtualnej (w tym [rezerwacje platformy Azure][reservation-discounts]) są automatycznie stosowane.
 
-Jeśli konieczne jest użycie innego systemu operacyjnego hosta, środowiska uruchomieniowego kontenera lub dołączenie pakietów niestandardowych, można wdrożyć własny klaster Kubernetes przy użyciu [aparatu AKS][aks-engine]. Funkcje wersji nadrzędnej `aks-engine` i udostępniają opcje konfiguracji, zanim są oficjalnie obsługiwane w klastrach AKS. Na przykład jeśli chcesz użyć środowiska uruchomieniowego kontenera innego niż Moby, możesz użyć `aks-engine` programu, aby skonfigurować i wdrożyć klaster Kubernetes, który spełnia Twoje bieżące potrzeby.
+Jeśli konieczne jest użycie innego systemu operacyjnego hosta, środowiska uruchomieniowego kontenera lub dołączenie pakietów niestandardowych, można wdrożyć własny klaster Kubernetes przy użyciu [aparatu AKS][aks-engine]. Nadrzędne funkcje `aks-engine` i udostępniają opcje konfiguracji, zanim będą oficjalnie obsługiwane w klastrach AKS. Na przykład jeśli chcesz użyć środowiska uruchomieniowego kontenera innego niż Moby, możesz użyć `aks-engine` w celu skonfigurowania i wdrożenia klastra Kubernetes spełniającego Twoje bieżące potrzeby.
 
 ### <a name="resource-reservations"></a>Rezerwacje zasobów
 
-Nie trzeba zarządzać podstawowymi składnikami Kubernetes w każdym węźle, takim jak *kubelet*, *polecenia-proxy*i *polecenia-DNS*, ale używają niektórych dostępnych zasobów obliczeniowych. Aby zapewnić wydajność i funkcjonalność węzła, następujące zasoby obliczeniowe są zarezerwowane dla każdego węzła:
+Zasoby węzła są używane przez AKS, aby uczynić węzeł funkcją jako częścią klastra. Może to spowodować utworzenie discrepency między całkowitymi zasobami węzła a zasobami, które można przydzielić, gdy są używane w AKS. Jest to ważne, aby zauważyć podczas ustawiania żądań i limitów dla wdrożonych zasobników.
 
-- **Procesor** — 60 MS
-- **Pamięć** — 20% do 4 GIB
+Aby znaleźć zasoby możliwe do przydzielenia przez węzeł:
+```kubectl
+kubectl describe node [NODE_NAME] | grep Allocatable -B 4 -A 3
+
+```
+
+Aby zapewnić wydajność i funkcjonalność węzła, następujące zasoby obliczeniowe są zarezerwowane dla każdego węzła. W miarę zwiększania się liczby zasobów, rezerwacja zasobów rośnie ze względu na większą ilość potrzebnych do zarządzania użytkownikami.
+
+>[!NOTE]
+> Używanie dodatków, takich jak OMS, będzie zużywać dodatkowe zasoby węzła.
+
+- Zależne od **procesora CPU** w typie węzła
+
+| Rdzenie procesora CPU na hoście | 1 | 2 | 4 | 8 | 16 | 32|64|
+|---|---|---|---|---|---|---|---|
+|Kubelet (millicores)|60|100|140|180|260|420|740|
+
+- **Pamięć** — 20% dostępnej pamięci, maksymalnie 4 GIB Max
 
 Te rezerwacje oznaczają, że ilość dostępnego procesora i pamięci dla aplikacji może być mniejsza niż w przypadku węzła. Jeśli istnieją ograniczenia zasobów ze względu na liczbę uruchomionych aplikacji, te rezerwacje zapewniają, że procesor i pamięć są dostępne dla podstawowych składników Kubernetes. Nie można zmienić rezerwacji zasobów.
 
@@ -147,9 +163,9 @@ Możesz zaktualizować wdrożenia, aby zmienić konfigurację zasobników, używ
 
 Większość aplikacji bezstanowych w AKS powinna używać modelu wdrażania zamiast planowania pojedynczych zasobników. Kubernetes może monitorować kondycję i stan wdrożeń, aby upewnić się, że wymagana liczba replik działa w ramach klastra. W przypadku zaplanowania tylko pojedynczych zasobników te nie są ponownie uruchamiane, Jeśli napotkają problem, i nie są ponownie planowane w węzłach o dobrej kondycji, jeśli ich bieżący węzeł napotka problem.
 
-Jeśli aplikacja wymaga, aby kworum wystąpień było zawsze dostępne do podejmowania decyzji dotyczących zarządzania, nie chcesz, aby proces aktualizacji mógł przerwać tę możliwość. *Budżety* na zakłócenia mogą służyć do definiowania liczby replik w ramach wdrożenia, które mogą zostać wyłączone podczas uaktualniania aktualizacji lub węzła. Na przykład jeśli w danym wdrożeniu znajdują się *5* replik, można zdefiniować zakłócenia pod kątem wartości *4* , aby zezwolić na usunięcie lub ponowne zaplanowanie jednej repliki. Podobnie jak w przypadku limitów zasobów, najlepszym rozwiązaniem jest zdefiniowanie budżetów w aplikacjach, które wymagają minimalnej liczby replik, aby zawsze były obecne.
+Jeśli aplikacja wymaga, aby kworum wystąpień było zawsze dostępne do podejmowania decyzji dotyczących zarządzania, nie chcesz, aby proces aktualizacji mógł przerwać tę możliwość. *Budżety na zakłócenia* mogą służyć do definiowania liczby replik w ramach wdrożenia, które mogą zostać wyłączone podczas uaktualniania aktualizacji lub węzła. Na przykład jeśli w danym wdrożeniu znajdują się *5* replik, można zdefiniować zakłócenia pod kątem wartości *4* , aby zezwolić na usunięcie lub ponowne zaplanowanie jednej repliki. Podobnie jak w przypadku limitów zasobów, najlepszym rozwiązaniem jest zdefiniowanie budżetów w aplikacjach, które wymagają minimalnej liczby replik, aby zawsze były obecne.
 
-Wdrożenia są zwykle tworzone i zarządzane przy `kubectl create` użyciu `kubectl apply`programu lub. Aby utworzyć wdrożenie, należy zdefiniować plik manifestu w formacie YAML (YAML Ain't Markup Language). Poniższy przykład tworzy podstawowe wdrożenie serwera sieci Web NGINX. Wdrożenie określa *3* repliki do utworzenia, a port *80* będzie otwarty w kontenerze. Żądania zasobów i limity są również zdefiniowane dla procesora CPU i pamięci.
+Wdrożenia są zwykle tworzone i zarządzane przy użyciu `kubectl create` lub `kubectl apply`. Aby utworzyć wdrożenie, należy zdefiniować plik manifestu w formacie YAML (YAML Ain't Markup Language). Poniższy przykład tworzy podstawowe wdrożenie serwera sieci Web NGINX. Wdrożenie określa *3* repliki do utworzenia, a port *80* będzie otwarty w kontenerze. Żądania zasobów i limity są również zdefiniowane dla procesora CPU i pamięci.
 
 ```yaml
 apiVersion: apps/v1
@@ -207,7 +223,7 @@ Istnieją dwa zasoby Kubernetes, które umożliwiają zarządzanie tymi typami a
 
 Nowoczesne opracowywanie aplikacji jest często stosowane w przypadku aplikacji bezstanowych, ale *StatefulSets* można używać w przypadku aplikacji stanowych, takich jak aplikacje, które zawierają składniki bazy danych. StatefulSet jest podobny do wdrożenia w przypadku tworzenia co najmniej jednego identycznego zasobnika i zarządzania nim. Repliki w StatefulSet wykonują bezpieczne, sekwencyjne podejście do wdrożenia, skalowania, uaktualnienia i zakończenia. W przypadku StatefulSet, konwencji nazewnictwa, nazw sieci i magazynu utrwalają się, gdy replika jest zaplanowana.
 
-Aplikację można zdefiniować w formacie YAML za pomocą `kind: StatefulSet`programu, a kontroler StatefulSet obsługuje wdrażanie wymaganych replik i zarządzanie nimi. Dane są zapisywane w magazynie trwałym, udostępnianym przez usługę Azure Managed Disks lub Azure Files. W przypadku programu StatefulSets podstawowy magazyn trwały pozostaje nawet wtedy, gdy StatefulSet zostanie usunięta.
+Aplikację można zdefiniować w formacie YAML za pomocą `kind: StatefulSet`, a kontroler StatefulSet będzie obsługiwał wdrożenie i zarządzanie wymaganymi replikami. Dane są zapisywane w magazynie trwałym, udostępnianym przez usługę Azure Managed Disks lub Azure Files. W przypadku programu StatefulSets podstawowy magazyn trwały pozostaje nawet wtedy, gdy StatefulSet zostanie usunięta.
 
 Aby uzyskać więcej informacji, zobacz [Kubernetes StatefulSets][kubernetes-statefulsets].
 
@@ -219,7 +235,7 @@ W przypadku konkretnych kolekcji dzienników lub potrzeb związanych z monitorow
 
 Przed uruchomieniem domyślnego harmonogramu Kubernetes w kontrolerze elementu daemonset można zaplanować w węzłach na wczesny proces rozruchu klastra. Pozwala to zagwarantować, że zasobniki w elementu daemonset są uruchamiane przed zaplanowaniem tradycyjnych zasobników we wdrożeniu lub StatefulSet.
 
-Podobnie jak w przypadku StatefulSets, elementu daemonset jest definiowana jako część definicji YAML za `kind: DaemonSet`pomocą.
+Podobnie jak w przypadku StatefulSets, elementu daemonset jest definiowana jako część definicji YAML przy użyciu `kind: DaemonSet`.
 
 Aby uzyskać więcej informacji, zobacz [Kubernetes DaemonSets][kubernetes-daemonset].
 
@@ -234,7 +250,7 @@ Zasoby Kubernetes, takie jak grupy miar i wdrożenia, są logicznie pogrupowane 
 
 Podczas tworzenia klastra AKS dostępne są następujące przestrzenie nazw:
 
-- *default* — Ta przestrzeń nazw to miejsce, w którym domyślnie tworzone są i wdrożenia, gdy żaden z nich nie jest dostarczany. W mniejszych środowiskach można wdrażać aplikacje bezpośrednio w domyślnej przestrzeni nazw bez tworzenia dodatkowych rozbarwień logicznych. W przypadku korzystania z interfejsu API Kubernetes, takiego jak with `kubectl get pods`, domyślna przestrzeń nazw jest używana, gdy nie jest określony.
+- *default* — Ta przestrzeń nazw to miejsce, w którym domyślnie tworzone są i wdrożenia, gdy żaden z nich nie jest dostarczany. W mniejszych środowiskach można wdrażać aplikacje bezpośrednio w domyślnej przestrzeni nazw bez tworzenia dodatkowych rozbarwień logicznych. W przypadku korzystania z interfejsu API Kubernetes, takiego jak z `kubectl get pods`, domyślna przestrzeń nazw jest używana, gdy nie jest określona żadna wartość.
 - *polecenia-system* — Ta przestrzeń nazw to miejsce, w którym istnieją podstawowe zasoby, takie jak usługa DNS i serwer proxy lub pulpit nawigacyjny Kubernetes. Zwykle nie są wdrażane własne aplikacje w tej przestrzeni nazw.
 - *polecenia-Public* — Ta przestrzeń nazw zazwyczaj nie jest używana, ale może być używana do wyświetlania zasobów w całym klastrze i może być wyświetlana przez dowolnego użytkownika.
 

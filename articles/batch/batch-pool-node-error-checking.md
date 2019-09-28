@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: d115b7d56609b95f2ea10b3fee2f8900102b94e4
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 3c8e189e84e0a467125995b3e2d633c285eb7367
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012473"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350063"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Sprawdź, czy występują błędy puli i węzłów
 
@@ -42,7 +42,7 @@ Typowe przyczyny błędów zmiany rozmiaru obejmują:
 - Niewystarczające zasoby, gdy [Pula znajduje się w sieci wirtualnej](https://docs.microsoft.com/azure/batch/batch-virtual-network)
   - Możesz tworzyć zasoby, takie jak moduły równoważenia obciążenia, publiczne adresy IP i sieciowe grupy zabezpieczeń w tej samej subskrypcji, co konto usługi Batch. Sprawdź, czy limity przydziału subskrypcji są wystarczające dla tych zasobów.
 - Duże pule z niestandardowymi obrazami maszyn wirtualnych
-  - Duże pule, które używają niestandardowych obrazów maszyn wirtualnych, mogą być dłużej przydzielane i zmieniać limity czasu.  Zobacz [Używanie obrazu niestandardowego do tworzenia puli maszyn wirtualnych](https://docs.microsoft.com/azure/batch/batch-custom-images) dla zaleceń dotyczących ograniczeń i konfiguracji.
+  - Duże pule, które używają niestandardowych obrazów maszyn wirtualnych, mogą być dłużej przydzielane i zmieniać limity czasu.  Zapoznaj się z tematem [Tworzenie puli za pomocą galerii obrazów udostępnionych](batch-sig-images.md) w celu uzyskania zaleceń dotyczących ograniczeń i konfiguracji.
 
 ### <a name="automatic-scaling-failures"></a>Automatyczne skalowanie błędów
 
@@ -84,17 +84,17 @@ Zadania uruchamiania muszą być ponownie współużytkowane, ponieważ możliwe
 
 Dla puli można określić jeden lub więcej pakietów aplikacji. Program Batch pobiera określone pliki pakietu do każdego węzła i dekompresuje pliki po rozpoczęciu działania węzła, ale przed zaplanowaniem zadań. Często należy używać wiersza polecenia Uruchom zadanie w połączeniu z pakietami aplikacji. Na przykład, aby skopiować pliki do innej lokalizacji lub uruchomić Instalatora.
 
-Właściwość [Błędy](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) węzła zgłasza niepowodzenie pobrania i cofnięcia kompresji pakietu aplikacji; stan węzła jest ustawiony na niezdatny do **użytku**.
+Właściwość [Błędy](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) węzła zgłasza niepowodzenie pobrania i cofnięcia kompresji pakietu aplikacji; stan węzła jest ustawiony na **niezdatny do użytku**.
 
 ### <a name="container-download-failure"></a>Niepowodzenie pobierania kontenera
 
-W puli można określić co najmniej jedno odwołanie do kontenera. Wsadowe pobiera określone kontenery do każdego węzła. Właściwość [Błędy](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) węzła zgłasza niepowodzenie pobrania kontenera i ustawia stan węzła na niezdatny do **użytku**.
+W puli można określić co najmniej jedno odwołanie do kontenera. Wsadowe pobiera określone kontenery do każdego węzła. Właściwość [Błędy](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) węzła zgłasza niepowodzenie pobrania kontenera i ustawia stan węzła na **niezdatny do użytku**.
 
 ### <a name="node-in-unusable-state"></a>Węzeł w stanie niezdatnym do użytku
 
-Azure Batch może ustawić [stan węzła](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate) na niezdatny do **użytku** z wielu powodów. Gdy stan węzła jest ustawiony na niezdatny do **użytku**, zadania nie mogą być zaplanowane do węzła, ale nadal są naliczane opłaty.
+Azure Batch może ustawić [stan węzła](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate) na **niezdatny do użytku** z wielu powodów. Gdy stan węzła jest ustawiony na **niezdatny do użytku**, zadania nie mogą być zaplanowane do węzła, ale nadal są naliczane opłaty.
 
-Węzły w stanie niezdatnym do **użytku** , ale bez [błędów](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) oznacza, że partia nie może komunikować się z maszyną wirtualną. W takim przypadku program Batch zawsze próbuje odzyskać maszynę wirtualną. Funkcja Batch nie będzie automatycznie podejmować prób odzyskania maszyn wirtualnych, których nie udało się zainstalować pakietów lub kontenerów aplikacji, nawet jeśli ich stan nie nadaje się **do użytku**.
+Węzły w stanie **niezdatnym do użytku** , ale bez [błędów](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) oznacza, że partia nie może komunikować się z maszyną wirtualną. W takim przypadku program Batch zawsze próbuje odzyskać maszynę wirtualną. Funkcja Batch nie będzie automatycznie podejmować prób odzyskania maszyn wirtualnych, których nie udało się zainstalować pakietów lub kontenerów aplikacji, nawet jeśli ich stan nie **nadaje się do użytku**.
 
 Jeśli partia może ustalić przyczynę, właściwość [Błędy](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) węzła zgłasza ją.
 

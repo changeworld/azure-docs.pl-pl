@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/09/2019
-ms.openlocfilehash: 3a47977f2589227347582dc6fcaff25120e380d7
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 45207eb1cdc62f2468d8b0c052723337c18d5021
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034832"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350553"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learnings-workspace-landing-page-preview"></a>Twórz, eksploruj i wdrażaj automatyczne eksperymenty uczenia maszynowego za pomocą strony docelowej obszaru roboczego Azure Machine Learning (wersja zapoznawcza)
 
@@ -30,14 +30,13 @@ ms.locfileid: "71034832"
 
 * Obszar roboczy usługi Azure Machine Learning. Zobacz [Tworzenie obszaru roboczego Azure Machine Learning](how-to-manage-workspace.md).
 
-## <a name="get-started"></a>Wprowadzenie
-
+## <a name="get-started"></a>Rozpoczęcie pracy
 
 1. Zaloguj się do [strony docelowej obszaru roboczego](https://ml.azure.com/workspaceportal/). 
 
 1. Wybierz swoją subskrypcję i obszar roboczy. 
 
-1. Przejdź do okienka po lewej stronie. Wybierz pozycję **zautomatyzowany ml** w sekcji **Tworzenie** .
+1. Przejdź do okienka po lewej stronie. Wybierz pozycję **zautomatyzowany ml** w sekcji **autor** .
 
 [![Azure Portal okienku nawigacji](media/how-to-create-portal-experiments/nav-pane.png)](media/how-to-create-portal-experiments/nav-pane-expanded.png)
 
@@ -57,9 +56,9 @@ W przeciwnym razie zobaczysz pulpit nawigacyjny **automatycznego uczenia maszyno
 
     Pole|Opis
     ---|---
-    Nazwa środowiska obliczeniowego| Wprowadź unikatową nazwę identyfikującą kontekst obliczeniowy.
+    Nazwa obliczeń| Wprowadź unikatową nazwę identyfikującą kontekst obliczeniowy.
     Rozmiar maszyny wirtualnej| Wybierz rozmiar maszyny wirtualnej dla obliczenia.
-    Ustawienia dodatkowe| *Minimalny węzeł*: Wprowadź minimalną liczbę węzłów dla obliczenia. Minimalna liczba węzłów dla AML COMPUTE to 0. Aby włączyć Profilowanie danych, musisz mieć co najmniej jeden węzeł. <br> *Maksymalny węzeł*: Wprowadź maksymalną liczbę węzłów dla obliczeń. Wartość domyślna to 6 węzłów na potrzeby obliczeń AML.
+    Minimalna/Maksymalna liczba węzłów (w ustawieniach zaawansowanych)| Aby profilować dane, musisz określić co najmniej jeden węzeł. Wprowadź maksymalną liczbę węzłów dla obliczeń. Wartość domyślna to 6 węzłów na potrzeby obliczeń AML.
     
     Wybierz pozycję **Utwórz**. Tworzenie nowego obliczenia może potrwać kilka minut.
 
@@ -109,9 +108,9 @@ W przeciwnym razie zobaczysz pulpit nawigacyjny **automatycznego uczenia maszyno
     Ustawienia zaawansowane|Opis
     ------|------
     Metryka podstawowa| Główna Metryka używana do oceniania modelu. [Dowiedz się więcej o metrykach modelu](how-to-configure-auto-train.md#explore-model-metrics).
-    Kryteria wyjścia| Po spełnieniu któregokolwiek z tych kryteriów zadanie szkolenia zostanie zakończone przed pełnym ukończeniem. <br> *Czas zadania szkoleniowego (minuty)* : Jak długo zezwolić na uruchomienie zadania szkoleniowego.  <br> *Maksymalna liczba iteracji*: Maksymalna liczba potoków (iteracji) do przetestowania w zadaniu szkoleniowym. Zadanie nie zostanie uruchomione więcej niż określona liczba iteracji. <br> *Próg wyniku metryki*:  Minimalny wynik metryki dla wszystkich potoków. Dzięki temu w przypadku zdefiniowania metryki docelowej, która ma zostać osiągnięta, nie poświęcasz więcej czasu na zadanie szkoleniowe niż to konieczne.
+    Kryteria wyjścia| Po spełnieniu któregokolwiek z tych kryteriów zadanie szkolenia zostanie zatrzymane. <br> *Czas zadania szkoleniowego (minuty)* : Jak długo zezwolić na uruchomienie zadania szkoleniowego.  <br> *Maksymalna liczba iteracji*: Maksymalna liczba potoków (iteracji) do przetestowania w zadaniu szkoleniowym. Zadanie nie zostanie uruchomione więcej niż określona liczba iteracji. <br> *Próg wyniku metryki*:  Minimalny wynik metryki dla wszystkich potoków. Dzięki temu w przypadku zdefiniowania metryki docelowej, która ma zostać osiągnięta, nie poświęcasz więcej czasu na zadanie szkoleniowe niż to konieczne.
     Przetwarzania wstępnego| Wybierz, aby włączyć lub wyłączyć przetwarzanie wstępne wykonywane przez automatyczne Uczenie maszynowe. Przetwarzanie wstępne obejmuje automatyczne czyszczenie danych, przygotowanie i transformację do generowania funkcji syntetycznych. [Dowiedz się więcej na temat przetwarzania wstępnego](#preprocess).
-    Weryfikacja| Wybierz jedną z opcji krzyżowego sprawdzania poprawności, która ma zostać użyta w zadaniu szkoleniowym. [Dowiedz się więcej na temat krzyżowego sprawdzania poprawności](how-to-configure-auto-train.md).
+    Sprawdzanie poprawności| Wybierz jedną z opcji krzyżowego sprawdzania poprawności, która ma zostać użyta w zadaniu szkoleniowym. [Dowiedz się więcej na temat krzyżowego sprawdzania poprawności](how-to-configure-auto-train.md).
     Współbieżność| Wybierz limity wielordzeniowe, które mają być używane podczas korzystania z obliczeń wielordzeniowych.
     Zablokowany algorytm| Wybierz algorytmy, które mają zostać wykluczone z zadania szkoleniowego.
 
@@ -134,7 +133,7 @@ Min.| Minimalna wartość kolumny. Puste wpisy są wyświetlane dla funkcji, kt�
 Maks.| Maksymalna wartość kolumny. 
 Count| Łączna liczba brakujących i nieobecnych wpisów w kolumnie.
 Liczba niebrakujących| Liczba wpisów w kolumnie, których nie ma. Puste ciągi i błędy są traktowane jako wartości, więc nie będą wchodzić w skład "niebrakującej liczby".
-Quantiles| Przybliżone wartości dla każdego quantileu, aby zapewnić rozkład danych.
+Kwantyle| Przybliżone wartości dla każdego quantileu, aby zapewnić rozkład danych.
 Średnia| Średnia arytmetyczna kolumny lub jej średnia.
 Odchylenie standardowe| Pomiar wielkości rozproszenia lub zmienności danych tej kolumny.
 Wariancja| Mierzona, jak daleko odłożenie danych z tej kolumny pochodzi z wartości średniej. 

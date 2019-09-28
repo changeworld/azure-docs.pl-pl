@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2019
+ms.date: 09/27/2019
 ms.author: mlottner
-ms.openlocfilehash: e742848df56e4e2be1b9edf42586e642f0c938cb
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: dc9dcbfd00b5205fa5c66e334b30c76d549d8a42
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933804"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71348519"
 ---
 # <a name="pricing-and-associated-costs"></a>Cennik i powiązane koszty
 
@@ -34,20 +34,17 @@ Model cen usługi IoT Azure Security Center obejmuje dwie części, a opłaty s�
 
 - Koszt dzięki ulepszonym funkcjom zabezpieczeń opartym na komunikatach zabezpieczeń z urządzeń IoT Edge lub liści.
 
-  >[!Note]
-  > Komunikaty o zabezpieczeniach również powodują użycie przydziału na IoT Hub.
 
 Aby uzyskać więcej informacji, zobacz [Cennik usługi Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="associated-costs"></a>Powiązane koszty
 
-W przypadku Azure Security Center IoT istnieją dwa typy powiązanych kosztów, które nie są częścią cen bezpośrednich:
+W Azure Security Center dla IoT są związane koszty, które nie są częścią cen bezpośrednich:
 
-- Użycie limitu przydziału IoT Hub
 
 - Log Analytics koszty magazynu
 
-Aby zmniejszyć koszty związane z niektórymi funkcjami, można zmienić ustawienia.
+Możesz zmniejszyć koszty związane z niektórymi funkcjami rozwiązania. Zrezygnuj z zmiany ustawień.
 
 Aby zmienić ustawienia:
 
@@ -59,10 +56,8 @@ Aby zmienić ustawienia:
 
 Poniższa tabela zawiera podsumowanie powiązanych kosztów i implikacje poszczególnych opcji.
 
-|     | Użycie | Komentarz |
+|     | Sposób użycia | Komentarz |
 | --- | --- | --- |
-| **Użycie limitu przydziału IoT Hub** |  |
-| [Eksportowanie zadania urządzenia](https://docs.microsoft.com/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices) (eksport z przędzą) | raz dziennie | Wyłącz _zbieranie metadanych z przędzy_ |
 | **Magazyn Log Analytics** |  |
 | Zalecenia i alerty dotyczące urządzeń| Zalecenia dotyczące zabezpieczeń i alerty wygenerowane przez usługę | Nieopcjonalne |
 | Surowe dane zabezpieczeń| Surowe dane zabezpieczeń z urządzeń IoT zebranych przez agentów zabezpieczeń | Wyłącz _zdarzenia związane z zabezpieczeniami magazynu RAW_ |

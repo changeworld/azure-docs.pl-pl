@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 0afe5897c723e22405d9bde2e9c9e729d0373a06
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8579693052ea102e34d81d84abaced52d1e7440d
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553661"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350960"
 ---
 # <a name="quickstart-convert-text-to-speech-using-python"></a>Szybki start: Konwertowanie zamiany tekstu na mowę przy użyciu języka Python
 
@@ -73,7 +73,7 @@ class TextToSpeech(object):
 
 ## <a name="get-an-access-token"></a>Pobranie tokenu dostępu
 
-Zamiany tekstu na mowę interfejsu API REST wymaga tokenu dostępu do uwierzytelniania. Aby uzyskać token dostępu, wymagana jest wymiana. Ten przykład umożliwia wymianę klucza subskrypcji usługi Speech Services w celu uzyskania tokenu dostępu `issueToken` przy użyciu punktu końcowego.
+Zamiany tekstu na mowę interfejsu API REST wymaga tokenu dostępu do uwierzytelniania. Aby uzyskać token dostępu, wymagana jest wymiana. Ten przykład umożliwia wymianę klucza subskrypcji usługi Speech Services w celu uzyskania tokenu dostępu przy użyciu punktu końcowego `issueToken`.
 
 W tym przykładzie przyjęto założenie, że subskrypcja usługi Speech Services znajduje się w regionie zachodnie stany USA. Jeśli używasz innego regionu, zaktualizuj wartość `fetch_token_url`. Aby uzyskać pełną listę, zobacz [regionów](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
 
@@ -101,7 +101,7 @@ Następnie należy dodać wymagane nagłówki żądania. Upewnij się, że aktua
 Następnie konstruować treści żądania, za pomocą mowy syntezy Markup Language (SSML). W tym przykładzie definiuje strukturę i używa `tts` dane wejściowe została utworzona wcześniej.
 
 >[!NOTE]
-> W tym przykładzie użyto `ZiraRUS` czcionka głosowa. Aby uzyskać pełną listę Microsoft podany głosów/języków, zobacz [języki](language-support.md).
+> W tym przykładzie użyto `Guy24KRUS` czcionka głosowa. Aby uzyskać pełną listę Microsoft podany głosów/języków, zobacz [języki](language-support.md).
 > Jeśli interesuje Cię tworzenie unikatowy, rozpoznawalny głos na marki, zobacz [tworzenia czcionki głosowe niestandardowe](how-to-customize-voice-font.md).
 
 Na koniec wprowadzisz żądania do usługi. Jeśli żądanie zakończy się pomyślnie, zwracany jest kod stanu 200 odpowiedzi mowy jest zapisywany do pliku oznaczony sygnaturą czasową.
@@ -165,7 +165,7 @@ Po wyświetleniu monitu wpisz dowolną chcesz przekonwertować z zamiany tekstu 
 
 Upewnij się, że wszystkie poufne informacje, takie jak klucze subskrypcji, zostały usunięte z kodu źródłowego przykładowej aplikacji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Poznaj przykłady dla języka Python w serwisie GitHub](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/Python)
