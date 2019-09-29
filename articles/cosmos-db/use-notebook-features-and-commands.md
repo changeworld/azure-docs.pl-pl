@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: dech
-ms.openlocfilehash: 1eda8271a3b8aa2c9e247252bd755279d23b6e10
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 4a9bd554e0858024d656dbf35d6fb00995e6f4bd
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310349"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672483"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db"></a>Używanie wbudowanych poleceń i funkcji notesu w programie Azure Cosmos DB
 
@@ -25,7 +25,10 @@ W nowej komórce kodu Wstaw i uruchom następujący kod, zastępując ``PackageT
 import sys
 !{sys.executable} -m pip install PackageToBeInstalled –user
 ```
-Ten pakiet będzie dostępny do użycia z dowolnego notesu na koncie usługi Azure Cosmos. 
+Ten pakiet będzie dostępny do użycia z dowolnego notesu w obszarze roboczym konta usługi Azure Cosmos. 
+
+> [!TIP]
+> Jeśli Notes wymaga pakietu niestandardowego, zalecamy dodanie w notesie komórki umożliwiającej zainstalowanie pakietu, ponieważ w przypadku [zresetowania obszaru roboczego](#reset-notebooks-workspace)zostaną usunięte pakiety.  
 
 ## <a name="run-a-sql-query"></a>Uruchamianie zapytania SQL
 
@@ -150,6 +153,11 @@ primary_key = os.environ["COSMOS_KEY"]
 ```
 > [!IMPORTANT]
 > Zmienne środowiskowe ``COSMOS_KEY``isą stosowane tylko w przypadku interfejsu API SQL. ``COSMOS_ENDPOINT`` W przypadku innych interfejsów API Znajdź punkt końcowy i klucz w bloku **Parametry połączenia** lub **klucze** na koncie usługi Cosmos.  
+
+## <a name="reset-notebooks-workspace"></a>Resetuj obszar roboczy notesów
+Aby zresetować obszar roboczy notesy do ustawień domyślnych, wybierz pozycję **Zresetuj obszar roboczy** na pasku poleceń. Spowoduje to usunięcie wszystkich zainstalowanych pakietów niestandardowych i ponowne uruchomienie serwera Jupyter. Nie wpłynie to na Twoje notesy, pliki i zasoby Cosmos.  
+
+![Resetuj obszar roboczy notesów](media/use-notebook-features-and-commands/reset-workspace.png)
 
 ## <a name="next-steps"></a>Następne kroki
 

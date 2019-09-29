@@ -4,17 +4,17 @@ description: Usługa Azure Storage obsługuje tryb failover (wersja zapoznawcza)
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: b2cd7232bce674dfa5aa2c6f4b6d9386fa7a189b
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 4a621f8976efe395014c073a6bd7c5d09d19d915
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376451"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671080"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Odzyskiwanie po awarii i tryb failover konta magazynu (wersja zapoznawcza) w usłudze Azure Storage
 
@@ -50,7 +50,7 @@ Ważne jest, aby zaprojektować aplikację pod kątem wysokiej dostępności od 
 * [Projektowanie odpornych aplikacji na platformę Azure](https://docs.microsoft.com/azure/architecture/resiliency/): Przegląd najważniejszych pojęć związanych z projektowaniem aplikacji o wysokiej dostępności na platformie Azure.
 * [Lista kontrolna dostępności](https://docs.microsoft.com/azure/architecture/checklist/availability): Lista kontrolna służąca do sprawdzania, czy aplikacja implementuje najlepsze rozwiązania w zakresie projektowania pod kątem wysokiej dostępności.
 * [Projektowanie aplikacji o wysokiej dostępności przy użyciu usługi RA-GRS](storage-designing-ha-apps-with-ragrs.md): Wskazówki dotyczące projektowania dotyczące kompilowania aplikacji w celu skorzystania z usługi RA-GRS.
-* [Samouczek: Tworzenie aplikacji o wysokiej dostępności przy użyciu magazynu](../blobs/storage-create-geo-redundant-storage.md)obiektów blob: Samouczek pokazujący, jak utworzyć aplikację o wysokiej dostępności, która automatycznie przełącza się między punktami końcowymi jako awarie i operacje odzyskiwania są symulowane. 
+* [Samouczek: Tworzenie aplikacji o wysokiej dostępności przy użyciu magazynu obiektów BLOB @ no__t-0: Samouczek pokazujący, jak utworzyć aplikację o wysokiej dostępności, która automatycznie przełącza się między punktami końcowymi jako awarie i operacje odzyskiwania są symulowane. 
 
 Ponadto należy pamiętać o najlepszych rozwiązaniach dotyczących utrzymania wysokiej dostępności dla danych usługi Azure Storage:
 

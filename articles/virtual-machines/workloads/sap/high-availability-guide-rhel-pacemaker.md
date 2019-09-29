@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: 4e12ad64ef277396a101aab6d1bb8f3cc6079cf9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 954ff23997e56249859dd8d35f124324432f2b22
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099590"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673000"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Konfigurowanie Pacemaker Red Hat Enterprise Linux na platformie Azure
 
@@ -62,6 +62,7 @@ Przeczytaj najpierw następujące informacje i dokumenty SAP:
   * [Omówienie dodatku wysokiej dostępności](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
   * [Administracja dodatkiem wysokiej dostępności](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
   * [Dodatkowe informacje o wysokiej dostępności](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+  * [Zasady obsługi klastrów RHEL o wysokiej dostępności — SBD i fence_sbd](https://access.redhat.com/articles/2800691)
 * Dokumentacja RHEL specyficzna dla platformy Azure:
   * [Zasady obsługi klastrów RHEL o wysokiej dostępności — Microsoft Azure Virtual Machines jako elementy członkowskie klastra](https://access.redhat.com/articles/3131341)
   * [Instalowanie i Konfigurowanie Red Hat Enterprise Linux 7,4 (i nowszych) klastra o wysokiej dostępności na Microsoft Azure](https://access.redhat.com/articles/3252491)
@@ -70,6 +71,10 @@ Przeczytaj najpierw następujące informacje i dokumenty SAP:
 ## <a name="cluster-installation"></a>Instalacja klastra
 
 ![Pacemaker na RHEL — Omówienie](./media/high-availability-guide-rhel-pacemaker/pacemaker-rhel.png)
+
+> [!NOTE]
+> Red Hat nie obsługuje emulowanego przez oprogramowanie licznika alarmowego. Red Hat nie obsługuje SBD na platformach w chmurze. Aby uzyskać szczegółowe informacje, zobacz [zasady pomocy technicznej dotyczące klastrów RHEL o wysokiej dostępności — SBD i fence_sbd](https://access.redhat.com/articles/2800691).
+> Jedynym obsługiwanym mechanizmem ogrodzenia dla klastrów Pacemaker Red Hat Enterprise Linux na platformie Azure jest Agent usługi Azure ogrodzeni.  
 
 Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do wszystkich węzłów, **[1]** — dotyczy to tylko węzeł 1 lub **[2]** — dotyczy to tylko węzeł 2.
 

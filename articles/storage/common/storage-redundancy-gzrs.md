@@ -3,17 +3,17 @@ title: Twórz aplikacje usługi Azure Storage o wysokiej dostępności za pomoc�
 description: Magazyn strefy Geograficznie nadmiarowy (GZRS) cywilnego wysoką dostępność magazynu Strefowo nadmiarowego (ZRS) z ochroną z poziomu awarii regionalnej, zgodnie z magazynem geograficznie nadmiarowym (GRS). Dane na koncie magazynu GZRS są replikowane w strefach dostępności platformy Azure w regionie podstawowym, a także zreplikowane do pomocniczego regionu geograficznego na potrzeby ochrony przed awariami regionalnymi.
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 321866279e076bfa77d1892e64deaf4b16c08366
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 737bad504519a2ec7eee9764593245e0fee28cc3
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300648"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673065"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Twórz aplikacje usługi Azure Storage o wysokiej dostępności przy użyciu strefy geograficznej nadmiarowej (GZRS) (wersja zapoznawcza)
 
@@ -55,7 +55,7 @@ Podczas tworzenia konta magazynu należy określić sposób replikowania danych 
 
 Po włączeniu usługi RA-GZRS dla konta magazynu dane można odczytać z pomocniczego punktu końcowego oraz z podstawowego punktu końcowego dla konta magazynu. Pomocniczy punkt końcowy dołącza sufiks *— pomocniczy* do nazwy konta. Na przykład jeśli podstawowy punkt końcowy BLOB Service to `myaccount.blob.core.windows.net`, wówczas pomocniczy punkt końcowy to. `myaccount-secondary.blob.core.windows.net` Klucze dostępu dla konta magazynu są takie same dla podstawowych i pomocniczych punktów końcowych.
 
-Aby skorzystać z funkcji RA-GZRS w przypadku awarii regionalnej, musisz zaprojektować aplikację z wyprzedzeniem, aby obsłużyć ten scenariusz. Aplikacja powinna odczytywać i zapisywać w podstawowym punkcie końcowym, ale przełączyć się do korzystania z pomocniczego punktu końcowego w przypadku, gdy region podstawowy stał się niedostępny. Aby uzyskać wskazówki dotyczące projektowania wysokiej dostępności za pomocą usługi RA-GZRS, zobacz [projektowanie wysoce dostępnych aplikacji przy użyciu usługi RA-GZRS lub RA-GRS](https://docs.microsoft.com/en-us/azure/storage/common/storage-designing-ha-apps-with-ragrs).
+Aby skorzystać z funkcji RA-GZRS w przypadku awarii regionalnej, musisz zaprojektować aplikację z wyprzedzeniem, aby obsłużyć ten scenariusz. Aplikacja powinna odczytywać i zapisywać w podstawowym punkcie końcowym, ale przełączyć się do korzystania z pomocniczego punktu końcowego w przypadku, gdy region podstawowy stał się niedostępny. Aby uzyskać wskazówki dotyczące projektowania wysokiej dostępności za pomocą usługi RA-GZRS, zobacz [projektowanie wysoce dostępnych aplikacji przy użyciu usługi RA-GZRS lub RA-GRS](https://docs.microsoft.com/azure/storage/common/storage-designing-ha-apps-with-ragrs).
 
 Ponieważ dane są replikowane do regionu pomocniczego asynchronicznie, region pomocniczy jest często za regionem podstawowym. Aby określić, które operacje zapisu zostały zreplikowane do regionu pomocniczego, aplikacja sprawdza czas ostatniej synchronizacji dla konta magazynu. Wszystkie operacje zapisu zapisane w regionie podstawowym przed upływem czasu ostatniej synchronizacji zostały pomyślnie zreplikowane do regionu pomocniczego, co oznacza, że są dostępne do odczytu z pomocniczego. Wszystkie operacje zapisu zapisane w regionie podstawowym po ostatniej synchronizacji mogły lub nie zostały zreplikowane do regionu pomocniczego, co oznacza, że mogą nie być dostępne dla operacji odczytu.
 
@@ -141,7 +141,7 @@ Aby zażądać migracji na żywo, użyj [Azure Portal](https://ms.portal.azure.
     - **Typ problemu**: Wybierz pozycję **migracja danych**.
     - **Kategoria**: Wybierz pozycję **Migruj do (Ra-) GZRS w regionie**.
     - **Tytuł**: Wpisz opisowy tytuł, na przykład **(Ra-) GZRS migracji konta**.
-    - **Szczegóły**: Wpisz dodatkowe szczegóły w polu **szczegóły** , na przykład "Chcę migrować do GZRS z [LRS, \_ \_ GRS] w regionie". lub "Chcę migrować do usługi RA-GZRS z [LRS, RA-GRS] w \_ \_ regionie".
+    - **Szczegóły**: Wpisz dodatkowe szczegóły w **szczegółach** box, na przykład "Chcę MIGROWAĆ do GZRS z [LRS, GRS] w regionie \_ @ no__t-3". lub "Chcę migrować do usługi RA-GZRS z [LRS, RA-GRS] w regionie \_ @ no__t-1".
 5. Wybierz pozycję  **Dalej**.
 6. Sprawdź, czy informacje kontaktowe są poprawne w bloku **informacje** kontaktowe.
 7. Wybierz pozycję  **Utwórz**.

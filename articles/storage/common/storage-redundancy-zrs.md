@@ -4,17 +4,17 @@ description: Magazyn strefowo nadmiarowy (ZRS) oferuje prosty sposób tworzenia 
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: f7639eb2807654aab38a4e849c2e58d77f15bc31
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: a343601ec126549926cfd4035d901862c0a585a8
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036253"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673105"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>Magazyn strefowo nadmiarowy (ZRS) do tworzenia aplikacji usługi Azure Storage o wysokiej dostępności
 
@@ -66,13 +66,13 @@ Migrowanie danych do ZRS wymaga innej strategii. Migracja ZRS obejmuje fizyczne 
 
 Dostępne są dwie podstawowe opcje migracji do ZRS: 
 
-- Ręcznie Kopiuj lub Przenieś dane do nowego konta ZRS z istniejącego konta.
+- Możesz ręcznie skopiować lub przenieść dane z istniejącego konta do nowego konta ZRS.
 - Zażądaj migracji na żywo.
 
 > [!IMPORTANT]
 > Migracja na żywo nie jest obecnie obsługiwana dla udziałów plików w warstwie Premium. Obecnie obsługiwane są tylko ręczne kopiowanie lub przeniesienie danych.
 
-Jeśli konieczna jest migracja do pełnej daty, należy rozważyć przeprowadzenie ręcznej migracji. Migracja ręczna zapewnia większą elastyczność niż migracja na żywo. W przypadku ręcznej migracji masz kontrolę nad chronometrażem.
+Jeśli chcesz, aby migracja Twoich danych została zakończona w określonym terminie, rozważ przeprowadzenie migracji ręcznej. Migracja ręczna zapewnia większą elastyczność niż migracja na żywo. W przypadku migracji ręcznej masz kontrolę nad harmonogramem.
 
 Aby przeprowadzić migrację ręczną, dostępne są następujące opcje:
 - Korzystaj z istniejących narzędzi, takich jak AzCopy, jednej z bibliotek klienckich usługi Azure Storage lub niezawodnych narzędzi innych firm.
@@ -81,11 +81,11 @@ Aby przeprowadzić migrację ręczną, dostępne są następujące opcje:
 
 Migracja ręczna może skutkować przestojem aplikacji. Jeśli aplikacja wymaga wysokiej dostępności, firma Microsoft udostępnia również opcję migracji na żywo. Migracja na żywo to migracja w miejscu bez przestojów. 
 
-Podczas migracji na żywo można używać konta magazynu podczas migrowania danych między źródłową i docelową sygnaturami magazynowymi. Podczas migracji masz taki sam poziom trwałości i umowy SLA, jak zwykle.
+Podczas migracji na żywo możesz używać konta magazynu, gdy Twoje dane są migrowane między źródłowymi i docelowymi sygnaturami magazynu. W trakcie procesu migracji masz taki sam jak zwykle poziom trwałości i umowy SLA dotyczącej dostępności.
 
 Należy pamiętać o następujących ograniczeniach migracji na żywo:
 
-- Mimo że firma Microsoft obsłuży Twoje żądanie migracji na żywo tak szybko, jak to możliwe, nie ma możliwości określenia, kiedy migracja na żywo zostanie ukończona. Jeśli chcesz, aby dane były migrowane do ZRS przez pewien dzień, firma Microsoft zaleca przeprowadzenie ręcznej migracji. Ogólnie rzecz biorąc, im więcej danych zawiera Twoje konto, tym dłużej trwa ich migracja. 
+- Mimo że firma Microsoft obsłuży Twoje żądanie migracji na żywo tak szybko, jak to możliwe, nie ma możliwości określenia, kiedy migracja na żywo zostanie ukończona. Jeśli chcesz, aby migracja Twoich danych została zakończona w określonym terminie, firma Microsoft zaleca przeprowadzenie zamiast tego migracji ręcznej. Ogólnie rzecz biorąc, im więcej danych zawiera Twoje konto, tym dłużej trwa ich migracja. 
 - Migracja na żywo jest obsługiwana tylko w przypadku kont magazynu, które używają replikacji LRS lub GRS. Jeśli Twoje konto używa RA-GRS, przed kontynuowaniem musisz najpierw zmienić typ replikacji konta na LRS lub GRS. Ten krok pośrednika usuwa pomocniczy punkt końcowy tylko do odczytu dostarczony przez RA-GRS przed migracją.
 - Twoje konto musi zawierać dane.
 - Dane można migrować tylko w tym samym regionie. Jeśli chcesz przeprowadzić migrację danych do konta ZRS znajdującego się w regionie innym niż konto źródłowe, należy przeprowadzić migrację ręczną.
@@ -103,7 +103,7 @@ Możesz zażądać migracji na żywo za pomocą [portalu pomocy technicznej syst
     - **Typ problemu**: Wybierz pozycję **migracja danych**.
     - **Kategoria**: Wybierz pozycję **Migruj do ZRS**.
     - **Tytuł**: Wpisz opisowy tytuł, na przykład **ZRS**.
-    - **Szczegóły**: Wpisz dodatkowe szczegóły w polu **szczegóły** , na przykład chcę przeprowadzić migrację do ZRS z [LRS, GRS] w \_ \_ regionie. 
+    - **Szczegóły**: Wpisz dodatkowe szczegóły w polu **szczegóły** , na przykład chcę przeprowadzić migrację do ZRS z [LRS, GRS] w regionie \_ @ no__t-2. 
 5. Wybierz opcję **Dalej**.
 6. Sprawdź, czy informacje kontaktowe są poprawne w bloku **informacje kontaktowe** .
 7. Wybierz pozycję **Utwórz**.
@@ -114,11 +114,11 @@ Osoba odpowiedzialna za pomoc techniczną skontaktuje się z Tobą i pomoże Ci 
 
 **Czy należy zaplanować ewentualne przestoje w trakcie migracji?**
 
-Brak przestojów spowodowanych przez migrację. Podczas migracji na żywo można nadal korzystać z konta magazynu podczas migrowania danych między źródłową i docelową sygnaturami magazynowymi. Podczas migracji masz taki sam poziom trwałości i umowy SLA, jak zwykle.
+Brak przestojów spowodowanych przez migrację. Podczas migracji na żywo można nadal korzystać z konta magazynu podczas migrowania danych między źródłową i docelową sygnaturami magazynowymi. W trakcie procesu migracji masz taki sam jak zwykle poziom trwałości i umowy SLA dotyczącej dostępności.
 
 **Czy istnieje utrata danych skojarzona z migracją?**
 
-Brak utraty danych skojarzonych z migracją. Podczas migracji masz taki sam poziom trwałości i umowy SLA, jak zwykle.
+Brak utraty danych skojarzonych z migracją. W trakcie procesu migracji masz taki sam jak zwykle poziom trwałości i umowy SLA dotyczącej dostępności.
 
 **Czy aktualizacje są wymagane dla aplikacji po zakończeniu migracji?**
 

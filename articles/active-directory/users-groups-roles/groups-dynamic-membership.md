@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59450fc93052a1e169d13fab5b80cbc57c169e0f
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: dafc78e49cb0118181bae4522d4cb456509ea2cb
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70909785"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673424"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Reguły członkostwa dynamicznego dla grup w Azure Active Directory
 
@@ -64,7 +64,7 @@ user.department -eq "Sales"
 
 Nawiasy są opcjonalne dla jednego wyrażenia. Łączna długość treści reguły członkostwa nie może przekraczać 2048 znaków.
 
-# <a name="constructing-the-body-of-a-membership-rule"></a>Konstruowanie treści reguły członkostwa
+## <a name="constructing-the-body-of-a-membership-rule"></a>Konstruowanie treści reguły członkostwa
 
 Reguła członkostwa, która automatycznie wypełnia grupę użytkownikami lub urządzeniami, jest wyrażeniem binarnym, które powoduje wynik PRAWDA lub FAŁSZ. Trzy części prostej reguły są:
 
@@ -86,14 +86,14 @@ Poniżej przedstawiono właściwości użytkownika, których można użyć do ut
 
 ### <a name="properties-of-type-boolean"></a>Właściwości typu Boolean
 
-| Właściwości | Dozwolone wartości | Użycie |
+| properties | Dozwolone wartości | Sposób użycia |
 | --- | --- | --- |
 | accountEnabled |PRAWDA FAŁSZ |User. accountEnabled-EQ true |
 | dirSyncEnabled |PRAWDA FAŁSZ |User. dirSyncEnabled-EQ true |
 
 ### <a name="properties-of-type-string"></a>Właściwości typu String
 
-| Właściwości | Dozwolone wartości | Użycie |
+| properties | Dozwolone wartości | Sposób użycia |
 | --- | --- | --- |
 | city |Dowolna wartość ciągu lub wartość *null* |(User. City-EQ "wartość") |
 | trzeciego |Dowolna wartość ciągu lub wartość *null* |(User. Country-EQ "wartość") |
@@ -124,7 +124,7 @@ Poniżej przedstawiono właściwości użytkownika, których można użyć do ut
 
 ### <a name="properties-of-type-string-collection"></a>Właściwości kolekcji ciągów typu
 
-| Właściwości | Dozwolone wartości | Użycie |
+| properties | Dozwolone wartości | Sposób użycia |
 | --- | --- | --- |
 | otherMails |Dowolna wartość ciągu |(User. otherMails-zawiera "alias@domain") |
 | proxyAddresses |SMTP: alias@domainalias@domain |(User. proxyAddresses-zawiera "SMTP: alias@domain") |
@@ -249,7 +249,7 @@ Reguła członkostwa może składać się z złożonych wyrażeń, w których w�
 
 Właściwości wielowartościowe to kolekcje obiektów tego samego typu. Mogą służyć do tworzenia reguł członkostwa przy użyciu-any i-All operatorów logicznych.
 
-| Właściwości | Wartości | Użycie |
+| properties | Wartości | Sposób użycia |
 | --- | --- | --- |
 | assignedPlans | Każdy obiekt w kolekcji uwidacznia następujące właściwości ciągu: capabilityStatus, Service, servicePlanId |User. assignedPlans-any (assignedPlan. servicePlanId-EQ "efb87545-963c-4e0d-99df-69c6916d9eb0"-and assignedPlan. capabilityStatus-EQ "Enabled") |
 | proxyAddresses| SMTP: alias@domainalias@domain | (User. proxyAddresses-any (\_ -zawiera "contoso")) |

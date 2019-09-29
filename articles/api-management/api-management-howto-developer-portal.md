@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: apimpm
-ms.openlocfilehash: da75ca43a2576e3214d4b67f9eb61c7bad3bd5cc
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: c015b1afbc61e1501e656aaa480ee2a4e19ba094
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073518"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672790"
 ---
 # <a name="access-and-customize-the-new-developer-portal-in-azure-api-management"></a>Dostęp do nowego portalu dla deweloperów w usłudze Azure API Management i dostosowywanie go
 
@@ -79,7 +79,7 @@ Wyjątkami są *aplikacje* i *problemy* ze starego portalu, które nie będą do
 
 ### <a name="ive-found-bugs-andor-id-like-to-request-a-feature"></a>Znaleźliśmy błędy i/lub chcę zażądać funkcji.
 
-Wspaniale! Możesz przekazać nam swoją opinię, przesłać żądanie funkcji lub zgłosić raport o usterce w [sekcji problemy dotyczące repozytorium GitHub](https://github.com/Azure/api-management-developer-portal/issues). W tym miejscu będziemy również wdzięczni za opinie dotyczące problemów oznaczonych `community` etykietą.
+Wspaniale! Możesz przekazać nam swoją opinię, przesłać żądanie funkcji lub zgłosić raport o usterce w [sekcji problemy dotyczące repozytorium GitHub](https://github.com/Azure/api-management-developer-portal/issues). W tym miejscu będziemy również wdzięczni za opinie dotyczące problemów oznaczonych etykietą `community`.
 
 ### <a name="i-want-to-move-the-content-of-the-new-portal-between-environments-how-can-i-do-that-and-do-i-need-to-go-with-the-self-hosted-version"></a>Chcę przenieść zawartość nowego portalu między środowiskami. Jak można to zrobić, aby móc przejść do samodzielnej wersji?
 
@@ -87,13 +87,21 @@ Można to zrobić w obu wersjach portalu — zarządzanych i samodzielnych. Nowy
 
 Nadal pracujemy nad wyrównaniam tego procesu za pomocą zestawu API Management DevOps Resource Kit.
 
+### <a name="what-do-i-need-to-configure-for-the-new-portal-to-work-in-my-api-management-service-in-vnet"></a>Co jest potrzebne do skonfigurowania nowego portalu do pracy w usłudze API Management w sieci wirtualnej?
+
+Gdy nowy portal dla deweloperów jest w wersji zapoznawczej, musisz zezwolić na łączność z usługami Azure Storage w regionie zachodnie stany USA, aby umożliwić działanie portalu zarządzanego w usłudze API Management w sieci wirtualnej. Więcej informacji znajduje się w [dokumentacji magazynu](../storage/common/storage-network-security.md#available-virtual-network-regions).
+
+Powyższa instalacja nie będzie już potrzebna po ogólnym udostępnieniu nowego portalu.
+
+Samoobsługowa wersja portalu może wymagać dodatkowej konfiguracji łączności, w zależności od konfiguracji.
+
 ### <a name="how-can-i-select-a-layout-when-creating-a-new-page"></a>Jak mogę wybrać *Układ* podczas tworzenia nowej *strony*?
 
-*Układ* zostanie zastosowany do strony, dopasowując jej szablon adresu URL do adresu URL *strony* . Na przykład *Układ* z `/wiki/*` szablonem adresu URL zostanie zastosowany do `/wiki/` każdej *strony* z segmentem: `/wiki/getting-started`, `/wiki/styles`i tak dalej.
+*Układ* zostanie zastosowany do strony, dopasowując jej szablon adresu URL do adresu URL *strony* . Na przykład *Układ* z szablonem adresu URL `/wiki/*` zostanie zastosowany do każdej *strony* z segmentem `/wiki/`: `/wiki/getting-started`, `/wiki/styles` itd.
 
 ### <a name="why-doesnt-the-interactive-developer-console-work"></a>Dlaczego interaktywna konsola dewelopera nie działa?
 
-Prawdopodobnie jest on związany z mechanizmem CORS. Konsola interaktywna wykonuje żądanie interfejsu API po stronie klienta z przeglądarki. Problem CORS można rozwiązać, dodając [zasady CORS](https://docs.microsoft.com/azure/api-management/api-management-cross-domain-policies#CORS) w interfejsach API. Możesz określić wszystkie parametry ręcznie (na przykład źródło https://contoso.com) lub użyć wartości wieloznacznej `*` ).
+Prawdopodobnie jest on związany z mechanizmem CORS. Konsola interaktywna wykonuje żądanie interfejsu API po stronie klienta z przeglądarki. Problem CORS można rozwiązać, dodając [zasady CORS](https://docs.microsoft.com/azure/api-management/api-management-cross-domain-policies#CORS) w interfejsach API. Możesz określić wszystkie parametry ręcznie (na przykład pochodzenie jako https://contoso.com) lub użyć symbolu wieloznacznego `*`.
 
 ## <a name="next-steps"></a>Następne kroki
 

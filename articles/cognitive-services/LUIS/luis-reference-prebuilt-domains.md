@@ -11,19 +11,19 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: f5810a813b6c54f190d95061e79914457f51d19c
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 7e2b5c5c5d2ca4c0d6ab820866341c5f30082c5f
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067614"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672773"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>Wstępnie skompilowane odwołanie do domeny dla aplikacji LUIS
 Ta dokumentacja zawiera informacje na temat [ze wstępnie utworzonych domen](luis-how-to-use-prebuilt-domains.md), które są wstępnie utworzonych kolekcji intencje i podmioty, które są oferowane usługi LUIS.
 
 [Domeny niestandardowe](luis-how-to-start-new-app.md), z drugiej strony, rozpoczynać się nie intencje i modeli. Można dodać żadnych wbudowanych domeny intencje i podmioty do modelu niestandardowego.
 
-# <a name="supported-domains-across-cultures"></a>Obsługiwane domeny między kulturami
+## <a name="supported-domains-across-cultures"></a>Obsługiwane domeny między kulturami
 
 W poniższej tabeli zestawiono aktualnie obsługiwane domeny. Obsługa języka angielskiego jest zwykle większa niż inne. 
 
@@ -47,7 +47,7 @@ Wbudowane domeny nie są **obsługiwane** w programie:
 * Hindi
 * Hiszpański (Meksyk)
 
-# <a name="description-for-luis-prebuilt-domains"></a>Opis dla prekompilowanych domen LUIS
+## <a name="description-for-luis-prebuilt-domains"></a>Opis dla prekompilowanych domen LUIS
 ## <a name="calendar"></a>**Kalendarz**
 W kalendarzu znajdują się informacje o spotkaniach osobistych i terminach, a nie na zdarzeniach publicznych (na przykład w planach świata, kalendarzu zdarzeń Seattle) ani w kalendarzu ogólnym (na przykład dzień dzisiejszy to, co się stało, gdy jest to dzień robocizny).
 ### <a name="intents"></a>**Intencji**
@@ -76,7 +76,7 @@ ShowNext | Sprawdź następne zdarzenie. <br> _**Uwaga**: Zapoznaj się z domen�
  TimeRemaining | Sprawdź pozostały czas do następnego zdarzenia. | Wyświetlaj, ile czasu mam przed spotkaniem. <br> Wyświetlaj ilość czasu, jaki mam przed rozpoczęciem następnego spotkania.
  
 ### <a name="entities"></a>**Obiekty**
-Nazwa encji | Typ jednostki | Opis | Przykłady | Gniazda
+Nazwa jednostki | Typ jednostki | Opis | Przykłady | Miejsca
 -------|-----------------------|-------------|---------|--------
 Nazwa kontaktu | personName | Imię i nazwisko osoby kontaktowej lub uczestnika spotkania. | Poznaj z **Betsy**. <br>  Zapoznaj się z **Aubrey** dnia 3 lipca o godzinie 7 | Betsy <br> Aubrey <br> Amy 
 DestinationCalendar | ułatwia | Nazwa kalendarza docelowego. | obiad ze swoją usługą MOM wtorek 12 **Personal** <br> Użyj mojego kalendarza **Google** jako mojego kalendarza domyślnego. <br> Aktualizowanie klasy Yoga do Mon wed o godzinie 3 Lista w kalendarzu **osobistym** . | Google <br> Tytuł <br> firmy <br> główną
@@ -129,7 +129,7 @@ Zignoruj | Ignoruj przychodzących połączeń. | Nie można znaleźć odpowiedz
 IgnoreWithMessage | Ignoruj przychodzących połączeń i odpowiedzi z tekstem zamiast tego. | Nie można znaleźć odpowiedzi to wywołanie, ale zamiast tego wysłać wiadomość. <br>   Ignoruj i wysłać ponownie wiadomość.
 Wybierania | Rozpoczynanie rozmowy telefonicznej. | Jim wywołania <br>   Wybierz numer 311.
 FindSpeedDial | Znajdź numer szybkie, wybieranie numeru, numer telefonu jest ustawiony na i na odwrót. | Co to jest mój numer wybierania 5? <br>   Czy mają szybkość wybierania zestaw? <br>   Co to jest numer wybierania 941-5555-333?
-Prześlij dalej | Prześlij wiadomość e-mail dalej | Przekaż tę wiadomość e-mail do Grega.
+Prześlij dalej | Prześlij dalej wiadomość e-mail | Przekaż tę wiadomość e-mail do Grega.
 ReadAloud | Przeczytaj wiadomości lub wiadomości e-mail do użytkownika. | Przeczytaj tekst. <br>   Co ona powiedzieć wiadomości?
 PressKey | Naciśnij przycisk lub numer na klawiaturze numerycznej. | Wybierania star. <br>   Naciśnij klawisz 1 2 3.
 QueryLastText | Wysyła zapytanie do ostatniego tekstu lub komunikatu. | Kto je utworzył? <br>   Kto niedawno z nich wysyłał wiadomość?
@@ -147,11 +147,11 @@ TurnSpeakerOff | Wyłącz telefonu osoby mówiącej. | Zwiększyły się ze mną
 TurnSpeakerOn | Włącz telefonu osoby mówiącej. | Tryb głośnomówiącego. <br>   Umieść głośnomówiącego na.
 
 ### <a name="entities"></a>**Obiekty**
-Nazwa encji | Typ jednostki | Opis | Przykłady | Gniazda
+Nazwa jednostki | Typ jednostki | Opis | Przykłady | Miejsca
 ------|-------|----------|--------------|---------------
-Attachment | ułatwia | Załącznik, który użytkownik chce wysłać pocztą SMS lub wiadomość e-mail. | Wyślij **plik** pocztą e-mail z programu OneNote. <br> Wyślij mój **dokument** dla gospodarstw domowych do Katie. | plik <br> usługę
+Attachment | ułatwia | Załącznik, który użytkownik chce wysłać pocztą SMS lub wiadomość e-mail. | Wyślij **plik** pocztą e-mail z programu OneNote. <br> Wyślij mój **dokument** dla gospodarstw domowych do Katie. | file <br> usługę
 AudioDeviceType | ułatwia | Typ urządzenia audio (głośnik, słuchawki, mikrofon itp.). | Odpowiedz przy użyciu **rąk bezpłatnych**. <br> Ponownie wybierz numer **telefonu osoby mówiącej**. | mówc <br> bezpłatnie <br> Moduły
-Kategoria | ułatwia | Kategoria wiadomości lub wiadomości e-mail musi mieć jasno zdefiniowaną definicję w systemie poczty e-mail, na przykład "nieprzeczytane", "flaga". Opis z nieprawidłowym definicją, na przykład "New" i "ostatnich", nie są kategoriami. | Oznacz wszystkie wiadomości e-mail jako **przeczytane**  <br> Nowa wiadomość e-mail **o wysokim priorytecie** dla Paul | ważne <br> wysoki priorytet <br> odczyt
+Category | ułatwia | Kategoria wiadomości lub wiadomości e-mail musi mieć jasno zdefiniowaną definicję w systemie poczty e-mail, na przykład "nieprzeczytane", "flaga". Opis z nieprawidłowym definicją, na przykład "New" i "ostatnich", nie są kategoriami. | Oznacz wszystkie wiadomości e-mail jako **przeczytane**  <br> Nowa wiadomość e-mail **o wysokim priorytecie** dla Paul | ważne <br> wysoki priorytet <br> odczyt
 ContactAttribute | ułatwia | Atrybut kontaktu z informacjami o użytkowniku.| Jakie **urodziny** należy wiedzieć w następnym miesiącu? | dat urodzenia <br> adres <br> Numer telefonu
 Nazwa kontaktu | personName  | Nazwa odbiorcy kontaktu lub komunikatu. | Wyślij wiadomość e-mail do **Stevens** | Stevens
 Date/Time | datetime | Data i godzina odebrania wiadomości e-mail. | Przeczytaj **dzisiejszą**wiadomość e-mail <br> Kto **dzisiaj**wysłać wiadomość e-mail? <br> kto jest telefonem o godzinie **17:00**? | dzisiaj <br> jutro
@@ -163,7 +163,7 @@ Kreska | ułatwia | Wiersz użytkownik chce użyć do wysłania wiadomości e-ma
 SenderName | personName | Nazwa nadawcy. | Odczytaj wiadomość e-mail z firmy **David** <br> Wiadomości e-mail z Chanda | David <br> Chanda
 FromRelationshipName | ułatwia | Nazwa relacji nadawcy. | Odczytaj wiadomość od **DAD**. <br> Czy można czytać wszystkie wiadomości SMS z programu **MOM**? | Tato <br> Program 
 Message | prosty, wzorzec. Ile |  Komunikat do wysłania jako wiadomość e-mail lub tekstu.  | Wyślij wiadomość e-mail z informacją "**jestem zajęty**". | Jestem zajęty
-OrderReference | ułatwia | Numer porządkowy lub względną pozycja na liście identyfikacji elementu do pobrania. | Jaki był **ostatnio** wysłany komunikat? <br> Przeczytaj **najnowszą** wiadomość e-mail Nokia. <br> Odczytuj **nowe** wiadomości tekstowe. | ostatniego <br> najnowsza <br> Aktualne <br> najnowszych
+OrderReference | ułatwia | Numer porządkowy lub względną pozycja na liście identyfikacji elementu do pobrania. | Jaki był **ostatnio** wysłany komunikat? <br> Przeczytaj **najnowszą** wiadomość e-mail Nokia. <br> Odczytuj **nowe** wiadomości tekstowe. | last <br> najnowsza <br> Aktualne <br> najnowszych
 Kontener positionreference | prosta, porządkowa | Numer porządkowy lub względną pozycja na liście identyfikacji elementu do pobrania.| Jaki był **pierwszy** wysłany komunikat? <br> **Trzecia** .| Pierwsze <br> trzeciej
 phoneNumber | phoneNumber | Użytkownik numeru telefonu chce zadzwonić lub wysłać tekst do. | Wyślij tekst do **4 1 5 6 8 4 5 2 8 4** | 3525214446
 RelationshipName obiektu | ułatwia | Nazwa relacji osoby kontaktowej lub odbiorcy wiadomości. | Wyślij wiadomość e-mail do mojego **żona** | żona
@@ -192,9 +192,9 @@ QueryLastText | Wyślij zapytanie do ostatniej wiadomości e-mail. | Kto wysła�
 
 
 ### <a name="entities"></a>**Obiekty**
-Nazwa encji | Typ jednostki | Opis | Przykłady | Gniazda
+Nazwa jednostki | Typ jednostki | Opis | Przykłady | Miejsca
 ------|-------|----------|--------------|---------------
-Attachment | ułatwia | Załącznik, który użytkownik chce wysłać pocztą SMS lub wiadomość e-mail. | Wyślij **plik** pocztą e-mail z programu OneNote. <br> Wyślij mój **dokument** dla gospodarstw domowych do Katie. | plik <br> usługę
+Attachment | ułatwia | Załącznik, który użytkownik chce wysłać pocztą SMS lub wiadomość e-mail. | Wyślij **plik** pocztą e-mail z programu OneNote. <br> Wyślij mój **dokument** dla gospodarstw domowych do Katie. | file <br> usługę
 Nazwa kontaktu | personName  | Nazwa odbiorcy kontaktu lub komunikatu. | Wyślij wiadomość e-mail do **Stevens** | Stevens
 Date | datetime | Data odebrania wiadomości e-mail. | Przeczytaj **dzisiejszą**wiadomość e-mail <br> Kto **dzisiaj**wysłać wiadomość e-mail? | dzisiaj
 EmailAddress | email | Użytkownik adresu e-mail chce wysłać wiadomość lub wykonać zapytanie. | Wyślij wiadomość e-mail doMegan.Flynn@MKF.com<br> abc@outlook.com 
@@ -202,8 +202,8 @@ EmailSubject | prosty, wzorzec. Ile | Tekst używany jako wiersz tematu wiadomo�
 SenderName | personName | Nazwa nadawcy. | Odczytaj wiadomość e-mail z firmy **David** <br> Wiadomości e-mail z Chanda | David <br> Chanda
 FromRelationshipName | ułatwia | Nazwa relacji nadawcy. | Odczytaj wiadomość od **DAD**. <br> Czy można czytać wszystkie wiadomości SMS z programu **MOM**? | Tato <br> Program 
 Message | prosty, wzorzec. Ile |  Komunikat do wysłania jako wiadomość e-mail lub tekstu.  | Wyślij wiadomość e-mail z informacją "**jestem zajęty**". | Jestem zajęty
-Kategoria | ułatwia | Kategoria wiadomości lub wiadomości e-mail musi mieć jasno zdefiniowaną definicję w systemie poczty e-mail, na przykład "nieprzeczytane", "flaga". Opis z nieprawidłowym definicją, na przykład "New" i "ostatnich", nie są kategoriami. | Oznacz wszystkie wiadomości e-mail jako **przeczytane**  <br> Nowa wiadomość e-mail **o wysokim priorytecie** dla Paul | ważne <br> wysoki priorytet <br> odczyt
-OrderReference | ułatwia | Numer porządkowy lub względną pozycja na liście identyfikacji elementu do pobrania. | Jaki był **ostatnio** wysłany komunikat? <br> Przeczytaj **najnowszą** wiadomość e-mail Nokia. <br> Odczytuj **nowe** wiadomości tekstowe. | ostatniego <br> najnowsza <br> Aktualne <br> najnowszych
+Category | ułatwia | Kategoria wiadomości lub wiadomości e-mail musi mieć jasno zdefiniowaną definicję w systemie poczty e-mail, na przykład "nieprzeczytane", "flaga". Opis z nieprawidłowym definicją, na przykład "New" i "ostatnich", nie są kategoriami. | Oznacz wszystkie wiadomości e-mail jako **przeczytane**  <br> Nowa wiadomość e-mail **o wysokim priorytecie** dla Paul | ważne <br> wysoki priorytet <br> odczyt
+OrderReference | ułatwia | Numer porządkowy lub względną pozycja na liście identyfikacji elementu do pobrania. | Jaki był **ostatnio** wysłany komunikat? <br> Przeczytaj **najnowszą** wiadomość e-mail Nokia. <br> Odczytuj **nowe** wiadomości tekstowe. | last <br> najnowsza <br> Aktualne <br> najnowszych
 Kontener positionreference | prosta, porządkowa | Numer porządkowy lub względną pozycja na liście identyfikacji elementu do pobrania.| Jaki był **pierwszy** wysłany komunikat? <br> **Trzecia** .| Pierwsze <br> trzeciej
 RelationshipName obiektu | ułatwia | Nazwa relacji osoby kontaktowej lub odbiorcy wiadomości. | Wyślij wiadomość e-mail do mojego **żona** | żona
 Time | datetime | Time | Wyślij wiadomość e-mail **Tonight**. | tonight
@@ -213,7 +213,7 @@ Kreska | ułatwia | Wiersz użytkownik chce użyć do wysłania wiadomości e-ma
 ## <a name="homeautomation"></a>**HomeAutomation**
 Domena HomeAutomation zapewnia intencje i jednostki związane z kontrolowaniem inteligentnych urządzeń domowych. Firma Microsoft obsługuje głównie polecenie sterujące związane ze światłami i warunkiem zapowietrznym. Może jednak mieć pewne możliwości uogólnienia na innych urządzeniach elektrycznych.
 ### <a name="supported-devices-and-properties"></a>**Obsługiwane urządzenia i właściwości**
-Urządzenie | Właściwości
+Urządzenie | properties
 -------|---------
 Czujnik temperatury | Temperatura
 Światło, Lampa | Wyłączone, jasność, kolor
@@ -232,7 +232,7 @@ Nazwa celu | Opis | Przykłady
  TurnUp | Zmień ustawienia lub jasność urządzeń. | Rozjaśnij lampki o 75%. <br> Jasność tutaj o 10 procent.  <br> Wypełnianie w pokoju mieszkalnym.
  TurnDown | Wyłączając, ale nie wyłączając urządzenia, w trybie DIMM, temperatura lub jasność świateł. | Przełączaj bibliotekę o 44%. <br> Przyciemniaj światła. <br> Utwórz chłodnicę pokoju.
 ### <a name="entities"></a>**Obiekty**
-Nazwa encji | Typ jednostki | Opis | Przykłady
+Nazwa jednostki | Typ jednostki | Opis | Przykłady
 -------|----------|--------------|---------------
 DeviceName | List | Tekst zdefiniowany przez użytkownika dla swoich urządzeń. | Niebieski<br> Święta <br> Kasow
 DeviceType | List | Obsługiwane urządzenia. | Uliczne <br> Warunek klimatyzacyjny <br> nightlight
@@ -263,13 +263,13 @@ RemoveSentence | Usuń zdanie dla notatki. | Usuń ostatnie zdanie. <br>Usuwanie
 ChangeTitle | Zmień tytuł notatki. | Nazwa ta należy do "planowania".
 
 ### <a name="entities"></a>**Obiekty**
-Nazwa encji | Typ jednostki | Opis | Przykłady 
+Nazwa jednostki | Typ jednostki | Opis | Przykłady 
 ------- | ------- | ------- | -------
 Text | prosty, wzorzec. Ile | Tekst notatki lub przypomnienia. | Rozciąganie przed zalet <br> jutro perspektywie.
-Tytuł | prosty, wzorzec. Ile | Tytuł notatki. | artykuły spożywcze <br> osoby do wywołania <br> do wykonania
+Stanowisko | prosty, wzorzec. Ile | Tytuł notatki. | artykuły spożywcze <br> osoby do wywołania <br> do wykonania
 CreationDate | datetimeV2 | To miejsce jest przeznaczone, gdy użytkownik pyta o uwagi utworzone w określonym oknie daty/godziny. | 
 Kwantyfikator | List | Gdy użytkownik prosi o wykonanie akcji dla elementu "All", "co" lub "any" lub całego tekstu w notatce. | all <br> Ile <br> co
-OrderReference | ordinal | Użytkownik chce wykonać akcje z elementami "First", "Last", "Next" itp. Items. | pierwszego <br> ostatniego
+OrderReference | ordinal | Użytkownik chce wykonać akcje z elementami "First", "Last", "Next" itp. Items. | pierwszego <br> last
 
 
 ## <a name="places"></a>**Nabywc**
@@ -403,7 +403,7 @@ Nazwa celu | Opis | Przykłady
 Jednostka LUIS | Typ jednostki | Opis | Przykłady
 ------------|-------------|-------------|---------
 Location | Geograficzne | Bezwzględna lub niejawna lokalizacja żądania pogody. | Palo Alto<br>Szanghaj<br>Seattle<br>Delvina<br>
-Date/Time   | datetime | Data i godzina trwania zapytania o Pogoda. | Listopad<br>co godzinę<br>Dobry<br>Ten weekend<br>10 dni<br>
+Date/Time   | datetime | Data i godzina trwania zapytania o Pogoda. | Listopad<br>godzinowo<br>Dobry<br>Ten weekend<br>10 dni<br>
 AdditionalWeatherCondition | list | Dodatkowy wyraz opisujący Pogoda, taki jak szybkość lub kierunek wiatru. | direction<br>Szybko<br>Pasażerski
 Znaczeniu | ułatwia | Opis słów historycznych warunków pogodowych, w tym przeciętnych przypadków przygranicznych Joomla w poprzednim okresie czasu. | zatrudnienia<br>historyczne/historia<br>chyleń<br>najlepszy czas<br>kiedykolwiek nagrane
 PrecipitationUnit | wymiar | Opady dla śniegu lub deszczu. | 5 cali<br>6 cm

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: 6120eee5bbd2f385fa8e76da093f7fadccb4904e
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 3792eed170d3e3e1cdd267c0c88d2d2d6c520733
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348975"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672808"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Podstawowe pojęcia Kubernetes dla usługi Azure Kubernetes Service (AKS)
 
@@ -76,39 +76,34 @@ Jeśli konieczne jest użycie innego systemu operacyjnego hosta, środowiska uru
 
 ### <a name="resource-reservations"></a>Rezerwacje zasobów
 
-Zasoby węzła są używane przez AKS, aby uczynić węzeł funkcją jako częścią klastra. Może to spowodować utworzenie discrepency między całkowitymi zasobami węzła a zasobami, które można przydzielić, gdy są używane w AKS. Jest to ważne, aby zauważyć podczas ustawiania żądań i limitów dla wdrożonych zasobników.
+Zasoby węzła są używane przez AKS, aby uczynić węzeł funkcją jako częścią klastra. Może to spowodować utworzenie discrepency między całkowitymi zasobami węzła a zasobami, które można przydzielić, gdy są używane w AKS. Jest to ważne, aby zauważyć, gdy ustawiasz żądania i limity dla wdrożonych przez użytkownika zasobników.
 
 Aby znaleźć zasoby możliwe do przydzielenia przez węzeł:
 ```kubectl
-kubectl describe node [NODE_NAME] | grep Allocatable -B 4 -A 3
+kubectl describe node [NODE_NAME]
 
 ```
 
-Aby zapewnić wydajność i funkcjonalność węzła, następujące zasoby obliczeniowe są zarezerwowane dla każdego węzła. W miarę zwiększania się liczby zasobów, rezerwacja zasobów rośnie ze względu na większą ilość potrzebnych do zarządzania użytkownikami.
+Aby zachować wydajność i funkcjonalność węzła, zasoby są zastrzeżone dla każdego węzła przez AKS. W miarę zwiększania się liczby zasobów, rezerwacja zasobów rośnie ze względu na większą ilość potrzebnych do zarządzania użytkownikami.
 
 >[!NOTE]
 > Używanie dodatków, takich jak OMS, będzie zużywać dodatkowe zasoby węzła.
 
-- Zależne od **procesora CPU** w typie węzła
+- Procesor CPU zarezerwowany przez **procesor** CPU zależy od typu węzła i konfiguracji klastra, co może spowodować mniejsze możliwości przydzielania CPU z powodu uruchamiania dodatkowych funkcji
 
 | Rdzenie procesora CPU na hoście | 1 | 2 | 4 | 8 | 16 | 32|64|
 |---|---|---|---|---|---|---|---|
-|Kubelet (millicores)|60|100|140|180|260|420|740|
+|Polecenia — zarezerwowane (millicores)|60|100|140|180|260|420|740|
 
-- **Pamięć** — 20% dostępnej pamięci, maksymalnie 4 GIB Max
+- **Pamięć** — rezerwacja pamięci jest następująca: wskaźnik progresywny
+  - 25% pierwszego 4 GB pamięci
+  - 20% z następnych 4 GB pamięci (do 8 GB)
+  - 10% z następnych 8 GB pamięci (do 16 GB)
+  - 6% następnego 112 GB pamięci (do 128 GB)
+  - 2% każdej pamięci powyżej 128 GB
 
 Te rezerwacje oznaczają, że ilość dostępnego procesora i pamięci dla aplikacji może być mniejsza niż w przypadku węzła. Jeśli istnieją ograniczenia zasobów ze względu na liczbę uruchomionych aplikacji, te rezerwacje zapewniają, że procesor i pamięć są dostępne dla podstawowych składników Kubernetes. Nie można zmienić rezerwacji zasobów.
 
-Na przykład:
-
-- **Standardowy rozmiar węzła DS2 v2** zawiera 2 vCPU i 7 pamięci GIB
-    - 20% z 7 GiB pamięci = 1,4 GiB
-    - Łącznie *(7-1,4) = 5,6 pamięci GIB* jest dostępna dla węzła
-    
-- Rozmiar węzła **standardowego E4s v3** zawiera 4 vCPU i 32 pamięci GIB
-    - 20% z 32 GiB pamięci = 6,4 GiB, ale AKS rezerwuje tylko 4 GiB
-    - Łącznie *(32-4) = 28 GIB* jest dostępna dla węzła
-    
 Podstawowy system operacyjny nie wymaga również pewnej ilości zasobów procesora i pamięci do ukończenia własnych funkcji podstawowych.
 
 Aby zapoznać się z najlepszymi rozwiązaniami, zobacz [najlepsze rozwiązania dotyczące podstawowych funkcji usługi Scheduler w AKS][operator-best-practices-scheduler].

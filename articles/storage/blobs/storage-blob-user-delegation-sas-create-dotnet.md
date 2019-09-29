@@ -4,17 +4,17 @@ description: Informacje na temat tworzenia sygnatury dostępu współdzielonego 
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 98ab93bbec8da17dde93c9c343703838b0279994
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 59de768e75a88d7cfa5b68fa306d0e83f1aa0ba3
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900425"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671325"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net-preview"></a>Tworzenie sygnatury dostępu współdzielonego użytkownika dla kontenera lub obiektu BLOB przy użyciu platformy .NET (wersja zapoznawcza)
 
@@ -57,7 +57,7 @@ az ad sp create-for-rbac \
     --scopes /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
 ```
 
-`az ad sp create-for-rbac` Polecenie zwraca listę właściwości nazwy głównej usługi w formacie JSON. Skopiuj te wartości, aby można było użyć ich do utworzenia niezbędnych zmiennych środowiskowych w następnym kroku.
+Polecenie `az ad sp create-for-rbac` zwraca listę właściwości nazwy głównej usługi w formacie JSON. Skopiuj te wartości, aby można było użyć ich do utworzenia niezbędnych zmiennych środowiskowych w następnym kroku.
 
 ```json
 {
@@ -87,7 +87,7 @@ Biblioteka klienta tożsamości platformy Azure odczytuje wartości z trzech zmi
 
 ## <a name="add-using-directives"></a>Dodawanie dyrektyw using
 
-Dodaj następujące `using` dyrektywy do kodu, aby korzystać z wersji zapoznawczej usługi Azure Identity i klienta usługi Azure Storage.
+Dodaj następujące dyrektywy `using` do kodu, aby korzystać z wersji zapoznawczej tożsamości platformy Azure i bibliotek klienckich usługi Azure Storage.
 
 ```csharp
 using System;
@@ -102,7 +102,7 @@ using Azure.Storage.Blobs.Models;
 
 ## <a name="authenticate-the-service-principal"></a>Uwierzytelnianie jednostki usługi
 
-Aby uwierzytelnić jednostkę usługi, Utwórz wystąpienie klasy [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) . `DefaultAzureCredential` Konstruktor odczytuje zmienne środowiskowe, które zostały utworzone wcześniej.
+Aby uwierzytelnić jednostkę usługi, Utwórz wystąpienie klasy [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) . Konstruktor `DefaultAzureCredential` odczytuje wcześniej utworzone zmienne środowiskowe.
 
 Poniższy fragment kodu przedstawia sposób pobierania uwierzytelnionego poświadczenia i używania go do tworzenia klienta usługi dla magazynu obiektów BLOB
 

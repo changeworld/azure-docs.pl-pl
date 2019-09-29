@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 836a9fd0b441ff9669c224dc41537e3c177d7dde
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: a6ba401d9d10e900fef5e2d296e74a07f84162cd
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389705"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71670756"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network często zadawane pytania
 
@@ -200,9 +200,9 @@ Tak. Należy podłączyć zestaw skalowania maszyn wirtualnych do sieci wirtualn
 ### <a name="is-there-a-complete-list-of-azure-services-that-can-i-deploy-resources-from-into-a-vnet"></a>Czy istnieje kompletna lista usług platformy Azure, które umożliwiają wdrażanie zasobów w sieci wirtualnej?
 Tak, aby uzyskać szczegółowe informacje, zobacz [integracja z siecią wirtualną dla usług platformy Azure](virtual-network-for-azure-services.md).
 
-### <a name="which-azure-paas-resources-can-i-restrict-access-to-from-a-vnet"></a>Z których zasobów usługi Azure PaaS można ograniczyć dostęp z sieci wirtualnej?
+### <a name="how-can-i-restrict-access-to-azure-paas-resources-from-a-vnet"></a>Jak ograniczyć dostęp do zasobów usługi Azure PaaS z sieci wirtualnej?
 
-Zasoby wdrożone za pomocą niektórych usług PaaS platformy Azure (takich jak Azure Storage i Azure SQL Database) mogą ograniczyć dostęp do sieci tylko do zasobów w sieci wirtualnej za pomocą punktów końcowych usługi sieci wirtualnej. Aby uzyskać szczegółowe informacje, zobacz [Omówienie punktów końcowych usługi sieci wirtualnej](virtual-network-service-endpoints-overview.md).
+Zasoby wdrożone za pomocą niektórych usług PaaS platformy Azure (takich jak Azure Storage i Azure SQL Database) mogą ograniczyć dostęp sieciowy do sieci wirtualnej za pomocą punktów końcowych usługi sieci wirtualnej lub prywatnego linku platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [Omówienie punktów końcowych usługi sieci wirtualnej](virtual-network-service-endpoints-overview.md), [Omówienie linku prywatnego platformy Azure](../private-link/private-link-overview.md)
 
 ### <a name="can-i-move-my-services-in-and-out-of-vnets"></a>Czy mogę przenieść usługi do i z sieci wirtualnych?
 Nie. Nie można przenieść usług do i z sieci wirtualnych. Aby przenieść zasób do innej sieci wirtualnej, należy usunąć i ponownie wdrożyć zasób.
@@ -245,7 +245,7 @@ Jeśli dwie sieci wirtualne znajdują się w różnych regionach (globalnej komu
 W poniższych zasobach są używane podstawowe usługi równoważenia obciążenia, co oznacza, że nie można komunikować się z nimi w ramach globalnej komunikacji równorzędnej sieci wirtualnej:
 - Maszyny wirtualne za podstawowymi usługami równoważenia obciążenia
 - Zestawy skalowania maszyn wirtualnych z podstawowymi usługami równoważenia obciążenia 
-- Redis Cache 
+- Usługa Redis Cache 
 - Jednostka SKU Application Gateway (v1)
 - Service Fabric
 - SQL — MI

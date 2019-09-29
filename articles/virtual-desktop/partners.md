@@ -7,16 +7,38 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: ddfe5c855b6cd0171494f1af20dc5eb4ae571a6e
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 90007a82acce0010504bc06e96801869aea4a87a
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918997"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673022"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integracja z partnerem pulpitu wirtualnego systemu Windows
 
-Ten artykuł zawiera listę partnerów pulpitu wirtualnego systemu Windows w kolejności alfabetycznej.
+W tym artykule wymieniono partnerów pulpitu wirtualnego systemu Windows.
+
+## <a name="citrix"></a>Citrix
+
+![Logo Citrix](./media/partners/citrix.png)
+
+Citrix to zatwierdzony dostawca, który oferuje firmowe scentralizowane zarządzanie hybrydowymi aplikacjami wirtualnymi i pulpitami na platformie Azure, obok wdrożeń lokalnych. Obszar roboczy Citrix z usługą Virtual Apps i komputery stacjonarne umożliwia użytkownikom dostęp do aplikacji i komputerów stacjonarnych z dowolnego urządzenia, wykorzystując zaawansowany protokół Citrix HDX w celu zapewnienia wysokiej jakości doświadczenia z dowolnego miejsca.
+
+Firma Citrix rozszerza wartość pulpitu wirtualnego systemu Windows z niezawodnymi narzędziami korporacyjnymi, aby zwiększyć gęstość i wydajność użytkowników, obsługiwać obciążenia na żądanie oraz uprościć zarządzanie obrazami i aplikacjami. Pozwala zoptymalizować koszty dzięki inteligentnym narzędziom do skalowania, a jednocześnie zapewnia niezawodne środowisko użytkownika końcowego, które zostało przetestowane w oparciu o trudniejsze aplikacje między branżami.
+
+- [Przejdź do witryny sieci Web partnera](https://more.citrix.com/wvd).
+
+
+## <a name="vmware"></a>VMware
+
+![Logo VMware](./media/partners/vmware.png)
+
+Usługa VMware Horizon Cloud w Microsoft Azure zapewnia organizacjom możliwość łączenia własnych wystąpień Microsoft Azure z prostą, intuicyjną płaszczyzną kontroli w chmurze, tworząc bezpieczną, kompleksową, hostowaną w chmurze rozwiązanie do dostarczania zwirtualizowanych Aplikacje i pulpity systemu Windows. Wraz z wydaniem pulpitu wirtualnego systemu Windows program VMware współpracujący z firmą Microsoft w celu zwiększenia funkcjonalności pulpitu wirtualnego systemu Windows do klientów korzystających z usługi Horizon w chmurze w Microsoft Azure.
+
+Jako zatwierdzony dostawca usługa VMware Horizon Cloud na Microsoft Azure klienci uzyskuje wszystkie korzyści z używania pulpitu wirtualnego systemu Windows, takiego jak Windows 10 Enterprise dla wielu sesji, system Windows 7 z bezpłatnymi rozszerzonymi aktualizacjami zabezpieczeń na maksymalnie trzy lata i FSLogix możliwości, oprócz wszystkich nowoczesnych funkcji klasy korporacyjnej w chmurze, takich jak szeroka obsługa punktów końcowych; globalne, zoptymalizowane pod kątem chmury, elastyczne opcje i konfiguracje pulpitu, zarządzanie środowiskiem użytkownika oraz obsługa środowisk hybrydowych. 
+
+- [Zarejestruj się w celu uzyskania wersji zapoznawczej chmury horyzontowej w Microsoft Azure](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
+- [Przejdź do witryny sieci Web partnera](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
 
 ## <a name="cloudjumper"></a>CloudJumper
 
@@ -24,10 +46,21 @@ Ten artykuł zawiera listę partnerów pulpitu wirtualnego systemu Windows w kol
 
 CloudJumper to dostawca usług dodanej przez pulpit wirtualny systemu Windows, który służy do udostępniania dostawców rozwiązań i korporacyjnej IT w ramach oprogramowania do całościowego aprowizacji środowisk pulpitu wirtualnego systemu Windows i zarządzania nimi. Dzięki oprogramowaniu CloudJumper można zarządzać każdą warstwą wdrożenia pulpitu wirtualnego systemu Windows. Dostarczanie obciążeń i aplikacji jest zautomatyzowane, dzięki czemu użytkownicy mogą szybko uzyskiwać dostęp do swoich pulpitów w dowolnym miejscu na dowolnym urządzeniu.
 
-Oprogramowanie CloudJumper, pakiet zarządzania obszarem roboczym w chmurze rozszerza wartość pulpitu wirtualnego systemu Windows, upraszczając wdrażanie i bieżące zadania administracyjne na platformie Azure. W jednym z okien szklanych może ona udostępniać i optymalizować infrastrukturę dla obszarów roboczych użytkowników oraz zarządzać nią. Aparat wyzwalania skryptu prostego CloudJumper integruje się z platformami usługi IT w celu zautomatyzowania zadań związanych z aprowizacji pulpitu wirtualnego systemu Windows. Ponadto interfejsy API CloudJumper umożliwiają dalsze rozszerzanie i integrację z innymi systemami przedsiębiorstwa, takimi jak usługi ServiceNow i BMC Ready.
+Oprogramowanie CloudJumper, pakiet zarządzania obszarem roboczym w chmurze rozszerza wartość pulpitu wirtualnego systemu Windows, upraszczając wdrażanie i bieżące zadania administracyjne na platformie Azure. W jednym z okien szklanych można udostępniać i optymalizować infrastrukturę dla obszarów roboczych użytkowników oraz zarządzać nią. Aparat wyzwalania skryptu prostego CloudJumper integruje się z platformami usługi IT w celu zautomatyzowania zadań związanych z aprowizacji pulpitu wirtualnego systemu Windows. Ponadto interfejsy API CloudJumper umożliwiają dalsze rozszerzanie i integrację z innymi systemami przedsiębiorstwa, takimi jak usługi ServiceNow i BMC Ready.
 
-- [Zobacz Krótki opis wspólnego rozwiązania.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mg)
-- [Przejdź do witryny sieci Web partnera.](https://cloudjumper.com/wvd/)
+- [Zobacz Krótki opis wspólnego rozwiązania](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mg).
+- [Przejdź do witryny sieci Web partnera](https://cloudjumper.com/wvd/).
+
+## <a name="controlup"></a>ControlUp
+
+![Logo ControlUp](./media/partners/controlup.png)
+
+ControlUp to dostawca usług dodanego pulpitu wirtualnego systemu Windows, który umożliwia zespołom IT monitorowanie, rozwiązywanie problemów, analizowanie i bezpośrednie Korygowanie problemów w lokalnej, hybrydowej chmurze i infrastrukturze chmurowej w czasie rzeczywistym z poziomu pojedynczej konsoli. Platforma analizy i zarządzania w ControlUp umożliwia również proaktywne Automatyzowanie poprawek w celu szybkiego coraz większego zestawu przypadków użycia.
+
+Gdy jest używany z pulpitem wirtualnym systemu Windows, ControlUp zapewnia dodatkowe możliwości optymalizacji środowisk pulpitu wirtualnego systemu Windows i środowiska użytkownika końcowego. W konsoli programu ControlUp są pobierane środowiska użytkownika końcowego w celu efektywnego monitorowania i rozwiązywania problemów z wydajnością. Intuicyjny pulpit nawigacyjny zawiera szczegółowe informacje i analizy dla wdrożeń pulpitów wirtualnych, a także opcje zautomatyzowanego raportowania wzbogacone o testy porównawcze społeczności. ControlUp może zarządzać wieloma źródłami danych i typami, organizując je w zestawach danych o wysokiej wydajności zagregowanych w infrastrukturze pulpitów wirtualnych w ramach obliczeń, magazynu i systemu Windows, co zapewnia szczegółową widoczność z poziomu pojedynczego okienka szkła.
+
+- [Zobacz krótkie rozwiązanie do przyłączania](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit).
+- [Przejdź do witryny sieci Web partnera](https://www.controlup.com/solutions/ms_wvd/).
 
 ## <a name="lakeside-software"></a>Lakeside oprogramowanie
 
@@ -37,8 +70,8 @@ Lakeside Software to dostawca usług dodanego pulpitu wirtualnego systemu Window
 
 Rozwiązanie do monitorowania rozwiązań cyfrowych Lakeside oprogramowania, SysTrack, może pomóc zapewnić doskonałe środowisko użytkownika, śledząc wydajność i identyfikując idealne obciążenia do migracji. SysTrack działa, aby zwiększyć wartość pulpitu wirtualnego systemu Windows za pomocą ocen właściwych rozmiarów i ciągłego monitorowania środowisk użytkowników.
 
-- [Zobacz Krótki opis wspólnego rozwiązania.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8Q)
-- [Przejdź do witryny sieci Web partnera.](https://www.lakesidesoftware.com/assessments/wvd)
+- [Zobacz Krótki opis wspólnego rozwiązania](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8Q).
+- [Przejdź do witryny sieci Web partnera](https://www.lakesidesoftware.com/assessments/wvd).
 
 ## <a name="liquidware"></a>Cieczer
 
@@ -48,8 +81,8 @@ Liquider to dostawca usług dodanego pulpitu wirtualnego systemu Windows, który
 
 Program liquider Essentials rozszerza wartość pulpitu wirtualnego systemu Windows przez wydajne Zbieranie profilów użytkowników i gromadzenie kluczowych danych użytkownika w celu usprawnienia migracji środowisk użytkownika na platformę Azure. Dodatkowo program liquider upraszcza zarządzanie obrazami przez ujednolicenie profilów użytkowników i aplikacji warstwowych na podstawie konfigurowalnych ustawień zarządzania prawami.
 
-- [Zobacz Krótki opis wspólnego rozwiązania.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oSY1)
-- [Przejdź do witryny sieci Web partnera.](https://www.liquidware.com/solutions/solutions-platform/microsoft)
+- [Zobacz Krótki opis wspólnego rozwiązania](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oSY1).
+- [Przejdź do witryny sieci Web partnera](https://www.liquidware.com/solutions/solutions-platform/microsoft).
 
 ## <a name="nerdio"></a>Nerdio
 
@@ -59,8 +92,8 @@ Nerdio to platforma automatyzacji IT platformy Azure, która ułatwia wdrażanie
 
 Nerdio rozszerza wartość pulpitu wirtualnego systemu Windows, co ułatwia Inicjowanie obsługi zasobów platformy Azure i usprawnienie wdrażania. Program Nerdio for Azure umożliwia automatyczne wdrażanie i zarządzanie kompletnym środowiskiem platformy Azure, w tym pulpitem wirtualnym systemu Windows, w ciągu dwóch godzin.
 
-- [Zobacz Krótki opis wspólnego rozwiązania.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh)
-- [Przejdź do witryny sieci Web partnera.](https://getnerdio.com/academy/windows-virtual-desktop-explained-for-msps/)
+- [Zobacz Krótki opis wspólnego rozwiązania](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh).
+- [Przejdź do witryny sieci Web partnera](https://getnerdio.com/academy/windows-virtual-desktop-explained-for-msps/).
 
 ## <a name="thinprint"></a>ThinPrint
 
@@ -70,8 +103,8 @@ ThinPrint to dostawca usług dodanego pulpitu wirtualnego systemu Windows, któr
 
 Rozwiązanie ezeep ThinPrint rozszerza wartość pulpitu wirtualnego systemu Windows, umożliwiając połączenie z istniejącą infrastrukturą drukowania w przedsiębiorstwie. ezeep zapewnia użytkownikom kontrolę nad drukowaniem w przedsiębiorstwie niezależnie od tego, gdzie się znajdują. Korzystając z ezeep, użytkownicy mogą mostkować przerwy między pulpitem wirtualnym i sprzętem drukowania systemu Windows.
 
-- [Zobacz Krótki opis wspólnego rozwiązania.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oYas)
-- [Przejdź do witryny sieci Web partnera.](https://www.ezeep.com/wvd-printing)
+- [Zobacz Krótki opis wspólnego rozwiązania](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oYas).
+- [Przejdź do witryny sieci Web partnera](https://www.ezeep.com/wvd-printing).
 
 ## <a name="workspot"></a>Workspot
 
@@ -81,10 +114,10 @@ Workspot to dostawca usług dodanej przez pulpit wirtualny systemu Windows, któ
 
 Workspot rozszerza wartość pulpitu wirtualnego systemu Windows przez uproszczenie procesu aprowizacji infrastruktury pulpitu chmurowego. Dzięki Workspot zasoby można łatwo skalować w górę i w dół, aby zaspokoić potrzeby różnych użytkowników i przypadków użycia. Workspot może zoptymalizować wdrożenia dla stacji roboczych GPU o wysokiej wydajności niezbędnej dla programów CAD i inżynierów, a także aplikacji systemu Windows i komputerów stacjonarnych z systemem Windows 10 dla wszystkich użytkowników firmowych.
 
-- [Zobacz Krótki opis wspólnego rozwiązania.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8P)
-- [Przejdź do witryny sieci Web partnera.](https://www.workspot.com/wvd)
+- [Zobacz Krótki opis wspólnego rozwiązania](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8P).
+- [Przejdź do witryny sieci Web partnera](https://www.workspot.com/wvd).
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Dowiedz się więcej na temat pulpitu wirtualnego systemu Windows.](overview.md)
-- [Utwórz dzierżawcę na pulpicie wirtualnym systemu Windows.](tenant-setup-azure-active-directory.md)
+- [Dowiedz się więcej na temat pulpitu wirtualnego systemu Windows](overview.md).
+- [Utwórz dzierżawcę na pulpicie wirtualnym systemu Windows](tenant-setup-azure-active-directory.md).

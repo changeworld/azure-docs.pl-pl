@@ -4,16 +4,16 @@ description: Lista kontrolna sprawdzonych praktyk do użycia z usługą Azure St
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 48a5484e2b2b663d0046fc628c02e656c5bd7a25
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e700cf04123bf02c1014aa418189221fbbb0b812
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985165"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71670927"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Lista kontrolna wydajności i skalowalności Microsoft Azure Storage
 
@@ -30,7 +30,7 @@ Ten artykuł organizuje sprawdzone praktyki w następujących grupach. Sprawdzon
 * Tabele
 * Kolejki  
 
-| Gotowe | Obszar | Kategoria | Pytanie |
+| Gotowe | Obszar | Category | Pytanie |
 | --- | --- | --- | --- |
 | &nbsp; | Wszystkie usługi |Tarcze skalowalności |[Czy aplikacja została zaprojektowana tak, aby uniknąć zbliżania się celów skalowalności?](#subheading1) |
 | &nbsp; | Wszystkie usługi |Tarcze skalowalności |[Czy Twoja Konwencja nazewnictwa została zaprojektowana w celu umożliwienia lepszego równoważenia obciążenia?](#subheading47) |
@@ -485,6 +485,6 @@ Aby architektura aplikacji była skalowalna, należy użyć kolejek. Poniżej wy
 * Za pomocą kolejek można tworzyć zaległości służbowe do przetwarzania i wygładzania obciążeń w aplikacji. Na przykład można kolejkować żądania od użytkowników w celu wykonywania dużej ilości pracy procesora, takich jak zmienianie rozmiarów przekazanych obrazów.
 * Za pomocą kolejek można rozdzielić części aplikacji, aby umożliwić ich niezależne skalowanie. Na przykład fronton sieci Web może umieścić wyniki ankiety od użytkowników w kolejce na potrzeby późniejszej analizy i magazynu. Można dodać więcej wystąpień roli procesu roboczego, aby przetworzyć dane kolejki zgodnie z wymaganiami.  
 
-## <a name="conclusion"></a>Wniosek
+## <a name="conclusion"></a>Podsumowanie
 
 W tym artykule omówiono niektóre z najpopularniejszych, sprawdzonych rozwiązań dotyczących optymalizacji wydajności podczas korzystania z usługi Azure Storage. Zachęcamy każdego dewelopera aplikacji do oceny swoich aplikacji pod kątem powyższych rozwiązań oraz do postępowania zgodnie z zaleceniami mającymi na celu uzyskanie optymalnej wydajności aplikacji korzystających z usługi Azure Storage.

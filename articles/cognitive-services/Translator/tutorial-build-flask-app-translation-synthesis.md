@@ -1,7 +1,7 @@
 ---
-title: 'Samouczek: Tworzenie aplikacji Flask tłumaczenie, syntetyzowania i Analizuj tekst — interfejs API tekstu usługi Translator'
+title: 'Samouczek: Tworzenie aplikacji do kolby do translacji, wytłumaczania i analizowania tekstu interfejs API tłumaczenia tekstu w usłudze Translator'
 titleSuffix: Azure Cognitive Services
-description: W tym samouczku utworzysz aplikację sieci web opartych na Flask, która używa usług Azure Cognitive Services tłumaczenie tekstu, analizowanie tonacji i syntetyzowania przetłumaczonego tekstu na mowę. Naszym głównym celem jest kodu w języku Python i Flask trasy, umożliwiające naszej aplikacji. Firma Microsoft nie będzie poświęcać dużo czasu na język JavaScript, który kontroluje aplikacji, ale zapewnia wszystkich plików do wglądu.
+description: W tym samouczku utworzysz aplikację sieci Web opartą na kolbie, która korzysta z usługi Azure Cognitive Services do tłumaczenia tekstu, analizowania tonacji i syntezowania przetłumaczonego tekstu na mowę. Nasz fokus znajduje się na trasie kodu i kolb w języku Python, które umożliwiają naszej aplikacji. Nie poświęcamy dużo czasu na kod JavaScript kontrolujący aplikację, ale Podaj wszystkie pliki do inspekcji.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,141 +10,141 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: cef747e82e7d039952bec73e822f28eab2adaa97
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8d85db0e9aa9da48713ca0c119a12160cc99dbff
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67434888"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671842"
 ---
-# <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Samouczek: Tworzenie aplikacji Flask za pomocą usług Azure Cognitive Services
+# <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Samouczek: Tworzenie aplikacji do kolby za pomocą usługi Azure Cognitive Services
 
-W tym samouczku utworzysz aplikację sieci web Flask, która używa usług Azure Cognitive Services tłumaczenie tekstu, analizowanie tonacji i syntetyzowania przetłumaczonego tekstu na mowę. Naszym głównym celem jest kodu w języku Python i Flask trasy, umożliwiające naszej aplikacji, jednak firma Microsoft pomoże Ci za pomocą kodu HTML i Javascript, który zbiera aplikacji. Jeśli napotkasz problemy Daj nam znać, za pomocą przycisku opinii poniżej.
+W tym samouczku utworzysz nową aplikację sieci Web, która korzysta z usługi Azure Cognitive Services do tłumaczenia tekstu, analizowania tonacji i syntezowania przetłumaczonego tekstu na mowę. Nasz fokus znajduje się w oparciu o kod w języku Python i trasy kolb, które umożliwiają naszej aplikacji, ale pomożemy Ci w rozwiązaniu z kodem HTML i JavaScript, który pobiera aplikację razem. Jeśli napotkasz jakiekolwiek problemy, skontaktuj się z nami za pomocą przycisku opinii poniżej.
 
-Poniżej przedstawiono, w tym samouczku opisano:
+Oto, co obejmuje ten samouczek:
 
 > [!div class="checklist"]
-> * Uzyskiwanie kluczy subskrypcji platformy Azure
-> * Konfigurowanie środowiska deweloperskiego i zainstaluj zależności
-> * Tworzenie aplikacji Flask
-> * Interfejs API tekstu usługi Translator umożliwia tłumaczenie tekstu
-> * Korzystanie z analizy tekstu do analizy tonacji dodatnie i ujemne, wprowadzany tekst oraz tłumaczenia
-> * Użyj usług przetwarzania mowy do konwertowania przetłumaczonego tekstu do syntezatora mowy
-> * Uruchom aplikację Flask lokalnie
+> * Pobierz klucze subskrypcji platformy Azure
+> * Konfigurowanie środowiska deweloperskiego i Instalowanie zależności
+> * Tworzenie aplikacji do kolby
+> * Użyj interfejs API tłumaczenia tekstu w usłudze Translator do tłumaczenia tekstu
+> * Użyj analiza tekstu, aby analizować pozytywne/ujemne tonacji tekstu wejściowego i tłumaczenia
+> * Konwertowanie przetłumaczonego tekstu na mowę z użyciem usługi Speech Services
+> * Uruchamianie aplikacji z kolby lokalnie
 
 > [!TIP]
-> Jeśli chcesz przejść od razu i wyświetlić cały kod od razu całego próbki, wraz z kompilacji instrukcje są dostępne w [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Flask-App-Tutorial).
+> Jeśli chcesz pominąć i wyświetlić cały kod jednocześnie, cały przykład wraz z instrukcjami dotyczącymi kompilacji jest dostępny w witrynie [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Flask-App-Tutorial).
 
-## <a name="what-is-flask"></a>Co to jest Flask?
+## <a name="what-is-flask"></a>Co to jest Kolba?
 
-Flask jest microframework do tworzenia aplikacji sieci web. Oznacza to, że Flask zapewnia narzędzia, biblioteki i technologie, które umożliwiają tworzenie aplikacji sieci web. Ta aplikacja sieci web może być niektóre strony sieci web, blogu, stron typu wiki lub go jako merytorycznych jako aplikacja sieci web kalendarza lub komercyjnych witryn sieci Web.
+Kolba jest mikroplatformą do tworzenia aplikacji sieci Web. Oznacza to, że Kolba zawiera narzędzia, biblioteki i technologie umożliwiające tworzenie aplikacji sieci Web. Ta aplikacja sieci Web może być witrynami sieci Web, blogami, witrynami typu wiki lub w formie komercyjnej witryny internetowej.
 
-Dla osób, które mają być zagłębia po w tym samouczku poniżej przedstawiono kilka pomocnych linków:
+W przypadku użytkowników, którzy chcą uzyskać głębokie szczegółowe po tym samouczku, są kilka przydatnych linków:
 
-* [Dokumentacja Flask](http://flask.pocoo.org/)
-* [Flask manekinów — przewodnik dla początkujących Flask](https://codeburst.io/flask-for-dummies-a-beginners-guide-to-flask-part-uno-53aec6afc5b1)
+* [Dokumentacja dotycząca kolby](http://flask.pocoo.org/)
+* [Kolba dla manekinów — Przewodnik początkującego do kolby](https://codeburst.io/flask-for-dummies-a-beginners-guide-to-flask-part-uno-53aec6afc5b1)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Omówmy teraz kluczy oprogramowania i subskrypcji, które należy w tym samouczku.
+Zapoznaj się z oprogramowaniem i kluczami subskrypcji, które będą potrzebne w tym samouczku.
 
-* [Język Python 3.5.2 lub nowszy](https://www.python.org/downloads/)
+* [Python 3.5.2 lub nowszy](https://www.python.org/downloads/)
 * [Narzędzia Git](https://git-scm.com/downloads)
-* Środowisko IDE lub edytorze tekstów, takich jak [programu Visual Studio Code](https://code.visualstudio.com/) lub [Atom](https://atom.io/)  
-* [Dla programu Chrome](https://www.google.com/chrome/browser/) lub [Firefox](https://www.mozilla.org/firefox)
-* A **tekstu usługi Translator** klucz subskrypcji (Zauważ, że nie są wymagane w celu wybrania regionu.)
-* A **analizy tekstu** klucz subskrypcji w **zachodnie stany USA** regionu.
-* A **usług przetwarzania mowy** klucz subskrypcji w **zachodnie stany USA** regionu.
+* IDE lub Edytor tekstu, taki jak [Visual Studio Code](https://code.visualstudio.com/) lub [Atom](https://atom.io/)  
+* [Chrome](https://www.google.com/chrome/browser/) lub [Firefox](https://www.mozilla.org/firefox)
+* Klucz subskrypcji **tłumaczenie tekstu w usłudze translator** (należy zauważyć, że nie jest wymagane wybranie regionu).
+* Klucz subskrypcji **Analiza tekstu** w regionie **zachodnie stany USA** .
+* Klucz subskrypcji **usługi Speech Services** w regionie **zachodnie stany USA** .
 
 ## <a name="create-an-account-and-subscribe-to-resources"></a>Tworzenie konta i subskrybowanie zasobów
 
-Jak wspomniano wcześniej możesz zacząć wymagane są trzy klucze subskrypcji w ramach tego samouczka. Oznacza to, należy utworzyć zasób w ramach konta platformy Azure dla:
-* Tekst usługi Translator
+Jak wspomniano wcześniej, będziesz potrzebować trzech kluczy subskrypcji dla tego samouczka. Oznacza to, że musisz utworzyć zasób na koncie platformy Azure dla:
+* Tłumaczenie tekstu w usłudze Translator
 * Analiza tekstu
 * Usługi mowy
 
-Użyj [Utwórz konto Cognitive Services w witrynie Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) instrukcje krok po kroku do tworzenia zasobów.
+Aby uzyskać instrukcje krok po kroku dotyczące tworzenia zasobów, użyj polecenia [Utwórz konto Cognitive Services w Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) .
 
 > [!IMPORTANT]
-> Na potrzeby tego samouczka Utwórz swoje zasoby w regionie zachodnie stany USA. Jeśli używasz innego regionu, należy dostosować podstawowy adres URL w każdym z plików języka Python.
+> Na potrzeby tego samouczka Utwórz zasoby w regionie zachodnie stany USA. W przypadku korzystania z innego regionu należy dostosować podstawowy adres URL w każdym z plików języka Python.
 
 ## <a name="set-up-your-dev-environment"></a>Konfigurowanie środowiska deweloperskiego
 
-Przed utworzeniem aplikacji internetowej Flask, należy utworzyć katalog roboczy dla projektu i zainstalować kilka pakietów języka Python.
+Przed utworzeniem kolby aplikacji sieci Web należy utworzyć katalog roboczy dla projektu i zainstalować kilka pakietów języka Python.
 
-### <a name="create-a-working-directory"></a>Utwórz katalog roboczy
+### <a name="create-a-working-directory"></a>Tworzenie katalogu roboczego
 
-1. Otwórz wiersz polecenia (Windows) lub terminalu (z systemem macOS/Linux). Następnie można utworzyć, przejdź do katalogu roboczego i podkatalogi w projekcie:  
+1. Otwórz wiersz polecenia (Windows) lub terminal (macOS/Linux). Następnie Utwórz katalog roboczy i podkatalogi dla projektu:  
 
    ```
    mkdir -p flask-cog-services/static/scripts && mkdir flask-cog-services/templates
    ```
-2. Zmień katalog roboczy projektu:  
+2. Przejdź do katalogu roboczego projektu:  
 
    ```
    cd flask-cog-services
    ```
 
-### <a name="create-and-activate-your-virtual-environment-with-virtualenv"></a>Utworzyć i aktywować w środowisku wirtualnym przy użyciu `virtualenv`
+### <a name="create-and-activate-your-virtual-environment-with-virtualenv"></a>Tworzenie i aktywowanie środowiska wirtualnego przy użyciu `virtualenv`
 
-Utwórz środowisko wirtualne dla naszych Flask aplikacji za pomocą `virtualenv`. Użycie środowiska wirtualnego gwarantuje, czy masz czystego środowiska, aby działało z.
+Utwórzmy środowisko wirtualne dla naszej aplikacji kolby przy użyciu `virtualenv`. Użycie środowiska wirtualnego gwarantuje, że masz czyste środowisko do pracy.
 
-1. W katalogu roboczym, uruchom następujące polecenie, aby utworzyć środowisko wirtualne: **systemu macOS/Linux:**
+1. W katalogu roboczym Uruchom to polecenie, aby utworzyć środowisko wirtualne: **macOS/Linux:**
    ```
    virtualenv venv --python=python3
    ```
-   Firma Microsoft został zadeklarowany w sposób jawny, środowiska wirtualnego, należy użyć Python 3. Daje to gwarancję, że użytkownicy z wiele instalacji języka Python korzystają poprawnej wersji.
+   Jawnie zadeklarowano, że środowisko wirtualne powinno używać języka Python 3. Dzięki temu użytkownicy z wieloma instalacjami w języku Python używają poprawnej wersji.
 
-   **Windows CMD / Windows Bash:**
+   **Windows bash/Windows:**
    ```
    virtualenv venv
    ```
-   Aby zachować ich prostotę, firma Microsoft jest nazewnictwa Twojej venv środowiska wirtualnego.
+   Aby zachować prostotę, nazywamy venv środowiska wirtualnego.
 
-2. Te polecenia, aby aktywować swoje środowisko wirtualne różnią się w zależności od platformy/powłoki:   
+2. Polecenia umożliwiające aktywację środowiska wirtualnego będą się różnić w zależności od platformy/powłoki:   
 
    | Platforma | Powłoka | Polecenie |
    |----------|-------|---------|
-   | macOS/Linux | bash/zsh | `source venv/bin/activate` |
+   | macOS/Linux | bash/ZSH | `source venv/bin/activate` |
    | Windows | Bash | `source venv/Scripts/activate` |
    | | Wiersz polecenia | `venv\Scripts\activate.bat` |
    | | PowerShell | `venv\Scripts\Activate.ps1` |
 
-   Po uruchomieniu tego polecenia z wiersza polecenia lub sesji terminalowej powinien być poprzedzony znakami `venv`.
+   Po uruchomieniu tego polecenia, w wierszu polecenia lub sesji terminalu należy przed`venv`.
 
-3. Możesz dezaktywować sesji w dowolnym momencie, wpisując w wierszu polecenia lub terminalu to: `deactivate`.
+3. Sesję można dezaktywować w dowolnym momencie, wpisując w wierszu polecenia lub terminalu: `deactivate`.
 
 > [!NOTE]
-> Python ma obszerną dokumentację do tworzenia i zarządzania środowiskami wirtualnymi, zobacz [virtualenv](https://virtualenv.pypa.io/en/latest/).
+> Język Python zawiera obszerną dokumentację tworzenia środowisk wirtualnych i zarządzania nimi, zobacz [virtualenv](https://virtualenv.pypa.io/en/latest/).
 
-### <a name="install-requests"></a>Zainstaluj żądań
+### <a name="install-requests"></a>Żądania instalacji
 
-Liczba żądań to popularny moduł, który służy do wysyłania żądań HTTP 1.1. Nie ma potrzeby ręcznie Dodaj ciągów zapytań do adresami URL lub formularza kodowanie danych POST.
+Żądania to popularny moduł, który jest używany do wysyłania żądań HTTP 1,1. Nie ma potrzeby ręcznego dodawania ciągów zapytań do adresów URL ani do kodowania danych POST.
 
-1. Aby zainstalować żądań, uruchom polecenie:
+1. Aby zainstalować żądania, uruchom polecenie:
 
    ```
    pip install requests
    ```
 
 > [!NOTE]
-> Jeśli chcesz dowiedzieć się więcej na temat żądań, zobacz [żądań: HTTP dla ludzi](http://docs.python-requests.org/en/master/).
+> Jeśli chcesz dowiedzieć się więcej o żądaniach, zobacz [Requests: HTTP dla ludzi @ no__t-0.
 
-### <a name="install-and-configure-flask"></a>Instalowanie i konfigurowanie Flask
+### <a name="install-and-configure-flask"></a>Zainstaluj i skonfiguruj kolbę
 
-Następnie należy zainstalować Flask. Flask obsługuje routing dla naszej aplikacji sieci web i pozwala na wykonywanie wywołań serwera serwera, które ukryć naszych klucze subskrypcji użytkownika końcowego.
+Następnie musimy zainstalować kolbę. Kolba obsługuje routing dla naszej aplikacji sieci Web i umożliwia nam tworzenie wywołań serwer-serwer, które ukrywają nasze klucze subskrypcji od użytkownika końcowego.
 
-1. Aby zainstalować Flask, uruchom polecenie:
+1. Aby zainstalować kolbę, uruchom polecenie:
    ```
    pip install Flask
    ```
-   Upewnijmy się, że Flask został zainstalowany. Uruchomienie:
+   Upewnijmy się, że Kolba została zainstalowana. Uruchomienie:
    ```
    flask --version
    ```
-   Wersja powinien zostać wydrukowany do terminala. Czymkolwiek oznacza, że coś poszło źle.
+   Wersja powinna być drukowana do terminalu. Coś innego oznacza, że wystąpił problem.
 
-2. Aby uruchomić aplikację Flask, możesz użyć polecenia flask lub przełącznika -m języka Python z Flask. Możesz to zrobić, musisz najpierw Poinformuj terminalu aplikacji, które chcesz pracować, eksportując `FLASK_APP` zmienną środowiskową:
+2. Aby uruchomić aplikację z kolbą, możesz użyć polecenia kolby lub przełącznika języka Python-m z kolbą. Przed wykonaniem tej czynności należy poinformować Terminal, z którym aplikacja ma współpracować, eksportując zmienną środowiskową `FLASK_APP`:
 
    **macOS/Linux**:
    ```
@@ -156,13 +156,13 @@ Następnie należy zainstalować Flask. Flask obsługuje routing dla naszej apli
    set FLASK_APP=app.py
    ```
 
-## <a name="create-your-flask-app"></a>Tworzenie aplikacji Flask
+## <a name="create-your-flask-app"></a>Tworzenie aplikacji do kolby
 
-W tej sekcji możesz zacząć tworzenie aplikacji Flask podstawowe, która zwraca plik HTML, gdy użytkownicy trafić katalogu głównego aplikacji. Nie poświęcać zbyt dużo czasu, próby pobrania od siebie kod, wrócimy można później zaktualizować ten plik.
+W tej sekcji utworzysz aplikację podstawoweej kolby, która zwraca plik HTML, gdy użytkownicy trafią do katalogu głównego aplikacji. Nie poświęcaj zbyt dużo czasu na próbę pobrania kodu, wróćmy do aktualizacji tego pliku później.
 
-### <a name="what-is-a-flask-route"></a>Co to jest trasa Flask?
+### <a name="what-is-a-flask-route"></a>Co to jest trasa do kolby?
 
-Poświęćmy chwilę, aby porozmawiać na temat "[trasy](http://flask.pocoo.org/docs/1.0/api/#flask.Flask.route)". Routing służy do tworzenia powiązania adres URL do określonych funkcji. Flask używa dekoratory trasy, aby zarejestrować funkcji do określonych adresów URL. Na przykład, gdy użytkownik przejdzie do katalogu głównego (`/`) aplikacji sieci web, `index.html` jest renderowany.  
+Poświęćmy chwilę na rozmowę o "[trasach](http://flask.pocoo.org/docs/1.0/api/#flask.Flask.route)". Routing jest używany do powiązania adresu URL z określoną funkcją. Kolba używa trasy dekoratory do rejestrowania funkcji dla określonych adresów URL. Na przykład gdy użytkownik nawiguje do katalogu głównego (`/`) naszej aplikacji sieci Web, jest renderowany `index.html`.  
 
 ```python
 @app.route('/')
@@ -170,7 +170,7 @@ def index():
     return render_template('index.html')
 ```
 
-Spójrzmy na więcej przykład hammer tej głównej.
+Spójrzmy na jeden przykład, aby wyrównać ten dom.
 
 ```python
 @app.route('/about')
@@ -178,13 +178,13 @@ def about():
     return render_template('about.html')
 ```
 
-Ten kod zapewnia, że gdy użytkownik przechodzi do `http://your-web-app.com/about` , `about.html` pliku jest renderowany.
+Ten kod gwarantuje, że gdy użytkownik nawiguje do `http://your-web-app.com/about`, że jest renderowany plik `about.html`.
 
-Chociaż te przykłady ilustrują sposób renderowania stron html dla użytkownika, trasy można również do wywoływania interfejsów API, gdy przycisk jest wciśnięty lub wykonać dowolną liczbę akcji bez konieczności opuścić stronę główną. Zobaczysz to w akcji podczas tworzenia trasy dla tłumaczenia, tonację i synteza mowy.
+Chociaż te przykłady ilustrują sposób renderowania stron HTML dla użytkownika, trasy mogą być również używane do wywoływania interfejsów API po naciśnięciu przycisku lub podjęcia dowolnej liczby akcji bez konieczności nawigowania po stronie głównej. Ta akcja zostanie wyświetlona podczas tworzenia tras do translacji, tonacji i syntezy mowy.
 
 ### <a name="get-started"></a>Rozpoczęcie pracy
 
-1. Otwórz projekt w środowisku IDE, a następnie utwórz plik o nazwie `app.py` w głównym katalogu roboczego. Następnie skopiuj ten kod do `app.py` i Zapisz:
+1. Otwórz projekt w środowisku IDE, a następnie utwórz plik o nazwie `app.py` w katalogu głównym katalogu roboczego. Następnie skopiuj ten kod do `app.py` i Zapisz:
 
    ```python
    from flask import Flask, render_template, url_for, jsonify, request
@@ -197,9 +197,9 @@ Chociaż te przykłady ilustrują sposób renderowania stron html dla użytkowni
        return render_template('index.html')
    ```
 
-   Ten blok kodu informuje aplikację, aby wyświetlić `index.html` zawsze, gdy użytkownik przejdzie do katalogu głównego aplikacji sieci web (`/`).
+   Ten blok kodu informuje aplikację o wyświetlaniu `index.html` za każdym razem, gdy użytkownik przechodzi do katalogu głównego aplikacji sieci Web (`/`).
 
-2. Następnie utworzymy frontonu dla naszej aplikacji sieci web. Utwórz plik o nazwie `index.html` w `templates` katalogu. Następnie skopiuj ten kod do `templates/index.html`.
+2. Następnie Utwórzmy fronton dla naszej aplikacji sieci Web. Utwórz plik o nazwie `index.html` w katalogu `templates`. Następnie skopiuj ten kod do `templates/index.html`.
 
    ```html
    <!doctype html>
@@ -233,36 +233,37 @@ Chociaż te przykłady ilustrują sposób renderowania stron html dla użytkowni
    </html>
    ```
 
-3. Teraz przetestuj aplikację Flask. W terminalu Uruchom polecenie:
+3. Przetestujmy aplikację do kolby. W terminalu uruchom polecenie:
 
    ```
    flask run
    ```
 
-4. Otwórz przeglądarkę i przejdź do adresu URL, pod warunkiem. Powinien zostać wyświetlony aplikację jednostronicową. Naciśnij klawisz **Ctrl + c** do zakończenia aplikacji.
+4. Otwórz przeglądarkę i przejdź do podanego adresu URL. Powinna zostać wyświetlona aplikacja jednostronicowa. Naciśnij **klawisze CTRL + c** , aby skasować aplikację.
 
-## <a name="translate-text"></a>Tłumaczenie tekstu
+## <a name="translate-text"></a>Przetłumacz tekst
 
-Teraz, gdy masz pomysł na prostej aplikacji Flask działania umożliwia:
+Teraz, gdy masz pomysł na działanie prostej aplikacji do kolby, przyjrzyjmy się:
 
-* Zapis niektóre Python wywołania interfejsu API tekstu usługi Translator i zwróć odpowiedź
-* Utwórz trasę do wywoływania z kodu w języku Python Flask
-* Zaktualizuj kod HTML za pomocą obszaru wprowadzania tekstu i translację, selektor języka i tłumaczenie przycisku
-* Pisanie kodu Javascript, który pozwala użytkownikom na interakcję z aplikacji Flask za pomocą kodu HTML
+* Napisz część języka Python, aby wywołać interfejs API tłumaczenia tekstu w usłudze Translator i zwrócić odpowiedź
+* Tworzenie trasy kolby do wywoływania kodu w języku Python
+* Aktualizowanie kodu HTML za pomocą obszaru na potrzeby wprowadzania tekstu i tłumaczenia, selektor języka i przycisk tłumaczenie
+* Napisz kod JavaScript, który pozwala użytkownikom na korzystanie z aplikacji z kolby w kodzie HTML
 
-### <a name="call-the-translator-text-api"></a>Wywołaj interfejs API tekstu usługi Translator
+### <a name="call-the-translator-text-api"></a>Wywołaj interfejs API tłumaczenia tekstu w usłudze Translator
 
-Pierwszą rzeczą, jaką należy wykonać to pisanie funkcji do wywołania interfejsu API tłumaczenia tekstu. Tej funkcji potrwa dwa argumenty: `text_input` i `language_output`. Ta funkcja jest wywoływana zawsze wtedy, gdy użytkownik naciśnie przycisk translate w swojej aplikacji. Obszar tekstu w formacie HTML jest wysyłany jako `text_input`, a wartość wybór języka, w kodzie HTML jest wysyłany jako `language_output`.
+Pierwszą czynnością, którą należy wykonać, jest zapisanie funkcji, która wywołuje interfejs API tłumaczenia tekstu w usłudze Translator. Ta funkcja będzie przyjmować dwa argumenty: `text_input` i `language_output`. Ta funkcja jest wywoływana za każdym razem, gdy użytkownik naciśnie przycisk tłumaczenie w aplikacji. Obszar tekstowy w kodzie HTML jest wysyłany jako `text_input`, a wartość wybór języka w kodzie HTML jest wysyłana jako `language_output`.
 
-1. Zacznijmy od utworzenia pliku o nazwie `translate.py` w głównym katalogu roboczego.
-2. Następnie dodaj ten kod w celu `translate.py`. Ta funkcja przyjmuje dwa argumenty: `text_input` i `language_output`.
+1. Zacznijmy od utworzenia pliku o nazwie `translate.py` w katalogu głównym katalogu roboczego.
+2. Następnie Dodaj ten kod do `translate.py`. Ta funkcja przyjmuje dwa argumenty: `text_input` i `language_output`.
    ```python
    import os, requests, uuid, json
 
    # Don't forget to replace with your Cog Services subscription key!
    # If you prefer to use environment variables, see Extra Credit for more info.
    subscription_key = 'YOUR_TRANSLATOR_TEXT_SUBSCRIPTION_KEY'
-
+   
+   # Don't forget to replace with your Cog Services location!
    # Our Flask route will supply two arguments: text_input and language_output.
    # When the translate text button is pressed in our Flask app, the Ajax request
    # will grab these values from our web app, and use them in the request.
@@ -275,6 +276,7 @@ Pierwszą rzeczą, jaką należy wykonać to pisanie funkcji do wywołania inter
 
        headers = {
            'Ocp-Apim-Subscription-Key': subscription_key,
+           'Ocp-Apim-Subscription-Region': 'location',
            'Content-type': 'application/json',
            'X-ClientTraceId': str(uuid.uuid4())
        }
@@ -286,26 +288,26 @@ Pierwszą rzeczą, jaką należy wykonać to pisanie funkcji do wywołania inter
        response = requests.post(constructed_url, headers=headers, json=body)
        return response.json()
    ```
-3. Dodaj klucz subskrypcji tekstu usługi Translator i Zapisz.
+3. Dodaj klucz subskrypcji tłumaczenie tekstu w usłudze Translator i Zapisz.
 
-### <a name="add-a-route-to-apppy"></a>Dodać trasę do `app.py`
+### <a name="add-a-route-to-apppy"></a>Dodawanie trasy do `app.py`
 
-Następnie musisz utworzyć trasę w swojej aplikacji Flask, która wywołuje `translate.py`. Ta trasa będzie być wywoływana za każdym razem, użytkownik naciśnie przycisk translate w swojej aplikacji.
+Następnie musisz utworzyć trasę w aplikacji kolby, która wywoła `translate.py`. Ta trasa będzie wywoływana za każdym razem, gdy użytkownik naciśnie przycisk tłumaczenie w aplikacji.
 
-Dla tej aplikacji będzie akceptować trasy `POST` żądań. Jest to spowodowane funkcja oczekuje tekstu do przetłumaczenia i język danych wyjściowych do tłumaczenia.
+W przypadku tej aplikacji trasy będą akceptować żądania `POST`. Wynika to z faktu, że funkcja oczekuje tekstu do przetłumaczenia i języka wyjściowego dla tłumaczenia.
 
-Flask udostępnia funkcje pomocnicze, które ułatwiają analizowanie i zarządzanie nimi każdego żądania. W kodzie `get_json()` zwraca dane z `POST` żądania w formacie JSON. Następnie przy użyciu `data['text']` i `data['to']`, wartości język tekstu i dane wyjściowe są przekazywane do `get_translation()` funkcji dostępne `translate.py`. Ostatnim krokiem jest do zwrócenia w odpowiedzi JSON, ponieważ będzie potrzebne wyświetlić te dane w aplikacji sieci web.
+Kolba zawiera funkcje pomocnika, które ułatwiają analizowanie poszczególnych żądań i zarządzanie nimi. W podanym kodzie `get_json()` zwraca dane z żądania `POST` jako JSON. Następnie przy użyciu `data['text']` i `data['to']` wartości języka tekstowego i wyjściowego są przekazywane do funkcji `get_translation()` dostępnej z `translate.py`. Ostatnim krokiem jest zwrócenie odpowiedzi w formacie JSON, ponieważ konieczne będzie wyświetlenie tych danych w aplikacji sieci Web.
 
-W poniższych sekcjach należy powtórzyć ten proces pomocne podczas tworzenia trasy dla tonacji syntezy analizy i mowy.
+W poniższych sekcjach należy powtórzyć ten proces podczas tworzenia tras dla analizy tonacji i syntezy mowy.
 
-1. Otwórz `app.py` i zlokalizuj instrukcję importu na początku `app.py` i Dodaj następujący wiersz:
+1. Otwórz `app.py` i Znajdź instrukcję import w górnej części `app.py` i Dodaj następujący wiersz:
 
    ```python
    import translate
    ```
-   Teraz naszej aplikacji Flask za pomocą metody, które są dostępne za pośrednictwem `translate.py`.
+   Teraz nasza aplikacja do kolby może korzystać z metody dostępnej za pośrednictwem `translate.py`.
 
-2. Skopiuj ten kod na końcu `app.py` i Zapisz:
+2. Skopiuj ten kod na koniec `app.py` i Zapisz:
 
    ```python
    @app.route('/translate-text', methods=['POST'])
@@ -319,24 +321,24 @@ W poniższych sekcjach należy powtórzyć ten proces pomocne podczas tworzenia 
 
 ### <a name="update-indexhtml"></a>Aktualizacja `index.html`
 
-Teraz, gdy funkcja tłumaczenie tekstu i tras w celu wywołania go aplikacji Flask, następnym krokiem jest zacznij tworzyć kod HTML dla aplikacji. Poniższy kod HTML wykonuje kilka rzeczy:
+Teraz, gdy masz funkcję tłumaczenia tekstu i trasy w aplikacji w kolbie do jej wywołania, następnym krokiem jest rozpoczęcie tworzenia kodu HTML dla aplikacji. Poniższy kod HTML wykonuje kilka czynności:
 
-* Zapewnia obszar tekstu, w którym użytkownicy można wpisać tekst do tłumaczenia.
+* Zapewnia obszar tekstu, w którym użytkownicy mogą wprowadzać tekst do przetłumaczenia.
 * Zawiera selektor języka.
-* Zawiera elementy HTML do renderowania wykryty język i oceny zaufania zwrócił podczas tłumaczenia.
-* Zapewnia obszar tekstu tylko do odczytu, gdzie wyświetlone dane wyjściowe tłumaczenia.
-* Zawiera symbole zastępcze dla tonacji analizy i mowy syntezy kodu, który dodasz do tego pliku w dalszej części tego samouczka.
+* Zawiera elementy HTML do renderowania wykrytego języka i wyników poufności zwróconych podczas tłumaczenia.
+* Udostępnia obszar tekstu tylko do odczytu, w którym jest wyświetlane dane wyjściowe tłumaczenia.
+* Zawiera symbole zastępcze dla kodu tonacji Analysis i syntezy mowy, które zostaną dodane do tego pliku w dalszej części tego samouczka.
 
 Zaktualizujmy `index.html`.
 
-1. Otwórz `index.html` i Znajdź te komentarze w kodzie:
+1. Otwórz `index.html` i Znajdź następujące Komentarze do kodu:
    ```html
    <!-- HTML provided in the following sections goes here. -->
 
    <!-- End -->
    ```
 
-2. Komentarze w kodzie należy zastąpić ten blok kodu HTML:
+2. Zastąp Komentarze do kodu tym blokiem HTML:
    ```html
    <div class="row">
      <div class="col">
@@ -406,17 +408,17 @@ Zaktualizujmy `index.html`.
    </div>
    ```
 
-Następnym krokiem jest do zapisania fragmentów kodu Javascript. Jest to most między trasy HTML i Flask.
+Następnym krokiem jest napisanie kodu JavaScript. Jest to mostek między trasą HTML i kolbą.
 
 ### <a name="create-mainjs"></a>Utwórz `main.js`  
 
-`main.js` Plik jest most między trasy HTML i Flask. Twoja aplikacja będzie używać kombinacji jQuery, wywołań Ajax i XMLHttpRequest do renderowania zawartości i podejmowania `POST` żądań trasy Flask.
+Plik `main.js` jest mostkiem między trasą HTML i kolbą. Twoja aplikacja będzie używać kombinacji jQuery, AJAX i XMLHttpRequest do renderowania zawartości i @no__t żądania do swoich tras kolb.
 
-W poniższym kodzie zawartość HTML jest używana do konstruowania żądania trasy Flask. W szczególności zawartość obszaru tekstu i selektor języka są przypisane do zmiennych i przekazywane w żądaniu `translate-text`.
+W poniższym kodzie zawartość kodu HTML służy do konstruowania żądania do trasy w kolbie. W odróżnieniu od zawartości obszaru tekstowego i selektora języka są przypisywane zmienne, a następnie przekazane w żądaniu do `translate-text`.
 
-Kod wykonuje iterację przez odpowiedzi i aktualizuje HTML przy użyciu translacji, wykryty język i współczynnik ufności.
+Kod następnie iteruje przez odpowiedź i aktualizuje kod HTML za pomocą tłumaczenia, wykrytego języka i wyniku pewności.
 
-1. Z poziomu środowiska IDE, Utwórz plik o nazwie `main.js` w `static/scripts` katalogu.
+1. W środowisku IDE Utwórz plik o nazwie `main.js` w katalogu `static/scripts`.
 2. Skopiuj ten kod do `static/scripts/main.js`:
    ```javascript
    //Initiate jQuery on load.
@@ -455,38 +457,38 @@ Kod wykonuje iterację przez odpowiedzi i aktualizuje HTML przy użyciu translac
    })
    ```
 
-### <a name="test-translation"></a>Test translation
+### <a name="test-translation"></a>Testuj tłumaczenie
 
-Możemy przetestować tłumaczenia w aplikacji.
+Przetestujmy tłumaczenie w aplikacji.
 
 ```
 flask run
 ```
 
-Przejdź do adresu podanego serwera. Wpisz tekst do wejściowego obszaru, wybierz język, a następnie naciśnij klawisz tłumaczenie. Powinna pojawić się tłumaczenia. Jeśli to nie zadziała, upewnij się, że dodano klucz subskrypcji.
+Przejdź do podanego adresu serwera. Wpisz tekst w obszarze wejściowym, wybierz język i naciśnij pozycję Przekształć. Należy uzyskać tłumaczenie. Jeśli nie działa, upewnij się, że został dodany klucz subskrypcji.
 
 > [!TIP]
-> Jeśli nie są wyświetlane zmiany wprowadzone lub aplikacji nie działają w ten sposób oczekujesz, spróbuj wyczyścić pamięć podręczną lub otwierając okno w trybie prywatnym/incognito.
+> Jeśli wprowadzone zmiany nie są wyświetlane lub aplikacja nie działa w oczekiwany sposób, spróbuj usunąć pamięć podręczną lub otworzyć okno prywatne/incognito.
 
-Naciśnij klawisz **CTRL + c** do zakończenia aplikacji, a następnie przejdź do następnej sekcji.
+Naciśnij **klawisze CTRL + c** , aby skasować aplikację, a następnie przejdź do następnej sekcji.
 
 ## <a name="analyze-sentiment"></a>Analiza tonacji
 
-[Interfejsu API analizy tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) może służyć do przeprowadzenia analizy tonacji, wyodrębnianie kluczowych fraz z pliku tekstowego lub wykrywanie języka źródłowego. W tej aplikacji będziemy używać analizy tonacji do określenia, czy podany tekst jest pozytywny, neutralne lub ujemna. Interfejs API zwraca wynik liczbowy z zakresu od 0 do 1. Wyniki zbliżone do wartości 1 wskazują na pozytywną tonację, a wyniki zbliżone do wartości 0 wskazują na negatywną tonację.
+[Interfejs API analizy tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) można użyć do przeprowadzenia analizy tonacji, wyodrębnienia kluczowych fraz z tekstu lub wykrycia języka źródłowego. W tej aplikacji będziemy używać analizy tonacji, aby określić, czy podany tekst jest dodatni, neutralny, czy ujemny. Interfejs API zwraca wynik liczbowy z zakresu od 0 do 1. Wyniki zbliżone do wartości 1 wskazują na pozytywną tonację, a wyniki zbliżone do wartości 0 wskazują na negatywną tonację.
 
-W tej sekcji więc chcesz wykonać kilka czynności:
+W tej sekcji nastąpi kilka rzeczy:
 
-* Zapis niektóre języka Python do wywoływania interfejsu API analizy tekstu, aby przeprowadzić analizę tonacji i zwróć odpowiedź
-* Utwórz trasę do wywoływania z kodu w języku Python Flask
-* Zaktualizuj kod HTML z obszarem wyników tonacji i przycisk do przeprowadzenia analizy
-* Pisanie kodu Javascript, który pozwala użytkownikom na interakcję z aplikacji Flask za pomocą kodu HTML
+* Napisz część języka Python, aby wywołać interfejs API analizy tekstu, aby przeprowadzić analizę tonacji i zwrócić odpowiedź
+* Tworzenie trasy kolby do wywoływania kodu w języku Python
+* Zaktualizuj kod HTML za pomocą obszaru dla wyników tonacji i przycisk, aby przeprowadzić analizę
+* Napisz kod JavaScript, który pozwala użytkownikom na korzystanie z aplikacji z kolby w kodzie HTML
 
 ### <a name="call-the-text-analytics-api"></a>Wywoływanie interfejsu API usługi Text Analytics
 
-Napiszmy funkcja do wywołania interfejsu API analizy tekstu. Ta funkcja spowoduje przejście cztery argumenty: `input_text`, `input_language`, `output_text`, i `output_language`. Ta funkcja jest wywoływana zawsze wtedy, gdy użytkownik naciśnie przycisk Analiza tonacji wykonywania w aplikacji. Dane dostarczone przez użytkownika z selektora obszaru i język tekstu, a także wykrytego języka i tłumaczenie dane wyjściowe są dostarczane z każdym żądaniem. Obiekt odpowiedzi zawiera wyniki tonacji dla źródła i tłumaczenia. W poniższych sekcjach możesz zacząć zapisu fragmentów kodu Javascript, aby przeanalizować odpowiedzi i używać go w aplikacji. Teraz możemy skoncentrować się na wywołania interfejsu API analizy tekstu.
+Napiszmy funkcję wywołującą interfejs API analizy tekstu. Ta funkcja będzie przyjmować cztery argumenty: `input_text`, `input_language`, `output_text` i `output_language`. Ta funkcja jest wywoływana za każdym razem, gdy użytkownik naciśnie przycisk Uruchom analizę tonacji w aplikacji. Dane dostarczone przez użytkownika z obszaru tekstowego i selektora języka, a także wykryty język i dane wyjściowe tłumaczenia są udostępniane każdemu żądaniu. Obiekt Response zawiera wyniki tonacji dla źródła i tłumaczenia. W poniższych sekcjach można napisać kod JavaScript, aby przeanalizować odpowiedź i użyć jej w aplikacji. Na razie skupmy się na interfejs API analizy tekstu.
 
-1. Utwórz plik o nazwie `sentiment.py` w głównym katalogu roboczego.
-2. Następnie dodaj ten kod w celu `sentiment.py`.
+1. Utwórzmy plik o nazwie `sentiment.py` w katalogu głównym katalogu roboczego.
+2. Następnie Dodaj ten kod do `sentiment.py`.
    ```python
    import os, requests, uuid, json
 
@@ -528,20 +530,20 @@ Napiszmy funkcja do wywołania interfejsu API analizy tekstu. Ta funkcja spowodu
        response = requests.post(constructed_url, headers=headers, json=body)
        return response.json()
    ```
-3. Dodaj klucz subskrypcji analizy tekstu, a następnie zapisz.
+3. Dodaj klucz subskrypcji analiza tekstu i Zapisz.
 
-### <a name="add-a-route-to-apppy"></a>Dodać trasę do `app.py`
+### <a name="add-a-route-to-apppy"></a>Dodawanie trasy do `app.py`
 
-Utwórz trasę w swojej aplikacji Flask, która wywołuje `sentiment.py`. Ta trasa będzie być wywoływana za każdym razem, użytkownik naciśnie przycisk Analiza tonacji wykonywania w aplikacji. Jak trasy do tłumaczenia zamierza zaakceptować ta trasa `POST` żądania, ponieważ funkcja oczekuje argumentów.
+Utwórzmy trasę w aplikacji kolby, która wywoła `sentiment.py`. Ta trasa będzie wywoływana za każdym razem, gdy użytkownik naciśnie przycisk Uruchom analizę tonacji w aplikacji. Podobnie jak w przypadku translacji, ta trasa akceptuje żądania `POST`, ponieważ funkcja oczekuje argumentów.
 
-1. Otwórz `app.py` i zlokalizuj instrukcję importu na początku `app.py` i zaktualizować go:
+1. Otwórz `app.py` i Znajdź instrukcję import w górnej części `app.py` i zaktualizuj ją:
 
    ```python
    import translate, sentiment
    ```
-   Teraz naszej aplikacji Flask za pomocą metody, które są dostępne za pośrednictwem `sentiment.py`.
+   Teraz nasza aplikacja do kolby może korzystać z metody dostępnej za pośrednictwem `sentiment.py`.
 
-2. Skopiuj ten kod na końcu `app.py` i Zapisz:
+2. Skopiuj ten kod na koniec `app.py` i Zapisz:
    ```python
    @app.route('/sentiment-analysis', methods=['POST'])
    def sentiment_analysis():
@@ -556,20 +558,20 @@ Utwórz trasę w swojej aplikacji Flask, która wywołuje `sentiment.py`. Ta tra
 
 ### <a name="update-indexhtml"></a>Aktualizacja `index.html`
 
-Teraz, gdy funkcja uruchamiać analizę tonacji i trasę w aplikacji Flask i wywołać go, następnym krokiem jest do rozpoczęcia pisania kodu HTML dla aplikacji. Poniższy kod HTML wykonuje kilka rzeczy:
+Teraz, gdy masz funkcję do uruchamiania analizy tonacji i trasy w aplikacji do kolby do jej wywołania, następnym krokiem jest rozpoczęcie pisania kodu HTML dla aplikacji. Poniższy kod HTML wykonuje kilka czynności:
 
-* Dodaje przycisk do swojej aplikacji, jak przeprowadzać analizę tonacji
-* Dodaje element, który objaśnia, ocenianie opinii
-* Dodaje element do wyświetlenia wyników tonacji
+* Dodaje przycisk do aplikacji w celu uruchomienia analizy tonacji
+* Dodaje element, który objaśnia ocenianie tonacji
+* Dodaje element, aby wyświetlić wyniki tonacji
 
-1. Otwórz `index.html` i Znajdź te komentarze w kodzie:
+1. Otwórz `index.html` i Znajdź następujące Komentarze do kodu:
    ```html
    <!-- Start sentiment code-->
 
    <!-- End sentiment code -->
    ```
 
-2. Komentarze w kodzie należy zastąpić ten blok kodu HTML:
+2. Zastąp Komentarze do kodu tym blokiem HTML:
    ```html
    <button type="submit" class="btn btn-primary mb-2" id="sentiment-analysis">Run sentiment analysis</button></br>
    <div id="sentiment" style="display: none">
@@ -581,11 +583,11 @@ Teraz, gdy funkcja uruchamiać analizę tonacji i trasę w aplikacji Flask i wyw
 
 ### <a name="update-mainjs"></a>Aktualizacja `main.js`
 
-W poniższym kodzie zawartość HTML jest używana do konstruowania żądania trasy Flask. W szczególności zawartość obszaru tekstu i selektor języka są przypisane do zmiennych i przekazywane w żądaniu `sentiment-analysis` trasy.
+W poniższym kodzie zawartość kodu HTML służy do konstruowania żądania do trasy w kolbie. W odróżnieniu od zawartości obszaru tekstowego i selektora języka są przypisywane zmienne, a następnie przekazane w żądaniu do trasy `sentiment-analysis`.
 
-Kod wykonuje iterację przez odpowiedzi i aktualizuje HTML przy użyciu wyników tonacji.
+Kod następnie iteruje przez odpowiedź i aktualizuje kod HTML za pomocą wyników tonacji.
 
-1. Z poziomu środowiska IDE, Utwórz plik o nazwie `main.js` w `static` katalogu.
+1. W środowisku IDE Utwórz plik o nazwie `main.js` w katalogu `static`.
 
 2. Skopiuj ten kod do `static/scripts/main.js`:
    ```javascript
@@ -639,39 +641,39 @@ Kod wykonuje iterację przez odpowiedzi i aktualizuje HTML przy użyciu wyników
    // In the next section, you'll add code for speech synthesis here.
    ```
 
-### <a name="test-sentiment-analysis"></a>Analiza tonacji testu
+### <a name="test-sentiment-analysis"></a>Testowanie analizy tonacji
 
-Możemy przetestować analiza opinii w aplikacji.
+Przetestujmy analizę tonacji w aplikacji.
 
 ```
 flask run
 ```
 
-Przejdź do adresu podanego serwera. Wpisz tekst do wejściowego obszaru, wybierz język, a następnie naciśnij klawisz tłumaczenie. Powinna pojawić się tłumaczenia. Następnie naciśnij przycisk Analiza tonacji wykonywania. Powinny być widoczne dwa wyniki. Jeśli to nie zadziała, upewnij się, że dodano klucz subskrypcji.
+Przejdź do podanego adresu serwera. Wpisz tekst w obszarze wejściowym, wybierz język i naciśnij pozycję Przekształć. Należy uzyskać tłumaczenie. Następnie naciśnij przycisk Uruchom analizę tonacji. Powinny być widoczne dwa wyniki. Jeśli nie działa, upewnij się, że został dodany klucz subskrypcji.
 
 > [!TIP]
-> Jeśli nie są wyświetlane zmiany wprowadzone lub aplikacji nie działają w ten sposób oczekujesz, spróbuj wyczyścić pamięć podręczną lub otwierając okno w trybie prywatnym/incognito.
+> Jeśli wprowadzone zmiany nie są wyświetlane lub aplikacja nie działa w oczekiwany sposób, spróbuj usunąć pamięć podręczną lub otworzyć okno prywatne/incognito.
 
-Naciśnij klawisz **CTRL + c** do zakończenia aplikacji, a następnie przejdź do następnej sekcji.
+Naciśnij **klawisze CTRL + c** , aby skasować aplikację, a następnie przejdź do następnej sekcji.
 
 ## <a name="convert-text-to-speech"></a>Zamiana tekstu na mowę
 
-[Interfejsu API zamiany tekstu na mowę](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech) umożliwia aplikacji do konwertowania tekstu do naturalnym przypominającej ludzką syntezatora mowy. Usługa obsługuje standardowe, neuronowych i niestandardowe głosów. Nasza Przykładowa aplikacja korzysta z kilku dostępnych głosów pełną listę, zobacz [obsługiwane języki](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech).
+[Interfejs API zamiany tekstu na mowę](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech) umożliwia aplikacji Konwertowanie tekstu na rozpoznawanie mowy przez człowieka. Usługa obsługuje standardowe, neuronowych i niestandardowe głosy. Nasza przykładowa aplikacja używa kilku dostępnych głosów, aby zapoznać się z pełną listą, zobacz [obsługiwane języki](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech).
 
-W tej sekcji więc chcesz wykonać kilka czynności:
+W tej sekcji nastąpi kilka rzeczy:
 
-* Zapis niektóre języka Python, aby przekonwertować zamiany tekstu na mowę przy użyciu interfejsu API zamiany tekstu na mowę
-* Utwórz trasę do wywoływania z kodu w języku Python Flask
-* Zaktualizuj kod HTML przy użyciu przycisku, aby przekonwertować zamiany tekstu na mowę i element do odtwarzania dźwięku
-* Pisanie kodu Javascript, który pozwala użytkownikom na interakcję z aplikacją Flask
+* Napisz część języka Python, aby skonwertować zamianę tekstu na mowę za pomocą interfejsu API zamiany tekstu na mowę
+* Tworzenie trasy kolby do wywoływania kodu w języku Python
+* Zaktualizuj kod HTML za pomocą przycisku, aby przekonwertować tekst na mowę i element na potrzeby odtwarzania dźwięku
+* Napisz kod JavaScript, który pozwala użytkownikom na korzystanie z aplikacji do przedziału
 
-### <a name="call-the-text-to-speech-api"></a>Wywoływanie interfejsu API zamiany tekstu na mowę
+### <a name="call-the-text-to-speech-api"></a>Wywołaj tekst do Speech API
 
-Napiszmy funkcję, aby skonwertować zamiany tekstu na mowę. Tej funkcji potrwa dwa argumenty: `input_text` i `voice_font`. Ta funkcja jest wywoływana zawsze wtedy, gdy użytkownik naciśnie przycisku Konwertuj tekst na mowę w swojej aplikacji. `input_text` jest to produkt wyjściowy tłumaczenia, zwracany przez wywołanie umożliwia tłumaczenie tekstu, `voice_font` jest wartością z selektora czcionki głosowe w kodzie HTML.
+Napiszmy funkcję do konwersji zamiany tekstu na mowę. Ta funkcja będzie przyjmować dwa argumenty: `input_text` i `voice_font`. Ta funkcja jest wywoływana za każdym razem, gdy użytkownik naciśnie przycisk Konwertuj tekst na mowę w aplikacji. `input_text` to dane wyjściowe tłumaczenia zwrócone przez wywołanie w celu przetłumaczenia tekstu, `voice_font` jest wartością z selektora czcionki głosowej w kodzie HTML.
 
-1. Utwórz plik o nazwie `synthesize.py` w głównym katalogu roboczego.
+1. Utwórzmy plik o nazwie `synthesize.py` w katalogu głównym katalogu roboczego.
 
-2. Następnie dodaj ten kod w celu `synthesize.py`.
+2. Następnie Dodaj ten kod do `synthesize.py`.
    ```Python
    import os, requests, time
    from xml.etree import ElementTree
@@ -722,20 +724,20 @@ Napiszmy funkcję, aby skonwertować zamiany tekstu na mowę. Tej funkcji potrwa
            # in the same directory where this sample is run.
            return response.content
    ```
-3. Dodaj klucz subskrypcji usług przetwarzania mowy i Zapisz.
+3. Dodaj klucz subskrypcji usługi mowy i Zapisz.
 
-### <a name="add-a-route-to-apppy"></a>Dodać trasę do `app.py`
+### <a name="add-a-route-to-apppy"></a>Dodawanie trasy do `app.py`
 
-Utwórz trasę w swojej aplikacji Flask, która wywołuje `synthesize.py`. Ta trasa zostanie wywołana w każdym naciśnięciu przycisku Konwertuj tekst na mowę w swojej aplikacji. Jak trasy tłumaczenia i analiza opinii, zamierza zaakceptować tę trasę `POST` żądania, ponieważ funkcja oczekuje dwóch argumentów: tekst, który ma syntetyzowania i czcionka głosowa do odtwarzania.
+Utwórzmy trasę w aplikacji kolby, która wywoła `synthesize.py`. Ta trasa będzie wywoływana za każdym razem, gdy użytkownik naciśnie przycisk Konwertuj tekst na mowę w aplikacji. Podobnie jak w przypadku tras do tłumaczenia i analizy tonacji, ta trasa akceptuje żądania `POST`, ponieważ funkcja oczekuje dwóch argumentów: tekst do syntezy oraz czcionkę głosu na potrzeby odtwarzania.
 
-1. Otwórz `app.py` i zlokalizuj instrukcję importu na początku `app.py` i zaktualizować go:
+1. Otwórz `app.py` i Znajdź instrukcję import w górnej części `app.py` i zaktualizuj ją:
 
    ```python
    import translate, sentiment, synthesize
    ```
-   Teraz naszej aplikacji Flask za pomocą metody, które są dostępne za pośrednictwem `synthesize.py`.
+   Teraz nasza aplikacja do kolby może korzystać z metody dostępnej za pośrednictwem `synthesize.py`.
 
-2. Skopiuj ten kod na końcu `app.py` i Zapisz:
+2. Skopiuj ten kod na koniec `app.py` i Zapisz:
 
    ```Python
    @app.route('/text-to-speech', methods=['POST'])
@@ -751,20 +753,20 @@ Utwórz trasę w swojej aplikacji Flask, która wywołuje `synthesize.py`. Ta tr
 
 ### <a name="update-indexhtml"></a>Aktualizacja `index.html`
 
-Teraz, gdy funkcja konwersji zamiany tekstu na mowę i tras w celu wywołania go aplikacji Flask, następnym krokiem jest do rozpoczęcia pisania kodu HTML dla aplikacji. Poniższy kod HTML wykonuje kilka rzeczy:
+Teraz, gdy masz funkcję konwersji zamiany tekstu na mowę i trasy w aplikacji w kolbie do jej wywołania, następnym krokiem jest rozpoczęcie pisania kodu HTML dla aplikacji. Poniższy kod HTML wykonuje kilka czynności:
 
-* Umożliwia wybór głosu listy rozwijanej
-* Dodaje przycisk do przekonwertowania zamiany tekstu na mowę
-* Dodaje element audio, który służy do odtwarzania syntezatora mowy
+* Zawiera listę rozwijaną wyboru głosu
+* Dodaje przycisk do konwersji zamiany tekstu na mowę
+* Dodaje element audio, który jest używany do odtwarzania wygranej mowy
 
-1. Otwórz `index.html` i Znajdź te komentarze w kodzie:
+1. Otwórz `index.html` i Znajdź następujące Komentarze do kodu:
    ```html
    <!-- Start voice font selection code -->
 
    <!-- End voice font selection code -->
    ```
 
-2. Komentarze w kodzie należy zastąpić ten blok kodu HTML:
+2. Zastąp Komentarze do kodu tym blokiem HTML:
    ```html
    <div class="form-group">
      <label for="select-voice"><strong>Select voice font:</strong></label>
@@ -812,14 +814,14 @@ Teraz, gdy funkcja konwersji zamiany tekstu na mowę i tras w celu wywołania go
    </div>
    ```
 
-3. Następnie znajdź te komentarze w kodzie:
+3. Następnie odszukaj następujące Komentarze do kodu:
    ```html
    <!-- Add Speech Synthesis button and audio element -->
 
    <!-- End Speech Synthesis button -->
    ```
 
-4. Komentarze w kodzie należy zastąpić ten blok kodu HTML:
+4. Zastąp Komentarze do kodu tym blokiem HTML:
 
 ```html
 <button type="submit" class="btn btn-primary mb-2" id="text-to-speech">Convert text-to-speech</button>
@@ -830,15 +832,15 @@ Teraz, gdy funkcja konwersji zamiany tekstu na mowę i tras w celu wywołania go
 </div>
 ```
 
-5. Upewnij się zapisać swoją pracę.
+5. Upewnij się, że Zapisano swoją służbę.
 
 ### <a name="update-mainjs"></a>Aktualizacja `main.js`
 
-W poniższym kodzie zawartość HTML jest używana do konstruowania żądania trasy Flask. W szczególności tłumaczenie czcionka głosowa są przypisane do zmiennych i przekazywane w żądaniu `text-to-speech` trasy.
+W poniższym kodzie zawartość kodu HTML służy do konstruowania żądania do trasy w kolbie. W szczególnych przypadkach tłumaczenia i czcionki głosowe są przypisywane do zmiennych, a następnie przesyłane w żądaniu do trasy `text-to-speech`.
 
-Kod wykonuje iterację przez odpowiedzi i aktualizuje HTML przy użyciu wyników tonacji.
+Kod następnie iteruje przez odpowiedź i aktualizuje kod HTML za pomocą wyników tonacji.
 
-1. Z poziomu środowiska IDE, Utwórz plik o nazwie `main.js` w `static` katalogu.
+1. W środowisku IDE Utwórz plik o nazwie `main.js` w katalogu `static`.
 2. Skopiuj ten kod do `static/scripts/main.js`:
    ```javascript
    // Convert text-to-speech
@@ -871,7 +873,7 @@ Kod wykonuje iterację przez odpowiedzi i aktualizuje HTML przy użyciu wyników
    });
    // Code for automatic language selection goes here.
    ```
-3. To już prawie koniec. Ostatnim zadaniem, które zamierzasz wykonać, będzie dodanie kodu w celu `main.js` do automatycznego wybierania czcionki głosowej, oparte na języku, który został wybrany do tłumaczenia. Ten blok kodu, aby dodać `main.js`:
+3. To już prawie koniec. Ostatnim zadaniem, które należy wykonać, jest dodanie kodu do `main.js`, aby automatycznie wybrać czcionkę głosową opartą na języku wybranym do tłumaczenia. Dodaj ten blok kodu do `main.js`:
    ```javascript
    // Automatic voice font selection based on translation output.
    $('select[id="select-language"]').change(function(e) {
@@ -940,24 +942,24 @@ Kod wykonuje iterację przez odpowiedzi i aktualizuje HTML przy użyciu wyników
 
 ### <a name="test-your-app"></a>Testowanie aplikacji
 
-Możemy przetestować synteza mowy w aplikacji.
+Przetestujmy funkcję syntezy mowy w aplikacji.
 
 ```
 flask run
 ```
 
-Przejdź do adresu podanego serwera. Wpisz tekst do wejściowego obszaru, wybierz język, a następnie naciśnij klawisz tłumaczenie. Powinna pojawić się tłumaczenia. Następnie wybierz głos, a następnie kliknij przycisk Konwertuj tekst na mowę. Tłumaczenie powinny być odtwarzane jako syntezatora mowy. Jeśli to nie zadziała, upewnij się, że dodano klucz subskrypcji.
+Przejdź do podanego adresu serwera. Wpisz tekst w obszarze wejściowym, wybierz język i naciśnij pozycję Przekształć. Należy uzyskać tłumaczenie. Następnie wybierz głos, a następnie naciśnij przycisk Konwertuj tekst na mowę. tłumaczenie powinno być odtwarzane jako narzędzie do rozpoznawania mowy. Jeśli nie działa, upewnij się, że został dodany klucz subskrypcji.
 
 > [!TIP]
-> Jeśli nie są wyświetlane zmiany wprowadzone lub aplikacji nie działają w ten sposób oczekujesz, spróbuj wyczyścić pamięć podręczną lub otwierając okno w trybie prywatnym/incognito.
+> Jeśli wprowadzone zmiany nie są wyświetlane lub aplikacja nie działa w oczekiwany sposób, spróbuj usunąć pamięć podręczną lub otworzyć okno prywatne/incognito.
 
-To wszystko, masz działającą aplikację, która wykonuje tłumaczenia, analizę tonacji i syntezatora mowy. Naciśnij klawisz **CTRL + c** do zakończenia aplikacji. Należy zapoznać się z innymi [usług Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/).
+Oznacza to, że masz działającą aplikację, która wykonuje tłumaczenia, analizuje tonacji i tłumaczy mowę. Naciśnij **klawisze CTRL + c** , aby skasować aplikację. Upewnij się, że zapoznaj się z innymi [Cognitive Services platformy Azure](https://docs.microsoft.com/azure/cognitive-services/).
 
 ## <a name="get-the-source-code"></a>Uzyskiwanie kodu źródłowego
 
-Kod źródłowy dla tego projektu jest dostępna w [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Flask-App-Tutorial).
+Kod źródłowy dla tego projektu jest dostępny w serwisie [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Flask-App-Tutorial).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Odwołanie do interfejsu API tłumaczenia tekstu w usłudze Translator](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
 * [Dokumentacja interfejsu API analizy tekstu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)

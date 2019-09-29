@@ -4,17 +4,17 @@ description: Dowiedz się, jak utworzyć sygnaturę dostępu współdzielonego (
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 8a455fdb8ef81b0e06d1f77f7a9cdd5bec351b2b
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 0164c97adf720a618179908298223c54bf48824e
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164265"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673340"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell-preview"></a>Tworzenie sygnatury dostępu współdzielonego użytkownika dla kontenera lub obiektu BLOB za pomocą programu PowerShell (wersja zapoznawcza)
 
@@ -102,7 +102,7 @@ Podczas tworzenia sygnatury dostępu współdzielonego użytkownika z Azure Powe
 
 Ze względu na to, że maksymalny interwał ważności klucza delegowania użytkownika wynosi 7 dni od daty rozpoczęcia, należy określić czas wygaśnięcia dla sygnatury dostępu współdzielonego w ciągu 7 dni od czasu rozpoczęcia. Sygnatura dostępu współdzielonego jest nieprawidłowa po wygaśnięciu klucza delegowania użytkownika, więc sygnatura dostępu współdzielonego o godzinie przekraczającej 7 dni będzie nadal ważna tylko przez 7 dni.
 
-Aby utworzyć sygnaturę dostępu współdzielonego dla kontenera lub obiektu BLOB z Azure PowerShell, należy najpierw utworzyć nowy obiekt kontekstu usługi Azure Storage `-UseConnectedAccount` , określając parametr. `-UseConnectedAccount` Parametr określa, że polecenie tworzy obiekt kontekstu w ramach konta usługi Azure AD, za pomocą którego zalogowano się.
+Aby utworzyć sygnaturę dostępu współdzielonego dla kontenera lub obiektu BLOB z Azure PowerShell, należy najpierw utworzyć nowy obiekt kontekstu usługi Azure Storage, określając parametr `-UseConnectedAccount`. Parametr `-UseConnectedAccount` Określa, że polecenie tworzy obiekt kontekstu w ramach konta usługi Azure AD, za pomocą którego zalogowano się.
 
 Pamiętaj, aby zastąpić wartości symboli zastępczych w nawiasach ostrych własnymi wartościami:
 
@@ -134,7 +134,7 @@ Zwrócony token sygnatury dostępu współdzielonego użytkownika będzie podobn
 
 Aby zwrócić token użytkownika delegowania sygnatury dostępu współdzielonego dla obiektu BLOB, wywołaj polecenie [New-AzStorageBlobSASToken](/powershell/module/az.storage/new-azstorageblobsastoken) , przechodząc do utworzonego wcześniej obiektu kontekstu usługi Azure Storage.
 
-Poniższa składnia zwraca sygnaturę dostępu współdzielonego delegowania użytkownika dla obiektu BLOB. W przykładzie określono `-FullUri` parametr, który zwraca identyfikator URI obiektu BLOB z dołączonym tokenem SAS. Pamiętaj, aby zastąpić wartości symboli zastępczych w nawiasach własnymi wartościami:
+Poniższa składnia zwraca sygnaturę dostępu współdzielonego delegowania użytkownika dla obiektu BLOB. W przykładzie określono parametr `-FullUri`, który zwraca identyfikator URI obiektu BLOB z dołączonym tokenem SAS. Pamiętaj, aby zastąpić wartości symboli zastępczych w nawiasach własnymi wartościami:
 
 ```powershell
 New-AzStorageBlobSASToken -Context $ctx `

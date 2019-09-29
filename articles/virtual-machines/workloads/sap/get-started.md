@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dc1c6e4bf2e67d8945cf754aa47461b4ce8364a9
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 81deaaffa301c4453842875f9cfd6b63bb6bbfd7
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066823"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672988"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Korzystanie z platformy Azure do hostowania i uruchamiania scenariuszy obciążeń SAP
 
@@ -120,7 +120,8 @@ Aby uzyskać informacje na temat integracji usług platformy Azure z składnikam
 
 
 ## <a name="change-log"></a>Dziennik zmian
-- 09/17/2019: Zmień w przewodniku planowania i wdrażania NetWeaver, aby ujednolicić warunki dotyczące rozszerzenia maszyny wirtualnej dla oprogramowania SAP
+- 09/28/2019: Zmiana [konfiguracji Pacemaker Red Hat Enterprise Linux na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) w celu wyjaśnienia SBD jako mechanizmu ogrodzenia nie jest obsługiwane w KLASTRAch RHEL  
+- 09/17/2019: Zmień w przewodniku planowania i wdrażania NetWeaver, aby ujednolicić warunki dotyczące rozszerzenia maszyny wirtualnej dla oprogramowania SAP  
 - 08/22/2019: Zmiany dotyczące [konfigurowania Pacemaker SUSE Linux Enterprise Server na platformie Azure w](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) celu zaktualizowania adresów URL na potrzeby tworzenia ról niestandardowych  
 - 08/16/2019: Zmiany [Red Hat Enterprise Linux dotyczące konfigurowania Pacemaker na platformie Azure w](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) celu przypominania klientom o aktualizowaniu akcji w roli niestandardowej w przypadku aktualizowania nowej wersji agenta usługi Azure ogrodzenia  
 - 08/15/2019: Zmiany w [konfiguracjach magazynu maszyn wirtualnych platformy Azure SAP HANA](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) w celu odzwierciedlenia ogólnej dostępności Ultra Disk (dawniej SSD w warstwie Ultra)

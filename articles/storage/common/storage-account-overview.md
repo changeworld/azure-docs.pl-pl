@@ -4,16 +4,16 @@ description: Opis opcji tworzenia konta usługi Azure Storage i korzystania z ni
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 49e15964ba370cc6dc18491507b906764f1f882c
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 67022c6bd9e237ce24d8e63285f7ebabadca87c6
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640107"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671311"
 ---
 # <a name="azure-storage-account-overview"></a>Omówienie konta usługi Azure Storage
 
@@ -115,7 +115,7 @@ Aby uzyskać więcej informacji na temat replikacji magazynu, zobacz [Replikacja
 
 Wszystkie dane na koncie magazynu są szyfrowane po stronie usługi. Aby uzyskać więcej informacji na temat szyfrowania, zobacz [Azure szyfrowanie usługi Storage w przypadku danych przechowywanych w spoczynku](storage-service-encryption.md).
 
-## <a name="storage-account-endpoints"></a>Punkty końcowe konta usługi Storage
+## <a name="storage-account-endpoints"></a>Punkty końcowe konta magazynu
 
 Konto magazynu zapewnia unikatową przestrzeń nazw na platformie Azure dla danych użytkownika. Każdy obiekt przechowywany w usłudze Azure Storage ma adres, który zawiera unikatową nazwę konta. Kombinacja nazwy konta i punktu końcowego usługi Azure Storage stanowi punkty końcowe konta magazynu.
 

@@ -1,6 +1,6 @@
 ---
 title: Możliwości poznawcze U-SQL w Azure Data Lake Analytics
-description: Dowiedz się, jak korzystać z analizy możliwości poznawczej w języku U-SQL
+description: Dowiedz się, jak korzystać z analizy możliwości poznawczej w języku U-SQL. Te przykłady kodu pomagają rozpocząć pracę.
 services: data-lake-analytics
 author: saveenr
 ms.author: saveenr
@@ -9,12 +9,12 @@ ms.assetid: 019c1d53-4e61-4cad-9b2c-7a60307cbe19
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/05/2018
-ms.openlocfilehash: bb64f08fae3a211b3ec26177ab2604edc20a8fdd
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 406eb1c9153e1ddbdc196cd64378c17cfa986dac
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315667"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672704"
 ---
 # <a name="get-started-with-the-cognitive-capabilities-of-u-sql"></a>Wprowadzenie do funkcji poznawczej języka U-SQL
 

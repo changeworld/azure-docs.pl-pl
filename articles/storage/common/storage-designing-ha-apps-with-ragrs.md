@@ -4,17 +4,17 @@ description: Jak korzystać z magazynu usługi Azure RA-GZRS lub RA-GRS w celu p
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/14/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 1a5d80d6cd31621f8c3931b1845050f0a212ef08
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: a6d724f834fb8a4c54cd613c61ca90a77a36bdea
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036618"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673110"
 ---
 # <a name="designing-highly-available-applications-using-read-access-geo-redundant-storage"></a>Projektowanie aplikacji o wysokiej dostępności przy użyciu magazynu geograficznie nadmiarowego do odczytu
 
@@ -27,7 +27,7 @@ Konta magazynu skonfigurowane na potrzeby replikacji geograficznie nadmiarowej s
 
 W tym artykule przedstawiono sposób projektowania aplikacji w celu obsługi awarii w regionie podstawowym. Jeśli region podstawowy stanie się niedostępny, aplikacja może dostosowywać się do wykonywania operacji odczytu w regionie pomocniczym. Przed rozpoczęciem upewnij się, że konto magazynu jest skonfigurowane dla usługi RA-GRS lub RA-GZRS.
 
-Aby uzyskać informacje o tym, które regiony podstawowe są sparowane z tymi regionami pomocniczymi, zobacz [ciągłość działania i odzyskiwanie po awarii (BCDR): Azure Paired Regions](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) (Ciągłość działalności biznesowej i odzyskiwanie po awarii — BCDR: regiony sparowane platformy Azure).
+Aby uzyskać informacje o tym, które regiony podstawowe są sparowane z tymi regionami pomocniczymi, zobacz @no__t 0Business — ciągłość i odzyskiwanie po awarii (BCDR): Azure Paired Regions](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) (Ciągłość działalności biznesowej i odzyskiwanie po awarii — BCDR: regiony sparowane platformy Azure).
 
 Ten artykuł zawiera fragmenty kodu, a także link do kompletnego przykładu na końcu, który można pobrać i uruchomić.
 
@@ -102,7 +102,7 @@ Biblioteka klienta usługi Azure Storage pomaga określić, które błędy mogą
 
 ### <a name="read-requests"></a>Żądania odczytu
 
-Żądania odczytu można przekierować do magazynu pomocniczego, jeśli występuje problem z magazynem podstawowym. Jak wspomniano powyżej [przy użyciu ostatecznie spójnych danych](#using-eventually-consistent-data), musi być to możliwe, aby aplikacja mogła odczytać stare dane. Jeśli używasz biblioteki klienta usługi Storage do uzyskiwania dostępu do danych z lokacji dodatkowej, możesz określić zachowanie ponowienia żądania odczytu, ustawiając wartość właściwości Locationmode na jedną z następujących wartości:
+Żądania odczytu można przekierować do magazynu pomocniczego, jeśli występuje problem z magazynem podstawowym. Jak wspomniano powyżej [przy użyciu ostatecznie spójnych danych](#using-eventually-consistent-data), musi być to możliwe, aby aplikacja mogła odczytać stare dane. Jeśli używasz biblioteki klienta usługi Storage do uzyskiwania dostępu do danych z lokacji dodatkowej, możesz określić zachowanie ponowienia żądania odczytu, ustawiając wartość właściwości **locationmode** na jedną z następujących wartości:
 
 * **PrimaryOnly** (wartość domyślna)
 
@@ -112,7 +112,7 @@ Biblioteka klienta usługi Azure Storage pomaga określić, które błędy mogą
 
 * **SecondaryThenPrimary**
 
-Po ustawieniu Lokalizacjimode na **PrimaryThenSecondary**, jeśli początkowe żądanie odczytu do podstawowego punktu końcowego kończy się niepowodzeniem z powodu błędu, który może zostać ponowiony, klient automatycznie wprowadzi inne żądanie odczytu do pomocniczego punktu końcowego. Jeśli błąd to limit czasu serwera, klient będzie musiał czekać, aż upłynie limit czasu, zanim odbierze błąd z usługi.
+Po ustawieniu **lokalizacjimode** na **PrimaryThenSecondary**, jeśli początkowe żądanie odczytu do podstawowego punktu końcowego kończy się niepowodzeniem z powodu błędu, który może zostać ponowiony, klient automatycznie wprowadzi inne żądanie odczytu do pomocniczego punktu końcowego. Jeśli błąd to limit czasu serwera, klient będzie musiał czekać, aż upłynie limit czasu, zanim odbierze błąd z usługi.
 
 Istnieją zasadniczo dwa scenariusze, które należy wziąć pod uwagę podczas podejmowania decyzji o tym, jak odpowiedzieć na błąd powtarzania:
 
@@ -124,7 +124,7 @@ Istnieją zasadniczo dwa scenariusze, które należy wziąć pod uwagę podczas 
 
     W tym scenariuszu występuje spadek wydajności, ponieważ wszystkie żądania odczytu najpierw będą podejmować próby podstawowego punktu końcowego, poczekaj na wygaśnięcie limitu czasu, a następnie przejdź do pomocniczego punktu końcowego.
 
-W tych scenariuszach należy określić, że występuje problem z podstawowym punktem końcowym i wysyłać wszystkie żądania odczytu bezpośrednio do pomocniczego punktu końcowego przez ustawienie właściwości Locationmode na **SecondaryOnly**. W tej chwili należy również zmienić aplikację tak, aby była uruchamiana w trybie tylko do odczytu. Takie podejście jest znane jako [wzorzec](/azure/architecture/patterns/circuit-breaker)wyłącznika.
+W tych scenariuszach należy określić, że występuje problem z podstawowym punktem końcowym i wysyłać wszystkie żądania odczytu bezpośrednio do pomocniczego punktu końcowego przez ustawienie właściwości Locationmode na **SecondaryOnly**. W tej chwili należy również zmienić aplikację tak, aby była uruchamiana w trybie tylko do odczytu. Takie podejście jest znane jako [wzorzec wyłącznika](/azure/architecture/patterns/circuit-breaker).
 
 ### <a name="update-requests"></a>Żądania aktualizacji
 
@@ -202,12 +202,12 @@ W poniższej tabeli przedstawiono przykład takiej sytuacji, w której mogą wys
 | **czas** | **Transakcja**                                            | **Replikacja**                       | **Czas ostatniej synchronizacji** | **wynik** |
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
 | T0       | Transakcja A: <br> Wstaw pracownika <br> jednostka w podstawowym |                                   |                    | Transakcja wstawiona do elementu podstawowego,<br> jeszcze nie zreplikowane. |
-| T1       |                                                            | Transakcja A <br> zreplikowane do<br> pomocniczy | T1 | Transakcja jest replikowana do pomocniczej. <br>Czas ostatniej synchronizacji został zaktualizowany.    |
+| T1       |                                                            | Transakcja A <br> zreplikowane do<br> pomocnicze | T1 | Transakcja jest replikowana do pomocniczej. <br>Czas ostatniej synchronizacji został zaktualizowany.    |
 | T2       | Transakcja B:<br>Aktualizacja<br> Jednostka Employee<br> w podstawowym  |                                | T1                 | Transakcja B zapisywana w podstawowym,<br> jeszcze nie zreplikowane.  |
-| T3       | Transakcja C:<br> Aktualizacja <br>administrator<br>Jednostka roli w<br>podstawowa |                    | T1                 | Transakcja C została zapisywana na podstawową,<br> jeszcze nie zreplikowane.  |
-| *T4*     |                                                       | Transakcja C <br>zreplikowane do<br> pomocniczy | T1         | Transakcja C została zreplikowana do pomocniczej.<br>LastSyncTime nie został zaktualizowany, ponieważ <br>transakcja B nie została jeszcze zreplikowana.|
+| T3       | Transakcja C:<br> Aktualizacja <br>administrator<br>Jednostka roli w<br>podstawowe |                    | T1                 | Transakcja C została zapisywana na podstawową,<br> jeszcze nie zreplikowane.  |
+| *T4*     |                                                       | Transakcja C <br>zreplikowane do<br> pomocnicze | T1         | Transakcja C została zreplikowana do pomocniczej.<br>LastSyncTime nie został zaktualizowany, ponieważ <br>transakcja B nie została jeszcze zreplikowana.|
 | *T5*     | Odczytaj jednostki <br>z pomocniczego                           |                                  | T1                 | Otrzymujesz nieodświeżoną wartość dla pracownika <br> jednostka, ponieważ transakcja B nie została <br> zreplikowane jeszcze. Otrzymujesz nową wartość dla<br> Jednostka roli administratora, ponieważ C ma<br> powtórzon. Czas ostatniej synchronizacji nadal nie<br> Zaktualizowano, ponieważ transakcja B<br> nie zreplikowane. Możesz powiedzieć<br>Jednostka roli administratora jest niespójna <br>ponieważ data/godzina jednostki przypada po <br>Czas ostatniej synchronizacji. |
-| *T6*     |                                                      | Transakcja B<br> zreplikowane do<br> pomocniczy | T6                 | *T6* — wszystkie transakcje za poorednictwem języka C <br>zreplikowane, czas ostatniej synchronizacji<br> został zaktualizowany. |
+| *T6*     |                                                      | Transakcja B<br> zreplikowane do<br> pomocnicze | T6                 | *T6* — wszystkie transakcje za poorednictwem języka C <br>zreplikowane, czas ostatniej synchronizacji<br> został zaktualizowany. |
 
 W tym przykładzie Załóżmy, że klient przełącza się do odczytu z regionu pomocniczego w T5. Teraz może pomyślnie odczytać jednostkę **roli administrator** , ale jednostka zawiera wartość dla liczby administratorów, która nie jest spójna z liczbą jednostek **pracowników** , które są oznaczone jako administratorzy w dodatkowej region w tej chwili. Klient może po prostu wyświetlić tę wartość, z ryzykiem, że informacje są niespójne. Klient może także próbować określić, że **rola administratora** jest w stanie potencjalnie niespójnym, ponieważ aktualizacje wystąpiły poza kolejnością, a następnie informują użytkownika o tym fakcie.
 
@@ -235,7 +235,7 @@ $lastSyncTime = $(Get-AzStorageAccount -ResourceGroupName <resource-group> `
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-Aby uzyskać czas ostatniej synchronizacji konta magazynu za pomocą interfejsu wiersza polecenia platformy Azure, sprawdź Właściwość **geoReplicationStats. lastSyncTime** konta magazynu. Użyj parametru `--expand` , aby zwrócić wartości właściwości zagnieżdżonych w obszarze **geoReplicationStats**. Pamiętaj, aby zastąpić wartości zastępcze własnymi wartościami:
+Aby uzyskać czas ostatniej synchronizacji konta magazynu za pomocą interfejsu wiersza polecenia platformy Azure, sprawdź Właściwość **geoReplicationStats. lastSyncTime** konta magazynu. Użyj parametru `--expand`, aby zwrócić wartości właściwości zagnieżdżonych w obszarze **geoReplicationStats**. Pamiętaj, aby zastąpić wartości zastępcze własnymi wartościami:
 
 ```azurecli
 $lastSyncTime=$(az storage account show \
@@ -268,6 +268,6 @@ Jeśli zostały wprowadzone progi do przełączania aplikacji w tryb tylko do od
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby uzyskać więcej informacji na temat odczytywania z regionu pomocniczego, w tym innego przykładu sposobu ustawiania właściwości czas ostatniej synchronizacji, zobacz [Opcje nadmiarowości usługi Azure Storage i dostęp do odczytu z magazynu geograficznie](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/)nadmiarowego.
+* Aby uzyskać więcej informacji na temat odczytywania z regionu pomocniczego, w tym innego przykładu sposobu ustawiania właściwości czas ostatniej synchronizacji, zobacz [Opcje nadmiarowości usługi Azure Storage i dostęp do odczytu z magazynu geograficznie nadmiarowego](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/).
 
 * Aby uzyskać kompletny przykład pokazujący, jak przełączać się między podstawowymi i pomocniczymi punktami końcowymi, zobacz [przykłady platformy Azure — Używanie wzorca wyłącznika z magazynem RA-GRS](https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs).

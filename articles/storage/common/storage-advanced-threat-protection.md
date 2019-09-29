@@ -4,16 +4,16 @@ description: Skonfiguruj zaawansowaną ochronę przed zagrożeniami dla usługi 
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 21204a7a2fb5a6907a8af9cb91fe8b018f7a4714
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: c19b64441d7afbe7544a4401314078b807a8c939
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076477"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673255"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Zaawansowana ochrona przed zagrożeniami dla usługi Azure Storage
 
@@ -54,7 +54,7 @@ Gdy subskrybujesz warstwę Standardowa w Azure Security Center, zaawansowana och
 1. W sekcji **Wybieranie warstwy cenowej według typu zasobu** w wierszu **konta magazynu** kliknij pozycję **włączone** lub **wyłączone**.
 
     ![Włącz ATP w Security Center](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
-1. Kliknij polecenie **Zapisz**.
+1. Kliknij pozycję **Zapisz**.
 
 ### <a name="using-azure-resource-manager-templates"></a>Korzystanie z szablonów Azure Resource Manager
 

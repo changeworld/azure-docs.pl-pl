@@ -4,17 +4,17 @@ description: Dowiedz się, jak utworzyć sygnaturę dostępu współdzielonego u
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 6ea4dbf07c8ef99c43dbe7add1ae9270056f708c
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 077fe69d80ec433d8e37f18e04120102fc8ca390
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164325"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673321"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli-preview"></a>Tworzenie sygnatury dostępu współdzielonego użytkownika dla kontenera lub obiektu BLOB za pomocą interfejsu wiersza polecenia platformy Azure (wersja zapoznawcza)
 
@@ -30,7 +30,7 @@ Aby użyć interfejsu wiersza polecenia platformy Azure do zabezpieczenia sygnat
 
 ## <a name="sign-in-with-azure-ad-credentials"></a>Zaloguj się przy użyciu poświadczeń usługi Azure AD
 
-Zaloguj się do interfejsu wiersza polecenia platformy Azure przy użyciu poświadczeń usługi Azure AD. Aby uzyskać więcej informacji, zobacz [Logowanie za pomocą interfejsu wiersza polecenia platformy Azure](/cli/azure/authenticate-azure-cli).
+Zaloguj się do interfejsu wiersza polecenia platformy Azure przy użyciu poświadczeń usługi Azure AD. Aby uzyskać więcej informacji, zobacz temat [Logowanie się za pomocą interfejsu wiersza polecenia platformy Azure](/cli/azure/authenticate-azure-cli).
 
 ## <a name="assign-permissions-with-rbac"></a>Przypisywanie uprawnień przy użyciu RBAC
 
@@ -57,7 +57,7 @@ Gdy tworzysz sygnaturę dostępu współdzielonego użytkownika przy użyciu int
 
 Ze względu na to, że maksymalny interwał ważności klucza delegowania użytkownika wynosi 7 dni od daty rozpoczęcia, należy określić czas wygaśnięcia dla sygnatury dostępu współdzielonego w ciągu 7 dni od czasu rozpoczęcia. Sygnatura dostępu współdzielonego jest nieprawidłowa po wygaśnięciu klucza delegowania użytkownika, więc sygnatura dostępu współdzielonego o godzinie przekraczającej 7 dni będzie nadal ważna tylko przez 7 dni.
 
-W `--auth-mode login` przypadku tworzenia sygnatury dostępu współdzielonego `--as-user parameters` użytkownika wymagane są i. Określ *nazwę logowania* dla `--auth-mode` parametru, aby żądania kierowane do usługi Azure Storage były autoryzowane przy użyciu poświadczeń usługi Azure AD. `--as-user` Określ parametr wskazujący, że zwracany sygnatura dostępu współdzielonego powinien być sygnaturą dostępu współdzielonego delegowaną przez użytkownika.
+W przypadku tworzenia sygnatury dostępu współdzielonego użytkownika wymagane są `--auth-mode login` i `--as-user parameters`. Określ *nazwę logowania* dla parametru `--auth-mode`, aby żądania kierowane do usługi Azure Storage były autoryzowane przy użyciu poświadczeń usługi Azure AD. Określ parametr `--as-user`, aby wskazać, że zwracany sygnatura dostępu współdzielonego powinien być sygnaturą dostępu współdzielonego delegowania użytkownika.
 
 ### <a name="create-a-user-delegation-sas-for-a-container"></a>Tworzenie sygnatury dostępu współdzielonego użytkownika dla kontenera
 
@@ -89,7 +89,7 @@ Aby utworzyć sygnaturę dostępu współdzielonego dla delegowania użytkownik�
 
 Obsługiwane uprawnienia do delegowania przez użytkownika funkcji sygnatury dostępu współdzielonego w obiekcie blob obejmują dodawanie, tworzenie, usuwanie, Odczyt i zapis. Uprawnienia można określić pojedynczo lub łącznie. Aby uzyskać więcej informacji o tych uprawnieniach, zobacz [Tworzenie skojarzeń zabezpieczeń delegowania użytkownika](/rest/api/storageservices/create-user-delegation-sas).
 
-Poniższa składnia zwraca sygnaturę dostępu współdzielonego delegowania użytkownika dla obiektu BLOB. W przykładzie określono `--full-uri` parametr, który zwraca identyfikator URI obiektu BLOB z dołączonym tokenem SAS. Pamiętaj, aby zastąpić wartości symboli zastępczych w nawiasach własnymi wartościami:
+Poniższa składnia zwraca sygnaturę dostępu współdzielonego delegowania użytkownika dla obiektu BLOB. W przykładzie określono parametr `--full-uri`, który zwraca identyfikator URI obiektu BLOB z dołączonym tokenem SAS. Pamiętaj, aby zastąpić wartości symboli zastępczych w nawiasach własnymi wartościami:
 
 ```azurecli-interactive
 az storage blob generate-sas \

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 34d1ba13689eb820db754c5c0d9573dcdc235205
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: a77c0e38db06698e714c3d0c3df0d9a5f028787b
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350819"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672954"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Obciążenia SAP na platformie Azure: Lista kontrolna planowania i wdrażania
 
@@ -102,7 +102,7 @@ Zalecamy skonfigurowanie i zweryfikowanie pełnego projektu rozwiązania HADR Cl
         - Oceń i przetestuj rozmiary maszyn wirtualnych platformy Azure w odniesieniu do maksymalnej przepustowości magazynu i przepływności sieci dla typów maszyn wirtualnych wybranych podczas fazy planowania. Dane można znaleźć tutaj:
            -  [Rozmiary maszyn wirtualnych z systemem Windows na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json). Ważne jest, aby uwzględnić *maksymalną przepływność dysku niebuforowanego* dla rozmiaru.
            -  [Rozmiary maszyn wirtualnych z systemem Linux na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json). Ważne jest, aby uwzględnić *maksymalną przepływność dysku niebuforowanego* dla rozmiaru.
-   1. Magazyn.
+   2. Magazyn.
         - Za pomocą [usługi Azure SSD w warstwie Standardowa Storage](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-ssd) można korzystać w przypadku maszyn wirtualnych, które reprezentują warstwy aplikacji SAP, oraz wdrażania systemów DBMS, które nie są wrażliwe na wydajność.
         - Ogólnie rzecz biorąc nie zalecamy używania [dysków HDD w warstwie Standardowa platformy Azure](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-hdd).
         - Użyj [Premium Storage platformy Azure](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) dla wszystkich maszyn wirtualnych z systemem DBMS, które są zdalnie wrażliwe na wydajność.
@@ -111,11 +111,12 @@ Zalecamy skonfigurowanie i zweryfikowanie pełnego projektu rozwiązania HADR Cl
         - W przypadku różnych typów systemów DBMS należy zapoznać się z [ogólną dokumentacją systemu DBMS powiązaną z programem SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general) i dokumentacją specyficzną dla systemu DBMS, na którą wskazuje dokument ogólny.
         - Aby uzyskać więcej informacji na temat SAP HANA, zobacz [SAP HANA konfiguracje i operacje infrastruktury na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations).
         - Nie należy instalować dysków danych platformy Azure na maszynę wirtualną z systemem Linux platformy Azure przy użyciu identyfikatora urządzenia. Zamiast tego należy użyć uniwersalnego identyfikatora unikatowego (UUID). Należy zachować ostrożność podczas instalowania dysków danych platformy Azure przy użyciu narzędzi graficznych. Sprawdź podwójne wpisy w/etc/fstab, aby upewnić się, że identyfikator UUID jest używany do instalowania dysków. Więcej szczegółów można znaleźć w [tym artykule](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal#connect-to-the-linux-vm-to-mount-the-new-disk).
-   1. Sieci.
+   3. Sieci.
         - Przetestuj i Oceń infrastrukturę sieci wirtualnej oraz dystrybucję aplikacji SAP w różnych sieciach wirtualnych platformy Azure lub w ich obrębie.
-        -  Oceń podejście do architektury sieci wirtualnej typu Hub i szprych lub podejście mikrosegmentacji w ramach jednej sieci wirtualnej platformy Azure. Podstawa tej oceny: — koszty wymiany danych między [równorzędnymi sieciami wirtualnymi platformy Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview). Aby uzyskać informacje o kosztach, zobacz [Cennik usługi Virtual Network](https://azure.microsoft.com/pricing/details/virtual-network/).
-                  — Zalety szybkiego rozłączenia komunikacji równorzędnej między sieciami wirtualnymi platformy Azure w przeciwieństwie do zmiany sieciowej grupy zabezpieczeń w celu odizolowania podsieci w sieci wirtualnej. Ta ocena jest wykonywana w przypadku, gdy aplikacje lub maszyny wirtualne hostowane w podsieci sieci wirtualnej stałą się zagrożeniem bezpieczeństwa.
-                  — Centralne rejestrowanie i inspekcja ruchu sieciowego między środowiskiem lokalnym, światem zewnętrznym i wirtualnym centrum danych utworzonym na platformie Azure.
+        -  Oceń podejście do architektury sieci wirtualnej typu Hub i szprych lub podejście mikrosegmentacji w ramach jednej sieci wirtualnej platformy Azure. Podstawa tej oceny:
+               1. Koszty wymiany danych między [równorzędnymi sieciami wirtualnymi platformy Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview). Aby uzyskać informacje o kosztach, zobacz [Cennik usługi Virtual Network](https://azure.microsoft.com/pricing/details/virtual-network/).
+               2. Zalety szybkiego rozłączenia komunikacji równorzędnej między sieciami wirtualnymi platformy Azure w przeciwieństwie do zmiany sieciowej grupy zabezpieczeń w celu odizolowania podsieci w sieci wirtualnej. Ta ocena jest wykonywana w przypadku, gdy aplikacje lub maszyny wirtualne hostowane w podsieci sieci wirtualnej stałą się zagrożeniem bezpieczeństwa.
+                3. Centralne rejestrowanie i inspekcja ruchu sieciowego między środowiskiem lokalnym, światem zewnętrznym i wirtualnym centrum danych, które zostało utworzone na platformie Azure.
         - Oceń i przetestuj ścieżkę danych między warstwą aplikacji SAP i warstwą SAP DBMS.
             -  Umieszczenie [urządzeń wirtualnych sieci platformy Azure](https://azure.microsoft.com/solutions/network-appliances/) w ścieżce komunikacji między aplikacją SAP a warstwą DBMS systemów SAP opartych na oprogramowaniu SAP NetWeaver, Hybris lub S/4HANA nie jest obsługiwane.
             -  Umieszczenie warstwy aplikacji SAP i SAP DBMS w różnych sieciach wirtualnych platformy Azure, które nie są połączone za pomocą komunikacji równorzędnej, nie jest obsługiwane.
@@ -129,13 +130,13 @@ Zalecamy skonfigurowanie i zweryfikowanie pełnego projektu rozwiązania HADR Cl
         - Upewnij się, że wdrożenia ILB są skonfigurowane do używania bezpośredniego powrotu do serwera. To ustawienie spowoduje skrócenie opóźnienia, gdy usługa Azure ILB będzie używana do konfiguracji wysokiej dostępności na warstwie DBMS.
         - Jeśli używasz Azure Load Balancer razem z systemami operacyjnymi gościa z systemem Linux, sprawdź, czy parametr sieci systemu Linux **net. IPv4. TCP _timestamps** jest ustawiony na **wartość 0**. To zalecenie powoduje konflikt z zaleceniami we wcześniejszych wersjach programu [SAP uwagi #2382421](https://launchpad.support.sap.com/#/notes/2382421). Uwaga dotycząca oprogramowania SAP jest teraz aktualizowana do stanu, w którym ten parametr musi być ustawiony na **wartość 0** , aby pracować z modułami równoważenia obciążenia platformy Azure.
         - W celu uzyskania optymalnego opóźnienia sieci należy rozważyć użycie [grup umieszczania usługi Azure zbliżeniowe](https://docs.microsoft.com/azure/virtual-machines/linux/co-location) . Aby uzyskać więcej informacji, zobacz [grupy umieszczania zbliżeniowe platformy Azure w celu uzyskania optymalnego opóźnienia sieci przy użyciu aplikacji SAP](sap-proximity-placement-scenarios.md).
-   1. Wdrożenia wysokiej dostępności i odzyskiwania po awarii.
+   4. Wdrożenia wysokiej dostępności i odzyskiwania po awarii.
         - W przypadku wdrażania warstwy aplikacji SAP bez definiowania określonej strefy dostępności platformy Azure upewnij się, że wszystkie maszyny wirtualne, które uruchamiają wystąpienia okna dialogowego SAP lub wystąpienia oprogramowania pośredniczącego pojedynczego systemu SAP są wdrożone w [zestawie dostępności](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability).
         - Jeśli nie potrzebujesz wysokiej dostępności dla usług SAP Central i systemu DBMS, możesz wdrożyć te maszyny wirtualne w tym samym zestawie dostępności co warstwa aplikacji SAP.
         - W przypadku ochrony usług SAP Central i warstwy DBMS w celu zapewnienia wysokiej dostępności przy użyciu replikacji pasywnej należy umieścić dwa węzły dla usług SAP Central w jednym osobnym zestawie dostępności i dwóch węzłach systemu DBMS w innym zestawie dostępności.
         - W przypadku wdrażania w Strefy dostępności platformy Azure nie można używać zestawów dostępności. Należy jednak upewnić się, że węzły Active i pasywny Central Services są wdrażane w dwóch różnych Strefy dostępnościach. Użyj Strefy dostępności, które mają najmniejsze opóźnienia między nimi.
           Należy pamiętać, że należy użyć [usługi Azure usługa Load Balancer w warstwie Standardowa](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) do użycia w przypadku tworzenia klastrów trybu failover systemu Windows lub Pacemaker dla warstwy DBMS i SAP Central Services w strefy dostępności. Nie można użyć [podstawowego Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) dla wdrożeń strefowych.
-   1. Ustawienia limitu czasu.
+   5. Ustawienia limitu czasu.
         - Sprawdź ślady programu SAP NetWeaver dla deweloperów wystąpień SAP, aby upewnić się, że nie ma przerw między serwerem z kolejki i procesami roboczymi SAP. Te przerwy połączeń można uniknąć, ustawiając te dwa parametry rejestru:
             - HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\KeepAliveTime = 120000. Aby uzyskać więcej informacji, zobacz [KeepAliveTime](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10)).
             - HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\KeepAliveInterval = 120000. Aby uzyskać więcej informacji, zobacz [KeepAliveInterval](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-2000-server/cc957548(v=technet.10)).
@@ -152,8 +153,8 @@ Zalecamy skonfigurowanie i zweryfikowanie pełnego projektu rozwiązania HADR Cl
    1. Zmierz, jak długo trwa wykonywanie trybu failover. Jeśli czasy są zbyt długie, Rozważ następujące kwestie:
         - W przypadku systemu SUSE Linux Użyj urządzeń SBD zamiast agenta usługi Azure ogrodzenia, aby przyspieszyć pracę w trybie failover.
         - W przypadku SAP HANA, jeśli ponowne załadowanie danych trwa zbyt długo, należy rozważyć zapewnienie większej przepustowości magazynu.
-   1. Przetestuj sekwencję wykonywania kopii zapasowej/przywracania i chronometrażu i wprowadź poprawki, jeśli zachodzi taka potrzeba. Upewnij się, że czasy wykonywania kopii zapasowej są wystarczające. Należy również przetestować działania przywracania i przywracania. Upewnij się, że czasy przywracania znajdują się w RTO umowy SLA wszędzie tam, gdzie RTO korzysta z bazy danych lub procesu przywracania maszyny wirtualnej.
-   1. Testowanie funkcjonalności i architektury odzyskiwania między regionami.
+   3. Przetestuj sekwencję wykonywania kopii zapasowej/przywracania i chronometrażu i wprowadź poprawki, jeśli zachodzi taka potrzeba. Upewnij się, że czasy wykonywania kopii zapasowej są wystarczające. Należy również przetestować działania przywracania i przywracania. Upewnij się, że czasy przywracania znajdują się w RTO umowy SLA wszędzie tam, gdzie RTO korzysta z bazy danych lub procesu przywracania maszyny wirtualnej.
+   4. Testowanie funkcjonalności i architektury odzyskiwania między regionami.
 1. Sprawdzanie zabezpieczeń.
    1. Przetestuj ważność architektury kontroli dostępu opartej na rolach (RBAC) na platformie Azure. Celem jest oddzielenie i ograniczenie dostępu i uprawnień różnych zespołów. Na przykład członkowie zespołu podstawy SAP powinni mieć możliwość wdrażania maszyn wirtualnych i przypisywania dysków z usługi Azure Storage do danej sieci wirtualnej platformy Azure. Jednak zespół podstawy SAP nie powinien mieć możliwości tworzenia własnych sieci wirtualnych ani zmieniać ustawień istniejących sieci wirtualnych. Członkowie zespołu sieci nie powinni mieć możliwości wdrażania maszyn wirtualnych w sieciach wirtualnych, w których są uruchomione maszyny wirtualne aplikacji SAP i DBMS. Ani członkowie tego zespołu mogą zmieniać atrybuty maszyn wirtualnych, a nawet usuwać maszyny wirtualne lub dyski.  
    1.  Sprawdź, czy [sieciowe grupy zabezpieczeń i zasady ASC](https://docs.microsoft.com/azure/virtual-network/security-overview) działają zgodnie z oczekiwaniami, i Włącz ochronę chronionych zasobów.
@@ -161,9 +162,9 @@ Zalecamy skonfigurowanie i zweryfikowanie pełnego projektu rozwiązania HADR Cl
    1.  Użyj [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq) dla dysków systemu operacyjnego, jeśli to możliwe, z punktu widzenia obsługi systemu operacyjnego.
    1.  Upewnij się, że nie używasz zbyt wielu warstw szyfrowania. W niektórych przypadkach warto używać Azure Disk Encryption wraz z jedną z metod Transparent Data Encryption systemu DBMS.
 1. Testowanie wydajnościowe. W oprogramowaniu SAP w oparciu o śledzenie i pomiary SAP należy wykonać następujące porównania:
-   1. W razie potrzeby Porównaj 10 najważniejszych raportów online z bieżącą implementacją.
-   1. W razie potrzeby Porównaj 10 najważniejszych zadań wsadowych z bieżącą implementacją.
-   1. Porównywanie transferów danych za pomocą interfejsów z systemem SAP. Skupiaj się na interfejsach, w których wiesz, że transfer jest teraz przenoszony między różnymi lokalizacjami, takimi jak lokalne, na platformę Azure.
+   - W razie potrzeby Porównaj 10 najważniejszych raportów online z bieżącą implementacją.
+   - W razie potrzeby Porównaj 10 najważniejszych zadań wsadowych z bieżącą implementacją.
+   - Porównywanie transferów danych za pomocą interfejsów z systemem SAP. Skupiaj się na interfejsach, w których wiesz, że transfer jest teraz przenoszony między różnymi lokalizacjami, takimi jak lokalne, na platformę Azure.
 
 
 ## <a name="non-production-phase"></a>Faza nieprodukcyjna 
