@@ -1,60 +1,60 @@
 ---
-title: C#samouczek dotyczący porządkowanie wyników — usługa Azure Search
-description: Ten samouczek opiera się na projekcie "Podział na strony — Usługa Azure Search w wynikach wyszukiwania", aby dodawać, porządkowanie wyników wyszukiwania. Dowiedz się, jak kolejność wyników na właściwość podstawowego, a dla wyników, które mają tę samą właściwość podstawowy, sposób uporządkowania wyników dodatkowych właściwości. Na koniec sposób uporządkowania wyników na podstawie profilu oceniania.
+title: C#Samouczek dotyczący porządkowania wyników — Azure Search
+description: Ten samouczek kompiluje się w projekcie "wyniki wyszukiwania na stronie rozdzielenie Azure Search", aby dodać kolejność wyników wyszukiwania. Dowiedz się, jak zamówić wyniki na głównej właściwości i dla wyników mających taką samą Właściwość podstawową, jak kolejność wyników na właściwości pomocniczej. Na koniec dowiesz się, jak zamówić wyniki w oparciu o profil oceniania.
 services: search
 ms.service: search
 ms.topic: tutorial
 ms.author: v-pettur
 author: PeterTurcan
 ms.date: 06/21/2019
-ms.openlocfilehash: 32e253b4e131d753ab6937d0aa2a49bda471e091
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 684ce33e5ecf587aa2030a817680f2d405225117
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67466531"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327647"
 ---
-# <a name="c-tutorial-order-the-results---azure-search"></a>C#Samouczek: Kolejność wyników — usługa Azure Search
+# <a name="c-tutorial-order-the-results---azure-search"></a>C#Ręczny Kolejność wyników — Azure Search
 
-Do tego punktu w serii samouczków wyniki są zwracane, a następnie wyświetlane na domyślną kolejność. Może to być kolejność, w którym znajdują się dane, lub ewentualnie domyślną _profil oceniania_ została zdefiniowana, który będzie używany, gdy nie określono żadnych parametrów szeregowania. W tym samouczku przejdziemy będzie w sposób uporządkowania wyników na podstawie właściwości podstawowy, a następnie dla wyników, które mają tę samą właściwość podstawowy, jak kolejność wybieranie dodatkowych właściwości. Jako alternatywę do porządkowania oparte na wartości liczbowe końcowy przykład pokazuje, jak kolejność na podstawie niestandardowego profilu oceniania. Firma Microsoft będzie również bardziej szczegółowo nieco omawiają wyświetlanie _typy złożone_.
+W górę do tego momentu w naszej serii samouczków wyniki są zwracane i wyświetlane w kolejności domyślnej. Może to być kolejność, w której znajdują się dane lub prawdopodobnie został zdefiniowany domyślny _profil oceniania_ , który będzie używany, gdy nie zostaną określone żadne parametry porządkowania. W tym samouczku przejdziemy do sposobu porządkowania wyników w oparciu o Właściwość podstawową, a następnie dla wyników, które mają tę samą Właściwość podstawową, w jaki sposób należy określić kolejność tego wyboru we właściwości pomocniczej. Zamiast określania kolejności na podstawie wartości liczbowych, ostatni przykład pokazuje, jak zamówić na podstawie niestandardowego profilu oceniania. Dodatkowo przejdziemy do wyświetlania _typów złożonych_.
 
-Aby można było łatwo porównać zwróconych wyników, ten projekt jest kompilowany na nieskończonej przewijania projektu utworzonego w [ C# samouczka: Podział na strony — wyniki wyszukiwania, usługa Azure Search](tutorial-csharp-paging.md) samouczka.
+Aby można było łatwo porównać zwrócone wyniki, ten projekt jest kompilowany do nieskończonego projektu przewijania utworzonego w @no__t samouczku -0C# : Na rozdzielenie wyników wyszukiwania — samouczek Azure Search @ no__t-0.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
-> * Wyniki na podstawie jednej właściwości.
-> * Wyniki oparte na wiele właściwości atrybutu
-> * Filtruj wyniki w oparciu odległości od punktu geograficznych
-> * Wyniki oparte na profilu oceniania
+> * Kolejność wyników na podstawie jednej właściwości
+> * Kolejność wyników na podstawie wielu właściwości
+> * Filtruj wyniki na podstawie odległości od punktu geograficznego
+> * Zamów wyniki w oparciu o profil oceniania
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Do ukończenia tego samouczka niezbędne są następujące elementy:
 
-Wersja nieskończonej przewijania [ C# samouczka: Podział na strony — wyniki wyszukiwania, usługa Azure Search](tutorial-csharp-paging.md) projektu działanie. Ten projekt może być własną wersję lub go zainstalować z witryny GitHub: [Tworzenie pierwszej aplikacji](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+Ma nieskończoną wersję przewijania samouczka [C# : Na stronicowaniu wyników wyszukiwania Azure Search @ no__t-0 Project up i uruchomiona. Ten projekt może być własną wersją lub być instalowany z serwisu GitHub: [Utwórz pierwszą aplikację](https://github.com/Azure-Samples/azure-search-dotnet-samples).
 
-## <a name="order-results-based-on-one-property"></a>Wyniki na podstawie jednej właściwości.
+## <a name="order-results-based-on-one-property"></a>Kolejność wyników na podstawie jednej właściwości
 
-Gdy firma Microsoft kolejność wyników na podstawie jednej właściwości, załóżmy, że hotelu klasyfikacji, nie ma być uruchamiany tylko wyniki uporządkowane, chcemy również potwierdzenie, że kolejność jest poprawna. Innymi słowy Jeśli firma Microsoft zamówienie na ocenę, firma Microsoft powinien być wyświetlany tę klasyfikację w widoku.
+Gdy porządkuje wyniki na podstawie jednej właściwości, powiedzmy na klasyfikację hotelową, nie tylko chcesz mieć uporządkowane wyniki, a także potwierdzić, że kolejność jest poprawna. Innymi słowy, jeśli porządkuje się klasyfikacje, powinna zostać wyświetlona Ocena w widoku.
 
-W tym samouczku także dodamy nieco bardziej do wyświetlenia wyników, najtańszej pokoju i najbardziej kosztowne stopa miejsca dla każdego hotelu. Jak możemy delve, w kolejności, będziemy również dodawać wartości, aby upewnić się, co to są możemy porządkowanie dla jest również wyświetlany w widoku.
+W tym samouczku dodamy również nieco więcej informacji na temat wyników, najtańszej szybkości pokojowej i najbardziej kosztownej szybkości pokojowej dla każdego hotelu. W miarę jak nazywamy się, będziemy również dodawać wartości, aby upewnić się, że kolejność jest wyświetlana również w widoku.
 
-Nie ma potrzeby, aby zmodyfikować dowolne modele umożliwiające określanie kolejności. Widok i potrzebują kontrolera zaktualizowanych. Rozpocznij, otwierając głównego kontrolera.
+Nie ma potrzeby modyfikowania żadnego z modeli, aby umożliwić Określanie kolejności. Widok i kontroler wymagają aktualizacji. Zacznij od otwarcia kontrolera macierzystego.
 
 ### <a name="add-the-orderby-property-to-the-search-parameters"></a>Dodaj właściwość OrderBy do parametrów wyszukiwania
 
-1. Wszystko, co może potrwać do kolejności wyników na podstawie właściwości pojedynczej wartości liczbowych, polega na ustawieniu **OrderBy** parametru, aby nazwa właściwości. W **indeksu (SearchData model)** metody, Dodaj następujący wiersz do parametrów wyszukiwania.
+1. Wszystko, co jest potrzebne do porządkowania wyników na podstawie pojedynczej właściwości liczbowej, polega na ustawieniu parametru **OrderBy** na nazwę właściwości. W metodzie **index (SearchData model)** Dodaj następujący wiersz do parametrów wyszukiwania.
 
     ```cs
         OrderBy = new[] { "Rating desc" },
     ```
 
     >[!Note]
-    > Domyślna kolejność jest rosnący, że można dodawać **asc** do właściwości, aby było jasne. Malejącej jest określony, dodając **desc**.
+    > Kolejność domyślna to Ascending, ale można dodać do właściwości **ASC** , aby to zrobić. Kolejność malejąca jest określana przez dodanie **opisu**.
 
-2. Teraz uruchom aplikację, a następnie wprowadź wszelkie wspólny termin wyszukiwania. Wyniki mogą lub mogą nie być w odpowiedniej kolejności jako deweloper, a nie użytkownika zrobiło tego też żadnych prosty sposób sprawdzania, czy wyniki!
+2. Teraz uruchom aplikację i wprowadź dowolny termin wyszukiwania. Wyniki mogą być w niewłaściwej kolejności lub mogą być niezgodne, ponieważ nie są one deweloperami, a nie użytkownikami, w łatwy sposób sprawdzają wyniki.
 
-3. Upewnijmy się je Wyczyść, wyniki są uporządkowane według klasyfikacji. Najpierw Zastąp **pole1** i **pole 2** klasy w pliku hotels.css za pomocą następujących klas (te klasy są nowe licencje potrzebujemy na potrzeby tego samouczka).
+3. Wyczyśćmy, czy wyniki są uporządkowane według klasyfikacji. Najpierw Zastąp klasy **BOX1** i **box2** w pliku hoteli. css następującymi klasami (te klasy są wszystkie nowe, które są potrzebne w tym samouczku).
 
     ```html
     textarea.box1A {
@@ -113,21 +113,21 @@ Nie ma potrzeby, aby zmodyfikować dowolne modele umożliwiające określanie ko
     ```
 
     >[!Tip]
-    >Przeglądarki zwykle pamięci podręcznej plików css i może to prowadzić do starego pliku css, które są używane i edycji ignorowane. Dobrym sposobem round to jest dodanie ciągu zapytania za pomocą parametru wersji do łącza. Na przykład:
+    >Przeglądarki zwykle buforują pliki CSS i mogą prowadzić do używanego starego pliku CSS, a zmiany zostały zignorowane. Dobrym sposobem jest dodanie ciągu zapytania z parametrem Version do linku. Na przykład:
     >
     >```html
     >   <link rel="stylesheet" href="~/css/hotels.css?v1.1" />
     >```
     >
-    >Jeśli uważasz, że stary plik css, jest on używany przez przeglądarkę, należy zaktualizować numer wersji.
+    >Zaktualizuj numer wersji, jeśli uważasz, że stary plik CSS jest używany przez przeglądarkę.
 
-4. Dodaj **ocena** właściwości **wybierz** parametru w **indeksu (SearchData model)** metody.
+4. Dodaj właściwość **Rating** do parametru **SELECT** w metodzie **index (SearchData model)** .
 
     ```cs
     Select = new[] { "HotelName", "Description", "Rating"},
     ```
 
-5. Powoduje ono otwarcie widoku (index.cshtml) i Zastąp pętlą renderowania ( **&lt;! — Pokaż dane hotelu.--&gt;** ) z następującym kodem.
+5. Otwórz widok (index. cshtml) i Zastąp pętlę renderowania ( **&lt;!--Pokaż dane hotelu.--&gt;** ) z poniższym kodem.
 
     ```cs
                 <!-- Show the hotel data. -->
@@ -142,7 +142,7 @@ Nie ma potrzeby, aby zmodyfikować dowolne modele umożliwiające określanie ko
                 }
     ```
 
-6. Tę klasyfikację musi być dostępne zarówno na pierwszej stronie wyświetlane, jak i na kolejnych stronach, które są wywoływane za pośrednictwem nieskończonej przewijania. W przypadku drugiego nagłówka tych dwóch sytuacji należy zaktualizować obydwa **dalej** akcji w kontrolerze i **przewijane** funkcji w widoku. Począwszy od kontrolera, zmień **dalej** metody z następującym kodem. Ten kod tworzy i komunikuje się tekst klasyfikacji.
+6. Klasyfikacja musi być dostępna zarówno na pierwszej wyświetlanej stronie, jak i na kolejnych stronach, które są wywoływane przez nieskończone przewijanie. W przypadku tych dwóch sytuacji należy zaktualizować **następną** akcję w kontrolerze i **przewijaną** funkcję w widoku. Rozpoczynając od kontrolera, Zmień **następną** metodę na następujący kod. Ten kod tworzy i komunikuje tekst klasyfikacji.
 
     ```cs
         public async Task<ActionResult> Next(SearchData model)
@@ -170,7 +170,7 @@ Nie ma potrzeby, aby zmodyfikować dowolne modele umożliwiające określanie ko
         }
     ```
 
-7. Teraz zaktualizować **przewijane** funkcji w widoku, aby wyświetlić tekst klasyfikacji.
+7. Teraz zaktualizuj **przewijaną** funkcję w widoku, aby wyświetlić tekst klasyfikacji.
 
     ```javascript
             <script>
@@ -192,17 +192,17 @@ Nie ma potrzeby, aby zmodyfikować dowolne modele umożliwiające określanie ko
 
     ```
 
-8. Teraz ponownie uruchomić tę aplikację. Wyszukiwanie dowolnego wspólny termin, takie jak "Wi-Fi" i sprawdź, czy wyniki są uporządkowane według malejącej oceny hotelu.
+8. Teraz ponownie uruchom aplikację. Wyszukaj w dowolnym wspólnym terminie, takim jak "Wi-Fi", i sprawdź, czy wyniki są uporządkowane według malejącej kolejności klasyfikacji hotelowej.
 
-    ![Kolejność na podstawie klasyfikacji](./media/tutorial-csharp-create-first-app/azure-search-orders-rating.png)
+    ![Porządkowanie na podstawie klasyfikacji](./media/tutorial-csharp-create-first-app/azure-search-orders-rating.png)
 
-    Zauważysz, że kilka hotele mają identyczne klasyfikacji i dlatego ich wygląd na ekranie jest ponownie kolejność, w którym znajduje się dane, czyli dowolnego.
+    Zobaczysz, że kilka hoteli ma identyczną klasyfikację, więc ich wygląd na ekranie jest ponownie kolejnością, w której znajdują się dane, co jest dowolne.
 
-    Zanim spojrzymy na dodawanie drugiego poziomu, w kolejności, możemy dodać niektóre kod, aby wyświetlić zakres częstotliwości pokoju. Dodajemy ten kod do pokazania, zarówno wyodrębnianie danych z _typu złożonego_, a także dzięki czemu można omawiać porządkowanie wyników na podstawie ceny (najtańszej pierwszy przykład).
+    Przed przystąpieniem do dodawania drugiego poziomu porządkumy dodamy kod umożliwiający wyświetlenie zakresu wielkości pomieszczeń. Dodajemy ten kod zarówno do pokazywania wyodrębniania danych z _typu złożonego_, jak również możemy omówić wyniki sortowania na podstawie ceny (najprawdopodobniej najtańszej pierwszej).
 
-### <a name="add-the-range-of-room-rates-to-the-view"></a>Dodaj zakres pokoju stawek do widoku
+### <a name="add-the-range-of-room-rates-to-the-view"></a>Dodaj zakres stawek pomieszczeń do widoku
 
-1. Dodaj właściwości zawierające szybkość najtańszej i najbardziej kosztowne pokoju w pliku Hotel.cs modelu.
+1. Dodaj właściwości zawierające najtańszą i najbardziej kosztowną szybkość pokojową do modelu Hotel.cs.
 
     ```cs
         // Room rate range
@@ -210,7 +210,7 @@ Nie ma potrzeby, aby zmodyfikować dowolne modele umożliwiające określanie ko
         public double expensive { get; set; }
     ```
 
-2. Oblicz stawki miejsca na końcu **indeksu (SearchData model)** akcji na głównym kontrolerze. Po zapisaniu danych tymczasowych, należy dodać obliczeń.
+2. Oblicz szybkość pomieszczeń na końcu akcji **indeks (SearchData model)** w kontrolerze głównym. Dodaj obliczenia po przechowywaniu danych tymczasowych.
 
     ```cs
                 // Ensure TempData is stored for the next call.
@@ -241,13 +241,13 @@ Nie ma potrzeby, aby zmodyfikować dowolne modele umożliwiające określanie ko
                 }
     ```
 
-3. Dodaj **pokojów** właściwości **wybierz** parametru w **indeksu (SearchData model)** metody akcji kontrolera.
+3. Dodaj właściwość **pokoje** do parametru **SELECT** w metodzie Action **indeksu (SearchData model)** .
 
     ```cs
      Select = new[] { "HotelName", "Description", "Rating", "Rooms" },
     ```
 
-4. Zmień pętlą renderowania widoku, aby wyświetlić zakres stawki dla pierwszej strony wyników.
+4. Zmień pętlę renderowania w widoku, aby wyświetlić zakres stawki dla pierwszej strony wyników.
 
     ```cs
                 <!-- Show the hotel data. -->
@@ -264,7 +264,7 @@ Nie ma potrzeby, aby zmodyfikować dowolne modele umożliwiające określanie ko
                 }
     ```
 
-5. Zmiana **dalej** metody w domu kontrolera do komunikowania się w zakresie szybkości dla kolejnych stron wyników.
+5. Zmień **następną** metodę na kontrolerze głównym, aby przekazywać zakres stawki dla kolejnych stron wyników.
 
     ```cs
         public async Task<ActionResult> Next(SearchData model)
@@ -294,7 +294,7 @@ Nie ma potrzeby, aby zmodyfikować dowolne modele umożliwiające określanie ko
         }
     ```
 
-6. Aktualizacja **przewijane** funkcji w widoku, aby obsłużyć pokoju ocenia tekstu.
+6. Zaktualizuj **przewijaną** funkcję w widoku, aby obsłużyć tekst kursów pokojowych.
 
     ```javascript
             <script>
@@ -316,17 +316,17 @@ Nie ma potrzeby, aby zmodyfikować dowolne modele umożliwiające określanie ko
             </script>
     ```
 
-7. Uruchom aplikację i sprawdź, czy zakresy współczynnik miejsca są wyświetlane.
+7. Uruchom aplikację i sprawdź, czy są wyświetlane zakresy szybkości pomieszczeń.
 
-    ![Wyświetlanie miejsca częstotliwość zakresów](./media/tutorial-csharp-create-first-app/azure-search-orders-rooms.png)
+    ![Wyświetlanie zakresów szybkości pomieszczeń](./media/tutorial-csharp-create-first-app/azure-search-orders-rooms.png)
 
-**OrderBy** właściwości parametry wyszukiwania nie będzie akceptować wpis takich jak **Rooms.BaseRate** zapewnienie najtańszej pokoju, nawet wtedy, gdy pomieszczeniach już zostały posortowane według stawki, (które nie są one). Aby można było wyświetlić hoteli w zestawie danych przykładowych, uporządkowane według miejsca częstotliwość, trzeba posortować wyniki do poziomu głównego kontrolera i wysłać te wyniki do widoku w odpowiedni sposób.
+Właściwość **OrderBy** parametrów wyszukiwania nie akceptuje wpisu, takiego jak **sale. BaseRate** , aby zapewnić najtańszą szybkość pomieszczeń, nawet jeśli pokoje zostały już posortowane według stawki. W tym przypadku pokoje nie są sortowane według stawki. Aby wyświetlić Hotele w zestawie danych przykładowych, uporządkowane według szybkości pomieszczeń, należy posortować wyniki w kontrolerze głównym i wysłać te wyniki do widoku w odpowiedniej kolejności.
 
-## <a name="order-results-based-on-multiple-values"></a>Wyniki na podstawie wielu wartości
+## <a name="order-results-based-on-multiple-values"></a>Kolejność wyników w oparciu o wiele wartości
 
-Teraz pytanie jest sposób odróżnić hotele przy użyciu tej samej klasyfikacji. Kolejność na podstawie czasu, gdy został renovated hotelu byłoby jeden dobry sposób. Innymi słowy niedawno został renovated hotelu, im większy hotelu pojawia się w wynikach.
+Pytanie jest teraz sposobem rozróżniania hoteli z tą samą klasyfikacją. Jednym z dobrych sposobów jest kolejność, w jakiej Renovated hotelu. Inaczej mówiąc, Renovated w ten sposób niedawno hotelem, tym bardziej Hotel pojawia się w wynikach.
 
-1. Aby dodać drugiego poziomu, w kolejności, należy zmienić **OrderBy** i **wybierz** właściwości w **indeksu (SearchData model)** metodę, aby uwzględnić  **Zapytaniu LastRenovationDate** właściwości.
+1. Aby dodać drugi poziom porządkowania, Zmień właściwość **OrderBy** i **Wybierz** właściwości w metodzie **index (SearchData model)** , aby uwzględnić wartość właściwości **zapytaniu lastrenovationdate** .
 
     ```cs
     OrderBy = new[] { "Rating desc", "LastRenovationDate desc" },
@@ -334,9 +334,9 @@ Teraz pytanie jest sposób odróżnić hotele przy użyciu tej samej klasyfikacj
     ```
 
     >[!Tip]
-    >Można wprowadzić dowolną liczbę właściwości w **OrderBy** listy. Jeśli hotele tej samej klasyfikacji i odnawianie daty, trzeci właściwości można wprowadzić do rozróżnienia między nimi.
+    >Na liście **OrderBy** można wprowadzić dowolną liczbę właściwości. Jeśli Hotele ma taką samą ocenę i datę odnawiania, można wprowadzić trzecią właściwość w celu rozróżnienia między nimi.
 
-2. Ponownie musimy zobaczyć datę odnawianie w widoku, aby mieć pewność, że kolejność jest poprawna. Aby uzyskać takie samo jak odnawianie prawdopodobnie tylko rok jest wymagany. Zmień pętlą renderowania w widoku z następującym kodem.
+2. Ponownie musimy zobaczyć datę odnawiania w widoku, aby upewnić się, że kolejność jest poprawna. W przypadku takich czynności jako remontów prawdopodobnie wymagany jest tylko rok. Zmień pętlę renderowania w widoku na następujący kod.
 
     ```cs
                 <!-- Show the hotel data. -->
@@ -355,7 +355,7 @@ Teraz pytanie jest sposób odróżnić hotele przy użyciu tej samej klasyfikacj
                 }
     ```
 
-3. Zmiana **dalej** metoda głównego kontrolera, do przekazywania składnik roku z datą ostatniej odnawianie.
+3. Zmień **następną** metodę w kontrolerze głównym, aby przekazywać składnik roku ostatniego dnia odnawiania.
 
     ```cs
         public async Task<ActionResult> Next(SearchData model)
@@ -387,7 +387,7 @@ Teraz pytanie jest sposób odróżnić hotele przy użyciu tej samej klasyfikacj
         }
     ```
 
-4. Zmiana **przewijane** funkcji w widoku do wyświetlania tekstu odnawianie.
+4. Zmień **przewijaną** funkcję w widoku, aby wyświetlić tekst odnawiania.
 
     ```javascript
             <script>
@@ -410,17 +410,17 @@ Teraz pytanie jest sposób odróżnić hotele przy użyciu tej samej klasyfikacj
             </script>
     ```
 
-5. Uruchom aplikację. Wyszukiwanie wspólny termin, takie jak "puli" lub "view" i sprawdź, hotele, za pomocą tej samej klasyfikacji są teraz wyświetlane w porządku malejącym odnawianie daty.
+5. Uruchom aplikację. Wyszukaj wspólny termin, taki jak "Pool" lub "View", i sprawdź, czy Hotele o tej samej klasyfikacji są teraz wyświetlane w kolejności malejącej w dniu odnawiania.
 
-    ![Kolejność w dniu odnawianie](./media/tutorial-csharp-create-first-app/azure-search-orders-renovation.png)
+    ![Porządkowanie według daty odnawiania](./media/tutorial-csharp-create-first-app/azure-search-orders-renovation.png)
 
-## <a name="filter-results-based-on-a-distance-from-a-geographical-point"></a>Filtruj wyniki w oparciu odległości od punktu geograficznych
+## <a name="filter-results-based-on-a-distance-from-a-geographical-point"></a>Filtruj wyniki na podstawie odległości od punktu geograficznego
 
-Ocena i Data odnawianie są przykłady właściwości, które najlepiej są wyświetlane w kolejności malejącej. Alfabetyczna lista będzie przykładem stosowania kolejności rosnącej (na przykład, jeśli wystąpił co najmniej jeden **OrderBy** właściwość która została ustawiona na **HotelName** , a następnie będzie można wyświetlić w porządku alfabetycznym ). Jednak nasze przykładowe dane odległości od punktu geograficzne będzie bardziej odpowiednie.
+Klasyfikacja i Data odnawiania są przykładami właściwości, które najlepiej wyświetlić w kolejności malejącej. Alfabetyczna lista powinna być przykładem dobrego użycia kolejności rosnącej (na przykład jeśli istniała tylko jedna właściwość **OrderBy** i została ustawiona na **hotelname** , zostanie wyświetlona kolejność alfabetyczna). Jednak w przypadku naszych przykładowych danych odległość od punktu geograficznego będzie bardziej odpowiednia.
 
-Aby wyświetlić wyniki w oparciu położenia geograficznego, kilka kroki są wymagane.
+Aby wyświetlić wyniki na podstawie odległości geograficznej, wymagane jest wykonanie kilku kroków.
 
-1. Odfiltruj wszystkich hotele, które znajdują się poza wybranego promienia z danego punktu, wprowadzając filtr z długość geograficzna, szerokość i parametry usługi radius. Długość geograficzna otrzymuje najpierw funkcję punktu. RADIUS jest w kilometrach.
+1. Odfiltruj wszystkie hotele spoza określonego promienia z danego punktu, wprowadzając filtr z parametrami długości geograficznych, szerokości geograficznej i usługi RADIUS. Długość geograficzna jest podawana najpierw do funkcji POINT. Promień to kilometry.
 
     ```cs
         // "Location" must match the field name in the Hotel class.
@@ -429,15 +429,15 @@ Aby wyświetlić wyniki w oparciu położenia geograficznego, kilka kroki są wy
         Filter = $"geo.distance(Location, geography'POINT({model.lon} {model.lat})') le {model.radius}",
     ```
 
-2. Powyższy Filtr spowodował jest _nie_ zamówienie wyniki w oparciu o odległość, po prostu usuwa elementy odstające. Aby uporządkować wyniki, należy wprowadzić **OrderBy** ustawienia określa metodę geoDistance.
+2. Powyższy filtr _nie_ porządkuje wyników na podstawie odległości, po prostu usuwa elementy odstające. Aby zamówić wyniki, wprowadź ustawienie **OrderBy** określające metodę geodystans.
 
     ```cs
     OrderBy = new[] { $"geo.distance(Location, geography'POINT({model.lon} {model.lat})') asc" },
     ```
 
-3. Mimo że wyniki zostały zwrócone przez usługę Azure Search przy użyciu filtru odległość, obliczeniowych odległość między danych a określonym punktem jest _nie_ zwracane. Oblicz ponownie tę wartość w widoku lub kontroler, jeśli chcesz go wyświetlić w wynikach.
+3. Mimo że wyniki zostały zwrócone przez Azure Search przy użyciu filtra odległość, obliczona odległość między danymi a określonym punktem _nie_ jest zwracana. Ponownie Oblicz tę wartość w widoku lub kontrolerze, jeśli chcesz wyświetlić ją w wynikach.
 
-    Poniższy kod oblicza odległość między dwoma punktami lat/długa.
+    Poniższy kod obliczy odległość między dwoma punktami w zakresie.
 
     ```cs
         const double EarthRadius = 6371;
@@ -458,22 +458,22 @@ Aby wyświetlić wyniki w oparciu położenia geograficznego, kilka kroki są wy
         }
     ```
 
-4. Masz teraz powiązać te pojęcia razem. Jednak te fragmenty kodu są w zakresie, w jakim Nasz samouczek dotyczący przechodzi tworzenie aplikacją opartą na mapie pozostanie w charakterze ćwiczenia dla czytnika. Aby móc dalej w tym przykładzie, należy wziąć pod uwagę zarówno nazwę miasta z protokołem radius, wprowadzając lub lokalizowanie punkt na mapie, a następnie wybierając promień. Aby zbadać dalej te opcje, zobacz następujące zasoby:
+4. Teraz musisz powiązać te koncepcje ze sobą. Jednak te fragmenty kodu są tak długo, jak w naszym samouczku, utworzenie aplikacji opartej na mapie jest pozostawione jako ćwiczenie dla czytnika. Aby to zrobić, należy rozważyć wprowadzenie nazwy miasta z promieniem lub znalezienie punktu na mapie, a następnie wybranie promienia. Aby dokładniej zbadać te opcje, zobacz następujące zasoby:
 
 * [Dokumentacja usługi Azure Maps](https://docs.microsoft.com/azure/azure-maps/)
-* [Znajdowanie adresu przy użyciu usługi Azure Maps usługi wyszukiwania](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address)
+* [Znajdź adres przy użyciu usługi wyszukiwania Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address)
 
-## <a name="order-results-based-on-a-scoring-profile"></a>Wyniki oparte na profilu oceniania
+## <a name="order-results-based-on-a-scoring-profile"></a>Zamów wyniki w oparciu o profil oceniania
 
-Przykłady podane w tym samouczku do tej pory pokazują, jak kolejność według wartości liczbowych (Klasyfikacja, Data odnawianie, położenia geograficznego), zapewniając _dokładnie_ przetwarzanie kolejności. Jednak niektóre wyszukiwania i pewnymi danymi nie nadają się do takich łatwo porównać między elementami danych dwa. Usługa Azure Search obejmuje koncepcję _oceniania_. _Profile oceniania_ może zostać określony dla zestawu danych, który może służyć do zapewnienia bardziej złożone i jakościowe porównań, które powinny być najbardziej wartościowych when, powiedz, porównywanie danych tekstowych do określania, które powinny być wyświetlane pierwszy.
+W przykładach podanych w samouczku pokazano, jak zamówić wartości liczbowe (Klasyfikacja, Data renowacji, odległość geograficzna), co zapewnia _dokładny_ proces określania kolejności. Jednak niektóre wyszukiwania i niektóre dane nie zapewnią do takiego łatwego porównania między dwoma elementami danych. Azure Search obejmuje koncepcję _oceniania_. _Profile oceniania_ można określić dla zestawu danych, które mogą być używane do zapewniania bardziej złożonych i jakościowych porównań, które powinny być najbardziej cenne, gdy, powiedzmy, porównując dane tekstowe, aby określić, które powinny być wyświetlane jako pierwsze.
 
-Profile oceniania nie są zdefiniowane przez użytkowników, ale zazwyczaj przez administratorów zestawu danych. Profile oceniania kilka skonfigurowano danych hotels. Możemy przyjrzeć się sposób definiowania profilu oceniania, a następnie spróbuj pisania kodu, aby wyszukać na nich.
+Profile oceniania nie są definiowane przez użytkowników, ale zazwyczaj są administratorami zestawu danych. Skonfigurowano kilka profilów oceniania dla danych hoteli. Spójrzmy na sposób definiowania profilu oceniania, a następnie spróbuj napisać kod, aby go wyszukać.
 
-### <a name="how-scoring-profiles-are-defined"></a>Sposób oceniania profile są zdefiniowane.
+### <a name="how-scoring-profiles-are-defined"></a>Jak są definiowane profile oceniania
 
-Możemy przyjrzeć się trzy przykłady profile oceniania i wziąć pod uwagę, jak każdy _powinien_ wpływa na kolejność wyników. Jako Deweloper aplikacji nie zapisuj, te profile są zapisywane przez administratora danych, jednak warto Przyjrzyj się składni.
+Przyjrzyjmy się trzem przykładom profilów oceniania i Rozważmy, jak każdy _powinien_ wpływać na kolejność wyników. Jako deweloper aplikacji nie zapisujesz tych profilów, są one zapisywane przez administratora danych, ale warto przyjrzeć się składni.
 
-1. Jest to domyślny profil oceniania dla zestawu danych hotele używany, gdy nie zostanie podana żadna **OrderBy** lub **ScoringProfile** parametru. Ten profil zwiększa _wynik_ dla hotelu, jeśli tekst wyszukiwania znajduje się w hotelu nazwę, opis lub listę tagów (pozwalającego). Zwróć uwagę, jak wagi oceny Preferuj określonych pól. Jeśli tekst wyszukiwania pojawi się w innym polu nie wymieniono poniżej, ma wagę 1. Oczywiście im większa wynik, wcześniej wynik zostanie wyświetlony w widoku.
+1. Jest to domyślny profil oceniania dla zestawu danych hoteli używany, gdy nie określisz żadnego parametru **OrderBy** lub **ScoringProfile** . Ten profil zwiększa _wynik_ hotelu, jeśli wyszukiwany tekst jest obecny w nazwie hotelu, opisie lub liście tagów (udogodnień). Zwróć uwagę na to, jak wagi oceniania preferują określone pola. Jeśli szukany tekst zostanie wyświetlony w innym polu, a nie na liście poniżej, będzie miał wagę 1. Oczywiście im wyższy jest wynik, tym wcześniejszy wynik zostanie wyświetlony w widoku.
 
      ```cs
     {
@@ -490,7 +490,7 @@ Możemy przyjrzeć się trzy przykłady profile oceniania i wziąć pod uwagę, 
 
     ```
 
-2. Poniższy profil oceniania znacząco zwiększa wynik, jeśli podany parametr zawiera co najmniej jedną z listy tagów, (które wywołania "pozwalającego"). Kluczowym punktem ten profil jest fakt, że parametr _musi_ @username, zawierający tekst. Jeśli parametr jest pusty lub nie jest podany, zostanie zgłoszony błąd.
+2. Poniższy profil oceniania zwiększa znaczący wynik, jeśli podany parametr zawiera jedną lub więcej z listy tagów (które są wywoływane "walory"). Kluczowym punktem tego profilu jest, że _należy_ podać parametr zawierający tekst. Jeśli parametr jest pusty lub nie zostanie podany, zostanie zgłoszony błąd.
  
     ```cs
             {
@@ -508,7 +508,7 @@ Możemy przyjrzeć się trzy przykłady profile oceniania i wziąć pod uwagę, 
         }
     ```
 
-3. W tym przykładzie trzeci tę klasyfikację zapewnia znaczne zwiększenie wydajności na wynik. Ostatni dzień renovated będzie również zwiększyć wynik, ale tylko jeśli danych mieści się w 730 dni (2 lata) od bieżącej daty.
+3. W tym trzecim przykładzie Ocena daje znaczący wzrost do wyniku. Data ostatniej Renovated również zwiększy wynik, ale tylko wtedy, gdy dane te mieszczą się w przedziale od 730 dni (2 lata) bieżącej daty.
 
     ```cs
             {
@@ -539,11 +539,11 @@ Możemy przyjrzeć się trzy przykłady profile oceniania i wziąć pod uwagę, 
 
     ```
 
-    Daj nam Zobaczmy, jeśli te profile działać zgodnie z naszym zdaniem powinny!
+    Teraz poinformuj nas, czy te profile działają zgodnie z oczekiwaniami.
 
-### <a name="add-code-to-the-view-to-compare-profiles"></a>Dodaj kod do widoku, aby porównać profilów
+### <a name="add-code-to-the-view-to-compare-profiles"></a>Dodawanie kodu do widoku w celu porównania profilów
 
-1. Otwórz plik index.cshtml i Zastąp &lt;treści&gt; sekcję poniższym kodem.
+1. Otwórz plik index. cshtml i Zastąp sekcję &lt;body @ no__t-1 sekcją z poniższym kodem.
 
     ```cs
     <body>
@@ -651,7 +651,7 @@ Możemy przyjrzeć się trzy przykłady profile oceniania i wziąć pod uwagę, 
     </body>
     ```
 
-2. Otwórz plik SearchData.cs i Zastąp **SearchData** klasy z następującym kodem.
+2. Otwórz plik SearchData.cs i Zastąp klasę **SearchData** następującym kodem.
 
     ```cs
     public class SearchData
@@ -690,7 +690,7 @@ Możemy przyjrzeć się trzy przykłady profile oceniania i wziąć pod uwagę, 
     }
     ```
 
-3. Otwórz plik hotels.css, i dodaj następujące klasy HTML.
+3. Otwórz plik hoteli. CSS i Dodaj następujące klasy HTML.
 
     ```html
     .facetlist {
@@ -714,13 +714,13 @@ Możemy przyjrzeć się trzy przykłady profile oceniania i wziąć pod uwagę, 
 
 ### <a name="add-code-to-the-controller-to-specify-a-scoring-profile"></a>Dodaj kod do kontrolera, aby określić profil oceniania
 
-1. Otwórz plik głównego kontrolera. Dodaj następujący kod **przy użyciu** — instrukcja (w celu pomocy w tworzeniu listy).
+1. Otwórz plik kontrolera głównego. Dodaj następującą instrukcję **using** (aby pomóc w tworzeniu list).
 
     ```cs
     using System.Linq;
     ```
 
-2.  W tym przykładzie potrzebujemy początkowe wywołanie **indeksu** nieco więcej niż tylko zwrócić widok początkowy. Metoda szuka teraz pozwalającego maksymalnie 20 wyświetlić w widoku.
+2.  Na potrzeby tego przykładu potrzebujemy początkowego wywołania **indeksu** , aby wykonać nieco więcej niż po prostu zwrócić widok początkowy. Metoda teraz wyszukuje nawet 20 walorów, które mają być wyświetlane w widoku.
 
     ```cs
         public async Task<ActionResult> Index()
@@ -750,7 +750,7 @@ Możemy przyjrzeć się trzy przykłady profile oceniania i wziąć pod uwagę, 
         }
     ```
 
-3. Potrzebujemy dwie metody prywatnej można zapisać aspektami do magazynu tymczasowego, a także sprawności magazynu tymczasowego i wypełnić modelu.
+3. Potrzebujemy dwóch metod prywatnych do zapisania aspektów w magazynie tymczasowym i odzyskania ich z magazynu tymczasowego i wypełnienia modelu.
 
     ```cs
         // Save the facet text to temporary storage, optionally saving the state of the check boxes.
@@ -788,7 +788,7 @@ Możemy przyjrzeć się trzy przykłady profile oceniania i wziąć pod uwagę, 
         }
     ```
 
-4. Musimy **OrderBy** i **ScoringProfile** parametrów, zgodnie z potrzebami. Zastąp istniejące **indeksu (SearchData model)** metoda następującym kodem.
+4. W razie potrzeby musimy ustawić parametry **OrderBy** i **ScoringProfile** . Zastąp istniejącą metodę **index (SearchData model)** następującym poleceniem.
 
     ```cs
         public async Task<ActionResult> Index(SearchData model)
@@ -937,40 +937,40 @@ Możemy przyjrzeć się trzy przykłady profile oceniania i wziąć pod uwagę, 
         }
     ```
 
-    Zapoznaj się z artykułem komentarzy dla każdego z **Przełącz** wybrane opcje.
+    Zapoznaj się z komentarzami dotyczącymi poszczególnych **przełączników** .
 
-5. Nie musimy wprowadzić zmiany w **dalej** akcji, jeśli wykonano dodatkowego kodu w poprzedniej sekcji, w kolejności, w oparciu o wiele właściwości atrybutu.
+5. Nie musisz wprowadzać żadnych zmian w **następnej** akcji, Jeśli zakończysz dodatkowy kod dla poprzedniej sekcji w kolejności na podstawie wielu właściwości.
 
 ### <a name="run-and-test-the-app"></a>Uruchamianie i testowanie aplikacji
 
-1. Uruchom aplikację. Powinieneś zobaczyć pełny zestaw pozwalającego w widoku.
+1. Uruchom aplikację. W widoku powinien zostać wyświetlony pełen zestaw udogodnień.
 
-2. Do ustalania kolejności, wybierając "według wartości liczbowych ocenę" zapewni kolejność wartości liczbowych, który już został zaimplementowany w tym samouczku z datą odnawianie wybierania hotele klasyfikacji równa.
+2. Wybranie pozycji "według klasyfikacji liczbowej" spowoduje nadanie liczbowej kolejności, która została już zaimplementowana w tym samouczku, z datą odnawiania, która decyduje o tym, jak Hotele są równej ocenie.
 
-![Kolejność "beach" na podstawie klasyfikacji](./media/tutorial-csharp-create-first-app/azure-search-orders-beach.png)
+![Porządkowanie "sekwencje" na podstawie klasyfikacji](./media/tutorial-csharp-create-first-app/azure-search-orders-beach.png)
 
-3. Teraz spróbuj profilu "przez pozwalającego". Zaznaczania pozwalającego i sprawdź, czy hotele za pomocą tych obiektów są promowane listy wyników.
+3. Wypróbuj teraz profil "według udogodnień". Wybieraj różne rodzaje walorów i sprawdzaj, czy Hotele z tymi walorami zostały podwyższone do listy wyników.
 
-![Kolejność "beach" oparta na profilu](./media/tutorial-csharp-create-first-app/azure-search-orders-beach-profile.png)
+![Porządkowanie "sekwencje" w oparciu o profil](./media/tutorial-csharp-create-first-app/azure-search-orders-beach-profile.png)
 
-4. Spróbuj "Przez Renovated Data/oceniania profilu" Aby zobaczyć, jeśli otrzymujesz oczekiwanych. Pobieraj tylko ostatnio renovated hotele _świeżości_ boost.
+4. Wypróbuj Renovated daty/klasyfikacji, aby zobaczyć, czy otrzymujesz oczekiwane dane. Tylko ostatnio Renovated Hotele powinny uzyskać zwiększenie _Aktualności_ .
 
 ### <a name="resources"></a>Zasoby
 
-Aby uzyskać więcej informacji, zobacz [dodać profile oceniania do indeksu usługi Azure Search](https://docs.microsoft.com/azure/search/index-add-scoring-profiles).
+Aby uzyskać więcej informacji, zobacz następujące [Dodawanie profilów oceniania do indeksu Azure Search](https://docs.microsoft.com/azure/search/index-add-scoring-profiles).
 
 ## <a name="takeaways"></a>Wnioski
 
-Należy wziąć pod uwagę następujące wnioski z tego projektu:
+Rozważmy następujący wnioski z tego projektu:
 
-* Użytkownicy będą oczekiwać, że wyniki wyszukiwania do zamówienia, najważniejsze najpierw.
-* Danych wymaga, aby kolejność jest proste. Nie byliśmy w stanie sortowania na "najtańsze" najpierw łatwo, ponieważ dane nie mają strukturę umożliwiające określanie kolejności wykonać bez dodatkowego kodu.
-* Może istnieć wiele poziomów zamawianie do rozróżnienia między wyniki, które mają taką samą wartość na wyższym poziomie kolejności.
-* Naturalna dla niektórych wyników być uporządkowane w kolejności rosnącej kolejności (np. odległości od punktu), a niektóre w kolejności malejącej (powiedzmy, ocena użytkownika gościa).
-* Profile oceniania może być zdefiniowana, jeśli porównanie numeryczne są niedostępne lub nie inteligentnych wystarczająco, dla zestawu danych. Ocenianie każdego wyniku pomocy kolejności i wyświetlić wyniki w sposób inteligentny.
+* Użytkownicy będą oczekiwać, że wyniki wyszukiwania będą uporządkowane, najbardziej odpowiednie.
+* Dane muszą mieć strukturę, dzięki czemu kolejność jest prosta. Nie udało się szybko sortować od "najtańszego", ponieważ dane nie są strukturalne, aby umożliwić porządkowanie bez dodatkowych kodów.
+* Może istnieć wiele poziomów do uporządkowania, aby rozróżnić wyniki, które mają taką samą wartość na wyższym poziomie kolejności.
+* Jest to naturalne dla niektórych wyników, które mają być uporządkowane w kolejności rosnącej (mówimy, odległość od punktu), a niektóre w kolejności malejącej (na przykład Ocena gościa).
+* Profile oceniania można definiować, gdy porównania liczbowe są niedostępne lub nie są wystarczająco inteligentne dla zestawu danych. Ocenianie każdego wyniku może ułatwić uporządkowanie i wyświetlanie wyników.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zostały wykonane w tej serii C# samouczków — użytkownik powinien weszły cenne wiedzę na temat interfejsów API usługi Azure Search.
+Ta seria C# samouczków została ukończona — należy uzyskać cenne informacje dotyczące Azure Search interfejsów API.
 
-Dalsze dokumentacja i samouczki należy wziąć pod uwagę przeglądania [Microsoft Learn](https://docs.microsoft.com/learn/browse/?products=azure), lub inne samouczki w [dokumentacji wyszukiwania platformy Azure](https://docs.microsoft.com/azure/search/).
+Aby uzyskać więcej informacji i samouczków, należy rozważyć przeglądanie [Microsoft Learn](https://docs.microsoft.com/learn/browse/?products=azure)lub innych samouczków w [dokumentacji Azure Search](https://docs.microsoft.com/azure/search/).

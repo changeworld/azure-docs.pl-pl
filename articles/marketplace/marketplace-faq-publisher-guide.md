@@ -1,26 +1,26 @@
 ---
-title: Azure Marketplace — często zadawane pytania
-description: Odpowiedzi na często zadawane pytania dotyczące portalu Microsoft Azure Marketplace
+title: Microsoft Commercial Marketplace — często zadawane pytania
+description: Odpowiedzi na często zadawane pytania dotyczące portalu Azure Marketplace i Microsoft AppSource
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 9/24/2019
+ms.date: 9/26/2019
 ms.author: ellacroi
-ms.openlocfilehash: 6b9cc80dfb397d5bf330d0be947f468e9b802139
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: abc3b3a6be5f8c61c07fb29a6f168c8738733099
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259960"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350386"
 ---
-# <a name="marketplace-faqs"></a>Witryna Marketplace — często zadawane pytania
+# <a name="microsoft-commercial-marketplace-faqs"></a>Microsoft Commercial Marketplace — często zadawane pytania
 
-Odpowiedzi na często zadawane pytania dotyczące Microsoft Azure Marketplace.
+Odpowiedzi na często zadawane pytania dotyczące portalu Azure Marketplace i Microsoft AppSource.
 
 ## <a name="faq-for-customers"></a>Często zadawane pytania dla klientów
 
-### <a name="what-you-need-to-know-about-azure-marketplace"></a>Co musisz wiedzieć o witrynie Azure Marketplace
+### <a name="what-you-need-to-know-about-azure-marketplace-and-microsoft-appsource"></a>Co należy wiedzieć o witrynie Azure Marketplace i Microsoft AppSource
 
 **Co to jest Portal Azure Marketplace?**
 
@@ -253,9 +253,26 @@ Licencje dodawane do istniejącej subskrypcji są oceniane proporcjonalnie do po
 
 Anulowane licencje będą podlegać zasadom dotyczącym zwrotu znalezionym w ramach tych często zadawanych pytań.  Wszystkie anulowane licencje są natychmiast usuwane z Twojego konta i nie będą już dostępne do użycia.
 
+**Czy zwroty są obsługiwane w przypadku ofert opartych na zużyciu?**
+
+Wszelkie opłaty na podstawie zużycia — niezależnie od tego, czy są to co godzinę maszyn wirtualnych czy mierników niestandardowych — nie są zwracane za pośrednictwem anulowania. Po przeprowadzeniu konsumpcji opłaty są przetwarzane przez platformę handlową firmy Microsoft i wszelkie kwestie dotyczące jakości usług, w których żądanie zwrotu będzie obsługiwane bezpośrednio poza systemami firmy Microsoft między wydawcą a klientem. Oferty, które obsługują stałą stawkę Plus, są zgodne ze standardowymi zasadami zwrotu opłat za stawki ryczałtowe.
+
+**Czy jest możliwe zmiana planów w połowie okresu?**
+
+Nie, nie jest możliwe przejście między miesiącami i rocznymi.
+
+**Czy klient może zakupić dwa plany z tej samej oferty?**
+
+Tak, istnieje możliwość, aby klient miał dwa plany z jednej oferty jednocześnie.
+
+**Czy zasady zwrotu i planowanie zmian są inne w sklepie?**
+
+Nie, zasady biznesowe są spójne w witrynie Azure Marketplace i Microsoft AppSource. W przypadku odsprzedaży przez partnera w ramach programu rozwiązania w chmurze partner może wymusić inne zasady dla swoich klientów.
+
+
 ## <a name="faq-for-publishers"></a>Często zadawane pytania dla wydawców
 
-### <a name="what-you-need-to-know-about-azure-marketplace"></a>Co musisz wiedzieć o witrynie Azure Marketplace
+### <a name="what-you-need-to-know-about-azure-marketplace-and-microsoft-appsource"></a>Co należy wiedzieć o witrynie Azure Marketplace i Microsoft AppSource
 
 **Co to jest Portal Azure Marketplace?**
 
