@@ -18,7 +18,7 @@ ms.locfileid: "69647854"
 ---
 # <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>Samouczek REST: Indeksowanie i przeszukiwanie danych z częściową strukturą (obiekty blob JSON) w Azure Search
 
-Azure Search może indeksować dokumenty i tablice JSON w usłudze Azure Blob Storage [](search-indexer-overview.md) za pomocą indeksatora, który wie, jak odczytywać dane z częściową strukturą. Częściowo ustrukturyzowane dane zawierają tagi lub oznaczenia, które dzielą zawartość w ramach danych. Dzieli różnicę między danymi niestrukturalnymi, które muszą być w pełni indeksowane i formalnie uporządkowane dane, które są zgodne z modelem danych, takim jak schemat relacyjnej bazy danych, który można indeksować według poszczególnych pól.
+Azure Search może indeksować dokumenty i tablice JSON w usłudze Azure Blob Storage  za pomocą [indeksatora](search-indexer-overview.md), który wie, jak odczytywać dane z częściową strukturą. Częściowo ustrukturyzowane dane zawierają tagi lub oznaczenia, które dzielą zawartość w ramach danych. Dzieli różnicę między danymi niestrukturalnymi, które muszą być w pełni indeksowane i formalnie uporządkowane dane, które są zgodne z modelem danych, takim jak schemat relacyjnej bazy danych, który można indeksować według poszczególnych pól.
 
 W tym samouczku Użyj [Azure Search interfejsów API REST](https://docs.microsoft.com/rest/api/searchservice/) i klienta REST, aby wykonać następujące zadania:
 
