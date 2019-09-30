@@ -100,9 +100,9 @@ Poniższy kod JSON przedstawia schemat części ustawień rozszerzenia DSC w sza
 | Name (Nazwa) | Wartość / przykład | Typ danych |
 | ---- | ---- | ---- |
 | apiVersion | 2018-10-01 | date |
-| publisher | Microsoft. PowerShell. DSC | ciąg |
-| type | DSC | ciąg |
-| typeHandlerVersion | 2,77 | int |
+| publisher | Microsoft. PowerShell. DSC | string |
+| type | DSC | string |
+| typeHandlerVersion | 2.77 | int |
 
 ### <a name="settings-property-values"></a>Wartości właściwości ustawień
 
