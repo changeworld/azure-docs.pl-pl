@@ -1,0 +1,16 @@
+- name: Dokumentacja dotycząca grup zarządzania platformy Azure
+  href: ./index.yml
+- name: Omówienie
+  expanded: true
+  items:
+    - name: Zarządzanie platformą Azure
+      href: ../azure-management.md
+    - name: Grupy zarządzania
+      href: ./overview.md
+- name: Przewodniki z instrukcjami
+  expanded: true
+  items:
+    - name: Tworzenie grup zarządzania
+      href: ./create.md
+    - name: Zarządzanie zasobami
+      href: ./manage.md

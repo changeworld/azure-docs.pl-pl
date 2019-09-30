@@ -1,56 +1,93 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentacja usług Azure Lab Services i Azure DevTest Labs
+### YamlMime:Landing
+title: Dokumentacja usługi Azure Lab Services
+summary: Dowiedz się, jak użyć usługi Azure Lab Services do szybkiego skonfigurowania laboratorium badawczego lub testowego bądź laboratorium na potrzeby maratonu programistycznego lub zajęć dla Twojego zespołu lub studentów w chmurze.
 metadata:
-  title: Dokumentacja usługi Azure Lab Services — samouczki i dokumentacja interfejsu API | Microsoft Docs
-  description: 'Dowiedz się, jak użyć usługi Azure Lab Services do szybkiego skonfigurowania laboratorium badawczego lub testowego bądź laboratorium na potrzeby maratonu programistycznego lub zajęć dla Twojego zespołu lub studentów w chmurze. W samouczkach, przykładach i innych zasobach dotyczących platformy Azure pokazano, jak tworzyć i zabezpieczać laboratoria oraz zarządzać z nimi.'
+  title: Dokumentacja usługi Azure Lab Services
+  description: Dowiedz się, jak użyć usługi Azure Lab Services do szybkiego skonfigurowania laboratorium badawczego lub testowego bądź laboratorium na potrzeby maratonu programistycznego lub zajęć dla Twojego zespołu lub studentów w chmurze.
   services: lab-services
-  author: spelluru
-  manager: null
   ms.service: lab-services
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: 
   ms.topic: landing-page
-  ms.date: 04/06/2018
+  ms.collection: collection
+  author: spelluru
   ms.author: spelluru
-abstract:
-  description: 'Dowiedz się, jak użyć usługi Azure Lab Services do szybkiego skonfigurowania laboratorium badawczego lub testowego bądź laboratorium na potrzeby maratonu programistycznego lub zajęć dla Twojego zespołu lub studentów w chmurze. W samouczkach, przykładach i innych zasobach dotyczących platformy Azure pokazano, jak tworzyć i zabezpieczać laboratoria oraz zarządzać z nimi.'
-sections:
-  - title: Samouczki krok po kroku
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak tworzyć i korzystać z <b>laboratorium na potrzeby zajęć</b> przy użyciu usługi Azure Lab Services.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/lab-services/classroom-labs/tutorial-setup-lab-account">Konfigurowanie konta laboratorium</a>
-          - html: <a href="/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab">Konfigurowanie laboratorium na potrzeby zajęć</a>
-          - html: <a href="/azure/lab-services/classroom-labs/tutorial-connect-virtual-machine-classroom-lab">Dostęp do laboratorium na potrzeby zajęć</a>
-      - type: paragraph
-        text: 'Dowiedz się, jak tworzyć i korzystać z <b>laboratorium</b> przy użyciu usługi Azure DevTest Labs.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/lab-services/tutorial-create-custom-lab">Konfigurowanie laboratorium</a>
-          - html: <a href="/azure/lab-services/tutorial-use-custom-lab">Dostęp do laboratorium</a>
-  - title: Przykłady
-    items:
-      - type: paragraph
-        text: Korzystaj z poniższych przykładów podczas pracy z usługą Lab Services.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: '<a href="https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates">Szablony usługi Resource Manager</a>'
-          - html: <a href="/azure/lab-services/samples-cli">Interfejs wiersza polecenia platformy Azure</a>
-          - html: <a href="/azure/lab-services/samples-powershell">Azure PowerShell</a>
-  - title: Dokumentacja
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Wiersz polecenia
-            html: '<p><a href="/cli/azure/lab">Interfejs wiersza polecenia platformy Azure</a></p><p><a href="/powershell/module/az.devtestlabs/#devtest_labs">Azure PowerShell</a></p>'
-          - title: REST
-            html: <p><a href="/rest/api/dtl">Interfejs API REST</a></p>
+  ms.date: 09/26/2019
+  ms.openlocfilehash: 63a5b41fba026cc52cdcc599bfdd38e1e27ad42d
+  ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 09/27/2019
+  ms.locfileid: "71326972"
+landingContent:
+- title: Ogólne omówienie
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Informacje o usługach Lab Services
+      url: lab-services-overview.md
+    - text: Informacje o usłudze DevTest Labs
+      url: devtest-lab-overview.md
+    - text: Informacje na temat laboratoriów na potrzeby zajęć
+      url: ./classroom-labs/classroom-labs-overview.md
+- title: DevTest Labs
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Informacje o usłudze DevTest Labs
+      url: devtest-lab-overview.md
+  - linkListType: tutorial
+    links:
+    - text: Konfigurowanie laboratorium
+      url: tutorial-create-custom-lab.md
+    - text: Dostęp do laboratorium
+      url: tutorial-use-custom-lab.md
+  - linkListType: concept
+    links:
+    - text: DevTest Labs — pojęcia
+      url: devtest-lab-concepts.md
+    - text: Popularne scenariusze
+      url: devtest-lab-guidance-get-started.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurowanie i używanie środowisk publicznych
+      url: devtest-lab-configure-use-public-environments.md
+    - text: Tworzenie własnego środowiska i korzystanie z niego
+      url: devtest-lab-create-environment-from-arm.md
+    - text: Tworzenie obrazu niestandardowego
+      url: devtest-lab-create-custom-image-from-vm-using-portal.md
+    - text: Zarządzanie formułami
+      url: devtest-lab-manage-formulas.md
+    - text: Dodawanie artefaktów do maszyny wirtualnej
+      url: add-artifact-vm.md
+- title: Laboratoria na potrzeby zajęć
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Informacje na temat laboratoriów na potrzeby zajęć
+      url: ./classroom-labs/classroom-labs-overview.md
+  - linkListType: tutorial
+    links:
+    - text: Konfigurowanie konta laboratorium
+      url: ./classroom-labs/tutorial-setup-lab-account.md
+    - text: Konfigurowanie laboratorium na potrzeby zajęć
+      url: ./classroom-labs/tutorial-setup-classroom-lab.md
+    - text: Dostęp do laboratorium na potrzeby zajęć
+      url: ./classroom-labs/tutorial-connect-virtual-machine-classroom-lab.md
+    - text: Śledzenie użycia laboratorium na potrzeby zajęć
+      url: ./classroom-labs/tutorial-track-usage.md
+  - linkListType: concept
+    links:
+    - text: Pojęcia związane z laboratoriami na potrzeby zajęć
+      url: ./classroom-labs/classroom-labs-concepts.md
+    - text: Korzystanie z laboratoriów przy prowadzeniu zajęć
+      url: ./classroom-labs/classroom-labs-scenarios.md
+- title: Eksplorowanie zawartości referencyjnej
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Interfejs wiersza polecenia platformy Azure
+      url: /cli/azure/lab
+    - text: PowerShell
+      url: /powershell/module/az.devtestlabs/#devtest_labs
+    - text: REST
+      url: /rest/api/dtl

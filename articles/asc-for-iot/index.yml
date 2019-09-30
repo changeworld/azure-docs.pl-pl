@@ -1,75 +1,105 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentacja usługi Azure Security Center dla IoT
+summary: Azure Security Center dla IoT to usługa zabezpieczeń w chmurze oparta na platformie Azure, która zapewnia kompleksową ochronę urządzenia IoT przed zagrożeniami.
 metadata:
-  title: Dokumentacja usługi Azure Security Center dla IoT — samouczki i przewodniki Szybki start | Microsoft Docs
-  meta.description: Azure Security Center for IoT unifies your device security management and enables advanced threat detection and security posture management across your IoT solution.
-  services: asc-for-iot
-  author: mlottner
-  manager: rkarlin
+  title: Dokumentacja usługi Azure Security Center dla IoT
+  description: Azure Security Center dla IoT to usługa zabezpieczeń w chmurze oparta na platformie Azure, która zapewnia kompleksową ochronę urządzenia IoT przed zagrożeniami.
+  services: service
   ms.service: asc-for-iot
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: subservice
   ms.topic: landing-page
-  ms.date: 07/23/19
-  ms.author: rkarlin
-abstract:
-  description: "Używaj usługi Azure Security Center dla IoT, aby rozszerzać istniejącą perspektywę cyberzabezpieczeń na całe swoje rozwiązanie IoT. Uzyskaj prawdziwie panoramiczny widok zabezpieczeń wszystkich zasobów powiązanych z platformą Azure. Opcje szybkiego wdrażania i pełna integracja z bliźniaczymi reprezentacjami modułu usługi IoT Hub zapewniają szeroką gamę opcji dostosowywania i łatwą integrację z obecnie używanymi narzędziami do zarządzania urządzeniami.\_"
-sections:
-  - title: 5-minutowe przewodniki Szybki start
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak włączyć w usłudze IoT Hub obsługę usługi Azure Security Center dla IoT, zainstalować agentów zabezpieczeń i uzyskać wgląd w potencjalne zagrożenia.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/deploy.svg
-            text: Włączanie usługi Azure Security Center dla IoT
-            href: /azure/asc-for-iot/quickstart-onboard-iot-hub
-          - image:
-              src: media/index/get-started.svg
-            text: Wprowadzenie do usługi Azure Security dla IoT
-            href: /azure/asc-for-iot/getting-started
-  - title: Przewodniki z instrukcjami
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak definiować zasady zabezpieczeń, chronić urządzenia przed złośliwymi działaniami i reagować na alerty zabezpieczeń oraz zdarzenia.'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/asc-for-iot/how-to-investigate-device">Wykrywanie zagrożeń cybernetycznych przy użyciu usługi Azure Security Center dla IoT</a>
-  - title: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Wprowadzenie do zabezpieczeń na platformie Azure
-            href: 'https://docs.microsoft.com/learn/azure'
-            image:
-              src: media/index/tutorial.svg
-              href: 'https://docs.microsoft.com/learn/azure'
-  - title: Klipy wideo dotyczące usługi Azure Security Center dla IoT
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Microsoft Azure Security Center dla IoT — omówienie
-            href: 'https://youtu.be/pq5uSp9u_x0'
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_video.svg'
-              href: 'https://youtu.be/pq5uSp9u_x0'
-          - title: Microsoft Azure Security Center dla IoT — rozwiązanie
-            href: 'https://www.youtube.com/watch?time_continue=5&v=YOqkahQsKek'
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_video.svg'
-              href: 'https://www.youtube.com/watch?time_continue=5&v=YOqkahQsKek'
-  - title: Dokumentacja
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - html: '<a href="https://azure.microsoft.com/updates/?product=iotsecurity">Aktualizacje usług</a>'
+  ms.collection: M365-security-compliance
+  author: mlottner
+  ms.author: mlottner
+  ms.date: 09/23/2019
+  ms.openlocfilehash: 5eb0d39d1dbe748b34dd8f5a72ae7796125eae44
+  ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 09/27/2019
+  ms.locfileid: "71348536"
+landingContent:
+- title: Informacje o usłudze Azure Security Center dla IoT
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest Azure Security Center dla IoT?
+      url: overview.md
+    - text: Planowanie rozwiązania
+      url: service-prerequisites.md
+  - linkListType: architecture
+    links:
+    - text: Informacje o architekturze usługi Azure Security Center dla IoT
+      url: architecture.md
+    - text: Agenci usługi Azure Security Center dla IoT
+      url: security-agent-architecture.md
+    - text: Moduł zabezpieczeń usługi Edge
+      url: security-edge-architecture.md
+- title: Dołączanie usługi Azure Security Center dla IoT do usługi IoT Hub
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Wprowadzenie do usługi Azure Security Center dla IoT
+      url: getting-started.md
+    - text: Usługa IoT Hub
+      url: iot-hub-integration.md
+    - text: Agenci zabezpieczeń
+      url: security-agents.md
+- title: Konfigurowanie rozwiązania
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Włączanie usługi Azure Security Center dla IoT w usłudze IoT Hub
+      url: quickstart-onboard-iot-hub.md
+    - text: Konfigurowanie rozwiązania
+      url: quickstart-configure-your-solution.md
+    - text: Tworzenie bliźniaczej reprezentacji modułu usługi Azure Security Center dla IoT
+      url: quickstart-create-security-twin.md
+    - text: Tworzenie niestandardowych alertów zabezpieczeń
+      url: quickstart-create-custom-alerts.md
+- title: Dostosowywanie rozwiązania
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Wybieranie agenta
+      url: how-to-deploy-agent.md
+    - text: Wdrażanie agenta zabezpieczeń usługi Azure Security Center dla IoT opartego na języku C# dla systemu Windows
+      url: how-to-deploy-windows-cs.md
+    - text: Wdrażanie agenta zabezpieczeń usługi Azure Security Center dla IoT opartego na języku C# dla systemu Linux
+      url: how-to-deploy-linux-cs.md
+    - text: Wdrażanie agenta zabezpieczeń usługi Azure Security Center dla IoT opartego na języku C dla systemu Linux
+      url: how-to-deploy-linux-c.md
+    - text: Wdrażanie modułu zabezpieczeń usługi Edge
+      url: how-to-deploy-edge.md
+    - text: Konfigurowanie alertów zabezpieczeń
+      url: how-to-agent-configuration.md
+    - text: Wysyłanie własnych komunikatów dotyczących zabezpieczeń
+      url: how-to-send-security-messages.md
+    - text: Dostęp do nieprzetworzonych danych zabezpieczeń
+      url: how-to-security-data-access.md
+    - text: Badanie urządzenia
+      url: how-to-investigate-device.md
+- title: Rozwiązywanie problemów z agentem zabezpieczeń
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Przewodnik rozwiązywania problemów z agentem zabezpieczeń (Linux)
+      url: troubleshoot-agent.md
+    - text: Omówienie pliku LocalConfiguration.json — agent oparty na języku C
+      url: azure-iot-security-local-configuration-c.md
+    - text: Omówienie lokalnego pliku konfiguracji — agent oparty na języku C#
+      url: azure-iot-security-local-configuration-csharp.md
+- title: Zasoby dla rozwiązania usługi Azure Security Center dla IoT
+  linkLists:
+  - linkListType: video
+    links:
+    - text: Co to jest Azure Security Center dla IoT?
+      url: https://youtu.be/pq5uSp9u_x0
+    - text: Omówienie usługi Azure Security Center dla IoT
+      url: https://www.youtube.com/watch?time_continue=5&v=YOqkahQsKek
+  - linkListType: reference
+    links:
+    - text: Często zadawane pytania
+      url: resources-frequently-asked-questions.md
+    - text: Cennik i powiązane koszty
+      url: concept-pricing.md

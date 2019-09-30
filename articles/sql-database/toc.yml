@@ -448,6 +448,8 @@
           href: sql-database-geo-replication-portal.md
         - name: Konfigurowanie zabezpieczeń dla replik geograficznych
           href: sql-database-geo-replication-security-config.md
+        - name: Konfigurowanie grupy trybu failover
+          href: sql-database-configure-failover-group.md
         - name: Próbowanie funkcji w pamięci
           href: sql-database-in-memory-sample.md
         - name: Włączanie automatycznego dostrajania

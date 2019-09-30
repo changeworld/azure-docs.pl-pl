@@ -49,6 +49,10 @@
         - name: Klasyfikacja (dane bankowe)
           displayName: 'automl, automated, auto ml, portal, ui'
           href: tutorial-first-experiment-automated-ml.md
+    - name: Interfejs wiersza polecenia uczenia maszynowego
+      items:
+        - name: Trenowanie i wdrażanie modelu
+          href: tutorial-train-deploy-model-cli.md
 - name: Przykłady
   items:
     - name: Notebooks
@@ -63,6 +67,9 @@
     - name: Docelowy zasób obliczeniowy
       displayName: 'resource, dsvm, AKS, kubernetes, amlcompute, Data Science Virtual Machine, local, cluster, ACI, container instance, ADB, Databricks, data lake, lake, HDI, HDInsight'
       href: concept-compute-target.md
+    - name: Trenowanie modelu
+      displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
+      href: concept-train-machine-learning-model.md
     - name: Interfejs wizualny
       displayName: studio
       href: ui-concept-visual-interface.md
@@ -138,7 +145,7 @@
     - name: Szkolenie modeli
       items:
         - name: Konfigurowanie środowisk szkoleniowych
-          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+          displayName: 'run config, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
           href: how-to-set-up-training-targets.md
         - name: Uczenie za pomocą narzędzi do szacowania
           items:

@@ -80,6 +80,8 @@
         - name: Konfigurowanie dostępu do węzłów obliczeniowych
           href: pool-endpoint-configuration.md
         - name: Tworzenie puli za pomocą usługi Shared Image Gallery
+          href: batch-sig-images.md
+        - name: Tworzenie puli z zasobem zarządzanego obrazu
           href: batch-custom-images.md
         - name: Tworzenie puli w sieci wirtualnej
           href: batch-virtual-network.md

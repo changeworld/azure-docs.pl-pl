@@ -1,88 +1,65 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentacja usługi Azure Security Center
+summary: Usługa Azure Security Center zapewnia ujednolicone zarządzanie zabezpieczeniami i zaawansowaną ochronę przed zagrożeniami na potrzeby różnych obciążeń chmury hybrydowej.
 metadata:
-  title: Dokumentacja usługi Azure Security Center — samouczki i dokumentacja interfejsu API | Microsoft Docs
-  meta.description: 'Azure Security Center provides unified security management and advanced threat protection across hybrid cloud workloads. Learn how to get started with Security Center, apply security policies across your workloads, limit your exposure to threats, and detect and respond to attacks with our quickstarts and tutorials..'
+  title: Dokumentacja usługi Azure Security Center
+  description: Zacznij korzystać z usługi Security Center i dowiedz się, jak zabezpieczać obciążenia oraz ograniczać ryzyko, wykrywać ataki i reagować na nie, korzystając z przewodników Szybki start i samouczków.
   services: security-center
-  author: cmcclister
-  manager: carolz
   ms.service: security-center
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: subservice
   ms.topic: landing-page
-  ms.date: 07/26/18
-  ms.author: cmcclister
-abstract:
-  description: 'Usługa Azure Security Center zapewnia ujednolicone zarządzanie zabezpieczeniami i zaawansowaną ochronę przed zagrożeniami na potrzeby różnych obciążeń chmury hybrydowej. Dowiedz się z naszych przewodników szybkiego startu i samouczków, jak zacząć pracę z usługą Security Center, stosować zasady zabezpieczeń do różnych obciążeń, ograniczać podatność na zagrożenia i wykrywać ataki oraz reagować na nie.'
-sections:
-  - title: 5-minutowe przewodniki Szybki start
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak dodać swoje maszyny wirtualne i komputery do usługi Security Center oraz podłączyć do niej swoje rozwiązania z zakresu zabezpieczeń.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /media/common/i_subscription.svg
-            text: Dodawanie subskrypcji platformy Azure
-            href: /azure/security-center/security-center-get-started
-          - image:
-              src: /media/logos/logo_Windows.svg
-            text: Dodawanie komputerów z systemem Windows
-            href: /azure/security-center/quick-onboard-windows-computer
-          - image:
-              src: /media/logos/logo_linux.svg
-            text: Dodawanie komputerów z systemem Linux
-            href: /azure/security-center/quick-onboard-linux-computer
-          - image:
-              src: /media/common/i_multi-connect.svg
-            text: Podłączanie rozwiązań zabezpieczeń
-            href: /azure/security-center/quick-security-solutions
-  - title: Samouczki krok po kroku
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak definiować zasady zabezpieczeń, chronić zasoby przed złośliwymi działaniami i reagować na alerty zabezpieczeń oraz zdarzenia.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/security-center/tutorial-security-policy">Definiowanie i ocenianie zasad zabezpieczeń</a>
-          - html: <a href="/azure/security-center/tutorial-protect-resources">Ochrona zasobów</a>
-          - html: <a href="/azure/security-center/tutorial-security-incident">Reagowanie na zdarzenia związane z zabezpieczeniami</a>
-  - title: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: "\_\_Wprowadzenie do zabezpieczeń na platformie Azure"
-            href: /learn/modules/intro-to-security-in-azure/
-            image:
-              src: /learn/achievements/intro-to-security-in-azure.svg
-              href: /learn/modules/intro-to-security-in-azure/
-      - type: paragraph
-        text: <a href="/learn/browse/?term=security">Więcej interakcyjnych zasobów szkoleniowych...</a>
-  - title: Bezpłatne szkolenia wideo
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Upraszczanie ochrony zasobów w chmurze dzięki usłudze Azure Security Center — Ignite 2018
-            href: 'https://youtu.be/0txX1Y0GXDc'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_azure.svg'
-              href: 'https://youtu.be/0txX1Y0GXDc'
-          - title: Ochrona obciążeń serwera za pomocą usługi Azure Security Center — Ignite 2018
-            href: 'https://youtu.be/Kb_xeIJVROo'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_azure.svg'
-              href: 'https://youtu.be/Kb_xeIJVROo'
-  - title: Dokumentacja
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - html: '<a href="https://docs.microsoft.com/rest/api/securitycenter/">Dokumentacja interfejsu API REST</a>'
-          - html: '<a href="https://azure.microsoft.com/updates/?product=security-center">Aktualizacje usług</a>'
+  ms.collection: collection
+  author: memildin
+  ms.author: memildin
+  ms.date: 09/26/2019
+  ms.openlocfilehash: 8574c69221d1f0f0528a0ab9b8d27df4ca9a0ef0
+  ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 09/27/2019
+  ms.locfileid: "71327603"
+landingContent:
+- title: Informacje o usłudze Security Center
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Jakie są najważniejsze funkcje usługi Security Center?
+      url: security-center-intro.md
+    - text: Które wersje systemów Windows Server i Linux są obsługiwane?
+      url: security-center-os-coverage.md
+- title: Rozpoczęcie pracy
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Konfigurowanie zasad zabezpieczeń
+      url: tutorial-security-policy.md
+    - text: Dostosowywanie ustawień usługi Security Center
+      url: security-center-policies-overview.md
+    - text: Ocena stanu zabezpieczeń
+      url: security-center-secure-score.md
+    - text: Przechodzenie na zabezpieczenia zaawansowane
+      url: security-center-onboarding.md
+    - text: Integracja z innymi produktami z zakresu zabezpieczeń na platformie Azure
+      url: security-center-alerts-integration.md
+- title: Poprawianie oceny bezpieczeństwa
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Co to jest wskaźnik bezpieczeństwa?
+      url: security-center-secure-score.md
+    - text: Implementowanie rekomendacji dotyczących zabezpieczeń
+      url: security-center-remediate-recommendations.md
+    - text: Dostosowywanie rekomendacji dotyczących zabezpieczeń
+      url: tutorial-security-policy.md
+    - text: Używanie zaleceń w celu ulepszania zabezpieczeń
+      url: security-center-using-recommendations.md
+- title: Eliminowanie zagrożeń
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Zarządzanie dostępem just in time
+      url: security-center-just-in-time.md
+    - text: Konfigurowanie adaptacyjnego sterowania aplikacjami
+      url: security-center-adaptive-application.md
+    - text: Implementowanie adaptacyjnego wzmocnienia zabezpieczeń sieci
+      url: security-center-adaptive-network-hardening.md

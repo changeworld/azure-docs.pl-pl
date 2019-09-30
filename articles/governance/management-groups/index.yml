@@ -1,0 +1,39 @@
+### YamlMime:Landing
+title: Dokumentacja dotycząca grup zarządzania platformy Azure
+summary: Grupy zarządzania platformy Azure ułatwiają organizowanie zasobów i subskrypcji.
+metadata:
+  title: Dokumentacja dotycząca grup zarządzania platformy Azure
+  description: Grupy zarządzania platformy Azure ułatwiają organizowanie zasobów i subskrypcji.
+  ms.service: governance
+  ms.topic: landing-page
+  ms.collection: collection
+  author: DCtheGeek
+  ms.author: dacoulte
+  ms.date: 09/26/2019
+  ms.openlocfilehash: 9d91baaec7f1bd0e365f86ea07174d6f9e32725c
+  ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 09/27/2019
+  ms.locfileid: "71341049"
+landingContent:
+- title: Informacje o ładzie na platformie Azure
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Przegląd usług zarządzania na platformie Azure
+      url: ../azure-management.md
+- title: Informacje o grupach zarządzania platformy Azure
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Grupy zarządzania platformy Azure
+      url: ./overview.md
+- title: Organizowanie zasobów
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Tworzenie grup zarządzania
+      url: ./create.md
+    - text: Zarządzanie zasobami
+      url: ./manage.md

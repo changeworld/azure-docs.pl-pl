@@ -24,10 +24,12 @@
   items:
     - name: Łączenie się z zasobami usługi Windows Virtual Desktop
       items:
-        - name: Łączenie z systemu Windows 10 lub Windows 7
+        - name: Łączenie się z klientem klasycznym systemu Windows
           href: connect-windows-7-and-10.md
-        - name: Łączenie z przeglądarki internetowej
+        - name: Łączenie się z klientem internetowym
           href: connect-web.md
+        - name: Łączenie się z klientem systemu Android
+          href: connect-android.md
         - name: Nawiązywanie połączenia z klientem systemu macOS
           href: connect-macos.md
         - name: Nawiązywanie połączenia z klientem systemu iOS
@@ -72,6 +74,8 @@
       href: partners.md
     - name: Wiele sesji systemu Windows 10 Enterprise — często zadawane pytania
       href: windows-10-multisession-faq.md
+    - name: Lokalizacje danych
+      href: data-locations.md
 - name: Rozwiązywanie problemów
   items:
     - name: 'Rozwiązywania problemów — omówienie, opinie i obsługa techniczna'

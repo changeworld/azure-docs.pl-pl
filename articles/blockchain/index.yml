@@ -1,0 +1,88 @@
+### YamlMime:Hub
+title: Dokumentacja usługi Azure Blockchain
+summary: Dowiedz się, jak tworzyć, testować i wdrażać bezpieczne aplikacje łańcucha bloków przy użyciu usługi Azure Blockchain.
+brand: azure
+metadata:
+  title: Dokumentacja usługi Azure Blockchain
+  description: Dowiedz się, jak tworzyć, testować i wdrażać bezpieczne aplikacje łańcucha bloków przy użyciu usługi Azure Blockchain.
+  services: service
+  ms.service: azure-blockchain
+  ms.topic: hub-page
+  author: PatAltimore
+  ms.author: patricka
+  ms.date: 09/25/2019
+  ms.openlocfilehash: 93a1e54dd2f1c209792c688666782a9c9823214b
+  ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 09/27/2019
+  ms.locfileid: "71328628"
+productDirectory:
+  items:
+  - title: Usługa Azure Blockchain
+    imageSrc: ./media/index/blockchain-service.svg
+    links:
+    - url: ./service/overview.md
+      text: Co to jest usługa Azure Blockchain Service?
+    - url: ./service/index.yml
+      text: Zobacz więcej >
+  - title: Azure Blockchain Workbench
+    imageSrc: ./media/index/blockchain-workbench.svg
+    links:
+    - url: ./workbench/overview.md
+      text: Czym jest usługa Azure Blockchain Workbench?
+    - url: ./workbench/index.yml
+      text: Zobacz więcej >
+conceptualContent:
+  title: Rozpoczęcie pracy
+  items:
+  - title: Tworzenie i programowanie z użyciem sieci łańcucha bloków konsorcjum
+    links:
+    - url: ./service/create-member.md
+      itemType: quickstart
+      text: Wdrażanie członka łańcucha bloków usługi Azure Blockchain Service
+    - url: ./service/send-transaction.md
+      itemType: tutorial
+      text: Samouczek prezentujący pisanie kontraktu inteligentnego
+    - url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-I-Deploy-and-configure-your-network
+      itemType: video
+      text: Prezentacja wdrażania i konfigurowania sieci
+    - url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-II-Write-and-test-smart-contracts-with-VS-Code
+      itemType: video
+      text: Prezentacja pisania inteligentnego kontraktu w programie VS Code
+  - title: Prototypowanie rozwiązania łańcucha bloków
+    links:
+    - url: ./workbench/deploy.md
+      itemType: how-to-guide
+      text: Wdrażanie usługi Azure Blockchain Workbench
+    - url: ./workbench/create-app.md
+      itemType: tutorial
+      text: Samouczek prezentujący tworzenie aplikacji w usłudze Blockchain Workbench
+    - url: ./workbench/integration-patterns.md
+      itemType: concept
+      text: Informacje o integrowaniu rozwiązania z usługą Blockchain Workbench
+    - url: https://channel9.msdn.com/Shows/Blocktalk/Building-your-first-Azure-Blockchain-Workbench-application
+      itemType: video
+      text: Prezentacja tworzenia pierwszej aplikacji
+  - title: Tworzenie rozwiązania za pomocą rejestru odpowiedniego do danego przypadku użycia
+    links:
+    - url: ./templates/ethereum-poa-deployment.md
+      itemType: how-to-guide
+      text: Wdrażanie na platformie Azure sieci Ethereum z wieloma członkami i dowodem autorytetu
+    - url: ./templates/hyperledger-fabric-consortium-blockchain.md
+      itemType: how-to-guide
+      text: Wdrażanie sieci konsorcjum Hyperledger Fabric na platformie Azure
+additionalContent:
+  sections:
+  - title: Narzędzia deweloperskie i przykłady
+    summary: Narzędzia do programowania aplikacji łańcucha bloków i przykłady kodu.
+    items:
+    - title: Zestaw deweloperski usługi Azure Blockchain Development dla sieci Ethereum
+      summary: Programuj, wdrażaj i debuguj rozwiązanie usługi Azure Blockchain Service oraz zarządzaj nim.
+      url: https://marketplace.visualstudio.com/items?itemName=azblockchain.azure-blockchain
+    - title: Łącznik łańcucha bloków dla sieci Ethereum
+      summary: Używaj usług Azure Logic Apps, Microsoft Flow i Microsoft PowerApps, aby wykonywać akcje związane z inteligentnymi kontraktami, takie jak przesyłanie transakcji, odczytywanie stanu kontraktu i wyzwalanie przepływów przy aktualizacjach kontraktu.
+      url: https://docs.microsoft.com/connectors/blockchainethereum/
+    - title: Przykłady kodu
+      summary: Repozytorium GitHub z przykładami kodu pozwalającymi rozpocząć pracę.
+      url: https://github.com/Azure-Samples/blockchain
