@@ -144,8 +144,8 @@ Przy `AADClientCertificate`użyciu:
 | type | AzureDiskEncryptionForLinux | string |
 | typeHandlerVersion | 0,1, 1,1 | int |
 | (schemat 0.1) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
-| (schemat 0.1) AADClientSecret | password | string |
-| (schemat 0.1) AADClientCertificate | thumbprint | string |
+| (schemat 0,1) AADClientSecret | password | string |
+| (schemat 0,1) AADClientCertificate | thumbprint | string |
 | DiskFormatQuery | {"dev_path": "", "name": "", "file_system": ""} | Słownik JSON |
 | EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
 | KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | string |
@@ -153,7 +153,7 @@ Przy `AADClientCertificate`użyciu:
 | obowiązkowe KeyVaultURL | url | string |
 | Passphrase | password | string | 
 | SequenceVersion | uniqueidentifier | string |
-| VolumeType | System operacyjny, dane, wszystkie | string |
+| Liczba woluminów | System operacyjny, dane, wszystkie | string |
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
 

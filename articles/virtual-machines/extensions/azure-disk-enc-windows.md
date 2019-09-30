@@ -154,9 +154,9 @@ Przy `AADClientCertificate`użyciu:
 | KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | string |
 | KeyEncryptionKeyURL | url | string |
 | KeyVaultURL | url | string |
-| obowiązkowe Passphrase | password | string | 
+| obowiązkowe Danym | password | string | 
 | SequenceVersion | uniqueidentifier | string |
-| VolumeType | OS, Data, All | string |
+| Liczba woluminów | System operacyjny, dane, wszystkie | string |
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
 Aby zapoznać się z przykładem wdrożenia szablonów, zobacz [Tworzenie nowej zaszyfrowanej maszyny wirtualnej z systemem Windows na podstawie obrazu z galerii](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image).
